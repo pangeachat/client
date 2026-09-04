@@ -46,11 +46,12 @@ class FcmSharedIsolate {
     }
   }
 
-  Future<bool> requestPermission(
-      {bool sound = true,
-      bool alert = true,
-      bool badge = true,
-      bool provisional = false,}) async {
+  Future<bool> requestPermission({
+    bool sound = true,
+    bool alert = true,
+    bool badge = true,
+    bool provisional = false,
+  }) async {
     if (kIsWeb || !Platform.isIOS) {
       return true;
     }

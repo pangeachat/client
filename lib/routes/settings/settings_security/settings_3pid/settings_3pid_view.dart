@@ -20,129 +20,124 @@ class Settings3PidView extends StatelessWidget {
     final theme = Theme.of(context);
 
     controller.request ??= Matrix.of(context).client.getAccount3PIDs();
-    return Semantics(
-      label: L10n.of(context).pageLabel(L10n.of(context).changeEmail),
-      container: true,
-      child: PanelCard(
-        child: Column(
-          children: [
-            PanelHeader(
-              leading: controller.widget.closeButton ?? SizedBox(),
-              title: L10n.of(context).pageLabel(L10n.of(context).changeEmail),
-              trailing: IconButton(
-                icon: const Icon(Icons.add_outlined),
-                onPressed: controller.add3PidAction,
-                tooltip: L10n.of(context).addEmail,
-              ),
+    // The panel's one named group comes from the dispatcher (#8729). The
+    // header title is the plain page name — the "{title} page" template
+    // string had leaked into the visible header.
+    return PanelCard(
+      child: Column(
+        children: [
+          PanelHeader(
+            leading: controller.widget.closeButton ?? SizedBox(),
+            title: L10n.of(context).changeEmail,
+            trailing: IconButton(
+              icon: const Icon(Icons.add_outlined),
+              onPressed: controller.add3PidAction,
+              tooltip: L10n.of(context).addEmail,
             ),
-            Expanded(
-              // child: Semantics(
-              //   label: L10n.of(context).bodyLabel(L10n.of(context).changeEmail),
-              //   container: true,
-              child: Scaffold(
-                body: MaxWidthBody(
-                  withScrolling: false,
-                  child: FutureBuilder<List<ThirdPartyIdentifier>?>(
-                    future: controller.request,
-                    builder:
-                        (
-                          BuildContext context,
-                          AsyncSnapshot<List<ThirdPartyIdentifier>?> snapshot,
-                        ) {
-                          if (snapshot.hasError) {
-                            return Center(
-                              child: Text(
-                                // #Pangea
-                                // snapshot.error.toString(),
-                                snapshot.error!.toLocalizedString(context),
-                                // Pangea#
-                                textAlign: TextAlign.center,
-                              ),
-                            );
-                          }
-                          if (!snapshot.hasData) {
-                            return const Center(
-                              child: CircularProgressIndicator.adaptive(
-                                strokeWidth: 2,
-                              ),
-                            );
-                          }
-                          final identifier = snapshot.data!;
-                          return Column(
-                            children: [
-                              ListTile(
-                                leading: CircleAvatar(
-                                  backgroundColor:
-                                      theme.scaffoldBackgroundColor,
-                                  foregroundColor: identifier.isEmpty
-                                      ? Colors.orange
-                                      : Colors.grey,
-                                  child: Icon(
-                                    identifier.isEmpty
-                                        ? Icons.warning_outlined
-                                        : Icons.info_outlined,
-                                  ),
-                                ),
-                                title: Semantics(
-                                  container: true,
-                                  child: Text(
-                                    identifier.isEmpty
-                                        // #Pangea
-                                        //     ? L10n.of(context).noPasswordRecoveryDescription
-                                        //     : L10n.of(
-                                        //         context,
-                                        //       ).withTheseAddressesRecoveryDescription,
-                                        ? L10n.of(context).noAddressDescription
-                                        : L10n.of(
-                                            context,
-                                          ).withTheseAddressesDescription,
-                                    // Pangea#
-                                  ),
-                                ),
-                              ),
-                              const Divider(),
-                              Expanded(
-                                child: Semantics(
-                                  label: L10n.of(
-                                    context,
-                                  ).listLabel(L10n.of(context).email),
-                                  container: true,
-                                  child: ListView.builder(
-                                    itemCount: identifier.length,
-                                    itemBuilder:
-                                        (
-                                          BuildContext context,
-                                          int i,
-                                        ) => ListTile(
-                                          leading: CircleAvatar(
-                                            backgroundColor:
-                                                theme.scaffoldBackgroundColor,
-                                            foregroundColor: Colors.grey,
-                                            child: Icon(identifier[i].iconData),
-                                          ),
-                                          title: Text(identifier[i].address),
-                                          trailing: IconButton(
-                                            tooltip: L10n.of(context).delete,
-                                            icon: const Icon(
-                                              Icons.delete_forever_outlined,
-                                            ),
-                                            color: Colors.red,
-                                            onPressed: () => controller
-                                                .delete3Pid(identifier[i]),
-                                          ),
-                                        ),
-                                  ),
-                                ),
-                              ),
-                            ],
+          ),
+          Expanded(
+            // child: Semantics(
+            //   label: L10n.of(context).bodyLabel(L10n.of(context).changeEmail),
+            //   container: true,
+            child: Scaffold(
+              body: MaxWidthBody(
+                withScrolling: false,
+                child: FutureBuilder<List<ThirdPartyIdentifier>?>(
+                  future: controller.request,
+                  builder:
+                      (
+                        BuildContext context,
+                        AsyncSnapshot<List<ThirdPartyIdentifier>?> snapshot,
+                      ) {
+                        if (snapshot.hasError) {
+                          return Center(
+                            child: Text(
+                              // #Pangea
+                              // snapshot.error.toString(),
+                              snapshot.error!.toLocalizedString(context),
+                              // Pangea#
+                              textAlign: TextAlign.center,
+                            ),
                           );
-                        },
-                  ),
+                        }
+                        if (!snapshot.hasData) {
+                          return const Center(
+                            child: CircularProgressIndicator.adaptive(
+                              strokeWidth: 2,
+                            ),
+                          );
+                        }
+                        final identifier = snapshot.data!;
+                        return Column(
+                          children: [
+                            ListTile(
+                              leading: CircleAvatar(
+                                backgroundColor: theme.scaffoldBackgroundColor,
+                                foregroundColor: identifier.isEmpty
+                                    ? Colors.orange
+                                    : Colors.grey,
+                                child: Icon(
+                                  identifier.isEmpty
+                                      ? Icons.warning_outlined
+                                      : Icons.info_outlined,
+                                ),
+                              ),
+                              title: Semantics(
+                                container: true,
+                                child: Text(
+                                  identifier.isEmpty
+                                      // #Pangea
+                                      //     ? L10n.of(context).noPasswordRecoveryDescription
+                                      //     : L10n.of(
+                                      //         context,
+                                      //       ).withTheseAddressesRecoveryDescription,
+                                      ? L10n.of(context).noAddressDescription
+                                      : L10n.of(
+                                          context,
+                                        ).withTheseAddressesDescription,
+                                  // Pangea#
+                                ),
+                              ),
+                            ),
+                            const Divider(),
+                            Expanded(
+                              child: Semantics(
+                                label: L10n.of(
+                                  context,
+                                ).listLabel(L10n.of(context).email),
+                                container: true,
+                                child: ListView.builder(
+                                  itemCount: identifier.length,
+                                  itemBuilder: (BuildContext context, int i) =>
+                                      ListTile(
+                                        leading: CircleAvatar(
+                                          backgroundColor:
+                                              theme.scaffoldBackgroundColor,
+                                          foregroundColor: Colors.grey,
+                                          child: Icon(identifier[i].iconData),
+                                        ),
+                                        title: Text(identifier[i].address),
+                                        trailing: IconButton(
+                                          tooltip: L10n.of(context).delete,
+                                          icon: const Icon(
+                                            Icons.delete_forever_outlined,
+                                          ),
+                                          color: Colors.red,
+                                          onPressed: () => controller
+                                              .delete3Pid(identifier[i]),
+                                        ),
+                                      ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        );
+                      },
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

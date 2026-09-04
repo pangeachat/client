@@ -168,6 +168,20 @@
         "type": "String",
         "placeholders": {}
     },
+    "seeAll": "See all",
+    "@seeAll": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "seeAllSection": "See all {section}",
+    "@seeAllSection": {
+        "type": "String",
+        "placeholders": {
+            "section": {
+                "type": "String"
+            }
+        }
+    },
     "commandHint_roomupgrade": "Upgrade this room to the given room version",
     "@commandHint_roomupgrade": {},
     "commandHint_googly": "Send some googly eyes",
@@ -3606,6 +3620,33 @@
             }
         }
     },
+    "usedCorrectly": "{count, plural, =1{Used correctly once} other{Used correctly {count} times}}",
+    "@usedCorrectly": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "usedIncorrectly": "{count, plural, =1{Used incorrectly once} other{Used incorrectly {count} times}}",
+    "@usedIncorrectly": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "usedWithoutScoring": "{count, plural, =1{Used once without scoring} other{Used {count} times without scoring}}",
+    "@usedWithoutScoring": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
     "readingExercisesTooltip": "Reading",
     "meaningNotFound": "Meaning could not be found.",
     "notTheCodeError": "Sorry, that's not the code!",
@@ -3658,6 +3699,172 @@
     "nan": "Not applicable",
     "instructions": "Instructions",
     "constructUsePvmDesc": "Produced in voice message",
+    "constructUsePvcDesc": "Produced in a call",
+    "startCall": "Call",
+    "startVideoCall": "Video call",
+    "callConnecting": "Connecting",
+    "callFailed": "Could not connect the call",
+    "callEnded": "Call ended",
+    "callHangUp": "Hang up",
+    "callMute": "Mute",
+    "callOngoingChannel": "Ongoing call",
+    "callUnmute": "Unmute",
+    "callCameraOn": "Turn camera on",
+    "callCameraOff": "Turn camera off",
+    "callTranscriptSharedNotice": "This call is transcribed and saved. You and the other person can read it afterwards.",
+    "callNoMicrophone": "They cannot hear you: your microphone did not start",
+    "callIncoming": "Incoming call",
+    "callAnswer": "Answer",
+    "callDecline": "Decline",
+    "callDeclinedByPeer": "Call declined",
+    "callRinging": "Ringing...",
+    "callMinimize": "Minimize call",
+    "callFullscreen": "Full screen",
+    "callExitFullscreen": "Exit full screen",
+    "callReconnecting": "Reconnecting...",
+    "callReturn": "Return",
+    "callPeerMuted": "Muted",
+    "callPeerBusy": "{name} is on another call",
+    "@callPeerBusy": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "callReturnOffer": "You were in a call before the app reloaded",
+    "callPeerReconnecting": "{name} reconnecting...",
+    "@callPeerReconnecting": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "callFailedBusy": "You are already in a call",
+    "callFailedService": "The calling service refused the connection",
+    "callFailedNoFocus": "Calling is not available on this server",
+    "callIncomingVoice": "Incoming voice call",
+    "callIncomingVideo": "Incoming video call",
+    "callQuickReply": "Message",
+    "callQuickReplyTitle": "Quick reply",
+    "callReplyCantTalk": "Can't talk right now. What's up?",
+    "callReplyCallRightBack": "I'll call you right back",
+    "callReplyOnMyWay": "On my way",
+    "callReplyCallLater": "Can I call you later?",
+    "callHistoryVoiceCall": "Voice call",
+    "callHistoryVideoCall": "Video call",
+    "callHistoryMissedCall": "Missed call",
+    "callHistoryMissedVideoCall": "Missed video call",
+    "callHistoryNoAnswer": "No answer",
+    "callHistoryDeclined": "Call declined",
+    "callHistoryYouDeclined": "You declined this call",
+    "callTranscriptTitle": "Call transcript",
+    "callTranscriptLoadFailed": "Could not load the transcript",
+    "callTranscriptRetry": "Try again",
+    "callTranscriptStoppedEarly": "This call had too much to read in one go, so some of it is not shown.",
+    "callTranscriptRoomEncrypted": "This chat is encrypted and the transcript could not be unlocked here, so what was said is not shown.",
+    "callTranscriptParticipantsUnknown": "It is not known who else was on this call, so someone who spoke may be missing from this transcript altogether.",
+    "callTranscriptNone": "No transcript from {name}",
+    "@callTranscriptNone": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "callTranscriptSaidNothing": "{name} did not say anything",
+    "@callTranscriptSaidNothing": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "callTranscriptNothingRead": "Nothing could be read from what {name} said",
+    "@callTranscriptNothingRead": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "callTranscriptNoSpeechDetected": "Nothing recorded from {name} was sent to be transcribed: this app found no speech in it and can be wrong about that, so what was said is not known.",
+    "@callTranscriptNoSpeechDetected": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "callTranscriptMicrophoneRefused": "{name}'s device never opened a microphone for this call, so nothing they said was recorded and what was said is not known.",
+    "@callTranscriptMicrophoneRefused": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "callTranscriptAudioLost": "What {name} said was recorded but lost before it could be transcribed, so what was said is not known.",
+    "@callTranscriptAudioLost": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "callTranscriptAudioDropped": "What {name} said was lost by their device before it could even be recorded, so what was said is not known.",
+    "@callTranscriptAudioDropped": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "callTranscriptHeldByOtherDevice": "What {name} said was left to another of their devices to record, so none of it was sent from this one and what was said is not known here.",
+    "@callTranscriptHeldByOtherDevice": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "callTranscriptDeviceNeverWrote": "Part of what {name} said was left to another of their devices to record, and that device did not record it, so that part is not known.",
+    "@callTranscriptDeviceNeverWrote": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "callTranscriptTooLongToSend": "What {name} said was too long to save with this call, so none of it is shown.",
+    "@callTranscriptTooLongToSend": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "callTranscriptPartial": "Part of what {name} said may be missing",
+    "@callTranscriptPartial": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "callTranscriptByTime": "by {time}",
+    "@callTranscriptByTime": {
+        "placeholders": {
+            "time": {
+                "type": "String"
+            }
+        }
+    },
+    "callTranscriptApproximateTimes": "A turn marked \"by\" a time was said at or before it. Those turns are shown at that moment, so they may have been said earlier.",
+    "callTranscriptUnstatedTimes": "Some turns show no time. The device that recorded them did not say how exact its times are, so where they sit in this conversation may be wrong.",
+    "callTranscriptUnreconciledClocks": "These turns were recorded on two devices whose clocks could not be compared, so no times are shown and the order they appear in may be wrong.",
+    "callTranscriptOpen": "Read the transcript",
     "leaveSpaceDescription": "By leaving the course, you will leave all of the chats within it. Other users will see that you have left the course.",
     "constructUseCorMmDesc": "Correct message meaning",
     "constructUseIncMmDesc": "Incorrect message meaning",
@@ -3698,7 +3905,8 @@
     "audioSettingDisabledEnable": "Enable",
     "noSpaceDescriptionYet": "No course description created yet.",
     "tooLargeToSend": "This message is too large to send",
-    "enableAutocorrectPopupTitle": "Add your target language keyboard by going to:",
+    "addKeyboardDialogTitle": "Add your target language keyboard",
+    "enableAutocorrectPopupPathIntro": "To add one, go to:",
     "enableAutocorrectPopupSteps": "  • Settings\n  • General\n  • Keyboard\n  • Keyboards\n  • Add New Keyboard",
     "enableAutocorrectPopupDescription": "Once the language is selected, you can click the small globe icon on the bottom left of your keyboard to activate the newly installed keyboard.",
     "autocorrectAndroidDialogTitle": "Autocorrect in your target language",
@@ -3791,6 +3999,12 @@
     "announcements": "Announcements",
     "activities": "Activities",
     "stars": "Stars",
+    "starsEarnedInLanguage": "Stars earned in {language}",
+    "@starsEarnedInLanguage": {
+        "placeholders": {
+            "language": {}
+        }
+    },
     "access": "Access",
     "howSpaceCanBeFound": "How this course can be found",
     "private": "Private",
@@ -4652,6 +4866,7 @@
     "selectModeTutorialAudio": "Click here to listen to the message",
     "selectModeTutorialExit": "Click the background to go back to chatting",
     "errorTryAgainLater": "Oops, something went wrong… We're looking into it! Please try again later.",
+    "errorRateLimited": "We're loading a lot right now. Please wait a moment and try again.",
     "acceptAll": "Accept all",
     "removeAdminDescription": "Lowering this user's permission level will remove admin privileges.",
     "emojiToolbarInstruction": "This mode allows you to set emojis to words! Select a word to associate an emoji with it!",
@@ -4681,6 +4896,10 @@
     "requireAnalyticsAccessTitle": "Require analytics access to join",
     "requireAnalyticsAccessDesc": "Participants must grant access to their learning analytics to join this course",
     "moreOptions": "More options",
+    "showMoreOptionsHint": "show more options",
+    "@showMoreOptionsHint": {
+        "description": "Semantics hint fragment: TalkBack reads it as 'double tap and hold to <this>' on controls whose long-press opens the options menu."
+    },
     "analyticsAccessNoticeTitle": "Learning Analytics Required",
     "analyticsAccessNoticeDesc": "Admins of this course want to view your analytics to track your learning progress. Allow them access to join.",
     "shareAnalytics": "Share Analytics",
@@ -4837,6 +5056,40 @@
     "filteredActivitiesLabel": "Filtered activity list",
     "mapZoomLabel": "Map zoom controls",
     "activityMapLabel": "Activity map",
+    "mapPinsKeyboardHint": "Use the arrow keys to move between activities on the map, and press Enter to open one.",
+    "@mapPinsKeyboardHint": {},
+    "selectMessageLabel": "Select message",
+    "@selectMessageLabel": {},
+    "archivedChat": "Archived chat",
+    "@archivedChat": {},
+    "activityReview": "Activity review",
+    "@activityReview": {},
+    "activityPanel": "Activity",
+    "@activityPanel": {},
+    "coursePage": "Course page",
+    "@coursePage": {},
+    "constructLevelSeeds": "Seeds, new words",
+    "@constructLevelSeeds": {},
+    "constructLevelGreens": "Greens, growing words",
+    "@constructLevelGreens": {},
+    "constructLevelFlowers": "Flowers, mastered words",
+    "@constructLevelFlowers": {},
+    "filterAndSearch": "Filter and search",
+    "@filterAndSearch": {},
+    "participantsOfTotal": "{filled} of {total} players",
+    "@participantsOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "mapAttributionLabel": "OpenStreetMap contributors, copyright and license",
+    "@mapAttributionLabel": {},
     "writingAssistanceTutorialInputBar": "You can write in any language! We'll help you correct mistakes.",
     "abDisplayName": "Abkhazian",
     "elDisplayName": "Greek",
@@ -4845,6 +5098,13 @@
     "welcome": "Welcome",
     "courseRequest": "Course request",
     "onboarding": "Onboarding",
+    "onboardingStepOfTotal": "Step {step} of {total}",
+    "@onboardingStepOfTotal": {
+        "placeholders": {
+            "step": {},
+            "total": {}
+        }
+    },
     "selectImageFromDevice": "Select image from device",
     "dinoAvatarLabel": "A dinosaur with sunglasses",
     "bearAvatarLabel": "A friendly bear",
@@ -5003,7 +5263,7 @@
     "ongoingPendingLabel": "Waiting for others to join",
     "joinableLabel": "Joinable",
     "inProgressLabel": "Previously completed",
-    "availableLabel": "Create activity",
+    "availableLabel": "Not yet started",
     "chatSearchPageLabel": "Chat search page",
     "selectImageLabel": "Select image",
     "userSearchTagsLabel": "Search in...",
@@ -5028,6 +5288,15 @@
     },
     "readAloudNoVoiceTitle": "No high-quality {language} voice found",
     "@readAloudNoVoiceTitle": {
+        "type": "String",
+        "placeholders": {
+            "language": {
+                "type": "String"
+            }
+        }
+    },
+    "readAloudNoVoiceNote": "No high-quality {language} voice is available on this device, so these settings are unavailable. You can still play audio from the message toolbar.",
+    "@readAloudNoVoiceNote": {
         "type": "String",
         "placeholders": {
             "language": {
@@ -5160,6 +5429,37 @@
             }
         }
     },
+    "teachOptionSelected": "Teach selected",
+    "learnOptionSelected": "Learn selected",
+    "selectedTargetLanguage": "Selected {lang} as target language",
+    "@selectedTargetLanguage": {
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "selectedBaseLanguage": "Selected {lang} as base language",
+    "@selectedBaseLanguage": {
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "resetTargetLanguage": "Reset target language",
+    "resetBaseLanguage": "Reset base language",
+    "selectedLanguageLevel": "Selected {level} as language level",
+    "@selectedLanguageLevel": {
+        "placeholders": {
+            "level": {
+                "type": "String"
+            }
+        }
+    },
+    "resetLanguageLevel": "Reset language level",
+    "noPermissionToInviteUsers": "You don't have permission to invite members here.",
+    "@noPermissionToInviteUsers": {},
     "tutorialWelcome": "I'm Pangea Bot, your guide and AI conversation partner. Let's get learning!",
     "tutorialWorldMapIntro": "This is the world map. Every roleplay activity in {language} lives here.",
     "@tutorialWorldMapIntro": {
@@ -5180,7 +5480,7 @@
         }
     },
     "tutorialCoursePlanProgress": "As you do activities and gain stars, you'll make progress here.",
-    "tutorialCoursePlanPickActivity": "These are the activities for your current Mission. Tap one to open and start it!",
+    "tutorialCoursePlanPickActivity": "These are the activities to try next in your course. Tap one to open and start it!",
     "tutorialCoursePlanNoActivities": "Tap any activity in your plan to open and start it!",
     "tutorialAppTourOffer": "Great job finishing your first activity! Would you like me to show you around the app?",
     "tutorialAppTourAccept": "Give me a tour",

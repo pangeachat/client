@@ -69,7 +69,10 @@ extension LocalNotificationsExtension on MatrixState {
 
     if (kIsWeb) {
       // #Pangea
-      if (html.Notification.permission != 'granted') return;
+      if (!html.Notification.supported ||
+          html.Notification.permission != 'granted') {
+        return;
+      }
       // Pangea#
       final avatarUrl = event.senderFromMemoryOrFallback.avatarUrl;
       Uri? thumbnailUri;
@@ -193,14 +196,19 @@ extension LocalNotificationsExtension on MatrixState {
   // #Pangea
   Future<bool> get notificationsEnabled {
     return kIsWeb
-        ? Future.value(html.Notification.permission == 'granted')
+        ? Future.value(
+            html.Notification.supported &&
+                html.Notification.permission == 'granted',
+          )
         : Permission.notification.isGranted;
   }
 
   Future<void> requestNotificationPermission() async {
     try {
       if (kIsWeb) {
-        await html.Notification.requestPermission();
+        if (html.Notification.supported) {
+          await html.Notification.requestPermission();
+        }
       } else {
         final status = await Permission.notification.request();
         if (status.isGranted) {

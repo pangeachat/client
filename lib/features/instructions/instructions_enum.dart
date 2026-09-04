@@ -82,7 +82,6 @@ extension InstructionsEnumExtension on InstructionsEnum {
       case InstructionsEnum.appTourTutorial:
         ErrorHandler.logError(
           e: Exception("No title for this instruction"),
-          m: 'InstructionsEnumExtension.title',
           data: {'this': this},
         );
         debugger(when: kDebugMode);

@@ -17,6 +17,14 @@ The client holds no payment state. It reads entitlement status from the choreogr
 
 Which purchase surface the client renders — the plans, prices, discount field, and whether checkout is offered — is defined by the org doc's [Platform policy](../../../.github/.github/instructions/subscriptions.instructions.md). The client renders that design; it does not decide it.
 
+## Star background
+
+The subscription surfaces — the settings paywall, the selected-plan page, the discount-code page and the billing history — paint the star art full bleed behind their content.
+
+**The background is decorative, and only cards occlude it.** The content is not wrapped in a surface of its own, so the stars show through the gaps between and around the cards. Cards covering part of the art, the star with the two characters included, is expected; a slab down the middle of the page that blanks it out is the bug (#8751).
+
+The other half of that rule is that no text sits directly on the image. Anything the wrapper used to supply a background for carries its own: the framed cards already did, and everything else — status and trial lines, the "Select Your Plan" heading, error messages, the store notices, the discount-code field — is wrapped in [`SubscriptionCard`](../../lib/features/subscription/widgets/subscription_card.dart) or fills its own container. New content on these surfaces needs a background before it needs anything else.
+
 ## Purchase flow
 
 Selecting a plan requests a checkout URL from the choreographer and opens it in the system browser ([`PaymentPageMixin`](../../lib/routes/settings/settings_subscription/payment_page_mixin.dart)). A `beganPayment` flag survives the round-trip, so returning to the app is recognized as a completed purchase and the entitlement refresh runs. The discount-code field validates the code server-side before checkout, so an error surfaces in the app and the code reaches Stripe pre-applied; the field appears only where the paywall may appear.

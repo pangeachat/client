@@ -5,6 +5,8 @@ import 'package:flutter/services.dart';
 
 import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_step_views/onboarding_forward_button.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_step_views/onboarding_step_body.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/course_code_onboarding_step.dart';
 
 class CourseCodeStepView extends StatefulWidget {
@@ -73,27 +75,31 @@ class CourseCodeStepViewState extends State<CourseCodeStepView> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final title = widget.error != null
+        ? L10n.of(context).courseCodeStepErrorMessage
+        : L10n.of(context).courseCodeStepTitle;
     return Column(
       spacing: 32.0,
       children: [
         Expanded(
           child: Center(
-            child: SingleChildScrollView(
+            child: OnboardingStepBody(
+              label: title,
+              scrollable: true,
               child: Column(
                 spacing: 12.0,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  BotFace(
-                    expression: BotExpression.idle,
-                    useRive: true,
-                    width: 140.0,
+                  ExcludeSemantics(
+                    child: BotFace(
+                      expression: BotExpression.idle,
+                      useRive: true,
+                      width: 140.0,
+                    ),
                   ),
-                  Semantics(
-                    container: true,
+                  ExcludeSemantics(
                     child: Text(
-                      widget.error != null
-                          ? L10n.of(context).courseCodeStepErrorMessage
-                          : L10n.of(context).courseCodeStepTitle,
+                      title,
                       style: theme.textTheme.titleMedium?.copyWith(
                         fontWeight: FontWeight.bold,
                         color: widget.error != null
@@ -191,34 +197,12 @@ class CourseCodeStepViewState extends State<CourseCodeStepView> {
                     child: Text(L10n.of(context).courseCodeStepSkip),
                   ),
                 ),
-                ElevatedButton(
+                OnboardingForwardButton(
                   onPressed: _step.enableGoForward ? widget.forward : null,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: theme.colorScheme.primaryContainer,
-                    foregroundColor: theme.colorScheme.onPrimaryContainer,
-                    minimumSize: const Size.fromHeight(48),
-                  ),
-                  child: SizedBox(
-                    height: 24,
-                    child: Center(
-                      child: AnimatedSwitcher(
-                        duration: const Duration(milliseconds: 200),
-                        child: widget.loading
-                            ? SizedBox(
-                                key: const ValueKey('loading'),
-                                width: double.infinity,
-                                child: const LinearProgressIndicator(),
-                              )
-                            : Text(
-                                widget.hasNextStep
-                                    ? _step.nextStepText(L10n.of(context))
-                                    : _step.lastStepText(L10n.of(context)),
-                                key: const ValueKey('text'),
-                                textAlign: TextAlign.center,
-                              ),
-                      ),
-                    ),
-                  ),
+                  loading: widget.loading,
+                  label: widget.hasNextStep
+                      ? _step.nextStepText(L10n.of(context))
+                      : _step.lastStepText(L10n.of(context)),
                 ),
               ],
             );

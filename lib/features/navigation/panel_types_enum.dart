@@ -126,6 +126,12 @@ enum PanelTypesEnum {
 
   bool get defaultCavityToPeek => {PanelTypesEnum.course}.contains(this);
 
+  // The add-course subpages (start my own / browse public / enter a code,
+  // including the course preview they push) open at FULL height: they show
+  // list/form content unrelated to the map behind them, so a half-open sheet
+  // only de-emphasizes what the learner navigated here for (#8659).
+  bool get defaultCavityToFull => {PanelTypesEnum.addcoursepage}.contains(this);
+
   // Which rail item's OWN surface the cavity hosts, for the widget's
   // tap-the-active-item toggle. A course sheet / activity plan is neither
   // rail section's surface — the Courses tap must then navigate to the hub
@@ -170,6 +176,51 @@ enum PanelTypesEnum {
     PanelTypesEnum.archive => ArchivePanelDef(),
     PanelTypesEnum.archivedroom => ArchivedRoomPanelDef(),
   };
+
+  /// The panel's user-facing name — what its semantic group announces as
+  /// (#8729, every workspace panel is one named group). Beside
+  /// [closeButtonLabel] so the group name and its "Close X" cannot drift
+  /// apart.
+  String displayName(L10n l10n) {
+    switch (this) {
+      case PanelTypesEnum.chats:
+        return l10n.chats;
+      case PanelTypesEnum.newprivatechat:
+        // Matches the panel's visible header title.
+        return l10n.newDirectMessage;
+      case PanelTypesEnum.archive:
+        return l10n.archive;
+      case PanelTypesEnum.archivedroom:
+        return l10n.archivedChat;
+      case PanelTypesEnum.room:
+        return l10n.chat;
+      case PanelTypesEnum.session:
+      case PanelTypesEnum.review:
+        return l10n.activityReview;
+      case PanelTypesEnum.activity:
+        return l10n.activityPanel;
+      case PanelTypesEnum.course:
+        return l10n.course;
+      case PanelTypesEnum.coursepage:
+        return l10n.coursePage;
+      case PanelTypesEnum.addcourse:
+        // The hub's visible header title is "Courses", not "Add a course".
+        return l10n.courses;
+      case PanelTypesEnum.addcoursepage:
+        return l10n.addCourse;
+      case PanelTypesEnum.settings:
+      case PanelTypesEnum.settingspage:
+        return l10n.settings;
+      case PanelTypesEnum.analytics:
+        return l10n.stats;
+      case PanelTypesEnum.vocab:
+        return l10n.vocab;
+      case PanelTypesEnum.grammar:
+        return l10n.grammar;
+      case PanelTypesEnum.practice:
+        return l10n.practice;
+    }
+  }
 
   String closeButtonLabel(L10n l10n, {String? named}) {
     if (named != null && named.isNotEmpty) return l10n.closeNamed(named);

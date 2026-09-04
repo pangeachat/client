@@ -1,0 +1,10 @@
+{
+  "name": "pangea-call-e2e",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Call end-to-end harness: two real browsers and, optionally, a real phone.",
+  "type": "commonjs",
+  "dependencies": {
+    "puppeteer-core": "^25.8.0"
+  }
+}

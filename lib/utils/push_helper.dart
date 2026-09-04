@@ -17,6 +17,8 @@ import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/routes/chat/calls/call_notification.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/utils/client_download_content_extension.dart';
 import 'package:fluffychat/utils/client_manager.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
@@ -211,8 +213,17 @@ Future<void> _tryPushHelper(
     event: event,
     client: client,
   );
+  // A ring reaching a closed app is the one push a learner must be able to act
+  // on immediately, and the SDK has no words for a call event -- left to it,
+  // the notification that rings reads "sent a org.matrix.msc4075.rtc.notification
+  // event".
+  final isRing = event.type == PangeaEventTypes.callNotification;
   final body = hasKnocked
       ? l10n.knockAccepted
+      : isRing
+      ? (IncomingCallNotification.videoFromContent(event.content)
+            ? l10n.callIncomingVideo
+            : l10n.callIncomingVoice)
       : event.type == EventTypes.Encrypted
       ? l10n.newMessageInPangeaChat
       : await event.calcLocalizedBody(

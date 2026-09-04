@@ -116,9 +116,9 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
     if (result.isValue) {
       _activityState.value = AsyncState.loaded(result.result!);
     } else {
-      _activityState.value = AsyncState.error(
-        "Error fetching activity: ${result.asError}",
-      );
+      // The raw error, not a description of it: the error card keys its copy
+      // on the failure (a 429 shows "wait a moment and try again") (#8705).
+      _activityState.value = AsyncState.error(result.asError!.error);
     }
   }
 
@@ -164,8 +164,9 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
           children: [
             switch (state) {
               AsyncLoading() => const ContentLoadingIndicator(height: 40),
-              AsyncError() => CardErrorWidget(
+              AsyncError(error: final error) => CardErrorWidget(
                 L10n.of(context).errorFetchingExercise,
+                cause: error,
               ),
               AsyncLoaded() => switch (state.value) {
                 MultipleChoicePracticeExerciseModel() =>

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:fluffychat/features/user/public_profile_model.dart';
 import 'package:fluffychat/features/user/user_controller.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
@@ -53,6 +54,18 @@ class _FakeUserController implements UserController {
   /// null would throw `Null is not a subtype of bool`.
   @override
   bool isToolEnabled(ToolSetting setting) => false;
+
+  /// No profile, delivered as a real future — `LevelDisplayName._fetchProfile`
+  /// awaits this in initState, where the `noSuchMethod` null would throw
+  /// `Null is not a subtype of Future<PublicProfileModel?>`.
+  @override
+  Future<PublicProfileModel?> getPublicProfile(String userId) async => null;
+
+  /// Languages unset — the fresh-profile default. The chat-list preview reads
+  /// this (`_LastEventPreview._showPangeaContent`), where the [noSuchMethod]
+  /// null would throw `Null is not a subtype of bool`.
+  @override
+  bool get languagesSet => false;
 
   @override
   dynamic noSuchMethod(Invocation invocation) => null;

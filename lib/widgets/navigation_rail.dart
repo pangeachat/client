@@ -5,6 +5,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
+import 'package:fluffychat/features/course_plans/map_border.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
@@ -21,6 +22,7 @@ import 'package:fluffychat/routes/world/workspace_dock.dart';
 import 'package:fluffychat/utils/chat_list_handle_space_tap.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
+import 'package:fluffychat/widgets/layouts/workspace_shell.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/navi_rail_item.dart';
 
@@ -73,6 +75,10 @@ class SpacesNavigationRail extends StatelessWidget {
         child: Semantics(
           label: L10n.of(context).navOptionsLabel,
           container: true,
+          // Browse-order key on the labeled container itself (#8755) — a
+          // shell-level wrapper annotation formed an extra unlabeled node
+          // that VoiceOver reordered by its own heuristics.
+          sortKey: BrowseOrder.rail,
           child: FocusTraversalGroup(
             policy: OrderedTraversalPolicy(),
             child: StreamBuilder(
@@ -312,6 +318,12 @@ class _SpaceItem extends StatelessWidget {
         isSelected: selected,
         backgroundColor: Colors.transparent,
         borderRadius: BorderRadius.circular(0),
+        // The avatar is an opaque banner, so InkWell's behind-the-child focus
+        // highlight is imperceptible on it — wear the explicit gold ring
+        // instead, traced along the avatar's own MapClipper silhouette (a
+        // circle floats over the notched banner and reads as stray arcs)
+        // (#8724). The transparent section glyphs above keep the ink tint.
+        focusRingShape: const MapBorder(),
         onTap: () => _onTapSpace(context),
         icon: CourseAvatar(
           avatar: space.avatar,

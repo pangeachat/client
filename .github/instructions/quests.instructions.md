@@ -1,5 +1,5 @@
 ---
-applyTo: "lib/features/quests/**,lib/features/course_plans/**"
+applyTo: "lib/features/quests/**,lib/features/course_plans/**,lib/routes/courses/course_objectives/**"
 description: "Client-side next-Mission resolver — the one shared answer to 'which Mission should this learner work on next, per quest?', its inputs (joined-course Mission sequences + per-Mission star rollup), and the ranking surfaces that read it."
 ---
 
@@ -16,7 +16,7 @@ Nothing is locked, so the question is not "is this allowed?" but "where should t
 
 From those, the resolver finds each quest's **anchor (next) Mission**: the **first Mission in quest order whose star total is below the satisfaction threshold**; once every Mission is satisfied, the anchor falls back to the **lowest-star Mission**, so a completed quest keeps pointing at the learner's weakest area instead of going silent. When several quests are in scope it yields, **per quest**, an anchor and that quest's own per-Mission star totals; consumers preference still-unsatisfied Missions and **accumulate** across quests (so an activity advancing several quests' unfinished Missions ranks higher) — the resolver just supplies the anchors and totals, the weighting lives in the consumer (see the [world map](world-map.instructions.md) Priority matrix).
 
-**Star totals are per course, never blended across them** ([client#7771](https://github.com/pangeachat/client/issues/7771)). Missions are a shared catalog reused across quests, so two joined courses routinely carry the same Mission with *different* activities. A star total only means something against the activity set it was summed over: rolling several courses together would clamp one course's effective threshold against another course's content and credit its stars, and would silently undo that course's activity pins. Accumulation across quests is the *consumer's* job (the map's band), not a property of the totals. Where two courses genuinely list the **same** activity, each counts it once on its own — that needs no merging, since both outlines carry it.
+**Progression star totals are per course, never blended across them** ([client#7771](https://github.com/pangeachat/client/issues/7771)) — the separate per-person total on a participant card is a different quantity, not an exception to this (below). Missions are a shared catalog reused across quests, so two joined courses routinely carry the same Mission with *different* activities. A star total only means something against the activity set it was summed over: rolling several courses together would clamp one course's effective threshold against another course's content and credit its stars, and would silently undo that course's activity pins. Accumulation across quests is the *consumer's* job (the map's band), not a property of the totals. Where two courses genuinely list the **same** activity, each counts it once on its own — that needs no merging, since both outlines carry it.
 
 **Fail soft.** A surface that asks before the resolver is built simply has no anchor yet and ranks on plain relevance — a cold open (e.g. an activity link opened without visiting the map first) is never blocked, because nothing is ever blocked. The resolver only sharpens ordering; its absence degrades to neutral ranking, not to a wall.
 
@@ -26,6 +26,7 @@ Every surface that preferences by progression reads the *same* shared resolver, 
 
 - the [world map](world-map.instructions.md) — the Priority matrix raises activities carrying the anchor Mission to the top of the relevance band, decaying for Missions further along; per-activity star progress renders as a fill (see its pin-display section);
 - the **activity start page** — opens directly into play for every activity (nothing is gated), showing star progress and, where relevant, that this is a next-Mission activity;
+- the **course page's Activities row** — the same Priority matrix, scored over the course's own activities (below);
 - the **course panel's star display** (below);
 - the course/quest list and the powerups cluster, as they are built for v3.
 
@@ -41,6 +42,31 @@ Every displayed threshold is the **effective threshold**: the configured stars-t
 - **Per quest (the panel header)**: a total star count summing each Mission's stars **capped at its effective threshold** — one over-practiced Mission can't inflate quest progress — over a bar that fills toward the sum of the quest's effective thresholds. The clamp is what keeps this denominator honest: it can never exceed the stars the course's activities actually offer.
 
 A course **preview** (not joined) shows no star display — there is no learner progress to show. This builds toward the world_v2 tabbed course card (Figma "Everything outside of Chat"); until that card ships, the display lives on the existing course objectives panel.
+
+## Two star quantities, and how a reader tells them apart
+
+Stars are displayed in two different senses, and both appear on the course page.
+
+- **Course progress** — the panel displays above: how far this learner is through *this course*, capped per Mission, scoped to the course's own activities. It answers "how much of this course is done".
+- **A member's star total** — on the participant cards in the course page's Participants section: how many stars that person has banked in the course's language across everything they have played, uncapped and not course-scoped. It answers "how much has this person done". It is read from their public profile, since a viewer cannot see the session rooms another member earned stars in ([profile.instructions.md](profile.instructions.md)); the course page is where classmates become visible to each other, which is why it is shown there.
+
+The participant card is roughly one avatar wide and has no room for a label, so the two are distinguished by **form**: course progress always displays as a fraction over a bar, a member's total always as a bare count with no denominator. The full sense — how many stars, in which language — is carried in the card's accessible name and its hover tooltip, which cost no space. A denominator added to the participant card would collapse the distinction and should not be — that is the confusion this rule exists to prevent.
+
+The participant card shows the member's total for **the course's language** beside their level, which is already a per-language number, so both values on the card share one scope.
+
+## The Activities row on the course page
+
+The course page opens on a shortlist: one row of activity cards headed **Activities**, answering "what should I do in this course right now?" ([client#8741](https://github.com/pangeachat/client/issues/8741)). It names no Mission. The header names the section, not the shortlist — that a ranked row is a suggestion is what a ranked row already means, so "Suggested" only added a word ([client#8744](https://github.com/pangeachat/client/issues/8744)). The Mission-by-Mission plan — every Mission with its can-do statement, star count and activities — sits one tap away behind the section header's "See all", and is where a learner reads the course's shape.
+
+The row is ranked by the **same [Priority matrix](world-map.instructions.md#priority-matrix) the world map ranks pins by**, scored over the course's own activities: an open session a coursemate can be joined in leads, a recruiting ping raises one further, then whatever the course's next Mission points at, and a finished activity sinks without disappearing. One shared score means the course page and the map cannot drift apart as its weights are tuned.
+
+Three things differ from the map, each following from where the row sits:
+
+- **A session the learner already holds a role in is filtered out of the row.** The row suggests what to start next; a session already under way is resumed from the course's Chats section.
+- **The relevance band is this course's own**, never the map's cross-quest sum — a course surface reads only its own course's progress (the per-course scoping rule above).
+- **The map's first-map penalty, its dismissal penalty and its recency term do not apply.** A course's activities were hand-picked by its author, so a 3+ role one is part of the syllabus rather than a newcomer's dead end; there is no large card here to dismiss; and the row has no per-session start time to decay, so a learner reading the page does not watch it reorder itself.
+
+The row holds the top five and scrolls. Equal scores break on a stable key, so a rebuild never reshuffles it under a reader. It renders nothing at all only when every activity in the plan is a session the learner is already in.
 
 ## Activity cards on the course plan panel
 

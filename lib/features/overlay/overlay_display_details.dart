@@ -13,6 +13,7 @@ sealed class OverlayDisplayDetails {
   final bool backDropToDismiss;
   final bool closePrevOverlay;
   final bool ignorePointer;
+  final bool blockSemantics;
 
   /// Makes the overlay's own content opaque to hit testing — both Flutter's
   /// hit test and, on web, the semantics DOM — so taps that land on it never
@@ -35,6 +36,7 @@ sealed class OverlayDisplayDetails {
     this.backDropToDismiss = true,
     this.closePrevOverlay = true,
     this.ignorePointer = false,
+    this.blockSemantics = false,
     this.blockPointerThrough = false,
     this.canPop = true,
     this.onDismiss,
@@ -64,6 +66,7 @@ class TransformOverlayDisplayDetails extends OverlayDisplayDetails {
     super.backDropToDismiss = true,
     super.closePrevOverlay = true,
     super.ignorePointer = false,
+    super.blockSemantics = false,
     super.blockPointerThrough = false,
     super.canPop = true,
     super.onDismiss,
@@ -105,6 +108,7 @@ class CenteredOverlayDisplayDetails extends OverlayDisplayDetails {
     super.backDropToDismiss = true,
     super.closePrevOverlay = true,
     super.ignorePointer = false,
+    super.blockSemantics = false,
     super.blockPointerThrough = false,
     super.canPop = true,
     super.onDismiss,

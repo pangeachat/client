@@ -30,6 +30,9 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 /// each course-panel open — and each repeat carries no new signal (#8083).
 /// Keyed per course ROOM, not per quest: two rooms of one quest can fail
 /// independently; [questId] keeps orphaned-quest reports diagnosable.
+/// [MissingQuestException] is not reported here at all — the repo owns that
+/// report at the fetch (see the skip below), so this reporter covers the
+/// failures that are NOT a confirmed 404.
 ///
 /// Returns whether this call actually reported (false when the key is already
 /// spent) — the seam the budget test asserts on. Passed straight into the
@@ -49,11 +52,18 @@ Future<bool> reportCourseOutlineFailure(
   StackTrace stack,
 ) {
   if (error is RateLimitedException) return Future.value(false);
+  // A missing quest is reported by the repo itself — once per quest id per
+  // session at the actual fetch (`quest-plan-404:<id>`), with real fetches
+  // capped by the persisted removed verdict (QuestRepo.removedQuests). It is
+  // the same already-reported rule as RateLimitedException above: reporting it
+  // again here, per course room per session, was the residual CLIENT-EFH /
+  // CLIENT-CY3 volume — every new session's first rebuild re-reported every
+  // dead quest (#8691).
+  if (error is MissingQuestException) return Future.value(false);
   return ErrorHandler.logErrorOnce(
     key: 'course-outline-resolve:$roomId',
     e: error,
     s: stack,
-    m: 'course outline failed to resolve',
     data: {'courseRoomId': roomId, 'questId': questId},
     level: courseOutlineErrorLevel(error),
   );

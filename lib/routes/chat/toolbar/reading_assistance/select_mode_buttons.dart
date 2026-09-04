@@ -583,7 +583,6 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
       ErrorHandler.logError(
         e: e,
         s: s,
-        m: 'something wrong playing message audio',
         data: {'event': messageEvent.event.toJson()},
       );
     }

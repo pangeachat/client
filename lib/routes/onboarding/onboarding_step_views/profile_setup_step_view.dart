@@ -12,6 +12,8 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/preset_avatar_picker.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_state_controller.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_step_views/onboarding_forward_button.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_step_views/onboarding_step_body.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/profile_setup_onboarding_step.dart';
 import 'package:fluffychat/utils/file_selector.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -139,153 +141,126 @@ class ProfileSetupStepViewState extends State<ProfileSetupStepView> {
       children: [
         Expanded(
           child: Center(
-            child: Semantics(
+            child: OnboardingStepBody(
               label: L10n.of(context).profile,
-              container: true,
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Semantics(
-                      label: L10n.of(context).changeYourAvatar,
-                      container: true,
-                      child: ValueListenableBuilder(
-                        valueListenable: _avatarNotifier,
-                        builder: (context, _, _) {
-                          final avatarInfo = _step.state.avatarInfo;
-                          final avatarBytes = avatarInfo?.avatarBytes;
-                          final avatarUrl = avatarInfo?.avatarUrl;
+              scrollable: true,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Semantics(
+                    label: L10n.of(context).changeYourAvatar,
+                    container: true,
+                    child: ValueListenableBuilder(
+                      valueListenable: _avatarNotifier,
+                      builder: (context, _, _) {
+                        final avatarInfo = _step.state.avatarInfo;
+                        final avatarBytes = avatarInfo?.avatarBytes;
+                        final avatarUrl = avatarInfo?.avatarUrl;
 
-                          return Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              SizedBox(
-                                height: 110.0,
-                                width: 110.0,
-                                child: Stack(
-                                  alignment: Alignment.center,
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(
-                                        100.0,
-                                      ),
-                                      child: ExcludeSemantics(
-                                        child: Container(
-                                          width: 100.0,
-                                          height: 100.0,
-                                          decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(
-                                              100.0,
-                                            ),
-                                            color: theme.disabledColor,
+                        return Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            SizedBox(
+                              height: 110.0,
+                              width: 110.0,
+                              child: Stack(
+                                alignment: Alignment.center,
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(100.0),
+                                    child: ExcludeSemantics(
+                                      child: Container(
+                                        width: 100.0,
+                                        height: 100.0,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(
+                                            100.0,
                                           ),
-                                          child: avatarUrl != null
-                                              ? ImageByUrl(
-                                                  width: 100.0,
-                                                  imageUrl: avatarUrl,
-                                                )
-                                              : avatarBytes != null
-                                              ? Image.memory(
-                                                  avatarBytes,
-                                                  fit: BoxFit.cover,
-                                                  semanticLabel: L10n.of(
-                                                    context,
-                                                  ).avatarPreview,
-                                                )
-                                              : SizedBox(),
+                                          color: theme.disabledColor,
                                         ),
+                                        child: avatarUrl != null
+                                            ? ImageByUrl(
+                                                width: 100.0,
+                                                imageUrl: avatarUrl,
+                                              )
+                                            : avatarBytes != null
+                                            ? Image.memory(
+                                                avatarBytes,
+                                                fit: BoxFit.cover,
+                                                semanticLabel: L10n.of(
+                                                  context,
+                                                ).avatarPreview,
+                                              )
+                                            : SizedBox(),
                                       ),
                                     ),
-                                    Positioned(
-                                      right: 0,
-                                      bottom: 0,
-                                      child: Semantics(
-                                        label: L10n.of(
+                                  ),
+                                  Positioned(
+                                    right: 0,
+                                    bottom: 0,
+                                    child: Semantics(
+                                      label: L10n.of(
+                                        context,
+                                      ).selectImageFromDevice,
+                                      container: true,
+                                      child: IconButton.filled(
+                                        tooltip: L10n.of(
                                           context,
-                                        ).selectImageFromDevice,
-                                        container: true,
-                                        child: IconButton.filled(
-                                          tooltip: L10n.of(
-                                            context,
-                                          ).changeYourAvatar,
-                                          icon: Icon(
-                                            Icons.file_upload_outlined,
-                                          ),
-                                          onPressed: _uploadAvatarImage,
-                                          style: IconButton.styleFrom(
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(12.0),
+                                        ).changeYourAvatar,
+                                        icon: Icon(Icons.file_upload_outlined),
+                                        onPressed: _uploadAvatarImage,
+                                        style: IconButton.styleFrom(
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(
+                                              12.0,
                                             ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
-                              SizedBox(height: 20.0),
-                              PresetAvatarRow(onSelected: _setAvatarUrl),
-                            ],
-                          );
-                        },
+                            ),
+                            SizedBox(height: 20.0),
+                            PresetAvatarRow(onSelected: _setAvatarUrl),
+                          ],
+                        );
+                      },
+                    ),
+                  ),
+                  SizedBox(height: 12.0),
+                  ExcludeSemantics(
+                    child: Text(
+                      L10n.of(context).displayName,
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 12.0),
-                    ExcludeSemantics(
-                      child: Text(
-                        L10n.of(context).displayName,
-                        style: theme.textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
+                  ),
+                  SizedBox(height: 8.0),
+                  Semantics(
+                    label: L10n.of(context).displayName,
+                    container: true,
+                    child: ValueListenableBuilder(
+                      valueListenable: _displayNameController,
+                      builder: (context, text, _) => TextField(
+                        controller: _displayNameController,
+                        maxLength: 50,
                       ),
                     ),
-                    SizedBox(height: 8.0),
-                    Semantics(
-                      label: L10n.of(context).displayName,
-                      container: true,
-                      child: ValueListenableBuilder(
-                        valueListenable: _displayNameController,
-                        builder: (context, text, _) => TextField(
-                          controller: _displayNameController,
-                          maxLength: 50,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),
         ),
-        ElevatedButton(
+        OnboardingForwardButton(
           onPressed: _step.enableGoForward ? widget.forward : null,
-          style: ElevatedButton.styleFrom(
-            backgroundColor: theme.colorScheme.primaryContainer,
-            foregroundColor: theme.colorScheme.onPrimaryContainer,
-            minimumSize: const Size.fromHeight(48),
-          ),
-          child: SizedBox(
-            height: 24,
-            child: Center(
-              child: AnimatedSwitcher(
-                duration: const Duration(milliseconds: 200),
-                child: widget.loading
-                    ? SizedBox(
-                        key: const ValueKey('loading'),
-                        width: double.infinity,
-                        child: const LinearProgressIndicator(),
-                      )
-                    : Text(
-                        widget.hasNextStep
-                            ? _step.nextStepText(L10n.of(context))
-                            : _step.lastStepText(L10n.of(context)),
-                        key: const ValueKey('text'),
-                        textAlign: TextAlign.center,
-                      ),
-              ),
-            ),
-          ),
+          loading: widget.loading,
+          label: widget.hasNextStep
+              ? _step.nextStepText(L10n.of(context))
+              : _step.lastStepText(L10n.of(context)),
         ),
       ],
     );

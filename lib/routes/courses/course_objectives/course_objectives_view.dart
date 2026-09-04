@@ -24,13 +24,16 @@ import 'package:fluffychat/features/tutorials/tutorial_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_overlay_controller.dart';
 import 'package:fluffychat/features/tutorials/tutorial_sequences.dart';
 import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
+import 'package:fluffychat/features/tutorials/tutorial_target.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart';
+import 'package:fluffychat/routes/courses/course_objectives/activity_carousel.dart';
 import 'package:fluffychat/routes/courses/course_objectives/objective_section.dart';
+import 'package:fluffychat/routes/courses/course_objectives/suggested_activities.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_room_extension.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
@@ -65,13 +68,14 @@ class CourseObjectivesList extends StatefulWidget {
   /// `Expanded`).
   final bool shrinkWrap;
 
-  /// Render only the "Up next" Mission — the shared resolver's anchor (first
-  /// Mission in the outline until resolution lands). The course page's
-  /// Course-plan section highlight; the full list is its "See all" subpage.
-  final bool upNextOnly;
+  /// Render the course page's Activities row instead of the plan:
+  /// one Mission-less carousel of the plan's activities ranked by the world
+  /// map's Priority matrix (#8741). The full, Mission-by-Mission plan is its
+  /// "See all" subpage. See quests.instructions.md.
+  final bool suggestedOnly;
 
   /// Mission headers collapse/expand their carousels (the full course plan
-  /// subpage, #8357). Off in previews and the Up-next highlight.
+  /// subpage, #8357). Off in previews and the Activities row.
   final bool collapsibleMissions;
 
   final QuestObjectivesLoader objectivesProvider;
@@ -82,7 +86,7 @@ class CourseObjectivesList extends StatefulWidget {
     this.questId,
     this.hasCompletedActivity,
     this.shrinkWrap = false,
-    this.upNextOnly = false,
+    this.suggestedOnly = false,
     this.collapsibleMissions = false,
     super.key,
   });
@@ -179,12 +183,12 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
 
   /// Whether THIS list instance is the one that runs the course tutorial.
   ///
-  /// The card's Up-next highlight and its pushed full-plan subpage can both be
-  /// mounted, and both have an anchor Mission — so exactly one is allowed to
-  /// claim the carousel target and drive the sequence. The highlight wins: it is
-  /// what a learner sees when they open the course. A preview of an unjoined
-  /// plan teaches nothing and is excluded by having no room.
-  bool get _hostsTutorial => widget.upNextOnly && widget.room != null;
+  /// The course page's Activities row and its pushed full-plan subpage can both
+  /// be mounted — so exactly one is allowed to claim the carousel target and
+  /// drive the sequence. The Activities row wins: it is what a learner sees when
+  /// they open the course. A preview of an unjoined plan teaches nothing and is
+  /// excluded by having no room.
+  bool get _hostsTutorial => widget.suggestedOnly && widget.room != null;
 
   void _registerTutorialLaunchers() {
     if (!_hostsTutorial) return;
@@ -194,8 +198,8 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   }
 
   /// Re-asked on every rebuild source rather than checked once: the quest
-  /// outline, the anchor Mission, and the profile all land asynchronously, and a
-  /// single early check would simply find nothing and give up.
+  /// outline, the ranked shortlist, and the profile all land asynchronously, and
+  /// a single early check would simply find nothing and give up.
   void _maybeStartOrientation() {
     if (!_hostsTutorial) return;
     if (_orientationCheckScheduled) return;
@@ -224,7 +228,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
 
     // Before resuming, not after: a resume onto a surface that isn't there
     // relaunches a step that immediately dismisses itself again.
-    if (_upNextCarouselRect == null) return;
+    if (_activitiesRowRect == null) return;
 
     if (_tutorials.hasActiveSequence) {
       _tutorials.resumeIfStranded();
@@ -234,10 +238,10 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
     _tutorials.requestSequence(TutorialSequences.courseOrientationSequence);
   }
 
-  /// The "Up next" Mission's activity carousel, if it is currently on screen.
-  Rect? get _upNextCarouselRect {
+  /// The Activities row's carousel, if it is currently on screen.
+  Rect? get _activitiesRowRect {
     final box = MatrixState.pAnyState.getRenderBox(
-      TutorialTargetIds.courseUpNextActivities,
+      TutorialTargetIds.courseActivities,
     );
     if (box == null) return null;
     return box.localToGlobal(Offset.zero) & box.size;
@@ -280,14 +284,14 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
           TutorialStepData(
             // The carousel, resolved live so it tracks the plan scrolling.
             spotlightRects: () {
-              final rect = _upNextCarouselRect;
+              final rect = _activitiesRowRect;
               return rect == null ? const [] : [rect];
             },
             canShowNextStep: () => true,
             // A non-empty arg switches to the copy for "we could not point at
-            // your current Mission's activities".
+            // the Activities row".
             tooltipArgs: () =>
-                _upNextCarouselRect == null ? const ['empty'] : const [],
+                _activitiesRowRect == null ? const ['empty'] : const [],
             // Armed: the learner opens an activity themselves, however they
             // reach it.
             arming: TutorialStepArming(
@@ -466,6 +470,49 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
         : (state: null, openSessions: 0, participants: const [], openSlots: 0);
   }
 
+  /// The [PinSignals] the Priority matrix scores this activity on, built from
+  /// the same live state the cards render. `recency` stays 0: open sessions
+  /// reach this surface through the discovery cache, which carries no
+  /// per-session start time. See [rankSuggestedActivities].
+  PinSignals _signalsFor(String activityId) => PinSignals(
+    state: _liveStateFor(activityId).state ?? ActivityPinState.available,
+    completionFraction: (widget.hasCompletedActivity?.call(activityId) ?? false)
+        ? 1.0
+        : 0.0,
+    pinged: activityId == _pingedActivityId,
+  );
+
+  int _userStarsByActivity(String activityId) =>
+      widget.room?.client.userStarsByActivity[activityId] ?? 0;
+
+  void _openActivity(QuestActivity ref) {
+    final room = widget.room;
+    if (room == null) {
+      // Token-native open; the course context (if any) is kept, so the plan
+      // closes back to it. See routing.instructions.md.
+      context.go(
+        WorkspaceNav.openActivity(
+          GoRouterState.of(context).uri,
+          ref.activityId,
+        ),
+      );
+      return;
+    }
+    // Immersive in-course open: the token producer drops the `left=course`
+    // card (and any right panel) and keeps the `?m=course:` scope, so the plan
+    // takes the card's slot and backs out to it. A video hero autostarts
+    // (muted).
+    context.go(
+      WorkspaceNav.openCourseActivity(
+        room.id,
+        ref.activityId,
+        autoplay:
+            ref.plan.heroBlock?.isVideo == true ||
+            ref.plan.heroBlock?.isYoutube == true,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     // Re-asked from build, which is the ONLY hook that always runs when the
@@ -479,7 +526,9 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
     _maybeStartOrientation();
 
     return Semantics(
-      label: L10n.of(context).coursePlan,
+      label: widget.suggestedOnly
+          ? L10n.of(context).activities
+          : L10n.of(context).coursePlan,
       container: true,
       child: ValueListenableBuilder(
         valueListenable: widget.objectivesProvider.questLoader,
@@ -496,13 +545,9 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
             case AsyncLoaded():
               // Per-Mission stars still show once the shared rollup resolves; a
               // preview has no learner progress. (The overall quest-star bar
-              // lives in the course page's Course-plan section.)
-              final allGroups =
-                  widget.objectivesProvider.filteredObjectiveGroups;
+              // rides above this list on the course page.)
+              final groups = widget.objectivesProvider.filteredObjectiveGroups;
               final anchorId = widget.objectivesProvider.anchorMissionId;
-              final groups = widget.upNextOnly
-                  ? [?widget.objectivesProvider.upNextGroup]
-                  : allGroups;
               if (groups.isEmpty) {
                 return _QuestLoadErrorView(
                   MissingQuestException(),
@@ -513,6 +558,40 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
               return ValueListenableBuilder(
                 valueListenable: widget.objectivesProvider.progression,
                 builder: (context, progression, _) {
+                  if (widget.suggestedOnly) {
+                    // The course page's ranked shortlist: no Mission header,
+                    // ordered by the same Priority matrix the map ranks pins
+                    // by, with sessions the learner already holds a role in
+                    // dropped (#8741). Empty only when every activity in the
+                    // plan is one of those — nothing left to suggest.
+                    final suggested = rankSuggestedActivities(
+                      groups: groups,
+                      missionGradient:
+                          widget.objectivesProvider.missionGradient,
+                      signalsFor: _signalsFor,
+                    );
+                    if (suggested.isEmpty) return const SizedBox.shrink();
+                    // The course tutorial's "pick an activity" step lights
+                    // this row. Only the course page's row hosts the tutorial,
+                    // so only it claims the target id ([_hostsTutorial]).
+                    return TutorialTarget(
+                      targetId: _hostsTutorial
+                          ? TutorialTargetIds.courseActivities
+                          : null,
+                      child: ActivityCarousel(
+                        activities: [
+                          for (final suggestion in suggested)
+                            suggestion.activity,
+                        ],
+                        onTap: _openActivity,
+                        userStarsByActivity: _userStarsByActivity,
+                        hasCompletedActivity: widget.hasCompletedActivity,
+                        liveStateByActivity: _liveStateFor,
+                        availableParticipants: _availableParticipants,
+                        pingedActivityId: _pingedActivityId,
+                      ),
+                    );
+                  }
                   // Scoped to THIS course: the shared resolution spans every
                   // joined course, and Missions are reused across quests (#7771).
                   final hasProgress =
@@ -554,12 +633,6 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                             : null,
                         collapsible: widget.collapsibleMissions,
                         isUpNext: group.objective.id == anchorId,
-                        // Only the course card's Up-next highlight drives the
-                        // course tutorial, so only it claims the target id.
-                        tutorialTargetId:
-                            _hostsTutorial && group.objective.id == anchorId
-                            ? TutorialTargetIds.courseUpNextActivities
-                            : null,
                         group: group,
                         hasCompletedActivity: widget.hasCompletedActivity,
                         progress: hasProgress
@@ -567,39 +640,8 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                                 group.objective.id,
                               )
                             : null,
-                        onTap: (ref) {
-                          final room = widget.room;
-                          if (room == null) {
-                            // Token-native open; the course context (if any) is kept,
-                            // so the plan closes back to it. See routing.instructions.md.
-                            context.go(
-                              WorkspaceNav.openActivity(
-                                GoRouterState.of(context).uri,
-                                ref.activityId,
-                              ),
-                            );
-                            return;
-                          }
-                          // Immersive in-course open: the token producer drops the
-                          // `left=course` card (and any right panel) and keeps the
-                          // `?m=course:` scope, so the plan takes the card's slot and
-                          // backs out to it. A video hero autostarts (muted).
-                          context.go(
-                            WorkspaceNav.openCourseActivity(
-                              room.id,
-                              ref.activityId,
-                              autoplay:
-                                  ref.plan.heroBlock?.isVideo == true ||
-                                  ref.plan.heroBlock?.isYoutube == true,
-                            ),
-                          );
-                        },
-                        userStarsByActivity: (activityId) =>
-                            widget
-                                .room
-                                ?.client
-                                .userStarsByActivity[activityId] ??
-                            0,
+                        onTap: _openActivity,
+                        userStarsByActivity: _userStarsByActivity,
                         liveStateByActivity: _liveStateFor,
                         availableParticipants: _availableParticipants,
                       );

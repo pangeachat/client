@@ -14,6 +14,7 @@ import 'package:fluffychat/features/activity_sessions/activity_roles_room_extens
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_discovery.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
+import 'package:fluffychat/features/analytics_data/analytics_updater_mixin.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_close_location.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
@@ -105,7 +106,11 @@ class ActivitySessionStartPage extends StatefulWidget {
   ActivitySessionStartState createState() => ActivitySessionStartState();
 }
 
-class ActivitySessionStartState extends State<ActivitySessionStartPage> {
+// AnalyticsUpdater: this page is reachable from the world map with no chat
+// open, so it must host its own XP/growth listeners for the collectable
+// vocab chips (#8613).
+class ActivitySessionStartState extends State<ActivitySessionStartPage>
+    with AnalyticsUpdater {
   bool loading = true;
 
   /// Whether the open-session summaries are still being fetched (a cache miss —
@@ -347,7 +352,10 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
             : await ActivityPlanRepo.instance.resolveMedia(statePlan);
         activityRemoved = true;
       case ActivityPlanLookupStatus.failed:
-        throw Exception("Activity plan fetch failed");
+        // Re-throw the lookup's own failure when it has one: the error view
+        // keys its copy on it (a 429 shows "wait a moment", not "check your
+        // connection") (#8705).
+        throw lookup.error ?? Exception("Activity plan fetch failed");
     }
   }
 

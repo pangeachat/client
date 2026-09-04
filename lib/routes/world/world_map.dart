@@ -124,6 +124,18 @@ class WorldMap extends StatefulWidget {
   /// panels open the map thins toward dots. See world-map.instructions.md.
   final double availableVisibleMapWidth;
 
+  /// The `?c=` course context's space id, or null on the world map. With a
+  /// course selected the map's top-left slot carries the course context bar
+  /// instead of the search overlay (#8736) — the scoped map must always say
+  /// WHICH course scopes it. Fed by the shell, which owns the route facts.
+  final String? courseScopeSpaceId;
+
+  /// Whether a course panel (the card or one of its management pages) is open.
+  /// The panel already names the course, so the context bar stands down and
+  /// the slot stays empty — the search overlay does NOT come back while a
+  /// course is selected (#8736, reversing #7716).
+  final bool coursePanelOpen;
+
   /// When set, the map brings this target into the exposed canvas (the area the
   /// left column and detail panel don't cover) instead of fitting the whole
   /// course — e.g. while an activity's `?activity=` detail panel is open. The
@@ -140,6 +152,8 @@ class WorldMap extends StatefulWidget {
     this.rightOverlayWidth = 0.0,
     this.bottomOverlayHeight = 0.0,
     this.availableVisibleMapWidth = 0.0,
+    this.courseScopeSpaceId,
+    this.coursePanelOpen = false,
     this.focus,
   });
 
@@ -179,6 +193,12 @@ class WorldMapController extends State<WorldMap>
 
   StreamSubscription<dynamic>? _syncSub;
   StreamSubscription? _languageSubscription;
+  StreamSubscription? _settingsSubscription;
+
+  /// The resolved display language the current pin set was requested with —
+  /// bbox card text is localized to it (#8398), so a settings or language
+  /// change that resolves to a different one refetches.
+  String? _pinsDisplayLanguage;
 
   final WorldMapFilterState _filterState = WorldMapFilterState();
   final WorldMapPinsManager _pinsManager = WorldMapPinsManager();
@@ -265,7 +285,18 @@ class WorldMapController extends State<WorldMap>
       if (update.prevBaseLang != update.baseLang) {
         _beginL1Warmup();
       }
+      _refetchOnDisplayLanguageChange();
     });
+
+    // The "app in target language" toggle arrives as a settings update (the
+    // languages themselves are unchanged), but it flips the resolved display
+    // language the bbox card text is localized to (#8398) — refetch so search
+    // matches what the learner now sees. The server caches per (l2, cefr,
+    // limit, l1), so no cache-busting is needed.
+    _settingsSubscription?.cancel();
+    _settingsSubscription = user.settingsUpdateStream.stream.listen(
+      (_) => _refetchOnDisplayLanguageChange(),
+    );
 
     // No settings-driven level default: the Level pill starts at "All levels"
     // and only the learner changes it, so a CEFR settings change never re-seats
@@ -364,6 +395,7 @@ class WorldMapController extends State<WorldMap>
   void dispose() {
     _syncSub?.cancel();
     _languageSubscription?.cancel();
+    _settingsSubscription?.cancel();
     _refetchDebounce?.cancel();
     _warmingTimer?.cancel();
     _fitDebounce?.cancel();
@@ -686,9 +718,9 @@ class WorldMapController extends State<WorldMap>
   }
 
   /// World pins for the current viewport, personalized to the user's language
-  /// (unless widened) and localized to their L1. No-op until the camera is laid
-  /// out (onMapReady retries). CEFR band, completion, and text search are
-  /// applied client-side over the result via [visiblePins].
+  /// (unless widened). No-op until the camera is laid out (onMapReady retries).
+  /// CEFR band, completion, and text search are applied client-side over the
+  /// result via [visiblePins].
   Future<void> loadWorldPins() async {
     if (!isWorld) return;
     final LatLngBounds bounds;
@@ -698,16 +730,20 @@ class WorldMapController extends State<WorldMap>
       return; // camera not ready yet
     }
 
-    final user = MatrixState.pangeaController.userController;
     if (mounted) setState(() => _loadingPins = true);
 
     try {
+      _pinsDisplayLanguage =
+          MatrixState.pangeaController.userController.displayLanguageCode;
       await _pinsManager.loadWorldScopedPins(
         bounds: bounds,
         // Language is fixed by the learner's settings, not a map filter, so the
         // working set is always narrowed to their L2 (world-map.instructions.md).
         l2: _filterState.filter.l2?.langCodeShort,
-        l1: user.userL1?.langCodeShort,
+        // Card text (title/description/learning objective) comes back in the
+        // resolved display language, canonical per card where no translation
+        // row exists yet — so search matches what the learner sees (#8398).
+        l1: _pinsDisplayLanguage,
       );
     } finally {
       if (mounted) {
@@ -724,6 +760,17 @@ class WorldMapController extends State<WorldMap>
         viewRevision.value++;
       }
     }
+  }
+
+  /// Refetch the world pins when the resolved display language no longer
+  /// matches the one the current set was requested with (#8398): a settings
+  /// update (the "app in target language" toggle) or a language change. No-op
+  /// in course scope ([loadWorldPins] guards); the next world-scoped load
+  /// reads the current value regardless.
+  void _refetchOnDisplayLanguageChange() {
+    final displayLang =
+        MatrixState.pangeaController.userController.displayLanguageCode;
+    if (displayLang != _pinsDisplayLanguage) loadWorldPins();
   }
 
   /// Apply a filter mutation: rebuild this State (the map and the wide

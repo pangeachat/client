@@ -11,6 +11,7 @@ import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_session_badge.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_session_holder.dart';
 import 'package:fluffychat/routes/world/compact_count.dart';
@@ -20,6 +21,7 @@ import 'package:fluffychat/routes/world/user_cluster_view_model_builder.dart';
 import 'package:fluffychat/routes/world/xp_border_painter.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/widgets/avatar.dart';
+import 'package:fluffychat/widgets/layouts/workspace_shell.dart';
 import 'package:fluffychat/widgets/users/level_ribbon.dart';
 
 /// The persistent top-right cluster over the world map (world_v2): the user's
@@ -71,6 +73,7 @@ class WorldUserClusterInternal extends StatelessWidget {
         final l2 = viewModel.userL2;
         return Semantics(
           label: L10n.of(context).analyticsAndSettingsLabel,
+          sortKey: BrowseOrder.cluster,
           container: true,
           child: FocusTraversalGroup(
             policy: OrderedTraversalPolicy(),
@@ -152,9 +155,9 @@ class ClusterAvatar extends StatelessWidget {
           // activate it (e.g. open Settings); GestureDetector alone leaves the
           // button unactivatable via assistive tech. See issue #7185.
           onTap: onTap,
-          child: GestureDetector(
-            behavior: HitTestBehavior.opaque,
+          child: FocusRingTapTarget(
             onTap: onTap,
+            shape: const CircleBorder(),
             child: Avatar(
               mxContent: avatarUrl,
               name: name,
@@ -589,11 +592,14 @@ class ClusterLanguageFlag extends StatelessWidget {
           excludeSemantics: true,
           // Expose the tap on the announced node for assistive tech (#7185).
           onTap: onTap,
-          // Opaque so the whole chip is tappable — not just the painted glyphs
-          // / flag pixels (a transparent-interior box defers the hit test).
-          child: GestureDetector(
-            behavior: HitTestBehavior.opaque,
+          // InkWell hit-tests its whole rect, so the entire chip is tappable —
+          // not just the painted glyphs / flag pixels.
+          child: FocusRingTapTarget(
             onTap: onTap,
+            // The chip's own outer rounding (its radius + borderWidth).
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8.0),
+            ),
             child: LanguageFlagChip(
               language: language,
               langCode: language.langCode,

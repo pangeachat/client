@@ -322,15 +322,25 @@ class _PhoneticTranscriptionWidgetState
                         message: L10n.of(
                           context,
                         ).subscribeToUnlockTranscriptions,
+                        // From the router, NOT `GoRouterState.of` — the word
+                        // card hosting this strip is an `OverlayEntry` on both
+                        // of its surfaces (the chat toolbar's word card, an
+                        // activity vocab chip's), and an entry sits beside the
+                        // route's page in the Navigator's overlay rather than
+                        // under it, where `GoRouterState.of` finds no
+                        // `ModalRoute` and throws (#8622).
                         onTap: () => context.go(
                           WorkspaceNav.openSettings(
-                            GoRouterState.of(context).uri,
+                            GoRouter.of(
+                              context,
+                            ).routeInformationProvider.value.uri,
                             page: 'subscription',
                           ),
                         ),
                       )
                     : ErrorIndicator(
                         message: L10n.of(context).failedToFetchTranscription,
+                        error: error,
                       ),
               _ => const TextLoadingShimmer(width: 125.0, height: 20.0),
             },

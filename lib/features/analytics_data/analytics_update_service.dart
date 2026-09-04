@@ -211,6 +211,7 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
 
     final data = await dataService.derivedData(update.targetLang.langCodeShort);
     MatrixState.pangeaController.userController.updateAnalyticsProfile(
+      languageCode: update.targetLang.langCodeShort,
       level: data.level,
     );
   }
@@ -274,7 +275,6 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
         key: "listening-exposure-drain-failed",
         e: err,
         s: s,
-        m: "Could not persist buffered listening exposure; retrying next drain",
         data: {"rows": uses.length},
         level: SentryLevel.warning,
       );
@@ -288,7 +288,6 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
     if (lang == null) {
       ErrorHandler.logError(
         e: "No L2 language set for user",
-        m: "Cannot send local analytics to analytics room",
         data: {"l2Override": l2Override},
         level: SentryLevel.warning,
       );
@@ -310,8 +309,13 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
 
     _updateCompleter = Completer<void>();
     try {
-      await _updateAnalytics(lang);
-      await dataService.clearLocalAnalytics(lang.langCodeShort);
+      final sentBatchKeys = await _updateAnalytics(lang);
+      if (sentBatchKeys.isNotEmpty) {
+        await dataService.clearLocalAnalytics(
+          lang.langCodeShort,
+          sentBatchKeys,
+        );
+      }
     } on AnalyticsDatabaseClosedException catch (err, s) {
       // The store is gone and this instance cannot revive it, so every later
       // tick would fail identically. Stop the timer rather than let a dead
@@ -326,41 +330,42 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
       ErrorHandler.logErrorOnce(
         key: "analytics-update-database-closed",
         e: err,
-        m: "Analytics update stopped: analytics store closed",
         s: s,
         data: {"l2Override": l2Override},
         level: SentryLevel.warning,
       );
     } catch (err, s) {
-      ErrorHandler.logError(
-        e: err,
-        m: "Failed to update analytics",
-        s: s,
-        data: {"l2Override": l2Override},
-      );
+      ErrorHandler.logError(e: err, s: s, data: {"l2Override": l2Override});
     } finally {
       _updateCompleter?.complete();
       _updateCompleter = null;
     }
   }
 
-  Future<void> _updateAnalytics(LanguageModel language) async {
-    final localConstructs = await dataService.getLocalUses(
+  /// Uploads the pending local batches and returns the storage keys of the
+  /// batches that were sent — the only ones the caller may clear. Uses
+  /// recorded while the upload was in flight land in new batches with new
+  /// keys and stay pending for the next flush (#7720). Empty when there was
+  /// nothing to send or no room to send to, so nothing gets cleared.
+  Future<List<String>> _updateAnalytics(LanguageModel language) async {
+    final batches = await dataService.getLocalUseBatches(
       language.langCodeShort,
     );
-    if (localConstructs.isEmpty) return;
+    if (batches.isEmpty) return [];
     final analyticsRoom = await _getAnalyticsRoom(l2Override: language);
     if (analyticsRoom == null) {
       debugPrint(
         "No analytics room found for L2 Override: ${language.langCodeShort}",
       );
-      return;
+      return [];
     }
 
     // and send cached analytics data to the room
+    final localConstructs = batches.values.expand((uses) => uses).toList();
     final future = dataService.waitForSync(analyticsRoom.id);
     await analyticsRoom.sendConstructsEvent(localConstructs);
     await future;
+    return batches.keys.toList();
   }
 
   Future<void> sendActivityAnalytics(String roomId, LanguageModel lang) async {

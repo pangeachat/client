@@ -1,0 +1,318 @@
+// Assertions come from the SERVER, never from the canvas.
+//
+// The point of the harness is to compare what the two participants' timelines
+// actually contain. Reading that from Matrix means a scenario can be checked
+// exactly, and means a UI change cannot quietly stop the check from working.
+const HS = require('./config').homeserver;
+
+async function api(path, { token, method = 'GET', body } = {}) {
+  const res = await fetch(HS + path, {
+    method,
+    headers: {
+      ...(token ? { authorization: 'Bearer ' + token } : {}),
+      'content-type': 'application/json',
+    },
+    ...(body ? { body: JSON.stringify(body) } : {}),
+  });
+  const text = await res.text();
+  let json;
+  try {
+    json = text ? JSON.parse(text) : {};
+  } catch (_) {
+    json = { raw: text };
+  }
+  if (!res.ok) {
+    const err = new Error(`${method} ${path} -> ${res.status} ${text.slice(0, 200)}`);
+    // The STATUS, alongside the message. A caller that wants to treat one
+    // outcome as an answer -- an absent piece of account data is a 404, and a
+    // real answer -- must be able to tell it apart from an expired token or a
+    // homeserver that is down, and matching on the text of a message is how a
+    // catch comes to swallow the failures it was never meant to.
+    err.status = res.status;
+    throw err;
+  }
+  return json;
+}
+
+async function login(user, password) {
+  const r = await api('/_matrix/client/v3/login', {
+    method: 'POST',
+    body: {
+      type: 'm.login.password',
+      identifier: { type: 'm.id.user', user },
+      password,
+    },
+  });
+  return { token: r.access_token, userId: r.user_id, deviceId: r.device_id };
+}
+
+/// WHICH DEVICE a token belongs to.
+///
+/// The only way to ask a running browser which Matrix device it is. Nothing the
+/// app puts on the page carries the id, and the harness's own login is a
+/// DIFFERENT device from the one the browser holds -- so a scenario that has to
+/// pair a browser with a device id has to ask the homeserver with that
+/// browser's own token.
+async function whoami(token) {
+  const r = await api('/_matrix/client/v3/account/whoami', { token });
+  return {
+    userId: r.user_id,
+    deviceId: typeof r.device_id === 'string' ? r.device_id : null,
+  };
+}
+
+/// Gives a session back.
+///
+/// Every login creates a DEVICE, and the two fixture accounts are reused
+/// forever -- their call membership state already carries an entry from every
+/// past session, and `liveMemberships` exists to filter them out. A session
+/// taken to ask one question and then abandoned adds to that for nothing.
+///
+/// Never throws: it is cleanup, and cleanup that can fail a run is worse than
+/// the device it was tidying away.
+async function logout(token) {
+  try {
+    // No body: the endpoint takes none, and Synapse answers 200 either way.
+    await api('/_matrix/client/v3/logout', { token, method: 'POST' });
+  } catch (_) {}
+}
+
+/// The room the two accounts share, newest-activity first.
+async function directRoomWith(token, peerUserId) {
+  const joined = await api('/_matrix/client/v3/joined_rooms', { token });
+  for (const roomId of joined.joined_rooms) {
+    try {
+      const members = await api(
+        `/_matrix/client/v3/rooms/${encodeURIComponent(roomId)}/joined_members`,
+        { token },
+      );
+      const ids = Object.keys(members.joined || {});
+      if (ids.length === 2 && ids.includes(peerUserId)) return roomId;
+    } catch (_) {}
+  }
+  return null;
+}
+
+/// Recent timeline, oldest-first.
+async function timeline(token, roomId, limit = 60) {
+  const r = await api(
+    `/_matrix/client/v3/rooms/${encodeURIComponent(roomId)}/messages?dir=b&limit=${limit}`,
+    { token },
+  );
+  return (r.chunk || []).slice().reverse();
+}
+
+/// One page of the timeline, backwards, WITH the token that continues it.
+///
+/// [timeline] answers "the recent past" and throws the pagination token away,
+/// which is right for every caller that wants a window and wrong for the one
+/// that has to search until it has covered something. A check written on a
+/// fixed window cannot say "no earlier X exists" -- only "none in the last N
+/// events" -- and the two read alike right up to the moment they differ.
+///
+/// [from] is the `end` of the previous page; absent, this starts at the live
+/// end. `end` comes back null at the start of the room, which is how a caller
+/// knows it has run out of history rather than out of patience.
+async function messagesBack(token, roomId, { from = null, limit = 200 } = {}) {
+  const q = `dir=b&limit=${limit}${from ? `&from=${encodeURIComponent(from)}` : ''}`;
+  const r = await api(
+    `/_matrix/client/v3/rooms/${encodeURIComponent(roomId)}/messages?${q}`,
+    { token },
+  );
+  return { chunk: (r.chunk || []).slice().reverse(), end: r.end || null };
+}
+
+/// One event by id, or null when the room does not have it.
+///
+/// A call key IS an event id -- the caller's own membership event -- so this is
+/// how the moment a call began is knowable from the key alone, which is what
+/// bounds a search for halves written under it.
+///
+/// Null ONLY on a 404, which is the server answering. Any other failure throws:
+/// an expired token and an absent event are opposite findings, and a catch that
+/// returned null for both would report a call key this room has never seen.
+async function eventById(token, roomId, eventId) {
+  try {
+    return await api(
+      `/_matrix/client/v3/rooms/${encodeURIComponent(roomId)}/event/${encodeURIComponent(eventId)}`,
+      { token },
+    );
+  } catch (e) {
+    if (e && e.status === 404) return null;
+    throw e;
+  }
+}
+
+/// The name the APP will draw for a user.
+///
+/// Read from the server rather than guessed from the Matrix id: the screen
+/// draws a display name, and a scenario that assumes the localpart is testing
+/// its own assumption. The id is the fallback the client itself uses when a
+/// profile carries no name.
+async function displayName(token, userId) {
+  try {
+    const p = await api(`/_matrix/client/v3/profile/${encodeURIComponent(userId)}`, { token });
+    return (p && p.displayname) || userId;
+  } catch (_) {
+    return userId;
+  }
+}
+
+/// The language this account is LEARNING, as the app stores it -- 'en-US',
+/// 'hi', or null when the profile has not been filled in.
+///
+/// Speech-to-text is asked for the SPEAKER'S OWN target language, read off this
+/// profile, so an account learning Hindi has its English speech transcribed as
+/// Hindi and the provider answers with nothing at all. That is invisible: the
+/// call rings, connects, and writes both halves, and only the words are
+/// missing -- which reads as a broken capture path rather than as an account
+/// pointed at the wrong language.
+/// A 404 is the only failure this treats as an answer -- an account that has
+/// never filled in a profile genuinely has no target language. Everything else
+/// is rethrown: an expired token or a homeserver that is down would otherwise
+/// come back as "learning nothing yet" and be reported as a fixture problem.
+async function targetLanguage(token, userId) {
+  let p;
+  try {
+    p = await api(
+      `/_matrix/client/v3/user/${encodeURIComponent(userId)}/account_data/profile`,
+      { token },
+    );
+  } catch (e) {
+    if (e && e.status === 404) return null;
+    throw e;
+  }
+  const code = p && p.user_settings && p.user_settings.target_language;
+  return typeof code === 'string' && code ? code : null;
+}
+
+/// A language code reduced to the language itself: 'en-US' and 'en' are the
+/// same language to a speech provider, and a fixture check that turned on the
+/// region would refuse a perfectly good account.
+function baseLang(code) {
+  return String(code || '').toLowerCase().split(/[-_]/)[0];
+}
+
+const CALL = 'pangea.call';
+const DECLINE = 'org.matrix.msc4310.rtc.decline';
+const RING = 'org.matrix.msc4075.rtc.notification';
+
+/// A call card, reduced to what a person would read off the screen.
+function card(ev, viewerId) {
+  const c = ev.content || {};
+  const caller = typeof c.caller === 'string' ? c.caller : ev.sender;
+  const outgoing = caller === viewerId;
+  const answered = c.answered === true;
+  const declined = c.declined === true;
+  const missed = !answered && !declined;
+  let label;
+  if (declined) label = outgoing ? 'Call declined' : 'You declined this call';
+  else if (missed) label = outgoing ? 'No answer' : (c.video === true ? 'Missed video call' : 'Missed call');
+  else label = c.video === true ? 'Video call' : 'Voice call';
+  return {
+    id: ev.event_id,
+    ts: ev.origin_server_ts,
+    sender: ev.sender,
+    caller,
+    outgoing,
+    answered,
+    declined,
+    video: c.video === true,
+    durationMs: c.duration_ms,
+    label,
+  };
+}
+
+function cardsIn(events, viewerId) {
+  // The renderer's first-per-key rule, mirrored: only the FIRST card per
+  // call_key in timeline order counts (origin_server_ts, event id as final
+  // tie-break). A writer and a survivor racing across the settle window can
+  // both post; the product renders one, so the harness counts one. Keyless
+  // cards always count, as they always rendered.
+  const all = events.filter((e) => e.type === CALL);
+  const firstPerKey = new Map();
+  for (const e of all) {
+    const key = e.content && e.content.call_key;
+    if (typeof key !== 'string') continue;
+    const cur = firstPerKey.get(key);
+    if (!cur) { firstPerKey.set(key, e); continue; }
+    const byTime = (cur.origin_server_ts || 0) - (e.origin_server_ts || 0);
+    if (byTime > 0 || (byTime === 0 && cur.event_id > e.event_id)) firstPerKey.set(key, e);
+  }
+  return all
+    .filter((e) => {
+      const key = e.content && e.content.call_key;
+      if (typeof key !== 'string') return true;
+      return firstPerKey.get(key) === e;
+    })
+    .map((e) => card(e, viewerId));
+}
+
+function countType(events, type) {
+  return events.filter((e) => e.type === type).length;
+}
+
+/// WHICH of this account's devices are in the call in this room, right now.
+///
+/// One entry per DEVICE, which is the shape of the state event: a leave removes
+/// only the leaving device's entry, so the account's row is a list rather than a
+/// flag. Only non-expired entries count, for the reason [liveMemberships] gives.
+///
+/// The IDS rather than a count, because the question two devices of one account
+/// raise is not "how many" but "which two" -- a transcript half names the device
+/// that wrote it, and that name only means something next to the devices that
+/// were actually in the call.
+///
+/// AN ERROR IS NOT AN ANSWER, and this used to return `[]` for every one of
+/// them. A 500 from the homeserver, a token the server has expired, a room the
+/// harness is not in, a hostname that does not resolve -- all of them came back
+/// as "this account has no device in a call", which is a real answer to a
+/// question that was never asked. What rests on it is not small: a scenario's
+/// opening gate reads this and passes on an empty list, and hangup drivers stop
+/// clicking on one.
+///
+/// ONLY A 404 IS EMPTINESS, and it is the server ANSWERING: Synapse returns
+/// M_NOT_FOUND for a state event that was never written, which is exactly a
+/// room this account has never held a call membership in. Everything else is
+/// the read failing, and it throws -- a harness that cannot see is a fact about
+/// the rig, and reporting it as a product state is how a check comes to pass
+/// for a reason nobody can act on. [api] attaches the status for this, and
+/// [eventById] draws the same line.
+async function liveMembershipDevices(token, roomId, userId) {
+  let st;
+  try {
+    st = await api(
+      `/_matrix/client/v3/rooms/${encodeURIComponent(roomId)}/state/com.famedly.call.member/${encodeURIComponent(userId)}`,
+      { token },
+    );
+  } catch (e) {
+    if (e && e.status === 404) return [];
+    throw e;
+  }
+  const mems = Array.isArray(st.memberships) ? st.memberships : [];
+  const now = Date.now();
+  return mems
+    .filter((m) => typeof m.expires_ts === 'number' && m.expires_ts > now)
+    .map((m) => (typeof m.device_id === 'string' ? m.device_id : ''))
+    .filter((id) => id.length > 0);
+}
+
+/// How many LIVE call memberships this account has in the room.
+///
+/// Only non-expired ones count. Every login creates a new device, and a leave
+/// only removes the entry for the device doing the leaving, so the state
+/// accumulates entries from every past session. Counting them all made a
+/// perfectly good hangup look like it had failed -- the stale entries are all
+/// long expired, which is exactly how the SDK itself filters them.
+///
+/// Counted off [liveMembershipDevices] rather than beside it: an entry naming no
+/// device is not a device in the call, and two answers to one question drift.
+async function liveMemberships(token, roomId, userId) {
+  return (await liveMembershipDevices(token, roomId, userId)).length;
+}
+
+async function hasMembership(token, roomId, userId) {
+  return (await liveMemberships(token, roomId, userId)) > 0;
+}
+
+module.exports = { api, login, logout, whoami, displayName, targetLanguage, baseLang, hasMembership, liveMemberships, liveMembershipDevices, directRoomWith, timeline, messagesBack, eventById, cardsIn, card, countType, CALL, DECLINE, RING, HS };

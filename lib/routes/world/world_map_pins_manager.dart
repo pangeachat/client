@@ -20,6 +20,7 @@ import 'package:fluffychat/features/room_summaries/activity_session_previews_ext
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/pangea/common/network/rate_limit_pause.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/trailing_throttle.dart';
 import 'package:fluffychat/routes/world/joined_objective_cache.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
@@ -144,15 +145,13 @@ class WorldMapPinsManager {
   /// joined course-space messages). Folded into [_signals].
   Set<String> _pingedActivityIds = {};
 
-  /// Guards against overlapping coursemate-session discovery runs (each does
-  /// networked space-hierarchy + room_preview reads).
-  bool _discovering = false;
-
-  /// Epoch ms of the last discovery run — throttles the server reads so the two
-  /// triggers (sync ticks and camera settles while panning) don't re-poll the
-  /// hierarchy on every event. 3s keeps the matrix's live facts feeling current
-  /// while scrolling without multiplying the preview reads.
-  int _lastDiscoveryMs = 0;
+  /// Paces the coursemate-session discovery reads so the two triggers (sync
+  /// ticks, and camera settles while panning) don't re-poll the server on every
+  /// event: 3s keeps the matrix's live facts feeling current while scrolling
+  /// without multiplying the preview reads. Trailing, so the last trigger of a
+  /// burst always gets its run — the tick a coursemate's session-filled event
+  /// produces must never be the one thrown away (#8735).
+  final _discoveryThrottle = TrailingThrottle(const Duration(seconds: 3));
 
   /// Joinable facts for open sessions others started in the learner's joined
   /// courses — discovered via room_preview because they are NOT in `client.rooms`
@@ -296,6 +295,8 @@ class WorldMapPinsManager {
         final timeline = await space.getTimeline();
         for (final e in timeline.events) {
           if (!e.originServerTs.isAfter(cutoff)) continue;
+          // Own pings recruit others, never their sender (#8610).
+          if (e.senderId == client.userID) continue;
           final id = e.content['pangea.activity.id'];
           if (id is String && id.isNotEmpty) pinged.add(id);
         }
@@ -381,12 +382,7 @@ class WorldMapPinsManager {
         } catch (e, s) {
           // A room that won't load its members keeps the fallback seats it
           // already had; the throttle above paces the retry.
-          ErrorHandler.logError(
-            e: e,
-            s: s,
-            m: 'session participant refill failed',
-            data: {'roomId': room.id},
-          );
+          ErrorHandler.logError(e: e, s: s, data: {'roomId': room.id});
         }
       }
     } finally {
@@ -414,15 +410,18 @@ class WorldMapPinsManager {
   /// and has a free seat. Best-effort, networked, and throttled — triggered off
   /// sync ticks AND camera settles (panning to a new viewport should rank
   /// against current live facts, not wait for a sync).
-  Future<void> discoverCoursemateSessions(Client client) async {
-    if (_discovering) return;
-    final invitedSessionIds = client.invitedActivitySessionRoomIds;
+  Future<void> discoverCoursemateSessions(Client client) {
     // Not synced yet — retry on the next trigger without spending the throttle.
-    if (client.joinedCourseRooms.isEmpty && invitedSessionIds.isEmpty) return;
+    if (client.joinedCourseRooms.isEmpty &&
+        client.invitedActivitySessionRoomIds.isEmpty) {
+      return Future.value();
+    }
+    return _discoveryThrottle.run(() => _discoverCoursemateSessions(client));
+  }
+
+  Future<void> _discoverCoursemateSessions(Client client) async {
+    final invitedSessionIds = client.invitedActivitySessionRoomIds;
     final nowMs = DateTime.now().millisecondsSinceEpoch;
-    if (nowMs - _lastDiscoveryMs < 3000) return;
-    _discovering = true;
-    _lastDiscoveryMs = nowMs;
     try {
       final courseSpaceIds = client.joinedCourseRooms.map((r) => r.id).toList();
       // The two reads fail independently — a module error must not cost this
@@ -443,12 +442,7 @@ class WorldMapPinsManager {
               l1Code: null,
             );
           } catch (e, s) {
-            ErrorHandler.logError(
-              e: e,
-              s: s,
-              m: 'activity_session_previews read failed',
-              data: const {},
-            );
+            ErrorHandler.logError(e: e, s: s, data: const {});
           }
         }(),
         () async {
@@ -459,12 +453,7 @@ class WorldMapPinsManager {
               l1Code: null,
             );
           } catch (e, s) {
-            ErrorHandler.logError(
-              e: e,
-              s: s,
-              m: 'invited-session preview read failed',
-              data: const {},
-            );
+            ErrorHandler.logError(e: e, s: s, data: const {});
           }
         }(),
       ]);
@@ -524,14 +513,7 @@ class WorldMapPinsManager {
       DiscoveredSessionsCache.instance.replaceAll(byActivity);
       _discoveredSessionFacts = facts;
     } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        m: 'coursemate-session discovery failed',
-        data: const {},
-      );
-    } finally {
-      _discovering = false;
+      ErrorHandler.logError(e: e, s: s, data: const {});
     }
   }
 
@@ -706,6 +688,7 @@ class WorldMapPinsManager {
     final pins = (await ActivityMapRepo.bboxPins(
       bounds: bounds,
       l2: l2,
+      l1: l1,
     )).result;
     // An error is "no fresh answer for this viewport", never "no activities
     // here" — the read was suppressed by the rate-limit pause (#8360) or it

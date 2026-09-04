@@ -136,6 +136,23 @@ void main() {
     expect(find.text(addKeyboardMessage), findsOneWidget);
   });
 
+  // #8804 — the dialog behind "Add Keyboard" is shared with the autocorrect
+  // settings toggle, whose title warns that autocorrect requires the
+  // keyboard. From this prompt the learner is already here to add one.
+  testWidgets('the add-keyboard action opens the dialog titled for adding', (
+    tester,
+  ) async {
+    mockChannel(enabledTags: ['en-US']);
+    await pumpBanner(tester, targetLanguageCode: 'es', hasFocus: true);
+
+    await tester.tap(find.text('Add Keyboard'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Add your target language keyboard'), findsOneWidget);
+    expect(find.textContaining('Warning!'), findsNothing);
+    expect(find.text('Autocorrect in your target language'), findsNothing);
+  });
+
   testWidgets('shows nothing on Android once the language matches', (
     tester,
   ) async {

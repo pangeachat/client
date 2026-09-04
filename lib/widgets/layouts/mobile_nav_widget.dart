@@ -101,6 +101,12 @@ class MobileNavWidget extends StatefulWidget {
   /// section (opens at half by default).
   final bool cavityDefaultsToPeek;
 
+  /// True for a surface whose content is unrelated to the map behind it (the
+  /// add-course subpages: start my own / browse public / a course preview) —
+  /// it opens at FULL height so the sheet, not the map, leads (#8659).
+  /// Mutually exclusive with [cavityDefaultsToPeek]; peek wins if both are set.
+  final bool cavityDefaultsToFull;
+
   /// Upper growth bound for the cavity, as a fraction of the screen height,
   /// computed by the shell (so the search bar + analytics bar stay visible
   /// above it at full height).
@@ -199,6 +205,7 @@ class MobileNavWidget extends StatefulWidget {
     this.cavityKey,
     this.cavityContextId,
     this.cavityDefaultsToPeek = false,
+    this.cavityDefaultsToFull = false,
     required this.maxHeightFraction,
     this.preferredCavityHeightPx,
     this.topAttachment,
@@ -402,9 +409,11 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
     return MobileNavWidget._heightByKey[key] ?? _defaultHeight();
   }
 
-  NavCavityHeight _defaultHeight() => widget.cavityDefaultsToPeek
-      ? NavCavityHeight.collapsed
-      : NavCavityHeight.half;
+  NavCavityHeight _defaultHeight() {
+    if (widget.cavityDefaultsToPeek) return NavCavityHeight.collapsed;
+    if (widget.cavityDefaultsToFull) return NavCavityHeight.full;
+    return NavCavityHeight.half;
+  }
 
   void _remember(NavCavityHeight height) {
     // The activity plan never persists its height (see [rememberHeight]).

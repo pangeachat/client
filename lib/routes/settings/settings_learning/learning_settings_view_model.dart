@@ -73,6 +73,11 @@ class LearningSettingsViewModel extends ChangeNotifier {
 
   bool get hasResetTooltips => _hasResetTooltips;
 
+  /// Whether the device offers a known-good voice for the selected target
+  /// language. While false, the message-audio toggles render disabled with an
+  /// explanatory subtitle (#8664).
+  bool get hasKnownGoodVoice => _hasKnownGoodVoice;
+
   /// Re-runs the known-good-voice gate for the selected target language and
   /// notifies if the answer changed, so the message-audio toggles show the
   /// device's current state after the learner downloads a voice.
@@ -172,6 +177,7 @@ class LearningSettingsViewModel extends ChangeNotifier {
       // Read-aloud is silent without a known-good device voice, so the toggle
       // reads off there whatever the account setting says — otherwise a
       // default-on toggle claims audio the device cannot produce (#8326).
+      // The section also disables these tiles in that state (#8664).
       case ToolSetting.audioOnNewMessage:
         return _hasKnownGoodVoice && toolSettings.audioOnNewMessage;
       case ToolSetting.audioOnMessageClick:

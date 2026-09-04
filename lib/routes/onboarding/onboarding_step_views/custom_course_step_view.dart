@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_step_views/onboarding_forward_button.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_step_views/onboarding_step_body.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/custom_course_onboarding_step.dart';
 
 class CustomCourseStepView extends StatefulWidget {
@@ -102,58 +104,52 @@ class CustomCourseStepViewState extends State<CustomCourseStepView> {
       children: [
         Expanded(
           child: Center(
-            child: Semantics(
+            child: OnboardingStepBody(
               label: L10n.of(context).customCourseStepTitle,
-              container: true,
-              child: SingleChildScrollView(
-                child: Column(
-                  spacing: 8.0,
-                  children: [
-                    ExcludeSemantics(
-                      child: Text(
-                        L10n.of(context).customCourseStepTitle,
-                        style: theme.textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
+              scrollable: true,
+              child: Column(
+                spacing: 8.0,
+                children: [
+                  ExcludeSemantics(
+                    child: Text(
+                      L10n.of(context).customCourseStepTitle,
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Semantics(
-                      container: true,
-                      child: TextField(
-                        controller: _nameController,
-                        decoration: InputDecoration(
-                          hintText: L10n.of(context).name,
-                        ),
-                        inputFormatters: [
-                          LengthLimitingTextInputFormatter(254),
-                        ],
+                  ),
+                  Semantics(
+                    container: true,
+                    child: TextField(
+                      controller: _nameController,
+                      decoration: InputDecoration(
+                        hintText: L10n.of(context).name,
                       ),
+                      inputFormatters: [LengthLimitingTextInputFormatter(254)],
                     ),
-                    Semantics(
-                      container: true,
-                      child: TextField(
-                        controller: _institutionController,
-                        decoration: InputDecoration(
-                          hintText: L10n.of(context).institution,
-                        ),
-                        inputFormatters: [
-                          LengthLimitingTextInputFormatter(254),
-                        ],
+                  ),
+                  Semantics(
+                    container: true,
+                    child: TextField(
+                      controller: _institutionController,
+                      decoration: InputDecoration(
+                        hintText: L10n.of(context).institution,
                       ),
+                      inputFormatters: [LengthLimitingTextInputFormatter(254)],
                     ),
-                    Semantics(
-                      container: true,
-                      child: TextField(
-                        controller: _goalsController,
-                        decoration: InputDecoration(
-                          hintText: L10n.of(context).courseGoals,
-                        ),
-                        minLines: 10,
-                        maxLines: 10,
+                  ),
+                  Semantics(
+                    container: true,
+                    child: TextField(
+                      controller: _goalsController,
+                      decoration: InputDecoration(
+                        hintText: L10n.of(context).courseGoals,
                       ),
+                      minLines: 10,
+                      maxLines: 10,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),
@@ -167,34 +163,12 @@ class CustomCourseStepViewState extends State<CustomCourseStepView> {
             ),
             ValueListenableBuilder(
               valueListenable: _enabledNotifier,
-              builder: (context, enabled, _) => ElevatedButton(
+              builder: (context, enabled, _) => OnboardingForwardButton(
                 onPressed: enabled ? widget.forward : null,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: theme.colorScheme.primaryContainer,
-                  foregroundColor: theme.colorScheme.onPrimaryContainer,
-                  minimumSize: const Size.fromHeight(48),
-                ),
-                child: SizedBox(
-                  height: 24,
-                  child: Center(
-                    child: AnimatedSwitcher(
-                      duration: const Duration(milliseconds: 200),
-                      child: widget.loading
-                          ? SizedBox(
-                              key: const ValueKey('loading'),
-                              width: double.infinity,
-                              child: const LinearProgressIndicator(),
-                            )
-                          : Text(
-                              widget.hasNextStep
-                                  ? _step.nextStepText(L10n.of(context))
-                                  : _step.lastStepText(L10n.of(context)),
-                              key: const ValueKey('text'),
-                              textAlign: TextAlign.center,
-                            ),
-                    ),
-                  ),
-                ),
+                loading: widget.loading,
+                label: widget.hasNextStep
+                    ? _step.nextStepText(L10n.of(context))
+                    : _step.lastStepText(L10n.of(context)),
               ),
             ),
           ],

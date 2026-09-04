@@ -154,7 +154,13 @@ token over the course-scoped map.
 **Context persists, and navigation never consumes it.** Opening, closing, and
 switching panels — closing the course card itself, tapping an activity pin,
 moving to Chats or Settings — all leave `?c=` untouched; closing panels is
-precisely how you get a clear look at the scoped map (#7087). The context
+precisely how you get a clear look at the scoped map (#7087). What the learner
+then sees in the map's search slot is the **course context bar** — the closed
+card's header, saying which course the map is scoped to and leading back into
+the card
+([world-map.instructions.md](world-map.instructions.md#the-course-context-bar));
+it is chrome, not a panel, and carries no close control, because `?c=` is
+cleared by the World control below, never by dismissing its indicator. The context
 changes in three ways: selecting another **course** replaces it; the
 **World/home** control clears it; and **leaving or deleting the course you are
 in** clears it. The latter two are the same deliberate full reset — dropping
@@ -278,6 +284,12 @@ the **World/home** control (see [The course context](#the-course-context)).
 
 Closing the last panel reveals the map at its current scope — the course's map
 if a context is set, the world otherwise.
+
+### Every panel is a named group to assistive tech
+
+Every workspace panel announces as one named semantic group — "Settings page", "Vocab page", "Chats page" — before its content, so a screen-reader user always knows which panel they entered and can treat panels as landmarks. The group is authored where every column token resolves ([`WorkspaceLeftPanel`](../../lib/routes/world/left_panel/workspace_left_panel.dart), [`WorkspaceRightPanel`](../../lib/routes/world/right_panel/workspace_right_panel.dart)), never in a panel's own view or chrome, so a panel cannot lose its group by drawing its own header — the failure that left the analytics panels and the whole left column ungrouped while settings was grouped (#8729). The group's name and the panel's "Close X" label share one source ([`PanelTypesEnum`](../../lib/features/navigation/panel_types_enum.dart), `displayName` beside `closeButtonLabel`), so the two can never disagree.
+
+A screen reader browses the workspace in reading order, not paint order: the nav rail first, then the open left panels, the open right panels, the user cluster / analytics bar, and the map — the backdrop everything overlays — last (#8755). The browse order is authored with ordinal sort keys ([`BrowseOrder`](../../lib/widgets/layouts/workspace_shell.dart)) on each region's *labeled* semantic container (a key on an unlabeled wrapper forms a generic node VoiceOver reorders). VoiceOver additionally sorts overlapping siblings by their horizontal centers regardless of keys, so the full-bleed map cannot key its way out of mid-sweep: the map group's container is anchored to a thin right-edge strip whose children — pins, attribution, zoom controls — overflow to their true positions, with pointer hits passed through beyond the strip's bounds. Only the search/context slot sits outside the group, keyed between the cluster and the map.
 
 ### Closing a panel: X or back arrow
 
@@ -506,7 +518,11 @@ section's content. The **chats sheet and the Courses hub open content-fit**:
 just tall enough to show all their rows — all chats, or all joined courses (the
 add-course buttons when there are none) — capped by the height available below
 the analytics bar (a short list yields a short sheet; a long one fills to the
-cap and scrolls). Other sections open at roughly half the screen. The 4 rail
+cap and scrolls). The **add-course subpages open at full height** — start my
+own, browse public courses, and the course preview they push all show content
+unrelated to the map behind them, so a half-open sheet only de-emphasizes what
+the learner navigated there for (#8659). Other sections open at roughly half
+the screen. The 4 rail
 icons remain anchored at the bottom of the widget at all heights. Content inside
 the expanded area is **scrollable**.
 
@@ -540,7 +556,8 @@ half, full — is ephemeral view state, exactly like fold recency above: a cold
 link or a refresh with an open **section** token (the chat list, the Courses
 hub) or an **activity plan** draws it expanded at its default rest height (the
 leaf rule) — content-fit for the list sections (the chat list, the Courses
-hub), roughly half otherwise; a **course card** draws at its remembered height —
+hub), full for the add-course subpages (#8659), roughly half otherwise; a
+**course card** draws at its remembered height —
 the collapsed peek by
 default (see the per-course memory above), so the scoped map leads. The
 collapsed rail over the bare map is just `/`. A shared URL never encodes how
@@ -672,21 +689,28 @@ section's content — the chat list ("Search All chats"), the courses list
 ("Search Courses") — per the Figma states. One persistent bar, contextual
 scope: on narrow the bar **subsumes** a section's own search field (the chat
 list's inline search hides; the floating bar drives it), so two search fields
-never show at once. An expanded section always wins over the course-scoped
-minimize below — the bar minimizes only over the bare scoped map.
+never show at once.
 
 **Default (visible).** The search bar is visible above the nav widget at all
 section roots while the map is not being actively scrolled.
 [Default component](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13126-44560&t=NJSsG23tsR9Kdwlz-0)
 
-**Scroll / course-scoped minimized.** When the user begins scrolling the map with
-the nav widget collapsed, or while the workspace is course-scoped (`?c=` set),
-the search bar and its active filters **minimize to a compact search icon
-button** pinned to the left side just above the nav rail. Tapping it restores
-the full bar. **Once the course card itself is pulled to full height it covers
-the map, so the bar hides entirely** — its reserved strip is handed to the
-course content, and the compact button reappears when the sheet is dragged back
-below full (#7697).
+**Course-scoped: the slot belongs to the course.** While the workspace is
+course-scoped (`?c=` set) and no cavity is open, the strip above the nav widget
+carries the **course context bar** instead of the search bar — the narrow twin
+of the web slot's behaviour
+([world-map.instructions.md](world-map.instructions.md#the-course-context-bar)).
+It replaces the compact search-icon minimize the bar used to rest at in course
+scope (#8736): search is unreachable under a course scope on either width, and
+the scoped map says which course it is scoped to instead. With the course card
+itself open in the cavity, neither rides above it — the cavity's own header
+already names the course, and the strip is handed to the course content
+(#7697, which the same rule now covers at every cavity height).
+
+**Scroll minimized.** When the user begins scrolling the map with the nav widget
+collapsed, the search bar and its active filters **minimize to a compact search
+icon button** pinned to the left side just above the nav rail. Tapping it
+restores the full bar.
 [Minimized component](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13126-44562&t=NJSsG23tsR9Kdwlz-0)
 
 **Keyboard behavior.** When the search bar is active and the software keyboard
@@ -748,7 +772,7 @@ until it is explicitly ended, finished, or times out.
   or a rail section drops the `practice` panel from the URL but keeps the
   session alive in memory; re-opening practice resumes exactly where it left
   off. No confirm dialog on leave. Session state is ephemeral view state, never
-  in the URL — a refresh or app restart starts fresh.
+  in the URL — a refresh, app restart, or logout starts fresh.
 - **One session at a time.** A single practice session is live across both
   sections. Starting practice in the other section, or restarting the same
   one, **replaces** it — confirming first only if the current one is

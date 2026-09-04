@@ -4,11 +4,13 @@ import 'package:flutter/foundation.dart';
 
 import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/features/activity_sessions/activity_session_filled_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -194,6 +196,16 @@ extension ActivityRolesRoomExtension on Room {
 
   bool get isActiveInActivity => hasPickedRole && !hasCompletedRole;
 
+  /// The Chats-list mirror of the map's `ongoingActive` pin state: the learner
+  /// holds a seat, every seat is filled so the chat has really started, and
+  /// their own role is neither finished nor archived. Split on the same
+  /// discriminator the map uses — [numRemainingRoles] > 0 is Waiting (pending),
+  /// 0 is active — over the same seat-held / own-role-live terms its session
+  /// facts carry, so a session's tile and its large card can never disagree on
+  /// when it is live (world-map.instructions.md, "Goal Progress").
+  bool get isOngoingActiveSession =>
+      isActiveInActivity && !hasArchivedActivity && numRemainingRoles == 0;
+
   /// Loaded membership of [userId] via [getParticipants] with the full
   /// membership filter — the DEFAULT filter drops leave/ban members, which is
   /// exactly the evidence [roleHolderVacated] needs. Null when the member
@@ -243,6 +255,26 @@ extension ActivityRolesRoomExtension on Room {
       "",
       currentRoles.toJson(),
     );
+    if (_leavesNoOpenSeat(currentRoles)) await announceActivitySessionFilled();
+  }
+
+  /// Whether [roles] — the role state just written, read from the written
+  /// model because its sync echo has not landed yet — leaves this session with
+  /// no open seat, by the same plan-role count [numRemainingRoles] uses. The
+  /// caller just picked a role off this plan, so a missing plan is a hydration
+  /// bug worth reporting, not a state to default.
+  bool _leavesNoOpenSeat(ActivityRolesModel roles) {
+    final plan = activityPlan;
+    if (plan == null) {
+      ErrorHandler.logError(
+        e: "joinActivity without a hydrated plan",
+        data: {"roomId": id},
+        level: SentryLevel.warning,
+      );
+      return false;
+    }
+    return filterAssignedRoles(roles.roles, _membershipOf).length >=
+        plan.roles.length;
   }
 
   Future<void> continueActivity() async {

@@ -21,14 +21,13 @@ class TutorialTargetIds {
   /// tree, and they are mutually exclusive.
   static const String coursePanel = 'tutorial_course_panel';
 
-  /// The activity carousel of a course plan's "Up next" Mission.
+  /// The course page's Activities row — the ranked, Mission-less carousel of
+  /// the plan's activities (quests.instructions.md).
   ///
   /// The carousel rather than its individual cards: a card would need an id per
-  /// activity, and the same activity can appear under more than one Mission, so
-  /// two cards would contend for it. Exactly one Mission is ever the anchor, so
-  /// the carousel has a single claimant.
-  static const String courseUpNextActivities =
-      'tutorial_course_up_next_activities';
+  /// activity, and the ranking re-orders continuously, so no card is a stable
+  /// claimant. The row is one widget on the course page, so it has exactly one.
+  static const String courseActivities = 'tutorial_course_activities';
 
   /// Nav destinations. One id each, shared by the wide rail and the narrow
   /// bottom nav: they are mutually exclusive by layout, so whichever tree is

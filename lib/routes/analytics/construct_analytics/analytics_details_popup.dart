@@ -14,6 +14,7 @@ import 'package:fluffychat/features/analytics/construct_level_enum.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/construct_use_model.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
+import 'package:fluffychat/features/analytics_data/analytics_updater_mixin.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target.dart';
@@ -60,7 +61,8 @@ class ConstructAnalyticsView extends StatefulWidget {
   ConstructAnalyticsViewState createState() => ConstructAnalyticsViewState();
 }
 
-class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
+class ConstructAnalyticsViewState extends State<ConstructAnalyticsView>
+    with AnalyticsUpdater {
   final TextEditingController searchController = TextEditingController();
   final List<ConstructIdentifier> selectedConstructs = [];
 
@@ -116,7 +118,6 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
     if (l2 == null) {
       ErrorHandler.logError(
         e: "No L2 language set for user",
-        m: "Cannot set analytics data",
         data: {"view": widget.view, "construct": widget.construct},
         level: SentryLevel.warning,
       );
@@ -469,13 +470,19 @@ class _PracticeButton extends StatelessWidget {
     final tooltip = view.practiceButtonText(context);
 
     if (analyticsService.isInitializing) {
+      // excludeFromSemantics + semanticsLabel (both branches): the tooltip
+      // otherwise publishes "Practice vocabulary" as a node SEPARATE from the
+      // button's own "Practice", splitting the one control's name in two
+      // (#8726) — the full phrase belongs ON the button, as the comment
+      // above always intended.
       return Tooltip(
         message: tooltip,
+        excludeFromSemantics: true,
         child: FilledButton.icon(
           onPressed: () =>
               _showSnackbar(context, L10n.of(context).loadingPleaseWait),
           icon: const Icon(Symbols.fitness_center, size: 18),
-          label: Text(label),
+          label: Text(label, semanticsLabel: tooltip),
           style: FilledButton.styleFrom(
             backgroundColor: colorScheme.surface,
             foregroundColor: colorScheme.onSurface.withValues(alpha: 0.5),
@@ -489,6 +496,7 @@ class _PracticeButton extends StatelessWidget {
 
     return Tooltip(
       message: tooltip,
+      excludeFromSemantics: true,
       child: FilledButton.icon(
         onPressed: enabled
             ? () => _startPractice(context)
@@ -498,7 +506,7 @@ class _PracticeButton extends StatelessWidget {
           enabled ? Symbols.fitness_center : Icons.lock_outline,
           size: 18,
         ),
-        label: Text(label),
+        label: Text(label, semanticsLabel: tooltip),
         style: FilledButton.styleFrom(
           backgroundColor: enabled
               ? colorScheme.primaryContainer

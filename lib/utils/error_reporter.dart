@@ -47,12 +47,7 @@ class ErrorReporter {
     } catch (err) {
       debugPrint("Failed to show error snackbar.");
     } finally {
-      ErrorHandler.logError(
-        e: error,
-        s: stackTrace,
-        m: message ?? 'Error caught',
-        data: {},
-      );
+      ErrorHandler.logError(e: error, s: stackTrace, data: {});
     }
     // Pangea#
   }

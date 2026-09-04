@@ -19,6 +19,8 @@ import 'package:fluffychat/routes/chat/activity_sessions/activity_rating_card.da
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_popup_menu.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_stats_menu.dart';
+import 'package:fluffychat/routes/chat/calls/chat_call_buttons.dart';
+import 'package:fluffychat/routes/chat/calls/chat_call_host.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/routes/chat/chat_app_bar_list_tile.dart';
 import 'package:fluffychat/routes/chat/chat_app_bar_title.dart';
@@ -74,7 +76,11 @@ class ChatView extends StatelessWidget {
       ];
     }
 
+    // Whether calling is offered at all is ChatCallButtons' own decision, not a
+    // condition written here: this list cannot be mounted without a live
+    // ChatController, so a gate at this site is a gate no test can reach.
     return [
+      ChatCallButtons(controller.room),
       IconButton(
         icon: const Icon(Icons.search_outlined),
         tooltip: L10n.of(context).search,
@@ -546,6 +552,11 @@ class ChatView extends StatelessWidget {
                   //     alignment: Alignment.center,
                   //     child: const Icon(Icons.upload_outlined, size: 100),
                   //   ),
+                  // Pangea#
+                  // #Pangea
+                  // The active call, rendered inside this chat's pane —
+                  // expanded panel or minimized top tile.
+                  ChatCallHost(roomId: controller.room.id),
                   // Pangea#
                 ],
               ),

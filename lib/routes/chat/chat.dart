@@ -93,6 +93,7 @@ import 'package:fluffychat/routes/chat/events/constants/message_constants.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event_cache.dart';
+import 'package:fluffychat/routes/chat/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/events/models/representation_content_model.dart';
 import 'package:fluffychat/routes/chat/events/models/tokens_event_content_model.dart';
@@ -659,7 +660,6 @@ class ChatController extends State<ChatPageWithRoom>
     if (constructs.isEmpty || targetId == null) return;
     for (final construct in constructs) {
       GrowthAnimation.show(
-        context,
         targetId,
         "${targetId}_unlocked_${construct.string}",
         MorphIcon(
@@ -1089,11 +1089,6 @@ class ChatController extends State<ChatPageWithRoom>
     );
 
     activityController.confettiNotifier.addListener(_activityConfettiListener);
-    if (activityController.hasSummary) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        activityController.showConfetti();
-      });
-    }
 
     activeGoalNotifier = ValueNotifier(room.currentGoal);
 
@@ -3014,11 +3009,9 @@ class ChatController extends State<ChatPageWithRoom>
     /// client/.github/instructions/message-read-aloud.instructions.md
     bool isTutorial = false,
   }) async {
-    if (event.redacted ||
-        event.text == '' ||
-        event.status == EventStatus.sending) {
-      return;
-    }
+    // Shared with the message select overlay's semantics gate (#8721): a
+    // message this returns on must announce no select button.
+    if (!event.canOpenToolbar) return;
 
     // Close emoji picker, if open
     if (showEmojiPicker) {
@@ -3031,15 +3024,6 @@ class ChatController extends State<ChatPageWithRoom>
       await LanguageService.showDialogOnEmptyLanguage(context);
       return;
     }
-
-    final overlayEntry = MessageSelectionOverlay(
-      host: this,
-      event: event,
-      timeline: timeline!,
-      initialSelectedToken: selectedToken,
-      nextEvent: nextEvent,
-      prevEvent: prevEvent,
-    );
 
     // you've clicked a message so lets turn this off
     if (!InstructionsEnum.clickMessage.isToggledOff) {
@@ -3089,30 +3073,30 @@ class ChatController extends State<ChatPageWithRoom>
         // so we don't want to show the overlay.
         return;
       }
-      OverlayUtil.showOverlay(
-        context: context,
-        child: overlayEntry,
-        displayDetails: CenteredOverlayDisplayDetails(
-          onDismiss: clearSelectedEvents,
-          blurBackground: true,
-          backgroundColor: Colors.black,
-          overlayKey: "message_toolbar_overlay",
-          bypassBlockingOverlays: bypassBlockingOverlays,
-        ),
-      );
-    } else {
-      OverlayUtil.showOverlay(
-        context: context,
-        child: overlayEntry,
-        displayDetails: CenteredOverlayDisplayDetails(
-          onDismiss: clearSelectedEvents,
-          blurBackground: true,
-          backgroundColor: Colors.black,
-          overlayKey: "message_toolbar_overlay",
-          bypassBlockingOverlays: bypassBlockingOverlays,
-        ),
-      );
     }
+
+    OverlayUtil.showOverlay(
+      context: context,
+      child: Semantics(
+        container: true,
+        child: MessageSelectionOverlay(
+          host: this,
+          event: event,
+          timeline: timeline!,
+          initialSelectedToken: selectedToken,
+          nextEvent: nextEvent,
+          prevEvent: prevEvent,
+        ),
+      ),
+      displayDetails: CenteredOverlayDisplayDetails(
+        onDismiss: clearSelectedEvents,
+        blurBackground: true,
+        backgroundColor: Colors.black,
+        overlayKey: "message_toolbar_overlay",
+        bypassBlockingOverlays: bypassBlockingOverlays,
+        blockSemantics: true,
+      ),
+    );
 
     // A deliberate tap on a message is a request to hear it, own messages
     // included. The controller owns which selections qualify.

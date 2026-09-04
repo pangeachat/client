@@ -237,7 +237,7 @@ void main() {
       // The production serializer, analytics_room_id included — a Matrix
       // room id nested two levels inside an extended profile field is the
       // value most exposed to MSC4133 content validation.
-      final lang = LanguageModel(langCode: 'es', displayName: 'Spanish');
+      const lang = 'es';
       final payload = PublicProfileModel(
         analytics: AnalyticsProfileModel(
           targetLanguage: lang,

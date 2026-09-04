@@ -56,6 +56,22 @@ class AnalyticsStreamUpdate {
   });
 }
 
+/// A local analytics update that got nowhere.
+///
+/// Thrown when the work BEFORE the local write fails, so nothing was stored.
+/// The distinction matters to anything that credits once and only once -- a
+/// call's speech, most of all: a failure that stored nothing can be tried
+/// again, and one that stored something cannot, because trying again would
+/// count the same words twice.
+class AnalyticsNotStoredException implements Exception {
+  final Object cause;
+
+  const AnalyticsNotStoredException(this.cause);
+
+  @override
+  String toString() => 'AnalyticsNotStoredException: $cause';
+}
+
 class AnalyticsDataService {
   _AnalyticsClient? _analyticsClient;
 
@@ -88,7 +104,26 @@ class AnalyticsDataService {
   Completer<void> initCompleter = Completer<void>();
   Object? initError;
 
-  AnalyticsDataService(this._accountClient) {
+  /// Opens the analytics store. Injectable so a test can drive the real init
+  /// path against an in-memory database.
+  ///
+  /// Nothing could reach that path before (#8611): every existing test either
+  /// fakes this whole service or drives [AnalyticsDatabase] directly. That gap
+  /// is how #8592 shipped a read on the init path which waited for init to
+  /// finish — a hang that a green suite could not see.
+  final Future<AnalyticsDatabase> Function(String name) _databaseBuilder;
+
+  /// Completes once the store is open and the service can serve reads that do
+  /// not gate on init — strictly BEFORE [initCompleter], which waits for the
+  /// whole of [_initAnalytics]. A test uses it to reach the state the init path
+  /// actually runs in: store ready, init still in flight.
+  @visibleForTesting
+  final Completer<void> databaseReady = Completer<void>();
+
+  AnalyticsDataService(
+    this._accountClient, {
+    Future<AnalyticsDatabase> Function(String name)? databaseBuilder,
+  }) : _databaseBuilder = databaseBuilder ?? analyticsDatabaseBuilder {
     updateDispatcher = AnalyticsUpdateDispatcher(this);
     updateService = AnalyticsUpdateService(this);
     _initDatabase(_accountClient);
@@ -100,6 +135,12 @@ class AnalyticsDataService {
   int _derivedCacheVersion = -1;
   DerivedAnalyticsDataModel? _cachedDerivedStats;
 
+  /// The language [_cachedDerivedStats] was read for. The cache is a single
+  /// slot over a per-language store, so without this a read for one language
+  /// is served another language's totals — and the level computed from it gets
+  /// published as that language's (#8582).
+  String? _cachedDerivedLanguage;
+
   _AnalyticsClient get _analyticsClientGetter {
     assert(_analyticsClient != null);
     return _analyticsClient!;
@@ -107,7 +148,12 @@ class AnalyticsDataService {
 
   bool get isInitializing => !initCompleter.isCompleted;
   bool get hasInitError => initError != null;
-  bool get isLogged => _analyticsClientGetter.client.isLogged();
+
+  /// Read from the account client rather than the analytics client: the
+  /// latter is null before the store opens and again after [dispose], and a
+  /// caller on either side of that window (a late init send, the update
+  /// service's own teardown) needs an answer, not a null check.
+  bool get isLogged => _accountClient.isLogged();
 
   Room? _getAnalyticsRoomLocal(LanguageModel lang) =>
       _analyticsClientGetter.client.ownAnalyticsRoomLocal(lang: lang);
@@ -138,6 +184,7 @@ class AnalyticsDataService {
   void _invalidateCaches() {
     _cacheVersion++;
     _cachedDerivedStats = null;
+    _cachedDerivedLanguage = null;
   }
 
   Future<void> _initDatabase(Client client) async {
@@ -154,10 +201,9 @@ class AnalyticsDataService {
       ),
     );
 
-    final database = await analyticsDatabaseBuilder(
-      "${client.clientName}_analytics",
-    );
+    final database = await _databaseBuilder("${client.clientName}_analytics");
     _analyticsClient = _AnalyticsClient(client: client, database: database);
+    if (!databaseReady.isCompleted) databaseReady.complete();
 
     if (client.isLogged()) {
       // Pin the dosage account mxid the moment we know we are logged in, BEFORE
@@ -241,15 +287,17 @@ class AnalyticsDataService {
       );
 
       if (l2 != null) {
-        int xpOffset = analyticsProfile.xpOffsetByLanguage(l2) ?? 0;
+        int xpOffset =
+            analyticsProfile.xpOffsetByLanguage(l2.langCodeShort) ?? 0;
         if (xpOffset < 0) {
           ErrorHandler.logError(
             e: "Negative XP offset calculated during analytics update",
             s: StackTrace.current,
-            data: {"offset": xpOffset},
+            data: {"offset": xpOffset, "language": l2.langCodeShort},
           );
           await MatrixState.pangeaController.userController.addXPOffset(
             -xpOffset,
+            l2.langCodeShort,
           );
           xpOffset = 0;
         }
@@ -380,15 +428,25 @@ class AnalyticsDataService {
     await _syncController?.waitForSync(analyticsRoomID);
   }
 
-  DerivedAnalyticsDataModel? get cachedDerivedData => _cachedDerivedStats;
+  /// The cached stats, but only when they are [language]'s. This is the
+  /// synchronous placeholder a UI surface paints before [derivedData] resolves,
+  /// so handing back another language's totals shows the learner a level that
+  /// is not theirs for this language. The cache is one slot over a per-language
+  /// store and [_recomputeTotalXP] can populate it for a language that is not
+  /// the current target, so the language has to be checked, not assumed.
+  DerivedAnalyticsDataModel? cachedDerivedDataFor(String language) =>
+      _cachedDerivedLanguage == language ? _cachedDerivedStats : null;
 
   Future<DerivedAnalyticsDataModel> derivedData(String language) async {
     await _ensureInitialized();
 
-    if (_cachedDerivedStats == null || _derivedCacheVersion != _cacheVersion) {
+    if (_cachedDerivedStats == null ||
+        _derivedCacheVersion != _cacheVersion ||
+        _cachedDerivedLanguage != language) {
       _cachedDerivedStats = await _analyticsClientGetter.database
           .getDerivedStats(language);
       _derivedCacheVersion = _cacheVersion;
+      _cachedDerivedLanguage = language;
     }
 
     return _cachedDerivedStats!;
@@ -449,6 +507,14 @@ class AnalyticsDataService {
   Future<List<OneConstructUse>> getLocalUses(String language) async {
     await _ensureInitialized();
     return _analyticsClientGetter.database.getLocalUses(language);
+  }
+
+  /// See [AnalyticsDatabase.getLocalUseBatches].
+  Future<Map<String, List<OneConstructUse>>> getLocalUseBatches(
+    String language,
+  ) async {
+    await _ensureInitialized();
+    return _analyticsClientGetter.database.getLocalUseBatches(language);
   }
 
   Future<int> getLocalConstructCount(String language) async {
@@ -643,11 +709,21 @@ class AnalyticsDataService {
         .toList();
     final updateIds = addedConstructs.map((c) => c.identifier).toSet();
 
-    final prevData = await derivedData(language);
-    final prevConstructs = await getConstructUses(updateIds.toList(), language);
+    // Everything up to the local write can fail, and a caller that has
+    // already marked the work done -- a call crediting a learner's speech
+    // once and only once -- needs to tell "nothing landed" from "it landed
+    // and something after it failed". Only the first is safe to try again.
+    final DerivedAnalyticsDataModel prevData;
+    final Map<ConstructIdentifier, ConstructUses> prevConstructs;
+    try {
+      prevData = await derivedData(language);
+      prevConstructs = await getConstructUses(updateIds.toList(), language);
 
-    _invalidateCaches();
-    await _ensureInitialized();
+      _invalidateCaches();
+      await _ensureInitialized();
+    } catch (e, s) {
+      Error.throwWithStackTrace(AnalyticsNotStoredException(e), s);
+    }
 
     final blocked = blockedConstructs;
     final newUnusedConstructs = updateIds
@@ -682,6 +758,7 @@ class AnalyticsDataService {
     // Do this on all updates (not just on level updates) to account for cases
     // of target language updates being missed (https://github.com/pangeachat/client/issues/2006)
     MatrixState.pangeaController.userController.updateAnalyticsProfile(
+      languageCode: language,
       level: newData.level,
     );
 
@@ -706,7 +783,10 @@ class AnalyticsDataService {
           },
         );
       } else {
-        await MatrixState.pangeaController.userController.addXPOffset(offset);
+        await MatrixState.pangeaController.userController.addXPOffset(
+          offset,
+          language,
+        );
         // Mirrors whatever the public profile ended up holding. Null when the
         // offset was not applied there — nothing loaded yet, or a profile
         // belonging to another account (#8531) — and the local copy must then
@@ -716,7 +796,7 @@ class AnalyticsDataService {
             .userController
             .publicProfile
             ?.analytics
-            .xpOffset;
+            .xpOffsetByLanguage(language);
         if (xpOffset != null) {
           await updateXPOffset(xpOffset, language);
         }
@@ -787,10 +867,32 @@ class AnalyticsDataService {
       blocked: blockedConstructs,
     );
 
-    await MatrixState.pangeaController.userController.updateAnalyticsProfile(
-      level: DerivedAnalyticsDataModel.calculateLevelWithXp(totalXP),
-    );
+    // Store first, then publish the level the STORE now reports. The mirror
+    // has to agree with the analytics bar, and the bar renders
+    // DerivedAnalyticsDataModel.level — which is computed over totalXP PLUS the
+    // language's XP offset. Publishing calculateLevelWithXp(totalXP) here
+    // dropped that offset, so every learner carrying one (any learner whose
+    // level protection has ever engaged) had a mirror sitting below their own
+    // bar, re-published on every sync round-trip (#8582).
     await db.updateTotalXP(totalXP, language);
+    _invalidateCaches();
+
+    // Read the stored stats STRAIGHT from the database rather than through
+    // derivedData(). This runs inside analytics init — _initDatabase awaits
+    // bulkUpdate, which lands here whenever the analytics room has events since
+    // the last local sync — and derivedData() waits on the very init completer
+    // that only completes after that call returns. Routing through it hangs
+    // analytics initialization, and with it every read that awaits the same
+    // completer. Nothing else on this path is init-gated, which is why it was
+    // safe before.
+    final stats = await db.getDerivedStats(language);
+
+    await MatrixState.pangeaController.userController.updateAnalyticsProfile(
+      languageCode: language,
+      // Includes the language's XP offset, exactly as the analytics bar's
+      // DerivedAnalyticsDataModel.level does.
+      level: stats.level,
+    );
   }
 
   /// Total XP over per-row uncapped xp [sums]: rows are grouped by their
@@ -841,15 +943,24 @@ class AnalyticsDataService {
     _invalidateCaches();
   }
 
-  /// Drop the local (not-yet-uploaded) uses and aggregates, then re-derive
-  /// the XP total. This runs right after the uploaded copy has echoed back
-  /// from the analytics room; the recompute that echo triggered saw the
-  /// uses on both sides, so the total is settled here rather than on the
-  /// next unrelated sync.
-  Future<void> clearLocalAnalytics(String language) async {
+  /// Drop the uploaded local batches ([batchKeys]) and rebuild the local
+  /// aggregates from whatever is still pending, then re-derive the XP total.
+  /// This runs right after the uploaded copy has echoed back from the
+  /// analytics room; the recompute that echo triggered saw the uses on both
+  /// sides, so the total is settled here rather than on the next unrelated
+  /// sync. Only the uploaded batches may be dropped — uses recorded while the
+  /// upload was in flight were not in it, and clearing the whole language
+  /// destroyed them before they were ever sent (#7720).
+  Future<void> clearLocalAnalytics(
+    String language,
+    Iterable<String> batchKeys,
+  ) async {
     _invalidateCaches();
     await _ensureInitialized();
-    await _analyticsClientGetter.database.clearLocalConstructData(language);
+    await _analyticsClientGetter.database.clearLocalConstructData(
+      language,
+      batchKeys: batchKeys,
+    );
     _invalidateCaches();
     await _recomputeTotalXP(language);
   }

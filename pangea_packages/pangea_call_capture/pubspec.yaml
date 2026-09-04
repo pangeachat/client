@@ -1,0 +1,26 @@
+name: pangea_call_capture
+description: Reads a device's own outbound call audio after echo cancellation.
+version: 0.1.0
+publish_to: none
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+# Android only. Every other platform this app ships on already taps after echo
+# cancellation through the WebRTC plugin's own renderer, so there is nothing for
+# this to do there.
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: chat.pangea.call_capture
+        pluginClass: PangeaCallCapturePlugin

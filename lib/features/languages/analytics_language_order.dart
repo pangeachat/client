@@ -29,16 +29,20 @@ class AnalyticsLanguageOrder {
           ? analyticsLanguages.length
           : -1;
 
-  /// [analyticsByLanguage] is null for a list this rule doesn't apply to
-  /// (the base-language list) and produces [analyticsLanguages] empty.
+  /// [analytics] is null for a list this rule doesn't apply to (the
+  /// base-language list), which produces [analyticsLanguages] empty.
+  ///
+  /// A regional variant never leads, because it never displays a level — see
+  /// [AnalyticsProfileModel.displayEntryFor]. Promoting one would put a row
+  /// with no level above languages that have one.
   factory AnalyticsLanguageOrder.of(
     List<LanguageModel> languages,
-    Map<LanguageModel, LanguageAnalyticsProfileEntry>? analyticsByLanguage,
+    AnalyticsProfileModel? analytics,
   ) {
-    final analyticsLanguages = analyticsByLanguage == null
+    final analyticsLanguages = analytics == null
         ? <LanguageModel>[]
         : languages
-              .where((lang) => analyticsByLanguage.containsKey(lang))
+              .where((lang) => analytics.displayEntryFor(lang) != null)
               .toList();
     final remainingLanguages = analyticsLanguages.isEmpty
         ? languages

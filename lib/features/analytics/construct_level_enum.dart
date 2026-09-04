@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/analytics/analytics_constants.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/customized_svg.dart';
 
 enum ConstructLevelEnum {
@@ -43,6 +44,20 @@ enum ConstructLevelEnum {
         return "${AppConfig.assetsBaseURL}/${AnalyticsConstants.leafSvgFileName}";
       case ConstructLevelEnum.flowers:
         return "${AppConfig.assetsBaseURL}/${AnalyticsConstants.flowerSvgFileName}";
+    }
+  }
+
+  /// The stage's user-facing name — what a screen reader says wherever the
+  /// visual is the stage icon alone (the vocab filter chips, the word tiles).
+  /// The seeds→greens→flowers metaphor per analytics-system.instructions.md.
+  String displayName(L10n l10n) {
+    switch (this) {
+      case ConstructLevelEnum.flowers:
+        return l10n.constructLevelFlowers;
+      case ConstructLevelEnum.greens:
+        return l10n.constructLevelGreens;
+      case ConstructLevelEnum.seeds:
+        return l10n.constructLevelSeeds;
     }
   }
 

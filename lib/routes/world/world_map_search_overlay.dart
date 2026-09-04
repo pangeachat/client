@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
@@ -9,6 +10,7 @@ import 'package:fluffychat/routes/world/world_map_filter.dart';
 import 'package:fluffychat/routes/world/world_map_filter_bar.dart';
 import 'package:fluffychat/routes/world/world_map_level_fallback_notice.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
+import 'package:fluffychat/widgets/layouts/workspace_shell.dart';
 import 'package:fluffychat/widgets/pangea_search_bar.dart';
 
 /// Per-activity completion, derived client-side from Matrix session state.
@@ -77,6 +79,15 @@ class _WorldMapSearchOverlayState extends State<WorldMapSearchOverlay> {
     text: widget.filter.query,
   );
 
+  /// The first dropdown row, so the down arrow can jump straight from the
+  /// text field into the results (#8714) — the combobox pattern; without it a
+  /// keyboard user must Tab through the filter pills to reach what they just
+  /// searched for. Within the list the framework's default directional
+  /// shortcuts take over, and Enter activates the focused row.
+  final FocusNode _firstResultFocus = FocusNode(
+    debugLabel: 'WorldMapSearchFirstResult',
+  );
+
   static const _maxResults = 20;
 
   @override
@@ -92,7 +103,20 @@ class _WorldMapSearchOverlayState extends State<WorldMapSearchOverlay> {
   @override
   void dispose() {
     _controller.dispose();
+    _firstResultFocus.dispose();
     super.dispose();
+  }
+
+  /// A single-line field has no caret use for the down arrow, so it is safe
+  /// to repurpose as enter-the-results whenever rows are showing.
+  KeyEventResult _onSearchBarKey(FocusNode node, KeyEvent event) {
+    if (event is KeyUpEvent ||
+        event.logicalKey != LogicalKeyboardKey.arrowDown ||
+        !_firstResultFocus.canRequestFocus) {
+      return KeyEventResult.ignored;
+    }
+    _firstResultFocus.requestFocus();
+    return KeyEventResult.handled;
   }
 
   @override
@@ -103,6 +127,9 @@ class _WorldMapSearchOverlayState extends State<WorldMapSearchOverlay> {
 
     return Semantics(
       label: l10n.searchActivitiesLabel,
+      // Keyed so the overlay slots between the cluster and the map's anchored
+      // strip in the workspace browse order (#8755).
+      sortKey: BrowseOrder.mapChrome,
       container: true,
       child: SafeArea(
         child: FocusTraversalGroup(
@@ -111,17 +138,24 @@ class _WorldMapSearchOverlayState extends State<WorldMapSearchOverlay> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              PangeaSearchBar(
-                controller: _controller,
-                onChanged: widget.updateQuery,
-                labelText: l10n.mapSearchHint,
-                suffixIcon: searching
-                    ? IconButton(
-                        icon: const Icon(Icons.close),
-                        tooltip: l10n.clearSearch,
-                        onPressed: () => widget.updateQuery(''),
-                      )
-                    : null,
+              Focus(
+                onKeyEvent: _onSearchBarKey,
+                // The interceptor rides the field's focus ancestry; the field
+                // itself stays the Tab stop.
+                canRequestFocus: false,
+                skipTraversal: true,
+                child: PangeaSearchBar(
+                  controller: _controller,
+                  onChanged: widget.updateQuery,
+                  labelText: l10n.mapSearchHint,
+                  suffixIcon: searching
+                      ? IconButton(
+                          icon: const Icon(Icons.close),
+                          tooltip: l10n.clearSearch,
+                          onPressed: () => widget.updateQuery(''),
+                        )
+                      : null,
+                ),
               ),
               const SizedBox(height: 8),
               Semantics(
@@ -159,6 +193,7 @@ class _WorldMapSearchOverlayState extends State<WorldMapSearchOverlay> {
                         itemBuilder: (context, i) {
                           final card = widget.results[i];
                           return ListTile(
+                            focusNode: i == 0 ? _firstResultFocus : null,
                             dense: true,
                             leading: const Icon(Icons.star, size: 18),
                             title: Text(

@@ -5,7 +5,7 @@ description: Learn a language while texting your friends.
 # Pangea#
 publish_to: none
 # On version bump also increase the build number for F-Droid
-version: 5.0.3+6
+version: 5.0.4+1
 
 environment:
   sdk: ">=3.10.0 <4.0.0"
@@ -65,6 +65,10 @@ dependencies:
   matrix:
     git:
       url: https://github.com/pangeachat/matrix-dart-sdk.git # repo
+      # Pinned deliberately. The MatrixRTC/LiveKit call work depends on SDK VoIP
+      # internals (LiveKitBackend, GroupCallSession, WebRTCDelegate); without a ref
+      # this resolves to HEAD and can change under us on any `pub upgrade`.
+      ref: c77fe893a58f65cb17688545bb275397a8e5164a
   # Pangea#
   mime: ^2.0.0
   opus_caf_converter_dart: ^1.0.1
@@ -119,7 +123,11 @@ dependencies:
   get_storage: ^2.1.1
   in_app_purchase: ^3.3.0
   jwt_decode: ^0.3.1
-  material_symbols_icons: ^4.2741.0
+  # Capped below 4.2928: Flutter 3.41's icon tree-shaker (font-subset) corrupts
+  # the glyph-variation data of the 4.2928+ fonts, so tree-shaken icons render
+  # blank on web (#8773). 4.2928+ only exists for Flutter 3.44+ (final IconData);
+  # before raising the bound, decode the built subset font's gvar table.
+  material_symbols_icons: '>=4.2741.0 <4.2928.0'
   open_file: ^3.3.2
   sentry_flutter: ^9.17.0
   shimmer: ^3.0.0
@@ -137,6 +145,7 @@ dependencies:
   # (routes/chat/events/streaming_stt/) connects the choreo WS relay with the
   # access_token subprotocol via WebSocketChannel.
   web_socket_channel: ^3.0.3
+  livekit_client: ^2.9.0
   # iOS-only: per-field keyboard language persistence for the chat composer
   # (routes/chat/composer_keyboard_context.dart, #8465).
   text_input_context:
@@ -146,6 +155,8 @@ dependencies:
   keyboard_languages:
     path: pangea_packages/keyboard_languages
   # Pangea#
+  pangea_call_capture:
+    path: pangea_packages/pangea_call_capture
 
 dev_dependencies:
   flutter_lints: ^6.0.0

@@ -231,7 +231,9 @@ class KeyboardPromptBannerState extends State<KeyboardPromptBanner>
             child: TextButton(
               onPressed: () => showDialog<bool>(
                 context: context,
-                builder: (context) => const EnableAutocorrectDialog(),
+                builder: (context) => EnableAutocorrectDialog(
+                  title: L10n.of(context).addKeyboardDialogTitle,
+                ),
               ),
               child: Text(L10n.of(context).keyboardPromptAddKeyboardAction),
             ),

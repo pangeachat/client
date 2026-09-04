@@ -7,6 +7,7 @@ import 'package:matrix/matrix.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fluffychat/config/setting_keys.dart';
+import 'package:fluffychat/routes/chat/calls/call_timeline_event.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/utils/custom_http_client.dart';
@@ -144,6 +145,11 @@ abstract class ClientManager {
         PangeaEventTypes.courseSettings,
         PangeaEventTypes.orchestratorAwardedGoals,
         PangeaEventTypes.botParticipant,
+        // Who is in a call. An incoming call can be for ANY room, so this has
+        // to be known without that room having been opened — a ring is decided
+        // against it, and a room left partial would read as nobody being in
+        // the call at all.
+        EventTypes.GroupCallMember,
         // Pangea#
       },
       logLevel: kReleaseMode ? Level.warning : Level.verbose,
@@ -165,12 +171,24 @@ abstract class ClientManager {
           ? (client) => client.refreshAccessToken()
           : null,
       // #Pangea
-      shouldReplaceRoomLastEvent: (_, event) => event.isVisibleLastEvent,
+      shouldReplaceRoomLastEvent: (current, event) =>
+          event.isVisibleLastEvent &&
+          // Two genuine cards for one call must not leave the chat list
+          // describing a different one than the conversation draws.
+          callCardMayTakeTheChatListLine(current, event),
       enableLastEventRefresh: false,
       roomPreviewLastEvents: {
         PangeaEventTypes.activityPlan,
         PangeaEventTypes.activitySummary,
         EventTypes.RoomMember,
+        // A finished call is the newest thing that happened in that room, and
+        // the chat list should say so. Without this the card can never become
+        // the room's last event: hiding the membership plumbing stopped the
+        // list reading "sent a com.famedly.call.member event", but left
+        // "No messages yet" on a room where two people had just talked. The
+        // card carries a plain body -- "Voice call (0:13)", "Missed call",
+        // "Call declined" -- written for exactly this line.
+        PangeaEventTypes.call,
       },
       // Pangea#
     );

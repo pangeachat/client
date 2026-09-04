@@ -91,7 +91,7 @@ A tutorial is offered when it is unseen, its trigger fires, and its gate passes.
 |---|---|---|
 | `welcome` | Orientation | first arrival at **either** the world map or a course plan — once ever, whichever comes first |
 | `worldMap` | Orientation | first world map with pins actually rendered |
-| `coursePlan` | Orientation | first joined course whose plan is showing its Up-next Mission |
+| `coursePlan` | Orientation | first joined course whose page is showing its Activities row |
 | `activityGoals` | Orientation | first activity chat showing a goal header |
 | `appTour` | Orientation | next arrival at a map after the learner's first finished activity |
 | the chat sequence — `readingAssistance`, `selectModeButtons`, `writingAssistance` | Feature | the learner's first L2 message containing a word new to them, while scrolled to the bottom |
@@ -146,13 +146,13 @@ Mirrors `worldMap` — an introduction to the surface, then "go start one", with
 
 1. **A welcome naming the course**, lighting the **whole course panel** — header, progress and plan sections together — so the step is plainly about *this* course: a learning journey the learner takes with their course mates. A full-height target leaves no room beside it, so the card sits at the bottom **of the panel**, centred on it.
 2. **The course progress bar.** Doing activities and earning **stars** is what moves them along the course. A star is one orchestrator-awarded activity goal and a Mission is a learning objective — [quests](quests.instructions.md) owns both.
-3. **The Up-next Mission's activity carousel.** Armed — the learner picks an activity themselves, from a set their course author chose. The only armed step left; the map's equivalent points at one activity and opens it on a tap.
+3. **The course page's Activities row** — the ranked, Mission-less shortlist of the plan's activities ([quests](quests.instructions.md)). Armed — the learner picks an activity themselves, from a set their course author chose. The only armed step left; the map's equivalent points at one activity and opens it on a tap.
 
-**The carousel, not its individual cards.** A card would need a target id each, and the same activity can appear under more than one Mission, so two cards would contend for one id. Exactly one Mission is ever the anchor, so pointing at its carousel has a single claimant — and it says the more useful thing anyway: *these* are the activities for what you are working on now.
+**The row, not its individual cards.** A card would need a target id each, and the row re-ranks continuously, so no card is a stable claimant. The row is one widget on the course page, so pointing at it has a single claimant — and it says the more useful thing anyway: *these* are the activities to try next.
 
-**It runs on the course card's Up-next highlight, not the full-plan subpage.** The subpage is pushed within the card, so both are mounted at once and both have an anchor Mission; the highlight wins, because it is what a learner sees when they open the course. A preview of an unjoined plan runs nothing — there is no learner progress to explain.
+**It runs on the course page's Activities row, not the full-plan subpage.** The subpage is pushed within the card, so both are mounted at once; the row wins, because it is what a learner sees when they open the course. A preview of an unjoined plan runs nothing — there is no learner progress to explain.
 
-**No two-role filter here, unlike the map.** On the world map, two-role activities are singled out because the bot fills one seat and a 3+ role activity is a dead end for a learner with nobody to play with. Inside a course that reasoning inverts: its activities were hand-picked by the course author, so a 3+ role one is a deliberate part of the syllabus — which is why the [world map](world-map.instructions.md) already declines to demote it there. The step points at the Mission's activities and lets the learner choose.
+**No two-role filter here, unlike the map.** On the world map, two-role activities are singled out because the bot fills one seat and a 3+ role activity is a dead end for a learner with nobody to play with. Inside a course that reasoning inverts: its activities were hand-picked by the course author, so a 3+ role one is a deliberate part of the syllabus — which is why the [world map](world-map.instructions.md) already declines to demote it there. The step points at the row and lets the learner choose.
 
 ### activityGoals
 

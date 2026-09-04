@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
@@ -34,16 +35,26 @@ class ErrorHandler {
     // capturing directly, so a failure arriving here gets the same severity
     // table and grouping key as one reported from a repo — a raw
     // [Sentry.captureException] gets neither.
-    FlutterError.onError = (FlutterErrorDetails details) async {
-      if (!kDebugMode || PlatformInfos.isMobile) {
-        await logError(e: details.exception, s: details.stack, data: {});
-      }
-    };
+    FlutterError.onError = onFlutterError;
 
     PlatformDispatcher.instance.onError = (exception, stack) {
       logError(e: exception, s: stack, data: {});
       return true;
     };
+  }
+
+  /// The [FlutterError.onError] sink. Overriding the default sink must not
+  /// drop [FlutterError.presentError]: without it a debug build discards
+  /// every framework error — no console output, no `flutter run` log line —
+  /// and a rendering bug thrown on every frame produces nothing anywhere a
+  /// developer looks (#8677). Release builds skip it, so their surfacing is
+  /// exactly what it was: [logError] alone.
+  @visibleForTesting
+  static Future<void> onFlutterError(FlutterErrorDetails details) async {
+    if (kDebugMode) FlutterError.presentError(details);
+    if (!kDebugMode || PlatformInfos.isMobile) {
+      await logError(e: details.exception, s: details.stack, data: {});
+    }
   }
 
   /// Puts [Environment.sentryBuildTags] on the global scope, so every event
@@ -72,6 +83,36 @@ class ErrorHandler {
   /// Keys already reported this session via [logErrorOnce].
   static final Set<String> _reportedOnceKeys = {};
 
+  /// The grouping key and session cap key for the expired-token condition.
+  static const List<String> _expiredTokenFingerprint = [
+    'pangea-auth',
+    'expired-matrix-token',
+  ];
+
+  /// Whether [e] is an expired (or otherwise invalidated) Matrix access token
+  /// surfacing as a failed call. One expired token fails every surface at
+  /// once — each call in flight at app boot 401s before the SDK's soft-logout
+  /// refresh lands — so the condition scattered into seven per-endpoint
+  /// Sentry issues (CLIENT-EHD/-EBG/-EBK/-EBM/-EBH/-EED/-EBJ, #8698) at
+  /// ~30 events/day. [logError] collapses everything matching here into one
+  /// grouping ([_expiredTokenFingerprint]) and one report per app session.
+  ///
+  /// Three shapes, all the same condition:
+  /// - the Matrix SDK's own `M_UNKNOWN_TOKEN` failure;
+  /// - a choreo 401 — choreo validates the bearer via Synapse WhoAmI, and an
+  ///   expired token makes that check itself 401;
+  /// - a Pangea Synapse-module 401 — the homeserver rejecting the bearer
+  ///   directly.
+  ///
+  /// Any other 401 (e.g. one with no expired-token detail) keeps its own
+  /// per-endpoint grouping and is never capped.
+  static bool _isExpiredTokenError(Object e) {
+    if (e is MatrixException) return e.error == MatrixError.M_UNKNOWN_TOKEN;
+    if (e is! PangeaHttpException || e.statusCode != 401) return false;
+    return (e.detail?.contains('Matrix WhoAmI non-200 (401)') ?? false) ||
+        e.path.startsWith('/_synapse/client/pangea');
+  }
+
   @visibleForTesting
   static void resetReportedOnceKeysForTest() => _reportedOnceKeys.clear();
 
@@ -82,9 +123,8 @@ class ErrorHandler {
   /// is pure event volume. Returns whether this call reported.
   static Future<bool> logErrorOnce({
     required String key,
-    Object? e,
+    required Object e,
     StackTrace? s,
-    String? m,
     required Map<String, dynamic> data,
     SentryLevel? level,
   }) async {
@@ -92,7 +132,7 @@ class ErrorHandler {
     // consume the one report a genuine failure on this key is owed.
     if (!shouldReport(e)) return false;
     if (!_reportedOnceKeys.add(key)) return false;
-    await logError(e: e, s: s, m: m, data: data, level: level);
+    await logError(e: e, s: s, data: data, level: level);
     return true;
   }
 
@@ -106,31 +146,55 @@ class ErrorHandler {
   /// policy). An explicit [level] still wins: a caller with context the
   /// failure lacks may escalate.
   ///
+  /// There is deliberately no `m:` message parameter. One existed and was
+  /// silently dropped whenever [e] was non-null — `captureException(e ?? ...)`
+  /// only ever read it in the no-exception case — so 37 call sites passed a
+  /// hand-written message that reached `debugPrint` and nothing else, and
+  /// searching Sentry for one of our own strings returned nothing (#8660).
+  /// Put the description in [e] instead; it is what Sentry actually reports.
+  ///
+  /// [e] is required for the same reason: a report with no error attached
+  /// carried no information the moment `m` stopped backing it.
+  ///
   /// A [PangeaHttpException] additionally reaches Sentry with an explicit
   /// grouping key ([PangeaHttpException.fingerprintOf]) so it lands in an issue
   /// per status + endpoint. Sentry groups by stack trace otherwise, and these
   /// all share one frame in [Requests], so every HTTP failure in the app
   /// collapsed into a single catch-all issue (#8469).
   static Future<void> logError({
-    Object? e,
+    required Object e,
     StackTrace? s,
-    String? m,
     required Map<String, dynamic> data,
     SentryLevel? level,
   }) async {
     if (!shouldReport(e)) return;
 
-    debugPrint("error message: ${m ?? e}");
+    // One expired token is one condition regardless of which call surfaced
+    // it: a single grouping, one report per app session ([logErrorOnce]
+    // semantics — the first event carries the signal, Sentry tallies users),
+    // and warning severity per the 401 row of the severity table.
+    final expiredToken = _isExpiredTokenError(e);
+    if (expiredToken && !_reportedOnceKeys.add(_expiredTokenFingerprint.last)) {
+      return;
+    }
+
+    debugPrint("error message: $e");
 
     Sentry.addBreadcrumb(Breadcrumb(data: data));
     debugPrint(data.toString());
 
     Sentry.captureException(
-      e ?? Exception(m ?? "no message supplied"),
+      e,
       stackTrace: s ?? StackTrace.current,
       withScope: (scope) {
-        scope.level = level ?? PangeaHttpException.severityOf(e);
-        final fingerprint = PangeaHttpException.fingerprintOf(e);
+        scope.level =
+            level ??
+            (expiredToken
+                ? SentryLevel.warning
+                : PangeaHttpException.severityOf(e));
+        final fingerprint = expiredToken
+            ? _expiredTokenFingerprint
+            : PangeaHttpException.fingerprintOf(e);
         if (fingerprint != null) scope.fingerprint = fingerprint;
       },
     );
@@ -152,6 +216,10 @@ class ErrorCopy {
       }
 
       switch (errorCode) {
+        // Waiting is the remedy, so the generic "try again later" default
+        // would overstate the outage (#8705).
+        case 429:
+          return l10n.errorRateLimited;
         case 502:
         case 504:
         case 500:
