@@ -563,6 +563,48 @@ void main() {
             'persisted as a confirmed send',
       );
     });
+
+    test('a cancellation that wins the send race logs the already-uploaded '
+        'blob\'s url, not a generic message', () async {
+      // The third and last orphan timing: the send race is only ever
+      // entered once the upload has already landed (`gen.uploadedUrl` is
+      // what the "checked again immediately before send" guard above the
+      // send race depends on, and this test's own cancellation lands
+      // AFTER that guard has already passed), so by the time this
+      // cancellation wins the send race, the blob it orphans is sitting
+      // right there in `gen.uploadedUrl`. The catch this falls into used
+      // to log a single message shared with the OTHER thing that can win
+      // this same exception type -- cancellation winning the UPLOAD race
+      // instead, where there genuinely is no url yet -- so it could not
+      // say which case this was.
+      final logsBefore = Logs().outputEvents.length;
+      uploadResult = (_) => Uri.parse('mxc://example.com/orphan-c');
+      final r = recorder();
+      r.onRunStarted(1000, 16000, 1);
+      r.onFrame(_tone(160));
+      r.onRunEnded();
+
+      sendGate = Completer<String?>(); // never completed
+      final finishing = r.finish(carriedOn: true, callKey: _callKey);
+      await pumpEventQueue();
+      expect(
+        uploads,
+        hasLength(1),
+        reason: 'the upload already landed by the time the send starts',
+      );
+
+      r.cancelOwnership();
+      await finishing.timeout(const Duration(seconds: 2));
+
+      final newLogs = Logs().outputEvents.skip(logsBefore);
+      expect(
+        newLogs.any((e) => e.title.contains('mxc://example.com/orphan-c')),
+        isTrue,
+        reason:
+            'a cancellation that wins the send race must name the blob '
+            'it orphans, exactly like the other two timings above',
+      );
+    });
   });
 
   group('the frame fan-out is bounded and non-blocking', () {

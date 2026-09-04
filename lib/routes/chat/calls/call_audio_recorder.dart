@@ -846,10 +846,33 @@ class CallAudioRecorder implements CallAudioRecordingSink {
           }
           return;
         } on _AudioRecordingCanceled {
-          Logs().i(
-            'Call audio upload abandoned: ownership was lost while it was '
-            'in flight',
-          );
+          // Fires for cancellation winning EITHER race above -- the upload's
+          // or the send's -- and those two cases are not equally quiet: the
+          // send race is only ever entered once `gen.uploadedUrl` is set (the
+          // block that runs the upload race is skipped outright whenever a
+          // url is already there, whether from earlier in this attempt or
+          // reused from a previous one), so a non-null `gen.uploadedUrl`
+          // here can only mean the upload had already landed when
+          // cancellation won -- the third and last timing of the same
+          // orphan this class already names at the other two (the
+          // upload-future observer above, and the "checked again
+          // immediately before send" guard just above this try block). Named
+          // for the same reason those are: a generic "abandoned" message
+          // here would leave this timing's orphan the one this class's own
+          // docs promise never happens silently.
+          final uploaded = gen.uploadedUrl;
+          if (uploaded != null) {
+            Logs().w(
+              'Call audio upload abandoned: ownership was lost while it was '
+              'in flight; the already-uploaded blob at $uploaded is now an '
+              'orphan no event will ever reference',
+            );
+          } else {
+            Logs().i(
+              'Call audio upload abandoned: ownership was lost while it was '
+              'in flight',
+            );
+          }
           return;
         } catch (e, s) {
           lastError = e;
