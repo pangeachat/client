@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-09-03 14:43:48.855379",
+    "@@last_modified": "2026-09-04 10:08:32.743122",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "Mahimo nimong i-enable ang text-to-speech sa imong mga setting sa pagkat-on",
     "noSpaceDescriptionYet": "Wala pay nahimo nga deskripsyon sa kurso.",
     "tooLargeToSend": "Dako ra kaayo kining mensahe aron ipadala",
-    "enableAutocorrectPopupTitle": "Idugang ang imong target language nga keyboard pinaagi sa pag-adto sa:",
     "enableAutocorrectPopupSteps": "  • Settings\n  • General\n  • Keyboard\n  • Keyboards\n  • Add New Keyboard",
     "enableAutocorrectPopupDescription": "Kung mapili na ang pinulongan, mahimo nimong i-klik ang gamay nga icon sa globe sa ubos sa wala sa imong keyboard aron ma-activate ang bag-ong gi-install nga keyboard.",
     "enableAutocorrectWarning": "Pahibalo! Nagkinahanglan og pagdugang sa imong target language nga keyboard",
@@ -2266,5 +2265,7 @@
     "seeAll": "Tan-awa tanan",
     "seeAllSection": "Tan-awa tanan {section}",
     "showMoreOptionsHint": "ipakita ang dugang nga kapilian",
-    "onboardingStepOfTotal": "Lakang {step} sa {total}"
+    "onboardingStepOfTotal": "Lakang {step} sa {total}",
+    "addKeyboardDialogTitle": "Idugang ang keyboard sa imong target nga pinulongan",
+    "enableAutocorrectPopupPathIntro": "Aron makadugang, adto sa:"
 }

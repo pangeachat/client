@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-09-03 14:43:45.769672",
+    "@@last_modified": "2026-09-04 10:08:31.795354",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "Možete omogućiti pretvaranje teksta u govor u postavkama učenja",
     "noSpaceDescriptionYet": "Opis kursa još nije kreiran.",
     "tooLargeToSend": "Ova poruka je prevelika za slanje",
-    "enableAutocorrectPopupTitle": "Dodajte tastaturu ciljnog jezika tako što ćete otići na:",
     "enableAutocorrectPopupSteps": "  • Postavke\n  • Općenito\n  • Tastatura\n  • Tastature\n  • Dodaj novu tastaturu",
     "enableAutocorrectPopupDescription": "Nakon što je jezik odabran, možete kliknuti na malu ikonu globusa u donjem lijevom uglu tastature da biste aktivirali novoinstaliranu tastaturu.",
     "enableAutocorrectWarning": "Upozorenje! Potrebno je dodati tastaturu ciljnog jezika",
@@ -2266,5 +2265,7 @@
     "seeAll": "Pogledaj sve",
     "seeAllSection": "Pogledaj sve {section}",
     "showMoreOptionsHint": "prikaži više opcija",
-    "onboardingStepOfTotal": "Korak {step} od {total}"
+    "onboardingStepOfTotal": "Korak {step} od {total}",
+    "addKeyboardDialogTitle": "Dodajte tastaturu za ciljni jezik",
+    "enableAutocorrectPopupPathIntro": "Da biste je dodali, idite na:"
 }

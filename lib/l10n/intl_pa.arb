@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-09-03 14:43:50.367784",
+    "@@last_modified": "2026-09-04 10:08:38.228151",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "ਤੁਸੀਂ ਆਪਣੀ ਸਿਖਲਾਈ ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਟੈਕਸਟ-ਟੂ-ਸਪੀਚ ਨੂੰ ਚਾਲੂ ਕਰ ਸਕਦੇ ਹੋ",
     "noSpaceDescriptionYet": "ਅਜੇ ਤੱਕ ਕੋਰਸ ਦਾ ਕੋਈ ਵੇਰਵਾ ਨਹੀਂ ਬਣਾਇਆ ਗਿਆ ਹੈ।",
     "tooLargeToSend": "ਇਹ ਸੁਨੇਹਾ ਭੇਜਣ ਲਈ ਬਹੁਤ ਵੱਡਾ ਹੈ",
-    "enableAutocorrectPopupTitle": "ਇੱਥੇ ਜਾ ਕੇ ਆਪਣੀ ਟੀਚਾ ਭਾਸ਼ਾ ਦਾ ਕੀਬੋਰਡ ਸ਼ਾਮਲ ਕਰੋ:",
     "enableAutocorrectPopupSteps": "  • ਸੈਟਿੰਗਾਂ\n  • ਜਨਰਲ\n  • ਕੀਬੋਰਡ\n  • ਕੀਬੋਰਡਸ\n  • ਨਵਾਂ ਕੀਬੋਰਡ ਸ਼ਾਮਲ ਕਰੋ",
     "enableAutocorrectPopupDescription": "ਇੱਕ ਵਾਰ ਭਾਸ਼ਾ ਚੁਣੇ ਜਾਣ ਤੋਂ ਬਾਅਦ, ਤੁਸੀਂ ਨਵੇਂ ਸਥਾਪਤ ਕੀਤੇ ਕੀਬੋਰਡ ਨੂੰ ਚਾਲੂ ਕਰਨ ਲਈ ਆਪਣੇ ਕੀਬੋਰਡ ਦੇ ਹੇਠਾਂ ਖੱਬੇ ਪਾਸੇ ਛੋਟੇ ਗਲੋਬ ਆਈਕਨ 'ਤੇ ਕਲਿੱਕ ਕਰ ਸਕਦੇ ਹੋ।",
     "enableAutocorrectWarning": "ਚੇਤਾਵਨੀ! ਇਸ ਲਈ ਤੁਹਾਡੀ ਟੀਚਾ ਭਾਸ਼ਾ ਦਾ ਕੀਬੋਰਡ ਸ਼ਾਮਲ ਕਰਨ ਦੀ ਲੋੜ ਹੈ",
@@ -2266,5 +2265,7 @@
     "seeAll": "ਸਾਰੇ ਦੇਖੋ",
     "seeAllSection": "ਸਾਰੇ {section} ਦੇਖੋ",
     "showMoreOptionsHint": "ਹੋਰ ਵਿਕਲਪ ਦਿਖਾਓ",
-    "onboardingStepOfTotal": "{total} ਵਿੱਚੋਂ {step} ਕਦਮ"
+    "onboardingStepOfTotal": "{total} ਵਿੱਚੋਂ {step} ਕਦਮ",
+    "addKeyboardDialogTitle": "ਆਪਣੀ ਨਿਸ਼ਾਨਾ ਭਾਸ਼ਾ ਦਾ ਕੀਬੋਰਡ ਸ਼ਾਮਲ ਕਰੋ",
+    "enableAutocorrectPopupPathIntro": "ਇੱਕ ਸ਼ਾਮਲ ਕਰਨ ਲਈ, ਇੱਥੇ ਜਾਓ:"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-09-03 14:43:46.856242",
+    "@@last_modified": "2026-09-04 10:08:33.650288",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -3367,7 +3367,6 @@
     "ttsDisabledBody": "Saate keelata teksti kõneks muutmise oma õpeseadete kaudu",
     "noSpaceDescriptionYet": "Hetkel pole ruumi kirjelduse loomist.",
     "tooLargeToSend": "See sõnum on liiga suur saatmiseks",
-    "enableAutocorrectPopupTitle": "Lisa oma sihtkeele klaviatuur, minnes aadressile:",
     "enableAutocorrectPopupSteps": "  • Seaded\n  • Üldine\n  • Klaviatuur\n  • Klaviatuurid\n  • Lisa uus klaviatuur",
     "enableAutocorrectPopupDescription": "Kui keel on valitud, saate klaviatuuri vasakus alumises nurgas oleva väikese globaalse ikooni klõpsates aktiveerida hiljuti installitud klaviatuuri.",
     "enableAutocorrectWarning": "Hoiatus! Vajalik on oma sihtkeele klaviatuuri lisamine",
@@ -5463,10 +5462,6 @@
         "placeholders": {}
     },
     "@tooLargeToSend": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -9859,5 +9854,7 @@
     "seeAll": "Vaata kõiki",
     "seeAllSection": "Vaata kõiki {section}",
     "showMoreOptionsHint": "näita rohkem valikuid",
-    "onboardingStepOfTotal": "Samm {step} / {total}"
+    "onboardingStepOfTotal": "Samm {step} / {total}",
+    "addKeyboardDialogTitle": "Lisa sihtkeele klaviatuur",
+    "enableAutocorrectPopupPathIntro": "Selle lisamiseks mine:"
 }

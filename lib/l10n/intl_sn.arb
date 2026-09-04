@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-09-03 14:43:50.972457",
+    "@@last_modified": "2026-09-04 10:08:39.365259",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "Unogona kugonesa text-to-speech muzvirongwa zvako zvekudzidza",
     "noSpaceDescriptionYet": "Hapana tsanangudzo yekosi yakagadzirwa zvakadaro.",
     "tooLargeToSend": "Shoko iri rakakura zvakanyanya kuti ritumirwe",
-    "enableAutocorrectPopupTitle": "Wedzera keyboard yemutauro wako wechinangwa nekuenda ku:",
     "enableAutocorrectPopupSteps": "  • Zvirongwa\n  • Zvakajairika\n  • Keyboard\n  • Keyboards\n  • Wedzera Keyboard Itsva",
     "enableAutocorrectPopupDescription": "Kana mutauro wasarudzwa, unogona kudzvanya icon diki yegirobhu pazasi kuruboshwe rwekeyboard yako kuti uvhure keyboard ichangobva kuiswa.",
     "enableAutocorrectWarning": "Yambiro! Inoda kuwedzera keyboard yemutauro wako wechinangwa",
@@ -2266,5 +2265,7 @@
     "seeAll": "Ona zvese",
     "seeAllSection": "Ona zvese zve {section}",
     "showMoreOptionsHint": "ratidza zvimwe zvingasarudzwa",
-    "onboardingStepOfTotal": "Nhanho {step} ye {total}"
+    "onboardingStepOfTotal": "Nhanho {step} ye {total}",
+    "addKeyboardDialogTitle": "Wedzera kiibhodhi yemutauro wauri kudzidza",
+    "enableAutocorrectPopupPathIntro": "Kuti uwedzere, enda ku:"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-03 14:43:50.485096",
+    "@@last_modified": "2026-09-04 10:08:38.656040",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -2822,7 +2822,6 @@
     "ttsDisabledBody": "Poți activa funcția text-to-speech în setările de învățare",
     "noSpaceDescriptionYet": "Încă nu a fost creată nicio descriere a cursului.",
     "tooLargeToSend": "Mesajul este prea mare pentru a fi trimis",
-    "enableAutocorrectPopupTitle": "Adaugă tastatura limbii tale țintă accesând:",
     "enableAutocorrectPopupSteps": "  • Setări\n  • General\n  • Tastatură\n  • Tastaturi\n  • Adaugă tastatură nouă",
     "enableAutocorrectPopupDescription": "Odată ce limba este selectată, poți face clic pe micuța pictogramă glob pe partea stângă jos a tastaturii pentru a activa tastatura recent instalată.",
     "enableAutocorrectWarning": "Avertisment! Necesită adăugarea tastaturii limbii tale țintă",
@@ -6102,10 +6101,6 @@
         "placeholders": {}
     },
     "@tooLargeToSend": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10594,5 +10589,7 @@
     "seeAll": "Vezi tot",
     "seeAllSection": "Vezi tot {section}",
     "showMoreOptionsHint": "afișează mai multe opțiuni",
-    "onboardingStepOfTotal": "Pasul {step} din {total}"
+    "onboardingStepOfTotal": "Pasul {step} din {total}",
+    "addKeyboardDialogTitle": "Adaugă tastatura pentru limba țintă",
+    "enableAutocorrectPopupPathIntro": "Pentru a adăuga una, mergi la:"
 }

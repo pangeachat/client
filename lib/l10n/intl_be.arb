@@ -3347,7 +3347,6 @@
     "ttsDisabledBody": "Вы можаце ўключыць тэкст у гаварэнне ў наладках навучання",
     "noSpaceDescriptionYet": "Пакуль не створана апісанне курса.",
     "tooLargeToSend": "Гэтае паведамленне занадта вялікае для адпраўкі",
-    "enableAutocorrectPopupTitle": "Дадайце клавіятуру мовы мэты, перайшоўшы ў:",
     "enableAutocorrectPopupSteps": "  • Налады\n  • Агульныя\n  • Клавіятура\n  • Клавіятуры\n  • Дадаць новую клавіятуру",
     "enableAutocorrectPopupDescription": "Пасля выбару мовы вы можаце націснуць на маленькую ікону глобуса ў ніжнім левым куце вашай клавіятуры, каб актываваць новую ўсталяваную клавіятуру.",
     "enableAutocorrectWarning": "Увага! Патрабуецца дадаць клавіятуру мовы мэты",
@@ -3549,7 +3548,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-09-03 14:43:45.937225",
+    "@@last_modified": "2026-09-04 10:08:31.799513",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -5550,10 +5549,6 @@
         "placeholders": {}
     },
     "@tooLargeToSend": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -9876,5 +9871,7 @@
     "seeAll": "Глядзець усё",
     "seeAllSection": "Глядзець усё: {section}",
     "showMoreOptionsHint": "паказаць больш опцый",
-    "onboardingStepOfTotal": "Крок {step} з {total}"
+    "onboardingStepOfTotal": "Крок {step} з {total}",
+    "addKeyboardDialogTitle": "Дадайце клавіятуру мэтавай мовы",
+    "enableAutocorrectPopupPathIntro": "Каб дадаць, перайдзіце ў:"
 }

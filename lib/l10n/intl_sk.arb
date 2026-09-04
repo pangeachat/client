@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-09-03 14:43:50.875591",
+    "@@last_modified": "2026-09-04 10:08:39.320534",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -2190,7 +2190,6 @@
     "ttsDisabledBody": "Môžete povoliť prehrávanie textu do reči vo vašich nastaveniach učenia",
     "noSpaceDescriptionYet": "Ešte nebolo vytvorené žiadne popis kurzu.",
     "tooLargeToSend": "Táto správa je príliš veľká na odoslanie",
-    "enableAutocorrectPopupTitle": "Pridajte klávesnicu cieľového jazyka prechádzaním do:",
     "enableAutocorrectPopupSteps": "  • Nastavenia\n  • Všeobecné\n  • Klávesnica\n  • Klávesnice\n  • Pridať novú klávesnicu",
     "enableAutocorrectPopupDescription": "Po výbere jazyka môžete kliknúť na malú ikonu glóbusu v ľavom spodnom rohu klávesnice na aktiváciu novozaloženej klávesnice.",
     "enableAutocorrectWarning": "Varovanie! Vyžaduje pridanie klávesnice cieľového jazyka",
@@ -6315,10 +6314,6 @@
         "placeholders": {}
     },
     "@tooLargeToSend": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10807,5 +10802,7 @@
     "seeAll": "Zobraziť všetko",
     "seeAllSection": "Zobraziť všetko: {section}",
     "showMoreOptionsHint": "zobraziť viac možností",
-    "onboardingStepOfTotal": "Krok {step} z {total}"
+    "onboardingStepOfTotal": "Krok {step} z {total}",
+    "addKeyboardDialogTitle": "Pridajte klávesnicu pre cieľový jazyk",
+    "enableAutocorrectPopupPathIntro": "Ak ju chcete pridať, prejdite na:"
 }

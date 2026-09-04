@@ -2347,7 +2347,6 @@
     "ttsDisabledBody": "Pode ativar o texto-para-fala nas suas definições de aprendizagem",
     "noSpaceDescriptionYet": "Ainda não foi criada uma descrição do curso.",
     "tooLargeToSend": "Esta mensagem é demasiado grande para enviar",
-    "enableAutocorrectPopupTitle": "Adicione o teclado do seu idioma de destino indo para:",
     "enableAutocorrectPopupSteps": "  • Definições\n  • Geral\n  • Teclado\n  • Teclados\n  • Adicionar novo teclado",
     "enableAutocorrectPopupDescription": "Depois de selecionar o idioma, pode clicar no pequeno ícone do globo na parte inferior esquerda do seu teclado para ativar o teclado recentemente instalado.",
     "enableAutocorrectWarning": "Atenção! É necessário adicionar o teclado do seu idioma de destino",
@@ -2560,7 +2559,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-09-03 14:43:50.501522",
+    "@@last_modified": "2026-09-04 10:08:38.434597",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6298,10 +6297,6 @@
         "placeholders": {}
     },
     "@tooLargeToSend": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10779,5 +10774,7 @@
     "seeAll": "Ver tudo",
     "seeAllSection": "Ver tudo em {section}",
     "showMoreOptionsHint": "mostrar mais opções",
-    "onboardingStepOfTotal": "Passo {step} de {total}"
+    "onboardingStepOfTotal": "Passo {step} de {total}",
+    "addKeyboardDialogTitle": "Adicione o teclado do seu idioma-alvo",
+    "enableAutocorrectPopupPathIntro": "Para adicionar um, vá a:"
 }

@@ -3199,7 +3199,6 @@
     "ttsDisabledBody": "Μπορείτε να ενεργοποιήσετε τη φωνητική ανάγνωση στις ρυθμίσεις εκμάθησης",
     "noSpaceDescriptionYet": "Δεν έχει δημιουργηθεί ακόμη περιγραφή μαθήματος.",
     "tooLargeToSend": "Αυτό το μήνυμα είναι πολύ μεγάλο για αποστολή",
-    "enableAutocorrectPopupTitle": "Προσθέστε το πληκτρολόγιο της γλώσσας στόχου πηγαίνοντας στα:",
     "enableAutocorrectPopupSteps": "  • Ρυθμίσεις\n  • Γενικά\n  • Πληκτρολόγιο\n  • Πληκτρολόγια\n  • Προσθήκη νέου πληκτρολογίου",
     "enableAutocorrectPopupDescription": "Μόλις επιλεγεί η γλώσσα, μπορείτε να κάνετε κλικ στο μικρό εικονίδιο του κόσμου στο κάτω αριστερό μέρος του πληκτρολογίου σας για να ενεργοποιήσετε το νέο εγκατεστημένο πληκτρολόγιο.",
     "enableAutocorrectWarning": "Προειδοποίηση! Απαιτείται η προσθήκη του πληκτρολογίου της γλώσσας στόχου",
@@ -3401,7 +3400,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-09-03 14:43:46.588753",
+    "@@last_modified": "2026-09-04 10:08:32.924220",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -6245,10 +6244,6 @@
         "placeholders": {}
     },
     "@tooLargeToSend": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10737,5 +10732,7 @@
     "seeAll": "Δείτε όλα",
     "seeAllSection": "Δείτε όλα τα {section}",
     "showMoreOptionsHint": "εμφάνιση περισσότερων επιλογών",
-    "onboardingStepOfTotal": "Βήμα {step} από {total}"
+    "onboardingStepOfTotal": "Βήμα {step} από {total}",
+    "addKeyboardDialogTitle": "Προσθέστε το πληκτρολόγιο της γλώσσας-στόχου σας",
+    "enableAutocorrectPopupPathIntro": "Για να προσθέσετε ένα, μεταβείτε στις ρυθμίσεις:"
 }

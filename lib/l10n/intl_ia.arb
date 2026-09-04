@@ -1161,7 +1161,6 @@
     "ttsDisabledBody": "Tu pote activar le texto-a-parola in tu configuration de apprendimento",
     "noSpaceDescriptionYet": "Nulle description de curso create ancora.",
     "tooLargeToSend": "Iste message es troppo grande pro inviar",
-    "enableAutocorrectPopupTitle": "Adder tu clavier de lingua target per ir a:",
     "enableAutocorrectPopupSteps": "  • Configuration\n  • General\n  • Claviatura\n  • Claviaturas\n  • Adder nove clavier",
     "enableAutocorrectPopupDescription": "Post le selection de le lingua, tu pote cliccar le icono de globulo in le basso sinistre de tu clavier pro activar le clavier installate recentemente.",
     "enableAutocorrectWarning": "Attention! Require adder le clavier de lingua target",
@@ -1363,7 +1362,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-09-03 14:43:47.767132",
+    "@@last_modified": "2026-09-04 10:08:34.899936",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6309,10 +6308,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@enableAutocorrectPopupTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectPopupSteps": {
         "type": "String",
         "placeholders": {}
@@ -10798,5 +10793,7 @@
     "seeAll": "Vider tote",
     "seeAllSection": "Vider tote {section}",
     "showMoreOptionsHint": "monstrar plus optiones",
-    "onboardingStepOfTotal": "Passo {step} de {total}"
+    "onboardingStepOfTotal": "Passo {step} de {total}",
+    "addKeyboardDialogTitle": "Adde le clavier de tu lingua de scopo",
+    "enableAutocorrectPopupPathIntro": "Pro adder un, vade a:"
 }

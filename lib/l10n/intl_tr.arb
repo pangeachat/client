@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-09-03 14:43:51.558872",
+    "@@last_modified": "2026-09-04 10:08:40.172310",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -3175,7 +3175,6 @@
     "ttsDisabledBody": "Öğrenme ayarlarınızda metin-konuşmayı etkinleştirebilirsiniz",
     "noSpaceDescriptionYet": "Henüz herhangi bir kurs açıklaması oluşturulmadı.",
     "tooLargeToSend": "Bu mesaj gönderilemeyecek kadar büyük",
-    "enableAutocorrectPopupTitle": "Hedef dil klavyenizi eklemek için şu adımları izleyin:",
     "enableAutocorrectPopupSteps": "  • Ayarlar\n  • Genel\n  • Klavye\n  • Klavyeler\n  • Yeni Klavye Ekle",
     "enableAutocorrectPopupDescription": "Dil seçildikten sonra, klavyenizin sol alt köşesindeki küçük dünya simgesine tıklayarak yeni yüklenen klavyeyi etkinleştirebilirsiniz.",
     "enableAutocorrectWarning": "Uyarı! Hedef dil klavyenizi eklemeniz gerekiyor",
@@ -5671,10 +5670,6 @@
         "placeholders": {}
     },
     "@tooLargeToSend": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10163,5 +10158,7 @@
     "seeAll": "Tümünü gör",
     "seeAllSection": "Tüm {section} bölümünü gör",
     "showMoreOptionsHint": "daha fazla seçenek göster",
-    "onboardingStepOfTotal": "{total} adımdan {step}. adım"
+    "onboardingStepOfTotal": "{total} adımdan {step}. adım",
+    "addKeyboardDialogTitle": "Hedef dil klavyenizi ekleyin",
+    "enableAutocorrectPopupPathIntro": "Eklemek için şuraya gidin:"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-09-03 14:43:49.859497",
+    "@@last_modified": "2026-09-04 10:08:37.513934",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "Tista' tippermetti t-test-to-speech fis-settings tat-tagħlim tiegħek",
     "noSpaceDescriptionYet": "Għadha ma nħolqot l-ebda deskrizzjoni tal-kors.",
     "tooLargeToSend": "Dan il-messaġġ huwa kbir wisq biex jintbagħat",
-    "enableAutocorrectPopupTitle": "Żid it-tastiera tal-lingwa fil-mira tiegħek billi tmur fuq:",
     "enableAutocorrectPopupSteps": "  • Settings\n  • Ġenerali\n  • Tastiera\n  • Tastieri\n  • Żid Tastiera Ġdida",
     "enableAutocorrectPopupDescription": "Ladarba l-lingwa tkun magħżula, tista' tikklikkja l-ikona żgħira tal-globu fin-naħa t'isfel tax-xellug tat-tastiera tiegħek biex tattiva t-tastiera installata ġdida.",
     "enableAutocorrectWarning": "Twissija! Jeħtieġ li żżid it-tastiera tal-lingwa fil-mira tiegħek",
@@ -2266,5 +2265,7 @@
     "seeAll": "Ara kollox",
     "seeAllSection": "Ara kollox {section}",
     "showMoreOptionsHint": "uri aktar għażliet",
-    "onboardingStepOfTotal": "Pass {step} minn {total}"
+    "onboardingStepOfTotal": "Pass {step} minn {total}",
+    "addKeyboardDialogTitle": "Żid it-tastiera tal-lingwa fil-mira tiegħek",
+    "enableAutocorrectPopupPathIntro": "Biex iżżid waħda, mur fuq:"
 }

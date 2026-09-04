@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-09-03 14:43:45.973830",
+    "@@last_modified": "2026-09-04 10:08:32.021273",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "আপুনি আপোনাৰ শিক্ষণ ছেটিংছত টেক্সট-টু-স্পীচ সক্ষম কৰিব পাৰে",
     "noSpaceDescriptionYet": "এতিয়ালৈকে কোনো ক'ৰ্চৰ বিৱৰণ সৃষ্টি কৰা হোৱা নাই।",
     "tooLargeToSend": "এই বাৰ্তাটো পঠিয়াবলৈ অতি ডাঙৰ",
-    "enableAutocorrectPopupTitle": "তলত দিয়া ধৰণে আপোনাৰ লক্ষ্য ভাষাৰ কী-ব'ৰ্ড যোগ কৰক:",
     "enableAutocorrectPopupSteps": "  • ছেটিংছ\n  • জেনেৰেল\n  • কী-ব'ৰ্ড\n  • কী-ব'ৰ্ডসমূহ\n  • নতুন কী-ব'ৰ্ড যোগ কৰক",
     "enableAutocorrectPopupDescription": "ভাষা বাছনি কৰাৰ পিছত, আপুনি আপোনাৰ কী-ব'ৰ্ডৰ তলৰ বাওঁফালে থকা সৰু গ্ল'ব আইকনটোত ক্লিক কৰি নতুনকৈ ইনষ্টল কৰা কী-ব'ৰ্ডটো সক্ৰিয় কৰিব পাৰে।",
     "enableAutocorrectWarning": "সতৰ্কবাণী! আপোনাৰ লক্ষ্য ভাষাৰ কী-ব'ৰ্ড যোগ কৰাৰ প্ৰয়োজন",
@@ -2266,5 +2265,7 @@
     "seeAll": "সকলো চাওক",
     "seeAllSection": "সকলো চাওক {section}",
     "showMoreOptionsHint": "অধিক বিকল্প দেখুৱাওক",
-    "onboardingStepOfTotal": "{total}টাৰ ভিতৰত {step} নং খাপ"
+    "onboardingStepOfTotal": "{total}টাৰ ভিতৰত {step} নং খাপ",
+    "addKeyboardDialogTitle": "আপোনাৰ লক্ষ্য ভাষাৰ কিব'ৰ্ড যোগ কৰক",
+    "enableAutocorrectPopupPathIntro": "এটা যোগ কৰিবলৈ, ইয়ালৈ যাওক:"
 }

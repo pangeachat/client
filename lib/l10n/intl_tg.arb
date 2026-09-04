@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-09-03 14:43:51.400797",
+    "@@last_modified": "2026-09-04 10:08:40.221876",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "Шумо метавонед матн ба нутқро дар танзимоти омӯзишии худ фаъол созед",
     "noSpaceDescriptionYet": "Ҳанӯз тавсифи курс сохта нашудааст.",
     "tooLargeToSend": "Ин паём барои фиристодан хеле калон аст",
-    "enableAutocorrectPopupTitle": "Клавиатураи забони мақсадноки худро бо гузаштан ба ин ҷо илова кунед:",
     "enableAutocorrectPopupSteps": "  • Танзимот\n  • Умумӣ\n  • Клавиатура\n  • Клавиатураҳо\n  • Клавиатураи нав илова кунед",
     "enableAutocorrectPopupDescription": "Пас аз интихоби забон, шумо метавонед нишонаи хурди глобусро дар тарафи чапи поёни клавиатураи худ пахш кунед, то клавиатураи нав насбшударо фаъол созед.",
     "enableAutocorrectWarning": "Огоҳӣ! Илова кардани клавиатураи забони мақсадноки шуморо талаб мекунад",
@@ -2266,5 +2265,7 @@
     "seeAll": "Ҳамаро бинед",
     "seeAllSection": "Ҳамаи {section}-ро бинед",
     "showMoreOptionsHint": "имконоти бештарро нишон диҳед",
-    "onboardingStepOfTotal": "Қадами {step} аз {total}"
+    "onboardingStepOfTotal": "Қадами {step} аз {total}",
+    "addKeyboardDialogTitle": "Клавиатураи забони мақсадноки худро илова кунед",
+    "enableAutocorrectPopupPathIntro": "Барои илова кардан, ба ин ҷо равед:"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-03 14:43:53.302890",
+    "@@last_modified": "2026-09-04 10:08:39.625794",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -2533,7 +2533,6 @@
     "ttsDisabledBody": "Možete omogućiti tekst-u-izgovor u vašim postavkama učenja",
     "noSpaceDescriptionYet": "Još uvek nije kreiran opis kursa.",
     "tooLargeToSend": "Ova poruka je prevelika za slanje",
-    "enableAutocorrectPopupTitle": "Dodajte tastaturu za ciljni jezik tako što ćete otići na:",
     "enableAutocorrectPopupSteps": "  • Podešavanja\n  • Opšte\n  • Tastatura\n  • Tastature\n  • Dodaj novu tastaturu",
     "enableAutocorrectPopupDescription": "Nakon što odaberete jezik, možete kliknuti na malu globus ikonu na donjem levom uglu vaše tastature da aktivirate novu tastaturu.",
     "enableAutocorrectWarning": "Upozorenje! Potrebno je dodavanje tastature za ciljni jezik",
@@ -6319,10 +6318,6 @@
         "placeholders": {}
     },
     "@tooLargeToSend": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10811,5 +10806,7 @@
     "seeAll": "Pogledaj sve",
     "seeAllSection": "Pogledaj sve {section}",
     "showMoreOptionsHint": "prikaži više opcija",
-    "onboardingStepOfTotal": "Korak {step} od {total}"
+    "onboardingStepOfTotal": "Korak {step} od {total}",
+    "addKeyboardDialogTitle": "Dodajte tastaturu za ciljni jezik",
+    "enableAutocorrectPopupPathIntro": "Da biste je dodali, idite na:"
 }

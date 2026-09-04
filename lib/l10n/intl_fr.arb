@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-09-03 14:43:46.910907",
+    "@@last_modified": "2026-09-04 10:08:33.537403",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -3160,7 +3160,6 @@
     "ttsDisabledBody": "Vous pouvez activer la synthèse vocale dans vos paramètres d'apprentissage",
     "noSpaceDescriptionYet": "Aucune description de cours créée pour le moment.",
     "tooLargeToSend": "Ce message est trop volumineux pour être envoyé",
-    "enableAutocorrectPopupTitle": "Ajoutez votre clavier de langue cible en allant sur :",
     "enableAutocorrectPopupSteps": "  • Paramètres\n  • Général\n  • Clavier\n  • Claviers\n  • Ajouter un nouveau clavier",
     "enableAutocorrectPopupDescription": "Une fois la langue sélectionnée, vous pouvez cliquer sur la petite icône de globe en bas à gauche de votre clavier pour activer le clavier nouvellement installé.",
     "enableAutocorrectWarning": "Attention ! Nécessite d'ajouter le clavier de votre langue cible",
@@ -5740,10 +5739,6 @@
         "placeholders": {}
     },
     "@tooLargeToSend": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10217,5 +10212,7 @@
     "seeAll": "Tout voir",
     "seeAllSection": "Voir tout {section}",
     "showMoreOptionsHint": "afficher plus d'options",
-    "onboardingStepOfTotal": "Étape {step} sur {total}"
+    "onboardingStepOfTotal": "Étape {step} sur {total}",
+    "addKeyboardDialogTitle": "Ajoutez le clavier de votre langue cible",
+    "enableAutocorrectPopupPathIntro": "Pour en ajouter un, allez dans :"
 }

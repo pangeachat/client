@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-09-03 14:43:49.097640",
+    "@@last_modified": "2026-09-04 10:08:36.183273",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "Сиз үйрөнүү жөндөөлөрүңүздө текстти кепке айландырууну иштете аласыз",
     "noSpaceDescriptionYet": "Азырынча курс сүрөттөмөсү түзүлгөн эмес.",
     "tooLargeToSend": "Бул билдирүү жөнөтүү үчүн өтө чоң",
-    "enableAutocorrectPopupTitle": "Максаттуу тилиңиздин клавиатурасын кошуу үчүн төмөнкүгө өтүңүз:",
     "enableAutocorrectPopupSteps": "  • Жөндөөлөр\n  • Жалпы\n  • Клавиатура\n  • Клавиатуралар\n  • Жаңы клавиатура кошуу",
     "enableAutocorrectPopupDescription": "Тил тандалгандан кийин, жаңы орнотулган клавиатураны иштетүү үчүн клавиатураңыздын ылдыйкы сол жагындагы кичинекей глобус сөлөкөтүн бассаңыз болот.",
     "enableAutocorrectWarning": "Эскертүү! Максаттуу тилиңиздин клавиатурасын кошууну талап кылат",
@@ -2266,5 +2265,7 @@
     "seeAll": "Баарын көрүү",
     "seeAllSection": "Баарын көрүү {section}",
     "showMoreOptionsHint": "көбүрөөк параметрлерди көрсөтүү",
-    "onboardingStepOfTotal": "{total} ичинен {step}-кадам"
+    "onboardingStepOfTotal": "{total} ичинен {step}-кадам",
+    "addKeyboardDialogTitle": "Максаттуу тилиңиздин клавиатурасын кошуңуз",
+    "enableAutocorrectPopupPathIntro": "Кошуу үчүн, өтүңүз:"
 }

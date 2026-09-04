@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-03 14:43:51.966398",
+    "@@last_modified": "2026-09-04 10:08:40.926552",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -2323,7 +2323,6 @@
     "ttsDisbledTitle": "Tính năng chuyển văn bản thành giọng nói đã bị tắt",
     "ttsDisabledBody": "Bạn có thể bật tính năng chuyển văn bản thành giọng nói trong cài đặt học tập của bạn",
     "tooLargeToSend": "Tin nhắn này quá lớn để gửi",
-    "enableAutocorrectPopupTitle": "Thêm bàn phím ngôn ngữ mục tiêu của bạn bằng cách vào:",
     "enableAutocorrectPopupSteps": "  • Cài đặt\n  • Chung\n  • Bàn phím\n  • Bàn phím\n  • Thêm bàn phím mới",
     "enableAutocorrectPopupDescription": "Khi ngôn ngữ được chọn, bạn có thể nhấp vào biểu tượng quả địa cầu nhỏ ở góc dưới bên trái của bàn phím để kích hoạt bàn phím mới được cài đặt.",
     "enableAutocorrectWarning": "Cảnh báo! Cần thêm bàn phím ngôn ngữ mục tiêu của bạn",
@@ -7154,5 +7153,7 @@
     "seeAll": "Xem tất cả",
     "seeAllSection": "Xem tất cả {section}",
     "showMoreOptionsHint": "hiện thêm tùy chọn",
-    "onboardingStepOfTotal": "Bước {step} trên {total}"
+    "onboardingStepOfTotal": "Bước {step} trên {total}",
+    "addKeyboardDialogTitle": "Thêm bàn phím ngôn ngữ bạn muốn học",
+    "enableAutocorrectPopupPathIntro": "Để thêm, hãy đi tới:"
 }

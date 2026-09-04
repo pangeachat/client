@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-09-03 14:43:46.353269",
+    "@@last_modified": "2026-09-04 10:08:32.734336",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -3378,7 +3378,6 @@
     "ttsDisabledBody": "Sie können die Text-zu-Sprache-Funktion in Ihren Lerneinstellungen aktivieren",
     "noSpaceDescriptionYet": "Noch keine Kursbeschreibung erstellt.",
     "tooLargeToSend": "Diese Nachricht ist zu groß zum Senden",
-    "enableAutocorrectPopupTitle": "Fügen Sie Ihre Zielsprachentastatur hinzu, indem Sie zu gehen:",
     "enableAutocorrectPopupSteps": "  • Einstellungen\n  • Allgemein\n  • Tastatur\n  • Tastaturen\n  • Neue Tastatur hinzufügen",
     "enableAutocorrectPopupDescription": "Sobald die Sprache ausgewählt ist, können Sie auf das kleine Globus-Symbol unten links auf Ihrer Tastatur klicken, um die neu installierte Tastatur zu aktivieren.",
     "enableAutocorrectWarning": "Warnung! Erfordert das Hinzufügen Ihrer Zielsprachentastatur",
@@ -5571,10 +5570,6 @@
         "placeholders": {}
     },
     "@tooLargeToSend": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -9849,5 +9844,7 @@
     "seeAll": "Alle anzeigen",
     "seeAllSection": "Alle {section} anzeigen",
     "showMoreOptionsHint": "Weitere Optionen anzeigen",
-    "onboardingStepOfTotal": "Schritt {step} von {total}"
+    "onboardingStepOfTotal": "Schritt {step} von {total}",
+    "addKeyboardDialogTitle": "Tastatur für Zielsprache hinzufügen",
+    "enableAutocorrectPopupPathIntro": "Um eine hinzuzufügen, gehe zu:"
 }

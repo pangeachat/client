@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-09-03 14:43:49.906668",
+    "@@last_modified": "2026-09-04 10:08:36.908414",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "നിങ്ങളുടെ പഠന ക്രമീകരണങ്ങളിൽ ടെക്സ്റ്റ്-ടു-സ്പീച്ച് പ്രവർത്തനക്ഷമമാക്കാം",
     "noSpaceDescriptionYet": "കോഴ്‌സ് വിവരണം ഇതുവരെ സൃഷ്ടിച്ചിട്ടില്ല.",
     "tooLargeToSend": "ഈ സന്ദേശം അയക്കാൻ കഴിയാത്തത്ര വലുതാണ്",
-    "enableAutocorrectPopupTitle": "നിങ്ങളുടെ ടാർഗെറ്റ് ഭാഷാ കീബോർഡ് ചേർക്കാൻ ഇവിടെ പോകുക:",
     "enableAutocorrectPopupSteps": "  • ക്രമീകരണങ്ങൾ\n  • പൊതുവായത്\n  • കീബോർഡ്\n  • കീബോർഡുകൾ\n  • പുതിയ കീബോർഡ് ചേർക്കുക",
     "enableAutocorrectPopupDescription": "ഭാഷ തിരഞ്ഞെടുത്തുകഴിഞ്ഞാൽ, പുതുതായി ഇൻസ്റ്റാൾ ചെയ്ത കീബോർഡ് സജീവമാക്കാൻ നിങ്ങളുടെ കീബോർഡിന്റെ താഴെ ഇടതുവശത്തുള്ള ചെറിയ ഗ്ലോബ് ഐക്കണിൽ ക്ലിക്ക് ചെയ്യാം.",
     "enableAutocorrectWarning": "മുന്നറിയിപ്പ്! നിങ്ങളുടെ ടാർഗെറ്റ് ഭാഷാ കീബോർഡ് ചേർക്കേണ്ടതുണ്ട്",
@@ -2266,5 +2265,7 @@
     "seeAll": "എല്ലാം കാണുക",
     "seeAllSection": "എല്ലാം കാണുക {section}",
     "showMoreOptionsHint": "കൂടുതൽ ഓപ്ഷനുകൾ കാണിക്കുക",
-    "onboardingStepOfTotal": "{total} എണ്ണത്തിൽ {step} പടി"
+    "onboardingStepOfTotal": "{total} എണ്ണത്തിൽ {step} പടി",
+    "addKeyboardDialogTitle": "നിങ്ങളുടെ ടാർഗെറ്റ് ഭാഷാ കീബോർഡ് ചേർക്കുക",
+    "enableAutocorrectPopupPathIntro": "ഒന്ന് ചേർക്കാൻ, ഇതിലേക്ക് പോകുക:"
 }

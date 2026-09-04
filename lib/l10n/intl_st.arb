@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-09-03 14:43:51.199794",
+    "@@last_modified": "2026-09-04 10:08:39.765411",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "O ka bulela ho fetolela mongolo ho ba puo litlhophisong tsa hau tsa ho ithuta",
     "noSpaceDescriptionYet": "Ha ho tlhaloso ea thupelo e entsoeng hajoale.",
     "tooLargeToSend": "Molaetsa ona o moholo haholo hore o ka romelloa",
-    "enableAutocorrectPopupTitle": "Kenya k'hiboto ea puo eo u e ithutang ka ho ea ho:",
     "enableAutocorrectPopupSteps": "  • Litlhophiso\n  • Kakaretso\n  • K'hiboto\n  • Lik'hiboto\n  • Kenya K'hiboto e Ncha",
     "enableAutocorrectPopupDescription": "Hang ha puo e khethiloe, o ka tobetsa aekhone e nyane ea lefatše ka tlase letsohong le letšehali la k'hiboto ea hau ho kenya tšebetsong k'hiboto e sa tsoa kengoa.",
     "enableAutocorrectWarning": "Temoso! Ho hlokahala hore o kenye k'hiboto ea puo eo u e ithutang",
@@ -2266,5 +2265,7 @@
     "seeAll": "Bona kaofela",
     "seeAllSection": "Bona {section} kaofela",
     "showMoreOptionsHint": "bontsha likhetho tse ling",
-    "onboardingStepOfTotal": "Kgato {step} ho tse {total}"
+    "onboardingStepOfTotal": "Kgato {step} ho tse {total}",
+    "addKeyboardDialogTitle": "Kenya keyboard ya puo eo o e batlang",
+    "enableAutocorrectPopupPathIntro": "Ho kenya e 'ngoe, e-ea ho:"
 }

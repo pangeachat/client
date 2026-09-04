@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-09-03 14:43:50.656263",
+    "@@last_modified": "2026-09-04 10:08:39.315481",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "توهان پنهنجي سکيا جي سيٽنگن ۾ ٽيڪسٽ-ٽو-اسپيچ فعال ڪري سگهو ٿا",
     "noSpaceDescriptionYet": "اڃا تائين ڪو به ڪورس وضاحت نه ٺاهي وئي آهي.",
     "tooLargeToSend": "هي پيغام موڪلڻ لاءِ تمام وڏو آهي",
-    "enableAutocorrectPopupTitle": "پنهنجي ٽارگيٽ ٻولي جو ڪيبورڊ شامل ڪريو هن ڏانهن وڃي:",
     "enableAutocorrectPopupSteps": "  • سيٽنگون\n  • جنرل\n  • ڪيبورڊ\n  • ڪيبورڊز\n  • نئون ڪيبورڊ شامل ڪريو",
     "enableAutocorrectPopupDescription": "هڪ دفعو ٻولي چونڊي وڃي، توهان پنهنجي ڪيبورڊ جي هيٺئين کاٻي پاسي ننڍڙي گلوب آئڪن تي ڪلڪ ڪري نئون انسٽال ٿيل ڪيبورڊ فعال ڪري سگهو ٿا.",
     "enableAutocorrectWarning": "خبردار! توهان جي ٽارگيٽ ٻولي جو ڪيبورڊ شامل ڪرڻ جي ضرورت آهي",
@@ -2266,5 +2265,7 @@
     "seeAll": "سڀ ڏسو",
     "seeAllSection": "سڀ ڏسو {section}",
     "showMoreOptionsHint": "وڌيڪ آپشن ڏيکاريو",
-    "onboardingStepOfTotal": "قدم {step} {total} مان"
+    "onboardingStepOfTotal": "قدم {step} {total} مان",
+    "addKeyboardDialogTitle": "پنهنجي ٽارگيٽ ٻوليءَ جو ڪيبورڊ شامل ڪريو",
+    "enableAutocorrectPopupPathIntro": "شامل ڪرڻ لاءِ، وڃو:"
 }

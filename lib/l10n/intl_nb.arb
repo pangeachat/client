@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-03 14:43:50.046422",
+    "@@last_modified": "2026-09-04 10:08:37.613560",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -3257,7 +3257,6 @@
     "ttsDisabledBody": "Du kan aktivere tekst-til-tale i læringsinnstillingene dine",
     "noSpaceDescriptionYet": "Ingen kursbeskrivelse opprettet ennå.",
     "tooLargeToSend": "Denne meldingen er for stor til å sende",
-    "enableAutocorrectPopupTitle": "Legg til tastaturet for målspråket ditt ved å gå til:",
     "enableAutocorrectPopupSteps": "  • Innstillinger\n  • Generelt\n  • Tastatur\n  • Tastaturer\n  • Legg til nytt tastatur",
     "enableAutocorrectPopupDescription": "Når språket er valgt, kan du klikke på det lille globus-ikonet nederst til venstre på tastaturet for å aktivere det nylig installerte tastaturet.",
     "enableAutocorrectWarning": "Advarsel! Krever at du legger til tastaturet for målspråket ditt",
@@ -5606,10 +5605,6 @@
         "placeholders": {}
     },
     "@tooLargeToSend": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -9919,5 +9914,7 @@
     "seeAll": "Se alle",
     "seeAllSection": "Se alle {section}",
     "showMoreOptionsHint": "vis flere alternativer",
-    "onboardingStepOfTotal": "Trinn {step} av {total}"
+    "onboardingStepOfTotal": "Trinn {step} av {total}",
+    "addKeyboardDialogTitle": "Legg til tastatur for målspråket ditt",
+    "enableAutocorrectPopupPathIntro": "For å legge til ett, gå til:"
 }

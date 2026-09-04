@@ -1868,7 +1868,6 @@
     "ttsDisabledBody": "Maaari mong paganahin ang text-to-speech sa iyong mga setting sa pag-aaral",
     "noSpaceDescriptionYet": "Walang nilikhang paglalarawan ng kurso hanggang ngayon.",
     "tooLargeToSend": "Ang mensaheng ito ay masyadong malaki upang ipadala",
-    "enableAutocorrectPopupTitle": "Idagdag ang iyong target na keyboard sa wika sa pamamagitan ng pagpunta sa:",
     "enableAutocorrectPopupSteps": "  • Mga Setting\n  • Pangkalahatan\n  • Keyboard\n  • Mga Keyboard\n  • Magdagdag ng Bagong Keyboard",
     "enableAutocorrectPopupDescription": "Kapag napili na ang wika, maaari mong i-click ang maliit na icon ng globe sa ibabang kaliwa ng iyong keyboard upang i-activate ang bagong na-install na keyboard.",
     "enableAutocorrectWarning": "Babala! Kailangan idagdag ang iyong target na keyboard sa wika",
@@ -2081,7 +2080,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-09-03 14:43:46.869669",
+    "@@last_modified": "2026-09-04 10:08:33.606743",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -6241,10 +6240,6 @@
         "placeholders": {}
     },
     "@tooLargeToSend": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10722,5 +10717,7 @@
     "seeAll": "Tingnan lahat",
     "seeAllSection": "Tingnan lahat ng {section}",
     "showMoreOptionsHint": "ipakita ang higit pang opsyon",
-    "onboardingStepOfTotal": "Hakbang {step} ng {total}"
+    "onboardingStepOfTotal": "Hakbang {step} ng {total}",
+    "addKeyboardDialogTitle": "Idagdag ang keyboard ng iyong target na wika",
+    "enableAutocorrectPopupPathIntro": "Para magdagdag, pumunta sa:"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-09-03 14:43:52.075582",
+    "@@last_modified": "2026-09-04 10:08:40.942023",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "דו קענסט אַקטיווירן טעקסט־צו־רעדע אין דײַנע לערנען סעטינגס",
     "noSpaceDescriptionYet": "קיין קורס באַשרײַבונג נאָך נישט געשאַפֿן.",
     "tooLargeToSend": "די מעסעדזש איז צו גרויס צו שיקן",
-    "enableAutocorrectPopupTitle": "לייג צו דײַן צילשפּראַך קלאַוויאַטור דורך גיין צו:",
     "enableAutocorrectPopupSteps": "  • סעטינגס\n  • אַלגעמיין\n  • קלאַוויאַטור\n  • קלאַוויאַטורן\n  • לייג צו נײַע קלאַוויאַטור",
     "enableAutocorrectPopupDescription": "אַמאָל די שפּראַך איז אויסגעקליבן, קענסטו קליקן דעם קליינעם גלאָבוס בילדל אויף דער אונטערשטער לינקער זײַט פֿון דײַן קלאַוויאַטור צו אַקטיווירן די נײַ־אינסטאַלירטע קלאַוויאַטור.",
     "enableAutocorrectWarning": "וואָרענונג! פֿאָדערט צוצולייגן דײַן צילשפּראַך קלאַוויאַטור",
@@ -2266,5 +2265,7 @@
     "seeAll": "זען אַלע",
     "seeAllSection": "זען אַלע {section}",
     "showMoreOptionsHint": "ווייַזן מער אָפּציעס",
-    "onboardingStepOfTotal": "שריט {step} פֿון {total}"
+    "onboardingStepOfTotal": "שריט {step} פֿון {total}",
+    "addKeyboardDialogTitle": "לייגט צו אייער צילשפּראַך קלאַוויאַטור",
+    "enableAutocorrectPopupPathIntro": "כּדי צוצולייגן איינס, גייט צו:"
 }
