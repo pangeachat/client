@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-09-03 14:43:50.947548",
+    "@@last_modified": "2026-09-04 10:08:39.591027",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "Mund të aktivizoni tekstin në të folur në cilësimet tuaja të të mësuarit",
     "noSpaceDescriptionYet": "Nuk është krijuar ende asnjë përshkrim kursi.",
     "tooLargeToSend": "Ky mesazh është shumë i madh për t'u dërguar",
-    "enableAutocorrectPopupTitle": "Shtoni tastierën e gjuhës tuaj të synuar duke shkuar te:",
     "enableAutocorrectPopupSteps": "  • Cilësimet\n  • Të përgjithshme\n  • Tastiera\n  • Tastierat\n  • Shto tastierë të re",
     "enableAutocorrectPopupDescription": "Pasi të jetë zgjedhur gjuha, mund të klikoni ikonën e vogël të globit në të majtë poshtë të tastierës suaj për të aktivizuar tastierën e sapo instaluar.",
     "enableAutocorrectWarning": "Paralajmërim! Kërkon shtimin e tastierës së gjuhës tuaj të synuar",
@@ -2266,5 +2265,7 @@
     "seeAll": "Shiko të gjitha",
     "seeAllSection": "Shiko të gjitha {section}",
     "showMoreOptionsHint": "shfaq më shumë opsione",
-    "onboardingStepOfTotal": "Hapi {step} nga {total}"
+    "onboardingStepOfTotal": "Hapi {step} nga {total}",
+    "addKeyboardDialogTitle": "Shtoni tastierën e gjuhës suaj të synuar",
+    "enableAutocorrectPopupPathIntro": "Për të shtuar një, shkoni te:"
 }

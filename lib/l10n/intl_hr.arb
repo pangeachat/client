@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-09-03 14:43:47.605678",
+    "@@last_modified": "2026-09-04 10:08:34.506005",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -3064,7 +3064,6 @@
     "ttsDisabledBody": "Možete omogućiti pretvaranje teksta u govor u postavkama učenja",
     "noSpaceDescriptionYet": "Još nije kreiran opis tečaja.",
     "tooLargeToSend": "Ova poruka je prevelika za slanje",
-    "enableAutocorrectPopupTitle": "Dodajte tipkovnicu za ciljani jezik tako da odete na:",
     "enableAutocorrectPopupSteps": "  • Postavke\n  • Općenito\n  • Tipkovnica\n  • Tipkovnice\n  • Dodaj novu tipkovnicu",
     "enableAutocorrectPopupDescription": "Kad odaberete jezik, možete kliknuti na malu globus ikonu u donjem lijevom kutu vaše tipkovnice za aktiviranje nove instalirane tipkovnice.",
     "enableAutocorrectWarning": "Upozorenje! Potrebno je dodati tipkovnicu za ciljani jezik",
@@ -5806,10 +5805,6 @@
         "placeholders": {}
     },
     "@tooLargeToSend": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10298,5 +10293,7 @@
     "seeAll": "Vidi sve",
     "seeAllSection": "Vidi sve {section}",
     "showMoreOptionsHint": "prikaži više opcija",
-    "onboardingStepOfTotal": "Korak {step} od {total}"
+    "onboardingStepOfTotal": "Korak {step} od {total}",
+    "addKeyboardDialogTitle": "Dodajte tipkovnicu za ciljni jezik",
+    "enableAutocorrectPopupPathIntro": "Da biste je dodali, idite na:"
 }

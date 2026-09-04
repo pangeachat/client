@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-09-03 14:43:50.364710",
+    "@@last_modified": "2026-09-04 10:08:39.038348",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "ଆପଣ ଆପଣଙ୍କ ଶିକ୍ଷଣ ସେଟିଂସରେ ଟେକ୍ସଟ୍-ଟୁ-ସ୍ପିଚ୍ ସକ୍ଷମ କରିପାରିବେ",
     "noSpaceDescriptionYet": "ଏପର୍ଯ୍ୟନ୍ତ କୌଣସି କୋର୍ସ ବର୍ଣ୍ଣନା ସୃଷ୍ଟି ହୋଇନାହିଁ।",
     "tooLargeToSend": "ଏହି ବାର୍ତ୍ତା ପଠାଇବା ପାଇଁ ବହୁତ ବଡ଼",
-    "enableAutocorrectPopupTitle": "ଆପଣଙ୍କ ଟାର୍ଗେଟ୍ ଭାଷା କୀବୋର୍ଡ୍ ଯୋଡ଼ିବା ପାଇଁ ଏଠାକୁ ଯାଆନ୍ତୁ:",
     "enableAutocorrectPopupSteps": "  • ସେଟିଂସ\n  • ସାଧାରଣ\n  • କୀବୋର୍ଡ୍\n  • କୀବୋର୍ଡ୍ସ\n  • ନୂଆ କୀବୋର୍ଡ୍ ଯୋଡ଼ନ୍ତୁ",
     "enableAutocorrectPopupDescription": "ଥରେ ଭାଷା ଚୟନ ହେବା ପରେ, ଆପଣ ନୂତନ ଭାବରେ ସ୍ଥାପିତ କୀବୋର୍ଡ୍ ସକ୍ରିୟ କରିବା ପାଇଁ ଆପଣଙ୍କ କୀବୋର୍ଡର ତଳ ବାମ ପାର୍ଶ୍ୱରେ ଥିବା ଛୋଟ ଗ୍ଲୋବ୍ ଆଇକନ୍ ଉପରେ କ୍ଲିକ୍ କରିପାରିବେ।",
     "enableAutocorrectWarning": "ସତର୍କତା! ଆପଣଙ୍କ ଟାର୍ଗେଟ୍ ଭାଷା କୀବୋର୍ଡ୍ ଯୋଡ଼ିବା ଆବଶ୍ୟକ",
@@ -2266,5 +2265,7 @@
     "seeAll": "ସବୁ ଦେଖନ୍ତୁ",
     "seeAllSection": "ସବୁ {section} ଦେଖନ୍ତୁ",
     "showMoreOptionsHint": "ଅଧିକ ବିକଳ୍ପ ଦେଖାନ୍ତୁ",
-    "onboardingStepOfTotal": "{total} ର {step} ସୋପାନ"
+    "onboardingStepOfTotal": "{total} ର {step} ସୋପାନ",
+    "addKeyboardDialogTitle": "ଆପଣଙ୍କ ଟାର୍ଗେଟ୍ ଭାଷା କୀବୋର୍ଡ୍ ଯୋଡ଼ନ୍ତୁ",
+    "enableAutocorrectPopupPathIntro": "ଗୋଟିଏ ଯୋଡ଼ିବା ପାଇଁ, ଏଠାକୁ ଯାଆନ୍ତୁ:"
 }

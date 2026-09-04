@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-09-03 14:43:47.080894",
+    "@@last_modified": "2026-09-04 10:08:33.913753",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "Do kinst tekst-nei-spraak ynskeakelje yn dyn lear-ynstellingen",
     "noSpaceDescriptionYet": "Noch gjin kursusbeskriuwing makke.",
     "tooLargeToSend": "Dit berjocht is te grut om te ferstjoeren",
-    "enableAutocorrectPopupTitle": "Foegje dyn doeltaaltoetseboerd ta troch te gean nei:",
     "enableAutocorrectPopupSteps": "  • Ynstellingen\n  • Algemien\n  • Toetseboerd\n  • Toetseboerden\n  • Foegje nij toetseboerd ta",
     "enableAutocorrectPopupDescription": "Sadree't de taal selektearre is, kinst op it lytse wrâldbyldkaike linkûnder op dyn toetseboerd klikke om it nij ynstallearre toetseboerd te aktivearjen.",
     "enableAutocorrectWarning": "Warskôging! It tafoegjen fan dyn doeltaaltoetseboerd is fereaske",
@@ -2266,5 +2265,7 @@
     "seeAll": "Alles sjen",
     "seeAllSection": "Alles sjen yn {section}",
     "showMoreOptionsHint": "mear opsjes sjen litte",
-    "onboardingStepOfTotal": "Stap {step} fan {total}"
+    "onboardingStepOfTotal": "Stap {step} fan {total}",
+    "addKeyboardDialogTitle": "Foegje it toetseboerd fan jo doeltaal ta",
+    "enableAutocorrectPopupPathIntro": "Om ien ta te foegjen, gean nei:"
 }

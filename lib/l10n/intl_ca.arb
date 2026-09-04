@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-03 14:43:46.218921",
+    "@@last_modified": "2026-09-04 10:08:32.642411",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -3240,7 +3240,6 @@
     "ttsDisabledBody": "Pots habilitar el text a veu a la configuració d'aprenentatge",
     "noSpaceDescriptionYet": "Encara no s'ha creat cap descripció del curs.",
     "tooLargeToSend": "Aquest missatge és massa gran per enviar",
-    "enableAutocorrectPopupTitle": "Afegeix el teclat del teu idioma objectiu anant a:",
     "enableAutocorrectPopupSteps": "  • Configuració\n  • General\n  • Teclat\n  • Teclats\n  • Afegeix un teclat nou",
     "enableAutocorrectPopupDescription": "Un cop seleccionat l'idioma, pots fer clic a la petita icona del globus a la part inferior esquerra del teclat per activar el teclat recentment instal·lat.",
     "enableAutocorrectWarning": "Avís! Requereix afegir el teclat del vostre idioma objectiu",
@@ -5497,10 +5496,6 @@
         "placeholders": {}
     },
     "@tooLargeToSend": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -9989,5 +9984,7 @@
     "seeAll": "Veure-ho tot",
     "seeAllSection": "Veure-ho tot a {section}",
     "showMoreOptionsHint": "mostrar més opcions",
-    "onboardingStepOfTotal": "Pas {step} de {total}"
+    "onboardingStepOfTotal": "Pas {step} de {total}",
+    "addKeyboardDialogTitle": "Afegeix el teclat del teu idioma objectiu",
+    "enableAutocorrectPopupPathIntro": "Per afegir-ne un, ves a:"
 }

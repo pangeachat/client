@@ -2766,7 +2766,6 @@
     "ttsDisabledBody": "Galite įjungti teksto į kalbą funkciją savo mokymosi nustatymuose",
     "noSpaceDescriptionYet": "Dar nėra sukurta kurso aprašymo.",
     "tooLargeToSend": "Ši žinutė yra per didelė siųsti",
-    "enableAutocorrectPopupTitle": "Pridėkite savo tikslios kalbos klaviatūrą, eikite į:",
     "enableAutocorrectPopupSteps": "  • Nustatymai\n  • Bendra\n  • Klaviatūra\n  • Klaviatūros\n  • Pridėti naują klaviatūrą",
     "enableAutocorrectPopupDescription": "Pasirinkus kalbą, galite spustelėti mažą pasaulio ženklo piktogramą apatinėje kairėje klaviatūros dalyje, kad aktyvuotumėte naujai įdiegtą klaviatūrą.",
     "enableAutocorrectWarning": "Įspėjimas! Reikia pridėti savo tikslo kalbos klaviatūrą",
@@ -2968,7 +2967,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-09-03 14:43:49.128754",
+    "@@last_modified": "2026-09-04 10:08:36.508023",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6151,10 +6150,6 @@
         "placeholders": {}
     },
     "@tooLargeToSend": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10643,5 +10638,7 @@
     "seeAll": "Žr. visus",
     "seeAllSection": "Žr. visus {section}",
     "showMoreOptionsHint": "rodyti daugiau parinkčių",
-    "onboardingStepOfTotal": "{step} iš {total} žingsnio"
+    "onboardingStepOfTotal": "{step} iš {total} žingsnio",
+    "addKeyboardDialogTitle": "Pridėkite savo tikslinės kalbos klaviatūrą",
+    "enableAutocorrectPopupPathIntro": "Norėdami pridėti, eikite į:"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-09-03 14:43:49.120847",
+    "@@last_modified": "2026-09-04 10:08:36.193602",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "Dir kënnt Text-zu-Sprooch an Äre Léierastellungen aktivéieren",
     "noSpaceDescriptionYet": "Nach keng Coursbeschreiwung erstallt.",
     "tooLargeToSend": "Dës Noriicht ass ze grouss fir ze schécken",
-    "enableAutocorrectPopupTitle": "Füügt Är Zilssprooch-Tastatur bäi andeems Dir gitt op:",
     "enableAutocorrectPopupSteps": "  • Astellungen\n  • Allgemeng\n  • Tastatur\n  • Tastaturen\n  • Nei Tastatur derbäisetzen",
     "enableAutocorrectPopupDescription": "Wann d'Sprooch ausgewielt ass, kënnt Dir op dat klengt Globus-Symbol ënnen lénks op Ärer Tastatur klicken, fir déi nei installéiert Tastatur ze aktivéieren.",
     "enableAutocorrectWarning": "Opgepasst! Erfuerdert d'Zousätzlech vun Ärer Zilssprooch-Tastatur",
@@ -2266,5 +2265,7 @@
     "seeAll": "Alles gesinn",
     "seeAllSection": "Alles gesinn {section}",
     "showMoreOptionsHint": "méi Optiounen uweisen",
-    "onboardingStepOfTotal": "Schrëtt {step} vun {total}"
+    "onboardingStepOfTotal": "Schrëtt {step} vun {total}",
+    "addKeyboardDialogTitle": "Tastatur fir Är Zilssprooch derbäisetzen",
+    "enableAutocorrectPopupPathIntro": "Fir eng derbäizesetzen, gitt op:"
 }

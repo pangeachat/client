@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-09-03 14:43:49.613802",
+    "@@last_modified": "2026-09-04 10:08:37.122788",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "Та сурах тохиргоондоо үг хэлэх функцийг идэвхжүүлж болно",
     "noSpaceDescriptionYet": "Сургалтын тайлбар хараахан үүсгээгүй байна.",
     "tooLargeToSend": "Энэ мессеж хэтэрхий том тул илгээх боломжгүй",
-    "enableAutocorrectPopupTitle": "Дараах байдлаар зорилтот хэлнийхээ гарны тохиргоог нэмнэ үү:",
     "enableAutocorrectPopupSteps": "  • Тохиргоо\n  • Ерөнхий\n  • Гар\n  • Гарууд\n  • Шинэ гар нэмэх",
     "enableAutocorrectPopupDescription": "Хэлийг сонгосны дараа та гарны зүүн доод буланд байрлах жижиг бөмбөрцөг дүрс дээр дарж шинээр суулгасан гарыг идэвхжүүлж болно.",
     "enableAutocorrectWarning": "Анхааруулга! Зорилтот хэлнийхээ гарыг нэмэх шаардлагатай",
@@ -2266,5 +2265,7 @@
     "seeAll": "Бүгдийг харах",
     "seeAllSection": "Бүх {section}-г харах",
     "showMoreOptionsHint": "бусад сонголтыг харах",
-    "onboardingStepOfTotal": "Нийт {total}-ээс {step}-р алхам"
+    "onboardingStepOfTotal": "Нийт {total}-ээс {step}-р алхам",
+    "addKeyboardDialogTitle": "Хэлнийхээ гарыг нэмэх",
+    "enableAutocorrectPopupPathIntro": "Нэмэхийн тулд дараах руу орно уу:"
 }

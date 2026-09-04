@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-09-03 14:43:49.654128",
+    "@@last_modified": "2026-09-04 10:08:37.644757",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "নখোইগী লার্নিং সেটিংদা টেক্সট-টু-স্পীচ অন তৌবা য়াই",
     "noSpaceDescriptionYet": "হৌজিক ফাওবদা কোর্সগী ডিস্ক্রিপশন অমা শেমদ্রি।",
     "tooLargeToSend": "অসিগুম্বা মেসেজ অসি থাবদা হেন্না চাউই",
-    "enableAutocorrectPopupTitle": "নখোইগী টার্গেট ল্যাঙ্গুয়েজ কীবোর্ড অদু অসিদা চৎলগা হাপ্পীয়ু:",
     "enableAutocorrectPopupSteps": "  • সেটিং",
     "enableAutocorrectPopupDescription": "ল্যাঙ্গুয়েজ অদু খল্লবদি, নখোইনা নখোইগী কীবোর্ডগী মখাদা লৈবা গ্লোব আইকন অদু ক্লিক তৌবগা লোইননা ইন্সটল তৌখিবা কীবোর্ড অদু এক্টিভেট তৌবা য়াই।",
     "enableAutocorrectWarning": "ওয়ার্নিং! নখোইগী টার্গেট ল্যাঙ্গুয়েজ কীবোর্ড হাপ্পা মথৌ তাই",
@@ -2266,5 +2265,7 @@
     "seeAll": "পুম্নমক উ",
     "seeAllSection": "পুম্নমক উ {section}",
     "showMoreOptionsHint": "খঙফম কয়া উৎনবা",
-    "onboardingStepOfTotal": "খোঙথাং {step} {total} দগী"
+    "onboardingStepOfTotal": "খোঙথাং {step} {total} দগী",
+    "addKeyboardDialogTitle": "ꯑꯩꯈꯣꯌꯒꯤ ꯂକ୍ꯁ꯭ꯌ ꯂꯣꯟꯒꯤ ꯀꯤꯕꯣꯔꯗ ꯍꯥꯞꯄꯤꯌꯨ",
+    "enableAutocorrectPopupPathIntro": "ꯑꯃ ꯍꯥꯞꯄ ꯅꯕ, ꯆꯠꯇꯨ ꯐꯪꯉꯨ:"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-03 14:43:45.789879",
+    "@@last_modified": "2026-09-04 10:08:31.819982",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -2897,7 +2897,6 @@
     "ttsDisabledBody": "আপনি আপনার শেখার সেটিংসে টেক্সট-টু-স্পিচ চালু করতে পারেন",
     "noSpaceDescriptionYet": "এখনো কোনও কোর্সের বিবরণ তৈরি হয়নি।",
     "tooLargeToSend": "এই বার্তা পাঠানোর জন্য খুব বড়",
-    "enableAutocorrectPopupTitle": "আপনার লক্ষ্য ভাষার কীবোর্ড যোগ করুন: সেটিংসে যান",
     "enableAutocorrectPopupSteps": "  • সেটিংস\n  • সাধারণ\n  • কীবোর্ড\n  • কীবোর্ডসমূহ\n  • নতুন কীবোর্ড যোগ করুন",
     "enableAutocorrectPopupDescription": "একবার ভাষা নির্বাচন করলে, আপনি আপনার কীবোর্ডের নিচে বাম পাশে ছোট গ্লোব আইকনে ক্লিক করে নতুন ইনস্টলকৃত কীবোর্ডটি সক্রিয় করতে পারেন।",
     "enableAutocorrectWarning": "সতর্কতা! আপনার লক্ষ্য ভাষার কীবোর্ড যোগ করতে হবে",
@@ -5998,10 +5997,6 @@
         "placeholders": {}
     },
     "@tooLargeToSend": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10490,5 +10485,7 @@
     "seeAll": "সব দেখুন",
     "seeAllSection": "সব দেখুন {section}",
     "showMoreOptionsHint": "আরও বিকল্প দেখান",
-    "onboardingStepOfTotal": "{total} এর মধ্যে ধাপ {step}"
+    "onboardingStepOfTotal": "{total} এর মধ্যে ধাপ {step}",
+    "addKeyboardDialogTitle": "আপনার লক্ষ্য ভাষার কীবোর্ড যোগ করুন",
+    "enableAutocorrectPopupPathIntro": "একটি যোগ করতে, এখানে যান:"
 }

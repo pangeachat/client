@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-09-03 14:43:45.757151",
+    "@@last_modified": "2026-09-04 10:08:32.003785",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "Можете да активирате текст към говор в настройките си за обучение",
     "noSpaceDescriptionYet": "Все още няма създадено описание на курса.",
     "tooLargeToSend": "Това съобщение е твърде голямо за изпращане",
-    "enableAutocorrectPopupTitle": "Добавете клавиатурата на целевия език, като отидете на:",
     "enableAutocorrectPopupSteps": "  • Настройки\n  • Общи\n  • Клавиатура\n  • Клавиатури\n  • Добавяне на нова клавиатура",
     "enableAutocorrectPopupDescription": "След като езикът е избран, можете да щракнете върху малката икона на глобус в долния ляв ъгъл на клавиатурата си, за да активирате новоинсталираната клавиатура.",
     "enableAutocorrectWarning": "Внимание! Изисква добавяне на клавиатурата на целевия език",
@@ -2266,5 +2265,7 @@
     "seeAll": "Виж всички",
     "seeAllSection": "Виж всички {section}",
     "showMoreOptionsHint": "покажи още опции",
-    "onboardingStepOfTotal": "Стъпка {step} от {total}"
+    "onboardingStepOfTotal": "Стъпка {step} от {total}",
+    "addKeyboardDialogTitle": "Добавете клавиатура за целевия език",
+    "enableAutocorrectPopupPathIntro": "За да добавите такава, отидете на:"
 }

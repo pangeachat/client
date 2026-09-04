@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-09-03 14:43:52.454665",
+    "@@last_modified": "2026-09-04 10:08:40.912517",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -3357,7 +3357,6 @@
     "ttsDisabledBody": "您可以在学习设置中启用文本转语音",
     "noSpaceDescriptionYet": "尚未创建课程描述。",
     "tooLargeToSend": "此消息过大，无法发送",
-    "enableAutocorrectPopupTitle": "通过以下步骤添加目标语言键盘：",
     "enableAutocorrectPopupSteps": "  • 设置\n  • 通用\n  • 键盘\n  • 键盘\n  • 添加新键盘",
     "enableAutocorrectPopupDescription": "选择语言后，可以点击键盘左下角的小地球图标，激活新安装的键盘。",
     "enableAutocorrectWarning": "警告！需要添加目标语言键盘",
@@ -5550,10 +5549,6 @@
         "placeholders": {}
     },
     "@tooLargeToSend": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -9862,5 +9857,7 @@
     "seeAll": "查看全部",
     "seeAllSection": "查看全部{section}",
     "showMoreOptionsHint": "显示更多选项",
-    "onboardingStepOfTotal": "第 {step} 步，共 {total} 步"
+    "onboardingStepOfTotal": "第 {step} 步，共 {total} 步",
+    "addKeyboardDialogTitle": "添加目标语言键盘",
+    "enableAutocorrectPopupPathIntro": "要添加，请前往："
 }

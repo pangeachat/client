@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-09-03 14:43:50.134380",
+    "@@last_modified": "2026-09-04 10:08:38.082594",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "Mutha kuyambitsa kulemba mawu muzokonda zanu zophunzirira",
     "noSpaceDescriptionYet": "Palibe kufotokozera kosi komwe kunapangidwa pano.",
     "tooLargeToSend": "Uthenga uwu ndi waukulu kwambiri kuti utumizidwe",
-    "enableAutocorrectPopupTitle": "Onjezani kiyibodi yanu ya chilankhulo chanu chofuna kuphunzira popita ku:",
     "enableAutocorrectPopupSteps": "  • Zokonda\n  • Zambiri\n  • Kiyibodi\n  • Kiyibodi\n  • Onjezani Kiyibodi Yatsopano",
     "enableAutocorrectPopupDescription": "Mukasankha chilankhulo, mutha kudina chizindikiro chaching'ono cha dziko lapansi pansi kumanzere kwa kiyibodi yanu kuti muyambitse kiyibodi yomwe yangoikidwa kumene.",
     "enableAutocorrectWarning": "Chenjezo! Ikufuna kuwonjezera kiyibodi yanu ya chilankhulo chanu chofuna kuphunzira",
@@ -2266,5 +2265,7 @@
     "seeAll": "Onani zonse",
     "seeAllSection": "Onani zonse {section}",
     "showMoreOptionsHint": "onetsani zosankha zambiri",
-    "onboardingStepOfTotal": "Gawo {step} pa {total}"
+    "onboardingStepOfTotal": "Gawo {step} pa {total}",
+    "addKeyboardDialogTitle": "Onjezani kiyibodi ya chilankhulo chanu",
+    "enableAutocorrectPopupPathIntro": "Kuti muwonjezere, pitani ku:"
 }

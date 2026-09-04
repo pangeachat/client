@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-09-03 14:43:49.101650",
+    "@@last_modified": "2026-09-04 10:08:37.972265",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "Textum ad vocem in uncinis discendi activare potes",
     "noSpaceDescriptionYet": "Nulla descriptio cursus adhuc creata est.",
     "tooLargeToSend": "Hic nuntius nimis magnus est ut mittatur",
-    "enableAutocorrectPopupTitle": "Claviaturam linguae tuae addere, vade ad:",
     "enableAutocorrectPopupSteps": "  • Uncini\n  • Generalia\n  • Claviatura\n  • Claviaturae\n  • Novam Claviaturam Adde",
     "enableAutocorrectPopupDescription": "Lingua selecta, parvam iconem globi in parte inferiore sinistra claviaturæ premere potes ut novam claviaturam activam facias.",
     "enableAutocorrectWarning": "Monitus! Addenda est claviatura linguae tuae discendae",
@@ -2266,5 +2265,7 @@
     "seeAll": "Omnia vide",
     "seeAllSection": "Omnia {section} vide",
     "showMoreOptionsHint": "plures optiones ostende",
-    "onboardingStepOfTotal": "Gradus {step} de {total}"
+    "onboardingStepOfTotal": "Gradus {step} de {total}",
+    "addKeyboardDialogTitle": "Adde clavile linguae tuae",
+    "enableAutocorrectPopupPathIntro": "Ad addendum, i ad:"
 }

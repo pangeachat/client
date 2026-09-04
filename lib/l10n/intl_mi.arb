@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-09-03 14:43:49.462173",
+    "@@last_modified": "2026-09-04 10:08:37.284072",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "Ka taea e koe te whakahohe i te tuhi-ki-reo i roto i ō tautuhinga ako",
     "noSpaceDescriptionYet": "Kāore anō kia hangaia he whakaahuatanga akoranga.",
     "tooLargeToSend": "He nui rawa tēnei karere kia tukuna",
-    "enableAutocorrectPopupTitle": "Tāpirihia tō papapātuhi reo whāinga mā te haere ki:",
     "enableAutocorrectPopupSteps": "  • Tautuhinga\n  • Whānui\n  • Papapātuhi\n  • Papapātuhi\n  • Tāpiri Papapātuhi Hou",
     "enableAutocorrectPopupDescription": "Ina kōwhiria te reo, ka taea e koe te pāwhiri i te ata ao iti kei te taha mauī o raro o tō papapātuhi hei whakahohe i te papapātuhi hou kua whakaurua.",
     "enableAutocorrectWarning": "Whakatūpato! Me tāpiri tō papapātuhi reo whāinga",
@@ -2266,5 +2265,7 @@
     "seeAll": "Tirohia katoa",
     "seeAllSection": "Tirohia katoa {section}",
     "showMoreOptionsHint": "whakaatu atu kōwhiringa",
-    "onboardingStepOfTotal": "Hipanga {step} o {total}"
+    "onboardingStepOfTotal": "Hipanga {step} o {total}",
+    "addKeyboardDialogTitle": "Tāpirihia te papapātuhi o tō reo whāinga",
+    "enableAutocorrectPopupPathIntro": "Hei tāpiri, haere ki:"
 }

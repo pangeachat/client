@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-09-03 14:43:49.752632",
+    "@@last_modified": "2026-09-04 10:08:37.050027",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "तुम्ही तुमच्या शिक्षण सेटिंग्जमध्ये टेक्स्ट-टू-स्पीच सक्षम करू शकता",
     "noSpaceDescriptionYet": "अद्याप कोर्सचे वर्णन तयार केलेले नाही.",
     "tooLargeToSend": "हा संदेश पाठवण्यासाठी खूप मोठा आहे",
-    "enableAutocorrectPopupTitle": "तुमचा लक्ष्य भाषा कीबोर्ड जोडण्यासाठी येथे जा:",
     "enableAutocorrectPopupSteps": "  • सेटिंग्ज\n  • सामान्य\n  • कीबोर्ड\n  • कीबोर्ड\n  • नवीन कीबोर्ड जोडा",
     "enableAutocorrectPopupDescription": "एकदा भाषा निवडल्यानंतर, तुम्ही नव्याने स्थापित केलेला कीबोर्ड सक्रिय करण्यासाठी तुमच्या कीबोर्डच्या खालच्या डाव्या बाजूला असलेल्या लहान ग्लोब चिन्हावर क्लिक करू शकता.",
     "enableAutocorrectWarning": "इशारा! तुमच्या लक्ष्य भाषेचा कीबोर्ड जोडणे आवश्यक आहे",
@@ -2266,5 +2265,7 @@
     "seeAll": "सर्व पहा",
     "seeAllSection": "सर्व {section} पहा",
     "showMoreOptionsHint": "अधिक पर्याय दाखवा",
-    "onboardingStepOfTotal": "{total} पैकी पायरी {step}"
+    "onboardingStepOfTotal": "{total} पैकी पायरी {step}",
+    "addKeyboardDialogTitle": "तुमच्या लक्ष्य भाषेचा कीबोर्ड जोडा",
+    "enableAutocorrectPopupPathIntro": "एक जोडण्यासाठी, येथे जा:"
 }

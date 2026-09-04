@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-09-03 14:43:48.682627",
+    "@@last_modified": "2026-09-04 10:08:35.798818",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "ನಿಮ್ಮ ಕಲಿಕೆಯ ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ನೀವು ಪಠ್ಯದಿಂದ ಭಾಷಣವನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಬಹುದು",
     "noSpaceDescriptionYet": "ಇನ್ನೂ ಯಾವುದೇ ಕೋರ್ಸ್ ವಿವರಣೆಯನ್ನು ರಚಿಸಲಾಗಿಲ್ಲ.",
     "tooLargeToSend": "ಈ ಸಂದೇಶವು ಕಳುಹಿಸಲು ತುಂಬಾ ದೊಡ್ಡದಾಗಿದೆ",
-    "enableAutocorrectPopupTitle": "ನಿಮ್ಮ ಗುರಿ ಭಾಷೆಯ ಕೀಬೋರ್ಡ್ ಅನ್ನು ಇಲ್ಲಿಗೆ ಹೋಗುವ ಮೂಲಕ ಸೇರಿಸಿ:",
     "enableAutocorrectPopupSteps": "  • ಸೆಟ್ಟಿಂಗ್‌ಗಳು\n  • ಸಾಮಾನ್ಯ\n  • ಕೀಬೋರ್ಡ್\n  • ಕೀಬೋರ್ಡ್‌ಗಳು\n  • ಹೊಸ ಕೀಬೋರ್ಡ್ ಸೇರಿಸಿ",
     "enableAutocorrectPopupDescription": "ಭಾಷೆಯನ್ನು ಆಯ್ಕೆ ಮಾಡಿದ ನಂತರ, ಹೊಸದಾಗಿ ಸ್ಥಾಪಿಸಲಾದ ಕೀಬೋರ್ಡ್ ಅನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಲು ನಿಮ್ಮ ಕೀಬೋರ್ಡ್‌ನ ಕೆಳಗಿನ ಎಡಭಾಗದಲ್ಲಿರುವ ಸಣ್ಣ ಗ್ಲೋಬ್ ಐಕಾನ್ ಅನ್ನು ನೀವು ಕ್ಲಿಕ್ ಮಾಡಬಹುದು.",
     "enableAutocorrectWarning": "ಎಚ್ಚರಿಕೆ! ನಿಮ್ಮ ಗುರಿ ಭಾಷೆಯ ಕೀಬೋರ್ಡ್ ಅನ್ನು ಸೇರಿಸುವ ಅಗತ್ಯವಿದೆ",
@@ -2266,5 +2265,7 @@
     "seeAll": "ಎಲ್ಲವನ್ನೂ ನೋಡಿ",
     "seeAllSection": "ಎಲ್ಲವನ್ನೂ ನೋಡಿ {section}",
     "showMoreOptionsHint": "ಇನ್ನಷ್ಟು ಆಯ್ಕೆಗಳನ್ನು ತೋರಿಸಿ",
-    "onboardingStepOfTotal": "{total} ರಲ್ಲಿ ಹೆಜ್ಜೆ {step}"
+    "onboardingStepOfTotal": "{total} ರಲ್ಲಿ ಹೆಜ್ಜೆ {step}",
+    "addKeyboardDialogTitle": "ನಿಮ್ಮ ಗುರಿ ಭಾಷೆಯ ಕೀಬೋರ್ಡ್ ಸೇರಿಸಿ",
+    "enableAutocorrectPopupPathIntro": "ಒಂದನ್ನು ಸೇರಿಸಲು, ಇಲ್ಲಿಗೆ ಹೋಗಿ:"
 }

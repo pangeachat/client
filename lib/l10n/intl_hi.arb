@@ -2892,7 +2892,6 @@
     "ttsDisabledBody": "आप अपने सीखने की सेटिंग्स में टेक्स्ट-टू-स्पीच सक्षम कर सकते हैं",
     "noSpaceDescriptionYet": "अभी तक कोई कोर्स विवरण नहीं बनाया गया है।",
     "tooLargeToSend": "यह संदेश भेजने के लिए बहुत बड़ा है",
-    "enableAutocorrectPopupTitle": "अपनी लक्षित भाषा की कीबोर्ड जोड़ने के लिए जाएं:",
     "enableAutocorrectPopupSteps": "  • सेटिंग्स\n  • सामान्य\n  • कीबोर्ड\n  • कीबोर्ड्स\n  • नया कीबोर्ड जोड़ें",
     "enableAutocorrectPopupDescription": "एक बार भाषा का चयन करने के बाद, आप अपने कीबोर्ड के नीचे बाएं कोने में छोटे ग्लोब आइकन पर क्लिक कर सकते हैं ताकि नए इंस्टॉल किए गए कीबोर्ड को सक्रिय किया जा सके।",
     "enableAutocorrectWarning": "चेतावनी! अपने लक्ष्य भाषा की कीबोर्ड जोड़ने की आवश्यकता है",
@@ -3094,7 +3093,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-09-03 14:43:48.017305",
+    "@@last_modified": "2026-09-04 10:08:34.269679",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6002,10 +6001,6 @@
         "placeholders": {}
     },
     "@tooLargeToSend": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10494,5 +10489,7 @@
     "seeAll": "सभी देखें",
     "seeAllSection": "सभी {section} देखें",
     "showMoreOptionsHint": "और विकल्प दिखाएँ",
-    "onboardingStepOfTotal": "{total} में से चरण {step}"
+    "onboardingStepOfTotal": "{total} में से चरण {step}",
+    "addKeyboardDialogTitle": "अपनी लक्ष्य भाषा का कीबोर्ड जोड़ें",
+    "enableAutocorrectPopupPathIntro": "जोड़ने के लिए, यहाँ जाएँ:"
 }

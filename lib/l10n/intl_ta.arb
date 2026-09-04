@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-03 14:43:55.147205",
+    "@@last_modified": "2026-09-04 10:08:40.039340",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -3266,7 +3266,6 @@
     "ttsDisabledBody": "உங்கள் கற்றல் அமைப்புகளில் உரை-தொகுப்பை இயக்கு முடியும்",
     "noSpaceDescriptionYet": "இப்போது வரை பாடநெறி விளக்கம் உருவாக்கப்படவில்லை.",
     "tooLargeToSend": "இந்த செய்தி அனுப்ப மிகவும் பெரியது",
-    "enableAutocorrectPopupTitle": "உங்கள் இலக்கு மொழி விசைப்பலகையை சேர்க்க கீழே செல்லவும்:",
     "enableAutocorrectPopupSteps": "  • அமைப்புகள்\n  • பொது\n  • விசைப்பலகை\n  • விசைப்பலகைகள்\n  • புதிய விசைப்பலகையைச் சேர்க்கவும்",
     "enableAutocorrectPopupDescription": "மொழி தேர்வு செய்யப்பட்ட பின், உங்கள் விசைப்பலகையின் கீழே இடது பக்கத்தில் உள்ள சிறிய உலகக் குறியீட்டை கிளிக் செய்து புதிய நிறுவப்பட்ட விசைப்பலகையை செயல்படுத்தலாம்.",
     "enableAutocorrectWarning": "எச்சரிக்கை! உங்கள் இலக்கு மொழி விசைப்பலகையைச் சேர்க்க வேண்டும்",
@@ -5472,10 +5471,6 @@
         "placeholders": {}
     },
     "@tooLargeToSend": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -9954,5 +9949,7 @@
     "seeAll": "அனைத்தையும் காட்டு",
     "seeAllSection": "அனைத்தையும் காட்டு {section}",
     "showMoreOptionsHint": "மேலும் விருப்பங்களைக் காட்டு",
-    "onboardingStepOfTotal": "{total} இல் படி {step}"
+    "onboardingStepOfTotal": "{total} இல் படி {step}",
+    "addKeyboardDialogTitle": "உங்கள் இலக்கு மொழி விசைப்பலகையைச் சேர்க்கவும்",
+    "enableAutocorrectPopupPathIntro": "ஒன்றைச் சேர்க்க, இதற்குச் செல்லவும்:"
 }

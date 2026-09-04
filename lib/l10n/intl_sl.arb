@@ -1601,7 +1601,6 @@
     "ttsDisabledBody": "V nastavitvah učenja lahko omogočite pretvorbo besedila v govor",
     "noSpaceDescriptionYet": "Še ni ustvarjen opis tečaja.",
     "tooLargeToSend": "To sporočilo je preveliko za pošiljanje",
-    "enableAutocorrectPopupTitle": "Dodajte tipkovnico za ciljni jezik tako, da greste na:",
     "enableAutocorrectPopupSteps": "  • Nastavitve\n  • Splošno\n  • Tipkovnica\n  • Tipkovnice\n  • Dodaj novo tipkovnico",
     "enableAutocorrectPopupDescription": "Ko je jezik izbran, lahko kliknete na majhno ikono zemljevide na spodnjem levem delu tipkovnice, da aktivirate novo nameščeno tipkovnico.",
     "enableAutocorrectWarning": "Opozorilo! Potrebno je dodati tipkovnico ciljanega jezika",
@@ -1803,7 +1802,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-09-03 14:43:50.823885",
+    "@@last_modified": "2026-09-04 10:08:38.994364",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6318,10 +6317,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@enableAutocorrectPopupTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectPopupSteps": {
         "type": "String",
         "placeholders": {}
@@ -10807,5 +10802,7 @@
     "seeAll": "Poglej vse",
     "seeAllSection": "Poglej vse {section}",
     "showMoreOptionsHint": "pokaži več možnosti",
-    "onboardingStepOfTotal": "Korak {step} od {total}"
+    "onboardingStepOfTotal": "Korak {step} od {total}",
+    "addKeyboardDialogTitle": "Dodajte tipkovnico za ciljni jezik",
+    "enableAutocorrectPopupPathIntro": "Če jo želite dodati, pojdite na:"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-09-03 14:43:49.191332",
+    "@@last_modified": "2026-09-04 10:08:36.463775",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "ທ່ານສາມາດເປີດໃຊ້ການປ່ຽນຂໍ້ຄວາມເປັນສຽງເວົ້າໃນການຕັ້ງຄ່າການຮຽນຮູ້ຂອງທ່ານ",
     "noSpaceDescriptionYet": "ຍັງບໍ່ມີການສ້າງລາຍລະອຽດຫຼັກສູດເທື່ອ.",
     "tooLargeToSend": "ຂໍ້ຄວາມນີ້ໃຫຍ່ເກີນໄປທີ່ຈະສົ່ງ",
-    "enableAutocorrectPopupTitle": "ເພີ່ມແປ້ນພິມພາສາເປົ້າໝາຍຂອງທ່ານໂດຍການໄປທີ່:",
     "enableAutocorrectPopupSteps": "  • ການຕັ້ງຄ່າ\n  • ທົ່ວໄປ\n  • ແປ້ນພິມ\n  • ແປ້ນພິມຕ່າງໆ\n  • ເພີ່ມແປ້ນພິມໃໝ່",
     "enableAutocorrectPopupDescription": "ເມື່ອເລືອກພາສາແລ້ວ, ທ່ານສາມາດຄລິກໄອຄອນໂລກນ້ອຍໆຢູ່ເບື້ອງຊ້າຍລຸ່ມຂອງແປ້ນພິມຂອງທ່ານເພື່ອເປີດໃຊ້ແປ້ນພິມທີ່ຕິດຕັ້ງໃໝ່.",
     "enableAutocorrectWarning": "ຄຳເຕືອນ! ຕ້ອງເພີ່ມແປ້ນພິມພາສາເປົ້າໝາຍຂອງທ່ານ",
@@ -2266,5 +2265,7 @@
     "seeAll": "ເບິ່ງທັງໝົດ",
     "seeAllSection": "ເບິ່ງທັງໝົດ {section}",
     "showMoreOptionsHint": "ສະແດງຕົວເລືອກເພີ່ມເຕີມ",
-    "onboardingStepOfTotal": "ຂັ້ນຕອນທີ {step} ຈາກ {total}"
+    "onboardingStepOfTotal": "ຂັ້ນຕອນທີ {step} ຈາກ {total}",
+    "addKeyboardDialogTitle": "ເພີ່ມແປ້ນພິມພາສາເປົ້າໝາຍຂອງທ່ານ",
+    "enableAutocorrectPopupPathIntro": "ເພື່ອເພີ່ມ, ໄປທີ່:"
 }

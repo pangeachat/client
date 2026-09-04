@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-09-03 14:43:48.241574",
+    "@@last_modified": "2026-09-04 10:08:35.231066",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "Sampeyan bisa ngaktifake teks-dadi-swara ing setelan sinau sampeyan",
     "noSpaceDescriptionYet": "Durung ana deskripsi kursus sing digawe.",
     "tooLargeToSend": "Pesen iki gedhe banget kanggo dikirim",
-    "enableAutocorrectPopupTitle": "Tambah keyboard basa target sampeyan kanthi pindhah menyang:",
     "enableAutocorrectPopupSteps": "  • Setelan\n  • Umum\n  • Keyboard\n  • Keyboard\n  • Tambah Keyboard Anyar",
     "enableAutocorrectPopupDescription": "Sawise basa dipilih, sampeyan bisa ngeklik ikon globe cilik ing sisih ngisor kiwa keyboard kanggo ngaktifake keyboard sing mentas diinstal.",
     "enableAutocorrectWarning": "Pènget! Mbutuhake nambah keyboard basa target sampeyan",
@@ -2266,5 +2265,7 @@
     "seeAll": "Deleng kabeh",
     "seeAllSection": "Deleng kabeh {section}",
     "showMoreOptionsHint": "tampilake opsi liyane",
-    "onboardingStepOfTotal": "Langkah {step} saka {total}"
+    "onboardingStepOfTotal": "Langkah {step} saka {total}",
+    "addKeyboardDialogTitle": "Tambahake keyboard basa target sampeyan",
+    "enableAutocorrectPopupPathIntro": "Kanggo nambah, bukak:"
 }

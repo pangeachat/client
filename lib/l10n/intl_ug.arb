@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-09-03 14:43:51.945500",
+    "@@last_modified": "2026-09-04 10:08:40.711938",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "سىز ئۆگىنىش تەڭشەكلىرىڭىزدە تېكىستتىن نۇتۇققا ئايلاندۇرۇشنى قوزغىتالايدۇ",
     "noSpaceDescriptionYet": "تېخىچە كۇرس چۈشەندۈرۈشى يېزىلماپتۇ.",
     "tooLargeToSend": "بۇ ئۇچۇر بەك چوڭ بولغاچقا ئەۋەتىشكە بولمايدۇ",
-    "enableAutocorrectPopupTitle": "نىشان تىلىڭىزنىڭ كۇنۇپكا تاختىسىنى تۆۋەندىكى ئورۇنغا بېرىپ قوشۇڭ:",
     "enableAutocorrectPopupSteps": "  • تەڭشەكلەر\n  • ئومۇمىي\n  • كۇنۇپكا تاختىسى\n  • كۇنۇپكا تاختىلىرى\n  • يېڭى كۇنۇپكا تاختىسى قوشۇش",
     "enableAutocorrectPopupDescription": "تىل تاللانغاندىن كېيىن، كۇنۇپكا تاختىڭىزنىڭ سول ئاستى تەرىپىدىكى كىچىك شار بەلگىسىنى چېكىپ، يېڭىدىن قاچىلانغان كۇنۇپكا تاختىسىنى قوزغىتالايدۇ.",
     "enableAutocorrectWarning": "ئاگاھلاندۇرۇش! نىشان تىلىڭىزنىڭ كۇنۇپكا تاختىسىنى قوشۇشنى تەلەپ قىلىدۇ",
@@ -2266,5 +2265,7 @@
     "seeAll": "ھەممىنى كۆرۈش",
     "seeAllSection": "بارلىق {section}نى كۆرۈش",
     "showMoreOptionsHint": "تېخىمۇ كۆپ تاللاشلارنى كۆرسەت",
-    "onboardingStepOfTotal": "{total} قەدەم ئىچىدىكى {step}-قەدەم"
+    "onboardingStepOfTotal": "{total} قەدەم ئىچىدىكى {step}-قەدەم",
+    "addKeyboardDialogTitle": "نىشان تىلىڭىزنىڭ كۇنۇپكا تاختىسىنى قوشۇڭ",
+    "enableAutocorrectPopupPathIntro": "قوشۇش ئۈچۈن، بۇ يەرگە بېرىڭ:"
 }

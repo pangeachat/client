@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-09-03 14:43:46.918846",
+    "@@last_modified": "2026-09-04 10:08:33.518150",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -3357,7 +3357,6 @@
     "ttsDisabledBody": "Gaitzeko testu-hizkuntzara itzultzeko aukera gaitzeko zure ikasketa ezarpenetan",
     "noSpaceDescriptionYet": "Oraindik ez da ikastaroaren deskribapenik sortu",
     "tooLargeToSend": "Mezu hau bidaltzeko oso handia da",
-    "enableAutocorrectPopupTitle": "Gehitu zure hizkuntza helburuaren teklatua honetara joanez:",
     "enableAutocorrectPopupSteps": "  • Ezarpenak\n  • Orokorra\n  • Teklatu\n  • Teklatuak\n  • Gehitu teklatu berria",
     "enableAutocorrectPopupDescription": "Hizkuntza aukeratu ondoren, teklatuaren behealdean ezkerreko globe ikono txikia klik egin dezakezu teklatu berria aktibatzeko.",
     "enableAutocorrectWarning": "Abisua! Zure hizkuntza helburuaren teklatua gehitzea eskatzen du",
@@ -5550,10 +5549,6 @@
         "placeholders": {}
     },
     "@tooLargeToSend": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -9862,5 +9857,7 @@
     "seeAll": "Ikusi guztiak",
     "seeAllSection": "Ikusi {section} guztiak",
     "showMoreOptionsHint": "aukera gehiago erakutsi",
-    "onboardingStepOfTotal": "{total}etik {step}. urratsa"
+    "onboardingStepOfTotal": "{total}etik {step}. urratsa",
+    "addKeyboardDialogTitle": "Gehitu zure xede-hizkuntzaren teklatua",
+    "enableAutocorrectPopupPathIntro": "Bat gehitzeko, joan hona:"
 }

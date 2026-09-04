@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-09-03 14:43:46.360884",
+    "@@last_modified": "2026-09-04 10:08:32.907546",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "Gallwch chi alluogi testun-i-leferydd yn eich gosodiadau dysgu",
     "noSpaceDescriptionYet": "Dim disgrifiad cwrs wedi'i greu eto.",
     "tooLargeToSend": "Mae'r neges hon yn rhy fawr i'w hanfon",
-    "enableAutocorrectPopupTitle": "Ychwanegwch eich bysellfwrdd iaith darged trwy fynd i:",
     "enableAutocorrectPopupSteps": "  • Gosodiadau\n  • Cyffredinol\n  • Bysellfwrdd\n  • Bysellfyrddau\n  • Ychwanegu Bysellfwrdd Newydd",
     "enableAutocorrectPopupDescription": "Unwaith y dewisir yr iaith, gallwch glicio ar yr eicon glôb bach ar waelod chwith eich bysellfwrdd i actifadu'r bysellfwrdd newydd ei osod.",
     "enableAutocorrectWarning": "Rhybudd! Angen ychwanegu eich bysellfwrdd iaith darged",
@@ -2266,5 +2265,7 @@
     "seeAll": "Gweld y cyfan",
     "seeAllSection": "Gweld pob {section}",
     "showMoreOptionsHint": "dangos mwy o opsiynau",
-    "onboardingStepOfTotal": "Cam {step} o {total}"
+    "onboardingStepOfTotal": "Cam {step} o {total}",
+    "addKeyboardDialogTitle": "Ychwanegu bysellfwrdd eich iaith darged",
+    "enableAutocorrectPopupPathIntro": "I ychwanegu un, ewch i:"
 }

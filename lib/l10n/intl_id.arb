@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-03 14:43:47.872386",
+    "@@last_modified": "2026-09-04 10:08:35.043777",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -3275,7 +3275,6 @@
     "ttsDisabledBody": "Anda dapat mengaktifkan teks-ke-ucapan di pengaturan pembelajaran Anda",
     "noSpaceDescriptionYet": "Belum ada deskripsi kursus yang dibuat.",
     "tooLargeToSend": "Pesan ini terlalu besar untuk dikirim",
-    "enableAutocorrectPopupTitle": "Tambahkan keyboard bahasa target Anda dengan pergi ke:",
     "enableAutocorrectPopupSteps": "  • Pengaturan\n  • Umum\n  • Keyboard\n  • Keyboard\n  • Tambah Keyboard Baru",
     "enableAutocorrectPopupDescription": "Setelah bahasa dipilih, Anda dapat mengklik ikon globe kecil di kiri bawah keyboard Anda untuk mengaktifkan keyboard yang baru diinstal.",
     "enableAutocorrectWarning": "Peringatan! Membutuhkan penambahan keyboard bahasa target Anda",
@@ -5473,10 +5472,6 @@
         "placeholders": {}
     },
     "@tooLargeToSend": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -9935,5 +9930,7 @@
     "seeAll": "Lihat semua",
     "seeAllSection": "Lihat semua {section}",
     "showMoreOptionsHint": "tampilkan opsi lainnya",
-    "onboardingStepOfTotal": "Langkah {step} dari {total}"
+    "onboardingStepOfTotal": "Langkah {step} dari {total}",
+    "addKeyboardDialogTitle": "Tambahkan papan ketik bahasa target Anda",
+    "enableAutocorrectPopupPathIntro": "Untuk menambahkannya, buka:"
 }

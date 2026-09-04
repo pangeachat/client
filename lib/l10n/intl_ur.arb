@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-09-03 14:43:53.372441",
+    "@@last_modified": "2026-09-04 10:08:40.376810",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "آپ اپنی سیکھنے کی ترتیبات میں ٹیکسٹ ٹو اسپیچ کو فعال کر سکتے ہیں",
     "noSpaceDescriptionYet": "ابھی تک کوئی کورس کی تفصیل نہیں بنائی گئی ہے۔",
     "tooLargeToSend": "یہ پیغام بھیجنے کے لیے بہت بڑا ہے",
-    "enableAutocorrectPopupTitle": "اپنی ہدف زبان کا کی بورڈ شامل کرنے کے لیے یہاں جائیں:",
     "enableAutocorrectPopupSteps": "  • ترتیبات\n  • عمومی\n  • کی بورڈ\n  • کی بورڈز\n  • نیا کی بورڈ شامل کریں",
     "enableAutocorrectPopupDescription": "ایک بار جب زبان منتخب ہو جائے، تو آپ نئے انسٹال کردہ کی بورڈ کو فعال کرنے کے لیے اپنے کی بورڈ کے نیچے بائیں جانب چھوٹے گلوب آئیکن پر کلک کر سکتے ہیں۔",
     "enableAutocorrectWarning": "انتباہ! آپ کی ہدف زبان کا کی بورڈ شامل کرنا ضروری ہے",
@@ -2266,5 +2265,7 @@
     "seeAll": "سب دیکھیں",
     "seeAllSection": "تمام {section} دیکھیں",
     "showMoreOptionsHint": "مزید اختیارات دکھائیں",
-    "onboardingStepOfTotal": "{total} میں سے مرحلہ {step}"
+    "onboardingStepOfTotal": "{total} میں سے مرحلہ {step}",
+    "addKeyboardDialogTitle": "اپنی ہدف زبان کا کی بورڈ شامل کریں",
+    "enableAutocorrectPopupPathIntro": "ایک شامل کرنے کے لیے، یہاں جائیں:"
 }

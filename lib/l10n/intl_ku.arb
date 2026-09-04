@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-09-03 14:43:49.014603",
+    "@@last_modified": "2026-09-04 10:08:36.004818",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "دەتوانیت دەق بۆ قسەکردن لە ڕێکخستنەکانی فێربوونەکەتدا چالاک بکەیت",
     "noSpaceDescriptionYet": "هێشتا هیچ وەسفێکی خول دروست نەکراوە.",
     "tooLargeToSend": "ئەم پەیامە زۆر گەورەیە بۆ ناردن",
-    "enableAutocorrectPopupTitle": "کیبۆردی زمانی ئامانجەکەت زیاد بکە بە ڕۆیشتن بۆ:",
     "enableAutocorrectPopupSteps": "  • ڕێکخستنەکان\n  • گشتی\n  • کیبۆرد\n  • کیبۆردەکان\n  • کیبۆردێکی نوێ زیاد بکە",
     "enableAutocorrectPopupDescription": "کاتێک زمانەکە هەڵبژێردرا، دەتوانیت کرتە لە ئایکۆنی گۆی بچووک بکەیت لە خوارەوەی چەپی کیبۆردەکەت بۆ چالاککردنی کیبۆردە تازە دامەزراوەکە.",
     "enableAutocorrectWarning": "هۆشداری! پێویستی بە زیادکردنی کیبۆردی زمانی ئامانجەکەت هەیە",
@@ -2266,5 +2265,7 @@
     "seeAll": "هەمووی ببینە",
     "seeAllSection": "هەموو {section} ببینە",
     "showMoreOptionsHint": "پیشاندانی بژاردەی زیاتر",
-    "onboardingStepOfTotal": "هەنگاوی {step} لە {total}"
+    "onboardingStepOfTotal": "هەنگاوی {step} لە {total}",
+    "addKeyboardDialogTitle": "کیبۆردی زمانی مەبەستەکەت زیاد بکە",
+    "enableAutocorrectPopupPathIntro": "بۆ زیادکردنی یەکێک، بڕۆ بۆ:"
 }

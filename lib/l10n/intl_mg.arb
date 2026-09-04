@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-09-03 14:43:49.436279",
+    "@@last_modified": "2026-09-04 10:08:37.710829",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "Azonao atao ny mampandeha ny famakiana lahatsoratra ao amin'ny toe-javatra fianaranao",
     "noSpaceDescriptionYet": "Tsy mbola nisy famaritana taranja noforonina.",
     "tooLargeToSend": "Lehibe loatra ity hafatra ity ka tsy azo alefa",
-    "enableAutocorrectPopupTitle": "Ampio ny klavier fiteny kendrenao amin'ny alalan'ny fandehanana any amin'ny:",
     "enableAutocorrectPopupSteps": "  • Fikirana\n  • Ankapobeny\n  • Klavier\n  • Klavier\n  • Manampy Klavier Vaovao",
     "enableAutocorrectPopupDescription": "Rehefa voafidy ny fiteny, dia azonao atao ny manindry ny kisary kely boribory eo amin'ny farany ambany havia amin'ny klavier anao mba hampandeha ny klavier vao napetraka.",
     "enableAutocorrectWarning": "Fampitandremana! Mitaky ny fampidirana ny klavier fiteny kendrenao",
@@ -2266,5 +2265,7 @@
     "seeAll": "Jereo daholo",
     "seeAllSection": "Jereo daholo ny {section}",
     "showMoreOptionsHint": "asehoy safidy bebe kokoa",
-    "onboardingStepOfTotal": "Dingana {step} amin'ny {total}"
+    "onboardingStepOfTotal": "Dingana {step} amin'ny {total}",
+    "addKeyboardDialogTitle": "Ampio ny fitendry amin'ny fiteny tianao hianarana",
+    "enableAutocorrectPopupPathIntro": "Raha te hanampy iray, mandehana any amin'ny:"
 }

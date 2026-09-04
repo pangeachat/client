@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-09-03 14:43:48.539042",
+    "@@last_modified": "2026-09-04 10:08:36.028315",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "Оқу параметрлеріңізде мәтінді дауыстап оқуды қоса аласыз",
     "noSpaceDescriptionYet": "Әлі курс сипаттамасы жасалмаған.",
     "tooLargeToSend": "Бұл хабарлама жіберу үшін тым үлкен",
-    "enableAutocorrectPopupTitle": "Мақсатты тіл пернетақтасын мына жерден қосыңыз:",
     "enableAutocorrectPopupSteps": "  • Параметрлер\n  • Жалпы\n  • Пернетақта\n  • Пернетақталар\n  • Жаңа пернетақта қосу",
     "enableAutocorrectPopupDescription": "Тіл таңдалғаннан кейін, жаңадан орнатылған пернетақтаны іске қосу үшін пернетақтаның төменгі сол жағындағы кішкентай глобус белгішесін басуға болады.",
     "enableAutocorrectWarning": "Ескерту! Мақсатты тіл пернетақтасын қосуды талап етеді",
@@ -2266,5 +2265,7 @@
     "seeAll": "Барлығын қарау",
     "seeAllSection": "Барлық {section} қарау",
     "showMoreOptionsHint": "қосымша опцияларды көрсету",
-    "onboardingStepOfTotal": "{total} ішінен {step} қадам"
+    "onboardingStepOfTotal": "{total} ішінен {step} қадам",
+    "addKeyboardDialogTitle": "Мақсатты тіл пернетақтасын қосыңыз",
+    "enableAutocorrectPopupPathIntro": "Қосу үшін мына жерге өтіңіз:"
 }

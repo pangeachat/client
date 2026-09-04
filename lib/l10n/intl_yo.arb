@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-09-03 14:43:52.229809",
+    "@@last_modified": "2026-09-04 10:08:40.764176",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "O lè mú ọ̀rọ̀ sí ohùn ṣiṣẹ́ nínú àwọn ètò ẹ̀kọ́ rẹ",
     "noSpaceDescriptionYet": "Kò sí àlàyé kọ́ọ̀sì tí a ṣẹ̀dá síbẹ̀.",
     "tooLargeToSend": "Ìhìn iṣẹ́ yìí tóbi jù láti fi ránṣẹ́",
-    "enableAutocorrectPopupTitle": "Fi keyboard èdè tí o fẹ́ kọ́ kún nípa lílọ sí:",
     "enableAutocorrectPopupSteps": "  • Àwọn Ètò\n  • Gbogbogbò\n  • Keyboard\n  • Àwọn Keyboard\n  • Fi Keyboard Tuntun Kún",
     "enableAutocorrectPopupDescription": "Lọ́gán tí a bá ti yan èdè náà, o lè tẹ àmì ayé kékeré tó wà ní ìsàlẹ̀ òsì keyboard rẹ láti mú keyboard tuntun tí a fi sínú ṣiṣẹ́.",
     "enableAutocorrectWarning": "Ìkìlọ̀! Nílò fífi keyboard èdè tí o fẹ́ kọ́ kún",
@@ -2266,5 +2265,7 @@
     "seeAll": "Wo gbogbo rẹ",
     "seeAllSection": "Wo gbogbo {section}",
     "showMoreOptionsHint": "fi àwọn àṣàyàn mìíràn hàn",
-    "onboardingStepOfTotal": "Igbesẹ {step} ninu {total}"
+    "onboardingStepOfTotal": "Igbesẹ {step} ninu {total}",
+    "addKeyboardDialogTitle": "Ṣafikun bọtini itẹwe ede tí o fẹ́ kọ́",
+    "enableAutocorrectPopupPathIntro": "Lati ṣafikun ọkan, lọ si:"
 }

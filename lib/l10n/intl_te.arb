@@ -1123,7 +1123,6 @@
     "ttsDisabledBody": "మీరు మీ అభ్యాస సెట్టింగ్స్‌లో టెక్స్ట్-టు-స్పీచ్ ను సక్రియం చేయవచ్చు",
     "noSpaceDescriptionYet": "ఇప్పటికే కోర్సు వివరణ సృష్టించబడలేదు.",
     "tooLargeToSend": "ఈ సందేశం పంపడానికి చాలా పెద్దది",
-    "enableAutocorrectPopupTitle": "మీ లక్ష్య భాష కీబోర్డ్‌ను జోడించడానికి ఈ క్రింది దశలను అనుసరించండి:",
     "enableAutocorrectPopupSteps": "  • సెట్టింగ్స్\n  • జనరల్\n  • కీబోర్డ్\n  • కీబోర్డ్స్\n  • కొత్త కీబోర్డ్ జోడించండి",
     "enableAutocorrectPopupDescription": "భాషను ఎంచుకున్న తర్వాత, మీ కీబోర్డ్ దిగువ ఎడమ వైపు ఉన్న చిన్న గ్లోబ్ ఐకాన్ పై క్లిక్ చేసి కొత్తగా ఇన్‌స్టాల్ చేసిన కీబోర్డ్‌ను యాక్టివేట్ చేయవచ్చు.",
     "enableAutocorrectWarning": "హెచ్చరిక! మీ లక్ష్య భాష కీబోర్డ్‌ను జోడించాల్సి ఉంటుంది",
@@ -1325,7 +1324,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-09-03 14:43:51.567263",
+    "@@last_modified": "2026-09-04 10:08:40.072499",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -6323,10 +6322,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@enableAutocorrectPopupTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectPopupSteps": {
         "type": "String",
         "placeholders": {}
@@ -10812,5 +10807,7 @@
     "seeAll": "అన్నీ చూడండి",
     "seeAllSection": "అన్నీ చూడండి {section}",
     "showMoreOptionsHint": "మరిన్ని ఎంపికలను చూపించు",
-    "onboardingStepOfTotal": "{total}లో {step}వ దశ"
+    "onboardingStepOfTotal": "{total}లో {step}వ దశ",
+    "addKeyboardDialogTitle": "మీ లక్ష్య భాష కీబోర్డ్‌ను జోడించండి",
+    "enableAutocorrectPopupPathIntro": "ఒకటి జోడించడానికి, దీనికి వెళ్లండి:"
 }

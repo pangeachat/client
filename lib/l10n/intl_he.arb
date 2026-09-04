@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-03 14:43:47.352345",
+    "@@last_modified": "2026-09-04 10:08:34.477573",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -2157,7 +2157,6 @@
     "ttsDisabledBody": "אתה יכול להפעיל את תכונת ההמרה לטקסט לדיבור בהגדרות הלמידה שלך",
     "noSpaceDescriptionYet": "עדיין לא נוצר תיאור לקורס.",
     "tooLargeToSend": "ההודעה הזו גדולה מדי לשליחה",
-    "enableAutocorrectPopupTitle": "הוסף את מקלדת שפת היעד שלך על ידי כניסה ל:",
     "enableAutocorrectPopupSteps": "  • הגדרות\n  • כללי\n  • מקלדת\n  • מקלדות\n  • הוסף מקלדת חדשה",
     "enableAutocorrectPopupDescription": "לאחר בחירת השפה, תוכל ללחוץ על סמל הגלובוס הקטן בפינה השמאלית התחתונה של המקלדת כדי להפעיל את המקלדת שהותקנה לאחרונה.",
     "enableAutocorrectWarning": "אזהרה! דורש הוספת מקלדת שפת היעד שלך",
@@ -6284,10 +6283,6 @@
         "placeholders": {}
     },
     "@tooLargeToSend": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10776,5 +10771,7 @@
     "seeAll": "הצג הכל",
     "seeAllSection": "הצג הכל {section}",
     "showMoreOptionsHint": "הצג אפשרויות נוספות",
-    "onboardingStepOfTotal": "שלב {step} מתוך {total}"
+    "onboardingStepOfTotal": "שלב {step} מתוך {total}",
+    "addKeyboardDialogTitle": "הוסף את מקלדת שפת היעד שלך",
+    "enableAutocorrectPopupPathIntro": "כדי להוסיף אחת, עבור אל:"
 }

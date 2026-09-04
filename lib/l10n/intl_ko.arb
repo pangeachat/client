@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-03 14:43:48.799776",
+    "@@last_modified": "2026-09-04 10:08:35.788383",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -3210,7 +3210,6 @@
     "ttsDisabledBody": "학습 설정에서 텍스트 음성 변환을 활성화할 수 있습니다",
     "noSpaceDescriptionYet": "아직 생성된 강좌 설명이 없습니다.",
     "tooLargeToSend": "이 메시지는 너무 커서 보낼 수 없습니다",
-    "enableAutocorrectPopupTitle": "목표 언어 키보드를 추가하려면 다음으로 이동하세요:",
     "enableAutocorrectPopupSteps": "  • 설정\n  • 일반\n  • 키보드\n  • 키보드\n  • 새 키보드 추가",
     "enableAutocorrectPopupDescription": "언어를 선택하면, 키보드 왼쪽 하단의 작은 지구본 아이콘을 클릭하여 새로 설치한 키보드를 활성화할 수 있습니다.",
     "enableAutocorrectWarning": "경고! 목표 언어 키보드 추가가 필요합니다",
@@ -5563,10 +5562,6 @@
         "placeholders": {}
     },
     "@tooLargeToSend": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10055,5 +10050,7 @@
     "seeAll": "모두 보기",
     "seeAllSection": "{section} 모두 보기",
     "showMoreOptionsHint": "더 많은 옵션 보기",
-    "onboardingStepOfTotal": "{total}단계 중 {step}단계"
+    "onboardingStepOfTotal": "{total}단계 중 {step}단계",
+    "addKeyboardDialogTitle": "목표 언어 키보드 추가",
+    "enableAutocorrectPopupPathIntro": "추가하려면 다음으로 이동하세요:"
 }

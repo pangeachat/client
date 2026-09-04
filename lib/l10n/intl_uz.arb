@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-09-03 14:43:51.863938",
+    "@@last_modified": "2026-09-04 10:08:40.538974",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -3361,7 +3361,6 @@
     "ttsDisabledBody": "O'qish sozlamalarida matn-to-speechni yoqishingiz mumkin",
     "noSpaceDescriptionYet": "Hali kurs tavsifi yaratilmagan.",
     "tooLargeToSend": "Ushbu xabar yuborish uchun juda katta",
-    "enableAutocorrectPopupTitle": "Maqsadli til klaviaturasini qo'shish uchun quyidagiga o'ting:",
     "enableAutocorrectPopupSteps": "  • Sozlamalar\n  • Umumiy\n  • Klaviatura\n  • Klaviaturalar\n  • Yangi klaviatura qo'shish",
     "enableAutocorrectPopupDescription": "Til tanlangandan so'ng, klaviaturangizning pastki chap tomonidagi kichik dunyo ikonkasini bosib, yangi o'rnatilgan klaviaturani faollashtirishingiz mumkin.",
     "enableAutocorrectWarning": "Ogohlantirish! Maqsadli til klaviaturasini qo'shishni talab qiladi",
@@ -5925,10 +5924,6 @@
         "placeholders": {}
     },
     "@tooLargeToSend": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -9866,5 +9861,7 @@
     "seeAll": "Hammasini koʻrish",
     "seeAllSection": "Barcha {section}ni koʻrish",
     "showMoreOptionsHint": "koʻproq variantlarni koʻrsatish",
-    "onboardingStepOfTotal": "{total} dan {step}-qadam"
+    "onboardingStepOfTotal": "{total} dan {step}-qadam",
+    "addKeyboardDialogTitle": "Maqsadli til klaviaturangizni qo'shing",
+    "enableAutocorrectPopupPathIntro": "Qo'shish uchun quyidagiga o'ting:"
 }

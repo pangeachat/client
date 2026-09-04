@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-09-03 14:43:48.691862",
+    "@@last_modified": "2026-09-04 10:08:35.950394",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "Yu kin enebul tɛks-to-spich insay yu laning sẹtin dɛn",
     "noSpaceDescriptionYet": "Dɛn nɔ kriet kos diskripshɔn yet.",
     "tooLargeToSend": "Dis mɛsej big pasmak foh sɛn",
-    "enableAutocorrectPopupTitle": "Ad yu target langwej kibod bay go to:",
     "enableAutocorrectPopupSteps": "  • Sɛtin dɛn\n  • Jɛnɛral\n  • Kibod\n  • Kibod dɛn\n  • Ad Nyu Kibod",
     "enableAutocorrectPopupDescription": "Wans dɛn dɔn pik di langwej, yu kin klik di smɔl glob aykɔn na di bɔtɔm lɛft sayd foh yu kibod foh aktivet di nyu kibod we dɛn dɔn instal.",
     "enableAutocorrectWarning": "Wanin! Nid foh ad yu target langwej kibod",
@@ -2266,5 +2265,7 @@
     "seeAll": "Si ɔl",
     "seeAllSection": "Si ɔl {section}",
     "showMoreOptionsHint": "sho ɔda ɔpshɔn dɛn",
-    "onboardingStepOfTotal": "Step {step} pan {total}"
+    "onboardingStepOfTotal": "Step {step} pan {total}",
+    "addKeyboardDialogTitle": "Afdap yu target langwej keyboard",
+    "enableAutocorrectPopupPathIntro": "Fɔ afdap wan, go to:"
 }

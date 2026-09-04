@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-09-03 14:43:45.867642",
+    "@@last_modified": "2026-09-04 10:08:32.196264",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -3164,7 +3164,6 @@
     "ttsDisabledBody": "يمكنك تفعيل تحويل النص إلى كلام في إعدادات التعلم الخاصة بك",
     "noSpaceDescriptionYet": "لم يتم إنشاء وصف للدورة بعد.",
     "tooLargeToSend": "هذه الرسالة كبيرة جدًا لإرسالها",
-    "enableAutocorrectPopupTitle": "أضف لوحة مفاتيح اللغة المستهدفة الخاصة بك عن طريق الذهاب إلى:",
     "enableAutocorrectPopupSteps": "  • الإعدادات\n  • عام\n  • لوحة المفاتيح\n  • لوحات المفاتيح\n  • أضف لوحة مفاتيح جديدة",
     "enableAutocorrectPopupDescription": "بمجرد اختيار اللغة، يمكنك النقر على أيقونة الكرة الأرضية الصغيرة في أسفل يسار لوحة المفاتيح لتفعيل لوحة المفاتيح المثبتة حديثًا.",
     "enableAutocorrectWarning": "تحذير! يتطلب إضافة لوحة مفاتيح اللغة المستهدفة الخاصة بك",
@@ -5680,10 +5679,6 @@
         "placeholders": {}
     },
     "@tooLargeToSend": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10168,5 +10163,7 @@
     "seeAll": "مشاهدة الكل",
     "seeAllSection": "مشاهدة كل {section}",
     "showMoreOptionsHint": "عرض المزيد من الخيارات",
-    "onboardingStepOfTotal": "الخطوة {step} من {total}"
+    "onboardingStepOfTotal": "الخطوة {step} من {total}",
+    "addKeyboardDialogTitle": "أضف لوحة مفاتيح لغتك المستهدفة",
+    "enableAutocorrectPopupPathIntro": "لإضافة واحدة، انتقل إلى:"
 }

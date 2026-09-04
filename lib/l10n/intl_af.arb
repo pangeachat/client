@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-09-03 14:43:45.856481",
+    "@@last_modified": "2026-09-04 10:08:31.915611",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "Jy kan teks-na-spraak in jou leerinstellings aktiveer",
     "noSpaceDescriptionYet": "Nog geen kursusbeskrywing geskep nie.",
     "tooLargeToSend": "Hierdie boodskap is te groot om te stuur",
-    "enableAutocorrectPopupTitle": "Voeg jou teikentaal-sleutelbord by deur na die volgende te gaan:",
     "enableAutocorrectPopupSteps": "  • Instellings\n  • Algemeen\n  • Sleutelbord\n  • Sleutelborde\n  • Voeg Nuwe Sleutelbord by",
     "enableAutocorrectPopupDescription": "Sodra die taal gekies is, kan jy op die klein aardbol-ikoon links onder op jou sleutelbord klik om die nuut geïnstalleerde sleutelbord te aktiveer.",
     "enableAutocorrectWarning": "Waarskuwing! Vereis dat jy jou teikentaal-sleutelbord byvoeg",
@@ -2266,5 +2265,7 @@
     "seeAll": "Sien alles",
     "seeAllSection": "Sien alle {section}",
     "showMoreOptionsHint": "wys meer opsies",
-    "onboardingStepOfTotal": "Stap {step} van {total}"
+    "onboardingStepOfTotal": "Stap {step} van {total}",
+    "addKeyboardDialogTitle": "Voeg jou teikentaalklavier by",
+    "enableAutocorrectPopupPathIntro": "Om een by te voeg, gaan na:"
 }
