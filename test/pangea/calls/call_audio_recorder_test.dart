@@ -565,46 +565,99 @@ void main() {
       );
     });
 
-    test('a blob uploaded on an earlier, exhausted finish() call is named by a '
-        'later call\'s pre-loop check too', () async {
-      // A realistic sequel to a give-up, not a contrived one:
-      // `CallRecord.finish()` -- see `_finishing`'s own docs -- can
-      // legitimately call [finish] twice for the same call ("a hangup
-      // and a disconnect routinely arrive together"). If the FIRST call
-      // uploads successfully but exhausts every delivery attempt on the
-      // SEND (a real failure, not cancellation) and gives up, the url it
-      // left on `gen` sits there for whichever call notices ownership is
-      // gone next -- including a SECOND call that never reaches the
-      // retry loop at all, because the check outside the loop catches it
-      // first.
-      uploadResult = (_) => Uri.parse('mxc://example.com/orphan-g');
-      sendFailuresLeft = 3; // exhausts all 3 default delivery attempts
-      final r = recorder(retryDelay: Duration.zero);
+    test(
+      'a blob uploaded on an earlier, exhausted finish() call is named by '
+      'the give-up path itself, not only a later call\'s pre-loop check',
+      () async {
+        // A realistic sequel to a give-up, not a contrived one:
+        // `CallRecord.finish()` -- see `_finishing`'s own docs -- can
+        // legitimately call [finish] twice for the same call ("a hangup
+        // and a disconnect routinely arrive together"). If the FIRST call
+        // uploads successfully but exhausts every delivery attempt on the
+        // SEND (a real failure, not cancellation) and gives up, the url it
+        // left on `gen` sits there for whichever call notices ownership is
+        // gone next -- including a SECOND call that never reaches the
+        // retry loop at all, because the check outside the loop catches it
+        // first.
+        uploadResult = (_) => Uri.parse('mxc://example.com/orphan-g');
+        sendFailuresLeft = 3; // exhausts all 3 default delivery attempts
+        final r = recorder(retryDelay: Duration.zero);
+        r.onRunStarted(1000, 16000, 1);
+        r.onFrame(_tone(160));
+        r.onRunEnded();
+
+        // Captured BEFORE the first call, not after: the exit-guard fires
+        // on EVERY finish() invocation that leaves an upload un-sent,
+        // including a SECOND one -- so capturing this after the first call
+        // would let a second call's own pre-loop check cover for a broken
+        // give-up path, since it reaches the very same exit-guard and
+        // would still find the same orphan. That gap is exactly what let
+        // this test pass a cold gate while the give-up path itself
+        // bypassed the exit-guard entirely.
+        final logsBeforeFirstCall = Logs().outputEvents.length;
+        await r.finish(carriedOn: true, callKey: _callKey);
+
+        expect(uploads, hasLength(1), reason: 'the first call uploaded once');
+        expect(sent, isEmpty, reason: 'every send attempt failed');
+        final logsFromFirstCall = Logs().outputEvents.skip(logsBeforeFirstCall);
+        expect(
+          logsFromFirstCall.any(
+            (e) => e.title.contains('mxc://example.com/orphan-g'),
+          ),
+          isTrue,
+          reason:
+              'the give-up path itself must name the orphan -- true from '
+              'the FIRST call alone, before a second call ever runs',
+        );
+
+        r.cancelOwnership();
+
+        final logsBeforeSecondCall = Logs().outputEvents.length;
+        await r.finish(carriedOn: true, callKey: _callKey);
+
+        expect(
+          uploads,
+          hasLength(1),
+          reason: 'the second call must not upload a second time',
+        );
+        final logsFromSecondCall = Logs().outputEvents.skip(
+          logsBeforeSecondCall,
+        );
+        expect(
+          logsFromSecondCall.any(
+            (e) => e.title.contains(
+              'the recording generation was superseded before it could be '
+              'sent',
+            ),
+          ),
+          isTrue,
+          reason:
+              'the pre-loop check a second call hits must still say why, '
+              'even though the url-orphan guarantee no longer lives at '
+              'this site',
+        );
+      },
+    );
+
+    test('a successful send does not log a false orphan', () async {
+      final logsBefore = Logs().outputEvents.length;
+      final r = recorder();
       r.onRunStarted(1000, 16000, 1);
       r.onFrame(_tone(160));
       r.onRunEnded();
 
       await r.finish(carriedOn: true, callKey: _callKey);
-      expect(uploads, hasLength(1), reason: 'the first call uploaded once');
-      expect(sent, isEmpty, reason: 'every send attempt failed');
 
-      r.cancelOwnership();
-
-      final logsBefore = Logs().outputEvents.length;
-      await r.finish(carriedOn: true, callKey: _callKey);
-
-      expect(
-        uploads,
-        hasLength(1),
-        reason: 'the second call must not upload a second time',
-      );
+      expect(uploads, hasLength(1));
+      expect(sent, hasLength(1), reason: 'the send genuinely succeeded');
       final newLogs = Logs().outputEvents.skip(logsBefore);
       expect(
-        newLogs.any((e) => e.title.contains('mxc://example.com/orphan-g')),
-        isTrue,
+        newLogs.any((e) => e.title.contains('is now an orphan')),
+        isFalse,
         reason:
-            'the pre-loop check a second finish() call hits must also '
-            'name the orphan, not just say the generation was superseded',
+            'gen.sent must suppress the exit-guard\'s own orphan log on '
+            'the ordinary, successful path -- an upload that WAS '
+            'durably sent is not an orphan',
       );
     });
 

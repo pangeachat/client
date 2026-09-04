@@ -189,6 +189,15 @@ class _AudioGeneration {
   /// [CallAudioUploadStateStore], is what dedups the BLOB.
   Uri? uploadedUrl;
 
+  /// Whether the send has been CONFIRMED durable -- a non-null event id
+  /// actually came back, not merely attempted. This is what
+  /// [CallAudioRecorder._finish]'s own exit-guard reads to tell a real half
+  /// from an orphan: a blob can only be an orphan if it was uploaded AND
+  /// never durably sent, and this is the one flag that says which
+  /// happened, regardless of which of [CallAudioRecorder._finish]'s many
+  /// exit paths got there.
+  bool sent = false;
+
   void append(Uint8List bytes, int maxBytes) {
     final room = maxBytes - bytesWritten;
     if (room <= 0) return;
@@ -545,35 +554,35 @@ class CallAudioRecorder implements CallAudioRecordingSink {
     ).whenComplete(() => _finishing = null);
   }
 
-  /// The one place every "this attempt is giving up" log in [_finish] goes
-  /// through -- the rule being enforced is that NONE of them may report an
-  /// abandonment generically once a blob has actually landed, because past
-  /// that point a generic message is the one thing standing between this
-  /// orphan and being traceable at all (see the class docs' own
-  /// orphan-blob bullet). Four straight gate rounds each found a new site
-  /// making that same mistake in a different corner of [_finish]; routing
-  /// every site through here is what ends the recurrence, rather than
-  /// leaving it as a check every future site has to remember to repeat.
-  ///
-  /// [gen]'s own [_AudioGeneration.uploadedUrl] is the source of truth for
-  /// every site except one: the upload-future observer in [_finish] can
-  /// fire AFTER cancellation already won the race that would have set it,
-  /// so that one site passes [uploadedUrl] explicitly rather than relying
-  /// on a field that is not yet reliable there.
-  static void _logAbandonment(
-    _AudioGeneration gen, {
-    required String reason,
-    Uri? uploadedUrl,
-  }) {
-    final uploaded = uploadedUrl ?? gen.uploadedUrl;
-    if (uploaded != null) {
-      Logs().w(
-        'Call audio half abandoned: $reason; the already-uploaded blob at '
-        '$uploaded is now an orphan no event will ever reference',
-      );
-    } else {
-      Logs().i('Call audio half abandoned: $reason');
-    }
+  /// Logs WHY one attempt gave up -- nothing more. Five straight gate
+  /// rounds each found a NEW site in [_finish] that reported an abandoned
+  /// attempt without naming the already-uploaded blob it left behind, one
+  /// site at a time; the url-orphan guarantee no longer lives at any of
+  /// these call sites at all, so there is no site left to individually get
+  /// that part wrong. See [_finish]'s own exit-guard -- the `finally`
+  /// wrapping its whole body -- for the SINGLE place that now decides, and
+  /// [_logOrphan] for the one message it logs when it does.
+  static void _logAbandonment(String reason) {
+    Logs().i('Call audio half abandoned: $reason');
+  }
+
+  /// The one message an orphaned blob is ever reported with. Called from
+  /// exactly two places, not one call per site: [_finish]'s own
+  /// exit-guard, which covers every timing where the orphan is already
+  /// knowable by the moment [_finish] itself returns (a cancellation
+  /// noticed at any check, every delivery attempt failing outright, or any
+  /// other exit that leaves [_AudioGeneration.uploadedUrl] set without
+  /// [_AudioGeneration.sent] ever becoming true) -- and the upload-future
+  /// observer inside the retry loop, which needs its own call because it
+  /// can fire strictly AFTER [_finish] has already returned, once the
+  /// `finally` that would otherwise have caught this has already run (see
+  /// that callback's own docs for why [_AudioGeneration.uploadedUrl] is not
+  /// even set yet at that point either).
+  static void _logOrphan(Uri url) {
+    Logs().w(
+      'A call-audio blob at $url is now an orphan no event will ever '
+      'reference',
+    );
   }
 
   Future<void> _finish({
@@ -600,345 +609,359 @@ class CallAudioRecorder implements CallAudioRecordingSink {
       );
       return;
     }
-    if (gen.canceled) {
-      // The one abandonment check outside the retry loop entirely -- and
-      // reachable with [_AudioGeneration.uploadedUrl] already set the same
-      // way the loop's own checks are: `CallRecord.finish()` -- see
-      // [_finishing]'s own docs -- can legitimately call [finish] twice for
-      // the same call, and a first call that uploaded successfully but then
-      // exhausted every delivery attempt on the SEND leaves that url on
-      // [gen] for whichever call notices ownership is gone next, even a
-      // later one that never reaches the loop below at all.
-      _logAbandonment(
-        gen,
-        reason:
-            'the recording generation was superseded before it could be '
-            'sent',
-      );
-      return;
-    }
-    if (callKey == null || callKey.isEmpty) {
-      Logs().w('No call audio half sent: the call has no anchor to relate to');
-      return;
-    }
-
-    final txnId = CallAudioContent.txnId(callKey, senderId, deviceId);
-
-    // Best-effort: a store that cannot be read is treated as empty, never as
-    // a reason to refuse sending a recording this device actually holds.
-    Map<String, dynamic>? persisted;
+    // From here on `gen` is definitely non-null, and every remaining exit
+    // path -- a cancellation noticed at any of several checks, every
+    // delivery attempt failing outright, or simply returning once the send
+    // is confirmed -- has to be checked for an upload that landed but was
+    // never durably sent. This `finally`, wrapping the whole rest of the
+    // method, is what makes that true STRUCTURALLY rather than by each exit
+    // path remembering to check: five straight gate rounds each found a new
+    // site that forgot to, one at a time, which is the rule needing
+    // enforcement in one place rather than five (now six) copies of the
+    // same branch. See [_logOrphan]'s own docs for the one timing this
+    // cannot reach, and why that one still needs its own call.
     try {
-      persisted = await uploadStateStore.read(txnId);
-    } catch (e, s) {
-      Logs().w('Could not read the persisted call-audio upload state', e, s);
-    }
-    if (persisted?['status'] == 'sent') {
-      // Already landed on an earlier attempt -- possibly in a process that
-      // has since restarted -- and the deterministic transaction id means a
-      // resend would only collapse server-side anyway. Skipped here instead
-      // to save the upload's own bytes leaving the device a second time.
-      Logs().i(
-        'No call audio half sent: this call\'s half was already sent '
-        '(persisted state)',
-      );
-      return;
-    }
-    // Trusted ONLY for the SAME generation that produced it. The store is
-    // keyed by [txnId], which names the CALL (call key, sender, device) and
-    // is identical across every generation of it -- so without this check, a
-    // generation uploaded and persisted, then superseded before it could
-    // send, would have its URL handed to whichever LATER generation happens
-    // to run `finish()` next. That generation's own bytes, duration and
-    // alignment would then be published pointing at a DIFFERENT recording's
-    // audio -- a data-integrity bug, not merely a wasted upload, because the
-    // event that resulted would look entirely valid while being wrong.
-    if (persisted?['generation_id'] == gen.id) {
-      final persistedUrl = persisted?['mxc_url'];
-      if (persistedUrl is String) {
-        final parsed = Uri.tryParse(persistedUrl);
-        // Validated, not merely parsed: `Uri.tryParse` accepts an empty
-        // string and any relative one without complaint, and a persisted
-        // record this reader cannot vouch for -- corrupted on disk, or
-        // written by some future version of this code in a different shape
-        // -- must read as NO url rather than as a real one. Beyond the
-        // scheme and host, an `mxc://server` with no media-id path segment
-        // ALSO parses cleanly and ALSO names nothing playable -- Matrix's
-        // own content URI shape is `mxc://server/media-id`, and a reference
-        // missing the second half is exactly as untrustworthy as an empty
-        // string. An event sent with a garbage `url` field is a half
-        // nobody can play, which is worse than the wasted upload a false
-        // negative here costs at most.
-        if (parsed != null &&
-            parsed.scheme == 'mxc' &&
-            parsed.host.isNotEmpty &&
-            parsed.pathSegments.isNotEmpty &&
-            parsed.pathSegments.first.isNotEmpty) {
-          gen.uploadedUrl = parsed;
+      if (gen.canceled) {
+        // Reachable before the retry loop even starts: `CallRecord.finish()`
+        // -- see [_finishing]'s own docs -- can legitimately call [finish]
+        // twice for the same call, and a first call that uploaded
+        // successfully but then exhausted every delivery attempt on the
+        // SEND leaves that url on [gen] for whichever call notices
+        // ownership is gone next, even a later one that never reaches the
+        // loop below at all.
+        _logAbandonment(
+          'the recording generation was superseded before it could be sent',
+        );
+        return;
+      }
+      if (callKey == null || callKey.isEmpty) {
+        Logs().w(
+          'No call audio half sent: the call has no anchor to relate to',
+        );
+        return;
+      }
+
+      final txnId = CallAudioContent.txnId(callKey, senderId, deviceId);
+
+      // Best-effort: a store that cannot be read is treated as empty, never
+      // as a reason to refuse sending a recording this device actually
+      // holds.
+      Map<String, dynamic>? persisted;
+      try {
+        persisted = await uploadStateStore.read(txnId);
+      } catch (e, s) {
+        Logs().w('Could not read the persisted call-audio upload state', e, s);
+      }
+      if (persisted?['status'] == 'sent') {
+        // Already landed on an earlier attempt -- possibly in a process
+        // that has since restarted -- and the deterministic transaction id
+        // means a resend would only collapse server-side anyway. Skipped
+        // here instead to save the upload's own bytes leaving the device a
+        // second time. [gen.uploadedUrl] is never populated in this branch
+        // (the read below that would do it is skipped by this early
+        // return), so the exit-guard above has nothing to false-positive
+        // on here regardless of whether this is the SAME generation that
+        // sent it or a fresh one reading a pre-restart record.
+        Logs().i(
+          'No call audio half sent: this call\'s half was already sent '
+          '(persisted state)',
+        );
+        return;
+      }
+      // Trusted ONLY for the SAME generation that produced it. The store is
+      // keyed by [txnId], which names the CALL (call key, sender, device)
+      // and is identical across every generation of it -- so without this
+      // check, a generation uploaded and persisted, then superseded before
+      // it could send, would have its URL handed to whichever LATER
+      // generation happens to run `finish()` next. That generation's own
+      // bytes, duration and alignment would then be published pointing at a
+      // DIFFERENT recording's audio -- a data-integrity bug, not merely a
+      // wasted upload, because the event that resulted would look entirely
+      // valid while being wrong.
+      if (persisted?['generation_id'] == gen.id) {
+        final persistedUrl = persisted?['mxc_url'];
+        if (persistedUrl is String) {
+          final parsed = Uri.tryParse(persistedUrl);
+          // Validated, not merely parsed: `Uri.tryParse` accepts an empty
+          // string and any relative one without complaint, and a persisted
+          // record this reader cannot vouch for -- corrupted on disk, or
+          // written by some future version of this code in a different
+          // shape -- must read as NO url rather than as a real one. Beyond
+          // the scheme and host, an `mxc://server` with no media-id path
+          // segment ALSO parses cleanly and ALSO names nothing playable --
+          // Matrix's own content URI shape is `mxc://server/media-id`, and a
+          // reference missing the second half is exactly as untrustworthy
+          // as an empty string. An event sent with a garbage `url` field is
+          // a half nobody can play, which is worse than the wasted upload a
+          // false negative here costs at most.
+          if (parsed != null &&
+              parsed.scheme == 'mxc' &&
+              parsed.host.isNotEmpty &&
+              parsed.pathSegments.isNotEmpty &&
+              parsed.pathSegments.first.isNotEmpty) {
+            gen.uploadedUrl = parsed;
+          }
         }
       }
-    }
 
-    // Read HERE, once, from the SAME source and at the SAME point in the
-    // call's life the transcript half reads its own `media.clockAnchor` --
-    // see [clockAnchor]'s own docs for why an earlier version reading this
-    // at [onRunStarted] could leave the two halves disagreeing about whether
-    // an anchor existed at all.
-    final anchor = clockAnchor();
-    final offsetMs = anchor == null
-        ? null
-        : gen.runStartedAtMs - anchor.deviceMs;
+      // Read HERE, once, from the SAME source and at the SAME point in the
+      // call's life the transcript half reads its own `media.clockAnchor`
+      // -- see [clockAnchor]'s own docs for why an earlier version reading
+      // this at [onRunStarted] could leave the two halves disagreeing about
+      // whether an anchor existed at all.
+      final anchor = clockAnchor();
+      final offsetMs = anchor == null
+          ? null
+          : gen.runStartedAtMs - anchor.deviceMs;
 
-    final wav = pcm16ToWav(
-      gen.takeBytes(),
-      sampleRate: gen.sampleRate,
-      channels: gen.channels,
-    );
-    final durationMs = gen.duration.inMilliseconds;
+      final wav = pcm16ToWav(
+        gen.takeBytes(),
+        sampleRate: gen.sampleRate,
+        channels: gen.channels,
+      );
+      final durationMs = gen.duration.inMilliseconds;
 
-    final cancelSignal = _cancelSignal = Completer<void>();
-    try {
-      Object? lastError;
-      StackTrace? lastStack;
-      for (var attempt = 0; attempt < deliveryAttempts; attempt++) {
-        if (gen.canceled) {
-          _logAbandonment(
-            gen,
-            reason: 'ownership was lost while it was being sent',
-          );
-          return;
-        }
-        if (attempt > 0) await Future.delayed(retryDelay * attempt);
-        // Checked AGAIN, immediately after the backoff: the delay above is
-        // real time the recorder is not otherwise watching, and ownership
-        // can be lost during it just as easily as during the upload itself.
-        // Without this, a cached [gen.uploadedUrl] from an earlier attempt
-        // would skip straight to the send-time check further down -- fine
-        // on its own -- but a NOT-yet-uploaded generation would still
-        // INITIATE a fresh upload attempt below before the race inside it
-        // ever got a chance to notice a cancellation that had already
-        // happened.
-        if (gen.canceled) {
-          _logAbandonment(
-            gen,
-            reason:
-                'ownership was lost while this attempt was waiting to retry',
-          );
-          return;
-        }
-        try {
-          // Reused across attempts, and across a restart if the durable
-          // store found a match above: the deterministic transaction id
-          // already dedups the EVENT server-side, and this is what dedups
-          // the BLOB -- a retry must not upload the same recording twice.
-          var url = gen.uploadedUrl;
-          if (url == null) {
-            // Raced against ownership loss rather than merely awaited:
-            // uploading is the one genuinely slow step, and there is no
-            // reason to go on WAITING for, or USING, an answer that has
-            // stopped mattering. `Future.any` returns the moment either
-            // side settles; the loser is simply never awaited again HERE.
-            //
-            // "Abort the upload" is honoured only as far as this client
-            // truly can: `Client.uploadContent` offers no request-level
-            // cancellation (see `CallUploadGate`'s own docs -- this app's
-            // whole HTTP layer does not either), and the one lever that
-            // DOES exist -- closing the shared `http.Client` every other
-            // request on this connection also uses -- would abort syncs
-            // and sends across the whole app to cancel one upload, which is
-            // not a trade this feature may make on its own. So the upload
-            // below is free to keep running and land at the homeserver
-            // regardless of the race's outcome; what this recorder
-            // guarantees is narrower than "no blob" -- see the class docs'
-            // own "no request-level abort" bullet -- and is enforced by
-            // never using a URL this race did not itself produce.
-            final uploadFuture = upload(
-              wav,
-              filename: 'call_audio.wav',
-              contentType: 'audio/wav',
+      final cancelSignal = _cancelSignal = Completer<void>();
+      try {
+        Object? lastError;
+        StackTrace? lastStack;
+        for (var attempt = 0; attempt < deliveryAttempts; attempt++) {
+          if (gen.canceled) {
+            _logAbandonment('ownership was lost while it was being sent');
+            return;
+          }
+          if (attempt > 0) await Future.delayed(retryDelay * attempt);
+          // Checked AGAIN, immediately after the backoff: the delay above
+          // is real time the recorder is not otherwise watching, and
+          // ownership can be lost during it just as easily as during the
+          // upload itself. Without this, a cached [gen.uploadedUrl] from an
+          // earlier attempt would skip straight to the send-time check
+          // further down -- fine on its own -- but a NOT-yet-uploaded
+          // generation would still INITIATE a fresh upload attempt below
+          // before the race inside it ever got a chance to notice a
+          // cancellation that had already happened.
+          if (gen.canceled) {
+            _logAbandonment(
+              'ownership was lost while this attempt was waiting to retry',
             );
-            // Observed separately from the race below, so a losing upload
-            // that lands anyway is at least LOGGED rather than silently
-            // becoming an untraceable orphan -- the one piece of "no
-            // silent failures" available here, since nothing on this
-            // client can stop the bytes from actually arriving.
-            //
-            // The url is passed to [_logAbandonment] explicitly rather than
-            // left to its own [_AudioGeneration.uploadedUrl] read: when
-            // cancellation wins the race below BEFORE this upload resolves,
-            // [_finish] leaves that field unset and returns through the
-            // catch further down -- so by the time this callback finally
-            // runs, `landedUrl` is the only record left of where the bytes
-            // went.
-            unawaited(
-              uploadFuture.then((landedUrl) {
-                if (cancelSignal.isCompleted) {
-                  _logAbandonment(
-                    gen,
-                    reason:
-                        'the upload finished after ownership was already '
-                        'lost',
-                    uploadedUrl: landedUrl,
-                  );
-                }
-              }, onError: (Object _, StackTrace _) {}),
-            );
-            url = await Future.any<Uri>([
-              uploadFuture,
+            return;
+          }
+          try {
+            // Reused across attempts, and across a restart if the durable
+            // store found a match above: the deterministic transaction id
+            // already dedups the EVENT server-side, and this is what dedups
+            // the BLOB -- a retry must not upload the same recording twice.
+            var url = gen.uploadedUrl;
+            if (url == null) {
+              // Raced against ownership loss rather than merely awaited:
+              // uploading is the one genuinely slow step, and there is no
+              // reason to go on WAITING for, or USING, an answer that has
+              // stopped mattering. `Future.any` returns the moment either
+              // side settles; the loser is simply never awaited again HERE.
+              //
+              // "Abort the upload" is honoured only as far as this client
+              // truly can: `Client.uploadContent` offers no request-level
+              // cancellation (see `CallUploadGate`'s own docs -- this app's
+              // whole HTTP layer does not either), and the one lever that
+              // DOES exist -- closing the shared `http.Client` every other
+              // request on this connection also uses -- would abort syncs
+              // and sends across the whole app to cancel one upload, which
+              // is not a trade this feature may make on its own. So the
+              // upload below is free to keep running and land at the
+              // homeserver regardless of the race's outcome; what this
+              // recorder guarantees is narrower than "no blob" -- see the
+              // class docs' own "no request-level abort" bullet -- and is
+              // enforced by never using a URL this race did not itself
+              // produce.
+              final uploadFuture = upload(
+                wav,
+                filename: 'call_audio.wav',
+                contentType: 'audio/wav',
+              );
+              // Observed separately from the race below, so a losing
+              // upload that lands anyway is at least LOGGED rather than
+              // silently becoming an untraceable orphan -- the one piece of
+              // "no silent failures" available here, since nothing on this
+              // client can stop the bytes from actually arriving.
+              //
+              // Calls [_logOrphan] directly rather than relying on the
+              // exit-guard above: when cancellation wins the race below
+              // BEFORE this upload resolves, [_finish] leaves
+              // [gen.uploadedUrl] unset and returns through the catch
+              // further down, so the exit-guard's own check has ALREADY run
+              // and found nothing to report by the time this callback
+              // finally fires, on some LATER microtask, possibly well after
+              // [_finish] itself has returned.
+              unawaited(
+                uploadFuture.then((landedUrl) {
+                  if (cancelSignal.isCompleted) _logOrphan(landedUrl);
+                }, onError: (Object _, StackTrace _) {}),
+              );
+              url = await Future.any<Uri>([
+                uploadFuture,
+                cancelSignal.future.then(
+                  (_) => throw const _AudioRecordingCanceled(),
+                ),
+              ]);
+              // In memory FIRST, and deliberately not made to depend on the
+              // durable write below succeeding: [gen.uploadedUrl] is what
+              // THIS attempt's own retries key off, and the upload already
+              // genuinely happened -- refusing to use it because an
+              // optional local write hiccuped would throw away a real
+              // recording over a failure that has nothing to do with
+              // whether it landed. A failed write here costs only the
+              // CROSS-RESTART case [CallAudioUploadStateStore] exists for,
+              // on the exact terms the class-level docs already accept for
+              // a crash generally: logged, not fatal.
+              gen.uploadedUrl = url;
+              try {
+                await uploadStateStore.write(txnId, {
+                  'call_key': callKey,
+                  'sender': senderId,
+                  'device': deviceId,
+                  'txn_id': txnId,
+                  // Ties this record to the generation whose bytes are
+                  // actually at this url -- see [_AudioGeneration.id]'s own
+                  // docs and the read site above that checks it back.
+                  'generation_id': gen.id,
+                  'mxc_url': url.toString(),
+                  'status': 'uploaded',
+                });
+              } catch (e, s) {
+                Logs().w('Could not persist the call-audio upload state', e, s);
+              }
+            }
+
+            // Checked AGAIN, immediately before the send: the step above
+            // was the one genuinely slow one, and ownership can have moved
+            // on while it ran.
+            if (gen.canceled) {
+              _logAbandonment('before it could be sent');
+              return;
+            }
+
+            // Raced against ownership loss on the SAME terms the upload
+            // above is: `send` -- `Room.sendEvent` in production -- offers
+            // no cancellation contract either, so this does not stop the
+            // event from reaching the homeserver. What it stops is USING
+            // the result: a cancellation that wins this race means
+            // [gen.sent] is never set, and this attempt reports itself
+            // abandoned rather than confirmed. See the class docs' "no
+            // duplicate event, ever" bullet for the one guarantee this
+            // still gives up: the deterministic transaction id means a send
+            // that DID land under the hood cannot become a second,
+            // different event later, whichever generation's `finish()`
+            // eventually notices.
+            final eventId = await Future.any<String?>([
+              writeCallAudioEvent(
+                send: send,
+                callKey: callKey,
+                senderId: senderId,
+                deviceId: deviceId,
+                url: url.toString(),
+                mimetype: 'audio/wav',
+                size: wav.length,
+                durationMs: durationMs,
+                sampleRate: gen.sampleRate,
+                channels: gen.channels,
+                clockAnchor: anchor,
+                recordingStartedOffsetFromDeviceJoinMs: offsetMs,
+              ),
               cancelSignal.future.then(
                 (_) => throw const _AudioRecordingCanceled(),
               ),
             ]);
-            // In memory FIRST, and deliberately not made to depend on the
-            // durable write below succeeding: [gen.uploadedUrl] is what THIS
-            // attempt's own retries key off, and the upload already
-            // genuinely happened -- refusing to use it because an optional
-            // local write hiccuped would throw away a real recording over a
-            // failure that has nothing to do with whether it landed. A
-            // failed write here costs only the CROSS-RESTART case
-            // [CallAudioUploadStateStore] exists for, on the exact terms the
-            // class-level docs already accept for a crash generally: logged,
-            // not fatal.
-            gen.uploadedUrl = url;
+            if (eventId == null) {
+              // `send` -- `Room.sendEvent` in production -- returns null
+              // EXACTLY when the send did not durably succeed (a
+              // `MatrixException`, an oversized event, or a client-side
+              // timeout, all without throwing; see its own implementation),
+              // never as a quieter kind of success. Treated as a FAILED
+              // attempt like any other: falling through to set [gen.sent]
+              // here would permanently drop a valid resend, because the
+              // next attempt would see this persisted state and refuse to
+              // try again for a half that was never actually written.
+              throw StateError(
+                'The homeserver did not confirm the call-audio event was '
+                'sent',
+              );
+            }
+            // In memory FIRST, on the exact same terms [gen.uploadedUrl]
+            // above already is: this is what the exit-guard above reads to
+            // know the upload it is looking at was not abandoned, and it
+            // must be true the instant the homeserver confirms the send,
+            // not only once the optional local write below also succeeds.
+            gen.sent = true;
             try {
               await uploadStateStore.write(txnId, {
                 'call_key': callKey,
                 'sender': senderId,
                 'device': deviceId,
                 'txn_id': txnId,
-                // Ties this record to the generation whose bytes are
-                // actually at this url -- see [_AudioGeneration.id]'s own
-                // docs and the read site above that checks it back.
                 'generation_id': gen.id,
                 'mxc_url': url.toString(),
-                'status': 'uploaded',
+                'event_id': eventId,
+                'status': 'sent',
               });
             } catch (e, s) {
-              Logs().w('Could not persist the call-audio upload state', e, s);
+              Logs().w('Could not persist the call-audio sent state', e, s);
             }
-          }
-
-          // Checked AGAIN, immediately before the send: the step above was
-          // the one genuinely slow one, and ownership can have moved on
-          // while it ran. [_AudioGeneration.uploadedUrl] is always set by
-          // this point -- either just above, or reused from an earlier
-          // attempt -- so [_logAbandonment] always takes its orphan branch
-          // here; this is the timing where the upload lands BEFORE
-          // cancellation is noticed (the observer above covers it landing
-          // AFTER).
-          if (gen.canceled) {
-            _logAbandonment(gen, reason: 'before it could be sent');
             return;
-          }
-
-          // Raced against ownership loss on the SAME terms the upload above
-          // is: `send` -- `Room.sendEvent` in production -- offers no
-          // cancellation contract either, so this does not stop the event
-          // from reaching the homeserver. What it stops is USING the
-          // result: a cancellation that wins this race means the persisted
-          // state below is never written as `sent`, and this attempt reports
-          // itself abandoned rather than confirmed. See the class docs'
-          // "no duplicate event, ever" bullet for the one guarantee this
-          // still gives up: the deterministic transaction id means a send
-          // that DID land under the hood cannot become a second, different
-          // event later, whichever generation's `finish()` eventually
-          // notices.
-          final eventId = await Future.any<String?>([
-            writeCallAudioEvent(
-              send: send,
-              callKey: callKey,
-              senderId: senderId,
-              deviceId: deviceId,
-              url: url.toString(),
-              mimetype: 'audio/wav',
-              size: wav.length,
-              durationMs: durationMs,
-              sampleRate: gen.sampleRate,
-              channels: gen.channels,
-              clockAnchor: anchor,
-              recordingStartedOffsetFromDeviceJoinMs: offsetMs,
-            ),
-            cancelSignal.future.then(
-              (_) => throw const _AudioRecordingCanceled(),
-            ),
-          ]);
-          if (eventId == null) {
-            // `send` -- `Room.sendEvent` in production -- returns null
-            // EXACTLY when the send did not durably succeed (a
-            // `MatrixException`, an oversized event, or a client-side
-            // timeout, all without throwing; see its own implementation),
-            // never as a quieter kind of success. Treated as a FAILED
-            // attempt like any other: falling through to mark `sent` here
-            // would permanently drop a valid resend, because the next
-            // attempt would see this persisted state and refuse to try
-            // again for a half that was never actually written.
-            throw StateError(
-              'The homeserver did not confirm the call-audio event was sent',
+          } on _AudioRecordingCanceled {
+            // Fires for cancellation winning EITHER race above -- the
+            // upload's or the send's; either way [gen.sent] was never set,
+            // so the exit-guard above already knows whether this leaves an
+            // orphan behind.
+            _logAbandonment('ownership was lost while it was in flight');
+            return;
+          } catch (e, s) {
+            lastError = e;
+            lastStack = s;
+            Logs().w(
+              'Call audio half delivery attempt ${attempt + 1} of '
+              '$deliveryAttempts failed',
+              e,
+              s,
             );
           }
-          try {
-            await uploadStateStore.write(txnId, {
-              'call_key': callKey,
-              'sender': senderId,
-              'device': deviceId,
-              'txn_id': txnId,
-              'generation_id': gen.id,
-              'mxc_url': url.toString(),
-              'event_id': eventId,
-              'status': 'sent',
-            });
-          } catch (e, s) {
-            Logs().w('Could not persist the call-audio sent state', e, s);
-          }
-          return;
-        } on _AudioRecordingCanceled {
-          // Fires for cancellation winning EITHER race above -- the
-          // upload's or the send's. [_logAbandonment] is what tells those
-          // apart: the send race is only ever entered once
-          // [_AudioGeneration.uploadedUrl] is set (the block that runs the
-          // upload race is skipped outright whenever a url is already
-          // there), so a non-null read there can only mean the upload had
-          // already landed when cancellation won the SEND race instead --
-          // the last of the timings this file's own gate history found one
-          // at a time, now covered structurally rather than case by case.
-          _logAbandonment(
-            gen,
-            reason: 'ownership was lost while it was in flight',
-          );
-          return;
-        } catch (e, s) {
-          lastError = e;
-          lastStack = s;
-          Logs().w(
-            'Call audio half delivery attempt ${attempt + 1} of '
-            '$deliveryAttempts failed',
-            e,
-            s,
-          );
         }
-      }
 
-      // Every attempt failed. Reported, not merely logged: a half that never
-      // lands makes this speaker read as absent from a call they were
-      // recording, and only this device can say that happened -- see
-      // `CallRecord._publishTranscript`'s identical reasoning for the
-      // transcript half.
-      Logs().e(
-        'Gave up sending this call\'s audio half after $deliveryAttempts '
-        'attempts; it is lost',
-      );
-      await ErrorHandler.logErrorOnce(
-        key: '$_giveUpKey:$callKey',
-        e: lastError ?? Exception('This call\'s audio half was never sent'),
-        s: lastStack,
-        data: {
-          'bytes': wav.length,
-          'durationMs': durationMs,
-          'sampleRate': gen.sampleRate,
-          'channels': gen.channels,
-        },
-      );
+        // Every attempt failed. Reported, not merely logged: a half that
+        // never lands makes this speaker read as absent from a call they
+        // were recording, and only this device can say that happened --
+        // see `CallRecord._publishTranscript`'s identical reasoning for the
+        // transcript half. [gen.sent] is still false here by construction
+        // (the loop only exits normally when every attempt has thrown), so
+        // the exit-guard above will name the orphan too, if the upload
+        // itself is what succeeded before the send kept failing.
+        Logs().e(
+          'Gave up sending this call\'s audio half after $deliveryAttempts '
+          'attempts; it is lost',
+        );
+        await ErrorHandler.logErrorOnce(
+          key: '$_giveUpKey:$callKey',
+          e: lastError ?? Exception('This call\'s audio half was never sent'),
+          s: lastStack,
+          data: {
+            'bytes': wav.length,
+            'durationMs': durationMs,
+            'sampleRate': gen.sampleRate,
+            'channels': gen.channels,
+          },
+        );
+      } finally {
+        if (identical(_cancelSignal, cancelSignal)) _cancelSignal = null;
+      }
     } finally {
-      if (identical(_cancelSignal, cancelSignal)) _cancelSignal = null;
+      // The single enforcement point: whichever of the exits above this
+      // method took -- an early cancellation, a mid-flight one, exhausting
+      // every retry, or simply returning once sent -- this is the one place
+      // downstream of every one of them. An orphan is exactly an upload
+      // that landed ([gen.uploadedUrl] non-null) without [gen.sent] ever
+      // becoming true; nothing else is trusted to have already reported it,
+      // and nothing here needs to know WHICH exit path it was.
+      final uploadedUrl = gen.uploadedUrl;
+      if (uploadedUrl != null && !gen.sent) _logOrphan(uploadedUrl);
     }
   }
 }
