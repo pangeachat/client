@@ -32,11 +32,13 @@ import 'package:pangea_call_capture/pangea_call_capture.dart'
 class _FakeSound implements RingSound {
   final List<String> log = [];
   @override
-  Future<void> start() async => log.add('start');
+  Future<void> start(String asset) async => log.add('start:$asset');
   @override
   Future<void> stop() async => log.add('stop');
   @override
   Future<void> busy() async => log.add('busy');
+  @override
+  Future<void> playOnce(String asset) async => log.add('once:$asset');
 }
 
 /// The narrowest fakes a session needs: a service whose join answers, media
@@ -2340,7 +2342,7 @@ void main() {
     }
 
     test(
-      'rings while placing, then stops the moment the peer answers',
+      'loops the ringback while placing, then stops when the peer answers',
       () async {
         final client = await _bareClient();
         client.accountData['m.direct'] = matrix.BasicEvent(
@@ -2353,7 +2355,11 @@ void main() {
         final fake = _FakeSound();
         final session = await place(fake: fake, media: media, client: client);
         await pumpEventQueue();
-        expect(fake.log, contains('start'), reason: 'placing a call rings out');
+        expect(
+          fake.log,
+          contains('start:sounds/ringback.mp3'),
+          reason: 'placing a call loops the ringback tone, not call.ogg',
+        );
 
         // The peer answers: they appear in the roster.
         media.fakeRoster!.identities = {
@@ -2364,7 +2370,7 @@ void main() {
         expect(
           fake.log.last,
           'stop',
-          reason: 'the ringback stops when answered',
+          reason: 'the ringback stops the moment they answer',
         );
 
         session.endCall();
@@ -2373,16 +2379,21 @@ void main() {
     );
 
     test(
-      'rings while placing, then stops when the call ends unanswered',
+      'plays the call-ended cue when a placing call is cut unanswered',
       () async {
         final fake = _FakeSound();
         final session = await place(fake: fake);
         await pumpEventQueue();
-        expect(fake.log, contains('start'));
+        expect(fake.log, contains('start:sounds/ringback.mp3'));
 
         session.endCall();
         await pumpEventQueue();
-        expect(fake.log.last, 'stop', reason: 'an abandoned ring is silenced');
+        expect(fake.log, contains('stop'), reason: 'the ringback is silenced');
+        expect(
+          fake.log.last,
+          'once:sounds/call_ended.mp3',
+          reason: 'a cut call ends on the call-ended cue',
+        );
       },
     );
 
@@ -2392,7 +2403,7 @@ void main() {
       await pumpEventQueue();
       expect(
         fake.log,
-        isNot(contains('start')),
+        isNot(anyElement(startsWith('start'))),
         reason: 'the one who answers does not ring itself',
       );
       session.endCall();
@@ -2405,7 +2416,7 @@ void main() {
       await pumpEventQueue();
       expect(
         fake.log,
-        isNot(contains('start')),
+        isNot(anyElement(startsWith('start'))),
         reason: 'rejoining an ongoing call is not placing a new one',
       );
       session.endCall();
