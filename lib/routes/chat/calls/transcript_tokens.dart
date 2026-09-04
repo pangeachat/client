@@ -157,16 +157,26 @@ class _TappableTokens extends StatelessWidget {
         langCode: langCode,
         pos: token.pos,
         morph: token.morph.map((key, value) => MapEntry(key.name, value)),
-        // A transcript is not a room message; WordZoomWidget uses `event` only
-        // for analytics/feedback, both of which are off on this read-only card.
+        // A transcript is not a room message. `event` backs only the two
+        // affordances that need one -- the report-feedback flag and emoji
+        // reactions on the message -- so both stay off. Emoji selection and
+        // analytics navigation need no event and stay ON, so this is the app's
+        // ordinary word card, not a stripped variant (the exact standalone
+        // configuration the activity-vocab card uses).
         event: null,
-        enableEmojiSelection: false,
+        enableEmojiSelection: true,
         enableEmojiReactions: false,
+        enableAnalyticsNavigation: true,
         onClose: () => MatrixState.pAnyState.closeOverlay(target),
       ),
       displayDetails: PositionedOverlayDisplayDetails(
         overlayKey: target,
         transformTargetId: target,
+        // WordZoomWidget draws its OWN card border; the default `addBorder: true`
+        // wraps it in a second bordered OverlayContainer whose constraints also
+        // clip the card. Off, exactly as the activity-vocab card sets it -- the
+        // single-border, uncramped card the rest of the app shows (#8797).
+        addBorder: false,
         maxWidth: AppConfig.toolbarMinWidth,
         maxHeight: AppConfig.scaledToolbarMaxHeight(context),
       ),
