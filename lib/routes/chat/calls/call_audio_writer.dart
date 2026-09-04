@@ -5,11 +5,13 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
 
-/// Sends one call-audio half. Injected so the building and refusal rules below
-/// are testable without a homeserver -- exactly what [TranscriptSender] is for
-/// the transcript half in `transcript_writer.dart`.
+/// Sends one call-audio half, returning the event id the homeserver assigned
+/// (or null, on the same terms `CallEventSender` in `call_record.dart` and
+/// `Client.sendEvent` itself do). Injected so the building and refusal rules
+/// below are testable without a homeserver -- exactly what [TranscriptSender]
+/// is for the transcript half in `transcript_writer.dart`.
 typedef CallAudioSender =
-    Future<void> Function(Map<String, dynamic> content, String txnId);
+    Future<String?> Function(Map<String, dynamic> content, String txnId);
 
 /// Publishes this device's call-audio half.
 ///
@@ -19,11 +21,13 @@ typedef CallAudioSender =
 /// never the recording's own bytes, so nothing about this event grows with
 /// how long the call was.
 ///
-/// Returns whether anything was written. `false` only when [callKey] is
-/// absent or empty -- there is then nothing to relate this half to, and a
-/// half nobody could find is worse than no half at all, because it looks like
-/// the feature worked.
-Future<bool> writeCallAudioEvent({
+/// Returns the sent event's id, or null when [send] itself returned null, OR
+/// when [callKey] is absent or empty -- there is then nothing to relate this
+/// half to, and a half nobody could find is worse than no half at all,
+/// because it looks like the feature worked. [send] THROWING is a distinct
+/// outcome this function does not catch: the caller's own retry loop
+/// (`CallAudioRecorder.finish`) is what decides what a failed attempt means.
+Future<String?> writeCallAudioEvent({
   required CallAudioSender send,
   required String? callKey,
   required String senderId,
@@ -40,7 +44,7 @@ Future<bool> writeCallAudioEvent({
 }) async {
   if (callKey == null || callKey.isEmpty) {
     Logs().w('No call audio written: the call has no anchor to relate to');
-    return false;
+    return null;
   }
 
   final content = CallAudioContent(
@@ -58,9 +62,8 @@ Future<bool> writeCallAudioEvent({
         recordingStartedOffsetFromDeviceJoinMs,
   );
 
-  await send(
+  return send(
     content.toJson(),
     CallAudioContent.txnId(callKey, senderId, deviceId),
   );
-  return true;
 }

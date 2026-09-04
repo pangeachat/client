@@ -14,6 +14,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:fluffychat/routes/chat/calls/active_call.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_recorder.dart';
+import 'package:fluffychat/routes/chat/calls/call_audio_upload_state_store.dart';
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
 import 'package:fluffychat/routes/chat/calls/call_record.dart';
@@ -221,11 +222,19 @@ class CallSession extends ChangeNotifier {
       upload: room.client.uploadContent,
       send: (content, txid) =>
           room.sendEvent(content, type: CallAudioContent.relType, txid: txid),
-      // Read FRESH every time a generation opens, never latched here: the
-      // anchor is read off the SFU's join response, which can arrive after
-      // this recorder is built, and [media] is the one place both this and
-      // the transcript's own clockAnchor read it from.
+      // Read FRESH at finish, never latched at run start: the anchor is
+      // read off the SFU's join response, which can arrive after the
+      // recording has already started, and [media] is the one place both
+      // this and the transcript's own clockAnchor read it from -- reading it
+      // any earlier could leave this half with no anchor while the
+      // transcript half, reading the same source later, had a perfectly
+      // good one.
       clockAnchor: () => media.clockAnchor,
+      // Durable, not merely in-memory: SharedPreferences, the same store
+      // `CallBreadcrumb` uses for the same reason -- a retry that only
+      // failed at the send step, possibly in a process that has since
+      // restarted, must not re-upload a recording that already landed.
+      uploadStateStore: const SharedPreferencesCallAudioUploadStateStore(),
     );
 
     // Built here rather than inline below, because the half published at the
