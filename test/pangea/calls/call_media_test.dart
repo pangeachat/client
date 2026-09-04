@@ -1427,5 +1427,51 @@ void main() {
             "not stuck on A's one-shot correction to what B wanted",
       );
     });
+
+    // A SECOND cold review found this gap in the loop above once it started
+    // correcting in both directions: closing was always unguarded because
+    // closing was always safe, but generalising the correction means a
+    // CLOSE can now correct itself into an OPEN -- the one direction
+    // [connect] and [_setCapture] exist to guard -- and neither of those
+    // wraps a correction an unrelated transition's loop makes internally.
+    // Unguarded, a stale close's correction could republish the microphone
+    // on a device the call has already given back.
+    test('a correction never reopens the microphone once the device is '
+        'released', () async {
+      final participant = await participantJoinedAt(1787734800);
+      final media = ManualPublishMedia(room: RoomWithParticipant(participant));
+
+      // A: close. Left hanging.
+      final a = media.setMicrophoneEnabled(false);
+      // B: open, before A settles -- so A's eventual correction would
+      // otherwise ask for "open", exactly as in the test above.
+      final b = media.setMicrophoneEnabled(true);
+      await pumpEventQueue();
+      expect(media.requestedMic, [false, true]);
+
+      media.resolveMic(1, published: true);
+      expect(await b, isTrue);
+      expect(media.micState, isTrue);
+
+      // The call ends -- this device is released -- while A is still
+      // hanging. Nothing about the room being given back goes through
+      // `_enableCapture` at all, so this is the only way a real hangup
+      // reaches it.
+      await media.disconnect();
+
+      // Only now does A's stale close resolve. Superseded by B, exactly
+      // as in the test above -- but this time there is no correction to
+      // make, because a released device settles on closed rather than on
+      // whatever B last wanted.
+      media.resolveMic(0, published: true);
+      expect(await a, isFalse, reason: 'A was superseded by B');
+      expect(
+        media.requestedMic,
+        [false, true],
+        reason:
+            'no correction was ever issued -- a released device is never '
+            'corrected back open, whatever was last wanted',
+      );
+    });
   });
 }

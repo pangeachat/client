@@ -556,6 +556,21 @@ class CallMedia {
   /// matches it. Only the request that is genuinely current when ITS OWN
   /// publish call lands, whichever iteration that turns out to be, ever
   /// finishes the loop with nothing left to correct.
+  ///
+  /// [_released] belongs in the truth for the same reason [captureHeld]
+  /// does, and a SECOND cold review found its absence: generalising the
+  /// correction to run in both directions means a CLOSE can now correct
+  /// itself into an OPEN, which is exactly the direction [connect] and
+  /// [_setCapture] exist to guard and closing alone never needed guarding
+  /// for. A close whose own correction loop is still catching up after
+  /// [disconnect] has already released this device would otherwise
+  /// republish the microphone or camera on a device the call has already
+  /// given back, with nothing here or in [_setCapture] positioned to stop
+  /// it -- [_setCapture]'s own release checks wrap the ORIGINAL request,
+  /// never a correction an unrelated transition's loop makes internally.
+  /// Folded into the truth itself, released can never be corrected AWAY
+  /// from: every reconciliation this loop ever makes lands on closed, the
+  /// one direction that stays safe regardless.
   Future<bool> _enableCapture({
     required bool on,
     required _CaptureTransition transition,
@@ -569,16 +584,17 @@ class CallMedia {
     transition.wanted = on;
     var applying = on;
     var published = await publish(participant, applying);
-    // The truth as of right now: the hold forces closed regardless of what
-    // was last asked for; otherwise, whatever the latest transition -- not
-    // necessarily this one -- actually wants. Re-read after every publish,
-    // this one's own correction included, because either half of it can
-    // change while a publish call is in flight.
-    var truth = captureHeld ? false : transition.wanted;
+    // The truth as of right now: this device closed for good, or the hold,
+    // forces closed regardless of what was last asked for; otherwise,
+    // whatever the latest transition -- not necessarily this one -- actually
+    // wants. Re-read after every publish, this one's own correction
+    // included, because any of the three can change while a publish call is
+    // in flight.
+    var truth = !_released && !captureHeld && transition.wanted;
     while (truth != applying) {
       applying = truth;
       published = await publish(participant, applying);
-      truth = captureHeld ? false : transition.wanted;
+      truth = !_released && !captureHeld && transition.wanted;
     }
     return gen == transition.generation ? published : false;
   }
