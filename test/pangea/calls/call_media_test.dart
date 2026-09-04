@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:livekit_client/livekit_client.dart';
 
@@ -88,6 +90,53 @@ class RealStepsComingUp extends CallMedia {
   Future<void> disconnect() async {
     steps.add('disconnect');
     await super.disconnect();
+  }
+}
+
+/// Lets a test control exactly when each microphone publish call resolves,
+/// and in what order -- the only way to build the specific race
+/// `CallMedia._enableCapture`'s generation guard exists to close: a hold's
+/// close and the resume that follows it both reach the SDK, and nothing
+/// before that guard could make the FIRST one's own call resolve after the
+/// SECOND's, since a real `LocalParticipant` cannot be made to answer to
+/// order.
+class ManualPublishMedia extends CallMedia {
+  ManualPublishMedia({required super.room});
+
+  final _micCompleters = <Completer<bool>>[];
+
+  /// Every `on` this was asked to publish, in the order it was asked, so a
+  /// test can see the fix's own corrective call happen and what it asked for.
+  final requestedMic = <bool>[];
+
+  /// What the SDK would actually be left showing, updated in COMPLETION
+  /// order -- which is the only thing a real platform's own internal state
+  /// ever reflects, whichever call was ISSUED first.
+  bool? micState;
+
+  @override
+  Future<bool> publishMicrophone(LocalParticipant participant, bool on) {
+    requestedMic.add(on);
+    // The first two calls are the ones a test drives by hand -- the hold's
+    // close and the resume's open. Anything after those is the fix's own
+    // corrective re-assertion; what matters there is that it happens and
+    // what it asks for, not when it lands, so it resolves at once.
+    if (requestedMic.length > 2) {
+      micState = on;
+      return Future<bool>.value(true);
+    }
+    final completer = Completer<bool>();
+    _micCompleters.add(completer);
+    return completer.future.then((published) {
+      if (published) micState = on;
+      return published;
+    });
+  }
+
+  /// Resolves the [n]th publish call (0-indexed, issue order) as though the
+  /// SDK reported [published].
+  void resolveMic(int n, {required bool published}) {
+    _micCompleters[n].complete(published);
   }
 }
 
@@ -1230,6 +1279,68 @@ void main() {
         await media.mic(false),
         isFalse,
       ); // false = nothing to stop, not refused
+    });
+  });
+
+  group('capture transitions -- the LATEST one wins the SDK, not whichever '
+      'resolves last', () {
+    // The hold's own close comment says close wins DURING a hold because it
+    // is re-asserted every held tick -- but resume is a ONE-TIME edge, never
+    // re-fired later, so a stale close from an EARLIER tick that is still in
+    // flight when the resume's open is issued has nothing else re-asserting
+    // over it. Without the generation guard in `_enableCapture`, whichever
+    // one's own SDK call happened to resolve last decided the microphone --
+    // not whichever was actually asked for last.
+    test("a hold's close that resolves AFTER the resume's open still ends up "
+        'unmuted', () async {
+      final participant = await participantJoinedAt(1787734800);
+      final media = ManualPublishMedia(room: RoomWithParticipant(participant));
+
+      // The hold closes the microphone -- its own SDK call is left
+      // hanging, deliberately, so it is the one that resolves LAST.
+      final closing = media.setMicrophoneEnabled(false);
+      // The resume that follows, before the close has settled at all.
+      final opening = media.setMicrophoneEnabled(true);
+      // Both calls suspend at `await _publishingAs` before they ever
+      // reach the SDK (see the TOCTOU test above) -- pumped once so both
+      // land on their own publish call and are the ones under test's
+      // control, rather than still queued behind that first await.
+      await pumpEventQueue();
+      expect(
+        media.requestedMic,
+        [false, true],
+        reason: 'both transitions reach the SDK -- nothing blocks either',
+      );
+
+      // The LATER transition's own SDK call is free to resolve FIRST.
+      media.resolveMic(1, published: true);
+      expect(await opening, isTrue, reason: 'the resume is the latest intent');
+      expect(media.micState, isTrue, reason: 'the resume has taken, for now');
+
+      // Only NOW does the STALE close's own call resolve.
+      media.resolveMic(0, published: true);
+      expect(
+        await closing,
+        isFalse,
+        reason: 'a superseded transition never reports success',
+      );
+
+      // The whole point: whichever call's own SDK op happened to land
+      // last, the microphone ends up matching the LATEST intent, not the
+      // stale one -- the stale close, discovering it was superseded,
+      // corrects the microphone rather than leaving it clobbered.
+      expect(
+        media.micState,
+        isTrue,
+        reason: 'the survivor is heard, not silently re-muted',
+      );
+      expect(
+        media.requestedMic,
+        [false, true, true],
+        reason:
+            'the correction is one more publish call, asking for what '
+            'is actually wanted',
+      );
     });
   });
 }

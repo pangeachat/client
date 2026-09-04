@@ -10,6 +10,23 @@ import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
 import 'package:fluffychat/routes/chat/calls/sfu_join_stamp.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
 
+/// One capture kind's (microphone, or camera) most recent transition: a
+/// number that only ever goes up, and what it actually asked for.
+///
+/// [CallMedia._enableCapture] is acquire-then-publish, so a SECOND transition
+/// can start while the first's own publish call is still in flight -- a
+/// hold's close and the resume that follows it, in particular, since nothing
+/// serialises the two. Without this, whichever call's own await happened to
+/// resolve LAST decided the microphone, which is not the same thing as
+/// whichever was asked for last: the hold's own close is re-asserted and wins
+/// DURING a hold, but resume is a ONE-TIME edge, never re-fired on a later
+/// tick, so a stale close landing after it silently re-muted a survivor who
+/// had just been told to unmute.
+class _CaptureTransition {
+  int generation = 0;
+  bool wanted = false;
+}
+
 /// This device's media for one call.
 ///
 /// The Matrix session says a call exists and who is in it; this connects the
@@ -435,6 +452,12 @@ class CallMedia {
   static int _joinInstant(int secondsMs, int ms) =>
       ClockAnchor.millisecondRefinement(secondsMs, ms) ?? secondsMs;
 
+  /// One capture kind's (microphone, or camera) most recent transition: a
+  /// number that only ever goes up, and what it actually asked for. See
+  /// [_CaptureTransition] and [_enableCapture] below.
+  final _micTransition = _CaptureTransition();
+  final _cameraTransition = _CaptureTransition();
+
   // A note on a publish that fails, for both of these. Read off the pinned
   // livekit_client 2.11.0 rather than carried forward, because the two halves
   // no longer behave the same and an answer good for one is wrong for the
@@ -472,41 +495,81 @@ class CallMedia {
   // On the pinned livekit_client 2.11.0, `setSourceEnabled` turning a source ON
   // either hands back the publication it made or throws (local.dart:815-825),
   // so a null is that library saying it published nothing.
+  //
+  // Split out from [enableMicrophone] and [enableCamera] as its own seam --
+  // `@protected` rather than folded into the guarded mechanism below -- so a
+  // test can control exactly when one of these resolves, and in what order,
+  // relative to another: the whole shape of the race [_enableCapture] exists
+  // to close is which of TWO in-flight publish calls happens to land last, and
+  // a real `LocalParticipant` cannot be made to answer to order.
   @protected
-  Future<bool> enableMicrophone(bool on) async {
-    // The held gate, re-read after EVERY await. An open is acquire-then-publish
-    // and [captureHeld] can flip true across either, so an entry check alone
-    // leaves a window in which a connect-time open completes a publish after the
-    // hold. Same mid-await bail [_publishingAs] already performs for a release.
-    if (on && captureHeld) return false;
-    final participant = await _publishingAs(on);
-    if (participant == null) return false;
-    if (on && captureHeld) return false;
+  Future<bool> publishMicrophone(LocalParticipant participant, bool on) async {
     final published = await participant.setMicrophoneEnabled(
       on,
       audioCaptureOptions: microphone,
     );
-    // The publish itself awaits, so the hold may have landed during it. Roll
-    // back rather than leave the microphone published while it is meant closed.
-    if (on && captureHeld) {
-      await participant.setMicrophoneEnabled(false);
-      return false;
-    }
     return published != null;
   }
 
   @protected
-  Future<bool> enableCamera(bool on) async {
+  Future<bool> publishCamera(LocalParticipant participant, bool on) async =>
+      await participant.setCameraEnabled(on) != null;
+
+  @protected
+  Future<bool> enableMicrophone(bool on) => _enableCapture(
+    on: on,
+    transition: _micTransition,
+    publish: publishMicrophone,
+  );
+
+  @protected
+  Future<bool> enableCamera(bool on) => _enableCapture(
+    on: on,
+    transition: _cameraTransition,
+    publish: publishCamera,
+  );
+
+  /// ONE guarded mechanism both [enableMicrophone] and [enableCamera] go
+  /// through, so the two races below are closed once rather than twice.
+  ///
+  /// The held gate, re-read after EVERY await. An open is acquire-then-publish
+  /// and [captureHeld] can flip true across either, so an entry check alone
+  /// leaves a window in which a connect-time open completes a publish after the
+  /// hold. Same mid-await bail [_publishingAs] already performs for a release.
+  ///
+  /// [transition]'s generation closes the OTHER race, the one [captureHeld]
+  /// alone cannot see: two transitions of the SAME kind in flight at once,
+  /// neither of them a hold. Numbered when each STARTS, so whichever one
+  /// started last is the one whose own call to [publish] must be the final
+  /// word -- not whichever one's `await` happens to resolve last, which a
+  /// platform capture call has no promise of respecting. A transition that
+  /// discovers, once its own publish returns, that a later one has since
+  /// started -- or that the hold has, which bumps a generation too, since it
+  /// is itself a transition -- cannot trust what it just left behind: it
+  /// reasserts the CURRENT truth once, the same roll-back [captureHeld]
+  /// already does for an open the hold outraced, generalised to the close a
+  /// later open outraces right back.
+  Future<bool> _enableCapture({
+    required bool on,
+    required _CaptureTransition transition,
+    required Future<bool> Function(LocalParticipant, bool) publish,
+  }) async {
     if (on && captureHeld) return false;
     final participant = await _publishingAs(on);
     if (participant == null) return false;
     if (on && captureHeld) return false;
-    final opened = await participant.setCameraEnabled(on) != null;
-    if (on && captureHeld) {
-      await participant.setCameraEnabled(false);
+    final gen = ++transition.generation;
+    transition.wanted = on;
+    final published = await publish(participant, on);
+    // The truth as of right now: the hold forces closed regardless of what
+    // was last asked for; otherwise, whatever the latest transition -- not
+    // necessarily this one -- actually wants.
+    final truth = captureHeld ? false : transition.wanted;
+    if (gen != transition.generation || truth != on) {
+      if (truth != on) await publish(participant, truth);
       return false;
     }
-    return opened;
+    return published;
   }
 
   /// The participant a capture change acts through, or null when there is
