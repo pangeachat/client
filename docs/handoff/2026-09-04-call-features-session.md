@@ -77,3 +77,36 @@ local, nothing pushed.
    signal decision (current lean: listen + settle, not a spinner-forever).
 4. PRs #8797 + #8807 await owner PR-go; batch-merge with the recording work as
    one deploy on owner go.
+
+## 2026-09-04 (II) — RECORDING IS BROKEN ON WEB (owner found it live)
+
+Owner tested a real call with TWO WEB endpoints (incognito @learner + normal
+@calltester) and saw NO recordings. Investigated and REPRODUCED: a full web call
+on the combined build (:8091) via the E2E harness (`test/e2e/transcript.js`, two
+headless Chrome) writes the transcript but **0 `pangea.call_audio` events** (room
+`!Hgav`, 19:11:39). Confirmed directly against the rooms (every room audio=0).
+- The recordings PLAYER is CORRECT — it renders nothing because nothing was
+  recorded. Not a player bug, and NOT a stale/wrong build (both the owner's test
+  and the harness ran the right build).
+- Write path: the audio tap is chosen by `defaultCallAudioTap`
+  (call_audio_tap.dart:~418) — `PostEchoCancellationTap` only on Android,
+  `TrackRendererTap` on web + iOS. On web the recorder emits no `call_audio`.
+- **Why the earlier "green" missed it (owner asked):** the player agent's tests
+  use SYNTHETIC `call_audio` events (prove display, never the write). The
+  recording feature's unit tests INJECT a fake tap + frames (prove the recorder's
+  logic GIVEN frames, never real platform capture). Neither ever ran a real
+  browser call. It's a coverage gap at the platform-integration seam, not a
+  rigged test. The fix must therefore ALSO add a real E2E gate: a web call must
+  assert a `call_audio` event actually lands.
+- Owner requirement: recording must work on **web, iOS, AND Android**.
+
+Root-cause workflow launched (ultracode): script
+`scratchpad/diagnose_recording.mjs`, run `wf_1543f2e3-a0e`, task `wubv8zcph`.
+Four parallel diagnoses (live browser-console capture via a patched harness /
+real livekit_client web source in the pub cache / capture-vs-recorder wiring /
+publish gate + iOS) -> synthesis -> three adversarial verify lenses. Returns the
+confirmed root cause + the cross-platform fix + the REAL gate.
+
+HOLD: do NOT open the recording PR until web/iOS recording works and the real
+gate is in. Card fix `c6460b66d9`, 3-cue `1925844ca5`, player `24203fd711` all
+still local; the #8797/#8807 PRs can proceed independently once cold-gated.
