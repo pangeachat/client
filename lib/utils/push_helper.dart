@@ -14,6 +14,7 @@ import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/features/join_codes/knock_notification_utils.dart';
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
+import 'package:fluffychat/features/notifications/notification_avatar_attachment.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -385,7 +386,14 @@ Future<void> _tryPushHelper(
             ),
           ],
   );
-  const iOSPlatformChannelSpecifics = DarwinNotificationDetails();
+  final iOSPlatformChannelSpecifics = DarwinNotificationDetails(
+    attachments: PlatformInfos.isIOS
+        ? await NotificationAvatarAttachment.forRoom(
+            roomAvatarFile,
+            roomId: event.room.id,
+          )
+        : null,
+  );
   final platformChannelSpecifics = NotificationDetails(
     android: androidPlatformChannelSpecifics,
     iOS: iOSPlatformChannelSpecifics,
