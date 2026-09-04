@@ -2110,6 +2110,110 @@ void main() {
         expect(room.sent, isEmpty, reason: 'nor a transcript half');
         expect(analytics(), 0, reason: 'nor any analytics (doc:236)');
       });
+
+      // The bug this pins: `_onCallChanged` correctly routes a non-carrying
+      // device away from `_finishRecording` (call_session.dart:669), but that
+      // is not the only caller. In production `_handover` schedules
+      // `onReleased` on a microtask (call_session.dart:1117) and
+      // `widgets/matrix.dart`'s `onReleased` always calls `session.dispose()`
+      // -- and `dispose` used to call `_finishRecording` UNCONDITIONALLY,
+      // which still writes because `_finish` never latches
+      // `_recordingFinished`. So the card/half/analytics guard above passed
+      // even while the SAME session, moments later, wrote them all anyway.
+      test(
+        'a moved leave STILL writes nothing once the session is disposed',
+        () async {
+          final (room, analytics, session) = await upThenSiblingClaims();
+          session.dispose();
+          await pumpEventQueue();
+          expect(
+            room.cards,
+            isEmpty,
+            reason:
+                'a device that did not carry on leaves no card, even from '
+                'dispose()',
+          );
+          expect(
+            room.sent,
+            isEmpty,
+            reason: 'nor a transcript half, even from dispose() (doc:236)',
+          );
+          expect(
+            analytics(),
+            0,
+            reason: 'nor any analytics, even from dispose() (doc:236)',
+          );
+        },
+      );
+
+      // The second way of not carrying on (doc:236): nobody has chosen yet.
+      // Reaching the ACTUAL 20s give-up timer needs real wall-clock time this
+      // suite has no seam to fake, but the defect lives entirely downstream
+      // of `carriedOn` being false -- how it got there does not matter to
+      // `_finishRecording`. A device the ownership arbiter is holding, torn
+      // down (logout, app teardown) before the ambiguity ever resolves, is
+      // the same "ended while held, nobody chose" shape the timer itself
+      // would eventually produce, reached without waiting for it.
+      test('a device still held -- nobody has chosen -- writes nothing if torn '
+          'down before it resolves', () async {
+        final client = await _bareClient();
+        final room = _RecordingRoom(id: '!r:server', client: client);
+        final media = _FakeMedia();
+        var analyticsCalls = 0;
+        final session = CallSession.start(
+          room: room,
+          video: false,
+          callService: _FakeCalls(client),
+          transcribe: (request) async =>
+              SpeechToTextResponseModel(results: const []),
+          userL1: 'en',
+          userL2: 'es',
+          analytics: (eventId, uses, language) async => analyticsCalls++,
+          onReleased: (_) {},
+          callerMembershipEventId: r'$caller-membership',
+          mediaOverride: media,
+          captureOverride: CallCaptureService(sink: _NullSink()),
+        );
+        await pumpEventQueue();
+        // A sibling is present and PARTICIPATING -- it has published its
+        // unconditional `no` -- so this is the ordinary choice prompt, not
+        // the older-version one, and neither device has claimed anything.
+        final roster = media.fakeRoster!;
+        final sib = '${client.userID}:SIBLINGDEV';
+        roster.identities = {sib};
+        roster.attributes = {
+          sib: {CallRoster.chosenAttribute: 'no'},
+        };
+        roster.recompute();
+        await pumpEventQueue();
+        expect(
+          session.mediaHeld,
+          isTrue,
+          reason: 'a participating sibling holds this device',
+        );
+        expect(
+          session.call.carriedOn,
+          isFalse,
+          reason:
+              'held, and this device has not claimed -- it has not '
+              'carried on',
+        );
+        // The learner logs out, or the app tears down, before either
+        // device resolves the ambiguity by hand or by timer.
+        session.dispose();
+        await pumpEventQueue();
+        expect(
+          room.cards,
+          isEmpty,
+          reason: 'a device that never carried on leaves no card',
+        );
+        expect(room.sent, isEmpty, reason: 'nor a transcript half');
+        expect(
+          analyticsCalls,
+          0,
+          reason: 'nor any analytics -- it never carried on (doc:236)',
+        );
+      });
     },
   );
   group('two devices -- the hold never reopens media on a leaving device', () {

@@ -942,6 +942,12 @@ class CallSession extends ChangeNotifier {
   /// through here; `hangUp` is idempotent and memoised, so all callers join one
   /// teardown and the record is written once. Deliberately not awaited and not
   /// tied to any widget — it outlives everything visual.
+  ///
+  /// `hangUp` itself is UNCONDITIONAL: a device must always be able to leave
+  /// its call, held or not -- the ownership prompt does not hide the hang-up
+  /// button (`call_panel.dart`), and the ownership machinery may itself have
+  /// already started this same teardown before this ever runs. Only the WRITE
+  /// below is conditional.
   void _finishRecording() {
     if (_recordingFinished) return;
     _recordingFinished = true;
@@ -952,6 +958,18 @@ class CallSession extends ChangeNotifier {
             try {
               await call.settled;
             } catch (_) {}
+            // A device that did not carry on with the call -- chosen against,
+            // or given up on because nobody chose it -- writes no transcript
+            // half and no analytics (doc:236). `_onCallChanged` already keeps
+            // a non-carrying device from reaching here on the path it drives
+            // (:669), but teardown does not only run from there: `endCall`,
+            // `dismissFailed` and `dispose` all call this function directly,
+            // and `dispose` in particular runs unconditionally (a summary
+            // still on screen, a logout, an app teardown). The rule belongs
+            // at the WRITE itself, not at any one caller, so every path here
+            // is covered by the same check rather than by remembering to
+            // guard each one.
+            if (!call.carriedOn) return;
             // The card is normally already in the timeline by now (written the
             // moment the call ended); this call credits the transcripts against
             // it, and writes the card itself only if that earlier attempt had
