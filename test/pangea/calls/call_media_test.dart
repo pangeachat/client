@@ -117,14 +117,11 @@ class ManualPublishMedia extends CallMedia {
   @override
   Future<bool> publishMicrophone(LocalParticipant participant, bool on) {
     requestedMic.add(on);
-    // The first two calls are the ones a test drives by hand -- the hold's
-    // close and the resume's open. Anything after those is the fix's own
-    // corrective re-assertion; what matters there is that it happens and
-    // what it asks for, not when it lands, so it resolves at once.
-    if (requestedMic.length > 2) {
-      micState = on;
-      return Future<bool>.value(true);
-    }
+    // EVERY call is held open until a test resolves it by hand -- including
+    // a corrective one _enableCapture's own loop makes, which needs the same
+    // control as the original two: a THIRD transition racing a correction
+    // is exactly the shape of the gap a cold review found in a one-shot
+    // (non-looping) version of the fix.
     final completer = Completer<bool>();
     _micCompleters.add(completer);
     return completer.future.then((published) {
@@ -1319,6 +1316,18 @@ void main() {
 
       // Only NOW does the STALE close's own call resolve.
       media.resolveMic(0, published: true);
+      // The correction _enableCapture's loop makes on discovering it was
+      // superseded is itself one more publish call, held open exactly like
+      // the first two -- pumped once so it exists to be resolved.
+      await pumpEventQueue();
+      expect(
+        media.requestedMic,
+        [false, true, true],
+        reason:
+            'the correction is one more publish call, asking for what is '
+            'actually wanted',
+      );
+      media.resolveMic(2, published: true);
       expect(
         await closing,
         isFalse,
@@ -1334,12 +1343,88 @@ void main() {
         isTrue,
         reason: 'the survivor is heard, not silently re-muted',
       );
+    });
+
+    // A cold review found this gap in an earlier, non-looping version of the
+    // fix: the correction is itself a publish call that can be in flight
+    // when a STILL NEWER transition starts and even finishes, so a one-shot
+    // correction can land last and clobber that third transition exactly as
+    // the original close clobbered the open. Three in a row -- close, open,
+    // close -- makes it concrete: the middle one's correction to "open" must
+    // not survive the third transition's own "close" finishing first.
+    test("a correction that resolves AFTER a THIRD transition must not clobber "
+        'it either', () async {
+      final participant = await participantJoinedAt(1787734800);
+      final media = ManualPublishMedia(room: RoomWithParticipant(participant));
+
+      // A: close. Left hanging -- this is the one whose OWN correction
+      // will be made to resolve last, at the very end.
+      final a = media.setMicrophoneEnabled(false);
+      // B: open, before A settles.
+      final b = media.setMicrophoneEnabled(true);
+      await pumpEventQueue();
+      expect(media.requestedMic, [false, true]);
+
+      // B resolves. Not yet superseded by anything -- it reports success,
+      // and the microphone reads open.
+      media.resolveMic(1, published: true);
+      expect(await b, isTrue);
+      expect(media.micState, isTrue);
+
+      // A resolves next, discovers it was superseded by B, and starts its
+      // OWN correction to "open" -- held open rather than let it resolve
+      // yet, because C has to start and finish INSIDE that window.
+      media.resolveMic(0, published: true);
+      await pumpEventQueue();
+      expect(media.requestedMic, [
+        false,
+        true,
+        true,
+      ], reason: "A's correction, asking for what B wanted");
+
+      // C: a THIRD transition, a close, starts and resolves COMPLETELY
+      // while A's correction (index 2) is still in flight.
+      final c = media.setMicrophoneEnabled(false);
+      await pumpEventQueue();
+      expect(media.requestedMic, [false, true, true, false]);
+      media.resolveMic(3, published: true);
+      expect(await c, isTrue, reason: 'C is the latest intent now');
+      expect(
+        media.micState,
+        isFalse,
+        reason: 'C actually closed the microphone',
+      );
+
+      // Only NOW does A's stale correction (asking for "open") resolve.
+      // `a` itself is NOT awaited yet: the point of the fix is that this
+      // correction's own resolution does not end the loop -- it must
+      // discover ITSELF superseded (by C, not just by B) and correct
+      // again, so awaiting `a` here, before that second correction has
+      // even been resolved, would hang rather than prove anything.
+      media.resolveMic(2, published: true);
+      await pumpEventQueue();
       expect(
         media.requestedMic,
-        [false, true, true],
+        [false, true, true, false, false],
         reason:
-            'the correction is one more publish call, asking for what '
-            'is actually wanted',
+            "A's first correction is itself superseded by C and corrects "
+            'again, back to closed, rather than stopping at one '
+            'correction',
+      );
+
+      // A's SECOND correction resolves. Only now can the loop converge.
+      media.resolveMic(4, published: true);
+      expect(
+        await a,
+        isFalse,
+        reason: 'A was superseded, first by B and then again by C',
+      );
+      expect(
+        media.micState,
+        isFalse,
+        reason:
+            'the microphone ends up matching C, the true latest intent -- '
+            "not stuck on A's one-shot correction to what B wanted",
       );
     });
   });

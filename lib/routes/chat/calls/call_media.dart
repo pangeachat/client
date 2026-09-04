@@ -532,23 +532,30 @@ class CallMedia {
   /// ONE guarded mechanism both [enableMicrophone] and [enableCamera] go
   /// through, so the two races below are closed once rather than twice.
   ///
-  /// The held gate, re-read after EVERY await. An open is acquire-then-publish
-  /// and [captureHeld] can flip true across either, so an entry check alone
-  /// leaves a window in which a connect-time open completes a publish after the
-  /// hold. Same mid-await bail [_publishingAs] already performs for a release.
+  /// The held gate, checked before ever publishing. It is not re-checked
+  /// after: [captureHeld] flipping true during or after the publish itself
+  /// is one more way the TRUTH below can move, and the loop that reconciles
+  /// against it treats that no differently from a sibling transition
+  /// changing what is wanted.
   ///
-  /// [transition]'s generation closes the OTHER race, the one [captureHeld]
-  /// alone cannot see: two transitions of the SAME kind in flight at once,
-  /// neither of them a hold. Numbered when each STARTS, so whichever one
-  /// started last is the one whose own call to [publish] must be the final
+  /// [transition]'s generation and `wanted` close the race [captureHeld]
+  /// alone cannot see: two transitions of the SAME kind in flight together,
+  /// neither of them necessarily a hold. Numbered when each STARTS, so
+  /// whichever one started last is the one whose request must be the final
   /// word -- not whichever one's `await` happens to resolve last, which a
-  /// platform capture call has no promise of respecting. A transition that
-  /// discovers, once its own publish returns, that a later one has since
-  /// started -- or that the hold has, which bumps a generation too, since it
-  /// is itself a transition -- cannot trust what it just left behind: it
-  /// reasserts the CURRENT truth once, the same roll-back [captureHeld]
-  /// already does for an open the hold outraced, generalised to the close a
-  /// later open outraces right back.
+  /// platform capture call has no promise of respecting.
+  ///
+  /// A single correction is not enough, which is the gap a cold review found
+  /// in an earlier version of this: the correction is ITSELF a publish call
+  /// in flight, and a still-newer transition can start and even finish while
+  /// THAT is in flight, exactly as an ordinary open or close can. Three in a
+  /// row makes it concrete -- close, open, close -- where the middle one's
+  /// one-shot correction to "open" lands last and clobbers the third's
+  /// "close". So this loops: after EVERY publish, correction included, it
+  /// re-reads the truth and keeps correcting until what was just applied
+  /// matches it. Only the request that is genuinely current when ITS OWN
+  /// publish call lands, whichever iteration that turns out to be, ever
+  /// finishes the loop with nothing left to correct.
   Future<bool> _enableCapture({
     required bool on,
     required _CaptureTransition transition,
@@ -560,16 +567,20 @@ class CallMedia {
     if (on && captureHeld) return false;
     final gen = ++transition.generation;
     transition.wanted = on;
-    final published = await publish(participant, on);
+    var applying = on;
+    var published = await publish(participant, applying);
     // The truth as of right now: the hold forces closed regardless of what
     // was last asked for; otherwise, whatever the latest transition -- not
-    // necessarily this one -- actually wants.
-    final truth = captureHeld ? false : transition.wanted;
-    if (gen != transition.generation || truth != on) {
-      if (truth != on) await publish(participant, truth);
-      return false;
+    // necessarily this one -- actually wants. Re-read after every publish,
+    // this one's own correction included, because either half of it can
+    // change while a publish call is in flight.
+    var truth = captureHeld ? false : transition.wanted;
+    while (truth != applying) {
+      applying = truth;
+      published = await publish(participant, applying);
+      truth = captureHeld ? false : transition.wanted;
     }
-    return published;
+    return gen == transition.generation ? published : false;
   }
 
   /// The participant a capture change acts through, or null when there is
