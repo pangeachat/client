@@ -30,7 +30,7 @@ import 'package:fluffychat/pangea/spaces/knocking_users_badge.dart';
 import 'package:fluffychat/pangea/spaces/knocking_users_builder.dart';
 import 'package:fluffychat/routes/chat_list/dm_list_tile.dart';
 import 'package:fluffychat/routes/chat_list/friend_dm_prompt.dart';
-import 'package:fluffychat/routes/world/course_context_bar.dart';
+import 'package:fluffychat/routes/world/activity_course_dock.dart';
 import 'package:fluffychat/routes/world/left_panel/workspace_left_panel.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/mobile_search_bar.dart';
@@ -311,6 +311,7 @@ class WorkspaceShell extends StatelessWidget {
                     // panel is closed (#8736).
                     courseScopeSpaceId: activeSpaceIdFor(state.uri),
                     coursePanelOpen: l.coursePanelVisible,
+                    activityPanelOpen: l.activityPanelVisible,
                     focus: mapFocusFor(state),
                   ),
                 ),
@@ -431,14 +432,23 @@ class WorkspaceShell extends StatelessWidget {
                                 bottom: 0,
                                 left: l.allocation.left[i].left,
                                 width: l.allocation.left[i].width,
-                                child: LeftPanelLayer(
+                                // Docks the course context bar above an open
+                                // activity plan, sharing its left edge; a
+                                // pass-through for every other panel (#8816).
+                                child: ActivityCourseDock(
                                   token: l.leftTokens[i],
-                                  state: state,
-                                  foldedOver: l.allocation.left[i].foldedOver,
-                                  getRoomKey: _roomKeyFor,
-                                  bare:
-                                      !l.isColumnMode &&
-                                      l.allocation.left[i].vis == PanelVis.full,
+                                  isColumnMode: l.isColumnMode,
+                                  spaceId: activeSpaceIdFor(state.uri),
+                                  child: LeftPanelLayer(
+                                    token: l.leftTokens[i],
+                                    state: state,
+                                    foldedOver: l.allocation.left[i].foldedOver,
+                                    getRoomKey: _roomKeyFor,
+                                    bare:
+                                        !l.isColumnMode &&
+                                        l.allocation.left[i].vis ==
+                                            PanelVis.full,
+                                  ),
                                 ),
                               ),
                         ],
@@ -666,16 +676,12 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
           )
         : null;
 
-    // The course context bar takes the search bar's slot while a course is
-    // selected and its cavity is closed — the narrow twin of the web slot
-    // (#8736). With the course card itself open in the cavity the cavity's own
-    // header already names the course, so neither rides above it.
-    final topAttachment = activeSpaceId != null && cavityToken == null
-        ? Padding(
-            padding: const EdgeInsets.symmetric(vertical: 4.0),
-            child: CourseContextBar(spaceId: activeSpaceId),
-          )
-        : searchBar;
+    // Narrow carries NO course context bar. Under `?c=` the course panel is
+    // always mounted at least at its peek, and that peek IS this same header
+    // in this same slot — a bar here would be a verbatim duplicate of the
+    // panel it points at (#8816, narrowing #8736 to wide; see
+    // world-map.instructions.md -> The course context bar).
+    final topAttachment = searchBar;
 
     // Full height: the widget grows until whatever rides above it sits
     // immediately below the analytics bar (routing.instructions.md).
@@ -1144,6 +1150,10 @@ class _ShellLayout {
   /// nowhere, which is exactly the state the bar exists for (#8736).
   final bool coursePanelVisible;
 
+  /// An activity plan panel is drawn in the left column — the course context
+  /// bar docks above it rather than in the map slot (#8816).
+  final bool activityPanelVisible;
+
   /// The map actually visible between the open side panels (viewport − left
   /// overlay − right overlay) — drives the pin-density budget
   /// ([budgetForWidth] in world_map_pin_budget.dart).
@@ -1169,6 +1179,7 @@ class _ShellLayout {
     required this.mapLeftOverlay,
     required this.mapBottomOverlay,
     required this.coursePanelVisible,
+    required this.activityPanelVisible,
     required this.availableVisibleMapWidth,
     required this.mapContext,
     required this.focusedLeftToken,
@@ -1256,10 +1267,18 @@ class _ShellLayout {
       focusHint: focusHint,
     );
 
-    final coursePanelVisible = [
+    final visibleLeftTypes = [
       for (var i = 0; i < leftTokens.length; i++)
         if (layout.left[i].vis != PanelVis.hidden) leftTokens[i].type,
-    ].any((type) => type.isCoursePanel);
+    ];
+    final coursePanelVisible = visibleLeftTypes.any(
+      (type) => type.isCoursePanel,
+    );
+    // An open activity plan takes the course context bar OUT of the map slot:
+    // it docks above the plan instead, beside its own parent (#8816).
+    final activityPanelVisible = visibleLeftTypes.contains(
+      PanelTypesEnum.activity,
+    );
 
     // The narrow focus: the one panel the allocator seats full-screen, if any.
     // [focusedIsRight] distinguishes a right panel (renders under the expanded
@@ -1392,6 +1411,7 @@ class _ShellLayout {
       mapLeftOverlay: mapLeftOverlay,
       mapBottomOverlay: mapBottomOverlay,
       coursePanelVisible: coursePanelVisible,
+      activityPanelVisible: activityPanelVisible,
       availableVisibleMapWidth: availableVisibleMapWidth,
       mapContext: mapContext,
       focusedLeftToken: focusedLeftToken,

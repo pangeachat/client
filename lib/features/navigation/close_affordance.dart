@@ -31,13 +31,33 @@ class CloseAffordance {
   /// Show a close (X) that dismisses this panel to the map.
   final bool showClose;
 
-  const CloseAffordance({required this.showBack, required this.showClose});
+  /// Show the expand/collapse chevron INSTEAD of both, for a panel that has a
+  /// rest floor rather than a close ([hasFloor]).
+  final bool showChevron;
 
+  const CloseAffordance({
+    required this.showBack,
+    required this.showClose,
+    this.showChevron = false,
+  });
+
+  /// [hasFloor]: this panel cannot be dismissed, only moved between two
+  /// states — the course panel, whose floor is the nav cavity's peek on narrow
+  /// and the context bar on wide (#8816). There is nothing an `X` could reveal
+  /// and nowhere a `←` could go, so the chevron replaces both and the other
+  /// two inputs stop mattering.
   factory CloseAffordance.of({
     required bool isPushedPage,
     required bool revealsMaster,
-  }) => CloseAffordance(
-    showBack: isPushedPage || revealsMaster,
-    showClose: isPushedPage || !revealsMaster,
-  );
+    bool hasFloor = false,
+  }) => hasFloor
+      ? const CloseAffordance(
+          showBack: false,
+          showClose: false,
+          showChevron: true,
+        )
+      : CloseAffordance(
+          showBack: isPushedPage || revealsMaster,
+          showClose: isPushedPage || !revealsMaster,
+        );
 }

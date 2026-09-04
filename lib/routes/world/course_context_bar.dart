@@ -12,13 +12,16 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_header_actions.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_progress_bar.dart';
+import 'package:fluffychat/routes/world/left_panel/floor_chevron.dart';
+import 'package:fluffychat/routes/world/panel_header.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-/// The miniature course overview that takes the map search bar's slot while a
-/// course is selected and its panel is closed (#8736): the course's name, its
-/// two header actions ([CourseHeaderActions]), and its progress bar — the
-/// course panel's header with the panel closed.
+/// The miniature course overview shown while a course is selected and its
+/// panel is closed (#8736): the course's name, its two header actions
+/// ([CourseHeaderActions]), its progress bar, and a leading chevron pointing
+/// down at the card it reveals — the course panel's header with the panel
+/// closed, one rotation of the same control apart ([ChevronToggle]).
 ///
 /// It exists so the scoped map always says WHICH course it is scoped to: with
 /// the card closed the only signal was the rail's course highlight, easy to
@@ -26,6 +29,13 @@ import 'package:fluffychat/widgets/matrix.dart';
 /// world map. It is deliberately **not closeable** — the course context is
 /// what it reports, and `?c=` is cleared by the World control, not here — and
 /// tapping it anywhere but its actions reopens the course card.
+///
+/// **Wide only** (#8816). It rides the map's search slot, except with an
+/// activity plan open, where it docks above that panel instead
+/// ([ActivityCourseDock]). Narrow has no bar at all: the course panel there is
+/// always mounted at least at its peek, and that peek is this same header in
+/// this same place, so a bar would duplicate the panel it points at. See
+/// world-map.instructions.md → The course context bar.
 ///
 /// Owns its own [QuestObjectivesLoader] rather than borrowing the panel's:
 /// the panel is closed exactly when this shows, so there is none to borrow.
@@ -129,13 +139,28 @@ class _CourseContextBarState extends State<CourseContextBar> {
           onTap: _openCourse,
           shape: shape,
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(16.0, 4.0, 4.0, 12.0),
+            // The panel header's horizontal inset, so the bar's chevron and
+            // the open panel's chevron sit at the same x (#8816).
+            padding: const EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 12.0),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Row(
                   children: [
+                    // The panel header's chevron, in the same leading slot and
+                    // one rotation apart. Wide follows the disclosure
+                    // convention, so this points DOWN to say it reveals the
+                    // card and the open panel's points UP to say it hides it
+                    // again (#8816). Semantics are excluded because the whole
+                    // bar is already one button announcing this very action.
+                    ChevronToggle(
+                      expanded: false,
+                      onTap: _openCourse,
+                      meaning: ChevronMeaning.disclosure,
+                      excludeSemantics: true,
+                    ),
+                    const SizedBox(width: 8.0),
                     Expanded(
                       // The name rides the bar's own semantics label above.
                       child: ExcludeSemantics(
@@ -143,9 +168,9 @@ class _CourseContextBarState extends State<CourseContextBar> {
                           name,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style: theme.textTheme.titleMedium?.copyWith(
-                            fontWeight: FontWeight.w600,
-                          ),
+                          // The panel header's own style, so the bar and the
+                          // card it opens read as one surface (#8816).
+                          style: PanelHeader.titleStyle(context),
                         ),
                       ),
                     ),
