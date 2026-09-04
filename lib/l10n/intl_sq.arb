@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "shfaq më shumë opsione",
     "onboardingStepOfTotal": "Hapi {step} nga {total}",
     "addKeyboardDialogTitle": "Shtoni tastierën e gjuhës suaj të synuar",
-    "enableAutocorrectPopupPathIntro": "Për të shtuar një, shkoni te:"
+    "enableAutocorrectPopupPathIntro": "Për të shtuar një, shkoni te:",
+    "enableAutocorrectPopupTitle": "Shtoni tastierën e gjuhës tuaj të synuar duke shkuar te:",
+    "callDevicesTitle": "Kjo thirrje është e hapur në dy nga pajisjet tuaja.",
+    "callDevicesBody": "Zgjidhni atë me të cilën dëshironi të vazhdoni. Derisa ta bëni këtë, asnjëra nuk po dërgon mikrofonin ose kamerën tuaj.",
+    "callDevicesUseThis": "Përdorni këtë pajisje",
+    "callDevicesLeaveHere": "Lëreni thirrjen këtu",
+    "callDevicesOlderTitle": "Pajisja juaj tjetër nuk mund ta lërë këtë thirrje vetë.",
+    "callDevicesOlderBody": "Përfundoni thirrjen atje, ose lëreni këtu. Kjo zakonisht do të thotë se po përdor një version më të vjetër, dhe përditësimi i tij do ta rregullojë këtë.",
+    "callContinuingElsewhere": "Kjo thirrje po vazhdon në pajisjen tuaj tjetër."
 }

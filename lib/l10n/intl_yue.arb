@@ -10816,5 +10816,17 @@
     "showMoreOptionsHint": "顯示更多選項",
     "onboardingStepOfTotal": "第 {step} 步，共 {total} 步",
     "addKeyboardDialogTitle": "新增你的目標語言鍵盤",
-    "enableAutocorrectPopupPathIntro": "要新增鍵盤，請前往："
+    "enableAutocorrectPopupPathIntro": "要新增鍵盤，請前往：",
+    "enableAutocorrectPopupTitle": "通過以下方式添加您的目標語言鍵盤：",
+    "@enableAutocorrectPopupTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "callDevicesTitle": "此通話正在你的兩部裝置上進行。",
+    "callDevicesBody": "請選擇一部裝置繼續通話。在此之前，兩部裝置都不會傳送你的咪高風或鏡頭。",
+    "callDevicesUseThis": "使用此裝置",
+    "callDevicesLeaveHere": "在此處離開通話",
+    "callDevicesOlderTitle": "你的其他裝置無法自行離開此通話。",
+    "callDevicesOlderBody": "結束該裝置上的通話，或在此處離開。這通常表示該裝置正在運行舊版本，更新後即可解決此問題。",
+    "callContinuingElsewhere": "此通話正在你的其他裝置上繼續。"
 }

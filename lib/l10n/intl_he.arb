@@ -10773,5 +10773,17 @@
     "showMoreOptionsHint": "הצג אפשרויות נוספות",
     "onboardingStepOfTotal": "שלב {step} מתוך {total}",
     "addKeyboardDialogTitle": "הוסף את מקלדת שפת היעד שלך",
-    "enableAutocorrectPopupPathIntro": "כדי להוסיף אחת, עבור אל:"
+    "enableAutocorrectPopupPathIntro": "כדי להוסיף אחת, עבור אל:",
+    "enableAutocorrectPopupTitle": "הוסף את מקלדת שפת היעד שלך על ידי כניסה ל:",
+    "@enableAutocorrectPopupTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "callDevicesTitle": "שיחה זו פתוחה בשניים מהמכשירים שלך.",
+    "callDevicesBody": "בחר את המכשיר שבו תרצה להמשיך. עד שתעשה זאת, אף אחד מהם לא שולח את המיקרופון או המצלמה שלך.",
+    "callDevicesUseThis": "השתמש במכשיר זה",
+    "callDevicesLeaveHere": "צא מהשיחה כאן",
+    "callDevicesOlderTitle": "המכשיר האחר שלך לא יכול לצאת מהשיחה הזו בעצמו.",
+    "callDevicesOlderBody": "סיים את השיחה שם, או צא ממנה כאן. בדרך כלל זה אומר שהוא מריץ גרסה ישנה יותר, ועדכון יתקן זאת.",
+    "callContinuingElsewhere": "שיחה זו ממשיכה במכשיר האחר שלך."
 }

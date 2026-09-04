@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "bontsha likhetho tse ling",
     "onboardingStepOfTotal": "Kgato {step} ho tse {total}",
     "addKeyboardDialogTitle": "Kenya keyboard ya puo eo o e batlang",
-    "enableAutocorrectPopupPathIntro": "Ho kenya e 'ngoe, e-ea ho:"
+    "enableAutocorrectPopupPathIntro": "Ho kenya e 'ngoe, e-ea ho:",
+    "enableAutocorrectPopupTitle": "Kenya k'hiboto ea puo eo u e ithutang ka ho ea ho:",
+    "callDevicesTitle": "Mohala ona o bulehile lisebelisoa tsa hau tse peli.",
+    "callDevicesBody": "Khetha eo u batlang ho tsoela pele ka eona. Ho fihlela u etsa joalo, ha ho le e 'ngoe e romellang maekrofono kapa khamera ea hau.",
+    "callDevicesUseThis": "Sebelisa sesebelisoa sena",
+    "callDevicesLeaveHere": "Tlohela mohala mona",
+    "callDevicesOlderTitle": "Sesebelisoa sa hau se seng se ke ke sa tlohela mohala ona ka bo sona.",
+    "callDevicesOlderBody": "Fellisa mohala moo, kapa o tlohele mona. Seo hangata se bolela hore se sebelisa mofuta oa khale, 'me ho o ntlafatsa ho tla lokisa sena.",
+    "callContinuingElsewhere": "Mohala ona o ntse o tsoela pele sesebelisoa sa hau se seng."
 }

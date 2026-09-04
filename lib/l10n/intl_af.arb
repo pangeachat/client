@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "wys meer opsies",
     "onboardingStepOfTotal": "Stap {step} van {total}",
     "addKeyboardDialogTitle": "Voeg jou teikentaalklavier by",
-    "enableAutocorrectPopupPathIntro": "Om een by te voeg, gaan na:"
+    "enableAutocorrectPopupPathIntro": "Om een by te voeg, gaan na:",
+    "enableAutocorrectPopupTitle": "Voeg jou teikentaal-sleutelbord by deur na die volgende te gaan:",
+    "callDevicesTitle": "Hierdie oproep is oop op twee van jou toestelle.",
+    "callDevicesBody": "Kies die een om mee voort te gaan. Totdat jy dit doen, stuur nie een jou mikrofoon of kamera nie.",
+    "callDevicesUseThis": "Gebruik hierdie toestel",
+    "callDevicesLeaveHere": "Verlaat die oproep hier",
+    "callDevicesOlderTitle": "Jou ander toestel kan nie hierdie oproep op sy eie verlaat nie.",
+    "callDevicesOlderBody": "Beëindig die oproep daar, of verlaat dit hier. Dit beteken gewoonlik dat dit 'n ouer weergawe gebruik, en 'n opdatering sal dit regmaak.",
+    "callContinuingElsewhere": "Hierdie oproep gaan voort op jou ander toestel."
 }

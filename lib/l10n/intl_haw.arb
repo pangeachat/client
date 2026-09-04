@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "hōʻike i nā koho hou aku",
     "onboardingStepOfTotal": "Kaʻina {step} o {total}",
     "addKeyboardDialogTitle": "Hoʻohui i kāu papa kī ʻōlelo i manaʻo ʻia",
-    "enableAutocorrectPopupPathIntro": "No ka hoʻohui ʻana, e hele i:"
+    "enableAutocorrectPopupPathIntro": "No ka hoʻohui ʻana, e hele i:",
+    "enableAutocorrectPopupTitle": "E hoʻohui i kāu papa pihi ʻōlelo hou ma ka hele ʻana i:",
+    "callDevicesTitle": "Ke wehe ʻia nei kēia kelepona ma ʻelua o kāu mau mea hana.",
+    "callDevicesBody": "E koho i kahi e hoʻomau ai. A hiki i kou hana ʻana pēlā, ʻaʻohe mea e hoʻouna ana i kāu microphone a i ʻole kāmela.",
+    "callDevicesUseThis": "E hoʻohana i kēia mea hana",
+    "callDevicesLeaveHere": "E haʻalele i ke kelepona ma ʻaneʻi",
+    "callDevicesOlderTitle": "ʻAʻole hiki i kāu mea hana ʻē aʻe ke haʻalele i kēia kelepona ma kona iho.",
+    "callDevicesOlderBody": "E hoʻopau i ke kelepona ma laila, a i ʻole e haʻalele ma ʻaneʻi. ʻO ia hoʻi ke holo nei ia i kahi mana kahiko, a ʻo ka hoʻonui ʻana e hoʻoponopono i kēia.",
+    "callContinuingElsewhere": "Ke hoʻomau nei kēia kelepona ma kāu mea hana ʻē aʻe."
 }

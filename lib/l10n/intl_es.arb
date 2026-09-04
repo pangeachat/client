@@ -8082,5 +8082,13 @@
     "showMoreOptionsHint": "mostrar más opciones",
     "onboardingStepOfTotal": "Paso {step} de {total}",
     "addKeyboardDialogTitle": "Añade el teclado de tu idioma objetivo",
-    "enableAutocorrectPopupPathIntro": "Para añadir uno, ve a:"
+    "enableAutocorrectPopupPathIntro": "Para añadir uno, ve a:",
+    "enableAutocorrectPopupTitle": "Agrega el teclado de tu idioma objetivo yendo a:",
+    "callDevicesTitle": "Esta llamada está abierta en dos de tus dispositivos.",
+    "callDevicesBody": "Elige con cuál quieres continuar. Hasta que lo hagas, ninguno enviará tu micrófono ni tu cámara.",
+    "callDevicesUseThis": "Usar este dispositivo",
+    "callDevicesLeaveHere": "Dejar la llamada aquí",
+    "callDevicesOlderTitle": "Tu otro dispositivo no puede salir de esta llamada por sí solo.",
+    "callDevicesOlderBody": "Finaliza la llamada allí o déjala aquí. Esto suele significar que está ejecutando una versión anterior, y actualizarla lo solucionará.",
+    "callContinuingElsewhere": "Esta llamada continúa en tu otro dispositivo."
 }

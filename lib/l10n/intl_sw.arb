@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "onyesha chaguo zaidi",
     "onboardingStepOfTotal": "Hatua ya {step} kati ya {total}",
     "addKeyboardDialogTitle": "Ongeza kibodi cha lugha unayolenga",
-    "enableAutocorrectPopupPathIntro": "Ili kuongeza, nenda kwa:"
+    "enableAutocorrectPopupPathIntro": "Ili kuongeza, nenda kwa:",
+    "enableAutocorrectPopupTitle": "Ongeza kibodi cha lugha unayolenga kwa kwenda kwenye:",
+    "callDevicesTitle": "Simu hii imefunguliwa kwenye vifaa vyako viwili.",
+    "callDevicesBody": "Chagua kimoja cha kuendelea nacho. Hadi utakapofanya hivyo, hakuna kinachotuma maikrofoni au kamera yako.",
+    "callDevicesUseThis": "Tumia kifaa hiki",
+    "callDevicesLeaveHere": "Acha simu hapa",
+    "callDevicesOlderTitle": "Kifaa chako kingine hakiwezi kuondoka kwenye simu hii chenyewe.",
+    "callDevicesOlderBody": "Maliza simu huko, au iache hapa. Hiyo kwa kawaida inamaanisha inatumia toleo la zamani, na kuisasisha kutarekebisha hili.",
+    "callContinuingElsewhere": "Simu hii inaendelea kwenye kifaa chako kingine."
 }

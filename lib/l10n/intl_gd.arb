@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "seall barrachd roghainnean",
     "onboardingStepOfTotal": "Ceum {step} de {total}",
     "addKeyboardDialogTitle": "Cuir ris meur-chlàr na cànain targaid agad",
-    "enableAutocorrectPopupPathIntro": "Gus fear a chur ris, rachaibh gu:"
+    "enableAutocorrectPopupPathIntro": "Gus fear a chur ris, rachaibh gu:",
+    "enableAutocorrectPopupTitle": "Cuir ris a' mheur-chlàr cànain targaid agad le bhith a' dol gu:",
+    "callDevicesTitle": "Tha an gairm seo fosgailte air dà inneal agad.",
+    "callDevicesBody": "Tagh an tè a chumas tu air adhart leis. Gus an dèan thu sin, chan eil gin a' cur do mhicreofon no do chamara.",
+    "callDevicesUseThis": "Cleachd an t-inneal seo",
+    "callDevicesLeaveHere": "Fàg an gairm an seo",
+    "callDevicesOlderTitle": "Chan urrainn don inneal eile agad an gairm seo fhàgail leis fhèin.",
+    "callDevicesOlderBody": "Cuir crìoch air a' ghairm an sin, no fàg an seo e. Mar as trice tha sin a' ciallachadh gu bheil e a' ruith tionndadh nas sine, agus gun socraich ùrachadh seo.",
+    "callContinuingElsewhere": "Tha an gairm seo a' leantainn air an inneal eile agad."
 }

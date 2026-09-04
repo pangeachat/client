@@ -10640,5 +10640,17 @@
     "showMoreOptionsHint": "rodyti daugiau parinkčių",
     "onboardingStepOfTotal": "{step} iš {total} žingsnio",
     "addKeyboardDialogTitle": "Pridėkite savo tikslinės kalbos klaviatūrą",
-    "enableAutocorrectPopupPathIntro": "Norėdami pridėti, eikite į:"
+    "enableAutocorrectPopupPathIntro": "Norėdami pridėti, eikite į:",
+    "enableAutocorrectPopupTitle": "Pridėkite savo tikslios kalbos klaviatūrą, eikite į:",
+    "@enableAutocorrectPopupTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "callDevicesTitle": "Šis skambutis atidarytas dviejuose jūsų įrenginiuose.",
+    "callDevicesBody": "Pasirinkite, kurį norite tęsti. Kol to nepadarysite, nė vienas nesiųs jūsų mikrofono ar kameros.",
+    "callDevicesUseThis": "Naudoti šį įrenginį",
+    "callDevicesLeaveHere": "Palikti skambutį čia",
+    "callDevicesOlderTitle": "Kitas jūsų įrenginys negali pats išeiti iš šio skambučio.",
+    "callDevicesOlderBody": "Baigti skambutį ten arba palikti jį čia. Tai paprastai reiškia, kad jame veikia senesnė versija, ir atnaujinus tai bus ištaisyta.",
+    "callContinuingElsewhere": "Šis skambutis tęsiamas kitame jūsų įrenginyje."
 }

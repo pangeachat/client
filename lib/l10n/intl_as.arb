@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "অধিক বিকল্প দেখুৱাওক",
     "onboardingStepOfTotal": "{total}টাৰ ভিতৰত {step} নং খাপ",
     "addKeyboardDialogTitle": "আপোনাৰ লক্ষ্য ভাষাৰ কিব'ৰ্ড যোগ কৰক",
-    "enableAutocorrectPopupPathIntro": "এটা যোগ কৰিবলৈ, ইয়ালৈ যাওক:"
+    "enableAutocorrectPopupPathIntro": "এটা যোগ কৰিবলৈ, ইয়ালৈ যাওক:",
+    "enableAutocorrectPopupTitle": "তলত দিয়া ধৰণে আপোনাৰ লক্ষ্য ভাষাৰ কী-ব'ৰ্ড যোগ কৰক:",
+    "callDevicesTitle": "এই কলটো আপোনাৰ দুটা ডিভাইচত খোলা আছে।",
+    "callDevicesBody": "এটা বাছনি কৰক যাৰ সৈতে আপুনি আগবাঢ়ি যাব। যেতিয়ালৈকে আপুনি নকৰে, দুয়োটা ডিভাইচে আপোনাৰ মাইক্ৰ'ফোন বা কেমেৰা প্ৰেৰণ নকৰে।",
+    "callDevicesUseThis": "এই ডিভাইচ ব্যৱহাৰ কৰক",
+    "callDevicesLeaveHere": "কলটো ইয়াতে এৰি দিয়ক",
+    "callDevicesOlderTitle": "আপোনাৰ আন ডিভাইচটোৱে নিজে এই কলটো এৰি যাব নোৱাৰে।",
+    "callDevicesOlderBody": "কলটো তাতে শেষ কৰক, বা ইয়াত এৰি দিয়ক। ইয়াৰ অৰ্থ সাধাৰণতে এইটোৱেই যে ই এটা পুৰণি সংস্কৰণ চলাই আছে, আৰু ইয়াক আপডেট কৰিলে এই সমস্যাটো ঠিক হ'ব।",
+    "callContinuingElsewhere": "এই কলটো আপোনাৰ আন ডিভাইচত চলি আছে।"
 }

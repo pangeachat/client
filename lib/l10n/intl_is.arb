@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "sýna fleiri valkosti",
     "onboardingStepOfTotal": "Skref {step} af {total}",
     "addKeyboardDialogTitle": "Bættu við lyklaborði fyrir markmálið þitt",
-    "enableAutocorrectPopupPathIntro": "Til að bæta við einu, farðu í:"
+    "enableAutocorrectPopupPathIntro": "Til að bæta við einu, farðu í:",
+    "enableAutocorrectPopupTitle": "Bættu við lyklaborði fyrir markmálið þitt með því að fara í:",
+    "callDevicesTitle": "Þetta símtal er opið á tveimur tækjunum þínum.",
+    "callDevicesBody": "Veldu það sem þú vilt halda áfram með. Þar til þú gerir það sendir hvorugt hljóðnema eða myndavél.",
+    "callDevicesUseThis": "Nota þetta tæki",
+    "callDevicesLeaveHere": "Yfirgefa símtalið hér",
+    "callDevicesOlderTitle": "Hitt tækið þitt getur ekki yfirgefið þetta símtal sjálft.",
+    "callDevicesOlderBody": "Endaðu símtalið þar, eða yfirgefðu það hér. Það þýðir venjulega að það er að keyra eldri útgáfu og uppfærsla mun laga þetta.",
+    "callContinuingElsewhere": "Þetta símtal heldur áfram á hinu tækinu þínu."
 }

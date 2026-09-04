@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "plures optiones ostende",
     "onboardingStepOfTotal": "Gradus {step} de {total}",
     "addKeyboardDialogTitle": "Adde clavile linguae tuae",
-    "enableAutocorrectPopupPathIntro": "Ad addendum, i ad:"
+    "enableAutocorrectPopupPathIntro": "Ad addendum, i ad:",
+    "enableAutocorrectPopupTitle": "Claviaturam linguae tuae addere, vade ad:",
+    "callDevicesTitle": "Hoc colloquium in duobus tuis instrumentis apertum est.",
+    "callDevicesBody": "Elige quo pergere velis. Donec id feceris, neutrum microphonum aut cameram tuam mittit.",
+    "callDevicesUseThis": "Hoc instrumento utere",
+    "callDevicesLeaveHere": "Colloquium hic relinque",
+    "callDevicesOlderTitle": "Alterum instrumentum tuum hoc colloquium per se relinquere non potest.",
+    "callDevicesOlderBody": "Colloquium ibi finias, aut hic relinquas. Hoc plerumque significat versionem vetustiorem currit, et eam renovando hoc corrigetur.",
+    "callContinuingElsewhere": "Hoc colloquium in altero instrumento tuo pergit."
 }

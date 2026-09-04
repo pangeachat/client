@@ -10591,5 +10591,17 @@
     "showMoreOptionsHint": "afișează mai multe opțiuni",
     "onboardingStepOfTotal": "Pasul {step} din {total}",
     "addKeyboardDialogTitle": "Adaugă tastatura pentru limba țintă",
-    "enableAutocorrectPopupPathIntro": "Pentru a adăuga una, mergi la:"
+    "enableAutocorrectPopupPathIntro": "Pentru a adăuga una, mergi la:",
+    "enableAutocorrectPopupTitle": "Adaugă tastatura limbii tale țintă accesând:",
+    "@enableAutocorrectPopupTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "callDevicesTitle": "Acest apel este deschis pe două dintre dispozitivele tale.",
+    "callDevicesBody": "Alege-l pe cel cu care vrei să continui. Până atunci, niciunul nu trimite microfonul sau camera ta.",
+    "callDevicesUseThis": "Folosește acest dispozitiv",
+    "callDevicesLeaveHere": "Părăsește apelul aici",
+    "callDevicesOlderTitle": "Celălalt dispozitiv al tău nu poate părăsi acest apel singur.",
+    "callDevicesOlderBody": "Încheie apelul acolo sau părăsește-l aici. Asta înseamnă de obicei că rulează o versiune mai veche, iar actualizarea o va remedia.",
+    "callContinuingElsewhere": "Acest apel continuă pe celălalt dispozitiv al tău."
 }

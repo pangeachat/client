@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "qhia ntau txoj kev xaiv ntxiv",
     "onboardingStepOfTotal": "Kauv {step} ntawm {total}",
     "addKeyboardDialogTitle": "Ntxiv koj cov keyboard lus",
-    "enableAutocorrectPopupPathIntro": "Yuav ntxiv ib qho, mus rau:"
+    "enableAutocorrectPopupPathIntro": "Yuav ntxiv ib qho, mus rau:",
+    "enableAutocorrectPopupTitle": "Ntxiv koj hom lus keyboard los ntawm kev mus rau:",
+    "callDevicesTitle": "Koj tabtom hu xovtooj ntawm ob lub cuab yeej.",
+    "callDevicesBody": "Xaiv ib lub uas koj xav siv. Txog thaum koj xaiv, ob lub cuab yeej yuav tsis xa koj lub microphone lossis lub koob yees duab.",
+    "callDevicesUseThis": "Siv lub cuab yeej no",
+    "callDevicesLeaveHere": "Tso tseg qhov kev hu xovtooj ntawm no",
+    "callDevicesOlderTitle": "Koj lub cuab yeej tsis tuaj yeem tawm ntawm qhov kev hu xovtooj no ntawm nws tus kheej.",
+    "callDevicesOlderBody": "Xaus qhov kev hu xovtooj ntawd, lossis tso tseg ntawm no. Qhov ntawd feem ntau txhais tau tias nws tabtom siv ib qho version qub, thiab hloov kho nws yuav daws qhov teeb meem no.",
+    "callContinuingElsewhere": "Qhov kev hu xovtooj no tabtom txuas ntxiv ntawm koj lub cuab yeej."
 }

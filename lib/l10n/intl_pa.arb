@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "ਹੋਰ ਵਿਕਲਪ ਦਿਖਾਓ",
     "onboardingStepOfTotal": "{total} ਵਿੱਚੋਂ {step} ਕਦਮ",
     "addKeyboardDialogTitle": "ਆਪਣੀ ਨਿਸ਼ਾਨਾ ਭਾਸ਼ਾ ਦਾ ਕੀਬੋਰਡ ਸ਼ਾਮਲ ਕਰੋ",
-    "enableAutocorrectPopupPathIntro": "ਇੱਕ ਸ਼ਾਮਲ ਕਰਨ ਲਈ, ਇੱਥੇ ਜਾਓ:"
+    "enableAutocorrectPopupPathIntro": "ਇੱਕ ਸ਼ਾਮਲ ਕਰਨ ਲਈ, ਇੱਥੇ ਜਾਓ:",
+    "enableAutocorrectPopupTitle": "ਇੱਥੇ ਜਾ ਕੇ ਆਪਣੀ ਟੀਚਾ ਭਾਸ਼ਾ ਦਾ ਕੀਬੋਰਡ ਸ਼ਾਮਲ ਕਰੋ:",
+    "callDevicesTitle": "ਇਹ ਕਾਲ ਤੁਹਾਡੀਆਂ ਦੋ ਡਿਵਾਈਸਾਂ 'ਤੇ ਖੁੱਲ੍ਹੀ ਹੈ।",
+    "callDevicesBody": "ਉਹ ਚੁਣੋ ਜਿਸ ਨਾਲ ਤੁਸੀਂ ਜਾਰੀ ਰੱਖਣਾ ਚਾਹੁੰਦੇ ਹੋ। ਜਦੋਂ ਤੱਕ ਤੁਸੀਂ ਅਜਿਹਾ ਨਹੀਂ ਕਰਦੇ, ਕੋਈ ਵੀ ਤੁਹਾਡਾ ਮਾਈਕ੍ਰੋਫੋਨ ਜਾਂ ਕੈਮਰਾ ਨਹੀਂ ਭੇਜ ਰਿਹਾ ਹੈ।",
+    "callDevicesUseThis": "ਇਹ ਡਿਵਾਈਸ ਵਰਤੋ",
+    "callDevicesLeaveHere": "ਕਾਲ ਇੱਥੇ ਛੱਡੋ",
+    "callDevicesOlderTitle": "ਤੁਹਾਡੀ ਦੂਜੀ ਡਿਵਾਈਸ ਆਪਣੇ ਆਪ ਇਸ ਕਾਲ ਨੂੰ ਛੱਡ ਨਹੀਂ ਸਕਦੀ।",
+    "callDevicesOlderBody": "ਕਾਲ ਉੱਥੇ ਖਤਮ ਕਰੋ, ਜਾਂ ਇਸਨੂੰ ਇੱਥੇ ਛੱਡੋ। ਇਸਦਾ ਆਮ ਤੌਰ 'ਤੇ ਮਤਲਬ ਹੈ ਕਿ ਇਹ ਇੱਕ ਪੁਰਾਣਾ ਸੰਸਕਰਣ ਚਲਾ ਰਿਹਾ ਹੈ, ਅਤੇ ਇਸਨੂੰ ਅੱਪਡੇਟ ਕਰਨ ਨਾਲ ਇਹ ਠੀਕ ਹੋ ਜਾਵੇਗਾ।",
+    "callContinuingElsewhere": "ਇਹ ਕਾਲ ਤੁਹਾਡੀ ਦੂਜੀ ਡਿਵਾਈਸ 'ਤੇ ਜਾਰੀ ਹੈ।"
 }

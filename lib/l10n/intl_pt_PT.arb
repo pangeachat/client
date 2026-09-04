@@ -10776,5 +10776,17 @@
     "showMoreOptionsHint": "mostrar mais opções",
     "onboardingStepOfTotal": "Passo {step} de {total}",
     "addKeyboardDialogTitle": "Adicione o teclado do seu idioma-alvo",
-    "enableAutocorrectPopupPathIntro": "Para adicionar um, vá a:"
+    "enableAutocorrectPopupPathIntro": "Para adicionar um, vá a:",
+    "enableAutocorrectPopupTitle": "Adicione o teclado do seu idioma de destino indo para:",
+    "@enableAutocorrectPopupTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "callDevicesTitle": "Esta chamada está aberta em dois dos seus dispositivos.",
+    "callDevicesBody": "Escolha um para continuar. Até o fazer, nenhum está a enviar o seu microfone ou câmara.",
+    "callDevicesUseThis": "Usar este dispositivo",
+    "callDevicesLeaveHere": "Sair da chamada aqui",
+    "callDevicesOlderTitle": "O seu outro dispositivo não consegue sair desta chamada sozinho.",
+    "callDevicesOlderBody": "Termine a chamada lá, ou saia daqui. Isso geralmente significa que está a executar uma versão mais antiga, e atualizá-la irá resolver isto.",
+    "callContinuingElsewhere": "Esta chamada está a continuar no seu outro dispositivo."
 }

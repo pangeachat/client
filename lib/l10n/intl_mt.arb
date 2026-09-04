@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "uri aktar għażliet",
     "onboardingStepOfTotal": "Pass {step} minn {total}",
     "addKeyboardDialogTitle": "Żid it-tastiera tal-lingwa fil-mira tiegħek",
-    "enableAutocorrectPopupPathIntro": "Biex iżżid waħda, mur fuq:"
+    "enableAutocorrectPopupPathIntro": "Biex iżżid waħda, mur fuq:",
+    "enableAutocorrectPopupTitle": "Żid it-tastiera tal-lingwa fil-mira tiegħek billi tmur fuq:",
+    "callDevicesTitle": "Din is-sejħa hija miftuħa fuq tnejn mill-apparati tiegħek.",
+    "callDevicesBody": "Agħżel dik li trid tkompli biha. Sakemm tagħmel hekk, l-ebda waħda ma qed tibgħat il-mikrofonu jew il-kamera tiegħek.",
+    "callDevicesUseThis": "Uża dan l-apparat",
+    "callDevicesLeaveHere": "Ħalli s-sejħa hawn",
+    "callDevicesOlderTitle": "L-apparat l-ieħor tiegħek ma jistax iħalli din is-sejħa waħdu.",
+    "callDevicesOlderBody": "Ittermina s-sejħa hemmhekk, jew ħalliha hawn. Dan normalment ifisser li qed jaħdem verżjoni eqdem, u l-aġġornament tagħha se jirranġa dan.",
+    "callContinuingElsewhere": "Din is-sejħa qed tkompli fuq l-apparat l-ieħor tiegħek."
 }

@@ -10804,5 +10804,17 @@
     "showMoreOptionsHint": "montri pliajn opciojn",
     "onboardingStepOfTotal": "Paŝo {step} el {total}",
     "addKeyboardDialogTitle": "Aldonu klavaron por via cellingvo",
-    "enableAutocorrectPopupPathIntro": "Por aldoni tian, iru al:"
+    "enableAutocorrectPopupPathIntro": "Por aldoni tian, iru al:",
+    "enableAutocorrectPopupTitle": "Aldoni vian celan lingvon-klavaron per irado al:",
+    "@enableAutocorrectPopupTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "callDevicesTitle": "Ĉi tiu voko estas malfermita en du el viaj aparatoj.",
+    "callDevicesBody": "Elektu tiun, per kiu vi volas daŭrigi. Ĝis tiam, neniu sendas vian mikrofonon aŭ fotilon.",
+    "callDevicesUseThis": "Uzu ĉi tiun aparaton",
+    "callDevicesLeaveHere": "Forlasu la vokon ĉi tie",
+    "callDevicesOlderTitle": "Via alia aparato ne povas mem forlasi ĉi tiun vokon.",
+    "callDevicesOlderBody": "Finu la vokon tie, aŭ forlasu ĝin ĉi tie. Tio kutime signifas, ke ĝi uzas pli malnovan version, kaj ĝisdatigo solvos tion.",
+    "callContinuingElsewhere": "Ĉi tiu voko daŭras en via alia aparato."
 }

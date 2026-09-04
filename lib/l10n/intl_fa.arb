@@ -9947,5 +9947,17 @@
     "showMoreOptionsHint": "نمایش گزینه‌های بیشتر",
     "onboardingStepOfTotal": "مرحله {step} از {total}",
     "addKeyboardDialogTitle": "صفحه‌کلید زبان مقصد خود را اضافه کنید",
-    "enableAutocorrectPopupPathIntro": "برای افزودن، به اینجا بروید:"
+    "enableAutocorrectPopupPathIntro": "برای افزودن، به اینجا بروید:",
+    "enableAutocorrectPopupTitle": "با رفتن به تنظیمات صفحه کلید زبان هدف خود را اضافه کنید:",
+    "@enableAutocorrectPopupTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "callDevicesTitle": "این تماس در دو دستگاه شما باز است.",
+    "callDevicesBody": "یکی را برای ادامه انتخاب کنید. تا زمانی که این کار را نکنید، هیچ‌کدام میکروفون یا دوربین شما را ارسال نمی‌کنند.",
+    "callDevicesUseThis": "از این دستگاه استفاده کن",
+    "callDevicesLeaveHere": "تماس را اینجا ترک کن",
+    "callDevicesOlderTitle": "دستگاه دیگر شما نمی‌تواند این تماس را به تنهایی ترک کند.",
+    "callDevicesOlderBody": "تماس را در آنجا پایان دهید، یا آن را اینجا ترک کنید. این معمولاً به این معنی است که نسخه قدیمی‌تری را اجرا می‌کند و به‌روزرسانی آن این مشکل را برطرف خواهد کرد.",
+    "callContinuingElsewhere": "این تماس در دستگاه دیگر شما ادامه دارد."
 }

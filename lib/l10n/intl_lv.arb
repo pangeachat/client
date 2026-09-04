@@ -9859,5 +9859,17 @@
     "showMoreOptionsHint": "rādīt vairāk opciju",
     "onboardingStepOfTotal": "Solis {step} no {total}",
     "addKeyboardDialogTitle": "Pievienojiet mērķa valodas tastatūru",
-    "enableAutocorrectPopupPathIntro": "Lai pievienotu, dodieties uz:"
+    "enableAutocorrectPopupPathIntro": "Lai pievienotu, dodieties uz:",
+    "enableAutocorrectPopupTitle": "Pievienojiet savu mērķvalodas tastatūru, dodoties uz:",
+    "@enableAutocorrectPopupTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "callDevicesTitle": "Šis zvans ir atvērts divās jūsu ierīcēs.",
+    "callDevicesBody": "Izvēlieties, kuru izmantot. Kamēr to neizdarīsiet, neviena ierīce nesūtīs jūsu mikrofonu vai kameru.",
+    "callDevicesUseThis": "Izmantot šo ierīci",
+    "callDevicesLeaveHere": "Atstāt zvanu šeit",
+    "callDevicesOlderTitle": "Jūsu cita ierīce nevar pati atstāt šo zvanu.",
+    "callDevicesOlderBody": "Beidziet zvanu tur vai atstājiet to šeit. Tas parasti nozīmē, ka tajā darbojas vecāka versija, un atjaunināšana to novērsīs.",
+    "callContinuingElsewhere": "Šis zvans turpinās jūsu citā ierīcē."
 }

@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "покажи повеќе опции",
     "onboardingStepOfTotal": "Чекор {step} од {total}",
     "addKeyboardDialogTitle": "Додадете тастатура за целниот јазик",
-    "enableAutocorrectPopupPathIntro": "За да додадете, одете на:"
+    "enableAutocorrectPopupPathIntro": "За да додадете, одете на:",
+    "enableAutocorrectPopupTitle": "Додадете ја тастатурата на целниот јазик со одење на:",
+    "callDevicesTitle": "Овој повик е отворен на два од вашите уреди.",
+    "callDevicesBody": "Изберете го оној со кој ќе продолжите. Додека не го направите тоа, ниту еден не го испраќа вашиот микрофон или камера.",
+    "callDevicesUseThis": "Користи го овој уред",
+    "callDevicesLeaveHere": "Напушти го повикот овде",
+    "callDevicesOlderTitle": "Вашиот друг уред не може сам да го напушти овој повик.",
+    "callDevicesOlderBody": "Завршете го повикот таму или напуштете го овде. Тоа обично значи дека работи на постара верзија, а ажурирањето ќе го реши ова.",
+    "callContinuingElsewhere": "Овој повик продолжува на вашиот друг уред."
 }

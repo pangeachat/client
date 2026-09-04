@@ -5,6 +5,7 @@ import 'package:livekit_client/livekit_client.dart' as lk;
 import 'package:matrix/matrix.dart' as matrix;
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
+import 'package:fluffychat/routes/chat/calls/active_call.dart';
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
 import 'package:fluffychat/routes/chat/calls/call_record.dart';
@@ -143,6 +144,10 @@ class _FakeRoster extends CallRoster {
   _FakeRoster({required super.room, required super.myUserId});
 
   Set<String> identities = {};
+
+  /// identity -> published attributes, so a test can make one of this account's
+  /// other devices publish a pangea_chosen claim.
+  Map<String, Map<String, String>> attributes = {};
   bool connected = true;
 
   @override
@@ -153,6 +158,7 @@ class _FakeRoster extends CallRoster {
           identity: id,
           described: true,
           joinedAt: DateTime.utc(2026, 8, 29, 12),
+          attributes: attributes[id] ?? const {},
         ),
     ],
   );
@@ -254,8 +260,15 @@ class _FakeMedia extends CallMedia {
   Future<bool> setMicrophoneEnabled(bool on) async =>
       on ? micTakes : muteFindsAPublication;
 
+  /// Whether the camera was ever asked to OPEN (a restore/republish). The
+  /// ownership hold must never reopen it on a device that is leaving.
+  bool cameraOpened = false;
+
   @override
-  Future<bool> setCameraEnabled(bool on) async => on && cameraTakes;
+  Future<bool> setCameraEnabled(bool on) async {
+    if (on) cameraOpened = true;
+    return on && cameraTakes;
+  }
 
   @override
   Future<void> disconnect() async {}
@@ -2044,5 +2057,226 @@ void main() {
         expect(b.caller, '@a:s');
       },
     );
+  });
+  group(
+    'two devices, one call -- a leave that did not carry on writes nothing',
+    () {
+      Future<(_RecordingRoom, int Function(), CallSession)>
+      upThenSiblingClaims() async {
+        final client = await _bareClient();
+        final room = _RecordingRoom(id: '!r:server', client: client);
+        final media = _FakeMedia();
+        var analyticsCalls = 0;
+        final session = CallSession.start(
+          room: room,
+          video: false,
+          callService: _FakeCalls(client),
+          transcribe: (request) async =>
+              SpeechToTextResponseModel(results: const []),
+          userL1: 'en',
+          userL2: 'es',
+          analytics: (eventId, uses, language) async => analyticsCalls++,
+          onReleased: (_) {},
+          callerMembershipEventId: r'$caller-membership',
+          mediaOverride: media,
+          captureOverride: CallCaptureService(sink: _NullSink()),
+        );
+        await pumpEventQueue();
+        // One of THIS account's other devices publishes a claim: this device is
+        // chosen against and leaves as MOVED.
+        final roster = media.fakeRoster!;
+        final sib = '${client.userID}:SIBLINGDEV';
+        roster.identities = {sib};
+        roster.attributes = {
+          sib: {CallRoster.chosenAttribute: 'yes'},
+        };
+        roster.recompute();
+        await pumpEventQueue();
+        return (room, () => analyticsCalls, session);
+      }
+
+      test('a moved leave writes no card, no half, and no analytics', () async {
+        final (room, analytics, session) = await upThenSiblingClaims();
+        expect(
+          session.call.outcome,
+          CallOutcome.movedToOtherDevice,
+          reason: 'a sibling claim is positive evidence the call moved',
+        );
+        expect(
+          room.cards,
+          isEmpty,
+          reason: 'a device that did not carry on leaves no card',
+        );
+        expect(room.sent, isEmpty, reason: 'nor a transcript half');
+        expect(analytics(), 0, reason: 'nor any analytics (doc:236)');
+      });
+
+      // The bug this pins: `_onCallChanged` correctly routes a non-carrying
+      // device away from `_finishRecording` (call_session.dart:669), but that
+      // is not the only caller. In production `_handover` schedules
+      // `onReleased` on a microtask (call_session.dart:1117) and
+      // `widgets/matrix.dart`'s `onReleased` always calls `session.dispose()`
+      // -- and `dispose` used to call `_finishRecording` UNCONDITIONALLY,
+      // which still writes because `_finish` never latches
+      // `_recordingFinished`. So the card/half/analytics guard above passed
+      // even while the SAME session, moments later, wrote them all anyway.
+      test(
+        'a moved leave STILL writes nothing once the session is disposed',
+        () async {
+          final (room, analytics, session) = await upThenSiblingClaims();
+          session.dispose();
+          await pumpEventQueue();
+          expect(
+            room.cards,
+            isEmpty,
+            reason:
+                'a device that did not carry on leaves no card, even from '
+                'dispose()',
+          );
+          expect(
+            room.sent,
+            isEmpty,
+            reason: 'nor a transcript half, even from dispose() (doc:236)',
+          );
+          expect(
+            analytics(),
+            0,
+            reason: 'nor any analytics, even from dispose() (doc:236)',
+          );
+        },
+      );
+
+      // The second way of not carrying on (doc:236): nobody has chosen yet.
+      // Reaching the ACTUAL 20s give-up timer needs real wall-clock time this
+      // suite has no seam to fake, but the defect lives entirely downstream
+      // of `carriedOn` being false -- how it got there does not matter to
+      // `_finishRecording`. A device the ownership arbiter is holding, torn
+      // down (logout, app teardown) before the ambiguity ever resolves, is
+      // the same "ended while held, nobody chose" shape the timer itself
+      // would eventually produce, reached without waiting for it.
+      test('a device still held -- nobody has chosen -- writes nothing if torn '
+          'down before it resolves', () async {
+        final client = await _bareClient();
+        final room = _RecordingRoom(id: '!r:server', client: client);
+        final media = _FakeMedia();
+        var analyticsCalls = 0;
+        final session = CallSession.start(
+          room: room,
+          video: false,
+          callService: _FakeCalls(client),
+          transcribe: (request) async =>
+              SpeechToTextResponseModel(results: const []),
+          userL1: 'en',
+          userL2: 'es',
+          analytics: (eventId, uses, language) async => analyticsCalls++,
+          onReleased: (_) {},
+          callerMembershipEventId: r'$caller-membership',
+          mediaOverride: media,
+          captureOverride: CallCaptureService(sink: _NullSink()),
+        );
+        await pumpEventQueue();
+        // A sibling is present and PARTICIPATING -- it has published its
+        // unconditional `no` -- so this is the ordinary choice prompt, not
+        // the older-version one, and neither device has claimed anything.
+        final roster = media.fakeRoster!;
+        final sib = '${client.userID}:SIBLINGDEV';
+        roster.identities = {sib};
+        roster.attributes = {
+          sib: {CallRoster.chosenAttribute: 'no'},
+        };
+        roster.recompute();
+        await pumpEventQueue();
+        expect(
+          session.mediaHeld,
+          isTrue,
+          reason: 'a participating sibling holds this device',
+        );
+        expect(
+          session.call.carriedOn,
+          isFalse,
+          reason:
+              'held, and this device has not claimed -- it has not '
+              'carried on',
+        );
+        // The learner logs out, or the app tears down, before either
+        // device resolves the ambiguity by hand or by timer.
+        session.dispose();
+        await pumpEventQueue();
+        expect(
+          room.cards,
+          isEmpty,
+          reason: 'a device that never carried on leaves no card',
+        );
+        expect(room.sent, isEmpty, reason: 'nor a transcript half');
+        expect(
+          analyticsCalls,
+          0,
+          reason: 'nor any analytics -- it never carried on (doc:236)',
+        );
+      });
+    },
+  );
+  group('two devices -- the hold never reopens media on a leaving device', () {
+    // A VIDEO session (camera intent on), brought up and then HELD by a silent
+    // sibling. cameraOpened is reset after the hold so only a later reopen shows.
+    Future<(_FakeMedia, CallSession)> upVideoHeld() async {
+      final client = await _bareClient();
+      final room = _RecordingRoom(id: '!r:server', client: client);
+      final media = _FakeMedia();
+      final session = CallSession.start(
+        room: room,
+        video: true,
+        callService: _FakeCalls(client),
+        transcribe: (request) async =>
+            SpeechToTextResponseModel(results: const []),
+        userL1: 'en',
+        userL2: 'es',
+        analytics: (eventId, uses, language) async {},
+        onReleased: (_) {},
+        callerMembershipEventId: r'$caller-membership',
+        mediaOverride: media,
+        captureOverride: CallCaptureService(sink: _NullSink()),
+      );
+      await pumpEventQueue();
+      final roster = media.fakeRoster!;
+      roster.identities = {'${roster.myUserId}:SIBLINGDEV'};
+      roster.attributes = {'${roster.myUserId}:SIBLINGDEV': const {}};
+      roster.recompute();
+      await pumpEventQueue();
+      expect(session.mediaHeld, isTrue, reason: 'a sibling holds this device');
+      media.cameraOpened = false;
+      return (media, session);
+    }
+
+    test('a MOVED leave does not reopen the camera during teardown', () async {
+      final (media, session) = await upVideoHeld();
+      final roster = media.fakeRoster!;
+      // The sibling claims: this device is chosen against and leaves as MOVED.
+      roster.attributes = {
+        '${roster.myUserId}:SIBLINGDEV': {CallRoster.chosenAttribute: 'yes'},
+      };
+      roster.recompute();
+      await pumpEventQueue();
+      expect(session.call.outcome, CallOutcome.movedToOtherDevice);
+      expect(
+        media.cameraOpened,
+        isFalse,
+        reason: 'a device on its way out must not republish its camera',
+      );
+    });
+
+    test('the SURVIVING device restores the camera on resume', () async {
+      final (media, session) = await upVideoHeld();
+      final roster = media.fakeRoster!;
+      // The sibling leaves: this device is the survivor and resumes.
+      roster.identities = {};
+      roster.recompute();
+      await pumpEventQueue();
+      expect(
+        media.cameraOpened,
+        isTrue,
+        reason: 'the survivor restores the learner camera intent',
+      );
+    });
   });
 }

@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "бусад сонголтыг харах",
     "onboardingStepOfTotal": "Нийт {total}-ээс {step}-р алхам",
     "addKeyboardDialogTitle": "Хэлнийхээ гарыг нэмэх",
-    "enableAutocorrectPopupPathIntro": "Нэмэхийн тулд дараах руу орно уу:"
+    "enableAutocorrectPopupPathIntro": "Нэмэхийн тулд дараах руу орно уу:",
+    "enableAutocorrectPopupTitle": "Дараах байдлаар зорилтот хэлнийхээ гарны тохиргоог нэмнэ үү:",
+    "callDevicesTitle": "Энэ дуудлага таны хоёр төхөөрөмж дээр нээлттэй байна.",
+    "callDevicesBody": "Үргэлжлүүлэх төхөөрөмжөө сонгоно уу. Таныг сонгох хүртэл аль нь ч микрофон эсвэл камераа илгээхгүй.",
+    "callDevicesUseThis": "Энэ төхөөрөмжийг ашиглах",
+    "callDevicesLeaveHere": "Дуудлагыг энд орхих",
+    "callDevicesOlderTitle": "Таны нөгөө төхөөрөмж энэ дуудлагаас өөрөө гарч чадахгүй байна.",
+    "callDevicesOlderBody": "Дуудлагыг тэнд дуусгах эсвэл энд орхих. Энэ нь ихэвчлэн хуучин хувилбар ашиглаж байгааг илтгэдэг бөгөөд шинэчлэх нь үүнийг засна.",
+    "callContinuingElsewhere": "Энэ дуудлага таны нөгөө төхөөрөмж дээр үргэлжилж байна."
 }

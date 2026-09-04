@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "bonisa iinketho ezininzi",
     "onboardingStepOfTotal": "Inyathelo {step} kwi-{total}",
     "addKeyboardDialogTitle": "Yongeza ikhibhodi yolwimi ekujoliswe kulo",
-    "enableAutocorrectPopupPathIntro": "Ukuyongeza, yiya ku:"
+    "enableAutocorrectPopupPathIntro": "Ukuyongeza, yiya ku:",
+    "enableAutocorrectPopupTitle": "Yongeza ikhibhodi yolwimi lwakho olujoliswe kulo ngokuya ku:",
+    "callDevicesTitle": "Olu lwabizo luvuliwe kwizixhobo zakho ezibini.",
+    "callDevicesBody": "Khetha esinye oza kuqhubeka ngaso. Ude wenze oko, akukho nasinye esithumela imakrofoni okanye ikhamera yakho.",
+    "callDevicesUseThis": "Sebenzisa esi sixhobo",
+    "callDevicesLeaveHere": "Shiya olu lwabizo apha",
+    "callDevicesOlderTitle": "Esinye isixhobo sakho asinakushiya olu lwabizo ngokwaso.",
+    "callDevicesOlderBody": "Phelisa olu lwabizo apho, okanye ulushiye apha. Oko kuthetha ukuba lusebenzisa inguqulelo endala, kwaye ukuyihlaziya kuya kulungisa oku.",
+    "callContinuingElsewhere": "Olu lwabizo luyaqhubeka kwesinye isixhobo sakho."
 }

@@ -7155,5 +7155,13 @@
     "showMoreOptionsHint": "hiện thêm tùy chọn",
     "onboardingStepOfTotal": "Bước {step} trên {total}",
     "addKeyboardDialogTitle": "Thêm bàn phím ngôn ngữ bạn muốn học",
-    "enableAutocorrectPopupPathIntro": "Để thêm, hãy đi tới:"
+    "enableAutocorrectPopupPathIntro": "Để thêm, hãy đi tới:",
+    "enableAutocorrectPopupTitle": "Thêm bàn phím ngôn ngữ mục tiêu của bạn bằng cách vào:",
+    "callDevicesTitle": "Cuộc gọi này đang mở trên hai thiết bị của bạn.",
+    "callDevicesBody": "Chọn một thiết bị để tiếp tục. Cho đến khi bạn làm vậy, cả hai thiết bị đều không gửi micrô hoặc máy ảnh của bạn.",
+    "callDevicesUseThis": "Sử dụng thiết bị này",
+    "callDevicesLeaveHere": "Rời cuộc gọi tại đây",
+    "callDevicesOlderTitle": "Thiết bị khác của bạn không thể tự rời khỏi cuộc gọi này.",
+    "callDevicesOlderBody": "Kết thúc cuộc gọi ở đó hoặc rời khỏi đây. Điều đó thường có nghĩa là thiết bị đang chạy phiên bản cũ hơn và việc cập nhật sẽ khắc phục điều này.",
+    "callContinuingElsewhere": "Cuộc gọi này đang tiếp tục trên thiết bị khác của bạn."
 }

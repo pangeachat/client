@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "onetsani zosankha zambiri",
     "onboardingStepOfTotal": "Gawo {step} pa {total}",
     "addKeyboardDialogTitle": "Onjezani kiyibodi ya chilankhulo chanu",
-    "enableAutocorrectPopupPathIntro": "Kuti muwonjezere, pitani ku:"
+    "enableAutocorrectPopupPathIntro": "Kuti muwonjezere, pitani ku:",
+    "enableAutocorrectPopupTitle": "Onjezani kiyibodi yanu ya chilankhulo chanu chofuna kuphunzira popita ku:",
+    "callDevicesTitle": "Kuyitana kumeneku kukuchitika pa zipangizo zanu ziwiri.",
+    "callDevicesBody": "Sankhani chimodzi choti mupitirize nacho. Mpaka mutachita zimenezo, palibe chimene chikukutumizirani maikolofoni kapena kamera yanu.",
+    "callDevicesUseThis": "Gwiritsani ntchito chipangizo ichi",
+    "callDevicesLeaveHere": "Siyani kuyitana kuno",
+    "callDevicesOlderTitle": "Chipangizo chanu china sichingasiye kuyitana kumeneku chokha.",
+    "callDevicesOlderBody": "Thetsani kuyitana kumeneko, kapena chisiye kuno. Izi nthawi zambiri zikutanthauza kuti chikugwiritsa ntchito mtundu wakale, ndipo kukonza kumene kudzakhazikitsa izi.",
+    "callContinuingElsewhere": "Kuyitana kumeneku kukupitirira pa chipangizo chanu china."
 }

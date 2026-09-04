@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "ցուցադրել այլ ընտրանքներ",
     "onboardingStepOfTotal": "Քայլ {step}-ը {total}-ից",
     "addKeyboardDialogTitle": "Ավելացրեք ձեր թիրախային լեզվի ստեղնաշարը",
-    "enableAutocorrectPopupPathIntro": "Ավելացնելու համար անցեք՝"
+    "enableAutocorrectPopupPathIntro": "Ավելացնելու համար անցեք՝",
+    "enableAutocorrectPopupTitle": "Ավելացրեք ձեր թիրախային լեզվի ստեղնաշարը՝ անցնելով՝",
+    "callDevicesTitle": "Այս զանգը բաց է ձեր երկու սարքերում։",
+    "callDevicesBody": "Ընտրեք մեկը՝ շարունակելու համար։ Մինչև դա անեք, ոչ մեկը չի ուղարկում ձեր խոսափողը կամ տեսախցիկը։",
+    "callDevicesUseThis": "Օգտագործել այս սարքը",
+    "callDevicesLeaveHere": "Թողնել զանգն այստեղ",
+    "callDevicesOlderTitle": "Ձեր մյուս սարքը չի կարող ինքնուրույն դուրս գալ այս զանգից։",
+    "callDevicesOlderBody": "Ավարտեք զանգն այնտեղ, կամ թողեք այն այստեղ։ Սա սովորաբար նշանակում է, որ այն աշխատում է հին տարբերակով, և դրա թարմացումը կշտկի սա։",
+    "callContinuingElsewhere": "Այս զանգը շարունակվում է ձեր մյուս սարքի վրա։"
 }
