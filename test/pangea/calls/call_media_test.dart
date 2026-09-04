@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:livekit_client/livekit_client.dart';
 
@@ -89,6 +91,61 @@ class RealStepsComingUp extends CallMedia {
     steps.add('disconnect');
     await super.disconnect();
   }
+}
+
+/// Lets a test control exactly when each microphone publish call resolves,
+/// and in what order -- the only way to build the specific race
+/// `CallMedia._enableCapture`'s generation guard exists to close: a hold's
+/// close and the resume that follows it both reach the SDK, and nothing
+/// before that guard could make the FIRST one's own call resolve after the
+/// SECOND's, since a real `LocalParticipant` cannot be made to answer to
+/// order.
+class ManualPublishMedia extends CallMedia {
+  ManualPublishMedia({required super.room});
+
+  final _micCompleters = <Completer<bool>>[];
+
+  /// Every `on` this was asked to publish, in the order it was asked, so a
+  /// test can see the fix's own corrective call happen and what it asked for.
+  final requestedMic = <bool>[];
+
+  /// What the SDK would actually be left showing, updated in COMPLETION
+  /// order -- which is the only thing a real platform's own internal state
+  /// ever reflects, whichever call was ISSUED first.
+  bool? micState;
+
+  @override
+  Future<bool> publishMicrophone(LocalParticipant participant, bool on) {
+    requestedMic.add(on);
+    // EVERY call is held open until a test resolves it by hand -- including
+    // a corrective one _enableCapture's own loop makes, which needs the same
+    // control as the original two: a THIRD transition racing a correction
+    // is exactly the shape of the gap a cold review found in a one-shot
+    // (non-looping) version of the fix.
+    final completer = Completer<bool>();
+    _micCompleters.add(completer);
+    return completer.future.then((published) {
+      if (published) micState = on;
+      return published;
+    });
+  }
+
+  /// Resolves the [n]th publish call (0-indexed, issue order) as though the
+  /// SDK reported [published].
+  void resolveMic(int n, {required bool published}) {
+    _micCompleters[n].complete(published);
+  }
+}
+
+/// A room with no local participant until a test says otherwise -- unlike
+/// `RoomWithParticipant`, which always answers a fixed one. Lets a test put
+/// a call in the exact state `_publishingAs`'s retry loop exists for: a
+/// device mid-connect, with nothing yet to publish through.
+class _RoomWithNoParticipantYet extends Room {
+  LocalParticipant? participant;
+
+  @override
+  LocalParticipant? get localParticipant => participant;
 }
 
 void main() {
@@ -1168,6 +1225,325 @@ void main() {
             reason: 'the stale join is what the discard would have fired on',
           );
         },
+      );
+    });
+  });
+  group('the held gate refuses opens, and wins any race with one', () {
+    // The real steps reach `setMicrophoneEnabled`, which hits a platform channel
+    // this suite has no binding for and THROWS. So a completed `false` is proof
+    // the gate returned before the publish; a throw would mean it did not.
+    test(
+      'an entry-time hold refuses the microphone open, publishing nothing',
+      () async {
+        final media = RealSteps(
+          room: RoomWithParticipant(await participantJoinedAt(1787734800)),
+        );
+        media.captureHeld = true;
+        expect(await media.mic(true), isFalse);
+      },
+    );
+
+    test('an entry-time hold refuses the camera open too', () async {
+      final media = RealSteps(
+        room: RoomWithParticipant(await participantJoinedAt(1787734800)),
+      );
+      media.captureHeld = true;
+      expect(await media.cam(true), isFalse);
+    });
+
+    test('a hold that lands MID-open still publishes nothing (TOCTOU)', () async {
+      // `enableMicrophone` suspends at `await _publishingAs`, so flipping the
+      // hold on the next synchronous line lands it after the acquire and before
+      // the publish -- exactly the window an entry-only check would miss. The
+      // re-check after the acquire must catch it and return before the publish,
+      // so no platform-channel throw escapes.
+      final media = RealSteps(
+        room: RoomWithParticipant(await participantJoinedAt(1787734800)),
+      );
+      media.captureHeld = false;
+      final open = media.mic(true);
+      media.captureHeld = true;
+      expect(await open, isFalse);
+    });
+
+    test('a hold that lands mid-open refuses the camera too', () async {
+      final media = RealSteps(
+        room: RoomWithParticipant(await participantJoinedAt(1787734800)),
+      );
+      media.captureHeld = false;
+      final open = media.cam(true);
+      media.captureHeld = true;
+      expect(await open, isFalse);
+    });
+
+    test('a hold never refuses a CLOSE', () async {
+      // Only opens are gated; closing must always be allowed, or a held device
+      // could never be muted in the first place.
+      final media = RealSteps(
+        room: RoomWithParticipant(await participantJoinedAt(1787734800)),
+      );
+      media.captureHeld = true;
+      expect(
+        await media.mic(false),
+        isFalse,
+      ); // false = nothing to stop, not refused
+    });
+  });
+
+  group('capture transitions -- the LATEST one wins the SDK, not whichever '
+      'resolves last', () {
+    // The hold's own close comment says close wins DURING a hold because it
+    // is re-asserted every held tick -- but resume is a ONE-TIME edge, never
+    // re-fired later, so a stale close from an EARLIER tick that is still in
+    // flight when the resume's open is issued has nothing else re-asserting
+    // over it. Without the generation guard in `_enableCapture`, whichever
+    // one's own SDK call happened to resolve last decided the microphone --
+    // not whichever was actually asked for last.
+    test("a hold's close that resolves AFTER the resume's open still ends up "
+        'unmuted', () async {
+      final participant = await participantJoinedAt(1787734800);
+      final media = ManualPublishMedia(room: RoomWithParticipant(participant));
+
+      // The hold closes the microphone -- its own SDK call is left
+      // hanging, deliberately, so it is the one that resolves LAST.
+      final closing = media.setMicrophoneEnabled(false);
+      // The resume that follows, before the close has settled at all.
+      final opening = media.setMicrophoneEnabled(true);
+      // Both calls suspend at `await _publishingAs` before they ever
+      // reach the SDK (see the TOCTOU test above) -- pumped once so both
+      // land on their own publish call and are the ones under test's
+      // control, rather than still queued behind that first await.
+      await pumpEventQueue();
+      expect(
+        media.requestedMic,
+        [false, true],
+        reason: 'both transitions reach the SDK -- nothing blocks either',
+      );
+
+      // The LATER transition's own SDK call is free to resolve FIRST.
+      media.resolveMic(1, published: true);
+      expect(await opening, isTrue, reason: 'the resume is the latest intent');
+      expect(media.micState, isTrue, reason: 'the resume has taken, for now');
+
+      // Only NOW does the STALE close's own call resolve.
+      media.resolveMic(0, published: true);
+      // The correction _enableCapture's loop makes on discovering it was
+      // superseded is itself one more publish call, held open exactly like
+      // the first two -- pumped once so it exists to be resolved.
+      await pumpEventQueue();
+      expect(
+        media.requestedMic,
+        [false, true, true],
+        reason:
+            'the correction is one more publish call, asking for what is '
+            'actually wanted',
+      );
+      media.resolveMic(2, published: true);
+      expect(
+        await closing,
+        isFalse,
+        reason: 'a superseded transition never reports success',
+      );
+
+      // The whole point: whichever call's own SDK op happened to land
+      // last, the microphone ends up matching the LATEST intent, not the
+      // stale one -- the stale close, discovering it was superseded,
+      // corrects the microphone rather than leaving it clobbered.
+      expect(
+        media.micState,
+        isTrue,
+        reason: 'the survivor is heard, not silently re-muted',
+      );
+    });
+
+    // A cold review found this gap in an earlier, non-looping version of the
+    // fix: the correction is itself a publish call that can be in flight
+    // when a STILL NEWER transition starts and even finishes, so a one-shot
+    // correction can land last and clobber that third transition exactly as
+    // the original close clobbered the open. Three in a row -- close, open,
+    // close -- makes it concrete: the middle one's correction to "open" must
+    // not survive the third transition's own "close" finishing first.
+    test("a correction that resolves AFTER a THIRD transition must not clobber "
+        'it either', () async {
+      final participant = await participantJoinedAt(1787734800);
+      final media = ManualPublishMedia(room: RoomWithParticipant(participant));
+
+      // A: close. Left hanging -- this is the one whose OWN correction
+      // will be made to resolve last, at the very end.
+      final a = media.setMicrophoneEnabled(false);
+      // B: open, before A settles.
+      final b = media.setMicrophoneEnabled(true);
+      await pumpEventQueue();
+      expect(media.requestedMic, [false, true]);
+
+      // B resolves. Not yet superseded by anything -- it reports success,
+      // and the microphone reads open.
+      media.resolveMic(1, published: true);
+      expect(await b, isTrue);
+      expect(media.micState, isTrue);
+
+      // A resolves next, discovers it was superseded by B, and starts its
+      // OWN correction to "open" -- held open rather than let it resolve
+      // yet, because C has to start and finish INSIDE that window.
+      media.resolveMic(0, published: true);
+      await pumpEventQueue();
+      expect(media.requestedMic, [
+        false,
+        true,
+        true,
+      ], reason: "A's correction, asking for what B wanted");
+
+      // C: a THIRD transition, a close, starts and resolves COMPLETELY
+      // while A's correction (index 2) is still in flight.
+      final c = media.setMicrophoneEnabled(false);
+      await pumpEventQueue();
+      expect(media.requestedMic, [false, true, true, false]);
+      media.resolveMic(3, published: true);
+      expect(await c, isTrue, reason: 'C is the latest intent now');
+      expect(
+        media.micState,
+        isFalse,
+        reason: 'C actually closed the microphone',
+      );
+
+      // Only NOW does A's stale correction (asking for "open") resolve.
+      // `a` itself is NOT awaited yet: the point of the fix is that this
+      // correction's own resolution does not end the loop -- it must
+      // discover ITSELF superseded (by C, not just by B) and correct
+      // again, so awaiting `a` here, before that second correction has
+      // even been resolved, would hang rather than prove anything.
+      media.resolveMic(2, published: true);
+      await pumpEventQueue();
+      expect(
+        media.requestedMic,
+        [false, true, true, false, false],
+        reason:
+            "A's first correction is itself superseded by C and corrects "
+            'again, back to closed, rather than stopping at one '
+            'correction',
+      );
+
+      // A's SECOND correction resolves. Only now can the loop converge.
+      media.resolveMic(4, published: true);
+      expect(
+        await a,
+        isFalse,
+        reason: 'A was superseded, first by B and then again by C',
+      );
+      expect(
+        media.micState,
+        isFalse,
+        reason:
+            'the microphone ends up matching C, the true latest intent -- '
+            "not stuck on A's one-shot correction to what B wanted",
+      );
+    });
+
+    // A SECOND cold review found this gap in the loop above once it started
+    // correcting in both directions: closing was always unguarded because
+    // closing was always safe, but generalising the correction means a
+    // CLOSE can now correct itself into an OPEN -- the one direction
+    // [connect] and [_setCapture] exist to guard -- and neither of those
+    // wraps a correction an unrelated transition's loop makes internally.
+    // Unguarded, a stale close's correction could republish the microphone
+    // on a device the call has already given back.
+    test('a correction never reopens the microphone once the device is '
+        'released', () async {
+      final participant = await participantJoinedAt(1787734800);
+      final media = ManualPublishMedia(room: RoomWithParticipant(participant));
+
+      // A: close. Left hanging.
+      final a = media.setMicrophoneEnabled(false);
+      // B: open, before A settles -- so A's eventual correction would
+      // otherwise ask for "open", exactly as in the test above.
+      final b = media.setMicrophoneEnabled(true);
+      await pumpEventQueue();
+      expect(media.requestedMic, [false, true]);
+
+      media.resolveMic(1, published: true);
+      expect(await b, isTrue);
+      expect(media.micState, isTrue);
+
+      // The call ends -- this device is released -- while A is still
+      // hanging. Nothing about the room being given back goes through
+      // `_enableCapture` at all, so this is the only way a real hangup
+      // reaches it.
+      await media.disconnect();
+
+      // Only now does A's stale close resolve. Superseded by B, exactly
+      // as in the test above -- but this time there is no correction to
+      // make, because a released device settles on closed rather than on
+      // whatever B last wanted.
+      media.resolveMic(0, published: true);
+      expect(await a, isFalse, reason: 'A was superseded by B');
+      expect(
+        media.requestedMic,
+        [false, true],
+        reason:
+            'no correction was ever issued -- a released device is never '
+            'corrected back open, whatever was last wanted',
+      );
+    });
+
+    // A THIRD cold review found this gap: a call that finds no participant
+    // yet (RoomWithParticipant cannot build one, since it always answers a
+    // fixed one -- this needs a room that starts with none) bails out
+    // BEFORE the generation stamp used to be written, so it never
+    // registered its own intent at all. A sibling still waiting in
+    // `_publishingAs`'s own retry loop would then find no newer generation
+    // once a participant finally arrived, and apply an intent the other
+    // side had already superseded.
+    test('a close that finds no participant yet still registers, so a slower '
+        'open cannot clobber it once one arrives', () async {
+      final participant = await participantJoinedAt(1787734800);
+      final room = _RoomWithNoParticipantYet();
+      final media = ManualPublishMedia(room: room);
+
+      // A: open, issued while there is no participant at all -- it sits
+      // in `_publishingAs`'s retry loop.
+      final a = media.setMicrophoneEnabled(true);
+      // B: close, issued moments later, ALSO finds no participant -- and
+      // must register its own intent regardless, since it never reaches
+      // its own publish call to do so any other way.
+      final b = media.setMicrophoneEnabled(false);
+      await pumpEventQueue();
+      expect(await b, isFalse, reason: 'nothing to close yet either');
+      expect(
+        media.requestedMic,
+        isEmpty,
+        reason: 'neither has a participant to publish through yet',
+      );
+
+      // The participant arrives inside A's retry window.
+      room.participant = participant;
+      // One real retry tick (100ms) so `_publishingAs` observes it.
+      await Future<void>.delayed(const Duration(milliseconds: 150));
+      await pumpEventQueue();
+      expect(
+        media.requestedMic,
+        [true],
+        reason:
+            "A finally reaches its own publish, asking for what IT "
+            'wanted',
+      );
+      media.resolveMic(0, published: true);
+      await pumpEventQueue();
+      expect(
+        media.requestedMic,
+        [true, false],
+        reason:
+            "A discovers B's intent superseded it and corrects to closed "
+            'rather than returning open',
+      );
+      media.resolveMic(1, published: true);
+
+      expect(await a, isFalse, reason: 'A was superseded by B');
+      expect(
+        media.micState,
+        isFalse,
+        reason:
+            'the microphone ends up matching B, the true latest '
+            'intent',
       );
     });
   });

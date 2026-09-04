@@ -10804,5 +10804,17 @@
     "showMoreOptionsHint": "pokaži več možnosti",
     "onboardingStepOfTotal": "Korak {step} od {total}",
     "addKeyboardDialogTitle": "Dodajte tipkovnico za ciljni jezik",
-    "enableAutocorrectPopupPathIntro": "Če jo želite dodati, pojdite na:"
+    "enableAutocorrectPopupPathIntro": "Če jo želite dodati, pojdite na:",
+    "enableAutocorrectPopupTitle": "Dodajte tipkovnico za ciljni jezik tako, da greste na:",
+    "@enableAutocorrectPopupTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "callDevicesTitle": "Ta klic je odprt na dveh vaših napravah.",
+    "callDevicesBody": "Izberite tisto, s katero želite nadaljevati. Dokler tega ne storite, nobena ne pošilja vašega mikrofona ali kamere.",
+    "callDevicesUseThis": "Uporabi to napravo",
+    "callDevicesLeaveHere": "Zapusti klic tukaj",
+    "callDevicesOlderTitle": "Vaša druga naprava ne more sama zapustiti tega klica.",
+    "callDevicesOlderBody": "Končajte klic tam ali ga zapustite tukaj. To običajno pomeni, da uporablja starejšo različico, in posodobitev bo to odpravila.",
+    "callContinuingElsewhere": "Ta klic se nadaljuje na vaši drugi napravi."
 }

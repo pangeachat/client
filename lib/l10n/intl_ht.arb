@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "montre plis opsyon",
     "onboardingStepOfTotal": "Etap {step} sou {total}",
     "addKeyboardDialogTitle": "Ajoute klavye lang sib ou a",
-    "enableAutocorrectPopupPathIntro": "Pou ajoute youn, ale nan:"
+    "enableAutocorrectPopupPathIntro": "Pou ajoute youn, ale nan:",
+    "enableAutocorrectPopupTitle": "Ajoute klavye lang sib ou a lè w ale nan:",
+    "callDevicesTitle": "Apèl sa a ouvè sou de nan aparèy ou yo.",
+    "callDevicesBody": "Chwazi youn pou kontinye. Jiskaske ou fè sa, okenn nan yo pa voye mikwofòn ou oswa kamera ou.",
+    "callDevicesUseThis": "Sèvi ak aparèy sa a",
+    "callDevicesLeaveHere": "Kite apèl la isit la",
+    "callDevicesOlderTitle": "Lòt aparèy ou an pa ka kite apèl sa a pou kont li.",
+    "callDevicesOlderBody": "Mete fen nan apèl la la, oswa kite l isit la. Sa anjeneral vle di li ap kouri yon vèsyon ki pi ansyen, epi mete ajou li pral ranje sa.",
+    "callContinuingElsewhere": "Apèl sa a ap kontinye sou lòt aparèy ou an."
 }

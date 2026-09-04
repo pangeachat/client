@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "whakaatu atu kōwhiringa",
     "onboardingStepOfTotal": "Hipanga {step} o {total}",
     "addKeyboardDialogTitle": "Tāpirihia te papapātuhi o tō reo whāinga",
-    "enableAutocorrectPopupPathIntro": "Hei tāpiri, haere ki:"
+    "enableAutocorrectPopupPathIntro": "Hei tāpiri, haere ki:",
+    "enableAutocorrectPopupTitle": "Tāpirihia tō papapātuhi reo whāinga mā te haere ki:",
+    "callDevicesTitle": "Kei te tuwhera tēnei waea i runga i ō pūrere e rua.",
+    "callDevicesBody": "Kōwhiria tētahi hei kawe tonu. Kia oti rā anō i a koe, kāore tētahi e tuku ana i tō hopuoro, i tō kāmera rānei.",
+    "callDevicesUseThis": "Whakamahia tēnei pūrere",
+    "callDevicesLeaveHere": "Waiho te waea ki konei",
+    "callDevicesOlderTitle": "Kāore e taea e tō pūrere atu te wehe i tēnei waea i a ia anō.",
+    "callDevicesOlderBody": "Whakamutua te waea ki reira, waiho rānei ki konei. Ko te tikanga he putanga tawhito tōna, ā, mā te whakahou ka whakatika i tēnei.",
+    "callContinuingElsewhere": "Kei te haere tonu tēnei waea i runga i tō pūrere atu."
 }

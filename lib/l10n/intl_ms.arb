@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "tunjukkan pilihan lain",
     "onboardingStepOfTotal": "Langkah {step} daripada {total}",
     "addKeyboardDialogTitle": "Tambah papan kekunci bahasa sasaran anda",
-    "enableAutocorrectPopupPathIntro": "Untuk menambah satu, pergi ke:"
+    "enableAutocorrectPopupPathIntro": "Untuk menambah satu, pergi ke:",
+    "enableAutocorrectPopupTitle": "Tambah papan kekunci bahasa sasaran anda dengan pergi ke:",
+    "callDevicesTitle": "Panggilan ini dibuka pada dua peranti anda.",
+    "callDevicesBody": "Pilih satu untuk meneruskan. Sehingga anda berbuat demikian, tiada satu pun yang menghantar mikrofon atau kamera anda.",
+    "callDevicesUseThis": "Gunakan peranti ini",
+    "callDevicesLeaveHere": "Tinggalkan panggilan di sini",
+    "callDevicesOlderTitle": "Peranti anda yang lain tidak boleh meninggalkan panggilan ini dengan sendirinya.",
+    "callDevicesOlderBody": "Tamatkan panggilan di sana, atau tinggalkan di sini. Ini biasanya bermakna ia menjalankan versi yang lebih lama, dan mengemas kini akan membetulkannya.",
+    "callContinuingElsewhere": "Panggilan ini diteruskan pada peranti anda yang lain."
 }

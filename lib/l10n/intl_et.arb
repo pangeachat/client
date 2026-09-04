@@ -9856,5 +9856,17 @@
     "showMoreOptionsHint": "näita rohkem valikuid",
     "onboardingStepOfTotal": "Samm {step} / {total}",
     "addKeyboardDialogTitle": "Lisa sihtkeele klaviatuur",
-    "enableAutocorrectPopupPathIntro": "Selle lisamiseks mine:"
+    "enableAutocorrectPopupPathIntro": "Selle lisamiseks mine:",
+    "enableAutocorrectPopupTitle": "Lisa oma sihtkeele klaviatuur, minnes aadressile:",
+    "@enableAutocorrectPopupTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "callDevicesTitle": "See kõne on avatud kahes sinu seadmes.",
+    "callDevicesBody": "Vali, millisega jätkata. Enne seda ei saada kumbki sinu mikrofoni ega kaamerat.",
+    "callDevicesUseThis": "Kasuta seda seadet",
+    "callDevicesLeaveHere": "Lahku kõnest siin",
+    "callDevicesOlderTitle": "Sinu teine seade ei saa sellest kõnest iseseisvalt lahkuda.",
+    "callDevicesOlderBody": "Lõpeta kõne seal või lahku sellest siin. See tähendab tavaliselt, et seal töötab vanem versioon ja selle uuendamine lahendab probleemi.",
+    "callContinuingElsewhere": "See kõne jätkub sinu teises seadmes."
 }

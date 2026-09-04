@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "bonisa izinketho eziningi",
     "onboardingStepOfTotal": "Isinyathelo {step} sokungu {total}",
     "addKeyboardDialogTitle": "Faka ikhibhodi yolimi olufunayo",
-    "enableAutocorrectPopupPathIntro": "Ukuze ungeze eyodwa, yiya ku:"
+    "enableAutocorrectPopupPathIntro": "Ukuze ungeze eyodwa, yiya ku:",
+    "enableAutocorrectPopupTitle": "Engeza ikhibhodi yolimi oluqondile ngokuya ku:",
+    "callDevicesTitle": "Le kholi ivuliwe kumadivayisi akho amabili.",
+    "callDevicesBody": "Khetha ozowuqhubeka nawo. Kuze kube wenza lokho, akukho okuthumela imakrofoni noma ikhamera yakho.",
+    "callDevicesUseThis": "Sebenzisa le divayisi",
+    "callDevicesLeaveHere": "Shiya ikholi lapha",
+    "callDevicesOlderTitle": "Enye idivayisi yakho ayikwazi ukushiya le kholi yodwa.",
+    "callDevicesOlderBody": "Qeda ikholi lapho, noma uyishiye lapha. Lokho kuvame ukusho ukuthi isebenzisa inguqulo endala, futhi ukuyibuyekeza kuzolungisa lokhu.",
+    "callContinuingElsewhere": "Le kholi iyaqhubeka kwenye idivayisi yakho."
 }

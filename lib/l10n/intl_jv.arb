@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "tampilake opsi liyane",
     "onboardingStepOfTotal": "Langkah {step} saka {total}",
     "addKeyboardDialogTitle": "Tambahake keyboard basa target sampeyan",
-    "enableAutocorrectPopupPathIntro": "Kanggo nambah, bukak:"
+    "enableAutocorrectPopupPathIntro": "Kanggo nambah, bukak:",
+    "enableAutocorrectPopupTitle": "Tambah keyboard basa target sampeyan kanthi pindhah menyang:",
+    "callDevicesTitle": "Telpon iki mbukak ing rong piranti sampeyan.",
+    "callDevicesBody": "Pilih salah siji kanggo nerusake. Nganti sampeyan milih, ora ana sing ngirim mikropon utawa kamera sampeyan.",
+    "callDevicesUseThis": "Gunakake piranti iki",
+    "callDevicesLeaveHere": "Mungkasi telpon ing kene",
+    "callDevicesOlderTitle": "Piranti liyane sampeyan ora bisa ninggalake telpon iki dhewe.",
+    "callDevicesOlderBody": "Mungkasi telpon ing kana, utawa ninggalake ing kene. Biasane tegese piranti kasebut nggunakake versi lawas, lan nganyari bakal ndandani iki.",
+    "callContinuingElsewhere": "Telpon iki terus ing piranti liyane sampeyan."
 }

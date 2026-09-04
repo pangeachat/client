@@ -9870,5 +9870,17 @@
     "showMoreOptionsHint": "taispeáin tuilleadh roghanna",
     "onboardingStepOfTotal": "Céim {step} de {total}",
     "addKeyboardDialogTitle": "Cuir méarchlár do sprioctheanga leis",
-    "enableAutocorrectPopupPathIntro": "Chun ceann a chur leis, téigh chuig:"
+    "enableAutocorrectPopupPathIntro": "Chun ceann a chur leis, téigh chuig:",
+    "enableAutocorrectPopupTitle": "Cuir do eochairfhocal teanga sprioc leis trí dul go:",
+    "@enableAutocorrectPopupTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "callDevicesTitle": "Tá an glao seo ar oscailt ar dhá cheann de do ghléasanna.",
+    "callDevicesBody": "Roghnaigh an ceann le leanúint ar aghaidh leis. Go dtí go ndéanann tú é sin, níl ceachtar acu ag seoladh do mhicreafóin nó do cheamara.",
+    "callDevicesUseThis": "Úsáid an gléas seo",
+    "callDevicesLeaveHere": "Fág an glao anseo",
+    "callDevicesOlderTitle": "Ní féidir le do ghléas eile an glao seo a fhágáil leis féin.",
+    "callDevicesOlderBody": "Cuir deireadh leis an nglao ansin, nó fág anseo é. De ghnáth ciallaíonn sé sin go bhfuil leagan níos sine á rith aige, agus socróidh nuashonrú é seo.",
+    "callContinuingElsewhere": "Tá an glao seo ag leanúint ar do ghléas eile."
 }

@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "نور انتخابونه وښایاست",
     "onboardingStepOfTotal": "{total} څخه {step} ګام",
     "addKeyboardDialogTitle": "د خپلې موخې ژبې کیبورډ اضافه کړئ",
-    "enableAutocorrectPopupPathIntro": "د اضافه کولو لپاره، دې ته لاړ شئ:"
+    "enableAutocorrectPopupPathIntro": "د اضافه کولو لپاره، دې ته لاړ شئ:",
+    "enableAutocorrectPopupTitle": "خپله هدف ژبه کیبورډ په لاندې ډول اضافه کړئ:",
+    "callDevicesTitle": "دا زنګ ستاسو په دوو وسیلو کې خلاص دی.",
+    "callDevicesBody": "هغه یو غوره کړئ چې ورسره دوام ورکړئ. تر هغه چې تاسو یې نه وي کړي، هیڅ یو ستاسو مایکروفون یا کیمره نه لیږي.",
+    "callDevicesUseThis": "دا وسیله وکاروئ",
+    "callDevicesLeaveHere": "زنګ دلته پریږدئ",
+    "callDevicesOlderTitle": "ستاسو بله وسیله نشي کولی دا زنګ پخپله پریږدي.",
+    "callDevicesOlderBody": "هلته زنګ پای ته ورسوئ، یا یې دلته پریږدئ. دا معمولا پدې معنی ده چې دا یوه پخوانۍ نسخه پرمخ وړي، او د هغې تازه کول به دا حل کړي.",
+    "callContinuingElsewhere": "دا زنګ ستاسو په بله وسیله کې دوام لري."
 }

@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "sho ɔda ɔpshɔn dɛn",
     "onboardingStepOfTotal": "Step {step} pan {total}",
     "addKeyboardDialogTitle": "Afdap yu target langwej keyboard",
-    "enableAutocorrectPopupPathIntro": "Fɔ afdap wan, go to:"
+    "enableAutocorrectPopupPathIntro": "Fɔ afdap wan, go to:",
+    "enableAutocorrectPopupTitle": "Ad yu target langwej kibod bay go to:",
+    "callDevicesTitle": "Dis kɔl de opin na tu pan yu dɛvais dɛn.",
+    "callDevicesBody": "Pik wan fɔ kɔntinyu wit. Te yu du dat, nɔn pan dɛn nɔ de sɛn yu maykrofone ɔ kamera.",
+    "callDevicesUseThis": "Yuz dis dɛvais",
+    "callDevicesLeaveHere": "Liv di kɔl ya",
+    "callDevicesOlderTitle": "Yu ɔda dɛvais nɔ go ebul fɔ liv dis kɔl insɛf.",
+    "callDevicesOlderBody": "Ɛnd di kɔl de, ɔ liv am ya. Dat min se i de rɔn wan ol vɛshɔn, ɛn if yu apdet am i go fiks dis.",
+    "callContinuingElsewhere": "Dis kɔl de kɔntinyu na yu ɔda dɛvais."
 }

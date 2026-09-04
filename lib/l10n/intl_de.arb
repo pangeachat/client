@@ -9846,5 +9846,17 @@
     "showMoreOptionsHint": "Weitere Optionen anzeigen",
     "onboardingStepOfTotal": "Schritt {step} von {total}",
     "addKeyboardDialogTitle": "Tastatur für Zielsprache hinzufügen",
-    "enableAutocorrectPopupPathIntro": "Um eine hinzuzufügen, gehe zu:"
+    "enableAutocorrectPopupPathIntro": "Um eine hinzuzufügen, gehe zu:",
+    "enableAutocorrectPopupTitle": "Fügen Sie Ihre Zielsprachentastatur hinzu, indem Sie zu gehen:",
+    "@enableAutocorrectPopupTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "callDevicesTitle": "Dieser Anruf ist auf zwei Ihrer Geräte geöffnet.",
+    "callDevicesBody": "Wählen Sie das Gerät aus, mit dem Sie fortfahren möchten. Bis dahin senden weder Mikrofon noch Kamera Daten.",
+    "callDevicesUseThis": "Dieses Gerät verwenden",
+    "callDevicesLeaveHere": "Anruf hier beenden",
+    "callDevicesOlderTitle": "Ihr anderes Gerät kann diesen Anruf nicht selbstständig verlassen.",
+    "callDevicesOlderBody": "Beenden Sie den Anruf dort, oder verlassen Sie ihn hier. Das bedeutet normalerweise, dass eine ältere Version ausgeführt wird, und ein Update wird dies beheben.",
+    "callContinuingElsewhere": "Dieser Anruf wird auf Ihrem anderen Gerät fortgesetzt."
 }

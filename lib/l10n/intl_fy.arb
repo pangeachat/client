@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "mear opsjes sjen litte",
     "onboardingStepOfTotal": "Stap {step} fan {total}",
     "addKeyboardDialogTitle": "Foegje it toetseboerd fan jo doeltaal ta",
-    "enableAutocorrectPopupPathIntro": "Om ien ta te foegjen, gean nei:"
+    "enableAutocorrectPopupPathIntro": "Om ien ta te foegjen, gean nei:",
+    "enableAutocorrectPopupTitle": "Foegje dyn doeltaaltoetseboerd ta troch te gean nei:",
+    "callDevicesTitle": "Dit petear is iepen op twa fan dyn apparaten.",
+    "callDevicesBody": "Kies dejinge wêrmei't jo trochgean wolle. Oant jo dat dogge, stjoert gjinien jo mikrofoan of kamera.",
+    "callDevicesUseThis": "Brûk dit apparaat",
+    "callDevicesLeaveHere": "Ferlitte it petear hjir",
+    "callDevicesOlderTitle": "Jo oare apparaat kin dit petear net sels ferlitte.",
+    "callDevicesOlderBody": "Einigje it petear dêr, of ferlitte it hjir. Dat betsjut meastentiids dat it in âldere ferzje brûkt, en it bywurkjen sil dit oplosse.",
+    "callContinuingElsewhere": "Dit petear giet troch op jo oare apparaat."
 }

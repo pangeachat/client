@@ -9873,5 +9873,17 @@
     "showMoreOptionsHint": "паказаць больш опцый",
     "onboardingStepOfTotal": "Крок {step} з {total}",
     "addKeyboardDialogTitle": "Дадайце клавіятуру мэтавай мовы",
-    "enableAutocorrectPopupPathIntro": "Каб дадаць, перайдзіце ў:"
+    "enableAutocorrectPopupPathIntro": "Каб дадаць, перайдзіце ў:",
+    "enableAutocorrectPopupTitle": "Дадайце клавіятуру мовы мэты, перайшоўшы ў:",
+    "@enableAutocorrectPopupTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "callDevicesTitle": "Гэты выклік адкрыты на дзвюх вашых прыладах.",
+    "callDevicesBody": "Выберыце тую, з якой працягнуць. Пакуль вы гэтага не зробіце, ні адна з іх не будзе перадаваць ваш мікрафон або камеру.",
+    "callDevicesUseThis": "Выкарыстоўваць гэту прыладу",
+    "callDevicesLeaveHere": "Пакінуць выклік тут",
+    "callDevicesOlderTitle": "Ваша іншая прылада не можа самастойна пакінуць гэты выклік.",
+    "callDevicesOlderBody": "Завяршыце выклік там або пакіньце яго тут. Звычайна гэта азначае, што на ёй усталявана старэйшая версія, і абнаўленне выправіць гэта.",
+    "callContinuingElsewhere": "Гэты выклік працягваецца на вашай іншай прыладзе."
 }

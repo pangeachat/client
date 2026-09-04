@@ -10804,5 +10804,17 @@
     "showMoreOptionsHint": "zobraziť viac možností",
     "onboardingStepOfTotal": "Krok {step} z {total}",
     "addKeyboardDialogTitle": "Pridajte klávesnicu pre cieľový jazyk",
-    "enableAutocorrectPopupPathIntro": "Ak ju chcete pridať, prejdite na:"
+    "enableAutocorrectPopupPathIntro": "Ak ju chcete pridať, prejdite na:",
+    "enableAutocorrectPopupTitle": "Pridajte klávesnicu cieľového jazyka prechádzaním do:",
+    "@enableAutocorrectPopupTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "callDevicesTitle": "Tento hovor je otvorený na dvoch vašich zariadeniach.",
+    "callDevicesBody": "Vyberte si to, s ktorým chcete pokračovať. Kým tak neurobíte, ani jedno neodosiela váš mikrofón ani kameru.",
+    "callDevicesUseThis": "Použiť toto zariadenie",
+    "callDevicesLeaveHere": "Opustiť hovor tu",
+    "callDevicesOlderTitle": "Vaše druhé zariadenie nemôže opustiť tento hovor samo.",
+    "callDevicesOlderBody": "Ukončite hovor tam, alebo ho opustite tu. To zvyčajne znamená, že používa staršiu verziu a aktualizácia to opraví.",
+    "callContinuingElsewhere": "Tento hovor pokračuje na vašom druhom zariadení."
 }

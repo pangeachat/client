@@ -10719,5 +10719,17 @@
     "showMoreOptionsHint": "ipakita ang higit pang opsyon",
     "onboardingStepOfTotal": "Hakbang {step} ng {total}",
     "addKeyboardDialogTitle": "Idagdag ang keyboard ng iyong target na wika",
-    "enableAutocorrectPopupPathIntro": "Para magdagdag, pumunta sa:"
+    "enableAutocorrectPopupPathIntro": "Para magdagdag, pumunta sa:",
+    "enableAutocorrectPopupTitle": "Idagdag ang iyong target na keyboard sa wika sa pamamagitan ng pagpunta sa:",
+    "@enableAutocorrectPopupTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "callDevicesTitle": "Bukas ang tawag na ito sa dalawa sa iyong device.",
+    "callDevicesBody": "Piliin ang gagamitin mo. Hangga't hindi mo ito ginagawa, walang nagpapadala ng iyong mikropono o camera.",
+    "callDevicesUseThis": "Gamitin ang device na ito",
+    "callDevicesLeaveHere": "Umalis sa tawag dito",
+    "callDevicesOlderTitle": "Hindi makaalis sa tawag na ito ang isa mo pang device nang mag-isa.",
+    "callDevicesOlderBody": "Tapusin ang tawag doon, o umalis dito. Kadalasan, nangangahulugan iyon na gumagamit ito ng mas lumang bersyon, at maaayos ito sa pag-update.",
+    "callContinuingElsewhere": "Nagpapatuloy ang tawag na ito sa isa mo pang device."
 }

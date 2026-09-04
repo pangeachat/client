@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "अधिक पर्याय दाखवा",
     "onboardingStepOfTotal": "{total} पैकी पायरी {step}",
     "addKeyboardDialogTitle": "तुमच्या लक्ष्य भाषेचा कीबोर्ड जोडा",
-    "enableAutocorrectPopupPathIntro": "एक जोडण्यासाठी, येथे जा:"
+    "enableAutocorrectPopupPathIntro": "एक जोडण्यासाठी, येथे जा:",
+    "enableAutocorrectPopupTitle": "तुमचा लक्ष्य भाषा कीबोर्ड जोडण्यासाठी येथे जा:",
+    "callDevicesTitle": "हा कॉल तुमच्या दोन डिव्हाइसवर सुरू आहे.",
+    "callDevicesBody": "पुढे सुरू ठेवण्यासाठी एक निवडा. जोपर्यंत तुम्ही निवडत नाही, तोपर्यंत दोन्हीपैकी कोणतेही डिव्हाइस तुमचा मायक्रोफोन किंवा कॅमेरा पाठवत नाहीये.",
+    "callDevicesUseThis": "हे डिव्हाइस वापरा",
+    "callDevicesLeaveHere": "कॉल इथेच सोडा",
+    "callDevicesOlderTitle": "तुमचे दुसरे डिव्हाइस हा कॉल स्वतःहून सोडू शकत नाही.",
+    "callDevicesOlderBody": "तिथे कॉल संपवा किंवा इथे सोडा. याचा अर्थ असा होतो की ते जुनी आवृत्ती वापरत आहे आणि ते अपडेट केल्यास ही समस्या दूर होईल.",
+    "callContinuingElsewhere": "हा कॉल तुमच्या दुसऱ्या डिव्हाइसवर सुरू आहे."
 }

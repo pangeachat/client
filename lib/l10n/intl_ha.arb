@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "nuna ƙarin zaɓuɓɓuka",
     "onboardingStepOfTotal": "Mataki na {step} cikin {total}",
     "addKeyboardDialogTitle": "Ƙara madannin harshen da kake so",
-    "enableAutocorrectPopupPathIntro": "Don ƙarawa, je zuwa:"
+    "enableAutocorrectPopupPathIntro": "Don ƙarawa, je zuwa:",
+    "enableAutocorrectPopupTitle": "Ƙara maballin yaren da kake so ta hanyar zuwa:",
+    "callDevicesTitle": "Wannan kiran yana buɗe a kan na'urorinka biyu.",
+    "callDevicesBody": "Zaɓi wanda za a ci gaba da shi. Har sai ka yi haka, babu ɗaya daga cikinsu da ke aika makirufo ko kyamararka.",
+    "callDevicesUseThis": "Yi amfani da wannan na'urar",
+    "callDevicesLeaveHere": "Bar kiran a nan",
+    "callDevicesOlderTitle": "Sauran na'urarka ba za ta iya barin wannan kiran da kanta ba.",
+    "callDevicesOlderBody": "Ka kawo ƙarshen kiran a can, ko ka bar shi a nan. Wannan yawanci yana nufin tana amfani da tsohuwar sigar, kuma sabunta ta zai gyara wannan.",
+    "callContinuingElsewhere": "Wannan kiran yana ci gaba a kan sauran na'urarka."
 }

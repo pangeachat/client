@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "ສະແດງຕົວເລືອກເພີ່ມເຕີມ",
     "onboardingStepOfTotal": "ຂັ້ນຕອນທີ {step} ຈາກ {total}",
     "addKeyboardDialogTitle": "ເພີ່ມແປ້ນພິມພາສາເປົ້າໝາຍຂອງທ່ານ",
-    "enableAutocorrectPopupPathIntro": "ເພື່ອເພີ່ມ, ໄປທີ່:"
+    "enableAutocorrectPopupPathIntro": "ເພື່ອເພີ່ມ, ໄປທີ່:",
+    "enableAutocorrectPopupTitle": "ເພີ່ມແປ້ນພິມພາສາເປົ້າໝາຍຂອງທ່ານໂດຍການໄປທີ່:",
+    "callDevicesTitle": "ການໂທນີ້ເປີດຢູ່ໃນສອງອຸປະກອນຂອງທ່ານ.",
+    "callDevicesBody": "ເລືອກອັນທີ່ຈະສືບຕໍ່. ຈົນກວ່າທ່ານຈະເລືອກ, ບໍ່ມີອັນໃດກຳລັງສົ່ງໄມໂຄຣໂຟນ ຫຼື ກ້ອງຖ່າຍຮູບຂອງທ່ານ.",
+    "callDevicesUseThis": "ໃຊ້ອຸປະກອນນີ້",
+    "callDevicesLeaveHere": "ອອກຈາກການໂທຢູ່ນີ້",
+    "callDevicesOlderTitle": "ອຸປະກອນອື່ນຂອງທ່ານບໍ່ສາມາດອອກຈາກການໂທນີ້ດ້ວຍຕົວມັນເອງໄດ້.",
+    "callDevicesOlderBody": "ສິ້ນສຸດການໂທຢູ່ບ່ອນນັ້ນ, ຫຼື ອອກຈາກມັນຢູ່ນີ້. ນັ້ນໝາຍຄວາມວ່າປົກກະຕິແລ້ວມັນກຳລັງໃຊ້ເວີຊັນເກົ່າ, ແລະ ການອັບເດດມັນຈະແກ້ໄຂບັນຫານີ້.",
+    "callContinuingElsewhere": "ການໂທນີ້ກຳລັງສືບຕໍ່ຢູ່ໃນອຸປະກອນອື່ນຂອງທ່ານ."
 }

@@ -9986,5 +9986,17 @@
     "showMoreOptionsHint": "mostrar més opcions",
     "onboardingStepOfTotal": "Pas {step} de {total}",
     "addKeyboardDialogTitle": "Afegeix el teclat del teu idioma objectiu",
-    "enableAutocorrectPopupPathIntro": "Per afegir-ne un, ves a:"
+    "enableAutocorrectPopupPathIntro": "Per afegir-ne un, ves a:",
+    "enableAutocorrectPopupTitle": "Afegeix el teclat del teu idioma objectiu anant a:",
+    "@enableAutocorrectPopupTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "callDevicesTitle": "Aquesta trucada està oberta en dos dels teus dispositius.",
+    "callDevicesBody": "Tria amb quin vols continuar. Fins que no ho facis, cap dels dos enviarà el teu micròfon o càmera.",
+    "callDevicesUseThis": "Utilitza aquest dispositiu",
+    "callDevicesLeaveHere": "Deixa la trucada aquí",
+    "callDevicesOlderTitle": "L'altre dispositiu no pot sortir d'aquesta trucada per si sol.",
+    "callDevicesOlderBody": "Finalitza la trucada allà o deixa-la aquí. Això sol significar que està executant una versió antiga, i actualitzar-la ho solucionarà.",
+    "callContinuingElsewhere": "Aquesta trucada continua a l'altre dispositiu."
 }

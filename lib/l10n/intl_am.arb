@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "ተጨማሪ አማራጮችን አሳይ",
     "onboardingStepOfTotal": "ደረጃ {step} ከ {total}",
     "addKeyboardDialogTitle": "የዒላማ ቋንቋ ቁልፍ ሰሌዳዎን ያክሉ",
-    "enableAutocorrectPopupPathIntro": "አንዱን ለማከል ወደዚህ ይሂዱ:"
+    "enableAutocorrectPopupPathIntro": "አንዱን ለማከል ወደዚህ ይሂዱ:",
+    "enableAutocorrectPopupTitle": "ወደሚከተለው በመሄድ የታለመውን ቋንቋ ኪቦርድዎን ያክሉ፦",
+    "callDevicesTitle": "ይህ ጥሪ በሁለት መሳሪያዎችዎ ላይ ክፍት ነው።",
+    "callDevicesBody": "ለመቀጠል አንዱን ይምረጡ። እስኪመርጡ ድረስ፣ የትኛውም ማይክሮፎንዎን ወይም ካሜራዎን እየላከ አይደለም።",
+    "callDevicesUseThis": "ይህን መሳሪያ ይጠቀሙ",
+    "callDevicesLeaveHere": "ጥሪውን እዚህ ይተው",
+    "callDevicesOlderTitle": "ሌላኛው መሳሪያዎ ይህን ጥሪ በራሱ መተው አይችልም።",
+    "callDevicesOlderBody": "ጥሪውን እዚያ ያቋርጡ፣ ወይም እዚህ ይተዉት። ይህ ማለት ብዙውን ጊዜ የቆየ ስሪት እየተጠቀመ ነው፣ እና ማዘመን ይህንን ያስተካክለዋል።",
+    "callContinuingElsewhere": "ይህ ጥሪ በሌላኛው መሳሪያዎ ላይ ቀጥሏል።"
 }

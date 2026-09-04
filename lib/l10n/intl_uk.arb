@@ -9859,5 +9859,17 @@
     "showMoreOptionsHint": "показати більше опцій",
     "onboardingStepOfTotal": "Крок {step} із {total}",
     "addKeyboardDialogTitle": "Додайте клавіатуру цільової мови",
-    "enableAutocorrectPopupPathIntro": "Щоб додати, перейдіть до:"
+    "enableAutocorrectPopupPathIntro": "Щоб додати, перейдіть до:",
+    "enableAutocorrectPopupTitle": "Додайте клавіатуру цільової мови, перейшовши до:",
+    "@enableAutocorrectPopupTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "callDevicesTitle": "Цей дзвінок відкрито на двох ваших пристроях.",
+    "callDevicesBody": "Виберіть пристрій, на якому хочете продовжити. Доки ви цього не зробите, жоден з них не надсилатиме ваш мікрофон або камеру.",
+    "callDevicesUseThis": "Використати цей пристрій",
+    "callDevicesLeaveHere": "Залишити дзвінок тут",
+    "callDevicesOlderTitle": "Ваш інший пристрій не може самостійно вийти з цього дзвінка.",
+    "callDevicesOlderBody": "Завершіть дзвінок там або залиште його тут. Зазвичай це означає, що на ньому встановлено старішу версію, і оновлення це виправить.",
+    "callContinuingElsewhere": "Цей дзвінок продовжується на іншому вашому пристрої."
 }

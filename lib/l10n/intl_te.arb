@@ -10809,5 +10809,17 @@
     "showMoreOptionsHint": "మరిన్ని ఎంపికలను చూపించు",
     "onboardingStepOfTotal": "{total}లో {step}వ దశ",
     "addKeyboardDialogTitle": "మీ లక్ష్య భాష కీబోర్డ్‌ను జోడించండి",
-    "enableAutocorrectPopupPathIntro": "ఒకటి జోడించడానికి, దీనికి వెళ్లండి:"
+    "enableAutocorrectPopupPathIntro": "ఒకటి జోడించడానికి, దీనికి వెళ్లండి:",
+    "enableAutocorrectPopupTitle": "మీ లక్ష్య భాష కీబోర్డ్‌ను జోడించడానికి ఈ క్రింది దశలను అనుసరించండి:",
+    "@enableAutocorrectPopupTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "callDevicesTitle": "ఈ కాల్ మీ రెండు పరికరాలలో తెరిచి ఉంది.",
+    "callDevicesBody": "కొనసాగించడానికి ఒకదాన్ని ఎంచుకోండి. మీరు అలా చేసే వరకు, ఏదీ మీ మైక్రోఫోన్ లేదా కెమెరాను పంపడం లేదు.",
+    "callDevicesUseThis": "ఈ పరికరాన్ని ఉపయోగించండి",
+    "callDevicesLeaveHere": "కాల్‌ను ఇక్కడ వదిలివేయండి",
+    "callDevicesOlderTitle": "మీ ఇతర పరికరం ఈ కాల్‌ను స్వయంగా వదిలివేయదు.",
+    "callDevicesOlderBody": "అక్కడ కాల్‌ను ముగించండి లేదా ఇక్కడ వదిలివేయండి. సాధారణంగా దీని అర్థం ఇది పాత వెర్షన్‌ను నడుపుతోంది, మరియు దానిని అప్‌డేట్ చేయడం దీనిని పరిష్కరిస్తుంది.",
+    "callContinuingElsewhere": "ఈ కాల్ మీ ఇతర పరికరంలో కొనసాగుతోంది."
 }

@@ -3724,6 +3724,13 @@
     "callReconnecting": "Reconnecting...",
     "callReturn": "Return",
     "callPeerMuted": "Muted",
+    "callDevicesTitle": "This call is open on two of your devices.",
+    "callDevicesBody": "Pick the one to carry on with. Until you do, neither is sending your microphone or camera.",
+    "callDevicesUseThis": "Use this device",
+    "callDevicesLeaveHere": "Leave the call here",
+    "callDevicesOlderTitle": "Your other device can't leave this call on its own.",
+    "callDevicesOlderBody": "End the call there, or leave it here. That usually means it is running an older version, and updating it will fix this.",
+    "callContinuingElsewhere": "This call is continuing on your other device.",
     "callPeerBusy": "{name} is on another call",
     "@callPeerBusy": {
         "placeholders": {

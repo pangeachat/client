@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "méi Optiounen uweisen",
     "onboardingStepOfTotal": "Schrëtt {step} vun {total}",
     "addKeyboardDialogTitle": "Tastatur fir Är Zilssprooch derbäisetzen",
-    "enableAutocorrectPopupPathIntro": "Fir eng derbäizesetzen, gitt op:"
+    "enableAutocorrectPopupPathIntro": "Fir eng derbäizesetzen, gitt op:",
+    "enableAutocorrectPopupTitle": "Füügt Är Zilssprooch-Tastatur bäi andeems Dir gitt op:",
+    "callDevicesTitle": "Dësen Uruff ass op zwee vun dengen Apparater op.",
+    "callDevicesBody": "Wiel deen aus, mat deem s de weiderfuere wëlls. Bis dohi schéckt keen deng Mikro oder Kamera.",
+    "callDevicesUseThis": "Dësen Apparat benotzen",
+    "callDevicesLeaveHere": "Den Uruff hei verloossen",
+    "callDevicesOlderTitle": "Däin aneren Apparat kann dësen Uruff net eleng verloossen.",
+    "callDevicesOlderBody": "Enn den Uruff do, oder verlooss en hei. Dat heescht normalerweis, datt en eng méi al Versioun leeft, an en Update wäert dat behiewen.",
+    "callContinuingElsewhere": "Dësen Uruff leeft op dengem aneren Apparat weider."
 }

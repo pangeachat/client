@@ -9962,5 +9962,17 @@
     "showMoreOptionsHint": "további lehetőségek megjelenítése",
     "onboardingStepOfTotal": "{step}/{total}. lépés",
     "addKeyboardDialogTitle": "Add hozzá a célnyelvi billentyűzetet",
-    "enableAutocorrectPopupPathIntro": "A hozzáadáshoz lépj ide:"
+    "enableAutocorrectPopupPathIntro": "A hozzáadáshoz lépj ide:",
+    "enableAutocorrectPopupTitle": "Adja hozzá a célnyelvi billentyűzetet a következő lépésekkel:",
+    "@enableAutocorrectPopupTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "callDevicesTitle": "Ez a hívás két eszközén is nyitva van.",
+    "callDevicesBody": "Válassza ki, melyikkel folytatja. Amíg nem teszi meg, egyik sem küldi a mikrofonját vagy a kameráját.",
+    "callDevicesUseThis": "Használja ezt az eszközt",
+    "callDevicesLeaveHere": "Hagyja itt a hívást",
+    "callDevicesOlderTitle": "A másik eszköze nem tudja magától elhagyni ezt a hívást.",
+    "callDevicesOlderBody": "Fejezze be ott a hívást, vagy hagyja itt. Ez általában azt jelenti, hogy régebbi verziót futtat, és a frissítés megoldja ezt.",
+    "callContinuingElsewhere": "Ez a hívás a másik eszközén folytatódik."
 }

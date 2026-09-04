@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "បង្ហាញជម្រើសច្រើនទៀត",
     "onboardingStepOfTotal": "ជំហានទី {step} ក្នុងចំណោម {total}",
     "addKeyboardDialogTitle": "បន្ថែម​ក្ដារចុច​ភាសា​គោលដៅ​របស់​អ្នក",
-    "enableAutocorrectPopupPathIntro": "ដើម្បី​បន្ថែម សូម​ចូល​ទៅ៖"
+    "enableAutocorrectPopupPathIntro": "ដើម្បី​បន្ថែម សូម​ចូល​ទៅ៖",
+    "enableAutocorrectPopupTitle": "បន្ថែមក្តារចុចភាសាគោលដៅរបស់អ្នកដោយចូលទៅកាន់៖",
+    "callDevicesTitle": "ការហៅនេះបើកនៅលើឧបករណ៍ពីររបស់អ្នក។",
+    "callDevicesBody": "ជ្រើសរើសមួយដើម្បីបន្ត។ រហូតទាល់តែអ្នកធ្វើ គ្មានឧបករណ៍ណាមួយកំពុងផ្ញើមីក្រូហ្វូន ឬកាមេរ៉ារបស់អ្នកទេ។",
+    "callDevicesUseThis": "ប្រើឧបករណ៍នេះ",
+    "callDevicesLeaveHere": "ចាកចេញពីការហៅនៅទីនេះ",
+    "callDevicesOlderTitle": "ឧបករណ៍ផ្សេងទៀតរបស់អ្នកមិនអាចចាកចេញពីការហៅនេះដោយខ្លួនឯងបានទេ។",
+    "callDevicesOlderBody": "បញ្ចប់ការហៅនៅទីនោះ ឬទុកវានៅទីនេះ។ ជាធម្មតាវាមានន័យថាវាដំណើរការកំណែចាស់ ហើយការអាប់ដេតវានឹងដោះស្រាយបញ្ហានេះ។",
+    "callContinuingElsewhere": "ការហៅនេះកំពុងបន្តនៅលើឧបករណ៍ផ្សេងទៀតរបស់អ្នក។"
 }

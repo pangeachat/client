@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "көбүрөөк параметрлерди көрсөтүү",
     "onboardingStepOfTotal": "{total} ичинен {step}-кадам",
     "addKeyboardDialogTitle": "Максаттуу тилиңиздин клавиатурасын кошуңуз",
-    "enableAutocorrectPopupPathIntro": "Кошуу үчүн, өтүңүз:"
+    "enableAutocorrectPopupPathIntro": "Кошуу үчүн, өтүңүз:",
+    "enableAutocorrectPopupTitle": "Максаттуу тилиңиздин клавиатурасын кошуу үчүн төмөнкүгө өтүңүз:",
+    "callDevicesTitle": "Бул чалуу эки түзмөгүңүздө ачык.",
+    "callDevicesBody": "Улантуу үчүн бирин тандаңыз. Тандамайынча, эч бири микрофонуңузду же камераңызды жөнөтпөйт.",
+    "callDevicesUseThis": "Бул түзмөктү колдонуу",
+    "callDevicesLeaveHere": "Чалууну бул жерде калтыруу",
+    "callDevicesOlderTitle": "Башка түзмөгүңүз бул чалуудан өз алдынча чыга албайт.",
+    "callDevicesOlderBody": "Чалууну ошол жерден бүтүрүңүз же бул жерде калтырыңыз. Бул, адатта, эски версия иштеп жатканын билдирет жана аны жаңыртуу муну оңдойт.",
+    "callContinuingElsewhere": "Бул чалуу башка түзмөгүңүздө уланууда."
 }

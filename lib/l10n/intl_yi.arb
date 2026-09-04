@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "ווייַזן מער אָפּציעס",
     "onboardingStepOfTotal": "שריט {step} פֿון {total}",
     "addKeyboardDialogTitle": "לייגט צו אייער צילשפּראַך קלאַוויאַטור",
-    "enableAutocorrectPopupPathIntro": "כּדי צוצולייגן איינס, גייט צו:"
+    "enableAutocorrectPopupPathIntro": "כּדי צוצולייגן איינס, גייט צו:",
+    "enableAutocorrectPopupTitle": "לייג צו דײַן צילשפּראַך קלאַוויאַטור דורך גיין צו:",
+    "callDevicesTitle": "די דאָזיקע רוף איז אָפֿן אויף צוויי פֿון דײַנע מיטלען.",
+    "callDevicesBody": "קלײַב אױס דעם אײנעם װאָס זאָל װײַטער גײן. ביז דו טוסט דאָס, שיקט קײנער פֿון זײ נישט דײַן מיקראָפֿאָן אָדער קאַמערע.",
+    "callDevicesUseThis": "ניץ דעם מיטל",
+    "callDevicesLeaveHere": "פֿאַרלאָז דעם רוף דאָ",
+    "callDevicesOlderTitle": "דײַן אַנדער מיטל קען נישט פֿאַרלאָזן דעם רוף אַלײן.",
+    "callDevicesOlderBody": "ענדיק דעם רוף דאָרטן, אָדער פֿאַרלאָז אים דאָ. דאָס הײסט געװײנטלעך אַז ער לױפֿט מיט אַן עלטערע װערסיע, און אַן אַפּדײט װעט דאָס פֿאַרריכטן.",
+    "callContinuingElsewhere": "דער רוף גײט װײַטער אויף דײַן אַנדער מיטל."
 }

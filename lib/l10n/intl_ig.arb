@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "gosi nhọrọ ndị ọzọ",
     "onboardingStepOfTotal": "Nzọụkwụ {step} n'ime {total}",
     "addKeyboardDialogTitle": "Tinye ahụigodo asụsụ ị chọrọ",
-    "enableAutocorrectPopupPathIntro": "Iji tinye otu, gaa na:"
+    "enableAutocorrectPopupPathIntro": "Iji tinye otu, gaa na:",
+    "enableAutocorrectPopupTitle": "Tinye ahụigodo asụsụ ebumnuche gị site na ịga na:",
+    "callDevicesTitle": "Oku a na-aga n'igwe abụọ n'ime nke gị.",
+    "callDevicesBody": "Họrọ nke ị ga-eji gaa n'ihu. Ruo mgbe ị mere ya, ọ dịghị nke na-eziga igwe okwu ma ọ bụ igwefoto gị.",
+    "callDevicesUseThis": "Jiri ngwaọrụ a",
+    "callDevicesLeaveHere": "Hapụ oku a ebe a",
+    "callDevicesOlderTitle": "Ngwaọrụ gị ọzọ enweghị ike ịhapụ oku a n'onwe ya.",
+    "callDevicesOlderBody": "Kwụsị oku ahụ ebe ahụ, ma ọ bụ hapụ ya ebe a. Nke ahụ na-abụkarị na ọ na-eji ụdị ochie, na imelite ya ga-edozi nke a.",
+    "callContinuingElsewhere": "Oku a na-aga n'ihu na ngwaọrụ gị ọzọ."
 }

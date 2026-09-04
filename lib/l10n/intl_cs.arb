@@ -10353,5 +10353,17 @@
     "showMoreOptionsHint": "zobrazit další možnosti",
     "onboardingStepOfTotal": "Krok {step} z {total}",
     "addKeyboardDialogTitle": "Přidejte klávesnici pro svůj cílový jazyk",
-    "enableAutocorrectPopupPathIntro": "Chcete-li ji přidat, přejděte na:"
+    "enableAutocorrectPopupPathIntro": "Chcete-li ji přidat, přejděte na:",
+    "enableAutocorrectPopupTitle": "Přidejte klávesnici cílového jazyka přechodem na:",
+    "@enableAutocorrectPopupTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "callDevicesTitle": "Tento hovor je otevřen na dvou vašich zařízeních.",
+    "callDevicesBody": "Vyberte si, které chcete použít. Dokud tak neučiníte, ani jedno neodesílá váš mikrofon ani kameru.",
+    "callDevicesUseThis": "Použít toto zařízení",
+    "callDevicesLeaveHere": "Opustit hovor zde",
+    "callDevicesOlderTitle": "Vaše druhé zařízení nemůže tento hovor opustit samo.",
+    "callDevicesOlderBody": "Ukončete hovor tam, nebo ho opusťte zde. To obvykle znamená, že používá starší verzi a aktualizace to vyřeší.",
+    "callContinuingElsewhere": "Tento hovor pokračuje na vašem druhém zařízení."
 }

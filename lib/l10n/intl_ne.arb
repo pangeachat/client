@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "थप विकल्पहरू देखाउनुहोस्",
     "onboardingStepOfTotal": "{total} मध्ये चरण {step}",
     "addKeyboardDialogTitle": "आफ्नो लक्षित भाषाको किबोर्ड थप्नुहोस्",
-    "enableAutocorrectPopupPathIntro": "एउटा थप्नका लागि, यहाँ जानुहोस्:"
+    "enableAutocorrectPopupPathIntro": "एउटा थप्नका लागि, यहाँ जानुहोस्:",
+    "enableAutocorrectPopupTitle": "आफ्नो लक्षित भाषा किबोर्ड थप्न यहाँ जानुहोस्:",
+    "callDevicesTitle": "यो कल तपाईंका दुई यन्त्रहरूमा खुला छ।",
+    "callDevicesBody": "कुन प्रयोग गर्ने हो, छान्नुहोस्। तपाईंले नछान्दासम्म, कुनै पनि यन्त्रले तपाईंको माइक्रोफोन वा क्यामेरा पठाउने छैन।",
+    "callDevicesUseThis": "यो यन्त्र प्रयोग गर्नुहोस्",
+    "callDevicesLeaveHere": "कल यहीँ छोड्नुहोस्",
+    "callDevicesOlderTitle": "तपाईंको अर्को यन्त्रले यो कल आफैं छोड्न सक्दैन।",
+    "callDevicesOlderBody": "कल त्यहाँ अन्त्य गर्नुहोस्, वा यहाँ छोड्नुहोस्। यसको सामान्यतया अर्थ यो हो कि यसले पुरानो संस्करण चलाइरहेको छ, र यसलाई अद्यावधिक गर्दा यो समस्या समाधान हुनेछ।",
+    "callContinuingElsewhere": "यो कल तपाईंको अर्को यन्त्रमा जारी छ।"
 }

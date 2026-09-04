@@ -10214,5 +10214,17 @@
     "showMoreOptionsHint": "afficher plus d'options",
     "onboardingStepOfTotal": "Étape {step} sur {total}",
     "addKeyboardDialogTitle": "Ajoutez le clavier de votre langue cible",
-    "enableAutocorrectPopupPathIntro": "Pour en ajouter un, allez dans :"
+    "enableAutocorrectPopupPathIntro": "Pour en ajouter un, allez dans :",
+    "enableAutocorrectPopupTitle": "Ajoutez votre clavier de langue cible en allant sur :",
+    "@enableAutocorrectPopupTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "callDevicesTitle": "Cet appel est ouvert sur deux de vos appareils.",
+    "callDevicesBody": "Choisissez celui que vous souhaitez utiliser. Tant que vous ne le faites pas, aucun des deux n'envoie votre microphone ou votre caméra.",
+    "callDevicesUseThis": "Utiliser cet appareil",
+    "callDevicesLeaveHere": "Quitter l'appel ici",
+    "callDevicesOlderTitle": "Votre autre appareil ne peut pas quitter cet appel de lui-même.",
+    "callDevicesOlderBody": "Mettez fin à l'appel là-bas, ou quittez-le ici. Cela signifie généralement qu'il utilise une version plus ancienne, et la mise à jour résoudra ce problème.",
+    "callContinuingElsewhere": "Cet appel se poursuit sur votre autre appareil."
 }

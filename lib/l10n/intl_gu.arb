@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "વધુ વિકલ્પો બતાવો",
     "onboardingStepOfTotal": "{total} માંથી પગલું {step}",
     "addKeyboardDialogTitle": "તમારી લક્ષ્ય ભાષાનું કીબોર્ડ ઉમેરો",
-    "enableAutocorrectPopupPathIntro": "એક ઉમેરવા માટે, અહીં જાઓ:"
+    "enableAutocorrectPopupPathIntro": "એક ઉમેરવા માટે, અહીં જાઓ:",
+    "enableAutocorrectPopupTitle": "આના પર જઈને તમારી લક્ષ્ય ભાષાનું કીબોર્ડ ઉમેરો:",
+    "callDevicesTitle": "આ કૉલ તમારા બે ડિવાઇસ પર ખુલ્લો છે.",
+    "callDevicesBody": "જેના પર ચાલુ રાખવો હોય તે પસંદ કરો. જ્યાં સુધી તમે તેમ ન કરો ત્યાં સુધી, કોઈ પણ તમારો માઇક્રોફોન અથવા કૅમેરા મોકલી રહ્યું નથી.",
+    "callDevicesUseThis": "આ ડિવાઇસનો ઉપયોગ કરો",
+    "callDevicesLeaveHere": "કૉલ અહીં છોડો",
+    "callDevicesOlderTitle": "તમારું બીજું ડિવાઇસ આ કૉલને જાતે છોડી શકતું નથી.",
+    "callDevicesOlderBody": "ત્યાં કૉલ સમાપ્ત કરો, અથવા તેને અહીં છોડો. તેનો સામાન્ય રીતે અર્થ એ થાય છે કે તે જૂનું વર્ઝન ચલાવી રહ્યું છે, અને તેને અપડેટ કરવાથી આ સમસ્યા ઠીક થઈ જશે.",
+    "callContinuingElsewhere": "આ કૉલ તમારા બીજા ડિવાઇસ પર ચાલુ છે."
 }

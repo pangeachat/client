@@ -10759,5 +10759,17 @@
     "showMoreOptionsHint": "მეტი ვარიანტის ჩვენება",
     "onboardingStepOfTotal": "ნაბიჯი {step} / {total}",
     "addKeyboardDialogTitle": "დაამატეთ თქვენი სამიზნე ენის კლავიატურა",
-    "enableAutocorrectPopupPathIntro": "დასამატებლად გადადით:"
+    "enableAutocorrectPopupPathIntro": "დასამატებლად გადადით:",
+    "enableAutocorrectPopupTitle": "დაამატეთ თქვენი მიზნობრივი ენის კლავიატურა შემდეგ მისამართზე გადასვლით:",
+    "@enableAutocorrectPopupTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "callDevicesTitle": "ეს ზარი ღიაა თქვენს ორ მოწყობილობაზე.",
+    "callDevicesBody": "აირჩიეთ ერთი, რომლითაც გააგრძელებთ. სანამ ამას არ გააკეთებთ, არცერთი არ აგზავნის თქვენს მიკროფონს ან კამერას.",
+    "callDevicesUseThis": "გამოიყენეთ ეს მოწყობილობა",
+    "callDevicesLeaveHere": "დატოვეთ ზარი აქ",
+    "callDevicesOlderTitle": "თქვენს სხვა მოწყობილობას არ შეუძლია ამ ზარის დატოვება დამოუკიდებლად.",
+    "callDevicesOlderBody": "დაასრულეთ ზარი იქ, ან დატოვეთ აქ. ეს ჩვეულებრივ ნიშნავს, რომ ის მუშაობს ძველ ვერსიაზე და მისი განახლება ამას გამოასწორებს.",
+    "callContinuingElsewhere": "ეს ზარი გრძელდება თქვენს სხვა მოწყობილობაზე."
 }
