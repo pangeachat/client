@@ -327,6 +327,16 @@ class GoogleAnalytics {
     );
   }
 
+  /// The learner was offered a tutorial and said no. Its own event rather than
+  /// an absent `tutorial_progress`, so "declined" is measurable instead of
+  /// inferred from silence — see tutorials.instructions.md.
+  static void declineTutorial(String tutorialName, int step) {
+    logEvent(
+      'tutorial_declined',
+      parameters: {'tutorial_name': tutorialName, 'tutorial_step': step},
+    );
+  }
+
   static FirebaseAnalyticsObserver? getAnalyticsObserver() {
     // analytics is null when Firebase init was skipped (no env config, e.g.
     // local dev). Return null so the router simply runs without the observer

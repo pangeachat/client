@@ -8,6 +8,8 @@ import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.
 import 'package:fluffychat/features/languages/language_flag_chip.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/tutorials/tutorial_target.dart';
+import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_session_badge.dart';
@@ -262,6 +264,8 @@ class _PowerupsPill extends StatelessWidget {
                                 ),
                                 ClusterTrackerButton(
                                   indicator: ProgressIndicatorEnum.wordsUsed,
+                                  tutorialTargetId:
+                                      TutorialTargetIds.analyticsVocabTracker,
                                   count: vocab,
                                   selected:
                                       selectedTab ==
@@ -336,6 +340,11 @@ class ClusterTrackerButton extends StatefulWidget {
   final double iconSize;
   final double fontSize;
 
+  /// Registers this tracker as a tutorial spotlight target. Shares its id
+  /// between the wide cluster and the narrow analytics bar — only one is ever
+  /// mounted.
+  final String? tutorialTargetId;
+
   const ClusterTrackerButton({
     required this.indicator,
     required this.count,
@@ -344,6 +353,7 @@ class ClusterTrackerButton extends StatefulWidget {
     this.horizontalPadding = 16,
     this.iconSize = 24,
     this.fontSize = 16,
+    this.tutorialTargetId,
     super.key,
   });
 
@@ -371,96 +381,98 @@ class _ClusterTrackerButtonState extends State<ClusterTrackerButton> {
     // wears the practice badge (icon + running timer) and its tap RESUMES the
     // session instead of opening analytics (gated in the view model). See
     // routing.instructions.md § Practice is a persistent background session.
-    return ListenableBuilder(
-      listenable: PracticeSessionHolder.instance,
-      builder: (context, _) {
-        final holder = PracticeSessionHolder.instance;
-        final tracksPractice =
-            indicator == ProgressIndicatorEnum.wordsUsed ||
-            indicator == ProgressIndicatorEnum.morphsUsed;
-        final liveSessionStart =
-            tracksPractice && holder.liveType == indicator.constructType
-            ? holder.current?.sessionController.session?.startedAt
-            : null;
+    return TutorialTarget(
+      targetId: widget.tutorialTargetId,
+      child: ListenableBuilder(
+        listenable: PracticeSessionHolder.instance,
+        builder: (context, _) {
+          final holder = PracticeSessionHolder.instance;
+          final tracksPractice =
+              indicator == ProgressIndicatorEnum.wordsUsed ||
+              indicator == ProgressIndicatorEnum.morphsUsed;
+          final liveSessionStart =
+              tracksPractice && holder.liveType == indicator.constructType
+              ? holder.current?.sessionController.session?.startedAt
+              : null;
 
-        final semanticsLabel = liveSessionStart != null
-            ? '${indicator.tooltip(context)}: $count — '
-                  '${L10n.of(context).practice}'
-            : '${indicator.tooltip(context)}: $count';
+          final semanticsLabel = liveSessionStart != null
+              ? '${indicator.tooltip(context)}: $count — '
+                    '${L10n.of(context).practice}'
+              : '${indicator.tooltip(context)}: $count';
 
-        return Tooltip(
-          message: liveSessionStart != null
-              ? L10n.of(context).practice
-              : indicator.tooltip(context),
-          // The Semantics below carries the full "<stat>: <count>" name;
-          // exclude the Tooltip so it isn't announced twice ("Stars Stars: 0").
-          excludeFromSemantics: true,
-          child: InkWell(
-            onTap: onTap,
-            onHover: (h) => setState(() => _hovered = h),
-            hoverColor: liveSessionStart != null
-                ? Colors.transparent
-                : AppConfig.goldByTheme(context).withAlpha(50),
-            borderRadius: BorderRadius.circular(100),
-            child: Semantics(
-              button: true,
-              // The exact count — assistive tech is never given the
-              // abbreviation.
-              label: semanticsLabel,
-              excludeSemantics: true,
-              // While a session is live the badge takes the button's place:
-              // ONE stadium fill on exactly the hover-highlight geometry
-              // (same radius, same padded bounds), practice icon over the
-              // running timer inside it. Painted as INK (not a Container) so
-              // Material's press splash renders on top of the fill — the same
-              // white flash the sibling trackers give.
-              child: Ink(
-                decoration: liveSessionStart != null
-                    ? BoxDecoration(
-                        color: Theme.of(context).colorScheme.primary.withValues(
-                          alpha: _hovered ? 1.0 : 0.75,
-                        ),
-                        borderRadius: BorderRadius.circular(100),
-                      )
-                    // Open-panel highlight: a persistent version of the hover
-                    // wash on the same padded geometry, so the tracker whose
-                    // analytics is showing stays lit (#7977).
-                    : selected
-                    ? BoxDecoration(
-                        color: AppConfig.goldByTheme(context).withAlpha(50),
-                        borderRadius: BorderRadius.circular(100),
-                      )
-                    : null,
-                padding: EdgeInsets.symmetric(
-                  horizontal: horizontalPadding,
-                  vertical: 9,
-                ),
-                child: liveSessionStart != null
-                    ? PracticeSessionBadge(
-                        startedAt: liveSessionStart,
-                        iconSize: iconSize,
-                        fontSize: fontSize,
-                      )
-                    : Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(indicator.icon, size: iconSize),
-                          const SizedBox(height: 3),
-                          Text(
-                            compactCount(count),
-                            style: TextStyle(
-                              fontSize: fontSize,
-                              height: 1.1,
-                              fontWeight: FontWeight.w600,
+          return Tooltip(
+            message: liveSessionStart != null
+                ? L10n.of(context).practice
+                : indicator.tooltip(context),
+            // The Semantics below carries the full "<stat>: <count>" name;
+            // exclude the Tooltip so it isn't announced twice ("Stars Stars: 0").
+            excludeFromSemantics: true,
+            child: InkWell(
+              onTap: onTap,
+              onHover: (h) => setState(() => _hovered = h),
+              hoverColor: liveSessionStart != null
+                  ? Colors.transparent
+                  : AppConfig.goldByTheme(context).withAlpha(50),
+              borderRadius: BorderRadius.circular(100),
+              child: Semantics(
+                button: true,
+                // The exact count — assistive tech is never given the
+                // abbreviation.
+                label: semanticsLabel,
+                excludeSemantics: true,
+                // While a session is live the badge takes the button's place:
+                // ONE stadium fill on exactly the hover-highlight geometry
+                // (same radius, same padded bounds), practice icon over the
+                // running timer inside it. Painted as INK (not a Container) so
+                // Material's press splash renders on top of the fill — the same
+                // white flash the sibling trackers give.
+                child: Ink(
+                  decoration: liveSessionStart != null
+                      ? BoxDecoration(
+                          color: Theme.of(context).colorScheme.primary
+                              .withValues(alpha: _hovered ? 1.0 : 0.75),
+                          borderRadius: BorderRadius.circular(100),
+                        )
+                      // Open-panel highlight: a persistent version of the hover
+                      // wash on the same padded geometry, so the tracker whose
+                      // analytics is showing stays lit (#7977).
+                      : selected
+                      ? BoxDecoration(
+                          color: AppConfig.goldByTheme(context).withAlpha(50),
+                          borderRadius: BorderRadius.circular(100),
+                        )
+                      : null,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: horizontalPadding,
+                    vertical: 9,
+                  ),
+                  child: liveSessionStart != null
+                      ? PracticeSessionBadge(
+                          startedAt: liveSessionStart,
+                          iconSize: iconSize,
+                          fontSize: fontSize,
+                        )
+                      : Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(indicator.icon, size: iconSize),
+                            const SizedBox(height: 3),
+                            Text(
+                              compactCount(count),
+                              style: TextStyle(
+                                fontSize: fontSize,
+                                height: 1.1,
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
+                          ],
+                        ),
+                ),
               ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }

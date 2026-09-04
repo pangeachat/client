@@ -194,6 +194,61 @@ class RankingResult {
   Set<String> get midIds => ordered.skip(largeBudget).take(midBudget).toSet();
 }
 
+/// The one activity the world tutorial points the learner at, or null when
+/// nothing on the map qualifies.
+///
+/// **Two roles, always — this is a hard gate, not a preference.** The bot fills
+/// exactly one seat, so a two-role activity is the ONLY kind a learner with
+/// nobody else around can actually start; anything else strands them on a start
+/// page waiting for humans who are not coming. The same reasoning already
+/// demotes 3+ role activities on a new learner's map
+/// ([isMultiPersonFirstMap]) — here it excludes them outright, because the
+/// tutorial is choosing on the learner's behalf and telling them to tap it. An
+/// unknown role count is excluded too: it cannot be confirmed to be two.
+///
+/// Among those, deliberately blunt: the **first** placed activity at the
+/// **lowest** level, preferring one that is plainly **available** over a live
+/// session someone else is running or a trail star the learner already
+/// finished. No level matching against the learner and no keyword — the step
+/// exists to teach what an activity IS, so the easiest possible one wins, and a
+/// rule with nothing to tune cannot quietly stop matching.
+///
+/// State, unlike the role count, is a **preference**: a map whose only two-role
+/// activities are live sessions still yields a starter. An activity with no CEFR
+/// sorts last — unknown is not evidence of "easy".
+///
+/// Ties break on input order, so the answer is stable for a given pin list
+/// (`List.sort` is not stable on its own, hence the index carried through).
+QuestActivityCard? pickStarterActivity({
+  required List<QuestActivityCard> candidates,
+  required ActivityPinState Function(QuestActivityCard) stateOf,
+}) {
+  final placed = <({QuestActivityCard card, int index})>[
+    for (final (index, card) in candidates.indexed)
+      if (card.point != null && card.roleCount == 2) (card: card, index: index),
+  ];
+  if (placed.isEmpty) return null;
+
+  int levelRank(QuestActivityCard card) {
+    final cefr = card.cefr;
+    if (cefr == null || cefr.isEmpty) return 1 << 20;
+    return LanguageLevelTypeEnum.fromString(cefr).storageInt;
+  }
+
+  // 0 for available, 1 for anything else — the whole of the state preference.
+  int stateRank(QuestActivityCard card) =>
+      stateOf(card) == ActivityPinState.available ? 0 : 1;
+
+  placed.sort((a, b) {
+    final byState = stateRank(a.card).compareTo(stateRank(b.card));
+    if (byState != 0) return byState;
+    final byLevel = levelRank(a.card).compareTo(levelRank(b.card));
+    if (byLevel != 0) return byLevel;
+    return a.index.compareTo(b.index);
+  });
+  return placed.first.card;
+}
+
 /// The relevance band (0..2) for a pin: the next-Mission gradient when the pin
 /// sits in one of the learner's in-scope quests, else a plain L2/level-fit floor
 /// kept below the in-quest gradient (foreign 0, in-L2 level-appropriate
@@ -567,6 +622,36 @@ Rect midPinRect(
   headDiameter,
   headDiameter + pointHeight,
 );
+
+/// The on-screen rect a pin occupies, given its geographic [tip] in screen
+/// coordinates and the tier/state it drew at. The inverse of the marker
+/// geometry: every layer anchors its box to the point differently, so anything
+/// drawing OVER a pin — the tutorial's spotlight — has to ask here rather than
+/// assume a centred box.
+///
+///  * **mid** (a teardrop, except the inProgress star) hangs its box above the
+///    point, tip on it — [midPinRect].
+///  * **large** anchors `topCenter`, so the card sits above the point with room
+///    reserved for the tail beneath and the badge overhang above and aside.
+///  * everything else is a plain box centred on the point.
+Rect pinRectAt(
+  Offset tip, {
+  required PinTier tier,
+  required ActivityPinState state,
+  required double largeTailHeight,
+  required double largeBadgeOverhang,
+}) {
+  if (tier == PinTier.mid && state != ActivityPinState.inProgress) {
+    return midPinRect(tip);
+  }
+  if (tier == PinTier.large) {
+    final width = tier.dotWidth + largeBadgeOverhang * 2;
+    final height = tier.dotHeight(state) + largeTailHeight + largeBadgeOverhang;
+    return Rect.fromLTWH(tip.dx - width / 2, tip.dy - height, width, height);
+  }
+  final box = tier.markerBox(state);
+  return Rect.fromCenter(center: tip, width: box.width, height: box.height);
+}
 
 /// The outcome of the mid-pin placement pass ([placeMidPins]): which candidates
 /// render as `mid`. A candidate absent from [midIds] was demoted to a small dot

@@ -7,6 +7,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/hex_level_badge.dart';
 import 'package:fluffychat/routes/world/level_up_badge_celebration.dart';
@@ -292,6 +293,8 @@ class _PowerupsRow extends StatelessWidget {
                                   ),
                                   ClusterTrackerButton(
                                     indicator: ProgressIndicatorEnum.wordsUsed,
+                                    tutorialTargetId:
+                                        TutorialTargetIds.analyticsVocabTracker,
                                     count: vocab,
                                     selected:
                                         selectedTab ==

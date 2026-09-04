@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
+import 'package:fluffychat/features/tutorials/tutorial_target.dart';
+import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/pangea_icon_button.dart';
 import 'package:fluffychat/widgets/layouts/cavity_controls.dart';
@@ -777,13 +779,16 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceAround,
                                 children: [
-                                  PangeaIconButton(
-                                    selected:
-                                        widget.activeSection ==
-                                        AppSection.world,
-                                    tooltip: l10n.world,
-                                    onPressed: () =>
-                                        _onRailItemTap(AppSection.world),
+                                  TutorialTarget(
+                                    targetId: TutorialTargetIds.navWorld,
+                                    child: PangeaIconButton(
+                                      selected:
+                                          widget.activeSection ==
+                                          AppSection.world,
+                                      tooltip: l10n.world,
+                                      onPressed: () =>
+                                          _onRailItemTap(AppSection.world),
+                                    ),
                                   ),
                                   Semantics(
                                     container: true,
@@ -804,6 +809,8 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
                                                   widget.activeSection ==
                                                   AppSection.chats,
                                               tooltip: l10n.allChats,
+                                              tutorialTargetId:
+                                                  TutorialTargetIds.navChats,
                                               onTap: () => _onRailItemTap(
                                                 AppSection.chats,
                                               ),
@@ -824,6 +831,8 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
                                               AppSection.courses &&
                                           !widget.courseShortcutSelected,
                                       tooltip: l10n.courses,
+                                      tutorialTargetId:
+                                          TutorialTargetIds.navCourses,
                                       onTap: () =>
                                           _onRailItemTap(AppSection.courses),
                                     ),
@@ -862,24 +871,32 @@ class _RailButton extends StatelessWidget {
   final String? tooltip;
   final VoidCallback onTap;
 
+  /// Registers this button as a tutorial spotlight target. Shares its id with
+  /// the wide rail's equivalent item — only one layout is ever mounted.
+  final String? tutorialTargetId;
+
   const _RailButton({
     required this.icon,
     required this.selectedIcon,
     required this.selected,
     this.tooltip,
     required this.onTap,
+    this.tutorialTargetId,
   });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return IconButton(
-      tooltip: tooltip,
-      isSelected: selected,
-      onPressed: onTap,
-      icon: Icon(
-        selected ? selectedIcon : icon,
-        color: selected ? theme.colorScheme.primary : null,
+    return TutorialTarget(
+      targetId: tutorialTargetId,
+      child: IconButton(
+        tooltip: tooltip,
+        isSelected: selected,
+        onPressed: onTap,
+        icon: Icon(
+          selected ? selectedIcon : icon,
+          color: selected ? theme.colorScheme.primary : null,
+        ),
       ),
     );
   }

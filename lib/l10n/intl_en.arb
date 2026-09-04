@@ -5466,5 +5466,36 @@
     },
     "resetLanguageLevel": "Reset language level",
     "noPermissionToInviteUsers": "You don't have permission to invite members here.",
-    "@noPermissionToInviteUsers": {}
+    "@noPermissionToInviteUsers": {},
+    "tutorialWelcome": "I'm Pangea Bot, your guide and AI conversation partner. Let's get learning!",
+    "tutorialWorldMapIntro": "This is the world map. Every roleplay activity in {language} lives here.",
+    "@tutorialWorldMapIntro": {
+        "placeholders": {
+            "language": {
+                "type": "String"
+            }
+        }
+    },
+    "tutorialWorldMapPickActivity": "This is a conversation activity you can play with me or a partner. Click on it to start playing!",
+    "tutorialActivityGoals": "Here are the goals for the role you're playing, send messages that complete them and earn stars!",
+    "tutorialCoursePlanIntro": "Welcome to your course, {courseName}! It will take you through a learning journey with your course mates.",
+    "@tutorialCoursePlanIntro": {
+        "placeholders": {
+            "courseName": {
+                "type": "String"
+            }
+        }
+    },
+    "tutorialCoursePlanProgress": "As you do activities and gain stars, you'll make progress here.",
+    "tutorialCoursePlanPickActivity": "These are the activities to try next in your course. Tap one to open and start it!",
+    "tutorialCoursePlanNoActivities": "Tap any activity in your plan to open and start it!",
+    "tutorialAppTourOffer": "Great job finishing your first activity! Would you like me to show you around the app?",
+    "tutorialAppTourAccept": "Give me a tour",
+    "tutorialAppTourDecline": "Skip",
+    "tutorialAppTourChats": "This is your chat list \u2014 find friends to chat with, or talk to me any time.",
+    "tutorialAppTourCoursesSome": "Your courses live here. Looks like you've joined one already!",
+    "tutorialAppTourCoursesNone": "Courses live here \u2014 you can join one with a code, or make your own.",
+    "tutorialAppTourAnalytics": "This is your progress: every word and grammar form you've used.",
+    "tutorialAppTourPractice": "You'll find personalized practice lessons here, as long as you've unlocked at least 10 vocab words",
+    "tutorialAppTourWorld": "And this brings you back to the world map any time. Happy learning!"
 }

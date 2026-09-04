@@ -10,6 +10,7 @@ import 'package:fluffychat/features/navigation/app_section.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/course_avatar.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -138,6 +139,7 @@ class SpacesNavigationRail extends StatelessWidget {
                                 context.go(WorkspaceNav.clearAll());
                               },
                               toolTip: L10n.of(context).world,
+                              tutorialTargetId: TutorialTargetIds.navWorld,
                               naviRailWidth: naviRailWidth,
                             ),
                             // 2. Chats — the chat list. Chromeless (no box fill) and
@@ -168,6 +170,7 @@ class SpacesNavigationRail extends StatelessWidget {
                                 );
                               },
                               toolTip: L10n.of(context).allChats,
+                              tutorialTargetId: TutorialTargetIds.navChats,
                               unreadBadgeFilter: (room) =>
                                   room.firstSpaceParent == null,
                               naviRailWidth: naviRailWidth,
@@ -195,6 +198,7 @@ class SpacesNavigationRail extends StatelessWidget {
                                 );
                               },
                               toolTip: L10n.of(context).courses,
+                              tutorialTargetId: TutorialTargetIds.navCourses,
                               naviRailWidth: naviRailWidth,
                             ),
                             // A plain Column, NOT a nested ListView: a

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/features/tutorials/tutorial_copy.dart';
+import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_tooltip_widget.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 
@@ -18,6 +20,15 @@ class TutorialTooltipContainerWidget extends StatelessWidget {
   final int currentStep;
   final int totalSteps;
 
+  /// A branch step's answers, forwarded to the card so they render inside it.
+  /// Each is a real labelled button so it is reachable on its own — the overlay
+  /// hides everything under it from assistive tech.
+  final List<({String label, TutorialChoiceOutcome outcome})> choices;
+  final void Function(TutorialChoiceOutcome) onChoice;
+
+  /// See [TutorialStepData.wordBubble].
+  final TutorialGreeting? wordBubble;
+
   const TutorialTooltipContainerWidget({
     super.key,
     required this.width,
@@ -30,6 +41,9 @@ class TutorialTooltipContainerWidget extends StatelessWidget {
     this.showPrevious = false,
     required this.currentStep,
     required this.totalSteps,
+    this.choices = const [],
+    required this.onChoice,
+    this.wordBubble,
   });
 
   @override
@@ -52,6 +66,9 @@ class TutorialTooltipContainerWidget extends StatelessWidget {
                   text: text,
                   currentStep: currentStep,
                   totalSteps: totalSteps,
+                  choices: choices,
+                  onChoice: onChoice,
+                  wordBubble: wordBubble,
                 ),
               ),
             ),

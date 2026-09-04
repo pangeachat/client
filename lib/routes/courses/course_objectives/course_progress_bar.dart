@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
+import 'package:fluffychat/features/tutorials/tutorial_target.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 
 /// The overall course progress bar for the course page: the quest's
@@ -16,13 +17,25 @@ import 'package:fluffychat/l10n/l10n.dart';
 /// the layout (and the peek) stays stable.
 class CourseProgressBar extends StatelessWidget {
   final QuestObjectivesLoader objectivesProvider;
-  const CourseProgressBar({required this.objectivesProvider, super.key});
+
+  /// Registers this bar as a tutorial spotlight target. Only the course page's
+  /// instance passes one; the bar renders in three places ([TutorialTarget]).
+  final String? tutorialTargetId;
+
+  const CourseProgressBar({
+    required this.objectivesProvider,
+    this.tutorialTargetId,
+    super.key,
+  });
 
   @override
-  Widget build(BuildContext context) => ValueListenableBuilder(
-    valueListenable: objectivesProvider.progression,
-    builder: (context, progression, _) =>
-        ProgressBarRow(summary: objectivesProvider.questStars),
+  Widget build(BuildContext context) => TutorialTarget(
+    targetId: tutorialTargetId,
+    child: ValueListenableBuilder(
+      valueListenable: objectivesProvider.progression,
+      builder: (context, progression, _) =>
+          ProgressBarRow(summary: objectivesProvider.questStars),
+    ),
   );
 }
 

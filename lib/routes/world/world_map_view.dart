@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
+import 'package:collection/collection.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:matrix/matrix.dart';
@@ -19,6 +20,8 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
+import 'package:fluffychat/features/tutorials/tutorial_target.dart';
+import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
@@ -324,6 +327,49 @@ class _WorldMapViewState extends State<WorldMapView> {
       left: PinSize.midDiameter / 2,
       top: tipY,
     );
+  }
+
+  /// Hand the tutorial the on-screen rect of the pin it is pointing at, so its
+  /// spotlight can be a hole the size and shape of that pin.
+  ///
+  /// It has to come from here: only this method knows which TIER the pin drew at
+  /// this frame, and each tier anchors its box to the geographic point
+  /// differently ([pinRectAt]). Sized for the wrong tier the hole lands off the
+  /// pin entirely — a mid-sized circle over a large card sits below its tail.
+  /// Projected from the live camera, so the hole tracks the pin while the map
+  /// glides it to the middle.
+  void _publishTutorialPinRect({
+    required String? id,
+    required PinTier? tier,
+    required ActivityPinState? state,
+    required LatLng? point,
+  }) {
+    final box = MatrixState.pAnyState.getRenderBox(
+      TutorialTargetIds.worldMapViewport,
+    );
+    if (id == null ||
+        point == null ||
+        tier == null ||
+        state == null ||
+        box == null) {
+      widget.controller.publishTutorialPinRect(null);
+      return;
+    }
+    try {
+      final local = pinRectAt(
+        widget.controller.mapController.camera.latLngToScreenOffset(point),
+        tier: tier,
+        state: state,
+        largeTailHeight: WorldMapLargeCard.tailHeight,
+        largeBadgeOverhang: WorldMapLargeCard.badgeOverhang,
+      );
+      widget.controller.publishTutorialPinRect(
+        local.shift(box.localToGlobal(Offset.zero)),
+      );
+    } catch (_) {
+      // Camera not laid out yet; the next frame publishes it.
+      widget.controller.publishTutorialPinRect(null);
+    }
   }
 
   /// Whether [point] currently falls inside the camera's visible bounds — the
@@ -680,6 +726,25 @@ class _WorldMapViewState extends State<WorldMapView> {
       }
     }
 
+    // The tutorial's chosen pin is exempt from the attention budget: at narrow
+    // widths the heavy tiers empty first (world-map.instructions.md), and a step
+    // asking the learner to tap ONE activity cannot point at an 8px dot. Mid is
+    // the floor, never a demotion — a pin that earned large keeps it.
+    final tutorialPinId = widget.controller.tutorialStarterActivityId;
+    if (tutorialPinId != null && tiers[tutorialPinId] != PinTier.large) {
+      tiers[tutorialPinId] = PinTier.mid;
+    }
+    _publishTutorialPinRect(
+      id: tutorialPinId,
+      tier: tutorialPinId == null ? null : tiers[tutorialPinId],
+      state: tutorialPinId == null ? null : states[tutorialPinId],
+      point: tutorialPinId == null
+          ? null
+          : visible
+                .firstWhereOrNull((c) => c.activityId == tutorialPinId)
+                ?.point,
+    );
+
     return _PinRenderer(
       visible: visible,
       activityIdToStarLevel: starLevels,
@@ -851,6 +916,13 @@ class _WorldMapViewState extends State<WorldMapView> {
     // per frame, then lay out the layers from it.
     final render = _resolvePinRender(context);
 
+    // Tell the worldMap tutorial whether the map is drawing anything — this is
+    // where the camera decides what is visible at all. A boolean rather than the
+    // pin set: this runs every frame.
+    widget.controller.publishTutorialPinState(
+      hasAnyPins: render.visible.any((c) => c.point != null),
+    );
+
     // Detect newly-gone pins before building the marker layers.
     _updateExiting(render);
 
@@ -976,149 +1048,155 @@ class _WorldMapViewState extends State<WorldMapView> {
               evictErrorTileStrategy:
                   EvictErrorTileStrategy.notVisibleRespectMargin,
             );
-            return FlutterMap(
-              mapController: widget.controller.mapController,
-              options: MapOptions(
-                // The persistent instance keeps its own camera across
-                // navigation, so no external camera-state restore is needed.
-                initialCenter:
-                    widget.controller.widget.initialCenter ??
-                    const LatLng(20, 0),
-                initialZoom: widget.controller.widget.initialZoom ?? 3,
-                minZoom: minZoom,
-                maxZoom: WorldMapConstants.maxZoom,
-                // Clamp latitude only — leaving longitude free so the user can pan
-                // east-west and the world wraps seamlessly ("rotate the world
-                // around"). Epsg3857 replicates longitude, so tiles and markers
-                // repeat across world copies automatically. A longitude-bounded
-                // `contain`/`containCenter` pins the camera when zoomed out and hides
-                // content behind the left column with no way to pan it out.
-                cameraConstraint: const CameraConstraint.containLatitude(
-                  90,
-                  -90,
-                ),
-                // Un-tiled map area — every gap a zoom opens up before its
-                // tiles arrive — paints this. flutter_map's default is a
-                // light grey (#E0E0E0), which is what makes a zoom
-                // "flashbang" a dark-theme user (#7937).
-                backgroundColor: mapBackground,
-                // Scroll-wheel zoom stays flutter_map's: it applies each wheel
-                // event immediately, which is what direct manipulation should
-                // do. An eased, cursor-anchored version was tried for #7937
-                // and felt delayed and jumpy next to this — the ease showed up
-                // as input lag, not as calm. Only the programmatic glides
-                // (focus button, world reset) were slowed.
-                interactionOptions: InteractionOptions(
-                  flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
-                  // Keep the map's invisible focus target out of Tab
-                  // traversal, and stop it grabbing focus at mount
-                  // (KeyboardOptions defaults autofocus to TRUE) — both
-                  // derail the workspace tab order (#7219).
-                  keyboardOptions: KeyboardOptions(
-                    focusNode: _mapKeyboardFocusNode,
-                    autofocus: false,
+            // Registered so the tutorial can turn a pin's LatLng into screen
+            // coordinates: `latLngToScreenOffset` answers in the map's own
+            // space, and this box is what converts that to global.
+            return TutorialTarget(
+              targetId: TutorialTargetIds.worldMapViewport,
+              child: FlutterMap(
+                mapController: widget.controller.mapController,
+                options: MapOptions(
+                  // The persistent instance keeps its own camera across
+                  // navigation, so no external camera-state restore is needed.
+                  initialCenter:
+                      widget.controller.widget.initialCenter ??
+                      const LatLng(20, 0),
+                  initialZoom: widget.controller.widget.initialZoom ?? 3,
+                  minZoom: minZoom,
+                  maxZoom: WorldMapConstants.maxZoom,
+                  // Clamp latitude only — leaving longitude free so the user can pan
+                  // east-west and the world wraps seamlessly ("rotate the world
+                  // around"). Epsg3857 replicates longitude, so tiles and markers
+                  // repeat across world copies automatically. A longitude-bounded
+                  // `contain`/`containCenter` pins the camera when zoomed out and hides
+                  // content behind the left column with no way to pan it out.
+                  cameraConstraint: const CameraConstraint.containLatitude(
+                    90,
+                    -90,
                   ),
-                ),
-                // Tapping empty map does not clear focus — a focus is cleared only by
-                // closing its panel or focusing another (world-map.instructions.md).
-                // World pins are viewport-bounded: load once the camera is ready, then
-                // re-load (debounced) as the user pans/zooms. Course pins are
-                // context-bound and unaffected.
-                onMapReady: widget.controller.loadWorldPins,
-                onPositionChanged: (_, hasGesture) =>
-                    widget.controller.onMapPositionChanged(hasGesture),
-              ),
-              children: [
-                // Dark theme is ONE ColorFiltered (invert + 180° hue-rotate)
-                // over the whole tile layer, not a per-tile tileBuilder: the
-                // matrix is identical either way (world_map_dark_tiles_test
-                // pins it), but per-tile means a saveLayer per visible tile
-                // and measured roughly double the filter's frame cost on
-                // CPU-constrained machines — 82% vs 35% of pan frames over
-                // 17ms at 6x throttle (#8623, measurements on #8603). Do not
-                // move this back to `tileBuilder: darkModeTileBuilder`.
-                if (dark)
-                  darkModeTilesContainerBuilder(context, tileLayer)
-                else
-                  tileLayer,
-                // world_v2: activity pins by relevance tier + state, capped by the
-                // width-driven budget. Small/mid dots render individually (no
-                // clustering); the large featured cards render unclustered above so
-                // they're always visible.
-                _ShimmerLayer(active: warming, child: dotLayer),
-                // Dying pins (a separate layer) so they don't disturb the live pins
-                // while animating out.
-                ExitingMarkersLayer(
-                  exiting: _dotExits.exiting,
-                  markerBox: _markerBox,
-                  markerAlignment: _markerAlignment,
-                  onExited: _onExitedMarker,
-                ).layer(),
-                // Dying large cards (demoted, or bumped out) shrinking away beneath
-                // the live layer.
-                ExitingLargeMarkersLayer(
-                  exitingLarge: _largeExits.exiting,
-                  onExited: _onExitedLargeCardMarker,
-                ).layer(),
-                // Large cards (always visible): the featured cards the width affords.
-                _ShimmerLayer(active: warming, child: largeLayer),
-                Positioned(
-                  // On a narrow screen the bottom chrome (nav widget + the search bar
-                  // riding above it) owns the bottom edge, so lift the attribution
-                  // above it — otherwise it sits unreadable UNDER the floating rail
-                  // (#7218 on narrow).
-                  left: 0,
-                  bottom: FluffyThemes.isColumnMode(context)
-                      ? 0.0
-                      : _narrowBottomChromeInset,
-                  child: SafeArea(
-                    child: Stack(
-                      children: [
-                        // Background so attributions button
-                        // is visible in dark mode
-                        Positioned(
-                          left: PlatformInfos.isMobile ? 12 : 8,
-                          bottom: PlatformInfos.isMobile ? 12 : 8,
-                          child: Container(
-                            height: 32,
-                            width: 32,
-                            decoration: BoxDecoration(
-                              color: const Color.fromARGB(130, 135, 135, 135),
-                              shape: BoxShape.circle,
-                            ),
-                          ),
-                        ),
-                        // Pointer-only, like everything drawn in this
-                        // ExcludeSemantics'd subtree: the widget's internal
-                        // expand button is a focusable the exclusion hides
-                        // from AT but NOT from Tab order, and its bottom-left
-                        // position slotted it (invisibly focused) between the
-                        // pin layer's single stop and the search bar (2.4.7,
-                        // #8714 — the composed traversal test guards this).
-                        ExcludeFocus(
-                          child: RichAttributionWidget(
-                            // #7218: bottom-LEFT so the attribution and its expand popup don't
-                            // sit under the bottom-right zoom/World controls (where it was
-                            // covered and hard to read, especially in dark mode).
-                            alignment: AttributionAlignment.bottomLeft,
-                            attributions: [
-                              TextSourceAttribution(
-                                'OpenStreetMap contributors',
-                                // OSM's attribution requirement is credit +
-                                // link (#8603); a dead onTap rendered the
-                                // credit without its required target.
-                                onTap: () => launchUrlString(
-                                  'https://www.openstreetmap.org/copyright',
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
+                  // Un-tiled map area — every gap a zoom opens up before its
+                  // tiles arrive — paints this. flutter_map's default is a
+                  // light grey (#E0E0E0), which is what makes a zoom
+                  // "flashbang" a dark-theme user (#7937).
+                  backgroundColor: mapBackground,
+                  // Scroll-wheel zoom stays flutter_map's: it applies each wheel
+                  // event immediately, which is what direct manipulation should
+                  // do. An eased, cursor-anchored version was tried for #7937
+                  // and felt delayed and jumpy next to this — the ease showed up
+                  // as input lag, not as calm. Only the programmatic glides
+                  // (focus button, world reset) were slowed.
+                  interactionOptions: InteractionOptions(
+                    flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
+                    // Keep the map's invisible focus target out of Tab
+                    // traversal, and stop it grabbing focus at mount
+                    // (KeyboardOptions defaults autofocus to TRUE) — both
+                    // derail the workspace tab order (#7219).
+                    keyboardOptions: KeyboardOptions(
+                      focusNode: _mapKeyboardFocusNode,
+                      autofocus: false,
                     ),
                   ),
+                  // Tapping empty map does not clear focus — a focus is cleared only by
+                  // closing its panel or focusing another (world-map.instructions.md).
+                  // World pins are viewport-bounded: load once the camera is ready, then
+                  // re-load (debounced) as the user pans/zooms. Course pins are
+                  // context-bound and unaffected.
+                  onMapReady: widget.controller.loadWorldPins,
+                  onPositionChanged: (_, hasGesture) =>
+                      widget.controller.onMapPositionChanged(hasGesture),
                 ),
-              ],
+                children: [
+                  // Dark theme is ONE ColorFiltered (invert + 180° hue-rotate)
+                  // over the whole tile layer, not a per-tile tileBuilder: the
+                  // matrix is identical either way (world_map_dark_tiles_test
+                  // pins it), but per-tile means a saveLayer per visible tile
+                  // and measured roughly double the filter's frame cost on
+                  // CPU-constrained machines — 82% vs 35% of pan frames over
+                  // 17ms at 6x throttle (#8623, measurements on #8603). Do not
+                  // move this back to `tileBuilder: darkModeTileBuilder`.
+                  if (dark)
+                    darkModeTilesContainerBuilder(context, tileLayer)
+                  else
+                    tileLayer,
+                  // world_v2: activity pins by relevance tier + state, capped by the
+                  // width-driven budget. Small/mid dots render individually (no
+                  // clustering); the large featured cards render unclustered above so
+                  // they're always visible.
+                  _ShimmerLayer(active: warming, child: dotLayer),
+                  // Dying pins (a separate layer) so they don't disturb the live pins
+                  // while animating out.
+                  ExitingMarkersLayer(
+                    exiting: _dotExits.exiting,
+                    markerBox: _markerBox,
+                    markerAlignment: _markerAlignment,
+                    onExited: _onExitedMarker,
+                  ).layer(),
+                  // Dying large cards (demoted, or bumped out) shrinking away beneath
+                  // the live layer.
+                  ExitingLargeMarkersLayer(
+                    exitingLarge: _largeExits.exiting,
+                    onExited: _onExitedLargeCardMarker,
+                  ).layer(),
+                  // Large cards (always visible): the featured cards the width affords.
+                  _ShimmerLayer(active: warming, child: largeLayer),
+                  Positioned(
+                    // On a narrow screen the bottom chrome (nav widget + the search bar
+                    // riding above it) owns the bottom edge, so lift the attribution
+                    // above it — otherwise it sits unreadable UNDER the floating rail
+                    // (#7218 on narrow).
+                    left: 0,
+                    bottom: FluffyThemes.isColumnMode(context)
+                        ? 0.0
+                        : _narrowBottomChromeInset,
+                    child: SafeArea(
+                      child: Stack(
+                        children: [
+                          // Background so attributions button
+                          // is visible in dark mode
+                          Positioned(
+                            left: PlatformInfos.isMobile ? 12 : 8,
+                            bottom: PlatformInfos.isMobile ? 12 : 8,
+                            child: Container(
+                              height: 32,
+                              width: 32,
+                              decoration: BoxDecoration(
+                                color: const Color.fromARGB(130, 135, 135, 135),
+                                shape: BoxShape.circle,
+                              ),
+                            ),
+                          ),
+                          // Pointer-only, like everything drawn in this
+                          // ExcludeSemantics'd subtree: the widget's internal
+                          // expand button is a focusable the exclusion hides
+                          // from AT but NOT from Tab order, and its bottom-left
+                          // position slotted it (invisibly focused) between the
+                          // pin layer's single stop and the search bar (2.4.7,
+                          // #8714 — the composed traversal test guards this).
+                          ExcludeFocus(
+                            child: RichAttributionWidget(
+                              // #7218: bottom-LEFT so the attribution and its expand popup don't
+                              // sit under the bottom-right zoom/World controls (where it was
+                              // covered and hard to read, especially in dark mode).
+                              alignment: AttributionAlignment.bottomLeft,
+                              attributions: [
+                                TextSourceAttribution(
+                                  'OpenStreetMap contributors',
+                                  // OSM's attribution requirement is credit +
+                                  // link (#8603); a dead onTap rendered the
+                                  // credit without its required target.
+                                  onTap: () => launchUrlString(
+                                    'https://www.openstreetmap.org/copyright',
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             );
           },
         ),

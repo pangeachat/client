@@ -36,6 +36,11 @@ enum InstructionsEnum {
   writingAssistanceTutorial,
   selectModeButtonsTutorial,
   emojiToolbarMode,
+  welcomeTutorial,
+  worldMapTutorial,
+  activityGoalsTutorial,
+  coursePlanTutorial,
+  appTourTutorial,
 }
 
 extension InstructionsEnumExtension on InstructionsEnum {
@@ -70,6 +75,11 @@ extension InstructionsEnumExtension on InstructionsEnum {
       case InstructionsEnum.writingAssistanceTutorial:
       case InstructionsEnum.selectModeButtonsTutorial:
       case InstructionsEnum.emojiToolbarMode:
+      case InstructionsEnum.welcomeTutorial:
+      case InstructionsEnum.worldMapTutorial:
+      case InstructionsEnum.activityGoalsTutorial:
+      case InstructionsEnum.coursePlanTutorial:
+      case InstructionsEnum.appTourTutorial:
         ErrorHandler.logError(
           e: Exception("No title for this instruction"),
           data: {'this': this},
@@ -126,6 +136,11 @@ extension InstructionsEnumExtension on InstructionsEnum {
       case InstructionsEnum.writingAssistanceTutorial:
       case InstructionsEnum.selectModeButtonsTutorial:
       case InstructionsEnum.emojiToolbarMode:
+      case InstructionsEnum.welcomeTutorial:
+      case InstructionsEnum.worldMapTutorial:
+      case InstructionsEnum.activityGoalsTutorial:
+      case InstructionsEnum.coursePlanTutorial:
+      case InstructionsEnum.appTourTutorial:
         return "";
       case InstructionsEnum.disableLanguageTools:
         return l10n.disableLanguageToolsDesc;

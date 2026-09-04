@@ -25,6 +25,7 @@ import 'package:fluffychat/features/languages/language_constants.dart';
 import 'package:fluffychat/features/languages/locale_provider.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/overlay/any_state_holder.dart';
+import 'package:fluffychat/features/tutorials/tutorial_overlay_controller.dart';
 import 'package:fluffychat/features/user/user_controller.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/dev_login.dart';
@@ -105,6 +106,13 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   }
 
   static PangeaAnyState pAnyState = PangeaAnyState();
+
+  /// App-scoped, beside [pAnyState] because a tutorial's spotlight is an entry
+  /// in that registry: one controller so that two sequences can never contend
+  /// for the single blocking overlay, and so a sequence can outlive the screen
+  /// it started on. See tutorials.instructions.md.
+  static TutorialOverlayController tutorialOverlayController =
+      TutorialOverlayController();
 
   /// Not `late`: [dispose] cancels it unconditionally, so an [initState] that
   /// never reached its assignment would crash teardown with a

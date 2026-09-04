@@ -8,14 +8,27 @@ import 'package:go_router/go_router.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
+import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
+import 'package:fluffychat/features/tutorials/tutorial_constants.dart';
+import 'package:fluffychat/features/tutorials/tutorial_copy.dart';
+import 'package:fluffychat/features/tutorials/tutorial_enum.dart';
+import 'package:fluffychat/features/tutorials/tutorial_model.dart';
+import 'package:fluffychat/features/tutorials/tutorial_overlay_controller.dart';
+import 'package:fluffychat/features/tutorials/tutorial_sequences.dart';
+import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
+import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
@@ -42,6 +55,44 @@ import 'package:fluffychat/widgets/matrix.dart';
 /// Split controller/view (the codebase paradigm): [WorldMapController] owns the
 /// State — pins, camera animation, search/filter state, and the room-sync
 /// derivations — and [WorldMapView] is the stateless render that reads it.
+/// Whether the map is on screen behind whatever else is open — the surface
+/// every orientation tutorial the map hosts points at.
+///
+/// **An open left panel does not hide the map.** On a wide screen it is a
+/// column BESIDE the persistent map; in single-column mode the section surfaces
+/// ride the nav widget's cavity OVER it, map still behind
+/// (routing.instructions.md). Requiring nothing to be open was therefore far
+/// too strict: the app opens with the chat list showing, so the orientation
+/// sequence could not fire on arrival — exactly when a new learner needs it —
+/// and surfaced only if they happened to close everything.
+///
+/// Three things do withhold it:
+///  * a **course** panel, because the course tutorial owns that surface and its
+///    greeting would contend with this one;
+///  * any **right** panel — analytics and friends mean the learner is plainly
+///    doing something else;
+///  * in single-column mode a **live chat or session**, which draws full-screen
+///    over the map. On a wide screen the same panel is just another column.
+///
+/// [isWorldScope] is required throughout, panels or none: the map step's copy
+/// says every activity in the learner's language lives here, which is untrue of
+/// a course-scoped map.
+bool orientationSurfaceGate({
+  required bool isWorldScope,
+  required bool mapIsDrawingPins,
+  required bool hasRightPanel,
+  required Iterable<PanelTypesEnum> leftPanels,
+  required bool isSingleColumn,
+}) {
+  if (!isWorldScope || !mapIsDrawingPins) return false;
+  if (hasRightPanel) return false;
+  if (leftPanels.any((type) => type.isCourseRelated)) return false;
+  if (isSingleColumn && leftPanels.any((type) => type.isRoomPanel)) {
+    return false;
+  }
+  return true;
+}
+
 class WorldMap extends StatefulWidget {
   /// Optional camera override, e.g. to center on an activity's location.
   final LatLng? initialCenter;
@@ -218,6 +269,8 @@ class WorldMapController extends State<WorldMap>
     MapContextController.notifier.addListener(_onContextChange);
     MapCameraFocusRequests.notifier.addListener(_onCameraFocusRequest);
 
+    _registerTutorialLaunchers();
+
     // Rebuild when a featured large card's full plan hydrates (image + goals).
     ActivityPlanRepo.instance.addListener(_onPlanHydrate);
 
@@ -253,6 +306,17 @@ class WorldMapController extends State<WorldMap>
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    // Which panels are open is now part of the orientation gate
+    // ([_mapSurfaceIsShowing]), so a panel opening or closing has to re-ask.
+    // Without this the gate would only be re-evaluated when the map itself
+    // happened to redraw — and closing the panel that was withholding the
+    // tutorial is precisely a moment when it should appear.
+    //
+    // Held in a field because dispose must detach it, and reading
+    // `GoRouter.of(context)` there is not safe.
+    _routeProvider = GoRouter.of(context).routeInformationProvider
+      ..removeListener(_scheduleOrientationCheck)
+      ..addListener(_scheduleOrientationCheck);
     // Recompute goal/completion state when the user collects a goal or joins a
     // session (room state sync) — recolours pins and updates the filter.
     final client = Matrix.of(context).client;
@@ -345,6 +409,8 @@ class WorldMapController extends State<WorldMap>
     MapContextController.notifier.removeListener(_onContextChange);
     MapCameraFocusRequests.notifier.removeListener(_onCameraFocusRequest);
     ActivityPlanRepo.instance.removeListener(_onPlanHydrate);
+    _routeProvider?.removeListener(_scheduleOrientationCheck);
+    _unregisterTutorialLaunchers();
     // Reset the process-global so a pin selected at teardown (e.g. logging out
     // with a pin sheet up) can't strand a stale `true` that would hide the bottom
     // nav at the bare map on the next mount. See `routing.instructions.md`.
@@ -997,9 +1063,9 @@ class WorldMapController extends State<WorldMap>
   /// moving; we tween to it. [anchor] is the pin the fit is centering (if any);
   /// it steers the pan's east/west direction so the pin stays on screen for
   /// the whole glide (#7880, [WorldMapConstants.panTargetLongitude]).
-  void _animateFit(CameraFit fit, {LatLng? anchor}) {
+  Duration _animateFit(CameraFit fit, {LatLng? anchor}) {
     final target = fit.fit(mapController.camera);
-    _animateCameraTo(target.center, target.zoom, anchor: anchor);
+    return _animateCameraTo(target.center, target.zoom, anchor: anchor);
   }
 
   /// Tween the camera center + zoom to the target. The glide length scales with
@@ -1019,13 +1085,16 @@ class WorldMapController extends State<WorldMap>
   /// fetches one level. The anchor/unwrapping machinery is moot on that path —
   /// it exists to keep a pin on screen for the duration of a flight, and there
   /// is no flight.
-  void _animateCameraTo(LatLng center, double zoom, {LatLng? anchor}) {
+  /// Returns how long the camera will take to arrive — [Duration.zero] when it
+  /// moved outright — so a caller that needs the destination on screen (the
+  /// tutorial, before it points at a pin there) can wait exactly that long.
+  Duration _animateCameraTo(LatLng center, double zoom, {LatLng? anchor}) {
     final anim = _cameraAnimationController;
     if (!mounted) {
       try {
         mapController.move(center, zoom);
       } catch (_) {}
-      return;
+      return Duration.zero;
     }
     if (WorldMapConstants.movesInstantly(mapController.camera.zoom, zoom)) {
       _dropGlideInFlight();
@@ -1034,7 +1103,7 @@ class WorldMapController extends State<WorldMap>
       } catch (_) {
         // Camera not laid out yet; the next request will land.
       }
-      return;
+      return Duration.zero;
     }
     final start = mapController.camera.center;
     _camStart = start;
@@ -1048,10 +1117,12 @@ class WorldMapController extends State<WorldMap>
       ),
     );
     _camTargetZoom = zoom;
+    final glide = WorldMapConstants.glideDurationFor(_camStartZoom, zoom);
     anim
-      ..duration = WorldMapConstants.glideDurationFor(_camStartZoom, zoom)
+      ..duration = glide
       ..reset()
       ..forward();
+    return glide;
   }
 
   /// Abandons any glide in flight so its next tick can't stomp a camera that
@@ -1142,6 +1213,341 @@ class WorldMapController extends State<WorldMap>
       viewRevision.value++;
     });
     if (!wasMoving && mounted) setState(() {});
+  }
+
+  // ===========================================================================
+  // Orientation tutorials — the greeting, then the world map itself.
+  // Design: tutorials.instructions.md
+  // ===========================================================================
+
+  TutorialOverlayController get _tutorials =>
+      MatrixState.tutorialOverlayController;
+
+  /// Whether the map is currently drawing any pins at all — the signal that it
+  /// has finished loading and has content, which is what the orientation
+  /// sequence waits for. Deliberately not "two-role pins exist": the greeting
+  /// and the map introduction point at nothing, and the pin step already has
+  /// copy for the case where nothing two-role is in view.
+  bool _mapIsDrawingPins = false;
+
+  /// At most one pending check, so publishing every frame costs one callback
+  /// rather than one per frame.
+  bool _orientationCheckScheduled = false;
+
+  /// The router's provider, kept so [dispose] can detach the orientation
+  /// listener without reaching for an inherited widget.
+  GoRouteInformationProvider? _routeProvider;
+
+  void publishTutorialPinState({required bool hasAnyPins}) {
+    _mapIsDrawingPins = hasAnyPins;
+    if (!hasAnyPins) return;
+    _scheduleOrientationCheck();
+  }
+
+  /// Always post-frame, and at most one pending: this is published from the
+  /// view's build and fired again on every route change, and the check itself
+  /// can open an overlay — which must never happen mid-frame.
+  void _scheduleOrientationCheck() {
+    if (_orientationCheckScheduled) return;
+    _orientationCheckScheduled = true;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _orientationCheckScheduled = false;
+      _maybeStartOrientation();
+    });
+  }
+
+  void _registerTutorialLaunchers() {
+    _tutorials
+      ..registerLauncher(TutorialEnum.welcome, _launchWelcomeTutorial)
+      ..registerLauncher(TutorialEnum.worldMap, _launchWorldMapTutorial)
+      ..registerLauncher(TutorialEnum.appTour, _launchAppTourTutorial);
+  }
+
+  void _unregisterTutorialLaunchers() {
+    _tutorials
+      ..unregisterLauncher(TutorialEnum.welcome, _launchWelcomeTutorial)
+      ..unregisterLauncher(TutorialEnum.worldMap, _launchWorldMapTutorial)
+      ..unregisterLauncher(TutorialEnum.appTour, _launchAppTourTutorial);
+  }
+
+  /// Offered only once the map is actually showing pins and nothing is covering
+  /// it: an orientation step pointing at an empty, still-loading, or hidden map
+  /// is worse than no orientation at all.
+  void _maybeStartOrientation() {
+    if (!mounted) return;
+
+    if (!MatrixState
+        .pangeaController
+        .userController
+        .initCompleter
+        .isCompleted) {
+      return;
+    }
+
+    // EVERY tutorial this map hosts, the tour included: leaving the tour out
+    // here meant it could never fire for anyone who had finished the map
+    // orientation, which is everyone it is meant for.
+    final anyPending =
+        _tutorials.isPending(TutorialEnum.welcome) ||
+        _tutorials.isPending(TutorialEnum.worldMap) ||
+        _tutorials.isPending(TutorialEnum.appTour);
+    if (!anyPending) return;
+
+    // The surface check comes FIRST, because it gates resuming as well as
+    // starting: resuming onto a map that is covered or empty would relaunch a
+    // step whose own surface check then dismisses it again, every frame.
+    if (!_mapSurfaceIsShowing) return;
+
+    // Already running: nothing to start, but it may have been left off screen by
+    // a host teardown, a force-closed overlay, or a step whose surface went away
+    // and has now come back.
+    if (_tutorials.hasActiveSequence) {
+      _tutorials.resumeIfStranded();
+      return;
+    }
+
+    // The tour comes first once it is due: it is the answer to "what now?"
+    // after a first activity, and the map orientation is about a map the learner
+    // has by then already used.
+    if (_tutorials.isPending(TutorialEnum.appTour) && _hasFinishedAnActivity) {
+      _tutorials.requestSequence(TutorialSequences.appTourSequence);
+      return;
+    }
+
+    _tutorials.requestSequence(TutorialSequences.worldOrientationSequence);
+  }
+
+  /// The app tour's gate: the learner has finished at least one activity.
+  ///
+  /// NOTE: this is the standing "ever finished one" flag, so every existing
+  /// learner qualifies the moment this ships and would be congratulated on
+  /// finishing their first activity. That has to be resolved before release —
+  /// see tutorials.instructions.md.
+  bool get _hasFinishedAnActivity =>
+      _client?.hasAnyFinishedActivitySession == true;
+
+  /// The activity the world tutorial's second step points at, chosen once when
+  /// that step launches. See [pickStarterActivity].
+  QuestActivityCard? _tutorialStarterActivity;
+
+  /// The chosen activity's id, so the view can keep its pin at a weight the
+  /// learner can actually see. Null whenever the tutorial is not pointing at
+  /// one.
+  String? get tutorialStarterActivityId =>
+      _tutorials.isTutorialQueued(TutorialEnum.worldMap)
+      ? _tutorialStarterActivity?.activityId
+      : null;
+
+  Iterable<PanelTypesEnum> get _openLeftPanelTypes =>
+      parseOpenPanels(_uri).left.map((token) => token.type);
+
+  bool _hasActivityPanelOpen() {
+    if (!mounted) return false;
+    return _openLeftPanelTypes.contains(PanelTypesEnum.activity);
+  }
+
+  /// The chosen pin's rect on screen, published by the view each frame — it is
+  /// the only place that knows the tier the pin actually drew at, and a hole
+  /// sized for the wrong tier lands nowhere near the pin.
+  Rect? _tutorialStarterRect;
+
+  void publishTutorialPinRect(Rect? rect) => _tutorialStarterRect = rect;
+
+  /// Bring the chosen activity to the middle of the map, and wait for it to get
+  /// there. Deliberately NOT the focus token: focus is the learner's own "I'm
+  /// working with this one" state, with its own ring, and the tutorial has chosen
+  /// nothing on their behalf — it is only pointing. Reuses the same fit + glide
+  /// the focus request does.
+  ///
+  /// Awaited by the step BEFORE the one that points at the pin, so the pin is on
+  /// screen — and has a rect — by the time that step asks where it is.
+  Future<void> _centerOnTutorialStarter() async {
+    final point = _tutorialStarterActivity?.point;
+    if (point == null) return;
+    final glide = _animateFit(
+      CameraFit.coordinates(
+        coordinates: [point],
+        padding: _exposedCanvasPadding,
+        maxZoom: WorldMapConstants.focusZoom,
+      ),
+      anchor: point,
+    );
+    await Future.delayed(glide + TutorialConstants.stepSettleDelay);
+  }
+
+  Uri get _uri => GoRouter.of(context).routeInformationProvider.value.uri;
+
+  /// Whether a right-column analytics panel is open — the gate for the tour's
+  /// analytics step.
+  bool get _hasAnalyticsPanelOpen => parseOpenPanels(
+    _uri,
+  ).right.any((token) => token.type.isNonPracticeAnalyticsPanel);
+
+  /// Navigates the tour to [location], then holds
+  /// [TutorialConstants.stepSettleDelay] so the learner sees what opened before
+  /// the next message arrives over it. Every tour step that moves does this, so
+  /// the beat is uniform and lives in one place.
+  Future<void> _goAndSettle(String location) async {
+    context.go(location);
+    await Future.delayed(TutorialConstants.stepSettleDelay);
+  }
+
+  /// Each step opens the panel it is describing exactly as the learner would —
+  /// through the workspace URL, never by reaching into panel state — then gates
+  /// its own advance on that panel actually being open.
+  Future<void> _launchAppTourTutorial() async {
+    if (!mounted) return;
+    final joinedCourses = _client?.joinedCourseRooms.length ?? 0;
+
+    _tutorials.launchTutorial(
+      context: context,
+      tutorial: TutorialModel(
+        tutorialType: TutorialEnum.appTour,
+        stepsData: [
+          // The offer. Nothing lit, and a tap outside the two buttons does
+          // nothing (see TutorialStepStyle.choices).
+          TutorialStepData(canShowNextStep: () => true),
+          TutorialStepData.single(
+            targetKey: TutorialTargetIds.navChats,
+            onTap: () => _goAndSettle(
+              WorkspaceNav.setSection(
+                _uri,
+                const ChatsPanelToken(),
+                keepRoom: false,
+              ),
+            ),
+            canShowNextStep: () => parseOpenPanels(
+              _uri,
+            ).left.any((token) => token.type.isLeftChatList),
+          ),
+          TutorialStepData.single(
+            targetKey: TutorialTargetIds.navCourses,
+            onTap: () => _goAndSettle(WorkspaceNav.openAddCourse(_uri)),
+            canShowNextStep: () => parseOpenPanels(
+              _uri,
+            ).left.any((token) => token.type.isCourseRelated),
+            tooltipArgs: () => joinedCourses > 0 ? const ['some'] : const [],
+          ),
+          TutorialStepData.single(
+            targetKey: TutorialTargetIds.analyticsVocabTracker,
+            onTap: () => _goAndSettle(WorkspaceNav.openAnalytics(_uri)),
+            canShowNextStep: () => _hasAnalyticsPanelOpen,
+          ),
+          TutorialStepData.single(
+            targetKey: TutorialTargetIds.analyticsPracticeButton(
+              ConstructTypeEnum.vocab.name,
+            ),
+            // Deliberately does NOT open practice, and does NOT gate on it:
+            // the button is disabled below ten collected words, which is
+            // exactly where a learner is right after their first activity. The
+            // step shows them where practice lives; gating on it opening would
+            // stall the tour for the learner it is for.
+            // Still holds the beat, so the tour's pacing does not change on the
+            // one step that has nowhere to go.
+            onTap: () => Future.delayed(TutorialConstants.stepSettleDelay),
+            canShowNextStep: () => true,
+          ),
+          TutorialStepData.single(
+            targetKey: TutorialTargetIds.navWorld,
+            onTap: () => _goAndSettle(WorkspaceNav.clearAll()),
+            canShowNextStep: () => true,
+          ),
+        ],
+      ),
+      isFocused: true,
+    );
+  }
+
+  /// This map's live answer to [orientationSurfaceGate], which owns the rule.
+  bool get _mapSurfaceIsShowing {
+    final panels = parseOpenPanels(_uri);
+    return orientationSurfaceGate(
+      isWorldScope: isWorld,
+      mapIsDrawingPins: _mapIsDrawingPins,
+      hasRightPanel: panels.right.isNotEmpty,
+      leftPanels: panels.left.map((token) => token.type),
+      isSingleColumn: !FluffyThemes.isColumnMode(context),
+    );
+  }
+
+  Future<void> _launchWelcomeTutorial() async {
+    if (!mounted) return;
+    final greeting = await TutorialCopy.targetLanguageGreeting(context);
+    if (!mounted) return;
+    _tutorials.launchTutorial(
+      context: context,
+      tutorial: TutorialModel.welcome(greeting),
+      isFocused: true,
+    );
+  }
+
+  Future<void> _launchWorldMapTutorial() async {
+    if (!mounted) return;
+
+    // The first step is about the whole screen, so it clears the screen: every
+    // left and right panel closes and the learner lands on the bare map, which
+    // is the app's home surface on every platform — so nothing is stranded.
+    // Only on the FIRST step: a resume onto the pin step must not shut a panel
+    // the learner opened themselves.
+    if (_tutorials.state.model.stepIndex == 0) {
+      context.go(WorkspaceNav.clearAll());
+    }
+
+    // Chosen ONCE per launch and held, because the pin set is reloaded on every
+    // camera settle: re-picking per frame would swap the activity out from under
+    // the learner mid-sentence.
+    final starter = pickStarterActivity(
+      candidates: visiblePins,
+      stateOf: displayStateOf,
+    );
+    // Nothing on the map the learner could actually start. Don't launch — the
+    // host re-asks on the next pin publish, so this heals itself once the map
+    // has a two-role activity instead of showing a step with nothing in it.
+    if (starter == null) return;
+    _tutorialStarterActivity = starter;
+
+    final l2 = MatrixState.pangeaController.userController.userL2;
+    final languageName = l2?.getDisplayName(L10n.of(context)) ?? '';
+
+    _tutorials.launchTutorial(
+      context: context,
+      tutorial: TutorialModel(
+        tutorialType: TutorialEnum.worldMap,
+        stepsData: [
+          // No spotlight: lighting the whole map punches the entire scrim out,
+          // which reads as the tutorial having closed. This step is about the
+          // map as a whole, so it takes the same dimmed-with-a-centred-card
+          // treatment as the greeting, and the map stays visible through it.
+          TutorialStepData(
+            canShowNextStep: () => true,
+            tooltipArgs: () => [languageName],
+            // The camera moves on the way OUT of this step, not into it: this
+            // step is about the map as the learner already has it, and the next
+            // one is what the chosen activity is for. Awaited, so the pin has
+            // arrived — and has a rect — before that step asks where it is.
+            onTap: _centerOnTutorialStarter,
+          ),
+          TutorialStepData(
+            // The one chosen pin, projected through the live camera so the hole
+            // tracks it while the map glides to centre it. Pins carry no target
+            // ids — a repeating world mounts each one several times — which is
+            // what [TutorialStepData.spotlightRects] exists for.
+            spotlightRects: () {
+              final rect = _tutorialStarterRect;
+              return rect == null ? const <Rect>[] : [rect];
+            },
+            // A tap ANYWHERE opens the chosen activity. The learner cannot miss
+            // it and cannot pick the wrong one, which is the whole reason this
+            // step points at one activity instead of highlighting many.
+            onTap: () async => openActivity(starter),
+            canShowNextStep: _hasActivityPanelOpen,
+            // The card belongs over the map; nothing else here would say so.
+            surfaceIsVisible: () => _mapSurfaceIsShowing,
+          ),
+        ],
+      ),
+      isFocused: true,
+    );
   }
 
   /// Open the activity detail in-place, preserving the current route (map stays
