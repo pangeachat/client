@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-09-03 14:43:49.613802",
+    "@@last_modified": "2026-09-04 09:17:58.182498",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2266,5 +2266,12 @@
     "seeAll": "Бүгдийг харах",
     "seeAllSection": "Бүх {section}-г харах",
     "showMoreOptionsHint": "бусад сонголтыг харах",
-    "onboardingStepOfTotal": "Нийт {total}-ээс {step}-р алхам"
+    "onboardingStepOfTotal": "Нийт {total}-ээс {step}-р алхам",
+    "callDevicesTitle": "Энэ дуудлага таны хоёр төхөөрөмж дээр нээлттэй байна.",
+    "callDevicesBody": "Үргэлжлүүлэх төхөөрөмжөө сонгоно уу. Таныг сонгох хүртэл аль нь ч микрофон эсвэл камераа илгээхгүй.",
+    "callDevicesUseThis": "Энэ төхөөрөмжийг ашиглах",
+    "callDevicesLeaveHere": "Дуудлагыг энд орхих",
+    "callDevicesOlderTitle": "Таны нөгөө төхөөрөмж энэ дуудлагаас өөрөө гарч чадахгүй байна.",
+    "callDevicesOlderBody": "Дуудлагыг тэнд дуусгах эсвэл энд орхих. Энэ нь ихэвчлэн хуучин хувилбар ашиглаж байгааг илтгэдэг бөгөөд шинэчлэх нь үүнийг засна.",
+    "callContinuingElsewhere": "Энэ дуудлага таны нөгөө төхөөрөмж дээр үргэлжилж байна."
 }

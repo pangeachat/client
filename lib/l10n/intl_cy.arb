@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-09-03 14:43:46.360884",
+    "@@last_modified": "2026-09-04 09:17:48.777539",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2266,5 +2266,12 @@
     "seeAll": "Gweld y cyfan",
     "seeAllSection": "Gweld pob {section}",
     "showMoreOptionsHint": "dangos mwy o opsiynau",
-    "onboardingStepOfTotal": "Cam {step} o {total}"
+    "onboardingStepOfTotal": "Cam {step} o {total}",
+    "callDevicesTitle": "Mae'r alwad hon ar agor ar ddau o'ch dyfeisiau.",
+    "callDevicesBody": "Dewiswch yr un i barhau ag ef. Hyd nes y gwnewch hynny, nid yw'r naill na'r llall yn anfon eich meicroffon na'ch camera.",
+    "callDevicesUseThis": "Defnyddiwch y ddyfais hon",
+    "callDevicesLeaveHere": "Gadewch yr alwad yma",
+    "callDevicesOlderTitle": "Ni all eich dyfais arall adael yr alwad hon ar ei phen ei hun.",
+    "callDevicesOlderBody": "Terfynwch yr alwad yno, neu gadewch hi yma. Mae hynny fel arfer yn golygu ei bod yn rhedeg fersiwn hŷn, a bydd ei diweddaru yn trwsio hyn.",
+    "callContinuingElsewhere": "Mae'r alwad hon yn parhau ar eich dyfais arall."
 }

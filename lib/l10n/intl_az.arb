@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-09-03 14:43:46.015435",
+    "@@last_modified": "2026-09-04 09:17:45.724798",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2266,5 +2266,12 @@
     "seeAll": "Hamısına baxın",
     "seeAllSection": "Bütün {section} baxın",
     "showMoreOptionsHint": "daha çox seçim göstər",
-    "onboardingStepOfTotal": "{total} addımdan {step}. addım"
+    "onboardingStepOfTotal": "{total} addımdan {step}. addım",
+    "callDevicesTitle": "Bu zəng iki cihazınızda açıqdır.",
+    "callDevicesBody": "Davam etmək üçün birini seçin. Siz seçənə qədər heç biri mikrofonunuzu və ya kameranızı göndərmir.",
+    "callDevicesUseThis": "Bu cihazdan istifadə edin",
+    "callDevicesLeaveHere": "Zəngi burada tərk edin",
+    "callDevicesOlderTitle": "Digər cihazınız bu zəngi öz-özünə tərk edə bilməz.",
+    "callDevicesOlderBody": "Zəngi orada bitirin və ya burada tərk edin. Bu, adətən, onun köhnə versiyada işləməsi deməkdir və onu yeniləmək bunu düzəldəcəkdir.",
+    "callContinuingElsewhere": "Bu zəng digər cihazınızda davam edir."
 }

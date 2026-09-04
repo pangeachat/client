@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-09-03 14:43:45.856481",
+    "@@last_modified": "2026-09-04 09:17:45.432677",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2266,5 +2266,12 @@
     "seeAll": "Sien alles",
     "seeAllSection": "Sien alle {section}",
     "showMoreOptionsHint": "wys meer opsies",
-    "onboardingStepOfTotal": "Stap {step} van {total}"
+    "onboardingStepOfTotal": "Stap {step} van {total}",
+    "callDevicesTitle": "Hierdie oproep is oop op twee van jou toestelle.",
+    "callDevicesBody": "Kies die een om mee voort te gaan. Totdat jy dit doen, stuur nie een jou mikrofoon of kamera nie.",
+    "callDevicesUseThis": "Gebruik hierdie toestel",
+    "callDevicesLeaveHere": "Verlaat die oproep hier",
+    "callDevicesOlderTitle": "Jou ander toestel kan nie hierdie oproep op sy eie verlaat nie.",
+    "callDevicesOlderBody": "Beëindig die oproep daar, of verlaat dit hier. Dit beteken gewoonlik dat dit 'n ouer weergawe gebruik, en 'n opdatering sal dit regmaak.",
+    "callContinuingElsewhere": "Hierdie oproep gaan voort op jou ander toestel."
 }

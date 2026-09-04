@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-09-03 14:43:46.918846",
+    "@@last_modified": "2026-09-04 09:17:49.943815",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9862,5 +9862,12 @@
     "seeAll": "Ikusi guztiak",
     "seeAllSection": "Ikusi {section} guztiak",
     "showMoreOptionsHint": "aukera gehiago erakutsi",
-    "onboardingStepOfTotal": "{total}etik {step}. urratsa"
+    "onboardingStepOfTotal": "{total}etik {step}. urratsa",
+    "callDevicesTitle": "Dei hau zure bi gailutan dago irekita.",
+    "callDevicesBody": "Aukeratu zeinekin jarraitu. Hori egin arte, batek ere ez du zure mikrofonoa edo kamera bidaltzen.",
+    "callDevicesUseThis": "Erabili gailu hau",
+    "callDevicesLeaveHere": "Utzi deia hemen",
+    "callDevicesOlderTitle": "Zure beste gailuak ezin du dei hau bere kabuz utzi.",
+    "callDevicesOlderBody": "Amaitu deia han, edo utzi hemen. Horrek esan nahi du bertsio zahar bat exekutatzen ari dela, eta eguneratzeak konponduko duela hau.",
+    "callContinuingElsewhere": "Dei hau zure beste gailuan jarraitzen ari da."
 }

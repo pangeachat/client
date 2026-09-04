@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-03 14:43:51.966398",
+    "@@last_modified": "2026-09-04 09:18:05.531649",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7154,5 +7154,12 @@
     "seeAll": "Xem tất cả",
     "seeAllSection": "Xem tất cả {section}",
     "showMoreOptionsHint": "hiện thêm tùy chọn",
-    "onboardingStepOfTotal": "Bước {step} trên {total}"
+    "onboardingStepOfTotal": "Bước {step} trên {total}",
+    "callDevicesTitle": "Cuộc gọi này đang mở trên hai thiết bị của bạn.",
+    "callDevicesBody": "Chọn một thiết bị để tiếp tục. Cho đến khi bạn làm vậy, cả hai thiết bị đều không gửi micrô hoặc máy ảnh của bạn.",
+    "callDevicesUseThis": "Sử dụng thiết bị này",
+    "callDevicesLeaveHere": "Rời cuộc gọi tại đây",
+    "callDevicesOlderTitle": "Thiết bị khác của bạn không thể tự rời khỏi cuộc gọi này.",
+    "callDevicesOlderBody": "Kết thúc cuộc gọi ở đó hoặc rời khỏi đây. Điều đó thường có nghĩa là thiết bị đang chạy phiên bản cũ hơn và việc cập nhật sẽ khắc phục điều này.",
+    "callContinuingElsewhere": "Cuộc gọi này đang tiếp tục trên thiết bị khác của bạn."
 }

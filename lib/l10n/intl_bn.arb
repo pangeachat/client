@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-03 14:43:45.789879",
+    "@@last_modified": "2026-09-04 09:17:45.748391",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10490,5 +10490,12 @@
     "seeAll": "সব দেখুন",
     "seeAllSection": "সব দেখুন {section}",
     "showMoreOptionsHint": "আরও বিকল্প দেখান",
-    "onboardingStepOfTotal": "{total} এর মধ্যে ধাপ {step}"
+    "onboardingStepOfTotal": "{total} এর মধ্যে ধাপ {step}",
+    "callDevicesTitle": "এই কলটি আপনার দুটি ডিভাইসে খোলা আছে।",
+    "callDevicesBody": "কোনটি দিয়ে চালিয়ে যাবেন তা বেছে নিন। যতক্ষণ না আপনি তা করছেন, কোনোটিই আপনার মাইক্রোফোন বা ক্যামেরা পাঠাচ্ছে না।",
+    "callDevicesUseThis": "এই ডিভাইসটি ব্যবহার করুন",
+    "callDevicesLeaveHere": "কলটি এখানে ছেড়ে দিন",
+    "callDevicesOlderTitle": "আপনার অন্য ডিভাইসটি নিজে থেকে এই কলটি ছেড়ে যেতে পারবে না।",
+    "callDevicesOlderBody": "সেখানে কলটি শেষ করুন, অথবা এখানে ছেড়ে দিন। এর মানে সাধারণত এটি একটি পুরোনো সংস্করণ চালাচ্ছে, এবং এটি আপডেট করলে এই সমস্যাটি ঠিক হয়ে যাবে।",
+    "callContinuingElsewhere": "এই কলটি আপনার অন্য ডিভাইসে চলছে।"
 }

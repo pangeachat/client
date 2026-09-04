@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-09-03 14:43:51.863938",
+    "@@last_modified": "2026-09-04 09:18:06.110853",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9866,5 +9866,12 @@
     "seeAll": "Hammasini koʻrish",
     "seeAllSection": "Barcha {section}ni koʻrish",
     "showMoreOptionsHint": "koʻproq variantlarni koʻrsatish",
-    "onboardingStepOfTotal": "{total} dan {step}-qadam"
+    "onboardingStepOfTotal": "{total} dan {step}-qadam",
+    "callDevicesTitle": "Bu qo‘ng‘iroq ikkita qurilmangizda ochiq.",
+    "callDevicesBody": "Davom ettirish uchun birini tanlang. Tanlamaguningizcha, ikkalasi ham mikrofoningizni yoki kamerangizni yubormaydi.",
+    "callDevicesUseThis": "Bu qurilmadan foydalanish",
+    "callDevicesLeaveHere": "Qo‘ng‘iroqni shu yerda qoldirish",
+    "callDevicesOlderTitle": "Boshqa qurilmangiz bu qo‘ng‘iroqni o‘z-o‘zidan tark eta olmaydi.",
+    "callDevicesOlderBody": "Qo‘ng‘iroqni u yerda tugating yoki shu yerda qoldiring. Bu odatda uning eski versiyada ishlayotganligini anglatadi va uni yangilash buni tuzatadi.",
+    "callContinuingElsewhere": "Bu qo‘ng‘iroq boshqa qurilmangizda davom etmoqda."
 }

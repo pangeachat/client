@@ -3094,7 +3094,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-09-03 14:43:48.410750",
+    "@@last_modified": "2026-09-04 09:17:53.321544",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10494,5 +10494,12 @@
     "seeAll": "Féach ar fad",
     "seeAllSection": "Féach ar {section} ar fad",
     "showMoreOptionsHint": "taispeáin tuilleadh roghanna",
-    "onboardingStepOfTotal": "Céim {step} de {total}"
+    "onboardingStepOfTotal": "Céim {step} de {total}",
+    "callDevicesTitle": "Tá an glao seo ar oscailt ar dhá cheann de do ghléasanna.",
+    "callDevicesBody": "Roghnaigh an ceann le leanúint ar aghaidh leis. Go dtí go ndéanann tú, níl ceachtar acu ag seoladh do mhicreafón nó do cheamara.",
+    "callDevicesUseThis": "Úsáid an gléas seo",
+    "callDevicesLeaveHere": "Fág an glao anseo",
+    "callDevicesOlderTitle": "Ní féidir le do ghléas eile an glao seo a fhágáil leis féin.",
+    "callDevicesOlderBody": "Cuir deireadh leis an nglao ansin, nó fág anseo é. De ghnáth ciallaíonn sé sin go bhfuil leagan níos sine á rith aige, agus socróidh nuashonrú é seo.",
+    "callContinuingElsewhere": "Tá an glao seo ag leanúint ar do ghléas eile."
 }

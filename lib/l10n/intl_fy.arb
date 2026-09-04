@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-09-03 14:43:47.080894",
+    "@@last_modified": "2026-09-04 09:17:49.959195",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2266,5 +2266,12 @@
     "seeAll": "Alles sjen",
     "seeAllSection": "Alles sjen yn {section}",
     "showMoreOptionsHint": "mear opsjes sjen litte",
-    "onboardingStepOfTotal": "Stap {step} fan {total}"
+    "onboardingStepOfTotal": "Stap {step} fan {total}",
+    "callDevicesTitle": "Dit petear is iepen op twa fan dyn apparaten.",
+    "callDevicesBody": "Kies dejinge wêrmei't jo trochgean wolle. Oant jo dat dogge, stjoert gjinien jo mikrofoan of kamera.",
+    "callDevicesUseThis": "Brûk dit apparaat",
+    "callDevicesLeaveHere": "Ferlitte it petear hjir",
+    "callDevicesOlderTitle": "Jo oare apparaat kin dit petear net sels ferlitte.",
+    "callDevicesOlderBody": "Einigje it petear dêr, of ferlitte it hjir. Dat betsjut meastentiids dat it in âldere ferzje brûkt, en it bywurkjen sil dit oplosse.",
+    "callContinuingElsewhere": "Dit petear giet troch op jo oare apparaat."
 }

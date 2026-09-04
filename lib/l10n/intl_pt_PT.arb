@@ -2560,7 +2560,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-09-03 14:43:50.501522",
+    "@@last_modified": "2026-09-04 09:18:00.148215",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10779,5 +10779,12 @@
     "seeAll": "Ver tudo",
     "seeAllSection": "Ver tudo em {section}",
     "showMoreOptionsHint": "mostrar mais opções",
-    "onboardingStepOfTotal": "Passo {step} de {total}"
+    "onboardingStepOfTotal": "Passo {step} de {total}",
+    "callDevicesTitle": "Esta chamada está aberta em dois dos seus dispositivos.",
+    "callDevicesBody": "Escolha um para continuar. Até o fazer, nenhum está a enviar o seu microfone ou câmara.",
+    "callDevicesUseThis": "Usar este dispositivo",
+    "callDevicesLeaveHere": "Sair da chamada aqui",
+    "callDevicesOlderTitle": "O seu outro dispositivo não consegue sair desta chamada sozinho.",
+    "callDevicesOlderBody": "Termine a chamada lá, ou saia daqui. Isso geralmente significa que está a executar uma versão mais antiga, e atualizá-la irá resolver isto.",
+    "callContinuingElsewhere": "Esta chamada está a continuar no seu outro dispositivo."
 }

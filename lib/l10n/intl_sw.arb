@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-09-03 14:43:51.304286",
+    "@@last_modified": "2026-09-04 09:18:04.644518",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2266,5 +2266,12 @@
     "seeAll": "Tazama zote",
     "seeAllSection": "Tazama {section} zote",
     "showMoreOptionsHint": "onyesha chaguo zaidi",
-    "onboardingStepOfTotal": "Hatua ya {step} kati ya {total}"
+    "onboardingStepOfTotal": "Hatua ya {step} kati ya {total}",
+    "callDevicesTitle": "Simu hii imefunguliwa kwenye vifaa vyako viwili.",
+    "callDevicesBody": "Chagua kimoja cha kuendelea nacho. Hadi utakapofanya hivyo, hakuna kinachotuma maikrofoni au kamera yako.",
+    "callDevicesUseThis": "Tumia kifaa hiki",
+    "callDevicesLeaveHere": "Acha simu hapa",
+    "callDevicesOlderTitle": "Kifaa chako kingine hakiwezi kuondoka kwenye simu hii chenyewe.",
+    "callDevicesOlderBody": "Maliza simu huko, au iache hapa. Hiyo kwa kawaida inamaanisha inatumia toleo la zamani, na kuisasisha kutarekebisha hili.",
+    "callContinuingElsewhere": "Simu hii inaendelea kwenye kifaa chako kingine."
 }

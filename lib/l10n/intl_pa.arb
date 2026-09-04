@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-09-03 14:43:50.367784",
+    "@@last_modified": "2026-09-04 09:18:00.178535",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2266,5 +2266,12 @@
     "seeAll": "ਸਾਰੇ ਦੇਖੋ",
     "seeAllSection": "ਸਾਰੇ {section} ਦੇਖੋ",
     "showMoreOptionsHint": "ਹੋਰ ਵਿਕਲਪ ਦਿਖਾਓ",
-    "onboardingStepOfTotal": "{total} ਵਿੱਚੋਂ {step} ਕਦਮ"
+    "onboardingStepOfTotal": "{total} ਵਿੱਚੋਂ {step} ਕਦਮ",
+    "callDevicesTitle": "ਇਹ ਕਾਲ ਤੁਹਾਡੀਆਂ ਦੋ ਡਿਵਾਈਸਾਂ 'ਤੇ ਖੁੱਲ੍ਹੀ ਹੈ।",
+    "callDevicesBody": "ਉਹ ਚੁਣੋ ਜਿਸ ਨਾਲ ਤੁਸੀਂ ਜਾਰੀ ਰੱਖਣਾ ਚਾਹੁੰਦੇ ਹੋ। ਜਦੋਂ ਤੱਕ ਤੁਸੀਂ ਅਜਿਹਾ ਨਹੀਂ ਕਰਦੇ, ਕੋਈ ਵੀ ਤੁਹਾਡਾ ਮਾਈਕ੍ਰੋਫੋਨ ਜਾਂ ਕੈਮਰਾ ਨਹੀਂ ਭੇਜ ਰਿਹਾ ਹੈ।",
+    "callDevicesUseThis": "ਇਹ ਡਿਵਾਈਸ ਵਰਤੋ",
+    "callDevicesLeaveHere": "ਕਾਲ ਇੱਥੇ ਛੱਡੋ",
+    "callDevicesOlderTitle": "ਤੁਹਾਡੀ ਦੂਜੀ ਡਿਵਾਈਸ ਆਪਣੇ ਆਪ ਇਸ ਕਾਲ ਨੂੰ ਛੱਡ ਨਹੀਂ ਸਕਦੀ।",
+    "callDevicesOlderBody": "ਕਾਲ ਉੱਥੇ ਖਤਮ ਕਰੋ, ਜਾਂ ਇਸਨੂੰ ਇੱਥੇ ਛੱਡੋ। ਇਸਦਾ ਆਮ ਤੌਰ 'ਤੇ ਮਤਲਬ ਹੈ ਕਿ ਇਹ ਇੱਕ ਪੁਰਾਣਾ ਸੰਸਕਰਣ ਚਲਾ ਰਿਹਾ ਹੈ, ਅਤੇ ਇਸਨੂੰ ਅੱਪਡੇਟ ਕਰਨ ਨਾਲ ਇਹ ਠੀਕ ਹੋ ਜਾਵੇਗਾ।",
+    "callContinuingElsewhere": "ਇਹ ਕਾਲ ਤੁਹਾਡੀ ਦੂਜੀ ਡਿਵਾਈਸ 'ਤੇ ਜਾਰੀ ਹੈ।"
 }

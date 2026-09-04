@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-09-03 14:43:48.855379",
+    "@@last_modified": "2026-09-04 09:17:47.449103",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2266,5 +2266,12 @@
     "seeAll": "Tan-awa tanan",
     "seeAllSection": "Tan-awa tanan {section}",
     "showMoreOptionsHint": "ipakita ang dugang nga kapilian",
-    "onboardingStepOfTotal": "Lakang {step} sa {total}"
+    "onboardingStepOfTotal": "Lakang {step} sa {total}",
+    "callDevicesTitle": "Kini nga tawag bukas sa duha sa imong device.",
+    "callDevicesBody": "Pilia ang usa nga ipadayon. Hangtud nga dili nimo buhaton, walay usa nga nagpadala sa imong mikropono o camera.",
+    "callDevicesUseThis": "Gamita kini nga device",
+    "callDevicesLeaveHere": "Biya sa tawag dinhi",
+    "callDevicesOlderTitle": "Ang imong laing device dili makabiya niini nga tawag sa iyang kaugalingon.",
+    "callDevicesOlderBody": "Tapusa ang tawag didto, o biyai kini dinhi. Kasagaran nagpasabot kini nga nagpadagan kini og mas karaan nga bersyon, ug ang pag-update niini makasulbad niini.",
+    "callContinuingElsewhere": "Kini nga tawag nagpadayon sa imong laing device."
 }

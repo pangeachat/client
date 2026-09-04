@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-03 14:43:50.035794",
+    "@@last_modified": "2026-09-04 09:17:58.687318",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9862,5 +9862,12 @@
     "seeAll": "Alles weergeven",
     "seeAllSection": "Alle {section} weergeven",
     "showMoreOptionsHint": "meer opties weergeven",
-    "onboardingStepOfTotal": "Stap {step} van {total}"
+    "onboardingStepOfTotal": "Stap {step} van {total}",
+    "callDevicesTitle": "Dit gesprek is open op twee van je apparaten.",
+    "callDevicesBody": "Kies het apparaat waarmee je wilt doorgaan. Tot die tijd wordt je microfoon of camera niet verzonden vanaf geen van beide.",
+    "callDevicesUseThis": "Gebruik dit apparaat",
+    "callDevicesLeaveHere": "Verlaat het gesprek hier",
+    "callDevicesOlderTitle": "Je andere apparaat kan dit gesprek niet zelfstandig verlaten.",
+    "callDevicesOlderBody": "Beëindig het gesprek daar, of verlaat het hier. Dit betekent meestal dat het een oudere versie gebruikt, en een update zal dit oplossen.",
+    "callContinuingElsewhere": "Dit gesprek wordt voortgezet op je andere apparaat."
 }

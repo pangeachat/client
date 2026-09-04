@@ -3094,7 +3094,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-09-03 14:43:48.017305",
+    "@@last_modified": "2026-09-04 09:17:51.261608",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10494,5 +10494,12 @@
     "seeAll": "सभी देखें",
     "seeAllSection": "सभी {section} देखें",
     "showMoreOptionsHint": "और विकल्प दिखाएँ",
-    "onboardingStepOfTotal": "{total} में से चरण {step}"
+    "onboardingStepOfTotal": "{total} में से चरण {step}",
+    "callDevicesTitle": "यह कॉल आपके दो डिवाइस पर खुली है।",
+    "callDevicesBody": "जिस डिवाइस पर आप जारी रखना चाहते हैं, उसे चुनें। जब तक आप ऐसा नहीं करते, तब तक कोई भी डिवाइस आपका माइक्रोफ़ोन या कैमरा नहीं भेज रहा है।",
+    "callDevicesUseThis": "इस डिवाइस का उपयोग करें",
+    "callDevicesLeaveHere": "कॉल यहीं छोड़ दें",
+    "callDevicesOlderTitle": "आपका दूसरा डिवाइस अपने आप इस कॉल को नहीं छोड़ सकता।",
+    "callDevicesOlderBody": "कॉल को वहीं समाप्त करें, या इसे यहीं छोड़ दें। इसका आमतौर पर मतलब है कि यह एक पुराना संस्करण चला रहा है, और इसे अपडेट करने से यह ठीक हो जाएगा।",
+    "callContinuingElsewhere": "यह कॉल आपके दूसरे डिवाइस पर जारी है।"
 }

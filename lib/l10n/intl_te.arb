@@ -1325,7 +1325,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-09-03 14:43:51.567263",
+    "@@last_modified": "2026-09-04 09:18:03.898364",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10812,5 +10812,12 @@
     "seeAll": "అన్నీ చూడండి",
     "seeAllSection": "అన్నీ చూడండి {section}",
     "showMoreOptionsHint": "మరిన్ని ఎంపికలను చూపించు",
-    "onboardingStepOfTotal": "{total}లో {step}వ దశ"
+    "onboardingStepOfTotal": "{total}లో {step}వ దశ",
+    "callDevicesTitle": "ఈ కాల్ మీ రెండు పరికరాలలో తెరిచి ఉంది.",
+    "callDevicesBody": "కొనసాగించడానికి ఒకదాన్ని ఎంచుకోండి. మీరు అలా చేసే వరకు, ఏదీ మీ మైక్రోఫోన్ లేదా కెమెరాను పంపడం లేదు.",
+    "callDevicesUseThis": "ఈ పరికరాన్ని ఉపయోగించండి",
+    "callDevicesLeaveHere": "కాల్‌ను ఇక్కడ వదిలివేయండి",
+    "callDevicesOlderTitle": "మీ ఇతర పరికరం ఈ కాల్‌ను స్వయంగా వదిలివేయదు.",
+    "callDevicesOlderBody": "అక్కడ కాల్‌ను ముగించండి లేదా ఇక్కడ వదిలివేయండి. సాధారణంగా దీని అర్థం ఇది పాత వెర్షన్‌ను నడుపుతోంది, మరియు దానిని అప్‌డేట్ చేయడం దీనిని పరిష్కరిస్తుంది.",
+    "callContinuingElsewhere": "ఈ కాల్ మీ ఇతర పరికరంలో కొనసాగుతోంది."
 }

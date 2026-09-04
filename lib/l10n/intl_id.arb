@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-03 14:43:47.872386",
+    "@@last_modified": "2026-09-04 09:17:52.150210",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9935,5 +9935,12 @@
     "seeAll": "Lihat semua",
     "seeAllSection": "Lihat semua {section}",
     "showMoreOptionsHint": "tampilkan opsi lainnya",
-    "onboardingStepOfTotal": "Langkah {step} dari {total}"
+    "onboardingStepOfTotal": "Langkah {step} dari {total}",
+    "callDevicesTitle": "Panggilan ini terbuka di dua perangkat Anda.",
+    "callDevicesBody": "Pilih salah satu untuk melanjutkan. Sampai Anda melakukannya, tidak ada yang mengirim mikrofon atau kamera Anda.",
+    "callDevicesUseThis": "Gunakan perangkat ini",
+    "callDevicesLeaveHere": "Tinggalkan panggilan di sini",
+    "callDevicesOlderTitle": "Perangkat Anda yang lain tidak dapat meninggalkan panggilan ini dengan sendirinya.",
+    "callDevicesOlderBody": "Akhiri panggilan di sana, atau tinggalkan di sini. Itu biasanya berarti perangkat tersebut menjalankan versi yang lebih lama, dan memperbaruinya akan memperbaiki masalah ini.",
+    "callContinuingElsewhere": "Panggilan ini berlanjut di perangkat Anda yang lain."
 }

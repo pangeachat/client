@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-09-03 14:43:49.906668",
+    "@@last_modified": "2026-09-04 09:17:57.196708",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2266,5 +2266,12 @@
     "seeAll": "എല്ലാം കാണുക",
     "seeAllSection": "എല്ലാം കാണുക {section}",
     "showMoreOptionsHint": "കൂടുതൽ ഓപ്ഷനുകൾ കാണിക്കുക",
-    "onboardingStepOfTotal": "{total} എണ്ണത്തിൽ {step} പടി"
+    "onboardingStepOfTotal": "{total} എണ്ണത്തിൽ {step} പടി",
+    "callDevicesTitle": "നിങ്ങളുടെ രണ്ട് ഉപകരണങ്ങളിൽ ഈ കോൾ തുറന്നിരിക്കുന്നു.",
+    "callDevicesBody": "തുടരാൻ ഒരെണ്ണം തിരഞ്ഞെടുക്കുക. നിങ്ങൾ തിരഞ്ഞെടുക്കുന്നത് വരെ, മൈക്രോഫോണോ ക്യാമറയോ അയയ്‌ക്കില്ല.",
+    "callDevicesUseThis": "ഈ ഉപകരണം ഉപയോഗിക്കുക",
+    "callDevicesLeaveHere": "കോൾ ഇവിടെ ഉപേക്ഷിക്കുക",
+    "callDevicesOlderTitle": "നിങ്ങളുടെ മറ്റ് ഉപകരണത്തിന് ഈ കോൾ സ്വയം ഉപേക്ഷിക്കാൻ കഴിയില്ല.",
+    "callDevicesOlderBody": "അവിടെ കോൾ അവസാനിപ്പിക്കുക, അല്ലെങ്കിൽ ഇവിടെ ഉപേക്ഷിക്കുക. സാധാരണയായി ഇതിനർത്ഥം അത് പഴയ പതിപ്പാണ് ഉപയോഗിക്കുന്നത്, അത് അപ്‌ഡേറ്റ് ചെയ്യുന്നത് ഇത് ശരിയാക്കും.",
+    "callContinuingElsewhere": "ഈ കോൾ നിങ്ങളുടെ മറ്റ് ഉപകരണത്തിൽ തുടരുന്നു."
 }

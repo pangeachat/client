@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-09-03 14:43:45.769672",
+    "@@last_modified": "2026-09-04 09:17:45.938998",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2266,5 +2266,12 @@
     "seeAll": "Pogledaj sve",
     "seeAllSection": "Pogledaj sve {section}",
     "showMoreOptionsHint": "prikaži više opcija",
-    "onboardingStepOfTotal": "Korak {step} od {total}"
+    "onboardingStepOfTotal": "Korak {step} od {total}",
+    "callDevicesTitle": "Ovaj poziv je otvoren na dva vaša uređaja.",
+    "callDevicesBody": "Odaberite onaj s kojim želite nastaviti. Dok to ne učinite, nijedan ne šalje vaš mikrofon ili kameru.",
+    "callDevicesUseThis": "Koristi ovaj uređaj",
+    "callDevicesLeaveHere": "Napusti poziv ovdje",
+    "callDevicesOlderTitle": "Vaš drugi uređaj ne može sam napustiti ovaj poziv.",
+    "callDevicesOlderBody": "Završite poziv tamo ili ga napustite ovdje. To obično znači da koristi stariju verziju, a ažuriranje će to popraviti.",
+    "callContinuingElsewhere": "Ovaj poziv se nastavlja na vašem drugom uređaju."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-09-03 14:43:49.859497",
+    "@@last_modified": "2026-09-04 09:17:58.532846",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2266,5 +2266,12 @@
     "seeAll": "Ara kollox",
     "seeAllSection": "Ara kollox {section}",
     "showMoreOptionsHint": "uri aktar għażliet",
-    "onboardingStepOfTotal": "Pass {step} minn {total}"
+    "onboardingStepOfTotal": "Pass {step} minn {total}",
+    "callDevicesTitle": "Din is-sejħa hija miftuħa fuq tnejn mill-apparati tiegħek.",
+    "callDevicesBody": "Agħżel dik li trid tkompli biha. Sakemm tagħmel hekk, l-ebda waħda ma qed tibgħat il-mikrofonu jew il-kamera tiegħek.",
+    "callDevicesUseThis": "Uża dan l-apparat",
+    "callDevicesLeaveHere": "Ħalli s-sejħa hawn",
+    "callDevicesOlderTitle": "L-apparat l-ieħor tiegħek ma jistax iħalli din is-sejħa waħdu.",
+    "callDevicesOlderBody": "Ittermina s-sejħa hemmhekk, jew ħalliha hawn. Dan normalment ifisser li qed jaħdem verżjoni eqdem, u l-aġġornament tagħha se jirranġa dan.",
+    "callContinuingElsewhere": "Din is-sejħa qed tkompli fuq l-apparat l-ieħor tiegħek."
 }

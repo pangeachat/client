@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-09-03 14:43:45.866628",
+    "@@last_modified": "2026-09-04 09:17:46.310343",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2266,5 +2266,12 @@
     "seeAll": "ሁሉንም ይመልከቱ",
     "seeAllSection": "ሁሉንም {section} ይመልከቱ",
     "showMoreOptionsHint": "ተጨማሪ አማራጮችን አሳይ",
-    "onboardingStepOfTotal": "ደረጃ {step} ከ {total}"
+    "onboardingStepOfTotal": "ደረጃ {step} ከ {total}",
+    "callDevicesTitle": "ይህ ጥሪ በሁለት መሳሪያዎችዎ ላይ ክፍት ነው።",
+    "callDevicesBody": "ለመቀጠል አንዱን ይምረጡ። እስኪመርጡ ድረስ፣ የትኛውም ማይክሮፎንዎን ወይም ካሜራዎን እየላከ አይደለም።",
+    "callDevicesUseThis": "ይህን መሳሪያ ይጠቀሙ",
+    "callDevicesLeaveHere": "ጥሪውን እዚህ ይተው",
+    "callDevicesOlderTitle": "ሌላኛው መሳሪያዎ ይህን ጥሪ በራሱ መተው አይችልም።",
+    "callDevicesOlderBody": "ጥሪውን እዚያ ያቋርጡ፣ ወይም እዚህ ይተዉት። ይህ ማለት ብዙውን ጊዜ የቆየ ስሪት እየተጠቀመ ነው፣ እና ማዘመን ይህንን ያስተካክለዋል።",
+    "callContinuingElsewhere": "ይህ ጥሪ በሌላኛው መሳሪያዎ ላይ ቀጥሏል።"
 }

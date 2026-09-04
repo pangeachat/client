@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-09-03 14:43:45.757151",
+    "@@last_modified": "2026-09-04 09:17:45.994468",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2266,5 +2266,12 @@
     "seeAll": "Виж всички",
     "seeAllSection": "Виж всички {section}",
     "showMoreOptionsHint": "покажи още опции",
-    "onboardingStepOfTotal": "Стъпка {step} от {total}"
+    "onboardingStepOfTotal": "Стъпка {step} от {total}",
+    "callDevicesTitle": "Това обаждане е отворено на две от вашите устройства.",
+    "callDevicesBody": "Изберете кое да използвате. Докато не го направите, нито едно от тях не изпраща микрофона или камерата ви.",
+    "callDevicesUseThis": "Използвай това устройство",
+    "callDevicesLeaveHere": "Напусни обаждането тук",
+    "callDevicesOlderTitle": "Другото ви устройство не може да напусне това обаждане само.",
+    "callDevicesOlderBody": "Прекратете обаждането там или го напуснете тук. Това обикновено означава, че използва по-стара версия и актуализирането ѝ ще реши проблема.",
+    "callContinuingElsewhere": "Това обаждане продължава на другото ви устройство."
 }

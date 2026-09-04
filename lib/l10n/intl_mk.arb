@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-09-03 14:43:49.607213",
+    "@@last_modified": "2026-09-04 09:17:57.296819",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2266,5 +2266,12 @@
     "seeAll": "Видете ги сите",
     "seeAllSection": "Видете ги сите {section}",
     "showMoreOptionsHint": "покажи повеќе опции",
-    "onboardingStepOfTotal": "Чекор {step} од {total}"
+    "onboardingStepOfTotal": "Чекор {step} од {total}",
+    "callDevicesTitle": "Овој повик е отворен на два од вашите уреди.",
+    "callDevicesBody": "Изберете го оној со кој ќе продолжите. Додека не го направите тоа, ниту еден не го испраќа вашиот микрофон или камера.",
+    "callDevicesUseThis": "Користи го овој уред",
+    "callDevicesLeaveHere": "Напушти го повикот овде",
+    "callDevicesOlderTitle": "Вашиот друг уред не може сам да го напушти овој повик.",
+    "callDevicesOlderBody": "Завршете го повикот таму или напуштете го овде. Тоа обично значи дека работи на постара верзија, а ажурирањето ќе го реши ова.",
+    "callContinuingElsewhere": "Овој повик продолжува на вашиот друг уред."
 }

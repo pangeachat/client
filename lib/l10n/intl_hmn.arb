@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-09-03 14:43:47.492038",
+    "@@last_modified": "2026-09-04 09:17:52.096168",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2266,5 +2266,12 @@
     "seeAll": "Saib tag nrho",
     "seeAllSection": "Saib tag nrho {section}",
     "showMoreOptionsHint": "qhia ntau txoj kev xaiv ntxiv",
-    "onboardingStepOfTotal": "Kauv {step} ntawm {total}"
+    "onboardingStepOfTotal": "Kauv {step} ntawm {total}",
+    "callDevicesTitle": "Koj tabtom hu xovtooj ntawm ob lub cuab yeej.",
+    "callDevicesBody": "Xaiv ib lub uas koj xav siv. Txog thaum koj xaiv, ob lub cuab yeej yuav tsis xa koj lub microphone lossis lub koob yees duab.",
+    "callDevicesUseThis": "Siv lub cuab yeej no",
+    "callDevicesLeaveHere": "Tso tseg qhov kev hu xovtooj ntawm no",
+    "callDevicesOlderTitle": "Koj lub cuab yeej tsis tuaj yeem tawm ntawm qhov kev hu xovtooj no ntawm nws tus kheej.",
+    "callDevicesOlderBody": "Xaus qhov kev hu xovtooj ntawd, lossis tso tseg ntawm no. Qhov ntawd feem ntau txhais tau tias nws tabtom siv ib qho version qub, thiab hloov kho nws yuav daws qhov teeb meem no.",
+    "callContinuingElsewhere": "Qhov kev hu xovtooj no tabtom txuas ntxiv ntawm koj lub cuab yeej."
 }

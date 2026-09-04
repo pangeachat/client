@@ -1335,7 +1335,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-09-03 14:43:46.421548",
+    "@@last_modified": "2026-09-04 09:17:47.365152",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10782,5 +10782,12 @@
     "seeAll": "Se alle",
     "seeAllSection": "Se alle {section}",
     "showMoreOptionsHint": "vis flere valgmuligheder",
-    "onboardingStepOfTotal": "Trin {step} af {total}"
+    "onboardingStepOfTotal": "Trin {step} af {total}",
+    "callDevicesTitle": "Dette opkald er åbent på to af dine enheder.",
+    "callDevicesBody": "Vælg den, du vil fortsætte med. Indtil da sender ingen af dem din mikrofon eller dit kamera.",
+    "callDevicesUseThis": "Brug denne enhed",
+    "callDevicesLeaveHere": "Forlad opkaldet her",
+    "callDevicesOlderTitle": "Din anden enhed kan ikke forlade dette opkald af sig selv.",
+    "callDevicesOlderBody": "Afslut opkaldet der, eller forlad det her. Det betyder som regel, at den kører en ældre version, og en opdatering vil løse dette.",
+    "callContinuingElsewhere": "Dette opkald fortsætter på din anden enhed."
 }

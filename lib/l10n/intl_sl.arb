@@ -1803,7 +1803,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-09-03 14:43:50.823885",
+    "@@last_modified": "2026-09-04 09:18:01.817954",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10807,5 +10807,12 @@
     "seeAll": "Poglej vse",
     "seeAllSection": "Poglej vse {section}",
     "showMoreOptionsHint": "pokaži več možnosti",
-    "onboardingStepOfTotal": "Korak {step} od {total}"
+    "onboardingStepOfTotal": "Korak {step} od {total}",
+    "callDevicesTitle": "Ta klic je odprt na dveh vaših napravah.",
+    "callDevicesBody": "Izberite tisto, s katero želite nadaljevati. Dokler tega ne storite, nobena ne pošilja vašega mikrofona ali kamere.",
+    "callDevicesUseThis": "Uporabi to napravo",
+    "callDevicesLeaveHere": "Zapusti klic tukaj",
+    "callDevicesOlderTitle": "Vaša druga naprava ne more sama zapustiti tega klica.",
+    "callDevicesOlderBody": "Končajte klic tam ali ga zapustite tukaj. To običajno pomeni, da uporablja starejšo različico, in posodobitev bo to odpravila.",
+    "callContinuingElsewhere": "Ta klic se nadaljuje na vaši drugi napravi."
 }

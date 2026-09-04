@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-03 14:43:47.352345",
+    "@@last_modified": "2026-09-04 09:17:50.854250",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10776,5 +10776,12 @@
     "seeAll": "הצג הכל",
     "seeAllSection": "הצג הכל {section}",
     "showMoreOptionsHint": "הצג אפשרויות נוספות",
-    "onboardingStepOfTotal": "שלב {step} מתוך {total}"
+    "onboardingStepOfTotal": "שלב {step} מתוך {total}",
+    "callDevicesTitle": "שיחה זו פתוחה בשניים מהמכשירים שלך.",
+    "callDevicesBody": "בחר את המכשיר שבו תרצה להמשיך. עד שתעשה זאת, אף אחד מהם לא שולח את המיקרופון או המצלמה שלך.",
+    "callDevicesUseThis": "השתמש במכשיר זה",
+    "callDevicesLeaveHere": "צא מהשיחה כאן",
+    "callDevicesOlderTitle": "המכשיר האחר שלך לא יכול לצאת מהשיחה הזו בעצמו.",
+    "callDevicesOlderBody": "סיים את השיחה שם, או צא ממנה כאן. בדרך כלל זה אומר שהוא מריץ גרסה ישנה יותר, ועדכון יתקן זאת.",
+    "callContinuingElsewhere": "שיחה זו ממשיכה במכשיר האחר שלך."
 }

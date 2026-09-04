@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-09-03 14:43:48.539042",
+    "@@last_modified": "2026-09-04 09:17:53.996951",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2266,5 +2266,12 @@
     "seeAll": "Барлығын қарау",
     "seeAllSection": "Барлық {section} қарау",
     "showMoreOptionsHint": "қосымша опцияларды көрсету",
-    "onboardingStepOfTotal": "{total} ішінен {step} қадам"
+    "onboardingStepOfTotal": "{total} ішінен {step} қадам",
+    "callDevicesTitle": "Бұл қоңырау сіздің екі құрылғыңызда ашық.",
+    "callDevicesBody": "Жалғастыратын біреуін таңдаңыз. Таңдағанша, екеуі де микрофоныңызды немесе камераңызды жібермейді.",
+    "callDevicesUseThis": "Осы құрылғыны пайдалану",
+    "callDevicesLeaveHere": "Қоңырауды осында қалдыру",
+    "callDevicesOlderTitle": "Басқа құрылғыңыз бұл қоңырауды өздігінен қалдыра алмайды.",
+    "callDevicesOlderBody": "Қоңырауды сол жерде аяқтаңыз немесе осында қалдырыңыз. Бұл әдетте оның ескі нұсқада жұмыс істеп тұрғанын білдіреді, және оны жаңарту осы мәселені шешеді.",
+    "callContinuingElsewhere": "Бұл қоңырау басқа құрылғыңызда жалғасуда."
 }

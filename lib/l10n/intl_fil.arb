@@ -2081,7 +2081,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-09-03 14:43:46.869669",
+    "@@last_modified": "2026-09-04 09:17:49.661807",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10722,5 +10722,12 @@
     "seeAll": "Tingnan lahat",
     "seeAllSection": "Tingnan lahat ng {section}",
     "showMoreOptionsHint": "ipakita ang higit pang opsyon",
-    "onboardingStepOfTotal": "Hakbang {step} ng {total}"
+    "onboardingStepOfTotal": "Hakbang {step} ng {total}",
+    "callDevicesTitle": "Bukas ang tawag na ito sa dalawa sa iyong device.",
+    "callDevicesBody": "Piliin ang gagamitin mo. Hangga't hindi mo ito ginagawa, walang nagpapadala ng iyong mikropono o camera.",
+    "callDevicesUseThis": "Gamitin ang device na ito",
+    "callDevicesLeaveHere": "Umalis sa tawag dito",
+    "callDevicesOlderTitle": "Hindi makaalis sa tawag na ito ang isa mo pang device nang mag-isa.",
+    "callDevicesOlderBody": "Tapusin ang tawag doon, o umalis dito. Kadalasan, nangangahulugan iyon na gumagamit ito ng mas lumang bersyon, at maaayos ito sa pag-update.",
+    "callContinuingElsewhere": "Nagpapatuloy ang tawag na ito sa isa mo pang device."
 }

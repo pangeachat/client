@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-09-03 14:43:49.573965",
+    "@@last_modified": "2026-09-04 09:17:53.588058",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2266,5 +2266,12 @@
     "seeAll": "Hụ ihe niile",
     "seeAllSection": "Hụ {section} niile",
     "showMoreOptionsHint": "gosi nhọrọ ndị ọzọ",
-    "onboardingStepOfTotal": "Nzọụkwụ {step} n'ime {total}"
+    "onboardingStepOfTotal": "Nzọụkwụ {step} n'ime {total}",
+    "callDevicesTitle": "Oku a na-aga n'igwe abụọ n'ime nke gị.",
+    "callDevicesBody": "Họrọ nke ị ga-eji gaa n'ihu. Ruo mgbe ị mere ya, ọ dịghị nke na-eziga igwe okwu ma ọ bụ igwefoto gị.",
+    "callDevicesUseThis": "Jiri ngwaọrụ a",
+    "callDevicesLeaveHere": "Hapụ oku a ebe a",
+    "callDevicesOlderTitle": "Ngwaọrụ gị ọzọ enweghị ike ịhapụ oku a n'onwe ya.",
+    "callDevicesOlderBody": "Kwụsị oku ahụ ebe ahụ, ma ọ bụ hapụ ya ebe a. Nke ahụ na-abụkarị na ọ na-eji ụdị ochie, na imelite ya ga-edozi nke a.",
+    "callContinuingElsewhere": "Oku a na-aga n'ihu na ngwaọrụ gị ọzọ."
 }

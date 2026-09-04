@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-09-03 14:43:47.362367",
+    "@@last_modified": "2026-09-04 09:17:51.343941",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2266,5 +2266,12 @@
     "seeAll": "Duba duka",
     "seeAllSection": "Duba duka {section}",
     "showMoreOptionsHint": "nuna ƙarin zaɓuɓɓuka",
-    "onboardingStepOfTotal": "Mataki na {step} cikin {total}"
+    "onboardingStepOfTotal": "Mataki na {step} cikin {total}",
+    "callDevicesTitle": "Wannan kiran yana buɗe a kan na'urorinka biyu.",
+    "callDevicesBody": "Zaɓi wanda za a ci gaba da shi. Har sai ka yi haka, babu ɗaya daga cikinsu da ke aika makirufo ko kyamararka.",
+    "callDevicesUseThis": "Yi amfani da wannan na'urar",
+    "callDevicesLeaveHere": "Bar kiran a nan",
+    "callDevicesOlderTitle": "Sauran na'urarka ba za ta iya barin wannan kiran da kanta ba.",
+    "callDevicesOlderBody": "Ka kawo ƙarshen kiran a can, ko ka bar shi a nan. Wannan yawanci yana nufin tana amfani da tsohuwar sigar, kuma sabunta ta zai gyara wannan.",
+    "callContinuingElsewhere": "Wannan kiran yana ci gaba a kan sauran na'urarka."
 }

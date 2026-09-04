@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-09-03 14:43:52.454665",
+    "@@last_modified": "2026-09-04 09:18:06.509994",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9862,5 +9862,12 @@
     "seeAll": "查看全部",
     "seeAllSection": "查看全部{section}",
     "showMoreOptionsHint": "显示更多选项",
-    "onboardingStepOfTotal": "第 {step} 步，共 {total} 步"
+    "onboardingStepOfTotal": "第 {step} 步，共 {total} 步",
+    "callDevicesTitle": "此通话已在您的两台设备上开启。",
+    "callDevicesBody": "选择一台设备继续通话。在此之前，两台设备都不会发送您的麦克风或摄像头信号。",
+    "callDevicesUseThis": "使用此设备",
+    "callDevicesLeaveHere": "在此处离开通话",
+    "callDevicesOlderTitle": "您的其他设备无法自行离开此通话。",
+    "callDevicesOlderBody": "结束那边的通话，或在此处离开。这通常意味着它正在运行旧版本，更新后即可解决此问题。",
+    "callContinuingElsewhere": "此通话正在您的其他设备上继续。"
 }

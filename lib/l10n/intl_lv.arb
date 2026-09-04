@@ -3536,7 +3536,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-09-03 14:43:49.236086",
+    "@@last_modified": "2026-09-04 09:17:56.189893",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -9862,5 +9862,12 @@
     "seeAll": "Skatīt visu",
     "seeAllSection": "Skatīt visu sadaļu {section}",
     "showMoreOptionsHint": "rādīt vairāk opciju",
-    "onboardingStepOfTotal": "Solis {step} no {total}"
+    "onboardingStepOfTotal": "Solis {step} no {total}",
+    "callDevicesTitle": "Šis zvans ir atvērts divās jūsu ierīcēs.",
+    "callDevicesBody": "Izvēlieties, kuru izmantot. Kamēr to neizdarīsiet, neviena ierīce nesūtīs jūsu mikrofonu vai kameru.",
+    "callDevicesUseThis": "Izmantot šo ierīci",
+    "callDevicesLeaveHere": "Atstāt zvanu šeit",
+    "callDevicesOlderTitle": "Jūsu cita ierīce nevar pati atstāt šo zvanu.",
+    "callDevicesOlderBody": "Beidziet zvanu tur vai atstājiet to šeit. Tas parasti nozīmē, ka tajā darbojas vecāka versija, un atjaunināšana to novērsīs.",
+    "callContinuingElsewhere": "Šis zvans turpinās jūsu citā ierīcē."
 }

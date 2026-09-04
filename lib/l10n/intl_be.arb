@@ -3549,7 +3549,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-09-03 14:43:45.937225",
+    "@@last_modified": "2026-09-04 09:17:45.974160",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9876,5 +9876,12 @@
     "seeAll": "Глядзець усё",
     "seeAllSection": "Глядзець усё: {section}",
     "showMoreOptionsHint": "паказаць больш опцый",
-    "onboardingStepOfTotal": "Крок {step} з {total}"
+    "onboardingStepOfTotal": "Крок {step} з {total}",
+    "callDevicesTitle": "Гэты выклік адкрыты на дзвюх вашых прыладах.",
+    "callDevicesBody": "Выберыце тую, з якой працягнуць. Пакуль вы гэтага не зробіце, ні адна з іх не будзе перадаваць ваш мікрафон або камеру.",
+    "callDevicesUseThis": "Выкарыстоўваць гэту прыладу",
+    "callDevicesLeaveHere": "Пакінуць выклік тут",
+    "callDevicesOlderTitle": "Ваша іншая прылада не можа самастойна пакінуць гэты выклік.",
+    "callDevicesOlderBody": "Завяршыце выклік там або пакіньце яго тут. Звычайна гэта азначае, што на ёй усталявана старэйшая версія, і абнаўленне выправіць гэта.",
+    "callContinuingElsewhere": "Гэты выклік працягваецца на вашай іншай прыладзе."
 }

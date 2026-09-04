@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-03 14:43:46.507252",
+    "@@last_modified": "2026-09-04 09:17:48.045503",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10807,5 +10807,12 @@
     "seeAll": "Vidi ĉion",
     "seeAllSection": "Vidi ĉion en {section}",
     "showMoreOptionsHint": "montri pliajn opciojn",
-    "onboardingStepOfTotal": "Paŝo {step} el {total}"
+    "onboardingStepOfTotal": "Paŝo {step} el {total}",
+    "callDevicesTitle": "Ĉi tiu voko estas malfermita en du el viaj aparatoj.",
+    "callDevicesBody": "Elektu tiun, per kiu vi volas daŭrigi. Ĝis tiam, neniu sendas vian mikrofonon aŭ fotilon.",
+    "callDevicesUseThis": "Uzu ĉi tiun aparaton",
+    "callDevicesLeaveHere": "Forlasu la vokon ĉi tie",
+    "callDevicesOlderTitle": "Via alia aparato ne povas mem forlasi ĉi tiun vokon.",
+    "callDevicesOlderBody": "Finu la vokon tie, aŭ forlasu ĝin ĉi tie. Tio kutime signifas, ke ĝi uzas pli malnovan version, kaj ĝisdatigo solvos tion.",
+    "callContinuingElsewhere": "Ĉi tiu voko daŭras en via alia aparato."
 }

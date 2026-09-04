@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-09-03 14:43:48.617889",
+    "@@last_modified": "2026-09-04 09:17:55.530560",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2266,5 +2266,12 @@
     "seeAll": "មើលទាំងអស់",
     "seeAllSection": "មើល {section} ទាំងអស់",
     "showMoreOptionsHint": "បង្ហាញជម្រើសច្រើនទៀត",
-    "onboardingStepOfTotal": "ជំហានទី {step} ក្នុងចំណោម {total}"
+    "onboardingStepOfTotal": "ជំហានទី {step} ក្នុងចំណោម {total}",
+    "callDevicesTitle": "ការហៅនេះបើកនៅលើឧបករណ៍ពីររបស់អ្នក។",
+    "callDevicesBody": "ជ្រើសរើសមួយដើម្បីបន្ត។ រហូតទាល់តែអ្នកធ្វើ គ្មានឧបករណ៍ណាមួយកំពុងផ្ញើមីក្រូហ្វូន ឬកាមេរ៉ារបស់អ្នកទេ។",
+    "callDevicesUseThis": "ប្រើឧបករណ៍នេះ",
+    "callDevicesLeaveHere": "ចាកចេញពីការហៅនៅទីនេះ",
+    "callDevicesOlderTitle": "ឧបករណ៍ផ្សេងទៀតរបស់អ្នកមិនអាចចាកចេញពីការហៅនេះដោយខ្លួនឯងបានទេ។",
+    "callDevicesOlderBody": "បញ្ចប់ការហៅនៅទីនោះ ឬទុកវានៅទីនេះ។ ជាធម្មតាវាមានន័យថាវាដំណើរការកំណែចាស់ ហើយការអាប់ដេតវានឹងដោះស្រាយបញ្ហានេះ។",
+    "callContinuingElsewhere": "ការហៅនេះកំពុងបន្តនៅលើឧបករណ៍ផ្សេងទៀតរបស់អ្នក។"
 }

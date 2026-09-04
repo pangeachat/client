@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-09-03 14:43:55.121324",
+    "@@last_modified": "2026-09-04 09:18:04.048367",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2266,5 +2266,12 @@
     "seeAll": "Tingali sadayana",
     "seeAllSection": "Tingali sadayana {section}",
     "showMoreOptionsHint": "témbongkeun pilihan séjén",
-    "onboardingStepOfTotal": "Léngkah {step} tina {total}"
+    "onboardingStepOfTotal": "Léngkah {step} tina {total}",
+    "callDevicesTitle": "Telepon ieu kabuka dina dua alat anjeun.",
+    "callDevicesBody": "Pilih hiji pikeun neraskeun. Sateuacan anjeun milih, duanana moal ngirim mikropon atanapi kaméra anjeun.",
+    "callDevicesUseThis": "Anggo alat ieu",
+    "callDevicesLeaveHere": "Tinggalkeun telepon di dieu",
+    "callDevicesOlderTitle": "Alat anjeun nu séjén teu tiasa kaluar tina telepon ieu nyalira.",
+    "callDevicesOlderBody": "Pungkas telepon di dinya, atanapi tinggalkeun di dieu. Biasana hartosna éta ngajalankeun vérsi anu langkung lami, sareng ngapdet éta bakal ngalereskeun ieu.",
+    "callContinuingElsewhere": "Telepon ieu diteruskeun dina alat anjeun nu séjén."
 }

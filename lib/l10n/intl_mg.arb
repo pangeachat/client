@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-09-03 14:43:49.436279",
+    "@@last_modified": "2026-09-04 09:17:57.122633",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2266,5 +2266,12 @@
     "seeAll": "Jereo daholo",
     "seeAllSection": "Jereo daholo ny {section}",
     "showMoreOptionsHint": "asehoy safidy bebe kokoa",
-    "onboardingStepOfTotal": "Dingana {step} amin'ny {total}"
+    "onboardingStepOfTotal": "Dingana {step} amin'ny {total}",
+    "callDevicesTitle": "Misy fitaovana roa anao misokatra amin'ity antso ity.",
+    "callDevicesBody": "Fidio izay tianao hanohizana. Mandra-pifidinao, tsy misy mandefa ny mikrô na ny fakantsarinao.",
+    "callDevicesUseThis": "Ampiasao ity fitaovana ity",
+    "callDevicesLeaveHere": "Ajanony eto ny antso",
+    "callDevicesOlderTitle": "Tsy afaka miala irery amin'ity antso ity ny fitaovana hafa anao.",
+    "callDevicesOlderBody": "Ajanony any ny antso, na ajanony eto. Midika izany fa mampiasa kinova taloha izy, ary ny fanavaozana azy no hamaha izany.",
+    "callContinuingElsewhere": "Mitohy amin'ny fitaovana hafa anao ity antso ity."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-09-03 14:43:46.295034",
+    "@@last_modified": "2026-09-04 09:17:48.334485",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2266,5 +2266,12 @@
     "seeAll": "Vede tuttu",
     "seeAllSection": "Vede tuttu {section}",
     "showMoreOptionsHint": "mostra più opzioni",
-    "onboardingStepOfTotal": "Passu {step} di {total}"
+    "onboardingStepOfTotal": "Passu {step} di {total}",
+    "callDevicesTitle": "Sta chjama hè aperta nant'à dui di i vostri apparechji.",
+    "callDevicesBody": "Sceglite quellu da cuntinuà. Finu à tandu, nimu ùn manda u vostru microfonu o a vostra camera.",
+    "callDevicesUseThis": "Aduprà stu apparechju",
+    "callDevicesLeaveHere": "Lascià a chjama quì",
+    "callDevicesOlderTitle": "U vostru altru apparechju ùn pò micca lascià sta chjama da per ellu.",
+    "callDevicesOlderBody": "Finite a chjama quì, o lasciatela quì. Quessa significa di solitu ch'ellu usa una versione più vechja, è l'aghjurnamentu risolverà u prublema.",
+    "callContinuingElsewhere": "Sta chjama cuntinueghja nant'à u vostru altru apparechju."
 }

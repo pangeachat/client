@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-09-03 14:43:49.120847",
+    "@@last_modified": "2026-09-04 09:17:55.799741",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2266,5 +2266,12 @@
     "seeAll": "Alles gesinn",
     "seeAllSection": "Alles gesinn {section}",
     "showMoreOptionsHint": "méi Optiounen uweisen",
-    "onboardingStepOfTotal": "Schrëtt {step} vun {total}"
+    "onboardingStepOfTotal": "Schrëtt {step} vun {total}",
+    "callDevicesTitle": "Dësen Uruff ass op zwee vun dengen Apparater op.",
+    "callDevicesBody": "Wiel deen aus, mat deem s de weiderfuere wëlls. Bis dohi schéckt keen deng Mikro oder Kamera.",
+    "callDevicesUseThis": "Dësen Apparat benotzen",
+    "callDevicesLeaveHere": "Den Uruff hei verloossen",
+    "callDevicesOlderTitle": "Däin aneren Apparat kann dësen Uruff net eleng verloossen.",
+    "callDevicesOlderBody": "Enn den Uruff do, oder verlooss en hei. Dat heescht normalerweis, datt en eng méi al Versioun leeft, an en Update wäert dat behiewen.",
+    "callContinuingElsewhere": "Dësen Uruff leeft op dengem aneren Apparat weider."
 }

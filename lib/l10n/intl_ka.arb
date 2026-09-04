@@ -1938,7 +1938,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-09-03 14:43:48.325142",
+    "@@last_modified": "2026-09-04 09:17:54.163384",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10762,5 +10762,12 @@
     "seeAll": "ყველას ნახვა",
     "seeAllSection": "ყველა {section}-ის ნახვა",
     "showMoreOptionsHint": "მეტი ვარიანტის ჩვენება",
-    "onboardingStepOfTotal": "ნაბიჯი {step} / {total}"
+    "onboardingStepOfTotal": "ნაბიჯი {step} / {total}",
+    "callDevicesTitle": "ეს ზარი ღიაა თქვენს ორ მოწყობილობაზე.",
+    "callDevicesBody": "აირჩიეთ ერთი, რომლითაც გააგრძელებთ. სანამ ამას არ გააკეთებთ, არცერთი არ აგზავნის თქვენს მიკროფონს ან კამერას.",
+    "callDevicesUseThis": "გამოიყენეთ ეს მოწყობილობა",
+    "callDevicesLeaveHere": "დატოვეთ ზარი აქ",
+    "callDevicesOlderTitle": "თქვენს სხვა მოწყობილობას არ შეუძლია ამ ზარის დატოვება დამოუკიდებლად.",
+    "callDevicesOlderBody": "დაასრულეთ ზარი იქ, ან დატოვეთ აქ. ეს ჩვეულებრივ ნიშნავს, რომ ის მუშაობს ძველ ვერსიაზე და მისი განახლება ამას გამოასწორებს.",
+    "callContinuingElsewhere": "ეს ზარი გრძელდება თქვენს სხვა მოწყობილობაზე."
 }

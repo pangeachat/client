@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-09-03 14:43:45.867642",
+    "@@last_modified": "2026-09-04 09:17:45.404523",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10168,5 +10168,12 @@
     "seeAll": "مشاهدة الكل",
     "seeAllSection": "مشاهدة كل {section}",
     "showMoreOptionsHint": "عرض المزيد من الخيارات",
-    "onboardingStepOfTotal": "الخطوة {step} من {total}"
+    "onboardingStepOfTotal": "الخطوة {step} من {total}",
+    "callDevicesTitle": "هذه المكالمة مفتوحة على جهازين من أجهزتك.",
+    "callDevicesBody": "اختر الجهاز الذي تريد المتابعة به. حتى تفعل ذلك، لن يرسل أي منهما الميكروفون أو الكاميرا.",
+    "callDevicesUseThis": "استخدم هذا الجهاز",
+    "callDevicesLeaveHere": "اغادر المكالمة من هنا",
+    "callDevicesOlderTitle": "لا يمكن لجهازك الآخر مغادرة هذه المكالمة بمفرده.",
+    "callDevicesOlderBody": "أنهِ المكالمة هناك، أو اتركها هنا. هذا يعني عادةً أنه يعمل بإصدار أقدم، وتحديثه سيحل هذه المشكلة.",
+    "callContinuingElsewhere": "تستمر هذه المكالمة على جهازك الآخر."
 }

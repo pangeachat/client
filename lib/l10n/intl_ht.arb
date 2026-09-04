@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-09-03 14:43:47.550927",
+    "@@last_modified": "2026-09-04 09:17:51.749913",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2266,5 +2266,12 @@
     "seeAll": "Gade tout",
     "seeAllSection": "Gade tout {section}",
     "showMoreOptionsHint": "montre plis opsyon",
-    "onboardingStepOfTotal": "Etap {step} sou {total}"
+    "onboardingStepOfTotal": "Etap {step} sou {total}",
+    "callDevicesTitle": "Apèl sa a ouvè sou de nan aparèy ou yo.",
+    "callDevicesBody": "Chwazi youn pou kontinye. Jiskaske ou fè sa, okenn nan yo pa voye mikwofòn ou oswa kamera ou.",
+    "callDevicesUseThis": "Sèvi ak aparèy sa a",
+    "callDevicesLeaveHere": "Kite apèl la isit la",
+    "callDevicesOlderTitle": "Lòt aparèy ou an pa ka kite apèl sa a pou kont li.",
+    "callDevicesOlderBody": "Mete fen nan apèl la la, oswa kite l isit la. Sa anjeneral vle di li ap kouri yon vèsyon ki pi ansyen, epi mete ajou li pral ranje sa.",
+    "callContinuingElsewhere": "Apèl sa a ap kontinye sou lòt aparèy ou an."
 }

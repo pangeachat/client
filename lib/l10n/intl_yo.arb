@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-09-03 14:43:52.229809",
+    "@@last_modified": "2026-09-04 09:18:07.496542",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2266,5 +2266,12 @@
     "seeAll": "Wo gbogbo rẹ",
     "seeAllSection": "Wo gbogbo {section}",
     "showMoreOptionsHint": "fi àwọn àṣàyàn mìíràn hàn",
-    "onboardingStepOfTotal": "Igbesẹ {step} ninu {total}"
+    "onboardingStepOfTotal": "Igbesẹ {step} ninu {total}",
+    "callDevicesTitle": "Ìpe yìí wà ní ṣíṣí lórí àwọn ohun èlò méjì rẹ.",
+    "callDevicesBody": "Yan èyí tí o fẹ́ tẹ̀síwájú pẹ̀lú. Títí ìwọ yóò fi ṣe bẹ́ẹ̀, kò sí èyíkéyìí tí ó rán microphone tàbí camera rẹ.",
+    "callDevicesUseThis": "Lo ohun èlò yìí",
+    "callDevicesLeaveHere": "Fi ìpe sílẹ̀ níbí",
+    "callDevicesOlderTitle": "Ohun èlò rẹ mìíràn kò lè fi ìpe yìí sílẹ̀ fúnra rẹ̀.",
+    "callDevicesOlderBody": "Parí ìpe náà níbẹ̀, tàbí fi sílẹ̀ níbí. Ìyẹn sábà túmọ̀ sí pé ó ń lo àtúnṣe àtijọ́, àti pé gbígbé e sókè yóò tún èyí ṣe.",
+    "callContinuingElsewhere": "Ìpe yìí ń tẹ̀síwájú lórí ohun èlò rẹ mìíràn."
 }

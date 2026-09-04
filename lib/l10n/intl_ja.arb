@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-09-03 14:43:48.297293",
+    "@@last_modified": "2026-09-04 09:17:53.297407",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10631,5 +10631,12 @@
     "seeAll": "すべて見る",
     "seeAllSection": "{section}をすべて見る",
     "showMoreOptionsHint": "その他のオプションを表示",
-    "onboardingStepOfTotal": "{total}ステップ中{step}"
+    "onboardingStepOfTotal": "{total}ステップ中{step}",
+    "callDevicesTitle": "この通話は2つのデバイスで開いています。",
+    "callDevicesBody": "どちらかを選択して続行してください。選択するまで、どちらのデバイスもマイクやカメラを送信しません。",
+    "callDevicesUseThis": "このデバイスを使用",
+    "callDevicesLeaveHere": "ここで通話を終了",
+    "callDevicesOlderTitle": "他のデバイスでは、この通話を単独で終了できません。",
+    "callDevicesOlderBody": "そちらで通話を終了するか、こちらで終了してください。これは通常、古いバージョンが実行されていることを意味します。更新すると解決します。",
+    "callContinuingElsewhere": "この通話は他のデバイスで続行されています。"
 }

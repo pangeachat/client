@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-09-03 14:43:47.319725",
+    "@@last_modified": "2026-09-04 09:17:51.458683",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2266,5 +2266,12 @@
     "seeAll": "E ʻike i nā mea a pau",
     "seeAllSection": "E ʻike i nā mea a pau ma {section}",
     "showMoreOptionsHint": "hōʻike i nā koho hou aku",
-    "onboardingStepOfTotal": "Kaʻina {step} o {total}"
+    "onboardingStepOfTotal": "Kaʻina {step} o {total}",
+    "callDevicesTitle": "Ke wehe ʻia nei kēia kelepona ma ʻelua o kāu mau mea hana.",
+    "callDevicesBody": "E koho i kahi e hoʻomau ai. A hiki i kou hana ʻana pēlā, ʻaʻohe mea e hoʻouna ana i kāu microphone a i ʻole kāmela.",
+    "callDevicesUseThis": "E hoʻohana i kēia mea hana",
+    "callDevicesLeaveHere": "E haʻalele i ke kelepona ma ʻaneʻi",
+    "callDevicesOlderTitle": "ʻAʻole hiki i kāu mea hana ʻē aʻe ke haʻalele i kēia kelepona ma kona iho.",
+    "callDevicesOlderBody": "E hoʻopau i ke kelepona ma laila, a i ʻole e haʻalele ma ʻaneʻi. ʻO ia hoʻi ke holo nei ia i kahi mana kahiko, a ʻo ka hoʻonui ʻana e hoʻoponopono i kēia.",
+    "callContinuingElsewhere": "Ke hoʻomau nei kēia kelepona ma kāu mea hana ʻē aʻe."
 }

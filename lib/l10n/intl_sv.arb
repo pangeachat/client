@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-03 14:43:51.389005",
+    "@@last_modified": "2026-09-04 09:18:03.162061",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10380,5 +10380,12 @@
     "seeAll": "Visa alla",
     "seeAllSection": "Visa alla {section}",
     "showMoreOptionsHint": "visa fler alternativ",
-    "onboardingStepOfTotal": "Steg {step} av {total}"
+    "onboardingStepOfTotal": "Steg {step} av {total}",
+    "callDevicesTitle": "Detta samtal är öppet på två av dina enheter.",
+    "callDevicesBody": "Välj den du vill fortsätta med. Tills du gör det skickar ingen av dem din mikrofon eller kamera.",
+    "callDevicesUseThis": "Använd denna enhet",
+    "callDevicesLeaveHere": "Lämna samtalet här",
+    "callDevicesOlderTitle": "Din andra enhet kan inte lämna samtalet på egen hand.",
+    "callDevicesOlderBody": "Avsluta samtalet där, eller lämna det här. Det betyder oftast att den kör en äldre version, och en uppdatering kommer att åtgärda detta.",
+    "callContinuingElsewhere": "Detta samtal fortsätter på din andra enhet."
 }

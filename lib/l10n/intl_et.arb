@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-09-03 14:43:46.856242",
+    "@@last_modified": "2026-09-04 09:17:48.874816",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9859,5 +9859,12 @@
     "seeAll": "Vaata kõiki",
     "seeAllSection": "Vaata kõiki {section}",
     "showMoreOptionsHint": "näita rohkem valikuid",
-    "onboardingStepOfTotal": "Samm {step} / {total}"
+    "onboardingStepOfTotal": "Samm {step} / {total}",
+    "callDevicesTitle": "See kõne on avatud kahes sinu seadmes.",
+    "callDevicesBody": "Vali, millisega jätkata. Enne seda ei saada kumbki sinu mikrofoni ega kaamerat.",
+    "callDevicesUseThis": "Kasuta seda seadet",
+    "callDevicesLeaveHere": "Lahku kõnest siin",
+    "callDevicesOlderTitle": "Sinu teine seade ei saa sellest kõnest iseseisvalt lahkuda.",
+    "callDevicesOlderBody": "Lõpeta kõne seal või lahku sellest siin. See tähendab tavaliselt, et seal töötab vanem versioon ja selle uuendamine lahendab probleemi.",
+    "callContinuingElsewhere": "See kõne jätkub sinu teises seadmes."
 }

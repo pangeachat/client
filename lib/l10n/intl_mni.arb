@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-09-03 14:43:49.654128",
+    "@@last_modified": "2026-09-04 09:17:59.321706",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2266,5 +2266,12 @@
     "seeAll": "পুম্নমক উ",
     "seeAllSection": "পুম্নমক উ {section}",
     "showMoreOptionsHint": "খঙফম কয়া উৎনবা",
-    "onboardingStepOfTotal": "খোঙথাং {step} {total} দগী"
+    "onboardingStepOfTotal": "খোঙথাং {step} {total} দগী",
+    "callDevicesTitle": "असि कल असि नखुंगि डिभाइस अनिमदा हांगले।",
+    "callDevicesBody": "कनागिदा कन्टिन्यू तौगनि खन्बिउ। नखुंगना खन्दनबा फैबदा, माइक्रोफोन अमसुंग क्यामेरा अनिमकना करिमता थाद्रे।",
+    "callDevicesUseThis": "असि डिभाइस असि सिजिन्नौ",
+    "callDevicesLeaveHere": "कल असि असिदा थिदोकउ",
+    "callDevicesOlderTitle": "नखुंगि अतोप्पा डिभाइसना असि कल असि अदुम थिदोकपा ङम्लोइ।",
+    "callDevicesOlderBody": "अदुदा कल असि लोइसिनु, नत्रगा असिदा थिदोकउ। अदुना हाइबदि अदुना अओइबा भर्सन चलि, अमसुंग अदु अपडेट तौबना असि फजहन्गनि।",
+    "callContinuingElsewhere": "असि कल असि नखुंगि अतोप्पा डिभाइसता कन्टिन्यू तौरी।"
 }

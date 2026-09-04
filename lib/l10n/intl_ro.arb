@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-03 14:43:50.485096",
+    "@@last_modified": "2026-09-04 09:18:00.390530",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10594,5 +10594,12 @@
     "seeAll": "Vezi tot",
     "seeAllSection": "Vezi tot {section}",
     "showMoreOptionsHint": "afișează mai multe opțiuni",
-    "onboardingStepOfTotal": "Pasul {step} din {total}"
+    "onboardingStepOfTotal": "Pasul {step} din {total}",
+    "callDevicesTitle": "Acest apel este deschis pe două dintre dispozitivele tale.",
+    "callDevicesBody": "Alege-l pe cel cu care vrei să continui. Până atunci, niciunul nu trimite microfonul sau camera ta.",
+    "callDevicesUseThis": "Folosește acest dispozitiv",
+    "callDevicesLeaveHere": "Părăsește apelul aici",
+    "callDevicesOlderTitle": "Celălalt dispozitiv al tău nu poate părăsi acest apel singur.",
+    "callDevicesOlderBody": "Încheie apelul acolo sau părăsește-l aici. Asta înseamnă de obicei că rulează o versiune mai veche, iar actualizarea o va remedia.",
+    "callContinuingElsewhere": "Acest apel continuă pe celălalt dispozitiv al tău."
 }

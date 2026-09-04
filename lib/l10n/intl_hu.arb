@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-09-03 14:43:47.806015",
+    "@@last_modified": "2026-09-04 09:17:52.061948",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9965,5 +9965,12 @@
     "seeAll": "Összes megtekintése",
     "seeAllSection": "Összes {section} megtekintése",
     "showMoreOptionsHint": "további lehetőségek megjelenítése",
-    "onboardingStepOfTotal": "{step}/{total}. lépés"
+    "onboardingStepOfTotal": "{step}/{total}. lépés",
+    "callDevicesTitle": "Ez a hívás két eszközén is nyitva van.",
+    "callDevicesBody": "Válassza ki, melyikkel folytatja. Amíg nem teszi meg, egyik sem küldi a mikrofonját vagy a kameráját.",
+    "callDevicesUseThis": "Használja ezt az eszközt",
+    "callDevicesLeaveHere": "Hagyja itt a hívást",
+    "callDevicesOlderTitle": "A másik eszköze nem tudja magától elhagyni ezt a hívást.",
+    "callDevicesOlderBody": "Fejezze be ott a hívást, vagy hagyja itt. Ez általában azt jelenti, hogy régebbi verziót futtat, és a frissítés megoldja ezt.",
+    "callContinuingElsewhere": "Ez a hívás a másik eszközén folytatódik."
 }

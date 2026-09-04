@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-03 14:43:48.799776",
+    "@@last_modified": "2026-09-04 09:17:54.789404",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10055,5 +10055,12 @@
     "seeAll": "모두 보기",
     "seeAllSection": "{section} 모두 보기",
     "showMoreOptionsHint": "더 많은 옵션 보기",
-    "onboardingStepOfTotal": "{total}단계 중 {step}단계"
+    "onboardingStepOfTotal": "{total}단계 중 {step}단계",
+    "callDevicesTitle": "이 통화는 두 기기에서 열려 있습니다.",
+    "callDevicesBody": "계속 사용할 기기를 선택하세요. 선택하기 전까지는 마이크나 카메라가 전송되지 않습니다.",
+    "callDevicesUseThis": "이 기기 사용",
+    "callDevicesLeaveHere": "여기서 통화 종료",
+    "callDevicesOlderTitle": "다른 기기에서는 이 통화를 스스로 종료할 수 없습니다.",
+    "callDevicesOlderBody": "거기서 통화를 종료하거나 여기서 종료하세요. 일반적으로 이전 버전이 실행 중이라는 의미이므로 업데이트하면 해결됩니다.",
+    "callContinuingElsewhere": "이 통화는 다른 기기에서 계속됩니다."
 }

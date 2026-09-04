@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-03 14:43:52.422942",
+    "@@last_modified": "2026-09-04 09:18:06.723284",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9968,5 +9968,12 @@
     "seeAll": "查看全部",
     "seeAllSection": "查看全部{section}",
     "showMoreOptionsHint": "顯示更多選項",
-    "onboardingStepOfTotal": "第 {step} 步，共 {total} 步"
+    "onboardingStepOfTotal": "第 {step} 步，共 {total} 步",
+    "callDevicesTitle": "此通話已在您的兩部裝置上開啟。",
+    "callDevicesBody": "選擇一部裝置繼續通話。在您選擇之前，兩部裝置都不會傳送您的麥克風或相機。",
+    "callDevicesUseThis": "使用此裝置",
+    "callDevicesLeaveHere": "在此處離開通話",
+    "callDevicesOlderTitle": "您的其他裝置無法自行離開此通話。",
+    "callDevicesOlderBody": "結束該裝置上的通話，或在此處離開。這通常表示該裝置正在執行舊版本，更新後即可解決此問題。",
+    "callContinuingElsewhere": "此通話正在您的其他裝置上繼續。"
 }

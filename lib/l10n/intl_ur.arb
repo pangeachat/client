@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-09-03 14:43:53.372441",
+    "@@last_modified": "2026-09-04 09:18:05.614577",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2266,5 +2266,12 @@
     "seeAll": "سب دیکھیں",
     "seeAllSection": "تمام {section} دیکھیں",
     "showMoreOptionsHint": "مزید اختیارات دکھائیں",
-    "onboardingStepOfTotal": "{total} میں سے مرحلہ {step}"
+    "onboardingStepOfTotal": "{total} میں سے مرحلہ {step}",
+    "callDevicesTitle": "یہ کال آپ کے دو آلات پر کھلی ہے۔",
+    "callDevicesBody": "جسے آپ جاری رکھنا چاہتے ہیں اسے منتخب کریں۔ جب تک آپ ایسا نہیں کرتے، کوئی بھی آپ کا مائیکروفون یا کیمرہ نہیں بھیج رہا ہے۔",
+    "callDevicesUseThis": "یہ آلہ استعمال کریں",
+    "callDevicesLeaveHere": "کال یہیں چھوڑ دیں",
+    "callDevicesOlderTitle": "آپ کا دوسرا آلہ خود سے یہ کال نہیں چھوڑ سکتا۔",
+    "callDevicesOlderBody": "وہاں کال ختم کریں، یا اسے یہیں چھوڑ دیں۔ اس کا مطلب عام طور پر یہ ہے کہ یہ پرانا ورژن چلا رہا ہے، اور اسے اپ ڈیٹ کرنے سے یہ مسئلہ حل ہو جائے گا۔",
+    "callContinuingElsewhere": "یہ کال آپ کے دوسرے آلے پر جاری ہے۔"
 }

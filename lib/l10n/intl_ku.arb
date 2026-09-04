@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-09-03 14:43:49.014603",
+    "@@last_modified": "2026-09-04 09:17:56.331636",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2266,5 +2266,12 @@
     "seeAll": "هەمووی ببینە",
     "seeAllSection": "هەموو {section} ببینە",
     "showMoreOptionsHint": "پیشاندانی بژاردەی زیاتر",
-    "onboardingStepOfTotal": "هەنگاوی {step} لە {total}"
+    "onboardingStepOfTotal": "هەنگاوی {step} لە {total}",
+    "callDevicesTitle": "ئەم پەیوەندییە لەسەر دوو ئامێری تۆ کراوەیە.",
+    "callDevicesBody": "یەکێکیان هەڵبژێرە بۆ بەردەوامبوون. تا ئەوکاتەی هەڵیدەبژێریت، هیچ کامیان مایکرۆفۆن یان کامێرای تۆ نانێرن.",
+    "callDevicesUseThis": "ئەم ئامێرە بەکاربهێنە",
+    "callDevicesLeaveHere": "پەیوەندییەکە لێرە جێبهێڵە",
+    "callDevicesOlderTitle": "ئامێرەکەی دیکەت ناتوانێت بەتەنیا ئەم پەیوەندییە جێبهێڵێت.",
+    "callDevicesOlderBody": "پەیوەندییەکە لەوێ کۆتایی پێبهێنە، یان لێرە جێبهێڵە. ئەوە بەزۆری بەو واتایەیە کە وەشانی کۆنتری کارپێدەکرێت، و نوێکردنەوەی ئەمە چاک دەکات.",
+    "callContinuingElsewhere": "ئەم پەیوەندییە لەسەر ئامێرەکەی دیکەت بەردەوامە."
 }

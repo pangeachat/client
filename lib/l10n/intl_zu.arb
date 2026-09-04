@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-09-03 14:43:52.519895",
+    "@@last_modified": "2026-09-04 09:18:07.700772",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2266,5 +2266,12 @@
     "seeAll": "Buka konke",
     "seeAllSection": "Buka konke {section}",
     "showMoreOptionsHint": "bonisa izinketho eziningi",
-    "onboardingStepOfTotal": "Isinyathelo {step} sokungu {total}"
+    "onboardingStepOfTotal": "Isinyathelo {step} sokungu {total}",
+    "callDevicesTitle": "Le kholi ivuliwe kumadivayisi akho amabili.",
+    "callDevicesBody": "Khetha ozowuqhubeka nawo. Kuze kube wenza lokho, akukho okuthumela imakrofoni noma ikhamera yakho.",
+    "callDevicesUseThis": "Sebenzisa le divayisi",
+    "callDevicesLeaveHere": "Shiya ikholi lapha",
+    "callDevicesOlderTitle": "Enye idivayisi yakho ayikwazi ukushiya le kholi yodwa.",
+    "callDevicesOlderBody": "Qeda ikholi lapho, noma uyishiye lapha. Lokho kuvame ukusho ukuthi isebenzisa inguqulo endala, futhi ukuyibuyekeza kuzolungisa lokhu.",
+    "callContinuingElsewhere": "Le kholi iyaqhubeka kwenye idivayisi yakho."
 }

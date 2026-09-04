@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-09-03 14:43:47.095631",
+    "@@last_modified": "2026-09-04 09:17:51.117021",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2266,5 +2266,12 @@
     "seeAll": "Faic na h-uile",
     "seeAllSection": "Faic na h-uile {section}",
     "showMoreOptionsHint": "seall barrachd roghainnean",
-    "onboardingStepOfTotal": "Ceum {step} de {total}"
+    "onboardingStepOfTotal": "Ceum {step} de {total}",
+    "callDevicesTitle": "Tha an gairm seo fosgailte air dà inneal agad.",
+    "callDevicesBody": "Tagh an tè a chumas tu air adhart leis. Gus an dèan thu sin, chan eil gin a' cur do mhicreofon no do chamara.",
+    "callDevicesUseThis": "Cleachd an t-inneal seo",
+    "callDevicesLeaveHere": "Fàg an gairm an seo",
+    "callDevicesOlderTitle": "Chan urrainn don inneal eile agad an gairm seo fhàgail leis fhèin.",
+    "callDevicesOlderBody": "Cuir crìoch air a' ghairm an sin, no fàg an seo e. Mar as trice tha sin a' ciallachadh gu bheil e a' ruith tionndadh nas sine, agus gun socraich ùrachadh seo.",
+    "callContinuingElsewhere": "Tha an gairm seo a' leantainn air an inneal eile agad."
 }

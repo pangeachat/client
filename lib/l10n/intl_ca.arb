@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-03 14:43:46.218921",
+    "@@last_modified": "2026-09-04 09:17:47.706179",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9989,5 +9989,12 @@
     "seeAll": "Veure-ho tot",
     "seeAllSection": "Veure-ho tot a {section}",
     "showMoreOptionsHint": "mostrar més opcions",
-    "onboardingStepOfTotal": "Pas {step} de {total}"
+    "onboardingStepOfTotal": "Pas {step} de {total}",
+    "callDevicesTitle": "Aquesta trucada està oberta en dos dels teus dispositius.",
+    "callDevicesBody": "Tria amb quin vols continuar. Fins que no ho facis, cap dels dos enviarà el teu micròfon o càmera.",
+    "callDevicesUseThis": "Utilitza aquest dispositiu",
+    "callDevicesLeaveHere": "Deixa la trucada aquí",
+    "callDevicesOlderTitle": "L'altre dispositiu no pot sortir d'aquesta trucada per si sol.",
+    "callDevicesOlderBody": "Finalitza la trucada allà o deixa-la aquí. Això sol significar que està executant una versió antiga, i actualitzar-la ho solucionarà.",
+    "callContinuingElsewhere": "Aquesta trucada continua a l'altre dispositiu."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-03 14:43:50.476422",
+    "@@last_modified": "2026-09-04 09:18:00.740416",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9862,5 +9862,12 @@
     "seeAll": "Ver tudo",
     "seeAllSection": "Ver tudo em {section}",
     "showMoreOptionsHint": "mostrar mais opções",
-    "onboardingStepOfTotal": "Etapa {step} de {total}"
+    "onboardingStepOfTotal": "Etapa {step} de {total}",
+    "callDevicesTitle": "Esta chamada está aberta em dois dos seus aparelhos.",
+    "callDevicesBody": "Escolha qual usar. Até que você escolha, nenhum dos dois enviará seu microfone ou câmera.",
+    "callDevicesUseThis": "Usar este aparelho",
+    "callDevicesLeaveHere": "Sair da chamada aqui",
+    "callDevicesOlderTitle": "Seu outro aparelho não consegue sair desta chamada sozinho.",
+    "callDevicesOlderBody": "Encerre a chamada lá ou saia dela aqui. Isso geralmente significa que ele está executando uma versão mais antiga, e atualizá-lo resolverá isso.",
+    "callContinuingElsewhere": "Esta chamada está continuando no seu outro aparelho."
 }

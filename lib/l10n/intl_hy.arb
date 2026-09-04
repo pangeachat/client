@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-09-03 14:43:47.867889",
+    "@@last_modified": "2026-09-04 09:17:54.581049",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2266,5 +2266,12 @@
     "seeAll": "Տեսնել բոլորը",
     "seeAllSection": "Տեսնել բոլոր {section}",
     "showMoreOptionsHint": "ցուցադրել այլ ընտրանքներ",
-    "onboardingStepOfTotal": "Քայլ {step}-ը {total}-ից"
+    "onboardingStepOfTotal": "Քայլ {step}-ը {total}-ից",
+    "callDevicesTitle": "Այս զանգը բաց է ձեր երկու սարքերում։",
+    "callDevicesBody": "Ընտրեք մեկը՝ շարունակելու համար։ Մինչև դա անեք, ոչ մեկը չի ուղարկում ձեր խոսափողը կամ տեսախցիկը։",
+    "callDevicesUseThis": "Օգտագործել այս սարքը",
+    "callDevicesLeaveHere": "Թողնել զանգն այստեղ",
+    "callDevicesOlderTitle": "Ձեր մյուս սարքը չի կարող ինքնուրույն դուրս գալ այս զանգից։",
+    "callDevicesOlderBody": "Ավարտեք զանգն այնտեղ, կամ թողեք այն այստեղ։ Սա սովորաբար նշանակում է, որ այն աշխատում է հին տարբերակով, և դրա թարմացումը կշտկի սա։",
+    "callContinuingElsewhere": "Այս զանգը շարունակվում է ձեր մյուս սարքի վրա։"
 }

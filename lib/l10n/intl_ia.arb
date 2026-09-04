@@ -1363,7 +1363,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-09-03 14:43:47.767132",
+    "@@last_modified": "2026-09-04 09:17:52.506061",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10798,5 +10798,12 @@
     "seeAll": "Vider tote",
     "seeAllSection": "Vider tote {section}",
     "showMoreOptionsHint": "monstrar plus optiones",
-    "onboardingStepOfTotal": "Passo {step} de {total}"
+    "onboardingStepOfTotal": "Passo {step} de {total}",
+    "callDevicesTitle": "Iste appello es aperte in duo de tu apparatos.",
+    "callDevicesBody": "Selige le apparato a continuar con. Usque tu lo face, necuno invia tu microphono o camera.",
+    "callDevicesUseThis": "Usa iste apparato",
+    "callDevicesLeaveHere": "Lassa le appello hic",
+    "callDevicesOlderTitle": "Tu altere apparato non pote lassar iste appello per se.",
+    "callDevicesOlderBody": "Termina le appello ibi, o lassa lo hic. Isto usualmente significa que illo executa un version plus ancian, e actualisar lo va reparar isto.",
+    "callContinuingElsewhere": "Iste appello continua in tu altere apparato."
 }

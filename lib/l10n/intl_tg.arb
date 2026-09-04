@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-09-03 14:43:51.400797",
+    "@@last_modified": "2026-09-04 09:18:04.425728",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2266,5 +2266,12 @@
     "seeAll": "Ҳамаро бинед",
     "seeAllSection": "Ҳамаи {section}-ро бинед",
     "showMoreOptionsHint": "имконоти бештарро нишон диҳед",
-    "onboardingStepOfTotal": "Қадами {step} аз {total}"
+    "onboardingStepOfTotal": "Қадами {step} аз {total}",
+    "callDevicesTitle": "Ин занг дар ду дастгоҳи шумо кушода аст.",
+    "callDevicesBody": "Якеро интихоб кунед, ки бо он идома диҳед. То он даме, ки шумо ин корро накунед, ҳеҷ яке аз онҳо микрофон ё камераи шуморо намефиристад.",
+    "callDevicesUseThis": "Ин дастгоҳро истифода баред",
+    "callDevicesLeaveHere": "Зангро дар ин ҷо қатъ кунед",
+    "callDevicesOlderTitle": "Дастгоҳи дигари шумо наметавонад ин зангро мустақилона қатъ кунад.",
+    "callDevicesOlderBody": "Зангро дар он ҷо қатъ кунед ё дар ин ҷо қатъ кунед. Ин одатан маънои онро дорад, ки он версияи кӯҳнаро истифода мебарад ва навсозии он ин мушкилотро ҳал мекунад.",
+    "callContinuingElsewhere": "Ин занг дар дастгоҳи дигари шумо идома дорад."
 }

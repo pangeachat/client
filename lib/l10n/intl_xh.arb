@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-09-03 14:43:52.095216",
+    "@@last_modified": "2026-09-04 09:18:06.429246",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2266,5 +2266,12 @@
     "seeAll": "Bona konke",
     "seeAllSection": "Bona konke {section}",
     "showMoreOptionsHint": "bonisa iinketho ezininzi",
-    "onboardingStepOfTotal": "Inyathelo {step} kwi-{total}"
+    "onboardingStepOfTotal": "Inyathelo {step} kwi-{total}",
+    "callDevicesTitle": "Olu lwabizo luvuliwe kwizixhobo zakho ezibini.",
+    "callDevicesBody": "Khetha esinye oza kuqhubeka ngaso. Ude wenze oko, akukho nasinye esithumela imakrofoni okanye ikhamera yakho.",
+    "callDevicesUseThis": "Sebenzisa esi sixhobo",
+    "callDevicesLeaveHere": "Shiya olu lwabizo apha",
+    "callDevicesOlderTitle": "Esinye isixhobo sakho asinakushiya olu lwabizo ngokwaso.",
+    "callDevicesOlderBody": "Phelisa olu lwabizo apho, okanye ulushiye apha. Oko kuthetha ukuba lusebenzisa inguqulelo endala, kwaye ukuyihlaziya kuya kulungisa oku.",
+    "callContinuingElsewhere": "Olu lwabizo luyaqhubeka kwesinye isixhobo sakho."
 }

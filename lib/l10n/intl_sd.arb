@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-09-03 14:43:50.656263",
+    "@@last_modified": "2026-09-04 09:18:02.299128",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2266,5 +2266,12 @@
     "seeAll": "سڀ ڏسو",
     "seeAllSection": "سڀ ڏسو {section}",
     "showMoreOptionsHint": "وڌيڪ آپشن ڏيکاريو",
-    "onboardingStepOfTotal": "قدم {step} {total} مان"
+    "onboardingStepOfTotal": "قدم {step} {total} مان",
+    "callDevicesTitle": "هي ڪال توهان جي ٻن ڊوائيسن تي کليل آهي.",
+    "callDevicesBody": "جنهن سان جاري رکڻ چاهيو ٿا، ان کي چونڊيو. جيستائين توهان ائين نه ڪندا، ڪو به توهان جو مائڪروفون يا ڪئميرا نه موڪليندو.",
+    "callDevicesUseThis": "هي ڊوائيس استعمال ڪريو",
+    "callDevicesLeaveHere": "ڪال هتي ڇڏي ڏيو",
+    "callDevicesOlderTitle": "توهان جو ٻيو ڊوائيس هي ڪال پاڻمرادو ڇڏي نه ٿو سگهي.",
+    "callDevicesOlderBody": "اتي ڪال ختم ڪريو، يا هتي ڇڏي ڏيو. ان جو مطلب عام طور تي اهو آهي ته اهو هڪ پراڻو ورزن هلائي رهيو آهي، ۽ ان کي اپڊيٽ ڪرڻ سان اهو مسئلو حل ٿي ويندو.",
+    "callContinuingElsewhere": "هي ڪال توهان جي ٻئي ڊوائيس تي جاري آهي."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-09-03 14:43:45.973830",
+    "@@last_modified": "2026-09-04 09:17:46.363880",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2266,5 +2266,12 @@
     "seeAll": "সকলো চাওক",
     "seeAllSection": "সকলো চাওক {section}",
     "showMoreOptionsHint": "অধিক বিকল্প দেখুৱাওক",
-    "onboardingStepOfTotal": "{total}টাৰ ভিতৰত {step} নং খাপ"
+    "onboardingStepOfTotal": "{total}টাৰ ভিতৰত {step} নং খাপ",
+    "callDevicesTitle": "এই কলটো আপোনাৰ দুটা ডিভাইচত খোলা আছে।",
+    "callDevicesBody": "এটা বাছনি কৰক যাৰ সৈতে আপুনি আগবাঢ়ি যাব। যেতিয়ালৈকে আপুনি নকৰে, দুয়োটা ডিভাইচে আপোনাৰ মাইক্ৰ'ফোন বা কেমেৰা প্ৰেৰণ নকৰে।",
+    "callDevicesUseThis": "এই ডিভাইচ ব্যৱহাৰ কৰক",
+    "callDevicesLeaveHere": "কলটো ইয়াতে এৰি দিয়ক",
+    "callDevicesOlderTitle": "আপোনাৰ আন ডিভাইচটোৱে নিজে এই কলটো এৰি যাব নোৱাৰে।",
+    "callDevicesOlderBody": "কলটো তাতে শেষ কৰক, বা ইয়াত এৰি দিয়ক। ইয়াৰ অৰ্থ সাধাৰণতে এইটোৱেই যে ই এটা পুৰণি সংস্কৰণ চলাই আছে, আৰু ইয়াক আপডেট কৰিলে এই সমস্যাটো ঠিক হ'ব।",
+    "callContinuingElsewhere": "এই কলটো আপোনাৰ আন ডিভাইচত চলি আছে।"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-09-03 14:43:47.285651",
+    "@@last_modified": "2026-09-04 09:17:50.142952",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9862,5 +9862,12 @@
     "seeAll": "Ver todo",
     "seeAllSection": "Ver todo {section}",
     "showMoreOptionsHint": "mostrar máis opcións",
-    "onboardingStepOfTotal": "Paso {step} de {total}"
+    "onboardingStepOfTotal": "Paso {step} de {total}",
+    "callDevicesTitle": "Esta chamada está aberta en dous dos teus dispositivos.",
+    "callDevicesBody": "Escolle un para continuar. Ata que o fagas, ningún está enviando o teu micrófono ou cámara.",
+    "callDevicesUseThis": "Usar este dispositivo",
+    "callDevicesLeaveHere": "Deixar a chamada aquí",
+    "callDevicesOlderTitle": "O teu outro dispositivo non pode saír desta chamada por si só.",
+    "callDevicesOlderBody": "Finaliza a chamada alí ou déixaa aquí. Iso adoita significar que está executando unha versión antiga, e actualizala solucionará isto.",
+    "callContinuingElsewhere": "Esta chamada continúa no teu outro dispositivo."
 }

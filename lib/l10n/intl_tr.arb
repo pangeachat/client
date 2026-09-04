@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-09-03 14:43:51.558872",
+    "@@last_modified": "2026-09-04 09:18:04.661725",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10163,5 +10163,12 @@
     "seeAll": "Tümünü gör",
     "seeAllSection": "Tüm {section} bölümünü gör",
     "showMoreOptionsHint": "daha fazla seçenek göster",
-    "onboardingStepOfTotal": "{total} adımdan {step}. adım"
+    "onboardingStepOfTotal": "{total} adımdan {step}. adım",
+    "callDevicesTitle": "Bu arama iki cihazınızda açık.",
+    "callDevicesBody": "Devam etmek istediğiniz cihazı seçin. Seçim yapana kadar mikrofonunuz veya kameranız gönderilmeyecektir.",
+    "callDevicesUseThis": "Bu cihazı kullan",
+    "callDevicesLeaveHere": "Aramayı burada sonlandır",
+    "callDevicesOlderTitle": "Diğer cihazınız bu aramadan kendi başına ayrılamıyor.",
+    "callDevicesOlderBody": "Aramayı orada sonlandırın veya burada bırakın. Bu genellikle cihazınızın eski bir sürüm kullandığı anlamına gelir ve güncelleyerek bu sorunu çözebilirsiniz.",
+    "callContinuingElsewhere": "Bu arama diğer cihazınızda devam ediyor."
 }

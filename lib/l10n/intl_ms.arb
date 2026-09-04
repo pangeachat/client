@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-09-03 14:43:49.672088",
+    "@@last_modified": "2026-09-04 09:17:57.736907",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2266,5 +2266,12 @@
     "seeAll": "Lihat semua",
     "seeAllSection": "Lihat semua {section}",
     "showMoreOptionsHint": "tunjukkan pilihan lain",
-    "onboardingStepOfTotal": "Langkah {step} daripada {total}"
+    "onboardingStepOfTotal": "Langkah {step} daripada {total}",
+    "callDevicesTitle": "Panggilan ini dibuka pada dua peranti anda.",
+    "callDevicesBody": "Pilih satu untuk meneruskan. Sehingga anda berbuat demikian, tiada satu pun yang menghantar mikrofon atau kamera anda.",
+    "callDevicesUseThis": "Gunakan peranti ini",
+    "callDevicesLeaveHere": "Tinggalkan panggilan di sini",
+    "callDevicesOlderTitle": "Peranti anda yang lain tidak boleh meninggalkan panggilan ini dengan sendirinya.",
+    "callDevicesOlderBody": "Tamatkan panggilan di sana, atau tinggalkan di sini. Ini biasanya bermakna ia menjalankan versi yang lebih lama, dan mengemas kini akan membetulkannya.",
+    "callContinuingElsewhere": "Panggilan ini diteruskan pada peranti anda yang lain."
 }

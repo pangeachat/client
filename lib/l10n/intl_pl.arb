@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-09-03 14:43:50.356880",
+    "@@last_modified": "2026-09-04 09:17:59.930676",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9947,5 +9947,12 @@
     "seeAll": "Zobacz wszystkie",
     "seeAllSection": "Zobacz wszystkie {section}",
     "showMoreOptionsHint": "pokaż więcej opcji",
-    "onboardingStepOfTotal": "Krok {step} z {total}"
+    "onboardingStepOfTotal": "Krok {step} z {total}",
+    "callDevicesTitle": "Ta rozmowa jest otwarta na dwóch Twoich urządzeniach.",
+    "callDevicesBody": "Wybierz jedno, na którym chcesz kontynuować. Dopóki tego nie zrobisz, żadne z nich nie wysyła Twojego mikrofonu ani kamery.",
+    "callDevicesUseThis": "Użyj tego urządzenia",
+    "callDevicesLeaveHere": "Opuść rozmowę tutaj",
+    "callDevicesOlderTitle": "Twoje drugie urządzenie nie może samodzielnie opuścić tej rozmowy.",
+    "callDevicesOlderBody": "Zakończ rozmowę tam lub opuść ją tutaj. Zazwyczaj oznacza to, że działa na starszej wersji, a jej aktualizacja to naprawi.",
+    "callContinuingElsewhere": "Ta rozmowa jest kontynuowana na Twoim drugim urządzeniu."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-09-03 14:43:46.564234",
+    "@@last_modified": "2026-09-04 09:17:49.226930",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8081,5 +8081,12 @@
     "seeAll": "Ver todo",
     "seeAllSection": "Ver todo {section}",
     "showMoreOptionsHint": "mostrar más opciones",
-    "onboardingStepOfTotal": "Paso {step} de {total}"
+    "onboardingStepOfTotal": "Paso {step} de {total}",
+    "callDevicesTitle": "Esta llamada está abierta en dos de tus dispositivos.",
+    "callDevicesBody": "Elige con cuál quieres continuar. Hasta que lo hagas, ninguno enviará tu micrófono ni tu cámara.",
+    "callDevicesUseThis": "Usar este dispositivo",
+    "callDevicesLeaveHere": "Dejar la llamada aquí",
+    "callDevicesOlderTitle": "Tu otro dispositivo no puede salir de esta llamada por sí solo.",
+    "callDevicesOlderBody": "Finaliza la llamada allí o déjala aquí. Esto suele significar que está ejecutando una versión anterior, y actualizarla lo solucionará.",
+    "callContinuingElsewhere": "Esta llamada continúa en tu otro dispositivo."
 }

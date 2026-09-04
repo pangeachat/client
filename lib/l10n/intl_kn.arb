@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-09-03 14:43:48.682627",
+    "@@last_modified": "2026-09-04 09:17:54.598069",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2266,5 +2266,12 @@
     "seeAll": "ಎಲ್ಲವನ್ನೂ ನೋಡಿ",
     "seeAllSection": "ಎಲ್ಲವನ್ನೂ ನೋಡಿ {section}",
     "showMoreOptionsHint": "ಇನ್ನಷ್ಟು ಆಯ್ಕೆಗಳನ್ನು ತೋರಿಸಿ",
-    "onboardingStepOfTotal": "{total} ರಲ್ಲಿ ಹೆಜ್ಜೆ {step}"
+    "onboardingStepOfTotal": "{total} ರಲ್ಲಿ ಹೆಜ್ಜೆ {step}",
+    "callDevicesTitle": "ಈ ಕರೆಯು ನಿಮ್ಮ ಎರಡು ಸಾಧನಗಳಲ್ಲಿ ತೆರೆದಿದೆ.",
+    "callDevicesBody": "ಮುಂದುವರಿಸಲು ಒಂದನ್ನು ಆರಿಸಿ. ನೀವು ಹಾಗೆ ಮಾಡುವವರೆಗೆ, ಯಾವುದೂ ನಿಮ್ಮ ಮೈಕ್ರೊಫೋನ್ ಅಥವಾ ಕ್ಯಾಮರಾವನ್ನು ಕಳುಹಿಸುವುದಿಲ್ಲ.",
+    "callDevicesUseThis": "ಈ ಸಾಧನವನ್ನು ಬಳಸಿ",
+    "callDevicesLeaveHere": "ಕರೆ ಇಲ್ಲಿ ಬಿಡಿ",
+    "callDevicesOlderTitle": "ನಿಮ್ಮ ಇನ್ನೊಂದು ಸಾಧನವು ತನ್ನಷ್ಟಕ್ಕೆ ಈ ಕರೆಯನ್ನು ಬಿಡಲು ಸಾಧ್ಯವಿಲ್ಲ.",
+    "callDevicesOlderBody": "ಅಲ್ಲಿ ಕರೆಯನ್ನು ಕೊನೆಗೊಳಿಸಿ, ಅಥವಾ ಇಲ್ಲಿ ಬಿಡಿ. ಇದರರ್ಥ ಸಾಮಾನ್ಯವಾಗಿ ಅದು ಹಳೆಯ ಆವೃತ್ತಿಯನ್ನು ಚಾಲನೆ ಮಾಡುತ್ತಿದೆ, ಮತ್ತು ಅದನ್ನು ನವೀಕರಿಸುವುದರಿಂದ ಇದನ್ನು ಸರಿಪಡಿಸುತ್ತದೆ.",
+    "callContinuingElsewhere": "ಈ ಕರೆ ನಿಮ್ಮ ಇನ್ನೊಂದು ಸಾಧನದಲ್ಲಿ ಮುಂದುವರಿಯುತ್ತಿದೆ."
 }

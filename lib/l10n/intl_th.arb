@@ -3094,7 +3094,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-09-03 14:43:51.455221",
+    "@@last_modified": "2026-09-04 09:18:04.148015",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10494,5 +10494,12 @@
     "seeAll": "ดูทั้งหมด",
     "seeAllSection": "ดูทั้งหมด {section}",
     "showMoreOptionsHint": "แสดงตัวเลือกเพิ่มเติม",
-    "onboardingStepOfTotal": "ขั้นตอนที่ {step} จาก {total}"
+    "onboardingStepOfTotal": "ขั้นตอนที่ {step} จาก {total}",
+    "callDevicesTitle": "การโทรนี้เปิดอยู่บนอุปกรณ์สองเครื่องของคุณ",
+    "callDevicesBody": "เลือกอุปกรณ์ที่จะใช้ดำเนินการต่อ จนกว่าคุณจะเลือก อุปกรณ์ทั้งสองจะไม่ส่งไมโครโฟนหรือกล้องของคุณ",
+    "callDevicesUseThis": "ใช้อุปกรณ์นี้",
+    "callDevicesLeaveHere": "ออกจากการโทรที่นี่",
+    "callDevicesOlderTitle": "อุปกรณ์เครื่องอื่นของคุณไม่สามารถออกจากการโทรนี้ได้ด้วยตัวเอง",
+    "callDevicesOlderBody": "วางสายที่นั่น หรือออกจากการโทรที่นี่ โดยปกติหมายความว่าอุปกรณ์กำลังใช้เวอร์ชันเก่า และการอัปเดตจะแก้ไขปัญหานี้ได้",
+    "callContinuingElsewhere": "การโทรนี้กำลังดำเนินต่อไปบนอุปกรณ์เครื่องอื่นของคุณ"
 }

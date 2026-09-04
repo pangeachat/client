@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-09-03 14:43:50.979483",
+    "@@last_modified": "2026-09-04 09:18:06.885018",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2266,5 +2266,12 @@
     "seeAll": "Arag dhammaan",
     "seeAllSection": "Arag dhammaan {section}",
     "showMoreOptionsHint": "muuji doorashooyin dheeraad ah",
-    "onboardingStepOfTotal": "Tallaabada {step} ee {total}"
+    "onboardingStepOfTotal": "Tallaabada {step} ee {total}",
+    "callDevicesTitle": "Wicitaankani wuxuu ka furan yahay laba ka mid ah aaladahaaga.",
+    "callDevicesBody": "Dooro midka aad ku sii wadi lahayd. Ilaa aad ka doorato, midkoodna ma dirayo makarafoonkaaga ama kamaradaada.",
+    "callDevicesUseThis": "Isticmaal aaladdan",
+    "callDevicesLeaveHere": "Halkan ka tag wicitaanka",
+    "callDevicesOlderTitle": "Aaladdaada kale iskii ugama bixi karto wicitaankan.",
+    "callDevicesOlderBody": "Halkaas ka jooji wicitaanka, ama halkan kaga tag. Taasi badanaa waxay ka dhigan tahay inay ku shaqaynayso nooc duug ah, oo cusboonaysiinteedu ay hagaajin doonto tan.",
+    "callContinuingElsewhere": "Wicitaankani wuxuu ku sii socdaa aaladdaada kale."
 }

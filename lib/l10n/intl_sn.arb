@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-09-03 14:43:50.972457",
+    "@@last_modified": "2026-09-04 09:18:03.930651",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2266,5 +2266,12 @@
     "seeAll": "Ona zvese",
     "seeAllSection": "Ona zvese zve {section}",
     "showMoreOptionsHint": "ratidza zvimwe zvingasarudzwa",
-    "onboardingStepOfTotal": "Nhanho {step} ye {total}"
+    "onboardingStepOfTotal": "Nhanho {step} ye {total}",
+    "callDevicesTitle": "Kufona uku kwakavhurika pamidziyo yako miviri.",
+    "callDevicesBody": "Sarudza imwe yekuenderera nayo. Kusvikira waita izvozvo, hapana iri kutumira maikorofoni yako kana kamera.",
+    "callDevicesUseThis": "Shandisa mudziyo uyu",
+    "callDevicesLeaveHere": "Siya kufona pano",
+    "callDevicesOlderTitle": "Mumwe mudziyo wako haugone kusiya kufona uku wega.",
+    "callDevicesOlderBody": "Pedzisa kufona ikoko, kana kusiyira pano. Izvi zvinoreva kuti iri kushandisa vhezheni yekare, uye kuigadzirisa kuchagadzirisa izvi.",
+    "callContinuingElsewhere": "Kufona uku kuri kuenderera mberi pane mumwe mudziyo wako."
 }

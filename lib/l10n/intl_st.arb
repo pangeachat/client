@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-09-03 14:43:51.199794",
+    "@@last_modified": "2026-09-04 09:18:03.542043",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2266,5 +2266,12 @@
     "seeAll": "Bona kaofela",
     "seeAllSection": "Bona {section} kaofela",
     "showMoreOptionsHint": "bontsha likhetho tse ling",
-    "onboardingStepOfTotal": "Kgato {step} ho tse {total}"
+    "onboardingStepOfTotal": "Kgato {step} ho tse {total}",
+    "callDevicesTitle": "Mohala ona o bulehile lisebelisoa tsa hau tse peli.",
+    "callDevicesBody": "Khetha eo u batlang ho tsoela pele ka eona. Ho fihlela u etsa joalo, ha ho le e 'ngoe e romellang maekrofono kapa khamera ea hau.",
+    "callDevicesUseThis": "Sebelisa sesebelisoa sena",
+    "callDevicesLeaveHere": "Tlohela mohala mona",
+    "callDevicesOlderTitle": "Sesebelisoa sa hau se seng se ke ke sa tlohela mohala ona ka bo sona.",
+    "callDevicesOlderBody": "Fellisa mohala moo, kapa o tlohele mona. Seo hangata se bolela hore se sebelisa mofuta oa khale, 'me ho o ntlafatsa ho tla lokisa sena.",
+    "callContinuingElsewhere": "Mohala ona o ntse o tsoela pele sesebelisoa sa hau se seng."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-09-03 14:43:49.752632",
+    "@@last_modified": "2026-09-04 09:17:58.016990",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2266,5 +2266,12 @@
     "seeAll": "सर्व पहा",
     "seeAllSection": "सर्व {section} पहा",
     "showMoreOptionsHint": "अधिक पर्याय दाखवा",
-    "onboardingStepOfTotal": "{total} पैकी पायरी {step}"
+    "onboardingStepOfTotal": "{total} पैकी पायरी {step}",
+    "callDevicesTitle": "हा कॉल तुमच्या दोन डिव्हाइसवर सुरू आहे.",
+    "callDevicesBody": "पुढे सुरू ठेवण्यासाठी एक निवडा. जोपर्यंत तुम्ही निवडत नाही, तोपर्यंत दोन्हीपैकी कोणतेही डिव्हाइस तुमचा मायक्रोफोन किंवा कॅमेरा पाठवत नाहीये.",
+    "callDevicesUseThis": "हे डिव्हाइस वापरा",
+    "callDevicesLeaveHere": "कॉल इथेच सोडा",
+    "callDevicesOlderTitle": "तुमचे दुसरे डिव्हाइस हा कॉल स्वतःहून सोडू शकत नाही.",
+    "callDevicesOlderBody": "तिथे कॉल संपवा किंवा इथे सोडा. याचा अर्थ असा होतो की ते जुनी आवृत्ती वापरत आहे आणि ते अपडेट केल्यास ही समस्या दूर होईल.",
+    "callContinuingElsewhere": "हा कॉल तुमच्या दुसऱ्या डिव्हाइसवर सुरू आहे."
 }

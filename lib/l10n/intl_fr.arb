@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-09-03 14:43:46.910907",
+    "@@last_modified": "2026-09-04 09:17:49.386834",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10217,5 +10217,12 @@
     "seeAll": "Tout voir",
     "seeAllSection": "Voir tout {section}",
     "showMoreOptionsHint": "afficher plus d'options",
-    "onboardingStepOfTotal": "Étape {step} sur {total}"
+    "onboardingStepOfTotal": "Étape {step} sur {total}",
+    "callDevicesTitle": "Cet appel est ouvert sur deux de vos appareils.",
+    "callDevicesBody": "Choisissez celui que vous souhaitez utiliser. Tant que vous ne le faites pas, aucun des deux n'envoie votre microphone ou votre caméra.",
+    "callDevicesUseThis": "Utiliser cet appareil",
+    "callDevicesLeaveHere": "Quitter l'appel ici",
+    "callDevicesOlderTitle": "Votre autre appareil ne peut pas quitter cet appel de lui-même.",
+    "callDevicesOlderBody": "Mettez fin à l'appel là-bas, ou quittez-le ici. Cela signifie généralement qu'il utilise une version plus ancienne, et la mise à jour résoudra ce problème.",
+    "callContinuingElsewhere": "Cet appel se poursuit sur votre autre appareil."
 }

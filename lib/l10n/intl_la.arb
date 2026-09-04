@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-09-03 14:43:49.101650",
+    "@@last_modified": "2026-09-04 09:17:55.599057",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2266,5 +2266,12 @@
     "seeAll": "Omnia vide",
     "seeAllSection": "Omnia {section} vide",
     "showMoreOptionsHint": "plures optiones ostende",
-    "onboardingStepOfTotal": "Gradus {step} de {total}"
+    "onboardingStepOfTotal": "Gradus {step} de {total}",
+    "callDevicesTitle": "Hoc colloquium in duobus tuis instrumentis apertum est.",
+    "callDevicesBody": "Elige quo pergere velis. Donec id feceris, neutrum microphonum aut cameram tuam mittit.",
+    "callDevicesUseThis": "Hoc instrumento utere",
+    "callDevicesLeaveHere": "Colloquium hic relinque",
+    "callDevicesOlderTitle": "Alterum instrumentum tuum hoc colloquium per se relinquere non potest.",
+    "callDevicesOlderBody": "Colloquium ibi finias, aut hic relinquas. Hoc plerumque significat versionem vetustiorem currit, et eam renovando hoc corrigetur.",
+    "callContinuingElsewhere": "Hoc colloquium in altero instrumento tuo pergit."
 }

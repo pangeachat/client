@@ -2968,7 +2968,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-09-03 14:43:49.128754",
+    "@@last_modified": "2026-09-04 09:17:56.351316",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10643,5 +10643,12 @@
     "seeAll": "Žr. visus",
     "seeAllSection": "Žr. visus {section}",
     "showMoreOptionsHint": "rodyti daugiau parinkčių",
-    "onboardingStepOfTotal": "{step} iš {total} žingsnio"
+    "onboardingStepOfTotal": "{step} iš {total} žingsnio",
+    "callDevicesTitle": "Šis skambutis atidarytas dviejuose jūsų įrenginiuose.",
+    "callDevicesBody": "Pasirinkite, kurį norite tęsti. Kol to nepadarysite, nė vienas nesiųs jūsų mikrofono ar kameros.",
+    "callDevicesUseThis": "Naudoti šį įrenginį",
+    "callDevicesLeaveHere": "Palikti skambutį čia",
+    "callDevicesOlderTitle": "Kitas jūsų įrenginys negali pats išeiti iš šio skambučio.",
+    "callDevicesOlderBody": "Baigti skambutį ten arba palikti jį čia. Tai paprastai reiškia, kad jame veikia senesnė versija, ir atnaujinus tai bus ištaisyta.",
+    "callContinuingElsewhere": "Šis skambutis tęsiamas kitame jūsų įrenginyje."
 }
