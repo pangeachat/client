@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-09-03 14:43:52.519895",
+    "@@last_modified": "2026-09-04 10:08:41.151874",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "Ungavula ukuguqula umbhalo ube inkulumo kuzilungiselelo zakho zokufunda",
     "noSpaceDescriptionYet": "Ayikho incazelo yekhosi eyenziwe okwamanje.",
     "tooLargeToSend": "Lo mlayezo mkhulu kakhulu ukuthi ungathunyelwa",
-    "enableAutocorrectPopupTitle": "Engeza ikhibhodi yolimi oluqondile ngokuya ku:",
     "enableAutocorrectPopupSteps": "  • Izilungiselelo\n  • Okujwayelekile\n  • Ikhibhodi\n  • Amakhibhodi\n  • Engeza Ikhibhodi Entsha",
     "enableAutocorrectPopupDescription": "Uma ulimi selukhethiwe, ungachofoza isithonjana esincane seglobhu ngakwesokunxele esingezansi sekhibhodi yakho ukuze uvule ikhibhodi esanda kufakwa.",
     "enableAutocorrectWarning": "Isexwayiso! Kudinga ukwengeza ikhibhodi yolimi oluqondile",
@@ -2266,5 +2265,7 @@
     "seeAll": "Buka konke",
     "seeAllSection": "Buka konke {section}",
     "showMoreOptionsHint": "bonisa izinketho eziningi",
-    "onboardingStepOfTotal": "Isinyathelo {step} sokungu {total}"
+    "onboardingStepOfTotal": "Isinyathelo {step} sokungu {total}",
+    "addKeyboardDialogTitle": "Faka ikhibhodi yolimi olufunayo",
+    "enableAutocorrectPopupPathIntro": "Ukuze ungeze eyodwa, yiya ku:"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-09-03 14:43:50.911865",
+    "@@last_modified": "2026-09-04 10:08:39.248162",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "E mafai ona e faʻaagaaga le text-to-speech i au faʻatulagaga aʻoaʻoga",
     "noSpaceDescriptionYet": "E leʻi faia se faʻamatalaga o le kosi.",
     "tooLargeToSend": "E telē tele lenei feʻau e lafo",
-    "enableAutocorrectPopupTitle": "Faʻaopoopo lau piano gagana e aʻoaʻoina e ala i le alu i:",
     "enableAutocorrectPopupSteps": "  • Faʻatulagaga\n  • Lautele\n  • Piano\n  • Piano\n  • Faʻaopoopo se Piano Fou",
     "enableAutocorrectPopupDescription": "O le taimi lava e filifilia ai le gagana, e mafai ona e kiliki le faʻailoga laʻititi o le lalolagi i le pito i lalo agavale o lau piano e faʻagaoioia ai le piano fou faʻapipiʻi.",
     "enableAutocorrectWarning": "Lapataʻiga! E manaʻomia le faʻaopoopoina o lau piano gagana e aʻoaʻoina",
@@ -2266,5 +2265,7 @@
     "seeAll": "Vaʻai uma",
     "seeAllSection": "Vaʻai uma {section}",
     "showMoreOptionsHint": "fa'aali nisi filifiliga",
-    "onboardingStepOfTotal": "Laasaga {step} o le {total}"
+    "onboardingStepOfTotal": "Laasaga {step} o le {total}",
+    "addKeyboardDialogTitle": "Fa'aopoopo lau piano feavea'i o le gagana e te mana'o ai",
+    "enableAutocorrectPopupPathIntro": "Ina ia fa'aopoopo se tasi, alu i le:"
 }

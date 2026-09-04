@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-09-03 14:43:49.672088",
+    "@@last_modified": "2026-09-04 10:08:36.996119",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "Anda boleh mendayakan teks-ke-ucapan dalam tetapan pembelajaran anda",
     "noSpaceDescriptionYet": "Tiada penerangan kursus dibuat lagi.",
     "tooLargeToSend": "Mesej ini terlalu besar untuk dihantar",
-    "enableAutocorrectPopupTitle": "Tambah papan kekunci bahasa sasaran anda dengan pergi ke:",
     "enableAutocorrectPopupSteps": "  • Tetapan\n  • Umum\n  • Papan Kekunci\n  • Papan Kekunci\n  • Tambah Papan Kekunci Baharu",
     "enableAutocorrectPopupDescription": "Setelah bahasa dipilih, anda boleh mengklik ikon glob kecil di bahagian bawah kiri papan kekunci anda untuk mengaktifkan papan kekunci yang baru dipasang.",
     "enableAutocorrectWarning": "Amaran! Memerlukan penambahan papan kekunci bahasa sasaran anda",
@@ -2266,5 +2265,7 @@
     "seeAll": "Lihat semua",
     "seeAllSection": "Lihat semua {section}",
     "showMoreOptionsHint": "tunjukkan pilihan lain",
-    "onboardingStepOfTotal": "Langkah {step} daripada {total}"
+    "onboardingStepOfTotal": "Langkah {step} daripada {total}",
+    "addKeyboardDialogTitle": "Tambah papan kekunci bahasa sasaran anda",
+    "enableAutocorrectPopupPathIntro": "Untuk menambah satu, pergi ke:"
 }

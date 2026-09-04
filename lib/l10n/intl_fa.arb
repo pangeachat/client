@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-03 14:43:46.845500",
+    "@@last_modified": "2026-09-04 10:08:33.464131",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -3265,7 +3265,6 @@
     "ttsDisabledBody": "می‌توانید تبدیل متن به گفتار را در تنظیمات یادگیری خود فعال کنید",
     "noSpaceDescriptionYet": "تاکنون توضیح دوره‌ای ایجاد نشده است.",
     "tooLargeToSend": "این پیام بسیار بزرگ است و نمی‌تواند ارسال شود",
-    "enableAutocorrectPopupTitle": "با رفتن به تنظیمات صفحه کلید زبان هدف خود را اضافه کنید:",
     "enableAutocorrectPopupSteps": "  • تنظیمات\n  • عمومی\n  • صفحه کلید\n  • صفحه کلیدها\n  • افزودن صفحه کلید جدید",
     "enableAutocorrectPopupDescription": "پس از انتخاب زبان، می‌توانید روی آیکون کوچک کره در پایین سمت چپ صفحه کلید خود کلیک کنید تا صفحه کلید نصب شده جدید فعال شود.",
     "enableAutocorrectWarning": "هشدار! نیاز به افزودن صفحه کلید زبان هدف دارید",
@@ -5463,10 +5462,6 @@
         "placeholders": {}
     },
     "@tooLargeToSend": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -9950,5 +9945,7 @@
     "seeAll": "مشاهده همه",
     "seeAllSection": "مشاهده همه {section}",
     "showMoreOptionsHint": "نمایش گزینه‌های بیشتر",
-    "onboardingStepOfTotal": "مرحله {step} از {total}"
+    "onboardingStepOfTotal": "مرحله {step} از {total}",
+    "addKeyboardDialogTitle": "صفحه‌کلید زبان مقصد خود را اضافه کنید",
+    "enableAutocorrectPopupPathIntro": "برای افزودن، به اینجا بروید:"
 }

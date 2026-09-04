@@ -1133,7 +1133,6 @@
     "ttsDisabledBody": "Du kan aktivere tale-til-tekst i dine læringsindstillinger",
     "noSpaceDescriptionYet": "Der er endnu ikke oprettet en kursusbeskrivelse.",
     "tooLargeToSend": "Denne besked er for stor til at sende",
-    "enableAutocorrectPopupTitle": "Tilføj dit målsprog-tastatur ved at gå til:",
     "enableAutocorrectPopupSteps": "  • Indstillinger\n  • Generelt\n  • Tastatur\n  • Tastaturer\n  • Tilføj nyt tastatur",
     "enableAutocorrectPopupDescription": "Når sproget er valgt, kan du klikke på det lille globus-ikon nederst til venstre på dit tastatur for at aktivere det nyinstallerede tastatur.",
     "enableAutocorrectWarning": "Advarsel! Kræver tilføjelse af dit målsprog-tastatur",
@@ -1335,7 +1334,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-09-03 14:43:46.421548",
+    "@@last_modified": "2026-09-04 10:08:32.660056",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -6293,10 +6292,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@enableAutocorrectPopupTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectPopupSteps": {
         "type": "String",
         "placeholders": {}
@@ -10782,5 +10777,7 @@
     "seeAll": "Se alle",
     "seeAllSection": "Se alle {section}",
     "showMoreOptionsHint": "vis flere valgmuligheder",
-    "onboardingStepOfTotal": "Trin {step} af {total}"
+    "onboardingStepOfTotal": "Trin {step} af {total}",
+    "addKeyboardDialogTitle": "Tilføj dit målsprogstastatur",
+    "enableAutocorrectPopupPathIntro": "For at tilføje et, gå til:"
 }

@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/features/overlay/overlay.dart';
 import 'package:fluffychat/features/overlay/overlay_display_details.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 // Read-aloud stays quiet while the learner has a message open (#8396).
@@ -31,6 +32,9 @@ void main() {
     late BuildContext context;
     await tester.pumpWidget(
       MaterialApp(
+        locale: const Locale('en'),
+        localizationsDelegates: L10n.localizationsDelegates,
+        supportedLocales: L10n.supportedLocales,
         home: Builder(
           builder: (c) {
             context = c;
@@ -39,6 +43,9 @@ void main() {
         ),
       ),
     );
+    // The overlay's backdrop names its Dismiss control through `L10n`, whose
+    // delegate loads from a deferred library: nothing is built until it lands.
+    await tester.pumpAndSettle();
 
     expect(isMessageOpen(), isFalse);
 

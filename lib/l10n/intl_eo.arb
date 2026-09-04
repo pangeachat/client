@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-03 14:43:46.507252",
+    "@@last_modified": "2026-09-04 10:08:33.616626",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -2604,7 +2604,6 @@
     "ttsDisabledBody": "Vi povas ŝalti tekston-al-paroladon en viaj lernaj agordoj",
     "noSpaceDescriptionYet": "Ankoraŭ ne kreita priskribo de kurso.",
     "tooLargeToSend": "Ĉi tiu mesaĝo estas tro granda por sendi",
-    "enableAutocorrectPopupTitle": "Aldoni vian celan lingvon-klavaron per irado al:",
     "enableAutocorrectPopupSteps": "  • Agordoj\n  • Ĝenerala\n  • Klavaro\n  • Klavaroj\n  • Aldoni novan klavaron",
     "enableAutocorrectPopupDescription": "Post kiam la lingvo estas elektita, vi povas klaki la malgrandan globan ikonon ĉe la maldekstra angulo de via klavaro por aktivigi la novan instalitan klavaron.",
     "enableAutocorrectWarning": "Averto! Postulas aldoni vian celan lingvon-klavaron",
@@ -6315,10 +6314,6 @@
         "placeholders": {}
     },
     "@tooLargeToSend": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10807,5 +10802,7 @@
     "seeAll": "Vidi ĉion",
     "seeAllSection": "Vidi ĉion en {section}",
     "showMoreOptionsHint": "montri pliajn opciojn",
-    "onboardingStepOfTotal": "Paŝo {step} el {total}"
+    "onboardingStepOfTotal": "Paŝo {step} el {total}",
+    "addKeyboardDialogTitle": "Aldonu klavaron por via cellingvo",
+    "enableAutocorrectPopupPathIntro": "Por aldoni tian, iru al:"
 }

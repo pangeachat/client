@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-09-03 14:43:47.095631",
+    "@@last_modified": "2026-09-04 10:08:34.463683",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "Faodaidh tu teacsa-gu-cainnt a chomasachadh anns na roghainnean ionnsachaidh agad",
     "noSpaceDescriptionYet": "Cha deach tuairisgeul cùrsa a chruthachadh fhathast.",
     "tooLargeToSend": "Tha an teachdaireachd seo ro mhòr airson a chur",
-    "enableAutocorrectPopupTitle": "Cuir ris a' mheur-chlàr cànain targaid agad le bhith a' dol gu:",
     "enableAutocorrectPopupSteps": "  • Roghainnean\n  • Coitcheann\n  • Meur-chlàr\n  • Meur-chlàran\n  • Cuir Meur-chlàr Ùr ris",
     "enableAutocorrectPopupDescription": "Aon uair 's gu bheil an cànan air a thaghadh, faodaidh tu briogadh air an ìomhaigh bheag cruinne air taobh clì gu h-ìosal a' mheur-chlàir agad gus am meur-chlàr ùr a chaidh a stàladh a ghnìomhachadh.",
     "enableAutocorrectWarning": "Rabhadh! Feumaidh seo am meur-chlàr cànain targaid agad a chur ris",
@@ -2266,5 +2265,7 @@
     "seeAll": "Faic na h-uile",
     "seeAllSection": "Faic na h-uile {section}",
     "showMoreOptionsHint": "seall barrachd roghainnean",
-    "onboardingStepOfTotal": "Ceum {step} de {total}"
+    "onboardingStepOfTotal": "Ceum {step} de {total}",
+    "addKeyboardDialogTitle": "Cuir ris meur-chlàr na cànain targaid agad",
+    "enableAutocorrectPopupPathIntro": "Gus fear a chur ris, rachaibh gu:"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-03 14:43:50.539326",
+    "@@last_modified": "2026-09-04 10:08:38.967035",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -3213,7 +3213,6 @@
     "ttsDisabledBody": "Você pode ativar o texto para fala nas configurações de aprendizado",
     "noSpaceDescriptionYet": "Ainda não foi criada uma descrição do curso.",
     "tooLargeToSend": "Esta mensagem é grande demais para enviar",
-    "enableAutocorrectPopupTitle": "Adicione o teclado do seu idioma alvo indo para:",
     "enableAutocorrectPopupSteps": "  • Configurações\n  • Geral\n  • Teclado\n  • Teclados\n  • Adicionar Novo Teclado",
     "enableAutocorrectPopupDescription": "Depois de selecionar o idioma, você pode clicar no pequeno ícone do globo na parte inferior esquerda do seu teclado para ativar o teclado recentemente instalado.",
     "enableAutocorrectWarning": "Atenção! É necessário adicionar o teclado do idioma alvo",
@@ -6314,10 +6313,6 @@
         "placeholders": {}
     },
     "@tooLargeToSend": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10806,5 +10801,7 @@
     "seeAll": "Ver tudo",
     "seeAllSection": "Ver tudo em {section}",
     "showMoreOptionsHint": "mostrar mais opções",
-    "onboardingStepOfTotal": "Passo {step} de {total}"
+    "onboardingStepOfTotal": "Passo {step} de {total}",
+    "addKeyboardDialogTitle": "Adicione o teclado do seu idioma de destino",
+    "enableAutocorrectPopupPathIntro": "Para adicionar um, vá para:"
 }

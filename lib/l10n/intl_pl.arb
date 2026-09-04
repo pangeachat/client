@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-09-03 14:43:50.356880",
+    "@@last_modified": "2026-09-04 10:08:38.327587",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -3268,7 +3268,6 @@
     "ttsDisabledBody": "Możesz włączyć syntezę tekstu na mowie w ustawieniach nauki",
     "noSpaceDescriptionYet": "Nie utworzono jeszcze opisu kursu.",
     "tooLargeToSend": "Ta wiadomość jest za duża, aby ją wysłać",
-    "enableAutocorrectPopupTitle": "Dodaj klawiaturę języka docelowego, przechodząc do:",
     "enableAutocorrectPopupSteps": "  • Ustawienia\n  • Ogólne\n  • Klawiatura\n  • Klawiatury\n  • Dodaj nową klawiaturę",
     "enableAutocorrectPopupDescription": "Po wybraniu języka możesz kliknąć małą ikonę globu w lewym dolnym rogu klawiatury, aby aktywować nowo zainstalowaną klawiaturę.",
     "enableAutocorrectWarning": "Uwaga! Wymaga dodania klawiatury języka docelowego",
@@ -5465,10 +5464,6 @@
         "placeholders": {}
     },
     "@tooLargeToSend": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -9947,5 +9942,7 @@
     "seeAll": "Zobacz wszystkie",
     "seeAllSection": "Zobacz wszystkie {section}",
     "showMoreOptionsHint": "pokaż więcej opcji",
-    "onboardingStepOfTotal": "Krok {step} z {total}"
+    "onboardingStepOfTotal": "Krok {step} z {total}",
+    "addKeyboardDialogTitle": "Dodaj klawiaturę języka docelowego",
+    "enableAutocorrectPopupPathIntro": "Aby dodać, przejdź do:"
 }

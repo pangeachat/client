@@ -3,7 +3,6 @@ import 'dart:io' show Platform;
 
 import 'package:flutter/foundation.dart';
 
-import 'package:livekit_client/livekit_client.dart' as lk;
 import 'package:matrix/matrix.dart' show Logs;
 import 'package:permission_handler/permission_handler.dart';
 
@@ -432,21 +431,34 @@ class CallSession extends ChangeNotifier {
     return room.unsafeGetUserFromMemoryOrFallback(id);
   }
 
-  /// Every published video track, ours and theirs. Latches [usedVideo] on the
-  /// way past: nothing can appear on screen without coming through here, so
-  /// this is the one read that cannot miss a remote camera coming on.
-  List<lk.VideoTrack> videoTracks() {
-    final tracks = <lk.VideoTrack>[
-      ...media.room.remoteParticipants.values
-          .expand((p) => p.videoTrackPublications)
-          .map((p) => p.track)
-          .whereType<lk.VideoTrack>(),
-      ...?media.room.localParticipant?.videoTrackPublications
-          .map((p) => p.track)
-          .whereType<lk.VideoTrack>(),
-    ];
-    if (tracks.isNotEmpty) _usedVideo = true;
-    return tracks;
+  /// This device's own user, for the self-view's name and face when its camera
+  /// is off. Resolved the same way as [peer].
+  matrix.User? get me {
+    final id = _myUserId;
+    if (id == null) return null;
+    return room.unsafeGetUserFromMemoryOrFallback(id);
+  }
+
+  /// This device's `_usedVideo` latch, for a test to read after driving
+  /// [videoFeeds]. Not part of the call's surface -- the timeline reads the
+  /// field directly.
+  @visibleForTesting
+  bool get usedVideo => _usedVideo;
+
+  /// Every participant's video feed, the peer's first and this device's last:
+  /// the camera when it is on, and the fact that it is off -- with the avatar
+  /// to fall back to -- when it is not (#8795).
+  ///
+  /// Latches [usedVideo] on the way past, on the same terms the old flat
+  /// `videoTracks()` did: a feed that carries an actual track -- a live camera,
+  /// or one switched off whose last frame is still attached -- means this call
+  /// rendered video. A publication that never produced a track does NOT latch
+  /// here; [_latchVideo], which runs on the call's own clock, is what covers a
+  /// camera coming up while no view is asking.
+  List<CallVideoFeed> videoFeeds() {
+    final feeds = media.videoFeeds();
+    if (feeds.any((feed) => feed.track != null)) _usedVideo = true;
+    return feeds;
   }
 
   // ---------------------------------------------------------------- actions

@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/l10n/l10n.dart';
 import '../../widgets/matrix.dart';
 
 class TransparentBackdrop extends StatelessWidget {
@@ -34,21 +35,25 @@ class TransparentBackdrop extends StatelessWidget {
           borderOnForeground: false,
           color: Color.lerp(Colors.transparent, targetColor, t),
           clipBehavior: Clip.antiAlias,
-          child: InkWell(
-            hoverColor: Colors.transparent,
-            splashColor: Colors.transparent,
-            focusColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            onTap: () {
-              onDismiss?.call();
-              MatrixState.pAnyState.closeOverlay();
-            },
-            child: BackdropFilter(
-              filter: ImageFilter.blur(
-                sigmaX: blurBackground ? 3.0 * t : 0,
-                sigmaY: blurBackground ? 3.0 * t : 0,
+          child: Semantics(
+            label: L10n.of(context).dismiss,
+            button: true,
+            child: InkWell(
+              hoverColor: Colors.transparent,
+              splashColor: Colors.transparent,
+              focusColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              onTap: () {
+                onDismiss?.call();
+                MatrixState.pAnyState.closeOverlay();
+              },
+              child: BackdropFilter(
+                filter: ImageFilter.blur(
+                  sigmaX: blurBackground ? 3.0 * t : 0,
+                  sigmaY: blurBackground ? 3.0 * t : 0,
+                ),
+                child: const SizedBox.expand(),
               ),
-              child: const SizedBox.expand(),
             ),
           ),
         );

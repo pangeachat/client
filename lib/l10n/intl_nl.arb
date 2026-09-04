@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-03 14:43:50.035794",
+    "@@last_modified": "2026-09-04 10:08:37.631805",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -3356,7 +3356,6 @@
     "ttsDisabledBody": "Je kunt tekst-naar-spraak inschakelen in je leerinstellingen",
     "noSpaceDescriptionYet": "Nog geen cursusbeschrijving gemaakt.",
     "tooLargeToSend": "Dit bericht is te groot om te verzenden",
-    "enableAutocorrectPopupTitle": "Voeg je doeltaal-toetsenbord toe door naar te gaan:",
     "enableAutocorrectPopupSteps": "  • Instellingen\n  • Algemeen\n  • Toetsenbord\n  • Toetsenborden\n  • Nieuw toetsenbord toevoegen",
     "enableAutocorrectPopupDescription": "Zodra de taal is geselecteerd, kun je op het kleine wereldbol-icoon linksonder op je toetsenbord klikken om het nieuw geïnstalleerde toetsenbord te activeren.",
     "enableAutocorrectWarning": "Waarschuwing! Vereist het toevoegen van je doeltaaltoetsenbord",
@@ -5550,10 +5549,6 @@
         "placeholders": {}
     },
     "@tooLargeToSend": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -9862,5 +9857,7 @@
     "seeAll": "Alles weergeven",
     "seeAllSection": "Alle {section} weergeven",
     "showMoreOptionsHint": "meer opties weergeven",
-    "onboardingStepOfTotal": "Stap {step} van {total}"
+    "onboardingStepOfTotal": "Stap {step} van {total}",
+    "addKeyboardDialogTitle": "Voeg het toetsenbord van je doeltaal toe",
+    "enableAutocorrectPopupPathIntro": "Om er een toe te voegen, ga naar:"
 }

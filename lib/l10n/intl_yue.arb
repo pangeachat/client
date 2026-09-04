@@ -1051,7 +1051,6 @@
     "ttsDisabledBody": "您可以在學習設置中啟用文字轉語音",
     "noSpaceDescriptionYet": "尚未創建課程描述。",
     "tooLargeToSend": "此訊息過大，無法傳送",
-    "enableAutocorrectPopupTitle": "通過以下方式添加您的目標語言鍵盤：",
     "enableAutocorrectPopupSteps": "  • 設置\n  • 常規\n  • 鍵盤\n  • 鍵盤\n  • 添加新鍵盤",
     "enableAutocorrectPopupDescription": "選擇語言後，您可以點擊鍵盤左下角的小地球圖標來啟用新安裝的鍵盤。",
     "enableAutocorrectWarning": "警告！需要添加您的目標語言鍵盤",
@@ -1264,7 +1263,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-09-03 14:43:56.575828",
+    "@@last_modified": "2026-09-04 10:08:40.650023",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -5958,10 +5957,6 @@
         "placeholders": {}
     },
     "@tooLargeToSend": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10819,5 +10814,7 @@
     "seeAll": "查看全部",
     "seeAllSection": "查看全部{section}",
     "showMoreOptionsHint": "顯示更多選項",
-    "onboardingStepOfTotal": "第 {step} 步，共 {total} 步"
+    "onboardingStepOfTotal": "第 {step} 步，共 {total} 步",
+    "addKeyboardDialogTitle": "新增你的目標語言鍵盤",
+    "enableAutocorrectPopupPathIntro": "要新增鍵盤，請前往："
 }

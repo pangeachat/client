@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-09-03 14:43:46.295034",
+    "@@last_modified": "2026-09-04 10:08:32.705251",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "Pudete attivà a sintesi vucale in i vostri paràmetri d'amparera",
     "noSpaceDescriptionYet": "Ancu nisuna descrizzione di corsu creata.",
     "tooLargeToSend": "Stu messaghju hè troppu maiò per esse mandatu",
-    "enableAutocorrectPopupTitle": "Aghjunghjite a tastiera di a vostra lingua di destinazione andendu in :",
     "enableAutocorrectPopupSteps": "  • Paràmetri\n  • Generale\n  • Tastiera\n  • Tastiere\n  • Aghjunghje una nova tastiera",
     "enableAutocorrectPopupDescription": "Una volta a lingua scelta, pudete cliccà nant'à a piccula icona di u mappamondu in bassu à manca di a vostra tastiera per attivà a nova tastiera stallata.",
     "enableAutocorrectWarning": "Attenzione ! Richiede l'aghjunta di a tastiera di a vostra lingua di destinazione",
@@ -2266,5 +2265,7 @@
     "seeAll": "Vede tuttu",
     "seeAllSection": "Vede tuttu {section}",
     "showMoreOptionsHint": "mostra più opzioni",
-    "onboardingStepOfTotal": "Passu {step} di {total}"
+    "onboardingStepOfTotal": "Passu {step} di {total}",
+    "addKeyboardDialogTitle": "Aghjunghje a tastiera di a vostra lingua di destinazione",
+    "enableAutocorrectPopupPathIntro": "Per aghjunghje ne una, andate à:"
 }

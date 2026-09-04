@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-09-03 14:43:46.564234",
+    "@@last_modified": "2026-09-04 10:08:33.444285",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -3412,7 +3412,6 @@
     "ttsDisbledTitle": "Texto a voz deshabilitado",
     "ttsDisabledBody": "Puedes habilitar texto a voz en la configuración de aprendizaje",
     "tooLargeToSend": "Este mensaje es demasiado grande para enviar",
-    "enableAutocorrectPopupTitle": "Agrega el teclado de tu idioma objetivo yendo a:",
     "enableAutocorrectPopupSteps": "  • Configuración\n  • General\n  • Teclado\n  • Teclados\n  • Agregar nuevo teclado",
     "enableAutocorrectPopupDescription": "Una vez que se seleccione el idioma, puedes hacer clic en el pequeño ícono de globo en la esquina inferior izquierda de tu teclado para activar el teclado recién instalado.",
     "displayName": "Nombre para mostrar",
@@ -8081,5 +8080,7 @@
     "seeAll": "Ver todo",
     "seeAllSection": "Ver todo {section}",
     "showMoreOptionsHint": "mostrar más opciones",
-    "onboardingStepOfTotal": "Paso {step} de {total}"
+    "onboardingStepOfTotal": "Paso {step} de {total}",
+    "addKeyboardDialogTitle": "Añade el teclado de tu idioma objetivo",
+    "enableAutocorrectPopupPathIntro": "Para añadir uno, ve a:"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-09-03 14:43:55.121324",
+    "@@last_modified": "2026-09-04 10:08:39.879076",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "Anjeun tiasa ngaktipkeun téks-ka-sora dina setelan diajar anjeun",
     "noSpaceDescriptionYet": "Tacan aya déskripsi kursus nu dijieun.",
     "tooLargeToSend": "Pesen ieu ageung teuing pikeun dikirim",
-    "enableAutocorrectPopupTitle": "Tambihkeun kibor basa target anjeun ku cara ka:",
     "enableAutocorrectPopupSteps": "  • Setelan\n  • Umum\n  • Kibor\n  • Kibor\n  • Tambah Kibor Anyar",
     "enableAutocorrectPopupDescription": "Sakali basa dipilih, anjeun tiasa ngaklik ikon globe leutik di kénca handap kibor anjeun pikeun ngaktipkeun kibor nu nembé dipasang.",
     "enableAutocorrectWarning": "Perhatosan! Merlukeun nambihan kibor basa target anjeun",
@@ -2266,5 +2265,7 @@
     "seeAll": "Tingali sadayana",
     "seeAllSection": "Tingali sadayana {section}",
     "showMoreOptionsHint": "témbongkeun pilihan séjén",
-    "onboardingStepOfTotal": "Léngkah {step} tina {total}"
+    "onboardingStepOfTotal": "Léngkah {step} tina {total}",
+    "addKeyboardDialogTitle": "Tambihkeun kibor basa target anjeun",
+    "enableAutocorrectPopupPathIntro": "Pikeun nambihanana, buka:"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-09-03 14:43:50.630298",
+    "@@last_modified": "2026-09-04 10:08:38.848227",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -3952,7 +3952,6 @@
     "ttsDisabledBody": "Вы можете включить преобразование текста в речь в настройках обучения",
     "noSpaceDescriptionYet": "Описание курса еще не создано.",
     "tooLargeToSend": "Это сообщение слишком большое для отправки",
-    "enableAutocorrectPopupTitle": "Добавьте клавиатуру целевого языка, перейдя в:",
     "enableAutocorrectPopupSteps": "  • Настройки\n  • Общие\n  • Клавиатура\n  • Клавиатуры\n  • Добавить новую клавиатуру",
     "enableAutocorrectPopupDescription": "После выбора языка вы можете нажать на маленькую иконку глобуса в левом нижнем углу клавиатуры, чтобы активировать недавно установленную клавиатуру.",
     "enableAutocorrectWarning": "Внимание! Требуется добавить клавиатуру целевого языка",
@@ -6350,10 +6349,6 @@
         "placeholders": {}
     },
     "@tooLargeToSend": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10834,5 +10829,7 @@
     "seeAll": "Посмотреть все",
     "seeAllSection": "Посмотреть все {section}",
     "showMoreOptionsHint": "показать больше опций",
-    "onboardingStepOfTotal": "Шаг {step} из {total}"
+    "onboardingStepOfTotal": "Шаг {step} из {total}",
+    "addKeyboardDialogTitle": "Добавьте клавиатуру для изучаемого языка",
+    "enableAutocorrectPopupPathIntro": "Чтобы добавить, перейдите в:"
 }

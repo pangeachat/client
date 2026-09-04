@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-09-03 14:43:46.015435",
+    "@@last_modified": "2026-09-04 10:08:32.215576",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "Mətndən-səsə funksiyasını öyrənmə parametrlərində aktivləşdirə bilərsiniz",
     "noSpaceDescriptionYet": "Hələ kurs təsviri yaradılmayıb.",
     "tooLargeToSend": "Bu mesaj göndərmək üçün çox böyükdür",
-    "enableAutocorrectPopupTitle": "Hədəf dilinizin klaviaturasını əlavə etmək üçün bura daxil olun:",
     "enableAutocorrectPopupSteps": "  • Parametrlər\n  • Ümumi\n  • Klaviatura\n  • Klaviaturalar\n  • Yeni Klaviatura Əlavə Et",
     "enableAutocorrectPopupDescription": "Dil seçildikdən sonra, yeni quraşdırılmış klaviaturanı aktivləşdirmək üçün klaviaturanızın aşağı sol küncündəki kiçik qlobus işarəsinə klikləyə bilərsiniz.",
     "enableAutocorrectWarning": "Xəbərdarlıq! Hədəf dilinizin klaviaturasını əlavə etmək tələb olunur",
@@ -2266,5 +2265,7 @@
     "seeAll": "Hamısına baxın",
     "seeAllSection": "Bütün {section} baxın",
     "showMoreOptionsHint": "daha çox seçim göstər",
-    "onboardingStepOfTotal": "{total} addımdan {step}. addım"
+    "onboardingStepOfTotal": "{total} addımdan {step}. addım",
+    "addKeyboardDialogTitle": "Hədəf dilinizin klaviaturasını əlavə edin",
+    "enableAutocorrectPopupPathIntro": "Əlavə etmək üçün keçin:"
 }

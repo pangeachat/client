@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-09-03 14:43:49.573965",
+    "@@last_modified": "2026-09-04 10:08:35.288046",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "Ị nwere ike ịkwado ederede-na-okwu na ntọala mmụta gị",
     "noSpaceDescriptionYet": "Emebebeghị nkọwa ọmụmụ ihe ọ bụla.",
     "tooLargeToSend": "Ozi a buru oke ibu izipu",
-    "enableAutocorrectPopupTitle": "Tinye ahụigodo asụsụ ebumnuche gị site na ịga na:",
     "enableAutocorrectPopupSteps": "  • Ntọala\n  • Izugbe\n  • Ahụigodo\n  • Ahụigodo\n  • Tinye Ahụigodo Ọhụrụ",
     "enableAutocorrectPopupDescription": "Ozugbo ahọpụtara asụsụ ahụ, ị nwere ike pịa akara ngosi ụwa dị n'aka ekpe ala nke ahụigodo gị iji mee ka ahụigodo ọhụrụ ahụ arụnyere rụọ ọrụ.",
     "enableAutocorrectWarning": "Ịdọ aka ná ntị! Achọrọ ịgbakwunye ahụigodo asụsụ ebumnuche gị",
@@ -2266,5 +2265,7 @@
     "seeAll": "Hụ ihe niile",
     "seeAllSection": "Hụ {section} niile",
     "showMoreOptionsHint": "gosi nhọrọ ndị ọzọ",
-    "onboardingStepOfTotal": "Nzọụkwụ {step} n'ime {total}"
+    "onboardingStepOfTotal": "Nzọụkwụ {step} n'ime {total}",
+    "addKeyboardDialogTitle": "Tinye ahụigodo asụsụ ị chọrọ",
+    "enableAutocorrectPopupPathIntro": "Iji tinye otu, gaa na:"
 }

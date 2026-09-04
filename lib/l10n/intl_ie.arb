@@ -2892,7 +2892,6 @@
     "ttsDisabledBody": "Tu pote habilitar le text-to-speech in tu configuration de apprendimento",
     "noSpaceDescriptionYet": "Nulle description de curso create ancora.",
     "tooLargeToSend": "Iste message es troppo grande pro inviar",
-    "enableAutocorrectPopupTitle": "Aggiungi tu teclado de lingua target per ir a:",
     "enableAutocorrectPopupSteps": "  • Configuration\n  • General\n  • Keyboard\n  • Keyboards\n  • Aggiungi Nove Keyboard",
     "enableAutocorrectPopupDescription": "Unu li lingue es electet, tu posse clicar la parve glob icon in le basso sinistre del tu clavier pro activar le nove installate clavier.",
     "enableAutocorrectWarning": "Aviso! Require addar le clavier de tu lingua de destino",
@@ -3094,7 +3093,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-09-03 14:43:48.410750",
+    "@@last_modified": "2026-09-04 10:08:35.371872",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6002,10 +6001,6 @@
         "placeholders": {}
     },
     "@tooLargeToSend": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10494,5 +10489,7 @@
     "seeAll": "Féach ar fad",
     "seeAllSection": "Féach ar {section} ar fad",
     "showMoreOptionsHint": "taispeáin tuilleadh roghanna",
-    "onboardingStepOfTotal": "Céim {step} de {total}"
+    "onboardingStepOfTotal": "Céim {step} de {total}",
+    "addKeyboardDialogTitle": "Cuir do mhéarchlár sprioctheanga leis",
+    "enableAutocorrectPopupPathIntro": "Chun ceann a chur leis, téigh go dtí:"
 }

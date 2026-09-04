@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-09-03 14:43:51.304286",
+    "@@last_modified": "2026-09-04 10:08:40.034625",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "Unaweza kuwasha kutafsiri maandishi kuwa sauti katika mipangilio yako ya kujifunza",
     "noSpaceDescriptionYet": "Hakuna maelezo ya kozi yaliyoundwa bado.",
     "tooLargeToSend": "Ujumbe huu ni mkubwa sana kutuma",
-    "enableAutocorrectPopupTitle": "Ongeza kibodi cha lugha unayolenga kwa kwenda kwenye:",
     "enableAutocorrectPopupSteps": "  • Mipangilio\n  • Jumla\n  • Kibodi\n  • Vibodi\n  • Ongeza Kibodi Mpya",
     "enableAutocorrectPopupDescription": "Mara tu lugha imechaguliwa, unaweza kubofya ikoni ndogo ya globu iliyo chini kushoto mwa kibodi chako ili kuwasha kibodi kipya kilichosakinishwa.",
     "enableAutocorrectWarning": "Onyo! Inahitaji kuongeza kibodi cha lugha unayolenga",
@@ -2266,5 +2265,7 @@
     "seeAll": "Tazama zote",
     "seeAllSection": "Tazama {section} zote",
     "showMoreOptionsHint": "onyesha chaguo zaidi",
-    "onboardingStepOfTotal": "Hatua ya {step} kati ya {total}"
+    "onboardingStepOfTotal": "Hatua ya {step} kati ya {total}",
+    "addKeyboardDialogTitle": "Ongeza kibodi cha lugha unayolenga",
+    "enableAutocorrectPopupPathIntro": "Ili kuongeza, nenda kwa:"
 }

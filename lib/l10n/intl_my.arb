@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-09-03 14:43:50.006041",
+    "@@last_modified": "2026-09-04 10:08:37.784859",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "သင်၏ သင်ယူမှုဆက်တင်များတွင် စာသားမှ စကားပြောသို့ ပြောင်းလဲခြင်းကို ဖွင့်နိုင်သည်။",
     "noSpaceDescriptionYet": "သင်တန်းဖော်ပြချက်ကို မဖန်တီးရသေးပါ။",
     "tooLargeToSend": "ဤမက်ဆေ့ချ်သည် ပေးပို့ရန်အတွက် အလွန်ကြီးမားပါသည်။",
-    "enableAutocorrectPopupTitle": "သင်၏ ပစ်မှတ်ဘာသာစကား ကီးဘုတ်ကို ထည့်ရန်-",
     "enableAutocorrectPopupSteps": "  • ဆက်တင်များ\n  • အထွေထွေ\n  • ကီးဘုတ်\n  • ကီးဘုတ်များ\n  • ကီးဘုတ်အသစ်ထည့်ပါ",
     "enableAutocorrectPopupDescription": "ဘာသာစကားကို ရွေးချယ်ပြီးသည်နှင့် သင်၏ကီးဘုတ်၏ ဘယ်ဘက်အောက်ခြေရှိ ကမ္ဘာလုံးပုံလေးကို နှိပ်၍ အသစ်ထည့်သွင်းထားသော ကီးဘုတ်ကို အသက်သွင်းနိုင်သည်။",
     "enableAutocorrectWarning": "သတိပေးချက်။ သင်၏ ပစ်မှတ်ဘာသာစကား ကီးဘုတ်ကို ထည့်သွင်းရန် လိုအပ်ပါသည်။",
@@ -2266,5 +2265,7 @@
     "seeAll": "အားလုံးကြည့်ရန်",
     "seeAllSection": "{section} အားလုံးကြည့်ရန်",
     "showMoreOptionsHint": "ရွေးချယ်စရာများ ထပ်ပြရန်",
-    "onboardingStepOfTotal": "{total} ခုထဲမှ အဆင့် {step}"
+    "onboardingStepOfTotal": "{total} ခုထဲမှ အဆင့် {step}",
+    "addKeyboardDialogTitle": "သင်၏ပစ်မှတ်ဘာသာစကား ကီးဘုတ်ကို ထည့်ပါ",
+    "enableAutocorrectPopupPathIntro": "တစ်ခုထည့်ရန်၊ ဤနေရာသို့ သွားပါ-"
 }

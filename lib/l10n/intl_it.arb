@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-03 14:43:48.603247",
+    "@@last_modified": "2026-09-04 10:08:35.071292",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -3275,7 +3275,6 @@
     "ttsDisabledBody": "Puoi attivare la sintesi vocale nelle impostazioni di apprendimento",
     "noSpaceDescriptionYet": "Nessuna descrizione del corso ancora creata.",
     "tooLargeToSend": "Questo messaggio è troppo grande per essere inviato",
-    "enableAutocorrectPopupTitle": "Aggiungi la tastiera della lingua di destinazione andando su:",
     "enableAutocorrectPopupSteps": "  • Impostazioni\n  • Generali\n  • Tastiera\n  • Tastiere\n  • Aggiungi nuova tastiera",
     "enableAutocorrectPopupDescription": "Una volta selezionata la lingua, puoi cliccare sull'icona del globo in basso a sinistra della tastiera per attivare la tastiera appena installata.",
     "enableAutocorrectWarning": "Attenzione! È necessario aggiungere la tastiera della lingua di destinazione",
@@ -5473,10 +5472,6 @@
         "placeholders": {}
     },
     "@tooLargeToSend": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -9935,5 +9930,7 @@
     "seeAll": "Vedi tutto",
     "seeAllSection": "Vedi tutto {section}",
     "showMoreOptionsHint": "mostra più opzioni",
-    "onboardingStepOfTotal": "Passaggio {step} di {total}"
+    "onboardingStepOfTotal": "Passaggio {step} di {total}",
+    "addKeyboardDialogTitle": "Aggiungi la tastiera della lingua di destinazione",
+    "enableAutocorrectPopupPathIntro": "Per aggiungerne una, vai a:"
 }

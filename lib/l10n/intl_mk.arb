@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-09-03 14:43:49.607213",
+    "@@last_modified": "2026-09-04 10:08:36.783784",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "Можете да овозможите текст во говор во вашите поставки за учење",
     "noSpaceDescriptionYet": "Сè уште нема креиран опис на курсот.",
     "tooLargeToSend": "Оваа порака е премногу голема за испраќање",
-    "enableAutocorrectPopupTitle": "Додадете ја тастатурата на целниот јазик со одење на:",
     "enableAutocorrectPopupSteps": "  • Поставки\n  • Општо\n  • Тастатура\n  • Тастатури\n  • Додај нова тастатура",
     "enableAutocorrectPopupDescription": "Откако ќе се избере јазикот, можете да кликнете на малата икона со глобус во долниот лев агол на вашата тастатура за да ја активирате новоинсталираната тастатура.",
     "enableAutocorrectWarning": "Предупредување! Потребно е да ја додадете тастатурата на целниот јазик",
@@ -2266,5 +2265,7 @@
     "seeAll": "Видете ги сите",
     "seeAllSection": "Видете ги сите {section}",
     "showMoreOptionsHint": "покажи повеќе опции",
-    "onboardingStepOfTotal": "Чекор {step} од {total}"
+    "onboardingStepOfTotal": "Чекор {step} од {total}",
+    "addKeyboardDialogTitle": "Додадете тастатура за целниот јазик",
+    "enableAutocorrectPopupPathIntro": "За да додадете, одете на:"
 }

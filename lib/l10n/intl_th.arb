@@ -2893,7 +2893,6 @@
     "ttsDisabledBody": "คุณสามารถเปิดใช้งานข้อความเป็นเสียงในการตั้งค่าการเรียนรู้ของคุณ",
     "noSpaceDescriptionYet": "ยังไม่ได้สร้างคำอธิบายหลักสูตร",
     "tooLargeToSend": "ข้อความนี้มีขนาดใหญ่มากที่จะส่ง",
-    "enableAutocorrectPopupTitle": "เพิ่มแป้นพิมพ์ภาษาที่คุณตั้งเป้าไว้โดยไปที่:",
     "enableAutocorrectPopupSteps": "  • การตั้งค่า\n  • ทั่วไป\n  • คีย์บอร์ด\n  • คีย์บอร์ด\n  • เพิ่มคีย์บอร์ดใหม่",
     "enableAutocorrectPopupDescription": "เมื่อเลือกภาษาแล้ว คุณสามารถคลิกไอคอนโลกเล็กที่มุมล่างซ้ายของคีย์บอร์ดเพื่อเปิดใช้งานคีย์บอร์ดที่ติดตั้งใหม่",
     "enableAutocorrectWarning": "คำเตือน! ต้องเพิ่มคีย์บอร์ดภาษาที่คุณตั้งเป้าไว้",
@@ -3094,7 +3093,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-09-03 14:43:51.455221",
+    "@@last_modified": "2026-09-04 10:08:40.080899",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6002,10 +6001,6 @@
         "placeholders": {}
     },
     "@tooLargeToSend": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10494,5 +10489,7 @@
     "seeAll": "ดูทั้งหมด",
     "seeAllSection": "ดูทั้งหมด {section}",
     "showMoreOptionsHint": "แสดงตัวเลือกเพิ่มเติม",
-    "onboardingStepOfTotal": "ขั้นตอนที่ {step} จาก {total}"
+    "onboardingStepOfTotal": "ขั้นตอนที่ {step} จาก {total}",
+    "addKeyboardDialogTitle": "เพิ่มแป้นพิมพ์ภาษาเป้าหมายของคุณ",
+    "enableAutocorrectPopupPathIntro": "หากต้องการเพิ่ม ให้ไปที่:"
 }

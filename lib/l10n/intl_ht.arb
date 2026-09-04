@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-09-03 14:43:47.550927",
+    "@@last_modified": "2026-09-04 10:08:34.706264",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "Ou ka aktive tèks-a-lapawòl nan paramèt aprantisaj ou yo",
     "noSpaceDescriptionYet": "Pa gen deskripsyon kou ki kreye ankò.",
     "tooLargeToSend": "Mesaj sa a twò gwo pou voye",
-    "enableAutocorrectPopupTitle": "Ajoute klavye lang sib ou a lè w ale nan:",
     "enableAutocorrectPopupSteps": "  • Anviwònman\n  • Jeneral\n  • Klavye\n  • Klavye\n  • Ajoute Nouvo Klavye",
     "enableAutocorrectPopupDescription": "Yon fwa lang lan chwazi, ou ka klike sou ti ikòn glòb la sou bò gòch anba klavye ou a pou aktive klavye ki fèk enstale a.",
     "enableAutocorrectWarning": "Avètisman! Mande pou ajoute klavye lang sib ou a",
@@ -2266,5 +2265,7 @@
     "seeAll": "Gade tout",
     "seeAllSection": "Gade tout {section}",
     "showMoreOptionsHint": "montre plis opsyon",
-    "onboardingStepOfTotal": "Etap {step} sou {total}"
+    "onboardingStepOfTotal": "Etap {step} sou {total}",
+    "addKeyboardDialogTitle": "Ajoute klavye lang sib ou a",
+    "enableAutocorrectPopupPathIntro": "Pou ajoute youn, ale nan:"
 }

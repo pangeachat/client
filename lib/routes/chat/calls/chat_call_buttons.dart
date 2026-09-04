@@ -51,16 +51,20 @@ import 'package:fluffychat/widgets/matrix.dart';
 ///   Nothing is dropped or misrouted.
 bool _offersCalls(Room room) => room.isDirectChat && !room.isBotDM;
 
-/// Starts a call from the room's own header.
+/// Starts a voice call from the room's own header.
 ///
 /// A call already running somewhere else refuses rather than swallowing this
 /// one, so that ANSWERING a ring for another room can decline it as busy.
 /// Pressing Call is the other intent: there is nothing to tell the other side,
 /// and the useful thing is simply to show the call already in progress --
 /// which the refusal has already brought forward.
-void _startCall(BuildContext context, Room room, {required bool video}) {
+///
+/// Voice only: the header offers a single Call button (#8793). Video is still
+/// reachable from inside the call -- the camera toggle on [CallPanel] -- so a
+/// learner who wants it turns it on there; the header does not fork the choice.
+void _startCall(BuildContext context, Room room) {
   try {
-    Matrix.of(context).startCall(room, video: video);
+    Matrix.of(context).startCall(room, video: false);
   } on AlreadyInACall {
     Logs().i('Already on a call; showing that one instead');
   }
@@ -108,8 +112,8 @@ int _joinedCount(Room room) => room.summary.mJoinedMemberCount ?? 0;
 bool _canCallFrom(Room room) =>
     room.membership == Membership.join && _joinedCount(room) >= 2;
 
-/// The chat header's Call and Video call buttons, and the decision of whether
-/// to offer them at all.
+/// The chat header's Call button, and the decision of whether to offer it at
+/// all.
 ///
 /// The decision lives in here rather than in the app bar that mounts this,
 /// because `ChatView._appBarActions` cannot be mounted without a live
@@ -146,8 +150,8 @@ class _ChatCallButtonsState extends State<ChatCallButtons> {
   /// and BOTH turn on room state that only a sync moves. So the widget caches
   /// none of it and simply rebuilds when a sync lands: caching one answer and
   /// guarding the rebuild on it goes stale on the other (a room reclassified as
-  /// a bot DM, say, while the joined count holds). The rebuild is two icon
-  /// buttons over a memoized focus lookup, cheaper than the staleness a cache
+  /// a bot DM, say, while the joined count holds). The rebuild is one icon
+  /// button over a memoized focus lookup, cheaper than the staleness a cache
   /// invites.
   StreamSubscription<SyncUpdate>? _sync;
 
@@ -213,40 +217,24 @@ class _ChatCallButtonsState extends State<ChatCallButtons> {
         // direct-chats-only -- so "two joined" is the two people of the DM.
         final canCall = _canCallFrom(room);
 
-        return Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            // Labelled explicitly. An IconButton's tooltip is not reaching
-            // the accessibility tree in this build, so these reach a screen
-            // reader as two unnamed buttons -- and an end-to-end test cannot
-            // find them by anything but their pixel position, which is how
-            // the call harness came to be clicking empty space after a
-            // layout change.
-            Semantics(
-              button: true,
-              enabled: canCall,
-              label: L10n.of(context).startVideoCall,
-              child: IconButton(
-                icon: const Icon(Icons.videocam_outlined),
-                tooltip: L10n.of(context).startVideoCall,
-                onPressed: canCall
-                    ? () => _startCall(context, room, video: true)
-                    : null,
-              ),
-            ),
-            Semantics(
-              button: true,
-              enabled: canCall,
-              label: L10n.of(context).startCall,
-              child: IconButton(
-                icon: const Icon(Icons.call_outlined),
-                tooltip: L10n.of(context).startCall,
-                onPressed: canCall
-                    ? () => _startCall(context, room, video: false)
-                    : null,
-              ),
-            ),
-          ],
+        // One button, voice (#8793): the header used to offer Call AND Video
+        // call, and the second was noise -- the camera is a toggle inside the
+        // call, not a second way to start one. Video lives on [CallPanel] now.
+        //
+        // Labelled explicitly. An IconButton's tooltip is not reaching the
+        // accessibility tree in this build, so without this the button reaches
+        // a screen reader unnamed -- and an end-to-end test cannot find it by
+        // anything but its pixel position, which is how the call harness came
+        // to be clicking empty space after a layout change.
+        return Semantics(
+          button: true,
+          enabled: canCall,
+          label: L10n.of(context).startCall,
+          child: IconButton(
+            icon: const Icon(Icons.call_outlined),
+            tooltip: L10n.of(context).startCall,
+            onPressed: canCall ? () => _startCall(context, room) : null,
+          ),
         );
       },
     );

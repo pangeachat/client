@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-09-03 14:43:46.305611",
+    "@@last_modified": "2026-09-04 10:08:32.856516",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -2962,7 +2962,6 @@
     "ttsDisabledBody": "Můžete povolit převod textu na řeč v nastavení vašeho učení",
     "noSpaceDescriptionYet": "Ještě nebyl vytvořen popis kurzu.",
     "tooLargeToSend": "Tato zpráva je příliš velká na odeslání",
-    "enableAutocorrectPopupTitle": "Přidejte klávesnici cílového jazyka přechodem na:",
     "enableAutocorrectPopupSteps": "  • Nastavení\n  • Obecné\n  • Klávesnice\n  • Klávesnice\n  • Přidat novou klávesnici",
     "enableAutocorrectPopupDescription": "Po výběru jazyka můžete kliknout na malou ikonu glóbu v levém dolním rohu klávesnice, abyste aktivovali nově nainstalovanou klávesnici.",
     "enableAutocorrectWarning": "Upozornění! Vyžaduje přidání klávesnice cílového jazyka",
@@ -5878,10 +5877,6 @@
         "placeholders": {}
     },
     "@tooLargeToSend": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10356,5 +10351,7 @@
     "seeAll": "Zobrazit vše",
     "seeAllSection": "Zobrazit vše {section}",
     "showMoreOptionsHint": "zobrazit další možnosti",
-    "onboardingStepOfTotal": "Krok {step} z {total}"
+    "onboardingStepOfTotal": "Krok {step} z {total}",
+    "addKeyboardDialogTitle": "Přidejte klávesnici pro svůj cílový jazyk",
+    "enableAutocorrectPopupPathIntro": "Chcete-li ji přidat, přejděte na:"
 }

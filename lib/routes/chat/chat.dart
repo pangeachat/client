@@ -2901,15 +2901,6 @@ class ChatController extends State<ChatPageWithRoom>
       return;
     }
 
-    final overlayEntry = MessageSelectionOverlay(
-      host: this,
-      event: event,
-      timeline: timeline!,
-      initialSelectedToken: selectedToken,
-      nextEvent: nextEvent,
-      prevEvent: prevEvent,
-    );
-
     // you've clicked a message so lets turn this off
     if (!InstructionsEnum.clickMessage.isToggledOff) {
       InstructionsEnum.clickMessage.setToggledOff(true);
@@ -2958,30 +2949,30 @@ class ChatController extends State<ChatPageWithRoom>
         // so we don't want to show the overlay.
         return;
       }
-      OverlayUtil.showOverlay(
-        context: context,
-        child: overlayEntry,
-        displayDetails: CenteredOverlayDisplayDetails(
-          onDismiss: clearSelectedEvents,
-          blurBackground: true,
-          backgroundColor: Colors.black,
-          overlayKey: "message_toolbar_overlay",
-          bypassBlockingOverlays: bypassBlockingOverlays,
-        ),
-      );
-    } else {
-      OverlayUtil.showOverlay(
-        context: context,
-        child: overlayEntry,
-        displayDetails: CenteredOverlayDisplayDetails(
-          onDismiss: clearSelectedEvents,
-          blurBackground: true,
-          backgroundColor: Colors.black,
-          overlayKey: "message_toolbar_overlay",
-          bypassBlockingOverlays: bypassBlockingOverlays,
-        ),
-      );
     }
+
+    OverlayUtil.showOverlay(
+      context: context,
+      child: Semantics(
+        container: true,
+        child: MessageSelectionOverlay(
+          host: this,
+          event: event,
+          timeline: timeline!,
+          initialSelectedToken: selectedToken,
+          nextEvent: nextEvent,
+          prevEvent: prevEvent,
+        ),
+      ),
+      displayDetails: CenteredOverlayDisplayDetails(
+        onDismiss: clearSelectedEvents,
+        blurBackground: true,
+        backgroundColor: Colors.black,
+        overlayKey: "message_toolbar_overlay",
+        bypassBlockingOverlays: bypassBlockingOverlays,
+        blockSemantics: true,
+      ),
+    );
 
     // A deliberate tap on a message is a request to hear it, own messages
     // included. The controller owns which selections qualify.

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-03 14:43:51.389005",
+    "@@last_modified": "2026-09-04 10:08:39.770202",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -2991,7 +2991,6 @@
     "ttsDisabledBody": "Du kan aktivera text-till-tal i dina inlärningsinställningar",
     "noSpaceDescriptionYet": "Inget kursbeskrivning har skapats än.",
     "tooLargeToSend": "Detta meddelande är för stort för att skicka",
-    "enableAutocorrectPopupTitle": "Lägg till ditt tangentbord för målspråket genom att gå till:",
     "enableAutocorrectPopupSteps": "  • Inställningar\n  • Allmänt\n  • Tangentbord\n  • Tangentbord\n  • Lägg till nytt tangentbord",
     "enableAutocorrectPopupDescription": "När språket är valt kan du klicka på den lilla globikonen längst ner till vänster på ditt tangentbord för att aktivera det nyinstallerade tangentbordet.",
     "enableAutocorrectWarning": "Varning! Kräver att du lägger till ditt tangentbord för målspråket",
@@ -5888,10 +5887,6 @@
         "placeholders": {}
     },
     "@tooLargeToSend": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10380,5 +10375,7 @@
     "seeAll": "Visa alla",
     "seeAllSection": "Visa alla {section}",
     "showMoreOptionsHint": "visa fler alternativ",
-    "onboardingStepOfTotal": "Steg {step} av {total}"
+    "onboardingStepOfTotal": "Steg {step} av {total}",
+    "addKeyboardDialogTitle": "Lägg till tangentbord för ditt målspråk",
+    "enableAutocorrectPopupPathIntro": "För att lägga till ett, gå till:"
 }

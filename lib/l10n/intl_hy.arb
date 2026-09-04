@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-09-03 14:43:47.867889",
+    "@@last_modified": "2026-09-04 10:08:35.094347",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "Դուք կարող եք միացնել տեքստից խոսքի փոխարկումը ձեր ուսուցման կարգավորումներում",
     "noSpaceDescriptionYet": "Դեռևս դասընթացի նկարագրություն չի ստեղծվել։",
     "tooLargeToSend": "Այս հաղորդագրությունը չափազանց մեծ է ուղարկելու համար",
-    "enableAutocorrectPopupTitle": "Ավելացրեք ձեր թիրախային լեզվի ստեղնաշարը՝ անցնելով՝",
     "enableAutocorrectPopupSteps": "  • Կարգավորումներ\n  • Ընդհանուր\n  • Ստեղնաշար\n  • Ստեղնաշարեր\n  • Ավելացնել նոր ստեղնաշար",
     "enableAutocorrectPopupDescription": "Լեզուն ընտրելուց հետո կարող եք սեղմել ձեր ստեղնաշարի ներքևի ձախ անկյունում գտնվող փոքրիկ գլոբուսի պատկերակը՝ նոր տեղադրված ստեղնաշարը ակտիվացնելու համար։",
     "enableAutocorrectWarning": "Զգուշացում։ Պահանջում է ավելացնել ձեր թիրախային լեզվի ստեղնաշարը։",
@@ -2266,5 +2265,7 @@
     "seeAll": "Տեսնել բոլորը",
     "seeAllSection": "Տեսնել բոլոր {section}",
     "showMoreOptionsHint": "ցուցադրել այլ ընտրանքներ",
-    "onboardingStepOfTotal": "Քայլ {step}-ը {total}-ից"
+    "onboardingStepOfTotal": "Քայլ {step}-ը {total}-ից",
+    "addKeyboardDialogTitle": "Ավելացրեք ձեր թիրախային լեզվի ստեղնաշարը",
+    "enableAutocorrectPopupPathIntro": "Ավելացնելու համար անցեք՝"
 }

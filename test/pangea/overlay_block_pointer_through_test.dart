@@ -6,6 +6,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/features/overlay/overlay.dart';
 import 'package:fluffychat/features/overlay/overlay_display_details.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// #8181: taps landing on the writing-assistance card fell through to the
@@ -18,11 +19,17 @@ void main() {
   const overlayKey = 'block-pointer-overlay';
   const cardKey = ValueKey('card');
 
+  /// The backdrop names its Dismiss control through `L10n`, whose delegate
+  /// loads from a deferred library: settle after pumping the harness, or
+  /// nothing is in the tree yet.
   Widget buildHarness({
     required bool blockPointerThrough,
     VoidCallback? onTapBehind,
   }) {
     return MaterialApp(
+      locale: const Locale('en'),
+      localizationsDelegates: L10n.localizationsDelegates,
+      supportedLocales: L10n.supportedLocales,
       home: Scaffold(
         body: Builder(
           builder: (context) {
@@ -85,6 +92,7 @@ void main() {
       buildHarness(blockPointerThrough: true, onTapBehind: () => tapsBehind++),
     );
 
+    await tester.pumpAndSettle();
     await tester.tap(find.text('open'));
     await tester.pumpAndSettle();
 
@@ -100,6 +108,7 @@ void main() {
     final semantics = tester.ensureSemantics();
     await tester.pumpWidget(buildHarness(blockPointerThrough: true));
 
+    await tester.pumpAndSettle();
     await tester.tap(find.text('open'));
     await tester.pumpAndSettle();
 
@@ -118,6 +127,7 @@ void main() {
       buildHarness(blockPointerThrough: false, onTapBehind: () => tapsBehind++),
     );
 
+    await tester.pumpAndSettle();
     await tester.tap(find.text('open'));
     await tester.pumpAndSettle();
 

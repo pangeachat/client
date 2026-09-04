@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-09-03 14:43:47.319725",
+    "@@last_modified": "2026-09-04 10:08:34.467782",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "Hiki iā ʻoe ke hoʻā i ka ʻōlelo-i-kikokikona ma kāu mau hoʻonohonoho aʻo",
     "noSpaceDescriptionYet": "ʻAʻohe wehewehe papa i hana ʻia.",
     "tooLargeToSend": "Nui loa kēia leka no ka hoʻouna ʻana",
-    "enableAutocorrectPopupTitle": "E hoʻohui i kāu papa pihi ʻōlelo hou ma ka hele ʻana i:",
     "enableAutocorrectPopupSteps": "  • Nā Hoʻonohonoho\n  • Nui\n  • Papa Pihi\n  • Nā Papa Pihi\n  • Hoʻohui Papa Pihi Hou",
     "enableAutocorrectPopupDescription": "Ke koho ʻia ka ʻōlelo, hiki iā ʻoe ke kaomi i ke kiʻiona poepoe honua liʻiliʻi ma ka ʻaoʻao hema lalo o kāu papa pihi no ka hoʻā ʻana i ka papa pihi hou i hoʻokomo ʻia.",
     "enableAutocorrectWarning": "Aʻo! Pono e hoʻohui i kāu papa pihi ʻōlelo hou",
@@ -2266,5 +2265,7 @@
     "seeAll": "E ʻike i nā mea a pau",
     "seeAllSection": "E ʻike i nā mea a pau ma {section}",
     "showMoreOptionsHint": "hōʻike i nā koho hou aku",
-    "onboardingStepOfTotal": "Kaʻina {step} o {total}"
+    "onboardingStepOfTotal": "Kaʻina {step} o {total}",
+    "addKeyboardDialogTitle": "Hoʻohui i kāu papa kī ʻōlelo i manaʻo ʻia",
+    "enableAutocorrectPopupPathIntro": "No ka hoʻohui ʻana, e hele i:"
 }

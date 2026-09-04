@@ -3362,7 +3362,6 @@
     "ttsDisabledBody": "Is féidir leat téacs go guth a chumasú sna socruithe foghlama agat",
     "noSpaceDescriptionYet": "Níl cur síos ar an gcúrsa cruthaithe fós.",
     "tooLargeToSend": "Tá an teachtaireacht seo ró-mhór le seoladh",
-    "enableAutocorrectPopupTitle": "Cuir do eochairfhocal teanga sprioc leis trí dul go:",
     "enableAutocorrectPopupSteps": "  • Socruithe\n  • Ginearálta\n  • Eochairfhocal\n  • Eochairfhocail\n  • Cuir Eochairfhocal Nua leis",
     "enableAutocorrectPopupDescription": "Nuair a roghnaítear an teanga, is féidir leat cliceáil ar an gcloch beag domhain ar chlé bun do do eochairfhocal chun an eochairfhocal nua a ghníomhachtú.",
     "enableAutocorrectWarning": "Rabhadh! Éilíonn sé do eochairfhocal teanga sprioc a chur leis",
@@ -3564,7 +3563,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-09-03 14:43:47.026112",
+    "@@last_modified": "2026-09-04 10:08:33.763214",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -5557,10 +5556,6 @@
         "placeholders": {}
     },
     "@tooLargeToSend": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -9873,5 +9868,7 @@
     "seeAll": "Féach ar fad",
     "seeAllSection": "Féach ar {section} ar fad",
     "showMoreOptionsHint": "taispeáin tuilleadh roghanna",
-    "onboardingStepOfTotal": "Céim {step} de {total}"
+    "onboardingStepOfTotal": "Céim {step} de {total}",
+    "addKeyboardDialogTitle": "Cuir méarchlár do sprioctheanga leis",
+    "enableAutocorrectPopupPathIntro": "Chun ceann a chur leis, téigh chuig:"
 }

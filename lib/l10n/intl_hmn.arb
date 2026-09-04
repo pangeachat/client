@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-09-03 14:43:47.492038",
+    "@@last_modified": "2026-09-04 10:08:34.459397",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "Koj tuaj yeem qhib text-to-speech hauv koj cov chaw kawm",
     "noSpaceDescriptionYet": "Tsis tau tsim cov lus piav qhia txog chav kawm tseem.",
     "tooLargeToSend": "Cov lus no loj dhau los xa",
-    "enableAutocorrectPopupTitle": "Ntxiv koj hom lus keyboard los ntawm kev mus rau:",
     "enableAutocorrectPopupSteps": "  • Chaw\n  • General\n  • Keyboard\n  • Keyboards\n  • Ntxiv Keyboard Tshiab",
     "enableAutocorrectPopupDescription": "Thaum xaiv hom lus, koj tuaj yeem nyem lub cim ntiaj teb me me nyob rau sab laug hauv qab ntawm koj lub keyboard kom qhib lub keyboard tshiab.",
     "enableAutocorrectWarning": "Ceeb toom! Yuav tsum ntxiv koj hom lus keyboard",
@@ -2266,5 +2265,7 @@
     "seeAll": "Saib tag nrho",
     "seeAllSection": "Saib tag nrho {section}",
     "showMoreOptionsHint": "qhia ntau txoj kev xaiv ntxiv",
-    "onboardingStepOfTotal": "Kauv {step} ntawm {total}"
+    "onboardingStepOfTotal": "Kauv {step} ntawm {total}",
+    "addKeyboardDialogTitle": "Ntxiv koj cov keyboard lus",
+    "enableAutocorrectPopupPathIntro": "Yuav ntxiv ib qho, mus rau:"
 }

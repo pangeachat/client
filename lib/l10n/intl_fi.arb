@@ -3335,7 +3335,6 @@
     "ttsDisabledBody": "Voit ottaa tekstistä puheeksi -toiminnon käyttöön oppimisasetuksissasi",
     "noSpaceDescriptionYet": "Kurssin kuvausta ei ole vielä luotu.",
     "tooLargeToSend": "Tämä viesti on liian suuri lähetettäväksi",
-    "enableAutocorrectPopupTitle": "Lisää kohdekielesi näppäimistö seuraavasti:",
     "enableAutocorrectPopupSteps": "  • Asetukset\n  • Yleiset\n  • Näppäimistö\n  • Näppäimistöt\n  • Lisää uusi näppäimistö",
     "enableAutocorrectPopupDescription": "Kun kieli on valittu, voit klikata pienen maapallon kuvaketta näppäimistön alakulmassa ottaaksesi käyttöön juuri asennetun näppäimistön.",
     "enableAutocorrectWarning": "Varoitus! Vaatii kohdekielen näppäimistön lisäämisen",
@@ -3537,7 +3536,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-09-03 14:43:46.830656",
+    "@@last_modified": "2026-09-04 10:08:33.331697",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -5538,10 +5537,6 @@
         "placeholders": {}
     },
     "@tooLargeToSend": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -9899,5 +9894,7 @@
     "seeAll": "Näytä kaikki",
     "seeAllSection": "Näytä kaikki {section}",
     "showMoreOptionsHint": "näytä lisää vaihtoehtoja",
-    "onboardingStepOfTotal": "Vaihe {step}/{total}"
+    "onboardingStepOfTotal": "Vaihe {step}/{total}",
+    "addKeyboardDialogTitle": "Lisää kohdekielesi näppäimistö",
+    "enableAutocorrectPopupPathIntro": "Lisätäksesi sellaisen, mene kohtaan:"
 }

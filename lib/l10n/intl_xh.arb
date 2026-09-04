@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-09-03 14:43:52.095216",
+    "@@last_modified": "2026-09-04 10:08:40.752813",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "Ungavula ukuguqula umbhalo ube yintetho kuseto lwakho lokufunda",
     "noSpaceDescriptionYet": "Akukho nkcazelo yekhosi eyenziwe okwangoku.",
     "tooLargeToSend": "Lo myalezo mkhulu kakhulu ukuba ungathunyelwa",
-    "enableAutocorrectPopupTitle": "Yongeza ikhibhodi yolwimi lwakho olujoliswe kulo ngokuya ku:",
     "enableAutocorrectPopupSteps": "  • Useto\n  • Ngokubanzi\n  • Ikhibhodi\n  • Iikhibhodi\n  • Yongeza Ikhibhodi Entsha",
     "enableAutocorrectPopupDescription": "Nje ukuba ulwimi lukhethiwe, ungacofa i-ayikhoni encinci yeglowubhu kwikona esezantsi ekhohlo yekhibhodi yakho ukuze uvule ikhibhodi esandula ukufakwa.",
     "enableAutocorrectWarning": "Isilumkiso! Ifuna ukongeza ikhibhodi yolwimi lwakho olujoliswe kulo",
@@ -2266,5 +2265,7 @@
     "seeAll": "Bona konke",
     "seeAllSection": "Bona konke {section}",
     "showMoreOptionsHint": "bonisa iinketho ezininzi",
-    "onboardingStepOfTotal": "Inyathelo {step} kwi-{total}"
+    "onboardingStepOfTotal": "Inyathelo {step} kwi-{total}",
+    "addKeyboardDialogTitle": "Yongeza ikhibhodi yolwimi ekujoliswe kulo",
+    "enableAutocorrectPopupPathIntro": "Ukuyongeza, yiya ku:"
 }

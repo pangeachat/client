@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-09-03 14:43:47.362367",
+    "@@last_modified": "2026-09-04 10:08:34.281308",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "Za ka iya kunna fasalin karanta rubutu a cikin saitunan koyonka",
     "noSpaceDescriptionYet": "Har yanzu ba a ƙirƙiri bayanin kwas ba.",
     "tooLargeToSend": "Wannan saƙon ya yi girma da yawa don aikawa",
-    "enableAutocorrectPopupTitle": "Ƙara maballin yaren da kake so ta hanyar zuwa:",
     "enableAutocorrectPopupSteps": "  • Saituna\n  • Gabaɗaya\n  • Maballi\n  • Maballai\n  • Ƙara Sabon Maballi",
     "enableAutocorrectPopupDescription": "Da zarar an zaɓi yaren, za ka iya danna ƙaramin gunkin duniya a ƙasan hagu na maballinka don kunna sabon maballin da aka shigar.",
     "enableAutocorrectWarning": "Gargadi! Yana buƙatar ƙara maballin yaren da kake so",
@@ -2266,5 +2265,7 @@
     "seeAll": "Duba duka",
     "seeAllSection": "Duba duka {section}",
     "showMoreOptionsHint": "nuna ƙarin zaɓuɓɓuka",
-    "onboardingStepOfTotal": "Mataki na {step} cikin {total}"
+    "onboardingStepOfTotal": "Mataki na {step} cikin {total}",
+    "addKeyboardDialogTitle": "Ƙara madannin harshen da kake so",
+    "enableAutocorrectPopupPathIntro": "Don ƙarawa, je zuwa:"
 }

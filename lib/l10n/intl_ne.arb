@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-09-03 14:43:50.219925",
+    "@@last_modified": "2026-09-04 10:08:37.728953",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -1177,7 +1177,6 @@
     "ttsDisabledBody": "तपाईंले आफ्नो सिकाइ सेटिङहरूमा पाठ-देखि-वाणी सक्षम गर्न सक्नुहुन्छ",
     "noSpaceDescriptionYet": "अहिलेसम्म कुनै पाठ्यक्रम विवरण सिर्जना गरिएको छैन।",
     "tooLargeToSend": "यो सन्देश पठाउनको लागि धेरै ठूलो छ",
-    "enableAutocorrectPopupTitle": "आफ्नो लक्षित भाषा किबोर्ड थप्न यहाँ जानुहोस्:",
     "enableAutocorrectPopupSteps": "  • सेटिङहरू\n  • सामान्य\n  • किबोर्ड\n  • किबोर्डहरू\n  • नयाँ किबोर्ड थप्नुहोस्",
     "enableAutocorrectPopupDescription": "एकपटक भाषा चयन भएपछि, तपाईंले नयाँ स्थापित किबोर्ड सक्रिय गर्न आफ्नो किबोर्डको तल बायाँमा रहेको सानो ग्लोब आइकनमा क्लिक गर्न सक्नुहुन्छ।",
     "enableAutocorrectWarning": "चेतावनी! तपाईंको लक्षित भाषा किबोर्ड थप्न आवश्यक छ",
@@ -2266,5 +2265,7 @@
     "seeAll": "सबै हेर्नुहोस्",
     "seeAllSection": "सबै हेर्नुहोस् {section}",
     "showMoreOptionsHint": "थप विकल्पहरू देखाउनुहोस्",
-    "onboardingStepOfTotal": "{total} मध्ये चरण {step}"
+    "onboardingStepOfTotal": "{total} मध्ये चरण {step}",
+    "addKeyboardDialogTitle": "आफ्नो लक्षित भाषाको किबोर्ड थप्नुहोस्",
+    "enableAutocorrectPopupPathIntro": "एउटा थप्नका लागि, यहाँ जानुहोस्:"
 }

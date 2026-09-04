@@ -1736,7 +1736,6 @@
     "ttsDisabledBody": "თქვენ შეგიძლიათ ჩართოთ ტექსტიდან ხმაში გამოთქმა თქვენი სწავლების პარამეტრებში",
     "noSpaceDescriptionYet": "ჯერ არ შექმნილა კურსის აღწერა.",
     "tooLargeToSend": "ეს შეტყობინება ძალიან დიდია გამოგზავნისთვის",
-    "enableAutocorrectPopupTitle": "დაამატეთ თქვენი მიზნობრივი ენის კლავიატურა შემდეგ მისამართზე გადასვლით:",
     "enableAutocorrectPopupSteps": "  • პარამეტრები\n  • ზოგადი\n  • კლავიატურა\n  • კლავიატურები\n  • ახალი კლავიატურის დამატება",
     "enableAutocorrectPopupDescription": "როდესაც ენა აირჩევა, შეგიძლიათ დააჭიროთ პატარა გლობუსის ხატულას კლავიატურის ქვედა მარცხენა მხარეს, რათა გააქტიუროთ ახალი ინსტალირებული კლავიატურა.",
     "enableAutocorrectWarning": "გაფრთხილება! საჭიროა თქვენი სამიზნე ენის კლავიატურის დამატება",
@@ -1938,7 +1937,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-09-03 14:43:48.325142",
+    "@@last_modified": "2026-09-04 10:08:35.742126",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6270,10 +6269,6 @@
         "placeholders": {}
     },
     "@tooLargeToSend": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10762,5 +10757,7 @@
     "seeAll": "ყველას ნახვა",
     "seeAllSection": "ყველა {section}-ის ნახვა",
     "showMoreOptionsHint": "მეტი ვარიანტის ჩვენება",
-    "onboardingStepOfTotal": "ნაბიჯი {step} / {total}"
+    "onboardingStepOfTotal": "ნაბიჯი {step} / {total}",
+    "addKeyboardDialogTitle": "დაამატეთ თქვენი სამიზნე ენის კლავიატურა",
+    "enableAutocorrectPopupPathIntro": "დასამატებლად გადადით:"
 }

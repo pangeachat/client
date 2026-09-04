@@ -802,6 +802,37 @@ class CallMedia {
     return live;
   }
 
+  /// Every participant's video in this call, the peer's first and this
+  /// device's last -- the order the panel lays out full-bleed then inset.
+  ///
+  /// One feed per video PUBLICATION, whether its camera is on or off. Switching
+  /// a camera off does not remove its publication: [setCameraEnabled] mutes it
+  /// and leaves the last frame attached rather than unpublishing, so a renderer
+  /// left pointing at a muted track freezes on that frame and repaints black
+  /// once the view is torn down and rebuilt. The feed carries
+  /// [CallVideoFeed.cameraOff] so a view drops the renderer and shows the
+  /// participant's avatar in that tile's place instead (#8795) -- for the peer
+  /// and for this device alike.
+  List<CallVideoFeed> videoFeeds() {
+    final local = room.localParticipant;
+    return [
+      for (final participant in room.remoteParticipants.values)
+        for (final publication in participant.videoTrackPublications)
+          CallVideoFeed.of(
+            track: publication.track,
+            muted: publication.muted,
+            isLocal: false,
+          ),
+      if (local != null)
+        for (final publication in local.videoTrackPublications)
+          CallVideoFeed.of(
+            track: publication.track,
+            muted: publication.muted,
+            isLocal: true,
+          ),
+    ];
+  }
+
   /// Leaves the SFU and releases the capture devices.
   ///
   /// Never throws: a hangup runs on a path that also has a Matrix membership to
@@ -828,4 +859,64 @@ class CallMedia {
     _stopParticipantStampWatch = null;
     await room.dispose();
   }
+}
+
+/// One participant's video in a call: the track to render while the camera is
+/// on, and the fact that it is OFF when it is not.
+///
+/// A camera turned off stays published and only muted, so its track keeps
+/// painting its last frame; [cameraOff] is what tells a view to drop the
+/// renderer and show the participant's avatar instead. Shared by the call
+/// panel's peer and self tiles, and by the camera-held-closed path (#8446),
+/// so the "camera off shows the avatar" rule lives in one place.
+class CallVideoFeed {
+  /// The published video track, or null when the publication has none yet.
+  final VideoTrack? track;
+
+  /// Whether the camera behind this feed is off -- a view shows the avatar
+  /// rather than [track] when this is true.
+  final bool cameraOff;
+
+  /// Whether this is THIS device's own camera (the self-view) rather than the
+  /// peer's, so a view knows which avatar to fall back to.
+  final bool isLocal;
+
+  const CallVideoFeed({
+    required this.track,
+    required this.cameraOff,
+    required this.isLocal,
+  });
+
+  /// Builds a feed from a publication's [track] and [muted] flag, deciding
+  /// [cameraOff] through [cameraIsOff] so the rule is stated once.
+  factory CallVideoFeed.of({
+    required VideoTrack? track,
+    required bool muted,
+    required bool isLocal,
+  }) => CallVideoFeed(
+    track: track,
+    cameraOff: cameraIsOff(muted: muted, hasTrack: track != null),
+    isLocal: isLocal,
+  );
+
+  /// Whether a camera should be treated as OFF -- shown as an avatar rather
+  /// than a live renderer. Off when the publication is MUTED (the camera was
+  /// switched off, its last frame lingering for a renderer to freeze on) or
+  /// when it has no track. This is the signal LiveKit itself exposes for a
+  /// camera being off, and it is what the reported bug turns on: switching a
+  /// camera off mutes its publication.
+  ///
+  /// It is deliberately NOT keyed on the track's liveness. `Track.isActive`
+  /// would seem to catch a stopped track, but it is wrong in both directions on
+  /// the pinned livekit_client 2.11: a freshly SUBSCRIBED remote camera is
+  /// still inactive when its `TrackSubscribedEvent` fires (`start()` is awaited
+  /// after), so gating on it flashes the avatar over a live peer; and a track
+  /// that ENDS keeps `isActive` true (its `onEnded` only emits an event). The
+  /// one true "ended" signal, `TrackEndedEvent`, is `@internal` and unexported,
+  /// so an ended-but-unmuted track cannot be distinguished here at all. That
+  /// residual case -- rare, e.g. a camera unplugged mid-call without a mute --
+  /// is an SDK limitation, not something a wrong liveness guess should paper
+  /// over. Pure, so the rule is tested without a LiveKit room.
+  static bool cameraIsOff({required bool muted, required bool hasTrack}) =>
+      muted || !hasTrack;
 }

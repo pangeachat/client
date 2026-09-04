@@ -6,6 +6,7 @@ import 'package:livekit_client/livekit_client.dart' as lk;
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/calls/active_call.dart';
+import 'package:fluffychat/routes/chat/calls/call_media.dart';
 import 'package:fluffychat/routes/chat/calls/call_ownership.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/call_session.dart';
@@ -42,7 +43,13 @@ class CallPanel extends StatelessWidget {
         listenable: session,
         builder: (context, _) {
           if (session.showingSummary) return _summary(context, l10n, theme);
-          final tracks = session.videoTracks();
+          final layout = CallVideoLayout.from(session.videoFeeds());
+          // Live video anywhere puts the panel in its video layout; when every
+          // camera is off -- or none was ever on -- it is the voice panel, the
+          // same face-and-name screen a call that never turned a camera on
+          // shows. A camera switched off mid-call lands there, not on a frozen
+          // last frame (#8795).
+          final hasVideo = layout.hasVideo;
           return Material(
             // Its own dark surface: every calling product darkens the call
             // area, and a flat container colour reads as an unfinished page.
@@ -50,16 +57,13 @@ class CallPanel extends StatelessWidget {
             child: Stack(
               fit: StackFit.expand,
               children: [
-                if (tracks.isNotEmpty)
-                  _videoLayer(tracks)
-                else
-                  _voiceBackdrop(theme),
+                if (hasVideo) _videoLayer(layout) else _voiceBackdrop(theme),
                 SafeArea(
                   child: Column(
                     children: [
                       _topBar(l10n),
                       Expanded(
-                        child: tracks.isNotEmpty
+                        child: hasVideo
                             ? const SizedBox.shrink()
                             // Scrollable so a short pane shrinks the panel
                             // rather than pushing the controls off the bottom.
@@ -69,7 +73,7 @@ class CallPanel extends StatelessWidget {
                                 ),
                               ),
                       ),
-                      if (tracks.isNotEmpty)
+                      if (hasVideo)
                         Padding(
                           padding: const EdgeInsets.only(bottom: 8),
                           child: Text(
@@ -281,14 +285,22 @@ class CallPanel extends StatelessWidget {
   }
 
   /// The peer full-bleed with this device inset — the layout every video call
-  /// uses.
-  Widget _videoLayer(List<lk.VideoTrack> tracks) => Stack(
+  /// uses. Each tile is its participant's camera when on and their avatar when
+  /// off, so a camera switched off shows a face rather than a frozen frame
+  /// (#8795); the peer keeps the full-bleed either way.
+  Widget _videoLayer(CallVideoLayout layout) => Stack(
     fit: StackFit.expand,
     children: [
-      lk.VideoTrackRenderer(tracks.first),
+      // The PEER always holds the full-bleed, even when only this device's
+      // camera is live: a video call must never drop the person on the other
+      // end off the screen in favour of your own self-view (#8795). A peer
+      // with no live camera shows their avatar here, not a frozen frame.
+      _slotTile(layout.peer, isLocal: false),
       if (session.peerMuted)
         const Positioned(left: 14, top: 72, child: _MuteBadge()),
-      if (tracks.length > 1)
+      // This device's inset, shown only once it has published a camera of its
+      // own -- its video while on, its avatar the moment it is switched off.
+      if (layout.self != null)
         Positioned(
           right: 16,
           top: 72,
@@ -296,11 +308,30 @@ class CallPanel extends StatelessWidget {
           height: 160,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(12),
-            child: lk.VideoTrackRenderer(tracks[1]),
+            child: _slotTile(layout.self, isLocal: true, avatarSize: 72),
           ),
         ),
     ],
   );
+
+  /// One participant's slot, video or avatar. A null [feed] -- the participant
+  /// has published no camera at all -- is an off camera too and shows the
+  /// avatar; the name and face come from whose slot it is, this device's
+  /// ([CallSession.me]) or the peer's.
+  Widget _slotTile(
+    CallVideoFeed? feed, {
+    required bool isLocal,
+    double avatarSize = 108,
+  }) {
+    final user = isLocal ? session.me : session.peer;
+    return CallVideoTile(
+      track: feed?.track,
+      cameraOff: feed?.cameraOff ?? true,
+      avatarUrl: user?.avatarUrl,
+      name: user?.calcDisplayname() ?? session.room.getLocalizedDisplayname(),
+      avatarSize: avatarSize,
+    );
+  }
 
   Widget _controls(L10n l10n) {
     final live =
@@ -783,4 +814,120 @@ class _OverlayFreeIconButton extends StatelessWidget {
       onPressed: onPressed,
     ),
   );
+}
+
+/// How a call's video feeds map onto the panel's two slots: the peer's
+/// full-bleed and this device's inset.
+///
+/// Splitting the feeds by participant, rather than laying them out in
+/// publication order, is what keeps the peer in the full-bleed whatever either
+/// camera is doing. The feeds exist only for cameras that were PUBLISHED, so a
+/// call where only THIS device's camera is live has a single feed and it is
+/// the local one; laying that out as `feeds.first` put the self-view
+/// full-bleed and dropped the peer off the screen entirely (#8795). Here the
+/// peer keeps its slot -- shown as its avatar when it has no live camera --
+/// and this device is always the inset.
+class CallVideoLayout {
+  /// The peer's video feed, or null when the peer has published no camera. A
+  /// null peer is still laid out full-bleed, as the peer's avatar.
+  final CallVideoFeed? peer;
+
+  /// This device's video feed, or null when it has published no camera. The
+  /// inset is shown only when this is non-null.
+  final CallVideoFeed? self;
+
+  /// Whether any camera is actually live -- the panel is in its video layout
+  /// then, and the voice layout (the big peer avatar) otherwise, which is what
+  /// a call whose cameras are all off looks like.
+  final bool hasVideo;
+
+  const CallVideoLayout({
+    required this.peer,
+    required this.self,
+    required this.hasVideo,
+  });
+
+  /// Resolves the peer and self slots from [feeds] (the peer being the first
+  /// remote feed, this device the first local one) and whether either camera
+  /// is live.
+  factory CallVideoLayout.from(List<CallVideoFeed> feeds) {
+    CallVideoFeed? peer;
+    CallVideoFeed? self;
+    for (final feed in feeds) {
+      if (feed.isLocal) {
+        self ??= feed;
+      } else {
+        peer ??= feed;
+      }
+    }
+    final hasVideo =
+        (peer != null && !peer.cameraOff) || (self != null && !self.cameraOff);
+    return CallVideoLayout(peer: peer, self: self, hasVideo: hasVideo);
+  }
+}
+
+/// One participant's video in a call: their live camera, or their avatar when
+/// the camera is off or has not published a frame.
+///
+/// A camera switched off is not torn down — LiveKit mutes its publication and
+/// the last frame stays attached, so a renderer left on it freezes on that
+/// frame and repaints black once the view is disposed and rebuilt (#8795).
+/// Showing the avatar the moment the camera is off — exactly as a call that
+/// never turned one on already does — is the fix, and it is one condition
+/// ([CallVideoFeed.cameraOff]) so the peer's full-bleed, this device's inset
+/// self-view, and the camera-held-closed path in #8446 all reuse it.
+class CallVideoTile extends StatelessWidget {
+  /// The published video track. Null when nothing is published; present but
+  /// deliberately unrendered when [cameraOff] (it is a frozen last frame).
+  final lk.VideoTrack? track;
+
+  /// Whether to show the avatar rather than [track].
+  final bool cameraOff;
+
+  /// The participant's avatar and name, for the off/absent state.
+  final Uri? avatarUrl;
+  final String name;
+  final double avatarSize;
+
+  const CallVideoTile({
+    required this.track,
+    required this.cameraOff,
+    required this.avatarUrl,
+    required this.name,
+    this.avatarSize = 108,
+    super.key,
+  });
+
+  /// Builds the live-camera view. The default is the real platform renderer; a
+  /// widget test overrides it with a findable stand-in, because
+  /// [lk.VideoTrackRenderer] opens a real renderer and registers a view on the
+  /// track through the SDK's `@internal` API -- neither of which stands up
+  /// under `flutter test`. This is the only seam that lets the video layer, and
+  /// a camera going off then ON again, be exercised at all. Reset in tearDown.
+  @visibleForTesting
+  static Widget Function(lk.VideoTrack track) buildVideoView =
+      lk.VideoTrackRenderer.new;
+
+  @override
+  Widget build(BuildContext context) {
+    final live = track;
+    // The avatar is the DEFAULT, reached by an explicit off-condition rather
+    // than by catching a renderer that failed: a live track that will not paint
+    // still mounts its renderer and surfaces its own error, instead of being
+    // hidden behind a quietly black fallback.
+    if (live != null && !cameraOff) {
+      return buildVideoView(live);
+    }
+    return ColoredBox(
+      color: const Color(0xFF14131A),
+      child: Center(
+        child: Avatar(
+          mxContent: avatarUrl,
+          name: name,
+          size: avatarSize,
+          showPresence: false,
+        ),
+      ),
+    );
+  }
 }
