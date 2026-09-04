@@ -138,11 +138,23 @@ class InMemoryCallAudioUploadStateStore implements CallAudioUploadStateStore {
 /// [CallAudioRecorder.finish] is still working through this very generation,
 /// which is the one case [finish] has to notice mid-flight.
 class _AudioGeneration {
+  /// Identifies this generation, and only this one -- across the whole
+  /// call, never reused. This is what [CallAudioRecorder.finish] ties a
+  /// persisted upload record to: the store is keyed by the call's
+  /// transaction id, which names the CALL (call key, sender, device) and is
+  /// the SAME for every generation of it, so a persisted URL from an
+  /// earlier, since-superseded generation would otherwise be indistinguishable
+  /// from one this generation itself produced. See
+  /// [CallAudioUploadStateStore]'s own docs and the `generation_id` field in
+  /// what gets persisted.
+  final int id;
+
   final int sampleRate;
   final int channels;
   final int runStartedAtMs;
 
   _AudioGeneration({
+    required this.id,
     required this.sampleRate,
     required this.channels,
     required this.runStartedAtMs,
@@ -209,6 +221,19 @@ class _AudioRecordingCanceled implements Exception {
 /// * One generation survives at a time. See [onRunStarted] -- a device
 ///   displaced and re-elected mid-call sends only its LAST stretch of
 ///   carrying, never a splice of several.
+/// * A canceled generation is guaranteed to send no EVENT -- never a
+///   room-visible artifact, never a credit -- but NOT guaranteed to upload
+///   no BLOB. `Client.uploadContent` (and this app's HTTP layer generally,
+///   see `CallUploadGate`'s own docs) offers no request-level cancellation,
+///   so an upload already in flight when ownership is lost can still land
+///   at the homeserver; this recorder only stops WAITING for it and never
+///   USES the result. The cost is a plain (Pangea rooms are unencrypted),
+///   orphaned blob nothing will ever reference -- logged when it is
+///   detected (see the class's own `finish` for where), and otherwise left
+///   to whatever retention the homeserver's media repository applies on its
+///   own. Accepted on the same terms `finish`'s own class docs already
+///   accept a crash losing the whole half: a real limitation of a
+///   prototype with no server-side deletion story, not a silent one.
 /// * Accumulated in memory, not spooled to a temp file. `StreamingSttSession`
 ///   (`streaming_stt_session.dart`) already accumulates a call's retained WAV
 ///   the same way for the same reason: [pcm16ToWav] needs the whole byte
@@ -284,6 +309,11 @@ class CallAudioRecorder implements CallAudioRecordingSink {
 
   _AudioGeneration? _current;
 
+  /// Mints [_AudioGeneration.id]. Never reset, never reused within one
+  /// recorder's lifetime -- see that field's own docs for why a generation
+  /// needs an identity distinct from being "whatever `_current` is right now".
+  int _nextGenerationId = 0;
+
   int _capBytes(_AudioGeneration gen) {
     final byTime =
         gen.sampleRate * gen.channels * 2 * maxDuration.inMilliseconds ~/ 1000;
@@ -317,6 +347,7 @@ class CallAudioRecorder implements CallAudioRecordingSink {
     // when it lands mid-upload.
     _cancelCurrent();
     _current = _AudioGeneration(
+      id: _nextGenerationId++,
       sampleRate: sampleRate,
       channels: channels,
       runStartedAtMs: runStartedAtMs,
@@ -532,18 +563,38 @@ class CallAudioRecorder implements CallAudioRecordingSink {
       );
       return;
     }
-    final persistedUrl = persisted?['mxc_url'];
-    if (persistedUrl is String) {
-      final parsed = Uri.tryParse(persistedUrl);
-      // Validated, not merely parsed: `Uri.tryParse` accepts an empty string
-      // and any relative one without complaint, and a persisted record this
-      // reader cannot vouch for -- corrupted on disk, or written by some
-      // future version of this code in a different shape -- must read as NO
-      // url rather than as a real one. An event sent with a garbage `url`
-      // field is a half nobody can play, which is worse than the wasted
-      // upload a false negative here costs at most.
-      if (parsed != null && parsed.scheme == 'mxc' && parsed.host.isNotEmpty) {
-        gen.uploadedUrl = parsed;
+    // Trusted ONLY for the SAME generation that produced it. The store is
+    // keyed by [txnId], which names the CALL (call key, sender, device) and
+    // is identical across every generation of it -- so without this check, a
+    // generation uploaded and persisted, then superseded before it could
+    // send, would have its URL handed to whichever LATER generation happens
+    // to run `finish()` next. That generation's own bytes, duration and
+    // alignment would then be published pointing at a DIFFERENT recording's
+    // audio -- a data-integrity bug, not merely a wasted upload, because the
+    // event that resulted would look entirely valid while being wrong.
+    if (persisted?['generation_id'] == gen.id) {
+      final persistedUrl = persisted?['mxc_url'];
+      if (persistedUrl is String) {
+        final parsed = Uri.tryParse(persistedUrl);
+        // Validated, not merely parsed: `Uri.tryParse` accepts an empty
+        // string and any relative one without complaint, and a persisted
+        // record this reader cannot vouch for -- corrupted on disk, or
+        // written by some future version of this code in a different shape
+        // -- must read as NO url rather than as a real one. Beyond the
+        // scheme and host, an `mxc://server` with no media-id path segment
+        // ALSO parses cleanly and ALSO names nothing playable -- Matrix's
+        // own content URI shape is `mxc://server/media-id`, and a reference
+        // missing the second half is exactly as untrustworthy as an empty
+        // string. An event sent with a garbage `url` field is a half
+        // nobody can play, which is worse than the wasted upload a false
+        // negative here costs at most.
+        if (parsed != null &&
+            parsed.scheme == 'mxc' &&
+            parsed.host.isNotEmpty &&
+            parsed.pathSegments.isNotEmpty &&
+            parsed.pathSegments.first.isNotEmpty) {
+          gen.uploadedUrl = parsed;
+        }
       }
     }
 
@@ -601,16 +652,47 @@ class CallAudioRecorder implements CallAudioRecordingSink {
           var url = gen.uploadedUrl;
           if (url == null) {
             // Raced against ownership loss rather than merely awaited:
-            // uploading is the one genuinely slow step, and "abort the
-            // upload if possible" is honoured as far as this client can
-            // honour it -- nothing here can recall bytes already handed to
-            // the homeserver (see `CallUploadGate`'s own docs: this app's
-            // HTTP layer has no request-level cancellation at all) -- but
-            // there is no reason to go on WAITING for, or USING, an answer
-            // that has stopped mattering. `Future.any` returns the moment
-            // either side settles; the loser is simply never awaited again.
+            // uploading is the one genuinely slow step, and there is no
+            // reason to go on WAITING for, or USING, an answer that has
+            // stopped mattering. `Future.any` returns the moment either
+            // side settles; the loser is simply never awaited again HERE.
+            //
+            // "Abort the upload" is honoured only as far as this client
+            // truly can: `Client.uploadContent` offers no request-level
+            // cancellation (see `CallUploadGate`'s own docs -- this app's
+            // whole HTTP layer does not either), and the one lever that
+            // DOES exist -- closing the shared `http.Client` every other
+            // request on this connection also uses -- would abort syncs
+            // and sends across the whole app to cancel one upload, which is
+            // not a trade this feature may make on its own. So the upload
+            // below is free to keep running and land at the homeserver
+            // regardless of the race's outcome; what this recorder
+            // guarantees is narrower than "no blob" -- see the class docs'
+            // own "no request-level abort" bullet -- and is enforced by
+            // never using a URL this race did not itself produce.
+            final uploadFuture = upload(
+              wav,
+              filename: 'call_audio.wav',
+              contentType: 'audio/wav',
+            );
+            // Observed separately from the race below, so a losing upload
+            // that lands anyway is at least LOGGED rather than silently
+            // becoming an untraceable orphan -- the one piece of "no
+            // silent failures" available here, since nothing on this
+            // client can stop the bytes from actually arriving.
+            unawaited(
+              uploadFuture.then((landedUrl) {
+                if (cancelSignal.isCompleted) {
+                  Logs().w(
+                    'A call-audio blob landed at $landedUrl after this '
+                    'device lost ownership; it is an orphan no event will '
+                    'ever reference',
+                  );
+                }
+              }, onError: (Object _, StackTrace _) {}),
+            );
             url = await Future.any<Uri>([
-              upload(wav, filename: 'call_audio.wav', contentType: 'audio/wav'),
+              uploadFuture,
               cancelSignal.future.then(
                 (_) => throw const _AudioRecordingCanceled(),
               ),
@@ -632,6 +714,10 @@ class CallAudioRecorder implements CallAudioRecordingSink {
                 'sender': senderId,
                 'device': deviceId,
                 'txn_id': txnId,
+                // Ties this record to the generation whose bytes are
+                // actually at this url -- see [_AudioGeneration.id]'s own
+                // docs and the read site above that checks it back.
+                'generation_id': gen.id,
                 'mxc_url': url.toString(),
                 'status': 'uploaded',
               });
@@ -665,14 +751,29 @@ class CallAudioRecorder implements CallAudioRecordingSink {
             clockAnchor: anchor,
             recordingStartedOffsetFromDeviceJoinMs: offsetMs,
           );
+          if (eventId == null) {
+            // `send` -- `Room.sendEvent` in production -- returns null
+            // EXACTLY when the send did not durably succeed (a
+            // `MatrixException`, an oversized event, or a client-side
+            // timeout, all without throwing; see its own implementation),
+            // never as a quieter kind of success. Treated as a FAILED
+            // attempt like any other: falling through to mark `sent` here
+            // would permanently drop a valid resend, because the next
+            // attempt would see this persisted state and refuse to try
+            // again for a half that was never actually written.
+            throw StateError(
+              'The homeserver did not confirm the call-audio event was sent',
+            );
+          }
           try {
             await uploadStateStore.write(txnId, {
               'call_key': callKey,
               'sender': senderId,
               'device': deviceId,
               'txn_id': txnId,
+              'generation_id': gen.id,
               'mxc_url': url.toString(),
-              'event_id': ?eventId,
+              'event_id': eventId,
               'status': 'sent',
             });
           } catch (e, s) {

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'dart:typed_data';
 
 // Package imports:
+import 'package:flutter/foundation.dart' show SynchronousFuture;
 import 'package:flutter_test/flutter_test.dart';
 
 // Project imports:
@@ -14,6 +15,29 @@ import '../sentry_capture_harness.dart';
 const _callKey = '\$membership:example.com';
 const _sender = '@alice:example.com';
 const _device = 'DEVICEA';
+
+/// A store whose `read`/`write` resolve on the SAME microtask turn rather
+/// than deferring by one, the way every real `async` implementation
+/// (including [InMemoryCallAudioUploadStateStore]) unavoidably does.
+///
+/// Used by exactly one test: the drain-race one below. `_drainPending`'s own
+/// race is real, but `finish()` reads the persisted store immediately
+/// afterwards -- and awaiting a NORMAL `async` function, even one with no
+/// work of its own, still costs a microtask turn in Dart. That one extra
+/// turn is enough time for a background pump to catch up on its own, which
+/// makes the drain race pass whether or not `_drainPending` actually
+/// re-checks -- a false mutation-proof. `SynchronousFuture` (from
+/// `package:flutter/foundation.dart`, built for exactly this: skipping a
+/// deferred frame) removes that incidental extra turn so the race the test
+/// means to pin is the only one left to explain the result.
+class _SameTurnStore implements CallAudioUploadStateStore {
+  @override
+  Future<Map<String, dynamic>?> read(String txnId) => SynchronousFuture(null);
+
+  @override
+  Future<void> write(String txnId, Map<String, dynamic> state) =>
+      SynchronousFuture(null);
+}
 
 /// [n] frames of [samplesPerFrame] mono 16-bit samples, all equal to [value]
 /// -- a fixed tone (or, at value 0, digital silence) cheap to assert on.
@@ -162,8 +186,12 @@ void main() {
         expect(uploads, hasLength(1), reason: 'the first upload has started');
 
         // Ownership moves on WHILE the upload for the first generation is
-        // still in flight -- the exact race invariant 1 names: "a device that
-        // loses ownership mid-upload sends no event and uploads no blob".
+        // still in flight -- the exact race invariant 1 names: a device that
+        // loses ownership mid-upload sends no EVENT for the stale generation.
+        // The blob itself is a different guarantee (see
+        // CallAudioRecorder's own class docs, "no request-level abort"): the
+        // upload below is still allowed to land, as an accepted, logged
+        // orphan -- what this test actually pins is that it is never USED.
         r.onRunStarted(5000, 16000, 1);
         r.onFrame(_tone(160));
 
@@ -461,6 +489,37 @@ void main() {
     });
   });
 
+  group('the drain race', () {
+    test('a frame queued in the gap between the pump completing and finish() '
+        'resuming is not lost', () async {
+      // `_drainPending` completing does not resume `finish()` on the SAME
+      // microtask turn -- Dart never runs a Future's continuation
+      // synchronously with the call that completed it -- so a frame
+      // queued in that one-turn gap is exactly the race `_drainPending`'s
+      // own re-check loop exists to close. `_SameTurnStore` is what makes
+      // the proof clean: see its own docs for why an ordinary store would
+      // let this pass by accident.
+      final r = recorder(uploadStateStore: _SameTurnStore());
+      r.onRunStarted(0, 16000, 1);
+      r.onFrame(_tone(1600)); // frame A: queued, not yet drained
+      // Frame B lands as its own microtask, scheduled right behind
+      // frame A's pump -- squarely in the gap `_drainPending`'s single
+      // completer-await (rather than a loop) would miss.
+      scheduleMicrotask(() => r.onFrame(_tone(1600)));
+
+      await r.finish(carriedOn: true, callKey: _callKey);
+
+      final content = CallAudioContent.fromJson(sent.single)!;
+      expect(
+        content.durationMs,
+        200,
+        reason:
+            'both frames -- A and the one that arrived in the gap -- '
+            'must be captured',
+      );
+    });
+  });
+
   group('persisted upload state', () {
     test('a persisted "sent" status skips sending again entirely', () async {
       final store = InMemoryCallAudioUploadStateStore();
@@ -488,6 +547,11 @@ void main() {
         await store.write(txnId, {
           'status': 'uploaded',
           'mxc_url': 'mxc://example.com/already-there',
+          // Matches the fresh recorder's own first (and only) generation
+          // below -- ids start at 0 -- which is exactly the fact the reuse
+          // check requires. See the "DIFFERENT generation" test for what
+          // happens when it does not match.
+          'generation_id': 0,
         });
 
         final r = recorder(uploadStateStore: store);
@@ -503,6 +567,51 @@ void main() {
         );
         expect(sent, hasLength(1));
         expect(sent.single['url'], 'mxc://example.com/already-there');
+      },
+    );
+
+    test(
+      'a persisted upload from a DIFFERENT generation is never reused',
+      () async {
+        // The cold review's core finding: the store is keyed by [txnId],
+        // which names the CALL and is identical across every generation of
+        // it. Without a generation check, a generation that uploaded, was
+        // persisted, and was then superseded before it could send would
+        // have its stale url handed to whichever LATER generation happens
+        // to run `finish()` next -- publishing an event whose audio and
+        // whose metadata (duration, format, alignment) belong to two
+        // different recordings.
+        final store = InMemoryCallAudioUploadStateStore();
+        final txnId = CallAudioContent.txnId(_callKey, _sender, _device);
+        await store.write(txnId, {
+          'status': 'uploaded',
+          'mxc_url': 'mxc://example.com/stale-generation',
+          // No generation this recorder ever creates is assigned a
+          // negative id (they start at 0 and only increase), so this can
+          // never legitimately match -- simulating exactly the earlier,
+          // superseded generation's own leftover record.
+          'generation_id': -1,
+        });
+
+        final r = recorder(uploadStateStore: store);
+        r.onRunStarted(1000, 16000, 1);
+        r.onFrame(_tone(160));
+        r.onRunEnded();
+        await r.finish(carriedOn: true, callKey: _callKey);
+
+        expect(
+          uploads,
+          hasLength(1),
+          reason: 'a different generation\'s persisted url must not be reused',
+        );
+        expect(sent, hasLength(1));
+        expect(
+          sent.single['url'],
+          'mxc://example.com/uploaded',
+          reason:
+              'must be THIS generation\'s own fresh upload, never the '
+              'stale one',
+        );
       },
     );
 
@@ -526,6 +635,7 @@ void main() {
         expect(persisted['sender'], _sender);
         expect(persisted['device'], _device);
         expect(persisted['txn_id'], txnId);
+        expect(persisted['generation_id'], 0);
       },
     );
 
@@ -539,6 +649,7 @@ void main() {
       await store.write(txnId, {
         'status': 'uploaded',
         'mxc_url': 'not-a-valid-mxc-url',
+        'generation_id': 0,
       });
 
       final r = recorder(uploadStateStore: store);
@@ -555,6 +666,90 @@ void main() {
       expect(sent, hasLength(1));
       expect(sent.single['url'], 'mxc://example.com/uploaded');
     });
+
+    test(
+      'a persisted mxc url with no media id is ignored rather than trusted',
+      () async {
+        // `mxc://server` alone -- scheme and host, no media-id path
+        // segment -- parses cleanly and names nothing playable. Matrix's
+        // own content-uri shape is `mxc://server/media-id`; a reference
+        // missing the second half is exactly as untrustworthy as an empty
+        // or malformed one.
+        final store = InMemoryCallAudioUploadStateStore();
+        final txnId = CallAudioContent.txnId(_callKey, _sender, _device);
+        await store.write(txnId, {
+          'status': 'uploaded',
+          'mxc_url': 'mxc://example.com',
+          'generation_id': 0,
+        });
+
+        final r = recorder(uploadStateStore: store);
+        r.onRunStarted(1000, 16000, 1);
+        r.onFrame(_tone(160));
+        r.onRunEnded();
+        await r.finish(carriedOn: true, callKey: _callKey);
+
+        expect(
+          uploads,
+          hasLength(1),
+          reason: 'a media-id-less mxc url must not be trusted',
+        );
+        expect(sent, hasLength(1));
+        expect(sent.single['url'], 'mxc://example.com/uploaded');
+      },
+    );
+
+    test(
+      'a null send result (a failed send) is retried, never marked sent',
+      () async {
+        // `Room.sendEvent` returns null EXACTLY when the send did not
+        // durably succeed (see its own implementation) -- never as a
+        // quieter kind of success. Marking `status: 'sent'` on a null
+        // result would permanently drop a valid resend.
+        final store = InMemoryCallAudioUploadStateStore();
+        var sendCalls = 0;
+        final r = CallAudioRecorder(
+          senderId: _sender,
+          deviceId: _device,
+          uploadStateStore: store,
+          retryDelay: Duration.zero,
+          upload: (bytes, {required filename, required contentType}) async {
+            uploads.add((
+              bytes: bytes,
+              filename: filename,
+              contentType: contentType,
+            ));
+            return Uri.parse('mxc://example.com/uploaded');
+          },
+          send: (content, txnId) async {
+            sendCalls++;
+            if (sendCalls == 1) return null; // the homeserver's own failure
+            sent.add(content);
+            return '\$event:example.com';
+          },
+        );
+        r.onRunStarted(1000, 16000, 1);
+        r.onFrame(_tone(160));
+        r.onRunEnded();
+        await r.finish(carriedOn: true, callKey: _callKey);
+
+        expect(
+          sendCalls,
+          2,
+          reason: 'the null result must count as a failure and be retried',
+        );
+        expect(sent, hasLength(1), reason: 'the retry lands');
+        expect(
+          uploads,
+          hasLength(1),
+          reason: 'the cached upload must not be repeated across the retry',
+        );
+
+        final txnId = CallAudioContent.txnId(_callKey, _sender, _device);
+        final persisted = await store.read(txnId);
+        expect(persisted!['status'], 'sent');
+      },
+    );
   });
 
   group('two concurrent finish() calls', () {
