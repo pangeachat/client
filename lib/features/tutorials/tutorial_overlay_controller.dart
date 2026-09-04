@@ -76,6 +76,12 @@ class TutorialOverlayController {
 
   bool get hasActiveSequence => _activeSequence != null;
 
+  /// The catalog identity of the running sequence — what the card reads for
+  /// its title and Skip control. Null while nothing runs, or for a sequence
+  /// the catalog does not know (a test's).
+  TutorialSequenceKind? get activeSequenceKind =>
+      TutorialSequenceKind.of(_activeSequence);
+
   /// Whether this learner still has [tutorial] coming — unseen, and not yet
   /// walked to its end. Asked by a host whose trigger belongs to one specific
   /// tutorial, so the trigger stays silent once that tutorial is done.
@@ -334,6 +340,9 @@ class TutorialOverlayController {
     // Open the persistent sequence overlay once for the entire sequence.
     // Subsequent tutorials in the sequence reuse this overlay so that the
     // blocking dark layer is never removed between steps.
+    // The kind is captured at entry creation: the entry lives exactly as long
+    // as its sequence, so it can never show another sequence's title.
+    final sequenceKind = activeSequenceKind;
     final entry = OverlayEntry(
       builder: (overlayContext) {
         final machine = _state;
@@ -341,10 +350,11 @@ class TutorialOverlayController {
           listenable: machine,
           builder: (context, _) => TutorialOverlayWidget(
             model: machine.model,
+            sequenceKind: sequenceKind,
             forward: forwardTutorial,
             back: backTutorial,
             reset: resetTutorial,
-            decline: declineCurrentTutorial,
+            skipSequence: skipCurrentSequence,
             setTutorialTransitioning: setTutorialTransitioning,
             enabledForward: machine.canGoForward,
             enabledBack: machine.canGoBack,
@@ -376,7 +386,7 @@ class TutorialOverlayController {
     final previousStepIndex = _state.model.stepIndex;
     if (previousType == null) return;
 
-    previousType.saveProgress(previousStepIndex + 1);
+    _progress.saveProgress(previousType, previousStepIndex + 1);
     GoogleAnalytics.completeTutorialStep(previousType.name, previousStepIndex);
 
     _state.dispatch(ForwardTutorialEvent());
@@ -400,14 +410,22 @@ class TutorialOverlayController {
     }
   }
 
-  /// The learner declined this tutorial at a branch step: mark it seen, because
-  /// they were asked and said no, and end the sequence rather than carrying on
-  /// into steps they just opted out of.
-  void declineCurrentTutorial() {
+  /// The learner opted out of the running sequence — the card's Skip control,
+  /// or a branch step's decline. They said no to the walkthrough, not to the
+  /// card it happened to be showing, so every tutorial of the *requested*
+  /// sequence they have not already seen is marked seen. Marking only the
+  /// current one left the rest to partially re-offer the same walkthrough on
+  /// the next trigger, which reads as the skip not having worked.
+  void skipCurrentSequence() {
+    final sequence = _activeSequence;
     final tutorial = _state.tutorialType;
-    if (tutorial == null) return;
+    if (sequence == null || tutorial == null) return;
+    // One event, stamped with the tutorial and step the learner was looking at
+    // when they bailed — where a walkthrough loses people is the signal.
     GoogleAnalytics.declineTutorial(tutorial.name, _state.model.stepIndex);
-    tutorial.saveProgress(tutorial.stepCount);
+    for (final skipped in sequence.where(_progress.isEnabled)) {
+      _progress.saveProgress(skipped, skipped.stepCount);
+    }
     _endSequence();
   }
 

@@ -8,7 +8,7 @@ import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
 /// its list here ([TutorialEnum.stepCount] reads it), so adding or removing a
 /// step is a single edit and cannot leave a step unreachable.
 class TutorialStepTemplates {
-  static const Size _standard = Size(250, 120);
+  static const Size _standard = Size(250, 150);
 
   static final List<TutorialStepTemplate> readingAssistance = [
     TutorialStepTemplate(
@@ -21,7 +21,7 @@ class TutorialStepTemplates {
   static final List<TutorialStepTemplate> writingAssistance = [
     TutorialStepTemplate(
       tooltip: (l10n, _) => l10n.writingAssistanceTutorialInputBar,
-      tooltipSize: const Size(300, 140),
+      tooltipSize: const Size(300, 170),
       borderRadius: 24.0,
     ),
   ];
@@ -38,7 +38,7 @@ class TutorialStepTemplates {
   static final List<TutorialStepTemplate> welcome = [
     TutorialStepTemplate(
       tooltip: (l10n, _) => l10n.tutorialWelcome,
-      tooltipSize: const Size(280, 170),
+      tooltipSize: const Size(280, 200),
     ),
   ];
 
@@ -46,7 +46,7 @@ class TutorialStepTemplates {
     TutorialStepTemplate(
       // args: [the learner's target language name]
       tooltip: (l10n, args) => l10n.tutorialWorldMapIntro(args.first),
-      tooltipSize: const Size(280, 130),
+      tooltipSize: const Size(280, 160),
       // No scrim: this step is about the whole screen, so darkening the thing
       // it is describing works against it. Nothing is lit either, so the card
       // takes the bottom of the screen. A tap anywhere still advances —
@@ -55,7 +55,7 @@ class TutorialStepTemplates {
     ),
     TutorialStepTemplate(
       tooltip: (l10n, _) => l10n.tutorialWorldMapPickActivity,
-      tooltipSize: const Size(280, 130),
+      tooltipSize: const Size(280, 160),
       // A plain rounded rect around the pin, like every other spotlight step.
       // The rect is the pin's REAL geometry for the tier it drew at — the map
       // publishes it — so a little padding is all that is needed to frame it.
@@ -76,7 +76,7 @@ class TutorialStepTemplates {
       tooltip: (l10n, _) => l10n.tutorialAppTourOffer,
       // Taller than the other steps: this one carries its two answers inside
       // the card as well as the text and progress row.
-      tooltipSize: const Size(300, 200),
+      tooltipSize: const Size(300, 230),
       choices: [
         TutorialStepChoice(
           label: (l10n) => l10n.tutorialAppTourAccept,
@@ -90,7 +90,7 @@ class TutorialStepTemplates {
     ),
     TutorialStepTemplate(
       tooltip: (l10n, _) => l10n.tutorialAppTourChats,
-      tooltipSize: const Size(270, 130),
+      tooltipSize: const Size(270, 160),
       borderRadius: 12.0,
       padding: 4.0,
     ),
@@ -99,25 +99,25 @@ class TutorialStepTemplates {
       tooltip: (l10n, args) => args.isEmpty
           ? l10n.tutorialAppTourCoursesNone
           : l10n.tutorialAppTourCoursesSome,
-      tooltipSize: const Size(270, 130),
+      tooltipSize: const Size(270, 160),
       borderRadius: 12.0,
       padding: 4.0,
     ),
     TutorialStepTemplate(
       tooltip: (l10n, _) => l10n.tutorialAppTourAnalytics,
-      tooltipSize: const Size(270, 130),
+      tooltipSize: const Size(270, 160),
       borderRadius: 100.0,
       padding: 4.0,
     ),
     TutorialStepTemplate(
       tooltip: (l10n, _) => l10n.tutorialAppTourPractice,
-      tooltipSize: const Size(280, 140),
+      tooltipSize: const Size(280, 170),
       borderRadius: 20.0,
       padding: 4.0,
     ),
     TutorialStepTemplate(
       tooltip: (l10n, _) => l10n.tutorialAppTourWorld,
-      tooltipSize: const Size(270, 130),
+      tooltipSize: const Size(270, 160),
       borderRadius: 12.0,
       padding: 4.0,
     ),
@@ -128,7 +128,7 @@ class TutorialStepTemplates {
     TutorialStepTemplate(
       // args: [the course's name]
       tooltip: (l10n, args) => l10n.tutorialCoursePlanIntro(args.first),
-      tooltipSize: const Size(290, 150),
+      tooltipSize: const Size(290, 180),
       // Lights the whole course panel, so the cut-out follows the panel's own
       // corners. A full-height target leaves no room above or below it, so the
       // placement rule seats the card at the bottom OF THE PANEL, centred on it.
@@ -136,7 +136,7 @@ class TutorialStepTemplates {
     ),
     TutorialStepTemplate(
       tooltip: (l10n, _) => l10n.tutorialCoursePlanProgress,
-      tooltipSize: const Size(280, 120),
+      tooltipSize: const Size(280, 150),
       borderRadius: AppConfig.borderRadius,
       padding: 6.0,
     ),
@@ -144,7 +144,7 @@ class TutorialStepTemplates {
       tooltip: (l10n, args) => args.isEmpty
           ? l10n.tutorialCoursePlanPickActivity
           : l10n.tutorialCoursePlanNoActivities,
-      tooltipSize: const Size(280, 120),
+      tooltipSize: const Size(280, 150),
       borderRadius: AppConfig.borderRadius,
       padding: 4.0,
     ),
@@ -155,7 +155,7 @@ class TutorialStepTemplates {
   static final List<TutorialStepTemplate> activityGoals = [
     TutorialStepTemplate(
       tooltip: (l10n, _) => l10n.tutorialActivityGoals,
-      tooltipSize: const Size(290, 140),
+      tooltipSize: const Size(290, 170),
       borderRadius: AppConfig.borderRadius,
       padding: 4.0,
     ),

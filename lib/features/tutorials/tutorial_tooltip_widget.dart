@@ -5,11 +5,19 @@ import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/features/tutorials/tutorial_copy.dart';
 import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_word_bubble.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 
 class TutorialTooltipWidget extends StatelessWidget {
   final String text;
   final int currentStep;
   final int totalSteps;
+
+  /// Names the running sequence, under the progress bar, so back-to-back
+  /// sequences read as different walkthroughs rather than one restarting.
+  final String? sequenceTitle;
+
+  /// Skips the whole sequence. Null hides the control.
+  final VoidCallback? onSkip;
 
   /// A branch step's answers. Rendered inside the card, below the progress row,
   /// so the card grows to contain them — floating them over its bottom edge left
@@ -19,46 +27,40 @@ class TutorialTooltipWidget extends StatelessWidget {
 
   /// The L2 greeting, shown as a tappable vocabulary word above [text].
   final TutorialGreeting? wordBubble;
-  final EdgeInsets padding;
-  final BorderRadius borderRadius;
-  final TextStyle? textStyle;
-  final double iconSize;
-  final Color? backgroundColor;
-  final Color? foregroundColor;
 
   const TutorialTooltipWidget({
     required this.text,
     required this.currentStep,
     required this.totalSteps,
+    this.sequenceTitle,
+    this.onSkip,
     this.choices = const [],
     this.onChoice,
     this.wordBubble,
-    this.padding = const EdgeInsets.all(8),
-    this.borderRadius = const BorderRadius.all(Radius.circular(8)),
-    this.textStyle,
-    this.iconSize = 32.0,
-    this.backgroundColor,
-    this.foregroundColor,
     super.key,
   });
+
+  /// The bot face is the card's speaker; at the old 32px it read as an icon
+  /// rather than a sender avatar.
+  static const double _botFaceSize = 44.0;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    final background = backgroundColor ?? theme.cardColor;
-
-    final style = textStyle ?? theme.textTheme.bodyMedium;
+    final style = theme.textTheme.bodyMedium;
 
     final progress = totalSteps > 0 ? currentStep / totalSteps : 0.0;
 
     return Container(
-      padding: padding,
-      // decoration: BoxDecoration(color: background, borderRadius: borderRadius),
+      padding: const EdgeInsets.all(8),
+      // Styled like a message from the bot, not a generic tooltip: the same
+      // surface and corner radius other-party chat bubbles use, no border.
       decoration: BoxDecoration(
-        color: background,
-        border: Border.all(width: 2, color: theme.colorScheme.primary),
-        borderRadius: const BorderRadius.all(Radius.circular(12.0)),
+        color: theme.colorScheme.surfaceContainerHigh,
+        borderRadius: const BorderRadius.all(
+          Radius.circular(AppConfig.borderRadius),
+        ),
       ),
       child: Column(
         children: [
@@ -87,16 +89,19 @@ class TutorialTooltipWidget extends StatelessWidget {
                         ],
                         Row(
                           spacing: 8.0,
+                          // Top-aligned like a chat message: the avatar sits at
+                          // the head of the text, not floating beside its middle.
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            BotFace(
-                              width: iconSize,
+                            const BotFace(
+                              width: _botFaceSize,
                               expression: BotExpression.gold,
                             ),
                             Expanded(
                               child: Text(
                                 text,
                                 style: style,
-                                textAlign: TextAlign.center,
+                                textAlign: TextAlign.start,
                               ),
                             ),
                           ],
@@ -109,25 +114,30 @@ class TutorialTooltipWidget extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(4.0),
+            padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 2.0),
             child: Row(
               children: [
                 Text(
                   "$currentStep / $totalSteps",
                   style: theme.textTheme.labelSmall,
                 ),
-                SizedBox(width: 8.0),
+                const SizedBox(width: 8.0),
                 Expanded(
                   child: LinearProgressIndicator(
                     value: progress,
                     minHeight: 8.0,
                     borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-                    color: progress >= 1.0 ? AppConfig.success : null,
+                    // Green from the first step: the bar reports progress made,
+                    // and a color that only arrives at the end read as the
+                    // earlier steps not counting.
+                    color: AppConfig.success,
                   ),
                 ),
               ],
             ),
           ),
+          if (sequenceTitle != null || onSkip != null)
+            _TutorialSequenceRow(title: sequenceTitle, onSkip: onSkip),
           if (choices.isNotEmpty)
             Padding(
               padding: const EdgeInsets.only(top: 4.0),
@@ -148,6 +158,53 @@ class TutorialTooltipWidget extends StatelessWidget {
                     ),
                 ],
               ),
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+/// The line under the progress bar: which walkthrough this is, and the way
+/// out of it. The skip is a real labelled button because the overlay hides
+/// everything under it from assistive tech, so every control it adds must
+/// stand on its own.
+class _TutorialSequenceRow extends StatelessWidget {
+  final String? title;
+  final VoidCallback? onSkip;
+
+  const _TutorialSequenceRow({required this.title, required this.onSkip});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 4.0),
+      child: Row(
+        children: [
+          if (title != null)
+            Expanded(
+              child: Text(
+                title!,
+                style: theme.textTheme.labelSmall?.copyWith(
+                  color: theme.colorScheme.onSurfaceVariant,
+                ),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            )
+          else
+            const Spacer(),
+          if (onSkip != null)
+            TextButton(
+              onPressed: onSkip,
+              style: TextButton.styleFrom(
+                visualDensity: VisualDensity.compact,
+                minimumSize: const Size(0, 28),
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                textStyle: theme.textTheme.labelSmall,
+              ),
+              child: Text(L10n.of(context).skip),
             ),
         ],
       ),

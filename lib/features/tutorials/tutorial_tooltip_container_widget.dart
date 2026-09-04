@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/features/tutorials/tutorial_copy.dart';
+import 'package:fluffychat/features/tutorials/tutorial_sequences.dart';
 import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_tooltip_widget.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -10,6 +11,15 @@ class TutorialTooltipContainerWidget extends StatelessWidget {
   final double height;
   final double padding;
   final String text;
+
+  /// Names the run on the card, so back-to-back sequences (activity goals,
+  /// then the chat tools) read as different walkthroughs with different
+  /// progress rather than one that mysteriously restarted.
+  final TutorialSequenceKind? sequenceKind;
+
+  /// Skips the whole running sequence. Null hides the control — the steps
+  /// where skipping is unavailable (armed, branch) and uncatalogued sequences.
+  final VoidCallback? onSkip;
 
   final VoidCallback onNext;
   final VoidCallback onPrevious;
@@ -35,6 +45,8 @@ class TutorialTooltipContainerWidget extends StatelessWidget {
     required this.height,
     required this.text,
     this.padding = 8.0,
+    this.sequenceKind,
+    this.onSkip,
     required this.onNext,
     required this.onPrevious,
     this.showNext = true,
@@ -66,6 +78,8 @@ class TutorialTooltipContainerWidget extends StatelessWidget {
                   text: text,
                   currentStep: currentStep,
                   totalSteps: totalSteps,
+                  sequenceTitle: sequenceKind?.title(L10n.of(context)),
+                  onSkip: onSkip,
                   choices: choices,
                   onChoice: onChoice,
                   wordBubble: wordBubble,

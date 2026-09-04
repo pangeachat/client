@@ -40,13 +40,25 @@ class _FakeProgress extends TutorialProgressSource {
   final Set<TutorialEnum> seen;
   final Map<TutorialEnum, int> resumeSteps;
 
-  const _FakeProgress({this.seen = const {}, this.resumeSteps = const {}});
+  /// Records what the controller persisted, when observing writes matters.
+  /// A tutorial saved at its step count was marked seen.
+  final Map<TutorialEnum, int>? progressLog;
+
+  const _FakeProgress({
+    this.seen = const {},
+    this.resumeSteps = const {},
+    this.progressLog,
+  });
 
   @override
   bool isEnabled(TutorialEnum tutorial) => !seen.contains(tutorial);
 
   @override
   int resumeStep(TutorialEnum tutorial) => resumeSteps[tutorial] ?? 0;
+
+  @override
+  void saveProgress(TutorialEnum tutorial, int stepIndex) =>
+      progressLog?[tutorial] = stepIndex;
 }
 
 void main() {
@@ -623,6 +635,123 @@ void main() {
       expect(c.requestSequence(TutorialSequences.chatTutorialSequence), false);
       c.releaseSequence(TutorialSequences.chatTutorialSequence);
       expect(c.hasActiveSequence, false);
+    });
+  });
+
+  // ===========================================================================
+  // Skip: the learner opts out of the WHOLE running sequence, not one card
+  // ===========================================================================
+  group('TutorialOverlayController — skipCurrentSequence', () {
+    test('marks every unseen tutorial in the requested sequence seen', () {
+      final log = <TutorialEnum, int>{};
+      final c = TutorialOverlayController(
+        progress: _FakeProgress(progressLog: log),
+      );
+      c.requestSequence(_full);
+      c.skipCurrentSequence();
+      // Each saved at its step count — that is what marks it seen.
+      expect(log, {
+        TutorialEnum.readingAssistance:
+            TutorialEnum.readingAssistance.stepCount,
+        TutorialEnum.selectModeButtons:
+            TutorialEnum.selectModeButtons.stepCount,
+        TutorialEnum.writingAssistance:
+            TutorialEnum.writingAssistance.stepCount,
+      });
+      expect(c.hasActiveSequence, false);
+    });
+
+    test(
+      'skips the tutorials still to come, not only the one showing — the bug '
+      'this pins: marking only the current one partially re-offered the same '
+      'walkthrough on the next trigger',
+      () {
+        final log = <TutorialEnum, int>{};
+        final c = TutorialOverlayController(
+          progress: _FakeProgress(progressLog: log),
+        );
+        c.requestSequence(_full);
+        expect(c.state.tutorialType, TutorialEnum.readingAssistance);
+        c.skipCurrentSequence();
+        expect(log.containsKey(TutorialEnum.selectModeButtons), true);
+        expect(log.containsKey(TutorialEnum.writingAssistance), true);
+      },
+    );
+
+    test('already-seen tutorials in the sequence are not re-marked', () {
+      final log = <TutorialEnum, int>{};
+      final c = TutorialOverlayController(
+        progress: _FakeProgress(
+          seen: {TutorialEnum.readingAssistance},
+          progressLog: log,
+        ),
+      );
+      c.requestSequence(_full);
+      c.skipCurrentSequence();
+      expect(log.containsKey(TutorialEnum.readingAssistance), false);
+      expect(log.containsKey(TutorialEnum.selectModeButtons), true);
+      expect(log.containsKey(TutorialEnum.writingAssistance), true);
+    });
+
+    testWidgets('a queued sequence still starts after a skip', (tester) async {
+      final c = TutorialOverlayController(
+        progress: _FakeProgress(progressLog: {}),
+      );
+      c.requestSequence(_full);
+      c.requestSequence(const [TutorialEnum.appTour]);
+      c.skipCurrentSequence();
+      await tester.pump();
+      expect(c.state.tutorialType, TutorialEnum.appTour);
+    });
+
+    test('a skip with nothing running is a no-op', () {
+      final log = <TutorialEnum, int>{};
+      final c = TutorialOverlayController(
+        progress: _FakeProgress(progressLog: log),
+      );
+      c.skipCurrentSequence();
+      expect(log, isEmpty);
+    });
+  });
+
+  // ===========================================================================
+  // Sequence identity: the card's title and Skip control come from the kind
+  // ===========================================================================
+  group('TutorialSequenceKind', () {
+    test('matches every catalog sequence by content', () {
+      for (final kind in TutorialSequenceKind.values) {
+        expect(TutorialSequenceKind.of(kind.sequence), kind);
+      }
+    });
+
+    test('matches a fresh list with the same tutorials — content, not '
+        'instance, because the controller holds the requested list', () {
+      expect(
+        TutorialSequenceKind.of([TutorialEnum.welcome, TutorialEnum.worldMap]),
+        TutorialSequenceKind.worldOrientation,
+      );
+    });
+
+    test('an ad-hoc sequence matches nothing — no title, no skip', () {
+      expect(TutorialSequenceKind.of(_single), isNull);
+      expect(TutorialSequenceKind.of(null), isNull);
+    });
+
+    test('activeSequenceKind names the running sequence', () {
+      final c = TutorialOverlayController(progress: const _FakeProgress());
+      expect(c.activeSequenceKind, isNull);
+      c.requestSequence(TutorialSequences.chatTutorialSequence);
+      expect(c.activeSequenceKind, TutorialSequenceKind.chat);
+    });
+
+    test('activeSequenceKind survives the seen-filter dropping a tutorial — '
+        'identity is the REQUESTED sequence, not the filtered one', () {
+      final c = TutorialOverlayController(
+        progress: const _FakeProgress(seen: {TutorialEnum.welcome}),
+      );
+      c.requestSequence(TutorialSequences.worldOrientationSequence);
+      expect(c.state.tutorialType, TutorialEnum.worldMap);
+      expect(c.activeSequenceKind, TutorialSequenceKind.worldOrientation);
     });
   });
 

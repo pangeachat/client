@@ -5497,5 +5497,10 @@
     "tutorialAppTourCoursesNone": "Courses live here \u2014 you can join one with a code, or make your own.",
     "tutorialAppTourAnalytics": "This is your progress: every word and grammar form you've used.",
     "tutorialAppTourPractice": "You'll find personalized practice lessons here, as long as you've unlocked at least 10 vocab words",
-    "tutorialAppTourWorld": "And this brings you back to the world map any time. Happy learning!"
+    "tutorialAppTourWorld": "And this brings you back to the world map any time. Happy learning!",
+    "tutorialSequenceTitleWorldOrientation": "Exploring the world",
+    "tutorialSequenceTitleCourseOrientation": "Exploring your course",
+    "tutorialSequenceTitleAppTour": "App tour",
+    "tutorialSequenceTitleActivityGoals": "Goals & stars",
+    "tutorialSequenceTitleChat": "Language tools"
 }

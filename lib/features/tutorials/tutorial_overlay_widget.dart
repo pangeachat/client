@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/tutorials/tutorial_overlay_state_machine.dart';
+import 'package:fluffychat/features/tutorials/tutorial_sequences.dart';
 import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_tooltip_container_widget.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -11,10 +12,14 @@ import 'package:fluffychat/widgets/matrix.dart';
 class TutorialOverlayWidget extends StatefulWidget {
   final TutorialOverlayState model;
 
+  /// The running sequence's catalog identity: the card's title and whether it
+  /// carries the sequence-wide Skip control. Null for an uncatalogued sequence.
+  final TutorialSequenceKind? sequenceKind;
+
   final VoidCallback forward;
   final VoidCallback back;
   final VoidCallback reset;
-  final VoidCallback decline;
+  final VoidCallback skipSequence;
   final Function(bool) setTutorialTransitioning;
 
   final bool enabledForward;
@@ -25,10 +30,11 @@ class TutorialOverlayWidget extends StatefulWidget {
 
   const TutorialOverlayWidget({
     required this.model,
+    required this.sequenceKind,
     required this.forward,
     required this.back,
     required this.reset,
-    required this.decline,
+    required this.skipSequence,
     required this.setTutorialTransitioning,
     required this.enabledForward,
     required this.enabledBack,
@@ -356,6 +362,18 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
               width: tooltipSize.width,
               height: tooltipSize.height,
               padding: _tooltipPadding,
+              sequenceKind: widget.sequenceKind,
+              // Every card carries Skip, for consistency — on a one-step
+              // sequence it amounts to finishing. Except an armed step (the
+              // overlay is under an IgnorePointer, so the button could never
+              // be tapped) and a branch (its decline choice IS the skip —
+              // two exits would compete).
+              onSkip:
+                  widget.sequenceKind != null &&
+                      !data.isArmed &&
+                      !step.style.isBranch
+                  ? widget.skipSequence
+                  : null,
               onNext: () => _next(step),
               onPrevious: _previous,
               showNext: showNavigation && widget.enabledForward,
@@ -367,7 +385,7 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
               wordBubble: data.wordBubble?.call(),
               onChoice: (outcome) => switch (outcome) {
                 TutorialChoiceOutcome.advance => _next(step),
-                TutorialChoiceOutcome.decline => widget.decline(),
+                TutorialChoiceOutcome.decline => widget.skipSequence(),
               },
             ),
           ),
