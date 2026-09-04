@@ -57,6 +57,33 @@ class _GatedWriteStore implements CallAudioUploadStateStore {
   Future<void> write(String txnId, Map<String, dynamic> state) => gate;
 }
 
+/// A store whose `read` blocks on [gate], so a test can land an action
+/// (like cancelling ownership) precisely inside the window between
+/// `finish()` starting and it discovering a persisted, already-uploaded
+/// record for THIS generation -- otherwise too narrow a window to reach
+/// with `pumpEventQueue()` alone, since nothing else suspends there.
+///
+/// [record] is mutable rather than a constructor argument: the record has
+/// to be keyed to this generation's own real id (minted timestamp-plus-
+/// random, never predictable -- see [CallAudioRecorder.currentGenerationId]'s
+/// own docs), which is only known AFTER `onRunStarted` runs, but the store
+/// itself has to exist before that, to be handed to the recorder's
+/// constructor.
+class _GatedReadStore implements CallAudioUploadStateStore {
+  _GatedReadStore(this.gate);
+  final Future<void> gate;
+  Map<String, dynamic>? record;
+
+  @override
+  Future<Map<String, dynamic>?> read(String txnId) async {
+    await gate;
+    return record;
+  }
+
+  @override
+  Future<void> write(String txnId, Map<String, dynamic> state) async {}
+}
+
 /// [n] frames of [samplesPerFrame] mono 16-bit samples, all equal to [value]
 /// -- a fixed tone (or, at value 0, digital silence) cheap to assert on.
 Int16List _tone(int samplesPerFrame, {int value = 1000}) =>
@@ -491,6 +518,131 @@ void main() {
         reason:
             'the orphan\'s actual url must be traceable here too, not '
             'just in the mid-upload case above',
+      );
+    });
+
+    test('a blob already on record when finish() starts is still named if '
+        'ownership is lost while it reads its own persisted state', () async {
+      // The retry loop's OWN top-of-loop check cannot be pinned this way
+      // from inside a single finish() run -- nothing separates one
+      // attempt's failure from the next attempt's top-of-loop check (no
+      // await sits between them for a test to land inside), so whatever
+      // `gen.canceled` was at the first is exactly what it still is at
+      // the second. But the SAME check also runs for attempt 0, and
+      // there IS a real await ahead of that: the persisted-state read
+      // finish() does before the loop ever starts. A record already
+      // sitting there from an earlier, interrupted attempt exercises the
+      // exact same line the loop's later attempts would.
+      final readGate = Completer<void>();
+      final store = _GatedReadStore(readGate.future);
+      final r = recorder(uploadStateStore: store);
+      r.onRunStarted(1000, 16000, 1);
+      r.onFrame(_tone(160));
+      r.onRunEnded();
+      store.record = {
+        'status': 'uploaded',
+        'mxc_url': 'mxc://example.com/orphan-e',
+        'generation_id': r.currentGenerationId,
+      };
+
+      final logsBefore = Logs().outputEvents.length;
+      final finishing = r.finish(carriedOn: true, callKey: _callKey);
+      await pumpEventQueue();
+
+      r.cancelOwnership();
+      readGate.complete();
+      await finishing;
+
+      expect(uploads, isEmpty, reason: 'the persisted url must be reused');
+      expect(sent, isEmpty);
+      final newLogs = Logs().outputEvents.skip(logsBefore);
+      expect(
+        newLogs.any((e) => e.title.contains('mxc://example.com/orphan-e')),
+        isTrue,
+        reason:
+            'the very first cancellation check inside the loop must name '
+            'the orphan too, not just the checks later in it',
+      );
+    });
+
+    test('a blob uploaded on an earlier, exhausted finish() call is named by a '
+        'later call\'s pre-loop check too', () async {
+      // A realistic sequel to a give-up, not a contrived one:
+      // `CallRecord.finish()` -- see `_finishing`'s own docs -- can
+      // legitimately call [finish] twice for the same call ("a hangup
+      // and a disconnect routinely arrive together"). If the FIRST call
+      // uploads successfully but exhausts every delivery attempt on the
+      // SEND (a real failure, not cancellation) and gives up, the url it
+      // left on `gen` sits there for whichever call notices ownership is
+      // gone next -- including a SECOND call that never reaches the
+      // retry loop at all, because the check outside the loop catches it
+      // first.
+      uploadResult = (_) => Uri.parse('mxc://example.com/orphan-g');
+      sendFailuresLeft = 3; // exhausts all 3 default delivery attempts
+      final r = recorder(retryDelay: Duration.zero);
+      r.onRunStarted(1000, 16000, 1);
+      r.onFrame(_tone(160));
+      r.onRunEnded();
+
+      await r.finish(carriedOn: true, callKey: _callKey);
+      expect(uploads, hasLength(1), reason: 'the first call uploaded once');
+      expect(sent, isEmpty, reason: 'every send attempt failed');
+
+      r.cancelOwnership();
+
+      final logsBefore = Logs().outputEvents.length;
+      await r.finish(carriedOn: true, callKey: _callKey);
+
+      expect(
+        uploads,
+        hasLength(1),
+        reason: 'the second call must not upload a second time',
+      );
+      final newLogs = Logs().outputEvents.skip(logsBefore);
+      expect(
+        newLogs.any((e) => e.title.contains('mxc://example.com/orphan-g')),
+        isTrue,
+        reason:
+            'the pre-loop check a second finish() call hits must also '
+            'name the orphan, not just say the generation was superseded',
+      );
+    });
+
+    test('a blob uploaded before a retry backoff is named if ownership is '
+        'lost during that wait', () async {
+      // The mirror image of "cancellation during the retry backoff stops
+      // a needless second upload" above: THERE, attempt 0's upload
+      // itself fails, so gen.uploadedUrl is still null going into the
+      // backoff. HERE, attempt 0's upload succeeds and its SEND fails
+      // instead (a real error, not cancellation), so by the time attempt
+      // 1's backoff begins there is a real blob on record for the
+      // post-backoff check to name if ownership is lost during the wait.
+      sendFailuresLeft = 1;
+      uploadResult = (_) => Uri.parse('mxc://example.com/orphan-f');
+      final r = recorder(retryDelay: const Duration(milliseconds: 200));
+      r.onRunStarted(1000, 16000, 1);
+      r.onFrame(_tone(160));
+      r.onRunEnded();
+
+      final logsBefore = Logs().outputEvents.length;
+      final finishing = r.finish(carriedOn: true, callKey: _callKey);
+      // Real time, deliberately (mirrors the existing backoff test
+      // above): attempt 0 has uploaded, its send has failed once, and
+      // attempt 1 is now inside its 200ms backoff.
+      await Future.delayed(const Duration(milliseconds: 50));
+      expect(uploads, hasLength(1), reason: 'attempt 0 already uploaded');
+
+      r.cancelOwnership();
+      await finishing;
+
+      expect(sent, isEmpty);
+      final newLogs = Logs().outputEvents.skip(logsBefore);
+      expect(
+        newLogs.any((e) => e.title.contains('mxc://example.com/orphan-f')),
+        isTrue,
+        reason:
+            'the post-backoff check must name the orphan uploaded on the '
+            'earlier attempt, not just say "abandoned"',
       );
     });
   });

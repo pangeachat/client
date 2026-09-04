@@ -545,6 +545,37 @@ class CallAudioRecorder implements CallAudioRecordingSink {
     ).whenComplete(() => _finishing = null);
   }
 
+  /// The one place every "this attempt is giving up" log in [_finish] goes
+  /// through -- the rule being enforced is that NONE of them may report an
+  /// abandonment generically once a blob has actually landed, because past
+  /// that point a generic message is the one thing standing between this
+  /// orphan and being traceable at all (see the class docs' own
+  /// orphan-blob bullet). Four straight gate rounds each found a new site
+  /// making that same mistake in a different corner of [_finish]; routing
+  /// every site through here is what ends the recurrence, rather than
+  /// leaving it as a check every future site has to remember to repeat.
+  ///
+  /// [gen]'s own [_AudioGeneration.uploadedUrl] is the source of truth for
+  /// every site except one: the upload-future observer in [_finish] can
+  /// fire AFTER cancellation already won the race that would have set it,
+  /// so that one site passes [uploadedUrl] explicitly rather than relying
+  /// on a field that is not yet reliable there.
+  static void _logAbandonment(
+    _AudioGeneration gen, {
+    required String reason,
+    Uri? uploadedUrl,
+  }) {
+    final uploaded = uploadedUrl ?? gen.uploadedUrl;
+    if (uploaded != null) {
+      Logs().w(
+        'Call audio half abandoned: $reason; the already-uploaded blob at '
+        '$uploaded is now an orphan no event will ever reference',
+      );
+    } else {
+      Logs().i('Call audio half abandoned: $reason');
+    }
+  }
+
   Future<void> _finish({
     required bool carriedOn,
     required String? callKey,
@@ -570,9 +601,19 @@ class CallAudioRecorder implements CallAudioRecordingSink {
       return;
     }
     if (gen.canceled) {
-      Logs().i(
-        'No call audio half sent: the recording generation was superseded '
-        'before it could be sent',
+      // The one abandonment check outside the retry loop entirely -- and
+      // reachable with [_AudioGeneration.uploadedUrl] already set the same
+      // way the loop's own checks are: `CallRecord.finish()` -- see
+      // [_finishing]'s own docs -- can legitimately call [finish] twice for
+      // the same call, and a first call that uploaded successfully but then
+      // exhausted every delivery attempt on the SEND leaves that url on
+      // [gen] for whichever call notices ownership is gone next, even a
+      // later one that never reaches the loop below at all.
+      _logAbandonment(
+        gen,
+        reason:
+            'the recording generation was superseded before it could be '
+            'sent',
       );
       return;
     }
@@ -660,9 +701,9 @@ class CallAudioRecorder implements CallAudioRecordingSink {
       StackTrace? lastStack;
       for (var attempt = 0; attempt < deliveryAttempts; attempt++) {
         if (gen.canceled) {
-          Logs().i(
-            'Call audio half abandoned: ownership was lost while it was '
-            'being sent',
+          _logAbandonment(
+            gen,
+            reason: 'ownership was lost while it was being sent',
           );
           return;
         }
@@ -677,9 +718,10 @@ class CallAudioRecorder implements CallAudioRecordingSink {
         // ever got a chance to notice a cancellation that had already
         // happened.
         if (gen.canceled) {
-          Logs().i(
-            'Call audio half abandoned: ownership was lost while this '
-            'attempt was waiting to retry',
+          _logAbandonment(
+            gen,
+            reason:
+                'ownership was lost while this attempt was waiting to retry',
           );
           return;
         }
@@ -719,13 +761,23 @@ class CallAudioRecorder implements CallAudioRecordingSink {
             // becoming an untraceable orphan -- the one piece of "no
             // silent failures" available here, since nothing on this
             // client can stop the bytes from actually arriving.
+            //
+            // The url is passed to [_logAbandonment] explicitly rather than
+            // left to its own [_AudioGeneration.uploadedUrl] read: when
+            // cancellation wins the race below BEFORE this upload resolves,
+            // [_finish] leaves that field unset and returns through the
+            // catch further down -- so by the time this callback finally
+            // runs, `landedUrl` is the only record left of where the bytes
+            // went.
             unawaited(
               uploadFuture.then((landedUrl) {
                 if (cancelSignal.isCompleted) {
-                  Logs().w(
-                    'A call-audio blob landed at $landedUrl after this '
-                    'device lost ownership; it is an orphan no event will '
-                    'ever reference',
+                  _logAbandonment(
+                    gen,
+                    reason:
+                        'the upload finished after ownership was already '
+                        'lost',
+                    uploadedUrl: landedUrl,
                   );
                 }
               }, onError: (Object _, StackTrace _) {}),
@@ -767,21 +819,14 @@ class CallAudioRecorder implements CallAudioRecordingSink {
 
           // Checked AGAIN, immediately before the send: the step above was
           // the one genuinely slow one, and ownership can have moved on
-          // while it ran.
-          //
-          // This is the OTHER half of the orphan-blob trace the class docs
-          // promise (the upload-future observer above covers the case
-          // where the upload lands AFTER this flag is already set; this is
-          // the case where it lands BEFORE, and cancellation is only
-          // noticed here) -- so the landed url is named explicitly, not
-          // folded into a generic "abandoned" message a later cleanup pass
-          // could not act on.
+          // while it ran. [_AudioGeneration.uploadedUrl] is always set by
+          // this point -- either just above, or reused from an earlier
+          // attempt -- so [_logAbandonment] always takes its orphan branch
+          // here; this is the timing where the upload lands BEFORE
+          // cancellation is noticed (the observer above covers it landing
+          // AFTER).
           if (gen.canceled) {
-            Logs().w(
-              'Call audio half abandoned before it could be sent; the '
-              'already-uploaded blob at $url is now an orphan no event '
-              'will ever reference',
-            );
+            _logAbandonment(gen, reason: 'before it could be sent');
             return;
           }
 
@@ -846,33 +891,19 @@ class CallAudioRecorder implements CallAudioRecordingSink {
           }
           return;
         } on _AudioRecordingCanceled {
-          // Fires for cancellation winning EITHER race above -- the upload's
-          // or the send's -- and those two cases are not equally quiet: the
-          // send race is only ever entered once `gen.uploadedUrl` is set (the
-          // block that runs the upload race is skipped outright whenever a
-          // url is already there, whether from earlier in this attempt or
-          // reused from a previous one), so a non-null `gen.uploadedUrl`
-          // here can only mean the upload had already landed when
-          // cancellation won -- the third and last timing of the same
-          // orphan this class already names at the other two (the
-          // upload-future observer above, and the "checked again
-          // immediately before send" guard just above this try block). Named
-          // for the same reason those are: a generic "abandoned" message
-          // here would leave this timing's orphan the one this class's own
-          // docs promise never happens silently.
-          final uploaded = gen.uploadedUrl;
-          if (uploaded != null) {
-            Logs().w(
-              'Call audio upload abandoned: ownership was lost while it was '
-              'in flight; the already-uploaded blob at $uploaded is now an '
-              'orphan no event will ever reference',
-            );
-          } else {
-            Logs().i(
-              'Call audio upload abandoned: ownership was lost while it was '
-              'in flight',
-            );
-          }
+          // Fires for cancellation winning EITHER race above -- the
+          // upload's or the send's. [_logAbandonment] is what tells those
+          // apart: the send race is only ever entered once
+          // [_AudioGeneration.uploadedUrl] is set (the block that runs the
+          // upload race is skipped outright whenever a url is already
+          // there), so a non-null read there can only mean the upload had
+          // already landed when cancellation won the SEND race instead --
+          // the last of the timings this file's own gate history found one
+          // at a time, now covered structurally rather than case by case.
+          _logAbandonment(
+            gen,
+            reason: 'ownership was lost while it was in flight',
+          );
           return;
         } catch (e, s) {
           lastError = e;
