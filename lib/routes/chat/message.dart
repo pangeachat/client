@@ -422,6 +422,10 @@ class Message extends StatelessWidget {
                   builder: (context, setState) {
                     if (animateIn && resetAnimateIn != null) {
                       WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+                        // The row can be gone before the frame ends (chat
+                        // closed, timeline rebuilt around it); setState on the
+                        // disposed element throws (CLIENT-EGD, #8802).
+                        if (!context.mounted) return;
                         animateIn = false;
                         setState(resetAnimateIn);
                       });
