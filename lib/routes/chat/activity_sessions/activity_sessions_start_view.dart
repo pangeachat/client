@@ -342,6 +342,8 @@ class ActivitySessionStartView extends StatelessWidget {
                                   padding: const EdgeInsets.all(12.0),
                                   child: ActivitySessionBottomContent(
                                     sessionController,
+                                    openSessionsTargetId:
+                                        controller.openSessionsTargetId,
                                   ),
                                 ),
                               ],

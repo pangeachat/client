@@ -180,6 +180,9 @@ class _ActivityStartHeroState extends State<ActivityStartHero> {
                         isShimmering: _session.isRoleShimmering,
                         showStarsCard: _session.showStarsCard,
                         completedGoalsForRole: _session.completedGoalIdsForRole,
+                        tutorialTargetId: _controller.activityRolesTargetId,
+                        onTutorialTargetMounted:
+                            _controller.onTutorialSurfaceChanged,
                       ),
                     ),
                   ),

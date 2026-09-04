@@ -39,6 +39,16 @@ class TutorialSequences {
     TutorialEnum.selectModeButtons,
     TutorialEnum.writingAssistance,
   ];
+
+  /// The open-sessions list, the first time the learner is looking at one.
+  static TutorialSequence get openSessionsSequence => [
+    TutorialEnum.openSessions,
+  ];
+
+  /// The role-card grid, the first time the learner is picking a role.
+  static TutorialSequence get activityRolesSequence => [
+    TutorialEnum.activityRoles,
+  ];
 }
 
 /// Sequence-level presentation: the display title under the card's progress
@@ -51,7 +61,9 @@ enum TutorialSequenceKind {
   courseOrientation,
   appTour,
   activityGoals,
-  chat;
+  chat,
+  openSessions,
+  activityRoles;
 
   String title(L10n l10n) => switch (this) {
     TutorialSequenceKind.worldOrientation =>
@@ -62,6 +74,9 @@ enum TutorialSequenceKind {
     TutorialSequenceKind.activityGoals =>
       l10n.tutorialSequenceTitleActivityGoals,
     TutorialSequenceKind.chat => l10n.tutorialSequenceTitleChat,
+    TutorialSequenceKind.openSessions => l10n.tutorialSequenceTitleOpenSessions,
+    TutorialSequenceKind.activityRoles =>
+      l10n.tutorialSequenceTitleActivityRoles,
   };
 
   TutorialSequence get sequence => switch (this) {
@@ -73,6 +88,9 @@ enum TutorialSequenceKind {
     TutorialSequenceKind.activityGoals =>
       TutorialSequences.activityGoalsSequence,
     TutorialSequenceKind.chat => TutorialSequences.chatTutorialSequence,
+    TutorialSequenceKind.openSessions => TutorialSequences.openSessionsSequence,
+    TutorialSequenceKind.activityRoles =>
+      TutorialSequences.activityRolesSequence,
   };
 
   /// The kind of [sequence], matched by content against the catalog — the

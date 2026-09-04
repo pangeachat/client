@@ -161,6 +161,31 @@ class TutorialStepTemplates {
     ),
   ];
 
+  /// One step: the open-sessions list on the start page's Join subpage — what
+  /// a live session is, and that the humans in it may not answer right away.
+  static final List<TutorialStepTemplate> openSessions = [
+    TutorialStepTemplate(
+      tooltip: (l10n, _) => l10n.tutorialOpenSessions,
+      // Taller than standard: the copy runs long, and a card that scrolls its
+      // own sentence reads as broken.
+      tooltipSize: const Size(300, 190),
+      borderRadius: AppConfig.borderRadius,
+      padding: 4.0,
+    ),
+  ];
+
+  /// One step: the role-card grid the first time the learner is picking a
+  /// role — what a role is, and that they choose who to act as.
+  static final List<TutorialStepTemplate> activityRoles = [
+    TutorialStepTemplate(
+      tooltip: (l10n, _) => l10n.tutorialActivityRoles,
+      // Same long-copy sizing as [openSessions].
+      tooltipSize: const Size(300, 190),
+      borderRadius: AppConfig.borderRadius,
+      padding: 4.0,
+    ),
+  ];
+
   static final List<TutorialStepTemplate> selectModeButtons = [
     TutorialStepTemplate(
       tooltip: (l10n, _) => l10n.readingAssistanceTutorialCollectToken,

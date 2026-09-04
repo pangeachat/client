@@ -6,6 +6,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
+import 'package:fluffychat/features/tutorials/tutorial_target.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
@@ -28,6 +29,15 @@ class ActivityParticipantList extends StatelessWidget {
   final bool Function(String)? showStarsCard;
   final Set<String> Function(String)? completedGoalsForRole;
 
+  /// Tutorial target id for the role grid, or null when this mount isn't the
+  /// claimant — the activity summary renders this same list and never claims
+  /// it ([TutorialTarget]).
+  final String? tutorialTargetId;
+
+  /// See [TutorialTarget.onMounted]; forwarded so the grid arriving late (the
+  /// mobile sheet expanding) re-asks the tutorial trigger.
+  final VoidCallback? onTutorialTargetMounted;
+
   const ActivityParticipantList({
     super.key,
     required this.activity,
@@ -41,6 +51,8 @@ class ActivityParticipantList extends StatelessWidget {
     this.getOpacity,
     this.showStarsCard,
     this.completedGoalsForRole,
+    this.tutorialTargetId,
+    this.onTutorialTargetMounted,
   });
 
   @override
@@ -59,151 +71,159 @@ class ActivityParticipantList extends StatelessWidget {
               p.id != BotName.byEnvironment,
         );
 
-        return Column(
-          spacing: 12.0,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            LayoutBuilder(
-              builder: (context, constraints) {
-                const minItemWidth = 125.0;
+        return TutorialTarget(
+          targetId: tutorialTargetId,
+          onMounted: onTutorialTargetMounted,
+          child: Column(
+            spacing: 12.0,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              LayoutBuilder(
+                builder: (context, constraints) {
+                  const minItemWidth = 125.0;
 
-                // A roleless plan is a content bug (logged loudly upstream in
-                // activity_v2_mapper). Guard the layout math so it degrades to
-                // an empty grid instead of crashing the whole canvas: with no
-                // roles, rows == 0 and `length / rows` is 0/0 == NaN, and
-                // NaN.ceil() throws "Unsupported operation: NaN".
-                final rows = availableRoles.isEmpty
-                    ? 0
-                    : (availableRoles.length /
-                              (constraints.maxWidth / minItemWidth))
-                          .ceil();
+                  // A roleless plan is a content bug (logged loudly upstream in
+                  // activity_v2_mapper). Guard the layout math so it degrades to
+                  // an empty grid instead of crashing the whole canvas: with no
+                  // roles, rows == 0 and `length / rows` is 0/0 == NaN, and
+                  // NaN.ceil() throws "Unsupported operation: NaN".
+                  final rows = availableRoles.isEmpty
+                      ? 0
+                      : (availableRoles.length /
+                                (constraints.maxWidth / minItemWidth))
+                            .ceil();
 
-                final entriesPerRow = rows == 0
-                    ? 0
-                    : (availableRoles.length / rows).ceil();
+                  final entriesPerRow = rows == 0
+                      ? 0
+                      : (availableRoles.length / rows).ceil();
 
-                return Column(
-                  spacing: 8.0,
-                  children: List.generate(rows, (rowIndex) {
-                    final entries = availableRoles
-                        .skip(rowIndex * entriesPerRow)
-                        .take(entriesPerRow)
-                        .toList();
+                  return Column(
+                    spacing: 8.0,
+                    children: List.generate(rows, (rowIndex) {
+                      final entries = availableRoles
+                          .skip(rowIndex * entriesPerRow)
+                          .take(entriesPerRow)
+                          .toList();
 
-                    return Row(
-                      spacing: 8.0,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: entries.map((availableRole) {
-                        final selected = isSelected != null
-                            ? isSelected!(availableRole.id)
-                            : false;
+                      return Row(
+                        spacing: 8.0,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: entries.map((availableRole) {
+                          final selected = isSelected != null
+                              ? isSelected!(availableRole.id)
+                              : false;
 
-                        final assignedRole =
-                            assignedRoles[availableRole.id] ??
-                            (selected
-                                ? ActivityRoleModel(
-                                    id: availableRole.id,
-                                    userId: Matrix.of(context).client.userID!,
-                                    role: availableRole.name,
-                                  )
-                                : null);
+                          final assignedRole =
+                              assignedRoles[availableRole.id] ??
+                              (selected
+                                  ? ActivityRoleModel(
+                                      id: availableRole.id,
+                                      userId: Matrix.of(context).client.userID!,
+                                      role: availableRole.name,
+                                    )
+                                  : null);
 
-                        final User? user =
-                            participants.participants.firstWhereOrNull(
-                              (u) => u.id == assignedRole?.userId,
-                            ) ??
-                            course?.getParticipants().firstWhereOrNull(
-                              (u) => u.id == assignedRole?.userId,
-                            );
+                          final User? user =
+                              participants.participants.firstWhereOrNull(
+                                (u) => u.id == assignedRole?.userId,
+                              ) ??
+                              course?.getParticipants().firstWhereOrNull(
+                                (u) => u.id == assignedRole?.userId,
+                              );
 
-                        final selectable = canSelect != null
-                            ? canSelect!(availableRole.id)
-                            : true;
+                          final selectable = canSelect != null
+                              ? canSelect!(availableRole.id)
+                              : true;
 
-                        final shimmering = isShimmering != null
-                            ? isShimmering!(availableRole.id)
-                            : false;
+                          final shimmering = isShimmering != null
+                              ? isShimmering!(availableRole.id)
+                              : false;
 
-                        final starsMode =
-                            showStarsCard != null &&
-                            showStarsCard!(availableRole.id);
+                          final starsMode =
+                              showStarsCard != null &&
+                              showStarsCard!(availableRole.id);
 
-                        return Expanded(
-                          child: ActivityParticipantIndicator(
-                            name: availableRole.name,
-                            userId: assignedRole?.userId,
-                            opacity: getOpacity != null
-                                ? getOpacity!(assignedRole)
-                                : 1.0,
-                            user: user,
-                            onTap: onTap != null && selectable
-                                ? () => onTap!(availableRole.id)
-                                : null,
-                            selected: selected,
-                            selectable: selectable,
-                            shimmer: shimmering,
-                            room: room,
-                            goals: starsMode ? availableRole.allGoals : null,
-                            completedGoalIds: starsMode
-                                ? completedGoalsForRole?.call(availableRole.id)
-                                : null,
-                          ),
-                        );
-                      }).toList(),
-                    );
-                  }),
-                );
-              },
-            ),
-            Wrap(
-              alignment: WrapAlignment.center,
-              spacing: 12.0,
-              runSpacing: 12.0,
-              children: remainingMembers.map((member) {
-                return InkWell(
-                  onTap: () => showMemberActionsPopupMenu(
-                    context: context,
-                    user: member,
-                    room: room,
-                  ),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: theme.colorScheme.primaryContainer,
-                      borderRadius: BorderRadius.circular(18.0),
-                    ),
-                    padding: const EdgeInsets.all(4.0),
-                    child: Opacity(
-                      opacity: 0.5,
-                      child: Row(
-                        spacing: 4.0,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Avatar(
-                            size: 18.0,
-                            mxContent: member.avatarUrl,
-                            name: member.localizedDisplayname(L10n.of(context)),
-                            userId: member.id,
-                          ),
-                          ConstrainedBox(
-                            constraints: const BoxConstraints(maxWidth: 80.0),
-                            child: Text(
-                              member.localizedDisplayname(L10n.of(context)),
-                              style: TextStyle(
-                                fontSize: 12.0,
-                                color: theme.colorScheme.onPrimaryContainer,
-                              ),
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 1,
+                          return Expanded(
+                            child: ActivityParticipantIndicator(
+                              name: availableRole.name,
+                              userId: assignedRole?.userId,
+                              opacity: getOpacity != null
+                                  ? getOpacity!(assignedRole)
+                                  : 1.0,
+                              user: user,
+                              onTap: onTap != null && selectable
+                                  ? () => onTap!(availableRole.id)
+                                  : null,
+                              selected: selected,
+                              selectable: selectable,
+                              shimmer: shimmering,
+                              room: room,
+                              goals: starsMode ? availableRole.allGoals : null,
+                              completedGoalIds: starsMode
+                                  ? completedGoalsForRole?.call(
+                                      availableRole.id,
+                                    )
+                                  : null,
                             ),
-                          ),
-                        ],
+                          );
+                        }).toList(),
+                      );
+                    }),
+                  );
+                },
+              ),
+              Wrap(
+                alignment: WrapAlignment.center,
+                spacing: 12.0,
+                runSpacing: 12.0,
+                children: remainingMembers.map((member) {
+                  return InkWell(
+                    onTap: () => showMemberActionsPopupMenu(
+                      context: context,
+                      user: member,
+                      room: room,
+                    ),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: theme.colorScheme.primaryContainer,
+                        borderRadius: BorderRadius.circular(18.0),
+                      ),
+                      padding: const EdgeInsets.all(4.0),
+                      child: Opacity(
+                        opacity: 0.5,
+                        child: Row(
+                          spacing: 4.0,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Avatar(
+                              size: 18.0,
+                              mxContent: member.avatarUrl,
+                              name: member.localizedDisplayname(
+                                L10n.of(context),
+                              ),
+                              userId: member.id,
+                            ),
+                            ConstrainedBox(
+                              constraints: const BoxConstraints(maxWidth: 80.0),
+                              child: Text(
+                                member.localizedDisplayname(L10n.of(context)),
+                                style: TextStyle(
+                                  fontSize: 12.0,
+                                  color: theme.colorScheme.onPrimaryContainer,
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 1,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                );
-              }).toList(),
-            ),
-          ],
+                  );
+                }).toList(),
+              ),
+            ],
+          ),
         );
       },
     );

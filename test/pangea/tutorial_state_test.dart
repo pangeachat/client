@@ -744,6 +744,18 @@ void main() {
       expect(c.activeSequenceKind, TutorialSequenceKind.chat);
     });
 
+    test('the start-page tutorials are one-step orientation tutorials — '
+        'they teach the app on a free surface, so the subscription gate '
+        'must not apply', () {
+      for (final tutorial in [
+        TutorialEnum.openSessions,
+        TutorialEnum.activityRoles,
+      ]) {
+        expect(tutorial.isOrientation, isTrue, reason: '$tutorial');
+        expect(tutorial.stepCount, 1, reason: '$tutorial');
+      }
+    });
+
     test('activeSequenceKind survives the seen-filter dropping a tutorial — '
         'identity is the REQUESTED sequence, not the filtered one', () {
       final c = TutorialOverlayController(

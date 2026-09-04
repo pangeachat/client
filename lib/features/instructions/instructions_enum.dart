@@ -41,6 +41,8 @@ enum InstructionsEnum {
   activityGoalsTutorial,
   coursePlanTutorial,
   appTourTutorial,
+  openSessionsTutorial,
+  activityRolesTutorial,
 }
 
 extension InstructionsEnumExtension on InstructionsEnum {
@@ -80,6 +82,8 @@ extension InstructionsEnumExtension on InstructionsEnum {
       case InstructionsEnum.activityGoalsTutorial:
       case InstructionsEnum.coursePlanTutorial:
       case InstructionsEnum.appTourTutorial:
+      case InstructionsEnum.openSessionsTutorial:
+      case InstructionsEnum.activityRolesTutorial:
         ErrorHandler.logError(
           e: Exception("No title for this instruction"),
           data: {'this': this},
@@ -141,6 +145,8 @@ extension InstructionsEnumExtension on InstructionsEnum {
       case InstructionsEnum.activityGoalsTutorial:
       case InstructionsEnum.coursePlanTutorial:
       case InstructionsEnum.appTourTutorial:
+      case InstructionsEnum.openSessionsTutorial:
+      case InstructionsEnum.activityRolesTutorial:
         return "";
       case InstructionsEnum.disableLanguageTools:
         return l10n.disableLanguageToolsDesc;

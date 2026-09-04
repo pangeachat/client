@@ -87,9 +87,17 @@ class NotStartedSessionController extends State<NotStartedSession>
 
   NotStartedSubPage get subPage => _subPage;
 
-  void goToJoinPage() => setState(() => _subPage = NotStartedSubPage.join);
-  void goToViewPage() => setState(() => _subPage = NotStartedSubPage.view);
-  void goToMainPage() => setState(() => _subPage = NotStartedSubPage.main);
+  // The sub-page change is reported to the start state because the join list
+  // mounting is a tutorial trigger it can't otherwise see
+  // (ActivitySessionStartState.onTutorialSurfaceChanged).
+  void goToJoinPage() => _setSubPage(NotStartedSubPage.join);
+  void goToViewPage() => _setSubPage(NotStartedSubPage.view);
+  void goToMainPage() => _setSubPage(NotStartedSubPage.main);
+
+  void _setSubPage(NotStartedSubPage subPage) {
+    setState(() => _subPage = subPage);
+    widget.controller.onTutorialSurfaceChanged();
+  }
 
   String? get joinedActivityRoomId =>
       widget.course?.activeActivityRoomId(widget.activityId);

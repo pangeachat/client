@@ -7,6 +7,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/room_summaries/activity_summary_status_enum.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
+import 'package:fluffychat/features/tutorials/tutorial_target.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/user_profile_builder.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_controller.dart';
@@ -15,14 +16,26 @@ import 'package:fluffychat/routes/chat/activity_sessions/not_started_session_con
 
 class ActivitySessionBottomContent extends StatelessWidget {
   final ActivitySessionStateController controller;
-  const ActivitySessionBottomContent(this.controller, {super.key});
+
+  /// Tutorial target id for the open-sessions list, or null when this mount
+  /// isn't the claimant ([TutorialTarget] — one claimant per id).
+  final String? openSessionsTargetId;
+
+  const ActivitySessionBottomContent(
+    this.controller, {
+    super.key,
+    this.openSessionsTargetId,
+  });
 
   @override
   Widget build(BuildContext context) {
     final controller = this.controller;
 
     if (controller is NotStartedSessionController) {
-      return _NotStartedSessionBottomContent(controller);
+      return _NotStartedSessionBottomContent(
+        controller,
+        openSessionsTargetId: openSessionsTargetId,
+      );
     }
 
     return SizedBox();
@@ -31,7 +44,12 @@ class ActivitySessionBottomContent extends StatelessWidget {
 
 class _NotStartedSessionBottomContent extends StatelessWidget {
   final NotStartedSessionController controller;
-  const _NotStartedSessionBottomContent(this.controller);
+  final String? openSessionsTargetId;
+
+  const _NotStartedSessionBottomContent(
+    this.controller, {
+    required this.openSessionsTargetId,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -64,11 +82,23 @@ class _NotStartedSessionBottomContent extends StatelessWidget {
 
             if (roomSummaries.isEmpty) return const SizedBox.shrink();
 
-            return _ActivitySummaryStatusSection(
+            final section = _ActivitySummaryStatusSection(
               status: status,
               roomSummaries: roomSummaries,
               pingedRoomId: pingedRoomId,
               onTap: controller.joinActivityByRoomId,
+            );
+
+            // Only the joinable (notStarted) section is a tutorial target, and
+            // only when it has tiles — the target existing at all is what tells
+            // the trigger the join list is showing with content. Its mount is
+            // reported upward: on mobile it happens only after the sheet's
+            // expand animation, past every other re-ask signal.
+            if (status != ActivitySummaryStatus.notStarted) return section;
+            return TutorialTarget(
+              targetId: openSessionsTargetId,
+              onMounted: controller.widget.controller.onTutorialSurfaceChanged,
+              child: section,
             );
           }),
         ],
