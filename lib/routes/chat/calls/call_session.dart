@@ -490,7 +490,16 @@ class CallSession extends ChangeNotifier {
 
   /// The caller-side tones. Separate from the banner's ringtone: that one
   /// belongs to whoever is being called, this one to whoever is calling.
-  late final RingPlayer _tones = tonesOverride ?? RingPlayer();
+  late final RingPlayer _tones =
+      tonesOverride ?? RingPlayer(sound: AssetRingSound.ringback());
+
+  /// The key the caller's ringback (#8807) rings under -- one per call, so a
+  /// stop for this call cannot silence a later one's ring.
+  String get _ringbackKey => 'ringback:${room.id}';
+
+  /// Whether the ringback is currently looping. The tone player is touched only
+  /// when this changes, so a call that never rings out never builds one.
+  bool _ringingBack = false;
 
   bool _busyToned = false;
 
@@ -665,6 +674,22 @@ class CallSession extends ChangeNotifier {
     // before the stage catches up — this is what makes hanging up feel
     // immediate on both sides.
     final outcome = call.outcome;
+    // The caller's own ringback (#8807): ring while THIS device is placing the
+    // call and no one has answered, and stop the instant that stops holding --
+    // the peer arrives, the call is declined, or it ends. Touched only on the
+    // TRANSITION, so a call that never rings out (an answer, a rejoin, where
+    // `placedCall` is false) never builds a tone player at all. Keyed on the
+    // call so a stale stop cannot silence a later ring. Ordered before the busy
+    // tone below, which stops it and speaks over it when the line was engaged.
+    final ringingOut = call.placedCall && !call.hadPeer && outcome == null;
+    if (ringingOut != _ringingBack) {
+      _ringingBack = ringingOut;
+      if (ringingOut) {
+        _tones.play(_ringbackKey);
+      } else {
+        _tones.stop(_ringbackKey);
+      }
+    }
     if (outcome == CallOutcome.declined && call.peerWasBusy && !_busyToned) {
       // Once, and only for a line that was busy: the engaged tone is the
       // half of "they are on another call" that reaches someone who is not
@@ -1185,6 +1210,11 @@ class CallSession extends ChangeNotifier {
     if (_disposing) return;
     _disposing = true;
     call.removeListener(_onCallChanged);
+    // Stop the ringback explicitly IF it is playing: the listener above is
+    // already detached, so a call disposed mid-ring would otherwise never see
+    // the stop. Guarded on `_ringingBack` so a call that never rang does not
+    // build a tone player just to tear one down.
+    if (_ringingBack) _tones.stopAll();
     call.clearForegroundActions();
     _tick?.cancel();
     // A summary still holding its 3s when the holder discards the session --

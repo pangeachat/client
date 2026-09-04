@@ -27,14 +27,56 @@ class AssetRingSound implements RingSound {
   final AudioPlayer _player = AudioPlayer();
   bool _configured = false;
 
+  /// Bumped by every [stop] and every fresh [start], so a [start] that was
+  /// superseded WHILE it awaited [_configure] does not go on to play a loop
+  /// nobody wants any more -- the stuck-tone race a stop landing inside that
+  /// await opens, on the ringback (#8807) and the incoming ring alike.
+  int _generation = 0;
+
+  /// Test seam: replaces the platform configure so a test can hold [start]
+  /// inside its await and land a [stop] in the gap.
+  @visibleForTesting
+  Future<void> Function()? configureForTest;
+
+  /// Test seam: set the moment a [start] commits to playing, so a test can
+  /// prove a superseded start never reaches it.
+  @visibleForTesting
+  bool reachedPlayForTest = false;
+
+  /// The looped asset. `phone.ogg` is the incoming ring; a caller's outgoing
+  /// ringback loops `call.ogg`.
+  final String _loopAsset;
+
+  /// The Android usage the LOOP plays under. An incoming ring is a
+  /// notification-ringtone, so silent mode and Do Not Disturb are the OS's
+  /// decision. A caller's own ringback is their call's feedback, not a
+  /// ringtone, so it plays under the call-signalling usage -- heard even when
+  /// ringtones are silenced, the same way the call's voice is.
+  final AndroidUsageType _loopUsage;
+
+  AssetRingSound({
+    String loopAsset = 'sounds/phone.ogg',
+    AndroidUsageType loopUsage = AndroidUsageType.notificationRingtone,
+  }) : _loopAsset = loopAsset,
+       _loopUsage = loopUsage;
+
+  /// The caller's outgoing ringback: `call.ogg`, looped, under the
+  /// call-signalling usage so the caller hears their own call ring out even
+  /// with ringtones silenced.
+  AssetRingSound.ringback()
+    : this(
+        loopAsset: 'sounds/call.ogg',
+        loopUsage: AndroidUsageType.voiceCommunicationSignalling,
+      );
+
   Future<void> _configure() async {
     if (_configured) return;
     _configured = true;
     await _player.setReleaseMode(ReleaseMode.loop);
     await _player.setAudioContext(
       AudioContext(
-        android: const AudioContextAndroid(
-          usageType: AndroidUsageType.notificationRingtone,
+        android: AudioContextAndroid(
+          usageType: _loopUsage,
           contentType: AndroidContentType.sonification,
           audioFocus: AndroidAudioFocus.gainTransient,
         ),
@@ -45,9 +87,15 @@ class AssetRingSound implements RingSound {
 
   @override
   Future<void> start() async {
+    final generation = ++_generation;
     try {
-      await _configure();
-      await _player.play(AssetSource('sounds/phone.ogg'));
+      await (configureForTest ?? _configure)();
+      // A stop -- or a newer start -- that landed while we were configuring has
+      // moved the generation on; this start is stale and must NOT play a loop
+      // the caller no longer wants.
+      if (generation != _generation) return;
+      reachedPlayForTest = true;
+      await _player.play(AssetSource(_loopAsset));
     } catch (e) {
       // Autoplay refused (web without a gesture), or no audio device. The
       // ring is still VISIBLE; sound is the enhancement, not the mechanism.
@@ -57,6 +105,9 @@ class AssetRingSound implements RingSound {
 
   @override
   Future<void> stop() async {
+    // Supersede any start still inside its configure await, so it cannot play
+    // after this stop.
+    _generation++;
     try {
       await _player.stop();
     } catch (_) {}
@@ -87,8 +138,10 @@ class AssetRingSound implements RingSound {
 ///
 /// Keyed by the ring's event id so a stale stop -- a dismissal racing a
 /// redial's replacement -- can never silence the NEW call's ring: stop() only
-/// acts when the id it names is the one playing. There is deliberately no
-/// outgoing ringback; the ecosystem does not play one and neither does this.
+/// acts when the id it names is the one playing. A caller's outgoing ringback
+/// (issue #8807) uses this same keyed lifecycle -- keyed on the placing call
+/// rather than a ring event, through a [RingSound] built with
+/// [AssetRingSound.ringback] so it is the call's own signalling, not a ringtone.
 class RingPlayer {
   final RingSound _sound;
 

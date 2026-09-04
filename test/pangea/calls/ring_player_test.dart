@@ -1,4 +1,7 @@
+import 'dart:async';
 import 'dart:io';
+
+import 'package:flutter/services.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
@@ -15,6 +18,23 @@ class _FakeSound implements RingSound {
 }
 
 void main() {
+  TestWidgetsFlutterBinding.ensureInitialized();
+
+  // audioplayers has no platform here; stub both its global (`init`) and its
+  // per-player (`create`) method channels so the real AssetRingSound in the
+  // race tests below can be built without an unhandled MissingPluginException
+  // surfacing asynchronously into a later test.
+  for (final channel in const [
+    'xyz.luan/audioplayers.global',
+    'xyz.luan/audioplayers',
+  ]) {
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(
+          MethodChannel(channel),
+          (methodCall) async => null,
+        );
+  }
+
   test('plays for a ring and stops for the same ring', () async {
     final sound = _FakeSound();
     final p = RingPlayer(sound: sound);
@@ -75,6 +95,33 @@ void main() {
     await pumpEventQueue();
     expect(sound.log, ['start', 'stop', 'busy']);
     expect(p.playingForTest, isNull);
+  });
+
+  test('a start superseded by a stop while configuring never plays', () async {
+    // The stuck-tone race: a stop that lands while start() is still awaiting the
+    // platform configure must cancel the play, not let the loop fire after the
+    // caller has already been answered / hung up.
+    final configuring = Completer<void>();
+    final sound = AssetRingSound()..configureForTest = () => configuring.future;
+
+    final starting = sound.start();
+    await sound.stop();
+    configuring.complete();
+    await starting;
+
+    expect(
+      sound.reachedPlayForTest,
+      isFalse,
+      reason: 'a stop during configure cancels the start',
+    );
+  });
+
+  test('an unsuperseded start reaches the play', () async {
+    final sound = AssetRingSound()..configureForTest = () async {};
+
+    await sound.start();
+
+    expect(sound.reachedPlayForTest, isTrue);
   });
 
   test('the banner raises and drops a return offer in exactly two places', () {
