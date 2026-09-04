@@ -73,17 +73,17 @@ need_bin() {
   die "$name not found on PATH and not at $fallback. Install ffmpeg (e.g. 'brew install ffmpeg')."
 }
 
+# Canonical non-negative integer text only: digits, and no leading zero
+# unless the value is exactly "0" (so "0050" is rejected; "50" and "0" are
+# not). CLI numeral text (--clap-ms, --sample-rate) is never silently
+# base-10-coerced from something like "0050" -- it is rejected outright.
 is_uint() {
   case "$1" in
     ''|*[!0-9]*) return 1 ;;
+    0) return 0 ;;
+    0*) return 1 ;;
     *) return 0 ;;
   esac
-}
-
-# Truncates a JSON number (which may come through as e.g. "1000000" or
-# "1000000.0") to a plain integer bash arithmetic can operate on.
-to_ms_int() {
-  awk -v v="$1" 'BEGIN{printf "%d", v}'
 }
 
 # ---- argument parsing -------------------------------------------------
@@ -110,7 +110,7 @@ done
 [ -n "$MANIFEST" ] || die "--manifest is required (see --help)"
 [ -n "$OUT_DIR" ] || die "--out is required (see --help)"
 [ -f "$MANIFEST" ] || die "manifest not found: $MANIFEST"
-is_uint "$SAMPLE_RATE" || die "--sample-rate must be a positive integer, got: $SAMPLE_RATE"
+is_uint "$SAMPLE_RATE" || die "--sample-rate must be a positive integer with no leading zeros, got: $SAMPLE_RATE"
 
 FFMPEG_BIN="$(need_bin ffmpeg "$FFMPEG_OVERRIDE" /opt/homebrew/bin/ffmpeg)"
 FFPROBE_BIN="$(need_bin ffprobe "$FFPROBE_OVERRIDE" /opt/homebrew/bin/ffprobe)"
@@ -145,25 +145,73 @@ jstr() {
   if [ -z "$v" ]; then printf '%s' "$3"; else printf '%s' "$v"; fi
 }
 
-# jnum IDX FIELD -> numeric value (truncated to int), or empty if missing/null/non-number
-jnum() {
-  local v
-  v="$(jq -r ".[$1].$2 | select(type == \"number\")" "$MANIFEST" 2>/dev/null || true)"
-  if [ -z "$v" ]; then printf ''; else to_ms_int "$v"; fi
-}
-
 # jbool IDX FIELD -> "true" or "false"
 jbool() {
   jq -r ".[$1].$2 // false" "$MANIFEST" 2>/dev/null || printf 'false'
+}
+
+# jraw IDX FIELD -> the field's raw jq -r text, or empty if absent/null.
+# Pure: never dies. Safe to call inside $(...).
+jraw() {
+  jq -r ".[$1].$2 // empty" "$MANIFEST" 2>/dev/null || true
+}
+
+# jis IDX FIELD JQ_BOOL_EXPR -> "true" or "false". Pure: never dies. Safe
+# to call inside $(...). JQ_BOOL_EXPR is always a literal we write in this
+# file, never manifest/CLI content, so interpolating it into the jq
+# program is safe.
+jis() {
+  jq -r ".[$1].$2 | ($3)" "$MANIFEST" 2>/dev/null || printf 'false'
+}
+
+# check_ms_field IDX FIELD -- if the field is present AND is a JSON
+# number, requires it to be a non-negative integer (whole milliseconds);
+# dies with a specific message naming the half/field/value otherwise. A
+# field that is absent/null, or present but not a number at all, is left
+# alone -- that is the caller's missing-field / fallback-method concern,
+# not a validation error here.
+#
+# Must be called as a plain statement, e.g. `check_ms_field 0 foo`, NEVER
+# wrapped as `$(check_ms_field ...)`: command substitution forks a
+# subshell, and die()'s `exit` inside a subshell only kills the subshell
+# -- the bad value would silently come back as empty output instead of
+# stopping the script, which is exactly the silent-misalignment failure
+# mode this function exists to prevent.
+check_ms_field() {
+  local idx="$1" field="$2" lbl present is_num raw is_int is_neg
+  present="$(jis "$idx" "$field" '. != null')"
+  [ "$present" = "true" ] || return 0
+  is_num="$(jis "$idx" "$field" 'type == "number"')"
+  [ "$is_num" = "true" ] || return 0
+  eval "lbl=\$LABEL_$idx"
+  raw="$(jraw "$idx" "$field")"
+  is_int="$(jis "$idx" "$field" '(floor == .)')"
+  if [ "$is_int" != "true" ]; then
+    die "half '$lbl' field '$field' must be a whole number of milliseconds (no fractional part), got: $raw"
+  fi
+  is_neg="$(jis "$idx" "$field" '. < 0')"
+  if [ "$is_neg" = "true" ]; then
+    die "half '$lbl' field '$field' must be a non-negative integer, got: $raw"
+  fi
+}
+
+# jnum IDX FIELD -> integer ms value as plain text, or empty if the field
+# is absent/null/not-a-number. Caller MUST have already called
+# check_ms_field for the same IDX/FIELD in the current (non-subshell)
+# shell, so a fractional/negative value never silently reaches here --
+# this function itself does no validation, only extraction.
+jnum() {
+  local v
+  v="$(jraw "$1" "$2")"
+  [ -n "$v" ] || { printf ''; return 0; }
+  [ "$(jis "$1" "$2" 'type == "number"')" = "true" ] || { printf ''; return 0; }
+  printf '%s' "$v"
 }
 
 for i in 0 1; do
   eval "LABEL_$i=\"\$(jstr $i label '')\""
   eval "SENDER_$i=\"\$(jstr $i sender 'unknown')\""
   eval "FILE_$i=\"\$(jstr $i file '')\""
-  eval "OFF_$i=\"\$(jnum $i recording_started_offset_from_device_join_ms)\""
-  eval "DJM_$i=\"\$(jnum $i device_joined_at_ms)\""
-  eval "SJM_$i=\"\$(jnum $i sfu_joined_at_ms)\""
   eval "LOWP_$i=\"\$(jbool $i low_precision)\""
 done
 
@@ -178,6 +226,19 @@ FILE_1="$(resolve_path "$FILE_1")"
 [ -f "$FILE_0" ] || die "half[0] ('$LABEL_0') audio file not found: $FILE_0"
 [ -f "$FILE_1" ] || die "half[1] ('$LABEL_1') audio file not found: $FILE_1"
 
+# Validate the three timestamp/offset fields BEFORE extracting them: a
+# fractional or negative value is a hard manifest error, never silently
+# truncated/coerced. device_joined_at_ms is optional (see PRIMARY_OK
+# below, which does not require it) but is still validated if present.
+for i in 0 1; do
+  check_ms_field "$i" recording_started_offset_from_device_join_ms
+  check_ms_field "$i" device_joined_at_ms
+  check_ms_field "$i" sfu_joined_at_ms
+  eval "OFF_$i=\"\$(jnum $i recording_started_offset_from_device_join_ms)\""
+  eval "DJM_$i=\"\$(jnum $i device_joined_at_ms)\""
+  eval "SJM_$i=\"\$(jnum $i sfu_joined_at_ms)\""
+done
+
 # ---- clap-ms fallback input ---------------------------------------------
 
 parse_clap() {
@@ -187,7 +248,7 @@ parse_clap() {
     [ -n "$pair" ] || continue
     key="${pair%%=*}"
     val="${pair#*=}"
-    is_uint "$val" || die "--clap-ms value for '$key' must be a non-negative integer (milliseconds), got: '$val'"
+    is_uint "$val" || die "--clap-ms value for '$key' must be a non-negative integer (milliseconds) with no leading zeros (e.g. '50', not '050'), got: '$val'"
     case "$key" in
       "$LABEL_0") CLAP_0="$val" ;;
       "$LABEL_1") CLAP_1="$val" ;;
@@ -201,6 +262,8 @@ parse_clap "$CLAP_ARG"
 #
 # Primary method: file_start_sfu_ms(half) = sfu_joined_at_ms + recording_started_offset_from_device_join_ms
 # is the absolute SFU-clock instant at which that half's *file* begins.
+# device_joined_at_ms is accepted and validated if present but is NOT part
+# of this formula, so it is not required for the primary method.
 # Fallback method: a shared audible transient (a clap) appears at a known
 # local offset in each raw file; the file where it appears LATER started
 # recording SOONER (more lead-in before the clap), so -clap_ms plays the
@@ -216,8 +279,8 @@ parse_clap "$CLAP_ARG"
 
 PRIMARY_OK=1
 for i in 0 1; do
-  eval "off=\$OFF_$i"; eval "djm=\$DJM_$i"; eval "sjm=\$SJM_$i"; eval "lowp=\$LOWP_$i"
-  if [ -z "$off" ] || [ -z "$djm" ] || [ -z "$sjm" ] || [ "$lowp" = "true" ]; then
+  eval "off=\$OFF_$i"; eval "sjm=\$SJM_$i"; eval "lowp=\$LOWP_$i"
+  if [ -z "$off" ] || [ -z "$sjm" ] || [ "$lowp" = "true" ]; then
     PRIMARY_OK=0
   fi
 done
@@ -235,10 +298,9 @@ else
   METHOD="clap"
   warn "primary alignment stamps are missing/low-precision:"
   for i in 0 1; do
-    eval "off=\$OFF_$i"; eval "djm=\$DJM_$i"; eval "sjm=\$SJM_$i"; eval "lowp=\$LOWP_$i"; eval "lbl=\$LABEL_$i"
+    eval "off=\$OFF_$i"; eval "sjm=\$SJM_$i"; eval "lowp=\$LOWP_$i"; eval "lbl=\$LABEL_$i"
     missing=""
     [ -z "$off" ] && missing="$missing recording_started_offset_from_device_join_ms"
-    [ -z "$djm" ] && missing="$missing device_joined_at_ms"
     [ -z "$sjm" ] && missing="$missing sfu_joined_at_ms"
     [ "$lowp" = "true" ] && missing="$missing low_precision=true"
     [ -n "$missing" ] && warn "  half '$lbl':$missing"
@@ -256,6 +318,14 @@ fi
 if [ "$START_0" -le "$START_1" ]; then MIN_START=$START_0; else MIN_START=$START_1; fi
 DELAY_0=$(( START_0 - MIN_START ))
 DELAY_1=$(( START_1 - MIN_START ))
+
+# Equal starts (both delays 0) is CORRECT, not an error: it means the two
+# halves are already simultaneous on the reference timeline. Flag it as
+# unusual (two independent devices rarely compute the exact same start to
+# the millisecond) but still proceed and produce output.
+if [ "$START_0" -eq "$START_1" ]; then
+  warn "both halves report the same computed start ($START_0) -- unusual, but not an error; proceeding with zero delay on both."
+fi
 
 # ---- durations + wild-drift hint ----------------------------------------
 

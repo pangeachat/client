@@ -11,6 +11,14 @@
 #   - missing timestamps without --clap-ms refuses to guess (never a silent
 #     misalignment)
 #   - a missing input file and a malformed manifest both fail loudly
+#   - a fractional or negative JSON timestamp/offset is rejected, not
+#     silently truncated/coerced (Test E, F)
+#   - a leading-zero --clap-ms value is rejected, not silently reinterpreted
+#     as base-10 (Test G)
+#   - device_joined_at_ms is optional: off+sfu_joined_at_ms alone is enough
+#     for the primary method (Test H)
+#   - equal computed starts (both delays 0) is correct and still succeeds
+#     (Test I)
 #
 # Usage: ./selftest.sh
 
@@ -163,6 +171,91 @@ MANIFEST_D="$WORKDIR/halves_d.json"
 printf 'this is not json' >"$MANIFEST_D"
 run_tool --manifest "$MANIFEST_D" --out "$WORKDIR/out_d"
 assert_exit_nonzero "Test D: malformed manifest JSON refuses to run"
+
+# ============================================================================
+# Test E -- a fractional (non-integer) JSON timestamp value must be
+# rejected, never silently truncated. Mutation-proof: the pre-fix code
+# path (awk "%d") truncates 1000000.5 -> 1000000 and proceeds to exit 0;
+# only the explicit integer check makes this fail with this message.
+# ============================================================================
+MANIFEST_E="$WORKDIR/halves_e.json"
+cat >"$MANIFEST_E" <<EOF
+[
+  {"sender":"@you:example.org","label":"you","file":"$YOU_WAV","recording_started_offset_from_device_join_ms":200,"sfu_joined_at_ms":1000000.5},
+  {"sender":"@friend:example.org","label":"friend","file":"$FRIEND_WAV","recording_started_offset_from_device_join_ms":500,"sfu_joined_at_ms":1000000}
+]
+EOF
+run_tool --manifest "$MANIFEST_E" --out "$WORKDIR/out_e"
+assert_exit_nonzero "Test E: fractional sfu_joined_at_ms is rejected"
+assert_stderr_contains "no fractional part" "Test E: error message names the fractional-value guard"
+
+# ============================================================================
+# Test F -- a negative timestamp/offset value must be rejected before it
+# ever reaches arithmetic, never silently accepted.
+# ============================================================================
+MANIFEST_F="$WORKDIR/halves_f.json"
+cat >"$MANIFEST_F" <<EOF
+[
+  {"sender":"@you:example.org","label":"you","file":"$YOU_WAV","recording_started_offset_from_device_join_ms":-50,"sfu_joined_at_ms":1000000},
+  {"sender":"@friend:example.org","label":"friend","file":"$FRIEND_WAV","recording_started_offset_from_device_join_ms":500,"sfu_joined_at_ms":1000000}
+]
+EOF
+run_tool --manifest "$MANIFEST_F" --out "$WORKDIR/out_f"
+assert_exit_nonzero "Test F: negative recording_started_offset_from_device_join_ms is rejected"
+assert_stderr_contains "must be a non-negative integer" "Test F: error message names the non-negative guard"
+
+# ============================================================================
+# Test G -- a --clap-ms value with a leading zero must be rejected, not
+# silently accepted (even though bash's 10# prefix would otherwise compute
+# it correctly as base-10 -- the tool's contract is to reject non-canonical
+# numeral text outright rather than lean on that safety net).
+# ============================================================================
+run_tool --manifest "$MANIFEST_B" --out "$WORKDIR/out_g" --clap-ms "you=0200,friend=0500"
+assert_exit_nonzero "Test G: leading-zero --clap-ms value is rejected"
+assert_stderr_contains "no leading zeros" "Test G: error message names the leading-zero guard"
+
+# ============================================================================
+# Test H -- device_joined_at_ms is optional: recording_started_offset_from_device_join_ms
+# + sfu_joined_at_ms alone must be enough to use the primary (timestamp)
+# method, with no --clap-ms needed. Same known 300ms offset as Test A, so
+# this also re-proves the delay lands on the correct half. Mutation-proof:
+# if device_joined_at_ms were still required, this manifest (which omits
+# it) would refuse to align (exit nonzero) instead of succeeding.
+# ============================================================================
+MANIFEST_H="$WORKDIR/halves_h.json"
+cat >"$MANIFEST_H" <<EOF
+[
+  {"sender":"@you:example.org","label":"you","file":"$YOU_WAV","recording_started_offset_from_device_join_ms":200,"sfu_joined_at_ms":1000000},
+  {"sender":"@friend:example.org","label":"friend","file":"$FRIEND_WAV","recording_started_offset_from_device_join_ms":500,"sfu_joined_at_ms":1000000}
+]
+EOF
+run_tool --manifest "$MANIFEST_H" --out "$WORKDIR/out_h"
+assert_eq "$STATUS" "0" "Test H: device_joined_at_ms omitted still uses the primary method (exit 0)"
+if [ "$STATUS" -eq 0 ]; then
+  if grep -q '^METHOD=timestamp$' "$STDOUT_FILE"; then pass "Test H: METHOD=timestamp (no --clap-ms needed)"; else fail "Test H: expected METHOD=timestamp in stdout"; fi
+  assert_eq "$(get_field "$STDOUT_FILE" you delay_ms)" "0" "Test H: 'you' computed delay"
+  assert_eq "$(get_field "$STDOUT_FILE" friend delay_ms)" "300" "Test H: 'friend' computed delay matches known 300ms offset"
+fi
+
+# ============================================================================
+# Test I -- equal computed starts (both delays 0) is CORRECT, not an
+# error (do not "fix" this): confirm it still exits 0 and produces
+# output, with an informational WARN on stdout.
+# ============================================================================
+MANIFEST_I="$WORKDIR/halves_i.json"
+cat >"$MANIFEST_I" <<EOF
+[
+  {"sender":"@you:example.org","label":"you","file":"$YOU_WAV","recording_started_offset_from_device_join_ms":0,"sfu_joined_at_ms":1000000},
+  {"sender":"@friend:example.org","label":"friend","file":"$FRIEND_WAV","recording_started_offset_from_device_join_ms":0,"sfu_joined_at_ms":1000000}
+]
+EOF
+run_tool --manifest "$MANIFEST_I" --out "$WORKDIR/out_i"
+assert_eq "$STATUS" "0" "Test I: equal computed starts still exits 0"
+if [ "$STATUS" -eq 0 ]; then
+  assert_eq "$(get_field "$STDOUT_FILE" you delay_ms)" "0" "Test I: 'you' delay is 0"
+  assert_eq "$(get_field "$STDOUT_FILE" friend delay_ms)" "0" "Test I: 'friend' delay is 0"
+  if grep -qF "same computed start" "$STDOUT_FILE"; then pass "Test I: WARN mentions the same-start condition"; else fail "Test I: expected a WARN about equal starts on stdout"; fi
+fi
 
 # ============================================================================
 echo "----"

@@ -58,10 +58,16 @@ A JSON array of **exactly 2** objects, one per half:
 | `label` | yes | short, unique name for the half; used in output and in `--clap-ms` |
 | `file` | yes | path to the local audio file; relative paths resolve against the manifest's own directory, not the caller's cwd |
 | `sender` | no | informational only (printed in the report); defaults to `unknown` |
-| `recording_started_offset_from_device_join_ms` | for the primary method | ms from device join to this file's first sample |
-| `device_joined_at_ms` | for the primary method | informational; not used in the delay formula directly, but expected alongside the other two stamps |
-| `sfu_joined_at_ms` | for the primary method | absolute SFU-clock ms at which the device joined |
-| `low_precision` | no | set `true` to force this half onto the `--clap-ms` fallback even if the three stamps above are present |
+| `recording_started_offset_from_device_join_ms` | for the primary method | ms from device join to this file's first sample; non-negative integer |
+| `sfu_joined_at_ms` | for the primary method | absolute SFU-clock ms at which the device joined; non-negative integer |
+| `device_joined_at_ms` | no | informational only; not part of the delay formula, so not required. Validated (non-negative integer) if present. |
+| `low_precision` | no | set `true` to force this half onto the `--clap-ms` fallback even if the two required stamps above are present |
+
+Every timestamp/offset field, if present, must be a **whole, non-negative
+integer** (milliseconds) — a fractional value (`1000000.5`) or a negative
+one (`-50`) is a hard manifest error, never silently truncated or coerced.
+`--clap-ms` values follow the same rule and additionally reject leading
+zeros (`050`) — write `50`.
 
 ## Alignment math
 
@@ -145,6 +151,10 @@ Generates two synthetic tone WAVs of **different, known durations** with a
 - the printed delay matches the known offset, for both the timestamp method and the `--clap-ms` fallback (exercised in both directions, so the check isn't an artifact of which label happens to be first in the manifest);
 - the delay landed on the *correct* half — via a duration check a min/max swap bug would flip, not just the printed number;
 - missing stamps without `--clap-ms` refuse to run rather than guess;
-- a missing audio file and a malformed manifest both fail loudly, naming the problem.
+- a missing audio file and a malformed manifest both fail loudly, naming the problem;
+- a fractional or negative JSON timestamp/offset is rejected outright, never silently truncated/coerced;
+- a leading-zero `--clap-ms` value is rejected outright, never silently reinterpreted as base-10;
+- `device_joined_at_ms` is optional — the primary method works from `recording_started_offset_from_device_join_ms` + `sfu_joined_at_ms` alone;
+- equal computed starts (both delays 0) is correct and still succeeds, with an informational WARN.
 
-Last run: **16 passed, 0 failed**.
+Last run: **30 passed, 0 failed**.
