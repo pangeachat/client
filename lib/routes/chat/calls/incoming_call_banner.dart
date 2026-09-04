@@ -136,7 +136,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     final previous = _ringing;
     _ringing = ring;
     if (ring != null) {
-      _ringPlayer.play(ring.event.eventId);
+      _ringPlayer.play(ring.event.eventId, asset: 'sounds/phone.ogg');
     } else if (previous != null) {
       _ringPlayer.stop(previous.event.eventId);
     }

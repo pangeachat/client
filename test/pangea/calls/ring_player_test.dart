@@ -10,11 +10,13 @@ import 'package:fluffychat/routes/chat/calls/ring_player.dart';
 class _FakeSound implements RingSound {
   final List<String> log = [];
   @override
-  Future<void> start() async => log.add('start');
+  Future<void> start(String asset) async => log.add('start');
   @override
   Future<void> stop() async => log.add('stop');
   @override
   Future<void> busy() async => log.add('busy');
+  @override
+  Future<void> playOnce(String asset) async => log.add('once');
 }
 
 void main() {
@@ -38,7 +40,7 @@ void main() {
   test('plays for a ring and stops for the same ring', () async {
     final sound = _FakeSound();
     final p = RingPlayer(sound: sound);
-    p.play(r'$ring');
+    p.play(r'$ring', asset: 'sounds/phone.ogg');
     await pumpEventQueue();
     expect(sound.log, ['start']);
     p.stop(r'$ring');
@@ -51,9 +53,9 @@ void main() {
     // prompt started ringing. Keying by ring id makes it a no-op.
     final sound = _FakeSound();
     final p = RingPlayer(sound: sound);
-    p.play(r'$old');
+    p.play(r'$old', asset: 'sounds/phone.ogg');
     await pumpEventQueue();
-    p.play(r'$new');
+    p.play(r'$new', asset: 'sounds/phone.ogg');
     await pumpEventQueue();
     p.stop(r'$old');
     await pumpEventQueue();
@@ -64,9 +66,9 @@ void main() {
   test('a redial replaces the loop rather than layering it', () async {
     final sound = _FakeSound();
     final p = RingPlayer(sound: sound);
-    p.play(r'$old');
+    p.play(r'$old', asset: 'sounds/phone.ogg');
     await pumpEventQueue();
-    p.play(r'$new');
+    p.play(r'$new', asset: 'sounds/phone.ogg');
     await pumpEventQueue();
     expect(sound.log, ['start', 'stop', 'start']);
   });
@@ -74,7 +76,7 @@ void main() {
   test('double-stop and stopAll are safe and final', () async {
     final sound = _FakeSound();
     final p = RingPlayer(sound: sound);
-    p.play(r'$ring');
+    p.play(r'$ring', asset: 'sounds/phone.ogg');
     await pumpEventQueue();
     p.stop(r'$ring');
     p.stop(r'$ring');
@@ -89,7 +91,7 @@ void main() {
     // nothing; the tone has to arrive on its own.
     final sound = _FakeSound();
     final p = RingPlayer(sound: sound);
-    p.play(r'$ring');
+    p.play(r'$ring', asset: 'sounds/phone.ogg');
     await pumpEventQueue();
     p.busy();
     await pumpEventQueue();
@@ -104,7 +106,7 @@ void main() {
     final configuring = Completer<void>();
     final sound = AssetRingSound()..configureForTest = () => configuring.future;
 
-    final starting = sound.start();
+    final starting = sound.start('sounds/phone.ogg');
     await sound.stop();
     configuring.complete();
     await starting;
@@ -119,7 +121,7 @@ void main() {
   test('an unsuperseded start reaches the play', () async {
     final sound = AssetRingSound()..configureForTest = () async {};
 
-    await sound.start();
+    await sound.start('sounds/phone.ogg');
 
     expect(sound.reachedPlayForTest, isTrue);
   });
