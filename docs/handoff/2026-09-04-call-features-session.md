@@ -318,3 +318,32 @@ recording the owner wants to judge -- impossible until both halves exist.
 iOS: recording-branch build (combined) compiling; the sim MCP needs `sudo
 xcode-select -s /Applications/Xcode.app/Contents/Developer` (owner, sudo) before
 the live panel attaches. iOS hits the SAME recording bug -- the fix helps there.
+
+## 2026-09-05 (II) — recording fix landed (BOTH sides record) + mix delivered + iOS runs
+
+- RECORDING FIX: commit `6e0095ff7a` on satvik/call-audio-recording -- "publish
+  the non-initiator's call-audio half after a peer drop": preserve carrier on a
+  PEER-DROP pause (elected, no sibling, held silent because the peer/connection
+  is gone), reset-on-start closes the stale-true path, a genuine SIBLING handover
+  is unchanged (preserveCarrier:false -> sibling publishes). Aligned with
+  call-device-ownership.instructions.md ("did THIS device carry on" = self-fact);
+  the peer-drop-pause rule is worth ONE line in that doc -- OWNER REVIEW, agent
+  did NOT edit it. Mutation-proven; E2E 18/18 incl. NEW gate "both sides wrote a
+  call_audio recording" (>=2 senders); 284 + 111 unit tests pass. Cold-gate
+  running (b9diyobnk).
+- MIX DELIVERED to owner: room !Hgav callKey QXvZ4Jhk has BOTH halves (@learner +
+  @calltester); tools/merge_call_audio aligned them on the SFU timeline (friend
+  +14ms) -> merged_stereo.wav (L=you R=friend) + merged_mono.wav -> mp3. NOTE:
+  E2E fixture voices, not real speech (shows merge quality, not content).
+- iOS BUILD FIXED (env-only, ZERO committed changes): committed Podfile strips
+  arm64 from `iphonesimulator` builds (stale Intel flutter-webrtc workaround; CI
+  builds DEVICE so never hits it) -> patched the GENERATED Pods project; +
+  Homebrew rustc shadowed rustup (iOS twin of the Android rustc note) ->
+  prepended the rustup toolchain bin to PATH; built `--no-pub`. Runner.app runs
+  on the iPhone 17 Pro sim. It HANGS on splash only because the LAN `.env` is not
+  bundled (mobile build needs `- .env` uncommented in pubspec, NEVER committed).
+  Durable Podfile fix (arm64 exclusion conditional on Intel host) = owner/PR.
+- NEXT for full iOS recording test: re-integrate the drop fix + OGG fix into
+  combined, rebuild iOS WITH the LAN .env + the fixes, launch, drive an iOS<->web
+  call, confirm BOTH sides record on iOS + the MP3 ring. Then Android on the
+  owner's phone (harness device_* scenarios).
