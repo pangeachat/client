@@ -124,17 +124,23 @@ class SpanCardState extends State<SpanCard> {
   }
 
   void _openLearningSettings() {
-    context.go(
-      WorkspaceNav.openSettings(
-        GoRouterState.of(context).uri,
-        page: 'learning',
-        // On a narrow layout the settings panel and the chat cannot share the
-        // width, so the sections close behind it the way every other entry
-        // point into this page does.
-        closeSections: !FluffyThemes.isColumnMode(context),
-        seatMenu: false,
-      ),
+    final router = GoRouter.of(context);
+    final target = WorkspaceNav.openSettings(
+      GoRouterState.of(context).uri,
+      page: 'learning',
+      // On a narrow layout the settings panel and the chat cannot share the
+      // width, so the sections close behind it the way every other entry
+      // point into this page does.
+      closeSections: !FluffyThemes.isColumnMode(context),
+      seatMenu: false,
     );
+
+    // The overflow menu pops its own route when an item is chosen, and it is
+    // pushed on the root navigator — the same one GoRouter builds its pages
+    // on. Navigating in that frame lets the menu's pop take the page the
+    // router just pushed, so the panel opens and closes again in one motion.
+    // Resolved up front because this context goes away with the card.
+    WidgetsBinding.instance.addPostFrameCallback((_) => router.go(target));
   }
 
   Future<void> _onChoiceSelect(
