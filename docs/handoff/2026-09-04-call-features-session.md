@@ -469,3 +469,29 @@ the live panel attaches. iOS hits the SAME recording bug -- the fix helps there.
   recording/transcript feature CANNOT be validated with synthetic fixtures + a
   scripted hangup -- it needs a REAL two-human call (real mic audio, real
   hangup interleaving) before any green claim.
+- ROOT CAUSE (A) CONFIRMED + CORRECTION of an earlier WRONG claim: the dropped
+  caller half is a REGRESSION. My earlier note "#8801's CallOwnership supersedes
+  the old call-audio-rec fixes, they are not missing" was WRONG. The exact fixes
+  6e0095ff7a (publish non-initiator's half after a peer drop; adds
+  preserveCarrier/_recorderPausedForPeer) + d35010fb64 (reason-atomic) are NOT
+  ancestors of combined and appear NOWHERE in it; #8801 rebuilt the area on the
+  ownership model and LOST them -> reverted to pre-6e0095ff7a behavior. The
+  17/17 web harness dodged it because its scripted hangup order set the carrier
+  latch for both; the real call (Android callee hung up FIRST) exposed it.
+  MECHANISM: audio publish is gated on `capture.wasCarryingBeforeLastStop` (a
+  NAME COLLISION -- CallAudioRecorder.finish's param is called `carriedOn` but is
+  fed the capture carrier fact, NOT _ownership.carriedOn). Ownership.carriedOn was
+  true (so the transcript published), but the capture carrier latch was false:
+  when the PEER (other account) left first, _electRecorder set _wanted=false and
+  _reconcile called capture.stop() WITHOUT settleDeliveries:false (a settle-shaped
+  stop, active_call.dart:932) which never writes the carrier latch; the later own
+  hangUp early-returns (already stopped) so the latch stays default false ->
+  call_audio_recorder.dart:637 skips the upload. RULE: a peer (other account)
+  merely leaving is NOT a handover and must never suppress this device's own
+  captured half. FIX = port 6e0095ff7a+d35010fb64 onto #8801's active_call.dart:
+  add _recorderPausedForPeer = elected && !_wanted in _electRecorder, pass
+  capture.stop(preserveCarrier: _recorderPausedForPeer) live at :932, add
+  preserveCarrier to capture.stop/_stop (set _wasCarryingBeforeLastStop=true on a
+  preserved peer-drop pause), reset the latch in start(); guard with the peer-drop
+  tests + tighten the E2E to require BOTH senders (combined's asserts >=1). Also
+  rename the recorder param off `carriedOn` so the collision can't recur.
