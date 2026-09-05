@@ -9855,7 +9855,6 @@
     "languageDropdownLevel": "{level}. szint",
     "whatAreYouLearning": "Mit tanulsz?",
     "languageSwitcherBaseLanguageLabel": "Alapnyelved",
-    "listenModeDescription": "Koppintson egy választásra, hogy meghallgassa. Nincs kiválasztva semmi.",
     "rateActivityLiked": "Tetszett",
     "rateActivityDisliked": "Nem tetszett",
     "constructUseHrdDesc": "Hallotta",
@@ -9974,5 +9973,8 @@
     "callDevicesLeaveHere": "Hagyja itt a hívást",
     "callDevicesOlderTitle": "A másik eszköze nem tudja magától elhagyni ezt a hívást.",
     "callDevicesOlderBody": "Fejezze be ott a hívást, vagy hagyja itt. Ez általában azt jelenti, hogy régebbi verziót futtat, és a frissítés megoldja ezt.",
-    "callContinuingElsewhere": "Ez a hívás a másik eszközén folytatódik."
+    "callContinuingElsewhere": "Ez a hívás a másik eszközén folytatódik.",
+    "listenFirst": "Először hallgatás",
+    "listenFirstDescription": "Ha az „Először hallgatás” be van kapcsolva, egy kattintás csak a hangot játssza le, dupla kattintással pedig kiválaszthatja az opciót.",
+    "listenFirstNeedsChoiceAudio": "Kapcsolja be a Válaszok hangját az „Először hallgatás” használatához."
 }

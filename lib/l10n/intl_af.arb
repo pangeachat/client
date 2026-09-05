@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "Vlak {level}",
     "whatAreYouLearning": "Wat leer jy?",
     "languageSwitcherBaseLanguageLabel": "Jou basis taal",
-    "listenModeDescription": "Tik 'n keuse om dit te hoor. Niks is gekies nie.",
     "rateActivityLiked": "Het daarvan gehou",
     "rateActivityDisliked": "Het nie daarvan gehou nie",
     "constructUseHrdDesc": "Gehoor",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "Verlaat die oproep hier",
     "callDevicesOlderTitle": "Jou ander toestel kan nie hierdie oproep op sy eie verlaat nie.",
     "callDevicesOlderBody": "Beëindig die oproep daar, of verlaat dit hier. Dit beteken gewoonlik dat dit 'n ouer weergawe gebruik, en 'n opdatering sal dit regmaak.",
-    "callContinuingElsewhere": "Hierdie oproep gaan voort op jou ander toestel."
+    "callContinuingElsewhere": "Hierdie oproep gaan voort op jou ander toestel.",
+    "listenFirst": "Luister eers",
+    "listenFirstDescription": "Wanneer Luister Eers aan is, speel een klik net oudio en dubbelklik kies die opsie.",
+    "listenFirstNeedsChoiceAudio": "Skakel Keuses-oudio aan om Luister Eers te gebruik."
 }

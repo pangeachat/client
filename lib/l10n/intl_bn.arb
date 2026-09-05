@@ -10380,7 +10380,6 @@
     "languageDropdownLevel": "স্তর {level}",
     "whatAreYouLearning": "আপনি কি শিখছেন?",
     "languageSwitcherBaseLanguageLabel": "আপনার বেস ভাষা",
-    "listenModeDescription": "শোনার জন্য একটি বিকল্পে ট্যাপ করুন। কিছুই নির্বাচন করা হয়নি।",
     "rateActivityLiked": "পছন্দ হয়েছে",
     "rateActivityDisliked": "পছন্দ হয়নি",
     "constructUseHrdDesc": "শুনেছি",
@@ -10499,5 +10498,8 @@
     "callDevicesLeaveHere": "কলটি এখানে ছেড়ে দিন",
     "callDevicesOlderTitle": "আপনার অন্য ডিভাইসটি নিজে থেকে এই কলটি ছেড়ে যেতে পারবে না।",
     "callDevicesOlderBody": "সেখানে কলটি শেষ করুন, অথবা এখানে ছেড়ে দিন। এর মানে সাধারণত এটি একটি পুরোনো সংস্করণ চালাচ্ছে, এবং এটি আপডেট করলে এই সমস্যাটি ঠিক হয়ে যাবে।",
-    "callContinuingElsewhere": "এই কলটি আপনার অন্য ডিভাইসে চলছে।"
+    "callContinuingElsewhere": "এই কলটি আপনার অন্য ডিভাইসে চলছে।",
+    "listenFirst": "প্রথমে শুনুন",
+    "listenFirstDescription": "যখন প্রথমে শুনুন চালু থাকে, তখন এক ক্লিকে শুধু অডিও চলে এবং ডাবল-ক্লিকে অপশনটি নির্বাচিত হয়।",
+    "listenFirstNeedsChoiceAudio": "প্রথমে শুনুন ব্যবহার করতে পছন্দের অডিও চালু করুন।"
 }

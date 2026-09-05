@@ -10627,7 +10627,6 @@
     "languageDropdownLevel": "Επίπεδο {level}",
     "whatAreYouLearning": "Τι μαθαίνεις;",
     "languageSwitcherBaseLanguageLabel": "Η βασική σου γλώσσα",
-    "listenModeDescription": "Πατήστε μια επιλογή για να την ακούσετε. Τίποτα δεν έχει επιλεγεί.",
     "rateActivityLiked": "Μου άρεσε",
     "rateActivityDisliked": "Δεν μου άρεσε",
     "constructUseHrdDesc": "Ακούστηκε",
@@ -10746,5 +10745,8 @@
     "callDevicesLeaveHere": "Αφήστε την κλήση εδώ",
     "callDevicesOlderTitle": "Η άλλη συσκευή σας δεν μπορεί να αποχωρήσει από αυτήν την κλήση μόνη της.",
     "callDevicesOlderBody": "Τερματίστε την κλήση εκεί ή αφήστε την εδώ. Αυτό συνήθως σημαίνει ότι εκτελεί μια παλαιότερη έκδοση και η ενημέρωσή της θα το διορθώσει.",
-    "callContinuingElsewhere": "Αυτή η κλήση συνεχίζεται στην άλλη συσκευή σας."
+    "callContinuingElsewhere": "Αυτή η κλήση συνεχίζεται στην άλλη συσκευή σας.",
+    "listenFirst": "Πρώτα ακρόαση",
+    "listenFirstDescription": "Όταν η Πρώτα ακρόαση είναι ενεργή, ένα κλικ αναπαράγει μόνο τον ήχο και ένα διπλό κλικ επιλέγει την επιλογή.",
+    "listenFirstNeedsChoiceAudio": "Ενεργοποιήστε τον ήχο Επιλογών για να χρησιμοποιήσετε την Πρώτα ακρόαση."
 }

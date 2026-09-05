@@ -10533,7 +10533,6 @@
     "languageDropdownLevel": "{level} lygis",
     "whatAreYouLearning": "Ko mokotės?",
     "languageSwitcherBaseLanguageLabel": "Jūsų pagrindinė kalba",
-    "listenModeDescription": "Palieskite pasirinkimą, kad jį išgirstumėte. Nieko nepasirinkta.",
     "rateActivityLiked": "Patiko",
     "rateActivityDisliked": "Nepatiko",
     "constructUseHrdDesc": "Girdėta",
@@ -10652,5 +10651,8 @@
     "callDevicesLeaveHere": "Palikti skambutį čia",
     "callDevicesOlderTitle": "Kitas jūsų įrenginys negali pats išeiti iš šio skambučio.",
     "callDevicesOlderBody": "Baigti skambutį ten arba palikti jį čia. Tai paprastai reiškia, kad jame veikia senesnė versija, ir atnaujinus tai bus ištaisyta.",
-    "callContinuingElsewhere": "Šis skambutis tęsiamas kitame jūsų įrenginyje."
+    "callContinuingElsewhere": "Šis skambutis tęsiamas kitame jūsų įrenginyje.",
+    "listenFirst": "Pirmiausia klausykite",
+    "listenFirstDescription": "Kai įjungta „Pirmiausia klausykite“, vienu paspaudimu paleidžiamas garsas, o dukart spustelėjus pasirenkama parinktis.",
+    "listenFirstNeedsChoiceAudio": "Norėdami naudoti „Pirmiausia klausykite“, įjunkite pasirinkimų garsą."
 }

@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "Izinga {level}",
     "whatAreYouLearning": "Ufundani?",
     "languageSwitcherBaseLanguageLabel": "Ulimi lwakho oluyisisekelo",
-    "listenModeDescription": "Thepha okukhethile ukuze ukuzwe. Akukho okukhethiwe.",
     "rateActivityLiked": "Ngiyithandile",
     "rateActivityDisliked": "Angiyithandanga",
     "constructUseHrdDesc": "Kuzwakale",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "Shiya ikholi lapha",
     "callDevicesOlderTitle": "Enye idivayisi yakho ayikwazi ukushiya le kholi yodwa.",
     "callDevicesOlderBody": "Qeda ikholi lapho, noma uyishiye lapha. Lokho kuvame ukusho ukuthi isebenzisa inguqulo endala, futhi ukuyibuyekeza kuzolungisa lokhu.",
-    "callContinuingElsewhere": "Le kholi iyaqhubeka kwenye idivayisi yakho."
+    "callContinuingElsewhere": "Le kholi iyaqhubeka kwenye idivayisi yakho.",
+    "listenFirst": "Lalela kuqala",
+    "listenFirstDescription": "Uma i-Lalela Kuqala ivuliwe, ukuchofoza okukodwa kudlala umsindo kuphela bese ukuchofoza kabili kukhetha inketho.",
+    "listenFirstNeedsChoiceAudio": "Vula umsindo wezinketho ukuze usebenzise i-Lalela Kuqala."
 }

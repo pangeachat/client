@@ -700,6 +700,18 @@ class UserController {
     return userToolSetting(setting);
   }
 
+  /// Sets Listen First from the writing assistance card.
+  ///
+  /// The learning settings page writes the same field through its own pending
+  /// -profile flow; both surfaces read it back as
+  /// `ToolSetting.listenFirst.enabled`, so the card and the settings row can
+  /// never disagree.
+  Future<void> setListenFirst(bool value) => updateProfile(
+    (profile) => profile.copyWith(
+      toolSettings: profile.toolSettings.copyWith(listenFirst: value),
+    ),
+  );
+
   bool userToolSetting(ToolSetting setting) {
     switch (setting) {
       case ToolSetting.interactiveTranslator:
@@ -718,6 +730,8 @@ class UserController {
         return profile.toolSettings.audioWords;
       case ToolSetting.audioChoices:
         return profile.toolSettings.audioChoices;
+      case ToolSetting.listenFirst:
+        return profile.toolSettings.listenFirst;
       case ToolSetting.audioOnNewMessage:
         return profile.toolSettings.audioOnNewMessage;
       case ToolSetting.audioOnMessageClick:

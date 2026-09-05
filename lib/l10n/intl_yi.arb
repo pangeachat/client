@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "ניוואָ {level}",
     "whatAreYouLearning": "וואָס לערנסטו זיך?",
     "languageSwitcherBaseLanguageLabel": "דיין באַזע שפּראַך",
-    "listenModeDescription": "טאַפּ אַ ברירה צו הערן עס. גאָרנישט איז אויסגעקליבן.",
     "rateActivityLiked": "געפֿעלן",
     "rateActivityDisliked": "נישט געפֿעלן",
     "constructUseHrdDesc": "געהערט",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "פֿאַרלאָז דעם רוף דאָ",
     "callDevicesOlderTitle": "דײַן אַנדער מיטל קען נישט פֿאַרלאָזן דעם רוף אַלײן.",
     "callDevicesOlderBody": "ענדיק דעם רוף דאָרטן, אָדער פֿאַרלאָז אים דאָ. דאָס הײסט געװײנטלעך אַז ער לױפֿט מיט אַן עלטערע װערסיע, און אַן אַפּדײט װעט דאָס פֿאַרריכטן.",
-    "callContinuingElsewhere": "דער רוף גײט װײַטער אויף דײַן אַנדער מיטל."
+    "callContinuingElsewhere": "דער רוף גײט װײַטער אויף דײַן אַנדער מיטל.",
+    "listenFirst": "ערשט הערן",
+    "listenFirstDescription": "ווען ״ערשט הערן״ איז אָן, איין קליק שפּילט נאָר אַודיאָ און אַ טאָפּל-קליק סעלעקטירט די אָפּציע.",
+    "listenFirstNeedsChoiceAudio": "מאַך אָן ברירות אַודיאָ צו ניצן ״ערשט הערן״."
 }

@@ -9766,7 +9766,6 @@
     "languageDropdownLevel": "Узровень {level}",
     "whatAreYouLearning": "Што вы вывучаеце?",
     "languageSwitcherBaseLanguageLabel": "Ваша базавая мова",
-    "listenModeDescription": "Націсніце на выбар, каб пачуць яго. Нічога не выбрана.",
     "rateActivityLiked": "Спадабалася",
     "rateActivityDisliked": "Не спадабалася",
     "constructUseHrdDesc": "Пачута",
@@ -9885,5 +9884,8 @@
     "callDevicesLeaveHere": "Пакінуць выклік тут",
     "callDevicesOlderTitle": "Ваша іншая прылада не можа самастойна пакінуць гэты выклік.",
     "callDevicesOlderBody": "Завяршыце выклік там або пакіньце яго тут. Звычайна гэта азначае, што на ёй усталявана старэйшая версія, і абнаўленне выправіць гэта.",
-    "callContinuingElsewhere": "Гэты выклік працягваецца на вашай іншай прыладзе."
+    "callContinuingElsewhere": "Гэты выклік працягваецца на вашай іншай прыладзе.",
+    "listenFirst": "Спачатку паслухайце",
+    "listenFirstDescription": "Калі ўключана функцыя «Спачатку паслухайце», адзін клік проста прайгравае аўдыя, а падвойны клік выбірае опцыю.",
+    "listenFirstNeedsChoiceAudio": "Каб выкарыстоўваць функцыю «Спачатку паслухайце», уключыце аўдыя выбараў."
 }

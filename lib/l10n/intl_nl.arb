@@ -9752,7 +9752,6 @@
     "languageDropdownLevel": "Niveau {level}",
     "whatAreYouLearning": "Wat leer je?",
     "languageSwitcherBaseLanguageLabel": "Je basistaal",
-    "listenModeDescription": "Tik op een keuze om deze te horen. Er is niets geselecteerd.",
     "rateActivityLiked": "Vond het leuk",
     "rateActivityDisliked": "Vond het niet leuk",
     "constructUseHrdDesc": "Gehoord",
@@ -9871,5 +9870,8 @@
     "callDevicesLeaveHere": "Verlaat het gesprek hier",
     "callDevicesOlderTitle": "Je andere apparaat kan dit gesprek niet zelfstandig verlaten.",
     "callDevicesOlderBody": "Beëindig het gesprek daar, of verlaat het hier. Dit betekent meestal dat het een oudere versie gebruikt, en een update zal dit oplossen.",
-    "callContinuingElsewhere": "Dit gesprek wordt voortgezet op je andere apparaat."
+    "callContinuingElsewhere": "Dit gesprek wordt voortgezet op je andere apparaat.",
+    "listenFirst": "Eerst luisteren",
+    "listenFirstDescription": "Wanneer Eerst luisteren is ingeschakeld, speelt één klik alleen audio af en dubbelklik selecteert de optie.",
+    "listenFirstNeedsChoiceAudio": "Schakel Keuze-audio in om Eerst luisteren te gebruiken."
 }

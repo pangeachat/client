@@ -10058,7 +10058,6 @@
     "languageDropdownLevel": "المستوى {level}",
     "whatAreYouLearning": "ماذا تتعلم؟",
     "languageSwitcherBaseLanguageLabel": "لغتك الأساسية",
-    "listenModeDescription": "اضغط على خيار لسماعه. لم يتم تحديد أي شيء.",
     "rateActivityLiked": "أعجبني",
     "rateActivityDisliked": "لم يعجبني",
     "constructUseHrdDesc": "سمعت",
@@ -10177,5 +10176,8 @@
     "callDevicesLeaveHere": "اغادر المكالمة من هنا",
     "callDevicesOlderTitle": "لا يمكن لجهازك الآخر مغادرة هذه المكالمة بمفرده.",
     "callDevicesOlderBody": "أنهِ المكالمة هناك، أو اتركها هنا. هذا يعني عادةً أنه يعمل بإصدار أقدم، وتحديثه سيحل هذه المشكلة.",
-    "callContinuingElsewhere": "تستمر هذه المكالمة على جهازك الآخر."
+    "callContinuingElsewhere": "تستمر هذه المكالمة على جهازك الآخر.",
+    "listenFirst": "استمع أولاً",
+    "listenFirstDescription": "عند تشغيل \"استمع أولاً\"، نقرة واحدة تشغل الصوت، والنقر المزدوج يحدد الخيار.",
+    "listenFirstNeedsChoiceAudio": "شغّل صوت الخيارات لاستخدام \"استمع أولاً\"."
 }

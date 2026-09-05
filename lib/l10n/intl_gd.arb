@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "Ìre {level}",
     "whatAreYouLearning": "Dè tha thu ag ionnsachadh?",
     "languageSwitcherBaseLanguageLabel": "Do chànan bunaiteach",
-    "listenModeDescription": "Tap air roghainn gus a cluinntinn. Chan eil dad air a thaghadh.",
     "rateActivityLiked": "Chòrd e rium",
     "rateActivityDisliked": "Cha chòrd e rium",
     "constructUseHrdDesc": "Chuala",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "Fàg an gairm an seo",
     "callDevicesOlderTitle": "Chan urrainn don inneal eile agad an gairm seo fhàgail leis fhèin.",
     "callDevicesOlderBody": "Cuir crìoch air a' ghairm an sin, no fàg an seo e. Mar as trice tha sin a' ciallachadh gu bheil e a' ruith tionndadh nas sine, agus gun socraich ùrachadh seo.",
-    "callContinuingElsewhere": "Tha an gairm seo a' leantainn air an inneal eile agad."
+    "callContinuingElsewhere": "Tha an gairm seo a' leantainn air an inneal eile agad.",
+    "listenFirst": "Èist an toiseach",
+    "listenFirstDescription": "Nuair a tha Èist an toiseach air, bidh aon bhriogadh a’ cluich claisneachd agus bidh briogadh dùbailte a’ taghadh an roghainn.",
+    "listenFirstNeedsChoiceAudio": "Tionndaidh air claisneachd Roghainnean gus Èist an toiseach a chleachdadh."
 }

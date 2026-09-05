@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "Chikamu {level}",
     "whatAreYouLearning": "Uri kudzidza chii?",
     "languageSwitcherBaseLanguageLabel": "Mutauro wako wekutanga",
-    "listenModeDescription": "Tinya sarudzo kuti unzwe. Hapana chasarudzwa.",
     "rateActivityLiked": "Ndazvifarira",
     "rateActivityDisliked": "Handina kuzvifarira",
     "constructUseHrdDesc": "Ndakanzwa",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "Siya kufona pano",
     "callDevicesOlderTitle": "Mumwe mudziyo wako haugone kusiya kufona uku wega.",
     "callDevicesOlderBody": "Pedzisa kufona ikoko, kana kusiyira pano. Izvi zvinoreva kuti iri kushandisa vhezheni yekare, uye kuigadzirisa kuchagadzirisa izvi.",
-    "callContinuingElsewhere": "Kufona uku kuri kuenderera mberi pane mumwe mudziyo wako."
+    "callContinuingElsewhere": "Kufona uku kuri kuenderera mberi pane mumwe mudziyo wako.",
+    "listenFirst": "Teerera kutanga",
+    "listenFirstDescription": "Kana Teerera Kutanga yakabatidzwa, kudzvanya kamwe kunongoridza odhiyo uye kudzvanya kaviri kunosarudza sarudzo.",
+    "listenFirstNeedsChoiceAudio": "Batidza odhiyo yesarudzo kuti ushandise Teerera Kutanga."
 }

@@ -9752,7 +9752,6 @@
     "languageDropdownLevel": "Рівень {level}",
     "whatAreYouLearning": "Що ви вивчаєте?",
     "languageSwitcherBaseLanguageLabel": "Ваша основна мова",
-    "listenModeDescription": "Торкніться варіанта, щоб прослухати його. Нічого не вибрано.",
     "rateActivityLiked": "Сподобалось",
     "rateActivityDisliked": "Не сподобалось",
     "constructUseHrdDesc": "Чув",
@@ -9871,5 +9870,8 @@
     "callDevicesLeaveHere": "Залишити дзвінок тут",
     "callDevicesOlderTitle": "Ваш інший пристрій не може самостійно вийти з цього дзвінка.",
     "callDevicesOlderBody": "Завершіть дзвінок там або залиште його тут. Зазвичай це означає, що на ньому встановлено старішу версію, і оновлення це виправить.",
-    "callContinuingElsewhere": "Цей дзвінок продовжується на іншому вашому пристрої."
+    "callContinuingElsewhere": "Цей дзвінок продовжується на іншому вашому пристрої.",
+    "listenFirst": "Спершу послухайте",
+    "listenFirstDescription": "Коли функція «Спершу послухайте» увімкнена, один клік просто відтворює аудіо, а подвійний клік вибирає опцію.",
+    "listenFirstNeedsChoiceAudio": "Увімкніть аудіо для варіантів, щоб використовувати функцію «Спершу послухайте»."
 }

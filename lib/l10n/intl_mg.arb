@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "Ambaratonga {level}",
     "whatAreYouLearning": "Inona no ianaranao?",
     "languageSwitcherBaseLanguageLabel": "Ny fiteninao fototra",
-    "listenModeDescription": "Tsindrio ny safidy iray hihainoana azy. Tsy misy voafidy.",
     "rateActivityLiked": "Tia an'io",
     "rateActivityDisliked": "Tsy tiana",
     "constructUseHrdDesc": "Reny",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "Ajanony eto ny antso",
     "callDevicesOlderTitle": "Tsy afaka miala irery amin'ity antso ity ny fitaovana hafa anao.",
     "callDevicesOlderBody": "Ajanony any ny antso, na ajanony eto. Midika izany fa mampiasa kinova taloha izy, ary ny fanavaozana azy no hamaha izany.",
-    "callContinuingElsewhere": "Mitohy amin'ny fitaovana hafa anao ity antso ity."
+    "callContinuingElsewhere": "Mitohy amin'ny fitaovana hafa anao ity antso ity.",
+    "listenFirst": "Henoy aloha",
+    "listenFirstDescription": "Rehefa mandeha ny Henoy aloha, ny tsindry iray dia mandefa feo fotsiny ary ny tsindry indroa dia misafidy ny safidy.",
+    "listenFirstNeedsChoiceAudio": "Alefaso ny feon'ny safidy mba hampiasana ny Henoy aloha."
 }

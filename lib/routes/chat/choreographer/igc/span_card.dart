@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/features/instructions/instructions_enum.dart';
+import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/choice_array.dart';
@@ -41,18 +43,21 @@ class SpanCardState extends State<SpanCard> {
   double? _previousOffset;
   Offset _slideFrom = const Offset(0.1, 0); // default slide from right
 
-  /// Listen mode: while on, tapping a choice plays it and selects nothing.
+  /// Listen First: while on, one tap on a choice plays it and a second tap
+  /// selects it.
   ///
-  /// Belongs to the match being shown — advancing to another one turns it off,
-  /// so a learner can never carry an invisible mode into a choice they meant
-  /// to pick. See writing-assistance.instructions.md.
-  bool _listening = false;
+  /// Seeded from the learner's stored preference and written back on every
+  /// toggle, so it survives the card advancing and the app restarting — being
+  /// an ear-first learner is not a property of one correction. See
+  /// writing-assistance.instructions.md.
+  late bool _listenFirst;
 
   Choreographer get _choreographer => widget.controller.choreographer;
 
   @override
   void initState() {
     super.initState();
+    _listenFirst = ToolSetting.listenFirst.enabled;
     _activeMatch.addListener(_onActiveMatchUpdate);
     _choreographer.addListener(_onAssistanceStateChange);
   }
@@ -81,22 +86,23 @@ class SpanCardState extends State<SpanCard> {
       await widget.controller.close();
       return;
     }
-
-    if (mounted) setState(() => _listening = false);
   }
 
-  /// Turn Listen mode on or off.
+  /// Turn Listen First on or off, and remember it.
   ///
   /// Choice audio is gated by the audio section of learning settings, and a
   /// mode whose whole purpose is audio must not be enterable while that gate
   /// is shut — it would be a toggle that produces silence. The toggle is an
-  /// explicit audio affordance, so it says so the way the others do.
-  void _toggleListening(String targetId) {
-    if (!_listening && !ToolSetting.audioChoices.enabled) {
+  /// explicit audio affordance, so it says so the way the others do, and
+  /// nothing is stored: the learner has not chosen the mode, they have been
+  /// told why they can't have it yet.
+  void _toggleListenFirst(String targetId) {
+    if (!_listenFirst && !ToolSetting.audioChoices.enabled) {
       TtsDisabledPopup.show(context, targetId, ToolSetting.audioChoices);
       return;
     }
-    setState(() => _listening = !_listening);
+    setState(() => _listenFirst = !_listenFirst);
+    MatrixState.pangeaController.userController.setListenFirst(_listenFirst);
   }
 
   Future<void> _onChoiceSelect(
@@ -176,7 +182,6 @@ class SpanCardState extends State<SpanCard> {
             }
           }
           _previousOffset = newOffset;
-          final theme = Theme.of(context);
 
           // Size to content so all choices are visible without scrolling,
           // up to the available space above the input field.
@@ -185,35 +190,15 @@ class SpanCardState extends State<SpanCard> {
             child: Column(
               mainAxisSize: .min,
               children: [
-                Row(
-                  children: [
-                    IconButton(
-                      tooltip: L10n.of(context).close,
-                      icon: const Icon(Icons.close),
-                      color: theme.iconTheme.color,
-                      onPressed: widget.controller.close,
-                    ),
-                    Expanded(
-                      child: Center(
-                        child: Text(
-                          match.updatedMatch.match.type.displayName(context),
-                          textAlign: TextAlign.center,
-                          style: theme.textTheme.titleLarge?.merge(
-                            TextStyle(
-                              fontWeight: FontWeight.w700,
-                              color: theme.colorScheme.primary,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    IconButton(
-                      tooltip: L10n.of(context).feedbackButton,
-                      icon: const Icon(Icons.flag_outlined),
-                      color: theme.iconTheme.color,
-                      onPressed: _showFeedbackDialog,
-                    ),
-                  ],
+                _SpanCardHeader(
+                  title: match.updatedMatch.match.type.displayName(context),
+                  // An accepted match shows a diff and an undo, not choices,
+                  // so there is nothing there to listen to.
+                  showListenFirst: match.updatedMatch.status.isOpen,
+                  listenFirst: _listenFirst,
+                  onToggleListenFirst: _toggleListenFirst,
+                  onFeedback: _showFeedbackDialog,
+                  onClose: widget.controller.close,
                 ),
                 Flexible(
                   child: AnimatedSize(
@@ -245,8 +230,7 @@ class SpanCardState extends State<SpanCard> {
                         onChoiceSelect: _onChoiceSelect,
                         onUpdateMatch: _updateMatch,
                         roomId: _choreographer.room.id,
-                        listening: _listening,
-                        onToggleListening: _toggleListening,
+                        listenFirst: _listenFirst,
                       ),
                     ),
                   ),
@@ -272,12 +256,9 @@ class _MatchContent extends StatelessWidget {
   /// choice's audio is counted against it.
   final String roomId;
 
-  /// Whether Listen mode is on, in which case a tapped choice is only spoken.
-  final bool listening;
-
-  /// Takes the id of the transform target the "audio is off" popup anchors to,
-  /// which is this content's toggle.
-  final void Function(String) onToggleListening;
+  /// Whether Listen First is on, in which case one tap on a choice only plays
+  /// it and a second tap selects it.
+  final bool listenFirst;
 
   const _MatchContent({
     super.key,
@@ -286,8 +267,7 @@ class _MatchContent extends StatelessWidget {
     required this.onChoiceSelect,
     required this.onUpdateMatch,
     required this.roomId,
-    required this.listening,
-    required this.onToggleListening,
+    required this.listenFirst,
   });
 
   @override
@@ -298,11 +278,6 @@ class _MatchContent extends StatelessWidget {
     final descriptionText =
         currentMatch.bestChoice?.feedback ??
         currentMatch.type.defaultPrompt(context);
-
-    // Per match, so the crossfade between two matches never has two subtrees
-    // holding the same global key.
-    final listenTargetId = 'wa-listen-${match.hashCode}';
-    final listenLink = MatrixState.pAnyState.layerLinkAndKey(listenTargetId);
 
     return Scrollbar(
       controller: scrollController,
@@ -320,38 +295,6 @@ class _MatchContent extends StatelessWidget {
                 ),
                 textAlign: TextAlign.center,
               ),
-              if (isOpen)
-                Semantics(
-                  toggled: listening,
-                  child: CompositedTransformTarget(
-                    link: listenLink.link,
-                    child: KeyedSubtree(
-                      key: listenLink.key,
-                      child: TextButton.icon(
-                        onPressed: () => onToggleListening(listenTargetId),
-                        icon: const Icon(Icons.headphones, size: 18.0),
-                        label: Text(L10n.of(context).listen),
-                        style: TextButton.styleFrom(
-                          visualDensity: VisualDensity.compact,
-                          padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                          backgroundColor: listening
-                              ? theme.colorScheme.primary
-                              : null,
-                          foregroundColor: listening
-                              ? theme.colorScheme.onPrimary
-                              : theme.colorScheme.onSurfaceVariant,
-                          shape: StadiumBorder(
-                            side: BorderSide(
-                              color: listening
-                                  ? theme.colorScheme.primary
-                                  : theme.colorScheme.outlineVariant,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
               isOpen
                   ? ChoicesArray<SpanChoice>(
                       choices: currentMatch.choices?.map((e) {
@@ -378,7 +321,7 @@ class _MatchContent extends StatelessWidget {
                           .userL2Code!,
                       enabled: !currentMatch.isSelectedChoiceCorrection,
                       getDisplayCopy: (choice) => choice.value,
-                      listenMode: listening,
+                      listenFirstMode: listenFirst,
                     )
                   : Row(
                       spacing: 16.0,
@@ -412,16 +355,204 @@ class _MatchContent extends StatelessWidget {
                         ),
                       ],
                     ),
-              if (isOpen && listening)
-                Text(
-                  L10n.of(context).listenModeDescription,
-                  style: theme.textTheme.bodySmall?.copyWith(
-                    color: theme.colorScheme.primary,
-                  ),
-                  textAlign: TextAlign.center,
+              if (isOpen && listenFirst)
+                const InstructionsInlineTooltip(
+                  instructionsEnum: InstructionsEnum.listenFirst,
                 ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+enum _SpanCardAction { listenFirst, feedback }
+
+/// The card's header: close on the left, the match's category in the middle,
+/// and the card's two actions on the right.
+///
+/// The actions collapse into a single overflow menu when the title cannot sit
+/// beside them at full width. The category name is what the learner is reading
+/// the card for, and it is the part that grows — "Subject Verb Agreement" on a
+/// phone leaves no room for two icons — so the icons yield to it rather than
+/// the other way around.
+class _SpanCardHeader extends StatelessWidget {
+  final String title;
+
+  /// Whether this match has choices, and so anything Listen First applies to.
+  final bool showListenFirst;
+  final bool listenFirst;
+
+  /// Takes the id of the transform target the "audio is off" popup anchors to,
+  /// which is whichever control is currently showing Listen First.
+  final void Function(String) onToggleListenFirst;
+  final VoidCallback onFeedback;
+  final VoidCallback onClose;
+
+  const _SpanCardHeader({
+    required this.title,
+    required this.showListenFirst,
+    required this.listenFirst,
+    required this.onToggleListenFirst,
+    required this.onFeedback,
+    required this.onClose,
+  });
+
+  /// One anchor for both layouts: only one of them is ever built.
+  static const _listenTargetId = 'wa-listen-first';
+
+  /// The width an [IconButton] takes at the default visual density.
+  static const _iconButtonWidth = 48.0;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final l10n = L10n.of(context);
+    final titleStyle = theme.textTheme.titleLarge?.merge(
+      TextStyle(fontWeight: FontWeight.w700, color: theme.colorScheme.primary),
+    );
+
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        // Measured, not guessed at a breakpoint: the same header fits two
+        // icons for "Spelling" and cannot for "Subject Verb Agreement" at the
+        // identical width, and a learner scaling their text up moves that line
+        // again.
+        final painter = TextPainter(
+          text: TextSpan(text: title, style: titleStyle),
+          textDirection: Directionality.of(context),
+          textScaler: MediaQuery.textScalerOf(context),
+          maxLines: 1,
+        )..layout();
+        final titleWidth = painter.width;
+        painter.dispose();
+
+        // Close, plus either both actions or the single menu that replaces
+        // them. With only the flag to place there is nothing to collapse —
+        // one icon always fits beside a title that can ellipsize, and a
+        // one-item overflow menu is a worse place to keep it.
+        final expanded =
+            !showListenFirst ||
+            titleWidth <= constraints.maxWidth - _iconButtonWidth * 3;
+
+        return Row(
+          children: [
+            IconButton(
+              tooltip: l10n.close,
+              icon: const Icon(Icons.close),
+              color: theme.iconTheme.color,
+              onPressed: onClose,
+            ),
+            Expanded(
+              child: Center(
+                child: Text(
+                  title,
+                  textAlign: TextAlign.center,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: titleStyle,
+                ),
+              ),
+            ),
+            if (expanded) ...[
+              if (showListenFirst) _listenFirstButton(context),
+              IconButton(
+                tooltip: l10n.feedbackButton,
+                icon: const Icon(Icons.flag_outlined),
+                color: theme.iconTheme.color,
+                onPressed: onFeedback,
+              ),
+            ] else
+              _overflowMenu(context),
+          ],
+        );
+      },
+    );
+  }
+
+  Widget _listenFirstButton(BuildContext context) {
+    final theme = Theme.of(context);
+    final link = MatrixState.pAnyState.layerLinkAndKey(_listenTargetId);
+
+    return Semantics(
+      toggled: listenFirst,
+      child: CompositedTransformTarget(
+        link: link.link,
+        child: KeyedSubtree(
+          key: link.key,
+          child: IconButton(
+            tooltip: L10n.of(context).listenFirst,
+            isSelected: listenFirst,
+            icon: const Icon(Icons.headphones_outlined),
+            selectedIcon: const Icon(Icons.headphones),
+            style: IconButton.styleFrom(
+              backgroundColor: listenFirst
+                  ? theme.colorScheme.primaryContainer
+                  : null,
+              foregroundColor: listenFirst
+                  ? theme.colorScheme.onPrimaryContainer
+                  : theme.iconTheme.color,
+            ),
+            onPressed: () => onToggleListenFirst(_listenTargetId),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _overflowMenu(BuildContext context) {
+    final l10n = L10n.of(context);
+    final link = MatrixState.pAnyState.layerLinkAndKey(_listenTargetId);
+
+    return CompositedTransformTarget(
+      link: link.link,
+      child: KeyedSubtree(
+        key: link.key,
+        child: PopupMenuButton<_SpanCardAction>(
+          useRootNavigator: true,
+          // An unnamed PopupMenuButton falls back to the framework default,
+          // and the a11y floor check does not cover it.
+          tooltip: l10n.moreOptions,
+          icon: const Icon(Icons.more_vert),
+          onSelected: (action) {
+            switch (action) {
+              case _SpanCardAction.listenFirst:
+                onToggleListenFirst(_listenTargetId);
+              case _SpanCardAction.feedback:
+                onFeedback();
+            }
+          },
+          itemBuilder: (context) => [
+            PopupMenuItem<_SpanCardAction>(
+              value: _SpanCardAction.listenFirst,
+              child: Semantics(
+                checked: listenFirst,
+                child: Row(
+                  children: [
+                    Icon(
+                      listenFirst
+                          ? Icons.headphones
+                          : Icons.headphones_outlined,
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(child: Text(l10n.listenFirst)),
+                    if (listenFirst) const Icon(Icons.check, size: 18.0),
+                  ],
+                ),
+              ),
+            ),
+            PopupMenuItem<_SpanCardAction>(
+              value: _SpanCardAction.feedback,
+              child: Row(
+                children: [
+                  const Icon(Icons.flag_outlined),
+                  const SizedBox(width: 12),
+                  Text(l10n.feedbackButton),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );

@@ -101,16 +101,24 @@ The card positions itself relative to the currently selected match's highlighted
 
 ```
 ┌─────────────────────────────────┐
-│  ✕       Edit Category Title   🚩 │  ← Header: close, category name (e.g. "Verb Conjugation"), flag
+│  ✕   Edit Category Title  🎧 🚩 │  ← Header: close, category name (e.g. "Verb Conjugation"), Listen First, flag
 │                                 │
 │  🤖  Hint text explaining the   │  ← Bot face left-aligned, hint text beside it
 │      suggestion in detail       │
 │                                 │
-│  🎧 Listen                      │  ← While on, tapping a choice only plays it
-│                                 │
 │  ┌──────┐ ┌──────┐ ┌──────┐    │  ← Choices: horizontal if they fit,
 │  │ word │ │ word │ │ undo │    │     vertical if not. Undo action at end.
 │  └──────┘ └──────┘ └──────┘    │
+│                                 │
+│  💡 Listen First explainer   ✕  │  ← Only while Listen First is on, until dismissed
+└─────────────────────────────────┘
+```
+
+**When the header runs out of room**, both actions move into an overflow menu, so the category name keeps its full width:
+
+```
+┌─────────────────────────────────┐
+│  ✕   Subject Verb Agreement  ⋮  │  ← Listen First and flag live in the menu
 └─────────────────────────────────┘
 ```
 
@@ -141,12 +149,25 @@ The card positions itself relative to the currently selected match's highlighted
 
 ### Hearing a choice
 
-Learners who know a language by ear before they know its script cannot tell the choices apart on sight, and the only way to hear one is to tap it — which also answers with it. A **Listen** toggle sits between the hint and the choices. While it is on, tapping a choice plays that choice and does nothing else: no selection, no status change, no replacement, and a line under the row says so. Turning it off restores the normal behaviour, where a tap selects.
+Learners who know a language by ear before they know its script cannot tell the choices apart on sight, and the only way to hear one is to tap it — which also answers with it. **Listen First** is the mode that separates the two. While it is on, one tap on a choice plays it and changes nothing; a second tap on the **same** choice, inside the platform double-tap window, selects it. With it off, a tap selects as it always has.
 
-- The toggle belongs to the current match. Advancing to another match, or closing the card, turns it off — a mode the learner can't see is a mode that surprises them.
+The mode is an icon-only toggle in the card header, next to the flag — on or off, no third state, off until the learner turns it on.
+
+- **It is remembered, per learner, across matches and sessions.** Knowing a language by ear is a property of the learner, not of one correction; resetting it per match made them re-arm it on every highlighted word. The visible header toggle is what keeps a remembered mode from being an invisible one.
+- **Only the same choice arms.** The second tap has to land on the choice the first one played — tapping a different choice plays that one instead and arms nothing — and a tap after the window has closed replays rather than selects. Both failures cost a replay, never a wrong word in the message, which is the direction this mode exists to fail in.
+- **The mode only appears where there are choices to hear.** An accepted match shows a diff and an undo, so the header drops the toggle rather than offering a mode that applies to nothing.
 - Listening never changes a match's status. A match still becomes `viewed` by being opened and navigated away from.
-- With choice audio switched off in learning settings, the toggle opens the same "audio is off" popup other explicit audio buttons do, pointing at the setting, rather than entering a mode that plays nothing. See [word-text-to-speech.instructions.md](word-text-to-speech.instructions.md).
+- The explainer under the choices is a **dismissable instruction tooltip** ([`InstructionsEnum.listenFirst`](../../lib/features/instructions/instructions_enum.dart)) — it teaches the one-click/double-click split once and then stays gone, rather than taxing the card's height for every learner who already knows.
+- With choice audio switched off in learning settings, the toggle opens the same "audio is off" popup other explicit audio buttons do, pointing at the setting, rather than entering a mode that plays nothing — and stores nothing, since being told why you can't have the mode is not choosing it. See [word-text-to-speech.instructions.md](word-text-to-speech.instructions.md).
 - Only writing assistance gets the mode. The choices row is shared with practice and activity surfaces; their behaviour is unchanged.
+
+**Where it is set.** Two surfaces write one stored value (`ToolSetting.listenFirst`), so they cannot disagree: the card's header toggle, and a row in the **Audio** section of learning settings, next to the Choices audio it sequences. The settings row is disabled, with the reason in place of its description, whenever Choices audio is off — from settings there is no popup to open, so the tile carries the dependency itself rather than flipping into silence.
+
+### Header actions and width
+
+The header carries the category name and, on the right, Listen First and the flag. The name is what the learner opened the card to read and it is the part that grows — "Subject Verb Agreement" leaves no room for two icons on a phone where "Spelling" leaves plenty — so **the icons yield to the title, not the reverse**: when the measured title cannot sit beside them, both collapse into a `⋮` overflow menu holding the same two actions.
+
+The trigger is the measured width of this title in this card at this text scale, not a device breakpoint. A fixed breakpoint gets both cases wrong at once — it hides the icons on a short title that had room, and keeps them on a long one that didn't — and a learner scaling their text up moves the line again.
 
 ### What We're Removing
 
