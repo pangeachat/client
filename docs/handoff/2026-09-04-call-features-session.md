@@ -447,3 +447,25 @@ the live panel attaches. iOS hits the SAME recording bug -- the fix helps there.
   clean. NOTES: calltester pw is `calltesterpass` (not learnerpass); local user
   directory search is empty on this stack -> create DMs via API (createRoom +
   invite + m.direct).
+- REAL-CALL FAILURE (2026-09-05, first human test, call $L3JwTPX5rdquH): THREE
+  defects the fake-fixture web harness missed (false 17/17 confidence):
+  (A) CALLER's WEB half DROPPED: @learner (web, caller) captured 3 chunks +
+  transcribed + drain_complete=true but uploaded NO pangea.call_audio -- only its
+  transcript. So its audio half was captured then discarded (browser memory,
+  unrecoverable), while @calltester (Android callee) uploaded both. One-sided
+  recording. Suspected #8801 carriedOn/CallOwnership: `carriedOn => _ownership.
+  carriedOn` is false on the ownership-leave path, so the caller skips its audio
+  publish even though it captured real audio -- the SAME class as 6e0095ff7a
+  (drop-own-half) reintroduced via the #8801 model. Transcript publishes but
+  audio doesn't = the asymmetry proves publish is wrongly gated on ownership.
+  (B) NO full-call mix: only 1 half exists + merge is offline-only, so nothing to
+  mix; user expected an in-room full-call recording.
+  (C) TRANSCRIPT off: web (@learner) produced ONE 45-second segment
+  (at_span_ms=45000) of garbled text ("Jack to Muscova", "CEO boy cut the call")
+  while Android produced 13 clean fine segments -- so it can't interleave
+  turn-by-turn (the at_ms sort is fine; the 45s blob is the killer). Web audio
+  quality (TrackRendererTap) + coarse chunking are the suspects, not the clock.
+  Three read-only root-cause agents dispatched; fix + gate after. LESSON: a
+  recording/transcript feature CANNOT be validated with synthetic fixtures + a
+  scripted hangup -- it needs a REAL two-human call (real mic audio, real
+  hangup interleaving) before any green claim.
