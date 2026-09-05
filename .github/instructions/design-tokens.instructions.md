@@ -5,7 +5,7 @@ description: "How the shared design tokens reach the Flutter client — the gene
 
 # Design Tokens (client)
 
-Roles, sync direction and contrast gates are owned by [design-tokens.instructions.md](https://github.com/pangeachat/.github/blob/main/.github/instructions/design-tokens.instructions.md). Read that first; this doc covers only what is specific to the client.
+Roles, sync direction and contrast gates are owned by [design-tokens.instructions.md](../../../.github/.github/instructions/design-tokens.instructions.md). Read that first; this doc covers only what is specific to the client.
 
 ## How tokens arrive
 
