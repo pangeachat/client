@@ -198,6 +198,11 @@ class CallCaptureService {
   /// first millisecond onward.
   ({int sampleRate, int channels})? _audioRunFormat;
 
+  /// Whether the last attempt to OPEN a recording run threw. Latched so the
+  /// per-frame retry (in [_onFrames]'s run-open block) logs a failure once per
+  /// streak rather than on every frame, and cleared the moment a run opens.
+  bool _runStartFailed = false;
+
   /// Whether the current stretch has stopped taking frames.
   ///
   /// Set before the detach rather than after it, and cleared only by the next
@@ -1167,7 +1172,6 @@ class CallCaptureService {
           // file is one fixed format for its whole length. A no-op when no
           // run was open yet (the ordinary first-frame case).
           _endAudioRun();
-          _audioRunFormat = currentFormat;
           try {
             recordingSink.onRunStarted(
               // The SAME conversion the transcript chunker uses for its own
@@ -1183,12 +1187,26 @@ class CallCaptureService {
               sampleRate,
               channels,
             );
+            // Latched ONLY after the run actually opened. Set BEFORE the call, a
+            // throw inside onRunStarted (a sink that could not mint a
+            // generation, as the dart2js `1 << 32` id overflow did) left the
+            // format marked open over a generation that never got created -- so
+            // every later same-format frame skipped this block, the run never
+            // retried, and the recorder stayed dead for the rest of the call
+            // after one swallowed warning. Unset-on-failure lets the next frame
+            // try again.
+            _audioRunFormat = currentFormat;
+            _runStartFailed = false;
           } catch (e, s) {
-            Logs().w(
-              'The call audio recording sink failed to start a run',
-              e,
-              s,
-            );
+            if (!_runStartFailed) {
+              _runStartFailed = true;
+              Logs().w(
+                'The call audio recording sink failed to start a run; retrying '
+                'on the next frame',
+                e,
+                s,
+              );
+            }
           }
         }
         try {

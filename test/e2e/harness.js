@@ -206,6 +206,19 @@ async function openParticipant(name, roomLocalpart, port, { prepare } = {}) {
   const page = (await browser.pages())[0];
   const errors = [];
   page.on('pageerror', (e) => errors.push(String(e.stack || e.message || e).slice(0, 600)));
+  // The recorder logs its OWN failures through matrix Logs() (console.warn), and
+  // call_capture.dart deliberately swallows a run-open throw so it does not
+  // disturb the transcript -- so a fully dead recorder used to leave a scenario
+  // green. Capture those warnings so a scenario can turn them red: this is the
+  // signal that would have caught the dart2js `1 << 32` id overflow that killed
+  // web recording behind a passing transcript.
+  const recorderWarnings = [];
+  page.on('console', (m) => {
+    const t = m.text();
+    if (/failed to start a run|failed on a frame/i.test(t)) {
+      recorderWarnings.push(String(t).slice(0, 300));
+    }
+  });
   if (prepare) await prepare(page);
   // Tagged by participant: one shared tag meant the second login's
   // screenshots overwrote the first's, and the evidence for a failure was
@@ -214,7 +227,7 @@ async function openParticipant(name, roomLocalpart, port, { prepare } = {}) {
   await wait(3000);
   await openRoom(page, roomLocalpart);
   const session = await mx.login(a.user, a.pass);
-  return { name, browser, page, errors, ...session };
+  return { name, browser, page, errors, recorderWarnings, ...session };
 }
 
 /// Whether an error is just the page having moved under a read.
@@ -460,6 +473,7 @@ async function recover(p, roomLocalpart) {
   // Reloading re-registers the engine error hooks' state, so stale errors from
   // the pre-reload page are not counted against later scenarios.
   p.errors.length = 0;
+  if (p.recorderWarnings) p.recorderWarnings.length = 0;
 }
 
 /// Performs an action until the SERVER says it happened.

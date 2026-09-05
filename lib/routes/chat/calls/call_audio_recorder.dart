@@ -371,9 +371,18 @@ class CallAudioRecorder implements CallAudioRecordingSink {
   /// I/O. Timestamp-plus-random needs no coordination and is exactly as
   /// synchronous as the call site requires; a same-microsecond collision
   /// between two generations, in one process, is already effectively
-  /// impossible, and [_idRandom]'s own 32 bits on top make it more so.
+  /// impossible, and [_idRandom]'s own randomness on top makes it more so.
+  ///
+  /// The bound is `0x40000000` (2^30), NOT `1 << 32`: on the web (dart2js) a
+  /// shift of 32 overflows to 0, so `Random.nextInt(0)` threw a RangeError
+  /// synchronously here -- on the very first frame, before any generation
+  /// existed -- which silently killed call-audio recording on the WEB entirely.
+  /// The transcript mints no id and was undisturbed, so nothing surfaced the
+  /// failure. 2^30 is a legal `nextInt` bound on every platform (native ints are
+  /// 64-bit, dart2js keeps 2^30 well inside 32 bits) and, beside the microsecond
+  /// timestamp, is ample entropy against a same-microsecond collision.
   static String _newGenerationId() =>
-      '${DateTime.now().microsecondsSinceEpoch}-${_idRandom.nextInt(1 << 32)}';
+      '${DateTime.now().microsecondsSinceEpoch}-${_idRandom.nextInt(0x40000000)}';
 
   int _capBytes(_AudioGeneration gen) {
     final byTime =
