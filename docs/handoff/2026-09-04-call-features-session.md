@@ -338,6 +338,20 @@ the live panel attaches. iOS hits the SAME recording bug -- the fix helps there.
   siblings, so both-sides recording + the mix are unaffected). Reason-atomic fix
   in flight (make preserveCarrier reflect the CURRENT successor at stop time),
   then re-gate. NOTE this is on top of the not-yet-clean 6e0095ff7a.
+  RESOLVED: race fix `d35010fb64` reads `_recorderPausedForPeer` LIVE at the stop
+  site (no await between the read and capture.stop); `_electRecorder` rewrites it
+  each election as `elected && !_wanted` so a sibling successor flips it false
+  before a parked reconcile resumes. Mutation-proven (new race test fails on the
+  reverted snapshot), 285/285 tests. COLD-GATE GREEN (codex: reason-atomic,
+  duplicate impossible on all interleavings). So the recording fix
+  (6e0095ff7a + d35010fb64) is now COLD-GREEN. FINDING: local lk-jwt is v0.6.0
+  (image label, built 2026-08-19) so the participant-attribute plane WORKS
+  locally -- the dual-device / device-ownership feature IS testable locally (the
+  older 'local stack can't do metadata writes' note is outdated). Two-device
+  recording E2E (transcript_two_devices.js on the fixed build) running to verify
+  the election puts exactly ONE of an account's two devices as recorder (no
+  duplicate) in a real 3-browser call. NOT-YET-TESTED: the arbitration /
+  'join on other device' UI flow (may need device_* phone scenarios or manual).
 - MIX DELIVERED to owner: room !Hgav callKey QXvZ4Jhk has BOTH halves (@learner +
   @calltester); tools/merge_call_audio aligned them on the SFU timeline (friend
   +14ms) -> merged_stereo.wav (L=you R=friend) + merged_mono.wav -> mp3. NOTE:
