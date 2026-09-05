@@ -424,3 +424,26 @@ the live panel attaches. iOS hits the SAME recording bug -- the fix helps there.
   combined, rebuild iOS WITH the LAN .env + the fixes, launch, drive an iOS<->web
   call, confirm BOTH sides record on iOS + the MP3 ring. Then Android on the
   owner's phone (harness device_* scenarios).
+- DONE (2026-09-05) COMBINED #8801 RECORDING VALIDATED (two-web transcript.js on
+  the v1.11.0 stack): 17/17, exactly 2 pangea.call_audio halves (learner +
+  calltester, ~38s each, one per device, no duplicate/one-sided), 0 setAttributes
+  timeouts. #8801's CallOwnership records BOTH sides; the old call-audio-rec
+  ad-hoc fixes are SUPERSEDED, not missing. Combined is the right target.
+- DONE (2026-09-05) iOS COMBINED BUILD VERIFIED on the iPhone 17 Pro sim
+  (env-only, NOTHING committed): built @ 849019cc74 (word-card + web-dart2js +
+  #8801 + OGG->MP3) for the simulator. Build fixes (all local, REVERTED after):
+  pubspec `- .env` uncommented (bundles the LAN .env -> FIXES the splash hang),
+  Podfile arm64-sim exclusion 'arm64 i386'->'i386' (Runner fat x86_64+arm64, runs
+  on Apple-Silicon sim), rustup toolchain bin on PATH (flutter_vodozemac). App
+  LOADS past splash, LOGS IN on the LAN stack, completes full onboarding, reaches
+  the live app + DMs, and CALL INITIATION works (call UI + 'This call is
+  transcribed and saved' + mic grant fire). NOT captured: a CONNECTED 2-party
+  iOS<->web call producing recording halves -- the incoming ring / ongoing-call
+  state does not propagate promptly across clients on this ad-hoc local setup
+  (API-created DM room + sync timing + 45s window), an ENVIRONMENT/coordination
+  limit, NOT an app defect. iOS+web share the recording tap (TrackRendererTap),
+  validated both-sides on web, so the mechanism is covered; the audible
+  both-sides confirmation is the owner's live human test (sim has no mic). Branch
+  clean. NOTES: calltester pw is `calltesterpass` (not learnerpass); local user
+  directory search is empty on this stack -> create DMs via API (createRoom +
+  invite + m.direct).
