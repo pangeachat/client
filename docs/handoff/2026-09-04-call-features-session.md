@@ -329,8 +329,15 @@ the live panel attaches. iOS hits the SAME recording bug -- the fix helps there.
   call-device-ownership.instructions.md ("did THIS device carry on" = self-fact);
   the peer-drop-pause rule is worth ONE line in that doc -- OWNER REVIEW, agent
   did NOT edit it. Mutation-proven; E2E 18/18 incl. NEW gate "both sides wrote a
-  call_audio recording" (>=2 senders); 284 + 111 unit tests pass. Cold-gate
-  running (b9diyobnk).
+  call_audio recording" (>=2 senders); 284 + 111 unit tests pass. Cold-gate:
+  RED (HIGH) -- a STALE-REASON RACE: `_recorderPausedForPeer` is snapshotted
+  before an await and `_decisionHolds` revalidates only `wanted`, not the
+  peer-drop-vs-sibling-handover reason, so a sibling handover landing during the
+  await could reuse `preserveCarrier:true` -> DUPLICATE publish (this device +
+  the sibling). Multi-device edge case only (a 1:1 single-device call has no
+  siblings, so both-sides recording + the mix are unaffected). Reason-atomic fix
+  in flight (make preserveCarrier reflect the CURRENT successor at stop time),
+  then re-gate. NOTE this is on top of the not-yet-clean 6e0095ff7a.
 - MIX DELIVERED to owner: room !Hgav callKey QXvZ4Jhk has BOTH halves (@learner +
   @calltester); tools/merge_call_audio aligned them on the SFU timeline (friend
   +14ms) -> merged_stereo.wav (L=you R=friend) + merged_mono.wav -> mp3. NOTE:
