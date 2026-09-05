@@ -242,3 +242,35 @@ the only documented deferral. Branch tips (all local):
 OPEN for owner: (a) end-tone scope -- caller-only (default) vs both parties;
 (b) the two deferred OGG LOW locks; (c) still-pending from (V): iOS on-device
 pass, the compiled-web CI lane, PR split/open + batch-merge, #8808 design.
+
+## 2026-09-04 (VII) — pickup work (web-player, OGG-locks, #8808) all cold-GREEN
+
+Owner authorised autonomous work on three follow-ups. All committed (local), each
+cold-gated GREEN. This ALSO resolves open items (b) and part of (c) above:
+- OGG asset-locks `7bc396f13f` (satvik/tokenize-call-transcript): two
+  mutation-proven tests locking the incoming ring (phone.mp3) + busy
+  (notification.mp3) cues to MP3. GREEN first pass. (Closes open item (b).)
+- Web-player Blob-URL memory fix `a747cadc36` (satvik/call-audio-recording): web
+  audio plays from a Blob object URL, not an ~80MB base64 data: URI; revoke on
+  replace, bounded to one live blob. First impl RED (blob leaked on the
+  throwing-load error path) -> fixed -> GREEN; tests load-bearing (4/5 fail on
+  revert).
+- #8808 transcript loading / "still assembling" `ee8caf0b81` (new branch
+  satvik/8808-transcript-loading, off origin/main): a listen+settle state
+  machine. TWO gate rounds RED on a settle/read race (a settle firing mid-read
+  while a tick landed dropped the peer half -> stale "No transcript from them");
+  round-3 fix reordered the `_changedWhileReading` drain BEFORE the phase-guard
+  return and dropped `_drainPendingRead`'s phase guard, so a mid-read change
+  forces one more read regardless of phase. GREEN, mutation-proven, 65/65. NEW
+  UX -- the settle timings are the agent's choice; OWNER should review them.
+
+iOS Simulator verification: BLOCKED on host setup -- only Command Line Tools, no
+Xcode.app (CocoaPods now installed). Owner must install Xcode from the App Store,
+then `sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer` +
+`sudo xcodebuild -runFirstLaunch`; then this session can build the recording
+branch on an iPhone simulator and verify recording + the MP3 ring.
+
+Disk: was 1GB free (that is why Xcode could not install); reclaimed ~77GB (Docker
+system prune 33.5G with the host Docker.raw shrinking 46->4.9G, Homebrew 8G,
+Gradle caches 11G, npm, uv 6G, Chrome/pip/playwright/python caches ~5G) -> 78GB
+free. Left pub-cache, fvm, rustup, puppeteer, and codex caches intact.
