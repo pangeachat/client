@@ -342,15 +342,31 @@ async function main() {
   // gap this closes. Runs the COMPILED web build, so it exercises dart2js integer
   // semantics a VM unit test cannot see.
   let audio = [];
+  let audioSenders = new Set();
+  // Waits for BOTH sides, not just one. A 1:1 call must record two halves, and
+  // the bug this gates against dropped exactly one of them -- the side whose
+  // PEER hung up kept recording only on the side that pressed end, so a naive
+  // "at least one landed" passed while a whole half was silently lost.
   for (let i = 0; i < 20; i++) {
     audio = await audioSince(A.token, mA);
-    if (audio.length >= 1) break;
+    audioSenders = new Set(audio.map((e) => e.sender));
+    if (audioSenders.size >= 2) break;
     await wait(3000);
   }
-  const audioSenders = new Set(audio.map((e) => e.sender));
+  // Kept as its own check so a TOTAL failure (the dart2js-overflow regression,
+  // where zero halves land) still reads as "the web capture is dead" rather
+  // than being folded into the two-sender message below.
   h.check(s, 'a call_audio recording was written', audio.length >= 1,
     `${audio.length} pangea.call_audio event(s) after a real web call -- ` +
       'zero means the recorder never produced a half (the web capture is dead)');
+  // The honest 1:1 gate: a call between two people records two sides. Counted
+  // by SENDER, like the transcript-half check above -- two events from one
+  // device is a different failure and must not read as success.
+  h.check(s, 'both sides wrote a call_audio recording', audioSenders.size >= 2,
+    `${audio.length} pangea.call_audio event(s) from ${audioSenders.size} ` +
+      `sender(s) [${[...audioSenders].join(', ')}] after a real 1:1 web call -- ` +
+      'fewer than two senders means one device dropped its half (only the ' +
+      'side that hung up published, the peer-drop-pause bug)');
   h.check(s, 'the recording carries an uploaded audio blob',
     audio.some((e) => e.content && typeof e.content.url === 'string'
       && e.content.url.startsWith('mxc://')),

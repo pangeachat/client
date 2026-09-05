@@ -626,7 +626,7 @@ void main() {
         // `CallRecord.finish` is reached from `CallSession`'s teardown on
         // EVERY device, whether or not it ever carried the recording -- the
         // gate on that has to live inside the wired publisher, which is
-        // exactly what `CallAudioRecorder.finish`'s own `carriedOn` check is
+        // exactly what `CallAudioRecorder.finish`'s own `wasCarrier` check is
         // for. This only proves the OUTER call happens; the ownership gate
         // itself is pinned in call_audio_recorder_test.dart.
         final r = record(

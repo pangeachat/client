@@ -478,16 +478,20 @@ class CallCaptureService {
   /// only after `ActiveCall.hangUp` (which calls [stop] and then
   /// [CallCaptureService.finish]) has already completed.
   ///
-  /// SETTLE-SHAPED (a mid-call handover, the default `settleDeliveries:
-  /// true`) stops are deliberately IGNORED here, not merely narrowed: a
-  /// device that lost the election and is never re-elected again would
-  /// otherwise leave this latched at a stale `true` forever, because nothing
-  /// else ever runs `_stop`'s real work a second time to correct it -- the
-  /// later hangup-shaped stop finds everything already clean and short-
-  /// circuits before reaching this line. See [_stop]'s own comment at the
-  /// write site for the full argument, and `call_capture_test.dart`'s
-  /// "reflects the LAST HANGUP-SHAPED stop" group for the mutation-proven
-  /// scenario this fixes.
+  /// SETTLE-SHAPED stops (the default `settleDeliveries: true`) are ignored
+  /// here with ONE exception. A mid-call HANDOVER -- a device that lost the
+  /// election and is never re-elected -- must not latch this, or it would sit
+  /// at a stale `true` forever: nothing else ever runs `_stop`'s real work a
+  /// second time to correct it, because the later hangup-shaped stop finds
+  /// everything already clean and short-circuits before reaching the write
+  /// site. The exception is a PEER-DROP PAUSE (`preserveCarrier: true`): the
+  /// recorder stops because the peer or the connection went away while this
+  /// device is still the account's SOLE recorder, so it IS still the carrier
+  /// and the same short-circuit that protects a handover would otherwise lose
+  /// its half. That stop latches `true`; a handover does not. See [_stop]'s
+  /// own comment at the write site for the full argument, and
+  /// `call_capture_test.dart`'s "wasCarryingBeforeLastStop" and "a peer-drop
+  /// pause" groups for the mutation-proven scenarios.
   bool get wasCarryingBeforeLastStop => _wasCarryingBeforeLastStop;
   bool _wasCarryingBeforeLastStop = false;
 
@@ -641,6 +645,13 @@ class CallCaptureService {
     // A discard belongs to the stretch the election decided it for. Carrying it
     // into the next one would silently drop a tail nobody else recorded.
     _discardOnStop = false;
+    // The carrier latch belongs to the stretch it was set for, for the same
+    // reason. A new stretch re-opens the question of who carries it, so a `true`
+    // left by an earlier PEER-DROP PAUSE (see [_stop]) must not survive into it:
+    // otherwise a device that paused, resumed, and then handed the NEW stretch
+    // to a sibling would still read as the carrier of a half the sibling now
+    // owns. Cleared here so only the LAST stop of the last stretch decides.
+    _wasCarryingBeforeLastStop = false;
     _running = true;
     final session = ++_session;
     final DetachTap? detach;
@@ -1360,12 +1371,24 @@ class CallCaptureService {
   /// different settling -- a recorder handover wants it, a hangup does not --
   /// and a memoised whole would have made the second caller inherit the first's
   /// choice, which is how a hangup came to wait out a handover's drain.
-  Future<void> stop({bool settleDeliveries = true}) async {
-    await (_stopped ??= _stop(settleDeliveries: settleDeliveries).whenComplete(
-      () {
-        _stopped = null;
-      },
-    ));
+  ///
+  /// [preserveCarrier] is only ever true on a settle-shaped stop, and says this
+  /// stop is a PEER-DROP PAUSE rather than a sibling handover: recording is
+  /// stopping because the peer (or this device's own connection) is gone while
+  /// this device remains the account's sole recorder, so its carrier status is
+  /// latched here rather than lost. A handover leaves it false. It is inert on a
+  /// hangup-shaped stop, which reads `_running` directly.
+  Future<void> stop({
+    bool settleDeliveries = true,
+    bool preserveCarrier = false,
+  }) async {
+    await (_stopped ??=
+        _stop(
+          settleDeliveries: settleDeliveries,
+          preserveCarrier: preserveCarrier,
+        ).whenComplete(() {
+          _stopped = null;
+        }));
     if (settleDeliveries) await _settle(_settleDeliveriesWithin);
   }
 
@@ -1381,7 +1404,10 @@ class CallCaptureService {
     }
   }
 
-  Future<void> _stop({required bool settleDeliveries}) async {
+  Future<void> _stop({
+    required bool settleDeliveries,
+    bool preserveCarrier = false,
+  }) async {
     // Checked against the taps as well as the chunker: a call can be attached
     // with no chunker yet, because the chunker is not built until audio actually
     // arrives, and returning early there would leave the tap attached. A tap
@@ -1402,9 +1428,12 @@ class CallCaptureService {
       return;
     }
     // Captured HERE, before anything below can change [_running] -- see
-    // [wasCarryingBeforeLastStop] -- and ONLY for a HANGUP-shaped stop
-    // (`settleDeliveries: false`; see [stop]'s own docs: a handover wants to
-    // settle, a hangup does not, and that is precisely the fact this needs).
+    // [wasCarryingBeforeLastStop]. A HANGUP-shaped stop (`settleDeliveries:
+    // false`; see [stop]'s own docs: a handover wants to settle, a hangup does
+    // not) reads `_running` directly. A settle-shaped stop writes it in exactly
+    // ONE case, handled by the branch below: a peer-drop PAUSE, where this
+    // device is still the sole carrier and the hangup that follows would
+    // otherwise short-circuit before it could record that.
     //
     // A mid-call HANDOVER reaching this far means the device WAS carrying,
     // but is being asked to stand aside for a sibling -- the opposite of
@@ -1425,6 +1454,26 @@ class CallCaptureService {
     // hangup's own stop, whatever it finds `_running` to be at that instant.
     if (!settleDeliveries) {
       _wasCarryingBeforeLastStop = _running;
+    } else if (preserveCarrier && _running && !_discardOnStop) {
+      // A PEER-DROP PAUSE, not a sibling handover -- and the one settle-shaped
+      // stop that MUST latch the carrier fact. This device stopped recording
+      // only because the PEER left (or this device's own connection dropped)
+      // with NO sibling taking the stretch over, so it is still the sole
+      // carrier of its own outbound half and has to publish it at the eventual
+      // hangup. That hangup-shaped stop runs later, finds recording already
+      // stopped here, hits the early-return above, and so can never observe
+      // that this device was carrying -- exactly the ordering that dropped the
+      // non-initiator's half. Recording it HERE is what survives to the read.
+      //
+      // A genuine sibling HANDOVER is the opposite and is left untouched: it
+      // passes `preserveCarrier: false` (see [ActiveCall._reconcile]), the
+      // sibling holds the stretch and publishes it, and this device must not
+      // claim the same half. `!_discardOnStop` is belt-and-braces on the same
+      // distinction -- a stretch handed to a sibling is discarded, never a
+      // pause -- so the capture service's own invariant holds whatever the
+      // caller passes. [start] clears this latch for each new stretch, so a
+      // pause that later resumes and IS handed over cannot leave a stale true.
+      _wasCarryingBeforeLastStop = true;
     }
     _session++;
 

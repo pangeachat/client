@@ -69,8 +69,9 @@ typedef TranscriptPublisher =
 /// recorder could not already have latched. Whether anything is actually
 /// uploaded or sent is entirely the wired closure's decision: [CallRecord]
 /// calls this UNCONDITIONALLY, on the same terms it calls
-/// [publishTranscript], and trusts the closure to gate on `carriedOn` itself.
-/// See [_publishCallAudio] for why the gate cannot live here instead.
+/// [publishTranscript], and trusts the closure to gate on the carrier fact
+/// (`CallAudioRecorder.finish`'s `wasCarrier`) itself. See [_publishCallAudio]
+/// for why the gate cannot live here instead.
 typedef CallAudioPublisher = Future<void> Function({required String? callKey});
 
 class CallRecord {

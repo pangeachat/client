@@ -77,17 +77,19 @@ abstract class CallAudioRecordingSink {
   /// have to differ on exactly that one point).
   void onRunEnded();
 
-  /// The call is over. [carriedOn] is whether this device was still attached
+  /// The call is over. [wasCarrier] is whether this device was still attached
   /// and running the instant the caller decided to stop capturing for
   /// good -- read once, before that decision could change it, so this is the
-  /// one place this sink may trust the answer. [callKey] is the anchor the
-  /// half relates to, read fresh because it may not have existed when this
-  /// sink was built.
+  /// one place this sink may trust the answer. It is fed
+  /// `CallCaptureService.wasCarryingBeforeLastStop`, NOT the ownership arbiter's
+  /// unrelated `carriedOn`; the name says `carrier` so the two cannot be
+  /// confused at the call site. [callKey] is the anchor the half relates to,
+  /// read fresh because it may not have existed when this sink was built.
   ///
   /// THE gate. Nothing upstream of this may assume it has already excluded a
   /// non-carrying device -- see `CallCaptureService`'s own docs on where
-  /// [carriedOn] comes from and why it cannot be derived any later than this.
-  Future<void> finish({required bool carriedOn, required String? callKey});
+  /// [wasCarrier] comes from and why it cannot be derived any later than this.
+  Future<void> finish({required bool wasCarrier, required String? callKey});
 }
 
 /// Where upload/send progress for one call-audio half is remembered, keyed by
@@ -569,9 +571,9 @@ class CallAudioRecorder implements CallAudioRecordingSink {
   Future<void>? _finishing;
 
   @override
-  Future<void> finish({required bool carriedOn, required String? callKey}) {
+  Future<void> finish({required bool wasCarrier, required String? callKey}) {
     return _finishing ??= _finish(
-      carriedOn: carriedOn,
+      wasCarrier: wasCarrier,
       callKey: callKey,
     ).whenComplete(() => _finishing = null);
   }
@@ -624,7 +626,7 @@ class CallAudioRecorder implements CallAudioRecordingSink {
   }
 
   Future<void> _finish({
-    required bool carriedOn,
+    required bool wasCarrier,
     required String? callKey,
   }) async {
     // Ahead of every guard below: a generation's bytes are not final until
@@ -634,7 +636,7 @@ class CallAudioRecorder implements CallAudioRecordingSink {
     await _drainPending();
 
     final gen = _current;
-    if (!carriedOn) {
+    if (!wasCarrier) {
       Logs().i(
         'No call audio half sent: this device was not carrying the '
         'recording when the call ended',

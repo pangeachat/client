@@ -364,14 +364,17 @@ class CallSession extends ChangeNotifier {
           // called `capture.stop()` (and `capture.finish()`), so
           // `isRecording` can never answer the question this needs asked.
           //
-          // `carriedOn` is read HERE, fresh, on every call -- `finish` is
+          // `wasCarrier` is read HERE, fresh, on every call -- `finish` is
           // idempotent and this closure may run again on a retried credit --
           // never cached, because `CallAudioRecorder.finish` is what re-
           // checks the SAME fact again through its own upload, and a stale
-          // copy handed in once would defeat that.
+          // copy handed in once would defeat that. The parameter is named
+          // `wasCarrier`, not `carriedOn`, precisely so this line cannot be
+          // misread as the ownership arbiter's unrelated `carriedOn`: the value
+          // is `capture.wasCarryingBeforeLastStop`, the recorder's carrier fact.
           publishCallAudio: ({required String? callKey}) =>
               audioRecorder.finish(
-                carriedOn: capture.wasCarryingBeforeLastStop,
+                wasCarrier: capture.wasCarryingBeforeLastStop,
                 callKey: callKey,
               ),
           analytics: analytics,

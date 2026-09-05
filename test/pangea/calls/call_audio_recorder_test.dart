@@ -160,7 +160,7 @@ void main() {
     test('a device that never carried the recording sends nothing', () async {
       final r = recorder();
       // No onRunStarted / onFrame at all: this device never recorded.
-      await r.finish(carriedOn: false, callKey: _callKey);
+      await r.finish(wasCarrier: false, callKey: _callKey);
       expect(uploads, isEmpty);
       expect(sent, isEmpty);
     });
@@ -172,19 +172,19 @@ void main() {
         r.onRunStarted(1000, 16000, 1);
         r.onFrame(_tone(160));
         r.onRunEnded();
-        // carriedOn is read once, at the moment the caller decided to stop
+        // wasCarrier is read once, at the moment the caller decided to stop
         // for good -- false here means a sibling was the last one recording.
-        await r.finish(carriedOn: false, callKey: _callKey);
+        await r.finish(wasCarrier: false, callKey: _callKey);
         expect(uploads, isEmpty);
         expect(sent, isEmpty);
       },
     );
 
     test(
-      'a device that never opened a generation sends nothing even when carriedOn',
+      'a device that never opened a generation sends nothing even when wasCarrier',
       () async {
         final r = recorder();
-        await r.finish(carriedOn: true, callKey: _callKey);
+        await r.finish(wasCarrier: true, callKey: _callKey);
         expect(uploads, isEmpty);
         expect(sent, isEmpty);
       },
@@ -197,7 +197,7 @@ void main() {
         r.onRunStarted(1000, 16000, 1);
         r.onFrame(_tone(160));
         r.onRunEnded();
-        await r.finish(carriedOn: true, callKey: _callKey);
+        await r.finish(wasCarrier: true, callKey: _callKey);
         expect(uploads, hasLength(1));
         expect(sent, hasLength(1));
         expect(sent.single['call_key'], _callKey);
@@ -213,7 +213,7 @@ void main() {
         r.onFrame(_tone(160));
         r.onRunEnded();
         r.cancelOwnership();
-        await r.finish(carriedOn: true, callKey: _callKey);
+        await r.finish(wasCarrier: true, callKey: _callKey);
         expect(uploads, isEmpty);
         expect(sent, isEmpty);
       },
@@ -228,7 +228,7 @@ void main() {
         r.onRunEnded();
 
         uploadGate = Completer<Uri>();
-        final finishing = r.finish(carriedOn: true, callKey: _callKey);
+        final finishing = r.finish(wasCarrier: true, callKey: _callKey);
 
         // Let `finish()` run all the way up to the point it is genuinely
         // blocked on the upload gate -- draining its own queued frame and
@@ -277,7 +277,7 @@ void main() {
         r.onRunStarted(1000, 16000, 1);
         r.onFrame(_tone(160));
         r.onRunEnded();
-        await r.finish(carriedOn: true, callKey: _callKey);
+        await r.finish(wasCarrier: true, callKey: _callKey);
 
         expect(
           uploads,
@@ -318,7 +318,7 @@ void main() {
         r.onRunEnded();
 
         await harness.capture(() {
-          expect(r.finish(carriedOn: true, callKey: _callKey), completes);
+          expect(r.finish(wasCarrier: true, callKey: _callKey), completes);
         });
         expect(harness.events, hasLength(1));
       },
@@ -336,7 +336,7 @@ void main() {
         r.onRunStarted(1_000_300, 16000, 1); // 250ms after the device joined
         r.onFrame(_tone(160));
         r.onRunEnded();
-        await r.finish(carriedOn: true, callKey: _callKey);
+        await r.finish(wasCarrier: true, callKey: _callKey);
 
         final content = CallAudioContent.fromJson(sent.single)!;
         expect(content.recordingStartedOffsetFromDeviceJoinMs, 250);
@@ -356,7 +356,7 @@ void main() {
         r.onRunStarted(1_000_300, 16000, 1);
         r.onFrame(_tone(160));
         r.onRunEnded();
-        await r.finish(carriedOn: true, callKey: _callKey);
+        await r.finish(wasCarrier: true, callKey: _callKey);
 
         final content = CallAudioContent.fromJson(sent.single)!;
         expect(content.clockAnchor, isNull);
@@ -380,7 +380,7 @@ void main() {
         r.onFrame(_tone(16000));
         r.onFrame(_tone(16000));
         r.onRunEnded();
-        await r.finish(carriedOn: true, callKey: _callKey);
+        await r.finish(wasCarrier: true, callKey: _callKey);
 
         final content = CallAudioContent.fromJson(sent.single)!;
         expect(content.size, lessThanOrEqualTo(32000 + 44));
@@ -398,7 +398,7 @@ void main() {
       r.onRunEnded();
 
       uploadGate = Completer<Uri>(); // deliberately never completed
-      final finishing = r.finish(carriedOn: true, callKey: _callKey);
+      final finishing = r.finish(wasCarrier: true, callKey: _callKey);
       await pumpEventQueue();
       expect(uploads, hasLength(1), reason: 'the upload has started');
 
@@ -427,7 +427,7 @@ void main() {
         r.onFrame(_tone(160));
         r.onRunEnded();
 
-        final finishing = r.finish(carriedOn: true, callKey: _callKey);
+        final finishing = r.finish(wasCarrier: true, callKey: _callKey);
         // Real time, deliberately: attempt 0 has failed and attempt 1 is now
         // inside its 200ms backoff.
         await Future.delayed(const Duration(milliseconds: 50));
@@ -458,7 +458,7 @@ void main() {
       r.onRunEnded();
 
       uploadGate = Completer<Uri>();
-      final finishing = r.finish(carriedOn: true, callKey: _callKey);
+      final finishing = r.finish(wasCarrier: true, callKey: _callKey);
       await pumpEventQueue();
       expect(uploads, hasLength(1));
 
@@ -499,7 +499,7 @@ void main() {
       r.onFrame(_tone(160));
       r.onRunEnded();
 
-      final finishing = r.finish(carriedOn: true, callKey: _callKey);
+      final finishing = r.finish(wasCarrier: true, callKey: _callKey);
       // The upload itself resolves immediately (no gate); what blocks is
       // persisting it, which lands `finish()` exactly between "uploaded"
       // and the pre-send check.
@@ -546,7 +546,7 @@ void main() {
       };
 
       final logsBefore = Logs().outputEvents.length;
-      final finishing = r.finish(carriedOn: true, callKey: _callKey);
+      final finishing = r.finish(wasCarrier: true, callKey: _callKey);
       await pumpEventQueue();
 
       r.cancelOwnership();
@@ -597,7 +597,7 @@ void main() {
         // this test pass a cold gate while the give-up path itself
         // bypassed the exit-guard entirely.
         final logsBeforeFirstCall = Logs().outputEvents.length;
-        await r.finish(carriedOn: true, callKey: _callKey);
+        await r.finish(wasCarrier: true, callKey: _callKey);
 
         expect(uploads, hasLength(1), reason: 'the first call uploaded once');
         expect(sent, isEmpty, reason: 'every send attempt failed');
@@ -618,7 +618,7 @@ void main() {
         r.cancelOwnership();
 
         final logsBeforeSecondCall = Logs().outputEvents.length;
-        await r.finish(carriedOn: true, callKey: _callKey);
+        await r.finish(wasCarrier: true, callKey: _callKey);
 
         expect(
           uploads,
@@ -680,7 +680,7 @@ void main() {
       r.onFrame(_tone(160));
       r.onRunEnded();
 
-      await r.finish(carriedOn: true, callKey: _callKey);
+      await r.finish(wasCarrier: true, callKey: _callKey);
 
       expect(uploads, hasLength(1));
       expect(sent, hasLength(1), reason: 'the send genuinely succeeded');
@@ -712,7 +712,7 @@ void main() {
       r.onRunEnded();
 
       final logsBefore = Logs().outputEvents.length;
-      final finishing = r.finish(carriedOn: true, callKey: _callKey);
+      final finishing = r.finish(wasCarrier: true, callKey: _callKey);
       // Real time, deliberately (mirrors the existing backoff test
       // above): attempt 0 has uploaded, its send has failed once, and
       // attempt 1 is now inside its 200ms backoff.
@@ -743,7 +743,7 @@ void main() {
       r.onRunEnded();
 
       sendGate = Completer<String?>(); // never completed
-      final finishing = r.finish(carriedOn: true, callKey: _callKey);
+      final finishing = r.finish(wasCarrier: true, callKey: _callKey);
       await pumpEventQueue();
       expect(
         uploads,
@@ -777,7 +777,7 @@ void main() {
       r.onRunEnded();
 
       sendGate = Completer<String?>(); // never completed
-      final finishing = r.finish(carriedOn: true, callKey: _callKey);
+      final finishing = r.finish(wasCarrier: true, callKey: _callKey);
       await pumpEventQueue();
 
       r.cancelOwnership();
@@ -824,7 +824,7 @@ void main() {
       r.onRunEnded();
 
       sendGate = Completer<String?>(); // never completed
-      final finishing = r.finish(carriedOn: true, callKey: _callKey);
+      final finishing = r.finish(wasCarrier: true, callKey: _callKey);
       await pumpEventQueue();
       expect(
         uploads,
@@ -861,7 +861,7 @@ void main() {
           r.onFrame(frame);
         }
         r.onRunEnded();
-        await r.finish(carriedOn: true, callKey: _callKey);
+        await r.finish(wasCarrier: true, callKey: _callKey);
 
         final content = CallAudioContent.fromJson(sent.single)!;
         // At most the 8 that fit in the bound; the other 32 were dropped
@@ -883,7 +883,7 @@ void main() {
         r.onRunStarted(5000, 16000, 1);
         r.onFrame(_tone(1600));
         r.onRunEnded();
-        await r.finish(carriedOn: true, callKey: _callKey);
+        await r.finish(wasCarrier: true, callKey: _callKey);
 
         final content = CallAudioContent.fromJson(sent.single)!;
         expect(
@@ -905,7 +905,7 @@ void main() {
         await pumpEventQueue();
       }
       r.onRunEnded();
-      await r.finish(carriedOn: true, callKey: _callKey);
+      await r.finish(wasCarrier: true, callKey: _callKey);
 
       final content = CallAudioContent.fromJson(sent.single)!;
       expect(content.durationMs, 40 * 100);
@@ -926,7 +926,7 @@ void main() {
       // half that reads the very same source.
       anchor = const ClockAnchor(sfuMs: 1_000_000, deviceMs: 1_000_050);
 
-      await r.finish(carriedOn: true, callKey: _callKey);
+      await r.finish(wasCarrier: true, callKey: _callKey);
 
       final content = CallAudioContent.fromJson(sent.single)!;
       expect(
@@ -959,7 +959,7 @@ void main() {
       // completer-await (rather than a loop) would miss.
       scheduleMicrotask(() => r.onFrame(_tone(1600)));
 
-      await r.finish(carriedOn: true, callKey: _callKey);
+      await r.finish(wasCarrier: true, callKey: _callKey);
 
       final content = CallAudioContent.fromJson(sent.single)!;
       expect(
@@ -985,7 +985,7 @@ void main() {
       r.onRunStarted(1000, 16000, 1);
       r.onFrame(_tone(160));
       r.onRunEnded();
-      await r.finish(carriedOn: true, callKey: _callKey);
+      await r.finish(wasCarrier: true, callKey: _callKey);
 
       expect(uploads, isEmpty);
       expect(sent, isEmpty);
@@ -1011,7 +1011,7 @@ void main() {
           'generation_id': r.currentGenerationId,
         });
 
-        await r.finish(carriedOn: true, callKey: _callKey);
+        await r.finish(wasCarrier: true, callKey: _callKey);
 
         expect(
           uploads,
@@ -1052,7 +1052,7 @@ void main() {
         r.onRunStarted(1000, 16000, 1);
         r.onFrame(_tone(160));
         r.onRunEnded();
-        await r.finish(carriedOn: true, callKey: _callKey);
+        await r.finish(wasCarrier: true, callKey: _callKey);
 
         expect(
           uploads,
@@ -1116,7 +1116,7 @@ void main() {
             'same generation id',
       );
 
-      await processTwo.finish(carriedOn: true, callKey: _callKey);
+      await processTwo.finish(wasCarrier: true, callKey: _callKey);
 
       expect(
         uploads,
@@ -1141,7 +1141,7 @@ void main() {
         r.onFrame(_tone(160));
         r.onRunEnded();
         final generationId = r.currentGenerationId;
-        await r.finish(carriedOn: true, callKey: _callKey);
+        await r.finish(wasCarrier: true, callKey: _callKey);
 
         final txnId = CallAudioContent.txnId(_callKey, _sender, _device);
         final persisted = await store.read(txnId);
@@ -1174,7 +1174,7 @@ void main() {
         'generation_id': r.currentGenerationId,
       });
 
-      await r.finish(carriedOn: true, callKey: _callKey);
+      await r.finish(wasCarrier: true, callKey: _callKey);
 
       expect(
         uploads,
@@ -1205,7 +1205,7 @@ void main() {
           'generation_id': r.currentGenerationId,
         });
 
-        await r.finish(carriedOn: true, callKey: _callKey);
+        await r.finish(wasCarrier: true, callKey: _callKey);
 
         expect(
           uploads,
@@ -1249,7 +1249,7 @@ void main() {
         r.onRunStarted(1000, 16000, 1);
         r.onFrame(_tone(160));
         r.onRunEnded();
-        await r.finish(carriedOn: true, callKey: _callKey);
+        await r.finish(wasCarrier: true, callKey: _callKey);
 
         expect(
           sendCalls,
@@ -1288,8 +1288,8 @@ void main() {
         r.onRunEnded();
 
         uploadGate = Completer<Uri>(); // deliberately never completed
-        final first = r.finish(carriedOn: true, callKey: _callKey);
-        final second = r.finish(carriedOn: true, callKey: _callKey);
+        final first = r.finish(wasCarrier: true, callKey: _callKey);
+        final second = r.finish(wasCarrier: true, callKey: _callKey);
         await pumpEventQueue();
         expect(
           uploads,

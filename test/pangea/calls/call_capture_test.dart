@@ -83,7 +83,7 @@ class RecordingAudioSink implements CallAudioRecordingSink {
   final List<({int runStartedAtMs, int sampleRate, int channels})> runsStarted =
       [];
   int runsEnded = 0;
-  final List<({bool carriedOn, String? callKey})> finishCalls = [];
+  final List<({bool wasCarrier, String? callKey})> finishCalls = [];
 
   /// Set by a test that wants to prove a failing sink cannot disturb the
   /// transcript path sitting beside it.
@@ -111,10 +111,10 @@ class RecordingAudioSink implements CallAudioRecordingSink {
 
   @override
   Future<void> finish({
-    required bool carriedOn,
+    required bool wasCarrier,
     required String? callKey,
   }) async {
-    finishCalls.add((carriedOn: carriedOn, callKey: callKey));
+    finishCalls.add((wasCarrier: wasCarrier, callKey: callKey));
   }
 }
 
@@ -1053,6 +1053,102 @@ void main() {
         track.emit(20);
         await s.finish(); // carries to the true end
         expect(s.wasCarryingBeforeLastStop, isTrue);
+      },
+    );
+  });
+
+  group('a peer-drop pause', () {
+    // THE NON-INITIATOR BUG. In a 1:1 call, the side whose PEER leaves stops
+    // recording on a peer-drop grace pause -- a settle-shaped stop -- BEFORE
+    // its own hangup runs. That pause is not a sibling handover: no other
+    // device of this account took the stretch over, so this device is still
+    // the sole carrier of its own half and must publish it. The bug latched
+    // this on nothing but a hangup-shaped stop reading the instantaneous
+    // `_running`, and by the time the hangup ran `_running` was already false
+    // and the stop short-circuited -- so the half was silently dropped and a
+    // 1:1 call yielded ONE recording instead of TWO. The fix latches the
+    // carrier fact on the peer-drop pause itself.
+    test(
+      'a device whose PEER left, then hung up, still reports carrying',
+      () async {
+        final s = service();
+        await s.start(track);
+        track.emit(20);
+
+        // The peer-drop grace pause: recording stops because the peer is gone,
+        // NOT because a sibling took over. Settle-shaped, exactly as
+        // `ActiveCall._reconcile` issues it, and carrying the carrier signal.
+        await s.stop(preserveCarrier: true);
+        expect(
+          s.wasCarryingBeforeLastStop,
+          isTrue,
+          reason:
+              'a peer leaving is not a handover; this device is still the '
+              'sole carrier of its own half',
+        );
+
+        // The call then ends. `finish()` issues its own hangup-shaped stop,
+        // which by now finds recording already stopped and short-circuits --
+        // the exact ordering that used to erase the carrier fact.
+        await s.finish();
+        expect(
+          s.wasCarryingBeforeLastStop,
+          isTrue,
+          reason:
+              'the carrier fact must survive the hangup-shaped stop that '
+              'follows a peer-drop pause -- otherwise the half is dropped',
+        );
+      },
+    );
+
+    test(
+      'a GENUINE sibling handover after the same shape does NOT claim carrier',
+      () async {
+        // The no-regress guard for the fix above. A device that stands aside
+        // for a sibling issues the SAME settle-shaped stop, but as a handover
+        // (`preserveCarrier: false`, the default). It must NOT report carrying:
+        // the sibling holds the stretch and publishes it, and two claims would
+        // credit the account twice.
+        final s = service();
+        await s.start(track);
+        track.emit(20);
+        await s.stop(); // a handover, not a peer-drop pause
+        expect(s.wasCarryingBeforeLastStop, isFalse);
+
+        await s.finish();
+        expect(
+          s.wasCarryingBeforeLastStop,
+          isFalse,
+          reason: 'a sibling handover leaves the half to the sibling',
+        );
+      },
+    );
+
+    test(
+      'a pause that resumes and is then handed to a sibling drops the stale true',
+      () async {
+        // The reset-on-start closes the one way a preserved carrier could go
+        // stale: peer drops (pause latches true), peer returns and recording
+        // resumes, then a sibling takes the NEW stretch over. The handover must
+        // win, not the earlier pause -- or this device would publish a half the
+        // sibling now owns.
+        final s = service();
+        await s.start(track);
+        track.emit(20);
+        await s.stop(preserveCarrier: true); // peer dropped
+        expect(s.wasCarryingBeforeLastStop, isTrue);
+
+        await s.start(track); // peer returned, recording resumes
+        track.emit(20);
+        await s.stop(); // a sibling now takes over -- a handover
+        await s.finish();
+        expect(
+          s.wasCarryingBeforeLastStop,
+          isFalse,
+          reason:
+              'a new stretch re-opens the question; the handover that ended '
+              'it, not the earlier pause, decides the carrier',
+        );
       },
     );
   });
