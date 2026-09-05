@@ -364,9 +364,27 @@ the live panel attaches. iOS hits the SAME recording bug -- the fix helps there.
   if it's a genuine v1.9.1<->protocol16 signaling issue that only staging can
   validate. Owner chose 'repair local stack + retest'. NOT-YET-TESTED: the
   arbitration / 'join on other device' UI flow (needs device_* phone scenarios
-  or manual). OPEN PROD RISK: staging LiveKit version unknown from checked-out
-  repos (Ansible-deployed) -- if too old for the protocol-16 attribute ack, the
-  dual-device election is broken in prod too (every 2-device call duplicates).
+  or manual).
+- ROOT CAUSE PROVEN (2026-09-05, reverted livekit-server A/B swap): the
+  setAttributes timeout is a livekit-server VERSION bug, not the client or the
+  grant. livekit_client 2.11.0 correlates its setAttributes ack on the top-level
+  RequestResponse.requestId (5s timeout, exact 'Signal request timed out'); v1.9.1
+  replies OK but leaves the top-level requestId 0 (only echoes it nested) ->
+  never matches -> timeout -> level-triggered re-send storm (0 of 25 acks carried
+  the id). v1.13.6 populates it -> setAttributes succeeds (client still
+  joins/publishes fine; confirmed in SDK source local.dart + server debug logs).
+  FIX = upgrade the SFU's livekit-server on staging/prod (owner-gated Ansible
+  infra) to >= the release that populates RequestResponse.request_id (v1.13.6
+  confirmed; minimal not bisected). RECORDING is unaffected (election fallback =
+  device-id + presence, correct outcome). Only the pangea_chosen arbitration UX
+  needs the upgrade. Local stack REVERTED to v1.9.1, clean. OPEN: staging/prod's
+  actual livekit-server version is unknown (Ansible, not in repos) -- a DevOps
+  check of that one fact sizes the whole prod risk. HELD: no issue/deploy-note
+  filed yet (PRs held till Tue); can draft on owner go. Harness bug noted: its
+  'token lacks CanUpdateOwnMetadata' FAIL note is now factually wrong + the
+  election check asserts on an app-log line the release web build doesn't forward
+  to console, so it reds a correct outcome -- worth fixing the check to assert on
+  the recording OUTCOME.
 - MIX DELIVERED to owner: room !Hgav callKey QXvZ4Jhk has BOTH halves (@learner +
   @calltester); tools/merge_call_audio aligned them on the SFU timeline (friend
   +14ms) -> merged_stereo.wav (L=you R=friend) + merged_mono.wav -> mp3. NOTE:
