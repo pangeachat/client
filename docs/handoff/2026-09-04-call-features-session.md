@@ -495,3 +495,16 @@ the live panel attaches. iOS hits the SAME recording bug -- the fix helps there.
   preserved peer-drop pause), reset the latch in start(); guard with the peer-drop
   tests + tighten the E2E to require BOTH senders (combined's asserts >=1). Also
   rename the recorder param off `carriedOn` so the collision can't recur.
+- BUG A FIXED + COLD-GREEN (2026-09-05): commit 529e9a392c on combined ported
+  6e0095ff7a+d35010fb64 onto #8801 (add _recorderPausedForPeer = elected &&
+  !_wanted, read LIVE at the reconcile stop, preserveCarrier through capture.stop/
+  _stop, latch on settle-shaped peer pause when preserveCarrier && _running &&
+  !_discardOnStop, reset in start()); renamed CallAudioRecorder.finish param
+  carriedOn->wasCarrier (killed the name collision); tightened transcript.js E2E
+  to require BOTH senders. 4 mutation-proven tests, 1495 calls tests green,
+  analyze/format clean. Agent Codex CORRECT + my independent COLD Codex CORRECT /
+  GATE-SOFTENING:no (all 5 adversarial Qs affirmed w/ cited evidence). Not pushed
+  (PRs held to Tue). NEXT: rebuild APK+web, clean test-device pollution, real
+  re-test -> proves both halves upload + yields the real web WAV needed to
+  finalize BUG C (web capture echo-bleed/no-drop-accounting). BUG B (auto
+  full-call mix) is an owner design decision, not started.
