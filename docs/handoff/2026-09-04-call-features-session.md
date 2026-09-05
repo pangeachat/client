@@ -231,6 +231,14 @@ three RED, all now fixed:
   the code comment at each cue ref guards against a revert.
 
 Working: 17/17 E2E on combined; 55 call_session + 58 player unit tests green.
-Re-gate of `66ffac7d36` + `7330862c15` running (codex). Branch tips (all local):
+Re-gate of `66ffac7d36` + `7330862c15`: BOTH GREEN (codex, fresh verdicts) --
+the HIGH cut-cue regression and the player-playable + reconnecting/cut-order test
+gaps are all closed. So all 4 originally-gated commits are now cold-GREEN
+(HIGH + every MEDIUM), with the two OGG LOW asset-locks (incoming-ring, busy)
+the only documented deferral. Branch tips (all local):
 `satvik/tokenize-call-transcript` = `66ffac7d36`; `satvik/call-audio-recording`
 = `7330862c15`.
+
+OPEN for owner: (a) end-tone scope -- caller-only (default) vs both parties;
+(b) the two deferred OGG LOW locks; (c) still-pending from (V): iOS on-device
+pass, the compiled-web CI lane, PR split/open + batch-merge, #8808 design.
