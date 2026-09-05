@@ -1,6 +1,6 @@
 ---
 applyTo: "lib/config/**"
-description: "How the shared design tokens reach the Flutter client — the generated theme extension, and why the Material 3 seed is not a token."
+description: "How the shared design tokens reach the Flutter client — where the brand roles will live, and why the Material 3 seed is not a token."
 ---
 
 # Design Tokens (client)
@@ -9,7 +9,9 @@ Roles, sync direction and contrast gates are owned by [design-tokens.instruction
 
 ## How tokens arrive
 
-Brand roles land as a generated `ThemeExtension` on `ThemeData`, not as members of `ColorScheme`. Widgets read them from the theme extension.
+Brand roles belong on a `ThemeExtension` on `ThemeData`, not on members of `ColorScheme`, because `ColorScheme` is derived from a seed the learner can change and so cannot hold a fixed brand value.
+
+**No such extension exists yet.** `themes.dart` builds `ColorScheme.fromSeed` and nothing more, and the brand constants in `app_config.dart` are maintained by hand against the role table in the shared doc. Until the generator lands, that table is the only thing keeping this surface aligned.
 
 ## Why the seed is not a token
 
