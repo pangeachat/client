@@ -385,6 +385,29 @@ the live panel attaches. iOS hits the SAME recording bug -- the fix helps there.
   election check asserts on an app-log line the release web build doesn't forward
   to console, so it reds a correct outcome -- worth fixing the check to assert on
   the recording OUTCOME.
+- STAGING RISK CLOSED (2026-09-05): staging+prod run livekit-server v1.11.0
+  (pangeachat/ansible requirements.yml, MASH role v1.11.0-0, no per-env
+  override). A/B-tested v1.11.0 locally -> populates the top-level requestID, 0
+  setAttributes timeouts = FIXED shape. So the attribute plane / dual-device
+  arbitration WORKS in prod; the bug was ONLY the stale local v1.9.1 pin. NO
+  infra upgrade needed. Bumped local-dev/docker-compose.yml livekit to v1.11.0
+  (matches staging; local-dev is not a git repo) so #8801 behaves faithfully
+  locally.
+- INTEGRATION FINDING (blocks the iOS combined build): the recording drop/race
+  fixes (6e0095ff7a, d35010fb64 on satvik/call-audio-recording) and the #8801
+  device-ownership feature (d6ef346712 on combined) are TWO PARALLEL edits to
+  active_call.dart that were never integrated. #8801 REWROTE the recording-publish
+  decision to route through a CallOwnership arbiter (`carriedOn => _ownership.carriedOn`),
+  REPLACING the ad-hoc _recorderPausedForPeer/carrier mechanism the drop/race
+  fixes patched -- so those fixes DON'T cherry-pick onto combined (active_call.dart
+  conflict, 202-line divergence) and are likely superseded. combined's #8801
+  recording model has NEVER been E2E-validated (all 18/18 + two-device validation
+  was on the OLD call-audio-rec model). OGG->MP3 (26a67d96c4) DID cherry-pick
+  cleanly onto combined (849019cc74). NOW VALIDATING combined's #8801 recording
+  via a two-web transcript.js run on the v1.11.0 stack (both-sides check) before
+  building it for iOS. iOS readiness on combined: .env has LAN SYNAPSE_URL, Pods
+  present, prior sim build exists; still need pubspec `- .env` uncommented +
+  Podfile arm64-sim exclusion patched + .env bundled.
 - MIX DELIVERED to owner: room !Hgav callKey QXvZ4Jhk has BOTH halves (@learner +
   @calltester); tools/merge_call_audio aligned them on the SFU timeline (friend
   +14ms) -> merged_stereo.wav (L=you R=friend) + merged_mono.wav -> mp3. NOTE:
