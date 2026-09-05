@@ -54,6 +54,14 @@ The participant card is roughly one avatar wide and has no room for a label, so 
 
 The participant card shows the member's total for **the course's language** beside their level, which is already a per-language number, so both values on the card share one scope.
 
+## Who made the course
+
+The course page credits its quest's **owner** — the teacher who built it — resolved for display from that owner's Matrix profile. The choreo joins the owner's MXID onto the quest response as `owner_mxid` ([quests.instructions.md](../../../2-step-choreographer/.github/instructions/quests.instructions.md)); the stored `owner` is a per-env `matrix-users` row id and is useless for this.
+
+Same ladder as an activity's credit, which [activity-start-page.instructions.md](activity-start-page.instructions.md) owns: profile, else the stored MXID with a placeholder contact icon, and the PangeaChat name and avatar reserved for `@system`-owned content. A quest with no owner is Pangea's own and reads that way.
+
+Missions are **not** attributed. They are generic and reused across courses and languages by design, carry no owner, and crediting one to whoever first minted it would misrepresent shared content as authored.
+
 ## The Activities row on the course page
 
 The course page opens on a shortlist: one row of activity cards headed **Activities**, answering "what should I do in this course right now?" ([client#8741](https://github.com/pangeachat/client/issues/8741)). It names no Mission. The header names the section, not the shortlist — that a ranked row is a suggestion is what a ranked row already means, so "Suggested" only added a word ([client#8744](https://github.com/pangeachat/client/issues/8744)). The Mission-by-Mission plan — every Mission with its can-do statement, star count and activities — sits one tap away behind the section header's "See all", and is where a learner reads the course's shape.
