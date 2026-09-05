@@ -108,7 +108,10 @@ class AssetRingSound implements RingSound {
 
   @override
   Future<void> busy() =>
-      _oneShot('sounds/notification.ogg', times: 2, gapMs: 450);
+      // MP3, not OGG -- audioplayers has no iOS/macOS OGG decoder, so the
+      // engaged tone was silent on Apple platforms. notification.ogg is still
+      // used for the web local-notification sound, which the browser decodes.
+      _oneShot('sounds/notification.mp3', times: 2, gapMs: 450);
 
   @override
   Future<void> playOnce(String asset) => _oneShot(asset, times: 1);

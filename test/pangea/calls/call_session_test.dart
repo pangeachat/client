@@ -2358,7 +2358,9 @@ void main() {
         expect(
           fake.log,
           contains('start:sounds/ringback.mp3'),
-          reason: 'placing a call loops the ringback tone, not call.ogg',
+          reason:
+              'placing a call loops the ringback tone, not the '
+              'reconnecting cue',
         );
 
         // The peer answers: they appear in the roster.

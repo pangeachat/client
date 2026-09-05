@@ -768,7 +768,9 @@ class CallSession extends ChangeNotifier {
       if (cue == _RingCue.ringback) {
         _tones.play(_ringbackKey, asset: 'sounds/ringback.mp3');
       } else if (cue == _RingCue.reconnecting) {
-        _tones.play(_reconnectKey, asset: 'sounds/call.ogg');
+        // MP3, not OGG -- audioplayers has no iOS/macOS OGG decoder (see the
+        // incoming ring in incoming_call_banner.dart for the full note).
+        _tones.play(_reconnectKey, asset: 'sounds/call.mp3');
       } else {
         _tones.stopAll();
       }

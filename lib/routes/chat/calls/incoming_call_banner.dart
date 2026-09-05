@@ -136,7 +136,12 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     final previous = _ringing;
     _ringing = ring;
     if (ring != null) {
-      _ringPlayer.play(ring.event.eventId, asset: 'sounds/phone.ogg');
+      // MP3, not OGG: audioplayers on iOS/macOS (AVFoundation) has no OGG
+      // Vorbis decoder, so an .ogg ring plays SILENTLY on Apple platforms --
+      // the banner shows but never rings. The base VoIP ringtone
+      // (user_media_manager.dart) still uses phone.ogg through its own path;
+      // this is the Pangea RingPlayer cue and must be Apple-decodable.
+      _ringPlayer.play(ring.event.eventId, asset: 'sounds/phone.mp3');
     } else if (previous != null) {
       _ringPlayer.stop(previous.event.eventId);
     }
