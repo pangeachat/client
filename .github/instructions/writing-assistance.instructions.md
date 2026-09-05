@@ -101,7 +101,7 @@ The card positions itself relative to the currently selected match's highlighted
 
 ```
 ┌─────────────────────────────────┐
-│  ✕   Edit Category Title  🎧 🚩 │  ← Header: close, category name (e.g. "Verb Conjugation"), Listen First, flag
+│  ✕   Edit Category Title  🎧 ⋮ │  ← Header: close, category name (e.g. "Verb Conjugation"), Listen First, menu
 │                                 │
 │  🤖  Hint text explaining the   │  ← Bot face left-aligned, hint text beside it
 │      suggestion in detail       │
@@ -114,11 +114,11 @@ The card positions itself relative to the currently selected match's highlighted
 └─────────────────────────────────┘
 ```
 
-**When the header runs out of room**, both actions move into an overflow menu, so the category name keeps its full width:
+**When the header runs out of room**, Listen First folds into the menu too, so the category name keeps its full width:
 
 ```
 ┌─────────────────────────────────┐
-│  ✕   Subject Verb Agreement  ⋮  │  ← Listen First and flag live in the menu
+│  ✕   Subject Verb Agreement  ⋮  │  ← Listen First joins the menu
 └─────────────────────────────────┘
 ```
 
@@ -165,9 +165,24 @@ The mode is an icon-only toggle in the card header, next to the flag — on or o
 
 ### Header actions and width
 
-The header carries the category name and, on the right, Listen First and the flag. The name is what the learner opened the card to read and it is the part that grows — "Subject Verb Agreement" leaves no room for two icons on a phone where "Spelling" leaves plenty — so **the icons yield to the title, not the reverse**: when the measured title cannot sit beside them, both collapse into a `⋮` overflow menu holding the same two actions.
+The header carries the category name and, on the right, the Listen First toggle and a `⋮` overflow menu.
 
-The trigger is the measured width of this title in this card at this text scale, not a device breakpoint. A fixed breakpoint gets both cases wrong at once — it hides the icons on a short title that had room, and keeps them on a long one that didn't — and a learner scaling their text up moves the line again.
+**Listen First is the only action with a place in the header itself.** It is the one a learner flips *while reading this card*, so it has to be one tap away. Everything else the card offers is a trip out of it — turn the whole feature off, report this content, open the settings page — and a trip can afford a menu. The menu is always present; there is no flag icon in the header any more, and reporting is one of its entries.
+
+The menu holds, in order:
+
+| Entry | Kind |
+| --- | --- |
+| **Listen first** | Mode, checked when on — present only when it has folded in from the header, and only on a match that has choices |
+| **Enable writing assistance** | Mode, checked when on — the same `autoIGC` toggle learning settings owns, so a learner handed a card they did not want can stop it from where they are |
+| **Report content issue** | Action — the feedback dialog |
+| **Learning settings** | Action — opens the learning settings page |
+
+The name is what the learner opened the card to read and it is the part that grows — "Subject Verb Agreement" leaves no room for the toggle on a phone where "Spelling" leaves plenty — so **the toggle yields to the title, not the reverse**: when the measured title cannot sit beside both the toggle and the menu, Listen First folds into the menu.
+
+The trigger is the measured width of this title in this card at this text scale, not a device breakpoint. A fixed breakpoint gets both cases wrong at once — it hides the toggle on a short title that had room, and keeps it on a long one that didn't — and a learner scaling their text up moves the line again.
+
+**The anchor id is per match.** The "audio is off" popup positions itself against a `GlobalKey` that [`PangeaAnyState`](../../lib/features/overlay/any_state_holder.dart) caches by id and never evicts, so a constant id is claimed by every header that ever mounts — and two are mounted at once whenever one card is torn down while its replacement builds. That is a duplicate-`GlobalKey` throw on every rebuild, which the learner sees as a flashing red screen. Whichever control currently shows Listen First holds the anchor; never both.
 
 ### What We're Removing
 

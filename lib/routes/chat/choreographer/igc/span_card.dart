@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
+import 'package:go_router/go_router.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/choice_array.dart';
@@ -105,6 +108,35 @@ class SpanCardState extends State<SpanCard> {
     MatrixState.pangeaController.userController.setListenFirst(_listenFirst);
   }
 
+  /// Turn off (or back on) writing assistance running itself on every message.
+  ///
+  /// The same `autoIGC` toggle the learning settings page owns — a learner who
+  /// has just been handed a card they did not ask for should be able to stop
+  /// that from here, without hunting for the setting.
+  void _toggleAutoIGC() {
+    final enabled = ToolSetting.autoIGC.enabled;
+    MatrixState.pangeaController.userController.updateProfile(
+      (profile) => profile.copyWith(
+        toolSettings: profile.toolSettings.copyWith(autoIGC: !enabled),
+      ),
+    );
+    setState(() {});
+  }
+
+  void _openLearningSettings() {
+    context.go(
+      WorkspaceNav.openSettings(
+        GoRouterState.of(context).uri,
+        page: 'learning',
+        // On a narrow layout the settings panel and the chat cannot share the
+        // width, so the sections close behind it the way every other entry
+        // point into this page does.
+        closeSections: !FluffyThemes.isColumnMode(context),
+        seatMenu: false,
+      ),
+    );
+  }
+
   Future<void> _onChoiceSelect(
     PangeaMatchState match,
     int index,
@@ -191,13 +223,22 @@ class SpanCardState extends State<SpanCard> {
               mainAxisSize: .min,
               children: [
                 SpanCardHeader(
+                  // Per match. The id keys a GlobalKey that PangeaAnyState
+                  // caches forever, so a constant one is claimed by every
+                  // header that ever mounts — and two live at once whenever
+                  // one card is torn down while its replacement is building,
+                  // which is a duplicate-GlobalKey throw on every rebuild.
+                  targetId: 'wa-listen-${match.hashCode}',
                   title: match.updatedMatch.match.type.displayName(context),
                   // An accepted match shows a diff and an undo, not choices,
                   // so there is nothing there to listen to.
                   showListenFirst: match.updatedMatch.status.isOpen,
                   listenFirst: _listenFirst,
+                  autoIGC: ToolSetting.autoIGC.enabled,
                   onToggleListenFirst: _toggleListenFirst,
+                  onToggleAutoIGC: _toggleAutoIGC,
                   onFeedback: _showFeedbackDialog,
+                  onLearningSettings: _openLearningSettings,
                   onClose: widget.controller.close,
                 ),
                 Flexible(
@@ -367,42 +408,52 @@ class _MatchContent extends StatelessWidget {
   }
 }
 
-/// The card's two per-match actions, as the overflow menu names them.
-enum SpanCardAction { listenFirst, feedback }
+/// The actions the card's overflow menu offers.
+enum SpanCardAction { listenFirst, autoIGC, feedback, learningSettings }
 
 /// The card's header: close on the left, the match's category in the middle,
-/// and the card's two actions on the right.
+/// and on the right the Listen First toggle plus an overflow menu.
 ///
-/// The actions collapse into a single overflow menu when the title cannot sit
-/// beside them at full width. The category name is what the learner is reading
-/// the card for, and it is the part that grows — "Subject Verb Agreement" on a
-/// phone leaves no room for two icons — so the icons yield to it rather than
-/// the other way around.
+/// Listen First is the only action with a place in the header itself, because
+/// it is the one a learner flips mid-card; everything else — the auto-run
+/// toggle, reporting the content, the full settings page — is a trip out of
+/// the card and belongs behind the menu. When the category name cannot sit
+/// beside both, Listen First folds into the menu too: the name is what the
+/// learner opened the card to read, and it is the part that grows.
 class SpanCardHeader extends StatelessWidget {
+  /// Anchors the "audio is off" popup, and keys the GlobalKey that positions
+  /// it. Must be unique to the match on screen — see the call site.
+  final String targetId;
   final String title;
 
   /// Whether this match has choices, and so anything Listen First applies to.
   final bool showListenFirst;
   final bool listenFirst;
 
+  /// Whether writing assistance runs itself on every sent message.
+  final bool autoIGC;
+
   /// Takes the id of the transform target the "audio is off" popup anchors to,
   /// which is whichever control is currently showing Listen First.
   final void Function(String) onToggleListenFirst;
+  final VoidCallback onToggleAutoIGC;
   final VoidCallback onFeedback;
+  final VoidCallback onLearningSettings;
   final VoidCallback onClose;
 
   const SpanCardHeader({
     super.key,
+    required this.targetId,
     required this.title,
     required this.showListenFirst,
     required this.listenFirst,
+    required this.autoIGC,
     required this.onToggleListenFirst,
+    required this.onToggleAutoIGC,
     required this.onFeedback,
+    required this.onLearningSettings,
     required this.onClose,
   });
-
-  /// One anchor for both layouts: only one of them is ever built.
-  static const _listenTargetId = 'wa-listen-first';
 
   /// The width an [IconButton] takes at the default visual density.
   static const _iconButtonWidth = 48.0;
@@ -417,8 +468,8 @@ class SpanCardHeader extends StatelessWidget {
 
     return LayoutBuilder(
       builder: (context, constraints) {
-        // Measured, not guessed at a breakpoint: the same header fits two
-        // icons for "Spelling" and cannot for "Subject Verb Agreement" at the
+        // Measured, not guessed at a breakpoint: the same header fits the
+        // toggle for "Spelling" and cannot for "Subject Verb Agreement" at the
         // identical width, and a learner scaling their text up moves that line
         // again.
         final painter = TextPainter(
@@ -430,12 +481,10 @@ class SpanCardHeader extends StatelessWidget {
         final titleWidth = painter.width;
         painter.dispose();
 
-        // Close, plus either both actions or the single menu that replaces
-        // them. With only the flag to place there is nothing to collapse —
-        // one icon always fits beside a title that can ellipsize, and a
-        // one-item overflow menu is a worse place to keep it.
-        final expanded =
-            !showListenFirst ||
+        // Close on the left, the menu always on the right, and Listen First
+        // between them only when the title can spare the width.
+        final inlineListenFirst =
+            showListenFirst &&
             titleWidth <= constraints.maxWidth - _iconButtonWidth * 3;
 
         return Row(
@@ -457,16 +506,8 @@ class SpanCardHeader extends StatelessWidget {
                 ),
               ),
             ),
-            if (expanded) ...[
-              if (showListenFirst) _listenFirstButton(context),
-              IconButton(
-                tooltip: l10n.feedbackButton,
-                icon: const Icon(Icons.flag_outlined),
-                color: theme.iconTheme.color,
-                onPressed: onFeedback,
-              ),
-            ] else
-              _overflowMenu(context),
+            if (inlineListenFirst) _listenFirstButton(context),
+            _overflowMenu(context, inMenuListenFirst: !inlineListenFirst),
           ],
         );
       },
@@ -475,7 +516,7 @@ class SpanCardHeader extends StatelessWidget {
 
   Widget _listenFirstButton(BuildContext context) {
     final theme = Theme.of(context);
-    final link = MatrixState.pAnyState.layerLinkAndKey(_listenTargetId);
+    final link = MatrixState.pAnyState.layerLinkAndKey(targetId);
 
     return Semantics(
       toggled: listenFirst,
@@ -496,67 +537,112 @@ class SpanCardHeader extends StatelessWidget {
                   ? theme.colorScheme.onPrimaryContainer
                   : theme.iconTheme.color,
             ),
-            onPressed: () => onToggleListenFirst(_listenTargetId),
+            onPressed: () => onToggleListenFirst(targetId),
           ),
         ),
       ),
     );
   }
 
-  Widget _overflowMenu(BuildContext context) {
-    final l10n = L10n.of(context);
-    final link = MatrixState.pAnyState.layerLinkAndKey(_listenTargetId);
+  /// A plain menu row, for the entries that do something rather than hold a
+  /// state. The label takes the remaining width — these are the longest
+  /// strings in the menu, and several locales run longer than English.
+  PopupMenuItem<SpanCardAction> _actionItem({
+    required SpanCardAction value,
+    required IconData icon,
+    required String label,
+  }) => PopupMenuItem<SpanCardAction>(
+    value: value,
+    child: Row(
+      children: [
+        Icon(icon),
+        const SizedBox(width: 12),
+        Expanded(child: Text(label)),
+      ],
+    ),
+  );
 
+  /// A checked menu row, for the entries that are modes rather than trips.
+  PopupMenuItem<SpanCardAction> _toggleItem({
+    required SpanCardAction value,
+    required IconData icon,
+    required String label,
+    required bool checked,
+  }) => PopupMenuItem<SpanCardAction>(
+    value: value,
+    child: Semantics(
+      checked: checked,
+      child: Row(
+        children: [
+          Icon(icon),
+          const SizedBox(width: 12),
+          Expanded(child: Text(label)),
+          if (checked) const Icon(Icons.check, size: 18.0),
+        ],
+      ),
+    ),
+  );
+
+  Widget _overflowMenu(
+    BuildContext context, {
+    required bool inMenuListenFirst,
+  }) {
+    final l10n = L10n.of(context);
+    // Only one of the two controls ever holds the anchor, so the cached
+    // GlobalKey is never claimed twice.
+    final link = inMenuListenFirst
+        ? MatrixState.pAnyState.layerLinkAndKey(targetId)
+        : null;
+
+    final menu = PopupMenuButton<SpanCardAction>(
+      useRootNavigator: true,
+      // An unnamed PopupMenuButton falls back to the framework default, and
+      // the a11y floor check does not cover it.
+      tooltip: l10n.moreOptions,
+      icon: const Icon(Icons.more_vert),
+      onSelected: (action) {
+        switch (action) {
+          case SpanCardAction.listenFirst:
+            onToggleListenFirst(targetId);
+          case SpanCardAction.autoIGC:
+            onToggleAutoIGC();
+          case SpanCardAction.feedback:
+            onFeedback();
+          case SpanCardAction.learningSettings:
+            onLearningSettings();
+        }
+      },
+      itemBuilder: (context) => [
+        if (inMenuListenFirst && showListenFirst)
+          _toggleItem(
+            value: SpanCardAction.listenFirst,
+            icon: listenFirst ? Icons.headphones : Icons.headphones_outlined,
+            label: l10n.listenFirst,
+            checked: listenFirst,
+          ),
+        _toggleItem(
+          value: SpanCardAction.autoIGC,
+          icon: Icons.auto_fix_high_outlined,
+          label: l10n.autoIGCToolName,
+          checked: autoIGC,
+        ),
+        _actionItem(
+          value: SpanCardAction.feedback,
+          icon: Icons.flag_outlined,
+          label: l10n.reportContentIssue,
+        ),
+        _actionItem(
+          value: SpanCardAction.learningSettings,
+          icon: Icons.settings_outlined,
+          label: l10n.learningSettings,
+        ),
+      ],
+    );
+
+    if (link == null) return menu;
     return CompositedTransformTarget(
       link: link.link,
-      child: KeyedSubtree(
-        key: link.key,
-        child: PopupMenuButton<SpanCardAction>(
-          useRootNavigator: true,
-          // An unnamed PopupMenuButton falls back to the framework default,
-          // and the a11y floor check does not cover it.
-          tooltip: l10n.moreOptions,
-          icon: const Icon(Icons.more_vert),
-          onSelected: (action) {
-            switch (action) {
-              case SpanCardAction.listenFirst:
-                onToggleListenFirst(_listenTargetId);
-              case SpanCardAction.feedback:
-                onFeedback();
-            }
-          },
-          itemBuilder: (context) => [
-            PopupMenuItem<SpanCardAction>(
-              value: SpanCardAction.listenFirst,
-              child: Semantics(
-                checked: listenFirst,
-                child: Row(
-                  children: [
-                    Icon(
-                      listenFirst
-                          ? Icons.headphones
-                          : Icons.headphones_outlined,
-                    ),
-                    const SizedBox(width: 12),
-                    Expanded(child: Text(l10n.listenFirst)),
-                    if (listenFirst) const Icon(Icons.check, size: 18.0),
-                  ],
-                ),
-              ),
-            ),
-            PopupMenuItem<SpanCardAction>(
-              value: SpanCardAction.feedback,
-              child: Row(
-                children: [
-                  const Icon(Icons.flag_outlined),
-                  const SizedBox(width: 12),
-                  Text(l10n.feedbackButton),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
+      child: KeyedSubtree(key: link.key, child: menu),
     );
   }
 }
