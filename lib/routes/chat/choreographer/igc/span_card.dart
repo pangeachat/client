@@ -190,7 +190,7 @@ class SpanCardState extends State<SpanCard> {
             child: Column(
               mainAxisSize: .min,
               children: [
-                _SpanCardHeader(
+                SpanCardHeader(
                   title: match.updatedMatch.match.type.displayName(context),
                   // An accepted match shows a diff and an undo, not choices,
                   // so there is nothing there to listen to.
@@ -367,7 +367,8 @@ class _MatchContent extends StatelessWidget {
   }
 }
 
-enum _SpanCardAction { listenFirst, feedback }
+/// The card's two per-match actions, as the overflow menu names them.
+enum SpanCardAction { listenFirst, feedback }
 
 /// The card's header: close on the left, the match's category in the middle,
 /// and the card's two actions on the right.
@@ -377,7 +378,7 @@ enum _SpanCardAction { listenFirst, feedback }
 /// the card for, and it is the part that grows — "Subject Verb Agreement" on a
 /// phone leaves no room for two icons — so the icons yield to it rather than
 /// the other way around.
-class _SpanCardHeader extends StatelessWidget {
+class SpanCardHeader extends StatelessWidget {
   final String title;
 
   /// Whether this match has choices, and so anything Listen First applies to.
@@ -390,7 +391,8 @@ class _SpanCardHeader extends StatelessWidget {
   final VoidCallback onFeedback;
   final VoidCallback onClose;
 
-  const _SpanCardHeader({
+  const SpanCardHeader({
+    super.key,
     required this.title,
     required this.showListenFirst,
     required this.listenFirst,
@@ -509,7 +511,7 @@ class _SpanCardHeader extends StatelessWidget {
       link: link.link,
       child: KeyedSubtree(
         key: link.key,
-        child: PopupMenuButton<_SpanCardAction>(
+        child: PopupMenuButton<SpanCardAction>(
           useRootNavigator: true,
           // An unnamed PopupMenuButton falls back to the framework default,
           // and the a11y floor check does not cover it.
@@ -517,15 +519,15 @@ class _SpanCardHeader extends StatelessWidget {
           icon: const Icon(Icons.more_vert),
           onSelected: (action) {
             switch (action) {
-              case _SpanCardAction.listenFirst:
+              case SpanCardAction.listenFirst:
                 onToggleListenFirst(_listenTargetId);
-              case _SpanCardAction.feedback:
+              case SpanCardAction.feedback:
                 onFeedback();
             }
           },
           itemBuilder: (context) => [
-            PopupMenuItem<_SpanCardAction>(
-              value: _SpanCardAction.listenFirst,
+            PopupMenuItem<SpanCardAction>(
+              value: SpanCardAction.listenFirst,
               child: Semantics(
                 checked: listenFirst,
                 child: Row(
@@ -542,8 +544,8 @@ class _SpanCardHeader extends StatelessWidget {
                 ),
               ),
             ),
-            PopupMenuItem<_SpanCardAction>(
-              value: _SpanCardAction.feedback,
+            PopupMenuItem<SpanCardAction>(
+              value: SpanCardAction.feedback,
               child: Row(
                 children: [
                   const Icon(Icons.flag_outlined),
