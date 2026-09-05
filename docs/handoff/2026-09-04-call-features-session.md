@@ -344,14 +344,29 @@ the live panel attaches. iOS hits the SAME recording bug -- the fix helps there.
   before a parked reconcile resumes. Mutation-proven (new race test fails on the
   reverted snapshot), 285/285 tests. COLD-GATE GREEN (codex: reason-atomic,
   duplicate impossible on all interleavings). So the recording fix
-  (6e0095ff7a + d35010fb64) is now COLD-GREEN. FINDING: local lk-jwt is v0.6.0
-  (image label, built 2026-08-19) so the participant-attribute plane WORKS
-  locally -- the dual-device / device-ownership feature IS testable locally (the
-  older 'local stack can't do metadata writes' note is outdated). Two-device
-  recording E2E (transcript_two_devices.js on the fixed build) running to verify
-  the election puts exactly ONE of an account's two devices as recorder (no
-  duplicate) in a real 3-browser call. NOT-YET-TESTED: the arbitration /
-  'join on other device' UI flow (may need device_* phone scenarios or manual).
+  (6e0095ff7a + d35010fb64) is now COLD-GREEN.
+- DUAL-DEVICE E2E (2026-09-05, transcript_two_devices.js): the fix's runtime
+  path was UNREACHABLE locally. CORRECTED FINDING: the token grant IS present
+  (canUpdateOwnMetadata verified 3 ways: token decode, livekit-server v1.9.1
+  logs for all 3 participants, app Sentry tokenGrant:granted) -- so the earlier
+  'v0.6.0 makes it testable locally' note was only half-right. Despite the grant,
+  `setAttributes` timed out 15x ('Signal request timed out'), so the recorder
+  election never ran and BOTH of the account's devices published (36s + a 1.8s
+  overlap) -- the documented fail-open ('deliver own tail rather than drop'),
+  NOT the carrier race d35010fb64 guards. Root cause found in livekit-server
+  logs: webhook target `lk-jwt-service:8080` no longer resolved ('no such host')
+  because the LAN cutover recreated pangea-lk-jwt-local OUTSIDE compose and it
+  lost its network alias -> every room event stalled 15s (5-retry backoff),
+  backing up the notifier queue. REPAIRED non-destructively: re-added the
+  `lk-jwt-service` alias to the running container (now resolves 172.18.0.5, LAN
+  env ws://192.168.1.156:7880 preserved, no recreate). RE-RUNNING the two-device
+  test to see if the webhook backlog was what starved the setAttributes ack, or
+  if it's a genuine v1.9.1<->protocol16 signaling issue that only staging can
+  validate. Owner chose 'repair local stack + retest'. NOT-YET-TESTED: the
+  arbitration / 'join on other device' UI flow (needs device_* phone scenarios
+  or manual). OPEN PROD RISK: staging LiveKit version unknown from checked-out
+  repos (Ansible-deployed) -- if too old for the protocol-16 attribute ack, the
+  dual-device election is broken in prod too (every 2-device call duplicates).
 - MIX DELIVERED to owner: room !Hgav callKey QXvZ4Jhk has BOTH halves (@learner +
   @calltester); tools/merge_call_audio aligned them on the SFU timeline (friend
   +14ms) -> merged_stereo.wav (L=you R=friend) + merged_mono.wav -> mp3. NOTE:
