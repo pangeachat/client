@@ -80,7 +80,11 @@ class _ActivityStartHeroState extends State<ActivityStartHero> {
     // inexitable fullscreen — #7672/#7673), so play it on its own screen.
     // Web/desktop play inline below, where a platform view behaves.
     if (hero != null && PlatformInfos.isMobile) {
-      openActivityVideo(context, hero);
+      openActivityVideo(
+        context,
+        hero,
+        captionLanguage: _activity.req.targetLanguage,
+      );
       return;
     }
     setState(() {
@@ -207,7 +211,10 @@ class _ActivityStartHeroState extends State<ActivityStartHero> {
     final hero = _hero;
     if (_playing && hero != null) {
       final player = hero.isYoutube
-          ? ActivityYoutubePlayer(url: hero.url ?? '')
+          ? ActivityYoutubePlayer(
+              url: hero.url ?? '',
+              captionLanguage: _activity.req.targetLanguage,
+            )
           : ActivityVideoPlayer(url: hero.resolvedUrl ?? '', autoPlay: true);
       return ColoredBox(
         color: Colors.black,

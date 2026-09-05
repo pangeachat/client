@@ -18,13 +18,24 @@ import 'package:fluffychat/routes/chat/activity_sessions/activity_youtube_player
 class ActivityVideoScreen extends StatelessWidget {
   final ActivityMediaBlock block;
 
-  const ActivityVideoScreen({super.key, required this.block});
+  /// The activity's target language, so a YouTube embed prefers caption tracks
+  /// in the language being learned. See [ActivityYoutubePlayer].
+  final String? captionLanguage;
+
+  const ActivityVideoScreen({
+    super.key,
+    required this.block,
+    this.captionLanguage,
+  });
 
   @override
   Widget build(BuildContext context) {
     // The user tapped to open this, so it may start with sound.
     final player = block.isYoutube
-        ? ActivityYoutubePlayer(url: block.url ?? '')
+        ? ActivityYoutubePlayer(
+            url: block.url ?? '',
+            captionLanguage: captionLanguage,
+          )
         : ActivityVideoPlayer(url: block.resolvedUrl ?? '', autoPlay: true);
     return Scaffold(
       backgroundColor: Colors.black,
@@ -48,11 +59,16 @@ class ActivityVideoScreen extends StatelessWidget {
 /// Opens [block] full-screen over everything (root navigator, so it clears the
 /// plan's bottom sheet). Native mobile only; callers keep inline playback on web
 /// and desktop.
-Future<void> openActivityVideo(BuildContext context, ActivityMediaBlock block) {
+Future<void> openActivityVideo(
+  BuildContext context,
+  ActivityMediaBlock block, {
+  String? captionLanguage,
+}) {
   return Navigator.of(context, rootNavigator: true).push<void>(
     MaterialPageRoute(
       fullscreenDialog: true,
-      builder: (_) => ActivityVideoScreen(block: block),
+      builder: (_) =>
+          ActivityVideoScreen(block: block, captionLanguage: captionLanguage),
     ),
   );
 }
