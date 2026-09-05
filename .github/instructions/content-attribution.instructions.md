@@ -1,5 +1,5 @@
 ---
-applyTo: "lib/routes/chat/activity_sessions/**,lib/routes/courses/**,lib/features/quests/**,lib/features/activity_sessions/**"
+applyTo: "lib/routes/chat/activity_sessions/**,lib/routes/courses/**,lib/routes/world/**,lib/features/quests/**,lib/features/activity_sessions/**"
 description: Who a piece of content is credited to on screen — the owner behind an activity or a course, where the name and avatar come from, and what shows when there is no person to credit.
 ---
 
