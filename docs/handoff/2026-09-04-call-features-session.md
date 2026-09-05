@@ -175,3 +175,35 @@ ported to `satvik/call-audio-recording` (the PR branch). iOS on-device recording
 still unverified (safe from this bug). Open owner decisions: (a) add the
 chrome-platform CI lane for an always-on gate; (b) port + open the recording PR;
 (c) iOS device check.
+
+## 2026-09-04 (V) — remaining-work audit + two more same-class bugs fixed
+
+Ran the remaining-work audit workflow (`wf_de134f2c-a3b`). It found TWO more
+platform bugs of the SAME unit-green/platform-broken class as the recording one,
+both now fixed:
+
+1. PORT DONE. The web-recording overflow fix was ONLY on the combined branch; the
+   recording PR branch `satvik/call-audio-recording` tip (`24203fd711`) still had
+   `1<<32`. Cherry-picked `b1b85ed725` -> now `6df82df214` on
+   `satvik/call-audio-recording` (identical diff, so the cold-gate verdict
+   carries). Verified `0x40000000` present. The dirty pubspec `.env`-asset line
+   was stashed (local build artifact, not committed).
+
+2. OGG-ON-iOS FIXED. The three RingPlayer cues (incoming ring `phone.ogg`, busy
+   `notification.ogg`, reconnecting `call.ogg`) were OGG, which audioplayers
+   cannot decode on iOS/macOS -> silent ring, missed calls; `ringback.mp3` /
+   `call_ended.mp3` already played (a half-migration). Converted to
+   `phone.mp3`/`notification.mp3`/`call.mp3` and repointed the three cues; left
+   `phone.ogg` (base VoIP ringtone) and `notification.ogg` (web notification,
+   browser-decoded) untouched. Commit `26a67d96c4` on
+   `satvik/tokenize-call-transcript`. analyze + 63 ring/call tests green; MP3
+   plays everywhere. iOS on-device confirmation still owed.
+
+Remaining (from the audit, prioritized):
+- MUST before ship: iOS on-device recording + cue verification (needs a device);
+  web compiled-build E2E recording + playback confirmation; recordings-player
+  on-device playback + the web large-WAV base64->Blob playback fix.
+- In-flight: cold-gate `c6460b66d9` (#8797 card fix), `1925844ca5` (#8807 sounds),
+  `24203fd711` (player), and the OGG fix `26a67d96c4`.
+- Owner-gated: #8797-vs-#8807 PR split, opening/batch-merging the PRs, the
+  compiled-web CI lane, the #8808 settle-signal design.
