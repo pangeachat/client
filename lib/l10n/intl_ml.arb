@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "ലെവൽ {level}",
     "whatAreYouLearning": "നിങ്ങൾ എന്താണ് പഠിക്കുന്നത്?",
     "languageSwitcherBaseLanguageLabel": "നിങ്ങളുടെ അടിസ്ഥാന ഭാഷ",
-    "listenModeDescription": "കേൾക്കാൻ ഒരു ഓപ്ഷൻ തിരഞ്ഞെടുക്കുക. ഒന്നും തിരഞ്ഞെടുത്തിട്ടില്ല.",
     "rateActivityLiked": "ഇഷ്ടപ്പെട്ടു",
     "rateActivityDisliked": "ഇഷ്ടപ്പെട്ടില്ല",
     "constructUseHrdDesc": "കേട്ടു",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "കോൾ ഇവിടെ ഉപേക്ഷിക്കുക",
     "callDevicesOlderTitle": "നിങ്ങളുടെ മറ്റ് ഉപകരണത്തിന് ഈ കോൾ സ്വയം ഉപേക്ഷിക്കാൻ കഴിയില്ല.",
     "callDevicesOlderBody": "അവിടെ കോൾ അവസാനിപ്പിക്കുക, അല്ലെങ്കിൽ ഇവിടെ ഉപേക്ഷിക്കുക. സാധാരണയായി ഇതിനർത്ഥം അത് പഴയ പതിപ്പാണ് ഉപയോഗിക്കുന്നത്, അത് അപ്‌ഡേറ്റ് ചെയ്യുന്നത് ഇത് ശരിയാക്കും.",
-    "callContinuingElsewhere": "ഈ കോൾ നിങ്ങളുടെ മറ്റ് ഉപകരണത്തിൽ തുടരുന്നു."
+    "callContinuingElsewhere": "ഈ കോൾ നിങ്ങളുടെ മറ്റ് ഉപകരണത്തിൽ തുടരുന്നു.",
+    "listenFirst": "ആദ്യം കേൾക്കുക",
+    "listenFirstDescription": "ആദ്യം കേൾക്കുക ഓൺ ചെയ്യുമ്പോൾ, ഒറ്റ ക്ലിക്കിൽ ഓഡിയോ പ്ലേ ചെയ്യുകയും ഡബിൾ-ക്ലിക്കിൽ ഓപ്ഷൻ തിരഞ്ഞെടുക്കുകയും ചെയ്യും.",
+    "listenFirstNeedsChoiceAudio": "ആദ്യം കേൾക്കുക ഉപയോഗിക്കാൻ ചോയ്‌സസ് ഓഡിയോ ഓൺ ചെയ്യുക."
 }

@@ -9879,7 +9879,6 @@
     "languageDropdownLevel": "Nivell {level}",
     "whatAreYouLearning": "Què estàs aprenent?",
     "languageSwitcherBaseLanguageLabel": "La teva llengua base",
-    "listenModeDescription": "Toca una opció per escoltar-la. No hi ha res seleccionat.",
     "rateActivityLiked": "M'ha agradat",
     "rateActivityDisliked": "No m'ha agradat",
     "constructUseHrdDesc": "Sentit",
@@ -9998,5 +9997,8 @@
     "callDevicesLeaveHere": "Deixa la trucada aquí",
     "callDevicesOlderTitle": "L'altre dispositiu no pot sortir d'aquesta trucada per si sol.",
     "callDevicesOlderBody": "Finalitza la trucada allà o deixa-la aquí. Això sol significar que està executant una versió antiga, i actualitzar-la ho solucionarà.",
-    "callContinuingElsewhere": "Aquesta trucada continua a l'altre dispositiu."
+    "callContinuingElsewhere": "Aquesta trucada continua a l'altre dispositiu.",
+    "listenFirst": "Escolta primer",
+    "listenFirstDescription": "Quan Escolta primer està activat, un clic només reprodueix l'àudio i un doble clic selecciona l'opció.",
+    "listenFirstNeedsChoiceAudio": "Activa l'àudio de les opcions per utilitzar Escolta primer."
 }

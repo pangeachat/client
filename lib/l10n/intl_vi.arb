@@ -7048,7 +7048,6 @@
     "languageDropdownLevel": "Cấp độ {level}",
     "whatAreYouLearning": "Bạn đang học gì?",
     "languageSwitcherBaseLanguageLabel": "Ngôn ngữ cơ bản của bạn",
-    "listenModeDescription": "Chạm vào một lựa chọn để nghe. Chưa có gì được chọn.",
     "rateActivityLiked": "Đã thích",
     "rateActivityDisliked": "Không thích",
     "constructUseHrdDesc": "Đã nghe",
@@ -7163,5 +7162,8 @@
     "callDevicesLeaveHere": "Rời cuộc gọi tại đây",
     "callDevicesOlderTitle": "Thiết bị khác của bạn không thể tự rời khỏi cuộc gọi này.",
     "callDevicesOlderBody": "Kết thúc cuộc gọi ở đó hoặc rời khỏi đây. Điều đó thường có nghĩa là thiết bị đang chạy phiên bản cũ hơn và việc cập nhật sẽ khắc phục điều này.",
-    "callContinuingElsewhere": "Cuộc gọi này đang tiếp tục trên thiết bị khác của bạn."
+    "callContinuingElsewhere": "Cuộc gọi này đang tiếp tục trên thiết bị khác của bạn.",
+    "listenFirst": "Nghe trước",
+    "listenFirstDescription": "Khi bật Nghe trước, một lần nhấp chỉ phát âm thanh và nhấp đúp sẽ chọn tùy chọn.",
+    "listenFirstNeedsChoiceAudio": "Bật âm thanh Lựa chọn để sử dụng Nghe trước."
 }

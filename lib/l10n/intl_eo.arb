@@ -10697,7 +10697,6 @@
     "languageDropdownLevel": "Nivelo {level}",
     "whatAreYouLearning": "Kion vi lernas?",
     "languageSwitcherBaseLanguageLabel": "Via baza lingvo",
-    "listenModeDescription": "Frapu elekton por aŭdi ĝin. Nenio estas elektita.",
     "rateActivityLiked": "Ŝatis ĝin",
     "rateActivityDisliked": "Malŝatis ĝin",
     "constructUseHrdDesc": "Aŭdita",
@@ -10816,5 +10815,8 @@
     "callDevicesLeaveHere": "Forlasu la vokon ĉi tie",
     "callDevicesOlderTitle": "Via alia aparato ne povas mem forlasi ĉi tiun vokon.",
     "callDevicesOlderBody": "Finu la vokon tie, aŭ forlasu ĝin ĉi tie. Tio kutime signifas, ke ĝi uzas pli malnovan version, kaj ĝisdatigo solvos tion.",
-    "callContinuingElsewhere": "Ĉi tiu voko daŭras en via alia aparato."
+    "callContinuingElsewhere": "Ĉi tiu voko daŭras en via alia aparato.",
+    "listenFirst": "Unue aŭskultu",
+    "listenFirstDescription": "Kiam Unue Aŭskultu estas ŝaltita, unu klako nur ludas sonon kaj duobla klako elektas la opcion.",
+    "listenFirstNeedsChoiceAudio": "Ŝaltu la sonon de Elektoj por uzi Unue Aŭskultu."
 }

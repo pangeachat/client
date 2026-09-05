@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "Ниво {level}",
     "whatAreYouLearning": "Какво учиш?",
     "languageSwitcherBaseLanguageLabel": "Вашият основен език",
-    "listenModeDescription": "Докоснете избор, за да го чуете. Нищо не е избрано.",
     "rateActivityLiked": "Хареса ми",
     "rateActivityDisliked": "Не ми хареса",
     "constructUseHrdDesc": "Чуто",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "Напусни обаждането тук",
     "callDevicesOlderTitle": "Другото ви устройство не може да напусне това обаждане само.",
     "callDevicesOlderBody": "Прекратете обаждането там или го напуснете тук. Това обикновено означава, че използва по-стара версия и актуализирането ѝ ще реши проблема.",
-    "callContinuingElsewhere": "Това обаждане продължава на другото ви устройство."
+    "callContinuingElsewhere": "Това обаждане продължава на другото ви устройство.",
+    "listenFirst": "Първо слушане",
+    "listenFirstDescription": "Когато „Първо слушане“ е включено, едно щракване просто възпроизвежда аудио, а двойното щракване избира опцията.",
+    "listenFirstNeedsChoiceAudio": "Включете аудиото за избор, за да използвате „Първо слушане“."
 }

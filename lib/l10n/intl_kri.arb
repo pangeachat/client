@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "Level {level}",
     "whatAreYouLearning": "Wetin yu de lan?",
     "languageSwitcherBaseLanguageLabel": "Yu base langwej",
-    "listenModeDescription": "Tap wan choyz fɔ yɛr am. Natin nɔ de pik.",
     "rateActivityLiked": "I like am",
     "rateActivityDisliked": "I nor like am",
     "constructUseHrdDesc": "Bin yɛri",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "Liv di kɔl ya",
     "callDevicesOlderTitle": "Yu ɔda dɛvais nɔ go ebul fɔ liv dis kɔl insɛf.",
     "callDevicesOlderBody": "Ɛnd di kɔl de, ɔ liv am ya. Dat min se i de rɔn wan ol vɛshɔn, ɛn if yu apdet am i go fiks dis.",
-    "callContinuingElsewhere": "Dis kɔl de kɔntinyu na yu ɔda dɛvais."
+    "callContinuingElsewhere": "Dis kɔl de kɔntinyu na yu ɔda dɛvais.",
+    "listenFirst": "Fɔs lisin",
+    "listenFirstDescription": "If yu tɔn Fɔs Lisin ɔn, wan klik jɔs de ple ɔdiwo ɛn tu klik de pik di ɔpshɔn.",
+    "listenFirstNeedsChoiceAudio": "Tɔn Chɔys Ɔdiwo ɔn fɔ yuz Fɔs Lisin."
 }

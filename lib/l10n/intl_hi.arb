@@ -10384,7 +10384,6 @@
     "languageDropdownLevel": "स्तर {level}",
     "whatAreYouLearning": "आप क्या सीख रहे हैं?",
     "languageSwitcherBaseLanguageLabel": "आपकी आधार भाषा",
-    "listenModeDescription": "सुनने के लिए किसी विकल्प पर टैप करें। कुछ भी नहीं चुना गया है।",
     "rateActivityLiked": "पसंद आया",
     "rateActivityDisliked": "पसंद नहीं आया",
     "constructUseHrdDesc": "सुना",
@@ -10503,5 +10502,8 @@
     "callDevicesLeaveHere": "कॉल यहीं छोड़ दें",
     "callDevicesOlderTitle": "आपका दूसरा डिवाइस अपने आप इस कॉल को नहीं छोड़ सकता।",
     "callDevicesOlderBody": "कॉल को वहीं समाप्त करें, या इसे यहीं छोड़ दें। इसका आमतौर पर मतलब है कि यह एक पुराना संस्करण चला रहा है, और इसे अपडेट करने से यह ठीक हो जाएगा।",
-    "callContinuingElsewhere": "यह कॉल आपके दूसरे डिवाइस पर जारी है।"
+    "callContinuingElsewhere": "यह कॉल आपके दूसरे डिवाइस पर जारी है।",
+    "listenFirst": "पहले सुनें",
+    "listenFirstDescription": "जब पहले सुनें चालू होता है, तो एक क्लिक से केवल ऑडियो चलता है और डबल-क्लिक से विकल्प चुना जाता है।",
+    "listenFirstNeedsChoiceAudio": "पहले सुनें का उपयोग करने के लिए विकल्पों का ऑडियो चालू करें।"
 }

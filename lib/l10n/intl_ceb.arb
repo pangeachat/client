@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "Lebel {level}",
     "whatAreYouLearning": "Unsa ang imong ginatun-an?",
     "languageSwitcherBaseLanguageLabel": "Imong base nga pinulongan",
-    "listenModeDescription": "I-tap ang usa ka kapilian aron madungog kini. Walay napili.",
     "rateActivityLiked": "Ganahan ko",
     "rateActivityDisliked": "Dili ko ganahan",
     "constructUseHrdDesc": "Nadungog",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "Biya sa tawag dinhi",
     "callDevicesOlderTitle": "Ang imong laing device dili makabiya niini nga tawag sa iyang kaugalingon.",
     "callDevicesOlderBody": "Tapusa ang tawag didto, o biyai kini dinhi. Kasagaran nagpasabot kini nga nagpadagan kini og mas karaan nga bersyon, ug ang pag-update niini makasulbad niini.",
-    "callContinuingElsewhere": "Kini nga tawag nagpadayon sa imong laing device."
+    "callContinuingElsewhere": "Kini nga tawag nagpadayon sa imong laing device.",
+    "listenFirst": "Paminaw una",
+    "listenFirstDescription": "Kon naka-on ang Listen First, usa ka click mopatokar lang sa audio ug ang double-click mopili sa opsyon.",
+    "listenFirstNeedsChoiceAudio": "I-on ang Choices audio aron magamit ang Listen First."
 }

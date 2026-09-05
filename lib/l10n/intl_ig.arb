@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "Ọkwa {level}",
     "whatAreYouLearning": "Kedu ihe ị na-amụ?",
     "languageSwitcherBaseLanguageLabel": "Asụsụ gị bụ isi",
-    "listenModeDescription": "Pịa nhọrọ ka ị nụ ya. Ahọpụtaghị ihe ọ bụla.",
     "rateActivityLiked": "Ọ masịrị m",
     "rateActivityDisliked": "Ọ masịghị m",
     "constructUseHrdDesc": "Anụrụ",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "Hapụ oku a ebe a",
     "callDevicesOlderTitle": "Ngwaọrụ gị ọzọ enweghị ike ịhapụ oku a n'onwe ya.",
     "callDevicesOlderBody": "Kwụsị oku ahụ ebe ahụ, ma ọ bụ hapụ ya ebe a. Nke ahụ na-abụkarị na ọ na-eji ụdị ochie, na imelite ya ga-edozi nke a.",
-    "callContinuingElsewhere": "Oku a na-aga n'ihu na ngwaọrụ gị ọzọ."
+    "callContinuingElsewhere": "Oku a na-aga n'ihu na ngwaọrụ gị ọzọ.",
+    "listenFirst": "Buru ụzọ gee ntị",
+    "listenFirstDescription": "Mgbe agbanyere Buru ụzọ gee ntị, otu ịpị ga-akpọ naanị ọdịyo ma ịpị ugboro abụọ ga-ahọrọ nhọrọ ahụ.",
+    "listenFirstNeedsChoiceAudio": "Gbanwuo ọdịyo Nhọrọ iji jiri Buru ụzọ gee ntị."
 }

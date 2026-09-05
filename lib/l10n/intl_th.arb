@@ -10384,7 +10384,6 @@
     "languageDropdownLevel": "ระดับ {level}",
     "whatAreYouLearning": "คุณกำลังเรียนรู้อะไรอยู่",
     "languageSwitcherBaseLanguageLabel": "ภาษาหลักของคุณ",
-    "listenModeDescription": "แตะตัวเลือกเพื่อฟัง ไม่มีอะไรถูกเลือก",
     "rateActivityLiked": "ถูกใจ",
     "rateActivityDisliked": "ไม่ถูกใจ",
     "constructUseHrdDesc": "ได้ยิน",
@@ -10503,5 +10502,8 @@
     "callDevicesLeaveHere": "ออกจากการโทรที่นี่",
     "callDevicesOlderTitle": "อุปกรณ์เครื่องอื่นของคุณไม่สามารถออกจากการโทรนี้ได้ด้วยตัวเอง",
     "callDevicesOlderBody": "วางสายที่นั่น หรือออกจากการโทรที่นี่ โดยปกติหมายความว่าอุปกรณ์กำลังใช้เวอร์ชันเก่า และการอัปเดตจะแก้ไขปัญหานี้ได้",
-    "callContinuingElsewhere": "การโทรนี้กำลังดำเนินต่อไปบนอุปกรณ์เครื่องอื่นของคุณ"
+    "callContinuingElsewhere": "การโทรนี้กำลังดำเนินต่อไปบนอุปกรณ์เครื่องอื่นของคุณ",
+    "listenFirst": "ฟังก่อน",
+    "listenFirstDescription": "เมื่อเปิดใช้งานฟังก่อน การคลิกหนึ่งครั้งจะเล่นเสียง และการดับเบิลคลิกจะเลือกตัวเลือก",
+    "listenFirstNeedsChoiceAudio": "เปิดเสียงตัวเลือกเพื่อใช้ฟังก่อน"
 }

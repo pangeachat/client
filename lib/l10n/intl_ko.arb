@@ -9945,7 +9945,6 @@
     "languageDropdownLevel": "레벨 {level}",
     "whatAreYouLearning": "무엇을 배우고 있나요?",
     "languageSwitcherBaseLanguageLabel": "기본 언어",
-    "listenModeDescription": "선택 항목을 탭하여 들어보세요. 아무것도 선택되지 않았습니다.",
     "rateActivityLiked": "마음에 들어요",
     "rateActivityDisliked": "마음에 들지 않아요",
     "constructUseHrdDesc": "들었어요",
@@ -10064,5 +10063,8 @@
     "callDevicesLeaveHere": "여기서 통화 종료",
     "callDevicesOlderTitle": "다른 기기에서는 이 통화를 스스로 종료할 수 없습니다.",
     "callDevicesOlderBody": "거기서 통화를 종료하거나 여기서 종료하세요. 일반적으로 이전 버전이 실행 중이라는 의미이므로 업데이트하면 해결됩니다.",
-    "callContinuingElsewhere": "이 통화는 다른 기기에서 계속됩니다."
+    "callContinuingElsewhere": "이 통화는 다른 기기에서 계속됩니다.",
+    "listenFirst": "먼저 듣기",
+    "listenFirstDescription": "먼저 듣기 기능이 켜져 있으면 한 번 클릭하면 오디오가 재생되고 두 번 클릭하면 옵션이 선택됩니다.",
+    "listenFirstNeedsChoiceAudio": "먼저 듣기를 사용하려면 선택 오디오를 켜세요."
 }

@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "ደረጃ {level}",
     "whatAreYouLearning": "ምን እየተማርክ ነው?",
     "languageSwitcherBaseLanguageLabel": "የእርስዎ መሰረታዊ ቋንቋ",
-    "listenModeDescription": "ለመስማት ምርጫ ይንኩ። ምንም አልተመረጠም።",
     "rateActivityLiked": "ወደድኩት",
     "rateActivityDisliked": "አልወደድኩትም",
     "constructUseHrdDesc": "ሰምቷል",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "ጥሪውን እዚህ ይተው",
     "callDevicesOlderTitle": "ሌላኛው መሳሪያዎ ይህን ጥሪ በራሱ መተው አይችልም።",
     "callDevicesOlderBody": "ጥሪውን እዚያ ያቋርጡ፣ ወይም እዚህ ይተዉት። ይህ ማለት ብዙውን ጊዜ የቆየ ስሪት እየተጠቀመ ነው፣ እና ማዘመን ይህንን ያስተካክለዋል።",
-    "callContinuingElsewhere": "ይህ ጥሪ በሌላኛው መሳሪያዎ ላይ ቀጥሏል።"
+    "callContinuingElsewhere": "ይህ ጥሪ በሌላኛው መሳሪያዎ ላይ ቀጥሏል።",
+    "listenFirst": "መጀመሪያ ያዳምጡ",
+    "listenFirstDescription": "መጀመሪያ ያዳምጡ ሲበራ፣ አንድ ጊዜ ጠቅ ማድረግ ድምጽን ብቻ ያጫውታል እና ሁለቴ ጠቅ ማድረግ አማራጩን ይመርጣል።",
+    "listenFirstNeedsChoiceAudio": "መጀመሪያ ያዳምጡን ለመጠቀም የምርጫዎች ድምጽን ያብሩ።"
 }

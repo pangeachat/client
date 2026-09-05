@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "Taumata {level}",
     "whatAreYouLearning": "He aha tō ako?",
     "languageSwitcherBaseLanguageLabel": "Tō reo matua",
-    "listenModeDescription": "Pāwhiritia tētahi kōwhiringa kia rangona. Kāore he mea i tohua.",
     "rateActivityLiked": "I pai",
     "rateActivityDisliked": "Kāore i pai",
     "constructUseHrdDesc": "Kua rangona",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "Waiho te waea ki konei",
     "callDevicesOlderTitle": "Kāore e taea e tō pūrere atu te wehe i tēnei waea i a ia anō.",
     "callDevicesOlderBody": "Whakamutua te waea ki reira, waiho rānei ki konei. Ko te tikanga he putanga tawhito tōna, ā, mā te whakahou ka whakatika i tēnei.",
-    "callContinuingElsewhere": "Kei te haere tonu tēnei waea i runga i tō pūrere atu."
+    "callContinuingElsewhere": "Kei te haere tonu tēnei waea i runga i tō pūrere atu.",
+    "listenFirst": "Whakarongo tuatahi",
+    "listenFirstDescription": "Ina ka kā te Whakarongo Tuatahi, kotahi te pāwhiri ka purei i te oro, ā, ka rua ngā pāwhiri ka kōwhiri i te kōwhiringa.",
+    "listenFirstNeedsChoiceAudio": "Whakakāhia te oro Kōwhiringa kia whakamahi i te Whakarongo Tuatahi."
 }

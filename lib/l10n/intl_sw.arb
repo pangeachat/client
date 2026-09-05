@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "Kiwango {level}",
     "whatAreYouLearning": "Unajifunza nini?",
     "languageSwitcherBaseLanguageLabel": "Lugha yako ya msingi",
-    "listenModeDescription": "Gonga chaguo ili kulisikia. Hakuna kilichochaguliwa.",
     "rateActivityLiked": "Nimeipenda",
     "rateActivityDisliked": "Sikuipenda",
     "constructUseHrdDesc": "Nimesikia",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "Acha simu hapa",
     "callDevicesOlderTitle": "Kifaa chako kingine hakiwezi kuondoka kwenye simu hii chenyewe.",
     "callDevicesOlderBody": "Maliza simu huko, au iache hapa. Hiyo kwa kawaida inamaanisha inatumia toleo la zamani, na kuisasisha kutarekebisha hili.",
-    "callContinuingElsewhere": "Simu hii inaendelea kwenye kifaa chako kingine."
+    "callContinuingElsewhere": "Simu hii inaendelea kwenye kifaa chako kingine.",
+    "listenFirst": "Sikiliza kwanza",
+    "listenFirstDescription": "Wakati Sikiliza Kwanza imewashwa, kubofya mara moja hucheza sauti tu na kubofya mara mbili huchagua chaguo.",
+    "listenFirstNeedsChoiceAudio": "Washa sauti ya Chaguo ili kutumia Sikiliza Kwanza."
 }

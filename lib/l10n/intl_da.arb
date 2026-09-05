@@ -10672,7 +10672,6 @@
     "languageDropdownLevel": "Niveau {level}",
     "whatAreYouLearning": "Hvad lærer du?",
     "languageSwitcherBaseLanguageLabel": "Dit grundsprog",
-    "listenModeDescription": "Tryk på et valg for at høre det. Intet er valgt.",
     "rateActivityLiked": "Kunne lide det",
     "rateActivityDisliked": "Kunne ikke lide det",
     "constructUseHrdDesc": "Hørt",
@@ -10791,5 +10790,8 @@
     "callDevicesLeaveHere": "Forlad opkaldet her",
     "callDevicesOlderTitle": "Din anden enhed kan ikke forlade dette opkald af sig selv.",
     "callDevicesOlderBody": "Afslut opkaldet der, eller forlad det her. Det betyder som regel, at den kører en ældre version, og en opdatering vil løse dette.",
-    "callContinuingElsewhere": "Dette opkald fortsætter på din anden enhed."
+    "callContinuingElsewhere": "Dette opkald fortsætter på din anden enhed.",
+    "listenFirst": "Lyt først",
+    "listenFirstDescription": "Når Lyt først er slået til, afspiller et enkelt klik kun lyd, og et dobbeltklik vælger indstillingen.",
+    "listenFirstNeedsChoiceAudio": "Slå valg-lyd til for at bruge Lyt først."
 }

@@ -44,6 +44,10 @@ class AudioSettingsSection extends StatelessWidget {
     // message-read-aloud.instructions.md.
     final hasVoice = viewModel.hasKnownGoodVoice;
     final language = viewModel.selectedTargetLanguage?.displayName;
+    // Read from the PENDING profile, not the saved one, so turning choice
+    // audio off releases Listen First in the same breath rather than after a
+    // save.
+    final hasChoiceAudio = viewModel.getToolSetting(ToolSetting.audioChoices);
     return Column(
       children: [
         ListTile(
@@ -56,13 +60,37 @@ class AudioSettingsSection extends StatelessWidget {
           ),
         ),
         ...ToolSetting.audioSettings
-            .where((setting) => !setting.isMessageAudioSetting)
+            .where(
+              (setting) =>
+                  !setting.isMessageAudioSetting &&
+                  !setting.requiresChoiceAudio,
+            )
             .map(
               (setting) => ProfileSettingsSwitchListTile.adaptive(
                 defaultValue: viewModel.getToolSetting(setting),
                 title: setting.toolName(context),
                 subtitle: setting.toolDescription(context),
                 onChange: (v) => viewModel.updateToolSetting(setting, v),
+              ),
+            ),
+        // Listen First sequences choice audio, so with that audio off it is
+        // a mode that plays nothing. Offered as unavailable, with the reason,
+        // rather than as a switch that flips and changes nothing.
+        ...ToolSetting.audioSettings
+            .where((s) => s.requiresChoiceAudio)
+            .map(
+              (setting) => SwitchListTile.adaptive(
+                value: hasChoiceAudio && viewModel.getToolSetting(setting),
+                title: Text(setting.toolName(context)),
+                subtitle: Text(
+                  hasChoiceAudio
+                      ? setting.toolDescription(context)
+                      : L10n.of(context).listenFirstNeedsChoiceAudio,
+                ),
+                activeThumbColor: AppConfig.activeToggleColor,
+                onChanged: !hasChoiceAudio
+                    ? null
+                    : (v) => viewModel.updateToolSetting(setting, v),
               ),
             ),
         if (!hasVoice && language != null)

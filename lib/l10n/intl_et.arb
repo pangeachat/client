@@ -9749,7 +9749,6 @@
     "languageDropdownLevel": "Tase {level}",
     "whatAreYouLearning": "Mida sa õpid?",
     "languageSwitcherBaseLanguageLabel": "Sinu baaskeelt",
-    "listenModeDescription": "Puuduta valikut, et seda kuulda. Midagi pole valitud.",
     "rateActivityLiked": "Meeldis",
     "rateActivityDisliked": "Ei meeldinud",
     "constructUseHrdDesc": "Kuuldud",
@@ -9868,5 +9867,8 @@
     "callDevicesLeaveHere": "Lahku kõnest siin",
     "callDevicesOlderTitle": "Sinu teine seade ei saa sellest kõnest iseseisvalt lahkuda.",
     "callDevicesOlderBody": "Lõpeta kõne seal või lahku sellest siin. See tähendab tavaliselt, et seal töötab vanem versioon ja selle uuendamine lahendab probleemi.",
-    "callContinuingElsewhere": "See kõne jätkub sinu teises seadmes."
+    "callContinuingElsewhere": "See kõne jätkub sinu teises seadmes.",
+    "listenFirst": "Kõigepealt kuula",
+    "listenFirstDescription": "Kui „Kõigepealt kuula“ on sisse lülitatud, esitab üks klõps heli ja topeltklõps valib valiku.",
+    "listenFirstNeedsChoiceAudio": "Lülita sisse valikute heli, et kasutada funktsiooni „Kõigepealt kuula“."
 }

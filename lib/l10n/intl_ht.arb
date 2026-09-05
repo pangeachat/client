@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "Nivo {level}",
     "whatAreYouLearning": "Kisa w ap aprann?",
     "languageSwitcherBaseLanguageLabel": "Lang baz ou",
-    "listenModeDescription": "Tape yon chwa pou tande li. Pa gen anyen ki chwazi.",
     "rateActivityLiked": "Te renmen li",
     "rateActivityDisliked": "Pa t renmen li",
     "constructUseHrdDesc": "Tande",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "Kite apèl la isit la",
     "callDevicesOlderTitle": "Lòt aparèy ou an pa ka kite apèl sa a pou kont li.",
     "callDevicesOlderBody": "Mete fen nan apèl la la, oswa kite l isit la. Sa anjeneral vle di li ap kouri yon vèsyon ki pi ansyen, epi mete ajou li pral ranje sa.",
-    "callContinuingElsewhere": "Apèl sa a ap kontinye sou lòt aparèy ou an."
+    "callContinuingElsewhere": "Apèl sa a ap kontinye sou lòt aparèy ou an.",
+    "listenFirst": "Koute anvan",
+    "listenFirstDescription": "Lè Koute anvan aktive, yon sèl klik jis jwe odyo a epi doub-klik chwazi opsyon an.",
+    "listenFirstNeedsChoiceAudio": "Aktive odyo Chwa pou itilize Koute anvan."
 }

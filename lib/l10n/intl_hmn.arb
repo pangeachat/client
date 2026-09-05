@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "Qib {level}",
     "whatAreYouLearning": "Koj kawm dab tsi?",
     "languageSwitcherBaseLanguageLabel": "Koj hom lus pib",
-    "listenModeDescription": "Coj ib qho kev xaiv los mloog. Tsis muaj dab tsi raug xaiv.",
     "rateActivityLiked": "Nyiam",
     "rateActivityDisliked": "Tsis nyiam",
     "constructUseHrdDesc": "Hnov",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "Tso tseg qhov kev hu xovtooj ntawm no",
     "callDevicesOlderTitle": "Koj lub cuab yeej tsis tuaj yeem tawm ntawm qhov kev hu xovtooj no ntawm nws tus kheej.",
     "callDevicesOlderBody": "Xaus qhov kev hu xovtooj ntawd, lossis tso tseg ntawm no. Qhov ntawd feem ntau txhais tau tias nws tabtom siv ib qho version qub, thiab hloov kho nws yuav daws qhov teeb meem no.",
-    "callContinuingElsewhere": "Qhov kev hu xovtooj no tabtom txuas ntxiv ntawm koj lub cuab yeej."
+    "callContinuingElsewhere": "Qhov kev hu xovtooj no tabtom txuas ntxiv ntawm koj lub cuab yeej.",
+    "listenFirst": "Mloog ua ntej",
+    "listenFirstDescription": "Thaum Mloog Ua Ntej qhib, ib zaug nias tsuas yog ua suab xwb thiab ob zaug nias xaiv qhov kev xaiv.",
+    "listenFirstNeedsChoiceAudio": "Qhib Kev Xaiv suab kom siv Mloog Ua Ntej."
 }

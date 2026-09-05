@@ -10669,7 +10669,6 @@
     "languageDropdownLevel": "Nível {level}",
     "whatAreYouLearning": "O que estás a aprender?",
     "languageSwitcherBaseLanguageLabel": "A sua língua base",
-    "listenModeDescription": "Toque numa opção para a ouvir. Nada selecionado.",
     "rateActivityLiked": "Gostei",
     "rateActivityDisliked": "Não gostei",
     "constructUseHrdDesc": "Ouviu",
@@ -10788,5 +10787,8 @@
     "callDevicesLeaveHere": "Sair da chamada aqui",
     "callDevicesOlderTitle": "O seu outro dispositivo não consegue sair desta chamada sozinho.",
     "callDevicesOlderBody": "Termine a chamada lá, ou saia daqui. Isso geralmente significa que está a executar uma versão mais antiga, e atualizá-la irá resolver isto.",
-    "callContinuingElsewhere": "Esta chamada está a continuar no seu outro dispositivo."
+    "callContinuingElsewhere": "Esta chamada está a continuar no seu outro dispositivo.",
+    "listenFirst": "Ouvir primeiro",
+    "listenFirstDescription": "Quando a opção Ouvir primeiro está ativada, um clique reproduz o áudio e um clique duplo seleciona a opção.",
+    "listenFirstNeedsChoiceAudio": "Ative o áudio das escolhas para usar a opção Ouvir primeiro."
 }

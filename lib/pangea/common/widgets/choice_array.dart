@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
@@ -15,7 +18,7 @@ import '../../../features/bot/utils/bot_style.dart';
 
 typedef ChoiceCallback<T> = void Function(T value, int index);
 
-class ChoicesArray<T> extends StatelessWidget {
+class ChoicesArray<T> extends StatefulWidget {
   final List<Choice<T>>? choices;
   final ChoiceCallback<T> onPressed;
   final ChoiceCallback<T>? onLongPress;
@@ -44,14 +47,14 @@ class ChoicesArray<T> extends StatelessWidget {
   /// default here.
   final String roomId;
 
-  /// When true, tapping a choice plays it and nothing else — [onPressed] is
-  /// not called, so nothing is selected or replaced.
+  /// When true, a single tap on a choice only plays it; selecting it takes a
+  /// second tap on the SAME choice within [kDoubleTapTimeout].
   ///
-  /// Writing assistance's Listen mode, and only its. A learner who knows a
-  /// language by ear cannot tell the choices apart on sight, and hearing one
+  /// Writing assistance's Listen First mode, and only its. A learner who knows
+  /// a language by ear cannot tell the choices apart on sight, and hearing one
   /// used to cost them the answer. Every other caller leaves this false and
   /// keeps the shipped behaviour, where a tap selects.
-  final bool listenMode;
+  final bool listenFirstMode;
 
   const ChoicesArray({
     super.key,
@@ -65,8 +68,103 @@ class ChoicesArray<T> extends StatelessWidget {
     this.getDisplayCopy,
     this.id,
     this.enabled = true,
-    this.listenMode = false,
+    this.listenFirstMode = false,
   });
+
+  @override
+  State<ChoicesArray<T>> createState() => _ChoicesArrayState<T>();
+}
+
+class _ChoicesArrayState<T> extends State<ChoicesArray<T>> {
+  /// The choice a Listen First tap has played and left waiting for the second
+  /// tap that selects it, cleared when [kDoubleTapTimeout] runs out.
+  int? _armedIndex;
+  Timer? _armTimer;
+
+  @override
+  void didUpdateWidget(covariant ChoicesArray<T> oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    // Leaving the mode, or moving to another match's choices, must not leave a
+    // choice armed: the next tap would select without the learner having heard
+    // this one, which is the surprise the mode exists to remove.
+    if (!widget.listenFirstMode || oldWidget.id != widget.id) _disarm();
+  }
+
+  @override
+  void dispose() {
+    _armTimer?.cancel();
+    super.dispose();
+  }
+
+  void _disarm() {
+    _armTimer?.cancel();
+    _armTimer = null;
+    _armedIndex = null;
+  }
+
+  void _speak(T value) {
+    if (!widget.enableAudio || widget.langCode == null) return;
+    TtsController.tryToSpeak(
+      // Display string is used for TTS
+      widget.getDisplayCopy != null
+          ? widget.getDisplayCopy!(value)
+          : value.toString(),
+      targetID: null,
+      langCode: widget.langCode!,
+      useCase: TtsUseCase.choices,
+      // Listening category 6 (#104): audio a DRILL played — a
+      // tapped answer choice spoken back to the learner.
+      //
+      // The category is a constant here, but the ROOM cannot be:
+      // this widget serves writing assistance and the activity
+      // orchestrator, so it is threaded in by whichever caller
+      // built it. The identity is read live rather than captured —
+      // an account switch mid-playback must not post under a stale
+      // one. A fresh probe per call: it holds a running
+      // measurement.
+      // A choice is spoken as raw text: this widget serves
+      // writing assistance and the activity orchestrator and is
+      // handed strings, not tokens, so there is no construct to
+      // file the hearing under. Deriving a lemma from the surface
+      // form would file it under the wrong word, which is worse
+      // than not recording it.
+      exposure: const ListeningExposureDeclaration.exempt(
+        "choice text is not resolved to a construct here",
+      ),
+      listening: DosageTtsListeningProbe(
+        category: DosageListeningCategory.practiceAudio,
+        roomId: widget.roomId,
+        userId: () => MatrixState.pangeaController.matrixState.client.userID,
+        accessToken: () =>
+            MatrixState.pangeaController.matrixState.client.accessToken,
+      ),
+    );
+  }
+
+  /// A tap on choice [index].
+  ///
+  /// Outside Listen First this is unchanged: select, and play. Inside it the
+  /// first tap only plays, and a second tap on the same choice within the
+  /// double-tap window selects it without replaying over the audio the first
+  /// tap started.
+  void _onTap(T value, int index) {
+    if (!widget.listenFirstMode) {
+      widget.onPressed(value, index);
+      _speak(value);
+      return;
+    }
+
+    if (_armedIndex == index) {
+      _disarm();
+      widget.onPressed(value, index);
+      return;
+    }
+
+    _speak(value);
+    _armTimer?.cancel();
+    _armedIndex = index;
+    _armTimer = Timer(kDoubleTapTimeout, () => _armedIndex = null);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,58 +173,15 @@ class ChoicesArray<T> extends StatelessWidget {
       runAlignment: WrapAlignment.center,
       spacing: 4.0,
       children: [
-        ...choices!.mapIndexed(
+        ...widget.choices!.mapIndexed(
           (index, entry) => ChoiceItem<T>(
-            onLongPress: onLongPress,
-            onPressed: (T value, int index) {
-              if (!listenMode) onPressed(value, index);
-              if (enableAudio && langCode != null) {
-                TtsController.tryToSpeak(
-                  // Display string is used for TTS
-                  getDisplayCopy != null
-                      ? getDisplayCopy!(value)
-                      : value.toString(),
-                  targetID: null,
-                  langCode: langCode!,
-                  useCase: TtsUseCase.choices,
-                  // Listening category 6 (#104): audio a DRILL played — a
-                  // tapped answer choice spoken back to the learner.
-                  //
-                  // The category is a constant here, but the ROOM cannot be:
-                  // this widget serves writing assistance and the activity
-                  // orchestrator, so it is threaded in by whichever caller
-                  // built it. The identity is read live rather than captured —
-                  // an account switch mid-playback must not post under a stale
-                  // one. A fresh probe per call: it holds a running
-                  // measurement.
-                  // A choice is spoken as raw text: this widget serves
-                  // writing assistance and the activity orchestrator and is
-                  // handed strings, not tokens, so there is no construct to
-                  // file the hearing under. Deriving a lemma from the surface
-                  // form would file it under the wrong word, which is worse
-                  // than not recording it.
-                  exposure: const ListeningExposureDeclaration.exempt(
-                    "choice text is not resolved to a construct here",
-                  ),
-                  listening: DosageTtsListeningProbe(
-                    category: DosageListeningCategory.practiceAudio,
-                    roomId: roomId,
-                    userId: () =>
-                        MatrixState.pangeaController.matrixState.client.userID,
-                    accessToken: () => MatrixState
-                        .pangeaController
-                        .matrixState
-                        .client
-                        .accessToken,
-                  ),
-                );
-              }
-            },
+            onLongPress: widget.onLongPress,
+            onPressed: _onTap,
             entry: MapEntry(index, entry),
-            isSelected: selectedChoiceIndex == index,
-            id: id,
-            getDisplayCopy: getDisplayCopy,
-            enabled: enabled,
+            isSelected: widget.selectedChoiceIndex == index,
+            id: widget.id,
+            getDisplayCopy: widget.getDisplayCopy,
+            enabled: widget.enabled,
           ),
         ),
       ],

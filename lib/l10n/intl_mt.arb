@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "Livell {level}",
     "whatAreYouLearning": "X’qed titgħallem?",
     "languageSwitcherBaseLanguageLabel": "Il-lingwa bażi tiegħek",
-    "listenModeDescription": "Tektek għażla biex tismagħha. Xejn mhu magħżul.",
     "rateActivityLiked": "Għoġobni",
     "rateActivityDisliked": "Ma għoġobnix",
     "constructUseHrdDesc": "Smajt",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "Ħalli s-sejħa hawn",
     "callDevicesOlderTitle": "L-apparat l-ieħor tiegħek ma jistax iħalli din is-sejħa waħdu.",
     "callDevicesOlderBody": "Ittermina s-sejħa hemmhekk, jew ħalliha hawn. Dan normalment ifisser li qed jaħdem verżjoni eqdem, u l-aġġornament tagħha se jirranġa dan.",
-    "callContinuingElsewhere": "Din is-sejħa qed tkompli fuq l-apparat l-ieħor tiegħek."
+    "callContinuingElsewhere": "Din is-sejħa qed tkompli fuq l-apparat l-ieħor tiegħek.",
+    "listenFirst": "Isma' l-ewwel",
+    "listenFirstDescription": "Meta Isma' l-Ewwel tkun mixgħula, klikk waħda ddoqq l-awdjo u double-click tagħżel l-għażla.",
+    "listenFirstNeedsChoiceAudio": "Ixgħel l-awdjo tal-Għażliet biex tuża Isma' l-Ewwel."
 }

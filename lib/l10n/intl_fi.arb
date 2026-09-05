@@ -9789,7 +9789,6 @@
     "languageDropdownLevel": "Taso {level}",
     "whatAreYouLearning": "Mitä opiskelet?",
     "languageSwitcherBaseLanguageLabel": "Peruskielesi",
-    "listenModeDescription": "Kuule valinta napauttamalla sitä. Mitään ei ole valittu.",
     "rateActivityLiked": "Pidin siitä",
     "rateActivityDisliked": "En pitänyt siitä",
     "constructUseHrdDesc": "Kuultu",
@@ -9908,5 +9907,8 @@
     "callDevicesLeaveHere": "Poistu puhelusta tästä",
     "callDevicesOlderTitle": "Toinen laitteesi ei voi poistua tästä puhelusta itsestään.",
     "callDevicesOlderBody": "Lopeta puhelu siellä tai poistu siitä täällä. Tämä tarkoittaa yleensä, että siinä on vanhempi versio, ja sen päivittäminen korjaa tämän.",
-    "callContinuingElsewhere": "Tämä puhelu jatkuu toisella laitteellasi."
+    "callContinuingElsewhere": "Tämä puhelu jatkuu toisella laitteellasi.",
+    "listenFirst": "Kuuntele ensin",
+    "listenFirstDescription": "Kun Kuuntele ensin on päällä, yhdellä napsautuksella toistetaan ääni ja kaksoisnapsautuksella valitaan vaihtoehto.",
+    "listenFirstNeedsChoiceAudio": "Ota Valintojen ääni käyttöön käyttääksesi Kuuntele ensin -toimintoa."
 }

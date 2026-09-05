@@ -10484,7 +10484,6 @@
     "languageDropdownLevel": "Nivelul {level}",
     "whatAreYouLearning": "Ce înveți?",
     "languageSwitcherBaseLanguageLabel": "Limba ta de bază",
-    "listenModeDescription": "Atingeți o opțiune pentru a o auzi. Nu este selectat nimic.",
     "rateActivityLiked": "Mi-a plăcut",
     "rateActivityDisliked": "Nu mi-a plăcut",
     "constructUseHrdDesc": "Auzit",
@@ -10603,5 +10602,8 @@
     "callDevicesLeaveHere": "Părăsește apelul aici",
     "callDevicesOlderTitle": "Celălalt dispozitiv al tău nu poate părăsi acest apel singur.",
     "callDevicesOlderBody": "Încheie apelul acolo sau părăsește-l aici. Asta înseamnă de obicei că rulează o versiune mai veche, iar actualizarea o va remedia.",
-    "callContinuingElsewhere": "Acest apel continuă pe celălalt dispozitiv al tău."
+    "callContinuingElsewhere": "Acest apel continuă pe celălalt dispozitiv al tău.",
+    "listenFirst": "Ascultă mai întâi",
+    "listenFirstDescription": "Când Ascultă mai întâi este activat, un singur clic redă doar sunetul, iar un dublu clic selectează opțiunea.",
+    "listenFirstNeedsChoiceAudio": "Activează sunetul Opțiunilor pentru a utiliza Ascultă mai întâi."
 }

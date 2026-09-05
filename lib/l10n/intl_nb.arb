@@ -9809,7 +9809,6 @@
     "languageDropdownLevel": "Nivå {level}",
     "whatAreYouLearning": "Hva lærer du?",
     "languageSwitcherBaseLanguageLabel": "Ditt morsmål",
-    "listenModeDescription": "Trykk på et valg for å høre det. Ingenting er valgt.",
     "rateActivityLiked": "Likte den",
     "rateActivityDisliked": "Likte den ikke",
     "constructUseHrdDesc": "Hørt",
@@ -9928,5 +9927,8 @@
     "callDevicesLeaveHere": "Forlat samtalen her",
     "callDevicesOlderTitle": "Den andre enheten din kan ikke forlate denne samtalen på egen hånd.",
     "callDevicesOlderBody": "Avslutt samtalen der, eller forlat den her. Det betyr vanligvis at den kjører en eldre versjon, og en oppdatering vil fikse dette.",
-    "callContinuingElsewhere": "Denne samtalen fortsetter på den andre enheten din."
+    "callContinuingElsewhere": "Denne samtalen fortsetter på den andre enheten din.",
+    "listenFirst": "Lytt først",
+    "listenFirstDescription": "Når Lytt først er på, spiller ett klikk bare av lyd, og dobbeltklikk velger alternativet.",
+    "listenFirstNeedsChoiceAudio": "Slå på lyd for valg for å bruke Lytt først."
 }

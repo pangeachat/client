@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "Heerka {level}",
     "whatAreYouLearning": "Maxaad baranaysaa?",
     "languageSwitcherBaseLanguageLabel": "Luqaddaada aasaasiga ah",
-    "listenModeDescription": "Dooro mid si aad u dhageysato. Waxba lama dooran.",
     "rateActivityLiked": "Waan jeclaystay",
     "rateActivityDisliked": "Ma jeclaysan",
     "constructUseHrdDesc": "La maqlay",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "Halkan ka tag wicitaanka",
     "callDevicesOlderTitle": "Aaladdaada kale iskii ugama bixi karto wicitaankan.",
     "callDevicesOlderBody": "Halkaas ka jooji wicitaanka, ama halkan kaga tag. Taasi badanaa waxay ka dhigan tahay inay ku shaqaynayso nooc duug ah, oo cusboonaysiinteedu ay hagaajin doonto tan.",
-    "callContinuingElsewhere": "Wicitaankani wuxuu ku sii socdaa aaladdaada kale."
+    "callContinuingElsewhere": "Wicitaankani wuxuu ku sii socdaa aaladdaada kale.",
+    "listenFirst": "Marka hore dhegeyso",
+    "listenFirstDescription": "Marka 'Marka hore dhegeyso' daaran yahay, hal gujin waxa ay ciyaaraysaa oo kaliya codka, laba gujinna waxa ay dooranaysaa ikhtiyaarka.",
+    "listenFirstNeedsChoiceAudio": "Daar codka doorashooyinka si aad u isticmaasho 'Marka hore dhegeyso'."
 }

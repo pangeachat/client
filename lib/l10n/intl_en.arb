@@ -3488,10 +3488,20 @@
         "description": "Shown in the email signup form when the homeserver reports the chosen username is already registered."
     },
     "listen": "Listen",
-    "listenModeDescription": "Tap a choice to hear it. Nothing is selected.",
-    "@listenModeDescription": {
+    "listenFirst": "Listen first",
+    "@listenFirst": {
         "type": "text",
-        "description": "Shown under the choices in the writing assistance card while Listen mode is on, explaining that tapping a choice only plays its audio."
+        "description": "Name of the writing assistance card's Listen First toggle, used as the header icon's tooltip and as its label in the card's overflow menu."
+    },
+    "listenFirstDescription": "When Listen First is on, one click just plays audio and double-click selects the option.",
+    "@listenFirstDescription": {
+        "type": "text",
+        "description": "Dismissable instruction shown under the choices in the writing assistance card while Listen First is on, explaining the one-click/double-click split. Also the Listen First row's subtitle in the audio section of learning settings."
+    },
+    "listenFirstNeedsChoiceAudio": "Turn on Choices audio to use Listen First.",
+    "@listenFirstNeedsChoiceAudio": {
+        "type": "text",
+        "description": "Subtitle on the disabled Listen First row in learning settings, shown when the Choices audio toggle is off and Listen First would have nothing to play."
     },
     "trialPeriodExpired": "Your trial period has expired",
     "translations": "translations",

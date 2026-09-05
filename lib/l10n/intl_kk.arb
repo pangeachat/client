@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "{level} деңгей",
     "whatAreYouLearning": "Сіз не үйреніп жатырсыз?",
     "languageSwitcherBaseLanguageLabel": "Сіздің негізгі тіліңіз",
-    "listenModeDescription": "Тыңдау үшін таңдауды басыңыз. Ештеңе таңдалмаған.",
     "rateActivityLiked": "Ұнады",
     "rateActivityDisliked": "Ұнамады",
     "constructUseHrdDesc": "Естідім",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "Қоңырауды осында қалдыру",
     "callDevicesOlderTitle": "Басқа құрылғыңыз бұл қоңырауды өздігінен қалдыра алмайды.",
     "callDevicesOlderBody": "Қоңырауды сол жерде аяқтаңыз немесе осында қалдырыңыз. Бұл әдетте оның ескі нұсқада жұмыс істеп тұрғанын білдіреді, және оны жаңарту осы мәселені шешеді.",
-    "callContinuingElsewhere": "Бұл қоңырау басқа құрылғыңызда жалғасуда."
+    "callContinuingElsewhere": "Бұл қоңырау басқа құрылғыңызда жалғасуда.",
+    "listenFirst": "Алдымен тыңдау",
+    "listenFirstDescription": "Алдымен тыңдау қосулы болғанда, бір рет басу тек аудионы ойнатады, ал екі рет басу опцияны таңдайды.",
+    "listenFirstNeedsChoiceAudio": "Алдымен тыңдауды пайдалану үшін Таңдаулар аудиосын қосыңыз."
 }
