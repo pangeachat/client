@@ -42,13 +42,17 @@ class ActivityYoutubePlayer extends StatefulWidget {
     super.key,
   });
 
-  /// [language] as the ISO 639-1 two-letter code `cc_lang_pref` takes, or null
-  /// when there is nothing usable to send — a localized code (`zh-Hans`)
-  /// narrows to its base language, since a caption track is what YouTube has,
-  /// not a script variant.
+  /// [language] as the language code `cc_lang_pref` takes, or null when there
+  /// is nothing usable to send. A localized code (`zh-Hans`, `en_US`) narrows
+  /// to its base language, since a caption track is a language, not a script or
+  /// region variant. Anything that isn't a bare two- or three-letter code is
+  /// dropped rather than sent: `cc_lang_pref` is documented as ISO 639-1, but
+  /// YouTube does carry tracks for the three-letter languages we teach (`haw`,
+  /// `fil`, `yue`), so narrowing to two letters would lose them.
   static String? captionLanguageCode(String? language) {
-    final code = language?.split('-').first.trim().toLowerCase();
-    return (code == null || code.isEmpty) ? null : code;
+    final code = language?.split(RegExp('[-_]')).first.trim().toLowerCase();
+    if (code == null || !RegExp(r'^[a-z]{2,3}$').hasMatch(code)) return null;
+    return code;
   }
 
   @override
