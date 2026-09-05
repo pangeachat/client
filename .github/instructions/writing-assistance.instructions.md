@@ -218,7 +218,7 @@ Every match a learner engages with becomes a construct use on the words it cover
 
 That two-way split is the whole of what analytics distinguishes today, and it is narrower than the category table above. Word choice, style and transcription matches all record as grammar corrections, so a learner who accepts a false-cognate fix is told they got a grammar correction right. This is a known gap, tracked in [pangeachat/.github#479](https://github.com/pangeachat/.github/issues/479) — not the intended end state.
 
-The distinction used to come for free, because grammar correction and translation were separate flows behind separate endpoints. Since writing assistance merged them into one, the match's category is the only thing that still carries it, and anything needing to tell the two apart reads the category. Translation construct uses therefore stay in the vocabulary even though the interactive-translation flow that introduced them is gone.
+The distinction used to come for free, because grammar correction and translation were separate flows behind separate endpoints. Since writing assistance merged them into one, the match's category is the only thing that still carries it, and anything needing to tell the two apart reads the category. Messages sent before the merge are the exception: they identify their translation matches by the rule the old flow stored on them, and are still read that way so their scores do not shift. Translation construct uses therefore stay in the vocabulary even though the interactive-translation flow that introduced them is gone.
 
 ---
 
