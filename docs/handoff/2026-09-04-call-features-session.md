@@ -207,3 +207,30 @@ Remaining (from the audit, prioritized):
   `24203fd711` (player), and the OGG fix `26a67d96c4`.
 - Owner-gated: #8797-vs-#8807 PR split, opening/batch-merging the PRs, the
   compiled-web CI lane, the #8808 settle-signal design.
+
+## 2026-09-04 (VI) — cold-gate of the 4 ungated commits: 1 GREEN, 3 RED -> fixed
+
+Gate workflow `wf_f11a5202-a49`: `c6460b66d9` (#8797 card fix) GREEN; the other
+three RED, all now fixed:
+- #8807 `1925844ca5` **HIGH**: the cut cue had no placedCall guard, so the
+  ANSWERER played call_ended.mp3 on every answered-then-ended call (both devices
+  run _onCallChanged). FIXED `66ffac7d36`: guard the cut block on
+  `call.placedCall` (caller-only, matching the doc + pre-#8807 behaviour). Tests:
+  answerer-no-cut, tightened cut order to the exact [stop, once:call_ended] tail,
+  and a new reconnecting-cue test (drives isRecovering via a
+  `_FakeRoster.setRecovering` seam; also locks `call.mp3`). CUT-SCOPING is
+  caller-only by DEFAULT -- owner may want BOTH parties to hear the end tone
+  (flagged for confirmation).
+- recordings player `24203fd711` **MEDIUM** (code was GREEN): the test never
+  asserted the synthetic event is PLAYABLE. FIXED `7330862c15`: assert
+  type/msgtype/mxc-url/info.size on each player's event.
+- OGG `26a67d96c4` **LOW x3**: no test locks the .mp3 cues. Reconnect cue now
+  locked (the reconnecting test). Incoming-ring (phone.mp3) + busy
+  (notification.mp3) locks DEFERRED -- low value, and the busy asset is only
+  assertable at the audioplayers channel level the ring tests deliberately mock;
+  the code comment at each cue ref guards against a revert.
+
+Working: 17/17 E2E on combined; 55 call_session + 58 player unit tests green.
+Re-gate of `66ffac7d36` + `7330862c15` running (codex). Branch tips (all local):
+`satvik/tokenize-call-transcript` = `66ffac7d36`; `satvik/call-audio-recording`
+= `7330862c15`.
