@@ -289,3 +289,32 @@ free. Left pub-cache, fvm, rustup, puppeteer, and codex caches intact.
 - HOLD: **no PRs until Tuesday (owner).** Everything stays local + gated; do NOT
   open/push any PR before then. iOS-Simulator verification still waiting on the
   Xcode install (owner downloading it).
+
+## 2026-09-05 — one-sided recording ROOT-CAUSED (real code bug) + fix in flight
+
+Owner found only ONE side records in a 1:1 call (only @learner wrote call_audio;
+the peer wrote none) and asked for the MIXED recording. Investigation (agent,
+DEFINITIVE): a REAL CODE BUG, not the lk-jwt/attribute local-stack limit (H1
+attribute + H2 cross-account-sibling both REFUTED with file:line evidence). The
+NON-INITIATOR of the hangup drops its half: the SFU reports the peer's departure
+BEFORE the caller's Matrix retraction syncs, so the answerer takes the GRACE path
+-> `_reconcile` runs a default SETTLE-shaped `capture.stop()` (active_call.dart
+~932) that does NOT set `wasCarryingBeforeLastStop`; grace lapses -> the
+hangup-shaped stop finds `_running` already false -> `carriedOn=false` ->
+`finish()` skips the upload (INFO log, no failure). The initiator keeps `_running`
+true through its own hangup and publishes. Missing case = a PEER-DROP PAUSE (peer
+left, NO SIBLING to hand to): this device is still the sole carrier and MUST
+publish. Platform-independent (iOS too); reproduces on staging -- NOT a stack
+limit.
+
+FIX in flight (agent on satvik/call-audio-recording): preserve carrier on a
+peer-drop stop (or compute `carriedOn` from the recorder's generation state), +
+STRENGTHEN test/e2e/transcript.js to require BOTH participants' call_audio (>=2
+distinct senders -- the honest gate that would have caught this), + rebuild web +
+verify both sides record. THEN the merge tool (tools/merge_call_audio, needs
+EXACTLY 2 halves, aligns them on the SFU timeline) can produce the mixed
+recording the owner wants to judge -- impossible until both halves exist.
+
+iOS: recording-branch build (combined) compiling; the sim MCP needs `sudo
+xcode-select -s /Applications/Xcode.app/Contents/Developer` (owner, sudo) before
+the live panel attaches. iOS hits the SAME recording bug -- the fix helps there.
