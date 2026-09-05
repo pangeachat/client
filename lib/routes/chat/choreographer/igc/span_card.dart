@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
@@ -8,6 +10,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/features/user/user_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/choice_array.dart';
@@ -55,18 +58,38 @@ class SpanCardState extends State<SpanCard> {
   /// writing-assistance.instructions.md.
   late bool _listenFirst;
 
+  /// Whether writing assistance runs itself on every sent message — the same
+  /// `autoIGC` setting the learning settings page owns.
+  late bool _autoIGC;
+
+  /// Keeps both of the above honest when the setting is changed off this card
+  /// — from the learning settings panel, or on another device.
+  StreamSubscription<Profile>? _settingsSubscription;
+
   Choreographer get _choreographer => widget.controller.choreographer;
 
   @override
   void initState() {
     super.initState();
-    _listenFirst = ToolSetting.listenFirst.enabled;
+    _readSettings();
+    _settingsSubscription = MatrixState
+        .pangeaController
+        .userController
+        .settingsUpdateStream
+        .stream
+        .listen((_) => setState(_readSettings));
     _activeMatch.addListener(_onActiveMatchUpdate);
     _choreographer.addListener(_onAssistanceStateChange);
   }
 
+  void _readSettings() {
+    _listenFirst = ToolSetting.listenFirst.enabled;
+    _autoIGC = ToolSetting.autoIGC.enabled;
+  }
+
   @override
   void dispose() {
+    _settingsSubscription?.cancel();
     scrollController.dispose();
     _activeMatch.removeListener(_onActiveMatchUpdate);
     _choreographer.removeListener(_onAssistanceStateChange);
@@ -113,14 +136,20 @@ class SpanCardState extends State<SpanCard> {
   /// The same `autoIGC` toggle the learning settings page owns — a learner who
   /// has just been handed a card they did not ask for should be able to stop
   /// that from here, without hunting for the setting.
+  ///
+  /// Flipped locally first, then persisted. Reading the setting back straight
+  /// after calling `updateProfile` returns the OLD value — the write has not
+  /// landed — so the menu went on showing the previous state until the card was
+  /// closed and reopened. The stored value still arrives on the settings
+  /// stream, which re-reads both flags.
   void _toggleAutoIGC() {
-    final enabled = ToolSetting.autoIGC.enabled;
+    final next = !_autoIGC;
+    setState(() => _autoIGC = next);
     MatrixState.pangeaController.userController.updateProfile(
       (profile) => profile.copyWith(
-        toolSettings: profile.toolSettings.copyWith(autoIGC: !enabled),
+        toolSettings: profile.toolSettings.copyWith(autoIGC: next),
       ),
     );
-    setState(() {});
   }
 
   void _openLearningSettings() {
@@ -260,7 +289,7 @@ class SpanCardState extends State<SpanCard> {
                     // so there is nothing there to listen to.
                     showListenFirst: match.updatedMatch.status.isOpen,
                     listenFirst: _listenFirst,
-                    autoIGC: ToolSetting.autoIGC.enabled,
+                    autoIGC: _autoIGC,
                     onToggleListenFirst: _toggleListenFirst,
                     onToggleAutoIGC: _toggleAutoIGC,
                     onFeedback: _showFeedbackDialog,
@@ -428,7 +457,13 @@ class _MatchContent extends StatelessWidget {
                         ),
                       ],
                     ),
-              if (isOpen && listenFirst)
+              // Dropped entirely once dismissed, not left to render at zero
+              // height: this Column has `spacing`, which it applies to a
+              // zero-height child too, so a dismissed instruction still grew
+              // the card by 12px every time Listen First was switched on.
+              if (isOpen &&
+                  listenFirst &&
+                  !InstructionsEnum.listenFirst.isToggledOff)
                 const InstructionsInlineTooltip(
                   instructionsEnum: InstructionsEnum.listenFirst,
                 ),
