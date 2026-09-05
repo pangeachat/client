@@ -149,3 +149,29 @@ uploaded, no recorder failures. Mutation proof (revert id -> rebuild -> watch
 `[4b]` FAIL) IN PROGRESS to confirm the gate catches the exact bug. Then:
 cold-gate the code change, restore + rebuild the fixed build on :8091, and the
 recording work is ready for its PR (pending the iOS on-device confirmation).
+
+## 2026-09-04 (IV) — fix cold-gate GREEN + honest gate reach
+
+Codex cold-gate on the fix `b1b85ed725`: GREEN, 0 real issues (0x40000000 bound
+correct; the retry-ordering safe -- no loop/spam, invariants intact; the E2E gate
+honest). Verdict `/tmp/recfix-gate-verdict.txt`. Mutation proof already done:
+reverting only the id makes exactly the 4 recording checks fail (RangeError
+console-proven) and the harness exit 1, transcript checks still pass.
+
+HONESTY on the gate's reach (Codex flagged it, confirmed): the E2E `call_audio`
+assertion CATCHES the bug but runs `client/test/e2e/transcript.js` against a LOCAL
+STACK (Synapse/lk-jwt/LiveKit/choreo + 2 Chrome) -- it is a manual/pre-push gate,
+the same way the whole call feature is tested (pangea-call-testing skill). It is
+NOT in the default unit CI: `integrate.yaml` `code_test_shards` runs `flutter
+test` on the VM, and there is NO `--platform chrome`/web-compiled lane anywhere in
+`.github/workflows`; CI's `e2e-tests.yml` runs a DIFFERENT Playwright suite
+(`e2e/scripts/*.spec.ts`), not this puppeteer harness. A VM unit test CANNOT catch
+this class (the VM computes `1<<32` correctly). A fully-automated CI gate would
+need a new chrome-platform test job -- an owner-gated CI change, PROPOSED not
+added.
+
+State: fix committed on combined `b1b85ed725`, fixed build on :8091. NOT yet
+ported to `satvik/call-audio-recording` (the PR branch). iOS on-device recording
+still unverified (safe from this bug). Open owner decisions: (a) add the
+chrome-platform CI lane for an always-on gate; (b) port + open the recording PR;
+(c) iOS device check.
