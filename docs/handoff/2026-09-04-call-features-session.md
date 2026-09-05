@@ -274,3 +274,18 @@ Disk: was 1GB free (that is why Xcode could not install); reclaimed ~77GB (Docke
 system prune 33.5G with the host Docker.raw shrinking 46->4.9G, Homebrew 8G,
 Gradle caches 11G, npm, uv 6G, Chrome/pip/playwright/python caches ~5G) -> 78GB
 free. Left pub-cache, fvm, rustup, puppeteer, and codex caches intact.
+
+## 2026-09-04 (VIII) — owner calls + PR hold
+
+- END TONE: owner chose BOTH parties hear the call-ended cue. Reverted the
+  caller-only placedCall guard on the cut cue; commit `7b8087b8d5` on
+  satvik/tokenize-call-transcript. 55 call_session tests green. (Resolves open
+  item (a).) NOTE: this is a behaviour change on top of the cold-green
+  `66ffac7d36` -- cold-gate it (with the rest) before the PR.
+- #8808 settle timings (owner asked, no change requested): shows "still
+  transcribing" after the call, settles once no new half arrives for 5s
+  (`kTranscriptAssembleQuietPeriod`), hard 30s ceiling
+  (`kTranscriptAssembleWindow`); never spins.
+- HOLD: **no PRs until Tuesday (owner).** Everything stays local + gated; do NOT
+  open/push any PR before then. iOS-Simulator verification still waiting on the
+  Xcode install (owner downloading it).
