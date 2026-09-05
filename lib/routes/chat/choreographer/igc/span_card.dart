@@ -201,91 +201,112 @@ class SpanCardState extends State<SpanCard> {
 
   @override
   Widget build(BuildContext context) {
-    return WritingAssistancePopup(
-      widget.controller,
-      child: StreamBuilder(
-        stream: _choreographer.igcController.matchUpdateStream.stream,
-        builder: (context, _) {
-          final match = _activeMatch.value;
-          if (match == null) return const SizedBox.shrink();
+    // No Flutter tooltip may ever open inside this card.
+    //
+    // The card is mounted in an overlay that FOLLOWS the input field, so every
+    // control in it sits under a RenderFollowerLayer. Tooltip positions itself
+    // with `localToGlobal(..., ancestor: overlay)`, and computing a paint
+    // transform across a follower is not reliable — the framework asserts
+    // "The paint transform cannot be reliably computed because of
+    // RenderFollowerLayer(s)". It throws on every frame the pointer rests on
+    // the control, which the learner sees as a flashing red screen (#8823).
+    //
+    // This disables the tooltip OVERLAY, and with it the semantics `tooltip`
+    // the Tooltip would otherwise contribute — measured, not assumed: under
+    // TooltipVisibility a button's semantics tooltip reads empty. So every
+    // control in the card names itself with an icon `semanticLabel:` — the
+    // shape measured to survive the suppression — and `tooltip:` stays on each
+    // button for the a11y floor check and for the day this wrapper can go
+    // away. Wrapped at the root so a control added later is covered too, but a
+    // NEW control still needs its own semanticLabel or it will be unnamed.
+    return TooltipVisibility(
+      visible: false,
+      child: WritingAssistancePopup(
+        widget.controller,
+        child: StreamBuilder(
+          stream: _choreographer.igcController.matchUpdateStream.stream,
+          builder: (context, _) {
+            final match = _activeMatch.value;
+            if (match == null) return const SizedBox.shrink();
 
-          final newOffset = match.updatedMatch.match.offset.toDouble();
-          if (_previousOffset != null) {
-            if (newOffset < _previousOffset!) {
-              // Moving backward → slide from left
-              _slideFrom = const Offset(-0.1, 0);
-            } else if (newOffset > _previousOffset!) {
-              // Moving forward → slide from right
-              _slideFrom = const Offset(0.1, 0);
+            final newOffset = match.updatedMatch.match.offset.toDouble();
+            if (_previousOffset != null) {
+              if (newOffset < _previousOffset!) {
+                // Moving backward → slide from left
+                _slideFrom = const Offset(-0.1, 0);
+              } else if (newOffset > _previousOffset!) {
+                // Moving forward → slide from right
+                _slideFrom = const Offset(0.1, 0);
+              }
             }
-          }
-          _previousOffset = newOffset;
+            _previousOffset = newOffset;
 
-          // Size to content so all choices are visible without scrolling,
-          // up to the available space above the input field.
-          return ConstrainedBox(
-            constraints: BoxConstraints(maxHeight: widget.maxHeight),
-            child: Column(
-              mainAxisSize: .min,
-              children: [
-                SpanCardHeader(
-                  // Per match. The id keys a GlobalKey that PangeaAnyState
-                  // caches forever, so a constant one is claimed by every
-                  // header that ever mounts — and two live at once whenever
-                  // one card is torn down while its replacement is building,
-                  // which is a duplicate-GlobalKey throw on every rebuild.
-                  targetId: 'wa-listen-${match.hashCode}',
-                  title: match.updatedMatch.match.type.displayName(context),
-                  // An accepted match shows a diff and an undo, not choices,
-                  // so there is nothing there to listen to.
-                  showListenFirst: match.updatedMatch.status.isOpen,
-                  listenFirst: _listenFirst,
-                  autoIGC: ToolSetting.autoIGC.enabled,
-                  onToggleListenFirst: _toggleListenFirst,
-                  onToggleAutoIGC: _toggleAutoIGC,
-                  onFeedback: _showFeedbackDialog,
-                  onLearningSettings: _openLearningSettings,
-                  onClose: widget.controller.close,
-                ),
-                Flexible(
-                  child: AnimatedSize(
-                    duration: const Duration(milliseconds: 200),
-                    curve: Curves.easeOut,
-                    alignment: Alignment.topCenter,
-                    child: AnimatedSwitcher(
-                      duration: const Duration(milliseconds: 300),
-                      switchInCurve: Curves.easeOut,
-                      switchOutCurve: Curves.easeIn,
-                      transitionBuilder: (child, animation) {
-                        final slideAnimation = Tween<Offset>(
-                          begin: _slideFrom,
-                          end: Offset.zero,
-                        ).animate(animation);
+            // Size to content so all choices are visible without scrolling,
+            // up to the available space above the input field.
+            return ConstrainedBox(
+              constraints: BoxConstraints(maxHeight: widget.maxHeight),
+              child: Column(
+                mainAxisSize: .min,
+                children: [
+                  SpanCardHeader(
+                    // Per match. The id keys a GlobalKey that PangeaAnyState
+                    // caches forever, so a constant one is claimed by every
+                    // header that ever mounts — and two live at once whenever
+                    // one card is torn down while its replacement is building,
+                    // which is a duplicate-GlobalKey throw on every rebuild.
+                    targetId: 'wa-listen-${match.hashCode}',
+                    title: match.updatedMatch.match.type.displayName(context),
+                    // An accepted match shows a diff and an undo, not choices,
+                    // so there is nothing there to listen to.
+                    showListenFirst: match.updatedMatch.status.isOpen,
+                    listenFirst: _listenFirst,
+                    autoIGC: ToolSetting.autoIGC.enabled,
+                    onToggleListenFirst: _toggleListenFirst,
+                    onToggleAutoIGC: _toggleAutoIGC,
+                    onFeedback: _showFeedbackDialog,
+                    onLearningSettings: _openLearningSettings,
+                    onClose: widget.controller.close,
+                  ),
+                  Flexible(
+                    child: AnimatedSize(
+                      duration: const Duration(milliseconds: 200),
+                      curve: Curves.easeOut,
+                      alignment: Alignment.topCenter,
+                      child: AnimatedSwitcher(
+                        duration: const Duration(milliseconds: 300),
+                        switchInCurve: Curves.easeOut,
+                        switchOutCurve: Curves.easeIn,
+                        transitionBuilder: (child, animation) {
+                          final slideAnimation = Tween<Offset>(
+                            begin: _slideFrom,
+                            end: Offset.zero,
+                          ).animate(animation);
 
-                        return FadeTransition(
-                          opacity: animation,
-                          child: SlideTransition(
-                            position: slideAnimation,
-                            child: child,
-                          ),
-                        );
-                      },
-                      child: _MatchContent(
-                        key: ValueKey(match.hashCode),
-                        match: match,
-                        scrollController: scrollController,
-                        onChoiceSelect: _onChoiceSelect,
-                        onUpdateMatch: _updateMatch,
-                        roomId: _choreographer.room.id,
-                        listenFirst: _listenFirst,
+                          return FadeTransition(
+                            opacity: animation,
+                            child: SlideTransition(
+                              position: slideAnimation,
+                              child: child,
+                            ),
+                          );
+                        },
+                        child: _MatchContent(
+                          key: ValueKey(match.hashCode),
+                          match: match,
+                          scrollController: scrollController,
+                          onChoiceSelect: _onChoiceSelect,
+                          onUpdateMatch: _updateMatch,
+                          roomId: _choreographer.room.id,
+                          listenFirst: _listenFirst,
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          );
-        },
+                ],
+              ),
+            );
+          },
+        ),
       ),
     );
   }
@@ -394,11 +415,16 @@ class _MatchContent extends StatelessWidget {
                             ],
                           ),
                         ),
-                        IconButton(
-                          tooltip: L10n.of(context).undo,
-                          icon: const Icon(Symbols.undo),
-                          onPressed: () =>
-                              onUpdateMatch(match, PangeaMatchStatusEnum.undo),
+                        Semantics(
+                          label: L10n.of(context).undo,
+                          child: IconButton(
+                            tooltip: L10n.of(context).undo,
+                            icon: const Icon(Symbols.undo),
+                            onPressed: () => onUpdateMatch(
+                              match,
+                              PangeaMatchStatusEnum.undo,
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -497,7 +523,7 @@ class SpanCardHeader extends StatelessWidget {
           children: [
             IconButton(
               tooltip: l10n.close,
-              icon: const Icon(Icons.close),
+              icon: Icon(Icons.close, semanticLabel: l10n.close),
               color: theme.iconTheme.color,
               onPressed: onClose,
             ),
@@ -524,6 +550,7 @@ class SpanCardHeader extends StatelessWidget {
     final theme = Theme.of(context);
     final link = MatrixState.pAnyState.layerLinkAndKey(targetId);
 
+    final name = L10n.of(context).listenFirst;
     return Semantics(
       toggled: listenFirst,
       child: CompositedTransformTarget(
@@ -531,10 +558,10 @@ class SpanCardHeader extends StatelessWidget {
         child: KeyedSubtree(
           key: link.key,
           child: IconButton(
-            tooltip: L10n.of(context).listenFirst,
+            tooltip: name,
             isSelected: listenFirst,
-            icon: const Icon(Icons.headphones_outlined),
-            selectedIcon: const Icon(Icons.headphones),
+            icon: Icon(Icons.headphones_outlined, semanticLabel: name),
+            selectedIcon: Icon(Icons.headphones, semanticLabel: name),
             style: IconButton.styleFrom(
               backgroundColor: listenFirst
                   ? theme.colorScheme.primaryContainer
@@ -603,9 +630,10 @@ class SpanCardHeader extends StatelessWidget {
     final menu = PopupMenuButton<SpanCardAction>(
       useRootNavigator: true,
       // An unnamed PopupMenuButton falls back to the framework default, and
-      // the a11y floor check does not cover it.
+      // the a11y floor check does not cover it. The tooltip is suppressed
+      // inside this card (see SpanCard.build), so the icon carries the name.
       tooltip: l10n.moreOptions,
-      icon: const Icon(Icons.more_vert),
+      icon: Icon(Icons.more_vert, semanticLabel: l10n.moreOptions),
       onSelected: (action) {
         switch (action) {
           case SpanCardAction.listenFirst:
