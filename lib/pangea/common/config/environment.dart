@@ -25,6 +25,30 @@ class Environment {
     "BUILD_COMMIT_SHA",
   );
 
+  /// What a LOCAL build is, when [buildCommitSha] cannot say — passed in by
+  /// the dev launcher as `--dart-define=LOCAL_BUILD_STAMP=...`. Typically a
+  /// short SHA, a dirty marker, and the time the run was started.
+  ///
+  /// Deliberately a separate key rather than reusing [buildCommitSha]: that
+  /// one being empty is how [sentryBuildTagsFor] tells a local build from a CI
+  /// one, so filling it in locally would file every dev session under
+  /// `build_channel: ci`.
+  ///
+  /// The problem it solves is narrow and real: on a local build the version
+  /// tile could only show `<version>+<buildNumber>`, which is identical across
+  /// every rebuild of the same checkout. Asking "is the thing I am looking at
+  /// the code I just changed?" had no answer, and a whole debugging session
+  /// went sideways on that question.
+  static const String localBuildStamp = String.fromEnvironment(
+    "LOCAL_BUILD_STAMP",
+  );
+
+  /// The build identifier to show and to paste into a bug report: the pushed
+  /// commit when there is one, otherwise the local stamp. Empty when neither
+  /// is set, in which case there is nothing honest to show.
+  static String get buildIdentifier =>
+      buildCommitSha.isNotEmpty ? buildCommitSha : localBuildStamp;
+
   static bool get itIsTime =>
       DateTime.utc(2023, 1, 25).isBefore(DateTime.now());
 
