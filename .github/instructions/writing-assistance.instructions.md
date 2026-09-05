@@ -1,12 +1,12 @@
 ---
-applyTo: "lib/pangea/choreographer/**"
+applyTo: "lib/routes/chat/choreographer/**"
 ---
 
 # Writing Assistance — Design & Architecture
 
 Writing assistance is a friendly, non-judgmental helper that quietly reviews what the user types and offers suggestions. It must never feel like error correction — it's a learning companion.
 
-> **⚠️ IT (Interactive Translation) is deprecated.** Do not add new IT functionality. Translation will become a match type within writing assistance.
+> **⚠️ IT (Interactive Translation) is deprecated.** Do not add new IT functionality. Translation is now a match type within writing assistance.
 
 ## Design Intent
 
@@ -212,6 +212,14 @@ Categories returned by `/grammar_v2`. Each gets a distinct color in the ring and
 | **Word choice**         | false cognate, L1 interference, collocation, semantic confusion                                                                                                                                                                                                 | Highlight + ring segment, user-viewable                  |
 | **Style / fluency**     | style, fluency, didYouMean, transcription, translation, other                                                                                                                                                                                                   | Highlight + ring segment, user-viewable                  |
 
+### What each category records in analytics
+
+Every match a learner engages with becomes a construct use on the words it covered, and the match's category is what decides which kind. A **translation** match — a span the learner wrote outside their target language, which the correction renders in it — records as a translation use. Every other category records as a grammar-correction use. The two families are scored differently; see [analytics-system.instructions.md](analytics-system.instructions.md) for what a use type commits you to.
+
+That two-way split is the whole of what analytics distinguishes today, and it is narrower than the category table above. Word choice, style and transcription matches all record as grammar corrections, so a learner who accepts a false-cognate fix is told they got a grammar correction right. This is a known gap, tracked in [pangeachat/.github#479](https://github.com/pangeachat/.github/issues/479) — not the intended end state.
+
+The distinction used to come for free, because grammar correction and translation were separate flows behind separate endpoints. Since writing assistance merged them into one, the match's category is the only thing that still carries it, and anything needing to tell the two apart reads the category. Translation construct uses therefore stay in the vocabulary even though the interactive-translation flow that introduced them is gone.
+
 ---
 
 ## Architecture
@@ -248,9 +256,11 @@ Choreographer (ChangeNotifier)
 
 ## Deprecated: Interactive Translation (IT)
 
-> **Do not extend. Scheduled for removal.**
+> **Do not extend.**
 
-The `it/` directory, `ITController`, and all IT-related code (`it_bar.dart`, `it_feedback_card.dart`, `word_data_card.dart`, `choreo_mode_enum.dart`) will be removed. Translation will become a match type within writing assistance.
+The interactive-translation flow is gone: nothing routes to it, and no new message can produce an interactive-translation step. Translation is a writing-assistance match type instead.
+
+Two things deliberately survive it. Messages sent before the cutover still carry interactive-translation steps, so the code that reads them stays until those events stop mattering. And the translation construct-use types are live again, minted from translation matches per [What each category records in analytics](#what-each-category-records-in-analytics) — do not remove them as dead interactive-translation code.
 
 ---
 

@@ -62,6 +62,18 @@ class PangeaMatch {
 
   bool get isGrammarMatch => !isOutOfTargetMatch;
 
+  /// Whether this match asks the user to render an out-of-target span in their
+  /// L2 — what the retired interactive-translation flow used to handle, and
+  /// what writing assistance now returns as a [ReplacementTypeEnum.translation]
+  /// edit. The rule ids only ever appear on events stored before that cutover.
+  ///
+  /// Deliberately separate from [isOutOfTargetMatch], which stays keyed on the
+  /// legacy signals alone: widening that predicate would also change the
+  /// researcher export, the L1-translation source language and grammar-error
+  /// practice selection, which is tracked in pangeachat/.github#479.
+  bool get isTranslationMatch =>
+      _needsTranslation || match.type == ReplacementTypeEnum.translation;
+
   bool overlapsTokenSpan(int tokenOffset, int tokenLength) {
     return tokenOffset < match.offset + match.length &&
         tokenOffset + tokenLength > match.offset;
