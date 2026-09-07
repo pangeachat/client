@@ -99,6 +99,8 @@ Video is where the two surfaces differ most:
 
 That tap is the _only_ time a video starts on its own, and it starts **muted, with a tap to unmute**. Muting is what lets it start at all — browsers block sound the learner didn't ask for — and it keeps the feel consistent with tap-to-play everywhere else. The request to autoplay travels with the activity's link, so reopening or sharing that link replays the same thing, the same way "skip to role selection" and "reopen this session" do.
 
+**Captions are the learner's to turn on, and ours to aim.** We never switch captions on for them — a learner who keeps captions off in YouTube keeps them off here. What we do state is which track to prefer once they turn them on: **the activity's target language**, so a Spanish activity captions in Spanish. Same-language subtitles are what supports listening practice, and tying the preference to the activity rather than to the app's UI language keeps it right for a learner working across several languages. When the activity's language is unknown we say nothing and let YouTube choose, rather than naming a language the activity may not be in. A learner who wants their L1 instead already has it — YouTube's own caption menu carries every track and its auto-translations, which is why [#7693](https://github.com/pangeachat/client/issues/7693) needed no toggle of ours. Both halves have to be set deliberately: left alone, the embed forces captions on and asks for English whatever the activity is ([#8828](https://github.com/pangeachat/client/issues/8828)).
+
 ---
 
 Do not add ActivityVocabWidget to ActivityStatsMenu.

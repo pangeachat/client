@@ -35,11 +35,16 @@ class ActivityMediaCarousel extends StatefulWidget {
   /// autostarts.
   final int? autoplayIndex;
 
+  /// The activity's target language, so a YouTube block prefers caption tracks
+  /// in the language being learned. See [ActivityYoutubePlayer].
+  final String? captionLanguage;
+
   const ActivityMediaCarousel({
     required this.media,
     this.fallbackImageUrl,
     this.borderRadius = const BorderRadius.all(Radius.circular(20)),
     this.autoplayIndex,
+    this.captionLanguage,
     super.key,
   });
 
@@ -152,7 +157,11 @@ class _ActivityMediaCarouselState extends State<ActivityMediaCarousel> {
     if (_playingIndex == index) {
       final muted = _mutedAutostart && index == widget.autoplayIndex;
       final player = block.isYoutube
-          ? ActivityYoutubePlayer(url: block.url ?? '', muted: muted)
+          ? ActivityYoutubePlayer(
+              url: block.url ?? '',
+              muted: muted,
+              captionLanguage: widget.captionLanguage,
+            )
           : ActivityVideoPlayer(
               url: block.resolvedUrl ?? '',
               autoPlay: true,
@@ -170,7 +179,11 @@ class _ActivityMediaCarouselState extends State<ActivityMediaCarousel> {
         // Native mobile can't mount a webview inside this scrolling surface
         // (#7672/#7673), so play on a dedicated screen; inline elsewhere.
         if (PlatformInfos.isMobile) {
-          openActivityVideo(context, block);
+          openActivityVideo(
+            context,
+            block,
+            captionLanguage: widget.captionLanguage,
+          );
           return;
         }
         setState(() {

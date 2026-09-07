@@ -111,6 +111,7 @@ class ActivitySummary extends StatelessWidget {
                     fallbackImageUrl: activity.imageURL,
                     borderRadius: BorderRadius.circular(20),
                     autoplayIndex: autoplayIndex,
+                    captionLanguage: activity.req.targetLanguage,
                   )
                 : const SizedBox.shrink(),
             if (showRoleCards)
