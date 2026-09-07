@@ -4,7 +4,7 @@ import 'package:fluffychat/pangea/common/config/environment.dart';
 
 /// The version tile's identity line. A build number cannot say what code is
 /// running, and on a local build the commit SHA is empty by design — so a
-/// locally-run app showed nothing but "<version>+<buildNumber>", identical
+/// locally-run app showed nothing but `<version>+<buildNumber>`, identical
 /// across every rebuild of the same checkout.
 void main() {
   group('Environment.buildIdentifier', () {
