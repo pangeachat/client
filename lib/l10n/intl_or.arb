@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "ସ୍ତର {level}",
     "whatAreYouLearning": "ଆପଣ କ’ଣ ଶିଖୁଛନ୍ତି?",
     "languageSwitcherBaseLanguageLabel": "ଆପଣଙ୍କ ମୂଳ ଭାଷା",
-    "listenModeDescription": "ଶୁଣିବା ପାଇଁ ଏକ ବିକଳ୍ପ ବାଛନ୍ତୁ। କିଛି ବଛାଯାଇନାହିଁ।",
     "rateActivityLiked": "ପସନ୍ଦ କଲି",
     "rateActivityDisliked": "ପସନ୍ଦ କଲି ନାହିଁ",
     "constructUseHrdDesc": "ଶୁଣାଗଲା",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "କଲ୍ ଏଠାରେ ଛାଡ଼ନ୍ତୁ",
     "callDevicesOlderTitle": "ଆପଣଙ୍କର ଅନ୍ୟ ଡିଭାଇସ୍ ନିଜେ ଏହି କଲ୍ ଛାଡ଼ିପାରିବ ନାହିଁ।",
     "callDevicesOlderBody": "ସେଠାରେ କଲ୍ ଶେଷ କରନ୍ତୁ, କିମ୍ବା ଏହାକୁ ଏଠାରେ ଛାଡ଼ନ୍ତୁ। ଏହାର ଅର୍ଥ ହେଉଛି ଏହା ଏକ ପୁରୁଣା ସଂସ୍କରଣ ଚଳାଉଛି, ଏବଂ ଏହାକୁ ଅପଡେଟ୍ କରିବା ଦ୍ୱାରା ଏହି ସମସ୍ୟା ସମାଧାନ ହେବ।",
-    "callContinuingElsewhere": "ଏହି କଲ୍ ଆପଣଙ୍କର ଅନ୍ୟ ଡିଭାଇସରେ ଜାରି ରହିଛି।"
+    "callContinuingElsewhere": "ଏହି କଲ୍ ଆପଣଙ୍କର ଅନ୍ୟ ଡିଭାଇସରେ ଜାରି ରହିଛି।",
+    "listenFirst": "ପ୍ରଥମେ ଶୁଣନ୍ତୁ",
+    "listenFirstDescription": "ଯେତେବେଳେ ପ୍ରଥମେ ଶୁଣନ୍ତୁ ଅନ୍ ଥାଏ, ଗୋଟିଏ କ୍ଲିକ୍ କେବଳ ଅଡିଓ ପ୍ଲେ କରେ ଏବଂ ଡବଲ୍-କ୍ଲିକ୍ ବିକଳ୍ପକୁ ଚୟନ କରେ।",
+    "listenFirstNeedsChoiceAudio": "ପ୍ରଥମେ ଶୁଣିବା ବ୍ୟବହାର କରିବାକୁ ବିକଳ୍ପ ଅଡିଓ ଅନ୍ କରନ୍ତୁ।"
 }

@@ -10666,7 +10666,6 @@
     "languageDropdownLevel": "רמה {level}",
     "whatAreYouLearning": "מה אתה לומד?",
     "languageSwitcherBaseLanguageLabel": "שפת הבסיס שלך",
-    "listenModeDescription": "הקש על אפשרות כדי לשמוע אותה. שום דבר לא נבחר.",
     "rateActivityLiked": "אהבתי",
     "rateActivityDisliked": "לא אהבתי",
     "constructUseHrdDesc": "נשמע",
@@ -10785,5 +10784,8 @@
     "callDevicesLeaveHere": "צא מהשיחה כאן",
     "callDevicesOlderTitle": "המכשיר האחר שלך לא יכול לצאת מהשיחה הזו בעצמו.",
     "callDevicesOlderBody": "סיים את השיחה שם, או צא ממנה כאן. בדרך כלל זה אומר שהוא מריץ גרסה ישנה יותר, ועדכון יתקן זאת.",
-    "callContinuingElsewhere": "שיחה זו ממשיכה במכשיר האחר שלך."
+    "callContinuingElsewhere": "שיחה זו ממשיכה במכשיר האחר שלך.",
+    "listenFirst": "האזנה תחילה",
+    "listenFirstDescription": "כאשר האזנה תחילה מופעלת, לחיצה אחת מנגנת אודיו בלבד ולחיצה כפולה בוחרת את האפשרות.",
+    "listenFirstNeedsChoiceAudio": "הפעל אודיו של אפשרויות כדי להשתמש ב'האזנה תחילה'."
 }

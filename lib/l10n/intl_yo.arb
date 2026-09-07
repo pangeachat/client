@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "Ipele {level}",
     "whatAreYouLearning": "Kini o n kọ?",
     "languageSwitcherBaseLanguageLabel": "Èdè ìpìlẹ̀ rẹ",
-    "listenModeDescription": "Fọwọ́ kan ohun tí o fẹ́ gbọ́. Kò sí ohun tí a yàn.",
     "rateActivityLiked": "Ó wù mí",
     "rateActivityDisliked": "Kò wù mí",
     "constructUseHrdDesc": "Gbọ́",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "Fi ìpe sílẹ̀ níbí",
     "callDevicesOlderTitle": "Ohun èlò rẹ mìíràn kò lè fi ìpe yìí sílẹ̀ fúnra rẹ̀.",
     "callDevicesOlderBody": "Parí ìpe náà níbẹ̀, tàbí fi sílẹ̀ níbí. Ìyẹn sábà túmọ̀ sí pé ó ń lo àtúnṣe àtijọ́, àti pé gbígbé e sókè yóò tún èyí ṣe.",
-    "callContinuingElsewhere": "Ìpe yìí ń tẹ̀síwájú lórí ohun èlò rẹ mìíràn."
+    "callContinuingElsewhere": "Ìpe yìí ń tẹ̀síwájú lórí ohun èlò rẹ mìíràn.",
+    "listenFirst": "Kọkọ gbọ́",
+    "listenFirstDescription": "Nígbàtí Kọkọ Gbọ́ bá wà lórí, títẹ́ kan yóò kàn mú ohùn ṣiṣẹ́, títẹ́ méjì yóò sì yan àṣàyàn náà.",
+    "listenFirstNeedsChoiceAudio": "Tan ohùn àṣàyàn láti lo Kọkọ Gbọ́."
 }

@@ -10521,7 +10521,6 @@
     "languageDropdownLevel": "レベル{level}",
     "whatAreYouLearning": "何を学習していますか？",
     "languageSwitcherBaseLanguageLabel": "あなたの母国語",
-    "listenModeDescription": "選択肢をタップして聞きます。何も選択されていません。",
     "rateActivityLiked": "よかった",
     "rateActivityDisliked": "よくなかった",
     "constructUseHrdDesc": "聞きました",
@@ -10640,5 +10639,8 @@
     "callDevicesLeaveHere": "ここで通話を終了",
     "callDevicesOlderTitle": "他のデバイスでは、この通話を単独で終了できません。",
     "callDevicesOlderBody": "そちらで通話を終了するか、こちらで終了してください。これは通常、古いバージョンが実行されていることを意味します。更新すると解決します。",
-    "callContinuingElsewhere": "この通話は他のデバイスで続行されています。"
+    "callContinuingElsewhere": "この通話は他のデバイスで続行されています。",
+    "listenFirst": "まず聞く",
+    "listenFirstDescription": "「まず聞く」がオンの場合、1回クリックすると音声が再生され、ダブルクリックするとオプションが選択されます。",
+    "listenFirstNeedsChoiceAudio": "「まず聞く」を使用するには、選択肢の音声をオンにしてください。"
 }

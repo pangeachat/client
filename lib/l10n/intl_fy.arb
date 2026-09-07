@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "Nivo {level}",
     "whatAreYouLearning": "Wat learsto?",
     "languageSwitcherBaseLanguageLabel": "Dyn basistaal",
-    "listenModeDescription": "Tik op in kar om it te hearren. Neat is selektearre.",
     "rateActivityLiked": "Fûn it moai",
     "rateActivityDisliked": "Fûn it net moai",
     "constructUseHrdDesc": "Heard",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "Ferlitte it petear hjir",
     "callDevicesOlderTitle": "Jo oare apparaat kin dit petear net sels ferlitte.",
     "callDevicesOlderBody": "Einigje it petear dêr, of ferlitte it hjir. Dat betsjut meastentiids dat it in âldere ferzje brûkt, en it bywurkjen sil dit oplosse.",
-    "callContinuingElsewhere": "Dit petear giet troch op jo oare apparaat."
+    "callContinuingElsewhere": "Dit petear giet troch op jo oare apparaat.",
+    "listenFirst": "Earst harkje",
+    "listenFirstDescription": "As Earst harkje oan stiet, spilet ien klik allinich audio ôf en dûbelklik selektearret de opsje.",
+    "listenFirstNeedsChoiceAudio": "Skeakelje Karren-audio yn om Earst harkje te brûken."
 }

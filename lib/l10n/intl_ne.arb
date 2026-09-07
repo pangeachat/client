@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "स्तर {level}",
     "whatAreYouLearning": "तपाईं के सिक्दै हुनुहुन्छ?",
     "languageSwitcherBaseLanguageLabel": "तपाईंको आधार भाषा",
-    "listenModeDescription": "सुन्नको लागि एउटा विकल्प ट्याप गर्नुहोस्। केही पनि चयन गरिएको छैन।",
     "rateActivityLiked": "मन पर्यो",
     "rateActivityDisliked": "मन परेन",
     "constructUseHrdDesc": "सुनियो",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "कल यहीँ छोड्नुहोस्",
     "callDevicesOlderTitle": "तपाईंको अर्को यन्त्रले यो कल आफैं छोड्न सक्दैन।",
     "callDevicesOlderBody": "कल त्यहाँ अन्त्य गर्नुहोस्, वा यहाँ छोड्नुहोस्। यसको सामान्यतया अर्थ यो हो कि यसले पुरानो संस्करण चलाइरहेको छ, र यसलाई अद्यावधिक गर्दा यो समस्या समाधान हुनेछ।",
-    "callContinuingElsewhere": "यो कल तपाईंको अर्को यन्त्रमा जारी छ।"
+    "callContinuingElsewhere": "यो कल तपाईंको अर्को यन्त्रमा जारी छ।",
+    "listenFirst": "पहिले सुन्नुहोस्",
+    "listenFirstDescription": "जब पहिले सुन्नुहोस् अन हुन्छ, एक क्लिकले अडियो मात्र बजाउँछ र डबल-क्लिकले विकल्प चयन गर्छ।",
+    "listenFirstNeedsChoiceAudio": "पहिले सुन्नुहोस् प्रयोग गर्न विकल्प अडियो अन गर्नुहोस्।"
 }

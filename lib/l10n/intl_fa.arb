@@ -9840,7 +9840,6 @@
     "languageDropdownLevel": "سطح {level}",
     "whatAreYouLearning": "چه چیزی یاد می‌گیرید؟",
     "languageSwitcherBaseLanguageLabel": "زبان پایه شما",
-    "listenModeDescription": "برای شنیدن یک گزینه روی آن ضربه بزنید. چیزی انتخاب نشده است.",
     "rateActivityLiked": "پسندیدم",
     "rateActivityDisliked": "نپسندیدم",
     "constructUseHrdDesc": "شنیده شد",
@@ -9959,5 +9958,8 @@
     "callDevicesLeaveHere": "تماس را اینجا ترک کن",
     "callDevicesOlderTitle": "دستگاه دیگر شما نمی‌تواند این تماس را به تنهایی ترک کند.",
     "callDevicesOlderBody": "تماس را در آنجا پایان دهید، یا آن را اینجا ترک کنید. این معمولاً به این معنی است که نسخه قدیمی‌تری را اجرا می‌کند و به‌روزرسانی آن این مشکل را برطرف خواهد کرد.",
-    "callContinuingElsewhere": "این تماس در دستگاه دیگر شما ادامه دارد."
+    "callContinuingElsewhere": "این تماس در دستگاه دیگر شما ادامه دارد.",
+    "listenFirst": "اول گوش کن",
+    "listenFirstDescription": "وقتی «اول گوش کن» روشن است، یک کلیک فقط صدا را پخش می‌کند و دو کلیک گزینه را انتخاب می‌کند.",
+    "listenFirstNeedsChoiceAudio": "برای استفاده از «اول گوش کن»، صدای گزینه‌ها را روشن کنید."
 }

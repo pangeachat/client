@@ -9837,7 +9837,6 @@
     "languageDropdownLevel": "Poziom {level}",
     "whatAreYouLearning": "Czego się uczysz?",
     "languageSwitcherBaseLanguageLabel": "Twój język podstawowy",
-    "listenModeDescription": "Dotknij wyboru, aby go usłyszeć. Nic nie jest wybrane.",
     "rateActivityLiked": "Podobało mi się",
     "rateActivityDisliked": "Nie podobało mi się",
     "constructUseHrdDesc": "Usłyszane",
@@ -9956,5 +9955,8 @@
     "callDevicesLeaveHere": "Opuść rozmowę tutaj",
     "callDevicesOlderTitle": "Twoje drugie urządzenie nie może samodzielnie opuścić tej rozmowy.",
     "callDevicesOlderBody": "Zakończ rozmowę tam lub opuść ją tutaj. Zazwyczaj oznacza to, że działa na starszej wersji, a jej aktualizacja to naprawi.",
-    "callContinuingElsewhere": "Ta rozmowa jest kontynuowana na Twoim drugim urządzeniu."
+    "callContinuingElsewhere": "Ta rozmowa jest kontynuowana na Twoim drugim urządzeniu.",
+    "listenFirst": "Najpierw słuchaj",
+    "listenFirstDescription": "Gdy opcja „Najpierw słuchaj” jest włączona, jedno kliknięcie odtwarza dźwięk, a dwukrotne kliknięcie wybiera opcję.",
+    "listenFirstNeedsChoiceAudio": "Włącz dźwięk opcji, aby użyć funkcji „Najpierw słuchaj”."
 }

@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "Nivo {level}",
     "whatAreYouLearning": "Šta učite?",
     "languageSwitcherBaseLanguageLabel": "Vaš osnovni jezik",
-    "listenModeDescription": "Dodirnite izbor da biste ga čuli. Ništa nije odabrano.",
     "rateActivityLiked": "Svidjelo mi se",
     "rateActivityDisliked": "Nije mi se svidjelo",
     "constructUseHrdDesc": "Čuo",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "Napusti poziv ovdje",
     "callDevicesOlderTitle": "Vaš drugi uređaj ne može sam napustiti ovaj poziv.",
     "callDevicesOlderBody": "Završite poziv tamo ili ga napustite ovdje. To obično znači da koristi stariju verziju, a ažuriranje će to popraviti.",
-    "callContinuingElsewhere": "Ovaj poziv se nastavlja na vašem drugom uređaju."
+    "callContinuingElsewhere": "Ovaj poziv se nastavlja na vašem drugom uređaju.",
+    "listenFirst": "Prvo slušaj",
+    "listenFirstDescription": "Kada je opcija „Prvo slušaj“ uključena, jedan klik samo reprodukuje zvuk, a dvostruki klik bira opciju.",
+    "listenFirstNeedsChoiceAudio": "Uključite zvuk izbora da biste koristili opciju „Prvo slušaj“."
 }

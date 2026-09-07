@@ -9752,7 +9752,6 @@
     "languageDropdownLevel": "Līmenis {level}",
     "whatAreYouLearning": "Ko tu mācies?",
     "languageSwitcherBaseLanguageLabel": "Jūsu pamata valoda",
-    "listenModeDescription": "Pieskarieties izvēlei, lai to dzirdētu. Nekas nav atlasīts.",
     "rateActivityLiked": "Patika",
     "rateActivityDisliked": "Nepatika",
     "constructUseHrdDesc": "Dzirdēts",
@@ -9871,5 +9870,8 @@
     "callDevicesLeaveHere": "Atstāt zvanu šeit",
     "callDevicesOlderTitle": "Jūsu cita ierīce nevar pati atstāt šo zvanu.",
     "callDevicesOlderBody": "Beidziet zvanu tur vai atstājiet to šeit. Tas parasti nozīmē, ka tajā darbojas vecāka versija, un atjaunināšana to novērsīs.",
-    "callContinuingElsewhere": "Šis zvans turpinās jūsu citā ierīcē."
+    "callContinuingElsewhere": "Šis zvans turpinās jūsu citā ierīcē.",
+    "listenFirst": "Vispirms klausīties",
+    "listenFirstDescription": "Kad funkcija “Vispirms klausīties” ir ieslēgta, ar vienu klikšķi tiek atskaņota tikai audio, bet ar dubultklikšķi tiek atlasīta opcija.",
+    "listenFirstNeedsChoiceAudio": "Lai izmantotu funkciju “Vispirms klausīties”, ieslēdziet izvēles audio."
 }

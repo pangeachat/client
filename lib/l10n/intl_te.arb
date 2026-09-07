@@ -10702,7 +10702,6 @@
     "languageDropdownLevel": "స్థాయి {level}",
     "whatAreYouLearning": "మీరు ఏమి నేర్చుకుంటున్నారు?",
     "languageSwitcherBaseLanguageLabel": "మీ ప్రాథమిక భాష",
-    "listenModeDescription": "వినడానికి ఒక ఎంపికను నొక్కండి. ఏదీ ఎంపిక చేయబడలేదు.",
     "rateActivityLiked": "ఇష్టపడ్డారు",
     "rateActivityDisliked": "ఇష్టపడలేదు",
     "constructUseHrdDesc": "విన్నారు",
@@ -10821,5 +10820,8 @@
     "callDevicesLeaveHere": "కాల్‌ను ఇక్కడ వదిలివేయండి",
     "callDevicesOlderTitle": "మీ ఇతర పరికరం ఈ కాల్‌ను స్వయంగా వదిలివేయదు.",
     "callDevicesOlderBody": "అక్కడ కాల్‌ను ముగించండి లేదా ఇక్కడ వదిలివేయండి. సాధారణంగా దీని అర్థం ఇది పాత వెర్షన్‌ను నడుపుతోంది, మరియు దానిని అప్‌డేట్ చేయడం దీనిని పరిష్కరిస్తుంది.",
-    "callContinuingElsewhere": "ఈ కాల్ మీ ఇతర పరికరంలో కొనసాగుతోంది."
+    "callContinuingElsewhere": "ఈ కాల్ మీ ఇతర పరికరంలో కొనసాగుతోంది.",
+    "listenFirst": "ముందు వినండి",
+    "listenFirstDescription": "ముందు వినండి ఆన్‌లో ఉన్నప్పుడు, ఒక క్లిక్ ఆడియోను ప్లే చేస్తుంది మరియు డబుల్-క్లిక్ ఎంపికను ఎంచుకుంటుంది.",
+    "listenFirstNeedsChoiceAudio": "ముందు వినండిని ఉపయోగించడానికి ఎంపికల ఆడియోను ఆన్ చేయండి."
 }

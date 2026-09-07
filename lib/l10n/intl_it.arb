@@ -9825,7 +9825,6 @@
     "languageDropdownLevel": "Livello {level}",
     "whatAreYouLearning": "Cosa stai imparando?",
     "languageSwitcherBaseLanguageLabel": "La tua lingua base",
-    "listenModeDescription": "Tocca una scelta per ascoltarla. Nulla è selezionato.",
     "rateActivityLiked": "Mi è piaciuto",
     "rateActivityDisliked": "Non mi è piaciuto",
     "constructUseHrdDesc": "Sentito",
@@ -9944,5 +9943,8 @@
     "callDevicesLeaveHere": "Lascia la chiamata qui",
     "callDevicesOlderTitle": "L'altro tuo dispositivo non può lasciare questa chiamata da solo.",
     "callDevicesOlderBody": "Termina la chiamata lì, o lasciala qui. Di solito significa che sta eseguendo una versione precedente, e l'aggiornamento risolverà il problema.",
-    "callContinuingElsewhere": "Questa chiamata sta continuando sull'altro tuo dispositivo."
+    "callContinuingElsewhere": "Questa chiamata sta continuando sull'altro tuo dispositivo.",
+    "listenFirst": "Ascolta prima",
+    "listenFirstDescription": "Quando l'opzione \"Ascolta prima\" è attiva, un clic riproduce solo l'audio e un doppio clic seleziona l'opzione.",
+    "listenFirstNeedsChoiceAudio": "Attiva l'audio delle scelte per usare \"Ascolta prima\"."
 }

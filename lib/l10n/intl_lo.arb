@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "ລະດັບ {level}",
     "whatAreYouLearning": "ທ່ານກຳລັງຮຽນຫຍັງ?",
     "languageSwitcherBaseLanguageLabel": "ພາສາພື້ນຖານຂອງທ່ານ",
-    "listenModeDescription": "ແຕະຕົວເລືອກເພື່ອຟັງ. ບໍ່ມີຫຍັງຖືກເລືອກ.",
     "rateActivityLiked": "ມັກ",
     "rateActivityDisliked": "ບໍ່ມັກ",
     "constructUseHrdDesc": "ໄດ້ຍິນ",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "ອອກຈາກການໂທຢູ່ນີ້",
     "callDevicesOlderTitle": "ອຸປະກອນອື່ນຂອງທ່ານບໍ່ສາມາດອອກຈາກການໂທນີ້ດ້ວຍຕົວມັນເອງໄດ້.",
     "callDevicesOlderBody": "ສິ້ນສຸດການໂທຢູ່ບ່ອນນັ້ນ, ຫຼື ອອກຈາກມັນຢູ່ນີ້. ນັ້ນໝາຍຄວາມວ່າປົກກະຕິແລ້ວມັນກຳລັງໃຊ້ເວີຊັນເກົ່າ, ແລະ ການອັບເດດມັນຈະແກ້ໄຂບັນຫານີ້.",
-    "callContinuingElsewhere": "ການໂທນີ້ກຳລັງສືບຕໍ່ຢູ່ໃນອຸປະກອນອື່ນຂອງທ່ານ."
+    "callContinuingElsewhere": "ການໂທນີ້ກຳລັງສືບຕໍ່ຢູ່ໃນອຸປະກອນອື່ນຂອງທ່ານ.",
+    "listenFirst": "ຟັງກ່ອນ",
+    "listenFirstDescription": "ເມື່ອເປີດຟັງກ່ອນ, ຄລິກໜຶ່ງຄັ້ງຈະຫຼິ້ນສຽງ ແລະ ຄລິກສອງຄັ້ງຈະເລືອກຕົວເລືອກ.",
+    "listenFirstNeedsChoiceAudio": "ເປີດສຽງຕົວເລືອກເພື່ອໃຊ້ຟັງກ່ອນ."
 }

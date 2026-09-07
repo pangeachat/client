@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "Niveau {level}",
     "whatAreYouLearning": "Wat léiers du?",
     "languageSwitcherBaseLanguageLabel": "Deng Basissprooch",
-    "listenModeDescription": "Tipp op eng Wiel fir se ze héieren. Näischt ass ausgewielt.",
     "rateActivityLiked": "Mir huet et gefall",
     "rateActivityDisliked": "Mir huet et net gefall",
     "constructUseHrdDesc": "Héieren",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "Den Uruff hei verloossen",
     "callDevicesOlderTitle": "Däin aneren Apparat kann dësen Uruff net eleng verloossen.",
     "callDevicesOlderBody": "Enn den Uruff do, oder verlooss en hei. Dat heescht normalerweis, datt en eng méi al Versioun leeft, an en Update wäert dat behiewen.",
-    "callContinuingElsewhere": "Dësen Uruff leeft op dengem aneren Apparat weider."
+    "callContinuingElsewhere": "Dësen Uruff leeft op dengem aneren Apparat weider.",
+    "listenFirst": "Als éischt lauschteren",
+    "listenFirstDescription": "Wann 'Als éischt lauschteren' aktivéiert ass, spillt een Klick just den Audio an en Duebelklick wielt d'Optioun aus.",
+    "listenFirstNeedsChoiceAudio": "Schalt d'Wiel-Audio un fir 'Als éischt lauschteren' ze benotzen."
 }

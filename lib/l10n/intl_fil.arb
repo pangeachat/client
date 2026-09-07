@@ -10612,7 +10612,6 @@
     "languageDropdownLevel": "Antas {level}",
     "whatAreYouLearning": "Ano ang pinag-aaralan mo?",
     "languageSwitcherBaseLanguageLabel": "Ang iyong base language",
-    "listenModeDescription": "I-tap ang pagpipilian para marinig ito. Walang napili.",
     "rateActivityLiked": "Nagustuhan",
     "rateActivityDisliked": "Hindi nagustuhan",
     "constructUseHrdDesc": "Narinig",
@@ -10731,5 +10730,8 @@
     "callDevicesLeaveHere": "Umalis sa tawag dito",
     "callDevicesOlderTitle": "Hindi makaalis sa tawag na ito ang isa mo pang device nang mag-isa.",
     "callDevicesOlderBody": "Tapusin ang tawag doon, o umalis dito. Kadalasan, nangangahulugan iyon na gumagamit ito ng mas lumang bersyon, at maaayos ito sa pag-update.",
-    "callContinuingElsewhere": "Nagpapatuloy ang tawag na ito sa isa mo pang device."
+    "callContinuingElsewhere": "Nagpapatuloy ang tawag na ito sa isa mo pang device.",
+    "listenFirst": "Makinig muna",
+    "listenFirstDescription": "Kapag naka-on ang Makinig Muna, isang click lang ay magpe-play ng audio at double-click para piliin ang opsyon.",
+    "listenFirstNeedsChoiceAudio": "I-on ang audio ng Mga Pagpipilian para magamit ang Makinig Muna."
 }

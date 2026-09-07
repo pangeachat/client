@@ -9756,7 +9756,6 @@
     "languageDropdownLevel": "Daraja {level}",
     "whatAreYouLearning": "Nimani o'rganyapsiz?",
     "languageSwitcherBaseLanguageLabel": "Sizning asosiy tilingiz",
-    "listenModeDescription": "Eshitish uchun tanlovni bosing. Hech narsa tanlanmagan.",
     "rateActivityLiked": "Yoqdi",
     "rateActivityDisliked": "Yoqmadi",
     "constructUseHrdDesc": "Eshitildi",
@@ -9875,5 +9874,8 @@
     "callDevicesLeaveHere": "Qo‘ng‘iroqni shu yerda qoldirish",
     "callDevicesOlderTitle": "Boshqa qurilmangiz bu qo‘ng‘iroqni o‘z-o‘zidan tark eta olmaydi.",
     "callDevicesOlderBody": "Qo‘ng‘iroqni u yerda tugating yoki shu yerda qoldiring. Bu odatda uning eski versiyada ishlayotganligini anglatadi va uni yangilash buni tuzatadi.",
-    "callContinuingElsewhere": "Bu qo‘ng‘iroq boshqa qurilmangizda davom etmoqda."
+    "callContinuingElsewhere": "Bu qo‘ng‘iroq boshqa qurilmangizda davom etmoqda.",
+    "listenFirst": "Avval tinglang",
+    "listenFirstDescription": "«Avval tinglang» yoqilganda, bir marta bosish faqat audioni ijro etadi va ikki marta bosish variantni tanlaydi.",
+    "listenFirstNeedsChoiceAudio": "«Avval tinglang» funksiyasidan foydalanish uchun Tanlovlar audiosini yoqing."
 }

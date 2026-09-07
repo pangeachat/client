@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "{level}-دەرىجە",
     "whatAreYouLearning": "نېمە ئۆگىنىۋاتىسىز؟",
     "languageSwitcherBaseLanguageLabel": "سىزنىڭ ئاساسىي تىلىڭىز",
-    "listenModeDescription": "ئاڭلاش ئۈچۈن بىر تاللاشنى چېكىڭ. ھېچقانداق تاللاش يوق.",
     "rateActivityLiked": "ياقتۇردۇم",
     "rateActivityDisliked": "ياقتۇرمىدىم",
     "constructUseHrdDesc": "ئاڭلىدى",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "چاقىرىشنى بۇ يەردە ئاخىرلاشتۇرۇڭ",
     "callDevicesOlderTitle": "باشقا ئۈسكۈنىڭىز بۇ چاقىرىشتىن ئۆزلۈكىدىن ئايرىلالمايدۇ.",
     "callDevicesOlderBody": "چاقىرىشنى ئۇ يەردە ئاخىرلاشتۇرۇڭ ياكى بۇ يەردە ئاخىرلاشتۇرۇڭ. بۇ ئادەتتە ئۇنىڭ كونا نەشرىنى ئىشلىتىۋاتقانلىقىنى كۆرسىتىدۇ، يېڭىلاش ئارقىلىق بۇ مەسىلە ھەل بولىدۇ.",
-    "callContinuingElsewhere": "بۇ چاقىرىش باشقا ئۈسكۈنىڭىزدە داۋاملىشىۋاتىدۇ."
+    "callContinuingElsewhere": "بۇ چاقىرىش باشقا ئۈسكۈنىڭىزدە داۋاملىشىۋاتىدۇ.",
+    "listenFirst": "ئالدى بىلەن ئاڭلاڭ",
+    "listenFirstDescription": "«ئالدى بىلەن ئاڭلاڭ»نى ئاچقاندا، بىر چېكىش ئاۋازنى قويىدۇ، قوش چېكىش تاللاشنى تاللايدۇ.",
+    "listenFirstNeedsChoiceAudio": "«ئالدى بىلەن ئاڭلاڭ»نى ئىشلىتىش ئۈچۈن تاللاش ئاۋازىنى ئېچىڭ."
 }

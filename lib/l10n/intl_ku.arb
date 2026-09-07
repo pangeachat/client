@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "ئاست {level}",
     "whatAreYouLearning": "چی فێردەبیت؟",
     "languageSwitcherBaseLanguageLabel": "زمانی بنەڕەتیت",
-    "listenModeDescription": "دەست بنێ بە هەڵبژاردەیەکدا بۆ بیستنی. هیچ شتێک هەڵنەبژێردراوە.",
     "rateActivityLiked": "پەسەندکرا",
     "rateActivityDisliked": "پەسەندنەکرا",
     "constructUseHrdDesc": "بیستراوە",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "پەیوەندییەکە لێرە جێبهێڵە",
     "callDevicesOlderTitle": "ئامێرەکەی دیکەت ناتوانێت بەتەنیا ئەم پەیوەندییە جێبهێڵێت.",
     "callDevicesOlderBody": "پەیوەندییەکە لەوێ کۆتایی پێبهێنە، یان لێرە جێبهێڵە. ئەوە بەزۆری بەو واتایەیە کە وەشانی کۆنتری کارپێدەکرێت، و نوێکردنەوەی ئەمە چاک دەکات.",
-    "callContinuingElsewhere": "ئەم پەیوەندییە لەسەر ئامێرەکەی دیکەت بەردەوامە."
+    "callContinuingElsewhere": "ئەم پەیوەندییە لەسەر ئامێرەکەی دیکەت بەردەوامە.",
+    "listenFirst": "یەکەمجار گوێ بگرە",
+    "listenFirstDescription": "کاتێک یەکەمجار گوێ بگرە کارا بێت، یەک کرتە تەنها دەنگ لێدەدات و دوو کرتە بژاردەکە هەڵدەبژێرێت.",
+    "listenFirstNeedsChoiceAudio": "دەنگی بژاردەکان کارا بکە بۆ بەکارهێنانی یەکەمجار گوێ بگرە."
 }

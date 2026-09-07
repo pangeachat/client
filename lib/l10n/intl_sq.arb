@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "Niveli {level}",
     "whatAreYouLearning": "Çfarë po mëson?",
     "languageSwitcherBaseLanguageLabel": "Gjuha juaj bazë",
-    "listenModeDescription": "Trokitni një zgjedhje për ta dëgjuar. Asgjë nuk është zgjedhur.",
     "rateActivityLiked": "Më pëlqeu",
     "rateActivityDisliked": "Nuk më pëlqeu",
     "constructUseHrdDesc": "Dëgjuar",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "Lëreni thirrjen këtu",
     "callDevicesOlderTitle": "Pajisja juaj tjetër nuk mund ta lërë këtë thirrje vetë.",
     "callDevicesOlderBody": "Përfundoni thirrjen atje, ose lëreni këtu. Kjo zakonisht do të thotë se po përdor një version më të vjetër, dhe përditësimi i tij do ta rregullojë këtë.",
-    "callContinuingElsewhere": "Kjo thirrje po vazhdon në pajisjen tuaj tjetër."
+    "callContinuingElsewhere": "Kjo thirrje po vazhdon në pajisjen tuaj tjetër.",
+    "listenFirst": "Dëgjo fillimisht",
+    "listenFirstDescription": "Kur Dëgjo fillimisht është aktiv, një klikim luan vetëm audion dhe një klikim i dyfishtë zgjedh opsionin.",
+    "listenFirstNeedsChoiceAudio": "Aktivizo audion e Zgjedhjeve për të përdorur Dëgjo fillimisht."
 }

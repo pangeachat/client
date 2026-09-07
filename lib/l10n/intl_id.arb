@@ -9825,7 +9825,6 @@
     "languageDropdownLevel": "Level {level}",
     "whatAreYouLearning": "Apa yang sedang Anda pelajari?",
     "languageSwitcherBaseLanguageLabel": "Bahasa dasar Anda",
-    "listenModeDescription": "Ketuk pilihan untuk mendengarnya. Tidak ada yang dipilih.",
     "rateActivityLiked": "Suka",
     "rateActivityDisliked": "Tidak suka",
     "constructUseHrdDesc": "Mendengar",
@@ -9944,5 +9943,8 @@
     "callDevicesLeaveHere": "Tinggalkan panggilan di sini",
     "callDevicesOlderTitle": "Perangkat Anda yang lain tidak dapat meninggalkan panggilan ini dengan sendirinya.",
     "callDevicesOlderBody": "Akhiri panggilan di sana, atau tinggalkan di sini. Itu biasanya berarti perangkat tersebut menjalankan versi yang lebih lama, dan memperbaruinya akan memperbaiki masalah ini.",
-    "callContinuingElsewhere": "Panggilan ini berlanjut di perangkat Anda yang lain."
+    "callContinuingElsewhere": "Panggilan ini berlanjut di perangkat Anda yang lain.",
+    "listenFirst": "Dengarkan dulu",
+    "listenFirstDescription": "Saat Dengarkan Dulu aktif, satu klik hanya memutar audio dan klik ganda memilih opsi.",
+    "listenFirstNeedsChoiceAudio": "Nyalakan audio Pilihan untuk menggunakan Dengarkan Dulu."
 }

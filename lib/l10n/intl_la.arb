@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "Gradus {level}",
     "whatAreYouLearning": "Quid discis?",
     "languageSwitcherBaseLanguageLabel": "Lingua tua fundamentalis",
-    "listenModeDescription": "Tange optionem ut audias. Nihil eligitur.",
     "rateActivityLiked": "Placuit",
     "rateActivityDisliked": "Non placuit",
     "constructUseHrdDesc": "Audivit",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "Colloquium hic relinque",
     "callDevicesOlderTitle": "Alterum instrumentum tuum hoc colloquium per se relinquere non potest.",
     "callDevicesOlderBody": "Colloquium ibi finias, aut hic relinquas. Hoc plerumque significat versionem vetustiorem currit, et eam renovando hoc corrigetur.",
-    "callContinuingElsewhere": "Hoc colloquium in altero instrumento tuo pergit."
+    "callContinuingElsewhere": "Hoc colloquium in altero instrumento tuo pergit.",
+    "listenFirst": "Primum audi",
+    "listenFirstDescription": "Cum Primum Audi inest, unus click tantum sonum ludit et duplex click optionem eligit.",
+    "listenFirstNeedsChoiceAudio": "Verte sonum optionum ut Primum Audi utaris."
 }

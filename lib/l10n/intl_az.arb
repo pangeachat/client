@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "Səviyyə {level}",
     "whatAreYouLearning": "Nə öyrənirsiniz?",
     "languageSwitcherBaseLanguageLabel": "Sizin əsas diliniz",
-    "listenModeDescription": "Eşitmək üçün bir seçimə toxunun. Heç nə seçilməyib.",
     "rateActivityLiked": "Bəyəndim",
     "rateActivityDisliked": "Bəyənmədim",
     "constructUseHrdDesc": "Eşidilib",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "Zəngi burada tərk edin",
     "callDevicesOlderTitle": "Digər cihazınız bu zəngi öz-özünə tərk edə bilməz.",
     "callDevicesOlderBody": "Zəngi orada bitirin və ya burada tərk edin. Bu, adətən, onun köhnə versiyada işləməsi deməkdir və onu yeniləmək bunu düzəldəcəkdir.",
-    "callContinuingElsewhere": "Bu zəng digər cihazınızda davam edir."
+    "callContinuingElsewhere": "Bu zəng digər cihazınızda davam edir.",
+    "listenFirst": "Əvvəlcə dinləyin",
+    "listenFirstDescription": "Əvvəlcə dinləyin funksiyası aktiv olduqda, bir klik sadəcə səsi səsləndirir və iki dəfə klikləməklə seçim edilir.",
+    "listenFirstNeedsChoiceAudio": "Əvvəlcə dinləyin funksiyasından istifadə etmək üçün Seçimlər səsini aktiv edin."
 }

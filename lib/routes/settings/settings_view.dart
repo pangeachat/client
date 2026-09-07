@@ -227,8 +227,8 @@ class SettingsView extends StatelessWidget {
                                 ClipboardData(
                                   text: [
                                     "${snapshot.data!.version}+${snapshot.data!.buildNumber}",
-                                    if (Environment.buildCommitSha.isNotEmpty)
-                                      Environment.buildCommitSha,
+                                    if (Environment.buildIdentifier.isNotEmpty)
+                                      Environment.buildIdentifier,
                                   ].join(" "),
                                 ),
                               );
@@ -253,9 +253,9 @@ class SettingsView extends StatelessWidget {
                             // A commit SHA is an identifier, not copy, so it
                             // is shown raw rather than through a translated
                             // label. Absent on local builds.
-                            subtitle: Environment.buildCommitSha.isEmpty
+                            subtitle: Environment.buildIdentifier.isEmpty
                                 ? null
-                                : Text(Environment.buildCommitSha),
+                                : Text(Environment.buildIdentifier),
                           );
                         } else if (snapshot.hasError) {
                           return ListTile(

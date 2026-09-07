@@ -9763,7 +9763,6 @@
     "languageDropdownLevel": "Leibhéal {level}",
     "whatAreYouLearning": "Cad atá tú ag foghlaim?",
     "languageSwitcherBaseLanguageLabel": "Do bhuntheanga",
-    "listenModeDescription": "Tapáil rogha chun í a chloisteáil. Níl aon rud roghnaithe.",
     "rateActivityLiked": "Thaitin sé liom",
     "rateActivityDisliked": "Níor thaitin sé liom",
     "constructUseHrdDesc": "Chuala",
@@ -9882,5 +9881,8 @@
     "callDevicesLeaveHere": "Fág an glao anseo",
     "callDevicesOlderTitle": "Ní féidir le do ghléas eile an glao seo a fhágáil leis féin.",
     "callDevicesOlderBody": "Cuir deireadh leis an nglao ansin, nó fág anseo é. De ghnáth ciallaíonn sé sin go bhfuil leagan níos sine á rith aige, agus socróidh nuashonrú é seo.",
-    "callContinuingElsewhere": "Tá an glao seo ag leanúint ar do ghléas eile."
+    "callContinuingElsewhere": "Tá an glao seo ag leanúint ar do ghléas eile.",
+    "listenFirst": "Éist ar dtús",
+    "listenFirstDescription": "Nuair a bhíonn Éist ar dtús ar siúl, ní dhéanann cliceáil amháin ach an fhuaim a sheinm agus roghnaíonn cliceáil dúbailte an rogha.",
+    "listenFirstNeedsChoiceAudio": "Cas ar fhuaim Roghanna chun Éist ar dtús a úsáid."
 }

@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "Ниво {level}",
     "whatAreYouLearning": "Што учиш?",
     "languageSwitcherBaseLanguageLabel": "Твојот основен јазик",
-    "listenModeDescription": "Допрете избор за да го слушнете. Ништо не е избрано.",
     "rateActivityLiked": "Ми се допадна",
     "rateActivityDisliked": "Не ми се допадна",
     "constructUseHrdDesc": "Слушнато",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "Напушти го повикот овде",
     "callDevicesOlderTitle": "Вашиот друг уред не може сам да го напушти овој повик.",
     "callDevicesOlderBody": "Завршете го повикот таму или напуштете го овде. Тоа обично значи дека работи на постара верзија, а ажурирањето ќе го реши ова.",
-    "callContinuingElsewhere": "Овој повик продолжува на вашиот друг уред."
+    "callContinuingElsewhere": "Овој повик продолжува на вашиот друг уред.",
+    "listenFirst": "Прво слушај",
+    "listenFirstDescription": "Кога „Прво слушај“ е вклучено, еден клик само пушта аудио, а двоен клик ја избира опцијата.",
+    "listenFirstNeedsChoiceAudio": "Вклучете го аудиото за избор за да користите „Прво слушај“."
 }

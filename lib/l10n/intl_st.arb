@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "Boemo ba {level}",
     "whatAreYouLearning": "U ithuta eng?",
     "languageSwitcherBaseLanguageLabel": "Puō ea hao ea motheo",
-    "listenModeDescription": "Tlanya khetho ho e utlwa. Ha ho letho le kgethilweng.",
     "rateActivityLiked": "Ke e ratile",
     "rateActivityDisliked": "Ha ke a e rata",
     "constructUseHrdDesc": "Utloile",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "Tlohela mohala mona",
     "callDevicesOlderTitle": "Sesebelisoa sa hau se seng se ke ke sa tlohela mohala ona ka bo sona.",
     "callDevicesOlderBody": "Fellisa mohala moo, kapa o tlohele mona. Seo hangata se bolela hore se sebelisa mofuta oa khale, 'me ho o ntlafatsa ho tla lokisa sena.",
-    "callContinuingElsewhere": "Mohala ona o ntse o tsoela pele sesebelisoa sa hau se seng."
+    "callContinuingElsewhere": "Mohala ona o ntse o tsoela pele sesebelisoa sa hau se seng.",
+    "listenFirst": "Mamelisa pele",
+    "listenFirstDescription": "Ha Mamelisa Pele e buletswe, ho tobetsa hang ho bapala modumo mme ho tobetsa habedi ho kgetha kgetho.",
+    "listenFirstNeedsChoiceAudio": "Bulela modumo wa Dikgetho ho sebedisa Mamelisa Pele."
 }

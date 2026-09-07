@@ -10652,7 +10652,6 @@
     "languageDropdownLevel": "დონე {level}",
     "whatAreYouLearning": "რას სწავლობთ?",
     "languageSwitcherBaseLanguageLabel": "თქვენი საბაზო ენა",
-    "listenModeDescription": "მოსასმენად შეეხეთ არჩევანს. არაფერია არჩეული.",
     "rateActivityLiked": "მოეწონა",
     "rateActivityDisliked": "არ მოეწონა",
     "constructUseHrdDesc": "მოისმინა",
@@ -10771,5 +10770,8 @@
     "callDevicesLeaveHere": "დატოვეთ ზარი აქ",
     "callDevicesOlderTitle": "თქვენს სხვა მოწყობილობას არ შეუძლია ამ ზარის დატოვება დამოუკიდებლად.",
     "callDevicesOlderBody": "დაასრულეთ ზარი იქ, ან დატოვეთ აქ. ეს ჩვეულებრივ ნიშნავს, რომ ის მუშაობს ძველ ვერსიაზე და მისი განახლება ამას გამოასწორებს.",
-    "callContinuingElsewhere": "ეს ზარი გრძელდება თქვენს სხვა მოწყობილობაზე."
+    "callContinuingElsewhere": "ეს ზარი გრძელდება თქვენს სხვა მოწყობილობაზე.",
+    "listenFirst": "ჯერ მოუსმინე",
+    "listenFirstDescription": "როდესაც „ჯერ მოუსმინე“ ჩართულია, ერთი დაწკაპუნებით მხოლოდ აუდიო ირთვება, ორმაგი დაწკაპუნებით კი ოფცია ირჩევა.",
+    "listenFirstNeedsChoiceAudio": "„ჯერ მოუსმინეს“ გამოსაყენებლად ჩართეთ არჩევანის აუდიო."
 }

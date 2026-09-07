@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "Сатҳи {level}",
     "whatAreYouLearning": "Шумо чиро меомӯзед?",
     "languageSwitcherBaseLanguageLabel": "Забони асосии шумо",
-    "listenModeDescription": "Барои шунидан интихобро пахш кунед. Ҳеҷ чиз интихоб нашудааст.",
     "rateActivityLiked": "Мақбул донистам",
     "rateActivityDisliked": "Мақбул надонистам",
     "constructUseHrdDesc": "Шунидам",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "Зангро дар ин ҷо қатъ кунед",
     "callDevicesOlderTitle": "Дастгоҳи дигари шумо наметавонад ин зангро мустақилона қатъ кунад.",
     "callDevicesOlderBody": "Зангро дар он ҷо қатъ кунед ё дар ин ҷо қатъ кунед. Ин одатан маънои онро дорад, ки он версияи кӯҳнаро истифода мебарад ва навсозии он ин мушкилотро ҳал мекунад.",
-    "callContinuingElsewhere": "Ин занг дар дастгоҳи дигари шумо идома дорад."
+    "callContinuingElsewhere": "Ин занг дар дастгоҳи дигари шумо идома дорад.",
+    "listenFirst": "Аввал гӯш кунед",
+    "listenFirstDescription": "Вақте ки «Аввал гӯш кунед» фаъол аст, як клик танҳо аудиоро менавозад ва ду маротиба клик кардан интихобро интихоб мекунад.",
+    "listenFirstNeedsChoiceAudio": "Барои истифодаи «Аввал гӯш кунед» аудиои интихобҳоро фаъол созед."
 }

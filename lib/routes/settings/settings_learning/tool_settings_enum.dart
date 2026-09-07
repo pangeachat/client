@@ -11,6 +11,7 @@ enum ToolSetting {
   autoIGC,
   audioWords,
   audioChoices,
+  listenFirst,
   audioOnNewMessage,
   audioOnMessageClick,
   enableAutocorrect;
@@ -31,6 +32,8 @@ enum ToolSetting {
         return L10n.of(context).audioWordsToolName;
       case ToolSetting.audioChoices:
         return L10n.of(context).audioChoicesToolName;
+      case ToolSetting.listenFirst:
+        return L10n.of(context).listenFirst;
       case ToolSetting.audioOnNewMessage:
         return L10n.of(context).audioOnNewMessageToolName;
       case ToolSetting.audioOnMessageClick:
@@ -57,6 +60,8 @@ enum ToolSetting {
         return L10n.of(context).audioWordsDescription;
       case ToolSetting.audioChoices:
         return L10n.of(context).audioChoicesDescription;
+      case ToolSetting.listenFirst:
+        return L10n.of(context).listenFirstDescription;
       case ToolSetting.audioOnNewMessage:
         return L10n.of(context).audioOnNewMessageDescription;
       case ToolSetting.audioOnMessageClick:
@@ -77,6 +82,7 @@ enum ToolSetting {
       case ToolSetting.autoIGC:
       case ToolSetting.audioWords:
       case ToolSetting.audioChoices:
+      case ToolSetting.listenFirst:
       case ToolSetting.audioOnNewMessage:
       case ToolSetting.audioOnMessageClick:
         return true;
@@ -87,6 +93,7 @@ enum ToolSetting {
     switch (this) {
       case ToolSetting.audioWords:
       case ToolSetting.audioChoices:
+      case ToolSetting.listenFirst:
       case ToolSetting.audioOnNewMessage:
       case ToolSetting.audioOnMessageClick:
         return true;
@@ -94,6 +101,12 @@ enum ToolSetting {
         return false;
     }
   }
+
+  /// Listen First only reorders what a tap on a choice does with the audio
+  /// [ToolSetting.audioChoices] permits — with that gate shut it is a mode
+  /// that plays nothing, so it is offered as unavailable rather than as a
+  /// toggle that silently does nothing.
+  bool get requiresChoiceAudio => this == ToolSetting.listenFirst;
 
   /// The message read-aloud toggles, which enable through the known-good-voice
   /// gate rather than directly. See message-read-aloud.instructions.md.

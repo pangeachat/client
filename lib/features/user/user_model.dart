@@ -222,6 +222,16 @@ class UserToolSettings {
   final bool audioOnNewMessage;
   final bool audioOnMessageClick;
 
+  /// Writing assistance's Listen First mode, remembered across matches and
+  /// sessions once the learner turns it on.
+  ///
+  /// It exists for learners who know a language by ear before its script, and
+  /// that is a property of the learner, not of one correction — resetting it
+  /// per match made them re-arm it on every highlighted word. Default off, so
+  /// a single tap keeps selecting for everyone who has not asked otherwise.
+  /// See writing-assistance.instructions.md.
+  final bool listenFirst;
+
   /// The user's explicit autocorrect choice, or null when they have never
   /// touched the toggle. Kept unresolved in storage so each device applies its
   /// own [enableAutocorrectPlatformDefault] — resolving at write time would
@@ -241,6 +251,7 @@ class UserToolSettings {
     this.audioOnMessageClick = true,
     bool? enableAutocorrect,
     this.showDeveloperOptions = false,
+    this.listenFirst = false,
   }) : enableAutocorrectChoice = enableAutocorrect;
 
   /// Device autocorrect defaults on only where the composer can tell the
@@ -275,6 +286,7 @@ class UserToolSettings {
     // profiles without the key pick up the platform default.
     enableAutocorrect: json["enableAutocorrect"] as bool?,
     showDeveloperOptions: json["showDeveloperOptions"] ?? false,
+    listenFirst: json["listenFirst"] ?? false,
   );
 
   Map<String, dynamic> toJson() {
@@ -292,6 +304,7 @@ class UserToolSettings {
       data["enableAutocorrect"] = enableAutocorrectChoice;
     }
     data["showDeveloperOptions"] = showDeveloperOptions;
+    data["listenFirst"] = listenFirst;
     return data;
   }
 
@@ -344,6 +357,7 @@ class UserToolSettings {
     /// [enableAutocorrect] is also passed.
     bool setEnableAutocorrectNull = false,
     bool? showDeveloperOptions,
+    bool? listenFirst,
   }) {
     return UserToolSettings(
       interactiveTranslator:
@@ -360,6 +374,7 @@ class UserToolSettings {
           ? null
           : (enableAutocorrect ?? enableAutocorrectChoice),
       showDeveloperOptions: showDeveloperOptions ?? this.showDeveloperOptions,
+      listenFirst: listenFirst ?? this.listenFirst,
     );
   }
 
@@ -378,7 +393,8 @@ class UserToolSettings {
         other.audioOnNewMessage == audioOnNewMessage &&
         other.audioOnMessageClick == audioOnMessageClick &&
         other.enableAutocorrectChoice == enableAutocorrectChoice &&
-        other.showDeveloperOptions == showDeveloperOptions;
+        other.showDeveloperOptions == showDeveloperOptions &&
+        other.listenFirst == listenFirst;
   }
 
   @override
@@ -394,6 +410,7 @@ class UserToolSettings {
     audioOnMessageClick.hashCode,
     enableAutocorrectChoice.hashCode,
     showDeveloperOptions.hashCode,
+    listenFirst.hashCode,
   ]);
 }
 

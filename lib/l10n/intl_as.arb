@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "স্তৰ {level}",
     "whatAreYouLearning": "আপুনি কি শিকি আছে?",
     "languageSwitcherBaseLanguageLabel": "আপোনাৰ মূল ভাষা",
-    "listenModeDescription": "শুনিবলৈ এটা বিকল্পত টেপ কৰক। একো নিৰ্বাচিত হোৱা নাই।",
     "rateActivityLiked": "ভাল পালোঁ",
     "rateActivityDisliked": "ভাল নাপালোঁ",
     "constructUseHrdDesc": "শুনিছে",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "কলটো ইয়াতে এৰি দিয়ক",
     "callDevicesOlderTitle": "আপোনাৰ আন ডিভাইচটোৱে নিজে এই কলটো এৰি যাব নোৱাৰে।",
     "callDevicesOlderBody": "কলটো তাতে শেষ কৰক, বা ইয়াত এৰি দিয়ক। ইয়াৰ অৰ্থ সাধাৰণতে এইটোৱেই যে ই এটা পুৰণি সংস্কৰণ চলাই আছে, আৰু ইয়াক আপডেট কৰিলে এই সমস্যাটো ঠিক হ'ব।",
-    "callContinuingElsewhere": "এই কলটো আপোনাৰ আন ডিভাইচত চলি আছে।"
+    "callContinuingElsewhere": "এই কলটো আপোনাৰ আন ডিভাইচত চলি আছে।",
+    "listenFirst": "প্ৰথমে শুনক",
+    "listenFirstDescription": "যেতিয়া প্ৰথমে শুনক অন থাকে, এটা ক্লিকে কেৱল অডিঅ' প্লে কৰে আৰু ডাবল-ক্লিকে বিকল্পটো নিৰ্বাচন কৰে।",
+    "listenFirstNeedsChoiceAudio": "প্ৰথমে শুনক ব্যৱহাৰ কৰিবলৈ বিকল্প অডিঅ' অন কৰক।"
 }
