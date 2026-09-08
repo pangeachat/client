@@ -219,6 +219,8 @@ void main() {
     CallAudioRecordingSink? withAudioRecording,
     Duration? timeout,
     Duration? detach,
+    Future<void> Function(Duration d)? delay,
+    double Function()? jitter,
   }) => CallCaptureService(
     sink: withSink ?? sink,
     tap: withTap,
@@ -227,6 +229,15 @@ void main() {
     detachTimeout: detach ?? const Duration(seconds: 5),
     nowMs: clock.call,
     elapsedMs: clock.monotonic,
+    // A delivery retry advances the SAME monotonic clock its budget is measured
+    // against, and completes instantly — so a test never sleeps through a
+    // backoff, yet an always-failing delivery still spends its budget and stops
+    // rather than spinning for ever. A test that wants to watch the backoffs
+    // passes its own recording [delay].
+    delay: delay ?? ((d) async => clock.elapsed += d.inMilliseconds),
+    // No jitter by default, so the backoff a test sees is the bare exponential
+    // curve. A test that cares about jitter passes its own.
+    jitter: jitter ?? (() => 0.0),
     newChunker: (firstIndex, sampleRate, channels, runStartedAtMs) {
       runStarts.add(runStartedAtMs);
       return PcmChunker(
@@ -530,22 +541,149 @@ void main() {
       );
     });
 
-    test('is given up on quietly once the attempts run out', () async {
-      // A chunk that will never send must not hold a hangup open forever, and
-      // must not take the call down with it.
+    test('survives a transient burst that would exhaust the old budget', () async {
+      // The bug this closes: a transient burst of 429s or 5xx from an overloaded
+      // backend used to burn a fixed three attempts in about three seconds and
+      // could not outlast the upload gate's fifteen-second open window, so a
+      // blip that had passed by the time the breaker closed still lost the whole
+      // half. Six failures then a success is a burst the OLD budget loses and
+      // the widened, time-bounded one rides out.
+      final bursty = RecordingSink(failuresLeft: {0: 6});
+      final s = service(
+        withSink: bursty,
+        // Small so the attempt-reserve does not dominate the tiny budgets these
+        // deterministic tests use; the real 30s is exercised by the production
+        // default elsewhere.
+        timeout: const Duration(milliseconds: 100),
+      );
+      await s.start(track);
+      for (var i = 0; i < 30; i++) {
+        track.emit(20);
+      }
+      await s.stop();
+
+      expect(
+        bursty.attempts.where((i) => i == 0).length,
+        greaterThan(6),
+        reason: 'more than the old three attempts — it must outlast the burst',
+      );
+      expect(
+        bursty.delivered.map((c) => c.index),
+        contains(0),
+        reason: 'and once the backend recovers, the words land',
+      );
+    });
+
+    test('backs off exponentially and stays inside the finish window', () async {
+      // The retries must span the breaker's open window WITHOUT hammering it, so
+      // the waits double from 500ms and cap at 8s; and the whole sequence must
+      // never overrun the call's finish window.
+      final waits = <Duration>[];
       final dead = RecordingSink(failIndices: const [0]);
-      final s = service(withSink: dead);
+      final s = service(
+        withSink: dead,
+        timeout: const Duration(milliseconds: 100),
+        // Records every backoff AND advances the budget clock, so the sequence
+        // both terminates and is observable.
+        delay: (d) async {
+          waits.add(d);
+          clock.elapsed += d.inMilliseconds;
+        },
+      );
+      await s.start(track);
+      for (var i = 0; i < 30; i++) {
+        track.emit(20);
+      }
+      await s.stop();
+
+      expect(waits.length, greaterThan(5), reason: 'many retries, not three');
+      // Exponential from 500ms, doubling, capped at 8s. Jitter is zero here, so
+      // the bare curve shows through exactly.
+      expect(waits[0], const Duration(milliseconds: 500));
+      expect(waits[1], const Duration(seconds: 1));
+      expect(waits[2], const Duration(seconds: 2));
+      expect(waits[3], const Duration(seconds: 4));
+      expect(waits[4], const Duration(seconds: 8));
+      expect(waits[5], const Duration(seconds: 8), reason: 'capped, not 16s');
+      for (final w in waits) {
+        expect(
+          w,
+          lessThanOrEqualTo(const Duration(seconds: 8)),
+          reason: 'no backoff exceeds the ceiling',
+        );
+      }
+      // The whole sequence stays inside the finish window — it never runs past
+      // the end of the call.
+      final total = waits.fold(Duration.zero, (a, b) => a + b);
+      expect(
+        total,
+        lessThanOrEqualTo(const Duration(minutes: 2)),
+        reason: 'the retry sequence never exceeds the finish window',
+      );
+    });
+
+    test('jitters each backoff so a fleet does not retry in lockstep', () async {
+      // Up to a quarter added on top of the bare curve. A fixed jitter source of
+      // 1.0 puts each wait at its maximum, which is the bare value plus 25%.
+      final waits = <Duration>[];
+      final dead = RecordingSink(failIndices: const [0]);
+      final s = service(
+        withSink: dead,
+        timeout: const Duration(milliseconds: 100),
+        jitter: () => 1.0,
+        delay: (d) async {
+          waits.add(d);
+          clock.elapsed += d.inMilliseconds;
+        },
+      );
+      await s.start(track);
+      for (var i = 0; i < 30; i++) {
+        track.emit(20);
+      }
+      await s.stop();
+
+      expect(waits[0], const Duration(milliseconds: 625), reason: '500 + 25%');
+      expect(
+        waits[1],
+        const Duration(milliseconds: 1250),
+        reason: '1000 + 25%',
+      );
+      expect(
+        waits[4],
+        const Duration(milliseconds: 10000),
+        reason: '8000 + 25%',
+      );
+    });
+
+    test('gives up on a permanently failing chunk, finitely and honestly', () async {
+      // A chunk that will never send must not hold a hangup open, spin for ever,
+      // or take the call down — and it must still be reported LOST rather than
+      // silently forgotten. The words are gone; the honest record of the gap is
+      // not.
+      final dead = RecordingSink(failIndices: const [0]);
+      final s = service(
+        withSink: dead,
+        timeout: const Duration(milliseconds: 100),
+      );
       await s.start(track);
       for (var i = 0; i < 30; i++) {
         track.emit(20);
       }
 
-      await expectLater(s.stop(), completes);
-      expect(
-        dead.attempts.where((i) => i == 0).length,
-        3,
-        reason: 'bounded attempts, not an unbounded loop',
+      await expectLater(
+        s.finish().timeout(const Duration(seconds: 5)),
+        completes,
+        reason: 'the loop is finite; it never holds teardown open',
       );
+      final tries = dead.attempts.where((i) => i == 0).length;
+      expect(tries, greaterThan(3), reason: 'wider than the old three');
+      expect(tries, lessThan(30), reason: 'bounded, not an unbounded loop');
+      expect(
+        dead.delivered.map((c) => c.index),
+        isNot(contains(0)),
+        reason: 'a chunk that never sends is still lost, and only that chunk',
+      );
+      expect(dead.delivered, isNotEmpty, reason: 'the rest of the call landed');
     });
   });
   group('a device with no tap', () {

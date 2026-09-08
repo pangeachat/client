@@ -1,5 +1,6 @@
 // Dart imports:
 import 'dart:async';
+import 'dart:math' as math;
 import 'dart:typed_data';
 
 // Flutter imports:
@@ -66,12 +67,30 @@ abstract class CallAudioSink {
 const captureSampleRate = 16000;
 const captureChannels = 1;
 
-/// How many times a chunk's delivery is attempted.
+/// The first retry's backoff. Each retry after it doubles the wait, up to
+/// [_deliveryBackoffCeiling].
 ///
 /// A chunk is up to ninety seconds of somebody's speech and there is no second
 /// copy — the call is over by the time delivery fails, and nothing can record
-/// it again.
-const _deliveryAttempts = 3;
+/// it again. So a transient blip — a 429, a 5xx, a dropped packet — must not
+/// cost the whole of it: the delivery is retried, gently, until it lands or the
+/// call's own finish window ([_deliveryRetryBudget]) runs out.
+const _deliveryBackoffBase = Duration(milliseconds: 500);
+
+/// The largest a single retry's backoff grows to before jitter. Doubling from
+/// 500 ms reaches it at the fifth wait, so the sequence is 0.5, 1, 2, 4, 8, 8,
+/// 8 … seconds — long enough to outlast the upload gate's open window
+/// ([CallUploadGate.openFor], 15 s) several times over, short enough that a
+/// recovering backend is retried promptly rather than after a minute of
+/// silence.
+const _deliveryBackoffCeiling = Duration(seconds: 8);
+
+/// How much of a backoff jitter may add on top, as a fraction. A whole fleet of
+/// devices that failed on the same backend blip would otherwise retry in
+/// lockstep and re-hammer it the instant its cooldown ends; spreading each
+/// device's wait by up to a quarter breaks that synchronisation without
+/// meaningfully lengthening any one device's own recovery.
+const _deliveryBackoffJitter = 0.25;
 
 /// How long one attempt at delivering a chunk is given.
 ///
@@ -91,6 +110,23 @@ const _settleDeliveriesWithin = Duration(seconds: 10);
 /// for the words to land; but finite, because a record that never appears is
 /// worse than one slightly short.
 const _settleFinishWithin = Duration(minutes: 2);
+
+/// How long the WHOLE retry sequence for one chunk may run before it is given
+/// up on as lost.
+///
+/// The same window [finish] waits out, and deliberately so: a retry sequence
+/// bounded by the finish window can span the upload gate's open window many
+/// times over — giving a transient burst time to pass and the backend time to
+/// recover — yet can never run past the end of the call or hold a hangup open,
+/// because a chunk is handed over no later than the call's own last flush and
+/// [finish] waits at least this long from that same point. The reserve in
+/// [CallCaptureService._deliver] keeps even the last attempt's own timeout
+/// inside this budget, so the sequence never overshoots it.
+const _deliveryRetryBudget = _settleFinishWithin;
+
+/// Backs the default delivery-retry jitter. One per process is plenty: only the
+/// spread of the values matters, never their exact sequence.
+final _deliveryJitter = math.Random();
 
 /// How long a tap is given to come off before it is treated as stuck.
 ///
@@ -151,6 +187,19 @@ class CallCaptureService {
   /// independently — which is the only way to tell this mechanism apart from
   /// the floor that backs it up.
   final int Function() elapsedMs;
+
+  /// Waits [d] before a delivery retry. Injected so a test can advance the
+  /// backoff instantly rather than sleeping through it — and, because the same
+  /// [elapsedMs] clock bounds the retry sequence, a test's wait can move that
+  /// clock so the budget it enforces is exercised deterministically. Defaults to
+  /// a real [Future.delayed] in production, where real time passes on both.
+  final Future<void> Function(Duration d) _delay;
+
+  /// A jitter source in [0, 1), added to each backoff (see
+  /// [_deliveryBackoffJitter]). Injected — and seedable — so the exponential
+  /// backoff a test observes is deterministic rather than random. Defaults to a
+  /// shared [math.Random].
+  final double Function() _jitter;
 
   final PcmChunker Function(
     int firstIndex,
@@ -426,6 +475,8 @@ class CallCaptureService {
     this.detachTimeout = _detachTimeout,
     int Function()? nowMs,
     int Function()? elapsedMs,
+    Future<void> Function(Duration d)? delay,
+    double Function()? jitter,
     PcmChunker Function(
       int firstIndex,
       int sampleRate,
@@ -441,6 +492,8 @@ class CallCaptureService {
            ),
        nowMs = nowMs ?? _systemNowMs,
        elapsedMs = elapsedMs ?? _systemElapsedMs,
+       _delay = delay ?? ((d) => Future<void>.delayed(d)),
+       _jitter = jitter ?? _deliveryJitter.nextDouble,
        _newChunker =
            newChunker ??
            ((firstIndex, sampleRate, channels, runStartedAtMs) => PcmChunker(
@@ -1318,29 +1371,78 @@ class CallCaptureService {
   ///
   /// One request lost on a weak connection — ordinary on mobile — used to cost
   /// up to ninety seconds of a learner's speech silently, and it fell hardest on
-  /// exactly the people with the worst connections. The attempts are bounded and
-  /// backed off: a chunk that will never send must not hold a hangup open.
+  /// exactly the people with the worst connections. And the loss was not one
+  /// request: a transient burst of 429s or 5xx from an overloaded backend burned
+  /// a fixed three attempts in about three seconds and could not outlast the
+  /// upload gate's fifteen-second open window, so a blip that had passed by the
+  /// time the breaker closed still lost the whole half, device-wide.
+  ///
+  /// So the retries are EXPONENTIAL and JITTERED (see [_backoffFor]) rather than
+  /// a fixed few, and the sequence is bounded by TIME rather than by a count:
+  /// it keeps trying, backing off, for as long as [_deliveryRetryBudget] — the
+  /// call's own finish window — leaves room for another whole attempt. That
+  /// spans the breaker's open window many times over and gives a recovering
+  /// backend time to answer, without hammering it and without ever running past
+  /// the end of the call: a chunk that genuinely cannot send still falls out of
+  /// the loop and is reported lost, exactly as before.
   ///
   /// Never throws. A chunk that cannot be delivered costs its share of the
   /// transcript; it must not take the call down with it.
   Future<void> _deliver(PcmChunk chunk) async {
-    for (var attempt = 0; attempt < _deliveryAttempts; attempt++) {
-      if (attempt > 0) await Future.delayed(Duration(seconds: attempt));
+    final startedAtMs = elapsedMs();
+    final budgetMs = _deliveryRetryBudget.inMilliseconds;
+    // Reserved so the loop never STARTS an attempt that could not finish inside
+    // the budget: a single attempt is bounded by [deliveryTimeout], so leaving
+    // that much room keeps the whole sequence — its last attempt included —
+    // inside [_deliveryRetryBudget].
+    final attemptCeilingMs = deliveryTimeout.inMilliseconds;
+    for (var attempt = 0; ; attempt++) {
       try {
         await sink.deliver(chunk, within: deliveryTimeout);
         return;
       } catch (e, s) {
         Logs().w(
           'Call audio chunk ${chunk.index} delivery attempt '
-          '${attempt + 1} of $_deliveryAttempts failed',
+          '${attempt + 1} failed',
           e,
           s,
         );
       }
+      final backoffMs = _backoffFor(attempt).inMilliseconds;
+      final spentMs = elapsedMs() - startedAtMs;
+      // Measured against the SAME clock the wait moves, so the budget holds
+      // whether time really passes (production) or a test advances it. Once one
+      // more backoff-plus-attempt would overrun the budget, stop: the words are
+      // lost, but the loop is finite and teardown was never held open.
+      if (spentMs + backoffMs + attemptCeilingMs > budgetMs) break;
+      await _delay(Duration(milliseconds: backoffMs));
     }
     Logs().e(
       'Gave up delivering call audio chunk ${chunk.index}; its words are lost',
     );
+  }
+
+  /// The backoff before retry number [attempt] (zero-based: 0 is the wait that
+  /// precedes the SECOND delivery attempt).
+  ///
+  /// Exponential from [_deliveryBackoffBase], doubling each time and capped at
+  /// [_deliveryBackoffCeiling], with up to [_deliveryBackoffJitter] of that
+  /// added on top so a fleet that all failed on one backend blip does not retry
+  /// in lockstep.
+  Duration _backoffFor(int attempt) {
+    final baseMs = _deliveryBackoffBase.inMilliseconds;
+    final ceilMs = _deliveryBackoffCeiling.inMilliseconds;
+    // Doubled by a shift only while it can still matter. Once the value has
+    // reached the ceiling the shift is skipped — which also keeps this clear of
+    // dart2js's 32-bit bitwise overflow (the `1 << 32` trap this file already
+    // carries a scar from at the recording sink's generation ids).
+    var ms = ceilMs;
+    if (attempt < 5) {
+      final doubled = baseMs << attempt;
+      if (doubled < ceilMs) ms = doubled;
+    }
+    final jitterMs = (ms * _deliveryBackoffJitter * _jitter()).round();
+    return Duration(milliseconds: ms + jitterMs);
   }
 
   /// Stops recording, flushes the tail, and waits for delivery to settle.
@@ -1575,11 +1677,14 @@ class CallCaptureService {
     // Everything still on its way — but BOUNDED, like every other wait in a
     // call's life. The bound applies to the WAITING, never to the audio: each
     // delivery keeps its own retry path, and nothing here truncates a chunk.
-    // Deliveries are individually bounded (attempts x deliveryTimeout), so this
-    // outer bound only fires if something violates that contract — and when it
-    // does, the record is still written with what landed, because a record
-    // slightly short is strictly better than one that never appears. The chunks
-    // still outstanding are logged as lost.
+    // Each delivery's whole retry sequence is itself bounded by
+    // [_deliveryRetryBudget], which IS this same window measured from when the
+    // chunk was handed over — never later than this stop's own final flush — so
+    // a chunk's retries always finish inside this wait rather than outliving it.
+    // This outer bound is the backstop for a delivery that overruns even that,
+    // and when it fires the record is still written with what landed, because a
+    // record slightly short is strictly better than one that never appears. The
+    // chunks still outstanding are logged as lost.
     try {
       await Future.wait(List.of(_inFlight)).timeout(_settleFinishWithin);
     } catch (e, s) {
