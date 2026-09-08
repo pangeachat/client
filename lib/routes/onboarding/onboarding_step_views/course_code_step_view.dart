@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
+import 'package:fluffychat/features/join_codes/space_code_controller.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_step_views/onboarding_forward_button.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_step_views/onboarding_step_body.dart';
@@ -75,8 +76,13 @@ class CourseCodeStepViewState extends State<CourseCodeStepView> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final title = widget.error != null
-        ? L10n.of(context).courseCodeStepErrorMessage
+    final error = widget.error;
+    final title = error != null
+        ? SpaceCodeController.joinErrorMessage(
+            context,
+            error,
+            notFoundError: L10n.of(context).courseCodeStepErrorMessage,
+          )
         : L10n.of(context).courseCodeStepTitle;
     return Column(
       spacing: 32.0,

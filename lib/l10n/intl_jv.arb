@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-09-04 10:08:35.231066",
+    "@@last_modified": "2026-09-08 09:44:58.636972",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2277,5 +2277,6 @@
     "callContinuingElsewhere": "Telpon iki terus ing piranti liyane sampeyan.",
     "listenFirst": "Rungokake dhisik",
     "listenFirstDescription": "Nalika Rungokake Dhisik urip, siji klik mung muter audio lan klik kaping pindho milih opsi.",
-    "listenFirstNeedsChoiceAudio": "Uripake audio Pilihan kanggo nggunakake Rungokake Dhisik."
+    "listenFirstNeedsChoiceAudio": "Uripake audio Pilihan kanggo nggunakake Rungokake Dhisik.",
+    "unableToJoinCourseError": "Saiki ora bisa nambahake sampeyan ing kursus iki. Coba maneh, utawa takon marang guru sampeyan."
 }

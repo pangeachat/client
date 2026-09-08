@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-04 10:08:40.926552",
+    "@@last_modified": "2026-09-08 09:45:06.713291",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7165,5 +7165,6 @@
     "callContinuingElsewhere": "Cuộc gọi này đang tiếp tục trên thiết bị khác của bạn.",
     "listenFirst": "Nghe trước",
     "listenFirstDescription": "Khi bật Nghe trước, một lần nhấp chỉ phát âm thanh và nhấp đúp sẽ chọn tùy chọn.",
-    "listenFirstNeedsChoiceAudio": "Bật âm thanh Lựa chọn để sử dụng Nghe trước."
+    "listenFirstNeedsChoiceAudio": "Bật âm thanh Lựa chọn để sử dụng Nghe trước.",
+    "unableToJoinCourseError": "Chúng tôi không thể thêm bạn vào khóa học này ngay bây giờ. Vui lòng thử lại hoặc hỏi giáo viên của bạn."
 }

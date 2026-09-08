@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-09-04 10:08:32.734336",
+    "@@last_modified": "2026-09-08 09:44:51.939293",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9860,5 +9860,6 @@
     "callContinuingElsewhere": "Dieser Anruf wird auf Ihrem anderen Gerät fortgesetzt.",
     "listenFirst": "Zuerst anhören",
     "listenFirstDescription": "Wenn „Zuerst anhören“ aktiviert ist, wird Audio mit einem Klick abgespielt und die Option mit einem Doppelklick ausgewählt.",
-    "listenFirstNeedsChoiceAudio": "Schalte die Audioausgabe für Auswahlmöglichkeiten ein, um „Zuerst anhören“ zu verwenden."
+    "listenFirstNeedsChoiceAudio": "Schalte die Audioausgabe für Auswahlmöglichkeiten ein, um „Zuerst anhören“ zu verwenden.",
+    "unableToJoinCourseError": "Wir konnten dich diesem Kurs im Moment nicht hinzufügen. Bitte versuche es erneut oder frage deinen Lehrer."
 }

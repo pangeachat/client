@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-04 10:08:38.656040",
+    "@@last_modified": "2026-09-08 09:45:01.473261",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10605,5 +10605,6 @@
     "callContinuingElsewhere": "Acest apel continuă pe celălalt dispozitiv al tău.",
     "listenFirst": "Ascultă mai întâi",
     "listenFirstDescription": "Când Ascultă mai întâi este activat, un singur clic redă doar sunetul, iar un dublu clic selectează opțiunea.",
-    "listenFirstNeedsChoiceAudio": "Activează sunetul Opțiunilor pentru a utiliza Ascultă mai întâi."
+    "listenFirstNeedsChoiceAudio": "Activează sunetul Opțiunilor pentru a utiliza Ascultă mai întâi.",
+    "unableToJoinCourseError": "Nu te-am putut adăuga la acest curs chiar acum. Te rugăm să încerci din nou sau să-ți întrebi profesorul."
 }

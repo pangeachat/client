@@ -3563,7 +3563,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-09-04 10:08:33.763214",
+    "@@last_modified": "2026-09-08 09:44:53.322962",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9884,5 +9884,6 @@
     "callContinuingElsewhere": "Tá an glao seo ag leanúint ar do ghléas eile.",
     "listenFirst": "Éist ar dtús",
     "listenFirstDescription": "Nuair a bhíonn Éist ar dtús ar siúl, ní dhéanann cliceáil amháin ach an fhuaim a sheinm agus roghnaíonn cliceáil dúbailte an rogha.",
-    "listenFirstNeedsChoiceAudio": "Cas ar fhuaim Roghanna chun Éist ar dtús a úsáid."
+    "listenFirstNeedsChoiceAudio": "Cas ar fhuaim Roghanna chun Éist ar dtús a úsáid.",
+    "unableToJoinCourseError": "Níorbh fhéidir linn tú a chur leis an gcúrsa seo faoi láthair. Bain triail eile as, nó iarr ar do mhúinteoir."
 }

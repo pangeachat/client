@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-09-04 10:08:34.493452",
+    "@@last_modified": "2026-09-08 09:44:54.871529",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2277,5 +2277,6 @@
     "callContinuingElsewhere": "આ કૉલ તમારા બીજા ડિવાઇસ પર ચાલુ છે.",
     "listenFirst": "પહેલાં સાંભળો",
     "listenFirstDescription": "જ્યારે પહેલાં સાંભળો ચાલુ હોય, ત્યારે એક ક્લિક ફક્ત ઑડિયો વગાડે છે અને ડબલ-ક્લિક વિકલ્પ પસંદ કરે છે.",
-    "listenFirstNeedsChoiceAudio": "પહેલાં સાંભળોનો ઉપયોગ કરવા માટે પસંદગીઓ ઑડિયો ચાલુ કરો."
+    "listenFirstNeedsChoiceAudio": "પહેલાં સાંભળોનો ઉપયોગ કરવા માટે પસંદગીઓ ઑડિયો ચાલુ કરો.",
+    "unableToJoinCourseError": "અમે તમને અત્યારે આ કોર્સમાં ઉમેરી શક્યા નથી. કૃપા કરીને ફરી પ્રયાસ કરો અથવા તમારા શિક્ષકને પૂછો."
 }

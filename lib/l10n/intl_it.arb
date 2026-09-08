@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-04 10:08:35.071292",
+    "@@last_modified": "2026-09-08 09:44:58.113979",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9946,5 +9946,6 @@
     "callContinuingElsewhere": "Questa chiamata sta continuando sull'altro tuo dispositivo.",
     "listenFirst": "Ascolta prima",
     "listenFirstDescription": "Quando l'opzione \"Ascolta prima\" è attiva, un clic riproduce solo l'audio e un doppio clic seleziona l'opzione.",
-    "listenFirstNeedsChoiceAudio": "Attiva l'audio delle scelte per usare \"Ascolta prima\"."
+    "listenFirstNeedsChoiceAudio": "Attiva l'audio delle scelte per usare \"Ascolta prima\".",
+    "unableToJoinCourseError": "Non è stato possibile aggiungerti a questo corso in questo momento. Riprova o chiedi al tuo insegnante."
 }

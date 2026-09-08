@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-04 10:08:41.033493",
+    "@@last_modified": "2026-09-08 09:45:06.225374",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9979,5 +9979,6 @@
     "callContinuingElsewhere": "此通話正在您的其他裝置上繼續。",
     "listenFirst": "先聽",
     "listenFirstDescription": "開啟「先聽」時，點一下播放音訊，點兩下選擇選項。",
-    "listenFirstNeedsChoiceAudio": "請開啟「選項音訊」以使用「先聽」功能。"
+    "listenFirstNeedsChoiceAudio": "請開啟「選項音訊」以使用「先聽」功能。",
+    "unableToJoinCourseError": "我們目前無法將您加入此課程。請再試一次，或詢問您的老師。"
 }
