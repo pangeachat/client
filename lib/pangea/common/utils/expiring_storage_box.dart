@@ -81,6 +81,26 @@ class ExpiringStorageBox {
 
   Future<void> erase() => _storage.erase();
 
+  /// Every key currently stored, live OR expired.
+  ///
+  /// Enumerates the raw box keys so a caller that reconciles across the WHOLE
+  /// box -- the call-audio merge coordinator's startup scan and periodic drain,
+  /// which must revisit entries they never individually [read] before -- can
+  /// iterate them. An expired entry is deliberately NOT filtered here: doing so
+  /// would mean touching timestamps on the enumeration path, and the caller
+  /// already re-checks each key it acts on through [read] (which drops an
+  /// expired one it hits) plus its own logical-expiry rule. So this stays as
+  /// cheap as the underlying key list and, like [read] and [sweep], never
+  /// deserializes a payload.
+  ///
+  /// Awaits [GetStorage.initStorage] first, on the same terms [sweep] does: a
+  /// call before the box's file finished loading would otherwise see an empty
+  /// box and skip a whole reconciliation cycle.
+  Future<List<String>> keys() async {
+    await _storage.initStorage;
+    return List<String>.from(_storage.getKeys());
+  }
+
   /// Removes every expired or malformed entry, inspecting timestamps only.
   Future<void> sweep() async {
     _lastSweep = _now();
