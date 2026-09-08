@@ -89,6 +89,19 @@ class WorldMapConstants {
   /// sessions are in view, so this bounds it. See `WorldMapController`.
   static const Duration l1WarmupMax = Duration(seconds: 4);
 
+  // #8844 — a tile that failed on connectivity is retried in place by
+  // `TileRetryQueue`, since flutter_map never reloads a failed tile that stays
+  // on screen.
+
+  /// The first retry of a failed tile: quick enough that a blip (a tunnel, a
+  /// lift) heals almost as soon as it ends.
+  static const Duration tileRetryBaseDelay = Duration(seconds: 2);
+
+  /// The backoff ceiling while retries keep failing: bounds how long a
+  /// returning network can leave a hole on screen, and how often a
+  /// broken-but-connected network sends a doomed request per tile.
+  static const Duration tileRetryMaxDelay = Duration(seconds: 15);
+
   // #7239 — gentler combined pan/zoom glide.
 
   /// A glide's length scales with how far the zoom travels: a single +/- step

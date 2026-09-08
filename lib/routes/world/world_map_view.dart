@@ -33,6 +33,7 @@ import 'package:fluffychat/routes/world/large_markers_layer.dart';
 import 'package:fluffychat/routes/world/map_exit_tracker.dart';
 import 'package:fluffychat/routes/world/panel_card.dart';
 import 'package:fluffychat/routes/world/pin_semantics_layer.dart';
+import 'package:fluffychat/routes/world/tile_retry_queue.dart';
 import 'package:fluffychat/routes/world/trackpad_pinch_zoom.dart';
 import 'package:fluffychat/routes/world/world_map.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
@@ -188,7 +189,8 @@ class WorldMapView extends StatefulWidget {
   State<WorldMapView> createState() => _WorldMapViewState();
 }
 
-class _WorldMapViewState extends State<WorldMapView> {
+class _WorldMapViewState extends State<WorldMapView>
+    with WidgetsBindingObserver {
   /// Height of the narrow-mode bottom chrome (the floating nav rail + the
   /// search bar riding above it, with their gaps) that on-map overlays must
   /// clear (#7218). Update alongside the chrome if its heights change.
@@ -241,12 +243,31 @@ class _WorldMapViewState extends State<WorldMapView> {
   ///   doesn't break the app.
   /// - Anything else (socket errors, timeouts, aborts) is the user's own
   ///   connectivity — a rate-limited breadcrumb only, context on whatever
-  ///   event reports next. An offline learner must not generate events.
+  ///   event reports next. An offline learner must not generate events. The
+  ///   tile is queued on [_tileRetries] so it fills in once the network is
+  ///   back (#8844).
   ///
   /// Every failure, either class, leaves the breadcrumb. What neither class
   /// covers is a wrong image served with HTTP 200 (#8585's mode) — see
   /// world-map-tiles.instructions.md.
   DateTime? _lastTileErrorCrumb;
+
+  /// Tiles that failed on connectivity, retried in place once it returns
+  /// (#8844). App resume is the moment the network is most likely back — the
+  /// learner toggled airplane mode, or reopened the app somewhere with signal
+  /// — so it retries immediately instead of waiting out the backoff.
+  final TileRetryQueue _tileRetries = TileRetryQueue();
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) _tileRetries.retryNow();
+  }
 
   void _onTileError(TileImage tile, Object error, StackTrace? stackTrace) {
     final now = DateTime.now();
@@ -274,7 +295,9 @@ class _WorldMapViewState extends State<WorldMapView> {
         },
         level: SentryLevel.warning,
       );
+      return;
     }
+    _tileRetries.schedule(tile);
   }
 
   /// Entry/exit animation bookkeeping for the small/mid dot tier: which pins
@@ -892,6 +915,8 @@ class _WorldMapViewState extends State<WorldMapView> {
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    _tileRetries.dispose();
     _mapKeyboardFocusNode.dispose();
     super.dispose();
   }
@@ -1042,10 +1067,12 @@ class _WorldMapViewState extends State<WorldMapView> {
               // background (#7937) shows through — a hard block degrades
               // to uniform paper, not a grey flash, in both themes.
               errorImage: MemoryImage(TileProvider.transparentImage),
-              // Failed tiles are re-fetched once they leave the pruning
-              // margin and come back — an offline blip heals on its own
-              // instead of leaving permanent holes (the default `none`
-              // pins the error tile for the session).
+              // A failed tile that leaves the pruning margin is dropped and
+              // re-fetched if it comes back (the default `none` pins it for
+              // the session). That is only the off-screen half: flutter_map
+              // never reloads a failed tile that stays in view, so
+              // connectivity failures are also retried in place — see
+              // [_tileRetries] (#8844).
               evictErrorTileStrategy:
                   EvictErrorTileStrategy.notVisibleRespectMargin,
             );
