@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:sentry_flutter/sentry_flutter.dart';
+
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -81,14 +83,21 @@ class PLanguageDialogState extends State<PLanguageDialog> {
       Navigator.of(context).pop();
     } catch (e, s) {
       _error = e;
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          'selected_base_language': _selectedBaseLanguage?.langCode,
-          'selected_target_language': _selectedTargetLanguage?.langCode,
-        },
-      );
+      final Map<String, dynamic> data = {
+        'selected_base_language': _selectedBaseLanguage?.langCode,
+        'selected_target_language': _selectedTargetLanguage?.langCode,
+      };
+      if (e is IdenticalLanguageException) {
+        await ErrorHandler.logErrorOnce(
+          key: IdenticalLanguageException.reportKey,
+          e: e,
+          s: s,
+          data: data,
+          level: SentryLevel.warning,
+        );
+      } else {
+        ErrorHandler.logError(e: e, s: s, data: data);
+      }
     } finally {
       if (mounted) setState(() => _loading = false);
     }
