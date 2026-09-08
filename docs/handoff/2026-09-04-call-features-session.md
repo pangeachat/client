@@ -880,3 +880,21 @@ NEXT SESSION: revise /private/tmp/call-audio-merge-DESIGN.md for the above (esp.
 revision model) and RE-GATE; likely flag the v1-robustness scope to owner (full carrier-history
 manifest vs simpler upgradable-revisions). THEN build the mixer under the double-gate. Do NOT build
 until the design is Codex-green.
+
+## 2026-09-08 — Merge design (option B, v1) COLD-CODEX-GREEN (5 rounds); mixer build (part 1) dispatched
+- Spec: /private/tmp/call-audio-merge-DESIGN.md. VERDICT CORRECT after 5 rounds (verdicts
+  /private/tmp/mergedesign{,2,3,4,5}-verdict.txt). Locked v1 decisions: pure-Dart windowed mixer
+  in a compute() isolate (parse WAV, resample 16k->48k polyphase, align by fileStartSfuMs, AVERAGE
+  over U=2 = validated amix normalize=1, preallocated output, TransferableTypedData, render-capable
+  web yield, ceiling-bounded); new event pangea.call_audio_merged (source_event_ids sorted set,
+  txnId (call_key,coverage-hash)); post ONLY a sealed complete {A,B} merge (no provisional);
+  seal = participant set fixed at call-end+settle (halves may arrive later via reconciliation, no
+  deadline); election = lowest-(sender,device) posted-half, survivor backoff over ONLINE candidates;
+  durable reconciliation on startup/sync/network-restore; player total-order dedup + suppress the
+  merged row if >2 halves (device-switch = v2). Prereq: add `truncated` to the per-device event.
+- SCOPE FLAG to owner: v1 = 1:1 single-tenure-per-user; mid-call device switch deferred to v2.
+- BUILD PLAN (parts, each double-gated): P1 the pure mixer (call_audio_merge.dart) + tests
+  [DISPATCHED]; P2 event schema pangea.call_audio_merged + `truncated` prereq + writer; P3 election
+  + trigger + reconciliation; P4 player fetch + dedup + scope-suppression + merged-primary. On the
+  combined branch (this worktree). Cues-fix agent still running in the SEPARATE cues-pr worktree.
+- P1 brief: /private/tmp/build-brief-mix-p1-mixer.md.
