@@ -162,14 +162,20 @@ class _StandardMatchButton extends StatelessWidget {
           child: InkWell(
             onTap: onSelect,
             borderRadius: borderRadius,
+            // A foreground painter: the blank's fill is opaque, so a border
+            // painted behind it only showed the half of the stroke that spilled
+            // outside the box.
             child: CustomPaint(
-              painter: DottedBorderPainter(
+              foregroundPainter: DottedBorderPainter(
                 color: (highlighted ? theme.colorScheme.primary : borderColor)
                     .withAlpha((colorAlpha * 255).toInt()),
                 borderRadius: borderRadius,
               ),
               child: ShimmerBackground(
                 enabled: shimmer,
+                // Without this the pulse defaults to the standard corner
+                // radius and bulges past the blank's own, tighter outline.
+                borderRadius: borderRadius,
                 child: Container(
                   padding: const EdgeInsets.only(top: 10.0),
                   width: max(width, 24.0),
@@ -217,6 +223,7 @@ class _MorphMatchButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(AppConfig.borderRadius - 4),
             child: ShimmerBackground(
               enabled: shimmer,
+              borderRadius: BorderRadius.circular(AppConfig.borderRadius - 4),
               child: SizedBox(
                 width: width,
                 child: Center(
