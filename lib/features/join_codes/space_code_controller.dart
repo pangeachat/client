@@ -26,7 +26,12 @@ import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
-class NotFoundException implements Exception {}
+/// The join code resolved to no room or course: the learner's typo, not a
+/// fault, so reported at info — and named, so Sentry titles it (#8836).
+class NotFoundException implements Exception {
+  @override
+  String toString() => 'NotFoundException: no room or course for the join code';
+}
 
 class SpaceCodeController {
   /// In-flight joins keyed by code, so a double-tap on the same code awaits
@@ -149,7 +154,12 @@ class SpaceCodeController {
       return result;
     } catch (e, s) {
       completer.complete(Result.error(e, s));
-      ErrorHandler.logError(e: e, s: s, data: {"spaceCode": spaceCode});
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {"spaceCode": spaceCode},
+        level: e is NotFoundException ? SentryLevel.info : null,
+      );
       if (PangeaHttpException.statusCodeOf(e) == 429 && context != null) {
         await showDialog(
           context: context,
@@ -168,16 +178,30 @@ class SpaceCodeController {
     required Client client,
     String? notFoundError,
   }) async {
+    // The dialog's Result carries the display string [onError] maps to; hold
+    // the failure itself so the report groups by type, not by UI language
+    // (CLIENT-BNK and CLIENT-BZM were the same failure, one issue per locale).
+    Object? failure;
+    StackTrace? failureStack;
     final resp = await showFutureLoadingDialog(
       context: context,
       future: () => _joinSpaceWithCodeWithoutLoading(spaceCode, client: client),
-      onError: (e, s) => e is BannedFromRoomException
-          ? L10n.of(context).removedFromCourseError
-          : (notFoundError ?? L10n.of(context).unableToFindRoom),
+      onError: (e, s) {
+        failure = e;
+        failureStack = s;
+        return e is BannedFromRoomException
+            ? L10n.of(context).removedFromCourseError
+            : (notFoundError ?? L10n.of(context).unableToFindRoom);
+      },
       showError: (err) => PangeaHttpException.statusCodeOf(err) != 429,
     );
 
-    if (resp.isError) throw resp.error!;
+    if (resp.isError) {
+      Error.throwWithStackTrace(
+        failure ?? resp.error!,
+        failureStack ?? StackTrace.current,
+      );
+    }
     return resp.result!;
   }
 

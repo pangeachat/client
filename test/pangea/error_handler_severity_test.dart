@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
+import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
@@ -157,6 +158,40 @@ void main() {
             data: {},
             level: SentryLevel.error,
           ),
+        ),
+        SentryLevel.error,
+      );
+    });
+  });
+
+  /// Rejected learner input: the homeserver refused what they typed — an
+  /// unknown email on password reset, an unusable or taken username. Expected
+  /// and actionable only by the learner, so info (#8836).
+  MatrixException matrix(String errcode) =>
+      MatrixException.fromJson({'errcode': errcode, 'error': 'refused'});
+
+  group('rejected learner input', () {
+    test('a refusing Matrix errcode is info', () async {
+      for (final errcode in [
+        'M_THREEPID_NOT_FOUND',
+        'M_INVALID_USERNAME',
+        'M_USER_IN_USE',
+        'M_THREEPID_IN_USE',
+      ]) {
+        expect(
+          await levelOf(
+            () => ErrorHandler.logError(e: matrix(errcode), data: {}),
+          ),
+          SentryLevel.info,
+          reason: '$errcode should be info',
+        );
+      }
+    });
+
+    test('any other Matrix errcode keeps the default', () async {
+      expect(
+        await levelOf(
+          () => ErrorHandler.logError(e: matrix('M_BAD_JSON'), data: {}),
         ),
         SentryLevel.error,
       );
