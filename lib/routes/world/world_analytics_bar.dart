@@ -101,7 +101,7 @@ class WorldAnalyticsBarInternal extends StatelessWidget {
         return Semantics(
           container: true,
           label: L10n.of(context).analyticsAndSettingsLabel,
-          sortKey: BrowseOrder.cluster,
+          sortKey: WorkspaceOrder.cluster.sortKey,
           child: Row(
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.center,

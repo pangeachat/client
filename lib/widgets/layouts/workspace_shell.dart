@@ -225,19 +225,40 @@ int? recencyFocusHint(List<PanelToken> allTokens, List<String> recency) {
 /// side-effects, then assembles the [Stack] from the named `_…Layer` helpers
 /// below — each of which reads only from the bundle. The dense derivation all
 /// lives in [_ShellLayout.resolve].
-/// The workspace's screen-reader browse order (#8755): reading order, not
-/// paint order — the nav rail first, then the open panels, the top-right
-/// chrome, and the map (the backdrop everything overlays) last. Chosen in
-/// review; the browse-order twin of the #7219 focus-order annotations. The
-/// keys live ON each region's own labeled container (not on shell wrappers):
-/// a wrapper annotation forms an extra unlabeled generic node around the
-/// region, and VoiceOver applies its own ordering heuristics to exactly that
-/// shape instead of following the DOM. See routing.instructions.md.
-class BrowseOrder {
-  static const rail = OrdinalSortKey(1);
-  static const leftPanels = OrdinalSortKey(2);
-  static const rightPanels = OrdinalSortKey(3);
-  static const cluster = OrdinalSortKey(4);
+/// One rank per workspace region, feeding BOTH orders a region has — the
+/// screen-reader browse order (#8755) and the keyboard Tab order (#8810).
+/// Reading order, not paint order: the nav rail first, then the open
+/// panels, the top-right chrome, the map's search slot and zoom controls,
+/// and the map — the backdrop everything overlays — last. Chosen in review.
+/// See routing.instructions.md → Every panel is a named group.
+///
+/// The two orders are independent mechanisms that must not drift apart
+/// again (#7219 ranked Tab map-second with the panels unordered while
+/// #8757 keyed browse rail-first, so a keyboard user reached the panel
+/// they had just opened on press ~14 and the rail last):
+///
+/// - [sortKey] orders the semantics tree only. It lives ON each region's
+///   own labeled semantic container, not on a shell wrapper: a wrapper
+///   annotation forms an extra unlabeled generic node around the region,
+///   and VoiceOver applies its own ordering heuristics to exactly that
+///   shape instead of following the DOM.
+/// - [focusOrder] orders Tab, which Flutter routes through its own
+///   traversal policy. It lives on the region's slot in the shell's ordered
+///   [FocusTraversalGroup] (see [WorkspaceShell.build]).
+class WorkspaceOrder {
+  const WorkspaceOrder._(this._rank);
+
+  /// One number, derived twice: the keys are cheap value objects, and a
+  /// stored pair would be a second copy of the rank to keep in step.
+  final double _rank;
+
+  OrdinalSortKey get sortKey => OrdinalSortKey(_rank);
+  NumericFocusOrder get focusOrder => NumericFocusOrder(_rank);
+
+  static const rail = WorkspaceOrder._(1);
+  static const leftPanels = WorkspaceOrder._(2);
+  static const rightPanels = WorkspaceOrder._(3);
+  static const cluster = WorkspaceOrder._(4);
 
   /// The map's search/context slot (and its empty-view card) reads after
   /// the cluster and before the map group. It is a separate top-level node,
@@ -245,8 +266,15 @@ class BrowseOrder {
   /// for VoiceOver ordering (#8755, see WorldMapView.build); everything
   /// else on the map — pins, attribution, zoom controls — lives inside
   /// that group.
-  static const mapChrome = OrdinalSortKey(5);
-  static const map = OrdinalSortKey(6);
+  static const mapChrome = WorkspaceOrder._(5);
+
+  /// Tab only. The zoom controls are children of the map's semantic group,
+  /// so they have no browse position of their own; the keyboard reaches
+  /// them before the map's single stop (its Activities group —
+  /// world-map.instructions.md → Keyboard access), leaving the map as the
+  /// last stop before the cycle wraps back to the rail.
+  static const mapControls = WorkspaceOrder._(6);
+  static const map = WorkspaceOrder._(7);
 }
 
 class WorkspaceShell extends StatelessWidget {
@@ -279,10 +307,11 @@ class WorkspaceShell extends StatelessWidget {
       explicitChildNodes: true,
       child: ScaffoldMessenger(
         child: FocusTraversalGroup(
-          // Tab order on the workspace (#7219): nav rail (1) → the map, whose
-          // reading order puts its search bar + filter pills first (2) → the
-          // user cluster / analytics bar (3). Unordered focusables (open
-          // panels, the narrow nav widget) follow in reading order.
+          // Tab order on the workspace: the [WorkspaceOrder] rank on each
+          // region slot below — rail → open left panels → open right panels
+          // → user cluster / analytics bar → the map's chrome and controls
+          // → the map's own stop last (#7219, re-ranked to the browse order
+          // in #8810). Several panels in one slot keep reading order.
           policy: OrderedTraversalPolicy(),
           child: Scaffold(
             // No bottomNavigationBar slot: the narrow chrome is the FLOATING nav
@@ -299,7 +328,7 @@ class WorkspaceShell extends StatelessWidget {
                 /// camera so a course fit lands in the exposed area: left = rail + column +
                 /// detail; right = the panel zone.
                 FocusTraversalOrder(
-                  order: const NumericFocusOrder(2),
+                  order: WorkspaceOrder.map.focusOrder,
                   child: WorldMap(
                     key: _persistentWorldMapKey,
                     leftOverlayWidth: l.mapLeftOverlay,
@@ -359,24 +388,29 @@ class WorkspaceShell extends StatelessWidget {
                             valueListenable: WorldMapPinsManager.notifier,
                             builder: (context, pinSheetOpen, child) =>
                                 pinSheetOpen ? const SizedBox.shrink() : child!,
-                            child: _MobileNavLayer(
-                              state: state,
-                              layout: l,
-                              screenPadding: MediaQuery.viewPaddingOf(context),
-                              // Only the keyboard's overlap BEYOND the bottom safe
-                              // area (home indicator) should trim the cavity: once
-                              // the keyboard covers that strip, the SafeArea stops
-                              // reserving it and the bottom-anchored nav layer
-                              // already drops by that much. Trimming by the raw
-                              // inset would double-count it and settle the cavity
-                              // top ~34pt low. Read above the Scaffold, where
-                              // `viewInsets` is still intact (#7754).
-                              keyboardInset:
-                                  (MediaQuery.viewInsetsOf(context).bottom -
-                                          MediaQuery.viewPaddingOf(
-                                            context,
-                                          ).bottom)
-                                      .clamp(0.0, double.infinity),
+                            child: FocusTraversalOrder(
+                              order: WorkspaceOrder.rail.focusOrder,
+                              child: _MobileNavLayer(
+                                state: state,
+                                layout: l,
+                                screenPadding: MediaQuery.viewPaddingOf(
+                                  context,
+                                ),
+                                // Only the keyboard's overlap BEYOND the bottom safe
+                                // area (home indicator) should trim the cavity: once
+                                // the keyboard covers that strip, the SafeArea stops
+                                // reserving it and the bottom-anchored nav layer
+                                // already drops by that much. Trimming by the raw
+                                // inset would double-count it and settle the cavity
+                                // top ~34pt low. Read above the Scaffold, where
+                                // `viewInsets` is still intact (#7754).
+                                keyboardInset:
+                                    (MediaQuery.viewInsetsOf(context).bottom -
+                                            MediaQuery.viewPaddingOf(
+                                              context,
+                                            ).bottom)
+                                        .clamp(0.0, double.infinity),
+                              ),
                             ),
                           ),
 
@@ -393,7 +427,7 @@ class WorkspaceShell extends StatelessWidget {
                               _ShellLayout.chromeMargin,
                             ),
                             child: FocusTraversalOrder(
-                              order: const NumericFocusOrder(1),
+                              order: WorkspaceOrder.rail.focusOrder,
                               child: SpacesNavigationRail(
                                 state: state,
                                 showNavRail: l.navRail,
@@ -435,19 +469,23 @@ class WorkspaceShell extends StatelessWidget {
                                 // Docks the course context bar above an open
                                 // activity plan, sharing its left edge; a
                                 // pass-through for every other panel (#8816).
-                                child: ActivityCourseDock(
-                                  token: l.leftTokens[i],
-                                  isColumnMode: l.isColumnMode,
-                                  spaceId: activeSpaceIdFor(state.uri),
-                                  child: LeftPanelLayer(
+                                child: FocusTraversalOrder(
+                                  order: WorkspaceOrder.leftPanels.focusOrder,
+                                  child: ActivityCourseDock(
                                     token: l.leftTokens[i],
-                                    state: state,
-                                    foldedOver: l.allocation.left[i].foldedOver,
-                                    getRoomKey: _roomKeyFor,
-                                    bare:
-                                        !l.isColumnMode &&
-                                        l.allocation.left[i].vis ==
-                                            PanelVis.full,
+                                    isColumnMode: l.isColumnMode,
+                                    spaceId: activeSpaceIdFor(state.uri),
+                                    child: LeftPanelLayer(
+                                      token: l.leftTokens[i],
+                                      state: state,
+                                      foldedOver:
+                                          l.allocation.left[i].foldedOver,
+                                      getRoomKey: _roomKeyFor,
+                                      bare:
+                                          !l.isColumnMode &&
+                                          l.allocation.left[i].vis ==
+                                              PanelVis.full,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -477,13 +515,16 @@ class WorkspaceShell extends StatelessWidget {
                                 bottom: 0,
                                 left: l.allocation.right[i].left,
                                 width: l.allocation.right[i].width,
-                                child: FocusTraversalGroup(
-                                  policy: OrderedTraversalPolicy(),
-                                  child: WorkspaceRightPanel(
-                                    token: l.rightTokens[i],
-                                    currentUri: state.uri,
-                                    foldedOver:
-                                        l.allocation.right[i].foldedOver,
+                                child: FocusTraversalOrder(
+                                  order: WorkspaceOrder.rightPanels.focusOrder,
+                                  child: FocusTraversalGroup(
+                                    policy: OrderedTraversalPolicy(),
+                                    child: WorkspaceRightPanel(
+                                      token: l.rightTokens[i],
+                                      currentUri: state.uri,
+                                      foldedOver:
+                                          l.allocation.right[i].foldedOver,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -502,7 +543,7 @@ class WorkspaceShell extends StatelessWidget {
                             top: _ShellLayout.chromeMargin,
                             right: _ShellLayout.chromeMargin,
                             child: FocusTraversalOrder(
-                              order: const NumericFocusOrder(3),
+                              order: WorkspaceOrder.cluster.focusOrder,
                               child: WorldUserCluster(key: _userClusterKey),
                             ),
                           )
@@ -527,7 +568,7 @@ class WorkspaceShell extends StatelessWidget {
                                     ),
                                   ),
                               child: FocusTraversalOrder(
-                                order: const NumericFocusOrder(3),
+                                order: WorkspaceOrder.cluster.focusOrder,
                                 child: WorldAnalyticsBar(key: _userClusterKey),
                               ),
                             ),
