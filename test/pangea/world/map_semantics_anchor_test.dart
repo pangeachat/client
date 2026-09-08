@@ -31,7 +31,7 @@ void main() {
               width: semanticsAnchorWidth,
               child: MapSemanticsAnchor(
                 label: 'map-region',
-                sortKey: BrowseOrder.map,
+                sortKey: WorkspaceOrder.map.sortKey,
                 // The default test surface size, so full-size overflow puts
                 // children at their true screen coordinates.
                 fullSize: const Size(800, 600),

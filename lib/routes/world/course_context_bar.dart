@@ -45,7 +45,7 @@ class CourseContextBar extends StatefulWidget {
   final String spaceId;
 
   /// Browse-order key for the bar's semantic container — the map view passes
-  /// [BrowseOrder.mapChrome] (#8755); the shell's single-column floating bar
+  /// [WorkspaceOrder.mapChrome] (#8755); the shell's single-column floating bar
   /// passes none.
   final SemanticsSortKey? sortKey;
 

@@ -142,7 +142,7 @@ class WorkspaceLeftPanel extends StatelessWidget {
       container: true,
       // Browse-order key on the group itself (#8755): a wrapper annotation
       // formed an extra unlabeled node VoiceOver reordered heuristically.
-      sortKey: BrowseOrder.leftPanels,
+      sortKey: WorkspaceOrder.leftPanels.sortKey,
       // Keep descendants as their own nodes so loose text without a container
       // never merges into the panel's name (see WorkspaceRightPanel).
       explicitChildNodes: true,
