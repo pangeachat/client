@@ -1038,3 +1038,23 @@ until the design is Codex-green.
   7. HONEST guarantee: at-least-once, <=2 events (per-device txnId dedup), exactly ONE visible row via P4
      dedup. No client-side exact-once claim.
 - Design at /private/tmp/call-audio-merge-P3-DESIGN.md. Re-gating v2 now; build only after design green.
+
+## 2026-09-08 (cont) — P3 design round 2 (8 findings) -> v3
+- Design v2 re-gate (round 2, xhigh) = ISSUES: in-memory reconciliation not durable across restart +
+  timeline truncation; re-validate-before-SEND dropped from the flow (only before upload); coalescing
+  needs drain-until-clean not one-rerun; disposal token can't abort in-flight upload/send (overstated);
+  terminal/cap lifecycle inconsistent (in-memory cap lost on restart, deterministic mix exceptions not
+  terminal, hung stages held forever, no concurrency bound); participants-not-known wrongly terminal;
+  delivery over-claimed.
+- KEY ENABLER found: fetchCallAudio uses the RELATIONS API (getRelatingEventsWithRelType by anchor id),
+  NOT the sync timeline window -> a durable index storing only (roomId, callKey) can re-fetch any call's
+  full half-set later, closing the restart/truncation loss cleanly.
+- DESIGN v3 additions: durable TTL-bounded reconciliation index (ExpiringStorageBox, key roomId|callKey,
+  TTL ~7d, payload {attemptCount, quarantined}); re-validate before BOTH upload AND send; drain-until-
+  clean coalescing; disposal token with honest "no NEW side-effect after observing disposal" wording;
+  broadened terminal (non-DM, >2 halves, truncated/null-start/non-pcm16, complete==false, deterministic
+  mix/decode exception); STAGE TIMEOUTS; GLOBAL CONCURRENCY BOUND; participants derived from the two
+  halves' senders gated on room being a DM (directChatMatrixID) so transient-unknown != terminal; honest
+  at-least-once-within-TTL delivery (<=2 events, one visible via P4 dedup).
+- Re-gating v3 (round 3), verdict framed BLOCKER vs ACCEPTABLE-V1 (only blockers fail it). Build only
+  after design SOUND.
