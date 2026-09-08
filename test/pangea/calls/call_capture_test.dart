@@ -3,6 +3,7 @@ import 'dart:async';
 import 'dart:typed_data';
 
 // Package imports:
+import 'package:fake_async/fake_async.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:livekit_client/livekit_client.dart';
 
@@ -759,60 +760,120 @@ void main() {
 
     test(
       'finish() cancels a delivery still backing off; nothing sends after close',
-      () async {
+      () {
         // The production wiring, end to end. finish() bounds its settle wait with
         // Future.timeout, which gives up on the in-flight deliveries WITHOUT
         // cancelling them -- so finish() must raise the cancellation itself, or a
-        // loop still backing off keeps firing against the sink it just closed. Held
-        // open here through the delay seam so the loop is genuinely mid-retry across
-        // finish's whole settle window, then released to prove it stops.
-        final dead = RecordingSink(failIndices: const [0]);
-        final backoff = Completer<void>();
-        var delays = 0;
-        final s = service(
-          withSink: dead,
-          timeout: const Duration(milliseconds: 100),
-          // A settle window short in REAL time, so finish gives up on the parked
-          // delivery deterministically rather than after the production two minutes.
-          finishSettle: const Duration(milliseconds: 50),
-          delay: (d) {
-            delays++;
-            // Park the FIRST backoff until the test releases it, so the retry is
-            // still in flight across finish's entire settle wait. Later waits (only
-            // reached if cancellation is BROKEN) pass and advance the clock, so a
-            // mutant terminates on the budget instead of spinning forever.
-            if (delays == 1) return backoff.future;
-            clock.elapsed += d.inMilliseconds;
-            return Future<void>.value();
-          },
-        );
-        await s.start(track);
-        for (var i = 0; i < 30; i++) {
-          track.emit(20);
-        }
+        // loop still backing off keeps firing against the sink it just closed.
+        //
+        // Fully DETERMINISTIC, with no real wall-clock wait anywhere. fakeAsync
+        // makes every timer virtual, so finish's settle window is advanced by
+        // `async.elapse` rather than slept through; the retry is pinned mid-
+        // backoff through an explicit barrier the test controls; and the check is
+        // the LITERAL number of deliver attempts a correctly cancelled retry
+        // produces -- exactly one -- so any extra deliver after teardown fails it.
+        fakeAsync((async) {
+          final dead = RecordingSink(failIndices: const [0]);
+          // The barrier. `enteredBackoff` fires the instant the retry loop parks
+          // in its FIRST backoff, proving it is genuinely mid-retry before finish
+          // runs. `releaseBackoff` is held by the test, so the loop cannot wake
+          // until we choose -- and we choose AFTER teardown, which is the point.
+          final enteredBackoff = Completer<void>();
+          final releaseBackoff = Completer<void>();
+          var delays = 0;
+          final s = service(
+            withSink: dead,
+            timeout: const Duration(milliseconds: 100),
+            // Short only so that a mutant which IGNORES cancellation still
+            // terminates on the budget instead of spinning; the window is elapsed
+            // virtually, never waited in real time.
+            finishSettle: const Duration(milliseconds: 50),
+            delay: (d) {
+              delays++;
+              if (delays == 1) {
+                // First backoff: announce entry, then park until the test releases
+                // it. Only chunk 0 ever fails, so only chunk 0 ever backs off --
+                // this is unambiguously its first retry wait.
+                enteredBackoff.complete();
+                return releaseBackoff.future;
+              }
+              // Reached ONLY if cancellation is broken and the loop keeps going.
+              // Advance the budget clock so the mutant ends finitely rather than
+              // spinning; the literal-count assertion still catches the extra
+              // attempts.
+              clock.elapsed += d.inMilliseconds;
+              return Future<void>.value();
+            },
+          );
 
-        // finish() runs while the retry is parked: stop, then the settle wait times
-        // out at 50ms, then teardown cancels, then the sink closes.
-        await s.finish();
-        expect(
-          dead.closes,
-          1,
-          reason: 'the call tore down and closed the sink',
-        );
-        final attemptsAtClose = dead.attempts.where((i) => i == 0).length;
+          unawaited(s.start(track));
+          async.flushMicrotasks();
+          for (var i = 0; i < 30; i++) {
+            track.emit(20);
+          }
+          async.flushMicrotasks();
 
-        // Release the parked backoff. The loop wakes AFTER teardown: it must read
-        // the cancellation finish() raised and stop, delivering nothing more.
-        backoff.complete();
-        await pumpEventQueue();
+          // BARRIER: the retry is provably parked in its first backoff, and
+          // exactly one deliver attempt for chunk 0 has happened, BEFORE finish is
+          // even called. Without this it is not provable that finish fires while
+          // the retry is mid-backoff.
+          expect(
+            enteredBackoff.isCompleted,
+            isTrue,
+            reason: 'the retry must be parked IN a backoff before finish runs',
+          );
+          expect(
+            dead.attempts.where((i) => i == 0).length,
+            1,
+            reason: 'exactly one attempt so far -- the parked first try',
+          );
 
-        expect(
-          dead.attempts.where((i) => i == 0).length,
-          attemptsAtClose,
-          reason:
-              'no delivery fires after finish() closed the sink -- finish() must '
-              'cancel the outstanding retry, since its timeout does not',
-        );
+          // finish() runs while the retry is parked. stop() needs no timer; the
+          // settle wait is a real Future.timeout that fakeAsync advances virtually
+          // -- the 50ms is elapsed, never waited in wall time -- then teardown
+          // cancels the outstanding retry, then the sink closes.
+          var finished = false;
+          unawaited(s.finish().then((_) => finished = true));
+          async.flushMicrotasks();
+          async.elapse(const Duration(milliseconds: 50));
+          async.flushMicrotasks();
+
+          expect(
+            finished,
+            isTrue,
+            reason: 'finish completed via virtual time, without a real wait',
+          );
+          expect(
+            dead.closes,
+            1,
+            reason: 'the call tore down and closed the sink',
+          );
+          expect(
+            dead.attempts.where((i) => i == 0).length,
+            1,
+            reason:
+                'finish itself delivers nothing; the parked try is still one',
+          );
+
+          // Release the parked backoff. The loop wakes AFTER teardown: it must
+          // read the cancellation finish() raised and stop, delivering nothing
+          // more. The literal count stays at one.
+          releaseBackoff.complete();
+          async.flushMicrotasks();
+
+          expect(
+            dead.attempts.where((i) => i == 0).length,
+            1,
+            reason:
+                'no delivery fires after finish() closed the sink -- finish() '
+                'must cancel the outstanding retry, since its timeout does not',
+          );
+          expect(
+            dead.delivered.map((c) => c.index),
+            isNot(contains(0)),
+            reason: 'the cancelled chunk is never delivered',
+          );
+        });
       },
     );
   });
