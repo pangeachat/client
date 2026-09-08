@@ -976,3 +976,26 @@ until the design is Codex-green.
 - STATUS: Lane A is PR-ready and reported to owner. NO PR until explicit owner approval (per gate).
   PR draft at /private/tmp/cues-pr-body.md. Branch NOT pushed.
 - LANE B: P2 builder (a139cd8a3a9ca0d48) still running.
+
+## 2026-09-08 (cont) — LANE B P2 committed (de8dc626db); running my independent cold gate
+- P2 builder (agent a139cd8a3a9ca0d48) delivered: CallAudioMergedContent model
+  (call_audio_merged_event.dart) + writeCallAudioMergedEvent (call_audio_merged_writer.dart) +
+  truncated field on the per-device event + recorder wiring (truncated: gen.cappedLogged). 8 files.
+- I READ + independently verified the tricky parts (red-to-root-cause, not trusting the agent's word):
+  - coverageHash = SHA-256 over length-prefixed netstring framing of canonical (sorted/dedup/
+    well-formed-UTF-16-only) ids -> injective, collision-free even for foreign ids w/ colon/NUL/
+    surrogates. Agent found+fixed 2 real collisions (NUL-join, lossy-surrogate) over 3 Codex rounds.
+  - _sanitizedSourceEventIds bounds work (raw.length>4*cap -> refuse) BEFORE the scan; refuses (not
+    truncates) over-cap/empty coverage.
+  - truncated=gen.cappedLogged: verified append()/padSilenceFrames() return true IFF the cap dropped
+    bytes, and trimTailFrames (clock-drift micro-trim) never sets cappedLogged -> truncated true iff a
+    REAL ceiling cut. Agent's claim confirmed by my own read of the recorder internals.
+- Independently re-ran P2 tests: 108 pass (merged_event + event + recorder buckets).
+- MY cold gate: 5 focused inline gates launched (behav-model, behav-writer+truncated, pin-json,
+  pin-hash, pin-truncated). Agent's own Codex gates A(model)+B(writer) were CORRECT but its C/D pinning
+  fixes were self-verified only -> MY cold gate is the backstop for that gap, per the brief.
+- Agent DEFERRED (reasonable, cross-cutting): no upper LENGTH bound on callKey/url/mimetype/codec in
+  BOTH CallAudioMergedContent and the sibling CallAudioContent; fixing only the new file would make the
+  two inconsistent -> spawned follow-up task_cbf94fc3 rather than a unilateral one-sided fix. NOT a
+  blocker for P2; revisit as a paired change to both events.
+- NEXT after P2 cold-green: P3 (election + trigger + durable reconciliation) then P4 (player).
