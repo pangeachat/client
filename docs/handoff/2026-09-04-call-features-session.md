@@ -1013,3 +1013,28 @@ until the design is Codex-green.
 - NEXT: P3 = election + trigger + durable reconciliation (design "Election and durable convergence" +
   "Trigger + durable reconciliation"). ARCHITECTURAL -> design-first: map integration surfaces, write a
   build design, cold-gate the DESIGN, then build (Opus) + cold-gate code. Exploration dispatched.
+
+## 2026-09-08 (cont) — P3 design-first: v1 unsound (9 findings) -> v2 root-caused; re-gating
+- Explored P3 integration surfaces (agent): fetchCallAudio (call_audio_repo.dart:55) reads halves;
+  callParticipants (transcript_view.dart:71) gives {me,peer}+known; post-call kick at
+  call_session.dart:1080 _finishRecording; upload=client.uploadContent; onSync/onSyncStatus + startup =
+  durable hooks (mirror analytics_sync_controller.dart:39); CaptureElection._sortsBefore is
+  (canCapture,deviceId) self-anchored -> NOT reusable, need a new (senderId,deviceId) order; mixer is
+  compute-safe; coordinator home = CallService (call_service.dart:21). Gaps to build: seal predicate,
+  cross-participant election, candidates-from-halves, mxc download helper, the coordinator itself.
+- DESIGN v1 cold-gate = ISSUES x9 (design-first paid off): unbounded pending set; seal not immutable
+  (rejoin/late-half); source-set TOCTOU; lost trigger wakeups; work-after-dispose; deterministic-failure
+  retry storms + orphan uploads; underspecified startup discovery; false candidate invariant (indexOf
+  -1); over-claimed exactly-once.
+- DESIGN v2 root-caused into 7 GOVERNING RULES (design decisions, locked pending re-gate):
+  1. Reconciliation ROOM-DERIVED + EVENT-TRIGGERED, no retained pending map (a late half's own sync
+     re-triggers) -> bounds memory + fixes late-half completion.
+  2. RE-VALIDATE (halves + merged-existence) right before upload AND send + a settle delay; P4 >2-half
+     suppression is the backstop -> a rare stale post is never SHOWN.
+  3. Dirty/rerun flag coalesces triggers landing during an in-flight attempt.
+  4. Explicit notCandidate verdict (this device didn't post a half -> stand down).
+  5. Disposal generation token checked across every await + before upload/send.
+  6. result.complete==false (span over ceiling) = TERMINAL; per-call attempt cap bounds orphan uploads.
+  7. HONEST guarantee: at-least-once, <=2 events (per-device txnId dedup), exactly ONE visible row via P4
+     dedup. No client-side exact-once claim.
+- Design at /private/tmp/call-audio-merge-P3-DESIGN.md. Re-gating v2 now; build only after design green.
