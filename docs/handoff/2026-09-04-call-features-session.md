@@ -798,3 +798,17 @@ the live panel attaches. iOS hits the SAME recording bug -- the fix helps there.
   yields a shareable artifact, byte-testable vs the ffmpeg reference. Awaiting owner's pick; on B
   I'll spec the client-merger (election/trigger/resample-align) + Codex-gate the design, then build
   under the double-gate (agent self-gates+pushes, I cold-gate).
+
+## 2026-09-08 — Cues PR: cross-model gate found pre-existing AudioPlayer lifecycle bugs -> fix dispatched
+- Cues branch satvik/call-ring-cues (worktree .claude/worktrees/cues-pr, off origin/main 9e6e08a2be):
+  cherry-pick clean, format/analyze/import clean, 63 tests pass. Cue STATE-WIRING confirmed CORRECT
+  by Codex (ringback only while placing, stops on connect, fire-once cues, correct hangup/decline).
+- BUT cross-model gate (pre-push bar) RED on pre-existing lifecycle defects (GATE-SOFTENING: no):
+  per-call AudioPlayer leak (RingPlayer/_tones + one-shot + persistent player never dispose()d),
+  async stopAll() not awaited before next cue (tone overlap), stale-play race past the generation
+  guard, _configured set before config completes, fixed-600ms disposal truncates a longer asset,
+  and a swallowed stop() error (no-silent-failures violation). All real; can't push RED.
+- FIX dispatched (general-purpose/opus, in the cues-pr worktree): fix the 6 lifecycle/ordering/
+  error classes, add mutation-proven tests, keep the 63 green + wiring unchanged, self-Codex-green,
+  commit on the branch. Then I cold-gate -> push satvik/call-ring-cues + open the #8807 PR.
+- MIX still awaiting owner A-vs-B pick (I recommended B). Word card #8797 excluded (Gabby).
