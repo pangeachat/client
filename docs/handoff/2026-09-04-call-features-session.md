@@ -1087,3 +1087,12 @@ until the design is Codex-green.
   OOM/isolate-spawn = transient).
 - Design at /private/tmp/call-audio-merge-P3-DESIGN.md. On SOUND -> build P3a (pure decision core) + P3b
   (coordinator) via a workflow, cold-gate the code.
+
+## 2026-09-08 (cont) — P3 design v5 COLD-GREEN (SOUND); building
+- v5 re-gate = VERDICT: SOUND. 5 rounds: 9 -> 8 -> 3 -> 1 -> 0 blockers. All residuals ACCEPTABLE-V1
+  (documented): validate->send stale window (P4 suppresses); orphan upload; K-hung-ops halt (bounded);
+  quarantine/TTL delivery limit. Reviewer caution for the BUILD: keep the immutable-decode vs
+  runtime-mixer failure distinction TYPED; NO broad terminal catch.
+- DECISION LOCKED: P3 design at /private/tmp/call-audio-merge-P3-DESIGN.md is authoritative. Build in two
+  waves (dependent -> sequential, Codex-green each): P3a pure decision core (sonnet) -> cold-gate ->
+  P3b coordinator + fetchCallAudioMerged reader + mxc download helper + wiring (opus) -> cold-gate.
