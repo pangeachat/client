@@ -84,6 +84,20 @@ class CallAudioContent {
   /// speakers' halves can be compared against.
   final int? recordingStartedOffsetFromDeviceJoinMs;
 
+  /// Whether piece 1's recording DURATION CEILING cut this blob's tail before
+  /// it was uploaded -- the prerequisite the merge feature needs so a
+  /// ceiling-cut half is never mistaken for a whole expected one (see
+  /// `call_audio_merge-DESIGN.md`'s own "`truncated`" section). Set by the
+  /// recorder ITSELF (`CallAudioRecorder`), never inferred downstream from
+  /// [durationMs] alone: a call that simply ran long looks identical to a
+  /// ceiling cut from the numbers alone, and only the writer knows which one
+  /// actually happened.
+  ///
+  /// Defaults to false, exactly [CallTranscriptContent.positionsMarked]'s own
+  /// rule: every half written before this field existed, and every foreign
+  /// client's, reads as "not truncated" rather than as a claim either way.
+  final bool truncated;
+
   const CallAudioContent({
     required this.callKey,
     this.deviceId,
@@ -96,6 +110,7 @@ class CallAudioContent {
     required this.codec,
     this.clockAnchor,
     this.recordingStartedOffsetFromDeviceJoinMs,
+    this.truncated = false,
   });
 
   /// The relation type and the event type are the same string, exactly as
@@ -139,6 +154,7 @@ class CallAudioContent {
     'codec': codec,
     'recording_started_offset_from_device_join_ms':
         ?recordingStartedOffsetFromDeviceJoinMs,
+    if (truncated) 'truncated': true,
     ...?clockAnchor?.toJson(),
     'm.relates_to': {'rel_type': relType, 'event_id': callKey},
   };
@@ -200,6 +216,12 @@ class CallAudioContent {
       recordingStartedOffsetFromDeviceJoinMs: offsetRaw is int
           ? offsetRaw
           : null,
+      // Tolerant, on the same terms every other optional flag on this event
+      // is: any non-`true` value -- absent, garbage, `false` written by a
+      // future client -- reads as false. A malformed claim about truncation
+      // is never a reason to refuse the half; it only ever costs the merge
+      // feature one signal, never the recording itself.
+      truncated: content['truncated'] == true,
     );
   }
 
@@ -210,6 +232,11 @@ class CallAudioContent {
   /// network failure collapses server-side rather than uploading and posting
   /// the recording a second time. See that method for the full argument;
   /// nothing here differs but the event name in the prefix.
+  ///
+  /// [truncated] is deliberately NOT part of the key: it is a property of
+  /// the half's own content, not of its identity, and a device never writes
+  /// more than one half per (call key, sender, device) regardless of whether
+  /// the ceiling cut it.
   static String txnId(String callKey, String senderId, String? deviceId) =>
       'pangea.call_audio:$callKey:$senderId:'
       '${CallTranscriptContent.usableDeviceId(deviceId) ?? ''}';

@@ -1254,6 +1254,16 @@ class CallAudioRecorder implements CallAudioRecordingSink {
                 channels: gen.channels,
                 clockAnchor: anchor,
                 recordingStartedOffsetFromDeviceJoinMs: offsetMs,
+                // True iff the size/duration ceiling actually cut this
+                // generation's tail -- [_AudioGeneration.cappedLogged] is set
+                // in exactly that case (and only that case: [_logCappedOnce]
+                // fires only when [_AudioGeneration.append] or
+                // [_AudioGeneration.padSilenceFrames] report the cap forced a
+                // drop), never merely because the call ran long. The bounded
+                // reconciliation micro-trim ([_reconcile]'s `trimTailFrames`
+                // branch) is a different thing entirely -- clock-drift
+                // correction, not a ceiling cut -- and does not set this flag.
+                truncated: gen.cappedLogged,
               ),
               cancelSignal.future.then(
                 (_) => throw const _AudioRecordingCanceled(),

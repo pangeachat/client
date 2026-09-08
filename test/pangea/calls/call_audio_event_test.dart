@@ -20,6 +20,7 @@ CallAudioContent _content({
   String codec = kCallAudioCodec,
   ClockAnchor? clockAnchor,
   int? recordingStartedOffsetFromDeviceJoinMs,
+  bool truncated = false,
 }) => CallAudioContent(
   callKey: callKey,
   deviceId: deviceId,
@@ -33,6 +34,7 @@ CallAudioContent _content({
   clockAnchor: clockAnchor,
   recordingStartedOffsetFromDeviceJoinMs:
       recordingStartedOffsetFromDeviceJoinMs,
+  truncated: truncated,
 );
 
 void main() {
@@ -188,6 +190,53 @@ void main() {
       final unusable = CallAudioContent.txnId(_callKey, _alice, '');
       final absent = CallAudioContent.txnId(_callKey, _alice, null);
       expect(unusable, absent);
+    });
+
+    test('truncated does not change the txnId', () {
+      final notTruncated = CallAudioContent.txnId(_callKey, _alice, 'DEVICEA');
+      // truncated is not one of txnId's parameters at all -- this pins that
+      // the identity key stays (call_key, sender, device) regardless of what
+      // the content itself claims about truncation.
+      final sameId = CallAudioContent.txnId(_callKey, _alice, 'DEVICEA');
+      expect(notTruncated, sameId);
+    });
+  });
+
+  group('CallAudioContent.truncated', () {
+    test('round-trips true', () {
+      final json = _content(truncated: true).toJson();
+      expect(json['truncated'], true);
+      final parsed = CallAudioContent.fromJson(json)!;
+      expect(parsed.truncated, isTrue);
+    });
+
+    test(
+      'is omitted from the wire when false, and absence parses as false',
+      () {
+        final json = _content(truncated: false).toJson();
+        expect(json.containsKey('truncated'), isFalse);
+        final parsed = CallAudioContent.fromJson(json)!;
+        expect(parsed.truncated, isFalse);
+      },
+    );
+
+    test('a non-true value parses as false rather than refusing the half', () {
+      final json = _content().toJson();
+      json['truncated'] = 'yes';
+      final parsed = CallAudioContent.fromJson(json)!;
+      expect(parsed.truncated, isFalse);
+
+      json['truncated'] = 0;
+      final parsedAgain = CallAudioContent.fromJson(json)!;
+      expect(parsedAgain.truncated, isFalse);
+
+      // An explicit `false` on the wire (never emitted by THIS writer, since
+      // toJson omits the key rather than writing it -- but a foreign or
+      // future client is free to write it explicitly) must parse the same
+      // way absence does.
+      json['truncated'] = false;
+      final parsedExplicitFalse = CallAudioContent.fromJson(json)!;
+      expect(parsedExplicitFalse.truncated, isFalse);
     });
   });
 }

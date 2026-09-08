@@ -41,6 +41,7 @@ Future<String?> writeCallAudioEvent({
   String codec = kCallAudioCodec,
   ClockAnchor? clockAnchor,
   int? recordingStartedOffsetFromDeviceJoinMs,
+  bool truncated = false,
 }) async {
   if (callKey == null || callKey.isEmpty) {
     Logs().w('No call audio written: the call has no anchor to relate to');
@@ -60,6 +61,7 @@ Future<String?> writeCallAudioEvent({
     clockAnchor: clockAnchor,
     recordingStartedOffsetFromDeviceJoinMs:
         recordingStartedOffsetFromDeviceJoinMs,
+    truncated: truncated,
   );
 
   return send(

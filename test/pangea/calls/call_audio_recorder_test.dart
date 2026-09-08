@@ -482,6 +482,44 @@ void main() {
         expect(content.durationMs, lessThanOrEqualTo(1000));
       },
     );
+
+    test('a ceiling-cut half is written with truncated: true', () async {
+      // Same fixture as above: the cap genuinely forces a drop (two
+      // one-second frames against a one-second cap), which is the ONE
+      // thing `truncated` is meant to mean -- not merely "this half is
+      // long".
+      final r = recorder(
+        maxBytes: 32000,
+        maxDuration: const Duration(minutes: 30),
+      );
+      r.onRunStarted(0, 16000, 1);
+      r.onFrame(_tone(16000));
+      r.onFrame(_tone(16000));
+      r.onRunEnded();
+      await r.finish(wasCarrier: true, callKey: _callKey);
+
+      final content = CallAudioContent.fromJson(sent.single)!;
+      expect(content.truncated, isTrue);
+    });
+
+    test(
+      'a half that never reached the cap is written with truncated: false',
+      () async {
+        // Comfortably under both the byte and duration ceilings -- the cap
+        // never fires, so `cappedLogged` never latches.
+        final r = recorder(
+          maxBytes: 60 * 1024 * 1024,
+          maxDuration: const Duration(minutes: 30),
+        );
+        r.onRunStarted(0, 16000, 1);
+        r.onFrame(_tone(160));
+        r.onRunEnded();
+        await r.finish(wasCarrier: true, callKey: _callKey);
+
+        final content = CallAudioContent.fromJson(sent.single)!;
+        expect(content.truncated, isFalse);
+      },
+    );
   });
 
   group('aborting a stale upload rather than waiting on it', () {
