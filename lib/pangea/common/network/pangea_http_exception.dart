@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 /// A failed HTTP call, typed. Thrown by [Requests] (and [PayloadClient]) for
@@ -162,15 +163,31 @@ class PangeaHttpException implements Exception {
     ];
   }
 
+  /// Matrix errcodes that mean the homeserver refused what the learner typed:
+  /// an unknown email on password reset, a username it will not accept, an
+  /// email or username already taken. Expected, and only the learner can act
+  /// on it (#8836).
+  static const Set<MatrixError> _rejectedInputErrors = {
+    MatrixError.M_THREEPID_NOT_FOUND,
+    MatrixError.M_INVALID_USERNAME,
+    MatrixError.M_USER_IN_USE,
+    MatrixError.M_THREEPID_IN_USE,
+  };
+
   /// The one severity table for a repo-layer fetch failure
   /// (repos-and-error-handling.instructions.md § Severity policy). Severity is
   /// a property of the failure, not of the author's judgment at the call site:
-  /// timeouts are transient, 401 is token lifecycle, 404/410 mean the resource
-  /// is gone (a normal state), 429 is expected under load — all warnings.
-  /// Everything else — malformed requests (4xx) and backend regressions (5xx)
-  /// — is an error.
+  /// input the homeserver refused ([_rejectedInputErrors]) is info; timeouts
+  /// are transient, 401 is token lifecycle, 404/410 mean the resource is gone
+  /// (a normal state), 429 is expected under load — all warnings. Everything
+  /// else — malformed requests (4xx) and backend regressions (5xx) — is an
+  /// error.
   static SentryLevel severityOf(Object? error) {
     if (error is TimeoutException) return SentryLevel.warning;
+    if (error is MatrixException &&
+        _rejectedInputErrors.contains(error.error)) {
+      return SentryLevel.info;
+    }
     switch (statusCodeOf(error)) {
       case 401:
       case 404:
