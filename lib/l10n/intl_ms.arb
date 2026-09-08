@@ -2280,5 +2280,6 @@
     "listenFirstNeedsChoiceAudio": "Hidupkan audio Pilihan untuk menggunakan Dengar Dahulu.",
     "unableToJoinCourseError": "Kami tidak dapat menambahkan anda ke kursus ini sekarang. Sila cuba lagi, atau tanya guru anda.",
     "edited": "Disunting",
-    "attach": "Lampirkan"
+    "attach": "Lampirkan",
+    "callHistoryTranscript": "Transkrip"
 }

@@ -2280,5 +2280,6 @@
     "listenFirstNeedsChoiceAudio": "ꯑꯗꯨꯒꯤ ꯃꯥꯡꯗ ꯇꯥꯕꯤꯌꯨ ꯁꯤꯖꯤꯟꯅꯅꯕꯥ ꯈꯜꯂꯤꯕꯥ ꯑꯣꯗꯤꯑꯣ ꯑꯗꯨ ꯑꯣꯟ ꯇꯧꯕꯤꯌꯨ꯫",
     "unableToJoinCourseError": "ঐখোয়না হৌজিক অসিদা নখোয়বু কোর্স অসিদা হাপ্পা ঙমখিদে। খরা কুইরগা অমুক ট্রাই তৌবীয়ু, নত্ত্রগা নখোয়গী টিচারদা হংবীয়ু।",
     "edited": "ꯁꯦꯝꯗꯣꯛꯈ꯭ꯔꯦ",
-    "attach": "Attach"
+    "attach": "Attach",
+    "callHistoryTranscript": "ট্রান্সক্রিপ্ট"
 }

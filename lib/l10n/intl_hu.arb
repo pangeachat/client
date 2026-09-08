@@ -9979,5 +9979,6 @@
     "listenFirstNeedsChoiceAudio": "Kapcsolja be a Válaszok hangját az „Először hallgatás” használatához.",
     "unableToJoinCourseError": "Jelenleg nem tudtunk hozzáadni ehhez a kurzushoz. Kérjük, próbálja újra, vagy kérdezze meg a tanárát.",
     "edited": "Szerkesztve",
-    "attach": "Csatolás"
+    "attach": "Csatolás",
+    "callHistoryTranscript": "Átirat"
 }

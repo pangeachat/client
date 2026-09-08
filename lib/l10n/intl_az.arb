@@ -2280,5 +2280,6 @@
     "listenFirstNeedsChoiceAudio": "Əvvəlcə dinləyin funksiyasından istifadə etmək üçün Seçimlər səsini aktiv edin.",
     "unableToJoinCourseError": "Hazırda sizi bu kursa əlavə edə bilmədik. Zəhmət olmasa, yenidən cəhd edin və ya müəlliminizdən soruşun.",
     "edited": "Redaktə edilib",
-    "attach": "Əlavə et"
+    "attach": "Əlavə et",
+    "callHistoryTranscript": "Transkript"
 }

@@ -9876,5 +9876,6 @@
     "listenFirstNeedsChoiceAudio": "Ative o áudio das opções para usar a função Ouvir primeiro.",
     "unableToJoinCourseError": "Não foi possível adicionar você a este curso agora. Tente novamente ou fale com seu professor.",
     "edited": "Editado",
-    "attach": "Anexar"
+    "attach": "Anexar",
+    "callHistoryTranscript": "Transcrição"
 }

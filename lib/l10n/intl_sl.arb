@@ -10821,5 +10821,6 @@
     "listenFirstNeedsChoiceAudio": "Vklopi zvok izbir, da lahko uporabljaš »Najprej poslušaj«.",
     "unableToJoinCourseError": "Trenutno vas ne moremo dodati k temu tečaju. Poskusite znova ali vprašajte svojega učitelja.",
     "edited": "Urejeno",
-    "attach": "Priloži"
+    "attach": "Priloži",
+    "callHistoryTranscript": "Prepis"
 }

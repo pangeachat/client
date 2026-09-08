@@ -2280,5 +2280,6 @@
     "listenFirstNeedsChoiceAudio": "መጀመሪያ ያዳምጡን ለመጠቀም የምርጫዎች ድምጽን ያብሩ።",
     "unableToJoinCourseError": "በአሁኑ ሰዓት ወደዚህ ኮርስ ልንጨምርዎ አልቻልንም። እባክዎ እንደገና ይሞክሩ ወይም አስተማሪዎን ይጠይቁ።",
     "edited": "ተስተካሏል",
-    "attach": "አያይዝ"
+    "attach": "አያይዝ",
+    "callHistoryTranscript": "ጽሑፍ"
 }

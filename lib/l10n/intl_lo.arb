@@ -2280,5 +2280,6 @@
     "listenFirstNeedsChoiceAudio": "ເປີດສຽງຕົວເລືອກເພື່ອໃຊ້ຟັງກ່ອນ.",
     "unableToJoinCourseError": "ພວກເຮົາບໍ່ສາມາດເພີ່ມທ່ານເຂົ້າໃນຫຼັກສູດນີ້ໄດ້ໃນຕອນນີ້. ກະລຸນາລອງໃໝ່ອີກຄັ້ງ, ຫຼືສອບຖາມຄູສອນຂອງທ່ານ.",
     "edited": "ແກ້ໄຂແລ້ວ",
-    "attach": "ແນບ"
+    "attach": "ແນບ",
+    "callHistoryTranscript": "ບົດບັນທຶກ"
 }

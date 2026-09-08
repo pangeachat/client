@@ -9880,5 +9880,6 @@
     "listenFirstNeedsChoiceAudio": "«Avval tinglang» funksiyasidan foydalanish uchun Tanlovlar audiosini yoqing.",
     "unableToJoinCourseError": "Hozircha sizni bu kursga qoʻsha olmadik. Iltimos, qayta urinib koʻring yoki oʻqituvchingizdan soʻrang.",
     "edited": "Tahrirlangan",
-    "attach": "Biriktirish"
+    "attach": "Biriktirish",
+    "callHistoryTranscript": "Transkript"
 }

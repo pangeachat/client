@@ -10736,5 +10736,6 @@
     "listenFirstNeedsChoiceAudio": "I-on ang audio ng Mga Pagpipilian para magamit ang Makinig Muna.",
     "unableToJoinCourseError": "Hindi ka namin maidagdag sa kursong ito sa ngayon. Pakisubukang muli, o tanungin ang iyong guro.",
     "edited": "Na-edit",
-    "attach": "Ikabit"
+    "attach": "Ikabit",
+    "callHistoryTranscript": "Transcript"
 }

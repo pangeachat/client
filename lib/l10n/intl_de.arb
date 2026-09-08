@@ -9863,5 +9863,6 @@
     "listenFirstNeedsChoiceAudio": "Schalte die Audioausgabe für Auswahlmöglichkeiten ein, um „Zuerst anhören“ zu verwenden.",
     "unableToJoinCourseError": "Wir konnten dich diesem Kurs im Moment nicht hinzufügen. Bitte versuche es erneut oder frage deinen Lehrer.",
     "edited": "Bearbeitet",
-    "attach": "Anhängen"
+    "attach": "Anhängen",
+    "callHistoryTranscript": "Transkript"
 }

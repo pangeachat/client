@@ -2280,5 +2280,6 @@
     "listenFirstNeedsChoiceAudio": "Trowch sain Dewisiadau ymlaen i ddefnyddio Gwrando'n Gyntaf.",
     "unableToJoinCourseError": "Ni allem eich ychwanegu at y cwrs hwn ar hyn o bryd. Ceisiwch eto, neu gofynnwch i'ch athro.",
     "edited": "Golygu",
-    "attach": "Atodi"
+    "attach": "Atodi",
+    "callHistoryTranscript": "Trawsgrifiad"
 }

@@ -7168,5 +7168,6 @@
     "listenFirstNeedsChoiceAudio": "Bật âm thanh Lựa chọn để sử dụng Nghe trước.",
     "unableToJoinCourseError": "Chúng tôi không thể thêm bạn vào khóa học này ngay bây giờ. Vui lòng thử lại hoặc hỏi giáo viên của bạn.",
     "edited": "Đã chỉnh sửa",
-    "attach": "Đính kèm"
+    "attach": "Đính kèm",
+    "callHistoryTranscript": "Bảng điểm"
 }

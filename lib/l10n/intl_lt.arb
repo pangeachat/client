@@ -10657,5 +10657,6 @@
     "listenFirstNeedsChoiceAudio": "Norėdami naudoti „Pirmiausia klausykite“, įjunkite pasirinkimų garsą.",
     "unableToJoinCourseError": "Šiuo metu negalėjome jūsų pridėti prie šio kurso. Bandykite dar kartą arba kreipkitės į mokytoją.",
     "edited": "Redaguota",
-    "attach": "Pridėti"
+    "attach": "Pridėti",
+    "callHistoryTranscript": "Nuorašas"
 }

@@ -10812,5 +10812,6 @@
     "listenFirstNeedsChoiceAudio": "Activa le audio de optiones pro usar Ascolta primo.",
     "unableToJoinCourseError": "Nos non poteva adder vos a iste curso nunc. Per favor, reprova, o demanda a tu inseniator.",
     "edited": "Redigite",
-    "attach": "Adjunger"
+    "attach": "Adjunger",
+    "callHistoryTranscript": "Transcriptor"
 }

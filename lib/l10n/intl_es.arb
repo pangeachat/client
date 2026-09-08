@@ -8095,5 +8095,6 @@
     "listenFirstNeedsChoiceAudio": "Activa el audio de las opciones para usar Escuchar primero.",
     "unableToJoinCourseError": "No pudimos añadirte a este curso ahora mismo. Por favor, inténtalo de nuevo o pregunta a tu profesor.",
     "edited": "Editado",
-    "attach": "Adjuntar"
+    "attach": "Adjuntar",
+    "callHistoryTranscript": "Transcripción"
 }

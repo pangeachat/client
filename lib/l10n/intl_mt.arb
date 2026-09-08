@@ -2280,5 +2280,6 @@
     "listenFirstNeedsChoiceAudio": "Ixgħel l-awdjo tal-Għażliet biex tuża Isma' l-Ewwel.",
     "unableToJoinCourseError": "Ma stajniex inżiduk ma' dan il-kors bħalissa. Jekk jogħġbok erġa' pprova, jew staqsi lill-għalliem tiegħek.",
     "edited": "Editjat",
-    "attach": "Waħħal"
+    "attach": "Waħħal",
+    "callHistoryTranscript": "Traskrizzjoni"
 }

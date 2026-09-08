@@ -10796,5 +10796,6 @@
     "listenFirstNeedsChoiceAudio": "Slå valg-lyd til for at bruge Lyt først.",
     "unableToJoinCourseError": "Vi kunne ikke tilføje dig til dette kursus lige nu. Prøv venligst igen, eller spørg din lærer.",
     "edited": "Redigeret",
-    "attach": "Vedhæft"
+    "attach": "Vedhæft",
+    "callHistoryTranscript": "Udskrift"
 }

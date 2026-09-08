@@ -9913,5 +9913,6 @@
     "listenFirstNeedsChoiceAudio": "Ota Valintojen ääni käyttöön käyttääksesi Kuuntele ensin -toimintoa.",
     "unableToJoinCourseError": "Emme voineet lisätä sinua tälle kurssille juuri nyt. Yritä uudelleen tai kysy opettajaltasi.",
     "edited": "Muokattu",
-    "attach": "Liitä"
+    "attach": "Liitä",
+    "callHistoryTranscript": "Puheluhistoria"
 }

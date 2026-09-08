@@ -9873,5 +9873,6 @@
     "listenFirstNeedsChoiceAudio": "Lülita sisse valikute heli, et kasutada funktsiooni „Kõigepealt kuula“.",
     "unableToJoinCourseError": "Me ei saanud teid praegu sellele kursusele lisada. Palun proovige uuesti või küsige oma õpetajalt.",
     "edited": "Muudetud",
-    "attach": "Lisa"
+    "attach": "Lisa",
+    "callHistoryTranscript": "Transkriptsioon"
 }

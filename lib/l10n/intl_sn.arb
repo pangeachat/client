@@ -2280,5 +2280,6 @@
     "listenFirstNeedsChoiceAudio": "Batidza odhiyo yesarudzo kuti ushandise Teerera Kutanga.",
     "unableToJoinCourseError": "Hatina kukwanisa kukubatanidza kune kosi iyi izvozvi. Ndapota edza zvakare, kana kubvunza mudzidzisi wako.",
     "edited": "Yagadziriswa",
-    "attach": "Batanidza"
+    "attach": "Batanidza",
+    "callHistoryTranscript": "Zvakataurwa"
 }

@@ -10821,5 +10821,6 @@
     "listenFirstNeedsChoiceAudio": "Ŝaltu la sonon de Elektoj por uzi Unue Aŭskultu.",
     "unableToJoinCourseError": "Ni ne povis aldoni vin al ĉi tiu kurso nun. Bonvolu reprovi, aŭ demandu vian instruiston.",
     "edited": "Redaktita",
-    "attach": "Almeti"
+    "attach": "Almeti",
+    "callHistoryTranscript": "Transskribo"
 }

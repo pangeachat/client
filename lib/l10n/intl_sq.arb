@@ -2280,5 +2280,6 @@
     "listenFirstNeedsChoiceAudio": "Aktivizo audion e Zgjedhjeve për të përdorur Dëgjo fillimisht.",
     "unableToJoinCourseError": "Nuk mundëm t'ju shtonim në këtë kurs tani. Ju lutemi provoni përsëri, ose pyesni mësuesin tuaj.",
     "edited": "Redaktuar",
-    "attach": "Bashkëngjit"
+    "attach": "Bashkëngjit",
+    "callHistoryTranscript": "Transkripti"
 }

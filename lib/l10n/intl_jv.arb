@@ -2280,5 +2280,6 @@
     "listenFirstNeedsChoiceAudio": "Uripake audio Pilihan kanggo nggunakake Rungokake Dhisik.",
     "unableToJoinCourseError": "Saiki ora bisa nambahake sampeyan ing kursus iki. Coba maneh, utawa takon marang guru sampeyan.",
     "edited": "Diedit",
-    "attach": "Lampirake"
+    "attach": "Lampirake",
+    "callHistoryTranscript": "Transkrip"
 }

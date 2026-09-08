@@ -9876,5 +9876,6 @@
     "listenFirstNeedsChoiceAudio": "Lai izmantotu funkciju “Vispirms klausīties”, ieslēdziet izvēles audio.",
     "unableToJoinCourseError": "Pašlaik nevarējām jūs pievienot šim kursam. Lūdzu, mēģiniet vēlreiz vai jautājiet savam skolotājam.",
     "edited": "Rediģēts",
-    "attach": "Pievienot"
+    "attach": "Pievienot",
+    "callHistoryTranscript": "Transkripts"
 }
