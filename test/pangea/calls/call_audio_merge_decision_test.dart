@@ -324,12 +324,11 @@ void main() {
         'is still mergeable with the right rank and coverage', () {
       // Step 8 requires MY OWN half to name a device; the OTHER poster's
       // placeable half may still have none (it just never wrote one). This
-      // pins that a null other-deviceId neither crashes nor changes my rank or
-      // the coverage -- it is carried as '' ONLY internally so the candidate
-      // list stays a List of non-null keys. (The '' does not affect the sort
-      // ORDER: two distinct senders always decide on senderId, so the deviceId
-      // tie-break is never reached for a real mergeable pair -- an unobservable
-      // detail this test deliberately does not assert.)
+      // pins the OBSERVABLE property only: a null other-deviceId neither
+      // crashes nor changes my rank or the coverage. How the impl represents
+      // that null in its private sort key is NOT asserted here, and could not
+      // be -- two distinct senders always decide the order on senderId, so the
+      // deviceId tie-break is never reached for a real mergeable pair.
       final verdict = decideCallAudioMerge(
         halves: [
           _half(_alice, 'A1'),
@@ -466,6 +465,33 @@ void main() {
           mergedExists: false,
         );
         expect(verdict, const TerminallyIneligible('unplaceable-half'));
+      });
+
+      test('rule 3 over 4: DM-ness unknown AND three halves -> '
+          'PendingIncomplete (not more-than-two-halves)', () {
+        final verdict = decideCallAudioMerge(
+          halves: [_half(_alice, 'A1'), _half(_bob, 'B1'), _half(_carol, 'C1')],
+          isDmRoom: null,
+          myUserId: _alice,
+          myDeviceId: 'A1',
+          mergedExists: false,
+        );
+        expect(verdict, const PendingIncomplete());
+      });
+
+      test('rule 6 over 7: a single unplaceable half -> PendingIncomplete '
+          '(wait for the peer, not prematurely unplaceable-half)', () {
+        // Only my (truncated) half is in yet. The peer may still post, so this
+        // is PENDING at the <2-halves check -- placeability is not judged until
+        // both halves are present.
+        final verdict = decideCallAudioMerge(
+          halves: [_half(_alice, 'A1', truncated: true)],
+          isDmRoom: true,
+          myUserId: _alice,
+          myDeviceId: 'A1',
+          mergedExists: false,
+        );
+        expect(verdict, const PendingIncomplete());
       });
     });
   });
