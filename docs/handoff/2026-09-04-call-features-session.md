@@ -638,3 +638,27 @@ the live panel attaches. iOS hits the SAME recording bug -- the fix helps there.
   CORRECT/GATE-SOFTENING:no, commit locally (NO push/PR), report SHA + verdict. Then I run the
   independent COLD codex gate; cold-RED -> back to the agent; cold-green -> piece 2. PRs held for
   owner go.
+
+## 2026-09-08 — Piece 1 landed (89af06f620); cold gate found 3 real issues -> fix round dispatched
+- Piece-1 implementer committed 89af06f620 (call_audio_recorder.dart + its test): monotonic
+  injected cursor, silence backfill, drop-if-behind, periodic re-anchor (pad/bounded micro-trim),
+  finalize drain-then-reconcile, tail-editable buffer, ceiling as per-blob DURATION bound. Agent
+  self-gate green. Scope held (one-blob-per-device; multi-blob/txnId/transcript untouched).
+- MY INDEPENDENT verification: analyze clean (2 files), format clean, recorder bucket 40/40 pass.
+  Import gate: our diff changes ZERO import lines; local import_sorter 4.6.0 flags pristine
+  siblings identically (tool-version divergence, not our churn) -> CI import gate unaffected.
+- MY COLD CODEX GATE (3 parallel: buffer / orchestration / pinning), verdicts at
+  /private/tmp/p1-{gen,recorder,pinning}-verdict.txt:
+  - buffer primitives: CORRECT / softening:no.
+  - orchestration: ISSUES-FOUND (real): (1) finalize reads _elapsedMs() at :1026 AFTER
+    _drainPending + uploadStateStore.read awaits -> I/O latency padded as trailing silence;
+    (2) _capBytes:530 not rounded to bytesPerFrame -> a mid-sample cap can emit a malformed WAV.
+  - pinning: ISSUES-FOUND (real): (3) micro-trim test passes a nonzero re-anchor interval ->
+    starts a real 60s Timer.periodic racing the manual checkpoint() -> flaky.
+  All three real, none gate-softening (the cold gate earning its keep again).
+- FIX ROUND dispatched (fresh general-purpose/opus agent, SendMessage-to-subagent unavailable so
+  re-dispatch with the findings). Root causes handed over: (1) end anchor must be the audio-stop
+  instant -> capture gen.endElapsedMs synchronously in onRunEnded + a finish-entry fallback,
+  reconcile to that; (2) round _capBytes down to a whole PCM frame (2*channels); (3) micro-trim
+  test uses the timer-disabled path + manual checkpoint(). Agent to fix + self-gate green +
+  commit on top; then I re-cold-gate the changed regions. PRs held for owner go.
