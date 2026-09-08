@@ -603,3 +603,38 @@ the live panel attaches. iOS hits the SAME recording bug -- the fix helps there.
   transcript fix; the auto-mix merger robustness is deferred to that feature.
 - Doc NOT yet placed in repo instructions/ — awaiting owner approval (owner is the
   human reviewer in Will's place); on go, place + commit as part of the build.
+
+## 2026-09-08 — Understand-map done (5-reader workflow); build scoped + piece-1 dispatched
+- Understand workflow wf_4dd7e1e3-fcc (5 parallel general-purpose readers, opus) produced a
+  precise code map: full JSON at /private/tmp/claude-501/.../tasks/w2letltfx.output.
+- KEY SYNTHESIS:
+  - SEQUENCING (unanimous): both pieces touch call_capture.dart's run-anchor/clock region
+    (_runStartsAt, elapsedMs, _notBeforeMs) + call_capture_test.dart -> build SEQUENTIALLY,
+    piece 1 (recorder) then piece 2 (transcript ordering). Recorder gets its OWN injected clock
+    so its call_capture.dart footprint stays small; transcript owns _runStartsAt.
+  - CLOCK REALITY: a true deep-sleep-inclusive clock needs an iOS CLOCK_BOOTTIME / Android
+    elapsedRealtime platform channel that does NOT exist here (no web equiv). During an ACTIVE
+    call the OS keeps the process alive, so the existing Stopwatch (_uptime) counts through
+    backgrounding — exactly the reported Android-mute case. FIX = recorder gets injected
+    monotonic clock (default that Stopwatch) + a periodic self-tick that backfills silence when
+    frames stop + finalize-pad. Deep-device-sleep inclusion DEFERRED to a platform-channel task.
+  - SCOPE TIGHTENED: per-tenure MULTI-blob-per-user (A->B->A device switch), the txnId tenure
+    discriminator, merge-overlay-N, and the cross-blob absolute ceiling are only needed for
+    mid-call device switch -> DEFERRED to the device-switch/auto-mix feature (matches the
+    design's own scoping). Piece 1 keeps the EXISTING one-blob-per-device event model and fixes
+    the reported truncation (the common single-tenure case). This avoids destabilizing the
+    fragile txnId/dedup/one-event-per-device machinery.
+  - "bye first" root cause (piece 2): _runStartsAt = base + (elapsedMs-elapsedAtBase) - batch,
+    floored only by _notBeforeMs (0 on the first run). A call that starts muted latches base at
+    t0; if the monotonic stalls (device sleep during the mute) the unmuted run's anchor regresses
+    to ~t0 and "bye" sorts first. Fix = a reset run's anchor cannot regress below true absolute
+    elapsed (wall-elapsed lower-bound guard and/or suspension clock); segments keep their true
+    absolute SFU interval; no floor to a stale run start. Owns _runStartsAt/_notBeforeMs +
+    transcript_segments/transcript_assembly + regressions.
+- Piece-1 build brief: /private/tmp/build-brief-piece1-recorder.md.
+- SUBAGENTS: piece-1 implementer (general-purpose/opus) DISPATCHED (background). Contract:
+  implement piece 1 per brief, mutation-proven deterministic tests, local gates green
+  (dart format/import_sorter/analyze/flutter test @3.41.4), OWN codex self-gate to
+  CORRECT/GATE-SOFTENING:no, commit locally (NO push/PR), report SHA + verdict. Then I run the
+  independent COLD codex gate; cold-RED -> back to the agent; cold-green -> piece 2. PRs held for
+  owner go.
