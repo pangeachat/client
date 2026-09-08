@@ -681,3 +681,33 @@ the live panel attaches. iOS hits the SAME recording bug -- the fix helps there.
   layer: stalled-monotonic-during-mute -> unmute run start = true elapsed; assembly layer:
   mute-then-later-speech never sorts first), local gates green, OWN codex self-gate to
   CORRECT/softening:no, commit locally (no push/PR), report. Then I cold-gate. PRs held for owner go.
+
+## 2026-09-08 — Piece 2 (transcript ordering) landed; cold gate surfaced an inherent clock TRADE (owner decision pending)
+- Piece 2 commit 322a138190 (call_capture.dart _runStartsAt + two mutation-proven regressions in
+  call_capture_test.dart + transcript_assembly_test.dart). Fix: while _notBeforeMs==0 (first run),
+  floor the run start by wall-elapsed = max(monotonic, base + (nowMs()-base) - batch). Closes the
+  reported "bye first" muted-start-sleep scatter (monotonic stalls, wall sane). Agent self-gate
+  CORRECT (after a round-1 INCORRECT: its first monoDelta==0 freeze-detector only fixed the ideal
+  test; redesigned to the direct wall floor).
+- MY verify: format/analyze clean, 422 calls tests pass, import-neutral, scope = 3 intended files.
+- MY COLD GATE: pinning CORRECT/softening:no (tests real+additive). Behaviour first returned
+  ISSUES-FOUND/softening:YES because the docstring claimed "scattered is not accepted" while a
+  first-run scatter path remained. I made the docstring honest (commits 943da4b973, 88226b3070) ->
+  re-gate: GATE-SOFTENING:no. But the re-gate then correctly identified the deeper truth: the fix
+  is NOT a strict improvement, it is a TRADE. With only two local clocks and no third reference,
+  max(monotonic, wall) cannot tell a stalled monotonic (wall sane) from a forward-jumped wall
+  (monotonic sane), so:
+    - stall + sane wall  -> FIXED (the reported bug, common, high-harm front-scatter).
+    - FORWARD wall jump during the first-run muted window -> run placed too LATE (newly worsened
+      vs pre-fix, which ignored the wall here). Rare, lower-harm.
+    - BACKWARD wall jump > peer-separation during the sleep -> first run can still scatter. Rare.
+  All three are the clocks-failing class, fixable completely ONLY by a suspension-inclusive
+  platform clock (iOS CLOCK_BOOTTIME / Android elapsedRealtime) which does NOT exist here and is
+  DEFERRED by the design. No local strict-better fix exists (confirmed: the conflation is
+  inherent). NOT gate-softening (no test/gate weakened). This is an inherent trade + a design
+  judgment, so escalated to the owner rather than iterating Codex further (codex-red-loop: stop
+  spot-fixing an inherent tradeoff, bring the human the decision).
+- Docstring now states the trade honestly (all 3 residuals). RECOMMENDATION to owner: accept the
+  trade (fixes the reported bug + all sane-wall cases; rare wall-anomaly-during-muted-start edges
+  need the deferred platform clock), with the platform clock tracked as the complete-fix follow-up.
+  Awaiting owner decision before calling piece 2 done. PRs still held for owner go.
