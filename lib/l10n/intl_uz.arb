@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-09-08 12:18:43.069128",
+    "@@last_modified": "2026-09-08 14:42:48.317035",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9881,5 +9881,6 @@
     "unableToJoinCourseError": "Hozircha sizni bu kursga qoʻsha olmadik. Iltimos, qayta urinib koʻring yoki oʻqituvchingizdan soʻrang.",
     "edited": "Tahrirlangan",
     "attach": "Biriktirish",
-    "callHistoryTranscript": "Transkript"
+    "callHistoryTranscript": "Transkript",
+    "upNext": "Keyingisi"
 }

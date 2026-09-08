@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-09-08 12:18:39.648624",
+    "@@last_modified": "2026-09-08 14:42:46.092129",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2281,5 +2281,6 @@
     "unableToJoinCourseError": "Tsy afaka nampiditra anao tamin'ity taranja ity izahay izao. Andramo indray, na anontanio ny mpampianatra anao.",
     "edited": "Nohavaozina",
     "attach": "Ampifandraiso",
-    "callHistoryTranscript": "Dika soratra"
+    "callHistoryTranscript": "Dika soratra",
+    "upNext": "Manaraka"
 }

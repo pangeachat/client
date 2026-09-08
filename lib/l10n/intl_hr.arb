@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-09-08 12:18:37.271220",
+    "@@last_modified": "2026-09-08 14:42:44.917725",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10313,5 +10313,6 @@
     "unableToJoinCourseError": "Trenutno vas nismo mogli dodati na ovaj tečaj. Pokušajte ponovno ili pitajte svog učitelja.",
     "edited": "Uređeno",
     "attach": "Priloži",
-    "callHistoryTranscript": "Transkript"
+    "callHistoryTranscript": "Transkript",
+    "upNext": "Slijedi"
 }

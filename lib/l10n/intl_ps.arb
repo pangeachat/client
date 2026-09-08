@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-09-08 12:18:40.969514",
+    "@@last_modified": "2026-09-08 14:42:47.043202",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2281,5 +2281,6 @@
     "unableToJoinCourseError": "موږ ونشو کړای چې تاسو اوس دې کورس ته اضافه کړو. مهرباني وکړئ بیا هڅه وکړئ، یا له خپل ښوونکي څخه پوښتنه وکړئ.",
     "edited": "ترمیم شوی",
     "attach": "ضمیمه کړئ",
-    "callHistoryTranscript": "رونويسي"
+    "callHistoryTranscript": "رونويسي",
+    "upNext": "بل"
 }

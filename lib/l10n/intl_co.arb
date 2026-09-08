@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-09-08 12:18:35.456929",
+    "@@last_modified": "2026-09-08 14:42:43.538275",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2281,5 +2281,6 @@
     "unableToJoinCourseError": "Ùn pudemu micca aghjunghje vi à stu corsu avà. Per piacè, riprovate, o dumandate à u vostru maestru.",
     "edited": "Mudificatu",
     "attach": "Attaccà",
-    "callHistoryTranscript": "Trascrizzione"
+    "callHistoryTranscript": "Trascrizzione",
+    "upNext": "Dopu"
 }

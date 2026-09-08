@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-09-08 12:18:42.533785",
+    "@@last_modified": "2026-09-08 14:42:47.732095",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2281,5 +2281,6 @@
     "unableToJoinCourseError": "Kami teu tiasa nambihan anjeun kana kursus ieu ayeuna. Punten cobian deui, atanapi taroskeun ka guru anjeun.",
     "edited": "Diédit",
     "attach": "Lampirkeun",
-    "callHistoryTranscript": "Transkrip"
+    "callHistoryTranscript": "Transkrip",
+    "upNext": "Salajengna"
 }

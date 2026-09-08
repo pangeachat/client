@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-09-08 12:18:35.951755",
+    "@@last_modified": "2026-09-08 14:42:43.815829",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2281,5 +2281,6 @@
     "unableToJoinCourseError": "Ni allem eich ychwanegu at y cwrs hwn ar hyn o bryd. Ceisiwch eto, neu gofynnwch i'ch athro.",
     "edited": "Golygu",
     "attach": "Atodi",
-    "callHistoryTranscript": "Trawsgrifiad"
+    "callHistoryTranscript": "Trawsgrifiad",
+    "upNext": "Nesaf"
 }

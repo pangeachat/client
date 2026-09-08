@@ -81,6 +81,13 @@ abstract class AppConfig {
   static Color goldByTheme(BuildContext context) =>
       Theme.of(context).brightness == Brightness.light ? gold : goldLight;
 
+  /// Green for something finished: [completedGreen] on light, where [success]
+  /// is too pale to read on the surface, and [success] on dark.
+  static Color successByTheme(BuildContext context) =>
+      Theme.of(context).brightness == Brightness.light
+      ? completedGreen
+      : success;
+
   /// Readable ink on top of [goldByTheme], which is a light fill in both
   /// brightnesses — so both branches resolve to a dark tone.
   static Color onGoldByTheme(BuildContext context) {

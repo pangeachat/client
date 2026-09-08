@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-08 12:18:39.120093",
+    "@@last_modified": "2026-09-08 14:42:45.475347",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10070,5 +10070,6 @@
     "unableToJoinCourseError": "지금은 이 코스에 참여할 수 없습니다. 다시 시도하거나 선생님께 문의하세요.",
     "edited": "수정됨",
     "attach": "첨부",
-    "callHistoryTranscript": "대화 기록"
+    "callHistoryTranscript": "대화 기록",
+    "upNext": "다음"
 }

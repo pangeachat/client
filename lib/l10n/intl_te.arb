@@ -1324,7 +1324,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-09-08 12:18:42.693720",
+    "@@last_modified": "2026-09-08 14:42:48.474360",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10827,5 +10827,6 @@
     "unableToJoinCourseError": "మేము మిమ్మల్ని ప్రస్తుతం ఈ కోర్సులో చేర్చలేకపోయాము. దయచేసి మళ్ళీ ప్రయత్నించండి లేదా మీ టీచర్‌ని అడగండి.",
     "edited": "సవరించబడింది",
     "attach": "అటాచ్ చేయండి",
-    "callHistoryTranscript": "ట్రాన్స్క్రిప్ట్"
+    "callHistoryTranscript": "ట్రాన్స్క్రిప్ట్",
+    "upNext": "తర్వాత"
 }

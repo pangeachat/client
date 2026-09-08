@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-09-08 12:18:38.053923",
+    "@@last_modified": "2026-09-08 14:42:43.147654",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2281,5 +2281,6 @@
     "unableToJoinCourseError": "Trenutno vas nismo mogli dodati na ovaj kurs. Molimo pokušajte ponovo ili pitajte svog nastavnika.",
     "edited": "Uređeno",
     "attach": "Priloži",
-    "callHistoryTranscript": "Transkript"
+    "callHistoryTranscript": "Transkript",
+    "upNext": "Slijedi"
 }

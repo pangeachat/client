@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-08 12:18:42.564982",
+    "@@last_modified": "2026-09-08 14:42:47.920406",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9969,5 +9969,6 @@
     "unableToJoinCourseError": "இந்த பாடத்திட்டத்தில் உங்களை இப்போதைக்கு சேர்க்க முடியவில்லை. மீண்டும் முயற்சிக்கவும் அல்லது உங்கள் ஆசிரியரிடம் கேட்கவும்.",
     "edited": "திருத்தப்பட்டது",
     "attach": "இணை",
-    "callHistoryTranscript": "பதிவு"
+    "callHistoryTranscript": "பதிவு",
+    "upNext": "அடுத்து"
 }

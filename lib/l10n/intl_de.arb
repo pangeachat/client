@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-09-08 12:18:35.726718",
+    "@@last_modified": "2026-09-08 14:42:43.520415",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9864,5 +9864,6 @@
     "unableToJoinCourseError": "Wir konnten dich diesem Kurs im Moment nicht hinzufügen. Bitte versuche es erneut oder frage deinen Lehrer.",
     "edited": "Bearbeitet",
     "attach": "Anhängen",
-    "callHistoryTranscript": "Transkript"
+    "callHistoryTranscript": "Transkript",
+    "upNext": "Als Nächstes"
 }

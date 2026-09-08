@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-08 12:18:35.288317",
+    "@@last_modified": "2026-09-08 14:42:43.482543",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10004,5 +10004,6 @@
     "unableToJoinCourseError": "No hem pogut afegir-te a aquest curs ara mateix. Torna-ho a provar o pregunta al teu professor.",
     "edited": "Editat",
     "attach": "Adjuntar",
-    "callHistoryTranscript": "Transcripció"
+    "callHistoryTranscript": "Transcripció",
+    "upNext": "A continuació"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-09-08 12:18:40.814718",
+    "@@last_modified": "2026-09-08 14:42:47.146253",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2281,5 +2281,6 @@
     "unableToJoinCourseError": "ਅਸੀਂ ਤੁਹਾਨੂੰ ਇਸ ਸਮੇਂ ਇਸ ਕੋਰਸ ਵਿੱਚ ਸ਼ਾਮਲ ਨਹੀਂ ਕਰ ਸਕੇ। ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ, ਜਾਂ ਆਪਣੇ ਅਧਿਆਪਕ ਨੂੰ ਪੁੱਛੋ।",
     "edited": "ਸੰਪਾਦਿਤ",
     "attach": "ਨੱਥੀ ਕਰੋ",
-    "callHistoryTranscript": "ਟ੍ਰਾਂਸਕ੍ਰਿਪਟ"
+    "callHistoryTranscript": "ਟ੍ਰਾਂਸਕ੍ਰਿਪਟ",
+    "upNext": "ਅੱਗੇ"
 }

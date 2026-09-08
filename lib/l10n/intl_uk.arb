@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-09-08 12:18:43.225405",
+    "@@last_modified": "2026-09-08 14:42:48.456773",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9877,5 +9877,6 @@
     "unableToJoinCourseError": "Наразі ми не змогли додати вас до цього курсу. Спробуйте ще раз або зверніться до свого вчителя.",
     "edited": "Відредаговано",
     "attach": "Прикріпити",
-    "callHistoryTranscript": "Розшифровка"
+    "callHistoryTranscript": "Розшифровка",
+    "upNext": "Далі"
 }

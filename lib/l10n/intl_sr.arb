@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-08 12:18:42.177590",
+    "@@last_modified": "2026-09-08 14:42:47.525962",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10826,5 +10826,6 @@
     "unableToJoinCourseError": "Trenutno nismo mogli da vas dodamo na ovaj kurs. Pokušajte ponovo ili pitajte svog nastavnika.",
     "edited": "Izmenjeno",
     "attach": "Priloži",
-    "callHistoryTranscript": "Transkript"
+    "callHistoryTranscript": "Transkript",
+    "upNext": "Sledeće"
 }

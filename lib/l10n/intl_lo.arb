@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-09-08 12:18:39.390599",
+    "@@last_modified": "2026-09-08 14:42:45.856964",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2281,5 +2281,6 @@
     "unableToJoinCourseError": "ພວກເຮົາບໍ່ສາມາດເພີ່ມທ່ານເຂົ້າໃນຫຼັກສູດນີ້ໄດ້ໃນຕອນນີ້. ກະລຸນາລອງໃໝ່ອີກຄັ້ງ, ຫຼືສອບຖາມຄູສອນຂອງທ່ານ.",
     "edited": "ແກ້ໄຂແລ້ວ",
     "attach": "ແນບ",
-    "callHistoryTranscript": "ບົດບັນທຶກ"
+    "callHistoryTranscript": "ບົດບັນທຶກ",
+    "upNext": "ຕໍ່ໄປ"
 }

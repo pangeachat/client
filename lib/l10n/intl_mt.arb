@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-09-08 12:18:40.047814",
+    "@@last_modified": "2026-09-08 14:42:46.314300",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2281,5 +2281,6 @@
     "unableToJoinCourseError": "Ma stajniex inżiduk ma' dan il-kors bħalissa. Jekk jogħġbok erġa' pprova, jew staqsi lill-għalliem tiegħek.",
     "edited": "Editjat",
     "attach": "Waħħal",
-    "callHistoryTranscript": "Traskrizzjoni"
+    "callHistoryTranscript": "Traskrizzjoni",
+    "upNext": "Li jmiss"
 }

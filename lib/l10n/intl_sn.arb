@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-09-08 12:18:42.190452",
+    "@@last_modified": "2026-09-08 14:42:47.557643",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2281,5 +2281,6 @@
     "unableToJoinCourseError": "Hatina kukwanisa kukubatanidza kune kosi iyi izvozvi. Ndapota edza zvakare, kana kubvunza mudzidzisi wako.",
     "edited": "Yagadziriswa",
     "attach": "Batanidza",
-    "callHistoryTranscript": "Zvakataurwa"
+    "callHistoryTranscript": "Zvakataurwa",
+    "upNext": "Zvinotevera"
 }

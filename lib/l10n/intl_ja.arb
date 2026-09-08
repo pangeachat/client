@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-09-08 12:18:38.377144",
+    "@@last_modified": "2026-09-08 14:42:45.377890",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10646,5 +10646,6 @@
     "unableToJoinCourseError": "現在、このコースに参加できません。もう一度お試しいただくか、先生にお問い合わせください。",
     "edited": "編集済み",
     "attach": "添付",
-    "callHistoryTranscript": "トランスクリプト"
+    "callHistoryTranscript": "トランスクリプト",
+    "upNext": "次はこちら"
 }

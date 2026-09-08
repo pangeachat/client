@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-09-08 12:18:42.661702",
+    "@@last_modified": "2026-09-08 14:42:47.623935",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2281,5 +2281,6 @@
     "unableToJoinCourseError": "Nuk mundëm t'ju shtonim në këtë kurs tani. Ju lutemi provoni përsëri, ose pyesni mësuesin tuaj.",
     "edited": "Redaktuar",
     "attach": "Bashkëngjit",
-    "callHistoryTranscript": "Transkripti"
+    "callHistoryTranscript": "Transkripti",
+    "upNext": "Në vazhdim"
 }

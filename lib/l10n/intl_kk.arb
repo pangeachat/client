@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-09-08 12:18:38.743381",
+    "@@last_modified": "2026-09-08 14:42:45.453242",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2281,5 +2281,6 @@
     "unableToJoinCourseError": "Сізді қазір бұл курсқа қоса алмадық. Қайталап көріңіз немесе мұғаліміңізден сұраңыз.",
     "edited": "Өңделді",
     "attach": "Тіркеу",
-    "callHistoryTranscript": "Транскрипт"
+    "callHistoryTranscript": "Транскрипт",
+    "upNext": "Келесі"
 }

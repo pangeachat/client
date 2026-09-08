@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-09-08 12:18:40.498541",
+    "@@last_modified": "2026-09-08 14:42:46.661457",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2281,5 +2281,6 @@
     "unableToJoinCourseError": "Vi kunne ikke legge deg til dette kurset akkurat nå. Prøv igjen, eller spør læreren din.",
     "edited": "Redigert",
     "attach": "Legg ved",
-    "callHistoryTranscript": "Transkripsjon"
+    "callHistoryTranscript": "Transkripsjon",
+    "upNext": "Neste"
 }

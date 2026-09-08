@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-09-08 12:18:40.954539",
+    "@@last_modified": "2026-09-08 14:42:46.796590",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9962,5 +9962,6 @@
     "unableToJoinCourseError": "Nie udało nam się dodać Cię do tego kursu. Spróbuj ponownie lub skontaktuj się z nauczycielem.",
     "edited": "Edytowano",
     "attach": "Załącz",
-    "callHistoryTranscript": "Transkrypcja"
+    "callHistoryTranscript": "Transkrypcja",
+    "upNext": "Następnie"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-09-08 12:18:36.459860",
+    "@@last_modified": "2026-09-08 14:42:44.428243",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2281,5 +2281,6 @@
     "unableToJoinCourseError": "Cha b' urrainn dhuinn do chur ris a' chùrsa seo an-dràsta. Feuch ris a-rithist, no faighnich don tidsear agad.",
     "edited": "Deasaichte",
     "attach": "Ceangail",
-    "callHistoryTranscript": "Tar-sgrìobhadh"
+    "callHistoryTranscript": "Tar-sgrìobhadh",
+    "upNext": "An ath rud"
 }

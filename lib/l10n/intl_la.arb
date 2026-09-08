@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-09-08 12:18:39.426128",
+    "@@last_modified": "2026-09-08 14:42:45.867754",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2281,5 +2281,6 @@
     "unableToJoinCourseError": "Te huic cursu nunc addere non potuimus. Quaeso iterum conare, aut magistrum tuum interroga.",
     "edited": "Recensuit",
     "attach": "Adnectere",
-    "callHistoryTranscript": "Scriptum"
+    "callHistoryTranscript": "Scriptum",
+    "upNext": "Deinceps"
 }

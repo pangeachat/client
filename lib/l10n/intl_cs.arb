@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-09-08 12:18:35.540330",
+    "@@last_modified": "2026-09-08 14:42:43.561756",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10371,5 +10371,6 @@
     "unableToJoinCourseError": "Momentálně se nám nepodařilo přidat vás do tohoto kurzu. Zkuste to prosím znovu, nebo se zeptejte svého učitele.",
     "edited": "Upraveno",
     "attach": "Připojit",
-    "callHistoryTranscript": "Přepis"
+    "callHistoryTranscript": "Přepis",
+    "upNext": "Další"
 }

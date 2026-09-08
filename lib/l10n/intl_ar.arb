@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-09-08 12:18:34.863470",
+    "@@last_modified": "2026-09-08 14:42:43.551144",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10183,5 +10183,6 @@
     "unableToJoinCourseError": "تعذر علينا إضافتك إلى هذه الدورة التدريبية الآن. يرجى المحاولة مرة أخرى، أو سؤال معلمك.",
     "edited": "تم التعديل",
     "attach": "إرفاق",
-    "callHistoryTranscript": "النص"
+    "callHistoryTranscript": "النص",
+    "upNext": "التالي"
 }

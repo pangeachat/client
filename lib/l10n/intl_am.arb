@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-09-08 12:18:35.217651",
+    "@@last_modified": "2026-09-08 14:42:43.123979",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2281,5 +2281,6 @@
     "unableToJoinCourseError": "በአሁኑ ሰዓት ወደዚህ ኮርስ ልንጨምርዎ አልቻልንም። እባክዎ እንደገና ይሞክሩ ወይም አስተማሪዎን ይጠይቁ።",
     "edited": "ተስተካሏል",
     "attach": "አያይዝ",
-    "callHistoryTranscript": "ጽሑፍ"
+    "callHistoryTranscript": "ጽሑፍ",
+    "upNext": "በመቀጠል"
 }

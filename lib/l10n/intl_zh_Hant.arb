@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-08 12:18:44.675716",
+    "@@last_modified": "2026-09-08 14:42:48.836587",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9983,5 +9983,6 @@
     "unableToJoinCourseError": "我們目前無法將您加入此課程。請再試一次，或詢問您的老師。",
     "edited": "已編輯",
     "attach": "附加",
-    "callHistoryTranscript": "逐字稿"
+    "callHistoryTranscript": "逐字稿",
+    "upNext": "接下來"
 }

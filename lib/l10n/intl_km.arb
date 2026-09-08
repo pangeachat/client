@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-09-08 12:18:38.835618",
+    "@@last_modified": "2026-09-08 14:42:45.363576",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2281,5 +2281,6 @@
     "unableToJoinCourseError": "យើងមិនអាចបន្ថែមអ្នកទៅវគ្គសិក្សានេះបានទេ។ សូមព្យាយាមម្ដងទៀត ឬសួរគ្រូរបស់អ្នក។",
     "edited": "បានកែសម្រួល",
     "attach": "ភ្ជាប់",
-    "callHistoryTranscript": "ប្រតិចារិក"
+    "callHistoryTranscript": "ប្រតិចារិក",
+    "upNext": "បន្ទាប់"
 }

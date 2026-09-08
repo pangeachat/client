@@ -2080,7 +2080,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-09-08 12:18:36.352888",
+    "@@last_modified": "2026-09-08 14:42:44.087518",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10737,5 +10737,6 @@
     "unableToJoinCourseError": "Hindi ka namin maidagdag sa kursong ito sa ngayon. Pakisubukang muli, o tanungin ang iyong guro.",
     "edited": "Na-edit",
     "attach": "Ikabit",
-    "callHistoryTranscript": "Transcript"
+    "callHistoryTranscript": "Transcript",
+    "upNext": "Susunod"
 }

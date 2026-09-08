@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-09-08 12:18:39.081735",
+    "@@last_modified": "2026-09-08 14:42:45.639404",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2281,5 +2281,6 @@
     "unableToJoinCourseError": "لە ئێستادا ناتوانین تۆ زیاد بکەین بۆ ئەم خولە. تکایە دووبارە هەوڵ بدەوە، یان داوا لە مامۆستاکەت بکە.",
     "edited": "دەستکاری کراوە",
     "attach": "لکاندن",
-    "callHistoryTranscript": "ڕوونووس"
+    "callHistoryTranscript": "ڕوونووس",
+    "upNext": "لە دوایدا"
 }

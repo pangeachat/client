@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-08 12:18:37.535223",
+    "@@last_modified": "2026-09-08 14:42:45.136669",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9950,5 +9950,6 @@
     "unableToJoinCourseError": "Kami tidak dapat menambahkan Anda ke kursus ini sekarang. Silakan coba lagi, atau tanyakan kepada guru Anda.",
     "edited": "Diedit",
     "attach": "Lampirkan",
-    "callHistoryTranscript": "Transkrip"
+    "callHistoryTranscript": "Transkrip",
+    "upNext": "Berikutnya"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-09-08 12:18:37.099137",
+    "@@last_modified": "2026-09-08 14:42:44.565395",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2281,5 +2281,6 @@
     "unableToJoinCourseError": "Tam sim no peb ntxiv tsis tau koj rau hauv zaj kawm no. Thov sim dua, los yog nug koj tus xib fwb.",
     "edited": "Hloov kho lawm",
     "attach": "Txuas",
-    "callHistoryTranscript": "Cov Lus Hais"
+    "callHistoryTranscript": "Cov Lus Hais",
+    "upNext": "Tom ntej no"
 }

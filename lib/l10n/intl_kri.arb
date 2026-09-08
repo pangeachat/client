@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-09-08 12:18:39.532848",
+    "@@last_modified": "2026-09-08 14:42:45.657929",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2281,5 +2281,6 @@
     "unableToJoinCourseError": "Wi nɔ ebul fɔ ad yu to dis kos naw. Duya tray bak, ɔ aks yu ticha.",
     "edited": "Dɛn dɔn chenj am",
     "attach": "Atach",
-    "callHistoryTranscript": "Transkript"
+    "callHistoryTranscript": "Transkript",
+    "upNext": "Di wan we de kam"
 }

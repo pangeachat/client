@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-09-08 12:18:40.306112",
+    "@@last_modified": "2026-09-08 14:42:46.520594",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2281,5 +2281,6 @@
     "unableToJoinCourseError": "हामीले तपाईंलाई अहिले यो कोर्समा थप्न सकेनौं। कृपया फेरि प्रयास गर्नुहोस्, वा आफ्नो शिक्षकलाई सोध्नुहोस्।",
     "edited": "सम्पादन गरियो",
     "attach": "संलग्न गर्नुहोस्",
-    "callHistoryTranscript": "ट्रान्सक्रिप्ट"
+    "callHistoryTranscript": "ट्रान्सक्रिप्ट",
+    "upNext": "अर्को"
 }

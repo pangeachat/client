@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-09-08 12:18:36.525707",
+    "@@last_modified": "2026-09-08 14:42:44.326564",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2281,5 +2281,6 @@
     "unableToJoinCourseError": "Wy koene jo op dit stuit net tafoegje oan dizze kursus. Besykje it opnij, of freegje jo learaar.",
     "edited": "Bewurke",
     "attach": "Taheakje",
-    "callHistoryTranscript": "Transkript"
+    "callHistoryTranscript": "Transkript",
+    "upNext": "Folgjende"
 }

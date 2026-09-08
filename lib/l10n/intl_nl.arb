@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-08 12:18:40.781767",
+    "@@last_modified": "2026-09-08 14:42:46.685062",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9877,5 +9877,6 @@
     "unableToJoinCourseError": "We konden je nu niet toevoegen aan deze cursus. Probeer het opnieuw, of vraag het aan je docent.",
     "edited": "Bewerkt",
     "attach": "Bijvoegen",
-    "callHistoryTranscript": "Transcript"
+    "callHistoryTranscript": "Transcript",
+    "upNext": "Volgende"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-08 12:18:43.273090",
+    "@@last_modified": "2026-09-08 14:42:48.348395",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7169,5 +7169,6 @@
     "unableToJoinCourseError": "Chúng tôi không thể thêm bạn vào khóa học này ngay bây giờ. Vui lòng thử lại hoặc hỏi giáo viên của bạn.",
     "edited": "Đã chỉnh sửa",
     "attach": "Đính kèm",
-    "callHistoryTranscript": "Bảng điểm"
+    "callHistoryTranscript": "Bảng điểm",
+    "upNext": "Tiếp theo"
 }

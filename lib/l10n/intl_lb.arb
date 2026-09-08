@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-09-08 12:18:39.355708",
+    "@@last_modified": "2026-09-08 14:42:45.734695",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2281,5 +2281,6 @@
     "unableToJoinCourseError": "Mir konnten Iech de Moment net an dëse Cours aschreiwen. Probéiert et w.e.g. nach eng Kéier, oder frot Äre Léierpersonal.",
     "edited": "Geännert",
     "attach": "Uleeën",
-    "callHistoryTranscript": "Transkript"
+    "callHistoryTranscript": "Transkript",
+    "upNext": "Als Nächstes"
 }

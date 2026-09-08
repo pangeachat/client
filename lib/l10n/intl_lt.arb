@@ -2967,7 +2967,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-09-08 12:18:39.379129",
+    "@@last_modified": "2026-09-08 14:42:45.797135",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10658,5 +10658,6 @@
     "unableToJoinCourseError": "Šiuo metu negalėjome jūsų pridėti prie šio kurso. Bandykite dar kartą arba kreipkitės į mokytoją.",
     "edited": "Redaguota",
     "attach": "Pridėti",
-    "callHistoryTranscript": "Nuorašas"
+    "callHistoryTranscript": "Nuorašas",
+    "upNext": "Toliau"
 }

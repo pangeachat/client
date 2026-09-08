@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-09-08 12:18:35.993435",
+    "@@last_modified": "2026-09-08 14:42:44.200444",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9877,5 +9877,6 @@
     "unableToJoinCourseError": "Ezin izan zaitugu ikastaro honetan sartu oraintxe bertan. Saiatu berriro, edo galdetu zure irakasleari.",
     "edited": "Editatu da",
     "attach": "Erantsi",
-    "callHistoryTranscript": "Transkripzioa"
+    "callHistoryTranscript": "Transkripzioa",
+    "upNext": "Jarraian"
 }

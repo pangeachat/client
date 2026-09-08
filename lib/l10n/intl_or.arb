@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-09-08 12:18:40.681345",
+    "@@last_modified": "2026-09-08 14:42:47.012665",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2281,5 +2281,6 @@
     "unableToJoinCourseError": "ଆମେ ବର୍ତ୍ତମାନ ଆପଣଙ୍କୁ ଏହି କୋର୍ସରେ ଯୋଗ କରିପାରିଲୁ ନାହିଁ। ଦୟାକରି ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ, କିମ୍ବା ଆପଣଙ୍କ ଶିକ୍ଷକଙ୍କୁ ପଚାରନ୍ତୁ।",
     "edited": "ସମ୍ପାଦିତ",
     "attach": "ସଂଲଗ୍ନ କରନ୍ତୁ",
-    "callHistoryTranscript": "ଟ୍ରାନ୍ସକ୍ରିପ୍ଟ"
+    "callHistoryTranscript": "ଟ୍ରାନ୍ସକ୍ରିପ୍ଟ",
+    "upNext": "ପରବର୍ତ୍ତୀ"
 }

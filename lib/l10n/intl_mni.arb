@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-09-08 12:18:40.143486",
+    "@@last_modified": "2026-09-08 14:42:46.191634",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2281,5 +2281,6 @@
     "unableToJoinCourseError": "ঐখোয়না হৌজিক অসিদা নখোয়বু কোর্স অসিদা হাপ্পা ঙমখিদে। খরা কুইরগা অমুক ট্রাই তৌবীয়ু, নত্ত্রগা নখোয়গী টিচারদা হংবীয়ু।",
     "edited": "ꯁꯦꯝꯗꯣꯛꯈ꯭ꯔꯦ",
     "attach": "Attach",
-    "callHistoryTranscript": "ট্রান্সক্রিপ্ট"
+    "callHistoryTranscript": "ট্রান্সক্রিপ্ট",
+    "upNext": "തുടർന്നുള്ളത്"
 }

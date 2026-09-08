@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-09-08 12:18:42.501826",
+    "@@last_modified": "2026-09-08 14:42:47.907317",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2281,5 +2281,6 @@
     "unableToJoinCourseError": "Hatukuweza kukuongeza kwenye kozi hii kwa sasa. Tafadhali jaribu tena, au muulize mwalimu wako.",
     "edited": "Imehaririwa",
     "attach": "Ambatanisha",
-    "callHistoryTranscript": "Nakala"
+    "callHistoryTranscript": "Nakala",
+    "upNext": "Inayofuata"
 }

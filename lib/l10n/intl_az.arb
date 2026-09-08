@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-09-08 12:18:45.606693",
+    "@@last_modified": "2026-09-08 14:42:43.141868",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2281,5 +2281,6 @@
     "unableToJoinCourseError": "Hazırda sizi bu kursa əlavə edə bilmədik. Zəhmət olmasa, yenidən cəhd edin və ya müəlliminizdən soruşun.",
     "edited": "Redaktə edilib",
     "attach": "Əlavə et",
-    "callHistoryTranscript": "Transkript"
+    "callHistoryTranscript": "Transkript",
+    "upNext": "Növbəti"
 }

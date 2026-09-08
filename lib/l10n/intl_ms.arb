@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-09-08 12:18:41.993652",
+    "@@last_modified": "2026-09-08 14:42:46.327680",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2281,5 +2281,6 @@
     "unableToJoinCourseError": "Kami tidak dapat menambahkan anda ke kursus ini sekarang. Sila cuba lagi, atau tanya guru anda.",
     "edited": "Disunting",
     "attach": "Lampirkan",
-    "callHistoryTranscript": "Transkrip"
+    "callHistoryTranscript": "Transkrip",
+    "upNext": "Seterusnya"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-09-08 12:18:34.849727",
+    "@@last_modified": "2026-09-08 14:42:43.207149",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2281,5 +2281,6 @@
     "unableToJoinCourseError": "আমি আপোনাক এই পাঠ্যক্ৰমত এতিয়া যোগ কৰিব নোৱাৰিলোঁ। অনুগ্ৰহ কৰি পুনৰ চেষ্টা কৰক, অথবা আপোনাৰ শিক্ষকক সুধক।",
     "edited": "সম্পাদিত",
     "attach": "সংলগ্ন কৰক",
-    "callHistoryTranscript": "লিখিত ৰূপ"
+    "callHistoryTranscript": "লিখিত ৰূপ",
+    "upNext": "পৰৱৰ্তী"
 }

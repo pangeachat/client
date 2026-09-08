@@ -1362,7 +1362,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-09-08 12:18:38.661748",
+    "@@last_modified": "2026-09-08 14:42:44.929072",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10813,5 +10813,6 @@
     "unableToJoinCourseError": "Nos non poteva adder vos a iste curso nunc. Per favor, reprova, o demanda a tu inseniator.",
     "edited": "Redigite",
     "attach": "Adjunger",
-    "callHistoryTranscript": "Transcriptor"
+    "callHistoryTranscript": "Transcriptor",
+    "upNext": "Proxime"
 }

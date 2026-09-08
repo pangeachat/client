@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-09-08 12:18:44.517959",
+    "@@last_modified": "2026-09-08 14:42:48.712092",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9877,5 +9877,6 @@
     "unableToJoinCourseError": "我们暂时无法将您添加到此课程。请重试，或联系您的老师。",
     "edited": "已编辑",
     "attach": "附加",
-    "callHistoryTranscript": "文字记录"
+    "callHistoryTranscript": "文字记录",
+    "upNext": "接下来"
 }

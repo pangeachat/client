@@ -87,10 +87,23 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
+    // Three header states (#8874): the Up-next Mission sits on a
+    // primaryContainer band and says so in words; a satisfied Mission trades
+    // its star for a check and mutes its text; the rest stay plain. Up next
+    // wins the text colour when both apply (every Mission satisfied → the
+    // resolver anchors on the weakest one).
+    final satisfied = widget.progress?.satisfied ?? false;
+    final headerColor = widget.isUpNext
+        ? theme.colorScheme.onPrimaryContainer
+        : satisfied
+        ? theme.colorScheme.onSurfaceVariant
+        : null;
+
     final statement = Text(
       widget.group.objective.objective,
       style: theme.textTheme.bodyMedium?.copyWith(
-        color: widget.isUpNext ? theme.colorScheme.primary : null,
+        color: headerColor,
+        fontWeight: widget.isUpNext ? FontWeight.w500 : null,
       ),
     );
     final starFraction = widget.progress == null
@@ -104,9 +117,11 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Icon(
-                  Icons.star,
+                  satisfied ? Icons.check_circle : Icons.star,
                   size: 18.0,
-                  color: AppConfig.goldByTheme(context),
+                  color: satisfied
+                      ? AppConfig.successByTheme(context)
+                      : AppConfig.goldByTheme(context),
                 ),
                 const SizedBox(width: 4.0),
                 ExcludeSemantics(
@@ -114,12 +129,31 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
                     // Raw stars over the satisfaction threshold — surplus
                     // shows (12/7); only the quest header caps.
                     '${widget.progress!.stars}/${widget.progress!.threshold}',
-                    style: theme.textTheme.bodyMedium,
+                    style: theme.textTheme.bodyMedium?.copyWith(
+                      color: headerColor,
+                    ),
                   ),
                 ),
               ],
             ),
           );
+    // The emphasis in words, so it is never colour alone.
+    final upNextLabel = widget.isUpNext
+        ? Container(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2.0),
+            decoration: BoxDecoration(
+              color: theme.colorScheme.primary,
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            child: Text(
+              L10n.of(context).upNext,
+              style: theme.textTheme.labelSmall?.copyWith(
+                color: theme.colorScheme.onPrimary,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          )
+        : null;
     final collapseChevron = widget.collapsible
         ? AnimatedRotation(
             turns: _collapsed ? -0.25 : 0,
@@ -138,80 +172,102 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
     return Semantics(
       label: L10n.of(context).objective,
       container: true,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Objective header, left to right: the collapse chevron (full plan
-          // only), the Mission's earned/threshold stars when the shared
-          // rollup is in, then the can-do statement. The Up-next Mission's
-          // statement wears the accent.
-          Semantics(
-            // Without an explicit button container the toggle flattens into
-            // the section's group semantics and is unreachable on web, where
-            // clicks route through the semantics DOM.
-            button: widget.collapsible,
-            container: widget.collapsible,
-            expanded: widget.collapsible ? !_collapsed : null,
-            child: InkWell(
-              onTap: widget.collapsible
-                  ? () => setState(() => _collapsed = !_collapsed)
-                  : null,
-              borderRadius: BorderRadius.circular(8.0),
-              // The star fraction leads and the collapse chevron trails. In
-              // column mode the row has room for the statement between them;
-              // on narrow screens the statement drops to its own full-width
-              // row so a wrapped statement never shares lines with the icons.
-              child: _isColumnMode
-                  ? Row(
-                      children: [
-                        if (starFraction != null) ...[
-                          starFraction,
-                          const SizedBox(width: 8.0),
+      // The Up-next Mission's band wraps the header AND its activity row, so
+      // the whole section reads as "here" when scanning by thumbnails.
+      child: Container(
+        padding: widget.isUpNext ? const EdgeInsets.all(12.0) : EdgeInsets.zero,
+        decoration: widget.isUpNext
+            ? BoxDecoration(
+                color: theme.colorScheme.primaryContainer,
+                borderRadius: BorderRadius.circular(12.0),
+              )
+            : null,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Objective header, left to right: the Mission's earned/threshold
+            // stars when the shared rollup is in, the Up-next label when this is
+            // the anchor, the can-do statement, then the collapse chevron (full
+            // plan only).
+            Semantics(
+              // Without an explicit button container the toggle flattens into
+              // the section's group semantics and is unreachable on web, where
+              // clicks route through the semantics DOM.
+              button: widget.collapsible,
+              container: widget.collapsible,
+              expanded: widget.collapsible ? !_collapsed : null,
+              child: InkWell(
+                onTap: widget.collapsible
+                    ? () => setState(() => _collapsed = !_collapsed)
+                    : null,
+                borderRadius: BorderRadius.circular(8.0),
+                // The star fraction leads and the collapse chevron trails. In
+                // column mode the row has room for the statement between them;
+                // on narrow screens the statement drops to its own full-width
+                // row so a wrapped statement never shares lines with the icons.
+                child: _isColumnMode
+                    ? Row(
+                        children: [
+                          if (starFraction != null) ...[
+                            starFraction,
+                            const SizedBox(width: 8.0),
+                          ],
+                          if (upNextLabel != null) ...[
+                            upNextLabel,
+                            const SizedBox(width: 8.0),
+                          ],
+                          Expanded(child: statement),
+                          if (collapseChevron != null) ...[
+                            const SizedBox(width: 4.0),
+                            collapseChevron,
+                          ],
                         ],
-                        Expanded(child: statement),
-                        if (collapseChevron != null) ...[
-                          const SizedBox(width: 4.0),
-                          collapseChevron,
-                        ],
-                      ],
-                    )
-                  : Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        if (collapseChevron != null || starFraction != null)
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 4.0),
-                            child: Row(
-                              children: [
-                                ?starFraction,
-                                const Spacer(),
-                                ?collapseChevron,
-                              ],
+                      )
+                    : Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          if (collapseChevron != null ||
+                              starFraction != null ||
+                              upNextLabel != null)
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 4.0),
+                              child: Row(
+                                children: [
+                                  ?starFraction,
+                                  if (upNextLabel != null) ...[
+                                    if (starFraction != null)
+                                      const SizedBox(width: 8.0),
+                                    upNextLabel,
+                                  ],
+                                  const Spacer(),
+                                  ?collapseChevron,
+                                ],
+                              ),
                             ),
-                          ),
-                        statement,
-                      ],
-                    ),
+                          statement,
+                        ],
+                      ),
+              ),
             ),
-          ),
-          // No per-Mission progress bar — only the overall course has a bar (in
-          // the header). A Mission shows just its star count above (#7597).
-          if (!_collapsed) const SizedBox(height: 12.0),
-          // The activities that satisfy this objective.
-          if (!_collapsed)
-            ActivityCarousel(
-              activities: activities,
-              onTap: widget.onTap,
-              userStarsByActivity: widget.userStarsByActivity,
-              hasCompletedActivity: widget.hasCompletedActivity,
-              liveStateByActivity: widget.liveStateByActivity,
-              availableParticipants: widget.availableParticipants,
-              pingedActivityId: widget.pingedActivityId,
-              spacing: widget.spacing,
-              cardWidth: widget.cardWidth,
-              cardHeight: widget.cardHeight,
-            ),
-        ],
+            // No per-Mission progress bar — only the overall course has a bar (in
+            // the header). A Mission shows just its star count above (#7597).
+            if (!_collapsed) const SizedBox(height: 12.0),
+            // The activities that satisfy this objective.
+            if (!_collapsed)
+              ActivityCarousel(
+                activities: activities,
+                onTap: widget.onTap,
+                userStarsByActivity: widget.userStarsByActivity,
+                hasCompletedActivity: widget.hasCompletedActivity,
+                liveStateByActivity: widget.liveStateByActivity,
+                availableParticipants: widget.availableParticipants,
+                pingedActivityId: widget.pingedActivityId,
+                spacing: widget.spacing,
+                cardWidth: widget.cardWidth,
+                cardHeight: widget.cardHeight,
+              ),
+          ],
+        ),
       ),
     );
   }

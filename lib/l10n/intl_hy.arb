@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-09-08 12:18:37.469055",
+    "@@last_modified": "2026-09-08 14:42:44.912296",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2281,5 +2281,6 @@
     "unableToJoinCourseError": "Մենք չկարողացանք ձեզ ավելացնել այս դասընթացին հիմա։ Խնդրում ենք նորից փորձել կամ դիմել ձեր ուսուցչին։",
     "edited": "Խմբագրված է",
     "attach": "Կցել",
-    "callHistoryTranscript": "Տեքստ"
+    "callHistoryTranscript": "Տեքստ",
+    "upNext": "Հաջորդը"
 }

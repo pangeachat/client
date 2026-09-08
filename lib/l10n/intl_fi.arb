@@ -3536,7 +3536,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-09-08 12:18:36.468443",
+    "@@last_modified": "2026-09-08 14:42:44.053477",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9914,5 +9914,6 @@
     "unableToJoinCourseError": "Emme voineet lisätä sinua tälle kurssille juuri nyt. Yritä uudelleen tai kysy opettajaltasi.",
     "edited": "Muokattu",
     "attach": "Liitä",
-    "callHistoryTranscript": "Puheluhistoria"
+    "callHistoryTranscript": "Puheluhistoria",
+    "upNext": "Seuraavaksi"
 }

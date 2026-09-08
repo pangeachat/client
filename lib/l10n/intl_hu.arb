@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-09-08 12:18:38.571673",
+    "@@last_modified": "2026-09-08 14:42:44.984415",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9980,5 +9980,6 @@
     "unableToJoinCourseError": "Jelenleg nem tudtunk hozzáadni ehhez a kurzushoz. Kérjük, próbálja újra, vagy kérdezze meg a tanárát.",
     "edited": "Szerkesztve",
     "attach": "Csatolás",
-    "callHistoryTranscript": "Átirat"
+    "callHistoryTranscript": "Átirat",
+    "upNext": "Következő"
 }

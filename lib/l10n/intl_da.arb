@@ -1334,7 +1334,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-09-08 12:18:35.572711",
+    "@@last_modified": "2026-09-08 14:42:43.631517",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10797,5 +10797,6 @@
     "unableToJoinCourseError": "Vi kunne ikke tilføje dig til dette kursus lige nu. Prøv venligst igen, eller spørg din lærer.",
     "edited": "Redigeret",
     "attach": "Vedhæft",
-    "callHistoryTranscript": "Udskrift"
+    "callHistoryTranscript": "Udskrift",
+    "upNext": "Næste"
 }

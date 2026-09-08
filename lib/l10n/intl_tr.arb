@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-09-08 12:18:42.963200",
+    "@@last_modified": "2026-09-08 14:42:48.106627",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10178,5 +10178,6 @@
     "unableToJoinCourseError": "Şu anda sizi bu kursa ekleyemedik. Lütfen tekrar deneyin veya öğretmeninize danışın.",
     "edited": "Düzenlendi",
     "attach": "Ekle",
-    "callHistoryTranscript": "Döküm"
+    "callHistoryTranscript": "Döküm",
+    "upNext": "Sırada"
 }

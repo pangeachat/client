@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-09-08 12:18:39.890349",
+    "@@last_modified": "2026-09-08 14:42:46.170709",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2281,5 +2281,6 @@
     "unableToJoinCourseError": "Одоогоор таныг энэ хичээлд нэмэх боломжгүй байна. Дахин оролдоно уу, эсвэл багшаасаа асуугаарай.",
     "edited": "Засварласан",
     "attach": "Хавсаргах",
-    "callHistoryTranscript": "Хуулбар"
+    "callHistoryTranscript": "Хуулбар",
+    "upNext": "Дараагийнх"
 }

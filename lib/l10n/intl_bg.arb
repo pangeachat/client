@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-09-08 12:18:35.262561",
+    "@@last_modified": "2026-09-08 14:42:43.018287",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2281,5 +2281,6 @@
     "unableToJoinCourseError": "В момента не можем да ви добавим към този курс. Моля, опитайте отново или попитайте вашия учител.",
     "edited": "Редактирано",
     "attach": "Прикачи",
-    "callHistoryTranscript": "Препис"
+    "callHistoryTranscript": "Препис",
+    "upNext": "Следва"
 }

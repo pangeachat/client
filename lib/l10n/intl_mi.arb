@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-09-08 12:18:39.948146",
+    "@@last_modified": "2026-09-08 14:42:46.048459",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2281,5 +2281,6 @@
     "unableToJoinCourseError": "Kāore i taea te tāpiri i a koe ki tēnei akoranga i nāianei tonu. Tēnā, ngana anō, pātai atu rānei ki tō kaiako.",
     "edited": "Kua whakatikaina",
     "attach": "Āpiti",
-    "callHistoryTranscript": "Tuhinga"
+    "callHistoryTranscript": "Tuhinga",
+    "upNext": "Panuku"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-09-08 12:18:36.070339",
+    "@@last_modified": "2026-09-08 14:42:44.044925",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9874,5 +9874,6 @@
     "unableToJoinCourseError": "Me ei saanud teid praegu sellele kursusele lisada. Palun proovige uuesti või küsige oma õpetajalt.",
     "edited": "Muudetud",
     "attach": "Lisa",
-    "callHistoryTranscript": "Transkriptsioon"
+    "callHistoryTranscript": "Transkriptsioon",
+    "upNext": "Järgmisena"
 }

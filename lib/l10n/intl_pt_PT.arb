@@ -2559,7 +2559,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-09-08 12:18:41.171426",
+    "@@last_modified": "2026-09-08 14:42:47.017502",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10794,5 +10794,6 @@
     "unableToJoinCourseError": "Não foi possível adicioná-lo a este curso neste momento. Por favor, tente novamente ou pergunte ao seu professor.",
     "edited": "Editado",
     "attach": "Anexar",
-    "callHistoryTranscript": "Transcrição"
+    "callHistoryTranscript": "Transcrição",
+    "upNext": "A seguir"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-09-08 12:18:45.602277",
+    "@@last_modified": "2026-09-08 14:42:47.501105",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2281,5 +2281,6 @@
     "unableToJoinCourseError": "Hadda kuma dari karno koorsadan. Fadlan isku day mar kale, ama macalinkaaga weydii.",
     "edited": "Wax laga beddelay",
     "attach": "Ku lifaaq",
-    "callHistoryTranscript": "Qoraal"
+    "callHistoryTranscript": "Qoraal",
+    "upNext": "Ku xiga"
 }

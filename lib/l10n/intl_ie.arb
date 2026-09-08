@@ -3093,7 +3093,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-09-08 12:18:37.710595",
+    "@@last_modified": "2026-09-08 14:42:44.939253",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10509,5 +10509,6 @@
     "unableToJoinCourseError": "Níorbh fhéidir linn tú a chur leis an gcúrsa seo faoi láthair. Bain triail eile as, nó iarr ar do mhúinteoir.",
     "edited": "Eagraithe",
     "attach": "Ceangail",
-    "callHistoryTranscript": "Tras-scríbhinn"
+    "callHistoryTranscript": "Tras-scríbhinn",
+    "upNext": "An chéad cheann eile"
 }

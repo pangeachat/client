@@ -1802,7 +1802,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-09-08 12:18:42.015422",
+    "@@last_modified": "2026-09-08 14:42:47.514422",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10822,5 +10822,6 @@
     "unableToJoinCourseError": "Trenutno vas ne moremo dodati k temu tečaju. Poskusite znova ali vprašajte svojega učitelja.",
     "edited": "Urejeno",
     "attach": "Priloži",
-    "callHistoryTranscript": "Prepis"
+    "callHistoryTranscript": "Prepis",
+    "upNext": "Sledi"
 }

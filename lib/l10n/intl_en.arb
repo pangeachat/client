@@ -4164,6 +4164,10 @@
         }
     },
     "coursePlan": "Course Plan",
+    "upNext": "Up next",
+    "@upNext": {
+        "description": "Label on the course plan's next Mission (learning objective) header — the one the learner should work on next."
+    },
     "editCourseLater": "You can edit template title, descriptions, and course image later.",
     "createCourse": "Create course",
     "stats": "Stats",

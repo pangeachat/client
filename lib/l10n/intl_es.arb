@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-09-08 12:18:35.947463",
+    "@@last_modified": "2026-09-08 14:42:44.143463",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8096,5 +8096,6 @@
     "unableToJoinCourseError": "No pudimos añadirte a este curso ahora mismo. Por favor, inténtalo de nuevo o pregunta a tu profesor.",
     "edited": "Editado",
     "attach": "Adjuntar",
-    "callHistoryTranscript": "Transcripción"
+    "callHistoryTranscript": "Transcripción",
+    "upNext": "A continuación"
 }

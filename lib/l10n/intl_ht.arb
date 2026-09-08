@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-09-08 12:18:37.031841",
+    "@@last_modified": "2026-09-08 14:42:44.915278",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2281,5 +2281,6 @@
     "unableToJoinCourseError": "Nou pa t' kapab ajoute ou nan kou sa a kounye a. Tanpri eseye ankò, oswa mande pwofesè ou.",
     "edited": "Modifye",
     "attach": "Tache",
-    "callHistoryTranscript": "Transkripsyon"
+    "callHistoryTranscript": "Transkripsyon",
+    "upNext": "Apre sa"
 }

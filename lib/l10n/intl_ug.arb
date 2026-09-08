@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-09-08 12:18:48.440844",
+    "@@last_modified": "2026-09-08 14:42:48.305648",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2281,5 +2281,6 @@
     "unableToJoinCourseError": "بىز سىزنى ھازىر بۇ دەرسكە قوشالمىدۇق. قايتا سىناپ بېقىڭ ياكى ئوقۇتقۇچىڭىزدىن سوراڭ.",
     "edited": "تەھرىرلەندى",
     "attach": "قوشۇش",
-    "callHistoryTranscript": "تېكىست"
+    "callHistoryTranscript": "تېكىست",
+    "upNext": "كېيىنكى"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-09-08 12:18:35.247644",
+    "@@last_modified": "2026-09-08 14:42:43.151798",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2281,5 +2281,6 @@
     "unableToJoinCourseError": "Ons kon jou nie nou by hierdie kursus voeg nie. Probeer asseblief weer, of vra jou onderwyser.",
     "edited": "Geredigeer",
     "attach": "Heg aan",
-    "callHistoryTranscript": "Transkripsie"
+    "callHistoryTranscript": "Transkripsie",
+    "upNext": "Volgende"
 }

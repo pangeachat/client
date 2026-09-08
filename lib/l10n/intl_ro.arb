@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-08 12:18:41.558867",
+    "@@last_modified": "2026-09-08 14:42:47.104644",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10609,5 +10609,6 @@
     "unableToJoinCourseError": "Nu te-am putut adăuga la acest curs chiar acum. Te rugăm să încerci din nou sau să-ți întrebi profesorul.",
     "edited": "Editat",
     "attach": "Atașează",
-    "callHistoryTranscript": "Transcrierea"
+    "callHistoryTranscript": "Transcrierea",
+    "upNext": "Urmează"
 }

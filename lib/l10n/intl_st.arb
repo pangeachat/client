@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-09-08 12:18:48.981397",
+    "@@last_modified": "2026-09-08 14:42:47.566529",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2281,5 +2281,6 @@
     "unableToJoinCourseError": "Ha re a kgona ho o kenya thutong ena ha jwale. Ka kopo leka hape, kapa o botse tichere ya hao.",
     "edited": "E hlophisitsoe",
     "attach": "Kopanya",
-    "callHistoryTranscript": "Mongolo"
+    "callHistoryTranscript": "Mongolo",
+    "upNext": "Seo se latelang"
 }

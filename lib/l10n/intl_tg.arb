@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-09-08 12:18:42.656788",
+    "@@last_modified": "2026-09-08 14:42:47.993840",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2281,5 +2281,6 @@
     "unableToJoinCourseError": "Мо ҳоло натавонистем шуморо ба ин курс илова кунем. Лутфан, дубора кӯшиш кунед ё аз муаллими худ пурсед.",
     "edited": "Таҳрир шуд",
     "attach": "Замима кардан",
-    "callHistoryTranscript": "Транскрипт"
+    "callHistoryTranscript": "Транскрипт",
+    "upNext": "Баъдӣ"
 }

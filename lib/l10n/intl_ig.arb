@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-09-08 12:18:38.122089",
+    "@@last_modified": "2026-09-08 14:42:45.090567",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2281,5 +2281,6 @@
     "unableToJoinCourseError": "Anyị enweghị ike itinye gị na nkuzi a ugbu a. Biko gbalịa ọzọ, ma ọ bụ jụọ onye nkuzi gị.",
     "edited": "Dezigharịrị",
     "attach": "Tinye",
-    "callHistoryTranscript": "Ndegharị ederede"
+    "callHistoryTranscript": "Ndegharị ederede",
+    "upNext": "Ihe na-abịa"
 }

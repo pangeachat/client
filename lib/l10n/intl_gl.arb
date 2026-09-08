@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-09-08 12:18:36.487944",
+    "@@last_modified": "2026-09-08 14:42:44.688033",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9877,5 +9877,6 @@
     "unableToJoinCourseError": "Non puidemos engadirte a este curso agora mesmo. Téntao de novo ou pregunta ao teu profesor.",
     "edited": "Editado",
     "attach": "Adxuntar",
-    "callHistoryTranscript": "Transcrición"
+    "callHistoryTranscript": "Transcrición",
+    "upNext": "A seguir"
 }

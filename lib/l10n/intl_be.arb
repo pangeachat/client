@@ -3548,7 +3548,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-09-08 12:18:34.948479",
+    "@@last_modified": "2026-09-08 14:42:43.065619",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9891,5 +9891,6 @@
     "unableToJoinCourseError": "Мы не змаглі дадаць вас на гэты курс. Калі ласка, паспрабуйце яшчэ раз або звярніцеся да настаўніка.",
     "edited": "Зменена",
     "attach": "Далучыць",
-    "callHistoryTranscript": "Транскрыпт"
+    "callHistoryTranscript": "Транскрыпт",
+    "upNext": "Далей"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-09-08 12:18:42.066050",
+    "@@last_modified": "2026-09-08 14:42:47.558535",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2281,5 +2281,6 @@
     "unableToJoinCourseError": "E le mafai ona matou fa'aopoopoina oe i lenei kosi i le taimi nei. Fa'amolemole toe taumafai, pe fesili i lau faiaoga.",
     "edited": "Fa'atonutonuina",
     "attach": "Faʻapipiʻi",
-    "callHistoryTranscript": "Tusitusiga"
+    "callHistoryTranscript": "Tusitusiga",
+    "upNext": "Le isi"
 }

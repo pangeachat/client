@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-08 12:18:36.428405",
+    "@@last_modified": "2026-09-08 14:42:43.941975",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9965,5 +9965,6 @@
     "unableToJoinCourseError": "در حال حاضر نمی‌توانیم شما را به این دوره اضافه کنیم. لطفاً دوباره امتحان کنید یا از معلم خود بپرسید.",
     "edited": "ویرایش‌شده",
     "attach": "پیوست کردن",
-    "callHistoryTranscript": "رونوشت"
+    "callHistoryTranscript": "رونوشت",
+    "upNext": "بعدی"
 }

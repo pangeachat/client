@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-08 12:18:35.939241",
+    "@@last_modified": "2026-09-08 14:42:44.134345",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10822,5 +10822,6 @@
     "unableToJoinCourseError": "Ni ne povis aldoni vin al ĉi tiu kurso nun. Bonvolu reprovi, aŭ demandu vian instruiston.",
     "edited": "Redaktita",
     "attach": "Almeti",
-    "callHistoryTranscript": "Transskribo"
+    "callHistoryTranscript": "Transskribo",
+    "upNext": "Poste"
 }
