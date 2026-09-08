@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-09-08 09:44:55.644643",
+    "@@last_modified": "2026-09-08 12:18:37.031841",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2278,5 +2278,6 @@
     "listenFirst": "Koute anvan",
     "listenFirstDescription": "Lè Koute anvan aktive, yon sèl klik jis jwe odyo a epi doub-klik chwazi opsyon an.",
     "listenFirstNeedsChoiceAudio": "Aktive odyo Chwa pou itilize Koute anvan.",
-    "unableToJoinCourseError": "Nou pa t' kapab ajoute ou nan kou sa a kounye a. Tanpri eseye ankò, oswa mande pwofesè ou."
+    "unableToJoinCourseError": "Nou pa t' kapab ajoute ou nan kou sa a kounye a. Tanpri eseye ankò, oswa mande pwofesè ou.",
+    "edited": "Modifye"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-09-08 09:44:54.754664",
+    "@@last_modified": "2026-09-08 12:18:38.852803",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2278,5 +2278,6 @@
     "listenFirst": "Hoʻolohe mua",
     "listenFirstDescription": "Ke hoʻā ʻia ʻo Hoʻolohe Mua, hoʻokani wale ka pā hoʻokahi i ke leo a koho ka pā pālua i ke koho.",
     "listenFirstNeedsChoiceAudio": "E hoʻā i ke kani Koho e hoʻohana iā Hoʻolohe Mua.",
-    "unableToJoinCourseError": "ʻAʻole hiki iā mākou ke hoʻohui iā ʻoe i kēia papa i kēia manawa. E ʻoluʻolu e hoʻāʻo hou, a i ʻole e nīnau i kāu kumu."
+    "unableToJoinCourseError": "ʻAʻole hiki iā mākou ke hoʻohui iā ʻoe i kēia papa i kēia manawa. E ʻoluʻolu e hoʻāʻo hou, a i ʻole e nīnau i kāu kumu.",
+    "edited": "Hoʻoponopono ʻia"
 }

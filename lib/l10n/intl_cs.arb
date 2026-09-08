@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-09-08 09:44:54.122516",
+    "@@last_modified": "2026-09-08 12:18:35.540330",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10368,5 +10368,6 @@
     "listenFirst": "Nejprve poslech",
     "listenFirstDescription": "Když je zapnuta funkce „Nejprve poslech“, jedním kliknutím se přehraje zvuk a dvojitým kliknutím se vybere možnost.",
     "listenFirstNeedsChoiceAudio": "Zapněte zvuk voleb, abyste mohli použít funkci „Nejprve poslech“.",
-    "unableToJoinCourseError": "Momentálně se nám nepodařilo přidat vás do tohoto kurzu. Zkuste to prosím znovu, nebo se zeptejte svého učitele."
+    "unableToJoinCourseError": "Momentálně se nám nepodařilo přidat vás do tohoto kurzu. Zkuste to prosím znovu, nebo se zeptejte svého učitele.",
+    "edited": "Upraveno"
 }

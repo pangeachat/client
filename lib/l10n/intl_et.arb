@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-09-08 09:44:54.306766",
+    "@@last_modified": "2026-09-08 12:18:36.070339",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9871,5 +9871,6 @@
     "listenFirst": "Kõigepealt kuula",
     "listenFirstDescription": "Kui „Kõigepealt kuula“ on sisse lülitatud, esitab üks klõps heli ja topeltklõps valib valiku.",
     "listenFirstNeedsChoiceAudio": "Lülita sisse valikute heli, et kasutada funktsiooni „Kõigepealt kuula“.",
-    "unableToJoinCourseError": "Me ei saanud teid praegu sellele kursusele lisada. Palun proovige uuesti või küsige oma õpetajalt."
+    "unableToJoinCourseError": "Me ei saanud teid praegu sellele kursusele lisada. Palun proovige uuesti või küsige oma õpetajalt.",
+    "edited": "Muudetud"
 }

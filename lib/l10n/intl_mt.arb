@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-09-08 09:45:00.134757",
+    "@@last_modified": "2026-09-08 12:18:40.047814",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2278,5 +2278,6 @@
     "listenFirst": "Isma' l-ewwel",
     "listenFirstDescription": "Meta Isma' l-Ewwel tkun mixgħula, klikk waħda ddoqq l-awdjo u double-click tagħżel l-għażla.",
     "listenFirstNeedsChoiceAudio": "Ixgħel l-awdjo tal-Għażliet biex tuża Isma' l-Ewwel.",
-    "unableToJoinCourseError": "Ma stajniex inżiduk ma' dan il-kors bħalissa. Jekk jogħġbok erġa' pprova, jew staqsi lill-għalliem tiegħek."
+    "unableToJoinCourseError": "Ma stajniex inżiduk ma' dan il-kors bħalissa. Jekk jogħġbok erġa' pprova, jew staqsi lill-għalliem tiegħek.",
+    "edited": "Editjat"
 }

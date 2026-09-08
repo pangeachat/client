@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-09-08 09:45:06.352756",
+    "@@last_modified": "2026-09-08 12:18:44.025630",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2278,5 +2278,6 @@
     "listenFirst": "Lalela kuqala",
     "listenFirstDescription": "Uma i-Lalela Kuqala ivuliwe, ukuchofoza okukodwa kudlala umsindo kuphela bese ukuchofoza kabili kukhetha inketho.",
     "listenFirstNeedsChoiceAudio": "Vula umsindo wezinketho ukuze usebenzise i-Lalela Kuqala.",
-    "unableToJoinCourseError": "Asikwazanga ukukufaka kulesi sifundo okwamanje. Sicela uzame futhi, noma ubuze uthisha wakho."
+    "unableToJoinCourseError": "Asikwazanga ukukufaka kulesi sifundo okwamanje. Sicela uzame futhi, noma ubuze uthisha wakho.",
+    "edited": "Kuhleliwe"
 }

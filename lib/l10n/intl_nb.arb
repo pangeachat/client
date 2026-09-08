@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-08 09:45:00.025811",
+    "@@last_modified": "2026-09-08 12:18:40.262918",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9931,5 +9931,6 @@
     "listenFirst": "Lytt først",
     "listenFirstDescription": "Når Lytt først er på, spiller ett klikk bare av lyd, og dobbeltklikk velger alternativet.",
     "listenFirstNeedsChoiceAudio": "Slå på lyd for valg for å bruke Lytt først.",
-    "unableToJoinCourseError": "Vi kunne ikke legge deg til dette kurset akkurat nå. Prøv igjen, eller spør læreren din."
+    "unableToJoinCourseError": "Vi kunne ikke legge deg til dette kurset akkurat nå. Prøv igjen, eller spør læreren din.",
+    "edited": "Redigert"
 }

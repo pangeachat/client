@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-09-08 09:44:59.928049",
+    "@@last_modified": "2026-09-08 12:18:39.355708",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2278,5 +2278,6 @@
     "listenFirst": "Als éischt lauschteren",
     "listenFirstDescription": "Wann 'Als éischt lauschteren' aktivéiert ass, spillt een Klick just den Audio an en Duebelklick wielt d'Optioun aus.",
     "listenFirstNeedsChoiceAudio": "Schalt d'Wiel-Audio un fir 'Als éischt lauschteren' ze benotzen.",
-    "unableToJoinCourseError": "Mir konnten Iech de Moment net an dëse Cours aschreiwen. Probéiert et w.e.g. nach eng Kéier, oder frot Äre Léierpersonal."
+    "unableToJoinCourseError": "Mir konnten Iech de Moment net an dëse Cours aschreiwen. Probéiert et w.e.g. nach eng Kéier, oder frot Äre Léierpersonal.",
+    "edited": "Geännert"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-09-08 09:44:54.157955",
+    "@@last_modified": "2026-09-08 12:18:36.938300",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2278,5 +2278,6 @@
     "listenFirst": "Saurara da farko",
     "listenFirstDescription": "Idan Saurara da farko yana kunne, danna sau ɗaya kawai yana kunna sauti kuma danna sau biyu yana zaɓar zaɓi.",
     "listenFirstNeedsChoiceAudio": "Kunna sautin Zaɓuɓɓuka don amfani da Saurara da farko.",
-    "unableToJoinCourseError": "Ba mu iya saka ka cikin wannan kwas ɗin a yanzu ba. Da fatan za ka sake gwadawa, ko kuma ka tambayi malamin ka."
+    "unableToJoinCourseError": "Ba mu iya saka ka cikin wannan kwas ɗin a yanzu ba. Da fatan za ka sake gwadawa, ko kuma ka tambayi malamin ka.",
+    "edited": "An gyara"
 }

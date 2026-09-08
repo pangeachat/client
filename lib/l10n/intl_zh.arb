@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-09-08 09:45:05.909571",
+    "@@last_modified": "2026-09-08 12:18:44.517959",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9874,5 +9874,6 @@
     "listenFirst": "先听",
     "listenFirstDescription": "开启“先听”后，单击播放音频，双击选择选项。",
     "listenFirstNeedsChoiceAudio": "请开启“选项音频”以使用“先听”功能。",
-    "unableToJoinCourseError": "我们暂时无法将您添加到此课程。请重试，或联系您的老师。"
+    "unableToJoinCourseError": "我们暂时无法将您添加到此课程。请重试，或联系您的老师。",
+    "edited": "已编辑"
 }

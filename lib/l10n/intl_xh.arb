@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-09-08 09:45:06.518361",
+    "@@last_modified": "2026-09-08 12:18:43.618954",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2278,5 +2278,6 @@
     "listenFirst": "Mamela kuqala",
     "listenFirstDescription": "Xa i-'Mamela kuqala' ivuliwe, ukucofa kube kanye kudlala iaudio kwaye ukucofa kabini kukhetha ukhetho.",
     "listenFirstNeedsChoiceAudio": "Vula iaudio yeZikhetho ukuze usebenzise i-'Mamela kuqala'.",
-    "unableToJoinCourseError": "Asikwazanga ukukongeza kwesi sifundo ngoku. Nceda zama kwakhona, okanye ubuze utitshala wakho."
+    "unableToJoinCourseError": "Asikwazanga ukukongeza kwesi sifundo ngoku. Nceda zama kwakhona, okanye ubuze utitshala wakho.",
+    "edited": "Ihlelwe"
 }
