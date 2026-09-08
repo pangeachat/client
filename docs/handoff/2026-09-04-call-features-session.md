@@ -812,3 +812,43 @@ the live panel attaches. iOS hits the SAME recording bug -- the fix helps there.
   error classes, add mutation-proven tests, keep the 63 green + wiring unchanged, self-Codex-green,
   commit on the branch. Then I cold-gate -> push satvik/call-ring-cues + open the #8807 PR.
 - MIX still awaiting owner A-vs-B pick (I recommended B). Word card #8797 excluded (Gabby).
+
+## 2026-09-08 12:30 — SESSION CHECKPOINT (internet goes dark ~12:55; no new dispatches)
+RUNNING (do not stop): (1) cues-fix agent a487fa8ec310ac003 in worktree .claude/worktrees/cues-pr
+(branch satvik/call-ring-cues); (2) merge-design Codex gate bg bjfjkceyz -> verdict
+/private/tmp/mergedesign-verdict.txt. SendMessage to a subagent is NOT available here, so the
+cues-fix agent could NOT be told to checkpoint; it commits only at the END, so if internet
+interrupts its Codex self-gate its edits are UNCOMMITTED in the cues-pr worktree — RECOVER via
+`git -C .claude/worktrees/cues-pr status` and finish/commit them next session. Do NOT edit the
+cues-pr worktree while the agent is still active.
+
+STATE OF THE WORK:
+- RECORDING (piece 1) + TRANSCRIPT ORDERING (piece 2): DONE + fully cold-green, LOCAL on
+  satvik/call-features-combined (this worktree). Real-call re-test PASSED: phone half full-length
+  (mute=silence, bye preserved), no "bye first", merge natural. The ordering wall-floor is an
+  accepted TRADE (owner OK'd); native suspension clock = tracked follow-up.
+- MIX FEATURE (option B, client pre-mixed file) chosen by owner. Design spec:
+  /private/tmp/call-audio-merge-DESIGN.md (Codex gate bjfjkceyz IN FLIGHT). Locked decisions:
+  pure-Dart mixer in a compute() isolate (parse WAV, resample 16k->48k polyphase, align by
+  fileStartSfuMs, AVERAGE OVER DISTINCT USERS U = matches validated ffmpeg amix normalize=1, no
+  clip); new event type pangea.call_audio_merged (not a flag) w/ source_event_ids; election =
+  lowest-(senderId,deviceId) among posted halves + rank backoff + skip-if-merged-exists (BEST-EFFORT)
+  + PLAYER-SIDE DEDUP (show one) so a double-post is cosmetic; player shows merged first ("Full
+  call"), widget unchanged. NEXT after design-green: build the mixer under the double-gate (agent
+  self-gates+commits, I cold-gate) -- NOT dispatched yet (owner said no new dispatch + internet).
+- CUES PR (#8807): extracted to cues-pr worktree off origin/main (9e6e08a2be), cherry-pick CLEAN,
+  format/analyze/import/63-tests green; cross-model gate found 6 PRE-EXISTING AudioPlayer lifecycle
+  bugs (per-call leak, tone overlap, stale-play race, _configured race, fixed-600ms disposal,
+  swallowed stop error) -> fix agent running. After fix: MY cold-gate -> local PR CI + merge check
+  green -> REPORT for owner approval -> then PR. (verdicts: /private/tmp/coldgate-cues-*/verdict.txt)
+- WORD CARD #8797: EXCLUDED from our PRs (Gabby's, per Will).
+- PR-GATE RULE (owner, standing): open NO PR without cold-Codex green + local PR CI green + merge
+  check green + report + explicit owner approval.
+
+RESUME NEXT SESSION: (a) read /private/tmp/mergedesign-verdict.txt (if the gate finished) and act
+on the merge-design verdict (red -> revise spec + re-gate; green -> build mixer under double-gate).
+(b) reconcile the cues-fix agent: read its output
+/private/tmp/.../tasks/a487fa8ec310ac003.output OR `git -C .claude/worktrees/cues-pr log/status`;
+if committed, MY cold-gate the fix; if WIP uncommitted, finish it. (c) then cues -> PR-ready ->
+report for approval. Local stack (Synapse/lk-jwt :7980/livekit v1.11.0/web :8092) is LAN-configured
+and needs no internet. Phone 56091FDAP001N3 has the combined-branch release APK installed.
