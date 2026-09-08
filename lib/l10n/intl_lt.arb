@@ -2967,7 +2967,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-09-04 10:08:36.508023",
+    "@@last_modified": "2026-09-08 12:18:39.379129",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10654,5 +10654,9 @@
     "callContinuingElsewhere": "Šis skambutis tęsiamas kitame jūsų įrenginyje.",
     "listenFirst": "Pirmiausia klausykite",
     "listenFirstDescription": "Kai įjungta „Pirmiausia klausykite“, vienu paspaudimu paleidžiamas garsas, o dukart spustelėjus pasirenkama parinktis.",
-    "listenFirstNeedsChoiceAudio": "Norėdami naudoti „Pirmiausia klausykite“, įjunkite pasirinkimų garsą."
+    "listenFirstNeedsChoiceAudio": "Norėdami naudoti „Pirmiausia klausykite“, įjunkite pasirinkimų garsą.",
+    "unableToJoinCourseError": "Šiuo metu negalėjome jūsų pridėti prie šio kurso. Bandykite dar kartą arba kreipkitės į mokytoją.",
+    "edited": "Redaguota",
+    "attach": "Pridėti",
+    "callHistoryTranscript": "Nuorašas"
 }

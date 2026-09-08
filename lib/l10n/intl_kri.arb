@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-09-04 10:08:35.950394",
+    "@@last_modified": "2026-09-08 12:18:39.532848",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2277,5 +2277,9 @@
     "callContinuingElsewhere": "Dis kɔl de kɔntinyu na yu ɔda dɛvais.",
     "listenFirst": "Fɔs lisin",
     "listenFirstDescription": "If yu tɔn Fɔs Lisin ɔn, wan klik jɔs de ple ɔdiwo ɛn tu klik de pik di ɔpshɔn.",
-    "listenFirstNeedsChoiceAudio": "Tɔn Chɔys Ɔdiwo ɔn fɔ yuz Fɔs Lisin."
+    "listenFirstNeedsChoiceAudio": "Tɔn Chɔys Ɔdiwo ɔn fɔ yuz Fɔs Lisin.",
+    "unableToJoinCourseError": "Wi nɔ ebul fɔ ad yu to dis kos naw. Duya tray bak, ɔ aks yu ticha.",
+    "edited": "Dɛn dɔn chenj am",
+    "attach": "Atach",
+    "callHistoryTranscript": "Transkript"
 }

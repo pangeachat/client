@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-04 10:08:32.642411",
+    "@@last_modified": "2026-09-08 12:18:35.288317",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10000,5 +10000,9 @@
     "callContinuingElsewhere": "Aquesta trucada continua a l'altre dispositiu.",
     "listenFirst": "Escolta primer",
     "listenFirstDescription": "Quan Escolta primer està activat, un clic només reprodueix l'àudio i un doble clic selecciona l'opció.",
-    "listenFirstNeedsChoiceAudio": "Activa l'àudio de les opcions per utilitzar Escolta primer."
+    "listenFirstNeedsChoiceAudio": "Activa l'àudio de les opcions per utilitzar Escolta primer.",
+    "unableToJoinCourseError": "No hem pogut afegir-te a aquest curs ara mateix. Torna-ho a provar o pregunta al teu professor.",
+    "edited": "Editat",
+    "attach": "Adjuntar",
+    "callHistoryTranscript": "Transcripció"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-09-04 10:08:35.839982",
+    "@@last_modified": "2026-09-08 12:18:38.835618",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2277,5 +2277,9 @@
     "callContinuingElsewhere": "ការហៅនេះកំពុងបន្តនៅលើឧបករណ៍ផ្សេងទៀតរបស់អ្នក។",
     "listenFirst": "ស្ដាប់មុន",
     "listenFirstDescription": "នៅពេលបើកមុខងារស្ដាប់មុន ការចុចម្ដងនឹងចាក់សំឡេង ហើយការចុចពីរដងនឹងជ្រើសរើសជម្រើស។",
-    "listenFirstNeedsChoiceAudio": "បើកសំឡេងជម្រើសដើម្បីប្រើមុខងារស្ដាប់មុន។"
+    "listenFirstNeedsChoiceAudio": "បើកសំឡេងជម្រើសដើម្បីប្រើមុខងារស្ដាប់មុន។",
+    "unableToJoinCourseError": "យើងមិនអាចបន្ថែមអ្នកទៅវគ្គសិក្សានេះបានទេ។ សូមព្យាយាមម្ដងទៀត ឬសួរគ្រូរបស់អ្នក។",
+    "edited": "បានកែសម្រួល",
+    "attach": "ភ្ជាប់",
+    "callHistoryTranscript": "ប្រតិចារិក"
 }

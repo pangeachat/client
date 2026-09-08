@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-09-04 10:08:34.853808",
+    "@@last_modified": "2026-09-08 12:18:38.571673",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9976,5 +9976,9 @@
     "callContinuingElsewhere": "Ez a hívás a másik eszközén folytatódik.",
     "listenFirst": "Először hallgatás",
     "listenFirstDescription": "Ha az „Először hallgatás” be van kapcsolva, egy kattintás csak a hangot játssza le, dupla kattintással pedig kiválaszthatja az opciót.",
-    "listenFirstNeedsChoiceAudio": "Kapcsolja be a Válaszok hangját az „Először hallgatás” használatához."
+    "listenFirstNeedsChoiceAudio": "Kapcsolja be a Válaszok hangját az „Először hallgatás” használatához.",
+    "unableToJoinCourseError": "Jelenleg nem tudtunk hozzáadni ehhez a kurzushoz. Kérjük, próbálja újra, vagy kérdezze meg a tanárát.",
+    "edited": "Szerkesztve",
+    "attach": "Csatolás",
+    "callHistoryTranscript": "Átirat"
 }

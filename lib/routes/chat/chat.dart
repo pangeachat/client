@@ -1682,6 +1682,12 @@ class ChatController extends State<ChatPageWithRoom>
     // Close span card if open
     MatrixState.pAnyState.closeAllOverlays();
 
+    // Resolved before the awaits below, not after: the learner may leave the
+    // chat while the placeholder and tokenization are in flight, and a
+    // disposed State has no `context` — the send itself must still complete
+    // (#8834; the same t0 capture the voice send uses, #8371).
+    final prefs = Matrix.of(context).store;
+
     final message = sendController.text;
     final edit = editEvent.value;
     final reply = replyEvent.value;
@@ -1707,7 +1713,6 @@ class ChatController extends State<ChatPageWithRoom>
     readAloudController.stopAndClear();
     // Pangea#
     _storeInputTimeoutTimer?.cancel();
-    final prefs = Matrix.of(context).store;
     prefs.remove('draft_$roomId');
     var parseCommands = true;
 
@@ -1749,7 +1754,7 @@ class ChatController extends State<ChatPageWithRoom>
     }
 
     final previousEdit = edit;
-    if (showEmojiPicker) {
+    if (showEmojiPicker && mounted) {
       hideEmojiPicker();
     }
 
@@ -1826,10 +1831,12 @@ class ChatController extends State<ChatPageWithRoom>
         })
         .catchError((err, s) {
           if (err is EventTooLarge) {
-            showAdaptiveDialog(
-              context: context,
-              builder: (context) => const EventTooLargeDialog(),
-            );
+            if (mounted) {
+              showAdaptiveDialog(
+                context: context,
+                builder: (context) => const EventTooLargeDialog(),
+              );
+            }
             return;
           }
           ErrorHandler.logError(
@@ -2831,24 +2838,6 @@ class ChatController extends State<ChatPageWithRoom>
   //   }
   // }
   // Pangea#
-
-  int? findChildIndexCallback(Key key, Map<String, int> thisEventsKeyMap) {
-    // this method is called very often. As such, it has to be optimized for speed.
-    if (key is! ValueKey) {
-      return null;
-    }
-    final eventId = key.value;
-    if (eventId is! String) {
-      return null;
-    }
-    // first fetch the last index the event was at
-    final index = thisEventsKeyMap[eventId];
-    if (index == null) {
-      return null;
-    }
-    // we need to +1 as 0 is the typing thing at the bottom
-    return index + 1;
-  }
 
   // #Pangea
   // void onInputBarSubmitted(String _) {

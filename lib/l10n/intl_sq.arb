@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-09-04 10:08:39.591027",
+    "@@last_modified": "2026-09-08 12:18:42.661702",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2277,5 +2277,9 @@
     "callContinuingElsewhere": "Kjo thirrje po vazhdon në pajisjen tuaj tjetër.",
     "listenFirst": "Dëgjo fillimisht",
     "listenFirstDescription": "Kur Dëgjo fillimisht është aktiv, një klikim luan vetëm audion dhe një klikim i dyfishtë zgjedh opsionin.",
-    "listenFirstNeedsChoiceAudio": "Aktivizo audion e Zgjedhjeve për të përdorur Dëgjo fillimisht."
+    "listenFirstNeedsChoiceAudio": "Aktivizo audion e Zgjedhjeve për të përdorur Dëgjo fillimisht.",
+    "unableToJoinCourseError": "Nuk mundëm t'ju shtonim në këtë kurs tani. Ju lutemi provoni përsëri, ose pyesni mësuesin tuaj.",
+    "edited": "Redaktuar",
+    "attach": "Bashkëngjit",
+    "callHistoryTranscript": "Transkripti"
 }

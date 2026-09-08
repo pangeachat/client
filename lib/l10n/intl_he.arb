@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-04 10:08:34.477573",
+    "@@last_modified": "2026-09-08 12:18:41.429990",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10787,5 +10787,9 @@
     "callContinuingElsewhere": "שיחה זו ממשיכה במכשיר האחר שלך.",
     "listenFirst": "האזנה תחילה",
     "listenFirstDescription": "כאשר האזנה תחילה מופעלת, לחיצה אחת מנגנת אודיו בלבד ולחיצה כפולה בוחרת את האפשרות.",
-    "listenFirstNeedsChoiceAudio": "הפעל אודיו של אפשרויות כדי להשתמש ב'האזנה תחילה'."
+    "listenFirstNeedsChoiceAudio": "הפעל אודיו של אפשרויות כדי להשתמש ב'האזנה תחילה'.",
+    "unableToJoinCourseError": "לא הצלחנו לצרף אותך לקורס הזה כרגע. אנא נסה/נסי שוב, או שאל/שאלי את המורה שלך.",
+    "edited": "נערך",
+    "attach": "צרף",
+    "callHistoryTranscript": "תמליל"
 }

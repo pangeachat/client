@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-04 10:08:39.625794",
+    "@@last_modified": "2026-09-08 12:18:42.177590",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10822,5 +10822,9 @@
     "callContinuingElsewhere": "Ovaj poziv se nastavlja na vašem drugom uređaju.",
     "listenFirst": "Prvo slušaj",
     "listenFirstDescription": "Kada je opcija „Prvo slušaj“ uključena, jedan klik samo pušta zvuk, a dvostruki klik bira opciju.",
-    "listenFirstNeedsChoiceAudio": "Uključite zvuk opcija da biste koristili „Prvo slušaj“."
+    "listenFirstNeedsChoiceAudio": "Uključite zvuk opcija da biste koristili „Prvo slušaj“.",
+    "unableToJoinCourseError": "Trenutno nismo mogli da vas dodamo na ovaj kurs. Pokušajte ponovo ili pitajte svog nastavnika.",
+    "edited": "Izmenjeno",
+    "attach": "Priloži",
+    "callHistoryTranscript": "Transkript"
 }

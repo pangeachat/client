@@ -26,6 +26,9 @@ class LeftPanelLayer extends StatelessWidget {
   /// tokens, and the allocator are untouched.
   final bool bare;
 
+  /// Grow a wide course card out of the context bar it replaces (#8866).
+  final bool revealFromBar;
+
   const LeftPanelLayer({
     super.key,
     required this.token,
@@ -33,6 +36,7 @@ class LeftPanelLayer extends StatelessWidget {
     required this.foldedOver,
     required this.getRoomKey,
     this.bare = false,
+    this.revealFromBar = false,
   });
 
   @override
@@ -46,6 +50,7 @@ class LeftPanelLayer extends StatelessWidget {
         shareItems: state.navigatorShareItems(token),
         courseCreationCompleter: state.navigatorCourseCompleter(token),
         bare: bare,
+        revealFromBar: revealFromBar,
       ),
     );
 

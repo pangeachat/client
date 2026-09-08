@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-04 10:08:33.616626",
+    "@@last_modified": "2026-09-08 12:18:35.939241",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10818,5 +10818,9 @@
     "callContinuingElsewhere": "Ĉi tiu voko daŭras en via alia aparato.",
     "listenFirst": "Unue aŭskultu",
     "listenFirstDescription": "Kiam Unue Aŭskultu estas ŝaltita, unu klako nur ludas sonon kaj duobla klako elektas la opcion.",
-    "listenFirstNeedsChoiceAudio": "Ŝaltu la sonon de Elektoj por uzi Unue Aŭskultu."
+    "listenFirstNeedsChoiceAudio": "Ŝaltu la sonon de Elektoj por uzi Unue Aŭskultu.",
+    "unableToJoinCourseError": "Ni ne povis aldoni vin al ĉi tiu kurso nun. Bonvolu reprovi, aŭ demandu vian instruiston.",
+    "edited": "Redaktita",
+    "attach": "Almeti",
+    "callHistoryTranscript": "Transskribo"
 }

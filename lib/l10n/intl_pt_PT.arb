@@ -2559,7 +2559,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-09-04 10:08:38.434597",
+    "@@last_modified": "2026-09-08 12:18:41.171426",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10790,5 +10790,9 @@
     "callContinuingElsewhere": "Esta chamada está a continuar no seu outro dispositivo.",
     "listenFirst": "Ouvir primeiro",
     "listenFirstDescription": "Quando a opção Ouvir primeiro está ativada, um clique reproduz o áudio e um clique duplo seleciona a opção.",
-    "listenFirstNeedsChoiceAudio": "Ative o áudio das escolhas para usar a opção Ouvir primeiro."
+    "listenFirstNeedsChoiceAudio": "Ative o áudio das escolhas para usar a opção Ouvir primeiro.",
+    "unableToJoinCourseError": "Não foi possível adicioná-lo a este curso neste momento. Por favor, tente novamente ou pergunte ao seu professor.",
+    "edited": "Editado",
+    "attach": "Anexar",
+    "callHistoryTranscript": "Transcrição"
 }

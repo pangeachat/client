@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-09-04 10:08:34.459397",
+    "@@last_modified": "2026-09-08 12:18:37.099137",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2277,5 +2277,9 @@
     "callContinuingElsewhere": "Qhov kev hu xovtooj no tabtom txuas ntxiv ntawm koj lub cuab yeej.",
     "listenFirst": "Mloog ua ntej",
     "listenFirstDescription": "Thaum Mloog Ua Ntej qhib, ib zaug nias tsuas yog ua suab xwb thiab ob zaug nias xaiv qhov kev xaiv.",
-    "listenFirstNeedsChoiceAudio": "Qhib Kev Xaiv suab kom siv Mloog Ua Ntej."
+    "listenFirstNeedsChoiceAudio": "Qhib Kev Xaiv suab kom siv Mloog Ua Ntej.",
+    "unableToJoinCourseError": "Tam sim no peb ntxiv tsis tau koj rau hauv zaj kawm no. Thov sim dua, los yog nug koj tus xib fwb.",
+    "edited": "Hloov kho lawm",
+    "attach": "Txuas",
+    "callHistoryTranscript": "Cov Lus Hais"
 }

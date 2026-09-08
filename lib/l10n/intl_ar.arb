@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-09-04 10:08:32.196264",
+    "@@last_modified": "2026-09-08 12:18:34.863470",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10179,5 +10179,9 @@
     "callContinuingElsewhere": "تستمر هذه المكالمة على جهازك الآخر.",
     "listenFirst": "استمع أولاً",
     "listenFirstDescription": "عند تشغيل \"استمع أولاً\"، نقرة واحدة تشغل الصوت، والنقر المزدوج يحدد الخيار.",
-    "listenFirstNeedsChoiceAudio": "شغّل صوت الخيارات لاستخدام \"استمع أولاً\"."
+    "listenFirstNeedsChoiceAudio": "شغّل صوت الخيارات لاستخدام \"استمع أولاً\".",
+    "unableToJoinCourseError": "تعذر علينا إضافتك إلى هذه الدورة التدريبية الآن. يرجى المحاولة مرة أخرى، أو سؤال معلمك.",
+    "edited": "تم التعديل",
+    "attach": "إرفاق",
+    "callHistoryTranscript": "النص"
 }

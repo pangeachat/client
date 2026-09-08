@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-09-04 10:08:40.376810",
+    "@@last_modified": "2026-09-08 12:18:43.248691",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2277,5 +2277,9 @@
     "callContinuingElsewhere": "یہ کال آپ کے دوسرے آلے پر جاری ہے۔",
     "listenFirst": "پہلے سنیں",
     "listenFirstDescription": "جب پہلے سنیں آن ہو، تو ایک کلک صرف آڈیو چلاتا ہے اور ڈبل کلک آپشن کو منتخب کرتا ہے۔",
-    "listenFirstNeedsChoiceAudio": "پہلے سنیں استعمال کرنے کے لیے چوائسز آڈیو آن کریں۔"
+    "listenFirstNeedsChoiceAudio": "پہلے سنیں استعمال کرنے کے لیے چوائسز آڈیو آن کریں۔",
+    "unableToJoinCourseError": "ہم فی الحال آپ کو اس کورس میں شامل نہیں کر سکے۔ براہ کرم دوبارہ کوشش کریں، یا اپنے استاد سے پوچھیں۔",
+    "edited": "ترمیم شدہ",
+    "attach": "منسلک کریں",
+    "callHistoryTranscript": "ٹرانسکرپٹ"
 }

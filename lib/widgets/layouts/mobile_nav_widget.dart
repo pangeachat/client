@@ -305,11 +305,29 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
   /// while the keyboard is still up. Cleared when focus or the keyboard leaves.
   bool _grewForKeyboard = false;
 
+  /// Whether the cavity sits above its rest floor, published to the hosted
+  /// surface so a floor cavity's chevron can rotate to say which way it goes
+  /// ([CavityControls.expanded], #8816). Tracks the SETTLED rest stop rather
+  /// than the live drag, so the icon never flickers mid-gesture.
+  final ValueNotifier<bool> _expanded = ValueNotifier<bool>(false);
+
+  void _publishExpanded() {
+    _expanded.value =
+        _restState != null && _restState != NavCavityHeight.collapsed;
+  }
+
   @override
   void initState() {
     super.initState();
     _restState = _restoreHeight();
     _fullLatched = _restState == NavCavityHeight.full;
+    _publishExpanded();
+  }
+
+  @override
+  void dispose() {
+    _expanded.dispose();
+    super.dispose();
   }
 
   @override
@@ -470,6 +488,7 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
     if (remember) _remember(height);
     _fullLatched = height == NavCavityHeight.full;
     setState(() => _restState = height);
+    _publishExpanded();
   }
 
   /// Re-assert the latched full height to the shell AFTER the frame — calling
@@ -511,8 +530,17 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
     if (_lastMaxHeightPx <= 0) return;
     final start = _dragStartFraction ?? _fraction;
     final deltaFraction = -details.primaryDelta! / _lastMaxHeightPx;
+    // A FLOOR cavity never drags below its peek (#8816): the LIVE fraction is
+    // clamped, not only the settle in [_onDragEnd]. The settle alone let the
+    // sheet shrink to nothing under the finger and spring back on release —
+    // and any path that leaves the drag without a settle keeps whatever the
+    // gesture last rendered. The floor belongs where the value is produced,
+    // so no state of the gesture can show the course menu below its peek.
+    final floor = widget.cavityDefaultsToPeek
+        ? _peekFraction(_lastMaxHeightPx)
+        : 0.0;
     setState(() {
-      _fraction = (_fraction + deltaFraction).clamp(0.0, 1.0);
+      _fraction = (_fraction + deltaFraction).clamp(floor, 1.0);
     });
     _dragStartFraction = start;
   }
@@ -565,16 +593,37 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
       onDismissed();
       return;
     }
+    // A FLOOR cavity (the course panel) collapses to its peek, never to zero:
+    // the peek is the course menu's floor on narrow, so no gesture may take it
+    // off screen (#8816; routing.instructions.md -> Single-column mode). Its
+    // collapsed fraction already resolves to the peek, so this is the same
+    // rest stop a drag-down settles at.
+    if (widget.cavityDefaultsToPeek) {
+      _openAt(NavCavityHeight.collapsed);
+      return;
+    }
     _fullLatched = false;
     setState(() {
       _restState = null;
       _fraction = 0.0;
     });
+    _publishExpanded();
   }
 
   /// Collapse an expanded cavity, or re-expand a collapsed one to its
   /// remembered height — the tap-the-active-item gesture.
   void _toggleCavity() {
+    // A floor cavity toggles between its floor and FULL: there is no zero to
+    // collapse to, and its remembered height at the floor IS the floor, so
+    // [_restoreHeight] would make this a no-op (#8816).
+    if (widget.cavityDefaultsToPeek) {
+      _openAt(
+        _restState == NavCavityHeight.collapsed
+            ? NavCavityHeight.full
+            : NavCavityHeight.collapsed,
+      );
+      return;
+    }
     if (_currentFraction > 0.01) {
       _collapseEphemeral();
     } else {
@@ -727,6 +776,10 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
                                 child: CavityControls(
                                   expandToFull: () =>
                                       _openAt(NavCavityHeight.full),
+                                  // The floor cavity's chevron drives these:
+                                  // one control, two directions (#8816).
+                                  toggleCollapse: _toggleCavity,
+                                  expanded: _expanded,
                                   child: widget.cavityChild!,
                                 ),
                               ),

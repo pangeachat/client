@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-09-04 10:08:36.028315",
+    "@@last_modified": "2026-09-08 12:18:38.743381",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2277,5 +2277,9 @@
     "callContinuingElsewhere": "Бұл қоңырау басқа құрылғыңызда жалғасуда.",
     "listenFirst": "Алдымен тыңдау",
     "listenFirstDescription": "Алдымен тыңдау қосулы болғанда, бір рет басу тек аудионы ойнатады, ал екі рет басу опцияны таңдайды.",
-    "listenFirstNeedsChoiceAudio": "Алдымен тыңдауды пайдалану үшін Таңдаулар аудиосын қосыңыз."
+    "listenFirstNeedsChoiceAudio": "Алдымен тыңдауды пайдалану үшін Таңдаулар аудиосын қосыңыз.",
+    "unableToJoinCourseError": "Сізді қазір бұл курсқа қоса алмадық. Қайталап көріңіз немесе мұғаліміңізден сұраңыз.",
+    "edited": "Өңделді",
+    "attach": "Тіркеу",
+    "callHistoryTranscript": "Транскрипт"
 }

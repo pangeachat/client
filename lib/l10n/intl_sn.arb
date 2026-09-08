@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-09-04 10:08:39.365259",
+    "@@last_modified": "2026-09-08 12:18:42.190452",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2277,5 +2277,9 @@
     "callContinuingElsewhere": "Kufona uku kuri kuenderera mberi pane mumwe mudziyo wako.",
     "listenFirst": "Teerera kutanga",
     "listenFirstDescription": "Kana Teerera Kutanga yakabatidzwa, kudzvanya kamwe kunongoridza odhiyo uye kudzvanya kaviri kunosarudza sarudzo.",
-    "listenFirstNeedsChoiceAudio": "Batidza odhiyo yesarudzo kuti ushandise Teerera Kutanga."
+    "listenFirstNeedsChoiceAudio": "Batidza odhiyo yesarudzo kuti ushandise Teerera Kutanga.",
+    "unableToJoinCourseError": "Hatina kukwanisa kukubatanidza kune kosi iyi izvozvi. Ndapota edza zvakare, kana kubvunza mudzidzisi wako.",
+    "edited": "Yagadziriswa",
+    "attach": "Batanidza",
+    "callHistoryTranscript": "Zvakataurwa"
 }

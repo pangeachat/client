@@ -243,51 +243,63 @@ class _StartIGCButtonState extends State<StartIGCButton>
       builder: (_, _) {
         final assistanceState = widget.choreographer.assistanceState;
         final enableFeedback = assistanceState.allowsFeedback;
-        return Tooltip(
-          message: assistanceState.tooltip(context),
-          child: Material(
-            elevation: enableFeedback ? 4.0 : 0.0,
-            shape: const CircleBorder(),
-            clipBehavior: Clip.antiAlias,
-            shadowColor: Theme.of(context).colorScheme.surface.withAlpha(128),
-            child: InkWell(
-              enableFeedback: enableFeedback,
-              customBorder: const CircleBorder(),
-              onTap: enableFeedback ? widget.onPressed : null,
-              onLongPress: enableFeedback
-                  ? () => showDialog(
-                      context: context,
-                      builder: (c) => const SettingsLearning(),
-                      barrierDismissible: false,
-                    )
-                  : null,
-              child: Container(
-                width: 40,
-                height: 40,
-                padding: const EdgeInsets.all(2.0),
-                child: AnimatedBuilder(
-                  animation: Listenable.merge([_rotation, _segmentController]),
-                  builder: (context, _) {
-                    final segments = _getAnimatedSegments(
-                      _segmentController.value,
-                    );
-                    return Transform.rotate(
-                      angle: _rotation.value * 2 * pi,
-                      child: SegmentedCircularProgress(
-                        strokeWidth: 3,
-                        segments: segments,
-                        child: AnimatedOpacity(
-                          duration: _animationDuration,
-                          opacity: assistanceState.showIcon ? 1.0 : 0.0,
-                          child: Icon(
-                            size: 18,
-                            assistanceState.icon,
-                            color: assistanceState.stateColor(context),
+        final name = assistanceState.tooltip(context);
+        // The ring is an InkWell with no text, so it needs an authored name and
+        // role; the tooltip is excluded so the name is not read twice (#8848).
+        return Semantics(
+          button: true,
+          enabled: enableFeedback,
+          label: name,
+          child: Tooltip(
+            message: name,
+            excludeFromSemantics: true,
+            child: Material(
+              elevation: enableFeedback ? 4.0 : 0.0,
+              shape: const CircleBorder(),
+              clipBehavior: Clip.antiAlias,
+              shadowColor: Theme.of(context).colorScheme.surface.withAlpha(128),
+              child: InkWell(
+                enableFeedback: enableFeedback,
+                customBorder: const CircleBorder(),
+                onTap: enableFeedback ? widget.onPressed : null,
+                onLongPress: enableFeedback
+                    ? () => showDialog(
+                        context: context,
+                        builder: (c) => const SettingsLearning(),
+                        barrierDismissible: false,
+                      )
+                    : null,
+                child: Container(
+                  width: 40,
+                  height: 40,
+                  padding: const EdgeInsets.all(2.0),
+                  child: AnimatedBuilder(
+                    animation: Listenable.merge([
+                      _rotation,
+                      _segmentController,
+                    ]),
+                    builder: (context, _) {
+                      final segments = _getAnimatedSegments(
+                        _segmentController.value,
+                      );
+                      return Transform.rotate(
+                        angle: _rotation.value * 2 * pi,
+                        child: SegmentedCircularProgress(
+                          strokeWidth: 3,
+                          segments: segments,
+                          child: AnimatedOpacity(
+                            duration: _animationDuration,
+                            opacity: assistanceState.showIcon ? 1.0 : 0.0,
+                            child: Icon(
+                              size: 18,
+                              assistanceState.icon,
+                              color: assistanceState.stateColor(context),
+                            ),
                           ),
                         ),
-                      ),
-                    );
-                  },
+                      );
+                    },
+                  ),
                 ),
               ),
             ),

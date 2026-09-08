@@ -19,6 +19,7 @@ import 'package:fluffychat/routes/chat/chat_details/course_overview/course_knock
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_participants_preview.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_section_button.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_section_header.dart';
+import 'package:fluffychat/routes/chat/chat_details/course_overview/course_section_shortcut.dart';
 import 'package:fluffychat/routes/chat/chat_details/room_details_buttons.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
@@ -233,13 +234,14 @@ class _CourseOverviewState extends State<CourseOverview> {
                             // plan"), which is where these activities come
                             // from.
                             icon: Icons.assignment_outlined,
-                            trailing: hasPlan
-                                ? CourseSectionButton(
-                                    section: l10n.activities,
-                                    onPressed: () =>
-                                        _openSubpage(SpaceSettingsTabs.course),
-                                  )
-                                : null,
+                            actions: [
+                              if (hasPlan)
+                                CourseSectionButton(
+                                  section: l10n.activities,
+                                  onPressed: () =>
+                                      _openSubpage(SpaceSettingsTabs.course),
+                                ),
+                            ],
                           ),
                           const SizedBox(height: 8.0),
                           // The shortlist draws from every Mission and ranks a
@@ -278,29 +280,24 @@ class _CourseOverviewState extends State<CourseOverview> {
                   child: CourseSectionHeader(
                     title: SpaceSettingsTabs.chat.title(context),
                     icon: Icons.forum_outlined,
-                    trailing: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        // Creating a course chat is buried in the More
-                        // section's settings list; teachers asked for it
-                        // where the chats are (#8744). Same permission gate
-                        // as that row — the shortcut can't do what the
-                        // setting wouldn't.
-                        if (room.isRoomAdmin &&
-                            room.canChangeStateEvent(EventTypes.SpaceChild))
-                          IconButton(
-                            icon: const Icon(Symbols.chat_add_on),
-                            iconSize: 20.0,
-                            visualDensity: VisualDensity.compact,
-                            tooltip: l10n.createGroupChat,
-                            onPressed: widget.controller.addGroupChat,
-                          ),
-                        CourseSectionButton(
-                          section: SpaceSettingsTabs.chat.title(context),
-                          onPressed: () => _openSubpage(SpaceSettingsTabs.chat),
+                    actions: [
+                      // Creating a course chat is buried in the More
+                      // section's settings list; teachers asked for it
+                      // where the chats are (#8744). Same permission gate
+                      // as that row — the shortcut can't do what the
+                      // setting wouldn't.
+                      if (room.isRoomAdmin &&
+                          room.canChangeStateEvent(EventTypes.SpaceChild))
+                        CourseSectionShortcut(
+                          icon: Symbols.chat_add_on,
+                          tooltip: l10n.createGroupChat,
+                          onPressed: widget.controller.addGroupChat,
                         ),
-                      ],
-                    ),
+                      CourseSectionButton(
+                        section: SpaceSettingsTabs.chat.title(context),
+                        onPressed: () => _openSubpage(SpaceSettingsTabs.chat),
+                      ),
+                    ],
                   ),
                 ),
                 // The chat rows carry their own 8px wrapper (ChatListItem /
@@ -348,14 +345,15 @@ class _CourseOverviewState extends State<CourseOverview> {
                   CourseSectionHeader(
                     title: SpaceSettingsTabs.more.title(context),
                     icon: Icons.settings_outlined,
-                    trailing:
-                        widget.moreButtons.any((b) => b.visible && !b.enabled)
-                        ? CourseSectionButton(
-                            section: SpaceSettingsTabs.more.title(context),
-                            onPressed: () =>
-                                _openSubpage(SpaceSettingsTabs.more),
-                          )
-                        : null,
+                    actions: [
+                      if (widget.moreButtons.any(
+                        (b) => b.visible && !b.enabled,
+                      ))
+                        CourseSectionButton(
+                          section: SpaceSettingsTabs.more.title(context),
+                          onPressed: () => _openSubpage(SpaceSettingsTabs.more),
+                        ),
+                    ],
                   ),
                   // Only the settings this user can act on show inline; the
                   // full list, grayed-out rows included, lives on the All

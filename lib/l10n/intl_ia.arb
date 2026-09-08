@@ -1362,7 +1362,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-09-04 10:08:34.899936",
+    "@@last_modified": "2026-09-08 12:18:38.661748",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10809,5 +10809,9 @@
     "callContinuingElsewhere": "Iste appello continua in tu altere apparato.",
     "listenFirst": "Ascolta primo",
     "listenFirstDescription": "Quando Ascolta primo es active, un clic solmente sona audio e un duple clic selige le option.",
-    "listenFirstNeedsChoiceAudio": "Activa le audio de optiones pro usar Ascolta primo."
+    "listenFirstNeedsChoiceAudio": "Activa le audio de optiones pro usar Ascolta primo.",
+    "unableToJoinCourseError": "Nos non poteva adder vos a iste curso nunc. Per favor, reprova, o demanda a tu inseniator.",
+    "edited": "Redigite",
+    "attach": "Adjunger",
+    "callHistoryTranscript": "Transcriptor"
 }

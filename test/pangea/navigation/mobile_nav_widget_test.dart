@@ -762,13 +762,15 @@ void main() {
       final peek = cavityHeightOf(tester);
       expect(peek, greaterThan(0.0));
 
-      // Expanded -> tap collapses (ephemeral), no navigation.
+      // A peek cavity has a FLOOR rather than a close (#8816), so the toggle
+      // runs between the peek and full and no tap takes the course menu off
+      // screen. At the peek the tap EXPANDS, still without navigating.
       await tester.tap(find.byTooltip('Add a course'));
       await tester.pumpAndSettle();
       expect(shortcutTaps, 0);
-      expect(cavityHeightOf(tester), 0.0);
+      expect(cavityHeightOf(tester), greaterThan(peek));
 
-      // Collapsed -> tap re-expands to the remembered height.
+      // Expanded -> tap returns to the peek, never to 0.
       await tester.tap(find.byTooltip('Add a course'));
       await tester.pumpAndSettle();
       expect(shortcutTaps, 0);
@@ -1023,6 +1025,68 @@ void main() {
       await tester.tapAt(const Offset(200, 20));
       await tester.pumpAndSettle();
       expect(cavityHeightOf(tester), 0.0);
+    });
+
+    testWidgets('a peek cavity has a FLOOR: no gesture takes it to zero '
+        '(#8816)', (tester) async {
+      await pumpNav(
+        tester,
+        cavityChild: const Text('Course card'),
+        cavityKey: 'course-floor',
+        cavityDefaultsToPeek: true,
+      );
+      final peek = cavityHeightOf(tester);
+      expect(peek, greaterThan(0.0));
+
+      // Dragging fully down settles AT the peek rather than away: on narrow
+      // the peek is the course menu's floor, and the whole point is that no
+      // gesture can put it off screen (routing.instructions.md ->
+      // Single-column mode).
+      // Dragged by the CONTENT: at a peek the body takes a drag recogniser of
+      // its own, so the handle predicate matches two (as the peek drag test
+      // above does).
+      await tester.drag(find.text('Course card'), const Offset(0, 700));
+      await tester.pumpAndSettle();
+      expect(cavityHeightOf(tester), closeTo(peek, 1.0));
+
+      // Nor does the ephemeral-collapse path, which zeroes a section sheet.
+      await tester.tapAt(const Offset(200, 20));
+      await tester.pumpAndSettle();
+      expect(cavityHeightOf(tester), closeTo(peek, 1.0));
+    });
+
+    testWidgets('a peek cavity never renders below its floor MID-drag, not '
+        'just after the settle (#8816)', (tester) async {
+      await pumpNav(
+        tester,
+        cavityChild: const Text('Course card'),
+        cavityKey: 'course-middrag',
+        cavityDefaultsToPeek: true,
+      );
+      final peek = cavityHeightOf(tester);
+      expect(peek, greaterThan(0.0));
+
+      // Held down, dragging well past the bottom: the sheet must STOP at the
+      // peek under the finger rather than shrink away and spring back on
+      // release. Checked on every step, because a settle-only floor looks
+      // right at rest and still lets the course menu disappear while the
+      // gesture is live — and whatever the drag last rendered is what any
+      // interrupted gesture leaves behind.
+      final gesture = await tester.startGesture(
+        tester.getCenter(find.text('Course card')),
+      );
+      for (var i = 0; i < 10; i++) {
+        await gesture.moveBy(const Offset(0, 60));
+        await tester.pump();
+        expect(
+          cavityHeightOf(tester),
+          greaterThanOrEqualTo(peek - 1.0),
+          reason: 'step $i dragged the floor cavity below its peek',
+        );
+      }
+      await gesture.up();
+      await tester.pumpAndSettle();
+      expect(cavityHeightOf(tester), closeTo(peek, 1.0));
     });
   });
 

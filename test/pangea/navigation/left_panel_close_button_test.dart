@@ -8,6 +8,7 @@ import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/world/left_panel/course_card_reveal.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_close_button.dart';
 
 void main() {
@@ -136,6 +137,67 @@ void main() {
         isTrue,
         reason: 'closing the room panel must not close the chat list beneath',
       );
+    },
+  );
+  testWidgets(
+    'the wide course chevron shrinks the card to the bar before dropping the '
+    'token (#8866)',
+    (tester) async {
+      // The card and the bar share a header, so the collapse is the card's
+      // height animating down to the bar's — and only then does the token
+      // drop, handing the course to the bar at the size the card reached.
+      // Mid-animation the URL must be untouched, or the bar would mount over
+      // a still-shrinking card.
+      const liveLocation = '/?c=!course&left=course';
+      final router = GoRouter(
+        initialLocation: liveLocation,
+        routes: [
+          GoRoute(
+            path: '/',
+            builder: (context, state) => Scaffold(
+              body: SizedBox(
+                height: 500,
+                child: CourseCardReveal(
+                  animateIn: false,
+                  child: LeftPanelCloseButton(
+                    token: const CoursePanelToken(),
+                    currentUri: Uri.parse(liveLocation),
+                    foldedOver: false,
+                    isColumnMode: true,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      );
+
+      await tester.pumpWidget(
+        MaterialApp.router(
+          routerConfig: router,
+          localizationsDelegates: L10n.localizationsDelegates,
+          supportedLocales: L10n.supportedLocales,
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      Uri uri() => router.routerDelegate.currentConfiguration.uri;
+      bool courseOpen() => parseOpenPanels(
+        uri(),
+      ).left.any((t) => t.type == PanelTypesEnum.course);
+
+      await tester.tap(find.byIcon(Icons.expand_more));
+      await tester.pump(const Duration(milliseconds: 100));
+      expect(courseOpen(), isTrue, reason: 'still shrinking: token kept');
+
+      await tester.pumpAndSettle();
+      expect(
+        courseOpen(),
+        isFalse,
+        reason: 'at the bar\'s height: token dropped',
+      );
+      // The context is a scope, not a panel — collapsing never clears it.
+      expect(activeSpaceIdFor(uri()), '!course');
     },
   );
 }

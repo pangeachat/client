@@ -10,7 +10,12 @@ import 'package:fluffychat/pangea/common/widgets/card_header.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-class IdenticalLanguageException implements Exception {}
+class IdenticalLanguageException implements Exception {
+  /// Once-per-session Sentry key. Picking the same language twice is rejected
+  /// input the picker already displays — one warning per session keeps the
+  /// signal for support without an event per Continue tap (#8835).
+  static const String reportKey = 'identical-language';
+}
 
 class MissingLanguageException implements Exception {}
 

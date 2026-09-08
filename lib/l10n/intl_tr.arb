@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-09-04 10:08:40.172310",
+    "@@last_modified": "2026-09-08 12:18:42.963200",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10174,5 +10174,9 @@
     "callContinuingElsewhere": "Bu arama diğer cihazınızda devam ediyor.",
     "listenFirst": "Önce Dinle",
     "listenFirstDescription": "Önce Dinle açıkken, tek tıklama sadece sesi çalar ve çift tıklama seçeneği seçer.",
-    "listenFirstNeedsChoiceAudio": "Önce Dinle'yi kullanmak için Seçenekler sesini açın."
+    "listenFirstNeedsChoiceAudio": "Önce Dinle'yi kullanmak için Seçenekler sesini açın.",
+    "unableToJoinCourseError": "Şu anda sizi bu kursa ekleyemedik. Lütfen tekrar deneyin veya öğretmeninize danışın.",
+    "edited": "Düzenlendi",
+    "attach": "Ekle",
+    "callHistoryTranscript": "Döküm"
 }

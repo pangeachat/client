@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-09-04 10:08:33.518150",
+    "@@last_modified": "2026-09-08 12:18:35.993435",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9873,5 +9873,9 @@
     "callContinuingElsewhere": "Dei hau zure beste gailuan jarraitzen ari da.",
     "listenFirst": "Lehenik entzun",
     "listenFirstDescription": "Lehenik entzun aktibatuta dagoenean, klik bakar batek audioa erreproduzitzen du eta klik bikoitz batek aukera hautatzen du.",
-    "listenFirstNeedsChoiceAudio": "Aktibatu Aukeren audioa Lehenik entzun erabiltzeko."
+    "listenFirstNeedsChoiceAudio": "Aktibatu Aukeren audioa Lehenik entzun erabiltzeko.",
+    "unableToJoinCourseError": "Ezin izan zaitugu ikastaro honetan sartu oraintxe bertan. Saiatu berriro, edo galdetu zure irakasleari.",
+    "edited": "Editatu da",
+    "attach": "Erantsi",
+    "callHistoryTranscript": "Transkripzioa"
 }

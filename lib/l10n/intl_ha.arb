@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-09-04 10:08:34.281308",
+    "@@last_modified": "2026-09-08 12:18:36.938300",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2277,5 +2277,9 @@
     "callContinuingElsewhere": "Wannan kiran yana ci gaba a kan sauran na'urarka.",
     "listenFirst": "Saurara da farko",
     "listenFirstDescription": "Idan Saurara da farko yana kunne, danna sau ɗaya kawai yana kunna sauti kuma danna sau biyu yana zaɓar zaɓi.",
-    "listenFirstNeedsChoiceAudio": "Kunna sautin Zaɓuɓɓuka don amfani da Saurara da farko."
+    "listenFirstNeedsChoiceAudio": "Kunna sautin Zaɓuɓɓuka don amfani da Saurara da farko.",
+    "unableToJoinCourseError": "Ba mu iya saka ka cikin wannan kwas ɗin a yanzu ba. Da fatan za ka sake gwadawa, ko kuma ka tambayi malamin ka.",
+    "edited": "An gyara",
+    "attach": "Haɗa",
+    "callHistoryTranscript": "Rubutun kira"
 }

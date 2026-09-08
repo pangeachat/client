@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-09-04 10:08:40.711938",
+    "@@last_modified": "2026-09-08 12:18:48.440844",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2277,5 +2277,9 @@
     "callContinuingElsewhere": "بۇ چاقىرىش باشقا ئۈسكۈنىڭىزدە داۋاملىشىۋاتىدۇ.",
     "listenFirst": "ئالدى بىلەن ئاڭلاڭ",
     "listenFirstDescription": "«ئالدى بىلەن ئاڭلاڭ»نى ئاچقاندا، بىر چېكىش ئاۋازنى قويىدۇ، قوش چېكىش تاللاشنى تاللايدۇ.",
-    "listenFirstNeedsChoiceAudio": "«ئالدى بىلەن ئاڭلاڭ»نى ئىشلىتىش ئۈچۈن تاللاش ئاۋازىنى ئېچىڭ."
+    "listenFirstNeedsChoiceAudio": "«ئالدى بىلەن ئاڭلاڭ»نى ئىشلىتىش ئۈچۈن تاللاش ئاۋازىنى ئېچىڭ.",
+    "unableToJoinCourseError": "بىز سىزنى ھازىر بۇ دەرسكە قوشالمىدۇق. قايتا سىناپ بېقىڭ ياكى ئوقۇتقۇچىڭىزدىن سوراڭ.",
+    "edited": "تەھرىرلەندى",
+    "attach": "قوشۇش",
+    "callHistoryTranscript": "تېكىست"
 }

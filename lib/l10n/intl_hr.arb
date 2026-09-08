@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-09-04 10:08:34.506005",
+    "@@last_modified": "2026-09-08 12:18:37.271220",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10309,5 +10309,9 @@
     "callContinuingElsewhere": "Ovaj se poziv nastavlja na vašem drugom uređaju.",
     "listenFirst": "Prvo poslušaj",
     "listenFirstDescription": "Kada je opcija „Prvo poslušaj” uključena, jedan klik samo reproducira zvuk, a dvostruki klik odabire opciju.",
-    "listenFirstNeedsChoiceAudio": "Uključite zvuk opcija da biste koristili „Prvo poslušaj”."
+    "listenFirstNeedsChoiceAudio": "Uključite zvuk opcija da biste koristili „Prvo poslušaj”.",
+    "unableToJoinCourseError": "Trenutno vas nismo mogli dodati na ovaj tečaj. Pokušajte ponovno ili pitajte svog učitelja.",
+    "edited": "Uređeno",
+    "attach": "Priloži",
+    "callHistoryTranscript": "Transkript"
 }

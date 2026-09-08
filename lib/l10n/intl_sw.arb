@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-09-04 10:08:40.034625",
+    "@@last_modified": "2026-09-08 12:18:42.501826",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2277,5 +2277,9 @@
     "callContinuingElsewhere": "Simu hii inaendelea kwenye kifaa chako kingine.",
     "listenFirst": "Sikiliza kwanza",
     "listenFirstDescription": "Wakati Sikiliza Kwanza imewashwa, kubofya mara moja hucheza sauti tu na kubofya mara mbili huchagua chaguo.",
-    "listenFirstNeedsChoiceAudio": "Washa sauti ya Chaguo ili kutumia Sikiliza Kwanza."
+    "listenFirstNeedsChoiceAudio": "Washa sauti ya Chaguo ili kutumia Sikiliza Kwanza.",
+    "unableToJoinCourseError": "Hatukuweza kukuongeza kwenye kozi hii kwa sasa. Tafadhali jaribu tena, au muulize mwalimu wako.",
+    "edited": "Imehaririwa",
+    "attach": "Ambatanisha",
+    "callHistoryTranscript": "Nakala"
 }

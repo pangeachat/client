@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-04 10:08:35.788383",
+    "@@last_modified": "2026-09-08 12:18:39.120093",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10066,5 +10066,9 @@
     "callContinuingElsewhere": "이 통화는 다른 기기에서 계속됩니다.",
     "listenFirst": "먼저 듣기",
     "listenFirstDescription": "먼저 듣기 기능이 켜져 있으면 한 번 클릭하면 오디오가 재생되고 두 번 클릭하면 옵션이 선택됩니다.",
-    "listenFirstNeedsChoiceAudio": "먼저 듣기를 사용하려면 선택 오디오를 켜세요."
+    "listenFirstNeedsChoiceAudio": "먼저 듣기를 사용하려면 선택 오디오를 켜세요.",
+    "unableToJoinCourseError": "지금은 이 코스에 참여할 수 없습니다. 다시 시도하거나 선생님께 문의하세요.",
+    "edited": "수정됨",
+    "attach": "첨부",
+    "callHistoryTranscript": "대화 기록"
 }

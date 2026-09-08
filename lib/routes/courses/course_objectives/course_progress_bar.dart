@@ -48,7 +48,10 @@ class CourseProgressBar extends StatelessWidget {
 class ProgressBarRow extends StatelessWidget {
   final QuestStarSummary? summary;
 
-  static const double _barHeight = 20.0;
+  /// The track's height. Published so the course context bar can state its
+  /// own height from its parts ([CourseContextBar.height]).
+  static const double height = 20.0;
+  static const double _barHeight = height;
 
   const ProgressBarRow({required this.summary, super.key});
 

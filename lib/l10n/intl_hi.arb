@@ -3093,7 +3093,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-09-04 10:08:34.269679",
+    "@@last_modified": "2026-09-08 12:18:36.921325",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10505,5 +10505,9 @@
     "callContinuingElsewhere": "यह कॉल आपके दूसरे डिवाइस पर जारी है।",
     "listenFirst": "पहले सुनें",
     "listenFirstDescription": "जब पहले सुनें चालू होता है, तो एक क्लिक से केवल ऑडियो चलता है और डबल-क्लिक से विकल्प चुना जाता है।",
-    "listenFirstNeedsChoiceAudio": "पहले सुनें का उपयोग करने के लिए विकल्पों का ऑडियो चालू करें।"
+    "listenFirstNeedsChoiceAudio": "पहले सुनें का उपयोग करने के लिए विकल्पों का ऑडियो चालू करें।",
+    "unableToJoinCourseError": "हम आपको अभी इस कोर्स में शामिल नहीं कर पाए। कृपया फिर से कोशिश करें, या अपने शिक्षक से पूछें।",
+    "edited": "संपादित",
+    "attach": "संलग्न करें",
+    "callHistoryTranscript": "प्रतिलेख"
 }

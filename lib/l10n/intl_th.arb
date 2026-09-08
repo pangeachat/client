@@ -3093,7 +3093,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-09-04 10:08:40.080899",
+    "@@last_modified": "2026-09-08 12:18:43.703199",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10505,5 +10505,9 @@
     "callContinuingElsewhere": "การโทรนี้กำลังดำเนินต่อไปบนอุปกรณ์เครื่องอื่นของคุณ",
     "listenFirst": "ฟังก่อน",
     "listenFirstDescription": "เมื่อเปิดใช้งานฟังก่อน การคลิกหนึ่งครั้งจะเล่นเสียง และการดับเบิลคลิกจะเลือกตัวเลือก",
-    "listenFirstNeedsChoiceAudio": "เปิดเสียงตัวเลือกเพื่อใช้ฟังก่อน"
+    "listenFirstNeedsChoiceAudio": "เปิดเสียงตัวเลือกเพื่อใช้ฟังก่อน",
+    "unableToJoinCourseError": "เราไม่สามารถเพิ่มคุณในคอร์สนี้ได้ในขณะนี้ โปรดลองอีกครั้ง หรือสอบถามครูผู้สอนของคุณ",
+    "edited": "แก้ไขแล้ว",
+    "attach": "แนบ",
+    "callHistoryTranscript": "ประวัติการสนทนา"
 }

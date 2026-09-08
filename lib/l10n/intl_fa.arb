@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-04 10:08:33.464131",
+    "@@last_modified": "2026-09-08 12:18:36.428405",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9961,5 +9961,9 @@
     "callContinuingElsewhere": "این تماس در دستگاه دیگر شما ادامه دارد.",
     "listenFirst": "اول گوش کن",
     "listenFirstDescription": "وقتی «اول گوش کن» روشن است، یک کلیک فقط صدا را پخش می‌کند و دو کلیک گزینه را انتخاب می‌کند.",
-    "listenFirstNeedsChoiceAudio": "برای استفاده از «اول گوش کن»، صدای گزینه‌ها را روشن کنید."
+    "listenFirstNeedsChoiceAudio": "برای استفاده از «اول گوش کن»، صدای گزینه‌ها را روشن کنید.",
+    "unableToJoinCourseError": "در حال حاضر نمی‌توانیم شما را به این دوره اضافه کنیم. لطفاً دوباره امتحان کنید یا از معلم خود بپرسید.",
+    "edited": "ویرایش‌شده",
+    "attach": "پیوست کردن",
+    "callHistoryTranscript": "رونوشت"
 }

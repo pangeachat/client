@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-09-04 10:08:37.284072",
+    "@@last_modified": "2026-09-08 12:18:39.948146",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2277,5 +2277,9 @@
     "callContinuingElsewhere": "Kei te haere tonu tēnei waea i runga i tō pūrere atu.",
     "listenFirst": "Whakarongo tuatahi",
     "listenFirstDescription": "Ina ka kā te Whakarongo Tuatahi, kotahi te pāwhiri ka purei i te oro, ā, ka rua ngā pāwhiri ka kōwhiri i te kōwhiringa.",
-    "listenFirstNeedsChoiceAudio": "Whakakāhia te oro Kōwhiringa kia whakamahi i te Whakarongo Tuatahi."
+    "listenFirstNeedsChoiceAudio": "Whakakāhia te oro Kōwhiringa kia whakamahi i te Whakarongo Tuatahi.",
+    "unableToJoinCourseError": "Kāore i taea te tāpiri i a koe ki tēnei akoranga i nāianei tonu. Tēnā, ngana anō, pātai atu rānei ki tō kaiako.",
+    "edited": "Kua whakatikaina",
+    "attach": "Āpiti",
+    "callHistoryTranscript": "Tuhinga"
 }

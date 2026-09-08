@@ -438,7 +438,9 @@ class SpaceDetailsController extends State<SpaceDetails> {
               // ([SpaceDetailsContent.sectionPadding]) so the dividers
               // between them run edge-to-edge (#8357 design).
               child: Padding(
-                padding: const EdgeInsetsGeometry.only(top: 16.0),
+                padding: const EdgeInsets.only(
+                  top: SpaceDetailsContent.bodyTopInset,
+                ),
                 child: MaxWidthBody(
                   maxWidth: 900,
                   showBorder: false,

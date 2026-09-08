@@ -1,12 +1,15 @@
 import 'dart:collection';
 import 'dart:math';
 
+import 'package:sentry_flutter/sentry_flutter.dart';
+
 import 'package:fluffychat/features/join_codes/knock_with_code_extension.dart';
 import 'package:fluffychat/features/join_codes/space_code_controller.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_navigation_result.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/onboarding_step.dart';
+import 'package:fluffychat/routes/settings/settings_learning/language_mismatch_popup.dart';
 
 class OnboardingNavigationController {
   late OnboardingStep _currentStep;
@@ -50,8 +53,17 @@ class OnboardingNavigationController {
           e is PangeaHttpException ||
           e is BannedFromRoomException ||
           e is NotFoundException;
-      if (!reportedByJoinFlow) {
-        ErrorHandler.logError(e: e, s: s, data: {'current_step': _currentStep});
+      final Map<String, dynamic> data = {'current_step': _currentStep};
+      if (e is IdenticalLanguageException) {
+        await ErrorHandler.logErrorOnce(
+          key: IdenticalLanguageException.reportKey,
+          e: e,
+          s: s,
+          data: data,
+          level: SentryLevel.warning,
+        );
+      } else if (!reportedByJoinFlow) {
+        ErrorHandler.logError(e: e, s: s, data: data);
       }
       return ErrorNavigationResult(e);
     }

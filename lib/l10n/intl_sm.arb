@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-09-04 10:08:39.248162",
+    "@@last_modified": "2026-09-08 12:18:42.066050",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2277,5 +2277,9 @@
     "callContinuingElsewhere": "O lo'o fa'aauau lenei vala'au i lau isi masini.",
     "listenFirst": "Fa'alogo muamua",
     "listenFirstDescription": "Pe a ki le Fa'alogo Muamua, e tasi le kiliki e na'o le taina o le leo ae fa'alua kiliki e filifili ai le filifiliga.",
-    "listenFirstNeedsChoiceAudio": "Ki le leo o Filifiliga e fa'aaoga ai le Fa'alogo Muamua."
+    "listenFirstNeedsChoiceAudio": "Ki le leo o Filifiliga e fa'aaoga ai le Fa'alogo Muamua.",
+    "unableToJoinCourseError": "E le mafai ona matou fa'aopoopoina oe i lenei kosi i le taimi nei. Fa'amolemole toe taumafai, pe fesili i lau faiaoga.",
+    "edited": "Fa'atonutonuina",
+    "attach": "Faʻapipiʻi",
+    "callHistoryTranscript": "Tusitusiga"
 }

@@ -4,11 +4,11 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/pass_through_tooltip.dart';
 import 'package:fluffychat/routes/chat_list/unread_bubble.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 import 'package:fluffychat/routes/world/world_map_pin_shape.dart';
-import 'package:fluffychat/routes/world/world_map_pin_tooltip.dart';
 import 'package:fluffychat/routes/world/world_map_pinged_badge.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_selection.dart';
@@ -132,8 +132,10 @@ class _WorldMapDotState extends State<WorldMapDot>
       // would shadow the live pin beneath for the length of the exit.
       child: IgnorePointer(
         ignoring: widget.dying,
-        child: WorldMapPinTooltip(
+        child: PassThroughTooltip(
           message: widget.card.title,
+          // The Semantics below already names the pin.
+          excludeFromSemantics: true,
           child: Semantics(
             button: !widget.dying,
             label: widget.dying
