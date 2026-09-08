@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-09-08 09:45:00.134757",
+    "@@last_modified": "2026-09-08 16:07:10.213705",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2278,5 +2278,23 @@
     "listenFirst": "Isma' l-ewwel",
     "listenFirstDescription": "Meta Isma' l-Ewwel tkun mixgħula, klikk waħda ddoqq l-awdjo u double-click tagħżel l-għażla.",
     "listenFirstNeedsChoiceAudio": "Ixgħel l-awdjo tal-Għażliet biex tuża Isma' l-Ewwel.",
-    "unableToJoinCourseError": "Ma stajniex inżiduk ma' dan il-kors bħalissa. Jekk jogħġbok erġa' pprova, jew staqsi lill-għalliem tiegħek."
+    "unableToJoinCourseError": "Ma stajniex inżiduk ma' dan il-kors bħalissa. Jekk jogħġbok erġa' pprova, jew staqsi lill-għalliem tiegħek.",
+    "unlockActivitySummaries": "Ftaħ is-sommarji tal-attività",
+    "tutorialWelcome": "Jiena Pangea Bot, il-gwida tiegħek u s-sieħeb tiegħek fil-konversazzjoni bl-AI. Ejja nitgħallmu!",
+    "tutorialWorldMapIntro": "Din hija l-mappa tad-dinja. Kull attività ta' roleplay bil-{language} tinsab hawn.",
+    "tutorialWorldMapPickActivity": "Din hija attività ta' konversazzjoni li tista' tilgħab miegħi jew ma' sieħeb. Ikklikkja fuqha biex tibda tilgħab!",
+    "tutorialActivityGoals": "Hawn huma l-għanijiet għar-rwol li qed tilgħab, ibgħat messaġġi li jlestuhom u aqla' stilel!",
+    "tutorialCoursePlanIntro": "Merħba fil-kors tiegħek, {courseName}! Dan se jeħodok fi vjaġġ ta' tagħlim ma' sħabek tal-kors.",
+    "tutorialCoursePlanProgress": "Hekk kif tagħmel attivitajiet u taqla' stilel, se tagħmel progress hawn.",
+    "tutorialCoursePlanPickActivity": "Dawn huma l-attivitajiet li tipprova wara fil-kors tiegħek. Tektek waħda biex tiftaħha u tibdaha!",
+    "tutorialCoursePlanNoActivities": "Tektek kwalunkwe attività fil-pjan tiegħek biex tiftaħha u tibdaha!",
+    "tutorialAppTourOffer": "Prosit talli lestejt l-ewwel attività tiegħek! Tixtieq li nurik l-app?",
+    "tutorialAppTourAccept": "Agħtini tour",
+    "tutorialAppTourDecline": "Aqbeż",
+    "tutorialAppTourChats": "Din hija l-lista taċ-chats tiegħek — sib ħbieb biex tiċċettja magħhom, jew kellem lili fi kwalunkwe ħin.",
+    "tutorialAppTourCoursesSome": "Il-korsijiet tiegħek jinsabu hawn. Jidher li diġà ssieħeb f'wieħed!",
+    "tutorialAppTourCoursesNone": "Il-korsijiet jinsabu hawn — tista' tissieħeb f'wieħed b'kodiċi, jew toħloq tiegħek.",
+    "tutorialAppTourAnalytics": "Dan huwa l-progress tiegħek: kull kelma u forma grammatikali li użajt.",
+    "tutorialAppTourPractice": "Hawnhekk issib lezzjonijiet ta' prattika personalizzati, sakemm tkun ftaħt mill-inqas 10 kliem tal-vokabularju",
+    "tutorialAppTourWorld": "U dan iġibek lura għall-mappa tad-dinja fi kwalunkwe ħin. Tagħlim hieni!"
 }

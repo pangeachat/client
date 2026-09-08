@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-09-08 09:44:51.705162",
+    "@@last_modified": "2026-09-08 16:06:40.599331",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2278,5 +2278,23 @@
     "listenFirst": "Prvo slušaj",
     "listenFirstDescription": "Kada je opcija „Prvo slušaj“ uključena, jedan klik samo reprodukuje zvuk, a dvostruki klik bira opciju.",
     "listenFirstNeedsChoiceAudio": "Uključite zvuk izbora da biste koristili opciju „Prvo slušaj“.",
-    "unableToJoinCourseError": "Trenutno vas nismo mogli dodati na ovaj kurs. Molimo pokušajte ponovo ili pitajte svog nastavnika."
+    "unableToJoinCourseError": "Trenutno vas nismo mogli dodati na ovaj kurs. Molimo pokušajte ponovo ili pitajte svog nastavnika.",
+    "unlockActivitySummaries": "Otključajte sažetke aktivnosti",
+    "tutorialWelcome": "Ja sam Pangea Bot, vaš vodič i AI partner za razgovor. Počnimo učiti!",
+    "tutorialWorldMapIntro": "Ovo je mapa svijeta. Svaka aktivnost igranja uloga na {language} jeziku nalazi se ovdje.",
+    "tutorialWorldMapPickActivity": "Ovo je aktivnost razgovora koju možete igrati sa mnom ili partnerom. Kliknite na nju da počnete igrati!",
+    "tutorialActivityGoals": "Ovo su ciljevi za ulogu koju igrate, šaljite poruke koje ih ispunjavaju i zaradite zvjezdice!",
+    "tutorialCoursePlanIntro": "Dobrodošli na vaš kurs, {courseName}! On će vas voditi kroz putovanje učenja sa vašim kolegama sa kursa.",
+    "tutorialCoursePlanProgress": "Dok radite aktivnosti i skupljate zvjezdice, ovdje ćete napredovati.",
+    "tutorialCoursePlanPickActivity": "Ovo su aktivnosti koje trebate isprobati sljedeće na vašem kursu. Dodirnite jednu da je otvorite i započnete!",
+    "tutorialCoursePlanNoActivities": "Dodirnite bilo koju aktivnost u vašem planu da je otvorite i započnete!",
+    "tutorialAppTourOffer": "Odličan posao završavajući vašu prvu aktivnost! Želite li da vam pokažem aplikaciju?",
+    "tutorialAppTourAccept": "Pokaži mi",
+    "tutorialAppTourDecline": "Preskoči",
+    "tutorialAppTourChats": "Ovo je vaša lista razgovora — pronađite prijatelje za razgovor ili razgovarajte sa mnom bilo kada.",
+    "tutorialAppTourCoursesSome": "Vaši kursevi su ovdje. Izgleda da ste se već pridružili jednom!",
+    "tutorialAppTourCoursesNone": "Kursevi su ovdje — možete se pridružiti jednom s kodom ili napraviti svoj.",
+    "tutorialAppTourAnalytics": "Ovo je vaš napredak: svaka riječ i gramatički oblik koji ste koristili.",
+    "tutorialAppTourPractice": "Ovdje ćete pronaći personalizirane lekcije za vježbanje, pod uslovom da ste otključali najmanje 10 riječi vokabulara",
+    "tutorialAppTourWorld": "A ovo vas vraća na mapu svijeta bilo kada. Sretno učenje!"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-09-08 09:44:53.639815",
+    "@@last_modified": "2026-09-08 16:06:52.549908",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2278,5 +2278,23 @@
     "listenFirst": "Èist an toiseach",
     "listenFirstDescription": "Nuair a tha Èist an toiseach air, bidh aon bhriogadh a’ cluich claisneachd agus bidh briogadh dùbailte a’ taghadh an roghainn.",
     "listenFirstNeedsChoiceAudio": "Tionndaidh air claisneachd Roghainnean gus Èist an toiseach a chleachdadh.",
-    "unableToJoinCourseError": "Cha b' urrainn dhuinn do chur ris a' chùrsa seo an-dràsta. Feuch ris a-rithist, no faighnich don tidsear agad."
+    "unableToJoinCourseError": "Cha b' urrainn dhuinn do chur ris a' chùrsa seo an-dràsta. Feuch ris a-rithist, no faighnich don tidsear agad.",
+    "unlockActivitySummaries": "Fuasgail geàrr-chunntasan gnìomhachd",
+    "tutorialWelcome": "Is mise Pangea Bot, an stiùiriche agad agus com-pàirtiche còmhraidh AI. Tòisichidh sinn ag ionnsachadh!",
+    "tutorialWorldMapIntro": "Seo mapa an t-saoghail. Tha a h-uile gnìomhachd cluich-ròl ann an {language} a’ fuireach an seo.",
+    "tutorialWorldMapPickActivity": "Is e gnìomhachd còmhraidh a tha seo as urrainn dhut a chluich leam no le com-pàirtiche. Cliog air gus tòiseachadh air cluich!",
+    "tutorialActivityGoals": "Seo na h-amasan airson an dreuchd a tha thu a’ cluich, cuir teachdaireachdan a choileanas iad agus cosnadh rionnagan!",
+    "tutorialCoursePlanIntro": "Fàilte don chùrsa agad, {courseName}! Bheir e thu tro thuras ionnsachaidh le do cho-oileanaich.",
+    "tutorialCoursePlanProgress": "Mar a nì thu gnìomhachdan agus a gheibh thu rionnagan, nì thu adhartas an seo.",
+    "tutorialCoursePlanPickActivity": "Seo na gnìomhachdan ri fheuchainn an ath rud sa chùrsa agad. Tap air fear gus fhosgladh agus a thòiseachadh!",
+    "tutorialCoursePlanNoActivities": "Tap air gnìomhachd sam bith sa phlana agad gus fhosgladh agus a thòiseachadh!",
+    "tutorialAppTourOffer": "Obair mhath a’ crìochnachadh a’ chiad ghnìomhachd agad! Am bu toil leat gun seall mi dhut an aplacaid?",
+    "tutorialAppTourAccept": "Thoir dhomh turas",
+    "tutorialAppTourDecline": "Leum",
+    "tutorialAppTourChats": "Seo an liosta cabadaich agad — lorg caraidean airson cabadaich leotha, no bruidhinn rium aig àm sam bith.",
+    "tutorialAppTourCoursesSome": "Tha na cùrsaichean agad a’ fuireach an seo. Tha e coltach gu bheil thu air tighinn còmhla ri fear mu thràth!",
+    "tutorialAppTourCoursesNone": "Tha cùrsaichean a’ fuireach an seo — faodaidh tu tighinn còmhla ri fear le còd, no do chuid fhèin a dhèanamh.",
+    "tutorialAppTourAnalytics": "Seo an adhartas agad: a h-uile facal agus cruth gràmair a chleachd thu.",
+    "tutorialAppTourPractice": "Gheibh thu leasanan cleachdaidh pearsanaichte an seo, fhad ‘s a tha thu air co-dhiù 10 faclan briathrachais fhuasgladh",
+    "tutorialAppTourWorld": "Agus bheir seo air ais thu gu mapa an t-saoghail aig àm sam bith. Ionnsachadh sona!"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-09-08 09:45:04.073361",
+    "@@last_modified": "2026-09-08 16:07:23.877151",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10175,5 +10175,23 @@
     "listenFirst": "Önce Dinle",
     "listenFirstDescription": "Önce Dinle açıkken, tek tıklama sadece sesi çalar ve çift tıklama seçeneği seçer.",
     "listenFirstNeedsChoiceAudio": "Önce Dinle'yi kullanmak için Seçenekler sesini açın.",
-    "unableToJoinCourseError": "Şu anda sizi bu kursa ekleyemedik. Lütfen tekrar deneyin veya öğretmeninize danışın."
+    "unableToJoinCourseError": "Şu anda sizi bu kursa ekleyemedik. Lütfen tekrar deneyin veya öğretmeninize danışın.",
+    "unlockActivitySummaries": "Etkinlik özetlerinin kilidini aç",
+    "tutorialWelcome": "Ben Pangea Bot, rehberiniz ve yapay zeka sohbet arkadaşınızım. Hadi öğrenmeye başlayalım!",
+    "tutorialWorldMapIntro": "Burası dünya haritası. {language} dilindeki her rol yapma etkinliği burada bulunur.",
+    "tutorialWorldMapPickActivity": "Bu, benimle veya bir partnerle oynayabileceğiniz bir sohbet etkinliği. Başlamak için tıklayın!",
+    "tutorialActivityGoals": "İşte oynadığınız rolün hedefleri, bunları tamamlayan mesajlar gönderin ve yıldız kazanın!",
+    "tutorialCoursePlanIntro": "Kursunuza hoş geldiniz, {courseName}! Sizi kurs arkadaşlarınızla bir öğrenme yolculuğuna çıkaracak.",
+    "tutorialCoursePlanProgress": "Etkinlikler yaptıkça ve yıldız kazandıkça burada ilerleme kaydedeceksiniz.",
+    "tutorialCoursePlanPickActivity": "Bunlar kursunuzda denemeniz gereken bir sonraki etkinlikler. Açmak ve başlatmak için birine dokunun!",
+    "tutorialCoursePlanNoActivities": "Planınızdaki herhangi bir etkinliği açmak ve başlatmak için dokunun!",
+    "tutorialAppTourOffer": "İlk etkinliğinizi bitirdiğiniz için harika bir iş çıkardınız! Uygulamayı size gezdirmemi ister misiniz?",
+    "tutorialAppTourAccept": "Bana bir tur yaptır",
+    "tutorialAppTourDecline": "Atla",
+    "tutorialAppTourChats": "Burası sohbet listeniz; sohbet edecek arkadaşlar bulun veya istediğiniz zaman benimle konuşun.",
+    "tutorialAppTourCoursesSome": "Kurslarınız burada bulunur. Görünüşe göre zaten birine katılmışsınız!",
+    "tutorialAppTourCoursesNone": "Kurslar burada bulunur; bir kodla birine katılabilir veya kendinizinkini oluşturabilirsiniz.",
+    "tutorialAppTourAnalytics": "Bu sizin ilerlemeniz: kullandığınız her kelime ve dilbilgisi formu.",
+    "tutorialAppTourPractice": "En az 10 kelime hazinesi kelimesinin kilidini açtığınız sürece kişiselleştirilmiş pratik derslerini burada bulacaksınız.",
+    "tutorialAppTourWorld": "Ve bu sizi istediğiniz zaman dünya haritasına geri getirir. Keyifli öğrenmeler!"
 }

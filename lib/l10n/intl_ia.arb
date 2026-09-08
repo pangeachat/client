@@ -1362,7 +1362,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-09-08 09:44:56.210096",
+    "@@last_modified": "2026-09-08 16:06:55.768568",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10810,5 +10810,23 @@
     "listenFirst": "Ascolta primo",
     "listenFirstDescription": "Quando Ascolta primo es active, un clic solmente sona audio e un duple clic selige le option.",
     "listenFirstNeedsChoiceAudio": "Activa le audio de optiones pro usar Ascolta primo.",
-    "unableToJoinCourseError": "Nos non poteva adder vos a iste curso nunc. Per favor, reprova, o demanda a tu inseniator."
+    "unableToJoinCourseError": "Nos non poteva adder vos a iste curso nunc. Per favor, reprova, o demanda a tu inseniator.",
+    "unlockActivitySummaries": "Disblocar summaros de activitate",
+    "tutorialWelcome": "Io es Pangea Bot, tu guida e partenaria de conversation de IA. Comencemos a apprender!",
+    "tutorialWorldMapIntro": "Isto es le mappa del mundo. Cata activitate de joco de rolos in {language} vive hic.",
+    "tutorialWorldMapPickActivity": "Isto es un activitate de conversation que tu pote jocar con me o un partenaria. Clica super illo pro comenciar a jocar!",
+    "tutorialActivityGoals": "Hic es le scopos pro le rolo que tu joca, invia messages que los completa e gania stellas!",
+    "tutorialCoursePlanIntro": "Benvenite a tu curso, {courseName}! Illo te guidara per un viage de apprentissage con tu camaradas de curso.",
+    "tutorialCoursePlanProgress": "Quando tu face activitates e gania stellas, tu facera progresso hic.",
+    "tutorialCoursePlanPickActivity": "Iste es le activitates a provar postea in tu curso. Tappa un pro aperir e comenciar lo!",
+    "tutorialCoursePlanNoActivities": "Tappa qualcunque activitate in tu plano pro aperir e comenciar lo!",
+    "tutorialAppTourOffer": "Excellentissime travalio pro finir tu prime activitate! Vouderea tu que io te monstra le application?",
+    "tutorialAppTourAccept": "Face me un tour",
+    "tutorialAppTourDecline": "Saltar",
+    "tutorialAppTourChats": "Isto es tu lista de conversas — trova amicos con qui conversar, o parla con me in qualcunque momento.",
+    "tutorialAppTourCoursesSome": "Tu cursos vive hic. Il pare que tu ha jam adherite a un!",
+    "tutorialAppTourCoursesNone": "Cursos vive hic — tu pote adherer a un con un codice, o crear le tue.",
+    "tutorialAppTourAnalytics": "Isto es tu progresso: cata parola e forma grammatical que tu ha usate.",
+    "tutorialAppTourPractice": "Tu trovara hic lectiones de practica personalisate, si tu ha disblocate al minus 10 parolas de vocabulario",
+    "tutorialAppTourWorld": "E isto te reporta al mappa del mundo in qualcunque momento. Felice apprentissage!"
 }

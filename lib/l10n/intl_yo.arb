@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-09-08 09:45:06.532921",
+    "@@last_modified": "2026-09-08 16:07:31.946240",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2278,5 +2278,23 @@
     "listenFirst": "Kọkọ gbọ́",
     "listenFirstDescription": "Nígbàtí Kọkọ Gbọ́ bá wà lórí, títẹ́ kan yóò kàn mú ohùn ṣiṣẹ́, títẹ́ méjì yóò sì yan àṣàyàn náà.",
     "listenFirstNeedsChoiceAudio": "Tan ohùn àṣàyàn láti lo Kọkọ Gbọ́.",
-    "unableToJoinCourseError": "A kò le fi ọ kún iṣẹ́-ẹ̀kọ́ yìí báyìí. Jọ̀wọ́ tún gbìyànjú, tàbí bi olùkọ́ rẹ."
+    "unableToJoinCourseError": "A kò le fi ọ kún iṣẹ́-ẹ̀kọ́ yìí báyìí. Jọ̀wọ́ tún gbìyànjú, tàbí bi olùkọ́ rẹ.",
+    "unlockActivitySummaries": "Ṣí àwọn àkópọ̀ iṣẹ́ ṣíṣe",
+    "tutorialWelcome": "Èmi ni Pangea Bot, amọ̀nà rẹ àti alábàákẹ́gbẹ́ ìjíròrò AI. Jẹ́ kí a bẹ̀rẹ̀ sí kọ́ ẹ̀kọ́!",
+    "tutorialWorldMapIntro": "Èyí ni àtẹ ìwòye ayé. Gbogbo iṣẹ́ ṣíṣe ìṣeré ipa nínú {language} wà níbí.",
+    "tutorialWorldMapPickActivity": "Èyí jẹ́ iṣẹ́ ṣíṣe ìjíròrò tí o lè ṣe pẹ̀lú mi tàbí alábàákẹ́gbẹ́. Tẹ́ ẹ láti bẹ̀rẹ̀ sí ṣeré!",
+    "tutorialActivityGoals": "Àwọn àfojúsùn fún ipa tí o ń ṣeré nìwọ̀nyí, fi àwọn ìhìnranṣẹ́ ránṣẹ́ tí yóò parí wọn kí o sì jèrè àwọn ìràwọ̀!",
+    "tutorialCoursePlanIntro": "Ẹ kú àbọ̀ sí kọ́ọ̀sì yín, {courseName}! Yóò mú yín lọ sí ìrìn-àjò ẹ̀kọ́ pẹ̀lú àwọn akẹ́kọ̀ọ́ ẹgbẹ́ yín.",
+    "tutorialCoursePlanProgress": "Bí o ṣe ń ṣe àwọn iṣẹ́ ṣíṣe tí o sì ń jèrè àwọn ìràwọ̀, o óò tẹ̀síwájú níbí.",
+    "tutorialCoursePlanPickActivity": "Àwọn wọ̀nyí ni àwọn iṣẹ́ ṣíṣe tí o lè gbìyànjú ní kọ́ọ̀sì rẹ. Tẹ́ ọ̀kan láti ṣí i kí o sì bẹ̀rẹ̀ sí ṣe é!",
+    "tutorialCoursePlanNoActivities": "Tẹ́ iṣẹ́ ṣíṣe èyíkéyìí nínú ètò rẹ láti ṣí i kí o sì bẹ̀rẹ̀ sí ṣe é!",
+    "tutorialAppTourOffer": "Iṣẹ́ takuntakun ni o ṣe nípa pípari iṣẹ́ ṣíṣe àkọ́kọ́ rẹ! Ṣé o fẹ́ kí n fi ohun gbogbo hàn ọ́ nínú app náà?",
+    "tutorialAppTourAccept": "Fún mi ní ìrìn-àjò",
+    "tutorialAppTourDecline": "Fòó",
+    "tutorialAppTourChats": "Èyí ni àtòjọ ìjíròrò rẹ — wá àwọn ọ̀rẹ́ láti bá sọ̀rọ̀, tàbí bá mi sọ̀rọ̀ nígbàkúùgbà.",
+    "tutorialAppTourCoursesSome": "Àwọn kọ́ọ̀sì rẹ wà níbí. Ó dàbí pé o ti darapọ̀ mọ́ ọ̀kan tẹ́lẹ̀!",
+    "tutorialAppTourCoursesNone": "Àwọn kọ́ọ̀sì wà níbí — o lè darapọ̀ mọ́ ọ̀kan pẹ̀lú kóòdù, tàbí ṣe tirẹ̀.",
+    "tutorialAppTourAnalytics": "Èyí ni ìtẹ̀síwájú rẹ: gbogbo ọ̀rọ̀ àti ọ̀nà gírámà tí o ti lò.",
+    "tutorialAppTourPractice": "O óò rí àwọn ẹ̀kọ́ ìdánilẹ́kọ̀ọ́ tí a ṣe fún ọ níbí, níwọ̀n ìgbà tí o bá ti ṣí ó kéré tán àwọn ọ̀rọ̀ ìtumọ̀ 10.",
+    "tutorialAppTourWorld": "Èyí sì mú ọ padà sí àtẹ ìwòye ayé nígbàkúùgbà. Ẹ kú ẹ̀kọ́!"
 }

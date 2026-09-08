@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-09-08 09:45:03.205284",
+    "@@last_modified": "2026-09-08 16:07:22.301699",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2278,5 +2278,23 @@
     "listenFirst": "Mamelisa pele",
     "listenFirstDescription": "Ha Mamelisa Pele e buletswe, ho tobetsa hang ho bapala modumo mme ho tobetsa habedi ho kgetha kgetho.",
     "listenFirstNeedsChoiceAudio": "Bulela modumo wa Dikgetho ho sebedisa Mamelisa Pele.",
-    "unableToJoinCourseError": "Ha re a kgona ho o kenya thutong ena ha jwale. Ka kopo leka hape, kapa o botse tichere ya hao."
+    "unableToJoinCourseError": "Ha re a kgona ho o kenya thutong ena ha jwale. Ka kopo leka hape, kapa o botse tichere ya hao.",
+    "unlockActivitySummaries": "Notlolla kakaretso ya ditshebetso",
+    "tutorialWelcome": "Ke Pangea Bot, motataisi wa hao le molekane wa moqoqo wa AI. Ha re ithuteng!",
+    "tutorialWorldMapIntro": "Ena ke mmapa wa lefatshe. Mosebetsi o mong le o mong wa ho bapala karolo ka {language} o phela mona.",
+    "tutorialWorldMapPickActivity": "Ona ke mosebetsi wa moqoqo oo o ka o bapalang le nna kapa molekane. Tobetsa ho ona ho qala ho bapala!",
+    "tutorialActivityGoals": "Lena ke maikemisetso a karolo eo o e bapalang, romela melaetsa e e phethang mme o fumane dinaledi!",
+    "tutorialCoursePlanIntro": "O amohelehile thupelong ya hao, {courseName}! E tla o tsamaisa leetong la ho ithuta le basebetsi mmoho le wena ba thupelo.",
+    "tutorialCoursePlanProgress": "Ha o ntse o etsa ditshebetso le ho fumana dinaledi, o tla etsa tswelopele mona.",
+    "tutorialCoursePlanPickActivity": "Lena ke ditshebetso tseo o lokelang ho di leka ka mora mona thupelong ya hao. Tobetsa ho e nngwe ho e bula le ho e qala!",
+    "tutorialCoursePlanNoActivities": "Tobetsa mosebetsi ofe kapa ofe morerong wa hao ho o bula le ho o qala!",
+    "tutorialAppTourOffer": "Mosebetsi o motle haholo ho qeta mosebetsi wa hao wa pele! Na o ka rata hore ke o bontshe ka hara app?",
+    "tutorialAppTourAccept": "Mpontshe",
+    "tutorialAppTourDecline": "Tlolela",
+    "tutorialAppTourChats": "Lena ke lethathamo la hao la dipuisano — fumana metswalle eo o ka qoqang le yona, kapa o qoqe le nna neng kapa neng.",
+    "tutorialAppTourCoursesSome": "Dithupelo tsa hao di phela mona. Ho bonahala o se o kene ho e nngwe!",
+    "tutorialAppTourCoursesNone": "Dithupelo di phela mona — o ka ikopanya le e nngwe ka khoutu, kapa wa iketsetsa ya hao.",
+    "tutorialAppTourAnalytics": "Ena ke tswelopele ya hao: lentswe le leng le le leng le sebopeho sa sebōpeho-puo seo o se sebedisitseng.",
+    "tutorialAppTourPractice": "O tla fumana dithuto tsa boitsebelo tse ikgethileng mona, ha feela o notlollotse bonyane mantswe a 10 a pokello ya mantswe",
+    "tutorialAppTourWorld": "Mme sena se o kgutlisetsa mmapeng wa lefatshe neng kapa neng. Thabela ho ithuta!"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-09-08 09:45:03.059353",
+    "@@last_modified": "2026-09-08 16:07:21.630995",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2278,5 +2278,23 @@
     "listenFirst": "Ngadangukeun heula",
     "listenFirstDescription": "Nalika Ngadangukeun Heula dihurungkeun, sakali klik ngan ukur muterkeun audio sareng dua kali klik milih pilihan.",
     "listenFirstNeedsChoiceAudio": "Hurungkeun audio Pilihan pikeun nganggo Ngadangukeun Heula.",
-    "unableToJoinCourseError": "Kami teu tiasa nambihan anjeun kana kursus ieu ayeuna. Punten cobian deui, atanapi taroskeun ka guru anjeun."
+    "unableToJoinCourseError": "Kami teu tiasa nambihan anjeun kana kursus ieu ayeuna. Punten cobian deui, atanapi taroskeun ka guru anjeun.",
+    "unlockActivitySummaries": "Buka ringkesan kagiatan",
+    "tutorialWelcome": "Abdi Pangea Bot, pituduh anjeun sareng pasangan paguneman AI. Hayu urang diajar!",
+    "tutorialWorldMapIntro": "Ieu peta dunya. Unggal kagiatan roleplay dina {language} aya di dieu.",
+    "tutorialWorldMapPickActivity": "Ieu kagiatan paguneman anu anjeun tiasa maénkeun sareng abdi atanapi pasangan. Pencét pikeun ngamimitian maén!",
+    "tutorialActivityGoals": "Ieu tujuan pikeun peran anu anjeun maénkeun, kirimkeun pesen anu ngalengkepanana sareng kéngingkeun béntang!",
+    "tutorialCoursePlanIntro": "Wilujeng sumping di kursus anjeun, {courseName}! Éta bakal nyandak anjeun ngalangkungan perjalanan diajar sareng réréncangan kursus anjeun.",
+    "tutorialCoursePlanProgress": "Nalika anjeun ngalakukeun kagiatan sareng kéngingkeun béntang, anjeun bakal ngadamel kamajuan di dieu.",
+    "tutorialCoursePlanPickActivity": "Ieu kagiatan anu kedah dicobian salajengna dina kursus anjeun. Ketok hiji pikeun muka sareng ngamimitianana!",
+    "tutorialCoursePlanNoActivities": "Ketok kagiatan naon waé dina rencana anjeun pikeun muka sareng ngamimitianana!",
+    "tutorialAppTourOffer": "Padamelan anu saé ngarengsekeun kagiatan munggaran anjeun! Naha anjeun hoyong abdi nunjukkeun anjeun sakitar aplikasi?",
+    "tutorialAppTourAccept": "Pasihan abdi tur",
+    "tutorialAppTourDecline": "Langkung",
+    "tutorialAppTourChats": "Ieu daptar obrolan anjeun — milarian réréncangan pikeun ngobrol, atanapi ngobrol sareng abdi iraha waé.",
+    "tutorialAppTourCoursesSome": "Kursus anjeun aya di dieu. Sigana anjeun parantos ngagabung hiji!",
+    "tutorialAppTourCoursesNone": "Kursus aya di dieu — anjeun tiasa ngagabung hiji nganggo kode, atanapi ngadamel anjeun nyalira.",
+    "tutorialAppTourAnalytics": "Ieu kamajuan anjeun: unggal kecap sareng bentuk tata basa anu anjeun anggo.",
+    "tutorialAppTourPractice": "Anjeun bakal mendakan pelajaran prakték pribadi di dieu, salami anjeun parantos muka konci sahenteuna 10 kecap kosakata",
+    "tutorialAppTourWorld": "Sareng ieu ngabalikeun anjeun ka peta dunya iraha waé. Wilujeng diajar!"
 }

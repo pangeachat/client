@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-08 09:45:01.473261",
+    "@@last_modified": "2026-09-08 16:07:15.393740",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10606,5 +10606,23 @@
     "listenFirst": "Ascultă mai întâi",
     "listenFirstDescription": "Când Ascultă mai întâi este activat, un singur clic redă doar sunetul, iar un dublu clic selectează opțiunea.",
     "listenFirstNeedsChoiceAudio": "Activează sunetul Opțiunilor pentru a utiliza Ascultă mai întâi.",
-    "unableToJoinCourseError": "Nu te-am putut adăuga la acest curs chiar acum. Te rugăm să încerci din nou sau să-ți întrebi profesorul."
+    "unableToJoinCourseError": "Nu te-am putut adăuga la acest curs chiar acum. Te rugăm să încerci din nou sau să-ți întrebi profesorul.",
+    "unlockActivitySummaries": "Deblocați rezumatele activităților",
+    "tutorialWelcome": "Sunt Pangea Bot, ghidul tău și partenerul tău de conversație AI. Să începem să învățăm!",
+    "tutorialWorldMapIntro": "Aceasta este harta lumii. Fiecare activitate de joc de rol în {language} se află aici.",
+    "tutorialWorldMapPickActivity": "Aceasta este o activitate de conversație pe care o poți juca cu mine sau cu un partener. Apasă pe ea pentru a începe să joci!",
+    "tutorialActivityGoals": "Iată obiectivele pentru rolul pe care îl joci, trimite mesaje care le completează și câștigă stele!",
+    "tutorialCoursePlanIntro": "Bun venit la cursul tău, {courseName}! Te va ghida într-o călătorie de învățare alături de colegii tăi de curs.",
+    "tutorialCoursePlanProgress": "Pe măsură ce faci activități și câștigi stele, vei progresa aici.",
+    "tutorialCoursePlanPickActivity": "Acestea sunt activitățile de încercat în continuare în cursul tău. Atinge una pentru a o deschide și a o începe!",
+    "tutorialCoursePlanNoActivities": "Atinge orice activitate din planul tău pentru a o deschide și a o începe!",
+    "tutorialAppTourOffer": "Felicitări pentru că ai terminat prima ta activitate! Ai vrea să-ți arăt aplicația?",
+    "tutorialAppTourAccept": "Fă-mi un tur",
+    "tutorialAppTourDecline": "Omite",
+    "tutorialAppTourChats": "Aceasta este lista ta de chat-uri — găsește prieteni cu care să conversezi sau vorbește cu mine oricând.",
+    "tutorialAppTourCoursesSome": "Cursurile tale sunt aici. Se pare că te-ai înscris deja la unul!",
+    "tutorialAppTourCoursesNone": "Cursurile sunt aici — te poți înscrie la unul cu un cod sau îți poți crea propriul curs.",
+    "tutorialAppTourAnalytics": "Acesta este progresul tău: fiecare cuvânt și formă gramaticală pe care le-ai folosit.",
+    "tutorialAppTourPractice": "Vei găsi lecții de practică personalizate aici, atâta timp cât ai deblocat cel puțin 10 cuvinte de vocabular",
+    "tutorialAppTourWorld": "Și asta te aduce înapoi la harta lumii oricând. Învățare plăcută!"
 }

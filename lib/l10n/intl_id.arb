@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-08 09:44:57.148174",
+    "@@last_modified": "2026-09-08 16:06:55.236516",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9947,5 +9947,23 @@
     "listenFirst": "Dengarkan dulu",
     "listenFirstDescription": "Saat Dengarkan Dulu aktif, satu klik hanya memutar audio dan klik ganda memilih opsi.",
     "listenFirstNeedsChoiceAudio": "Nyalakan audio Pilihan untuk menggunakan Dengarkan Dulu.",
-    "unableToJoinCourseError": "Kami tidak dapat menambahkan Anda ke kursus ini sekarang. Silakan coba lagi, atau tanyakan kepada guru Anda."
+    "unableToJoinCourseError": "Kami tidak dapat menambahkan Anda ke kursus ini sekarang. Silakan coba lagi, atau tanyakan kepada guru Anda.",
+    "unlockActivitySummaries": "Buka ringkasan aktivitas",
+    "tutorialWelcome": "Saya Pangea Bot, pemandu Anda dan mitra percakapan AI. Mari mulai belajar!",
+    "tutorialWorldMapIntro": "Ini adalah peta dunia. Setiap aktivitas roleplay dalam {language} ada di sini.",
+    "tutorialWorldMapPickActivity": "Ini adalah aktivitas percakapan yang dapat Anda mainkan dengan saya atau mitra. Klik untuk mulai bermain!",
+    "tutorialActivityGoals": "Berikut adalah tujuan untuk peran yang Anda mainkan, kirim pesan yang menyelesaikannya dan dapatkan bintang!",
+    "tutorialCoursePlanIntro": "Selamat datang di kursus Anda, {courseName}! Ini akan membawa Anda melalui perjalanan belajar bersama teman sekelas Anda.",
+    "tutorialCoursePlanProgress": "Saat Anda melakukan aktivitas dan mendapatkan bintang, Anda akan membuat kemajuan di sini.",
+    "tutorialCoursePlanPickActivity": "Ini adalah aktivitas yang harus dicoba selanjutnya dalam kursus Anda. Ketuk salah satu untuk membuka dan memulainya!",
+    "tutorialCoursePlanNoActivities": "Ketuk aktivitas apa pun dalam rencana Anda untuk membuka dan memulainya!",
+    "tutorialAppTourOffer": "Kerja bagus menyelesaikan aktivitas pertama Anda! Apakah Anda ingin saya menunjukkan aplikasi ini kepada Anda?",
+    "tutorialAppTourAccept": "Berikan saya tur",
+    "tutorialAppTourDecline": "Lewati",
+    "tutorialAppTourChats": "Ini adalah daftar obrolan Anda — temukan teman untuk diajak mengobrol, atau bicara dengan saya kapan saja.",
+    "tutorialAppTourCoursesSome": "Kursus Anda ada di sini. Sepertinya Anda sudah bergabung dengan satu!",
+    "tutorialAppTourCoursesNone": "Kursus ada di sini — Anda dapat bergabung dengan kode, atau membuat sendiri.",
+    "tutorialAppTourAnalytics": "Ini adalah kemajuan Anda: setiap kata dan bentuk tata bahasa yang telah Anda gunakan.",
+    "tutorialAppTourPractice": "Anda akan menemukan pelajaran praktik yang dipersonalisasi di sini, selama Anda telah membuka setidaknya 10 kata kosakata",
+    "tutorialAppTourWorld": "Dan ini akan membawa Anda kembali ke peta dunia kapan saja. Selamat belajar!"
 }

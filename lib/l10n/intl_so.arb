@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-09-08 09:45:03.677195",
+    "@@last_modified": "2026-09-08 16:07:20.926489",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2278,5 +2278,23 @@
     "listenFirst": "Marka hore dhegeyso",
     "listenFirstDescription": "Marka 'Marka hore dhegeyso' daaran yahay, hal gujin waxa ay ciyaaraysaa oo kaliya codka, laba gujinna waxa ay dooranaysaa ikhtiyaarka.",
     "listenFirstNeedsChoiceAudio": "Daar codka doorashooyinka si aad u isticmaasho 'Marka hore dhegeyso'.",
-    "unableToJoinCourseError": "Hadda kuma dari karno koorsadan. Fadlan isku day mar kale, ama macalinkaaga weydii."
+    "unableToJoinCourseError": "Hadda kuma dari karno koorsadan. Fadlan isku day mar kale, ama macalinkaaga weydii.",
+    "unlockActivitySummaries": "Fur kooban waxqabadyada",
+    "tutorialWelcome": "Waxaan ahay Pangea Bot, hagahaaga iyo lammaanahaaga wadahadalka AI. Aan bilowno waxbarashada!",
+    "tutorialWorldMapIntro": "Tani waa khariidadda adduunka. Hawl kasta oo door-ciyaareed ah oo ku qoran {language} ayaa halkan ku taal.",
+    "tutorialWorldMapPickActivity": "Tani waa hawl wadahadal ah oo aad ila ciyaari karto aniga ama lammaane. Guji si aad u bilowdo ciyaarta!",
+    "tutorialActivityGoals": "Halkan waxaa ah yoolalka doorka aad ciyaareyso, u dir fariimo dhammaystiraya oo kasbo xiddigo!",
+    "tutorialCoursePlanIntro": "Ku soo dhowow koorsadaada, {courseName}! Waxay ku geyn doontaa safar waxbarasho oo aad la socoto ardaydaada.",
+    "tutorialCoursePlanProgress": "Markaad samayso hawlaha oo aad hesho xiddigo, waxaad horumar ka samayn doontaa halkan.",
+    "tutorialCoursePlanPickActivity": "Kuwani waa hawlaha aad isku dayi doonto xiga koorsadaada. Mid taabo si aad u furto oo u bilowdo!",
+    "tutorialCoursePlanNoActivities": "Taabo hawl kasta oo qorshahaaga ah si aad u furto oo u bilowdo!",
+    "tutorialAppTourOffer": "Shaqo fiican oo aad ku dhammaystirtay hawshaadii ugu horreysay! Ma jeclaan lahayd inaan ku tuso agagaarka abka?",
+    "tutorialAppTourAccept": "I tus",
+    "tutorialAppTourDecline": "Ka bood",
+    "tutorialAppTourChats": "Tani waa liiskaaga sheekeysiga – ka hel asxaab aad la sheekaysato, ama igala hadal wakhti kasta.",
+    "tutorialAppTourCoursesSome": "Koorsadaada ayaa halkan ku taal. Waxay u muuqataa inaad mid horeba ugu biirtay!",
+    "tutorialAppTourCoursesNone": "Koorsada ayaa halkan ku taal – waxaad ku biiri kartaa mid leh koodh, ama adigu samayso mid kuu gaar ah.",
+    "tutorialAppTourAnalytics": "Kani waa horumarkaaga: eray kasta iyo qaab kasta oo naxwe ah oo aad isticmaashay.",
+    "tutorialAppTourPractice": "Halkan waxaad ka heli doontaa casharro tababar shakhsi ah, inta aad furtay ugu yaraan 10 eray oo erey bixin ah",
+    "tutorialAppTourWorld": "Tanina waxay kugu soo celinaysaa khariidadda adduunka wakhti kasta. Waxbarasho wacan!"
 }

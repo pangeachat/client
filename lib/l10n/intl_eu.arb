@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-09-08 09:44:52.524096",
+    "@@last_modified": "2026-09-08 16:06:48.928501",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9874,5 +9874,23 @@
     "listenFirst": "Lehenik entzun",
     "listenFirstDescription": "Lehenik entzun aktibatuta dagoenean, klik bakar batek audioa erreproduzitzen du eta klik bikoitz batek aukera hautatzen du.",
     "listenFirstNeedsChoiceAudio": "Aktibatu Aukeren audioa Lehenik entzun erabiltzeko.",
-    "unableToJoinCourseError": "Ezin izan zaitugu ikastaro honetan sartu oraintxe bertan. Saiatu berriro, edo galdetu zure irakasleari."
+    "unableToJoinCourseError": "Ezin izan zaitugu ikastaro honetan sartu oraintxe bertan. Saiatu berriro, edo galdetu zure irakasleari.",
+    "unlockActivitySummaries": "Desblokeatu jardueren laburpenak",
+    "tutorialWelcome": "Pangea Bot naiz, zure gida eta AI elkarrizketa-kidea. Goazen ikastera!",
+    "tutorialWorldMapIntro": "Hau munduko mapa da. {language} hizkuntzako rol-joko jarduera guztiak hemen daude.",
+    "tutorialWorldMapPickActivity": "Hau nirekin edo kide batekin jolastu dezakezun elkarrizketa-jarduera bat da. Egin klik gainean jolasten hasteko!",
+    "tutorialActivityGoals": "Hona hemen jokatzen ari zaren rolaren helburuak, bidali mezuak horiek osatzeko eta izarrak irabazteko!",
+    "tutorialCoursePlanIntro": "Ongi etorri zure ikastarora, {courseName}! Ikasketa-bidaia batean zehar eramango zaitu zure ikaskideekin batera.",
+    "tutorialCoursePlanProgress": "Jarduerak egiten eta izarrak irabazten dituzun heinean, aurrera egingo duzu hemen.",
+    "tutorialCoursePlanPickActivity": "Hauek dira zure ikastaroan hurrengo probatu beharreko jarduerak. Sakatu bat irekitzeko eta hasteko!",
+    "tutorialCoursePlanNoActivities": "Sakatu zure planean edozein jarduera irekitzeko eta hasteko!",
+    "tutorialAppTourOffer": "Lan bikaina zure lehen jarduera amaitzen! Nahi al duzu aplikazioa erakustea?",
+    "tutorialAppTourAccept": "Erakutsi iezadazu",
+    "tutorialAppTourDecline": "Saltatu",
+    "tutorialAppTourChats": "Hau zure txat-zerrenda da — aurkitu lagunak txateatzeko, edo hitz egin nirekin edonoiz.",
+    "tutorialAppTourCoursesSome": "Zure ikastaroak hemen daude. Badirudi dagoeneko batean sartu zarela!",
+    "tutorialAppTourCoursesNone": "Ikastaroak hemen daude — kode batekin bat egin dezakezu, edo zurea sortu.",
+    "tutorialAppTourAnalytics": "Hau zure aurrerapena da: erabili dituzun hitz eta gramatika forma guztiak.",
+    "tutorialAppTourPractice": "Hemen aurkituko dituzu praktika-ikasgai pertsonalizatuak, gutxienez 10 hiztegi-hitz desblokeatu badituzu",
+    "tutorialAppTourWorld": "Eta honek munduko mapara itzultzen zaitu edonoiz. Ikasketa zoriontsua!"
 }

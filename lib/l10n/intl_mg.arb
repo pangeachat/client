@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-09-08 09:45:00.737216",
+    "@@last_modified": "2026-09-08 16:07:06.506858",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2278,5 +2278,23 @@
     "listenFirst": "Henoy aloha",
     "listenFirstDescription": "Rehefa mandeha ny Henoy aloha, ny tsindry iray dia mandefa feo fotsiny ary ny tsindry indroa dia misafidy ny safidy.",
     "listenFirstNeedsChoiceAudio": "Alefaso ny feon'ny safidy mba hampiasana ny Henoy aloha.",
-    "unableToJoinCourseError": "Tsy afaka nampiditra anao tamin'ity taranja ity izahay izao. Andramo indray, na anontanio ny mpampianatra anao."
+    "unableToJoinCourseError": "Tsy afaka nampiditra anao tamin'ity taranja ity izahay izao. Andramo indray, na anontanio ny mpampianatra anao.",
+    "unlockActivitySummaries": "Sokafy ny famintinana ny asa",
+    "tutorialWelcome": "Izaho no Pangea Bot, mpitari-dalana anao sy mpiara-miresaka AI. Andao hianatra!",
+    "tutorialWorldMapIntro": "Ity no sarintany eran-tany. Eto no misy ny asa rehetra mifandraika amin'ny lalao an-tsehatra amin'ny teny {language}.",
+    "tutorialWorldMapPickActivity": "Ity dia asa ifampiresahana azonao atao amiko na amin'ny namana. Tsindrio izany hanombohana milalao!",
+    "tutorialActivityGoals": "Ireo no tanjona ho an'ny anjara toerana lalaovinao, mandefasa hafatra mamita izany ary mahazo kintana!",
+    "tutorialCoursePlanIntro": "Tongasoa eto amin'ny taranjao, {courseName}! Hitondra anao amin'ny dia fianarana miaraka amin'ireo mpiara-mianatra aminao izany.",
+    "tutorialCoursePlanProgress": "Rehefa manao asa sy mahazo kintana ianao, dia handroso eto.",
+    "tutorialCoursePlanPickActivity": "Ireo no asa tokony hatao manaraka amin'ny taranjao. Tsindrio ny iray hanokafana sy hanombohana azy!",
+    "tutorialCoursePlanNoActivities": "Tsindrio izay asa rehetra ao amin'ny drafitrao hanokafana sy hanombohana azy!",
+    "tutorialAppTourOffer": "Asa tsara vita ny asa voalohany nataonao! Te-hampiseho anao ny fampiharana ve aho?",
+    "tutorialAppTourAccept": "Ampahafantaro ahy",
+    "tutorialAppTourDecline": "Aleo mandalo",
+    "tutorialAppTourChats": "Ity no lisitry ny resakao — mitadiava namana hiresahana, na miresaha amiko amin'ny fotoana rehetra.",
+    "tutorialAppTourCoursesSome": "Eto no misy ny taranjao. Toa efa niditra tamin'ny iray ianao!",
+    "tutorialAppTourCoursesNone": "Eto no misy ny taranja — afaka miditra amin'ny iray ianao amin'ny alalan'ny kaody, na mamorona ny anao manokana.",
+    "tutorialAppTourAnalytics": "Ity no fandrosoanao: ny teny sy ny endrika fitsipi-pitenenana rehetra nampiasainao.",
+    "tutorialAppTourPractice": "Hahita lesona fanao manokana eto ianao, raha toa ka efa nanokatra teny farafahakeliny 10 ianao.",
+    "tutorialAppTourWorld": "Ary ity dia mamerina anao amin'ny sarintany eran-tany amin'ny fotoana rehetra. Mirary fianarana mahafinaritra!"
 }

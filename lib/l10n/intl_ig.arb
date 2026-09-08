@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-09-08 09:44:55.793712",
+    "@@last_modified": "2026-09-08 16:06:58.755343",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2278,5 +2278,23 @@
     "listenFirst": "Buru ụzọ gee ntị",
     "listenFirstDescription": "Mgbe agbanyere Buru ụzọ gee ntị, otu ịpị ga-akpọ naanị ọdịyo ma ịpị ugboro abụọ ga-ahọrọ nhọrọ ahụ.",
     "listenFirstNeedsChoiceAudio": "Gbanwuo ọdịyo Nhọrọ iji jiri Buru ụzọ gee ntị.",
-    "unableToJoinCourseError": "Anyị enweghị ike itinye gị na nkuzi a ugbu a. Biko gbalịa ọzọ, ma ọ bụ jụọ onye nkuzi gị."
+    "unableToJoinCourseError": "Anyị enweghị ike itinye gị na nkuzi a ugbu a. Biko gbalịa ọzọ, ma ọ bụ jụọ onye nkuzi gị.",
+    "unlockActivitySummaries": "Mepee nchịkọta ọrụ",
+    "tutorialWelcome": "Abụ m Pangea Bot, onye ndu gị na onye mmekọ mkparịta ụka AI. Ka anyị malite mmụta!",
+    "tutorialWorldMapIntro": "Nke a bụ maapụ ụwa. Ọrụ egwuregwu ọ bụla dị na {language} bi ebe a.",
+    "tutorialWorldMapPickActivity": "Nke a bụ ọrụ mkparịta ụka ị nwere ike soro m ma ọ bụ onye mmekọ gwuo. Pịa ya ka ịmalite igwu egwu!",
+    "tutorialActivityGoals": "Nke a bụ ebumnuche maka ọrụ ị na-arụ, ziga ozi na-emecha ha wee nweta kpakpando!",
+    "tutorialCoursePlanIntro": "Nnọọ na nkuzi gị, {courseName}! Ọ ga-eduga gị na njem mmụta gị na ndị enyi gị na-amụ ihe.",
+    "tutorialCoursePlanProgress": "Ka ị na-arụ ọrụ ma na-enweta kpakpando, ị ga-enwe ọganihu ebe a.",
+    "tutorialCoursePlanPickActivity": "Ndị a bụ ọrụ ị ga-anwale ọzọ na nkuzi gị. Pịa otu ka imepe ma malite ya!",
+    "tutorialCoursePlanNoActivities": "Pịa ọrụ ọ bụla dị na atụmatụ gị ka imepe ma malite ya!",
+    "tutorialAppTourOffer": "Ọrụ dị mma ịmecha ọrụ mbụ gị! Ị ga-achọ ka m gosi gị gburugburu ngwa ahụ?",
+    "tutorialAppTourAccept": "Gosi m gburugburu",
+    "tutorialAppTourDecline": "Mafere",
+    "tutorialAppTourChats": "Nke a bụ ndepụta nkata gị — chọta ndị enyi ka gị na ha kparịta ụka, ma ọ bụ soro m kparịta ụka oge ọ bụla.",
+    "tutorialAppTourCoursesSome": "Nkuzi gị bi ebe a. O yiri ka ị sonyeela otu ugbua!",
+    "tutorialAppTourCoursesNone": "Nkuzi bi ebe a — ị nwere ike isonye na otu nwere koodu, ma ọ bụ mepụta nke gị.",
+    "tutorialAppTourAnalytics": "Nke a bụ ọganihu gị: okwu ọ bụla na ụdị ụtọ asụsụ ị jiri.",
+    "tutorialAppTourPractice": "Ị ga-ahụ nkuzi omume ahaziri ahazi ebe a, ma ọ bụrụhaala na ị mepeela opekata mpe okwu 10.",
+    "tutorialAppTourWorld": "Ma nke a na-eweghachi gị na maapụ ụwa oge ọ bụla. Obi ụtọ mmụta!"
 }

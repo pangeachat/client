@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-09-08 09:44:55.644643",
+    "@@last_modified": "2026-09-08 16:06:54.494333",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2278,5 +2278,23 @@
     "listenFirst": "Koute anvan",
     "listenFirstDescription": "Lè Koute anvan aktive, yon sèl klik jis jwe odyo a epi doub-klik chwazi opsyon an.",
     "listenFirstNeedsChoiceAudio": "Aktive odyo Chwa pou itilize Koute anvan.",
-    "unableToJoinCourseError": "Nou pa t' kapab ajoute ou nan kou sa a kounye a. Tanpri eseye ankò, oswa mande pwofesè ou."
+    "unableToJoinCourseError": "Nou pa t' kapab ajoute ou nan kou sa a kounye a. Tanpri eseye ankò, oswa mande pwofesè ou.",
+    "unlockActivitySummaries": "Debloke rezime aktivite yo",
+    "tutorialWelcome": "Mwen se Pangea Bot, gid ou ak patnè konvèsasyon AI ou. Ann kòmanse aprann!",
+    "tutorialWorldMapIntro": "Sa a se kat mondyal la. Chak aktivite jwe wòl nan {language} ap viv isit la.",
+    "tutorialWorldMapPickActivity": "Sa a se yon aktivite konvèsasyon ou ka jwe avè m oswa avèk yon patnè. Klike sou li pou kòmanse jwe!",
+    "tutorialActivityGoals": "Men objektif pou wòl w ap jwe a, voye mesaj ki ranpli yo epi touche zetwal!",
+    "tutorialCoursePlanIntro": "Byenveni nan kou ou a, {courseName}! Li pral mennen ou nan yon vwayaj aprantisaj ak kamarad kou ou yo.",
+    "tutorialCoursePlanProgress": "Pandan w ap fè aktivite epi w ap touche zetwal, w ap fè pwogrè isit la.",
+    "tutorialCoursePlanPickActivity": "Sa yo se aktivite pou eseye apre nan kou ou a. Tape youn pou ouvri epi kòmanse li!",
+    "tutorialCoursePlanNoActivities": "Tape nenpòt aktivite nan plan ou a pou ouvri epi kòmanse li!",
+    "tutorialAppTourOffer": "Ou fin fè premye aktivite ou a trè byen! Èske ou ta renmen m montre w aplikasyon an?",
+    "tutorialAppTourAccept": "Fè m fè yon tou",
+    "tutorialAppTourDecline": "Sote",
+    "tutorialAppTourChats": "Sa a se lis chat ou a — jwenn zanmi pou chat avèk yo, oswa pale avè m nenpòt ki lè.",
+    "tutorialAppTourCoursesSome": "Kou ou yo ap viv isit la. Sanble ou deja rantre nan youn!",
+    "tutorialAppTourCoursesNone": "Kou yo ap viv isit la — ou ka rantre nan youn avèk yon kòd, oswa kreye pa w la.",
+    "tutorialAppTourAnalytics": "Sa a se pwogrè ou: chak mo ak fòm gramè ou te itilize.",
+    "tutorialAppTourPractice": "W ap jwenn leson pratik pèsonalize isit la, depi ou debloke omwen 10 mo vokabilè",
+    "tutorialAppTourWorld": "Epi sa a mennen ou tounen nan kat mondyal la nenpòt ki lè. Bòn aprantisaj!"
 }

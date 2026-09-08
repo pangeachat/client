@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-09-08 09:44:56.025980",
+    "@@last_modified": "2026-09-08 16:06:54.451939",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2278,5 +2278,23 @@
     "listenFirst": "Mloog ua ntej",
     "listenFirstDescription": "Thaum Mloog Ua Ntej qhib, ib zaug nias tsuas yog ua suab xwb thiab ob zaug nias xaiv qhov kev xaiv.",
     "listenFirstNeedsChoiceAudio": "Qhib Kev Xaiv suab kom siv Mloog Ua Ntej.",
-    "unableToJoinCourseError": "Tam sim no peb ntxiv tsis tau koj rau hauv zaj kawm no. Thov sim dua, los yog nug koj tus xib fwb."
+    "unableToJoinCourseError": "Tam sim no peb ntxiv tsis tau koj rau hauv zaj kawm no. Thov sim dua, los yog nug koj tus xib fwb.",
+    "unlockActivitySummaries": "Qhib cov ntsiab lus ntawm kev ua si",
+    "tutorialWelcome": "Kuv yog Pangea Bot, koj tus qhia thiab AI tus khub sib tham. Cia peb pib kawm!",
+    "tutorialWorldMapIntro": "Nov yog daim ntawv qhia ntiaj teb. Txhua qhov kev ua si ua yeeb yam hauv {language} nyob ntawm no.",
+    "tutorialWorldMapPickActivity": "Nov yog ib qho kev sib tham uas koj tuaj yeem ua si nrog kuv lossis ib tus khub. Nyem rau nws kom pib ua si!",
+    "tutorialActivityGoals": "Nov yog cov hom phiaj rau lub luag haujlwm koj ua si, xa cov lus uas ua tiav lawv thiab khwv tau cov hnub qub!",
+    "tutorialCoursePlanIntro": "Txais tos rau koj chav kawm, {courseName}! Nws yuav coj koj mus rau txoj kev kawm nrog koj cov phooj ywg hauv chav kawm.",
+    "tutorialCoursePlanProgress": "Thaum koj ua cov haujlwm thiab tau txais cov hnub qub, koj yuav ua tiav ntawm no.",
+    "tutorialCoursePlanPickActivity": "Cov no yog cov haujlwm los sim tom ntej hauv koj chav kawm. Coj ib qho los qhib thiab pib nws!",
+    "tutorialCoursePlanNoActivities": "Coj ib qho kev ua si hauv koj txoj kev npaj los qhib thiab pib nws!",
+    "tutorialAppTourOffer": "Ua tau zoo kawg rau koj thawj qhov kev ua si! Koj puas xav kom kuv qhia koj txog daim ntawv thov?",
+    "tutorialAppTourAccept": "Qhia kuv saib",
+    "tutorialAppTourDecline": "Hla",
+    "tutorialAppTourChats": "Nov yog koj daim ntawv sib tham — nrhiav phooj ywg los sib tham nrog, lossis tham nrog kuv txhua lub sijhawm.",
+    "tutorialAppTourCoursesSome": "Koj cov chav kawm nyob ntawm no. Zoo li koj twb tau koom ib qho lawm!",
+    "tutorialAppTourCoursesNone": "Cov chav kawm nyob ntawm no — koj tuaj yeem koom ib qho nrog tus lej, lossis tsim koj tus kheej.",
+    "tutorialAppTourAnalytics": "Nov yog koj qhov kev nce qib: txhua lo lus thiab qauv sau ntawv koj tau siv.",
+    "tutorialAppTourPractice": "Koj yuav pom cov lus qhia kev xyaum tus kheej ntawm no, tsuav yog koj tau qhib tsawg kawg 10 lo lus.",
+    "tutorialAppTourWorld": "Thiab qhov no coj koj rov qab mus rau daim ntawv qhia ntiaj teb txhua lub sijhawm. Zoo siab kawm!"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-09-08 09:44:55.596470",
+    "@@last_modified": "2026-09-08 16:06:50.148910",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2278,5 +2278,23 @@
     "listenFirst": "Earst harkje",
     "listenFirstDescription": "As Earst harkje oan stiet, spilet ien klik allinich audio ôf en dûbelklik selektearret de opsje.",
     "listenFirstNeedsChoiceAudio": "Skeakelje Karren-audio yn om Earst harkje te brûken.",
-    "unableToJoinCourseError": "Wy koene jo op dit stuit net tafoegje oan dizze kursus. Besykje it opnij, of freegje jo learaar."
+    "unableToJoinCourseError": "Wy koene jo op dit stuit net tafoegje oan dizze kursus. Besykje it opnij, of freegje jo learaar.",
+    "unlockActivitySummaries": "Untskoattelje aktiviteitsgearfallings",
+    "tutorialWelcome": "Ik bin Pangea Bot, dyn gids en AI-konversaasjepartner. Litte wy begjinne mei learen!",
+    "tutorialWorldMapIntro": "Dit is de wrâldkaart. Elke rollenspulaktiviteit yn {language} is hjir te finen.",
+    "tutorialWorldMapPickActivity": "Dit is in konversaasjeaktiviteit dy't jo mei my of in partner spylje kinne. Klik derop om te begjinnen!",
+    "tutorialActivityGoals": "Hjir binne de doelen foar de rol dy't jo spylje, stjoer berjochten dy't se foltôgje en fertsjinje stjerren!",
+    "tutorialCoursePlanIntro": "Wolkom by jo kursus, {courseName}! It sil jo troch in learreis nimme mei jo kursusgenoaten.",
+    "tutorialCoursePlanProgress": "As jo aktiviteiten dogge en stjerren fertsjinje, sille jo hjir foarútgong meitsje.",
+    "tutorialCoursePlanPickActivity": "Dit binne de aktiviteiten dy't jo hjirnei yn jo kursus besykje kinne. Tik op ien om it te iepenjen en te begjinnen!",
+    "tutorialCoursePlanNoActivities": "Tik op in aktiviteit yn jo plan om it te iepenjen en te begjinnen!",
+    "tutorialAppTourOffer": "Goed dien mei it foltôgjen fan jo earste aktiviteit! Wolle jo dat ik jo de app sjen lit?",
+    "tutorialAppTourAccept": "Jou my in rûnlieding",
+    "tutorialAppTourDecline": "Oerslaan",
+    "tutorialAppTourChats": "Dit is jo petearlist — fyn freonen om mei te petearjen, of praat elk momint mei my.",
+    "tutorialAppTourCoursesSome": "Jo kursussen binne hjir. It liket derop dat jo al ien meidien hawwe!",
+    "tutorialAppTourCoursesNone": "Kursussen binne hjir — jo kinne meidwaan mei in koade, of jo eigen meitsje.",
+    "tutorialAppTourAnalytics": "Dit is jo foarútgong: elk wurd en elke grammatikafoarm dy't jo brûkt hawwe.",
+    "tutorialAppTourPractice": "Jo fine hjir personaliseare oefenlessen, salang't jo op syn minst 10 wurdskatwurden ûntskoattele hawwe",
+    "tutorialAppTourWorld": "En dit bringt jo elk momint werom nei de wrâldkaart. Lokkich learen!"
 }

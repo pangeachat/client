@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-08 09:44:51.359632",
+    "@@last_modified": "2026-09-08 16:06:43.745338",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10001,5 +10001,23 @@
     "listenFirst": "Escolta primer",
     "listenFirstDescription": "Quan Escolta primer està activat, un clic només reprodueix l'àudio i un doble clic selecciona l'opció.",
     "listenFirstNeedsChoiceAudio": "Activa l'àudio de les opcions per utilitzar Escolta primer.",
-    "unableToJoinCourseError": "No hem pogut afegir-te a aquest curs ara mateix. Torna-ho a provar o pregunta al teu professor."
+    "unableToJoinCourseError": "No hem pogut afegir-te a aquest curs ara mateix. Torna-ho a provar o pregunta al teu professor.",
+    "unlockActivitySummaries": "Desbloqueja els resums d'activitat",
+    "tutorialWelcome": "Sóc Pangea Bot, el teu guia i company de conversa amb IA. Comencem a aprendre!",
+    "tutorialWorldMapIntro": "Aquest és el mapa del món. Totes les activitats de rol en {language} es troben aquí.",
+    "tutorialWorldMapPickActivity": "Aquesta és una activitat de conversa que pots fer amb mi o amb un company. Fes-hi clic per començar a jugar!",
+    "tutorialActivityGoals": "Aquí tens els objectius del rol que estàs interpretant. Envia missatges que els completin i guanya estrelles!",
+    "tutorialCoursePlanIntro": "Benvingut al teu curs, {courseName}! Et guiarà a través d'un viatge d'aprenentatge amb els teus companys de curs.",
+    "tutorialCoursePlanProgress": "A mesura que facis activitats i guanyis estrelles, progressaràs aquí.",
+    "tutorialCoursePlanPickActivity": "Aquestes són les activitats que has de provar a continuació al teu curs. Toca'n una per obrir-la i començar-la!",
+    "tutorialCoursePlanNoActivities": "Toca qualsevol activitat del teu pla per obrir-la i començar-la!",
+    "tutorialAppTourOffer": "Molt bona feina acabant la teva primera activitat! Vols que et faci un recorregut per l'aplicació?",
+    "tutorialAppTourAccept": "Fes-me un recorregut",
+    "tutorialAppTourDecline": "Omet",
+    "tutorialAppTourChats": "Aquesta és la teva llista de xats: troba amics amb qui xatejar o parla amb mi en qualsevol moment.",
+    "tutorialAppTourCoursesSome": "Els teus cursos es troben aquí. Sembla que ja t'has unit a un!",
+    "tutorialAppTourCoursesNone": "Els cursos es troben aquí; pots unir-te a un amb un codi o crear-ne un de propi.",
+    "tutorialAppTourAnalytics": "Aquest és el teu progrés: cada paraula i forma gramatical que has utilitzat.",
+    "tutorialAppTourPractice": "Aquí trobaràs lliçons de pràctica personalitzades, sempre que hagis desbloquejat almenys 10 paraules de vocabulari.",
+    "tutorialAppTourWorld": "I això et porta de nou al mapa del món en qualsevol moment. Feliç aprenentatge!"
 }

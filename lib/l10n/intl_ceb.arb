@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-09-08 09:44:53.460825",
+    "@@last_modified": "2026-09-08 16:06:45.150491",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2278,5 +2278,23 @@
     "listenFirst": "Paminaw una",
     "listenFirstDescription": "Kon naka-on ang Listen First, usa ka click mopatokar lang sa audio ug ang double-click mopili sa opsyon.",
     "listenFirstNeedsChoiceAudio": "I-on ang Choices audio aron magamit ang Listen First.",
-    "unableToJoinCourseError": "Dili ka namo maapil sa kini nga kurso karon. Palihug sulayi pag-usab, o pangutana sa imong magtutudlo."
+    "unableToJoinCourseError": "Dili ka namo maapil sa kini nga kurso karon. Palihug sulayi pag-usab, o pangutana sa imong magtutudlo.",
+    "unlockActivitySummaries": "I-unlock ang mga summary sa kalihokan",
+    "tutorialWelcome": "Ako si Pangea Bot, imong giya ug AI conversation partner. Magsugod na ta sa pagkat-on!",
+    "tutorialWorldMapIntro": "Kini ang mapa sa kalibutan. Ang matag roleplay activity sa {language} ania dinhi.",
+    "tutorialWorldMapPickActivity": "Kini usa ka conversation activity nga mahimo nimong dulaon uban kanako o sa usa ka partner. I-klik kini aron magsugod sa pagdula!",
+    "tutorialActivityGoals": "Ania ang mga tumong alang sa papel nga imong gidula, pagpadala og mga mensahe nga makakompleto niini ug makakuha og mga bituon!",
+    "tutorialCoursePlanIntro": "Welcome sa imong kurso, {courseName}! Dad-on ka niini sa usa ka panaw sa pagkat-on uban sa imong mga kauban sa kurso.",
+    "tutorialCoursePlanProgress": "Samtang maghimo ka og mga kalihokan ug makakuha og mga bituon, mag-uswag ka dinhi.",
+    "tutorialCoursePlanPickActivity": "Kini ang mga kalihokan nga sulayan sunod sa imong kurso. I-tap ang usa aron ablihan ug sugdan kini!",
+    "tutorialCoursePlanNoActivities": "I-tap ang bisan unsang kalihokan sa imong plano aron ablihan ug sugdan kini!",
+    "tutorialAppTourOffer": "Maayo kaayo sa paghuman sa imong unang kalihokan! Gusto ba nimo nga ipakita ko kanimo ang app?",
+    "tutorialAppTourAccept": "Ipakita kanako ang tour",
+    "tutorialAppTourDecline": "Lakaw",
+    "tutorialAppTourChats": "Kini ang imong listahan sa chat — pangitaa ang mga higala nga maka-chat, o pakigsulti kanako bisan unsang orasa.",
+    "tutorialAppTourCoursesSome": "Ang imong mga kurso ania dinhi. Morag nakaapil ka na sa usa!",
+    "tutorialAppTourCoursesNone": "Ang mga kurso ania dinhi — mahimo kang moapil sa usa gamit ang code, o maghimo sa imoha.",
+    "tutorialAppTourAnalytics": "Kini ang imong pag-uswag: matag pulong ug porma sa gramatika nga imong gigamit.",
+    "tutorialAppTourPractice": "Makita nimo ang personalized nga mga leksyon sa praktis dinhi, basta naka-unlock ka na og labing menos 10 ka vocab words",
+    "tutorialAppTourWorld": "Ug kini magdala kanimo balik sa mapa sa kalibutan bisan unsang orasa. Malipayong pagkat-on!"
 }

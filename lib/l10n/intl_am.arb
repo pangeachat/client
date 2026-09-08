@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-09-08 09:44:50.913710",
+    "@@last_modified": "2026-09-08 16:06:43.186669",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2278,5 +2278,23 @@
     "listenFirst": "መጀመሪያ ያዳምጡ",
     "listenFirstDescription": "መጀመሪያ ያዳምጡ ሲበራ፣ አንድ ጊዜ ጠቅ ማድረግ ድምጽን ብቻ ያጫውታል እና ሁለቴ ጠቅ ማድረግ አማራጩን ይመርጣል።",
     "listenFirstNeedsChoiceAudio": "መጀመሪያ ያዳምጡን ለመጠቀም የምርጫዎች ድምጽን ያብሩ።",
-    "unableToJoinCourseError": "በአሁኑ ሰዓት ወደዚህ ኮርስ ልንጨምርዎ አልቻልንም። እባክዎ እንደገና ይሞክሩ ወይም አስተማሪዎን ይጠይቁ።"
+    "unableToJoinCourseError": "በአሁኑ ሰዓት ወደዚህ ኮርስ ልንጨምርዎ አልቻልንም። እባክዎ እንደገና ይሞክሩ ወይም አስተማሪዎን ይጠይቁ።",
+    "unlockActivitySummaries": "የእንቅስቃሴ ማጠቃለያዎችን ክፈት",
+    "tutorialWelcome": "እኔ ፓንጋያ ቦት ነኝ፣ መሪህ እና የኤአይ ውይይት አጋርህ። እንማር!",
+    "tutorialWorldMapIntro": "ይህ የዓለም ካርታ ነው። በ{language} ውስጥ ያለ እያንዳንዱ የትወና እንቅስቃሴ እዚህ ይኖራል።",
+    "tutorialWorldMapPickActivity": "ይህ ከእኔ ወይም ከአጋር ጋር መጫወት የምትችለው የውይይት እንቅስቃሴ ነው። ለመጀመር ጠቅ አድርግ!",
+    "tutorialActivityGoals": "እየተጫወትክ ላለው ሚና ግቦቹ እዚህ አሉ። እነሱን የሚያጠናቅቁ መልዕክቶችን ላክ እና ኮከቦችን አግኝ!",
+    "tutorialCoursePlanIntro": "ወደ ኮርስህ እንኳን ደህና መጣህ፣ {courseName}! ከኮርስ ጓደኞችህ ጋር በመማር ጉዞ ውስጥ ይወስድሃል።",
+    "tutorialCoursePlanProgress": "እንቅስቃሴዎችን ስታደርግ እና ኮከቦችን ስታገኝ፣ እዚህ እድገት ታደርጋለህ።",
+    "tutorialCoursePlanPickActivity": "እነዚህ በኮርስህ ውስጥ ቀጥሎ ለመሞከር ያሉ እንቅስቃሴዎች ናቸው። ለመክፈት እና ለመጀመር አንዱን ንካ!",
+    "tutorialCoursePlanNoActivities": "በእቅድህ ውስጥ ያለ ማንኛውንም እንቅስቃሴ ለመክፈት እና ለመጀመር ንካ!",
+    "tutorialAppTourOffer": "የመጀመሪያውን እንቅስቃሴህን በማጠናቀቅህ በጣም ጥሩ ስራ ሰርተሃል! በመተግበሪያው ዙሪያ ላሳይህ ትፈልጋለህ?",
+    "tutorialAppTourAccept": "ጉብኝት አድርግልኝ",
+    "tutorialAppTourDecline": "ዝለል",
+    "tutorialAppTourChats": "ይህ የውይይት ዝርዝርህ ነው — ለመወያየት ጓደኞችን ፈልግ፣ ወይም በማንኛውም ጊዜ ከእኔ ጋር ተነጋገር።",
+    "tutorialAppTourCoursesSome": "ኮርሶችህ እዚህ ይኖራሉ። አንዱን የተቀላቀልከው ይመስላል!",
+    "tutorialAppTourCoursesNone": "ኮርሶች እዚህ ይኖራሉ — በኮድ መቀላቀል ትችላለህ፣ ወይም የራስህን መፍጠር ትችላለህ።",
+    "tutorialAppTourAnalytics": "ይህ እድገትህ ነው፡ የተጠቀምካቸው እያንዳንዱ ቃል እና ሰዋሰዋዊ ቅርጽ።",
+    "tutorialAppTourPractice": "ቢያንስ 10 የቃላት ቃላትን ከከፈትክ፣ ግላዊነት የተላበሱ የልምምድ ትምህርቶችን እዚህ ታገኛለህ።",
+    "tutorialAppTourWorld": "እና ይህ በማንኛውም ጊዜ ወደ ዓለም ካርታ ይመልስሃል። መልካም ትምህርት!"
 }

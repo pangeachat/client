@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-09-08 09:45:02.669436",
+    "@@last_modified": "2026-09-08 16:07:06.501743",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2278,5 +2278,23 @@
     "listenFirst": "Whakarongo tuatahi",
     "listenFirstDescription": "Ina ka kā te Whakarongo Tuatahi, kotahi te pāwhiri ka purei i te oro, ā, ka rua ngā pāwhiri ka kōwhiri i te kōwhiringa.",
     "listenFirstNeedsChoiceAudio": "Whakakāhia te oro Kōwhiringa kia whakamahi i te Whakarongo Tuatahi.",
-    "unableToJoinCourseError": "Kāore i taea te tāpiri i a koe ki tēnei akoranga i nāianei tonu. Tēnā, ngana anō, pātai atu rānei ki tō kaiako."
+    "unableToJoinCourseError": "Kāore i taea te tāpiri i a koe ki tēnei akoranga i nāianei tonu. Tēnā, ngana anō, pātai atu rānei ki tō kaiako.",
+    "unlockActivitySummaries": "Wewete i ngā whakarāpopototanga mahi",
+    "tutorialWelcome": "Ko Pangea Bot ahau, tō kaiarahi me tō hoa kōrero AI. Kia ako tātou!",
+    "tutorialWorldMapIntro": "Koinei te mahere o te ao. Kei konei ngā mahi tākaro tūranga katoa i roto i te reo {language}.",
+    "tutorialWorldMapPickActivity": "He mahi kōrero tēnei ka taea e koe te tākaro ki ahau, ki tētahi hoa rānei. Pāwhiritia kia tīmata te tākaro!",
+    "tutorialActivityGoals": "Anei ngā whāinga mō te tūranga e tākaro ana koe, tukuna ngā karere e oti ai, ka whiwhi whetū!",
+    "tutorialCoursePlanIntro": "Nau mai ki tō akoranga, {courseName}! Mā reira koe e ārahi i roto i tētahi haerenga ako me ō hoa akoranga.",
+    "tutorialCoursePlanProgress": "Ka mahi koe i ngā mahi, ka whiwhi whetū, ka ahu whakamua koe i konei.",
+    "tutorialCoursePlanPickActivity": "Koinei ngā mahi hei whakamātau i muri mai i tō akoranga. Pāwhiritia tētahi hei whakatuwhera, hei tīmata hoki!",
+    "tutorialCoursePlanNoActivities": "Pāwhiritia tētahi mahi i roto i tō mahere hei whakatuwhera, hei tīmata hoki!",
+    "tutorialAppTourOffer": "Ka pai tō mahi i tō mahi tuatahi! Kei te pirangi koe kia whakaaturia e au te taupānga ki a koe?",
+    "tutorialAppTourAccept": "Whakaaturia mai te taupānga",
+    "tutorialAppTourDecline": "Peke",
+    "tutorialAppTourChats": "Koinei tō rārangi kōrerorero — kimihia he hoa hei kōrero, kōrero mai rānei ki ahau i ngā wā katoa.",
+    "tutorialAppTourCoursesSome": "Kei konei ō akoranga. Te āhua nei kua uru kē koe ki tētahi!",
+    "tutorialAppTourCoursesNone": "Kei konei ngā akoranga — ka taea e koe te uru atu ki tētahi mā te waehere, te hanga rānei i a koe ake.",
+    "tutorialAppTourAnalytics": "Koinei tō ahunga whakamua: ia kupu me te puka wetereo i whakamahia e koe.",
+    "tutorialAppTourPractice": "Ka kitea e koe ngā akoranga whakaharatau whaiaro i konei, mena kua wewete koe i te 10 kupu kupu hou neke atu.",
+    "tutorialAppTourWorld": "Mā tēnei koe e whakahoki ki te mahere o te ao i ngā wā katoa. Kia pai te ako!"
 }

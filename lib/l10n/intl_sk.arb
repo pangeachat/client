@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-09-08 09:45:03.060910",
+    "@@last_modified": "2026-09-08 16:07:16.831896",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10819,5 +10819,23 @@
     "listenFirst": "Najprv počúvať",
     "listenFirstDescription": "Keď je zapnutá funkcia „Najprv počúvať“, jedným kliknutím sa prehrá zvuk a dvojitým kliknutím sa vyberie možnosť.",
     "listenFirstNeedsChoiceAudio": "Ak chcete použiť funkciu „Najprv počúvať“, zapnite zvuk možností.",
-    "unableToJoinCourseError": "Momentálne ťa nemôžeme pridať do tohto kurzu. Skús to znova alebo sa spýtaj svojho učiteľa."
+    "unableToJoinCourseError": "Momentálne ťa nemôžeme pridať do tohto kurzu. Skús to znova alebo sa spýtaj svojho učiteľa.",
+    "unlockActivitySummaries": "Odomknúť súhrny aktivít",
+    "tutorialWelcome": "Som Pangea Bot, tvoj sprievodca a partner pre konverzáciu s umelou inteligenciou. Poďme sa učiť!",
+    "tutorialWorldMapIntro": "Toto je mapa sveta. Každá aktivita hrania rolí v jazyku {language} sa nachádza tu.",
+    "tutorialWorldMapPickActivity": "Toto je konverzačná aktivita, ktorú si môžeš zahrať so mnou alebo s partnerom. Klikni na ňu a začni hrať!",
+    "tutorialActivityGoals": "Tu sú ciele pre rolu, ktorú hráš. Posielaj správy, ktoré ich splnia, a získaj hviezdy!",
+    "tutorialCoursePlanIntro": "Vitaj vo svojom kurze, {courseName}! Prevedie ťa vzdelávacou cestou s tvojimi spolužiakmi.",
+    "tutorialCoursePlanProgress": "Keď budeš robiť aktivity a získavať hviezdy, budeš tu napredovať.",
+    "tutorialCoursePlanPickActivity": "Toto sú aktivity, ktoré máš v kurze vyskúšať ako ďalšie. Klepni na jednu, aby si ju otvoril a začal!",
+    "tutorialCoursePlanNoActivities": "Klepni na akúkoľvek aktivitu vo svojom pláne, aby si ju otvoril a začal!",
+    "tutorialAppTourOffer": "Skvelá práca s dokončením tvojej prvej aktivity! Chceš, aby som ti ukázal aplikáciu?",
+    "tutorialAppTourAccept": "Ukáž mi prehliadku",
+    "tutorialAppTourDecline": "Preskočiť",
+    "tutorialAppTourChats": "Toto je tvoj zoznam chatov – nájdi si priateľov na chatovanie alebo sa so mnou kedykoľvek porozprávaj.",
+    "tutorialAppTourCoursesSome": "Tvoje kurzy sú tu. Vyzerá to tak, že si sa už k jednému pripojil!",
+    "tutorialAppTourCoursesNone": "Kurzy sú tu – môžeš sa k nim pripojiť pomocou kódu alebo si vytvoriť vlastný.",
+    "tutorialAppTourAnalytics": "Toto je tvoj pokrok: každé slovo a gramatická forma, ktoré si použil.",
+    "tutorialAppTourPractice": "Tu nájdeš personalizované lekcie na precvičovanie, ak si odomkol aspoň 10 slovíčok.",
+    "tutorialAppTourWorld": "A toto ťa kedykoľvek vráti na mapu sveta. Príjemné učenie!"
 }

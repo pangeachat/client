@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-08 09:45:05.017892",
+    "@@last_modified": "2026-09-08 16:07:20.896345",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10392,5 +10392,23 @@
     "listenFirst": "Lyssna först",
     "listenFirstDescription": "När Lyssna först är aktiverat spelas ljud upp med ett klick och alternativet väljs med ett dubbelklick.",
     "listenFirstNeedsChoiceAudio": "Aktivera ljud för val för att använda Lyssna först.",
-    "unableToJoinCourseError": "Vi kunde inte lägga till dig i den här kursen just nu. Försök igen, eller fråga din lärare."
+    "unableToJoinCourseError": "Vi kunde inte lägga till dig i den här kursen just nu. Försök igen, eller fråga din lärare.",
+    "unlockActivitySummaries": "Lås upp aktivitetsöversikter",
+    "tutorialWelcome": "Jag är Pangea Bot, din guide och AI-konversationspartner. Nu kör vi igång med inlärningen!",
+    "tutorialWorldMapIntro": "Det här är världskartan. Alla rollspelsaktiviteter i {language} finns här.",
+    "tutorialWorldMapPickActivity": "Det här är en konversationsaktivitet du kan spela med mig eller en partner. Klicka på den för att börja spela!",
+    "tutorialActivityGoals": "Här är målen för rollen du spelar. Skicka meddelanden som uppfyller dem och tjäna stjärnor!",
+    "tutorialCoursePlanIntro": "Välkommen till din kurs, {courseName}! Den kommer att ta dig genom en inlärningsresa med dina kurskamrater.",
+    "tutorialCoursePlanProgress": "När du gör aktiviteter och tjänar stjärnor kommer du att göra framsteg här.",
+    "tutorialCoursePlanPickActivity": "Dessa är nästa aktiviteter att prova i din kurs. Tryck på en för att öppna och starta den!",
+    "tutorialCoursePlanNoActivities": "Tryck på valfri aktivitet i din plan för att öppna och starta den!",
+    "tutorialAppTourOffer": "Bra jobbat med att slutföra din första aktivitet! Vill du att jag ska visa dig runt i appen?",
+    "tutorialAppTourAccept": "Ge mig en rundtur",
+    "tutorialAppTourDecline": "Hoppa över",
+    "tutorialAppTourChats": "Det här är din chattlista – hitta vänner att chatta med, eller prata med mig när som helst.",
+    "tutorialAppTourCoursesSome": "Dina kurser finns här. Det verkar som att du redan har gått med i en!",
+    "tutorialAppTourCoursesNone": "Kurser finns här – du kan gå med i en med en kod, eller skapa din egen.",
+    "tutorialAppTourAnalytics": "Det här är dina framsteg: varje ord och grammatikform du har använt.",
+    "tutorialAppTourPractice": "Du hittar personliga övningslektioner här, så länge du har låst upp minst 10 ordförrådsord",
+    "tutorialAppTourWorld": "Och det här tar dig tillbaka till världskartan när som helst. Lycka till med inlärningen!"
 }

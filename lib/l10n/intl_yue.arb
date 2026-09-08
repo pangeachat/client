@@ -1263,7 +1263,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-09-08 09:45:07.147351",
+    "@@last_modified": "2026-09-08 16:07:27.135608",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10831,5 +10831,23 @@
     "listenFirst": "先聽",
     "listenFirstDescription": "開啟「先聽」後，單擊播放音訊，雙擊選擇選項。",
     "listenFirstNeedsChoiceAudio": "請開啟「選項音訊」以使用「先聽」功能。",
-    "unableToJoinCourseError": "我哋而家加唔到你入呢個課程。請再試一次，或者問你嘅老師。"
+    "unableToJoinCourseError": "我哋而家加唔到你入呢個課程。請再試一次，或者問你嘅老師。",
+    "unlockActivitySummaries": "解鎖活動摘要",
+    "tutorialWelcome": "我係 Pangea Bot，你嘅導師同 AI 對話夥伴。一齊嚟學習啦！",
+    "tutorialWorldMapIntro": "呢個係世界地圖。所有 {language} 嘅角色扮演活動都喺度。",
+    "tutorialWorldMapPickActivity": "呢個係你可以同我或者夥伴一齊玩嘅對話活動。點擊佢開始玩啦！",
+    "tutorialActivityGoals": "呢度係你扮演角色嘅目標，發送訊息完成佢哋就可以賺取星星！",
+    "tutorialCoursePlanIntro": "歡迎嚟到你嘅課程，{courseName}！佢會帶你同你嘅同學一齊展開學習之旅。",
+    "tutorialCoursePlanProgress": "當你完成活動並獲得星星，你就會喺度取得進度。",
+    "tutorialCoursePlanPickActivity": "呢啲係你課程中接下來要嘗試嘅活動。點擊其中一個嚟打開並開始佢！",
+    "tutorialCoursePlanNoActivities": "點擊你計劃中嘅任何活動嚟打開並開始佢！",
+    "tutorialAppTourOffer": "你第一次活動做得好好！想唔想我帶你參觀下個應用程式？",
+    "tutorialAppTourAccept": "帶我參觀",
+    "tutorialAppTourDecline": "跳過",
+    "tutorialAppTourChats": "呢度係你嘅聊天列表 — 搵朋友傾偈，或者隨時同我講嘢。",
+    "tutorialAppTourCoursesSome": "你嘅課程喺呢度。睇嚟你已經加入咗一個！",
+    "tutorialAppTourCoursesNone": "課程喺呢度 — 你可以用代碼加入一個，或者自己創建一個。",
+    "tutorialAppTourAnalytics": "呢個係你嘅進度：你用過嘅每個單字同文法形式。",
+    "tutorialAppTourPractice": "只要你解鎖咗至少 10 個詞彙，你就會喺呢度搵到個人化嘅練習課程",
+    "tutorialAppTourWorld": "呢個會隨時帶你返到世界地圖。學習愉快！"
 }

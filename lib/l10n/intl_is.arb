@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-09-08 09:44:55.664880",
+    "@@last_modified": "2026-09-08 16:06:57.946362",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2278,5 +2278,23 @@
     "listenFirst": "Hlusta fyrst",
     "listenFirstDescription": "Þegar „Hlusta fyrst“ er virkt spilar einn smellur hljóð og tvísmellur velur valkostinn.",
     "listenFirstNeedsChoiceAudio": "Kveiktu á hljóði fyrir valkosti til að nota „Hlusta fyrst“.",
-    "unableToJoinCourseError": "Við gátum ekki bætt þér við þetta námskeið núna. Vinsamlegast reyndu aftur, eða spurðu kennarann þinn."
+    "unableToJoinCourseError": "Við gátum ekki bætt þér við þetta námskeið núna. Vinsamlegast reyndu aftur, eða spurðu kennarann þinn.",
+    "unlockActivitySummaries": "Opna yfirlit yfir virkni",
+    "tutorialWelcome": "Ég er Pangea Bot, leiðbeinandi þinn og gervigreindar spjallfélagi. Förum að læra!",
+    "tutorialWorldMapIntro": "Þetta er heimskortið. Öll hlutverkaleikjaverkefni í {language} eru hér.",
+    "tutorialWorldMapPickActivity": "Þetta er spjallverkefni sem þú getur spilað með mér eða félaga. Smelltu á það til að byrja að spila!",
+    "tutorialActivityGoals": "Hér eru markmiðin fyrir hlutverkið sem þú ert að leika, sendu skilaboð sem klára þau og fáðu stjörnur!",
+    "tutorialCoursePlanIntro": "Velkomin á námskeiðið þitt, {courseName}! Það mun leiða þig í gegnum námsferð með námsfélögum þínum.",
+    "tutorialCoursePlanProgress": "Eftir því sem þú tekur þátt í verkefnum og færð stjörnur, muntu ná framförum hér.",
+    "tutorialCoursePlanPickActivity": "Þetta eru verkefnin sem þú átt að prófa næst á námskeiðinu þínu. Bankaðu á eitt til að opna og byrja!",
+    "tutorialCoursePlanNoActivities": "Bankaðu á hvaða verkefni sem er í áætlun þinni til að opna og byrja það!",
+    "tutorialAppTourOffer": "Frábært starf að klára fyrsta verkefnið þitt! Viltu að ég sýni þér appið?",
+    "tutorialAppTourAccept": "Sýndu mér appið",
+    "tutorialAppTourDecline": "Sleppa",
+    "tutorialAppTourChats": "Þetta er spjalllistinn þinn — finndu vini til að spjalla við, eða talaðu við mig hvenær sem er.",
+    "tutorialAppTourCoursesSome": "Námskeiðin þín eru hér. Svo virðist sem þú hafir þegar skráð þig á eitt!",
+    "tutorialAppTourCoursesNone": "Námskeið eru hér — þú getur skráð þig á eitt með kóða, eða búið til þitt eigið.",
+    "tutorialAppTourAnalytics": "Þetta eru framfarir þínar: hvert orð og málfræðiform sem þú hefur notað.",
+    "tutorialAppTourPractice": "Þú finnur persónulegar æfingar hér, svo framarlega sem þú hefur opnað að minnsta kosti 10 orðaforðaorð.",
+    "tutorialAppTourWorld": "Og þetta færir þig aftur á heimskortið hvenær sem er. Gleðilegt nám!"
 }

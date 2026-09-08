@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-09-08 09:44:57.007660",
+    "@@last_modified": "2026-09-08 16:07:01.654028",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2278,5 +2278,23 @@
     "listenFirst": "Fɔs lisin",
     "listenFirstDescription": "If yu tɔn Fɔs Lisin ɔn, wan klik jɔs de ple ɔdiwo ɛn tu klik de pik di ɔpshɔn.",
     "listenFirstNeedsChoiceAudio": "Tɔn Chɔys Ɔdiwo ɔn fɔ yuz Fɔs Lisin.",
-    "unableToJoinCourseError": "Wi nɔ ebul fɔ ad yu to dis kos naw. Duya tray bak, ɔ aks yu ticha."
+    "unableToJoinCourseError": "Wi nɔ ebul fɔ ad yu to dis kos naw. Duya tray bak, ɔ aks yu ticha.",
+    "unlockActivitySummaries": "Opon aktiviti samari dɛn",
+    "tutorialWelcome": "Na mi Pangea Bot, yu gayd ɛn AI kɔnvɛseshɔn patna. Lɛ wi stat lɔn!",
+    "tutorialWorldMapIntro": "Dis na di wɔl map. Ɛvri rolple aktiviti insay {language} de ya.",
+    "tutorialWorldMapPickActivity": "Dis na kɔnvɛseshɔn aktiviti we yu go ple wit mi ɔ wan patna. Klik pan am fɔ stat ple!",
+    "tutorialActivityGoals": "Ya na di gol dɛn fɔ di rol we yu de ple, sɛn mɛsej dɛn we go kɔmplit dɛn ɛn gɛt star dɛn!",
+    "tutorialCoursePlanIntro": "Wɛlkɔm to yu kos, {courseName}! I go kɛr yu tru wan lɔnin jɔni wit yu kos met dɛn.",
+    "tutorialCoursePlanProgress": "As yu de du aktiviti dɛn ɛn gɛt star dɛn, yu go mek prɔgrɛs ya.",
+    "tutorialCoursePlanPickActivity": "Dɛn ya na di aktiviti dɛn fɔ tray nɛks insay yu kos. Tap wan fɔ opun ɛn stat am!",
+    "tutorialCoursePlanNoActivities": "Tap ɛni aktiviti insay yu plan fɔ opun ɛn stat am!",
+    "tutorialAppTourOffer": "Gud wok fɔ finish yu fɔs aktiviti! Yu want mi fɔ sho yu di ap?",
+    "tutorialAppTourAccept": "Sho mi di ap",
+    "tutorialAppTourDecline": "Skip",
+    "tutorialAppTourChats": "Dis na yu chat list — fɛn padi dɛn fɔ chat wit, ɔ tɔk to mi ɛni tɛm.",
+    "tutorialAppTourCoursesSome": "Yu kos dɛn de ya. I luk lɛk yu dɔn jɔyn wan dɔn!",
+    "tutorialAppTourCoursesNone": "Kos dɛn de ya — yu go jɔyn wan wit wan kod, ɔ mek yu yon.",
+    "tutorialAppTourAnalytics": "Dis na yu prɔgrɛs: ɛvri wɔd ɛn grama fɔm we yu dɔn yuz.",
+    "tutorialAppTourPractice": "Yu go fɛn pɛsinɛlayz praktis lɛsin dɛn ya, if yu dɔn opon at least 10 vɔkab wɔd dɛn",
+    "tutorialAppTourWorld": "Ɛn dis go kɛr yu bak to di wɔl map ɛni tɛm. Api lɔnin!"
 }

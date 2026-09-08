@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-09-08 09:44:51.566340",
+    "@@last_modified": "2026-09-08 16:06:44.354405",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2278,5 +2278,23 @@
     "listenFirst": "Ascultate prima",
     "listenFirstDescription": "Quandu Ascultate Prima hè attivatu, un solu cliccu riproduce l'audio è un doppiu cliccu selezziuneghja l'opzione.",
     "listenFirstNeedsChoiceAudio": "Attivate l'audio di e Scelte per aduprà Ascultate Prima.",
-    "unableToJoinCourseError": "Ùn pudemu micca aghjunghje vi à stu corsu avà. Per piacè, riprovate, o dumandate à u vostru maestru."
+    "unableToJoinCourseError": "Ùn pudemu micca aghjunghje vi à stu corsu avà. Per piacè, riprovate, o dumandate à u vostru maestru.",
+    "unlockActivitySummaries": "Sbloccà i riassunti di l'attività",
+    "tutorialWelcome": "Sò Pangea Bot, u vostru guida è cumpagnu di cunversazione AI. Andemu à amparà!",
+    "tutorialWorldMapIntro": "Questa hè a carta mundiale. Ogni attività di ghjocu di rollu in {language} stà quì.",
+    "tutorialWorldMapPickActivity": "Questa hè un'attività di cunversazione chì pudete ghjucà cun mè o un cumpagnu. Cliccate nantu à ella per cumincià à ghjucà!",
+    "tutorialActivityGoals": "Eccu i scopi per u rollu chì ghjucate, mandate messaghji chì li compienu è guadagnate stelle!",
+    "tutorialCoursePlanIntro": "Benvenuti à u vostru corsu, {courseName}! Vi purterà in un viaghju d'apprendimentu cù i vostri cumpagni di corsu.",
+    "tutorialCoursePlanProgress": "Quandu fate attività è guadagnate stelle, farete prugressu quì.",
+    "tutorialCoursePlanPickActivity": "Queste sò l'attività da pruvà dopu in u vostru corsu. Toccate una per apre è principià!",
+    "tutorialCoursePlanNoActivities": "Toccate qualsiasi attività in u vostru pianu per apre è principià!",
+    "tutorialAppTourOffer": "Gran travagliu finendu a vostra prima attività! Vulete chì vi mostri l'app?",
+    "tutorialAppTourAccept": "Fate mi un giru",
+    "tutorialAppTourDecline": "Saltà",
+    "tutorialAppTourChats": "Questa hè a vostra lista di chat - truvate amichi per chjachjarà, o parlate cun mè in ogni mumentu.",
+    "tutorialAppTourCoursesSome": "I vostri corsi stanu quì. Sembra chì ne avete digià unitu à unu!",
+    "tutorialAppTourCoursesNone": "I corsi stanu quì - pudete unisce à unu cù un codice, o creà u vostru propiu.",
+    "tutorialAppTourAnalytics": "Questu hè u vostru prugressu: ogni parolla è forma grammaticale chì avete usatu.",
+    "tutorialAppTourPractice": "Truverete lezioni di pratica persunalizate quì, sempre chì avete sbloccà almenu 10 parolle di vucabulariu",
+    "tutorialAppTourWorld": "È questu vi porta à a carta mundiale in ogni mumentu. Felice apprendimentu!"
 }

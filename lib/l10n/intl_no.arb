@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-09-08 09:45:00.700997",
+    "@@last_modified": "2026-09-08 16:07:09.843701",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2278,5 +2278,23 @@
     "listenFirst": "Lytt først",
     "listenFirstDescription": "Når Lytt først er på, spiller ett klikk bare av lyd, og et dobbeltklikk velger alternativet.",
     "listenFirstNeedsChoiceAudio": "Slå på lyd for valg for å bruke Lytt først.",
-    "unableToJoinCourseError": "Vi kunne ikke legge deg til dette kurset akkurat nå. Prøv igjen, eller spør læreren din."
+    "unableToJoinCourseError": "Vi kunne ikke legge deg til dette kurset akkurat nå. Prøv igjen, eller spør læreren din.",
+    "unlockActivitySummaries": "Lås opp aktivitetssammendrag",
+    "tutorialWelcome": "Jeg er Pangea Bot, din guide og AI-samtalepartner. La oss lære!",
+    "tutorialWorldMapIntro": "Dette er verdenskartet. Alle rollespillaktiviteter i {language} finner du her.",
+    "tutorialWorldMapPickActivity": "Dette er en samtaleaktivitet du kan spille med meg eller en partner. Klikk på den for å begynne å spille!",
+    "tutorialActivityGoals": "Her er målene for rollen du spiller. Send meldinger som fullfører dem og tjen stjerner!",
+    "tutorialCoursePlanIntro": "Velkommen til kurset ditt, {courseName}! Det vil ta deg gjennom en læringsreise med kurskameratene dine.",
+    "tutorialCoursePlanProgress": "Etter hvert som du gjør aktiviteter og får stjerner, vil du gjøre fremgang her.",
+    "tutorialCoursePlanPickActivity": "Dette er aktivitetene du bør prøve neste gang i kurset ditt. Trykk på en for å åpne og starte den!",
+    "tutorialCoursePlanNoActivities": "Trykk på en hvilken som helst aktivitet i planen din for å åpne og starte den!",
+    "tutorialAppTourOffer": "Bra jobbet med å fullføre din første aktivitet! Vil du at jeg skal vise deg rundt i appen?",
+    "tutorialAppTourAccept": "Gi meg en omvisning",
+    "tutorialAppTourDecline": "Hopp over",
+    "tutorialAppTourChats": "Dette er chatlisten din – finn venner å chatte med, eller snakk med meg når som helst.",
+    "tutorialAppTourCoursesSome": "Kursene dine er her. Det ser ut som du allerede har blitt med på ett!",
+    "tutorialAppTourCoursesNone": "Kursene er her – du kan bli med på et med en kode, eller lage ditt eget.",
+    "tutorialAppTourAnalytics": "Dette er fremgangen din: hvert ord og hver grammatikkform du har brukt.",
+    "tutorialAppTourPractice": "Du finner personlige øvelsesleksjoner her, så lenge du har låst opp minst 10 vokabularord",
+    "tutorialAppTourWorld": "Og dette tar deg tilbake til verdenskartet når som helst. Lykke til med læringen!"
 }

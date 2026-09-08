@@ -3563,7 +3563,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-09-08 09:44:53.322962",
+    "@@last_modified": "2026-09-08 16:06:52.226540",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9885,5 +9885,23 @@
     "listenFirst": "Éist ar dtús",
     "listenFirstDescription": "Nuair a bhíonn Éist ar dtús ar siúl, ní dhéanann cliceáil amháin ach an fhuaim a sheinm agus roghnaíonn cliceáil dúbailte an rogha.",
     "listenFirstNeedsChoiceAudio": "Cas ar fhuaim Roghanna chun Éist ar dtús a úsáid.",
-    "unableToJoinCourseError": "Níorbh fhéidir linn tú a chur leis an gcúrsa seo faoi láthair. Bain triail eile as, nó iarr ar do mhúinteoir."
+    "unableToJoinCourseError": "Níorbh fhéidir linn tú a chur leis an gcúrsa seo faoi láthair. Bain triail eile as, nó iarr ar do mhúinteoir.",
+    "unlockActivitySummaries": "Díghlasáil achoimrí gníomhaíochta",
+    "tutorialWelcome": "Is mise Pangea Bot, do threoraí agus do pháirtí comhrá AI. Ar aghaidh linn ag foghlaim!",
+    "tutorialWorldMapIntro": "Seo é léarscáil an domhain. Tá gach gníomhaíocht rólimeartha i {language} anseo.",
+    "tutorialWorldMapPickActivity": "Is gníomhaíocht chomhrá í seo is féidir leat a imirt liomsa nó le páirtí. Cliceáil uirthi chun tosú ag imirt!",
+    "tutorialActivityGoals": "Seo iad na spriocanna don ról atá á imirt agat, seol teachtaireachtaí a chomhlíonann iad agus tuill réaltaí!",
+    "tutorialCoursePlanIntro": "Fáilte chuig do chúrsa, {courseName}! Treoróidh sé thú trí thuras foghlama le do chomhghleacaithe cúrsa.",
+    "tutorialCoursePlanProgress": "De réir mar a dhéanann tú gníomhaíochtaí agus a thuilleann tú réaltaí, déanfaidh tú dul chun cinn anseo.",
+    "tutorialCoursePlanPickActivity": "Seo iad na gníomhaíochtaí le triail a bhaint astu an chéad cheann eile i do chúrsa. Tapáil ceann amháin chun é a oscailt agus a thosú!",
+    "tutorialCoursePlanNoActivities": "Tapáil aon ghníomhaíocht i do phlean chun í a oscailt agus a thosú!",
+    "tutorialAppTourOffer": "Obair iontach ag críochnú do chéad ghníomhaíocht! Ar mhaith leat go dtaispeánfainn an aip duit?",
+    "tutorialAppTourAccept": "Tabhair turas dom",
+    "tutorialAppTourDecline": "Scipeáil",
+    "tutorialAppTourChats": "Seo é do liosta comhráite — aimsigh cairde le comhrá a dhéanamh leo, nó labhair liomsa am ar bith.",
+    "tutorialAppTourCoursesSome": "Tá do chúrsaí anseo. Dealraíonn sé go bhfuil tú páirteach i gceann amháin cheana féin!",
+    "tutorialAppTourCoursesNone": "Tá cúrsaí anseo — is féidir leat páirt a ghlacadh i gceann amháin le cód, nó do cheann féin a dhéanamh.",
+    "tutorialAppTourAnalytics": "Seo é do dhul chun cinn: gach focal agus foirm ghramadaí a d'úsáid tú.",
+    "tutorialAppTourPractice": "Gheobhaidh tú ceachtanna cleachtaidh pearsantaithe anseo, chomh fada agus a bheidh ar a laghad 10 bhfocal foclóra díghlasáilte agat",
+    "tutorialAppTourWorld": "Agus tugann sé seo ar ais chuig léarscáil an domhain thú am ar bith. Foghlaim shona!"
 }

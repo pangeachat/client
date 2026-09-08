@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-09-08 09:44:54.754664",
+    "@@last_modified": "2026-09-08 16:06:53.528073",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2278,5 +2278,23 @@
     "listenFirst": "Hoʻolohe mua",
     "listenFirstDescription": "Ke hoʻā ʻia ʻo Hoʻolohe Mua, hoʻokani wale ka pā hoʻokahi i ke leo a koho ka pā pālua i ke koho.",
     "listenFirstNeedsChoiceAudio": "E hoʻā i ke kani Koho e hoʻohana iā Hoʻolohe Mua.",
-    "unableToJoinCourseError": "ʻAʻole hiki iā mākou ke hoʻohui iā ʻoe i kēia papa i kēia manawa. E ʻoluʻolu e hoʻāʻo hou, a i ʻole e nīnau i kāu kumu."
+    "unableToJoinCourseError": "ʻAʻole hiki iā mākou ke hoʻohui iā ʻoe i kēia papa i kēia manawa. E ʻoluʻolu e hoʻāʻo hou, a i ʻole e nīnau i kāu kumu.",
+    "unlockActivitySummaries": "Wehe i nā hōʻuluʻulu hana",
+    "tutorialWelcome": "ʻO wau ʻo Pangea Bot, kou alakaʻi a me kou hoa kamaʻilio AI. E aʻo kākou!",
+    "tutorialWorldMapIntro": "ʻO kēia ka palapala honua. Aia ma ʻaneʻi nā hana pāʻani kuleana a pau ma {language}.",
+    "tutorialWorldMapPickActivity": "He hana kamaʻilio kēia e hiki ai iā ʻoe ke pāʻani me aʻu a i ʻole he hoa. Kaomi ma luna e hoʻomaka i ka pāʻani!",
+    "tutorialActivityGoals": "Eia nā pahuhopu no ke kuleana āu e pāʻani nei, e hoʻouna i nā leka e hoʻopau iā lākou a loaʻa nā hōkū!",
+    "tutorialCoursePlanIntro": "Welina mai i kāu papa, {courseName}! E alakaʻi ia iā ʻoe ma kahi huakaʻi aʻo me kāu mau hoa papa.",
+    "tutorialCoursePlanProgress": "Ke hana ʻoe i nā hana a loaʻa nā hōkū, e holomua ʻoe ma ʻaneʻi.",
+    "tutorialCoursePlanPickActivity": "ʻO kēia nā hana e hoʻāʻo ai ma kāu papa. E kaomi i hoʻokahi e wehe a hoʻomaka!",
+    "tutorialCoursePlanNoActivities": "E kaomi i kekahi hana ma kāu hoʻolālā e wehe a hoʻomaka!",
+    "tutorialAppTourOffer": "Hana maikaʻi i ka hoʻopau ʻana i kāu hana mua! Makemake ʻoe e hōʻike au iā ʻoe i ka polokalamu?",
+    "tutorialAppTourAccept": "E hōʻike mai iaʻu i ka huakaʻi",
+    "tutorialAppTourDecline": "Lele",
+    "tutorialAppTourChats": "ʻO kēia kāu papa inoa kamaʻilio — e ʻimi i nā hoaaloha e kamaʻilio pū, a i ʻole e kamaʻilio mai iaʻu i kēlā me kēia manawa.",
+    "tutorialAppTourCoursesSome": "Aia kāu mau papa ma ʻaneʻi. Me he mea lā ua komo mua ʻoe i hoʻokahi!",
+    "tutorialAppTourCoursesNone": "Aia nā papa ma ʻaneʻi — hiki iā ʻoe ke komo i hoʻokahi me ke code, a i ʻole e hana i kāu iho.",
+    "tutorialAppTourAnalytics": "ʻO kēia kou holomua: kēlā me kēia huaʻōlelo a me ke ʻano grammar āu i hoʻohana ai.",
+    "tutorialAppTourPractice": "E ʻike ʻoe i nā haʻawina hoʻomaʻamaʻa pilikino ma ʻaneʻi, inā ua wehe ʻoe ma kahi o 10 mau huaʻōlelo vocab",
+    "tutorialAppTourWorld": "A na kēia e hoʻihoʻi iā ʻoe i ka palapala honua i kēlā me kēia manawa. Hauʻoli ke aʻo ʻana!"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-09-08 09:45:02.307687",
+    "@@last_modified": "2026-09-08 16:07:19.887694",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2278,5 +2278,23 @@
     "listenFirst": "Teerera kutanga",
     "listenFirstDescription": "Kana Teerera Kutanga yakabatidzwa, kudzvanya kamwe kunongoridza odhiyo uye kudzvanya kaviri kunosarudza sarudzo.",
     "listenFirstNeedsChoiceAudio": "Batidza odhiyo yesarudzo kuti ushandise Teerera Kutanga.",
-    "unableToJoinCourseError": "Hatina kukwanisa kukubatanidza kune kosi iyi izvozvi. Ndapota edza zvakare, kana kubvunza mudzidzisi wako."
+    "unableToJoinCourseError": "Hatina kukwanisa kukubatanidza kune kosi iyi izvozvi. Ndapota edza zvakare, kana kubvunza mudzidzisi wako.",
+    "unlockActivitySummaries": "Vhura pfupiso dzechiitiko",
+    "tutorialWelcome": "Ndini Pangea Bot, mutungamiri wako uye shamwari yekukurukurirana yeAI. Ngatitange kudzidza!",
+    "tutorialWorldMapIntro": "Iyi ndiyo mepu yenyika. Chiitiko chega chega chekutamba basa mu{language} chinogara pano.",
+    "tutorialWorldMapPickActivity": "Ichi chiitiko chekukurukurirana chaunogona kutamba neni kana neshamwari. Dzvanya pachiri kuti utange kutamba!",
+    "tutorialActivityGoals": "Heano zvinangwa zvebasa rauri kutamba, tumira mameseji anozadzisa uye uwane nyeredzi!",
+    "tutorialCoursePlanIntro": "Tikugashirei kukosi yenyu, {courseName}! Ichakutungamirirai parwendo rwekudzidza neshamwari dzenyu dzekosi.",
+    "tutorialCoursePlanProgress": "Paunoita zviitiko uye kuwana nyeredzi, uchaenderera mberi pano.",
+    "tutorialCoursePlanPickActivity": "Izvi ndizvo zviitiko zvekuedza zvinotevera mukosi yenyu. Dzvanya chimwe kuti muvhure uye muchitange!",
+    "tutorialCoursePlanNoActivities": "Dzvanya chero chiitiko chiri murongwa wenyu kuti muvhure uye muchitange!",
+    "tutorialAppTourOffer": "Basa rakanaka kupedza chiitiko chako chekutanga! Ungade here kuti ndikuratidze app?",
+    "tutorialAppTourAccept": "Ndipe rwendo",
+    "tutorialAppTourDecline": "Svetuka",
+    "tutorialAppTourChats": "Uyu ndiwo runyoro rwako rwechats — tsvaga shamwari dzekukurukurirana nadzo, kana kutaura neni chero nguva.",
+    "tutorialAppTourCoursesSome": "Makosi ako anogara pano. Zvinoita sekuti wajoinha rimwe kare!",
+    "tutorialAppTourCoursesNone": "Makosi anogara pano — unogona kujoina rimwe nekodhi, kana kugadzira rako wega.",
+    "tutorialAppTourAnalytics": "Uku ndiko kufambira mberi kwako: izwi rega rega uye chimiro chegirama chawakashandisa.",
+    "tutorialAppTourPractice": "Uchawana zvidzidzo zvekuita zvakagadzirirwa iwe pano, chero iwe wakavhura mazwi gumi evocabularies.",
+    "tutorialAppTourWorld": "Uye izvi zvinokudzosera kumepe yenyika chero nguva. Fara kudzidza!"
 }

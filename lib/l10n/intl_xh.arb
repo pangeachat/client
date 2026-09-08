@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-09-08 09:45:06.518361",
+    "@@last_modified": "2026-09-08 16:07:28.279570",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2278,5 +2278,23 @@
     "listenFirst": "Mamela kuqala",
     "listenFirstDescription": "Xa i-'Mamela kuqala' ivuliwe, ukucofa kube kanye kudlala iaudio kwaye ukucofa kabini kukhetha ukhetho.",
     "listenFirstNeedsChoiceAudio": "Vula iaudio yeZikhetho ukuze usebenzise i-'Mamela kuqala'.",
-    "unableToJoinCourseError": "Asikwazanga ukukongeza kwesi sifundo ngoku. Nceda zama kwakhona, okanye ubuze utitshala wakho."
+    "unableToJoinCourseError": "Asikwazanga ukukongeza kwesi sifundo ngoku. Nceda zama kwakhona, okanye ubuze utitshala wakho.",
+    "unlockActivitySummaries": "Vula izishwankathelo zomsebenzi",
+    "tutorialWelcome": "NdinguPangea Bot, isikhokelo sakho kunye neqabane lengxoxo le-AI. Masiqalise ukufunda!",
+    "tutorialWorldMapIntro": "Le yimephu yehlabathi. Yonke imisebenzi yokulinganisa indima kwi-{language} ihlala apha.",
+    "tutorialWorldMapPickActivity": "Lo ngumsebenzi wengxoxo onokuyidlala nam okanye neqabane. Cofa kuwo ukuze uqalise ukudlala!",
+    "tutorialActivityGoals": "Nazi iinjongo zendima oyidlalayo, thumela imiyalezo egqibezela ezi njongo kwaye ufumane iinkwenkwezi!",
+    "tutorialCoursePlanIntro": "Wamkelekile kwikhosi yakho, {courseName}! Iyakukhokela kuhambo lokufunda kunye nabafundi bakho.",
+    "tutorialCoursePlanProgress": "Njengoko usenza imisebenzi kwaye ufumana iinkwenkwezi, uya kwenza inkqubela apha.",
+    "tutorialCoursePlanPickActivity": "Le yimisebenzi ekufuneka uyizame ngokulandelayo kwikhosi yakho. Cofa kwenye ukuze uyivule kwaye uyiqalise!",
+    "tutorialCoursePlanNoActivities": "Cofa nawuphi na umsebenzi kwisicwangciso sakho ukuze uwuvule kwaye uwuqalise!",
+    "tutorialAppTourOffer": "Umsebenzi omhle ugqibile umsebenzi wakho wokuqala! Ungathanda ukuba ndikubonise i-app?",
+    "tutorialAppTourAccept": "Ndinike uhambo",
+    "tutorialAppTourDecline": "Yeqa",
+    "tutorialAppTourChats": "Olu luluhlu lwakho lwengxoxo — fumana abahlobo onokuncokola nabo, okanye uthethe nam nanini na.",
+    "tutorialAppTourCoursesSome": "Iikhosi zakho zihlala apha. Kubonakala ngathi sele ujoyine enye!",
+    "tutorialAppTourCoursesNone": "Iikhosi zihlala apha — ungajoyina enye ngekhowudi, okanye wenze eyakho.",
+    "tutorialAppTourAnalytics": "Le yinkqubela yakho: lonke igama kunye nefomu yegrama oyisebenzisileyo.",
+    "tutorialAppTourPractice": "Uya kufumana izifundo zokuziqhelanisa ezenziwe ngokwezifiso apha, ukuba nje uvule ubuncinane amagama angama-10 esigama",
+    "tutorialAppTourWorld": "Kwaye oku kukubuyisela kwimephu yehlabathi nanini na. Ukufunda okumnandi!"
 }

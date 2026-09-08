@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-09-08 09:45:06.352756",
+    "@@last_modified": "2026-09-08 16:07:31.261731",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2278,5 +2278,23 @@
     "listenFirst": "Lalela kuqala",
     "listenFirstDescription": "Uma i-Lalela Kuqala ivuliwe, ukuchofoza okukodwa kudlala umsindo kuphela bese ukuchofoza kabili kukhetha inketho.",
     "listenFirstNeedsChoiceAudio": "Vula umsindo wezinketho ukuze usebenzise i-Lalela Kuqala.",
-    "unableToJoinCourseError": "Asikwazanga ukukufaka kulesi sifundo okwamanje. Sicela uzame futhi, noma ubuze uthisha wakho."
+    "unableToJoinCourseError": "Asikwazanga ukukufaka kulesi sifundo okwamanje. Sicela uzame futhi, noma ubuze uthisha wakho.",
+    "unlockActivitySummaries": "Vula izifinyezo zomsebenzi",
+    "tutorialWelcome": "NginguPangea Bot, umhlahlandlela wakho kanye nomlingani wengxoxo we-AI. Asiqale ukufunda!",
+    "tutorialWorldMapIntro": "Lena imephu yomhlaba. Yonke imisebenzi yokulingisa ku-{language} ihlala lapha.",
+    "tutorialWorldMapPickActivity": "Lona umsebenzi wengxoxo ongawudlala nami noma nomlingani. Chofoza kuwo ukuze uqale ukudlala!",
+    "tutorialActivityGoals": "Nawa amagoli endima oyidlalayo, thumela imilayezo eyenza ukuthi afezeke futhi uzuze izinkanyezi!",
+    "tutorialCoursePlanIntro": "Siyakwamukela esifundweni sakho, {courseName}! Sizokuhambisa ohambweni lokufunda nabafundi ofunda nabo.",
+    "tutorialCoursePlanProgress": "Njengoba wenza imisebenzi futhi uzuza izinkanyezi, uzothuthuka lapha.",
+    "tutorialCoursePlanPickActivity": "Lena imisebenzi okufanele uyizame ngokulandelayo esifundweni sakho. Thepha eyodwa ukuze uyivule futhi uyiqale!",
+    "tutorialCoursePlanNoActivities": "Thepha noma yimuphi umsebenzi ohlelweni lwakho ukuze uwuvule futhi uyiqale!",
+    "tutorialAppTourOffer": "Umsebenzi omuhle kakhulu wokuqeda umsebenzi wakho wokuqala! Ungathanda ngikukhombise uhlelo lokusebenza?",
+    "tutorialAppTourAccept": "Nginike uhambo",
+    "tutorialAppTourDecline": "Yeqa",
+    "tutorialAppTourChats": "Lolu uhlu lwakho lwezingxoxo — thola abangani ongaxoxa nabo, noma ukhulume nami nganoma yisiphi isikhathi.",
+    "tutorialAppTourCoursesSome": "Izifundo zakho zihlala lapha. Kubukeka sengathi usujoyine eyodwa kakade!",
+    "tutorialAppTourCoursesNone": "Izifundo zihlala lapha — ungajoyina eyodwa ngekhodi, noma uzenzele eyakho.",
+    "tutorialAppTourAnalytics": "Lokhu ukuthuthuka kwakho: wonke amagama nefomu lolimi olisebenzisile.",
+    "tutorialAppTourPractice": "Uzothola izifundo zokuzijwayeza ezenziwe zaba ngezakho lapha, inqobo nje uma usuvele uvule okungenani amagama ayi-10 esilulumagama",
+    "tutorialAppTourWorld": "Futhi lokhu kukubuyisela kumephu yomhlaba nganoma yisiphi isikhathi. Ukufunda okujabulisayo!"
 }

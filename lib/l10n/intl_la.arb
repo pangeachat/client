@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-09-08 09:44:58.381909",
+    "@@last_modified": "2026-09-08 16:07:03.396958",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2278,5 +2278,23 @@
     "listenFirst": "Primum audi",
     "listenFirstDescription": "Cum Primum Audi inest, unus click tantum sonum ludit et duplex click optionem eligit.",
     "listenFirstNeedsChoiceAudio": "Verte sonum optionum ut Primum Audi utaris.",
-    "unableToJoinCourseError": "Te huic cursu nunc addere non potuimus. Quaeso iterum conare, aut magistrum tuum interroga."
+    "unableToJoinCourseError": "Te huic cursu nunc addere non potuimus. Quaeso iterum conare, aut magistrum tuum interroga.",
+    "unlockActivitySummaries": "Reserare summarios actionum",
+    "tutorialWelcome": "Ego sum Pangea Bot, dux tuus et socius sermonis AI. Discere incipiamus!",
+    "tutorialWorldMapIntro": "Haec est tabula mundi. Omnis actio fabulae in {language} hic est.",
+    "tutorialWorldMapPickActivity": "Haec est actio sermonis quam mecum aut cum socio agere potes. Preme eam ut ludere incipias!",
+    "tutorialActivityGoals": "Hic sunt proposita muneris quod agis, mitte nuntios qui ea perficiunt et stellas merere!",
+    "tutorialCoursePlanIntro": "Gratus in cursum tuum, {courseName}! Te per iter discendi cum sociis tuis ducet.",
+    "tutorialCoursePlanProgress": "Cum actiones agis et stellas mereris, hic progressum facies.",
+    "tutorialCoursePlanPickActivity": "Hae sunt actiones proximas in cursu tuo tentandae. Tange unam ut eam aperias et incipias!",
+    "tutorialCoursePlanNoActivities": "Tange quamlibet actionem in consilio tuo ut eam aperias et incipias!",
+    "tutorialAppTourOffer": "Optime fecisti primam actionem perficiendo! Visne ut te per app ostendam?",
+    "tutorialAppTourAccept": "Ostende mihi iter",
+    "tutorialAppTourDecline": "Praeteri",
+    "tutorialAppTourChats": "Haec est index sermonum tuorum — inveni amicos cum quibus colloqui, aut mecum loquere quando vis.",
+    "tutorialAppTourCoursesSome": "Cursus tui hic sunt. Videtur te unum iam coniunxisse!",
+    "tutorialAppTourCoursesNone": "Cursus hic sunt — unum cum codice coniungere potes, aut tuum creare.",
+    "tutorialAppTourAnalytics": "Hic est progressus tuus: omne verbum et forma grammatica quam usus es.",
+    "tutorialAppTourPractice": "Hic invenies lectiones exercitationis personalizatas, dummodo saltem 10 verba vocabulorum reseraveris",
+    "tutorialAppTourWorld": "Et hoc te ad tabulam mundi quando vis reducit. Feliciter disce!"
 }

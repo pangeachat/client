@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-09-08 09:44:50.822563",
+    "@@last_modified": "2026-09-08 16:06:40.752897",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10180,5 +10180,23 @@
     "listenFirst": "استمع أولاً",
     "listenFirstDescription": "عند تشغيل \"استمع أولاً\"، نقرة واحدة تشغل الصوت، والنقر المزدوج يحدد الخيار.",
     "listenFirstNeedsChoiceAudio": "شغّل صوت الخيارات لاستخدام \"استمع أولاً\".",
-    "unableToJoinCourseError": "تعذر علينا إضافتك إلى هذه الدورة التدريبية الآن. يرجى المحاولة مرة أخرى، أو سؤال معلمك."
+    "unableToJoinCourseError": "تعذر علينا إضافتك إلى هذه الدورة التدريبية الآن. يرجى المحاولة مرة أخرى، أو سؤال معلمك.",
+    "unlockActivitySummaries": "افتح ملخصات الأنشطة",
+    "tutorialWelcome": "أنا بانجيا بوت، دليلك وشريكك في المحادثة بالذكاء الاصطناعي. هيا بنا نتعلم!",
+    "tutorialWorldMapIntro": "هذه هي خريطة العالم. كل نشاط لعب أدوار في {language} موجود هنا.",
+    "tutorialWorldMapPickActivity": "هذا نشاط محادثة يمكنك لعبه معي أو مع شريك. انقر عليه لبدء اللعب!",
+    "tutorialActivityGoals": "هذه هي أهداف الدور الذي تلعبه، أرسل رسائل لإكمالها واكسب النجوم!",
+    "tutorialCoursePlanIntro": "مرحباً بك في دورتك، {courseName}! ستأخذك في رحلة تعليمية مع زملائك في الدورة.",
+    "tutorialCoursePlanProgress": "كلما قمت بالأنشطة وحصلت على النجوم، ستحرز تقدماً هنا.",
+    "tutorialCoursePlanPickActivity": "هذه هي الأنشطة التي يجب تجربتها لاحقاً في دورتك. اضغط على أحدها لفتحه وبدئه!",
+    "tutorialCoursePlanNoActivities": "اضغط على أي نشاط في خطتك لفتحه وبدئه!",
+    "tutorialAppTourOffer": "عمل رائع في إنهاء نشاطك الأول! هل ترغب في أن أريك التطبيق؟",
+    "tutorialAppTourAccept": "أرني جولة",
+    "tutorialAppTourDecline": "تخطي",
+    "tutorialAppTourChats": "هذه قائمة الدردشات الخاصة بك — ابحث عن أصدقاء للدردشة معهم، أو تحدث معي في أي وقت.",
+    "tutorialAppTourCoursesSome": "دوراتك موجودة هنا. يبدو أنك انضممت إلى واحدة بالفعل!",
+    "tutorialAppTourCoursesNone": "الدورات موجودة هنا — يمكنك الانضمام إلى واحدة باستخدام رمز، أو إنشاء دورتك الخاصة.",
+    "tutorialAppTourAnalytics": "هذا هو تقدمك: كل كلمة وشكل نحوي استخدمته.",
+    "tutorialAppTourPractice": "ستجد دروس تدريب مخصصة هنا، طالما أنك فتحت 10 كلمات مفردات على الأقل",
+    "tutorialAppTourWorld": "وهذا يعيدك إلى خريطة العالم في أي وقت. تعلم سعيد!"
 }

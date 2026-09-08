@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-09-08 09:44:52.275771",
+    "@@last_modified": "2026-09-08 16:06:46.481295",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8093,5 +8093,23 @@
     "listenFirst": "Escuchar primero",
     "listenFirstDescription": "Cuando la opción Escuchar primero está activada, un clic solo reproduce el audio y un doble clic selecciona la opción.",
     "listenFirstNeedsChoiceAudio": "Activa el audio de las opciones para usar Escuchar primero.",
-    "unableToJoinCourseError": "No pudimos añadirte a este curso ahora mismo. Por favor, inténtalo de nuevo o pregunta a tu profesor."
+    "unableToJoinCourseError": "No pudimos añadirte a este curso ahora mismo. Por favor, inténtalo de nuevo o pregunta a tu profesor.",
+    "unlockActivitySummaries": "Desbloquear resúmenes de actividad",
+    "tutorialWelcome": "Soy Pangea Bot, tu guía y compañero de conversación con IA. ¡Vamos a aprender!",
+    "tutorialWorldMapIntro": "Este es el mapa mundial. Aquí se encuentran todas las actividades de juego de rol en {language}.",
+    "tutorialWorldMapPickActivity": "Esta es una actividad de conversación que puedes jugar conmigo o con un compañero. ¡Haz clic en ella para empezar a jugar!",
+    "tutorialActivityGoals": "Aquí están los objetivos del rol que estás interpretando. ¡Envía mensajes que los completen y gana estrellas!",
+    "tutorialCoursePlanIntro": "¡Bienvenido a tu curso, {courseName}! Te llevará a través de un viaje de aprendizaje con tus compañeros de curso.",
+    "tutorialCoursePlanProgress": "A medida que realices actividades y ganes estrellas, progresarás aquí.",
+    "tutorialCoursePlanPickActivity": "Estas son las próximas actividades que puedes probar en tu curso. ¡Toca una para abrirla y empezarla!",
+    "tutorialCoursePlanNoActivities": "¡Toca cualquier actividad de tu plan para abrirla y empezarla!",
+    "tutorialAppTourOffer": "¡Excelente trabajo al terminar tu primera actividad! ¿Te gustaría que te mostrara la aplicación?",
+    "tutorialAppTourAccept": "Hazme un recorrido",
+    "tutorialAppTourDecline": "Omitir",
+    "tutorialAppTourChats": "Esta es tu lista de chats: busca amigos con quienes chatear o habla conmigo en cualquier momento.",
+    "tutorialAppTourCoursesSome": "Tus cursos viven aquí. ¡Parece que ya te has unido a uno!",
+    "tutorialAppTourCoursesNone": "Los cursos viven aquí; puedes unirte a uno con un código o crear el tuyo propio.",
+    "tutorialAppTourAnalytics": "Este es tu progreso: cada palabra y forma gramatical que has usado.",
+    "tutorialAppTourPractice": "Aquí encontrarás lecciones de práctica personalizadas, siempre y cuando hayas desbloqueado al menos 10 palabras de vocabulario.",
+    "tutorialAppTourWorld": "Y esto te lleva de vuelta al mapa mundial en cualquier momento. ¡Feliz aprendizaje!"
 }

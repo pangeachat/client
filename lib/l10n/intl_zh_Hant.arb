@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-08 09:45:06.225374",
+    "@@last_modified": "2026-09-08 16:07:27.756612",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9980,5 +9980,23 @@
     "listenFirst": "先聽",
     "listenFirstDescription": "開啟「先聽」時，點一下播放音訊，點兩下選擇選項。",
     "listenFirstNeedsChoiceAudio": "請開啟「選項音訊」以使用「先聽」功能。",
-    "unableToJoinCourseError": "我們目前無法將您加入此課程。請再試一次，或詢問您的老師。"
+    "unableToJoinCourseError": "我們目前無法將您加入此課程。請再試一次，或詢問您的老師。",
+    "unlockActivitySummaries": "解鎖活動摘要",
+    "tutorialWelcome": "我是 Pangea Bot，您的嚮導和 AI 對話夥伴。讓我們開始學習吧！",
+    "tutorialWorldMapIntro": "這是世界地圖。{language} 中的所有角色扮演活動都在這裡。",
+    "tutorialWorldMapPickActivity": "這是一個您可以與我或夥伴一起玩的對話活動。點擊它開始玩！",
+    "tutorialActivityGoals": "這些是您所扮演角色的目標，發送訊息完成它們並賺取星星！",
+    "tutorialCoursePlanIntro": "歡迎來到您的課程，{courseName}！它將帶您與您的同學一起踏上學習之旅。",
+    "tutorialCoursePlanProgress": "當您進行活動並獲得星星時，您將在這裡取得進展。",
+    "tutorialCoursePlanPickActivity": "這些是您課程中接下來要嘗試的活動。點擊一個來打開並開始它！",
+    "tutorialCoursePlanNoActivities": "點擊您計劃中的任何活動來打開並開始它！",
+    "tutorialAppTourOffer": "恭喜您完成了第一個活動！您想讓我帶您參觀一下應用程式嗎？",
+    "tutorialAppTourAccept": "帶我參觀",
+    "tutorialAppTourDecline": "跳過",
+    "tutorialAppTourChats": "這是您的聊天列表 — 尋找朋友聊天，或隨時與我交談。",
+    "tutorialAppTourCoursesSome": "您的課程在這裡。看起來您已經加入了一個！",
+    "tutorialAppTourCoursesNone": "課程在這裡 — 您可以使用代碼加入一個，或創建自己的課程。",
+    "tutorialAppTourAnalytics": "這是您的進度：您使用過的每個單字和語法形式。",
+    "tutorialAppTourPractice": "只要您解鎖了至少 10 個詞彙，您就會在這裡找到個人化的練習課程",
+    "tutorialAppTourWorld": "這會隨時帶您回到世界地圖。學習愉快！"
 }

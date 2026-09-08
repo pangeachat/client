@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-09-08 09:44:51.735615",
+    "@@last_modified": "2026-09-08 16:06:42.140360",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2278,5 +2278,23 @@
     "listenFirst": "Əvvəlcə dinləyin",
     "listenFirstDescription": "Əvvəlcə dinləyin funksiyası aktiv olduqda, bir klik sadəcə səsi səsləndirir və iki dəfə klikləməklə seçim edilir.",
     "listenFirstNeedsChoiceAudio": "Əvvəlcə dinləyin funksiyasından istifadə etmək üçün Seçimlər səsini aktiv edin.",
-    "unableToJoinCourseError": "Hazırda sizi bu kursa əlavə edə bilmədik. Zəhmət olmasa, yenidən cəhd edin və ya müəlliminizdən soruşun."
+    "unableToJoinCourseError": "Hazırda sizi bu kursa əlavə edə bilmədik. Zəhmət olmasa, yenidən cəhd edin və ya müəlliminizdən soruşun.",
+    "unlockActivitySummaries": "Fəaliyyət xülasələrini açın",
+    "tutorialWelcome": "Mən Pangea Botam, sizin bələdçiniz və süni intellekt söhbət yoldaşınızam. Gəlin öyrənməyə başlayaq!",
+    "tutorialWorldMapIntro": "Bu, dünya xəritəsidir. {language} dilindəki hər bir rol oyunu fəaliyyəti buradadır.",
+    "tutorialWorldMapPickActivity": "Bu, mənimlə və ya bir tərəfdaşla oynaya biləcəyiniz bir söhbət fəaliyyətidir. Başlamaq üçün üzərinə klikləyin!",
+    "tutorialActivityGoals": "Bunlar oynadığınız rol üçün hədəflərdir, onları tamamlamaq və ulduz qazanmaq üçün mesajlar göndərin!",
+    "tutorialCoursePlanIntro": "Kursunuza xoş gəlmisiniz, {courseName}! O, sizi kurs yoldaşlarınızla birlikdə öyrənmə səyahətinə çıxaracaq.",
+    "tutorialCoursePlanProgress": "Fəaliyyətlər etdikcə və ulduzlar qazandıqca, burada irəliləyiş əldə edəcəksiniz.",
+    "tutorialCoursePlanPickActivity": "Bunlar kursunuzda növbəti cəhd edəcəyiniz fəaliyyətlərdir. Açmaq və başlamaq üçün birinə toxunun!",
+    "tutorialCoursePlanNoActivities": "Açmaq və başlamaq üçün planınızdakı istənilən fəaliyyətə toxunun!",
+    "tutorialAppTourOffer": "İlk fəaliyyətinizi bitirdiyiniz üçün əla iş! Sizə tətbiqi göstərməyimi istərdinizmi?",
+    "tutorialAppTourAccept": "Mənə tur edin",
+    "tutorialAppTourDecline": "Keç",
+    "tutorialAppTourChats": "Bu sizin söhbət siyahınızdır — söhbət etmək üçün dostlar tapın və ya istənilən vaxt mənimlə danışın.",
+    "tutorialAppTourCoursesSome": "Kurslarınız buradadır. Görünür, siz artıq birinə qoşulmusunuz!",
+    "tutorialAppTourCoursesNone": "Kurslar buradadır — bir kodla qoşula bilərsiniz və ya özünüz yarada bilərsiniz.",
+    "tutorialAppTourAnalytics": "Bu sizin irəliləyişinizdir: istifadə etdiyiniz hər söz və qrammatik forma.",
+    "tutorialAppTourPractice": "Ən azı 10 lüğət sözü açdığınız müddətcə burada fərdi təcrübə dərsləri tapa bilərsiniz",
+    "tutorialAppTourWorld": "Və bu sizi istənilən vaxt dünya xəritəsinə qaytarır. Xoş öyrənmələr!"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-08 09:44:54.317100",
+    "@@last_modified": "2026-09-08 16:06:52.705560",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10788,5 +10788,23 @@
     "listenFirst": "האזנה תחילה",
     "listenFirstDescription": "כאשר האזנה תחילה מופעלת, לחיצה אחת מנגנת אודיו בלבד ולחיצה כפולה בוחרת את האפשרות.",
     "listenFirstNeedsChoiceAudio": "הפעל אודיו של אפשרויות כדי להשתמש ב'האזנה תחילה'.",
-    "unableToJoinCourseError": "לא הצלחנו לצרף אותך לקורס הזה כרגע. אנא נסה/נסי שוב, או שאל/שאלי את המורה שלך."
+    "unableToJoinCourseError": "לא הצלחנו לצרף אותך לקורס הזה כרגע. אנא נסה/נסי שוב, או שאל/שאלי את המורה שלך.",
+    "unlockActivitySummaries": "פתיחת סיכומי פעילות",
+    "tutorialWelcome": "אני פנגיאה בוט, המדריך ושותף השיחה שלך ב-AI. בוא נתחיל ללמוד!",
+    "tutorialWorldMapIntro": "זוהי מפת העולם. כל פעילויות משחקי התפקידים ב-{language} נמצאות כאן.",
+    "tutorialWorldMapPickActivity": "זוהי פעילות שיחה שתוכל לשחק איתי או עם שותף. לחץ עליה כדי להתחיל לשחק!",
+    "tutorialActivityGoals": "אלה היעדים לתפקיד שאתה משחק, שלח הודעות שישלימו אותם ותרוויח כוכבים!",
+    "tutorialCoursePlanIntro": "ברוך הבא לקורס שלך, {courseName}! הוא יוביל אותך למסע למידה עם חברי הקורס שלך.",
+    "tutorialCoursePlanProgress": "כשתבצע פעילויות ותצבור כוכבים, תתקדם כאן.",
+    "tutorialCoursePlanPickActivity": "אלו הפעילויות הבאות לנסות בקורס שלך. הקש על אחת כדי לפתוח ולהתחיל אותה!",
+    "tutorialCoursePlanNoActivities": "הקש על כל פעילות בתוכנית שלך כדי לפתוח ולהתחיל אותה!",
+    "tutorialAppTourOffer": "כל הכבוד על סיום הפעילות הראשונה שלך! תרצה שאראה לך את האפליקציה?",
+    "tutorialAppTourAccept": "תן לי סיור",
+    "tutorialAppTourDecline": "דלג",
+    "tutorialAppTourChats": "זוהי רשימת הצ'אטים שלך – מצא חברים לשוחח איתם, או דבר איתי בכל עת.",
+    "tutorialAppTourCoursesSome": "הקורסים שלך נמצאים כאן. נראה שכבר הצטרפת לאחד!",
+    "tutorialAppTourCoursesNone": "קורסים נמצאים כאן – תוכל להצטרף לאחד עם קוד, או ליצור קורס משלך.",
+    "tutorialAppTourAnalytics": "זו ההתקדמות שלך: כל מילה וצורת דקדוק שהשתמשת בהן.",
+    "tutorialAppTourPractice": "תמצא כאן שיעורי תרגול מותאמים אישית, בתנאי שפתחת לפחות 10 מילים חדשות.",
+    "tutorialAppTourWorld": "וזה מחזיר אותך למפת העולם בכל עת. למידה מהנה!"
 }

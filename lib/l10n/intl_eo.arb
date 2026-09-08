@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-08 09:44:52.864079",
+    "@@last_modified": "2026-09-08 16:06:47.470096",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10819,5 +10819,23 @@
     "listenFirst": "Unue aŭskultu",
     "listenFirstDescription": "Kiam Unue Aŭskultu estas ŝaltita, unu klako nur ludas sonon kaj duobla klako elektas la opcion.",
     "listenFirstNeedsChoiceAudio": "Ŝaltu la sonon de Elektoj por uzi Unue Aŭskultu.",
-    "unableToJoinCourseError": "Ni ne povis aldoni vin al ĉi tiu kurso nun. Bonvolu reprovi, aŭ demandu vian instruiston."
+    "unableToJoinCourseError": "Ni ne povis aldoni vin al ĉi tiu kurso nun. Bonvolu reprovi, aŭ demandu vian instruiston.",
+    "unlockActivitySummaries": "Malŝlosu agadajn resumojn",
+    "tutorialWelcome": "Mi estas Pangea Bot, via gvidanto kaj AI-konversacia partnero. Ni ek-lernu!",
+    "tutorialWorldMapIntro": "Jen la mondmapo. Ĉiu rolluda agado en {language} troviĝas ĉi tie.",
+    "tutorialWorldMapPickActivity": "Jen konversacia agado, kiun vi povas ludi kun mi aŭ kun partnero. Alklaku ĝin por ek-ludi!",
+    "tutorialActivityGoals": "Jen la celoj por la rolo, kiun vi ludas; sendu mesaĝojn, kiuj plenumas ilin, kaj gajnu stelojn!",
+    "tutorialCoursePlanIntro": "Bonvenon al via kurso, {courseName}! Ĝi gvidos vin tra lernvojaĝo kun viaj kursanoj.",
+    "tutorialCoursePlanProgress": "Dum vi faras agadojn kaj gajnas stelojn, vi progresos ĉi tie.",
+    "tutorialCoursePlanPickActivity": "Jen la agadoj por provi poste en via kurso. Frapu unu por malfermi kaj komenci ĝin!",
+    "tutorialCoursePlanNoActivities": "Frapu ajnan agadon en via plano por malfermi kaj komenci ĝin!",
+    "tutorialAppTourOffer": "Bonega laboro fininte vian unuan agadon! Ĉu vi ŝatus, ke mi montru al vi la apon?",
+    "tutorialAppTourAccept": "Gvidu min",
+    "tutorialAppTourDecline": "Preterpasi",
+    "tutorialAppTourChats": "Jen via babilejo-listo — trovu amikojn por babili, aŭ parolu kun mi iam ajn.",
+    "tutorialAppTourCoursesSome": "Viaj kursoj troviĝas ĉi tie. Ŝajnas, ke vi jam aliĝis al unu!",
+    "tutorialAppTourCoursesNone": "Kursoj troviĝas ĉi tie — vi povas aliĝi al unu per kodo, aŭ krei vian propran.",
+    "tutorialAppTourAnalytics": "Jen via progreso: ĉiu vorto kaj gramatika formo, kiun vi uzis.",
+    "tutorialAppTourPractice": "Vi trovos personigitajn praktikajn lecionojn ĉi tie, kondiĉe ke vi malŝlosis almenaŭ 10 vortojn",
+    "tutorialAppTourWorld": "Kaj ĉi tio rekondukas vin al la mondmapo iam ajn. Feliĉan lernadon!"
 }

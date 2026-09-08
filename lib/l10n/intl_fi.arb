@@ -3536,7 +3536,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-09-08 09:44:52.586119",
+    "@@last_modified": "2026-09-08 16:06:48.914496",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9911,5 +9911,23 @@
     "listenFirst": "Kuuntele ensin",
     "listenFirstDescription": "Kun Kuuntele ensin on päällä, yhdellä napsautuksella toistetaan ääni ja kaksoisnapsautuksella valitaan vaihtoehto.",
     "listenFirstNeedsChoiceAudio": "Ota Valintojen ääni käyttöön käyttääksesi Kuuntele ensin -toimintoa.",
-    "unableToJoinCourseError": "Emme voineet lisätä sinua tälle kurssille juuri nyt. Yritä uudelleen tai kysy opettajaltasi."
+    "unableToJoinCourseError": "Emme voineet lisätä sinua tälle kurssille juuri nyt. Yritä uudelleen tai kysy opettajaltasi.",
+    "unlockActivitySummaries": "Avaa yhteenvetoja toiminnoista",
+    "tutorialWelcome": "Olen Pangea Bot, oppaasi ja tekoälykeskustelukumppanisi. Aloitetaan oppiminen!",
+    "tutorialWorldMapIntro": "Tämä on maailmankartta. Jokainen roolipeliaktiviteetti {language}-kielellä löytyy täältä.",
+    "tutorialWorldMapPickActivity": "Tämä on keskusteluaktiviteetti, jota voit pelata kanssani tai kumppanin kanssa. Aloita pelaaminen klikkaamalla sitä!",
+    "tutorialActivityGoals": "Tässä ovat tavoitteet roolille, jota pelaat. Lähetä viestejä, jotka täyttävät ne, ja ansaitse tähtiä!",
+    "tutorialCoursePlanIntro": "Tervetuloa kurssillesi, {courseName}! Se vie sinut oppimismatkalle kurssikavereidesi kanssa.",
+    "tutorialCoursePlanProgress": "Kun teet aktiviteetteja ja ansaitset tähtiä, edistyt täällä.",
+    "tutorialCoursePlanPickActivity": "Nämä ovat seuraavat aktiviteetit, joita voit kokeilla kurssillasi. Napauta yhtä avataksesi ja aloittaaksesi sen!",
+    "tutorialCoursePlanNoActivities": "Napauta mitä tahansa suunnitelmasi aktiviteettia avataksesi ja aloittaaksesi sen!",
+    "tutorialAppTourOffer": "Hienoa työtä ensimmäisen aktiviteettisi suorittamisessa! Haluatko, että näytän sinulle sovelluksen?",
+    "tutorialAppTourAccept": "Näytä minulle sovellus",
+    "tutorialAppTourDecline": "Ohita",
+    "tutorialAppTourChats": "Tämä on keskusteluluettelosi – löydä ystäviä, joiden kanssa keskustella, tai puhu minulle milloin tahansa.",
+    "tutorialAppTourCoursesSome": "Kurssisi löytyvät täältä. Näyttää siltä, että olet jo liittynyt yhdelle!",
+    "tutorialAppTourCoursesNone": "Kurssit löytyvät täältä – voit liittyä yhdelle koodilla tai luoda oman.",
+    "tutorialAppTourAnalytics": "Tämä on edistymisesi: jokainen käyttämäsi sana ja kielioppimuoto.",
+    "tutorialAppTourPractice": "Löydät täältä henkilökohtaisia harjoitustunteja, kunhan olet avannut vähintään 10 sanastosanasta.",
+    "tutorialAppTourWorld": "Ja tämä vie sinut takaisin maailmankartalle milloin tahansa. Hyvää oppimista!"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-09-08 09:44:58.636972",
+    "@@last_modified": "2026-09-08 16:06:58.085811",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2278,5 +2278,23 @@
     "listenFirst": "Rungokake dhisik",
     "listenFirstDescription": "Nalika Rungokake Dhisik urip, siji klik mung muter audio lan klik kaping pindho milih opsi.",
     "listenFirstNeedsChoiceAudio": "Uripake audio Pilihan kanggo nggunakake Rungokake Dhisik.",
-    "unableToJoinCourseError": "Saiki ora bisa nambahake sampeyan ing kursus iki. Coba maneh, utawa takon marang guru sampeyan."
+    "unableToJoinCourseError": "Saiki ora bisa nambahake sampeyan ing kursus iki. Coba maneh, utawa takon marang guru sampeyan.",
+    "unlockActivitySummaries": "Mbukak ringkesan aktivitas",
+    "tutorialWelcome": "Aku Pangea Bot, pemandumu lan partner obrolan AI. Ayo sinau!",
+    "tutorialWorldMapIntro": "Iki peta donya. Saben aktivitas roleplay ing {language} ana ing kene.",
+    "tutorialWorldMapPickActivity": "Iki aktivitas obrolan sing bisa kok dolanan karo aku utawa partner. Klik kanggo miwiti dolanan!",
+    "tutorialActivityGoals": "Iki tujuane peran sing kok dolanan, kirim pesen sing ngrampungake lan entuk bintang!",
+    "tutorialCoursePlanIntro": "Sugeng rawuh ing kursusmu, {courseName}! Iki bakal nggawa kowe liwat perjalanan sinau karo kanca-kanca kursusmu.",
+    "tutorialCoursePlanProgress": "Nalika kowe nindakake aktivitas lan entuk bintang, kowe bakal maju ing kene.",
+    "tutorialCoursePlanPickActivity": "Iki aktivitas sing kudu dicoba sabanjure ing kursusmu. Tutul siji kanggo mbukak lan miwiti!",
+    "tutorialCoursePlanNoActivities": "Tutul aktivitas apa wae ing rencanamu kanggo mbukak lan miwiti!",
+    "tutorialAppTourOffer": "Apik banget ngrampungake aktivitas pertamamu! Apa kowe pengin aku nuduhake aplikasi iki?",
+    "tutorialAppTourAccept": "Tuduhake aku",
+    "tutorialAppTourDecline": "Lewati",
+    "tutorialAppTourChats": "Iki dhaptar obrolanmu — golek kanca kanggo ngobrol, utawa ngobrol karo aku kapan wae.",
+    "tutorialAppTourCoursesSome": "Kursusmu ana ing kene. Kayane kowe wis gabung siji!",
+    "tutorialAppTourCoursesNone": "Kursus ana ing kene — kowe bisa gabung siji nganggo kode, utawa nggawe dhewe.",
+    "tutorialAppTourAnalytics": "Iki kemajuanmu: saben tembung lan wujud tata basa sing wis kok gunakake.",
+    "tutorialAppTourPractice": "Kowe bakal nemokake pelajaran latihan sing dipersonalisasi ing kene, anggere kowe wis mbukak paling ora 10 tembung kosakata",
+    "tutorialAppTourWorld": "Lan iki nggawa kowe bali menyang peta donya kapan wae. Sugeng sinau!"
 }
