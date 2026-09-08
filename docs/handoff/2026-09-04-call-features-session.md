@@ -508,3 +508,20 @@ the live panel attaches. iOS hits the SAME recording bug -- the fix helps there.
   re-test -> proves both halves upload + yields the real web WAV needed to
   finalize BUG C (web capture echo-bleed/no-drop-accounting). BUG B (auto
   full-call mix) is an owner design decision, not started.
+- audioLost FIX FULLY COLD-GREEN (2026-09-05..07): 3 commits on combined —
+  5ee894827c (bounded exp+jitter transcribe retry), 11f87b3c99 (strict deadline
+  recheck after every backoff wake + _deliveriesCancelled flag set by _finish
+  before sink.close, checked at loop head), 14f181f979 (finish-cancels-retry test
+  made fully deterministic via fakeAsync virtual time + enteredBackoff barrier +
+  literal count). The double-gate discipline caught THREE real issues my local
+  tests missed: (1) retry not strictly time-bounded if a Future.delayed wakes
+  late, (2) finish's Future.timeout doesn't cancel outstanding retries, (3) the
+  cancel test used a real 50ms wall-clock timer. All root-caused + fixed; my
+  independent COLD Codex is CORRECT/gate-softening:no on behaviour AND pinning.
+  1501 calls tests green. NOTE: Codex CLI broke mid-session (model gpt-6-astra
+  needs newer CLI) — upgraded 0.144.5 -> 0.153.4 (npm) so gates run again; bug A's
+  cold gate ran BEFORE the break so it's unaffected. STATUS: bug A + audioLost
+  both cold-green, LOCAL (PRs held Tue). Bug C (garbled web transcript) still
+  pending -- needs the real web WAV from a local re-test. Bug B (auto mix) =
+  owner design decision. Owner wants, in order: transcript ordering perfect
+  locally, both halves upload, then local merge looks/sounds natural.
