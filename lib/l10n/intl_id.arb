@@ -9980,5 +9980,6 @@
     "unlockActivitySummaries": "Buka ringkasan aktivitas",
     "upNext": "Berikutnya",
     "writingAssistanceSuggestion": "Saran",
-    "errorFetchingWordInfo": "Gagal mengambil info kata"
+    "errorFetchingWordInfo": "Gagal mengambil info kata",
+    "contentCreatedBy": "Dibuat oleh"
 }

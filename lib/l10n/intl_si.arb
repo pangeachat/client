@@ -2311,5 +2311,6 @@
     "unlockActivitySummaries": "ක්‍රියාකාරකම් සාරාංශ අගුළු හරින්න",
     "upNext": "ඊළඟට",
     "writingAssistanceSuggestion": "යෝජනාව",
-    "errorFetchingWordInfo": "වචන තොරතුරු ලබාගැනීම අසාර්ථක විය"
+    "errorFetchingWordInfo": "වචන තොරතුරු ලබාගැනීම අසාර්ථක විය",
+    "contentCreatedBy": "නිර්මාණය කළේ"
 }

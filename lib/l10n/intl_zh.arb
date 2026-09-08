@@ -9907,5 +9907,6 @@
     "unlockActivitySummaries": "解锁活动总结",
     "upNext": "接下来",
     "writingAssistanceSuggestion": "建议",
-    "errorFetchingWordInfo": "获取单词信息失败"
+    "errorFetchingWordInfo": "获取单词信息失败",
+    "contentCreatedBy": "创建者"
 }

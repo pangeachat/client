@@ -2311,5 +2311,6 @@
     "unlockActivitySummaries": "പ്രവർത്തന സംഗ്രഹങ്ങൾ അൺലോക്ക് ചെയ്യുക",
     "upNext": "അടുത്തത്",
     "writingAssistanceSuggestion": "നിർദ്ദേശം",
-    "errorFetchingWordInfo": "വാക്കിന്റെ വിവരങ്ങൾ ലഭ്യമാക്കുന്നതിൽ പരാജയപ്പെട്ടു"
+    "errorFetchingWordInfo": "വാക്കിന്റെ വിവരങ്ങൾ ലഭ്യമാക്കുന്നതിൽ പരാജയപ്പെട്ടു",
+    "contentCreatedBy": "സൃഷ്ടിച്ചത്"
 }

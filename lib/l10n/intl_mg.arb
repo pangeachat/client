@@ -2311,5 +2311,6 @@
     "unlockActivitySummaries": "Sokafy ny famintinana ny asa",
     "upNext": "Manaraka",
     "writingAssistanceSuggestion": "Soso-kevitra",
-    "errorFetchingWordInfo": "Tsy nahomby ny fakana ny mombamomba ny teny"
+    "errorFetchingWordInfo": "Tsy nahomby ny fakana ny mombamomba ny teny",
+    "contentCreatedBy": "Noforonin'i"
 }

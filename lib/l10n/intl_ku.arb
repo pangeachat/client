@@ -2311,5 +2311,6 @@
     "unlockActivitySummaries": "پوختەی چالاکییەکان بکەرەوە",
     "upNext": "لە دوایدا",
     "writingAssistanceSuggestion": "پێشنیار",
-    "errorFetchingWordInfo": "نەتوانرا زانیاریی وشە وەربگیرێت"
+    "errorFetchingWordInfo": "نەتوانرا زانیاریی وشە وەربگیرێت",
+    "contentCreatedBy": "دروستکراوە لەلایەن"
 }

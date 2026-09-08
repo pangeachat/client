@@ -27,6 +27,9 @@ import 'package:fluffychat/widgets/matrix.dart';
 /// - ``req.target_language`` → ``targetLanguage`` (L2).
 /// - ``req.target_l1`` → ``languageOfInstructions`` (L1).
 /// - ``req.target_cefr`` → ``cefrLevel``.
+/// - ``owner_mxid`` → ``ownerId`` (the credit; the plain-text mirror, never
+///   the ``owner`` relationship — a learner's token cannot read
+///   ``matrix-users``).
 /// - ``res.learning_objective_sequence.length`` → ``topicIds.length`` as a
 ///   non-empty placeholder list, so the "N modules" chip reads correctly. The
 ///   placeholder strings are never resolved against the v1 topics collection
@@ -213,6 +216,13 @@ class QuestPlansRepo {
       updatedAt:
           DateTime.tryParse(json['updatedAt'] as String? ?? '') ??
           DateTime.now(),
+      // Who is credited on the create-course page. The plain-text mirror, not
+      // the `owner` relationship beside it: `owner` is a per-env matrix-users
+      // row id, and that collection is service- and admin-read only, so a
+      // learner's token can read this quest and never resolve the person
+      // behind it. Absent on a row whose owner was never recorded — which is
+      // NOT the same as Pangea's own (`CoursePlanModel.ownerId`).
+      ownerId: json['owner_mxid'] as String?,
     );
   }
 }

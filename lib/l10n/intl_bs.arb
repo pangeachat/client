@@ -2311,5 +2311,6 @@
     "unlockActivitySummaries": "Otključajte sažetke aktivnosti",
     "upNext": "Slijedi",
     "writingAssistanceSuggestion": "Prijedlog",
-    "errorFetchingWordInfo": "Preuzimanje informacija o riječi nije uspjelo"
+    "errorFetchingWordInfo": "Preuzimanje informacija o riječi nije uspjelo",
+    "contentCreatedBy": "Kreirao/la"
 }

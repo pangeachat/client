@@ -9921,5 +9921,6 @@
     "unlockActivitySummaries": "Разблакіраваць зводкі актыўнасці",
     "upNext": "Далей",
     "writingAssistanceSuggestion": "Прапанова",
-    "errorFetchingWordInfo": "Не атрымалася атрымаць інфармацыю пра слова"
+    "errorFetchingWordInfo": "Не атрымалася атрымаць інфармацыю пра слова",
+    "contentCreatedBy": "Створана"
 }

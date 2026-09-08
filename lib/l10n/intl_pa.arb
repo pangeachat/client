@@ -2311,5 +2311,6 @@
     "unlockActivitySummaries": "ਗਤੀਵਿਧੀ ਸਾਰਾਂਸ਼ਾਂ ਨੂੰ ਅਨਲੌਕ ਕਰੋ",
     "upNext": "ਅੱਗੇ",
     "writingAssistanceSuggestion": "ਸੁਝਾਅ",
-    "errorFetchingWordInfo": "ਸ਼ਬਦ ਦੀ ਜਾਣਕਾਰੀ ਪ੍ਰਾਪਤ ਕਰਨ ਵਿੱਚ ਅਸਫਲ"
+    "errorFetchingWordInfo": "ਸ਼ਬਦ ਦੀ ਜਾਣਕਾਰੀ ਪ੍ਰਾਪਤ ਕਰਨ ਵਿੱਚ ਅਸਫਲ",
+    "contentCreatedBy": "ਇਸ ਦੁਆਰਾ ਬਣਾਇਆ ਗਿਆ"
 }

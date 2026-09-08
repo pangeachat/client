@@ -8126,5 +8126,6 @@
     "unlockActivitySummaries": "Desbloquear resúmenes de actividad",
     "upNext": "A continuación",
     "writingAssistanceSuggestion": "Sugerencia",
-    "errorFetchingWordInfo": "Error al obtener la información de la palabra"
+    "errorFetchingWordInfo": "Error al obtener la información de la palabra",
+    "contentCreatedBy": "Creado por"
 }

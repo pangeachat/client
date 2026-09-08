@@ -10821,5 +10821,6 @@
     "unlockActivitySummaries": "פתיחת סיכומי פעילות",
     "upNext": "הבא בתור",
     "writingAssistanceSuggestion": "הצעה",
-    "errorFetchingWordInfo": "אחזור פרטי המילה נכשל"
+    "errorFetchingWordInfo": "אחזור פרטי המילה נכשל",
+    "contentCreatedBy": "נוצר על ידי"
 }

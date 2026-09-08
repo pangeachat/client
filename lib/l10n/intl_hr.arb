@@ -10343,5 +10343,6 @@
     "unlockActivitySummaries": "Otključaj sažetke aktivnosti",
     "upNext": "Slijedi",
     "writingAssistanceSuggestion": "Prijedlog",
-    "errorFetchingWordInfo": "Dohvaćanje informacija o riječi nije uspjelo"
+    "errorFetchingWordInfo": "Dohvaćanje informacija o riječi nije uspjelo",
+    "contentCreatedBy": "Izradio"
 }

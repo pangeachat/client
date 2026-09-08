@@ -10807,5 +10807,6 @@
     "unlockActivitySummaries": "აქტივობის შეჯამებების განბლოკვა",
     "upNext": "შემდეგი",
     "writingAssistanceSuggestion": "შემოთავაზება",
-    "errorFetchingWordInfo": "სიტყვის ინფორმაციის მოძიება ვერ მოხერხდა"
+    "errorFetchingWordInfo": "სიტყვის ინფორმაციის მოძიება ვერ მოხერხდა",
+    "contentCreatedBy": "შექმნილია"
 }

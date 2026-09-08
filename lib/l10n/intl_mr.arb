@@ -2311,5 +2311,6 @@
     "unlockActivitySummaries": "क्रियाकलाप सारांश अनलॉक करा",
     "upNext": "पुढील",
     "writingAssistanceSuggestion": "सूचना",
-    "errorFetchingWordInfo": "शब्दाची माहिती मिळवण्यात अयशस्वी"
+    "errorFetchingWordInfo": "शब्दाची माहिती मिळवण्यात अयशस्वी",
+    "contentCreatedBy": "यांनी तयार केले"
 }

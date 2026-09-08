@@ -10879,5 +10879,6 @@
     "unlockActivitySummaries": "Разблокировать сводки активности",
     "upNext": "Далее",
     "writingAssistanceSuggestion": "Предложение",
-    "errorFetchingWordInfo": "Не удалось получить информацию о слове"
+    "errorFetchingWordInfo": "Не удалось получить информацию о слове",
+    "contentCreatedBy": "Создано"
 }

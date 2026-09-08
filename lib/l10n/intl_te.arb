@@ -10857,5 +10857,6 @@
     "unlockActivitySummaries": "కార్యకలాపాల సారాంశాలను అన్‌లాక్ చేయండి",
     "upNext": "తర్వాత",
     "writingAssistanceSuggestion": "సూచన",
-    "errorFetchingWordInfo": "పద సమాచారాన్ని పొందడంలో విఫలమైంది"
+    "errorFetchingWordInfo": "పద సమాచారాన్ని పొందడంలో విఫలమైంది",
+    "contentCreatedBy": "దీనిని సృష్టించినవారు"
 }

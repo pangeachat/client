@@ -2311,5 +2311,6 @@
     "unlockActivitySummaries": "Fungua muhtasari wa shughuli",
     "upNext": "Inayofuata",
     "writingAssistanceSuggestion": "Pendekezo",
-    "errorFetchingWordInfo": "Imeshindwa kupata maelezo ya neno"
+    "errorFetchingWordInfo": "Imeshindwa kupata maelezo ya neno",
+    "contentCreatedBy": "Imeundwa na"
 }

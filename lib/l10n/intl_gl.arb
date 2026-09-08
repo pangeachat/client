@@ -9907,5 +9907,6 @@
     "unlockActivitySummaries": "Desbloquear resumos de actividade",
     "upNext": "A seguir",
     "writingAssistanceSuggestion": "Suxestión",
-    "errorFetchingWordInfo": "Produciuse un erro ao obter a información da palabra"
+    "errorFetchingWordInfo": "Produciuse un erro ao obter a información da palabra",
+    "contentCreatedBy": "Creado por"
 }

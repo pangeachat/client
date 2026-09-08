@@ -10852,5 +10852,6 @@
     "unlockActivitySummaries": "Odkleni povzetke dejavnosti",
     "upNext": "Sledi",
     "writingAssistanceSuggestion": "Predlog",
-    "errorFetchingWordInfo": "Pridobivanje informacij o besedi ni uspelo"
+    "errorFetchingWordInfo": "Pridobivanje informacij o besedi ni uspelo",
+    "contentCreatedBy": "Ustvaril"
 }

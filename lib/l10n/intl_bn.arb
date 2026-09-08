@@ -10535,5 +10535,6 @@
     "unlockActivitySummaries": "ক্রিয়াকলাপের সারাংশ আনলক করুন",
     "upNext": "এরপর",
     "writingAssistanceSuggestion": "পরামর্শ",
-    "errorFetchingWordInfo": "শব্দের তথ্য আনতে ব্যর্থ হয়েছে"
+    "errorFetchingWordInfo": "শব্দের তথ্য আনতে ব্যর্থ হয়েছে",
+    "contentCreatedBy": "তৈরি করেছেন"
 }

@@ -2311,5 +2311,6 @@
     "unlockActivitySummaries": "Sbloccà i riassunti di l'attività",
     "upNext": "Dopu",
     "writingAssistanceSuggestion": "Suggerimentu",
-    "errorFetchingWordInfo": "Fallimentu di ricuperà l'infurmazione di a parolla"
+    "errorFetchingWordInfo": "Fallimentu di ricuperà l'infurmazione di a parolla",
+    "contentCreatedBy": "Creatu da"
 }

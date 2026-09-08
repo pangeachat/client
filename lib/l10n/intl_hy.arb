@@ -2311,5 +2311,6 @@
     "unlockActivitySummaries": "Բացել ակտիվության ամփոփագրերը",
     "upNext": "Հաջորդը",
     "writingAssistanceSuggestion": "Առաջարկ",
-    "errorFetchingWordInfo": "Բառի տեղեկությունները բեռնել չհաջողվեց"
+    "errorFetchingWordInfo": "Բառի տեղեկությունները բեռնել չհաջողվեց",
+    "contentCreatedBy": "Ստեղծվել է"
 }

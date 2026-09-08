@@ -5017,6 +5017,8 @@
     "@scrollToBottom": {},
     "courseImage": "Course image",
     "@courseImage": {},
+    "contentCreatedBy": "Created by",
+    "@contentCreatedBy": {},
     "avatarPreview": "Avatar preview",
     "@avatarPreview": {},
     "emotePreview": "Emote preview: {name}",

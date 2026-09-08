@@ -2311,5 +2311,6 @@
     "unlockActivitySummaries": "د فعالیت لنډیزونه خلاص کړئ",
     "upNext": "بل",
     "writingAssistanceSuggestion": "وړاندیز",
-    "errorFetchingWordInfo": "د کلمې معلوماتو په ترلاسه کولو کې پاتې راغلی"
+    "errorFetchingWordInfo": "د کلمې معلوماتو په ترلاسه کولو کې پاتې راغلی",
+    "contentCreatedBy": "جوړ شوی د"
 }

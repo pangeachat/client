@@ -9999,5 +9999,6 @@
     "unlockActivitySummaries": "செயல்பாட்டுச் சுருக்கங்களைத் திறக்கவும்",
     "upNext": "அடுத்து",
     "writingAssistanceSuggestion": "பரிந்துரை",
-    "errorFetchingWordInfo": "வார்த்தைத் தகவலைப் பெறத் தவறிவிட்டது"
+    "errorFetchingWordInfo": "வார்த்தைத் தகவலைப் பெறத் தவறிவிட்டது",
+    "contentCreatedBy": "உருவாக்கியவர்"
 }
