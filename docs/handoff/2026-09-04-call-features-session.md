@@ -525,3 +525,32 @@ the live panel attaches. iOS hits the SAME recording bug -- the fix helps there.
   pending -- needs the real web WAV from a local re-test. Bug B (auto mix) =
   owner design decision. Owner wants, in order: transcript ordering perfect
   locally, both halves upload, then local merge looks/sounds natural.
+
+## 2026-09-08 — Merge misalignment root-caused; continuous-recording design drafted + in Codex review
+- REAL CALL (owner, 2026-09-07): laptop(web) half 37.5s, phone(Android) half 15s,
+  merge "very bad, not properly placed"; a transcript turn ("bye") sorted first.
+- ROOT CAUSE (two agents + code): the recorder is FRAME-DRIVEN. Android mute
+  disables the mic track -> the native post-AEC process() callback STOPS -> no
+  frames -> the frame-driven recorder ENDS the WAV at the mute instant. Web keeps
+  emitting silent frames so its half stays full. Uploaded phone offset = FIRST
+  run only => no resume after mute. The merge start-aligns + overlays the two
+  halves; a 15s-compressed half places later speech ~22s early = the bad mix.
+  "bye first" = same family: a capture-order disruption floored a segment to the
+  run start. DEVICE TEST: not re-run as a fresh controlled call — the owner's own
+  muted call already IS the before-result (mute -> 15s truncation) and the code
+  proof is conclusive (offset=first-run-only). Definitive test = the POST-FIX
+  call (a muted call should then give a full-length half). Folded into fix
+  validation rather than a redundant timed cross-surface drive.
+- DECISION (owner pre-approved 2026-09-07; Will does NOT review, owner approves in
+  his place, Codex reviews): make each half a CONTINUOUS, time-aligned,
+  full-duration file — write silence for EVERY non-producing interval (mute,
+  starved/dropped capture, gap between carrying stretches); keep ONE generation
+  spanning the whole call; merge stays a start-aligned overlay (no schema/merge
+  change). File-size bounded by the existing per-recording ceiling.
+- DESIGN DOC drafted at scratchpad/call-audio-recording.instructions.md (NEW
+  instructions doc, design-only). In adversarial Codex review (gate dir
+  /private/tmp/coldgate-recdesign, verdict -> /private/tmp/recdesign-verdict.txt).
+  On green + owner OK -> build under subagent-dispatch-protocol double-gate
+  (touches call_capture.dart + call_audio_recorder.dart only), then re-test, then
+  build the auto-mix as a real feature -> PR on owner go. PRs still HELD to owner
+  go.
