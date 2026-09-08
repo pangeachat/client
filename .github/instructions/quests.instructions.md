@@ -56,9 +56,16 @@ The participant card shows the member's total for **the course's language** besi
 
 ## Who made the course
 
-The course page credits its quest's **owner** — the teacher who built it — resolved for display from that owner's Matrix profile. The choreo joins the owner's MXID onto the quest response as `owner_mxid` ([quests.instructions.md](../../../2-step-choreographer/.github/instructions/quests.instructions.md)); the stored `owner` is a per-env `matrix-users` row id and is useless for this.
+The course page credits its quest's **owner** — whoever built the course plan. That is a different fact from who administers the room, and the room has its own surface for that (the Participants section): a teacher who starts a class from a catalog quest administers a course Pangea wrote, and the credit says so.
 
-Same ladder as an activity's credit, which [activity-start-page.instructions.md](activity-start-page.instructions.md) owns: profile, else the stored MXID with a placeholder contact icon, and the PangeaChat name and avatar reserved for `@system`-owned content. A quest with no owner is Pangea's own and reads that way.
+The owner is stored on the quest row as `owner_mxid`, a plain-text Matrix id the client reads verbatim. Nothing resolves it on the client's behalf. The `owner` field beside it is a per-environment `matrix-users` row id, and that collection is service- and admin-read only, so a learner's token can read the quest and never resolve the person behind it — which is why the Matrix id is stored where the consumer reads it rather than joined on by a service at read time. Name and avatar then come from that owner's own Matrix profile, so a teacher controls their own credit by editing their profile and we keep no second copy of their name.
+
+Same ladder as an activity's credit, which [activity-start-page.instructions.md](activity-start-page.instructions.md) owns: profile, else the stored Matrix id beside a placeholder contact icon, and the PangeaChat name and avatar reserved for content owned by `@system:pangea.chat`. **A quest with no owner recorded is not evidence Pangea made it.** Content that is genuinely Pangea's says so with the system Matrix id, exactly as an activity does; an unrecorded owner is an unanswered question, and the surface shows no credit at all rather than a guessed one. The failure that ordering prevents — a teacher's course carrying Pangea's name — is worse than an uncredited one.
+
+**Where the credit shows turns on whether the course exists yet.**
+
+- **While the course is being made** — the client's create-course page and the dashboard's setup wizard — it is **prominent**. Someone choosing a plan to build their class on is deciding partly on who made it, so the credit belongs in the decision.
+- **Once the course exists** — the course page's **More** section, among the course's other details. It is deliberately not at the top of the panel the way an activity's credit leads its start page. That page *is* the one activity's header; a course page opens on the teacher's own description of their class, and a credit directly under it reads as a banner over their words — the more so on the common catalog path, where the quest is Pangea's and the class is theirs.
 
 Missions are **not** attributed. They are generic and reused across courses and languages by design, carry no owner, and crediting one to whoever first minted it would misrepresent shared content as authored.
 
