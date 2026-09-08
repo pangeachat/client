@@ -898,3 +898,28 @@ until the design is Codex-green.
   + trigger + reconciliation; P4 player fetch + dedup + scope-suppression + merged-primary. On the
   combined branch (this worktree). Cues-fix agent still running in the SEPARATE cues-pr worktree.
 - P1 brief: /private/tmp/build-brief-mix-p1-mixer.md.
+
+## 2026-09-08 — Mixer P1 committed (2e627b7079); both build agents had stalled (codex-monitor flake)
+- Both build agents (mixer + cues-fix) stalled in the codex-BACKGROUND-monitor wait (they launch a
+  bg codex verdict-monitor that id-flakes and never resolves -> they never commit). STOPPED both
+  (TaskStop) to freeze their worktrees; took over their finalization directly (the cold gate is
+  mine anyway).
+- MIXER P1 (call_audio_merge.dart + test, commit 2e627b7079 on satvik/call-features-combined):
+  the agent's WIP was on disk. My cold gate (4 parallel: pipeline/parse/resampler/pinning) found
+  4 REAL issues incl. a GATE-SOFTENING test (RIFF-walk pin too weak). All root-caused + fixed +
+  mutation-proven by me: negative-ceiling early-return; removed the over-engineered input clamp
+  (design assumes inputs are our ceiling-bounded recordings -> full parse + single OUTPUT cap;
+  this made the ceiling test actually pin the cap); phase-0 exact passthrough; strengthened RIFF
+  pin (every==2000); added delayed-output-cap, exact-at-cap, and zero-ceiling-fallback-rate tests.
+  Final: pipeline/parse/resampler CORRECT, pinning GATE-SOFTENING:no, 18 tests, every guard
+  mutation-verified. (Residual pin-gate ISSUES were my slice-extraction artifacts — the named
+  tests exist in the file + were proven RED-without/GREEN-with directly.)
+- LESSON: subagents using a bg codex + Monitor stall; the reliable path is the coordinator running
+  codex exec SYNCHRONOUSLY (as the cold gates do). When an agent stalls with WIP, TaskStop it, take
+  over the on-disk files, and cold-gate directly.
+- PENDING: (1) CUES #8807 fix — WIP in cues-pr worktree (agent's self-gate was green per its dying
+  message), uncommitted; NEXT: my cold-gate -> commit -> local PR CI + merge check -> report for
+  approval. (2) MERGE P2 event pangea.call_audio_merged + `truncated` prereq + writer; P3 election/
+  trigger/reconciliation; P4 player. (3) recording+transcript+player PR after the mix. (4) place the
+  design docs in repo instructions/ on PR. PR gate: cold-green + local PR CI + merge check + owner
+  approval before ANY PR.
