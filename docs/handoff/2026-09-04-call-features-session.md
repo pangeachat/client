@@ -711,3 +711,18 @@ the live panel attaches. iOS hits the SAME recording bug -- the fix helps there.
   trade (fixes the reported bug + all sane-wall cases; rare wall-anomaly-during-muted-start edges
   need the deferred platform clock), with the platform clock tracked as the complete-fix follow-up.
   Awaiting owner decision before calling piece 2 done. PRs still held for owner go.
+
+## 2026-09-08 — Owner decision: ACCEPT the ordering trade, validate via the real-call re-test
+- Owner: accept the wall-floor trade PROVISIONALLY; if it works well in normal cases leave it,
+  else research + build the native suspension-inclusive platform clock (the perfect fix). The
+  "works well in normal cases" check = the real-call re-test (unit tests already prove the normal
+  case: stall+sane-wall -> correct ordering; Android-mute -> full-length recording).
+- STATUS: Piece 1 (recorder continuity) fully cold-green; Piece 2 (transcript ordering) done —
+  pinning CORRECT, behaviour = the accepted inherent trade (no other defect). Both LOCAL on
+  satvik/call-features-combined, no push/PR. HEAD 88226b3070.
+- NEXT: real-call re-test. Rebuild web + APK from the combined branch, bring up the local stack
+  (lk-jwt :7980 etc.), clean device pollution; owner reconnects the phone and does a MUTED call;
+  I pull both call_audio halves + the transcript and verify (a) both halves full-length (piece 1),
+  (b) no "bye first" / correct ordering (piece 2), (c) local merge is natural. If normal cases are
+  clean -> trade accepted, platform clock tracked as follow-up; else -> build the platform clock.
+  THEN build the auto-mix as a real feature -> PR on owner go. PRs still held.
