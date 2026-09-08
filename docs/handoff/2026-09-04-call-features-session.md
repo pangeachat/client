@@ -1125,3 +1125,15 @@ until the design is Codex-green.
   targeted `git add <files>` (never -A). Confirmed no cross-contamination via git status/diff.
 - WAVE 2 plumbing (aae59136bc2ebb5ca) still running (fetchCallAudioMerged + mxc download).
 - Cues PR OPENED: pangeachat/client#8888 (pushed satvik/call-ring-cues, CI running).
+
+## 2026-09-08 (cont) — P3a COLD-GREEN; cues PR #8888 all-green
+- P3a cold gate: behaviour CORRECT; pinning CORRECT after 3 rounds. Round-1/2/3 added: 5+2 precedence
+  boundary tests (each mutation-proven by swapping the rule pair), same-user/wrong-device NotCandidate,
+  zero-halves, honest null-deviceId comment. 27 tests. Commits fce4bbaf31 + 809852faff + dada4fe6b5.
+- CUES PR #8888: was red on qa_scope only (non-blocking metadata check that reads the LINKED ISSUE, not
+  the PR). Fixed by ticking Evaluated + all four platforms on issue #8807 (audio feature -> all four per
+  qa-labeling) + manual re-run -> ALL GREEN. Saved memory qa-scope-reads-linked-issue. Ready to merge on
+  owner go.
+- WAVE 2 plumbing (agent aae59136bc2ebb5ca): all 4 files WRITTEN on disk (call_audio_download.dart,
+  fetchCallAudioMerged in call_audio_repo.dart, + 2 tests) but NOT yet committed -- agent in gate/commit
+  phase (last file touch 18:22). Awaiting its report; if stalled, TaskStop + take over WIP + cold-gate.
