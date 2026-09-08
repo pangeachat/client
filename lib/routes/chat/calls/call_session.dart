@@ -495,7 +495,13 @@ class CallSession extends ChangeNotifier {
 
   /// The caller-side tones (#8807). Separate from the banner's ringtone: that
   /// one belongs to whoever is being called, this one to whoever is calling.
-  late final RingPlayer _tones =
+  ///
+  /// Built lazily on the first cue, so a call that plays no cue never
+  /// constructs a player; held so [dispose] can release the native player of
+  /// one that WAS built (a loop or a one-shot cut cue) instead of leaking it.
+  RingPlayer? _tonesInstance;
+
+  RingPlayer get _tones => _tonesInstance ??=
       tonesOverride ?? RingPlayer(sound: AssetRingSound.callSignalling());
 
   /// The keys each looping cue plays under -- one pair per call, so a stop for
@@ -1231,11 +1237,13 @@ class CallSession extends ChangeNotifier {
     if (_disposing) return;
     _disposing = true;
     call.removeListener(_onCallChanged);
-    // Stop the ringback explicitly IF it is playing: the listener above is
-    // already detached, so a call disposed mid-cue would otherwise never see
-    // the stop. Guarded on `_activeCue` so a call that played no loop does not
-    // build a tone player just to tear one down.
-    if (_activeCue != null) _tones.stopAll();
+    // The tone player owns a native AudioPlayer; DISPOSE it (not merely stop
+    // it) so no call leaks one -- disposal stops any active loop first, so the
+    // mid-cue stop the now-detached listener can no longer send still happens.
+    // Only if a cue ever built it (a loop OR a one-shot cut cue): a call that
+    // played nothing constructs no player just to tear one down.
+    final tones = _tonesInstance;
+    if (tones != null) unawaited(tones.dispose());
     call.clearForegroundActions();
     _tick?.cancel();
     // A summary still holding its 3s when the holder discards the session --

@@ -895,7 +895,10 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     _activeCall?.removeListener(_onActiveCallChanged);
     _offerWatch?.cancel();
     _siblingAnswered?.cancel();
-    _ringPlayer.stopAll();
+    // Release the ring player's native AudioPlayer (dispose stops it first),
+    // so an incoming-ring banner leaves none behind. Same leak class as the
+    // caller-side tones in call_session.
+    unawaited(_ringPlayer.dispose());
     super.dispose();
   }
 
