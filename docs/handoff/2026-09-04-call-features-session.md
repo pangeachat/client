@@ -726,3 +726,21 @@ the live panel attaches. iOS hits the SAME recording bug -- the fix helps there.
   (b) no "bye first" / correct ordering (piece 2), (c) local merge is natural. If normal cases are
   clean -> trade accepted, platform clock tracked as follow-up; else -> build the platform clock.
   THEN build the auto-mix as a real feature -> PR on owner go. PRs still held.
+
+## 2026-09-08 — Re-test environment readied (all but the phone); awaiting phone reconnect
+- Both pieces coexist: full calls suite 1513 tests pass on HEAD.
+- Web: rebuilt the COMBINED-branch web from the worktree (flutter build web --release, exit 0 ->
+  confirms my changes compile clean for web/dart2js, the 2^32-trap risk is a non-issue). Served the
+  FRESH bundle on :8092 (0.0.0.0, LAN-visible) via python http.server on build/web (copied .env ->
+  build/web/.env). NOTE: the pre-existing :8090/:8091 python servers serve STALE bundles (hash
+  mismatch) and are NOT pangea-managed; left them alone. Use :8092 for the laptop side, NOT :8090.
+  Browser smoke on localhost:8092: onboarding renders, .env loaded (LAN), only benign optional-asset
+  404s (Imaging.js/config.json/native_executor.js), no stack-connection errors.
+- LAN call path verified (the pangea-call-testing 'three move together'): Synapse .well-known focus
+  -> livekit_service_url http://192.168.1.156:7980; lk-jwt LIVEKIT_URL ws://192.168.1.156:7880; LAN
+  Synapse :8008 -> 200. livekit v1.11.0. lk-jwt :7980 healthz 200.
+- BLOCKED ON: phone reconnect (adb empty). When connected: build+install the combined-branch APK
+  (pubspec .env must be uncommented for the mobile build then re-commented; JAVA_HOME + rustup shim
+  per android-apk-rust-target-shadowing; delete the old APK first), verify the phone package
+  com.talktolearn.chat, clean device pollution (learner+calltester -> 0) right before, then the owner
+  does a MUTED call. Verify: both call_audio halves full-length, no "bye first", natural local merge.
