@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-09-08 09:44:59.619217",
+    "@@last_modified": "2026-09-08 12:32:22.259337",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2278,5 +2278,10 @@
     "listenFirst": "ຟັງກ່ອນ",
     "listenFirstDescription": "ເມື່ອເປີດຟັງກ່ອນ, ຄລິກໜຶ່ງຄັ້ງຈະຫຼິ້ນສຽງ ແລະ ຄລິກສອງຄັ້ງຈະເລືອກຕົວເລືອກ.",
     "listenFirstNeedsChoiceAudio": "ເປີດສຽງຕົວເລືອກເພື່ອໃຊ້ຟັງກ່ອນ.",
-    "unableToJoinCourseError": "ພວກເຮົາບໍ່ສາມາດເພີ່ມທ່ານເຂົ້າໃນຫຼັກສູດນີ້ໄດ້ໃນຕອນນີ້. ກະລຸນາລອງໃໝ່ອີກຄັ້ງ, ຫຼືສອບຖາມຄູສອນຂອງທ່ານ."
+    "unableToJoinCourseError": "ພວກເຮົາບໍ່ສາມາດເພີ່ມທ່ານເຂົ້າໃນຫຼັກສູດນີ້ໄດ້ໃນຕອນນີ້. ກະລຸນາລອງໃໝ່ອີກຄັ້ງ, ຫຼືສອບຖາມຄູສອນຂອງທ່ານ.",
+    "practiceTapABlank": "ແຕະບ່ອນຫວ່າງເພື່ອຕື່ມໃສ່",
+    "practiceListeningPrompt": "ອັນໃດທີ່ເວົ້າວ່າ ‘{word}’?",
+    "practiceMeaningPrompt": "‘{word}’ ໝາຍຄວາມວ່າແນວໃດ?",
+    "practiceEmojiPrompt": "ເລືອກອີໂມຈິສຳລັບ ‘{word}’",
+    "practiceStepProgress": "{done} ຈາກ {total}"
 }

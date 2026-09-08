@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-08 09:45:00.268592",
+    "@@last_modified": "2026-09-08 12:32:23.337445",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9874,5 +9874,10 @@
     "listenFirst": "Eerst luisteren",
     "listenFirstDescription": "Wanneer Eerst luisteren is ingeschakeld, speelt één klik alleen audio af en dubbelklik selecteert de optie.",
     "listenFirstNeedsChoiceAudio": "Schakel Keuze-audio in om Eerst luisteren te gebruiken.",
-    "unableToJoinCourseError": "We konden je nu niet toevoegen aan deze cursus. Probeer het opnieuw, of vraag het aan je docent."
+    "unableToJoinCourseError": "We konden je nu niet toevoegen aan deze cursus. Probeer het opnieuw, of vraag het aan je docent.",
+    "practiceTapABlank": "Tik op een leeg veld om het in te vullen",
+    "practiceListeningPrompt": "Welke zegt ‘{word}’?",
+    "practiceMeaningPrompt": "Wat betekent ‘{word}’?",
+    "practiceEmojiPrompt": "Kies een emoji voor ‘{word}’",
+    "practiceStepProgress": "{done} van {total}"
 }

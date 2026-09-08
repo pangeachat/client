@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-08 09:44:59.575594",
+    "@@last_modified": "2026-09-08 12:32:21.207672",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10067,5 +10067,10 @@
     "listenFirst": "먼저 듣기",
     "listenFirstDescription": "먼저 듣기 기능이 켜져 있으면 한 번 클릭하면 오디오가 재생되고 두 번 클릭하면 옵션이 선택됩니다.",
     "listenFirstNeedsChoiceAudio": "먼저 듣기를 사용하려면 선택 오디오를 켜세요.",
-    "unableToJoinCourseError": "지금은 이 코스에 참여할 수 없습니다. 다시 시도하거나 선생님께 문의하세요."
+    "unableToJoinCourseError": "지금은 이 코스에 참여할 수 없습니다. 다시 시도하거나 선생님께 문의하세요.",
+    "practiceTapABlank": "빈칸을 탭하여 채우세요",
+    "practiceListeningPrompt": "‘{word}’라고 말하는 것은 어느 것인가요?",
+    "practiceMeaningPrompt": "‘{word}’는 무슨 뜻인가요?",
+    "practiceEmojiPrompt": "‘{word}’에 맞는 이모티콘을 선택하세요",
+    "practiceStepProgress": "{done}/{total}"
 }

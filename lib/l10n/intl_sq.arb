@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-09-08 09:45:04.775812",
+    "@@last_modified": "2026-09-08 12:32:27.044066",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2278,5 +2278,10 @@
     "listenFirst": "Dëgjo fillimisht",
     "listenFirstDescription": "Kur Dëgjo fillimisht është aktiv, një klikim luan vetëm audion dhe një klikim i dyfishtë zgjedh opsionin.",
     "listenFirstNeedsChoiceAudio": "Aktivizo audion e Zgjedhjeve për të përdorur Dëgjo fillimisht.",
-    "unableToJoinCourseError": "Nuk mundëm t'ju shtonim në këtë kurs tani. Ju lutemi provoni përsëri, ose pyesni mësuesin tuaj."
+    "unableToJoinCourseError": "Nuk mundëm t'ju shtonim në këtë kurs tani. Ju lutemi provoni përsëri, ose pyesni mësuesin tuaj.",
+    "practiceTapABlank": "Trokit një vend bosh për ta plotësuar",
+    "practiceListeningPrompt": "Cila thotë ‘{word}’?",
+    "practiceMeaningPrompt": "Çfarë do të thotë ‘{word}’?",
+    "practiceEmojiPrompt": "Zgjidh një emoji për ‘{word}’",
+    "practiceStepProgress": "{done} nga {total}"
 }

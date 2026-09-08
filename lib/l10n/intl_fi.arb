@@ -3536,7 +3536,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-09-08 09:44:52.586119",
+    "@@last_modified": "2026-09-08 12:32:18.193799",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9911,5 +9911,10 @@
     "listenFirst": "Kuuntele ensin",
     "listenFirstDescription": "Kun Kuuntele ensin on päällä, yhdellä napsautuksella toistetaan ääni ja kaksoisnapsautuksella valitaan vaihtoehto.",
     "listenFirstNeedsChoiceAudio": "Ota Valintojen ääni käyttöön käyttääksesi Kuuntele ensin -toimintoa.",
-    "unableToJoinCourseError": "Emme voineet lisätä sinua tälle kurssille juuri nyt. Yritä uudelleen tai kysy opettajaltasi."
+    "unableToJoinCourseError": "Emme voineet lisätä sinua tälle kurssille juuri nyt. Yritä uudelleen tai kysy opettajaltasi.",
+    "practiceTapABlank": "Täytä tyhjä kohta napauttamalla",
+    "practiceListeningPrompt": "Kumpi sanoo ”{word}”?",
+    "practiceMeaningPrompt": "Mitä ”{word}” tarkoittaa?",
+    "practiceEmojiPrompt": "Valitse emoji sanalle ”{word}”",
+    "practiceStepProgress": "{done}/{total}"
 }

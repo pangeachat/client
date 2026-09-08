@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-09-08 09:45:04.794395",
+    "@@last_modified": "2026-09-08 12:32:27.373061",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9878,5 +9878,10 @@
     "listenFirst": "Avval tinglang",
     "listenFirstDescription": "«Avval tinglang» yoqilganda, bir marta bosish faqat audioni ijro etadi va ikki marta bosish variantni tanlaydi.",
     "listenFirstNeedsChoiceAudio": "«Avval tinglang» funksiyasidan foydalanish uchun Tanlovlar audiosini yoqing.",
-    "unableToJoinCourseError": "Hozircha sizni bu kursga qoʻsha olmadik. Iltimos, qayta urinib koʻring yoki oʻqituvchingizdan soʻrang."
+    "unableToJoinCourseError": "Hozircha sizni bu kursga qoʻsha olmadik. Iltimos, qayta urinib koʻring yoki oʻqituvchingizdan soʻrang.",
+    "practiceTapABlank": "Boʻsh joyni toʻldirish uchun bosing",
+    "practiceListeningPrompt": "Qaysi biri „{word}“ deydi?",
+    "practiceMeaningPrompt": "„{word}“ nimani anglatadi?",
+    "practiceEmojiPrompt": "„{word}“ uchun emojini tanlang",
+    "practiceStepProgress": "{done} / {total}"
 }

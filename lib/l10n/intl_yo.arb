@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-09-08 09:45:06.532921",
+    "@@last_modified": "2026-09-08 12:32:28.010186",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2278,5 +2278,10 @@
     "listenFirst": "Kọkọ gbọ́",
     "listenFirstDescription": "Nígbàtí Kọkọ Gbọ́ bá wà lórí, títẹ́ kan yóò kàn mú ohùn ṣiṣẹ́, títẹ́ méjì yóò sì yan àṣàyàn náà.",
     "listenFirstNeedsChoiceAudio": "Tan ohùn àṣàyàn láti lo Kọkọ Gbọ́.",
-    "unableToJoinCourseError": "A kò le fi ọ kún iṣẹ́-ẹ̀kọ́ yìí báyìí. Jọ̀wọ́ tún gbìyànjú, tàbí bi olùkọ́ rẹ."
+    "unableToJoinCourseError": "A kò le fi ọ kún iṣẹ́-ẹ̀kọ́ yìí báyìí. Jọ̀wọ́ tún gbìyànjú, tàbí bi olùkọ́ rẹ.",
+    "practiceTapABlank": "Tẹ ibi òfo láti kún ún",
+    "practiceListeningPrompt": "Èwo ni ó sọ pé ‘{word}’?",
+    "practiceMeaningPrompt": "Kí ni ‘{word}’ túmọ̀ sí?",
+    "practiceEmojiPrompt": "Yan emoji kan fún ‘{word}’",
+    "practiceStepProgress": "{done} nínú {total}"
 }

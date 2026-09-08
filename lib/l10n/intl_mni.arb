@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-09-08 09:45:00.175108",
+    "@@last_modified": "2026-09-08 12:32:23.611795",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2278,5 +2278,10 @@
     "listenFirst": "ꯑꯗꯨꯒꯤ ꯃꯥꯡꯗ ꯇꯥꯕꯤꯌꯨ",
     "listenFirstDescription": "ꯑꯗꯨꯒꯤ ꯃꯥꯡꯗ ꯇꯥꯕꯤꯌꯨ ꯑꯁꯤ ꯑꯣꯟ ꯇꯧꯔꯕꯥ ꯃꯇꯃꯗ, ꯋꯥꯍꯪ ꯑꯃꯥ ꯈꯛꯇꯥ ꯑꯣꯗꯤꯑꯣ ꯄ꯭ꯂꯦ ꯇꯧꯏ ꯑꯃꯁꯨꯡ ꯂꯦꯡꯖꯤꯟ ꯑꯅꯤ ꯇꯧꯕꯅꯥ ꯑꯣꯄꯁꯟ ꯑꯗꯨ ꯈꯜꯂꯤ꯫",
     "listenFirstNeedsChoiceAudio": "ꯑꯗꯨꯒꯤ ꯃꯥꯡꯗ ꯇꯥꯕꯤꯌꯨ ꯁꯤꯖꯤꯟꯅꯅꯕꯥ ꯈꯜꯂꯤꯕꯥ ꯑꯣꯗꯤꯑꯣ ꯑꯗꯨ ꯑꯣꯟ ꯇꯧꯕꯤꯌꯨ꯫",
-    "unableToJoinCourseError": "ঐখোয়না হৌজিক অসিদা নখোয়বু কোর্স অসিদা হাপ্পা ঙমখিদে। খরা কুইরগা অমুক ট্রাই তৌবীয়ু, নত্ত্রগা নখোয়গী টিচারদা হংবীয়ু।"
+    "unableToJoinCourseError": "ঐখোয়না হৌজিক অসিদা নখোয়বু কোর্স অসিদা হাপ্পা ঙমখিদে। খরা কুইরগা অমুক ট্রাই তৌবীয়ু, নত্ত্রগা নখোয়গী টিচারদা হংবীয়ু।",
+    "practiceTapABlank": "খালি থাওবা ফংবা ফংহনবীয়ু",
+    "practiceListeningPrompt": "‘{word}’ হায়বদু করিনো?",
+    "practiceMeaningPrompt": "‘{word}’ হায়বসিগী অર્થ করিগুম্বা?",
+    "practiceEmojiPrompt": "‘{word}’ হায়বসিগী ইমোজি অমা খল্লু",
+    "practiceStepProgress": "{total} গী মনুংদা {done}"
 }

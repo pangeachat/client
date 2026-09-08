@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-09-08 09:44:59.386901",
+    "@@last_modified": "2026-09-08 12:32:22.990638",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2278,5 +2278,10 @@
     "listenFirst": "आधी ऐका",
     "listenFirstDescription": "जेव्हा आधी ऐका चालू असते, तेव्हा एका क्लिकने फक्त ऑडिओ वाजतो आणि डबल-क्लिकने पर्याय निवडला जातो.",
     "listenFirstNeedsChoiceAudio": "आधी ऐका वापरण्यासाठी 'निवड ऑडिओ' चालू करा.",
-    "unableToJoinCourseError": "आम्ही तुम्हाला सध्या या कोर्समध्ये समाविष्ट करू शकलो नाही. कृपया पुन्हा प्रयत्न करा किंवा तुमच्या शिक्षकांना विचारा."
+    "unableToJoinCourseError": "आम्ही तुम्हाला सध्या या कोर्समध्ये समाविष्ट करू शकलो नाही. कृपया पुन्हा प्रयत्न करा किंवा तुमच्या शिक्षकांना विचारा.",
+    "practiceTapABlank": "भरण्यासाठी रिकाम्या जागेवर टॅप करा",
+    "practiceListeningPrompt": "‘{word}’ असे कोण म्हणते?",
+    "practiceMeaningPrompt": "‘{word}’ चा अर्थ काय आहे?",
+    "practiceEmojiPrompt": "‘{word}’ साठी एक इमोजी निवडा",
+    "practiceStepProgress": "{total} पैकी {done}"
 }

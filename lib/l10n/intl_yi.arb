@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-09-08 09:45:05.608072",
+    "@@last_modified": "2026-09-08 12:32:28.248789",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2278,5 +2278,10 @@
     "listenFirst": "ערשט הערן",
     "listenFirstDescription": "ווען ״ערשט הערן״ איז אָן, איין קליק שפּילט נאָר אַודיאָ און אַ טאָפּל-קליק סעלעקטירט די אָפּציע.",
     "listenFirstNeedsChoiceAudio": "מאַך אָן ברירות אַודיאָ צו ניצן ״ערשט הערן״.",
-    "unableToJoinCourseError": "מיר האָבן ניט געקענט צולייגן אײַך צו דעם קורס איצט. ביטע פּרוּווט ווידער, אָדער פרעגט אײַער לערער."
+    "unableToJoinCourseError": "מיר האָבן ניט געקענט צולייגן אײַך צו דעם קורס איצט. ביטע פּרוּווט ווידער, אָדער פרעגט אײַער לערער.",
+    "practiceTapABlank": "דרוקט אויף אַ ליידיקן פלאַץ צו אויספילן",
+    "practiceListeningPrompt": "וועלכער זאָגט ‘{word}’?",
+    "practiceMeaningPrompt": "וואָס מיינט ‘{word}’?",
+    "practiceEmojiPrompt": "קלויבט אויס אַן עמאָדזשי פֿאַר ‘{word}’",
+    "practiceStepProgress": "{done} פֿון {total}"
 }

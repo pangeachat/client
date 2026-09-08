@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-09-08 09:45:03.060910",
+    "@@last_modified": "2026-09-08 12:32:25.134188",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10819,5 +10819,10 @@
     "listenFirst": "Najprv počúvať",
     "listenFirstDescription": "Keď je zapnutá funkcia „Najprv počúvať“, jedným kliknutím sa prehrá zvuk a dvojitým kliknutím sa vyberie možnosť.",
     "listenFirstNeedsChoiceAudio": "Ak chcete použiť funkciu „Najprv počúvať“, zapnite zvuk možností.",
-    "unableToJoinCourseError": "Momentálne ťa nemôžeme pridať do tohto kurzu. Skús to znova alebo sa spýtaj svojho učiteľa."
+    "unableToJoinCourseError": "Momentálne ťa nemôžeme pridať do tohto kurzu. Skús to znova alebo sa spýtaj svojho učiteľa.",
+    "practiceTapABlank": "Ťuknutím vyplňte prázdne miesto",
+    "practiceListeningPrompt": "Ktoré hovorí „{word}“?",
+    "practiceMeaningPrompt": "Čo znamená „{word}“?",
+    "practiceEmojiPrompt": "Vyberte emoji pre „{word}“",
+    "practiceStepProgress": "{done} z {total}"
 }

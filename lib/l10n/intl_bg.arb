@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-09-08 09:44:50.717316",
+    "@@last_modified": "2026-09-08 12:32:16.352735",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2278,5 +2278,10 @@
     "listenFirst": "Първо слушане",
     "listenFirstDescription": "Когато „Първо слушане“ е включено, едно щракване просто възпроизвежда аудио, а двойното щракване избира опцията.",
     "listenFirstNeedsChoiceAudio": "Включете аудиото за избор, за да използвате „Първо слушане“.",
-    "unableToJoinCourseError": "В момента не можем да ви добавим към този курс. Моля, опитайте отново или попитайте вашия учител."
+    "unableToJoinCourseError": "В момента не можем да ви добавим към този курс. Моля, опитайте отново или попитайте вашия учител.",
+    "practiceTapABlank": "Докоснете празно място, за да го попълните",
+    "practiceListeningPrompt": "Кой казва „{word}“?",
+    "practiceMeaningPrompt": "Какво означава „{word}“?",
+    "practiceEmojiPrompt": "Изберете емоджи за „{word}“",
+    "practiceStepProgress": "{done} от {total}"
 }

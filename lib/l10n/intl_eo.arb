@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-08 09:44:52.864079",
+    "@@last_modified": "2026-09-08 12:32:17.718577",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10819,5 +10819,10 @@
     "listenFirst": "Unue aŭskultu",
     "listenFirstDescription": "Kiam Unue Aŭskultu estas ŝaltita, unu klako nur ludas sonon kaj duobla klako elektas la opcion.",
     "listenFirstNeedsChoiceAudio": "Ŝaltu la sonon de Elektoj por uzi Unue Aŭskultu.",
-    "unableToJoinCourseError": "Ni ne povis aldoni vin al ĉi tiu kurso nun. Bonvolu reprovi, aŭ demandu vian instruiston."
+    "unableToJoinCourseError": "Ni ne povis aldoni vin al ĉi tiu kurso nun. Bonvolu reprovi, aŭ demandu vian instruiston.",
+    "practiceTapABlank": "Frapu malplenaĵon por plenigi ĝin",
+    "practiceListeningPrompt": "Kiu diras ‘{word}’?",
+    "practiceMeaningPrompt": "Kion signifas ‘{word}’?",
+    "practiceEmojiPrompt": "Elektu emoji-on por ‘{word}’",
+    "practiceStepProgress": "{done} el {total}"
 }

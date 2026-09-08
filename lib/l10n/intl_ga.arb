@@ -3563,7 +3563,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-09-08 09:44:53.322962",
+    "@@last_modified": "2026-09-08 12:32:18.606394",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9885,5 +9885,10 @@
     "listenFirst": "Éist ar dtús",
     "listenFirstDescription": "Nuair a bhíonn Éist ar dtús ar siúl, ní dhéanann cliceáil amháin ach an fhuaim a sheinm agus roghnaíonn cliceáil dúbailte an rogha.",
     "listenFirstNeedsChoiceAudio": "Cas ar fhuaim Roghanna chun Éist ar dtús a úsáid.",
-    "unableToJoinCourseError": "Níorbh fhéidir linn tú a chur leis an gcúrsa seo faoi láthair. Bain triail eile as, nó iarr ar do mhúinteoir."
+    "unableToJoinCourseError": "Níorbh fhéidir linn tú a chur leis an gcúrsa seo faoi láthair. Bain triail eile as, nó iarr ar do mhúinteoir.",
+    "practiceTapABlank": "Beartaigh ar spás bán chun é a líonadh",
+    "practiceListeningPrompt": "Cé acu a deir ‘{word}’?",
+    "practiceMeaningPrompt": "Cad a chiallaíonn ‘{word}’?",
+    "practiceEmojiPrompt": "Roghnaigh emoji do ‘{word}’",
+    "practiceStepProgress": "{done} as {total}"
 }

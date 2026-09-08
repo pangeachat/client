@@ -3093,7 +3093,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-09-08 09:45:05.292701",
+    "@@last_modified": "2026-09-08 12:32:26.788569",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10506,5 +10506,10 @@
     "listenFirst": "ฟังก่อน",
     "listenFirstDescription": "เมื่อเปิดใช้งานฟังก่อน การคลิกหนึ่งครั้งจะเล่นเสียง และการดับเบิลคลิกจะเลือกตัวเลือก",
     "listenFirstNeedsChoiceAudio": "เปิดเสียงตัวเลือกเพื่อใช้ฟังก่อน",
-    "unableToJoinCourseError": "เราไม่สามารถเพิ่มคุณในคอร์สนี้ได้ในขณะนี้ โปรดลองอีกครั้ง หรือสอบถามครูผู้สอนของคุณ"
+    "unableToJoinCourseError": "เราไม่สามารถเพิ่มคุณในคอร์สนี้ได้ในขณะนี้ โปรดลองอีกครั้ง หรือสอบถามครูผู้สอนของคุณ",
+    "practiceTapABlank": "แตะช่องว่างเพื่อเติมคำ",
+    "practiceListeningPrompt": "คำไหนอ่านว่า '{word}'?",
+    "practiceMeaningPrompt": "'{word}' หมายความว่าอะไร?",
+    "practiceEmojiPrompt": "เลือกอิโมจิสำหรับ '{word}'",
+    "practiceStepProgress": "{done} จาก {total}"
 }

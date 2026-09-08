@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-09-08 09:44:54.754664",
+    "@@last_modified": "2026-09-08 12:32:19.776649",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2278,5 +2278,10 @@
     "listenFirst": "Hoʻolohe mua",
     "listenFirstDescription": "Ke hoʻā ʻia ʻo Hoʻolohe Mua, hoʻokani wale ka pā hoʻokahi i ke leo a koho ka pā pālua i ke koho.",
     "listenFirstNeedsChoiceAudio": "E hoʻā i ke kani Koho e hoʻohana iā Hoʻolohe Mua.",
-    "unableToJoinCourseError": "ʻAʻole hiki iā mākou ke hoʻohui iā ʻoe i kēia papa i kēia manawa. E ʻoluʻolu e hoʻāʻo hou, a i ʻole e nīnau i kāu kumu."
+    "unableToJoinCourseError": "ʻAʻole hiki iā mākou ke hoʻohui iā ʻoe i kēia papa i kēia manawa. E ʻoluʻolu e hoʻāʻo hou, a i ʻole e nīnau i kāu kumu.",
+    "practiceTapABlank": "Kaomi i kahi hakahaka e hoʻopiha ai",
+    "practiceListeningPrompt": "ʻO wai ka mea e ʻōlelo ana ‘{word}’?",
+    "practiceMeaningPrompt": "He aha ke ʻano o ‘{word}’?",
+    "practiceEmojiPrompt": "E koho i kahi emoji no ‘{word}’",
+    "practiceStepProgress": "{done} o {total}"
 }

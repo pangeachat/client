@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-08 09:44:54.317100",
+    "@@last_modified": "2026-09-08 12:32:19.316634",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10788,5 +10788,10 @@
     "listenFirst": "האזנה תחילה",
     "listenFirstDescription": "כאשר האזנה תחילה מופעלת, לחיצה אחת מנגנת אודיו בלבד ולחיצה כפולה בוחרת את האפשרות.",
     "listenFirstNeedsChoiceAudio": "הפעל אודיו של אפשרויות כדי להשתמש ב'האזנה תחילה'.",
-    "unableToJoinCourseError": "לא הצלחנו לצרף אותך לקורס הזה כרגע. אנא נסה/נסי שוב, או שאל/שאלי את המורה שלך."
+    "unableToJoinCourseError": "לא הצלחנו לצרף אותך לקורס הזה כרגע. אנא נסה/נסי שוב, או שאל/שאלי את המורה שלך.",
+    "practiceTapABlank": "הקש על רווח כדי למלא אותו",
+    "practiceListeningPrompt": "איזה מהם אומר '{word}'?",
+    "practiceMeaningPrompt": "מה פירוש '{word}'?",
+    "practiceEmojiPrompt": "בחר אימוג'י עבור '{word}'",
+    "practiceStepProgress": "{done} מתוך {total}"
 }

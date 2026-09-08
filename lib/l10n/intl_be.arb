@@ -3548,7 +3548,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-09-08 09:44:50.908456",
+    "@@last_modified": "2026-09-08 12:32:16.408444",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9888,5 +9888,10 @@
     "listenFirst": "Спачатку паслухайце",
     "listenFirstDescription": "Калі ўключана функцыя «Спачатку паслухайце», адзін клік проста прайгравае аўдыя, а падвойны клік выбірае опцыю.",
     "listenFirstNeedsChoiceAudio": "Каб выкарыстоўваць функцыю «Спачатку паслухайце», уключыце аўдыя выбараў.",
-    "unableToJoinCourseError": "Мы не змаглі дадаць вас на гэты курс. Калі ласка, паспрабуйце яшчэ раз або звярніцеся да настаўніка."
+    "unableToJoinCourseError": "Мы не змаглі дадаць вас на гэты курс. Калі ласка, паспрабуйце яшчэ раз або звярніцеся да настаўніка.",
+    "practiceTapABlank": "Націсніце на пустое месца, каб запоўніць яго",
+    "practiceListeningPrompt": "Што азначае «{word}»?",
+    "practiceMeaningPrompt": "Што азначае «{word}»?",
+    "practiceEmojiPrompt": "Выберыце эмодзі для «{word}»",
+    "practiceStepProgress": "{done} з {total}"
 }

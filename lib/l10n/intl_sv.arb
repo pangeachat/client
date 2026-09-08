@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-08 09:45:05.017892",
+    "@@last_modified": "2026-09-08 12:32:26.046784",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10392,5 +10392,10 @@
     "listenFirst": "Lyssna först",
     "listenFirstDescription": "När Lyssna först är aktiverat spelas ljud upp med ett klick och alternativet väljs med ett dubbelklick.",
     "listenFirstNeedsChoiceAudio": "Aktivera ljud för val för att använda Lyssna först.",
-    "unableToJoinCourseError": "Vi kunde inte lägga till dig i den här kursen just nu. Försök igen, eller fråga din lärare."
+    "unableToJoinCourseError": "Vi kunde inte lägga till dig i den här kursen just nu. Försök igen, eller fråga din lärare.",
+    "practiceTapABlank": "Tryck på en tom lucka för att fylla i den",
+    "practiceListeningPrompt": "Vilken säger ”{word}”?",
+    "practiceMeaningPrompt": "Vad betyder ”{word}”?",
+    "practiceEmojiPrompt": "Välj en emoji för ”{word}”",
+    "practiceStepProgress": "{done} av {total}"
 }

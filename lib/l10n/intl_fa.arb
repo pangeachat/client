@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-08 09:44:55.305992",
+    "@@last_modified": "2026-09-08 12:32:18.308376",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9962,5 +9962,10 @@
     "listenFirst": "اول گوش کن",
     "listenFirstDescription": "وقتی «اول گوش کن» روشن است، یک کلیک فقط صدا را پخش می‌کند و دو کلیک گزینه را انتخاب می‌کند.",
     "listenFirstNeedsChoiceAudio": "برای استفاده از «اول گوش کن»، صدای گزینه‌ها را روشن کنید.",
-    "unableToJoinCourseError": "در حال حاضر نمی‌توانیم شما را به این دوره اضافه کنیم. لطفاً دوباره امتحان کنید یا از معلم خود بپرسید."
+    "unableToJoinCourseError": "در حال حاضر نمی‌توانیم شما را به این دوره اضافه کنیم. لطفاً دوباره امتحان کنید یا از معلم خود بپرسید.",
+    "practiceTapABlank": "برای پر کردن، روی جای خالی ضربه بزنید",
+    "practiceListeningPrompt": "کدام یک می‌گوید «{word}»؟",
+    "practiceMeaningPrompt": "«{word}» به چه معناست؟",
+    "practiceEmojiPrompt": "یک ایموجی برای «{word}» انتخاب کنید",
+    "practiceStepProgress": "{done} از {total}"
 }

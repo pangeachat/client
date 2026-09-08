@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-09-08 09:45:03.779494",
+    "@@last_modified": "2026-09-08 12:32:25.286024",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2278,5 +2278,10 @@
     "listenFirst": "මුලින්ම සවන් දෙන්න",
     "listenFirstDescription": "මුලින්ම සවන් දෙන්න ක්‍රියාත්මක වූ විට, එක් ක්ලික් කිරීමකින් ශ්‍රව්‍ය වාදනය වන අතර ද්විත්ව ක්ලික් කිරීමෙන් විකල්පය තෝරා ගනී.",
     "listenFirstNeedsChoiceAudio": "මුලින්ම සවන් දෙන්න භාවිතා කිරීමට Choices ශ්‍රව්‍ය ක්‍රියාත්මක කරන්න.",
-    "unableToJoinCourseError": "මේ මොහොතේ අපට ඔබව මෙම පාඨමාලාවට එක් කිරීමට නොහැකි විය. කරුණාකර නැවත උත්සාහ කරන්න, නැතහොත් ඔබේ ගුරුවරයාගෙන් අසන්න."
+    "unableToJoinCourseError": "මේ මොහොතේ අපට ඔබව මෙම පාඨමාලාවට එක් කිරීමට නොහැකි විය. කරුණාකර නැවත උත්සාහ කරන්න, නැතහොත් ඔබේ ගුරුවරයාගෙන් අසන්න.",
+    "practiceTapABlank": "එය පිරවීමට හිස් තැනක් තට්ටු කරන්න",
+    "practiceListeningPrompt": "‘{word}’ යැයි කියන්නේ කුමන එකද?",
+    "practiceMeaningPrompt": "‘{word}’ යන්නෙහි තේරුම කුමක්ද?",
+    "practiceEmojiPrompt": "‘{word}’ සඳහා ඉමොජියක් තෝරන්න",
+    "practiceStepProgress": "{total}න් {done}"
 }

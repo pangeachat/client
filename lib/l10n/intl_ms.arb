@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-09-08 09:44:59.522474",
+    "@@last_modified": "2026-09-08 12:32:23.251188",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2278,5 +2278,10 @@
     "listenFirst": "Dengar dahulu",
     "listenFirstDescription": "Apabila Dengar Dahulu dihidupkan, satu klik hanya memainkan audio dan dwi-klik memilih pilihan.",
     "listenFirstNeedsChoiceAudio": "Hidupkan audio Pilihan untuk menggunakan Dengar Dahulu.",
-    "unableToJoinCourseError": "Kami tidak dapat menambahkan anda ke kursus ini sekarang. Sila cuba lagi, atau tanya guru anda."
+    "unableToJoinCourseError": "Kami tidak dapat menambahkan anda ke kursus ini sekarang. Sila cuba lagi, atau tanya guru anda.",
+    "practiceTapABlank": "Ketik tempat kosong untuk mengisinya",
+    "practiceListeningPrompt": "Yang mana satu menyebut ‘{word}’?",
+    "practiceMeaningPrompt": "Apakah maksud ‘{word}’?",
+    "practiceEmojiPrompt": "Pilih emoji untuk ‘{word}’",
+    "practiceStepProgress": "{done} daripada {total}"
 }

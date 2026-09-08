@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-09-08 09:44:56.713656",
+    "@@last_modified": "2026-09-08 12:32:21.166647",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2278,5 +2278,10 @@
     "listenFirst": "Алдымен тыңдау",
     "listenFirstDescription": "Алдымен тыңдау қосулы болғанда, бір рет басу тек аудионы ойнатады, ал екі рет басу опцияны таңдайды.",
     "listenFirstNeedsChoiceAudio": "Алдымен тыңдауды пайдалану үшін Таңдаулар аудиосын қосыңыз.",
-    "unableToJoinCourseError": "Сізді қазір бұл курсқа қоса алмадық. Қайталап көріңіз немесе мұғаліміңізден сұраңыз."
+    "unableToJoinCourseError": "Сізді қазір бұл курсқа қоса алмадық. Қайталап көріңіз немесе мұғаліміңізден сұраңыз.",
+    "practiceTapABlank": "Толтыру үшін бос орынды түртіңіз",
+    "practiceListeningPrompt": "Қайсысы «{word}» деп айтады?",
+    "practiceMeaningPrompt": "«{word}» нені білдіреді?",
+    "practiceEmojiPrompt": "«{word}» үшін эмодзи таңдаңыз",
+    "practiceStepProgress": "{total} ішінен {done}"
 }

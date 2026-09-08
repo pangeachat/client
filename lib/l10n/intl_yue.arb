@@ -1263,7 +1263,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-09-08 09:45:07.147351",
+    "@@last_modified": "2026-09-08 12:32:28.644450",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10831,5 +10831,10 @@
     "listenFirst": "先聽",
     "listenFirstDescription": "開啟「先聽」後，單擊播放音訊，雙擊選擇選項。",
     "listenFirstNeedsChoiceAudio": "請開啟「選項音訊」以使用「先聽」功能。",
-    "unableToJoinCourseError": "我哋而家加唔到你入呢個課程。請再試一次，或者問你嘅老師。"
+    "unableToJoinCourseError": "我哋而家加唔到你入呢個課程。請再試一次，或者問你嘅老師。",
+    "practiceTapABlank": "點擊空格填寫",
+    "practiceListeningPrompt": "邊個讀音係「{word}」？",
+    "practiceMeaningPrompt": "「{word}」係咩意思？",
+    "practiceEmojiPrompt": "為「{word}」揀個表情符號",
+    "practiceStepProgress": "{done} / {total}"
 }

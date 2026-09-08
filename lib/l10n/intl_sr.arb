@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-08 09:45:03.053347",
+    "@@last_modified": "2026-09-08 12:32:25.823991",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10823,5 +10823,10 @@
     "listenFirst": "Prvo slušaj",
     "listenFirstDescription": "Kada je opcija „Prvo slušaj“ uključena, jedan klik samo pušta zvuk, a dvostruki klik bira opciju.",
     "listenFirstNeedsChoiceAudio": "Uključite zvuk opcija da biste koristili „Prvo slušaj“.",
-    "unableToJoinCourseError": "Trenutno nismo mogli da vas dodamo na ovaj kurs. Pokušajte ponovo ili pitajte svog nastavnika."
+    "unableToJoinCourseError": "Trenutno nismo mogli da vas dodamo na ovaj kurs. Pokušajte ponovo ili pitajte svog nastavnika.",
+    "practiceTapABlank": "Dodirnite prazno polje da ga popunite",
+    "practiceListeningPrompt": "Koja reč kaže „{word}“?",
+    "practiceMeaningPrompt": "Šta znači „{word}“?",
+    "practiceEmojiPrompt": "Izaberite emodži za „{word}“",
+    "practiceStepProgress": "{done} od {total}"
 }

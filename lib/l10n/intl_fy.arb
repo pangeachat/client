@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-09-08 09:44:55.596470",
+    "@@last_modified": "2026-09-08 12:32:18.780055",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2278,5 +2278,10 @@
     "listenFirst": "Earst harkje",
     "listenFirstDescription": "As Earst harkje oan stiet, spilet ien klik allinich audio ôf en dûbelklik selektearret de opsje.",
     "listenFirstNeedsChoiceAudio": "Skeakelje Karren-audio yn om Earst harkje te brûken.",
-    "unableToJoinCourseError": "Wy koene jo op dit stuit net tafoegje oan dizze kursus. Besykje it opnij, of freegje jo learaar."
+    "unableToJoinCourseError": "Wy koene jo op dit stuit net tafoegje oan dizze kursus. Besykje it opnij, of freegje jo learaar.",
+    "practiceTapABlank": "Tik op in leech fjild om it yn te foljen",
+    "practiceListeningPrompt": "Hokker seit ‘{word}’?",
+    "practiceMeaningPrompt": "Wat betsjut ‘{word}’?",
+    "practiceEmojiPrompt": "Kies in emoji foar ‘{word}’",
+    "practiceStepProgress": "{done} fan {total}"
 }

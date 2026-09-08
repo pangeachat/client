@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-09-08 09:44:52.995972",
+    "@@last_modified": "2026-09-08 12:32:18.288181",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10229,5 +10229,10 @@
     "listenFirst": "Écouter d'abord",
     "listenFirstDescription": "Lorsque Écouter d'abord est activé, un simple clic lance l'audio et un double-clic sélectionne l'option.",
     "listenFirstNeedsChoiceAudio": "Activez l'audio des choix pour utiliser Écouter d'abord.",
-    "unableToJoinCourseError": "Nous n'avons pas pu vous ajouter à ce cours pour le moment. Veuillez réessayer ou demander à votre professeur."
+    "unableToJoinCourseError": "Nous n'avons pas pu vous ajouter à ce cours pour le moment. Veuillez réessayer ou demander à votre professeur.",
+    "practiceTapABlank": "Touchez un champ vide pour le remplir",
+    "practiceListeningPrompt": "Lequel dit « {word} » ?",
+    "practiceMeaningPrompt": "Que signifie « {word} » ?",
+    "practiceEmojiPrompt": "Choisissez un émoji pour « {word} »",
+    "practiceStepProgress": "{done} sur {total}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-09-08 09:44:51.762528",
+    "@@last_modified": "2026-09-08 12:32:17.539146",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2278,5 +2278,10 @@
     "listenFirst": "Gwrando'n gyntaf",
     "listenFirstDescription": "Pan fydd Gwrando'n Gyntaf ymlaen, mae un clic yn chwarae sain yn unig ac mae clicio ddwywaith yn dewis yr opsiwn.",
     "listenFirstNeedsChoiceAudio": "Trowch sain Dewisiadau ymlaen i ddefnyddio Gwrando'n Gyntaf.",
-    "unableToJoinCourseError": "Ni allem eich ychwanegu at y cwrs hwn ar hyn o bryd. Ceisiwch eto, neu gofynnwch i'ch athro."
+    "unableToJoinCourseError": "Ni allem eich ychwanegu at y cwrs hwn ar hyn o bryd. Ceisiwch eto, neu gofynnwch i'ch athro.",
+    "practiceTapABlank": "Tapiwch fwlch i'w lenwi",
+    "practiceListeningPrompt": "Pa un sy'n dweud ‘{word}’?",
+    "practiceMeaningPrompt": "Beth mae ‘{word}’ yn ei olygu?",
+    "practiceEmojiPrompt": "Dewiswch emoji ar gyfer ‘{word}’",
+    "practiceStepProgress": "{done} o {total}"
 }

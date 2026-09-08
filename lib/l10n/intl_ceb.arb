@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-09-08 09:44:53.460825",
+    "@@last_modified": "2026-09-08 12:32:17.312828",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2278,5 +2278,10 @@
     "listenFirst": "Paminaw una",
     "listenFirstDescription": "Kon naka-on ang Listen First, usa ka click mopatokar lang sa audio ug ang double-click mopili sa opsyon.",
     "listenFirstNeedsChoiceAudio": "I-on ang Choices audio aron magamit ang Listen First.",
-    "unableToJoinCourseError": "Dili ka namo maapil sa kini nga kurso karon. Palihug sulayi pag-usab, o pangutana sa imong magtutudlo."
+    "unableToJoinCourseError": "Dili ka namo maapil sa kini nga kurso karon. Palihug sulayi pag-usab, o pangutana sa imong magtutudlo.",
+    "practiceTapABlank": "Pindota ang blangko aron pun-on",
+    "practiceListeningPrompt": "Asa niini ang nag-ingon og ‘{word}’?",
+    "practiceMeaningPrompt": "Unsay gipasabot sa ‘{word}’?",
+    "practiceEmojiPrompt": "Pagpili og emoji para sa ‘{word}’",
+    "practiceStepProgress": "{done} sa {total}"
 }

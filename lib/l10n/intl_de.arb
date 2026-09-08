@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-09-08 09:44:51.939293",
+    "@@last_modified": "2026-09-08 12:32:17.275170",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9861,5 +9861,10 @@
     "listenFirst": "Zuerst anhören",
     "listenFirstDescription": "Wenn „Zuerst anhören“ aktiviert ist, wird Audio mit einem Klick abgespielt und die Option mit einem Doppelklick ausgewählt.",
     "listenFirstNeedsChoiceAudio": "Schalte die Audioausgabe für Auswahlmöglichkeiten ein, um „Zuerst anhören“ zu verwenden.",
-    "unableToJoinCourseError": "Wir konnten dich diesem Kurs im Moment nicht hinzufügen. Bitte versuche es erneut oder frage deinen Lehrer."
+    "unableToJoinCourseError": "Wir konnten dich diesem Kurs im Moment nicht hinzufügen. Bitte versuche es erneut oder frage deinen Lehrer.",
+    "practiceTapABlank": "Tippe auf eine Lücke, um sie zu füllen",
+    "practiceListeningPrompt": "Welches sagt „{word}“?",
+    "practiceMeaningPrompt": "Was bedeutet „{word}“?",
+    "practiceEmojiPrompt": "Wähle ein Emoji für „{word}“",
+    "practiceStepProgress": "{done} von {total}"
 }

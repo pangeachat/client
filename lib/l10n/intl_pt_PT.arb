@@ -2559,7 +2559,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-09-08 09:45:04.994462",
+    "@@last_modified": "2026-09-08 12:32:24.367850",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10791,5 +10791,10 @@
     "listenFirst": "Ouvir primeiro",
     "listenFirstDescription": "Quando a opção Ouvir primeiro está ativada, um clique reproduz o áudio e um clique duplo seleciona a opção.",
     "listenFirstNeedsChoiceAudio": "Ative o áudio das escolhas para usar a opção Ouvir primeiro.",
-    "unableToJoinCourseError": "Não foi possível adicioná-lo a este curso neste momento. Por favor, tente novamente ou pergunte ao seu professor."
+    "unableToJoinCourseError": "Não foi possível adicioná-lo a este curso neste momento. Por favor, tente novamente ou pergunte ao seu professor.",
+    "practiceTapABlank": "Toca num espaço em branco para o preencheres",
+    "practiceListeningPrompt": "Qual deles diz ‘{word}’?",
+    "practiceMeaningPrompt": "O que significa ‘{word}’?",
+    "practiceEmojiPrompt": "Escolhe um emoji para ‘{word}’",
+    "practiceStepProgress": "{done} de {total}"
 }

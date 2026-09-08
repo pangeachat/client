@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-09-08 09:44:52.246272",
+    "@@last_modified": "2026-09-08 12:32:16.696785",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2278,5 +2278,10 @@
     "listenFirst": "প্ৰথমে শুনক",
     "listenFirstDescription": "যেতিয়া প্ৰথমে শুনক অন থাকে, এটা ক্লিকে কেৱল অডিঅ' প্লে কৰে আৰু ডাবল-ক্লিকে বিকল্পটো নিৰ্বাচন কৰে।",
     "listenFirstNeedsChoiceAudio": "প্ৰথমে শুনক ব্যৱহাৰ কৰিবলৈ বিকল্প অডিঅ' অন কৰক।",
-    "unableToJoinCourseError": "আমি আপোনাক এই পাঠ্যক্ৰমত এতিয়া যোগ কৰিব নোৱাৰিলোঁ। অনুগ্ৰহ কৰি পুনৰ চেষ্টা কৰক, অথবা আপোনাৰ শিক্ষকক সুধক।"
+    "unableToJoinCourseError": "আমি আপোনাক এই পাঠ্যক্ৰমত এতিয়া যোগ কৰিব নোৱাৰিলোঁ। অনুগ্ৰহ কৰি পুনৰ চেষ্টা কৰক, অথবা আপোনাৰ শিক্ষকক সুধক।",
+    "practiceTapABlank": "পূৰণ কৰিবলৈ এটা খালী ঠাইত টিপক",
+    "practiceListeningPrompt": "কোনটোৱে ‘{word}’ বুলি কয়?",
+    "practiceMeaningPrompt": "‘{word}’ মানে কি?",
+    "practiceEmojiPrompt": "‘{word}’ ৰ বাবে এটা ইমোজি বাছক",
+    "practiceStepProgress": "{total} ৰ ভিতৰত {done}"
 }

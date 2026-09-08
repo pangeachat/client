@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-09-08 09:44:57.270892",
+    "@@last_modified": "2026-09-08 12:32:21.901378",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2278,5 +2278,10 @@
     "listenFirst": "Алгач ук",
     "listenFirstDescription": "«Алгач ук» күйгүзүлгөндө, бир чыкылдатуу аудиону гана ойнотот, ал эми эки жолу чыкылдатуу опцияны тандайт.",
     "listenFirstNeedsChoiceAudio": "«Алгач ук» функциясын колдонуу үчүн тандоолор аудиосун күйгүзүңүз.",
-    "unableToJoinCourseError": "Учурда сизди бул курска кошо алган жокпуз. Кайра аракет кылыңыз же мугалимиңизден сураңыз."
+    "unableToJoinCourseError": "Учурда сизди бул курска кошо алган жокпуз. Кайра аракет кылыңыз же мугалимиңизден сураңыз.",
+    "practiceTapABlank": "Бош орунду толтуруу үчүн таптаңыз",
+    "practiceListeningPrompt": "Кайсынысы «{word}» дейт?",
+    "practiceMeaningPrompt": "«{word}» эмнени билдирет?",
+    "practiceEmojiPrompt": "«{word}» үчүн эмодзи тандаңыз",
+    "practiceStepProgress": "{total} ичинен {done}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-09-08 09:44:59.024297",
+    "@@last_modified": "2026-09-08 12:32:22.436883",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2278,5 +2278,10 @@
     "listenFirst": "Прво слушај",
     "listenFirstDescription": "Кога „Прво слушај“ е вклучено, еден клик само пушта аудио, а двоен клик ја избира опцијата.",
     "listenFirstNeedsChoiceAudio": "Вклучете го аудиото за избор за да користите „Прво слушај“.",
-    "unableToJoinCourseError": "Не можевме да ве додадеме на овој курс во моментов. Ве молиме обидете се повторно или прашајте го вашиот наставник."
+    "unableToJoinCourseError": "Не можевме да ве додадеме на овој курс во моментов. Ве молиме обидете се повторно или прашајте го вашиот наставник.",
+    "practiceTapABlank": "Допрете празно поле за да го пополните",
+    "practiceListeningPrompt": "Кое вели „{word}“?",
+    "practiceMeaningPrompt": "Што значи „{word}“?",
+    "practiceEmojiPrompt": "Изберете емоџи за „{word}“",
+    "practiceStepProgress": "{done} од {total}"
 }

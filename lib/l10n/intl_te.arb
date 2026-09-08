@@ -1324,7 +1324,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-09-08 09:45:05.570920",
+    "@@last_modified": "2026-09-08 12:32:26.961245",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10824,5 +10824,10 @@
     "listenFirst": "ముందు వినండి",
     "listenFirstDescription": "ముందు వినండి ఆన్‌లో ఉన్నప్పుడు, ఒక క్లిక్ ఆడియోను ప్లే చేస్తుంది మరియు డబుల్-క్లిక్ ఎంపికను ఎంచుకుంటుంది.",
     "listenFirstNeedsChoiceAudio": "ముందు వినండిని ఉపయోగించడానికి ఎంపికల ఆడియోను ఆన్ చేయండి.",
-    "unableToJoinCourseError": "మేము మిమ్మల్ని ప్రస్తుతం ఈ కోర్సులో చేర్చలేకపోయాము. దయచేసి మళ్ళీ ప్రయత్నించండి లేదా మీ టీచర్‌ని అడగండి."
+    "unableToJoinCourseError": "మేము మిమ్మల్ని ప్రస్తుతం ఈ కోర్సులో చేర్చలేకపోయాము. దయచేసి మళ్ళీ ప్రయత్నించండి లేదా మీ టీచర్‌ని అడగండి.",
+    "practiceTapABlank": "పూరించడానికి ఖాళీని నొక్కండి",
+    "practiceListeningPrompt": "‘{word}’ అని ఏది చెబుతుంది?",
+    "practiceMeaningPrompt": "‘{word}’ అంటే ఏమిటి?",
+    "practiceEmojiPrompt": "‘{word}’ కోసం ఒక ఎమోజీని ఎంచుకోండి",
+    "practiceStepProgress": "{total}లో {done}"
 }

@@ -14,6 +14,7 @@ import 'package:fluffychat/routes/chat/events/audio_playback_speed_controller.da
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_use_case.dart';
+import 'package:fluffychat/routes/chat/toolbar/message_practice/practice_choice_tap.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/practice_controller.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_choice.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -150,10 +151,27 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
     }
   }
 
-  void onTap() {
+  /// Highlights the choice and, for an audio choice, plays it. This is what a
+  /// drag start does, and what a first tap on an audio choice does; it never
+  /// answers.
+  void _previewChoice() {
     play();
-    if (isCorrect == null || !isCorrect! || widget.token == null) {
-      widget.controller.onChoiceSelect(widget.constructForm);
+    widget.controller.onChoiceSelect(widget.constructForm);
+  }
+
+  void onTap() {
+    final slotToken = widget.controller.selectedSlotToken;
+    switch (PracticeChoiceTapResolver.resolve(
+      hasSelectedSlot: slotToken != null,
+      isAudioChoice: widget.audioContent != null,
+      isSelectedChoice: isSelected,
+    )) {
+      case PracticeChoiceTap.ignore:
+        return;
+      case PracticeChoiceTap.preview:
+        _previewChoice();
+      case PracticeChoiceTap.answer:
+        widget.controller.onMatch(slotToken!, widget.constructForm);
     }
   }
 
@@ -190,7 +208,7 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
     return Draggable<PracticeExerciseChoice>(
       data: widget.constructForm,
       feedback: Material(type: MaterialType.transparency, child: content),
-      onDragStarted: onTap,
+      onDragStarted: _previewChoice,
       child: InkWell(
         onHover: (isHovered) => setState(() => _isHovered = isHovered),
         borderRadius: BorderRadius.circular(AppConfig.borderRadius),

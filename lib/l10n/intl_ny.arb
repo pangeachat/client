@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-09-08 09:45:00.752854",
+    "@@last_modified": "2026-09-08 12:32:24.143239",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2278,5 +2278,10 @@
     "listenFirst": "Yamba kumvetsera",
     "listenFirstDescription": "Mukayatsa Yamba Kumvetsera, kudina kamodzi kumangoyimba mawu ndipo kudina kawiri kumasankha njira.",
     "listenFirstNeedsChoiceAudio": "Yatsani mawu a Zosankha kuti mugwiritse ntchito Yamba Kumvetsera.",
-    "unableToJoinCourseError": "Sitakwanitse kukuphatikizani ku kosi iyi pakali pano. Chonde yesaninso, kapena funsani aphunzitsi anu."
+    "unableToJoinCourseError": "Sitakwanitse kukuphatikizani ku kosi iyi pakali pano. Chonde yesaninso, kapena funsani aphunzitsi anu.",
+    "practiceTapABlank": "Dinani malo opanda kanthu kuti mudzaze",
+    "practiceListeningPrompt": "Ndi chiti chomwe chimati ‘{word}’?",
+    "practiceMeaningPrompt": "Kodi ‘{word}’ amatanthauza chiyani?",
+    "practiceEmojiPrompt": "Sankhani emoji ya ‘{word}’",
+    "practiceStepProgress": "{done} mwa {total}"
 }

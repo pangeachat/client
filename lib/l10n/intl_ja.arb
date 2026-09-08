@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-09-08 09:44:56.140725",
+    "@@last_modified": "2026-09-08 12:32:20.873597",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10643,5 +10643,10 @@
     "listenFirst": "まず聞く",
     "listenFirstDescription": "「まず聞く」がオンの場合、1回クリックすると音声が再生され、ダブルクリックするとオプションが選択されます。",
     "listenFirstNeedsChoiceAudio": "「まず聞く」を使用するには、選択肢の音声をオンにしてください。",
-    "unableToJoinCourseError": "現在、このコースに参加できません。もう一度お試しいただくか、先生にお問い合わせください。"
+    "unableToJoinCourseError": "現在、このコースに参加できません。もう一度お試しいただくか、先生にお問い合わせください。",
+    "practiceTapABlank": "空欄をタップして埋めましょう",
+    "practiceListeningPrompt": "「{word}」と言っているのはどれ？",
+    "practiceMeaningPrompt": "「{word}」の意味は？",
+    "practiceEmojiPrompt": "「{word}」に合う絵文字を選んでください",
+    "practiceStepProgress": "{done}/{total}"
 }

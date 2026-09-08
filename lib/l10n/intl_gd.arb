@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-09-08 09:44:53.639815",
+    "@@last_modified": "2026-09-08 12:32:18.620118",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2278,5 +2278,10 @@
     "listenFirst": "Èist an toiseach",
     "listenFirstDescription": "Nuair a tha Èist an toiseach air, bidh aon bhriogadh a’ cluich claisneachd agus bidh briogadh dùbailte a’ taghadh an roghainn.",
     "listenFirstNeedsChoiceAudio": "Tionndaidh air claisneachd Roghainnean gus Èist an toiseach a chleachdadh.",
-    "unableToJoinCourseError": "Cha b' urrainn dhuinn do chur ris a' chùrsa seo an-dràsta. Feuch ris a-rithist, no faighnich don tidsear agad."
+    "unableToJoinCourseError": "Cha b' urrainn dhuinn do chur ris a' chùrsa seo an-dràsta. Feuch ris a-rithist, no faighnich don tidsear agad.",
+    "practiceTapABlank": "Tap beàrn gus a lìonadh",
+    "practiceListeningPrompt": "Cò am fear a chanas ‘{word}’?",
+    "practiceMeaningPrompt": "Dè tha ‘{word}’ a’ ciallachadh?",
+    "practiceEmojiPrompt": "Tagh emoji airson ‘{word}’",
+    "practiceStepProgress": "{done} de {total}"
 }

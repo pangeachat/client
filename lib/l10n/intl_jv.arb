@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-09-08 09:44:58.636972",
+    "@@last_modified": "2026-09-08 12:32:21.150436",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2278,5 +2278,10 @@
     "listenFirst": "Rungokake dhisik",
     "listenFirstDescription": "Nalika Rungokake Dhisik urip, siji klik mung muter audio lan klik kaping pindho milih opsi.",
     "listenFirstNeedsChoiceAudio": "Uripake audio Pilihan kanggo nggunakake Rungokake Dhisik.",
-    "unableToJoinCourseError": "Saiki ora bisa nambahake sampeyan ing kursus iki. Coba maneh, utawa takon marang guru sampeyan."
+    "unableToJoinCourseError": "Saiki ora bisa nambahake sampeyan ing kursus iki. Coba maneh, utawa takon marang guru sampeyan.",
+    "practiceTapABlank": "Tutul sing kosong kanggo ngisi",
+    "practiceListeningPrompt": "Sing endi sing ngucapake ‘{word}’?",
+    "practiceMeaningPrompt": "Apa tegese ‘{word}’?",
+    "practiceEmojiPrompt": "Pilih emoji kanggo ‘{word}’",
+    "practiceStepProgress": "{done} saka {total}"
 }

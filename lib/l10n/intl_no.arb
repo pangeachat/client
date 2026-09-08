@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-09-08 09:45:00.700997",
+    "@@last_modified": "2026-09-08 12:32:23.824996",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2278,5 +2278,10 @@
     "listenFirst": "Lytt først",
     "listenFirstDescription": "Når Lytt først er på, spiller ett klikk bare av lyd, og et dobbeltklikk velger alternativet.",
     "listenFirstNeedsChoiceAudio": "Slå på lyd for valg for å bruke Lytt først.",
-    "unableToJoinCourseError": "Vi kunne ikke legge deg til dette kurset akkurat nå. Prøv igjen, eller spør læreren din."
+    "unableToJoinCourseError": "Vi kunne ikke legge deg til dette kurset akkurat nå. Prøv igjen, eller spør læreren din.",
+    "practiceTapABlank": "Trykk på et tomt felt for å fylle det",
+    "practiceListeningPrompt": "Hvilken sier «{word}»?",
+    "practiceMeaningPrompt": "Hva betyr «{word}»?",
+    "practiceEmojiPrompt": "Velg en emoji for «{word}»",
+    "practiceStepProgress": "{done} av {total}"
 }

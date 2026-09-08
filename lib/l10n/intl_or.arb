@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-09-08 09:45:01.113962",
+    "@@last_modified": "2026-09-08 12:32:24.546469",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2278,5 +2278,10 @@
     "listenFirst": "ପ୍ରଥମେ ଶୁଣନ୍ତୁ",
     "listenFirstDescription": "ଯେତେବେଳେ ପ୍ରଥମେ ଶୁଣନ୍ତୁ ଅନ୍ ଥାଏ, ଗୋଟିଏ କ୍ଲିକ୍ କେବଳ ଅଡିଓ ପ୍ଲେ କରେ ଏବଂ ଡବଲ୍-କ୍ଲିକ୍ ବିକଳ୍ପକୁ ଚୟନ କରେ।",
     "listenFirstNeedsChoiceAudio": "ପ୍ରଥମେ ଶୁଣିବା ବ୍ୟବହାର କରିବାକୁ ବିକଳ୍ପ ଅଡିଓ ଅନ୍ କରନ୍ତୁ।",
-    "unableToJoinCourseError": "ଆମେ ବର୍ତ୍ତମାନ ଆପଣଙ୍କୁ ଏହି କୋର୍ସରେ ଯୋଗ କରିପାରିଲୁ ନାହିଁ। ଦୟାକରି ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ, କିମ୍ବା ଆପଣଙ୍କ ଶିକ୍ଷକଙ୍କୁ ପଚାରନ୍ତୁ।"
+    "unableToJoinCourseError": "ଆମେ ବର୍ତ୍ତମାନ ଆପଣଙ୍କୁ ଏହି କୋର୍ସରେ ଯୋଗ କରିପାରିଲୁ ନାହିଁ। ଦୟାକରି ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ, କିମ୍ବା ଆପଣଙ୍କ ଶିକ୍ଷକଙ୍କୁ ପଚାରନ୍ତୁ।",
+    "practiceTapABlank": "ପୂରଣ କରିବାକୁ ଖାଲି ସ୍ଥାନରେ ଟ୍ୟାପ୍ କରନ୍ତୁ",
+    "practiceListeningPrompt": "କେଉଁଟି ‘{word}’ କହୁଛି?",
+    "practiceMeaningPrompt": "‘{word}’ ର ଅର୍ଥ କଣ?",
+    "practiceEmojiPrompt": "‘{word}’ ପାଇଁ ଏକ ଇମୋଜି ବାଛନ୍ତୁ",
+    "practiceStepProgress": "{total} ରୁ {done}"
 }

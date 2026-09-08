@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-09-08 09:44:56.467014",
+    "@@last_modified": "2026-09-08 12:32:20.124069",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2278,5 +2278,10 @@
     "listenFirst": "Նախ լսել",
     "listenFirstDescription": "Երբ «Նախ լսել»-ը միացված է, մեկ սեղմումով միայն ձայնն է միանում, իսկ կրկնակի սեղմումով ընտրվում է տարբերակը։",
     "listenFirstNeedsChoiceAudio": "Միացրեք Ընտրությունների ձայնը՝ «Նախ լսել»-ն օգտագործելու համար։",
-    "unableToJoinCourseError": "Մենք չկարողացանք ձեզ ավելացնել այս դասընթացին հիմա։ Խնդրում ենք նորից փորձել կամ դիմել ձեր ուսուցչին։"
+    "unableToJoinCourseError": "Մենք չկարողացանք ձեզ ավելացնել այս դասընթացին հիմա։ Խնդրում ենք նորից փորձել կամ դիմել ձեր ուսուցչին։",
+    "practiceTapABlank": "Հպեք բաց թողնված բառին՝ այն լրացնելու համար",
+    "practiceListeningPrompt": "Ո՞րն է ասում «{word}»։",
+    "practiceMeaningPrompt": "Ի՞նչ է նշանակում «{word}» բառը։",
+    "practiceEmojiPrompt": "Ընտրեք էմոջի «{word}» բառի համար",
+    "practiceStepProgress": "{done}-ը՝ {total}-ից"
 }

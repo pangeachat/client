@@ -1802,7 +1802,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-09-08 09:45:01.717875",
+    "@@last_modified": "2026-09-08 12:32:26.170011",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10819,5 +10819,10 @@
     "listenFirst": "Najprej poslušaj",
     "listenFirstDescription": "Ko je vklopljeno »Najprej poslušaj«, en klik predvaja zvok, dvojni klik pa izbere možnost.",
     "listenFirstNeedsChoiceAudio": "Vklopi zvok izbir, da lahko uporabljaš »Najprej poslušaj«.",
-    "unableToJoinCourseError": "Trenutno vas ne moremo dodati k temu tečaju. Poskusite znova ali vprašajte svojega učitelja."
+    "unableToJoinCourseError": "Trenutno vas ne moremo dodati k temu tečaju. Poskusite znova ali vprašajte svojega učitelja.",
+    "practiceTapABlank": "Tapnite prazno polje, da ga izpolnite",
+    "practiceListeningPrompt": "Kateri pravi »{word}«?",
+    "practiceMeaningPrompt": "Kaj pomeni »{word}«?",
+    "practiceEmojiPrompt": "Izberite emoji za »{word}«",
+    "practiceStepProgress": "{done} od {total}"
 }

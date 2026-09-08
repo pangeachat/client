@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-09-08 09:44:57.007660",
+    "@@last_modified": "2026-09-08 12:32:21.624324",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2278,5 +2278,10 @@
     "listenFirst": "Fɔs lisin",
     "listenFirstDescription": "If yu tɔn Fɔs Lisin ɔn, wan klik jɔs de ple ɔdiwo ɛn tu klik de pik di ɔpshɔn.",
     "listenFirstNeedsChoiceAudio": "Tɔn Chɔys Ɔdiwo ɔn fɔ yuz Fɔs Lisin.",
-    "unableToJoinCourseError": "Wi nɔ ebul fɔ ad yu to dis kos naw. Duya tray bak, ɔ aks yu ticha."
+    "unableToJoinCourseError": "Wi nɔ ebul fɔ ad yu to dis kos naw. Duya tray bak, ɔ aks yu ticha.",
+    "practiceTapABlank": "Tap wan blank fɔ fil am",
+    "practiceListeningPrompt": "Us wan se ‘{word}’?",
+    "practiceMeaningPrompt": "Wetin ‘{word}’ min?",
+    "practiceEmojiPrompt": "Pik wan emoji fɔ ‘{word}’",
+    "practiceStepProgress": "{done} pan {total}"
 }

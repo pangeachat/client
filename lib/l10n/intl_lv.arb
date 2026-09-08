@@ -3535,7 +3535,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-09-08 09:44:59.330253",
+    "@@last_modified": "2026-09-08 12:32:22.373609",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -9874,5 +9874,10 @@
     "listenFirst": "Vispirms klausīties",
     "listenFirstDescription": "Kad funkcija “Vispirms klausīties” ir ieslēgta, ar vienu klikšķi tiek atskaņota tikai audio, bet ar dubultklikšķi tiek atlasīta opcija.",
     "listenFirstNeedsChoiceAudio": "Lai izmantotu funkciju “Vispirms klausīties”, ieslēdziet izvēles audio.",
-    "unableToJoinCourseError": "Pašlaik nevarējām jūs pievienot šim kursam. Lūdzu, mēģiniet vēlreiz vai jautājiet savam skolotājam."
+    "unableToJoinCourseError": "Pašlaik nevarējām jūs pievienot šim kursam. Lūdzu, mēģiniet vēlreiz vai jautājiet savam skolotājam.",
+    "practiceTapABlank": "Pieskarieties tukšajai vietai, lai to aizpildītu",
+    "practiceListeningPrompt": "Kurš saka „{word}”?",
+    "practiceMeaningPrompt": "Ko nozīmē „{word}”?",
+    "practiceEmojiPrompt": "Izvēlieties emocijzīmi vārdam „{word}”",
+    "practiceStepProgress": "{done} no {total}"
 }

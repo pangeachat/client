@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-09-08 09:45:06.644734",
+    "@@last_modified": "2026-09-08 12:32:27.388457",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2278,5 +2278,10 @@
     "listenFirst": "ئالدى بىلەن ئاڭلاڭ",
     "listenFirstDescription": "«ئالدى بىلەن ئاڭلاڭ»نى ئاچقاندا، بىر چېكىش ئاۋازنى قويىدۇ، قوش چېكىش تاللاشنى تاللايدۇ.",
     "listenFirstNeedsChoiceAudio": "«ئالدى بىلەن ئاڭلاڭ»نى ئىشلىتىش ئۈچۈن تاللاش ئاۋازىنى ئېچىڭ.",
-    "unableToJoinCourseError": "بىز سىزنى ھازىر بۇ دەرسكە قوشالمىدۇق. قايتا سىناپ بېقىڭ ياكى ئوقۇتقۇچىڭىزدىن سوراڭ."
+    "unableToJoinCourseError": "بىز سىزنى ھازىر بۇ دەرسكە قوشالمىدۇق. قايتا سىناپ بېقىڭ ياكى ئوقۇتقۇچىڭىزدىن سوراڭ.",
+    "practiceTapABlank": "بوش ئورۇننى بېسىپ تولدۇرۇڭ",
+    "practiceListeningPrompt": "قايسىسى «{word}» دەيدۇ؟",
+    "practiceMeaningPrompt": "«{word}» نىڭ مەنىسى نېمە؟",
+    "practiceEmojiPrompt": "«{word}» ئۈچۈن بىر ئىموجى تاللاڭ",
+    "practiceStepProgress": "{total} دىن {done}"
 }

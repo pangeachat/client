@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-09-08 09:45:02.307687",
+    "@@last_modified": "2026-09-08 12:32:25.434120",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2278,5 +2278,10 @@
     "listenFirst": "Teerera kutanga",
     "listenFirstDescription": "Kana Teerera Kutanga yakabatidzwa, kudzvanya kamwe kunongoridza odhiyo uye kudzvanya kaviri kunosarudza sarudzo.",
     "listenFirstNeedsChoiceAudio": "Batidza odhiyo yesarudzo kuti ushandise Teerera Kutanga.",
-    "unableToJoinCourseError": "Hatina kukwanisa kukubatanidza kune kosi iyi izvozvi. Ndapota edza zvakare, kana kubvunza mudzidzisi wako."
+    "unableToJoinCourseError": "Hatina kukwanisa kukubatanidza kune kosi iyi izvozvi. Ndapota edza zvakare, kana kubvunza mudzidzisi wako.",
+    "practiceTapABlank": "Tinya nzvimbo isina chinhu kuti uzadze",
+    "practiceListeningPrompt": "Ndeipi inoti ‘{word}’?",
+    "practiceMeaningPrompt": "‘{word}’ zvinorevei?",
+    "practiceEmojiPrompt": "Sarudza emoji ye ‘{word}’",
+    "practiceStepProgress": "{done} pa {total}"
 }

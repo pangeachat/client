@@ -2967,7 +2967,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-09-08 09:44:57.648647",
+    "@@last_modified": "2026-09-08 12:32:22.010386",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10655,5 +10655,10 @@
     "listenFirst": "Pirmiausia klausykite",
     "listenFirstDescription": "Kai įjungta „Pirmiausia klausykite“, vienu paspaudimu paleidžiamas garsas, o dukart spustelėjus pasirenkama parinktis.",
     "listenFirstNeedsChoiceAudio": "Norėdami naudoti „Pirmiausia klausykite“, įjunkite pasirinkimų garsą.",
-    "unableToJoinCourseError": "Šiuo metu negalėjome jūsų pridėti prie šio kurso. Bandykite dar kartą arba kreipkitės į mokytoją."
+    "unableToJoinCourseError": "Šiuo metu negalėjome jūsų pridėti prie šio kurso. Bandykite dar kartą arba kreipkitės į mokytoją.",
+    "practiceTapABlank": "Palieskite tuščią vietą, kad užpildytumėte",
+    "practiceListeningPrompt": "Kuris sako „{word}“?",
+    "practiceMeaningPrompt": "Ką reiškia „{word}“?",
+    "practiceEmojiPrompt": "Pasirinkite jaustuką žodžiui „{word}“",
+    "practiceStepProgress": "{done} iš {total}"
 }

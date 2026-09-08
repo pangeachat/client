@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-08 09:45:06.225374",
+    "@@last_modified": "2026-09-08 12:32:28.232910",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9980,5 +9980,10 @@
     "listenFirst": "先聽",
     "listenFirstDescription": "開啟「先聽」時，點一下播放音訊，點兩下選擇選項。",
     "listenFirstNeedsChoiceAudio": "請開啟「選項音訊」以使用「先聽」功能。",
-    "unableToJoinCourseError": "我們目前無法將您加入此課程。請再試一次，或詢問您的老師。"
+    "unableToJoinCourseError": "我們目前無法將您加入此課程。請再試一次，或詢問您的老師。",
+    "practiceTapABlank": "點擊空格填寫",
+    "practiceListeningPrompt": "哪一個是「{word}」？",
+    "practiceMeaningPrompt": "「{word}」是什麼意思？",
+    "practiceEmojiPrompt": "為「{word}」選擇一個表情符號",
+    "practiceStepProgress": "{done}/{total}"
 }

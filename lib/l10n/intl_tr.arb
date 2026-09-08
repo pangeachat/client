@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-09-08 09:45:04.073361",
+    "@@last_modified": "2026-09-08 12:32:26.860412",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10175,5 +10175,10 @@
     "listenFirst": "Önce Dinle",
     "listenFirstDescription": "Önce Dinle açıkken, tek tıklama sadece sesi çalar ve çift tıklama seçeneği seçer.",
     "listenFirstNeedsChoiceAudio": "Önce Dinle'yi kullanmak için Seçenekler sesini açın.",
-    "unableToJoinCourseError": "Şu anda sizi bu kursa ekleyemedik. Lütfen tekrar deneyin veya öğretmeninize danışın."
+    "unableToJoinCourseError": "Şu anda sizi bu kursa ekleyemedik. Lütfen tekrar deneyin veya öğretmeninize danışın.",
+    "practiceTapABlank": "Doldurmak için boşluğa dokunun",
+    "practiceListeningPrompt": "Hangisi ‘{word}’ diyor?",
+    "practiceMeaningPrompt": "‘{word}’ ne anlama geliyor?",
+    "practiceEmojiPrompt": "‘{word}’ için bir emoji seçin",
+    "practiceStepProgress": "{total} üzerinden {done}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-09-08 09:44:54.739383",
+    "@@last_modified": "2026-09-08 12:32:20.001377",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10310,5 +10310,10 @@
     "listenFirst": "Prvo poslušaj",
     "listenFirstDescription": "Kada je opcija „Prvo poslušaj” uključena, jedan klik samo reproducira zvuk, a dvostruki klik odabire opciju.",
     "listenFirstNeedsChoiceAudio": "Uključite zvuk opcija da biste koristili „Prvo poslušaj”.",
-    "unableToJoinCourseError": "Trenutno vas nismo mogli dodati na ovaj tečaj. Pokušajte ponovno ili pitajte svog učitelja."
+    "unableToJoinCourseError": "Trenutno vas nismo mogli dodati na ovaj tečaj. Pokušajte ponovno ili pitajte svog učitelja.",
+    "practiceTapABlank": "Dodirnite prazninu da biste je ispunili",
+    "practiceListeningPrompt": "Koja kaže „{word}“?",
+    "practiceMeaningPrompt": "Što znači „{word}“?",
+    "practiceEmojiPrompt": "Odaberite emoji za „{word}“",
+    "practiceStepProgress": "{done} od {total}"
 }

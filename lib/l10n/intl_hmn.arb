@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-09-08 09:44:56.025980",
+    "@@last_modified": "2026-09-08 12:32:19.844738",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2278,5 +2278,10 @@
     "listenFirst": "Mloog ua ntej",
     "listenFirstDescription": "Thaum Mloog Ua Ntej qhib, ib zaug nias tsuas yog ua suab xwb thiab ob zaug nias xaiv qhov kev xaiv.",
     "listenFirstNeedsChoiceAudio": "Qhib Kev Xaiv suab kom siv Mloog Ua Ntej.",
-    "unableToJoinCourseError": "Tam sim no peb ntxiv tsis tau koj rau hauv zaj kawm no. Thov sim dua, los yog nug koj tus xib fwb."
+    "unableToJoinCourseError": "Tam sim no peb ntxiv tsis tau koj rau hauv zaj kawm no. Thov sim dua, los yog nug koj tus xib fwb.",
+    "practiceTapABlank": "Coj tus khoob kom sau",
+    "practiceListeningPrompt": "Tus twg hais tias ‘{word}’?",
+    "practiceMeaningPrompt": "‘{word}’ txhais li cas?",
+    "practiceEmojiPrompt": "Xaiv ib lub emoji rau ‘{word}’",
+    "practiceStepProgress": "{done} ntawm {total}"
 }

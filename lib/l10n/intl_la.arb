@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-09-08 09:44:58.381909",
+    "@@last_modified": "2026-09-08 12:32:21.703225",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2278,5 +2278,10 @@
     "listenFirst": "Primum audi",
     "listenFirstDescription": "Cum Primum Audi inest, unus click tantum sonum ludit et duplex click optionem eligit.",
     "listenFirstNeedsChoiceAudio": "Verte sonum optionum ut Primum Audi utaris.",
-    "unableToJoinCourseError": "Te huic cursu nunc addere non potuimus. Quaeso iterum conare, aut magistrum tuum interroga."
+    "unableToJoinCourseError": "Te huic cursu nunc addere non potuimus. Quaeso iterum conare, aut magistrum tuum interroga.",
+    "practiceTapABlank": "Tange spatium vacuum ut impleas",
+    "practiceListeningPrompt": "Quod dicit ‘{word}’?",
+    "practiceMeaningPrompt": "Quid significat ‘{word}’?",
+    "practiceEmojiPrompt": "Elige emoji pro ‘{word}’",
+    "practiceStepProgress": "{done} de {total}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-09-08 09:44:51.842146",
+    "@@last_modified": "2026-09-08 12:32:16.166735",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2278,5 +2278,10 @@
     "listenFirst": "Luister eers",
     "listenFirstDescription": "Wanneer Luister Eers aan is, speel een klik net oudio en dubbelklik kies die opsie.",
     "listenFirstNeedsChoiceAudio": "Skakel Keuses-oudio aan om Luister Eers te gebruik.",
-    "unableToJoinCourseError": "Ons kon jou nie nou by hierdie kursus voeg nie. Probeer asseblief weer, of vra jou onderwyser."
+    "unableToJoinCourseError": "Ons kon jou nie nou by hierdie kursus voeg nie. Probeer asseblief weer, of vra jou onderwyser.",
+    "practiceTapABlank": "Tik 'n spasie om dit in te vul",
+    "practiceListeningPrompt": "Watter een sê ‘{word}’?",
+    "practiceMeaningPrompt": "Wat beteken ‘{word}’?",
+    "practiceEmojiPrompt": "Kies 'n emoji vir ‘{word}’",
+    "practiceStepProgress": "{done} van {total}"
 }
