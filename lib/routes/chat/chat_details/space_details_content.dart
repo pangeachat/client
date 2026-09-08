@@ -11,6 +11,7 @@ import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
+import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_header_actions.dart';
@@ -22,6 +23,7 @@ import 'package:fluffychat/routes/chat/chat_details/space_details.dart';
 import 'package:fluffychat/routes/chat_list/course_chats_page.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_objectives_view.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_progress_bar.dart';
+import 'package:fluffychat/routes/world/left_panel/course_card_reveal.dart';
 import 'package:fluffychat/routes/world/panel_header.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -73,16 +75,50 @@ class SpaceDetailsContent extends StatelessWidget {
     horizontal: 16.0,
   );
 
+  /// The gap between the card's header and its body. The wide context bar
+  /// restates it above its progress bar, so the card's reveal starts
+  /// pixel-for-pixel where the bar ends ([CourseContextBar.height], #8866).
+  static const double bodyTopInset = 16.0;
+
   /// Below this incoming BODY height (the card minus its header) the course
   /// card renders only the progress bar — the collapsed mobile peek (the nav
-  /// cavity clips there). The wide/web panel and the expanded sheet are always
-  /// well above it. The old whole-card threshold was 168 with the ~56px header
-  /// row inside the body; the header now sits above the body, so the same
-  /// cavity heights trigger at 112. See [build].
+  /// cavity clips there). The expanded sheet is always well above it, and the
+  /// wide card only dips under it mid-reveal, where the cross-fade below
+  /// decides instead. The old whole-card threshold was 168 with the ~56px
+  /// header row inside the body; the header now sits above the body, so the
+  /// same cavity heights trigger at 112. See [build].
   static const double _kCompactCardMaxHeight = 112.0;
 
   @override
   Widget build(BuildContext context) {
+    final section = controller.expandedSection;
+    final Widget page = section != null
+        ? _CourseSectionSubpage(controller, room, section)
+        : _CourseCardBody(controller, room);
+    final peek = CoursePeekProgressBar(
+      objectivesProvider: controller.objectivesProvider,
+    );
+
+    // Inside the wide card's reveal (#8866) the page and the peek cross-fade
+    // with the card's height instead of swapping at a height threshold: the
+    // swap popped the progress bar between its two positions in the last
+    // frames of a collapse. At the bar's height only the peek shows — the
+    // bar's own body — and at the slot only the page; the peek is never
+    // interactive.
+    final reveal = CourseCardReveal.progressOf(context);
+    if (reveal != null) {
+      return Stack(
+        fit: StackFit.expand,
+        children: [
+          FadeTransition(opacity: reveal, child: page),
+          FadeTransition(
+            opacity: ReverseAnimation(reveal),
+            child: IgnorePointer(child: peek),
+          ),
+        ],
+      );
+    }
+
     return LayoutBuilder(
       builder: (context, constraints) {
         // The collapsed mobile peek gives the card just enough height for the
@@ -93,27 +129,7 @@ class SpaceDetailsContent extends StatelessWidget {
         final compact =
             constraints.maxHeight.isFinite &&
             constraints.maxHeight < _kCompactCardMaxHeight;
-        if (compact) {
-          // The nav cavity hands the peek TIGHT height constraints, which
-          // would inflate the bar's fixed-height box to fill the slot; Align
-          // restores loose constraints so the peek bar renders at the same
-          // height as on the full page.
-          return Padding(
-            padding: sectionPadding,
-            child: Align(
-              alignment: Alignment.topCenter,
-              child: CourseProgressBar(
-                objectivesProvider: controller.objectivesProvider,
-              ),
-            ),
-          );
-        }
-
-        final section = controller.expandedSection;
-        if (section != null) {
-          return _CourseSectionSubpage(controller, room, section);
-        }
-        return _CourseCardBody(controller, room);
+        return compact ? peek : page;
       },
     );
   }
@@ -157,17 +173,56 @@ class SpaceDetailsHeader extends StatelessWidget {
         ),
       );
     }
+    // On wide the card's one control — the chevron — rides the trailing
+    // edge after the actions, in the open card and the context bar alike,
+    // so the control stays put while the card grows and shrinks (#8866).
+    // Narrow keeps it leading, where every other cavity surface's control
+    // sits (routing.instructions.md → Closing a panel).
+    final trailingClose = FluffyThemes.isColumnMode(context);
     return PanelHeader(
-      leading: leading,
+      leading: trailingClose ? null : leading,
       title: room.getLocalizedDisplayname(MatrixLocals(L10n.of(context))),
-      // Shared with the map's course context bar, which is this header with
-      // the panel closed (#8736).
-      trailing: CourseHeaderActions(
-        room: room,
-        objectivesProvider: controller.objectivesProvider,
+      trailing: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          // Shared with the map's course context bar, which is this header
+          // with the panel closed (#8736).
+          CourseHeaderActions(
+            room: room,
+            objectivesProvider: controller.objectivesProvider,
+          ),
+          if (trailingClose) leading,
+        ],
       ),
     );
   }
+}
+
+/// The progress bar as the course's two collapsed states show it — the wide
+/// context bar and the narrow cavity peek — top-aligned under the header in
+/// whatever height the host gives it. On wide it insets to the header's
+/// content edge, so the track ends where the header's buttons end instead of
+/// running past them (#8866); on narrow it keeps the sections' edge, because
+/// the peek slides up into the page and the bar must not shift.
+class CoursePeekProgressBar extends StatelessWidget {
+  final QuestObjectivesLoader objectivesProvider;
+
+  const CoursePeekProgressBar({required this.objectivesProvider, super.key});
+
+  @override
+  Widget build(BuildContext context) => Padding(
+    padding: FluffyThemes.isColumnMode(context)
+        ? const EdgeInsets.symmetric(horizontal: PanelHeader.contentInset)
+        : SpaceDetailsContent.sectionPadding,
+    // The nav cavity hands the peek TIGHT height constraints, which would
+    // inflate the bar's fixed-height box to fill the slot; Align restores
+    // loose constraints so the peek bar renders at the same height as on the
+    // full page.
+    child: Align(
+      alignment: Alignment.topCenter,
+      child: CourseProgressBar(objectivesProvider: objectivesProvider),
+    ),
+  );
 }
 
 /// The full course card: the single scrollable sections page.
