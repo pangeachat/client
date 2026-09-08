@@ -89,6 +89,15 @@ GlobalKey _roomKeyFor(String roomId) => _leftRoomKeys.putIfAbsent(
 /// [_ShellLayout.resolve]. See `routing.instructions.md`.
 final List<String> _paneRecency = <String>[];
 
+/// Whether the previous shell build showed the wide course context bar — a
+/// `?c=` course with no course card drawn. A course card appearing right
+/// after it grows out of the bar ([CourseCardReveal], #8866); one appearing
+/// from anywhere else (a cold load, the Courses hub) has no bar to grow from,
+/// and a remount that merely swaps the card's section must not replay the
+/// grow. Ephemeral view state like [_paneRecency], synced once per build by
+/// [_ShellLayout.resolve].
+bool _courseBarWasShowing = false;
+
 /// The stable recency identity of an open panel — its *family instance*, not its
 /// current page. Navigating WITHIN a panel changes the token string but must NOT
 /// change which panel is the recency focus (a within-panel move is a push on the
@@ -485,6 +494,7 @@ class WorkspaceShell extends StatelessWidget {
                                           !l.isColumnMode &&
                                           l.allocation.left[i].vis ==
                                               PanelVis.full,
+                                      revealFromBar: l.revealCoursePanel,
                                     ),
                                   ),
                                 ),
@@ -1195,6 +1205,10 @@ class _ShellLayout {
   /// bar docks above it rather than in the map slot (#8816).
   final bool activityPanelVisible;
 
+  /// The course card is appearing where the context bar was on the previous
+  /// build, so it grows out of the bar ([CourseCardReveal], #8866).
+  final bool revealCoursePanel;
+
   /// The map actually visible between the open side panels (viewport − left
   /// overlay − right overlay) — drives the pin-density budget
   /// ([budgetForWidth] in world_map_pin_budget.dart).
@@ -1221,6 +1235,7 @@ class _ShellLayout {
     required this.mapBottomOverlay,
     required this.coursePanelVisible,
     required this.activityPanelVisible,
+    required this.revealCoursePanel,
     required this.availableVisibleMapWidth,
     required this.mapContext,
     required this.focusedLeftToken,
@@ -1320,6 +1335,13 @@ class _ShellLayout {
     final activityPanelVisible = visibleLeftTypes.contains(
       PanelTypesEnum.activity,
     );
+
+    // The bar shows on wide under a course whose card is not drawn — in the
+    // map slot or docked above an activity plan. A card drawn on the very
+    // next build is replacing it, and grows out of it (#8866).
+    final revealCoursePanel = coursePanelVisible && _courseBarWasShowing;
+    _courseBarWasShowing =
+        isColumnMode && activeSpaceId != null && !coursePanelVisible;
 
     // The narrow focus: the one panel the allocator seats full-screen, if any.
     // [focusedIsRight] distinguishes a right panel (renders under the expanded
@@ -1453,6 +1475,7 @@ class _ShellLayout {
       mapBottomOverlay: mapBottomOverlay,
       coursePanelVisible: coursePanelVisible,
       activityPanelVisible: activityPanelVisible,
+      revealCoursePanel: revealCoursePanel,
       availableVisibleMapWidth: availableVisibleMapWidth,
       mapContext: mapContext,
       focusedLeftToken: focusedLeftToken,

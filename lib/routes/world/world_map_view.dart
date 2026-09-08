@@ -19,6 +19,7 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
@@ -1277,8 +1278,16 @@ class _WorldMapViewState extends State<WorldMapView>
     // put the minimized bar 4px right of the panel it replaces (#8816).
     final searchLeft =
         widget.controller.widget.leftOverlayWidth + PanelCard.margin.left;
+    // The slot's ideal width: the search overlay's own, or — under a course —
+    // the course panel's, so the closed card is the open card's exact size
+    // and only the chevron's rotation changes between them (#8866). The
+    // panel draws its card inside PanelCard's margin; the bar has none, so it
+    // takes the panel's ideal less both margins.
+    final slotIdeal = courseScopeSpaceId == null
+        ? 360.0
+        : PanelTypesEnum.course.def.idealWidth - PanelCard.margin.horizontal;
     final searchWidth = math.min(
-      360.0,
+      slotIdeal,
       MediaQuery.sizeOf(context).width -
           searchLeft -
           math.max(

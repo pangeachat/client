@@ -16,6 +16,8 @@ import 'package:fluffychat/routes/world/panel_card.dart';
 /// runs [CourseContextBar]'s ordinary open, and `WorkspaceNav.openCourseTab`
 /// already drops an open `activity` token (#7385), so the destination falls
 /// out of the existing grammar rather than needing a navigation of its own.
+/// Docked, the bar drops its share / focus-on-map actions — the plan's header
+/// beneath carries the same pair (#8866) — and keeps its chevron, the way back.
 ///
 /// A **pass-through for every other case**: another panel type, a narrow
 /// screen (an activity plan is full-screen there and keeps its vertical
@@ -60,7 +62,9 @@ class ActivityCourseDock extends StatelessWidget {
             right: PanelCard.margin.right,
             top: PanelCard.margin.top,
           ),
-          child: CourseContextBar(spaceId: courseSpaceId),
+          // No share / focus here: the plan's own header carries the same
+          // pair, and one per column is enough (#8866).
+          child: CourseContextBar(spaceId: courseSpaceId, showActions: false),
         ),
         Expanded(child: child),
       ],
