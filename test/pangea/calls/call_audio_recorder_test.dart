@@ -89,6 +89,37 @@ class _GatedReadStore implements CallAudioUploadStateStore {
 Int16List _tone(int samplesPerFrame, {int value = 1000}) =>
     Int16List.fromList(List.filled(samplesPerFrame, value));
 
+/// [samplesPerFrame] mono 16-bit samples whose value ENCODES their position:
+/// sample j holds `start + j`. Fed with `start` set to a frame's absolute
+/// offset, this builds one globally-monotone ramp across the whole file, so a
+/// removed or shifted INTERIOR sample shows up as a discontinuity that a
+/// uniform tone would hide -- the difference between proving a trim was
+/// tail-only and merely proving the right COUNT was removed. All values stay
+/// well inside the signed-16-bit range for the sizes these tests use.
+Int16List _ramp(int samplesPerFrame, {required int start}) =>
+    Int16List.fromList(List.generate(samplesPerFrame, (j) => start + j));
+
+/// A hand-driven monotonic clock, mirroring the two-clock fake in
+/// `call_capture_test.dart` but with only the monotonic hand the recorder's
+/// write cursor reads. [pass] moves time forward the way real elapsed time
+/// does; [elapsed] can be assigned directly to model a backward step (the one
+/// case the drop guard exists for). Every recorder timing test drives THIS,
+/// never real wall time, so results are deterministic.
+class _Clock {
+  int elapsed = 0;
+  int monotonic() => elapsed;
+  void pass(int by) => elapsed += by;
+}
+
+/// Reads the PCM16 sample at frame index [i] out of an uploaded WAV, skipping
+/// the 44-byte canonical header (see `wav_writer.dart`). Mono only -- the
+/// recorder tests all record one channel.
+int _wavSampleAt(Uint8List wav, int i) =>
+    ByteData.sublistView(wav, 44).getInt16(i * 2, Endian.little);
+
+/// The number of PCM16 mono sample frames in an uploaded WAV.
+int _wavSampleCount(Uint8List wav) => (wav.length - 44) ~/ 2;
+
 void main() {
   late List<({Uint8List bytes, String filename, String contentType})> uploads;
   late Uri Function(Uint8List) uploadResult;
@@ -107,15 +138,30 @@ void main() {
     Duration retryDelay = Duration.zero,
     CallAudioUploadStateStore? uploadStateStore,
     int maxPendingFrames = 64,
+    // The SOLE clock chokepoint. Defaulting to a NON-ADVANCING fake is what
+    // keeps every existing frame-driven test (the size cap, the fan-out bound,
+    // the drain race, the unhurried-capture duration) green with no per-test
+    // edit and no loosened assertion: with elapsed pinned at 0 the cursor never
+    // backfills silence and the finalize reconcile is a no-op, so duration is
+    // exactly the frame-summed value it always was. Only the new timing tests
+    // inject an advancing clock.
+    int Function()? elapsedMs,
+    // Disables the real wall-clock self-tick timer (tests drive `checkpoint()`
+    // explicitly) AND, being zero, the bounded micro-trim -- so the finalize
+    // reconcile only ever pads under a flat clock, never trims. A timing test
+    // that needs the trim bound passes a real interval.
+    Duration reanchorInterval = Duration.zero,
   }) => CallAudioRecorder(
     senderId: _sender,
     deviceId: _device,
     clockAnchor: clockAnchor,
+    elapsedMs: elapsedMs ?? () => 0,
     maxBytes: maxBytes,
     maxDuration: maxDuration,
     retryDelay: retryDelay,
     uploadStateStore: uploadStateStore,
     maxPendingFrames: maxPendingFrames,
+    reanchorInterval: reanchorInterval,
     upload: (bytes, {required filename, required contentType}) async {
       uploads.add((bytes: bytes, filename: filename, contentType: contentType));
       if (uploadFailuresLeft > 0) {
@@ -1306,5 +1352,187 @@ void main() {
         expect(sent, isEmpty);
       },
     );
+  });
+
+  group('continuous full-duration recording (the clock-driven cursor)', () {
+    test('a muted stretch that delivers NO frames is still recorded as '
+        'full-length silence, not truncated', () async {
+      // THE BUG. On Android, muting disables the mic track so the native
+      // post-AEC tap stops delivering frames entirely. A frame-driven recorder
+      // simply stops advancing, so the blob is truncated at the mute (the real
+      // call: 15s on the phone against 37.5s on the laptop). The clock-driven
+      // cursor materialises the muted interval as silence of the right length
+      // whether or not any frame arrives during it.
+      final clock = _Clock();
+      final r = recorder(elapsedMs: clock.monotonic);
+      r.onRunStarted(1000, 16000, 1); // sample zero at elapsed 0
+      r.onFrame(_tone(160)); // 10ms of real audio
+      clock.pass(5000); // 5s muted -- NO frames arrive (the Android case)
+      r.onFrame(_tone(160)); // one frame after unmute, at elapsed 5000
+      clock.pass(20); // the call ends 20ms after that last frame arrived
+      await r.finish(wasCarrier: true, callKey: _callKey);
+
+      final content = CallAudioContent.fromJson(sent.single)!;
+      // Full length -- the 5s gap is present -- NOT the ~20ms two frames sum to.
+      expect(content.durationMs, 5020);
+
+      // Mutation-proof: decode the WAV and prove the muted interval is real
+      // digital silence of the right length, not merely that the duration
+      // number is large.
+      final wav = uploads.single.bytes;
+      expect(_wavSampleCount(wav), 5020 * 16); // 80320 mono frames @ 16kHz
+      expect(_wavSampleAt(wav, 0), 1000, reason: 'the first real frame');
+      for (var i = 160; i < 80000; i++) {
+        // [10ms, 5000ms): the muted gap, every sample silent.
+        if (_wavSampleAt(wav, i) != 0) {
+          fail('sample $i in the muted range was not silent');
+        }
+      }
+      expect(
+        _wavSampleAt(wav, 80000),
+        1000,
+        reason: 'the real frame delivered after unmute is preserved',
+      );
+    });
+
+    test('a run whose last frame is followed by silent time is padded to the '
+        'end anchor at finalize', () async {
+      // The pure-tail case, isolating the finalize reconcile from the
+      // per-frame backfill: one frame, then 5s of elapsed time with nothing
+      // more delivered and no unmute frame to trigger a catch-up. Finalize
+      // alone must pad the file out to the elapsed end.
+      final clock = _Clock();
+      final r = recorder(elapsedMs: clock.monotonic);
+      r.onRunStarted(1000, 16000, 1);
+      r.onFrame(_tone(160)); // 10ms of real audio at elapsed 0
+      clock.pass(5000); // 5s elapses; the run is never fed another frame
+      await r.finish(wasCarrier: true, callKey: _callKey);
+
+      final content = CallAudioContent.fromJson(sent.single)!;
+      expect(content.durationMs, 5000);
+      final wav = uploads.single.bytes;
+      expect(_wavSampleAt(wav, 0), 1000, reason: 'the one real frame survives');
+      for (var i = 160; i < 5000 * 16; i++) {
+        if (_wavSampleAt(wav, i) != 0) {
+          fail('the finalize pad at sample $i was not silent');
+        }
+      }
+    });
+
+    test('a file running AHEAD of elapsed is micro-trimmed by at most one '
+        "interval's drift, never into interior audio", () async {
+      // The "ahead" reconciliation: a fast capture clock leaves the tail real
+      // samples with no silence to drop, so the checkpoint micro-trims -- but
+      // by AT MOST one interval's drift, an imperceptible slice. Here the file
+      // is driven far ahead (500ms of real audio while the clock stays at 0) to
+      // prove the bound holds even when the overrun dwarfs it, and that only
+      // the TAIL is touched.
+      const rate = 16000;
+      const interval = Duration(seconds: 60);
+      final bound = CallAudioRecorder.maxReanchorTrimFrames(interval, rate);
+      expect(bound, 192, reason: 'sanity: ~12ms at 200ppm over 60s @ 16kHz');
+
+      final clock = _Clock();
+      final r = recorder(
+        elapsedMs: clock.monotonic,
+        reanchorInterval: interval,
+      );
+      r.onRunStarted(0, rate, 1);
+      // 500ms of real audio appended while elapsed stays 0 -> the file is 500ms
+      // ahead of the monotonic clock. A RAMP (sample i holds i + 1) rather than
+      // a flat tone, so the surviving span is checkable value-by-value: only a
+      // strictly tail trim leaves samples [0, survived) reading 1..survived;
+      // any interior removal shifts every later value and shows up here.
+      for (var i = 0; i < 5; i++) {
+        r.onFrame(_ramp(1600, start: i * 1600 + 1)); // 100ms each; 1..8000
+        await pumpEventQueue();
+      }
+      const wrote = 5 * 1600; // 8000 frames == 500ms
+      r.checkpoint(); // reconcile at elapsed 0: overrun 8000, trim only `bound`
+      final survived = wrote - bound; // 7808 frames of real audio kept
+
+      // Advance well past the file so the finalize reconcile PADS (never trims
+      // again), leaving the single checkpoint's bounded trim the only edit.
+      clock.pass(2000);
+      await r.finish(wasCarrier: true, callKey: _callKey);
+
+      final wav = uploads.single.bytes;
+      final content = CallAudioContent.fromJson(sent.single)!;
+      expect(content.durationMs, 2000, reason: 'padded to the elapsed end');
+      expect(_wavSampleCount(wav), 2000 * rate ~/ 1000); // 32000 frames
+
+      // Bounded AND tail-only, proven value-by-value across the WHOLE file:
+      // every surviving sample still reads its original ramp value (so nothing
+      // interior was removed or shifted), and everything past `survived` is the
+      // finalize pad. An unbounded trim would leave the ramp region short (early
+      // samples read 0); a trim into the interior would break the ramp at the
+      // removal point; no trim at all would leave ramp values past `survived`.
+      for (var i = 0; i < _wavSampleCount(wav); i++) {
+        final expected = i < survived ? i + 1 : 0;
+        if (_wavSampleAt(wav, i) != expected) {
+          fail(
+            'sample $i was ${_wavSampleAt(wav, i)}, expected $expected -- a '
+            'bounded tail trim of exactly $bound frames leaves the interior '
+            'ramp intact and pads the rest',
+          );
+        }
+      }
+    });
+
+    test('a frame whose clock reading falls far behind the cursor is dropped, '
+        'never written backwards', () async {
+      // The monotonic-position guard: frames arrive in order with bounded
+      // latency, but a backward clock step (or a reordered straggler) would
+      // otherwise land a frame behind time already committed. Such a frame is
+      // dropped rather than appended past the tail. Under the ordinary
+      // non-advancing test clock this never fires (every frame shares one
+      // position); it takes a deliberate backward step to exercise it.
+      final clock = _Clock();
+      final r = recorder(elapsedMs: clock.monotonic);
+      r.onRunStarted(0, 16000, 1);
+      clock.pass(5000); // elapsed 5000
+      // The surviving frame: value 1000, lands at [80000, 80160); high-water 80000.
+      r.onFrame(_tone(160, value: 1000));
+      await pumpEventQueue();
+      clock.elapsed = 4000; // a backward clock step of 1s (> the tolerance)
+      // The straggler carries a DISTINCT value so its presence anywhere in the
+      // file -- appended at the tail OR written backwards into the interior --
+      // is detectable; its position (64000) is 1s behind the high-water, so it
+      // must be dropped.
+      r.onFrame(_tone(160, value: 7777));
+      await pumpEventQueue();
+      clock.elapsed = 5010; // end just past the surviving frame
+      await r.finish(wasCarrier: true, callKey: _callKey);
+
+      final content = CallAudioContent.fromJson(sent.single)!;
+      expect(
+        content.durationMs,
+        5010,
+        reason: 'the straggler is dropped, not appended past the tail',
+      );
+
+      final wav = uploads.single.bytes;
+      // Not extended by the straggler (that would be 80320 frames / 5020ms)...
+      expect(_wavSampleCount(wav), 5010 * 16);
+      // ...and the straggler's distinct value appears NOWHERE -- proving it was
+      // neither appended at the tail nor written backwards over the interior.
+      for (var i = 0; i < _wavSampleCount(wav); i++) {
+        if (_wavSampleAt(wav, i) == 7777) {
+          fail('the dropped straggler was written at sample $i');
+        }
+      }
+      // The surviving frame sits untouched at its backfilled position, with the
+      // pre-frame span materialised as silence.
+      for (var i = 0; i < 80000; i++) {
+        if (_wavSampleAt(wav, i) != 0) {
+          fail('the backfill before the surviving frame was not silent at $i');
+        }
+      }
+      for (var i = 80000; i < 80160; i++) {
+        if (_wavSampleAt(wav, i) != 1000) {
+          fail('the surviving frame was disturbed at sample $i');
+        }
+      }
+    });
   });
 }

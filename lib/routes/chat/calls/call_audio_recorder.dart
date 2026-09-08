@@ -165,15 +165,36 @@ class _AudioGeneration {
   final int channels;
   final int runStartedAtMs;
 
+  /// The monotonic clock reading (see [CallAudioRecorder._elapsedMs]) taken at
+  /// the instant this generation opened -- sample zero on the LOCAL monotonic
+  /// timeline. Every later reading minus this one is the elapsed time the file
+  /// must represent, which is what makes the write cursor clock-driven rather
+  /// than frame-driven: a stretch that produces no frames (an Android mute
+  /// disabling the capture tap, a starved path) still advances this reference,
+  /// so the silence that stands in for it is materialised to the right length.
+  ///
+  /// Distinct from [runStartedAtMs], which is the SFU-mapped wall position the
+  /// event's alignment offset is built from and is unchanged by this work. Only
+  /// DIFFERENCES are ever taken from this monotonic reading, so its origin does
+  /// not matter and it can never be corrected out from under the call.
+  final int runStartElapsedMs;
+
   _AudioGeneration({
     required this.id,
     required this.sampleRate,
     required this.channels,
     required this.runStartedAtMs,
+    required this.runStartElapsedMs,
   });
 
-  final BytesBuilder _buffer = BytesBuilder(copy: true);
-  int bytesWritten = 0;
+  /// The recording's bytes, held in a growable store with an EXPLICIT logical
+  /// length so the TAIL can be edited (trimmed) as well as grown -- a plain
+  /// [BytesBuilder] can only ever be appended to. Only [_length] bytes are ever
+  /// live; capacity past it is scratch that a later pad zeroes or a later
+  /// append overwrites before it is counted. Interior committed audio (anything
+  /// below the tail being edited) is never touched by any operation here.
+  Uint8List _bytes = Uint8List(0);
+  int _length = 0;
 
   /// Whether this generation has been superseded or explicitly revoked. Once
   /// true, nothing may upload or send on its behalf -- checked before EVERY
@@ -213,23 +234,78 @@ class _AudioGeneration {
   /// itself for why those are the only two callers).
   bool orphanLogged = false;
 
-  void append(Uint8List bytes, int maxBytes) {
-    final room = maxBytes - bytesWritten;
-    if (room <= 0) return;
-    final take = bytes.length <= room
-        ? bytes
-        : Uint8List.sublistView(bytes, 0, room);
-    _buffer.add(take);
-    bytesWritten += take.length;
-  }
-
-  Uint8List takeBytes() => _buffer.toBytes();
+  /// The highest clock-derived position (in sample frames) any frame has
+  /// claimed so far -- a monotonic high-water mark of committed real time. A
+  /// frame whose own position falls more than the conversational tolerance
+  /// BELOW this (an out-of-order or backward-clock straggler) is dropped rather
+  /// than written backwards, so committed time is never rewritten. Under a
+  /// clock that does not advance every frame shares one position, so this stays
+  /// put and nothing is ever dropped by it.
+  int maxTargetFrames = 0;
 
   int get _bytesPerFrame => 2 * channels;
 
-  Duration get duration => Duration(
-    microseconds: (bytesWritten ~/ _bytesPerFrame) * 1000000 ~/ sampleRate,
-  );
+  /// The number of whole (interleaved) sample frames currently written -- the
+  /// write cursor's position, from which elapsed file time is derived.
+  int get frameCount => _length ~/ _bytesPerFrame;
+
+  void _ensureCapacity(int needed) {
+    if (needed <= _bytes.length) return;
+    var cap = _bytes.length < 4096 ? 4096 : _bytes.length;
+    while (cap < needed) {
+      cap *= 2;
+    }
+    final grown = Uint8List(cap);
+    grown.setRange(0, _length, _bytes);
+    _bytes = grown;
+  }
+
+  /// Appends [bytes] at the tail, capped at [capBytes] total. Returns whether
+  /// the cap forced any bytes to be dropped, so the one-per-generation cap log
+  /// can fire. Keeps the pre-existing cap semantics: past the ceiling further
+  /// audio is silently (but logged, once) not written.
+  bool append(Uint8List bytes, int capBytes) {
+    if (bytes.isEmpty) return false;
+    final room = capBytes - _length;
+    if (room <= 0) return true;
+    final take = bytes.length <= room ? bytes.length : room;
+    _ensureCapacity(_length + take);
+    _bytes.setRange(_length, _length + take, bytes);
+    _length += take;
+    return take < bytes.length;
+  }
+
+  /// Pads [frames] of trailing digital silence at the tail, capped at
+  /// [capBytes] total. Returns whether the cap forced any silence to be
+  /// dropped. Zeroing is explicit rather than relying on a fresh buffer,
+  /// because after a tail trim the scratch region past [_length] can still hold
+  /// the bytes that were trimmed away.
+  bool padSilenceFrames(int frames, int capBytes) {
+    if (frames <= 0) return false;
+    final want = frames * _bytesPerFrame;
+    final room = capBytes - _length;
+    if (room <= 0) return true;
+    final take = want <= room ? want : room;
+    _ensureCapacity(_length + take);
+    _bytes.fillRange(_length, _length + take, 0);
+    _length += take;
+    return take < want;
+  }
+
+  /// Shrinks the logical length by [frames] frames -- a TAIL-only edit that
+  /// never touches interior committed audio. The trimmed bytes stay in the
+  /// backing store as scratch and are overwritten or re-zeroed if the tail
+  /// grows again.
+  void trimTailFrames(int frames) {
+    if (frames <= 0) return;
+    final drop = frames * _bytesPerFrame;
+    _length = drop >= _length ? 0 : _length - drop;
+  }
+
+  Uint8List takeBytes() => _bytes.sublist(0, _length);
+
+  Duration get duration =>
+      Duration(microseconds: frameCount * 1000000 ~/ sampleRate);
 }
 
 /// Thrown internally to unwind [CallAudioRecorder.finish]'s retry loop the
@@ -317,11 +393,54 @@ class CallAudioRecorder implements CallAudioRecordingSink {
   /// all, and [_pump] for where the queue actually drains.
   final int maxPendingFrames;
 
+  /// How often the write cursor is reconciled against the monotonic clock
+  /// INDEPENDENT of frame arrival -- the self-tick that keeps the file's length
+  /// tracking elapsed time even while a platform (Android on mute) stops
+  /// delivering frames entirely. At each tick the tail is padded (when the file
+  /// is behind elapsed) or micro-trimmed by at most one interval's drift (when
+  /// it is ahead), so accumulated skew is bounded by ONE interval rather than
+  /// the whole call. Production ticks every [_defaultReanchorInterval];
+  /// [Duration.zero] disables the wall-clock timer entirely (tests drive
+  /// [checkpoint] directly), and also disables the bounded micro-trim, since a
+  /// zero interval configures no drift budget to spend.
+  final Duration reanchorInterval;
+
   static const _defaultMaxBytes = 60 * 1024 * 1024;
   static const _defaultMaxDuration = Duration(minutes: 30);
   static const _defaultDeliveryAttempts = 3;
   static const _defaultRetryDelay = Duration(seconds: 1);
   static const _defaultMaxPendingFrames = 64;
+  static const _defaultReanchorInterval = Duration(seconds: 60);
+
+  /// The conservative capture sample-rate error, in parts per million, the
+  /// bounded reconciliation micro-trim is sized against: over one
+  /// [reanchorInterval] a clock this far off drifts by
+  /// [maxReanchorTrimFrames], which is the most a single checkpoint or the
+  /// finalize reconcile will ever trim from the real tail. ~12 ms per 60 s at
+  /// 200 ppm -- below a phoneme, imperceptible when cut cleanly.
+  static const _reanchorPpmBudget = 200;
+
+  /// How far behind the high-water position ([_AudioGeneration.maxTargetFrames])
+  /// a frame may land and still be appended. Frames arrive in order with
+  /// bounded latency, so a small tolerance absorbs ordinary queue jitter; only
+  /// a frame further behind than this -- a genuine backward-clock step or
+  /// reordering -- is dropped rather than written backwards.
+  static const _dropToleranceMs = 250;
+
+  /// The monotonic, suspension-inclusive millisecond clock the write cursor
+  /// advances on, read only for DIFFERENCES from [_AudioGeneration.runStartElapsedMs].
+  /// Defaults to [_stopwatch], a real [Stopwatch] this recorder owns; injected
+  /// only by tests, where it defaults to a NON-ADVANCING fake so a
+  /// frame-driven test sees exactly the frame-summed duration it always did.
+  /// During an active call the OS keeps the process and audio session alive, so
+  /// this counter keeps advancing while the app is backgrounded -- which is the
+  /// reported Android-mute case. Deep device-sleep inclusion needs a platform
+  /// boot-clock channel that does not exist in this app and is a separate task.
+  late final int Function() _elapsedMs;
+
+  /// Owned by the recorder and started at construction; backs [_elapsedMs] when
+  /// no clock is injected. Only differences are ever taken from it.
+  final Stopwatch _stopwatch = Stopwatch()..start();
 
   CallAudioRecorder({
     required this.senderId,
@@ -329,17 +448,30 @@ class CallAudioRecorder implements CallAudioRecordingSink {
     required this.send,
     required this.upload,
     ClockAnchor? Function()? clockAnchor,
+    int Function()? elapsedMs,
     this.maxBytes = _defaultMaxBytes,
     this.maxDuration = _defaultMaxDuration,
     this.deliveryAttempts = _defaultDeliveryAttempts,
     this.retryDelay = _defaultRetryDelay,
     CallAudioUploadStateStore? uploadStateStore,
     this.maxPendingFrames = _defaultMaxPendingFrames,
+    this.reanchorInterval = _defaultReanchorInterval,
   }) : clockAnchor = clockAnchor ?? _noAnchor,
        uploadStateStore =
-           uploadStateStore ?? InMemoryCallAudioUploadStateStore();
+           uploadStateStore ?? InMemoryCallAudioUploadStateStore() {
+    _elapsedMs = elapsedMs ?? () => _stopwatch.elapsedMilliseconds;
+  }
 
   static ClockAnchor? _noAnchor() => null;
+
+  /// The most the bounded reconciliation micro-trim removes from the real tail
+  /// in one checkpoint or at finalize: one [interval]'s worth of drift at
+  /// [_reanchorPpmBudget], in sample frames at [sampleRate]. Zero when
+  /// [interval] is zero (no drift budget configured). Exposed so a test can
+  /// assert the trim is exactly bounded without hard-coding the ppm constant.
+  @visibleForTesting
+  static int maxReanchorTrimFrames(Duration interval, int sampleRate) =>
+      interval.inMilliseconds * _reanchorPpmBudget * sampleRate ~/ 1000000000;
 
   _AudioGeneration? _current;
 
@@ -386,10 +518,37 @@ class CallAudioRecorder implements CallAudioRecordingSink {
   static String _newGenerationId() =>
       '${DateTime.now().microsecondsSinceEpoch}-${_idRandom.nextInt(0x40000000)}';
 
+  /// The blob's ceiling as a byte count, derived from a DURATION bound
+  /// ([maxDuration] measured from this blob's own start) and floored by the
+  /// [maxBytes] memory bound. A duration bound rather than a raw byte budget is
+  /// the point: the write cursor now materialises silence for non-producing
+  /// time, and that silence counts toward the ceiling exactly as real audio
+  /// does, so a long call cannot spend its whole duration budget on silence and
+  /// then keep growing. (Making this the ABSOLUTE call-timeline boundary shared
+  /// across a user's several blobs is deferred to the device-switch feature;
+  /// here it stays per-blob, measured from this generation's start.)
   int _capBytes(_AudioGeneration gen) {
     final byTime =
         gen.sampleRate * gen.channels * 2 * maxDuration.inMilliseconds ~/ 1000;
     return maxBytes < byTime ? maxBytes : byTime;
+  }
+
+  /// Whether a backward-clock or reordered straggler frame has already been
+  /// logged for this recorder, so a persistently misbehaving clock does not
+  /// log once per frame. See [_writeFrame] for the drop it guards.
+  bool _backfillDropLogged = false;
+
+  /// The one place the once-per-generation cap warning is emitted, shared by
+  /// the real-frame append and the silence pad so either hitting the ceiling
+  /// reports it exactly once.
+  void _logCappedOnce(_AudioGeneration gen) {
+    if (gen.cappedLogged) return;
+    gen.cappedLogged = true;
+    Logs().w(
+      'Call audio recording reached its ${maxBytes ~/ (1024 * 1024)}MB / '
+      '${maxDuration.inMinutes}min cap; the rest of this call is not '
+      'recorded to this half',
+    );
   }
 
   // ---------------------------------------------------------------- capture
@@ -400,8 +559,13 @@ class CallAudioRecorder implements CallAudioRecordingSink {
   /// superseded between the two keeps the frames it was actually given; a
   /// frame is never retroactively handed to the generation that replaced it,
   /// and never silently reattributed either way.
-  final Queue<(Int16List, _AudioGeneration)> _pending =
-      Queue<(Int16List, _AudioGeneration)>();
+  /// Also carries the monotonic reading sampled SYNCHRONOUSLY at [onFrame],
+  /// BEFORE enqueue: [_pump] runs on a later microtask, so reading the clock
+  /// there would attribute the frame to a position later than the instant it
+  /// actually arrived. The frame's own reading is what [_writeFrame] uses to
+  /// decide how much silence to backfill ahead of it.
+  final Queue<(Int16List, _AudioGeneration, int)> _pending =
+      Queue<(Int16List, _AudioGeneration, int)>();
 
   bool _pumpScheduled = false;
   bool _backpressureLogged = false;
@@ -411,19 +575,44 @@ class CallAudioRecorder implements CallAudioRecordingSink {
   /// since a completer only ever fires once.
   Completer<void>? _drainWaiter;
 
+  /// The self-tick that reconciles the cursor to the monotonic clock even when
+  /// no frames arrive. Cancelled on every generation exit (supersede, run end,
+  /// finish) so it can never fire against a canceled or finished generation, or
+  /// outlive the call. Null when no run is open or [reanchorInterval] is zero.
+  Timer? _reanchorTimer;
+
   @override
   void onRunStarted(int runStartedAtMs, int sampleRate, int channels) {
     // Superseded, not merely replaced: a [finish] already under way for the
     // OLD generation reads this flag before every network step it still has
     // to take, so a new run beginning here reliably stops a stale send even
-    // when it lands mid-upload.
+    // when it lands mid-upload. Also cancels the OLD run's self-tick timer.
     _cancelCurrent();
     _current = _AudioGeneration(
       id: _newGenerationId(),
       sampleRate: sampleRate,
       channels: channels,
       runStartedAtMs: runStartedAtMs,
+      // Sample zero on the LOCAL monotonic timeline. Every cursor decision from
+      // here is elapsedMs() minus this, so the file tracks real elapsed time
+      // regardless of whether frames keep arriving.
+      runStartElapsedMs: _elapsedMs(),
     );
+    _startReanchorTimer();
+  }
+
+  void _startReanchorTimer() {
+    _reanchorTimer?.cancel();
+    if (reanchorInterval <= Duration.zero) {
+      _reanchorTimer = null;
+      return;
+    }
+    _reanchorTimer = Timer.periodic(reanchorInterval, (_) => checkpoint());
+  }
+
+  void _cancelReanchorTimer() {
+    _reanchorTimer?.cancel();
+    _reanchorTimer = null;
   }
 
   /// Queues [samples] for the background pump and returns immediately.
@@ -459,9 +648,15 @@ class CallAudioRecorder implements CallAudioRecordingSink {
           'than slowing speech-to-text',
         );
       }
+      // A backpressure-dropped frame still leaves its interval to be
+      // materialised as silence: the NEXT frame that IS enqueued carries a
+      // later monotonic reading, so [_writeFrame]'s backfill fills the whole
+      // gap -- the dropped frames included -- up to that frame's position. The
+      // dropped bytes are lost; the elapsed TIME they covered is not.
       return;
     }
-    _pending.add((samples, gen));
+    // Sampled here, synchronously, not in [_pump]: see [_pending]'s own docs.
+    _pending.add((samples, gen, _elapsedMs()));
     if (!_pumpScheduled) {
       _pumpScheduled = true;
       scheduleMicrotask(_pump);
@@ -473,31 +668,95 @@ class CallAudioRecorder implements CallAudioRecordingSink {
   void _pump() {
     _pumpScheduled = false;
     while (_pending.isNotEmpty) {
-      final (samples, gen) = _pending.removeFirst();
+      final (samples, gen, tMono) = _pending.removeFirst();
       // Superseded or cancelled between being queued and being drained: the
       // bytes belong to a generation nothing will ever send, so they are
       // simply not appended -- never redirected to whatever IS current now,
       // which was not the generation this frame was captured for.
       if (gen.canceled) continue;
-      final bytes = Uint8List.view(
-        samples.buffer,
-        samples.offsetInBytes,
-        samples.lengthInBytes,
-      );
-      final before = gen.bytesWritten;
-      gen.append(bytes, _capBytes(gen));
-      if (gen.bytesWritten == before && bytes.isNotEmpty && !gen.cappedLogged) {
-        gen.cappedLogged = true;
-        Logs().w(
-          'Call audio recording reached its ${maxBytes ~/ (1024 * 1024)}MB / '
-          '${maxDuration.inMinutes}min cap; the rest of this call is not '
-          'recorded to this half',
-        );
-      }
+      _writeFrame(gen, samples, tMono);
     }
     final waiter = _drainWaiter;
     _drainWaiter = null;
     waiter?.complete();
+  }
+
+  /// Writes one real frame at the cursor, backfilling silence ahead of it so
+  /// the file position tracks elapsed time rather than bytes appended.
+  ///
+  /// The cursor -- [_AudioGeneration.frameCount] -- is the SOLE position
+  /// authority: a frame is appended at the cursor, never repositioned by its
+  /// own capture timestamp. The timestamp is used only to decide how far to
+  /// catch the file up first. Three cases:
+  ///
+  /// * The frame lands more than the tolerance BEHIND the high-water position
+  ///   (a backward-clock step or a reordered straggler): dropped, never written
+  ///   backwards. Under a non-advancing clock every frame shares one target, so
+  ///   this never fires.
+  /// * The clock says more time has elapsed than the file represents (frames
+  ///   stopped, e.g. an Android mute, then resumed): pad silence up to the
+  ///   frame's position, then append the frame.
+  /// * Otherwise (steady capture, or a file slightly ahead within tolerance):
+  ///   append at the tail.
+  void _writeFrame(_AudioGeneration gen, Int16List samples, int tMono) {
+    final cap = _capBytes(gen);
+    final elapsed = tMono - gen.runStartElapsedMs;
+    final targetFrames = elapsed <= 0 ? 0 : elapsed * gen.sampleRate ~/ 1000;
+    final toleranceFrames = _dropToleranceMs * gen.sampleRate ~/ 1000;
+    if (targetFrames + toleranceFrames < gen.maxTargetFrames) {
+      if (!_backfillDropLogged) {
+        _backfillDropLogged = true;
+        Logs().w(
+          'Dropping a call-audio frame whose clock reading fell behind the '
+          'recording cursor; not writing it backwards',
+        );
+      }
+      return;
+    }
+    if (targetFrames > gen.maxTargetFrames) gen.maxTargetFrames = targetFrames;
+    if (targetFrames > gen.frameCount) {
+      if (gen.padSilenceFrames(targetFrames - gen.frameCount, cap)) {
+        _logCappedOnce(gen);
+      }
+    }
+    final bytes = Uint8List.view(
+      samples.buffer,
+      samples.offsetInBytes,
+      samples.lengthInBytes,
+    );
+    if (gen.append(bytes, cap)) _logCappedOnce(gen);
+  }
+
+  /// Reconciles the current generation's tail to the monotonic clock,
+  /// independent of frame arrival. Exposed for tests so a `fakeAsync` or a
+  /// direct call can drive a checkpoint without a real timer; the production
+  /// self-tick ([_startReanchorTimer]) calls exactly this.
+  @visibleForTesting
+  void checkpoint() {
+    final gen = _current;
+    if (gen == null || gen.canceled) return;
+    _reconcile(gen, _elapsedMs());
+  }
+
+  /// Pads (when behind elapsed) or micro-trims (when ahead) the tail so the
+  /// file length equals the monotonic-elapsed time since sample zero. The trim
+  /// is bounded to one interval's drift ([maxReanchorTrimFrames]) so it can
+  /// only ever remove a tolerance-bounded, imperceptible slice of the real
+  /// tail -- never a meaningful stretch of speech, and never interior audio.
+  void _reconcile(_AudioGeneration gen, int nowElapsedMs) {
+    final elapsed = nowElapsedMs - gen.runStartElapsedMs;
+    if (elapsed < 0) return; // A regressed clock reconciles to nothing.
+    final targetFrames = elapsed * gen.sampleRate ~/ 1000;
+    final currentFrames = gen.frameCount;
+    if (targetFrames > currentFrames) {
+      if (gen.padSilenceFrames(targetFrames - currentFrames, _capBytes(gen))) {
+        _logCappedOnce(gen);
+      }
+    } else if (targetFrames < currentFrames) {
+      final overrun = currentFrames - targetFrames;
+      final maxTrim = maxReanchorTrimFrames(reanchorInterval, gen.sampleRate);
+      gen.trimTailFrames(overrun < maxTrim ? overrun : maxTrim);
+    }
   }
 
   /// Waits for every frame queued so far to be applied to its generation.
@@ -522,11 +781,14 @@ class CallAudioRecorder implements CallAudioRecordingSink {
 
   @override
   void onRunEnded() {
-    // Nothing to do here: the generation simply stops receiving frames until
-    // either a new [onRunStarted] supersedes it, or [finish] uses it. Kept as
-    // an explicit method (rather than folded away) because it is where a
-    // future crash-safe upload would start flushing -- see the class-level
+    // The generation stops receiving frames until either a new [onRunStarted]
+    // supersedes it, or [finish] uses it -- so its self-tick is no longer
+    // needed and is cancelled here. The pending [finish] reconciles the tail to
+    // the end anchor on its own, so no auto-checkpoint is required in the gap.
+    // Kept as an explicit method (rather than folded away) because it is where
+    // a future crash-safe upload would start flushing -- see the class-level
     // docs on what this prototype defers.
+    _cancelReanchorTimer();
   }
 
   /// Completes the moment ownership is lost, for a network step in
@@ -537,6 +799,9 @@ class CallAudioRecorder implements CallAudioRecordingSink {
   void _cancelCurrent() {
     final gen = _current;
     if (gen != null) gen.canceled = true;
+    // A superseded or revoked generation must never be reconciled again -- its
+    // self-tick stops here, before a fresh generation (if any) arms its own.
+    _cancelReanchorTimer();
     final signal = _cancelSignal;
     if (signal != null && !signal.isCompleted) signal.complete();
   }
@@ -629,6 +894,13 @@ class CallAudioRecorder implements CallAudioRecordingSink {
     required bool wasCarrier,
     required String? callKey,
   }) async {
+    // No self-tick may fire against a generation being finalised: the finalize
+    // reconcile below (drain-then-reconcile) is the last edit the tail gets,
+    // and a checkpoint racing it on a later microtask could re-touch a buffer
+    // already encoded. Cancelled here rather than only in [onRunEnded], because
+    // [finish] is reachable directly (call_session's publish path) without an
+    // [onRunEnded] necessarily preceding it.
+    _cancelReanchorTimer();
     // Ahead of every guard below: a generation's bytes are not final until
     // every frame handed to [onFrame] has actually been applied to it, and
     // reading them one microtask early would ship a recording short of what
@@ -743,6 +1015,15 @@ class CallAudioRecorder implements CallAudioRecordingSink {
           }
         }
       }
+
+      // Reconcile the tail to the END anchor -- but only AFTER [_drainPending]
+      // (already awaited at the top) has applied every in-flight frame to its
+      // position, so a final syllable is written to the file FIRST and can
+      // never be pushed past the end and clipped. Pads when the file is behind
+      // the monotonic-elapsed end, micro-trims (bounded) when it is ahead, so
+      // the blob's length equals elapsed call time. Skipped for a canceled
+      // generation: nothing will be sent, and its tail must not be re-touched.
+      if (!gen.canceled) _reconcile(gen, _elapsedMs());
 
       // Read HERE, once, from the SAME source and at the SAME point in the
       // call's life the transcript half reads its own `media.clockAnchor`
