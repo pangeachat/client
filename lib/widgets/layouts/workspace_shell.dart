@@ -364,6 +364,10 @@ class WorkspaceShell extends StatelessWidget {
                 // map itself does not (it is full-bleed, see above).
                 Positioned.fill(
                   child: SafeArea(
+                    // A narrow full-bleed surface takes the top and bottom
+                    // bands too — see [_ShellLayout.fullBleedFocus].
+                    top: !l.fullBleedFocus,
+                    bottom: !l.fullBleedFocus,
                     child: Stack(
                       fit: StackFit.expand,
                       children: [
@@ -464,13 +468,14 @@ class WorkspaceShell extends StatelessWidget {
                               Positioned(
                                 key: ValueKey(l.leftTokens[i].encode()),
                                 // The narrow full-screen focus (a live room / session) is
-                                // FULL-BLEED: no card chrome, edge to edge, top 0 — its own
-                                // app bar absorbs the status-bar inset, and skipping the
-                                // shell's extra safe-area offset removes the doubled top
-                                // padding (#7554). Column-mode / non-focused panels keep
-                                // the card and respect the top inset so their close/back
-                                // control clears the system top bar (#7143); PanelCard's
-                                // 12px top margin aligns them with the top-right cluster.
+                                // FULL-BLEED: no card chrome, edge to edge — the shell's
+                                // SafeArea yields the top and bottom bands to it
+                                // ([_ShellLayout.fullBleedFocus]) and its own app bar
+                                // absorbs the status-bar inset (#7554, #8879).
+                                // Column-mode / non-focused panels keep the card and
+                                // respect the top inset so their close/back control
+                                // clears the system top bar (#7143); PanelCard's 12px top
+                                // margin aligns them with the top-right cluster.
                                 top: 0,
                                 bottom: 0,
                                 left: l.allocation.left[i].left,
@@ -478,23 +483,26 @@ class WorkspaceShell extends StatelessWidget {
                                 // Docks the course context bar above an open
                                 // activity plan, sharing its left edge; a
                                 // pass-through for every other panel (#8816).
-                                child: FocusTraversalOrder(
-                                  order: WorkspaceOrder.leftPanels.focusOrder,
-                                  child: ActivityCourseDock(
-                                    token: l.leftTokens[i],
-                                    isColumnMode: l.isColumnMode,
-                                    spaceId: activeSpaceIdFor(state.uri),
-                                    child: LeftPanelLayer(
+                                child: _FullBleedBand(
+                                  enabled: l.fullBleedFocus,
+                                  child: FocusTraversalOrder(
+                                    order: WorkspaceOrder.leftPanels.focusOrder,
+                                    child: ActivityCourseDock(
                                       token: l.leftTokens[i],
-                                      state: state,
-                                      foldedOver:
-                                          l.allocation.left[i].foldedOver,
-                                      getRoomKey: _roomKeyFor,
-                                      bare:
-                                          !l.isColumnMode &&
-                                          l.allocation.left[i].vis ==
-                                              PanelVis.full,
-                                      revealFromBar: l.revealCoursePanel,
+                                      isColumnMode: l.isColumnMode,
+                                      spaceId: activeSpaceIdFor(state.uri),
+                                      child: LeftPanelLayer(
+                                        token: l.leftTokens[i],
+                                        state: state,
+                                        foldedOver:
+                                            l.allocation.left[i].foldedOver,
+                                        getRoomKey: _roomKeyFor,
+                                        bare:
+                                            !l.isColumnMode &&
+                                            l.allocation.left[i].vis ==
+                                                PanelVis.full,
+                                        revealFromBar: l.revealCoursePanel,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -592,6 +600,28 @@ class WorkspaceShell extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+/// The home-indicator band under a narrow full-bleed surface
+/// ([_ShellLayout.fullBleedFocus]): the surface stays above the bottom safe
+/// area (the composer clears the home indicator) and this paints the band in
+/// the surface's own scaffold colour instead of leaving the map showing
+/// through (#8879). The status-bar band needs no counterpart — the surface's
+/// app bar absorbs that inset itself. Pass-through when [enabled] is false.
+class _FullBleedBand extends StatelessWidget {
+  final bool enabled;
+  final Widget child;
+
+  const _FullBleedBand({required this.enabled, required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    if (!enabled) return child;
+    return ColoredBox(
+      color: Theme.of(context).scaffoldBackgroundColor,
+      child: SafeArea(top: false, child: child),
     );
   }
 }
@@ -1179,6 +1209,17 @@ class _ShellLayout {
   /// `routing.instructions.md` → Single-column analytics nav bar.
   final bool analyticsBarVisible;
 
+  /// A narrow full-screen LEFT surface — a live room / session, the DM
+  /// picker — is FULL-BLEED: the shell's SafeArea yields the top and bottom
+  /// bands to it, so it paints edge to edge with no map inset (#7554, #8879).
+  /// The surface's own app bar absorbs the status-bar band; the shell keeps
+  /// the surface above the home-indicator band and paints that band in the
+  /// scaffold colour, so every such surface gets it without each body
+  /// handling the inset. Every other narrow ground (the map, a cavity, a
+  /// right panel under the analytics bar) keeps the shell's SafeArea. See
+  /// `routing.instructions.md` → Full-screen surfaces.
+  final bool fullBleedFocus;
+
   /// Whether this layout resolved in two-column mode (chrome picks the web rail
   /// + cluster) or narrow mode (the mobile nav widget + analytics bar).
   final bool isColumnMode;
@@ -1229,6 +1270,7 @@ class _ShellLayout {
     required this.hasCavity,
     required this.navWidgetVisible,
     required this.analyticsBarVisible,
+    required this.fullBleedFocus,
     required this.isColumnMode,
     required this.leftInset,
     required this.mapLeftOverlay,
@@ -1396,6 +1438,14 @@ class _ShellLayout {
         navRail &&
         (focusedNarrowType == null || hasCavity || focusedIsRight);
 
+    // The narrow left focus that covers the nav widget AND the analytics bar
+    // — nothing else of the shell's is drawn, so it takes the safe-area bands.
+    final fullBleedFocus =
+        !isColumnMode &&
+        focusedNarrowType != null &&
+        !focusedIsRight &&
+        !hasCavity;
+
     // Where the left column ends. With `?left=` panels the allocator computes
     // it (the right edge of the last left panel, `leftCovered`); otherwise it's
     // the fixed chrome inset. The center detail tile and the map's left camera
@@ -1469,6 +1519,7 @@ class _ShellLayout {
       hasCavity: hasCavity,
       navWidgetVisible: navWidgetVisible,
       analyticsBarVisible: analyticsBarVisible,
+      fullBleedFocus: fullBleedFocus,
       isColumnMode: isColumnMode,
       leftInset: leftInset,
       mapLeftOverlay: mapLeftOverlay,
