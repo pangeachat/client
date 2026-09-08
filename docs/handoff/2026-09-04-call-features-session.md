@@ -744,3 +744,18 @@ the live panel attaches. iOS hits the SAME recording bug -- the fix helps there.
   per android-apk-rust-target-shadowing; delete the old APK first), verify the phone package
   com.talktolearn.chat, clean device pollution (learner+calltester -> 0) right before, then the owner
   does a MUTED call. Verify: both call_audio halves full-length, no "bye first", natural local merge.
+
+## 2026-09-08 — Combined-branch app on the phone; re-test ready for the owner's muted call
+- Phone /data was 100% full (debug APK 428MB wouldn't fit even after uninstalling our old app; the
+  phone is packed with the owner's data). Did NOT touch the owner's other app (stray
+  chat.fluffy.fluffychat) or their data. Solution: built a RELEASE arm64 APK (166MB, signed with a
+  throwaway gitignored keystore created + deleted around the build) -> installed Success,
+  lastUpdateTime 2026-09-08 11:21, versionName 5.0.4. pubspec .env uncommented only during each
+  build, re-commented after; worktree clean; keystore+key.properties deleted. (Debug/split builds
+  failed on size/gradle; release arm64 is the path on a full phone.)
+- Device pollution cleaned: learner 4->0, calltester 2->0 (final_clean.py). Next login each = 1 device.
+- Laptop web (combined branch) served + verified on :8092 (use it, NOT stale :8090). Stack + LAN path
+  verified. READY for the owner's muted call: phone logs in calltester, laptop :8092 logs in learner,
+  laptop calls phone, answer, talk, MUTE phone partway, unmute + say "bye" late, hang up ~30-40s.
+  Then pull both call_audio halves + transcript (scratchpad/pull_call.py -> /tmp/merge_input) and
+  verify: both halves full-length (piece 1), no "bye first" (piece 2), natural local merge.
