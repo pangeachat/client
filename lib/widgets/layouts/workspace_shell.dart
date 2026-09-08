@@ -360,14 +360,23 @@ class WorkspaceShell extends StatelessWidget {
                 /// is a shell resident so it exists exactly when logged in.
                 DmInviteFerryConsumer(uri: state.uri),
 
+                /// Under a narrow full-screen surface (a live room / session,
+                /// the DM picker) the only map left showing is the safe-area
+                /// bands — the status bar's above its header, the home
+                /// indicator's below its composer. Paint them in the
+                /// surface's own colours so it reads edge to edge (#8879).
+                /// The surface itself keeps the safe-area frame every panel
+                /// has: its overlays (the message toolbar, word cards)
+                /// position against that frame and the zero padding inside
+                /// it, so handing it the insets instead moved every one of
+                /// them.
+                if (l.fullBleedFocus)
+                  const Positioned.fill(child: _FullBleedBackdrop()),
+
                 // Everything above the map respects the device safe area; the
                 // map itself does not (it is full-bleed, see above).
                 Positioned.fill(
                   child: SafeArea(
-                    // A narrow full-bleed surface takes the top and bottom
-                    // bands too — see [_ShellLayout.fullBleedFocus].
-                    top: !l.fullBleedFocus,
-                    bottom: !l.fullBleedFocus,
                     child: Stack(
                       fit: StackFit.expand,
                       children: [
@@ -468,10 +477,9 @@ class WorkspaceShell extends StatelessWidget {
                               Positioned(
                                 key: ValueKey(l.leftTokens[i].encode()),
                                 // The narrow full-screen focus (a live room / session) is
-                                // FULL-BLEED: no card chrome, edge to edge — the shell's
-                                // SafeArea yields the top and bottom bands to it
-                                // ([_ShellLayout.fullBleedFocus]) and its own app bar
-                                // absorbs the status-bar inset (#7554, #8879).
+                                // FULL-BLEED: no card chrome, top 0 of the safe area, and
+                                // the shell paints the safe-area bands around it in its
+                                // colours ([_ShellLayout.fullBleedFocus]; #7554, #8879).
                                 // Column-mode / non-focused panels keep the card and
                                 // respect the top inset so their close/back control
                                 // clears the system top bar (#7143); PanelCard's 12px top
@@ -483,26 +491,23 @@ class WorkspaceShell extends StatelessWidget {
                                 // Docks the course context bar above an open
                                 // activity plan, sharing its left edge; a
                                 // pass-through for every other panel (#8816).
-                                child: _FullBleedBand(
-                                  enabled: l.fullBleedFocus,
-                                  child: FocusTraversalOrder(
-                                    order: WorkspaceOrder.leftPanels.focusOrder,
-                                    child: ActivityCourseDock(
+                                child: FocusTraversalOrder(
+                                  order: WorkspaceOrder.leftPanels.focusOrder,
+                                  child: ActivityCourseDock(
+                                    token: l.leftTokens[i],
+                                    isColumnMode: l.isColumnMode,
+                                    spaceId: activeSpaceIdFor(state.uri),
+                                    child: LeftPanelLayer(
                                       token: l.leftTokens[i],
-                                      isColumnMode: l.isColumnMode,
-                                      spaceId: activeSpaceIdFor(state.uri),
-                                      child: LeftPanelLayer(
-                                        token: l.leftTokens[i],
-                                        state: state,
-                                        foldedOver:
-                                            l.allocation.left[i].foldedOver,
-                                        getRoomKey: _roomKeyFor,
-                                        bare:
-                                            !l.isColumnMode &&
-                                            l.allocation.left[i].vis ==
-                                                PanelVis.full,
-                                        revealFromBar: l.revealCoursePanel,
-                                      ),
+                                      state: state,
+                                      foldedOver:
+                                          l.allocation.left[i].foldedOver,
+                                      getRoomKey: _roomKeyFor,
+                                      bare:
+                                          !l.isColumnMode &&
+                                          l.allocation.left[i].vis ==
+                                              PanelVis.full,
+                                      revealFromBar: l.revealCoursePanel,
                                     ),
                                   ),
                                 ),
@@ -604,24 +609,28 @@ class WorkspaceShell extends StatelessWidget {
   }
 }
 
-/// The home-indicator band under a narrow full-bleed surface
-/// ([_ShellLayout.fullBleedFocus]): the surface stays above the bottom safe
-/// area (the composer clears the home indicator) and this paints the band in
-/// the surface's own scaffold colour instead of leaving the map showing
-/// through (#8879). The status-bar band needs no counterpart — the surface's
-/// app bar absorbs that inset itself. Pass-through when [enabled] is false.
-class _FullBleedBand extends StatelessWidget {
-  final bool enabled;
-  final Widget child;
-
-  const _FullBleedBand({required this.enabled, required this.child});
+/// The safe-area bands behind a narrow full-bleed surface
+/// ([_ShellLayout.fullBleedFocus]): the status-bar band in the app bar's
+/// colour (the surface's header sits right below it), everything else in the
+/// scaffold's (the home-indicator band below its composer). Mounted
+/// full-screen behind the shell's SafeArea layer, so only the bands show.
+class _FullBleedBackdrop extends StatelessWidget {
+  const _FullBleedBackdrop();
 
   @override
   Widget build(BuildContext context) {
-    if (!enabled) return child;
+    final theme = Theme.of(context);
     return ColoredBox(
-      color: Theme.of(context).scaffoldBackgroundColor,
-      child: SafeArea(top: false, child: child),
+      color: theme.appBarTheme.backgroundColor ?? theme.colorScheme.surface,
+      child: SafeArea(
+        left: false,
+        right: false,
+        bottom: false,
+        child: ColoredBox(
+          color: theme.scaffoldBackgroundColor,
+          child: const SizedBox.expand(),
+        ),
+      ),
     );
   }
 }
@@ -1210,14 +1219,13 @@ class _ShellLayout {
   final bool analyticsBarVisible;
 
   /// A narrow full-screen LEFT surface — a live room / session, the DM
-  /// picker — is FULL-BLEED: the shell's SafeArea yields the top and bottom
-  /// bands to it, so it paints edge to edge with no map inset (#7554, #8879).
-  /// The surface's own app bar absorbs the status-bar band; the shell keeps
-  /// the surface above the home-indicator band and paints that band in the
-  /// scaffold colour, so every such surface gets it without each body
-  /// handling the inset. Every other narrow ground (the map, a cavity, a
-  /// right panel under the analytics bar) keeps the shell's SafeArea. See
-  /// `routing.instructions.md` → Full-screen surfaces.
+  /// picker — is FULL-BLEED: it keeps the safe-area frame every panel has,
+  /// and the shell paints the status-bar and home-indicator bands around it
+  /// in the surface's own colours ([_FullBleedBackdrop]), so no map shows
+  /// above its header or below its composer (#7554, #8879). Every other
+  /// narrow ground (the map, a cavity, a right panel under the analytics
+  /// bar) leaves the map visible there. See `routing.instructions.md` →
+  /// Full-screen surfaces.
   final bool fullBleedFocus;
 
   /// Whether this layout resolved in two-column mode (chrome picks the web rail
@@ -1439,7 +1447,7 @@ class _ShellLayout {
         (focusedNarrowType == null || hasCavity || focusedIsRight);
 
     // The narrow left focus that covers the nav widget AND the analytics bar
-    // — nothing else of the shell's is drawn, so it takes the safe-area bands.
+    // — nothing else of the shell's is drawn, so the bands are painted for it.
     final fullBleedFocus =
         !isColumnMode &&
         focusedNarrowType != null &&
