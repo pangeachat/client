@@ -964,3 +964,15 @@ until the design is Codex-green.
   web_search tool) and no-verdicts. Reliable recipe: paste the FULL relevant source/tests INLINE,
   forbid all tools ("everything is in this message, use NO tools, do not search, do not read files"),
   keep code <~330 lines, one codex per tracked bg Bash task (no & subshell orphaning).
+
+## 2026-09-08 (cont) — LANE A cues fix GREEN across the full gate; awaiting owner approval for PR
+- All 4 re-gates CORRECT/softening=no. Fixes committed c02d07e6de on satvik/call-ring-cues.
+- Local PR CI (exact integrate.yaml code_lint + calls bucket):
+  dart format lib/ test/ = 0 changed; import_sorter --no-comments --exit-if-changed = Sorted 0 (the
+  earlier local failures were the MISSING --no-comments flag, not our files); license_checker = none
+  need approval; flutter analyze = No issues found; flutter test test/pangea/calls/ = All 1420 passed.
+- Merge check: origin/main..HEAD = 4 commits (all #8807: 8c087d363d, 58e54feddf, 3d1860f44e,
+  c02d07e6de); merge-tree --write-tree CLEAN (0 conflicts); 14 behind, no rebase needed.
+- STATUS: Lane A is PR-ready and reported to owner. NO PR until explicit owner approval (per gate).
+  PR draft at /private/tmp/cues-pr-body.md. Branch NOT pushed.
+- LANE B: P2 builder (a139cd8a3a9ca0d48) still running.
