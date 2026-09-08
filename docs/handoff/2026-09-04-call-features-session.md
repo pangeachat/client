@@ -759,3 +759,22 @@ the live panel attaches. iOS hits the SAME recording bug -- the fix helps there.
   laptop calls phone, answer, talk, MUTE phone partway, unmute + say "bye" late, hang up ~30-40s.
   Then pull both call_audio halves + transcript (scratchpad/pull_call.py -> /tmp/merge_input) and
   verify: both halves full-length (piece 1), no "bye first" (piece 2), natural local merge.
+
+## 2026-09-08 — REAL-CALL RE-TEST PASSED (both pieces validated end-to-end)
+- Owner did the muted call (room !HgavfyvZrMpYhLFMLt, call_key q3KuZ8D7...). Pulled both halves +
+  transcript (scratchpad/pull_call.py -> /tmp/merge_input).
+- PIECE 1 (recorder continuity) CONFIRMED: calltester(phone,Android) half = 44,934ms FULL length
+  (was 15s truncated); RMS/sec profile shows ~13s speech, then ~25s SILENCE (the muted stretch,
+  materialized as silence not truncated), then the "Bye-bye" speech PRESERVED at the tail. learner
+  (web) 44,968ms. Both start within 57ms on the SFU clock (fileStart 1788881261426 vs 1788881261369).
+- PIECE 2 (transcript ordering) CONFIRMED: interleaved-by-at_ms order is chronological and the phone's
+  late "...See you. Bye-bye." sorts LAST (t=...303990), NOT first. No "bye first".
+- MERGE: overlaid the two halves aligned by SFU start (learner adelay 57ms), aresample 48k, amix,
+  alimiter -> /tmp/merged_call.mp3 45.0s; sent to owner. Both full-length + co-timed so it sits
+  naturally (vs the old 15-vs-37.5s misalignment). Awaiting owner's ear-check.
+- DECISION per owner: normal cases work well -> the ordering TRADE STANDS; native suspension platform
+  clock remains a tracked follow-up (not built).
+- NEXT (on owner confirm the mix sounds natural): build the auto-mix as a REAL feature (server-side or
+  client per the earlier no-egress/client-side analysis; robust N-blob merger spec lives with it),
+  then PR the whole combined branch on owner go. Pre-push full CI gate + cross-model green required
+  before any PR. PRs still HELD for owner go.
