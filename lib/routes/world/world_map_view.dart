@@ -1113,16 +1113,8 @@ class _WorldMapViewState extends State<WorldMapView>
                   // and felt delayed and jumpy next to this — the ease showed up
                   // as input lag, not as calm. Only the programmatic glides
                   // (focus button, world reset) were slowed.
-                  interactionOptions: InteractionOptions(
-                    flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
-                    // Keep the map's invisible focus target out of Tab
-                    // traversal, and stop it grabbing focus at mount
-                    // (KeyboardOptions defaults autofocus to TRUE) — both
-                    // derail the workspace tab order (#7219).
-                    keyboardOptions: KeyboardOptions(
-                      focusNode: _mapKeyboardFocusNode,
-                      autofocus: false,
-                    ),
+                  interactionOptions: WorldMapConstants.interactionOptions(
+                    keyboardFocusNode: _mapKeyboardFocusNode,
                   ),
                   // Tapping empty map does not clear focus — a focus is cleared only by
                   // closing its panel or focusing another (world-map.instructions.md).

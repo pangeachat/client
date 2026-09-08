@@ -1,7 +1,8 @@
 import 'dart:math' as math;
 
-import 'package:flutter/animation.dart';
+import 'package:flutter/widgets.dart';
 
+import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
 class WorldMapConstants {
@@ -48,6 +49,27 @@ class WorldMapConstants {
   /// viewport-derived floor ([minZoomFor]).
   static bool canZoomIn(double zoom) => zoom < maxZoom;
   static bool canZoomOut(double zoom, double minZoom) => zoom > minZoom;
+
+  /// The map's gesture and keyboard config. The camera never rotates: north
+  /// stays up so the tiles' labels and every pin stay readable. Dropping the
+  /// `rotate` flag removes the two-finger twist; cursor/keyboard rotation is
+  /// switched off separately because flutter_map enables it by default and
+  /// does NOT gate it on that flag — a click or drag on the map with Ctrl
+  /// held snapped north to the cursor's angle, tilting the whole map and
+  /// every pin with it (#8859).
+  static InteractionOptions interactionOptions({
+    required FocusNode keyboardFocusNode,
+  }) => InteractionOptions(
+    flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
+    cursorKeyboardRotationOptions: CursorKeyboardRotationOptions.disabled(),
+    // Keep the map's invisible focus target out of Tab traversal, and stop it
+    // grabbing focus at mount (KeyboardOptions defaults autofocus to TRUE) —
+    // both derail the workspace tab order (#7219).
+    keyboardOptions: KeyboardOptions(
+      focusNode: keyboardFocusNode,
+      autofocus: false,
+    ),
+  );
 
   /// The zoom a pinch of [scale] lands on from [startZoom], clamped to the
   /// map's range ([minZoom] is the caller's viewport-derived floor, #7813). A
