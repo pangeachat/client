@@ -852,3 +852,31 @@ on the merge-design verdict (red -> revise spec + re-gate; green -> build mixer 
 if committed, MY cold-gate the fix; if WIP uncommitted, finish it. (c) then cues -> PR-ready ->
 report for approval. Local stack (Synapse/lk-jwt :7980/livekit v1.11.0/web :8092) is LAN-configured
 and needs no internet. Phone 56091FDAP001N3 has the combined-branch release APK installed.
+
+## 2026-09-08 12:3x — Merge-design gate RED (recorded; revision DEFERRED to next session, not rushed into internet-dark)
+Verdict: /private/tmp/mergedesign-verdict.txt. VERDICT: ISSUES-FOUND / n/a. The mixer build is NOT
+unblocked (design not green). Findings (root = completion/manifest + revision model under-specified):
+1. STALE/NON-UPGRADABLE MERGE: "both members' halves" != all device-tenure blobs (device-switch =
+   more blobs); a partial merge can finalize permanently; call_key-only txnId can't upgrade it, and
+   player dedup might pick the stale one. FIX: authoritative expected-blob manifest from carrier/
+   tenure history + a REVISION/supersession model (txnId carries sorted source-set/revision;
+   later more-complete merge supersedes).
+2. NO DURABLE RECONCILIATION TRIGGER: an offline-at-call-end device that later receives all halves
+   never merges. FIX: reconcile on startup / room sync / network-restore for ended calls lacking a
+   finalized (complete) merge.
+3. TRUNCATED deferral CONTRADICTS parent (parent line ~165): a ceiling-cut input can read
+   complete:true. FIX: add `truncated` to the per-device recording event (small prereq on piece 1).
+4. WEB: compute() does NOT background on web -> the mixer heading is wrong; implement chunk/yield or
+   a web cap / disable beyond cap.
+5. MEMORY: 30min@48k ~172.8MB/half; 2 inputs + 345.6MB Int32List + buffers + isolate transfer ->
+   ~1GB peak. FIX: a concrete ENFORCED cap or a streaming/chunked mixer (not "if needed").
+6. DEDUP SELECTOR: complete:true unreliable + lowest-producer-ID != coverage; validate the expected
+   source set, prefer complete/greatest-coverage, producer-order only as tiebreak; dedup per call_key.
+7. WORDING/CONTRADICTIONS: qualify "EXACTLY" (alignment+average exact; resample in-kind only);
+   "every device reads identically" -> eventually-consistent + reconciliation + supersession;
+   drop "cosmetic self-healing" given divergent source sets; state within-user blobs are sequential
+   (no overlap precedence needed); EXCLUDE merged events from credit/transcription/per-half totals.
+NEXT SESSION: revise /private/tmp/call-audio-merge-DESIGN.md for the above (esp. the manifest +
+revision model) and RE-GATE; likely flag the v1-robustness scope to owner (full carrier-history
+manifest vs simpler upgradable-revisions). THEN build the mixer under the double-gate. Do NOT build
+until the design is Codex-green.
