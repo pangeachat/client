@@ -23,6 +23,7 @@ import 'package:fluffychat/routes/chat/chat_details/space_details.dart';
 import 'package:fluffychat/routes/chat_list/course_chats_page.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_objectives_view.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_progress_bar.dart';
+import 'package:fluffychat/routes/world/left_panel/course_card_reveal.dart';
 import 'package:fluffychat/routes/world/panel_header.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -81,14 +82,43 @@ class SpaceDetailsContent extends StatelessWidget {
 
   /// Below this incoming BODY height (the card minus its header) the course
   /// card renders only the progress bar — the collapsed mobile peek (the nav
-  /// cavity clips there). The wide/web panel and the expanded sheet are always
-  /// well above it. The old whole-card threshold was 168 with the ~56px header
-  /// row inside the body; the header now sits above the body, so the same
-  /// cavity heights trigger at 112. See [build].
+  /// cavity clips there). The expanded sheet is always well above it, and the
+  /// wide card only dips under it mid-reveal, where the cross-fade below
+  /// decides instead. The old whole-card threshold was 168 with the ~56px
+  /// header row inside the body; the header now sits above the body, so the
+  /// same cavity heights trigger at 112. See [build].
   static const double _kCompactCardMaxHeight = 112.0;
 
   @override
   Widget build(BuildContext context) {
+    final section = controller.expandedSection;
+    final Widget page = section != null
+        ? _CourseSectionSubpage(controller, room, section)
+        : _CourseCardBody(controller, room);
+    final peek = CoursePeekProgressBar(
+      objectivesProvider: controller.objectivesProvider,
+    );
+
+    // Inside the wide card's reveal (#8866) the page and the peek cross-fade
+    // with the card's height instead of swapping at a height threshold: the
+    // swap popped the progress bar between its two positions in the last
+    // frames of a collapse. At the bar's height only the peek shows — the
+    // bar's own body — and at the slot only the page; the peek is never
+    // interactive.
+    final reveal = CourseCardReveal.progressOf(context);
+    if (reveal != null) {
+      return Stack(
+        fit: StackFit.expand,
+        children: [
+          FadeTransition(opacity: reveal, child: page),
+          FadeTransition(
+            opacity: ReverseAnimation(reveal),
+            child: IgnorePointer(child: peek),
+          ),
+        ],
+      );
+    }
+
     return LayoutBuilder(
       builder: (context, constraints) {
         // The collapsed mobile peek gives the card just enough height for the
@@ -99,17 +129,7 @@ class SpaceDetailsContent extends StatelessWidget {
         final compact =
             constraints.maxHeight.isFinite &&
             constraints.maxHeight < _kCompactCardMaxHeight;
-        if (compact) {
-          return CoursePeekProgressBar(
-            objectivesProvider: controller.objectivesProvider,
-          );
-        }
-
-        final section = controller.expandedSection;
-        if (section != null) {
-          return _CourseSectionSubpage(controller, room, section);
-        }
-        return _CourseCardBody(controller, room);
+        return compact ? peek : page;
       },
     );
   }

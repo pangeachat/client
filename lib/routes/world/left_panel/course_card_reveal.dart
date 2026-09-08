@@ -29,9 +29,15 @@ class CourseCardReveal extends StatefulWidget {
     super.key,
   });
 
-  /// The reveal above [context], for the card's chevron to shrink it first.
+  /// The reveal above [context], for the card's chevron to shrink it first;
+  /// null off a reveal (narrow, a bare test host).
   static CourseCardRevealState? maybeOf(BuildContext context) =>
-      context.findAncestorStateOfType<CourseCardRevealState>();
+      context.getInheritedWidgetOfExactType<_RevealScope>()?.state;
+
+  /// The reveal's progress — 0 at the bar's height, 1 at the slot — for the
+  /// card body to cross-fade its collapsed peek against.
+  static Animation<double>? progressOf(BuildContext context) =>
+      maybeOf(context)?.progress;
 
   @override
   State<CourseCardReveal> createState() => CourseCardRevealState();
@@ -49,6 +55,8 @@ class CourseCardRevealState extends State<CourseCardReveal>
     parent: _controller,
     curve: FluffyThemes.animationCurve,
   );
+
+  Animation<double> get progress => _progress;
 
   @override
   void initState() {
@@ -95,8 +103,20 @@ class CourseCardRevealState extends State<CourseCardReveal>
           ).evaluate(_progress),
           child: child!,
         ),
-        child: widget.child,
+        child: _RevealScope(state: this, child: widget.child),
       );
     },
   );
+}
+
+/// Hands the reveal to its subtree: the chevron's [CourseCardRevealState.collapse]
+/// and the card body's cross-fade ([CourseCardReveal.progressOf]). Never
+/// notifies — the state and its animation are stable for the card's life.
+class _RevealScope extends InheritedWidget {
+  final CourseCardRevealState state;
+
+  const _RevealScope({required this.state, required super.child});
+
+  @override
+  bool updateShouldNotify(_RevealScope oldWidget) => false;
 }
