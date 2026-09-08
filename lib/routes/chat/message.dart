@@ -566,6 +566,7 @@ class Message extends StatelessWidget {
                                                 wallpaperMode
                                                 ? Colors.transparent
                                                 : null,
+                                            focusable: true,
                                             // #Pangea
                                             miniIcon:
                                                 user.id == BotName.byEnvironment
