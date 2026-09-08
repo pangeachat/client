@@ -1058,3 +1058,17 @@ until the design is Codex-green.
   at-least-once-within-TTL delivery (<=2 events, one visible via P4 dedup).
 - Re-gating v3 (round 3), verdict framed BLOCKER vs ACCEPTABLE-V1 (only blockers fail it). Build only
   after design SOUND.
+
+## 2026-09-08 (cont) — P3 design round 3 (3 blockers, 3 acceptable) -> v4
+- v3 re-gate (round 3, BLOCKER-vs-ACCEPTABLE framing) = 3 BLOCKERS + 3 ACCEPTABLE-V1 (progress:
+  9 -> 8 -> 3). Blockers: (1) index populated too late -- a crash mid-merge before indexing loses the
+  callKey; (2) a lone transient failure has no guaranteed wakeup (waits out the 7d TTL); (3) stage
+  timeouts don't cancel underlying work -> hung ops accumulate past the wrapper cap.
+- ACCEPTABLE-V1 (reviewer-cleared): the unavoidable validate->send stale window (settle+double-validate+
+  P4 suppression); duplicate events/orphan media in rare races (P4 dedup + txnId); the terminal
+  classifications are coherent.
+- v4 fixes the 3 blockers: INDEX-BEFORE-AWAIT (write (roomId,callKey) at half-post + before any
+  await/admission); PERIODIC DRAIN timer (retries backoff-elapsed index entries, guaranteed wakeup);
+  concurrency PERMIT-UNTIL-SETTLE (released only when the underlying stage future settles, not the
+  wrapper timeout -> at most K underlying I/O ops ever; mixer is pure/bounded, cannot hang).
+- Re-gating v4 (round 4). Build P3 only after design SOUND (or only ACCEPTABLE-V1 residuals).
