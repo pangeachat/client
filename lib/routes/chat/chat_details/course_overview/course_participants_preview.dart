@@ -6,6 +6,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_section_button.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_section_header.dart';
+import 'package:fluffychat/routes/chat/chat_details/course_overview/course_section_shortcut.dart';
 import 'package:fluffychat/routes/chat/chat_details/participant_card.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 
@@ -65,27 +66,22 @@ class CourseParticipantsPreview extends StatelessWidget {
                 : maxParticipants;
             final truncated = participants.length > fit;
             final title = SpaceSettingsTabs.participants.title(context);
-            final actions = [
-              if (room.canInvite)
-                IconButton(
-                  icon: const Icon(Icons.person_add_outlined),
-                  iconSize: 20.0,
-                  visualDensity: VisualDensity.compact,
-                  tooltip: L10n.of(context).invite,
-                  onPressed: onInvite,
-                ),
-              if (truncated)
-                CourseSectionButton(section: title, onPressed: onShowAll),
-            ];
             return Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 CourseSectionHeader(
                   title: title,
                   icon: Icons.group_outlined,
-                  trailing: actions.isEmpty
-                      ? null
-                      : Row(mainAxisSize: MainAxisSize.min, children: actions),
+                  actions: [
+                    if (room.canInvite)
+                      CourseSectionShortcut(
+                        icon: Icons.person_add_outlined,
+                        tooltip: L10n.of(context).invite,
+                        onPressed: onInvite,
+                      ),
+                    if (truncated)
+                      CourseSectionButton(section: title, onPressed: onShowAll),
+                  ],
                 ),
                 const SizedBox(height: 8.0),
                 Semantics(
