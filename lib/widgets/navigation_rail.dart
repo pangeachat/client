@@ -78,7 +78,7 @@ class SpacesNavigationRail extends StatelessWidget {
           // Browse-order key on the labeled container itself (#8755) — a
           // shell-level wrapper annotation formed an extra unlabeled node
           // that VoiceOver reordered by its own heuristics.
-          sortKey: BrowseOrder.rail,
+          sortKey: WorkspaceOrder.rail.sortKey,
           child: FocusTraversalGroup(
             policy: OrderedTraversalPolicy(),
             child: StreamBuilder(

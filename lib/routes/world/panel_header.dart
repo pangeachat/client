@@ -13,8 +13,11 @@ import 'package:fluffychat/config/themes.dart';
 /// floating-card surface is [PanelCard]. See `routing.instructions.md`.
 class PanelHeader extends StatelessWidget {
   /// The leading control — an `IconButton`/`BackButton` the column built from its
-  /// own close affordance. Placed at the row's start.
-  final Widget leading;
+  /// own close affordance. Placed at the row's start. Null for a header whose
+  /// only control rides [trailing] — the wide course card, whose chevron sits
+  /// beside its share / focus actions (#8866); the title then starts at
+  /// [contentInset], level with those trailing glyphs.
+  final Widget? leading;
 
   /// The panel title shown beside [leading]; empty for panels whose body renders
   /// its own title.
@@ -36,6 +39,28 @@ class PanelHeader extends StatelessWidget {
     this.trailing,
   });
 
+  static const double horizontalPadding = 8.0;
+
+  /// The header's vertical padding on wide; narrow headers carry none.
+  static const double wideVerticalPadding = 16.0;
+
+  /// The glyph size of a default [Icon] — Flutter's own `IconThemeData` default.
+  static const double _iconSize = 24.0;
+
+  /// How far a trailing `IconButton`'s glyph sits in from the header's edge:
+  /// the padding plus the icon's inset inside its 48px target. A header with
+  /// no [leading] starts its title here too, so text and glyphs share one
+  /// edge — and the course's collapsed progress bar insets to it, ending
+  /// where the buttons end instead of running past them (#8866).
+  static const double contentInset =
+      horizontalPadding + (kMinInteractiveDimension - _iconSize) / 2;
+
+  /// The header's height on wide — its control targets plus the padding — so
+  /// the course context bar, which is this header with the panel shut, can
+  /// state its own height ([CourseContextBar.height]).
+  static const double wideHeight =
+      kMinInteractiveDimension + 2 * wideVerticalPadding;
+
   /// The canonical panel-title style. Published so chrome that IS a panel
   /// header with the panel closed — the course context bar — cannot drift
   /// from the real header the way it had (titleMedium/w600 against this
@@ -49,15 +74,21 @@ class PanelHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final leading = this.leading;
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: 8.0,
-        vertical: FluffyThemes.isColumnMode(context) ? 16.0 : 0.0,
+        horizontal: horizontalPadding,
+        vertical: FluffyThemes.isColumnMode(context)
+            ? wideVerticalPadding
+            : 0.0,
       ),
       child: Row(
         children: [
-          leading,
-          const SizedBox(width: 8),
+          if (leading != null) ...[
+            leading,
+            const SizedBox(width: 8),
+          ] else
+            const SizedBox(width: contentInset - horizontalPadding),
           Expanded(
             child: ExcludeSemantics(
               child: DefaultTextStyle.merge(

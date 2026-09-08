@@ -2,14 +2,20 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 
-/// A course-page section's "See all" link — label + chevron, opening the
+/// A course-page section's "See all" button — label + chevron, opening the
 /// section's full subpage within the card.
 ///
-/// It rides its section header's trailing slot (#8744), where it sits beside
+/// It rides its section header's action row (#8744), where it sits beside
 /// the title rather than below the section's content: a priority action, in
 /// the same place for every section, reachable without scrolling the section
 /// first. The header places it, so the button carries no padding or alignment
 /// of its own.
+///
+/// A tonal pill rather than a text link (#8815): as primary-colored text it
+/// was the quietest thing in its row and easy to miss, while a solid fill
+/// would put four calls to action on one page at the level of "Join" (#8475
+/// tried that, under the sections). Tonal is the app's middle emphasis — the
+/// pill the course-code page and the add-course options already use.
 ///
 /// Every section's link reads the same "See all" — the section it belongs to
 /// is already named by the header beside it, so repeating it in the label
@@ -30,30 +36,16 @@ class CourseSectionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
-    return TextButton(
+    return FilledButton.tonalIcon(
       onPressed: onPressed,
-      style: TextButton.styleFrom(
-        // Tighter than Material's 12, so the link sits close to the section
-        // edge rather than floating off it.
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-        textStyle: Theme.of(context).textTheme.bodyMedium,
-        visualDensity: VisualDensity.compact,
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          // A long localization plus the button's own padding can outrun a
-          // narrow course column, so the label wraps inside the width the
-          // header allows it rather than overflowing the header's row.
-          Flexible(
-            child: Text(
-              l10n.seeAll,
-              semanticsLabel: l10n.seeAllSection(section),
-            ),
-          ),
-          const Icon(Icons.chevron_right, size: 18.0),
-        ],
-      ),
+      // The chevron trails the label, pointing at the subpage it opens.
+      iconAlignment: IconAlignment.end,
+      icon: const Icon(Icons.chevron_right),
+      // A long localization plus the button's own padding can outrun a
+      // narrow course column; the button keeps its label flexible, so it
+      // wraps inside the width the header allows it rather than overflowing
+      // the header's row.
+      label: Text(l10n.seeAll, semanticsLabel: l10n.seeAllSection(section)),
     );
   }
 }

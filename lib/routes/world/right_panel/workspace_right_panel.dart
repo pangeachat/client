@@ -210,7 +210,7 @@ class WorkspaceRightPanel extends StatelessWidget {
       label: l10n.pageLabel(closeButtonLabel ?? token.type.displayName(l10n)),
       container: true,
       // Browse-order key on the group itself (#8755) — see WorkspaceLeftPanel.
-      sortKey: BrowseOrder.rightPanels,
+      sortKey: WorkspaceOrder.rightPanels.sortKey,
       // Keep descendants as their own nodes: without this, loose text with no
       // container of its own (the Level drilldown's "LVL 15 … XP" header)
       // merges INTO the panel's name, announcing as one garbled label.

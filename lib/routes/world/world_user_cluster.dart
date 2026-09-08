@@ -73,7 +73,7 @@ class WorldUserClusterInternal extends StatelessWidget {
         final l2 = viewModel.userL2;
         return Semantics(
           label: L10n.of(context).analyticsAndSettingsLabel,
-          sortKey: BrowseOrder.cluster,
+          sortKey: WorkspaceOrder.cluster.sortKey,
           container: true,
           child: FocusTraversalGroup(
             policy: OrderedTraversalPolicy(),

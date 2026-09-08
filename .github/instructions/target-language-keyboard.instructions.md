@@ -13,7 +13,7 @@ The autocorrect setting itself, and how the learner's choice syncs across device
 
 Neither platform lets an app choose the keyboard language outright, so each gets the closest thing it offers.
 
-- **Android** — the composer tells the keyboard which language the learner is writing in, and the keyboard switches and corrects in it automatically. Nothing is asked of the learner.
+- **Android** — the composer tells the keyboard which language the learner is writing in, and the keyboard switches and corrects in it automatically. Gboard goes further: a learner who lacks the language gets it enabled by Gboard itself, a moment after the keyboard opens. Nothing is asked of the learner.
 - **iOS** — no equivalent exists, so we use memory instead of instruction. iOS restores the keyboard language a learner last chose for a text field it recognises, and the composer is given an identity it recognises, keyed per target language and persisting across chats and app launches. The learner switches keyboards once, by hand; every later visit to the composer comes back in that language. Switching target language starts a fresh memory rather than inheriting the previous language's keyboard.
 
 That identity is scoped to the composer alone, so search, display name, and password fields keep the device default. It is also fragile in one specific way: iOS discards the memory for any field whose input mode the app sets directly, so the composer's input mode is **read, never assigned**.
@@ -32,6 +32,8 @@ Detection is **advisory**. It exists to suppress a prompt the learner doesn't ne
 
 A learner with a Latin-American Spanish keyboard and a target language of Spanish is equipped, so matching compares only the **primary language subtag** and ignores region and script. Emoji and dictation entries are reported alongside real keyboards and are filtered out first. The answer changes while the app is backgrounded — that is the point, since we send the learner to Settings and they come back — so the check re-runs on resume rather than being cached for the session.
 
+The answer also changes in the first moment after focus. The keyboard only receives the composer's language hint as it attaches, and Gboard answers that hint by enabling the language, so a read taken at the instant of focus reports a Gboard learner unequipped and is wrong before a prompt could finish sliding in. The keyboards are therefore read only once the keyboard has had a moment to open and react (`keyboardSettleDelay`), never at the instant of focus.
+
 ## The prompt ladder
 
 Getting equipped is two steps on iOS and one on Android, and each step is shown only to a learner who has not already completed it.
@@ -44,7 +46,9 @@ Getting equipped is two steps on iOS and one on Android, and each step is shown 
 
 A learner who already owns the keyboard never sees the first step, and one who has already switched sees nothing at all. The second step clears itself the moment the learner switches, so it needs no dismissal to go away.
 
-**Delivery.** Each step appears as a dismissible inline tooltip directly above the composer, using the same instruction-tooltip treatment as the rest of the app, from the first time the learner focuses a composer that targets their L2. The chat input row gains nothing — it is the most contested space on a narrow screen. **A modal never opens on its own**; the tooltip carries an action, and only tapping it opens the dialog that walks the learner the rest of the way. Dismissal is remembered per target language, so changing L2 asks again.
+**Delivery.** Each step appears as a dismissible inline tooltip directly above the composer, using the same instruction-tooltip treatment as the rest of the app, from the first time the learner focuses a composer that targets their L2 and the keyboard has settled. The chat input row gains nothing — it is the most contested space on a narrow screen. **A modal never opens on its own**; the tooltip carries an action, and only tapping it opens the dialog that walks the learner the rest of the way. Dismissal is remembered per target language, so changing L2 asks again.
+
+Once shown, a step stays until the learner dismisses it, focuses the composer afresh, returns from Settings, or changes target language. The chat view redrawing underneath it — every frame of the keyboard's opening animation — is not a reason to read the keyboard again; that re-read is what made the prompt close itself as the keyboard opened (#8856).
 
 The autocorrect toggle in learning settings keeps its own dialog as the deliberate path, for a learner who goes looking, but it is no longer how anyone is expected to find this. Android defaults autocorrect on, so that dialog only ever fires for a learner who turns the setting off and back on — the people who most need it are the ones who never see it.
 

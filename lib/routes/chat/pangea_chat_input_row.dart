@@ -83,6 +83,7 @@ class PangeaChatInputRow extends StatelessWidget {
                             decoration: const BoxDecoration(),
                             child: PopupMenuButton<AddPopupMenuActions>(
                               useRootNavigator: true,
+                              tooltip: L10n.of(context).attach,
                               icon: const Icon(Icons.add_outlined),
                               onSelected:
                                   controller.onAddPopupMenuButtonSelected,
