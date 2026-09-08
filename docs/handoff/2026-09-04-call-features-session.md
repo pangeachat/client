@@ -1072,3 +1072,18 @@ until the design is Codex-green.
   concurrency PERMIT-UNTIL-SETTLE (released only when the underlying stage future settles, not the
   wrapper timeout -> at most K underlying I/O ops ever; mixer is pure/bounded, cannot hang).
 - Re-gating v4 (round 4). Build P3 only after design SOUND (or only ACCEPTABLE-V1 residuals).
+
+## 2026-09-08 (cont) — P3 design round 4 (1 blocker) -> v5; round 5 re-gating
+- v4 re-gate (round 4) = 1 BLOCKER + 4 ACCEPTABLE-V1 (9 -> 8 -> 3 -> 1). Blocker: index expiry not
+  anchored to first-seen -> a perpetually-incomplete call (peer never posts) is rewritten by every
+  periodic drain (pendingIncomplete is not a "failure" so attemptCap never bites), refreshing the
+  ExpiringStorageBox TTL forever -> unbounded index growth.
+- ACCEPTABLE-V1 (reviewer-cleared, all): validate->send stale window; orphan upload on timeout/dispose;
+  K permanently-hung ops halt reconciliation (bounded, playable halves); quarantine/TTL delivery limit.
+- v5 fix: expiry anchored to IMMUTABLE firstSeenAt; every upsert is read-modify-write preserving
+  firstSeenAt/attemptCount/quarantined/nextRetryAt; LOGICAL expiry = firstSeenAt+TTL enforced in code
+  (independent of the box write-timestamp) -> a peer-never-posts call is dropped at firstSeenAt+TTL, index
+  bounded. Also narrowed deterministic-mix-exception terminal to immutable-bad-input only (runtime
+  OOM/isolate-spawn = transient).
+- Design at /private/tmp/call-audio-merge-P3-DESIGN.md. On SOUND -> build P3a (pure decision core) + P3b
+  (coordinator) via a workflow, cold-gate the code.
