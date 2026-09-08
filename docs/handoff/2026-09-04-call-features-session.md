@@ -999,3 +999,17 @@ until the design is Codex-green.
   two inconsistent -> spawned follow-up task_cbf94fc3 rather than a unilateral one-sided fix. NOT a
   blocker for P2; revisit as a paired change to both events.
 - NEXT after P2 cold-green: P3 (election + trigger + durable reconciliation) then P4 (player).
+
+## 2026-09-08 (cont) — LANE B P2 fully cold-green + committed; starting P3 design
+- All 5 P2 cold gates CORRECT/softening=no (behav-model, behav-writer+truncated, pin-json, pin-hash,
+  pin-truncated). pin-truncated found 2 REAL gaps: a tautological 'truncated does not change the txnId'
+  test (removed -- truncated is not a txnId param, no honest runtime pin exists) and a missing
+  clock-drift-trim->false case (added to the existing proven micro-trim test; mutation-verified RED
+  when trimTailFrames latches cappedLogged). Fixes committed 801237963d.
+- I independently READ+verified: coverageHash length-prefix framing is injective/collision-free;
+  _sanitizedSourceEventIds is bounded + refuses (never truncates); truncated=cappedLogged is true iff a
+  real ceiling cut (append/padSilence dropped bytes), never the clock-drift trim. All confirmed.
+- P2 DONE: de8dc626db (impl) + 801237963d (test fixes) on satvik/call-features-combined.
+- NEXT: P3 = election + trigger + durable reconciliation (design "Election and durable convergence" +
+  "Trigger + durable reconciliation"). ARCHITECTURAL -> design-first: map integration surfaces, write a
+  build design, cold-gate the DESIGN, then build (Opus) + cold-gate code. Exploration dispatched.
