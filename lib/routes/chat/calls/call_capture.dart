@@ -1132,13 +1132,27 @@ class CallCaptureService {
   /// The wall floor is confined to that first run ON PURPOSE. Once a run closes,
   /// [_notBeforeMs] takes over and the wall is not read again, so a wall clock
   /// STEPPING mid-call — the hazard the monotonic counter exists to survive —
-  /// moves nothing, exactly as before. One residual is accepted: a device that
-  /// sleeps during a mute AFTER it has already spoken compresses the post-sleep
-  /// run toward its own earlier speech rather than recovering the true gap,
-  /// because a stall there cannot be told apart from a forward wall step and the
-  /// ordered compression is preferred to risking a scatter. A
-  /// suspension-inclusive platform clock is the only exact fix and is out of
-  /// scope here.
+  /// moves nothing, exactly as before.
+  ///
+  /// This closes the reported bug and every realistic muted-start sleep, where
+  /// the wall clock keeps honest time through a monotonic stall. Two residuals
+  /// remain, and both are the SAME class — the device's local clocks failing in
+  /// a way no other local reading can catch — so neither is claimed fixed here;
+  /// the exact fix for both is a suspension-inclusive platform clock (iOS
+  /// CLOCK_BOOTTIME / Android elapsedRealtime), which does not exist in this app
+  /// and is deferred. (1) A device that sleeps during a mute AFTER it has
+  /// already spoken compresses the post-sleep run toward its own earlier speech
+  /// rather than recovering the true gap: a stall there cannot be told apart
+  /// from a forward wall step, so ordered compression is preferred to risking a
+  /// scatter. (2) On the FIRST run, the wall floor stands in for the missing
+  /// monotonic reading only while the wall itself is honest; if the wall ALSO
+  /// steps backward by the muted interval or more during the sleep, both the
+  /// monotonic position and the wall floor sit near t0 and the late first run
+  /// can still scatter ahead of the peer's earlier speech. This is strictly
+  /// rarer than the pre-fix behaviour (which scattered on ANY stall, wall
+  /// irrelevant) — it is a narrowed, not an introduced, hole — but it is a
+  /// scatter, not merely a compression, and the "scattered is not accepted"
+  /// bar above is met only up to this simultaneous double-clock failure.
   int _runStartsAt(int samples, int sampleRate, int channels) {
     var base = _baseUnixMs;
     if (base == null) {
