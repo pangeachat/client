@@ -413,25 +413,10 @@ class CallAudioMergeCoordinator {
         );
       }
 
-      // Step 4: RE-VALIDATE before upload (rule 3).
-      if (!await _stillMergeable(
-        roomId,
-        callKey,
-        coverage,
-        myUserId,
-        myDeviceId,
-        key,
-        tracker,
-        gen,
-        attempt,
-      )) {
-        return;
-      }
-      if (_superseded(gen, attempt)) return;
-
-      // Step 5: mix. A decode ([FormatException]) is TERMINAL (immutable bad
-      // input); every other mix error is TRANSIENT (runtime OOM/isolate) and
-      // falls through to the outer catch. Not truncated/complete is terminal.
+      // Step 4: mix (pure CPU, bounded). A decode ([FormatException]) is
+      // TERMINAL (immutable bad input); every other mix error is TRANSIENT
+      // (runtime OOM/isolate) and falls through to the outer catch. Not
+      // truncated/complete is terminal.
       final CallAudioMergeResult result;
       try {
         result = await _stage(
@@ -459,6 +444,26 @@ class CallAudioMergeCoordinator {
         );
         return;
       }
+
+      // Step 5: RE-VALIDATE IMMEDIATELY before upload (rule 3). Placed AFTER the
+      // mix, not before it, so a third half or a merged event that arrived
+      // during the (bounded, pure-CPU) mix aborts HERE -- before an upload is
+      // spent -- rather than orphaning one the before-send re-validate would
+      // only catch after the bytes were already on the server.
+      if (!await _stillMergeable(
+        roomId,
+        callKey,
+        coverage,
+        myUserId,
+        myDeviceId,
+        key,
+        tracker,
+        gen,
+        attempt,
+      )) {
+        return;
+      }
+      if (_superseded(gen, attempt)) return;
 
       // Step 6: upload. Disposal check immediately before (rule 6).
       if (_superseded(gen, attempt)) return;
