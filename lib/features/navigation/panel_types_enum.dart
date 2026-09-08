@@ -126,6 +126,14 @@ enum PanelTypesEnum {
 
   bool get defaultCavityToPeek => {PanelTypesEnum.course}.contains(this);
 
+  /// The panel has a rest FLOOR instead of a close: it is never dismissed,
+  /// only moved between two states, so its single affordance is the
+  /// expand/collapse chevron rather than an X or a back arrow (#8816;
+  /// routing.instructions.md -> Closing a panel). True on BOTH form factors —
+  /// the floor is the nav cavity's collapsed peek on narrow and the course
+  /// context bar on wide, and either way the course never leaves the screen.
+  bool get hasCavityFloor => this == PanelTypesEnum.course;
+
   // The add-course subpages (start my own / browse public / enter a code,
   // including the course preview they push) open at FULL height: they show
   // list/form content unrelated to the map behind them, so a half-open sheet

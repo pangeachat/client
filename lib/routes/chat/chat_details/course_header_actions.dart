@@ -30,14 +30,14 @@ class CourseHeaderActions extends StatelessWidget {
   Widget build(BuildContext context) => Row(
     mainAxisSize: MainAxisSize.min,
     children: [
+      // No padding of its own: the button is an IconButton like the focus
+      // one beside it, and brings the same internal inset and 48px target, so
+      // an extra wrapper here would make the two different sizes again.
       if (room.joinCode != null)
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ShareRoomButton(
-            room: room,
-            tooltip: L10n.of(context).shareCourse,
-            child: const Icon(Icons.share_outlined),
-          ),
+        ShareRoomButton(
+          room: room,
+          tooltip: L10n.of(context).shareCourse,
+          icon: const Icon(Icons.share_outlined),
         ),
       // The one camera path that zooms (#7616): course selection only pans, so
       // this button zoom+pan-fits the map to all of the course's activities.

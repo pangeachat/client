@@ -136,6 +136,12 @@ class WorldMap extends StatefulWidget {
   /// course is selected (#8736, reversing #7716).
   final bool coursePanelOpen;
 
+  /// An activity plan is open in the left column: the course context bar docks
+  /// above THAT panel instead of taking the map's search slot, so the slot
+  /// draws nothing here (#8816; world-map.instructions.md → The course context
+  /// bar).
+  final bool activityPanelOpen;
+
   /// When set, the map brings this target into the exposed canvas (the area the
   /// left column and detail panel don't cover) instead of fitting the whole
   /// course — e.g. while an activity's `?activity=` detail panel is open. The
@@ -154,6 +160,7 @@ class WorldMap extends StatefulWidget {
     this.availableVisibleMapWidth = 0.0,
     this.courseScopeSpaceId,
     this.coursePanelOpen = false,
+    this.activityPanelOpen = false,
     this.focus,
   });
 

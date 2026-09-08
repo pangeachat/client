@@ -154,13 +154,18 @@ token over the course-scoped map.
 **Context persists, and navigation never consumes it.** Opening, closing, and
 switching panels — closing the course card itself, tapping an activity pin,
 moving to Chats or Settings — all leave `?c=` untouched; closing panels is
-precisely how you get a clear look at the scoped map (#7087). What the learner
-then sees in the map's search slot is the **course context bar** — the closed
-card's header, saying which course the map is scoped to and leading back into
-the card
+precisely how you get a clear look at the scoped map (#7087) — as far as the
+course panel allows: it has a floor rather than a close, so it collapses to
+its indicator instead of clearing away ([Closing a panel](#closing-a-panel-x-or-back-arrow)).
+What the learner then sees in the **wide** map's search slot is the **course
+context bar** — the closed card's header, saying which course the map is scoped
+to and leading back into the card
 ([world-map.instructions.md](world-map.instructions.md#the-course-context-bar));
 it is chrome, not a panel, and carries no close control, because `?c=` is
-cleared by the World control below, never by dismissing its indicator. The context
+cleared by the World control below, never by dismissing its indicator. On narrow
+there is no bar: the peek's own header does that naming, which is why the peek
+cannot be dismissed
+([#8816](https://github.com/pangeachat/client/issues/8816)). The context
 changes in three ways: selecting another **course** replaces it; the
 **World/home** control clears it; and **leaving or deleting the course you are
 in** clears it. The latter two are the same deliberate full reset — dropping
@@ -274,8 +279,11 @@ learner opens analytics or settings on the right at the same time.
 
 Each open surface is its own panel with its own close, and closing one leaves
 the rest open (close the chat list but keep the chat; close a course card to
-widen the map while the chat stays open). Selecting a section from the **left
-nav rail** (Chats, Courses, a course) **replaces** the open left-column panels
+widen the map while the chat stays open) — except a panel with a **floor**
+instead of a close, which is the course panel alone
+([Closing a panel](#closing-a-panel-x-or-back-arrow)). Selecting a
+section from the **left nav rail** (Chats, Courses, a course) **replaces** the
+open left-column panels
 with that section rather than stacking beside them, while right-column
 companions (analytics, a detail) stay open. Opening a course from a map pin or a
 Courses-list tile is navigating within your content, not a rail section switch,
@@ -303,6 +311,28 @@ user came from:
   context closes back to the course card.
 - An **X** means closing simply reveals what is beneath: the other panels and
   the map.
+- An **expand/collapse chevron** replaces both where a panel has a **floor
+  instead of a close**. The only one is the course panel under `?c=`
+  ([#8816](https://github.com/pangeachat/client/issues/8816)), and it has a
+  floor on **both** form factors: the nav cavity's collapsed peek on narrow,
+  the [course context bar](world-map.instructions.md#the-course-context-bar) on
+  wide. Either way the course never leaves the screen, so there is nothing an X
+  could reveal and nowhere a back arrow could go — only two states to move
+  between. The chevron sits in the **leading** slot the X would have taken, in
+  every state and on every width. One control in one place is the point; a
+  panel whose close and whose expand sat on opposite sides of the header made
+  two states look like two different surfaces.
+
+  **Which way it points follows the surface, not the state's name.** On narrow
+  the cavity is a sheet that slides, so the chevron points the way it will
+  travel — up at the floor, down when open. On wide nothing slides: the panel
+  appears in place, so it takes the ordinary **disclosure** convention instead
+  — down to reveal the card, up to hide it again — the exact inverse. The two
+  are deliberately not unified: a glyph naming a direction of motion is wrong
+  where there is no motion, and one naming disclosure is wrong on a sheet the
+  learner drags by hand. Both are spelled out in
+  [`ChevronMeaning`](../../lib/routes/world/left_panel/floor_chevron.dart), so
+  a host declares which it is under instead of inheriting one by accident.
 
 **Navigation never clears context or any other state to force one affordance or
 the other.** If a panel shows the wrong affordance, its tree placement or the
@@ -475,6 +505,22 @@ its pin**, so the learner sees where the activity lives while reading it —
 swipe up for the full plan. On a wide screen the same content is a bounded
 panel beside the map. Only the *launched session* — a live chat — is a
 full-screen surface (see *Full-screen surfaces* below).
+
+**The course panel's peek is a floor, not a size it can be dismissed past.**
+Under `?c=` the narrow course panel is always mounted: dragging it down settles
+at the collapsed peek instead of dismissing, and the peek carries an expand
+chevron rather than an X
+([Closing a panel](#closing-a-panel-x-or-back-arrow)), so the course menu is
+never off screen and is always one tap from expanding
+([#8816](https://github.com/pangeachat/client/issues/8816)). This is how a
+narrow scoped map says **which** course scopes it — the job the
+[course context bar](world-map.instructions.md#the-course-context-bar) does on
+wide, and the reason narrow has no bar. The floor is against the panel's OWN
+gestures — a drag or its chevron; selecting another rail section still replaces
+it like any left panel, and the rail's course shortcut brings it straight back.
+The floor belongs to the course panel alone: an
+activity plan still dismisses, and a full-screen activity carries **no** course
+indicator above it, because the plan needs the vertical space.
 
 The widget remembers its height **per course** (and per activity): opening a
 chat over it tears it down, and closing that chat reopens it at the size the

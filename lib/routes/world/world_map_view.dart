@@ -31,6 +31,7 @@ import 'package:fluffychat/routes/world/exiting_large_markers_layer.dart';
 import 'package:fluffychat/routes/world/exiting_markers_layer.dart';
 import 'package:fluffychat/routes/world/large_markers_layer.dart';
 import 'package:fluffychat/routes/world/map_exit_tracker.dart';
+import 'package:fluffychat/routes/world/panel_card.dart';
 import 'package:fluffychat/routes/world/pin_semantics_layer.dart';
 import 'package:fluffychat/routes/world/trackpad_pinch_zoom.dart';
 import 'package:fluffychat/routes/world/world_map.dart';
@@ -1238,7 +1239,13 @@ class _WorldMapViewState extends State<WorldMapView> {
     // sliver — the surviving overlap in #7088). Below a usable width it hides
     // entirely; close a panel to search.
     final courseScopeSpaceId = widget.controller.widget.courseScopeSpaceId;
-    final searchLeft = widget.controller.widget.leftOverlayWidth + 12;
+    // Inset by the PANEL CARD's own margin, not a literal of its own: this
+    // slot carries the course context bar, which is the course panel's header
+    // with the panel closed, so the closed bar's left edge has to land exactly
+    // where the open panel's card edge does. A 12 here against the card's 8
+    // put the minimized bar 4px right of the panel it replaces (#8816).
+    final searchLeft =
+        widget.controller.widget.leftOverlayWidth + PanelCard.margin.left;
     final searchWidth = math.min(
       360.0,
       MediaQuery.sizeOf(context).width -
@@ -1247,7 +1254,7 @@ class _WorldMapViewState extends State<WorldMapView> {
             widget.controller.widget.rightOverlayWidth,
             PanelAllocator.clusterGutter,
           ) -
-          12,
+          PanelCard.margin.right,
     );
     // The map's semantic container is ANCHORED to a thin strip at the far
     // right edge (#8755): VoiceOver ignores DOM order for overlapping
@@ -1338,7 +1345,8 @@ class _WorldMapViewState extends State<WorldMapView> {
           if (FluffyThemes.isColumnMode(context) &&
               searchWidth >= 220 &&
               !(courseScopeSpaceId != null &&
-                  widget.controller.widget.coursePanelOpen))
+                  (widget.controller.widget.coursePanelOpen ||
+                      widget.controller.widget.activityPanelOpen)))
             Positioned(
               top: 12,
               left: searchLeft,

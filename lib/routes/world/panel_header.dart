@@ -36,6 +36,17 @@ class PanelHeader extends StatelessWidget {
     this.trailing,
   });
 
+  /// The canonical panel-title style. Published so chrome that IS a panel
+  /// header with the panel closed — the course context bar — cannot drift
+  /// from the real header the way it had (titleMedium/w600 against this
+  /// header's wide titleLarge, #8816).
+  static TextStyle? titleStyle(BuildContext context) =>
+      FluffyThemes.isColumnMode(context)
+      ? Theme.of(context).textTheme.titleLarge
+      : Theme.of(
+          context,
+        ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600);
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -52,11 +63,7 @@ class PanelHeader extends StatelessWidget {
               child: DefaultTextStyle.merge(
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: FluffyThemes.isColumnMode(context)
-                    ? Theme.of(context).textTheme.titleLarge
-                    : Theme.of(context).textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.w600,
-                      ),
+                style: titleStyle(context),
                 child: titleWidget ?? Text(title),
               ),
             ),
