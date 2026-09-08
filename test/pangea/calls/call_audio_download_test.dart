@@ -1,12 +1,9 @@
-// Dart imports:
 import 'dart:typed_data';
 
-// Package imports:
 import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart';
 import 'package:matrix/matrix_api_lite/generated/fixed_model.dart';
 
-// Project imports:
 import 'package:fluffychat/routes/chat/calls/call_audio_download.dart';
 
 /// A `Client` double that answers `getContent` itself and refuses every
@@ -114,22 +111,17 @@ void main() {
       );
     });
 
-    test('refuses a media path of more than one segment', () {
-      // A Matrix media id is always a single opaque token; a nested path is
-      // not a media id this reader knows how to use.
+    test('refuses a media path that is not exactly one non-empty segment', () {
+      // A Matrix media id is always a single opaque token. Both a nested path
+      // and a `//` (which parses to TWO EMPTY segments) are rejected by the
+      // same `segments.length != 1` guard -- one test, two input shapes,
+      // rather than two tests pinning the one guard. The `//` case is kept
+      // because a naive join-then-check impl would turn it into a
+      // non-empty-looking '/' media id and slip past; the count guard does not.
       expect(
         () => mxcServerAndMediaId(Uri.parse('mxc://example.com/a/b')),
         throwsArgumentError,
       );
-    });
-
-    test('refuses a double-slash path rather than joining it into a '
-        'non-empty-looking media id', () {
-      // `mxc://example.com//` parses to TWO empty path segments -- joined
-      // with '/', that would read as the non-empty string '/' and slip past
-      // an emptiness check performed only AFTER joining. Requiring exactly
-      // one non-empty segment catches this the same way it catches any
-      // other multi-segment path.
       expect(
         () => mxcServerAndMediaId(Uri.parse('mxc://example.com//')),
         throwsArgumentError,
