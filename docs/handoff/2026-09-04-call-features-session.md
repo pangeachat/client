@@ -931,3 +931,36 @@ until the design is Codex-green.
   P2/P3/P4 build) concurrently; different worktrees (cues-pr vs combined) so parallel-safe.
 - Cues fix committed 3d1860f44e (locally green, 75 tests). Recording (piece1+2) + mixer P1
   (2e627b7079) committed cold-green on satvik/call-features-combined.
+
+## 2026-09-08 (cont) — cues cold-gate found 2 lifecycle + 2 pinning REDs; root-caused, fixed, re-gating
+- LANE A cues cold gate (4 gates, fully-inline no-tools prompts after the first batch web-wandered on
+  -U0 diffs): behav-orch CORRECT; behav-sound ISSUES x2; pin-sound ISSUES x1; pin-orch ISSUES x1. All
+  softening=no, all REAL. Root-caused (one class): "every op touching the loop player abandons once
+  disposed, and dispose is await-idempotent."
+  - FIX (AssetRingSound): stop() gained the _disposed guard (was the one loop-op missing it -> a
+    post-dispose stop hit the released _player = use-after-dispose); dispose() made await-idempotent
+    (_disposal ??= _dispose()) so a concurrent 2nd dispose shares the teardown instead of resolving
+    early.
+  - FIX (RingPlayer, uniformity): stop()/stopAll() gained the same _disposed guard; dispose() made
+    await-idempotent. (Behaviour already safe via _playingFor=null; guards are defensive uniformity.)
+  - FIX (tests): strengthened 'a stop after a started loop stops it in order' with a mid-hold assertion
+    (now distinguishes serialized-after-play from overlap; the prior version's final log was identical
+    either way -> not mutation-proving); strengthened 'a disposed player accepts no further cues' to
+    also drive stop+stopAll; added 'a stop after dispose never touches the released loop player' and
+    'a second dispose awaits the first teardown' (+ disposeHold on the fake). All 3 source fixes
+    mutation-proven RED locally (stop-guard, serialization, dispose-idempotency).
+  - Local gates GREEN: dart format clean, analyze clean (touched files), full ring suite passes.
+    import_sorter tool won't complete locally (env glitch after "Sorting 1725 files", exit 1, no
+    per-file output) but NO import-line changed vs the CI-green feature commit 3d1860f44e -> import
+    order unchanged.
+  - RE-GATE (fixed code, 4 focused inline gates): rg-behav-orch CORRECT, rg-pin-orch CORRECT;
+    rg-behav-sound + rg-pin-sound IN FLIGHT.
+  - NOT yet committed on cues-pr (waiting for the 2 remaining re-gates green). After green: commit the
+    fixes -> local PR CI + merge check -> report for owner approval (NO PR without approval).
+- LANE B: dispatched P2 builder (sonnet, agent a139cd8a3a9ca0d48) on the pangea.call_audio_merged
+  event schema + writer + `truncated` prereq; brief /private/tmp/build-brief-mix-p2-schema.md. Will
+  cold-gate its output (agents stall on bg-codex+Monitor; brief tells it to self-gate SYNCHRONOUSLY).
+- LESSON: a codex cold gate handed a -U0 diff + "read the source file" pointer web-wanders (its own
+  web_search tool) and no-verdicts. Reliable recipe: paste the FULL relevant source/tests INLINE,
+  forbid all tools ("everything is in this message, use NO tools, do not search, do not read files"),
+  keep code <~330 lines, one codex per tracked bg Bash task (no & subshell orphaning).
