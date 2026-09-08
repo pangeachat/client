@@ -85,11 +85,11 @@ The course plan panel lists the course's activities as cards, in rows. Each card
 
 Each Mission's header on the full course plan tells the learner at a glance whether it is done, next, or later ([client#8874](https://github.com/pangeachat/client/issues/8874) — before this, the only mark was the statement's text colour, which nobody could see). Three states:
 
-- **Up next** — the shared resolver's anchor for this course. The whole section, header and activity cards, is outlined in `primary`, and an "Up next" label in the header says so in words, so the state is never colour alone. An outline rather than a fill: the carousel's scroll arrows paint a surface-coloured strip over the row's edge, which reads as a notch cut out of any tinted band. One Mission per course wears it. When every Mission is satisfied the anchor is the weakest one, so a satisfied Mission can be Up next: it keeps the outline and label, with the check below.
+- **Up next** — the shared resolver's anchor for this course. Its header carries an "Up next" label, and its statement and star count take the `primary` accent; the label says the state in words, so it is never colour alone. Nothing wraps the section: a band or an outline around header and cards was tried and dropped, because a tint shows the carousel's surface-coloured scroll-arrow strip as a notch and any inset throws the section's margins off against its neighbours. One Mission per course wears it. When every Mission is satisfied the anchor is the weakest one, so a satisfied Mission can be Up next: it keeps the label and accent, with the check below.
 - **Satisfied** — stars at or past the effective threshold. The gold star before the fraction becomes a green check and the header text drops to `onSurfaceVariant`, so finished work reads as done without disappearing: its activities stay in view and playable, since a learner can still raise a per-activity best.
 - **Later** — everything else, plain.
 
-The emphasis lives on the Mission header and its outline, never on the activity cards: the card states above keep their meaning inside an outline.
+The emphasis lives on the Mission header alone, never on the section or its activity cards: the card states above keep their meaning under an Up-next header.
 
 ## Per-course activity pinning
 
