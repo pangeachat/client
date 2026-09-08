@@ -2756,24 +2756,6 @@ class ChatController extends State<ChatPageWithRoom>
   // }
   // Pangea#
 
-  int? findChildIndexCallback(Key key, Map<String, int> thisEventsKeyMap) {
-    // this method is called very often. As such, it has to be optimized for speed.
-    if (key is! ValueKey) {
-      return null;
-    }
-    final eventId = key.value;
-    if (eventId is! String) {
-      return null;
-    }
-    // first fetch the last index the event was at
-    final index = thisEventsKeyMap[eventId];
-    if (index == null) {
-      return null;
-    }
-    // we need to +1 as 0 is the typing thing at the bottom
-    return index + 1;
-  }
-
   // #Pangea
   // void onInputBarSubmitted(String _) {
   //   send();
