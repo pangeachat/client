@@ -1608,11 +1608,17 @@ void main() {
       r.onFrame(_tone(160)); // 10ms of real audio at elapsed 0
       clock.pass(1000); // audio runs to elapsed 1000
       r.onRunEnded(); // audio STOPS here, at elapsed 1000 -- the true end anchor
+      // A real gap between the audio stop and the publish call. This is what
+      // pins the onRunEnded latch SPECIFICALLY: if the end were not captured at
+      // onRunEnded, the finish()-entry fallback would fix it at 1500 here, so
+      // removing only the onRunEnded capture flips the assertion to 1500 (RED).
+      clock.pass(500); // elapsed 1500 at finish() entry
       await r.finish(wasCarrier: true, callKey: _callKey);
 
       final content = CallAudioContent.fromJson(sent.single)!;
-      // 1000ms (where audio stopped), NOT 4000ms (1000 + the 3000ms of
-      // store-read latency a late clock read would have padded as silence).
+      // 1000ms (where audio stopped at onRunEnded); NOT 1500ms (finish() entry,
+      // were the onRunEnded latch gone) and NOT 4500ms (a late read after the
+      // 3000ms store-read latency, were both captures gone).
       expect(
         content.durationMs,
         1000,
