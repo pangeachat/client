@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "Papa {level}",
     "whatAreYouLearning": "He aha kāu e aʻo nei?",
     "languageSwitcherBaseLanguageLabel": "Kou ʻōlelo kumu",
-    "listenModeDescription": "E kaomi i ke koho e hoʻolohe. ʻAʻohe mea i koho ʻia.",
     "rateActivityLiked": "Makemake au",
     "rateActivityDisliked": "ʻAʻole au makemake",
     "constructUseHrdDesc": "Lohe ʻia",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "E haʻalele i ke kelepona ma ʻaneʻi",
     "callDevicesOlderTitle": "ʻAʻole hiki i kāu mea hana ʻē aʻe ke haʻalele i kēia kelepona ma kona iho.",
     "callDevicesOlderBody": "E hoʻopau i ke kelepona ma laila, a i ʻole e haʻalele ma ʻaneʻi. ʻO ia hoʻi ke holo nei ia i kahi mana kahiko, a ʻo ka hoʻonui ʻana e hoʻoponopono i kēia.",
-    "callContinuingElsewhere": "Ke hoʻomau nei kēia kelepona ma kāu mea hana ʻē aʻe."
+    "callContinuingElsewhere": "Ke hoʻomau nei kēia kelepona ma kāu mea hana ʻē aʻe.",
+    "listenFirst": "Hoʻolohe mua",
+    "listenFirstDescription": "Ke hoʻā ʻia ʻo Hoʻolohe Mua, hoʻokani wale ka pā hoʻokahi i ke leo a koho ka pā pālua i ke koho.",
+    "listenFirstNeedsChoiceAudio": "E hoʻā i ke kani Koho e hoʻohana iā Hoʻolohe Mua."
 }

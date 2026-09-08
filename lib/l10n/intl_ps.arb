@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "کچه {level}",
     "whatAreYouLearning": "تاسو څه زده کوئ؟",
     "languageSwitcherBaseLanguageLabel": "ستاسو اصلي ژبه",
-    "listenModeDescription": "د اوریدلو لپاره یو انتخاب ټایپ کړئ. هیڅ شی نه دی انتخاب شوی.",
     "rateActivityLiked": "خوښ شو",
     "rateActivityDisliked": "نه خوښ شو",
     "constructUseHrdDesc": "اوریدل شوی",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "زنګ دلته پریږدئ",
     "callDevicesOlderTitle": "ستاسو بله وسیله نشي کولی دا زنګ پخپله پریږدي.",
     "callDevicesOlderBody": "هلته زنګ پای ته ورسوئ، یا یې دلته پریږدئ. دا معمولا پدې معنی ده چې دا یوه پخوانۍ نسخه پرمخ وړي، او د هغې تازه کول به دا حل کړي.",
-    "callContinuingElsewhere": "دا زنګ ستاسو په بله وسیله کې دوام لري."
+    "callContinuingElsewhere": "دا زنګ ستاسو په بله وسیله کې دوام لري.",
+    "listenFirst": "لومړی واورئ",
+    "listenFirstDescription": "کله چې لومړی واورئ فعال وي، یو کلیک یوازې آډیو غږوي او دوه ځله کلیک کول انتخاب غوره کوي.",
+    "listenFirstNeedsChoiceAudio": "د لومړي اوریدلو کارولو لپاره د انتخابونو آډیو فعاله کړئ."
 }

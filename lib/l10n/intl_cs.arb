@@ -10246,7 +10246,6 @@
     "languageDropdownLevel": "Úroveň {level}",
     "whatAreYouLearning": "Co se učíte?",
     "languageSwitcherBaseLanguageLabel": "Váš základní jazyk",
-    "listenModeDescription": "Klepnutím na možnost si ji poslechnete. Nic není vybráno.",
     "rateActivityLiked": "Líbilo se mi to",
     "rateActivityDisliked": "Nelíbilo se mi to",
     "constructUseHrdDesc": "Slyšel",
@@ -10365,5 +10364,8 @@
     "callDevicesLeaveHere": "Opustit hovor zde",
     "callDevicesOlderTitle": "Vaše druhé zařízení nemůže tento hovor opustit samo.",
     "callDevicesOlderBody": "Ukončete hovor tam, nebo ho opusťte zde. To obvykle znamená, že používá starší verzi a aktualizace to vyřeší.",
-    "callContinuingElsewhere": "Tento hovor pokračuje na vašem druhém zařízení."
+    "callContinuingElsewhere": "Tento hovor pokračuje na vašem druhém zařízení.",
+    "listenFirst": "Nejprve poslech",
+    "listenFirstDescription": "Když je zapnuta funkce „Nejprve poslech“, jedním kliknutím se přehraje zvuk a dvojitým kliknutím se vybere možnost.",
+    "listenFirstNeedsChoiceAudio": "Zapněte zvuk voleb, abyste mohli použít funkci „Nejprve poslech“."
 }

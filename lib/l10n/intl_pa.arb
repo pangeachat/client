@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "ਪੱਧਰ {level}",
     "whatAreYouLearning": "ਤੁਸੀਂ ਕੀ ਸਿੱਖ ਰਹੇ ਹੋ?",
     "languageSwitcherBaseLanguageLabel": "ਤੁਹਾਡੀ ਮੂਲ ਭਾਸ਼ਾ",
-    "listenModeDescription": "ਇਸਨੂੰ ਸੁਣਨ ਲਈ ਇੱਕ ਵਿਕਲਪ 'ਤੇ ਟੈਪ ਕਰੋ। ਕੁਝ ਵੀ ਚੁਣਿਆ ਨਹੀਂ ਗਿਆ ਹੈ।",
     "rateActivityLiked": "ਪਸੰਦ ਕੀਤਾ",
     "rateActivityDisliked": "ਪਸੰਦ ਨਹੀਂ ਕੀਤਾ",
     "constructUseHrdDesc": "ਸੁਣਿਆ",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "ਕਾਲ ਇੱਥੇ ਛੱਡੋ",
     "callDevicesOlderTitle": "ਤੁਹਾਡੀ ਦੂਜੀ ਡਿਵਾਈਸ ਆਪਣੇ ਆਪ ਇਸ ਕਾਲ ਨੂੰ ਛੱਡ ਨਹੀਂ ਸਕਦੀ।",
     "callDevicesOlderBody": "ਕਾਲ ਉੱਥੇ ਖਤਮ ਕਰੋ, ਜਾਂ ਇਸਨੂੰ ਇੱਥੇ ਛੱਡੋ। ਇਸਦਾ ਆਮ ਤੌਰ 'ਤੇ ਮਤਲਬ ਹੈ ਕਿ ਇਹ ਇੱਕ ਪੁਰਾਣਾ ਸੰਸਕਰਣ ਚਲਾ ਰਿਹਾ ਹੈ, ਅਤੇ ਇਸਨੂੰ ਅੱਪਡੇਟ ਕਰਨ ਨਾਲ ਇਹ ਠੀਕ ਹੋ ਜਾਵੇਗਾ।",
-    "callContinuingElsewhere": "ਇਹ ਕਾਲ ਤੁਹਾਡੀ ਦੂਜੀ ਡਿਵਾਈਸ 'ਤੇ ਜਾਰੀ ਹੈ।"
+    "callContinuingElsewhere": "ਇਹ ਕਾਲ ਤੁਹਾਡੀ ਦੂਜੀ ਡਿਵਾਈਸ 'ਤੇ ਜਾਰੀ ਹੈ।",
+    "listenFirst": "ਪਹਿਲਾਂ ਸੁਣੋ",
+    "listenFirstDescription": "ਜਦੋਂ ਪਹਿਲਾਂ ਸੁਣੋ ਚਾਲੂ ਹੁੰਦਾ ਹੈ, ਤਾਂ ਇੱਕ ਕਲਿੱਕ ਸਿਰਫ਼ ਆਡੀਓ ਚਲਾਉਂਦਾ ਹੈ ਅਤੇ ਡਬਲ-ਕਲਿੱਕ ਵਿਕਲਪ ਚੁਣਦਾ ਹੈ।",
+    "listenFirstNeedsChoiceAudio": "ਪਹਿਲਾਂ ਸੁਣੋ ਦੀ ਵਰਤੋਂ ਕਰਨ ਲਈ ਵਿਕਲਪ ਆਡੀਓ ਚਾਲੂ ਕਰੋ।"
 }

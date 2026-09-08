@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "ಹಂತ {level}",
     "whatAreYouLearning": "ನೀವು ಏನು ಕಲಿಯುತ್ತಿದ್ದೀರಿ?",
     "languageSwitcherBaseLanguageLabel": "ನಿಮ್ಮ ಮೂಲ ಭಾಷೆ",
-    "listenModeDescription": "ಕೇಳಲು ಒಂದು ಆಯ್ಕೆಯನ್ನು ಟ್ಯಾಪ್ ಮಾಡಿ. ಯಾವುದನ್ನೂ ಆಯ್ಕೆ ಮಾಡಲಾಗಿಲ್ಲ.",
     "rateActivityLiked": "ಇಷ್ಟವಾಯಿತು",
     "rateActivityDisliked": "ಇಷ್ಟವಾಗಲಿಲ್ಲ",
     "constructUseHrdDesc": "ಕೇಳಿದೆ",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "ಕರೆ ಇಲ್ಲಿ ಬಿಡಿ",
     "callDevicesOlderTitle": "ನಿಮ್ಮ ಇನ್ನೊಂದು ಸಾಧನವು ತನ್ನಷ್ಟಕ್ಕೆ ಈ ಕರೆಯನ್ನು ಬಿಡಲು ಸಾಧ್ಯವಿಲ್ಲ.",
     "callDevicesOlderBody": "ಅಲ್ಲಿ ಕರೆಯನ್ನು ಕೊನೆಗೊಳಿಸಿ, ಅಥವಾ ಇಲ್ಲಿ ಬಿಡಿ. ಇದರರ್ಥ ಸಾಮಾನ್ಯವಾಗಿ ಅದು ಹಳೆಯ ಆವೃತ್ತಿಯನ್ನು ಚಾಲನೆ ಮಾಡುತ್ತಿದೆ, ಮತ್ತು ಅದನ್ನು ನವೀಕರಿಸುವುದರಿಂದ ಇದನ್ನು ಸರಿಪಡಿಸುತ್ತದೆ.",
-    "callContinuingElsewhere": "ಈ ಕರೆ ನಿಮ್ಮ ಇನ್ನೊಂದು ಸಾಧನದಲ್ಲಿ ಮುಂದುವರಿಯುತ್ತಿದೆ."
+    "callContinuingElsewhere": "ಈ ಕರೆ ನಿಮ್ಮ ಇನ್ನೊಂದು ಸಾಧನದಲ್ಲಿ ಮುಂದುವರಿಯುತ್ತಿದೆ.",
+    "listenFirst": "ಮೊದಲು ಆಲಿಸಿ",
+    "listenFirstDescription": "ಮೊದಲು ಆಲಿಸಿ ಆನ್ ಆಗಿರುವಾಗ, ಒಂದು ಕ್ಲಿಕ್ ಆಡಿಯೋ ಪ್ಲೇ ಮಾಡುತ್ತದೆ ಮತ್ತು ಡಬಲ್-ಕ್ಲಿಕ್ ಆಯ್ಕೆಯನ್ನು ಆರಿಸುತ್ತದೆ.",
+    "listenFirstNeedsChoiceAudio": "ಮೊದಲು ಆಲಿಸಿ ಬಳಸಲು ಆಯ್ಕೆಗಳ ಆಡಿಯೋ ಆನ್ ಮಾಡಿ."
 }

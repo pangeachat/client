@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "{level}-деңгээл",
     "whatAreYouLearning": "Эмне үйрөнүп жатасыз?",
     "languageSwitcherBaseLanguageLabel": "Сиздин негизги тилиңиз",
-    "listenModeDescription": "Угуу үчүн тандоону басыңыз. Эч нерсе тандалган жок.",
     "rateActivityLiked": "Жакты",
     "rateActivityDisliked": "Жаккан жок",
     "constructUseHrdDesc": "Уктум",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "Чалууну бул жерде калтыруу",
     "callDevicesOlderTitle": "Башка түзмөгүңүз бул чалуудан өз алдынча чыга албайт.",
     "callDevicesOlderBody": "Чалууну ошол жерден бүтүрүңүз же бул жерде калтырыңыз. Бул, адатта, эски версия иштеп жатканын билдирет жана аны жаңыртуу муну оңдойт.",
-    "callContinuingElsewhere": "Бул чалуу башка түзмөгүңүздө уланууда."
+    "callContinuingElsewhere": "Бул чалуу башка түзмөгүңүздө уланууда.",
+    "listenFirst": "Алгач ук",
+    "listenFirstDescription": "«Алгач ук» күйгүзүлгөндө, бир чыкылдатуу аудиону гана ойнотот, ал эми эки жолу чыкылдатуу опцияны тандайт.",
+    "listenFirstNeedsChoiceAudio": "«Алгач ук» функциясын колдонуу үчүн тандоолор аудиосун күйгүзүңүз."
 }

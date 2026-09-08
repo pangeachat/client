@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "સ્તર {level}",
     "whatAreYouLearning": "તમે શું શીખી રહ્યા છો?",
     "languageSwitcherBaseLanguageLabel": "તમારી મૂળ ભાષા",
-    "listenModeDescription": "સાંભળવા માટે કોઈ વિકલ્પ પર ટૅપ કરો. કંઈપણ પસંદ કરેલું નથી.",
     "rateActivityLiked": "ગમ્યું",
     "rateActivityDisliked": "ન ગમ્યું",
     "constructUseHrdDesc": "સાંભળ્યું",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "કૉલ અહીં છોડો",
     "callDevicesOlderTitle": "તમારું બીજું ડિવાઇસ આ કૉલને જાતે છોડી શકતું નથી.",
     "callDevicesOlderBody": "ત્યાં કૉલ સમાપ્ત કરો, અથવા તેને અહીં છોડો. તેનો સામાન્ય રીતે અર્થ એ થાય છે કે તે જૂનું વર્ઝન ચલાવી રહ્યું છે, અને તેને અપડેટ કરવાથી આ સમસ્યા ઠીક થઈ જશે.",
-    "callContinuingElsewhere": "આ કૉલ તમારા બીજા ડિવાઇસ પર ચાલુ છે."
+    "callContinuingElsewhere": "આ કૉલ તમારા બીજા ડિવાઇસ પર ચાલુ છે.",
+    "listenFirst": "પહેલાં સાંભળો",
+    "listenFirstDescription": "જ્યારે પહેલાં સાંભળો ચાલુ હોય, ત્યારે એક ક્લિક ફક્ત ઑડિયો વગાડે છે અને ડબલ-ક્લિક વિકલ્પ પસંદ કરે છે.",
+    "listenFirstNeedsChoiceAudio": "પહેલાં સાંભળોનો ઉપયોગ કરવા માટે પસંદગીઓ ઑડિયો ચાલુ કરો."
 }

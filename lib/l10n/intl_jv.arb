@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "Tingkat {level}",
     "whatAreYouLearning": "Apa sing lagi kok sinau?",
     "languageSwitcherBaseLanguageLabel": "Basa dhasarmu",
-    "listenModeDescription": "Tutul pilihan kanggo ngrungokake. Ora ana sing dipilih.",
     "rateActivityLiked": "Seneng",
     "rateActivityDisliked": "Ora seneng",
     "constructUseHrdDesc": "Krungu",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "Mungkasi telpon ing kene",
     "callDevicesOlderTitle": "Piranti liyane sampeyan ora bisa ninggalake telpon iki dhewe.",
     "callDevicesOlderBody": "Mungkasi telpon ing kana, utawa ninggalake ing kene. Biasane tegese piranti kasebut nggunakake versi lawas, lan nganyari bakal ndandani iki.",
-    "callContinuingElsewhere": "Telpon iki terus ing piranti liyane sampeyan."
+    "callContinuingElsewhere": "Telpon iki terus ing piranti liyane sampeyan.",
+    "listenFirst": "Rungokake dhisik",
+    "listenFirstDescription": "Nalika Rungokake Dhisik urip, siji klik mung muter audio lan klik kaping pindho milih opsi.",
+    "listenFirstNeedsChoiceAudio": "Uripake audio Pilihan kanggo nggunakake Rungokake Dhisik."
 }

@@ -9739,7 +9739,6 @@
     "languageDropdownLevel": "Stufe {level}",
     "whatAreYouLearning": "Was lernst du?",
     "languageSwitcherBaseLanguageLabel": "Deine Basissprache",
-    "listenModeDescription": "Tippe auf eine Auswahl, um sie anzuhören. Nichts ist ausgewählt.",
     "rateActivityLiked": "Hat mir gefallen",
     "rateActivityDisliked": "Hat mir nicht gefallen",
     "constructUseHrdDesc": "Gehört",
@@ -9858,5 +9857,8 @@
     "callDevicesLeaveHere": "Anruf hier beenden",
     "callDevicesOlderTitle": "Ihr anderes Gerät kann diesen Anruf nicht selbstständig verlassen.",
     "callDevicesOlderBody": "Beenden Sie den Anruf dort, oder verlassen Sie ihn hier. Das bedeutet normalerweise, dass eine ältere Version ausgeführt wird, und ein Update wird dies beheben.",
-    "callContinuingElsewhere": "Dieser Anruf wird auf Ihrem anderen Gerät fortgesetzt."
+    "callContinuingElsewhere": "Dieser Anruf wird auf Ihrem anderen Gerät fortgesetzt.",
+    "listenFirst": "Zuerst anhören",
+    "listenFirstDescription": "Wenn „Zuerst anhören“ aktiviert ist, wird Audio mit einem Klick abgespielt und die Option mit einem Doppelklick ausgewählt.",
+    "listenFirstNeedsChoiceAudio": "Schalte die Audioausgabe für Auswahlmöglichkeiten ein, um „Zuerst anhören“ zu verwenden."
 }

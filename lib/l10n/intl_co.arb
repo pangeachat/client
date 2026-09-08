@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "Livellu {level}",
     "whatAreYouLearning": "Chì amparate?",
     "languageSwitcherBaseLanguageLabel": "A vostra lingua di basa",
-    "listenModeDescription": "Toccate una scelta per sentela. Nunda hè sceltu.",
     "rateActivityLiked": "Mi hè piaciutu",
     "rateActivityDisliked": "Ùn m'hè micca piaciutu",
     "constructUseHrdDesc": "Sentitu",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "Lascià a chjama quì",
     "callDevicesOlderTitle": "U vostru altru apparechju ùn pò micca lascià sta chjama da per ellu.",
     "callDevicesOlderBody": "Finite a chjama quì, o lasciatela quì. Quessa significa di solitu ch'ellu usa una versione più vechja, è l'aghjurnamentu risolverà u prublema.",
-    "callContinuingElsewhere": "Sta chjama cuntinueghja nant'à u vostru altru apparechju."
+    "callContinuingElsewhere": "Sta chjama cuntinueghja nant'à u vostru altru apparechju.",
+    "listenFirst": "Ascultate prima",
+    "listenFirstDescription": "Quandu Ascultate Prima hè attivatu, un solu cliccu riproduce l'audio è un doppiu cliccu selezziuneghja l'opzione.",
+    "listenFirstNeedsChoiceAudio": "Attivate l'audio di e Scelte per aduprà Ascultate Prima."
 }

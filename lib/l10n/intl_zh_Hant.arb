@@ -9858,7 +9858,6 @@
     "languageDropdownLevel": "等級 {level}",
     "whatAreYouLearning": "您正在學習什麼？",
     "languageSwitcherBaseLanguageLabel": "您的基礎語言",
-    "listenModeDescription": "點擊一個選項來聽。沒有選取任何項目。",
     "rateActivityLiked": "喜歡",
     "rateActivityDisliked": "不喜歡",
     "constructUseHrdDesc": "聽過",
@@ -9977,5 +9976,8 @@
     "callDevicesLeaveHere": "在此處離開通話",
     "callDevicesOlderTitle": "您的其他裝置無法自行離開此通話。",
     "callDevicesOlderBody": "結束該裝置上的通話，或在此處離開。這通常表示該裝置正在執行舊版本，更新後即可解決此問題。",
-    "callContinuingElsewhere": "此通話正在您的其他裝置上繼續。"
+    "callContinuingElsewhere": "此通話正在您的其他裝置上繼續。",
+    "listenFirst": "先聽",
+    "listenFirstDescription": "開啟「先聽」時，點一下播放音訊，點兩下選擇選項。",
+    "listenFirstNeedsChoiceAudio": "請開啟「選項音訊」以使用「先聽」功能。"
 }

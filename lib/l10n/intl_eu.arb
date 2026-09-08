@@ -9752,7 +9752,6 @@
     "languageDropdownLevel": "{level} maila",
     "whatAreYouLearning": "Zer ikasten ari zara?",
     "languageSwitcherBaseLanguageLabel": "Zure oinarrizko hizkuntza",
-    "listenModeDescription": "Sakatu aukera bat hura entzuteko. Ez dago ezer hautatuta.",
     "rateActivityLiked": "Gustatu zait",
     "rateActivityDisliked": "Ez zait gustatu",
     "constructUseHrdDesc": "Entzunda",
@@ -9871,5 +9870,8 @@
     "callDevicesLeaveHere": "Utzi deia hemen",
     "callDevicesOlderTitle": "Zure beste gailuak ezin du dei hau bere kabuz utzi.",
     "callDevicesOlderBody": "Amaitu deia han, edo utzi hemen. Horrek esan nahi du bertsio zahar bat exekutatzen ari dela, eta eguneratzeak konponduko duela hau.",
-    "callContinuingElsewhere": "Dei hau zure beste gailuan jarraitzen ari da."
+    "callContinuingElsewhere": "Dei hau zure beste gailuan jarraitzen ari da.",
+    "listenFirst": "Lehenik entzun",
+    "listenFirstDescription": "Lehenik entzun aktibatuta dagoenean, klik bakar batek audioa erreproduzitzen du eta klik bikoitz batek aukera hautatzen du.",
+    "listenFirstNeedsChoiceAudio": "Aktibatu Aukeren audioa Lehenik entzun erabiltzeko."
 }

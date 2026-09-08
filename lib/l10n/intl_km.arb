@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "កម្រិត {level}",
     "whatAreYouLearning": "តើអ្នកកំពុងរៀនអ្វី?",
     "languageSwitcherBaseLanguageLabel": "ភាសាមូលដ្ឋានរបស់អ្នក",
-    "listenModeDescription": "ប៉ះជម្រើសដើម្បីស្ដាប់។ គ្មានអ្វីត្រូវបានជ្រើសរើសទេ។",
     "rateActivityLiked": "ចូលចិត្ត",
     "rateActivityDisliked": "មិនចូលចិត្ត",
     "constructUseHrdDesc": "បានឮ",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "ចាកចេញពីការហៅនៅទីនេះ",
     "callDevicesOlderTitle": "ឧបករណ៍ផ្សេងទៀតរបស់អ្នកមិនអាចចាកចេញពីការហៅនេះដោយខ្លួនឯងបានទេ។",
     "callDevicesOlderBody": "បញ្ចប់ការហៅនៅទីនោះ ឬទុកវានៅទីនេះ។ ជាធម្មតាវាមានន័យថាវាដំណើរការកំណែចាស់ ហើយការអាប់ដេតវានឹងដោះស្រាយបញ្ហានេះ។",
-    "callContinuingElsewhere": "ការហៅនេះកំពុងបន្តនៅលើឧបករណ៍ផ្សេងទៀតរបស់អ្នក។"
+    "callContinuingElsewhere": "ការហៅនេះកំពុងបន្តនៅលើឧបករណ៍ផ្សេងទៀតរបស់អ្នក។",
+    "listenFirst": "ស្ដាប់មុន",
+    "listenFirstDescription": "នៅពេលបើកមុខងារស្ដាប់មុន ការចុចម្ដងនឹងចាក់សំឡេង ហើយការចុចពីរដងនឹងជ្រើសរើសជម្រើស។",
+    "listenFirstNeedsChoiceAudio": "បើកសំឡេងជម្រើសដើម្បីប្រើមុខងារស្ដាប់មុន។"
 }

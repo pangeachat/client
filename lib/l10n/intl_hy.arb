@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "Մակարդակ {level}",
     "whatAreYouLearning": "Ի՞նչ եք սովորում։",
     "languageSwitcherBaseLanguageLabel": "Ձեր հիմնական լեզուն",
-    "listenModeDescription": "Ընտրեք տարբերակը՝ այն լսելու համար։ Ոչինչ ընտրված չէ։",
     "rateActivityLiked": "Հավանել եմ",
     "rateActivityDisliked": "Չեմ հավանել",
     "constructUseHrdDesc": "Լսել եմ",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "Թողնել զանգն այստեղ",
     "callDevicesOlderTitle": "Ձեր մյուս սարքը չի կարող ինքնուրույն դուրս գալ այս զանգից։",
     "callDevicesOlderBody": "Ավարտեք զանգն այնտեղ, կամ թողեք այն այստեղ։ Սա սովորաբար նշանակում է, որ այն աշխատում է հին տարբերակով, և դրա թարմացումը կշտկի սա։",
-    "callContinuingElsewhere": "Այս զանգը շարունակվում է ձեր մյուս սարքի վրա։"
+    "callContinuingElsewhere": "Այս զանգը շարունակվում է ձեր մյուս սարքի վրա։",
+    "listenFirst": "Նախ լսել",
+    "listenFirstDescription": "Երբ «Նախ լսել»-ը միացված է, մեկ սեղմումով միայն ձայնն է միանում, իսկ կրկնակի սեղմումով ընտրվում է տարբերակը։",
+    "listenFirstNeedsChoiceAudio": "Միացրեք Ընտրությունների ձայնը՝ «Նախ լսել»-ն օգտագործելու համար։"
 }

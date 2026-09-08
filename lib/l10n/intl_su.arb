@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "Tingkat {level}",
     "whatAreYouLearning": "Diajar naon?",
     "languageSwitcherBaseLanguageLabel": "Basa dasar anjeun",
-    "listenModeDescription": "Toél pilihan pikeun ngadéngékeunana. Taya nu kapilih.",
     "rateActivityLiked": "Resep",
     "rateActivityDisliked": "Teu resep",
     "constructUseHrdDesc": "Kadangu",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "Tinggalkeun telepon di dieu",
     "callDevicesOlderTitle": "Alat anjeun nu séjén teu tiasa kaluar tina telepon ieu nyalira.",
     "callDevicesOlderBody": "Pungkas telepon di dinya, atanapi tinggalkeun di dieu. Biasana hartosna éta ngajalankeun vérsi anu langkung lami, sareng ngapdet éta bakal ngalereskeun ieu.",
-    "callContinuingElsewhere": "Telepon ieu diteruskeun dina alat anjeun nu séjén."
+    "callContinuingElsewhere": "Telepon ieu diteruskeun dina alat anjeun nu séjén.",
+    "listenFirst": "Ngadangukeun heula",
+    "listenFirstDescription": "Nalika Ngadangukeun Heula dihurungkeun, sakali klik ngan ukur muterkeun audio sareng dua kali klik milih pilihan.",
+    "listenFirstNeedsChoiceAudio": "Hurungkeun audio Pilihan pikeun nganggo Ngadangukeun Heula."
 }

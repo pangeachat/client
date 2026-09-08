@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "سطح {level}",
     "whatAreYouLearning": "توهان ڇا سکي رهيا آهيو؟",
     "languageSwitcherBaseLanguageLabel": "توهان جي بنيادي ٻولي",
-    "listenModeDescription": "ٻڌڻ لاءِ ڪنهن چونڊ تي ٽيپ ڪريو. ڪجهه به چونڊيل ناهي.",
     "rateActivityLiked": "پسند آيو",
     "rateActivityDisliked": "پسند نه آيو",
     "constructUseHrdDesc": "ٻڌو",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "ڪال هتي ڇڏي ڏيو",
     "callDevicesOlderTitle": "توهان جو ٻيو ڊوائيس هي ڪال پاڻمرادو ڇڏي نه ٿو سگهي.",
     "callDevicesOlderBody": "اتي ڪال ختم ڪريو، يا هتي ڇڏي ڏيو. ان جو مطلب عام طور تي اهو آهي ته اهو هڪ پراڻو ورزن هلائي رهيو آهي، ۽ ان کي اپڊيٽ ڪرڻ سان اهو مسئلو حل ٿي ويندو.",
-    "callContinuingElsewhere": "هي ڪال توهان جي ٻئي ڊوائيس تي جاري آهي."
+    "callContinuingElsewhere": "هي ڪال توهان جي ٻئي ڊوائيس تي جاري آهي.",
+    "listenFirst": "پهريان ٻڌو",
+    "listenFirstDescription": "جڏهن پهريان ٻڌو آن هوندو، هڪ ڪلڪ صرف آڊيو هلائيندو ۽ ڊبل ڪلڪ آپشن چونڊيندو.",
+    "listenFirstNeedsChoiceAudio": "پهريان ٻڌو استعمال ڪرڻ لاءِ چونڊن جو آڊيو آن ڪريو."
 }

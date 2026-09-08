@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "Level {level}",
     "whatAreYouLearning": "Nung karino tamliba?",
     "languageSwitcherBaseLanguageLabel": "Nanggi base language",
-    "listenModeDescription": "খংনবা অমা তা-ও। করিগুম্বা অমা খলদে।",
     "rateActivityLiked": "পাম্বা",
     "rateActivityDisliked": "পাম্বদে",
     "constructUseHrdDesc": "তাঞ্জা",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "कल असि असिदा थिदोकउ",
     "callDevicesOlderTitle": "नखुंगि अतोप्पा डिभाइसना असि कल असि अदुम थिदोकपा ङम्लोइ।",
     "callDevicesOlderBody": "अदुदा कल असि लोइसिनु, नत्रगा असिदा थिदोकउ। अदुना हाइबदि अदुना अओइबा भर्सन चलि, अमसुंग अदु अपडेट तौबना असि फजहन्गनि।",
-    "callContinuingElsewhere": "असि कल असि नखुंगि अतोप्पा डिभाइसता कन्टिन्यू तौरी।"
+    "callContinuingElsewhere": "असि कल असि नखुंगि अतोप्पा डिभाइसता कन्टिन्यू तौरी।",
+    "listenFirst": "ꯑꯗꯨꯒꯤ ꯃꯥꯡꯗ ꯇꯥꯕꯤꯌꯨ",
+    "listenFirstDescription": "ꯑꯗꯨꯒꯤ ꯃꯥꯡꯗ ꯇꯥꯕꯤꯌꯨ ꯑꯁꯤ ꯑꯣꯟ ꯇꯧꯔꯕꯥ ꯃꯇꯃꯗ, ꯋꯥꯍꯪ ꯑꯃꯥ ꯈꯛꯇꯥ ꯑꯣꯗꯤꯑꯣ ꯄ꯭ꯂꯦ ꯇꯧꯏ ꯑꯃꯁꯨꯡ ꯂꯦꯡꯖꯤꯟ ꯑꯅꯤ ꯇꯧꯕꯅꯥ ꯑꯣꯄꯁꯟ ꯑꯗꯨ ꯈꯜꯂꯤ꯫",
+    "listenFirstNeedsChoiceAudio": "ꯑꯗꯨꯒꯤ ꯃꯥꯡꯗ ꯇꯥꯕꯤꯌꯨ ꯁꯤꯖꯤꯟꯅꯅꯕꯥ ꯈꯜꯂꯤꯕꯥ ꯑꯣꯗꯤꯑꯣ ꯑꯗꯨ ꯑꯣꯟ ꯇꯧꯕꯤꯌꯨ꯫"
 }

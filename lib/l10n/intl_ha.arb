@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "Mataki {level}",
     "whatAreYouLearning": "Me kake koya?",
     "languageSwitcherBaseLanguageLabel": "Harshenka na asali",
-    "listenModeDescription": "Danna zaɓi don ji. Ba a zaɓi komai ba.",
     "rateActivityLiked": "Na so",
     "rateActivityDisliked": "Ban so ba",
     "constructUseHrdDesc": "Ji",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "Bar kiran a nan",
     "callDevicesOlderTitle": "Sauran na'urarka ba za ta iya barin wannan kiran da kanta ba.",
     "callDevicesOlderBody": "Ka kawo ƙarshen kiran a can, ko ka bar shi a nan. Wannan yawanci yana nufin tana amfani da tsohuwar sigar, kuma sabunta ta zai gyara wannan.",
-    "callContinuingElsewhere": "Wannan kiran yana ci gaba a kan sauran na'urarka."
+    "callContinuingElsewhere": "Wannan kiran yana ci gaba a kan sauran na'urarka.",
+    "listenFirst": "Saurara da farko",
+    "listenFirstDescription": "Idan Saurara da farko yana kunne, danna sau ɗaya kawai yana kunna sauti kuma danna sau biyu yana zaɓar zaɓi.",
+    "listenFirstNeedsChoiceAudio": "Kunna sautin Zaɓuɓɓuka don amfani da Saurara da farko."
 }

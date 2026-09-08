@@ -268,7 +268,11 @@ class PangeaRepresentation {
     if (tokenStep.acceptedOrIgnoredMatch != null &&
         tokenStep.acceptedOrIgnoredMatch?.status !=
             PangeaMatchStatusEnum.accepted) {
-      return token.allUses(ConstructUseTypeEnum.ignIGC, metadata, 0);
+      return token.allUses(
+        _ignoredUseType(tokenStep.acceptedOrIgnoredMatch!),
+        metadata,
+        0,
+      );
     }
 
     if (tokenStep.itStep != null) {
@@ -318,6 +322,16 @@ class PangeaRepresentation {
     ];
   }
 
+  /// Writing assistance returns grammar corrections and translations from the
+  /// same endpoint, so the edit's [ReplacementTypeEnum] is the only thing left
+  /// that tells them apart — the interactive-translation flow that used to
+  /// carry the distinction is gone. Word-choice and style edits still report as
+  /// grammar corrections; see pangeachat/.github#479.
+  ConstructUseTypeEnum _ignoredUseType(PangeaMatch match) =>
+      match.isTranslationMatch
+      ? ConstructUseTypeEnum.ignIt
+      : ConstructUseTypeEnum.ignIGC;
+
   List<OneConstructUse> _getUsesForIGCToken(
     PangeaToken token,
     PangeaMatch match,
@@ -328,8 +342,16 @@ class PangeaRepresentation {
     );
 
     if (selectedChoices.isEmpty) {
-      return token.allUses(ConstructUseTypeEnum.ignIGC, metadata, 0);
+      return token.allUses(_ignoredUseType(match), metadata, 0);
     }
+
+    final isTranslation = match.isTranslationMatch;
+    final correctUseType = isTranslation
+        ? ConstructUseTypeEnum.corIt
+        : ConstructUseTypeEnum.corIGC;
+    final incorrectUseType = isTranslation
+        ? ConstructUseTypeEnum.incIt
+        : ConstructUseTypeEnum.incIGC;
 
     final numCorrectChoices = selectedChoices
         .where((choice) => choice.type.isSuggestion)
@@ -340,15 +362,15 @@ class PangeaRepresentation {
     return [
       if (numCorrectChoices > 0)
         ...token.allUses(
-          ConstructUseTypeEnum.corIGC,
+          correctUseType,
           metadata,
-          ConstructUseTypeEnum.corIGC.pointValue * numCorrectChoices,
+          correctUseType.pointValue * numCorrectChoices,
         ),
       if (numIncorrectChoices > 0)
         ...token.allUses(
-          ConstructUseTypeEnum.incIGC,
+          incorrectUseType,
           metadata,
-          ConstructUseTypeEnum.incIGC.pointValue * numIncorrectChoices,
+          incorrectUseType.pointValue * numIncorrectChoices,
         ),
     ];
   }

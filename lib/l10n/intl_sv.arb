@@ -10270,7 +10270,6 @@
     "languageDropdownLevel": "Nivå {level}",
     "whatAreYouLearning": "Vad lär du dig?",
     "languageSwitcherBaseLanguageLabel": "Ditt basspråk",
-    "listenModeDescription": "Tryck på ett val för att höra det. Inget är valt.",
     "rateActivityLiked": "Gillade det",
     "rateActivityDisliked": "Gillade det inte",
     "constructUseHrdDesc": "Hört",
@@ -10389,5 +10388,8 @@
     "callDevicesLeaveHere": "Lämna samtalet här",
     "callDevicesOlderTitle": "Din andra enhet kan inte lämna samtalet på egen hand.",
     "callDevicesOlderBody": "Avsluta samtalet där, eller lämna det här. Det betyder oftast att den kör en äldre version, och en uppdatering kommer att åtgärda detta.",
-    "callContinuingElsewhere": "Detta samtal fortsätter på din andra enhet."
+    "callContinuingElsewhere": "Detta samtal fortsätter på din andra enhet.",
+    "listenFirst": "Lyssna först",
+    "listenFirstDescription": "När Lyssna först är aktiverat spelas ljud upp med ett klick och alternativet väljs med ett dubbelklick.",
+    "listenFirstNeedsChoiceAudio": "Aktivera ljud för val för att använda Lyssna först."
 }

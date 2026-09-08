@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "Tulaga {level}",
     "whatAreYouLearning": "O le a le mea o e aʻoaʻoina?",
     "languageSwitcherBaseLanguageLabel": "Lau gagana autū",
-    "listenModeDescription": "Paʻi i se filifiliga e faʻalogo ai. E leai se mea ua filifilia.",
     "rateActivityLiked": "Na ou fiafia i ai",
     "rateActivityDisliked": "Ou te leʻi fiafia i ai",
     "constructUseHrdDesc": "Faʻalogoina",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "Tu'u le vala'au i'i",
     "callDevicesOlderTitle": "E le mafai e lau isi masini ona tu'ua na o ia lenei vala'au.",
     "callDevicesOlderBody": "Fa'amuta le vala'au iina, pe tu'u i'i. E masani lava o lona uiga o lo'o fa'aaogaina se fa'asologa tuai, ma o le fa'afouina o le a fa'aleleia ai lenei mea.",
-    "callContinuingElsewhere": "O lo'o fa'aauau lenei vala'au i lau isi masini."
+    "callContinuingElsewhere": "O lo'o fa'aauau lenei vala'au i lau isi masini.",
+    "listenFirst": "Fa'alogo muamua",
+    "listenFirstDescription": "Pe a ki le Fa'alogo Muamua, e tasi le kiliki e na'o le taina o le leo ae fa'alua kiliki e filifili ai le filifiliga.",
+    "listenFirstNeedsChoiceAudio": "Ki le leo o Filifiliga e fa'aaoga ai le Fa'alogo Muamua."
 }

@@ -2160,7 +2160,6 @@
     "languageDropdownLevel": "स्तर {level}",
     "whatAreYouLearning": "तुम्ही काय शिकत आहात?",
     "languageSwitcherBaseLanguageLabel": "तुमची मूळ भाषा",
-    "listenModeDescription": "ऐकण्यासाठी पर्याय टॅप करा. काहीही निवडलेले नाही.",
     "rateActivityLiked": "आवडले",
     "rateActivityDisliked": "आवडले नाही",
     "constructUseHrdDesc": "ऐकले",
@@ -2275,5 +2274,8 @@
     "callDevicesLeaveHere": "कॉल इथेच सोडा",
     "callDevicesOlderTitle": "तुमचे दुसरे डिव्हाइस हा कॉल स्वतःहून सोडू शकत नाही.",
     "callDevicesOlderBody": "तिथे कॉल संपवा किंवा इथे सोडा. याचा अर्थ असा होतो की ते जुनी आवृत्ती वापरत आहे आणि ते अपडेट केल्यास ही समस्या दूर होईल.",
-    "callContinuingElsewhere": "हा कॉल तुमच्या दुसऱ्या डिव्हाइसवर सुरू आहे."
+    "callContinuingElsewhere": "हा कॉल तुमच्या दुसऱ्या डिव्हाइसवर सुरू आहे.",
+    "listenFirst": "आधी ऐका",
+    "listenFirstDescription": "जेव्हा आधी ऐका चालू असते, तेव्हा एका क्लिकने फक्त ऑडिओ वाजतो आणि डबल-क्लिकने पर्याय निवडला जातो.",
+    "listenFirstNeedsChoiceAudio": "आधी ऐका वापरण्यासाठी 'निवड ऑडिओ' चालू करा."
 }

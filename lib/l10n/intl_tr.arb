@@ -10053,7 +10053,6 @@
     "languageDropdownLevel": "Seviye {level}",
     "whatAreYouLearning": "Ne öğreniyorsun?",
     "languageSwitcherBaseLanguageLabel": "Ana dilin",
-    "listenModeDescription": "Duymak için bir seçeneğe dokunun. Hiçbir şey seçili değil.",
     "rateActivityLiked": "Beğenildi",
     "rateActivityDisliked": "Beğenilmedi",
     "constructUseHrdDesc": "Duyuldu",
@@ -10172,5 +10171,8 @@
     "callDevicesLeaveHere": "Aramayı burada sonlandır",
     "callDevicesOlderTitle": "Diğer cihazınız bu aramadan kendi başına ayrılamıyor.",
     "callDevicesOlderBody": "Aramayı orada sonlandırın veya burada bırakın. Bu genellikle cihazınızın eski bir sürüm kullandığı anlamına gelir ve güncelleyerek bu sorunu çözebilirsiniz.",
-    "callContinuingElsewhere": "Bu arama diğer cihazınızda devam ediyor."
+    "callContinuingElsewhere": "Bu arama diğer cihazınızda devam ediyor.",
+    "listenFirst": "Önce Dinle",
+    "listenFirstDescription": "Önce Dinle açıkken, tek tıklama sadece sesi çalar ve çift tıklama seçeneği seçer.",
+    "listenFirstNeedsChoiceAudio": "Önce Dinle'yi kullanmak için Seçenekler sesini açın."
 }
