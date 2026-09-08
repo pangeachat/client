@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
@@ -8,9 +7,11 @@ import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/routes/chat/toolbar/message_practice/dotted_border_painter.dart';
 import 'package:fluffychat/routes/chat_list/course_default_chats_enum.dart';
 import 'package:fluffychat/routes/chat_list/default_chats_room_extension.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
+import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 /// Admin-only suggestion row to create one of a course's default chats
@@ -85,7 +86,22 @@ class DefaultChatCreationTile extends StatelessWidget {
         clipBehavior: Clip.hardEdge,
         color: Colors.transparent,
         child: ListTile(
-          leading: const Icon(Symbols.chat_add_on),
+          // An empty avatar slot on the chat rows' avatar column, with a "+"
+          // for the chat the tap would create — not the add-chat glyph, which
+          // is the Chats header's shortcut button one row up and read here as
+          // a second, unpressable copy of it (#8815).
+          leading: CustomPaint(
+            painter: DottedBorderPainter(
+              color: Theme.of(context).colorScheme.outline,
+              strokeWidth: 1.5,
+              borderRadius: BorderRadius.circular(Avatar.defaultSize / 2),
+            ),
+            child: const SizedBox(
+              width: Avatar.defaultSize,
+              height: Avatar.defaultSize,
+              child: Icon(Icons.add),
+            ),
+          ),
           title: Text(
             type.creationTitle(l10n),
             style: TextStyle(fontSize: titleFontSize),
