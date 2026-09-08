@@ -10792,5 +10792,6 @@
     "listenFirstDescription": "Quando a opção Ouvir primeiro está ativada, um clique reproduz o áudio e um clique duplo seleciona a opção.",
     "listenFirstNeedsChoiceAudio": "Ative o áudio das escolhas para usar a opção Ouvir primeiro.",
     "unableToJoinCourseError": "Não foi possível adicioná-lo a este curso neste momento. Por favor, tente novamente ou pergunte ao seu professor.",
-    "edited": "Editado"
+    "edited": "Editado",
+    "attach": "Anexar"
 }

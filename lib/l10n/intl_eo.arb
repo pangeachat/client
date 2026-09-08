@@ -10820,5 +10820,6 @@
     "listenFirstDescription": "Kiam Unue Aŭskultu estas ŝaltita, unu klako nur ludas sonon kaj duobla klako elektas la opcion.",
     "listenFirstNeedsChoiceAudio": "Ŝaltu la sonon de Elektoj por uzi Unue Aŭskultu.",
     "unableToJoinCourseError": "Ni ne povis aldoni vin al ĉi tiu kurso nun. Bonvolu reprovi, aŭ demandu vian instruiston.",
-    "edited": "Redaktita"
+    "edited": "Redaktita",
+    "attach": "Almeti"
 }

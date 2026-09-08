@@ -9875,5 +9875,6 @@
     "listenFirstDescription": "Wanneer Eerst luisteren is ingeschakeld, speelt één klik alleen audio af en dubbelklik selecteert de optie.",
     "listenFirstNeedsChoiceAudio": "Schakel Keuze-audio in om Eerst luisteren te gebruiken.",
     "unableToJoinCourseError": "We konden je nu niet toevoegen aan deze cursus. Probeer het opnieuw, of vraag het aan je docent.",
-    "edited": "Bewerkt"
+    "edited": "Bewerkt",
+    "attach": "Bijvoegen"
 }

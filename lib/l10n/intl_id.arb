@@ -9948,5 +9948,6 @@
     "listenFirstDescription": "Saat Dengarkan Dulu aktif, satu klik hanya memutar audio dan klik ganda memilih opsi.",
     "listenFirstNeedsChoiceAudio": "Nyalakan audio Pilihan untuk menggunakan Dengarkan Dulu.",
     "unableToJoinCourseError": "Kami tidak dapat menambahkan Anda ke kursus ini sekarang. Silakan coba lagi, atau tanyakan kepada guru Anda.",
-    "edited": "Diedit"
+    "edited": "Diedit",
+    "attach": "Lampirkan"
 }

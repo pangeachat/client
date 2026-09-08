@@ -2279,5 +2279,6 @@
     "listenFirstDescription": "Lè Koute anvan aktive, yon sèl klik jis jwe odyo a epi doub-klik chwazi opsyon an.",
     "listenFirstNeedsChoiceAudio": "Aktive odyo Chwa pou itilize Koute anvan.",
     "unableToJoinCourseError": "Nou pa t' kapab ajoute ou nan kou sa a kounye a. Tanpri eseye ankò, oswa mande pwofesè ou.",
-    "edited": "Modifye"
+    "edited": "Modifye",
+    "attach": "Tache"
 }

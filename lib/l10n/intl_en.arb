@@ -5510,5 +5510,7 @@
     "tutorialAppTourPractice": "You'll find personalized practice lessons here, as long as you've unlocked at least 10 vocab words",
     "tutorialAppTourWorld": "And this brings you back to the world map any time. Happy learning!",
     "edited": "Edited",
-    "@edited": {}
+    "@edited": {},
+    "attach": "Attach",
+    "@attach": {}
 }

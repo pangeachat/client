@@ -2279,5 +2279,6 @@
     "listenFirstDescription": "Thaum Mloog Ua Ntej qhib, ib zaug nias tsuas yog ua suab xwb thiab ob zaug nias xaiv qhov kev xaiv.",
     "listenFirstNeedsChoiceAudio": "Qhib Kev Xaiv suab kom siv Mloog Ua Ntej.",
     "unableToJoinCourseError": "Tam sim no peb ntxiv tsis tau koj rau hauv zaj kawm no. Thov sim dua, los yog nug koj tus xib fwb.",
-    "edited": "Hloov kho lawm"
+    "edited": "Hloov kho lawm",
+    "attach": "Txuas"
 }

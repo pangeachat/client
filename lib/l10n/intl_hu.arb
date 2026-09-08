@@ -9978,5 +9978,6 @@
     "listenFirstDescription": "Ha az „Először hallgatás” be van kapcsolva, egy kattintás csak a hangot játssza le, dupla kattintással pedig kiválaszthatja az opciót.",
     "listenFirstNeedsChoiceAudio": "Kapcsolja be a Válaszok hangját az „Először hallgatás” használatához.",
     "unableToJoinCourseError": "Jelenleg nem tudtunk hozzáadni ehhez a kurzushoz. Kérjük, próbálja újra, vagy kérdezze meg a tanárát.",
-    "edited": "Szerkesztve"
+    "edited": "Szerkesztve",
+    "attach": "Csatolás"
 }

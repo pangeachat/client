@@ -2279,5 +2279,6 @@
     "listenFirstDescription": "Pan fydd Gwrando'n Gyntaf ymlaen, mae un clic yn chwarae sain yn unig ac mae clicio ddwywaith yn dewis yr opsiwn.",
     "listenFirstNeedsChoiceAudio": "Trowch sain Dewisiadau ymlaen i ddefnyddio Gwrando'n Gyntaf.",
     "unableToJoinCourseError": "Ni allem eich ychwanegu at y cwrs hwn ar hyn o bryd. Ceisiwch eto, neu gofynnwch i'ch athro.",
-    "edited": "Golygu"
+    "edited": "Golygu",
+    "attach": "Atodi"
 }

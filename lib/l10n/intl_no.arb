@@ -2279,5 +2279,6 @@
     "listenFirstDescription": "Når Lytt først er på, spiller ett klikk bare av lyd, og et dobbeltklikk velger alternativet.",
     "listenFirstNeedsChoiceAudio": "Slå på lyd for valg for å bruke Lytt først.",
     "unableToJoinCourseError": "Vi kunne ikke legge deg til dette kurset akkurat nå. Prøv igjen, eller spør læreren din.",
-    "edited": "Redigert"
+    "edited": "Redigert",
+    "attach": "Legg ved"
 }

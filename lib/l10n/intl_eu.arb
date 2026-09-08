@@ -9875,5 +9875,6 @@
     "listenFirstDescription": "Lehenik entzun aktibatuta dagoenean, klik bakar batek audioa erreproduzitzen du eta klik bikoitz batek aukera hautatzen du.",
     "listenFirstNeedsChoiceAudio": "Aktibatu Aukeren audioa Lehenik entzun erabiltzeko.",
     "unableToJoinCourseError": "Ezin izan zaitugu ikastaro honetan sartu oraintxe bertan. Saiatu berriro, edo galdetu zure irakasleari.",
-    "edited": "Editatu da"
+    "edited": "Editatu da",
+    "attach": "Erantsi"
 }

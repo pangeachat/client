@@ -2279,5 +2279,6 @@
     "listenFirstDescription": "Mukayatsa Yamba Kumvetsera, kudina kamodzi kumangoyimba mawu ndipo kudina kawiri kumasankha njira.",
     "listenFirstNeedsChoiceAudio": "Yatsani mawu a Zosankha kuti mugwiritse ntchito Yamba Kumvetsera.",
     "unableToJoinCourseError": "Sitakwanitse kukuphatikizani ku kosi iyi pakali pano. Chonde yesaninso, kapena funsani aphunzitsi anu.",
-    "edited": "Zasinthidwa"
+    "edited": "Zasinthidwa",
+    "attach": "Phatikiza"
 }

@@ -2279,5 +2279,6 @@
     "listenFirstDescription": "Apabila Dengar Dahulu dihidupkan, satu klik hanya memainkan audio dan dwi-klik memilih pilihan.",
     "listenFirstNeedsChoiceAudio": "Hidupkan audio Pilihan untuk menggunakan Dengar Dahulu.",
     "unableToJoinCourseError": "Kami tidak dapat menambahkan anda ke kursus ini sekarang. Sila cuba lagi, atau tanya guru anda.",
-    "edited": "Disunting"
+    "edited": "Disunting",
+    "attach": "Lampirkan"
 }

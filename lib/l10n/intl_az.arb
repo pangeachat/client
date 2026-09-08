@@ -2279,5 +2279,6 @@
     "listenFirstDescription": "Əvvəlcə dinləyin funksiyası aktiv olduqda, bir klik sadəcə səsi səsləndirir və iki dəfə klikləməklə seçim edilir.",
     "listenFirstNeedsChoiceAudio": "Əvvəlcə dinləyin funksiyasından istifadə etmək üçün Seçimlər səsini aktiv edin.",
     "unableToJoinCourseError": "Hazırda sizi bu kursa əlavə edə bilmədik. Zəhmət olmasa, yenidən cəhd edin və ya müəlliminizdən soruşun.",
-    "edited": "Redaktə edilib"
+    "edited": "Redaktə edilib",
+    "attach": "Əlavə et"
 }
