@@ -243,6 +243,18 @@ class _AudioGeneration {
   /// put and nothing is ever dropped by it.
   int maxTargetFrames = 0;
 
+  /// The monotonic reading captured at the instant this generation's audio
+  /// actually STOPPED -- set synchronously in [CallAudioRecorder.onRunEnded] (a
+  /// stop, tap death, or format change, never a mute) or, defensively, at the
+  /// very entry of [CallAudioRecorder.finish] before any await. Null until one
+  /// of those happens. [CallAudioRecorder.finish]'s finalize reconcile pads or
+  /// micro-trims the tail to THIS instant, never to a fresh clock read taken
+  /// AFTER its async drain and persisted-state read: the recording's end must
+  /// be where audio stopped, not where the async finalize happened to complete,
+  /// so I/O latency is never folded onto the recording as trailing silence (and
+  /// can never spend the duration cap on it).
+  int? endElapsedMs;
+
   int get _bytesPerFrame => 2 * channels;
 
   /// The number of whole (interleaved) sample frames currently written -- the
@@ -442,6 +454,19 @@ class CallAudioRecorder implements CallAudioRecordingSink {
   /// no clock is injected. Only differences are ever taken from it.
   final Stopwatch _stopwatch = Stopwatch()..start();
 
+  /// Creates the periodic self-tick timer [_startReanchorTimer] arms, given the
+  /// [reanchorInterval] and the per-tick callback. Defaults to a real
+  /// [Timer.periodic]; injected ONLY by tests. The interval (which sizes the
+  /// bounded micro-trim budget, [maxReanchorTrimFrames]) and the timer (a
+  /// wall-clock side effect) are two separate concerns: without this seam the
+  /// only way to configure a non-zero drift budget was a non-zero interval,
+  /// which also started a real [Timer.periodic] that could race a test's
+  /// manually driven [checkpoint]. A test injects a factory returning an inert
+  /// timer, keeping the real budget while creating no wall-clock timer at all.
+  @visibleForTesting
+  final Timer Function(Duration interval, void Function() onTick)?
+  periodicTimerFactory;
+
   CallAudioRecorder({
     required this.senderId,
     required this.deviceId,
@@ -456,6 +481,7 @@ class CallAudioRecorder implements CallAudioRecordingSink {
     CallAudioUploadStateStore? uploadStateStore,
     this.maxPendingFrames = _defaultMaxPendingFrames,
     this.reanchorInterval = _defaultReanchorInterval,
+    this.periodicTimerFactory,
   }) : clockAnchor = clockAnchor ?? _noAnchor,
        uploadStateStore =
            uploadStateStore ?? InMemoryCallAudioUploadStateStore() {
@@ -530,7 +556,21 @@ class CallAudioRecorder implements CallAudioRecordingSink {
   int _capBytes(_AudioGeneration gen) {
     final byTime =
         gen.sampleRate * gen.channels * 2 * maxDuration.inMilliseconds ~/ 1000;
-    return maxBytes < byTime ? maxBytes : byTime;
+    final raw = maxBytes < byTime ? maxBytes : byTime;
+    // Floored to a whole PCM frame (2 bytes per channel). Neither bound is
+    // guaranteed a multiple of the frame size -- 44.1kHz mono at a 15ms bound
+    // is 1323 bytes, half a sample; stereo makes the gap wider -- and a cap
+    // landing mid-frame lets [_AudioGeneration.append] or
+    // [_AudioGeneration.padSilenceFrames] stop on a partial sample, so
+    // [_AudioGeneration.takeBytes] would hand [pcm16ToWav] a byte count it
+    // cannot express as whole samples: a malformed (mid-sample) WAV. Flooring
+    // HERE aligns every boundary derived from the cap at once -- both the
+    // real-frame append and the silence pad size their room as `cap - _length`,
+    // and the logical length only ever moves by frame-aligned amounts (aligned
+    // appends, aligned pads, aligned trims), so an aligned cap keeps the whole
+    // buffer frame-aligned end to end.
+    final frame = gen._bytesPerFrame;
+    return raw - (raw % frame);
   }
 
   /// Whether a backward-clock or reordered straggler frame has already been
@@ -607,7 +647,10 @@ class CallAudioRecorder implements CallAudioRecordingSink {
       _reanchorTimer = null;
       return;
     }
-    _reanchorTimer = Timer.periodic(reanchorInterval, (_) => checkpoint());
+    final factory = periodicTimerFactory;
+    _reanchorTimer = factory != null
+        ? factory(reanchorInterval, checkpoint)
+        : Timer.periodic(reanchorInterval, (_) => checkpoint());
   }
 
   void _cancelReanchorTimer() {
@@ -781,6 +824,15 @@ class CallAudioRecorder implements CallAudioRecordingSink {
 
   @override
   void onRunEnded() {
+    // The audio-stop instant for this generation, sampled SYNCHRONOUSLY here.
+    // [onRunEnded] fires on a stop, a tap death, or a format change -- never on
+    // a mute (see [CallAudioRecordingSink.onRunEnded]) -- so this IS the moment
+    // this generation's audio actually stopped. [finish]'s finalize reconcile
+    // anchors the tail to this, not to a fresh clock read taken after its own
+    // async drain and store I/O, so that latency is never padded on as trailing
+    // silence. `??=` because a run ends once: a defensive repeat [onRunEnded],
+    // or [finish]'s own entry fallback, must not move an already-fixed end.
+    _current?.endElapsedMs ??= _elapsedMs();
     // The generation stops receiving frames until either a new [onRunStarted]
     // supersedes it, or [finish] uses it -- so its self-tick is no longer
     // needed and is cancelled here. The pending [finish] reconciles the tail to
@@ -901,6 +953,13 @@ class CallAudioRecorder implements CallAudioRecordingSink {
     // [finish] is reachable directly (call_session's publish path) without an
     // [onRunEnded] necessarily preceding it.
     _cancelReanchorTimer();
+    // The end anchor, captured BEFORE any await. [finish] is reachable directly
+    // (call_session's publish path) with no [onRunEnded] first, and when
+    // [onRunEnded] did run this is a harmless no-op (`??=`). Sampling it here,
+    // synchronously, is what keeps the drain and the persisted-state read below
+    // -- both awaited before the finalize reconcile -- from folding their I/O
+    // latency into the recording as trailing silence that could consume the cap.
+    _current?.endElapsedMs ??= _elapsedMs();
     // Ahead of every guard below: a generation's bytes are not final until
     // every frame handed to [onFrame] has actually been applied to it, and
     // reading them one microtask early would ship a recording short of what
@@ -1016,14 +1075,22 @@ class CallAudioRecorder implements CallAudioRecordingSink {
         }
       }
 
-      // Reconcile the tail to the END anchor -- but only AFTER [_drainPending]
-      // (already awaited at the top) has applied every in-flight frame to its
-      // position, so a final syllable is written to the file FIRST and can
-      // never be pushed past the end and clipped. Pads when the file is behind
-      // the monotonic-elapsed end, micro-trims (bounded) when it is ahead, so
+      // Reconcile the tail to the END anchor -- the instant audio actually
+      // STOPPED, captured synchronously in [onRunEnded] or at this method's
+      // entry ([_AudioGeneration.endElapsedMs]), NOT a fresh clock read taken
+      // HERE, which would be late: [_drainPending] (awaited at the top) and the
+      // persisted-state read just above are real awaited latency, and anchoring
+      // to a read after them would pad that latency onto the recording as
+      // trailing silence (and could spend the duration cap on it). Draining
+      // first still guarantees a final syllable is written to the file before
+      // this runs, so it can never be pushed past the end and clipped. Pads when
+      // the file is behind that instant, micro-trims (bounded) when ahead, so
       // the blob's length equals elapsed call time. Skipped for a canceled
       // generation: nothing will be sent, and its tail must not be re-touched.
-      if (!gen.canceled) _reconcile(gen, _elapsedMs());
+      // The `?? _elapsedMs()` is a defensive floor for a never-anchored
+      // generation; the entry capture sets it for every non-canceled current
+      // one, so in practice the stored instant is always used.
+      if (!gen.canceled) _reconcile(gen, gen.endElapsedMs ?? _elapsedMs());
 
       // Read HERE, once, from the SAME source and at the SAME point in the
       // call's life the transcript half reads its own `media.clockAnchor`

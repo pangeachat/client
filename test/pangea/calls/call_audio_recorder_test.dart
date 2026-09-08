@@ -84,6 +84,46 @@ class _GatedReadStore implements CallAudioUploadStateStore {
   Future<void> write(String txnId, Map<String, dynamic> state) async {}
 }
 
+/// A store whose `read` models real persisted-state I/O latency by advancing
+/// the injected monotonic clock by [byMs] while `finish()` is between draining
+/// its queue and running the finalize reconcile. If the reconcile anchored to a
+/// FRESH clock read taken at that point (the bug finding 1 fixes) rather than to
+/// the audio-stop instant, those advanced milliseconds would be padded onto the
+/// recording as trailing silence -- exactly what this store makes observable.
+class _ClockAdvancingReadStore implements CallAudioUploadStateStore {
+  _ClockAdvancingReadStore(this._clock, {required this.byMs});
+  final _Clock _clock;
+  final int byMs;
+
+  @override
+  Future<Map<String, dynamic>?> read(String txnId) async {
+    _clock.pass(byMs);
+    return null;
+  }
+
+  @override
+  Future<void> write(String txnId, Map<String, dynamic> state) async {}
+}
+
+/// A [Timer] that never fires and no-ops on cancel. Injected as the recorder's
+/// periodic-timer factory so a deterministic timing test can configure a real,
+/// non-zero re-anchor interval -- which is what sizes the bounded micro-trim
+/// budget ([CallAudioRecorder.maxReanchorTrimFrames]) -- WITHOUT a real
+/// wall-clock [Timer.periodic] that could fire and reconcile on its own,
+/// racing the test's manually driven [CallAudioRecorder.checkpoint]. With this
+/// no real timer is created at all, so the only reconcile the file ever sees is
+/// the one the test drove.
+class _InertTimer implements Timer {
+  @override
+  void cancel() {}
+
+  @override
+  bool get isActive => false;
+
+  @override
+  int get tick => 0;
+}
+
 /// [n] frames of [samplesPerFrame] mono 16-bit samples, all equal to [value]
 /// -- a fixed tone (or, at value 0, digital silence) cheap to assert on.
 Int16List _tone(int samplesPerFrame, {int value = 1000}) =>
@@ -149,8 +189,16 @@ void main() {
     // Disables the real wall-clock self-tick timer (tests drive `checkpoint()`
     // explicitly) AND, being zero, the bounded micro-trim -- so the finalize
     // reconcile only ever pads under a flat clock, never trims. A timing test
-    // that needs the trim bound passes a real interval.
+    // that needs the trim bound passes a real interval AND an inert timer
+    // factory (see `periodicTimerFactory`), so the real budget is configured
+    // without a real wall-clock timer to race.
     Duration reanchorInterval = Duration.zero,
+    // Substitutes the periodic self-tick timer. Left null in every frame-driven
+    // test (they use a zero interval, so no timer is armed anyway); the
+    // micro-trim timing test injects an [_InertTimer] factory so its real,
+    // non-zero interval sizes the drift budget without arming a real
+    // `Timer.periodic` that could fire mid-test and race `checkpoint()`.
+    Timer Function(Duration, void Function())? periodicTimerFactory,
   }) => CallAudioRecorder(
     senderId: _sender,
     deviceId: _device,
@@ -162,6 +210,7 @@ void main() {
     uploadStateStore: uploadStateStore,
     maxPendingFrames: maxPendingFrames,
     reanchorInterval: reanchorInterval,
+    periodicTimerFactory: periodicTimerFactory,
     upload: (bytes, {required filename, required contentType}) async {
       uploads.add((bytes: bytes, filename: filename, contentType: contentType));
       if (uploadFailuresLeft > 0) {
@@ -1433,9 +1482,16 @@ void main() {
       expect(bound, 192, reason: 'sanity: ~12ms at 200ppm over 60s @ 16kHz');
 
       final clock = _Clock();
+      // A REAL 60s interval, so the trim budget below is the real ~12ms/60s
+      // bound -- but an INERT timer factory, so that non-zero interval arms no
+      // real `Timer.periodic`. Without the factory the only way to get a
+      // non-zero budget was a non-zero interval, which started a real
+      // wall-clock timer that could fire and reconcile on a slow or suspended
+      // test run, racing the manual `checkpoint()` below into a double trim.
       final r = recorder(
         elapsedMs: clock.monotonic,
         reanchorInterval: interval,
+        periodicTimerFactory: (_, _) => _InertTimer(),
       );
       r.onRunStarted(0, rate, 1);
       // 500ms of real audio appended while elapsed stays 0 -> the file is 500ms
@@ -1533,6 +1589,128 @@ void main() {
           fail('the surviving frame was disturbed at sample $i');
         }
       }
+    });
+
+    test('the finalize end anchor is the audio-stop instant, not a clock read '
+        'taken after the async drain and the persisted-state read', () async {
+      // Finding: the finalize reconcile used to read the clock AFTER
+      // `_drainPending()` and the persisted-state read. Any latency there --
+      // the store read especially -- would then be padded onto the recording
+      // as trailing silence, and could consume the duration cap. The end must
+      // be the instant audio actually STOPPED (`onRunEnded` here), captured
+      // before any await, never the moment the async finalize happened to end.
+      final clock = _Clock();
+      // The store's read advances the monotonic clock 3s, modelling real I/O
+      // latency landing squarely between the drain and the finalize reconcile.
+      final store = _ClockAdvancingReadStore(clock, byMs: 3000);
+      final r = recorder(elapsedMs: clock.monotonic, uploadStateStore: store);
+      r.onRunStarted(1000, 16000, 1);
+      r.onFrame(_tone(160)); // 10ms of real audio at elapsed 0
+      clock.pass(1000); // audio runs to elapsed 1000
+      r.onRunEnded(); // audio STOPS here, at elapsed 1000 -- the true end anchor
+      await r.finish(wasCarrier: true, callKey: _callKey);
+
+      final content = CallAudioContent.fromJson(sent.single)!;
+      // 1000ms (where audio stopped), NOT 4000ms (1000 + the 3000ms of
+      // store-read latency a late clock read would have padded as silence).
+      expect(
+        content.durationMs,
+        1000,
+        reason:
+            'the recording ends where audio stopped, not where the async '
+            'finalize finished after the store read advanced the clock',
+      );
+      final wav = uploads.single.bytes;
+      expect(_wavSampleCount(wav), 1000 * 16);
+      // The whole tail past the one real frame is the finalize pad -- silence,
+      // not a late-read overshoot -- proving the pad stopped at the stop instant.
+      for (var i = 160; i < 1000 * 16; i++) {
+        if (_wavSampleAt(wav, i) != 0) {
+          fail('the finalize pad at sample $i was not silent');
+        }
+      }
+    });
+
+    test('the end anchor falls back to finish() entry when no onRunEnded '
+        'preceded it, still ahead of the latency-inducing store read', () async {
+      // `finish()` is reachable directly (call_session's publish path) with no
+      // `onRunEnded` first. The anchor must then be captured at finish() ENTRY,
+      // before any await -- so the same store-read latency is still excluded.
+      final clock = _Clock();
+      final store = _ClockAdvancingReadStore(clock, byMs: 3000);
+      final r = recorder(elapsedMs: clock.monotonic, uploadStateStore: store);
+      r.onRunStarted(1000, 16000, 1);
+      r.onFrame(_tone(160)); // 10ms of real audio at elapsed 0
+      clock.pass(1000); // elapsed 1000 at the moment finish() is called
+      // No onRunEnded: the fallback capture at finish() entry fixes the end.
+      await r.finish(wasCarrier: true, callKey: _callKey);
+
+      final content = CallAudioContent.fromJson(sent.single)!;
+      expect(
+        content.durationMs,
+        1000,
+        reason:
+            'the finish()-entry capture fixes the end before the store read '
+            'advances the clock; the 3s of latency is not padded as silence',
+      );
+    });
+  });
+
+  group('the duration cap lands on a whole PCM frame', () {
+    test('a mono cap whose byte bound is odd is floored to a whole sample, so '
+        'the WAV is never truncated mid-sample', () async {
+      // 44.1kHz mono at a 15ms bound is 44100 * 1 * 2 * 15 / 1000 = 1323 bytes
+      // -- an ODD number, half of a final PCM16 sample. A byte-granular cap
+      // would stop `takeBytes()` at 1323 bytes, which `pcm16ToWav` writes as a
+      // data chunk of 1323 bytes: 661.5 samples, a malformed WAV. The cap must
+      // floor to a whole frame (1322 bytes here).
+      final r = recorder(
+        maxBytes: 60 * 1024 * 1024, // huge, so the 15ms duration bound binds
+        maxDuration: const Duration(milliseconds: 15),
+      );
+      r.onRunStarted(0, 44100, 1);
+      // One frame well past the cap (1000 samples = 2000 bytes > 1323): the cap
+      // is what truncates it, so the cap's own alignment is what is under test.
+      r.onFrame(_tone(1000));
+      r.onRunEnded();
+      await r.finish(wasCarrier: true, callKey: _callKey);
+
+      final wav = uploads.single.bytes;
+      final dataLen = wav.length - 44; // strip the canonical header
+      expect(
+        dataLen % 2,
+        0,
+        reason: 'PCM16 mono: the data chunk must be a whole number of samples',
+      );
+      expect(dataLen, 1322, reason: '1323 floored to the 2-byte frame');
+      expect(_wavSampleCount(wav), 661);
+    });
+
+    test('a stereo cap whose byte bound is not a multiple of the 4-byte frame '
+        'is floored to a whole stereo frame', () async {
+      // 44.1kHz STEREO at a 15ms bound is 44100 * 2 * 2 * 15 / 1000 = 2646
+      // bytes; the stereo frame is 4 bytes (2 channels x 2), and 2646 % 4 == 2
+      // -- half a stereo frame. The cap must floor to 2644 (661 whole frames).
+      final r = recorder(
+        maxBytes: 60 * 1024 * 1024,
+        maxDuration: const Duration(milliseconds: 15),
+      );
+      r.onRunStarted(0, 44100, 2); // two channels
+      // 2000 interleaved int16s = 4000 bytes > 2646: the cap truncates it.
+      r.onFrame(_tone(2000));
+      r.onRunEnded();
+      await r.finish(wasCarrier: true, callKey: _callKey);
+
+      final wav = uploads.single.bytes;
+      final dataLen = wav.length - 44;
+      expect(
+        dataLen % 4,
+        0,
+        reason:
+            'PCM16 stereo: the data chunk must be a whole number of 4-byte '
+            'frames, never split mid-frame by the cap',
+      );
+      expect(dataLen, 2644, reason: '2646 floored to the 4-byte stereo frame');
     });
   });
 }
