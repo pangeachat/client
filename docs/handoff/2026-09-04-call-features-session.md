@@ -1112,3 +1112,16 @@ until the design is Codex-green.
   matrix.dart. After wave 3 green. Touches shared files -> careful + cold-gate.
 - Each wave: builder self-gates (sync foreground codex) + commits; I run the independent COLD gate before
   the next wave builds on it (Codex-green each wave, per quality bar).
+
+## 2026-09-08 (cont) — P3a built (fce4bbaf31), cold-gating; plumbing still running
+- WAVE 1 P3a DONE: agent committed fce4bbaf31 — call_audio_merge_decision.dart (356) + test (368, 18
+  tests, all mutation-proven RED->GREEN). Agent self-gate: behaviour CORRECT; pinning CORRECT after 1
+  codex round of fixes (added anti-correlated myRank/coverage fixtures + null-other-deviceId + split
+  placeable-prereq tests). I read the code: matches the 9-step spec exactly; _compareCandidates deviceId
+  tie-break is dead-code-in-v1 (2 distinct senders never tie) but per-spec + harmless.
+- MY cold gate on P3a launched (behav + pin). Waiting.
+- NOTE/lesson: two agents in ONE worktree (P3a + plumbing) caused a transient file-visibility flux for
+  the P3a agent (its files briefly 'missing' then back, byte-identical). Worked out because BOTH used
+  targeted `git add <files>` (never -A). Confirmed no cross-contamination via git status/diff.
+- WAVE 2 plumbing (aae59136bc2ebb5ca) still running (fetchCallAudioMerged + mxc download).
+- Cues PR OPENED: pangeachat/client#8888 (pushed satvik/call-ring-cues, CI running).
