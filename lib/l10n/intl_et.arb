@@ -9872,5 +9872,6 @@
     "listenFirstDescription": "Kui „Kõigepealt kuula“ on sisse lülitatud, esitab üks klõps heli ja topeltklõps valib valiku.",
     "listenFirstNeedsChoiceAudio": "Lülita sisse valikute heli, et kasutada funktsiooni „Kõigepealt kuula“.",
     "unableToJoinCourseError": "Me ei saanud teid praegu sellele kursusele lisada. Palun proovige uuesti või küsige oma õpetajalt.",
-    "edited": "Muudetud"
+    "edited": "Muudetud",
+    "attach": "Lisa"
 }

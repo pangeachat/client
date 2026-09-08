@@ -2279,5 +2279,6 @@
     "listenFirstDescription": "Xa i-'Mamela kuqala' ivuliwe, ukucofa kube kanye kudlala iaudio kwaye ukucofa kabini kukhetha ukhetho.",
     "listenFirstNeedsChoiceAudio": "Vula iaudio yeZikhetho ukuze usebenzise i-'Mamela kuqala'.",
     "unableToJoinCourseError": "Asikwazanga ukukongeza kwesi sifundo ngoku. Nceda zama kwakhona, okanye ubuze utitshala wakho.",
-    "edited": "Ihlelwe"
+    "edited": "Ihlelwe",
+    "attach": "Fakela"
 }

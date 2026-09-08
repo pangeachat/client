@@ -9875,5 +9875,6 @@
     "listenFirstDescription": "Kad funkcija “Vispirms klausīties” ir ieslēgta, ar vienu klikšķi tiek atskaņota tikai audio, bet ar dubultklikšķi tiek atlasīta opcija.",
     "listenFirstNeedsChoiceAudio": "Lai izmantotu funkciju “Vispirms klausīties”, ieslēdziet izvēles audio.",
     "unableToJoinCourseError": "Pašlaik nevarējām jūs pievienot šim kursam. Lūdzu, mēģiniet vēlreiz vai jautājiet savam skolotājam.",
-    "edited": "Rediģēts"
+    "edited": "Rediģēts",
+    "attach": "Pievienot"
 }

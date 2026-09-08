@@ -10832,5 +10832,6 @@
     "listenFirstDescription": "開啟「先聽」後，單擊播放音訊，雙擊選擇選項。",
     "listenFirstNeedsChoiceAudio": "請開啟「選項音訊」以使用「先聽」功能。",
     "unableToJoinCourseError": "我哋而家加唔到你入呢個課程。請再試一次，或者問你嘅老師。",
-    "edited": "已編輯"
+    "edited": "已編輯",
+    "attach": "附加"
 }

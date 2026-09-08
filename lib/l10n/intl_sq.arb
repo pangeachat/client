@@ -2279,5 +2279,6 @@
     "listenFirstDescription": "Kur Dëgjo fillimisht është aktiv, një klikim luan vetëm audion dhe një klikim i dyfishtë zgjedh opsionin.",
     "listenFirstNeedsChoiceAudio": "Aktivizo audion e Zgjedhjeve për të përdorur Dëgjo fillimisht.",
     "unableToJoinCourseError": "Nuk mundëm t'ju shtonim në këtë kurs tani. Ju lutemi provoni përsëri, ose pyesni mësuesin tuaj.",
-    "edited": "Redaktuar"
+    "edited": "Redaktuar",
+    "attach": "Bashkëngjit"
 }

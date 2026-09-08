@@ -2279,5 +2279,6 @@
     "listenFirstDescription": "Rehefa mandeha ny Henoy aloha, ny tsindry iray dia mandefa feo fotsiny ary ny tsindry indroa dia misafidy ny safidy.",
     "listenFirstNeedsChoiceAudio": "Alefaso ny feon'ny safidy mba hampiasana ny Henoy aloha.",
     "unableToJoinCourseError": "Tsy afaka nampiditra anao tamin'ity taranja ity izahay izao. Andramo indray, na anontanio ny mpampianatra anao.",
-    "edited": "Nohavaozina"
+    "edited": "Nohavaozina",
+    "attach": "Ampifandraiso"
 }

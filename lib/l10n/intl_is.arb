@@ -2279,5 +2279,6 @@
     "listenFirstDescription": "Þegar „Hlusta fyrst“ er virkt spilar einn smellur hljóð og tvísmellur velur valkostinn.",
     "listenFirstNeedsChoiceAudio": "Kveiktu á hljóði fyrir valkosti til að nota „Hlusta fyrst“.",
     "unableToJoinCourseError": "Við gátum ekki bætt þér við þetta námskeið núna. Vinsamlegast reyndu aftur, eða spurðu kennarann þinn.",
-    "edited": "Breytt"
+    "edited": "Breytt",
+    "attach": "Hengja við"
 }

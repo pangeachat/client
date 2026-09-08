@@ -10393,5 +10393,6 @@
     "listenFirstDescription": "När Lyssna först är aktiverat spelas ljud upp med ett klick och alternativet väljs med ett dubbelklick.",
     "listenFirstNeedsChoiceAudio": "Aktivera ljud för val för att använda Lyssna först.",
     "unableToJoinCourseError": "Vi kunde inte lägga till dig i den här kursen just nu. Försök igen, eller fråga din lärare.",
-    "edited": "Redigerad"
+    "edited": "Redigerad",
+    "attach": "Bifoga"
 }

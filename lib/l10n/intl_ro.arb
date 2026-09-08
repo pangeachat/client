@@ -10607,5 +10607,6 @@
     "listenFirstDescription": "Când Ascultă mai întâi este activat, un singur clic redă doar sunetul, iar un dublu clic selectează opțiunea.",
     "listenFirstNeedsChoiceAudio": "Activează sunetul Opțiunilor pentru a utiliza Ascultă mai întâi.",
     "unableToJoinCourseError": "Nu te-am putut adăuga la acest curs chiar acum. Te rugăm să încerci din nou sau să-ți întrebi profesorul.",
-    "edited": "Editat"
+    "edited": "Editat",
+    "attach": "Atașează"
 }

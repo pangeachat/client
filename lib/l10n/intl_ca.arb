@@ -10002,5 +10002,6 @@
     "listenFirstDescription": "Quan Escolta primer està activat, un clic només reprodueix l'àudio i un doble clic selecciona l'opció.",
     "listenFirstNeedsChoiceAudio": "Activa l'àudio de les opcions per utilitzar Escolta primer.",
     "unableToJoinCourseError": "No hem pogut afegir-te a aquest curs ara mateix. Torna-ho a provar o pregunta al teu professor.",
-    "edited": "Editat"
+    "edited": "Editat",
+    "attach": "Adjuntar"
 }

@@ -2279,5 +2279,6 @@
     "listenFirstDescription": "Cum Primum Audi inest, unus click tantum sonum ludit et duplex click optionem eligit.",
     "listenFirstNeedsChoiceAudio": "Verte sonum optionum ut Primum Audi utaris.",
     "unableToJoinCourseError": "Te huic cursu nunc addere non potuimus. Quaeso iterum conare, aut magistrum tuum interroga.",
-    "edited": "Recensuit"
+    "edited": "Recensuit",
+    "attach": "Adnectere"
 }

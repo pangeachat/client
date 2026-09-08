@@ -9912,5 +9912,6 @@
     "listenFirstDescription": "Kun Kuuntele ensin on päällä, yhdellä napsautuksella toistetaan ääni ja kaksoisnapsautuksella valitaan vaihtoehto.",
     "listenFirstNeedsChoiceAudio": "Ota Valintojen ääni käyttöön käyttääksesi Kuuntele ensin -toimintoa.",
     "unableToJoinCourseError": "Emme voineet lisätä sinua tälle kurssille juuri nyt. Yritä uudelleen tai kysy opettajaltasi.",
-    "edited": "Muokattu"
+    "edited": "Muokattu",
+    "attach": "Liitä"
 }

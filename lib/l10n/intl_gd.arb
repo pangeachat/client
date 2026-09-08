@@ -2279,5 +2279,6 @@
     "listenFirstDescription": "Nuair a tha Èist an toiseach air, bidh aon bhriogadh a’ cluich claisneachd agus bidh briogadh dùbailte a’ taghadh an roghainn.",
     "listenFirstNeedsChoiceAudio": "Tionndaidh air claisneachd Roghainnean gus Èist an toiseach a chleachdadh.",
     "unableToJoinCourseError": "Cha b' urrainn dhuinn do chur ris a' chùrsa seo an-dràsta. Feuch ris a-rithist, no faighnich don tidsear agad.",
-    "edited": "Deasaichte"
+    "edited": "Deasaichte",
+    "attach": "Ceangail"
 }

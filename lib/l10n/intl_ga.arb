@@ -9886,5 +9886,6 @@
     "listenFirstDescription": "Nuair a bhíonn Éist ar dtús ar siúl, ní dhéanann cliceáil amháin ach an fhuaim a sheinm agus roghnaíonn cliceáil dúbailte an rogha.",
     "listenFirstNeedsChoiceAudio": "Cas ar fhuaim Roghanna chun Éist ar dtús a úsáid.",
     "unableToJoinCourseError": "Níorbh fhéidir linn tú a chur leis an gcúrsa seo faoi láthair. Bain triail eile as, nó iarr ar do mhúinteoir.",
-    "edited": "Eagraithe"
+    "edited": "Eagraithe",
+    "attach": "Ceangail"
 }

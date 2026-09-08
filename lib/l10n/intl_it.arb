@@ -9948,5 +9948,6 @@
     "listenFirstDescription": "Quando l'opzione \"Ascolta prima\" è attiva, un clic riproduce solo l'audio e un doppio clic seleziona l'opzione.",
     "listenFirstNeedsChoiceAudio": "Attiva l'audio delle scelte per usare \"Ascolta prima\".",
     "unableToJoinCourseError": "Non è stato possibile aggiungerti a questo corso in questo momento. Riprova o chiedi al tuo insegnante.",
-    "edited": "Modificato"
+    "edited": "Modificato",
+    "attach": "Allega"
 }

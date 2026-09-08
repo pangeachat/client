@@ -36,21 +36,20 @@ enum AssistanceStateEnum {
     }
   }
 
-  String tooltip(BuildContext context) {
-    switch (this) {
-      case AssistanceStateEnum.noSub:
-        return L10n.of(context).writingAssistanceNoSub;
-      case AssistanceStateEnum.error:
-        return L10n.of(context).viewError;
-      case AssistanceStateEnum.notFetched:
-      case AssistanceStateEnum.igcComplete:
-      case AssistanceStateEnum.suggesting:
-        L10n.of(context).check;
-      default:
-        return "";
-    }
-    return "";
-  }
+  /// Never empty: this is the button's accessible name as well as its tooltip.
+  String tooltip(BuildContext context) => switch (this) {
+    AssistanceStateEnum.noSub => L10n.of(context).writingAssistanceNoSub,
+    AssistanceStateEnum.error => L10n.of(context).viewError,
+    AssistanceStateEnum.notFetched ||
+    AssistanceStateEnum.igcComplete ||
+    AssistanceStateEnum.suggesting => L10n.of(context).check,
+    AssistanceStateEnum.noMessage ||
+    AssistanceStateEnum.fetching ||
+    AssistanceStateEnum.fetched ||
+    AssistanceStateEnum.suggestionComplete => L10n.of(
+      context,
+    ).writingAssistanceNoSub,
+  };
 
   Color sendButtonColor(BuildContext context) {
     switch (this) {

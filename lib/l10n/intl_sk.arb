@@ -10820,5 +10820,6 @@
     "listenFirstDescription": "Keď je zapnutá funkcia „Najprv počúvať“, jedným kliknutím sa prehrá zvuk a dvojitým kliknutím sa vyberie možnosť.",
     "listenFirstNeedsChoiceAudio": "Ak chcete použiť funkciu „Najprv počúvať“, zapnite zvuk možností.",
     "unableToJoinCourseError": "Momentálne ťa nemôžeme pridať do tohto kurzu. Skús to znova alebo sa spýtaj svojho učiteľa.",
-    "edited": "Upravené"
+    "edited": "Upravené",
+    "attach": "Priložiť"
 }

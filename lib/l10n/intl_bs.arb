@@ -2279,5 +2279,6 @@
     "listenFirstDescription": "Kada je opcija „Prvo slušaj“ uključena, jedan klik samo reprodukuje zvuk, a dvostruki klik bira opciju.",
     "listenFirstNeedsChoiceAudio": "Uključite zvuk izbora da biste koristili opciju „Prvo slušaj“.",
     "unableToJoinCourseError": "Trenutno vas nismo mogli dodati na ovaj kurs. Molimo pokušajte ponovo ili pitajte svog nastavnika.",
-    "edited": "Uređeno"
+    "edited": "Uređeno",
+    "attach": "Priloži"
 }

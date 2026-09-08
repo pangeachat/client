@@ -10820,5 +10820,6 @@
     "listenFirstDescription": "Ko je vklopljeno »Najprej poslušaj«, en klik predvaja zvok, dvojni klik pa izbere možnost.",
     "listenFirstNeedsChoiceAudio": "Vklopi zvok izbir, da lahko uporabljaš »Najprej poslušaj«.",
     "unableToJoinCourseError": "Trenutno vas ne moremo dodati k temu tečaju. Poskusite znova ali vprašajte svojega učitelja.",
-    "edited": "Urejeno"
+    "edited": "Urejeno",
+    "attach": "Priloži"
 }

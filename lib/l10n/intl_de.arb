@@ -9862,5 +9862,6 @@
     "listenFirstDescription": "Wenn „Zuerst anhören“ aktiviert ist, wird Audio mit einem Klick abgespielt und die Option mit einem Doppelklick ausgewählt.",
     "listenFirstNeedsChoiceAudio": "Schalte die Audioausgabe für Auswahlmöglichkeiten ein, um „Zuerst anhören“ zu verwenden.",
     "unableToJoinCourseError": "Wir konnten dich diesem Kurs im Moment nicht hinzufügen. Bitte versuche es erneut oder frage deinen Lehrer.",
-    "edited": "Bearbeitet"
+    "edited": "Bearbeitet",
+    "attach": "Anhängen"
 }
