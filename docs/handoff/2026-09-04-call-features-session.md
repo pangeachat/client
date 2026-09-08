@@ -554,3 +554,52 @@ the live panel attaches. iOS hits the SAME recording bug -- the fix helps there.
   (touches call_capture.dart + call_audio_recorder.dart only), then re-test, then
   build the auto-mix as a real feature -> PR on owner go. PRs still HELD to owner
   go.
+
+## 2026-09-08 — Continuous-recording design doc COLD-CODEX-GREEN (8 rounds)
+- Draft at scratchpad/call-audio-recording.instructions.md (NEW instructions doc,
+  design-only). Adversarial Codex design review, 8 rounds, converged R1 six
+  structural holes -> R8 CORRECT / GATE-SOFTENING:n/a. Gate dirs
+  /private/tmp/coldgate-recdesign{,2..8}, verdicts /private/tmp/recdesignN-verdict.txt.
+- Locked decisions (all Codex-validated):
+  - Recording unit = one contiguous carrier TENURE per device -> one pangea.call_audio
+    blob. ANY handover to the user's other device (device-ownership switch) ENDS the
+    blob; a return is a NEW blob. A user can thus produce >1 blob; merge overlays N
+    blobs on the SFU clock (two in the common no-switch call), no content dedup
+    (silence-both => tenures never carry the same speech).
+  - Timeline: cursor advances on a MONOTONIC, suspension-inclusive clock (NOT
+    frame-driven -> fixes Android mute truncation), mapped once to the SFU epoch at
+    sample zero (= the event's existing anchor = the transcript run t0, one shared
+    epoch). Silence backfills to catch up / at checkpoints.
+  - Drift bound: PERIODIC re-anchor to the SFU clock (<=60s) — pad silence when
+    behind, MICRO-TRIM (<= one interval's drift, ~12ms/60s @200ppm, imperceptible)
+    when ahead. Bounds skew to ONE interval regardless of call length; NO continuous
+    drift-correction resampling (format-rate normalization at merge is preserved).
+  - Trim taxonomy (only real-audio removals): bounded micro-trim; out-of-span cut
+    (post-handover = next blob's when pre-roll holds, else bounded switch-window
+    silence; post-ceiling = flagged truncated tail). Interior committed audio never
+    rewritten; buffer written FORWARD, only the TAIL edited (pad / micro-trim /
+    out-of-span truncation). Finalize DRAINS real frames to position before tail
+    reconcile -> no clipped final syllable.
+  - Ceiling = ABSOLUTE call-timeline duration bound shared by all blobs (only the
+    global tail past it is lost, never an interior hole); resource bound not
+    alignment bound. Video call -> audio-only artifact. Per-blob sample-rate metadata.
+  - Mute = silence in the recording, unlabelled gap in the transcript, both on the
+    one shared epoch. Lost-capture provenance stays on the transcript (audioLost),
+    not a recording-side track.
+  - Transcript ordering ("bye first") is a SEPARATE bug NOT fixed by recording
+    continuity — its own invariant (every segment keeps its true absolute SFU
+    interval across resets; no floor to a stale run start) + its own regression.
+  - Scope-out: no drift-correction resampling; no recording-side loss track; no
+    crash-durability change (in-memory buffer, upload at finalize, as today); no
+    robust N-blob merger (manifest/wait/precedence = the delivered auto-mix feature).
+- BUILD PLAN (two pieces, subagent-dispatch-protocol double-gate each):
+  (1) continuous full-duration recording (call_capture.dart + call_audio_recorder.dart;
+      clock-driven cursor + periodic re-anchor + finalize drain + tenure blob),
+  (2) transcript-ordering fix (segment keeps true absolute SFU interval, no stale
+      run-start floor) + regression.
+  Then re-test on a real call, then build the auto-mix as a real feature. PR on
+  owner go (still held). FLAGS surfaced to owner: device-switch multi-blob + the
+  pre-roll dependency on the device-ownership handover; "bye first" is a separate
+  transcript fix; the auto-mix merger robustness is deferred to that feature.
+- Doc NOT yet placed in repo instructions/ — awaiting owner approval (owner is the
+  human reviewer in Will's place); on go, place + commit as part of the build.
