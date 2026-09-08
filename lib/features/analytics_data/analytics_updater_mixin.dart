@@ -13,10 +13,16 @@ mixin AnalyticsUpdater<T extends StatefulWidget> on State<T> {
   StreamSubscription? _analyticsSubscription;
   StreamSubscription? _constructLevelSubscription;
 
+  /// Resolved once here and never from `context` again: a send's analytics
+  /// land after the learner may have left the chat, and a disposed State has
+  /// no `context` (#8834).
+  late final AnalyticsDataService _analyticsDataService;
+
   @override
   void initState() {
     super.initState();
-    final updater = Matrix.of(context).analyticsDataService.updateDispatcher;
+    _analyticsDataService = Matrix.of(context).analyticsDataService;
+    final updater = _analyticsDataService.updateDispatcher;
     _analyticsSubscription = updater.constructUpdateStream.stream.listen(
       _onAnalyticsUpdate,
     );
@@ -35,7 +41,7 @@ mixin AnalyticsUpdater<T extends StatefulWidget> on State<T> {
     List<OneConstructUse> constructs,
     String? targetId,
     String language,
-  ) => Matrix.of(context).analyticsDataService.updateService.addAnalytics(
+  ) => _analyticsDataService.updateService.addAnalytics(
     targetId,
     constructs,
     language,
