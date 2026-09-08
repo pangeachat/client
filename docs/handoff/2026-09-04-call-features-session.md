@@ -1155,3 +1155,14 @@ until the design is Codex-green.
   now import_sorter-clean. LESSON: run `flutter pub get` before import_sorter locally; a bare run dies
   and misreads as either 'clean' (cached) or 'fails' (no verdict).
 - NEXT: download-pinning re-gate green -> plumbing fully cold-green -> dispatch WAVE 3 coordinator (opus).
+
+## 2026-09-08 (cont) — P3b plumbing FULLY cold-green; WAVE 3 coordinator dispatched
+- Plumbing all 4 cold gates CORRECT (reader-behav, download-behav, reader-pin, download-pin after fold).
+  Commits a8fa6785ed + 769b57d83d. Plumbing DONE.
+- WAVE 3 (P3b-coordinator, OPUS, agent a8588a0c9210b5542): CallAudioMergeCoordinator + tests, fully
+  seam-injected, NO wiring. Brief /private/tmp/build-brief-mix-p3b-coordinator.md. RUNNING. Will
+  cold-gate its output (index/lifecycle machinery + evaluation-flow + pinning gates).
+- WAVE 4 (wiring) still queued after wave 3 green.
+- Branch state on satvik/call-features-combined: recording (pieces 1+2) + mixer P1 (2e627b7079) + event
+  P2 (de8dc626db, 801237963d) + truncated + P3a decision (fce4bbaf31, 809852faff, dada4fe6b5) + plumbing
+  (a8fa6785ed, 769b57d83d) + import_sorter fix (58fd2b65ea) all committed, import_sorter+format clean.
