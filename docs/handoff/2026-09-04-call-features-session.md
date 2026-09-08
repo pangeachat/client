@@ -1096,3 +1096,19 @@ until the design is Codex-green.
 - DECISION LOCKED: P3 design at /private/tmp/call-audio-merge-P3-DESIGN.md is authoritative. Build in two
   waves (dependent -> sequential, Codex-green each): P3a pure decision core (sonnet) -> cold-gate ->
   P3b coordinator + fetchCallAudioMerged reader + mxc download helper + wiring (opus) -> cold-gate.
+
+## 2026-09-08 (cont) — P3 build waves dispatched
+- WAVE 1 (P3a, sonnet, agent a2e8469ea599853dc): pure decision core call_audio_merge_decision.dart +
+  tests. Brief /private/tmp/build-brief-mix-p3a-decision.md (exact 9-step decision tree). RUNNING.
+- WAVE 2 (P3b-plumbing, sonnet, agent aae59136bc2ebb5ca): fetchCallAudioMerged reader +
+  CallAudioMergedRecording in call_audio_repo.dart + mxc download helper. Brief
+  /private/tmp/build-brief-mix-p3b-plumbing.md. RUNNING IN PARALLEL (separate files; both told to
+  `git add` ONLY their own files to avoid a shared-branch race).
+- WAVE 3 (P3b-coordinator, OPUS) brief READY at /private/tmp/build-brief-mix-p3b-coordinator.md —
+  CallAudioMergeCoordinator (index-before-await, drain-until-clean, permit-until-settle, firstSeenAt-
+  anchored expiry, typed terminal-vs-transient, the 9-step evaluation pass). DISPATCH after waves 1+2
+  cold-green. NO wiring in wave 3 (fully seam-injected + tested standalone).
+- WAVE 4 (wiring) = instantiate in CallService + kick from CallSession._finishRecording + dispose in
+  matrix.dart. After wave 3 green. Touches shared files -> careful + cold-gate.
+- Each wave: builder self-gates (sync foreground codex) + commits; I run the independent COLD gate before
+  the next wave builds on it (Codex-green each wave, per quality bar).
