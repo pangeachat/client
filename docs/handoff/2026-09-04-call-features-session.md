@@ -1137,3 +1137,21 @@ until the design is Codex-green.
 - WAVE 2 plumbing (agent aae59136bc2ebb5ca): all 4 files WRITTEN on disk (call_audio_download.dart,
   fetchCallAudioMerged in call_audio_repo.dart, + 2 tests) but NOT yet committed -- agent in gate/commit
   phase (last file touch 18:22). Awaiting its report; if stalled, TaskStop + take over WIP + cold-gate.
+
+## 2026-09-08 (cont) — P3b plumbing built + cold-gated; combined-branch import_sorter fixed
+- WAVE 2 plumbing DONE: agent committed a8fa6785ed (fetchCallAudioMerged + CallAudioMergedRecording in
+  call_audio_repo.dart; call_audio_download.dart = CallAudioDownloader + mxcServerAndMediaId +
+  callAudioDownloaderFor over client.getContent; 23 tests). Agent self-gated 5+4 rounds CORRECT.
+- MY cold gate: reader-behaviour CORRECT (re-ran after a sed-extraction empty-fence artifact),
+  download-behaviour CORRECT, reader-pinning CORRECT, download-pinning had ONE redundancy (double-slash
+  test pinned the same length guard as multi-segment) -> folded into one test (commit 769b57d83d),
+  re-gating.
+- IMPORT_SORTER combined-branch fix (58fd2b65ea): the recording/event/test files were committed WITH
+  '// Dart imports:' group comments, which CI's `import_sorter:main --no-comments --exit-if-changed`
+  FORBIDS -> the branch would have gone RED at PR-2 time. Root cause found: import_sorter needs
+  `flutter pub get` first (else it dies mid-run with a misleading exit 1 -- which is what made the local
+  runs look like an env flake AND what the plumbing agent half-saw). With pub get it completes and wanted
+  15 files. Stripped the group comments (mechanical, 0 logic lines, 1625 calls tests still pass), branch
+  now import_sorter-clean. LESSON: run `flutter pub get` before import_sorter locally; a bare run dies
+  and misreads as either 'clean' (cached) or 'fails' (no verdict).
+- NEXT: download-pinning re-gate green -> plumbing fully cold-green -> dispatch WAVE 3 coordinator (opus).
