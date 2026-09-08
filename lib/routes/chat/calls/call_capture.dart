@@ -1108,11 +1108,37 @@ class CallCaptureService {
   /// and it is very nearly the same on both devices — the same app, the same
   /// tap — so it largely cancels in the comparison that matters.
   ///
-  /// [_notBeforeMs] stays, as defence rather than as the mechanism. A monotonic
-  /// counter that stalls — some platforms hold one still while the device
-  /// sleeps — would compress the gaps that follow rather than scatter them, and
-  /// the floor keeps the ORDER right even then. Compressed and ordered is the
-  /// failure this design already accepts; scattered is not.
+  /// [_notBeforeMs] stays, as defence rather than as the mechanism, for every
+  /// run AFTER the first. A monotonic counter that stalls — some platforms hold
+  /// one still while the device sleeps — makes a later run's reading land back
+  /// near an earlier one, and the floor pins it AFTER the previous run's end
+  /// rather than in front of it. Compressed and ordered is the failure this
+  /// design accepts there; scattered is not.
+  ///
+  /// The FIRST run has no such floor — [_notBeforeMs] is zero until a run closes
+  /// — and that is where a stalled counter SCATTERS rather than compresses. A
+  /// device that begins the call MUTED latches the base at t0 on its first
+  /// (muted) frame but opens no transcript run until it unmutes; if it sleeps
+  /// through the mute with the counter held still, the unmuted run is measured
+  /// from a counter that missed the whole sleep and regresses to ~t0 — and a
+  /// turn spoken minutes in then sorts ahead of the peer's earlier speech ("my
+  /// bye came first"). So while no run has closed, a WALL-elapsed lower bound
+  /// stands in for the missing floor. A wall clock is not for measuring an
+  /// interval and can be corrected out from under a call — which is why every
+  /// run's POSITION still comes off the monotonic counter — but across the first
+  /// run it is the one reading that survives the counter freezing, and a run
+  /// cannot have begun before the wall says the call itself did.
+  ///
+  /// The wall floor is confined to that first run ON PURPOSE. Once a run closes,
+  /// [_notBeforeMs] takes over and the wall is not read again, so a wall clock
+  /// STEPPING mid-call — the hazard the monotonic counter exists to survive —
+  /// moves nothing, exactly as before. One residual is accepted: a device that
+  /// sleeps during a mute AFTER it has already spoken compresses the post-sleep
+  /// run toward its own earlier speech rather than recovering the true gap,
+  /// because a stall there cannot be told apart from a forward wall step and the
+  /// ordered compression is preferred to risking a scatter. A
+  /// suspension-inclusive platform clock is the only exact fix and is out of
+  /// scope here.
   int _runStartsAt(int samples, int sampleRate, int channels) {
     var base = _baseUnixMs;
     if (base == null) {
@@ -1124,7 +1150,15 @@ class CallCaptureService {
     // factor, which moves where the run -- and every turn in it -- is placed.
     final batchMs = (samples ~/ channels) * 1000 ~/ sampleRate;
     final startedAt = base + (elapsedMs() - _elapsedAtBase) - batchMs;
-    return startedAt > _notBeforeMs ? startedAt : _notBeforeMs;
+    // The lower bound the position may not fall below. Before any run has closed
+    // [_notBeforeMs] is zero and cannot stop a stalled counter regressing the
+    // first run to ~base, so the wall-elapsed position stands in for it; after a
+    // run closes [_notBeforeMs] is the floor and the wall is left unread, so a
+    // forward wall step cannot move a later run.
+    final floor = _notBeforeMs == 0
+        ? base + (nowMs() - base) - batchMs
+        : _notBeforeMs;
+    return startedAt > floor ? startedAt : floor;
   }
 
   /// The wall clock at the moment this call's first run began, and the reading
@@ -1132,7 +1166,10 @@ class CallCaptureService {
   ///
   /// Per call, because a [CallCaptureService] is built per call session. Every
   /// position this device produces for the call is this one number plus a
-  /// monotonic offset, so a clock correction mid-call moves nothing at all.
+  /// monotonic offset, so a clock correction mid-call moves nothing at all --
+  /// once a run has closed. Before that, [_runStartsAt] additionally floors the
+  /// first run by wall-elapsed, the one case a clock correction can still move a
+  /// position (see there for why the first run has no other floor to lean on).
   int? _baseUnixMs;
   int _elapsedAtBase = 0;
 

@@ -1951,6 +1951,126 @@ void main() {
             'the later run begins where the earlier one ended, never before',
       );
     });
+
+    test('a run that resumes after the device slept is placed at true elapsed, '
+        'not back at the start', () async {
+      // THE BUG: on a call this device began MUTED, the recording fan-out
+      // latches the base at t0 on the first muted frame, but the transcript
+      // run does not open until the learner unmutes. If the device sleeps
+      // during that mute and the monotonic counter is held STILL through it --
+      // as some platforms do -- the unmuted run is measured from a counter
+      // that missed the whole sleep and lands back at ~t0. With no earlier run
+      // to floor it (this device has said nothing yet, so _notBeforeMs is 0),
+      // a "bye" spoken thirty seconds in is stamped at the start of the call
+      // and sorts ahead of the peer's earlier speech -- "my bye came first".
+      //
+      // The fix floors the first run -- the one with no closed run behind it to
+      // pin it -- by the WALL-elapsed position, which the sleep did not stall,
+      // so the resumed run sits at its true elapsed time. The companion below
+      // pins that this adds nothing when the counter did NOT stall, and the
+      // existing 'a clock corrected mid-call moves nothing' pins that a wall
+      // jump AFTER a run has closed still moves nothing.
+      final audio = RecordingAudioSink();
+      final s = service(withAudioRecording: audio);
+      await s.start(track);
+
+      // Muted from the very first frame: the recording fan-out opens its run
+      // and latches the base at t0, while the transcript chunker stays closed.
+      s.setMuted(true);
+      track.emit(20);
+      await pumpEventQueue();
+      expect(
+        sink.delivered,
+        isEmpty,
+        reason: 'a muted frame is not transcribed',
+      );
+
+      // Thirty seconds of device sleep with the monotonic counter held STILL:
+      // wall time advances, the counter does not.
+      clock.ms += 30000;
+
+      // The learner unmutes and says one word.
+      s.setMuted(false);
+      track.emit(20);
+      await s.stop();
+      await pumpEventQueue();
+
+      expect(
+        runStarts.last,
+        clock.ms - 20,
+        reason: 'the resumed run is placed at true elapsed (~t0+30s), not ~t0',
+      );
+      expect(
+        sink.delivered.single.startedAtMs,
+        clock.ms - 20,
+        reason: 'and the turn it carries inherits that true position',
+      );
+    });
+
+    test('the resumed run recovers even when the counter ticked a little during '
+        'the sleep', () async {
+      // Hardening against a tempting but WRONG fix: spotting the stall by the
+      // counter reading exactly unchanged. A real sleep leaves small awake tails
+      // around it, so the counter advances a little; the fix must still recover
+      // the true elapsed. It does, because it floors the first run by the wall
+      // position directly, not by any "the counter did not move" test.
+      final audio = RecordingAudioSink();
+      final s = service(withAudioRecording: audio);
+      await s.start(track);
+
+      s.setMuted(true);
+      track.emit(20); // muted first frame latches the base at t0
+      await pumpEventQueue();
+
+      // A thirty-second sleep the counter missed, less fifty milliseconds it did
+      // count while briefly awake around it.
+      clock.elapsed += 50;
+      clock.ms += 30000;
+
+      s.setMuted(false);
+      track.emit(20);
+      await s.stop();
+      await pumpEventQueue();
+
+      expect(
+        runStarts.last,
+        clock.ms - 20,
+        reason:
+            'true elapsed comes off the wall, not off the counter reading ~0',
+      );
+    });
+
+    test('a muted start with both clocks running places the run once, not '
+        'twice', () async {
+      // The no-regress companion to the sleep recovery above. When the counter
+      // is NOT stalled -- both clocks advance together through the mute -- the
+      // wall-elapsed floor and the monotonic reading agree, so the first run is
+      // placed at that one elapsed time and the floor adds nothing on top of it.
+      // Were the wall folded in ON TOP of the counter, this run would land at
+      // sixty seconds, not thirty.
+      final audio = RecordingAudioSink();
+      final s = service(withAudioRecording: audio);
+      await s.start(track);
+
+      // Muted first frame latches the base at t0.
+      s.setMuted(true);
+      track.emit(20);
+      await pumpEventQueue();
+
+      // Thirty seconds pass on BOTH clocks: no stall, so nothing to recover.
+      clock.pass(30000);
+
+      s.setMuted(false);
+      track.emit(20);
+      await s.stop();
+      await pumpEventQueue();
+
+      expect(
+        runStarts.last,
+        clock.ms - 20,
+        reason: 'wall and counter agree, so the run sits at true elapsed, once',
+      );
+    });
   });
 
   group('a run that ends without a stop', () {
