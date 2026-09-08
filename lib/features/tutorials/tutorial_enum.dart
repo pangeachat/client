@@ -4,18 +4,16 @@ import 'package:fluffychat/features/tutorials/tutorial_step_templates.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 enum TutorialEnum {
-  readingAssistance(showNavigationButtons: false),
-  writingAssistance(showNavigationButtons: false),
-  selectModeButtons(showNavigationButtons: false),
-  welcome(showNavigationButtons: false, isOrientation: true),
-  worldMap(showNavigationButtons: false, isOrientation: true),
-  activityGoals(showNavigationButtons: false, isOrientation: true),
-  coursePlan(showNavigationButtons: false, isOrientation: true),
-  appTour(showNavigationButtons: false, isOrientation: true),
-  openSessions(showNavigationButtons: false, isOrientation: true),
-  activityRoles(showNavigationButtons: false, isOrientation: true);
-
-  final bool showNavigationButtons;
+  readingAssistance,
+  writingAssistance,
+  selectModeButtons,
+  welcome(isOrientation: true),
+  worldMap(isOrientation: true),
+  activityGoals(isOrientation: true),
+  coursePlan(isOrientation: true),
+  appTour(isOrientation: true),
+  openSessions(isOrientation: true),
+  activityRoles(isOrientation: true);
 
   /// Orientation tutorials teach the app itself — where things are, what to do
   /// first — so they are exempt from the subscription gate: a learner who
@@ -23,10 +21,7 @@ enum TutorialEnum {
   /// paid AI tools and stay gated. See tutorials.instructions.md.
   final bool isOrientation;
 
-  const TutorialEnum({
-    this.showNavigationButtons = true,
-    this.isOrientation = false,
-  });
+  const TutorialEnum({this.isOrientation = false});
 
   /// This tutorial's steps, in order. The single declaration of what the
   /// tutorial says and how many steps it has.
@@ -92,5 +87,22 @@ enum TutorialEnum {
       return;
     }
     _instructionsEnum.setStepProgress(stepIndex);
+  }
+
+  /// Marks every not-yet-seen tutorial in [tutorials] seen, in ONE profile
+  /// write — a backfill of several flags must not fan out a network save per
+  /// flag. A no-op when none is pending, so it is safe to run every session.
+  static Future<void> markSeen(List<TutorialEnum> tutorials) async {
+    final pending = tutorials.where((t) => t.globallyEnabled).toList();
+    if (pending.isEmpty) return;
+    await MatrixState.pangeaController.userController.updateProfile((profile) {
+      for (final tutorial in pending) {
+        profile.instructionSettings.setStatus(tutorial._instructionsEnum, true);
+        profile.instructionSettings.clearStepProgress(
+          tutorial._instructionsEnum,
+        );
+      }
+      return profile;
+    });
   }
 }

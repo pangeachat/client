@@ -39,6 +39,10 @@ class TutorialStepTemplates {
     TutorialStepTemplate(
       tooltip: (l10n, _) => l10n.tutorialWelcome,
       tooltipSize: const Size(280, 200),
+      // No Skip on the greeting alone: it fronts a longer run, so "Skip" here
+      // is ambiguous between "skip this hello" and "skip the walkthrough".
+      // The way out starts on the next card, where the run's progress shows.
+      showsSkip: false,
     ),
   ];
 
@@ -75,8 +79,10 @@ class TutorialStepTemplates {
     TutorialStepTemplate(
       tooltip: (l10n, _) => l10n.tutorialAppTourOffer,
       // Taller than the other steps: this one carries its two answers inside
-      // the card as well as the text and progress row.
-      tooltipSize: const Size(300, 230),
+      // the card as well as the text and progress row. But no title row — a
+      // branch step drops it — so it doesn't get the full title-row allowance
+      // the other cards carry.
+      tooltipSize: const Size(300, 190),
       choices: [
         TutorialStepChoice(
           label: (l10n) => l10n.tutorialAppTourAccept,

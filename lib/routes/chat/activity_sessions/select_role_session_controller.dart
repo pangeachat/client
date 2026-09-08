@@ -45,6 +45,14 @@ class SelectRoleSessionController extends State<SelectRoleSession>
   final _goalsHandler = GoalsSubscriptionHandler();
 
   @override
+  void initState() {
+    super.initState();
+    // A fresh role selection starts unpicked — a stale pick from an earlier
+    // visit would satisfy the roles tutorial's armed step instantly.
+    widget.controller.pickedRoleNotifier.value = null;
+  }
+
+  @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     _goalsHandler.init(widget.roomId, context, setState, () => mounted);
@@ -65,6 +73,7 @@ class SelectRoleSessionController extends State<SelectRoleSession>
         _confirmed = false;
         _goalsHandler.clearCache();
       });
+      widget.controller.pickedRoleNotifier.value = null;
     }
   }
 
@@ -148,6 +157,9 @@ class SelectRoleSessionController extends State<SelectRoleSession>
       setState(() {
         _selectedRoleId = _selectedRoleId == id ? null : id;
       });
+      // Published for the roles tutorial's armed step — picking a role is the
+      // thing it is waiting for.
+      widget.controller.pickedRoleNotifier.value = _selectedRoleId;
     }
   }
 

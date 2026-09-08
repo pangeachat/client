@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_feedback_repo.dart';
@@ -28,6 +29,7 @@ import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/features/tutorials/tutorial_enum.dart';
 import 'package:fluffychat/features/tutorials/tutorial_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_overlay_controller.dart';
+import 'package:fluffychat/features/tutorials/tutorial_seen_backfill.dart';
 import 'package:fluffychat/features/tutorials/tutorial_sequences.dart';
 import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
@@ -145,6 +147,11 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
 
   StreamSubscription? _tutorialRoomStateSubscription;
 
+  /// The role currently picked (not yet confirmed) during role selection,
+  /// published by [SelectRoleSessionController] — the roles tutorial's armed
+  /// step listens for the pick, which is the thing it asked for.
+  final ValueNotifier<String?> pickedRoleNotifier = ValueNotifier(null);
+
   @override
   void initState() {
     super.initState();
@@ -160,8 +167,12 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
     _subscribeTutorialRoomState();
     // Re-asks, per tutorials.instructions.md ("a trigger keeps asking"): the
     // profile reports every tutorial as seen until it loads, so its arrival is
-    // a trigger of its own.
+    // a trigger of its own — and so is the veteran backfill's evaluation,
+    // which may be about to mark the roles tutorial seen.
     MatrixState.pangeaController.userController.initCompleter.future.then(
+      (_) => _maybeStartStartPageTutorials(),
+    );
+    TutorialSeenBackfill.instance.ensureResolved().then(
       (_) => _maybeStartStartPageTutorials(),
     );
     _maybeStartStartPageTutorials();
@@ -207,6 +218,7 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
   @override
   void dispose() {
     scrollController.dispose();
+    pickedRoleNotifier.dispose();
     PanelFocusController.instance.removeListener(_onPanelFocusChanged);
     _tutorialRoomStateSubscription?.cancel();
     _unregisterTutorialLaunchers();
@@ -595,11 +607,9 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
     return SessionState.confirmedRole;
   }
 
-  // --------------------------------------------------------------------------
   // Tutorial hosting: the open-sessions and role-selection orientation steps.
-  // This state is the host because it owns [_sessionState], the gate both
-  // tutorials read. See tutorials.instructions.md.
-  // --------------------------------------------------------------------------
+  // This state hosts because it owns [_sessionState], the gate both read.
+  // Design: tutorials.instructions.md.
 
   TutorialOverlayController get _tutorials =>
       MatrixState.tutorialOverlayController;
@@ -711,10 +721,8 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
       _tutorialCheckScheduled = false;
       _checkStartPageTutorials();
     });
-    // A post-frame callback only runs if a frame is coming, and several of
-    // this page's re-ask signals (profile load, summary fetch, room state)
-    // arrive between frames — without asking for one, the flag above would
-    // latch and swallow every later re-ask.
+    // A post-frame callback only runs if a frame is coming; without asking for
+    // one, a between-frames re-ask latches the flag and swallows all later ones.
     WidgetsBinding.instance.ensureVisualUpdate();
   }
 
@@ -728,6 +736,9 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
         .isCompleted) {
       return;
     }
+    // The veteran backfill may be about to mark the roles tutorial seen —
+    // wait for its one evaluation; resolution re-asks (initState).
+    if (!TutorialSeenBackfill.instance.isResolved) return;
 
     // The target being on screen is the surface gate: the role grid only
     // renders during role selection, and the join list only on the Join
@@ -759,32 +770,56 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
     _tutorials.requestSequence(sequence);
   }
 
-  Future<void> _launchOpenSessionsTutorial() async {
-    if (!mounted) return;
-    _tutorials.launchTutorial(
-      context: context,
-      tutorial: TutorialModel(
-        tutorialType: TutorialEnum.openSessions,
-        stepsData: [
-          TutorialStepData.single(
-            targetKey: TutorialTargetIds.openSessionsList,
-            canShowNextStep: () => true,
-          ),
-        ],
-      ),
-      isFocused: _hostsTutorial,
+  // Stable tearoffs (the launcher registry unregisters by identity) over one
+  // shared launch shape: a single ARMED step — every tap reaches the app (a
+  // role gets selected, a session gets joined) and completes the step. Unlike
+  // the map's pin step, which opens its one chosen activity on a tap
+  // anywhere: here the learner is choosing.
+  Future<void> _launchOpenSessionsTutorial() => _launchStartPageTutorial(
+    TutorialEnum.openSessions,
+    TutorialTargetIds.openSessionsList,
+    // Done when they are IN one: the tile's own join flow ends by navigating,
+    // and the route change is the wake-up to check.
+    arming: TutorialStepArming(
+      signal: GoRouter.of(context).routeInformationProvider,
+      isSatisfied: _hasJoinedSessionRoom,
+    ),
+  );
+
+  Future<void> _launchActivityRolesTutorial() => _launchStartPageTutorial(
+    TutorialEnum.activityRoles,
+    TutorialTargetIds.activityRolesList,
+    arming: TutorialStepArming(
+      signal: pickedRoleNotifier,
+      isSatisfied: () => pickedRoleNotifier.value != null,
+    ),
+  );
+
+  /// The joinable-sessions step's "done": the learner holds membership in a
+  /// session room of this activity, which is what tapping a tile produces.
+  bool _hasJoinedSessionRoom() {
+    if (!mounted) return false;
+    return Matrix.of(context).client.rooms.any(
+      (room) =>
+          room.membership == Membership.join &&
+          room.activityId == widget.activityId,
     );
   }
 
-  Future<void> _launchActivityRolesTutorial() async {
+  Future<void> _launchStartPageTutorial(
+    TutorialEnum tutorial,
+    String targetKey, {
+    required TutorialStepArming arming,
+  }) async {
     if (!mounted) return;
     _tutorials.launchTutorial(
       context: context,
       tutorial: TutorialModel(
-        tutorialType: TutorialEnum.activityRoles,
+        tutorialType: tutorial,
         stepsData: [
           TutorialStepData.single(
-            targetKey: TutorialTargetIds.activityRolesList,
+            targetKey: targetKey,
+            arming: arming,
             canShowNextStep: () => true,
           ),
         ],

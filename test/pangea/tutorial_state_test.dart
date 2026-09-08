@@ -5,6 +5,7 @@ import 'package:fluffychat/features/tutorials/tutorial_enum.dart';
 import 'package:fluffychat/features/tutorials/tutorial_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_overlay_controller.dart';
 import 'package:fluffychat/features/tutorials/tutorial_overlay_state_machine.dart';
+import 'package:fluffychat/features/tutorials/tutorial_seen_backfill.dart';
 import 'package:fluffychat/features/tutorials/tutorial_sequences.dart';
 import 'package:fluffychat/features/tutorials/tutorial_state_transition_events.dart';
 import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
@@ -185,62 +186,39 @@ void main() {
     });
 
     // -------------------------------------------------------------------------
-    // BackTutorialEvent
+    // Per-tutorial resume: crossing into a tutorial consults ITS saved step
     // -------------------------------------------------------------------------
-    group('dispatch — BackTutorialEvent', () {
-      test('decrements stepIndex within a multi-step tutorial', () {
-        final sm = TutorialOverlayStateMachine(_multiStep);
-        sm.dispatch(const ForwardTutorialEvent()); // step 1
-        sm.dispatch(const ForwardTutorialEvent()); // step 2
-        sm.dispatch(const BackTutorialEvent());
-        expect(sm.model.stepIndex, 1);
-        sm.dispatch(const BackTutorialEvent());
-        expect(sm.model.stepIndex, 0);
+    group('resumeStepOf', () {
+      test(
+        'crossing into the next tutorial resumes at its saved step — the bug '
+        'this pins: only the sequence\'s first tutorial ever resumed, and a '
+        'learner who abandoned mid-selectModeButtons replayed it from step 0',
+        () {
+          final sm = TutorialOverlayStateMachine(
+            _full,
+            resumeStepOf: (tutorial) =>
+                tutorial == TutorialEnum.selectModeButtons ? 2 : 0,
+          );
+          sm.dispatch(const ForwardTutorialEvent()); // → selectModeButtons
+          expect(sm.tutorialType, TutorialEnum.selectModeButtons);
+          expect(sm.model.stepIndex, 2);
+        },
+      );
+
+      test('a stale save past the tutorial\'s end is clamped to its last '
+          'step, not stranded on one that no longer exists', () {
+        final sm = TutorialOverlayStateMachine(_full, resumeStepOf: (_) => 99);
+        sm.dispatch(const ForwardTutorialEvent()); // → selectModeButtons
+        expect(
+          sm.model.stepIndex,
+          TutorialEnum.selectModeButtons.stepCount - 1,
+        );
       });
 
-      test(
-        'goes back to last step of previous tutorial when at step 0, clears activeTutorial',
-        () {
-          final sm = TutorialOverlayStateMachine(_full);
-          sm.dispatch(
-            const ForwardTutorialEvent(),
-          ); // → selectModeButtons (index 1)
-          sm.dispatch(LaunchTutorialEvent(_selectModel()));
-          sm.dispatch(
-            const BackTutorialEvent(),
-          ); // → readingAssistance (index 0)
-          expect(sm.model.tutorialIndex, 0);
-          // readingAssistance has 1 step: last step index is 0
-          expect(sm.model.stepIndex, 0);
-          expect(sm.model.activeTutorial, isNull);
-          expect(sm.tutorialType, TutorialEnum.readingAssistance);
-        },
-      );
-
-      test(
-        'goes back to last step (index 2) of a 4-step previous tutorial',
-        () {
-          final sm = TutorialOverlayStateMachine(_full);
-          // Advance through selectModeButtons into writingAssistance
-          sm.dispatch(const ForwardTutorialEvent()); // → selectModeButtons
-          sm.dispatch(const ForwardTutorialEvent()); // step 1
-          sm.dispatch(const ForwardTutorialEvent()); // step 2
-          sm.dispatch(const ForwardTutorialEvent()); // step 3
-          sm.dispatch(
-            const ForwardTutorialEvent(),
-          ); // → writingAssistance (index 2)
-          sm.dispatch(const BackTutorialEvent()); // ← selectModeButtons step 2
-          expect(sm.model.tutorialIndex, 1);
-          expect(sm.model.stepIndex, 3);
-        },
-      );
-
-      test('sets tutorialIndex to -1 when backing past first tutorial', () {
-        final sm = TutorialOverlayStateMachine(_single);
-        sm.dispatch(const BackTutorialEvent());
-        expect(sm.model.tutorialIndex, -1);
+      test('without a resume source the next tutorial starts at 0', () {
+        final sm = TutorialOverlayStateMachine(_full);
+        sm.dispatch(const ForwardTutorialEvent());
         expect(sm.model.stepIndex, 0);
-        expect(sm.tutorialType, isNull);
       });
     });
 
@@ -290,12 +268,6 @@ void main() {
         sm.dispatch(const ForwardTutorialEvent()); // → writingAssistance
         expect(sm.completedStepsOffset, 5); // 1 + 4
       });
-
-      test('returns 0 when tutorialIndex is negative', () {
-        final sm = TutorialOverlayStateMachine(_single);
-        sm.dispatch(const BackTutorialEvent()); // tutorialIndex = -1
-        expect(sm.completedStepsOffset, 0);
-      });
     });
 
     // -------------------------------------------------------------------------
@@ -320,33 +292,6 @@ void main() {
     // Navigation flags
     // -------------------------------------------------------------------------
     group('navigation flags', () {
-      test(
-        'canGoBack / hasPreviousStep / hasPreviousTutorial are false at start',
-        () {
-          final sm = TutorialOverlayStateMachine(_single);
-          expect(sm.canGoBack, false);
-          expect(sm.hasPreviousStep, false);
-          expect(sm.hasPreviousTutorial, false);
-        },
-      );
-
-      test('hasPreviousStep is true after advancing a step', () {
-        final sm = TutorialOverlayStateMachine(_multiStep);
-        sm.dispatch(const ForwardTutorialEvent()); // step 1
-        expect(sm.hasPreviousStep, true);
-        expect(sm.canGoBack, true);
-      });
-
-      test(
-        'hasPreviousTutorial is true after advancing to second tutorial',
-        () {
-          final sm = TutorialOverlayStateMachine(_full);
-          sm.dispatch(const ForwardTutorialEvent()); // tutorialIndex = 1
-          expect(sm.hasPreviousTutorial, true);
-          expect(sm.canGoBack, true);
-        },
-      );
-
       test('hasNextStep is true for multi-step tutorial at step 0', () {
         expect(TutorialOverlayStateMachine(_multiStep).hasNextStep, true);
       });
@@ -397,12 +342,6 @@ void main() {
 
       test('returns null for empty sequence', () {
         expect(TutorialOverlayStateMachine([]).tutorialType, isNull);
-      });
-
-      test('returns null when tutorialIndex is negative', () {
-        final sm = TutorialOverlayStateMachine(_single);
-        sm.dispatch(const BackTutorialEvent()); // tutorialIndex = -1
-        expect(sm.tutorialType, isNull);
       });
     });
 
@@ -531,7 +470,7 @@ void main() {
       expect(c.state.tutorialType, isNull);
       // Reads safely with nothing running rather than needing a null check.
       expect(c.state.hasCompletedSequence, true);
-      expect(c.isTutorialQueued(TutorialEnum.readingAssistance), false);
+      expect(c.isCurrentTutorial(TutorialEnum.readingAssistance), false);
     });
 
     test('requesting a sequence arms its first enabled tutorial', () {
@@ -711,6 +650,41 @@ void main() {
       );
       c.skipCurrentSequence();
       expect(log, isEmpty);
+    });
+  });
+
+  // ===========================================================================
+  // The veteran backfill's design decision: which tutorials a learner with
+  // finished activities on record is assumed past, and which stay offerable
+  // ===========================================================================
+  group('TutorialSeenBackfill.veteranSeenTutorials', () {
+    test('a veteran skips the greeting, both tours, and the in-activity '
+        'pointers', () {
+      expect(TutorialSeenBackfill.veteranSeenTutorials, [
+        TutorialEnum.welcome,
+        TutorialEnum.worldMap,
+        TutorialEnum.appTour,
+        TutorialEnum.activityGoals,
+        TutorialEnum.activityRoles,
+      ]);
+    });
+
+    test('the per-case surfaces stay offerable to veterans — open sessions, '
+        'the chat tools, and the course plan may genuinely never have been '
+        'seen, and best usability wins there', () {
+      for (final tutorial in [
+        TutorialEnum.openSessions,
+        TutorialEnum.coursePlan,
+        TutorialEnum.readingAssistance,
+        TutorialEnum.selectModeButtons,
+        TutorialEnum.writingAssistance,
+      ]) {
+        expect(
+          TutorialSeenBackfill.veteranSeenTutorials.contains(tutorial),
+          isFalse,
+          reason: '$tutorial must stay offerable',
+        );
+      }
     });
   });
 
@@ -1063,6 +1037,20 @@ void main() {
 
     test('the pin step lights something, so it keeps its scrim', () {
       expect(TutorialEnum.worldMap.stepTemplates.last.dimsBackground, isTrue);
+    });
+
+    test('the greeting is the one step without a Skip control — it fronts a '
+        'longer run, and "Skip" there is ambiguous between "skip this hello" '
+        'and "skip the walkthrough"', () {
+      for (final tutorial in TutorialEnum.values) {
+        for (var i = 0; i < tutorial.stepCount; i++) {
+          expect(
+            tutorial.stepTemplates[i].showsSkip,
+            tutorial != TutorialEnum.welcome,
+            reason: '$tutorial step $i',
+          );
+        }
+      }
     });
 
     test('the course plan keeps its scrim throughout — every one of its steps '

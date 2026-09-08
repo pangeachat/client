@@ -21,12 +21,6 @@ class TutorialTooltipContainerWidget extends StatelessWidget {
   /// where skipping is unavailable (armed, branch) and uncatalogued sequences.
   final VoidCallback? onSkip;
 
-  final VoidCallback onNext;
-  final VoidCallback onPrevious;
-
-  final bool showNext;
-  final bool showPrevious;
-
   final int currentStep;
   final int totalSteps;
 
@@ -47,10 +41,6 @@ class TutorialTooltipContainerWidget extends StatelessWidget {
     this.padding = 8.0,
     this.sequenceKind,
     this.onSkip,
-    required this.onNext,
-    required this.onPrevious,
-    this.showNext = true,
-    this.showPrevious = false,
     required this.currentStep,
     required this.totalSteps,
     this.choices = const [],
@@ -60,73 +50,28 @@ class TutorialTooltipContainerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Material(
       color: Colors.transparent,
       elevation: 4,
       child: SizedBox(
         width: width + padding * 2,
         height: height + padding,
-        child: Stack(
-          children: [
-            Align(
-              alignment: Alignment.topCenter,
-              child: SizedBox(
-                width: width,
-                height: height,
-                child: TutorialTooltipWidget(
-                  text: text,
-                  currentStep: currentStep,
-                  totalSteps: totalSteps,
-                  sequenceTitle: sequenceKind?.title(L10n.of(context)),
-                  onSkip: onSkip,
-                  choices: choices,
-                  onChoice: onChoice,
-                  wordBubble: wordBubble,
-                ),
-              ),
+        child: Align(
+          alignment: Alignment.topCenter,
+          child: SizedBox(
+            width: width,
+            height: height,
+            child: TutorialTooltipWidget(
+              text: text,
+              currentStep: currentStep,
+              totalSteps: totalSteps,
+              sequenceTitle: sequenceKind?.title(L10n.of(context)),
+              onSkip: onSkip,
+              choices: choices,
+              onChoice: onChoice,
+              wordBubble: wordBubble,
             ),
-            if (showNext)
-              Positioned(
-                bottom: 0,
-                right: 0,
-                child: ElevatedButton(
-                  onPressed: onNext,
-                  style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.zero,
-                    minimumSize: const Size(56, 24),
-                    foregroundColor: theme.colorScheme.onPrimary,
-                    backgroundColor: theme.colorScheme.primary,
-                  ),
-                  child: Text(
-                    L10n.of(context).next,
-                    style: theme.textTheme.labelSmall?.copyWith(
-                      color: theme.colorScheme.onPrimary,
-                    ),
-                  ),
-                ),
-              ),
-            if (showPrevious)
-              Positioned(
-                bottom: 0,
-                left: 0,
-                child: ElevatedButton(
-                  onPressed: onPrevious,
-                  style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.zero,
-                    minimumSize: const Size(56, 24),
-                    foregroundColor: theme.colorScheme.onSecondary,
-                    backgroundColor: theme.colorScheme.secondary,
-                  ),
-                  child: Text(
-                    L10n.of(context).previous,
-                    style: theme.textTheme.labelSmall?.copyWith(
-                      color: theme.colorScheme.onSecondary,
-                    ),
-                  ),
-                ),
-              ),
-          ],
+          ),
         ),
       ),
     );

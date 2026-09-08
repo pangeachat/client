@@ -17,13 +17,9 @@ class TutorialOverlayWidget extends StatefulWidget {
   final TutorialSequenceKind? sequenceKind;
 
   final VoidCallback forward;
-  final VoidCallback back;
   final VoidCallback reset;
   final VoidCallback skipSequence;
   final Function(bool) setTutorialTransitioning;
-
-  final bool enabledForward;
-  final bool enabledBack;
 
   final int completedSteps;
   final int totalSteps;
@@ -32,12 +28,9 @@ class TutorialOverlayWidget extends StatefulWidget {
     required this.model,
     required this.sequenceKind,
     required this.forward,
-    required this.back,
     required this.reset,
     required this.skipSequence,
     required this.setTutorialTransitioning,
-    required this.enabledForward,
-    required this.enabledBack,
     required this.completedSteps,
     required this.totalSteps,
     super.key,
@@ -68,7 +61,17 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
     }
 
     WidgetsBinding.instance.addPostFrameCallback((_) => _setVisible(true));
+    _scheduleMonitor();
+  }
+
+  /// Registers the next monitor pass AND asks for the frame that runs it.
+  /// addPostFrameCallback alone does not schedule a frame, so on an idle
+  /// screen the loop — and the "target vanished → tear down" check with it —
+  /// simply stopped. Cost: a continuous frame while the overlay is up;
+  /// accepted, the overlay is short-lived by design.
+  void _scheduleMonitor() {
     WidgetsBinding.instance.addPostFrameCallback(_monitorTargetWidget);
+    WidgetsBinding.instance.ensureVisualUpdate();
   }
 
   TutorialStepData? get _stepData {
@@ -85,7 +88,7 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
 
     final data = _stepData;
     if (data == null) {
-      WidgetsBinding.instance.addPostFrameCallback(_monitorTargetWidget);
+      _scheduleMonitor();
       return;
     }
 
@@ -126,7 +129,7 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
       setState(() => _spotlightRects = rects);
     }
 
-    WidgetsBinding.instance.addPostFrameCallback(_monitorTargetWidget);
+    _scheduleMonitor();
   }
 
   bool _sameRects(List<Rect> a, List<Rect> b) {
@@ -244,11 +247,6 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
     if (success) widget.forward();
   }
 
-  Future<void> _previous() async {
-    await Future.delayed(_duration);
-    widget.back();
-  }
-
   Future<bool> _executeStepCallback(TutorialStep step) async {
     if (widget.model.isStepTransitioning) return false;
     try {
@@ -279,17 +277,15 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
     return true;
   }
 
-  /// On an armed step every tap belongs to the app, so this only decides
-  /// whether the overlay should get out of the way: a tap on something it lit
-  /// is the learner doing what was asked, so the spotlight stays until that
-  /// lands; a tap anywhere else means they are doing something else, and the
-  /// scrim should not follow them around. The step stays armed either way.
-  void _onArmedPointerDown(Offset position) {
+  /// On an armed step every tap belongs to the app — the overlay only listens.
+  /// Any tap, on the lit target or off it, ALSO completes the step and marks
+  /// it seen: leave-it-armed dismissal re-offered the card on every return
+  /// visit, which read as the tutorial repeating itself. The arming still
+  /// completes the step when the learner acts with the card NOT up (torn down
+  /// by its surface unmounting, or preempted by another sequence).
+  void _onArmedPointerDown() {
     if (!_visible) return;
-    final onLitTarget = _spotlightRects.any(
-      (rect) => rect.inflate(_tooltipPadding).contains(position),
-    );
-    if (!onLitTarget) widget.reset();
+    widget.forward();
   }
 
   @override
@@ -306,7 +302,6 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
     // A targetless step needs nothing measured; a spotlight step waits until it
     // knows where its target is, so the tooltip never flies in from the corner.
     final ready = !data.hasSpotlight || _spotlightRects.isNotEmpty;
-    final showNavigation = step.type.showNavigationButtons;
 
     final content = Stack(
       children: [
@@ -363,21 +358,18 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
               height: tooltipSize.height,
               padding: _tooltipPadding,
               sequenceKind: widget.sequenceKind,
-              // Every card carries Skip, for consistency — on a one-step
-              // sequence it amounts to finishing. Except an armed step (the
-              // overlay is under an IgnorePointer, so the button could never
-              // be tapped) and a branch (its decline choice IS the skip —
-              // two exits would compete).
+              // Every card carries Skip except a branch (its decline choice IS
+              // the skip) and the steps that opt out ([showsSkip] — the
+              // greeting). On an armed card the button sits under the
+              // overlay's IgnorePointer, but any tap completes the step anyway
+              // — showing it keeps the way out in the same place everywhere,
+              // and assistive tech can still activate it directly.
               onSkip:
                   widget.sequenceKind != null &&
-                      !data.isArmed &&
-                      !step.style.isBranch
+                      !step.style.isBranch &&
+                      step.style.showsSkip
                   ? widget.skipSequence
                   : null,
-              onNext: () => _next(step),
-              onPrevious: _previous,
-              showNext: showNavigation && widget.enabledForward,
-              showPrevious: showNavigation && widget.enabledBack,
               currentStep: widget.completedSteps,
               totalSteps: widget.totalSteps,
               text: step.style.tooltip,
@@ -394,13 +386,14 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
 
     // An armed step hands the screen back: the learner has to reach the thing
     // the step is pointing at, so the overlay must not swallow their taps. It
-    // watches them only to know when to get out of the way, and it does not
-    // block assistive tech either — telling someone to tap a pin while hiding
-    // that pin from their screen reader is the trap this avoids.
+    // watches them only to know the card was acted on (see
+    // _onArmedPointerDown), and it does not block assistive tech either —
+    // telling someone to tap a pin while hiding that pin from their screen
+    // reader is the trap this avoids.
     if (data.isArmed) {
       return Listener(
         behavior: HitTestBehavior.translucent,
-        onPointerDown: (event) => _onArmedPointerDown(event.position),
+        onPointerDown: (_) => _onArmedPointerDown(),
         child: IgnorePointer(child: content),
       );
     }

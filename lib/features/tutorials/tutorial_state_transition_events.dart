@@ -21,11 +21,6 @@ class ForwardTutorialEvent extends TutorialStateTransitionEvent {
   const ForwardTutorialEvent();
 }
 
-/// Moves the tutorial state machine backward, either to the previous step or the previous tutorial if the current step is the first in its sequence.
-class BackTutorialEvent extends TutorialStateTransitionEvent {
-  const BackTutorialEvent();
-}
-
 /// Resets the active tutorial. This is used when a tutorial is exited before completion.
 class ResetTutorialEvent extends TutorialStateTransitionEvent {
   const ResetTutorialEvent();

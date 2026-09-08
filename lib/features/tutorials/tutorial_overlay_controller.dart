@@ -71,7 +71,11 @@ class TutorialOverlayController {
 
   TutorialOverlayStateMachine get state => _state;
 
-  bool isTutorialQueued(TutorialEnum tutorial) =>
+  /// Whether [tutorial] is the sequence's CURRENT tutorial — the one waiting
+  /// to go (or already) on screen. Not a queue lookup: sequences queued behind
+  /// the active one answer false. (Renamed from `isTutorialQueued`, which read
+  /// as exactly that queue lookup and was being called as one.)
+  bool isCurrentTutorial(TutorialEnum tutorial) =>
       _state.tutorialType == tutorial;
 
   bool get hasActiveSequence => _activeSequence != null;
@@ -144,6 +148,9 @@ class TutorialOverlayController {
     _state = TutorialOverlayStateMachine(
       enabled,
       initialStepIndex: _progress.resumeStep(enabled.first),
+      // Later tutorials of the sequence resume at their own saved step too —
+      // initialStepIndex only covers the first.
+      resumeStepOf: _progress.resumeStep,
     );
     _launchCurrent();
     return true;
@@ -172,7 +179,7 @@ class TutorialOverlayController {
     // is itself the launch trigger — post-frame, since registration typically
     // happens during initState. Suppressed mid-launch: an opener that is still
     // preparing will re-ask once it finishes.
-    if (isTutorialQueued(tutorial) &&
+    if (isCurrentTutorial(tutorial) &&
         _state.model.activeTutorial == null &&
         !_launchInFlight) {
       WidgetsBinding.instance.addPostFrameCallback((_) => _launchCurrent());
@@ -304,7 +311,7 @@ class TutorialOverlayController {
       return;
     }
 
-    if (!isTutorialQueued(tutorial.tutorialType)) {
+    if (!isCurrentTutorial(tutorial.tutorialType)) {
       Logs().w(
         "Tutorial ${tutorial.tutorialType} is not queued to launch next",
       );
@@ -352,12 +359,9 @@ class TutorialOverlayController {
             model: machine.model,
             sequenceKind: sequenceKind,
             forward: forwardTutorial,
-            back: backTutorial,
             reset: resetTutorial,
             skipSequence: skipCurrentSequence,
             setTutorialTransitioning: setTutorialTransitioning,
-            enabledForward: machine.canGoForward,
-            enabledBack: machine.canGoBack,
             completedSteps:
                 machine.completedStepsOffset + machine.model.stepIndex + 1,
             totalSteps: machine.totalStepsInSequence,
@@ -427,23 +431,6 @@ class TutorialOverlayController {
       _progress.saveProgress(skipped, skipped.stepCount);
     }
     _endSequence();
-  }
-
-  /// Re-opens the previous tutorial in the sequence at its last step.
-  void backTutorial() {
-    if (!_state.canGoBack) {
-      _endSequence();
-      return;
-    }
-
-    _state.dispatch(BackTutorialEvent());
-    _disarm();
-
-    if (_state.model.activeTutorial == null) {
-      _launchCurrent();
-    } else {
-      _syncArming();
-    }
   }
 
   /// The current tutorial leaves the screen without being completed — its

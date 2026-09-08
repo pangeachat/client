@@ -53,7 +53,11 @@ class TutorialTooltipWidget extends StatelessWidget {
     final progress = totalSteps > 0 ? currentStep / totalSteps : 0.0;
 
     return Container(
-      padding: const EdgeInsets.all(8),
+      // Tighter on top than elsewhere: the message block centers itself in the
+      // card's slack, so top padding stacks onto that slack. Sides and bottom
+      // match, so the bottom row (buttons, skip/title) sits at the same
+      // distance from every edge it touches.
+      padding: const EdgeInsets.fromLTRB(14.0, 4.0, 14.0, 14.0),
       // Styled like a message from the bot, not a generic tooltip: the same
       // surface and corner radius other-party chat bubbles use, no border.
       decoration: BoxDecoration(
@@ -136,7 +140,10 @@ class TutorialTooltipWidget extends StatelessWidget {
               ],
             ),
           ),
-          if (sequenceTitle != null || onSkip != null)
+          // Under the progress bar, the card's bottom line. A branch step
+          // carries no title row — it is already a question with two answers,
+          // and a label wedged against them read as part of neither.
+          if (choices.isEmpty && (sequenceTitle != null || onSkip != null))
             _TutorialSequenceRow(title: sequenceTitle, onSkip: onSkip),
           if (choices.isNotEmpty)
             Padding(
@@ -144,13 +151,23 @@ class TutorialTooltipWidget extends StatelessWidget {
               child: Row(
                 spacing: 8.0,
                 children: [
-                  for (final choice in choices)
+                  // The declining choice always sits LEFT of the advancing one
+                  // — the same corner the Skip control lives in, so the way
+                  // out of a walkthrough is in one place everywhere.
+                  for (final choice in [
+                    ...choices.where(
+                      (c) => c.outcome == TutorialChoiceOutcome.decline,
+                    ),
+                    ...choices.where(
+                      (c) => c.outcome != TutorialChoiceOutcome.decline,
+                    ),
+                  ])
                     Expanded(
                       child: _TutorialChoiceButton(
                         label: choice.label,
-                        // The app's colour hierarchy: one darker filled primary
-                        // leads, and anything following it is a fully filled but
-                        // lighter primaryContainer button.
+                        // The app's colour hierarchy: the darker filled primary
+                        // leads (the advancing choice); the decline is a fully
+                        // filled but lighter primaryContainer button.
                         secondary:
                             choice.outcome != TutorialChoiceOutcome.advance,
                         onPressed: () => onChoice?.call(choice.outcome),
@@ -178,23 +195,12 @@ class _TutorialSequenceRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    // The way out sits bottom-LEFT and the walkthrough's name bottom-right —
+    // the same corners the branch step's choices take.
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 4.0),
       child: Row(
         children: [
-          if (title != null)
-            Expanded(
-              child: Text(
-                title!,
-                style: theme.textTheme.labelSmall?.copyWith(
-                  color: theme.colorScheme.onSurfaceVariant,
-                ),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
-            )
-          else
-            const Spacer(),
           if (onSkip != null)
             TextButton(
               onPressed: onSkip,
@@ -206,6 +212,19 @@ class _TutorialSequenceRow extends StatelessWidget {
               ),
               child: Text(L10n.of(context).skip),
             ),
+          Expanded(
+            child: title == null
+                ? const SizedBox.shrink()
+                : Text(
+                    title!,
+                    style: theme.textTheme.labelSmall?.copyWith(
+                      color: theme.colorScheme.onSurfaceVariant,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.end,
+                  ),
+          ),
         ],
       ),
     );

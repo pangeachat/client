@@ -5515,6 +5515,6 @@
     "tutorialSequenceTitleChat": "Language tools",
     "tutorialSequenceTitleOpenSessions": "Open sessions",
     "tutorialSequenceTitleActivityRoles": "Choosing a role",
-    "tutorialOpenSessions": "These are activities that other real people are playing. Join one to chat with them, but be aware they might not respond right away.",
-    "tutorialActivityRoles": "These are the roles that you can play in this activity. Pick the one that sounds most interesting for you to act as!"
+    "tutorialOpenSessions": "These are activities other people are playing. Join one to chat, but be aware they might not respond right away.",
+    "tutorialActivityRoles": "These are the roles you can play in this activity. Pick the one that interests you!"
 }
