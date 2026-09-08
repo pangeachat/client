@@ -320,10 +320,16 @@ void main() {
       );
     });
 
-    test('Mergeable: the other poster may have a null deviceId, substituted '
-        'as the empty string only for the sort key', () {
+    test('Mergeable: the other poster may have a null deviceId and the call '
+        'is still mergeable with the right rank and coverage', () {
       // Step 8 requires MY OWN half to name a device; the OTHER poster's
-      // placeable half may still have none (it just never wrote one).
+      // placeable half may still have none (it just never wrote one). This
+      // pins that a null other-deviceId neither crashes nor changes my rank or
+      // the coverage -- it is carried as '' ONLY internally so the candidate
+      // list stays a List of non-null keys. (The '' does not affect the sort
+      // ORDER: two distinct senders always decide on senderId, so the deviceId
+      // tie-break is never reached for a real mergeable pair -- an unobservable
+      // detail this test deliberately does not assert.)
       final verdict = decideCallAudioMerge(
         halves: [
           _half(_alice, 'A1'),
@@ -363,6 +369,104 @@ void main() {
           1500,
         ),
       );
+    });
+
+    test(
+      'PendingIncomplete for zero halves (the < 2 boundary, not just one)',
+      () {
+        final verdict = decideCallAudioMerge(
+          halves: const [],
+          isDmRoom: true,
+          myUserId: _alice,
+          myDeviceId: 'A1',
+          mergedExists: false,
+        );
+        expect(verdict, const PendingIncomplete());
+      },
+    );
+
+    test('NotCandidate when this device is the right USER but the wrong DEVICE '
+        'of a poster', () {
+      // Both halves are placeable and one is alice's, but THIS device is
+      // alice on a DIFFERENT device (A9, not the A1 that recorded). Matching
+      // on senderId alone would wrongly call this Mergeable; the device id
+      // must match too.
+      final verdict = decideCallAudioMerge(
+        halves: [_half(_alice, 'A1'), _half(_bob, 'B1')],
+        isDmRoom: true,
+        myUserId: _alice,
+        myDeviceId: 'A9',
+        mergedExists: false,
+      );
+      expect(verdict, const NotCandidate());
+    });
+
+    // Precedence tests: the tree's ORDER is load-bearing (an earlier verdict
+    // must win when two conditions co-occur). Each fixture below activates TWO
+    // rules at once and asserts the EARLIER one wins -- so reordering the tree
+    // flips exactly one of these RED, which the single-condition fixtures above
+    // cannot catch.
+    group('precedence (the earlier rule wins when conditions overlap)', () {
+      test('rule 1 over 2: mergedExists AND not-a-dm -> AlreadyMerged', () {
+        final verdict = decideCallAudioMerge(
+          halves: [_half(_alice, 'A1'), _half(_bob, 'B1')],
+          isDmRoom: false,
+          myUserId: _alice,
+          myDeviceId: 'A1',
+          mergedExists: true,
+        );
+        expect(verdict, const AlreadyMerged());
+      });
+
+      test('rule 2 over 4: not-a-dm AND three halves -> not-a-dm', () {
+        final verdict = decideCallAudioMerge(
+          halves: [_half(_alice, 'A1'), _half(_bob, 'B1'), _half(_carol, 'C1')],
+          isDmRoom: false,
+          myUserId: _alice,
+          myDeviceId: 'A1',
+          mergedExists: false,
+        );
+        expect(verdict, const TerminallyIneligible('not-a-dm'));
+      });
+
+      test('rule 4 over 5: three halves, two sharing a sender -> '
+          'more-than-two-halves (not user-with-multiple-halves)', () {
+        final verdict = decideCallAudioMerge(
+          halves: [_half(_alice, 'A1'), _half(_alice, 'A2'), _half(_bob, 'B1')],
+          isDmRoom: true,
+          myUserId: _alice,
+          myDeviceId: 'A1',
+          mergedExists: false,
+        );
+        expect(verdict, const TerminallyIneligible('more-than-two-halves'));
+      });
+
+      test('rule 5 over 7: two halves from one sender, one truncated -> '
+          'user-with-multiple-halves (not unplaceable-half)', () {
+        final verdict = decideCallAudioMerge(
+          halves: [_half(_alice, 'A1', truncated: true), _half(_alice, 'A2')],
+          isDmRoom: true,
+          myUserId: _alice,
+          myDeviceId: 'A1',
+          mergedExists: false,
+        );
+        expect(
+          verdict,
+          const TerminallyIneligible('user-with-multiple-halves'),
+        );
+      });
+
+      test('rule 7 over 8: an unplaceable half in a call this device did not '
+          'post -> unplaceable-half (not NotCandidate)', () {
+        final verdict = decideCallAudioMerge(
+          halves: [_half(_alice, 'A1', truncated: true), _half(_bob, 'B1')],
+          isDmRoom: true,
+          myUserId: _carol,
+          myDeviceId: 'C1',
+          mergedExists: false,
+        );
+        expect(verdict, const TerminallyIneligible('unplaceable-half'));
+      });
     });
   });
 }
