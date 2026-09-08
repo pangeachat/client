@@ -15,7 +15,7 @@ import 'package:fluffychat/routes/courses/course_objectives/objective_section.da
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 
 /// The three Mission-header states of the full course plan (#8874): the
-/// Up-next Mission wears a primaryContainer band and an "Up next" label, a
+/// Up-next Mission is outlined in primary with an "Up next" label, a
 /// satisfied Mission trades its star for a check and mutes its text, and every
 /// other Mission stays plain. Pinned because the state used to be a single
 /// colour swap nobody could see.
@@ -98,12 +98,12 @@ void main() {
   Color? colorOf(WidgetTester tester, String text) =>
       tester.widget<Text>(find.text(text)).style?.color;
 
-  Finder band(WidgetTester tester) => find.byWidgetPredicate(
+  Finder outline(WidgetTester tester) => find.byWidgetPredicate(
     (w) =>
         w is Container &&
         w.decoration is BoxDecoration &&
-        (w.decoration! as BoxDecoration).color ==
-            scheme(tester).primaryContainer,
+        (w.decoration! as BoxDecoration).border?.top.color ==
+            scheme(tester).primary,
   );
 
   /// The star-or-check glyph in the header, found beside the fraction so the
@@ -115,7 +115,7 @@ void main() {
       );
 
   group('Mission header states', () {
-    testWidgets('the Up-next Mission sits on a band and says so in words', (
+    testWidgets('the Up-next Mission is outlined and says so in words', (
       tester,
     ) async {
       await pumpAt(
@@ -126,8 +126,8 @@ void main() {
       );
 
       expect(find.text(upNextLabel), findsOneWidget);
-      expect(band(tester), findsOneWidget);
-      expect(colorOf(tester, objectiveText), scheme(tester).onPrimaryContainer);
+      expect(outline(tester), findsOneWidget);
+      expect(colorOf(tester, objectiveText), scheme(tester).primary);
       expect(headerIcon(tester, '0/4', Icons.star), findsOneWidget);
     });
 
@@ -142,7 +142,7 @@ void main() {
       );
 
       expect(find.text(upNextLabel), findsOneWidget);
-      expect(band(tester), findsOneWidget);
+      expect(outline(tester), findsOneWidget);
     });
 
     testWidgets('a satisfied Mission trades its star for a check and mutes '
@@ -165,24 +165,27 @@ void main() {
       expect(colorOf(tester, objectiveText), scheme(tester).onSurfaceVariant);
       expect(colorOf(tester, '4/4'), scheme(tester).onSurfaceVariant);
       expect(find.text(upNextLabel), findsNothing);
-      expect(band(tester), findsNothing);
+      expect(outline(tester), findsNothing);
     });
 
-    testWidgets('a satisfied Mission that is also Up next keeps the band and '
-        'the check', (tester) async {
-      // Every Mission satisfied → the resolver anchors on the weakest one.
-      await pumpAt(
-        tester,
-        1200,
-        isUpNext: true,
-        progress: const MissionProgress(stars: 4, threshold: 4),
-      );
+    testWidgets(
+      'a satisfied Mission that is also Up next keeps the outline and '
+      'the check',
+      (tester) async {
+        // Every Mission satisfied → the resolver anchors on the weakest one.
+        await pumpAt(
+          tester,
+          1200,
+          isUpNext: true,
+          progress: const MissionProgress(stars: 4, threshold: 4),
+        );
 
-      expect(find.text(upNextLabel), findsOneWidget);
-      expect(band(tester), findsOneWidget);
-      expect(headerIcon(tester, '4/4', Icons.check_circle), findsOneWidget);
-      expect(colorOf(tester, objectiveText), scheme(tester).onPrimaryContainer);
-    });
+        expect(find.text(upNextLabel), findsOneWidget);
+        expect(outline(tester), findsOneWidget);
+        expect(headerIcon(tester, '4/4', Icons.check_circle), findsOneWidget);
+        expect(colorOf(tester, objectiveText), scheme(tester).primary);
+      },
+    );
 
     testWidgets('a later Mission stays plain', (tester) async {
       await pumpAt(
@@ -193,7 +196,7 @@ void main() {
       );
 
       expect(find.text(upNextLabel), findsNothing);
-      expect(band(tester), findsNothing);
+      expect(outline(tester), findsNothing);
       expect(headerIcon(tester, '1/4', Icons.star), findsOneWidget);
       // Plain bodyMedium — no accent, no muting.
       expect(

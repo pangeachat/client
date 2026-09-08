@@ -87,14 +87,14 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    // Three header states (#8874): the Up-next Mission sits on a
-    // primaryContainer band and says so in words; a satisfied Mission trades
-    // its star for a check and mutes its text; the rest stay plain. Up next
-    // wins the text colour when both apply (every Mission satisfied → the
-    // resolver anchors on the weakest one).
+    // Three header states (#8874): the Up-next Mission is outlined in primary
+    // and says so in words; a satisfied Mission trades its star for a check
+    // and mutes its text; the rest stay plain. Up next wins the text colour
+    // when both apply (every Mission satisfied → the resolver anchors on the
+    // weakest one).
     final satisfied = widget.progress?.satisfied ?? false;
     final headerColor = widget.isUpNext
-        ? theme.colorScheme.onPrimaryContainer
+        ? theme.colorScheme.primary
         : satisfied
         ? theme.colorScheme.onSurfaceVariant
         : null;
@@ -172,13 +172,20 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
     return Semantics(
       label: L10n.of(context).objective,
       container: true,
-      // The Up-next Mission's band wraps the header AND its activity row, so
-      // the whole section reads as "here" when scanning by thumbnails.
+      // The Up-next Mission's outline wraps the header AND its activity row,
+      // so the whole section reads as "here" when scanning by thumbnails. An
+      // outline rather than a fill: the carousel's scroll arrow paints a
+      // surface-coloured strip over the row's edge, which reads as a notch cut
+      // out of any tinted band.
       child: Container(
-        padding: widget.isUpNext ? const EdgeInsets.all(12.0) : EdgeInsets.zero,
+        // A 12 px inset like the band had: 10 px of padding inside the 2 px line.
+        padding: widget.isUpNext ? const EdgeInsets.all(10.0) : EdgeInsets.zero,
         decoration: widget.isUpNext
             ? BoxDecoration(
-                color: theme.colorScheme.primaryContainer,
+                border: Border.all(
+                  color: theme.colorScheme.primary,
+                  width: 2.0,
+                ),
                 borderRadius: BorderRadius.circular(12.0),
               )
             : null,
