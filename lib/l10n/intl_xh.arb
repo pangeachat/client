@@ -2280,5 +2280,6 @@
     "listenFirstNeedsChoiceAudio": "Vula iaudio yeZikhetho ukuze usebenzise i-'Mamela kuqala'.",
     "unableToJoinCourseError": "Asikwazanga ukukongeza kwesi sifundo ngoku. Nceda zama kwakhona, okanye ubuze utitshala wakho.",
     "edited": "Ihlelwe",
-    "attach": "Fakela"
+    "attach": "Fakela",
+    "callHistoryTranscript": "Umbhalo"
 }

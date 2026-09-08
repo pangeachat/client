@@ -2280,5 +2280,6 @@
     "listenFirstNeedsChoiceAudio": "Tionndaidh air claisneachd Roghainnean gus Èist an toiseach a chleachdadh.",
     "unableToJoinCourseError": "Cha b' urrainn dhuinn do chur ris a' chùrsa seo an-dràsta. Feuch ris a-rithist, no faighnich don tidsear agad.",
     "edited": "Deasaichte",
-    "attach": "Ceangail"
+    "attach": "Ceangail",
+    "callHistoryTranscript": "Tar-sgrìobhadh"
 }

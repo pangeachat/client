@@ -2280,5 +2280,6 @@
     "listenFirstNeedsChoiceAudio": "Whakakāhia te oro Kōwhiringa kia whakamahi i te Whakarongo Tuatahi.",
     "unableToJoinCourseError": "Kāore i taea te tāpiri i a koe ki tēnei akoranga i nāianei tonu. Tēnā, ngana anō, pātai atu rānei ki tō kaiako.",
     "edited": "Kua whakatikaina",
-    "attach": "Āpiti"
+    "attach": "Āpiti",
+    "callHistoryTranscript": "Tuhinga"
 }

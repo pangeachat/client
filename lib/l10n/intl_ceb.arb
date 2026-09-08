@@ -2280,5 +2280,6 @@
     "listenFirstNeedsChoiceAudio": "I-on ang Choices audio aron magamit ang Listen First.",
     "unableToJoinCourseError": "Dili ka namo maapil sa kini nga kurso karon. Palihug sulayi pag-usab, o pangutana sa imong magtutudlo.",
     "edited": "Gi-edit",
-    "attach": "Ipapilit"
+    "attach": "Ipapilit",
+    "callHistoryTranscript": "Transcript"
 }

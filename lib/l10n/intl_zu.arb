@@ -2280,5 +2280,6 @@
     "listenFirstNeedsChoiceAudio": "Vula umsindo wezinketho ukuze usebenzise i-Lalela Kuqala.",
     "unableToJoinCourseError": "Asikwazanga ukukufaka kulesi sifundo okwamanje. Sicela uzame futhi, noma ubuze uthisha wakho.",
     "edited": "Kuhleliwe",
-    "attach": "Namathisela"
+    "attach": "Namathisela",
+    "callHistoryTranscript": "Umbhalo"
 }

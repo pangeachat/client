@@ -10003,5 +10003,6 @@
     "listenFirstNeedsChoiceAudio": "Activa l'àudio de les opcions per utilitzar Escolta primer.",
     "unableToJoinCourseError": "No hem pogut afegir-te a aquest curs ara mateix. Torna-ho a provar o pregunta al teu professor.",
     "edited": "Editat",
-    "attach": "Adjuntar"
+    "attach": "Adjuntar",
+    "callHistoryTranscript": "Transcripció"
 }

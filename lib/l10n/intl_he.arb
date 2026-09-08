@@ -10790,5 +10790,6 @@
     "listenFirstNeedsChoiceAudio": "הפעל אודיו של אפשרויות כדי להשתמש ב'האזנה תחילה'.",
     "unableToJoinCourseError": "לא הצלחנו לצרף אותך לקורס הזה כרגע. אנא נסה/נסי שוב, או שאל/שאלי את המורה שלך.",
     "edited": "נערך",
-    "attach": "צרף"
+    "attach": "צרף",
+    "callHistoryTranscript": "תמליל"
 }

@@ -2280,5 +2280,6 @@
     "listenFirstNeedsChoiceAudio": "Slå på lyd for valg for å bruke Lytt først.",
     "unableToJoinCourseError": "Vi kunne ikke legge deg til dette kurset akkurat nå. Prøv igjen, eller spør læreren din.",
     "edited": "Redigert",
-    "attach": "Legg ved"
+    "attach": "Legg ved",
+    "callHistoryTranscript": "Transkripsjon"
 }

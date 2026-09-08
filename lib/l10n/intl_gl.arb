@@ -9876,5 +9876,6 @@
     "listenFirstNeedsChoiceAudio": "Activa o audio das opcións para usar Escoitar primeiro.",
     "unableToJoinCourseError": "Non puidemos engadirte a este curso agora mesmo. Téntao de novo ou pregunta ao teu profesor.",
     "edited": "Editado",
-    "attach": "Adxuntar"
+    "attach": "Adxuntar",
+    "callHistoryTranscript": "Transcrición"
 }

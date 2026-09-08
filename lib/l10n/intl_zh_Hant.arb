@@ -9982,5 +9982,6 @@
     "listenFirstNeedsChoiceAudio": "請開啟「選項音訊」以使用「先聽」功能。",
     "unableToJoinCourseError": "我們目前無法將您加入此課程。請再試一次，或詢問您的老師。",
     "edited": "已編輯",
-    "attach": "附加"
+    "attach": "附加",
+    "callHistoryTranscript": "逐字稿"
 }

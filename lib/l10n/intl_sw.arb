@@ -2280,5 +2280,6 @@
     "listenFirstNeedsChoiceAudio": "Washa sauti ya Chaguo ili kutumia Sikiliza Kwanza.",
     "unableToJoinCourseError": "Hatukuweza kukuongeza kwenye kozi hii kwa sasa. Tafadhali jaribu tena, au muulize mwalimu wako.",
     "edited": "Imehaririwa",
-    "attach": "Ambatanisha"
+    "attach": "Ambatanisha",
+    "callHistoryTranscript": "Nakala"
 }

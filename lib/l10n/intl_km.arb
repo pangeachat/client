@@ -2280,5 +2280,6 @@
     "listenFirstNeedsChoiceAudio": "បើកសំឡេងជម្រើសដើម្បីប្រើមុខងារស្ដាប់មុន។",
     "unableToJoinCourseError": "យើងមិនអាចបន្ថែមអ្នកទៅវគ្គសិក្សានេះបានទេ។ សូមព្យាយាមម្ដងទៀត ឬសួរគ្រូរបស់អ្នក។",
     "edited": "បានកែសម្រួល",
-    "attach": "ភ្ជាប់"
+    "attach": "ភ្ជាប់",
+    "callHistoryTranscript": "ប្រតិចារិក"
 }

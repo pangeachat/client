@@ -9876,5 +9876,6 @@
     "listenFirstNeedsChoiceAudio": "Aktibatu Aukeren audioa Lehenik entzun erabiltzeko.",
     "unableToJoinCourseError": "Ezin izan zaitugu ikastaro honetan sartu oraintxe bertan. Saiatu berriro, edo galdetu zure irakasleari.",
     "edited": "Editatu da",
-    "attach": "Erantsi"
+    "attach": "Erantsi",
+    "callHistoryTranscript": "Transkripzioa"
 }

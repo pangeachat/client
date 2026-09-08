@@ -10182,5 +10182,6 @@
     "listenFirstNeedsChoiceAudio": "شغّل صوت الخيارات لاستخدام \"استمع أولاً\".",
     "unableToJoinCourseError": "تعذر علينا إضافتك إلى هذه الدورة التدريبية الآن. يرجى المحاولة مرة أخرى، أو سؤال معلمك.",
     "edited": "تم التعديل",
-    "attach": "إرفاق"
+    "attach": "إرفاق",
+    "callHistoryTranscript": "النص"
 }

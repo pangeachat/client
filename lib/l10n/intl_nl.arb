@@ -9876,5 +9876,6 @@
     "listenFirstNeedsChoiceAudio": "Schakel Keuze-audio in om Eerst luisteren te gebruiken.",
     "unableToJoinCourseError": "We konden je nu niet toevoegen aan deze cursus. Probeer het opnieuw, of vraag het aan je docent.",
     "edited": "Bewerkt",
-    "attach": "Bijvoegen"
+    "attach": "Bijvoegen",
+    "callHistoryTranscript": "Transcript"
 }

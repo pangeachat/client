@@ -10370,5 +10370,6 @@
     "listenFirstNeedsChoiceAudio": "Zapněte zvuk voleb, abyste mohli použít funkci „Nejprve poslech“.",
     "unableToJoinCourseError": "Momentálně se nám nepodařilo přidat vás do tohoto kurzu. Zkuste to prosím znovu, nebo se zeptejte svého učitele.",
     "edited": "Upraveno",
-    "attach": "Připojit"
+    "attach": "Připojit",
+    "callHistoryTranscript": "Přepis"
 }

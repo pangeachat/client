@@ -10394,5 +10394,6 @@
     "listenFirstNeedsChoiceAudio": "Aktivera ljud för val för att använda Lyssna först.",
     "unableToJoinCourseError": "Vi kunde inte lägga till dig i den här kursen just nu. Försök igen, eller fråga din lärare.",
     "edited": "Redigerad",
-    "attach": "Bifoga"
+    "attach": "Bifoga",
+    "callHistoryTranscript": "Transkription"
 }

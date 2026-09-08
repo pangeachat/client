@@ -475,69 +475,77 @@ class CallTimelineEvent extends StatelessWidget {
     final missed = !_answered && !_declined;
     final connected = _answered && !_declined;
 
-    // A call that connected is unremarkable; one that was missed or turned down
-    // is the thing a learner scrolls back to find. Colour follows that, not the
-    // call's direction.
-    final color = connected ? const Color(0xFF2E7D32) : theme.colorScheme.error;
+    // A call with a transcript to open is drawn as a button, in the tonal
+    // pill the app's chips and FilledButton.tonal wear, so it cannot be
+    // mistaken for the flat note beside it (#8790). Everything else -- missed,
+    // declined, or a connected call whose card carries no key to open --
+    // keeps that note: an affordance that leads nowhere is worse than none.
+    // The note's colour follows outcome, not direction: a missed or turned
+    // down call is the thing a learner scrolls back to find.
+    final scheme = theme.colorScheme;
+    final button = _openable;
+    final color = button
+        ? scheme.onSecondaryContainer
+        : connected
+        ? const Color(0xFF2E7D32)
+        : scheme.error;
+    final radius = BorderRadius.circular(
+      button ? AppConfig.borderRadius : AppConfig.borderRadius / 3,
+    );
+    final labelStyle =
+        (button ? theme.textTheme.labelLarge : theme.textTheme.bodySmall)
+            ?.copyWith(color: color, fontWeight: FontWeight.w500);
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       child: Center(
         child: Material(
-          color: theme.colorScheme.surface.withAlpha(128),
-          borderRadius: BorderRadius.circular(AppConfig.borderRadius / 3),
+          color: button
+              ? scheme.secondaryContainer
+              : scheme.surface.withAlpha(128),
+          borderRadius: radius,
           // The whole card is the tap target, so the whole card is what has to
-          // announce itself. The notes icon below carries a Tooltip, and a
-          // tooltip is a MOUSE HOVER: it says nothing to a screen reader and
-          // nothing at all on a phone, which is where most calls happen. Before
-          // this, the only way to discover the transcript was to guess that a
-          // finished call was tappable.
+          // announce itself. The visible "Transcript" below is for sighted
+          // users; a screen reader needs the button role and the full label.
           child: Semantics(
-            button: _openable,
-            label: _openable ? l10n.callTranscriptOpen : null,
+            button: button,
+            label: button ? l10n.callTranscriptOpen : null,
             child: InkWell(
-              borderRadius: BorderRadius.circular(AppConfig.borderRadius / 3),
+              borderRadius: radius,
               // Null when there is nothing to open, which also removes the
-              // ripple: an affordance that leads nowhere is worse than none.
-              onTap: _openable ? () => _openTranscript(context) : null,
+              // ripple.
+              onTap: button ? () => _openTranscript(context) : null,
               child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 10,
-                  vertical: 6,
-                ),
+                padding: button
+                    ? const EdgeInsets.symmetric(horizontal: 16, vertical: 10)
+                    : const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Icon(_icon(missed), size: 16, color: color),
-                    const SizedBox(width: 7),
+                    Icon(_icon(missed), size: button ? 18 : 16, color: color),
+                    SizedBox(width: button ? 8 : 7),
                     Flexible(
                       child: Text(
                         _label(l10n, missed),
-                        style: theme.textTheme.bodySmall?.copyWith(
-                          color: color,
-                          fontWeight: FontWeight.w500,
-                        ),
+                        style: labelStyle,
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
                     if (connected && _duration != null) ...[
+                      SizedBox(width: button ? 8 : 7),
                       Text(
-                        '  ${formatDuration(_duration!)}',
-                        style: theme.textTheme.bodySmall?.copyWith(
-                          color: theme.colorScheme.onSurfaceVariant,
+                        formatDuration(_duration!),
+                        style: labelStyle?.copyWith(
+                          color: button ? color : scheme.onSurfaceVariant,
+                          fontWeight: FontWeight.w400,
                         ),
                       ),
                     ],
-                    if (_openable) ...[
-                      const SizedBox(width: 7),
-                      Tooltip(
-                        message: l10n.callTranscriptOpen,
-                        child: Icon(
-                          Icons.notes,
-                          size: 15,
-                          color: theme.colorScheme.onSurfaceVariant,
-                        ),
-                      ),
+                    if (button) ...[
+                      const SizedBox(width: 14),
+                      Icon(Icons.notes, size: 18, color: color),
+                      const SizedBox(width: 6),
+                      Text(l10n.callHistoryTranscript, style: labelStyle),
                     ],
                   ],
                 ),

@@ -10069,5 +10069,6 @@
     "listenFirstNeedsChoiceAudio": "먼저 듣기를 사용하려면 선택 오디오를 켜세요.",
     "unableToJoinCourseError": "지금은 이 코스에 참여할 수 없습니다. 다시 시도하거나 선생님께 문의하세요.",
     "edited": "수정됨",
-    "attach": "첨부"
+    "attach": "첨부",
+    "callHistoryTranscript": "대화 기록"
 }

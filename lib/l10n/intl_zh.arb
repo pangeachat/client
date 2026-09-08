@@ -9876,5 +9876,6 @@
     "listenFirstNeedsChoiceAudio": "请开启“选项音频”以使用“先听”功能。",
     "unableToJoinCourseError": "我们暂时无法将您添加到此课程。请重试，或联系您的老师。",
     "edited": "已编辑",
-    "attach": "附加"
+    "attach": "附加",
+    "callHistoryTranscript": "文字记录"
 }

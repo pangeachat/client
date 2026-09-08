@@ -3776,6 +3776,7 @@
     "callHistoryNoAnswer": "No answer",
     "callHistoryDeclined": "Call declined",
     "callHistoryYouDeclined": "You declined this call",
+    "callHistoryTranscript": "Transcript",
     "callTranscriptTitle": "Call transcript",
     "callTranscriptLoadFailed": "Could not load the transcript",
     "callTranscriptRetry": "Try again",

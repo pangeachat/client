@@ -10508,5 +10508,6 @@
     "listenFirstNeedsChoiceAudio": "Cas ar fhuaim Roghanna chun Éist ar dtús a úsáid.",
     "unableToJoinCourseError": "Níorbh fhéidir linn tú a chur leis an gcúrsa seo faoi láthair. Bain triail eile as, nó iarr ar do mhúinteoir.",
     "edited": "Eagraithe",
-    "attach": "Ceangail"
+    "attach": "Ceangail",
+    "callHistoryTranscript": "Tras-scríbhinn"
 }

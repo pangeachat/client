@@ -85,6 +85,103 @@ void main() {
     expect(find.text('Call declined'), findsOneWidget);
   });
 
+  group('how a finished call reads (#8790)', () {
+    Event finished({String? callKey}) {
+      final room = Room(id: '!c:fakeServer.notExisting', client: client);
+      return Event(
+        type: PangeaEventTypes.call,
+        content: {
+          'caller': me,
+          'answered': true,
+          'declined': false,
+          'duration_ms': 79000,
+          'call_key': ?callKey,
+        },
+        senderId: me,
+        eventId: r'$card',
+        originServerTs: DateTime.now(),
+        room: room,
+        status: EventStatus.synced,
+      );
+    }
+
+    /// The card's own surface: the Material nearest the tap target, not the
+    /// Scaffold's.
+    Material surface(WidgetTester tester) => tester.widget<Material>(
+      find
+          .ancestor(of: find.byType(InkWell), matching: find.byType(Material))
+          .first,
+    );
+
+    ColorScheme scheme(WidgetTester tester) =>
+        Theme.of(tester.element(find.byType(InkWell))).colorScheme;
+
+    testWidgets('a call with a transcript is a button that says so', (
+      tester,
+    ) async {
+      // The card used to wear the same container as every system note, so a
+      // finished call looked exactly like the "Missed call" beside it and the
+      // only hint that it opened anything was a hover tooltip.
+      final handle = tester.ensureSemantics();
+      await pump(tester, finished(callKey: r'$membership'));
+
+      final material = surface(tester);
+      expect(
+        material.color,
+        scheme(tester).secondaryContainer,
+        reason: 'tonal',
+      );
+      expect(
+        material.borderRadius,
+        BorderRadius.circular(18),
+        reason: 'the radius the app’s buttons and chips wear',
+      );
+      expect(find.text('Voice call'), findsOneWidget);
+      expect(find.text('1:19'), findsOneWidget);
+      expect(
+        find.text('Transcript'),
+        findsOneWidget,
+        reason: 'names what a tap opens',
+      );
+      // The child texts are absorbed into the button's node, so the label a
+      // screen reader hears STARTS with the affordance and goes on to the
+      // call itself.
+      expect(
+        find.bySemanticsLabel(RegExp(r'^Read the transcript')),
+        findsOneWidget,
+        reason: 'a screen reader hears the whole affordance',
+      );
+      handle.dispose();
+    });
+
+    testWidgets('an unanswered call stays a flat note', (tester) async {
+      // We placed this one (the card names us as caller), so it reads "No
+      // answer"; the peer's side of the same call reads "Missed call". Either
+      // way there is no conversation to open.
+      await pump(
+        tester,
+        card(status: EventStatus.synced, answered: false, declined: false),
+      );
+      final material = surface(tester);
+      expect(material.color, isNot(scheme(tester).secondaryContainer));
+      expect(material.borderRadius, BorderRadius.circular(6));
+      expect(find.text('No answer'), findsOneWidget);
+      expect(find.text('Transcript'), findsNothing, reason: 'nothing to open');
+    });
+
+    testWidgets('a connected call with no key to open is not a button', (
+      tester,
+    ) async {
+      // Older clients wrote cards without a key. The call happened and its
+      // length is known, but there is no transcript to reach, so a button
+      // would lead nowhere.
+      await pump(tester, finished());
+      expect(surface(tester).color, isNot(scheme(tester).secondaryContainer));
+      expect(find.text('1:19'), findsOneWidget);
+      expect(find.text('Transcript'), findsNothing);
+    });
+  });
+
   group('the caller field, which is room content', () {
     Event withCaller(Object? caller, {required String sender}) {
       client.accountData['m.direct'] = BasicEvent(

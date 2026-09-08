@@ -10177,5 +10177,6 @@
     "listenFirstNeedsChoiceAudio": "Önce Dinle'yi kullanmak için Seçenekler sesini açın.",
     "unableToJoinCourseError": "Şu anda sizi bu kursa ekleyemedik. Lütfen tekrar deneyin veya öğretmeninize danışın.",
     "edited": "Düzenlendi",
-    "attach": "Ekle"
+    "attach": "Ekle",
+    "callHistoryTranscript": "Döküm"
 }

@@ -9961,5 +9961,6 @@
     "listenFirstNeedsChoiceAudio": "Włącz dźwięk opcji, aby użyć funkcji „Najpierw słuchaj”.",
     "unableToJoinCourseError": "Nie udało nam się dodać Cię do tego kursu. Spróbuj ponownie lub skontaktuj się z nauczycielem.",
     "edited": "Edytowano",
-    "attach": "Załącz"
+    "attach": "Załącz",
+    "callHistoryTranscript": "Transkrypcja"
 }

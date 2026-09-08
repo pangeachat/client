@@ -10608,5 +10608,6 @@
     "listenFirstNeedsChoiceAudio": "Activează sunetul Opțiunilor pentru a utiliza Ascultă mai întâi.",
     "unableToJoinCourseError": "Nu te-am putut adăuga la acest curs chiar acum. Te rugăm să încerci din nou sau să-ți întrebi profesorul.",
     "edited": "Editat",
-    "attach": "Atașează"
+    "attach": "Atașează",
+    "callHistoryTranscript": "Transcrierea"
 }

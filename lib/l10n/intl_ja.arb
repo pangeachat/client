@@ -10645,5 +10645,6 @@
     "listenFirstNeedsChoiceAudio": "「まず聞く」を使用するには、選択肢の音声をオンにしてください。",
     "unableToJoinCourseError": "現在、このコースに参加できません。もう一度お試しいただくか、先生にお問い合わせください。",
     "edited": "編集済み",
-    "attach": "添付"
+    "attach": "添付",
+    "callHistoryTranscript": "トランスクリプト"
 }

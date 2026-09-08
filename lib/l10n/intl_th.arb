@@ -10508,5 +10508,6 @@
     "listenFirstNeedsChoiceAudio": "เปิดเสียงตัวเลือกเพื่อใช้ฟังก่อน",
     "unableToJoinCourseError": "เราไม่สามารถเพิ่มคุณในคอร์สนี้ได้ในขณะนี้ โปรดลองอีกครั้ง หรือสอบถามครูผู้สอนของคุณ",
     "edited": "แก้ไขแล้ว",
-    "attach": "แนบ"
+    "attach": "แนบ",
+    "callHistoryTranscript": "ประวัติการสนทนา"
 }

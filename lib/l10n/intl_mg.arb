@@ -2280,5 +2280,6 @@
     "listenFirstNeedsChoiceAudio": "Alefaso ny feon'ny safidy mba hampiasana ny Henoy aloha.",
     "unableToJoinCourseError": "Tsy afaka nampiditra anao tamin'ity taranja ity izahay izao. Andramo indray, na anontanio ny mpampianatra anao.",
     "edited": "Nohavaozina",
-    "attach": "Ampifandraiso"
+    "attach": "Ampifandraiso",
+    "callHistoryTranscript": "Dika soratra"
 }
