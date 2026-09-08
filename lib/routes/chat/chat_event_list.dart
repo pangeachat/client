@@ -23,6 +23,27 @@ class ChatEventList extends StatelessWidget {
 
   const ChatEventList({super.key, required this.controller});
 
+  /// Rows the sliver places before the first event: the typing/footer row at
+  /// index 0 and [ActivityUserSummaries] at 1. The item builder subtracts this
+  /// and [findChildIndexCallback] adds it back. The two must agree: when the
+  /// callback is off by one, every list rebuild moves each keyed row to a slot
+  /// whose builder yields a different key, so Flutter discards the row's
+  /// element and inflates a new one, restarting every State inside it (#8837:
+  /// the presence dot blinked on each send).
+  static const int leadingRowCount = 2;
+
+  /// Maps a row's [ValueKey] (its event id) back to its sliver index so a
+  /// rebuild reuses the row's element instead of inflating a new one.
+  static int? findChildIndexCallback(Key key, Map<String, int> indexByEventId) {
+    // Called for every keyed row on every rebuild; keep it cheap.
+    if (key is! ValueKey) return null;
+    final eventId = key.value;
+    if (eventId is! String) return null;
+    final index = indexByEventId[eventId];
+    if (index == null) return null;
+    return index + leadingRowCount;
+  }
+
   @override
   Widget build(BuildContext context) {
     final timeline = controller.timeline;
@@ -186,7 +207,7 @@ class ChatEventList extends StatelessWidget {
 
               // #Pangea
               // i--;
-              i = i - 2;
+              i -= leadingRowCount;
               // Pangea#
 
               // The message at this index:
@@ -282,7 +303,7 @@ class ChatEventList extends StatelessWidget {
             childCount: events.length + 4,
             // Pangea#
             findChildIndexCallback: (key) =>
-                controller.findChildIndexCallback(key, thisEventsKeyMap),
+                findChildIndexCallback(key, thisEventsKeyMap),
           ),
         ),
       ),
