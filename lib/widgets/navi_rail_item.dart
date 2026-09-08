@@ -5,6 +5,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/tutorials/tutorial_target.dart';
 import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
+import 'package:fluffychat/pangea/common/widgets/pass_through_tooltip.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/unread_rooms_badge.dart';
 import '../config/themes.dart';
@@ -132,11 +133,14 @@ class NaviRailItem extends StatelessWidget {
                                                 .colorScheme
                                                 .surfaceContainerHigh),
                                   borderRadius: borderRadius,
-                                  child: Tooltip(
+                                  // The label takes no pointer input, so one
+                                  // that has already shown can't stall the
+                                  // scroll once the rail carries it under the
+                                  // cursor (#8857). The delay keeps items
+                                  // sweeping under the cursor mid-scroll from
+                                  // each spawning one (#8215).
+                                  child: PassThroughTooltip(
                                     message: toolTip,
-                                    // Delay so items sweeping under the cursor
-                                    // while the rail scrolls don't spawn tooltips
-                                    // and stall the scroll (#8215).
                                     waitDuration: const Duration(
                                       milliseconds: 500,
                                     ),
