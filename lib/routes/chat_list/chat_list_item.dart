@@ -7,6 +7,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/invited_chip.dart';
+import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat_list/chat_list_item_subtitle.dart';
 import 'package:fluffychat/routes/chat_list/unread_bubble.dart';
@@ -26,6 +27,11 @@ class ChatListItem extends StatelessWidget {
   final void Function()? onForget;
   final void Function() onTap;
   final String? filter;
+
+  /// This row's id in the enclosing [RovingFocusGroup]: the chat list is one
+  /// Tab stop, with the arrow keys moving between rows (#8877). Null for a
+  /// row outside a group.
+  final String? rovingId;
   // #Pangea
   final BorderRadius? borderRadius;
 
@@ -44,6 +50,7 @@ class ChatListItem extends StatelessWidget {
     this.onForget,
     this.filter,
     this.space,
+    this.rovingId,
     super.key,
     // #Pangea
     this.borderRadius,
@@ -55,6 +62,10 @@ class ChatListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final rovingId = this.rovingId;
+    final focusNode = rovingId == null
+        ? null
+        : RovingFocusGroup.nodeOf(context, rovingId);
 
     final isMuted = room.pushRuleState != PushRuleState.notify;
     final typingText = room.getLocalizedTypingText(context);
@@ -236,6 +247,7 @@ class ChatListItem extends StatelessWidget {
                               onLongPress?.call(context),
                         },
                   child: ListTile(
+                    focusNode: focusNode,
                     visualDensity: const VisualDensity(vertical: -0.5),
                     contentPadding: const EdgeInsets.symmetric(horizontal: 8),
                     onLongPress: () => onLongPress?.call(context),

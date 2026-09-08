@@ -13,6 +13,7 @@ import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/course_avatar.dart';
+import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
 import 'package:fluffychat/pangea/spaces/knocking_users_builder.dart';
@@ -89,160 +90,187 @@ class SpacesNavigationRail extends StatelessWidget {
               builder: (context, _) {
                 final groups = client.coursesByRole(L10n.of(context));
                 final sections = groups.sections;
+                // One Tab stop for the whole rail, arrow keys inside (#8877).
+                // The three fixed items go by their tutorial target ids — the
+                // one stable name each already has; a course goes by its
+                // room id. Tab lands on the lit item, as _SpaceItem.selected
+                // defines it for a course.
+                final String? selectedRovingId = isWorld
+                    ? TutorialTargetIds.navWorld
+                    : isChats
+                    ? TutorialTargetIds.navChats
+                    : isCourseFind
+                    ? TutorialTargetIds.navCourses
+                    : section == AppSection.courses && !hubOpen
+                    ? activeSpaceId
+                    : null;
 
-                return AnimatedContainer(
-                  width: naviRailWidth,
-                  duration: FluffyThemes.animationDuration,
-                  // world_v2 rail order (top→bottom): World · Chats · Courses ·
-                  // joined spaces. (Profile/settings is no longer a rail slot;
-                  // analytics opens from the top-right cluster.)
-                  child: Column(
-                    // Size the rail to its items — a floating bar over the map, not
-                    // the full screen height; it still scrolls if the joined-spaces
-                    // list overflows the viewport.
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Flexible(
-                        child: ListView(
-                          shrinkWrap: true,
-                          scrollDirection: Axis.vertical,
-                          children: [
-                            // 1. World map home — the Pangea brand mark, at the top
-                            // of the rail. Chromeless and avatar-sized; the left
-                            // indicator bar conveys selection. Brand purple when
-                            // active, muted when not.
-                            NaviRailItem(
-                              isSelected: isWorld,
-                              backgroundColor: Colors.transparent,
-                              // Exclude the logo's semanticsLabel so VoiceOver reads
-                              // only the button tooltip ("world"), not the logo name.
-                              icon: ExcludeSemantics(
-                                child: PangeaLogoSvg(
-                                  width: largeIconWidth,
-                                  forceColor: Theme.of(
-                                    context,
-                                  ).colorScheme.onSurfaceVariant,
-                                ),
-                              ),
-                              selectedIcon: ExcludeSemantics(
-                                child: PangeaLogoSvg(
-                                  width: largeIconWidth,
-                                  forceColor: Theme.of(
-                                    context,
-                                  ).colorScheme.primary,
-                                ),
-                              ),
-                              onTap: () {
-                                // World is home: clear every panel (both columns)
-                                // and reveal the full map. See routing.instructions.md.
-                                context.go(WorkspaceNav.clearAll());
-                              },
-                              toolTip: L10n.of(context).world,
-                              tutorialTargetId: TutorialTargetIds.navWorld,
-                              naviRailWidth: naviRailWidth,
-                            ),
-                            // 2. Chats — the chat list. Chromeless (no box fill) and
-                            // icon-sized to match the brand mark / course avatars
-                            // (it used to render tiny on the default surface fill);
-                            // the left indicator bar conveys selection.
-                            NaviRailItem(
-                              isSelected: isChats,
-                              backgroundColor: Colors.transparent,
-                              icon: Icon(
-                                Icons.forum_outlined,
-                                size: smallIconWidth,
-                              ),
-                              selectedIcon: Icon(
-                                Icons.forum,
-                                size: smallIconWidth,
-                              ),
-                              onTap: () {
-                                // Token-only: the chats list is a left `chats` token
-                                // over the world path `/` (no legacy `/chats` path).
-                                context.go(
-                                  WorkspaceNav.setSection(
-                                    state.uri,
-                                    const ChatsPanelToken(),
-                                    // Replace open left panels rather than stack.
-                                    keepRoom: false,
+                return RovingFocusGroup(
+                  ids: [
+                    TutorialTargetIds.navWorld,
+                    TutorialTargetIds.navChats,
+                    TutorialTargetIds.navCourses,
+                    for (final group in sections)
+                      for (final space in group.rooms) space.id,
+                  ],
+                  selectedId: selectedRovingId,
+                  child: AnimatedContainer(
+                    width: naviRailWidth,
+                    duration: FluffyThemes.animationDuration,
+                    // world_v2 rail order (top→bottom): World · Chats · Courses ·
+                    // joined spaces. (Profile/settings is no longer a rail slot;
+                    // analytics opens from the top-right cluster.)
+                    child: Column(
+                      // Size the rail to its items — a floating bar over the map, not
+                      // the full screen height; it still scrolls if the joined-spaces
+                      // list overflows the viewport.
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Flexible(
+                          child: ListView(
+                            shrinkWrap: true,
+                            scrollDirection: Axis.vertical,
+                            children: [
+                              // 1. World map home — the Pangea brand mark, at the top
+                              // of the rail. Chromeless and avatar-sized; the left
+                              // indicator bar conveys selection. Brand purple when
+                              // active, muted when not.
+                              NaviRailItem(
+                                isSelected: isWorld,
+                                backgroundColor: Colors.transparent,
+                                // Exclude the logo's semanticsLabel so VoiceOver reads
+                                // only the button tooltip ("world"), not the logo name.
+                                icon: ExcludeSemantics(
+                                  child: PangeaLogoSvg(
+                                    width: largeIconWidth,
+                                    forceColor: Theme.of(
+                                      context,
+                                    ).colorScheme.onSurfaceVariant,
                                   ),
-                                );
-                              },
-                              toolTip: L10n.of(context).allChats,
-                              tutorialTargetId: TutorialTargetIds.navChats,
-                              unreadBadgeFilter: (room) =>
-                                  room.firstSpaceParent == null,
-                              naviRailWidth: naviRailWidth,
-                            ),
-                            // 3. Courses — opens the Courses panel (the courses
-                            // you're in + add-course options) as a bare `addcourse`
-                            // left token. The Material map icon; chromeless, the bar
-                            // conveys selection. keepRoom:false keeps it a focused
-                            // flow with no chat floating over it. (Analytics is not a
-                            // rail section — it opens from the top-right cluster.)
-                            NaviRailItem(
-                              isSelected: isCourseFind,
-                              backgroundColor: Colors.transparent,
-                              icon: Icon(
-                                Icons.map_outlined,
-                                size: smallIconWidth,
+                                ),
+                                selectedIcon: ExcludeSemantics(
+                                  child: PangeaLogoSvg(
+                                    width: largeIconWidth,
+                                    forceColor: Theme.of(
+                                      context,
+                                    ).colorScheme.primary,
+                                  ),
+                                ),
+                                onTap: () {
+                                  // World is home: clear every panel (both columns)
+                                  // and reveal the full map. See routing.instructions.md.
+                                  context.go(WorkspaceNav.clearAll());
+                                },
+                                toolTip: L10n.of(context).world,
+                                tutorialTargetId: TutorialTargetIds.navWorld,
+                                rovingId: TutorialTargetIds.navWorld,
+                                naviRailWidth: naviRailWidth,
                               ),
-                              selectedIcon: Icon(
-                                Icons.map,
-                                size: smallIconWidth,
+                              // 2. Chats — the chat list. Chromeless (no box fill) and
+                              // icon-sized to match the brand mark / course avatars
+                              // (it used to render tiny on the default surface fill);
+                              // the left indicator bar conveys selection.
+                              NaviRailItem(
+                                isSelected: isChats,
+                                backgroundColor: Colors.transparent,
+                                icon: Icon(
+                                  Icons.forum_outlined,
+                                  size: smallIconWidth,
+                                ),
+                                selectedIcon: Icon(
+                                  Icons.forum,
+                                  size: smallIconWidth,
+                                ),
+                                onTap: () {
+                                  // Token-only: the chats list is a left `chats` token
+                                  // over the world path `/` (no legacy `/chats` path).
+                                  context.go(
+                                    WorkspaceNav.setSection(
+                                      state.uri,
+                                      const ChatsPanelToken(),
+                                      // Replace open left panels rather than stack.
+                                      keepRoom: false,
+                                    ),
+                                  );
+                                },
+                                toolTip: L10n.of(context).allChats,
+                                tutorialTargetId: TutorialTargetIds.navChats,
+                                rovingId: TutorialTargetIds.navChats,
+                                unreadBadgeFilter: (room) =>
+                                    room.firstSpaceParent == null,
+                                naviRailWidth: naviRailWidth,
                               ),
-                              onTap: () {
-                                context.go(
-                                  WorkspaceNav.openAddCourse(state.uri),
-                                );
-                              },
-                              toolTip: L10n.of(context).courses,
-                              tutorialTargetId: TutorialTargetIds.navCourses,
-                              naviRailWidth: naviRailWidth,
-                            ),
-                            // A plain Column, NOT a nested ListView: a
-                            // shrink-wrapped inner list is always fully laid
-                            // out (zero scroll extent of its own) yet still
-                            // claims vertical drags that start on a course
-                            // avatar — on touch devices the drag rubber-bands
-                            // against nothing and the rail never scrolls. The
-                            // outer ListView is the rail's one scrollable.
-                            Semantics(
-                              label: L10n.of(context).joinedCourseListLabel,
-                              child: Column(
-                                children: [
-                                  // 4. The course spaces you're in — in the
-                                  // Courses hub's order (invited · teaching ·
-                                  // learning), with a hairline between groups
-                                  // when the hub shows sections, so the rail
-                                  // mirrors the list (#8425).
-                                  for (final group in sections) ...[
-                                    if (groups.isGrouped &&
-                                        group != sections.first)
-                                      const _RailGroupDivider(),
-                                    for (final space in group.rooms)
-                                      _SpaceItem(
-                                        space: space,
-                                        iconWidth: largeIconWidth,
-                                        naviRailWidth: naviRailWidth,
-                                        // Highlight the course avatar only while the course
-                                        // IS the open section — not merely because `?c=`
-                                        // persists under a chat/room or under the Courses
-                                        // hub (routing decision 5, #8605).
-                                        selected:
-                                            section == AppSection.courses &&
-                                            !hubOpen &&
-                                            activeSpaceId == space.id,
-                                      ),
+                              // 3. Courses — opens the Courses panel (the courses
+                              // you're in + add-course options) as a bare `addcourse`
+                              // left token. The Material map icon; chromeless, the bar
+                              // conveys selection. keepRoom:false keeps it a focused
+                              // flow with no chat floating over it. (Analytics is not a
+                              // rail section — it opens from the top-right cluster.)
+                              NaviRailItem(
+                                isSelected: isCourseFind,
+                                backgroundColor: Colors.transparent,
+                                icon: Icon(
+                                  Icons.map_outlined,
+                                  size: smallIconWidth,
+                                ),
+                                selectedIcon: Icon(
+                                  Icons.map,
+                                  size: smallIconWidth,
+                                ),
+                                onTap: () {
+                                  context.go(
+                                    WorkspaceNav.openAddCourse(state.uri),
+                                  );
+                                },
+                                toolTip: L10n.of(context).courses,
+                                tutorialTargetId: TutorialTargetIds.navCourses,
+                                rovingId: TutorialTargetIds.navCourses,
+                                naviRailWidth: naviRailWidth,
+                              ),
+                              // A plain Column, NOT a nested ListView: a
+                              // shrink-wrapped inner list is always fully laid
+                              // out (zero scroll extent of its own) yet still
+                              // claims vertical drags that start on a course
+                              // avatar — on touch devices the drag rubber-bands
+                              // against nothing and the rail never scrolls. The
+                              // outer ListView is the rail's one scrollable.
+                              Semantics(
+                                label: L10n.of(context).joinedCourseListLabel,
+                                child: Column(
+                                  children: [
+                                    // 4. The course spaces you're in — in the
+                                    // Courses hub's order (invited · teaching ·
+                                    // learning), with a hairline between groups
+                                    // when the hub shows sections, so the rail
+                                    // mirrors the list (#8425).
+                                    for (final group in sections) ...[
+                                      if (groups.isGrouped &&
+                                          group != sections.first)
+                                        const _RailGroupDivider(),
+                                      for (final space in group.rooms)
+                                        _SpaceItem(
+                                          space: space,
+                                          iconWidth: largeIconWidth,
+                                          naviRailWidth: naviRailWidth,
+                                          // Highlight the course avatar only while the course
+                                          // IS the open section — not merely because `?c=`
+                                          // persists under a chat/room or under the Courses
+                                          // hub (routing decision 5, #8605).
+                                          selected:
+                                              section == AppSection.courses &&
+                                              !hubOpen &&
+                                              activeSpaceId == space.id,
+                                        ),
+                                    ],
                                   ],
-                                ],
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 );
               },
@@ -315,6 +343,7 @@ class _SpaceItem extends StatelessWidget {
       room: space,
       builder: (context, knockingUsers) => NaviRailItem(
         toolTip: displayname,
+        rovingId: space.id,
         isSelected: selected,
         backgroundColor: Colors.transparent,
         borderRadius: BorderRadius.circular(0),

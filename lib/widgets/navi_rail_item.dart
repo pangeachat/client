@@ -6,6 +6,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target.dart';
 import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 import 'package:fluffychat/pangea/common/widgets/pass_through_tooltip.dart';
+import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/unread_rooms_badge.dart';
 import '../config/themes.dart';
@@ -34,6 +35,11 @@ class NaviRailItem extends StatelessWidget {
   /// tutorial points at.
   final String? tutorialTargetId;
 
+  /// This item's id in the enclosing [RovingFocusGroup]: the rail is one Tab
+  /// stop, with the arrow keys moving between its items (#8877). Null for an
+  /// item outside a group.
+  final String? rovingId;
+
   const NaviRailItem({
     required this.toolTip,
     required this.isSelected,
@@ -46,6 +52,7 @@ class NaviRailItem extends StatelessWidget {
     this.borderRadius,
     this.focusRingShape,
     this.tutorialTargetId,
+    this.rovingId,
     super.key,
   });
   @override
@@ -57,6 +64,10 @@ class NaviRailItem extends StatelessWidget {
     final height = naviRailWidth - (isColumnMode ? 16.0 : 12.0);
 
     final icon = isSelected ? selectedIcon ?? this.icon : this.icon;
+    final rovingId = this.rovingId;
+    final focusNode = rovingId == null
+        ? null
+        : RovingFocusGroup.nodeOf(context, rovingId);
 
     return TutorialTarget(
       targetId: tutorialTargetId,
@@ -147,12 +158,14 @@ class NaviRailItem extends StatelessWidget {
                                     child: focusRingShape != null
                                         ? FocusRingTapTarget(
                                             onTap: onTap,
+                                            focusNode: focusNode,
                                             shape: focusRingShape!,
                                             child: icon,
                                           )
                                         : InkWell(
                                             borderRadius: borderRadius,
                                             onTap: onTap,
+                                            focusNode: focusNode,
                                             child: icon,
                                           ),
                                   ),
