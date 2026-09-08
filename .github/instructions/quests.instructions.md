@@ -81,6 +81,16 @@ The course plan panel lists the course's activities as cards, in rows. Each card
 3. **Ongoing** — 🟣 purple card with an "Ongoing" overlay tag on the top right in white text; same text-not-color-only rationale; the purple matches the ongoing map pin (V6).
 4. **Needs more participants to start** — 🔘 light gray card at 30% opacity: still clickable but de-emphasized. Tapping it explains why ("Uh oh, you need to invite N people…").
 
+## Mission header states on the course plan
+
+Each Mission's header on the full course plan tells the learner at a glance whether it is done, next, or later ([client#8874](https://github.com/pangeachat/client/issues/8874) — before this, the only mark was the statement's text colour, which nobody could see). Three states:
+
+- **Up next** — the shared resolver's anchor for this course. The whole section, header and activity cards, sits on a `primaryContainer` band, and an "Up next" label in the header says so in words, so the state is never colour alone. One Mission per course wears it. When every Mission is satisfied the anchor is the weakest one, so a satisfied Mission can be Up next: it keeps the band and label, with the check below.
+- **Satisfied** — stars at or past the effective threshold. The gold star before the fraction becomes a green check and the header text drops to `onSurfaceVariant`, so finished work reads as done without disappearing: its activities stay in view and playable, since a learner can still raise a per-activity best.
+- **Later** — everything else, plain.
+
+The emphasis lives on the Mission header and its band, never on the activity cards: the card states above keep their meaning inside a band.
+
 ## Per-course activity pinning
 
 The design — what a pin means, why it lives in course state and never the quest plan, attribution-level semantics — is the org doc's [Per-course activity pinning](../../../.github/.github/instructions/quests-and-learning-objectives.instructions.md#per-course-activity-pinning). This doc records the client mechanics ([client#7748](https://github.com/pangeachat/client/issues/7748)):
