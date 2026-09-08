@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-08 09:45:00.931698",
+    "@@last_modified": "2026-09-08 12:18:41.154062",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10818,5 +10818,6 @@
     "listenFirst": "Ouvir primeiro",
     "listenFirstDescription": "Quando a opção Ouvir Primeiro está ativada, um clique apenas reproduz o áudio e um clique duplo seleciona a opção.",
     "listenFirstNeedsChoiceAudio": "Ative o áudio das opções para usar o Ouvir Primeiro.",
-    "unableToJoinCourseError": "Não foi possível adicionar você a este curso agora. Por favor, tente novamente ou pergunte ao seu professor."
+    "unableToJoinCourseError": "Não foi possível adicionar você a este curso agora. Por favor, tente novamente ou pergunte ao seu professor.",
+    "edited": "Editado"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-09-08 09:44:55.793712",
+    "@@last_modified": "2026-09-08 12:18:38.122089",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2278,5 +2278,6 @@
     "listenFirst": "Buru ụzọ gee ntị",
     "listenFirstDescription": "Mgbe agbanyere Buru ụzọ gee ntị, otu ịpị ga-akpọ naanị ọdịyo ma ịpị ugboro abụọ ga-ahọrọ nhọrọ ahụ.",
     "listenFirstNeedsChoiceAudio": "Gbanwuo ọdịyo Nhọrọ iji jiri Buru ụzọ gee ntị.",
-    "unableToJoinCourseError": "Anyị enweghị ike itinye gị na nkuzi a ugbu a. Biko gbalịa ọzọ, ma ọ bụ jụọ onye nkuzi gị."
+    "unableToJoinCourseError": "Anyị enweghị ike itinye gị na nkuzi a ugbu a. Biko gbalịa ọzọ, ma ọ bụ jụọ onye nkuzi gị.",
+    "edited": "Dezigharịrị"
 }

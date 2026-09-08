@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-09-08 09:44:51.705162",
+    "@@last_modified": "2026-09-08 12:18:38.053923",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2278,5 +2278,6 @@
     "listenFirst": "Prvo slušaj",
     "listenFirstDescription": "Kada je opcija „Prvo slušaj“ uključena, jedan klik samo reprodukuje zvuk, a dvostruki klik bira opciju.",
     "listenFirstNeedsChoiceAudio": "Uključite zvuk izbora da biste koristili opciju „Prvo slušaj“.",
-    "unableToJoinCourseError": "Trenutno vas nismo mogli dodati na ovaj kurs. Molimo pokušajte ponovo ili pitajte svog nastavnika."
+    "unableToJoinCourseError": "Trenutno vas nismo mogli dodati na ovaj kurs. Molimo pokušajte ponovo ili pitajte svog nastavnika.",
+    "edited": "Uređeno"
 }

@@ -395,22 +395,28 @@ class Message extends StatelessWidget {
                     child: Center(
                       child: Padding(
                         padding: const EdgeInsets.only(top: 4.0),
-                        child: Material(
-                          borderRadius: BorderRadius.circular(
-                            AppConfig.borderRadius * 2,
-                          ),
-                          color: theme.colorScheme.surface.withAlpha(128),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 8.0,
-                              vertical: 2.0,
+                        // Its own node: otherwise the time is absorbed into
+                        // this message's name and its neighbours announce
+                        // none (#8847).
+                        child: Semantics(
+                          container: true,
+                          child: Material(
+                            borderRadius: BorderRadius.circular(
+                              AppConfig.borderRadius * 2,
                             ),
-                            child: Text(
-                              event.originServerTs.localizedTime(context),
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                                color: theme.colorScheme.secondary,
+                            color: theme.colorScheme.surface.withAlpha(128),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 8.0,
+                                vertical: 2.0,
+                              ),
+                              child: Text(
+                                event.originServerTs.localizedTime(context),
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
+                                  color: theme.colorScheme.secondary,
+                                ),
                               ),
                             ),
                           ),
@@ -883,41 +889,48 @@ class Message extends StatelessWidget {
                                                                     RelationshipTypes
                                                                         .edit,
                                                                   ))
-                                                                    Padding(
-                                                                      padding: const EdgeInsets.only(
-                                                                        bottom:
-                                                                            8.0,
-                                                                        left:
-                                                                            16.0,
-                                                                        right:
-                                                                            16.0,
-                                                                      ),
-                                                                      child: Row(
-                                                                        mainAxisSize:
-                                                                            MainAxisSize.min,
-                                                                        spacing:
-                                                                            4.0,
-                                                                        children: [
-                                                                          Icon(
-                                                                            Icons.edit_outlined,
-                                                                            color: textColor.withAlpha(
-                                                                              164,
-                                                                            ),
-                                                                            size:
-                                                                                14,
-                                                                          ),
-                                                                          Text(
-                                                                            displayEvent.originServerTs.localizedTimeShort(
-                                                                              context,
-                                                                            ),
-                                                                            style: TextStyle(
+                                                                    Semantics(
+                                                                      container:
+                                                                          true,
+                                                                      excludeSemantics:
+                                                                          true,
+                                                                      label:
+                                                                          '${L10n.of(context).edited}, ${displayEvent.originServerTs.localizedTimeShort(context)}',
+                                                                      child: Padding(
+                                                                        padding: const EdgeInsets.only(
+                                                                          bottom:
+                                                                              8.0,
+                                                                          left:
+                                                                              16.0,
+                                                                          right:
+                                                                              16.0,
+                                                                        ),
+                                                                        child: Row(
+                                                                          mainAxisSize:
+                                                                              MainAxisSize.min,
+                                                                          spacing:
+                                                                              4.0,
+                                                                          children: [
+                                                                            Icon(
+                                                                              Icons.edit_outlined,
                                                                               color: textColor.withAlpha(
                                                                                 164,
                                                                               ),
-                                                                              fontSize: 11,
+                                                                              size: 14,
                                                                             ),
-                                                                          ),
-                                                                        ],
+                                                                            Text(
+                                                                              displayEvent.originServerTs.localizedTimeShort(
+                                                                                context,
+                                                                              ),
+                                                                              style: TextStyle(
+                                                                                color: textColor.withAlpha(
+                                                                                  164,
+                                                                                ),
+                                                                                fontSize: 11,
+                                                                              ),
+                                                                            ),
+                                                                          ],
+                                                                        ),
                                                                       ),
                                                                     ),
                                                                 ],

@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-09-08 09:44:51.566340",
+    "@@last_modified": "2026-09-08 12:18:35.456929",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2278,5 +2278,6 @@
     "listenFirst": "Ascultate prima",
     "listenFirstDescription": "Quandu Ascultate Prima hè attivatu, un solu cliccu riproduce l'audio è un doppiu cliccu selezziuneghja l'opzione.",
     "listenFirstNeedsChoiceAudio": "Attivate l'audio di e Scelte per aduprà Ascultate Prima.",
-    "unableToJoinCourseError": "Ùn pudemu micca aghjunghje vi à stu corsu avà. Per piacè, riprovate, o dumandate à u vostru maestru."
+    "unableToJoinCourseError": "Ùn pudemu micca aghjunghje vi à stu corsu avà. Per piacè, riprovate, o dumandate à u vostru maestru.",
+    "edited": "Mudificatu"
 }

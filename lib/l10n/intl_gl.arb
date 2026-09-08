@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-09-08 09:44:53.631915",
+    "@@last_modified": "2026-09-08 12:18:36.487944",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9874,5 +9874,6 @@
     "listenFirst": "Escoitar primeiro",
     "listenFirstDescription": "Cando Escoitar primeiro está activado, un só clic reproduce o audio e un dobre clic selecciona a opción.",
     "listenFirstNeedsChoiceAudio": "Activa o audio das opcións para usar Escoitar primeiro.",
-    "unableToJoinCourseError": "Non puidemos engadirte a este curso agora mesmo. Téntao de novo ou pregunta ao teu profesor."
+    "unableToJoinCourseError": "Non puidemos engadirte a este curso agora mesmo. Téntao de novo ou pregunta ao teu profesor.",
+    "edited": "Editado"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-09-08 09:45:03.205284",
+    "@@last_modified": "2026-09-08 12:18:48.981397",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2278,5 +2278,6 @@
     "listenFirst": "Mamelisa pele",
     "listenFirstDescription": "Ha Mamelisa Pele e buletswe, ho tobetsa hang ho bapala modumo mme ho tobetsa habedi ho kgetha kgetho.",
     "listenFirstNeedsChoiceAudio": "Bulela modumo wa Dikgetho ho sebedisa Mamelisa Pele.",
-    "unableToJoinCourseError": "Ha re a kgona ho o kenya thutong ena ha jwale. Ka kopo leka hape, kapa o botse tichere ya hao."
+    "unableToJoinCourseError": "Ha re a kgona ho o kenya thutong ena ha jwale. Ka kopo leka hape, kapa o botse tichere ya hao.",
+    "edited": "E hlophisitsoe"
 }

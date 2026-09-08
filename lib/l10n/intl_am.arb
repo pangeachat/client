@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-09-08 09:44:50.913710",
+    "@@last_modified": "2026-09-08 12:18:35.217651",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2278,5 +2278,6 @@
     "listenFirst": "መጀመሪያ ያዳምጡ",
     "listenFirstDescription": "መጀመሪያ ያዳምጡ ሲበራ፣ አንድ ጊዜ ጠቅ ማድረግ ድምጽን ብቻ ያጫውታል እና ሁለቴ ጠቅ ማድረግ አማራጩን ይመርጣል።",
     "listenFirstNeedsChoiceAudio": "መጀመሪያ ያዳምጡን ለመጠቀም የምርጫዎች ድምጽን ያብሩ።",
-    "unableToJoinCourseError": "በአሁኑ ሰዓት ወደዚህ ኮርስ ልንጨምርዎ አልቻልንም። እባክዎ እንደገና ይሞክሩ ወይም አስተማሪዎን ይጠይቁ።"
+    "unableToJoinCourseError": "በአሁኑ ሰዓት ወደዚህ ኮርስ ልንጨምርዎ አልቻልንም። እባክዎ እንደገና ይሞክሩ ወይም አስተማሪዎን ይጠይቁ።",
+    "edited": "ተስተካሏል"
 }

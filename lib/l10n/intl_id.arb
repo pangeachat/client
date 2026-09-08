@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-08 09:44:57.148174",
+    "@@last_modified": "2026-09-08 12:18:37.535223",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9947,5 +9947,6 @@
     "listenFirst": "Dengarkan dulu",
     "listenFirstDescription": "Saat Dengarkan Dulu aktif, satu klik hanya memutar audio dan klik ganda memilih opsi.",
     "listenFirstNeedsChoiceAudio": "Nyalakan audio Pilihan untuk menggunakan Dengarkan Dulu.",
-    "unableToJoinCourseError": "Kami tidak dapat menambahkan Anda ke kursus ini sekarang. Silakan coba lagi, atau tanyakan kepada guru Anda."
+    "unableToJoinCourseError": "Kami tidak dapat menambahkan Anda ke kursus ini sekarang. Silakan coba lagi, atau tanyakan kepada guru Anda.",
+    "edited": "Diedit"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-09-08 09:44:55.664880",
+    "@@last_modified": "2026-09-08 12:18:38.012434",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2278,5 +2278,6 @@
     "listenFirst": "Hlusta fyrst",
     "listenFirstDescription": "Þegar „Hlusta fyrst“ er virkt spilar einn smellur hljóð og tvísmellur velur valkostinn.",
     "listenFirstNeedsChoiceAudio": "Kveiktu á hljóði fyrir valkosti til að nota „Hlusta fyrst“.",
-    "unableToJoinCourseError": "Við gátum ekki bætt þér við þetta námskeið núna. Vinsamlegast reyndu aftur, eða spurðu kennarann þinn."
+    "unableToJoinCourseError": "Við gátum ekki bætt þér við þetta námskeið núna. Vinsamlegast reyndu aftur, eða spurðu kennarann þinn.",
+    "edited": "Breytt"
 }

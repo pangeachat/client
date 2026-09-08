@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-09-08 09:44:51.735615",
+    "@@last_modified": "2026-09-08 12:18:45.606693",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2278,5 +2278,6 @@
     "listenFirst": "Əvvəlcə dinləyin",
     "listenFirstDescription": "Əvvəlcə dinləyin funksiyası aktiv olduqda, bir klik sadəcə səsi səsləndirir və iki dəfə klikləməklə seçim edilir.",
     "listenFirstNeedsChoiceAudio": "Əvvəlcə dinləyin funksiyasından istifadə etmək üçün Seçimlər səsini aktiv edin.",
-    "unableToJoinCourseError": "Hazırda sizi bu kursa əlavə edə bilmədik. Zəhmət olmasa, yenidən cəhd edin və ya müəlliminizdən soruşun."
+    "unableToJoinCourseError": "Hazırda sizi bu kursa əlavə edə bilmədik. Zəhmət olmasa, yenidən cəhd edin və ya müəlliminizdən soruşun.",
+    "edited": "Redaktə edilib"
 }
