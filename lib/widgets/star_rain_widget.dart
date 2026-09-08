@@ -128,6 +128,11 @@ class _StarRainWidgetState extends State<StarRainWidget> {
         child: LayoutBuilder(
           builder: (context, constaints) {
             final quarterWidth = constaints.maxWidth / 4;
+            // Both emitters opt out of the package's low-frame-rate
+            // pause: it suppresses ALL particle emission on any frame slower
+            // than 1/60s, so a machine that doesn't hold 60fps renders an
+            // empty canvas and no celebration at all (#8796). A celebration
+            // that drops frames beats one that never appears.
             return Stack(
               fit: StackFit.expand,
               children: [
@@ -150,6 +155,7 @@ class _StarRainWidgetState extends State<StarRainWidget> {
                       maxBlastForce: 40,
                       gravity: 0.07,
                       colors: const [AppConfig.goldLight, AppConfig.gold],
+                      pauseEmissionOnLowFrameRate: false,
                       createParticlePath: drawStar,
                     ),
                   ),
@@ -172,6 +178,7 @@ class _StarRainWidgetState extends State<StarRainWidget> {
                       emissionFrequency: 0.1,
                       numberOfParticles: numParticles,
                       colors: const [AppConfig.goldLight, AppConfig.gold],
+                      pauseEmissionOnLowFrameRate: false,
                       createParticlePath: drawStar,
                     ),
                   );
