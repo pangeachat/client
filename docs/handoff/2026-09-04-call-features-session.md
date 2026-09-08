@@ -778,3 +778,23 @@ the live panel attaches. iOS hits the SAME recording bug -- the fix helps there.
   client per the earlier no-egress/client-side analysis; robust N-blob merger spec lives with it),
   then PR the whole combined branch on owner go. Pre-push full CI gate + cross-model green required
   before any PR. PRs still HELD for owner go.
+
+## 2026-09-08 — PR plan set by owner; cues PR extraction started; mix = owner deciding A vs B (I recommend B)
+- Everything is LOCAL/held: no origin satvik/* branches, no open PRs. Combined branch bundles 3
+  features: (1) call recording+transcript+player (recorder, web-dart2js, orphan/cold-gate fixes,
+  bug A, audioLost, piece 1, piece 2, merge tool, player); (2) tap-a-word word card #8797;
+  (3) telephony ring cues #8807.
+- OWNER PR DECISIONS: (a) do the CUES PR (#8807) NOW; (b) NO PR for the word card #8797 — that is
+  Gabby's per Will's message (EXCLUDE it from our PRs); (c) the recording + transcript-ordering +
+  player go to a PR AFTER the mix feature.
+- CUES PR: cleanly separable (2 commits touch ring_player/call_session/incoming_call_banner + 2
+  mp3s + tests; NO overlap with recording files). Extracted to worktree
+  .claude/worktrees/cues-pr, branch satvik/call-ring-cues off origin/main (tip 9e6e08a2be);
+  cherry-picked 0bdfeb93c4 + 1925844ca5 CLEAN (no conflicts). Running pre-push gates
+  (pub get/format/analyze/tests) + Codex gate before push + PR (owner authorized this PR now).
+- MIX feature: owner torn A (playback overlay) vs B (client pre-mixed file). MY CRITIQUE ->
+  recommend B: deterministic one-time mix = the approved offline result, no live two-player
+  drift (Flutter has no sample-accurate multi-stream sync -> A can't guarantee perfect-every-time),
+  yields a shareable artifact, byte-testable vs the ffmpeg reference. Awaiting owner's pick; on B
+  I'll spec the client-merger (election/trigger/resample-align) + Codex-gate the design, then build
+  under the double-gate (agent self-gates+pushes, I cold-gate).
