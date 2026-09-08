@@ -1,11 +1,8 @@
-// Dart imports:
 import 'dart:convert';
 
-// Package imports:
 import 'package:matrix/matrix.dart' show Logs;
 import 'package:shared_preferences/shared_preferences.dart';
 
-// Project imports:
 import 'package:fluffychat/routes/chat/calls/call_audio_recorder.dart';
 
 /// The durable half of [CallAudioUploadStateStore]: remembers upload/send

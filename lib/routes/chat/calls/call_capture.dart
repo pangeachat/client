@@ -1,16 +1,12 @@
-// Dart imports:
 import 'dart:async';
 import 'dart:math' as math;
 import 'dart:typed_data';
 
-// Flutter imports:
 import 'package:flutter/foundation.dart';
 
-// Package imports:
 import 'package:livekit_client/livekit_client.dart';
 import 'package:matrix/matrix.dart';
 
-// Project imports:
 import 'package:fluffychat/routes/chat/calls/call_audio_recorder.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_tap.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_event.dart';

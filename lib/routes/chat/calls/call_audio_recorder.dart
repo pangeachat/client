@@ -1,14 +1,12 @@
-// Dart imports:
 import 'dart:async';
 import 'dart:collection';
 import 'dart:math';
 import 'dart:typed_data';
 
-// Package imports:
 import 'package:flutter/foundation.dart' show visibleForTesting;
+
 import 'package:matrix/matrix.dart';
 
-// Project imports:
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_writer.dart';

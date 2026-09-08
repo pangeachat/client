@@ -1,11 +1,8 @@
-// Dart imports:
 import 'dart:convert';
 import 'dart:typed_data';
 
-// Package imports:
 import 'package:crypto/crypto.dart';
 
-// Project imports:
 import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
 
 /// The `pangea.call_audio_merged` event: the one full-call recording a single
