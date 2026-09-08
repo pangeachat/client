@@ -480,14 +480,15 @@ class CallTimelineEvent extends StatelessWidget {
     // mistaken for the flat note beside it (#8790). Everything else -- missed,
     // declined, or a connected call whose card carries no key to open --
     // keeps that note: an affordance that leads nowhere is worse than none.
-    // The note's colour follows outcome, not direction: a missed or turned
-    // down call is the thing a learner scrolls back to find.
+    // The note's colour follows outcome, not direction: a call that connected
+    // is unremarkable, and a missed or turned down one is the thing a learner
+    // scrolls back to find.
     final scheme = theme.colorScheme;
     final button = _openable;
     final color = button
         ? scheme.onSecondaryContainer
         : connected
-        ? const Color(0xFF2E7D32)
+        ? scheme.onSurfaceVariant
         : scheme.error;
     final radius = BorderRadius.circular(
       button ? AppConfig.borderRadius : AppConfig.borderRadius / 3,
