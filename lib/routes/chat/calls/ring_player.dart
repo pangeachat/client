@@ -213,6 +213,12 @@ class AssetRingSound implements RingSound {
 
   @override
   Future<void> stop() {
+    // Abandon once disposed: after dispose the loop player is released, so a
+    // stop that reached it would call stop()/pause() on a dead player -- a
+    // use-after-dispose. The SAME rule [start] and the one-shots already
+    // follow; stop is the one operation that touches the shared player and had
+    // been missing it.
+    if (_disposed) return Future<void>.value();
     // Supersede any start not yet played, then stop -- serialized behind any
     // in-flight loop op, so the stop never races a play on the shared player.
     _generation++;
@@ -300,9 +306,16 @@ class AssetRingSound implements RingSound {
     }
   }
 
+  /// The in-flight teardown. A second [dispose] returns the SAME future, so a
+  /// concurrent caller AWAITS the first teardown (and the one-shots it drains)
+  /// rather than getting an early-resolved future -- an awaited dispose means
+  /// teardown is done for every caller, not only the first.
+  Future<void>? _disposal;
+
   @override
-  Future<void> dispose() async {
-    if (_disposed) return;
+  Future<void> dispose() => _disposal ??= _dispose();
+
+  Future<void> _dispose() async {
     _disposed = true;
     // Supersede any start not yet played so it stays silent.
     _generation++;
@@ -374,6 +387,9 @@ class RingPlayer {
   /// Stops the loop IF [ringId] is the one playing. Idempotent; a stale id is a
   /// no-op by design.
   void stop(String ringId) {
+    // No mutator acts after dispose -- the same rule [play], [busy] and [once]
+    // follow -- so a stop can never enqueue an op on the released sound.
+    if (_disposed) return;
     if (_playingFor != ringId) return;
     _playingFor = null;
     _enqueue(_sound.stop);
@@ -399,16 +415,24 @@ class RingPlayer {
 
   /// Stops whatever is looping. For cue transitions and account switches.
   void stopAll() {
+    // No mutator acts after dispose (see [stop]); teardown releases the sound.
+    if (_disposed) return;
     if (_playingFor == null) return;
     _playingFor = null;
     _enqueue(_sound.stop);
   }
 
+  /// The in-flight teardown, so a concurrent second [dispose] returns the SAME
+  /// future and AWAITS this teardown rather than resolving early -- an awaited
+  /// dispose means the operation chain has drained for every caller.
+  Future<void>? _disposal;
+
   /// Stops whatever is playing and releases the native player, in that order.
   /// After this the player must not be used again. For session/account
   /// teardown, so no call leaves an AudioPlayer behind.
-  Future<void> dispose() async {
-    if (_disposed) return;
+  Future<void> dispose() => _disposal ??= _dispose();
+
+  Future<void> _dispose() async {
     _disposed = true;
     _playingFor = null;
     _enqueue(_sound.stop);

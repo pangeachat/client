@@ -57,6 +57,7 @@ class _FakeRingAudio implements RingAudio {
   _FakeRingAudio({
     this.configureBehavior,
     this.playHold,
+    this.disposeHold,
     this.throwOnPlay = false,
     this.throwOnStop = false,
   });
@@ -70,6 +71,10 @@ class _FakeRingAudio implements RingAudio {
   /// stop or start can land in. Later plays do not block, so a test can let an
   /// older play finish LAST, after a newer one has already won.
   final Future<void>? playHold;
+
+  /// If set, [dispose] blocks on this before returning -- so a test can hold a
+  /// teardown observably in flight and prove a second dispose awaits it.
+  final Future<void>? disposeHold;
 
   final bool throwOnPlay;
   final bool throwOnStop;
@@ -116,7 +121,11 @@ class _FakeRingAudio implements RingAudio {
   void completeCurrentPlay() => _complete?.complete();
 
   @override
-  Future<void> dispose() async => log.add('dispose');
+  Future<void> dispose() async {
+    log.add('dispose');
+    final hold = disposeHold;
+    if (hold != null) await hold;
+  }
 }
 
 void main() {
@@ -253,19 +262,27 @@ void main() {
   });
 
   test('a disposed player accepts no further cues', () async {
-    // Every mutator must no-op after dispose, or a busy/once/play could reach
-    // the sound AFTER its native player was released (use-after-dispose).
+    // EVERY mutator must no-op after dispose -- play, busy, once, stop AND
+    // stopAll -- or a cue could reach the sound after its native player was
+    // released (use-after-dispose).
     final sound = _FakeSound();
     final p = RingPlayer(sound: sound);
+    p.play(r'$ring', asset: 'sounds/phone.ogg');
+    await pumpEventQueue();
     await p.dispose();
     p.busy();
     p.once('sounds/call_ended.mp3');
-    p.play(r'$ring', asset: 'sounds/phone.ogg');
+    p.play(r'$again', asset: 'sounds/phone.ogg');
+    p.stop(r'$ring');
+    p.stopAll();
     await pumpEventQueue();
-    expect(sound.log, [
-      'stop',
-      'dispose',
-    ], reason: 'no cue reaches the sound once the player is disposed');
+    expect(
+      sound.log,
+      ['start', 'stop', 'dispose'],
+      reason:
+          'no mutator -- play, busy, once, stop or stopAll -- reaches the '
+          'sound once the player is disposed',
+    );
   });
 
   test('an unsuperseded start reaches the play', () async {
@@ -330,15 +347,28 @@ void main() {
       'configure',
       'play:sounds/phone.ogg',
     ], reason: 'the loop started and is holding on its play');
+
     final stopping = sound.stop();
+    // The play is STILL held here. If the stop were not serialized behind the
+    // in-flight play, its _player.stop() would run now -- on the shared player,
+    // while the play is mid-flight. Serialized, nothing new has run yet: this
+    // is what distinguishes "stops it in order" from "stop overlaps the play".
+    await pumpEventQueue();
+    expect(
+      handle.log,
+      ['configure', 'play:sounds/phone.ogg'],
+      reason: 'the stop is queued behind the in-flight play, not run during it',
+    );
+
     playing.complete();
     await Future.wait([starting, stopping]);
 
-    expect(handle.log, [
-      'configure',
-      'play:sounds/phone.ogg',
-      'stop',
-    ], reason: 'the stop runs after the play, so the loop ends stopped');
+    expect(
+      handle.log,
+      ['configure', 'play:sounds/phone.ogg', 'stop'],
+      reason:
+          'the stop runs only after the play returns, so the loop ends stopped',
+    );
   });
 
   test('a stale start neither plays nor stops when a newer one wins', () async {
@@ -450,6 +480,72 @@ void main() {
         ),
         isTrue,
         reason: 'the stop failure is logged, not swallowed',
+      );
+    },
+  );
+
+  test('a stop after dispose never touches the released loop player', () async {
+    // stop() must abandon once disposed, exactly as start() and the one-shots
+    // already do; otherwise it reaches _player.stop()/pause() on the player
+    // dispose already released -- a use-after-dispose.
+    final handle = _FakeRingAudio();
+    final sound = AssetRingSound(audioFactory: () => handle);
+
+    await sound.start('sounds/phone.ogg');
+    await pumpEventQueue();
+    await sound.dispose();
+    expect(handle.log, [
+      'configure',
+      'play:sounds/phone.ogg',
+      'stop',
+      'dispose',
+    ]);
+
+    await sound.stop();
+    await pumpEventQueue();
+    expect(
+      handle.log,
+      ['configure', 'play:sounds/phone.ogg', 'stop', 'dispose'],
+      reason: 'a stop after dispose adds nothing -- no touch of a dead player',
+    );
+  });
+
+  test(
+    'a second dispose awaits the first teardown, not resolving early',
+    () async {
+      // Idempotent dispose must be await-idempotent: a concurrent second caller
+      // shares the in-flight teardown rather than getting an early-resolved
+      // future while the first teardown is still releasing the player.
+      final gate = Completer<void>();
+      final handle = _FakeRingAudio(disposeHold: gate.future);
+      final sound = AssetRingSound(audioFactory: () => handle);
+
+      await sound.start('sounds/phone.ogg');
+      await pumpEventQueue();
+
+      final first = sound.dispose();
+      final second = sound.dispose();
+      var secondDone = false;
+      unawaited(second.then((_) => secondDone = true));
+      await pumpEventQueue();
+      expect(
+        secondDone,
+        isFalse,
+        reason:
+            'the second dispose shares the in-flight teardown, not an early return',
+      );
+      expect(
+        handle.log.where((e) => e == 'dispose').length,
+        1,
+        reason: 'the native loop player is released exactly once',
+      );
+
+      gate.complete();
+      await Future.wait([first, second]);
+      expect(
+        secondDone,
+        isTrue,
+        reason: 'both callers resolve once teardown finishes',
       );
     },
   );
