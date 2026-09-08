@@ -1552,6 +1552,15 @@ void main() {
 
       final wav = uploads.single.bytes;
       final content = CallAudioContent.fromJson(sent.single)!;
+      // A bounded clock-drift micro-trim is NOT a ceiling cut: trimTailFrames
+      // never latches cappedLogged, so this real, proven trim leaves truncated
+      // false. This is the distinction `truncated` exists to draw -- a
+      // ceiling-cut half is truncated, a drift-corrected one is not.
+      expect(
+        content.truncated,
+        isFalse,
+        reason: 'a clock-drift micro-trim does not mark the half truncated',
+      );
       expect(content.durationMs, 2000, reason: 'padded to the elapsed end');
       expect(_wavSampleCount(wav), 2000 * rate ~/ 1000); // 32000 frames
 

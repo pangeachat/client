@@ -191,15 +191,13 @@ void main() {
       final absent = CallAudioContent.txnId(_callKey, _alice, null);
       expect(unusable, absent);
     });
-
-    test('truncated does not change the txnId', () {
-      final notTruncated = CallAudioContent.txnId(_callKey, _alice, 'DEVICEA');
-      // truncated is not one of txnId's parameters at all -- this pins that
-      // the identity key stays (call_key, sender, device) regardless of what
-      // the content itself claims about truncation.
-      final sameId = CallAudioContent.txnId(_callKey, _alice, 'DEVICEA');
-      expect(notTruncated, sameId);
-    });
+    // Note: there is deliberately NO "truncated does not change the txnId"
+    // test here. truncated is not one of txnId's parameters, so any such test
+    // could only compare identical calls -- tautological, false coverage. The
+    // key's independence from truncation is a structural fact of the signature
+    // (see CallAudioContent.txnId) and is documented at the field itself; the
+    // "deterministic in (call key, sender, device)" test above pins the inputs
+    // that DO define it.
   });
 
   group('CallAudioContent.truncated', () {
