@@ -1,6 +1,7 @@
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
+import 'package:fluffychat/routes/chat/calls/call_audio_merged_event.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_repo.dart';
 
 /// One playable recording found for a call: the event that carries it, and
@@ -103,6 +104,100 @@ Future<List<CallAudioRecording>> fetchCallAudio({
 
       recordings.add(
         CallAudioRecording(
+          eventId: event.eventId,
+          senderId: event.senderId,
+          originServerTs: event.originServerTs,
+          content: content,
+        ),
+      );
+    }
+
+    from = result.nextBatch;
+    if (from == null) break;
+    if (seen >= maxEvents) break;
+  }
+
+  return recordings;
+}
+
+/// One merged, full-call recording found for a call: the
+/// `pangea.call_audio_merged` event that carries it, and who posted it.
+///
+/// [CallAudioMergedContent] itself carries no sender either, for the same
+/// reason [CallAudioContent] does not -- see [CallAudioRecording]'s own docs
+/// -- so this pairs the two exactly as that record does, one field renamed
+/// for the sibling event's content type.
+class CallAudioMergedRecording {
+  /// The `pangea.call_audio_merged` event's own id.
+  final String eventId;
+
+  final String senderId;
+
+  final DateTime originServerTs;
+
+  final CallAudioMergedContent content;
+
+  const CallAudioMergedRecording({
+    required this.eventId,
+    required this.senderId,
+    required this.originServerTs,
+    required this.content,
+  });
+}
+
+/// Reads every `pangea.call_audio_merged` recording posted for one call.
+///
+/// A straight mirror of [fetchCallAudio] -- same paging seam, same read
+/// ceilings, same tolerance of a malformed or foreign event under this call's
+/// anchor -- with the relation type and parser swapped for
+/// [CallAudioMergedContent]'s own. See that function's own docs for the full
+/// reasoning; nothing here differs but which event this reads.
+Future<List<CallAudioMergedRecording>> fetchCallAudioMerged({
+  required RelationsFetcher fetch,
+  required String roomId,
+  required String callKey,
+  int maxPages = kMaxRelationPages,
+  int maxEvents = kMaxRelationEvents,
+}) async {
+  final recordings = <CallAudioMergedRecording>[];
+  var seen = 0;
+  String? from;
+
+  for (var page = 0; page < maxPages; page++) {
+    final result = await fetch(
+      roomId: roomId,
+      eventId: callKey,
+      relType: CallAudioMergedContent.relType,
+      from: from,
+    );
+
+    for (final event in result.chunk) {
+      if (seen >= maxEvents) break;
+      seen++;
+
+      // Same rule as [fetchCallAudio]: the relation type is what was
+      // queried, but the EVENT type still has to match, or parsing it as a
+      // merged recording would invent content.
+      if (event.type != CallAudioMergedContent.relType) continue;
+
+      final content = CallAudioMergedContent.fromJson(event.content);
+      if (content == null) {
+        // Recorded for the same reason [fetchCallAudio] logs its own skip:
+        // so a foreign or corrupted merge is diagnosable rather than
+        // silently vanishing into "this call has no merged recording".
+        Logs().w(
+          'A pangea.call_audio_merged relation on $callKey could not be '
+          'parsed; skipped',
+        );
+        continue;
+      }
+
+      // Returned under this call's anchor but naming a different one -- not
+      // this call's merge even though the server filed it here.
+      if (content.callKey != callKey) continue;
+
+      recordings.add(
+        CallAudioMergedRecording(
           eventId: event.eventId,
           senderId: event.senderId,
           originServerTs: event.originServerTs,
