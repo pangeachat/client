@@ -923,3 +923,11 @@ until the design is Codex-green.
   trigger/reconciliation; P4 player. (3) recording+transcript+player PR after the mix. (4) place the
   design docs in repo instructions/ on PR. PR gate: cold-green + local PR CI + merge check + owner
   approval before ANY PR.
+
+## 2026-09-08 — v1 scope confirmed; v2 filed (#8878); running cues cold-gate + merge P2 IN PARALLEL
+- Owner: v1 = one-device-recording (1:1 single tenure per user) CONFIRMED. Mid-call device-switch
+  merge = v2, filed as pangeachat/client#8878 (assigned bbsatvik01), follow-up, not blocking v1.
+- Owner: "do both in parallel" -> LANE A (cues fix -> my cold gate -> PR-ready) + LANE B (merge
+  P2/P3/P4 build) concurrently; different worktrees (cues-pr vs combined) so parallel-safe.
+- Cues fix committed 3d1860f44e (locally green, 75 tests). Recording (piece1+2) + mixer P1
+  (2e627b7079) committed cold-green on satvik/call-features-combined.
