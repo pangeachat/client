@@ -662,3 +662,22 @@ the live panel attaches. iOS hits the SAME recording bug -- the fix helps there.
   reconcile to that; (2) round _capBytes down to a whole PCM frame (2*channels); (3) micro-trim
   test uses the timer-disabled path + manual checkpoint(). Agent to fix + self-gate green +
   commit on top; then I re-cold-gate the changed regions. PRs held for owner go.
+
+## 2026-09-08 — Piece 1 FULLY COLD-GREEN; piece 2 (transcript ordering) dispatched
+- Fix round commit a3ab57916b fixed all 3 cold-gate findings (mutation-proven tests); my
+  re-cold-gate: behaviour CORRECT/softening:no. Pinning re-gate found ONE narrow gap (the
+  onRunEnded end-anchor latch was not independently mutation-proven because no clock advanced
+  between onRunEnded and finish -> the finish-entry fallback masked its removal). Closed it in
+  a test-only commit 9088243a32 (added a stop->finish clock gap; I mutation-verified RED@1500
+  by disabling the onRunEnded capture; restored). Final cold pinning re-gate: CORRECT/softening:no.
+- PIECE 1 COMPLETE + COLD-GREEN, local only, 3 commits: 89af06f620, a3ab57916b, 9088243a32
+  (all call_audio_recorder.dart + its test; one-blob-per-device model preserved). Verified by me:
+  format clean, analyze clean, 162 calls-bucket tests pass, import-neutral.
+- PIECE 2 dispatched (fresh general-purpose/opus). Brief:
+  /private/tmp/build-brief-piece2-transcript-ordering.md. Owns _runStartsAt/_notBeforeMs +
+  transcript_segments/transcript_assembly + regressions; piece 1 did NOT touch these (clean).
+  Contract: fix the stale-run-start regress (a reset run anchor must not fall below true absolute
+  elapsed; segments keep true absolute SFU interval), two mutation-proven regressions (capture
+  layer: stalled-monotonic-during-mute -> unmute run start = true elapsed; assembly layer:
+  mute-then-later-speech never sorts first), local gates green, OWN codex self-gate to
+  CORRECT/softening:no, commit locally (no push/PR), report. Then I cold-gate. PRs held for owner go.
