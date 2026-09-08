@@ -160,6 +160,15 @@ class CallCaptureService {
   final CallAudioTap tap;
   final Duration deliveryTimeout;
 
+  /// How long [finish] waits for deliveries still in flight before it stops
+  /// waiting and closes the sink. Injected beside [deliveryTimeout] so a test can
+  /// drive finish's give-up -- and the teardown cancellation that follows it --
+  /// deterministically, instead of waiting out the real window in wall time.
+  /// Defaults to [_settleFinishWithin], the production two minutes; production
+  /// never passes anything else, so the delivery retry budget and this wait stay
+  /// the one window they are documented to be.
+  final Duration finishSettleWithin;
+
   /// A second, independent consumer of this device's own outbound audio: the
   /// call-audio-recording half. Optional, so every existing construction of a
   /// recorder keeps working unchanged and a deployment can leave the feature
@@ -396,6 +405,13 @@ class CallCaptureService {
   /// hangup does not abandon audio the learner already spoke.
   final List<Future<void>> _inFlight = [];
 
+  /// Set once the call is tearing down and any outstanding delivery retry must
+  /// stop. Read by [_deliver] before each attempt and after each backoff, and
+  /// raised by [cancelOutstandingDeliveries]. Latching, and never cleared: a
+  /// service is built per call and finished exactly once, so there is nothing
+  /// after teardown for a cleared flag to matter to.
+  bool _deliveriesCancelled = false;
+
   /// How much of this call's audio the capture path lost before it could be
   /// cut into a chunk, in milliseconds.
   ///
@@ -472,6 +488,7 @@ class CallCaptureService {
     CallAudioTap? tap,
     this.audioRecording,
     this.deliveryTimeout = _deliveryTimeout,
+    this.finishSettleWithin = _settleFinishWithin,
     this.detachTimeout = _detachTimeout,
     int Function()? nowMs,
     int Function()? elapsedMs,
@@ -1389,14 +1406,31 @@ class CallCaptureService {
   /// Never throws. A chunk that cannot be delivered costs its share of the
   /// transcript; it must not take the call down with it.
   Future<void> _deliver(PcmChunk chunk) async {
-    final startedAtMs = elapsedMs();
     final budgetMs = _deliveryRetryBudget.inMilliseconds;
-    // Reserved so the loop never STARTS an attempt that could not finish inside
-    // the budget: a single attempt is bounded by [deliveryTimeout], so leaving
-    // that much room keeps the whole sequence — its last attempt included —
-    // inside [_deliveryRetryBudget].
-    final attemptCeilingMs = deliveryTimeout.inMilliseconds;
+    // The absolute instant, on the injected monotonic clock, past which no
+    // further attempt may START. Fixed ONCE, so the check that guards the next
+    // attempt is against a deadline rather than against an elapsed total the
+    // wait is trusted to have grown by exactly its backoff — [Future.delayed]
+    // promises no such thing, and a backoff that resumes late (a busy loop, a GC
+    // pause) must not be able to slip an attempt out beyond the window.
+    final deadlineMs = elapsedMs() + budgetMs;
+    // The room one whole attempt needs before that deadline. An attempt is
+    // bounded by [deliveryTimeout], and the reserve ROUNDS UP to the whole
+    // millisecond the clock counts in, so a sub-millisecond timeout truncated
+    // away cannot leave the last attempt straddling the deadline.
+    final attemptCeilingMs = (deliveryTimeout.inMicroseconds + 999) ~/ 1000;
     for (var attempt = 0; ; attempt++) {
+      // Teardown cancels an outstanding retry. Once [finish] has stopped waiting
+      // for chunks in flight, the sink is closing and another attempt would
+      // deliver against it after the call is already gone. This is the ONE line
+      // every attempt passes through immediately before it — no await sits
+      // between the check and the deliver — so a single check here is enough to
+      // guarantee no delivery starts after teardown, whether the loop was
+      // mid-backoff or between a failed attempt and its wait when the signal
+      // landed. A second check after the attempt or after the backoff would be
+      // redundant with this one and could not be told apart from it under test.
+      // See [cancelOutstandingDeliveries].
+      if (_deliveriesCancelled) break;
       try {
         await sink.deliver(chunk, within: deliveryTimeout);
         return;
@@ -1409,13 +1443,19 @@ class CallCaptureService {
         );
       }
       final backoffMs = _backoffFor(attempt).inMilliseconds;
-      final spentMs = elapsedMs() - startedAtMs;
+      // No room for this backoff AND one more whole attempt before the deadline:
+      // stop now rather than begin a wait whose attempt could not finish in time.
       // Measured against the SAME clock the wait moves, so the budget holds
-      // whether time really passes (production) or a test advances it. Once one
-      // more backoff-plus-attempt would overrun the budget, stop: the words are
-      // lost, but the loop is finite and teardown was never held open.
-      if (spentMs + backoffMs + attemptCeilingMs > budgetMs) break;
+      // whether time really passes (production) or a test advances it.
+      if (elapsedMs() + backoffMs + attemptCeilingMs > deadlineMs) break;
       await _delay(Duration(milliseconds: backoffMs));
+      // RE-checked after the wait, before looping back to deliver. This is the
+      // half the pre-delay reserve cannot cover: a deadline reserved before a
+      // wait is no promise once the wait has resumed late. If the room for a
+      // whole attempt is gone, the chunk is lost rather than delivered out of the
+      // finish window. Cancellation needs no check here: the loop head catches it
+      // before the next deliver.
+      if (elapsedMs() + attemptCeilingMs > deadlineMs) break;
     }
     Logs().e(
       'Gave up delivering call audio chunk ${chunk.index}; its words are lost',
@@ -1653,6 +1693,23 @@ class CallCaptureService {
     onCaptureLost?.call();
   }
 
+  /// Stops every outstanding delivery retry, because the call is tearing down.
+  ///
+  /// Called by [finish] the instant it has stopped waiting for chunks still in
+  /// flight: from there the sink is closing and a retry loop still going would
+  /// fire a delivery against it after the call is already gone. Finish's wait is
+  /// bounded by [Future.timeout], which gives up on its source without cancelling
+  /// it, so this -- not the timeout -- is what actually ends the loops. A chunk
+  /// still unsent when this lands is lost, honestly, exactly as one the retry
+  /// window ran out on. See [_deliver], which reads the flag before each attempt
+  /// and after each backoff.
+  ///
+  /// Visible for testing so the retry loop's response to teardown can be
+  /// exercised deterministically through the injected delay seam, rather than by
+  /// waiting out finish's real settle window in wall time.
+  @visibleForTesting
+  void cancelOutstandingDeliveries() => _deliveriesCancelled = true;
+
   /// Ends the call's recording for good.
   ///
   /// Separate from [stop], which ends one stretch of it. Recording moves between
@@ -1686,7 +1743,7 @@ class CallCaptureService {
     // record slightly short is strictly better than one that never appears. The
     // chunks still outstanding are logged as lost.
     try {
-      await Future.wait(List.of(_inFlight)).timeout(_settleFinishWithin);
+      await Future.wait(List.of(_inFlight)).timeout(finishSettleWithin);
     } catch (e, s) {
       Logs().w(
         'A call audio chunk never landed before the finish gave up',
@@ -1694,6 +1751,12 @@ class CallCaptureService {
         s,
       );
     }
+    // Finish has now stopped waiting for what was in flight. A bounded wait does
+    // NOT stop the loops it stopped waiting on -- [Future.timeout] gives up on
+    // its source, it does not cancel it -- so a delivery still backing off would
+    // keep firing against the sink about to close below. Cancel them here: a
+    // chunk still unsent is lost, honestly, like any the window ran out on.
+    cancelOutstandingDeliveries();
     // Marked only once it has actually happened. Marking first meant a close
     // that failed was remembered as done, and the retry that could have fixed
     // it skipped the work — the same mistake as clearing a handle before the

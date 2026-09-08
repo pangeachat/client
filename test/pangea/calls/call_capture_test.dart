@@ -218,6 +218,7 @@ void main() {
     CallAudioTap? withTap,
     CallAudioRecordingSink? withAudioRecording,
     Duration? timeout,
+    Duration? finishSettle,
     Duration? detach,
     Future<void> Function(Duration d)? delay,
     double Function()? jitter,
@@ -226,6 +227,7 @@ void main() {
     tap: withTap,
     audioRecording: withAudioRecording,
     deliveryTimeout: timeout ?? const Duration(seconds: 30),
+    finishSettleWithin: finishSettle ?? const Duration(minutes: 2),
     detachTimeout: detach ?? const Duration(seconds: 5),
     nowMs: clock.call,
     elapsedMs: clock.monotonic,
@@ -685,6 +687,134 @@ void main() {
       );
       expect(dead.delivered, isNotEmpty, reason: 'the rest of the call landed');
     });
+
+    test('a backoff that wakes with less than one attempt left stops', () async {
+      // The retry must be bounded by TIME, not merely finite, and the reserve
+      // that keeps the LAST attempt inside the window has to survive a late wake.
+      // Future.delayed promises no exact wake, so a backoff can resume with the
+      // deadline not yet passed but too little time left for another whole
+      // attempt. The post-wait recheck must reserve one attempt's timeout, not
+      // merely test whether the deadline is already gone -- a bare `elapsed >
+      // deadline` would wake here, see time left, and fire an attempt that
+      // straddles the window's end.
+      final dead = RecordingSink(failIndices: const [0]);
+      final s = service(
+        withSink: dead,
+        // 10s per attempt against the 2-minute window, so a wake 5s short of the
+        // deadline still leaves LESS than one attempt's room.
+        timeout: const Duration(seconds: 10),
+        // The single backoff resumes at 115s -- inside the 120s window, but only
+        // 5s from its end, less than the 10s an attempt needs.
+        delay: (d) async => clock.elapsed = 115000,
+      );
+      await s.start(track);
+      for (var i = 0; i < 30; i++) {
+        track.emit(20);
+      }
+      await s.stop();
+
+      expect(
+        dead.attempts.where((i) => i == 0).length,
+        1,
+        reason:
+            'the wake left under one attempt before the deadline, so no second '
+            'attempt may start -- the reserve, not just the deadline, is checked',
+      );
+      expect(
+        dead.delivered.map((c) => c.index),
+        isNot(contains(0)),
+        reason: 'the chunk is honestly lost, not delivered out of the window',
+      );
+    });
+
+    test('the attempt reserve rounds a sub-millisecond timeout up', () async {
+      // The reserve is deliveryTimeout rounded UP to the whole millisecond the
+      // clock counts in. Truncating it (inMilliseconds) would shave a fraction
+      // off, and a wake exactly that fraction inside the deadline would then let
+      // the last attempt run just past the window's end.
+      final dead = RecordingSink(failIndices: const [0]);
+      final s = service(
+        withSink: dead,
+        // 30.5ms: truncates to 30, rounds up to 31.
+        timeout: const Duration(microseconds: 30500),
+        // Resume 30ms before the 120s deadline: room for a 30ms attempt but not
+        // the true 30.5ms one, so the rounded-up reserve stops here and the
+        // truncated one wrongly fires again.
+        delay: (d) async => clock.elapsed = 120000 - 30,
+      );
+      await s.start(track);
+      for (var i = 0; i < 30; i++) {
+        track.emit(20);
+      }
+      await s.stop();
+
+      expect(
+        dead.attempts.where((i) => i == 0).length,
+        1,
+        reason:
+            'a 30.5ms attempt does not fit in the 30ms left; the reserve must '
+            'round up so no attempt straddles the deadline',
+      );
+    });
+
+    test(
+      'finish() cancels a delivery still backing off; nothing sends after close',
+      () async {
+        // The production wiring, end to end. finish() bounds its settle wait with
+        // Future.timeout, which gives up on the in-flight deliveries WITHOUT
+        // cancelling them -- so finish() must raise the cancellation itself, or a
+        // loop still backing off keeps firing against the sink it just closed. Held
+        // open here through the delay seam so the loop is genuinely mid-retry across
+        // finish's whole settle window, then released to prove it stops.
+        final dead = RecordingSink(failIndices: const [0]);
+        final backoff = Completer<void>();
+        var delays = 0;
+        final s = service(
+          withSink: dead,
+          timeout: const Duration(milliseconds: 100),
+          // A settle window short in REAL time, so finish gives up on the parked
+          // delivery deterministically rather than after the production two minutes.
+          finishSettle: const Duration(milliseconds: 50),
+          delay: (d) {
+            delays++;
+            // Park the FIRST backoff until the test releases it, so the retry is
+            // still in flight across finish's entire settle wait. Later waits (only
+            // reached if cancellation is BROKEN) pass and advance the clock, so a
+            // mutant terminates on the budget instead of spinning forever.
+            if (delays == 1) return backoff.future;
+            clock.elapsed += d.inMilliseconds;
+            return Future<void>.value();
+          },
+        );
+        await s.start(track);
+        for (var i = 0; i < 30; i++) {
+          track.emit(20);
+        }
+
+        // finish() runs while the retry is parked: stop, then the settle wait times
+        // out at 50ms, then teardown cancels, then the sink closes.
+        await s.finish();
+        expect(
+          dead.closes,
+          1,
+          reason: 'the call tore down and closed the sink',
+        );
+        final attemptsAtClose = dead.attempts.where((i) => i == 0).length;
+
+        // Release the parked backoff. The loop wakes AFTER teardown: it must read
+        // the cancellation finish() raised and stop, delivering nothing more.
+        backoff.complete();
+        await pumpEventQueue();
+
+        expect(
+          dead.attempts.where((i) => i == 0).length,
+          attemptsAtClose,
+          reason:
+              'no delivery fires after finish() closed the sink -- finish() must '
+              'cancel the outstanding retry, since its timeout does not',
+        );
+      },
+    );
   });
   group('a device with no tap', () {
     test('records nothing and leaves the call alone', () async {
