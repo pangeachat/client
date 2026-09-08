@@ -1134,25 +1134,31 @@ class CallCaptureService {
   /// STEPPING mid-call — the hazard the monotonic counter exists to survive —
   /// moves nothing, exactly as before.
   ///
-  /// This closes the reported bug and every realistic muted-start sleep, where
-  /// the wall clock keeps honest time through a monotonic stall. Two residuals
-  /// remain, and both are the SAME class — the device's local clocks failing in
-  /// a way no other local reading can catch — so neither is claimed fixed here;
-  /// the exact fix for both is a suspension-inclusive platform clock (iOS
-  /// CLOCK_BOOTTIME / Android elapsedRealtime), which does not exist in this app
-  /// and is deferred. (1) A device that sleeps during a mute AFTER it has
-  /// already spoken compresses the post-sleep run toward its own earlier speech
-  /// rather than recovering the true gap: a stall there cannot be told apart
-  /// from a forward wall step, so ordered compression is preferred to risking a
-  /// scatter. (2) On the FIRST run, the wall floor stands in for the missing
-  /// monotonic reading only while the wall itself is honest; if the wall ALSO
-  /// steps backward by the muted interval or more during the sleep, both the
-  /// monotonic position and the wall floor sit near t0 and the late first run
-  /// can still scatter ahead of the peer's earlier speech. This is strictly
-  /// rarer than the pre-fix behaviour (which scattered on ANY stall, wall
-  /// irrelevant) — it is a narrowed, not an introduced, hole — but it is a
-  /// scatter, not merely a compression, and the "scattered is not accepted"
-  /// bar above is met only up to this simultaneous double-clock failure.
+  /// This closes the reported bug and every muted-start sleep where the wall
+  /// clock keeps honest time through a monotonic stall — the common, high-harm
+  /// case, where the turn otherwise sorts to the very front. It is a TRADE, not
+  /// a free win: with only two local clocks and no third reference, a stalled
+  /// monotonic (wall sane) is indistinguishable from a wall that itself jumped,
+  /// so the wall floor is trusted in cases where it is wrong. The full set of
+  /// clock-failure residuals — all fixable only by a suspension-inclusive
+  /// platform clock (iOS CLOCK_BOOTTIME / Android elapsedRealtime), which does
+  /// not exist in this app and is deferred:
+  ///   (1) Later runs: a device that sleeps during a mute AFTER it has already
+  ///       spoken compresses the post-sleep run toward its own earlier speech
+  ///       rather than recovering the true gap (ordered, not scattered).
+  ///   (2) First run, wall steps FORWARD during the muted window: the wall floor
+  ///       is inflated and the run is placed too LATE. Pre-fix ignored the wall
+  ///       and placed it correctly here, so this case is newly WORSENED by the
+  ///       floor — accepted because a late-placed turn is far less jarring than
+  ///       the front-scatter the floor removes, and a forward wall jump mid-call
+  ///       is rare.
+  ///   (3) First run, wall steps BACKWARD by more than the separation from the
+  ///       peer's earlier turn during the sleep: both the monotonic position and
+  ///       the wall floor sit near t0 and the late first run can still scatter
+  ///       ahead of that earlier speech.
+  /// The trade is deliberate: it removes the common front-scatter at the cost of
+  /// rarer, lower-harm wall-anomaly misplacements, and the exact fix for the
+  /// whole class is the deferred platform clock.
   int _runStartsAt(int samples, int sampleRate, int channels) {
     var base = _baseUnixMs;
     if (base == null) {
