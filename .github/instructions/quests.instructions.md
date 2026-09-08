@@ -85,11 +85,11 @@ The course plan panel lists the course's activities as cards, in rows. Each card
 
 Each Mission's header on the full course plan tells the learner at a glance whether it is done, next, or later ([client#8874](https://github.com/pangeachat/client/issues/8874) — before this, the only mark was the statement's text colour, which nobody could see). Three states:
 
-- **Up next** — the shared resolver's anchor for this course. The whole section, header and activity cards, sits on a `primaryContainer` band, and an "Up next" label in the header says so in words, so the state is never colour alone. One Mission per course wears it. When every Mission is satisfied the anchor is the weakest one, so a satisfied Mission can be Up next: it keeps the band and label, with the check below.
+- **Up next** — the shared resolver's anchor for this course. The whole section, header and activity cards, is outlined in `primary`, and an "Up next" label in the header says so in words, so the state is never colour alone. An outline rather than a fill: the carousel's scroll arrows paint a surface-coloured strip over the row's edge, which reads as a notch cut out of any tinted band. One Mission per course wears it. When every Mission is satisfied the anchor is the weakest one, so a satisfied Mission can be Up next: it keeps the outline and label, with the check below.
 - **Satisfied** — stars at or past the effective threshold. The gold star before the fraction becomes a green check and the header text drops to `onSurfaceVariant`, so finished work reads as done without disappearing: its activities stay in view and playable, since a learner can still raise a per-activity best.
 - **Later** — everything else, plain.
 
-The emphasis lives on the Mission header and its band, never on the activity cards: the card states above keep their meaning inside a band.
+The emphasis lives on the Mission header and its outline, never on the activity cards: the card states above keep their meaning inside an outline.
 
 ## Per-course activity pinning
 
