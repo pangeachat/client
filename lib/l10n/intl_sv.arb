@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-04 10:08:39.770202",
+    "@@last_modified": "2026-09-08 09:45:05.017892",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10391,5 +10391,6 @@
     "callContinuingElsewhere": "Detta samtal fortsätter på din andra enhet.",
     "listenFirst": "Lyssna först",
     "listenFirstDescription": "När Lyssna först är aktiverat spelas ljud upp med ett klick och alternativet väljs med ett dubbelklick.",
-    "listenFirstNeedsChoiceAudio": "Aktivera ljud för val för att använda Lyssna först."
+    "listenFirstNeedsChoiceAudio": "Aktivera ljud för val för att använda Lyssna först.",
+    "unableToJoinCourseError": "Vi kunde inte lägga till dig i den här kursen just nu. Försök igen, eller fråga din lärare."
 }

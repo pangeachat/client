@@ -124,6 +124,36 @@ class SpaceCodeController {
   static Future<void> cacheRoomCodeToJoin(String code) =>
       SpaceCodeRepo.setSpaceCode(code);
 
+  /// Whether a failed join means the CODE was wrong: the server's 404
+  /// `ORG.PANGEA.CODE_NOT_FOUND` (a 400 from a server predating that split
+  /// means the same), or the client-side empty result. Everything else — the
+  /// server's 500 `ORG.PANGEA.INVITE_FAILED` for a valid code it could not
+  /// invite to, the join call, the network — is not the learner's code (#8831).
+  static bool isCodeNotFound(Object error) {
+    if (error is NotFoundException) return true;
+    final status = PangeaHttpException.statusCodeOf(error);
+    return status == 404 || status == 400;
+  }
+
+  /// The one message for a failed join-with-code, shared by every entry
+  /// point: a ban reads as removed, a wrong code as not found ([notFoundError]
+  /// lets a surface keep its own wording for that case), and anything else as
+  /// a failure that is not the code — so a learner is never sent back to
+  /// retype a code that was right (#8831).
+  static String joinErrorMessage(
+    BuildContext context,
+    Object error, {
+    String? notFoundError,
+  }) {
+    if (error is BannedFromRoomException) {
+      return L10n.of(context).removedFromCourseError;
+    }
+    if (isCodeNotFound(error)) {
+      return notFoundError ?? L10n.of(context).unableToFindRoom;
+    }
+    return L10n.of(context).unableToJoinCourseError;
+  }
+
   static Future<Result<JoinResponse>> joinSpaceWithCode(
     String spaceCode, {
     required Client client,
@@ -189,9 +219,7 @@ class SpaceCodeController {
       onError: (e, s) {
         failure = e;
         failureStack = s;
-        return e is BannedFromRoomException
-            ? L10n.of(context).removedFromCourseError
-            : (notFoundError ?? L10n.of(context).unableToFindRoom);
+        return joinErrorMessage(context, e, notFoundError: notFoundError);
       },
       showError: (err) => PangeaHttpException.statusCodeOf(err) != 429,
     );

@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-09-04 10:08:34.087636",
+    "@@last_modified": "2026-09-08 09:44:53.631915",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9873,5 +9873,6 @@
     "callContinuingElsewhere": "Esta chamada continúa no teu outro dispositivo.",
     "listenFirst": "Escoitar primeiro",
     "listenFirstDescription": "Cando Escoitar primeiro está activado, un só clic reproduce o audio e un dobre clic selecciona a opción.",
-    "listenFirstNeedsChoiceAudio": "Activa o audio das opcións para usar Escoitar primeiro."
+    "listenFirstNeedsChoiceAudio": "Activa o audio das opcións para usar Escoitar primeiro.",
+    "unableToJoinCourseError": "Non puidemos engadirte a este curso agora mesmo. Téntao de novo ou pregunta ao teu profesor."
 }

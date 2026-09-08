@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-09-04 10:08:33.650288",
+    "@@last_modified": "2026-09-08 09:44:54.306766",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9870,5 +9870,6 @@
     "callContinuingElsewhere": "See kõne jätkub sinu teises seadmes.",
     "listenFirst": "Kõigepealt kuula",
     "listenFirstDescription": "Kui „Kõigepealt kuula“ on sisse lülitatud, esitab üks klõps heli ja topeltklõps valib valiku.",
-    "listenFirstNeedsChoiceAudio": "Lülita sisse valikute heli, et kasutada funktsiooni „Kõigepealt kuula“."
+    "listenFirstNeedsChoiceAudio": "Lülita sisse valikute heli, et kasutada funktsiooni „Kõigepealt kuula“.",
+    "unableToJoinCourseError": "Me ei saanud teid praegu sellele kursusele lisada. Palun proovige uuesti või küsige oma õpetajalt."
 }

@@ -4084,6 +4084,7 @@
     "translationError": "Translation error",
     "check": "Check",
     "unableToFindRoom": "No chat or course found with that code. Please try again.",
+    "unableToJoinCourseError": "We couldn't add you to this course right now. Please try again, or ask your teacher.",
     "numCompletedActivities": "Number of completed activities",
     "viewingAnalytics": "Viewing {visible}/{users} Analytics",
     "@viewingAnalytics": {

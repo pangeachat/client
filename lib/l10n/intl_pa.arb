@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-09-04 10:08:38.228151",
+    "@@last_modified": "2026-09-08 09:45:00.977828",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2277,5 +2277,6 @@
     "callContinuingElsewhere": "ਇਹ ਕਾਲ ਤੁਹਾਡੀ ਦੂਜੀ ਡਿਵਾਈਸ 'ਤੇ ਜਾਰੀ ਹੈ।",
     "listenFirst": "ਪਹਿਲਾਂ ਸੁਣੋ",
     "listenFirstDescription": "ਜਦੋਂ ਪਹਿਲਾਂ ਸੁਣੋ ਚਾਲੂ ਹੁੰਦਾ ਹੈ, ਤਾਂ ਇੱਕ ਕਲਿੱਕ ਸਿਰਫ਼ ਆਡੀਓ ਚਲਾਉਂਦਾ ਹੈ ਅਤੇ ਡਬਲ-ਕਲਿੱਕ ਵਿਕਲਪ ਚੁਣਦਾ ਹੈ।",
-    "listenFirstNeedsChoiceAudio": "ਪਹਿਲਾਂ ਸੁਣੋ ਦੀ ਵਰਤੋਂ ਕਰਨ ਲਈ ਵਿਕਲਪ ਆਡੀਓ ਚਾਲੂ ਕਰੋ।"
+    "listenFirstNeedsChoiceAudio": "ਪਹਿਲਾਂ ਸੁਣੋ ਦੀ ਵਰਤੋਂ ਕਰਨ ਲਈ ਵਿਕਲਪ ਆਡੀਓ ਚਾਲੂ ਕਰੋ।",
+    "unableToJoinCourseError": "ਅਸੀਂ ਤੁਹਾਨੂੰ ਇਸ ਸਮੇਂ ਇਸ ਕੋਰਸ ਵਿੱਚ ਸ਼ਾਮਲ ਨਹੀਂ ਕਰ ਸਕੇ। ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ, ਜਾਂ ਆਪਣੇ ਅਧਿਆਪਕ ਨੂੰ ਪੁੱਛੋ।"
 }

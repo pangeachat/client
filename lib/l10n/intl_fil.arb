@@ -2080,7 +2080,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-09-04 10:08:33.606743",
+    "@@last_modified": "2026-09-08 09:44:52.941659",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10733,5 +10733,6 @@
     "callContinuingElsewhere": "Nagpapatuloy ang tawag na ito sa isa mo pang device.",
     "listenFirst": "Makinig muna",
     "listenFirstDescription": "Kapag naka-on ang Makinig Muna, isang click lang ay magpe-play ng audio at double-click para piliin ang opsyon.",
-    "listenFirstNeedsChoiceAudio": "I-on ang audio ng Mga Pagpipilian para magamit ang Makinig Muna."
+    "listenFirstNeedsChoiceAudio": "I-on ang audio ng Mga Pagpipilian para magamit ang Makinig Muna.",
+    "unableToJoinCourseError": "Hindi ka namin maidagdag sa kursong ito sa ngayon. Pakisubukang muli, o tanungin ang iyong guro."
 }
