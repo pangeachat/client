@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "તમે જેમાં શીખી રહ્યા છો તે જ કોર્સ બતાવો",
     "searchCoursesHint": "કોર્સ શોધો",
     "noCoursesMatchSearch": "તમારી શોધ સાથે કોઈ કોર્સ મેળ ખાતા નથી.",
-    "searchVocabByWordOrMeaningHint": "શબ્દ અથવા અર્થ દ્વારા શોધો"
+    "searchVocabByWordOrMeaningHint": "શબ્દ અથવા અર્થ દ્વારા શોધો",
+    "practiceTapABlank": "ખાલી જગ્યા ભરવા માટે તેના પર ટેપ કરો",
+    "practiceListeningPrompt": "‘{word}’ કયું બોલે છે?",
+    "practiceMeaningPrompt": "‘{word}’ નો અર્થ શું થાય છે?",
+    "practiceEmojiPrompt": "‘{word}’ માટે એક ઇમોજી પસંદ કરો",
+    "practiceStepProgress": "{total} માંથી {done}"
 }

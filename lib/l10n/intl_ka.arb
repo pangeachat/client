@@ -10847,5 +10847,10 @@
     "learningCoursesFilterTooltip": "მხოლოდ იმ კურსების ჩვენება, რომლებსაც სწავლობთ",
     "searchCoursesHint": "კურსების ძიება",
     "noCoursesMatchSearch": "თქვენს ძიებას არცერთი კურსი არ ემთხვევა.",
-    "searchVocabByWordOrMeaningHint": "მოძებნე სიტყვით ან მნიშვნელობით"
+    "searchVocabByWordOrMeaningHint": "მოძებნე სიტყვით ან მნიშვნელობით",
+    "practiceTapABlank": "შეეხეთ ცარიელ ადგილს მის შესავსებად",
+    "practiceListeningPrompt": "რომელი ამბობს „{word}“?",
+    "practiceMeaningPrompt": "რას ნიშნავს „{word}“?",
+    "practiceEmojiPrompt": "აირჩიეთ ემოჯი „{word}“-ისთვის",
+    "practiceStepProgress": "{done} / {total}"
 }

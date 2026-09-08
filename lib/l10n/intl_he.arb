@@ -10861,5 +10861,10 @@
     "learningCoursesFilterTooltip": "הצג רק קורסים שאתה לומד בהם",
     "searchCoursesHint": "חפש קורסים",
     "noCoursesMatchSearch": "לא נמצאו קורסים התואמים לחיפוש שלך.",
-    "searchVocabByWordOrMeaningHint": "חפש לפי מילה או משמעות"
+    "searchVocabByWordOrMeaningHint": "חפש לפי מילה או משמעות",
+    "practiceTapABlank": "הקש על רווח כדי למלא אותו",
+    "practiceListeningPrompt": "איזה מהם אומר '{word}'?",
+    "practiceMeaningPrompt": "מה פירוש '{word}'?",
+    "practiceEmojiPrompt": "בחר אימוג'י עבור '{word}'",
+    "practiceStepProgress": "{done} מתוך {total}"
 }

@@ -9558,5 +9558,10 @@
     "learningCoursesFilterTooltip": "ཁྱེད་ཀྱིས་སློབ་སྦྱོང་བྱེད་བཞིན་པའི་སློབ་ཚན་ཁོ་ན་སྟོན།",
     "searchCoursesHint": "སློབ་ཚན་འཚོལ།",
     "noCoursesMatchSearch": "ཁྱེད་ཀྱི་འཚོལ་བཤེར་དང་མཐུན་པའི་སློབ་ཚན་མི་འདུག",
-    "searchVocabByWordOrMeaningHint": "ཚིག་གམ་དོན་གྱིས་འཚོལ་བ།"
+    "searchVocabByWordOrMeaningHint": "ཚིག་གམ་དོན་གྱིས་འཚོལ་བ།",
+    "practiceTapABlank": "སྟོང་པ་ཞིག་ལ་རེག་ནས་བཀང་།",
+    "practiceListeningPrompt": "གང་གིས་ ‘{word}’ ཟེར་གྱི་འདུག",
+    "practiceMeaningPrompt": "‘{word}’ ལ་དོན་ཅི་ཞིག་ཡོད།",
+    "practiceEmojiPrompt": "‘{word}’ ལ་ཨི་མོ་ཇི་ཞིག་འདེམས་རོགས།",
+    "practiceStepProgress": "{total} ནང་ནས་ {done}"
 }

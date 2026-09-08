@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "ווײַזן נאָר קורסן וואָס איר לערנט זיך אין",
     "searchCoursesHint": "זוכן קורסן",
     "noCoursesMatchSearch": "קיין קורסן שטימען נישט מיט אײַער זוך.",
-    "searchVocabByWordOrMeaningHint": "זוכן לויט וואָרט אָדער באַדײַט"
+    "searchVocabByWordOrMeaningHint": "זוכן לויט וואָרט אָדער באַדײַט",
+    "practiceTapABlank": "דרוקט אויף אַ ליידיקן פלאַץ צו אויספילן",
+    "practiceListeningPrompt": "וועלכער זאָגט ‘{word}’?",
+    "practiceMeaningPrompt": "וואָס מיינט ‘{word}’?",
+    "practiceEmojiPrompt": "קלויבט אויס אַן עמאָדזשי פֿאַר ‘{word}’",
+    "practiceStepProgress": "{done} פֿון {total}"
 }

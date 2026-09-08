@@ -10679,5 +10679,10 @@
     "learningCoursesFilterTooltip": "Afișează doar cursurile la care înveți",
     "searchCoursesHint": "Căutare cursuri",
     "noCoursesMatchSearch": "Niciun curs nu corespunde căutării tale.",
-    "searchVocabByWordOrMeaningHint": "Căutați după cuvânt sau sens"
+    "searchVocabByWordOrMeaningHint": "Căutați după cuvânt sau sens",
+    "practiceTapABlank": "Atingeți un spațiu gol pentru a-l completa",
+    "practiceListeningPrompt": "Care dintre ele spune „{word}”?",
+    "practiceMeaningPrompt": "Ce înseamnă „{word}”?",
+    "practiceEmojiPrompt": "Alegeți un emoji pentru „{word}”",
+    "practiceStepProgress": "{done} din {total}"
 }

@@ -10253,5 +10253,10 @@
     "learningCoursesFilterTooltip": "عرض الدورات التي تتعلم فيها فقط",
     "searchCoursesHint": "البحث عن الدورات",
     "noCoursesMatchSearch": "لا توجد دورات مطابقة لبحثك.",
-    "searchVocabByWordOrMeaningHint": "البحث بالكلمة أو المعنى"
+    "searchVocabByWordOrMeaningHint": "البحث بالكلمة أو المعنى",
+    "practiceTapABlank": "اضغط على الفراغ لملئه",
+    "practiceListeningPrompt": "أيٌّ منها يقول '{word}'؟",
+    "practiceMeaningPrompt": "ماذا تعني '{word}'؟",
+    "practiceEmojiPrompt": "اختر رمزًا تعبيريًا لـ '{word}'",
+    "practiceStepProgress": "{done} من {total}"
 }

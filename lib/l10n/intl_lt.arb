@@ -10728,5 +10728,10 @@
     "learningCoursesFilterTooltip": "Rodyti tik kursus, kuriuos mokotės",
     "searchCoursesHint": "Ieškoti kursų",
     "noCoursesMatchSearch": "Nėra kursų, atitinkančių jūsų paiešką.",
-    "searchVocabByWordOrMeaningHint": "Ieškoti pagal žodį ar reikšmę"
+    "searchVocabByWordOrMeaningHint": "Ieškoti pagal žodį ar reikšmę",
+    "practiceTapABlank": "Palieskite tuščią vietą, kad užpildytumėte",
+    "practiceListeningPrompt": "Kuris sako „{word}“?",
+    "practiceMeaningPrompt": "Ką reiškia „{word}“?",
+    "practiceEmojiPrompt": "Pasirinkite jaustuką žodžiui „{word}“",
+    "practiceStepProgress": "{done} iš {total}"
 }

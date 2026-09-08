@@ -7239,5 +7239,10 @@
     "learningCoursesFilterTooltip": "Chỉ hiển thị các khóa học bạn đang học",
     "searchCoursesHint": "Tìm kiếm khóa học",
     "noCoursesMatchSearch": "Không có khóa học nào khớp với tìm kiếm của bạn.",
-    "searchVocabByWordOrMeaningHint": "Tìm kiếm theo từ hoặc nghĩa"
+    "searchVocabByWordOrMeaningHint": "Tìm kiếm theo từ hoặc nghĩa",
+    "practiceTapABlank": "Chạm vào chỗ trống để điền",
+    "practiceListeningPrompt": "Cái nào nói ‘{word}’?",
+    "practiceMeaningPrompt": "‘{word}’ nghĩa là gì?",
+    "practiceEmojiPrompt": "Chọn một biểu tượng cảm xúc cho ‘{word}’",
+    "practiceStepProgress": "{done} trên {total}"
 }

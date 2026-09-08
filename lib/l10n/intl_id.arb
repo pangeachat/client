@@ -10020,5 +10020,10 @@
     "learningCoursesFilterTooltip": "Tampilkan hanya kursus yang sedang Anda pelajari",
     "searchCoursesHint": "Cari kursus",
     "noCoursesMatchSearch": "Tidak ada kursus yang cocok dengan pencarian Anda.",
-    "searchVocabByWordOrMeaningHint": "Cari berdasarkan kata atau arti"
+    "searchVocabByWordOrMeaningHint": "Cari berdasarkan kata atau arti",
+    "practiceTapABlank": "Ketuk bagian kosong untuk mengisinya",
+    "practiceListeningPrompt": "Yang mana yang mengatakan '{word}'?",
+    "practiceMeaningPrompt": "Apa arti '{word}'?",
+    "practiceEmojiPrompt": "Pilih emoji untuk '{word}'",
+    "practiceStepProgress": "{done} dari {total}"
 }

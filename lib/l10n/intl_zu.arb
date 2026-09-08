@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "Bonisa kuphela izifundo ofunda kuzo",
     "searchCoursesHint": "Sesha izifundo",
     "noCoursesMatchSearch": "Azikho izifundo ezifana nosesho lwakho.",
-    "searchVocabByWordOrMeaningHint": "Sesha ngegama noma incazelo"
+    "searchVocabByWordOrMeaningHint": "Sesha ngegama noma incazelo",
+    "practiceTapABlank": "Thepha okungenalutho ukuze ukugcwalise",
+    "practiceListeningPrompt": "Iyiphi ethi ‘{word}’?",
+    "practiceMeaningPrompt": "Isho ukuthini i-‘{word}’?",
+    "practiceEmojiPrompt": "Khetha i-emoji ye-‘{word}’",
+    "practiceStepProgress": "{done} koku-{total}"
 }

@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "ສະແດງສະເພາະຫຼັກສູດທີ່ທ່ານກຳລັງຮຽນ",
     "searchCoursesHint": "ຊອກຫາຫຼັກສູດ",
     "noCoursesMatchSearch": "ບໍ່ມີຫຼັກສູດກົງກັບການຊອກຫາຂອງທ່ານ.",
-    "searchVocabByWordOrMeaningHint": "ຊອກຫາຕາມຄຳສັບ ຫຼື ຄວາມໝາຍ"
+    "searchVocabByWordOrMeaningHint": "ຊອກຫາຕາມຄຳສັບ ຫຼື ຄວາມໝາຍ",
+    "practiceTapABlank": "ແຕະບ່ອນຫວ່າງເພື່ອຕື່ມໃສ່",
+    "practiceListeningPrompt": "ອັນໃດທີ່ເວົ້າວ່າ ‘{word}’?",
+    "practiceMeaningPrompt": "‘{word}’ ໝາຍຄວາມວ່າແນວໃດ?",
+    "practiceEmojiPrompt": "ເລືອກອີໂມຈິສຳລັບ ‘{word}’",
+    "practiceStepProgress": "{done} ຈາກ {total}"
 }

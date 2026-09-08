@@ -10004,5 +10004,10 @@
     "learningCoursesFilterTooltip": "Vis kun kurs du lærer i",
     "searchCoursesHint": "Søk i kurs",
     "noCoursesMatchSearch": "Ingen kurs samsvarer med søket ditt.",
-    "searchVocabByWordOrMeaningHint": "Søk etter ord eller betydning"
+    "searchVocabByWordOrMeaningHint": "Søk etter ord eller betydning",
+    "practiceTapABlank": "Trykk på et tomt felt for å fylle det",
+    "practiceListeningPrompt": "Hvilken sier «{word}»?",
+    "practiceMeaningPrompt": "Hva betyr «{word}»?",
+    "practiceEmojiPrompt": "Velg en emoji for «{word}»",
+    "practiceStepProgress": "{done} av {total}"
 }

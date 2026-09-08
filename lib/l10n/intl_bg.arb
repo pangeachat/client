@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "Покажи само курсовете, в които учиш",
     "searchCoursesHint": "Търсене на курсове",
     "noCoursesMatchSearch": "Няма курсове, отговарящи на търсенето.",
-    "searchVocabByWordOrMeaningHint": "Търсене по дума или значение"
+    "searchVocabByWordOrMeaningHint": "Търсене по дума или значение",
+    "practiceTapABlank": "Докоснете празно място, за да го попълните",
+    "practiceListeningPrompt": "Кой казва „{word}“?",
+    "practiceMeaningPrompt": "Какво означава „{word}“?",
+    "practiceEmojiPrompt": "Изберете емоджи за „{word}“",
+    "practiceStepProgress": "{done} от {total}"
 }

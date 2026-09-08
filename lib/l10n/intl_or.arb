@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "କେବଳ ଆପଣ ଶିକ୍ଷା ଗ୍ରହଣ କରୁଥିବା କୋର୍ସଗୁଡ଼ିକୁ ଦେଖାନ୍ତୁ",
     "searchCoursesHint": "କୋର୍ସଗୁଡ଼ିକୁ ଖୋଜନ୍ତୁ",
     "noCoursesMatchSearch": "ଆପଣଙ୍କ ସନ୍ଧାନ ସହିତ କୌଣସି କୋର୍ସ ମେଳ ଖାଉନାହିଁ।",
-    "searchVocabByWordOrMeaningHint": "ଶବ୍ଦ କିମ୍ବା ଅର୍ଥ ଦ୍ୱାରା ଖୋଜନ୍ତୁ"
+    "searchVocabByWordOrMeaningHint": "ଶବ୍ଦ କିମ୍ବା ଅର୍ଥ ଦ୍ୱାରା ଖୋଜନ୍ତୁ",
+    "practiceTapABlank": "ପୂରଣ କରିବାକୁ ଖାଲି ସ୍ଥାନରେ ଟ୍ୟାପ୍ କରନ୍ତୁ",
+    "practiceListeningPrompt": "କେଉଁଟି ‘{word}’ କହୁଛି?",
+    "practiceMeaningPrompt": "‘{word}’ ର ଅର୍ଥ କଣ?",
+    "practiceEmojiPrompt": "‘{word}’ ପାଇଁ ଏକ ଇମୋଜି ବାଛନ୍ତୁ",
+    "practiceStepProgress": "{total} ରୁ {done}"
 }

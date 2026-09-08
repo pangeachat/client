@@ -59,11 +59,18 @@ class PracticeController with ChangeNotifier {
   MorphSelection? _selectedMorph;
   PracticeExerciseChoice? _selectedChoice;
 
+  /// The blank the learner is filling. Every mode starts on the message: a
+  /// token is chosen first, and only then does the tray offer its answers.
+  /// Grammar keeps its own [_selectedMorph], which names a feature as well as
+  /// a token.
+  PangeaToken? _selectedSlotToken;
+
   PracticeSelection? practiceSelection;
 
   MessagePracticeMode get practiceMode => _practiceMode;
   MorphSelection? get selectedMorph => _selectedMorph;
   PracticeExerciseChoice? get selectedChoice => _selectedChoice;
+  PangeaToken? get selectedSlotToken => _selectedSlotToken;
 
   PracticeTarget? get currentTarget {
     final activityType = _practiceMode.associatedActivityType;
@@ -85,10 +92,52 @@ class PracticeController with ChangeNotifier {
           !PracticeRecordController.hasAnyResponse(_activity!.practiceTarget);
     }
 
-    return _selectedChoice == null &&
+    return _selectedSlotToken != null &&
         !PracticeRecordController.hasAnyCorrectChoices(
           _activity!.practiceTarget,
         );
+  }
+
+  /// The blanks pull for attention until one is chosen, so the first move is
+  /// always visible on the message. Grammar's puzzle pieces run their own
+  /// shimmer off [selectedMorph].
+  bool get showSlotShimmer {
+    final target = currentTarget;
+    if (target == null) return false;
+    return _selectedSlotToken == null &&
+        !PracticeRecordController.hasAnyCorrectChoices(target);
+  }
+
+  /// Steps answered in the current mode, and how many there are, for the
+  /// practice header. A match target carries one step per token; grammar
+  /// carries one target per step.
+  int get completedSteps {
+    final activityType = _practiceMode.associatedActivityType;
+    if (activityType == null) return 0;
+    if (activityType == PracticeExerciseTypeEnum.morphId) {
+      return practiceSelection
+              ?.activities(activityType)
+              .where(PracticeRecordController.isCompleteByTarget)
+              .length ??
+          0;
+    }
+
+    final target = practiceSelection?.getTarget(activityType);
+    if (target == null) return 0;
+    return target.tokens
+        .where(
+          (token) => PracticeRecordController.isCompleteByToken(target, token),
+        )
+        .length;
+  }
+
+  int get totalSteps {
+    final activityType = _practiceMode.associatedActivityType;
+    if (activityType == null) return 0;
+    if (activityType == PracticeExerciseTypeEnum.morphId) {
+      return practiceSelection?.activities(activityType).length ?? 0;
+    }
+    return practiceSelection?.getTarget(activityType)?.tokens.length ?? 0;
   }
 
   bool get isTotallyDone =>
@@ -156,6 +205,7 @@ class PracticeController with ChangeNotifier {
 
   void updateToolbarMode(MessagePracticeMode mode) {
     _selectedChoice = null;
+    _selectedSlotToken = null;
     _practiceMode = mode;
     if (_practiceMode != MessagePracticeMode.wordMorph) {
       _selectedMorph = null;
@@ -166,6 +216,16 @@ class PracticeController with ChangeNotifier {
   void updatePracticeMorph(MorphSelection newMorph) {
     _practiceMode = MessagePracticeMode.wordMorph;
     _selectedMorph = newMorph;
+    _selectedSlotToken = null;
+    notifyListeners();
+  }
+
+  /// Choosing the blank is the first half of every match exercise. Tapping the
+  /// chosen one again clears it, so a learner can change their mind without
+  /// answering.
+  void onSlotSelect(PangeaToken token) {
+    _selectedSlotToken = _selectedSlotToken == token ? null : token;
+    _selectedChoice = null;
     notifyListeners();
   }
 
@@ -286,6 +346,11 @@ class PracticeController with ChangeNotifier {
         ),
       );
     }
+
+    // A right answer closes the blank and hands the turn back to the message.
+    // A wrong one leaves it open, so the next pick lands on the same word.
+    if (isCorrect) _selectedSlotToken = null;
+    _selectedChoice = null;
 
     notifyListeners();
   }

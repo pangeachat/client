@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "Monstra tantum cursus quos disces",
     "searchCoursesHint": "Quaere cursus",
     "noCoursesMatchSearch": "Nulli cursus quaestioni tuae respondent.",
-    "searchVocabByWordOrMeaningHint": "Quaere per verbum vel significationem"
+    "searchVocabByWordOrMeaningHint": "Quaere per verbum vel significationem",
+    "practiceTapABlank": "Tange spatium vacuum ut impleas",
+    "practiceListeningPrompt": "Quod dicit ‘{word}’?",
+    "practiceMeaningPrompt": "Quid significat ‘{word}’?",
+    "practiceEmojiPrompt": "Elige emoji pro ‘{word}’",
+    "practiceStepProgress": "{done} de {total}"
 }

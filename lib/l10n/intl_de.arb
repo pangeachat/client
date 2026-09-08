@@ -9934,5 +9934,10 @@
     "learningCoursesFilterTooltip": "Nur Kurse anzeigen, in denen Sie lernen",
     "searchCoursesHint": "Kurse suchen",
     "noCoursesMatchSearch": "Keine Kurse entsprechen Ihrer Suche.",
-    "searchVocabByWordOrMeaningHint": "Nach Wort oder Bedeutung suchen"
+    "searchVocabByWordOrMeaningHint": "Nach Wort oder Bedeutung suchen",
+    "practiceTapABlank": "Tippe auf eine Lücke, um sie zu füllen",
+    "practiceListeningPrompt": "Welches sagt „{word}“?",
+    "practiceMeaningPrompt": "Was bedeutet „{word}“?",
+    "practiceEmojiPrompt": "Wähle ein Emoji für „{word}“",
+    "practiceStepProgress": "{done} von {total}"
 }

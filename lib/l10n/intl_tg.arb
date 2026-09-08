@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "Танҳо курсҳоеро нишон диҳед, ки шумо меомӯзед",
     "searchCoursesHint": "Ҷустуҷӯи курсҳо",
     "noCoursesMatchSearch": "Ҳеҷ курсе ба ҷустуҷӯи шумо мувофиқат намекунад.",
-    "searchVocabByWordOrMeaningHint": "Ҷустуҷӯ аз рӯи калима ё маъно"
+    "searchVocabByWordOrMeaningHint": "Ҷустуҷӯ аз рӯи калима ё маъно",
+    "practiceTapABlank": "Барои пур кардан ба ҷои холӣ ламс кунед",
+    "practiceListeningPrompt": "Кадомаш мегӯяд ‘{word}’?",
+    "practiceMeaningPrompt": "‘{word}’ чӣ маъно дорад?",
+    "practiceEmojiPrompt": "Барои ‘{word}’ эмодзи интихоб кунед",
+    "practiceStepProgress": "{done} аз {total}"
 }

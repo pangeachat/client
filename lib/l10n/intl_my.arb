@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "သင်ယူနေသော သင်တန်းများကိုသာ ပြသပါ",
     "searchCoursesHint": "သင်တန်းများ ရှာဖွေပါ",
     "noCoursesMatchSearch": "သင်၏ရှာဖွေမှုနှင့် ကိုက်ညီသော သင်တန်းများ မရှိပါ။",
-    "searchVocabByWordOrMeaningHint": "စကားလုံး သို့မဟုတ် အဓိပ္ပာယ်ဖြင့် ရှာဖွေပါ"
+    "searchVocabByWordOrMeaningHint": "စကားလုံး သို့မဟုတ် အဓိပ္ပာယ်ဖြင့် ရှာဖွေပါ",
+    "practiceTapABlank": "ဖြည့်ရန် အကွက်လွတ်ကို နှိပ်ပါ",
+    "practiceListeningPrompt": "ဘယ်တစ်ခုက ‘{word}’ လို့ ပြောတာလဲ။",
+    "practiceMeaningPrompt": "‘{word}’ က ဘာကို ဆိုလိုတာလဲ။",
+    "practiceEmojiPrompt": "‘{word}’ အတွက် အီမိုဂျီတစ်ခု ရွေးပါ",
+    "practiceStepProgress": "{total} ခုထဲက {done}"
 }

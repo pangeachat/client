@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "Onetsani maphunziro omwe mukuphunzira okha",
     "searchCoursesHint": "Sakani maphunziro",
     "noCoursesMatchSearch": "Palibe maphunziro ogwirizana ndi zomwe mwasaka.",
-    "searchVocabByWordOrMeaningHint": "Sakani ndi mawu kapena tanthauzo"
+    "searchVocabByWordOrMeaningHint": "Sakani ndi mawu kapena tanthauzo",
+    "practiceTapABlank": "Dinani malo opanda kanthu kuti mudzaze",
+    "practiceListeningPrompt": "Ndi chiti chomwe chimati ‘{word}’?",
+    "practiceMeaningPrompt": "Kodi ‘{word}’ amatanthauza chiyani?",
+    "practiceEmojiPrompt": "Sankhani emoji ya ‘{word}’",
+    "practiceStepProgress": "{done} mwa {total}"
 }

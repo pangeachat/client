@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "Bonisa kuphela iikhosi ofunda kuzo",
     "searchCoursesHint": "Khangela iikhosi",
     "noCoursesMatchSearch": "Azikho iikhosi ezihambelana nokukhangela kwakho.",
-    "searchVocabByWordOrMeaningHint": "Khangela ngegama okanye intsingiselo"
+    "searchVocabByWordOrMeaningHint": "Khangela ngegama okanye intsingiselo",
+    "practiceTapABlank": "Cofa indawo engenanto ukuze uyizale",
+    "practiceListeningPrompt": "Yeyiphi ethi ‘{word}’?",
+    "practiceMeaningPrompt": "Ithetha ukuthini ‘{word}’?",
+    "practiceEmojiPrompt": "Khetha i-emoji ye-‘{word}’",
+    "practiceStepProgress": "{done} kweziyi-{total}"
 }

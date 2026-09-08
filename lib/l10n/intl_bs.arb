@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "Prikaži samo kurseve koje učiš",
     "searchCoursesHint": "Pretraži kurseve",
     "noCoursesMatchSearch": "Nijedan kurs ne odgovara vašoj pretrazi.",
-    "searchVocabByWordOrMeaningHint": "Pretražite po riječi ili značenju"
+    "searchVocabByWordOrMeaningHint": "Pretražite po riječi ili značenju",
+    "practiceTapABlank": "Dodirnite prazno polje da ga popunite",
+    "practiceListeningPrompt": "Koja kaže „{word}“?",
+    "practiceMeaningPrompt": "Šta znači „{word}“?",
+    "practiceEmojiPrompt": "Odaberite emoji za „{word}“",
+    "practiceStepProgress": "{done} od {total}"
 }

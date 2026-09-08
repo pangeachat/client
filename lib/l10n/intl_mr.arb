@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "तुम्ही शिकत असलेले अभ्यासक्रमच दाखवा",
     "searchCoursesHint": "अभ्यासक्रम शोधा",
     "noCoursesMatchSearch": "तुमच्या शोधण्याशी जुळणारे कोणतेही अभ्यासक्रम नाहीत.",
-    "searchVocabByWordOrMeaningHint": "शब्द किंवा अर्थानुसार शोधा"
+    "searchVocabByWordOrMeaningHint": "शब्द किंवा अर्थानुसार शोधा",
+    "practiceTapABlank": "भरण्यासाठी रिकाम्या जागेवर टॅप करा",
+    "practiceListeningPrompt": "‘{word}’ असे कोण म्हणते?",
+    "practiceMeaningPrompt": "‘{word}’ चा अर्थ काय आहे?",
+    "practiceEmojiPrompt": "‘{word}’ साठी एक इमोजी निवडा",
+    "practiceStepProgress": "{total} पैकी {done}"
 }

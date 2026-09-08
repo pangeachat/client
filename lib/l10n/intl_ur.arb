@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "صرف وہ کورسز دکھائیں جن میں آپ سیکھ رہے ہیں",
     "searchCoursesHint": "کورسز تلاش کریں",
     "noCoursesMatchSearch": "آپ کی تلاش سے کوئی کورس مماثل نہیں ہے۔",
-    "searchVocabByWordOrMeaningHint": "لفظ یا معنی کے لحاظ سے تلاش کریں"
+    "searchVocabByWordOrMeaningHint": "لفظ یا معنی کے لحاظ سے تلاش کریں",
+    "practiceTapABlank": "خالی جگہ پُر کرنے کے لیے تھپتھپائیں",
+    "practiceListeningPrompt": "کون سا ‘{word}’ کہتا ہے؟",
+    "practiceMeaningPrompt": "‘{word}’ کا کیا مطلب ہے؟",
+    "practiceEmojiPrompt": "‘{word}’ کے لیے ایک ایموجی منتخب کریں",
+    "practiceStepProgress": "{total} میں سے {done}"
 }

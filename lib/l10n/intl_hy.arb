@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "Ցուցադրել միայն այն դասընթացները, որոնք դուք եք սովորում",
     "searchCoursesHint": "Որոնել դասընթացներ",
     "noCoursesMatchSearch": "Ձեր որոնմանը համապատասխան դասընթացներ չկան։",
-    "searchVocabByWordOrMeaningHint": "Որոնել ըստ բառի կամ իմաստի"
+    "searchVocabByWordOrMeaningHint": "Որոնել ըստ բառի կամ իմաստի",
+    "practiceTapABlank": "Հպեք բաց թողնված բառին՝ այն լրացնելու համար",
+    "practiceListeningPrompt": "Ո՞րն է ասում «{word}»։",
+    "practiceMeaningPrompt": "Ի՞նչ է նշանակում «{word}» բառը։",
+    "practiceEmojiPrompt": "Ընտրեք էմոջի «{word}» բառի համար",
+    "practiceStepProgress": "{done}-ը՝ {total}-ից"
 }

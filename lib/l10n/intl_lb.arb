@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "Nëmmen d'Coursen uweisen, an deenen Dir léiert",
     "searchCoursesHint": "Coursen sichen",
     "noCoursesMatchSearch": "Keng Coursen entspriechen Ärer Sich.",
-    "searchVocabByWordOrMeaningHint": "No Wuert oder Bedeitung sichen"
+    "searchVocabByWordOrMeaningHint": "No Wuert oder Bedeitung sichen",
+    "practiceTapABlank": "Tipp op eng eidel Plaz fir se auszefëllen",
+    "practiceListeningPrompt": "Wéi eng seet ‘{word}’?",
+    "practiceMeaningPrompt": "Wat bedeit ‘{word}’?",
+    "practiceEmojiPrompt": "Wiel en Emoji fir ‘{word}’",
+    "practiceStepProgress": "{done} vun {total}"
 }

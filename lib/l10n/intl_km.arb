@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "បង្ហាញតែវគ្គសិក្សាដែលអ្នកកំពុងរៀន",
     "searchCoursesHint": "ស្វែងរកវគ្គសិក្សា",
     "noCoursesMatchSearch": "គ្មានវគ្គសិក្សាណាមួយត្រូវនឹងការស្វែងរករបស់អ្នកទេ។",
-    "searchVocabByWordOrMeaningHint": "ស្វែងរកតាមពាក្យ ឬអត្ថន័យ"
+    "searchVocabByWordOrMeaningHint": "ស្វែងរកតាមពាក្យ ឬអត្ថន័យ",
+    "practiceTapABlank": "ប៉ះចន្លោះទំនេរដើម្បីបំពេញ",
+    "practiceListeningPrompt": "តើពាក្យមួយណាដែលនិយាយថា ‘{word}’?",
+    "practiceMeaningPrompt": "តើ ‘{word}’ មានន័យដូចម្តេច?",
+    "practiceEmojiPrompt": "ជ្រើសរើស Emoji សម្រាប់ ‘{word}’",
+    "practiceStepProgress": "{done} នៃ {total}"
 }

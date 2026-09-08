@@ -10892,5 +10892,10 @@
     "learningCoursesFilterTooltip": "Zobraziť len kurzy, v ktorých sa učíte",
     "searchCoursesHint": "Hľadať kurzy",
     "noCoursesMatchSearch": "Žiadne kurzy nezodpovedajú vášmu vyhľadávaniu.",
-    "searchVocabByWordOrMeaningHint": "Hľadať podľa slova alebo významu"
+    "searchVocabByWordOrMeaningHint": "Hľadať podľa slova alebo významu",
+    "practiceTapABlank": "Ťuknutím vyplňte prázdne miesto",
+    "practiceListeningPrompt": "Ktoré hovorí „{word}“?",
+    "practiceMeaningPrompt": "Čo znamená „{word}“?",
+    "practiceEmojiPrompt": "Vyberte emoji pre „{word}“",
+    "practiceStepProgress": "{done} z {total}"
 }

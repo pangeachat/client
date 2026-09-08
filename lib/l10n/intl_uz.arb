@@ -9951,5 +9951,10 @@
     "learningCoursesFilterTooltip": "Faqat siz o‘rganayotgan kurslarni ko‘rsatish",
     "searchCoursesHint": "Kurslarni qidirish",
     "noCoursesMatchSearch": "Qidiruvingizga mos kurslar topilmadi.",
-    "searchVocabByWordOrMeaningHint": "Soʻz yoki maʼnosi boʻyicha qidirish"
+    "searchVocabByWordOrMeaningHint": "Soʻz yoki maʼnosi boʻyicha qidirish",
+    "practiceTapABlank": "Boʻsh joyni toʻldirish uchun bosing",
+    "practiceListeningPrompt": "Qaysi biri „{word}“ deydi?",
+    "practiceMeaningPrompt": "„{word}“ nimani anglatadi?",
+    "practiceEmojiPrompt": "„{word}“ uchun emojini tanlang",
+    "practiceStepProgress": "{done} / {total}"
 }

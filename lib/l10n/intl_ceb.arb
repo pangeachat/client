@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "Ipakita lang ang mga kurso nga imong gitun-an",
     "searchCoursesHint": "Pangita og mga kurso",
     "noCoursesMatchSearch": "Walay kurso nga mohaum sa imong gipangita.",
-    "searchVocabByWordOrMeaningHint": "Pangitaa pinaagi sa pulong o kahulogan"
+    "searchVocabByWordOrMeaningHint": "Pangitaa pinaagi sa pulong o kahulogan",
+    "practiceTapABlank": "Pindota ang blangko aron pun-on",
+    "practiceListeningPrompt": "Asa niini ang nag-ingon og ‘{word}’?",
+    "practiceMeaningPrompt": "Unsay gipasabot sa ‘{word}’?",
+    "practiceEmojiPrompt": "Pagpili og emoji para sa ‘{word}’",
+    "practiceStepProgress": "{done} sa {total}"
 }

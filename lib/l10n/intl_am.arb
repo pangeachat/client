@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "የምትማርባቸውን ኮርሶች ብቻ አሳይ",
     "searchCoursesHint": "ኮርሶችን ፈልግ",
     "noCoursesMatchSearch": "ፍለጋዎን የሚዛመድ ኮርስ የለም።",
-    "searchVocabByWordOrMeaningHint": "በቃል ወይም ትርጉም ይፈልጉ"
+    "searchVocabByWordOrMeaningHint": "በቃል ወይም ትርጉም ይፈልጉ",
+    "practiceTapABlank": "ለመሙላት ባዶ ቦታ ይንኩ።",
+    "practiceListeningPrompt": "የትኛው ነው ‘{word}’ የሚለው?",
+    "practiceMeaningPrompt": "‘{word}’ ምን ማለት ነው?",
+    "practiceEmojiPrompt": "ለ‘{word}’ ኢሞጂ ይምረጡ",
+    "practiceStepProgress": "{total} ከ {done}"
 }

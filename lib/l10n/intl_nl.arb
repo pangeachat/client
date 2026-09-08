@@ -9947,5 +9947,10 @@
     "learningCoursesFilterTooltip": "Toon alleen cursussen die je volgt",
     "searchCoursesHint": "Zoek cursussen",
     "noCoursesMatchSearch": "Geen cursussen komen overeen met je zoekopdracht.",
-    "searchVocabByWordOrMeaningHint": "Zoeken op woord of betekenis"
+    "searchVocabByWordOrMeaningHint": "Zoeken op woord of betekenis",
+    "practiceTapABlank": "Tik op een leeg veld om het in te vullen",
+    "practiceListeningPrompt": "Welke zegt ‘{word}’?",
+    "practiceMeaningPrompt": "Wat betekent ‘{word}’?",
+    "practiceEmojiPrompt": "Kies een emoji voor ‘{word}’",
+    "practiceStepProgress": "{done} van {total}"
 }

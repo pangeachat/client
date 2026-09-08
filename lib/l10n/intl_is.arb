@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "Sýna aðeins námskeið sem þú ert að læra í",
     "searchCoursesHint": "Leita að námskeiðum",
     "noCoursesMatchSearch": "Engin námskeið passa við leitina þína.",
-    "searchVocabByWordOrMeaningHint": "Leita eftir orði eða merkingu"
+    "searchVocabByWordOrMeaningHint": "Leita eftir orði eða merkingu",
+    "practiceTapABlank": "Pikkaðu á eyðu til að fylla hana út",
+    "practiceListeningPrompt": "Hver segir „{word}“?",
+    "practiceMeaningPrompt": "Hvað þýðir „{word}“?",
+    "practiceEmojiPrompt": "Veldu emoji fyrir „{word}“",
+    "practiceStepProgress": "{done} af {total}"
 }

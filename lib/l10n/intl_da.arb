@@ -10867,5 +10867,10 @@
     "learningCoursesFilterTooltip": "Vis kun kurser, du lærer i",
     "searchCoursesHint": "Søg kurser",
     "noCoursesMatchSearch": "Ingen kurser matcher din søgning.",
-    "searchVocabByWordOrMeaningHint": "Søg efter ord eller betydning"
+    "searchVocabByWordOrMeaningHint": "Søg efter ord eller betydning",
+    "practiceTapABlank": "Tryk på et blankt felt for at udfylde det",
+    "practiceListeningPrompt": "Hvilken siger '{word}'?",
+    "practiceMeaningPrompt": "Hvad betyder '{word}'?",
+    "practiceEmojiPrompt": "Vælg en emoji for '{word}'",
+    "practiceStepProgress": "{done} af {total}"
 }

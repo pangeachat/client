@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "Yalnız öyrəndiyiniz kursları göstərin",
     "searchCoursesHint": "Kurslarda axtarış edin",
     "noCoursesMatchSearch": "Axtarışınıza uyğun kurs tapılmadı.",
-    "searchVocabByWordOrMeaningHint": "Sözə və ya mənaya görə axtar"
+    "searchVocabByWordOrMeaningHint": "Sözə və ya mənaya görə axtar",
+    "practiceTapABlank": "Doldurmaq üçün boşluğa toxunun",
+    "practiceListeningPrompt": "Hansı ‘{word}’ deyir?",
+    "practiceMeaningPrompt": "‘{word}’ nə deməkdir?",
+    "practiceEmojiPrompt": "‘{word}’ üçün bir emoji seçin",
+    "practiceStepProgress": "{done} / {total}"
 }

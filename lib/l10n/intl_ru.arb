@@ -10919,5 +10919,10 @@
     "learningCoursesFilterTooltip": "Показать только курсы, которые вы изучаете",
     "searchCoursesHint": "Поиск курсов",
     "noCoursesMatchSearch": "По вашему запросу курсы не найдены.",
-    "searchVocabByWordOrMeaningHint": "Поиск по слову или значению"
+    "searchVocabByWordOrMeaningHint": "Поиск по слову или значению",
+    "practiceTapABlank": "Нажмите на пропуск, чтобы заполнить его",
+    "practiceListeningPrompt": "Что означает «{word}»?",
+    "practiceMeaningPrompt": "Что означает «{word}»?",
+    "practiceEmojiPrompt": "Выберите эмодзи для «{word}»",
+    "practiceStepProgress": "{done} из {total}"
 }

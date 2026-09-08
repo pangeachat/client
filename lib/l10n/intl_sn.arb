@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "Ratidza makosi aunodzidza chete",
     "searchCoursesHint": "Tsvaga makosi",
     "noCoursesMatchSearch": "Hapana makosi anoenderana nekutsvaga kwako.",
-    "searchVocabByWordOrMeaningHint": "Tsvaga neshoko kana zvarinoreva"
+    "searchVocabByWordOrMeaningHint": "Tsvaga neshoko kana zvarinoreva",
+    "practiceTapABlank": "Tinya nzvimbo isina chinhu kuti uzadze",
+    "practiceListeningPrompt": "Ndeipi inoti ‘{word}’?",
+    "practiceMeaningPrompt": "‘{word}’ zvinorevei?",
+    "practiceEmojiPrompt": "Sarudza emoji ye ‘{word}’",
+    "practiceStepProgress": "{done} pa {total}"
 }

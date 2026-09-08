@@ -10035,5 +10035,10 @@
     "learningCoursesFilterTooltip": "فقط دوره‌هایی که در حال یادگیری هستید را نمایش دهید",
     "searchCoursesHint": "جستجوی دوره‌ها",
     "noCoursesMatchSearch": "هیچ دوره‌ای با جستجوی شما مطابقت ندارد.",
-    "searchVocabByWordOrMeaningHint": "جستجو بر اساس کلمه یا معنی"
+    "searchVocabByWordOrMeaningHint": "جستجو بر اساس کلمه یا معنی",
+    "practiceTapABlank": "برای پر کردن، روی جای خالی ضربه بزنید",
+    "practiceListeningPrompt": "کدام یک می‌گوید «{word}»؟",
+    "practiceMeaningPrompt": "«{word}» به چه معناست؟",
+    "practiceEmojiPrompt": "یک ایموجی برای «{word}» انتخاب کنید",
+    "practiceStepProgress": "{done} از {total}"
 }

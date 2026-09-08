@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "Gosi naanị ọmụmụ ihe ị na-amụta",
     "searchCoursesHint": "Chọọ ọmụmụ ihe",
     "noCoursesMatchSearch": "Ọ nweghị ọmụmụ ihe dabara na ọchụchọ gị.",
-    "searchVocabByWordOrMeaningHint": "Chọọ site na okwu ma ọ bụ ihe ọ pụtara"
+    "searchVocabByWordOrMeaningHint": "Chọọ site na okwu ma ọ bụ ihe ọ pụtara",
+    "practiceTapABlank": "Pịa oghere ka ijupụta ya",
+    "practiceListeningPrompt": "Kedu nke na-ekwu ‘{word}’?",
+    "practiceMeaningPrompt": "Gịnị ka ‘{word}’ pụtara?",
+    "practiceEmojiPrompt": "Họrọ emoji maka ‘{word}’",
+    "practiceStepProgress": "{done} n'ime {total}"
 }

@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "Fi àwọn ìkẹ́kọ̀ọ́ tí o ń kọ́ nínú nìkan hàn",
     "searchCoursesHint": "Wá àwọn ìkẹ́kọ̀ọ́",
     "noCoursesMatchSearch": "Kò sí àwọn ìkẹ́kọ̀ọ́ tó bá ìwádìí rẹ mu.",
-    "searchVocabByWordOrMeaningHint": "Ṣawari nipasẹ ọrọ tabi itumọ"
+    "searchVocabByWordOrMeaningHint": "Ṣawari nipasẹ ọrọ tabi itumọ",
+    "practiceTapABlank": "Tẹ ibi òfo láti kún ún",
+    "practiceListeningPrompt": "Èwo ni ó sọ pé ‘{word}’?",
+    "practiceMeaningPrompt": "Kí ni ‘{word}’ túmọ̀ sí?",
+    "practiceEmojiPrompt": "Yan emoji kan fún ‘{word}’",
+    "practiceStepProgress": "{done} nínú {total}"
 }

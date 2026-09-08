@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "Dangos dim ond cyrsiau rydych chi'n dysgu ynddynt",
     "searchCoursesHint": "Chwilio cyrsiau",
     "noCoursesMatchSearch": "Nid oes unrhyw gyrsiau'n cyd-fynd â'ch chwiliad.",
-    "searchVocabByWordOrMeaningHint": "Chwilio yn ôl gair neu ystyr"
+    "searchVocabByWordOrMeaningHint": "Chwilio yn ôl gair neu ystyr",
+    "practiceTapABlank": "Tapiwch fwlch i'w lenwi",
+    "practiceListeningPrompt": "Pa un sy'n dweud ‘{word}’?",
+    "practiceMeaningPrompt": "Beth mae ‘{word}’ yn ei olygu?",
+    "practiceEmojiPrompt": "Dewiswch emoji ar gyfer ‘{word}’",
+    "practiceStepProgress": "{done} o {total}"
 }

@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "Прикажи ги само курсевите што ги учиш",
     "searchCoursesHint": "Пребарај курсеви",
     "noCoursesMatchSearch": "Нема курсеви што одговараат на вашето пребарување.",
-    "searchVocabByWordOrMeaningHint": "Пребарај по збор или значење"
+    "searchVocabByWordOrMeaningHint": "Пребарај по збор или значење",
+    "practiceTapABlank": "Допрете празно поле за да го пополните",
+    "practiceListeningPrompt": "Кое вели „{word}“?",
+    "practiceMeaningPrompt": "Што значи „{word}“?",
+    "practiceEmojiPrompt": "Изберете емоџи за „{word}“",
+    "practiceStepProgress": "{done} од {total}"
 }

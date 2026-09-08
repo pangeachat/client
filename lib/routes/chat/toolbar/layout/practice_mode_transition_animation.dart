@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/overlay/overlay.dart';
 import 'package:fluffychat/routes/chat/toolbar/layout/message_selection_positioner.dart';
 import 'package:fluffychat/routes/chat/toolbar/layout/overlay_center_content.dart';
+import 'package:fluffychat/routes/chat/toolbar/message_practice/practice_header.dart';
+import 'package:fluffychat/routes/chat/toolbar/message_practice/reading_assistance_input_bar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class PracticeModeTransitionAnimation extends StatefulWidget {
@@ -166,35 +167,68 @@ class CenteredMessage extends StatelessWidget {
     return ValueListenableBuilder(
       valueListenable: controller.finishedTransition,
       builder: (context, finished, _) {
+        final overlayController = controller.widget.overlayController;
         return Opacity(
           opacity: finished ? 1.0 : 0.0,
           child: GestureDetector(
             onTap: controller.widget.host.clearSelectedEvents,
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  SizedBox(width: controller.parentWidth, height: 20.0),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.0),
-                    child: OverlayCenterContent(
-                      event: controller.widget.event,
-                      overlayController: controller.widget.overlayController,
-                      host: controller.widget.host,
-                      nextEvent: controller.widget.nextEvent,
-                      prevEvent: controller.widget.prevEvent,
-                      hasReactions: controller.hasReactions,
-                      overlayKey:
-                          "overlay_center_message_${controller.widget.event.eventId}",
-                      readingAssistanceMode: controller.readingAssistanceMode,
-                      reactionsWidth: controller.reactionNotifier,
-                      useTokenKeys: finished,
-                    ),
+            child: LayoutBuilder(
+              builder: (context, constraints) => SingleChildScrollView(
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(width: controller.parentWidth, height: 20.0),
+                      // Header, message and answers are one block, so an answer
+                      // is never more than a card away from the blank it fills
+                      // (#6259). Taps inside the block stay inside it — only
+                      // the backdrop and the header's close leave practice.
+                      GestureDetector(
+                        onTap: () {},
+                        behavior: HitTestBehavior.opaque,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          spacing: 8.0,
+                          children: [
+                            PracticeHeader(
+                              overlayController.practiceController,
+                              onClose:
+                                  controller.widget.host.clearSelectedEvents,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 16.0,
+                              ),
+                              child: OverlayCenterContent(
+                                event: controller.widget.event,
+                                overlayController: overlayController,
+                                host: controller.widget.host,
+                                nextEvent: controller.widget.nextEvent,
+                                prevEvent: controller.widget.prevEvent,
+                                hasReactions: controller.hasReactions,
+                                overlayKey:
+                                    "overlay_center_message_${controller.widget.event.eventId}",
+                                readingAssistanceMode:
+                                    controller.readingAssistanceMode,
+                                reactionsWidth: controller.reactionNotifier,
+                                useTokenKeys: finished,
+                              ),
+                            ),
+                            ReadingAssistanceInputBar(
+                              overlayController.practiceController,
+                              maxWidth: overlayController.maxWidth,
+                              selectedToken: overlayController.selectedToken,
+                              onClose:
+                                  controller.widget.host.clearSelectedEvents,
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 20.0),
+                    ],
                   ),
-                  const SizedBox(
-                    height: AppConfig.readingAssistanceInputBarHeight + 60.0,
-                  ),
-                ],
+                ),
               ),
             ),
           ),

@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "Mostra solu i corsi ch'è tù amparate",
     "searchCoursesHint": "Cerca corsi",
     "noCoursesMatchSearch": "Nisun corsu ùn currisponde à a vostra ricerca.",
-    "searchVocabByWordOrMeaningHint": "Cerca per parolla o significatu"
+    "searchVocabByWordOrMeaningHint": "Cerca per parolla o significatu",
+    "practiceTapABlank": "Tappa un spaziu viotu per riempielu",
+    "practiceListeningPrompt": "Quale dice « {word} »?",
+    "practiceMeaningPrompt": "Chì significheghja « {word} »?",
+    "practiceEmojiPrompt": "Sceglite un emoji per « {word} »",
+    "practiceStepProgress": "{done} di {total}"
 }

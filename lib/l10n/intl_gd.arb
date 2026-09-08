@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "Seall dìreach cùrsaichean a tha thu ag ionnsachadh annta",
     "searchCoursesHint": "Lorg cùrsaichean",
     "noCoursesMatchSearch": "Chan eil cùrsaichean a rèir an rannsachaidh agad.",
-    "searchVocabByWordOrMeaningHint": "Rannsaich a rèir facail no brìgh"
+    "searchVocabByWordOrMeaningHint": "Rannsaich a rèir facail no brìgh",
+    "practiceTapABlank": "Tap beàrn gus a lìonadh",
+    "practiceListeningPrompt": "Cò am fear a chanas ‘{word}’?",
+    "practiceMeaningPrompt": "Dè tha ‘{word}’ a’ ciallachadh?",
+    "practiceEmojiPrompt": "Tagh emoji airson ‘{word}’",
+    "practiceStepProgress": "{done} de {total}"
 }

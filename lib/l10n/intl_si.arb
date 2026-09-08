@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "ඔබ ඉගෙන ගන්නා පාඨමාලා පමණක් පෙන්වන්න",
     "searchCoursesHint": "පාඨමාලා සොයන්න",
     "noCoursesMatchSearch": "ඔබේ සෙවුමට ගැලපෙන පාඨමාලා නොමැත.",
-    "searchVocabByWordOrMeaningHint": "වචනයෙන් හෝ අර්ථයෙන් සොයන්න"
+    "searchVocabByWordOrMeaningHint": "වචනයෙන් හෝ අර්ථයෙන් සොයන්න",
+    "practiceTapABlank": "එය පිරවීමට හිස් තැනක් තට්ටු කරන්න",
+    "practiceListeningPrompt": "‘{word}’ යැයි කියන්නේ කුමන එකද?",
+    "practiceMeaningPrompt": "‘{word}’ යන්නෙහි තේරුම කුමක්ද?",
+    "practiceEmojiPrompt": "‘{word}’ සඳහා ඉමොජියක් තෝරන්න",
+    "practiceStepProgress": "{total}න් {done}"
 }

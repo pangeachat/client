@@ -9947,5 +9947,10 @@
     "learningCoursesFilterTooltip": "Ikasten ari zaren ikastaroak soilik erakutsi",
     "searchCoursesHint": "Bilatu ikastaroak",
     "noCoursesMatchSearch": "Ez dago bilaketarekin bat datorren ikastarorik.",
-    "searchVocabByWordOrMeaningHint": "Bilatu hitzaren edo esanahiaren arabera"
+    "searchVocabByWordOrMeaningHint": "Bilatu hitzaren edo esanahiaren arabera",
+    "practiceTapABlank": "Ukitu hutsune bat betetzeko",
+    "practiceListeningPrompt": "Zeinek dio ‘{word}’?",
+    "practiceMeaningPrompt": "Zer esan nahi du ‘{word}’ hitzak?",
+    "practiceEmojiPrompt": "Aukeratu emoji bat ‘{word}’ hitzarentzat",
+    "practiceStepProgress": "{done}/{total}"
 }
