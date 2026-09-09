@@ -84,17 +84,17 @@ class SvgRepo {
       return Result.value(svgContent);
     } catch (e, stack) {
       ErrorHandler.logError(
-        // `$e` names the url only when it happens to be a ClientException;
-        // carry it explicitly so every failure type on this path does.
-        e: Exception('Error fetching SVG $url: $e'),
+        // A ClientException — offline, dropped connection, a blocked request —
+        // already names the url and goes through as-is, so the sink recognises
+        // a request that never reached a server (severity table, no-response
+        // row: warning, once per session). Anything else is a bug in how we
+        // asked for the file: wrapped so it names the url too, and the table's
+        // default (error) stands.
+        e: e is http.ClientException
+            ? e
+            : Exception('Error fetching SVG $url: $e'),
         data: {"url": url},
         s: stack,
-        // A transport failure — offline, dropped connection, a blocked
-        // request — is transient and the caller renders a fallback. Anything
-        // else here is a bug in how we asked for the file.
-        level: e is http.ClientException
-            ? SentryLevel.warning
-            : SentryLevel.error,
       );
       return Result.error(Exception('Failed to load SVG at $url'));
     }

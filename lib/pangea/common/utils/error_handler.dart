@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'package:http/http.dart' show ClientException;
 import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
@@ -113,6 +114,24 @@ class ErrorHandler {
         e.path.startsWith('/_synapse/client/pangea');
   }
 
+  /// The grouping key and session cap key for a request that never reached a
+  /// server.
+  static const List<String> _noResponseFingerprint = [
+    'pangea-network',
+    'no-response',
+  ];
+
+  /// Whether [e] is a request that got no response at all — offline, DNS,
+  /// CORS, a blocked request. `package:http` raises every one of those as a
+  /// [ClientException] (on mobile it wraps the socket failure in one); a
+  /// status code would mean a server answered. A dead connection fails every
+  /// surface at once, the same shape as the expired token — one learner
+  /// offline for seven seconds produced ten flag reports (CLIENT-EGM) on top
+  /// of a 3,588-event catch-all (CLIENT-5XY, #8890) — so it collapses the same
+  /// way: one grouping, one report per app session, warning per the
+  /// no-response row of the severity table.
+  static bool _isNoResponse(Object e) => e is ClientException;
+
   @visibleForTesting
   static void resetReportedOnceKeysForTest() => _reportedOnceKeys.clear();
 
@@ -137,9 +156,10 @@ class ErrorHandler {
   }
 
   /// Reports [e] to Sentry at [level], defaulting to the one severity table
-  /// ([PangeaHttpException.severityOf]): a timeout and the routine statuses
-  /// (401, 404, 410, 429) are warnings, everything else — including any
-  /// failure carrying no HTTP status — an error. Severity is a property of the
+  /// ([PangeaHttpException.severityOf]): a timeout, a request that never
+  /// reached a server, and the routine statuses (401, 404, 410, 429) are
+  /// warnings, everything else — including any other failure carrying no HTTP
+  /// status — an error. Severity is a property of the
   /// failure, not of the author's judgment at the call site, so it is decided
   /// here rather than at each of ~240 reporting sites, which is where it
   /// drifted before (repos-and-error-handling.instructions.md § Severity
@@ -169,14 +189,18 @@ class ErrorHandler {
   }) async {
     if (!shouldReport(e)) return;
 
-    // One expired token is one condition regardless of which call surfaced
-    // it: a single grouping, one report per app session ([logErrorOnce]
-    // semantics — the first event carries the signal, Sentry tallies users),
-    // and warning severity per the 401 row of the severity table.
-    final expiredToken = _isExpiredTokenError(e);
-    if (expiredToken && !_reportedOnceKeys.add(_expiredTokenFingerprint.last)) {
-      return;
-    }
+    // One condition is one report regardless of which call surfaced it. An
+    // expired token or a connection that never reaches a server fails every
+    // in-flight call at once, so each collapses into a single grouping and
+    // one report per app session ([logErrorOnce] semantics — the first event
+    // carries the signal, Sentry tallies users) at warning, per the 401 and
+    // no-response rows of the severity table.
+    final collapsed = _isExpiredTokenError(e)
+        ? _expiredTokenFingerprint
+        : _isNoResponse(e)
+        ? _noResponseFingerprint
+        : null;
+    if (collapsed != null && !_reportedOnceKeys.add(collapsed.last)) return;
 
     debugPrint("error message: $e");
 
@@ -189,12 +213,10 @@ class ErrorHandler {
       withScope: (scope) {
         scope.level =
             level ??
-            (expiredToken
+            (collapsed != null
                 ? SentryLevel.warning
                 : PangeaHttpException.severityOf(e));
-        final fingerprint = expiredToken
-            ? _expiredTokenFingerprint
-            : PangeaHttpException.fingerprintOf(e);
+        final fingerprint = collapsed ?? PangeaHttpException.fingerprintOf(e);
         if (fingerprint != null) scope.fingerprint = fingerprint;
       },
     );

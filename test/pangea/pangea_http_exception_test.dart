@@ -268,6 +268,15 @@ void main() {
       }
     });
 
+    test('a request that never reached a server is a warning (#8890)', () {
+      expect(
+        PangeaHttpException.severityOf(
+          ClientException('Failed to fetch', Uri.parse('https://x/y')),
+        ),
+        SentryLevel.warning,
+      );
+    });
+
     test('non-HTTP failures are errors', () {
       expect(
         PangeaHttpException.severityOf(Exception('parse')),
