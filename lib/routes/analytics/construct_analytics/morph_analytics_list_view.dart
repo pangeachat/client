@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_level_enum.dart';
-import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/construct_use_model.dart';
 import 'package:fluffychat/features/analytics_data/widgets/analytics_future_builder.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_response.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_and_tags.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
@@ -28,37 +28,50 @@ class MorphAnalyticsListView extends StatelessWidget {
     final l2 =
         MatrixState.pangeaController.userController.userL2?.langCodeShort;
 
+    // The rows' chips are ONE Tab stop for the whole page, with the arrow keys
+    // moving chip to chip in reading order across the feature rows (#8935).
+    // A feature the list skips contributes no ids.
+    final visibleFeatures = l2 == null
+        ? const <MorphFeatureTags>[]
+        : controller.morphs.features.where((f) => f.tags.isNotEmpty);
+
     return Column(
       children: [
         Expanded(
-          child: CustomScrollView(
-            key: const PageStorageKey<String>('morph-analytics'),
-            slivers: [
-              const SliverToBoxAdapter(
-                child: InstructionsInlineTooltip(
-                  instructionsEnum: InstructionsEnum.morphAnalyticsList,
-                ),
-              ),
-
-              if (!InstructionsEnum.morphAnalyticsList.isToggledOff)
-                const SliverToBoxAdapter(child: SizedBox(height: 16.0)),
-
-              // Morph feature boxes
-              SliverList(
-                delegate: SliverChildBuilderDelegate((context, index) {
-                  final feature = controller.morphs.features[index];
-                  return feature.tags.isNotEmpty && l2 != null
-                      ? Padding(
-                          padding: const EdgeInsets.only(bottom: 16.0),
-                          child: MorphFeatureBox(
-                            featureTags: feature,
-                            language: l2,
-                          ),
-                        )
-                      : const SizedBox.shrink();
-                }, childCount: controller.morphs.features.length),
-              ),
+          child: RovingFocusGroup(
+            ids: [
+              for (final feature in visibleFeatures)
+                for (final id in feature.constructIds) id.storageKey,
             ],
+            child: CustomScrollView(
+              key: const PageStorageKey<String>('morph-analytics'),
+              slivers: [
+                const SliverToBoxAdapter(
+                  child: InstructionsInlineTooltip(
+                    instructionsEnum: InstructionsEnum.morphAnalyticsList,
+                  ),
+                ),
+
+                if (!InstructionsEnum.morphAnalyticsList.isToggledOff)
+                  const SliverToBoxAdapter(child: SizedBox(height: 16.0)),
+
+                // Morph feature boxes
+                SliverList(
+                  delegate: SliverChildBuilderDelegate((context, index) {
+                    final feature = controller.morphs.features[index];
+                    return feature.tags.isNotEmpty && l2 != null
+                        ? Padding(
+                            padding: const EdgeInsets.only(bottom: 16.0),
+                            child: MorphFeatureBox(
+                              featureTags: feature,
+                              language: l2,
+                            ),
+                          )
+                        : const SizedBox.shrink();
+                  }, childCount: controller.morphs.features.length),
+                ),
+              ],
+            ),
           ),
         ),
       ],
@@ -85,14 +98,7 @@ class MorphFeatureBox extends StatelessWidget {
 
     final featureEnum = MorphFeaturesEnum.fromString(feature.value);
     final analyticsService = Matrix.of(context).analyticsDataService;
-    final tagIds = [
-      for (final morphTag in tags)
-        ConstructIdentifier(
-          lemma: morphTag.value,
-          type: ConstructTypeEnum.morph,
-          category: feature.value,
-        ),
-    ];
+    final tagIds = featureTags.constructIds;
 
     return Container(
       padding: const EdgeInsets.all(16.0),
@@ -150,6 +156,7 @@ class MorphFeatureBox extends StatelessWidget {
                         MorphTagChip(
                           feature: featureEnum,
                           tag: tags[i],
+                          rovingId: tagIds[i].storageKey,
                           constructAnalytics: snapshot.data?[tagIds[i]],
                           onTap: () {
                             AnalyticsNavigationUtil.navigateToAnalytics(
@@ -177,17 +184,28 @@ class MorphTagChip extends StatelessWidget {
   final ConstructUses? constructAnalytics;
   final VoidCallback? onTap;
 
+  /// This chip's id in the enclosing [RovingFocusGroup]: the grammar page's
+  /// chips are one Tab stop, with the arrow keys moving between them across
+  /// the feature rows (#8935). Null for a chip outside a group.
+  final String? rovingId;
+
   const MorphTagChip({
     super.key,
     required this.feature,
     required this.tag,
     required this.constructAnalytics,
     this.onTap,
+    this.rovingId,
   });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final rovingId = this.rovingId;
+    final focusNode = rovingId == null
+        ? null
+        : RovingFocusGroup.nodeOf(context, rovingId);
+
     final unlocked =
         constructAnalytics != null && constructAnalytics!.numTotalUses > 0 ||
         Matrix.of(context).client.userID == Environment.supportUserId;
@@ -196,6 +214,7 @@ class MorphTagChip extends StatelessWidget {
       type: MaterialType.transparency,
       child: InkWell(
         borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+        focusNode: focusNode,
         onTap: onTap,
         child: Opacity(
           opacity: unlocked ? 1.0 : 0.3,

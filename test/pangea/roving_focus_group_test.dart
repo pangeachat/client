@@ -6,8 +6,11 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart';
 import 'package:provider/provider.dart';
 
+import 'package:fluffychat/features/analytics/construct_identifier.dart';
+import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/vocab_analytics_list_tile.dart';
 import 'package:fluffychat/routes/chat_list/chat_list_item.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/navi_rail_item.dart';
@@ -67,26 +70,30 @@ void main() {
     String? selectedId,
     void Function(String id)? onTap,
     Widget? list,
+    TextDirection? textDirection,
   }) {
+    final Widget body = Column(
+      children: [
+        TextButton(onPressed: () {}, child: const Text('before')),
+        RovingFocusGroup(
+          ids: ids,
+          selectedId: selectedId,
+          child:
+              list ??
+              Column(
+                children: [
+                  for (final id in ids) _Item(id, onTap: onTap ?? (_) {}),
+                ],
+              ),
+        ),
+        TextButton(onPressed: () {}, child: const Text('after')),
+      ],
+    );
     return MaterialApp(
       home: Scaffold(
-        body: Column(
-          children: [
-            TextButton(onPressed: () {}, child: const Text('before')),
-            RovingFocusGroup(
-              ids: ids,
-              selectedId: selectedId,
-              child:
-                  list ??
-                  Column(
-                    children: [
-                      for (final id in ids) _Item(id, onTap: onTap ?? (_) {}),
-                    ],
-                  ),
-            ),
-            TextButton(onPressed: () {}, child: const Text('after')),
-          ],
-        ),
+        body: textDirection == null
+            ? body
+            : Directionality(textDirection: textDirection, child: body),
       ),
     );
   }
@@ -150,6 +157,52 @@ void main() {
         isTrue,
         reason: 'Tab returns to the item last focused, not to the selection',
       );
+    },
+  );
+
+  testWidgets(
+    'Right/Left step the same order as Down/Up, flipped under RTL (#8935)',
+    (tester) async {
+      await tester.pumpWidget(harness(ids: ['a', 'b', 'c'], selectedId: 'a'));
+      await tester.pumpAndSettle();
+      await press(tester, LogicalKeyboardKey.tab);
+      await press(tester, LogicalKeyboardKey.tab);
+      expect(focused(tester, find.text('a')), isTrue);
+
+      await press(tester, LogicalKeyboardKey.arrowRight);
+      expect(focused(tester, find.text('b')), isTrue);
+      await press(tester, LogicalKeyboardKey.arrowDown);
+      expect(
+        focused(tester, find.text('c')),
+        isTrue,
+        reason: 'one list order, whichever pair the layout suggests',
+      );
+      await press(tester, LogicalKeyboardKey.arrowRight);
+      expect(focused(tester, find.text('c')), isTrue, reason: 'no wrap');
+      await press(tester, LogicalKeyboardKey.arrowLeft);
+      expect(focused(tester, find.text('b')), isTrue);
+
+      // A fresh tree: inserting the Directionality rebuilds the group, so the
+      // RTL run starts from Tab again rather than from the focus above.
+      await tester.pumpWidget(
+        harness(
+          ids: ['a', 'b', 'c'],
+          selectedId: 'b',
+          textDirection: TextDirection.rtl,
+        ),
+      );
+      await tester.pumpAndSettle();
+      await press(tester, LogicalKeyboardKey.tab);
+      await press(tester, LogicalKeyboardKey.tab);
+      expect(focused(tester, find.text('b')), isTrue);
+      await press(tester, LogicalKeyboardKey.arrowLeft);
+      expect(
+        focused(tester, find.text('c')),
+        isTrue,
+        reason: 'next reads leftwards under RTL',
+      );
+      await press(tester, LogicalKeyboardKey.arrowRight);
+      expect(focused(tester, find.text('b')), isTrue);
     },
   );
 
@@ -330,6 +383,65 @@ void main() {
       await press(tester, LogicalKeyboardKey.tab);
       expect(focused(tester, find.text('after')), isTrue);
     });
+
+    testWidgets(
+      'VocabAnalyticsListTile: one stop, arrows rove the word grid, Enter '
+      'opens (#8935)',
+      (tester) async {
+        const lemmas = ['bien', 'casa', 'perro'];
+        final opened = <String>[];
+        await tester.pumpWidget(
+          MaterialApp(
+            localizationsDelegates: L10n.localizationsDelegates,
+            supportedLocales: L10n.supportedLocales,
+            home: Scaffold(
+              body: Column(
+                children: [
+                  TextButton(onPressed: () {}, child: const Text('before')),
+                  RovingFocusGroup(
+                    ids: lemmas,
+                    selectedId: 'casa',
+                    child: Row(
+                      children: [
+                        for (final lemma in lemmas)
+                          VocabAnalyticsListTile(
+                            constructId: ConstructIdentifier(
+                              lemma: lemma,
+                              type: ConstructTypeEnum.vocab,
+                              category: 'noun',
+                            ),
+                            textColor: Colors.black,
+                            // Static render: no Matrix ancestor needed.
+                            listen: false,
+                            rovingId: lemma,
+                            onTap: () => opened.add(lemma),
+                          ),
+                      ],
+                    ),
+                  ),
+                  TextButton(onPressed: () {}, child: const Text('after')),
+                ],
+              ),
+            ),
+          ),
+        );
+        await tester.pumpAndSettle();
+
+        await press(tester, LogicalKeyboardKey.tab);
+        await press(tester, LogicalKeyboardKey.tab);
+        expect(focused(tester, find.text('casa')), isTrue);
+        await press(tester, LogicalKeyboardKey.arrowRight);
+        expect(focused(tester, find.text('perro')), isTrue);
+        await press(tester, LogicalKeyboardKey.enter);
+        expect(opened, ['perro']);
+        await press(tester, LogicalKeyboardKey.tab);
+        expect(
+          focused(tester, find.text('after')),
+          isTrue,
+          reason: 'one stop for the whole grid',
+        );
+      },
+    );
 
     testWidgets('ChatListItem rows: one stop, arrows rove, Enter opens', (
       tester,

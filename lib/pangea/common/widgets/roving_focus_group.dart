@@ -12,7 +12,8 @@ import 'package:flutter/services.dart';
 /// built — a selected item scrolled out of a lazy list would otherwise leave
 /// the whole list with no Tab stop. Up/Down move to the neighbour in [ids]
 /// order, clamped at the ends (no wrap — losing your place in a long list
-/// disorients).
+/// disorients); Left/Right are aliases for the same previous/next step, so a
+/// grid or a wrapping row of chips roves like every other list.
 class RovingFocusGroup extends StatefulWidget {
   /// The items, in arrow-key order.
   final List<String> ids;
@@ -90,9 +91,17 @@ class _RovingFocusGroupState extends State<RovingFocusGroup> {
 
   KeyEventResult _onKeyEvent(FocusNode _, KeyEvent event) {
     if (event is KeyUpEvent) return KeyEventResult.ignored;
+    // Left/Right are aliases for previous/next in list order, not a second
+    // axis: the vocab grid and the grammar chips wrap across rows, so a
+    // learner reaches for whichever pair matches the layout in front of them
+    // and both walk the one order the list is built in (#8935). Flipped under
+    // an RTL directionality, where next reads leftwards.
+    final rtl = Directionality.maybeOf(context) == TextDirection.rtl;
     final delta = switch (event.logicalKey) {
       LogicalKeyboardKey.arrowDown => 1,
       LogicalKeyboardKey.arrowUp => -1,
+      LogicalKeyboardKey.arrowRight => rtl ? -1 : 1,
+      LogicalKeyboardKey.arrowLeft => rtl ? 1 : -1,
       _ => 0,
     };
     if (delta == 0) return KeyEventResult.ignored;

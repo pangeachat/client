@@ -4,6 +4,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_level_enum.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/pangea/common/widgets/shrinkable_text.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -22,6 +23,11 @@ class VocabAnalyticsListTile extends StatelessWidget {
   /// no Matrix at all, which is what makes this tile widget-testable.
   final bool listen;
 
+  /// This tile's id in the enclosing [RovingFocusGroup]: the word grid is one
+  /// Tab stop, with the arrow keys moving between tiles (#8935). Null for a
+  /// tile outside a group.
+  final String? rovingId;
+
   /// Renders the deleted-vocab treatment: dimmed, and named as deleted in the
   /// tile's accessible name since dimming alone doesn't reach a screen reader.
   final bool blocked;
@@ -36,6 +42,7 @@ class VocabAnalyticsListTile extends StatelessWidget {
     this.selected = false,
     this.listen = true,
     this.blocked = false,
+    this.rovingId,
   });
 
   final double maxWidth = 100;
@@ -43,6 +50,11 @@ class VocabAnalyticsListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final rovingId = this.rovingId;
+    final focusNode = rovingId == null
+        ? null
+        : RovingFocusGroup.nodeOf(context, rovingId);
+
     // The stream is hoisted above the whole tile (not just the emoji slot) so
     // the accessible name below can carry a live emoji change too (#8726).
     return StreamBuilder(
@@ -63,6 +75,7 @@ class VocabAnalyticsListTile extends StatelessWidget {
             type: MaterialType.transparency,
             child: InkWell(
               borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+              focusNode: focusNode,
               onTap: onTap,
               onLongPress: onLongPress,
               child: ExcludeSemantics(
