@@ -9911,5 +9911,6 @@
     "unlockActivitySummaries": "Faoliyat xulosalarini ochish",
     "upNext": "Keyingisi",
     "writingAssistanceSuggestion": "Taklif",
-    "errorFetchingWordInfo": "So'z ma'lumotlarini olishda xatolik yuz berdi"
+    "errorFetchingWordInfo": "So'z ma'lumotlarini olishda xatolik yuz berdi",
+    "contentCreatedBy": "Yaratdi"
 }

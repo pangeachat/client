@@ -5,8 +5,11 @@ import 'package:flutter/foundation.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
+import 'package:fluffychat/features/quests/quests_client_extension.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
+import 'package:fluffychat/routes/world/joined_objective_cache.dart';
+import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 typedef QuestLoader = ValueNotifier<AsyncState<QuestOutline>>;
@@ -27,12 +30,32 @@ List<QuestObjectiveGroup> objectiveGroupsWithActivities(
 
 class QuestObjectivesLoader {
   final Client client;
-  QuestObjectivesLoader({required this.client});
+
+  QuestObjectivesLoader({required this.client}) {
+    // A star is awarded as room state on a session room, so the panel's star
+    // numbers go stale the moment the learner earns one — the counts sat at
+    // their load-time values until the page was left and re-entered (#8915).
+    // Re-resolve on room sync, on the same rate-limited tick the world map
+    // and the objectives list already recompute on, so the two surfaces can't
+    // drift apart on the same award.
+    _starsSub = client.onSync.stream
+        .where((s) => s.hasRoomUpdate)
+        .rateLimit(const Duration(seconds: 2))
+        .listen((_) => _resolveProgression(_loadGeneration));
+  }
 
   final QuestLoader _questLoader = QuestLoader(AsyncLoading());
   final ValueNotifier<ProgressionResolution> _progression = ValueNotifier(
     ProgressionResolution.empty,
   );
+
+  /// The learner's joined-course outlines. Rebuilt on each [loadOutline] (a
+  /// few quest reads), then re-resolved from on every sync tick. Kept across
+  /// ticks so a tick re-runs only the pure resolve: rebuilding it there would
+  /// re-request every course whose outline failed, since failures are
+  /// deliberately never cached ([QuestRepo.outline]).
+  final JoinedObjectiveCache _objectiveCache = JoinedObjectiveCache();
+  StreamSubscription? _starsSub;
 
   int _loadGeneration = 0;
   bool _disposed = false;
@@ -47,6 +70,7 @@ class QuestObjectivesLoader {
   String? _courseId;
 
   void dispose() {
+    _starsSub?.cancel();
     _questLoader.dispose();
     _progression.dispose();
     _disposed = true;
@@ -101,6 +125,23 @@ class QuestObjectivesLoader {
         ),
         _ => const [],
       };
+
+  /// Re-resolve the shared progression from the cached outlines and the
+  /// learner's current per-activity stars — the SAME inputs and resolver the
+  /// world map uses, so the star numbers can never disagree
+  /// (quests.instructions.md). Pure and cheap: no network, no reads beyond
+  /// room state the client already holds.
+  ///
+  /// Publishes nothing before the first rebuild lands, so a course whose
+  /// outlines aren't in yet keeps its muted empty bar rather than briefly
+  /// showing a denominator resolved from another course's cache.
+  void _resolveProgression(int loadGen) {
+    if (_disposed || _objectiveCache.outlines.isEmpty) return;
+    _updateProgression(
+      _objectiveCache.resolution(client.userStarsByActivity),
+      loadGen,
+    );
+  }
 
   void _updateProgression(ProgressionResolution value, int loadGen) {
     if (!_disposed && loadGen == _loadGeneration) {
@@ -165,8 +206,13 @@ class QuestObjectivesLoader {
 
     _updateQuest(AsyncLoaded(outline), loadGen);
 
-    ProgressionResolution.resolveJoinedProgression(
+    await _objectiveCache.rebuildFromJoinedCourses(
       client,
-    ).then((p) => _updateProgression(p, loadGen));
+      // The SAME reporter the world map's rebuild passes — one throttle key,
+      // one severity rule, so this path and the map's can't disagree about a
+      // failure only one of them will end up reporting (#8470).
+      onError: reportCourseOutlineFailure,
+    );
+    _resolveProgression(loadGen);
   }
 }

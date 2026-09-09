@@ -2311,5 +2311,6 @@
     "unlockActivitySummaries": "I-unlock ang mga summary sa kalihokan",
     "upNext": "Sunod",
     "writingAssistanceSuggestion": "Sugyot",
-    "errorFetchingWordInfo": "Napakyas sa pagkuha sa impormasyon sa pulong"
+    "errorFetchingWordInfo": "Napakyas sa pagkuha sa impormasyon sa pulong",
+    "contentCreatedBy": "Gibuhat ni"
 }

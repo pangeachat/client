@@ -2311,5 +2311,6 @@
     "unlockActivitySummaries": "କାର୍ଯ୍ୟକଳାପ ସାରାଂଶଗୁଡ଼ିକୁ ଅନଲକ୍ କରନ୍ତୁ",
     "upNext": "ପରବର୍ତ୍ତୀ",
     "writingAssistanceSuggestion": "ପରାମର୍ଶ",
-    "errorFetchingWordInfo": "ଶବ୍ଦ ସୂଚନା ଆଣିବାରେ ବିଫଳ ହେଲା"
+    "errorFetchingWordInfo": "ଶବ୍ଦ ସୂଚନା ଆଣିବାରେ ବିଫଳ ହେଲା",
+    "contentCreatedBy": "ଏହାଙ୍କ ଦ୍ୱାରା ତିଆରି ହୋଇଛି"
 }

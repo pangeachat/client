@@ -299,6 +299,8 @@ Every workspace panel announces as one named semantic group — "Settings page",
 
 A screen reader browses the workspace in reading order, not paint order: the nav rail first, then the open left panels, the open right panels, the user cluster / analytics bar, and the map — the backdrop everything overlays — last (#8755). Keyboard Tab walks the same sequence, ending with the map's search/context slot, its zoom controls, and the map's own single stop (#8810): the primary navigation and the panel a learner just opened never sit behind the backdrop they are drawn over. One rank per region ([`WorkspaceOrder`](../../lib/widgets/layouts/workspace_shell.dart)) feeds both orders, because they are separate mechanisms that otherwise drift — a sort key reorders only the semantics tree, and Tab follows Flutter's own traversal policy. The sort key goes on each region's *labeled* semantic container (a key on an unlabeled wrapper forms a generic node VoiceOver reorders); the focus order goes on the region's slot in the shell's ordered focus-traversal group. VoiceOver additionally sorts overlapping siblings by their horizontal centers regardless of keys, so the full-bleed map cannot key its way out of mid-sweep: the map group's container is anchored to a thin right-edge strip whose children — pins, attribution, zoom controls — overflow to their true positions, with pointer hits passed through beyond the strip's bounds. Only the search/context slot sits outside the group, keyed between the cluster and the map.
 
+When a user-cluster button opens a panel, focus moves from that button to the panel itself — its named group, so a screen reader announces the page it just entered — one discrete claim after the panel mounts, so the panel a learner just opened is where their next keypress lands. The group is not a Tab stop: the next Tab reaches the panel's first control, today its header's close or back button. A panel opened any other way — a URL, the rail, a map pin — leaves focus where it was. This is the shape of the onboarding step group (accessibility.instructions.md, "Focus after an in-place content swap"). The claim is armed by the cluster's open methods ([`UserClusterViewModel`](../../lib/routes/world/user_cluster_view_model.dart), through a one-shot [`PanelEntryIntent`](../../lib/features/navigation/panel_entry_intent.dart) that expires within a second so a press that opened nothing cannot move focus later) and taken by the group the right column's dispatcher authors ([`PanelEntryFocus`](../../lib/routes/world/right_panel/panel_entry_focus.dart)) when the panel mounts.
+
 ### Closing a panel: X or back arrow
 
 Every panel shows exactly one of two close affordances, derived from the
@@ -325,7 +327,13 @@ user came from:
   keeps the **leading** slot the X would have taken, where every other cavity
   surface's control sits. One control in one place is the point; a panel whose
   close and whose expand sat on opposite sides of the header made two states
-  look like two different surfaces.
+  look like two different surfaces. On **wide** the whole header is the pointer
+  target for that control in both states: the bar reopens the card on a tap
+  anywhere but its actions, and the open card's header collapses it the same
+  way ([#8909](https://github.com/pangeachat/client/issues/8909)) — one surface
+  toggling, not a whole-surface tap one way and a single glyph the other. The
+  chevron stays the one announced, focusable control; the header tap adds no
+  second node.
 
   **Which way it points follows the surface, not the state's name.** On narrow
   the cavity is a sheet that slides, so the chevron points the way it will

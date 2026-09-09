@@ -10856,5 +10856,6 @@
     "unlockActivitySummaries": "Otključaj preglede aktivnosti",
     "upNext": "Sledeće",
     "writingAssistanceSuggestion": "Predlog",
-    "errorFetchingWordInfo": "Nije uspelo preuzimanje informacija o reči"
+    "errorFetchingWordInfo": "Nije uspelo preuzimanje informacija o reči",
+    "contentCreatedBy": "Kreirao/la"
 }

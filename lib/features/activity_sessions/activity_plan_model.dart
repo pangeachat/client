@@ -52,6 +52,17 @@ class ActivityPlanModel {
   final Map<String, ActivityRole>? _roles;
   final bool isDeprecatedModel;
 
+  /// The MXID of whoever owns this activity — the person credited on every
+  /// surface that shows it ([ContentCreatorChip]). Carried verbatim from the
+  /// plan's `user_id`; `@system:pangea.chat` is Pangea's own content, any
+  /// other MXID is a person whose Matrix profile supplies the name and avatar.
+  ///
+  /// Null only where the read path carries no owner at all — legacy embedded
+  /// plans predating the field. Null is NOT "system": crediting an unknown
+  /// owner to Pangea would misattribute a teacher's work, so display surfaces
+  /// show no credit rather than a guessed one.
+  final String? ownerId;
+
   /// Aggregate learner rating served with the v2 fetch: up-fraction 0..1 and
   /// rater count. Null when the read path doesn't carry it (legacy embedded
   /// plans, room-state round-trips) — display surfaces also hide the meter
@@ -80,6 +91,7 @@ class ActivityPlanModel {
     this.isDeprecatedModel = false,
     this.ratingAverage,
     this.ratingCount,
+    this.ownerId,
   }) : description = (description == null || description.isEmpty)
            ? learningObjective
            : description,
@@ -108,6 +120,7 @@ class ActivityPlanModel {
         isDeprecatedModel: isDeprecatedModel,
         ratingAverage: ratingAverage,
         ratingCount: ratingCount,
+        ownerId: ownerId,
       );
 
   List<String> get placeholderImages => [
@@ -259,6 +272,7 @@ class ActivityPlanModel {
           json[ActivitySessionConstants.usedFallbackVersion] == true,
       fallbackCause: json[ActivitySessionConstants.fallbackCause] as String?,
       isDeprecatedModel: json["bookmark_id"] != null,
+      ownerId: json[ActivitySessionConstants.activityPlanUserId] as String?,
     );
   }
 
@@ -275,6 +289,10 @@ class ActivityPlanModel {
       ActivitySessionConstants.activityPlanInstructions: instructions,
       ActivitySessionConstants.activityPlanRequest: req.toJson(),
       ActivitySessionConstants.activityPlanTitle: title,
+      // Round-trips through room state so a plan rebuilt from state still
+      // credits its owner. Omitted when unknown rather than written as null —
+      // an absent key and a null both read back as "no owner recorded".
+      ActivitySessionConstants.activityPlanUserId: ?ownerId,
       ActivitySessionConstants.description: description,
       ActivitySessionConstants.activityPlanLearningObjective: learningObjective,
       ActivitySessionConstants.activityPlanVocab: vocab

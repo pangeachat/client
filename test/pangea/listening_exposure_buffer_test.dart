@@ -153,6 +153,58 @@ void main() {
     });
   });
 
+  group('reading pending exposure', () {
+    // What a details page shows on top of the stored count, so a hearing is
+    // visible the moment it happens rather than after the next drain (#8913).
+    test('counts the open bucket and the closed rows for one construct', () {
+      final buffer = build();
+
+      buffer.record([id('hablar'), id('comer')], langCode: 'es');
+      clock = clock.add(ListeningExposureBuffer.window);
+      buffer.record([id('hablar')], langCode: 'es');
+
+      expect(buffer.pendingCountFor(id('hablar'), langCode: 'es'), 2);
+      expect(buffer.pendingCountFor(id('comer'), langCode: 'es'), 1);
+      expect(buffer.pendingCountFor(id('beber'), langCode: 'es'), 0);
+    });
+
+    test('reads only the language it asked for', () {
+      final buffer = build()
+        ..record([id('hablar')], langCode: 'es')
+        ..record([id('hablar')], langCode: 'fr');
+
+      expect(buffer.pendingCountFor(id('hablar'), langCode: 'es'), 1);
+    });
+
+    test('is zero once the window has been drained', () {
+      final buffer = build()..record([id('hablar')], langCode: 'es');
+      buffer.drain('es');
+
+      expect(buffer.pendingCountFor(id('hablar'), langCode: 'es'), 0);
+    });
+
+    test('notifies on a recording and a restore, not on a drain', () {
+      final buffer = build();
+      var notified = 0;
+      buffer.addListener(() => notified++);
+
+      buffer.record([id('hablar')], langCode: 'es');
+      expect(notified, 1);
+
+      final drained = buffer.drain('es');
+      expect(
+        notified,
+        1,
+        reason:
+            'the store rebuilds the page once the drained rows land; a '
+            'notification here would flash the count down in between',
+      );
+
+      buffer.restore('es', drained);
+      expect(notified, 2);
+    });
+  });
+
   group('draining', () {
     test('empties the buffer, so a window is never counted twice', () {
       final buffer = build()..record([id('hablar')], langCode: 'es');

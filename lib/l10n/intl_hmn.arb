@@ -2311,5 +2311,6 @@
     "unlockActivitySummaries": "Qhib cov ntsiab lus ntawm kev ua si",
     "upNext": "Tom ntej no",
     "writingAssistanceSuggestion": "Tswv yim",
-    "errorFetchingWordInfo": "Tsis tau nrhiav tau cov lus qhia"
+    "errorFetchingWordInfo": "Tsis tau nrhiav tau cov lus qhia",
+    "contentCreatedBy": "Tsim los ntawm"
 }

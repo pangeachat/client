@@ -10852,5 +10852,6 @@
     "unlockActivitySummaries": "Odomknúť súhrny aktivít",
     "upNext": "Ďalej",
     "writingAssistanceSuggestion": "Návrh",
-    "errorFetchingWordInfo": "Nepodarilo sa načítať informácie o slove"
+    "errorFetchingWordInfo": "Nepodarilo sa načítať informácie o slove",
+    "contentCreatedBy": "Vytvoril"
 }

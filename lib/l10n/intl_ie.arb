@@ -10539,5 +10539,6 @@
     "unlockActivitySummaries": "Díghlasáil achoimrí gníomhaíochta",
     "upNext": "An chéad cheann eile",
     "writingAssistanceSuggestion": "Moladh",
-    "errorFetchingWordInfo": "Níor éirigh leis an eolas focal a fháil"
+    "errorFetchingWordInfo": "Níor éirigh leis an eolas focal a fháil",
+    "contentCreatedBy": "Cruthaithe ag"
 }

@@ -2311,5 +2311,6 @@
     "unlockActivitySummaries": "પ્રવૃત્તિ સારાંશ અનલૉક કરો",
     "upNext": "આગળ",
     "writingAssistanceSuggestion": "સૂચન",
-    "errorFetchingWordInfo": "શબ્દની માહિતી મેળવવામાં નિષ્ફળ"
+    "errorFetchingWordInfo": "શબ્દની માહિતી મેળવવામાં નિષ્ફળ",
+    "contentCreatedBy": "આના દ્વારા બનાવવામાં આવ્યું"
 }

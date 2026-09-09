@@ -2311,5 +2311,6 @@
     "unlockActivitySummaries": "လုပ်ဆောင်ချက်အကျဉ်းချုပ်များကို ဖွင့်ပါ",
     "upNext": "နောက်တစ်ခု",
     "writingAssistanceSuggestion": "အကြံပြုချက်",
-    "errorFetchingWordInfo": "စကားလုံးအချက်အလက်များကို ယူဆောင်ရာတွင် အမှားအယွင်းရှိခဲ့သည်"
+    "errorFetchingWordInfo": "စကားလုံးအချက်အလက်များကို ယူဆောင်ရာတွင် အမှားအယွင်းရှိခဲ့သည်",
+    "contentCreatedBy": "ဖန်တီးသူ"
 }

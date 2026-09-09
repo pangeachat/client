@@ -9894,5 +9894,6 @@
     "unlockActivitySummaries": "Aktivitätsübersichten freischalten",
     "upNext": "Als Nächstes",
     "writingAssistanceSuggestion": "Vorschlag",
-    "errorFetchingWordInfo": "Fehler beim Abrufen der Wortinformationen"
+    "errorFetchingWordInfo": "Fehler beim Abrufen der Wortinformationen",
+    "contentCreatedBy": "Erstellt von"
 }

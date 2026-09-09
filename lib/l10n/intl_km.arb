@@ -2311,5 +2311,6 @@
     "unlockActivitySummaries": "ដោះសោសេចក្ដីសង្ខេបសកម្មភាព",
     "upNext": "បន្ទាប់",
     "writingAssistanceSuggestion": "សំណូមពរ",
-    "errorFetchingWordInfo": "បរាជ័យក្នុងការទាញយកព័ត៌មានពាក្យ"
+    "errorFetchingWordInfo": "បរាជ័យក្នុងការទាញយកព័ត៌មានពាក្យ",
+    "contentCreatedBy": "បង្កើត​ដោយ"
 }

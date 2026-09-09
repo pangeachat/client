@@ -7,6 +7,7 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart'
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/content_creator_chip.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/routes/courses/add_course_tile.dart';
 import 'package:fluffychat/routes/courses/add_course_tile_content.dart';
@@ -164,6 +165,26 @@ class SelectedCourseView extends StatelessWidget {
                                     Text(
                                       course.description,
                                       style: theme.textTheme.bodyMedium,
+                                    ),
+                                  // Who built this course plan, credited where
+                                  // the teacher is deciding whether to build
+                                  // on it (#8819). This is the one course
+                                  // surface where the credit is prominent:
+                                  // after the space exists it moves to the
+                                  // course page's More section, under the
+                                  // teacher's own description rather than
+                                  // over it.
+                                  if (ContentCreatorChip.hasCredit(
+                                    course.ownerId,
+                                  ))
+                                    Align(
+                                      alignment:
+                                          AlignmentDirectional.centerStart,
+                                      child: ContentCreatorCredit(
+                                        ownerId: course.ownerId,
+                                        avatarSize: ContentCreatorCredit
+                                            .prominentAvatarSize,
+                                      ),
                                     ),
                                   if (adminIds.isNotEmpty)
                                     _CourseAdminDisplay(adminIds),

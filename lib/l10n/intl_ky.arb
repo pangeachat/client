@@ -2311,5 +2311,6 @@
     "unlockActivitySummaries": "Иш-аракеттердин корутундусун ачуу",
     "upNext": "Кийинки",
     "writingAssistanceSuggestion": "Сунуш",
-    "errorFetchingWordInfo": "Сөз маалыматын алуу мүмкүн болбой калды"
+    "errorFetchingWordInfo": "Сөз маалыматын алуу мүмкүн болбой калды",
+    "contentCreatedBy": "Түзгөн"
 }

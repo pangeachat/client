@@ -10262,5 +10262,6 @@
     "unlockActivitySummaries": "Débloquer les résumés d'activité",
     "upNext": "À suivre",
     "writingAssistanceSuggestion": "Suggestion",
-    "errorFetchingWordInfo": "Échec de la récupération des informations sur le mot"
+    "errorFetchingWordInfo": "Échec de la récupération des informations sur le mot",
+    "contentCreatedBy": "Créé par"
 }

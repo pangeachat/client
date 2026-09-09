@@ -10034,5 +10034,6 @@
     "unlockActivitySummaries": "Desbloqueja els resums d'activitat",
     "upNext": "A continuació",
     "writingAssistanceSuggestion": "Suggeriment",
-    "errorFetchingWordInfo": "No s'ha pogut obtenir la informació de la paraula"
+    "errorFetchingWordInfo": "No s'ha pogut obtenir la informació de la paraula",
+    "contentCreatedBy": "Creat per"
 }

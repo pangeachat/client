@@ -19,6 +19,19 @@ class QuestPlan {
 
   final List<QuestObjectiveStep> sequence;
 
+  /// The MXID of whoever made this course — the person credited on every
+  /// surface that shows it (`ContentCreatorChip`). Read verbatim from the
+  /// quest-plans row's plain-text `owner_mxid`, deliberately NOT the `owner`
+  /// relationship beside it: a relationship is a per-environment matrix-users
+  /// row id the client cannot resolve (`matrix-users` reads are service- and
+  /// admin-only), so the MXID is stored where the consumer reads it and no
+  /// service resolves the owner on the client's behalf.
+  ///
+  /// Null where no owner is recorded. Null is NOT `@system:pangea.chat`:
+  /// crediting an unknown owner to Pangea would misattribute a teacher's
+  /// course, so display surfaces show no credit rather than a guessed one.
+  final String? ownerId;
+
   const QuestPlan({
     required this.id,
     required this.name,
@@ -27,6 +40,7 @@ class QuestPlan {
     this.targetL1,
     this.targetCefr,
     required this.sequence,
+    this.ownerId,
   });
 
   List<String> get learningObjectiveIds =>
@@ -63,6 +77,7 @@ class QuestPlan {
                 QuestObjectiveStep.fromJson((e as Map).cast<String, dynamic>()),
           )
           .toList(),
+      ownerId: json['owner_mxid'] as String?,
     );
   }
 }

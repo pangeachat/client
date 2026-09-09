@@ -10843,5 +10843,6 @@
     "unlockActivitySummaries": "Disblocar summaros de activitate",
     "upNext": "Proxime",
     "writingAssistanceSuggestion": "Suggestion",
-    "errorFetchingWordInfo": "Falleva recercar information del parola"
+    "errorFetchingWordInfo": "Falleva recercar information del parola",
+    "contentCreatedBy": "Create per"
 }

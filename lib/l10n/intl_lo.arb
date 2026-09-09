@@ -2311,5 +2311,6 @@
     "unlockActivitySummaries": "ປົດລັອກສະຫຼຸບກິດຈະກຳ",
     "upNext": "ຕໍ່ໄປ",
     "writingAssistanceSuggestion": "ຄຳແນະນຳ",
-    "errorFetchingWordInfo": "ບໍ່ສາມາດດຶງຂໍ້ມູນຄຳສັບໄດ້"
+    "errorFetchingWordInfo": "ບໍ່ສາມາດດຶງຂໍ້ມູນຄຳສັບໄດ້",
+    "contentCreatedBy": "ສ້າງໂດຍ"
 }

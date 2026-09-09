@@ -15,6 +15,7 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_catch_up.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_chats_preview.dart';
+import 'package:fluffychat/routes/chat/chat_details/course_overview/course_creator_row.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_knock_requests.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_participants_preview.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_section_button.dart';
@@ -354,6 +355,16 @@ class _CourseOverviewState extends State<CourseOverview> {
                           onPressed: () => _openSubpage(SpaceSettingsTabs.more),
                         ),
                     ],
+                  ),
+                  // Who made the course leads the section's contents: it is
+                  // the one line here that describes the course rather than
+                  // offering a control over it, and it is deliberately NOT at
+                  // the top of the page under the teacher's own description
+                  // (#8819). Blank for a course whose quest records no owner
+                  // — never Pangea's name over someone else's work.
+                  CourseCreatorRow(
+                    questLoader:
+                        widget.controller.objectivesProvider.questLoader,
                   ),
                   // Only the settings this user can act on show inline; the
                   // full list, grayed-out rows included, lives on the All

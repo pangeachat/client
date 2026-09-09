@@ -10425,5 +10425,6 @@
     "unlockActivitySummaries": "Lås upp aktivitetsöversikter",
     "upNext": "Nästa",
     "writingAssistanceSuggestion": "Förslag",
-    "errorFetchingWordInfo": "Kunde inte hämta ordinformation"
+    "errorFetchingWordInfo": "Kunde inte hämta ordinformation",
+    "contentCreatedBy": "Skapad av"
 }

@@ -10827,5 +10827,6 @@
     "unlockActivitySummaries": "Lås op for aktivitetsresuméer",
     "upNext": "Næste",
     "writingAssistanceSuggestion": "Forslag",
-    "errorFetchingWordInfo": "Kunne ikke hente ordinfo"
+    "errorFetchingWordInfo": "Kunne ikke hente ordinfo",
+    "contentCreatedBy": "Oprettet af"
 }

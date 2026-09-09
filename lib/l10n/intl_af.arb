@@ -2311,5 +2311,6 @@
     "unlockActivitySummaries": "Ontsluit aktiwiteitopsommings",
     "upNext": "Volgende",
     "writingAssistanceSuggestion": "Voorstel",
-    "errorFetchingWordInfo": "Kon nie woordinligting kry nie"
+    "errorFetchingWordInfo": "Kon nie woordinligting kry nie",
+    "contentCreatedBy": "Geskep deur"
 }

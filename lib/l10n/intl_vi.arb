@@ -7199,5 +7199,6 @@
     "unlockActivitySummaries": "Mở khóa tóm tắt hoạt động",
     "upNext": "Tiếp theo",
     "writingAssistanceSuggestion": "Gợi ý",
-    "errorFetchingWordInfo": "Không thể tìm nạp thông tin từ"
+    "errorFetchingWordInfo": "Không thể tìm nạp thông tin từ",
+    "contentCreatedBy": "Được tạo bởi"
 }

@@ -29,7 +29,10 @@ void main() {
         ),
       );
 
-  LemmaUsageChips chipsFor(List<OneConstructUse> uses) => LemmaUsageChips(
+  LemmaUsageChips chipsFor(
+    List<OneConstructUse> uses, {
+    int pendingHeard = 0,
+  }) => LemmaUsageChips(
     construct: ConstructUses(
       uses: uses,
       constructType: ConstructTypeEnum.vocab,
@@ -39,6 +42,7 @@ void main() {
     category: LearningSkillsEnum.hearing,
     tooltip: '',
     icon: Icons.volume_up,
+    pendingHeard: pendingHeard,
   );
 
   UsageChipCounts countsFor(
@@ -76,6 +80,18 @@ void main() {
         ], LearningSkillsEnum.reading),
         0,
       );
+    });
+
+    test('includes hearings not yet drained into the store', () {
+      // Exposure waits in memory for the heartbeat, up to five minutes. A
+      // count that only moves then reads as broken (#8913), so the chip adds
+      // what is still pending — on the listening row and nowhere else.
+      final chips = chipsFor([
+        use(ConstructUseTypeEnum.hrd, count: 4),
+      ], pendingHeard: 3);
+
+      expect(chips.exposureCount(LearningSkillsEnum.hearing), 7);
+      expect(chips.exposureCount(LearningSkillsEnum.reading), 0);
     });
 
     test('keeps counting past the flower cap', () {

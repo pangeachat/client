@@ -10208,5 +10208,6 @@
     "unlockActivitySummaries": "Etkinlik özetlerinin kilidini aç",
     "upNext": "Sırada",
     "writingAssistanceSuggestion": "Öneri",
-    "errorFetchingWordInfo": "Kelime bilgisi alınamadı"
+    "errorFetchingWordInfo": "Kelime bilgisi alınamadı",
+    "contentCreatedBy": "Oluşturan"
 }

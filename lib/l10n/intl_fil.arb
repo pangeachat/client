@@ -10767,5 +10767,6 @@
     "unlockActivitySummaries": "I-unlock ang mga buod ng aktibidad",
     "upNext": "Susunod",
     "writingAssistanceSuggestion": "Mungkahi",
-    "errorFetchingWordInfo": "Nabigong kunin ang impormasyon ng salita"
+    "errorFetchingWordInfo": "Nabigong kunin ang impormasyon ng salita",
+    "contentCreatedBy": "Ginawa ni"
 }
