@@ -1166,3 +1166,24 @@ until the design is Codex-green.
 - Branch state on satvik/call-features-combined: recording (pieces 1+2) + mixer P1 (2e627b7079) + event
   P2 (de8dc626db, 801237963d) + truncated + P3a decision (fce4bbaf31, 809852faff, dada4fe6b5) + plumbing
   (a8fa6785ed, 769b57d83d) + import_sorter fix (58fd2b65ea) all committed, import_sorter+format clean.
+
+## 2026-09-08 (cont) — WAVE 3 coordinator built (ad7c8c5072); adjudicated + cold-gating
+- Coordinator agent committed ad7c8c5072: call_audio_merge_coordinator.dart (902) + test (1242, 25
+  tests) + ExpiringStorageBox.keys() (+20, additive read-only). Agent self-gate ended RED-with-overrides
+  on 2/3 gates (it applied all legit fixes, rejected the rest as design-accepted/false-positive) and
+  named ME the adjudicator.
+- I READ the whole coordinator + adjudicated the residuals:
+  - RMW race (index): FALSE-POSITIVE confirmed -- single Dart isolate + one-runner-per-key (_inFlight
+    coalescing) + synchronous in-memory read/write => RMW is atomic, no preemptive race. Agent right.
+  - `>` vs `>=` in _logicallyExpired: deliberate consistency with ExpiringStorageBox's own `> ttl`. Fine.
+  - Orphan-upload-during-mix: REAL minor deviation from design rule 3 ("immediately before upload") --
+    the code re-validated before MIX then mixed then uploaded, orphaning an upload if a third half
+    arrived during the mix. FIXED (commit ...): moved the re-validate to immediately before upload,
+    after the mix. 25 tests still pass. The sent/shown result was always correct; this closes the orphan
+    window.
+  - Verified machinery: permit-until-settle (tracker.last.whenComplete release, no leak on early return),
+    _Semaphore counting+handoff, _stage timeout keeps raw running, _cancellableDelay, disposal token.
+- MY cold gate: 4 focused gates launched (eval-flow, index/lifecycle machinery, pinning A [revalidate +
+  typed-terminal + boundedness], pinning B [permit-until-settle + drain-until-clean]). Waiting.
+- After coordinator cold-green: WAVE 4 wiring (CallService + CallSession kick + matrix dispose), then P4
+  player.
