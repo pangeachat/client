@@ -54,6 +54,21 @@ The participant card is roughly one avatar wide and has no room for a label, so 
 
 The participant card shows the member's total for **the course's language** beside their level, which is already a per-language number, so both values on the card share one scope.
 
+## Who made the course
+
+The course page credits its quest's **owner** — whoever built the course plan. That is a different fact from who administers the room, and the room has its own surface for that (the Participants section): a teacher who starts a class from a catalog quest administers a course Pangea wrote, and the credit says so.
+
+The owner is stored on the quest row as `owner_mxid`, a plain-text Matrix id the client reads verbatim. Nothing resolves it on the client's behalf. The `owner` field beside it is a per-environment `matrix-users` row id, and that collection is service- and admin-read only, so a learner's token can read the quest and never resolve the person behind it — which is why the Matrix id is stored where the consumer reads it rather than joined on by a service at read time. Name and avatar then come from that owner's own Matrix profile, so a teacher controls their own credit by editing their profile and we keep no second copy of their name.
+
+Same ladder as an activity's credit, which [activity-start-page.instructions.md](activity-start-page.instructions.md) owns: profile, else the stored Matrix id beside a placeholder contact icon, and the PangeaChat name and avatar reserved for content owned by `@system:pangea.chat`. **A quest with no owner recorded is not evidence Pangea made it.** Content that is genuinely Pangea's says so with the system Matrix id, exactly as an activity does; an unrecorded owner is an unanswered question, and the surface shows no credit at all rather than a guessed one. The failure that ordering prevents — a teacher's course carrying Pangea's name — is worse than an uncredited one.
+
+**Where the credit shows turns on whether the course exists yet.**
+
+- **While the course is being made** — the client's create-course page and the dashboard's setup wizard — it is **prominent**. Someone choosing a plan to build their class on is deciding partly on who made it, so the credit belongs in the decision.
+- **Once the course exists** — the course page's **More** section, among the course's other details. It is deliberately not at the top of the panel the way an activity's credit leads its start page. That page *is* the one activity's header; a course page opens on the teacher's own description of their class, and a credit directly under it reads as a banner over their words — the more so on the common catalog path, where the quest is Pangea's and the class is theirs.
+
+Missions are **not** attributed. They are generic and reused across courses and languages by design, carry no owner, and crediting one to whoever first minted it would misrepresent shared content as authored.
+
 ## The Activities row on the course page
 
 The course page opens on a shortlist: one row of activity cards headed **Activities**, answering "what should I do in this course right now?" ([client#8741](https://github.com/pangeachat/client/issues/8741)). It names no Mission. The header names the section, not the shortlist — that a ranked row is a suggestion is what a ranked row already means, so "Suggested" only added a word ([client#8744](https://github.com/pangeachat/client/issues/8744)). The Mission-by-Mission plan — every Mission with its can-do statement, star count and activities — sits one tap away behind the section header's "See all", and is where a learner reads the course's shape.
