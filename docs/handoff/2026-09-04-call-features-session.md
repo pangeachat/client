@@ -1251,3 +1251,19 @@ until the design is Codex-green.
   render merged-first "Full call" row via relabel-to-m.audio, halves below). RUNNING.
 - Both told targeted `git add` only (concurrent on the branch). Cold-gate both outputs.
 - After both green: PR-2 prep (recording+transcript+merge+player as one PR on owner go).
+
+## 2026-09-08 (cont) — P4 player built (2321eb1423), cold-gating selection; wiring still running
+- P4 DONE (agent a75e5c1007624ca26): call_audio_merged_selection.dart (pure selectMergedRow) + test
+  (8, mutation-proven anti-correlated fixtures + real coverageHash) + transcript_view.dart integration
+  (fetch merged parallel + isolated like the halves; render merged "Full call" row FIRST via
+  relabel-to-m.audio when selectMergedRow!=null, else today's output) + 2 widget tests + intl_en.arb
+  'Full call' key. Self-gate GREEN x3.
+- P4 correctly ISOLATED its surface: the full calls bucket is RED in the worktree ONLY due to the
+  concurrent WIRING agent's uncommitted call_service/call_session WIP (asserts prior behaviour); P4
+  baselined 206/206 at HEAD + confirmed no failing file imports its surface. This is the two-agents-in-one
+  -worktree effect; the wiring agent MUST leave the bucket green when it commits.
+- I read P4's selection fn (matches the design total order exactly) + transcript_view diff (mirrors the
+  halves isolation). MY cold gate: selection behav + pin running. Render = P4-self-green + widget tests +
+  analyze; UI mirroring, lower-risk.
+- WAVE 4 wiring agent (a77a10d2d23281727) STILL RUNNING; its WIP is in the worktree. Verify it leaves the
+  calls bucket green on commit.
