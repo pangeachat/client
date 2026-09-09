@@ -26,6 +26,30 @@ Production is periodically synced from `main` via merge PRs. Between syncs, the 
 - Staging: app.staging.pangea.chat (S3 + CloudFront)
 - Production: app.pangea.chat (S3 + CloudFront)
 
+## Preview Deploys
+
+A client PR carrying the `preview` label gets a live web build at `https://pr-<N>.preview.staging.pangea.chat`, running against the staging backends, so a branch can be tried in a real browser without a local build. Previews are a developer tool, not part of the [QA label flow](../../../.github/.github/instructions/qa-testing-process.instructions.md); QA joins one only when its URL is shared. Tracking: [client#8813](https://github.com/pangeachat/client/issues/8813).
+
+**Trigger.** The label is the only switch. Adding it builds and deploys; each later push to a labeled PR redeploys to the same URL; removing the label or closing the PR tears the preview down. Unlabeled PRs never build one, because a Flutter web build costs ten to fifteen minutes of runner time. Fork PRs are skipped, since fork runs get no cloud credentials. A PR whose branch predates the workflow file has no preview until it merges main.
+
+**What a preview is.** The staging build recipe, unchanged, built from the PR's head commit so Settings shows a SHA that exists on the branch, under a per-PR prefix in one shared staging bucket. One CloudFront distribution serves every preview: a CloudFront Function reads the PR number from the host name, selects the prefix, and serves the app shell for every path that is not a build file. That is the SPA fallback the main webapp gets from CloudFront directly; it moves into the function because the distribution-level fallback can only name one bucket-wide page. A subdomain rather than a path, because the client uses path URLs and loads `/.env` from the web root. Infrastructure: [pangeachat/devops#356](https://github.com/pangeachat/devops/issues/356).
+
+**Environment.** The preview `.env` is the staging `WEB_APP_ENV` plus `ENABLE_SEMANTICS=true`, nothing else. Every other staging-only flag targets a backend allowlist that names `app.staging.pangea.chat` exactly, so on a preview it could only fail. For anyone testing one:
+- Teacher-dashboard analytics lanes (dual-write, dosage, voice minutes) are off.
+- Streaming speech-to-text is off; voice messages transcribe in batch mode.
+- Sentry is off (an empty `SENTRY_DSN` disables the SDK); errors appear only in the browser console.
+- Share and copy links built from `FRONTEND_URL` point at `app.staging.pangea.chat`, not the preview.
+- Choreo accepts the preview origin on staging only ([pangeachat/2-step-choreographer#3177](https://github.com/pangeachat/2-step-choreographer/issues/3177)). SSO returns to the preview through Synapse's confirmation page, as on staging.
+
+**Teardown.** A preview lives exactly as long as its PR is open and labeled. Three guards keep that true when the close event alone would not:
+- Teardown runs on every close, whatever the labels, and on label removal.
+- A close cancels a build still running for that PR, and a finished deploy re-checks that its PR is still open and labeled before leaving files behind.
+- A daily reaper deletes any prefix whose PR is no longer open and labeled, covering a workflow file missing on an old branch, a dropped event, or a runner that died mid-teardown.
+
+There is deliberately no age-based expiry on the bucket: a clock the tester cannot see would break that promise for a long-lived PR.
+
+**Limits.** Previews share the staging backends, so a wire-format change still needs its choreo half on staging first.
+
 ## Versioning
 
 The semantic version in `pubspec.yaml` is bumped by hand. (The build number after the `+` is stamped automatically per platform at build time — see [ci.instructions.md](ci.instructions.md).)
@@ -78,7 +102,3 @@ When a bug must be fixed on production before the next full sync from `main`:
 
 - **Silent error swallowing** — if a catch block doesn't log to Sentry, production bugs become invisible. Hotfixes should always verify error observability.
 - **Branch divergence** — the longer between syncs, the harder hotfixes become. Large refactors on `main` (e.g., immutable model migrations) can make cherry-picks impractical.
-
-## Future Work
-
-*No open issues yet.*
