@@ -1220,3 +1220,14 @@ until the design is Codex-green.
   1080) after _record.finish -> coordinator.onCallFinished(roomId, callKey, client.userID, deviceID).
   Touches SHARED files (call_service, call_session, matrix) -> careful + cold-gate.
 - Then P4 player (fetchCallAudioMerged-first, dedup, >2-half suppression).
+
+## 2026-09-08 (cont) — coordinator room-aware send fix (b871417c32); wave-4 signature scan
+- Caught a REAL bug pre-wiring: coordinator send seam was (content, txnId), no room -- but one
+  coordinator serves MANY rooms, so a wired send couldn't target the call's room (fakes hid it).
+  Fixed: CallAudioMergeRoomSender(roomId, content, txnId); call site binds the current room; test fake
+  records roomId + complete-call test asserts the right room. 26 tests, clean. Commit b871417c32.
+- Coordinator (P3) DONE + cold-green + room-aware.
+- WAVE 4 wiring: dispatched Explore (ad99b3463abaad418) for exact signatures (ExpiringStorageBox ctor +
+  payload read/write, CallService ctor/dispose + matrix.dart lifecycle, CallSession._finishRecording kick
+  point + how it reaches CallService, onSyncStatus transition, onSync event access, room.sendEvent/
+  getRoomById/uploadContent/directChatMatrixID). Brief + build after it returns.
