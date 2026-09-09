@@ -1337,3 +1337,32 @@ until the design is Codex-green.
   A green run needs a quiet machine here -- a RED that wanders across files under high load average is an
   environment signal, not a regression (see also the DSN-gated-tests "baseline-worktree before calling a
   failure a regression" lesson).
+
+## 2026-09-08 (cont) — LIVE E2E of PR2 + two owner-found issues (one fixed)
+- Stood up the LOCAL stack (Synapse+livekit+lk-jwt+choreo) + built & served the COMBINED web app on
+  :8091, ran the browser E2E harness (test/e2e/transcript.js) TWICE. Both 18/18. Proved the record ->
+  merge -> Full-call chain end to end in a real call: both sides post pangea.call_audio (mxc upload),
+  the elected device (calltester) downloads both halves, mixes, and posts pangea.call_audio_merged
+  (2 source ids, one per participant, audio/wav 16kHz mono, mxc). Owner's screenshot confirmed the P4
+  "Full call" player row renders + plays. STT cost approved by owner.
+- Owner-found #1 (stray "you"): a lone 1-word segment in the learner half at 35.7s. NOT the ordering
+  bug -- it is a speech-to-text artifact on the trailing near-silent chunk; ordering is correct (at_ms
+  places it right). Did not recur with the spaced-conversation fixtures. Lives in streaming_stt, not PR2.
+- Built SPACED conversation fixtures (6-turn alternating, say+afconvert, silence-gapped) to replace the
+  overlapping monologues; re-ran -> proper A/B/A/B interleave, no stray "you". Also surfaced: recording
+  starts at CaptureElection (call establishment), so a caller talking during the RING is not recorded
+  (metadata: chunks_lost=0/discarded=0) -- a fixture artifact, not a drop.
+- Owner-found #2 (REAL, FIXED): transcript turn times did not line up with the Full-call recording. Root
+  cause (documented in turn_timeline.dart:CallTurn.at): turn times anchored to the FIRST WORD, the
+  recording to when recording began -- a constant ~5.85s lead-in gap (ring+silence). turn_timeline said
+  reconciling needed "a wire change"; but PR2's merged event carries merged_start_sfu_ms and a segment's
+  (orderKeyMs - shift) is on that same SFU clock, so it is a DISPLAY change. FIX (f39a11d96a):
+  _turnsOf(recordingOriginMs:) uses the merged row's start as the origin when a merge is shown; guarded
+  <= firstPlaced (no negatives); falls back to first-word when no merge / null / malformed-after-first-
+  word. Re-anchor subtracts one constant -> no reorder, no time-kind change, isolation preserved.
+- Gates GREEN: analyze/format/import clean; calls bucket +1682 (added 3 widget tests, RED-on-revert
+  PROVEN by mutation); cold Codex behaviour gate VERDICT CORRECT / softening no; cold pinning gate
+  VERDICT SOUND / softening no.
+- Stack + spa_server on :8091 left UP for owner's own testing (idle = light; overload was disk, since
+  reclaimed). Tear down when owner is done. PR2 branch now: cues(#8888)+tokenize(#8797)+record+merge+
+  player+wiring+this fix; rebase on main after #8888/#8797 land so PR2 shows only its delta.
