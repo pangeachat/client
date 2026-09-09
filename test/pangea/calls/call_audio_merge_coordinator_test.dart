@@ -651,6 +651,50 @@ void main() {
         expect(h.sendCalls, isEmpty, reason: 'aborted before send');
       },
     );
+
+    test(
+      'a THIRD half arriving before the re-validate retires terminal (a device '
+      'switch, out of v1 scope) rather than drifting coverage',
+      () async {
+        final scheduler = freshClock();
+        final backend = _Backend()
+          ..setHalves(_callKey, [
+            _half(_alice, _deviceA, eventId: _aliceEvent),
+            _half(_bob, _deviceB, eventId: _bobEvent),
+          ]);
+        final h = _Harness(
+          backend: backend,
+          scheduler: scheduler,
+          index: await _newIndex(scheduler),
+          myUserId: _alice,
+          myDeviceId: _deviceA,
+        )..gateDownload = Completer<void>();
+
+        h.coordinator.onCallFinished(_room, _callKey, _alice, _deviceA);
+        await _pump();
+        // Parked on the gated download after the two-half decide. A THIRD half
+        // (bob switched devices mid-call) lands before the before-upload
+        // re-validate. Unlike a same-count coverage drift, three halves make the
+        // call a v2 device switch: the re-validate must RETIRE it terminal (its
+        // index entry cleared -- so no drain ever revisits it), not merely abort
+        // this attempt, and of course never upload or send.
+        backend.setHalves(_callKey, [
+          _half(_alice, _deviceA, eventId: _aliceEvent),
+          _half(_bob, _deviceB, eventId: _bobEvent),
+          _half(_bob, 'DEVICE_C', eventId: '\$bob_half_2:example.com'),
+        ]);
+        h.gateDownload!.complete();
+        await _pump();
+
+        expect(h.uploadCalls, isEmpty, reason: 'aborted before upload');
+        expect(h.sendCalls, isEmpty);
+        expect(
+          h.entry(_callKey),
+          isNull,
+          reason: 'a >2-half call is retired terminal by the re-validate',
+        );
+      },
+    );
   });
 
   group('a merged event mid-backoff', () {
@@ -997,10 +1041,11 @@ void main() {
           if (mergedFetches == 1) await gate.future;
         }
       };
+      final index = await _newIndex(scheduler);
       final h = _Harness(
         backend: backend,
         scheduler: scheduler,
-        index: await _newIndex(scheduler),
+        index: index,
         myUserId: _alice,
         myDeviceId: _deviceA,
       );
@@ -1009,12 +1054,18 @@ void main() {
       await _pump();
       expect(mergedFetches, 1, reason: 'pass 1 parked on its first fetch');
 
-      // A merged-event ABORT and a coalescing trigger both land during the
-      // pass. The abort must win over the coalesce: no re-fetch, no post. This
-      // is enforced jointly by the runner's `_superseded`-aware dirty-loop
-      // condition and the per-pass `_superseded` check at the top of a pass.
+      // A merged-event ABORT (which removes the index entry) and a dirty-setting
+      // coalescing trigger both land during the parked pass. The abort must win:
+      // the runner must run NO coalesced re-pass. onReconnected is the
+      // dirty-setter here rather than onSyncedCallAudio precisely because it sets
+      // `dirty` WITHOUT itself recreating the index -- so the index-entry check
+      // below isolates the runner's `_superseded`-aware dirty-loop guard: without
+      // it, the coalesce would re-enter `_onePass`, whose top-of-pass
+      // `_keepPending` would RECREATE the just-removed entry with a fresh
+      // firstSeenAt (the per-pass `_superseded` check alone would not stop that,
+      // because it runs AFTER `_keepPending`).
       h.coordinator.onSyncedMergedEvent(_room, _callKey);
-      h.coordinator.onSyncedCallAudio(_room, _callKey);
+      h.coordinator.onReconnected();
       await _pump();
 
       gate.complete();
@@ -1022,6 +1073,13 @@ void main() {
 
       expect(h.sendCalls, isEmpty, reason: 'aborted: no post from a re-pass');
       expect(mergedFetches, 1, reason: 'no second fetch after the abort');
+      expect(
+        index.read('$_room|$_callKey'),
+        isNull,
+        reason:
+            'the merged-event removal stays removed -- the aborted attempt runs '
+            'no re-pass whose _keepPending would recreate the entry',
+      );
     });
   });
 

@@ -221,6 +221,10 @@ class CallAudioMergeCoordinator {
   /// A `pangea.call_audio_merged` event for this call was seen in a sync: the
   /// call is done. Cancel any in-flight attempt and retire the index entry.
   void onSyncedMergedEvent(String roomId, String callKey) {
+    // No work after dispose, uniform with every other trigger: a disposed
+    // coordinator touches neither its in-flight map nor the shared index (a
+    // replacement coordinator, if any, owns reconciliation now).
+    if (_disposed) return;
     final key = _makeKey(roomId, callKey);
     final attempt = _inFlight[key];
     if (attempt != null) {
@@ -492,6 +496,14 @@ class CallAudioMergeCoordinator {
       )) {
         return;
       }
+      // The pre-send guard is _superseded (disposal / merged-event abort /
+      // generation), NOT `attempt.dirty`. A dirty trigger means "re-run after
+      // this pass," not "abort now": aborting the send on any dirty would let a
+      // busy room's benign re-notifications STARVE the send forever. The real
+      // check against a third half is the SEMANTIC _stillMergeable re-fetch just
+      // above; the irreducible re-fetch->send window is design-accepted (a rare
+      // stale post that P4 suppresses once it observes the third half), never a
+      // shown wrong result.
       if (_superseded(gen, attempt)) return;
 
       // Step 8: send. Non-null id -> retire; null -> the send did not land, a
