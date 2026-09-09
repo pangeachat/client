@@ -1101,7 +1101,14 @@ class CallSession extends ChangeNotifier {
             // failed outright.
 
             final identity = _callIdentity;
-            return _record.finish(
+            // Awaited rather than returned so the merge kick below runs after
+            // this device's own half is finished + posted. `_record.finish`
+            // returns `Future<void>`, so this preserves the callback's prior
+            // (void) completion; awaiting inside this already-async callback
+            // keeps its error handling -- a finish throw still propagates to
+            // the outer `.catchError` on the unawaited chain, exactly as when
+            // the future was returned.
+            await _record.finish(
               duration: call.talkDuration,
               video: _usedVideo,
               // Whether the call earned any trace: it got established, it
@@ -1127,6 +1134,22 @@ class CallSession extends ChangeNotifier {
               callKey: identity.key,
               anchorEventId: notificationEventId ?? call.callAnchorId,
             );
+            // The post-call merge kick: this device just posted its OWN half,
+            // so bring up the merge subsystem and index the call, to evaluate
+            // whether this device should mix the two halves. Guarded on a
+            // non-null, non-empty call key (the same key `finish` published the
+            // half under) -- a call with no key posted no half and has nothing
+            // to merge. CallService.onOwnCallAudioPosted is a no-op while its
+            // storage is still loading, unavailable, or after teardown.
+            final callKey = identity.key;
+            if (callKey != null && callKey.isNotEmpty) {
+              call.calls.onOwnCallAudioPosted(
+                room.id,
+                callKey,
+                room.client.userID ?? '',
+                room.client.deviceID,
+              );
+            }
           })
           .catchError((Object e, StackTrace s) {
             Logs().e('Could not finish the call recording', e, s);

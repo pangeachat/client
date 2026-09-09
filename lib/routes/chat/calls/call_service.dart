@@ -4,12 +4,18 @@ import 'package:flutter/foundation.dart';
 
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/pangea/common/utils/expiring_storage_box.dart';
+import 'package:fluffychat/routes/chat/calls/call_audio_download.dart';
+import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
+import 'package:fluffychat/routes/chat/calls/call_audio_merge_coordinator.dart';
+import 'package:fluffychat/routes/chat/calls/call_audio_merged_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_breadcrumb.dart';
 import 'package:fluffychat/routes/chat/calls/call_notification.dart';
 import 'package:fluffychat/routes/chat/calls/call_timeouts.dart';
 import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
 import 'package:fluffychat/routes/chat/calls/pangea_voip_delegate.dart';
 import 'package:fluffychat/routes/chat/calls/rtc_focus.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_repo.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 
 /// Owns one account's MatrixRTC calling.
@@ -101,6 +107,64 @@ class CallService {
   /// membership back is never recorded as clean.
   bool _abandonedMembership = false;
 
+  /// The durable index behind the merge coordinator, constructed together with
+  /// it in [_readyMergeCoordinator] on the first call-audio signal. Per-client
+  /// (keyed off [Client.clientName]) so two accounts on one device never share a
+  /// box. Its 30-day box TTL is only a secondary GC: the coordinator bounds the
+  /// index off its own immutable `firstSeenAt` (7 days), which the box TTL must
+  /// sit at or above. Null until the subsystem is first brought up.
+  ExpiringStorageBox? _mergeIndex;
+
+  /// This account's call-audio merge coordinator, or null until the first
+  /// call-audio signal brings it up (see [_readyMergeCoordinator]). Once built
+  /// it lives for the rest of the service's life (the account's).
+  ///
+  /// It is built LAZILY, not in the constructor, because building it constructs
+  /// its GetStorage-backed [ExpiringStorageBox], and GetStorage schedules an
+  /// init future on construction. CallService is constructed on any widget build
+  /// that mounts the incoming-call banner (ringing UI), and doing that
+  /// storage/timer work on every such build both wastes it on accounts that
+  /// never record a call and leaves a pending timer that fails widget tests. So
+  /// the subsystem is dormant -- no box, no timer, no scan -- until there is
+  /// actually audio to merge: this device finishes a call with a half
+  /// ([onOwnCallAudioPosted]) or a `pangea.call_audio`/`_merged` event is synced
+  /// ([handleSync]). The startup index scan `start()` therefore runs at that
+  /// first signal rather than at bare login; a call from a previous session
+  /// whose halves left the sync window is reconciled at the next call-audio
+  /// activity, within the index TTL horizon the design already bounds
+  /// convergence by.
+  CallAudioMergeCoordinator? _mergeCoordinator;
+
+  /// The live sync subscriptions that drive the coordinator's fast path -- a
+  /// synced half schedules its call, a synced merge retires it, and a reconnect
+  /// re-runs the durable index. Held so [dispose] can cancel them. CallService
+  /// held no sync subscriptions before this feature.
+  StreamSubscription<SyncUpdate>? _mergeSyncSubscription;
+  StreamSubscription<SyncStatusUpdate>? _mergeSyncStatusSubscription;
+
+  /// Tracks the sync-status machine so [handleSyncStatus] can spot a reconnect.
+  final SyncReconnectDetector _syncReconnect = SyncReconnectDetector();
+
+  /// Whether the coordinator's durable index storage loaded and the coordinator
+  /// was started. Trigger forwarding gates on this, so a device (or a headless
+  /// test) whose GetStorage backing is unavailable leaves the coordinator dark
+  /// rather than driving an unloaded box into an unhandled async error. See
+  /// [_activateMergeCoordinator].
+  bool _mergeReady = false;
+
+  /// Triggers received while the coordinator's storage is still loading, held so
+  /// none is lost. [_activateMergeCoordinator] replays them in order once ready,
+  /// or discards them if the storage proves unavailable. Bounded by the triggers
+  /// that arrive during the brief activation probe (typically zero or one).
+  final List<void Function(CallAudioMergeCoordinator)> _pendingMergeTriggers =
+      [];
+
+  /// Set once the one-shot storage probe has FAILED: activation runs at most
+  /// once, so a failed probe is terminal. Trigger forwarding then short-circuits
+  /// -- without this, later triggers would keep buffering onto a coordinator
+  /// that never becomes ready, growing [_pendingMergeTriggers] without bound.
+  bool _mergeActivationFailed = false;
+
   CallService(
     this.client, {
     PangeaVoipDelegate? delegate,
@@ -114,7 +178,186 @@ class CallService {
        _tokens = tokenRepo ?? CallTokenRepo(),
        _discovery = focusDiscovery ?? RtcFocusDiscovery(),
        _joinWithin = joinWithin ?? const Duration(seconds: 30),
-       _leaveWithin = leaveWithin ?? const Duration(seconds: 3);
+       _leaveWithin = leaveWithin ?? const Duration(seconds: 3) {
+    // Only the (cheap, timer-free) sync subscriptions are wired here; the box +
+    // coordinator come up lazily on the first call-audio signal. The handlers
+    // build the subsystem only when they actually see call-audio work, so a
+    // CallService constructed by a ringing-only widget build never touches
+    // storage. The reconnect detector is stepped on every status regardless.
+    _mergeSyncSubscription = client.onSync.stream.listen(handleSync);
+    _mergeSyncStatusSubscription = client.onSyncStatus.stream.listen(
+      handleSyncStatus,
+    );
+  }
+
+  /// Brings the merge subsystem up on first use, constructing the per-client box
+  /// + coordinator (and kicking off [_activateMergeCoordinator]) the first time,
+  /// and returns the coordinator. Always non-null; readiness is tracked
+  /// separately in [_mergeReady] and gated by [_driveMergeCoordinator].
+  CallAudioMergeCoordinator _ensureMergeCoordinator() {
+    var coordinator = _mergeCoordinator;
+    if (coordinator != null) return coordinator;
+    final index = ExpiringStorageBox(
+      'call_audio_merge_${client.clientName}',
+      ttl: const Duration(days: 30),
+      // A free wrapper label around the coordinator's own payload, deliberately
+      // NOT the box's reserved 'timestamp' key and independent of the
+      // coordinator's inner payload keys.
+      payloadKey: 'entry',
+    );
+    _mergeIndex = index;
+    coordinator = CallAudioMergeCoordinator(
+      relationsFetch: relationsFetcherFor(client),
+      download: callAudioDownloaderFor(client),
+      upload: (bytes, {required filename, required contentType}) => client
+          .uploadContent(bytes, filename: filename, contentType: contentType),
+      // Room-aware: one coordinator sends the merges of calls across many rooms,
+      // so the target room travels with each send. A room the client no longer
+      // knows yields null, exactly as the per-device sender's own null.
+      send: (roomId, content, txnId) async => client
+          .getRoomById(roomId)
+          ?.sendEvent(
+            content,
+            type: CallAudioMergedContent.relType,
+            txid: txnId,
+          ),
+      // Null when the room is unknown -- the decision core treats that as "not
+      // yet known" (pending), never as "not a DM" (terminal).
+      isDmRoom: (roomId) {
+        final room = client.getRoomById(roomId);
+        return room == null ? null : room.directChatMatrixID != null;
+      },
+      index: index,
+      myUserId: () => client.userID ?? '',
+      myDeviceId: () => client.deviceID,
+    );
+    _mergeCoordinator = coordinator;
+    unawaited(_activateMergeCoordinator());
+    return coordinator;
+  }
+
+  /// Forwards one [trigger] to the merge coordinator, bringing the subsystem up
+  /// on first use.
+  ///
+  /// While the coordinator's storage is still loading the trigger is BUFFERED
+  /// and replayed by [_activateMergeCoordinator] once ready -- so a call-audio
+  /// signal in the brief activation window is never dropped. That closes the
+  /// race where both this device's own post-call kick and its re-synced half
+  /// land pre-ready and the call would otherwise never be indexed (the durable
+  /// index's TTL convergence only helps calls that made it INTO the index). If
+  /// the storage proves unavailable the buffer is discarded and the subsystem
+  /// stays dark. A no-op after disposal.
+  void _driveMergeCoordinator(
+    void Function(CallAudioMergeCoordinator) trigger,
+  ) {
+    if (_disposed || _mergeActivationFailed) return;
+    final coordinator = _ensureMergeCoordinator();
+    if (_mergeReady) {
+      trigger(coordinator);
+    } else {
+      _pendingMergeTriggers.add(trigger);
+    }
+  }
+
+  /// The post-call kick: this device just posted its OWN `pangea.call_audio`
+  /// half. Brings the merge subsystem up (lazily, on the first such call) and,
+  /// once its storage is ready, indexes the call and evaluates whether this
+  /// device should mix the two halves. A no-op after disposal; buffered while
+  /// storage is loading, discarded if it is unavailable.
+  void onOwnCallAudioPosted(
+    String roomId,
+    String callKey,
+    String myUserId,
+    String? myDeviceId,
+  ) => _driveMergeCoordinator(
+    (coordinator) =>
+        coordinator.onCallFinished(roomId, callKey, myUserId, myDeviceId),
+  );
+
+  /// Starts the coordinator once its durable index storage is proven loadable,
+  /// then replays anything buffered during the probe.
+  ///
+  /// The coordinator's startup scan and every trigger touch the
+  /// [ExpiringStorageBox], which awaits GetStorage init; probing it here first
+  /// means an environment where that storage is unavailable (a platform that
+  /// denies it; a headless test with no path_provider) leaves the coordinator
+  /// dark -- trigger forwarding stays gated, the buffer is discarded -- with one
+  /// logged reason, instead of the scan's unawaited init throw (and every later
+  /// trigger's) surfacing as an unhandled async error. In the app GetStorage is
+  /// initialised at launch, so this resolves within a couple of event-loop turns
+  /// and the coordinator starts as normal.
+  ///
+  /// KNOWN, ACCEPTABLE-V1: once started, [ExpiringStorageBox.read]/`write` do
+  /// not await init (only `keys()`/`sweep()` do), but by then the probe has
+  /// already awaited it, so a replayed or later trigger reads a loaded box.
+  Future<void> _activateMergeCoordinator() async {
+    final index = _mergeIndex;
+    if (index == null) return;
+    try {
+      await index.keys();
+    } catch (e, s) {
+      Logs().w(
+        'Call-audio merge index storage unavailable; coordinator left idle',
+        e,
+        s,
+      );
+      // Storage is unavailable: the probe is terminal (it runs at most once), so
+      // mark the subsystem failed and drop the buffered triggers rather than
+      // replay them onto an unloaded box (which would throw unhandled on its
+      // sweep). The failed flag stops later triggers re-buffering for ever.
+      _mergeActivationFailed = true;
+      _pendingMergeTriggers.clear();
+      return;
+    }
+    if (_disposed) return;
+    final coordinator = _mergeCoordinator;
+    if (coordinator == null) return;
+    _mergeReady = true;
+    // Arms the periodic drain and runs the startup index scan.
+    coordinator.start();
+    // Replay everything buffered during the probe, in arrival order, now that
+    // the box is loaded and forwarding is live.
+    final pending = List<void Function(CallAudioMergeCoordinator)>.of(
+      _pendingMergeTriggers,
+    );
+    _pendingMergeTriggers.clear();
+    for (final trigger in pending) {
+      trigger(coordinator);
+    }
+  }
+
+  /// Feeds one sync's joined-room timeline events to the merge coordinator: a
+  /// `pangea.call_audio` half schedules an evaluation of its call, a
+  /// `pangea.call_audio_merged` retires it. The routing itself lives in the
+  /// top-level [dispatchSyncedCallAudioEvents] so it is unit-tested without a
+  /// CallService, a Client or a coordinator. The subsystem is brought up lazily
+  /// only when a call-audio event is actually present (the callbacks fire only
+  /// then), and a still-loading coordinator buffers the event via
+  /// [_driveMergeCoordinator] rather than dropping it.
+  void handleSync(SyncUpdate update) {
+    dispatchSyncedCallAudioEvents(
+      update,
+      onHalf: (roomId, callKey) => _driveMergeCoordinator(
+        (coordinator) => coordinator.onSyncedCallAudio(roomId, callKey),
+      ),
+      onMerged: (roomId, callKey) => _driveMergeCoordinator(
+        (coordinator) => coordinator.onSyncedMergedEvent(roomId, callKey),
+      ),
+    );
+  }
+
+  /// Re-runs the merge coordinator whenever the sync loop RECONNECTS -- an error
+  /// that has since recovered to finished. The edge detection lives in
+  /// [SyncReconnectDetector] so its exact semantics are unit-tested directly.
+  ///
+  /// The detector is stepped on EVERY status so its state machine keeps
+  /// tracking a reconnect across the intermediate statuses. It never BRINGS UP
+  /// the subsystem, though: a reconnect with no coordinator yet has no index to
+  /// reconcile, so it forwards to an already-running coordinator only.
+  void handleSyncStatus(SyncStatusUpdate update) {
+    final reconnected = _syncReconnect.step(update.status);
+    if (reconnected && _mergeReady) _mergeCoordinator?.onReconnected();
+  }
 
   /// The focus this homeserver advertises, or null if it advertises none.
   ///
@@ -2202,6 +2445,27 @@ class CallService {
   /// account teardown reaches here while a call can still be live.
   Future<void> dispose() async {
     _disposed = true;
+    // Stop feeding the coordinator first, then dispose it: cancel both sync
+    // subscriptions so no new trigger arrives, then bump its disposal
+    // generation so any in-flight pass initiates no further upload/send. The
+    // cancels are fire-and-forget -- delivery stops the moment cancel() is
+    // called, and the coordinator's own dispose already no-ops every trigger --
+    // so dispose() does not await them and adds no event-loop turns to its own
+    // teardown (a longer dispose would let an in-flight join's disposal
+    // StateError surface before its awaiter attaches).
+    final syncSubscription = _mergeSyncSubscription;
+    _mergeSyncSubscription = null;
+    if (syncSubscription != null) unawaited(syncSubscription.cancel());
+    final syncStatusSubscription = _mergeSyncStatusSubscription;
+    _mergeSyncStatusSubscription = null;
+    if (syncStatusSubscription != null) {
+      unawaited(syncStatusSubscription.cancel());
+    }
+    // Null when no call-audio signal ever brought the subsystem up this session.
+    _mergeCoordinator?.dispose();
+    // Drop anything buffered before readiness -- a disposed service replays
+    // nothing.
+    _pendingMergeTriggers.clear();
     // Cleared before the stream closes: the SDK's own listeners outlive this
     // service, and a late discovery would otherwise add to a closed controller.
 
@@ -2311,4 +2575,78 @@ class RejoinOffer {
     this.since,
     this.video = false,
   });
+}
+
+/// Routes the call-audio events in one [SyncUpdate]'s joined-room timelines to
+/// the merge coordinator's two synced-event triggers.
+///
+/// Extracted from [CallService.handleSync] as a plain top-level function taking
+/// the two callbacks -- rather than the coordinator itself -- so the dispatch
+/// (which joined rooms, which event types, the `call_key` type-check) is
+/// unit-tested against a hand-built [SyncUpdate] with no coordinator, Client or
+/// CallService in play. [onHalf] fires for each `pangea.call_audio` half,
+/// [onMerged] for each `pangea.call_audio_merged`, both with the event's own
+/// room id and call key.
+@visibleForTesting
+void dispatchSyncedCallAudioEvents(
+  SyncUpdate update, {
+  required void Function(String roomId, String callKey) onHalf,
+  required void Function(String roomId, String callKey) onMerged,
+}) {
+  final joined = update.rooms?.join;
+  if (joined == null) return;
+  for (final entry in joined.entries) {
+    final roomId = entry.key;
+    final events = entry.value.timeline?.events;
+    if (events == null) continue;
+    for (final event in events) {
+      // Event content is Map<String, Object?>, so the call key is an untyped
+      // Object? until proven a non-empty String: a missing or non-String one
+      // names no call and is skipped, never routed as an empty key.
+      final callKey = event.content['call_key'];
+      if (callKey is! String || callKey.isEmpty) continue;
+      if (event.type == CallAudioContent.relType) {
+        onHalf(roomId, callKey);
+      } else if (event.type == CallAudioMergedContent.relType) {
+        onMerged(roomId, callKey);
+      }
+    }
+  }
+}
+
+/// Detects a sync RECONNECT edge -- the client's sync loop dropped into
+/// [SyncStatus.error] and has since returned to [SyncStatus.finished] -- so the
+/// merge coordinator can re-run its in-flight attempts and re-scan its durable
+/// index for events missed while offline.
+///
+/// The edge is NOT "the status immediately before finished was error". After a
+/// failure the SDK runs a full sync loop (waitingForResponse -> processing ->
+/// cleaningUp -> finished), so the status right before a recovering `finished`
+/// is almost always `processing`, never `error`; requiring the immediate
+/// predecessor to be `error` would make a reconnect essentially undetectable.
+/// The transient in-between statuses are therefore ignored, and the edge is "a
+/// `finished` reached after an `error` with no completed sync in between" --
+/// which is why error -> processing -> finished DOES fire while
+/// processing -> finished (no prior error) does not. [step] fires exactly once
+/// per recovery: the following `finished` re-arms only if another `error`
+/// intervenes.
+///
+/// Extracted so these exact semantics are unit-tested directly, without a
+/// CallService or a live sync loop.
+@visibleForTesting
+class SyncReconnectDetector {
+  /// The last SETTLED status seen -- only [SyncStatus.error] and
+  /// [SyncStatus.finished] settle it; the transient statuses leave it be.
+  SyncStatus? _lastSettled;
+
+  /// Feeds one status; returns true exactly on the reconnect edge.
+  bool step(SyncStatus status) {
+    if (status != SyncStatus.error && status != SyncStatus.finished) {
+      return false;
+    }
+    final reconnected =
+        _lastSettled == SyncStatus.error && status == SyncStatus.finished;
+    _lastSettled = status;
+    return reconnected;
+  }
 }
