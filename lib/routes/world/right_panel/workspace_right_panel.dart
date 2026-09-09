@@ -12,6 +12,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/analytics_details_popup.dart';
 import 'package:fluffychat/routes/world/panel_card.dart';
 import 'package:fluffychat/routes/world/right_panel/panel_card_with_header.dart';
+import 'package:fluffychat/routes/world/right_panel/panel_entry_focus.dart';
 import 'package:fluffychat/routes/world/right_panel/right_panel_analytics_practice_subpage.dart';
 import 'package:fluffychat/routes/world/right_panel/right_panel_analytics_subpage.dart';
 import 'package:fluffychat/routes/world/right_panel/right_panel_settings_subpage.dart';
@@ -215,7 +216,8 @@ class WorkspaceRightPanel extends StatelessWidget {
       // container of its own (the Level drilldown's "LVL 15 … XP" header)
       // merges INTO the panel's name, announcing as one garbled label.
       explicitChildNodes: true,
-      child: panel,
+      // A panel the cluster just opened takes keyboard focus on mount.
+      child: PanelEntryFocus(child: panel),
     );
   }
 }
