@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-09-09 09:16:15.511970",
+    "@@last_modified": "2026-09-09 11:25:00.866008",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2309,5 +2309,6 @@
     "tutorialOpenSessions": "Izi ndi zochitika zomwe anthu ena akusewera. Lowani imodzi kuti mucheze, koma dziwani kuti sangayankhe nthawi yomweyo.",
     "tutorialActivityRoles": "Izi ndi maudindo omwe mungasewere mu chochitika ichi. Sankhani yomwe ikukusangalatsani!",
     "unlockActivitySummaries": "Tsegulani chidule cha zochitika",
-    "upNext": "Chotsatira"
+    "upNext": "Chotsatira",
+    "writingAssistanceSuggestion": "Malingaliro"
 }

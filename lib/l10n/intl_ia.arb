@@ -1362,7 +1362,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-09-09 09:15:56.444535",
+    "@@last_modified": "2026-09-09 11:24:58.936557",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10841,5 +10841,6 @@
     "tutorialOpenSessions": "Iste es activitates que altere personas joca. Adhere a un pro chatear, ma sia consciente que illes poterea non responder immediatemente.",
     "tutorialActivityRoles": "Iste es le rolos que tu pote jocar in iste activitate. Selige le que te interessa!",
     "unlockActivitySummaries": "Disblocar summaros de activitate",
-    "upNext": "Proxime"
+    "upNext": "Proxime",
+    "writingAssistanceSuggestion": "Suggestion"
 }

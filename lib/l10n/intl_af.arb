@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-09-09 09:15:35.327598",
+    "@@last_modified": "2026-09-09 11:24:56.540994",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2309,5 +2309,6 @@
     "tutorialOpenSessions": "Hierdie is aktiwiteite wat ander mense speel. Sluit aan by een om te klets, maar wees bewus daarvan dat hulle dalk nie dadelik sal reageer nie.",
     "tutorialActivityRoles": "Hierdie is die rolle wat jy in hierdie aktiwiteit kan speel. Kies die een wat jou interesseer!",
     "unlockActivitySummaries": "Ontsluit aktiwiteitopsommings",
-    "upNext": "Volgende"
+    "upNext": "Volgende",
+    "writingAssistanceSuggestion": "Voorstel"
 }

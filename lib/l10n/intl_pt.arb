@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-09 09:16:16.566412",
+    "@@last_modified": "2026-09-09 11:25:00.993157",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10849,5 +10849,6 @@
     "tutorialOpenSessions": "Estas são atividades que outras pessoas estão jogando. Junte-se a uma para conversar, mas esteja ciente de que elas podem não responder imediatamente.",
     "tutorialActivityRoles": "Estes são os papéis que você pode desempenhar nesta atividade. Escolha o que mais lhe interessa!",
     "unlockActivitySummaries": "Desbloquear resumos de atividades",
-    "upNext": "A seguir"
+    "upNext": "A seguir",
+    "writingAssistanceSuggestion": "Sugestão"
 }

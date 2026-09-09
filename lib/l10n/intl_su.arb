@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-09-09 09:16:25.362349",
+    "@@last_modified": "2026-09-09 11:25:01.847947",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2309,5 +2309,6 @@
     "tutorialOpenSessions": "Ieu kagiatan anu dimaénkeun ku jalma sanés. Gabung pikeun ngobrol, tapi émut yén aranjeunna panginten henteu langsung ngabales.",
     "tutorialActivityRoles": "Ieu peran anu tiasa anjeun maénkeun dina kagiatan ieu. Pilih anu dipikaresep ku anjeun!",
     "unlockActivitySummaries": "Buka ringkesan kagiatan",
-    "upNext": "Salajengna"
+    "upNext": "Salajengna",
+    "writingAssistanceSuggestion": "Saran"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-09-09 09:16:02.599224",
+    "@@last_modified": "2026-09-09 11:24:59.881183",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2309,5 +2309,6 @@
     "tutorialOpenSessions": "Hae sunt actiones quas alii agunt. Coniunge unam ut colloquare, sed scito eos non statim respondere posse.",
     "tutorialActivityRoles": "Haec sunt munera quae in hac actione agere potes. Elige quod te maxime interest!",
     "unlockActivitySummaries": "Reserare summarios actionum",
-    "upNext": "Deinceps"
+    "upNext": "Deinceps",
+    "writingAssistanceSuggestion": "Suggestio"
 }

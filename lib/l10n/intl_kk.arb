@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-09-09 09:16:01.214275",
+    "@@last_modified": "2026-09-09 11:24:59.425786",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2309,5 +2309,6 @@
     "tutorialOpenSessions": "Бұл басқа адамдар ойнап жатқан әрекеттер. Сөйлесу үшін біреуіне қосылыңыз, бірақ олар бірден жауап бермеуі мүмкін екенін ескеріңіз.",
     "tutorialActivityRoles": "Бұл сіз осы әрекетте ойнай алатын рөлдер. Сізді қызықтыратынын таңдаңыз!",
     "unlockActivitySummaries": "Белсенділік қорытындыларын ашу",
-    "upNext": "Келесі"
+    "upNext": "Келесі",
+    "writingAssistanceSuggestion": "Ұсыныс"
 }

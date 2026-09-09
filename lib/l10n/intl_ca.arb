@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-09 09:15:39.385782",
+    "@@last_modified": "2026-09-09 11:24:56.906662",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10032,5 +10032,6 @@
     "tutorialOpenSessions": "Aquestes són activitats que estan jugant altres persones. Uneix-te a una per xatejar, però tingues en compte que potser no responen de seguida.",
     "tutorialActivityRoles": "Aquests són els rols que pots interpretar en aquesta activitat. Tria el que més t'interessi!",
     "unlockActivitySummaries": "Desbloqueja els resums d'activitat",
-    "upNext": "A continuació"
+    "upNext": "A continuació",
+    "writingAssistanceSuggestion": "Suggeriment"
 }

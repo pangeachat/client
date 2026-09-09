@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-09-09 09:15:58.207416",
+    "@@last_modified": "2026-09-09 11:24:59.456815",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2309,5 +2309,6 @@
     "tutorialOpenSessions": "Þetta eru verkefni sem annað fólk er að spila. Vertu með í einu til að spjalla, en vertu meðvitaður um að það gæti ekki svarað strax.",
     "tutorialActivityRoles": "Þetta eru hlutverkin sem þú getur leikið í þessu verkefni. Veldu það sem vekur áhuga þinn!",
     "unlockActivitySummaries": "Opna yfirlit yfir virkni",
-    "upNext": "Næst á dagskrá"
+    "upNext": "Næst á dagskrá",
+    "writingAssistanceSuggestion": "Tillaga"
 }

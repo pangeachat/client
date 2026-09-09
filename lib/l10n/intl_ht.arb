@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-09-09 09:15:54.145589",
+    "@@last_modified": "2026-09-09 11:24:58.565555",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2309,5 +2309,6 @@
     "tutorialOpenSessions": "Sa yo se aktivite lòt moun ap jwe. Rantre nan youn pou chat, men fè atansyon yo ka pa reponn touswit.",
     "tutorialActivityRoles": "Sa yo se wòl ou ka jwe nan aktivite sa a. Chwazi sa ki enterese w la!",
     "unlockActivitySummaries": "Debloke rezime aktivite yo",
-    "upNext": "Apre sa"
+    "upNext": "Apre sa",
+    "writingAssistanceSuggestion": "Sijesyon"
 }

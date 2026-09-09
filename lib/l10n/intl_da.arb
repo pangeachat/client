@@ -1334,7 +1334,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-09-09 09:15:45.132100",
+    "@@last_modified": "2026-09-09 11:24:57.213668",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10825,5 +10825,6 @@
     "tutorialOpenSessions": "Dette er aktiviteter, som andre spiller. Deltag i en for at chatte, men vær opmærksom på, at de måske ikke svarer med det samme.",
     "tutorialActivityRoles": "Dette er de roller, du kan spille i denne aktivitet. Vælg den, der interesserer dig!",
     "unlockActivitySummaries": "Lås op for aktivitetsresuméer",
-    "upNext": "Næste"
+    "upNext": "Næste",
+    "writingAssistanceSuggestion": "Forslag"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-09-09 09:16:07.743027",
+    "@@last_modified": "2026-09-09 11:25:00.218890",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2309,5 +2309,6 @@
     "tutorialOpenSessions": "Koinei ngā mahi e tākaro ana ētahi atu tāngata. Hono atu ki tētahi ki te kōrero, engari kia mōhio pea kāore rātou e whakautu tonu.",
     "tutorialActivityRoles": "Koinei ngā tūranga ka taea e koe te tākaro i roto i tēnei mahi. Kōwhiria te mea e hiahia ana koe!",
     "unlockActivitySummaries": "Wewete i ngā whakarāpopototanga mahi",
-    "upNext": "Panuku"
+    "upNext": "Panuku",
+    "writingAssistanceSuggestion": "Tohu"
 }

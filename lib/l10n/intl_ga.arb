@@ -3563,7 +3563,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-09-09 09:15:52.267767",
+    "@@last_modified": "2026-09-09 11:24:58.098282",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9916,5 +9916,6 @@
     "tutorialOpenSessions": "Is gníomhaíochtaí iad seo atá á n-imirt ag daoine eile. Bí páirteach i gceann amháin chun comhrá a dhéanamh, ach bí ar an eolas go mb'fhéidir nach bhfreagróidh siad láithreach.",
     "tutorialActivityRoles": "Seo iad na róil is féidir leat a imirt sa ghníomhaíocht seo. Roghnaigh an ceann a bhfuil suim agat ann!",
     "unlockActivitySummaries": "Díghlasáil achoimrí gníomhaíochta",
-    "upNext": "An chéad cheann eile"
+    "upNext": "An chéad cheann eile",
+    "writingAssistanceSuggestion": "Moladh"
 }

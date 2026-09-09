@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-09-09 09:15:54.740798",
+    "@@last_modified": "2026-09-09 11:24:59.021830",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10008,5 +10008,6 @@
     "tutorialOpenSessions": "Ezek olyan tevékenységek, amiket mások játszanak. Csatlakozz egyhez a csevegéshez, de vedd figyelembe, hogy nem biztos, hogy azonnal válaszolnak.",
     "tutorialActivityRoles": "Ezek a szerepek, amiket játszhatsz ebben a tevékenységben. Válaszd ki azt, amelyik érdekel!",
     "unlockActivitySummaries": "Tevékenység-összefoglalók feloldása",
-    "upNext": "Következő"
+    "upNext": "Következő",
+    "writingAssistanceSuggestion": "Javaslat"
 }

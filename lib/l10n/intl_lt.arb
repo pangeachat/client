@@ -2967,7 +2967,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-09-09 09:16:05.695891",
+    "@@last_modified": "2026-09-09 11:25:00.046192",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10686,5 +10686,6 @@
     "tutorialOpenSessions": "Tai yra veiklos, kurias žaidžia kiti žmonės. Prisijunkite prie vienos, kad galėtumėte kalbėtis, bet atminkite, kad jie gali neatsakyti iš karto.",
     "tutorialActivityRoles": "Tai yra vaidmenys, kuriuos galite atlikti šioje veikloje. Pasirinkite tą, kuris jus domina!",
     "unlockActivitySummaries": "Atrakinti veiklos santraukas",
-    "upNext": "Toliau"
+    "upNext": "Toliau",
+    "writingAssistanceSuggestion": "Pasiūlymas"
 }

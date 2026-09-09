@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-09-09 09:16:27.712471",
+    "@@last_modified": "2026-09-09 11:25:02.213042",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10206,5 +10206,6 @@
     "tutorialOpenSessions": "Bunlar, diğer insanların oynadığı etkinlikler. Sohbet etmek için birine katılın, ancak hemen yanıt vermeyebileceklerini unutmayın.",
     "tutorialActivityRoles": "Bu etkinlikte oynayabileceğiniz roller bunlar. İlginizi çekeni seçin!",
     "unlockActivitySummaries": "Etkinlik özetlerinin kilidini aç",
-    "upNext": "Sırada"
+    "upNext": "Sırada",
+    "writingAssistanceSuggestion": "Öneri"
 }

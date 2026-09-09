@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-09 09:16:10.918585",
+    "@@last_modified": "2026-09-09 11:25:00.826031",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9962,5 +9962,6 @@
     "tutorialOpenSessions": "Dette er aktiviteter andre mennesker spiller. Bli med på en for å chatte, men vær oppmerksom på at de k kanskje ikke svarer med en gang.",
     "tutorialActivityRoles": "Dette er rollene du kan spille i denne aktiviteten. Velg den som interesserer deg!",
     "unlockActivitySummaries": "Lås opp aktivitetssammendrag",
-    "upNext": "Neste"
+    "upNext": "Neste",
+    "writingAssistanceSuggestion": "Forslag"
 }

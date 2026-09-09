@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-09-09 09:15:45.288637",
+    "@@last_modified": "2026-09-09 11:24:57.911722",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9902,5 +9902,6 @@
     "tutorialOpenSessions": "Need on tegevused, mida teised inimesed mängivad. Liitu ühega, et vestelda, kuid ole teadlik, et nad ei pruugi kohe vastata.",
     "tutorialActivityRoles": "Need on rollid, mida saad selles tegevuses mängida. Vali see, mis sind huvitab!",
     "unlockActivitySummaries": "Ava tegevuste kokkuvõtted",
-    "upNext": "Järgmisena"
+    "upNext": "Järgmisena",
+    "writingAssistanceSuggestion": "Soovitus"
 }

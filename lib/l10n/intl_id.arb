@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-09 09:15:55.169247",
+    "@@last_modified": "2026-09-09 11:24:58.910166",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9978,5 +9978,6 @@
     "tutorialOpenSessions": "Ini adalah aktivitas yang dimainkan orang lain. Bergabunglah untuk mengobrol, tetapi perlu diingat mereka mungkin tidak langsung merespons.",
     "tutorialActivityRoles": "Ini adalah peran yang dapat Anda mainkan dalam aktivitas ini. Pilih yang menarik bagi Anda!",
     "unlockActivitySummaries": "Buka ringkasan aktivitas",
-    "upNext": "Berikutnya"
+    "upNext": "Berikutnya",
+    "writingAssistanceSuggestion": "Saran"
 }

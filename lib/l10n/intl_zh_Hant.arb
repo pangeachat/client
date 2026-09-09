@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-09 09:16:33.657666",
+    "@@last_modified": "2026-09-09 11:25:02.688823",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10011,5 +10011,6 @@
     "tutorialOpenSessions": "這些是其他人正在玩的活動。加入一個來聊天，但請注意他們可能不會立即回應。",
     "tutorialActivityRoles": "這些是您可以在此活動中扮演的角色。選擇您感興趣的角色！",
     "unlockActivitySummaries": "解鎖活動摘要",
-    "upNext": "接下來"
+    "upNext": "接下來",
+    "writingAssistanceSuggestion": "建議"
 }

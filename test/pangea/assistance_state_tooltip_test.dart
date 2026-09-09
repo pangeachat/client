@@ -32,9 +32,20 @@ void main() {
     for (final state in [
       AssistanceStateEnum.notFetched,
       AssistanceStateEnum.igcComplete,
-      AssistanceStateEnum.suggesting,
     ]) {
       expect(state.tooltip(context), l10n.check, reason: '$state');
+    }
+    // #8904 — the lightbulb offers a suggestion, not a check.
+    for (final state in [
+      AssistanceStateEnum.suggesting,
+      AssistanceStateEnum.suggestionComplete,
+    ]) {
+      expect(state.icon, Icons.lightbulb_outline, reason: '$state');
+      expect(
+        state.tooltip(context),
+        l10n.writingAssistanceSuggestion,
+        reason: '$state',
+      );
     }
     expect(AssistanceStateEnum.error.tooltip(context), l10n.viewError);
   });

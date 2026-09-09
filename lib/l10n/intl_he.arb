@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-09 09:15:51.027667",
+    "@@last_modified": "2026-09-09 11:24:58.502908",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10819,5 +10819,6 @@
     "tutorialOpenSessions": "אלו פעילויות שאנשים אחרים משחקים. הצטרף לאחת כדי לשוחח, אך שים לב שהם עשויים לא להגיב מיד.",
     "tutorialActivityRoles": "אלו התפקידים שתוכל לשחק בפעילות זו. בחר את זה שמעניין אותך!",
     "unlockActivitySummaries": "פתיחת סיכומי פעילות",
-    "upNext": "הבא בתור"
+    "upNext": "הבא בתור",
+    "writingAssistanceSuggestion": "הצעה"
 }

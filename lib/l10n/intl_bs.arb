@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-09-09 09:15:35.549316",
+    "@@last_modified": "2026-09-09 11:24:56.760131",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2309,5 +2309,6 @@
     "tutorialOpenSessions": "Ovo su aktivnosti koje drugi ljudi igraju. Pridružite se jednoj da razgovarate, ali budite svjesni da možda neće odmah odgovoriti.",
     "tutorialActivityRoles": "Ovo su uloge koje možete igrati u ovoj aktivnosti. Odaberite onu koja vas zanima!",
     "unlockActivitySummaries": "Otključajte sažetke aktivnosti",
-    "upNext": "Slijedi"
+    "upNext": "Slijedi",
+    "writingAssistanceSuggestion": "Prijedlog"
 }

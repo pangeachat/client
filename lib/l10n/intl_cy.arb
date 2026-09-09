@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-09-09 09:15:41.654772",
+    "@@last_modified": "2026-09-09 11:24:57.048474",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2309,5 +2309,6 @@
     "tutorialOpenSessions": "Dyma weithgareddau y mae pobl eraill yn eu chwarae. Ymunwch ag un i sgwrsio, ond byddwch yn ymwybodol efallai na fyddant yn ymateb ar unwaith.",
     "tutorialActivityRoles": "Dyma'r rolau y gallwch eu chwarae yn y gweithgaredd hwn. Dewiswch yr un sydd o ddiddordeb i chi!",
     "unlockActivitySummaries": "Datgloi crynodebau gweithgareddau",
-    "upNext": "Nesaf"
+    "upNext": "Nesaf",
+    "writingAssistanceSuggestion": "Awgrym"
 }

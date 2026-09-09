@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-09-09 09:16:24.444966",
+    "@@last_modified": "2026-09-09 11:25:01.519545",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2309,5 +2309,6 @@
     "tutorialOpenSessions": "O gaioiga nei o loʻo taʻalo ai isi tagata. Auai i se tasi e talatalanoa, ae ia nofouta atonu latou te le tali mai vave.",
     "tutorialActivityRoles": "O matafaioi nei e mafai ona e taʻalo ai i lenei gaioiga. Filifili le mea e te fiafia i ai!",
     "unlockActivitySummaries": "Tatala aotelega o gaoioiga",
-    "upNext": "Le isi"
+    "upNext": "Le isi",
+    "writingAssistanceSuggestion": "Fautuaga"
 }

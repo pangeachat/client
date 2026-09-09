@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-09-09 09:16:25.358523",
+    "@@last_modified": "2026-09-09 11:25:01.689651",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2309,5 +2309,6 @@
     "tutorialOpenSessions": "Izvi zviitiko zviri kutambwa nevamwe vanhu. Joinha chimwe kuti ukurukure, asi ziva kuti vangasaapindura nekukurumidza.",
     "tutorialActivityRoles": "Aya ndiwo mabasa aunogona kuita muchiitiko ichi. Sarudza raunofarira!",
     "unlockActivitySummaries": "Vhura pfupiso dzechiitiko",
-    "upNext": "Zvinotevera"
+    "upNext": "Zvinotevera",
+    "writingAssistanceSuggestion": "Zano"
 }

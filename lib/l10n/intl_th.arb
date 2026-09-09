@@ -3093,7 +3093,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-09-09 09:16:27.262163",
+    "@@last_modified": "2026-09-09 11:25:02.218389",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10537,5 +10537,6 @@
     "tutorialOpenSessions": "นี่คือกิจกรรมที่คนอื่นกำลังเล่นอยู่ เข้าร่วมเพื่อแชท แต่โปรดทราบว่าพวกเขาอาจไม่ตอบกลับทันที",
     "tutorialActivityRoles": "นี่คือบทบาทที่คุณสามารถเล่นได้ในกิจกรรมนี้ เลือกบทบาทที่คุณสนใจ!",
     "unlockActivitySummaries": "ปลดล็อกสรุปกิจกรรม",
-    "upNext": "ถัดไป"
+    "upNext": "ถัดไป",
+    "writingAssistanceSuggestion": "ข้อเสนอแนะ"
 }

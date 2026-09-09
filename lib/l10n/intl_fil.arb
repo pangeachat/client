@@ -2080,7 +2080,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-09-09 09:15:46.425638",
+    "@@last_modified": "2026-09-09 11:24:58.063539",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10765,5 +10765,6 @@
     "tutorialOpenSessions": "Ito ang mga activity na nilalaro ng ibang tao. Sumali sa isa para mag-chat, ngunit magkaroon ng kamalayan na maaaring hindi sila agad tumugon.",
     "tutorialActivityRoles": "Ito ang mga role na maaari mong gampanan sa activity na ito. Piliin ang isa na interesado ka!",
     "unlockActivitySummaries": "I-unlock ang mga buod ng aktibidad",
-    "upNext": "Susunod"
+    "upNext": "Susunod",
+    "writingAssistanceSuggestion": "Mungkahi"
 }

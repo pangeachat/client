@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-09-09 09:15:59.250991",
+    "@@last_modified": "2026-09-09 11:24:59.150518",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2309,5 +2309,6 @@
     "tutorialOpenSessions": "Ndị a bụ ihe omume ndị ọzọ na-egwu. Soro otu ka ị kparịta ụka, mana mara na ha nwere ike ọ gaghị aza ozugbo.",
     "tutorialActivityRoles": "Ndị a bụ ọrụ ị nwere ike ịrụ n'ime ihe omume a. Họrọ nke masịrị gị!",
     "unlockActivitySummaries": "Mepee nchịkọta ọrụ",
-    "upNext": "Ihe na-abịa"
+    "upNext": "Ihe na-abịa",
+    "writingAssistanceSuggestion": "Nkwanye"
 }

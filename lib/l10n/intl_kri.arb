@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-09-09 09:16:02.523577",
+    "@@last_modified": "2026-09-09 11:24:59.633486",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2309,5 +2309,6 @@
     "tutorialOpenSessions": "Dis na aktiviti dɛn we ɔda pipul dɛn de ple. Jɔyn wan fɔ chat, bɔt no se dɛn nɔ go rɛspɔn kwik kwik wan.",
     "tutorialActivityRoles": "Dis na di rol dɛn we yu go ple insay dis aktiviti. Pik di wan we intarɛs yu!",
     "unlockActivitySummaries": "Opon aktiviti samari dɛn",
-    "upNext": "Di wan we de kam"
+    "upNext": "Di wan we de kam",
+    "writingAssistanceSuggestion": "Advays"
 }

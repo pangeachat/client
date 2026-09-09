@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-09 09:15:45.117501",
+    "@@last_modified": "2026-09-09 11:24:57.698059",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10850,5 +10850,6 @@
     "tutorialOpenSessions": "Jen agadoj, kiujn aliaj homoj ludas. Aliĝu al unu por babili, sed konsciu, ke ili eble ne respondos tuj.",
     "tutorialActivityRoles": "Jen la roloj, kiujn vi povas ludi en ĉi tiu agado. Elektu tiun, kiu interesas vin!",
     "unlockActivitySummaries": "Malŝlosu agadajn resumojn",
-    "upNext": "Poste"
+    "upNext": "Poste",
+    "writingAssistanceSuggestion": "Sugesto"
 }
