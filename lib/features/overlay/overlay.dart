@@ -57,10 +57,14 @@ class OverlayUtil {
               if (displayDetails.backDropToDismiss)
                 IgnorePointer(
                   ignoring: displayDetails.ignorePointer,
+                  // IgnorePointer covers Flutter's hit test and strips the
+                  // backdrop's semantic tap, but not the DOM: see
+                  // TransparentBackdrop.ignoresPointer (#8903).
                   child: TransparentBackdrop(
                     backgroundColor: displayDetails.backgroundColor,
                     onDismiss: displayDetails.onDismiss,
                     blurBackground: displayDetails.blurBackground,
+                    ignoresPointer: displayDetails.ignorePointer,
                   ),
                 ),
               switch (displayDetails) {
