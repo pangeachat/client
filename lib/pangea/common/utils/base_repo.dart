@@ -125,7 +125,15 @@ abstract class BaseRepo<
 
       // No ≥400 check here: [fetch] goes through [Requests], which already
       // threw a typed error for any failing status.
-      final Response res = await fetch(req, request).timeout(timeout);
+      final Response res = await fetch(req, request).timeout(
+        timeout,
+        // Named after the call [req] made (`GET /choreo/v2/activity/{id}`) so
+        // an expired fetch groups per endpoint, not in the one frameless web
+        // bucket (CLIENT-AXX). Read at expiry, because [fetch] has made the
+        // call by then — which is why this is not `timeoutNamed`.
+        onTimeout: () =>
+            throw TimeoutException(req.inFlight ?? 'BaseRepo.fetch', timeout),
+      );
 
       final Map<String, dynamic> json = jsonDecode(
         utf8.decode(res.bodyBytes).toString(),

@@ -36,6 +36,7 @@ import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_response_dialog.dart';
 import 'package:fluffychat/pangea/extensions/leave_room_extension.dart';
@@ -329,18 +330,25 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
     }
     try {
       final l1Code = MatrixState.pangeaController.userController.userL1Code;
-      final results = await Future.wait([
-        courseSpaceIds.isNotEmpty
-            ? client.loadActivitySessionPreviews(
-                courseSpaceIds,
-                activityId: widget.activityId,
-                l1Code: l1Code,
-              )
-            : Future.value(<String, RoomSummaryResponse>{}),
-        extraRoomIds.isNotEmpty
-            ? client.loadRoomSummaries(extraRoomIds.toList(), l1Code: l1Code)
-            : Future.value(<String, RoomSummaryResponse>{}),
-      ]).timeout(const Duration(seconds: 30));
+      final results =
+          await Future.wait([
+            courseSpaceIds.isNotEmpty
+                ? client.loadActivitySessionPreviews(
+                    courseSpaceIds,
+                    activityId: widget.activityId,
+                    l1Code: l1Code,
+                  )
+                : Future.value(<String, RoomSummaryResponse>{}),
+            extraRoomIds.isNotEmpty
+                ? client.loadRoomSummaries(
+                    extraRoomIds.toList(),
+                    l1Code: l1Code,
+                  )
+                : Future.value(<String, RoomSummaryResponse>{}),
+          ]).timeoutNamed(
+            const Duration(seconds: 30),
+            'loadRoomSummaries: activity start page',
+          );
       if (!mounted) return;
       setState(() {
         _roomSummariesModel = ActivitySessionSummariesModel({

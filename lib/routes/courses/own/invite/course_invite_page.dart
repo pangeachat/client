@@ -16,6 +16,7 @@ import 'package:fluffychat/features/navigation/token_params/room_subpage_token.d
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/courses/course_info_chip_widget.dart';
@@ -94,7 +95,10 @@ class CourseInvitePageController extends State<CourseInvitePage>
     ];
 
     if (futures.isNotEmpty) {
-      await Future.wait(futures).timeout(const Duration(seconds: 10));
+      await Future.wait(futures).timeoutNamed(
+        const Duration(seconds: 10),
+        'course settings sync: course invite',
+      );
     }
 
     return spaceId;

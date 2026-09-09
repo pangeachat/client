@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
 
@@ -141,6 +143,35 @@ void main() {
       expect(
         await fingerprintOf(
           () => ErrorHandler.logError(e: Exception('no exception'), data: {}),
+        ),
+        anyOf(isNull, isEmpty),
+      );
+    });
+  });
+
+  group('a timeout', () {
+    test('groups per named operation, not in the frameless bucket', () async {
+      expect(
+        await fingerprintOf(
+          () => ErrorHandler.logError(
+            e: TimeoutException(
+              'updateProfile: learning settings',
+              const Duration(seconds: 15),
+            ),
+            data: {},
+          ),
+        ),
+        ['pangea-timeout', 'updateProfile: learning settings'],
+      );
+    });
+
+    test('keeps default grouping when unnamed', () async {
+      expect(
+        await fingerprintOf(
+          () => ErrorHandler.logError(
+            e: TimeoutException(null, const Duration(seconds: 10)),
+            data: {},
+          ),
         ),
         anyOf(isNull, isEmpty),
       );

@@ -13,8 +13,10 @@ import 'package:fluffychat/features/dosage/dosage_message_event.dart';
 import 'package:fluffychat/features/dosage/dosage_session_outcome.dart';
 import 'package:fluffychat/features/dosage/dosage_voice_message.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
 
 /// The outcome of one audio-signals POST.
 ///
@@ -411,7 +413,10 @@ class DosageSignalsRepo {
             },
             body: jsonEncode(body),
           )
-          .timeout(requestTimeout);
+          .timeoutNamed(
+            requestTimeout,
+            'POST ${PangeaHttpException.normalizePath(Uri.parse(url))}',
+          );
     } catch (err, s) {
       ErrorHandler.logError(
         e: err,
@@ -479,7 +484,10 @@ class DosageSignalsRepo {
             },
             body: jsonEncode(body),
           )
-          .timeout(requestTimeout);
+          .timeoutNamed(
+            requestTimeout,
+            'POST ${PangeaHttpException.normalizePath(Uri.parse(url))}',
+          );
     } catch (err, s) {
       ErrorHandler.logError(
         e: err,

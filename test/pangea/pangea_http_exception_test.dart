@@ -243,6 +243,30 @@ void main() {
       expect(PangeaHttpException.fingerprintOf(Exception('offline')), isNull);
       expect(PangeaHttpException.fingerprintOf(null), isNull);
     });
+
+    test('a named timeout groups per operation (#8889)', () {
+      expect(
+        PangeaHttpException.fingerprintOf(
+          TimeoutException('GET /choreo/v2/activity/{id}'),
+        ),
+        ['pangea-timeout', 'GET /choreo/v2/activity/{id}'],
+      );
+      expect(
+        PangeaHttpException.fingerprintOf(
+          TimeoutException('waitForRoomInSync: create room'),
+        ),
+        isNot(
+          PangeaHttpException.fingerprintOf(
+            TimeoutException('updateProfile: learning settings'),
+          ),
+        ),
+      );
+    });
+
+    test('an unnamed timeout keeps default grouping — what is still in that '
+        'bucket (CLIENT-AXX) is a site not yet named', () {
+      expect(PangeaHttpException.fingerprintOf(TimeoutException(null)), isNull);
+    });
   });
 
   group('PangeaHttpException.severityOf — the one severity table', () {
