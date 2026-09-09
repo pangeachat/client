@@ -10824,5 +10824,6 @@
     "tutorialSequenceTitleActivityRoles": "Vælg en rolle",
     "tutorialOpenSessions": "Dette er aktiviteter, som andre spiller. Deltag i en for at chatte, men vær opmærksom på, at de måske ikke svarer med det samme.",
     "tutorialActivityRoles": "Dette er de roller, du kan spille i denne aktivitet. Vælg den, der interesserer dig!",
-    "unlockActivitySummaries": "Lås op for aktivitetsresuméer"
+    "unlockActivitySummaries": "Lås op for aktivitetsresuméer",
+    "upNext": "Næste"
 }

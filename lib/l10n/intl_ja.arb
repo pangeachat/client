@@ -10673,5 +10673,6 @@
     "tutorialSequenceTitleActivityRoles": "役割の選択",
     "tutorialOpenSessions": "これらは他の人がプレイしているアクティビティです。参加してチャットできますが、すぐに返信がない場合があることに注意してください。",
     "tutorialActivityRoles": "これらはこのアクティビティでプレイできる役割です。興味のあるものを選んでください！",
-    "unlockActivitySummaries": "アクティビティの概要をアンロック"
+    "unlockActivitySummaries": "アクティビティの概要をアンロック",
+    "upNext": "次はこちら"
 }

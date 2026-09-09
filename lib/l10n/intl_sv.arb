@@ -10422,5 +10422,6 @@
     "tutorialSequenceTitleActivityRoles": "Välja en roll",
     "tutorialOpenSessions": "Dessa är aktiviteter som andra människor spelar. Gå med i en för att chatta, men var medveten om att de kanske inte svarar direkt.",
     "tutorialActivityRoles": "Dessa är rollerna du kan spela i den här aktiviteten. Välj den som intresserar dig!",
-    "unlockActivitySummaries": "Lås upp aktivitetsöversikter"
+    "unlockActivitySummaries": "Lås upp aktivitetsöversikter",
+    "upNext": "Nästa"
 }
