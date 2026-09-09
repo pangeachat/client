@@ -325,7 +325,13 @@ user came from:
   keeps the **leading** slot the X would have taken, where every other cavity
   surface's control sits. One control in one place is the point; a panel whose
   close and whose expand sat on opposite sides of the header made two states
-  look like two different surfaces.
+  look like two different surfaces. On **wide** the whole header is the pointer
+  target for that control in both states: the bar reopens the card on a tap
+  anywhere but its actions, and the open card's header collapses it the same
+  way ([#8909](https://github.com/pangeachat/client/issues/8909)) — one surface
+  toggling, not a whole-surface tap one way and a single glyph the other. The
+  chevron stays the one announced, focusable control; the header tap adds no
+  second node.
 
   **Which way it points follows the surface, not the state's name.** On narrow
   the cavity is a sheet that slides, so the chevron points the way it will

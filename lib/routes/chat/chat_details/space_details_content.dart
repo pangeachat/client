@@ -24,6 +24,7 @@ import 'package:fluffychat/routes/chat_list/course_chats_page.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_objectives_view.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_progress_bar.dart';
 import 'package:fluffychat/routes/world/left_panel/course_card_reveal.dart';
+import 'package:fluffychat/routes/world/left_panel/left_panel_close_button.dart';
 import 'package:fluffychat/routes/world/panel_header.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -140,7 +141,9 @@ class SpaceDetailsContent extends StatelessWidget {
 /// (the chat list, settings). The panel's close control rides at the leading
 /// edge — X/← for the card, and, because `<section>/all` reads as pushed from
 /// the token, a pop-one-level ← titled with the section on its subpage (the
-/// close-affordance rule, routing.instructions.md).
+/// close-affordance rule, routing.instructions.md). On wide the card's header
+/// is itself a tap target for the collapse, mirroring the context bar's
+/// whole-surface tap that reopens it (#8909).
 class SpaceDetailsHeader extends StatelessWidget {
   final SpaceDetailsController controller;
   final Room room;
@@ -179,7 +182,7 @@ class SpaceDetailsHeader extends StatelessWidget {
     // Narrow keeps it leading, where every other cavity surface's control
     // sits (routing.instructions.md → Closing a panel).
     final trailingClose = FluffyThemes.isColumnMode(context);
-    return PanelHeader(
+    final header = PanelHeader(
       leading: trailingClose ? null : leading,
       title: room.getLocalizedDisplayname(MatrixLocals(L10n.of(context))),
       trailing: Row(
@@ -194,6 +197,22 @@ class SpaceDetailsHeader extends StatelessWidget {
           if (trailingClose) leading,
         ],
       ),
+    );
+    // The bar reopens the card on a tap anywhere but its actions, so on wide
+    // the open card's header collapses it the same way — one surface
+    // toggling, not a whole-surface tap one way and a single glyph the other
+    // (#8909). It runs the chevron's own collapse (shrink to the bar, then
+    // drop the token). Pointer-only: excluded from semantics and traversal so
+    // the chevron stays the card's one announced, focusable control and the
+    // tree gains no second "Collapse" node; the actions and the chevron are
+    // descendants, so they keep winning their own taps.
+    final closeControl = controller.widget.embeddedCloseButton;
+    if (!trailingClose || closeControl is! LeftPanelCloseButton) return header;
+    return InkWell(
+      onTap: () => closeControl.collapseToBar(context),
+      excludeFromSemantics: true,
+      canRequestFocus: false,
+      child: header,
     );
   }
 }

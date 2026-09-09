@@ -33,7 +33,8 @@ import 'package:fluffychat/widgets/matrix.dart';
 /// miss, and a learner could start a course activity thinking they were on the
 /// world map. It is deliberately **not closeable** — the course context is
 /// what it reports, and `?c=` is cleared by the World control, not here — and
-/// tapping it anywhere but its actions reopens the course card.
+/// tapping it anywhere but its actions reopens the course card, whose own
+/// header collapses it back the same way ([SpaceDetailsHeader], #8909).
 ///
 /// **Wide only** (#8816). It rides the map's search slot, except with an
 /// activity plan open, where it docks above that panel instead
