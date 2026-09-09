@@ -85,13 +85,16 @@ class SvgRepo {
     } catch (e, stack) {
       ErrorHandler.logError(
         // A ClientException — offline, dropped connection, a blocked request —
-        // already names the url and goes through as-is, so the sink recognises
-        // a request that never reached a server (severity table, no-response
-        // row: warning, once per session). Anything else is a bug in how we
-        // asked for the file: wrapped so it names the url too, and the table's
-        // default (error) stands.
+        // keeps its type so the sink recognises a request that never reached a
+        // server (severity table, no-response row: warning, once per session).
+        // The real clients attach the uri; one that arrives without it is
+        // given the url, since the title must always name the asset (#8733).
+        // Anything else is a bug in how we asked for the file: wrapped so it
+        // names the url too, and the table's default (error) stands.
         e: e is http.ClientException
-            ? e
+            ? (e.uri == null
+                  ? http.ClientException(e.message, Uri.parse(url))
+                  : e)
             : Exception('Error fetching SVG $url: $e'),
         data: {"url": url},
         s: stack,
