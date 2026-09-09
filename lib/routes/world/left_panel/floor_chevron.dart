@@ -95,16 +95,10 @@ class ChevronToggle extends StatelessWidget {
 
   final VoidCallback onTap;
 
-  /// Drop this button from the semantics tree — for a host that is itself one
-  /// big button already announcing the same action (the context bar), where a
-  /// nested button would announce the tap twice.
-  final bool excludeSemantics;
-
   const ChevronToggle({
     required this.expanded,
     required this.onTap,
     required this.meaning,
-    this.excludeSemantics = false,
     super.key,
   });
 
@@ -118,21 +112,30 @@ class ChevronToggle extends StatelessWidget {
           ? material.expandedIconTapHint
           : material.collapsedIconTapHint,
       onPressed: onTap,
-      icon: AnimatedRotation(
-        // `expand_more` points down unrotated; a half turn points it up.
-        // [ChevronMeaning.motion] points the way the sheet travels (down to
-        // collapse), [ChevronMeaning.disclosure] the way disclosure goes
-        // (down to reveal) — exact inverses.
-        turns: switch (meaning) {
-          ChevronMeaning.motion => expanded ? 0.0 : 0.5,
-          ChevronMeaning.disclosure => expanded ? 0.5 : 0.0,
-        },
-        duration: FluffyThemes.animationDuration,
-        curve: FluffyThemes.animationCurve,
-        child: const Icon(Icons.expand_more),
+      // The state rides HERE, inside the button, not around it: a bare
+      // `Semantics` is not a boundary, so wrapped around the button its flag
+      // merges UP into whatever container the host draws — the card's "Course
+      // details page" group — and the screen reader announces the state on
+      // the page while the control the learner is on announces none. From
+      // inside, it merges into the button's own node instead, so "Collapse"
+      // and "expanded" are one announcement.
+      icon: Semantics(
+        expanded: expanded,
+        child: AnimatedRotation(
+          // `expand_more` points down unrotated; a half turn points it up.
+          // [ChevronMeaning.motion] points the way the sheet travels (down to
+          // collapse), [ChevronMeaning.disclosure] the way disclosure goes
+          // (down to reveal) — exact inverses.
+          turns: switch (meaning) {
+            ChevronMeaning.motion => expanded ? 0.0 : 0.5,
+            ChevronMeaning.disclosure => expanded ? 0.5 : 0.0,
+          },
+          duration: FluffyThemes.animationDuration,
+          curve: FluffyThemes.animationCurve,
+          child: const Icon(Icons.expand_more),
+        ),
       ),
     );
-    if (excludeSemantics) return ExcludeSemantics(child: button);
-    return Semantics(expanded: expanded, child: button);
+    return button;
   }
 }
