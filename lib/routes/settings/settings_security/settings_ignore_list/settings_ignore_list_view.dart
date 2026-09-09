@@ -87,16 +87,12 @@ class SettingsIgnoreListView extends StatelessWidget {
                               ),
                             ),
                       ),
-                      const SizedBox(height: 16),
-                      Semantics(
-                        container: true,
-                        child: Text(
-                          L10n.of(context).blockListDescription,
-                          style: const TextStyle(color: Colors.orange),
-                        ),
-                      ),
                     ],
                   ),
+                ),
+                ListTile(
+                  leading: const Icon(Icons.info_outlined),
+                  subtitle: Text(L10n.of(context).blockListDescription),
                 ),
                 Divider(color: theme.dividerColor),
                 Expanded(
