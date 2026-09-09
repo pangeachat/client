@@ -64,6 +64,22 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
     _scheduleMonitor();
   }
 
+  @override
+  void didUpdateWidget(TutorialOverlayWidget oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    final old = oldWidget.model;
+    final now = widget.model;
+    if (old.stepIndex != now.stepIndex ||
+        old.activeTutorial?.tutorialType != now.activeTutorial?.tutorialType) {
+      // The monitor measures post-frame, so the incoming step's first frame
+      // would otherwise render against the OUTGOING step's rects — the card
+      // and scrim hole flash at the previous target, then jump. Cleared, the
+      // step shows nothing until it has been measured, and appears once, in
+      // place.
+      _spotlightRects = const [];
+    }
+  }
+
   /// Registers the next monitor pass AND asks for the frame that runs it.
   /// addPostFrameCallback alone does not schedule a frame, so on an idle
   /// screen the loop — and the "target vanished → tear down" check with it —

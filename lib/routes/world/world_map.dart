@@ -1447,8 +1447,16 @@ class WorldMapController extends State<WorldMap>
         tutorialType: TutorialEnum.appTour,
         stepsData: [
           // The offer. Nothing lit, and a tap outside the two buttons does
-          // nothing (see TutorialStepStyle.choices).
-          TutorialStepData(canShowNextStep: () => true),
+          // nothing (see TutorialStepStyle.choices). Accepting clears every
+          // open surface back to the bare map: the offer can fire over
+          // single-column surfaces that hide the nav rail (the activity plan
+          // sheet), and the next step points at a rail item. Only on accept —
+          // a decline routes to skip and never runs this, so saying no costs
+          // the learner nothing they had open.
+          TutorialStepData(
+            canShowNextStep: () => true,
+            onTap: () => _goAndSettle(WorkspaceNav.clearAll()),
+          ),
           TutorialStepData.single(
             targetKey: TutorialTargetIds.navChats,
             onTap: () => _goAndSettle(
@@ -1484,9 +1492,10 @@ class WorldMapController extends State<WorldMap>
             // exactly where a learner is right after their first activity. The
             // step shows them where practice lives; gating on it opening would
             // stall the tour for the learner it is for.
-            // Still holds the beat, so the tour's pacing does not change on the
-            // one step that has nowhere to go.
-            onTap: () => Future.delayed(TutorialConstants.stepSettleDelay),
+            // Leaving, it clears back to the bare map: on single-column the
+            // analytics panel covers the nav rail the next step points at.
+            // _goAndSettle holds the same beat the bare delay here did.
+            onTap: () => _goAndSettle(WorkspaceNav.clearAll()),
             canShowNextStep: () => true,
           ),
           TutorialStepData.single(
