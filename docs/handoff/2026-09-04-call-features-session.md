@@ -1231,3 +1231,23 @@ until the design is Codex-green.
   payload read/write, CallService ctor/dispose + matrix.dart lifecycle, CallSession._finishRecording kick
   point + how it reaches CallService, onSyncStatus transition, onSync event access, room.sendEvent/
   getRoomById/uploadContent/directChatMatrixID). Brief + build after it returns.
+
+## 2026-09-08 (cont) — WAVE 4 (wiring) + P4 (player) dispatched IN PARALLEL (file-disjoint)
+- Wave-4 signature scan (agent ad99b3463abaad418) returned: ExpiringStorageBox round-trips payload intact
+  (payloadKey=free wrapper label != 'timestamp'); box ttl >= indexTtl; keys()/sweep() await GetStorage
+  init but read()/write() don't (early-trigger-before-init = ACCEPTABLE-V1); CallService(this.client,{...})
+  + dispose() at :2203, no sync subs today; CallSession reaches CallService via call.calls (public);
+  identity.key (callKey) nullable -> guard; onSyncStatus error->finished edge must be tracked manually;
+  onSync = iterate update.rooms?.join?.entries; content['call_key'] is Object? -> type-check;
+  room.sendEvent(content, type:, txid:)->Future<String?>; getRoomById/uploadContent/directChatMatrixID
+  confirmed.
+- WAVE 4 (wiring, OPUS, agent a77a10d2d23281727): brief /private/tmp/build-brief-mix-p3b-wiring.md.
+  Touches call_service.dart (own+start+subscribe+dispose coordinator w/ room-aware seams + per-client box)
+  + call_session.dart (_finishRecording kick, await finish + null-guard callKey). Extract handleSync/
+  handleSyncStatus as testable methods. RUNNING.
+- P4 (player, OPUS, agent a75e5c1007624ca26): brief /private/tmp/build-brief-mix-p4-player.md. Touches
+  NEW call_audio_merged_selection.dart (pure selectMergedRow: >2-halves suppress, else greatest coverage
+  cardinality -> lower coverageHash -> lower eventId) + transcript_view.dart (fetch merged parallel,
+  render merged-first "Full call" row via relabel-to-m.audio, halves below). RUNNING.
+- Both told targeted `git add` only (concurrent on the branch). Cold-gate both outputs.
+- After both green: PR-2 prep (recording+transcript+merge+player as one PR on owner go).
