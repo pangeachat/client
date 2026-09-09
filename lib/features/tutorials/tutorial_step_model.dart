@@ -122,8 +122,9 @@ enum TutorialChoiceOutcome {
   /// Carry on to the next step.
   advance,
 
-  /// End this tutorial and mark it seen. The learner was asked and said no, so
-  /// it should not come back.
+  /// Skip out of the whole running sequence
+  /// ([TutorialOverlayController.skipCurrentSequence]). The learner was asked
+  /// and said no, so none of it should come back.
   decline,
 }
 
@@ -161,6 +162,11 @@ class TutorialStepTemplate {
   /// with the copy, since which answers exist is part of what the step says.
   final List<TutorialStepChoice> choices;
 
+  /// Whether this step's card carries the sequence-wide Skip control — true
+  /// for nearly everything, declared per step for the exceptions where it
+  /// would mislead (the greeting). A branch suppresses it via [choices].
+  final bool showsSkip;
+
   const TutorialStepTemplate({
     required this.tooltip,
     required this.tooltipSize,
@@ -168,6 +174,7 @@ class TutorialStepTemplate {
     this.padding,
     this.choices = const [],
     this.dimsBackground = true,
+    this.showsSkip = true,
   });
 
   TutorialStepStyle resolve(L10n l10n, List<String> args) => TutorialStepStyle(
@@ -180,6 +187,7 @@ class TutorialStepTemplate {
         (label: choice.label(l10n), outcome: choice.outcome),
     ],
     dimsBackground: dimsBackground,
+    showsSkip: showsSkip,
   );
 }
 
@@ -197,6 +205,9 @@ class TutorialStepStyle {
   /// See [TutorialStepTemplate.dimsBackground].
   final bool dimsBackground;
 
+  /// See [TutorialStepTemplate.showsSkip].
+  final bool showsSkip;
+
   const TutorialStepStyle({
     required this.tooltip,
     required this.tooltipSize,
@@ -204,6 +215,7 @@ class TutorialStepStyle {
     this.padding,
     this.choices = const [],
     this.dimsBackground = true,
+    this.showsSkip = true,
   });
 
   bool get isBranch => choices.isNotEmpty;

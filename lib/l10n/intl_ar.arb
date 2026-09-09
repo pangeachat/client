@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-09-08 16:06:40.752897",
+    "@@last_modified": "2026-09-09 09:15:41.701369",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10181,11 +10181,13 @@
     "listenFirstDescription": "عند تشغيل \"استمع أولاً\"، نقرة واحدة تشغل الصوت، والنقر المزدوج يحدد الخيار.",
     "listenFirstNeedsChoiceAudio": "شغّل صوت الخيارات لاستخدام \"استمع أولاً\".",
     "unableToJoinCourseError": "تعذر علينا إضافتك إلى هذه الدورة التدريبية الآن. يرجى المحاولة مرة أخرى، أو سؤال معلمك.",
-    "unlockActivitySummaries": "افتح ملخصات الأنشطة",
+    "edited": "تم التعديل",
+    "attach": "إرفاق",
+    "callHistoryTranscript": "النص",
     "tutorialWelcome": "أنا بانجيا بوت، دليلك وشريكك في المحادثة بالذكاء الاصطناعي. هيا بنا نتعلم!",
     "tutorialWorldMapIntro": "هذه هي خريطة العالم. كل نشاط لعب أدوار في {language} موجود هنا.",
-    "tutorialWorldMapPickActivity": "هذا نشاط محادثة يمكنك لعبه معي أو مع شريك. انقر عليه لبدء اللعب!",
-    "tutorialActivityGoals": "هذه هي أهداف الدور الذي تلعبه، أرسل رسائل لإكمالها واكسب النجوم!",
+    "tutorialWorldMapPickActivity": "هذا نشاط محادثة يمكنك لعبه معي أو مع شريك. انقر عليه للبدء!",
+    "tutorialActivityGoals": "هذه هي أهداف الدور الذي تلعبه، أرسل رسائل تكملها واكسب النجوم!",
     "tutorialCoursePlanIntro": "مرحباً بك في دورتك، {courseName}! ستأخذك في رحلة تعليمية مع زملائك في الدورة.",
     "tutorialCoursePlanProgress": "كلما قمت بالأنشطة وحصلت على النجوم، ستحرز تقدماً هنا.",
     "tutorialCoursePlanPickActivity": "هذه هي الأنشطة التي يجب تجربتها لاحقاً في دورتك. اضغط على أحدها لفتحه وبدئه!",
@@ -10199,7 +10201,14 @@
     "tutorialAppTourAnalytics": "هذا هو تقدمك: كل كلمة وشكل نحوي استخدمته.",
     "tutorialAppTourPractice": "ستجد دروس تدريب مخصصة هنا، طالما أنك فتحت 10 كلمات مفردات على الأقل",
     "tutorialAppTourWorld": "وهذا يعيدك إلى خريطة العالم في أي وقت. تعلم سعيد!",
-    "edited": "تم التعديل",
-    "attach": "إرفاق",
-    "callHistoryTranscript": "النص"
+    "tutorialSequenceTitleWorldOrientation": "استكشاف العالم",
+    "tutorialSequenceTitleCourseOrientation": "استكشاف دورتك",
+    "tutorialSequenceTitleAppTour": "جولة في التطبيق",
+    "tutorialSequenceTitleActivityGoals": "الأهداف والنجوم",
+    "tutorialSequenceTitleChat": "أدوات اللغة",
+    "tutorialSequenceTitleOpenSessions": "جلسات مفتوحة",
+    "tutorialSequenceTitleActivityRoles": "اختيار دور",
+    "tutorialOpenSessions": "هذه أنشطة يلعبها أشخاص آخرون. انضم إلى إحداها للدردشة، ولكن كن على علم بأنهم قد لا يستجيبون على الفور.",
+    "tutorialActivityRoles": "هذه هي الأدوار التي يمكنك لعبها في هذا النشاط. اختر الدور الذي يثير اهتمامك!",
+    "unlockActivitySummaries": "افتح ملخصات الأنشطة"
 }

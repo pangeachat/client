@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-08 16:06:55.236516",
+    "@@last_modified": "2026-09-09 09:15:55.169247",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9948,7 +9948,9 @@
     "listenFirstDescription": "Saat Dengarkan Dulu aktif, satu klik hanya memutar audio dan klik ganda memilih opsi.",
     "listenFirstNeedsChoiceAudio": "Nyalakan audio Pilihan untuk menggunakan Dengarkan Dulu.",
     "unableToJoinCourseError": "Kami tidak dapat menambahkan Anda ke kursus ini sekarang. Silakan coba lagi, atau tanyakan kepada guru Anda.",
-    "unlockActivitySummaries": "Buka ringkasan aktivitas",
+    "edited": "Diedit",
+    "attach": "Lampirkan",
+    "callHistoryTranscript": "Transkrip",
     "tutorialWelcome": "Saya Pangea Bot, pemandu Anda dan mitra percakapan AI. Mari mulai belajar!",
     "tutorialWorldMapIntro": "Ini adalah peta dunia. Setiap aktivitas roleplay dalam {language} ada di sini.",
     "tutorialWorldMapPickActivity": "Ini adalah aktivitas percakapan yang dapat Anda mainkan dengan saya atau mitra. Klik untuk mulai bermain!",
@@ -9966,7 +9968,14 @@
     "tutorialAppTourAnalytics": "Ini adalah kemajuan Anda: setiap kata dan bentuk tata bahasa yang telah Anda gunakan.",
     "tutorialAppTourPractice": "Anda akan menemukan pelajaran praktik yang dipersonalisasi di sini, selama Anda telah membuka setidaknya 10 kata kosakata",
     "tutorialAppTourWorld": "Dan ini akan membawa Anda kembali ke peta dunia kapan saja. Selamat belajar!",
-    "edited": "Diedit",
-    "attach": "Lampirkan",
-    "callHistoryTranscript": "Transkrip"
+    "tutorialSequenceTitleWorldOrientation": "Menjelajahi dunia",
+    "tutorialSequenceTitleCourseOrientation": "Menjelajahi kursus Anda",
+    "tutorialSequenceTitleAppTour": "Tur aplikasi",
+    "tutorialSequenceTitleActivityGoals": "Tujuan & bintang",
+    "tutorialSequenceTitleChat": "Alat bahasa",
+    "tutorialSequenceTitleOpenSessions": "Sesi terbuka",
+    "tutorialSequenceTitleActivityRoles": "Memilih peran",
+    "tutorialOpenSessions": "Ini adalah aktivitas yang dimainkan orang lain. Bergabunglah untuk mengobrol, tetapi perlu diingat mereka mungkin tidak langsung merespons.",
+    "tutorialActivityRoles": "Ini adalah peran yang dapat Anda mainkan dalam aktivitas ini. Pilih yang menarik bagi Anda!",
+    "unlockActivitySummaries": "Buka ringkasan aktivitas"
 }
