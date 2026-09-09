@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-09-09 09:15:49.011391",
+    "@@last_modified": "2026-09-09 11:24:57.893622",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2309,5 +2309,6 @@
     "tutorialOpenSessions": "Dit binne aktiviteiten dy't oare minsken spylje. Doch mei om te petearjen, mar wês bewust dat se miskien net fuortendaliks reagearje.",
     "tutorialActivityRoles": "Dit binne de rollen dy't jo yn dizze aktiviteit spylje kinne. Kies dejinge dy't jo ynteresseart!",
     "unlockActivitySummaries": "Untskoattelje aktiviteitsgearfallings",
-    "upNext": "Folgjende"
+    "upNext": "Folgjende",
+    "writingAssistanceSuggestion": "Suggestje"
 }

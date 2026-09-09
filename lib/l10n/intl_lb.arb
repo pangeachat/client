@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-09-09 09:16:05.090664",
+    "@@last_modified": "2026-09-09 11:24:59.889674",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2309,5 +2309,6 @@
     "tutorialOpenSessions": "Dëst sinn Aktivitéiten déi aner Leit spillen. Maach mat fir ze chatten, awer sief bewosst datt se vläicht net direkt äntweren.",
     "tutorialActivityRoles": "Dëst sinn d'Rollen déi s du an dëser Aktivitéit spille kanns. Wielt déi déi dech interesséiert!",
     "unlockActivitySummaries": "Spär Aktivitéitsresuméen op",
-    "upNext": "Als Nächstes"
+    "upNext": "Als Nächstes",
+    "writingAssistanceSuggestion": "Virschlag"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-09-09 09:16:22.694802",
+    "@@last_modified": "2026-09-09 11:25:00.564117",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2309,5 +2309,6 @@
     "tutorialOpenSessions": "ꯑꯁꯤ ꯑꯇꯣꯞꯄꯥ ꯃꯤꯑꯣꯏꯁꯤꯡꯅꯥ ꯁꯥꯟꯅꯔꯤꯕꯥ ꯑꯦꯛꯇꯤꯚꯤꯇꯤꯁꯤꯡꯅꯤ. ꯋꯥꯔꯤ ꯁꯥꯟꯅꯕꯥ ꯑꯃꯥ ꯍꯥꯞꯆꯤꯟꯎ, ꯑꯗꯨꯕꯨ ꯃꯈꯣꯌꯅꯥ ꯊꯨꯅꯥ ꯈꯨꯃꯟꯗꯕꯥ ꯌꯥꯏ ꯍꯥꯌꯕꯥ ꯈꯪꯎ.",
     "tutorialActivityRoles": "ꯑꯁꯤ ꯅꯍꯥꯛꯅꯥ ꯑꯦꯛꯇꯤꯚꯤꯇꯤ ꯑꯁꯤꯗꯥ ꯁꯥꯟꯅꯕꯥ ꯌꯥꯕꯥ ꯔꯣꯜꯁꯤꯡꯅꯤ. ꯅꯍꯥꯛꯄꯨ ꯆꯞ ꯆꯥꯕꯥ ꯑꯗꯨ ꯈꯟꯎ!",
     "unlockActivitySummaries": "থবকশিংগী খুৎলমশিং হাংদোক্কনবা",
-    "upNext": "തുടർന്നുള്ളത്"
+    "upNext": "തുടർന്നുള്ളത്",
+    "writingAssistanceSuggestion": "ꯁल्लाह"
 }

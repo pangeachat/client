@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-09-09 09:15:49.794311",
+    "@@last_modified": "2026-09-09 11:24:58.395136",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2309,5 +2309,6 @@
     "tutorialOpenSessions": "આ એવી પ્રવૃત્તિઓ છે જે અન્ય લોકો રમી રહ્યા છે. ચેટ કરવા માટે એકમાં જોડાઓ, પરંતુ ધ્યાન રાખો કે તેઓ તરત જ જવાબ ન પણ આપે.",
     "tutorialActivityRoles": "આ ભૂમિકાઓ છે જે તમે આ પ્રવૃત્તિમાં ભજવી શકો છો. તમને રસ હોય તે પસંદ કરો!",
     "unlockActivitySummaries": "પ્રવૃત્તિ સારાંશ અનલૉક કરો",
-    "upNext": "આગળ"
+    "upNext": "આગળ",
+    "writingAssistanceSuggestion": "સૂચન"
 }

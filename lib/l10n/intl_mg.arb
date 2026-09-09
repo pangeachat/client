@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-09-09 09:16:08.290427",
+    "@@last_modified": "2026-09-09 11:25:00.538851",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2309,5 +2309,6 @@
     "tutorialOpenSessions": "Ireo dia hetsika lalaovin'ny olon-kafa. Midira amin'ny iray hiresahana, fa tandremo fa mety tsy hamaly avy hatrany izy ireo.",
     "tutorialActivityRoles": "Ireo no anjara azonao lalaovina amin'ity hetsika ity. Fidio izay mahaliana anao!",
     "unlockActivitySummaries": "Sokafy ny famintinana ny asa",
-    "upNext": "Manaraka"
+    "upNext": "Manaraka",
+    "writingAssistanceSuggestion": "Soso-kevitra"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-09-09 09:16:34.010266",
+    "@@last_modified": "2026-09-09 11:25:02.707393",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2309,5 +2309,6 @@
     "tutorialOpenSessions": "Le yimisebenzi abanye abantu abayidlalayo. Joyina enye ukuze uncokole, kodwa qaphela ukuba basenokungaphenduli ngoko nangoko.",
     "tutorialActivityRoles": "Ezi ziindima onokuzidlala kulo msebenzi. Khetha leyo ekunomdla kuwe!",
     "unlockActivitySummaries": "Vula izishwankathelo zomsebenzi",
-    "upNext": "Okulandelayo"
+    "upNext": "Okulandelayo",
+    "writingAssistanceSuggestion": "Ingcebiso"
 }

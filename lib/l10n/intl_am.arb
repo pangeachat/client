@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-09-09 09:15:41.019746",
+    "@@last_modified": "2026-09-09 11:24:56.593060",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2309,5 +2309,6 @@
     "tutorialOpenSessions": "እነዚህ ሌሎች ሰዎች እየተጫወቱ ያሉ እንቅስቃሴዎች ናቸው። ለመወያየት አንዱን ተቀላቀል፣ ግን ወዲያውኑ ላይመልሱ እንደሚችሉ እወቅ።",
     "tutorialActivityRoles": "እነዚህ በዚህ እንቅስቃሴ ውስጥ መጫወት የምትችላቸው ሚናዎች ናቸው። የሚስብህን ምረጥ!",
     "unlockActivitySummaries": "የእንቅስቃሴ ማጠቃለያዎችን ክፈት",
-    "upNext": "በመቀጠል"
+    "upNext": "በመቀጠል",
+    "writingAssistanceSuggestion": "ጥቆማ"
 }

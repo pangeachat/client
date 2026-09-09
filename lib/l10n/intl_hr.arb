@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-09-09 09:15:52.137120",
+    "@@last_modified": "2026-09-09 11:24:58.569460",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10341,5 +10341,6 @@
     "tutorialOpenSessions": "Ovo su aktivnosti koje igraju drugi ljudi. Pridruži se jednoj za razgovor, ali imaj na umu da možda neće odmah odgovoriti.",
     "tutorialActivityRoles": "Ovo su uloge koje možeš igrati u ovoj aktivnosti. Odaberi onu koja te zanima!",
     "unlockActivitySummaries": "Otključaj sažetke aktivnosti",
-    "upNext": "Slijedi"
+    "upNext": "Slijedi",
+    "writingAssistanceSuggestion": "Prijedlog"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-09-09 09:15:43.062367",
+    "@@last_modified": "2026-09-09 11:24:57.103061",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9892,5 +9892,6 @@
     "tutorialOpenSessions": "Das sind Aktivitäten, die andere Leute spielen. Nimm an einer teil, um zu chatten, aber sei dir bewusst, dass sie möglicherweise nicht sofort antworten.",
     "tutorialActivityRoles": "Das sind die Rollen, die du in dieser Aktivität spielen kannst. Wähle diejenige, die dich interessiert!",
     "unlockActivitySummaries": "Aktivitätsübersichten freischalten",
-    "upNext": "Als Nächstes"
+    "upNext": "Als Nächstes",
+    "writingAssistanceSuggestion": "Vorschlag"
 }

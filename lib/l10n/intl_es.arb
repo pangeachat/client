@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-09-09 09:15:43.774064",
+    "@@last_modified": "2026-09-09 11:24:57.743452",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8124,5 +8124,6 @@
     "tutorialOpenSessions": "Estas son actividades que otras personas están jugando. Únete a una para chatear, pero ten en cuenta que es posible que no respondan de inmediato.",
     "tutorialActivityRoles": "Estos son los roles que puedes desempeñar en esta actividad. ¡Elige el que más te interese!",
     "unlockActivitySummaries": "Desbloquear resúmenes de actividad",
-    "upNext": "A continuación"
+    "upNext": "A continuación",
+    "writingAssistanceSuggestion": "Sugerencia"
 }

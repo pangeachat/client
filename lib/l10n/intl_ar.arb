@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-09-09 09:15:41.701369",
+    "@@last_modified": "2026-09-09 11:24:56.519682",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10211,5 +10211,6 @@
     "tutorialOpenSessions": "هذه أنشطة يلعبها أشخاص آخرون. انضم إلى إحداها للدردشة، ولكن كن على علم بأنهم قد لا يستجيبون على الفور.",
     "tutorialActivityRoles": "هذه هي الأدوار التي يمكنك لعبها في هذا النشاط. اختر الدور الذي يثير اهتمامك!",
     "unlockActivitySummaries": "افتح ملخصات الأنشطة",
-    "upNext": "التالي"
+    "upNext": "التالي",
+    "writingAssistanceSuggestion": "اقتراح"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-09-09 09:16:20.567034",
+    "@@last_modified": "2026-09-09 11:25:01.411640",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2309,5 +2309,6 @@
     "tutorialOpenSessions": "هي اهي سرگرميون آهن جيڪي ٻيا ماڻهو ڪري رهيا آهن. چيٽ ڪرڻ لاءِ هڪ ۾ شامل ٿيو، پر خبردار رهو ته اهي شايد فوري طور تي جواب نه ڏين.",
     "tutorialActivityRoles": "هي اهي رول آهن جيڪي توهان هن سرگرمي ۾ ادا ڪري سگهو ٿا. اهو چونڊيو جيڪو توهان کي دلچسپي ڏئي!",
     "unlockActivitySummaries": "سرگرميءَ جي خلاصن کي کوليو",
-    "upNext": "اڳيان"
+    "upNext": "اڳيان",
+    "writingAssistanceSuggestion": "تجويز"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-09-09 09:16:12.050046",
+    "@@last_modified": "2026-09-09 11:25:01.074661",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2309,5 +2309,6 @@
     "tutorialOpenSessions": "Dette er aktiviteter andre mennesker spiller. Bli med på en for å chatte, men vær oppmerksom på at de k kanskje ikke svarer med en gang.",
     "tutorialActivityRoles": "Dette er rollene du kan spille i denne aktiviteten. Velg den som interesserer deg!",
     "unlockActivitySummaries": "Lås opp aktivitetssammendrag",
-    "upNext": "Neste"
+    "upNext": "Neste",
+    "writingAssistanceSuggestion": "Forslag"
 }

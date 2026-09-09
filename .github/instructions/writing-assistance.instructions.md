@@ -53,7 +53,11 @@ The current `StartIGCButton` is updated to display a **segmented ring**, indicat
 | Zero matches    | Check visible, **solid green ring**  |
 | Input cleared   | Ring **animates out**, returns to idle          |
 | Re-fetch        | Icon **spins again**, old segments cleared      |
+| Suggestion waiting | Lightbulb with two primary-colored segments; tapping the ring opens the suggestion card (closes it if already open) |
+| Suggestion accepted | Lightbulb, **solid green ring**; tapping does nothing, and editing the accepted text returns the ring to the check states |
 | Error           | error indicator (TBD) |
+
+A **suggestion** is the activity orchestrator's proposed next message, offered while the composer is empty. It is a separate flow from grammar matches, so in the two lightbulb states the ring is named "Suggestion" rather than "Check" (its tooltip and accessible name are the same string).
 
 The ring **animates in** when segments first appear and **animates out** when the input field is cleared. When the user edits text and triggers a re-fetch, the icon spins again and old segments are discarded — the new response rebuilds the ring from scratch.
 

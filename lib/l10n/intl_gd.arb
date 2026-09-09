@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-09-09 09:15:52.038784",
+    "@@last_modified": "2026-09-09 11:24:58.460682",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2309,5 +2309,6 @@
     "tutorialOpenSessions": "Is iad sin gnìomhan a tha daoine eile a’ cluich. Thig a-steach do aon airson cabadaich, ach bi mothachail gur dòcha nach freagair iad sa bhad.",
     "tutorialActivityRoles": "Seo na dreuchdan as urrainn dhut a chluich sa ghnìomhachd seo. Tagh am fear a tha inntinneach dhut!",
     "unlockActivitySummaries": "Fuasgail geàrr-chunntasan gnìomhachd",
-    "upNext": "An ath rud"
+    "upNext": "An ath rud",
+    "writingAssistanceSuggestion": "Molaidhean"
 }

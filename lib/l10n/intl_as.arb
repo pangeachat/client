@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-09-09 09:15:38.476897",
+    "@@last_modified": "2026-09-09 11:24:56.595216",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2309,5 +2309,6 @@
     "tutorialOpenSessions": "এইবোৰ আন লোকে খেলা কাৰ্যকলাপ। চাট কৰিবলৈ এটাত যোগদান কৰক, কিন্তু মনত ৰাখিব যে তেওঁলোকে লগে লগে সঁহাৰি নিদিবও পাৰে।",
     "tutorialActivityRoles": "এইবোৰ হৈছে এই কাৰ্যকলাপত আপুনি খেলিব পৰা ভূমিকা। আপোনাক আগ্ৰহী কৰা এটা বাছনি কৰক!",
     "unlockActivitySummaries": "কাৰ্যকলাপৰ সাৰাংশসমূহ আনলক কৰক",
-    "upNext": "পৰৱৰ্তী"
+    "upNext": "পৰৱৰ্তী",
+    "writingAssistanceSuggestion": "পৰামৰ্শ"
 }

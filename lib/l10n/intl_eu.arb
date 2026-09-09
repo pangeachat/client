@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-09-09 09:15:47.196352",
+    "@@last_modified": "2026-09-09 11:24:57.925487",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9905,5 +9905,6 @@
     "tutorialOpenSessions": "Hauek beste pertsona batzuk jolasten ari diren jarduerak dira. Sartu batean txateatzeko, baina kontuan izan agian ez dutela berehala erantzungo.",
     "tutorialActivityRoles": "Hauek dira jarduera honetan jokatu ditzakezun rolak. Aukeratu gehien interesatzen zaizuna!",
     "unlockActivitySummaries": "Desblokeatu jardueren laburpenak",
-    "upNext": "Jarraian"
+    "upNext": "Jarraian",
+    "writingAssistanceSuggestion": "Iradokizuna"
 }

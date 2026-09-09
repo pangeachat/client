@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-09-09 09:15:57.715507",
+    "@@last_modified": "2026-09-09 11:24:59.137118",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10674,5 +10674,6 @@
     "tutorialOpenSessions": "これらは他の人がプレイしているアクティビティです。参加してチャットできますが、すぐに返信がない場合があることに注意してください。",
     "tutorialActivityRoles": "これらはこのアクティビティでプレイできる役割です。興味のあるものを選んでください！",
     "unlockActivitySummaries": "アクティビティの概要をアンロック",
-    "upNext": "次はこちら"
+    "upNext": "次はこちら",
+    "writingAssistanceSuggestion": "提案"
 }

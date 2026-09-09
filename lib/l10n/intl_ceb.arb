@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-09-09 09:15:41.233762",
+    "@@last_modified": "2026-09-09 11:24:56.989843",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2309,5 +2309,6 @@
     "tutorialOpenSessions": "Kini ang mga kalihokan nga gidula sa ubang mga tawo. Apil sa usa aron maka-chat, apan hinumdomi nga basin dili sila motubag dayon.",
     "tutorialActivityRoles": "Kini ang mga papel nga pwede nimong dulaon sa kini nga kalihokan. Pilia ang usa nga makapainteres kanimo!",
     "unlockActivitySummaries": "I-unlock ang mga summary sa kalihokan",
-    "upNext": "Sunod"
+    "upNext": "Sunod",
+    "writingAssistanceSuggestion": "Sugyot"
 }

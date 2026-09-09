@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-09 09:16:11.468432",
+    "@@last_modified": "2026-09-09 11:25:00.585141",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9905,5 +9905,6 @@
     "tutorialOpenSessions": "Dit zijn activiteiten die andere mensen spelen. Doe mee om te chatten, maar houd er rekening mee dat ze misschien niet meteen reageren.",
     "tutorialActivityRoles": "Dit zijn de rollen die je in deze activiteit kunt spelen. Kies degene die je interesseert!",
     "unlockActivitySummaries": "Ontgrendel activiteitsoverzichten",
-    "upNext": "Volgende"
+    "upNext": "Volgende",
+    "writingAssistanceSuggestion": "Suggestie"
 }

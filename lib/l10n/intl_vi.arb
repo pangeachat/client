@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-09 09:16:30.892010",
+    "@@last_modified": "2026-09-09 11:25:03.017790",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7197,5 +7197,6 @@
     "tutorialOpenSessions": "Đây là các hoạt động mà những người khác đang chơi. Tham gia một hoạt động để trò chuyện, nhưng hãy lưu ý rằng họ có thể không phản hồi ngay lập tức.",
     "tutorialActivityRoles": "Đây là các vai trò bạn có thể đóng trong hoạt động này. Chọn vai trò mà bạn quan tâm!",
     "unlockActivitySummaries": "Mở khóa tóm tắt hoạt động",
-    "upNext": "Tiếp theo"
+    "upNext": "Tiếp theo",
+    "writingAssistanceSuggestion": "Gợi ý"
 }

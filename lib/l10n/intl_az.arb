@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-09-09 09:15:39.697456",
+    "@@last_modified": "2026-09-09 11:24:57.768887",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2309,5 +2309,6 @@
     "tutorialOpenSessions": "Bunlar başqalarının oynadığı fəaliyyətlərdir. Söhbət etmək üçün birinə qoşulun, lakin dərhal cavab verməyə biləcəklərini unutmayın.",
     "tutorialActivityRoles": "Bunlar bu fəaliyyətdə oynaya biləcəyiniz rollardır. Sizi maraqlandıranı seçin!",
     "unlockActivitySummaries": "Fəaliyyət xülasələrini açın",
-    "upNext": "Növbəti"
+    "upNext": "Növbəti",
+    "writingAssistanceSuggestion": "Təklif"
 }

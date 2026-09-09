@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-09-09 09:16:25.766785",
+    "@@last_modified": "2026-09-09 11:25:02.176644",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2309,5 +2309,6 @@
     "tutorialOpenSessions": "Hizi ni shughuli ambazo watu wengine wanacheza. Jiunge na moja ili kuzungumza, lakini fahamu kuwa huenda wasijibu mara moja.",
     "tutorialActivityRoles": "Haya ndiyo majukumu unayoweza kucheza katika shughuli hii. Chagua lile linalokuvutia!",
     "unlockActivitySummaries": "Fungua muhtasari wa shughuli",
-    "upNext": "Inayofuata"
+    "upNext": "Inayofuata",
+    "writingAssistanceSuggestion": "Pendekezo"
 }

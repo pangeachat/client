@@ -3536,7 +3536,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-09-09 09:15:46.255440",
+    "@@last_modified": "2026-09-09 11:24:58.068345",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9942,5 +9942,6 @@
     "tutorialOpenSessions": "Nämä ovat aktiviteetteja, joita muut ihmiset pelaavat. Liity yhteen keskustelemaan, mutta huomaa, että he eivät välttämättä vastaa heti.",
     "tutorialActivityRoles": "Nämä ovat roolit, joita voit pelata tässä aktiviteetissa. Valitse se, joka kiinnostaa sinua!",
     "unlockActivitySummaries": "Avaa yhteenvetoja toiminnoista",
-    "upNext": "Seuraavaksi"
+    "upNext": "Seuraavaksi",
+    "writingAssistanceSuggestion": "Ehdotus"
 }

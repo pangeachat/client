@@ -2559,7 +2559,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-09-09 09:16:17.264434",
+    "@@last_modified": "2026-09-09 11:25:01.092346",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10822,5 +10822,6 @@
     "tutorialOpenSessions": "Estas são atividades que outras pessoas estão a jogar. Junte-se a uma para conversar, mas esteja ciente de que podem não responder imediatamente.",
     "tutorialActivityRoles": "Estes são os papéis que pode desempenhar nesta atividade. Escolha o que mais lhe interessa!",
     "unlockActivitySummaries": "Desbloquear resumos de atividade",
-    "upNext": "A seguir"
+    "upNext": "A seguir",
+    "writingAssistanceSuggestion": "Sugestão"
 }

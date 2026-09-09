@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-09-09 09:16:26.931035",
+    "@@last_modified": "2026-09-09 11:25:01.830080",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2309,5 +2309,6 @@
     "tutorialOpenSessions": "Lena ke mesebetsi eo batho ba bang ba e bapalang. Ikopanye le e 'ngoe ho qoqa, empa hlokomela hore ba kanna ba se arabe hang-hang.",
     "tutorialActivityRoles": "Lena ke likarolo tseo u ka li bapalang mosebetsing ona. Khetha e u khahlang!",
     "unlockActivitySummaries": "Notlolla kakaretso ya ditshebetso",
-    "upNext": "Seo se latelang"
+    "upNext": "Seo se latelang",
+    "writingAssistanceSuggestion": "Tlhahiso"
 }

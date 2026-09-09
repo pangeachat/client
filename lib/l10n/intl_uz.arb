@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-09-09 09:16:35.392764",
+    "@@last_modified": "2026-09-09 11:25:02.716895",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9909,5 +9909,6 @@
     "tutorialOpenSessions": "Bular boshqa odamlar oʻynayotgan faoliyatlar. Suhbatlashish uchun biriga qoʻshiling, lekin ular darhol javob bermasligi mumkinligini unutmang.",
     "tutorialActivityRoles": "Bular ushbu faoliyatda oʻynashingiz mumkin boʻlgan rollar. Sizni qiziqtirganini tanlang!",
     "unlockActivitySummaries": "Faoliyat xulosalarini ochish",
-    "upNext": "Keyingisi"
+    "upNext": "Keyingisi",
+    "writingAssistanceSuggestion": "Taklif"
 }

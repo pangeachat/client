@@ -1802,7 +1802,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-09-09 09:16:21.177310",
+    "@@last_modified": "2026-09-09 11:25:01.566365",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10850,5 +10850,6 @@
     "tutorialOpenSessions": "To so aktivnosti, ki jih igrajo drugi ljudje. Pridruži se eni, da klepetaš, vendar se zavedaj, da morda ne bodo takoj odgovorili.",
     "tutorialActivityRoles": "To so vloge, ki jih lahko igraš v tej aktivnosti. Izberi tisto, ki te zanima!",
     "unlockActivitySummaries": "Odkleni povzetke dejavnosti",
-    "upNext": "Sledi"
+    "upNext": "Sledi",
+    "writingAssistanceSuggestion": "Predlog"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-09 09:16:01.586889",
+    "@@last_modified": "2026-09-09 11:24:59.529257",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10098,5 +10098,6 @@
     "tutorialOpenSessions": "이것들은 다른 사람들이 하고 있는 활동입니다. 참여하여 채팅할 수 있지만, 즉시 응답하지 않을 수도 있다는 점을 알아두세요.",
     "tutorialActivityRoles": "이것들은 이 활동에서 할 수 있는 역할입니다. 관심 있는 것을 선택하세요!",
     "unlockActivitySummaries": "활동 요약 잠금 해제",
-    "upNext": "다음"
+    "upNext": "다음",
+    "writingAssistanceSuggestion": "제안"
 }

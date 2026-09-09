@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-09 09:16:15.379568",
+    "@@last_modified": "2026-09-09 11:25:01.055987",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9905,5 +9905,6 @@
     "tutorialOpenSessions": "Estas são atividades que outras pessoas estão jogando. Junte-se a uma para conversar, mas esteja ciente de que elas podem não responder imediatamente.",
     "tutorialActivityRoles": "Estes são os papéis que você pode desempenhar nesta atividade. Escolha o que mais lhe interessa!",
     "unlockActivitySummaries": "Desbloquear resumos de atividade",
-    "upNext": "A seguir"
+    "upNext": "A seguir",
+    "writingAssistanceSuggestion": "Sugestão"
 }

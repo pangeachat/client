@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-09-09 09:15:51.866515",
+    "@@last_modified": "2026-09-09 11:24:58.487856",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2309,5 +2309,6 @@
     "tutorialOpenSessions": "ʻO kēia nā hana a nā poʻe ʻē aʻe e pāʻani nei. E komo i hoʻokahi e kamaʻilio, akā e makaʻala ʻaʻole paha lākou e pane koke.",
     "tutorialActivityRoles": "ʻO kēia nā kuleana āu e hiki ai ke pāʻani ma kēia hana. E koho i ka mea āu e makemake ai!",
     "unlockActivitySummaries": "Wehe i nā hōʻuluʻulu hana",
-    "upNext": "Aʻe aʻe"
+    "upNext": "Aʻe aʻe",
+    "writingAssistanceSuggestion": "Manaʻo kōkua"
 }

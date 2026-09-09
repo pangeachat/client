@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-09-09 09:16:32.857898",
+    "@@last_modified": "2026-09-09 11:25:02.739503",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9905,5 +9905,6 @@
     "tutorialOpenSessions": "这些是其他人正在进行的活动。加入一个来聊天，但请注意他们可能不会立即回复。",
     "tutorialActivityRoles": "这些是你可以此活动中扮演的角色。选择你感兴趣的一个！",
     "unlockActivitySummaries": "解锁活动总结",
-    "upNext": "接下来"
+    "upNext": "接下来",
+    "writingAssistanceSuggestion": "建议"
 }

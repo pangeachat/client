@@ -525,6 +525,7 @@
   "waitForSubscriptionChanges",
   "waitingToFillOneRole",
   "whatAreYouLearning",
+  "writingAssistanceSuggestion",
   "wuuDisplayName",
   "xhDisplayName",
   "yiDisplayName",
@@ -2734,6 +2735,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -4985,6 +4987,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -7236,6 +7239,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -9487,6 +9491,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -11738,6 +11743,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -13989,6 +13995,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -16240,6 +16247,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -18491,6 +18499,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -20742,6 +20751,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -22993,6 +23003,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -25244,6 +25255,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -27495,6 +27507,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -29746,6 +29759,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -31997,6 +32011,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -34248,6 +34263,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -36499,6 +36515,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -38750,6 +38767,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -41001,6 +41019,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -43252,6 +43271,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -45503,6 +45523,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -47754,6 +47775,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -50005,6 +50027,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -52256,6 +52279,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -54507,6 +54531,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -56758,6 +56783,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -59009,6 +59035,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -61260,6 +61287,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -63511,6 +63539,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -65762,6 +65791,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -68013,6 +68043,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -70264,6 +70295,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -72515,6 +72547,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -74766,6 +74799,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -77017,6 +77051,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -79268,6 +79303,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -81519,6 +81555,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -83770,6 +83807,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -86021,6 +86059,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -88272,6 +88311,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -90523,6 +90563,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -92774,6 +92815,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -95025,6 +95067,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -97276,6 +97319,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -99527,6 +99571,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -101778,6 +101823,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -104029,6 +104075,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -106280,6 +106327,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -108531,6 +108579,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -110782,6 +110831,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -113033,6 +113083,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -115284,6 +115335,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -117535,6 +117587,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -119786,6 +119839,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -122037,6 +122091,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -124288,6 +124343,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -126539,6 +126595,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -128790,6 +128847,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -131041,6 +131099,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -133292,6 +133351,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -135543,6 +135603,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -137794,6 +137855,7 @@
   "writeAMessageLangCodes",
   "writeAndSpeakWorryFree",
   "writingAssistanceNoSub",
+  "writingAssistanceSuggestion",
   "writingAssistanceTutorialIGCButton",
   "writingAssistanceTutorialInputBar",
   "writingExercisesTooltip",
@@ -138121,7 +138183,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "bn": [
   "actionsLabel",
@@ -138395,7 +138458,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "be": [
   "actionsLabel",
@@ -138669,7 +138733,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "cs": [
   "actionsLabel",
@@ -138943,7 +139008,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "da": [
   "actionsLabel",
@@ -139217,7 +139283,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "eo": [
   "actionsLabel",
@@ -139491,7 +139558,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "es": [
   "actionsLabel",
@@ -139762,7 +139830,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "de": [
   "actionsLabel",
@@ -140036,7 +140105,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "et": [
   "actionsLabel",
@@ -140310,7 +140380,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "el": [
   "actionsLabel",
@@ -140584,7 +140655,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "fil": [
   "actionsLabel",
@@ -140858,7 +140930,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "fr": [
   "actionsLabel",
@@ -141132,7 +141205,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "ga": [
   "actionsLabel",
@@ -141406,7 +141480,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "he": [
   "actionsLabel",
@@ -141680,7 +141755,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "hr": [
   "actionsLabel",
@@ -141954,7 +142030,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "hi": [
   "actionsLabel",
@@ -142228,7 +142305,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "ia": [
   "actionsLabel",
@@ -142502,7 +142580,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "id": [
   "actionsLabel",
@@ -142776,7 +142855,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "it": [
   "actionsLabel",
@@ -143050,7 +143130,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "ie": [
   "actionsLabel",
@@ -143324,7 +143405,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "ja": [
   "actionsLabel",
@@ -143598,7 +143680,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "lt": [
   "actionsLabel",
@@ -143872,7 +143955,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "lv": [
   "actionsLabel",
@@ -144146,7 +144230,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "nb": [
   "actionsLabel",
@@ -144420,7 +144505,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "nl": [
   "actionsLabel",
@@ -144694,7 +144780,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "pt": [
   "actionsLabel",
@@ -144968,7 +145055,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "ro": [
   "actionsLabel",
@@ -145242,7 +145330,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "pt_PT": [
   "actionsLabel",
@@ -145516,7 +145605,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "ru": [
   "actionsLabel",
@@ -145790,7 +145880,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "sl": [
   "actionsLabel",
@@ -146064,7 +146155,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "sk": [
   "actionsLabel",
@@ -146338,7 +146430,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "sv": [
   "actionsLabel",
@@ -146612,7 +146705,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "th": [
   "actionsLabel",
@@ -146886,7 +146980,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "ta": [
   "actionsLabel",
@@ -147160,7 +147255,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "te": [
   "actionsLabel",
@@ -147434,7 +147530,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "uk": [
   "actionsLabel",
@@ -147708,7 +147805,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "uz": [
   "actionsLabel",
@@ -147982,7 +148080,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "yue": [
   "actionsLabel",
@@ -148256,7 +148355,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "zh_Hant": [
   "actionsLabel",
@@ -148529,7 +148629,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "ca": [
   "actionsLabel",
@@ -148803,7 +148904,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "eu": [
   "actionsLabel",
@@ -149077,7 +149179,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "fa": [
   "actionsLabel",
@@ -149351,7 +149454,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "fi": [
   "actionsLabel",
@@ -149625,7 +149729,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "gl": [
   "actionsLabel",
@@ -149899,7 +150004,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "hu": [
   "actionsLabel",
@@ -150173,7 +150279,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "ka": [
   "actionsLabel",
@@ -150447,7 +150554,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "ko": [
   "actionsLabel",
@@ -150721,7 +150829,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "pl": [
   "actionsLabel",
@@ -150995,7 +151104,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "pt_BR": [
   "actionsLabel",
@@ -151269,7 +151379,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "sr": [
   "actionsLabel",
@@ -151543,7 +151654,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "tr": [
   "actionsLabel",
@@ -151817,7 +151929,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "vi": [
   "actionsLabel",
@@ -152091,7 +152204,8 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ],
  "zh": [
   "actionsLabel",
@@ -152364,6 +152478,7 @@
   "viewProfileImageLabel",
   "volumeLabel",
   "waitingToFillOneRole",
-  "whatAreYouLearning"
+  "whatAreYouLearning",
+  "writingAssistanceSuggestion"
  ]
 }

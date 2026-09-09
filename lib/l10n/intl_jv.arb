@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-09-09 09:15:58.517232",
+    "@@last_modified": "2026-09-09 11:24:59.416710",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2309,5 +2309,6 @@
     "tutorialOpenSessions": "Iki aktivitas sing dimainake wong liya. Gabung siji kanggo pacelathon, nanging elinga yen dheweke bisa uga ora langsung nanggepi.",
     "tutorialActivityRoles": "Iki peran sing bisa kok dolanan ing aktivitas iki. Pilih sing narik kawigatenmu!",
     "unlockActivitySummaries": "Mbukak ringkesan aktivitas",
-    "upNext": "Sabanjuré"
+    "upNext": "Sabanjuré",
+    "writingAssistanceSuggestion": "Saran"
 }
