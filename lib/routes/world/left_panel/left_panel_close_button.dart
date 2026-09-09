@@ -102,7 +102,12 @@ class LeftPanelCloseButton extends StatelessWidget {
   /// token so the bar takes over at the size the card reached (#8866). A
   /// card torn down mid-shrink has nothing to hand over, so it navigates
   /// nowhere; a host with no reveal (narrow, a test) closes at once.
-  Future<void> _collapseToBar(BuildContext context) async {
+  ///
+  /// Public because the card's header runs this same collapse on a tap
+  /// ([SpaceDetailsHeader], #8909): the chevron and the header are one
+  /// control with two hit areas, so they share one action rather than two
+  /// copies of it. [context] is any context inside the card's reveal.
+  Future<void> collapseToBar(BuildContext context) async {
     final reveal = CourseCardReveal.maybeOf(context);
     if (reveal != null && !await reveal.collapse()) return;
     if (context.mounted) _close(context);
@@ -124,7 +129,7 @@ class LeftPanelCloseButton extends StatelessWidget {
     // to the context bar; in the cavity the chevron drives the sheet directly
     // and this fallback goes unused.
     if (_closeAffordance.showChevron) {
-      return FloorChevron(onToggleOffCavity: () => _collapseToBar(context));
+      return FloorChevron(onToggleOffCavity: () => collapseToBar(context));
     }
 
     return _closeAffordance.showBack
