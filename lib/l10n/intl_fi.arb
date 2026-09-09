@@ -9944,5 +9944,6 @@
     "unlockActivitySummaries": "Avaa yhteenvetoja toiminnoista",
     "upNext": "Seuraavaksi",
     "writingAssistanceSuggestion": "Ehdotus",
-    "errorFetchingWordInfo": "Sanan tietojen nouto epäonnistui"
+    "errorFetchingWordInfo": "Sanan tietojen nouto epäonnistui",
+    "contentCreatedBy": "Luonut"
 }

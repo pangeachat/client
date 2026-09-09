@@ -9518,5 +9518,6 @@
     "unlockActivitySummaries": "བྱ་བའི་སྙིང་བསྡུས་ཀྱི་གསང་བ་འབྱེད་པ།",
     "upNext": "རྗེས་མ།",
     "writingAssistanceSuggestion": "བསམ་འཆར།",
-    "errorFetchingWordInfo": "ཚིག་གི་ཆ་འཕྲིན་ལེན་མ་ཐུབ།"
+    "errorFetchingWordInfo": "ཚིག་གི་ཆ་འཕྲིན་ལེན་མ་ཐུབ།",
+    "contentCreatedBy": "བཟོ་མཁན།"
 }

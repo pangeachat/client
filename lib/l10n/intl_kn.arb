@@ -2311,5 +2311,6 @@
     "unlockActivitySummaries": "ಚಟುವಟಿಕೆ ಸಾರಾಂಶಗಳನ್ನು ಅನ್‌ಲಾಕ್ ಮಾಡಿ",
     "upNext": "ಮುಂದೆ",
     "writingAssistanceSuggestion": "ಸಲಹೆ",
-    "errorFetchingWordInfo": "ಪದದ ಮಾಹಿತಿಯನ್ನು ಪಡೆಯಲು ವಿಫಲವಾಗಿದೆ"
+    "errorFetchingWordInfo": "ಪದದ ಮಾಹಿತಿಯನ್ನು ಪಡೆಯಲು ವಿಫಲವಾಗಿದೆ",
+    "contentCreatedBy": "ರಚಿಸಿದವರು"
 }

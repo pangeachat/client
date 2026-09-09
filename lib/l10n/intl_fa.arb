@@ -9995,5 +9995,6 @@
     "unlockActivitySummaries": "خلاصه‌های فعالیت را باز کنید",
     "upNext": "بعدی",
     "writingAssistanceSuggestion": "پیشنهاد",
-    "errorFetchingWordInfo": "دریافت اطلاعات کلمه با مشکل مواجه شد"
+    "errorFetchingWordInfo": "دریافت اطلاعات کلمه با مشکل مواجه شد",
+    "contentCreatedBy": "ایجاد شده توسط"
 }

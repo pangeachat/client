@@ -9980,5 +9980,6 @@
     "unlockActivitySummaries": "Sblocca i riepiloghi delle attività",
     "upNext": "Prossimo",
     "writingAssistanceSuggestion": "Suggerimento",
-    "errorFetchingWordInfo": "Impossibile recuperare le informazioni sulla parola"
+    "errorFetchingWordInfo": "Impossibile recuperare le informazioni sulla parola",
+    "contentCreatedBy": "Creato da"
 }

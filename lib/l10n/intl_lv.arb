@@ -9907,5 +9907,6 @@
     "unlockActivitySummaries": "Atbloķēt aktivitātes kopsavilkumus",
     "upNext": "Nākamais",
     "writingAssistanceSuggestion": "Ieteikums",
-    "errorFetchingWordInfo": "Neizdevās ielādēt vārda informāciju"
+    "errorFetchingWordInfo": "Neizdevās ielādēt vārda informāciju",
+    "contentCreatedBy": "Izveidoja"
 }

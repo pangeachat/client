@@ -10100,5 +10100,6 @@
     "unlockActivitySummaries": "활동 요약 잠금 해제",
     "upNext": "다음",
     "writingAssistanceSuggestion": "제안",
-    "errorFetchingWordInfo": "단어 정보를 가져오지 못했습니다."
+    "errorFetchingWordInfo": "단어 정보를 가져오지 못했습니다.",
+    "contentCreatedBy": "제작자"
 }

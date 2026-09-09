@@ -2311,5 +2311,6 @@
     "unlockActivitySummaries": "Ftaħ is-sommarji tal-attività",
     "upNext": "Li jmiss",
     "writingAssistanceSuggestion": "Suġġeriment",
-    "errorFetchingWordInfo": "Naqset il-ġbir tal-informazzjoni tal-kelma"
+    "errorFetchingWordInfo": "Naqset il-ġbir tal-informazzjoni tal-kelma",
+    "contentCreatedBy": "Maħluqa minn"
 }

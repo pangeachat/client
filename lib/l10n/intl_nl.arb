@@ -9907,5 +9907,6 @@
     "unlockActivitySummaries": "Ontgrendel activiteitsoverzichten",
     "upNext": "Volgende",
     "writingAssistanceSuggestion": "Suggestie",
-    "errorFetchingWordInfo": "Woordinformatie ophalen mislukt"
+    "errorFetchingWordInfo": "Woordinformatie ophalen mislukt",
+    "contentCreatedBy": "Gemaakt door"
 }

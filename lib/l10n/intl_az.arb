@@ -2311,5 +2311,6 @@
     "unlockActivitySummaries": "Fəaliyyət xülasələrini açın",
     "upNext": "Növbəti",
     "writingAssistanceSuggestion": "Təklif",
-    "errorFetchingWordInfo": "Söz məlumatı əldə edilmədi"
+    "errorFetchingWordInfo": "Söz məlumatı əldə edilmədi",
+    "contentCreatedBy": "Yaradılıb"
 }

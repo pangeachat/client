@@ -10539,5 +10539,6 @@
     "unlockActivitySummaries": "गतिविधि सारांश अनलॉक करें",
     "upNext": "आगे क्या",
     "writingAssistanceSuggestion": "सुझाव",
-    "errorFetchingWordInfo": "शब्द की जानकारी लाने में विफल रहा"
+    "errorFetchingWordInfo": "शब्द की जानकारी लाने में विफल रहा",
+    "contentCreatedBy": "इसके द्वारा बनाया गया"
 }

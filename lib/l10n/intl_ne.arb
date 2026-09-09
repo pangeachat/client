@@ -2311,5 +2311,6 @@
     "unlockActivitySummaries": "गतिविधि सारांशहरू अनलक गर्नुहोस्",
     "upNext": "अर्को",
     "writingAssistanceSuggestion": "सुझाव",
-    "errorFetchingWordInfo": "शब्द जानकारी प्राप्त गर्न असफल भयो"
+    "errorFetchingWordInfo": "शब्द जानकारी प्राप्त गर्न असफल भयो",
+    "contentCreatedBy": "द्वारा सिर्जना गरिएको"
 }

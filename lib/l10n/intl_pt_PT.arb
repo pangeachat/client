@@ -10824,5 +10824,6 @@
     "unlockActivitySummaries": "Desbloquear resumos de atividade",
     "upNext": "A seguir",
     "writingAssistanceSuggestion": "Sugestão",
-    "errorFetchingWordInfo": "Falha ao obter informações da palavra"
+    "errorFetchingWordInfo": "Falha ao obter informações da palavra",
+    "contentCreatedBy": "Criado por"
 }

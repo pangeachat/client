@@ -2311,5 +2311,6 @@
     "unlockActivitySummaries": "Fuasgail geàrr-chunntasan gnìomhachd",
     "upNext": "An ath rud",
     "writingAssistanceSuggestion": "Molaidhean",
-    "errorFetchingWordInfo": "Dh'fhàillig fiosrachadh facal fhaighinn"
+    "errorFetchingWordInfo": "Dh'fhàillig fiosrachadh facal fhaighinn",
+    "contentCreatedBy": "Air a chruthachadh le"
 }

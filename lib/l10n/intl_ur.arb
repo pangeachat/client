@@ -2311,5 +2311,6 @@
     "unlockActivitySummaries": "سرگرمی کے خلاصے اَن لاک کریں",
     "upNext": "اگلا",
     "writingAssistanceSuggestion": "تجویز",
-    "errorFetchingWordInfo": "لفظ کی معلومات حاصل کرنے میں ناکامی"
+    "errorFetchingWordInfo": "لفظ کی معلومات حاصل کرنے میں ناکامی",
+    "contentCreatedBy": "تخلیق کردہ"
 }

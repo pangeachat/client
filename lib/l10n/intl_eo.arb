@@ -10852,5 +10852,6 @@
     "unlockActivitySummaries": "Malŝlosu agadajn resumojn",
     "upNext": "Poste",
     "writingAssistanceSuggestion": "Sugesto",
-    "errorFetchingWordInfo": "Malsukcesis preni vortinformon"
+    "errorFetchingWordInfo": "Malsukcesis preni vortinformon",
+    "contentCreatedBy": "Kreita de"
 }

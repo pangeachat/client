@@ -10782,5 +10782,6 @@
     "unlockActivitySummaries": "Ξεκλείδωμα περιλήψεων δραστηριοτήτων",
     "upNext": "Στη συνέχεια",
     "writingAssistanceSuggestion": "Πρόταση",
-    "errorFetchingWordInfo": "Αποτυχία ανάκτησης πληροφοριών λέξης"
+    "errorFetchingWordInfo": "Αποτυχία ανάκτησης πληροφοριών λέξης",
+    "contentCreatedBy": "Δημιουργήθηκε από"
 }

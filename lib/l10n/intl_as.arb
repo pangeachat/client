@@ -2311,5 +2311,6 @@
     "unlockActivitySummaries": "কাৰ্যকলাপৰ সাৰাংশসমূহ আনলক কৰক",
     "upNext": "পৰৱৰ্তী",
     "writingAssistanceSuggestion": "পৰামৰ্শ",
-    "errorFetchingWordInfo": "শব্দৰ তথ্য আহৰণ কৰাত ব্যৰ্থ হৈছে"
+    "errorFetchingWordInfo": "শব্দৰ তথ্য আহৰণ কৰাত ব্যৰ্থ হৈছে",
+    "contentCreatedBy": "দ্বাৰা সৃষ্টি কৰা হৈছে"
 }

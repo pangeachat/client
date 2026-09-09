@@ -9992,5 +9992,6 @@
     "unlockActivitySummaries": "Odblokuj podsumowania aktywności",
     "upNext": "Następnie",
     "writingAssistanceSuggestion": "Sugestia",
-    "errorFetchingWordInfo": "Nie udało się pobrać informacji o słowie"
+    "errorFetchingWordInfo": "Nie udało się pobrać informacji o słowie",
+    "contentCreatedBy": "Utworzone przez"
 }

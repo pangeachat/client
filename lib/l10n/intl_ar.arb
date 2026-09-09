@@ -10213,5 +10213,6 @@
     "unlockActivitySummaries": "افتح ملخصات الأنشطة",
     "upNext": "التالي",
     "writingAssistanceSuggestion": "اقتراح",
-    "errorFetchingWordInfo": "فشل جلب معلومات الكلمة"
+    "errorFetchingWordInfo": "فشل جلب معلومات الكلمة",
+    "contentCreatedBy": "تم الإنشاء بواسطة"
 }

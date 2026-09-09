@@ -9907,5 +9907,6 @@
     "unlockActivitySummaries": "Desblokeatu jardueren laburpenak",
     "upNext": "Jarraian",
     "writingAssistanceSuggestion": "Iradokizuna",
-    "errorFetchingWordInfo": "Ezin izan da hitzaren informazioa eskuratu"
+    "errorFetchingWordInfo": "Ezin izan da hitzaren informazioa eskuratu",
+    "contentCreatedBy": "Nork sortua"
 }

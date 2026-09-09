@@ -10013,5 +10013,6 @@
     "unlockActivitySummaries": "解鎖活動摘要",
     "upNext": "接下來",
     "writingAssistanceSuggestion": "建議",
-    "errorFetchingWordInfo": "無法取得單字資訊"
+    "errorFetchingWordInfo": "無法取得單字資訊",
+    "contentCreatedBy": "建立者"
 }

@@ -2311,5 +2311,6 @@
     "unlockActivitySummaries": "Lås opp aktivitetssammendrag",
     "upNext": "Neste",
     "writingAssistanceSuggestion": "Forslag",
-    "errorFetchingWordInfo": "Kunne ikke hente ordinformasjon"
+    "errorFetchingWordInfo": "Kunne ikke hente ordinformasjon",
+    "contentCreatedBy": "Opprettet av"
 }

@@ -10539,5 +10539,6 @@
     "unlockActivitySummaries": "ปลดล็อกสรุปกิจกรรม",
     "upNext": "ถัดไป",
     "writingAssistanceSuggestion": "ข้อเสนอแนะ",
-    "errorFetchingWordInfo": "ไม่สามารถดึงข้อมูลคำศัพท์ได้"
+    "errorFetchingWordInfo": "ไม่สามารถดึงข้อมูลคำศัพท์ได้",
+    "contentCreatedBy": "สร้างโดย"
 }

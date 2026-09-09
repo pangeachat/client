@@ -2311,5 +2311,6 @@
     "unlockActivitySummaries": "Vula izifinyezo zomsebenzi",
     "upNext": "Okulandelayo",
     "writingAssistanceSuggestion": "Isiphakamiso",
-    "errorFetchingWordInfo": "Yehlulekile ukuthola ulwazi lwegama"
+    "errorFetchingWordInfo": "Yehlulekile ukuthola ulwazi lwegama",
+    "contentCreatedBy": "Kudalwe ngu"
 }

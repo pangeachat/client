@@ -2311,5 +2311,6 @@
     "unlockActivitySummaries": "Хулосаҳои фаъолиятро кушоед",
     "upNext": "Баъдӣ",
     "writingAssistanceSuggestion": "Пешниҳод",
-    "errorFetchingWordInfo": "Маълумот дар бораи калимаро гирифтан нашуд"
+    "errorFetchingWordInfo": "Маълумот дар бораи калимаро гирифтан нашуд",
+    "contentCreatedBy": "Сохта шудааст аз ҷониби"
 }

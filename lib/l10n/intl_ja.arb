@@ -10676,5 +10676,6 @@
     "unlockActivitySummaries": "アクティビティの概要をアンロック",
     "upNext": "次はこちら",
     "writingAssistanceSuggestion": "提案",
-    "errorFetchingWordInfo": "単語情報の取得に失敗しました"
+    "errorFetchingWordInfo": "単語情報の取得に失敗しました",
+    "contentCreatedBy": "作成者"
 }

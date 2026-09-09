@@ -9904,5 +9904,6 @@
     "unlockActivitySummaries": "Ava tegevuste kokkuvõtted",
     "upNext": "Järgmisena",
     "writingAssistanceSuggestion": "Soovitus",
-    "errorFetchingWordInfo": "Sõnateabe hankimine ebaõnnestus"
+    "errorFetchingWordInfo": "Sõnateabe hankimine ebaõnnestus",
+    "contentCreatedBy": "Looja"
 }

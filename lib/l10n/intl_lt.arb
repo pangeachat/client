@@ -10688,5 +10688,6 @@
     "unlockActivitySummaries": "Atrakinti veiklos santraukas",
     "upNext": "Toliau",
     "writingAssistanceSuggestion": "Pasiūlymas",
-    "errorFetchingWordInfo": "Nepavyko gauti žodžio informacijos"
+    "errorFetchingWordInfo": "Nepavyko gauti žodžio informacijos",
+    "contentCreatedBy": "Sukūrė"
 }
