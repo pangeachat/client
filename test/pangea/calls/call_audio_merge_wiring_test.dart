@@ -88,22 +88,29 @@ void main() {
       expect(halves, isEmpty);
     });
 
-    test('a missing call_key routes NEITHER', () {
+    test('a missing call_key routes NEITHER, on either event type', () {
+      // Both routable types in one page, each missing its key: the guard runs
+      // ahead of the type branch, so it must skip a bad key for BOTH.
       run(
         sync({
-          '!room:server': [event(type: CallAudioContent.relType, content: {})],
+          '!room:server': [
+            event(type: CallAudioContent.relType, content: {}),
+            event(type: CallAudioMergedContent.relType, content: {}),
+          ],
         }),
       );
       expect(halves, isEmpty);
       expect(merged, isEmpty);
     });
 
-    test('a non-String call_key routes NEITHER (type-check)', () {
+    test('a non-String call_key routes NEITHER (type-check), on either type', () {
       // Mutation guard: drop the `is! String` half of the check and a numeric
-      // call_key would be routed (or crash the cast); it must be skipped.
+      // call_key would be routed (or crash the cast); it must be skipped -- for
+      // a half AND a merged event, so a branch-specific regression cannot hide.
       run(
         sync({
           '!room:server': [
+            event(type: CallAudioContent.relType, content: {'call_key': 42}),
             event(
               type: CallAudioMergedContent.relType,
               content: {'call_key': 42},
@@ -115,13 +122,17 @@ void main() {
       expect(merged, isEmpty);
     });
 
-    test('an empty call_key routes NEITHER (isEmpty check)', () {
+    test('an empty call_key routes NEITHER (isEmpty check), on either type', () {
       // Mutation guard: drop the `|| callKey.isEmpty` half and an empty key
-      // would be routed as a real call.
+      // would be routed as a real call -- checked for a half AND a merged event.
       run(
         sync({
           '!room:server': [
             event(type: CallAudioContent.relType, content: {'call_key': ''}),
+            event(
+              type: CallAudioMergedContent.relType,
+              content: {'call_key': ''},
+            ),
           ],
         }),
       );
@@ -230,6 +241,18 @@ void main() {
 
     test('error -> error is not a reconnect', () {
       expect(reconnects([SyncStatus.error, SyncStatus.error]), 0);
+    });
+
+    test('error -> error -> finished still reconnects once (a repeated error '
+        'preserves the armed latch)', () {
+      // A second error while already latched must NOT clear the latch: a
+      // detector that reset its armed state on a repeated error would pass the
+      // "error -> error" case above yet silently drop this recovery. The
+      // finished after two errors is exactly one reconnect.
+      expect(
+        reconnects([SyncStatus.error, SyncStatus.error, SyncStatus.finished]),
+        1,
+      );
     });
 
     test('error -> processing -> finished IS a reconnect', () {

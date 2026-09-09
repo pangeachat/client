@@ -247,6 +247,12 @@ class CallService {
   /// index's TTL convergence only helps calls that made it INTO the index). If
   /// the storage proves unavailable the buffer is discarded and the subsystem
   /// stays dark. A no-op after disposal.
+  /// The most triggers [_pendingMergeTriggers] holds before the storage probe
+  /// settles. A bound so a probe that never settles (a hung GetStorage init)
+  /// cannot grow the buffer without limit; comfortably above the zero-or-one a
+  /// normal, fast probe ever sees.
+  static const _maxPendingMergeTriggers = 64;
+
   void _driveMergeCoordinator(
     void Function(CallAudioMergeCoordinator) trigger,
   ) {
@@ -254,9 +260,13 @@ class CallService {
     final coordinator = _ensureMergeCoordinator();
     if (_mergeReady) {
       trigger(coordinator);
-    } else {
+    } else if (_pendingMergeTriggers.length < _maxPendingMergeTriggers) {
       _pendingMergeTriggers.add(trigger);
     }
+    // else: the probe has not settled after this many buffered triggers -- drop
+    // further ones rather than grow the buffer without bound. A dropped trigger
+    // is not lost work: the same call re-arrives on the next sync of its half,
+    // and the durable index + drain reconcile it once storage is ready.
   }
 
   /// The post-call kick: this device just posted its OWN `pangea.call_audio`
@@ -322,7 +332,13 @@ class CallService {
     );
     _pendingMergeTriggers.clear();
     for (final trigger in pending) {
-      trigger(coordinator);
+      try {
+        trigger(coordinator);
+      } catch (e, s) {
+        // One buffered trigger throwing must not abort the replay and drop the
+        // rest -- each is independent (a different call), so log and continue.
+        Logs().w('A buffered call-audio merge trigger threw on replay', e, s);
+      }
     }
   }
 
@@ -355,6 +371,10 @@ class CallService {
   /// the subsystem, though: a reconnect with no coordinator yet has no index to
   /// reconcile, so it forwards to an already-running coordinator only.
   void handleSyncStatus(SyncStatusUpdate update) {
+    // No work after dispose, uniform with the other triggers (handleSync routes
+    // through _driveMergeCoordinator, which checks _disposed): a disposed
+    // service neither steps the detector nor re-runs a torn-down coordinator.
+    if (_disposed) return;
     final reconnected = _syncReconnect.step(update.status);
     if (reconnected && _mergeReady) _mergeCoordinator?.onReconnected();
   }
