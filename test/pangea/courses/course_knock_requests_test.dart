@@ -202,11 +202,38 @@ void main() {
       courseRoom(ownPowerLevel: SpaceConstants.powerLevelOfAdmin),
     );
 
-    // The bell belongs to course pings; a pending knock wears the same "!"
-    // the course avatar's badge does.
+    // The bell belongs to course pings; a pending knock wears the same
+    // add-person glyph the course avatar's badge does.
     expect(find.byIcon(KnockingUsersBadge.icon), findsOneWidget);
     expect(find.byIcon(Icons.notifications_outlined), findsNothing);
   });
+
+  testWidgets(
+    'Approve admits the knocker rather than opening the invite page',
+    (tester) async {
+      // #8939: the button used to route to the invite page to pick the user out
+      // again. It has to issue the invite itself — the same `acceptKnock` the
+      // member list's Approve sends.
+      final room = courseRoom(ownPowerLevel: SpaceConstants.powerLevelOfAdmin);
+      client.rooms.add(room);
+      FakeMatrixApi.calledEndpoints.clear();
+      await pumpKnockRequests(tester, room);
+
+      final context = tester.element(find.byType(CourseKnockRequests));
+      await tester.tap(find.text(L10n.of(context).approve));
+      // Not pumpAndSettle: the approve runs behind a loading dialog whose
+      // spinner never stops animating.
+      await tester.pump();
+      await tester.pump(const Duration(seconds: 1));
+
+      expect(
+        FakeMatrixApi.calledEndpoints.keys.any(
+          (endpoint) => endpoint.endsWith('/invite'),
+        ),
+        isTrue,
+      );
+    },
+  );
 
   testWidgets('the bulk action denies rather than marks read', (tester) async {
     await pumpKnockRequests(
