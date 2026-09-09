@@ -197,12 +197,15 @@ class PangeaHttpException implements Exception {
   /// (repos-and-error-handling.instructions.md § Severity policy). Severity is
   /// a property of the failure, not of the author's judgment at the call site:
   /// input the homeserver refused ([_rejectedInputErrors]) is info; timeouts
-  /// are transient, 401 is token lifecycle, 404/410 mean the resource is gone
-  /// (a normal state), 429 is expected under load — all warnings. Everything
-  /// else — malformed requests (4xx) and backend regressions (5xx) — is an
-  /// error.
+  /// are transient, a request that never reached a server (offline, DNS,
+  /// CORS, a blocked request — every one a [http.ClientException]) has
+  /// nothing in code to fix, 401 is token lifecycle, 404/410 mean the
+  /// resource is gone (a normal state), 429 is expected under load — all
+  /// warnings. Everything else — malformed requests (4xx) and backend
+  /// regressions (5xx) — is an error.
   static SentryLevel severityOf(Object? error) {
     if (error is TimeoutException) return SentryLevel.warning;
+    if (error is http.ClientException) return SentryLevel.warning;
     if (error is MatrixException &&
         _rejectedInputErrors.contains(error.error)) {
       return SentryLevel.info;
