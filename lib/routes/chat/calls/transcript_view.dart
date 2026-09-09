@@ -340,43 +340,22 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
                 _Caveat(text: l10n.callTranscriptApproximateTimes),
               if (unstated) _Caveat(text: l10n.callTranscriptUnstatedTimes),
 
-              if (turns.isNotEmpty)
-                TurnTimeline(turns: turns)
-              else
-                for (final half in transcript.halves)
-                  _HalfSection(
-                    half: half,
-                    name: _nameFor(half.senderId, l10n),
-                    theme: theme,
-                    l10n: l10n,
-                  ),
-
-              // BELOW the conversation, never inside it. Absent, silent and
-              // unreadable are facts about a HALF and have no moment they
-              // happened at; giving them a place in the timeline would invent
-              // one, at an instant nobody spoke. The per-speaker view says
-              // these things itself, inside each section, so they are only
-              // added out here when the timeline is what is drawn.
-              if (turns.isNotEmpty)
-                for (final note in notes) _Muted(text: note),
-
-              // Below everything else, on the same footing as the notes
-              // just above: a recording is a fact about the CALL, not about
-              // a moment inside it, so it earns no place inside the
-              // conversation. Its own `FutureBuilder` rather than folded into
-              // the one above, so a slow or failed recordings read can never
-              // hold up -- or take down -- the transcript this screen exists
-              // to show; see `_loadRecordings`.
+              // The conversation timeline and the recordings both read the
+              // call's audio, and share ONE resolution of it here: the merged
+              // "Full call" row is drawn beneath the turns, AND its start is the
+              // origin those turns' times are measured from (see [_turnsOf]), so
+              // a printed time is a position in that recording. Nested futures,
+              // each `data ?? const []`, so the FIRST frame renders with no
+              // recording and the first-turn origin -- the transcript is on
+              // screen at once, and a slow or failed recordings/merged read
+              // never holds it up or takes it down; the row and the
+              // recording-anchored times just appear when the read lands. See
+              // `_loadRecordings` / `_loadMerged`.
               FutureBuilder<List<CallAudioRecording>>(
                 future: _recordings,
                 builder: (context, recordingsSnapshot) {
                   final recordings =
                       recordingsSnapshot.data ?? const <CallAudioRecording>[];
-                  // Nested rather than folded into one combined future, so a
-                  // slow or failed MERGED read can never hold up -- or take
-                  // down -- the per-device halves, exactly as the halves are
-                  // isolated from the transcript above. Each read only ever
-                  // adds a row.
                   return FutureBuilder<List<CallAudioMergedRecording>>(
                     future: _merged,
                     builder: (context, mergedSnapshot) {
@@ -394,21 +373,54 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
                         recordings.length,
                       );
 
-                      final widgets = [
-                        // FIRST, above the per-device halves: the merged
-                        // recording is the primary, full-call row.
-                        if (mergedRow != null)
-                          ..._mergedRecordingSection(mergedRow, theme, l10n),
-                        ..._recordingsSection(recordings, theme, l10n),
-                      ];
-                      // Most calls carry no recording of either kind, and one
-                      // still loading has shown nothing yet either -- both read
-                      // the same as "nothing here", which is the whole of the
-                      // contract: never a header with nothing under it.
-                      if (widgets.isEmpty) return const SizedBox.shrink();
+                      // Rebuilt here, not reused from above, because only here
+                      // is the merged row known: with one on screen the turn
+                      // times anchor to its start; without one they keep the
+                      // first-turn origin. Re-anchoring shifts every time by one
+                      // constant, so it changes no order and no time KIND -- the
+                      // eligibility and the caveats worked out above still hold.
+                      final displayTurns = turns.isEmpty
+                          ? const <CallTurn>[]
+                          : _turnsOf(
+                              transcript,
+                              l10n,
+                              recordingOriginMs:
+                                  mergedRow?.content.mergedStartSfuMs,
+                            );
+
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: widgets,
+                        children: [
+                          if (displayTurns.isNotEmpty)
+                            TurnTimeline(turns: displayTurns)
+                          else
+                            for (final half in transcript.halves)
+                              _HalfSection(
+                                half: half,
+                                name: _nameFor(half.senderId, l10n),
+                                theme: theme,
+                                l10n: l10n,
+                              ),
+
+                          // BELOW the conversation, never inside it. Absent,
+                          // silent and unreadable are facts about a HALF and
+                          // have no moment they happened at; a place in the
+                          // timeline would invent one, at an instant nobody
+                          // spoke. The per-speaker view says these itself, so
+                          // they are added out here only when the timeline is
+                          // what is drawn.
+                          if (displayTurns.isNotEmpty)
+                            for (final note in notes) _Muted(text: note),
+
+                          // The recording rows, on the same footing as the
+                          // notes above: a recording is a fact about the CALL,
+                          // not a moment inside it, so it earns no place inside
+                          // the conversation. The merged full-call row FIRST,
+                          // above the per-device halves.
+                          if (mergedRow != null)
+                            ..._mergedRecordingSection(mergedRow, theme, l10n),
+                          ..._recordingsSection(recordings, theme, l10n),
+                        ],
                       );
                     },
                   );
@@ -536,7 +548,16 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
   /// device asserted stays what it asserted; putting two halves side by side
   /// is a reader's problem, which is also why no migration is needed for the
   /// calls already in people's rooms.
-  List<CallTurn> _turnsOf(CallTranscript transcript, L10n l10n) {
+  /// [recordingOriginMs] is the merged "Full call" recording's start on the
+  /// SFU clock ([CallAudioMergedContent.mergedStartSfuMs]), passed when such a
+  /// recording is on screen so the turn times are measured from it and a
+  /// printed time is a position in that recording. Null -- no merge, or a merge
+  /// that carries no start -- keeps the origin at the first turn placed.
+  List<CallTurn> _turnsOf(
+    CallTranscript transcript,
+    L10n l10n, {
+    int? recordingOriginMs,
+  }) {
     final me = widget.room.client.userID;
 
     // Worked out once per HALF, not once per segment: one constant per half is
@@ -608,9 +629,25 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     // absolute time -- so the connect moment cannot be recovered here, and this
     // clock can therefore read a little short of the duration on the call card.
     // See `CallTurn.at`, which states the same contract.
-    final start = (vouched.isNotEmpty ? vouched : keys).reduce(
+    final firstPlaced = (vouched.isNotEmpty ? vouched : keys).reduce(
       (a, b) => a < b ? a : b,
     );
+
+    // The origin every printed time is a difference from. Normally the first
+    // turn placed, above -- but when a merged "Full call" recording is drawn,
+    // its own start is used so a turn's time is where that turn sits in the
+    // recording, and reading a time then scrubbing the player to it lands on
+    // the same words. Both are on the SFU clock -- a segment's `orderKeyMs`
+    // less its half's `shift` is on the SFU's clock, and so is
+    // [CallAudioMergedContent.mergedStartSfuMs] -- so the difference is a real
+    // elapsed. Only an origin AT OR BEFORE the first turn is taken: the
+    // recording begins before anyone speaks, so a sound start is <= it; a
+    // greater one (a foreign or malformed value) would push a real turn to a
+    // negative time, so it is refused in favour of the first-turn origin.
+    final start =
+        (recordingOriginMs != null && recordingOriginMs <= firstPlaced)
+        ? recordingOriginMs
+        : firstPlaced;
 
     return [
       for (final entry in placed)

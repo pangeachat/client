@@ -296,6 +296,10 @@ void main() {
     String sender, {
     String eventId = r'$merged',
     List<String> sourceEventIds = const [r'$a', r'$b'],
+    // The recording's start on the SFU clock. Null by default -- as an old or
+    // foreign merge that carries no start would be -- so the fixtures that are
+    // not about the timeline anchor keep the first-turn origin unchanged.
+    int? mergedStartSfuMs,
   }) => MatrixEvent(
     type: CallAudioMergedContent.relType,
     eventId: eventId,
@@ -311,6 +315,7 @@ void main() {
       sampleRate: 16000,
       channels: 1,
       sourceEventIds: sourceEventIds,
+      mergedStartSfuMs: mergedStartSfuMs,
     ).toJson(),
   );
 
@@ -1985,6 +1990,85 @@ void main() {
         reason:
             'the merged full-call recording renders first, above the halves',
       );
+    });
+
+    testWidgets('the merged recording anchors the turn times to its own start', (
+      tester,
+    ) async {
+      // The times a reader sees have to be positions in the Full-call recording
+      // beside them: read 0:06, scrub that player to 0:06, hear that turn. The
+      // recording began 6s before the first word -- the ring, then the opening
+      // silence -- so the first turn sits at 0:06 in it, not 0:00, and the turn
+      // 20s in reads 0:20. The origin every printed time is a difference from is
+      // the recording's start (which the merged event carries), not the first
+      // word. Bare "0:00" is a player's own position label, so the proof is the
+      // shifted values themselves and the ABSENCE of the first-word 0:14.
+      final testRoom = room();
+      await pumpWithRecordings(
+        tester,
+        testRoom,
+        serving([
+          half(_me, texts: const ['hello'], atMs: [_callStart + 6000]),
+          half(_peer, texts: const ['their turn'], atMs: [_callStart + 20000]),
+          audioEvent(_me),
+          audioEvent(_peer),
+          mergedEvent(_me, mergedStartSfuMs: _callStart),
+        ]),
+      );
+
+      expect(find.text('0:06'), findsOneWidget);
+      expect(find.text('0:20'), findsOneWidget);
+      // The first-word origin would have placed "their turn" at 0:14; that it is
+      // gone is what proves the anchor moved. Revert the re-anchor and 0:06 is
+      // absent and 0:14 is back.
+      expect(find.text('0:14'), findsNothing);
+    });
+
+    testWidgets('with no merged recording the origin stays the first word', (
+      tester,
+    ) async {
+      // The same call minus the merge: nothing to line the times up against, so
+      // the origin is the first turn placed, exactly as before -- "their turn"
+      // reads 0:14, and the re-anchored 0:20 never appears.
+      final testRoom = room();
+      await pumpWithRecordings(
+        tester,
+        testRoom,
+        serving([
+          half(_me, texts: const ['hello'], atMs: [_callStart + 6000]),
+          half(_peer, texts: const ['their turn'], atMs: [_callStart + 20000]),
+          audioEvent(_me),
+          audioEvent(_peer),
+        ]),
+      );
+
+      expect(find.text('0:14'), findsOneWidget);
+      expect(find.text('0:20'), findsNothing);
+    });
+
+    testWidgets('a merged start after the first word is refused, times unchanged', (
+      tester,
+    ) async {
+      // A recording that claims to begin AFTER somebody already spoke is
+      // malformed; honouring it would push a real turn to a negative time. The
+      // origin falls back to the first word, so the times read as with no merge
+      // -- "their turn" at 0:14, never the 0:10 an ungated shift would give it.
+      final testRoom = room();
+      await pumpWithRecordings(
+        tester,
+        testRoom,
+        serving([
+          half(_me, texts: const ['hello'], atMs: [_callStart + 6000]),
+          half(_peer, texts: const ['their turn'], atMs: [_callStart + 20000]),
+          audioEvent(_me),
+          audioEvent(_peer),
+          mergedEvent(_me, mergedStartSfuMs: _callStart + 10000),
+        ]),
+      );
+
+      expect(find.text('0:14'), findsOneWidget);
+      expect(find.text('0:20'), findsNothing);
+      expect(find.text('0:10'), findsNothing);
     });
 
     testWidgets('a call with MORE THAN TWO halves shows no merged row, even '
