@@ -12,9 +12,9 @@ import 'package:fluffychat/l10n/l10n.dart';
 /// earned-over-threshold stars and a bar. It rides the page's intro block
 /// (under the Catch up card, #8357) and stands alone in the collapsed mobile
 /// peek — where the sections aren't even mounted — so a learner always sees
-/// course progress without scrolling. Self-resolves the shared progression
-/// ([resolveJoinedProgression]); renders a muted empty bar until it lands so
-/// the layout (and the peek) stays stable.
+/// course progress without scrolling. Reads the shared progression the
+/// [QuestObjectivesLoader] resolves and keeps current; renders a muted empty
+/// bar until it lands so the layout (and the peek) stays stable.
 class CourseProgressBar extends StatelessWidget {
   final QuestObjectivesLoader objectivesProvider;
 
