@@ -10209,5 +10209,6 @@
     "tutorialSequenceTitleOpenSessions": "جلسات مفتوحة",
     "tutorialSequenceTitleActivityRoles": "اختيار دور",
     "tutorialOpenSessions": "هذه أنشطة يلعبها أشخاص آخرون. انضم إلى إحداها للدردشة، ولكن كن على علم بأنهم قد لا يستجيبون على الفور.",
-    "tutorialActivityRoles": "هذه هي الأدوار التي يمكنك لعبها في هذا النشاط. اختر الدور الذي يثير اهتمامك!"
+    "tutorialActivityRoles": "هذه هي الأدوار التي يمكنك لعبها في هذا النشاط. اختر الدور الذي يثير اهتمامك!",
+    "unlockActivitySummaries": "افتح ملخصات الأنشطة"
 }

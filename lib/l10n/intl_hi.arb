@@ -10535,5 +10535,6 @@
     "tutorialSequenceTitleOpenSessions": "खुले सत्र",
     "tutorialSequenceTitleActivityRoles": "एक भूमिका चुनना",
     "tutorialOpenSessions": "ये वे गतिविधियां हैं जो दूसरे लोग खेल रहे हैं। चैट करने के लिए किसी एक में शामिल हों, लेकिन ध्यान रखें कि वे तुरंत जवाब नहीं दे सकते हैं।",
-    "tutorialActivityRoles": "ये वे भूमिकाएं हैं जिन्हें आप इस गतिविधि में निभा सकते हैं। वह चुनें जो आपको रुचिकर लगे!"
+    "tutorialActivityRoles": "ये वे भूमिकाएं हैं जिन्हें आप इस गतिविधि में निभा सकते हैं। वह चुनें जो आपको रुचिकर लगे!",
+    "unlockActivitySummaries": "गतिविधि सारांश अनलॉक करें"
 }

@@ -10535,5 +10535,6 @@
     "tutorialSequenceTitleOpenSessions": "เซสชันที่เปิดอยู่",
     "tutorialSequenceTitleActivityRoles": "การเลือกบทบาท",
     "tutorialOpenSessions": "นี่คือกิจกรรมที่คนอื่นกำลังเล่นอยู่ เข้าร่วมเพื่อแชท แต่โปรดทราบว่าพวกเขาอาจไม่ตอบกลับทันที",
-    "tutorialActivityRoles": "นี่คือบทบาทที่คุณสามารถเล่นได้ในกิจกรรมนี้ เลือกบทบาทที่คุณสนใจ!"
+    "tutorialActivityRoles": "นี่คือบทบาทที่คุณสามารถเล่นได้ในกิจกรรมนี้ เลือกบทบาทที่คุณสนใจ!",
+    "unlockActivitySummaries": "ปลดล็อกสรุปกิจกรรม"
 }

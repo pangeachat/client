@@ -2307,5 +2307,6 @@
     "tutorialSequenceTitleOpenSessions": "Vikao vilivyo wazi",
     "tutorialSequenceTitleActivityRoles": "Kuchagua jukumu",
     "tutorialOpenSessions": "Hizi ni shughuli ambazo watu wengine wanacheza. Jiunge na moja ili kuzungumza, lakini fahamu kuwa huenda wasijibu mara moja.",
-    "tutorialActivityRoles": "Haya ndiyo majukumu unayoweza kucheza katika shughuli hii. Chagua lile linalokuvutia!"
+    "tutorialActivityRoles": "Haya ndiyo majukumu unayoweza kucheza katika shughuli hii. Chagua lile linalokuvutia!",
+    "unlockActivitySummaries": "Fungua muhtasari wa shughuli"
 }

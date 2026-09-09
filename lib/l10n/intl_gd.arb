@@ -2307,5 +2307,6 @@
     "tutorialSequenceTitleOpenSessions": "Seiseanan fosgailte",
     "tutorialSequenceTitleActivityRoles": "A’ taghadh ròl",
     "tutorialOpenSessions": "Is iad sin gnìomhan a tha daoine eile a’ cluich. Thig a-steach do aon airson cabadaich, ach bi mothachail gur dòcha nach freagair iad sa bhad.",
-    "tutorialActivityRoles": "Seo na dreuchdan as urrainn dhut a chluich sa ghnìomhachd seo. Tagh am fear a tha inntinneach dhut!"
+    "tutorialActivityRoles": "Seo na dreuchdan as urrainn dhut a chluich sa ghnìomhachd seo. Tagh am fear a tha inntinneach dhut!",
+    "unlockActivitySummaries": "Fuasgail geàrr-chunntasan gnìomhachd"
 }

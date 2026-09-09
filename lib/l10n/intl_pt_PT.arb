@@ -10820,5 +10820,6 @@
     "tutorialSequenceTitleOpenSessions": "Sessões abertas",
     "tutorialSequenceTitleActivityRoles": "A escolher um papel",
     "tutorialOpenSessions": "Estas são atividades que outras pessoas estão a jogar. Junte-se a uma para conversar, mas esteja ciente de que podem não responder imediatamente.",
-    "tutorialActivityRoles": "Estes são os papéis que pode desempenhar nesta atividade. Escolha o que mais lhe interessa!"
+    "tutorialActivityRoles": "Estes são os papéis que pode desempenhar nesta atividade. Escolha o que mais lhe interessa!",
+    "unlockActivitySummaries": "Desbloquear resumos de atividade"
 }

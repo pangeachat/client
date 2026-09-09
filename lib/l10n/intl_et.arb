@@ -9900,5 +9900,6 @@
     "tutorialSequenceTitleOpenSessions": "Avatud sessioonid",
     "tutorialSequenceTitleActivityRoles": "Rollide valimine",
     "tutorialOpenSessions": "Need on tegevused, mida teised inimesed mängivad. Liitu ühega, et vestelda, kuid ole teadlik, et nad ei pruugi kohe vastata.",
-    "tutorialActivityRoles": "Need on rollid, mida saad selles tegevuses mängida. Vali see, mis sind huvitab!"
+    "tutorialActivityRoles": "Need on rollid, mida saad selles tegevuses mängida. Vali see, mis sind huvitab!",
+    "unlockActivitySummaries": "Ava tegevuste kokkuvõtted"
 }

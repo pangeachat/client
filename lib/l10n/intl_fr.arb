@@ -10258,5 +10258,6 @@
     "tutorialSequenceTitleOpenSessions": "Sessions ouvertes",
     "tutorialSequenceTitleActivityRoles": "Choisir un rôle",
     "tutorialOpenSessions": "Ce sont des activités auxquelles d'autres personnes jouent. Rejoignez-en une pour discuter, mais sachez qu'elles pourraient ne pas répondre tout de suite.",
-    "tutorialActivityRoles": "Ce sont les rôles que vous pouvez jouer dans cette activité. Choisissez celui qui vous intéresse !"
+    "tutorialActivityRoles": "Ce sont les rôles que vous pouvez jouer dans cette activité. Choisissez celui qui vous intéresse !",
+    "unlockActivitySummaries": "Débloquer les résumés d'activité"
 }

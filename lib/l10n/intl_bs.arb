@@ -2307,5 +2307,6 @@
     "tutorialSequenceTitleOpenSessions": "Otvorene sesije",
     "tutorialSequenceTitleActivityRoles": "Odabir uloge",
     "tutorialOpenSessions": "Ovo su aktivnosti koje drugi ljudi igraju. Pridružite se jednoj da razgovarate, ali budite svjesni da možda neće odmah odgovoriti.",
-    "tutorialActivityRoles": "Ovo su uloge koje možete igrati u ovoj aktivnosti. Odaberite onu koja vas zanima!"
+    "tutorialActivityRoles": "Ovo su uloge koje možete igrati u ovoj aktivnosti. Odaberite onu koja vas zanima!",
+    "unlockActivitySummaries": "Otključajte sažetke aktivnosti"
 }

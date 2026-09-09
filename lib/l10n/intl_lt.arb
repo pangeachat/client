@@ -10684,5 +10684,6 @@
     "tutorialSequenceTitleOpenSessions": "Atviros sesijos",
     "tutorialSequenceTitleActivityRoles": "Vaidmens pasirinkimas",
     "tutorialOpenSessions": "Tai yra veiklos, kurias žaidžia kiti žmonės. Prisijunkite prie vienos, kad galėtumėte kalbėtis, bet atminkite, kad jie gali neatsakyti iš karto.",
-    "tutorialActivityRoles": "Tai yra vaidmenys, kuriuos galite atlikti šioje veikloje. Pasirinkite tą, kuris jus domina!"
+    "tutorialActivityRoles": "Tai yra vaidmenys, kuriuos galite atlikti šioje veikloje. Pasirinkite tą, kuris jus domina!",
+    "unlockActivitySummaries": "Atrakinti veiklos santraukas"
 }

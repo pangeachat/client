@@ -9903,5 +9903,6 @@
     "tutorialSequenceTitleOpenSessions": "Відкриті сесії",
     "tutorialSequenceTitleActivityRoles": "Вибір ролі",
     "tutorialOpenSessions": "Це завдання, які грають інші люди. Приєднуйтесь до одного, щоб поспілкуватися, але майте на увазі, що вони можуть не відповісти відразу.",
-    "tutorialActivityRoles": "Це ролі, які ви можете грати в цьому завданні. Виберіть ту, яка вас цікавить!"
+    "tutorialActivityRoles": "Це ролі, які ви можете грати в цьому завданні. Виберіть ту, яка вас цікавить!",
+    "unlockActivitySummaries": "Розблокувати підсумки активності"
 }

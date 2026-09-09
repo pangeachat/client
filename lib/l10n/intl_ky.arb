@@ -2307,5 +2307,6 @@
     "tutorialSequenceTitleOpenSessions": "Ачык сессиялар",
     "tutorialSequenceTitleActivityRoles": "Ролду тандоо",
     "tutorialOpenSessions": "Бул башка адамдар ойноп жаткан иш-чаралар. Баарлашуу үчүн бирөөсүнө кошулуңуз, бирок алар дароо жооп бербеши мүмкүн экенин эске алыңыз.",
-    "tutorialActivityRoles": "Бул иш-аракетте ойной турган ролдор. Сизди кызыктырганды тандаңыз!"
+    "tutorialActivityRoles": "Бул иш-аракетте ойной турган ролдор. Сизди кызыктырганды тандаңыз!",
+    "unlockActivitySummaries": "Иш-аракеттердин корутундусун ачуу"
 }
