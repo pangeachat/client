@@ -1187,3 +1187,19 @@ until the design is Codex-green.
   typed-terminal + boundedness], pinning B [permit-until-settle + drain-until-clean]). Waiting.
 - After coordinator cold-green: WAVE 4 wiring (CallService + CallSession kick + matrix dispose), then P4
   player.
+
+## 2026-09-08 (cont) — coordinator cold-gate adjudicated + fixed (26 tests)
+- 4 cold gates (flow/machinery/pinA/pinB). Adjudication + fixes (commit after ad7c8c5072):
+  - REAL fix: onSyncedMergedEvent was the only trigger missing `if (_disposed) return;` -> added (machinery).
+  - SOFTENING resolved: 'aborted attempt does not run a coalesced re-pass' over-claimed (per-pass check
+    masked the loop guard). Rewrote with onReconnected (dirty w/o index-recreate) + index-null assertion;
+    now removing the loop guard flips it RED (mutation-verified). The loop guard is real: without it a
+    coalesced re-pass's _keepPending RECREATES the merged-then-removed index entry.
+  - Added late-third-half re-validate test (>2 halves -> _stillMergeable retires TERMINAL; mutation-RED).
+  - Documented pre-send guard = _superseded NOT dirty (dirty-abort would starve the send in a busy room).
+  - ACCEPTABLE-V1 (adjudicated, not fixed): (a) irreducible validate->send window (rare stale post,
+    P4-suppressed); (b) remove-then-recreate renews ONE inert entry per re-synced old call (bounded,
+    self-heals -- NOT unbounded). RMW atomicity + permit-until-settle verified correct.
+  - orphan-upload reorder (prior commit): re-validate now immediately before upload, after mix.
+- 26 tests, format/analyze/import_sorter clean. Re-gating pinB (softening) + machinery (dispose+residual).
+- After coordinator green: WAVE 4 wiring (CallService + CallSession kick + matrix dispose), then P4 player.
