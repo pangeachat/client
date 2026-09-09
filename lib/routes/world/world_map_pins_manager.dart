@@ -75,6 +75,34 @@ bool shouldRebuildObjectiveCacheNow({
       now.difference(lastRebuildAt) >= kEmptyObjectiveCacheRetryCooldown;
 }
 
+/// The joinable facts behind the map's discovered sessions — derived from the
+/// cached previews ([DiscoveredSessionsCache]) at every signal recompute, never
+/// snapshotted by the discovery pass (#8895). The open-to-join gate resolves a
+/// thin v3 ref's seat count through plan hydration, which lands AFTER the pass
+/// that fetched the preview; a fact frozen then kept a full session's pin green
+/// while its card row and its start page — both reading the same gate live —
+/// showed no seats and no Join. Rooms the learner [isJoined] carry their own
+/// local facts, so they are skipped. One fact per open session, all stamped
+/// [nowMs]: a discovered session's recency is the pass that saw it.
+@visibleForTesting
+List<ActivitySessionFacts> discoveredSessionFacts(
+  Map<String, Map<String, RoomSummaryResponse>> previewsByActivity, {
+  required bool Function(String roomId) isJoined,
+  required int nowMs,
+}) => [
+  for (final activity in previewsByActivity.entries)
+    for (final room in activity.value.entries)
+      if (!isJoined(room.key) && room.value.isActivityOpenToJoin)
+        ActivitySessionFacts(
+          activityId: activity.key,
+          holdsRole: false,
+          collectedGoals: 0,
+          totalGoals: 0,
+          joinable: true,
+          lastEventMs: nowMs,
+        ),
+];
+
 class WorldMapPinsManager {
   static final ValueNotifier<bool> notifier = ValueNotifier<bool>(false);
 
@@ -152,12 +180,6 @@ class WorldMapPinsManager {
   /// burst always gets its run — the tick a coursemate's session-filled event
   /// produces must never be the one thrown away (#8735).
   final _discoveryThrottle = TrailingThrottle(const Duration(seconds: 3));
-
-  /// Joinable facts for open sessions others started in the learner's joined
-  /// courses — discovered via room_preview because they are NOT in `client.rooms`
-  /// (the learner is not a member). Folded into [Client.deriveActivitySignals] as
-  /// extra facts. See world-map.instructions.md ("Discovering joinable sessions").
-  List<ActivitySessionFacts> _discoveredSessionFacts = const [];
 
   /// Room id → the joined-member count its member list was last filled at, so
   /// [loadSessionParticipants] sweeps a room once rather than on every sync
@@ -313,7 +335,7 @@ class WorldMapPinsManager {
     _pingedActivityIds = pinged;
     _signals = client.deriveActivitySignals(
       pingedActivityIds: pinged,
-      extraFacts: _discoveredSessionFacts,
+      extraFacts: _discoveredSessionFacts(client),
     );
   }
 
@@ -406,10 +428,11 @@ class WorldMapPinsManager {
   ///    space-scoped module can't see them, so they keep the per-room
   ///    room_preview read.
   ///
-  /// A previewed candidate emits a joinable fact while it is live, unfinished,
-  /// and has a free seat. Best-effort, networked, and throttled — triggered off
-  /// sync ticks AND camera settles (panning to a new viewport should rank
-  /// against current live facts, not wait for a sync).
+  /// The previews land in [DiscoveredSessionsCache]; [discoveredSessionFacts]
+  /// turns the still-open ones into joinable facts at each signal recompute.
+  /// Best-effort, networked, and throttled — triggered off sync ticks AND
+  /// camera settles (panning to a new viewport should rank against current
+  /// live facts, not wait for a sync).
   Future<void> discoverCoursemateSessions(Client client) {
     // Not synced yet — retry on the next trigger without spending the throttle.
     if (client.joinedCourseRooms.isEmpty &&
@@ -421,7 +444,6 @@ class WorldMapPinsManager {
 
   Future<void> _discoverCoursemateSessions(Client client) async {
     final invitedSessionIds = client.invitedActivitySessionRoomIds;
-    final nowMs = DateTime.now().millisecondsSinceEpoch;
     try {
       final courseSpaceIds = client.joinedCourseRooms.map((r) => r.id).toList();
       // The two reads fail independently — a module error must not cost this
@@ -467,60 +489,48 @@ class WorldMapPinsManager {
       };
 
       if (summaries.isEmpty) {
-        if (courseSessions == null) return; // failed read — keep stale facts
-        if (_discoveredSessionFacts.isNotEmpty) {
-          _discoveredSessionFacts = const [];
-        }
+        if (courseSessions == null) return; // failed read — keep stale previews
         // No session rooms left in any joined course → drop stale previews so a
-        // card whose open session vanished stops reading it as Open.
+        // card whose open session vanished stops reading it as Open, and no pin
+        // derives a joinable fact from it.
         DiscoveredSessionsCache.instance.clear();
         return;
       }
 
-      // A session is surfaced as joinable while it is live and not finished.
-      // Precise open-seat filtering (the activity's total roles live on the CMS
-      // plan, which the preview does not carry for v3) is a later refinement.
-      // Group every previewed session by activity id so the activity start page
-      // can reuse this fetch instead of round-tripping again (it applies its own
-      // open-to-join filter). See DiscoveredSessionsCache.
+      // Group every previewed session by activity id: the activity start page
+      // reuses this fetch instead of round-tripping again, and the signal
+      // recompute derives the joinable facts from it ([discoveredSessionFacts]).
+      // The open-to-join gate is deliberately NOT evaluated here — a thin-ref
+      // preview's seat count only resolves once its plan hydrates, after this
+      // pass, so a verdict taken now would go stale (#8895). See
+      // DiscoveredSessionsCache.
       final byActivity = <String, Map<String, RoomSummaryResponse>>{};
-      final facts = <ActivitySessionFacts>[];
       for (final entry in summaries.entries) {
-        final summary = entry.value;
-        final activityId = summary.activityId;
+        final activityId = entry.value.activityId;
         if (activityId == null) continue; // not an activity session
-        (byActivity[activityId] ??= {})[entry.key] = summary;
-        // Not joinable if finished, full (all roles taken), or abandoned
-        // (no non-bot member still present): the same `isActivityOpenToJoin`
-        // every other surface gates on, so a pin the map shows joinable is one
-        // the start page will actually offer a Join for, never a green pin
-        // that dead-ends at "Start" or a join error. A thin-ref preview (no
-        // role plan) leaves `isStarted` false, so seat-unknown sessions stay
-        // permissive as before; the presence check filters stale rooms that
-        // were never marked finished but everyone has since left (#8150).
-        if (!summary.isActivityOpenToJoin) continue;
-        facts.add(
-          ActivitySessionFacts(
-            activityId: activityId,
-            holdsRole: false,
-            collectedGoals: 0,
-            totalGoals: 0,
-            joinable: true,
-            lastEventMs: nowMs,
-          ),
-        );
+        (byActivity[activityId] ??= {})[entry.key] = entry.value;
       }
       DiscoveredSessionsCache.instance.replaceAll(byActivity);
-      _discoveredSessionFacts = facts;
     } catch (e, s) {
       ErrorHandler.logError(e: e, s: s, data: const {});
     }
   }
 
+  /// The Matrix-reading shell over [discoveredSessionFacts]: re-gates the
+  /// cached previews on every signal derivation, so a plan hydrating (or the
+  /// start page rewriting the previews) re-colours their pins (#8895).
+  List<ActivitySessionFacts> _discoveredSessionFacts(Client client) =>
+      discoveredSessionFacts(
+        DiscoveredSessionsCache.instance.byActivityId,
+        isJoined: (roomId) =>
+            client.getRoomById(roomId)?.membership == Membership.join,
+        nowMs: DateTime.now().millisecondsSinceEpoch,
+      );
+
   void recomputeProgress(Client client) {
     final signals = client.deriveActivitySignals(
       pingedActivityIds: _pingedActivityIds,
-      extraFacts: _discoveredSessionFacts,
+      extraFacts: _discoveredSessionFacts(client),
     );
     final userStars = client.userStarsByActivity;
 

@@ -47,6 +47,13 @@ class DiscoveredSessionsCache extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Every cached preview, activity id → room id → summary: the live source
+  /// the world map derives its discovered joinable facts from on each signal
+  /// recompute (#8895). Read-only — writes go through [replaceAll] /
+  /// [updateActivity] so listeners hear them.
+  Map<String, Map<String, RoomSummaryResponse>> get byActivityId =>
+      UnmodifiableMapView(_byActivityId);
+
   /// The previewed sessions for [activityId] (roomId → summary), or null on a
   /// miss — in which case the caller should fetch.
   Map<String, RoomSummaryResponse>? forActivity(String activityId) =>

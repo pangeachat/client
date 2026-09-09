@@ -11,6 +11,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
@@ -201,10 +202,11 @@ class WorldMapController extends State<WorldMap>
   Timer? _fitDebounce;
 
   /// Coalesces a burst of activity-plan hydrations (many pins resolve their
-  /// plans at once) into a single signal recompute, so a session flips to its
-  /// joinable/joined colour once its seats are known — notably an invited
-  /// session, whose role count is unknown until its plan lands from CMS.
-  Timer? _planHydrateDebounce;
+  /// plans at once) — or of discovered-preview rewrites — into a single signal
+  /// recompute, so a session flips to its joinable/joined colour once its seats
+  /// are known — notably an invited session, whose role count is unknown until
+  /// its plan lands from CMS — and a full one drops its green (#8895).
+  Timer? _liveStateRecomputeDebounce;
 
   /// Drives the smooth camera glide (center + zoom tween) instead of an instant
   /// `fitCamera` snap. Retargets cleanly if a new fit lands mid-flight.
@@ -274,7 +276,7 @@ class WorldMapController extends State<WorldMap>
   /// at the new L1. While true the view freezes the pins on their last-settled
   /// tiers and paints them as a shimmer skeleton (see [WorldMapView]) instead of
   /// letting them flash to `available` and snap back as the signals re-derive.
-  /// Cleared by the first plan hydrate ([_onPlanHydrate]) or the
+  /// Cleared by the first plan hydrate ([_onLiveStateSourcesChanged]) or the
   /// [WorldMapConstants.l1WarmupMax] fallback so it can never stick.
   bool _warmingL1 = false;
   Timer? _warmingTimer;
@@ -303,8 +305,12 @@ class WorldMapController extends State<WorldMap>
       (_) => _scheduleOrientationCheck(),
     );
 
-    // Rebuild when a featured large card's full plan hydrates (image + goals).
-    ActivityPlanRepo.instance.addListener(_onPlanHydrate);
+    // Rebuild when a featured large card's full plan hydrates (image + goals),
+    // and when the discovered-session previews change under the pins — the
+    // start page's revalidate-on-view rewrites them (#8150); both re-gate which
+    // sessions are open to join (#8895).
+    ActivityPlanRepo.instance.addListener(_onLiveStateSourcesChanged);
+    DiscoveredSessionsCache.instance.addListener(_onLiveStateSourcesChanged);
 
     final user = MatrixState.pangeaController.userController;
 
@@ -431,7 +437,7 @@ class WorldMapController extends State<WorldMap>
     _refetchDebounce?.cancel();
     _warmingTimer?.cancel();
     _fitDebounce?.cancel();
-    _planHydrateDebounce?.cancel();
+    _liveStateRecomputeDebounce?.cancel();
     _dismissalExpiryTimer?.cancel();
     _moveSettleTimer?.cancel();
     _mapEventSub?.cancel();
@@ -440,7 +446,8 @@ class WorldMapController extends State<WorldMap>
     _cameraAnimationController.dispose();
     MapContextController.notifier.removeListener(_onContextChange);
     MapCameraFocusRequests.notifier.removeListener(_onCameraFocusRequest);
-    ActivityPlanRepo.instance.removeListener(_onPlanHydrate);
+    ActivityPlanRepo.instance.removeListener(_onLiveStateSourcesChanged);
+    DiscoveredSessionsCache.instance.removeListener(_onLiveStateSourcesChanged);
     _routeProvider?.removeListener(_scheduleOrientationCheck);
     _unregisterTutorialLaunchers();
     // Reset the process-global so a pin selected at teardown (e.g. logging out
@@ -583,13 +590,15 @@ class WorldMapController extends State<WorldMap>
   /// penalty).
   bool get isNewLearner => _client?.hasAnyFinishedActivitySession == false;
 
-  void _onPlanHydrate() {
-    // A plan landing from CMS fires no room sync, so the sync-driven recompute
-    // never re-derives seats for it — why an invited session (its role count
-    // known only once the plan hydrates) never flips to joinable. Recompute the
+  void _onLiveStateSourcesChanged() {
+    // A plan landing from CMS, or the start page rewriting an activity's
+    // discovered previews, fires no room sync — so the sync-driven recompute
+    // never re-derives seats for it: an invited session (its role count known
+    // only once the plan hydrates) never flips to joinable, and a discovered
+    // session that hydrated to "full" stays green (#8895). Recompute the
     // signals, debounced so a burst of hydrations coalesces into one pass.
-    _planHydrateDebounce?.cancel();
-    _planHydrateDebounce = Timer(const Duration(milliseconds: 500), () {
+    _liveStateRecomputeDebounce?.cancel();
+    _liveStateRecomputeDebounce = Timer(const Duration(milliseconds: 500), () {
       if (!mounted) return;
       _recomputeProgress();
       // Signals are fresh now, so end any open L1 shimmer window (no-op else).
