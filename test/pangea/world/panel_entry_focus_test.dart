@@ -1,4 +1,7 @@
+import 'dart:ui' show Tristate;
+
 import 'package:flutter/material.dart';
+import 'package:flutter/semantics.dart' show OrdinalSortKey;
 import 'package:flutter/services.dart';
 
 import 'package:flutter_test/flutter_test.dart';
@@ -6,9 +9,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
 import 'package:fluffychat/routes/world/right_panel/panel_entry_focus.dart';
 
-/// A panel opened from the user cluster lands keyboard focus on its first
-/// control in Tab order, a discrete beat after it mounts; a panel opened any
-/// other way, or from a stale press, leaves focus where it was
+/// A panel opened from the user cluster lands focus on the panel's own named
+/// group a discrete beat after it mounts — announced by page name, not a Tab
+/// stop, the next Tab reaching its first control; a panel opened any other
+/// way, or from a stale press, leaves focus where it was
 /// (routing.instructions.md, "Every panel is a named group to assistive tech").
 void main() {
   late DateTime now;
@@ -52,6 +56,8 @@ void main() {
                 child: FocusTraversalGroup(
                   policy: OrderedTraversalPolicy(),
                   child: PanelEntryFocus(
+                    label: 'Vocab page',
+                    sortKey: const OrdinalSortKey(3),
                     intent: intent,
                     child: Column(
                       children: [
@@ -77,6 +83,14 @@ void main() {
     ),
   );
 
+  /// Whether the panel's named group is the node assistive tech is on.
+  bool groupFocused(WidgetTester tester) =>
+      tester.semantics.simulatedAccessibilityTraversal().any(
+        (n) =>
+            n.getSemanticsData().label == 'Vocab page' &&
+            n.flagsCollection.isFocused == Tristate.isTrue,
+      );
+
   Future<void> openFromCluster(WidgetTester tester) async {
     await tester.pumpWidget(host(panelOpen: false));
     cluster.requestFocus();
@@ -84,31 +98,54 @@ void main() {
     expect(cluster.hasPrimaryFocus, isTrue);
   }
 
-  testWidgets("an armed open lands focus on the panel's first control", (
-    tester,
-  ) async {
-    await openFromCluster(tester);
-    intent.arm();
-    await tester.pumpWidget(host(panelOpen: true));
-    await tester.pump();
-    expect(cluster.hasPrimaryFocus, isTrue, reason: 'one discrete beat later');
-    await tester.pump(PanelEntryFocus.claimDelay);
-    expect(close.hasPrimaryFocus, isTrue);
+  testWidgets(
+    'an armed open lands focus on the panel group, Tab on its first control',
+    (tester) async {
+      final handle = tester.ensureSemantics();
+      await openFromCluster(tester);
+      intent.arm();
+      await tester.pumpWidget(host(panelOpen: true));
+      await tester.pump();
+      expect(
+        cluster.hasPrimaryFocus,
+        isTrue,
+        reason: 'one discrete beat later',
+      );
+      await tester.pump(PanelEntryFocus.claimDelay);
+      expect(cluster.hasPrimaryFocus, isFalse);
+      expect(
+        close.hasPrimaryFocus,
+        isFalse,
+        reason: 'the group, not its control',
+      );
+      expect(
+        groupFocused(tester),
+        isTrue,
+        reason: 'assistive tech is on the page',
+      );
 
-    // The claim scope is not itself a Tab stop: Tab moves on inside the panel.
-    await tester.sendKeyEvent(LogicalKeyboardKey.tab);
-    await tester.pump();
-    expect(practice.hasPrimaryFocus, isTrue);
-  });
+      // The group is not a Tab stop: Tab reaches the panel's first control,
+      // then moves on inside it.
+      await tester.sendKeyEvent(LogicalKeyboardKey.tab);
+      await tester.pump();
+      expect(close.hasPrimaryFocus, isTrue);
+      await tester.sendKeyEvent(LogicalKeyboardKey.tab);
+      await tester.pump();
+      expect(practice.hasPrimaryFocus, isTrue);
+      handle.dispose();
+    },
+  );
 
   testWidgets('an open without the intent leaves focus where it was', (
     tester,
   ) async {
+    final handle = tester.ensureSemantics();
     await openFromCluster(tester);
     await tester.pumpWidget(host(panelOpen: true));
     await tester.pump(PanelEntryFocus.claimDelay);
     expect(cluster.hasPrimaryFocus, isTrue);
-    expect(close.hasPrimaryFocus, isFalse);
+    expect(groupFocused(tester), isFalse);
+    handle.dispose();
   });
 
   testWidgets('a stale arm is ignored', (tester) async {
@@ -120,48 +157,12 @@ void main() {
     expect(cluster.hasPrimaryFocus, isTrue);
   });
 
-  testWidgets('in a right-to-left panel the leading control is on the right', (
-    tester,
-  ) async {
-    await tester.pumpWidget(
-      MaterialApp(
-        home: Directionality(
-          textDirection: TextDirection.rtl,
-          child: Scaffold(
-            body: PanelEntryFocus(
-              intent: intent..arm(),
-              child: Row(
-                children: [
-                  IconButton(
-                    focusNode: close,
-                    tooltip: 'Close',
-                    icon: const Icon(Icons.close),
-                    onPressed: () {},
-                  ),
-                  TextButton(
-                    focusNode: practice,
-                    onPressed: () {},
-                    child: const Text('Practice'),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-    await tester.pump(PanelEntryFocus.claimDelay);
-    // Row lays its first child out on the right in RTL: that is the leading
-    // control, and the one to land on.
-    expect(close.hasPrimaryFocus, isTrue);
-  });
-
   testWidgets('an arm is consumed once', (tester) async {
     await openFromCluster(tester);
     intent.arm();
     await tester.pumpWidget(host(panelOpen: true));
     await tester.pump(PanelEntryFocus.claimDelay);
-    expect(close.hasPrimaryFocus, isTrue);
+    expect(cluster.hasPrimaryFocus, isFalse);
     expect(intent.take(), isFalse);
   });
 }

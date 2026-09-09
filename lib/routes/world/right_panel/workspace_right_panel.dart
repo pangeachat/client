@@ -206,18 +206,12 @@ class WorkspaceRightPanel extends StatelessWidget {
     // here, where every right-column token resolves, so a panel cannot miss
     // it by drawing its own chrome. The settings-page title reuses the same
     // computed subpage title its close label carries, so the group and its
-    // "Close X" always agree.
-    return Semantics(
+    // "Close X" always agree. The group is also where a panel the cluster
+    // just opened lands focus (#8928).
+    return PanelEntryFocus(
       label: l10n.pageLabel(closeButtonLabel ?? token.type.displayName(l10n)),
-      container: true,
-      // Browse-order key on the group itself (#8755) — see WorkspaceLeftPanel.
       sortKey: WorkspaceOrder.rightPanels.sortKey,
-      // Keep descendants as their own nodes: without this, loose text with no
-      // container of its own (the Level drilldown's "LVL 15 … XP" header)
-      // merges INTO the panel's name, announcing as one garbled label.
-      explicitChildNodes: true,
-      // A panel the cluster just opened takes keyboard focus on mount.
-      child: PanelEntryFocus(child: panel),
+      child: panel,
     );
   }
 }
