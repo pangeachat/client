@@ -5,16 +5,20 @@ import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_media_enum.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_request.dart';
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_model.dart';
+import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/routes/world/world_map_pins_manager.dart';
+import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_signals.dart';
+import '../get_test_client.dart';
 
 /// #8895: the world map's discovered joinable facts are derived from the cached
 /// previews at every signal recompute, not snapshotted by the discovery pass.
@@ -145,5 +149,49 @@ void main() {
     test('a room the learner has joined is left to its local facts', () {
       expect(facts(fullThinRefSession(), joined: true), isEmpty);
     });
+  });
+
+  group('WorldMapPinsManager.recomputeProgress — the production shell', () {
+    late Client client;
+
+    setUp(() async {
+      client = await getTestClient();
+    });
+
+    tearDown(() async {
+      DiscoveredSessionsCache.instance.clear();
+      await client.dispose();
+    });
+
+    test('a discovered full session colours its pin joinable while hydrating, '
+        'then drops it once the plan hydrates — with no discovery pass in '
+        'between (#8895)', () {
+      final manager = WorldMapPinsManager();
+      DiscoveredSessionsCache.instance.replaceAll(fullThinRefSession());
+
+      manager.recomputeProgress(client);
+      expect(manager.signals['act-1']?.state, ActivityPinState.joinable);
+
+      RoomSummaryResponse.referencePlanResolver = (_) => plan(2);
+      manager.recomputeProgress(client);
+      expect(manager.signals['act-1']?.state, isNot(ActivityPinState.joinable));
+    });
+
+    test(
+      'a session room the learner has joined is left to its local facts',
+      () {
+        client.rooms.add(
+          Room(id: roomId, client: client, membership: Membership.join),
+        );
+        final manager = WorldMapPinsManager();
+        DiscoveredSessionsCache.instance.replaceAll(fullThinRefSession());
+
+        manager.recomputeProgress(client);
+        expect(
+          manager.signals['act-1']?.state,
+          isNot(ActivityPinState.joinable),
+        );
+      },
+    );
   });
 }

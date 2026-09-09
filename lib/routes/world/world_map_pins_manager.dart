@@ -83,7 +83,8 @@ bool shouldRebuildObjectiveCacheNow({
 /// while its card row and its start page — both reading the same gate live —
 /// showed no seats and no Join. Rooms the learner [isJoined] carry their own
 /// local facts, so they are skipped. One fact per open session, all stamped
-/// [nowMs]: a discovered session's recency is the pass that saw it.
+/// [nowMs] — the recompute that derived it; a discovered session carries no
+/// recency of its own.
 @visibleForTesting
 List<ActivitySessionFacts> discoveredSessionFacts(
   Map<String, Map<String, RoomSummaryResponse>> previewsByActivity, {

@@ -11,12 +11,15 @@ import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 /// round-trip.
 ///
 /// A miss (an activity opened by deep link without visiting the map first) falls
-/// back to the start page's own fetch, so this is purely an optimization, never a
-/// correctness requirement. Replaced wholesale on each discovery pass, and
-/// per-activity by the start page's background revalidate ([updateActivity]);
-/// the staleness window is bounded by the map's discovery cadence, and the join
-/// action re-validates against the server anyway. See world-map.instructions.md
-/// ("Discovering joinable sessions").
+/// back to the start page's own fetch, so for the start page this is only an
+/// optimization. The world map, though, derives its discovered-session pin
+/// state from these previews on every signal recompute (#8895), so the cache
+/// must hold the latest pass's truth: replaced wholesale on each discovery
+/// pass, per-activity by the start page's background revalidate
+/// ([updateActivity]), and cleared on logout so one account's sessions never
+/// colour the next account's map. The join action re-validates against the
+/// server anyway. See world-map.instructions.md ("Discovering joinable
+/// sessions").
 class DiscoveredSessionsCache extends ChangeNotifier {
   DiscoveredSessionsCache._();
   static final DiscoveredSessionsCache instance = DiscoveredSessionsCache._();
