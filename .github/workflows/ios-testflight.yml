@@ -85,6 +85,14 @@ jobs:
           rm -rf fonts/NotoEmoji
           yq -i 'del( .flutter.fonts[] | select(.family == "NotoEmoji") )' pubspec.yaml
       - run: flutter pub get
+      # rive_native needs a one-time download of its prebuilt iOS libraries into
+      # the pub cache. Its podspec tries to do this itself from ios/Pods, but that
+      # fails in this job: pubspec.yaml is rewritten above (env patch, emoji font)
+      # and pub then refuses to resolve from a subdirectory
+      # (rive-app/rive-flutter#566). Running it here, from the repo root, works
+      # on a cold pub cache and is a no-op on a warm one.
+      - name: Set up rive_native
+        run: dart run rive_native:setup --verbose --platform ios
       - name: Build iOS (unsigned)
         # BUILD_COMMIT_SHA is the only part of the version display that says
         # which code is in the build — fastlane derives the build number from
