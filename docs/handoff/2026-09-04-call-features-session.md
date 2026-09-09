@@ -1267,3 +1267,23 @@ until the design is Codex-green.
   analyze; UI mirroring, lower-risk.
 - WAVE 4 wiring agent (a77a10d2d23281727) STILL RUNNING; its WIP is in the worktree. Verify it leaves the
   calls bucket green on commit.
+
+## 2026-09-08 (cont) — WAVE 4 wiring cold-gated; calls bucket GREEN (+1678); real robustness fixes
+- Wiring agent (a77a10d2d23281727) committed 2fe7e454ac with a JUSTIFIED deviation (I reviewed + accept):
+  eager box construction broke ringing widget tests (GetStorage schedules a timer, CallService built on
+  every incoming-call-banner render) -> went LAZY (build coordinator on first call-audio signal) + a
+  probe + trigger buffer + terminal-fail flag. Startup scan runs at first call-audio activity not login
+  (within TTL horizon) = ACCEPTABLE-V1.
+- calls bucket VERIFIED GREEN: +1678 All tests passed, exit 0 (the earlier +478 was a mid-run snapshot).
+- MY cold gate (wire-lazy/wire-pure/wire-pin): wire-pure CORRECT. wire-lazy found REAL: (1) buffer could
+  grow unbounded on a never-settling probe -> capped at 64 (a hung probe activates nothing so the cap
+  costs no merge, only bounds memory); (2) a throwing buffered trigger aborted the whole replay -> per-
+  trigger try/catch; (3) handleSyncStatus missing _disposed guard -> added; (4) probe catch did cleanup
+  after dispose -> _disposed bail added. wire-pin found softening (test gaps): invalid call_key tested on
+  only ONE branch each -> extended to BOTH; 'error->error' didn't pin latch preservation -> added
+  'error->error->finished reconnects once'. Fixes committed (2 commits after 2fe7e454ac).
+- Re-gates: wire-lazy3 (complete paste) + wire-pin4 (complete paste) running; earlier re-gate REDs were
+  MY truncated sed pastes (the reviewer confirmed the substance each time; the file compiles + 18 tests
+  pass). analyze/format clean.
+- After wiring green: the WHOLE feature (recording+transcript+P1-P4 merge+player+wiring) is on
+  satvik/call-features-combined, ready to bundle as PR 2 on owner go.
