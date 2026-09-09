@@ -1,0 +1,418 @@
+name: Preview Deploy
+
+# Per-PR web previews at https://pr-<N>.preview.staging.pangea.chat. The design
+# this file implements: deployment.instructions.md → Preview Deploys. Infra:
+# pangeachat/devops#356.
+#
+#   /preview      (issue_comment)  arm the PR and deploy its head; idempotent
+#   /preview off  (issue_comment)  tear down early
+#   synchronize   (pull_request)   redeploy an armed PR at its new head
+#   closed        (pull_request)   tear down, armed or not
+#   schedule / workflow_dispatch   reaper: delete every prefix whose PR is not open+armed
+#
+# The armed marker is the bot's sticky comment (scripts/preview_sticky_comment.sh),
+# so every decision here is one GitHub API call with no cloud credentials.
+#
+# One concurrency group per PR is shared by resolve, deploy and teardown. That is
+# what makes /preview idempotent: a repeat comment queues behind the running
+# build, then finds the marker already at its head commit and only re-posts the
+# URL. A push, a close or /preview off cancels the running build instead.
+
+on:
+  issue_comment:
+    types: [created]
+  pull_request:
+    types: [synchronize, closed]
+  schedule:
+    - cron: "17 5 * * *" # daily reaper
+  workflow_dispatch: # run the reaper by hand
+
+run-name: >-
+  ${{ github.event.issue.number && format('preview pr-{0}', github.event.issue.number)
+      || github.event.pull_request.number && format('preview pr-{0}', github.event.pull_request.number)
+      || 'preview reaper' }}
+
+permissions:
+  contents: read
+
+env:
+  PREVIEW_DOMAIN: preview.staging.pangea.chat
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  GH_REPO: ${{ github.repository }}
+  DOC_URL: https://github.com/pangeachat/client/blob/main/.github/instructions/deployment.instructions.md#preview-deploys
+
+jobs:
+  resolve:
+    # What does this event mean, for which PR, at which commit? Filters everything
+    # that is not a preview command or a same-repo PR event before any
+    # credentialed job starts. Every comment on every PR creates a run; the ones
+    # that are not /preview end here, skipped, in zero seconds.
+    if: >-
+      (github.event_name == 'issue_comment'
+        && github.event.issue.pull_request
+        && startsWith(github.event.comment.body, '/preview'))
+      || github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+    concurrency:
+      group: preview-${{ github.event.issue.number || github.event.pull_request.number }}
+      cancel-in-progress: ${{ github.event_name == 'pull_request' || startsWith(github.event.comment.body, '/preview off') }}
+    outputs:
+      action: ${{ steps.decide.outputs.action }} # deploy | teardown | none
+      pr: ${{ steps.decide.outputs.pr }}
+      head_sha: ${{ steps.decide.outputs.head_sha }}
+      reason: ${{ steps.decide.outputs.reason }}
+    env:
+      EVENT: ${{ github.event_name }}
+      PR: ${{ github.event.issue.number || github.event.pull_request.number }}
+      PR_EVENT: ${{ github.event.action }}
+      # Untrusted input from a public repo: it reaches the shell only through this
+      # env var, never interpolated into the script.
+      COMMENT_BODY: ${{ github.event.comment.body }}
+      COMMENT_ID: ${{ github.event.comment.id }}
+      COMMENTER: ${{ github.event.comment.user.login }}
+      EVENT_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+      EVENT_HEAD_IS_FORK: ${{ github.event.pull_request.head.repo.full_name != github.repository }}
+    steps:
+      # Default ref: the merge commit on pull_request events, main on comments.
+      # Both carry the helper once this workflow is on main.
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          sparse-checkout: scripts/preview_sticky_comment.sh
+          sparse-checkout-cone-mode: false
+      - id: decide
+        run: |
+          out() { printf '%s=%s\n' "$1" "$2" >> "$GITHUB_OUTPUT"; }
+          done_with() { out action "$1"; out reason "$2"; echo "::notice::$1 — $2"; exit 0; }
+          react() { gh api -X POST "repos/$GH_REPO/issues/comments/$COMMENT_ID/reactions" -f content="$1" >/dev/null || true; }
+          out pr "$PR"
+
+          if [ "$EVENT" = pull_request ]; then
+            out head_sha "$EVENT_HEAD_SHA"
+            # Forks never have a preview (fork runs get no credentials), so there is
+            # nothing to deploy and nothing to tear down.
+            [ "$EVENT_HEAD_IS_FORK" = false ] || done_with none "fork PR"
+            [ "$PR_EVENT" != closed ] || done_with teardown "PR closed"
+            read -r state _ < <(scripts/preview_sticky_comment.sh read "$PR") || true
+            case "${state:-}" in
+              armed|building|failed) done_with deploy "push to an armed PR" ;;
+              *) done_with none "PR is not armed (marker: ${state:-none})" ;;
+            esac
+          fi
+
+          # issue_comment from here on. First line, trimmed, inner whitespace collapsed.
+          cmd=$(printf '%s' "$COMMENT_BODY" | head -1 | tr -d '\r' \
+            | sed -E 's/^[[:space:]]+//; s/[[:space:]]+$//; s/[[:space:]]+/ /g')
+          case "$cmd" in
+            "/preview")     want=deploy ;;
+            "/preview off") want=teardown ;;
+            *) done_with none "first line is not '/preview' or '/preview off'" ;;
+          esac
+
+          # Only write access counts: the repo is public and the run carries deploy
+          # credentials. Anyone else's /preview is ignored, silently, by design.
+          perm=$(gh api "repos/$GH_REPO/collaborators/$COMMENTER/permission" --jq .permission 2>/dev/null || echo none)
+          case "$perm" in
+            admin|write) ;;
+            *) done_with none "$COMMENTER has '$perm' access" ;;
+          esac
+
+          read -r pr_state is_fork head < <(gh pr view "$PR" --json state,isCrossRepository,headRefOid \
+            --jq '"\(.state) \(.isCrossRepository) \(.headRefOid)"') || true
+          [ -n "${head:-}" ] || { echo "::error::could not resolve PR #$PR"; exit 1; }
+          out head_sha "$head"
+
+          if [ "$is_fork" = true ]; then
+            # Refused whoever asks: the run would build code we did not write, with our credentials.
+            react confused
+            gh pr comment "$PR" --body "Previews are not available for PRs from forks: the run carries deploy credentials and would build code we did not write."
+            done_with none "fork PR"
+          fi
+          if [ "$want" = teardown ]; then
+            react +1
+            done_with teardown "/preview off by $COMMENTER"
+          fi
+          [ "$pr_state" = OPEN ] || done_with none "PR is $pr_state"
+
+          read -r state sha < <(scripts/preview_sticky_comment.sh read "$PR") || true
+          if [ "${state:-}" = armed ] && [ "${sha:-}" = "$head" ]; then
+            # Idempotent: already serving this commit. A build of it cannot still be
+            # running here, because this job waited for it in the concurrency group.
+            react rocket
+            gh pr comment "$PR" --body "Preview is already up to date at \`${head::8}\`: https://pr-$PR.$PREVIEW_DOMAIN"
+            done_with none "already deployed at $head"
+          fi
+          react rocket
+          done_with deploy "/preview by $COMMENTER"
+
+  deploy:
+    needs: resolve
+    if: needs.resolve.outputs.action == 'deploy'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    environment: staging
+    permissions:
+      contents: read
+      id-token: write
+      pull-requests: write
+      issues: write
+    concurrency:
+      group: preview-${{ needs.resolve.outputs.pr }}
+      # New code supersedes a build in flight; a repeat /preview waits for it instead.
+      cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+    env:
+      PR: ${{ needs.resolve.outputs.pr }}
+      HEAD_SHA: ${{ needs.resolve.outputs.head_sha }}
+      PREVIEW_S3_BUCKET: ${{ vars.PREVIEW_S3_BUCKET }}
+      PREVIEW_CF_DISTRIBUTION_ID: ${{ vars.PREVIEW_CF_DISTRIBUTION_ID }}
+      WEB_APP_ENV: ${{ vars.WEB_APP_ENV }}
+      ENV_OVERRIDES: ${{ vars.ENV_OVERRIDES }}
+      STICKY: .preview-tooling/scripts/preview_sticky_comment.sh
+    steps:
+      - name: Require the preview infrastructure variables
+        run: |
+          [ -n "$PREVIEW_S3_BUCKET" ] && [ -n "$PREVIEW_CF_DISTRIBUTION_ID" ] \
+            || { echo "::error::PREVIEW_S3_BUCKET / PREVIEW_CF_DISTRIBUTION_ID are not set on the staging environment (outputs of pangeachat/devops#356)"; exit 1; }
+      - name: Check out the PR head
+        # The head, not the merge commit: Settings shows this SHA, and it must exist on the branch.
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          ref: ${{ needs.resolve.outputs.head_sha }}
+      - name: Check out the sticky-comment helper from main
+        # The code under build may predate the helper; tooling always comes from main.
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          ref: main
+          path: .preview-tooling
+          sparse-checkout: scripts/preview_sticky_comment.sh
+          sparse-checkout-cone-mode: false
+      - name: Mark the sticky comment as building
+        run: |
+          printf 'Building preview of `%s` — [run](%s).\n' "${HEAD_SHA::8}" \
+            "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" > "$RUNNER_TEMP/body.md"
+          "$STICKY" write "$PR" building "$HEAD_SHA" "$RUNNER_TEMP/body.md"
+
+      # ---- Build: the staging recipe from main_deploy.yaml build_web, unchanged
+      # apart from the commit stamp. When one of these steps changes, change both
+      # (release.yaml carries the same steps for production).
+      - run: cat .github/workflows/versions.env >> $GITHUB_ENV
+      - uses: subosito/flutter-action@fd55f4c5af5b953cc57a2be44cb082c8f6635e8e # v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
+      - uses: moonrepo/setup-rust@ede6de059f8046a5e236c94046823e2af11ca670 # v1
+      - run: rustup component add rust-src --toolchain nightly-x86_64-unknown-linux-gnu
+      - name: Resolve vodozemac version
+        id: vodozemac
+        run: echo "version=$(yq '.dependencies.flutter_vodozemac' pubspec.yaml | tr -d '^')" >> $GITHUB_OUTPUT
+      - name: Cache vodozemac bindings
+        # Exact key, no restore-keys — see ci.instructions.md.
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: assets/vodozemac/vodozemac_bindings_dart*
+          key: vodozemac-bindings-v1-${{ runner.os }}-${{ steps.vodozemac.outputs.version }}-${{ hashFiles('scripts/prepare-web.sh') }}
+      - name: Prepare web
+        run: ./scripts/prepare-web.sh
+      - run: rm ./assets/vodozemac/.gitignore
+      - run: flutter pub get
+      - name: Build Release Web
+        # Same UTC ddHHMM build-number stamp as staging; BUILD_COMMIT_SHA is the PR
+        # head, which is what Settings shows. Profile mode, like staging.
+        run: |
+          flutter config --enable-web
+          flutter clean
+          flutter pub get
+          ./scripts/build-web-versioned-canvaskit.sh --pwa-strategy=none --profile --source-maps \
+            --build-number=$(date -u +%d%H%M) --dart-define=BUILD_COMMIT_SHA=${HEAD_SHA::8}
+      - name: Version Material Icons font
+        run: |
+          VERSION=${HEAD_SHA::8}
+          FONT_DIR="build/web/assets/fonts"
+          OLD_NAME="MaterialIcons-Regular.otf"
+          NEW_NAME="MaterialIcons-Regular-${VERSION}.otf"
+          mv "$FONT_DIR/$OLD_NAME" "$FONT_DIR/$NEW_NAME"
+          sed -i "s|$OLD_NAME|$NEW_NAME|g" build/web/assets/FontManifest.json
+      - name: Inject build version into index.html
+        run: sed -i "s|__BUILD_VERSION__|${HEAD_SHA::8}|g" build/web/index.html
+      - name: Publish self-unregistering service worker
+        run: cp scripts/self_destroying_service_worker.js build/web/flutter_service_worker.js
+
+      # ---- Deploy to the PR prefix
+      - name: Write the preview .env
+        # The staging WEB_APP_ENV plus ENABLE_SEMANTICS, nothing else: every other
+        # staging-only flag targets a backend allowlist that names app.staging
+        # exactly. An empty SENTRY_DSN disables the SDK. Consequences for testers
+        # are listed in deployment.instructions.md → Preview Deploys.
+        run: |
+          {
+            echo "$WEB_APP_ENV"
+            echo "ENABLE_SEMANTICS=true"
+            echo "SENTRY_DSN="
+          } > build/web/.env
+          echo "$ENV_OVERRIDES" > build/web/assets/envs.json
+      - name: Set up AWS CLI
+        uses: aws-actions/configure-aws-credentials@e3dd6a429d7300a6a4c196c26e071d42e0343502 # v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN_STAGING }}
+          aws-region: us-east-1
+      - name: Upload to the PR prefix
+        # One cache policy for everything: previews are small-audience and every
+        # deploy invalidates the prefix, so the staging cache tiers buy nothing here.
+        # --delete drops files a previous build of this PR left behind.
+        run: |
+          aws s3 sync ./build/web "s3://$PREVIEW_S3_BUCKET/pr-$PR/" --delete --only-show-errors \
+            --cache-control "no-cache, must-revalidate"
+      - name: Invalidate the PR prefix
+        # The router rewrites the URI before the cache key is computed, so one
+        # wildcard path covers this PR and touches no other.
+        run: |
+          id=$(aws cloudfront create-invalidation --distribution-id "$PREVIEW_CF_DISTRIBUTION_ID" \
+            --paths "/pr-$PR/*" --query 'Invalidation.Id' --output text)
+          aws cloudfront wait invalidation-completed --distribution-id "$PREVIEW_CF_DISTRIBUTION_ID" --id "$id"
+      - name: Smoke the served preview
+        # Same three probes as the staging deploy, minus .well-known (not shipped to previews).
+        run: |
+          BASE="https://pr-$PR.$PREVIEW_DOMAIN"
+          first=$(curl -sf "$BASE/main.dart.js" | tr -d '[:space:]' | head -c 1)
+          [ -n "$first" ] && [ "$first" != "<" ] \
+            || { echo "::error::main.dart.js served HTML or empty — upload or routing broke"; exit 1; }
+          curl -sf "$BASE/.env" | grep -qE '^[A-Za-z_][A-Za-z0-9_]*=' \
+            || { echo "::error::/.env did not serve an env file"; exit 1; }
+          curl -sf "$BASE/zz9smoke" | grep -qi '<html\|flutter' \
+            || { echo "::error::a deep path did not serve the SPA shell — router fallback broken?"; exit 1; }
+      - name: Post the preview URL
+        run: |
+          cat > "$RUNNER_TEMP/body.md" <<EOF
+          ### Preview: https://pr-$PR.$PREVIEW_DOMAIN
+
+          Build \`${HEAD_SHA::8}\` · deployed $(date -u '+%Y-%m-%d %H:%M UTC') · pushes to this PR redeploy automatically · \`/preview off\` tears it down.
+
+          Runs against the staging backends. Not on previews: teacher-dashboard analytics, streaming speech-to-text (batch fallback), Sentry. Details: [Preview Deploys]($DOC_URL).
+          EOF
+          "$STICKY" write "$PR" armed "$HEAD_SHA" "$RUNNER_TEMP/body.md"
+      - name: Leave nothing behind if the PR closed during the build
+        # A close normally cancels this run through the concurrency group; this
+        # covers a close that lands between the upload and the end of the job.
+        run: |
+          state=$(gh pr view "$PR" --json state --jq .state)
+          [ "$state" != OPEN ] || exit 0
+          echo "::warning::PR is $state; removing the preview it just deployed"
+          aws s3 rm --recursive --only-show-errors "s3://$PREVIEW_S3_BUCKET/pr-$PR/"
+          aws cloudfront create-invalidation --distribution-id "$PREVIEW_CF_DISTRIBUTION_ID" --paths "/pr-$PR/*" >/dev/null
+          echo "Preview torn down: the PR closed during the build." > "$RUNNER_TEMP/body.md"
+          "$STICKY" write "$PR" off "$HEAD_SHA" "$RUNNER_TEMP/body.md"
+      - name: Record a failed or cancelled build
+        # Otherwise the marker stays at "building" and a later push would look
+        # like a redeploy of something that was never up.
+        if: failure() || cancelled()
+        env:
+          JOB_STATUS: ${{ job.status }}
+        run: |
+          printf 'Preview build of `%s` %s — [run](%s). Push again or comment `/preview` to retry.\n' \
+            "${HEAD_SHA::8}" "$JOB_STATUS" "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" > "$RUNNER_TEMP/body.md"
+          "$STICKY" write "$PR" failed "$HEAD_SHA" "$RUNNER_TEMP/body.md" || true
+
+  teardown:
+    needs: resolve
+    if: needs.resolve.outputs.action == 'teardown'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment: staging
+    permissions:
+      contents: read
+      id-token: write
+      pull-requests: write
+      issues: write
+    concurrency:
+      group: preview-${{ needs.resolve.outputs.pr }}
+      cancel-in-progress: true # a build in flight for this PR has no reason to finish
+    env:
+      PR: ${{ needs.resolve.outputs.pr }}
+      HEAD_SHA: ${{ needs.resolve.outputs.head_sha }}
+      REASON: ${{ needs.resolve.outputs.reason }}
+      PREVIEW_S3_BUCKET: ${{ vars.PREVIEW_S3_BUCKET }}
+      PREVIEW_CF_DISTRIBUTION_ID: ${{ vars.PREVIEW_CF_DISTRIBUTION_ID }}
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          sparse-checkout: scripts/preview_sticky_comment.sh
+          sparse-checkout-cone-mode: false
+      - name: Set up AWS CLI
+        if: env.PREVIEW_S3_BUCKET != ''
+        uses: aws-actions/configure-aws-credentials@e3dd6a429d7300a6a4c196c26e071d42e0343502 # v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN_STAGING }}
+          aws-region: us-east-1
+      - name: Remove the PR prefix
+        # Every close lands here, armed or not; an empty prefix is a no-op. Before the
+        # infrastructure variables exist there is nothing to remove, so that is a
+        # warning rather than a red run on every closed PR.
+        run: |
+          [ -n "$PREVIEW_S3_BUCKET" ] || { echo "::warning::PREVIEW_S3_BUCKET is not set; nothing to tear down"; exit 0; }
+          aws s3 rm --recursive --only-show-errors "s3://$PREVIEW_S3_BUCKET/pr-$PR/"
+          aws cloudfront create-invalidation --distribution-id "$PREVIEW_CF_DISTRIBUTION_ID" --paths "/pr-$PR/*" >/dev/null
+      - name: Mark the sticky comment as off
+        # Only when one exists: an unarmed PR closing must not grow a comment. Clearing
+        # the marker is what makes a reopened PR start unarmed.
+        run: |
+          read -r state sha < <(scripts/preview_sticky_comment.sh read "$PR") || true
+          [ -n "${state:-}" ] || exit 0
+          printf 'Preview torn down (%s). Comment `/preview` on an open PR to bring it back.\n' "$REASON" > "$RUNNER_TEMP/body.md"
+          scripts/preview_sticky_comment.sh write "$PR" off "${sha:-$HEAD_SHA}" "$RUNNER_TEMP/body.md"
+
+  reap:
+    # Backstop for everything the event path can miss: a dropped event, a runner
+    # that died mid-teardown, a marker edited by hand. Deletes every prefix whose
+    # PR is not open and armed (a build in flight counts as armed).
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: staging
+    permissions:
+      contents: read
+      id-token: write
+      pull-requests: write
+      issues: write
+    concurrency:
+      group: preview-reaper
+      cancel-in-progress: false
+    env:
+      PREVIEW_S3_BUCKET: ${{ vars.PREVIEW_S3_BUCKET }}
+      PREVIEW_CF_DISTRIBUTION_ID: ${{ vars.PREVIEW_CF_DISTRIBUTION_ID }}
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          sparse-checkout: scripts/preview_sticky_comment.sh
+          sparse-checkout-cone-mode: false
+      - name: Set up AWS CLI
+        if: env.PREVIEW_S3_BUCKET != ''
+        uses: aws-actions/configure-aws-credentials@e3dd6a429d7300a6a4c196c26e071d42e0343502 # v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN_STAGING }}
+          aws-region: us-east-1
+      - name: Delete every prefix whose PR is not open and armed
+        run: |
+          [ -n "$PREVIEW_S3_BUCKET" ] || { echo "::warning::PREVIEW_S3_BUCKET is not set; nothing to reap"; exit 0; }
+          prefixes=$(aws s3api list-objects-v2 --bucket "$PREVIEW_S3_BUCKET" --delimiter / --prefix pr- \
+            --query 'CommonPrefixes[].Prefix' --output text)
+          [ -n "$prefixes" ] && [ "$prefixes" != None ] || { echo "no preview prefixes in the bucket"; exit 0; }
+          for p in $prefixes; do
+            n=${p#pr-}; n=${n%/}
+            [[ "$n" =~ ^[0-9]+$ ]] || { echo "::warning::unexpected prefix '$p' left alone"; continue; }
+            pr_state=$(gh pr view "$n" --json state --jq .state 2>/dev/null || echo MISSING)
+            read -r m_state m_sha < <(scripts/preview_sticky_comment.sh read "$n") || true
+            case "$pr_state/${m_state:-none}" in
+              OPEN/armed|OPEN/building) echo "keep  pr-$n ($pr_state, $m_state)"; continue ;;
+            esac
+            echo "reap  pr-$n ($pr_state, marker ${m_state:-none})"
+            aws s3 rm --recursive --only-show-errors "s3://$PREVIEW_S3_BUCKET/$p"
+            aws cloudfront create-invalidation --distribution-id "$PREVIEW_CF_DISTRIBUTION_ID" --paths "/pr-$n/*" >/dev/null
+            if [ -n "${m_state:-}" ] && [ "$m_state" != off ]; then
+              echo "Preview removed by the daily sweep: the PR is $pr_state. Comment \`/preview\` on an open PR to bring it back." > "$RUNNER_TEMP/body.md"
+              scripts/preview_sticky_comment.sh write "$n" off "${m_sha:-0}" "$RUNNER_TEMP/body.md"
+            fi
+          done
