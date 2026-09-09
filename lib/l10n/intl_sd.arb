@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "هي اهي رول آهن جيڪي توهان هن سرگرمي ۾ ادا ڪري سگهو ٿا. اهو چونڊيو جيڪو توهان کي دلچسپي ڏئي!",
     "unlockActivitySummaries": "سرگرميءَ جي خلاصن کي کوليو",
     "upNext": "اڳيان",
-    "writingAssistanceSuggestion": "تجويز"
+    "writingAssistanceSuggestion": "تجويز",
+    "errorFetchingWordInfo": "لفظ جي معلومات حاصل ڪرڻ ۾ ناڪامي ٿي"
 }

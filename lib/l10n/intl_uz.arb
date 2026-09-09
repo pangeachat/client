@@ -9910,5 +9910,6 @@
     "tutorialActivityRoles": "Bular ushbu faoliyatda oʻynashingiz mumkin boʻlgan rollar. Sizni qiziqtirganini tanlang!",
     "unlockActivitySummaries": "Faoliyat xulosalarini ochish",
     "upNext": "Keyingisi",
-    "writingAssistanceSuggestion": "Taklif"
+    "writingAssistanceSuggestion": "Taklif",
+    "errorFetchingWordInfo": "So'z ma'lumotlarini olishda xatolik yuz berdi"
 }

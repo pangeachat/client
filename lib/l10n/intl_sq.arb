@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "Këto janë rolet që mund të luani në këtë aktivitet. Zgjidhni atë që ju intereson!",
     "unlockActivitySummaries": "Zhbloko përmbledhjet e aktivitetit",
     "upNext": "Në vazhdim",
-    "writingAssistanceSuggestion": "Sugjerim"
+    "writingAssistanceSuggestion": "Sugjerim",
+    "errorFetchingWordInfo": "Dështoi marrja e informacionit të fjalës"
 }

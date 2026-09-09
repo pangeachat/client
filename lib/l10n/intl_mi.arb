@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "Koinei ngā tūranga ka taea e koe te tākaro i roto i tēnei mahi. Kōwhiria te mea e hiahia ana koe!",
     "unlockActivitySummaries": "Wewete i ngā whakarāpopototanga mahi",
     "upNext": "Panuku",
-    "writingAssistanceSuggestion": "Tohu"
+    "writingAssistanceSuggestion": "Tohu",
+    "errorFetchingWordInfo": "I rahua te tiki i ngā mōhiohio kupu"
 }

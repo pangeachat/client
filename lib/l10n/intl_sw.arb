@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "Haya ndiyo majukumu unayoweza kucheza katika shughuli hii. Chagua lile linalokuvutia!",
     "unlockActivitySummaries": "Fungua muhtasari wa shughuli",
     "upNext": "Inayofuata",
-    "writingAssistanceSuggestion": "Pendekezo"
+    "writingAssistanceSuggestion": "Pendekezo",
+    "errorFetchingWordInfo": "Imeshindwa kupata maelezo ya neno"
 }

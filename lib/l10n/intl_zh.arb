@@ -9906,5 +9906,6 @@
     "tutorialActivityRoles": "这些是你可以此活动中扮演的角色。选择你感兴趣的一个！",
     "unlockActivitySummaries": "解锁活动总结",
     "upNext": "接下来",
-    "writingAssistanceSuggestion": "建议"
+    "writingAssistanceSuggestion": "建议",
+    "errorFetchingWordInfo": "获取单词信息失败"
 }

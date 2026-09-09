@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "یہ وہ کردار ہیں جو آپ اس سرگرمی میں ادا کر سکتے ہیں۔ جو آپ کو دلچسپ لگے اسے منتخب کریں!",
     "unlockActivitySummaries": "سرگرمی کے خلاصے اَن لاک کریں",
     "upNext": "اگلا",
-    "writingAssistanceSuggestion": "تجویز"
+    "writingAssistanceSuggestion": "تجویز",
+    "errorFetchingWordInfo": "لفظ کی معلومات حاصل کرنے میں ناکامی"
 }

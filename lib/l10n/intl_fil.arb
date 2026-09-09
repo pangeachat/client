@@ -10766,5 +10766,6 @@
     "tutorialActivityRoles": "Ito ang mga role na maaari mong gampanan sa activity na ito. Piliin ang isa na interesado ka!",
     "unlockActivitySummaries": "I-unlock ang mga buod ng aktibidad",
     "upNext": "Susunod",
-    "writingAssistanceSuggestion": "Mungkahi"
+    "writingAssistanceSuggestion": "Mungkahi",
+    "errorFetchingWordInfo": "Nabigong kunin ang impormasyon ng salita"
 }

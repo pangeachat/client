@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "Haec sunt munera quae in hac actione agere potes. Elige quod te maxime interest!",
     "unlockActivitySummaries": "Reserare summarios actionum",
     "upNext": "Deinceps",
-    "writingAssistanceSuggestion": "Suggestio"
+    "writingAssistanceSuggestion": "Suggestio",
+    "errorFetchingWordInfo": "Defuit verbi notitias petere"
 }

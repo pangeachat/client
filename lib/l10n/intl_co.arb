@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "Questi sò i roli chì pudete ghjucà in questa attività. Sceglite quellu chì vi interessa!",
     "unlockActivitySummaries": "Sbloccà i riassunti di l'attività",
     "upNext": "Dopu",
-    "writingAssistanceSuggestion": "Suggerimentu"
+    "writingAssistanceSuggestion": "Suggerimentu",
+    "errorFetchingWordInfo": "Fallimentu di ricuperà l'infurmazione di a parolla"
 }

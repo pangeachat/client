@@ -9979,5 +9979,6 @@
     "tutorialActivityRoles": "Ini adalah peran yang dapat Anda mainkan dalam aktivitas ini. Pilih yang menarik bagi Anda!",
     "unlockActivitySummaries": "Buka ringkasan aktivitas",
     "upNext": "Berikutnya",
-    "writingAssistanceSuggestion": "Saran"
+    "writingAssistanceSuggestion": "Saran",
+    "errorFetchingWordInfo": "Gagal mengambil info kata"
 }

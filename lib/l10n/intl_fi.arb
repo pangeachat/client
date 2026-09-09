@@ -9943,5 +9943,6 @@
     "tutorialActivityRoles": "Nämä ovat roolit, joita voit pelata tässä aktiviteetissa. Valitse se, joka kiinnostaa sinua!",
     "unlockActivitySummaries": "Avaa yhteenvetoja toiminnoista",
     "upNext": "Seuraavaksi",
-    "writingAssistanceSuggestion": "Ehdotus"
+    "writingAssistanceSuggestion": "Ehdotus",
+    "errorFetchingWordInfo": "Sanan tietojen nouto epäonnistui"
 }

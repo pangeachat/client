@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "Ovo su uloge koje možete igrati u ovoj aktivnosti. Odaberite onu koja vas zanima!",
     "unlockActivitySummaries": "Otključajte sažetke aktivnosti",
     "upNext": "Slijedi",
-    "writingAssistanceSuggestion": "Prijedlog"
+    "writingAssistanceSuggestion": "Prijedlog",
+    "errorFetchingWordInfo": "Preuzimanje informacija o riječi nije uspjelo"
 }

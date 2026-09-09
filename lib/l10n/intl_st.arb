@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "Lena ke likarolo tseo u ka li bapalang mosebetsing ona. Khetha e u khahlang!",
     "unlockActivitySummaries": "Notlolla kakaretso ya ditshebetso",
     "upNext": "Seo se latelang",
-    "writingAssistanceSuggestion": "Tlhahiso"
+    "writingAssistanceSuggestion": "Tlhahiso",
+    "errorFetchingWordInfo": "Ho hlolehile ho fumana leseli la lentsoe"
 }

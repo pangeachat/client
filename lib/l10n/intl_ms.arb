@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "Ini ialah peranan yang boleh anda mainkan dalam aktiviti ini. Pilih yang menarik minat anda!",
     "unlockActivitySummaries": "Buka ringkasan aktiviti",
     "upNext": "Seterusnya",
-    "writingAssistanceSuggestion": "Cadangan"
+    "writingAssistanceSuggestion": "Cadangan",
+    "errorFetchingWordInfo": "Gagal mengambil maklumat perkataan"
 }

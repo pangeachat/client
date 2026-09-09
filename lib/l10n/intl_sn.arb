@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "Aya ndiwo mabasa aunogona kuita muchiitiko ichi. Sarudza raunofarira!",
     "unlockActivitySummaries": "Vhura pfupiso dzechiitiko",
     "upNext": "Zvinotevera",
-    "writingAssistanceSuggestion": "Zano"
+    "writingAssistanceSuggestion": "Zano",
+    "errorFetchingWordInfo": "Zvakakona kutora ruzivo rwezwi"
 }

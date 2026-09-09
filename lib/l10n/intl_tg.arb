@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "Инҳо нақшҳое мебошанд, ки шумо метавонед дар ин фаъолият бозӣ кунед. Нақшеро интихоб кунед, ки ба шумо таваҷҷӯҳ дорад!",
     "unlockActivitySummaries": "Хулосаҳои фаъолиятро кушоед",
     "upNext": "Баъдӣ",
-    "writingAssistanceSuggestion": "Пешниҳод"
+    "writingAssistanceSuggestion": "Пешниҳод",
+    "errorFetchingWordInfo": "Маълумот дар бораи калимаро гирифтан нашуд"
 }

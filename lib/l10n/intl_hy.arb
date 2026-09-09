@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "Սրանք այն դերերն են, որոնք դուք կարող եք խաղալ այս գործունեության մեջ։ Ընտրեք այն, որը ձեզ հետաքրքրում է։",
     "unlockActivitySummaries": "Բացել ակտիվության ամփոփագրերը",
     "upNext": "Հաջորդը",
-    "writingAssistanceSuggestion": "Առաջարկ"
+    "writingAssistanceSuggestion": "Առաջարկ",
+    "errorFetchingWordInfo": "Բառի տեղեկությունները բեռնել չհաջողվեց"
 }

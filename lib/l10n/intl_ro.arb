@@ -10638,5 +10638,6 @@
     "tutorialActivityRoles": "Acestea sunt rolurile pe care le poți juca în această activitate. Alege-l pe cel care te interesează!",
     "unlockActivitySummaries": "Deblocați rezumatele activităților",
     "upNext": "Urmează",
-    "writingAssistanceSuggestion": "Sugestie"
+    "writingAssistanceSuggestion": "Sugestie",
+    "errorFetchingWordInfo": "Nu s-au putut prelua informațiile despre cuvânt"
 }

@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "Бұл сіз осы әрекетте ойнай алатын рөлдер. Сізді қызықтыратынын таңдаңыз!",
     "unlockActivitySummaries": "Белсенділік қорытындыларын ашу",
     "upNext": "Келесі",
-    "writingAssistanceSuggestion": "Ұсыныс"
+    "writingAssistanceSuggestion": "Ұсыныс",
+    "errorFetchingWordInfo": "Сөз туралы ақпаратты алу мүмкін болмады"
 }

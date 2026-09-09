@@ -85,11 +85,16 @@ class PhoneticTranscriptionBuilderState
     userL2: MatrixState.pangeaController.userController.userL2Code ?? 'en',
   );
 
+  int _loadVersion = 0;
+
   Future<void> _load() async {
+    final version = ++_loadVersion;
     _loader.value = const AsyncState.loading();
     final resp = await PTV2Repo.instance.get(_request);
 
-    if (!mounted) return;
+    // A newer load started under this one (the text changed), so this result
+    // is stale. Same guard as LemmaMeaningBuilder.
+    if (!mounted || version != _loadVersion) return;
     resp.isError
         ? _loader.value = AsyncState.error(resp.asError!.error)
         : _loader.value = AsyncState.loaded(resp.asValue!.value);

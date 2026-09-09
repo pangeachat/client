@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "ئەمانە ئەو ڕۆڵانەن کە دەتوانیت لەم چالاکییەدا یاریی پێ بکەیت. ئەوەیان هەڵبژێرە کە حەزی لێ دەکەیت!",
     "unlockActivitySummaries": "پوختەی چالاکییەکان بکەرەوە",
     "upNext": "لە دوایدا",
-    "writingAssistanceSuggestion": "پێشنیار"
+    "writingAssistanceSuggestion": "پێشنیار",
+    "errorFetchingWordInfo": "نەتوانرا زانیاریی وشە وەربگیرێت"
 }

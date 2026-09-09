@@ -7198,5 +7198,6 @@
     "tutorialActivityRoles": "Đây là các vai trò bạn có thể đóng trong hoạt động này. Chọn vai trò mà bạn quan tâm!",
     "unlockActivitySummaries": "Mở khóa tóm tắt hoạt động",
     "upNext": "Tiếp theo",
-    "writingAssistanceSuggestion": "Gợi ý"
+    "writingAssistanceSuggestion": "Gợi ý",
+    "errorFetchingWordInfo": "Không thể tìm nạp thông tin từ"
 }

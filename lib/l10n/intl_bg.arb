@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "Това са ролите, които можете да играете в тази дейност. Изберете тази, която ви интересува!",
     "unlockActivitySummaries": "Отключване на обобщения на дейностите",
     "upNext": "Следва",
-    "writingAssistanceSuggestion": "Предложение"
+    "writingAssistanceSuggestion": "Предложение",
+    "errorFetchingWordInfo": "Неуспешно извличане на информация за думата"
 }

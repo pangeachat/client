@@ -10538,5 +10538,6 @@
     "tutorialActivityRoles": "นี่คือบทบาทที่คุณสามารถเล่นได้ในกิจกรรมนี้ เลือกบทบาทที่คุณสนใจ!",
     "unlockActivitySummaries": "ปลดล็อกสรุปกิจกรรม",
     "upNext": "ถัดไป",
-    "writingAssistanceSuggestion": "ข้อเสนอแนะ"
+    "writingAssistanceSuggestion": "ข้อเสนอแนะ",
+    "errorFetchingWordInfo": "ไม่สามารถดึงข้อมูลคำศัพท์ได้"
 }

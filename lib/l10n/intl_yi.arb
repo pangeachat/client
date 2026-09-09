@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "דאָס זענען די ראָלעס וואָס איר קענט שפּילן אין דער אַקטיוויטעט. קלויבט אויס די וואָס אינטערעסירט אייך!",
     "unlockActivitySummaries": "אַנשליסן טעטיקייט קיצורים",
     "upNext": "קומענדיקע",
-    "writingAssistanceSuggestion": "פֿאָרשלאָג"
+    "writingAssistanceSuggestion": "פֿאָרשלאָג",
+    "errorFetchingWordInfo": "נישט געקענט ברענגען וואָרט אינפֿאָרמאַציע"
 }

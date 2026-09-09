@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "دا هغه رولونه دي چې تاسو یې په دې فعالیت کې لوبولی شئ. هغه یو غوره کړئ چې تاسو ته په زړه پورې وي!",
     "unlockActivitySummaries": "د فعالیت لنډیزونه خلاص کړئ",
     "upNext": "بل",
-    "writingAssistanceSuggestion": "وړاندیز"
+    "writingAssistanceSuggestion": "وړاندیز",
+    "errorFetchingWordInfo": "د کلمې معلوماتو په ترلاسه کولو کې پاتې راغلی"
 }

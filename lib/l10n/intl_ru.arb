@@ -10878,5 +10878,6 @@
     "tutorialActivityRoles": "Это роли, которые вы можете играть в этом задании. Выберите ту, которая вас интересует!",
     "unlockActivitySummaries": "Разблокировать сводки активности",
     "upNext": "Далее",
-    "writingAssistanceSuggestion": "Предложение"
+    "writingAssistanceSuggestion": "Предложение",
+    "errorFetchingWordInfo": "Не удалось получить информацию о слове"
 }

@@ -8125,5 +8125,6 @@
     "tutorialActivityRoles": "Estos son los roles que puedes desempeñar en esta actividad. ¡Elige el que más te interese!",
     "unlockActivitySummaries": "Desbloquear resúmenes de actividad",
     "upNext": "A continuación",
-    "writingAssistanceSuggestion": "Sugerencia"
+    "writingAssistanceSuggestion": "Sugerencia",
+    "errorFetchingWordInfo": "Error al obtener la información de la palabra"
 }

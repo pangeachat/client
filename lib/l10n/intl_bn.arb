@@ -10534,5 +10534,6 @@
     "tutorialActivityRoles": "এগুলি এমন ভূমিকা যা আপনি এই কার্যকলাপে খেলতে পারেন। আপনার আগ্রহের একটি বেছে নিন!",
     "unlockActivitySummaries": "ক্রিয়াকলাপের সারাংশ আনলক করুন",
     "upNext": "এরপর",
-    "writingAssistanceSuggestion": "পরামর্শ"
+    "writingAssistanceSuggestion": "পরামর্শ",
+    "errorFetchingWordInfo": "শব্দের তথ্য আনতে ব্যর্থ হয়েছে"
 }

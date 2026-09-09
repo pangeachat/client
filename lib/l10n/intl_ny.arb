@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "Izi ndi maudindo omwe mungasewere mu chochitika ichi. Sankhani yomwe ikukusangalatsani!",
     "unlockActivitySummaries": "Tsegulani chidule cha zochitika",
     "upNext": "Chotsatira",
-    "writingAssistanceSuggestion": "Malingaliro"
+    "writingAssistanceSuggestion": "Malingaliro",
+    "errorFetchingWordInfo": "Zalephera kupeza zambiri za mawu"
 }

@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "Dette er rollene du kan spille i denne aktiviteten. Velg den som interesserer deg!",
     "unlockActivitySummaries": "Lås opp aktivitetssammendrag",
     "upNext": "Neste",
-    "writingAssistanceSuggestion": "Forslag"
+    "writingAssistanceSuggestion": "Forslag",
+    "errorFetchingWordInfo": "Kunne ikke hente ordinformasjon"
 }

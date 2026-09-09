@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "Iki peran sing bisa kok dolanan ing aktivitas iki. Pilih sing narik kawigatenmu!",
     "unlockActivitySummaries": "Mbukak ringkesan aktivitas",
     "upNext": "Sabanjuré",
-    "writingAssistanceSuggestion": "Saran"
+    "writingAssistanceSuggestion": "Saran",
+    "errorFetchingWordInfo": "Gagal njupuk informasi tembung"
 }

@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "Bunlar bu fəaliyyətdə oynaya biləcəyiniz rollardır. Sizi maraqlandıranı seçin!",
     "unlockActivitySummaries": "Fəaliyyət xülasələrini açın",
     "upNext": "Növbəti",
-    "writingAssistanceSuggestion": "Təklif"
+    "writingAssistanceSuggestion": "Təklif",
+    "errorFetchingWordInfo": "Söz məlumatı əldə edilmədi"
 }

@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "Sa yo se wòl ou ka jwe nan aktivite sa a. Chwazi sa ki enterese w la!",
     "unlockActivitySummaries": "Debloke rezime aktivite yo",
     "upNext": "Apre sa",
-    "writingAssistanceSuggestion": "Sijesyon"
+    "writingAssistanceSuggestion": "Sijesyon",
+    "errorFetchingWordInfo": "Nou pa t kapab jwenn enfòmasyon sou mo a"
 }

@@ -9893,5 +9893,6 @@
     "tutorialActivityRoles": "Das sind die Rollen, die du in dieser Aktivität spielen kannst. Wähle diejenige, die dich interessiert!",
     "unlockActivitySummaries": "Aktivitätsübersichten freischalten",
     "upNext": "Als Nächstes",
-    "writingAssistanceSuggestion": "Vorschlag"
+    "writingAssistanceSuggestion": "Vorschlag",
+    "errorFetchingWordInfo": "Fehler beim Abrufen der Wortinformationen"
 }

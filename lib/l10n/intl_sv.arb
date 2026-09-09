@@ -10424,5 +10424,6 @@
     "tutorialActivityRoles": "Dessa är rollerna du kan spela i den här aktiviteten. Välj den som intresserar dig!",
     "unlockActivitySummaries": "Lås upp aktivitetsöversikter",
     "upNext": "Nästa",
-    "writingAssistanceSuggestion": "Förslag"
+    "writingAssistanceSuggestion": "Förslag",
+    "errorFetchingWordInfo": "Kunde inte hämta ordinformation"
 }

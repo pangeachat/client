@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "ʻO kēia nā kuleana āu e hiki ai ke pāʻani ma kēia hana. E koho i ka mea āu e makemake ai!",
     "unlockActivitySummaries": "Wehe i nā hōʻuluʻulu hana",
     "upNext": "Aʻe aʻe",
-    "writingAssistanceSuggestion": "Manaʻo kōkua"
+    "writingAssistanceSuggestion": "Manaʻo kōkua",
+    "errorFetchingWordInfo": "ʻAʻole i loaʻa ka ʻike huaʻōlelo"
 }

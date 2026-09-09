@@ -9906,5 +9906,6 @@
     "tutorialActivityRoles": "Це ролі, які ви можете грати в цьому завданні. Виберіть ту, яка вас цікавить!",
     "unlockActivitySummaries": "Розблокувати підсумки активності",
     "upNext": "Далі",
-    "writingAssistanceSuggestion": "Пропозиція"
+    "writingAssistanceSuggestion": "Пропозиція",
+    "errorFetchingWordInfo": "Не вдалося отримати інформацію про слово"
 }

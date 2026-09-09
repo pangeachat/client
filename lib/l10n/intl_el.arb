@@ -10781,5 +10781,6 @@
     "tutorialActivityRoles": "Αυτοί είναι οι ρόλοι που μπορείς να παίξεις σε αυτή τη δραστηριότητα. Διάλεξε αυτόν που σε ενδιαφέρει!",
     "unlockActivitySummaries": "Ξεκλείδωμα περιλήψεων δραστηριοτήτων",
     "upNext": "Στη συνέχεια",
-    "writingAssistanceSuggestion": "Πρόταση"
+    "writingAssistanceSuggestion": "Πρόταση",
+    "errorFetchingWordInfo": "Αποτυχία ανάκτησης πληροφοριών λέξης"
 }

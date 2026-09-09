@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "Ieu peran anu tiasa anjeun maénkeun dina kagiatan ieu. Pilih anu dipikaresep ku anjeun!",
     "unlockActivitySummaries": "Buka ringkesan kagiatan",
     "upNext": "Salajengna",
-    "writingAssistanceSuggestion": "Saran"
+    "writingAssistanceSuggestion": "Saran",
+    "errorFetchingWordInfo": "Gagal ngala inpormasi kecap"
 }

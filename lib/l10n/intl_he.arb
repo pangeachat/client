@@ -10820,5 +10820,6 @@
     "tutorialActivityRoles": "אלו התפקידים שתוכל לשחק בפעילות זו. בחר את זה שמעניין אותך!",
     "unlockActivitySummaries": "פתיחת סיכומי פעילות",
     "upNext": "הבא בתור",
-    "writingAssistanceSuggestion": "הצעה"
+    "writingAssistanceSuggestion": "הצעה",
+    "errorFetchingWordInfo": "אחזור פרטי המילה נכשל"
 }

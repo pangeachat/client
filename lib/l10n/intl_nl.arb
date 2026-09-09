@@ -9906,5 +9906,6 @@
     "tutorialActivityRoles": "Dit zijn de rollen die je in deze activiteit kunt spelen. Kies degene die je interesseert!",
     "unlockActivitySummaries": "Ontgrendel activiteitsoverzichten",
     "upNext": "Volgende",
-    "writingAssistanceSuggestion": "Suggestie"
+    "writingAssistanceSuggestion": "Suggestie",
+    "errorFetchingWordInfo": "Woordinformatie ophalen mislukt"
 }

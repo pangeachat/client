@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "ເຫຼົ່ານີ້ແມ່ນບົດບາດທີ່ທ່ານສາມາດຫຼິ້ນໃນກິດຈະກຳນີ້. ເລືອກອັນທີ່ທ່ານສົນໃຈ!",
     "unlockActivitySummaries": "ປົດລັອກສະຫຼຸບກິດຈະກຳ",
     "upNext": "ຕໍ່ໄປ",
-    "writingAssistanceSuggestion": "ຄຳແນະນຳ"
+    "writingAssistanceSuggestion": "ຄຳແນະນຳ",
+    "errorFetchingWordInfo": "ບໍ່ສາມາດດຶງຂໍ້ມູນຄຳສັບໄດ້"
 }

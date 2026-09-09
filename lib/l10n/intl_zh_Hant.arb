@@ -10012,5 +10012,6 @@
     "tutorialActivityRoles": "這些是您可以在此活動中扮演的角色。選擇您感興趣的角色！",
     "unlockActivitySummaries": "解鎖活動摘要",
     "upNext": "接下來",
-    "writingAssistanceSuggestion": "建議"
+    "writingAssistanceSuggestion": "建議",
+    "errorFetchingWordInfo": "無法取得單字資訊"
 }

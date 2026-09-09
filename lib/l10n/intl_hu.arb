@@ -10009,5 +10009,6 @@
     "tutorialActivityRoles": "Ezek a szerepek, amiket játszhatsz ebben a tevékenységben. Válaszd ki azt, amelyik érdekel!",
     "unlockActivitySummaries": "Tevékenység-összefoglalók feloldása",
     "upNext": "Következő",
-    "writingAssistanceSuggestion": "Javaslat"
+    "writingAssistanceSuggestion": "Javaslat",
+    "errorFetchingWordInfo": "A szóadatok lekérése sikertelen"
 }

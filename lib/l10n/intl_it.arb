@@ -9979,5 +9979,6 @@
     "tutorialActivityRoles": "Questi sono i ruoli che puoi interpretare in questa attività. Scegli quello che ti interessa!",
     "unlockActivitySummaries": "Sblocca i riepiloghi delle attività",
     "upNext": "Prossimo",
-    "writingAssistanceSuggestion": "Suggerimento"
+    "writingAssistanceSuggestion": "Suggerimento",
+    "errorFetchingWordInfo": "Impossibile recuperare le informazioni sulla parola"
 }
