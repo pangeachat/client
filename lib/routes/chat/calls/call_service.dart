@@ -247,6 +247,17 @@ class CallService {
   /// index's TTL convergence only helps calls that made it INTO the index). If
   /// the storage proves unavailable the buffer is discarded and the subsystem
   /// stays dark. A no-op after disposal.
+  /// A hard SIZE backstop on the pre-ready buffer. Two bounds guard it: the
+  /// probe is TIME-limited (see [_activateMergeCoordinator]), so the buffer's
+  /// LIFETIME is short; and this cap bounds its SIZE against a single
+  /// synchronous [handleSync] (or a slow-probe window) delivering a pathological
+  /// flood, which no event-loop turn interrupts. It sits FAR above any real
+  /// sync's call-audio event count -- one call posts ~two halves, so this is
+  /// ~2000 recent calls in one window -- so it never drops an ordinary valid
+  /// trigger (the failure the low cap it replaced had); a call dropped only at
+  /// this extreme reconciles when its half re-syncs.
+  static const _maxPendingMergeTriggers = 4096;
+
   void _driveMergeCoordinator(
     void Function(CallAudioMergeCoordinator) trigger,
   ) {
@@ -254,17 +265,12 @@ class CallService {
     final coordinator = _ensureMergeCoordinator();
     if (_mergeReady) {
       trigger(coordinator);
-    } else {
-      // Buffered until the probe settles -- with NO count cap, so a single sync
-      // carrying many call-audio events (a heavy initial-sync backlog) never
-      // drops a valid trigger. The buffer is bounded another way: the probe is
-      // time-limited (see [_activateMergeCoordinator]'s `.timeout`), so it holds
-      // only the triggers that arrive during that bounded window before it
-      // either replays them (healthy storage, a couple of event-loop turns) or
-      // discards them (the probe timed out or failed). A never-settling probe
-      // therefore cannot grow it without bound.
+    } else if (_pendingMergeTriggers.length < _maxPendingMergeTriggers) {
       _pendingMergeTriggers.add(trigger);
     }
+    // else: a pathological flood during the (time-limited) probe window; drop
+    // rather than grow past the cap. A dropped call re-arrives on the next sync
+    // of its half. Normal syncs never reach this.
   }
 
   /// The post-call kick: this device just posted its OWN `pangea.call_audio`
