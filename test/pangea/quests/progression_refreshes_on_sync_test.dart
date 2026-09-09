@@ -176,8 +176,9 @@ void main() {
     ),
   );
 
-  test('a star awarded while the panel is open updates its Mission count '
-      'without a reload', () async {
+  /// The course's one quest outline: a single Mission over the single
+  /// activity, whose two roles of three goals cap the Mission at three stars.
+  void stubOutline() {
     QuestRepo.debugBuildOutline = (id, {courseRoomId}) async => Result.value(
       QuestOutline(
         quest: const QuestPlan(
@@ -206,6 +207,11 @@ void main() {
         ],
       ),
     );
+  }
+
+  test('a star awarded while the panel is open updates its Mission count '
+      'without a reload', () async {
+    stubOutline();
 
     registerCourseSpace();
     final session = registerSession();
@@ -247,5 +253,40 @@ void main() {
 
     expect(loader.hasResolvedProgress, isFalse);
     expect(loader.questStars, isNull);
+  });
+
+  /// #8938 — collapsing the course card swaps it for the context bar (and
+  /// expanding swaps back). Each is its own widget with its own loader, so the
+  /// incoming one used to start from an empty resolution and the progress bar
+  /// blanked for the frames its re-resolve took — a visible flicker on every
+  /// toggle. The resolution is shared and course-scoped, so the surface taking
+  /// over already has the numbers the outgoing one resolved.
+  test('a second loader for the same course shows its progress immediately — '
+      'the card/bar swap never blanks the bar', () async {
+    stubOutline();
+    registerCourseSpace();
+    final session = registerSession();
+    awardGoals(session, ['g1', 'g2']);
+
+    final open = QuestObjectivesLoader(client: client);
+    await open.loadOutline(questId, courseRoomId: courseRoomId);
+    expect(open.questStars?.earned, 2);
+
+    // The card's token drops and the bar mounts: a fresh loader for the same
+    // course, its own outline read still in flight.
+    final swapped = QuestObjectivesLoader(client: client);
+    addTearDown(swapped.dispose);
+    final loading = swapped.loadOutline(questId, courseRoomId: courseRoomId);
+
+    expect(
+      swapped.questStars?.earned,
+      2,
+      reason: 'the incoming surface must not render the empty bar',
+    );
+    expect(swapped.hasResolvedProgress, isTrue);
+
+    await loading;
+    open.dispose();
+    expect(swapped.questStars?.earned, 2);
   });
 }

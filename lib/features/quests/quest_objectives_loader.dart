@@ -45,9 +45,21 @@ class QuestObjectivesLoader {
   }
 
   final QuestLoader _questLoader = QuestLoader(AsyncLoading());
-  final ValueNotifier<ProgressionResolution> _progression = ValueNotifier(
-    ProgressionResolution.empty,
-  );
+
+  /// The shared progression, published by whichever loader resolved it last
+  /// and read by every live one — the "resolve once, never per surface" rule
+  /// of quests.instructions.md, made literal.
+  ///
+  /// Session-scoped rather than per-loader because the resolution spans every
+  /// joined course and every read is scoped by course id ([forCourse]), so
+  /// there is no course whose numbers a second loader could get wrong. What
+  /// per-loader state cost was a flicker: the course card and the context bar
+  /// are one surface swapping widgets (#8866), and each new instance started
+  /// at [ProgressionResolution.empty], so collapsing or expanding the course
+  /// panel blanked its progress bar for the frames the fresh loader took to
+  /// re-resolve what the outgoing one already knew (#8938).
+  static final ValueNotifier<ProgressionResolution> _progression =
+      ValueNotifier(ProgressionResolution.empty);
 
   /// The learner's joined-course outlines. Rebuilt on each [loadOutline] (a
   /// few quest reads), then re-resolved from on every sync tick. Kept across
@@ -72,7 +84,7 @@ class QuestObjectivesLoader {
   void dispose() {
     _starsSub?.cancel();
     _questLoader.dispose();
-    _progression.dispose();
+    // _progression is shared across loaders — never disposed with one of them.
     _disposed = true;
   }
 
@@ -172,7 +184,6 @@ class QuestObjectivesLoader {
     _loadGeneration++;
     final loadGen = _loadGeneration;
     _courseId = courseRoomId ?? questId;
-    _updateProgression(ProgressionResolution.empty, loadGen);
 
     // world_v2 → v3: the course space's coursePlan.uuid (or the previewed
     // plan's uuid) points at a quest-plans id. The outline (Missions + their
