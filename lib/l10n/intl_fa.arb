@@ -9994,5 +9994,6 @@
     "tutorialActivityRoles": "اینها نقش‌هایی هستند که می‌توانید در این فعالیت بازی کنید. نقشی را که به آن علاقه دارید انتخاب کنید!",
     "unlockActivitySummaries": "خلاصه‌های فعالیت را باز کنید",
     "upNext": "بعدی",
-    "writingAssistanceSuggestion": "پیشنهاد"
+    "writingAssistanceSuggestion": "پیشنهاد",
+    "errorFetchingWordInfo": "دریافت اطلاعات کلمه با مشکل مواجه شد"
 }

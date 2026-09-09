@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "Àwọn ipa wọ̀nyí ni o lè kó nínú ìṣe yìí. Yan èyí tí ó wù ọ́!",
     "unlockActivitySummaries": "Ṣí àwọn àkópọ̀ iṣẹ́ ṣíṣe",
     "upNext": "Ohun tó kàn",
-    "writingAssistanceSuggestion": "Àbá"
+    "writingAssistanceSuggestion": "Àbá",
+    "errorFetchingWordInfo": "Kò lè gba ìsọfúnni ọ̀rọ̀"
 }

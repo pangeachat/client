@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "Kuwanu waa doorarka aad ku ciyaari karto hawshan. Dooro midka ku xiiseeya!",
     "unlockActivitySummaries": "Fur kooban waxqabadyada",
     "upNext": "Ku xiga",
-    "writingAssistanceSuggestion": "Talo"
+    "writingAssistanceSuggestion": "Talo",
+    "errorFetchingWordInfo": "Ku guuldareystay in la helo macluumaadka ereyga"
 }

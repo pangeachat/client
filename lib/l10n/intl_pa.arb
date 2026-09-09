@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "ਇਹ ਉਹ ਭੂਮਿਕਾਵਾਂ ਹਨ ਜੋ ਤੁਸੀਂ ਇਸ ਗਤੀਵਿਧੀ ਵਿੱਚ ਨਿਭਾ ਸਕਦੇ ਹੋ। ਉਹ ਚੁਣੋ ਜੋ ਤੁਹਾਨੂੰ ਦਿਲਚਸਪ ਲੱਗਦੀ ਹੈ!",
     "unlockActivitySummaries": "ਗਤੀਵਿਧੀ ਸਾਰਾਂਸ਼ਾਂ ਨੂੰ ਅਨਲੌਕ ਕਰੋ",
     "upNext": "ਅੱਗੇ",
-    "writingAssistanceSuggestion": "ਸੁਝਾਅ"
+    "writingAssistanceSuggestion": "ਸੁਝਾਅ",
+    "errorFetchingWordInfo": "ਸ਼ਬਦ ਦੀ ਜਾਣਕਾਰੀ ਪ੍ਰਾਪਤ ਕਰਨ ਵਿੱਚ ਅਸਫਲ"
 }

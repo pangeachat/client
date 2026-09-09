@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "Dawn huma r-rwoli li tista' tilgħab f'din l-attività. Agħżel dak li jinteressak!",
     "unlockActivitySummaries": "Ftaħ is-sommarji tal-attività",
     "upNext": "Li jmiss",
-    "writingAssistanceSuggestion": "Suġġeriment"
+    "writingAssistanceSuggestion": "Suġġeriment",
+    "errorFetchingWordInfo": "Naqset il-ġbir tal-informazzjoni tal-kelma"
 }

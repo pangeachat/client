@@ -10863,5 +10863,6 @@
     "tutorialActivityRoles": "呢啲係你喺呢個活動中可以扮演嘅角色。選擇你感興趣嘅一個！",
     "unlockActivitySummaries": "解鎖活動摘要",
     "upNext": "即將播放",
-    "writingAssistanceSuggestion": "建議"
+    "writingAssistanceSuggestion": "建議",
+    "errorFetchingWordInfo": "未能獲取單字資訊"
 }

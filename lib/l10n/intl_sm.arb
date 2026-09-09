@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "O matafaioi nei e mafai ona e taʻalo ai i lenei gaioiga. Filifili le mea e te fiafia i ai!",
     "unlockActivitySummaries": "Tatala aotelega o gaoioiga",
     "upNext": "Le isi",
-    "writingAssistanceSuggestion": "Fautuaga"
+    "writingAssistanceSuggestion": "Fautuaga",
+    "errorFetchingWordInfo": "Ua lē mafai ona aumai faʻamatalaga o le upu"
 }

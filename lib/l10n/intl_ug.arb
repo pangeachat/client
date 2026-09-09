@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "بۇلار سىز بۇ پائالىيەتتە ئوينىيالايدىغان روللار. سىزنى قىزىقتۇرىدىغان بىرنى تاللاڭ!",
     "unlockActivitySummaries": "پائالىيەت خۇلاسىلىرىنى ئېچىڭ",
     "upNext": "كېيىنكى",
-    "writingAssistanceSuggestion": "تەكلىپ"
+    "writingAssistanceSuggestion": "تەكلىپ",
+    "errorFetchingWordInfo": "سۆز ئۇچۇرىنى ئېلىش مەغلۇپ بولدى"
 }

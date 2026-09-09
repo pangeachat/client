@@ -10851,5 +10851,6 @@
     "tutorialActivityRoles": "Jen la roloj, kiujn vi povas ludi en ĉi tiu agado. Elektu tiun, kiu interesas vin!",
     "unlockActivitySummaries": "Malŝlosu agadajn resumojn",
     "upNext": "Poste",
-    "writingAssistanceSuggestion": "Sugesto"
+    "writingAssistanceSuggestion": "Sugesto",
+    "errorFetchingWordInfo": "Malsukcesis preni vortinformon"
 }

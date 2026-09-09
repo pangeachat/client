@@ -9906,5 +9906,6 @@
     "tutorialActivityRoles": "Hauek dira jarduera honetan jokatu ditzakezun rolak. Aukeratu gehien interesatzen zaizuna!",
     "unlockActivitySummaries": "Desblokeatu jardueren laburpenak",
     "upNext": "Jarraian",
-    "writingAssistanceSuggestion": "Iradokizuna"
+    "writingAssistanceSuggestion": "Iradokizuna",
+    "errorFetchingWordInfo": "Ezin izan da hitzaren informazioa eskuratu"
 }

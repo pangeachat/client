@@ -10856,5 +10856,6 @@
     "tutorialActivityRoles": "ఈ కార్యాచరణలో మీరు ఆడగల పాత్రలు ఇవి. మీకు ఆసక్తి ఉన్నదాన్ని ఎంచుకోండి!",
     "unlockActivitySummaries": "కార్యకలాపాల సారాంశాలను అన్‌లాక్ చేయండి",
     "upNext": "తర్వాత",
-    "writingAssistanceSuggestion": "సూచన"
+    "writingAssistanceSuggestion": "సూచన",
+    "errorFetchingWordInfo": "పద సమాచారాన్ని పొందడంలో విఫలమైంది"
 }

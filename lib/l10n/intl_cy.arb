@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "Dyma'r rolau y gallwch eu chwarae yn y gweithgaredd hwn. Dewiswch yr un sydd o ddiddordeb i chi!",
     "unlockActivitySummaries": "Datgloi crynodebau gweithgareddau",
     "upNext": "Nesaf",
-    "writingAssistanceSuggestion": "Awgrym"
+    "writingAssistanceSuggestion": "Awgrym",
+    "errorFetchingWordInfo": "Methwyd â nôl gwybodaeth am y gair"
 }

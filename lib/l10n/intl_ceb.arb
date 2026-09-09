@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "Kini ang mga papel nga pwede nimong dulaon sa kini nga kalihokan. Pilia ang usa nga makapainteres kanimo!",
     "unlockActivitySummaries": "I-unlock ang mga summary sa kalihokan",
     "upNext": "Sunod",
-    "writingAssistanceSuggestion": "Sugyot"
+    "writingAssistanceSuggestion": "Sugyot",
+    "errorFetchingWordInfo": "Napakyas sa pagkuha sa impormasyon sa pulong"
 }

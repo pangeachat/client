@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "Dit binne de rollen dy't jo yn dizze aktiviteit spylje kinne. Kies dejinge dy't jo ynteresseart!",
     "unlockActivitySummaries": "Untskoattelje aktiviteitsgearfallings",
     "upNext": "Folgjende",
-    "writingAssistanceSuggestion": "Suggestje"
+    "writingAssistanceSuggestion": "Suggestje",
+    "errorFetchingWordInfo": "Net slagge om wurdynformaasje op te heljen"
 }

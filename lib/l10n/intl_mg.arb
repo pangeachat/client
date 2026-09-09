@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "Ireo no anjara azonao lalaovina amin'ity hetsika ity. Fidio izay mahaliana anao!",
     "unlockActivitySummaries": "Sokafy ny famintinana ny asa",
     "upNext": "Manaraka",
-    "writingAssistanceSuggestion": "Soso-kevitra"
+    "writingAssistanceSuggestion": "Soso-kevitra",
+    "errorFetchingWordInfo": "Tsy nahomby ny fakana ny mombamomba ny teny"
 }

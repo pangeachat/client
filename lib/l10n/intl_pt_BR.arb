@@ -9906,5 +9906,6 @@
     "tutorialActivityRoles": "Estes são os papéis que você pode desempenhar nesta atividade. Escolha o que mais lhe interessa!",
     "unlockActivitySummaries": "Desbloquear resumos de atividade",
     "upNext": "A seguir",
-    "writingAssistanceSuggestion": "Sugestão"
+    "writingAssistanceSuggestion": "Sugestão",
+    "errorFetchingWordInfo": "Falha ao buscar informações da palavra"
 }

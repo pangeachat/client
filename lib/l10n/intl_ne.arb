@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "यी भूमिका हुन् जुन तपाईं यस गतिविधिमा खेल्न सक्नुहुन्छ। तपाईंलाई रुचि भएको एउटा छान्नुहोस्!",
     "unlockActivitySummaries": "गतिविधि सारांशहरू अनलक गर्नुहोस्",
     "upNext": "अर्को",
-    "writingAssistanceSuggestion": "सुझाव"
+    "writingAssistanceSuggestion": "सुझाव",
+    "errorFetchingWordInfo": "शब्द जानकारी प्राप्त गर्न असफल भयो"
 }

@@ -11,17 +11,11 @@ import 'package:matrix/matrix.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
-import 'package:fluffychat/features/analytics/construct_identifier.dart';
-import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
-import 'package:fluffychat/features/analytics_data/analytics_update_dispatcher.dart';
-import 'package:fluffychat/features/subscription/controllers/subscription_controller.dart';
-import 'package:fluffychat/features/user/user_controller.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_vocab_widget.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'fake_pangea_controller.dart';
 import 'get_test_client.dart';
+import 'word_card_test_matrix.dart';
 
 /// #8620 — a pointer never gets a second tap on a vocab chip whose card is
 /// open: the tap lands on the card's backdrop and dismisses it. A screen
@@ -80,7 +74,7 @@ void main() {
   /// loads asynchronously and leaves the subtree empty for the pumped frames.
   Future<void> pumpVocab(WidgetTester tester) async {
     await tester.pumpWidget(
-      _TestMatrix(
+      WordCardTestMatrix(
         clients: [client],
         store: store,
         child: MaterialApp(
@@ -190,78 +184,4 @@ void main() {
       });
     },
   );
-}
-
-/// Skips `initMatrix()`, and serves an analytics service that never finishes
-/// initializing — the branch where the new-token lookup returns nothing, so no
-/// database is opened for a test about overlay lifetime.
-class _TestMatrixState extends MatrixState {
-  final AnalyticsDataService _service = _FakeAnalyticsDataService();
-
-  @override
-  // ignore: must_call_super
-  void initState() {
-    // `initMatrix` normally assigns this; the new-token lookup reads the
-    // analytics service back through it.
-    MatrixState.pangeaController = _VocabTestController(this);
-  }
-
-  @override
-  AnalyticsDataService get analyticsDataService => _service;
-}
-
-class _TestMatrix extends Matrix {
-  const _TestMatrix({
-    required super.clients,
-    required super.store,
-    required super.child,
-  });
-
-  @override
-  MatrixState createState() => _TestMatrixState();
-}
-
-/// [FakePangeaController] plus the two controllers this surface reads back
-/// through the static: the word card asks the subscription controller whether
-/// to render its content, and the TTS path asks the user controller for the L2.
-class _VocabTestController implements PangeaController {
-  _VocabTestController(this.matrixState);
-
-  @override
-  final MatrixState matrixState;
-
-  final PangeaController _delegate = FakePangeaController(userL1Code: 'en');
-
-  @override
-  UserController get userController => _delegate.userController;
-
-  @override
-  final SubscriptionController subscriptionController =
-      _FakeSubscriptionController();
-
-  @override
-  dynamic noSuchMethod(Invocation invocation) => null;
-}
-
-class _FakeSubscriptionController implements SubscriptionController {
-  @override
-  bool get showSubscriptionGatedContent => true;
-
-  @override
-  dynamic noSuchMethod(Invocation invocation) => null;
-}
-
-class _FakeAnalyticsDataService implements AnalyticsDataService {
-  @override
-  late final AnalyticsUpdateDispatcher updateDispatcher =
-      AnalyticsUpdateDispatcher(this);
-
-  @override
-  bool get isInitializing => true;
-
-  @override
-  bool isConstructBlocked(ConstructIdentifier id) => false;
-
-  @override
-  dynamic noSuchMethod(Invocation invocation) => null;
 }

@@ -11,10 +11,15 @@ import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/network/rate_limit_pause.dart';
+import 'package:fluffychat/pangea/common/utils/async_state.dart';
+import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
+import 'package:fluffychat/pangea/lemmas/lemma_meaning_builder.dart';
 import 'package:fluffychat/routes/analytics/analytics_navigation_util.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/restore_constructs_mixin.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dart';
+import 'package:fluffychat/routes/chat/events/phonetic_transcription/phonetic_transcription_builder.dart';
 import 'package:fluffychat/routes/chat/events/phonetic_transcription/phonetic_transcription_widget.dart';
 import 'package:fluffychat/routes/chat/events/phonetic_transcription/pt_v2_models.dart';
 import 'package:fluffychat/routes/chat/events/tokens/tokens_util.dart';
@@ -89,76 +94,119 @@ class WordZoomWidget extends StatelessWidget {
       _showNewWordOverlay(context);
     });
 
+    final language =
+        PLanguageStore.byLangCode(langCode) ?? LanguageModel.unknown;
+
     final Widget content =
         !MatrixState
             .pangeaController
             .subscriptionController
             .showSubscriptionGatedContent
         ? MessageUnsubscribedCard(token: token, onClose: onClose)
-        : Container(
-            height: AppConfig.scaledToolbarMaxHeight(context) - 8,
-            padding: const EdgeInsets.all(12.0),
-            constraints: BoxConstraints(
-              maxWidth: maxWidth ?? AppConfig.toolbarMinWidth,
-            ),
-            child: Column(
-              spacing: 12.0,
-              children: [
-                _WordCardHeader(
-                  token: token,
-                  construct: construct,
-                  langCode: langCode,
-                  event: event,
-                  onClose: onClose,
-                  onFlagTokenInfo: onFlagTokenInfo,
-                  enableAnalyticsNavigation: enableAnalyticsNavigation,
-                  enableRestore: enableRestore,
+        // One fetch each for the meaning and the transcription, shared by
+        // every section that reads them — the header's feedback flag, the
+        // emoji row, the meaning line, the pronunciation strip — so the card
+        // holds both states in one place and can tell whether anything
+        // loaded (#8902). The repos already coalesced the sections' duplicate
+        // reads; this is about the states being visible together, not the
+        // requests.
+        : LemmaMeaningBuilder(
+            langCode: langCode,
+            constructId: construct,
+            messageInfo: event?.content ?? {},
+            reloadNotifier: reloadNotifier,
+            builder: (context, lemma) => PhoneticTranscriptionBuilder(
+              textLanguage: language,
+              text: token.content,
+              reloadNotifier: reloadNotifier,
+              builder: (context, transcription) => Container(
+                height: AppConfig.scaledToolbarMaxHeight(context) - 8,
+                padding: const EdgeInsets.all(12.0),
+                constraints: BoxConstraints(
+                  maxWidth: maxWidth ?? AppConfig.toolbarMinWidth,
                 ),
-                Expanded(
-                  child: Column(
-                    spacing: 4.0,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      PhoneticTranscriptionWidget(
-                        // The card is opened on one construct, so its
-                        // pronunciation taps expose the learner to that lemma
-                        // rather than to whatever the surface form parses as.
-                        exposure: ListeningExposureDeclaration([
-                          construct,
-                        ], langCode: langCode),
-                        text: token.content,
-                        textLanguage:
-                            PLanguageStore.byLangCode(langCode) ??
-                            LanguageModel.unknown,
-                        pos: pos,
-                        morph: morph,
-                        // The message this word was tapped in, where the card
-                        // was opened from a message at all. The analytics and
-                        // style-example hosts pass no event and are roomless.
-                        roomId: event?.room.id,
-                        style: const TextStyle(fontSize: 14.0),
-                        maxLines: 2,
-                        reloadNotifier: reloadNotifier,
-                      ),
-                      LemmaReactionPicker(
-                        constructId: construct,
-                        langCode: langCode,
-                        event: event,
-                        enableSelection: enableEmojiSelection,
-                        enableReactions: enableEmojiReactions,
-                        form: token.content,
-                      ),
-                      LemmaMeaningDisplay(
-                        langCode: langCode,
-                        constructId: construct,
-                        text: token.content,
-                        messageInfo: event?.content ?? {},
-                        reloadNotifier: reloadNotifier,
-                      ),
-                    ],
-                  ),
+                child: Column(
+                  spacing: 12.0,
+                  children: [
+                    _WordCardHeader(
+                      token: token,
+                      construct: construct,
+                      event: event,
+                      onClose: onClose,
+                      onFlagTokenInfo: onFlagTokenInfo,
+                      enableAnalyticsNavigation: enableAnalyticsNavigation,
+                      enableRestore: enableRestore,
+                      lemma: lemma,
+                      transcription: transcription,
+                    ),
+                    Expanded(
+                      child: switch ((lemma.state, transcription.state)) {
+                        // Nothing loaded: one indicator for the card rather
+                        // than one per section, which read as the same error
+                        // twice (#8902). A throttle on either read picks the
+                        // "wait a moment" copy, since waiting is then the
+                        // remedy; anything else gets the card's own copy.
+                        (
+                          AsyncError(error: final lemmaError),
+                          AsyncError(error: final transcriptionError),
+                        ) =>
+                          Center(
+                            child: ErrorIndicator(
+                              message: L10n.of(context).errorFetchingWordInfo,
+                              error:
+                                  RateLimitPause.isRateLimited(
+                                    transcriptionError,
+                                  )
+                                  ? transcriptionError
+                                  : lemmaError,
+                              style: const TextStyle(fontSize: 14.0),
+                            ),
+                          ),
+                        _ => Column(
+                          spacing: 4.0,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            PhoneticTranscriptionView(
+                              controller: transcription,
+                              // The card is opened on one construct, so its
+                              // pronunciation taps expose the learner to that
+                              // lemma rather than to whatever the surface form
+                              // parses as.
+                              exposure: ListeningExposureDeclaration([
+                                construct,
+                              ], langCode: langCode),
+                              text: token.content,
+                              textLanguage: language,
+                              pos: pos,
+                              morph: morph,
+                              // The message this word was tapped in, where the
+                              // card was opened from a message at all. The
+                              // analytics and style-example hosts pass no
+                              // event and are roomless.
+                              roomId: event?.room.id,
+                              style: const TextStyle(fontSize: 14.0),
+                              maxLines: 2,
+                            ),
+                            LemmaReactionPicker(
+                              controller: lemma,
+                              constructId: construct,
+                              langCode: langCode,
+                              event: event,
+                              enableSelection: enableEmojiSelection,
+                              enableReactions: enableEmojiReactions,
+                              form: token.content,
+                            ),
+                            LemmaMeaningDisplay(
+                              controller: lemma,
+                              constructId: construct,
+                            ),
+                          ],
+                        ),
+                      },
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
           );
 
@@ -201,22 +249,24 @@ class WordZoomWidget extends StatelessWidget {
 class _WordCardHeader extends StatefulWidget {
   final PangeaTokenText token;
   final ConstructIdentifier construct;
-  final String langCode;
   final Event? event;
   final VoidCallback? onClose;
   final Function(LemmaInfoResponse, PTRequest, PTResponse)? onFlagTokenInfo;
   final bool enableAnalyticsNavigation;
   final bool enableRestore;
+  final LemmaMeaningBuilderState lemma;
+  final PhoneticTranscriptionBuilderState transcription;
 
   const _WordCardHeader({
     required this.token,
     required this.construct,
-    required this.langCode,
     required this.event,
     required this.onClose,
     required this.onFlagTokenInfo,
     required this.enableAnalyticsNavigation,
     required this.enableRestore,
+    required this.lemma,
+    required this.transcription,
   });
 
   @override
@@ -322,13 +372,9 @@ class _WordCardHeaderState extends State<_WordCardHeader>
             )
           else if (widget.onFlagTokenInfo != null)
             TokenFeedbackButton(
-              textLanguage:
-                  PLanguageStore.byLangCode(widget.langCode) ??
-                  LanguageModel.unknown,
-              constructId: widget.construct,
-              text: widget.token.content,
+              lemma: widget.lemma,
+              transcription: widget.transcription,
               onFlagTokenInfo: widget.onFlagTokenInfo!,
-              messageInfo: widget.event?.content ?? {},
             )
           else
             const SizedBox(width: 40.0, height: 40.0),

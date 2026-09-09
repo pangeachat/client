@@ -10538,5 +10538,6 @@
     "tutorialActivityRoles": "Seo iad na róil is féidir leat a imirt sa ghníomhaíocht seo. Roghnaigh an ceann a bhfuil suim agat ann!",
     "unlockActivitySummaries": "Díghlasáil achoimrí gníomhaíochta",
     "upNext": "An chéad cheann eile",
-    "writingAssistanceSuggestion": "Moladh"
+    "writingAssistanceSuggestion": "Moladh",
+    "errorFetchingWordInfo": "Níor éirigh leis an eolas focal a fháil"
 }

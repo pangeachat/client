@@ -9998,5 +9998,6 @@
     "tutorialActivityRoles": "இந்தச் செயல்பாட்டில் நீங்கள் விளையாடக்கூடிய பாத்திரங்கள் இவை. உங்களுக்கு விருப்பமானதைத் தேர்ந்தெடுங்கள்!",
     "unlockActivitySummaries": "செயல்பாட்டுச் சுருக்கங்களைத் திறக்கவும்",
     "upNext": "அடுத்து",
-    "writingAssistanceSuggestion": "பரிந்துரை"
+    "writingAssistanceSuggestion": "பரிந்துரை",
+    "errorFetchingWordInfo": "வார்த்தைத் தகவலைப் பெறத் தவறிவிட்டது"
 }

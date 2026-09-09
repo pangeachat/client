@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "ಇವು ನೀವು ಈ ಚಟುವಟಿಕೆಯಲ್ಲಿ ನಿರ್ವಹಿಸಬಹುದಾದ ಪಾತ್ರಗಳು. ನಿಮಗೆ ಆಸಕ್ತಿಯಿರುವದನ್ನು ಆರಿಸಿ!",
     "unlockActivitySummaries": "ಚಟುವಟಿಕೆ ಸಾರಾಂಶಗಳನ್ನು ಅನ್‌ಲಾಕ್ ಮಾಡಿ",
     "upNext": "ಮುಂದೆ",
-    "writingAssistanceSuggestion": "ಸಲಹೆ"
+    "writingAssistanceSuggestion": "ಸಲಹೆ",
+    "errorFetchingWordInfo": "ಪದದ ಮಾಹಿತಿಯನ್ನು ಪಡೆಯಲು ವಿಫಲವಾಗಿದೆ"
 }

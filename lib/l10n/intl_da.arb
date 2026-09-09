@@ -10826,5 +10826,6 @@
     "tutorialActivityRoles": "Dette er de roller, du kan spille i denne aktivitet. Vælg den, der interesserer dig!",
     "unlockActivitySummaries": "Lås op for aktivitetsresuméer",
     "upNext": "Næste",
-    "writingAssistanceSuggestion": "Forslag"
+    "writingAssistanceSuggestion": "Forslag",
+    "errorFetchingWordInfo": "Kunne ikke hente ordinfo"
 }

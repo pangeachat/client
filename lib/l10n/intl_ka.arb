@@ -10806,5 +10806,6 @@
     "tutorialActivityRoles": "ეს არის როლები, რომელთა თამაშიც შეგიძლიათ ამ აქტივობაში. აირჩიეთ ის, რაც გაინტერესებთ!",
     "unlockActivitySummaries": "აქტივობის შეჯამებების განბლოკვა",
     "upNext": "შემდეგი",
-    "writingAssistanceSuggestion": "შემოთავაზება"
+    "writingAssistanceSuggestion": "შემოთავაზება",
+    "errorFetchingWordInfo": "სიტყვის ინფორმაციის მოძიება ვერ მოხერხდა"
 }

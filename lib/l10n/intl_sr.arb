@@ -10855,5 +10855,6 @@
     "tutorialActivityRoles": "Ovo su uloge koje možeš igrati u ovoj aktivnosti. Izaberi onu koja te zanima!",
     "unlockActivitySummaries": "Otključaj preglede aktivnosti",
     "upNext": "Sledeće",
-    "writingAssistanceSuggestion": "Predlog"
+    "writingAssistanceSuggestion": "Predlog",
+    "errorFetchingWordInfo": "Nije uspelo preuzimanje informacija o reči"
 }

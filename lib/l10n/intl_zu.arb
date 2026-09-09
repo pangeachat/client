@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "Lena yizindima ongazidlala kulo msebenzi. Khetha leyo ekuthakazelisayo!",
     "unlockActivitySummaries": "Vula izifinyezo zomsebenzi",
     "upNext": "Okulandelayo",
-    "writingAssistanceSuggestion": "Isiphakamiso"
+    "writingAssistanceSuggestion": "Isiphakamiso",
+    "errorFetchingWordInfo": "Yehlulekile ukuthola ulwazi lwegama"
 }

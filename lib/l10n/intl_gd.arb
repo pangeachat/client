@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "Seo na dreuchdan as urrainn dhut a chluich sa ghnìomhachd seo. Tagh am fear a tha inntinneach dhut!",
     "unlockActivitySummaries": "Fuasgail geàrr-chunntasan gnìomhachd",
     "upNext": "An ath rud",
-    "writingAssistanceSuggestion": "Molaidhean"
+    "writingAssistanceSuggestion": "Molaidhean",
+    "errorFetchingWordInfo": "Dh'fhàillig fiosrachadh facal fhaighinn"
 }

@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "ଏଗୁଡ଼ିକ ହେଉଛି ଭୂମିକା ଯାହାକୁ ଆପଣ ଏହି କାର୍ଯ୍ୟକଳାପରେ ଖେଳିପାରିବେ। ଯାହା ଆପଣଙ୍କୁ ଆଗ୍ରହୀ କରେ ତାହା ବାଛନ୍ତୁ!",
     "unlockActivitySummaries": "କାର୍ଯ୍ୟକଳାପ ସାରାଂଶଗୁଡ଼ିକୁ ଅନଲକ୍ କରନ୍ତୁ",
     "upNext": "ପରବର୍ତ୍ତୀ",
-    "writingAssistanceSuggestion": "ପରାମର୍ଶ"
+    "writingAssistanceSuggestion": "ପରାମର୍ଶ",
+    "errorFetchingWordInfo": "ଶବ୍ଦ ସୂଚନା ଆଣିବାରେ ବିଫଳ ହେଲା"
 }

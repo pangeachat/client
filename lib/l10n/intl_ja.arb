@@ -10675,5 +10675,6 @@
     "tutorialActivityRoles": "これらはこのアクティビティでプレイできる役割です。興味のあるものを選んでください！",
     "unlockActivitySummaries": "アクティビティの概要をアンロック",
     "upNext": "次はこちら",
-    "writingAssistanceSuggestion": "提案"
+    "writingAssistanceSuggestion": "提案",
+    "errorFetchingWordInfo": "単語情報の取得に失敗しました"
 }

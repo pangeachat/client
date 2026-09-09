@@ -10687,5 +10687,6 @@
     "tutorialActivityRoles": "Tai yra vaidmenys, kuriuos galite atlikti šioje veikloje. Pasirinkite tą, kuris jus domina!",
     "unlockActivitySummaries": "Atrakinti veiklos santraukas",
     "upNext": "Toliau",
-    "writingAssistanceSuggestion": "Pasiūlymas"
+    "writingAssistanceSuggestion": "Pasiūlymas",
+    "errorFetchingWordInfo": "Nepavyko gauti žodžio informacijos"
 }

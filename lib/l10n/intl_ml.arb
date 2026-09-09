@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "ഈ പ്രവർത്തനത്തിൽ നിങ്ങൾക്ക് കളിക്കാൻ കഴിയുന്ന റോളുകളാണിവ. നിങ്ങൾക്ക് താൽപ്പര്യമുള്ളത് തിരഞ്ഞെടുക്കുക!",
     "unlockActivitySummaries": "പ്രവർത്തന സംഗ്രഹങ്ങൾ അൺലോക്ക് ചെയ്യുക",
     "upNext": "അടുത്തത്",
-    "writingAssistanceSuggestion": "നിർദ്ദേശം"
+    "writingAssistanceSuggestion": "നിർദ്ദേശം",
+    "errorFetchingWordInfo": "വാക്കിന്റെ വിവരങ്ങൾ ലഭ്യമാക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 }

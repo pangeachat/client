@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "Бул иш-аракетте ойной турган ролдор. Сизди кызыктырганды тандаңыз!",
     "unlockActivitySummaries": "Иш-аракеттердин корутундусун ачуу",
     "upNext": "Кийинки",
-    "writingAssistanceSuggestion": "Сунуш"
+    "writingAssistanceSuggestion": "Сунуш",
+    "errorFetchingWordInfo": "Сөз маалыматын алуу мүмкүн болбой калды"
 }

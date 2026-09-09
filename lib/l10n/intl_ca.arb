@@ -10033,5 +10033,6 @@
     "tutorialActivityRoles": "Aquests són els rols que pots interpretar en aquesta activitat. Tria el que més t'interessi!",
     "unlockActivitySummaries": "Desbloqueja els resums d'activitat",
     "upNext": "A continuació",
-    "writingAssistanceSuggestion": "Suggeriment"
+    "writingAssistanceSuggestion": "Suggeriment",
+    "errorFetchingWordInfo": "No s'ha pogut obtenir la informació de la paraula"
 }

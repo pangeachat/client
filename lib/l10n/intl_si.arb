@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "මේවා ඔබට මෙම ක්‍රියාකාරකමෙහි රඟපෑ හැකි භූමිකාවන් වේ. ඔබට උනන්දුවක් දක්වන එකක් තෝරන්න!",
     "unlockActivitySummaries": "ක්‍රියාකාරකම් සාරාංශ අගුළු හරින්න",
     "upNext": "ඊළඟට",
-    "writingAssistanceSuggestion": "යෝජනාව"
+    "writingAssistanceSuggestion": "යෝජනාව",
+    "errorFetchingWordInfo": "වචන තොරතුරු ලබාගැනීම අසාර්ථක විය"
 }

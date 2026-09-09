@@ -9920,5 +9920,6 @@
     "tutorialActivityRoles": "Гэта ролі, якія вы можаце выконваць у гэтым заданні. Выберыце тую, якая вас цікавіць!",
     "unlockActivitySummaries": "Разблакіраваць зводкі актыўнасці",
     "upNext": "Далей",
-    "writingAssistanceSuggestion": "Прапанова"
+    "writingAssistanceSuggestion": "Прапанова",
+    "errorFetchingWordInfo": "Не атрымалася атрымаць інфармацыю пра слова"
 }

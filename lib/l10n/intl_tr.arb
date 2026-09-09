@@ -10207,5 +10207,6 @@
     "tutorialActivityRoles": "Bu etkinlikte oynayabileceğiniz roller bunlar. İlginizi çekeni seçin!",
     "unlockActivitySummaries": "Etkinlik özetlerinin kilidini aç",
     "upNext": "Sırada",
-    "writingAssistanceSuggestion": "Öneri"
+    "writingAssistanceSuggestion": "Öneri",
+    "errorFetchingWordInfo": "Kelime bilgisi alınamadı"
 }

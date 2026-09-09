@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "Hierdie is die rolle wat jy in hierdie aktiwiteit kan speel. Kies die een wat jou interesseer!",
     "unlockActivitySummaries": "Ontsluit aktiwiteitopsommings",
     "upNext": "Volgende",
-    "writingAssistanceSuggestion": "Voorstel"
+    "writingAssistanceSuggestion": "Voorstel",
+    "errorFetchingWordInfo": "Kon nie woordinligting kry nie"
 }

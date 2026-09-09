@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "እነዚህ በዚህ እንቅስቃሴ ውስጥ መጫወት የምትችላቸው ሚናዎች ናቸው። የሚስብህን ምረጥ!",
     "unlockActivitySummaries": "የእንቅስቃሴ ማጠቃለያዎችን ክፈት",
     "upNext": "በመቀጠል",
-    "writingAssistanceSuggestion": "ጥቆማ"
+    "writingAssistanceSuggestion": "ጥቆማ",
+    "errorFetchingWordInfo": "የቃሉን መረጃ ማምጣት አልተቻለም።"
 }

@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "આ ભૂમિકાઓ છે જે તમે આ પ્રવૃત્તિમાં ભજવી શકો છો. તમને રસ હોય તે પસંદ કરો!",
     "unlockActivitySummaries": "પ્રવૃત્તિ સારાંશ અનલૉક કરો",
     "upNext": "આગળ",
-    "writingAssistanceSuggestion": "સૂચન"
+    "writingAssistanceSuggestion": "સૂચન",
+    "errorFetchingWordInfo": "શબ્દની માહિતી મેળવવામાં નિષ્ફળ"
 }

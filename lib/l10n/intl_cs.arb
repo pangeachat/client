@@ -10400,5 +10400,6 @@
     "tutorialActivityRoles": "Toto jsou role, které můžeš v této aktivitě hrát. Vyber si tu, která tě zajímá!",
     "unlockActivitySummaries": "Odemknout souhrny aktivit",
     "upNext": "Další",
-    "writingAssistanceSuggestion": "Návrh"
+    "writingAssistanceSuggestion": "Návrh",
+    "errorFetchingWordInfo": "Nepodařilo se načíst informace o slově"
 }

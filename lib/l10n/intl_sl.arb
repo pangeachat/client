@@ -10851,5 +10851,6 @@
     "tutorialActivityRoles": "To so vloge, ki jih lahko igraš v tej aktivnosti. Izberi tisto, ki te zanima!",
     "unlockActivitySummaries": "Odkleni povzetke dejavnosti",
     "upNext": "Sledi",
-    "writingAssistanceSuggestion": "Predlog"
+    "writingAssistanceSuggestion": "Predlog",
+    "errorFetchingWordInfo": "Pridobivanje informacij o besedi ni uspelo"
 }

@@ -9517,5 +9517,6 @@
     "tutorialActivityRoles": "འདི་དག་ནི་ཁྱེད་ཀྱིས་བྱེད་སྒོ་འདིའི་ནང་དུ་འཁྲབ་ཆོག་པའི་འཁྲབ་རྩེད་དག་ཡིན། ཁྱེད་ལ་དགའ་བ་ཡོད་པ་དེ་འདེམས་ཤིག",
     "unlockActivitySummaries": "བྱ་བའི་སྙིང་བསྡུས་ཀྱི་གསང་བ་འབྱེད་པ།",
     "upNext": "རྗེས་མ།",
-    "writingAssistanceSuggestion": "བསམ་འཆར།"
+    "writingAssistanceSuggestion": "བསམ་འཆར།",
+    "errorFetchingWordInfo": "ཚིག་གི་ཆ་འཕྲིན་ལེན་མ་ཐུབ།"
 }

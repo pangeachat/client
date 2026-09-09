@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "Waɗannan su ne rawar da za ka iya takawa a cikin wannan aikin. Zaɓi wanda ya fi sha'awarka!",
     "unlockActivitySummaries": "Buɗe taƙaitaccen ayyuka",
     "upNext": "Na gaba",
-    "writingAssistanceSuggestion": "Shawara"
+    "writingAssistanceSuggestion": "Shawara",
+    "errorFetchingWordInfo": "An kasa samun bayanan kalmar"
 }

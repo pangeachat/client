@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "ဒါတွေက ဒီလှုပ်ရှားမှုမှာ သင်ကစားနိုင်တဲ့ အခန်းကဏ္ဍတွေပါ။ သင်စိတ်ဝင်စားတာကို ရွေးချယ်ပါ။",
     "unlockActivitySummaries": "လုပ်ဆောင်ချက်အကျဉ်းချုပ်များကို ဖွင့်ပါ",
     "upNext": "နောက်တစ်ခု",
-    "writingAssistanceSuggestion": "အကြံပြုချက်"
+    "writingAssistanceSuggestion": "အကြံပြုချက်",
+    "errorFetchingWordInfo": "စကားလုံးအချက်အလက်များကို ယူဆောင်ရာတွင် အမှားအယွင်းရှိခဲ့သည်"
 }

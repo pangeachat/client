@@ -4080,6 +4080,7 @@
     "saved": "Saved",
     "reset": "Reset",
     "errorFetchingDefinition": "Failed to fetch definition",
+    "errorFetchingWordInfo": "Failed to fetch word info",
     "errorProcessAnalytics": "Failed to process analytics",
     "errorDownloading": "Download failed",
     "translationError": "Translation error",

@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "Ndị a bụ ọrụ ị nwere ike ịrụ n'ime ihe omume a. Họrọ nke masịrị gị!",
     "unlockActivitySummaries": "Mepee nchịkọta ọrụ",
     "upNext": "Ihe na-abịa",
-    "writingAssistanceSuggestion": "Nkwanye"
+    "writingAssistanceSuggestion": "Nkwanye",
+    "errorFetchingWordInfo": "Enweghị ike iwepụta ozi okwu"
 }

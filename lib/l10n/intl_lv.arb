@@ -9906,5 +9906,6 @@
     "tutorialActivityRoles": "Šīs ir lomas, ko vari spēlēt šajā aktivitātē. Izvēlies to, kas tevi interesē!",
     "unlockActivitySummaries": "Atbloķēt aktivitātes kopsavilkumus",
     "upNext": "Nākamais",
-    "writingAssistanceSuggestion": "Ieteikums"
+    "writingAssistanceSuggestion": "Ieteikums",
+    "errorFetchingWordInfo": "Neizdevās ielādēt vārda informāciju"
 }

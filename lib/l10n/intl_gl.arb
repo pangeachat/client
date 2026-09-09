@@ -9906,5 +9906,6 @@
     "tutorialActivityRoles": "Estes son os roles que podes desempeñar nesta actividade. Escolle o que che interese!",
     "unlockActivitySummaries": "Desbloquear resumos de actividade",
     "upNext": "A seguir",
-    "writingAssistanceSuggestion": "Suxestión"
+    "writingAssistanceSuggestion": "Suxestión",
+    "errorFetchingWordInfo": "Produciuse un erro ao obter a información da palabra"
 }

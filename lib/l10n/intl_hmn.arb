@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "Cov no yog cov luag haujlwm uas koj tuaj yeem ua si hauv qhov haujlwm no. Xaiv qhov uas koj nyiam!",
     "unlockActivitySummaries": "Qhib cov ntsiab lus ntawm kev ua si",
     "upNext": "Tom ntej no",
-    "writingAssistanceSuggestion": "Tswv yim"
+    "writingAssistanceSuggestion": "Tswv yim",
+    "errorFetchingWordInfo": "Tsis tau nrhiav tau cov lus qhia"
 }

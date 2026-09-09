@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "এইবোৰ হৈছে এই কাৰ্যকলাপত আপুনি খেলিব পৰা ভূমিকা। আপোনাক আগ্ৰহী কৰা এটা বাছনি কৰক!",
     "unlockActivitySummaries": "কাৰ্যকলাপৰ সাৰাংশসমূহ আনলক কৰক",
     "upNext": "পৰৱৰ্তী",
-    "writingAssistanceSuggestion": "পৰামৰ্শ"
+    "writingAssistanceSuggestion": "পৰামৰ্শ",
+    "errorFetchingWordInfo": "শব্দৰ তথ্য আহৰণ কৰাত ব্যৰ্থ হৈছে"
 }

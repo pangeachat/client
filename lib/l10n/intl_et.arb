@@ -9903,5 +9903,6 @@
     "tutorialActivityRoles": "Need on rollid, mida saad selles tegevuses mängida. Vali see, mis sind huvitab!",
     "unlockActivitySummaries": "Ava tegevuste kokkuvõtted",
     "upNext": "Järgmisena",
-    "writingAssistanceSuggestion": "Soovitus"
+    "writingAssistanceSuggestion": "Soovitus",
+    "errorFetchingWordInfo": "Sõnateabe hankimine ebaõnnestus"
 }

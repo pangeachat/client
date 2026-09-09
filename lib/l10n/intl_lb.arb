@@ -2310,5 +2310,6 @@
     "tutorialActivityRoles": "Dëst sinn d'Rollen déi s du an dëser Aktivitéit spille kanns. Wielt déi déi dech interesséiert!",
     "unlockActivitySummaries": "Spär Aktivitéitsresuméen op",
     "upNext": "Als Nächstes",
-    "writingAssistanceSuggestion": "Virschlag"
+    "writingAssistanceSuggestion": "Virschlag",
+    "errorFetchingWordInfo": "Konnt d'Wuertinformatioun net ofruffen"
 }
