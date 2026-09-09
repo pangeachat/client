@@ -58,15 +58,16 @@ The participant card shows the member's total for **the course's language** besi
 
 The course page opens on a shortlist: one row of activity cards headed **Activities**, answering "what should I do in this course right now?" ([client#8741](https://github.com/pangeachat/client/issues/8741)). It names no Mission. The header names the section, not the shortlist — that a ranked row is a suggestion is what a ranked row already means, so "Suggested" only added a word ([client#8744](https://github.com/pangeachat/client/issues/8744)). The Mission-by-Mission plan — every Mission with its can-do statement, star count and activities — sits one tap away behind the section header's "See all", and is where a learner reads the course's shape.
 
-The row is ranked by the **same [Priority matrix](world-map.instructions.md#priority-matrix) the world map ranks pins by**, scored over the course's own activities: an open session a coursemate can be joined in leads, a recruiting ping raises one further, then whatever the course's next Mission points at, and a finished activity sinks without disappearing. One shared score means the course page and the map cannot drift apart as its weights are tuned.
+The row is ranked by the **same [Priority matrix](world-map.instructions.md#priority-matrix) the world map ranks pins by**, scored over the course's own activities: an open session a coursemate can be joined in leads, a recruiting ping raises one further, then whatever the course's next Mission points at. One shared score means the course page and the map cannot drift apart as its weights are tuned.
 
-Three things differ from the map, each following from where the row sits:
+Four things differ from the map, each following from where the row sits:
 
 - **A session the learner already holds a role in is filtered out of the row.** The row suggests what to start next; a session already under way is resumed from the course's Chats section.
+- **A finished activity is filtered out too** ([client#8901](https://github.com/pangeachat/client/issues/8901)). The map demotes a done activity and keeps it as the learner's trail; a shortlist of what to do next has no room for what is done, and a checked-off card at the end of the row read as a stale suggestion. The full plan behind "See all" still shows it, check overlay and all. The one exception is a coursemate's open session on it — that is still something to join, so it stays in the row as joinable.
 - **The relevance band is this course's own**, never the map's cross-quest sum — a course surface reads only its own course's progress (the per-course scoping rule above).
 - **The map's first-map penalty, its dismissal penalty and its recency term do not apply.** A course's activities were hand-picked by its author, so a 3+ role one is part of the syllabus rather than a newcomer's dead end; there is no large card here to dismiss; and the row has no per-session start time to decay, so a learner reading the page does not watch it reorder itself.
 
-The row holds the top five and scrolls. Equal scores break on a stable key, so a rebuild never reshuffles it under a reader. It renders nothing at all only when every activity in the plan is a session the learner is already in.
+The row holds the top five and scrolls. Equal scores break on a stable key, so a rebuild never reshuffles it under a reader. It renders nothing at all only when every activity in the plan is one the learner is already in or has finished; the section header and its "See all" stay, since the plan is still there to read.
 
 ## Activity cards on the course plan panel
 
