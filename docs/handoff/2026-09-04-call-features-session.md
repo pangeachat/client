@@ -1287,3 +1287,53 @@ until the design is Codex-green.
   pass). analyze/format clean.
 - After wiring green: the WHOLE feature (recording+transcript+P1-P4 merge+player+wiring) is on
   satvik/call-features-combined, ready to bundle as PR 2 on owner go.
+
+## 2026-09-08 (cont) — wire-lazy5 GATE-SOFTENING adjudicated -> real fix (buffer-saturation observability)
+- wire-lazy5 (final wire re-gate) returned a CONTRADICTION: VERDICT: CORRECT but GATE-SOFTENING: yes.
+  Its prose found NO blocker ("No realistic dropped-valid-trigger, unbounded-growth, or work-after-
+  dispose blocker remains"); the boolean fired only because trigger 4097+ in the single pre-ready probe
+  window is dropped at the 4096 cap.
+- Adjudication (read the actual code end to end): the drop is a FUNDAMENTAL, forced tradeoff, not a rig.
+  Bounded memory + adversarially-unbounded distinct input => a drop must exist somewhere; no finite cap
+  (nor a dedup-set variant) removes it. History proves the tension: cap=64 dropped ORDINARY triggers
+  (RED), uncapped grew unbounded (wire-lazy4 RED), cap=4096 (~2000 calls in one sync) sits far above any
+  real 1:1 workload. _scanIndex iterates _index.keys() ONLY, so a dropped (never-indexed) trigger
+  recovers solely if its half RE-SYNCS -- best-effort, and the individual halves still render (P4
+  fallback). NOT a CI/test-gate softening: no test weakened, no check exempted.
+- The ONE real gap the flag pointed at: the drop branch was a deliberate fail-open with a comment but NO
+  runtime signal -- our "no silent failures" rule wants unexpected states logged (or silent-ok labelled).
+  FIX: added _mergeBufferSaturated latch + a ONE-SHOT Logs().w at the drop site (warn once per saturation,
+  never per-trigger -> no log storm). Latch is never cleared BECAUSE _mergeReady is write-once (set true
+  once, never reset) so buffering -- hence saturation -- cannot recur; doc updated to state exactly that.
+- Gates GREEN: dart format (0 changed), analyze (No issues found), import_sorter --no-comments (0 sorted).
+  Cold Codex gate (gate-mergebuf-obs, source INLINE, read-only, verdict outside -C): all 4 questions
+  clean -> VERDICT: CORRECT / GATE-SOFTENING: no. The contradiction is resolved at root.
+- No new unit test for the log-once: the drop path is a private CallService method needing a full
+  Client+GetStorage-stall harness the wiring brief deliberately avoids; analyze covers compile, the
+  latch invariant is locally obvious. Flagged honestly, not hidden.
+- Diff: lib/routes/chat/calls/call_service.dart only (+22/-3). calls bucket re-run in flight (additive
+  change; was +1678 green). Commit pending bucket-green confirmation.
+
+## 2026-09-08 (cont) — LESSON: laptop overload purged the pinned Flutter SDK; NOT a code leak
+- Symptom: after the observability edit, the FULL calls bucket flaked RED at `(tearDownAll)` -- run 1
+  `+1676 -3` attributed to call_timeline_event_dedup_test.dart (+1670), run 2 hung at active_call_test.dart
+  (+573). Baseline HEAD (change stashed) was `+1679` GREEN. The change is provably INERT (adds no timer;
+  the new drop-branch is untested-by-design and executed by no test; its own files -- coordinator/wiring/
+  service/selection suites -- pass).
+- ROOT CAUSE = machine thrash, not the code. `top`: load avg 15, PhysMem 15G used / 68M free, and macOS
+  Spotlight (`mdworker_shared`/`mds`) + CacheDelete (`deleted_helper` 69% CPU) saturating the box. A
+  starved CPU fires a real Timer late, tripping flutter_test's pending-timer boundary check on whichever
+  file sits at the boundary -- hence the WANDERING attribution (a real leak reproduces in ONE place, in
+  isolation; this did neither: dedup passes +24 alone). The trigger was DISK: the Data volume hit 89%
+  (47Gi free), and `.claude/worktrees/*/build` had grown to ~28GB (combined/build alone 10.5G); CacheDelete
+  then PURGED `~/fvm/versions/3.41.4` (the pinned SDK) to reclaim space, leaving only Homebrew 3.44 (which
+  breaks the widget suite).
+- FIX: deleted build/ + .dart_tool across all ~40 worktrees (gitignored, regenerable) -> reclaimed 27GB
+  (48203->75990 MB free; 89%->83%). Reinstalling fvm 3.41.4 (CLI survived at ~/.pub-cache/bin/fvm). Then
+  ONE clean SERIAL calls run confirms green (no concurrent buckets -- running three at once is what tipped
+  the box).
+- PREVENTION: never run >1 full flutter bucket concurrently on this laptop; purge worktree build/ dirs
+  between phases; tear the local stack + docker down when a work chunk ends (user directive this turn).
+  A green run needs a quiet machine here -- a RED that wanders across files under high load average is an
+  environment signal, not a regression (see also the DSN-gated-tests "baseline-worktree before calling a
+  failure a regression" lesson).
