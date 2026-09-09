@@ -108,8 +108,11 @@ class VocabAnalyticsListView extends StatelessWidget {
           // One named node per chip (#8726): the visual is a stage icon + a
           // count badge, so without a label the badge count is the button's
           // whole accessible name — a screen reader hears "14" with no
-          // referent. The inner tree is excluded and the tap re-exposed here
-          // (excluding alone would strip the InkWell's semantic tap action).
+          // referent. The inner tree is excluded inside the InkWell, so the
+          // InkWell's own tap and focus merge into this node (#8872) —
+          // excluding from outside left a named button that was not
+          // focusable, and a tap re-exposed on the wrapper cannot merge with
+          // the InkWell's.
           return Semantics(
             label: constructLevelCategory.displayName(L10n.of(context)),
             value: count.toString(),
@@ -117,14 +120,11 @@ class VocabAnalyticsListView extends StatelessWidget {
                 controller.selectedConstructLevel == constructLevelCategory,
             button: true,
             container: true,
-            onTap: () =>
-                controller.setSelectedConstructLevel(constructLevelCategory),
-            child: ExcludeSemantics(
-              child: InkWell(
-                onTap: () => controller.setSelectedConstructLevel(
-                  constructLevelCategory,
-                ),
-                customBorder: const CircleBorder(),
+            child: InkWell(
+              onTap: () =>
+                  controller.setSelectedConstructLevel(constructLevelCategory),
+              customBorder: const CircleBorder(),
+              child: ExcludeSemantics(
                 child: Container(
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,

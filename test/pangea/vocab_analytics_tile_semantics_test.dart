@@ -8,6 +8,7 @@ import 'package:fluffychat/features/analytics/construct_level_enum.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/vocab_analytics_list_tile.dart';
+import 'one_node_control.dart';
 
 /// #8726 — a vocab tile announces its word and growth stage as ONE node.
 /// Before, the no-emoji placeholder dash was a real text node (tiles read as
@@ -79,5 +80,13 @@ void main() {
       findsOneWidget,
     );
     semantics.dispose();
+  });
+
+  testWidgets('a tile is one node with name, role, focus and tap (#8872)', (
+    tester,
+  ) async {
+    await pumpTile(tester, level: ConstructLevelEnum.greens);
+    final l10n = L10n.of(tester.element(find.byType(VocabAnalyticsListTile)));
+    expectOneNodeControl(tester, 'bien, ${l10n.constructLevelGreens}');
   });
 }

@@ -65,44 +65,46 @@ class VocabAnalyticsListTile extends StatelessWidget {
               borderRadius: BorderRadius.circular(AppConfig.borderRadius),
               onTap: onTap,
               onLongPress: onLongPress,
-              child: Container(
-                height: maxWidth,
-                width: maxWidth,
-                padding: EdgeInsets.all(padding),
-                decoration: BoxDecoration(
-                  color: hovered || selected
-                      ? textColor.withAlpha(20)
-                      : Colors.transparent,
-                  borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      alignment: Alignment.center,
-                      height: (maxWidth - padding * 2) * 0.6,
-                      child: emoji != null
-                          ? Text(emoji, style: const TextStyle(fontSize: 22))
-                          : Text(
-                              "-",
-                              style: TextStyle(
-                                fontSize: 32,
-                                fontWeight: FontWeight.bold,
-                                color: textColor.withAlpha(100),
+              child: ExcludeSemantics(
+                child: Container(
+                  height: maxWidth,
+                  width: maxWidth,
+                  padding: EdgeInsets.all(padding),
+                  decoration: BoxDecoration(
+                    color: hovered || selected
+                        ? textColor.withAlpha(20)
+                        : Colors.transparent,
+                    borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        alignment: Alignment.center,
+                        height: (maxWidth - padding * 2) * 0.6,
+                        child: emoji != null
+                            ? Text(emoji, style: const TextStyle(fontSize: 22))
+                            : Text(
+                                "-",
+                                style: TextStyle(
+                                  fontSize: 32,
+                                  fontWeight: FontWeight.bold,
+                                  color: textColor.withAlpha(100),
+                                ),
                               ),
-                            ),
-                    ),
-                    Container(
-                      alignment: Alignment.center,
-                      padding: const EdgeInsets.only(top: 4),
-                      height: (maxWidth - padding * 2) * 0.4,
-                      child: ShrinkableText(
-                        text: constructId.lemma,
-                        maxWidth: maxWidth - padding * 2,
-                        style: TextStyle(fontSize: 16, color: textColor),
                       ),
-                    ),
-                  ],
+                      Container(
+                        alignment: Alignment.center,
+                        padding: const EdgeInsets.only(top: 4),
+                        height: (maxWidth - padding * 2) * 0.4,
+                        child: ShrinkableText(
+                          text: constructId.lemma,
+                          maxWidth: maxWidth - padding * 2,
+                          style: TextStyle(fontSize: 16, color: textColor),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -125,17 +127,18 @@ class VocabAnalyticsListTile extends StatelessWidget {
         // announced as "-, <lemma>" — and the word's growth stage reached
         // assistive tech nowhere.
         final l10n = L10n.of(context);
+        //
+        // The content is excluded inside the InkWell, not around it, so the
+        // InkWell's tap, long-press and focus merge into this named node
+        // (#8872): excluding from outside left a named button that was not
+        // focusable, so Tab walked the tiles invisibly to assistive tech.
         return Semantics(
           label: blocked
               ? l10n.deletedWordLabel(constructId.lemma)
               : [constructId.lemma, ?emoji, level.displayName(l10n)].join(', '),
           button: true,
           container: true,
-          onTap: onTap,
-          onLongPress: onLongPress,
-          child: ExcludeSemantics(
-            child: blocked ? Opacity(opacity: 0.5, child: tile) : tile,
-          ),
+          child: blocked ? Opacity(opacity: 0.5, child: tile) : tile,
         );
       },
     );
