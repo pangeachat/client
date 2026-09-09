@@ -263,10 +263,12 @@ class CallService {
     } else if (_pendingMergeTriggers.length < _maxPendingMergeTriggers) {
       _pendingMergeTriggers.add(trigger);
     }
-    // else: the probe has not settled after this many buffered triggers -- drop
-    // further ones rather than grow the buffer without bound. A dropped trigger
-    // is not lost work: the same call re-arrives on the next sync of its half,
-    // and the durable index + drain reconcile it once storage is ready.
+    // else: the probe has not settled after this many buffered triggers, which
+    // only happens if GetStorage init has HUNG -- a state in which the
+    // coordinator never activates and no merge is produced no matter what is
+    // buffered. So the cap costs no merge the code would otherwise make; it only
+    // bounds memory against that pathological hang. In the normal case the probe
+    // settles in a couple of event-loop turns and the buffer never nears the cap.
   }
 
   /// The post-call kick: this device just posted its OWN `pangea.call_audio`
@@ -306,6 +308,9 @@ class CallService {
     try {
       await index.keys();
     } catch (e, s) {
+      // Disposed while the probe was in flight: the service is gone, so do no
+      // further work (no logging, no flag, no buffer touch) after teardown.
+      if (_disposed) return;
       Logs().w(
         'Call-audio merge index storage unavailable; coordinator left idle',
         e,
