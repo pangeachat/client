@@ -223,6 +223,19 @@ abstract class PanelAllocator {
         ? all[focusHint]
         : null;
     final folded = <_Entry>{};
+    // Registry-declared ALWAYS-folds ([PanelDef.stacksOnParent], #7826): the
+    // same fold as the pressure tiers below, just unconditional — the width
+    // the parent would claim stays with the map.
+    for (final child in all) {
+      if (!child.def.stacksOnParent) continue;
+      folded.addAll(
+        all.where(
+          (parent) =>
+              parent.column == child.column &&
+              parent.def.type == child.def.parent,
+        ),
+      );
+    }
     while (true) {
       final vis = all.where((e) => !folded.contains(e)).toList();
       if (vis.length <= 1) break;

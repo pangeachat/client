@@ -27,15 +27,18 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/routes/world/course_context_bar.dart';
+import 'package:fluffychat/routes/world/course_preview_banner.dart';
 import 'package:fluffychat/routes/world/dot_markers_layer.dart';
 import 'package:fluffychat/routes/world/exiting_large_markers_layer.dart';
 import 'package:fluffychat/routes/world/exiting_markers_layer.dart';
 import 'package:fluffychat/routes/world/large_markers_layer.dart';
+import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/map_exit_tracker.dart';
 import 'package:fluffychat/routes/world/panel_card.dart';
 import 'package:fluffychat/routes/world/pin_semantics_layer.dart';
 import 'package:fluffychat/routes/world/tile_retry_queue.dart';
 import 'package:fluffychat/routes/world/trackpad_pinch_zoom.dart';
+import 'package:fluffychat/routes/world/world_analytics_bar.dart';
 import 'package:fluffychat/routes/world/world_map.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_constants.dart';
@@ -1370,6 +1373,35 @@ class _WorldMapViewState extends State<WorldMapView>
               ),
             ),
           ),
+          // The "Course preview" pill (#7826), centered over the exposed map
+          // on both form factors — below the analytics bar band on narrow, in
+          // the top margin on wide (where the search slot empties, below).
+          Positioned(
+            top: 0,
+            left: widget.controller.widget.leftOverlayWidth,
+            right: widget.controller.widget.rightOverlayWidth,
+            child: ValueListenableBuilder<MapContext>(
+              valueListenable: MapContextController.notifier,
+              builder: (context, mapContext, _) {
+                if (mapContext is! CoursePreviewMapContext) {
+                  return const SizedBox.shrink();
+                }
+                return SafeArea(
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                      top: FluffyThemes.isColumnMode(context)
+                          ? 12.0
+                          : WorldAnalyticsBar.expandedHeight + 24.0,
+                    ),
+                    child: const Align(
+                      alignment: Alignment.topCenter,
+                      child: CoursePreviewBanner(),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
           // Column mode only: on a narrow screen the search rides the floating
           // bar above the nav widget instead (the shell mounts it — see
           // routing.instructions.md → Single-column search bar), and this
@@ -1387,56 +1419,67 @@ class _WorldMapViewState extends State<WorldMapView>
               // map's controls and stop (#8810).
               child: FocusTraversalOrder(
                 order: WorkspaceOrder.mapChrome.focusOrder,
-                child: courseScopeSpaceId != null
-                    ? SafeArea(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            CourseContextBar(
-                              spaceId: courseScopeSpaceId,
-                              sortKey: WorkspaceOrder.mapChrome.sortKey,
-                            ),
-                            // The bar replaces the search field and the pills,
-                            // not the empty-view card: those pills still apply
-                            // in course scope, so without the card an emptied
-                            // course map has no visible lever back (#8401's
-                            // dead end).
-                            if (widget.controller.emptyVerdict !=
-                                MapEmptyVerdict.none)
-                              Padding(
-                                padding: const EdgeInsets.only(top: 8.0),
-                                child: WorldMapEmptyViewCard(
-                                  sortKey: WorkspaceOrder.mapChrome.sortKey,
-                                  verdict: widget.controller.emptyVerdict,
-                                  canZoomOut: widget.controller.canZoomOut,
-                                  onWidenSearch: widget.controller.widenFilters,
-                                  onZoomOut: widget.controller.resetToWorld,
-                                ),
+                // Under a course PREVIEW the slot goes empty (#7826): world
+                // search would contradict the scoped pins; the banner is the
+                // label.
+                child: ValueListenableBuilder<MapContext>(
+                  valueListenable: MapContextController.notifier,
+                  builder: (context, mapContext, child) =>
+                      mapContext is CoursePreviewMapContext
+                      ? const SizedBox.shrink()
+                      : child!,
+                  child: courseScopeSpaceId != null
+                      ? SafeArea(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              CourseContextBar(
+                                spaceId: courseScopeSpaceId,
+                                sortKey: WorkspaceOrder.mapChrome.sortKey,
                               ),
-                          ],
+                              // The bar replaces the search field and the pills,
+                              // not the empty-view card: those pills still apply
+                              // in course scope, so without the card an emptied
+                              // course map has no visible lever back (#8401's
+                              // dead end).
+                              if (widget.controller.emptyVerdict !=
+                                  MapEmptyVerdict.none)
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 8.0),
+                                  child: WorldMapEmptyViewCard(
+                                    sortKey: WorkspaceOrder.mapChrome.sortKey,
+                                    verdict: widget.controller.emptyVerdict,
+                                    canZoomOut: widget.controller.canZoomOut,
+                                    onWidenSearch:
+                                        widget.controller.widenFilters,
+                                    onZoomOut: widget.controller.resetToWorld,
+                                  ),
+                                ),
+                            ],
+                          ),
+                        )
+                      : WorldMapSearchOverlay(
+                          filter: widget.controller.filter,
+                          updateQuery: widget.controller.setQuery,
+                          // Widen = clear every pill to All (language is fixed by
+                          // settings; zoom-out is the empty card's other lever).
+                          onWidenSearch: widget.controller.widenFilters,
+                          setCefrLevel: widget.controller.setCefrLevel,
+                          setPartySize: widget.controller.setPartySize,
+                          setStatus: widget.controller.setStatus,
+                          results: render.visible,
+                          onResultTap: widget.controller.flyTo,
+                          onReset: widget.controller.resetFilters,
+                          emptyVerdict: widget.controller.emptyVerdict,
+                          canZoomOut: widget.controller.canZoomOut,
+                          // "Zoom out" resets to the whole-world view (all the way out,
+                          // centered over the fullest window of matching pins, #8121),
+                          // the same as the map's World control — one tap brings the
+                          // most matches a floor-zoomed viewport can show into view.
+                          onZoomOut: widget.controller.resetToWorld,
                         ),
-                      )
-                    : WorldMapSearchOverlay(
-                        filter: widget.controller.filter,
-                        updateQuery: widget.controller.setQuery,
-                        // Widen = clear every pill to All (language is fixed by
-                        // settings; zoom-out is the empty card's other lever).
-                        onWidenSearch: widget.controller.widenFilters,
-                        setCefrLevel: widget.controller.setCefrLevel,
-                        setPartySize: widget.controller.setPartySize,
-                        setStatus: widget.controller.setStatus,
-                        results: render.visible,
-                        onResultTap: widget.controller.flyTo,
-                        onReset: widget.controller.resetFilters,
-                        emptyVerdict: widget.controller.emptyVerdict,
-                        canZoomOut: widget.controller.canZoomOut,
-                        // "Zoom out" resets to the whole-world view (all the way out,
-                        // centered over the fullest window of matching pins, #8121),
-                        // the same as the map's World control — one tap brings the
-                        // most matches a floor-zoomed viewport can show into view.
-                        onZoomOut: widget.controller.resetToWorld,
-                      ),
+                ),
               ),
             ),
         ],
