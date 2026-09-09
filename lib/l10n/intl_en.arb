@@ -3776,6 +3776,7 @@
     "callHistoryNoAnswer": "No answer",
     "callHistoryDeclined": "Call declined",
     "callHistoryYouDeclined": "You declined this call",
+    "callHistoryTranscript": "Transcript",
     "callTranscriptTitle": "Call transcript",
     "callTranscriptLoadFailed": "Could not load the transcript",
     "callTranscriptRetry": "Try again",
@@ -5509,5 +5510,9 @@
     "tutorialAppTourCoursesNone": "Courses live here \u2014 you can join one with a code, or make your own.",
     "tutorialAppTourAnalytics": "This is your progress: every word and grammar form you've used.",
     "tutorialAppTourPractice": "You'll find personalized practice lessons here, as long as you've unlocked at least 10 vocab words",
-    "tutorialAppTourWorld": "And this brings you back to the world map any time. Happy learning!"
+    "tutorialAppTourWorld": "And this brings you back to the world map any time. Happy learning!",
+    "edited": "Edited",
+    "@edited": {},
+    "attach": "Attach",
+    "@attach": {}
 }

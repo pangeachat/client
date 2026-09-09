@@ -297,7 +297,7 @@ if a context is set, the world otherwise.
 
 Every workspace panel announces as one named semantic group — "Settings page", "Vocab page", "Chats page" — before its content, so a screen-reader user always knows which panel they entered and can treat panels as landmarks. The group is authored where every column token resolves ([`WorkspaceLeftPanel`](../../lib/routes/world/left_panel/workspace_left_panel.dart), [`WorkspaceRightPanel`](../../lib/routes/world/right_panel/workspace_right_panel.dart)), never in a panel's own view or chrome, so a panel cannot lose its group by drawing its own header — the failure that left the analytics panels and the whole left column ungrouped while settings was grouped (#8729). The group's name and the panel's "Close X" label share one source ([`PanelTypesEnum`](../../lib/features/navigation/panel_types_enum.dart), `displayName` beside `closeButtonLabel`), so the two can never disagree.
 
-A screen reader browses the workspace in reading order, not paint order: the nav rail first, then the open left panels, the open right panels, the user cluster / analytics bar, and the map — the backdrop everything overlays — last (#8755). The browse order is authored with ordinal sort keys ([`BrowseOrder`](../../lib/widgets/layouts/workspace_shell.dart)) on each region's *labeled* semantic container (a key on an unlabeled wrapper forms a generic node VoiceOver reorders). VoiceOver additionally sorts overlapping siblings by their horizontal centers regardless of keys, so the full-bleed map cannot key its way out of mid-sweep: the map group's container is anchored to a thin right-edge strip whose children — pins, attribution, zoom controls — overflow to their true positions, with pointer hits passed through beyond the strip's bounds. Only the search/context slot sits outside the group, keyed between the cluster and the map.
+A screen reader browses the workspace in reading order, not paint order: the nav rail first, then the open left panels, the open right panels, the user cluster / analytics bar, and the map — the backdrop everything overlays — last (#8755). Keyboard Tab walks the same sequence, ending with the map's search/context slot, its zoom controls, and the map's own single stop (#8810): the primary navigation and the panel a learner just opened never sit behind the backdrop they are drawn over. One rank per region ([`WorkspaceOrder`](../../lib/widgets/layouts/workspace_shell.dart)) feeds both orders, because they are separate mechanisms that otherwise drift — a sort key reorders only the semantics tree, and Tab follows Flutter's own traversal policy. The sort key goes on each region's *labeled* semantic container (a key on an unlabeled wrapper forms a generic node VoiceOver reorders); the focus order goes on the region's slot in the shell's ordered focus-traversal group. VoiceOver additionally sorts overlapping siblings by their horizontal centers regardless of keys, so the full-bleed map cannot key its way out of mid-sweep: the map group's container is anchored to a thin right-edge strip whose children — pins, attribution, zoom controls — overflow to their true positions, with pointer hits passed through beyond the strip's bounds. Only the search/context slot sits outside the group, keyed between the cluster and the map.
 
 ### Closing a panel: X or back arrow
 
@@ -318,10 +318,14 @@ user came from:
   the [course context bar](world-map.instructions.md#the-course-context-bar) on
   wide. Either way the course never leaves the screen, so there is nothing an X
   could reveal and nowhere a back arrow could go — only two states to move
-  between. The chevron sits in the **leading** slot the X would have taken, in
-  every state and on every width. One control in one place is the point; a
-  panel whose close and whose expand sat on opposite sides of the header made
-  two states look like two different surfaces.
+  between. The chevron keeps one place per form factor, in both states: on
+  **wide** it rides the **trailing** edge beside the course's share / focus
+  actions, in the open card and the context bar alike
+  ([#8866](https://github.com/pangeachat/client/issues/8866)); on **narrow** it
+  keeps the **leading** slot the X would have taken, where every other cavity
+  surface's control sits. One control in one place is the point; a panel whose
+  close and whose expand sat on opposite sides of the header made two states
+  look like two different surfaces.
 
   **Which way it points follows the surface, not the state's name.** On narrow
   the cavity is a sheet that slides, so the chevron points the way it will

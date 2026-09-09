@@ -9889,5 +9889,8 @@
     "tutorialAppTourCoursesNone": "Kursused asuvad siin – saad liituda koodiga või luua omaenda.",
     "tutorialAppTourAnalytics": "See on sinu edusammud: iga sõna ja grammatikavorm, mida oled kasutanud.",
     "tutorialAppTourPractice": "Siit leiad isikupärastatud harjutustunnid, kui oled avanud vähemalt 10 sõnavara sõna.",
-    "tutorialAppTourWorld": "Ja see viib sind igal ajal tagasi maailmakaardile. Head õppimist!"
+    "tutorialAppTourWorld": "Ja see viib sind igal ajal tagasi maailmakaardile. Head õppimist!",
+    "edited": "Muudetud",
+    "attach": "Lisa",
+    "callHistoryTranscript": "Transkriptsioon"
 }

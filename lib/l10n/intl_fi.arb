@@ -9929,5 +9929,8 @@
     "tutorialAppTourCoursesNone": "Kurssit löytyvät täältä – voit liittyä yhdelle koodilla tai luoda oman.",
     "tutorialAppTourAnalytics": "Tämä on edistymisesi: jokainen käyttämäsi sana ja kielioppimuoto.",
     "tutorialAppTourPractice": "Löydät täältä henkilökohtaisia harjoitustunteja, kunhan olet avannut vähintään 10 sanastosanasta.",
-    "tutorialAppTourWorld": "Ja tämä vie sinut takaisin maailmankartalle milloin tahansa. Hyvää oppimista!"
+    "tutorialAppTourWorld": "Ja tämä vie sinut takaisin maailmankartalle milloin tahansa. Hyvää oppimista!",
+    "edited": "Muokattu",
+    "attach": "Liitä",
+    "callHistoryTranscript": "Puheluhistoria"
 }

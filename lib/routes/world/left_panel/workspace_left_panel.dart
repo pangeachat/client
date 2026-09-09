@@ -9,6 +9,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/archive/archive.dart';
 import 'package:fluffychat/routes/new_private_chat/new_private_chat.dart';
 import 'package:fluffychat/routes/world/activity_detail_panel.dart';
+import 'package:fluffychat/routes/world/left_panel/course_card_reveal.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_add_course_subpage.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_chat_list_subpage.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_close_button.dart';
@@ -56,6 +57,11 @@ class WorkspaceLeftPanel extends StatelessWidget {
   /// `routing.instructions.md`.
   final bool bare;
 
+  /// A wide course card appearing where the context bar just was: grow it
+  /// out of the bar instead of snapping it in ([CourseCardReveal], #8866).
+  /// The shell sets this from its previous build; ignored for other tokens.
+  final bool revealFromBar;
+
   const WorkspaceLeftPanel({
     super.key,
     required this.token,
@@ -64,6 +70,7 @@ class WorkspaceLeftPanel extends StatelessWidget {
     this.shareItems,
     this.courseCreationCompleter,
     this.bare = false,
+    this.revealFromBar = false,
   });
 
   @override
@@ -130,6 +137,9 @@ class WorkspaceLeftPanel extends StatelessWidget {
 
     // The shared floating-card chrome (rounded, elevated, margin) every panel
     // uses — see [PanelCard]. Skipped when [bare] (the host supplies the surface).
+    // The wide course card's chrome also animates it between the context bar's
+    // height and its slot ([CourseCardReveal], #8866); narrow's course sheet
+    // is the cavity's, which slides on its own.
     //
     // Every workspace panel is one named semantic group (#8729) — authored
     // here, where every left-column token resolves, so a panel cannot miss it
@@ -142,11 +152,15 @@ class WorkspaceLeftPanel extends StatelessWidget {
       container: true,
       // Browse-order key on the group itself (#8755): a wrapper annotation
       // formed an extra unlabeled node VoiceOver reordered heuristically.
-      sortKey: BrowseOrder.leftPanels,
+      sortKey: WorkspaceOrder.leftPanels.sortKey,
       // Keep descendants as their own nodes so loose text without a container
       // never merges into the panel's name (see WorkspaceRightPanel).
       explicitChildNodes: true,
-      child: bare ? surface : PanelCard(child: surface),
+      child: bare
+          ? surface
+          : token is CoursePanelToken && isColumnMode
+          ? CourseCardReveal(animateIn: revealFromBar, child: surface)
+          : PanelCard(child: surface),
     );
   }
 }

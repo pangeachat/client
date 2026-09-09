@@ -9965,5 +9965,8 @@
     "tutorialAppTourCoursesNone": "I corsi si trovano qui: puoi unirti a uno con un codice o crearne uno tuo.",
     "tutorialAppTourAnalytics": "Questo è il tuo progresso: ogni parola e forma grammaticale che hai usato.",
     "tutorialAppTourPractice": "Qui troverai lezioni di pratica personalizzate, a patto che tu abbia sbloccato almeno 10 parole di vocabolario",
-    "tutorialAppTourWorld": "E questo ti riporta alla mappa del mondo in qualsiasi momento. Buon apprendimento!"
+    "tutorialAppTourWorld": "E questo ti riporta alla mappa del mondo in qualsiasi momento. Buon apprendimento!",
+    "edited": "Modificato",
+    "attach": "Allega",
+    "callHistoryTranscript": "Trascrizione"
 }

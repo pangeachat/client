@@ -10661,5 +10661,8 @@
     "tutorialAppTourCoursesNone": "コースはここにあります。コードを使って参加したり、自分で作成したりできます。",
     "tutorialAppTourAnalytics": "これはあなたの進捗状況です。使用したすべての単語と文法形式が表示されます。",
     "tutorialAppTourPractice": "語彙を10語以上アンロックしていれば、ここにパーソナライズされた練習レッスンが表示されます。",
-    "tutorialAppTourWorld": "そして、これはいつでも世界地図に戻るためのものです。楽しく学習しましょう！"
+    "tutorialAppTourWorld": "そして、これはいつでも世界地図に戻るためのものです。楽しく学習しましょう！",
+    "edited": "編集済み",
+    "attach": "添付",
+    "callHistoryTranscript": "トランスクリプト"
 }

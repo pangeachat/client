@@ -10410,5 +10410,8 @@
     "tutorialAppTourCoursesNone": "Kurser finns här – du kan gå med i en med en kod, eller skapa din egen.",
     "tutorialAppTourAnalytics": "Det här är dina framsteg: varje ord och grammatikform du har använt.",
     "tutorialAppTourPractice": "Du hittar personliga övningslektioner här, så länge du har låst upp minst 10 ordförrådsord",
-    "tutorialAppTourWorld": "Och det här tar dig tillbaka till världskartan när som helst. Lycka till med inlärningen!"
+    "tutorialAppTourWorld": "Och det här tar dig tillbaka till världskartan när som helst. Lycka till med inlärningen!",
+    "edited": "Redigerad",
+    "attach": "Bifoga",
+    "callHistoryTranscript": "Transkription"
 }

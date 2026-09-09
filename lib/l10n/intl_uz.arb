@@ -9896,5 +9896,8 @@
     "tutorialAppTourCoursesNone": "Kurslar shu yerda joylashgan — kod bilan biriga qo'shilishingiz yoki o'zingiznikini yaratishingiz mumkin.",
     "tutorialAppTourAnalytics": "Bu sizning rivojlanishingiz: siz ishlatgan har bir so'z va grammatika shakli.",
     "tutorialAppTourPractice": "Bu yerda shaxsiylashtirilgan amaliy darslarni topasiz, agar siz kamida 10 ta lug'at so'zini ochgan bo'lsangiz",
-    "tutorialAppTourWorld": "Va bu sizni istalgan vaqtda dunyo xaritasiga qaytaradi. O'rganishdan zavqlaning!"
+    "tutorialAppTourWorld": "Va bu sizni istalgan vaqtda dunyo xaritasiga qaytaradi. O'rganishdan zavqlaning!",
+    "edited": "Tahrirlangan",
+    "attach": "Biriktirish",
+    "callHistoryTranscript": "Transkript"
 }

@@ -9995,5 +9995,8 @@
     "tutorialAppTourCoursesNone": "A kurzusok itt találhatók – csatlakozhatsz egyhez egy kóddal, vagy létrehozhatod a sajátodat.",
     "tutorialAppTourAnalytics": "Ez a haladásod: minden szó és nyelvtani forma, amit használtál.",
     "tutorialAppTourPractice": "Itt személyre szabott gyakorlóleckéket találsz, feltéve, hogy legalább 10 szókincsbeli szót feloldottál.",
-    "tutorialAppTourWorld": "És ez bármikor visszavisz a világtérképre. Jó tanulást!"
+    "tutorialAppTourWorld": "És ez bármikor visszavisz a világtérképre. Jó tanulást!",
+    "edited": "Szerkesztve",
+    "attach": "Csatolás",
+    "callHistoryTranscript": "Átirat"
 }

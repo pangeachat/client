@@ -10247,5 +10247,8 @@
     "tutorialAppTourCoursesNone": "Les cours se trouvent ici — vous pouvez en rejoindre un avec un code, ou créer le vôtre.",
     "tutorialAppTourAnalytics": "Voici votre progression : chaque mot et forme grammaticale que vous avez utilisés.",
     "tutorialAppTourPractice": "Vous trouverez ici des leçons de pratique personnalisées, à condition d'avoir débloqué au moins 10 mots de vocabulaire.",
-    "tutorialAppTourWorld": "Et cela vous ramène à la carte du monde à tout moment. Bon apprentissage !"
+    "tutorialAppTourWorld": "Et cela vous ramène à la carte du monde à tout moment. Bon apprentissage !",
+    "edited": "Modifié",
+    "attach": "Joindre",
+    "callHistoryTranscript": "Transcription"
 }

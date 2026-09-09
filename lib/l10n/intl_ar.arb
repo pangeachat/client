@@ -10198,5 +10198,8 @@
     "tutorialAppTourCoursesNone": "الدورات موجودة هنا — يمكنك الانضمام إلى واحدة باستخدام رمز، أو إنشاء دورتك الخاصة.",
     "tutorialAppTourAnalytics": "هذا هو تقدمك: كل كلمة وشكل نحوي استخدمته.",
     "tutorialAppTourPractice": "ستجد دروس تدريب مخصصة هنا، طالما أنك فتحت 10 كلمات مفردات على الأقل",
-    "tutorialAppTourWorld": "وهذا يعيدك إلى خريطة العالم في أي وقت. تعلم سعيد!"
+    "tutorialAppTourWorld": "وهذا يعيدك إلى خريطة العالم في أي وقت. تعلم سعيد!",
+    "edited": "تم التعديل",
+    "attach": "إرفاق",
+    "callHistoryTranscript": "النص"
 }

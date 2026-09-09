@@ -2296,5 +2296,8 @@
     "tutorialAppTourCoursesNone": "Makosi anogara pano — unogona kujoina rimwe nekodhi, kana kugadzira rako wega.",
     "tutorialAppTourAnalytics": "Uku ndiko kufambira mberi kwako: izwi rega rega uye chimiro chegirama chawakashandisa.",
     "tutorialAppTourPractice": "Uchawana zvidzidzo zvekuita zvakagadzirirwa iwe pano, chero iwe wakavhura mazwi gumi evocabularies.",
-    "tutorialAppTourWorld": "Uye izvi zvinokudzosera kumepe yenyika chero nguva. Fara kudzidza!"
+    "tutorialAppTourWorld": "Uye izvi zvinokudzosera kumepe yenyika chero nguva. Fara kudzidza!",
+    "edited": "Yagadziriswa",
+    "attach": "Batanidza",
+    "callHistoryTranscript": "Zvakataurwa"
 }

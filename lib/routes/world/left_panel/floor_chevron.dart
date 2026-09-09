@@ -16,10 +16,12 @@ import 'package:fluffychat/widgets/layouts/cavity_controls.dart';
 ///   collapsing drops the panel's token and the bar takes over naming the
 ///   scoped map. There is no cavity to drive, hence [onToggleOffCavity].
 ///
-/// It rides the header's LEADING edge in both, where the X used to sit, so the
-/// control is in one place whichever state and whichever screen the learner is
-/// looking at. Which way it POINTS is per form factor, because the sheet
-/// slides and the panel does not — see [ChevronMeaning].
+/// It keeps one place per form factor, whichever state the course is in: the
+/// header's leading edge on narrow, where the X used to sit, and on wide the
+/// trailing edge beside the course's share / focus actions — in the open card
+/// and the context bar alike (#8866). Which way it POINTS is per form factor
+/// too, because the sheet slides and the panel does not — see
+/// [ChevronMeaning].
 class FloorChevron extends StatelessWidget {
   /// Collapse action for a panel drawn outside the nav cavity (the wide
   /// panel): drop this panel's token so its floor — the context bar — shows.

@@ -10806,5 +10806,8 @@
     "tutorialAppTourCoursesNone": "קורסים נמצאים כאן – תוכל להצטרף לאחד עם קוד, או ליצור קורס משלך.",
     "tutorialAppTourAnalytics": "זו ההתקדמות שלך: כל מילה וצורת דקדוק שהשתמשת בהן.",
     "tutorialAppTourPractice": "תמצא כאן שיעורי תרגול מותאמים אישית, בתנאי שפתחת לפחות 10 מילים חדשות.",
-    "tutorialAppTourWorld": "וזה מחזיר אותך למפת העולם בכל עת. למידה מהנה!"
+    "tutorialAppTourWorld": "וזה מחזיר אותך למפת העולם בכל עת. למידה מהנה!",
+    "edited": "נערך",
+    "attach": "צרף",
+    "callHistoryTranscript": "תמליל"
 }

@@ -2296,5 +2296,8 @@
     "tutorialAppTourCoursesNone": "ኮርሶች እዚህ ይኖራሉ — በኮድ መቀላቀል ትችላለህ፣ ወይም የራስህን መፍጠር ትችላለህ።",
     "tutorialAppTourAnalytics": "ይህ እድገትህ ነው፡ የተጠቀምካቸው እያንዳንዱ ቃል እና ሰዋሰዋዊ ቅርጽ።",
     "tutorialAppTourPractice": "ቢያንስ 10 የቃላት ቃላትን ከከፈትክ፣ ግላዊነት የተላበሱ የልምምድ ትምህርቶችን እዚህ ታገኛለህ።",
-    "tutorialAppTourWorld": "እና ይህ በማንኛውም ጊዜ ወደ ዓለም ካርታ ይመልስሃል። መልካም ትምህርት!"
+    "tutorialAppTourWorld": "እና ይህ በማንኛውም ጊዜ ወደ ዓለም ካርታ ይመልስሃል። መልካም ትምህርት!",
+    "edited": "ተስተካሏል",
+    "attach": "አያይዝ",
+    "callHistoryTranscript": "ጽሑፍ"
 }

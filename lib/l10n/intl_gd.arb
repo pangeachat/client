@@ -2296,5 +2296,8 @@
     "tutorialAppTourCoursesNone": "Tha cùrsaichean a’ fuireach an seo — faodaidh tu tighinn còmhla ri fear le còd, no do chuid fhèin a dhèanamh.",
     "tutorialAppTourAnalytics": "Seo an adhartas agad: a h-uile facal agus cruth gràmair a chleachd thu.",
     "tutorialAppTourPractice": "Gheibh thu leasanan cleachdaidh pearsanaichte an seo, fhad ‘s a tha thu air co-dhiù 10 faclan briathrachais fhuasgladh",
-    "tutorialAppTourWorld": "Agus bheir seo air ais thu gu mapa an t-saoghail aig àm sam bith. Ionnsachadh sona!"
+    "tutorialAppTourWorld": "Agus bheir seo air ais thu gu mapa an t-saoghail aig àm sam bith. Ionnsachadh sona!",
+    "edited": "Deasaichte",
+    "attach": "Ceangail",
+    "callHistoryTranscript": "Tar-sgrìobhadh"
 }

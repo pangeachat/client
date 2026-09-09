@@ -10812,5 +10812,8 @@
     "tutorialAppTourCoursesNone": "Kurser findes her – du kan tilmelde dig et med en kode eller oprette dit eget.",
     "tutorialAppTourAnalytics": "Dette er dine fremskridt: hvert ord og hver grammatikform, du har brugt.",
     "tutorialAppTourPractice": "Du finder personlige øvelseslektioner her, så længe du har låst op for mindst 10 ordforrådsord",
-    "tutorialAppTourWorld": "Og dette bringer dig tilbage til verdenskortet når som helst. God fornøjelse med at lære!"
+    "tutorialAppTourWorld": "Og dette bringer dig tilbage til verdenskortet når som helst. God fornøjelse med at lære!",
+    "edited": "Redigeret",
+    "attach": "Vedhæft",
+    "callHistoryTranscript": "Udskrift"
 }

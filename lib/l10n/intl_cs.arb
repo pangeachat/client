@@ -10386,5 +10386,8 @@
     "tutorialAppTourCoursesNone": "Kurzy jsou zde – můžete se k nim připojit pomocí kódu, nebo si vytvořit vlastní.",
     "tutorialAppTourAnalytics": "Toto je váš pokrok: každé slovo a gramatická forma, kterou jste použili.",
     "tutorialAppTourPractice": "Zde najdete personalizované lekce procvičování, pokud jste odemkli alespoň 10 slovíček.",
-    "tutorialAppTourWorld": "A toto vás kdykoli vrátí na mapu světa. Šťastné učení!"
+    "tutorialAppTourWorld": "A toto vás kdykoli vrátí na mapu světa. Šťastné učení!",
+    "edited": "Upraveno",
+    "attach": "Připojit",
+    "callHistoryTranscript": "Přepis"
 }

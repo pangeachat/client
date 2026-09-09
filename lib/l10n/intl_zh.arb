@@ -9892,5 +9892,8 @@
     "tutorialAppTourCoursesNone": "课程都在这里——你可以用代码加入一个，或者创建你自己的。",
     "tutorialAppTourAnalytics": "这是你的进度：你用过的每个单词和语法形式。",
     "tutorialAppTourPractice": "只要你解锁了至少 10 个词汇，你就会在这里找到个性化的练习课程",
-    "tutorialAppTourWorld": "这会随时带你回到世界地图。学习愉快！"
+    "tutorialAppTourWorld": "这会随时带你回到世界地图。学习愉快！",
+    "edited": "已编辑",
+    "attach": "附加",
+    "callHistoryTranscript": "文字记录"
 }

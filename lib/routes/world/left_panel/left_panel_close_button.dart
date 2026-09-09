@@ -9,6 +9,7 @@ import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/world/left_panel/course_card_reveal.dart';
 import 'package:fluffychat/routes/world/left_panel/floor_chevron.dart';
 
 /// The panel's close control. A pushed sub-page ([_isPushedSubPage]) backs out
@@ -97,6 +98,16 @@ class LeftPanelCloseButton extends StatelessWidget {
     context.go(WorkspaceNav.closeSection(uri, token));
   }
 
+  /// Shrink the wide course card to the bar's height first, then drop its
+  /// token so the bar takes over at the size the card reached (#8866). A
+  /// card torn down mid-shrink has nothing to hand over, so it navigates
+  /// nowhere; a host with no reveal (narrow, a test) closes at once.
+  Future<void> _collapseToBar(BuildContext context) async {
+    final reveal = CourseCardReveal.maybeOf(context);
+    if (reveal != null && !await reveal.collapse()) return;
+    if (context.mounted) _close(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     final page = token.param;
@@ -107,14 +118,13 @@ class LeftPanelCloseButton extends StatelessWidget {
       );
     }
 
-    // A floor panel is never dismissed, so its one control is the chevron,
-    // in the leading slot the X would have taken (#8816;
-    // routing.instructions.md -> Closing a panel). Off-cavity — the wide
-    // panel — collapsing is dropping the token, which hands the course to the
-    // context bar; in the cavity the chevron drives the sheet directly and
-    // this fallback goes unused.
+    // A floor panel is never dismissed, so its one control is the chevron
+    // (#8816; routing.instructions.md -> Closing a panel). Off-cavity — the
+    // wide panel — collapsing is dropping the token, which hands the course
+    // to the context bar; in the cavity the chevron drives the sheet directly
+    // and this fallback goes unused.
     if (_closeAffordance.showChevron) {
-      return FloorChevron(onToggleOffCavity: () => _close(context));
+      return FloorChevron(onToggleOffCavity: () => _collapseToBar(context));
     }
 
     return _closeAffordance.showBack

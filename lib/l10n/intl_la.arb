@@ -2296,5 +2296,8 @@
     "tutorialAppTourCoursesNone": "Cursus hic sunt — unum cum codice coniungere potes, aut tuum creare.",
     "tutorialAppTourAnalytics": "Hic est progressus tuus: omne verbum et forma grammatica quam usus es.",
     "tutorialAppTourPractice": "Hic invenies lectiones exercitationis personalizatas, dummodo saltem 10 verba vocabulorum reseraveris",
-    "tutorialAppTourWorld": "Et hoc te ad tabulam mundi quando vis reducit. Feliciter disce!"
+    "tutorialAppTourWorld": "Et hoc te ad tabulam mundi quando vis reducit. Feliciter disce!",
+    "edited": "Recensuit",
+    "attach": "Adnectere",
+    "callHistoryTranscript": "Scriptum"
 }
