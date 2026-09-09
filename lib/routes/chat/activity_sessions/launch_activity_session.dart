@@ -12,6 +12,7 @@ import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/pangea/common/constants/default_power_level.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
 import 'package:fluffychat/pangea/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
@@ -36,11 +37,16 @@ extension LaunchActivitySession on Client {
       // Bounded: this runs inside a blocking loading dialog; a slow or
       // hung backend must not lock the UI. Sharing uses whatever courses DID
       // resolve; completeness only gates the source_course_id pin elsewhere.
-      matching = (await ActivityCourseResolver.matchingCourseSpaces(
-        this,
-        activity.activityId,
-        activity.req.targetLanguage,
-      ).timeout(const Duration(seconds: 10))).matches;
+      matching =
+          (await ActivityCourseResolver.matchingCourseSpaces(
+                this,
+                activity.activityId,
+                activity.req.targetLanguage,
+              ).timeoutNamed(
+                const Duration(seconds: 10),
+                'matchingCourseSpaces: launch activity session',
+              ))
+              .matches;
     } catch (e, s) {
       // Sharing is best-effort; session creation must not fail on it.
       ErrorHandler.logError(

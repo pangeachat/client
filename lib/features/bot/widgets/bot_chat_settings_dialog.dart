@@ -10,6 +10,7 @@ import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/user/user_model.dart' as user;
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
 import 'package:fluffychat/routes/chat/chat_details/language_level_dropdown.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_mismatch_popup.dart';
@@ -57,7 +58,10 @@ class BotChatSettingsDialogState extends State<BotChatSettingsDialog> {
     try {
       await MatrixState.pangeaController.userController
           .updateProfile(update, waitForDataInSync: true)
-          .timeout(const Duration(seconds: 15));
+          .timeoutNamed(
+            const Duration(seconds: 15),
+            'updateProfile: bot chat settings',
+          );
       await Matrix.of(
         context,
       ).client.updateBotOptions(_userProfile.userSettings);

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
 import 'package:fluffychat/routes/settings/settings_learning/learning_settings_view_model.dart';
 import 'package:fluffychat/routes/settings/settings_learning/settings_learning_view.dart';
 import 'package:fluffychat/widgets/announcing_snackbar.dart';
@@ -66,7 +67,10 @@ class SettingsLearningController extends State<SettingsLearning> {
             (_) => viewModel.updatedProfile,
             waitForDataInSync: true,
           )
-          .timeout(const Duration(seconds: 15));
+          .timeoutNamed(
+            const Duration(seconds: 15),
+            'updateProfile: learning settings',
+          );
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,

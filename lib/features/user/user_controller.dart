@@ -15,6 +15,7 @@ import 'package:fluffychat/features/user/analytics_profile_model.dart';
 import 'package:fluffychat/features/user/public_profile_model.dart';
 import 'package:fluffychat/features/user/user_constants.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
@@ -504,7 +505,10 @@ class UserController {
             PangeaEventTypes.profileAnalytics,
             content,
           )
-          .timeout(const Duration(seconds: 30));
+          .timeoutNamed(
+            const Duration(seconds: 30),
+            'setUserProfile: profile analytics',
+          );
     } catch (e, s) {
       // Swallowed, so one failed publish cannot break the chain every later
       // publish is queued behind.

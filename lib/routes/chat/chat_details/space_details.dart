@@ -20,6 +20,7 @@ import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/constants/default_power_level.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
 import 'package:fluffychat/pangea/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/spaces/space_gone_gate.dart';
@@ -366,7 +367,10 @@ class SpaceDetailsController extends State<SpaceDetails> {
           if (newRoom != null && newRoom.spaceParents.isEmpty) {
             await Matrix.of(context).client
                 .waitForRoomInSync(newRoomId)
-                .timeout(Duration(seconds: 10));
+                .timeoutNamed(
+                  const Duration(seconds: 10),
+                  'waitForRoomInSync: add chat to space',
+                );
           }
           return newRoomId;
         } catch (e, s) {

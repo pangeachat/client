@@ -2,6 +2,7 @@ import 'package:fluffychat/features/analytics/construct_use_model.dart';
 import 'package:fluffychat/features/analytics/construct_use_type_enum.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
+import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_target.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -80,5 +81,8 @@ class AnalyticsPracticeAnalyticsController {
       .constructUpdateStream
       .stream
       .first
-      .timeout(const Duration(seconds: 10));
+      .timeoutNamed(
+        const Duration(seconds: 10),
+        'constructUpdateStream: practice analytics',
+      );
 }

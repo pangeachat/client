@@ -10,6 +10,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/user/own_profile_client_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
 import 'package:fluffychat/pangea/common/widgets/preset_avatar_picker.dart';
 import 'package:fluffychat/routes/settings/settings.dart';
 import 'package:fluffychat/routes/settings/settings_learning/country_picker_tile.dart';
@@ -196,7 +197,10 @@ class _UserHomePageState extends State<UserHomePage> {
             (_) => _viewModel.updatedProfile,
             waitForDataInSync: true,
           )
-          .timeout(const Duration(seconds: 15));
+          .timeoutNamed(
+            const Duration(seconds: 15),
+            'updateProfile: user home page',
+          );
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,

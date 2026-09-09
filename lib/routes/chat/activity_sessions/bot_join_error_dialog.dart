@@ -14,6 +14,7 @@ import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
 
 class PlayWithBotLoadingDialog extends StatefulWidget {
   final Room room;
@@ -74,7 +75,10 @@ class PlayWithBotLoadingDialogState extends State<PlayWithBotLoadingDialog> {
           );
         }
       }
-      await future.timeout(const Duration(seconds: 5));
+      await future.timeoutNamed(
+        const Duration(seconds: 5),
+        'bot join: activity session',
+      );
       // Announce before the mounted check: the bot joined either way, and
       // coursemates' course pages need the tick whether or not this dialog is
       // still up.

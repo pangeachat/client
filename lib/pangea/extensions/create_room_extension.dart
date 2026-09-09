@@ -4,6 +4,7 @@ import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
 
 extension CreateRoomExtension on Client {
   Future<String> createPangeaRoom(Future<String> roomFuture) async {
@@ -18,10 +19,10 @@ extension CreateRoomExtension on Client {
     try {
       final room = getRoomById(roomId);
       if (room == null || room.membership != Membership.join) {
-        await waitForRoomInSync(
-          roomId,
-          join: true,
-        ).timeout(Duration(seconds: 10));
+        await waitForRoomInSync(roomId, join: true).timeoutNamed(
+          const Duration(seconds: 10),
+          'waitForRoomInSync: create room',
+        );
       }
     } catch (e, s) {
       ErrorHandler.logError(

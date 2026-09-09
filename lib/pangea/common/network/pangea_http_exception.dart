@@ -138,8 +138,14 @@ class PangeaHttpException implements Exception {
   /// this rule's rather than Sentry's.
   static const String fingerprintNamespace = 'pangea-http';
 
-  /// The Sentry grouping key for [error] — status, method, and normalized
-  /// path — or null for anything else, which keeps Sentry's default grouping.
+  /// Namespaces the grouping key of a named [TimeoutException], for the same
+  /// reasons as [fingerprintNamespace].
+  static const String timeoutFingerprintNamespace = 'pangea-timeout';
+
+  /// The Sentry grouping key for [error]: status, method, and normalized path
+  /// for a [PangeaHttpException]; the operation for a [TimeoutException] that
+  /// names one (`timeoutNamed`); null for anything else, which keeps Sentry's
+  /// default grouping.
   ///
   /// Sentry groups by stack trace, and every [PangeaHttpException] is raised
   /// through the same frame in `Requests`, so grouping collapsed every failure
@@ -153,7 +159,20 @@ class PangeaHttpException implements Exception {
   /// `No canonical activity found for activity_id='<uuid>'`, so fingerprinting
   /// on it would split one endpoint into an issue per resource — the thing
   /// [normalizePath] exists to prevent.
+  ///
+  /// A timeout needs the same treatment for the opposite reason: on the web a
+  /// bare `timeout()` has no app frame at all — the stack is the timer
+  /// callback — so every expired wait in the app collapsed into one issue that
+  /// said nothing (CLIENT-AXX, #8889). An unnamed timeout deliberately keeps
+  /// default grouping, so anything still landing there is a site that has not
+  /// been named.
   static List<String>? fingerprintOf(Object? error) {
+    if (error is TimeoutException) {
+      final operation = error.message;
+      return operation == null
+          ? null
+          : [timeoutFingerprintNamespace, operation];
+    }
     if (error is! PangeaHttpException) return null;
     return [
       fingerprintNamespace,
