@@ -5,6 +5,7 @@ import 'package:fluffychat/features/tutorials/tutorial_enum.dart';
 import 'package:fluffychat/features/tutorials/tutorial_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_overlay_controller.dart';
 import 'package:fluffychat/features/tutorials/tutorial_overlay_state_machine.dart';
+import 'package:fluffychat/features/tutorials/tutorial_seen_backfill.dart';
 import 'package:fluffychat/features/tutorials/tutorial_sequences.dart';
 import 'package:fluffychat/features/tutorials/tutorial_state_transition_events.dart';
 import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
@@ -40,13 +41,25 @@ class _FakeProgress extends TutorialProgressSource {
   final Set<TutorialEnum> seen;
   final Map<TutorialEnum, int> resumeSteps;
 
-  const _FakeProgress({this.seen = const {}, this.resumeSteps = const {}});
+  /// Records what the controller persisted, when observing writes matters.
+  /// A tutorial saved at its step count was marked seen.
+  final Map<TutorialEnum, int>? progressLog;
+
+  const _FakeProgress({
+    this.seen = const {},
+    this.resumeSteps = const {},
+    this.progressLog,
+  });
 
   @override
   bool isEnabled(TutorialEnum tutorial) => !seen.contains(tutorial);
 
   @override
   int resumeStep(TutorialEnum tutorial) => resumeSteps[tutorial] ?? 0;
+
+  @override
+  void saveProgress(TutorialEnum tutorial, int stepIndex) =>
+      progressLog?[tutorial] = stepIndex;
 }
 
 void main() {
@@ -173,62 +186,39 @@ void main() {
     });
 
     // -------------------------------------------------------------------------
-    // BackTutorialEvent
+    // Per-tutorial resume: crossing into a tutorial consults ITS saved step
     // -------------------------------------------------------------------------
-    group('dispatch — BackTutorialEvent', () {
-      test('decrements stepIndex within a multi-step tutorial', () {
-        final sm = TutorialOverlayStateMachine(_multiStep);
-        sm.dispatch(const ForwardTutorialEvent()); // step 1
-        sm.dispatch(const ForwardTutorialEvent()); // step 2
-        sm.dispatch(const BackTutorialEvent());
-        expect(sm.model.stepIndex, 1);
-        sm.dispatch(const BackTutorialEvent());
-        expect(sm.model.stepIndex, 0);
+    group('resumeStepOf', () {
+      test(
+        'crossing into the next tutorial resumes at its saved step — the bug '
+        'this pins: only the sequence\'s first tutorial ever resumed, and a '
+        'learner who abandoned mid-selectModeButtons replayed it from step 0',
+        () {
+          final sm = TutorialOverlayStateMachine(
+            _full,
+            resumeStepOf: (tutorial) =>
+                tutorial == TutorialEnum.selectModeButtons ? 2 : 0,
+          );
+          sm.dispatch(const ForwardTutorialEvent()); // → selectModeButtons
+          expect(sm.tutorialType, TutorialEnum.selectModeButtons);
+          expect(sm.model.stepIndex, 2);
+        },
+      );
+
+      test('a stale save past the tutorial\'s end is clamped to its last '
+          'step, not stranded on one that no longer exists', () {
+        final sm = TutorialOverlayStateMachine(_full, resumeStepOf: (_) => 99);
+        sm.dispatch(const ForwardTutorialEvent()); // → selectModeButtons
+        expect(
+          sm.model.stepIndex,
+          TutorialEnum.selectModeButtons.stepCount - 1,
+        );
       });
 
-      test(
-        'goes back to last step of previous tutorial when at step 0, clears activeTutorial',
-        () {
-          final sm = TutorialOverlayStateMachine(_full);
-          sm.dispatch(
-            const ForwardTutorialEvent(),
-          ); // → selectModeButtons (index 1)
-          sm.dispatch(LaunchTutorialEvent(_selectModel()));
-          sm.dispatch(
-            const BackTutorialEvent(),
-          ); // → readingAssistance (index 0)
-          expect(sm.model.tutorialIndex, 0);
-          // readingAssistance has 1 step: last step index is 0
-          expect(sm.model.stepIndex, 0);
-          expect(sm.model.activeTutorial, isNull);
-          expect(sm.tutorialType, TutorialEnum.readingAssistance);
-        },
-      );
-
-      test(
-        'goes back to last step (index 2) of a 4-step previous tutorial',
-        () {
-          final sm = TutorialOverlayStateMachine(_full);
-          // Advance through selectModeButtons into writingAssistance
-          sm.dispatch(const ForwardTutorialEvent()); // → selectModeButtons
-          sm.dispatch(const ForwardTutorialEvent()); // step 1
-          sm.dispatch(const ForwardTutorialEvent()); // step 2
-          sm.dispatch(const ForwardTutorialEvent()); // step 3
-          sm.dispatch(
-            const ForwardTutorialEvent(),
-          ); // → writingAssistance (index 2)
-          sm.dispatch(const BackTutorialEvent()); // ← selectModeButtons step 2
-          expect(sm.model.tutorialIndex, 1);
-          expect(sm.model.stepIndex, 3);
-        },
-      );
-
-      test('sets tutorialIndex to -1 when backing past first tutorial', () {
-        final sm = TutorialOverlayStateMachine(_single);
-        sm.dispatch(const BackTutorialEvent());
-        expect(sm.model.tutorialIndex, -1);
+      test('without a resume source the next tutorial starts at 0', () {
+        final sm = TutorialOverlayStateMachine(_full);
+        sm.dispatch(const ForwardTutorialEvent());
         expect(sm.model.stepIndex, 0);
-        expect(sm.tutorialType, isNull);
       });
     });
 
@@ -278,12 +268,6 @@ void main() {
         sm.dispatch(const ForwardTutorialEvent()); // → writingAssistance
         expect(sm.completedStepsOffset, 5); // 1 + 4
       });
-
-      test('returns 0 when tutorialIndex is negative', () {
-        final sm = TutorialOverlayStateMachine(_single);
-        sm.dispatch(const BackTutorialEvent()); // tutorialIndex = -1
-        expect(sm.completedStepsOffset, 0);
-      });
     });
 
     // -------------------------------------------------------------------------
@@ -308,33 +292,6 @@ void main() {
     // Navigation flags
     // -------------------------------------------------------------------------
     group('navigation flags', () {
-      test(
-        'canGoBack / hasPreviousStep / hasPreviousTutorial are false at start',
-        () {
-          final sm = TutorialOverlayStateMachine(_single);
-          expect(sm.canGoBack, false);
-          expect(sm.hasPreviousStep, false);
-          expect(sm.hasPreviousTutorial, false);
-        },
-      );
-
-      test('hasPreviousStep is true after advancing a step', () {
-        final sm = TutorialOverlayStateMachine(_multiStep);
-        sm.dispatch(const ForwardTutorialEvent()); // step 1
-        expect(sm.hasPreviousStep, true);
-        expect(sm.canGoBack, true);
-      });
-
-      test(
-        'hasPreviousTutorial is true after advancing to second tutorial',
-        () {
-          final sm = TutorialOverlayStateMachine(_full);
-          sm.dispatch(const ForwardTutorialEvent()); // tutorialIndex = 1
-          expect(sm.hasPreviousTutorial, true);
-          expect(sm.canGoBack, true);
-        },
-      );
-
       test('hasNextStep is true for multi-step tutorial at step 0', () {
         expect(TutorialOverlayStateMachine(_multiStep).hasNextStep, true);
       });
@@ -385,12 +342,6 @@ void main() {
 
       test('returns null for empty sequence', () {
         expect(TutorialOverlayStateMachine([]).tutorialType, isNull);
-      });
-
-      test('returns null when tutorialIndex is negative', () {
-        final sm = TutorialOverlayStateMachine(_single);
-        sm.dispatch(const BackTutorialEvent()); // tutorialIndex = -1
-        expect(sm.tutorialType, isNull);
       });
     });
 
@@ -519,7 +470,7 @@ void main() {
       expect(c.state.tutorialType, isNull);
       // Reads safely with nothing running rather than needing a null check.
       expect(c.state.hasCompletedSequence, true);
-      expect(c.isTutorialQueued(TutorialEnum.readingAssistance), false);
+      expect(c.isCurrentTutorial(TutorialEnum.readingAssistance), false);
     });
 
     test('requesting a sequence arms its first enabled tutorial', () {
@@ -623,6 +574,170 @@ void main() {
       expect(c.requestSequence(TutorialSequences.chatTutorialSequence), false);
       c.releaseSequence(TutorialSequences.chatTutorialSequence);
       expect(c.hasActiveSequence, false);
+    });
+  });
+
+  // ===========================================================================
+  // Skip: the learner opts out of the WHOLE running sequence, not one card
+  // ===========================================================================
+  group('TutorialOverlayController — skipCurrentSequence', () {
+    test('marks every unseen tutorial in the requested sequence seen', () {
+      final log = <TutorialEnum, int>{};
+      final c = TutorialOverlayController(
+        progress: _FakeProgress(progressLog: log),
+      );
+      c.requestSequence(_full);
+      c.skipCurrentSequence();
+      // Each saved at its step count — that is what marks it seen.
+      expect(log, {
+        TutorialEnum.readingAssistance:
+            TutorialEnum.readingAssistance.stepCount,
+        TutorialEnum.selectModeButtons:
+            TutorialEnum.selectModeButtons.stepCount,
+        TutorialEnum.writingAssistance:
+            TutorialEnum.writingAssistance.stepCount,
+      });
+      expect(c.hasActiveSequence, false);
+    });
+
+    test(
+      'skips the tutorials still to come, not only the one showing — the bug '
+      'this pins: marking only the current one partially re-offered the same '
+      'walkthrough on the next trigger',
+      () {
+        final log = <TutorialEnum, int>{};
+        final c = TutorialOverlayController(
+          progress: _FakeProgress(progressLog: log),
+        );
+        c.requestSequence(_full);
+        expect(c.state.tutorialType, TutorialEnum.readingAssistance);
+        c.skipCurrentSequence();
+        expect(log.containsKey(TutorialEnum.selectModeButtons), true);
+        expect(log.containsKey(TutorialEnum.writingAssistance), true);
+      },
+    );
+
+    test('already-seen tutorials in the sequence are not re-marked', () {
+      final log = <TutorialEnum, int>{};
+      final c = TutorialOverlayController(
+        progress: _FakeProgress(
+          seen: {TutorialEnum.readingAssistance},
+          progressLog: log,
+        ),
+      );
+      c.requestSequence(_full);
+      c.skipCurrentSequence();
+      expect(log.containsKey(TutorialEnum.readingAssistance), false);
+      expect(log.containsKey(TutorialEnum.selectModeButtons), true);
+      expect(log.containsKey(TutorialEnum.writingAssistance), true);
+    });
+
+    testWidgets('a queued sequence still starts after a skip', (tester) async {
+      final c = TutorialOverlayController(
+        progress: _FakeProgress(progressLog: {}),
+      );
+      c.requestSequence(_full);
+      c.requestSequence(const [TutorialEnum.appTour]);
+      c.skipCurrentSequence();
+      await tester.pump();
+      expect(c.state.tutorialType, TutorialEnum.appTour);
+    });
+
+    test('a skip with nothing running is a no-op', () {
+      final log = <TutorialEnum, int>{};
+      final c = TutorialOverlayController(
+        progress: _FakeProgress(progressLog: log),
+      );
+      c.skipCurrentSequence();
+      expect(log, isEmpty);
+    });
+  });
+
+  // ===========================================================================
+  // The veteran backfill's design decision: which tutorials a learner with
+  // finished activities on record is assumed past, and which stay offerable
+  // ===========================================================================
+  group('TutorialSeenBackfill.veteranSeenTutorials', () {
+    test('a veteran skips the greeting, both tours, and the in-activity '
+        'pointers', () {
+      expect(TutorialSeenBackfill.veteranSeenTutorials, [
+        TutorialEnum.welcome,
+        TutorialEnum.worldMap,
+        TutorialEnum.appTour,
+        TutorialEnum.activityGoals,
+        TutorialEnum.activityRoles,
+      ]);
+    });
+
+    test('the per-case surfaces stay offerable to veterans — open sessions, '
+        'the chat tools, and the course plan may genuinely never have been '
+        'seen, and best usability wins there', () {
+      for (final tutorial in [
+        TutorialEnum.openSessions,
+        TutorialEnum.coursePlan,
+        TutorialEnum.readingAssistance,
+        TutorialEnum.selectModeButtons,
+        TutorialEnum.writingAssistance,
+      ]) {
+        expect(
+          TutorialSeenBackfill.veteranSeenTutorials.contains(tutorial),
+          isFalse,
+          reason: '$tutorial must stay offerable',
+        );
+      }
+    });
+  });
+
+  // ===========================================================================
+  // Sequence identity: the card's title and Skip control come from the kind
+  // ===========================================================================
+  group('TutorialSequenceKind', () {
+    test('matches every catalog sequence by content', () {
+      for (final kind in TutorialSequenceKind.values) {
+        expect(TutorialSequenceKind.of(kind.sequence), kind);
+      }
+    });
+
+    test('matches a fresh list with the same tutorials — content, not '
+        'instance, because the controller holds the requested list', () {
+      expect(
+        TutorialSequenceKind.of([TutorialEnum.welcome, TutorialEnum.worldMap]),
+        TutorialSequenceKind.worldOrientation,
+      );
+    });
+
+    test('an ad-hoc sequence matches nothing — no title, no skip', () {
+      expect(TutorialSequenceKind.of(_single), isNull);
+      expect(TutorialSequenceKind.of(null), isNull);
+    });
+
+    test('activeSequenceKind names the running sequence', () {
+      final c = TutorialOverlayController(progress: const _FakeProgress());
+      expect(c.activeSequenceKind, isNull);
+      c.requestSequence(TutorialSequences.chatTutorialSequence);
+      expect(c.activeSequenceKind, TutorialSequenceKind.chat);
+    });
+
+    test('the start-page tutorials are one-step orientation tutorials — '
+        'they teach the app on a free surface, so the subscription gate '
+        'must not apply', () {
+      for (final tutorial in [
+        TutorialEnum.openSessions,
+        TutorialEnum.activityRoles,
+      ]) {
+        expect(tutorial.isOrientation, isTrue, reason: '$tutorial');
+        expect(tutorial.stepCount, 1, reason: '$tutorial');
+      }
+    });
+
+    test('activeSequenceKind survives the seen-filter dropping a tutorial — '
+        'identity is the REQUESTED sequence, not the filtered one', () {
+      final c = TutorialOverlayController(
+        progress: const _FakeProgress(seen: {TutorialEnum.welcome}),
+      );
+      c.requestSequence(TutorialSequences.worldOrientationSequence);
+      expect(c.state.tutorialType, TutorialEnum.worldMap);
+      expect(c.activeSequenceKind, TutorialSequenceKind.worldOrientation);
     });
   });
 
@@ -922,6 +1037,20 @@ void main() {
 
     test('the pin step lights something, so it keeps its scrim', () {
       expect(TutorialEnum.worldMap.stepTemplates.last.dimsBackground, isTrue);
+    });
+
+    test('the greeting is the one step without a Skip control — it fronts a '
+        'longer run, and "Skip" there is ambiguous between "skip this hello" '
+        'and "skip the walkthrough"', () {
+      for (final tutorial in TutorialEnum.values) {
+        for (var i = 0; i < tutorial.stepCount; i++) {
+          expect(
+            tutorial.stepTemplates[i].showsSkip,
+            tutorial != TutorialEnum.welcome,
+            reason: '$tutorial step $i',
+          );
+        }
+      }
     });
 
     test('the course plan keeps its scrim throughout — every one of its steps '

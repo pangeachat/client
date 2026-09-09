@@ -52,9 +52,11 @@ import 'package:fluffychat/features/overlay/overlay_display_details.dart';
 import 'package:fluffychat/features/overlay/overlay_position.dart';
 import 'package:fluffychat/features/overlay/transparent_backdrop.dart';
 import 'package:fluffychat/features/subscription/widgets/paywall_card.dart';
+import 'package:fluffychat/features/tutorials/tutorial_constants.dart';
 import 'package:fluffychat/features/tutorials/tutorial_enum.dart';
 import 'package:fluffychat/features/tutorials/tutorial_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_overlay_controller.dart';
+import 'package:fluffychat/features/tutorials/tutorial_seen_backfill.dart';
 import 'package:fluffychat/features/tutorials/tutorial_sequences.dart';
 import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
@@ -476,6 +478,12 @@ class ChatController extends State<ChatPageWithRoom>
     //   setReadMarker();
     // }
     // Pangea#
+    // Scrolling back to the bottom is a re-ask for the chat tutorial, whose
+    // scroll gate said "not yet" while the learner was up reading history.
+    if (scrollController.position.pixels <=
+        TutorialConstants.scrolledToBottomThreshold) {
+      _maybeStartChatTutorialSequence();
+    }
   }
 
   void _loadDraft() async {
@@ -683,21 +691,61 @@ class ChatController extends State<ChatPageWithRoom>
   // Pangea#
 
   void _readingAssistanceTutorialListener(SyncUpdate update) {
+    // Cheap gates only — this runs on every sync. The real evaluation is
+    // coalesced and re-runs from several signals, because a message can
+    // qualify only AFTER it arrived (see _checkChatTutorialSequence).
+    if (!_canLaunchTutorialSequence) return;
+    if (update.rooms?.join?[roomId]?.timeline?.events?.isNotEmpty != true) {
+      return;
+    }
+    _maybeStartChatTutorialSequence();
+  }
+
+  /// At most one pending evaluation, however many signals ask.
+  bool _chatTutorialCheckScheduled = false;
+
+  void _maybeStartChatTutorialSequence() {
+    if (_chatTutorialCheckScheduled) return;
+    _chatTutorialCheckScheduled = true;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _chatTutorialCheckScheduled = false;
+      _checkChatTutorialSequence();
+    });
+    // Without a frame coming the callback never runs and the flag latches —
+    // and this trigger's signals (sync, init completers) arrive between frames.
+    WidgetsBinding.instance.ensureVisualUpdate();
+  }
+
+  /// Re-evaluates whether the latest message qualifies to start the chat
+  /// tutorial sequence. Every clause reads state that arrives asynchronously —
+  /// the profile, the message's language analysis, the analytics service that
+  /// answers "is this word new" — so a "no" here only ever means "not yet",
+  /// and each of those arrivals re-asks (tutorials.instructions.md). The old
+  /// shape evaluated once per sync event and dropped the message for good on
+  /// any transient "no", which is why the sequence sometimes never fired on
+  /// the learner's first qualifying message.
+  void _checkChatTutorialSequence() {
+    if (!mounted) return;
+    // An unloaded profile reports every tutorial as already seen.
+    if (!MatrixState
+        .pangeaController
+        .userController
+        .initCompleter
+        .isCompleted) {
+      return;
+    }
     if (!_canLaunchTutorialSequence) return;
 
     final timeline = this.timeline;
     final l2 =
         MatrixState.pangeaController.userController.userL2?.langCodeShort;
-
     if (timeline == null || l2 == null) return;
 
-    final latestEvent = update.rooms?.join?[roomId]?.timeline?.events
-        ?.firstWhereOrNull(
-          (event) => event.eventId == timeline.events.firstOrNull?.eventId,
-        );
-    if (latestEvent == null) return;
-
-    final event = Event.fromMatrixEvent(latestEvent, room);
+    // The timeline's own head, not the sync payload: the listener used to
+    // require the sync batch's event to equal the timeline head, and lost the
+    // message whenever the timeline hadn't absorbed it yet.
+    final event = timeline.events.firstOrNull;
+    if (event == null) return;
     if (event.type != EventTypes.Message) return;
     if (event.messageType != MessageTypes.Text) return;
     if (event.redacted || !event.status.isSynced) return;
@@ -722,9 +770,7 @@ class ChatController extends State<ChatPageWithRoom>
     );
     if (token == null) return;
 
-    WidgetsBinding.instance.addPostFrameCallback(
-      (_) => _startAssistanceTutorialSequence(event, token),
-    );
+    _startAssistanceTutorialSequence(event, token);
   }
 
   /// Registers what this chat can put on screen. Each launcher owns its own
@@ -796,6 +842,11 @@ class ChatController extends State<ChatPageWithRoom>
       _goalsTutorialCheckScheduled = false;
       _checkActivityGoalsTutorial();
     });
+    // A post-frame callback only runs if a frame is coming, and this trigger's
+    // re-ask signals (plan hydration, sync, the profile) arrive between frames;
+    // without asking for one, the flag above latches and swallows every later
+    // re-ask.
+    WidgetsBinding.instance.ensureVisualUpdate();
   }
 
   /// Every condition below starts out false on a cold open — the plan is still
@@ -812,20 +863,24 @@ class ChatController extends State<ChatPageWithRoom>
         .isCompleted) {
       return;
     }
+    // The veteran backfill may be about to mark this tutorial seen — wait for
+    // its one evaluation; resolution re-asks (registered in _pangeaInit).
+    if (!TutorialSeenBackfill.instance.isResolved) return;
     if (!tutorialOverlayController.isPending(TutorialEnum.activityGoals)) {
       return;
     }
     // Surface first, so a resume can actually be shown.
     if (!isFocused || !_hasGoalHeader) return;
 
-    // Already running: nothing to start, but it may have been left off screen —
-    // this chat's own dispose force-closes every overlay, the tutorial's
-    // included. The map and course hosts do the same.
+    // Already running: it may have been left off screen — this chat's own
+    // dispose force-closes every overlay, the tutorial's included.
     if (tutorialOverlayController.hasActiveSequence) {
       tutorialOverlayController.resumeIfStranded();
-      return;
     }
-
+    // Requested even while another sequence runs — requestSequence QUEUES.
+    // Returning early instead dropped the request whenever the chat sequence
+    // held the overlay, and the next re-ask was typically the activity's end
+    // ("goal tutorial only appears when the activity ends", the playtest bug).
     tutorialOverlayController.requestSequence(
       TutorialSequences.activityGoalsSequence,
     );
@@ -1017,7 +1072,11 @@ class ChatController extends State<ChatPageWithRoom>
     }
 
     if (scrollController.hasClients) {
-      return scrollController.position.pixels == 0;
+      // Near the bottom, not exactly at it: a reverse list rarely rests at
+      // exactly 0 (keyboard insets, momentum, the goal-header spacer), and the
+      // exact check silently retired the tutorial for anyone a few pixels off.
+      return scrollController.position.pixels <=
+          TutorialConstants.scrolledToBottomThreshold;
     }
 
     return true;
@@ -1082,6 +1141,18 @@ class ChatController extends State<ChatPageWithRoom>
       _readingAssistanceTutorialListener,
     );
 
+    // The chat-tutorial trigger reads the profile and the analytics service,
+    // and both can finish loading AFTER the qualifying message arrived — the
+    // profile answers "is the tutorial pending", analytics answers "is this
+    // word new" ({} while initializing). Their arrival re-asks, or the
+    // learner's first qualifying message is dropped for good.
+    MatrixState.pangeaController.userController.initCompleter.future.then(
+      (_) => _maybeStartChatTutorialSequence(),
+    );
+    Matrix.of(context).analyticsDataService.initCompleter.future.then(
+      (_) => _maybeStartChatTutorialSequence(),
+    );
+
     activityController = ActivityChatController(
       userID: Matrix.of(context).client.userID!,
       room: room,
@@ -1116,6 +1187,11 @@ class ChatController extends State<ChatPageWithRoom>
       MatrixState.pangeaController.userController.initCompleter.future.then(
         (_) => _maybeStartActivityGoalsTutorial(),
       );
+      // And when the veteran backfill resolves — it may have just marked this
+      // tutorial seen, or cleared the way for it.
+      TutorialSeenBackfill.instance.ensureResolved().then(
+        (_) => _maybeStartActivityGoalsTutorial(),
+      );
     }
 
     _goalCompletionSubscription?.cancel();
@@ -1126,11 +1202,18 @@ class ChatController extends State<ChatPageWithRoom>
         .listen(_goalCompletionListener);
 
     _activityRolesSubscription?.cancel();
+    // Power levels and membership gate the goal header too
+    // (activityGoalHeaderGate reads showActivityChatUI and assignedRoles), and
+    // either can land after the role state on a fresh session — so they re-ask
+    // like role events do. The listener is idempotent and the check coalesces,
+    // so member-event volume costs one post-frame callback.
     _activityRolesSubscription = room.client.onRoomState.stream
         .where(
           (event) =>
               event.roomId == room.id &&
-              event.state.type == PangeaEventTypes.activityRole,
+              (event.state.type == PangeaEventTypes.activityRole ||
+                  event.state.type == EventTypes.RoomPowerLevels ||
+                  event.state.type == EventTypes.RoomMember),
         )
         .listen((_) => _activityRolesListener());
 
@@ -2241,7 +2324,7 @@ class ChatController extends State<ChatPageWithRoom>
   // }
   void _inputFocusListener() {
     if (!inputFocus.hasFocus) return;
-    if (!tutorialOverlayController.isTutorialQueued(
+    if (!tutorialOverlayController.isCurrentTutorial(
       TutorialEnum.writingAssistance,
     )) {
       return;

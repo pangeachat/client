@@ -318,10 +318,14 @@ user came from:
   the [course context bar](world-map.instructions.md#the-course-context-bar) on
   wide. Either way the course never leaves the screen, so there is nothing an X
   could reveal and nowhere a back arrow could go — only two states to move
-  between. The chevron sits in the **leading** slot the X would have taken, in
-  every state and on every width. One control in one place is the point; a
-  panel whose close and whose expand sat on opposite sides of the header made
-  two states look like two different surfaces.
+  between. The chevron keeps one place per form factor, in both states: on
+  **wide** it rides the **trailing** edge beside the course's share / focus
+  actions, in the open card and the context bar alike
+  ([#8866](https://github.com/pangeachat/client/issues/8866)); on **narrow** it
+  keeps the **leading** slot the X would have taken, where every other cavity
+  surface's control sits. One control in one place is the point; a panel whose
+  close and whose expand sat on opposite sides of the header made two states
+  look like two different surfaces.
 
   **Which way it points follows the surface, not the state's name.** On narrow
   the cavity is a sheet that slides, so the chevron points the way it will

@@ -19,11 +19,30 @@ import 'package:fluffychat/widgets/avatar.dart';
 /// right-hand pane as its conversation, can be minimized to a slim tile at the
 /// top of that pane, and the user keeps reading and typing underneath. This is
 /// a view of [CallSession] and nothing more — mounting or unmounting it never
-/// touches the call itself.
-class CallPanel extends StatelessWidget {
+/// touches the call itself. The one thing mounting does touch is focus: the
+/// panel covers the composer, so whatever was focused underneath lets go.
+class CallPanel extends StatefulWidget {
   final CallSession session;
 
   const CallPanel({required this.session, super.key});
+
+  @override
+  State<CallPanel> createState() => _CallPanelState();
+}
+
+class _CallPanelState extends State<CallPanel> {
+  CallSession get session => widget.session;
+
+  @override
+  void initState() {
+    super.initState();
+    // Covering a text field does not take its focus, so opening the call over
+    // the composer left the keyboard up and the learner typing into a bar
+    // they could not see (#8884). Every way of showing the call -- expanding
+    // the mini tile, placing or answering, going fullscreen -- mounts this
+    // panel, so the panel is the one place that drops the focus it covers.
+    FocusManager.instance.primaryFocus?.unfocus();
+  }
 
   @override
   Widget build(BuildContext context) {

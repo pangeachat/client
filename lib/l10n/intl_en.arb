@@ -4698,6 +4698,7 @@
     "youveCompletedPractice": "You've completed practice, keep it up to get better!",
     "courseDescription": "Courses consist of 3-8 modules each with activities to encourage practicing words in different contexts",
     "emailVerificationFailed": "Email verification failed. Please try again.",
+    "unlockActivitySummaries": "Unlock activity summaries",
     "unlockLearningTools": "Unlock word tools",
     "unlockPremiumAudio": "Unlock premium audio",
     "unlockTranslations": "Unlock translations",
@@ -5517,5 +5518,14 @@
     "edited": "Edited",
     "@edited": {},
     "attach": "Attach",
-    "@attach": {}
+    "@attach": {},
+    "tutorialSequenceTitleWorldOrientation": "Exploring the world",
+    "tutorialSequenceTitleCourseOrientation": "Exploring your course",
+    "tutorialSequenceTitleAppTour": "App tour",
+    "tutorialSequenceTitleActivityGoals": "Goals & stars",
+    "tutorialSequenceTitleChat": "Language tools",
+    "tutorialSequenceTitleOpenSessions": "Open sessions",
+    "tutorialSequenceTitleActivityRoles": "Choosing a role",
+    "tutorialOpenSessions": "These are activities other people are playing. Join one to chat, but be aware they might not respond right away.",
+    "tutorialActivityRoles": "These are the roles you can play in this activity. Pick the one that interests you!"
 }

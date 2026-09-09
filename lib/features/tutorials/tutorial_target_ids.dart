@@ -44,4 +44,15 @@ class TutorialTargetIds {
   /// vocabulary and grammar panels are the same widget and either may be open.
   static String analyticsPracticeButton(String constructTypeName) =>
       'tutorial_practice_button_$constructTypeName';
+
+  /// The open-sessions list on the activity start page's Join subpage. The
+  /// start page can be mounted twice at once (an `activity` panel and a session
+  /// room's start view), so only the focused instance passes the id down; the
+  /// other passes null.
+  static const String openSessionsList = 'tutorial_open_sessions_list';
+
+  /// The role-card grid during role selection. Claimed by the focused start
+  /// page instance only — the activity summary mounts the same grid and never
+  /// claims it.
+  static const String activityRolesList = 'tutorial_activity_roles_list';
 }

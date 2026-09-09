@@ -89,6 +89,15 @@ GlobalKey _roomKeyFor(String roomId) => _leftRoomKeys.putIfAbsent(
 /// [_ShellLayout.resolve]. See `routing.instructions.md`.
 final List<String> _paneRecency = <String>[];
 
+/// Whether the previous shell build showed the wide course context bar — a
+/// `?c=` course with no course card drawn. A course card appearing right
+/// after it grows out of the bar ([CourseCardReveal], #8866); one appearing
+/// from anywhere else (a cold load, the Courses hub) has no bar to grow from,
+/// and a remount that merely swaps the card's section must not replay the
+/// grow. Ephemeral view state like [_paneRecency], synced once per build by
+/// [_ShellLayout.resolve].
+bool _courseBarWasShowing = false;
+
 /// The stable recency identity of an open panel — its *family instance*, not its
 /// current page. Navigating WITHIN a panel changes the token string but must NOT
 /// change which panel is the recency focus (a within-panel move is a push on the
@@ -351,6 +360,19 @@ class WorkspaceShell extends StatelessWidget {
                 /// is a shell resident so it exists exactly when logged in.
                 DmInviteFerryConsumer(uri: state.uri),
 
+                /// Under a narrow full-screen surface (a live room / session,
+                /// the DM picker) the only map left showing is the safe-area
+                /// bands — the status bar's above its header, the home
+                /// indicator's below its composer. Paint them in the
+                /// surface's own colours so it reads edge to edge (#8879).
+                /// The surface itself keeps the safe-area frame every panel
+                /// has: its overlays (the message toolbar, word cards)
+                /// position against that frame and the zero padding inside
+                /// it, so handing it the insets instead moved every one of
+                /// them.
+                if (l.fullBleedFocus)
+                  const Positioned.fill(child: _FullBleedBackdrop()),
+
                 // Everything above the map respects the device safe area; the
                 // map itself does not (it is full-bleed, see above).
                 Positioned.fill(
@@ -455,13 +477,13 @@ class WorkspaceShell extends StatelessWidget {
                               Positioned(
                                 key: ValueKey(l.leftTokens[i].encode()),
                                 // The narrow full-screen focus (a live room / session) is
-                                // FULL-BLEED: no card chrome, edge to edge, top 0 — its own
-                                // app bar absorbs the status-bar inset, and skipping the
-                                // shell's extra safe-area offset removes the doubled top
-                                // padding (#7554). Column-mode / non-focused panels keep
-                                // the card and respect the top inset so their close/back
-                                // control clears the system top bar (#7143); PanelCard's
-                                // 12px top margin aligns them with the top-right cluster.
+                                // FULL-BLEED: no card chrome, top 0 of the safe area, and
+                                // the shell paints the safe-area bands around it in its
+                                // colours ([_ShellLayout.fullBleedFocus]; #7554, #8879).
+                                // Column-mode / non-focused panels keep the card and
+                                // respect the top inset so their close/back control
+                                // clears the system top bar (#7143); PanelCard's 12px top
+                                // margin aligns them with the top-right cluster.
                                 top: 0,
                                 bottom: 0,
                                 left: l.allocation.left[i].left,
@@ -485,6 +507,7 @@ class WorkspaceShell extends StatelessWidget {
                                           !l.isColumnMode &&
                                           l.allocation.left[i].vis ==
                                               PanelVis.full,
+                                      revealFromBar: l.revealCoursePanel,
                                     ),
                                   ),
                                 ),
@@ -580,6 +603,32 @@ class WorkspaceShell extends StatelessWidget {
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+/// The safe-area bands behind a narrow full-bleed surface
+/// ([_ShellLayout.fullBleedFocus]): the status-bar band in the app bar's
+/// colour (the surface's header sits right below it), everything else in the
+/// scaffold's (the home-indicator band below its composer). Mounted
+/// full-screen behind the shell's SafeArea layer, so only the bands show.
+class _FullBleedBackdrop extends StatelessWidget {
+  const _FullBleedBackdrop();
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return ColoredBox(
+      color: theme.appBarTheme.backgroundColor ?? theme.colorScheme.surface,
+      child: SafeArea(
+        left: false,
+        right: false,
+        bottom: false,
+        child: ColoredBox(
+          color: theme.scaffoldBackgroundColor,
+          child: const SizedBox.expand(),
         ),
       ),
     );
@@ -1169,6 +1218,16 @@ class _ShellLayout {
   /// `routing.instructions.md` → Single-column analytics nav bar.
   final bool analyticsBarVisible;
 
+  /// A narrow full-screen LEFT surface — a live room / session, the DM
+  /// picker — is FULL-BLEED: it keeps the safe-area frame every panel has,
+  /// and the shell paints the status-bar and home-indicator bands around it
+  /// in the surface's own colours ([_FullBleedBackdrop]), so no map shows
+  /// above its header or below its composer (#7554, #8879). Every other
+  /// narrow ground (the map, a cavity, a right panel under the analytics
+  /// bar) leaves the map visible there. See `routing.instructions.md` →
+  /// Full-screen surfaces.
+  final bool fullBleedFocus;
+
   /// Whether this layout resolved in two-column mode (chrome picks the web rail
   /// + cluster) or narrow mode (the mobile nav widget + analytics bar).
   final bool isColumnMode;
@@ -1195,6 +1254,10 @@ class _ShellLayout {
   /// bar docks above it rather than in the map slot (#8816).
   final bool activityPanelVisible;
 
+  /// The course card is appearing where the context bar was on the previous
+  /// build, so it grows out of the bar ([CourseCardReveal], #8866).
+  final bool revealCoursePanel;
+
   /// The map actually visible between the open side panels (viewport − left
   /// overlay − right overlay) — drives the pin-density budget
   /// ([budgetForWidth] in world_map_pin_budget.dart).
@@ -1215,12 +1278,14 @@ class _ShellLayout {
     required this.hasCavity,
     required this.navWidgetVisible,
     required this.analyticsBarVisible,
+    required this.fullBleedFocus,
     required this.isColumnMode,
     required this.leftInset,
     required this.mapLeftOverlay,
     required this.mapBottomOverlay,
     required this.coursePanelVisible,
     required this.activityPanelVisible,
+    required this.revealCoursePanel,
     required this.availableVisibleMapWidth,
     required this.mapContext,
     required this.focusedLeftToken,
@@ -1321,6 +1386,13 @@ class _ShellLayout {
       PanelTypesEnum.activity,
     );
 
+    // The bar shows on wide under a course whose card is not drawn — in the
+    // map slot or docked above an activity plan. A card drawn on the very
+    // next build is replacing it, and grows out of it (#8866).
+    final revealCoursePanel = coursePanelVisible && _courseBarWasShowing;
+    _courseBarWasShowing =
+        isColumnMode && activeSpaceId != null && !coursePanelVisible;
+
     // The narrow focus: the one panel the allocator seats full-screen, if any.
     // [focusedIsRight] distinguishes a right panel (renders under the expanded
     // analytics bar) from a left full-screen surface (collapses the bar).
@@ -1373,6 +1445,14 @@ class _ShellLayout {
         !isColumnMode &&
         navRail &&
         (focusedNarrowType == null || hasCavity || focusedIsRight);
+
+    // The narrow left focus that covers the nav widget AND the analytics bar
+    // — nothing else of the shell's is drawn, so the bands are painted for it.
+    final fullBleedFocus =
+        !isColumnMode &&
+        focusedNarrowType != null &&
+        !focusedIsRight &&
+        !hasCavity;
 
     // Where the left column ends. With `?left=` panels the allocator computes
     // it (the right edge of the last left panel, `leftCovered`); otherwise it's
@@ -1447,12 +1527,14 @@ class _ShellLayout {
       hasCavity: hasCavity,
       navWidgetVisible: navWidgetVisible,
       analyticsBarVisible: analyticsBarVisible,
+      fullBleedFocus: fullBleedFocus,
       isColumnMode: isColumnMode,
       leftInset: leftInset,
       mapLeftOverlay: mapLeftOverlay,
       mapBottomOverlay: mapBottomOverlay,
       coursePanelVisible: coursePanelVisible,
       activityPanelVisible: activityPanelVisible,
+      revealCoursePanel: revealCoursePanel,
       availableVisibleMapWidth: availableVisibleMapWidth,
       mapContext: mapContext,
       focusedLeftToken: focusedLeftToken,

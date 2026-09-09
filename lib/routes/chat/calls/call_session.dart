@@ -26,6 +26,11 @@ import 'package:matrix/matrix.dart'
 import 'package:pangea_call_capture/pangea_call_capture.dart'
     show CallForegroundControl;
 
+/// The caller's looping call cues (#8807): a ringback while ringing out, and a
+/// reconnecting tone while the caller's own link to the SFU recovers. The
+/// call-cut cue is a one-shot, not a loop, so it is not one of these.
+enum _RingCue { ringback, reconnecting }
+
 /// One call, owned ABOVE the widget tree.
 ///
 /// A call is not a screen. The user minimizes it, reads other chats, comes
@@ -488,11 +493,28 @@ class CallSession extends ChangeNotifier {
     _notify();
   }
 
-  /// The caller-side tones. Separate from the banner's ringtone: that one
-  /// belongs to whoever is being called, this one to whoever is calling.
-  late final RingPlayer _tones = tonesOverride ?? RingPlayer();
+  /// The caller-side tones (#8807). Separate from the banner's ringtone: that
+  /// one belongs to whoever is being called, this one to whoever is calling.
+  ///
+  /// Built lazily on the first cue, so a call that plays no cue never
+  /// constructs a player; held so [dispose] can release the native player of
+  /// one that WAS built (a loop or a one-shot cut cue) instead of leaking it.
+  RingPlayer? _tonesInstance;
 
-  bool _busyToned = false;
+  RingPlayer get _tones => _tonesInstance ??=
+      tonesOverride ?? RingPlayer(sound: AssetRingSound.callSignalling());
+
+  /// The keys each looping cue plays under -- one pair per call, so a stop for
+  /// this call cannot silence a later one's cue.
+  String get _ringbackKey => 'ringback:${room.id}';
+  String get _reconnectKey => 'reconnect:${room.id}';
+
+  /// The looping cue currently playing, or null. The tone player is touched
+  /// only when this changes, so a call that plays no loop never builds one.
+  _RingCue? _activeCue;
+
+  /// Whether the one-shot cut cue has already fired for this call.
+  bool _cutToned = false;
 
   /// Routes the ongoing-call notification's buttons into this session,
   /// through the SAME paths the on-screen buttons use -- one mute, one
@@ -665,12 +687,42 @@ class CallSession extends ChangeNotifier {
     // before the stage catches up — this is what makes hanging up feel
     // immediate on both sides.
     final outcome = call.outcome;
-    if (outcome == CallOutcome.declined && call.peerWasBusy && !_busyToned) {
-      // Once, and only for a line that was busy: the engaged tone is the
-      // half of "they are on another call" that reaches someone who is not
-      // looking at the screen.
-      _busyToned = true;
-      _tones.busy();
+    // The caller's own call cues (#8807), touched only on a TRANSITION so a
+    // call that plays no loop never builds a tone player:
+    //  - ringing out (placing, unanswered): the ringback tone;
+    //  - reconnecting (answered, but OUR link to the SFU is recovering): the
+    //    reconnecting tone;
+    //  - otherwise (connected and steady, or the call has resolved): no loop.
+    // Keyed on the call, so a stale stop cannot silence a later cue. Ordered
+    // before the cut cue below, which speaks once the call has resolved.
+    _RingCue? cue;
+    if (outcome == null) {
+      if (call.placedCall && !call.hadPeer) {
+        cue = _RingCue.ringback;
+      } else if (call.hadPeer && call.isReconnecting) {
+        cue = _RingCue.reconnecting;
+      }
+    }
+    if (cue != _activeCue) {
+      _activeCue = cue;
+      if (cue == _RingCue.ringback) {
+        _tones.play(_ringbackKey, asset: 'sounds/ringback.mp3');
+      } else if (cue == _RingCue.reconnecting) {
+        _tones.play(_reconnectKey, asset: 'sounds/call.ogg');
+      } else {
+        _tones.stopAll();
+      }
+    }
+    // The call was cut: one cue, once. A line that was busy gets the engaged
+    // tone -- the half of "they are on another call" that reaches someone not
+    // looking at the screen; every other cut gets the call-ended tone.
+    if (outcome != null && !_cutToned) {
+      _cutToned = true;
+      if (call.peerWasBusy) {
+        _tones.busy();
+      } else {
+        _tones.once('sounds/call_ended.mp3');
+      }
     }
     if (outcome != null) {
       // A device that did NOT carry on -- held then never resumed, walked away
@@ -1185,6 +1237,13 @@ class CallSession extends ChangeNotifier {
     if (_disposing) return;
     _disposing = true;
     call.removeListener(_onCallChanged);
+    // The tone player owns a native AudioPlayer; DISPOSE it (not merely stop
+    // it) so no call leaks one -- disposal stops any active loop first, so the
+    // mid-cue stop the now-detached listener can no longer send still happens.
+    // Only if a cue ever built it (a loop OR a one-shot cut cue): a call that
+    // played nothing constructs no player just to tear one down.
+    final tones = _tonesInstance;
+    if (tones != null) unawaited(tones.dispose());
     call.clearForegroundActions();
     _tick?.cancel();
     // A summary still holding its 3s when the holder discards the session --
