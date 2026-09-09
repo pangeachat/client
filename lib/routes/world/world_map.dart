@@ -11,6 +11,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
@@ -201,10 +202,17 @@ class WorldMapController extends State<WorldMap>
   Timer? _fitDebounce;
 
   /// Coalesces a burst of activity-plan hydrations (many pins resolve their
-  /// plans at once) into a single signal recompute, so a session flips to its
-  /// joinable/joined colour once its seats are known — notably an invited
-  /// session, whose role count is unknown until its plan lands from CMS.
-  Timer? _planHydrateDebounce;
+  /// plans at once) — or of discovered-preview rewrites — into a single signal
+  /// recompute, so a session flips to its joinable/joined colour once its seats
+  /// are known — notably an invited session, whose role count is unknown until
+  /// its plan lands from CMS — and a full one drops its green (#8895).
+  Timer? _liveStateRecomputeDebounce;
+
+  /// Whether the pending debounced recompute should also end the L1 shimmer
+  /// window: set by a plan hydrate, never by a preview rewrite, and sticky
+  /// across the debounce resets a burst causes — so a rewrite landing between
+  /// a hydrate and its recompute can't swallow the end.
+  bool _endL1WarmupOnRecompute = false;
 
   /// Drives the smooth camera glide (center + zoom tween) instead of an instant
   /// `fitCamera` snap. Retargets cleanly if a new fit lands mid-flight.
@@ -303,8 +311,12 @@ class WorldMapController extends State<WorldMap>
       (_) => _scheduleOrientationCheck(),
     );
 
-    // Rebuild when a featured large card's full plan hydrates (image + goals).
+    // Rebuild when a featured large card's full plan hydrates (image + goals),
+    // and when the discovered-session previews change under the pins — the
+    // start page's revalidate-on-view rewrites them (#8150); both re-gate which
+    // sessions are open to join (#8895).
     ActivityPlanRepo.instance.addListener(_onPlanHydrate);
+    DiscoveredSessionsCache.instance.addListener(_onDiscoveredPreviewsChanged);
 
     final user = MatrixState.pangeaController.userController;
 
@@ -431,7 +443,7 @@ class WorldMapController extends State<WorldMap>
     _refetchDebounce?.cancel();
     _warmingTimer?.cancel();
     _fitDebounce?.cancel();
-    _planHydrateDebounce?.cancel();
+    _liveStateRecomputeDebounce?.cancel();
     _dismissalExpiryTimer?.cancel();
     _moveSettleTimer?.cancel();
     _mapEventSub?.cancel();
@@ -441,6 +453,9 @@ class WorldMapController extends State<WorldMap>
     MapContextController.notifier.removeListener(_onContextChange);
     MapCameraFocusRequests.notifier.removeListener(_onCameraFocusRequest);
     ActivityPlanRepo.instance.removeListener(_onPlanHydrate);
+    DiscoveredSessionsCache.instance.removeListener(
+      _onDiscoveredPreviewsChanged,
+    );
     _routeProvider?.removeListener(_scheduleOrientationCheck);
     _unregisterTutorialLaunchers();
     // Reset the process-global so a pin selected at teardown (e.g. logging out
@@ -583,15 +598,28 @@ class WorldMapController extends State<WorldMap>
   /// penalty).
   bool get isNewLearner => _client?.hasAnyFinishedActivitySession == false;
 
-  void _onPlanHydrate() {
-    // A plan landing from CMS fires no room sync, so the sync-driven recompute
-    // never re-derives seats for it — why an invited session (its role count
-    // known only once the plan hydrates) never flips to joinable. Recompute the
-    // signals, debounced so a burst of hydrations coalesces into one pass.
-    _planHydrateDebounce?.cancel();
-    _planHydrateDebounce = Timer(const Duration(milliseconds: 500), () {
+  /// A plan landing from CMS fires no room sync, so the sync-driven recompute
+  /// never re-derives seats for it — why an invited session (its role count
+  /// known only once the plan hydrates) never flipped to joinable. A hydrate is
+  /// also what the L1 shimmer window waits for.
+  void _onPlanHydrate() => _scheduleLiveStateRecompute(endL1Warmup: true);
+
+  /// The discovered previews were rewritten — by a discovery pass, or by the
+  /// start page's revalidate-on-view (#8150) — which fires no room sync either,
+  /// and a session that hydrated (or was rewritten) as full must drop its green
+  /// (#8895). Not a hydrate, so it never ends the shimmer window early.
+  void _onDiscoveredPreviewsChanged() => _scheduleLiveStateRecompute();
+
+  /// Recompute the signals, debounced so a burst of hydrations or rewrites
+  /// coalesces into one pass.
+  void _scheduleLiveStateRecompute({bool endL1Warmup = false}) {
+    _endL1WarmupOnRecompute |= endL1Warmup;
+    _liveStateRecomputeDebounce?.cancel();
+    _liveStateRecomputeDebounce = Timer(const Duration(milliseconds: 500), () {
       if (!mounted) return;
       _recomputeProgress();
+      if (!_endL1WarmupOnRecompute) return;
+      _endL1WarmupOnRecompute = false;
       // Signals are fresh now, so end any open L1 shimmer window (no-op else).
       _endL1Warmup();
     });
@@ -671,12 +699,12 @@ class WorldMapController extends State<WorldMap>
     if (mounted) _recomputeProgress();
   }
 
-  Future<void> _discoverCoursemateSessions(Client client) async {
-    await _pinsManager.discoverCoursemateSessions(client);
-    // Discovery refreshes the extra joinable facts; re-derive signals so a
-    // newly found coursemate session colours its pin.
-    if (mounted) _recomputeProgress();
-  }
+  /// The pass writes [DiscoveredSessionsCache], whose listener schedules the
+  /// (debounced) signal recompute that colours a newly found session's pin. No
+  /// explicit recompute here: it would rebuild the map twice per pass, and a
+  /// failed read leaves nothing changed to recompute for.
+  Future<void> _discoverCoursemateSessions(Client client) =>
+      _pinsManager.discoverCoursemateSessions(client);
 
   void _onContextChange() {
     // Reset the map-pin global and reload pins when the map re-scopes (e.g.
