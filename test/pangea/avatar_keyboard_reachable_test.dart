@@ -10,6 +10,7 @@ import 'package:get_storage/get_storage.dart';
 
 import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 import 'package:fluffychat/widgets/avatar.dart';
+import 'one_node_control.dart';
 
 /// #8868 — a tappable [Avatar] that opts into [Avatar.focusable] is a Tab
 /// stop with a visible ring, Enter activates it, and it is still one button
@@ -87,11 +88,25 @@ void main() {
     );
     await tester.pumpAndSettle();
 
-    expect(find.bySemanticsLabel('Alice'), findsOneWidget);
-    final node = tester.getSemantics(find.bySemanticsLabel('Alice'));
-    expect(node.flagsCollection.isButton, isTrue);
-    expect(node.getSemanticsData().hasAction(SemanticsAction.tap), isTrue);
+    // Name, role, focus and tap on one node — the focusable half is what
+    // #8870 missed (#8873).
+    expectOneNodeControl(tester, 'Alice');
     handle.dispose();
+  });
+
+  testWidgets('a nameless avatar is never a Tab stop, even if asked', (
+    tester,
+  ) async {
+    var taps = 0;
+    await tester.pumpWidget(
+      wrap(Avatar(name: '', onTap: () => taps++, focusable: true)),
+    );
+    await tester.pumpAndSettle();
+    expect(find.byType(FocusRingTapTarget), findsNothing);
+    await tester.sendKeyEvent(LogicalKeyboardKey.tab);
+    await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+    await tester.pumpAndSettle();
+    expect(taps, 0);
   });
 
   testWidgets('avatars that do not opt in add no Tab stop', (tester) async {

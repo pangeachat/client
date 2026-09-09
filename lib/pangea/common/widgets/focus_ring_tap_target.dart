@@ -37,6 +37,15 @@ class FocusRingTapTarget extends StatefulWidget {
   final OutlinedBorder shape;
   final Widget child;
 
+  /// The control's accessible name. When set, the target announces as one
+  /// button named [label] — name, role, focus and tap on a single semantics
+  /// node — and [child] is hidden from assistive tech. Do not name the target
+  /// from outside instead: a `Semantics(excludeSemantics: true)` around it
+  /// drops the InkWell's focus semantics (a named button no screen reader can
+  /// Tab to), and an `onTap` on an outer Semantics splits the tap onto a
+  /// second, nameless focusable node (#8873).
+  final String? label;
+
   /// Optional external focus node for the InkWell — for callers that need to
   /// hand the node elsewhere too (the filter pill gives its node to
   /// [MenuAnchor.childFocusNode] so a closing menu returns focus here).
@@ -46,6 +55,7 @@ class FocusRingTapTarget extends StatefulWidget {
     required this.onTap,
     required this.shape,
     required this.child,
+    this.label,
     this.focusNode,
     super.key,
   });
@@ -76,7 +86,8 @@ class _FocusRingTapTargetState extends State<FocusRingTapTarget> {
   @override
   Widget build(BuildContext context) {
     final showRing = _focused && FocusRingTapTarget.highlightsEnabled;
-    return InkWell(
+    final label = widget.label;
+    final target = InkWell(
       onTap: widget.onTap,
       focusNode: widget.focusNode,
       customBorder: widget.shape,
@@ -90,8 +101,12 @@ class _FocusRingTapTargetState extends State<FocusRingTapTarget> {
                 : BorderSide.none,
           ),
         ),
-        child: widget.child,
+        child: label == null
+            ? widget.child
+            : ExcludeSemantics(child: widget.child),
       ),
     );
+    if (label == null) return target;
+    return Semantics(button: true, label: label, child: target);
   }
 }
