@@ -33,7 +33,13 @@ import 'package:fluffychat/features/analytics/constructs_model.dart';
 /// Every entry point here is synchronous and allocation-only: this runs on the
 /// playback path and must be invisible to the learner. Delivery happens later,
 /// when [drain] is called from the analytics heartbeat.
-class ListeningExposureBuffer {
+///
+/// **Bucketing is a storage rule, not a display one.** A drain is minutes
+/// away, and a count that moves minutes after the playback reads as broken
+/// (#8913). So this is also a [ChangeNotifier]: a details page reads what is
+/// still held through [pendingCountFor], on top of the stored count, and
+/// listens here to move the moment a hearing is recorded.
+class ListeningExposureBuffer with ChangeNotifier {
   /// How long a bucket stays open. Five minutes matches the analytics
   /// heartbeat, so in practice a bucket is closed by the flush that sends it
   /// and this bound only bites when the heartbeat is not running — on mobile,
@@ -107,6 +113,16 @@ class ListeningExposureBuffer {
   int pendingExposuresFor(String langCode) =>
       _byLanguage[languageKey(langCode)]?.pendingExposures ?? 0;
 
+  /// Exposures held for [id] in [langCode] alone — what a details page shows
+  /// on top of the stored count, so a hearing is visible the moment it happens
+  /// rather than after the next drain.
+  ///
+  /// Matches the exact identifier. A casing variant the merge table folds into
+  /// [id] downstream is not folded here, so such a hearing under-reads by at
+  /// most one window before the drain lands it in the store.
+  int pendingCountFor(ConstructIdentifier id, {required String langCode}) =>
+      _byLanguage[languageKey(langCode)]?.pendingCountFor(id) ?? 0;
+
   /// The languages this buffer is holding exposure for.
   Iterable<String> get heldLanguages => List.unmodifiable(_byLanguage.keys);
 
@@ -132,6 +148,7 @@ class ListeningExposureBuffer {
     _byLanguage[key] = buckets;
     buckets.record(constructs, _now());
     _evictStaleLanguages();
+    notifyListeners();
   }
 
   /// Closes and returns everything waiting to be written for [langCode].
@@ -143,6 +160,11 @@ class ListeningExposureBuffer {
   /// That language is empty afterwards — a drained row is the caller's
   /// responsibility, so a caller that fails to persist loses the window rather
   /// than double-counting it, which is what [restore] is for.
+  ///
+  /// Listeners are NOT notified here. The rows a drain removes reappear in the
+  /// store a moment later, and the store's own update stream rebuilds the page
+  /// then; a notification now would rebuild it in the gap and flash the count
+  /// down by a window.
   List<OneConstructUse> drain(String langCode) {
     final buckets = _byLanguage[languageKey(langCode)];
     if (buckets == null) return const [];
@@ -164,6 +186,7 @@ class ListeningExposureBuffer {
     _byLanguage[key] = buckets;
     buckets.restore(uses);
     _evictStaleLanguages();
+    notifyListeners();
   }
 
   /// Drops the least-recently-heard languages past [maxLanguages].
@@ -195,6 +218,12 @@ class _LanguageBuckets {
   int get pendingExposures =>
       _closed.fold<int>(0, (sum, use) => sum + use.count) +
       _open.values.fold<int>(0, (sum, bucket) => sum + bucket.count);
+
+  int pendingCountFor(ConstructIdentifier id) =>
+      (_open[id]?.count ?? 0) +
+      _closed
+          .where((use) => use.identifier == id)
+          .fold<int>(0, (sum, use) => sum + use.count);
 
   void record(Iterable<ConstructIdentifier> constructs, DateTime at) {
     _closeIfWindowElapsed(at);
