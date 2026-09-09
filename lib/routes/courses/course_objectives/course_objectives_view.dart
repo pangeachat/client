@@ -575,8 +575,10 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                     // The course page's ranked shortlist: no Mission header,
                     // ordered by the same Priority matrix the map ranks pins
                     // by, with sessions the learner already holds a role in
-                    // dropped (#8741). Empty only when every activity in the
-                    // plan is one of those — nothing left to suggest.
+                    // (#8741) and activities they have finished (#8901)
+                    // dropped. Empty only when every activity in the plan is
+                    // one of those — nothing left to suggest; the section
+                    // header and its "See all" sit outside this widget.
                     final suggested = rankSuggestedActivities(
                       groups: groups,
                       missionGradient:
