@@ -28,9 +28,9 @@ Production is periodically synced from `main` via merge PRs. Between syncs, the 
 
 ## Preview Deploys
 
-A client PR carrying the `preview` label gets a live web build at `https://pr-<N>.preview.staging.pangea.chat`, running against the staging backends, so a branch can be tried in a real browser without a local build. Previews are a developer tool, not part of the [QA label flow](../../../.github/.github/instructions/qa-testing-process.instructions.md); QA joins one only when its URL is shared. Tracking: [client#8813](https://github.com/pangeachat/client/issues/8813).
+Commenting `/preview` on a client PR gets it a live web build at `https://pr-<N>.preview.staging.pangea.chat`, running against the staging backends, so a branch can be tried in a real browser without a local build. Previews are a developer tool, not part of the [QA label flow](../../../.github/.github/instructions/qa-testing-process.instructions.md); QA joins one only when its URL is shared. Tracking: [client#8813](https://github.com/pangeachat/client/issues/8813).
 
-**Trigger.** The label is the only switch. Adding it builds and deploys; each later push to a labeled PR redeploys to the same URL; removing the label or closing the PR tears the preview down. Unlabeled PRs never build one, because a Flutter web build costs ten to fifteen minutes of runner time. Fork PRs are skipped, since fork runs get no cloud credentials. A PR whose branch predates the workflow file has no preview until it merges main.
+**Trigger.** A `/preview` comment on the PR is the switch; `/preview off` tears the preview down early, and closing the PR always does. The comment arms the PR: the bot answers in one sticky comment carrying the URL, the head commit and the limits below, and that comment is the armed marker, so each later push to an armed PR redeploys to the same URL. Only commenters with write access to the repo count; the repo is public, and anyone else's `/preview` is ignored. PRs from forks are refused even when a maintainer asks, because the run carries deploy credentials and would build code we did not write. Nothing builds without the comment, since a Flutter web build costs ten to fifteen minutes of runner time.
 
 **What a preview is.** The staging build recipe, unchanged, built from the PR's head commit so Settings shows a SHA that exists on the branch, under a per-PR prefix in one shared staging bucket. One CloudFront distribution serves every preview: a CloudFront Function reads the PR number from the host name, selects the prefix, and serves the app shell for every path that is not a build file. That is the SPA fallback the main webapp gets from CloudFront directly; it moves into the function because the distribution-level fallback can only name one bucket-wide page. A subdomain rather than a path, because the client uses path URLs and loads `/.env` from the web root. Infrastructure: [pangeachat/devops#356](https://github.com/pangeachat/devops/issues/356).
 
@@ -41,10 +41,10 @@ A client PR carrying the `preview` label gets a live web build at `https://pr-<N
 - Share and copy links built from `FRONTEND_URL` point at `app.staging.pangea.chat`, not the preview.
 - Choreo accepts the preview origin on staging only ([pangeachat/2-step-choreographer#3177](https://github.com/pangeachat/2-step-choreographer/issues/3177)). SSO returns to the preview through Synapse's confirmation page, as on staging.
 
-**Teardown.** A preview lives exactly as long as its PR is open and labeled. Three guards keep that true when the close event alone would not:
-- Teardown runs on every close, whatever the labels, and on label removal.
-- A close cancels a build still running for that PR, and a finished deploy re-checks that its PR is still open and labeled before leaving files behind.
-- A daily reaper deletes any prefix whose PR is no longer open and labeled, covering a workflow file missing on an old branch, a dropped event, or a runner that died mid-teardown.
+**Teardown.** A preview lives exactly as long as its PR is open and armed. Three guards keep that true when the close event alone would not:
+- Teardown runs on every close, armed or not, and on `/preview off`. It clears the marker, so a reopened PR starts unarmed.
+- A close cancels a build still running for that PR, and a finished deploy re-checks that its PR is still open and armed before leaving files behind.
+- A daily reaper deletes any prefix whose PR is no longer open and armed, covering a dropped event or a runner that died mid-teardown.
 
 There is deliberately no age-based expiry on the bucket: a clock the tester cannot see would break that promise for a long-lived PR.
 
