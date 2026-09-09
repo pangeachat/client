@@ -247,12 +247,6 @@ class CallService {
   /// index's TTL convergence only helps calls that made it INTO the index). If
   /// the storage proves unavailable the buffer is discarded and the subsystem
   /// stays dark. A no-op after disposal.
-  /// The most triggers [_pendingMergeTriggers] holds before the storage probe
-  /// settles. A bound so a probe that never settles (a hung GetStorage init)
-  /// cannot grow the buffer without limit; comfortably above the zero-or-one a
-  /// normal, fast probe ever sees.
-  static const _maxPendingMergeTriggers = 64;
-
   void _driveMergeCoordinator(
     void Function(CallAudioMergeCoordinator) trigger,
   ) {
@@ -260,15 +254,17 @@ class CallService {
     final coordinator = _ensureMergeCoordinator();
     if (_mergeReady) {
       trigger(coordinator);
-    } else if (_pendingMergeTriggers.length < _maxPendingMergeTriggers) {
+    } else {
+      // Buffered until the probe settles -- with NO count cap, so a single sync
+      // carrying many call-audio events (a heavy initial-sync backlog) never
+      // drops a valid trigger. The buffer is bounded another way: the probe is
+      // time-limited (see [_activateMergeCoordinator]'s `.timeout`), so it holds
+      // only the triggers that arrive during that bounded window before it
+      // either replays them (healthy storage, a couple of event-loop turns) or
+      // discards them (the probe timed out or failed). A never-settling probe
+      // therefore cannot grow it without bound.
       _pendingMergeTriggers.add(trigger);
     }
-    // else: the probe has not settled after this many buffered triggers, which
-    // only happens if GetStorage init has HUNG -- a state in which the
-    // coordinator never activates and no merge is produced no matter what is
-    // buffered. So the cap costs no merge the code would otherwise make; it only
-    // bounds memory against that pathological hang. In the normal case the probe
-    // settles in a couple of event-loop turns and the buffer never nears the cap.
   }
 
   /// The post-call kick: this device just posted its OWN `pangea.call_audio`
@@ -306,7 +302,12 @@ class CallService {
     final index = _mergeIndex;
     if (index == null) return;
     try {
-      await index.keys();
+      // Time-limited so a HUNG GetStorage init cannot keep the subsystem pending
+      // -- and the trigger buffer growing -- for ever: a probe that does not
+      // settle in this window throws TimeoutException, which the catch treats as
+      // terminal (fail + clear) exactly like any other storage failure. A
+      // healthy init resolves in a couple of event-loop turns, far inside it.
+      await index.keys().timeout(const Duration(seconds: 15));
     } catch (e, s) {
       // Disposed while the probe was in flight: the service is gone, so do no
       // further work (no logging, no flag, no buffer touch) after teardown.
