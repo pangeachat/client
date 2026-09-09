@@ -164,27 +164,5 @@ void main() {
       expect(hostNode(tester).flagsCollection.isExpanded, Tristate.none);
       semantics.dispose();
     });
-
-    testWidgets('unless the host already announces the action', (tester) async {
-      final semantics = tester.ensureSemantics();
-
-      // The context bar is itself one button announcing "go to course", so a
-      // nested node here would announce the same tap twice.
-      await pumpInHost(
-        tester,
-        ChevronToggle(
-          expanded: true,
-          onTap: () {},
-          meaning: ChevronMeaning.motion,
-          excludeSemantics: true,
-        ),
-      );
-
-      // Dropped whole — and the flag does not travel up to the host in its
-      // place, which is the very leak the wrapper above exists to stop.
-      expect(hostNode(tester).childrenCount, 0);
-      expect(hostNode(tester).flagsCollection.isExpanded, Tristate.none);
-      semantics.dispose();
-    });
   });
 }

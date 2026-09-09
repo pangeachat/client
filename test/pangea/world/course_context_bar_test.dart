@@ -244,36 +244,44 @@ void main() {
     expect(find.byType(ChevronToggle), findsOneWidget);
   });
 
-  testWidgets('announces the collapsed state on the one control it exposes', (
+  testWidgets('the chevron is its one announced control, saying collapsed', (
     tester,
   ) async {
     final semantics = tester.ensureSemantics();
     await pumpBar(tester);
 
-    // The bar is the card's collapsed twin, and a screen reader has to be able
-    // to tell the two apart: the open card's chevron says expanded, this says
-    // collapsed. It rides the bar's own node because the chevron inside is
-    // excluded — the bar already announces this very tap, and a nested button
-    // would announce it twice.
+    // The bar is a named GROUP. It used to be one big button holding its own
+    // share action and star track, and a screen reader walked straight past
+    // the container to those children — leaving the expand affordance
+    // reachable by pointer only.
     final bar = tester.getSemantics(find.byType(CourseContextBar));
-    expect(bar.flagsCollection.isButton, isTrue);
-    expect(bar.flagsCollection.isExpanded, Tristate.isFalse);
+    expect(bar.flagsCollection.isButton, isFalse);
     expect(bar.label, contains(courseName));
 
-    // Still one control, not two: the chevron adds no node of its own.
-    expect(find.byType(ChevronToggle), findsOneWidget);
-    expect(
-      tester
-          .getSemantics(
-            find.descendant(
-              of: find.byType(ChevronToggle),
-              matching: find.byType(IconButton),
-            ),
-          )
-          .id,
-      bar.id,
-      reason: 'the chevron falls into the bar\'s node, adding no second stop',
+    // The chevron is the control, carrying the state the open card's chevron
+    // carries expanded, so one control reads the same way in both states.
+    final chevron = tester.getSemantics(
+      find.descendant(
+        of: find.byType(ChevronToggle),
+        matching: find.byType(IconButton),
+      ),
     );
+    expect(chevron.flagsCollection.isButton, isTrue);
+    expect(chevron.flagsCollection.isExpanded, Tristate.isFalse);
+    expect(chevron.id, isNot(bar.id), reason: 'a stop of its own');
+
+    // The whole-surface tap stays for pointers: it announces nothing and
+    // takes no focus, so it is no invisible dead stop for a keyboard user.
+    final surface = tester.widget<InkWell>(
+      find
+          .descendant(
+            of: find.byType(CourseContextBar),
+            matching: find.byType(InkWell),
+          )
+          .first,
+    );
+    expect(surface.excludeFromSemantics, isTrue);
+    expect(surface.canRequestFocus, isFalse);
     semantics.dispose();
   });
 }

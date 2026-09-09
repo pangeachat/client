@@ -95,16 +95,10 @@ class ChevronToggle extends StatelessWidget {
 
   final VoidCallback onTap;
 
-  /// Drop this button from the semantics tree — for a host that is itself one
-  /// big button already announcing the same action (the context bar), where a
-  /// nested button would announce the tap twice.
-  final bool excludeSemantics;
-
   const ChevronToggle({
     required this.expanded,
     required this.onTap,
     required this.meaning,
-    this.excludeSemantics = false,
     super.key,
   });
 
@@ -142,7 +136,6 @@ class ChevronToggle extends StatelessWidget {
         ),
       ),
     );
-    if (excludeSemantics) return ExcludeSemantics(child: button);
     return button;
   }
 }
