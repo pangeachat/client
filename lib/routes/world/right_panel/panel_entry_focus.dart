@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart' show SemanticsSortKey;
 
 import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
+import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
+import 'package:fluffychat/routes/world/panel_card.dart';
 
 /// A right-column panel's named group (routing.instructions.md, "Every panel
 /// is a named group to assistive tech"), and where a panel the learner just
@@ -13,6 +15,12 @@ import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
 /// (#8769). The group is never a Tab stop, so the next Tab reaches the panel's
 /// first control. Only a mount that finds [PanelEntryIntent] armed claims;
 /// every other way a panel opens leaves focus where it was.
+///
+/// While the group holds that focus the panel wears the standard focus ring,
+/// published through [PanelEntryRing] and drawn by [PanelCard], which owns the
+/// card's outline. Without it a sighted keyboard user watches focus vanish for
+/// a press: the group is not a control, so nothing on screen said where the
+/// highlight had gone.
 class PanelEntryFocus extends StatefulWidget {
   final String label;
   final SemanticsSortKey sortKey;
@@ -47,6 +55,7 @@ class _PanelEntryFocusState extends State<PanelEntryFocus> {
   void initState() {
     super.initState();
     _node.addListener(_rebuild);
+    FocusManager.instance.addHighlightModeListener(_onHighlightModeChanged);
     if ((widget.intent ?? PanelEntryIntent.instance).take()) {
       _claim = Timer(PanelEntryFocus.claimDelay, _node.requestFocus);
     }
@@ -54,9 +63,14 @@ class _PanelEntryFocusState extends State<PanelEntryFocus> {
 
   void _rebuild() => setState(() {});
 
+  void _onHighlightModeChanged(FocusHighlightMode _) {
+    if (mounted) setState(() {});
+  }
+
   @override
   void dispose() {
     _claim?.cancel();
+    FocusManager.instance.removeHighlightModeListener(_onHighlightModeChanged);
     _node.dispose();
     super.dispose();
   }
@@ -78,7 +92,14 @@ class _PanelEntryFocusState extends State<PanelEntryFocus> {
       child: Focus(
         focusNode: _node,
         includeSemantics: false,
-        child: widget.child,
+        // An inherited signal, not a rebuild of the subtree: the panel below
+        // is the same widget instance across a focus change, so only a
+        // dependency reaches the card.
+        child: PanelEntryRing(
+          showRing:
+              _node.hasPrimaryFocus && FocusRingTapTarget.highlightsEnabled,
+          child: widget.child,
+        ),
       ),
     );
   }
