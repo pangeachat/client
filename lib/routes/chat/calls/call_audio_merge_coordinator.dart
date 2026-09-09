@@ -33,6 +33,22 @@ typedef CallAudioMergeUploader =
 typedef CallAudioMerger =
     Future<CallAudioMergeResult> Function(CallAudioMergeRequest request);
 
+/// Sends one merged event into a SPECIFIC room, returning the event id (or
+/// null, on the same terms [CallAudioMergedSender] does). Room-aware on
+/// purpose: the per-device [CallAudioMergedSender] is bound by a per-call
+/// writer to ONE room, but a single coordinator sends the merges of calls
+/// across MANY rooms, so the target `roomId` must travel with each send rather
+/// than being captured once at construction. The real implementation wraps
+/// `client.sendEvent(roomId, …)`; the coordinator adapts it to the per-send
+/// [CallAudioMergedSender] `writeCallAudioMergedEvent` expects by binding the
+/// current call's room.
+typedef CallAudioMergeRoomSender =
+    Future<String?> Function(
+      String roomId,
+      Map<String, dynamic> content,
+      String txnId,
+    );
+
 /// Elects one device to mix a finished 1:1 call's two `pangea.call_audio`
 /// halves into one `pangea.call_audio_merged`, converging with bounded memory
 /// and bounded retries and never SHOWING a partial merge.
@@ -75,7 +91,7 @@ class CallAudioMergeCoordinator {
     required RelationsFetcher relationsFetch,
     required CallAudioDownloader download,
     required CallAudioMergeUploader upload,
-    required CallAudioMergedSender send,
+    required CallAudioMergeRoomSender send,
     required ExpiringStorageBox index,
     required bool? Function(String roomId) isDmRoom,
     required String Function() myUserId,
@@ -118,7 +134,7 @@ class CallAudioMergeCoordinator {
   final RelationsFetcher _relationsFetch;
   final CallAudioDownloader _download;
   final CallAudioMergeUploader _upload;
-  final CallAudioMergedSender _send;
+  final CallAudioMergeRoomSender _send;
   final CallAudioMerger _mix;
   final ExpiringStorageBox _index;
   final bool? Function(String roomId) _isDmRoom;
@@ -510,7 +526,10 @@ class CallAudioMergeCoordinator {
       // transient (the writer never returns null for our valid key+coverage
       // except when send itself returned null).
       final sentId = await writeCallAudioMergedEvent(
-        send: _send,
+        // Adapt the room-aware coordinator sender to the per-send seam the
+        // writer expects, binding THIS call's room so the merge lands where the
+        // call happened.
+        send: (content, txnId) => _send(roomId, content, txnId),
         callKey: callKey,
         url: uploaded.toString(),
         mimetype: 'audio/wav',

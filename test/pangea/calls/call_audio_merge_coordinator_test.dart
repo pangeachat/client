@@ -286,7 +286,8 @@ class _Harness {
   final List<Uri> downloadCalls = [];
   final List<Uint8List> uploadCalls = [];
   final List<CallAudioMergeRequest> mixCalls = [];
-  final List<({Map<String, dynamic> content, String txnId})> sendCalls = [];
+  final List<({String roomId, Map<String, dynamic> content, String txnId})>
+  sendCalls = [];
 
   Future<Uint8List> _download(Uri mxc) async {
     downloadCalls.add(mxc);
@@ -320,8 +321,12 @@ class _Harness {
     );
   }
 
-  Future<String?> _send(Map<String, dynamic> content, String txnId) async {
-    sendCalls.add((content: content, txnId: txnId));
+  Future<String?> _send(
+    String roomId,
+    Map<String, dynamic> content,
+    String txnId,
+  ) async {
+    sendCalls.add((roomId: roomId, content: content, txnId: txnId));
     final err = sendThrows;
     if (err != null) throw err;
     if (sendReturnsNull) return null;
@@ -395,6 +400,11 @@ void main() {
           h.sendCalls.single.content['source_event_ids'],
           [_aliceEvent, _bobEvent],
           reason: 'coverage is the two sorted half ids',
+        );
+        expect(
+          h.sendCalls.single.roomId,
+          _room,
+          reason: 'the merge is sent into the room the call happened in',
         );
         expect(h.entry(_callKey), isNull, reason: 'the index entry is cleared');
       },
