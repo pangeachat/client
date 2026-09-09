@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:ui' show Tristate;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -241,5 +242,38 @@ void main() {
 
     expect(find.byType(CourseHeaderActions), findsNothing);
     expect(find.byType(ChevronToggle), findsOneWidget);
+  });
+
+  testWidgets('announces the collapsed state on the one control it exposes', (
+    tester,
+  ) async {
+    final semantics = tester.ensureSemantics();
+    await pumpBar(tester);
+
+    // The bar is the card's collapsed twin, and a screen reader has to be able
+    // to tell the two apart: the open card's chevron says expanded, this says
+    // collapsed. It rides the bar's own node because the chevron inside is
+    // excluded — the bar already announces this very tap, and a nested button
+    // would announce it twice.
+    final bar = tester.getSemantics(find.byType(CourseContextBar));
+    expect(bar.flagsCollection.isButton, isTrue);
+    expect(bar.flagsCollection.isExpanded, Tristate.isFalse);
+    expect(bar.label, contains(courseName));
+
+    // Still one control, not two: the chevron adds no node of its own.
+    expect(find.byType(ChevronToggle), findsOneWidget);
+    expect(
+      tester
+          .getSemantics(
+            find.descendant(
+              of: find.byType(ChevronToggle),
+              matching: find.byType(IconButton),
+            ),
+          )
+          .id,
+      bar.id,
+      reason: 'the chevron falls into the bar\'s node, adding no second stop',
+    );
+    semantics.dispose();
   });
 }

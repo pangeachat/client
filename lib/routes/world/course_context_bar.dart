@@ -157,6 +157,12 @@ class _CourseContextBarState extends State<CourseContextBar> {
       sortKey: widget.sortKey,
       button: true,
       container: true,
+      // The bar IS the card's collapsed state, and this one node is the only
+      // control announced for it — the chevron inside is excluded below — so
+      // the state rides here. Without it a screen-reader user cannot tell the
+      // two states of one surface apart: the open card's chevron says
+      // "expanded" and the bar said nothing at all.
+      expanded: false,
       child: Material(
         elevation: 4,
         color: theme.colorScheme.surface,
