@@ -3873,6 +3873,7 @@
     "callTranscriptUnreconciledClocks": "These turns were recorded on two devices whose clocks could not be compared, so no times are shown and the order they appear in may be wrong.",
     "callTranscriptOpen": "Read the transcript",
     "callTranscriptRecordings": "Recordings",
+    "callTranscriptFullCall": "Full call",
     "leaveSpaceDescription": "By leaving the course, you will leave all of the chats within it. Other users will see that you have left the course.",
     "constructUseCorMmDesc": "Correct message meaning",
     "constructUseIncMmDesc": "Incorrect message meaning",

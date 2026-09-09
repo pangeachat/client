@@ -12,7 +12,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/audio_player.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
-import 'package:fluffychat/routes/chat/calls/call_audio_repo.dart';
+import 'package:fluffychat/routes/chat/calls/call_audio_merged_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_timeline_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_event.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
@@ -284,6 +284,33 @@ void main() {
       durationMs: 4000,
       sampleRate: 16000,
       channels: 1,
+    ).toJson(),
+  );
+
+  /// A `pangea.call_audio_merged` full-call recording for the call, built by
+  /// the real model's own serialiser -- like [audioEvent] and unlike [half] --
+  /// so a fixture here cannot drift out of the writer's actual content shape.
+  /// [sourceEventIds] is this merge's coverage: its length drives
+  /// `coverageCardinality`, and it must be non-empty or `fromJson` refuses it.
+  MatrixEvent mergedEvent(
+    String sender, {
+    String eventId = r'$merged',
+    List<String> sourceEventIds = const [r'$a', r'$b'],
+  }) => MatrixEvent(
+    type: CallAudioMergedContent.relType,
+    eventId: eventId,
+    senderId: sender,
+    originServerTs: DateTime.fromMillisecondsSinceEpoch(2000),
+    content: CallAudioMergedContent(
+      callKey: _callKey,
+      url: 'mxc://fakeServer.notExisting/MERGED',
+      mimetype: 'audio/wav',
+      codec: kCallAudioCodec,
+      size: 24680,
+      durationMs: 8000,
+      sampleRate: 16000,
+      channels: 1,
+      sourceEventIds: sourceEventIds,
     ).toJson(),
   );
 
@@ -1246,13 +1273,13 @@ void main() {
       await tester.tap(find.text('Try again'));
       await tester.pumpAndSettle();
 
-      // Four, not two: `_load` now walks TWO relation types through this
-      // same fetcher -- the transcript's and the recordings' -- so each of
-      // the two attempts below (the failed one and the retry) costs two
-      // calls rather than one. The count is still exact, not a floor: it is
-      // what proves retrying does not ALSO duplicate a call within one
-      // attempt.
-      expect(f.calls(), 4);
+      // Six, not two: `_load` now walks THREE relation types through this
+      // same fetcher -- the transcript's, the per-device recordings', and the
+      // merged full-call recording's -- so each of the two attempts below (the
+      // failed one and the retry) costs three calls rather than one. The count
+      // is still exact, not a floor: it is what proves retrying does not ALSO
+      // duplicate a call within one attempt.
+      expect(f.calls(), 6);
       expect(find.text('llego a la segunda'), findsOneWidget);
       expect(find.text('Could not load the transcript'), findsNothing);
     });
@@ -1918,5 +1945,85 @@ void main() {
         );
       },
     );
+
+    testWidgets('a two-half call shows the merged "Full call" row FIRST, above '
+        'the per-device halves', (tester) async {
+      // Two device halves and one merged full-call recording. The merged row
+      // is the PRIMARY: it renders first, above the "Recordings" heading that
+      // groups the halves, and is keyed by the merged event's OWN id -- not by
+      // either half's -- via the same relabel-to-`m.audio` path the halves use.
+      final testRoom = room();
+      await pumpWithRecordings(
+        tester,
+        testRoom,
+        serving([
+          half(_me, texts: const ['hola']),
+          half(_peer, texts: const ['que tal']),
+          audioEvent(_me, deviceId: 'PHONE'),
+          audioEvent(_peer),
+          mergedEvent(_me),
+        ]),
+      );
+
+      // Three players: the two halves plus the one merged row.
+      final players = tester
+          .widgetList<AudioPlayerWidget>(find.byType(AudioPlayerWidget))
+          .toList();
+      expect(players, hasLength(3));
+      expect(
+        players.where((p) => p.eventId == r'$merged').toList(),
+        hasLength(1),
+        reason: 'the merged row is keyed by the merged event\'s own id',
+      );
+
+      // The primary heading is present, and it sits ABOVE the halves' heading.
+      expect(find.text('Full call'), findsOneWidget);
+      expect(find.text('Recordings'), findsOneWidget);
+      expect(
+        tester.getTopLeft(find.text('Full call')).dy,
+        lessThan(tester.getTopLeft(find.text('Recordings')).dy),
+        reason:
+            'the merged full-call recording renders first, above the halves',
+      );
+    });
+
+    testWidgets('a call with MORE THAN TWO halves shows no merged row, even '
+        'with a merge present', (tester) async {
+      // The enforced v1-scope suppression, on the screen. Three device halves
+      // means a mid-call device switch (out of v1 scope), so the player shows
+      // NO merged row and lists the individual halves -- EVEN THOUGH a stale
+      // two-half merge is in the room. The halves are unaffected.
+      final testRoom = room();
+      await pumpWithRecordings(
+        tester,
+        testRoom,
+        serving([
+          half(_me, texts: const ['hola']),
+          half(_peer, texts: const ['que tal']),
+          audioEvent(_me, deviceId: 'PHONE'),
+          audioEvent(_me, deviceId: 'LAPTOP'),
+          audioEvent(_peer),
+          mergedEvent(_me),
+        ]),
+      );
+
+      expect(
+        find.text('Full call'),
+        findsNothing,
+        reason: 'more than two halves suppresses the merged row',
+      );
+      // The per-device halves are untouched: three players, none of them the
+      // merged one, under the ordinary "Recordings" heading.
+      expect(find.text('Recordings'), findsOneWidget);
+      final players = tester
+          .widgetList<AudioPlayerWidget>(find.byType(AudioPlayerWidget))
+          .toList();
+      expect(players, hasLength(3));
+      expect(
+        players.where((p) => p.eventId == r'$merged'),
+        isEmpty,
+        reason: 'the suppressed merge must not sneak into the halves either',
+      );
+    });
   });
 }

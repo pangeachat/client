@@ -6,6 +6,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/full_width_dialog.dart';
 import 'package:fluffychat/routes/chat/audio_player.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
+import 'package:fluffychat/routes/chat/calls/call_audio_merged_selection.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_repo.dart';
 import 'package:fluffychat/routes/chat/calls/call_timeline_event.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
@@ -114,6 +115,17 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
   /// the (working) transcript down with it. See that method.
   late Future<List<CallAudioRecording>> _recordings;
 
+  /// The call's merged, full-call recording(s), read alongside the halves --
+  /// see [_load] -- so the "Full call" primary row and the per-device halves
+  /// are fetched CONCURRENTLY rather than one after the other.
+  ///
+  /// Isolated from both the transcript AND the halves the same way [_recordings]
+  /// is: [_loadMerged] catches and logs, so a slow or failed merged read never
+  /// holds up -- or takes down -- either. The player picks ONE of these to show
+  /// via [selectMergedRow]; a stray extra merge in room history is not this
+  /// screen's problem to resolve.
+  late Future<List<CallAudioMergedRecording>> _merged;
+
   @override
   void initState() {
     super.initState();
@@ -145,9 +157,13 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
       participantsKnown: participants.known,
       encrypted: widget.room.encrypted,
     );
-    // Started here, alongside the transcript fetch, so the two relation
-    // types are read CONCURRENTLY rather than one after the other.
+    // Started here, alongside the transcript fetch, so the relation types are
+    // read CONCURRENTLY rather than one after the other. The transcript fetch
+    // stays FIRST so it is the read whose failure surfaces as the retryable
+    // error state -- the two audio reads only ever add a row and never fail
+    // the screen.
     _recordings = _loadRecordings(fetch);
+    _merged = _loadMerged(fetch);
   }
 
   /// [fetchCallAudio], with a failure turned into an empty list rather than
@@ -172,6 +188,32 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     } catch (e, s) {
       Logs().e('Could not load call recordings for ${widget.callKey}', e, s);
       return const <CallAudioRecording>[];
+    }
+  }
+
+  /// [fetchCallAudioMerged], with a failure turned into an empty list rather
+  /// than left to propagate -- the exact mirror of [_loadRecordings], and for
+  /// the exact same reason: the merged "Full call" recording is supplementary
+  /// to both the transcript and the per-device halves, so a hiccup reading it
+  /// must not take either of them down. Never swallowed benignly: "no merge"
+  /// and "could not read the merge" are different facts, and only the log can
+  /// still tell them apart afterwards.
+  Future<List<CallAudioMergedRecording>> _loadMerged(
+    RelationsFetcher fetch,
+  ) async {
+    try {
+      return await fetchCallAudioMerged(
+        fetch: fetch,
+        roomId: widget.room.id,
+        callKey: widget.callKey,
+      );
+    } catch (e, s) {
+      Logs().e(
+        'Could not load merged call recording for ${widget.callKey}',
+        e,
+        s,
+      );
+      return const <CallAudioMergedRecording>[];
     }
   }
 
@@ -327,20 +369,48 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
               // to show; see `_loadRecordings`.
               FutureBuilder<List<CallAudioRecording>>(
                 future: _recordings,
-                builder: (context, snapshot) {
-                  final widgets = _recordingsSection(
-                    snapshot.data ?? const [],
-                    theme,
-                    l10n,
-                  );
-                  // Most calls carry no recording, and one that is still
-                  // loading has shown nothing yet either -- both read the
-                  // same as "nothing here", which is the whole of the
-                  // contract: never a header with nothing under it.
-                  if (widgets.isEmpty) return const SizedBox.shrink();
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: widgets,
+                builder: (context, recordingsSnapshot) {
+                  final recordings =
+                      recordingsSnapshot.data ?? const <CallAudioRecording>[];
+                  // Nested rather than folded into one combined future, so a
+                  // slow or failed MERGED read can never hold up -- or take
+                  // down -- the per-device halves, exactly as the halves are
+                  // isolated from the transcript above. Each read only ever
+                  // adds a row.
+                  return FutureBuilder<List<CallAudioMergedRecording>>(
+                    future: _merged,
+                    builder: (context, mergedSnapshot) {
+                      final mergedList =
+                          mergedSnapshot.data ??
+                          const <CallAudioMergedRecording>[];
+                      // The ONE merged row to show, or null when there is no
+                      // merge or the call switched devices mid-way (more than
+                      // two halves, out of v1 scope). Suppression is keyed on
+                      // the number of halves the room actually shows, which is
+                      // why the count comes from `recordings` rather than from
+                      // the merge's own coverage.
+                      final mergedRow = selectMergedRow(
+                        mergedList,
+                        recordings.length,
+                      );
+
+                      final widgets = [
+                        // FIRST, above the per-device halves: the merged
+                        // recording is the primary, full-call row.
+                        if (mergedRow != null)
+                          ..._mergedRecordingSection(mergedRow, theme, l10n),
+                        ..._recordingsSection(recordings, theme, l10n),
+                      ];
+                      // Most calls carry no recording of either kind, and one
+                      // still loading has shown nothing yet either -- both read
+                      // the same as "nothing here", which is the whole of the
+                      // contract: never a header with nothing under it.
+                      if (widgets.isEmpty) return const SizedBox.shrink();
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: widgets,
+                      );
+                    },
                   );
                 },
               ),
@@ -406,6 +476,40 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
       ],
     ];
   }
+
+  /// The merged, full-call recording rendered as the PRIMARY row, above the
+  /// per-device halves -- or nothing when [row] is null (no merge for this
+  /// call, or a mid-call device switch the player suppresses; see
+  /// [selectMergedRow]).
+  ///
+  /// Mirrors [_recordingsSection]'s own header-then-player shape: a "Full call"
+  /// heading styled exactly as the "Recordings" heading it sits above, then one
+  /// [AudioPlayerWidget] fed the SAME relabel-to-`m.audio` event the halves use
+  /// (see [_mergedRecordingEvent]) and keyed by the merged event's OWN id.
+  List<Widget> _mergedRecordingSection(
+    CallAudioMergedRecording row,
+    ThemeData theme,
+    L10n l10n,
+  ) => [
+    Text(
+      l10n.callTranscriptFullCall,
+      style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w600),
+    ),
+    const SizedBox(height: 6),
+    AudioPlayerWidget(
+      // The same relabel the halves rely on -- see `_mergedRecordingEvent` and
+      // `_recordingEvent` for why a `pangea.call_audio_merged` event cannot be
+      // handed to the player directly.
+      _mergedRecordingEvent(row, widget.room),
+      color: theme.colorScheme.primary,
+      linkColor: theme.colorScheme.primary,
+      fontSize: 14,
+      eventId: row.eventId,
+      roomId: widget.room.id,
+      senderId: row.senderId,
+    ),
+    const SizedBox(height: 12),
+  ];
 
   /// Both halves flattened into one column, in the order they were spoken.
   ///
@@ -647,6 +751,37 @@ Event _recordingEvent(CallAudioRecording recording, Room room) => Event(
     },
   },
 );
+
+/// The merged, full-call recording presented as an ordinary Matrix voice
+/// message, so [AudioPlayerWidget] can play a `pangea.call_audio_merged` event
+/// on the same terms [_recordingEvent] lets it play a `pangea.call_audio` half.
+///
+/// The reasoning is [_recordingEvent]'s exactly -- see it in full. The player's
+/// `Event.downloadAndDecryptAttachment` refuses any event whose TYPE is not
+/// `m.room.message`/`m.sticker`, and `pangea.call_audio_merged` is neither, so
+/// handing the real event to the player throws on every tap. This relabels the
+/// SAME url, mimetype and size [CallAudioMergedContent] already carries as an
+/// ordinary `m.audio` message -- nothing is re-uploaded, and the room is
+/// unencrypted (see [CallAudioMergedContent]'s own docs), so there is no `file`
+/// block to forge and nothing here decrypts anything either.
+Event _mergedRecordingEvent(CallAudioMergedRecording recording, Room room) =>
+    Event(
+      eventId: recording.eventId,
+      senderId: recording.senderId,
+      originServerTs: recording.originServerTs,
+      room: room,
+      type: EventTypes.Message,
+      content: {
+        'msgtype': MessageTypes.Audio,
+        'body': 'call_audio.wav',
+        'url': recording.content.url,
+        'info': {
+          'mimetype': recording.content.mimetype,
+          'size': recording.content.size,
+          'duration': recording.content.durationMs,
+        },
+      },
+    );
 
 /// What to say about a half that carries no words.
 ///
