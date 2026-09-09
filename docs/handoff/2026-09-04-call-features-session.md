@@ -1203,3 +1203,20 @@ until the design is Codex-green.
   - orphan-upload reorder (prior commit): re-validate now immediately before upload, after mix.
 - 26 tests, format/analyze/import_sorter clean. Re-gating pinB (softening) + machinery (dispose+residual).
 - After coordinator green: WAVE 4 wiring (CallService + CallSession kick + matrix dispose), then P4 player.
+
+## 2026-09-08 (cont) — WAVE 3 coordinator COLD-GREEN; starting wave 4 wiring
+- Coordinator cold-gate DONE: machinery re-gate SOUND (dispose fix + remove-then-recreate = ACCEPTABLE-V1
+  bounded); pinB re-gate CORRECT/softening=no (aborted test now genuinely pins the loop guard). flow's
+  validate->send race + machinery's remove-then-recreate are documented ACCEPTABLE-V1 (irreducible/
+  bounded, code-commented). 26 tests, all gates clean.
+- Coordinator commits: ad7c8c5072 (build) + reorder + fix(dispose/loop-guard/third-half) + docs.
+- WAVE 4 wiring NEXT: instantiate CallAudioMergeCoordinator in CallService (call_service.dart:104) with
+  seams (relationsFetcherFor(client), callAudioDownloaderFor(client), client.uploadContent,
+  client.sendEvent-shaped, compute(mergeCallAudio), an ExpiringStorageBox, isDmRoom via
+  room.directChatMatrixID, myUserId=client.userID, myDeviceId=client.deviceID); start() it; subscribe
+  client.onSync.stream -> onSyncedCallAudio/onSyncedMergedEvent (extract callKey = event m.relates_to
+  event_id for pangea.call_audio/_merged) and client.onSyncStatus.stream error->finished -> onReconnected;
+  dispose with the service (matrix.dart:1026). Kick from CallSession._finishRecording (call_session.dart:
+  1080) after _record.finish -> coordinator.onCallFinished(roomId, callKey, client.userID, deviceID).
+  Touches SHARED files (call_service, call_session, matrix) -> careful + cold-gate.
+- Then P4 player (fetchCallAudioMerged-first, dedup, >2-half suppression).
