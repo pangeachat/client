@@ -165,6 +165,16 @@ class CallService {
   /// that never becomes ready, growing [_pendingMergeTriggers] without bound.
   bool _mergeActivationFailed = false;
 
+  /// Latches when the pre-ready buffer first hits its [_maxPendingMergeTriggers]
+  /// cap, so the cap-hit is WARNED exactly once rather than once per dropped
+  /// trigger (a flood large enough to reach the cap would otherwise emit a log
+  /// storm). The drop is a deliberate, documented fail-open -- but an unexpected
+  /// one, so it is surfaced rather than swallowed silently. Buffering happens
+  /// ONLY in the one pre-ready probe window ([_mergeReady] is set once and never
+  /// reset; after it, triggers route directly and never buffer), so saturation
+  /// cannot recur and this latch is never cleared.
+  bool _mergeBufferSaturated = false;
+
   CallService(
     this.client, {
     PangeaVoipDelegate? delegate,
@@ -267,10 +277,19 @@ class CallService {
       trigger(coordinator);
     } else if (_pendingMergeTriggers.length < _maxPendingMergeTriggers) {
       _pendingMergeTriggers.add(trigger);
+    } else if (!_mergeBufferSaturated) {
+      // A pathological flood during the (time-limited) probe window: drop rather
+      // than grow past the cap. A dropped call re-arrives (and is indexed) if its
+      // half re-syncs; normal syncs never reach this. The drop is deliberate but
+      // unexpected, so surface it ONCE per saturation episode -- warning per
+      // dropped trigger would be a log storm at exactly the volume that trips it.
+      _mergeBufferSaturated = true;
+      Logs().w(
+        'Call-audio merge trigger buffer saturated at '
+        '$_maxPendingMergeTriggers during activation; further triggers this '
+        'window are dropped and reconcile only if their half re-syncs',
+      );
     }
-    // else: a pathological flood during the (time-limited) probe window; drop
-    // rather than grow past the cap. A dropped call re-arrives on the next sync
-    // of its half. Normal syncs never reach this.
   }
 
   /// The post-call kick: this device just posted its OWN `pangea.call_audio`
