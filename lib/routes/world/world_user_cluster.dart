@@ -143,27 +143,19 @@ class ClusterAvatar extends StatelessWidget {
       cursor: SystemMouseCursors.click,
       child: Tooltip(
         message: label,
-        // The Semantics below already names this control; without this the
+        // The target below already names this control; without this the
         // Tooltip's own message is announced too, doubling the accessible name
         // ("Account Account"). See accessibility.instructions.md.
         excludeFromSemantics: true,
-        child: Semantics(
-          button: true,
-          label: label,
-          excludeSemantics: true,
-          // Expose the tap on the announced node so screen-reader users can
-          // activate it (e.g. open Settings); GestureDetector alone leaves the
-          // button unactivatable via assistive tech. See issue #7185.
+        child: FocusRingTapTarget(
           onTap: onTap,
-          child: FocusRingTapTarget(
-            onTap: onTap,
-            shape: const CircleBorder(),
-            child: Avatar(
-              mxContent: avatarUrl,
-              name: name,
-              size: size,
-              showPresence: false,
-            ),
+          shape: const CircleBorder(),
+          label: label,
+          child: Avatar(
+            mxContent: avatarUrl,
+            name: name,
+            size: size,
+            showPresence: false,
           ),
         ),
       ),
@@ -514,26 +506,27 @@ class _ClusterLevelMedalState extends State<ClusterLevelMedal> {
       message: label,
       // Semantics below names this; exclude the Tooltip to avoid "Level 2 Level 2".
       excludeFromSemantics: true,
-      child: InkWell(
-        onTap: widget.onTap,
-        onHover: (hovered) => setState(() => _hovered = hovered),
-        // No circular wash behind the shield — the shield's own gold carries
-        // hover (#8067). The focus highlight is left alone: keyboard users
-        // still get a visible ring.
-        hoverColor: Colors.transparent,
-        borderRadius: BorderRadius.circular(100.0),
-        child: Semantics(
-          button: true,
-          label: label,
-          excludeSemantics: true,
-          // Expose the tap on the announced node for assistive tech (#7185).
+      // The name sits outside the InkWell and the content is excluded inside
+      // it, so name, role, focus and tap are one semantics node (#8873).
+      child: Semantics(
+        button: true,
+        label: label,
+        child: InkWell(
           onTap: widget.onTap,
-          child: Padding(
-            padding: const EdgeInsets.all(4.0),
-            child: LevelRibbon(
-              height: 44,
-              level: widget.level,
-              color: lit ? AppConfig.goldHighlightByTheme(context) : null,
+          onHover: (hovered) => setState(() => _hovered = hovered),
+          // No circular wash behind the shield — the shield's own gold carries
+          // hover (#8067). The focus highlight is left alone: keyboard users
+          // still get a visible ring.
+          hoverColor: Colors.transparent,
+          borderRadius: BorderRadius.circular(100.0),
+          child: ExcludeSemantics(
+            child: Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: LevelRibbon(
+                height: 44,
+                level: widget.level,
+                color: lit ? AppConfig.goldHighlightByTheme(context) : null,
+              ),
             ),
           ),
         ),
@@ -583,30 +576,24 @@ class ClusterLanguageFlag extends StatelessWidget {
       cursor: SystemMouseCursors.click,
       child: Tooltip(
         message: l10n.learningSettings,
-        // Semantics below names this (language + settings); exclude the Tooltip
-        // so its message isn't appended again.
+        // The target below names this (language + settings); exclude the
+        // Tooltip so its message isn't appended again.
         excludeFromSemantics: true,
-        child: Semantics(
-          button: true,
-          label: '${language.getDisplayName(l10n)}, ${l10n.learningSettings}',
-          excludeSemantics: true,
-          // Expose the tap on the announced node for assistive tech (#7185).
+        // InkWell hit-tests its whole rect, so the entire chip is tappable —
+        // not just the painted glyphs / flag pixels.
+        child: FocusRingTapTarget(
           onTap: onTap,
-          // InkWell hit-tests its whole rect, so the entire chip is tappable —
-          // not just the painted glyphs / flag pixels.
-          child: FocusRingTapTarget(
-            onTap: onTap,
-            // The chip's own outer rounding (its radius + borderWidth).
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8.0),
-            ),
-            child: LanguageFlagChip(
-              language: language,
-              langCode: language.langCode,
-              width: width,
-              height: height,
-              fontSize: fontSize,
-            ),
+          // The chip's own outer rounding (its radius + borderWidth).
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.0),
+          ),
+          label: '${language.getDisplayName(l10n)}, ${l10n.learningSettings}',
+          child: LanguageFlagChip(
+            language: language,
+            langCode: language.langCode,
+            width: width,
+            height: height,
+            fontSize: fontSize,
           ),
         ),
       ),

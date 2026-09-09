@@ -37,6 +37,7 @@ class Avatar extends StatelessWidget {
   /// Enter / Space activate [onTap] (#8868). Opt-in, because several tappable
   /// avatars sit inside a row or tile that is already the Tab stop and are
   /// hidden from assistive tech, so focusing them would add a nameless stop.
+  /// Only a named avatar becomes a Tab stop, for the same reason.
   final bool focusable;
   // Pangea#
 
@@ -241,29 +242,28 @@ class Avatar extends StatelessWidget {
     // An unnamed avatar carries no useful label, so it is treated as decorative
     // rather than emitted as an unlabelled image/button (an axe violation).
     final avatarName = name != null && name.isNotEmpty ? name : null;
-    // Same shape as the world user cluster's avatar: the ring target sits
-    // inside the announced node, and the tap is exposed on that node so
-    // assistive tech can activate it. The non-focusable path is unchanged:
-    // there the outer GestureDetector already supplies the tap action.
-    final tapTarget = onTap != null && focusable
-        ? FocusRingTapTarget(
-            onTap: onTap!,
-            shape: RoundedRectangleBorder(borderRadius: borderRadius),
-            child: container,
-          )
-        : container;
+    // Keyboard-reachable (#8868): the ring target builds the one node that
+    // carries name, role, focus and tap (#8873). A nameless avatar is never a
+    // Tab stop — an unnamed focusable is the defect this exists to avoid.
+    if (onTap != null && focusable && avatarName != null) {
+      return FocusRingTapTarget(
+        onTap: onTap!,
+        shape: RoundedRectangleBorder(borderRadius: borderRadius),
+        label: avatarName,
+        child: container,
+      );
+    }
     final semanticContainer = avatarName == null
-        ? ExcludeSemantics(child: tapTarget)
+        ? ExcludeSemantics(child: container)
         : Semantics(
             label: avatarName,
             image: onTap == null,
             button: onTap != null,
             excludeSemantics: true,
-            onTap: focusable ? onTap : null,
-            child: tapTarget,
+            child: container,
           );
     // Pangea#
-    if (onTap == null || focusable) return semanticContainer;
+    if (onTap == null) return semanticContainer;
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: GestureDetector(onTap: onTap, child: semanticContainer),

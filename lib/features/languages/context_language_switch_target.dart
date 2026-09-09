@@ -81,13 +81,18 @@ class _ContextLanguageSwitchTargetState
         ? l10n.switchLanguageChipLabel(language.getDisplayName(l10n))
         : language.getDisplayName(l10n);
 
+    // The chip is excluded inside the InkWell rather than the whole subtree
+    // from outside, so the switchable chip is one node with name, role, focus
+    // and tap (#8873).
     return Semantics(
       button: canSwitch,
       label: label,
-      excludeSemantics: true,
       child: canSwitch
-          ? InkWell(onTap: () => _openSwitcher(language), child: chip)
-          : chip,
+          ? InkWell(
+              onTap: () => _openSwitcher(language),
+              child: ExcludeSemantics(child: chip),
+            )
+          : ExcludeSemantics(child: chip),
     );
   }
 }
