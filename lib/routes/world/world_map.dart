@@ -25,6 +25,7 @@ import 'package:fluffychat/features/tutorials/tutorial_copy.dart';
 import 'package:fluffychat/features/tutorials/tutorial_enum.dart';
 import 'package:fluffychat/features/tutorials/tutorial_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_overlay_controller.dart';
+import 'package:fluffychat/features/tutorials/tutorial_seen_backfill.dart';
 import 'package:fluffychat/features/tutorials/tutorial_sequences.dart';
 import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
@@ -92,6 +93,23 @@ bool orientationSurfaceGate({
   }
   return true;
 }
+
+/// Whether the app tour runs before the welcome + map orientation when both
+/// are due on the same arrival.
+///
+/// The tour outranks the map INTRODUCTION — it answers "what now?" after a
+/// first finished activity, while the introduction describes a map the learner
+/// has by then already used. It never outranks the GREETING: an unseen welcome
+/// alongside finished activities is an account from before the tutorials
+/// shipped, and a tour that opens with "great job finishing your first
+/// activity!" before any hello reads as the app misremembering them. The
+/// greeting (with the map orientation it fronts) runs first; the tour follows
+/// on the next map arrival, which is its own trigger anyway.
+bool appTourOutranksOrientation({
+  required bool appTourPending,
+  required bool welcomePending,
+  required bool hasFinishedAnActivity,
+}) => appTourPending && !welcomePending && hasFinishedAnActivity;
 
 class WorldMap extends StatefulWidget {
   /// Optional camera override, e.g. to center on an activity's location.
@@ -277,6 +295,13 @@ class WorldMapController extends State<WorldMap>
     MapCameraFocusRequests.notifier.addListener(_onCameraFocusRequest);
 
     _registerTutorialLaunchers();
+
+    // A veteran's seen-flags may still be being backfilled when the map is
+    // already showing pins — the trigger waits for the one evaluation, and its
+    // resolution is a re-ask (tutorial_seen_backfill.dart).
+    TutorialSeenBackfill.instance.ensureResolved().then(
+      (_) => _scheduleOrientationCheck(),
+    );
 
     // Rebuild when a featured large card's full plan hydrates (image + goals).
     ActivityPlanRepo.instance.addListener(_onPlanHydrate);
@@ -1261,6 +1286,10 @@ class WorldMapController extends State<WorldMap>
       _orientationCheckScheduled = false;
       _maybeStartOrientation();
     });
+    // A post-frame callback only runs if a frame is coming; a re-ask arriving
+    // between frames (pin state published from a fetch) would otherwise leave
+    // the flag latched true and swallow every later re-ask.
+    WidgetsBinding.instance.ensureVisualUpdate();
   }
 
   void _registerTutorialLaunchers() {
@@ -1291,6 +1320,11 @@ class WorldMapController extends State<WorldMap>
       return;
     }
 
+    // Not a "no" — "not yet": until the veteran backfill has evaluated, the
+    // seen-flags below may be about to flip, and a welcome fired now would be
+    // exactly the greeting a veteran must not get. Resolution re-asks.
+    if (!TutorialSeenBackfill.instance.isResolved) return;
+
     // EVERY tutorial this map hosts, the tour included: leaving the tour out
     // here meant it could never fire for anyone who had finished the map
     // orientation, which is everyone it is meant for.
@@ -1313,10 +1347,13 @@ class WorldMapController extends State<WorldMap>
       return;
     }
 
-    // The tour comes first once it is due: it is the answer to "what now?"
-    // after a first activity, and the map orientation is about a map the learner
-    // has by then already used.
-    if (_tutorials.isPending(TutorialEnum.appTour) && _hasFinishedAnActivity) {
+    // See [appTourOutranksOrientation]: the tour beats the map introduction,
+    // never the greeting.
+    if (appTourOutranksOrientation(
+      appTourPending: _tutorials.isPending(TutorialEnum.appTour),
+      welcomePending: _tutorials.isPending(TutorialEnum.welcome),
+      hasFinishedAnActivity: _hasFinishedAnActivity,
+    )) {
       _tutorials.requestSequence(TutorialSequences.appTourSequence);
       return;
     }
@@ -1325,11 +1362,9 @@ class WorldMapController extends State<WorldMap>
   }
 
   /// The app tour's gate: the learner has finished at least one activity.
-  ///
-  /// NOTE: this is the standing "ever finished one" flag, so every existing
-  /// learner qualifies the moment this ships and would be congratulated on
-  /// finishing their first activity. That has to be resolved before release —
-  /// see tutorials.instructions.md.
+  /// A standing "ever finished one" flag — safe for existing accounts because
+  /// the veteran backfill marks their tour seen before triggers run, and
+  /// [appTourOutranksOrientation] greets anyone unseen-welcome first.
   bool get _hasFinishedAnActivity =>
       _client?.hasAnyFinishedActivitySession == true;
 
@@ -1341,7 +1376,7 @@ class WorldMapController extends State<WorldMap>
   /// learner can actually see. Null whenever the tutorial is not pointing at
   /// one.
   String? get tutorialStarterActivityId =>
-      _tutorials.isTutorialQueued(TutorialEnum.worldMap)
+      _tutorials.isCurrentTutorial(TutorialEnum.worldMap)
       ? _tutorialStarterActivity?.activityId
       : null;
 
