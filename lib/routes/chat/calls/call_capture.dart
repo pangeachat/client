@@ -1568,10 +1568,13 @@ class CallCaptureService {
   /// choice, which is how a hangup came to wait out a handover's drain.
   ///
   /// [preserveCarrier] is only ever true on a settle-shaped stop, and says this
-  /// stop is a PEER-DROP PAUSE rather than a sibling handover: recording is
-  /// stopping because the peer (or this device's own connection) is gone while
-  /// this device remains the account's sole recorder, so its carrier status is
-  /// latched here rather than lost. A handover leaves it false. It is inert on a
+  /// stop is NOT a sibling handover while this device is still the sole holder
+  /// of its own half -- so its carrier status is latched here rather than lost
+  /// to a later hangup-shaped stop that finds the recorder already idle and
+  /// short-circuits. Two callers pass it: a PEER-DROP PAUSE (the peer, or this
+  /// device's own connection, is gone with no sibling taking over --
+  /// [ActiveCall._reconcile]) and a TAP DEATH (the tap died mid-recording --
+  /// [_onTapDied]). A genuine handover leaves it false. It is inert on a
   /// hangup-shaped stop, which reads `_running` directly.
   Future<void> stop({
     bool settleDeliveries = true,
@@ -1650,24 +1653,27 @@ class CallCaptureService {
     if (!settleDeliveries) {
       _wasCarryingBeforeLastStop = _running;
     } else if (preserveCarrier && _running && !_discardOnStop) {
-      // A PEER-DROP PAUSE, not a sibling handover -- and the one settle-shaped
-      // stop that MUST latch the carrier fact. This device stopped recording
-      // only because the PEER left (or this device's own connection dropped)
-      // with NO sibling taking the stretch over, so it is still the sole
+      // A settle-shaped stop that is NOT a sibling handover -- a PEER-DROP
+      // PAUSE (the peer left, or this device's own connection dropped) or a TAP
+      // DEATH (the tap died mid-recording) -- and the one kind of stop that
+      // MUST latch the carrier fact. This device stopped recording for a reason
+      // other than a sibling taking the stretch over, so it is still the sole
       // carrier of its own outbound half and has to publish it at the eventual
       // hangup. That hangup-shaped stop runs later, finds recording already
       // stopped here, hits the early-return above, and so can never observe
       // that this device was carrying -- exactly the ordering that dropped the
-      // non-initiator's half. Recording it HERE is what survives to the read.
+      // non-initiator's half and, from [_onTapDied], the mute-at-end half.
+      // Recording it HERE is what survives to the read.
       //
       // A genuine sibling HANDOVER is the opposite and is left untouched: it
       // passes `preserveCarrier: false` (see [ActiveCall._reconcile]), the
       // sibling holds the stretch and publishes it, and this device must not
       // claim the same half. `!_discardOnStop` is belt-and-braces on the same
       // distinction -- a stretch handed to a sibling is discarded, never a
-      // pause -- so the capture service's own invariant holds whatever the
-      // caller passes. [start] clears this latch for each new stretch, so a
-      // pause that later resumes and IS handed over cannot leave a stale true.
+      // pause or a death -- so the capture service's own invariant holds
+      // whatever the caller passes. [start] clears this latch for each new
+      // stretch, so a pause that later resumes and IS handed over cannot leave
+      // a stale true.
       _wasCarryingBeforeLastStop = true;
     }
     _session++;
@@ -1728,7 +1734,18 @@ class CallCaptureService {
     } else {
       Logs().w('The call audio tap died mid-recording; ending this stretch');
     }
-    unawaited(stop());
+    // `preserveCarrier: true` because a tap death is NOT a sibling handover:
+    // no other device of this account took this stretch over, so this device
+    // still holds the half it recorded and must publish it at the hangup. Left
+    // as the bare (handover-shaped) stop it once was, this tore the recorder
+    // down WITHOUT latching the carrier, and the hangup-shaped stop that
+    // followed found everything already idle, short-circuited on the early
+    // return, and never recorded that this device had been carrying -- silently
+    // dropping the half (the intermittent mute-at-end drop, when a mute ended
+    // the tapped track a beat before the hangup). The `!_discardOnStop` guard
+    // inside [_stop] still leaves a genuine handover -- a sibling recording the
+    // same stretch -- uncarried, whatever is passed here.
+    unawaited(stop(preserveCarrier: true));
     // AFTER the stop, which sets the gate and the in-flight stop synchronously
     // before it awaits anything. That is what a listener restarting from
     // straight inside this call needs: the start it makes finds a stop to wait

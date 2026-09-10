@@ -1278,6 +1278,27 @@ void main() {
       expect(s.wasCarryingBeforeLastStop, isTrue);
     });
 
+    test('REPRO mute-at-end: a sole carrier that muted right before the hangup '
+        'still carries its own half', () async {
+      // The exact sequence the owner hit on the phone: speak, mute, hang up.
+      // A mute ends the transcript run through [_endRun] (no sibling, no
+      // discard), then the hangup stops. No other device took this recording,
+      // so this device is still the sole carrier of the audio it captured and
+      // must publish its half.
+      final s = service();
+      await s.start(track);
+      for (var i = 0; i < 10; i++) {
+        track.emit(20); // ~200ms of real speech recorded
+      }
+      s.setMuted(true); // muted at the end
+      await s.stop(settleDeliveries: false); // hang up
+      expect(
+        s.wasCarryingBeforeLastStop,
+        isTrue,
+        reason: 'muted-at-hangup with no sibling is still the sole carrier',
+      );
+    });
+
     test(
       'is false when finish is called on a device that never recorded',
       () async {
@@ -1474,6 +1495,79 @@ void main() {
           reason:
               'a new stretch re-opens the question; the handover that ended '
               'it, not the earlier pause, decides the carrier',
+        );
+      },
+    );
+  });
+
+  group('a tap that dies while this device is the sole carrier', () {
+    // THE MUTE-AT-END DROP, root-caused. On a real phone, muting then hanging
+    // up sometimes ended the tapped track a beat BEFORE the hangup ran: the tap
+    // died, `_onTapDied` issued its own settle-shaped stop, and THAT stop tore
+    // the recorder down without latching the carrier -- so the hangup-shaped
+    // stop that followed found everything already idle, short-circuited on the
+    // early return, and never recorded that this device had been carrying. The
+    // half was silently dropped, and a 1:1 call yielded ONE recording instead
+    // of TWO. A tap death is NOT a sibling handover: no other device of this
+    // account took the stretch over, so this device still holds the half it
+    // recorded and must publish it. Same rule as the peer-drop pause above, one
+    // caller further out -- the fix latches the carrier on the death itself.
+    test(
+      'a device whose tap died, then hung up, still reports carrying',
+      () async {
+        final tap = _DyingTap();
+        final s = service(withTap: tap);
+        await s.start(track);
+        tap.onFrames!(speech(100), captureSampleRate, 1);
+
+        // The tap dies on its own -- the track ended under a mute, or the
+        // connection tore down a beat before the explicit hangup.
+        tap.die();
+        await pumpEventQueue();
+        expect(
+          s.wasCarryingBeforeLastStop,
+          isTrue,
+          reason:
+              'a tap death is not a handover; this device still holds the '
+              'half it recorded and must publish it',
+        );
+
+        // The call then ends. The hangup-shaped stop finds the recorder already
+        // stopped by the death and short-circuits -- the exact ordering that
+        // used to erase the carrier fact.
+        await s.finish();
+        expect(
+          s.wasCarryingBeforeLastStop,
+          isTrue,
+          reason:
+              'the carrier fact must survive the hangup-shaped stop that '
+              'follows a tap death -- otherwise the half is dropped',
+        );
+      },
+    );
+
+    test(
+      'a tap death DURING a sibling handover does NOT claim carrier',
+      () async {
+        // The no-regress guard for the fix. If a sibling has already taken the
+        // stretch over (`setDiscardOnStop(true)`) when the tap dies, this device
+        // must NOT claim the half -- the sibling holds and publishes it, and two
+        // claims would credit the account twice. `!_discardOnStop` is what
+        // separates a death-while-sole-carrier from a death-during-handover.
+        final tap = _DyingTap();
+        final s = service(withTap: tap);
+        await s.start(track);
+        tap.onFrames!(speech(100), captureSampleRate, 1);
+        s.setDiscardOnStop(true); // a sibling is recording the same stretch
+
+        tap.die();
+        await pumpEventQueue();
+
+        await s.finish();
+        expect(
+          s.wasCarryingBeforeLastStop,
+          isFalse,
+          reason: 'a sibling holds the stretch; two claims double-credit it',
         );
       },
     );
