@@ -840,7 +840,7 @@ until it is explicitly ended, finished, or times out.
   control (the same leave affordance as leaving a chat); ending discards
   in-progress work, so it asks first. The panel's **X is just "leave"** —
   drops the panel, reveals what's beneath, never prompts.
-- **The timer runs on wall-clock** from session start and keeps counting while
+- **The timer runs on wall-clock** from the first exercise appearing (the loading phases are not on the learner's clock) and keeps counting while
   the panel is closed. This is itself an anti-cheat mechanism: stepping out
   mid-session to consult a dictionary or an AI costs the clock, so the speed
   bonus rewards finishing unaided in one sitting.

@@ -83,7 +83,8 @@ class AnalyticsPracticeSessionRepo {
     final session = AnalyticsPracticeSessionModel(
       userL1: MatrixState.pangeaController.userController.userL1!.langCode,
       userL2: MatrixState.pangeaController.userController.userL2!.langCode,
-      startedAt: DateTime.now(),
+      // startedAt is deliberately left unset here — selection is not the start
+      // of practice. The clock is stamped when the first exercise paints.
       type: type,
       practiceTargets: targets,
     );

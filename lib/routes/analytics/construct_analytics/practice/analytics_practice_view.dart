@@ -106,9 +106,12 @@ class AnalyticsPracticeView extends StatelessWidget {
               startedAt: session?.startedAt,
               frozenSeconds: session?.state.elapsedSeconds ?? 0,
               onTimeUpdate: controller.session.updateElapsedTime,
+              // A session whose first exercise is still generating has no
+              // clock yet — it reads a frozen 00:00, the same as the target
+              // selection phase before it (#8966).
               isRunning:
-                  session != null &&
-                  !session.isComplete &&
+                  session?.startedAt != null &&
+                  !session!.isComplete &&
                   controller.session.sessionError == null,
             );
           },
