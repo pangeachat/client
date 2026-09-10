@@ -1660,3 +1660,32 @@ until the design is Codex-green.
   import_sorter per-file (the full-repo run crashes).
 - META: the controller's concurrency is genuinely hard; 3 gate findings (2 gaps + this) all real. Double-gate
   earning its keep but slow. User offered no redirect on loosening; continuing as specified.
+
+## 2026-09-10 (cont) — fixer r2 committed 94cf22a322; self-Codex-CORRECT, closes load->seek gap (Q3)
+- Fixer r2 committed 94cf22a322: added `if (_disposed || !_owns) return;` at the end of the
+  `if (!_owns) { ... }` load block in seekToTurn, immediately after startMergedPlayer's _awaitWhileOwned,
+  with nothing awaited before the seek call that follows -- mirrors the existing pre-play guard, completing
+  the "recheck ownership synchronously after every await" rule at both remaining boundaries (load->seek,
+  seek->play). Did not touch the thunk/watch/ABA logic or the pre-play guard. Updated seekToTurn's doc
+  comment to describe the transaction as 4 steps instead of 3.
+- 2 new mutation-proven tests in the seekToTurn group: ownership-flips-in-the-gap and
+  disposed-in-the-gap, both asserting seek() never fires (spies.seeks stays empty) and play() never fires.
+  Reused the existing GAP-B `_CountingOwnership.onRead` technique (armed at count==4: reads 1-3 are
+  _onOwnershipChanged's _recomputePlaying/_recompute + the load watcher, all firing off
+  claimsOwnershipOnStart's write; read 4 is _awaitWhileOwned's own verdict read for the LOAD call).
+  Mutation proof done BY HAND (temporarily commented out the new guard, ran the file): RED on both new
+  tests (seeks == [3000ms] instead of empty), all other 18 tests still green; restored -> 22/22 green.
+- Full local gate green: pub get; import_sorter scoped per-file (source: "Sorted 0 files"/exit 0; test file
+  under --exit-if-changed still hits the known pre-existing crash -- cross-checked by running WITHOUT
+  --exit-if-changed, which revealed it wanted to insert a spurious blank line splitting
+  package:flutter/foundation.dart from package:flutter_test/flutter_test.dart in an import block this diff
+  never touched; reverted that by hand so the import block stays byte-identical to 1bf3ec966e); dart format
+  0 changed; flutter analyze clean; flutter test 22/22.
+- Self-gate: foreground blocking `codex exec -s read-only --skip-git-repo-check` from a FRESH scratch dir
+  outside the repo (the shared `scratchpad/gate/` dir had stale files from an earlier round -- did NOT reuse
+  it, per the cold-gate-dir-hygiene lesson; used a new `gate_q3_loadseek_<ts>/` dir with only a fresh
+  FACTS.md). Verdict CORRECT, GATE-SOFTENING no on all 6 checks -- notably it independently re-derived the
+  onRead==4 count itself and cross-checked it against the ACTUAL installed Flutter SDK's
+  ValueNotifier/ChangeNotifier source (confirmed the setter doesn't invoke the overridden getter, and
+  listeners fire in registration order), rather than trusting the FACTS.md narrative.
+- Awaiting orchestrator's own independent cold gate on 94cf22a322 per protocol.
