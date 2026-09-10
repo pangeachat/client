@@ -1,8 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 
-class ShimmerBackground extends StatefulWidget {
+/// A single ticker driving every [ShimmerBackground] on screen.
+///
+/// The pulse is a pure function of elapsed time rather than of when a
+/// particular widget started animating, so shimmers stay in phase however
+/// they mount, unmount, or pause — hovering one role card no longer leaves
+/// it flashing against the beat of its neighbours.
+///
+/// The ticker only runs while something is listening.
+class _ShimmerClock extends ChangeNotifier {
+  _ShimmerClock._();
+
+  static final _ShimmerClock instance = _ShimmerClock._();
+
+  late final Ticker _ticker = Ticker((elapsed) {
+    _elapsed = elapsed;
+    notifyListeners();
+  });
+
+  Duration _elapsed = Duration.zero;
+  Duration get elapsed => _elapsed;
+
+  @override
+  void addListener(VoidCallback listener) {
+    super.addListener(listener);
+    if (!_ticker.isActive) _ticker.start();
+  }
+
+  @override
+  void removeListener(VoidCallback listener) {
+    super.removeListener(listener);
+    if (!hasListeners) _ticker.stop();
+  }
+}
+
+class ShimmerBackground extends StatelessWidget {
   final Widget child;
   final Color? shimmerColor;
   final bool enabled;
@@ -20,137 +55,69 @@ class ShimmerBackground extends StatefulWidget {
     this.maxOpacity = 0.3,
   });
 
-  @override
-  State<ShimmerBackground> createState() => _ShimmerBackgroundState();
-}
-
-class _ShimmerBackgroundState extends State<ShimmerBackground>
-    with SingleTickerProviderStateMixin {
-  late final AnimationController _controller;
-  late final Animation<double> _animation;
-
   static const Duration pulseDuration = Duration(milliseconds: 1000);
 
-  bool _disposed = false;
-  bool _isPulsing = false;
+  /// Pulse strength at [elapsed], from 0 at rest to 1 at full: a pulse fades
+  /// in over [pulseDuration], back out over another, then holds at rest for
+  /// [delayBetweenPulses] before the next one.
+  @visibleForTesting
+  double pulseProgress(Duration elapsed) {
+    final int pulse = pulseDuration.inMicroseconds;
+    final int cycle = pulse * 2 + delayBetweenPulses.inMicroseconds;
+    final int t = elapsed.inMicroseconds % cycle;
 
-  @override
-  void initState() {
-    super.initState();
+    final double linear = t < pulse
+        ? t / pulse
+        : t < pulse * 2
+        ? 2 - t / pulse
+        : 0.0;
 
-    _controller = AnimationController(duration: pulseDuration, vsync: this);
-
-    _animation = Tween<double>(
-      begin: 0.0,
-      end: widget.maxOpacity,
-    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
-
-    if (widget.enabled) {
-      _startPulsing();
-    }
-  }
-
-  void _startPulsing() {
-    if (_disposed || !mounted) return;
-
-    if (widget.delayBetweenPulses == Duration.zero) {
-      _controller.repeat(reverse: true);
-      return;
-    }
-
-    _pulseLoop();
-  }
-
-  Future<void> _pulseLoop() async {
-    if (_isPulsing) return;
-
-    _isPulsing = true;
-
-    try {
-      while (mounted &&
-          !_disposed &&
-          widget.enabled &&
-          widget.delayBetweenPulses != Duration.zero) {
-        await _controller.forward();
-
-        if (!mounted || _disposed || !widget.enabled) break;
-
-        await _controller.reverse();
-
-        if (!mounted || _disposed || !widget.enabled) break;
-
-        await Future.delayed(widget.delayBetweenPulses);
-
-        if (!mounted || _disposed || !widget.enabled) break;
-      }
-    } finally {
-      _isPulsing = false;
-    }
-  }
-
-  @override
-  void didUpdateWidget(ShimmerBackground oldWidget) {
-    super.didUpdateWidget(oldWidget);
-
-    if (widget.enabled == oldWidget.enabled) return;
-
-    if (widget.enabled) {
-      _startPulsing();
-    } else {
-      _controller.stop();
-      _controller.reset();
-    }
-  }
-
-  @override
-  void dispose() {
-    _disposed = true;
-
-    _controller.stop();
-    _controller.dispose();
-
-    super.dispose();
+    return Curves.easeInOut.transform(linear);
   }
 
   @override
   Widget build(BuildContext context) {
-    if (!widget.enabled) {
-      return widget.child;
+    // TickerMode is false for routes that aren't on screen — no reason to
+    // hold the shared ticker awake for a shimmer nobody can see.
+    if (!enabled || !TickerMode.valuesOf(context).enabled) {
+      return child;
     }
 
     final theme = Theme.of(context);
 
     final borderRadius =
-        widget.borderRadius ?? BorderRadius.circular(AppConfig.borderRadius);
+        this.borderRadius ?? BorderRadius.circular(AppConfig.borderRadius);
 
     final color =
-        widget.shimmerColor ??
+        shimmerColor ??
         (theme.brightness == Brightness.light
             ? AppConfig.gold
             : AppConfig.goldLight);
 
-    return AnimatedBuilder(
-      animation: _animation,
-      builder: (context, child) {
-        return Stack(
-          children: [
-            widget.child,
-            Positioned.fill(
-              child: IgnorePointer(
-                child: ClipRRect(
-                  borderRadius: borderRadius,
-                  child: DecoratedBox(
-                    decoration: BoxDecoration(
-                      color: color.withValues(alpha: _animation.value),
-                      borderRadius: borderRadius,
+    return Stack(
+      children: [
+        child,
+        Positioned.fill(
+          child: IgnorePointer(
+            child: ClipRRect(
+              borderRadius: borderRadius,
+              child: ListenableBuilder(
+                listenable: _ShimmerClock.instance,
+                builder: (context, _) => DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: color.withValues(
+                      alpha:
+                          pulseProgress(_ShimmerClock.instance.elapsed) *
+                          maxOpacity,
                     ),
+                    borderRadius: borderRadius,
                   ),
                 ),
               ),
             ),
-          ],
-        );
-      },
+          ),
+        ),
+      ],
     );
   }
 }
