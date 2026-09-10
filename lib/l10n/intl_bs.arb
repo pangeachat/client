@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-09-09 11:24:56.760131",
+    "@@last_modified": "2026-09-10 09:51:39.118208",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2312,5 +2312,6 @@
     "upNext": "Slijedi",
     "writingAssistanceSuggestion": "Prijedlog",
     "errorFetchingWordInfo": "Preuzimanje informacija o riječi nije uspjelo",
-    "contentCreatedBy": "Kreirao/la"
+    "contentCreatedBy": "Kreirao/la",
+    "coursePreview": "Pregled kursa"
 }

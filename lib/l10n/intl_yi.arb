@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-09-09 11:25:02.842113",
+    "@@last_modified": "2026-09-10 09:51:45.407955",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2312,5 +2312,6 @@
     "upNext": "קומענדיקע",
     "writingAssistanceSuggestion": "פֿאָרשלאָג",
     "errorFetchingWordInfo": "נישט געקענט ברענגען וואָרט אינפֿאָרמאַציע",
-    "contentCreatedBy": "געשאַפֿן פֿון"
+    "contentCreatedBy": "געשאַפֿן פֿון",
+    "coursePreview": "קורס פֿאָרויסיקע ווייַזונג"
 }

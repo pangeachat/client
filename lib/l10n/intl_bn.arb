@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-09 11:24:56.495973",
+    "@@last_modified": "2026-09-10 09:51:39.536793",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10536,5 +10536,6 @@
     "upNext": "এরপর",
     "writingAssistanceSuggestion": "পরামর্শ",
     "errorFetchingWordInfo": "শব্দের তথ্য আনতে ব্যর্থ হয়েছে",
-    "contentCreatedBy": "তৈরি করেছেন"
+    "contentCreatedBy": "তৈরি করেছেন",
+    "coursePreview": "কোর্স প্রিভিউ"
 }

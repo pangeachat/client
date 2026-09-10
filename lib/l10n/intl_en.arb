@@ -4990,6 +4990,7 @@
     "introChatDesc": "Anyone in the course can post.",
     "announcementsChatDesc": "Only course admins can post.",
     "mapSearchHint": "Search activities",
+    "coursePreview": "Course preview",
     "mapFilterAllLanguages": "All languages",
     "mapFilterNotStarted": "Not started",
     "mapFilterInProgress": "In progress",

@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-09-09 11:24:57.768887",
+    "@@last_modified": "2026-09-10 09:51:39.602845",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2312,5 +2312,6 @@
     "upNext": "Növbəti",
     "writingAssistanceSuggestion": "Təklif",
     "errorFetchingWordInfo": "Söz məlumatı əldə edilmədi",
-    "contentCreatedBy": "Yaradılıb"
+    "contentCreatedBy": "Yaradılıb",
+    "coursePreview": "Kurs önizləməsi"
 }

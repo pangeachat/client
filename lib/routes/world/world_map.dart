@@ -751,7 +751,11 @@ class WorldMapController extends State<WorldMap>
           setState(_resolveCefrFallback);
           viewRevision.value++;
 
-          _fitToContext(debounce: debounceFit);
+          // A preview fits as soon as its pins land — the settle debounce
+          // exists for clicking through joined courses (#7826).
+          _fitToContext(
+            debounce: debounceFit && mapContext is! CoursePreviewMapContext,
+          );
 
           // The "not enough members to start" count that dims available pins
           // (course-only; also refreshed on room sync — see the onSync handler).
@@ -1059,6 +1063,14 @@ class WorldMapController extends State<WorldMap>
           return;
         }
 
+        // A course PREVIEW auto-fits its activities on scope-in (#7826) — a
+        // deliberate carve-out from #7616 below, for this flow only:
+        // previewing IS an explicit "show me this course".
+        if (MapContextController.notifier.value is CoursePreviewMapContext) {
+          _fitCourseBounds();
+          return;
+        }
+
         // A course coming into context moves the camera NOT AT ALL (#7616):
         // neither the old zoomful bounds fit nor the pan-to-top-pin tried
         // after it read as intentional — there is no single right place to
@@ -1104,18 +1116,25 @@ class WorldMapController extends State<WorldMap>
       }
 
       if (MapContextController.notifier.value is! CourseMapContext) return;
-      final points = _pinsManager.focusPoints;
-      if (points.isEmpty) return;
-      _animateFit(
-        CameraFit.bounds(
-          bounds: LatLngBounds.fromPoints(points),
-          padding: _exposedCanvasPadding,
-          maxZoom: WorldMapConstants.courseFitMaxZoom,
-        ),
-      );
+      _fitCourseBounds();
     } catch (_) {
       // Controller/camera not ready yet; the button can simply be pressed again.
     }
+  }
+
+  /// Zoom+pan-fit the scoped course's activity pins into the exposed canvas —
+  /// shared by the course focus button and the preview's fit-on-scope-in
+  /// (#7826).
+  void _fitCourseBounds() {
+    final points = _pinsManager.focusPoints;
+    if (points.isEmpty) return;
+    _animateFit(
+      CameraFit.bounds(
+        bounds: LatLngBounds.fromPoints(points),
+        padding: _exposedCanvasPadding,
+        maxZoom: WorldMapConstants.courseFitMaxZoom,
+      ),
+    );
   }
 
   /// Glide the camera to where [fit] would place it (instead of snapping via
@@ -1634,6 +1653,10 @@ class WorldMapController extends State<WorldMap>
   /// panel fetches the full plan on open. This is the one-step tap target: any
   /// pin tap (dot / card) and a search-result tap route here (no peek).
   void openActivity(QuestActivityCard card) {
+    // Pins are inert while PREVIEWING a course (#7826): they still promote and
+    // demote through the ranked tiers, but opening a plan would navigate away
+    // from the join decision. Guards every tap funnel.
+    if (MapContextController.notifier.value is CoursePreviewMapContext) return;
     final uri = GoRouter.of(context).routeInformationProvider.value.uri;
     // Seat the activity as the sole left token via the nav helper — no raw
     // query surgery in feature code (routing.instructions.md). The course

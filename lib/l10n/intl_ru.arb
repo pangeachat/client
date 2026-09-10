@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-09-09 11:25:01.258925",
+    "@@last_modified": "2026-09-10 09:51:43.690096",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10880,5 +10880,6 @@
     "upNext": "Далее",
     "writingAssistanceSuggestion": "Предложение",
     "errorFetchingWordInfo": "Не удалось получить информацию о слове",
-    "contentCreatedBy": "Создано"
+    "contentCreatedBy": "Создано",
+    "coursePreview": "Предварительный просмотр курса"
 }

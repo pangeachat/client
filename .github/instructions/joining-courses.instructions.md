@@ -84,7 +84,7 @@ This is NOT a standard Matrix knock — the Synapse module handles the invite di
 
 User finds the course in one of three places:
 
-- **Public course preview** — linked from `matrix.to` or direct room ID navigation. Shows a "Join" button that becomes a knock if the room's join rule is `knock`.
+- **Public course preview** — reached from the browse-public list (or `matrix.to` / direct room ID navigation): the course's tile, description, admins, and read-only course plan over a map scoped to that course's activities, with a pinned "Join" CTA that becomes a knock when the room's join rule is `knock`. Layout and map behavior in [course-preview.instructions.md](course-preview.instructions.md).
 - **Public room bottom sheet** — search results for public rooms. For knock rooms, shows a code field and an "Ask to Join" button side by side. TODO: change to "Knock" for consistency.
 - **Public room dialog** — a simpler variant of the bottom sheet used in some navigation paths. Button label changes to "Knock" for knock-rule rooms.
 

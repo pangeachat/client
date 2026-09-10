@@ -26,10 +26,40 @@ class CourseMapContext extends MapContext {
 
   @override
   bool operator ==(Object other) =>
-      other is CourseMapContext && other.coursePlanId == coursePlanId;
+      other.runtimeType == runtimeType &&
+      other is CourseMapContext &&
+      other.coursePlanId == coursePlanId;
 
   @override
-  int get hashCode => coursePlanId.hashCode;
+  int get hashCode => Object.hash(runtimeType, coursePlanId);
+}
+
+/// Scoped to a course plan the learner is PREVIEWING from the add-course flow
+/// (#7826). Pins scope like [CourseMapContext]; on top of that the map
+/// auto-fits the course's activities on scope-in, shows the "Course preview"
+/// banner, and keeps pins inert.
+class CoursePreviewMapContext extends CourseMapContext {
+  const CoursePreviewMapContext(super.coursePlanId);
+}
+
+/// The browse-preview's room → plan-uuid resolution (#7826). The own flow's
+/// plan id rides the URL, but the browse preview only knows its room id until
+/// the room summary lands — the page publishes the resolved uuid here (which
+/// also sets the live context), and the shell reads it on later rebuilds.
+/// Keyed by the SHORT room id (the token param's spelling).
+abstract class CoursePreviewPlans {
+  static final Map<String, String> _planIdByShortRoomId = {};
+
+  static String? planIdFor(String? shortRoomId) =>
+      _planIdByShortRoomId[shortRoomId];
+
+  static void publish(String shortRoomId, String planId) {
+    _planIdByShortRoomId[shortRoomId] = planId;
+    MapContextController.set(CoursePreviewMapContext(planId));
+  }
+
+  static void clear(String shortRoomId) =>
+      _planIdByShortRoomId.remove(shortRoomId);
 }
 
 /// App-wide singleton the shell writes and the persistent map reads.

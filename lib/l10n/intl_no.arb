@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-09-09 11:25:01.074661",
+    "@@last_modified": "2026-09-10 09:51:43.185503",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2312,5 +2312,6 @@
     "upNext": "Neste",
     "writingAssistanceSuggestion": "Forslag",
     "errorFetchingWordInfo": "Kunne ikke hente ordinformasjon",
-    "contentCreatedBy": "Opprettet av"
+    "contentCreatedBy": "Opprettet av",
+    "coursePreview": "Forhåndsvisning av kurs"
 }

@@ -79,6 +79,10 @@ class CourseObjectivesList extends StatefulWidget {
   /// subpage, #8357). Off in previews and the Activities row.
   final bool collapsibleMissions;
 
+  /// Display-only: activity cards don't open their plan pages on tap — the
+  /// course PREVIEW (#7826), where nothing can be joined or started yet.
+  final bool readOnly;
+
   final QuestObjectivesLoader objectivesProvider;
 
   const CourseObjectivesList({
@@ -89,6 +93,7 @@ class CourseObjectivesList extends StatefulWidget {
     this.shrinkWrap = false,
     this.suggestedOnly = false,
     this.collapsibleMissions = false,
+    this.readOnly = false,
     super.key,
   });
 
@@ -499,6 +504,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
       widget.room?.client.userStarsByActivity[activityId] ?? 0;
 
   void _openActivity(QuestActivity ref) {
+    if (widget.readOnly) return;
     final room = widget.room;
     if (room == null) {
       // Token-native open; the course context (if any) is kept, so the plan
@@ -604,6 +610,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                         liveStateByActivity: _liveStateFor,
                         availableParticipants: _availableParticipants,
                         pingedActivityId: _pingedActivityId,
+                        interactive: !widget.readOnly,
                       ),
                     );
                   }
@@ -659,6 +666,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                         userStarsByActivity: _userStarsByActivity,
                         liveStateByActivity: _liveStateFor,
                         availableParticipants: _availableParticipants,
+                        interactive: !widget.readOnly,
                       );
                     },
                   );

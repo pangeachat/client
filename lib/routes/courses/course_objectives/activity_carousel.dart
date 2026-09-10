@@ -47,6 +47,11 @@ class ActivityCarousel extends StatefulWidget {
   final double? cardWidth;
   final double? cardHeight;
 
+  /// Whether the cards act as tap targets. False in the course PREVIEW
+  /// (#7826), where [onTap] is a no-op — the cursor shouldn't advertise a
+  /// click that does nothing.
+  final bool interactive;
+
   const ActivityCarousel({
     super.key,
     required this.activities,
@@ -59,6 +64,7 @@ class ActivityCarousel extends StatefulWidget {
     this.spacing = 16.0,
     this.cardWidth,
     this.cardHeight,
+    this.interactive = true,
   });
 
   @override
@@ -176,7 +182,9 @@ class _ActivityCarouselState extends State<ActivityCarousel> {
                     liveState.state != null ||
                     ref.plan.req.numberOfParticipants <= available;
                 return MouseRegion(
-                  cursor: SystemMouseCursors.click,
+                  cursor: widget.interactive
+                      ? SystemMouseCursors.click
+                      : MouseCursor.defer,
                   child: GestureDetector(
                     // In a preview (no room), open the activity as a standalone
                     // world object (`/<activityId>`). In a joined course, open it

@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-09-09 11:25:02.814319",
+    "@@last_modified": "2026-09-10 09:51:45.712580",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2312,5 +2312,6 @@
     "upNext": "Okulandelayo",
     "writingAssistanceSuggestion": "Isiphakamiso",
     "errorFetchingWordInfo": "Yehlulekile ukuthola ulwazi lwegama",
-    "contentCreatedBy": "Kudalwe ngu"
+    "contentCreatedBy": "Kudalwe ngu",
+    "coursePreview": "Ukubuka kuqala kwesifundo"
 }

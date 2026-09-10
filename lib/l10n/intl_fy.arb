@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-09-09 11:24:57.893622",
+    "@@last_modified": "2026-09-10 09:51:40.666296",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2312,5 +2312,6 @@
     "upNext": "Folgjende",
     "writingAssistanceSuggestion": "Suggestje",
     "errorFetchingWordInfo": "Net slagge om wurdynformaasje op te heljen",
-    "contentCreatedBy": "Makke troch"
+    "contentCreatedBy": "Makke troch",
+    "coursePreview": "Foarbyld fan de kursus"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-09-09 11:24:59.881183",
+    "@@last_modified": "2026-09-10 09:51:42.207752",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2312,5 +2312,6 @@
     "upNext": "Deinceps",
     "writingAssistanceSuggestion": "Suggestio",
     "errorFetchingWordInfo": "Defuit verbi notitias petere",
-    "contentCreatedBy": "Creatum ab"
+    "contentCreatedBy": "Creatum ab",
+    "coursePreview": "Praevisio cursus"
 }

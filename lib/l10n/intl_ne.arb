@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-09-09 11:25:00.692900",
+    "@@last_modified": "2026-09-10 09:51:43.855782",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2312,5 +2312,6 @@
     "upNext": "अर्को",
     "writingAssistanceSuggestion": "सुझाव",
     "errorFetchingWordInfo": "शब्द जानकारी प्राप्त गर्न असफल भयो",
-    "contentCreatedBy": "द्वारा सिर्जना गरिएको"
+    "contentCreatedBy": "द्वारा सिर्जना गरिएको",
+    "coursePreview": "कोर्स पूर्वावलोकन"
 }

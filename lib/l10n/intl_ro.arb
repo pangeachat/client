@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-09 11:25:01.331043",
+    "@@last_modified": "2026-09-10 09:51:43.550829",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10640,5 +10640,6 @@
     "upNext": "Urmează",
     "writingAssistanceSuggestion": "Sugestie",
     "errorFetchingWordInfo": "Nu s-au putut prelua informațiile despre cuvânt",
-    "contentCreatedBy": "Creat de"
+    "contentCreatedBy": "Creat de",
+    "coursePreview": "Previzualizare curs"
 }

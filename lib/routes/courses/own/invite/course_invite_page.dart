@@ -19,6 +19,7 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/routes/courses/course_cta_row.dart';
 import 'package:fluffychat/routes/courses/course_info_chip_widget.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -235,11 +236,11 @@ class CourseInvitePageController extends State<CourseInvitePage>
         ? const CircularProgressIndicator.adaptive()
         : const SizedBox();
 
-    final buttons = Column(
-      spacing: 16.0,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        ElevatedButton(
+    final buttons = CourseCtaColumn(
+      actions: [
+        CourseCtaAction(
+          label: L10n.of(context).inviteYourFriends,
+          icon: Icons.upload_file,
           onPressed: () async {
             final resp = await showFutureLoadingDialog(
               context: context,
@@ -259,25 +260,9 @@ class CourseInvitePageController extends State<CourseInvitePage>
               );
             }
           },
-          style: ElevatedButton.styleFrom(
-            backgroundColor: theme.colorScheme.primaryContainer,
-            foregroundColor: theme.colorScheme.onPrimaryContainer,
-          ),
-          child: Row(
-            spacing: 8.0,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Icon(Icons.upload_file),
-              Flexible(
-                child: Text(
-                  L10n.of(context).inviteYourFriends,
-                  textAlign: TextAlign.center,
-                ),
-              ),
-            ],
-          ),
         ),
-        ElevatedButton(
+        CourseCtaAction(
+          label: L10n.of(context).playWithAI,
           onPressed: () async {
             final resp = await showFutureLoadingDialog(
               context: context,
@@ -294,22 +279,6 @@ class CourseInvitePageController extends State<CourseInvitePage>
               );
             }
           },
-          style: ElevatedButton.styleFrom(
-            backgroundColor: theme.colorScheme.primaryContainer,
-            foregroundColor: theme.colorScheme.onPrimaryContainer,
-          ),
-          child: Row(
-            spacing: 8.0,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Flexible(
-                child: Text(
-                  L10n.of(context).playWithAI,
-                  textAlign: TextAlign.center,
-                ),
-              ),
-            ],
-          ),
         ),
       ],
     );

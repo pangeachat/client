@@ -55,6 +55,9 @@ class ObjectiveSection extends StatefulWidget {
   /// resolver's anchor (#8357).
   final bool isUpNext;
 
+  /// Passed through to [ActivityCarousel.interactive].
+  final bool interactive;
+
   const ObjectiveSection({
     super.key,
     required this.group,
@@ -70,6 +73,7 @@ class ObjectiveSection extends StatefulWidget {
     this.spacing = 16.0,
     this.cardWidth,
     this.cardHeight,
+    this.interactive = true,
   });
 
   @override
@@ -259,6 +263,7 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
               spacing: widget.spacing,
               cardWidth: widget.cardWidth,
               cardHeight: widget.cardHeight,
+              interactive: widget.interactive,
             ),
         ],
       ),

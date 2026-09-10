@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-09-09 11:25:02.707393",
+    "@@last_modified": "2026-09-10 09:51:45.287140",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2312,5 +2312,6 @@
     "upNext": "Okulandelayo",
     "writingAssistanceSuggestion": "Ingcebiso",
     "errorFetchingWordInfo": "Ayiphumelelanga ukufumana ulwazi lwegama",
-    "contentCreatedBy": "Yenziwe ngu"
+    "contentCreatedBy": "Yenziwe ngu",
+    "coursePreview": "Ujongo lwekhosi"
 }

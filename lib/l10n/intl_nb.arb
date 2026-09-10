@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-09 11:25:00.826031",
+    "@@last_modified": "2026-09-10 09:51:42.843520",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9965,5 +9965,6 @@
     "upNext": "Neste",
     "writingAssistanceSuggestion": "Forslag",
     "errorFetchingWordInfo": "Kunne ikke hente ordinformasjon",
-    "contentCreatedBy": "Opprettet av"
+    "contentCreatedBy": "Opprettet av",
+    "coursePreview": "Forhåndsvisning av kurs"
 }

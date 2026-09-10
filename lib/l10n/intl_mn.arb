@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-09-09 11:25:00.277834",
+    "@@last_modified": "2026-09-10 09:51:42.559486",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2312,5 +2312,6 @@
     "upNext": "Дараагийнх",
     "writingAssistanceSuggestion": "Санал",
     "errorFetchingWordInfo": "Үгийн мэдээлэл татаж чадсангүй",
-    "contentCreatedBy": "Үүсгэсэн"
+    "contentCreatedBy": "Үүсгэсэн",
+    "coursePreview": "Хичээлийн урьдчилсан харах"
 }

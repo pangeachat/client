@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-09-09 11:25:00.564117",
+    "@@last_modified": "2026-09-10 09:51:42.625598",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2312,5 +2312,6 @@
     "upNext": "തുടർന്നുള്ളത്",
     "writingAssistanceSuggestion": "ꯁल्लाह",
     "errorFetchingWordInfo": "ꯋꯥꯔꯗ ꯏꯟꯐꯣ ꯄꯨꯊꯣꯛꯄꯗ ꯑꯔꯣꯟꯕ",
-    "contentCreatedBy": "শেমখিবশিং"
+    "contentCreatedBy": "শেমখিবশিং",
+    "coursePreview": "কোর্স প্রিভিউ"
 }

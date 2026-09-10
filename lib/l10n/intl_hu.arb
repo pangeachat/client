@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-09-09 11:24:59.021830",
+    "@@last_modified": "2026-09-10 09:51:41.159851",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10011,5 +10011,6 @@
     "upNext": "Következő",
     "writingAssistanceSuggestion": "Javaslat",
     "errorFetchingWordInfo": "A szóadatok lekérése sikertelen",
-    "contentCreatedBy": "Létrehozta"
+    "contentCreatedBy": "Létrehozta",
+    "coursePreview": "Tanfolyam előnézete"
 }

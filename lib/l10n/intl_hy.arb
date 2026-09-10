@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-09-09 11:24:58.973213",
+    "@@last_modified": "2026-09-10 09:51:41.226145",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2312,5 +2312,6 @@
     "upNext": "Հաջորդը",
     "writingAssistanceSuggestion": "Առաջարկ",
     "errorFetchingWordInfo": "Բառի տեղեկությունները բեռնել չհաջողվեց",
-    "contentCreatedBy": "Ստեղծվել է"
+    "contentCreatedBy": "Ստեղծվել է",
+    "coursePreview": "Դասընթացի նախադիտում"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-09-09 11:24:57.925487",
+    "@@last_modified": "2026-09-10 09:51:40.257388",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9908,5 +9908,6 @@
     "upNext": "Jarraian",
     "writingAssistanceSuggestion": "Iradokizuna",
     "errorFetchingWordInfo": "Ezin izan da hitzaren informazioa eskuratu",
-    "contentCreatedBy": "Nork sortua"
+    "contentCreatedBy": "Nork sortua",
+    "coursePreview": "Ikastaroaren aurrebista"
 }

@@ -1802,7 +1802,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-09-09 11:25:01.566365",
+    "@@last_modified": "2026-09-10 09:51:43.844829",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10853,5 +10853,6 @@
     "upNext": "Sledi",
     "writingAssistanceSuggestion": "Predlog",
     "errorFetchingWordInfo": "Pridobivanje informacij o besedi ni uspelo",
-    "contentCreatedBy": "Ustvaril"
+    "contentCreatedBy": "Ustvaril",
+    "coursePreview": "Predogled tečaja"
 }
