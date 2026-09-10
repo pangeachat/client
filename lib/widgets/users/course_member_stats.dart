@@ -97,7 +97,11 @@ class _CourseMemberStatsState extends State<CourseMemberStats> {
           fit: BoxFit.scaleDown,
           child: Row(
             mainAxisSize: MainAxisSize.min,
-            spacing: 4.0,
+            // Wider than the 2.0 inside each icon-and-count pair, so the two
+            // pairs read as two values and not as one run of four things
+            // (#8918). The card has room: the widest real row, two digits on
+            // both counts, still comes in well under its 100px.
+            spacing: 6.0,
             children: [
               if (stars != null && stars > 0)
                 Tooltip(
@@ -126,7 +130,15 @@ class _CourseMemberStatsState extends State<CourseMemberStats> {
                   ),
                 ),
               if (level != null)
-                LevelRibbon(level: level, height: widget.iconSize + 2.0),
+                LevelRibbon(
+                  level: level,
+                  // Sized to read as the same mark as the star beside it, not
+                  // to the same nominal number — see [heightForIconSize].
+                  height: LevelRibbon.heightForIconSize(widget.iconSize),
+                  // The star total's shape, one pair beside the other.
+                  numberPlacement: LevelNumberPlacement.trailing,
+                  numberStyle: widget.textStyle,
+                ),
             ],
           ),
         );
