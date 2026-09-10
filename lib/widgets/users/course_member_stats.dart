@@ -126,7 +126,13 @@ class _CourseMemberStatsState extends State<CourseMemberStats> {
                   ),
                 ),
               if (level != null)
-                LevelRibbon(level: level, height: widget.iconSize + 2.0),
+                LevelRibbon(
+                  level: level,
+                  height: widget.iconSize + 2.0,
+                  // The star total's shape, one pair beside the other.
+                  numberPlacement: LevelNumberPlacement.trailing,
+                  numberStyle: widget.textStyle,
+                ),
             ],
           ),
         );
