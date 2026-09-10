@@ -13,6 +13,13 @@ class Requests {
 
   Requests({this.accessToken});
 
+  /// `METHOD /normalized/path` of the call this carrier is making, so a
+  /// timeout that expires around it can be named after it ([BaseRepo] wraps
+  /// the whole fetch, and the subclass's URL is not in view there). A
+  /// [BaseRepo] creates one carrier per fetch, so this is that fetch's own
+  /// call.
+  String? inFlight;
+
   Future<http.Response> post({
     required String url,
     required Map<dynamic, dynamic> body,
@@ -26,6 +33,7 @@ class Requests {
     dynamic encoded;
     encoded = jsonEncode(enrichedBody);
 
+    inFlight = 'POST ${PangeaHttpException.normalizePath(Uri.parse(url))}';
     final http.Response response = await http.post(
       Uri.parse(url),
       body: encoded,
@@ -44,6 +52,7 @@ class Requests {
     required String url,
     ErrorResponseParser? errorResponseParser,
   }) async {
+    inFlight = 'GET ${PangeaHttpException.normalizePath(Uri.parse(url))}';
     final http.Response response = await http.get(
       Uri.parse(url),
       headers: _headers,

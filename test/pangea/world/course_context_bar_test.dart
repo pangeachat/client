@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:ui' show Tristate;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -241,5 +242,46 @@ void main() {
 
     expect(find.byType(CourseHeaderActions), findsNothing);
     expect(find.byType(ChevronToggle), findsOneWidget);
+  });
+
+  testWidgets('the chevron is its one announced control, saying collapsed', (
+    tester,
+  ) async {
+    final semantics = tester.ensureSemantics();
+    await pumpBar(tester);
+
+    // The bar is a named GROUP. It used to be one big button holding its own
+    // share action and star track, and a screen reader walked straight past
+    // the container to those children — leaving the expand affordance
+    // reachable by pointer only.
+    final bar = tester.getSemantics(find.byType(CourseContextBar));
+    expect(bar.flagsCollection.isButton, isFalse);
+    expect(bar.label, contains(courseName));
+
+    // The chevron is the control, carrying the state the open card's chevron
+    // carries expanded, so one control reads the same way in both states.
+    final chevron = tester.getSemantics(
+      find.descendant(
+        of: find.byType(ChevronToggle),
+        matching: find.byType(IconButton),
+      ),
+    );
+    expect(chevron.flagsCollection.isButton, isTrue);
+    expect(chevron.flagsCollection.isExpanded, Tristate.isFalse);
+    expect(chevron.id, isNot(bar.id), reason: 'a stop of its own');
+
+    // The whole-surface tap stays for pointers: it announces nothing and
+    // takes no focus, so it is no invisible dead stop for a keyboard user.
+    final surface = tester.widget<InkWell>(
+      find
+          .descendant(
+            of: find.byType(CourseContextBar),
+            matching: find.byType(InkWell),
+          )
+          .first,
+    );
+    expect(surface.excludeFromSemantics, isTrue);
+    expect(surface.canRequestFocus, isFalse);
+    semantics.dispose();
   });
 }

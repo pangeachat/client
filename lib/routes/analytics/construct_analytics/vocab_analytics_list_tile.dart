@@ -4,6 +4,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_level_enum.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/pangea/common/widgets/shrinkable_text.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -22,6 +23,11 @@ class VocabAnalyticsListTile extends StatelessWidget {
   /// no Matrix at all, which is what makes this tile widget-testable.
   final bool listen;
 
+  /// This tile's id in the enclosing [RovingFocusGroup]: the word grid is one
+  /// Tab stop, with the arrow keys moving between tiles (#8935). Null for a
+  /// tile outside a group.
+  final String? rovingId;
+
   /// Renders the deleted-vocab treatment: dimmed, and named as deleted in the
   /// tile's accessible name since dimming alone doesn't reach a screen reader.
   final bool blocked;
@@ -36,6 +42,7 @@ class VocabAnalyticsListTile extends StatelessWidget {
     this.selected = false,
     this.listen = true,
     this.blocked = false,
+    this.rovingId,
   });
 
   final double maxWidth = 100;
@@ -43,6 +50,11 @@ class VocabAnalyticsListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final rovingId = this.rovingId;
+    final focusNode = rovingId == null
+        ? null
+        : RovingFocusGroup.nodeOf(context, rovingId);
+
     // The stream is hoisted above the whole tile (not just the emoji slot) so
     // the accessible name below can carry a live emoji change too (#8726).
     return StreamBuilder(
@@ -63,46 +75,49 @@ class VocabAnalyticsListTile extends StatelessWidget {
             type: MaterialType.transparency,
             child: InkWell(
               borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+              focusNode: focusNode,
               onTap: onTap,
               onLongPress: onLongPress,
-              child: Container(
-                height: maxWidth,
-                width: maxWidth,
-                padding: EdgeInsets.all(padding),
-                decoration: BoxDecoration(
-                  color: hovered || selected
-                      ? textColor.withAlpha(20)
-                      : Colors.transparent,
-                  borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      alignment: Alignment.center,
-                      height: (maxWidth - padding * 2) * 0.6,
-                      child: emoji != null
-                          ? Text(emoji, style: const TextStyle(fontSize: 22))
-                          : Text(
-                              "-",
-                              style: TextStyle(
-                                fontSize: 32,
-                                fontWeight: FontWeight.bold,
-                                color: textColor.withAlpha(100),
+              child: ExcludeSemantics(
+                child: Container(
+                  height: maxWidth,
+                  width: maxWidth,
+                  padding: EdgeInsets.all(padding),
+                  decoration: BoxDecoration(
+                    color: hovered || selected
+                        ? textColor.withAlpha(20)
+                        : Colors.transparent,
+                    borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        alignment: Alignment.center,
+                        height: (maxWidth - padding * 2) * 0.6,
+                        child: emoji != null
+                            ? Text(emoji, style: const TextStyle(fontSize: 22))
+                            : Text(
+                                "-",
+                                style: TextStyle(
+                                  fontSize: 32,
+                                  fontWeight: FontWeight.bold,
+                                  color: textColor.withAlpha(100),
+                                ),
                               ),
-                            ),
-                    ),
-                    Container(
-                      alignment: Alignment.center,
-                      padding: const EdgeInsets.only(top: 4),
-                      height: (maxWidth - padding * 2) * 0.4,
-                      child: ShrinkableText(
-                        text: constructId.lemma,
-                        maxWidth: maxWidth - padding * 2,
-                        style: TextStyle(fontSize: 16, color: textColor),
                       ),
-                    ),
-                  ],
+                      Container(
+                        alignment: Alignment.center,
+                        padding: const EdgeInsets.only(top: 4),
+                        height: (maxWidth - padding * 2) * 0.4,
+                        child: ShrinkableText(
+                          text: constructId.lemma,
+                          maxWidth: maxWidth - padding * 2,
+                          style: TextStyle(fontSize: 16, color: textColor),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -125,17 +140,18 @@ class VocabAnalyticsListTile extends StatelessWidget {
         // announced as "-, <lemma>" — and the word's growth stage reached
         // assistive tech nowhere.
         final l10n = L10n.of(context);
+        //
+        // The content is excluded inside the InkWell, not around it, so the
+        // InkWell's tap, long-press and focus merge into this named node
+        // (#8872): excluding from outside left a named button that was not
+        // focusable, so Tab walked the tiles invisibly to assistive tech.
         return Semantics(
           label: blocked
               ? l10n.deletedWordLabel(constructId.lemma)
               : [constructId.lemma, ?emoji, level.displayName(l10n)].join(', '),
           button: true,
           container: true,
-          onTap: onTap,
-          onLongPress: onLongPress,
-          child: ExcludeSemantics(
-            child: blocked ? Opacity(opacity: 0.5, child: tile) : tile,
-          ),
+          child: blocked ? Opacity(opacity: 0.5, child: tile) : tile,
         );
       },
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/features/tutorials/tutorial_copy.dart';
+import 'package:fluffychat/features/tutorials/tutorial_sequences.dart';
 import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_tooltip_widget.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -11,11 +12,14 @@ class TutorialTooltipContainerWidget extends StatelessWidget {
   final double padding;
   final String text;
 
-  final VoidCallback onNext;
-  final VoidCallback onPrevious;
+  /// Names the run on the card, so back-to-back sequences (activity goals,
+  /// then the chat tools) read as different walkthroughs with different
+  /// progress rather than one that mysteriously restarted.
+  final TutorialSequenceKind? sequenceKind;
 
-  final bool showNext;
-  final bool showPrevious;
+  /// Skips the whole running sequence. Null hides the control — the steps
+  /// where skipping is unavailable (armed, branch) and uncatalogued sequences.
+  final VoidCallback? onSkip;
 
   final int currentStep;
   final int totalSteps;
@@ -35,10 +39,8 @@ class TutorialTooltipContainerWidget extends StatelessWidget {
     required this.height,
     required this.text,
     this.padding = 8.0,
-    required this.onNext,
-    required this.onPrevious,
-    this.showNext = true,
-    this.showPrevious = false,
+    this.sequenceKind,
+    this.onSkip,
     required this.currentStep,
     required this.totalSteps,
     this.choices = const [],
@@ -48,71 +50,28 @@ class TutorialTooltipContainerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Material(
       color: Colors.transparent,
       elevation: 4,
       child: SizedBox(
         width: width + padding * 2,
         height: height + padding,
-        child: Stack(
-          children: [
-            Align(
-              alignment: Alignment.topCenter,
-              child: SizedBox(
-                width: width,
-                height: height,
-                child: TutorialTooltipWidget(
-                  text: text,
-                  currentStep: currentStep,
-                  totalSteps: totalSteps,
-                  choices: choices,
-                  onChoice: onChoice,
-                  wordBubble: wordBubble,
-                ),
-              ),
+        child: Align(
+          alignment: Alignment.topCenter,
+          child: SizedBox(
+            width: width,
+            height: height,
+            child: TutorialTooltipWidget(
+              text: text,
+              currentStep: currentStep,
+              totalSteps: totalSteps,
+              sequenceTitle: sequenceKind?.title(L10n.of(context)),
+              onSkip: onSkip,
+              choices: choices,
+              onChoice: onChoice,
+              wordBubble: wordBubble,
             ),
-            if (showNext)
-              Positioned(
-                bottom: 0,
-                right: 0,
-                child: ElevatedButton(
-                  onPressed: onNext,
-                  style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.zero,
-                    minimumSize: const Size(56, 24),
-                    foregroundColor: theme.colorScheme.onPrimary,
-                    backgroundColor: theme.colorScheme.primary,
-                  ),
-                  child: Text(
-                    L10n.of(context).next,
-                    style: theme.textTheme.labelSmall?.copyWith(
-                      color: theme.colorScheme.onPrimary,
-                    ),
-                  ),
-                ),
-              ),
-            if (showPrevious)
-              Positioned(
-                bottom: 0,
-                left: 0,
-                child: ElevatedButton(
-                  onPressed: onPrevious,
-                  style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.zero,
-                    minimumSize: const Size(56, 24),
-                    foregroundColor: theme.colorScheme.onSecondary,
-                    backgroundColor: theme.colorScheme.secondary,
-                  ),
-                  child: Text(
-                    L10n.of(context).previous,
-                    style: theme.textTheme.labelSmall?.copyWith(
-                      color: theme.colorScheme.onSecondary,
-                    ),
-                  ),
-                ),
-              ),
-          ],
+          ),
         ),
       ),
     );

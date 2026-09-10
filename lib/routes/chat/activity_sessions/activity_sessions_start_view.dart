@@ -16,6 +16,7 @@ import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/content_creator_chip.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_rating_meter.dart';
@@ -26,7 +27,6 @@ import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_
 import 'package:fluffychat/routes/chat/activity_sessions/activity_start_hero.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_vocab_widget.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
-import 'package:fluffychat/routes/home/pangea_logo_svg.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
@@ -342,6 +342,8 @@ class ActivitySessionStartView extends StatelessWidget {
                                   padding: const EdgeInsets.all(12.0),
                                   child: ActivitySessionBottomContent(
                                     sessionController,
+                                    openSessionsTargetId:
+                                        controller.openSessionsTargetId,
                                   ),
                                 ),
                               ],
@@ -415,8 +417,9 @@ class _WaitingRoomMenuButton extends StatelessWidget {
 /// The always-visible second row under the title: who made the activity and
 /// its at-a-glance facts (L2, level, participant count, rating). It sits above
 /// the scrollable body so a map explorer sees the essentials without expanding
-/// the sheet. Creator is fixed to PangeaChat until learners can author their
-/// own activities. See activity-start-page.instructions.md.
+/// the sheet. The creator is the plan's own owner — Pangea's name and logo
+/// only for content Pangea genuinely owns ([ContentCreatorChip]), never for a
+/// teacher's. See activity-start-page.instructions.md.
 class _ActivityStartInfoRow extends StatelessWidget {
   final ActivityPlanModel activity;
 
@@ -433,27 +436,10 @@ class _ActivityStartInfoRow extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(12.0, 0.0, 8.0, 8.0),
       child: Row(
         children: [
-          Container(
-            width: 28.0,
-            height: 28.0,
-            padding: const EdgeInsets.all(5.0),
-            decoration: BoxDecoration(
-              color: theme.colorScheme.primaryContainer,
-              shape: BoxShape.circle,
-            ),
-            child: const PangeaLogoSvg(width: 18.0),
-          ),
-          const SizedBox(width: 8.0),
-          Expanded(
-            child: Text(
-              'PangeaChat',
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: theme.textTheme.bodyMedium?.copyWith(
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ),
+          // An activity whose read path carries no owner credits nobody: the
+          // chip collapses and the Expanded keeps the facts to the right in
+          // place, rather than crediting Pangea for someone else's work.
+          Expanded(child: ContentCreatorChip(ownerId: activity.ownerId)),
           const SizedBox(width: 8.0),
           // Never empty: the flag when the language resolves to one, else a
           // langcode chip (shared with the analytics cluster's flag). Doubles

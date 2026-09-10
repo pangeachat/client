@@ -27,11 +27,17 @@ class LemmaUsageChips extends StatelessWidget {
   final String tooltip;
   final IconData icon;
 
+  /// Hearings recorded but not yet drained into the store — held in memory
+  /// until the analytics heartbeat, up to five minutes. Shown on top of the
+  /// stored count so the chip moves with the playback, not the drain (#8913).
+  final int pendingHeard;
+
   const LemmaUsageChips({
     required this.construct,
     required this.category,
     required this.tooltip,
     required this.icon,
+    this.pendingHeard = 0,
     super.key,
   });
 
@@ -75,10 +81,10 @@ class LemmaUsageChips extends StatelessWidget {
   /// heard most — and one exposure row stands for a whole five-minute window of
   /// hearings, so counting rows would report a number far below what happened.
   int exposureCount(LearningSkillsEnum category) {
-    var total = 0;
+    if (category != ConstructUseTypeEnum.hrd.skillsEnumType) return 0;
+    var total = pendingHeard;
     for (final OneConstructUse use in construct.uses) {
       if (use.useType != ConstructUseTypeEnum.hrd) continue;
-      if (category != use.useType.skillsEnumType) continue;
       total += use.count;
     }
     return total;

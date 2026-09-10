@@ -1,4 +1,7 @@
+import 'dart:ui' show Tristate;
+
 import 'package:flutter/material.dart';
+import 'package:flutter/semantics.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
@@ -108,33 +111,58 @@ void main() {
     });
   });
 
-  testWidgets('reports its expanded state, unless the host already announces '
-      'the action', (tester) async {
-    final expandedNode = find.byWidgetPredicate(
-      (w) => w is Semantics && w.properties.expanded == true,
-    );
+  group('the expanded state rides the chevron\'s own button node', () {
+    // Every host draws the chevron inside a named group of its own — the
+    // course card's "Course details page", the cavity's panel. A bare
+    // `Semantics` is not a boundary, so its flag merges UP into that group
+    // and the screen reader announces the state on the page while the
+    // control the learner is actually on announces none.
+    const hostKey = Key('host group');
 
-    await pump(
+    Future<void> pumpInHost(WidgetTester tester, Widget chevron) => pump(
       tester,
-      ChevronToggle(
-        expanded: true,
-        onTap: () {},
-        meaning: ChevronMeaning.motion,
+      Semantics(
+        key: hostKey,
+        container: true,
+        label: 'Course details page',
+        child: chevron,
       ),
     );
-    expect(expandedNode, findsOneWidget);
 
-    // The context bar is itself one button announcing "go to course", so a
-    // nested node here would announce the same tap twice.
-    await pump(
-      tester,
-      ChevronToggle(
-        expanded: true,
-        onTap: () {},
-        meaning: ChevronMeaning.motion,
-        excludeSemantics: true,
-      ),
-    );
-    expect(expandedNode, findsNothing);
+    SemanticsNode buttonNode(WidgetTester tester) =>
+        tester.getSemantics(find.byType(IconButton));
+    SemanticsNode hostNode(WidgetTester tester) =>
+        tester.getSemantics(find.byKey(hostKey));
+
+    testWidgets('the button carries it, in both states', (tester) async {
+      final semantics = tester.ensureSemantics();
+
+      await pumpInHost(
+        tester,
+        ChevronToggle(
+          expanded: true,
+          onTap: () {},
+          meaning: ChevronMeaning.motion,
+        ),
+      );
+      // One node, the button's own: it announces what it is AND what state
+      // it is in — no extra node between the learner and the control.
+      expect(buttonNode(tester).flagsCollection.isButton, isTrue);
+      expect(buttonNode(tester).flagsCollection.isExpanded, Tristate.isTrue);
+      // ...and the group around it announces no state of its own.
+      expect(hostNode(tester).flagsCollection.isExpanded, Tristate.none);
+
+      await pumpInHost(
+        tester,
+        ChevronToggle(
+          expanded: false,
+          onTap: () {},
+          meaning: ChevronMeaning.motion,
+        ),
+      );
+      expect(buttonNode(tester).flagsCollection.isExpanded, Tristate.isFalse);
+      expect(hostNode(tester).flagsCollection.isExpanded, Tristate.none);
+      semantics.dispose();
+    });
   });
 }

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_feedback_repo.dart';
@@ -15,16 +16,27 @@ import 'package:fluffychat/features/activity_sessions/activity_room_extension.da
 import 'package:fluffychat/features/activity_sessions/activity_session_discovery.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/analytics_data/analytics_updater_mixin.dart';
+import 'package:fluffychat/features/navigation/panel_focus.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_close_location.dart';
+import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
+import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/room_summaries/activity_session_previews_extension.dart';
 import 'package:fluffychat/features/room_summaries/room_summaries_model.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
+import 'package:fluffychat/features/tutorials/tutorial_enum.dart';
+import 'package:fluffychat/features/tutorials/tutorial_model.dart';
+import 'package:fluffychat/features/tutorials/tutorial_overlay_controller.dart';
+import 'package:fluffychat/features/tutorials/tutorial_seen_backfill.dart';
+import 'package:fluffychat/features/tutorials/tutorial_sequences.dart';
+import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
+import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_response_dialog.dart';
 import 'package:fluffychat/pangea/extensions/leave_room_extension.dart';
@@ -134,6 +146,13 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
 
   final ScrollController scrollController = ScrollController();
 
+  StreamSubscription? _tutorialRoomStateSubscription;
+
+  /// The role currently picked (not yet confirmed) during role selection,
+  /// published by [SelectRoleSessionController] — the roles tutorial's armed
+  /// step listens for the pick, which is the thing it asked for.
+  final ValueNotifier<String?> pickedRoleNotifier = ValueNotifier(null);
+
   @override
   void initState() {
     super.initState();
@@ -143,6 +162,21 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
     CoursePingBadgeCache.markFollowed(widget.activityId);
     _initSummariesFromCache();
     _load();
+
+    PanelFocusController.instance.addListener(_onPanelFocusChanged);
+    _syncTutorialRegistration();
+    _subscribeTutorialRoomState();
+    // Re-asks, per tutorials.instructions.md ("a trigger keeps asking"): the
+    // profile reports every tutorial as seen until it loads, so its arrival is
+    // a trigger of its own — and so is the veteran backfill's evaluation,
+    // which may be about to mark the roles tutorial seen.
+    MatrixState.pangeaController.userController.initCompleter.future.then(
+      (_) => _maybeStartStartPageTutorials(),
+    );
+    TutorialSeenBackfill.instance.ensureResolved().then(
+      (_) => _maybeStartStartPageTutorials(),
+    );
+    _maybeStartStartPageTutorials();
   }
 
   /// Seed the summaries from the world map's discovery cache when we arrived from
@@ -173,12 +207,26 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
         _initSummariesFromCache();
       });
       _load();
+      _syncTutorialRegistration();
+      _subscribeTutorialRoomState();
     }
+    // Unconditional: the launch flag alone flips [_sessionState] to role
+    // selection with no id change, and narrow layouts publish no focus token
+    // that would otherwise re-ask.
+    _maybeStartStartPageTutorials();
   }
 
   @override
   void dispose() {
     scrollController.dispose();
+    pickedRoleNotifier.dispose();
+    PanelFocusController.instance.removeListener(_onPanelFocusChanged);
+    _tutorialRoomStateSubscription?.cancel();
+    _unregisterTutorialLaunchers();
+    // A sequence this page owns can't be shown by anyone else — give it up so
+    // anything queued behind it isn't stranded. Progress is already saved.
+    _tutorials.releaseSequence(TutorialSequences.openSessionsSequence);
+    _tutorials.releaseSequence(TutorialSequences.activityRolesSequence);
     super.dispose();
   }
 
@@ -241,7 +289,10 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
     // Refresh summary-derived UI (member counts, role availability) when it
     // lands; never awaited, so a slow or stalled summary fetch cannot block the
     // activity-or-error render.
-    if (mounted) unawaited(_loadSummary());
+    if (mounted) {
+      unawaited(_loadSummary());
+      _maybeStartStartPageTutorials();
+    }
   }
 
   Future<void> _loadSummary() async {
@@ -279,18 +330,25 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
     }
     try {
       final l1Code = MatrixState.pangeaController.userController.userL1Code;
-      final results = await Future.wait([
-        courseSpaceIds.isNotEmpty
-            ? client.loadActivitySessionPreviews(
-                courseSpaceIds,
-                activityId: widget.activityId,
-                l1Code: l1Code,
-              )
-            : Future.value(<String, RoomSummaryResponse>{}),
-        extraRoomIds.isNotEmpty
-            ? client.loadRoomSummaries(extraRoomIds.toList(), l1Code: l1Code)
-            : Future.value(<String, RoomSummaryResponse>{}),
-      ]).timeout(const Duration(seconds: 30));
+      final results =
+          await Future.wait([
+            courseSpaceIds.isNotEmpty
+                ? client.loadActivitySessionPreviews(
+                    courseSpaceIds,
+                    activityId: widget.activityId,
+                    l1Code: l1Code,
+                  )
+                : Future.value(<String, RoomSummaryResponse>{}),
+            extraRoomIds.isNotEmpty
+                ? client.loadRoomSummaries(
+                    extraRoomIds.toList(),
+                    l1Code: l1Code,
+                  )
+                : Future.value(<String, RoomSummaryResponse>{}),
+          ]).timeoutNamed(
+            const Duration(seconds: 30),
+            'loadRoomSummaries: activity start page',
+          );
       if (!mounted) return;
       setState(() {
         _roomSummariesModel = ActivitySessionSummariesModel({
@@ -309,6 +367,9 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
           results[0],
         );
       }
+      // The summaries decide what the join list shows — their arrival is a
+      // tutorial re-ask.
+      _maybeStartStartPageTutorials();
     } catch (e, s) {
       // Summaries are non-essential (member counts / role availability); a slow
       // or stalled preview read must not block or fail the activity render, so
@@ -552,6 +613,227 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
     }
 
     return SessionState.confirmedRole;
+  }
+
+  // Tutorial hosting: the open-sessions and role-selection orientation steps.
+  // This state hosts because it owns [_sessionState], the gate both read.
+  // Design: tutorials.instructions.md.
+
+  TutorialOverlayController get _tutorials =>
+      MatrixState.tutorialOverlayController;
+
+  bool _tutorialCheckScheduled = false;
+  bool _tutorialLaunchersRegistered = false;
+
+  /// Whether THIS instance is the focused start page — the only one allowed to
+  /// claim the tutorial targets and drive the sequences, because the page can
+  /// be mounted twice at once (an `activity` panel and a session room's start
+  /// view) and a target id has one claimant ([TutorialTarget]). Mirrors
+  /// [ChatController.isFocused]: the shell publishes the one live left token;
+  /// with none published, this is the single route-driven mount.
+  bool get _hostsTutorial {
+    final focused = PanelFocusController.instance.focusedLeftToken;
+    if (focused == null) return true;
+    try {
+      final param = PanelToken.parse(focused)?.param;
+      if (param is ActivityTokenParam) {
+        return param.activityId == widget.activityId;
+      }
+      if (param is RoomTokenParam) {
+        final roomId = widget.roomId;
+        return roomId != null && shortRoomId(param.id) == shortRoomId(roomId);
+      }
+      return false;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  /// The join list's target id, passed into the view only while this instance
+  /// hosts — the non-hosting mount gets null and stays a pass-through.
+  String? get openSessionsTargetId =>
+      _hostsTutorial ? TutorialTargetIds.openSessionsList : null;
+
+  /// The role grid's target id; same hosting rule as [openSessionsTargetId].
+  String? get activityRolesTargetId =>
+      _hostsTutorial ? TutorialTargetIds.activityRolesList : null;
+
+  /// A tutorial surface changed below this state's own setState horizon —
+  /// the sub-page switched ([NotStartedSessionController]), or a target
+  /// finished mounting ([TutorialTarget.onMounted], which on mobile happens
+  /// only after the sheet's expand animation crosses the compact threshold).
+  void onTutorialSurfaceChanged() => _maybeStartStartPageTutorials();
+
+  void _onPanelFocusChanged() {
+    if (!mounted) return;
+    // The target-id getters read [_hostsTutorial]; rebuild so the pass-downs
+    // re-evaluate before the registration check runs post-frame.
+    setState(() {});
+    _syncTutorialRegistration();
+    _maybeStartStartPageTutorials();
+  }
+
+  /// Registers this instance's launchers while it hosts, and withdraws them
+  /// when focus moves — a non-hosting instance left registered would win the
+  /// launcher slot and no-op forever.
+  void _syncTutorialRegistration() {
+    final shouldHost = _hostsTutorial;
+    if (shouldHost == _tutorialLaunchersRegistered) return;
+    if (shouldHost) {
+      _tutorials.registerLauncher(
+        TutorialEnum.openSessions,
+        _launchOpenSessionsTutorial,
+      );
+      _tutorials.registerLauncher(
+        TutorialEnum.activityRoles,
+        _launchActivityRolesTutorial,
+      );
+    } else {
+      _unregisterTutorialLaunchers();
+      return;
+    }
+    _tutorialLaunchersRegistered = true;
+  }
+
+  void _unregisterTutorialLaunchers() {
+    _tutorials.unregisterLauncher(
+      TutorialEnum.openSessions,
+      _launchOpenSessionsTutorial,
+    );
+    _tutorials.unregisterLauncher(
+      TutorialEnum.activityRoles,
+      _launchActivityRolesTutorial,
+    );
+    _tutorialLaunchersRegistered = false;
+  }
+
+  void _subscribeTutorialRoomState() {
+    _tutorialRoomStateSubscription?.cancel();
+    _tutorialRoomStateSubscription = null;
+    final roomId = widget.roomId;
+    if (roomId == null) return;
+    // Role and membership state gate [_sessionState]; each arrival is a re-ask.
+    _tutorialRoomStateSubscription = Matrix.of(context)
+        .client
+        .onRoomState
+        .stream
+        .where((update) => update.roomId == roomId)
+        .listen((_) => _maybeStartStartPageTutorials());
+  }
+
+  /// Coalesces re-asks from every signal into one post-frame check.
+  void _maybeStartStartPageTutorials() {
+    if (_tutorialCheckScheduled) return;
+    _tutorialCheckScheduled = true;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _tutorialCheckScheduled = false;
+      _checkStartPageTutorials();
+    });
+    // A post-frame callback only runs if a frame is coming; without asking for
+    // one, a between-frames re-ask latches the flag and swallows all later ones.
+    WidgetsBinding.instance.ensureVisualUpdate();
+  }
+
+  void _checkStartPageTutorials() {
+    if (!mounted || !_hostsTutorial) return;
+    // An unloaded profile reports every tutorial as already seen — not a "no".
+    if (!MatrixState
+        .pangeaController
+        .userController
+        .initCompleter
+        .isCompleted) {
+      return;
+    }
+    // The veteran backfill may be about to mark the roles tutorial seen —
+    // wait for its one evaluation; resolution re-asks (initState).
+    if (!TutorialSeenBackfill.instance.isResolved) return;
+
+    // The target being on screen is the surface gate: the role grid only
+    // renders during role selection, and the join list only on the Join
+    // sub-page with sessions actually listed — a tutorial never fires onto an
+    // empty or still-loading surface.
+    final state = _sessionState;
+    if (state == SessionState.selectRole &&
+        _tutorials.isPending(TutorialEnum.activityRoles) &&
+        _targetOnScreen(TutorialTargetIds.activityRolesList)) {
+      _requestOrResume(TutorialSequences.activityRolesSequence);
+      return;
+    }
+    if (state == SessionState.notStarted &&
+        _tutorials.isPending(TutorialEnum.openSessions) &&
+        _targetOnScreen(TutorialTargetIds.openSessionsList)) {
+      _requestOrResume(TutorialSequences.openSessionsSequence);
+    }
+  }
+
+  bool _targetOnScreen(String targetId) =>
+      MatrixState.pAnyState.getRenderBox(targetId) != null;
+
+  void _requestOrResume(TutorialSequence sequence) {
+    if (_tutorials.hasActiveSequence) {
+      _tutorials.resumeIfStranded();
+    }
+    // Queues when another sequence holds the overlay — the world tutorial that
+    // just opened this page finishes first, then this runs.
+    _tutorials.requestSequence(sequence);
+  }
+
+  // Stable tearoffs (the launcher registry unregisters by identity) over one
+  // shared launch shape: a single ARMED step — every tap reaches the app (a
+  // role gets selected, a session gets joined) and completes the step. Unlike
+  // the map's pin step, which opens its one chosen activity on a tap
+  // anywhere: here the learner is choosing.
+  Future<void> _launchOpenSessionsTutorial() => _launchStartPageTutorial(
+    TutorialEnum.openSessions,
+    TutorialTargetIds.openSessionsList,
+    // Done when they are IN one: the tile's own join flow ends by navigating,
+    // and the route change is the wake-up to check.
+    arming: TutorialStepArming(
+      signal: GoRouter.of(context).routeInformationProvider,
+      isSatisfied: _hasJoinedSessionRoom,
+    ),
+  );
+
+  Future<void> _launchActivityRolesTutorial() => _launchStartPageTutorial(
+    TutorialEnum.activityRoles,
+    TutorialTargetIds.activityRolesList,
+    arming: TutorialStepArming(
+      signal: pickedRoleNotifier,
+      isSatisfied: () => pickedRoleNotifier.value != null,
+    ),
+  );
+
+  /// The joinable-sessions step's "done": the learner holds membership in a
+  /// session room of this activity, which is what tapping a tile produces.
+  bool _hasJoinedSessionRoom() {
+    if (!mounted) return false;
+    return Matrix.of(context).client.rooms.any(
+      (room) =>
+          room.membership == Membership.join &&
+          room.activityId == widget.activityId,
+    );
+  }
+
+  Future<void> _launchStartPageTutorial(
+    TutorialEnum tutorial,
+    String targetKey, {
+    required TutorialStepArming arming,
+  }) async {
+    if (!mounted) return;
+    _tutorials.launchTutorial(
+      context: context,
+      tutorial: TutorialModel(
+        tutorialType: tutorial,
+        stepsData: [
+          TutorialStepData.single(
+            targetKey: targetKey,
+            arming: arming,
+            canShowNextStep: () => true,
+          ),
+        ],
+      ),
+      isFocused: _hostsTutorial,
+    );
   }
 
   @override

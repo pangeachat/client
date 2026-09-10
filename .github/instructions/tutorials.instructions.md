@@ -1,6 +1,6 @@
 ---
 applyTo: "lib/features/tutorials/**,lib/features/instructions/**"
-description: "Click-through tutorials — the sequence/step/target model, the two state layers, the four step kinds, the one-sequence-at-a-time rule, and the two orientation paths (world-first and course-first) every learner takes."
+description: "Click-through tutorials — the sequence/step/target model, the two state layers, the step kinds, the one-sequence-at-a-time rule, the two orientation paths (world-first and course-first) every learner takes, and the veteran backfill that spares old accounts the onboarding."
 ---
 
 # Tutorials (Client)
@@ -18,7 +18,7 @@ Two kinds, and the distinction decides who is offered them:
 |---|---|
 | **Step** | One tooltip over one lit target. |
 | **Tutorial** | An ordered list of steps under one persisted "seen" flag ([`TutorialEnum`](../../lib/features/tutorials/tutorial_enum.dart)). |
-| **Sequence** | An ordered list of tutorials the learner walks as one run, under one progress counter ([`TutorialSequences`](../../lib/features/tutorials/tutorial_sequences.dart)). |
+| **Sequence** | An ordered list of tutorials the learner walks as one run, under one progress counter, one display title, and one Skip control ([`TutorialSequences`](../../lib/features/tutorials/tutorial_sequences.dart)). |
 | **Target** | An on-screen widget addressed by a string id. The widget registers the id; the overlay punches the spotlight there and anchors the tooltip to it. |
 
 Target ids are named constants beside the widget that registers them, never inline strings, so a step and its target are findable from each other. A step may have **no** target: the welcome message is about the app rather than about anything on screen, so it renders as a centered bot card over the darkened screen with no spotlight punched at all.
@@ -30,7 +30,9 @@ Target ids are named constants beside the widget that registers them, never inli
 - **Runtime** — [`TutorialOverlayStateMachine`](../../lib/features/tutorials/tutorial_overlay_controller.dart) holds which tutorial and step is showing and whether a step is mid-transition, and moves only through dispatched events. It is built over **only the tutorials this learner will actually see**, so the `n / total` counter never promises steps that are already seen.
 - **Persisted** — per tutorial, a **seen** flag and a **resume step**, on the learner's Pangea profile ([`InstructionSettings`](../../lib/features/instructions/instruction_settings.dart)). Each forward advance saves the next step; reaching the end sets seen and clears the resume point.
 
-**Abandonment keeps progress but not completion.** A tutorial the learner walks away from — navigating off, closing the screen — resets without being marked seen, so it is offered again from the saved step. Only finishing it, or the one explicit exit (the app tour's *Explore myself*), marks it seen. There is no skip control: a tutorial this short is cheaper to walk than to decide about.
+**Abandonment keeps progress but not completion.** A tutorial the learner walks away from — navigating off, closing the screen — resets without being marked seen, so it is offered again from the saved step. Resuming is per tutorial: a sequence re-entered later picks each of its tutorials up at that tutorial's own saved step, not only the first. Marking seen takes an explicit act — finishing a tutorial, or skipping the sequence.
+
+**Every card carries a Skip control, and skipping is sequence-wide.** Skip sits bottom-left with the sequence's title bottom-right (so back-to-back sequences read as different walkthroughs, not one that restarted), both above the progress bar. Skipping marks every not-yet-seen tutorial of the *running sequence* seen: the learner said no to the walkthrough, not to the card it happened to be showing — marking only the current tutorial let the rest partially re-offer the same walkthrough, which read as the skip not working. On a one-step sequence skipping amounts to finishing; the control is there anyway so the way out is in the same place on every card. That includes armed cards — a tap there completes the step wherever it lands, the Skip label just says so honestly. Two cards go without it: a branch, whose decline choice IS the sequence skip, and the **greeting** — it fronts a longer run the learner hasn't grasped yet, so "Skip" there is ambiguous between "skip this hello" (and get more cards anyway, which reads as broken) and "skip the whole walkthrough". The way out starts on the next card, where the run's progress bar shows what is being skipped.
 
 ## One sequence at a time
 
@@ -46,16 +48,16 @@ A second controller would contend for the same overlay key and the loser would s
 | Kind | Advances when | Holds the screen? |
 |---|---|---|
 | **Tap** | the learner taps anywhere; the step then performs whatever it was pointing at | Yes — nothing but the tutorial responds |
-| **Armed** | the learner does the thing the step asked for, in the app itself | No — see below |
+| **Armed** | any tap while its card is up (the tap also reaches the app) — or, with the card away, the learner doing the thing it asked for | No — see below |
 | **Geometric** | as its underlying kind, over a rect the host computes rather than a registered widget | as its underlying kind |
-| **Branch** | the learner picks one of two labelled choices: advance, or end this tutorial and mark it seen | Yes, and a tap outside the choices does nothing — otherwise a tap toward a button would advance past the question |
+| **Branch** | the learner picks one of two labelled choices: advance, or skip out of the whole sequence | Yes, and a tap outside the choices does nothing — otherwise a tap toward a button would advance past the question |
 | **Multi-target** | as its underlying kind, over several lit targets at once | as its underlying kind |
 
 **A tap step MAY act for the learner.** Tapping anywhere is the whole interaction; the step may then open the toolbar, open the panel it was describing, or open the activity it is pointing at, and gates its advance on that having worked. Most steps are tap steps, because most of what a tutorial does is *show*.
 
 **Acting for the learner is a choice each step earns, not the default.** A step only performs the thing it is describing when that is plainly what the learner would want next. Two do not: the app tour's Practice step, because the button is disabled until ten words are collected; and the activity goal header, because expanding it leads with *"I'm done!"* and a learner nudged into tapping that finishes the activity before playing it. Both simply show where the thing is. When in doubt, show.
 
-**An armed step hands the screen back.** Where the point of the step is that the learner does it themselves — the course plan asking them to open an activity from its carousel — the tutorial cannot absorb their taps. The highlight and tooltip stay, but the learner drives: a tap on a lit target reaches the app, and a tap anywhere else dismisses the overlay while leaving the tutorial **armed at that step**. Such a step says for itself when its surface is no longer in front of the learner, because it has no target whose disappearance would say so. It resumes when the learner does the thing, including in a later app session, since the resume step is saved. So an armed step needs no timeout — a learner can never be stuck under the scrim waiting, and can always ignore the suggestion and come back to it.
+**An armed step hands the screen back.** Where the point of the step is that the learner does it themselves — picking a role, joining an open session, opening an activity from the course carousel — the tutorial cannot absorb their taps: every tap reaches the app. And any tap while the card is up, on the lit target or off it, **also completes the step and marks it seen**: the learner saw the card and acted, and the earlier leave-it-armed dismissal re-offered the same card on every return visit, which read as the tutorial repeating itself. The arming — the step's done-signal — still matters with the card away: a step whose overlay was torn down (its surface unmounted, another sequence ran in front) completes quietly when the learner does the thing anyway. So an armed step needs no timeout: a learner can never be stuck under the scrim waiting.
 
 An armed step also isn't holding the overlay, so another sequence may run in front of it; the armed one resumes afterwards.
 
@@ -85,6 +87,8 @@ A tutorial is offered when it is unseen, its trigger fires, and its gate passes.
 
 **A trigger keeps asking; it does not conclude from a "no".** Everything a gate reads arrives asynchronously — the profile that records what has been seen, a fetched activity plan, panel focus published a frame late — and an unloaded profile reports every tutorial as *already seen*. So a failed check means "not yet", never "nothing to do", and the only state a trigger may latch on is one it has confirmed from loaded data. Checking once on arrival is how a tutorial silently never appears.
 
+**A target mounting is itself a re-ask signal** ([`TutorialTarget.onMounted`](../../lib/features/tutorials/tutorial_target.dart)). A surface can arrive after every other signal has already fired — a mobile sheet finishing its expand animation, a list landing — and a trigger that gates on "is the target on screen" has nothing else that would tell it so.
+
 ## The catalog
 
 | Tutorial | Kind | Offered when |
@@ -94,7 +98,9 @@ A tutorial is offered when it is unseen, its trigger fires, and its gate passes.
 | `coursePlan` | Orientation | first joined course whose page is showing its Activities row |
 | `activityGoals` | Orientation | first activity chat showing a goal header |
 | `appTour` | Orientation | next arrival at a map after the learner's first finished activity |
-| the chat sequence — `readingAssistance`, `selectModeButtons`, `writingAssistance` | Feature | the learner's first L2 message containing a word new to them, while scrolled to the bottom |
+| `openSessions` | Orientation | first open-sessions join list showing, with sessions in it |
+| `activityRoles` | Orientation | first role selection showing its role cards |
+| the chat sequence — `readingAssistance`, `selectModeButtons`, `writingAssistance` | Feature | the learner's first L2 message containing a word new to them, while scrolled near the bottom |
 
 ### Every learner sees both surface tutorials
 
@@ -108,6 +114,14 @@ That yields two paths, and no learner is ever taught the same thing twice:
 | **by course code** | `welcome` + `coursePlan` → `activityGoals` → `appTour`, whose last step is the **World** icon → `worldMap` on the map it opens |
 
 The app tour ending on World is what closes the second path: a course-code learner may never have opened the world map, so the tour hands them to it, and the world tutorial picks up from there.
+
+### Veterans skip what they have already lived
+
+An account with a **finished activity session on record at sign-in** is marked past `welcome`, `worldMap`, `appTour`, `activityGoals`, and `activityRoles`, in one profile write ([`TutorialSeenBackfill`](../../lib/features/tutorials/tutorial_seen_backfill.dart)). Those five narrate a flow this learner has already lived — being greeted, toured, and told what a goal header is annoyed the veterans it happened to. The per-case tutorials stay offerable: the open-sessions list, the chat tools, and the course plan are surfaces a veteran may genuinely never have used, and best usability wins there.
+
+The judgment is made **once per session, when the rooms first load** — a learner who finishes their *first* activity mid-session is not a veteran and keeps their tour. Triggers gate on the evaluation having run, and its resolution re-asks them, because on a big account the map can render pins (and the welcome could fire) before the first sync delivers the rooms that prove the learner a veteran.
+
+Two accepted edges: a learner who resets their tutorials and signs out before walking them all is re-marked on the next sign-in; and the record is *joined* session rooms, so a veteran who left every old session room reads as new and gets the full onboarding.
 
 ### welcome
 
@@ -146,7 +160,7 @@ Mirrors `worldMap` — an introduction to the surface, then "go start one", with
 
 1. **A welcome naming the course**, lighting the **whole course panel** — header, progress and plan sections together — so the step is plainly about *this* course: a learning journey the learner takes with their course mates. A full-height target leaves no room beside it, so the card sits at the bottom **of the panel**, centred on it.
 2. **The course progress bar.** Doing activities and earning **stars** is what moves them along the course. A star is one orchestrator-awarded activity goal and a Mission is a learning objective — [quests](quests.instructions.md) owns both.
-3. **The course page's Activities row** — the ranked, Mission-less shortlist of the plan's activities ([quests](quests.instructions.md)). Armed — the learner picks an activity themselves, from a set their course author chose. The only armed step left; the map's equivalent points at one activity and opens it on a tap.
+3. **The course page's Activities row** — the ranked, Mission-less shortlist of the plan's activities ([quests](quests.instructions.md)). Armed — the learner picks an activity themselves, from a set their course author chose; the map's equivalent points at one activity and opens it on a tap.
 
 **The row, not its individual cards.** A card would need a target id each, and the row re-ranks continuously, so no card is a stable claimant. The row is one widget on the course page, so pointing at it has a single claimant — and it says the more useful thing anyway: *these* are the activities to try next.
 
@@ -160,22 +174,39 @@ One step, one tap. It lights the **goal header** once the activity chat is runni
 
 **It points, and does nothing else** — a tap anywhere dismisses the card. It used to expand the goal list for the learner, which in play misled them: the expanded header leads with **"I'm done!"**, so a step whose whole message is *here is what to play for* handed them the button that ends the activity before they had said anything. Showing where something lives is not the same as opening it.
 
-**Nothing else inside an activity gets a step.** There was a waiting-room step before this one, pointing at the invite and play-with-the-bot controls — it was removed because it earned too little for an interruption at that moment, and the waiting room already shows both controls plainly. Completing every goal and finishing for credit likewise get nothing: those surfaces explain themselves, and a second interruption inside a learner's first activity costs more attention than it returns.
+**Nothing else inside the activity *chat* gets a step.** There was a waiting-room step before this one, pointing at the invite and play-with-the-bot controls — it was removed because it earned too little for an interruption at that moment, and the waiting room already shows both controls plainly. Completing every goal and finishing for credit likewise get nothing: those surfaces explain themselves, and a second interruption inside a learner's first activity costs more attention than it returns. The start page in front of the chat carries its own two one-step tutorials — `openSessions` and `activityRoles`, below.
 
-The chat sequence may fire in the same activity, on the learner's first L2 message containing a new word. They stay **separate sequences with separate counters** — the learner sees two short progress bars, not one long one — and whichever asks for the overlay second queues behind the first.
+The chat sequence may fire in the same activity, on the learner's first L2 message containing a new word. They stay **separate sequences with separate counters** — the learner sees two short progress bars, each card naming its own walkthrough, not one long one — and whichever asks for the overlay second queues behind the first.
+
+### openSessions and activityRoles
+
+The activity start page's two one-step tutorials, hosted by the page that owns the session state both read.
+
+- **`openSessions`** lights the open-sessions list the first time the learner is looking at one (the Join subpage, reached via *Join open session*): these are activities other real people are playing — join to chat with them, knowing they may not respond right away.
+- **`activityRoles`** lights the role-card grid the first time the learner is picking a role, by whichever path — starting their own session, joining someone's open one, or rejoining a room without a confirmed role.
+
+**Both are armed steps: the learner does the choosing, so the tutorial cannot absorb their tap.** A tap on a role card selects that role; a tap on a session tile joins that session; and any tap, wherever it lands, completes the step — shown is seen, read or not, because re-offering the card on every return visit read as repetition. Deliberately unlike the map's pin step, which chose one activity on the learner's behalf and opens it on a tap anywhere: these surfaces exist for the learner to pick from.
+
+**Only the focused start page instance hosts them.** The page can be mounted twice at once — a world `activity` panel and a session room's start view — and a target id has one claimant, so the focused instance registers the launchers and passes the target ids down; the other mount is a pass-through.
+
+**The target being on screen is the surface gate.** The role grid only renders during role selection, and the join list only renders with sessions actually in it — so "never onto an empty surface" comes free, and a list that mounts late (the mobile sheet finishing its expand animation) re-asks via the target-mount signal.
+
+Neither belongs to the ordered paths above: they are surface-triggered, once each, wherever the learner first meets the surface — including right after the world tutorial opens an activity for them, where they queue behind the finishing sequence.
 
 ### appTour
 
 Offered on the next arrival at a map after the first finished activity — never mid-activity, never on the summary screen. Each step opens its own panel and gates on it having opened.
 
-0. **Branch.** "Great job finishing your first activity — want a tour?" *I'll explore* ends the tour and marks it seen; that is the only exit. A tap anywhere but the two buttons does nothing, so a tap that just misses one cannot advance past the question.
+0. **Branch.** "Great job finishing your first activity — want a tour?" The declining choice skips the sequence, exactly like the Skip control on any other card, and sits left — the corner where Skip lives everywhere else. The branch card carries no separate Skip button and no title row: it is already a question with two answers, and a label wedged between them read as part of neither. A tap anywhere but the two buttons does nothing, so a tap that just misses one cannot advance past the question.
 1. **Chats.** 2. **Courses** — copy varies on whether the learner has joined any. 3. **Analytics.** 4. **Practice.** 5. **World.**
 
 The branch counts as a step, so the tour reads 1/6 through 6/6. Naming its length up front is honest, and a display total that differs from the real step count would re-introduce exactly the drift one step-count declaration removes.
 
 **The Practice step shows where practice lives; it does not open it.** The Practice button is disabled until the learner has collected ten words, which is exactly where someone stands right after their first activity — so opening it would fail and gating on it would strand the tour for the learner it exists for. Every other step opens its panel and gates on that panel actually being open.
 
-**The tour outranks the map introduction.** When both are due on the same arrival, the tour runs: it is the answer to "what now?" after a first activity, while the map introduction describes a map the learner has by then already used. `worldMap` then runs after the tour hands them to the map — which is what the final World step is for.
+**Accepting the offer, and leaving the Practice stop, clears every open surface back to the bare map** — so the rail items the following steps light are on screen on every layout. Single-column surfaces can cover or hide the rail (the activity plan sheet hides it outright; a right panel draws over the whole chrome), and a step whose target never mounts dismisses itself with the learner left stranded and uncued. Declining the offer clears nothing: the learner said no, and keeps whatever they had open.
+
+**The tour outranks the map introduction — never the greeting.** When both are due on the same arrival, the tour runs: it is the answer to "what now?" after a first activity, while the map introduction describes a map the learner has by then already used. `worldMap` then runs after the tour hands them to the map — which is what the final World step is for. But an unseen `welcome` alongside a due tour means this learner was never oriented at all (a mid-life tutorial reset; true veterans are backfilled before triggers run), and a tour opening with "great job finishing your first activity!" before any hello reads as the app misremembering them — so they are greeted first, and the tour follows on the next map arrival ([`appTourOutranksOrientation`](../../lib/routes/world/world_map.dart)).
 
 ## Analytics
 

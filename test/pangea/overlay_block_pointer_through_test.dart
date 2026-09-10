@@ -24,6 +24,7 @@ void main() {
   /// nothing is in the tree yet.
   Widget buildHarness({
     required bool blockPointerThrough,
+    bool ignorePointer = true,
     VoidCallback? onTapBehind,
   }) {
     return MaterialApp(
@@ -67,7 +68,7 @@ void main() {
                       displayDetails: TransformOverlayDisplayDetails(
                         overlayKey: overlayKey,
                         transformTargetId: targetId,
-                        ignorePointer: true,
+                        ignorePointer: ignorePointer,
                         blockPointerThrough: blockPointerThrough,
                       ),
                     ),
@@ -140,6 +141,61 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(tapsBehind, 1);
+
+    semantics.dispose();
+  });
+
+  // #8903: a pointer-ignored overlay's backdrop still published a button node
+  // over the whole screen. IgnorePointer strips its tap action, but on web the
+  // engine gives any button-role node `pointer-events: all` regardless, so the
+  // node swallowed the mouse events the session video's `<iframe>` needed —
+  // the orchestrator's suggestion card and the star animations mount exactly
+  // this backdrop. The node must declare itself transparent to native
+  // hit-testing; Flutter's own hit test was already covered by IgnorePointer.
+  testWidgets(
+    'a pointer-ignored backdrop is transparent to native pointer hit-testing',
+    (tester) async {
+      final semantics = tester.ensureSemantics();
+      await tester.pumpWidget(buildHarness(blockPointerThrough: false));
+
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('open'));
+      await tester.pumpAndSettle();
+
+      final backdrop = tester.getSemantics(find.bySemanticsLabel('Dismiss'));
+      expect(backdrop.flagsCollection.isButton, isTrue);
+      expect(
+        backdrop.hitTestBehavior,
+        ui.SemanticsHitTestBehavior.transparent,
+        reason:
+            'the web engine infers pointer-events: all from the button role '
+            'even with the tap stripped by IgnorePointer, so without an '
+            'explicit transparent hitTestBehavior this full-screen node blankets '
+            'every DOM platform view beneath the overlay (#8903)',
+      );
+
+      semantics.dispose();
+    },
+  );
+
+  testWidgets('a dismissable backdrop keeps taking pointer events', (
+    tester,
+  ) async {
+    final semantics = tester.ensureSemantics();
+    await tester.pumpWidget(
+      buildHarness(blockPointerThrough: false, ignorePointer: false),
+    );
+
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('open'));
+    await tester.pumpAndSettle();
+
+    // Tap-to-dismiss is the backdrop's whole job: its node has to stay
+    // hit-testable, or a click on the backdrop would fall through to the page.
+    expect(
+      tester.getSemantics(find.bySemanticsLabel('Dismiss')).hitTestBehavior,
+      ui.SemanticsHitTestBehavior.defer,
+    );
 
     semantics.dispose();
   });

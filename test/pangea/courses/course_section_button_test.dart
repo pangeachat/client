@@ -95,6 +95,25 @@ void main() {
     expect(surface.color, colors.secondaryContainer);
   });
 
+  testWidgets('pads the label and the chevron alike', (tester) async {
+    await pump(
+      tester,
+      const CourseSectionButton(section: 'Chats', onPressed: _noop),
+    );
+
+    // FilledButton.tonalIcon pads as if its icon led — 16 on the icon's side,
+    // 24 on the label's — and doesn't flip for a trailing one, so the chevron
+    // sat in the wide pad and the pill read as lopsided (#8898). The plain
+    // tonal button pads both sides alike.
+    final button = tester.getRect(find.byType(FilledButton));
+    final label = tester.getRect(find.text('See all'));
+    final chevron = tester.getRect(find.byIcon(Icons.chevron_right));
+    expect(
+      label.left - button.left,
+      moreOrLessEquals(button.right - chevron.right),
+    );
+  });
+
   testWidgets('sits at the end of its header, opposite the title', (
     tester,
   ) async {

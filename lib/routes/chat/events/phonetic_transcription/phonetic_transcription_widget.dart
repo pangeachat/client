@@ -22,7 +22,14 @@ import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/text_loading_shimmer.dart';
 
-class PhoneticTranscriptionWidget extends StatefulWidget {
+/// Fetches the transcription of [text] and renders it as a
+/// [PhoneticTranscriptionView].
+///
+/// The view is split out so a surface that already holds the fetch can feed
+/// it directly: the word card runs one [PhoneticTranscriptionBuilder] for the
+/// whole card and needs this section's state next to the meaning's, to show a
+/// single error when nothing loaded (#8902).
+class PhoneticTranscriptionWidget extends StatelessWidget {
   final String text;
   final LanguageModel textLanguage;
 
@@ -83,12 +90,79 @@ class PhoneticTranscriptionWidget extends StatefulWidget {
   });
 
   @override
-  State<PhoneticTranscriptionWidget> createState() =>
-      _PhoneticTranscriptionWidgetState();
+  Widget build(BuildContext context) {
+    // PT covers isolated words only (design doc §5). Practice hints route
+    // whole example sentences through this widget; requesting those spends
+    // an LLM call per unique sentence and renders a meaningless chain of
+    // per-word transcriptions, so phrases render nothing at all (#8077).
+    if (isPhraseSurface(text)) return const SizedBox.shrink();
+
+    return PhoneticTranscriptionBuilder(
+      textLanguage: textLanguage,
+      text: text,
+      reloadNotifier: reloadNotifier,
+      builder: (context, controller) => PhoneticTranscriptionView(
+        controller: controller,
+        text: text,
+        textLanguage: textLanguage,
+        pos: pos,
+        morph: morph,
+        style: style,
+        iconSize: iconSize,
+        iconColor: iconColor,
+        maxLines: maxLines,
+        textOnly: textOnly,
+        roomId: roomId,
+        exposure: exposure,
+      ),
+    );
+  }
 }
 
-class _PhoneticTranscriptionWidgetState
-    extends State<PhoneticTranscriptionWidget> {
+/// The transcription of [text] as [controller] has it: a shimmer while it
+/// loads, an error chip when the fetch failed, else the playable
+/// transcription(s). Assumes [text] is a single word — the phrase gate lives
+/// on [PhoneticTranscriptionWidget].
+class PhoneticTranscriptionView extends StatefulWidget {
+  final PhoneticTranscriptionBuilderState controller;
+  final String text;
+  final LanguageModel textLanguage;
+  final String pos;
+  final Map<String, String>? morph;
+  final TextStyle? style;
+  final double? iconSize;
+  final Color? iconColor;
+  final int? maxLines;
+  final bool textOnly;
+
+  /// See [PhoneticTranscriptionWidget.roomId].
+  final String? roomId;
+
+  /// See [PhoneticTranscriptionWidget.exposure].
+  final ListeningExposureDeclaration exposure;
+
+  const PhoneticTranscriptionView({
+    super.key,
+    required this.controller,
+    required this.text,
+    required this.textLanguage,
+    required this.pos,
+    required this.roomId,
+    required this.exposure,
+    this.morph,
+    this.style,
+    this.iconSize,
+    this.iconColor,
+    this.maxLines,
+    this.textOnly = false,
+  });
+
+  @override
+  State<PhoneticTranscriptionView> createState() =>
+      _PhoneticTranscriptionViewState();
+}
+
+class _PhoneticTranscriptionViewState extends State<PhoneticTranscriptionView> {
   /// Target id of the affordance currently playing, or null. The heteronym
   /// fallback renders one affordance per pronunciation, so a plain bool
   /// can't say which one to mark.
@@ -262,122 +336,97 @@ class _PhoneticTranscriptionWidgetState
 
   @override
   Widget build(BuildContext context) {
-    // PT covers isolated words only (design doc §5). Practice hints route
-    // whole example sentences through this widget; requesting those spends
-    // an LLM call per unique sentence and renders a meaningless chain of
-    // per-word transcriptions, so phrases render nothing at all (#8077).
-    if (isPhraseSurface(widget.text)) return const SizedBox.shrink();
-
     if (widget.textOnly) {
-      return PhoneticTranscriptionBuilder(
-        key: Key(_baseTargetId),
-        textLanguage: widget.textLanguage,
-        text: widget.text,
-        reloadNotifier: widget.reloadNotifier,
-        builder: (context, controller) {
-          return switch (controller.state) {
-            AsyncError() => const SizedBox.shrink(),
-            AsyncLoaded<PTResponse>(value: final ptResponse) => Text(
-              disambiguate(
-                ptResponse.pronunciations,
-                pos: widget.pos,
-                morph: widget.morph,
-              ).displayTranscription,
-              style: widget.style ?? Theme.of(context).textTheme.bodyMedium,
-              maxLines: widget.maxLines,
-              overflow: TextOverflow.ellipsis,
-              textAlign: TextAlign.center,
-            ),
-            _ => SizedBox(
-              width: 30.0,
-              height: 16.0,
-              child: TextLoadingShimmer(width: 30.0, height: 16.0),
-            ),
-          };
+      return switch (widget.controller.state) {
+        AsyncError() => const SizedBox.shrink(),
+        AsyncLoaded<PTResponse>(value: final ptResponse) => Text(
+          disambiguate(
+            ptResponse.pronunciations,
+            pos: widget.pos,
+            morph: widget.morph,
+          ).displayTranscription,
+          style: widget.style ?? Theme.of(context).textTheme.bodyMedium,
+          maxLines: widget.maxLines,
+          overflow: TextOverflow.ellipsis,
+          textAlign: TextAlign.center,
+        ),
+        _ => SizedBox(
+          width: 30.0,
+          height: 16.0,
+          child: TextLoadingShimmer(width: 30.0, height: 16.0),
+        ),
+      };
+    }
+
+    final state = widget.controller.state;
+
+    // Only a loaded transcription is playable, so the play affordance —
+    // tooltip, hover highlight and tap target — wraps that state alone.
+    // While loading there is no pronunciation yet and on failure there
+    // never will be; either way the audio icon is absent, so a "Play"
+    // tooltip over the shimmer or the error chip promises audio that isn't
+    // there (#7843). Padding matches the container below so the layout
+    // doesn't shift when the transcription lands.
+    if (state is! AsyncLoaded<PTResponse>) {
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+        child: switch (state) {
+          AsyncError(error: final error) =>
+            error is UnsubscribedException
+                ? ErrorIndicator(
+                    message: L10n.of(context).subscribeToUnlockTranscriptions,
+                    // From the router, NOT `GoRouterState.of` — the word
+                    // card hosting this strip is an `OverlayEntry` on both
+                    // of its surfaces (the chat toolbar's word card, an
+                    // activity vocab chip's), and an entry sits beside the
+                    // route's page in the Navigator's overlay rather than
+                    // under it, where `GoRouterState.of` finds no
+                    // `ModalRoute` and throws (#8622).
+                    onTap: () => context.go(
+                      WorkspaceNav.openSettings(
+                        GoRouter.of(context).routeInformationProvider.value.uri,
+                        page: 'subscription',
+                      ),
+                    ),
+                  )
+                : ErrorIndicator(
+                    message: L10n.of(context).failedToFetchTranscription,
+                    error: error,
+                  ),
+          _ => const TextLoadingShimmer(width: 125.0, height: 20.0),
         },
       );
     }
 
-    return PhoneticTranscriptionBuilder(
-      textLanguage: widget.textLanguage,
-      text: widget.text,
-      reloadNotifier: widget.reloadNotifier,
-      builder: (context, controller) {
-        final state = controller.state;
+    final result = disambiguate(
+      state.value.pronunciations,
+      pos: widget.pos,
+      morph: widget.morph,
+    );
 
-        // Only a loaded transcription is playable, so the play affordance —
-        // tooltip, hover highlight and tap target — wraps that state alone.
-        // While loading there is no pronunciation yet and on failure there
-        // never will be; either way the audio icon is absent, so a "Play"
-        // tooltip over the shimmer or the error chip promises audio that isn't
-        // there (#7843). Padding matches the container below so the layout
-        // doesn't shift when the transcription lands.
-        if (state is! AsyncLoaded<PTResponse>) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-            child: switch (state) {
-              AsyncError(error: final error) =>
-                error is UnsubscribedException
-                    ? ErrorIndicator(
-                        message: L10n.of(
-                          context,
-                        ).subscribeToUnlockTranscriptions,
-                        // From the router, NOT `GoRouterState.of` — the word
-                        // card hosting this strip is an `OverlayEntry` on both
-                        // of its surfaces (the chat toolbar's word card, an
-                        // activity vocab chip's), and an entry sits beside the
-                        // route's page in the Navigator's overlay rather than
-                        // under it, where `GoRouterState.of` finds no
-                        // `ModalRoute` and throws (#8622).
-                        onTap: () => context.go(
-                          WorkspaceNav.openSettings(
-                            GoRouter.of(
-                              context,
-                            ).routeInformationProvider.value.uri,
-                            page: 'subscription',
-                          ),
-                        ),
-                      )
-                    : ErrorIndicator(
-                        message: L10n.of(context).failedToFetchTranscription,
-                        error: error,
-                      ),
-              _ => const TextLoadingShimmer(width: 125.0, height: 20.0),
-            },
-          );
-        }
+    // Undisambiguated heteronym: every pronunciation individually
+    // playable with its own tts_phoneme, instead of one slash-joined
+    // string whose audio plays an arbitrary reading (design doc §3.3,
+    // #2564).
+    if (result.isAmbiguous) {
+      return Wrap(
+        crossAxisAlignment: WrapCrossAlignment.center,
+        children: [
+          for (final (i, pronunciation) in result.all.indexed)
+            _playable(
+              context,
+              targetId: '$_baseTargetId-$i',
+              label: pronunciation.transcription,
+              ttsPhoneme: pronunciation.ttsPhoneme,
+            ),
+        ],
+      );
+    }
 
-        final result = disambiguate(
-          state.value.pronunciations,
-          pos: widget.pos,
-          morph: widget.morph,
-        );
-
-        // Undisambiguated heteronym: every pronunciation individually
-        // playable with its own tts_phoneme, instead of one slash-joined
-        // string whose audio plays an arbitrary reading (design doc §3.3,
-        // #2564).
-        if (result.isAmbiguous) {
-          return Wrap(
-            crossAxisAlignment: WrapCrossAlignment.center,
-            children: [
-              for (final (i, pronunciation) in result.all.indexed)
-                _playable(
-                  context,
-                  targetId: '$_baseTargetId-$i',
-                  label: pronunciation.transcription,
-                  ttsPhoneme: pronunciation.ttsPhoneme,
-                ),
-            ],
-          );
-        }
-
-        return _playable(
-          context,
-          targetId: _baseTargetId,
-          label: result.displayTranscription,
-        );
-      },
+    return _playable(
+      context,
+      targetId: _baseTargetId,
+      label: result.displayTranscription,
     );
   }
 }

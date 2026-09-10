@@ -22,6 +22,7 @@ import 'package:fluffychat/features/tutorials/tutorial_copy.dart';
 import 'package:fluffychat/features/tutorials/tutorial_enum.dart';
 import 'package:fluffychat/features/tutorials/tutorial_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_overlay_controller.dart';
+import 'package:fluffychat/features/tutorials/tutorial_seen_backfill.dart';
 import 'package:fluffychat/features/tutorials/tutorial_sequences.dart';
 import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target.dart';
@@ -127,8 +128,12 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
     _registerTutorialLaunchers();
     _maybeStartOrientation();
     // Once more when the profile lands, in case it loads after every other hook
-    // has had its turn.
+    // has had its turn — and when the veteran backfill resolves, which may have
+    // just marked the welcome seen.
     MatrixState.pangeaController.userController.initCompleter.future.then(
+      (_) => _maybeStartOrientation(),
+    );
+    TutorialSeenBackfill.instance.ensureResolved().then(
       (_) => _maybeStartOrientation(),
     );
     // Open state is read off the map's discovery cache, which discovery updates
@@ -208,6 +213,10 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
       _orientationCheckScheduled = false;
       _checkOrientation();
     });
+    // A post-frame callback only runs if a frame is coming; a re-ask arriving
+    // between frames (initCompleter, live-state listeners) would otherwise
+    // leave the flag latched true and swallow every later re-ask.
+    WidgetsBinding.instance.ensureVisualUpdate();
   }
 
   void _checkOrientation() {
@@ -220,6 +229,10 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
         .isCompleted) {
       return;
     }
+
+    // The veteran backfill may be about to mark the welcome seen — wait for
+    // its one evaluation; resolution re-asks (initState).
+    if (!TutorialSeenBackfill.instance.isResolved) return;
 
     if (!_tutorials.isPending(TutorialEnum.welcome) &&
         !_tutorials.isPending(TutorialEnum.coursePlan)) {
@@ -562,8 +575,10 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                     // The course page's ranked shortlist: no Mission header,
                     // ordered by the same Priority matrix the map ranks pins
                     // by, with sessions the learner already holds a role in
-                    // dropped (#8741). Empty only when every activity in the
-                    // plan is one of those — nothing left to suggest.
+                    // (#8741) and activities they have finished (#8901)
+                    // dropped. Empty only when every activity in the plan is
+                    // one of those — nothing left to suggest; the section
+                    // header and its "See all" sit outside this widget.
                     final suggested = rankSuggestedActivities(
                       groups: groups,
                       missionGradient:

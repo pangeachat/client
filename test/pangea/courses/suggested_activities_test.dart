@@ -9,9 +9,10 @@ import 'package:fluffychat/routes/courses/course_objectives/suggested_activities
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 
-/// Coverage for #8741: the course page's Activities row ranks the
+/// Coverage for #8741 and #8901: the course page's Activities row ranks the
 /// course plan's activities by the world map's Priority matrix, drops the
-/// sessions the learner is already in, and caps to a shortlist.
+/// sessions the learner is already in and the activities they have finished,
+/// and caps to a shortlist.
 void main() {
   ActivityPlanModel plan(String id) => ActivityPlanModel(
     req: ActivityPlanRequest(
@@ -126,7 +127,7 @@ void main() {
       expect(idsOf(ranked), ['atAnchor', 'later', 'done']);
     });
 
-    test('a finished activity is demoted but still suggested', () {
+    test('a finished activity is dropped, not ranked (#8901)', () {
       final ranked = rankSuggestedActivities(
         groups: [
           objGroup('m1', ['finished', 'fresh']),
@@ -136,7 +137,41 @@ void main() {
             PinSignals(completionFraction: id == 'finished' ? 1.0 : 0.0),
       );
 
-      expect(idsOf(ranked), ['fresh', 'finished']);
+      expect(idsOf(ranked), ['fresh']);
+    });
+
+    test("a coursemate's open session on a finished activity is still "
+        'suggested, as joinable', () {
+      final ranked = rankSuggestedActivities(
+        groups: [
+          objGroup('m1', ['finishedOpen', 'fresh']),
+        ],
+        missionGradient: flatBand,
+        signalsFor: (id) => switch (id) {
+          'finishedOpen' => const PinSignals(
+            state: ActivityPinState.joinable,
+            completionFraction: 1.0,
+          ),
+          _ => const PinSignals(),
+        },
+      );
+
+      expect(idsOf(ranked), ['finishedOpen', 'fresh']);
+    });
+
+    test('a plan of only finished and ongoing activities suggests nothing', () {
+      final ranked = rankSuggestedActivities(
+        groups: [
+          objGroup('m1', ['finished', 'ongoing']),
+        ],
+        missionGradient: flatBand,
+        signalsFor: (id) => switch (id) {
+          'finished' => const PinSignals(completionFraction: 1.0),
+          _ => const PinSignals(state: ActivityPinState.ongoingActive),
+        },
+      );
+
+      expect(ranked, isEmpty);
     });
 
     test('an activity under two Missions is listed once, banded on both', () {

@@ -54,19 +54,35 @@ The participant card is roughly one avatar wide and has no room for a label, so 
 
 The participant card shows the member's total for **the course's language** beside their level, which is already a per-language number, so both values on the card share one scope.
 
+## Who made the course
+
+The course page credits its quest's **owner** — whoever built the course plan. That is a different fact from who administers the room, and the room has its own surface for that (the Participants section): a teacher who starts a class from a catalog quest administers a course Pangea wrote, and the credit says so.
+
+The owner is stored on the quest row as `owner_mxid`, a plain-text Matrix id the client reads verbatim. Nothing resolves it on the client's behalf. The `owner` field beside it is a per-environment `matrix-users` row id, and that collection is service- and admin-read only, so a learner's token can read the quest and never resolve the person behind it — which is why the Matrix id is stored where the consumer reads it rather than joined on by a service at read time. Name and avatar then come from that owner's own Matrix profile, so a teacher controls their own credit by editing their profile and we keep no second copy of their name.
+
+Same ladder as an activity's credit, which [activity-start-page.instructions.md](activity-start-page.instructions.md) owns: profile, else the stored Matrix id beside a placeholder contact icon, and the PangeaChat name and avatar reserved for content owned by `@system:pangea.chat`. **A quest with no owner recorded is not evidence Pangea made it.** Content that is genuinely Pangea's says so with the system Matrix id, exactly as an activity does; an unrecorded owner is an unanswered question, and the surface shows no credit at all rather than a guessed one. The failure that ordering prevents — a teacher's course carrying Pangea's name — is worse than an uncredited one.
+
+**Where the credit shows turns on whether the course exists yet.**
+
+- **While the course is being made** — the client's create-course page and the dashboard's setup wizard — it is **prominent**. Someone choosing a plan to build their class on is deciding partly on who made it, so the credit belongs in the decision.
+- **Once the course exists** — the course page's **More** section, among the course's other details. It is deliberately not at the top of the panel the way an activity's credit leads its start page. That page *is* the one activity's header; a course page opens on the teacher's own description of their class, and a credit directly under it reads as a banner over their words — the more so on the common catalog path, where the quest is Pangea's and the class is theirs.
+
+Missions are **not** attributed. They are generic and reused across courses and languages by design, carry no owner, and crediting one to whoever first minted it would misrepresent shared content as authored.
+
 ## The Activities row on the course page
 
 The course page opens on a shortlist: one row of activity cards headed **Activities**, answering "what should I do in this course right now?" ([client#8741](https://github.com/pangeachat/client/issues/8741)). It names no Mission. The header names the section, not the shortlist — that a ranked row is a suggestion is what a ranked row already means, so "Suggested" only added a word ([client#8744](https://github.com/pangeachat/client/issues/8744)). The Mission-by-Mission plan — every Mission with its can-do statement, star count and activities — sits one tap away behind the section header's "See all", and is where a learner reads the course's shape.
 
-The row is ranked by the **same [Priority matrix](world-map.instructions.md#priority-matrix) the world map ranks pins by**, scored over the course's own activities: an open session a coursemate can be joined in leads, a recruiting ping raises one further, then whatever the course's next Mission points at, and a finished activity sinks without disappearing. One shared score means the course page and the map cannot drift apart as its weights are tuned.
+The row is ranked by the **same [Priority matrix](world-map.instructions.md#priority-matrix) the world map ranks pins by**, scored over the course's own activities: an open session a coursemate can be joined in leads, a recruiting ping raises one further, then whatever the course's next Mission points at. One shared score means the course page and the map cannot drift apart as its weights are tuned.
 
-Three things differ from the map, each following from where the row sits:
+Four things differ from the map, each following from where the row sits:
 
 - **A session the learner already holds a role in is filtered out of the row.** The row suggests what to start next; a session already under way is resumed from the course's Chats section.
+- **A finished activity is filtered out too** ([client#8901](https://github.com/pangeachat/client/issues/8901)). The map demotes a done activity and keeps it as the learner's trail; a shortlist of what to do next has no room for what is done, and a checked-off card at the end of the row read as a stale suggestion. The full plan behind "See all" still shows it, check overlay and all. The one exception is a coursemate's open session on it — that is still something to join, so it stays in the row as joinable.
 - **The relevance band is this course's own**, never the map's cross-quest sum — a course surface reads only its own course's progress (the per-course scoping rule above).
 - **The map's first-map penalty, its dismissal penalty and its recency term do not apply.** A course's activities were hand-picked by its author, so a 3+ role one is part of the syllabus rather than a newcomer's dead end; there is no large card here to dismiss; and the row has no per-session start time to decay, so a learner reading the page does not watch it reorder itself.
 
-The row holds the top five and scrolls. Equal scores break on a stable key, so a rebuild never reshuffles it under a reader. It renders nothing at all only when every activity in the plan is a session the learner is already in.
+The row holds the top five and scrolls. Equal scores break on a stable key, so a rebuild never reshuffles it under a reader. It renders nothing at all only when every activity in the plan is one the learner is already in or has finished; the section header and its "See all" stay, since the plan is still there to read.
 
 ## Activity cards on the course plan panel
 
@@ -80,6 +96,16 @@ The course plan panel lists the course's activities as cards, in rows. Each card
 2. **Joinable/Open** — 🟢 green card with an overlay tag "Open (N)" on the top right in white text, where N is the number of open sessions to choose from. The tag states the meaning in text (screen-reader friendly rather than color-only); the green matches the joinable map pin (V6).
 3. **Ongoing** — 🟣 purple card with an "Ongoing" overlay tag on the top right in white text; same text-not-color-only rationale; the purple matches the ongoing map pin (V6).
 4. **Needs more participants to start** — 🔘 light gray card at 30% opacity: still clickable but de-emphasized. Tapping it explains why ("Uh oh, you need to invite N people…").
+
+## Mission header states on the course plan
+
+Each Mission's header on the full course plan tells the learner at a glance whether it is done, next, or later ([client#8874](https://github.com/pangeachat/client/issues/8874) — before this, the only mark was the statement's text colour, which nobody could see). Three states:
+
+- **Up next** — the shared resolver's anchor for this course. Its header carries an "Up next" label, and its statement and star count take the `primary` accent; the label says the state in words, so it is never colour alone. Nothing wraps the section: a band or an outline around header and cards was tried and dropped, because a tint shows the carousel's surface-coloured scroll-arrow strip as a notch and any inset throws the section's margins off against its neighbours. One Mission per course wears it. When every Mission is satisfied the anchor is the weakest one, so a satisfied Mission can be Up next: it keeps the label and accent, with the check below.
+- **Satisfied** — stars at or past the effective threshold. The gold star before the fraction becomes a green check and the header text drops to `onSurfaceVariant`, so finished work reads as done without disappearing: its activities stay in view and playable, since a learner can still raise a per-activity best.
+- **Later** — everything else, plain.
+
+The emphasis lives on the Mission header alone, never on the section or its activity cards: the card states above keep their meaning under an Up-next header.
 
 ## Per-course activity pinning
 

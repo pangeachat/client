@@ -10,6 +10,7 @@ import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
+import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_constants.dart';
 
@@ -36,7 +37,10 @@ class NotificationTapUtil {
     if (client.getRoomById(roomId) == null) {
       await client
           .waitForRoomInSync(roomId)
-          .timeout(const Duration(seconds: 30));
+          .timeoutNamed(
+            const Duration(seconds: 30),
+            'waitForRoomInSync: notification tap',
+          );
     }
   }
 

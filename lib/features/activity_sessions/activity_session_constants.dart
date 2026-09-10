@@ -18,6 +18,12 @@ class ActivitySessionConstants {
   static const String activityId = 'activity_id';
   static const String activityPlanEndAt = 'end_at';
 
+  /// The plan's owner MXID (`res.plan.user_id`) — who is credited on screen
+  /// for the activity. Plain text on the wire and stored verbatim: no service
+  /// resolves anything about the owner, the client reads their Matrix profile.
+  /// `@system:pangea.chat` means Pangea itself owns it.
+  static const String activityPlanUserId = 'user_id';
+
   /// `pangea.activity_session_filled` content: the session room that filled
   /// (its `activity_id` rides under [activityId]).
   static const String sessionRoomId = 'session_room_id';

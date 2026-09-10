@@ -152,6 +152,10 @@ class PinSignals {
     this.pinged = false,
     this.recency = 0,
   });
+
+  /// The learner has a full star row on this activity — the `completed`
+  /// ranking term, and what the course page's Activities row drops.
+  bool get isCompleted => completionFraction >= 1.0;
 }
 
 /// The ranking outcome for the pins currently in view: [ordered] is the
@@ -368,7 +372,7 @@ double pinScore({
     band +
     0.6 * (s.pinged ? 1 : 0) +
     0.3 * s.recency.clamp(0.0, 1.0) -
-    0.5 * (s.completionFraction >= 1.0 ? 1 : 0) -
+    0.5 * (s.isCompleted ? 1 : 0) -
     kDismissedPenalty * (isDismissed ? 1 : 0) -
     kMultiPersonFirstMapPenalty *
         (isMultiPersonFirstMap(

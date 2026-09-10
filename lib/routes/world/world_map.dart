@@ -11,6 +11,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
@@ -25,6 +26,7 @@ import 'package:fluffychat/features/tutorials/tutorial_copy.dart';
 import 'package:fluffychat/features/tutorials/tutorial_enum.dart';
 import 'package:fluffychat/features/tutorials/tutorial_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_overlay_controller.dart';
+import 'package:fluffychat/features/tutorials/tutorial_seen_backfill.dart';
 import 'package:fluffychat/features/tutorials/tutorial_sequences.dart';
 import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
@@ -92,6 +94,23 @@ bool orientationSurfaceGate({
   }
   return true;
 }
+
+/// Whether the app tour runs before the welcome + map orientation when both
+/// are due on the same arrival.
+///
+/// The tour outranks the map INTRODUCTION — it answers "what now?" after a
+/// first finished activity, while the introduction describes a map the learner
+/// has by then already used. It never outranks the GREETING: an unseen welcome
+/// alongside finished activities is an account from before the tutorials
+/// shipped, and a tour that opens with "great job finishing your first
+/// activity!" before any hello reads as the app misremembering them. The
+/// greeting (with the map orientation it fronts) runs first; the tour follows
+/// on the next map arrival, which is its own trigger anyway.
+bool appTourOutranksOrientation({
+  required bool appTourPending,
+  required bool welcomePending,
+  required bool hasFinishedAnActivity,
+}) => appTourPending && !welcomePending && hasFinishedAnActivity;
 
 class WorldMap extends StatefulWidget {
   /// Optional camera override, e.g. to center on an activity's location.
@@ -183,10 +202,17 @@ class WorldMapController extends State<WorldMap>
   Timer? _fitDebounce;
 
   /// Coalesces a burst of activity-plan hydrations (many pins resolve their
-  /// plans at once) into a single signal recompute, so a session flips to its
-  /// joinable/joined colour once its seats are known — notably an invited
-  /// session, whose role count is unknown until its plan lands from CMS.
-  Timer? _planHydrateDebounce;
+  /// plans at once) — or of discovered-preview rewrites — into a single signal
+  /// recompute, so a session flips to its joinable/joined colour once its seats
+  /// are known — notably an invited session, whose role count is unknown until
+  /// its plan lands from CMS — and a full one drops its green (#8895).
+  Timer? _liveStateRecomputeDebounce;
+
+  /// Whether the pending debounced recompute should also end the L1 shimmer
+  /// window: set by a plan hydrate, never by a preview rewrite, and sticky
+  /// across the debounce resets a burst causes — so a rewrite landing between
+  /// a hydrate and its recompute can't swallow the end.
+  bool _endL1WarmupOnRecompute = false;
 
   /// Drives the smooth camera glide (center + zoom tween) instead of an instant
   /// `fitCamera` snap. Retargets cleanly if a new fit lands mid-flight.
@@ -278,8 +304,19 @@ class WorldMapController extends State<WorldMap>
 
     _registerTutorialLaunchers();
 
-    // Rebuild when a featured large card's full plan hydrates (image + goals).
+    // A veteran's seen-flags may still be being backfilled when the map is
+    // already showing pins — the trigger waits for the one evaluation, and its
+    // resolution is a re-ask (tutorial_seen_backfill.dart).
+    TutorialSeenBackfill.instance.ensureResolved().then(
+      (_) => _scheduleOrientationCheck(),
+    );
+
+    // Rebuild when a featured large card's full plan hydrates (image + goals),
+    // and when the discovered-session previews change under the pins — the
+    // start page's revalidate-on-view rewrites them (#8150); both re-gate which
+    // sessions are open to join (#8895).
     ActivityPlanRepo.instance.addListener(_onPlanHydrate);
+    DiscoveredSessionsCache.instance.addListener(_onDiscoveredPreviewsChanged);
 
     final user = MatrixState.pangeaController.userController;
 
@@ -406,7 +443,7 @@ class WorldMapController extends State<WorldMap>
     _refetchDebounce?.cancel();
     _warmingTimer?.cancel();
     _fitDebounce?.cancel();
-    _planHydrateDebounce?.cancel();
+    _liveStateRecomputeDebounce?.cancel();
     _dismissalExpiryTimer?.cancel();
     _moveSettleTimer?.cancel();
     _mapEventSub?.cancel();
@@ -416,6 +453,9 @@ class WorldMapController extends State<WorldMap>
     MapContextController.notifier.removeListener(_onContextChange);
     MapCameraFocusRequests.notifier.removeListener(_onCameraFocusRequest);
     ActivityPlanRepo.instance.removeListener(_onPlanHydrate);
+    DiscoveredSessionsCache.instance.removeListener(
+      _onDiscoveredPreviewsChanged,
+    );
     _routeProvider?.removeListener(_scheduleOrientationCheck);
     _unregisterTutorialLaunchers();
     // Reset the process-global so a pin selected at teardown (e.g. logging out
@@ -558,15 +598,28 @@ class WorldMapController extends State<WorldMap>
   /// penalty).
   bool get isNewLearner => _client?.hasAnyFinishedActivitySession == false;
 
-  void _onPlanHydrate() {
-    // A plan landing from CMS fires no room sync, so the sync-driven recompute
-    // never re-derives seats for it — why an invited session (its role count
-    // known only once the plan hydrates) never flips to joinable. Recompute the
-    // signals, debounced so a burst of hydrations coalesces into one pass.
-    _planHydrateDebounce?.cancel();
-    _planHydrateDebounce = Timer(const Duration(milliseconds: 500), () {
+  /// A plan landing from CMS fires no room sync, so the sync-driven recompute
+  /// never re-derives seats for it — why an invited session (its role count
+  /// known only once the plan hydrates) never flipped to joinable. A hydrate is
+  /// also what the L1 shimmer window waits for.
+  void _onPlanHydrate() => _scheduleLiveStateRecompute(endL1Warmup: true);
+
+  /// The discovered previews were rewritten — by a discovery pass, or by the
+  /// start page's revalidate-on-view (#8150) — which fires no room sync either,
+  /// and a session that hydrated (or was rewritten) as full must drop its green
+  /// (#8895). Not a hydrate, so it never ends the shimmer window early.
+  void _onDiscoveredPreviewsChanged() => _scheduleLiveStateRecompute();
+
+  /// Recompute the signals, debounced so a burst of hydrations or rewrites
+  /// coalesces into one pass.
+  void _scheduleLiveStateRecompute({bool endL1Warmup = false}) {
+    _endL1WarmupOnRecompute |= endL1Warmup;
+    _liveStateRecomputeDebounce?.cancel();
+    _liveStateRecomputeDebounce = Timer(const Duration(milliseconds: 500), () {
       if (!mounted) return;
       _recomputeProgress();
+      if (!_endL1WarmupOnRecompute) return;
+      _endL1WarmupOnRecompute = false;
       // Signals are fresh now, so end any open L1 shimmer window (no-op else).
       _endL1Warmup();
     });
@@ -646,12 +699,12 @@ class WorldMapController extends State<WorldMap>
     if (mounted) _recomputeProgress();
   }
 
-  Future<void> _discoverCoursemateSessions(Client client) async {
-    await _pinsManager.discoverCoursemateSessions(client);
-    // Discovery refreshes the extra joinable facts; re-derive signals so a
-    // newly found coursemate session colours its pin.
-    if (mounted) _recomputeProgress();
-  }
+  /// The pass writes [DiscoveredSessionsCache], whose listener schedules the
+  /// (debounced) signal recompute that colours a newly found session's pin. No
+  /// explicit recompute here: it would rebuild the map twice per pass, and a
+  /// failed read leaves nothing changed to recompute for.
+  Future<void> _discoverCoursemateSessions(Client client) =>
+      _pinsManager.discoverCoursemateSessions(client);
 
   void _onContextChange() {
     // Reset the map-pin global and reload pins when the map re-scopes (e.g.
@@ -1261,6 +1314,10 @@ class WorldMapController extends State<WorldMap>
       _orientationCheckScheduled = false;
       _maybeStartOrientation();
     });
+    // A post-frame callback only runs if a frame is coming; a re-ask arriving
+    // between frames (pin state published from a fetch) would otherwise leave
+    // the flag latched true and swallow every later re-ask.
+    WidgetsBinding.instance.ensureVisualUpdate();
   }
 
   void _registerTutorialLaunchers() {
@@ -1291,6 +1348,11 @@ class WorldMapController extends State<WorldMap>
       return;
     }
 
+    // Not a "no" — "not yet": until the veteran backfill has evaluated, the
+    // seen-flags below may be about to flip, and a welcome fired now would be
+    // exactly the greeting a veteran must not get. Resolution re-asks.
+    if (!TutorialSeenBackfill.instance.isResolved) return;
+
     // EVERY tutorial this map hosts, the tour included: leaving the tour out
     // here meant it could never fire for anyone who had finished the map
     // orientation, which is everyone it is meant for.
@@ -1313,10 +1375,13 @@ class WorldMapController extends State<WorldMap>
       return;
     }
 
-    // The tour comes first once it is due: it is the answer to "what now?"
-    // after a first activity, and the map orientation is about a map the learner
-    // has by then already used.
-    if (_tutorials.isPending(TutorialEnum.appTour) && _hasFinishedAnActivity) {
+    // See [appTourOutranksOrientation]: the tour beats the map introduction,
+    // never the greeting.
+    if (appTourOutranksOrientation(
+      appTourPending: _tutorials.isPending(TutorialEnum.appTour),
+      welcomePending: _tutorials.isPending(TutorialEnum.welcome),
+      hasFinishedAnActivity: _hasFinishedAnActivity,
+    )) {
       _tutorials.requestSequence(TutorialSequences.appTourSequence);
       return;
     }
@@ -1325,11 +1390,9 @@ class WorldMapController extends State<WorldMap>
   }
 
   /// The app tour's gate: the learner has finished at least one activity.
-  ///
-  /// NOTE: this is the standing "ever finished one" flag, so every existing
-  /// learner qualifies the moment this ships and would be congratulated on
-  /// finishing their first activity. That has to be resolved before release —
-  /// see tutorials.instructions.md.
+  /// A standing "ever finished one" flag — safe for existing accounts because
+  /// the veteran backfill marks their tour seen before triggers run, and
+  /// [appTourOutranksOrientation] greets anyone unseen-welcome first.
   bool get _hasFinishedAnActivity =>
       _client?.hasAnyFinishedActivitySession == true;
 
@@ -1341,7 +1404,7 @@ class WorldMapController extends State<WorldMap>
   /// learner can actually see. Null whenever the tutorial is not pointing at
   /// one.
   String? get tutorialStarterActivityId =>
-      _tutorials.isTutorialQueued(TutorialEnum.worldMap)
+      _tutorials.isCurrentTutorial(TutorialEnum.worldMap)
       ? _tutorialStarterActivity?.activityId
       : null;
 
@@ -1412,8 +1475,16 @@ class WorldMapController extends State<WorldMap>
         tutorialType: TutorialEnum.appTour,
         stepsData: [
           // The offer. Nothing lit, and a tap outside the two buttons does
-          // nothing (see TutorialStepStyle.choices).
-          TutorialStepData(canShowNextStep: () => true),
+          // nothing (see TutorialStepStyle.choices). Accepting clears every
+          // open surface back to the bare map: the offer can fire over
+          // single-column surfaces that hide the nav rail (the activity plan
+          // sheet), and the next step points at a rail item. Only on accept —
+          // a decline routes to skip and never runs this, so saying no costs
+          // the learner nothing they had open.
+          TutorialStepData(
+            canShowNextStep: () => true,
+            onTap: () => _goAndSettle(WorkspaceNav.clearAll()),
+          ),
           TutorialStepData.single(
             targetKey: TutorialTargetIds.navChats,
             onTap: () => _goAndSettle(
@@ -1449,9 +1520,10 @@ class WorldMapController extends State<WorldMap>
             // exactly where a learner is right after their first activity. The
             // step shows them where practice lives; gating on it opening would
             // stall the tour for the learner it is for.
-            // Still holds the beat, so the tour's pacing does not change on the
-            // one step that has nowhere to go.
-            onTap: () => Future.delayed(TutorialConstants.stepSettleDelay),
+            // Leaving, it clears back to the bare map: on single-column the
+            // analytics panel covers the nav rail the next step points at.
+            // _goAndSettle holds the same beat the bare delay here did.
+            onTap: () => _goAndSettle(WorkspaceNav.clearAll()),
             canShowNextStep: () => true,
           ),
           TutorialStepData.single(

@@ -41,14 +41,13 @@ enum AssistanceStateEnum {
     AssistanceStateEnum.noSub => L10n.of(context).writingAssistanceNoSub,
     AssistanceStateEnum.error => L10n.of(context).viewError,
     AssistanceStateEnum.notFetched ||
-    AssistanceStateEnum.igcComplete ||
-    AssistanceStateEnum.suggesting => L10n.of(context).check,
+    AssistanceStateEnum.igcComplete => L10n.of(context).check,
+    // The lightbulb states are named for what the button offers (#8904).
+    AssistanceStateEnum.suggesting || AssistanceStateEnum.suggestionComplete =>
+      L10n.of(context).writingAssistanceSuggestion,
     AssistanceStateEnum.noMessage ||
     AssistanceStateEnum.fetching ||
-    AssistanceStateEnum.fetched ||
-    AssistanceStateEnum.suggestionComplete => L10n.of(
-      context,
-    ).writingAssistanceNoSub,
+    AssistanceStateEnum.fetched => L10n.of(context).writingAssistanceNoSub,
   };
 
   Color sendButtonColor(BuildContext context) {

@@ -15,10 +15,12 @@ import 'package:fluffychat/features/activity_sessions/activity_summary_room_exte
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_participant_indicator.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/activity_summary_unsubscribed_card.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/goal_status_widget.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class ActivityUserSummaries extends StatelessWidget {
   final ChatController controller;
@@ -27,8 +29,32 @@ class ActivityUserSummaries extends StatelessWidget {
 
   Room get room => controller.room;
 
+  /// How many picker circles the subscription gate draws: one per learner who
+  /// actually took a role, falling back to the plan's designed role count
+  /// while the room holds no assignments yet. Both are room state the gate can
+  /// read without the summary it will never receive (#8860).
+  int get _skeletonRoleCount {
+    final assigned = room.assignedRoles?.length ?? 0;
+    if (assigned > 0) return assigned;
+    return room.activityPlan?.roles.length ?? 0;
+  }
+
   @override
   Widget build(BuildContext context) {
+    // The subscription gate stands HERE, in the summary's own place, rather
+    // than as a line in the finished-status bar — a gate that fills the space
+    // the feature would have filled is the pattern every other one follows
+    // (#8860). Checked before the summary state below, because an unsubscribed
+    // learner never has a summary to read it from.
+    if (!MatrixState
+        .pangeaController
+        .subscriptionController
+        .showSubscriptionGatedContent) {
+      return room.isActivityFinished
+          ? ActivitySummaryUnsubscribedCard(roleCount: _skeletonRoleCount)
+          : const SizedBox.shrink();
+    }
+
     final summaryModel = room.visibleActivitySummaryByL1;
     if (summaryModel == null || summaryModel.hasError) {
       return const SizedBox();

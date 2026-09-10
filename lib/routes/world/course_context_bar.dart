@@ -9,7 +9,6 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_room_extens
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_header_actions.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_progress_bar.dart';
@@ -33,7 +32,8 @@ import 'package:fluffychat/widgets/matrix.dart';
 /// miss, and a learner could start a course activity thinking they were on the
 /// world map. It is deliberately **not closeable** — the course context is
 /// what it reports, and `?c=` is cleared by the World control, not here — and
-/// tapping it anywhere but its actions reopens the course card.
+/// tapping it anywhere but its actions reopens the course card, whose own
+/// header collapses it back the same way ([SpaceDetailsHeader], #8909).
 ///
 /// **Wide only** (#8816). It rides the map's search slot, except with an
 /// activity plan open, where it docks above that panel instead
@@ -152,22 +152,32 @@ class _CourseContextBarState extends State<CourseContextBar> {
       borderRadius: BorderRadius.circular(AppConfig.borderRadius),
     );
 
+    // A named GROUP, not a button. The bar holds controls of its own — the
+    // share action, the chevron — and a button that contains announced
+    // children is invalid nesting that assistive tech walks straight past:
+    // the cursor went from the map's zoom control to the star track inside
+    // here, and the whole-surface "Go to course" button was never a stop at
+    // all. So the surface tap is pointer-only (below) and the chevron is the
+    // one announced control, exactly as in the open card.
     return Semantics(
       label: L10n.of(context).goToCourse(name),
       sortKey: widget.sortKey,
-      button: true,
       container: true,
       child: Material(
         elevation: 4,
         color: theme.colorScheme.surface,
         shape: shape,
         clipBehavior: Clip.antiAlias,
-        // The bar sits on the opaque panel surface, which swallows InkWell's
-        // behind-the-child focus highlight (#8724) — so the keyboard
-        // affordance is the shared explicit gold ring.
-        child: FocusRingTapTarget(
+        // Tapping anywhere reopens the card, but for POINTERS only: it is a
+        // second hit area for the chevron's own action, so it announces
+        // nothing and takes no focus. A focusable node with no name would be
+        // an invisible dead stop for a keyboard user (2.4.7), and an
+        // announced one would read this same tap twice.
+        child: InkWell(
           onTap: _openCourse,
-          shape: shape,
+          customBorder: shape,
+          excludeFromSemantics: true,
+          canRequestFocus: false,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -191,13 +201,14 @@ class _CourseContextBarState extends State<CourseContextBar> {
                     // and one rotation apart. Wide follows the disclosure
                     // convention, so this points DOWN to say it reveals the
                     // card and the open panel's points UP to say it hides it
-                    // again (#8816). Semantics are excluded because the whole
-                    // bar is already one button announcing this very action.
+                    // again (#8816). It is also the bar's one announced,
+                    // focusable control, carrying the collapsed state the
+                    // open card's chevron carries expanded — so a screen
+                    // reader hears the same control in both states.
                     ChevronToggle(
                       expanded: false,
                       onTap: _openCourse,
                       meaning: ChevronMeaning.disclosure,
-                      excludeSemantics: true,
                     ),
                   ],
                 ),

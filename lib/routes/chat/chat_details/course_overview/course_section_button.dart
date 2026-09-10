@@ -36,16 +36,30 @@ class CourseSectionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
-    return FilledButton.tonalIcon(
+    // Not [FilledButton.tonalIcon]: it pads as if its icon led — 16 on the
+    // icon's side, 24 on the label's — and doesn't flip for a trailing one,
+    // which left the chevron in the wide pad and the pill lopsided (#8898).
+    // The plain button pads both sides alike.
+    return FilledButton.tonal(
       onPressed: onPressed,
-      // The chevron trails the label, pointing at the subpage it opens.
-      iconAlignment: IconAlignment.end,
-      icon: const Icon(Icons.chevron_right),
-      // A long localization plus the button's own padding can outrun a
-      // narrow course column; the button keeps its label flexible, so it
-      // wraps inside the width the header allows it rather than overflowing
-      // the header's row.
-      label: Text(l10n.seeAll, semanticsLabel: l10n.seeAllSection(section)),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        spacing: 8.0,
+        children: [
+          // A long localization plus the button's own padding can outrun a
+          // narrow course column; the label stays flexible, so it wraps
+          // inside the width the header allows it rather than overflowing
+          // the header's row.
+          Flexible(
+            child: Text(
+              l10n.seeAll,
+              semanticsLabel: l10n.seeAllSection(section),
+            ),
+          ),
+          // The chevron trails the label, pointing at the subpage it opens.
+          const Icon(Icons.chevron_right),
+        ],
+      ),
     );
   }
 }

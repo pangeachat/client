@@ -7,6 +7,7 @@ import 'package:fluffychat/features/subscription/repo_v2/products_response.dart'
 import 'package:fluffychat/features/subscription/widgets/frame_container.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/subscription_option_card.dart';
+import 'one_node_control.dart';
 
 /// Covers #8303: a selected plan card wears gold on its title bar, but its
 /// title ink was pinned to `onPrimaryContainer` — near-white in the dark
@@ -104,6 +105,17 @@ void main() {
       });
     });
   }
+
+  testWidgets('the card is one node with name, role, focus and tap (#8873)', (
+    tester,
+  ) async {
+    await pump(tester, brightness: Brightness.light, selected: false);
+    final l10n = L10n.of(tester.element(find.byType(SubscriptionOptionCard)));
+    expectOneNodeControl(
+      tester,
+      '${plan.duration.cardTitle(l10n)}, ${plan.duration.copy(l10n)}, ${plan.priceDisplay}',
+    );
+  });
 }
 
 /// WCAG relative-contrast ratio between two opaque colours.

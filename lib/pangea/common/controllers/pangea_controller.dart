@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
 import 'package:fluffychat/features/bot/bot_client_extension.dart';
 import 'package:fluffychat/features/keyboards/keyboard_prompt_local_store.dart';
@@ -124,6 +125,12 @@ class PangeaController {
     // the account logging out would otherwise resume — timer and all — under
     // the next account (#8617).
     PracticeSessionHolder.instance.end();
+    // Same for the discovered-session previews: the map colours its pins from
+    // this process-wide cache, so the account logging out would otherwise paint
+    // its coursemates' sessions onto the next account's map until that
+    // account's first discovery pass — which never runs while it has no course
+    // (#8895).
+    DiscoveredSessionsCache.instance.clear();
     _languageSubscription?.cancel();
     _settingsSubscription?.cancel();
     _joinSpaceSubscription?.cancel();

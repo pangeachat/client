@@ -70,9 +70,21 @@ class TutorialOverlayState {
 
 class TutorialOverlayStateMachine extends ChangeNotifier {
   final TutorialSequence _sequence;
+
+  /// The saved resume step for a tutorial, consulted when the sequence crosses
+  /// into it — so a learner who abandoned mid-tutorial resumes where they left
+  /// off even when an earlier tutorial of the sequence ran first. Without it
+  /// only the sequence's FIRST tutorial ever resumed ([initialStepIndex]);
+  /// every later one silently restarted at step 0.
+  final int Function(TutorialEnum tutorial)? resumeStepOf;
+
   late TutorialOverlayState _model;
 
-  TutorialOverlayStateMachine(this._sequence, {int initialStepIndex = 0}) {
+  TutorialOverlayStateMachine(
+    this._sequence, {
+    int initialStepIndex = 0,
+    this.resumeStepOf,
+  }) {
     _model = TutorialOverlayState(stepIndex: initialStepIndex);
   }
 
@@ -83,7 +95,6 @@ class TutorialOverlayStateMachine extends ChangeNotifier {
       LaunchTutorialEvent() => _launch(event),
       TutorialTransitionEvent() => _setTransition(event),
       ForwardTutorialEvent() => _forward(),
-      BackTutorialEvent() => _back(),
       ResetTutorialEvent() => reset(),
     };
     notifyListeners();
@@ -102,7 +113,7 @@ class TutorialOverlayStateMachine extends ChangeNotifier {
 
   // [ForwardEvent]:
   //    If current step index >= stepCount - 1 (reached the end of this tutorial):
-  //        StepIndex = 0
+  //        StepIndex = next tutorial's saved resume step (0 without one)
   //        TutorialIndex++
   //        ActiveTutorial = null
   //
@@ -118,9 +129,10 @@ class TutorialOverlayStateMachine extends ChangeNotifier {
 
     final stepCount = _sequence[_model.tutorialIndex].stepCount;
     if (_model.stepIndex >= stepCount - 1) {
+      final nextIndex = _model.tutorialIndex + 1;
       return _model.copyWith(
-        tutorialIndex: _model.tutorialIndex + 1,
-        stepIndex: 0,
+        tutorialIndex: nextIndex,
+        stepIndex: nextIndex < _sequence.length ? _resumeStepFor(nextIndex) : 0,
         resetActiveTutorial: true,
       );
     }
@@ -128,34 +140,12 @@ class TutorialOverlayStateMachine extends ChangeNotifier {
     return _model.copyWith(stepIndex: _model.stepIndex + 1);
   }
 
-  // [BackEvent]:
-  //    If current step index <= 0 (reached the beginning of this tutorial):
-  //        StepIndex = previous tutorial's step count - 1
-  //        TutorialIndex--
-  //        ActiveTutorial = null
-  //
-  //        If tutorial index <= 0 (reached the beginning of the sequence):
-  //            Sequence is now at the beginning, cannot go back further
-  //
-  //    Else:
-  //        StepIndex--
-  TutorialOverlayState _back() {
-    if (_model.stepIndex <= 0) {
-      final updatedTutorialIndex = _model.tutorialIndex - 1;
-      int updatedStepIndex = 0;
-      if (updatedTutorialIndex >= 0) {
-        final previousTutorial = _sequence[updatedTutorialIndex];
-        updatedStepIndex = previousTutorial.stepCount - 1;
-      }
-
-      return _model.copyWith(
-        tutorialIndex: updatedTutorialIndex,
-        stepIndex: updatedStepIndex,
-        resetActiveTutorial: true,
-      );
-    }
-
-    return _model.copyWith(stepIndex: _model.stepIndex - 1);
+  int _resumeStepFor(int tutorialIndex) {
+    final tutorial = _sequence[tutorialIndex];
+    final saved = resumeStepOf?.call(tutorial) ?? 0;
+    // Clamped: a stale save past the end (a step removed in an update) must
+    // not strand the tutorial on a step that no longer exists.
+    return saved.clamp(0, tutorial.stepCount - 1);
   }
 
   TutorialOverlayState reset() => _model.copyWith(resetActiveTutorial: true);
@@ -170,12 +160,6 @@ class TutorialOverlayStateMachine extends ChangeNotifier {
   int get totalStepsInSequence {
     return _sequence.fold(0, (sum, tutorial) => sum + tutorial.stepCount);
   }
-
-  bool get hasPreviousTutorial => _model.tutorialIndex > 0;
-
-  bool get hasPreviousStep => _model.stepIndex > 0;
-
-  bool get canGoBack => hasPreviousStep || hasPreviousTutorial;
 
   bool get hasNextTutorial => _model.tutorialIndex < _sequence.length - 1;
 

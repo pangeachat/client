@@ -8,6 +8,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
 
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/svg_repo.dart';
 import 'package:fluffychat/pangea/common/widgets/network_svg.dart';
 import 'sentry_capture_harness.dart';
@@ -128,6 +129,10 @@ void main() {
     late SentryCaptureHarness harness;
 
     setUp(() async {
+      // The transport-failure cases above already spent this session's one
+      // no-response report (#8890); a capture here would otherwise wait on a
+      // report the sink is right to suppress.
+      ErrorHandler.resetReportedOnceKeysForTest();
       harness = SentryCaptureHarness();
       await harness.init();
     });

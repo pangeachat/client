@@ -7,6 +7,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/content_creator_chip.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/routes/courses/add_course_tile.dart';
 import 'package:fluffychat/routes/courses/add_course_tile_content.dart';
@@ -103,6 +104,24 @@ class SelectedCourseView extends StatelessWidget {
                     ),
                     if (content != null)
                       AddCourseTile(content: content, expanded: true),
+                    // Who built this course plan, credited where the teacher
+                    // is deciding whether to build on it (#8819). This is the
+                    // one course surface where the credit is prominent: after
+                    // the space exists it moves to the course page's More
+                    // section, under the teacher's own description rather
+                    // than over it.
+                    //
+                    // Full-width and left-aligned inside the column's centred
+                    // layout, so the label sits over the avatar rather than
+                    // floating in the middle of the page.
+                    if (ContentCreatorChip.hasCredit(course.ownerId))
+                      Align(
+                        alignment: AlignmentDirectional.centerStart,
+                        child: ContentCreatorCredit(
+                          ownerId: course.ownerId,
+                          avatarSize: ContentCreatorCredit.prominentAvatarSize,
+                        ),
+                      ),
                     if (adminIds.isNotEmpty) _CourseAdminDisplay(adminIds),
                   ],
                 );

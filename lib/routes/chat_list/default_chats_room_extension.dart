@@ -7,6 +7,7 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
 import 'package:fluffychat/pangea/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
@@ -102,7 +103,12 @@ extension DefaultChatsRoomExtension on Room {
     try {
       await addToSpace(resp);
       if (pangeaSpaceParents.isEmpty) {
-        await client.waitForRoomInSync(resp).timeout(Duration(seconds: 10));
+        await client
+            .waitForRoomInSync(resp)
+            .timeoutNamed(
+              const Duration(seconds: 10),
+              'waitForRoomInSync: default chats',
+            );
       }
     } catch (e, s) {
       ErrorHandler.logError(

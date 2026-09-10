@@ -13,9 +13,9 @@ import 'package:fluffychat/l10n/l10n.dart';
 /// [rows] is empty, so each caller can hand over whatever it has.
 class CourseAttentionCard extends StatefulWidget {
   /// The box every card's leading [icon] is drawn in. The two cards mark
-  /// themselves with different glyphs — an outlined bell, a filled "!" disc —
-  /// and a filled shape already reads heavier than an outline at the same
-  /// size, so they are pinned to one box: a bigger icon makes the title
+  /// themselves with different glyphs — an outlined bell, a filled add-person
+  /// disc — and a filled shape already reads heavier than an outline at the
+  /// same size, so they are pinned to one box: a bigger icon makes the title
   /// beside it look bigger too, and the headers stop reading as one ladder.
   static const double iconSize = 20.0;
 

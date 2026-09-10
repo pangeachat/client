@@ -2,6 +2,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
 import 'package:fluffychat/pangea/lemmas/user_set_lemma_info.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 
@@ -42,6 +43,9 @@ extension UserLemmaInfoExtension on Room {
       cId.escapedString,
       info.toJson(),
     );
-    await syncFuture.timeout(const Duration(seconds: 10));
+    await syncFuture.timeoutNamed(
+      const Duration(seconds: 10),
+      'room state sync: user lemma info',
+    );
   }
 }

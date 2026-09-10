@@ -14,6 +14,7 @@ import 'package:fluffychat/features/activity_sessions/activity_roles_room_extens
 import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
 import 'package:fluffychat/features/dosage/dosage_shared_player_tracker.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
+import 'package:fluffychat/features/tutorials/tutorial_constants.dart';
 import 'package:fluffychat/features/tutorials/tutorial_enum.dart';
 import 'package:fluffychat/features/tutorials/tutorial_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
@@ -245,7 +246,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
     );
     // The shimmer nudges toward the translate button; the tutorial does that
     // job itself while it runs, and turns the shimmer back on when it moves on.
-    _shimmerTranslateButton.value = !tutorials.isTutorialQueued(
+    _shimmerTranslateButton.value = !tutorials.isCurrentTutorial(
       TutorialEnum.selectModeButtons,
     );
   }
@@ -320,7 +321,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
               widget.overlayController.updateSelectedSpan(
                 chat.tutorialToken!.text,
               );
-              await Future.delayed(Duration(milliseconds: 4000));
+              await Future.delayed(TutorialConstants.stepDemoDelay);
               widget.overlayController.updateSelectedSpan(null);
               _shimmerTranslateButton.value = true;
             },
@@ -330,8 +331,10 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
           TutorialStepData.single(
             targetKey: translateTarget,
             onTap: () async {
+              // The translation fetch already serializes ahead of this pause,
+              // so the learner's wait is network + demo.
               await updateMode(SelectMode.translate);
-              await Future.delayed(Duration(milliseconds: 4000));
+              await Future.delayed(TutorialConstants.stepDemoDelay);
             },
             canShowNextStep: () =>
                 mounted &&

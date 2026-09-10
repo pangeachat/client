@@ -1,5 +1,7 @@
 import 'package:collection/collection.dart';
 
+import 'package:fluffychat/features/analytics/construct_identifier.dart';
+import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/pangea/morphs/default_grammar_constructs_response.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_response.dart';
 import 'package:fluffychat/pangea/morphs/parts_of_speech_enum.dart';
@@ -163,4 +165,15 @@ class MorphFeatureTags {
       tags.firstWhereOrNull((t) => t.value.toLowerCase() == tag.toLowerCase());
 
   List<String> get tagValues => tags.map((t) => t.value).toList();
+
+  /// This feature's tags as construct ids, in display order — the analytics
+  /// row's chips, and the ids the row's roving focus group is keyed by.
+  List<ConstructIdentifier> get constructIds => [
+    for (final tag in tags)
+      ConstructIdentifier(
+        lemma: tag.value,
+        type: ConstructTypeEnum.morph,
+        category: feature.value,
+      ),
+  ];
 }
