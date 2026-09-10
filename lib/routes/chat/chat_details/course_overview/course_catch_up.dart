@@ -108,7 +108,8 @@ class CourseCatchUp extends StatelessWidget {
             final rows = <Widget>[
               if (ping != null)
                 _CatchUpPingRow(
-                  activityId: ping.activityId,
+                  room: room,
+                  ping: ping,
                   onTap: () => _openPingedActivity(context, ping),
                 ),
               ...analyticsRequests.entries.map(
@@ -152,26 +153,40 @@ class CourseCatchUp extends StatelessWidget {
 /// The course ping a coursemate sent to gather players for their session
 /// (#8944), opening that activity on the session the ping named.
 ///
-/// Named by the activity's own title, hydrated through [ActivityPlanRepo] the
-/// same way every other surface that holds only an activity id does — the
-/// ping event carries ids, not a title. The row renders on the id alone while
-/// that lands, so a slow plan fetch delays the name, never the row.
+/// Names both halves of what a ping is — WHICH activity, and WHO is waiting in
+/// it — because either alone leaves the learner deciding blind: an activity
+/// with no host does not say anyone is actually there, and a host with no
+/// activity does not say what they are asking for.
+///
+/// The activity title is hydrated through [ActivityPlanRepo] the same way
+/// every other surface holding only an activity id does; the ping event
+/// carries ids, not a title. The row renders without it while that lands, so
+/// a slow plan fetch delays the name, never the row.
 class _CatchUpPingRow extends StatelessWidget {
-  final String activityId;
+  final Room room;
+  final CoursePingBadgeData ping;
   final VoidCallback onTap;
 
-  const _CatchUpPingRow({required this.activityId, required this.onTap});
+  const _CatchUpPingRow({
+    required this.room,
+    required this.ping,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
     final theme = Theme.of(context);
+    final sender = room.unsafeGetUserFromMemoryOrFallback(ping.senderId);
+    final senderName = sender.localizedDisplayname(l10n);
     return ListenableBuilder(
       listenable: ActivityPlanRepo.instance,
       builder: (context, _) {
         // No-op once cached; the repo listener above rebuilds when it lands.
-        ActivityPlanRepo.instance.ensure(activityId);
-        final title = ActivityPlanRepo.instance.cachedPlan(activityId)?.title;
+        ActivityPlanRepo.instance.ensure(ping.activityId);
+        final title = ActivityPlanRepo.instance
+            .cachedPlan(ping.activityId)
+            ?.title;
         return InkWell(
           onTap: onTap,
           borderRadius: BorderRadius.circular(8.0),
@@ -179,25 +194,46 @@ class _CatchUpPingRow extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 5.0),
             child: Row(
               children: [
-                const CoursePingBadge(size: 34.0),
+                // The sender's own avatar, marked with the app's one ping
+                // glyph — the same pairing the course avatar wears in the nav
+                // rail, so a ping looks like a ping wherever it is met.
+                Semantics(
+                  label: l10n.pingedLabel,
+                  child: Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      Avatar(
+                        mxContent: sender.avatarUrl,
+                        name: senderName,
+                        size: 34.0,
+                      ),
+                      const Positioned(
+                        right: -2.0,
+                        bottom: -2.0,
+                        child: CoursePingBadge(size: 16.0),
+                      ),
+                    ],
+                  ),
+                ),
                 const SizedBox(width: 10.0),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        l10n.pingedActivity,
+                        title ?? l10n.pingedActivity,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                         style: theme.textTheme.bodyMedium,
                       ),
-                      if (title != null)
-                        Text(
-                          title,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: theme.textTheme.bodySmall?.copyWith(
-                            color: theme.colorScheme.outline,
-                          ),
+                      Text(
+                        senderName,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: theme.textTheme.bodySmall?.copyWith(
+                          color: theme.colorScheme.outline,
                         ),
+                      ),
                     ],
                   ),
                 ),

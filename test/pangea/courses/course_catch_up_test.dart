@@ -23,6 +23,8 @@ void main() {
 
   const userId = '@test:fakeServer.notExisting';
   const knockerId = '@knocker:fakeServer.notExisting';
+  const pingerId = '@pinger:fakeServer.notExisting';
+  const pingerName = 'Pia Pinger';
   const chatId = '!chat:fakeServer.notExisting';
   const chatName = 'Introductions';
 
@@ -46,6 +48,7 @@ void main() {
         courseId: courseId,
         activityId: 'activity-1',
         sessionRoomId: '!session:fakeServer.notExisting',
+        senderId: pingerId,
       );
 
   void setStateEvent(
@@ -89,6 +92,13 @@ void main() {
       content: {'membership': 'knock', 'displayname': 'Kai Knocker'},
       stateKey: knockerId,
       senderId: knockerId,
+    );
+    setStateEvent(
+      course,
+      EventTypes.RoomMember,
+      content: {'membership': 'join', 'displayname': pingerName},
+      stateKey: pingerId,
+      senderId: pingerId,
     );
     setStateEvent(
       course,
@@ -169,6 +179,12 @@ void main() {
     final l10n = L10n.of(context);
     expect(find.text(l10n.catchUp), findsOneWidget);
     expect(find.byType(CoursePingBadge), findsOneWidget);
+    // Who is waiting, and what for. The plan has not hydrated here, so the
+    // activity falls back to its label while the name of the coursemate --
+    // which comes off the course's own member list, not the ping body --
+    // is there either way.
+    expect(find.text(pingerName), findsOneWidget);
+    expect(find.text(l10n.pingedActivity), findsOneWidget);
   });
 
   testWidgets('another course\'s ping does not appear here', (tester) async {
