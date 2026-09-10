@@ -14,6 +14,47 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/calls/turn_timeline.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 
+/// A [ValueNotifier] that counts its own listener attachments AND its own
+/// `.value` getter reads -- used to prove whether [TurnTimeline] observes a
+/// listenable AT ALL (either way), without reaching into [ChangeNotifier.
+/// hasListeners] itself: that member is `@protected`, visible only inside a
+/// [ChangeNotifier] subclass, not to a test asserting on it from outside
+/// one. `addListener`/`removeListener` are the ordinary public API this
+/// widget already calls either way, so counting calls to them (paired 1:1
+/// by [TurnTimeline]'s own attach/detach discipline) is a like-for-like
+/// probe, not a workaround.
+///
+/// Both counters matter separately: a widget could hold zero listeners yet
+/// still read `.value` directly (a smaller, but real, master-gate leak of
+/// its own -- exactly what an earlier draft of this widget did in
+/// `initState`), so `listenerCount` alone cannot pin that. Counting reads
+/// too is what makes "observes AT ALL" a claim this notifier can actually
+/// back up, not just "holds no live subscription".
+class _CountingNotifier<T> extends ValueNotifier<T> {
+  _CountingNotifier(super.value);
+
+  int listenerCount = 0;
+  int valueReadCount = 0;
+
+  @override
+  T get value {
+    valueReadCount++;
+    return super.value;
+  }
+
+  @override
+  void addListener(VoidCallback listener) {
+    listenerCount++;
+    super.addListener(listener);
+  }
+
+  @override
+  void removeListener(VoidCallback listener) {
+    listenerCount--;
+    super.removeListener(listener);
+  }
+}
+
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -635,6 +676,274 @@ void main() {
           reason:
               'no GlobalKey machinery is attached at all while activeIndex '
               'is null -- not merely unused',
+        );
+      },
+    );
+
+    testWidgets(
+      // Mutation: attach `isPlaying` regardless of `activeIndex` (e.g. drop
+      // the `_karaokeEnabled` gate from `_syncIsPlayingListener`, or call
+      // `widget.isPlaying?.addListener(_onIsPlayingChanged)`
+      // unconditionally in `initState`) -> `listenerCount` below goes to 1,
+      // RED. Mutation: restore a bare `widget.isPlaying?.value` read
+      // anywhere reachable while activeIndex is null (e.g. back in
+      // `initState`, the way an earlier draft of this widget did) ->
+      // `valueReadCount` below goes to 1, RED -- `listenerCount` alone does
+      // NOT catch this, since a getter read attaches no listener at all.
+      'activeIndex is the master gate: with activeIndex null the widget '
+      'never attaches to isPlaying at all, even when isPlaying is provided',
+      (tester) async {
+        final isPlaying = _CountingNotifier<bool>(false);
+        addTearDown(isPlaying.dispose);
+
+        await pumpKaraoke(tester, [
+          turn(text: 'first', at: const Duration(seconds: 3)),
+        ], isPlaying: isPlaying);
+
+        expect(
+          isPlaying.listenerCount,
+          0,
+          reason:
+              'activeIndex is the master gate -- karaoke must not observe '
+              'isPlaying at all while it is null, not even to attach a '
+              'listener that does nothing on its own',
+        );
+        expect(
+          isPlaying.valueReadCount,
+          0,
+          reason:
+              'nor may it read isPlaying.value even once while activeIndex '
+              'is null -- a getter read is a smaller violation than a live '
+              'listener, but still real, and a listener count alone cannot '
+              'see it',
+        );
+
+        // Toggling it must have no observable effect at all -- there is
+        // nothing karaoke-related on screen to check either way while
+        // activeIndex is null, so the absence of a listener/read above
+        // (still true after the toggle) is what actually proves this.
+        isPlaying.value = true;
+        await tester.pump();
+        expect(tester.takeException(), isNull);
+        expect(isPlaying.listenerCount, 0);
+        expect(isPlaying.valueReadCount, 0);
+      },
+    );
+
+    testWidgets(
+      // Mutation: in `didUpdateWidget`, drop the `_syncIsPlayingListener()`
+      // call (leaving isPlaying attachment keyed only to its OWN identity
+      // change) -> `listenerCount` stays 0 after activeIndex turns
+      // non-null, RED.
+      //
+      // Mutation: drop `_onIsPlayingChanged`'s own `if (!_karaokeEnabled)
+      // return;` guard -> the CLOSING step's `valueReadCount` assertion
+      // goes RED: `_syncIsPlayingListener`'s trailing call still fires on
+      // the open->closed transition (its target genuinely changes, from
+      // `isPlaying` to `null`), and without the internal guard that call
+      // would read `widget.isPlaying.value` even though the gate has
+      // already closed by the time it runs.
+      'the isPlaying listener attaches when activeIndex turns non-null and '
+      'detaches again when it turns back to null, via a widget update',
+      (tester) async {
+        final isPlaying = _CountingNotifier<bool>(false);
+        addTearDown(isPlaying.dispose);
+
+        await pumpKaraoke(tester, [
+          turn(text: 'first', at: const Duration(seconds: 3)),
+        ], isPlaying: isPlaying);
+        expect(isPlaying.listenerCount, 0);
+        expect(isPlaying.valueReadCount, 0);
+
+        final activeIndex = ValueNotifier<int?>(null);
+        addTearDown(activeIndex.dispose);
+        await pumpKaraoke(
+          tester,
+          [turn(text: 'first', at: const Duration(seconds: 3))],
+          activeIndex: activeIndex,
+          isPlaying: isPlaying,
+        );
+        expect(
+          isPlaying.listenerCount,
+          1,
+          reason: 'activeIndex is now non-null -- the master gate is open',
+        );
+        expect(
+          isPlaying.valueReadCount,
+          1,
+          reason:
+              'the fresh attachment reads the current value exactly once, '
+              'to seed the rebaseline',
+        );
+
+        await pumpKaraoke(tester, [
+          turn(text: 'first', at: const Duration(seconds: 3)),
+        ], isPlaying: isPlaying);
+        expect(
+          isPlaying.listenerCount,
+          0,
+          reason: 'activeIndex went back to null -- the listener must detach',
+        );
+        expect(
+          isPlaying.valueReadCount,
+          1,
+          reason:
+              'closing the gate must not read isPlaying.value at all -- this '
+              'count must not have grown past the one read from opening',
+        );
+
+        // A closed -> closed `isPlaying` OBJECT swap, entirely while the
+        // gate stays shut: a caller replacing its listenable for reasons
+        // that have nothing to do with karaoke (a fresh controller, say)
+        // must not touch either object at all.
+        final secondIsPlaying = _CountingNotifier<bool>(false);
+        addTearDown(secondIsPlaying.dispose);
+        await pumpKaraoke(tester, [
+          turn(text: 'first', at: const Duration(seconds: 3)),
+        ], isPlaying: secondIsPlaying);
+        expect(
+          isPlaying.valueReadCount,
+          1,
+          reason: 'the OLD object must not be touched again by the swap',
+        );
+        expect(isPlaying.listenerCount, 0);
+        expect(
+          secondIsPlaying.valueReadCount,
+          0,
+          reason:
+              'the NEW object must not be read either -- the gate was '
+              'closed before, during, and after this swap',
+        );
+        expect(secondIsPlaying.listenerCount, 0);
+      },
+    );
+
+    testWidgets(
+      // Mutation: in `_syncIsPlayingListener`, drop the trailing
+      // `_onIsPlayingChanged();` call (still attaching/detaching
+      // correctly, just never re-baselining) -> `_lastIsPlaying` stays
+      // stuck at its stale (true) pre-close value through the reopen, the
+      // REAL false->true edge below (fired after reopening) is misread
+      // against that stale baseline as a no-op, and the final assertion
+      // goes RED (turn 10 never scrolls into view).
+      //
+      // Scope, precisely: this proves the value DROP that happens entirely
+      // while the gate is closed gets correctly folded into the
+      // reattachment rebaseline, so the SUBSEQUENT real notification (the
+      // rise, which happens AFTER reopening, once a listener exists again
+      // to carry it) is read against an accurate baseline rather than a
+      // stale one. It does NOT cover -- and cannot, by construction, since
+      // the gate means nothing is watching at all in between -- a value
+      // that drops and rises again, net UNCHANGED, entirely inside the
+      // closed window; see the `_lastIsPlaying` field's own doc comment in
+      // turn_timeline.dart for why that narrower case is a documented,
+      // unclosed gap rather than something this rebaseline can close.
+      'an isPlaying value that drops entirely while the gate is closed is '
+      'correctly rebaselined, so the next REAL edge after the gate reopens '
+      'still resumes auto-scroll',
+      (tester) async {
+        final activeIndex = ValueNotifier<int?>(null);
+        // Starts false -- deliberately matching [_lastIsPlaying]'s own bare
+        // field default, so the very first attachment's re-baseline (fixed
+        // code) and its ABSENCE (the mutation) are indistinguishable at
+        // construction: both read/leave `false`. The divergence this test
+        // actually targets has to come ONLY from the reattachment below,
+        // never from initial seeding, or a mutant that breaks EVERY
+        // re-baseline (including the very first one) reads as accidentally
+        // correct here by coincidence, same as it did with isPlaying
+        // starting true -- proven while writing this test: that version
+        // stayed GREEN under the named mutation, because skipping the
+        // first re-baseline left `_lastIsPlaying` wrong (false) in exactly
+        // the way that then happened to match isPlaying's real value later.
+        final isPlaying = ValueNotifier<bool>(false);
+        addTearDown(activeIndex.dispose);
+        addTearDown(isPlaying.dispose);
+
+        final turns = manyTurns();
+        final scrollController = await pumpKaraokeScrollable(
+          tester,
+          turns,
+          activeIndex: activeIndex,
+          isPlaying: isPlaying,
+        );
+
+        // Establish `_lastIsPlaying == true` via a GENUINE, listener-driven
+        // notification (gate open, isPlaying attached) -- a path the
+        // targeted mutation does not touch at all, so this baseline is
+        // identical whether or not the fix is present.
+        isPlaying.value = true;
+        await tester.pump();
+
+        // Suspend auto-scroll manually, AFTER establishing that baseline
+        // (a resume-on-attach side effect from the line above would
+        // otherwise have nothing to undo yet, but ordering it this way
+        // keeps the two concerns cleanly separated regardless).
+        await tester.drag(
+          find.byType(SingleChildScrollView),
+          const Offset(0, -80),
+        );
+        await tester.pumpAndSettle();
+        final offsetAfterDrag = scrollController.offset;
+        expect(offsetAfterDrag, greaterThan(0));
+
+        Widget buildWith(ValueListenable<int?>? gate) => MaterialApp(
+          locale: const Locale('en'),
+          localizationsDelegates: L10n.localizationsDelegates,
+          supportedLocales: L10n.supportedLocales,
+          home: Scaffold(
+            body: SizedBox(
+              height: 300,
+              child: SingleChildScrollView(
+                controller: scrollController,
+                child: TurnTimeline(
+                  turns: turns,
+                  activeIndex: gate,
+                  isPlaying: isPlaying,
+                ),
+              ),
+            ),
+          ),
+        );
+
+        // Close the master gate -- the isPlaying listener detaches.
+        await tester.pumpWidget(buildWith(null));
+        await tester.pumpAndSettle();
+
+        // The DROP happens entirely while unobserved: no notification can
+        // reach `_lastIsPlaying` at all while nothing is attached to this
+        // object, so without a rebaseline it would stay stuck at `true`.
+        isPlaying.value = false;
+        await tester.pump();
+
+        // Reopen the gate with the SAME `activeIndex` and `isPlaying`
+        // objects -- no identity swap anywhere, so only the gate
+        // transition itself (and its rebaseline) can be responsible for
+        // anything that follows.
+        await tester.pumpWidget(buildWith(activeIndex));
+        await tester.pumpAndSettle();
+
+        // The RISE, by contrast, is a genuinely-observed real notification:
+        // the listener is reattached by this point, so this is not itself
+        // inside the closed window -- what makes it a meaningful check is
+        // only that it is read against an ACCURATE baseline (false, from
+        // the reattachment rebaseline above) rather than the stale one
+        // (true) a missing rebaseline would have left behind.
+        isPlaying.value = true;
+        await tester.pump();
+
+        // Proven via an ACTUAL activeIndex change: it must auto-scroll now
+        // that the resume has (correctly) fired.
+        activeIndex.value = 10;
+        await tester.pumpAndSettle();
+        final pos = tester.getTopLeft(find.text('turn number 10')).dy;
+        expect(
+          pos >= 0 && pos < 300,
+          isTrue,
+          reason:
+              'the post-reopen false->true edge must still resume '
+              'auto-scroll -- _lastIsPlaying must have been rebaselined to '
+              'the value observed at reattachment (false), not left stuck '
+              'at its stale pre-close value (true)',
         );
       },
     );
@@ -1278,7 +1587,17 @@ void main() {
 
     testWidgets(
       // Mutation: announce `stamp` (the printed label) instead of the
-      // audioStart-derived one -> both assertions below go RED.
+      // audioStart-derived one -> the label assertion below goes RED (the
+      // `find.text('by 0:07')` line above it is a fixture precondition --
+      // it checks the printed stamp and audio start genuinely differ, and
+      // stays green regardless of which one feeds the Semantics label, so
+      // it is not itself pinned to this mutation). Also catches a
+      // regression to the old, reused `l10n.play` string (bare "Play
+      // {time}"), which this label must not read as any more (D4: a
+      // screen reader needs to hear that the tap SEEKS the recording, not
+      // that it plays this turn on its own) -- pinned as an EXACT match,
+      // not merely `contains`, so a revert back to that string goes RED
+      // here too.
       'the seek label announces the recording-relative start, not the '
       'printed label',
       (tester) async {
@@ -1312,8 +1631,7 @@ void main() {
             (w) => w is Semantics && (w.properties.button ?? false),
           ),
         );
-        expect(semantics.properties.label, contains('0:03'));
-        expect(semantics.properties.label, isNot(contains('0:07')));
+        expect(semantics.properties.label, 'Play from 0:03');
       },
     );
 
@@ -1526,7 +1844,7 @@ void main() {
         expect(
           find.semantics.byPredicate(
             (node) =>
-                node.label == 'Play 0:03' &&
+                node.label == 'Play from 0:03' &&
                 node.getSemanticsData().hasAction(SemanticsAction.tap),
           ),
           findsOneWidget,
@@ -1541,15 +1859,17 @@ void main() {
     );
 
     testWidgets(
-      // Mutation: in `didUpdateWidget`, replace the `_onActiveIndexChanged()` /
-      // `_onIsPlayingChanged()` calls with direct `_lastActiveIndex = ...`/
-      // `_lastIsPlaying = ...` assignments (silently adopting the swapped
-      // listenable's value as the new baseline) -> the auto-scroll
-      // assertion below goes RED. The highlight assertion does NOT: `build`
-      // reads `widget.activeIndex?.value` directly regardless of this
-      // mutation, so the swapped-in turn highlights correctly either way --
-      // only the auto-scroll SIDE EFFECT depends on the swap being treated
-      // as a real change.
+      // Mutation: in `didUpdateWidget`, replace the `_onActiveIndexChanged()`
+      // call with a direct `_lastActiveIndex = ...` assignment, AND/OR
+      // replace `_syncIsPlayingListener`'s trailing `_onIsPlayingChanged()`
+      // call with a direct `_lastIsPlaying = widget.isPlaying?.value ??
+      // false;` assignment (silently adopting the swapped listenable's
+      // value as the new baseline, either way) -> the auto-scroll assertion
+      // below goes RED. The highlight assertion does NOT: `build` reads
+      // `widget.activeIndex?.value` directly regardless of this mutation,
+      // so the swapped-in turn highlights correctly either way -- only the
+      // auto-scroll SIDE EFFECT depends on the swap being treated as a real
+      // change.
       'swapping the activeIndex/isPlaying listenables for new objects still '
       'active/playing is treated as a real change, not a silent new '
       'baseline',
@@ -1622,16 +1942,16 @@ void main() {
     );
 
     testWidgets(
-      // Mutation: in `didUpdateWidget`'s `isPlaying` branch specifically,
-      // replace `_onIsPlayingChanged()` with a direct
+      // Mutation: in `_syncIsPlayingListener`, replace the trailing
+      // `_onIsPlayingChanged();` call with a direct
       // `_lastIsPlaying = widget.isPlaying?.value ?? false;` assignment ->
       // the assertion below goes RED. The test above swaps BOTH listenables
-      // at once, so it cannot tell this branch's fix apart from
+      // at once, so it cannot tell this fix apart from
       // `_onActiveIndexChanged`'s deferred callback simply re-reading
       // `isPlaying` fresh regardless (which it does) -- this isolates the
       // `isPlaying` swap alone: `activeIndex` is the SAME object throughout,
-      // so only the `isPlaying` branch can be responsible for anything that
-      // follows.
+      // so only `_syncIsPlayingListener`'s own rebaseline can be
+      // responsible for anything that follows.
       'swapping ONLY the isPlaying listenable for one already true resumes '
       'auto-scroll on the next activeIndex change',
       (tester) async {

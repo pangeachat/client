@@ -335,7 +335,61 @@ class _TurnTimelineState extends State<TurnTimeline> {
   List<CallTurn> _ordered = const [];
 
   int? _lastActiveIndex;
+
+  /// The last `isPlaying` value [_onIsPlayingChanged] actually saw -- via a
+  /// real notification while attached, or via [_syncIsPlayingListener]'s
+  /// own rebaseline the moment it (re)attaches. A false->true edge against
+  /// this is the RESUME condition (spec section 4).
+  ///
+  /// KNOWN, UNCLOSED GAP -- inherent to honoring the master gate, not a
+  /// defect in the rebaseline itself: while [_karaokeEnabled] is false,
+  /// NOTHING observes `isPlaying` at all (the entire point of the gate --
+  /// see [_syncIsPlayingListener]), so this field is simply frozen at
+  /// whatever it last was. Two DIFFERENT ways this can arrive at a stale
+  /// value once the gate reopens, both unrecoverable for the same reason:
+  ///
+  /// - The SAME, continuously-existing `isPlaying` object changes value and
+  ///   then changes BACK before the gate reopens (`true -> false -> true`,
+  ///   say).
+  /// - [TurnTimeline.isPlaying] itself passes through null (removed, or
+  ///   swapped for a different object) WHILE the gate is ALSO closed, so by
+  ///   the time something is attached again -- the same object once more,
+  ///   or a brand new one -- there is no reason to expect its CURRENT value
+  ///   to relate at all to whatever [TurnTimeline.activeIndex] was doing
+  ///   when the gate last closed. (Swapping `isPlaying` while the gate
+  ///   stays OPEN throughout is NOT this gap: [_syncIsPlayingListener] still
+  ///   rebaselines against the new object's current value in that case,
+  ///   deliberately treating it as a real edge -- see the dedicated test for
+  ///   that swap.)
+  ///
+  /// Either way, this field can only ever compare the LAST value seen
+  /// before closing against the CURRENT value after reopening, never
+  /// anything that happened in between, because nothing was watching in
+  /// between -- so a false->true edge that would have fired a resume had
+  /// the gate stayed open is silently missed whenever the net effect across
+  /// the closed window looks like no change at all. Closing this would mean
+  /// observing `isPlaying` in some form while the gate is closed --
+  /// precisely what the gate exists to prevent. The alternative of
+  /// resuming unconditionally on every reattachment where the newly
+  /// observed value happens to be `true` was considered and rejected: that
+  /// would misfire on the FAR more common case of an incidental,
+  /// transient gate blip landing while `isPlaying` is simply already `true`
+  /// (the ordinary state while a recording plays), spuriously clearing a
+  /// suspension the reader only just set -- trading a narrow, hard-to-hit
+  /// gap for a broader, easy-to-hit one. So, like [_autoScrollInFlight]'s
+  /// own activity-ownership gap and [_observedPosition]'s single-ancestor-
+  /// `Scrollable` limitation elsewhere in this class, this is documented
+  /// rather than fixed.
   bool _lastIsPlaying = false;
+
+  /// Whichever `isPlaying` listenable [_onIsPlayingChanged] is actually
+  /// attached to right now, or null when nothing is -- written only by
+  /// [_syncIsPlayingListener]. Tracked separately from [TurnTimeline.
+  /// isPlaying] because the two can disagree: [TurnTimeline.activeIndex] is
+  /// the master gate for the whole karaoke feature (the class doc), so this
+  /// stays null whenever [_karaokeEnabled] is false regardless of what
+  /// [TurnTimeline.isPlaying] itself is.
+  ValueListenable<bool>? _attachedIsPlaying;
 
   /// Bumped on every [_onActiveIndexChanged] call that finds a REAL value
   /// change (never on a no-op notification, including a listenable swap
@@ -429,9 +483,15 @@ class _TurnTimelineState extends State<TurnTimeline> {
   void initState() {
     super.initState();
     widget.activeIndex?.addListener(_onActiveIndexChanged);
-    widget.isPlaying?.addListener(_onIsPlayingChanged);
+    // Seeds [_lastIsPlaying] too, via [_onIsPlayingChanged], but ONLY when
+    // this actually attaches to something -- i.e. only when [_karaokeEnabled]
+    // is true from construction. While it is false, [_lastIsPlaying] is left
+    // at its bare field default: reading `widget.isPlaying?.value` here
+    // regardless of the gate would be the exact same violation Fix 1 closed
+    // for the LISTENER, just for a plain getter instead -- see
+    // [_syncIsPlayingListener].
+    _syncIsPlayingListener();
     _lastActiveIndex = widget.activeIndex?.value;
-    _lastIsPlaying = widget.isPlaying?.value ?? false;
   }
 
   @override
@@ -456,13 +516,16 @@ class _TurnTimelineState extends State<TurnTimeline> {
       // rebuild/auto-scroll that change deserves.
       _onActiveIndexChanged();
     }
-    if (!identical(oldWidget.isPlaying, widget.isPlaying)) {
-      oldWidget.isPlaying?.removeListener(_onIsPlayingChanged);
-      widget.isPlaying?.addListener(_onIsPlayingChanged);
-      // Same reasoning as above: a swapped listenable's current value may
-      // itself be a false->true edge relative to what was last observed.
-      _onIsPlayingChanged();
-    }
+    // Re-syncs both the LISTENER ATTACHMENT and the [_lastIsPlaying]
+    // baseline against whatever should be observed right now -- covers an
+    // `isPlaying` identity swap (the same "re-evaluate against the NEW
+    // object's current value" reasoning as the `activeIndex` branch above),
+    // AND [TurnTimeline.activeIndex] itself flipping null<->non-null (the
+    // master gate) on an update where `isPlaying`'s own object never
+    // changed at all. See [_syncIsPlayingListener] -- in particular, why
+    // rebaselining on EVERY (re)attachment, not only an object swap, is
+    // what closes the master gate for good.
+    _syncIsPlayingListener();
     // Cheap and idempotent (see [_syncScrollObserver]'s own identity guard),
     // and the only hook that sees [activeIndex] flip null<->non-null without
     // an ancestor InheritedWidget change of its own to ride along on.
@@ -472,12 +535,53 @@ class _TurnTimelineState extends State<TurnTimeline> {
   @override
   void dispose() {
     widget.activeIndex?.removeListener(_onActiveIndexChanged);
-    widget.isPlaying?.removeListener(_onIsPlayingChanged);
+    _attachedIsPlaying?.removeListener(_onIsPlayingChanged);
     _observedPosition?.removeListener(_onAncestorScrollChanged);
     _observedPosition?.isScrollingNotifier.removeListener(
       _onAncestorScrollingChanged,
     );
     super.dispose();
+  }
+
+  /// (Re)attaches [_onIsPlayingChanged] to whichever `isPlaying` listenable
+  /// should be observed right now, detaches it from whatever it was
+  /// attached to before, and re-baselines [_lastIsPlaying] against it -- a
+  /// no-op when nothing changed, so callers do not need to guard against
+  /// calling this too often (mirrors [_syncScrollObserver]'s own
+  /// idempotence).
+  ///
+  /// [TurnTimeline.activeIndex] is the master gate for the whole karaoke
+  /// feature (the class doc): this widget must never observe [TurnTimeline.
+  /// isPlaying] -- not even to attach a listener that does nothing but
+  /// bookkeeping, and not even to read its `.value` once -- while
+  /// [_karaokeEnabled] is false. A caller may wire a real, stream-backed
+  /// [ValueListenable] there before a recording ever resolves; attaching to
+  /// it regardless of the gate would let that stream start doing work
+  /// (holding a subscription open, however cheap) while karaoke is fully
+  /// disabled -- exactly what the gate exists to prevent.
+  ///
+  /// The re-baseline (via [_onIsPlayingChanged], never a bare
+  /// `_lastIsPlaying = target?.value ?? false` here) is what actually closes
+  /// the gate rather than merely relocating it: [_lastIsPlaying] cannot be
+  /// updated by a real notification for as long as nothing is attached, so
+  /// a value change that happens ENTIRELY while [_karaokeEnabled] is false
+  /// -- including the ENTIRE stretch the gate spent closed, however long --
+  /// would otherwise leave [_lastIsPlaying] stale the moment this reattaches,
+  /// silently swallowing a false->true edge that never got a chance to
+  /// resume auto-scroll (spec section 4). Routing through
+  /// [_onIsPlayingChanged] treats this (re)attachment exactly like the
+  /// listenable-swap case in [didUpdateWidget] already does: evaluate the
+  /// CURRENT value via the same path a real notification takes, never
+  /// silently adopt it as a fresh baseline. Harmless to call when
+  /// [_karaokeEnabled] is false too (e.g. on the transition INTO a closed
+  /// gate) -- [_onIsPlayingChanged]'s own guard makes that call a no-op.
+  void _syncIsPlayingListener() {
+    final target = _karaokeEnabled ? widget.isPlaying : null;
+    if (identical(target, _attachedIsPlaying)) return;
+    _attachedIsPlaying?.removeListener(_onIsPlayingChanged);
+    _attachedIsPlaying = target;
+    _attachedIsPlaying?.addListener(_onIsPlayingChanged);
+    _onIsPlayingChanged();
   }
 
   /// Looks up the nearest ancestor `Scrollable`'s position and (re)attaches
@@ -700,6 +804,20 @@ class _TurnTimelineState extends State<TurnTimeline> {
 
   void _onIsPlayingChanged() {
     if (!mounted) return;
+    // The master gate (the class doc, [_karaokeEnabled]): none of
+    // karaoke's isPlaying-driven behaviour may run while [TurnTimeline.
+    // activeIndex] is null. A real notification cannot reach here in that
+    // state any more ([_syncIsPlayingListener] never attaches this
+    // listener while the gate is closed), and [_syncIsPlayingListener]'s
+    // own direct call to this method already only fires when it actually
+    // changes what is attached -- which itself cannot happen while the gate
+    // stays closed throughout (its target is `null` both before and after,
+    // so its own `identical` check short-circuits first). This guard is
+    // therefore belt-and-suspenders against a caller of this method that
+    // does not go through [_syncIsPlayingListener], not a case reachable
+    // today -- kept because a private method's correctness should not
+    // depend on every future caller remembering to gate at the call site.
+    if (!_karaokeEnabled) return;
     final now = widget.isPlaying?.value ?? false;
     final was = _lastIsPlaying;
     _lastIsPlaying = now;
@@ -1064,13 +1182,34 @@ class _Turn extends StatelessWidget {
       excludeSemantics: true,
       // The RECORDING-RELATIVE start, not [stamp]: an approximate turn's
       // printed "by 0:07" is an upper BOUND (see [_stampFor]), which can sit
-      // several seconds after where a tap actually seeks to. Reusing the
-      // existing `play({fileName})` string rather than adding a dedicated
-      // "Play from {time}" arb entry -- a template-arb addition regenerates
-      // every one of this repo's ~113 locale files for one label, out of
-      // proportion for this change; flagged for a follow-up if this
-      // feature's l10n gets a dedicated pass.
-      label: l10n.play(_stamp(Duration(milliseconds: startMs))),
+      // several seconds after where a tap actually seeks to.
+      //
+      // `callTranscriptSeekTo`, a dedicated arb entry, not the `play
+      // ({fileName})` string reused for shared-file playback elsewhere in
+      // this app: spec section 4's D4 asks for "Play from {time}"
+      // specifically, so a screen reader hears that the tap SEEKS the
+      // recording to a position, not that it plays this turn as a clip of
+      // its own -- which a bare "Play {time}" would suggest instead.
+      //
+      // A dedicated key DOES cost roughly one change per locale -- the same
+      // order of magnitude this feature's first pass worried about, just
+      // not the mechanism it named. The generated `lib/l10n/l10n_*.dart`
+      // this adds a getter to is gitignored build output, regenerated by
+      // `fvm flutter gen-l10n`, never committed: genuinely free. The real
+      // cost is the OTHER locales' own tracked `intl_<locale>.arb` SOURCE
+      // files (~115 of them) and `ai-translated-keys.json`'s provenance
+      // record, which this repo's `l10n_sync_check` CI gate requires
+      // translated before a PR merges
+      // (`.github/instructions/localization.instructions.md`).
+      //
+      // THIS change adds the ENGLISH key only, and intentionally excludes
+      // that backfill (`uv run scripts/translate/translate_new_keys.py`
+      // then `fvm flutter gen-l10n` -- the former a real, billed
+      // Vertex/Gemini call) from its own scope: every OTHER locale keeps
+      // falling back to English for this one key, exactly as this repo's
+      // l10n model already does for any untranslated key, until a
+      // separate, explicitly-authorized pass backfills it.
+      label: l10n.callTranscriptSeekTo(_stamp(Duration(milliseconds: startMs))),
       child: MouseRegion(
         cursor: SystemMouseCursors.click,
         child: GestureDetector(
