@@ -10,8 +10,8 @@ class ActivityStarRow extends StatelessWidget {
   final bool condensed;
 
   /// Colour for the empty (unearned) star borders and the condensed count text.
-  /// Defaults to [AppConfig.grayText]; pass white when the row sits on a
-  /// coloured (Ongoing/Open) card so the borders read against the fill.
+  /// Defaults to the theme's `onSurfaceVariant`; pass white when the row sits
+  /// on a coloured (Ongoing/Open) card so the borders read against the fill.
   final Color? emptyColor;
 
   const ActivityStarRow({
@@ -27,6 +27,12 @@ class ActivityStarRow extends StatelessWidget {
   Widget build(BuildContext context) {
     if (total == 0) return const SizedBox.shrink();
     final filled = earned.clamp(0, total);
+    // Both marks are theme-aware: the gold is unreadable on a light surface
+    // and the old fixed grey was unreadable on a dark one, so each state used
+    // to fail 1.4.11 in the theme the other passed (#8760).
+    final goldColor = AppConfig.goldMarkByTheme(context);
+    final unearnedColor =
+        emptyColor ?? Theme.of(context).colorScheme.onSurfaceVariant;
     if (condensed) {
       return Row(
         mainAxisSize: MainAxisSize.min,
@@ -34,9 +40,9 @@ class ActivityStarRow extends StatelessWidget {
         children: [
           Text(
             "$filled/$total",
-            style: TextStyle(fontSize: iconSize, color: emptyColor),
+            style: TextStyle(fontSize: iconSize, color: unearnedColor),
           ),
-          Icon(Icons.star, size: iconSize, color: AppConfig.gold),
+          Icon(Icons.star, size: iconSize, color: goldColor),
         ],
       );
     }
@@ -57,9 +63,7 @@ class ActivityStarRow extends StatelessWidget {
             (i) => Icon(
               i < filled ? Icons.star : Icons.star_border,
               size: iconSize,
-              color: i < filled
-                  ? AppConfig.gold
-                  : (emptyColor ?? AppConfig.grayText),
+              color: i < filled ? goldColor : unearnedColor,
             ),
           ),
         ),

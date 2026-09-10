@@ -78,8 +78,25 @@ abstract class AppConfig {
   static const Color gold = Color.fromARGB(255, 253, 191, 1);
   static const Color goldLight = Color.fromARGB(255, 254, 223, 73);
 
+  /// `Yellow.700` of the Figma Color Primitives ramp — the step [gold]
+  /// deepens to for the light theme. See [goldMarkByTheme], which is how
+  /// foreground code should reach it.
+  static const Color goldDeep = Color(0xFF917424);
+
   static Color goldByTheme(BuildContext context) =>
       Theme.of(context).brightness == Brightness.light ? gold : goldLight;
+
+  /// The gold a **solid mark carrying meaning** wears — an earned activity
+  /// star, where the fill itself is the information rather than decoration.
+  ///
+  /// [gold] is 1.58:1 on the light theme's surface and 1.28:1 on its cards,
+  /// far under the 3:1 WCAG 1.4.11 asks of a graphic the user has to read, so
+  /// light gets [goldDeep] (4.22:1 / 3.43:1). Dark keeps [gold], already
+  /// 11.18:1 / 7.39:1 there. One gold cannot serve both: [goldDeep] drops to
+  /// 2.77:1 on a dark card, and no step of the ramp clears 3:1 in all four
+  /// contexts (#8760).
+  static Color goldMarkByTheme(BuildContext context) =>
+      Theme.of(context).brightness == Brightness.light ? goldDeep : gold;
 
   /// Green for something finished: [completedGreen] on light, where [success]
   /// is too pale to read on the surface, and [success] on dark.
@@ -216,6 +233,5 @@ abstract class AppConfig {
 
   static const Color green = Color(0xFF34A853);
   static const Color gray = Color(0xFFB4B2A9);
-  static const Color grayText = Color(0xFF5F5E5A);
   static const Color completedGreen = Color(0xFF3B6D11);
 }
