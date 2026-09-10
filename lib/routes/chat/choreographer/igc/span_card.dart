@@ -112,6 +112,16 @@ class SpanCardState extends State<SpanCard> {
       await widget.controller.close();
       return;
     }
+
+    // The card shows whichever match is active, so it has to rebuild whenever
+    // that changes. It cannot lean on `matchUpdateStream` for that: the stream
+    // only fires when a match's STATUS changes, and a match's status changes
+    // exactly once on being opened, `open` -> `viewed`. So the first tap on a
+    // highlight moved the card and every later tap on that same highlight did
+    // not — the input field's highlight followed the learner while the card
+    // went on showing the previous match's hint and choices, and its buttons
+    // went on editing that match's span (#8964).
+    setState(() {});
   }
 
   /// Turn Listen First on or off, and remember it.
