@@ -152,16 +152,9 @@ class CoursePlanFilterState<T> extends State<CoursePlanFilter<T>> {
             ? DropdownSearchData(
                 searchController: _searchController,
                 searchInnerWidgetHeight: 50,
-                searchInnerWidget: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 14,
-                    vertical: 10,
-                  ),
-                  child: PangeaSearchBar(
-                    labelText: L10n.of(context).searchLanguagesHint,
-                    autofocus: true,
-                    controller: _searchController,
-                  ),
+                searchInnerWidget: DropdownSearchField(
+                  labelText: L10n.of(context).searchLanguagesHint,
+                  controller: _searchController,
                 ),
                 searchMatchFn: widget.searchMatchFn,
               )

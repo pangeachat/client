@@ -70,13 +70,9 @@ class CountryPickerDropdownState extends State<CountryPickerDropdown> {
       dropdownSearchData: DropdownSearchData(
         searchController: _searchController,
         searchInnerWidgetHeight: 50,
-        searchInnerWidget: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-          child: PangeaSearchBar(
-            labelText: L10n.of(context).searchCountriesHint,
-            autofocus: true,
-            controller: _searchController,
-          ),
+        searchInnerWidget: DropdownSearchField(
+          labelText: L10n.of(context).searchCountriesHint,
+          controller: _searchController,
         ),
         searchMatchFn: (item, searchValue) {
           final countryName = item.value?.name.toLowerCase();
