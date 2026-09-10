@@ -1745,6 +1745,19 @@ class CallCaptureService {
     // the tapped track a beat before the hangup). The `!_discardOnStop` guard
     // inside [_stop] still leaves a genuine handover -- a sibling recording the
     // same stretch -- uncarried, whatever is passed here.
+    //
+    // KNOWN LIMIT, deferred to the v2 device-switch work (pangeachat/client#8878).
+    // The carrier flag [_wasCarryingBeforeLastStop] is a per-STRETCH signal, but
+    // it gates which recorder GENERATION `finish` uploads, and that generation
+    // outlives its stretch (it opens on the first frame and lingers after a
+    // handover). The two desync only across a MID-CALL 2-DEVICE HANDOVER: e.g. a
+    // stretch handed to a sibling, this device re-elected, then a zero-frame
+    // stop -- the carrier can then latch over the sibling's still-current
+    // generation and publish it twice. A normal 1:1 call (one device per side)
+    // never hands over, so `_discardOnStop` is never set and this cannot occur.
+    // The correct fix is to track generation OWNERSHIP (frame -> own, handover
+    // -> sibling) rather than per-stretch state; that redesign belongs with the
+    // >2-halves merge in #8878, where the multi-device semantics are settled.
     unawaited(stop(preserveCarrier: true));
     // AFTER the stop, which sets the gate and the in-flight stop synchronously
     // before it awaits anything. That is what a listener restarting from
