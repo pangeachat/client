@@ -160,7 +160,10 @@ class _LevelDisplayNameState extends State<LevelDisplayName> {
                 ),
               ],
               if (level != null) ...[
-                const SizedBox(width: 4.0),
+                // Wider than the 2.0 between the shield and its number, so the
+                // level reads as its own value rather than as a continuation
+                // of the language pair (#8918).
+                const SizedBox(width: 6.0),
                 LevelRibbon(
                   level: level,
                   height: (iconSize ?? 16.0) + 2.0,
