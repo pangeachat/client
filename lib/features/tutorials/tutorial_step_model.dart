@@ -45,9 +45,10 @@ class TutorialStepData {
   final bool Function() canShowNextStep;
 
   /// Set on a step the learner must perform themselves. Its presence is what
-  /// makes the step armed: the overlay stops absorbing taps, and the step
-  /// advances when [TutorialStepArming.isSatisfied] turns true rather than on a
-  /// tap. See tutorials.instructions.md.
+  /// makes the step armed: a pointer inside the spotlight falls through to the
+  /// lit target (completing the step on the way), a tap anywhere else
+  /// dismisses, and with the card away the step advances when
+  /// [TutorialStepArming.isSatisfied] turns true. See tutorials.instructions.md.
   final TutorialStepArming? arming;
 
   /// Whether the surface this step belongs to is still in front of the learner.
@@ -153,8 +154,8 @@ class TutorialStepTemplate {
   /// False paints no scrim and no cut-outs, and sends the card to the bottom of
   /// the screen rather than the middle — for a step about the whole screen,
   /// darkening the thing it describes works against it. Purely visual: a tap
-  /// anywhere still advances, exactly as on a dimmed step. What hands the screen
-  /// back to the learner is [TutorialStepData.arming], not this.
+  /// anywhere still advances, exactly as on a dimmed step. What hands the lit
+  /// target back to the learner is [TutorialStepData.arming], not this.
   final bool dimsBackground;
 
   /// Present on a **branch** step: the step asks a question and the learner

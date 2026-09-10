@@ -779,10 +779,11 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
   }
 
   // Stable tearoffs (the launcher registry unregisters by identity) over one
-  // shared launch shape: a single ARMED step — every tap reaches the app (a
-  // role gets selected, a session gets joined) and completes the step. Unlike
-  // the map's pin step, which opens its one chosen activity on a tap
-  // anywhere: here the learner is choosing.
+  // shared launch shape: a single ARMED step — a tap inside the spotlight
+  // reaches the app (a role gets selected, a session gets joined), a tap
+  // anywhere else only dismisses, and either completes the step. Unlike the
+  // map's pin step, which opens its one chosen activity on a tap anywhere:
+  // here the learner is choosing.
   Future<void> _launchOpenSessionsTutorial() => _launchStartPageTutorial(
     TutorialEnum.openSessions,
     TutorialTargetIds.openSessionsList,

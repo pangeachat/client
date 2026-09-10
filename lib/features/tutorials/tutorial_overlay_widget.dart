@@ -1,6 +1,9 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/tutorials/tutorial_copy.dart';
 import 'package:fluffychat/features/tutorials/tutorial_overlay_state_machine.dart';
 import 'package:fluffychat/features/tutorials/tutorial_sequences.dart';
 import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
@@ -176,16 +179,6 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
 
   Duration get _duration => FluffyThemes.animationDuration;
 
-  static const double _tooltipPadding = 8.0;
-
-  Size _tooltipSize(Size? tooltipSize) {
-    final baseSize = tooltipSize ?? const Size(300, 100);
-    return Size(
-      baseSize.width + _tooltipPadding,
-      baseSize.height + _tooltipPadding,
-    );
-  }
-
   RenderBox? _currentRenderBox(String stepKey) {
     try {
       final target = MatrixState.pAnyState.layerLinkAndKey(stepKey);
@@ -211,63 +204,8 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
     return _spotlightRects.reduce((a, b) => a.expandToInclude(b));
   }
 
-  /// Where the tooltip goes, decided by whether there is room beside what was
-  /// lit rather than by how many things were lit.
-  ///
-  /// Two stacked buttons have tight bounds and read best anchored just above
-  /// them. Map pins scattered across the map have bounds spanning the viewport,
-  /// leaving no room either side — that takes the bottom, so the card never
-  /// covers what it just lit. A target as big as the map has the same problem,
-  /// and anchoring it pushed the card clean off the top edge, which read as the
-  /// step silently doing nothing. A step with nothing lit has no "beside" at
-  /// all, so it centers.
-  _TooltipPlacement _placementFor(Size tooltipSize, bool dimsBackground) {
-    final anchor = _anchorRect;
-    // A step with no scrim is about the whole screen, so its card takes the
-    // bottom rather than sitting in the middle of what it is describing.
-    if (anchor == null) {
-      return dimsBackground
-          ? _TooltipPlacement.centered
-          : _TooltipPlacement.screenBottom;
-    }
-
-    final fitsBelow =
-        anchor.bottom + _gap(tooltipSize) <= MediaQuery.sizeOf(context).height;
-    if (_showAbove(anchor, tooltipSize) || fitsBelow) {
-      return _TooltipPlacement.anchored;
-    }
-    // Too big to sit beside — a panel, or the map. The card takes the bottom of
-    // the TARGET, centred on it, not the bottom of the screen: a course panel
-    // occupies one column, and a card centred on the screen there reads as
-    // belonging to the map beside it.
-    return _TooltipPlacement.anchorBottom;
-  }
-
-  /// The vertical room one placement needs: the card plus the breathing space
-  /// on both sides of it.
-  double _gap(Size tooltipSize) =>
-      _tooltipSize(tooltipSize).height + _tooltipPadding * 2;
-
   Rect _inflated(Rect rect, double? padding) =>
       padding == null ? rect : rect.inflate(padding);
-
-  /// The single answer to "does the card fit above what was lit?" — [_placementFor]
-  /// decides *whether* to anchor from it, and the placement widget then puts the
-  /// card on that side.
-  bool _showAbove(Rect anchor, Size tooltipSize) =>
-      anchor.top - _gap(tooltipSize) >= 0;
-
-  /// Left edge for a tooltip centered on [anchor], nudged back inside the
-  /// screen when centering would push it off either side.
-  double _tooltipLeft(Rect anchor, Size tip) {
-    final screenWidth = MediaQuery.sizeOf(context).width;
-    if (tip.width >= screenWidth) return 0;
-    final centered = anchor.center.dx - tip.width / 2;
-    return centered.clamp(
-      _tooltipPadding,
-      screenWidth - tip.width - _tooltipPadding,
-    );
-  }
 
   void _setVisible(bool visible) {
     if (_visible == visible) return;
@@ -311,13 +249,15 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
     return true;
   }
 
-  /// On an armed step every tap belongs to the app — the overlay only listens.
-  /// Any tap, on the lit target or off it, ALSO completes the step and marks
-  /// it seen: leave-it-armed dismissal re-offered the card on every return
+  /// Completes the armed step. Reached two ways while the card is up: the
+  /// learner's pointer landing inside the spotlight (it ALSO falls through and
+  /// does the thing the step asked for), or a tap anywhere else, which only
+  /// dismisses. Either way the step is done and marked seen — shown is seen —
+  /// because leave-it-armed dismissal re-offered the card on every return
   /// visit, which read as the tutorial repeating itself. The arming still
   /// completes the step when the learner acts with the card NOT up (torn down
   /// by its surface unmounting, or preempted by another sequence).
-  void _onArmedPointerDown() {
+  void _completeArmedStep() {
     if (!_visible) return;
     widget.forward();
   }
@@ -332,105 +272,71 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
 
     if (step == null || data == null) return const SizedBox.shrink();
 
-    final tooltipSize = step.style.tooltipSize;
     // A targetless step needs nothing measured; a spotlight step waits until it
     // knows where its target is, so the tooltip never flies in from the corner.
     final ready = !data.hasSpotlight || _spotlightRects.isNotEmpty;
+    final showsCard = _visible && ready;
 
-    final content = Stack(
-      children: [
-        if (step.style.dimsBackground)
-          AnimatedOpacity(
-            opacity: _visible && ready ? 1.0 : 0.0,
-            duration: _duration,
-            child: ExcludeSemantics(
-              child: ColorFiltered(
-                colorFilter: const ColorFilter.mode(
-                  Colors.black,
-                  BlendMode.srcOut,
-                ),
-                child: Stack(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.black.withAlpha(100),
-                      ),
-                    ),
+    // The holes, inflated once and shared between the scrim's cut-outs and the
+    // armed step's pointer barrier so what looks lit and what is reachable
+    // cannot drift apart.
+    final spotlights = [
+      for (final rect in _spotlightRects) _inflated(rect, step.style.padding),
+    ];
 
-                    /// One "hole" per lit target.
-                    for (final rect in _spotlightRects)
-                      Positioned.fromRect(
-                        rect: _inflated(rect, step.style.padding),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(
-                              step.style.borderRadius ?? 16,
-                            ),
-                          ),
-                        ),
-                      ),
-                  ],
+    final scrim = _TutorialScrim(
+      visible: showsCard,
+      duration: _duration,
+      spotlightRects: spotlights,
+      borderRadius: step.style.borderRadius ?? 16,
+    );
+
+    final card = showsCard
+        ? _TutorialStepCard(
+            step: step,
+            anchor: _anchorRect,
+            sequenceKind: widget.sequenceKind,
+            completedSteps: widget.completedSteps,
+            totalSteps: widget.totalSteps,
+            wordBubble: data.wordBubble?.call(),
+            onAdvance: () => _next(step),
+            onSkipSequence: widget.skipSequence,
+            onCardTap: data.isArmed ? _completeArmedStep : null,
+          )
+        : null;
+
+    // An armed step hands back the lit target — and only the lit target. The
+    // learner has to reach the thing the step is pointing at themselves, so a
+    // pointer inside the spotlight falls through to the app (and completes the
+    // step on the way — see [_completeArmedStep]). Everywhere else the overlay
+    // behaves like an overlay: nothing under the scrim can be hovered or
+    // clicked, and a tap dismisses. It does not block assistive tech (no
+    // [BlockSemantics]) — telling someone to tap a role while hiding that role
+    // from their screen reader is the trap this avoids — and the barrier is
+    // excluded from semantics so AT never lands on an unlabeled tap surface.
+    if (data.isArmed) {
+      return Stack(
+        children: [
+          if (step.style.dimsBackground) IgnorePointer(child: scrim),
+          if (showsCard)
+            Positioned.fill(
+              child: ExcludeSemantics(
+                child: _SpotlightPassthrough(
+                  holes: spotlights,
+                  onHolePointerDown: _completeArmedStep,
+                  // The dismiss surface. No MouseRegion: the scrim reads as
+                  // inert background (default arrow), dismissal is an escape
+                  // hatch rather than a call to action.
+                  child: GestureDetector(
+                    behavior: HitTestBehavior.opaque,
+                    onTap: _completeArmedStep,
+                    child: const SizedBox.expand(),
+                  ),
                 ),
               ),
             ),
-          ),
-
-        if (_visible && ready)
-          _TutorialTooltipPlacement(
-            placement: _placementFor(tooltipSize, step.style.dimsBackground),
-            anchor: _anchorRect,
-            showAbove:
-                _anchorRect != null && _showAbove(_anchorRect!, tooltipSize),
-            left: _anchorRect == null
-                ? null
-                : _tooltipLeft(_anchorRect!, _tooltipSize(tooltipSize)),
-            padding: _tooltipPadding,
-            tooltipSize: _tooltipSize(tooltipSize),
-            child: TutorialTooltipContainerWidget(
-              width: tooltipSize.width,
-              height: tooltipSize.height,
-              padding: _tooltipPadding,
-              sequenceKind: widget.sequenceKind,
-              // See [TutorialOverlayWidget.showsSkip] for which cards carry
-              // it. On an armed card the button sits under the overlay's
-              // IgnorePointer, but any tap completes the step anyway —
-              // showing it keeps the way out in the same place across a
-              // walkthrough, and assistive tech can still activate it
-              // directly.
-              onSkip:
-                  TutorialOverlayWidget.showsSkip(
-                    sequenceKind: widget.sequenceKind,
-                    style: step.style,
-                    totalSteps: widget.totalSteps,
-                  )
-                  ? widget.skipSequence
-                  : null,
-              currentStep: widget.completedSteps,
-              totalSteps: widget.totalSteps,
-              text: step.style.tooltip,
-              choices: step.style.choices,
-              wordBubble: data.wordBubble?.call(),
-              onChoice: (outcome) => switch (outcome) {
-                TutorialChoiceOutcome.advance => _next(step),
-                TutorialChoiceOutcome.decline => widget.skipSequence(),
-              },
-            ),
-          ),
-      ],
-    );
-
-    // An armed step hands the screen back: the learner has to reach the thing
-    // the step is pointing at, so the overlay must not swallow their taps. It
-    // watches them only to know the card was acted on (see
-    // _onArmedPointerDown), and it does not block assistive tech either —
-    // telling someone to tap a pin while hiding that pin from their screen
-    // reader is the trap this avoids.
-    if (data.isArmed) {
-      return Listener(
-        behavior: HitTestBehavior.translucent,
-        onPointerDown: (_) => _onArmedPointerDown(),
-        child: IgnorePointer(child: content),
+          ?card,
+        ],
       );
     }
 
@@ -447,10 +353,135 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
         child: GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: tapAdvances ? () => _next(step) : null,
-          child: content,
+          child: Stack(children: [if (step.style.dimsBackground) scrim, ?card]),
         ),
       ),
     );
+  }
+}
+
+/// The darkened layer with one cut-out per lit target. [spotlightRects] are
+/// the final, already-inflated holes, shared with the armed step's pointer
+/// barrier.
+class _TutorialScrim extends StatelessWidget {
+  const _TutorialScrim({
+    required this.visible,
+    required this.duration,
+    required this.spotlightRects,
+    required this.borderRadius,
+  });
+
+  final bool visible;
+  final Duration duration;
+  final List<Rect> spotlightRects;
+  final double borderRadius;
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedOpacity(
+      opacity: visible ? 1.0 : 0.0,
+      duration: duration,
+      child: ExcludeSemantics(
+        child: ColorFiltered(
+          colorFilter: const ColorFilter.mode(Colors.black, BlendMode.srcOut),
+          child: Stack(
+            children: [
+              Container(
+                decoration: BoxDecoration(color: Colors.black.withAlpha(100)),
+              ),
+
+              /// One "hole" per lit target.
+              for (final rect in spotlightRects)
+                Positioned.fromRect(
+                  rect: rect,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(borderRadius),
+                    ),
+                  ),
+                ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// The armed step's pointer barrier. Claims every pointer except those inside
+/// a spotlight [holes] rect: those fall through to the lit target underneath,
+/// observed on the way ([onHolePointerDown]) so the step completes on the
+/// learner's first touch without ever stealing the touch itself. Only TAPS
+/// fall through — scroll signals are claimed even inside a hole, because a
+/// wheel over the lit target scrolled the surface under a held overlay, and
+/// the learner could strand the target half off screen with no way back.
+/// [child] is the dismiss surface for everything else — and because the
+/// barrier claims those hits, hovers stop here too: nothing under the scrim
+/// shows the cursor it would show if it were reachable.
+class _SpotlightPassthrough extends SingleChildRenderObjectWidget {
+  const _SpotlightPassthrough({
+    required this.holes,
+    required this.onHolePointerDown,
+    required super.child,
+  });
+
+  /// Where pointers pass through, in global coordinates — the spotlight rects
+  /// are measured global-side ([_TutorialOverlayWidgetState._spotlightRects]),
+  /// and [_RenderSpotlightPassthrough] converts each hit back to global before
+  /// comparing.
+  final List<Rect> holes;
+
+  final VoidCallback onHolePointerDown;
+
+  @override
+  _RenderSpotlightPassthrough createRenderObject(BuildContext context) =>
+      _RenderSpotlightPassthrough(holes, onHolePointerDown);
+
+  @override
+  void updateRenderObject(
+    BuildContext context,
+    _RenderSpotlightPassthrough renderObject,
+  ) {
+    renderObject
+      ..holes = holes
+      ..onHolePointerDown = onHolePointerDown;
+  }
+}
+
+class _RenderSpotlightPassthrough extends RenderProxyBox {
+  _RenderSpotlightPassthrough(this.holes, this.onHolePointerDown);
+
+  /// Hit-test-only state: nothing is painted, so updates need no repaint.
+  List<Rect> holes;
+  VoidCallback onHolePointerDown;
+
+  @override
+  bool hitTest(BoxHitTestResult result, {required Offset position}) {
+    if (!size.contains(position)) return false;
+    final globalPosition = localToGlobal(position);
+    if (holes.any((hole) => hole.contains(globalPosition))) {
+      // Inside a hole: join the hit path (so [handleEvent] sees the pointer
+      // going by) WITHOUT claiming it, so hit testing continues to the app
+      // underneath — the same contract as [HitTestBehavior.translucent].
+      result.add(BoxHitTestEntry(this, position));
+      return false;
+    }
+    // Outside every hole: the child (the dismiss surface) claims the hit,
+    // which is what blocks clicks and hovers from reaching under the scrim.
+    return super.hitTest(result, position: position);
+  }
+
+  @override
+  void handleEvent(PointerEvent event, covariant BoxHitTestEntry entry) {
+    if (event is PointerDownEvent) onHolePointerDown();
+    if (event is PointerScrollEvent) {
+      // This entry precedes the app's in the hit path (the overlay is hit
+      // first), so registering first wins the resolver and the scrollable
+      // under the hole never scrolls. The no-op is the point: the signal is
+      // claimed so nothing moves.
+      GestureBinding.instance.pointerSignalResolver.register(event, (_) {});
+    }
   }
 }
 
@@ -470,7 +501,7 @@ enum _TooltipPlacement {
   anchorBottom,
 }
 
-/// Places the tooltip per [_TutorialOverlayWidgetState._placementFor].
+/// Places the tooltip per [_TutorialStepCard._placement].
 class _TutorialTooltipPlacement extends StatelessWidget {
   final _TooltipPlacement placement;
   final Rect? anchor;
@@ -525,6 +556,154 @@ class _TutorialTooltipPlacement extends StatelessWidget {
           ? MediaQuery.sizeOf(context).height - anchor.top + padding
           : null,
       child: child,
+    );
+  }
+}
+
+/// One step's card, seated relative to what was lit — the placement math
+/// lives here, beside the card it positions.
+class _TutorialStepCard extends StatelessWidget {
+  const _TutorialStepCard({
+    required this.step,
+    required this.anchor,
+    required this.sequenceKind,
+    required this.completedSteps,
+    required this.totalSteps,
+    required this.wordBubble,
+    required this.onAdvance,
+    required this.onSkipSequence,
+    required this.onCardTap,
+  });
+
+  final TutorialStep step;
+
+  /// The box containing everything the step lit; null when nothing is.
+  final Rect? anchor;
+
+  final TutorialSequenceKind? sequenceKind;
+  final int completedSteps;
+  final int totalSteps;
+
+  /// See [TutorialStepData.wordBubble].
+  final TutorialGreeting? wordBubble;
+
+  /// Advances past this step — a branch's advance choice.
+  final VoidCallback onAdvance;
+
+  final VoidCallback onSkipSequence;
+
+  /// Makes the card's body a tap surface of its own. An armed step passes it
+  /// so a tap on the card dismisses like a tap on the scrim, instead of
+  /// falling through the card onto whatever the pointer barrier decides is
+  /// underneath. Null on every other step: the tap bubbles to the overlay's
+  /// own tap-anywhere handler.
+  final VoidCallback? onCardTap;
+
+  static const double _tooltipPadding = 8.0;
+
+  Size get _paddedSize => Size(
+    step.style.tooltipSize.width + _tooltipPadding,
+    step.style.tooltipSize.height + _tooltipPadding,
+  );
+
+  /// The vertical room one placement needs: the card plus the breathing space
+  /// on both sides of it.
+  double get _gap => _paddedSize.height + _tooltipPadding * 2;
+
+  /// The single answer to "does the card fit above what was lit?" —
+  /// [_placement] decides *whether* to anchor from it, and
+  /// [_TutorialTooltipPlacement] then puts the card on that side.
+  bool _showAbove(Rect anchor) => anchor.top - _gap >= 0;
+
+  /// Where the tooltip goes, decided by whether there is room beside what was
+  /// lit rather than by how many things were lit.
+  ///
+  /// Two stacked buttons have tight bounds and read best anchored just above
+  /// them. Map pins scattered across the map have bounds spanning the viewport,
+  /// leaving no room either side — that takes the bottom, so the card never
+  /// covers what it just lit. A target as big as the map has the same problem,
+  /// and anchoring it pushed the card clean off the top edge, which read as the
+  /// step silently doing nothing. A step with nothing lit has no "beside" at
+  /// all, so it centers.
+  _TooltipPlacement _placement(BuildContext context) {
+    final anchor = this.anchor;
+    // A step with no scrim is about the whole screen, so its card takes the
+    // bottom rather than sitting in the middle of what it is describing.
+    if (anchor == null) {
+      return step.style.dimsBackground
+          ? _TooltipPlacement.centered
+          : _TooltipPlacement.screenBottom;
+    }
+
+    final fitsBelow = anchor.bottom + _gap <= MediaQuery.sizeOf(context).height;
+    if (_showAbove(anchor) || fitsBelow) {
+      return _TooltipPlacement.anchored;
+    }
+    // Too big to sit beside — a panel, or the map. The card takes the bottom of
+    // the TARGET, centred on it, not the bottom of the screen: a course panel
+    // occupies one column, and a card centred on the screen there reads as
+    // belonging to the map beside it.
+    return _TooltipPlacement.anchorBottom;
+  }
+
+  /// Left edge for a tooltip centered on [anchor], nudged back inside the
+  /// screen when centering would push it off either side.
+  double _left(BuildContext context, Rect anchor) {
+    final screenWidth = MediaQuery.sizeOf(context).width;
+    final tip = _paddedSize;
+    if (tip.width >= screenWidth) return 0;
+    final centered = anchor.center.dx - tip.width / 2;
+    return centered.clamp(
+      _tooltipPadding,
+      screenWidth - tip.width - _tooltipPadding,
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final anchor = this.anchor;
+    final style = step.style;
+    final card = TutorialTooltipContainerWidget(
+      width: style.tooltipSize.width,
+      height: style.tooltipSize.height,
+      padding: _tooltipPadding,
+      sequenceKind: sequenceKind,
+      // See [TutorialOverlayWidget.showsSkip] for which cards carry it. On an
+      // armed card it is a real click target like everywhere else: the card
+      // sits above the armed step's pointer barrier.
+      onSkip:
+          TutorialOverlayWidget.showsSkip(
+            sequenceKind: sequenceKind,
+            style: style,
+            totalSteps: totalSteps,
+          )
+          ? onSkipSequence
+          : null,
+      currentStep: completedSteps,
+      totalSteps: totalSteps,
+      text: style.tooltip,
+      choices: style.choices,
+      wordBubble: wordBubble,
+      onChoice: (outcome) => switch (outcome) {
+        TutorialChoiceOutcome.advance => onAdvance(),
+        TutorialChoiceOutcome.decline => onSkipSequence(),
+      },
+    );
+
+    return _TutorialTooltipPlacement(
+      placement: _placement(context),
+      anchor: anchor,
+      showAbove: anchor != null && _showAbove(anchor),
+      left: anchor == null ? null : _left(context, anchor),
+      padding: _tooltipPadding,
+      tooltipSize: _paddedSize,
+      child: onCardTap == null
+          ? card
+          : GestureDetector(
+              behavior: HitTestBehavior.opaque,
+              onTap: onCardTap,
+              child: card,
+            ),
     );
   }
 }
