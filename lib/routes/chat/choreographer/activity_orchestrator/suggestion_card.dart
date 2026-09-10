@@ -8,6 +8,8 @@ import 'package:fluffychat/pangea/common/widgets/choice_array.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/active_suggestion_model.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_controller.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_suggestion.dart';
+import 'package:fluffychat/routes/chat/choreographer/choreographer.dart';
+import 'package:fluffychat/routes/chat/choreographer/choreographer_state_extension.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/writing_assistance_popup.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/writing_asssitance_popup_manager.dart';
 
@@ -33,9 +35,12 @@ class SuggestionCardState extends State<SuggestionCard> {
 
   StreamSubscription<ActiveSuggestionModel?>? _suggestionSubscription;
 
+  Choreographer get _choreographer => widget.popupManager.choreographer;
+
   @override
   void initState() {
     super.initState();
+    _choreographer.addListener(_onAssistanceStateChange);
     // Under re-fire the active suggestion can change while the card is open:
     // rebuild on replace (taps never hit a swapped-out model), close on clear.
     _suggestionSubscription = widget.controller.suggestionStream.stream.listen((
@@ -53,6 +58,7 @@ class SuggestionCardState extends State<SuggestionCard> {
   @override
   void dispose() {
     _suggestionSubscription?.cancel();
+    _choreographer.removeListener(_onAssistanceStateChange);
     // Closing the card without accepting releases the mid-interaction pin
     // (a tapped distractor otherwise blocks every future replacement).
     final model = widget.controller.activeSuggestion;
@@ -66,6 +72,15 @@ class SuggestionCardState extends State<SuggestionCard> {
 
   void _close() {
     widget.popupManager.close();
+  }
+
+  /// Follows the state that offered the card: the learner's first typed
+  /// character leaves the suggesting states, and the card goes with it (#8953).
+  /// Left open, it would sit over the learner's own message and hold the single
+  /// popup slot the span card needs when they press check.
+  void _onAssistanceStateChange() {
+    if (_choreographer.assistanceState.keepsSuggestionCardOpen) return;
+    _close();
   }
 
   // TODO ORCHESTRATOR: add feedback mechanism
