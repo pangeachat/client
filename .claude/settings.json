@@ -37,6 +37,10 @@
         "hooks": [
           {
             "type": "command",
+            "command": "bash \"$HOME/PangeaChat/.github/scripts/pretooluse-prod-gate.sh\""
+          },
+          {
+            "type": "command",
             "command": "bash \"$HOME/PangeaChat/.github/scripts/pretooluse-issue-gate.sh\""
           },
           {
