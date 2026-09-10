@@ -109,7 +109,11 @@ class OverlayUtil {
     }
   }
 
-  static void showPositionedCard({
+  /// Whether an overlay entry was actually inserted. Every exit below is a
+  /// silent one — an unmeasurable target, a caught exception, a [showOverlay]
+  /// that declined — so a caller that tracks "a card is up" has no other way
+  /// to tell an opened card from one that never mounted (#8980).
+  static bool showPositionedCard({
     required BuildContext context,
     required Widget cardToShow,
     required PositionedOverlayDisplayDetails displayDetails,
@@ -124,7 +128,7 @@ class OverlayUtil {
 
       if (parentRenderBox == null || targetRenderBox == null) {
         debugPrint("Cannot get renderbox for parent overlay or target");
-        return;
+        return false;
       }
 
       const horizontalPadding = 10.0;
@@ -173,7 +177,7 @@ class OverlayUtil {
           overlayPosition?.followerAnchor ??
           (hasTopOverflow ? Alignment.topCenter : Alignment.bottomCenter);
 
-      showOverlay(
+      return showOverlay(
         context: context,
         child: child,
         displayDetails: displayDetails.copyWith(
@@ -185,6 +189,7 @@ class OverlayUtil {
     } catch (err, stack) {
       debugger(when: kDebugMode);
       ErrorHandler.logError(e: err, s: stack, data: {});
+      return false;
     }
   }
 
