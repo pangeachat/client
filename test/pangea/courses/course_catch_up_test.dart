@@ -8,6 +8,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/constants/default_power_level.dart';
 import 'package:fluffychat/pangea/spaces/knocking_users_badge.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_catch_up.dart';
 import '../get_test_client.dart';
 
@@ -35,8 +36,17 @@ void main() {
   });
 
   tearDown(() async {
+    // The ping cache is a static ValueNotifier shared across cases.
+    CoursePingBadgeCache.instance.value = null;
     await client.dispose();
   });
+
+  void pingThisCourse({String courseId = '!course:fakeServer.notExisting'}) =>
+      CoursePingBadgeCache.instance.value = (
+        courseId: courseId,
+        activityId: 'activity-1',
+        sessionRoomId: '!session:fakeServer.notExisting',
+      );
 
   void setStateEvent(
     Room room,
@@ -130,6 +140,45 @@ void main() {
     expect(find.text(chatName), findsOneWidget);
     expect(find.text(l10n.markAllRead), findsOneWidget);
     expect(find.byIcon(Icons.notifications_outlined), findsOneWidget);
+  });
+
+  testWidgets('a course ping rolls up here, above the unread chats', (
+    tester,
+  ) async {
+    pingThisCourse();
+    await pumpCatchUp(tester, courseRoom(unread: 3));
+
+    final context = tester.element(find.byType(CourseCatchUp));
+    final l10n = L10n.of(context);
+    expect(find.text(l10n.pingedActivity), findsOneWidget);
+    // The card shows two rows before its expander, so the ping leading is the
+    // difference between seeing it and having to tap for it.
+    expect(
+      tester.getTopLeft(find.text(l10n.pingedActivity)).dy,
+      lessThan(tester.getTopLeft(find.text(l10n.countNewMessages(3))).dy),
+    );
+  });
+
+  testWidgets('a course ping alone opens the card', (tester) async {
+    // Nothing else pending: the ping is enough to make the card render, and
+    // the plan has not hydrated, so the row stands on its label alone.
+    pingThisCourse();
+    await pumpCatchUp(tester, courseRoom(unread: 0));
+
+    final context = tester.element(find.byType(CourseCatchUp));
+    final l10n = L10n.of(context);
+    expect(find.text(l10n.catchUp), findsOneWidget);
+    expect(find.byType(CoursePingBadge), findsOneWidget);
+  });
+
+  testWidgets('another course\'s ping does not appear here', (tester) async {
+    pingThisCourse(courseId: '!other:fakeServer.notExisting');
+    await pumpCatchUp(tester, courseRoom(unread: 0));
+
+    final context = tester.element(find.byType(CourseCatchUp));
+    final l10n = L10n.of(context);
+    expect(find.text(l10n.catchUp), findsNothing);
+    expect(find.text(l10n.pingedActivity), findsNothing);
   });
 
   testWidgets('a pending knock no longer appears here', (tester) async {
