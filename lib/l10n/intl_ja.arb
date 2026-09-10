@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-09-09 11:24:59.137118",
+    "@@last_modified": "2026-09-10 09:51:41.485058",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10677,5 +10677,6 @@
     "upNext": "次はこちら",
     "writingAssistanceSuggestion": "提案",
     "errorFetchingWordInfo": "単語情報の取得に失敗しました",
-    "contentCreatedBy": "作成者"
+    "contentCreatedBy": "作成者",
+    "coursePreview": "コースプレビュー"
 }

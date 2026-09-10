@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-09-09 11:24:56.519682",
+    "@@last_modified": "2026-09-10 09:51:39.239893",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10214,5 +10214,6 @@
     "upNext": "التالي",
     "writingAssistanceSuggestion": "اقتراح",
     "errorFetchingWordInfo": "فشل جلب معلومات الكلمة",
-    "contentCreatedBy": "تم الإنشاء بواسطة"
+    "contentCreatedBy": "تم الإنشاء بواسطة",
+    "coursePreview": "معاينة الدورة"
 }

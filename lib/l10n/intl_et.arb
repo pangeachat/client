@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-09-09 11:24:57.911722",
+    "@@last_modified": "2026-09-10 09:51:40.314815",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9905,5 +9905,6 @@
     "upNext": "Järgmisena",
     "writingAssistanceSuggestion": "Soovitus",
     "errorFetchingWordInfo": "Sõnateabe hankimine ebaõnnestus",
-    "contentCreatedBy": "Looja"
+    "contentCreatedBy": "Looja",
+    "coursePreview": "Kursuse eelvaade"
 }

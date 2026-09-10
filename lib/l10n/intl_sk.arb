@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-09-09 11:25:01.514998",
+    "@@last_modified": "2026-09-10 09:51:47.138122",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10853,5 +10853,6 @@
     "upNext": "Ďalej",
     "writingAssistanceSuggestion": "Návrh",
     "errorFetchingWordInfo": "Nepodarilo sa načítať informácie o slove",
-    "contentCreatedBy": "Vytvoril"
+    "contentCreatedBy": "Vytvoril",
+    "coursePreview": "Ukážka kurzu"
 }

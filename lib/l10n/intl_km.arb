@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-09-09 11:24:59.521743",
+    "@@last_modified": "2026-09-10 09:51:41.910747",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2312,5 +2312,6 @@
     "upNext": "បន្ទាប់",
     "writingAssistanceSuggestion": "សំណូមពរ",
     "errorFetchingWordInfo": "បរាជ័យក្នុងការទាញយកព័ត៌មានពាក្យ",
-    "contentCreatedBy": "បង្កើត​ដោយ"
+    "contentCreatedBy": "បង្កើត​ដោយ",
+    "coursePreview": "មើលវគ្គសិក្សាជាមុន"
 }

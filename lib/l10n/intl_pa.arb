@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-09-09 11:25:01.099145",
+    "@@last_modified": "2026-09-10 09:51:43.230522",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2312,5 +2312,6 @@
     "upNext": "ਅੱਗੇ",
     "writingAssistanceSuggestion": "ਸੁਝਾਅ",
     "errorFetchingWordInfo": "ਸ਼ਬਦ ਦੀ ਜਾਣਕਾਰੀ ਪ੍ਰਾਪਤ ਕਰਨ ਵਿੱਚ ਅਸਫਲ",
-    "contentCreatedBy": "ਇਸ ਦੁਆਰਾ ਬਣਾਇਆ ਗਿਆ"
+    "contentCreatedBy": "ਇਸ ਦੁਆਰਾ ਬਣਾਇਆ ਗਿਆ",
+    "coursePreview": "ਕੋਰਸ ਝਲਕ"
 }

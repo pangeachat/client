@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-09-09 11:25:00.223435",
+    "@@last_modified": "2026-09-10 09:51:42.714870",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2312,5 +2312,6 @@
     "upNext": "पुढील",
     "writingAssistanceSuggestion": "सूचना",
     "errorFetchingWordInfo": "शब्दाची माहिती मिळवण्यात अयशस्वी",
-    "contentCreatedBy": "यांनी तयार केले"
+    "contentCreatedBy": "यांनी तयार केले",
+    "coursePreview": "अभ्यासक्रमाचे पूर्वावलोकन"
 }

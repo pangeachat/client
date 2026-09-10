@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-09 11:25:02.342631",
+    "@@last_modified": "2026-09-10 09:51:44.714599",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -10000,5 +10000,6 @@
     "upNext": "அடுத்து",
     "writingAssistanceSuggestion": "பரிந்துரை",
     "errorFetchingWordInfo": "வார்த்தைத் தகவலைப் பெறத் தவறிவிட்டது",
-    "contentCreatedBy": "உருவாக்கியவர்"
+    "contentCreatedBy": "உருவாக்கியவர்",
+    "coursePreview": "பாடப்பிரிவு முன்னோட்டம்"
 }

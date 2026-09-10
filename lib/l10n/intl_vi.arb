@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-09 11:25:03.017790",
+    "@@last_modified": "2026-09-10 09:51:45.156552",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7200,5 +7200,6 @@
     "upNext": "Tiếp theo",
     "writingAssistanceSuggestion": "Gợi ý",
     "errorFetchingWordInfo": "Không thể tìm nạp thông tin từ",
-    "contentCreatedBy": "Được tạo bởi"
+    "contentCreatedBy": "Được tạo bởi",
+    "coursePreview": "Xem trước khóa học"
 }

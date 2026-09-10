@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-09-09 11:25:01.562007",
+    "@@last_modified": "2026-09-10 09:51:44.213075",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2312,5 +2312,6 @@
     "upNext": "Në vazhdim",
     "writingAssistanceSuggestion": "Sugjerim",
     "errorFetchingWordInfo": "Dështoi marrja e informacionit të fjalës",
-    "contentCreatedBy": "Krijuar nga"
+    "contentCreatedBy": "Krijuar nga",
+    "coursePreview": "Parashikim kursi"
 }

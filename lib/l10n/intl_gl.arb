@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-09-09 11:24:58.478040",
+    "@@last_modified": "2026-09-10 09:51:40.685237",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9908,5 +9908,6 @@
     "upNext": "A seguir",
     "writingAssistanceSuggestion": "Suxestión",
     "errorFetchingWordInfo": "Produciuse un erro ao obter a información da palabra",
-    "contentCreatedBy": "Creado por"
+    "contentCreatedBy": "Creado por",
+    "coursePreview": "Previsualización do curso"
 }

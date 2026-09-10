@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-09-09 11:25:00.565460",
+    "@@last_modified": "2026-09-10 09:51:42.813892",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2312,5 +2312,6 @@
     "upNext": "Li jmiss",
     "writingAssistanceSuggestion": "Suġġeriment",
     "errorFetchingWordInfo": "Naqset il-ġbir tal-informazzjoni tal-kelma",
-    "contentCreatedBy": "Maħluqa minn"
+    "contentCreatedBy": "Maħluqa minn",
+    "coursePreview": "Preview tal-kors"
 }

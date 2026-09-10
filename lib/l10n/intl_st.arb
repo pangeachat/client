@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-09-09 11:25:01.830080",
+    "@@last_modified": "2026-09-10 09:51:44.386315",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2312,5 +2312,6 @@
     "upNext": "Seo se latelang",
     "writingAssistanceSuggestion": "Tlhahiso",
     "errorFetchingWordInfo": "Ho hlolehile ho fumana leseli la lentsoe",
-    "contentCreatedBy": "E entsoe ke"
+    "contentCreatedBy": "E entsoe ke",
+    "coursePreview": "Kakaretso ya thupelo"
 }

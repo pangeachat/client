@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-09 11:24:58.910166",
+    "@@last_modified": "2026-09-10 09:51:41.330062",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9981,5 +9981,6 @@
     "upNext": "Berikutnya",
     "writingAssistanceSuggestion": "Saran",
     "errorFetchingWordInfo": "Gagal mengambil info kata",
-    "contentCreatedBy": "Dibuat oleh"
+    "contentCreatedBy": "Dibuat oleh",
+    "coursePreview": "Pratinjau kursus"
 }

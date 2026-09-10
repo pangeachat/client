@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-09-09 11:24:58.569460",
+    "@@last_modified": "2026-09-10 09:51:40.999266",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10344,5 +10344,6 @@
     "upNext": "Slijedi",
     "writingAssistanceSuggestion": "Prijedlog",
     "errorFetchingWordInfo": "Dohvaćanje informacija o riječi nije uspjelo",
-    "contentCreatedBy": "Izradio"
+    "contentCreatedBy": "Izradio",
+    "coursePreview": "Pregled tečaja"
 }
