@@ -152,10 +152,27 @@ class PracticeController with ChangeNotifier {
     return isPracticeSessionDone(activityType);
   }
 
+  /// How [choice] fared on the blank the learner is filling. Null until it has
+  /// been tried on that blank, so a choice carries no verdict from a word it
+  /// was tried on earlier.
   bool? wasCorrectMatch(PracticeExerciseChoice choice) {
-    if (_activity == null) return false;
+    final activity = _activity;
+    final token = _selectedSlotToken;
+    if (activity == null || token == null) return null;
     return PracticeRecordController.wasCorrectMatch(
-      _activity!.practiceTarget,
+      activity.practiceTarget,
+      token,
+      choice,
+    );
+  }
+
+  /// Whether [choice] has already been placed correctly, and so has left the
+  /// tray.
+  bool isChoicePlaced(PracticeExerciseChoice choice) {
+    final activity = _activity;
+    if (activity == null) return false;
+    return PracticeRecordController.isChoicePlaced(
+      activity.practiceTarget,
       choice,
     );
   }

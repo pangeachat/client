@@ -39,22 +39,35 @@ class PracticeRecordController {
     );
   }
 
-  static bool? wasCorrectMatch(
+  /// Whether [choice] has already been placed on the word it belongs to. A
+  /// match exercise gives each word its own unique choice, so a placed choice
+  /// can never answer another blank — the tray drops it rather than offering
+  /// a choice that is already spent (#6259).
+  static bool isChoicePlaced(
     PracticeTarget target,
     PracticeExerciseChoice choice,
+  ) => _recordByTarget(target).responses.any(
+    (response) => response.text == choice.choiceContent && response.isCorrect,
+  );
+
+  /// How [choice] fared on [token], or null if it hasn't been tried there.
+  ///
+  /// Scoped to the word. This used to match on the choice's text alone, so a
+  /// choice answered correctly on one word showed as correct under every
+  /// other word too — and one answered wrongly showed as wrong under words it
+  /// had never been tried on (#6259).
+  static bool? wasCorrectMatch(
+    PracticeTarget target,
+    PangeaToken token,
+    PracticeExerciseChoice choice,
   ) {
-    final record = _recordByTarget(target);
-    for (final response in record.responses) {
-      if (response.text == choice.choiceContent && response.isCorrect) {
-        return true;
-      }
-    }
-    for (final response in record.responses) {
-      if (response.text == choice.choiceContent) {
-        return false;
-      }
-    }
-    return null;
+    final cId = target.targetTokenConstructID(token);
+    return _recordByTarget(target).responses
+        .firstWhereOrNull(
+          (response) =>
+              response.cId == cId && response.text == choice.choiceContent,
+        )
+        ?.isCorrect;
   }
 
   static bool? wasCorrectChoice(PracticeTarget target, String choice) {
