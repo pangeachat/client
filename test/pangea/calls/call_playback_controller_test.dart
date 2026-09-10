@@ -526,6 +526,104 @@ void main() {
     );
 
     test(
+      'aborts before seeking when ownership leaves in the gap between the load verdict and the seek call',
+      () async {
+        // MUTATION: delete the `if (_disposed || !_owns) return;` guard
+        // added right after the load's `_awaitWhileOwned` call (the one
+        // this test pins). RED: seek() fires on the source ownership moved
+        // to -- _awaitWhileOwned already decided "still owned" for the
+        // load, and that decision is exactly what this test flips
+        // ownership away from right after; seekToTurn's own resumption
+        // after awaiting that verdict is a fresh suspension point nothing
+        // was re-checking, so the stale `true` drove straight into
+        // `_awaitWhileOwned(seek)`, whose OWN watch listener -- registered
+        // only once IT starts -- cannot see a departure that already
+        // happened before it existed (listeners fire on change, not on
+        // add). play() still correctly does not fire, since the seek's own
+        // verdict (decided after seek() already ran) catches it -- proving
+        // this gap is invisible to every guard already in place before this
+        // fix.
+        //
+        // Forces the interleaving deterministically, reusing the same
+        // _CountingOwnership.onRead technique as the seek-verdict-to-play
+        // gap test above: onRead fires AFTER a read has already captured
+        // its own return value, so flipping ownership from inside it changes
+        // only what the NEXT read sees.
+        final spies = _Spies()
+          ..startGate = Completer<void>()
+          ..claimsOwnershipOnStart = true;
+        addTearDown(spies.dispose);
+        final controller = spies.controller([turn(audioStartMs: 3000)]);
+        addTearDown(controller.dispose);
+        // ownership starts null (not merged) -> forces the load step.
+
+        final pending = controller.seekToTurn(0);
+        await _flush();
+        expect(spies.startCallCount, 1);
+        // paused inside startMergedPlayer's gated await; the load's
+        // temporary `watch` listener is live.
+
+        spies.ownership.readCount = 0;
+        spies.ownership.onRead = (count) {
+          // Completing the gate below lets startMergedPlayer's
+          // `claimsOwnershipOnStart` write `ownership.value = mergedEventId`,
+          // which synchronously fires (1) _onOwnershipChanged's
+          // _recomputePlaying, (2) its _recompute, and (3) the load's own
+          // `watch` listener -- all three read back the value this same
+          // write just set. Read (4) is _awaitWhileOwned's own verdict read
+          // for the LOAD call: the one this test targets.
+          if (count != 4) return;
+          spies.ownership.value = _otherEventId;
+        };
+
+        spies.startGate!.complete();
+        await pending;
+
+        expect(
+          spies.seeks,
+          isEmpty,
+          reason:
+              'ownership left mergedEventId after _awaitWhileOwned decided '
+              '"still owned" for the load but before seekToTurn acted on '
+              'that decision by starting the seek',
+        );
+        expect(spies.playCallCount, 0);
+      },
+    );
+
+    test(
+      'disposing in the gap between the load verdict and the seek call also aborts before seeking',
+      () async {
+        // Same gap as above, cheap to also pin for disposal: the new guard
+        // checks `_disposed` first, so a dispose landing in this same
+        // window must be caught exactly like a foreign ownership change is.
+        final spies = _Spies()
+          ..startGate = Completer<void>()
+          ..claimsOwnershipOnStart = true;
+        addTearDown(spies.dispose);
+        final controller = spies.controller([turn(audioStartMs: 3000)]);
+        // ownership starts null (not merged) -> forces the load step.
+
+        final pending = controller.seekToTurn(0);
+        await _flush();
+        expect(spies.startCallCount, 1);
+
+        spies.ownership.readCount = 0;
+        spies.ownership.onRead = (count) {
+          // Same read (4) as above -- see that test's onRead comment.
+          if (count != 4) return;
+          controller.dispose();
+        };
+
+        spies.startGate!.complete();
+        await pending;
+
+        expect(spies.seeks, isEmpty);
+        expect(spies.playCallCount, 0);
+      },
+    );
+
+    test(
       'aborts before playing when ownership changes during the awaited seek',
       () async {
         // MUTATION: same as the load-abort test above, but for the SECOND

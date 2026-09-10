@@ -229,31 +229,38 @@ class CallPlaybackController extends ChangeNotifier {
   }
 
   /// Seeks the merged recording to turn [index]'s `audioStartMs` and plays
-  /// it, as one transaction that re-reads [ownership] after every await --
-  /// including the seek itself -- so a per-device player the user started
-  /// mid-transaction is never overridden (spec section 4, g2/g3):
+  /// it, as one transaction that re-reads [ownership] SYNCHRONOUSLY after
+  /// EVERY await in the sequence -- including the seek itself -- so a
+  /// per-device player the user started mid-transaction is never overridden
+  /// (spec section 4, g2/g3):
   ///
   /// 1. If [ownership] is not already [mergedEventId], await
   ///    [startMergedPlayer]; abort (touching nothing else) if ownership was
   ///    ever seen away from [mergedEventId] while that was in flight.
-  /// 2. Await [seek] to the turn's start; abort BEFORE playing under the
-  ///    same rule.
-  /// 3. Re-read [_owns] ONE LAST TIME, synchronously, with no await between
+  /// 2. Re-read [_owns] ONE LAST TIME, synchronously, with no await between
+  ///    that read and starting the seek -- abort if it no longer holds.
+  /// 3. Await [seek] to the turn's start; abort BEFORE playing under the
+  ///    same "ever seen away" rule as step 1.
+  /// 4. Re-read [_owns] ONE LAST TIME, synchronously, with no await between
   ///    that read and calling [play] -- then await [play].
   ///
-  /// Each recheck in steps 1-2 is "was ownership ever seen away from
+  /// Each recheck in steps 1 and 3 is "was ownership ever seen away from
   /// [mergedEventId] during the await", not merely "does it read as
   /// [mergedEventId] now" -- see [_awaitWhileOwned] for why a plain
   /// before/after comparison is not enough there, and for why it alone is
-  /// still not enough to greenlight step 3: this function's own resumption,
-  /// after [_awaitWhileOwned] returns its verdict, is itself a fresh
-  /// suspension point -- nothing guarantees [ownership] cannot change in
-  /// whatever gap exists between that verdict being decided and this
-  /// function acting on it (in production [seek] is a real platform call, a
-  /// genuine yield point the user's own next tap can land inside). Step 3's
-  /// guard is what actually gets read at the last possible synchronous
-  /// instant before [play] runs; without it, a `true` decided one step ago
-  /// could already be stale by the time it is used.
+  /// still not enough to greenlight the NEXT action (steps 2 and 4): this
+  /// function's own resumption, after [_awaitWhileOwned] returns its
+  /// verdict, is itself a fresh suspension point -- nothing guarantees
+  /// [ownership] cannot change in whatever gap exists between that verdict
+  /// being decided and this function acting on it (in production both
+  /// [seek] and [play] are real platform calls, genuine yield points the
+  /// user's own next tap can land inside). Steps 2 and 4's guards are what
+  /// actually get read at the last possible synchronous instant before the
+  /// next action runs; without either one, a `true` decided one step ago
+  /// could already be stale by the time it is used -- step 2's absence is
+  /// exactly what let [seek] run once on a source the user had already
+  /// moved to, even though step 4 still correctly kept [play] from
+  /// following it.
   ///
   /// A no-op for a turn with no `audioStartMs` (nothing to seek to), and for
   /// a tap that arrives while a previous one is still in flight -- overlap is
@@ -268,6 +275,18 @@ class CallPlaybackController extends ChangeNotifier {
     try {
       if (!_owns) {
         if (!await _awaitWhileOwned(() => startMergedPlayer())) return;
+        // Same reasoning as the pre-play guard below, one step earlier:
+        // _awaitWhileOwned's `true` just now was decided as of the moment
+        // startMergedPlayer() resolved, so it alone cannot prove ownership
+        // is STILL ours right now -- seekToTurn's own resumption after
+        // awaiting it is itself a fresh suspension point. Re-reading here,
+        // with nothing awaited between this line and the seek's
+        // _awaitWhileOwned call, is what actually closes the load->seek
+        // boundary; without it, seek() -- a real side effect on the shared
+        // player -- would run on whatever source ownership moved to in
+        // that gap, even though _awaitWhileOwned would still correctly
+        // abort before play() afterward.
+        if (_disposed || !_owns) return;
       }
       if (!await _awaitWhileOwned(
         () => seek(Duration(milliseconds: startMs)),
