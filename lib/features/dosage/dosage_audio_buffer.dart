@@ -456,10 +456,19 @@ class DosageAudioBuffer {
   /// this same batch, so a lost batch loses the declaration with it — and, since
   /// no later seal may anchor past an interval the ingest never acknowledged,
   /// loses it for good rather than having a subsequent extension quietly cover
-  /// the hole. `voiceSend` is declared only when [_voiceSendCovered], and the
-  /// same anchor rule is what withholds the skipped stretch: the next seal cannot
-  /// abut a row that was never declared, so it starts a fresh period after the
-  /// gap instead of extending across it.
+  /// the hole. `voiceSend` is declared only when BOTH
+  /// [DosageSignalsRepo.voiceMessagesEnabled] and [_voiceSendCovered] hold.
+  /// Coverage is the client's assertion "I instrument this counter", and
+  /// [_voiceSendCovered] alone answers a narrower question — whether this
+  /// period's envelopes are backed — while defaulting TRUE when nothing was
+  /// ever reported at all. On a build where the capability flag is off,
+  /// [recordVoiceMessage] never runs, so nothing about a clean envelope says
+  /// this build can report a duration; only the flag does. Requiring both is
+  /// what makes coverage honest on that build: the server sees an undeclared
+  /// counter, never a confident zero. The same anchor rule is what withholds
+  /// the skipped stretch either way: the next seal cannot abut a row that was
+  /// never declared, so it starts a fresh period after the gap instead of
+  /// extending across it.
   void _seal() {
     final DateTime? start = _observedFrom;
     // Nothing observed and no period open: seal nothing and, crucially, START
@@ -492,7 +501,8 @@ class DosageAudioBuffer {
               .where(
                 (category) =>
                     category != DosageCoverageCategory.voiceSend ||
-                    voiceSendCovered,
+                    (DosageSignalsRepo.voiceMessagesEnabled &&
+                        voiceSendCovered),
               )
               .expand(
                 (category) => _declarationsFor(
