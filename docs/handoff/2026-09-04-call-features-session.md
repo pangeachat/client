@@ -1504,3 +1504,21 @@ until the design is Codex-green.
   (bh1ksctsw, dir gate-design2).
 - NEXT: on both gates green -> present item-1 done + spec-approved to owner for the GO; then dispatch the
   6 build agents (each self-gates), orchestrator cold-greens the delta, owner review. No build before GO.
+
+## 2026-09-10 (cont) — item-1 v1 gate GREEN (done); spec v3; execution model changed to orchestrator-gates
+- Final v1-scoped item-1 gate (bbgu5hemv): OVERALL CORRECT, SOFTENING NO. All 4 pass: in-scope correct;
+  no normal-call regression (zero-frame single stretch never creates `_current`, finish uploads nothing);
+  #8878 deferral honest; tests correctly pinned (additions-only, positive fails on revert). ITEM 1 DONE
+  (commits 17bbfbec89 fix + e54141eeef deferral note; part of PR2, not opened).
+- Design re-gate round 2 (bh1ksctsw): REVISE, converging (findings 1/4/5 confirmed addressed). Round-2
+  refinements folded into spec v3: loading machine made TOTAL (zero-halves-done=NONE; graceStartedAt
+  stamped when both reads complete); karaoke seek rechecks ownership AFTER each await (aborts if a
+  per-device player took over mid-await); GlobalKey = senderId+halfEventId+segmentIndex (index alone
+  collides -> crash); header extent scale-aware + label ellipsized (56px/200%-scale clip); clamp tie-break
+  by standalone order; a11y announces the recording-relative START (0:03) not the printed "by 0:07";
+  non-lazy turns noted as STATUS QUO (today renders all eagerly); steps 4+5 both edit transcript_view.dart
+  -> SERIAL not parallel.
+- EXECUTION MODEL CHANGE (owner): the ORCHESTRATOR cold-gates EACH build agent's diff (agents do NOT
+  self-gate); on RED, root-cause + SendMessage the SAME agent to fix, re-gate, loop to green (pivot at 4,
+  stop at 7-8); then one final cold green over the assembled delta. Spec section 9 updated.
+- Design re-gate round 3 running (gate-design3). On SOUND-TO-BUILD -> present spec for owner GO -> build.

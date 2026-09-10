@@ -1,13 +1,13 @@
-# Call recordings + transcript UI redesign — design spec v2 (items 2/3/4/5)
+# Call recordings + transcript UI redesign — design spec v3 (items 2/3/4/5)
 
-Status: DRAFT for owner review. Revised after a Codex design gate (v1 verdict REVISE; the 6
-hardening points are folded in below and marked [gate]). No code lands until approved. Built by
-agents (each self-gating with Codex to green); orchestrator runs a cold Codex green over the delta.
+Status: DRAFT for owner review. Revised across two Codex design-gate rounds; round-2 refinements
+folded in below (marked [g2]). No code lands until approved. Built by agents (each self-gating with
+Codex to green); orchestrator runs a cold Codex green over the delta.
 
 Scope: one cohesive redesign of the call transcript/recordings surface
 (`lib/routes/chat/calls/transcript_view.dart` + `turn_timeline.dart`):
 - item 2 — transcript turns aligned to the recording timeline (ordering vs the audio)
-- item 3 — loading states (spinner/shimmer while a half or the merge is pending; error only after a bounded grace)
+- item 3 — loading states (never an immediate error; error only after a bounded grace)
 - item 4 — recordings UI: sticky "Full call" bar on top, expandable per-device rows
 - item 5 — karaoke: highlight + auto-scroll the current turn while the Full-call recording plays, tap to seek
 
@@ -16,196 +16,189 @@ identical. Every pattern below is one the app already ships (file:line cited).
 
 ---
 
-## 1. Root cause recap (item 2) and the recording-timeline model
+## 1. Recording-timeline model (item 2)
 
-Confirmed from real call data: NOT a clock bug. `at_ms - offsetMs` already lands each word on the
-SFU clock exactly where the recording places its audio. The skew: an APPROXIMATE turn is placed at
+Root cause (from real call data): NOT a clock bug. `at_ms - offsetMs` already lands each word on the
+SFU clock where the recording places its audio. The skew is that an APPROXIMATE turn is placed at
 `orderKeyMs = at_ms + at_span_ms` (chunk END) so an estimate can't jump ahead in the standalone
-list, while the recording plays the turn at its START (`at_ms`). Precise turns already align;
-approximate ones lag by their span (measured 3.65s).
+list, while the recording plays it at its START (`at_ms`); approximate turns lag by their span (3.65s
+measured). Precise turns already align.
 
-Model: give every turn a RECORDING-TIMELINE window, distinct from its standalone printed time.
-- `audioStartMs = (segment.atMs - shift) - recordingOriginMs`.
-- `audioEndMs   = (segment.orderKeyMs - shift) - recordingOriginMs` (= audioStart + span; == audioStart for a precise turn).
+Each turn gets a recording-timeline window, distinct from its standalone printed time:
+- `audioStartMs = (segment.atMs - shift) - recordingOriginMs`, clamped to `[0, durationMs]`.
+- `audioEndMs   = (segment.orderKeyMs - shift) - recordingOriginMs`, clamped to `[audioStartMs, durationMs]`.
 - `shift = transcript.clockShiftFor(half)`; `recordingOriginMs = mergedRow.content.mergedStartSfuMs`.
 
-Preconditions [gate finding 1] — `audioStartMs`/`audioEndMs` are **null** (turn renders, but is not
-seek/highlight-eligible) whenever ANY of:
-- there is no merged row on screen (no recording to align to), OR
-- `!transcript.turnsShareOneClock` for this call, OR the half is not clock-reconciled
-  (`half.clockAnchor == null`) — never treat an unreconciled half as `shift = 0` and seek by a raw
-  device clock, and
-- the half is not among the merge's `source_event_ids` (its audio is not in this file).
-A turn whose computed `audioStartMs` is negative (its true start precedes the recording origin) is
-clamped to 0 for BOTH highlight and seek — 0 is the start of the file, which was recorded; it is
-never null-because-negative. Clamp `audioEndMs` to `[audioStartMs, durationMs]`.
+Eligibility — `audioStartMs`/`audioEndMs` are **null** (turn renders, not seek/highlight-eligible) when
+ANY of: no merged row on screen; `!transcript.turnsShareOneClock`; `half.clockAnchor == null` (never
+treat unreconciled as `shift=0`); or the half is not in the merge's `source_event_ids`.
 
-Highlight window rule [gate finding 1] — a precise turn has an empty `[audioStart, audioStart)`
-span, so highlight/karaoke never uses `audioEndMs` as the boundary. The ACTIVE turn is the one whose
-`audioStartMs <= playhead` with the greatest `audioStartMs` (i.e. each turn is active from its own
-start until the NEXT eligible turn's start). This gives precise and approximate turns identical,
-non-empty behavior and is order-stable.
+Ordering of the recording window [g2 tie-break]: the ACTIVE turn is the seek-eligible turn with the
+greatest `audioStartMs <= playhead`; TIES (e.g. two pre-origin turns both clamped to 0) are broken by
+the turn's standalone order (its `orderKeyMs - shift`, then its list index) so exactly one turn is
+active and the choice is deterministic. A precise turn's window is `[audioStart, nextEligibleStart)` —
+highlight/karaoke never uses `audioEndMs` as the active boundary, so precise and approximate turns
+behave identically.
 
-What changes / what does NOT:
-- Standalone LIST ORDER stays `orderKeyMs`-based (`CallTurn.at`, `turn_timeline.dart` sort) — no
-  answer-before-question regression.
-- Printed `m:ss` / `by m:ss` LABEL semantics stay exactly as governed
-  (`voice-video-calls.instructions.md` "What a turn's time promises"). We ADD a recording-synced
-  highlight/seek layer using `audioStartMs`; we do not restate the printed promise.
+Recompute on late data [g2]: when a merged row (or a new half) arrives after first paint, the turn
+windows are recomputed from the new `mergedStartSfuMs`/`shift` — the windows are derived in `_turnsOf`
+and rebuilt whenever the recordings/merged futures update (they already drive a rebuild today).
 
-## 2. Layout (item 4) — sliver composition [gate finding 4]
+What does NOT change: `CallTurn.at` (printed time) and the standalone LIST ORDER stay `orderKeyMs`-based
+(no answer-before-question regression); the `m:ss` / `by m:ss` LABEL semantics are exactly as governed.
 
-The dialog body becomes a `CustomScrollView` (today it is a `ListView`, `transcript_view.dart:306`),
-inside the existing `FullWidthDialog` Scaffold (the dialog's own `AppBar` with the close button stays).
+## 2. Layout (item 4) — sliver composition
 
-Slivers, in order:
-1. `SliverPersistentHeader(pinned: true)` — the Full-call bar. NOT a bare `SliverAppBar`: its default
-   56px toolbar cannot hold a 40-bar player. A `SliverPersistentHeaderDelegate` with
-   `minExtent == maxExtent == kFullCallBarHeight` (~84px: the `AudioPlayerWidget` row + a 1px divider),
-   an OPAQUE `theme.colorScheme.surface` background (content scrolls cleanly under it), hosting the
-   merged `AudioPlayerWidget` (`color/linkColor: colorScheme.primary, fontSize: 14`) + a "Full call"
-   label + a chevron toggling section 2b. Rendered only when a merged row exists; otherwise the
-   loading/absent state (section 3) occupies the same fixed extent.
-2. `SliverToBoxAdapter` — the expandable per-device section (2b), a SEPARATE sliver, not inside the
-   header: `AnimatedSize(duration: FluffyThemes.animationDuration, curve: FluffyThemes.animationCurve)`
-   swapping `SizedBox.shrink()` <-> the per-device rows (name + `AudioPlayerWidget`, the existing
-   `_recordingsSection` row shape relocated). Collapsed by default (D3).
-3. `SliverToBoxAdapter` wrapping `TurnTimeline` — NON-LAZY on purpose [gate finding 4]: the timeline
-   is already a bounded non-scrolling `Column` (`turn_timeline.dart:129`), so every turn has a live
-   `BuildContext` for `Scrollable.ensureVisible`. Do NOT convert turns to a lazy `SliverList` (its
-   off-screen children have no context and auto-scroll silently fails). Notes/caveats follow, as today.
+The dialog body becomes a `CustomScrollView` (today a `ListView`, `transcript_view.dart:306`), inside
+the existing `FullWidthDialog` Scaffold (its `AppBar` + close button stay). Slivers:
 
-Merged and per-device players remain the same shared `AudioPlayerWidget` fed a relabeled `m.audio`
-event (`transcript_view.dart:774`), so only one plays at a time (shared `matrix.audioPlayer`,
-`voiceMessageEventId` ownership).
+1. `SliverPersistentHeader(pinned: true)` — the Full-call SLOT. Always present (see section 3); its
+   CONTENT is the merged player, or a shimmer, or the error note. Custom
+   `SliverPersistentHeaderDelegate` (a 56px `SliverAppBar` cannot hold a 40-bar player). Extent is
+   scale-aware [g2]: `minExtent == maxExtent == kBarBase * MediaQuery.textScalerOf(context).scale(1)`
+   clamped to a sane max, so it does not clip at 200% text; the "Full call" label ELLIPSIZES (never
+   wraps), and degrades to an icon + time if space is tight. Opaque `colorScheme.surface`. Hosts the
+   merged `AudioPlayerWidget` (`color/linkColor: primary, fontSize: 14`) + label + a chevron toggling 2.
+2. `SliverToBoxAdapter` — the expandable per-device section, a SEPARATE sliver: `AnimatedSize`
+   (`FluffyThemes.animationDuration/Curve`) swapping `SizedBox.shrink()` <-> per-device rows (the
+   existing `_recordingsSection` shape: name + `AudioPlayerWidget`). Collapsed by default (D3).
+3. `SliverToBoxAdapter` wrapping `TurnTimeline` — NON-LAZY, matching TODAY'S behavior: the current
+   dialog already builds every turn eagerly (`TurnTimeline` is a non-scrolling `Column`,
+   `turn_timeline.dart:129`, inside a `ListView`), so this is status-quo, not a new cost, and it gives
+   every turn a live `BuildContext` for `Scrollable.ensureVisible`. Karaoke adds one lightweight
+   `GlobalKey` per turn. Virtualizing very long transcripts is a PRE-EXISTING concern (it would apply to
+   today's code equally) and is out of scope here; if a bound is ever needed it is a separate follow-up.
+   Notes/caveats follow, as today.
 
-## 3. Loading & error states (item 3) [gate finding 3]
+Players stay the shared `AudioPlayerWidget` fed a relabeled `m.audio` event (`transcript_view.dart:774`);
+one plays at a time (shared `matrix.audioPlayer`, `voiceMessageEventId`).
 
-Today `_recordings`/`_merged` use `data ?? const []`, so still-loading is indistinguishable from
-"none". Replace with an explicit machine for the Full-call bar (and per expected half):
+## 3. Loading & error states (item 3) — a TOTAL machine [g2]
 
-States: PENDING (shimmer, "Preparing full recording…" / "Waiting for {name}'s recording…"), READY
-(the real player), UNAVAILABLE (the `_Message` inline note + retry).
+Today `_recordings`/`_merged` use `data ?? const []`, so still-loading looks like "none". Replace with a
+machine whose states are EXHAUSTIVE over (reads in flight?) x (halves present?) x (merge present?) x
+(grace elapsed?):
 
-Transitions, made concrete [gate finding 3]:
-- `graceStartedAt` is stamped once, when the transcript view first has its own halves loaded (a real
-  timestamp, threaded in — not read ad hoc).
-- Merge status is authoritative from the room: subscribe to `pangea.call_audio_merged` for this call
-  (the same read `_merged` does) AND to new `pangea.call_audio` halves, so a late half/merge updates
-  the machine rather than a one-shot future.
-- PENDING while: a read is in flight, OR (>=1 half present AND no merged row yet AND `now -
-  graceStartedAt < kMergeGrace`). `kMergeGrace` is a single bound (~30s) driven by a `Timer`; when it
-  fires, `setState` re-evaluates.
-- READY as soon as the merged row (or the half) arrives — even after the grace elapsed (late merge
-  flips UNAVAILABLE -> READY; acceptable and correct, better than staying dark).
-- UNAVAILABLE only after `kMergeGrace` with no merge. Participants are a HINT for "expect a second
-  half", never proof one was recorded; the timer, not membership, ends PENDING.
-- Retry re-runs the reads (`_retry`) and restarts the grace timer.
-- D1 RESOLVED: expected-participant hint + a bounded grace timer (not membership alone). No infinite
-  PENDING (timer bounds it); the one late-merge flash (UNAVAILABLE->READY) is accepted over dark-forever.
+- LOADING-READS: either future still in flight -> shimmer.
+- READY: a merged row is present -> the merged player. (Also the terminal state once the merge lands.)
+- PENDING-MERGE: reads DONE, >=1 half present, no merged row, and `now - graceStartedAt < kMergeGrace`
+  -> shimmer "Preparing full recording…". `graceStartedAt` is stamped the instant BOTH reads first
+  complete (a real timestamp threaded in), and a `Timer(kMergeGrace)` triggers a re-evaluate.
+- NONE: reads DONE and ZERO halves present [g2 — the case that fell through] -> immediately the
+  "no recording" note (nothing is coming; do not wait out the grace).
+- UNAVAILABLE: reads DONE, >=1 half, no merge, grace ELAPSED -> the `_Message` note + retry.
+- A late merge/half arriving in any non-terminal state -> READY (recomputing windows, section 1); the
+  one accepted flash is UNAVAILABLE->READY, preferred over staying dark. Retry re-runs the reads and
+  RESETS `graceStartedAt` + the timer. Participants are only a HINT that a second half is expected;
+  the timer, never membership, ends PENDING-MERGE. D1 RESOLVED.
 
-## 4. Karaoke: highlight + auto-scroll + tap-to-seek (item 5) [gate findings 2 & 6]
+Per-device rows show the same LOADING/READY per half; a half that never arrives within the grace shows
+"Waiting for {name}'s recording…" then drops out (no error row per half).
 
-`CallPlaybackController` (a `ChangeNotifier`), owns the sync:
-- Subscribes to `matrix.audioPlayer.positionStream`, `playerStateStream`, AND `voiceMessageEventId`
-  (ownership) [gate finding 2]. Exposes `ValueListenable<int?> activeTurnIndex`.
-- Active only while `voiceMessageEventId.value == mergedEventId`. On ANY change of `voiceMessageEventId`
-  away from the merged id, CLEAR the active index IMMEDIATELY (do not wait for a position event) —
-  starting a per-device half must not leave a stale merged highlight.
-- Resolution: greatest `audioStartMs <= positionMs` among seek-eligible turns (section 1), de-duped
-  before notifying (as `highlightCurrentText` does, `message_selection_overlay.dart:320`).
-- Disposal [gate finding 6]: cancel all three subscriptions and the `Timer` in `dispose`; guard every
-  `notifyListeners`/`setState` behind a `mounted`/`_disposed` check (no callback after dispose).
-- Tap-to-seek is SERIALIZED [gate finding 2]: an async `seekTo(turn)` that (a) if the merged event
-  does not own the shared player, hands the merged event to the player and awaits load, then (b)
-  seeks to `audioStartMs`, then (c) plays — never seeks a per-device half. Guard against overlapping
-  taps (ignore while a seek is in flight).
+## 4. Karaoke: highlight + auto-scroll + tap-to-seek (item 5)
 
-Render + interaction [gate findings 4 & 6]:
-- Active-turn indicator is NOT color alone [gate finding 6]: a leading accent bar (2-3px, `primary`)
-  on the active bubble PLUS a subtle `secondaryContainer` tint (`chat_list_item.dart:67`). Reduced
-  motion respected: when `MediaQuery.disableAnimations`, `ensureVisible` uses `Duration.zero` (jump).
-- Auto-scroll: `Scrollable.ensureVisible(key.currentContext, duration: 300ms, curve: easeOut,
-  alignment: 0.3)` (`course_overview.dart:96`) on the active turn's `GlobalKey`, ONLY while playing and
-  ONLY on active-index change; SUSPEND on user scroll (a `NotificationListener<UserScrollNotification>`),
-  RESUME on the next play or tap.
-- GlobalKeys are keyed by TURN IDENTITY (senderId + segment index), retained across rebuilds and
-  pruned when a turn disappears — never index-keyed (recreated keys break `ensureVisible`) [gate 6].
-- D4 RESOLVED [gate finding 6]: seeking is an EXPLICIT affordance, not a whole-bubble tap that would
-  swallow text selection. The turn's TIME stamp (and avatar) is a `Semantics(button: true, label:
-  "Play from {m:ss}")` tap target that seeks; the transcript text stays selectable (long-press/drag
-  unaffected). Localize the label; use directional (RTL-safe) layout APIs throughout.
+`CallPlaybackController` (`ChangeNotifier`) owns the sync:
+- Subscribes to `matrix.audioPlayer.positionStream`, `playerStateStream`, AND `voiceMessageEventId`.
+- Active only while `voiceMessageEventId.value == mergedEventId`; on ANY change away from it, CLEAR the
+  active index IMMEDIATELY (not on the next position event).
+- Resolution: greatest `audioStartMs <= positionMs` among eligible turns, tie-broken per section 1,
+  de-duped before notifying.
+- Disposal: cancel all subscriptions + the `Timer`; guard every notify behind `_disposed` (no callback
+  after dispose).
+- Tap-to-seek is a SERIALIZED async transaction that RECHECKS OWNERSHIP AFTER EVERY await [g2 race]:
+  (a) if the merged event is not the current `voiceMessageEventId`, hand it to the player and await load;
+  (b) re-read `voiceMessageEventId` — if it is no longer the merged event (the user started a per-device
+  player mid-await), ABORT the transaction (do not seek/play another source); (c) seek to `audioStartMs`;
+  (d) play. Overlapping taps: ignore a new tap while one is in flight.
+
+Render + interaction:
+- Active indicator is NOT color alone: a leading accent bar (2-3px, `primary`) on the active bubble PLUS
+  a `secondaryContainer` tint (`chat_list_item.dart:67`). Reduced motion: `MediaQuery.disableAnimations`
+  -> `ensureVisible` uses `Duration.zero`.
+- Auto-scroll: `Scrollable.ensureVisible(key.currentContext, duration: 300ms, curve: easeOut, alignment:
+  0.3)` on the active turn's key, ONLY while playing and ONLY on active-index change; SUSPEND on
+  `UserScrollNotification`, RESUME on next play/tap.
+- D4 seek affordance: the turn's TIME/avatar is a `Semantics(button: true)` tap target that seeks; the
+  bubble TEXT stays selectable (long-press/drag unaffected). The a11y label announces the RECORDING-
+  RELATIVE START, not the printed label [g2]: e.g. a turn printed "by 0:07" whose audio start is 0:03
+  announces "Play from 0:03" (localized). Directional (RTL-safe) layout APIs throughout.
 
 ## 5. Reused client patterns (all already shipped)
 
 | Concern | Reuse | Where |
 |---|---|---|
 | Player + waveform + scrubber + speed | `AudioPlayerWidget` | audio_player.dart:29 |
-| Playhead stream + ownership | `matrix.audioPlayer.positionStream` / `voiceMessageEventId` | audio_player.dart:640, matrix.dart:511 |
-| Karaoke time-window highlight | `highlightCurrentText` pattern | message_selection_overlay.dart:320 |
+| Playhead + ownership | `matrix.audioPlayer.positionStream` / `voiceMessageEventId` | audio_player.dart:640, matrix.dart:511 |
+| Karaoke time-window highlight | `highlightCurrentText` | message_selection_overlay.dart:320 |
 | Auto-scroll into view | `Scrollable.ensureVisible` + GlobalKey | course_overview.dart:96 |
 | Expand/collapse | `AnimatedSize` + FluffyThemes timings | message.dart:1149 |
-| Loading placeholder | `ShimmerBox` | shimmer_box.dart:23 |
-| Inline error + retry | `_Message` + `_retry` | transcript_view.dart:1058,220 |
-| Active-row tint | `secondaryContainer` on `Material(borderRadius: AppConfig.borderRadius)` | chat_list_item.dart:67 |
-| Tokens | borderRadius 18, columnWidth 380, animationDuration 250/easeInOut, bubble roles | app_config.dart:36, themes.dart:9,37,162 |
-
-Sticky header: a custom `SliverPersistentHeaderDelegate` (the app has no existing pinned-non-appbar
-header — `sticker_picker_dialog.dart:116` pins a `SliverAppBar`, which is the wrong extent here).
+| Loading placeholder / error+retry | `ShimmerBox` / `_Message`+`_retry` | shimmer_box.dart:23, transcript_view.dart:1058,220 |
+| Active-row tint | `secondaryContainer` | chat_list_item.dart:67 |
+| Tokens | borderRadius 18, columnWidth 380, animation 250/easeInOut, bubble roles | app_config.dart:36, themes.dart:9,37,162 |
 
 ## 6. Model changes
 
-- `CallTurn` gains `audioStartMs`/`audioEndMs` (`int?`), and a stable `key` derived from turn identity.
-  Populated in `_turnsOf` only when eligible (section 1); null otherwise. `at` (printed) and list
-  order UNCHANGED.
+- `CallTurn` gains `audioStartMs`/`audioEndMs` (`int?`) and a stable `key`. The key is
+  `senderId + halfEventId + segmentIndex` [g2 — the half EVENT id, since one sender may write several
+  half events and `sender+index` would collide and crash on a duplicate `GlobalKey`]. Keys are retained
+  across rebuilds by identity and pruned when a turn disappears; never index-only.
 - New `CallPlaybackController`. No wire/schema change — `at_ms`, `at_span_ms`, `offsetMs`,
   `mergedStartSfuMs` are already on events in people's rooms.
 
 ## 7. Governed-doc addition (needs owner review — never edited unilaterally)
 
 `voice-video-calls.instructions.md` "What a turn's time promises" stays as-is (printed labels
-unchanged). ADD a short subsection "Played against the recording": when a Full-call recording is on
-screen, a turn also carries a recording-timeline window anchored at its audio START, used to
-highlight/auto-scroll/seek in sync with playback; display-only, changes neither the printed label
-nor the standalone order. Draft shown for approval before any doc commit.
+unchanged). ADD a subsection "Played against the recording": a turn also carries a recording-timeline
+window anchored at its audio START, used to highlight/auto-scroll/seek in sync with playback;
+display-only, changing neither the printed label nor the standalone order. Draft shown for approval
+before any doc commit.
 
-## 8. Test plan (TDD, mutation-proven)
+## 8. Test plan (TDD, mutation-proven — each agent NAMES the mutation + the failing assertion)
 
-- INVARIANCE [gate finding 5]: `CallTurn.at` and the turn ORDER are byte-identical WITH and WITHOUT a
-  merged recording — a dedicated before/after test so a `_turnsOf` refactor cannot silently make an
-  approximate turn use `atMs` for `at` (which would turn "by 0:07" into "0:03" and reorder). Prove RED
-  by mutating `at` to `atMs`.
-- `_turnsOf` window math: precise turn -> audioStart == its SFU position - origin, audioEnd == start;
-  approximate -> audioStart at chunk START, audioEnd = start + span; null for unreconciled / not-in-
-  merge / no-merge; clamp negatives to 0. Prove RED on revert.
-- `CallPlaybackController`: position sequence -> correct active index (greatest start <= pos);
-  clears immediately on `voiceMessageEventId` change; de-dupes; no notify after dispose. Prove RED.
-- Loading machine: PENDING/READY/UNAVAILABLE given (in-flight / half-present-no-merge-within-grace /
-  grace-elapsed / late-merge). A fake clock/timer drives expiry. Prove RED.
-- Widget: sticky header only with a merged row; chevron expands rows; tap a time seeks; active turn
-  shows the accent bar (not color alone); text stays selectable. Reuse `pumpWithRecordings`.
+- INVARIANCE: `CallTurn.at` and turn ORDER byte-identical WITH and WITHOUT a merged recording. Mutation:
+  make `at` use `atMs` -> assert "by 0:07" turn's `at` unchanged and no reorder -> RED.
+- WINDOW math: precise -> audioStart==SFU-origin, audioEnd==start; approximate -> start at chunk START,
+  end=start+span; null for unreconciled/not-in-merge/no-merge; clamp negatives to 0; tie-break
+  deterministic. Mutation: drop the `atMs`->`orderKeyMs` distinction / drop the clamp -> RED.
+- CONTROLLER: position sequence -> correct active index (greatest start<=pos, tie-broken); clears
+  immediately on `voiceMessageEventId` change; de-dupes; seek transaction ABORTS when ownership changes
+  mid-await; no notify after dispose. Mutation: remove the post-await ownership recheck -> RED.
+- LOADING: every cell of the state table incl. zero-halves-done (NONE) and grace-elapsed (UNAVAILABLE)
+  and late-merge (READY + window recompute), driven by a fake clock/timer. Mutation: start the timer
+  only when halves>0 -> zero-half case hangs -> RED.
+- A11y CONTRACT [g2]: an approximate turn shows "by 0:07" AND its Semantics seek action targets/announces
+  0:03. Mutation: announce the printed label -> RED.
+- WIDGET: sticky slot present in every state; chevron expands rows; tap time seeks; active turn shows the
+  accent bar; text stays selectable. Reuse `pumpWithRecordings`.
 - Full calls bucket stays green; analyze/format/import clean.
 
 ## 9. Build decomposition (agents; each self-gates Codex to green)
 
-1. Timeline model — `CallTurn.audioStart/End` + eligibility + `_turnsOf` window math + invariance &
-   window tests. (sonnet)
-2. `CallPlaybackController` — playhead+ownership -> active-turn, disposal, serialized seek + tests. (sonnet)
-3. Karaoke render — `TurnTimeline` accent-bar active state + identity GlobalKeys + ensureVisible +
-   user-scroll suspend + reduced-motion + the seek affordance/Semantics. (sonnet)
-4. Layout — `CustomScrollView` + `SliverPersistentHeader` Full-call bar + `AnimatedSize` per-device
-   sliver, non-lazy turns. (opus — most cross-cutting)
-5. Loading/error machine — PENDING/READY/UNAVAILABLE with the grace timer + merge/half subscription. (sonnet)
+1. Timeline model — `CallTurn.audioStart/End` + eligibility + tie-break + `_turnsOf` + invariance/window tests. (sonnet)
+2. `CallPlaybackController` — playhead+ownership -> active index; serialized-with-recheck seek; disposal + tests. (sonnet)
+3. Karaoke render in `TurnTimeline` — accent-bar active state + identity GlobalKeys + ensureVisible +
+   user-scroll suspend + reduced-motion + the seek affordance/Semantics (announcing audioStart). (sonnet)
+4. Loading/error machine in `transcript_view.dart` — the total state table + grace timer + merge/half
+   subscription. (sonnet)
+5. Layout in `transcript_view.dart` — `CustomScrollView` + `SliverPersistentHeader` slot (scale-aware) +
+   `AnimatedSize` per-device sliver + non-lazy turns. (opus — most cross-cutting)
 6. Doc draft for section 7 — proposed, held for owner review (no commit). (orchestrator)
 
-Sequencing: 1->2->3 in order; 4 and 5 parallel after 1; each agent runs its own Codex behaviour+pinning
-gate to green before handing back. Orchestrator runs a cold Codex green over the assembled delta, then owner review.
+Sequencing [g2 — 4 and 5 BOTH edit `transcript_view.dart`, so they are SERIAL, not parallel]: 1 -> 2 ->
+3; then 4; then 5 (rebased on 4).
+
+Gating model (owner directive): the ORCHESTRATOR runs the cold Codex gate on EACH agent's diff — the
+agents do not self-gate. On RED, the orchestrator root-causes per the red-to-root-cause protocol
+(name the rule, not the site) and `SendMessage`s that SAME agent the findings to fix; re-gate; loop
+until green (pivot at 4 reds on one dimension, stop at 7-8). Only a green agent's work is accepted and
+the next dependent step starts. After all six, the orchestrator runs one final cold green over the
+assembled delta, then owner review.
 
 ## 10. Decisions (resolved; veto any)
 
-- D1 (loading): expected-participant HINT + a bounded ~30s grace TIMER; error only after it elapses;
-  late merge flips to READY. (section 3)
-- D2 (highlight): the single most-recent turn (`audioStart <= playhead`, greatest), not every overlap.
+- D1 (loading): expected-participant HINT + a bounded ~30s grace TIMER; NONE immediately on zero halves;
+  error only after the timer; late merge -> READY. (section 3)
+- D2 (highlight): the single most-recent turn (greatest `audioStart<=playhead`, tie-broken), not every overlap.
 - D3 (per-device rows): collapsed by default behind the chevron; Full call is the hero.
-- D4 (seek): an explicit accessible affordance on the turn's TIME/avatar (`Semantics` "Play from
-  m:ss"); the bubble text stays selectable. NOT a whole-bubble tap.
+- D4 (seek): explicit accessible affordance on the turn's TIME/avatar announcing the recording-relative
+  start; bubble text stays selectable. NOT a whole-bubble tap.
