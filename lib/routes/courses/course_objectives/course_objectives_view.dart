@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
@@ -271,11 +272,55 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
     );
   }
 
+  /// Brings the tutorial's scroll-dependent targets — the course progress bar
+  /// and the Activities row — fully into view before the tutorial measures
+  /// them. Nothing can scroll once the tutorial is up — the tap steps absorb
+  /// every pointer, and the armed step's spotlight passes taps but not
+  /// scrolls — so a target that starts half off screen would stay half off
+  /// screen for the whole run. Each pass is a no-op when its target is
+  /// already fully visible; the progress bar goes last because it sits above
+  /// the row, so on a viewport too small for both the bar wins — its step
+  /// shows first, and the row's card anchors to whatever slice of the row
+  /// stays visible.
+  Future<void> _ensureTutorialTargetsVisible() async {
+    await _ensureTargetVisible(
+      TutorialTargetIds.courseActivities,
+      ScrollPositionAlignmentPolicy.keepVisibleAtEnd,
+    );
+    await _ensureTargetVisible(
+      TutorialTargetIds.courseActivities,
+      ScrollPositionAlignmentPolicy.keepVisibleAtStart,
+    );
+    await _ensureTargetVisible(
+      TutorialTargetIds.courseProgressBar,
+      ScrollPositionAlignmentPolicy.keepVisibleAtStart,
+    );
+  }
+
+  Future<void> _ensureTargetVisible(
+    String targetId,
+    ScrollPositionAlignmentPolicy alignmentPolicy,
+  ) async {
+    final targetContext = MatrixState.pAnyState
+        .layerLinkAndKey(targetId)
+        .key
+        .currentContext;
+    if (targetContext == null || !targetContext.mounted) return;
+    await Scrollable.ensureVisible(
+      targetContext,
+      alignmentPolicy: alignmentPolicy,
+      duration: FluffyThemes.animationDuration,
+    );
+  }
+
   Future<void> _launchCoursePlanTutorial() async {
     if (!mounted) return;
     final room = widget.room;
     final courseName =
         room?.getLocalizedDisplayname(MatrixLocals(L10n.of(context))) ?? '';
+
+    await _ensureTutorialTargetsVisible();
+    if (!mounted) return;
 
     _tutorials.launchTutorial(
       context: context,
