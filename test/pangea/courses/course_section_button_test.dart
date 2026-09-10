@@ -80,7 +80,6 @@ void main() {
     // solid fill of a call to action.
     expect(find.byType(TextButton), findsNothing);
     expect(find.byType(FilledButton), findsOneWidget);
-    expect(find.byIcon(Icons.chevron_right), findsOneWidget);
     final surface = tester.widget<Material>(
       find
           .descendant(
@@ -95,22 +94,24 @@ void main() {
     expect(surface.color, colors.secondaryContainer);
   });
 
-  testWidgets('pads the label and the chevron alike', (tester) async {
+  testWidgets('carries nothing beside its label, so its ends match', (
+    tester,
+  ) async {
     await pump(
       tester,
       const CourseSectionButton(section: 'Chats', onPressed: _noop),
     );
 
-    // FilledButton.tonalIcon pads as if its icon led — 16 on the icon's side,
-    // 24 on the label's — and doesn't flip for a trailing one, so the chevron
-    // sat in the wide pad and the pill read as lopsided (#8898). The plain
-    // tonal button pads both sides alike.
+    // A chevron sits in a 24px box with about 5px of its own space either
+    // side of it, so a trailing one always renders the pill's right side
+    // wider than its left, whichever button pads it (#8898). Nothing trails
+    // the label now, and the two ends measure alike.
+    expect(find.byIcon(Icons.chevron_right), findsNothing);
     final button = tester.getRect(find.byType(FilledButton));
     final label = tester.getRect(find.text('See all'));
-    final chevron = tester.getRect(find.byIcon(Icons.chevron_right));
     expect(
       label.left - button.left,
-      moreOrLessEquals(button.right - chevron.right),
+      moreOrLessEquals(button.right - label.right),
     );
   });
 
