@@ -10,7 +10,7 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_room_extension.dart';
-import 'package:fluffychat/features/bot/utils/bot_name.dart';
+import 'package:fluffychat/features/activity_sessions/bot_activty_role_room_extension.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
@@ -44,17 +44,6 @@ class ActivityStatsMenu extends StatelessWidget with GoalProgressMixin {
         : PLanguageStore.byLangCode(targetLanguage);
   }
 
-  bool get _isTwoPersonBotActivity {
-    final roles = room.activityRoles?.roles;
-    final assignedRoles = room.assignedRoles;
-    if (roles == null || assignedRoles == null) return false;
-
-    return roles.length == 2 &&
-        assignedRoles.values.any(
-          (role) => role.userId == BotName.byEnvironment,
-        );
-  }
-
   bool get _activityComplete => room.isActivityFinished;
 
   bool get _showWaitNotDone =>
@@ -64,7 +53,7 @@ class ActivityStatsMenu extends StatelessWidget with GoalProgressMixin {
       !_activityComplete && room.hasPickedRole && !room.hasCompletedRole;
 
   bool get _showEndForAll =>
-      !_activityComplete && room.isRoomAdmin && !_isTwoPersonBotActivity;
+      !_activityComplete && room.isRoomAdmin && !room.isTwoPersonBotActivity;
 
   bool get _showDoneButtonHint => _showEndForMe && room.hasCompletedOwnGoals;
 
