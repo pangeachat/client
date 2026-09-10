@@ -59,6 +59,8 @@ The current `StartIGCButton` is updated to display a **segmented ring**, indicat
 
 A **suggestion** is the activity orchestrator's proposed next message, offered while the composer is empty. It is a separate flow from grammar matches, so in the two lightbulb states the ring is named "Suggestion" rather than "Check" (its tooltip and accessible name are the same string).
 
+**Withdrawn as soon as the learner writes.** The suggestion is an offer to fill an empty composer, so the first typed character withdraws it — the ring returns to its check states, and the suggestion card closes with it. Leaving the card up would hold a set of choices, distractors included, over a message the learner has decided to write themselves; and since only one writing assistance card is on screen at a time, it would also be sitting in the place the span card needs when they ask for a check. An accepted suggestion is the exception, because its text is now the message: that card stays for its brief confirmation and then closes itself, and typing over the accepted text withdraws the suggestion like any other edit.
+
 The ring **animates in** when segments first appear and **animates out** when the input field is cleared. When the user edits text and triggers a re-fetch, the icon spins again and old segments are discarded — the new response rebuilds the ring from scratch.
 
 ### What We're Removing

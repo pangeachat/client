@@ -76,6 +76,19 @@ enum AssistanceStateEnum {
     _ => false,
   };
 
+  /// Whether the suggestion card may stay on screen in this state.
+  ///
+  /// The suggestion is an offer to fill an empty composer, so the states that
+  /// justify the card are the two lightbulb ones: a suggestion waiting, and an
+  /// accepted suggestion whose text is now the message. Anything else — above
+  /// all the learner typing their own message — withdraws it (#8953). See
+  /// writing-assistance.instructions.md.
+  bool get keepsSuggestionCardOpen => switch (this) {
+    AssistanceStateEnum.suggesting => true,
+    AssistanceStateEnum.suggestionComplete => true,
+    _ => false,
+  };
+
   bool get showIcon => switch (this) {
     AssistanceStateEnum.noSub => true,
     AssistanceStateEnum.noMessage => true,
