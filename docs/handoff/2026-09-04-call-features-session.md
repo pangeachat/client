@@ -1556,3 +1556,24 @@ until the design is Codex-green.
   under the FULL protocol: self-gate with codex to CORRECT/softening:no, then COMMIT (no push/PR) to
   satvik/call-features-combined. On its return I re-cold-gate (behaviour+pinning). SendMessage-to-subagent
   is NOT exposed here, so "on red -> message the agent" is implemented as re-spawn-with-artifacts.
+
+## 2026-09-10 (cont) — agent 1 fixer round 1 committed a819840d30; cold-gate r2 -> fixer r2
+- Fixer r1 (a937f8c931cc78d5d) committed a819840d30: stable content-based identityKey, merge-coverage
+  comment, window/shift/clamp/null-window/invariance tests (self-Codex-green behaviour 3 rounds + tests
+  4 rounds). Repo verified clean (no import_sorter collateral; it caught my brief's missing --no-comments
+  and reverted ~1600-file collateral). It also CORRECTED my "v1 = one recording per sender" claim: the
+  CaptureElection convergence race makes 2-recordings-per-sender reachable in an ordinary call.
+- My cold gate r2: behaviour codex ISSUES-FOUND (softening no) + I hand-verified the test pins (invariance
+  3-pump, window/clamp arithmetic, non-zero-shift term — all genuine). Two real behaviour issues:
+  - Q1 identityKey COLLISION: content key senderId#atMs#span#text is not injective (two identical "yes"
+    utterances in one chunk share atMs+span+text) -> duplicate GlobalKey -> Flutter crash. Fix: unique +
+    still-stable (append a stable ordinal among exact-duplicate content within the half).
+  - Q2 merge coverage: gate REJECTED the "documented + deferred" framing -- a reachable defect isn't
+    correct just because commented. Clean conservative fix (no #8878 needed): a sender is eligible only if
+    ALL their recordings are in the merge's sourceEventIds; else no window (safe, no wrong seek). My earlier
+    v2-scoping of this was too quick.
+  - Q3 window math, Q4 invariance/regression: CORRECT.
+- FIXER r2 (a190b6aa9baf96261, sonnet) dispatched with both fixes root-caused + the corrected
+  import_sorter --no-comments; full protocol (self-gate + NEW commit, no amend/push/PR). On return I
+  re-cold-gate the two fixes. LESSON: agent briefs must use `dart run import_sorter:main --no-comments
+  --exit-if-changed` (omitting --no-comments rewrites ~1600 files).
