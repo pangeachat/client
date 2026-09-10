@@ -1,8 +1,8 @@
 # Call recordings + transcript UI redesign — design spec v3 (items 2/3/4/5)
 
-Status: DRAFT for owner review. Revised across two Codex design-gate rounds; round-2 refinements
-folded in below (marked [g2]). No code lands until approved. Built by agents (each self-gating with
-Codex to green); orchestrator runs a cold Codex green over the delta.
+Status: DRAFT for owner review. Revised across three Codex design-gate rounds ([g2]/[g3] mark the
+folded refinements). No code lands until approved. Built by agents; the ORCHESTRATOR cold-gates each
+agent's diff and drives fixes to green (section 9), then runs one final cold green over the delta.
 
 Scope: one cohesive redesign of the call transcript/recordings surface
 (`lib/routes/chat/calls/transcript_view.dart` + `turn_timeline.dart`):
@@ -87,8 +87,10 @@ machine whose states are EXHAUSTIVE over (reads in flight?) x (halves present?) 
 - NONE: reads DONE and ZERO halves present [g2 — the case that fell through] -> immediately the
   "no recording" note (nothing is coming; do not wait out the grace).
 - UNAVAILABLE: reads DONE, >=1 half, no merge, grace ELAPSED -> the `_Message` note + retry.
-- A late merge/half arriving in any non-terminal state -> READY (recomputing windows, section 1); the
-  one accepted flash is UNAVAILABLE->READY, preferred over staying dark. Retry re-runs the reads and
+- A late merge/half arriving in any non-terminal state -> RE-EVALUATE the machine [g3]: a MERGE moves it
+  to READY (recomputing windows, section 1); a half WITHOUT a merge only moves it to PENDING-MERGE (or
+  stays UNAVAILABLE once the grace has elapsed). The one accepted flash is UNAVAILABLE->READY on a late
+  merge, preferred over staying dark. Retry re-runs the reads and
   RESETS `graceStartedAt` + the timer. Participants are only a HINT that a second half is expected;
   the timer, never membership, ends PENDING-MERGE. D1 RESOLVED.
 
@@ -105,11 +107,13 @@ Per-device rows show the same LOADING/READY per half; a half that never arrives 
   de-duped before notifying.
 - Disposal: cancel all subscriptions + the `Timer`; guard every notify behind `_disposed` (no callback
   after dispose).
-- Tap-to-seek is a SERIALIZED async transaction that RECHECKS OWNERSHIP AFTER EVERY await [g2 race]:
+- Tap-to-seek is a SERIALIZED async transaction that RECHECKS OWNERSHIP AFTER EVERY await, including the
+  seek itself [g2 race; g3 blocker]:
   (a) if the merged event is not the current `voiceMessageEventId`, hand it to the player and await load;
   (b) re-read `voiceMessageEventId` — if it is no longer the merged event (the user started a per-device
-  player mid-await), ABORT the transaction (do not seek/play another source); (c) seek to `audioStartMs`;
-  (d) play. Overlapping taps: ignore a new tap while one is in flight.
+  player mid-await), ABORT (touch no other source); (c) seek to `audioStartMs` and await it; (d) re-read
+  `voiceMessageEventId` AGAIN — if ownership changed during the awaited seek, ABORT before playing; only
+  if it is still the merged event, (e) play. Overlapping taps: ignore a new tap while one is in flight.
 
 Render + interaction:
 - Active indicator is NOT color alone: a leading accent bar (2-3px, `primary`) on the active bubble PLUS
