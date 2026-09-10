@@ -278,87 +278,94 @@ class WorldMapLargeCard extends StatelessWidget {
       label:
           "${L10n.of(context).activityLabel(plan?.title ?? card.title)}, ${state.label(L10n.of(context))}",
       container: true,
-      child: GestureDetector(
-        onTap: onTap,
-        // The glow rides on the card body's own rounded rect (no gap, no border):
-        // the caret directly below sits within its downward bleed, so card and
-        // tail glow as one shape (#7349).
-        child: DecoratedBox(
-          decoration: isFocused
-              ? BoxDecoration(
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        // Mirror the GestureDetector's own hit test rather than the default
+        // opaque one, so the hover region is exactly the tap region and the
+        // card claims no space its tap doesn't already take.
+        hitTestBehavior: HitTestBehavior.deferToChild,
+        child: GestureDetector(
+          onTap: onTap,
+          // The glow rides on the card body's own rounded rect (no gap, no border):
+          // the caret directly below sits within its downward bleed, so card and
+          // tail glow as one shape (#7349).
+          child: DecoratedBox(
+            decoration: isFocused
+                ? BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    boxShadow: WorldMapSelection.glow(baseAccent),
+                  )
+                : const BoxDecoration(),
+            child: Material(
+              elevation: 6,
+              borderRadius: BorderRadius.circular(12),
+              color: Theme.of(context).colorScheme.surface,
+              // Let the card shrink to its content between a floor and the max
+              // width, so an available card with a short title (or a 2-role
+              // pending one) doesn't stretch to fill the full width — a little
+              // size variety (world-map Figma). The marker box stays the max
+              // width and centres the card, so the tail still lands on the pin.
+              child: Container(
+                constraints: const BoxConstraints(
+                  minWidth: PinSize.largeMinWidth,
+                  maxWidth: PinSize.largeWidth,
+                ),
+                decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
-                  boxShadow: WorldMapSelection.glow(baseAccent),
-                )
-              : const BoxDecoration(),
-          child: Material(
-            elevation: 6,
-            borderRadius: BorderRadius.circular(12),
-            color: Theme.of(context).colorScheme.surface,
-            // Let the card shrink to its content between a floor and the max
-            // width, so an available card with a short title (or a 2-role
-            // pending one) doesn't stretch to fill the full width — a little
-            // size variety (world-map Figma). The marker box stays the max
-            // width and centres the card, so the tail still lands on the pin.
-            child: Container(
-              constraints: const BoxConstraints(
-                minWidth: PinSize.largeMinWidth,
-                maxWidth: PinSize.largeWidth,
-              ),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: accent, width: 4),
-              ),
-              // The card's inset is carried by the CONTENT so this Stack spans
-              // the whole area inside the border, and the X can reach the
-              // corner without overhanging it: an overhang would still PAINT
-              // under `Clip.none`, but hit-testing stops at the parent's box,
-              // leaving most of the button dead to the touch. `passthrough`
-              // keeps the content laid out against the container's constraints.
-              child: Stack(
-                fit: StackFit.passthrough,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(_cardPadding),
-                    child: _LeadingGutter(
-                      width: _gutterWidth,
-                      thumbnail: _hasThumbnail
-                          ? Avatar(
-                              mxContent: liveRoom!.avatar,
-                              name: plan?.title ?? card.title,
-                              size: _thumbnailSize,
-                            )
-                          : null,
-                      child: Column(
-                        spacing: 8.0,
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          _CardTitleRow(
-                            title: plan?.title ?? card.title,
-                            titleColor: titleColor,
-                          ),
-                          _CardBody(
-                            card: card,
-                            state: state,
-                            accent: accent,
-                            titleColor: titleColor,
-                            liveRoom: liveRoom,
-                            participants: participants,
-                            openSlots: openSlots,
-                            starsTotal: _starsTotal,
-                            starsEarned: starsEarned,
-                          ),
-                        ],
+                  border: Border.all(color: accent, width: 4),
+                ),
+                // The card's inset is carried by the CONTENT so this Stack spans
+                // the whole area inside the border, and the X can reach the
+                // corner without overhanging it: an overhang would still PAINT
+                // under `Clip.none`, but hit-testing stops at the parent's box,
+                // leaving most of the button dead to the touch. `passthrough`
+                // keeps the content laid out against the container's constraints.
+                child: Stack(
+                  fit: StackFit.passthrough,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(_cardPadding),
+                      child: _LeadingGutter(
+                        width: _gutterWidth,
+                        thumbnail: _hasThumbnail
+                            ? Avatar(
+                                mxContent: liveRoom!.avatar,
+                                name: plan?.title ?? card.title,
+                                size: _thumbnailSize,
+                              )
+                            : null,
+                        child: Column(
+                          spacing: 8.0,
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            _CardTitleRow(
+                              title: plan?.title ?? card.title,
+                              titleColor: titleColor,
+                            ),
+                            _CardBody(
+                              card: card,
+                              state: state,
+                              accent: accent,
+                              titleColor: titleColor,
+                              liveRoom: liveRoom,
+                              participants: participants,
+                              openSlots: openSlots,
+                              starsTotal: _starsTotal,
+                              starsEarned: starsEarned,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  if (onClose != null)
-                    Positioned(
-                      top: _cardPadding,
-                      left: _cardPadding,
-                      child: _DismissButton(onPressed: onClose!),
-                    ),
-                ],
+                    if (onClose != null)
+                      Positioned(
+                        top: _cardPadding,
+                        left: _cardPadding,
+                        child: _DismissButton(onPressed: onClose!),
+                      ),
+                  ],
+                ),
               ),
             ),
           ),
