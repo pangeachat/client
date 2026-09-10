@@ -85,11 +85,29 @@ enum ActivityPinState {
   /// The accent used for a large card's border / foreground — the state hue.
   Color get accent => color;
 
-  /// The label text colour: the pin's state colour, except `available` — whose
-  /// light-purple fill is too low-contrast for light-purple text, so its label
-  /// uses dark purple instead (world-map.instructions.md, "Pin state").
-  Color get labelColor =>
-      this == ActivityPinState.available ? AppConfig.primaryColor : color;
+  /// The label colour: the state hue, but for the three purple states retuned
+  /// by the theme rather than taken raw from [AppConfig].
+  ///
+  /// Wherever this colour is a large card's TEXT it sits on
+  /// `colorScheme.surface`, and the raw `AppConfig.primaryColor` measures
+  /// 4.2:1 over that surface in BOTH themes — under WCAG AA's 4.5:1 for the
+  /// card's 13px/14px type, which is what made the dark card's title unreadable
+  /// (#8968). `colorScheme.primary` is the same brand hue tonally retuned for
+  /// the surface behind it, so it clears AA in both directions (10.97:1 dark,
+  /// 6.14:1 light) from one expression, with no second hardcoded purple to keep
+  /// in step. `joinable`'s green and the completed star's gold keep their own
+  /// hue — green already clears AA on the dark surface, and neither has a
+  /// theme token to resolve through.
+  ///
+  /// Not the same colour as the card's border, which stays the state hue via
+  /// [bodyColor] so card and pin still read as one state
+  /// (world-map.instructions.md, "Pin state").
+  Color labelColor(BuildContext context) => switch (this) {
+    ActivityPinState.available ||
+    ActivityPinState.ongoingPending ||
+    ActivityPinState.ongoingActive => Theme.of(context).colorScheme.primary,
+    ActivityPinState.joinable || ActivityPinState.inProgress => color,
+  };
 }
 
 /// The visual weight a pin renders at, filled from the top of the score. The

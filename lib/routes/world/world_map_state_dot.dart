@@ -291,14 +291,16 @@ class _MediumDotContent extends StatelessWidget {
     // The glyph is white on every mid pin EXCEPT `available` in light mode: its
     // light-purple fill is too pale for a white "+" to stand out, so there the
     // icon takes the pin's dark-purple label colour to match the designs (its
-    // former outside label used the same colour). Dark mode keeps white — the
+    // former outside label used the same colour) — which #8968 also lifted over
+    // the 3:1 SC 1.4.11 floor, from 2.91:1 to 4.25:1 against that pale fill, by
+    // resolving that purple through the theme. Dark mode keeps white — the
     // `available` pin fills with the darker `AppConfig.primaryColorDark` purple
     // there, which a white glyph reads cleanly over (world-map.instructions.md,
     // "Pin state").
     final glyphColor =
         state == ActivityPinState.available &&
             Theme.of(context).brightness == Brightness.light
-        ? state.labelColor
+        ? state.labelColor(context)
         : Colors.white;
 
     // The icon and (for joinable/ongoing-pending) the "num/num" count stack

@@ -263,14 +263,16 @@ class WorldMapLargeCard extends StatelessWidget {
         : baseAccent;
 
     // The title (and, on the available card, its body glyphs) use the state's
-    // LABEL colour, which differs from the border accent only for `available`:
-    // its light-purple fill/border is too low-contrast for a light-purple
-    // title on the white card, so the title uses dark purple instead
-    // (world-map.instructions.md, "Pin state"). For every live state
-    // labelColor == accent, so this is a no-op there.
+    // LABEL colour, not the border accent: the accent is a shape on the map,
+    // but the title is TEXT on `colorScheme.surface`, where the raw brand
+    // purple measures 4.2:1 in both themes — under WCAG AA for 13px/14px type
+    // (#8968). The three purple states resolve it through the theme instead
+    // (world-map.instructions.md, "Pin state"); `joinable` keeps its green, so
+    // there labelColor == accent and this stays a no-op.
+    final labelColor = state.labelColor(context);
     final titleColor = isFocused
-        ? WorldMapSelection.darken(state.labelColor)
-        : state.labelColor;
+        ? WorldMapSelection.darken(labelColor)
+        : labelColor;
 
     final cardButton = Semantics(
       label:
