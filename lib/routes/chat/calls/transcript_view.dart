@@ -386,6 +386,8 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
                               l10n,
                               recordingOriginMs:
                                   mergedRow?.content.mergedStartSfuMs,
+                              mergedRow: mergedRow,
+                              recordings: recordings,
                             );
 
                       return Column(
@@ -553,10 +555,29 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
   /// recording is on screen so the turn times are measured from it and a
   /// printed time is a position in that recording. Null -- no merge, or a merge
   /// that carries no start -- keeps the origin at the first turn placed.
+  ///
+  /// [mergedRow] and [recordings] answer a DIFFERENT question from
+  /// [recordingOriginMs]: not where the printed clock starts, but which turns
+  /// may carry a recording-timeline window at all (see [CallTurn.audioStartMs]).
+  /// That window is display-only and never feeds back into [CallTurn.at] or
+  /// the standalone order, so it is computed from its own inputs rather than
+  /// reusing [recordingOriginMs] -- [recordingOriginMs] is REFUSED (falls back
+  /// to the first-turn origin) whenever the recording claims to start after
+  /// somebody already spoke, a rule that protects the printed clock and must
+  /// not also silently borrow a substitute origin for the window; the window
+  /// has its own clamp for exactly that case instead. [recordings] is the same
+  /// per-device `pangea.call_audio` list the "Recordings" rows below are built
+  /// from -- needed because a [TranscriptHalf] carries no event id of its own
+  /// once `_assembleDevices` (`transcript_assembly.dart`) has folded one
+  /// sender's devices into it, so the only way to ask "is this half's audio
+  /// part of the merge" is by the sender's RECORDING event id, read off this
+  /// list, against [CallAudioMergedContent.sourceEventIds].
   List<CallTurn> _turnsOf(
     CallTranscript transcript,
     L10n l10n, {
     int? recordingOriginMs,
+    CallAudioMergedRecording? mergedRow,
+    List<CallAudioRecording> recordings = const [],
   }) {
     final me = widget.room.client.userID;
 
@@ -649,9 +670,99 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
         ? recordingOriginMs
         : firstPlaced;
 
-    return [
-      for (final entry in placed)
-        for (final segment in entry.half.segments)
+    // A SEPARATE origin from [start] above, deliberately, even though both
+    // read `mergedRow.content.mergedStartSfuMs` in production. [start] is
+    // REFUSED (falls back to [firstPlaced]) whenever the recording claims to
+    // begin after the first turn was placed -- a rule that protects the
+    // PRINTED elapsed time and the standalone ORDER, both governed and
+    // neither this window may perturb. The window below has no such
+    // fallback to protect, and does not need [start]'s: a too-late origin
+    // here simply clamps every window to its floor (see the loop below)
+    // rather than silently borrowing an origin that was refused for an
+    // unrelated reason.
+    final windowOriginMs = mergedRow?.content.mergedStartSfuMs;
+    final windowDurationMs = mergedRow?.content.durationMs;
+
+    // Which senders' audio this merge actually covers. A `TranscriptHalf`
+    // carries no event id of its own -- `_assembleDevices` folds however many
+    // of one sender's `pangea.call_transcript` events into one half and keeps
+    // none of their ids -- so the only id this reader can compare against
+    // [CallAudioMergedContent.sourceEventIds] is that sender's
+    // `pangea.call_audio` RECORDING event, read off [recordings]. A sender
+    // with no recording at all, or whose recording this merge does not name,
+    // is not covered: their turns get no window rather than one measured
+    // against audio that was never mixed in.
+    //
+    // SENDER-level, not event-level -- a real, currently open gap, and NOT
+    // one cleanly fenced off to a ">2 halves" future feature. A sender with
+    // TWO recordings -- two devices, a capture drop-and-rejoin, or the
+    // ordinary convergence race `CaptureElection`'s own doc describes (two of
+    // one account's devices can each start capturing before their rosters
+    // converge, one then stopping) -- where this merge names only one would
+    // still pass every one of that sender's turns here, including the
+    // excluded recording's. `TranscriptHalf` cannot narrow it further:
+    // `_assembleDevices` has already folded a sender's several recordings
+    // into one half before this method ever sees it, and kept no
+    // per-segment recording id to check against instead. `CaptureElection`
+    // does not guarantee a sender produces only one recording across a whole
+    // call -- its own convergence-race case above is two devices BOTH
+    // believing themselves elected before their rosters agree, so it is not
+    // a basis for calling this gap closed today. Precise, per-recording
+    // coverage needs identity this layer does not carry; it belongs with the
+    // >2-halves device-switch
+    // merge work, pangeachat/client#8878, which needs the same identity. No
+    // behaviour change here.
+    final mergeCoveredSenderIds = mergedRow == null
+        ? const <String>{}
+        : <String>{
+            for (final recording in recordings)
+              if (mergedRow.content.sourceEventIds.contains(recording.eventId))
+                recording.senderId,
+          };
+
+    // Whether [half]'s turns may carry a recording-timeline window at all.
+    // Every term is a reason the window would otherwise show a position
+    // nothing backs: no recording on screen, or one that never declared its
+    // own start; the transcript's two clocks never reconciled (asked exactly
+    // as the printed-time caveat above asks it); THIS half's own clock never
+    // compared to the SFU's, asked separately from `onOneClock` rather than
+    // folded into it -- [CallTranscript.clockShiftFor] answers zero for both
+    // "not reconciled" and "this half has no anchor", and treating either
+    // zero as a real shift would place a window on a clock this half never
+    // read; or this sender's audio simply is not part of the mix.
+    bool windowEligible(TranscriptHalf half) =>
+        windowOriginMs != null &&
+        windowDurationMs != null &&
+        onOneClock &&
+        half.clockAnchor != null &&
+        mergeCoveredSenderIds.contains(half.senderId);
+
+    final turns = <CallTurn>[];
+    for (final entry in placed) {
+      final eligible = windowEligible(entry.half);
+      for (final segment in entry.half.segments) {
+        // [audioStartMs] is this segment's own placement -- [atMs], never
+        // [orderKeyMs] -- on the recording's clock: a precise segment's
+        // window is a single instant ([spanMs] null makes [orderKeyMs] equal
+        // [atMs] already), and an approximate one's window OPENS at the
+        // earliest evidence of speech in its chunk, exactly where [atMs]
+        // already places it for the same reason `_timeKindOf` reads it.
+        // [audioEndMs] is [orderKeyMs] on that same clock: the end of the
+        // window an approximate turn's estimate could fall anywhere in, and
+        // equal to [audioStartMs] for a precise one. Neither ever substitutes
+        // one for the other -- that substitution is exactly the defect
+        // [orderKeyMs] exists to fix for [at] above, reintroduced here for a
+        // different timeline if the two were ever swapped.
+        int? audioStartMs;
+        int? audioEndMs;
+        if (eligible) {
+          final rawStart = segment.atMs! - entry.shift - windowOriginMs!;
+          audioStartMs = rawStart.clamp(0, windowDurationMs!);
+          final rawEnd = segment.orderKeyMs! - entry.shift - windowOriginMs;
+          audioEndMs = rawEnd.clamp(audioStartMs, windowDurationMs);
+        }
+
+        turns.add(
           CallTurn(
             senderId: entry.half.senderId,
             // The speaker's OWN name, not what the header will print. The
@@ -667,9 +778,66 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
             time: _timeKindOf(segment, entry.half, onOneClock),
             text: segment.text,
             langCode: entry.half.langCode,
+            audioStartMs: audioStartMs,
+            audioEndMs: audioEndMs,
+            identityKey: _turnIdentityKey(entry.half.senderId, segment),
           ),
-    ];
+        );
+      }
+    }
+    return turns;
   }
+
+  /// A [CallTurn.identityKey] for [segment] within [senderId]'s (already
+  /// device-merged) half.
+  ///
+  /// Built from [segment]'s own content rather than its position in
+  /// [TranscriptHalf.segments] -- which is what lets it survive a rebuild
+  /// that inserts, removes or reorders a SIBLING segment in the same half.
+  /// `atMs` is this segment's own absolute placement, untouched by anything
+  /// else the half comes to contain, so the same spoken moment keeps the
+  /// same key regardless of where it ends up in the list. A plain index
+  /// cannot promise that: `_assembleDevices` (`transcript_assembly.dart`)
+  /// PLACES a multi-device half's segments by position rather than
+  /// concatenating them, so a second device's half joining the same sender
+  /// -- a late recording finishing its own read after the dialog is already
+  /// open -- can insert a new segment ahead of ones already on screen and
+  /// shift their index, which would otherwise change their key and break a
+  /// [GlobalKey] keyed on it (karaoke auto-scroll/highlight, #8797's own
+  /// follow-on work).
+  ///
+  /// [senderId] is already unique across [CallTranscript.halves] --
+  /// `assembleTranscript` groups every candidate into a half by a `Set` of
+  /// sender ids, so no two halves in one transcript ever share one -- and
+  /// `atMs` is unique WITHIN one half in the ordinary case. Two segments can
+  /// still share an instant: one malformed chunk's shared fallback offset is
+  /// stamped on every segment cut from it (see `_speechBeganAt` in
+  /// `transcript_segments.dart`). [spanMs] -- null for a precise segment, the
+  /// chunk's own delta for an approximate one -- and the segment's own
+  /// [TranscriptSegment.text] break that tie before falling back to an
+  /// accident: two segments identical in text, position AND span would still
+  /// collide, but nothing built from their content could tell those two
+  /// apart either, since they are indistinguishable on the wire.
+  ///
+  /// The text is embedded VERBATIM, never hashed. A hash is lossy by
+  /// construction -- two DIFFERENT texts can share one `hashCode`, which
+  /// would silently reintroduce the same collision this key exists to rule
+  /// out, only rarer and undetectable. `#` cannot appear in [senderId] (a
+  /// Matrix user id) or in a formatted integer, so it never creates an
+  /// ambiguous boundary among the first three fields; the text is placed
+  /// LAST, where a `#` inside it can only ever be part of the text, never
+  /// mistaken for a field separator, because nothing reads this key back
+  /// apart again -- it is compared only for equality.
+  ///
+  /// [spanMs] is interpolated directly rather than defaulted to a sentinel
+  /// integer: Dart prints a null `int?` as the literal string `null`, which
+  /// no `int.toString()` output can ever equal, so a precise segment
+  /// (`spanMs` absent) can never collide with an approximate one however
+  /// that approximate segment's own span happens to be signed -- this holds
+  /// without having to lean on [TranscriptSegment.spanMs] never being
+  /// negative in practice.
+  String _turnIdentityKey(String senderId, TranscriptSegment segment) =>
+      '$senderId#${segment.atMs!}#${segment.spanMs}#${segment.text}';
 
   /// What may be said about one segment's moment.
   ///

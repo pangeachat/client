@@ -34,6 +34,13 @@ void main() {
     );
   });
 
+  // Unique per call by default -- most of the tests below build several
+  // turns from one sender, and a shared literal here would make every one of
+  // those fixtures violate the very uniqueness `CallTurn.identityKey` exists
+  // to promise, for a reason that has nothing to do with what any of them
+  // test.
+  var nextIdentity = 0;
+
   CallTurn turn({
     String senderId = '@a:server',
     String name = 'Alice',
@@ -48,6 +55,7 @@ void main() {
     at: at,
     time: time,
     text: text,
+    identityKey: 'turn-${nextIdentity++}',
   );
 
   Future<void> pump(WidgetTester tester, List<CallTurn> turns) async {
@@ -130,6 +138,7 @@ void main() {
         at: Duration.zero,
         text: 'hello',
         avatarUrl: Uri.parse('mxc://server/abc'),
+        identityKey: 'turn-${nextIdentity++}',
       ),
     ]);
 

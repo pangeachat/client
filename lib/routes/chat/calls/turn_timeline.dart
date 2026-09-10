@@ -99,6 +99,62 @@ class CallTurn {
   /// words can be tokenized for their word cards (#8797).
   final String? langCode;
 
+  /// This turn's window in the merged "Full call" recording -- a SEPARATE
+  /// timeline from [at], added display-only so playback can seek to and
+  /// highlight the turn currently playing. See `_turnsOf` in
+  /// `transcript_view.dart` for the exact arithmetic and for every condition
+  /// that leaves both of these null (no merged recording on screen, clocks
+  /// never reconciled, this turn's own half never anchored its clock, or this
+  /// sender's audio is not part of the mix).
+  ///
+  /// Both null together, always -- a turn either has a position in the
+  /// recording to seek and highlight against, or it does not.
+  /// [audioStartMs] is where a tap should seek playback to; [audioEndMs] is
+  /// the end of the window a chunk-bounded turn's estimate could fall
+  /// anywhere in. Neither ever changes [at] or its printed label, and
+  /// neither ever reorders the standalone list: this is read-only display
+  /// state layered on top of a turn whose own time and place are already
+  /// decided.
+  ///
+  /// Milliseconds from the merged recording's own start, already clamped to
+  /// `[0, durationMs]` (and `audioEndMs` further to `[audioStartMs,
+  /// durationMs]`) -- never a raw, possibly out-of-range offset.
+  final int? audioStartMs;
+  final int? audioEndMs;
+
+  /// Identifies this turn uniquely within the transcript it was built from,
+  /// stable across a rebuild that leaves the underlying segment unchanged --
+  /// what a [GlobalKey] for auto-scroll / karaoke highlighting is keyed on.
+  ///
+  /// NEITHER [senderId] alone NOR a position in either list will do. A
+  /// speaker who contributed from more than one device (see
+  /// `TranscriptHalf.deviceCount`) writes several turns under the one
+  /// [senderId], so that alone collides. And a position is not a fact about
+  /// the turn, it is a fact about everything else that happens to sit beside
+  /// it: a position in the SORTED list moves whenever another turn's [at]
+  /// changes, and a position in the half's OWN segment list moves whenever a
+  /// sibling segment is inserted or removed ahead of it -- a second device's
+  /// half joining the same sender after the dialog is already open, say.
+  /// Keying on either would change a turn's identity for a reason that has
+  /// nothing to do with the turn itself, which is exactly what breaks a
+  /// [GlobalKey]: Flutter reads a changed key as a DIFFERENT widget, not an
+  /// update to this one, so an in-flight highlight or scroll keyed on it
+  /// silently resets.
+  ///
+  /// So this is built from the turn's own content instead -- see
+  /// `_turnIdentityKey` in `transcript_view.dart` for the exact derivation.
+  /// [senderId] is already unique across the transcript's halves, since
+  /// `assembleTranscript` groups every candidate into `CallTranscript.halves`
+  /// by a `Set` of sender ids (`transcript_assembly.dart`), so one sender's
+  /// several devices are combined into ONE half before this widget ever sees
+  /// them, never kept as separate halves. Paired with the segment's own
+  /// `atMs` -- a fact about that segment alone, which does not move when
+  /// anything ELSE in the half does -- and, since two segments can share an
+  /// `atMs` (one malformed chunk's shared fallback offset), a tiebreak of the
+  /// segment's own span and its own text, both embedded verbatim -- see
+  /// `_turnIdentityKey` for why neither is reduced to a lossy digest.
+  final String identityKey;
+
   const CallTurn({
     required this.senderId,
     required this.name,
@@ -108,6 +164,9 @@ class CallTurn {
     this.time = TurnTime.exact,
     required this.text,
     this.langCode,
+    this.audioStartMs,
+    this.audioEndMs,
+    required this.identityKey,
   });
 }
 

@@ -1864,6 +1864,24 @@ void main() {
             locale: const Locale('en'),
             localizationsDelegates: L10n.localizationsDelegates,
             supportedLocales: L10n.supportedLocales,
+            // A fresh `UniqueKey` every call, deliberately, even though most
+            // callers pump only once. `showCallTranscript` opens a NEW dialog
+            // -- and therefore a NEW `CallTranscriptView` -- every time a
+            // learner taps a call card; it never stays mounted and gets
+            // handed updated `room`/`fetcher` props the way a persistent
+            // widget would. `pumpWidget` reconciles against whatever this
+            // helper last built, and without a key that differs, Flutter
+            // treats two calls with the same widget TYPE at the same
+            // position as one widget being UPDATED: it reuses the existing
+            // `State` and calls `didUpdateWidget`, never `initState` again --
+            // so `_load()` (which only `initState`/`_retry` invoke) never
+            // reruns, and a caller pumping a SECOND time with a different
+            // `fetcher` silently keeps rendering the FIRST call's data. A
+            // fresh key forces the unmount/remount a fresh dialog-open
+            // actually is, so a second `pumpWithRecordings` call in one test
+            // -- simulating a second load, not a live update of one -- truly
+            // re-reads.
+            key: UniqueKey(),
             home: CallTranscriptView(
               room: testRoom,
               callKey: _callKey,
@@ -1874,6 +1892,17 @@ void main() {
       );
       await tester.pumpAndSettle();
     }
+
+    /// The exact [CallTurn]s `_turnsOf` built for the render under test, read
+    /// straight off the [TurnTimeline] widget instance rather than re-derived
+    /// from rendered text -- `_turnsOf` is private to `transcript_view.dart`
+    /// and cannot be called from this file, and [CallTurn.audioStartMs] /
+    /// [CallTurn.audioEndMs] / [CallTurn.identityKey] render as no text of
+    /// their own yet (later agents consume them for seek/highlight). This is
+    /// the same technique the recordings tests above already use for
+    /// [AudioPlayerWidget]'s own fields (`players.map((p) => p.senderId)`).
+    List<CallTurn> renderedTurns(WidgetTester tester) =>
+        tester.widget<TurnTimeline>(find.byType(TurnTimeline)).turns;
 
     testWidgets('N recordings render N players, each labelled by its speaker', (
       tester,
@@ -2109,5 +2138,620 @@ void main() {
         reason: 'the suppressed merge must not sneak into the halves either',
       );
     });
+
+    testWidgets(
+      'CallTurn.at and turn order follow only the pre-existing re-anchor '
+      'formula -- the window fields never perturb it',
+      (tester) async {
+        // The exact scenario `orderKeyMs` exists to fix (see "an answer
+        // bounded to a chunk does not jump ahead of its question" above), run
+        // three times: no recordings at all, a merged row that declares no
+        // start of its own, and a merged row that DOES declare a start.
+        //
+        // The first two must agree exactly with each other -- neither a
+        // recording being absent nor one being present-but-mute about its
+        // own start may move a printed time or reorder a turn. The third
+        // DELIBERATELY does not agree with the first two: `_turnsOf` already
+        // re-anchors `at` to a declared start when one is on screen (see "the
+        // merged recording anchors the turn times to its own start" above,
+        // and `f39a11d96a`, which predates the window fields entirely). The
+        // claim this run actually pins is narrower than "unaffected" -- it is
+        // that the WINDOW computation added alongside `audioStartMs`/
+        // `audioEndMs` rides on top of that pre-existing re-anchor without
+        // perturbing it OR the order, even though both computations now read
+        // the same `mergedStartSfuMs` for different purposes.
+        final testRoom = room();
+        final halves = [
+          half(
+            _me,
+            texts: const ['si'],
+            atMs: [_callStart],
+            spanMs: const [45000],
+          ),
+          half(
+            _peer,
+            texts: const ['estas de acuerdo'],
+            atMs: [_callStart + 30000],
+          ),
+        ];
+
+        await pumpWithRecordings(tester, testRoom, serving(halves));
+        // The origin is 'estas de acuerdo''s own exact word (the smaller of
+        // the two vouched keys here, since this fixture -- unlike "a turn
+        // bounded to a chunk says 'by', and says why" above -- gives the peer
+        // only the one utterance), so it prints 0:00 and 'si' prints fifteen
+        // seconds later. Both stamps are asserted, not just 'si''s: a defect
+        // that moved the PRECISE turn's own `at` while preserving the 15s gap
+        // and the order between the two must not read as passing.
+        expect(find.text('0:00'), findsOneWidget);
+        expect(find.text('by 0:15'), findsOneWidget);
+        expect(
+          tester.getTopLeft(find.text('estas de acuerdo')).dy,
+          lessThan(tester.getTopLeft(find.text('si')).dy),
+          reason: 'the question must still come before the answer to it',
+        );
+
+        final meAudio = audioEvent(_me);
+        final peerAudio = audioEvent(_peer);
+
+        await pumpWithRecordings(
+          tester,
+          testRoom,
+          serving([
+            ...halves,
+            meAudio,
+            peerAudio,
+            // No mergedStartSfuMs: the origin must fall back to the
+            // first-placed turn exactly as it does with no recording at all.
+            mergedEvent(
+              _me,
+              sourceEventIds: [meAudio.eventId, peerAudio.eventId],
+            ),
+          ]),
+        );
+        expect(find.text('0:00'), findsOneWidget);
+        expect(find.text('by 0:15'), findsOneWidget);
+        expect(
+          tester.getTopLeft(find.text('estas de acuerdo')).dy,
+          lessThan(tester.getTopLeft(find.text('si')).dy),
+          reason:
+              'a merged row being on screen must not perturb the order '
+              'either',
+        );
+        // A no-start merge is not merely inert on `at`/order -- it must not
+        // make any turn window-eligible either, since there is no declared
+        // origin for the window to be measured from.
+        for (final turn in renderedTurns(tester)) {
+          expect(
+            turn.audioStartMs,
+            isNull,
+            reason: 'a merge with no declared start makes no turn eligible',
+          );
+          expect(turn.audioEndMs, isNull);
+        }
+
+        // Now WITH a declared start: `at` moves to the recording-relative
+        // values -- 'estas de acuerdo' from 0:00 to 0:30, 'si' from 'by 0:15'
+        // to 'by 0:45' -- exactly as "the merged recording anchors the turn
+        // times to its own start" above already establishes for a call with
+        // no window feature at all. What is new on THIS render is that the
+        // window fields are ALSO populated, which is what proves the two
+        // computations do not interfere with each other.
+        await pumpWithRecordings(
+          tester,
+          testRoom,
+          serving([
+            ...halves,
+            meAudio,
+            peerAudio,
+            mergedEvent(
+              _me,
+              sourceEventIds: [meAudio.eventId, peerAudio.eventId],
+              mergedStartSfuMs: _callStart,
+            ),
+          ]),
+        );
+        expect(
+          find.text('0:30'),
+          findsOneWidget,
+          reason:
+              're-anchored to the declared start, exactly as without the '
+              'window feature',
+        );
+        expect(find.text('by 0:45'), findsOneWidget);
+        expect(find.text('by 0:15'), findsNothing);
+        expect(
+          tester.getTopLeft(find.text('estas de acuerdo')).dy,
+          lessThan(tester.getTopLeft(find.text('si')).dy),
+          reason:
+              'the re-anchor moves both times together and reorders '
+              'neither turn',
+        );
+        for (final turn in renderedTurns(tester)) {
+          expect(
+            turn.audioStartMs,
+            isNotNull,
+            reason: 'a declared start makes both halves window-eligible',
+          );
+          expect(turn.audioEndMs, isNotNull);
+        }
+      },
+    );
+
+    testWidgets(
+      'the recording-timeline window is computed per turn and clamped to '
+      'the recording',
+      (tester) async {
+        final testRoom = room();
+        final meAudio = audioEvent(_me);
+        final peerAudio = audioEvent(_peer);
+        await pumpWithRecordings(
+          tester,
+          testRoom,
+          serving([
+            // 'early' sits BEFORE the recording's own start -- its raw
+            // window would be negative, which must clamp to zero rather than
+            // name a negative position to seek to.
+            half(
+              _me,
+              texts: const ['early', 'hello'],
+              captured: 2,
+              transcribed: 2,
+              atMs: [_callStart - 5000, _callStart + 1000],
+            ),
+            // 'aproximado' is chunk-bounded (a span is present): its window
+            // OPENS at its own atMs and only CLOSES at the chunk's end, so
+            // start and end differ. 'lateChunk's end runs past the
+            // recording's own duration (8000ms, `mergedEvent`'s fixed value)
+            // and must clamp down to it rather than name a position past the
+            // end of the audio.
+            half(
+              _peer,
+              texts: const ['aproximado', 'lateChunk'],
+              captured: 2,
+              transcribed: 2,
+              atMs: [_callStart + 500, _callStart + 5000],
+              spanMs: const [2500, 5000],
+            ),
+            meAudio,
+            peerAudio,
+            mergedEvent(
+              _me,
+              sourceEventIds: [meAudio.eventId, peerAudio.eventId],
+              mergedStartSfuMs: _callStart - 2000,
+            ),
+          ]),
+        );
+
+        CallTurn turnFor(String text) =>
+            renderedTurns(tester).singleWhere((t) => t.text == text);
+
+        final early = turnFor('early');
+        expect(
+          early.audioStartMs,
+          0,
+          reason: 'a negative raw start clamps to 0',
+        );
+        expect(early.audioEndMs, 0, reason: 'a precise turn: end equals start');
+
+        final hello = turnFor('hello');
+        expect(hello.audioStartMs, 3000);
+        expect(
+          hello.audioEndMs,
+          3000,
+          reason: 'a precise turn: end equals start',
+        );
+
+        final approx = turnFor('aproximado');
+        expect(
+          approx.audioStartMs,
+          2500,
+          reason: 'an approximate window opens at atMs, never orderKeyMs',
+        );
+        expect(
+          approx.audioEndMs,
+          5000,
+          reason: 'and closes at orderKeyMs -- the chunk end, not the estimate',
+        );
+
+        final late = turnFor('lateChunk');
+        expect(late.audioStartMs, 7000);
+        expect(
+          late.audioEndMs,
+          8000,
+          reason:
+              'a window end past the recording\'s own duration clamps down '
+              'to it',
+        );
+      },
+    );
+
+    testWidgets(
+      'the recording-timeline window subtracts the half\'s own clock shift, '
+      'not just the recording\'s origin',
+      (tester) async {
+        // Every fixture above runs its half's own clock exactly on the SFU's
+        // -- the default `anchor` moves nothing, see `half`'s own doc -- so
+        // the window math's `- entry.shift` term has been silently correct
+        // in every one of them, and a version that dropped it would have
+        // passed every one too. This half's DEVICE clock runs 3000ms AHEAD
+        // of the SFU's -- the ordinary case any real second device is in --
+        // so a version missing the shift is provably wrong here.
+        final testRoom = room();
+        final aheadBy3s = ClockAnchor(
+          sfuMs: _callStart - 2000,
+          deviceMs: _callStart + 1000,
+        );
+        final meAudio = audioEvent(_me);
+        await pumpWithRecordings(
+          tester,
+          testRoom,
+          serving([
+            half(
+              _me,
+              texts: const ['exact', 'approx'],
+              captured: 2,
+              transcribed: 2,
+              // Written on the DEVICE's own (fast) clock, exactly as the
+              // real writer does -- `atMs`/`spanMs` are never pre-corrected
+              // on the wire, see `_turnsOf`'s own doc.
+              atMs: [_callStart + 4000, _callStart + 5000],
+              spanMs: const [null, 2000],
+              anchor: aheadBy3s,
+            ),
+            meAudio,
+            mergedEvent(
+              _me,
+              sourceEventIds: [meAudio.eventId],
+              mergedStartSfuMs: _callStart - 2000,
+            ),
+          ]),
+        );
+
+        CallTurn turnFor(String text) =>
+            renderedTurns(tester).singleWhere((t) => t.text == text);
+
+        // Moved onto the SFU clock first -- device 4000/5000 less the
+        // 3000ms the device runs ahead leaves 1000/2000 on the SFU's own
+        // clock -- THEN measured from the recording's start, 2000ms before
+        // that: 3000/4000. Neither value exceeds the recording's 8000ms
+        // duration, so nothing here is also exercising the clamp.
+        final exact = turnFor('exact');
+        expect(
+          exact.audioStartMs,
+          3000,
+          reason: 'dropping "- entry.shift" would leave this at 6000',
+        );
+        expect(exact.audioEndMs, 3000, reason: 'a precise turn: end==start');
+
+        final approx = turnFor('approx');
+        expect(approx.audioStartMs, 4000);
+        expect(
+          approx.audioEndMs,
+          6000,
+          reason: 'the end term subtracts the same shift as the start does',
+        );
+      },
+    );
+
+    testWidgets(
+      'an atMs past the recording\'s own duration clamps audioStartMs '
+      'itself, not only audioEndMs',
+      (tester) async {
+        // The "clamped to the recording" fixture above already covers a
+        // window whose END runs past `durationMs` while its START is still
+        // inside it ('lateChunk'). This is the case that fixture never
+        // reaches: the segment's OWN `atMs` -- not just the far side of its
+        // span -- lands after the recording stops, so it is `audioStartMs`'s
+        // OWN `.clamp(0, windowDurationMs)` that has to catch it, not
+        // `audioEndMs`'s.
+        final testRoom = room();
+        final meAudio = audioEvent(_me);
+        await pumpWithRecordings(
+          tester,
+          testRoom,
+          serving([
+            // 12000ms into an 8000ms recording (`mergedEvent`'s fixed
+            // duration) -- past the end before this segment even opens.
+            half(_me, texts: const ['late'], atMs: [_callStart + 12000]),
+            meAudio,
+            mergedEvent(
+              _me,
+              sourceEventIds: [meAudio.eventId],
+              mergedStartSfuMs: _callStart,
+            ),
+          ]),
+        );
+
+        final late = renderedTurns(tester).single;
+        expect(
+          late.audioStartMs,
+          8000,
+          reason:
+              'a start past the recording\'s own duration clamps down to '
+              'it, the same as a start past it only at the far end of its '
+              'span',
+        );
+        expect(late.audioEndMs, 8000);
+      },
+    );
+
+    testWidgets('with no merged recording at all, no turn carries a window', (
+      tester,
+    ) async {
+      final testRoom = room();
+      await pumpWithRecordings(
+        tester,
+        testRoom,
+        serving([
+          half(_me, texts: const ['hello'], atMs: [_callStart]),
+          half(_peer, texts: const ['hi'], atMs: [_callStart + 1000]),
+        ]),
+      );
+
+      for (final turn in renderedTurns(tester)) {
+        expect(turn.audioStartMs, isNull);
+        expect(turn.audioEndMs, isNull);
+      }
+    });
+
+    testWidgets(
+      'unreconciled clocks null the window even with a merged recording on '
+      'screen',
+      (tester) async {
+        final testRoom = room();
+        final meAudio = audioEvent(_me);
+        final peerAudio = audioEvent(_peer);
+        await pumpWithRecordings(
+          tester,
+          testRoom,
+          serving([
+            half(_me, texts: const ['hello'], atMs: [_callStart], anchor: null),
+            half(_peer, texts: const ['hi'], atMs: [_callStart + 1000]),
+            meAudio,
+            peerAudio,
+            mergedEvent(
+              _me,
+              sourceEventIds: [meAudio.eventId, peerAudio.eventId],
+              mergedStartSfuMs: _callStart - 2000,
+            ),
+          ]),
+        );
+
+        for (final turn in renderedTurns(tester)) {
+          expect(turn.audioStartMs, isNull);
+          expect(turn.audioEndMs, isNull);
+        }
+      },
+    );
+
+    testWidgets(
+      'a half with no clock anchor of its own gets no window, even alone '
+      'on the call',
+      (tester) async {
+        // `turnsShareOneClock` is TRUE here -- only one voice on the call, so
+        // there is no second clock for it to disagree with (see "a call with
+        // ONE voice on it still shows its times" above) -- so this is only
+        // reachable at all if the window math also checks THIS speaking
+        // half's own anchor, separately from that whole-transcript fact.
+        // `clockShiftFor` answers zero for an anchorless half exactly as it
+        // does for an unreconciled one, so treating that zero as a real shift
+        // would print a confident window measured against a clock this half
+        // never read.
+        final testRoom = room();
+        final meAudio = audioEvent(_me);
+        await pumpWithRecordings(
+          tester,
+          testRoom,
+          serving([
+            half(_me, texts: const ['hello'], atMs: [_callStart], anchor: null),
+            half(
+              _peer,
+              texts: const [],
+              captured: 1,
+              transcribed: 0,
+              anchor: null,
+            ),
+            meAudio,
+            mergedEvent(
+              _me,
+              sourceEventIds: [meAudio.eventId],
+              mergedStartSfuMs: _callStart - 2000,
+            ),
+          ]),
+        );
+
+        final hello = renderedTurns(tester).single;
+        expect(hello.text, 'hello');
+        expect(hello.audioStartMs, isNull);
+        expect(hello.audioEndMs, isNull);
+      },
+    );
+
+    testWidgets(
+      'a half whose audio the merge does not name gets no window, even '
+      'though its clock is fine',
+      (tester) async {
+        final testRoom = room();
+        final meAudio = audioEvent(_me);
+        final peerAudio = audioEvent(_peer);
+        await pumpWithRecordings(
+          tester,
+          testRoom,
+          serving([
+            half(_me, texts: const ['hello'], atMs: [_callStart]),
+            half(_peer, texts: const ['hi'], atMs: [_callStart + 1000]),
+            meAudio,
+            peerAudio,
+            mergedEvent(
+              _me,
+              // Only OUR OWN recording is named as a source here -- the
+              // peer's audio was never mixed into this recording, even though
+              // their transcript half is otherwise perfectly reconciled.
+              sourceEventIds: [meAudio.eventId],
+              mergedStartSfuMs: _callStart - 2000,
+            ),
+          ]),
+        );
+
+        final turns = renderedTurns(tester);
+        final hello = turns.singleWhere((t) => t.text == 'hello');
+        final hi = turns.singleWhere((t) => t.text == 'hi');
+
+        expect(hello.audioStartMs, isNotNull);
+        expect(
+          hi.audioStartMs,
+          isNull,
+          reason: 'the merge never named this half\'s recording',
+        );
+        expect(hi.audioEndMs, isNull);
+      },
+    );
+
+    testWidgets(
+      'no two turns in a transcript share an identityKey, even when one '
+      'sender contributes from two devices',
+      (tester) async {
+        // The shape `CallTurn.identityKey` exists for: one account, two
+        // devices, both recorded and both transcribed -- see "a learner two
+        // devices read as ONE side of the conversation" above, which
+        // establishes that BOTH of this sender's turns survive assembly
+        // under the ONE senderId `assembleTranscript` gives them.
+        final testRoom = room();
+        await pumpWithRecordings(
+          tester,
+          testRoom,
+          serving([
+            half(
+              _me,
+              texts: const ['hola'],
+              atMs: [_callStart],
+              deviceId: 'PHONE',
+            ),
+            half(_peer, texts: const ['muy bien'], atMs: [_callStart + 3000]),
+            half(
+              _me,
+              texts: const ['adios'],
+              atMs: [_callStart + 6000],
+              deviceId: 'LAPTOP',
+            ),
+          ]),
+        );
+
+        final turns = renderedTurns(tester);
+        expect(turns, hasLength(3));
+        expect(
+          turns.map((t) => t.identityKey).toSet(),
+          hasLength(3),
+          reason:
+              'one sender wrote from two devices, and their turns must not '
+              'collide just because they share a senderId',
+        );
+      },
+    );
+
+    testWidgets(
+      'identityKey survives a second device\'s half joining the same sender '
+      'between loads',
+      (tester) async {
+        // `CallTranscriptView` reads a FINISHED call's transcript once per
+        // dialog-open (see `showCallTranscript`'s own doc) and has no
+        // live-update path that mutates a half's segment list mid-view, so
+        // the exact scenario this guards against -- a late half arriving and
+        // shifting an existing segment's INDEX within its (already
+        // device-merged) half -- is not reachable today. The key is still
+        // built to survive it as cheap insurance against a future
+        // live-update path, and the only way to prove that with REAL data is
+        // a second DEVICE of the same sender whose one segment sits EARLIER
+        // than both of the first device's: `_assembleDevices`
+        // (`transcript_assembly.dart`) merges several devices' segments by
+        // PLACING them on the shared clock, not by concatenating them (see
+        // its own `ordered.sort`), so the new segment is inserted at the
+        // FRONT of the merged list and the other two shift down by one
+        // index -- a real, reachable case, unlike hand-editing one event's
+        // content between two loads (which a homeserver would never permit;
+        // Matrix events are immutable, and a genuinely later segment always
+        // arrives as a new event).
+        //
+        // `identityKey` is meant to be a pure function of a segment's OWN
+        // content, so two loads of "the same" segment are the right way to
+        // ask whether its key moved -- whether or not the two loads share
+        // one `State`.
+        final testRoom = room();
+        final phone = half(
+          _me,
+          texts: const ['hola', 'adios'],
+          captured: 2,
+          transcribed: 2,
+          atMs: [_callStart, _callStart + 5000],
+          deviceId: 'PHONE',
+        );
+
+        await pumpWithRecordings(tester, testRoom, serving([phone]));
+        final before = {
+          for (final turn in renderedTurns(tester)) turn.text: turn.identityKey,
+        };
+
+        await pumpWithRecordings(
+          tester,
+          testRoom,
+          serving([
+            phone,
+            half(
+              _me,
+              texts: const ['early'],
+              captured: 1,
+              transcribed: 1,
+              atMs: [_callStart - 5000],
+              deviceId: 'LAPTOP',
+            ),
+          ]),
+        );
+        final afterTurns = renderedTurns(tester);
+        final after = {
+          for (final turn in afterTurns) turn.text: turn.identityKey,
+        };
+
+        // Pins the premise the rest of this test leans on: 'early' must have
+        // actually landed AHEAD of 'hola'/'adios' in the half's own segment
+        // list, which is what shifts their INDEX and is the only reason an
+        // index-based key would have moved. Without this, an assembly that
+        // instead APPENDED 'early' to the end would leave 'hola'/'adios' at
+        // their original indices, and the old, buggy `senderId#index` key
+        // would pass the two equality checks below for the wrong reason --
+        // never having been exercised at all.
+        expect(
+          afterTurns.map((t) => t.text).toList(),
+          ['early', 'hola', 'adios'],
+          reason:
+              '_assembleDevices places the second device\'s earlier segment '
+              'at the FRONT of the merged list, not at the end',
+        );
+        expect(
+          after.keys,
+          containsAll(['early', 'hola', 'adios']),
+          reason: 'the second device\'s segment must still render as a turn',
+        );
+        expect(
+          after['hola'],
+          before['hola'],
+          reason:
+              'the merge moved "hola" from index 0 to 1; its identity must '
+              'not have moved with it',
+        );
+        expect(
+          after['adios'],
+          before['adios'],
+          reason: 'the same, one position further down the merged list',
+        );
+        expect(
+          after.values.toSet(),
+          hasLength(3),
+          reason:
+              '"early" still needs its own key, distinct from the two it '
+              'now sits in front of',
+        );
+      },
+    );
   });
 }
