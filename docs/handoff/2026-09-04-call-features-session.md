@@ -1398,3 +1398,39 @@ until the design is Codex-green.
   loading states in transcript_view (spinner while peer half / merge pending, error only after timeout);
   (4) recordings UI redesign (sticky Full-call bar, expandable per-device, Mobbin research -- MCP needs
   re-auth); (5) karaoke auto-scroll+highlight. Then whole-branch cold-Codex-green + owner test -> PR2 on go.
+
+## 2026-09-10 (cont) — item 2 ordering ROOT-CAUSED with real data; 2+3+4+5 folded into one design-first UI chunk
+- Pulled the newest real call's events from local Synapse (learner+calltester room !HgavfyvZrMpYhLFMLt).
+  Newest merged call: phone offsetMs(dev-sfu)=1435 fileStartSfuMs=...655667(=merged 0:00);
+  laptop offsetMs=4 fileStartSfuMs=...655731. A laptop turn: at_ms=...663456 span=3652 -> audio
+  plays 0:07.8 but transcript shows 0:11.4 (orderKeyMs=at_ms+span = chunk END).
+- ROOT CAUSE of "transcript off from recording": NOT a clock bug. `at_ms - offsetMs` lands each word
+  on the SFU clock exactly where the recording places it (both anchor halves ARE on the wire; earlier
+  session's "device_joined_at_ms missing" was a dump-filter mistake). The skew is that APPROXIMATE turns
+  are placed at `orderKeyMs = at_ms + at_span_ms` (chunk END, transcript_view.dart:665 CallTurn.at) to
+  avoid answer-before-question in the STANDALONE list, but the recording plays each turn at its START
+  (at_ms). Precise (`m:ss`) turns align; approximate (`by m:ss`) lag by their span (here 3.65s).
+  f39a11d96a fixed only the origin, so the per-turn lag remained.
+- REFRAME: item 2 (ordering vs recording) and item 5 (karaoke) are ONE mechanism — place each turn on
+  the recording timeline by its audio window [at_ms, at_ms+span] (anchored at START), then highlight +
+  auto-scroll the turn whose window holds the playhead; tap-to-seek. They render in the widget item 4
+  redesigns, and item 3 (loading states) lives there too. So 2+3+4+5 = ONE design-first UI chunk.
+- Design-language anchors found: transcript is `TurnTimeline`; recordings render at the BOTTOM today as
+  name + `AudioPlayerWidget` (lib/routes/chat/audio_player.dart, 40-wave scrubber). Redesign: sticky
+  Full-call bar on TOP + expandable per-device rows, reuse AudioPlayerWidget, keep design language.
+- USER DIRECTIVES this turn: (a) one design-first UI chunk; (b) do Mobbin MCP research + web research on
+  recording placement/features/UI; (c) mirror what the client already does, keep design language same;
+  (d) both the item-1 fix AND the new feature are done BY AGENTS that run Codex gates within to green,
+  then I (orchestrator) run a COLD Codex green on top, then report. NO code lands before the design is
+  approved by the owner.
+- Mobbin MCP: still NOT exposing tools this session (ToolSearch "mobbin" -> none). Terminal auth done but
+  not propagated here; needs a chat reopen on owner's end. Proceeding with client-internal + web research
+  now; fold Mobbin screens in when it reconnects.
+- IN FLIGHT: Explore agent a46c8a3c5890b8d5e (mapping client UI patterns: AudioPlayerWidget internals,
+  expand/collapse, sticky headers, loading/skeleton, list-highlight+ensureVisible, theme tokens).
+  item-1 Codex gate: bg codex exec (task bkxfj1har), gate dir scratchpad/gate-item1 (FACTS+diff+src),
+  verdict -> scratchpad/gate-item1-verdict.txt. Awaiting both.
+- NEXT: on Explore -> draft the UI design spec (sticky Full-call bar, expandable per-device rows,
+  recording-aligned turns, loading states, karaoke highlight/auto-scroll/tap-seek) + draft the governed
+  doc section (voice-video-calls "What a turn's time promises") for owner review; Codex-gate the DESIGN
+  to green; gist; WAIT for owner go; then agents build+self-gate; then my cold green; then report.
