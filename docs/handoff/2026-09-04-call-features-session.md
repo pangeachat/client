@@ -1366,3 +1366,35 @@ until the design is Codex-green.
 - Stack + spa_server on :8091 left UP for owner's own testing (idle = light; overload was disk, since
   reclaimed). Tear down when owner is done. PR2 branch now: cues(#8888)+tokenize(#8797)+record+merge+
   player+wiring+this fix; rebase on main after #8888/#8797 land so PR2 shows only its delta.
+
+## 2026-09-10 — mute-at-end drop ROOT-CAUSED + FIXED (intermittent tap-death race)
+- SYMPTOM (owner, real call): muted on phone then hung up -> phone's half did not upload; laptop's did.
+  A call right after WITHOUT muting uploaded both; a later mute call ALSO uploaded. Intermittent.
+- Ruled OUT deterministic mute: the `REPRO mute-at-end` unit test carries `wasCarryingBeforeLastStop`
+  == true (pure mute does not end the audio run). So the drop is a RACE, not the mute path itself.
+- ROOT CAUSE (call_capture.dart): the tapped mic track can END a beat before the explicit hangup (mute
+  calls setMicrophoneEnabled(false), which on device can end the track; or teardown ends it early).
+  That fires `_onTapDied`, which issued a bare `stop()` == settle-shaped + `preserveCarrier:false` (a
+  HANDOVER shape). `_stop` writes `wasCarryingBeforeLastStop` only on `!settleDeliveries` (hangup) OR
+  the `preserveCarrier && _running && !_discardOnStop` latch -- the tap-death stop hit NEITHER, and tore
+  the recorder down (`_running=false`, `_chunker=null`, `_detach=null`). The hangup's own
+  stop(settleDeliveries:false) then found everything idle, hit the early-return (line ~1618), and NEVER
+  wrote the snapshot. It stayed false -> call_audio_recorder.dart:968 gate "not carrying" -> half dropped.
+  Intermittent because it only bites when the tap dies BEFORE the hangup.
+- SAME CLASS as the peer-drop-pause bug that group already fixed: a settle-shaped stop that is NOT a
+  sibling handover must latch the carrier. Tap-death (`_onTapDied`) was the one caller that missed it.
+- FIX: `_onTapDied` now `stop(preserveCarrier: true)`. A tap death is not a handover (no sibling took
+  the stretch), so this device must publish its half; `!_discardOnStop` still leaves a genuine handover
+  uncarried (no double-upload). Generalized 3 doc comments from "peer-drop pause" to cover both callers.
+  One-line behavioural change; the rest is documentation.
+- TDD/PROOF: added group 'a tap that dies while this device is the sole carrier' in call_capture_test.dart
+  (2 tests). Repro test RED before fix (Actual: false), GREEN after; no-regress (tap-death DURING a
+  handover) stays false both ways. Full calls bucket: +1685 All passed, exit 0. No cross-file regression.
+- Enumerated all capture stop() callers for the class: reconcile(982, correct), hangup(2617, reads
+  _running), finish(1785, reads _running), _onTapDied(1731, WAS the bug). call_audio_tap.dart:376
+  `capture.stop()` is a DIFFERENT object (platform tap), not the service -- not in scope.
+- STILL QUEUED (owner's order): (2) transcript->recording-timeline (already partly done f39a11d96a; owner
+  wants transcripts generated/aligned to the recording clock -- fixes ordering + enables karaoke); (3)
+  loading states in transcript_view (spinner while peer half / merge pending, error only after timeout);
+  (4) recordings UI redesign (sticky Full-call bar, expandable per-device, Mobbin research -- MCP needs
+  re-auth); (5) karaoke auto-scroll+highlight. Then whole-branch cold-Codex-green + owner test -> PR2 on go.
