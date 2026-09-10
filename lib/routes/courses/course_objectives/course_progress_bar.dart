@@ -59,7 +59,7 @@ class ProgressBarRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final summary = this.summary;
-    final gold = AppConfig.goldByTheme(context);
+    final gold = AppConfig.goldMarkByTheme(context);
     final fraction = (summary?.fraction ?? 0.0).clamp(0.0, 1.0);
     final label = summary == null
         ? null
