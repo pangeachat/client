@@ -1486,3 +1486,21 @@ until the design is Codex-green.
   loading machine needs a real expiry timer not just participants; player won't fit 56px toolbar + lazy
   slivers break ensureVisible; lock printed-label/order invariance tests; a11y/RTL/reduced-motion/gesture.
   Revising the spec (v2) + re-gate. No owner decision needed on design.
+
+## 2026-09-10 (cont) — item-1 SCOPED to v1 (owner chose B); spec v2 folds the 6 design-gate points
+- Owner decision: ship the v1-correct mute-at-end fix; defer the carrier/generation-ownership redesign
+  to #8878. Added a KNOWN-LIMIT code comment at `_onTapDied` (commit e54141eeef) documenting the
+  mid-call 2-device-handover double-upload + the #8878 deferral. Final v1-scoped cold gate running
+  (bbgu5hemv, dir gate-item1c) -- asks correctness WITHIN v1 scope + whether the deferral is honest.
+- Design spec v2 (committed): folded all 6 design-gate findings -- (1) null-not-shift0 for unreconciled/
+  not-in-merge halves + precise-turn active-until-next-start window + clamp-to-0; (2) CallPlaybackController
+  observes voiceMessageEventId, clears on owner change, serializes load->seek->play, cancels subs on
+  dispose; (3) loading machine: stamped graceStartedAt + bounded ~30s Timer + merge/half subscription +
+  retry, participants only a hint; (4) custom SliverPersistentHeader fixed extent (not a 56px SliverAppBar),
+  per-device rows a SEPARATE sliver, turns NON-LAZY so ensureVisible works; (5) before/after invariance
+  test locking CallTurn.at + order; (6) accessible seek affordance on the time/avatar (not whole-bubble,
+  keeps text selection), non-color active accent bar, reduced-motion, RTL, identity-keyed GlobalKeys,
+  no-notify-after-dispose. Resolved D1 (grace timer) + D4 (explicit affordance). Design re-gate running
+  (bh1ksctsw, dir gate-design2).
+- NEXT: on both gates green -> present item-1 done + spec-approved to owner for the GO; then dispatch the
+  6 build agents (each self-gates), orchestrator cold-greens the delta, owner review. No build before GO.
