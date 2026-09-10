@@ -1535,3 +1535,24 @@ until the design is Codex-green.
   6 = doc draft held for review. Orchestrator cold-gates EACH agent's diff; RED -> root-cause +
   SendMessage the same agent -> re-gate -> green; then one final cold green over the delta; then owner
   review. No PR without explicit go. PR2 rebase on main after #8888/#8797 land.
+
+## 2026-09-10 (cont) — BUILD started; agent 1 (timeline model) cold-gated -> fixer dispatched
+- Agent 1 (a25a230abcf744c4a, sonnet) delivered the recording-timeline model: CallTurn gains
+  audioStartMs/audioEndMs + identityKey; _turnsOf computes the window (atMs-shift-origin clamped;
+  orderKeyMs for end) gated by windowEligible; mutation-proven tests; 89 green, format+analyze clean.
+  UNCOMMITTED (dispatched before I re-read subagent-dispatch-protocol; no self-gate/commit).
+- My cold gate, split behaviour (bc1vhe12q) + pinning (bm4alvbs9), both ISSUES-FOUND, GATE-SOFTENING no:
+  - Q1 clamp/`!` type error = FALSE POSITIVE (verified: `flutter analyze` clean; Dart promotes after `!`,
+    int.clamp(int,int)->int). Q5 required-identityKey = handled (all 3 sites updated). Q2 null-safety CORRECT.
+  - Q4 identity STABILITY (real): senderId#index shifts if the segment list grows/reorders mid-playback ->
+    a turn's GlobalKey changes -> karaoke scroll/highlight breaks. Fix: stable per-segment identity (atMs+tiebreak).
+  - Q3 sender-level vs event-level coverage (real, v2-only): a sender with 2 recordings + merge names one ->
+    all its turns get windows incl. the excluded device. v1 (one device/account) = exact; TranscriptHalf has
+    no per-segment id so event-level is impossible here -> scope to #8878 with a comment.
+  - Pinning gaps: no non-zero clock-shift case (shift term unpinned), no upper-clamp case, no null-window
+    assertion for the no-start merge, and the invariance test is misframed (it sidesteps f39a11d96a's
+    intentional `at` re-anchor by using a no-start merge; must reframe around a start-bearing merge).
+- FIXER re-spawned (a937f8c931cc78d5d, sonnet) with all findings root-caused + false-positives flagged,
+  under the FULL protocol: self-gate with codex to CORRECT/softening:no, then COMMIT (no push/PR) to
+  satvik/call-features-combined. On its return I re-cold-gate (behaviour+pinning). SendMessage-to-subagent
+  is NOT exposed here, so "on red -> message the agent" is implemented as re-spawn-with-artifacts.
