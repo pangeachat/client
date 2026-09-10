@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "સૂચન",
     "errorFetchingWordInfo": "શબ્દની માહિતી મેળવવામાં નિષ્ફળ",
     "contentCreatedBy": "આના દ્વારા બનાવવામાં આવ્યું",
-    "coursePreview": "કોર્સનું પૂર્વાવલોકન"
+    "coursePreview": "કોર્સનું પૂર્વાવલોકન",
+    "numActivities": "{count, plural, =1{1 પ્રવૃત્તિ} other{{count} પ્રવૃત્તિઓ}}"
 }

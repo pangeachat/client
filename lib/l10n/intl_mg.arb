@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "Soso-kevitra",
     "errorFetchingWordInfo": "Tsy nahomby ny fakana ny mombamomba ny teny",
     "contentCreatedBy": "Noforonin'i",
-    "coursePreview": "Topi-maso amin'ny taranja"
+    "coursePreview": "Topi-maso amin'ny taranja",
+    "numActivities": "{count, plural, =1{Hetsika 1} other{Hetsika {count}}}"
 }

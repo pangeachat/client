@@ -9946,5 +9946,6 @@
     "writingAssistanceSuggestion": "Ehdotus",
     "errorFetchingWordInfo": "Sanan tietojen nouto epäonnistui",
     "contentCreatedBy": "Luonut",
-    "coursePreview": "Kurssin esikatselu"
+    "coursePreview": "Kurssin esikatselu",
+    "numActivities": "{count, plural, =1{1 aktiviteetti} other{{count} aktiviteettia}}"
 }

@@ -10541,5 +10541,6 @@
     "writingAssistanceSuggestion": "सुझाव",
     "errorFetchingWordInfo": "शब्द की जानकारी लाने में विफल रहा",
     "contentCreatedBy": "इसके द्वारा बनाया गया",
-    "coursePreview": "कोर्स का पूर्वावलोकन"
+    "coursePreview": "कोर्स का पूर्वावलोकन",
+    "numActivities": "{count, plural, =1{1 गतिविधि} other{{count} गतिविधियां}}"
 }

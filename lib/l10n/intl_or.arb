@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "ପରାମର୍ଶ",
     "errorFetchingWordInfo": "ଶବ୍ଦ ସୂଚନା ଆଣିବାରେ ବିଫଳ ହେଲା",
     "contentCreatedBy": "ଏହାଙ୍କ ଦ୍ୱାରା ତିଆରି ହୋଇଛି",
-    "coursePreview": "କୋର୍ସର ପୂର୍ବାବଲୋକନ"
+    "coursePreview": "କୋର୍ସର ପୂର୍ବାବଲୋକନ",
+    "numActivities": "{count, plural, =1{୧ଟି କାର୍ଯ୍ୟକଳାପ} other{{count}ଟି କାର୍ଯ୍ୟକଳାପ}}"
 }

@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "পৰামৰ্শ",
     "errorFetchingWordInfo": "শব্দৰ তথ্য আহৰণ কৰাত ব্যৰ্থ হৈছে",
     "contentCreatedBy": "দ্বাৰা সৃষ্টি কৰা হৈছে",
-    "coursePreview": "পাঠ্যক্ৰমৰ পূৰ্বলোকন"
+    "coursePreview": "পাঠ্যক্ৰমৰ পূৰ্বলোকন",
+    "numActivities": "{count, plural, =1{1 কাৰ্য্যকলাপ} other{{count} কাৰ্য্যকলাপ}}"
 }

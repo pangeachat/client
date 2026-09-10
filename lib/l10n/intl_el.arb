@@ -10784,5 +10784,6 @@
     "writingAssistanceSuggestion": "Πρόταση",
     "errorFetchingWordInfo": "Αποτυχία ανάκτησης πληροφοριών λέξης",
     "contentCreatedBy": "Δημιουργήθηκε από",
-    "coursePreview": "Προεπισκόπηση μαθήματος"
+    "coursePreview": "Προεπισκόπηση μαθήματος",
+    "numActivities": "{count, plural, =1{1 δραστηριότητα} other{{count} δραστηριότητες}}"
 }

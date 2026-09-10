@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "ꯁल्लाह",
     "errorFetchingWordInfo": "ꯋꯥꯔꯗ ꯏꯟꯐꯣ ꯄꯨꯊꯣꯛꯄꯗ ꯑꯔꯣꯟꯕ",
     "contentCreatedBy": "শেমখিবশিং",
-    "coursePreview": "কোর্স প্রিভিউ"
+    "coursePreview": "কোর্স প্রিভিউ",
+    "numActivities": "{count, plural, =1{1 থবক} other{{count} থবক}}"
 }

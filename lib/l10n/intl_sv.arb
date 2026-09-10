@@ -10427,5 +10427,6 @@
     "writingAssistanceSuggestion": "Förslag",
     "errorFetchingWordInfo": "Kunde inte hämta ordinformation",
     "contentCreatedBy": "Skapad av",
-    "coursePreview": "Kursförhandsvisning"
+    "coursePreview": "Kursförhandsvisning",
+    "numActivities": "{count, plural, =1{1 aktivitet} other{{count} aktiviteter}}"
 }

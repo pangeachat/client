@@ -9909,5 +9909,6 @@
     "writingAssistanceSuggestion": "建议",
     "errorFetchingWordInfo": "获取单词信息失败",
     "contentCreatedBy": "创建者",
-    "coursePreview": "课程预览"
+    "coursePreview": "课程预览",
+    "numActivities": "{count, plural, =1{1 项活动} other{{count} 项活动}}"
 }

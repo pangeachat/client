@@ -7201,5 +7201,6 @@
     "writingAssistanceSuggestion": "Gợi ý",
     "errorFetchingWordInfo": "Không thể tìm nạp thông tin từ",
     "contentCreatedBy": "Được tạo bởi",
-    "coursePreview": "Xem trước khóa học"
+    "coursePreview": "Xem trước khóa học",
+    "numActivities": "{count, plural, =1{1 hoạt động} other{{count} hoạt động}}"
 }

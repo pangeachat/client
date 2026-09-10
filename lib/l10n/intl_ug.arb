@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "تەكلىپ",
     "errorFetchingWordInfo": "سۆز ئۇچۇرىنى ئېلىش مەغلۇپ بولدى",
     "contentCreatedBy": "قۇرغۇچى",
-    "coursePreview": "دېرس ئالدىن كۆرۈش"
+    "coursePreview": "دېرس ئالدىن كۆرۈش",
+    "numActivities": "{count, plural, =1{1 پائالىيەت} other{{count} پائالىيەت}}"
 }

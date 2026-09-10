@@ -10345,5 +10345,6 @@
     "writingAssistanceSuggestion": "Prijedlog",
     "errorFetchingWordInfo": "Dohvaćanje informacija o riječi nije uspjelo",
     "contentCreatedBy": "Izradio",
-    "coursePreview": "Pregled tečaja"
+    "coursePreview": "Pregled tečaja",
+    "numActivities": "{count, plural, =1{1 aktivnost} other{{count} aktivnosti}}"
 }

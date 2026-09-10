@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "Manaʻo kōkua",
     "errorFetchingWordInfo": "ʻAʻole i loaʻa ka ʻike huaʻōlelo",
     "contentCreatedBy": "Hana ʻia e",
-    "coursePreview": "Nānā mua papa"
+    "coursePreview": "Nānā mua papa",
+    "numActivities": "{count, plural, =1{1 hana} other{{count} mau hana}}"
 }

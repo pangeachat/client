@@ -10854,5 +10854,6 @@
     "writingAssistanceSuggestion": "Sugesto",
     "errorFetchingWordInfo": "Malsukcesis preni vortinformon",
     "contentCreatedBy": "Kreita de",
-    "coursePreview": "Antaŭrigardo de la kurso"
+    "coursePreview": "Antaŭrigardo de la kurso",
+    "numActivities": "{count, plural, =1{1 agado} other{{count} agadoj}}"
 }

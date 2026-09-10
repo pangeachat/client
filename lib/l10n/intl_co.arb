@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "Suggerimentu",
     "errorFetchingWordInfo": "Fallimentu di ricuperà l'infurmazione di a parolla",
     "contentCreatedBy": "Creatu da",
-    "coursePreview": "Anticipu di u corsu"
+    "coursePreview": "Anticipu di u corsu",
+    "numActivities": "{count, plural, =1{1 attività} other{{count} attività}}"
 }

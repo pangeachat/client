@@ -9920,5 +9920,6 @@
     "writingAssistanceSuggestion": "Moladh",
     "errorFetchingWordInfo": "Theip ar fhaisnéis focal a fháil",
     "contentCreatedBy": "Cruthaithe ag",
-    "coursePreview": "Réamhamharc ar an gcúrsa"
+    "coursePreview": "Réamhamharc ar an gcúrsa",
+    "numActivities": "{count, plural, =1{1 ghníomhaíocht} other{{count} ghníomhaíocht}}"
 }

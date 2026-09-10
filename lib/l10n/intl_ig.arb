@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "Nkwanye",
     "errorFetchingWordInfo": "Enweghị ike iwepụta ozi okwu",
     "contentCreatedBy": "Onye kere ya",
-    "coursePreview": "Nlele mmalite ọmụmụ ihe"
+    "coursePreview": "Nlele mmalite ọmụmụ ihe",
+    "numActivities": "{count, plural, =1{1 ọrụ} other{{count} ọrụ}}"
 }

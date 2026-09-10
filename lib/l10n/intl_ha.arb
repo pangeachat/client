@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "Shawara",
     "errorFetchingWordInfo": "An kasa samun bayanan kalmar",
     "contentCreatedBy": "Wanda ya kirkira",
-    "coursePreview": "Samfoti na darasi"
+    "coursePreview": "Samfoti na darasi",
+    "numActivities": "{count, plural, =1{Aiki 1} other{Ayyuka {count}}}"
 }

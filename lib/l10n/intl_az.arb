@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "Təklif",
     "errorFetchingWordInfo": "Söz məlumatı əldə edilmədi",
     "contentCreatedBy": "Yaradılıb",
-    "coursePreview": "Kurs önizləməsi"
+    "coursePreview": "Kurs önizləməsi",
+    "numActivities": "{count, plural, =1{1 fəaliyyət} other{{count} fəaliyyət}}"
 }

@@ -9906,5 +9906,6 @@
     "writingAssistanceSuggestion": "Soovitus",
     "errorFetchingWordInfo": "Sõnateabe hankimine ebaõnnestus",
     "contentCreatedBy": "Looja",
-    "coursePreview": "Kursuse eelvaade"
+    "coursePreview": "Kursuse eelvaade",
+    "numActivities": "{count, plural, =1{1 tegevus} other{{count} tegevust}}"
 }

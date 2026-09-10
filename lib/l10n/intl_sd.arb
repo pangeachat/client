@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "تجويز",
     "errorFetchingWordInfo": "لفظ جي معلومات حاصل ڪرڻ ۾ ناڪامي ٿي",
     "contentCreatedBy": "ٺاهيندڙ",
-    "coursePreview": "ڪورس جو ڏيک"
+    "coursePreview": "ڪورس جو ڏيک",
+    "numActivities": "{count, plural, =1{1 سرگرمي} other{{count} سرگرميون}}"
 }

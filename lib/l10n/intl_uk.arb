@@ -9909,5 +9909,6 @@
     "writingAssistanceSuggestion": "Пропозиція",
     "errorFetchingWordInfo": "Не вдалося отримати інформацію про слово",
     "contentCreatedBy": "Створено",
-    "coursePreview": "Попередній перегляд курсу"
+    "coursePreview": "Попередній перегляд курсу",
+    "numActivities": "{count, plural, =1{1 активність} other{{count} активності}}"
 }

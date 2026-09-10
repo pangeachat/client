@@ -9909,5 +9909,6 @@
     "writingAssistanceSuggestion": "Suxestión",
     "errorFetchingWordInfo": "Produciuse un erro ao obter a información da palabra",
     "contentCreatedBy": "Creado por",
-    "coursePreview": "Previsualización do curso"
+    "coursePreview": "Previsualización do curso",
+    "numActivities": "{count, plural, =1{1 actividade} other{{count} actividades}}"
 }

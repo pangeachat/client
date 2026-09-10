@@ -10012,5 +10012,6 @@
     "writingAssistanceSuggestion": "Javaslat",
     "errorFetchingWordInfo": "A szóadatok lekérése sikertelen",
     "contentCreatedBy": "Létrehozta",
-    "coursePreview": "Tanfolyam előnézete"
+    "coursePreview": "Tanfolyam előnézete",
+    "numActivities": "{count, plural, =1{1 tevékenység} other{{count} tevékenység}}"
 }

@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "Awgrym",
     "errorFetchingWordInfo": "Methwyd â nôl gwybodaeth am y gair",
     "contentCreatedBy": "Crëwyd gan",
-    "coursePreview": "Rhagolwg cwrs"
+    "coursePreview": "Rhagolwg cwrs",
+    "numActivities": "{count, plural, =1{1 gweithgaredd} other{{count} gweithgaredd}}"
 }

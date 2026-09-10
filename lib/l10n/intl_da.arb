@@ -10829,5 +10829,6 @@
     "writingAssistanceSuggestion": "Forslag",
     "errorFetchingWordInfo": "Kunne ikke hente ordinfo",
     "contentCreatedBy": "Oprettet af",
-    "coursePreview": "Forhåndsvisning af kursus"
+    "coursePreview": "Forhåndsvisning af kursus",
+    "numActivities": "{count, plural, =1{1 aktivitet} other{{count} aktiviteter}}"
 }

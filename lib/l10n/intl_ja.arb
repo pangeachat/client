@@ -10678,5 +10678,6 @@
     "writingAssistanceSuggestion": "提案",
     "errorFetchingWordInfo": "単語情報の取得に失敗しました",
     "contentCreatedBy": "作成者",
-    "coursePreview": "コースプレビュー"
+    "coursePreview": "コースプレビュー",
+    "numActivities": "{count, plural, =1{1件のアクティビティ} other{{count}件のアクティビティ}}"
 }

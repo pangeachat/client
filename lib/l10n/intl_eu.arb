@@ -9909,5 +9909,6 @@
     "writingAssistanceSuggestion": "Iradokizuna",
     "errorFetchingWordInfo": "Ezin izan da hitzaren informazioa eskuratu",
     "contentCreatedBy": "Nork sortua",
-    "coursePreview": "Ikastaroaren aurrebista"
+    "coursePreview": "Ikastaroaren aurrebista",
+    "numActivities": "{count, plural, =1{jarduera 1} other{{count} jarduera}}"
 }

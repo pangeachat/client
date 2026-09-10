@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "Suggestje",
     "errorFetchingWordInfo": "Net slagge om wurdynformaasje op te heljen",
     "contentCreatedBy": "Makke troch",
-    "coursePreview": "Foarbyld fan de kursus"
+    "coursePreview": "Foarbyld fan de kursus",
+    "numActivities": "{count, plural, =1{1 aktiviteit} other{{count} aktiviteiten}}"
 }

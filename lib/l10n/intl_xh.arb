@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "Ingcebiso",
     "errorFetchingWordInfo": "Ayiphumelelanga ukufumana ulwazi lwegama",
     "contentCreatedBy": "Yenziwe ngu",
-    "coursePreview": "Ujongo lwekhosi"
+    "coursePreview": "Ujongo lwekhosi",
+    "numActivities": "{count, plural, =1{1 umsebenzi} other{{count} imisebenzi}}"
 }

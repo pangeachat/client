@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "ਸੁਝਾਅ",
     "errorFetchingWordInfo": "ਸ਼ਬਦ ਦੀ ਜਾਣਕਾਰੀ ਪ੍ਰਾਪਤ ਕਰਨ ਵਿੱਚ ਅਸਫਲ",
     "contentCreatedBy": "ਇਸ ਦੁਆਰਾ ਬਣਾਇਆ ਗਿਆ",
-    "coursePreview": "ਕੋਰਸ ਝਲਕ"
+    "coursePreview": "ਕੋਰਸ ਝਲਕ",
+    "numActivities": "{count, plural, =1{1 ਗਤੀਵਿਧੀ} other{{count} ਗਤੀਵਿਧੀਆਂ}}"
 }

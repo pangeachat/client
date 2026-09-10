@@ -10641,5 +10641,6 @@
     "writingAssistanceSuggestion": "Sugestie",
     "errorFetchingWordInfo": "Nu s-au putut prelua informațiile despre cuvânt",
     "contentCreatedBy": "Creat de",
-    "coursePreview": "Previzualizare curs"
+    "coursePreview": "Previzualizare curs",
+    "numActivities": "{count, plural, =1{1 activitate} other{{count} activități}}"
 }

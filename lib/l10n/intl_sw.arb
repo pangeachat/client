@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "Pendekezo",
     "errorFetchingWordInfo": "Imeshindwa kupata maelezo ya neno",
     "contentCreatedBy": "Imeundwa na",
-    "coursePreview": "Onyesho la kukagua kozi"
+    "coursePreview": "Onyesho la kukagua kozi",
+    "numActivities": "{count, plural, =1{shughuli 1} other{shughuli {count}}}"
 }

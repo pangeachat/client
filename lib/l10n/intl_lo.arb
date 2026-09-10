@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "ຄຳແນະນຳ",
     "errorFetchingWordInfo": "ບໍ່ສາມາດດຶງຂໍ້ມູນຄຳສັບໄດ້",
     "contentCreatedBy": "ສ້າງໂດຍ",
-    "coursePreview": "ເບິ່ງຕົວຢ່າງຫຼັກສູດ"
+    "coursePreview": "ເບິ່ງຕົວຢ່າງຫຼັກສູດ",
+    "numActivities": "{count, plural, =1{1 ກິດຈະກຳ} other{{count} ກິດຈະກຳ}}"
 }

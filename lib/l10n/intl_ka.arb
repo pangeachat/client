@@ -10809,5 +10809,6 @@
     "writingAssistanceSuggestion": "შემოთავაზება",
     "errorFetchingWordInfo": "სიტყვის ინფორმაციის მოძიება ვერ მოხერხდა",
     "contentCreatedBy": "შექმნილია",
-    "coursePreview": "კურსის გადახედვა"
+    "coursePreview": "კურსის გადახედვა",
+    "numActivities": "{count, plural, =1{1 აქტივობა} other{{count} აქტივობა}}"
 }

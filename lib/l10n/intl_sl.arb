@@ -10854,5 +10854,6 @@
     "writingAssistanceSuggestion": "Predlog",
     "errorFetchingWordInfo": "Pridobivanje informacij o besedi ni uspelo",
     "contentCreatedBy": "Ustvaril",
-    "coursePreview": "Predogled tečaja"
+    "coursePreview": "Predogled tečaja",
+    "numActivities": "{count, plural, =1{1 dejavnost} other{{count} dejavnosti}}"
 }

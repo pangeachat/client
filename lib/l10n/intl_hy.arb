@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "Առաջարկ",
     "errorFetchingWordInfo": "Բառի տեղեկությունները բեռնել չհաջողվեց",
     "contentCreatedBy": "Ստեղծվել է",
-    "coursePreview": "Դասընթացի նախադիտում"
+    "coursePreview": "Դասընթացի նախադիտում",
+    "numActivities": "{count, plural, =1{1 գործողություն} other{{count} գործողություններ}}"
 }

@@ -9997,5 +9997,6 @@
     "writingAssistanceSuggestion": "پیشنهاد",
     "errorFetchingWordInfo": "دریافت اطلاعات کلمه با مشکل مواجه شد",
     "contentCreatedBy": "ایجاد شده توسط",
-    "coursePreview": "پیش‌نمایش دوره"
+    "coursePreview": "پیش‌نمایش دوره",
+    "numActivities": "{count, plural, =1{۱ فعالیت} other{{count} فعالیت}}"
 }

@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "Prijedlog",
     "errorFetchingWordInfo": "Preuzimanje informacija o riječi nije uspjelo",
     "contentCreatedBy": "Kreirao/la",
-    "coursePreview": "Pregled kursa"
+    "coursePreview": "Pregled kursa",
+    "numActivities": "{count, plural, =1{1 aktivnost} other{{count} aktivnosti}}"
 }

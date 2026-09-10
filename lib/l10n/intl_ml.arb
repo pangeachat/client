@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "നിർദ്ദേശം",
     "errorFetchingWordInfo": "വാക്കിന്റെ വിവരങ്ങൾ ലഭ്യമാക്കുന്നതിൽ പരാജയപ്പെട്ടു",
     "contentCreatedBy": "സൃഷ്ടിച്ചത്",
-    "coursePreview": "കോഴ്സ് പ്രിവ്യൂ"
+    "coursePreview": "കോഴ്സ് പ്രിവ്യൂ",
+    "numActivities": "{count, plural, =1{1 പ്രവർത്തനം} other{{count} പ്രവർത്തനങ്ങൾ}}"
 }

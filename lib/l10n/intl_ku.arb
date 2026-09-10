@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "پێشنیار",
     "errorFetchingWordInfo": "نەتوانرا زانیاریی وشە وەربگیرێت",
     "contentCreatedBy": "دروستکراوە لەلایەن",
-    "coursePreview": "پێشەکیی خول"
+    "coursePreview": "پێشەکیی خول",
+    "numActivities": "{count, plural, =1{1 چالاکی} other{{count} چالاکی}}"
 }

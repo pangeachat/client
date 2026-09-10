@@ -10102,5 +10102,6 @@
     "writingAssistanceSuggestion": "제안",
     "errorFetchingWordInfo": "단어 정보를 가져오지 못했습니다.",
     "contentCreatedBy": "제작자",
-    "coursePreview": "코스 미리보기"
+    "coursePreview": "코스 미리보기",
+    "numActivities": "{count, plural, =1{1개의 활동} other{{count}개의 활동}}"
 }

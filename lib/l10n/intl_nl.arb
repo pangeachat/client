@@ -9909,5 +9909,6 @@
     "writingAssistanceSuggestion": "Suggestie",
     "errorFetchingWordInfo": "Woordinformatie ophalen mislukt",
     "contentCreatedBy": "Gemaakt door",
-    "coursePreview": "Cursusvoorbeeld"
+    "coursePreview": "Cursusvoorbeeld",
+    "numActivities": "{count, plural, =1{1 activiteit} other{{count} activiteiten}}"
 }

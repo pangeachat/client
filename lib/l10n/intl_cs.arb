@@ -10403,5 +10403,6 @@
     "writingAssistanceSuggestion": "Návrh",
     "errorFetchingWordInfo": "Nepodařilo se načíst informace o slově",
     "contentCreatedBy": "Vytvořil",
-    "coursePreview": "Náhled kurzu"
+    "coursePreview": "Náhled kurzu",
+    "numActivities": "{count, plural, =1{1 aktivita} other{{count} aktivit}}"
 }

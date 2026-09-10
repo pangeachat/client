@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "Fautuaga",
     "errorFetchingWordInfo": "Ua lē mafai ona aumai faʻamatalaga o le upu",
     "contentCreatedBy": "Fausia e",
-    "coursePreview": "Aotelega o le kosi"
+    "coursePreview": "Aotelega o le kosi",
+    "numActivities": "{count, plural, =1{1 gaioiga} other{{count} gaioiga}}"
 }

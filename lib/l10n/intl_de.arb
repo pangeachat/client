@@ -9896,5 +9896,6 @@
     "writingAssistanceSuggestion": "Vorschlag",
     "errorFetchingWordInfo": "Fehler beim Abrufen der Wortinformationen",
     "contentCreatedBy": "Erstellt von",
-    "coursePreview": "Kursvorschau"
+    "coursePreview": "Kursvorschau",
+    "numActivities": "{count, plural, =1{1 Aktivität} other{{count} Aktivitäten}}"
 }
