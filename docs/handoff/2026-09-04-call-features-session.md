@@ -1639,3 +1639,24 @@ until the design is Codex-green.
 - FIXER (a344faed6a3ea914a) dispatched: (A) _awaitWhileOwned takes a THUNK, add watcher then await action();
   (B) final synchronous `if(!_owns) return;` immediately before play(). + mutation-proven tests. Full
   protocol + hardened anti-stall. On return I cold-gate the fix. Q2-Q6 CORRECT (untouched).
+
+## 2026-09-10 (cont) — agent 2 fix r1 committed 1bf3ec966e; cold-gate found same-class gap at seek boundary
+- Agent 2 fixer r1 (a344faed6a3ea914a) committed 1bf3ec966e: GAP A (thunk -> watcher registered before the
+  action's sync prefix) + GAP B (final sync `if(!_owns) return` before play). Self-Codex-CORRECT (foreground,
+  no stall). 2 excellent deterministic tests (GAP A sync flap; GAP B getter-hook, honest about Dart's
+  synchronous cascade). 20/20. Format/analyze clean; the 2 files pass import_sorter individually.
+- import_sorter YELLOW: `import_sorter:main --no-comments --exit-if-changed` CRASHES on the full repo (1731
+  files) in this env -- dies after "Sorting..." with no completion, clean tree (dry-run), no file named. NOT
+  a code issue: each new file sorts clean run individually ("Sorted 0 files"). Pre-existing/environmental,
+  a pending task already tracks it. RESOLVE-BEFORE-PR2: confirm whether CI actually hits the crash; the new
+  files' imports are sorted regardless.
+- My cold gate on the fix (baze927y7): Q1 (thunk) + Q2 (pre-play guard) CORRECT; Q3 ISSUES-FOUND (softening
+  no) -- SAME CLASS at a NEW site: after startMergedPlayer completes, ownership is not re-read before seek(),
+  so ownership leaving in the load->seek gap lets seek() run on the foreign source (and seek-after-dispose).
+  Red-to-root-cause recurrence: the recheck rule was applied before play but not before seek.
+- FIXER r2 (affe1e2fafa5512a6) dispatched: add `if(_disposed||!_owns) return;` after the startMergedPlayer
+  await, before seek -- completing "recheck ownership synchronously after EVERY await" at all load->seek->play
+  boundaries (structural, not spot-patch). + mutation-proven test. On return I cold-gate. Told it to verify
+  import_sorter per-file (the full-repo run crashes).
+- META: the controller's concurrency is genuinely hard; 3 gate findings (2 gaps + this) all real. Double-gate
+  earning its keep but slow. User offered no redirect on loosening; continuing as specified.
