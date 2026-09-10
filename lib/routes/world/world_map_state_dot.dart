@@ -147,39 +147,48 @@ class _WorldMapDotState extends State<WorldMapDot>
             // activate it (#7591).
             onTap: widget.dying ? null : widget.onTap,
             excludeSemantics: true,
-            child: GestureDetector(
-              onTap: widget.dying ? null : widget.onTap,
-              // A dot's marker box is padded out past its painted circle to
-              // the min touch target ([PinSize.dotTouchTarget]); the whole box
-              // must take the tap, not just the tiny dot (#7688). A mid
-              // teardrop keeps deferring to its silhouette-only painter
-              // hit-test, so its transparent corners still fall through
-              // (#7920).
-              behavior: isDot
-                  ? HitTestBehavior.opaque
-                  : HitTestBehavior.deferToChild,
-              // Sized to the same [PinTier.markerBox] the MarkerLayer gives
-              // this pin, with the painted pin centred in it — a no-op for a
-              // teardrop (box == pin), the touch-target padding for a dot.
-              child: SizedBox.fromSize(
-                size: widget.tier.markerBox(widget.state),
-                child: Center(
-                  child: _withCompletionStar(
-                    widget.tier == PinTier.mid
-                        ? _MediumDotContent(
-                            state: widget.state,
-                            pinged: widget.pinged,
-                            unreadRoom: widget.unreadRoom,
-                            participantsFilled: widget.participantsFilled,
-                            participantsTotal: widget.participantsTotal,
-                            starLevel: widget.starLevel,
-                            isFocused: widget.isFocused,
-                          )
-                        : _SmallDotContent(
-                            state: widget.state,
-                            starLevel: widget.starLevel,
-                            isFocused: widget.isFocused,
-                          ),
+            child: MouseRegion(
+              cursor: SystemMouseCursors.click,
+              // Mirror the GestureDetector's own hit test rather than the
+              // default opaque one, so the hover region is exactly the tap
+              // region: a mid teardrop's transparent corners keep falling
+              // through to the pin beneath (#7920). A dying pin never hovers
+              // — the IgnorePointer above takes it out of the hit test.
+              hitTestBehavior: HitTestBehavior.deferToChild,
+              child: GestureDetector(
+                onTap: widget.dying ? null : widget.onTap,
+                // A dot's marker box is padded out past its painted circle to
+                // the min touch target ([PinSize.dotTouchTarget]); the whole box
+                // must take the tap, not just the tiny dot (#7688). A mid
+                // teardrop keeps deferring to its silhouette-only painter
+                // hit-test, so its transparent corners still fall through
+                // (#7920).
+                behavior: isDot
+                    ? HitTestBehavior.opaque
+                    : HitTestBehavior.deferToChild,
+                // Sized to the same [PinTier.markerBox] the MarkerLayer gives
+                // this pin, with the painted pin centred in it — a no-op for a
+                // teardrop (box == pin), the touch-target padding for a dot.
+                child: SizedBox.fromSize(
+                  size: widget.tier.markerBox(widget.state),
+                  child: Center(
+                    child: _withCompletionStar(
+                      widget.tier == PinTier.mid
+                          ? _MediumDotContent(
+                              state: widget.state,
+                              pinged: widget.pinged,
+                              unreadRoom: widget.unreadRoom,
+                              participantsFilled: widget.participantsFilled,
+                              participantsTotal: widget.participantsTotal,
+                              starLevel: widget.starLevel,
+                              isFocused: widget.isFocused,
+                            )
+                          : _SmallDotContent(
+                              state: widget.state,
+                              starLevel: widget.starLevel,
+                              isFocused: widget.isFocused,
+                            ),
+                    ),
                   ),
                 ),
               ),

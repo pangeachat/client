@@ -75,18 +75,22 @@ class ActivityParticipantIndicator extends StatelessWidget {
                 : null,
           );
 
+    final onTap =
+        this.onTap ??
+        (user != null
+            ? () => showMemberActionsPopupMenu(
+                context: context,
+                user: user!,
+                room: room,
+              )
+            : null);
+
     return MouseRegion(
-      cursor: SystemMouseCursors.basic,
+      cursor: onTap != null
+          ? SystemMouseCursors.click
+          : SystemMouseCursors.basic,
       child: GestureDetector(
-        onTap:
-            onTap ??
-            (user != null
-                ? () => showMemberActionsPopupMenu(
-                    context: context,
-                    user: user!,
-                    room: room,
-                  )
-                : null),
+        onTap: onTap,
         child: AbsorbPointer(
           absorbing: !selectable,
           child: HoverBuilder(
