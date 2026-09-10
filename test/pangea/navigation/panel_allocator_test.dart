@@ -535,6 +535,25 @@ void main() {
       expect(l.left.single.foldedOver, isFalse);
     });
 
+    // #8972: the hub is an index of course tiles, so it draws at the chat
+    // list's width — switching rail sections between them must not resize the
+    // column. Its subpages keep the wide family.
+    test('the hub is list-width, like the chat list it swaps with', () {
+      final hub = PanelTypesEnum.addcourse.def;
+      final chats = PanelTypesEnum.chats.def;
+      expect(hub.minWidth, chats.minWidth);
+      expect(hub.reasonableMin, chats.reasonableMin);
+      expect(hub.idealWidth, chats.idealWidth);
+      expect(
+        run(left: [PanelTypesEnum.addcourse]).left.single.width,
+        run(left: [PanelTypesEnum.chats]).left.single.width,
+      );
+      expect(
+        PanelTypesEnum.addcoursepage.def.idealWidth,
+        PanelWidths.wideIdeal,
+      );
+    });
+
     test('only the add-course subpage declares the always-fold', () {
       for (final type in PanelTypesEnum.values) {
         expect(

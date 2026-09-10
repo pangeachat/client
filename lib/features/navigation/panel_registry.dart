@@ -9,10 +9,11 @@ enum PanelColumn { left, right }
 /// deliberate list↔wide difference. Defined once here (not per-def literals)
 /// so the families can't drift apart.
 ///
-///  - **list** — the thin index columns (the chat list, the DM-create picker).
+///  - **list** — the thin index columns (the chat list, the Courses hub, the
+///    DM-create picker).
 ///  - **wide** — the live/content surfaces: a chat, a session, an activity or
-///    course card, and the course flow pages (details / invite / edit / add),
-///    which host forms and media and want the same room.
+///    course card, and the course flow pages (details / invite / edit / the
+///    add-course subpages), which host forms and media and want the same room.
 ///  - **tool** — the entire right column (settings, analytics + its details,
 ///    practice), one width for every tool panel.
 abstract class PanelWidths {
@@ -230,10 +231,14 @@ class CoursePagePanelDef extends PanelDef {
 }
 
 class AddCoursePanelDef extends PanelDef {
+  // The Courses hub is an index of course tiles, not a content surface — the
+  // list family, same width as the chat list it shares the section slot with
+  // (#8972). Its subpages stay `wide`: they host the forms and the course
+  // preview, and entering one is the deliberate list↔wide step.
   const AddCoursePanelDef({
-    super.minWidth = PanelWidths.wideMin,
-    super.reasonableMinWidth = PanelWidths.wideComfort,
-    super.idealWidth = PanelWidths.wideIdeal,
+    super.minWidth = PanelWidths.listMin,
+    super.reasonableMinWidth = PanelWidths.listComfort,
+    super.idealWidth = PanelWidths.listIdeal,
   }) : super(
          type: PanelTypesEnum.addcourse,
          column: PanelColumn.left,

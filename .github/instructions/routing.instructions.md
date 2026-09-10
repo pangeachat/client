@@ -416,9 +416,10 @@ One vocabulary covers how content opens:
 Panels that can replace each other in a slot share one min/comfort/ideal
 triple (`PanelWidths` in the registry), so navigating between them never
 resizes the column — the width-jump QA kept catching. The families: **list**
-(the thin index columns — the chat list, the DM-create picker), **wide** (the
-live/content surfaces — a chat, a session, an activity or course card, and the
-course flow pages, which host forms and media and earn the same room), and
+(the thin index columns — the chat list, the Courses hub, the DM-create
+picker), **wide** (the live/content surfaces — a chat, a session, an activity
+or course card, and the course flow pages (details / invite / edit / the
+add-course subpages), which host forms and media and earn the same room), and
 **tool** (the entire right column — settings, analytics and its details,
 practice — one width for every tool panel). The only remaining width step is
 the deliberate list↔wide difference. A new panel type joins a family; it does
