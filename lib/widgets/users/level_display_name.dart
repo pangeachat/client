@@ -166,7 +166,7 @@ class _LevelDisplayNameState extends State<LevelDisplayName> {
                 const SizedBox(width: 6.0),
                 LevelRibbon(
                   level: level,
-                  height: (iconSize ?? 16.0) + 2.0,
+                  height: LevelRibbon.heightForIconSize(iconSize ?? 16.0),
                   numberPlacement: LevelNumberPlacement.trailing,
                   numberStyle: textStyle,
                 ),

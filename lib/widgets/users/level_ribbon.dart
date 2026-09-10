@@ -52,6 +52,19 @@ class LevelRibbon extends StatelessWidget {
     super.key,
   });
 
+  /// The [height] at which the shield reads as the same size as a Material
+  /// icon drawn at [iconSize] beside it.
+  ///
+  /// The two do not match at equal nominal sizes: a Material icon insets its
+  /// glyph inside its box — `Icons.star` at 16 paints 12.75 of ink — while the
+  /// shield path fills its viewBox edge to edge. A shield handed the icon's own
+  /// size therefore out-draws it by about a quarter.
+  static double heightForIconSize(double iconSize) =>
+      iconSize * _materialIconInkRatio;
+
+  /// Measured off a rendered `Icons.star`: 12.75 of ink in a 16 box.
+  static const double _materialIconInkRatio = 0.8;
+
   /// The shield outline from Figma (icon/warning-secondary), filled [hexcode].
   static String _shieldSvg(String hexcode) =>
       '<svg viewBox="0 0 24.6667 28.875" xmlns="http://www.w3.org/2000/svg">'

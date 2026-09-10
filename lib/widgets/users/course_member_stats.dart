@@ -132,7 +132,9 @@ class _CourseMemberStatsState extends State<CourseMemberStats> {
               if (level != null)
                 LevelRibbon(
                   level: level,
-                  height: widget.iconSize + 2.0,
+                  // Sized to read as the same mark as the star beside it, not
+                  // to the same nominal number — see [heightForIconSize].
+                  height: LevelRibbon.heightForIconSize(widget.iconSize),
                   // The star total's shape, one pair beside the other.
                   numberPlacement: LevelNumberPlacement.trailing,
                   numberStyle: widget.textStyle,

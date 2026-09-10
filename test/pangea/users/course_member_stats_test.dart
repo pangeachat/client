@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -142,6 +143,21 @@ void main() {
   ) async {
     await pumpStats(tester, emptyId);
     expect(tester.getSize(find.byType(CourseMemberStats)), Size.zero);
+  });
+
+  // The shield path fills its box edge to edge; a Material icon insets its
+  // glyph inside its own (`Icons.star` at 16 paints 12.75 of ink). So a shield
+  // that reads as the star's equal is drawn a little SMALLER than the star's
+  // nominal size — and never larger, which is what the old `iconSize + 2`
+  // produced back when the number still had to fit inside it (#8918).
+  testWidgets('the level shield is drawn no larger than the star beside it', (
+    tester,
+  ) async {
+    await pumpStats(tester, starredId);
+    final star = tester.getSize(find.byIcon(Icons.star));
+    final shield = tester.getSize(find.byType(SvgPicture));
+    expect(shield.height, lessThan(star.height));
+    expect(shield.height, greaterThan(star.height * 0.7));
   });
 
   // Moving the level number out of the shield widened the row (#8918): the
