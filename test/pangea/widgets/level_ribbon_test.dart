@@ -34,9 +34,9 @@ void main() {
     // Inside is the default, and inside means inside: the digit is painted
     // within the shield, not beside it.
     expect(
-      tester.getRect(find.byType(SvgPicture)).contains(
-        tester.getRect(find.text('7')).center,
-      ),
+      tester
+          .getRect(find.byType(SvgPicture))
+          .contains(tester.getRect(find.text('7')).center),
       isTrue,
     );
   });
