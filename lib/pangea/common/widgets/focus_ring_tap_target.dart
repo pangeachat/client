@@ -24,8 +24,32 @@ class FocusRingTapTarget extends StatefulWidget {
   /// still unmissable while tabbing.
   static const double ringWidth = 2.0;
 
+  /// [AppConfig.goldMarkByTheme], not the decorative [AppConfig.goldByTheme]:
+  /// an indicator is a graphic the user has to read, so 1.4.11 wants 3:1 of it
+  /// against what it sits on, and the light theme's gold managed 1.58:1 on the
+  /// map surface and 1.43:1 on the cluster's `surfaceContainer` (#8880). Every
+  /// ring in the app is this one colour — the trackers' ring has to match the
+  /// avatar's beside it — so the deepening lands here rather than per-caller.
   static BorderSide ringSide(BuildContext context) =>
-      BorderSide(color: AppConfig.goldByTheme(context), width: ringWidth);
+      BorderSide(color: AppConfig.goldMarkByTheme(context), width: ringWidth);
+
+  /// The same ring as a Material [ButtonStyle] side, for a control that is
+  /// **already** a button — the map's zoom [IconButton]s (#8880). Wrapping one
+  /// in a [FocusRingTapTarget] would nest a second focusable inside it and cost
+  /// a dead Tab stop, so those keep their own button and take the ring through
+  /// its style instead.
+  ///
+  /// The [highlightsEnabled] gate is applied here for the same reason the
+  /// widget applies it: [WidgetState.focused] is set whenever the button holds
+  /// focus, whether or not Material would show a focus highlight, so without
+  /// the gate a touch user would see the ring.
+  static WidgetStateProperty<BorderSide> ringSideProperty(
+    BuildContext context,
+  ) => WidgetStateProperty.resolveWith(
+    (states) => states.contains(WidgetState.focused) && highlightsEnabled
+        ? ringSide(context)
+        : BorderSide.none,
+  );
 
   /// Whether explicit focus rings should render at all right now — Flutter's
   /// gate for Material focus highlights: traditional (keyboard-driven) yes,

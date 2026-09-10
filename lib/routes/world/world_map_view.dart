@@ -25,6 +25,7 @@ import 'package:fluffychat/features/tutorials/tutorial_target.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/routes/world/course_context_bar.dart';
 import 'package:fluffychat/routes/world/course_preview_banner.dart';
@@ -1667,6 +1668,15 @@ class _MapZoomControls extends StatelessWidget {
           final canZoomOut =
               zoom == null ||
               WorldMapConstants.canZoomOut(zoom, controller.minZoom);
+          // Focus on these three showed only through M3's own state-layer
+          // wash — 1.17:1 light, 1.21:1 dark, against the 3:1 of 1.4.11 — so
+          // each draws the app's gold ring while focused (#8880). Through the
+          // button's own style, not a [FocusRingTapTarget] around it: these are
+          // already buttons, and nesting a second focusable would cost a dead
+          // Tab stop on the chrome walk #8724 just cleared.
+          final focusRing = ButtonStyle(
+            side: FocusRingTapTarget.ringSideProperty(context),
+          );
           return Semantics(
             label: l10n.mapZoomLabel,
             container: true,
@@ -1676,17 +1686,20 @@ class _MapZoomControls extends StatelessWidget {
                 IconButton(
                   icon: const Icon(Icons.public),
                   tooltip: l10n.resetMapView,
+                  style: focusRing,
                   onPressed: controller.resetToWorld,
                 ),
                 Divider(height: 1.0, color: theme.colorScheme.outlineVariant),
                 IconButton(
                   icon: const Icon(Icons.add),
                   tooltip: l10n.zoomIn,
+                  style: focusRing,
                   onPressed: canZoomIn ? () => controller.zoomBy(1) : null,
                 ),
                 IconButton(
                   icon: const Icon(Icons.remove),
                   tooltip: l10n.zoomOut,
+                  style: focusRing,
                   onPressed: canZoomOut ? () => controller.zoomBy(-1) : null,
                 ),
               ],

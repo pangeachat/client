@@ -86,15 +86,18 @@ abstract class AppConfig {
   static Color goldByTheme(BuildContext context) =>
       Theme.of(context).brightness == Brightness.light ? gold : goldLight;
 
-  /// The gold a **solid mark carrying meaning** wears — an earned activity
-  /// star, where the fill itself is the information rather than decoration.
+  /// The gold a **mark carrying meaning** wears — an earned activity star, a
+  /// keyboard focus ring ([FocusRingTapTarget.ringSide]) — where the paint
+  /// itself is the information rather than decoration.
   ///
   /// [gold] is 1.58:1 on the light theme's surface and 1.28:1 on its cards,
   /// far under the 3:1 WCAG 1.4.11 asks of a graphic the user has to read, so
   /// light gets [goldDeep] (4.22:1 / 3.43:1). Dark keeps [gold], already
   /// 11.18:1 / 7.39:1 there. One gold cannot serve both: [goldDeep] drops to
   /// 2.77:1 on a dark card, and no step of the ramp clears 3:1 in all four
-  /// contexts (#8760).
+  /// contexts (#8760). The ring's surfaces measure the same way: 1.43:1 for
+  /// [gold] on the light `surfaceContainer` the cluster's trackers sit on,
+  /// against 3.82:1 for [goldDeep] (#8880).
   static Color goldMarkByTheme(BuildContext context) =>
       Theme.of(context).brightness == Brightness.light ? goldDeep : gold;
 

@@ -315,6 +315,14 @@ class _PowerupsPill extends StatelessWidget {
 /// The displayed count abbreviates above 999 ([compactCount]) so the pill
 /// never outgrows the allocator's fixed cluster gutter; the semantics label
 /// carries the exact count.
+/// The trackers' stadium geometry. The InkWell's ripple bound, the hover and
+/// open-panel fills, and the focus ring all draw on this one radius, so the
+/// ring can never land off the wash it has to stay readable over (#8880).
+const double _trackerRadius = 100.0;
+const RoundedRectangleBorder _trackerShape = RoundedRectangleBorder(
+  borderRadius: BorderRadius.all(Radius.circular(_trackerRadius)),
+);
+
 class ClusterTrackerButton extends StatefulWidget {
   final ProgressIndicatorEnum indicator;
   final int count;
@@ -367,6 +375,12 @@ class _ClusterTrackerButtonState extends State<ClusterTrackerButton> {
   /// wash over solid primary read as no feedback at all).
   bool _hovered = false;
 
+  /// Whether the tracker holds keyboard focus, and so wears the gold ring
+  /// ([_trackerShape]). InkWell's own focus highlight is another translucent
+  /// wash on the same geometry as the hover and open-panel ones — 1.31:1 light
+  /// and 1.45:1 dark, and invisible outright on the lit tracker (#8880).
+  bool _focused = false;
+
   @override
   Widget build(BuildContext context) {
     // While this section has a live background practice session, the tracker
@@ -402,63 +416,85 @@ class _ClusterTrackerButtonState extends State<ClusterTrackerButton> {
             child: InkWell(
               onTap: onTap,
               onHover: (h) => setState(() => _hovered = h),
+              onFocusChange: (f) => setState(() => _focused = f),
+              // The ring replaces InkWell's own focus wash rather than joining
+              // it: that wash is the 1.31:1 indicator #8880 exists to remove,
+              // and it also darkens the field just inside the ring, dropping
+              // the ring's own contrast against it below 3:1 on a lit tracker.
+              focusColor: Colors.transparent,
               hoverColor: liveSessionStart != null
                   ? Colors.transparent
                   : AppConfig.goldByTheme(context).withAlpha(50),
-              borderRadius: BorderRadius.circular(100),
+              borderRadius: BorderRadius.circular(_trackerRadius),
               child: Semantics(
                 button: true,
                 // The exact count — assistive tech is never given the
                 // abbreviation.
                 label: semanticsLabel,
                 excludeSemantics: true,
-                // While a session is live the badge takes the button's place:
-                // ONE stadium fill on exactly the hover-highlight geometry
-                // (same radius, same padded bounds), practice icon over the
-                // running timer inside it. Painted as INK (not a Container) so
-                // Material's press splash renders on top of the fill — the same
-                // white flash the sibling trackers give.
-                child: Ink(
-                  decoration: liveSessionStart != null
-                      ? BoxDecoration(
-                          color: Theme.of(context).colorScheme.primary
-                              .withValues(alpha: _hovered ? 1.0 : 0.75),
-                          borderRadius: BorderRadius.circular(100),
-                        )
-                      // Open-panel highlight: a persistent version of the hover
-                      // wash on the same padded geometry, so the tracker whose
-                      // analytics is showing stays lit (#7977).
-                      : selected
-                      ? BoxDecoration(
-                          color: AppConfig.goldByTheme(context).withAlpha(50),
-                          borderRadius: BorderRadius.circular(100),
-                        )
-                      : null,
-                  padding: EdgeInsets.symmetric(
-                    horizontal: horizontalPadding,
-                    vertical: 9,
+                // The ring paints in the FOREGROUND, on the Ink's exact
+                // geometry: [Ink] and the InkWell's own highlights all land in
+                // the Material's ink layer, under the regular child painting,
+                // so a stroke drawn here survives the open-panel and
+                // live-session fills instead of being swallowed by them
+                // (#8724 review, #8880).
+                child: DecoratedBox(
+                  position: DecorationPosition.foreground,
+                  decoration: ShapeDecoration(
+                    shape: _trackerShape.copyWith(
+                      side: _focused && FocusRingTapTarget.highlightsEnabled
+                          ? FocusRingTapTarget.ringSide(context)
+                          : BorderSide.none,
+                    ),
                   ),
-                  child: liveSessionStart != null
-                      ? PracticeSessionBadge(
-                          startedAt: liveSessionStart,
-                          iconSize: iconSize,
-                          fontSize: fontSize,
-                        )
-                      : Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Icon(indicator.icon, size: iconSize),
-                            const SizedBox(height: 3),
-                            Text(
-                              compactCount(count),
-                              style: TextStyle(
-                                fontSize: fontSize,
-                                height: 1.1,
-                                fontWeight: FontWeight.w600,
+                  // While a session is live the badge takes the button's
+                  // place: ONE stadium fill on exactly the hover-highlight
+                  // geometry (same radius, same padded bounds), practice icon
+                  // over the running timer inside it. Painted as INK (not a
+                  // Container) so Material's press splash renders on top of
+                  // the fill — the same white flash the sibling trackers give.
+                  child: Ink(
+                    decoration: liveSessionStart != null
+                        ? BoxDecoration(
+                            color: Theme.of(context).colorScheme.primary
+                                .withValues(alpha: _hovered ? 1.0 : 0.75),
+                            borderRadius: BorderRadius.circular(_trackerRadius),
+                          )
+                        // Open-panel highlight: a persistent version of the hover
+                        // wash on the same padded geometry, so the tracker whose
+                        // analytics is showing stays lit (#7977).
+                        : selected
+                        ? BoxDecoration(
+                            color: AppConfig.goldByTheme(context).withAlpha(50),
+                            borderRadius: BorderRadius.circular(_trackerRadius),
+                          )
+                        : null,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: horizontalPadding,
+                      vertical: 9,
+                    ),
+                    child: liveSessionStart != null
+                        ? PracticeSessionBadge(
+                            startedAt: liveSessionStart,
+                            iconSize: iconSize,
+                            fontSize: fontSize,
+                          )
+                        : Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(indicator.icon, size: iconSize),
+                              const SizedBox(height: 3),
+                              Text(
+                                compactCount(count),
+                                style: TextStyle(
+                                  fontSize: fontSize,
+                                  height: 1.1,
+                                  fontWeight: FontWeight.w600,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
+                            ],
+                          ),
+                  ),
                 ),
               ),
             ),
