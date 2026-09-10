@@ -10015,5 +10015,6 @@
     "writingAssistanceSuggestion": "建議",
     "errorFetchingWordInfo": "無法取得單字資訊",
     "contentCreatedBy": "建立者",
-    "coursePreview": "課程預覽"
+    "coursePreview": "課程預覽",
+    "numActivities": "{count, plural, =1{1 個活動} other{{count} 個活動}}"
 }

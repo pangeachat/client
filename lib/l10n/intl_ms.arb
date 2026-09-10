@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "Cadangan",
     "errorFetchingWordInfo": "Gagal mengambil maklumat perkataan",
     "contentCreatedBy": "Dicipta oleh",
-    "coursePreview": "Pratonton kursus"
+    "coursePreview": "Pratonton kursus",
+    "numActivities": "{count, plural, =1{1 aktiviti} other{{count} aktiviti}}"
 }

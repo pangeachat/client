@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "सुझाव",
     "errorFetchingWordInfo": "शब्द जानकारी प्राप्त गर्न असफल भयो",
     "contentCreatedBy": "द्वारा सिर्जना गरिएको",
-    "coursePreview": "कोर्स पूर्वावलोकन"
+    "coursePreview": "कोर्स पूर्वावलोकन",
+    "numActivities": "{count, plural, =1{१ गतिविधि} other{{count} गतिविधिहरू}}"
 }

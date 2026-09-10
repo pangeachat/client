@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "وړاندیز",
     "errorFetchingWordInfo": "د کلمې معلوماتو په ترلاسه کولو کې پاتې راغلی",
     "contentCreatedBy": "جوړ شوی د",
-    "coursePreview": "د کورس مخکتنه"
+    "coursePreview": "د کورس مخکتنه",
+    "numActivities": "{count, plural, =1{1 فعالیت} other{{count} فعالیتونه}}"
 }

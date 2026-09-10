@@ -9982,5 +9982,6 @@
     "writingAssistanceSuggestion": "Saran",
     "errorFetchingWordInfo": "Gagal mengambil info kata",
     "contentCreatedBy": "Dibuat oleh",
-    "coursePreview": "Pratinjau kursus"
+    "coursePreview": "Pratinjau kursus",
+    "numActivities": "{count, plural, =1{1 aktivitas} other{{count} aktivitas}}"
 }

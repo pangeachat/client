@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "Molaidhean",
     "errorFetchingWordInfo": "Dh'fhàillig fiosrachadh facal fhaighinn",
     "contentCreatedBy": "Air a chruthachadh le",
-    "coursePreview": "Ro-shealladh cùrsa"
+    "coursePreview": "Ro-shealladh cùrsa",
+    "numActivities": "{count, plural, =1{1 ghnìomhachd} other{{count} gnìomhachdan}}"
 }

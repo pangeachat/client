@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "Malingaliro",
     "errorFetchingWordInfo": "Zalephera kupeza zambiri za mawu",
     "contentCreatedBy": "Anapangidwa ndi",
-    "coursePreview": "Kukambirana za maphunziro"
+    "coursePreview": "Kukambirana za maphunziro",
+    "numActivities": "{count, plural, =1{ntchito imodzi} other{ntchito {count}}}"
 }

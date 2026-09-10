@@ -20,8 +20,9 @@ typedef QuestLoader = ValueNotifier<AsyncState<QuestOutline>>;
 /// (still loading / no data) maps to an empty list.
 ///
 /// The single home of "which Missions does the learner actually see": the
-/// course panel's list and the "N modules" chip both count through it, so a
-/// hidden Mission can never be listed by one and counted by the other (#7976).
+/// course panel's list and the info chips' activity count both read through
+/// it, so a hidden Mission's activities can never be listed by one and counted
+/// by the other (#7976).
 List<QuestObjectiveGroup> objectiveGroupsWithActivities(
   List<QuestObjectiveGroup>? groups,
 ) => (groups ?? const <QuestObjectiveGroup>[])

@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "Talo",
     "errorFetchingWordInfo": "Ku guuldareystay in la helo macluumaadka ereyga",
     "contentCreatedBy": "Waxaa sameeyay",
-    "coursePreview": "Hordhaca koorsada"
+    "coursePreview": "Hordhaca koorsada",
+    "numActivities": "{count, plural, =1{1 hawl} other{{count} hawlood}}"
 }

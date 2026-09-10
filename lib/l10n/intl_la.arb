@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "Suggestio",
     "errorFetchingWordInfo": "Defuit verbi notitias petere",
     "contentCreatedBy": "Creatum ab",
-    "coursePreview": "Praevisio cursus"
+    "coursePreview": "Praevisio cursus",
+    "numActivities": "{count, plural, =1{1 actio} other{{count} actiones}}"
 }

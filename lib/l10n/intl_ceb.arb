@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "Sugyot",
     "errorFetchingWordInfo": "Napakyas sa pagkuha sa impormasyon sa pulong",
     "contentCreatedBy": "Gibuhat ni",
-    "coursePreview": "Preview sa kurso"
+    "coursePreview": "Preview sa kurso",
+    "numActivities": "{count, plural, =1{1 kalihokan} other{{count} ka kalihokan}}"
 }

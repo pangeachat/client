@@ -10858,5 +10858,6 @@
     "writingAssistanceSuggestion": "Predlog",
     "errorFetchingWordInfo": "Nije uspelo preuzimanje informacija o reči",
     "contentCreatedBy": "Kreirao/la",
-    "coursePreview": "Pregled kursa"
+    "coursePreview": "Pregled kursa",
+    "numActivities": "{count, plural, =1{1 aktivnost} other{{count} aktivnosti}}"
 }

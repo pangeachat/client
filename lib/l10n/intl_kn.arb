@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "ಸಲಹೆ",
     "errorFetchingWordInfo": "ಪದದ ಮಾಹಿತಿಯನ್ನು ಪಡೆಯಲು ವಿಫಲವಾಗಿದೆ",
     "contentCreatedBy": "ರಚಿಸಿದವರು",
-    "coursePreview": "ಕೋರ್ಸ್ ಪೂರ್ವವೀಕ್ಷಣೆ"
+    "coursePreview": "ಕೋರ್ಸ್ ಪೂರ್ವವೀಕ್ಷಣೆ",
+    "numActivities": "{count, plural, =1{1 ಚಟುವಟಿಕೆ} other{{count} ಚಟುವಟಿಕೆಗಳು}}"
 }

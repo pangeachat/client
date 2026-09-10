@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "Advays",
     "errorFetchingWordInfo": "Di wod infomeshon nɔ kɔmɔt",
     "contentCreatedBy": "Pikin we mek am",
-    "coursePreview": "Kɔs witnes"
+    "coursePreview": "Kɔs witnes",
+    "numActivities": "{count, plural, =1{1 aktiviti} other{{count} aktiviti dɛn}}"
 }

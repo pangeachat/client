@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "Tswv yim",
     "errorFetchingWordInfo": "Tsis tau nrhiav tau cov lus qhia",
     "contentCreatedBy": "Tsim los ntawm",
-    "coursePreview": "Saib ua ntej kawm"
+    "coursePreview": "Saib ua ntej kawm",
+    "numActivities": "{count, plural, =1{1 qho kev ua} other{{count} qho kev ua}}"
 }

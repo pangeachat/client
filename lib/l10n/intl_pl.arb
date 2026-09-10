@@ -9994,5 +9994,6 @@
     "writingAssistanceSuggestion": "Sugestia",
     "errorFetchingWordInfo": "Nie udało się pobrać informacji o słowie",
     "contentCreatedBy": "Utworzone przez",
-    "coursePreview": "Podgląd kursu"
+    "coursePreview": "Podgląd kursu",
+    "numActivities": "{count, plural, =1{1 aktywność} other{{count} aktywności}}"
 }

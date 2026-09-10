@@ -10036,5 +10036,6 @@
     "writingAssistanceSuggestion": "Suggeriment",
     "errorFetchingWordInfo": "No s'ha pogut obtenir la informació de la paraula",
     "contentCreatedBy": "Creat per",
-    "coursePreview": "Previsualització del curs"
+    "coursePreview": "Previsualització del curs",
+    "numActivities": "{count, plural, =1{1 activitat} other{{count} activitats}}"
 }

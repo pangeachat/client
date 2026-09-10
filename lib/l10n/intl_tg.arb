@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "Пешниҳод",
     "errorFetchingWordInfo": "Маълумот дар бораи калимаро гирифтан нашуд",
     "contentCreatedBy": "Сохта шудааст аз ҷониби",
-    "coursePreview": "Пешнамоиши курс"
+    "coursePreview": "Пешнамоиши курс",
+    "numActivities": "{count, plural, =1{1 фаъолият} other{{count} фаъолият}}"
 }

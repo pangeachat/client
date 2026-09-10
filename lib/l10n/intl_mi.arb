@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "Tohu",
     "errorFetchingWordInfo": "I rahua te tiki i ngā mōhiohio kupu",
     "contentCreatedBy": "Nā",
-    "coursePreview": "Arokite kōhi"
+    "coursePreview": "Arokite kōhi",
+    "numActivities": "{count, plural, =1{1 mahi} other{{count} mahi}}"
 }

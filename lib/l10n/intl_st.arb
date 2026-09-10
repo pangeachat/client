@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "Tlhahiso",
     "errorFetchingWordInfo": "Ho hlolehile ho fumana leseli la lentsoe",
     "contentCreatedBy": "E entsoe ke",
-    "coursePreview": "Kakaretso ya thupelo"
+    "coursePreview": "Kakaretso ya thupelo",
+    "numActivities": "{count, plural, =1{1 mosebetsi} other{{count} mesebetsi}}"
 }

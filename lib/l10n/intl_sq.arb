@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "Sugjerim",
     "errorFetchingWordInfo": "Dështoi marrja e informacionit të fjalës",
     "contentCreatedBy": "Krijuar nga",
-    "coursePreview": "Parashikim kursi"
+    "coursePreview": "Parashikim kursi",
+    "numActivities": "{count, plural, =1{1 aktivitet} other{{count} aktivitete}}"
 }

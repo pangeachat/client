@@ -10854,5 +10854,6 @@
     "writingAssistanceSuggestion": "Návrh",
     "errorFetchingWordInfo": "Nepodarilo sa načítať informácie o slove",
     "contentCreatedBy": "Vytvoril",
-    "coursePreview": "Ukážka kurzu"
+    "coursePreview": "Ukážka kurzu",
+    "numActivities": "{count, plural, =1{1 aktivita} other{{count} aktivít}}"
 }

@@ -10769,5 +10769,6 @@
     "writingAssistanceSuggestion": "Mungkahi",
     "errorFetchingWordInfo": "Nabigong kunin ang impormasyon ng salita",
     "contentCreatedBy": "Ginawa ni",
-    "coursePreview": "Preview ng kurso"
+    "coursePreview": "Preview ng kurso",
+    "numActivities": "{count, plural, =1{1 aktibidad} other{{count} aktibidad}}"
 }

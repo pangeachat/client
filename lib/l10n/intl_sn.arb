@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "Zano",
     "errorFetchingWordInfo": "Zvakakona kutora ruzivo rwezwi",
     "contentCreatedBy": "Yakagadzirwa na",
-    "coursePreview": "Taridza kosi"
+    "coursePreview": "Taridza kosi",
+    "numActivities": "{count, plural, =1{1 chiitiko} other{{count} zviitiko}}"
 }

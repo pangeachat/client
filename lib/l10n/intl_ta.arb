@@ -10001,5 +10001,6 @@
     "writingAssistanceSuggestion": "பரிந்துரை",
     "errorFetchingWordInfo": "வார்த்தைத் தகவலைப் பெறத் தவறிவிட்டது",
     "contentCreatedBy": "உருவாக்கியவர்",
-    "coursePreview": "பாடப்பிரிவு முன்னோட்டம்"
+    "coursePreview": "பாடப்பிரிவு முன்னோட்டம்",
+    "numActivities": "{count, plural, =1{1 செயல்பாடு} other{{count} செயல்பாடுகள்}}"
 }

@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "Virschlag",
     "errorFetchingWordInfo": "Konnt d'Wuertinformatioun net ofruffen",
     "contentCreatedBy": "Erstellt vun",
-    "coursePreview": "Cours Virschau"
+    "coursePreview": "Cours Virschau",
+    "numActivities": "{count, plural, =1{1 Aktivitéit} other{{count} Aktivitéiten}}"
 }

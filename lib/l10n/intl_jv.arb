@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "Saran",
     "errorFetchingWordInfo": "Gagal njupuk informasi tembung",
     "contentCreatedBy": "Digawe dening",
-    "coursePreview": "Pratinjau kursus"
+    "coursePreview": "Pratinjau kursus",
+    "numActivities": "{count, plural, =1{1 aktivitas} other{{count} aktivitas}}"
 }

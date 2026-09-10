@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "Saran",
     "errorFetchingWordInfo": "Gagal ngala inpormasi kecap",
     "contentCreatedBy": "Dijieun ku",
-    "coursePreview": "Sawangan kursus"
+    "coursePreview": "Sawangan kursus",
+    "numActivities": "{count, plural, =1{1 kagiatan} other{{count} kagiatan}}"
 }

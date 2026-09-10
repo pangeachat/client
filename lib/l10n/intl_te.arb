@@ -10859,5 +10859,6 @@
     "writingAssistanceSuggestion": "సూచన",
     "errorFetchingWordInfo": "పద సమాచారాన్ని పొందడంలో విఫలమైంది",
     "contentCreatedBy": "దీనిని సృష్టించినవారు",
-    "coursePreview": "కోర్సు ప్రివ్యూ"
+    "coursePreview": "కోర్సు ప్రివ్యూ",
+    "numActivities": "{count, plural, =1{1 కార్యాచరణ} other{{count} కార్యాచరణలు}}"
 }

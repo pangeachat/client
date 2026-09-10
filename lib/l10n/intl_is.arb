@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "Tillaga",
     "errorFetchingWordInfo": "Mistókst að sækja orðaupplýsingar",
     "contentCreatedBy": "Búið til af",
-    "coursePreview": "Forskoðun námskeiðs"
+    "coursePreview": "Forskoðun námskeiðs",
+    "numActivities": "{count, plural, =1{1 virkni} other{{count} virknir}}"
 }

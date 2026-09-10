@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "פֿאָרשלאָג",
     "errorFetchingWordInfo": "נישט געקענט ברענגען וואָרט אינפֿאָרמאַציע",
     "contentCreatedBy": "געשאַפֿן פֿון",
-    "coursePreview": "קורס פֿאָרויסיקע ווייַזונג"
+    "coursePreview": "קורס פֿאָרויסיקע ווייַזונג",
+    "numActivities": "{count, plural, =1{1 טעטיקייט} other{{count} טעטיקייטן}}"
 }

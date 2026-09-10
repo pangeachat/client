@@ -10541,5 +10541,6 @@
     "writingAssistanceSuggestion": "ข้อเสนอแนะ",
     "errorFetchingWordInfo": "ไม่สามารถดึงข้อมูลคำศัพท์ได้",
     "contentCreatedBy": "สร้างโดย",
-    "coursePreview": "ดูตัวอย่างคอร์ส"
+    "coursePreview": "ดูตัวอย่างคอร์ส",
+    "numActivities": "{count, plural, =1{1 กิจกรรม} other{{count} กิจกรรม}}"
 }

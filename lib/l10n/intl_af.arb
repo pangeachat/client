@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "Voorstel",
     "errorFetchingWordInfo": "Kon nie woordinligting kry nie",
     "contentCreatedBy": "Geskep deur",
-    "coursePreview": "Kursusvoorskou"
+    "coursePreview": "Kursusvoorskou",
+    "numActivities": "{count, plural, =1{1 aktiwiteit} other{{count} aktiwiteite}}"
 }

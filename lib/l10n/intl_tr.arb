@@ -10210,5 +10210,6 @@
     "writingAssistanceSuggestion": "Öneri",
     "errorFetchingWordInfo": "Kelime bilgisi alınamadı",
     "contentCreatedBy": "Oluşturan",
-    "coursePreview": "Kurs önizlemesi"
+    "coursePreview": "Kurs önizlemesi",
+    "numActivities": "{count, plural, =1{1 aktivite} other{{count} aktivite}}"
 }

@@ -10845,5 +10845,6 @@
     "writingAssistanceSuggestion": "Suggestion",
     "errorFetchingWordInfo": "Falleva recercar information del parola",
     "contentCreatedBy": "Create per",
-    "coursePreview": "Previsualisation del curso"
+    "coursePreview": "Previsualisation del curso",
+    "numActivities": "{count, plural, =1{1 activitate} other{{count} activitates}}"
 }

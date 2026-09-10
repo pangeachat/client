@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "تجویز",
     "errorFetchingWordInfo": "لفظ کی معلومات حاصل کرنے میں ناکامی",
     "contentCreatedBy": "تخلیق کردہ",
-    "coursePreview": "کورس کا جائزہ"
+    "coursePreview": "کورس کا جائزہ",
+    "numActivities": "{count, plural, =1{1 سرگرمی} other{{count} سرگرمیاں}}"
 }

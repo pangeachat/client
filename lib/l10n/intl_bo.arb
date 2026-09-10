@@ -9520,5 +9520,6 @@
     "writingAssistanceSuggestion": "བསམ་འཆར།",
     "errorFetchingWordInfo": "ཚིག་གི་ཆ་འཕྲིན་ལེན་མ་ཐུབ།",
     "contentCreatedBy": "བཟོ་མཁན།",
-    "coursePreview": "སློབ་ཚན་སྔོན་མཐོང་།"
+    "coursePreview": "སློབ་ཚན་སྔོན་མཐོང་།",
+    "numActivities": "{count, plural, =1{༡ བྱེད་སྒོ་} other{{count} བྱེད་སྒོ་}}"
 }

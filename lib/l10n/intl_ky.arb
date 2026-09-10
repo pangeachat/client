@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "Сунуш",
     "errorFetchingWordInfo": "Сөз маалыматын алуу мүмкүн болбой калды",
     "contentCreatedBy": "Түзгөн",
-    "coursePreview": "Курсту алдын ала көрүү"
+    "coursePreview": "Курсту алдын ала көрүү",
+    "numActivities": "{count, plural, =1{1 иш-аракет} other{{count} иш-аракеттер}}"
 }

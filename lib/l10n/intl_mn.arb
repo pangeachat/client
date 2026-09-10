@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "Санал",
     "errorFetchingWordInfo": "Үгийн мэдээлэл татаж чадсангүй",
     "contentCreatedBy": "Үүсгэсэн",
-    "coursePreview": "Хичээлийн урьдчилсан харах"
+    "coursePreview": "Хичээлийн урьдчилсан харах",
+    "numActivities": "{count, plural, =1{1 үйл ажиллагаа} other{{count} үйл ажиллагаа}}"
 }

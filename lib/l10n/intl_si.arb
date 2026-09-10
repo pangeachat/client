@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "යෝජනාව",
     "errorFetchingWordInfo": "වචන තොරතුරු ලබාගැනීම අසාර්ථක විය",
     "contentCreatedBy": "නිර්මාණය කළේ",
-    "coursePreview": "පාඨමාලා පෙරදසුන"
+    "coursePreview": "පාඨමාලා පෙරදසුන",
+    "numActivities": "{count, plural, =1{ක්‍රියාකාරකම් 1ක්} other{ක්‍රියාකාරකම් {count}ක්}}"
 }

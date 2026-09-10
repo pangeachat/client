@@ -2313,5 +2313,6 @@
     "writingAssistanceSuggestion": "Àbá",
     "errorFetchingWordInfo": "Kò lè gba ìsọfúnni ọ̀rọ̀",
     "contentCreatedBy": "Ẹlẹ́dàá",
-    "coursePreview": "Aworan iṣaaju ti ikẹkọọ"
+    "coursePreview": "Aworan iṣaaju ti ikẹkọọ",
+    "numActivities": "{count, plural, =1{iṣẹ́ kan} other{{count} àwọn iṣẹ́}}"
 }

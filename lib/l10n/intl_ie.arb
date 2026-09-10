@@ -10541,5 +10541,6 @@
     "writingAssistanceSuggestion": "Moladh",
     "errorFetchingWordInfo": "Níor éirigh leis an eolas focal a fháil",
     "contentCreatedBy": "Cruthaithe ag",
-    "coursePreview": "Réamhbhreathnú ar an gcúrsa"
+    "coursePreview": "Réamhbhreathnú ar an gcúrsa",
+    "numActivities": "{count, plural, =1{1 gníomhaíocht} other{{count} gníomhaíochtaí}}"
 }

@@ -9913,5 +9913,6 @@
     "writingAssistanceSuggestion": "Taklif",
     "errorFetchingWordInfo": "So'z ma'lumotlarini olishda xatolik yuz berdi",
     "contentCreatedBy": "Yaratdi",
-    "coursePreview": "Kursni ko'rib chiqish"
+    "coursePreview": "Kursni ko'rib chiqish",
+    "numActivities": "{count, plural, =1{1 faoliyat} other{{count} faoliyat}}"
 }
