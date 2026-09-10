@@ -1708,3 +1708,28 @@ until the design is Codex-green.
   reduced-motion) + the D4 accessible seek affordance (Semantics on the time/avatar announcing audioStart;
   text stays selectable). Takes the controller's outputs + an onSeekTurn callback as INPUTS; wiring is
   agent 5. Agent 2 is done, so agent 3 is the only live agent (sequential, shares turn_timeline.dart).
+
+## 2026-09-10 (cont) — agent 3 (karaoke render) committed 07f7598516; cold-gate -> fixer
+- Agent 3 (a142b64c35a6710c7) committed 07f7598516: karaoke render in TurnTimeline (accent BorderDirectional
+  + alphaBlend tint highlight; identity GlobalKeys; ensureVisible auto-scroll w/ a deeply-reasoned scroll
+  state machine -- _autoScrollSuspended/_autoScrollInFlight/_startingAutoScroll/generation, all justified
+  against the Flutter scroll-activity source; Semantics seek affordance on the timestamp only, text stays
+  selectable). Self-Codex 8 rounds (render) + 4 (tests) -> CORRECT. 39 mutation-proven tests; 1741 calls
+  bucket. NEW interface: TurnTimeline({turns, activeIndex, isPlaying, onSeekTurn}); activeIndex null =>
+  byte-identical to before (verified). Deviations flagged: NotificationListener<UserScrollNotification> is
+  DEAD CODE here (widget sits below the scrollable's notificationContext) -> observes ScrollPosition
+  directly; reused an existing arb key for the seek label to avoid gen-l10n churn.
+- My cold gate, split scroll (gate-a3-scroll) + render (gate-a3-render), both ISSUES-FOUND. CORRECT:
+  highlight (RTL, own/peer preserved), null-gate render, generation guard, deferral, lifecycle/leaks.
+  Actionable (in agent 3 scope): (Q1 scroll) activeIndex-null + isPlaying-non-null still attaches the
+  isPlaying listener -> master gate not enforced for that combo (gate flagged softening:yes, but it's a
+  ROBUSTNESS gap not test-rigging -- the null-gate invariant test is legit); (Q2 render) seek Semantics
+  label is "Play 0:12" not the spec's "Play from 0:12".
+- FIXER (a66ab6900d12ea396) dispatched: gate isPlaying attach on activeIndex!=null (+ test hasListeners);
+  add a proper "Play from {time}" l10n string + gen-l10n (+ test). On return I cold-gate.
+- >>> AGENT 5 REQUIREMENTS (from the gate, NOT agent-3 bugs -- the widget can't close these):
+  (1) the layout must use a SINGLE scrollable (TurnTimeline observes only the nearest ancestor
+  ScrollPosition); (2) to close the keyboard/scrollbar-interrupts-auto-scroll gap, the WIRING should report
+  user-scroll intent from ABOVE the scrollable (the widget can't distinguish a keyboard scroll that
+  supersedes a DrivenScrollActivity); (3) the caller must update the controller AND widget.turns in the
+  SAME tick (the deferred index resolution assumes it). Fold these into agent 5's brief.
