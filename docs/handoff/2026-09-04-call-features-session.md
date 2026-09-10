@@ -1600,3 +1600,24 @@ until the design is Codex-green.
 - PROCESS NOTE: agent codex self-gate keeps stalling (backgrounded). Fallback (verify local-green + my cold
   gate as sole gate) works but costs me the verify+commit. If it recurs, switch agents to "commit on
   local-green, my cold gate is the gate" explicitly.
+
+## 2026-09-10 (cont) — step 1 test-strengthening accepted (9b31e5be9e); concurrency LESSON
+- The "stalled" fixer r2 (a190b6aa9baf96261) was NOT dead -- its codex self-gate resumed, it found I'd
+  already committed its work (f12bcac0ad) + moved on, verified the landed production code byte-identical
+  to what it wrote, and its own 4-round codex found 2 TEST gaps on the landed fix -> committed 9b31e5be9e
+  (TEST-ONLY, +145/-9): (a) the "merge names only one" test only had ONE turn for the affected sender ->
+  strengthened to TWO (both null); (b) added a 3-duplicate+rebuild test (ordinals continue past 2; key
+  SET stable across rebuild = fresh map per _turnsOf). I READ the diff: pure strengthening (the 9
+  deletions replace a 1-turn assertion with a 2-turn loop), mutation-proven, GATE-SOFTENING no. Accepted
+  on my read + the r3 pinning gate + the fixer's 4-round self-gate (no redundant 4th codex). Tests 96/96,
+  full bucket 1698 -- STEP 1 fully done + strengthened.
+- LESSON (concurrency): I dispatched agent 2 into the SAME worktree believing the fixer had died on its
+  stall. It hadn't -- it resurrected and committed on top, so two agents were briefly live in one
+  worktree. It worked out (fixer's commit was test-only; it carefully staged only its file, left agent 2's
+  untracked files alone; no conflict), but it violated the protocol's "parallel same-repo agents each get
+  their own worktree." RULE going forward: a "stalled" agent is not confirmed dead; before dispatching the
+  next agent into a shared worktree, confirm the prior is terminated OR isolate. Agents 3/4/5 are SEQUENTIAL
+  (share transcript_view.dart) so only one at a time -- do NOT dispatch the next until the prior is done +
+  cold-gated. Agent 2 (af6b526de0e01f128) is the only live agent now.
+- Unrelated shared-stack stash present (WIP on satvik/call-audio-recording) -- another worktree's, NOT
+  mine; never touch it.
