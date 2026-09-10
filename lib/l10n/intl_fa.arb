@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-10 09:51:40.390373",
+    "@@last_modified": "2026-09-10 16:50:19.696329",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9998,5 +9998,9 @@
     "errorFetchingWordInfo": "دریافت اطلاعات کلمه با مشکل مواجه شد",
     "contentCreatedBy": "ایجاد شده توسط",
     "coursePreview": "پیش‌نمایش دوره",
-    "numActivities": "{count, plural, =1{۱ فعالیت} other{{count} فعالیت}}"
+    "numActivities": "{count, plural, =1{۱ فعالیت} other{{count} فعالیت}}",
+    "teacherAnalyticsRequestTitle": "معلم درخواست پیشرفت یادگیری شما را دارد",
+    "teacherAnalyticsRequestDesc": "آنها تمام کلمات و گرامری را که در {targetLang} استفاده کرده‌اید، سطح و XP شما، و پیام‌های ارسال شده در فعالیت‌های دوره را خواهند دید. پیام‌های ۱ به ۱ شما به اشتراک گذاشته نخواهند شد. به اشتراک گذاشتن تحلیل‌ها برای پیوستن به دوره الزامی است.",
+    "shareAndJoin": "اشتراک‌گذاری و پیوستن",
+    "goBack": "بازگشت"
 }

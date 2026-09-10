@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-09-10 09:51:42.018934",
+    "@@last_modified": "2026-09-10 16:50:26.420660",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "Di wod infomeshon nɔ kɔmɔt",
     "contentCreatedBy": "Pikin we mek am",
     "coursePreview": "Kɔs witnes",
-    "numActivities": "{count, plural, =1{1 aktiviti} other{{count} aktiviti dɛn}}"
+    "numActivities": "{count, plural, =1{1 aktiviti} other{{count} aktiviti dɛn}}",
+    "teacherAnalyticsRequestTitle": "Ticha de ask fɔ si aw yu de lɔn",
+    "teacherAnalyticsRequestDesc": "Dɛn go si ɔl di wɔd dɛn ɛn grama we yu dɔn yuz insay {targetLang}, yu lɛvul ɛn XP, ɛn di mɛsej dɛn we yu sɛn insay di kɔs aktiviti dɛn. Yu wan-ɔn-wan mɛsej dɛn nɔ go shɛb. Fɔ shɛb yu analitiks na impɔtant fɔ jɔyn di kɔs.",
+    "shareAndJoin": "Shɛb ɛn jɔyn",
+    "goBack": "Go bak"
 }

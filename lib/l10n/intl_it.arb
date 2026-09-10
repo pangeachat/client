@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-10 09:51:41.511599",
+    "@@last_modified": "2026-09-10 16:50:23.626760",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9983,5 +9983,9 @@
     "errorFetchingWordInfo": "Impossibile recuperare le informazioni sulla parola",
     "contentCreatedBy": "Creato da",
     "coursePreview": "Anteprima del corso",
-    "numActivities": "{count, plural, =1{1 attività} other{{count} attività}}"
+    "numActivities": "{count, plural, =1{1 attività} other{{count} attività}}",
+    "teacherAnalyticsRequestTitle": "L'insegnante richiede i tuoi progressi di apprendimento",
+    "teacherAnalyticsRequestDesc": "Vedrà tutte le parole e la grammatica che hai usato in {targetLang}, il tuo livello e i tuoi XP, e i messaggi inviati nelle attività del corso. I tuoi messaggi 1 a 1 non saranno condivisi. La condivisione dei dati analitici è necessaria per partecipare al corso.",
+    "shareAndJoin": "Condividi e partecipa",
+    "goBack": "Torna indietro"
 }

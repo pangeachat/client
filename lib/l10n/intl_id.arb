@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-10 09:51:41.330062",
+    "@@last_modified": "2026-09-10 16:50:23.137617",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9983,5 +9983,9 @@
     "errorFetchingWordInfo": "Gagal mengambil info kata",
     "contentCreatedBy": "Dibuat oleh",
     "coursePreview": "Pratinjau kursus",
-    "numActivities": "{count, plural, =1{1 aktivitas} other{{count} aktivitas}}"
+    "numActivities": "{count, plural, =1{1 aktivitas} other{{count} aktivitas}}",
+    "teacherAnalyticsRequestTitle": "Guru meminta progres belajar Anda",
+    "teacherAnalyticsRequestDesc": "Mereka akan melihat semua kata dan tata bahasa yang Anda gunakan dalam {targetLang}, level dan XP Anda, serta pesan yang dikirim dalam aktivitas kursus. Pesan 1 lawan 1 Anda tidak akan dibagikan. Berbagi analitik diperlukan untuk bergabung dengan kursus.",
+    "shareAndJoin": "Bagikan dan bergabung",
+    "goBack": "Kembali"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-10 09:51:40.962400",
+    "@@last_modified": "2026-09-10 16:50:21.667828",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10824,5 +10824,9 @@
     "errorFetchingWordInfo": "אחזור פרטי המילה נכשל",
     "contentCreatedBy": "נוצר על ידי",
     "coursePreview": "תצוגה מקדימה של הקורס",
-    "numActivities": "{count, plural, =1{פעילות 1} other{{count} פעילויות}}"
+    "numActivities": "{count, plural, =1{פעילות 1} other{{count} פעילויות}}",
+    "teacherAnalyticsRequestTitle": "המורה מבקש את התקדמות הלמידה שלך",
+    "teacherAnalyticsRequestDesc": "הם יראו את כל המילים והדקדוק שהשתמשת בהם ב-{targetLang}, את הרמה ונקודות הניסיון שלך, ואת ההודעות שנשלחו בפעילויות הקורס. ההודעות האישיות שלך לא ישותפו. שיתוף נתונים אנליטיים נדרש כדי להצטרף לקורס.",
+    "shareAndJoin": "שתף והצטרף",
+    "goBack": "חזור"
 }

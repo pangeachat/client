@@ -1334,7 +1334,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-09-10 09:51:39.965300",
+    "@@last_modified": "2026-09-10 16:50:18.710284",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10830,5 +10830,9 @@
     "errorFetchingWordInfo": "Kunne ikke hente ordinfo",
     "contentCreatedBy": "Oprettet af",
     "coursePreview": "Forhåndsvisning af kursus",
-    "numActivities": "{count, plural, =1{1 aktivitet} other{{count} aktiviteter}}"
+    "numActivities": "{count, plural, =1{1 aktivitet} other{{count} aktiviteter}}",
+    "teacherAnalyticsRequestTitle": "Lærer anmoder om dine læringsfremskridt",
+    "teacherAnalyticsRequestDesc": "De vil se alle de ord og grammatik, du har brugt på {targetLang}, dit niveau og XP, og de beskeder, der er sendt i kursusaktiviteter. Dine 1-til-1-beskeder vil ikke blive delt. Deling af analyser er påkrævet for at deltage i kurset.",
+    "shareAndJoin": "Del og deltag",
+    "goBack": "Gå tilbage"
 }

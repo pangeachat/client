@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-09-10 09:51:41.516768",
+    "@@last_modified": "2026-09-10 16:50:23.441325",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "Mistókst að sækja orðaupplýsingar",
     "contentCreatedBy": "Búið til af",
     "coursePreview": "Forskoðun námskeiðs",
-    "numActivities": "{count, plural, =1{1 virkni} other{{count} virknir}}"
+    "numActivities": "{count, plural, =1{1 virkni} other{{count} virknir}}",
+    "teacherAnalyticsRequestTitle": "Kennari biður um framvindu náms þíns",
+    "teacherAnalyticsRequestDesc": "Þeir munu sjá öll orð og málfræði sem þú hefur notað í {targetLang}, stig þitt og XP, og skilaboð send í námskeiðsverkefnum. 1-á-1 skilaboðin þín verða ekki deilt. Deiling greiningargagna er nauðsynleg til að taka þátt í námskeiðinu.",
+    "shareAndJoin": "Deila og taka þátt",
+    "goBack": "Fara til baka"
 }

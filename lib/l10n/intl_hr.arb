@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-09-10 09:51:40.999266",
+    "@@last_modified": "2026-09-10 16:50:22.274176",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10346,5 +10346,9 @@
     "errorFetchingWordInfo": "Dohvaćanje informacija o riječi nije uspjelo",
     "contentCreatedBy": "Izradio",
     "coursePreview": "Pregled tečaja",
-    "numActivities": "{count, plural, =1{1 aktivnost} other{{count} aktivnosti}}"
+    "numActivities": "{count, plural, =1{1 aktivnost} other{{count} aktivnosti}}",
+    "teacherAnalyticsRequestTitle": "Profesor traži vaš napredak u učenju",
+    "teacherAnalyticsRequestDesc": "Vidjet će sve riječi i gramatiku koje ste koristili u {targetLang}, vašu razinu i XP, te poruke poslane u aktivnostima tečaja. Vaše 1-na-1 poruke neće biti podijeljene. Dijeljenje analitike je obavezno za pridruživanje tečaju.",
+    "shareAndJoin": "Podijeli i pridruži se",
+    "goBack": "Natrag"
 }

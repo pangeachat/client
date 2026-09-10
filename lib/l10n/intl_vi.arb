@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-10 09:51:45.156552",
+    "@@last_modified": "2026-09-10 16:50:33.473519",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7202,5 +7202,9 @@
     "errorFetchingWordInfo": "Không thể tìm nạp thông tin từ",
     "contentCreatedBy": "Được tạo bởi",
     "coursePreview": "Xem trước khóa học",
-    "numActivities": "{count, plural, =1{1 hoạt động} other{{count} hoạt động}}"
+    "numActivities": "{count, plural, =1{1 hoạt động} other{{count} hoạt động}}",
+    "teacherAnalyticsRequestTitle": "Giáo viên yêu cầu xem tiến độ học tập của bạn",
+    "teacherAnalyticsRequestDesc": "Họ sẽ thấy tất cả các từ và ngữ pháp bạn đã sử dụng trong {targetLang}, cấp độ và XP của bạn, cũng như các tin nhắn đã gửi trong hoạt động khóa học. Tin nhắn 1-1 của bạn sẽ không được chia sẻ. Chia sẻ phân tích là bắt buộc để tham gia khóa học.",
+    "shareAndJoin": "Chia sẻ và tham gia",
+    "goBack": "Quay lại"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-09-10 09:51:39.864168",
+    "@@last_modified": "2026-09-10 16:50:19.078055",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "Fallimentu di ricuperà l'infurmazione di a parolla",
     "contentCreatedBy": "Creatu da",
     "coursePreview": "Anticipu di u corsu",
-    "numActivities": "{count, plural, =1{1 attività} other{{count} attività}}"
+    "numActivities": "{count, plural, =1{1 attività} other{{count} attività}}",
+    "teacherAnalyticsRequestTitle": "U prufessore dumanda u vostru prugressu d'apprendimentu",
+    "teacherAnalyticsRequestDesc": "Videranu tutte e parolle è a grammatica chì avete usatu in {targetLang}, u vostru livellu è XP, è i messaghji mandati in l'attività di u corsu. I vostri messaghji 1-à-1 ùn seranu micca spartuti. A spartera di l'analitiche hè necessaria per unisce à u corsu.",
+    "shareAndJoin": "Sparte è unisciti",
+    "goBack": "Torna in daretu"
 }

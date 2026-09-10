@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-09-10 09:51:39.118208",
+    "@@last_modified": "2026-09-10 16:50:17.322574",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "Preuzimanje informacija o riječi nije uspjelo",
     "contentCreatedBy": "Kreirao/la",
     "coursePreview": "Pregled kursa",
-    "numActivities": "{count, plural, =1{1 aktivnost} other{{count} aktivnosti}}"
+    "numActivities": "{count, plural, =1{1 aktivnost} other{{count} aktivnosti}}",
+    "teacherAnalyticsRequestTitle": "Nastavnik traži vaš napredak u učenju",
+    "teacherAnalyticsRequestDesc": "Vidjet će sve riječi i gramatiku koje ste koristili u {targetLang}, vaš nivo i XP, te poruke poslane u aktivnostima kursa. Vaše poruke 1-na-1 neće biti podijeljene. Dijeljenje analitike je obavezno za pridruživanje kursu.",
+    "shareAndJoin": "Podijeli i pridruži se",
+    "goBack": "Nazad"
 }

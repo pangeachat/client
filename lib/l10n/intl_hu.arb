@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-09-10 09:51:41.159851",
+    "@@last_modified": "2026-09-10 16:50:22.851474",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10013,5 +10013,9 @@
     "errorFetchingWordInfo": "A szóadatok lekérése sikertelen",
     "contentCreatedBy": "Létrehozta",
     "coursePreview": "Tanfolyam előnézete",
-    "numActivities": "{count, plural, =1{1 tevékenység} other{{count} tevékenység}}"
+    "numActivities": "{count, plural, =1{1 tevékenység} other{{count} tevékenység}}",
+    "teacherAnalyticsRequestTitle": "A tanár kéri a tanulási haladásodat",
+    "teacherAnalyticsRequestDesc": "Látni fogja az összes szót és nyelvtant, amit használtál a(z) {targetLang} nyelvben, a szintedet és az XP-det, valamint a tanfolyami tevékenységek során küldött üzeneteket. Az 1-az-1-hez üzeneteid nem lesznek megosztva. Az analitika megosztása kötelező a tanfolyamhoz való csatlakozáshoz.",
+    "shareAndJoin": "Megosztás és csatlakozás",
+    "goBack": "Vissza"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-09-10 09:51:44.577813",
+    "@@last_modified": "2026-09-10 16:50:32.389496",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "Imeshindwa kupata maelezo ya neno",
     "contentCreatedBy": "Imeundwa na",
     "coursePreview": "Onyesho la kukagua kozi",
-    "numActivities": "{count, plural, =1{shughuli 1} other{shughuli {count}}}"
+    "numActivities": "{count, plural, =1{shughuli 1} other{shughuli {count}}}",
+    "teacherAnalyticsRequestTitle": "Mwalimu anaomba maendeleo yako ya kujifunza",
+    "teacherAnalyticsRequestDesc": "Wataona maneno na sarufi zote ulizotumia katika {targetLang}, kiwango chako na XP, na jumbe zilizotumwa katika shughuli za kozi. Jumbe zako za 1-kwa-1 hazitashirikiwa. Kushiriki takwimu kunahitajika ili kujiunga na kozi.",
+    "shareAndJoin": "Shiriki na ujiunge",
+    "goBack": "Rudi nyuma"
 }

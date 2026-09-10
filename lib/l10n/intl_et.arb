@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-09-10 09:51:40.314815",
+    "@@last_modified": "2026-09-10 16:50:19.893254",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9907,5 +9907,9 @@
     "errorFetchingWordInfo": "Sõnateabe hankimine ebaõnnestus",
     "contentCreatedBy": "Looja",
     "coursePreview": "Kursuse eelvaade",
-    "numActivities": "{count, plural, =1{1 tegevus} other{{count} tegevust}}"
+    "numActivities": "{count, plural, =1{1 tegevus} other{{count} tegevust}}",
+    "teacherAnalyticsRequestTitle": "Õpetaja soovib näha sinu õppimise edenemist",
+    "teacherAnalyticsRequestDesc": "Nad näevad kõiki sõnu ja grammatikat, mida oled kasutanud keeles {targetLang}, sinu taset ja XP-d ning kursuse tegevustes saadetud sõnumeid. Sinu 1-ühele sõnumeid ei jagata. Kursusega liitumiseks on analüütika jagamine kohustuslik.",
+    "shareAndJoin": "Jaga ja liitu",
+    "goBack": "Mine tagasi"
 }

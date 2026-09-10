@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-09-10 09:51:40.155539",
+    "@@last_modified": "2026-09-10 16:50:19.640328",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8129,5 +8129,9 @@
     "errorFetchingWordInfo": "Error al obtener la información de la palabra",
     "contentCreatedBy": "Creado por",
     "coursePreview": "Vista previa del curso",
-    "numActivities": "{count, plural, =1{1 actividad} other{{count} actividades}}"
+    "numActivities": "{count, plural, =1{1 actividad} other{{count} actividades}}",
+    "teacherAnalyticsRequestTitle": "El profesor solicita tu progreso de aprendizaje",
+    "teacherAnalyticsRequestDesc": "Verá todas las palabras y la gramática que has usado en {targetLang}, tu nivel y XP, y los mensajes enviados en las actividades del curso. Tus mensajes individuales no se compartirán. Es necesario compartir los análisis para unirte al curso.",
+    "shareAndJoin": "Compartir y unirse",
+    "goBack": "Volver"
 }

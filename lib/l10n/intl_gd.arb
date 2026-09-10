@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-09-10 09:51:40.589053",
+    "@@last_modified": "2026-09-10 16:50:21.382860",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "Dh'fhàillig fiosrachadh facal fhaighinn",
     "contentCreatedBy": "Air a chruthachadh le",
     "coursePreview": "Ro-shealladh cùrsa",
-    "numActivities": "{count, plural, =1{1 ghnìomhachd} other{{count} gnìomhachdan}}"
+    "numActivities": "{count, plural, =1{1 ghnìomhachd} other{{count} gnìomhachdan}}",
+    "teacherAnalyticsRequestTitle": "Tha tidsear ag iarraidh d’fhiosrachadh adhartais ionnsachaidh",
+    "teacherAnalyticsRequestDesc": "Chì iad na faclan is gràmar a chleachd thu ann an {targetLang}, d’ìre is XP, agus na teachdaireachdan a chaidh a chur ann an gnìomhachdan cùrsa. Cha tèid na teachdaireachdan 1-air-1 agad a cho-roinn. Feumar anailisean a cho-roinn gus a dhol a-steach don chùrsa.",
+    "shareAndJoin": "Co-roinn is gabh a-steach",
+    "goBack": "Rach air ais"
 }

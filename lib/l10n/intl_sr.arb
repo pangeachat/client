@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-10 09:51:44.097044",
+    "@@last_modified": "2026-09-10 16:50:31.611075",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10859,5 +10859,9 @@
     "errorFetchingWordInfo": "Nije uspelo preuzimanje informacija o reči",
     "contentCreatedBy": "Kreirao/la",
     "coursePreview": "Pregled kursa",
-    "numActivities": "{count, plural, =1{1 aktivnost} other{{count} aktivnosti}}"
+    "numActivities": "{count, plural, =1{1 aktivnost} other{{count} aktivnosti}}",
+    "teacherAnalyticsRequestTitle": "Nastavnik zahteva vaš napredak u učenju",
+    "teacherAnalyticsRequestDesc": "Videće sve reči i gramatiku koje ste koristili u {targetLang}, vaš nivo i XP, kao i poruke poslate u aktivnostima kursa. Vaše 1-na-1 poruke neće biti deljene. Deljenje analitike je obavezno za pridruživanje kursu.",
+    "shareAndJoin": "Podeli i pridruži se",
+    "goBack": "Nazad"
 }

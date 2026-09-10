@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-09-10 09:51:45.091744",
+    "@@last_modified": "2026-09-10 16:50:33.513987",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "لفظ کی معلومات حاصل کرنے میں ناکامی",
     "contentCreatedBy": "تخلیق کردہ",
     "coursePreview": "کورس کا جائزہ",
-    "numActivities": "{count, plural, =1{1 سرگرمی} other{{count} سرگرمیاں}}"
+    "numActivities": "{count, plural, =1{1 سرگرمی} other{{count} سرگرمیاں}}",
+    "teacherAnalyticsRequestTitle": "استاد آپ کی سیکھنے کی پیشرفت کی درخواست کرتا ہے",
+    "teacherAnalyticsRequestDesc": "وہ تمام الفاظ اور گرامر دیکھیں گے جو آپ نے {targetLang} میں استعمال کیے ہیں، آپ کی سطح اور XP، اور کورس کی سرگرمیوں میں بھیجے گئے پیغامات۔ آپ کے 1-on-1 پیغامات شیئر نہیں کیے جائیں گے۔ کورس میں شامل ہونے کے لیے تجزیات کا اشتراک کرنا ضروری ہے۔",
+    "shareAndJoin": "شیئر کریں اور شامل ہوں",
+    "goBack": "واپس جائیں"
 }

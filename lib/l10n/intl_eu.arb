@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-09-10 09:51:40.257388",
+    "@@last_modified": "2026-09-10 16:50:19.958393",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9910,5 +9910,9 @@
     "errorFetchingWordInfo": "Ezin izan da hitzaren informazioa eskuratu",
     "contentCreatedBy": "Nork sortua",
     "coursePreview": "Ikastaroaren aurrebista",
-    "numActivities": "{count, plural, =1{jarduera 1} other{{count} jarduera}}"
+    "numActivities": "{count, plural, =1{jarduera 1} other{{count} jarduera}}",
+    "teacherAnalyticsRequestTitle": "Irakasleak zure ikaskuntza-aurrerapena eskatzen du",
+    "teacherAnalyticsRequestDesc": "Erabili dituzun hitz eta gramatika guztiak ikusiko dituzte {targetLang} hizkuntzan, zure maila eta XP, eta ikastaro-jardueretan bidalitako mezuak. Zure banakako mezuak ez dira partekatuko. Analitika partekatzea derrigorrezkoa da ikastaroan sartzeko.",
+    "shareAndJoin": "Partekatu eta sartu",
+    "goBack": "Atzera"
 }

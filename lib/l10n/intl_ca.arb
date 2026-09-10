@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-10 09:51:39.651396",
+    "@@last_modified": "2026-09-10 16:50:18.443498",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10037,5 +10037,9 @@
     "errorFetchingWordInfo": "No s'ha pogut obtenir la informació de la paraula",
     "contentCreatedBy": "Creat per",
     "coursePreview": "Previsualització del curs",
-    "numActivities": "{count, plural, =1{1 activitat} other{{count} activitats}}"
+    "numActivities": "{count, plural, =1{1 activitat} other{{count} activitats}}",
+    "teacherAnalyticsRequestTitle": "El professor sol·licita el teu progrés d'aprenentatge",
+    "teacherAnalyticsRequestDesc": "Veuran totes les paraules i la gramàtica que has utilitzat a {targetLang}, el teu nivell i XP, i els missatges enviats a les activitats del curs. Els teus missatges 1 a 1 no es compartiran. Cal compartir les analítiques per unir-se al curs.",
+    "shareAndJoin": "Compartir i unir-se",
+    "goBack": "Tornar"
 }

@@ -1324,7 +1324,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-09-10 09:51:44.546842",
+    "@@last_modified": "2026-09-10 16:50:32.791104",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10860,5 +10860,9 @@
     "errorFetchingWordInfo": "పద సమాచారాన్ని పొందడంలో విఫలమైంది",
     "contentCreatedBy": "దీనిని సృష్టించినవారు",
     "coursePreview": "కోర్సు ప్రివ్యూ",
-    "numActivities": "{count, plural, =1{1 కార్యాచరణ} other{{count} కార్యాచరణలు}}"
+    "numActivities": "{count, plural, =1{1 కార్యాచరణ} other{{count} కార్యాచరణలు}}",
+    "teacherAnalyticsRequestTitle": "ఉపాధ్యాయుడు మీ అభ్యాస పురోగతిని అభ్యర్థిస్తున్నాడు",
+    "teacherAnalyticsRequestDesc": "వారు మీరు {targetLang}లో ఉపయోగించిన అన్ని పదాలు మరియు వ్యాకరణం, మీ స్థాయి మరియు XP, మరియు కోర్సు కార్యకలాపాలలో పంపిన సందేశాలను చూస్తారు. మీ 1-ఆన్-1 సందేశాలు భాగస్వామ్యం చేయబడవు. కోర్సులో చేరడానికి విశ్లేషణలను భాగస్వామ్యం చేయడం అవసరం.",
+    "shareAndJoin": "భాగస్వామ్యం చేసి చేరండి",
+    "goBack": "వెనుకకు వెళ్ళు"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-09-10 09:51:43.474381",
+    "@@last_modified": "2026-09-10 16:50:29.480099",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9995,5 +9995,9 @@
     "errorFetchingWordInfo": "Nie udało się pobrać informacji o słowie",
     "contentCreatedBy": "Utworzone przez",
     "coursePreview": "Podgląd kursu",
-    "numActivities": "{count, plural, =1{1 aktywność} other{{count} aktywności}}"
+    "numActivities": "{count, plural, =1{1 aktywność} other{{count} aktywności}}",
+    "teacherAnalyticsRequestTitle": "Nauczyciel prosi o Twój postęp w nauce",
+    "teacherAnalyticsRequestDesc": "Nauczyciel zobaczy wszystkie słowa i gramatykę, których użyłeś w {targetLang}, Twój poziom i XP, oraz wiadomości wysłane w ramach zajęć. Twoje wiadomości 1-na-1 nie będą udostępniane. Udostępnianie danych analitycznych jest wymagane, aby dołączyć do kursu.",
+    "shareAndJoin": "Udostępnij i dołącz",
+    "goBack": "Wróć"
 }

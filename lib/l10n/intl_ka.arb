@@ -1937,7 +1937,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-09-10 09:51:41.721476",
+    "@@last_modified": "2026-09-10 16:50:24.618805",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10810,5 +10810,9 @@
     "errorFetchingWordInfo": "სიტყვის ინფორმაციის მოძიება ვერ მოხერხდა",
     "contentCreatedBy": "შექმნილია",
     "coursePreview": "კურსის გადახედვა",
-    "numActivities": "{count, plural, =1{1 აქტივობა} other{{count} აქტივობა}}"
+    "numActivities": "{count, plural, =1{1 აქტივობა} other{{count} აქტივობა}}",
+    "teacherAnalyticsRequestTitle": "მასწავლებელი ითხოვს თქვენს პროგრესს",
+    "teacherAnalyticsRequestDesc": "ისინი ნახავენ ყველა სიტყვას და გრამატიკას, რომელიც თქვენ გამოიყენეთ {targetLang}-ში, თქვენს დონესა და XP-ს, და კურსის აქტივობებში გაგზავნილ შეტყობინებებს. თქვენი 1-on-1 შეტყობინებები არ გაზიარდება. კურსზე გასაწევრიანებლად ანალიტიკის გაზიარება სავალდებულოა.",
+    "shareAndJoin": "გაზიარება და შეერთება",
+    "goBack": "უკან დაბრუნება"
 }

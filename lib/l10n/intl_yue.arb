@@ -1263,7 +1263,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-09-10 09:51:45.468335",
+    "@@last_modified": "2026-09-10 16:50:34.368255",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10867,5 +10867,9 @@
     "errorFetchingWordInfo": "未能獲取單字資訊",
     "contentCreatedBy": "創建者",
     "coursePreview": "課程預覽",
-    "numActivities": "{count, plural, =1{1 個活動} other{{count} 個活動}}"
+    "numActivities": "{count, plural, =1{1 個活動} other{{count} 個活動}}",
+    "teacherAnalyticsRequestTitle": "老師要求你的學習進度",
+    "teacherAnalyticsRequestDesc": "他們會看到你在{targetLang}中使用的所有單字和文法、你的等級和經驗值，以及在課程活動中發送的訊息。你的1對1訊息將不會被分享。分享分析是加入課程的必要條件。",
+    "shareAndJoin": "分享並加入",
+    "goBack": "返回"
 }

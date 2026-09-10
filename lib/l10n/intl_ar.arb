@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-09-10 09:51:39.239893",
+    "@@last_modified": "2026-09-10 16:50:17.386487",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10216,5 +10216,9 @@
     "errorFetchingWordInfo": "فشل جلب معلومات الكلمة",
     "contentCreatedBy": "تم الإنشاء بواسطة",
     "coursePreview": "معاينة الدورة",
-    "numActivities": "{count, plural, =1{نشاط واحد} other{{count} أنشطة}}"
+    "numActivities": "{count, plural, =1{نشاط واحد} other{{count} أنشطة}}",
+    "teacherAnalyticsRequestTitle": "المعلم يطلب تقدمك التعليمي",
+    "teacherAnalyticsRequestDesc": "سيرون جميع الكلمات والقواعد التي استخدمتها في {targetLang}، ومستواك ونقاط الخبرة، والرسائل المرسلة في أنشطة الدورة التدريبية. لن تتم مشاركة رسائلك الفردية. مشاركة التحليلات مطلوبة للانضمام إلى الدورة التدريبية.",
+    "shareAndJoin": "مشاركة وانضمام",
+    "goBack": "العودة"
 }

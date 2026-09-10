@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-09-10 09:51:44.386315",
+    "@@last_modified": "2026-09-10 16:50:32.443945",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "Ho hlolehile ho fumana leseli la lentsoe",
     "contentCreatedBy": "E entsoe ke",
     "coursePreview": "Kakaretso ya thupelo",
-    "numActivities": "{count, plural, =1{1 mosebetsi} other{{count} mesebetsi}}"
+    "numActivities": "{count, plural, =1{1 mosebetsi} other{{count} mesebetsi}}",
+    "teacherAnalyticsRequestTitle": "Mosuoe o kopa tsoelo-pele ea hau ea ho ithuta",
+    "teacherAnalyticsRequestDesc": "Ba tla bona mantsoe le sebōpeho-puo tsohle tseo u li sebelisitseng ho {targetLang}, boemo ba hau le XP, le melaetsa e rometsoeng mesebetsing ea thupelo. Melaetsa ea hau ea motho ka mong e ke ke ea arolelanoa. Ho arolelana lintlha tsa tlhahlobo hoa hlokahala ho kenela thupelo.",
+    "shareAndJoin": "Arolelana 'me u kene",
+    "goBack": "Khutla"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-09-10 09:51:42.118208",
+    "@@last_modified": "2026-09-10 16:50:25.593290",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "Сөз маалыматын алуу мүмкүн болбой калды",
     "contentCreatedBy": "Түзгөн",
     "coursePreview": "Курсту алдын ала көрүү",
-    "numActivities": "{count, plural, =1{1 иш-аракет} other{{count} иш-аракеттер}}"
+    "numActivities": "{count, plural, =1{1 иш-аракет} other{{count} иш-аракеттер}}",
+    "teacherAnalyticsRequestTitle": "Мугалим сиздин окуу прогрессиңизди сурайт",
+    "teacherAnalyticsRequestDesc": "Алар сиздин {targetLang} тилинде колдонгон бардык сөздөрүңүздү жана грамматикаңызды, деңгээлиңизди жана XP'ңизди, ошондой эле курс иш-чараларында жөнөтүлгөн билдирүүлөрдү көрүшөт. Сиздин жеке билдирүүлөрүңүз бөлүшүлбөйт. Курска кошулуу үчүн аналитиканы бөлүшүү талап кылынат.",
+    "shareAndJoin": "Бөлүшүү жана кошулуу",
+    "goBack": "Артка кайтуу"
 }

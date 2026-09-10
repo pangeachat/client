@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-09-10 09:51:39.285786",
+    "@@last_modified": "2026-09-10 16:50:17.234090",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "Kon nie woordinligting kry nie",
     "contentCreatedBy": "Geskep deur",
     "coursePreview": "Kursusvoorskou",
-    "numActivities": "{count, plural, =1{1 aktiwiteit} other{{count} aktiwiteite}}"
+    "numActivities": "{count, plural, =1{1 aktiwiteit} other{{count} aktiwiteite}}",
+    "teacherAnalyticsRequestTitle": "Onderwyser versoek jou leervordering",
+    "teacherAnalyticsRequestDesc": "Hulle sal al die woorde en grammatika sien wat jy in {targetLang} gebruik het, jou vlak en XP, en die boodskappe wat in kursusaktiwiteite gestuur is. Jou 1-tot-1 boodskappe sal nie gedeel word nie. Die deel van analise is nodig om by die kursus aan te sluit.",
+    "shareAndJoin": "Deel en sluit aan",
+    "goBack": "Gaan terug"
 }

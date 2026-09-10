@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-09-10 09:51:42.539596",
+    "@@last_modified": "2026-09-10 16:50:27.247842",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "Tsy nahomby ny fakana ny mombamomba ny teny",
     "contentCreatedBy": "Noforonin'i",
     "coursePreview": "Topi-maso amin'ny taranja",
-    "numActivities": "{count, plural, =1{Hetsika 1} other{Hetsika {count}}}"
+    "numActivities": "{count, plural, =1{Hetsika 1} other{Hetsika {count}}}",
+    "teacherAnalyticsRequestTitle": "Mangataka ny fandrosoanao amin'ny fianarana ny mpampianatra anao",
+    "teacherAnalyticsRequestDesc": "Ho hitan'izy ireo avokoa ny teny sy fitsipika rehetra nampiasainao tamin'ny teny {targetLang}, ny haavonao sy ny XP-nao, ary ny hafatra nalefa tamin'ny hetsika fianarana. Tsy hozaraina ny hafatrao manokana. Ilaina ny fizarana ny angon-drakitra momba ny fandrosoanao mba hidirana amin'ny fianarana.",
+    "shareAndJoin": "Zarao ary midira",
+    "goBack": "Miverina"
 }

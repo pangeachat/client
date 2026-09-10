@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-10 09:51:40.085574",
+    "@@last_modified": "2026-09-10 16:50:19.801911",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10855,5 +10855,9 @@
     "errorFetchingWordInfo": "Malsukcesis preni vortinformon",
     "contentCreatedBy": "Kreita de",
     "coursePreview": "Antaŭrigardo de la kurso",
-    "numActivities": "{count, plural, =1{1 agado} other{{count} agadoj}}"
+    "numActivities": "{count, plural, =1{1 agado} other{{count} agadoj}}",
+    "teacherAnalyticsRequestTitle": "Instruisto petas vian lernan progreson",
+    "teacherAnalyticsRequestDesc": "Ili vidos ĉiujn vortojn kaj gramatikon, kiujn vi uzis en {targetLang}, vian nivelon kaj spertopunktojn, kaj la mesaĝojn senditajn en kursaj agadoj. Viaj unu-al-unu mesaĝoj ne estos kundividitaj. Kundivido de analizoj estas postulata por aliĝi al la kurso.",
+    "shareAndJoin": "Kunhavigi kaj aliĝi",
+    "goBack": "Reen"
 }

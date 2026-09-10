@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-09-10 09:51:42.377681",
+    "@@last_modified": "2026-09-10 16:50:26.645424",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "ບໍ່ສາມາດດຶງຂໍ້ມູນຄຳສັບໄດ້",
     "contentCreatedBy": "ສ້າງໂດຍ",
     "coursePreview": "ເບິ່ງຕົວຢ່າງຫຼັກສູດ",
-    "numActivities": "{count, plural, =1{1 ກິດຈະກຳ} other{{count} ກິດຈະກຳ}}"
+    "numActivities": "{count, plural, =1{1 ກິດຈະກຳ} other{{count} ກິດຈະກຳ}}",
+    "teacherAnalyticsRequestTitle": "ຄູຮ້ອງຂໍຄວາມຄືບໜ້າໃນການຮຽນຮູ້ຂອງທ່ານ",
+    "teacherAnalyticsRequestDesc": "ພວກເຂົາຈະເຫັນຄຳສັບ ແລະ ໄວຍາກອນທັງໝົດທີ່ທ່ານໃຊ້ໃນ {targetLang}, ລະດັບ ແລະ XP ຂອງທ່ານ, ແລະຂໍ້ຄວາມທີ່ສົ່ງໃນກິດຈະກຳຫຼັກສູດ. ຂໍ້ຄວາມ 1 ຕໍ່ 1 ຂອງທ່ານຈະບໍ່ຖືກແບ່ງປັນ. ການແບ່ງປັນການວິເຄາະແມ່ນຈຳເປັນເພື່ອເຂົ້າຮ່ວມຫຼັກສູດ.",
+    "shareAndJoin": "ແບ່ງປັນ ແລະ ເຂົ້າຮ່ວມ",
+    "goBack": "ກັບຄືນ"
 }

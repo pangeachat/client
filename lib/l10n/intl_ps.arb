@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-09-10 09:51:43.312058",
+    "@@last_modified": "2026-09-10 16:50:29.659864",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "د کلمې معلوماتو په ترلاسه کولو کې پاتې راغلی",
     "contentCreatedBy": "جوړ شوی د",
     "coursePreview": "د کورس مخکتنه",
-    "numActivities": "{count, plural, =1{1 فعالیت} other{{count} فعالیتونه}}"
+    "numActivities": "{count, plural, =1{1 فعالیت} other{{count} فعالیتونه}}",
+    "teacherAnalyticsRequestTitle": "ښوونکی ستاسو د زده کړې پرمختګ غواړي",
+    "teacherAnalyticsRequestDesc": "دوی به ټول هغه ټکي او ګرامر وګوري چې تاسو په {targetLang} کې کارولي دي، ستاسو کچه او XP، او په کورس فعالیتونو کې لیږل شوي پیغامونه. ستاسو 1-on-1 پیغامونه به شریک نشي. د کورس سره یوځای کیدو لپاره د تحلیلونو شریکول اړین دي.",
+    "shareAndJoin": "شریک کړئ او یوځای شئ",
+    "goBack": "بیرته لاړ شئ"
 }

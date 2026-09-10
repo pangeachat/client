@@ -3093,7 +3093,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-09-10 09:51:41.686696",
+    "@@last_modified": "2026-09-10 16:50:23.657843",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10542,5 +10542,9 @@
     "errorFetchingWordInfo": "Níor éirigh leis an eolas focal a fháil",
     "contentCreatedBy": "Cruthaithe ag",
     "coursePreview": "Réamhbhreathnú ar an gcúrsa",
-    "numActivities": "{count, plural, =1{1 gníomhaíocht} other{{count} gníomhaíochtaí}}"
+    "numActivities": "{count, plural, =1{1 gníomhaíocht} other{{count} gníomhaíochtaí}}",
+    "teacherAnalyticsRequestTitle": "Iarrann an múinteoir do dhul chun cinn foghlama",
+    "teacherAnalyticsRequestDesc": "Feicfidh siad na focail agus an ghramadach go léir a d'úsáid tú i {targetLang}, do leibhéal agus do XP, agus na teachtaireachtaí a seoladh i ngníomhaíochtaí cúrsa. Ní roinnfear do theachtaireachtaí 1-ar-1. Tá roinnt anailísíochta riachtanach chun páirt a ghlacadh sa chúrsa.",
+    "shareAndJoin": "Roinn agus bí páirteach",
+    "goBack": "Téigh ar ais"
 }

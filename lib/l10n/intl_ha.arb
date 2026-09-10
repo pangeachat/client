@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-09-10 09:51:40.803032",
+    "@@last_modified": "2026-09-10 16:50:21.857965",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "An kasa samun bayanan kalmar",
     "contentCreatedBy": "Wanda ya kirkira",
     "coursePreview": "Samfoti na darasi",
-    "numActivities": "{count, plural, =1{Aiki 1} other{Ayyuka {count}}}"
+    "numActivities": "{count, plural, =1{Aiki 1} other{Ayyuka {count}}}",
+    "teacherAnalyticsRequestTitle": "Malami yana neman ci gaban karatunka",
+    "teacherAnalyticsRequestDesc": "Za su ga duk kalmomin da nahawun da ka yi amfani da su a {targetLang}, matsayinka da XP, da kuma saƙonnin da aka aiko a ayyukan kwas. Ba za a raba saƙonninka na 1-da-1 ba. Ana buƙatar raba nazarin don shiga kwas ɗin.",
+    "shareAndJoin": "Raba kuma shiga",
+    "goBack": "Koma baya"
 }

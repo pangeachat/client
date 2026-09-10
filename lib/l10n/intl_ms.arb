@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-09-10 09:51:42.838491",
+    "@@last_modified": "2026-09-10 16:50:28.071373",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "Gagal mengambil maklumat perkataan",
     "contentCreatedBy": "Dicipta oleh",
     "coursePreview": "Pratonton kursus",
-    "numActivities": "{count, plural, =1{1 aktiviti} other{{count} aktiviti}}"
+    "numActivities": "{count, plural, =1{1 aktiviti} other{{count} aktiviti}}",
+    "teacherAnalyticsRequestTitle": "Guru meminta kemajuan pembelajaran anda",
+    "teacherAnalyticsRequestDesc": "Mereka akan melihat semua perkataan dan tatabahasa yang anda gunakan dalam {targetLang}, tahap dan XP anda, serta mesej yang dihantar dalam aktiviti kursus. Mesej 1-dengan-1 anda tidak akan dikongsi. Perkongsian analitik diperlukan untuk menyertai kursus.",
+    "shareAndJoin": "Kongsi dan sertai",
+    "goBack": "Kembali"
 }

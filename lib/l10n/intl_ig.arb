@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-09-10 09:51:41.529557",
+    "@@last_modified": "2026-09-10 16:50:25.588975",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "Enweghị ike iwepụta ozi okwu",
     "contentCreatedBy": "Onye kere ya",
     "coursePreview": "Nlele mmalite ọmụmụ ihe",
-    "numActivities": "{count, plural, =1{1 ọrụ} other{{count} ọrụ}}"
+    "numActivities": "{count, plural, =1{1 ọrụ} other{{count} ọrụ}}",
+    "teacherAnalyticsRequestTitle": "Onye nkuzi gị na-arịọ maka ọganihu mmụta gị",
+    "teacherAnalyticsRequestDesc": "Ha ga-ahụ okwu na ụtọasụsụ niile ị jiri na {targetLang}, ọkwa gị na XP, yana ozi ezigara n'ime ihe omume ọmụmụ. Agaghị ekekọrịta ozi 1-na-1 gị. Achọrọ ịkekọrịta nyocha iji sonye na ọmụmụ ihe ahụ.",
+    "shareAndJoin": "Kekọrịta ma sonye",
+    "goBack": "Gaa azụ"
 }

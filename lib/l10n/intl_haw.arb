@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-09-10 09:51:40.924224",
+    "@@last_modified": "2026-09-10 16:50:21.920934",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "ʻAʻole i loaʻa ka ʻike huaʻōlelo",
     "contentCreatedBy": "Hana ʻia e",
     "coursePreview": "Nānā mua papa",
-    "numActivities": "{count, plural, =1{1 hana} other{{count} mau hana}}"
+    "numActivities": "{count, plural, =1{1 hana} other{{count} mau hana}}",
+    "teacherAnalyticsRequestTitle": "Ke noi mai nei ke kumu i kou holomua aʻo",
+    "teacherAnalyticsRequestDesc": "E ʻike ana lākou i nā huaʻōlelo a me nā lula pili ʻōlelo a pau āu i hoʻohana ai ma ka ʻōlelo {targetLang}, kou pae a me kou XP, a me nā leka i hoʻouna ʻia i nā hana papa. ʻAʻole e kaʻana like ʻia kāu mau leka 1-a-1. Pono ke kaʻana like ʻana i nā ʻikepili e komo i ka papa.",
+    "shareAndJoin": "Kaʻana like a komo",
+    "goBack": "Hoʻi hope"
 }

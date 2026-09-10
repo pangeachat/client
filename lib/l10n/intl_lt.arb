@@ -2967,7 +2967,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-09-10 09:51:42.293669",
+    "@@last_modified": "2026-09-10 16:50:26.404176",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10691,5 +10691,9 @@
     "errorFetchingWordInfo": "Nepavyko gauti žodžio informacijos",
     "contentCreatedBy": "Sukūrė",
     "coursePreview": "Kurso peržiūra",
-    "numActivities": "{count, plural, =1{1 veikla} other{{count} veiklos}}"
+    "numActivities": "{count, plural, =1{1 veikla} other{{count} veiklos}}",
+    "teacherAnalyticsRequestTitle": "Mokytojas prašo jūsų mokymosi pažangos",
+    "teacherAnalyticsRequestDesc": "Jie matys visus žodžius ir gramatiką, kuriuos naudojote {targetLang}, jūsų lygį ir XP, bei žinutes, siųstas kursų veiklose. Jūsų asmeninės žinutės nebus bendrinamos. Norint prisijungti prie kurso, būtina bendrinti analizę.",
+    "shareAndJoin": "Bendrinti ir prisijungti",
+    "goBack": "Grįžti atgal"
 }

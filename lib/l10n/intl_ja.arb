@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-09-10 09:51:41.485058",
+    "@@last_modified": "2026-09-10 16:50:23.362310",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10679,5 +10679,9 @@
     "errorFetchingWordInfo": "単語情報の取得に失敗しました",
     "contentCreatedBy": "作成者",
     "coursePreview": "コースプレビュー",
-    "numActivities": "{count, plural, =1{1件のアクティビティ} other{{count}件のアクティビティ}}"
+    "numActivities": "{count, plural, =1{1件のアクティビティ} other{{count}件のアクティビティ}}",
+    "teacherAnalyticsRequestTitle": "先生があなたの学習進捗をリクエストしています",
+    "teacherAnalyticsRequestDesc": "先生は、あなたが{targetLang}で使ったすべての単語と文法、あなたのレベルとXP、コースアクティビティで送信されたメッセージを見ることができます。あなたの1対1のメッセージは共有されません。コースに参加するには、分析情報の共有が必要です。",
+    "shareAndJoin": "共有して参加",
+    "goBack": "戻る"
 }

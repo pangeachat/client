@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-09-10 09:51:41.837976",
+    "@@last_modified": "2026-09-10 16:50:24.629819",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "Сөз туралы ақпаратты алу мүмкін болмады",
     "contentCreatedBy": "Жасаған",
     "coursePreview": "Курс алдын ала қарау",
-    "numActivities": "{count, plural, =1{1 әрекет} other{{count} әрекеттер}}"
+    "numActivities": "{count, plural, =1{1 әрекет} other{{count} әрекеттер}}",
+    "teacherAnalyticsRequestTitle": "Мұғалім сіздің оқу үлгеріміңізді сұрайды",
+    "teacherAnalyticsRequestDesc": "Олар сіздің {targetLang} тілінде қолданған барлық сөздеріңіз бен грамматикаңызды, деңгейіңізді және XP-ді, сондай-ақ курс әрекеттерінде жіберілген хабарламаларды көреді. Сіздің жеке хабарламаларыңыз бөлісілмейді. Курсқа қатысу үшін аналитиканы бөлісу қажет.",
+    "shareAndJoin": "Бөлісу және қосылу",
+    "goBack": "Артқа оралу"
 }

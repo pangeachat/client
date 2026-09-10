@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-09-10 09:51:41.910747",
+    "@@last_modified": "2026-09-10 16:50:25.756780",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "បរាជ័យក្នុងការទាញយកព័ត៌មានពាក្យ",
     "contentCreatedBy": "បង្កើត​ដោយ",
     "coursePreview": "មើលវគ្គសិក្សាជាមុន",
-    "numActivities": "{count, plural, =1{1 សកម្មភាព} other{{count} សកម្មភាព}}"
+    "numActivities": "{count, plural, =1{1 សកម្មភាព} other{{count} សកម្មភាព}}",
+    "teacherAnalyticsRequestTitle": "គ្រូបង្រៀនស្នើសុំវឌ្ឍនភាពនៃការសិក្សារបស់អ្នក",
+    "teacherAnalyticsRequestDesc": "ពួកគេនឹងឃើញពាក្យ និងវេយ្យាករណ៍ទាំងអស់ដែលអ្នកបានប្រើក្នុង {targetLang} កម្រិត និង XP របស់អ្នក និងសារដែលបានផ្ញើក្នុងសកម្មភាពវគ្គសិក្សា។ សារ 1-ទល់-1 របស់អ្នកនឹងមិនត្រូវបានចែករំលែកទេ។ ការចែករំលែកការវិភាគត្រូវបានទាមទារដើម្បីចូលរួមវគ្គសិក្សា។",
+    "shareAndJoin": "ចែករំលែក និងចូលរួម",
+    "goBack": "ត្រឡប់ក្រោយ"
 }

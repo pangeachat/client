@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-10 09:51:44.292343",
+    "@@last_modified": "2026-09-10 16:50:32.028963",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10428,5 +10428,9 @@
     "errorFetchingWordInfo": "Kunde inte hämta ordinformation",
     "contentCreatedBy": "Skapad av",
     "coursePreview": "Kursförhandsvisning",
-    "numActivities": "{count, plural, =1{1 aktivitet} other{{count} aktiviteter}}"
+    "numActivities": "{count, plural, =1{1 aktivitet} other{{count} aktiviteter}}",
+    "teacherAnalyticsRequestTitle": "Läraren begär dina framsteg",
+    "teacherAnalyticsRequestDesc": "De kommer att se alla ord och all grammatik du har använt i {targetLang}, din nivå och XP, samt meddelanden som skickats i kursaktiviteter. Dina 1-mot-1-meddelanden kommer inte att delas. Att dela analysdata krävs för att gå med i kursen.",
+    "shareAndJoin": "Dela och gå med",
+    "goBack": "Gå tillbaka"
 }
