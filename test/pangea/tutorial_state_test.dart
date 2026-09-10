@@ -1,3 +1,5 @@
+import 'package:flutter/widgets.dart';
+
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/features/tutorials/tutorial_copy.dart';
@@ -5,6 +7,7 @@ import 'package:fluffychat/features/tutorials/tutorial_enum.dart';
 import 'package:fluffychat/features/tutorials/tutorial_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_overlay_controller.dart';
 import 'package:fluffychat/features/tutorials/tutorial_overlay_state_machine.dart';
+import 'package:fluffychat/features/tutorials/tutorial_overlay_widget.dart';
 import 'package:fluffychat/features/tutorials/tutorial_seen_backfill.dart';
 import 'package:fluffychat/features/tutorials/tutorial_sequences.dart';
 import 'package:fluffychat/features/tutorials/tutorial_state_transition_events.dart';
@@ -1058,6 +1061,69 @@ void main() {
       for (final template in TutorialEnum.coursePlan.stepTemplates) {
         expect(template.dimsBackground, isTrue);
       }
+    });
+  });
+
+  // Which cards carry the sequence-wide Skip control. The interesting case is
+  // the one-step run: skipping there is the same act as finishing, which a tap
+  // anywhere already performs. See tutorials.instructions.md, "A one-step run
+  // carries no Skip".
+  group('TutorialOverlayWidget.showsSkip', () {
+    const plain = TutorialStepStyle(tooltip: 'x', tooltipSize: Size(1, 1));
+    const branch = TutorialStepStyle(
+      tooltip: 'x',
+      tooltipSize: Size(1, 1),
+      choices: [(label: 'yes', outcome: TutorialChoiceOutcome.advance)],
+    );
+    const optedOut = TutorialStepStyle(
+      tooltip: 'x',
+      tooltipSize: Size(1, 1),
+      showsSkip: false,
+    );
+
+    bool shows(TutorialStepStyle style, int totalSteps) =>
+        TutorialOverlayWidget.showsSkip(
+          sequenceKind: TutorialSequenceKind.chat,
+          style: style,
+          totalSteps: totalSteps,
+        );
+
+    test('a multi-step run carries it', () {
+      expect(shows(plain, 2), isTrue);
+      expect(shows(plain, 6), isTrue);
+    });
+
+    test('a one-step run does not — skipping it IS finishing it', () {
+      expect(shows(plain, 1), isFalse);
+    });
+
+    test('a branch never carries it: its decline choice IS the skip', () {
+      expect(shows(branch, 6), isFalse);
+    });
+
+    test('a step that opts out never carries it (the greeting)', () {
+      expect(shows(optedOut, 6), isFalse);
+    });
+
+    test('an uncatalogued sequence has nothing to skip out of', () {
+      expect(
+        TutorialOverlayWidget.showsSkip(
+          sequenceKind: null,
+          style: plain,
+          totalSteps: 6,
+        ),
+        isFalse,
+      );
+    });
+
+    // The rule reads the RUN's total, so the seen-filter narrowing a longer
+    // walkthrough down to its last remaining step drops the control too.
+    test('the one-step rule is about the run, not the tutorial', () {
+      final narrowed = TutorialOverlayStateMachine([
+        TutorialEnum.readingAssistance,
+      ]);
+      expect(narrowed.totalStepsInSequence, 1);
+      expect(shows(plain, narrowed.totalStepsInSequence), isFalse);
     });
   });
 }
