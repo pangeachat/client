@@ -1733,3 +1733,19 @@ until the design is Codex-green.
   user-scroll intent from ABOVE the scrollable (the widget can't distinguish a keyboard scroll that
   supersedes a DrivenScrollActivity); (3) the caller must update the controller AND widget.turns in the
   SAME tick (the deferred index resolution assumes it). Fold these into agent 5's brief.
+
+## 2026-09-10 (cont) — STEP 3 DONE (cold-green); agent 4 (loading) scoped as standalone file
+- Agent 3 fixer STALLED (3rd stall -- codex auto-backgrounds past its timeout in the subagent env; the
+  agents that DON'T stall block on `pgrep -f codex` until it exits). Work uncommitted but local-green: I
+  killed the orphan, verified (pub get + gen-l10n exit 0, analyze clean, 42 tests, l10n wired -- generated
+  l10n is NOT git-tracked so no locale churn), READ the diff (correct: _syncIsPlayingListener gates
+  isPlaying on the master gate + handles transitions/swaps/leak; callTranscriptSeekTo "Play from {time}").
+  My cold gate (b89dpxkrw): CORRECT 3/3, softening no. Committed 08cc450932. STEP 3 (karaoke render) DONE.
+- SPLIT REVISION for agents 4/5: instead of BOTH editing transcript_view.dart serially, agent 4 builds a
+  STANDALONE new file (call_recordings_load.dart: the LoadState resolver + a grace-timer/late-data
+  controller, testable in isolation, NO transcript_view edit), and agent 5 does ALL of transcript_view
+  (layout + render each load state + wire agent-2's playback controller + agent-4's load controller +
+  the 3 agent-5 wiring requirements). So only agent 5 touches transcript_view -> no 4/5 conflict.
+- ANTI-STALL for agents 4/5: bake in the working technique -- after launching `codex exec` in the
+  foreground, BLOCK on `pgrep -f codex` (or `wait`) until the process exits, THEN read the verdict from the
+  output file; NEVER end the turn while a codex process is alive.
