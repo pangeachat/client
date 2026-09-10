@@ -95,7 +95,7 @@ extension JoinRoomAnalyticsAccessClientExtension on Client {
   /// The course's target language. Prefer the course room's OWN
   /// `pangea.course_plan` `l2` (already in local state — no network, so it works
   /// on a lagging fresh-page-load sync); fall back to the localized plan fetch.
-  Future<LanguageModel?> _getCourseLanguage(Room room) async {
+  Future<LanguageModel?> getCourseLanguage(Room room) async {
     final coursePlan = room.coursePlan;
     final languageFromRoom = _languageByCode(coursePlan?.l2);
     if (languageFromRoom != null) return languageFromRoom;
@@ -172,7 +172,7 @@ extension JoinRoomAnalyticsAccessClientExtension on Client {
         return;
       }
 
-      final languageModel = await _getCourseLanguage(room);
+      final languageModel = await getCourseLanguage(room);
       if (languageModel == null) {
         ErrorHandler.logError(
           e: "Failed to derive language model from course target language",
