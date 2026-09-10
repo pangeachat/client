@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-09-09 11:25:00.565460",
+    "@@last_modified": "2026-09-10 09:51:42.813892",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2313,6 +2313,8 @@
     "writingAssistanceSuggestion": "Suġġeriment",
     "errorFetchingWordInfo": "Naqset il-ġbir tal-informazzjoni tal-kelma",
     "contentCreatedBy": "Maħluqa minn",
+    "coursePreview": "Preview tal-kors",
+    "numActivities": "{count, plural, =1{1 attività} other{{count} attivitajiet}}",
     "practiceTapABlank": "Tektek vojt biex timlieh",
     "practiceListeningPrompt": "Liema waħda tgħid ‘{word}’?",
     "practiceMeaningPrompt": "Xi tfisser ‘{word}’?",

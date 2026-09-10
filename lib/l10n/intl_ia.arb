@@ -1362,7 +1362,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-09-09 11:24:58.936557",
+    "@@last_modified": "2026-09-10 09:51:41.171460",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10845,6 +10845,8 @@
     "writingAssistanceSuggestion": "Suggestion",
     "errorFetchingWordInfo": "Falleva recercar information del parola",
     "contentCreatedBy": "Create per",
+    "coursePreview": "Previsualisation del curso",
+    "numActivities": "{count, plural, =1{1 activitate} other{{count} activitates}}",
     "practiceTapABlank": "Tocca un spatio vacue pro plenar lo",
     "practiceListeningPrompt": "Qual dice ‘{word}’?",
     "practiceMeaningPrompt": "Que significa ‘{word}’?",

@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-09-09 11:24:59.881183",
+    "@@last_modified": "2026-09-10 09:51:42.207752",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2313,6 +2313,8 @@
     "writingAssistanceSuggestion": "Suggestio",
     "errorFetchingWordInfo": "Defuit verbi notitias petere",
     "contentCreatedBy": "Creatum ab",
+    "coursePreview": "Praevisio cursus",
+    "numActivities": "{count, plural, =1{1 actio} other{{count} actiones}}",
     "practiceTapABlank": "Tange spatium vacuum ut impleas",
     "practiceListeningPrompt": "Quod dicit ‘{word}’?",
     "practiceMeaningPrompt": "Quid significat ‘{word}’?",

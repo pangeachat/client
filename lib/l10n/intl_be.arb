@@ -3548,7 +3548,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-09-09 11:24:56.548053",
+    "@@last_modified": "2026-09-10 09:51:39.262998",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9923,6 +9923,8 @@
     "writingAssistanceSuggestion": "Прапанова",
     "errorFetchingWordInfo": "Не атрымалася атрымаць інфармацыю пра слова",
     "contentCreatedBy": "Створана",
+    "coursePreview": "Папярэдні прагляд курса",
+    "numActivities": "{count, plural, =1{1 занятак} other{{count} заняткаў}}",
     "practiceTapABlank": "Націсніце на пустое месца, каб запоўніць яго",
     "practiceListeningPrompt": "Што азначае «{word}»?",
     "practiceMeaningPrompt": "Што азначае «{word}»?",

@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-09-09 11:24:57.911722",
+    "@@last_modified": "2026-09-10 09:51:40.314815",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9906,6 +9906,8 @@
     "writingAssistanceSuggestion": "Soovitus",
     "errorFetchingWordInfo": "Sõnateabe hankimine ebaõnnestus",
     "contentCreatedBy": "Looja",
+    "coursePreview": "Kursuse eelvaade",
+    "numActivities": "{count, plural, =1{1 tegevus} other{{count} tegevust}}",
     "practiceTapABlank": "Täitmiseks puuduta tühja kohta",
     "practiceListeningPrompt": "Milline neist ütleb „{word}“?",
     "practiceMeaningPrompt": "Mida tähendab „{word}“?",

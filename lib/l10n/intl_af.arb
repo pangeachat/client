@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-09-09 11:24:56.540994",
+    "@@last_modified": "2026-09-10 09:51:39.285786",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2313,6 +2313,8 @@
     "writingAssistanceSuggestion": "Voorstel",
     "errorFetchingWordInfo": "Kon nie woordinligting kry nie",
     "contentCreatedBy": "Geskep deur",
+    "coursePreview": "Kursusvoorskou",
+    "numActivities": "{count, plural, =1{1 aktiwiteit} other{{count} aktiwiteite}}",
     "practiceTapABlank": "Tik 'n spasie om dit in te vul",
     "practiceListeningPrompt": "Watter een sê ‘{word}’?",
     "practiceMeaningPrompt": "Wat beteken ‘{word}’?",

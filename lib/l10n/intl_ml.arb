@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-09-09 11:25:00.179007",
+    "@@last_modified": "2026-09-10 09:51:42.518091",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2313,6 +2313,8 @@
     "writingAssistanceSuggestion": "നിർദ്ദേശം",
     "errorFetchingWordInfo": "വാക്കിന്റെ വിവരങ്ങൾ ലഭ്യമാക്കുന്നതിൽ പരാജയപ്പെട്ടു",
     "contentCreatedBy": "സൃഷ്ടിച്ചത്",
+    "coursePreview": "കോഴ്സ് പ്രിവ്യൂ",
+    "numActivities": "{count, plural, =1{1 പ്രവർത്തനം} other{{count} പ്രവർത്തനങ്ങൾ}}",
     "practiceTapABlank": "പൂരിപ്പിക്കാൻ ഒരു വിടവിൽ ടാപ്പ് ചെയ്യുക",
     "practiceListeningPrompt": "‘{word}’ എന്ന് പറയുന്നത് ഏതാണ്?",
     "practiceMeaningPrompt": "‘{word}’ എന്നതിൻ്റെ അർത്ഥം എന്താണ്?",

@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-09-09 11:24:58.451546",
+    "@@last_modified": "2026-09-10 09:51:40.803032",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2313,6 +2313,8 @@
     "writingAssistanceSuggestion": "Shawara",
     "errorFetchingWordInfo": "An kasa samun bayanan kalmar",
     "contentCreatedBy": "Wanda ya kirkira",
+    "coursePreview": "Samfoti na darasi",
+    "numActivities": "{count, plural, =1{Aiki 1} other{Ayyuka {count}}}",
     "practiceTapABlank": "Danna wani wuri mara komai don cikawa",
     "practiceListeningPrompt": "Wanne ne ke cewa ‘{word}’?",
     "practiceMeaningPrompt": "Menene ma'anar ‘{word}’?",

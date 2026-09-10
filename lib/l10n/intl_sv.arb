@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-09 11:25:02.224273",
+    "@@last_modified": "2026-09-10 09:51:44.292343",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10427,6 +10427,8 @@
     "writingAssistanceSuggestion": "Förslag",
     "errorFetchingWordInfo": "Kunde inte hämta ordinformation",
     "contentCreatedBy": "Skapad av",
+    "coursePreview": "Kursförhandsvisning",
+    "numActivities": "{count, plural, =1{1 aktivitet} other{{count} aktiviteter}}",
     "practiceTapABlank": "Tryck på en tom lucka för att fylla i den",
     "practiceListeningPrompt": "Vilken säger ”{word}”?",
     "practiceMeaningPrompt": "Vad betyder ”{word}”?",

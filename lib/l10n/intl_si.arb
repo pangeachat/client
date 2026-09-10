@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-09-09 11:25:01.557591",
+    "@@last_modified": "2026-09-10 09:51:43.941178",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2313,6 +2313,8 @@
     "writingAssistanceSuggestion": "යෝජනාව",
     "errorFetchingWordInfo": "වචන තොරතුරු ලබාගැනීම අසාර්ථක විය",
     "contentCreatedBy": "නිර්මාණය කළේ",
+    "coursePreview": "පාඨමාලා පෙරදසුන",
+    "numActivities": "{count, plural, =1{ක්‍රියාකාරකම් 1ක්} other{ක්‍රියාකාරකම් {count}ක්}}",
     "practiceTapABlank": "එය පිරවීමට හිස් තැනක් තට්ටු කරන්න",
     "practiceListeningPrompt": "‘{word}’ යැයි කියන්නේ කුමන එකද?",
     "practiceMeaningPrompt": "‘{word}’ යන්නෙහි තේරුම කුමක්ද?",

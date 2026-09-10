@@ -2919,7 +2919,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-09-09 11:24:56.563533",
+    "@@last_modified": "2026-09-10 09:51:39.463009",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9520,6 +9520,8 @@
     "writingAssistanceSuggestion": "བསམ་འཆར།",
     "errorFetchingWordInfo": "ཚིག་གི་ཆ་འཕྲིན་ལེན་མ་ཐུབ།",
     "contentCreatedBy": "བཟོ་མཁན།",
+    "coursePreview": "སློབ་ཚན་སྔོན་མཐོང་།",
+    "numActivities": "{count, plural, =1{༡ བྱེད་སྒོ་} other{{count} བྱེད་སྒོ་}}",
     "practiceTapABlank": "སྟོང་པ་ཞིག་ལ་རེག་ནས་བཀང་།",
     "practiceListeningPrompt": "གང་གིས་ ‘{word}’ ཟེར་གྱི་འདུག",
     "practiceMeaningPrompt": "‘{word}’ ལ་དོན་ཅི་ཞིག་ཡོད།",

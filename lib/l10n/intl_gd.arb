@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-09-09 11:24:58.460682",
+    "@@last_modified": "2026-09-10 09:51:40.589053",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2313,6 +2313,8 @@
     "writingAssistanceSuggestion": "Molaidhean",
     "errorFetchingWordInfo": "Dh'fhàillig fiosrachadh facal fhaighinn",
     "contentCreatedBy": "Air a chruthachadh le",
+    "coursePreview": "Ro-shealladh cùrsa",
+    "numActivities": "{count, plural, =1{1 ghnìomhachd} other{{count} gnìomhachdan}}",
     "practiceTapABlank": "Tap beàrn gus a lìonadh",
     "practiceListeningPrompt": "Cò am fear a chanas ‘{word}’?",
     "practiceMeaningPrompt": "Dè tha ‘{word}’ a’ ciallachadh?",

@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-09-09 11:25:01.571355",
+    "@@last_modified": "2026-09-10 09:51:44.002466",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2313,6 +2313,8 @@
     "writingAssistanceSuggestion": "Talo",
     "errorFetchingWordInfo": "Ku guuldareystay in la helo macluumaadka ereyga",
     "contentCreatedBy": "Waxaa sameeyay",
+    "coursePreview": "Hordhaca koorsada",
+    "numActivities": "{count, plural, =1{1 hawl} other{{count} hawlood}}",
     "practiceTapABlank": "Taabo meel bannaan si aad u buuxiso",
     "practiceListeningPrompt": "Keebaa leh ‘{word}’?",
     "practiceMeaningPrompt": "Maxay ka dhigan tahay ‘{word}’?",

@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-09-09 11:24:59.416710",
+    "@@last_modified": "2026-09-10 09:51:41.656596",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2313,6 +2313,8 @@
     "writingAssistanceSuggestion": "Saran",
     "errorFetchingWordInfo": "Gagal njupuk informasi tembung",
     "contentCreatedBy": "Digawe dening",
+    "coursePreview": "Pratinjau kursus",
+    "numActivities": "{count, plural, =1{1 aktivitas} other{{count} aktivitas}}",
     "practiceTapABlank": "Tutul sing kosong kanggo ngisi",
     "practiceListeningPrompt": "Sing endi sing ngucapake ‘{word}’?",
     "practiceMeaningPrompt": "Apa tegese ‘{word}’?",

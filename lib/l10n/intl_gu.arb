@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-09-09 11:24:58.395136",
+    "@@last_modified": "2026-09-10 09:51:40.752567",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2313,6 +2313,8 @@
     "writingAssistanceSuggestion": "સૂચન",
     "errorFetchingWordInfo": "શબ્દની માહિતી મેળવવામાં નિષ્ફળ",
     "contentCreatedBy": "આના દ્વારા બનાવવામાં આવ્યું",
+    "coursePreview": "કોર્સનું પૂર્વાવલોકન",
+    "numActivities": "{count, plural, =1{1 પ્રવૃત્તિ} other{{count} પ્રવૃત્તિઓ}}",
     "practiceTapABlank": "ખાલી જગ્યા ભરવા માટે તેના પર ટેપ કરો",
     "practiceListeningPrompt": "‘{word}’ કયું બોલે છે?",
     "practiceMeaningPrompt": "‘{word}’ નો અર્થ શું થાય છે?",

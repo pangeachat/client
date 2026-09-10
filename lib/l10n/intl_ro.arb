@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-09 11:25:01.331043",
+    "@@last_modified": "2026-09-10 09:51:43.550829",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10641,6 +10641,8 @@
     "writingAssistanceSuggestion": "Sugestie",
     "errorFetchingWordInfo": "Nu s-au putut prelua informațiile despre cuvânt",
     "contentCreatedBy": "Creat de",
+    "coursePreview": "Previzualizare curs",
+    "numActivities": "{count, plural, =1{1 activitate} other{{count} activități}}",
     "practiceTapABlank": "Atingeți un spațiu gol pentru a-l completa",
     "practiceListeningPrompt": "Care dintre ele spune „{word}”?",
     "practiceMeaningPrompt": "Ce înseamnă „{word}”?",

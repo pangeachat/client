@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-09-09 11:24:56.593060",
+    "@@last_modified": "2026-09-10 09:51:39.310670",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2313,6 +2313,8 @@
     "writingAssistanceSuggestion": "ጥቆማ",
     "errorFetchingWordInfo": "የቃሉን መረጃ ማምጣት አልተቻለም።",
     "contentCreatedBy": "የተፈጠረው በ",
+    "coursePreview": "የኮርስ ቅድመ እይታ",
+    "numActivities": "{count, plural, =1{1 እንቅስቃሴ} other{{count} እንቅስቃሴዎች}}",
     "practiceTapABlank": "ለመሙላት ባዶ ቦታ ይንኩ።",
     "practiceListeningPrompt": "የትኛው ነው ‘{word}’ የሚለው?",
     "practiceMeaningPrompt": "‘{word}’ ምን ማለት ነው?",

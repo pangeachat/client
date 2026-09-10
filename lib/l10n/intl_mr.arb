@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-09-09 11:25:00.223435",
+    "@@last_modified": "2026-09-10 09:51:42.714870",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2313,6 +2313,8 @@
     "writingAssistanceSuggestion": "सूचना",
     "errorFetchingWordInfo": "शब्दाची माहिती मिळवण्यात अयशस्वी",
     "contentCreatedBy": "यांनी तयार केले",
+    "coursePreview": "अभ्यासक्रमाचे पूर्वावलोकन",
+    "numActivities": "{count, plural, =1{1 ॲक्टिव्हिटी} other{{count} ॲक्टिव्हिटीज}}",
     "practiceTapABlank": "भरण्यासाठी रिकाम्या जागेवर टॅप करा",
     "practiceListeningPrompt": "‘{word}’ असे कोण म्हणते?",
     "practiceMeaningPrompt": "‘{word}’ चा अर्थ काय आहे?",

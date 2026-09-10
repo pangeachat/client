@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-09-09 11:24:59.425786",
+    "@@last_modified": "2026-09-10 09:51:41.837976",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2313,6 +2313,8 @@
     "writingAssistanceSuggestion": "Ұсыныс",
     "errorFetchingWordInfo": "Сөз туралы ақпаратты алу мүмкін болмады",
     "contentCreatedBy": "Жасаған",
+    "coursePreview": "Курс алдын ала қарау",
+    "numActivities": "{count, plural, =1{1 әрекет} other{{count} әрекеттер}}",
     "practiceTapABlank": "Толтыру үшін бос орынды түртіңіз",
     "practiceListeningPrompt": "Қайсысы «{word}» деп айтады?",
     "practiceMeaningPrompt": "«{word}» нені білдіреді?",

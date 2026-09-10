@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-09-09 11:24:57.893622",
+    "@@last_modified": "2026-09-10 09:51:40.666296",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2313,6 +2313,8 @@
     "writingAssistanceSuggestion": "Suggestje",
     "errorFetchingWordInfo": "Net slagge om wurdynformaasje op te heljen",
     "contentCreatedBy": "Makke troch",
+    "coursePreview": "Foarbyld fan de kursus",
+    "numActivities": "{count, plural, =1{1 aktiviteit} other{{count} aktiviteiten}}",
     "practiceTapABlank": "Tik op in leech fjild om it yn te foljen",
     "practiceListeningPrompt": "Hokker seit ‘{word}’?",
     "practiceMeaningPrompt": "Wat betsjut ‘{word}’?",

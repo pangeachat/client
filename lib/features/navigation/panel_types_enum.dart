@@ -134,10 +134,12 @@ enum PanelTypesEnum {
   /// context bar on wide, and either way the course never leaves the screen.
   bool get hasCavityFloor => this == PanelTypesEnum.course;
 
-  // The add-course subpages (start my own / browse public / enter a code,
-  // including the course preview they push) open at FULL height: they show
-  // list/form content unrelated to the map behind them, so a half-open sheet
-  // only de-emphasizes what the learner navigated here for (#8659).
+  // The add-course subpages (start my own / browse public / enter a code)
+  // open at FULL height: they show list/form content unrelated to the map
+  // behind them, so a half-open sheet only de-emphasizes what the learner
+  // navigated here for (#8659). Exception: the single-course PREVIEW those
+  // lists push — the shell overrides this so it rests low over the scoped
+  // map (#7826).
   bool get defaultCavityToFull => {PanelTypesEnum.addcoursepage}.contains(this);
 
   // Which rail item's OWN surface the cavity hosts, for the widget's

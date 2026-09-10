@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-09-09 11:24:57.743452",
+    "@@last_modified": "2026-09-10 09:51:40.155539",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8128,6 +8128,8 @@
     "writingAssistanceSuggestion": "Sugerencia",
     "errorFetchingWordInfo": "Error al obtener la información de la palabra",
     "contentCreatedBy": "Creado por",
+    "coursePreview": "Vista previa del curso",
+    "numActivities": "{count, plural, =1{1 actividad} other{{count} actividades}}",
     "practiceTapABlank": "Toca un espacio en blanco para rellenarlo",
     "practiceListeningPrompt": "¿Cuál dice «{word}»?",
     "practiceMeaningPrompt": "¿Qué significa «{word}»?",

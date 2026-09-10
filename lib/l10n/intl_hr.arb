@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-09-09 11:24:58.569460",
+    "@@last_modified": "2026-09-10 09:51:40.999266",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10345,6 +10345,8 @@
     "writingAssistanceSuggestion": "Prijedlog",
     "errorFetchingWordInfo": "Dohvaćanje informacija o riječi nije uspjelo",
     "contentCreatedBy": "Izradio",
+    "coursePreview": "Pregled tečaja",
+    "numActivities": "{count, plural, =1{1 aktivnost} other{{count} aktivnosti}}",
     "practiceTapABlank": "Dodirnite prazninu da biste je ispunili",
     "practiceListeningPrompt": "Koja kaže „{word}“?",
     "practiceMeaningPrompt": "Što znači „{word}“?",

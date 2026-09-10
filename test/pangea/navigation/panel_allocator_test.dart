@@ -510,4 +510,39 @@ void main() {
       expect(activity.idealWidth, room.idealWidth);
     });
   });
+
+  group('registry-declared always-fold (stacksOnParent, #7826)', () {
+    test(
+      'the add-course hub folds behind its subpage even on a wide viewport',
+      () {
+        final l = run(
+          left: [PanelTypesEnum.addcourse, PanelTypesEnum.addcoursepage],
+        );
+        // 1600px fits both comfortably — the fold is by declaration, not width.
+        expect(l.left[0].vis, PanelVis.hidden);
+        expect(l.left[1].vis, PanelVis.full);
+        // The subpage closes back to the folded hub, so its control reads ←.
+        expect(l.left[1].foldedOver, isTrue);
+        // The width the hub would have claimed stays with the map.
+        expect(l.mapLeftOverlay, 73 + l.left[1].width);
+        expectNoOverlap(l);
+      },
+    );
+
+    test('the hub alone (no subpage open) still draws', () {
+      final l = run(left: [PanelTypesEnum.addcourse]);
+      expect(l.left.single.vis, PanelVis.full);
+      expect(l.left.single.foldedOver, isFalse);
+    });
+
+    test('only the add-course subpage declares the always-fold', () {
+      for (final type in PanelTypesEnum.values) {
+        expect(
+          type.def.stacksOnParent,
+          type == PanelTypesEnum.addcoursepage,
+          reason: '$type stacksOnParent',
+        );
+      }
+    });
+  });
 }

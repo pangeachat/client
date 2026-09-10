@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-09-09 11:24:56.445010",
+    "@@last_modified": "2026-09-10 09:51:39.192420",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2313,6 +2313,8 @@
     "writingAssistanceSuggestion": "Предложение",
     "errorFetchingWordInfo": "Неуспешно извличане на информация за думата",
     "contentCreatedBy": "Създадено от",
+    "coursePreview": "Преглед на курса",
+    "numActivities": "{count, plural, =1{1 активност} other{{count} активности}}",
     "practiceTapABlank": "Докоснете празно място, за да го попълните",
     "practiceListeningPrompt": "Кой казва „{word}“?",
     "practiceMeaningPrompt": "Какво означава „{word}“?",

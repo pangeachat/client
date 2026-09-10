@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-09-09 11:25:01.077690",
+    "@@last_modified": "2026-09-10 09:51:43.474381",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9994,6 +9994,8 @@
     "writingAssistanceSuggestion": "Sugestia",
     "errorFetchingWordInfo": "Nie udało się pobrać informacji o słowie",
     "contentCreatedBy": "Utworzone przez",
+    "coursePreview": "Podgląd kursu",
+    "numActivities": "{count, plural, =1{1 aktywność} other{{count} aktywności}}",
     "practiceTapABlank": "Dotknij luki, aby ją wypełnić",
     "practiceListeningPrompt": "Które oznacza „{word}”?",
     "practiceMeaningPrompt": "Co oznacza „{word}”?",

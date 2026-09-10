@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-09 11:25:01.718138",
+    "@@last_modified": "2026-09-10 09:51:44.097044",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10858,6 +10858,8 @@
     "writingAssistanceSuggestion": "Predlog",
     "errorFetchingWordInfo": "Nije uspelo preuzimanje informacija o reči",
     "contentCreatedBy": "Kreirao/la",
+    "coursePreview": "Pregled kursa",
+    "numActivities": "{count, plural, =1{1 aktivnost} other{{count} aktivnosti}}",
     "practiceTapABlank": "Dodirnite prazno polje da ga popunite",
     "practiceListeningPrompt": "Koja reč kaže „{word}“?",
     "practiceMeaningPrompt": "Šta znači „{word}“?",

@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-09-09 11:25:01.519545",
+    "@@last_modified": "2026-09-10 09:51:45.092976",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2313,6 +2313,8 @@
     "writingAssistanceSuggestion": "Fautuaga",
     "errorFetchingWordInfo": "Ua lē mafai ona aumai faʻamatalaga o le upu",
     "contentCreatedBy": "Fausia e",
+    "coursePreview": "Aotelega o le kosi",
+    "numActivities": "{count, plural, =1{1 gaioiga} other{{count} gaioiga}}",
     "practiceTapABlank": "Tapa se avanoa e faatumu ai",
     "practiceListeningPrompt": "O fea e fai mai ‘{word}’?",
     "practiceMeaningPrompt": "O le a le uiga o le ‘{word}’?",

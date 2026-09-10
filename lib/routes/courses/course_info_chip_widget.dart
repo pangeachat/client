@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/languages/context_language_switch_target.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class CourseInfoChip extends StatelessWidget {
   final IconData icon;
@@ -49,12 +51,18 @@ class CourseInfoChip extends StatelessWidget {
   }
 }
 
-/// The course's language / level / module chips, read from the quest outline.
+/// The course's language / level / activity chips, read from the quest outline.
 ///
-/// The module count is the Missions the learner will actually *see* — the same
-/// `objectiveGroupsWithActivities` filter the course panel lists through — so a
-/// Mission with no activities can no longer be counted here while being hidden
-/// there (#7976). That rules out the plan-level count
+/// The count is **activities**, not Missions (#8949): a Mission holds anywhere
+/// from 1 to 6 activities, so the Mission count says little about how much
+/// content a course carries, and "activity" is the word the rest of the app
+/// uses.
+///
+/// It counts the activities the learner will actually *see*: those under the
+/// Missions the same `objectiveGroupsWithActivities` filter the course panel
+/// lists through keeps, restricted by the same per-course activity pin the
+/// panel applies. Neither surface can then claim content the other hides
+/// (#7976). That rules out the plan-level count
 /// (`CoursePlanModel.topicIds.length`), which is the quest's whole Mission
 /// sequence, activity-less ones included.
 class CourseInfoChips extends StatefulWidget {
@@ -118,8 +126,20 @@ class CourseInfoChipsState extends State<CourseInfoChips> {
       courseRoomId: widget.courseRoomId,
     );
     if (!mounted || loadGen != _loadGeneration) return;
+    // Restricted to the course's own activity pin, where there is a joined
+    // course room to read one from — `QuestRepo.outline` caches one outline per
+    // quest, shared by every course built from it, so the pin has to be applied
+    // per course. Without it the chip would count activities the course panel
+    // does not list (#7976). Unjoined tiles (previews, the plan picker) resolve
+    // no room and stay unrestricted, which is what the quest itself holds.
+    final pins = widget.courseRoomId == null
+        ? null
+        : Matrix.of(context).client
+              .getRoomById(widget.courseRoomId!)
+              ?.teacherMode
+              .pinnedActivitiesByObjective;
     // A failed read is already logged by the repo; the chips just stay hidden.
-    setState(() => _outline = result.result);
+    setState(() => _outline = result.result?.restrictedTo(pins));
   }
 
   @override
@@ -129,9 +149,9 @@ class CourseInfoChipsState extends State<CourseInfoChips> {
       return const SizedBox.shrink();
     }
 
-    // Deliberately unpinned: pinning fails open (`effectivePinnedActivityIds`),
-    // so it can never empty a Mission and never changes this count.
-    final moduleCount = objectiveGroupsWithActivities(outline.groups).length;
+    final activityCount = objectiveGroupsWithActivities(
+      outline.groups,
+    ).fold<int>(0, (sum, group) => sum + group.activities.length);
 
     return Wrap(
       spacing: 8.0,
@@ -162,7 +182,7 @@ class CourseInfoChipsState extends State<CourseInfoChips> {
         ),
         CourseInfoChip(
           icon: Icons.location_on,
-          text: L10n.of(context).numModules(moduleCount),
+          text: L10n.of(context).numActivities(activityCount),
           fontSize: widget.fontSize,
           iconSize: widget.iconSize,
           padding: widget.padding,

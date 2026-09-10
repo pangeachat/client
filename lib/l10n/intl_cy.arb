@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-09-09 11:24:57.048474",
+    "@@last_modified": "2026-09-10 09:51:39.883228",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2313,6 +2313,8 @@
     "writingAssistanceSuggestion": "Awgrym",
     "errorFetchingWordInfo": "Methwyd â nôl gwybodaeth am y gair",
     "contentCreatedBy": "Crëwyd gan",
+    "coursePreview": "Rhagolwg cwrs",
+    "numActivities": "{count, plural, =1{1 gweithgaredd} other{{count} gweithgaredd}}",
     "practiceTapABlank": "Tapiwch fwlch i'w lenwi",
     "practiceListeningPrompt": "Pa un sy'n dweud ‘{word}’?",
     "practiceMeaningPrompt": "Beth mae ‘{word}’ yn ei olygu?",

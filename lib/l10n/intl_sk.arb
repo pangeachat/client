@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-09-09 11:25:01.514998",
+    "@@last_modified": "2026-09-10 09:51:47.138122",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10854,6 +10854,8 @@
     "writingAssistanceSuggestion": "Návrh",
     "errorFetchingWordInfo": "Nepodarilo sa načítať informácie o slove",
     "contentCreatedBy": "Vytvoril",
+    "coursePreview": "Ukážka kurzu",
+    "numActivities": "{count, plural, =1{1 aktivita} other{{count} aktivít}}",
     "practiceTapABlank": "Ťuknutím vyplňte prázdne miesto",
     "practiceListeningPrompt": "Ktoré hovorí „{word}“?",
     "practiceMeaningPrompt": "Čo znamená „{word}“?",

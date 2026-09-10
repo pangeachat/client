@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-09 11:25:00.585141",
+    "@@last_modified": "2026-09-10 09:51:42.885989",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9909,6 +9909,8 @@
     "writingAssistanceSuggestion": "Suggestie",
     "errorFetchingWordInfo": "Woordinformatie ophalen mislukt",
     "contentCreatedBy": "Gemaakt door",
+    "coursePreview": "Cursusvoorbeeld",
+    "numActivities": "{count, plural, =1{1 activiteit} other{{count} activiteiten}}",
     "practiceTapABlank": "Tik op een leeg veld om het in te vullen",
     "practiceListeningPrompt": "Welke zegt ‘{word}’?",
     "practiceMeaningPrompt": "Wat betekent ‘{word}’?",

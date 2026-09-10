@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-09-09 11:24:57.103061",
+    "@@last_modified": "2026-09-10 09:51:39.940317",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9896,6 +9896,8 @@
     "writingAssistanceSuggestion": "Vorschlag",
     "errorFetchingWordInfo": "Fehler beim Abrufen der Wortinformationen",
     "contentCreatedBy": "Erstellt von",
+    "coursePreview": "Kursvorschau",
+    "numActivities": "{count, plural, =1{1 Aktivität} other{{count} Aktivitäten}}",
     "practiceTapABlank": "Tippe auf eine Lücke, um sie zu füllen",
     "practiceListeningPrompt": "Welches sagt „{word}“?",
     "practiceMeaningPrompt": "Was bedeutet „{word}“?",

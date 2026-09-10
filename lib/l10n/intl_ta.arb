@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-09 11:25:02.342631",
+    "@@last_modified": "2026-09-10 09:51:44.714599",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -10001,6 +10001,8 @@
     "writingAssistanceSuggestion": "பரிந்துரை",
     "errorFetchingWordInfo": "வார்த்தைத் தகவலைப் பெறத் தவறிவிட்டது",
     "contentCreatedBy": "உருவாக்கியவர்",
+    "coursePreview": "பாடப்பிரிவு முன்னோட்டம்",
+    "numActivities": "{count, plural, =1{1 செயல்பாடு} other{{count} செயல்பாடுகள்}}",
     "practiceTapABlank": "நிரப்ப ஒரு காலியிடத்தைத் தட்டவும்",
     "practiceListeningPrompt": "‘{word}’ என்று சொல்வது எது?",
     "practiceMeaningPrompt": "‘{word}’ என்றால் என்ன அர்த்தம்?",

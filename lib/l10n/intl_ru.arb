@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-09-09 11:25:01.258925",
+    "@@last_modified": "2026-09-10 09:51:43.690096",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10881,6 +10881,8 @@
     "writingAssistanceSuggestion": "Предложение",
     "errorFetchingWordInfo": "Не удалось получить информацию о слове",
     "contentCreatedBy": "Создано",
+    "coursePreview": "Предварительный просмотр курса",
+    "numActivities": "{count, plural, =1{1 активность} other{{count} активностей}}",
     "practiceTapABlank": "Нажмите на пропуск, чтобы заполнить его",
     "practiceListeningPrompt": "Что означает «{word}»?",
     "practiceMeaningPrompt": "Что означает «{word}»?",

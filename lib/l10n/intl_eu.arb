@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-09-09 11:24:57.925487",
+    "@@last_modified": "2026-09-10 09:51:40.257388",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9909,6 +9909,8 @@
     "writingAssistanceSuggestion": "Iradokizuna",
     "errorFetchingWordInfo": "Ezin izan da hitzaren informazioa eskuratu",
     "contentCreatedBy": "Nork sortua",
+    "coursePreview": "Ikastaroaren aurrebista",
+    "numActivities": "{count, plural, =1{jarduera 1} other{{count} jarduera}}",
     "practiceTapABlank": "Ukitu hutsune bat betetzeko",
     "practiceListeningPrompt": "Zeinek dio ‘{word}’?",
     "practiceMeaningPrompt": "Zer esan nahi du ‘{word}’ hitzak?",

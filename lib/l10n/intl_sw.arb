@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-09-09 11:25:02.176644",
+    "@@last_modified": "2026-09-10 09:51:44.577813",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2313,6 +2313,8 @@
     "writingAssistanceSuggestion": "Pendekezo",
     "errorFetchingWordInfo": "Imeshindwa kupata maelezo ya neno",
     "contentCreatedBy": "Imeundwa na",
+    "coursePreview": "Onyesho la kukagua kozi",
+    "numActivities": "{count, plural, =1{shughuli 1} other{shughuli {count}}}",
     "practiceTapABlank": "Gonga nafasi iliyo wazi ili ujaze",
     "practiceListeningPrompt": "Kipi kinasema ‘{word}’?",
     "practiceMeaningPrompt": "‘{word}’ inamaanisha nini?",

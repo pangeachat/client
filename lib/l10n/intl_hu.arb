@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-09-09 11:24:59.021830",
+    "@@last_modified": "2026-09-10 09:51:41.159851",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10012,6 +10012,8 @@
     "writingAssistanceSuggestion": "Javaslat",
     "errorFetchingWordInfo": "A szóadatok lekérése sikertelen",
     "contentCreatedBy": "Létrehozta",
+    "coursePreview": "Tanfolyam előnézete",
+    "numActivities": "{count, plural, =1{1 tevékenység} other{{count} tevékenység}}",
     "practiceTapABlank": "Koppints egy üres helyre a kitöltéshez",
     "practiceListeningPrompt": "Melyik mondja azt, hogy „{word}”?",
     "practiceMeaningPrompt": "Mit jelent az, hogy „{word}”?",

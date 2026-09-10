@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-09-09 11:25:00.080727",
+    "@@last_modified": "2026-09-10 09:51:42.490473",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2313,6 +2313,8 @@
     "writingAssistanceSuggestion": "Предлог",
     "errorFetchingWordInfo": "Неуспешно преземање информации за зборот",
     "contentCreatedBy": "Создадено од",
+    "coursePreview": "Преглед на курс",
+    "numActivities": "{count, plural, =1{1 активност} other{{count} активности}}",
     "practiceTapABlank": "Допрете празно поле за да го пополните",
     "practiceListeningPrompt": "Кое вели „{word}“?",
     "practiceMeaningPrompt": "Што значи „{word}“?",

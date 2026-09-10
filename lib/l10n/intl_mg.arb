@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-09-09 11:25:00.538851",
+    "@@last_modified": "2026-09-10 09:51:42.539596",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2313,6 +2313,8 @@
     "writingAssistanceSuggestion": "Soso-kevitra",
     "errorFetchingWordInfo": "Tsy nahomby ny fakana ny mombamomba ny teny",
     "contentCreatedBy": "Noforonin'i",
+    "coursePreview": "Topi-maso amin'ny taranja",
+    "numActivities": "{count, plural, =1{Hetsika 1} other{Hetsika {count}}}",
     "practiceTapABlank": "Tsindrio ny banga hamenoana azy",
     "practiceListeningPrompt": "Iza no milaza hoe ‘{word}’?",
     "practiceMeaningPrompt": "Inona no dikan'ny ‘{word}’?",

@@ -12,6 +12,7 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart'
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
@@ -46,10 +47,17 @@ class SelectedCourse extends StatefulWidget {
 
 class SelectedCourseController extends State<SelectedCourse>
     with CoursePlanProvider {
+  /// The preview modules list's outline loader (#7826).
+  QuestObjectivesLoader? _objectivesLoader;
+
+  QuestObjectivesLoader get objectivesProvider => _objectivesLoader ??=
+      QuestObjectivesLoader(client: Matrix.of(context).client);
+
   @override
   initState() {
     super.initState();
     loadCourse(widget.courseId);
+    objectivesProvider.loadOutline(widget.courseId);
   }
 
   @override
@@ -57,7 +65,14 @@ class SelectedCourseController extends State<SelectedCourse>
     super.didUpdateWidget(oldWidget);
     if (oldWidget.courseId != widget.courseId) {
       loadCourse(widget.courseId);
+      objectivesProvider.loadOutline(widget.courseId);
     }
+  }
+
+  @override
+  void dispose() {
+    _objectivesLoader?.dispose();
+    super.dispose();
   }
 
   String get title {
@@ -182,5 +197,6 @@ class SelectedCourseController extends State<SelectedCourse>
     hasError: courseError != null,
     onTapCta: submit,
     ctaButtonText: buttonText,
+    objectivesProvider: _objectivesLoader,
   );
 }

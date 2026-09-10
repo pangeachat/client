@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-09-09 11:25:02.255470",
+    "@@last_modified": "2026-09-10 09:51:45.024916",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9909,6 +9909,8 @@
     "writingAssistanceSuggestion": "Пропозиція",
     "errorFetchingWordInfo": "Не вдалося отримати інформацію про слово",
     "contentCreatedBy": "Створено",
+    "coursePreview": "Попередній перегляд курсу",
+    "numActivities": "{count, plural, =1{1 активність} other{{count} активності}}",
     "practiceTapABlank": "Натисніть на пропуск, щоб заповнити його",
     "practiceListeningPrompt": "Що означає «{word}»?",
     "practiceMeaningPrompt": "Що означає «{word}»?",
