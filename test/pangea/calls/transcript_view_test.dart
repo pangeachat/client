@@ -2622,6 +2622,11 @@ void main() {
         // audio belongs to, so NONE of their turns may claim a window --
         // never one that might be pointing at audio that was never mixed in.
         //
+        // TWO turns from the partially-covered sender, not one -- the title
+        // says "ANY of their turns", and a fixture that only ever gives that
+        // sender a single turn cannot tell "every turn is suppressed" apart
+        // from "the one turn this fixture happens to have is suppressed".
+        //
         // The peer speaks but uploads no recording of their own, which keeps
         // this fixture's TOTAL recording count at two. A third recording here
         // would also trip `selectMergedRow`'s unrelated more-than-two-halves
@@ -2635,7 +2640,13 @@ void main() {
           tester,
           testRoom,
           serving([
-            half(_me, texts: const ['hello'], atMs: [_callStart]),
+            half(
+              _me,
+              texts: const ['hello', 'again'],
+              captured: 2,
+              transcribed: 2,
+              atMs: [_callStart, _callStart + 3000],
+            ),
             half(_peer, texts: const ['hi'], atMs: [_callStart + 1000]),
             mePhone,
             meLaptop,
@@ -2650,16 +2661,20 @@ void main() {
 
         final turns = renderedTurns(tester);
         final hello = turns.singleWhere((t) => t.text == 'hello');
+        final again = turns.singleWhere((t) => t.text == 'again');
         final hi = turns.singleWhere((t) => t.text == 'hi');
 
-        expect(
-          hello.audioStartMs,
-          isNull,
-          reason:
-              'one of this sender\'s two recordings is absent from the '
-              'merge, so none of their turns may window into it',
-        );
-        expect(hello.audioEndMs, isNull);
+        for (final turn in [hello, again]) {
+          expect(
+            turn.audioStartMs,
+            isNull,
+            reason:
+                'one of this sender\'s two recordings is absent from the '
+                'merge, so NONE of their turns -- not just the first --  '
+                'may window into it',
+          );
+          expect(turn.audioEndMs, isNull);
+        }
         expect(
           hi.audioStartMs,
           isNull,
@@ -2884,6 +2899,127 @@ void main() {
         reason:
             'two genuinely distinct turns must not collide just because '
             'they share every content field',
+      );
+    });
+
+    testWidgets('identityKey ordinals continue past two duplicates, and the '
+        'duplicate group\'s key set does not drift across a rebuild that '
+        'inserts unrelated content', (tester) async {
+      // Closes two gaps the two-duplicate test above leaves open on its
+      // own: (a) it only ever proves ordinals 0 and 1 differ, never that a
+      // THIRD occurrence keeps counting rather than colliding back onto an
+      // earlier one; (b) it never rebuilds, so it cannot show the
+      // duplicate group's ordinals come out the SAME way twice rather than
+      // drifting (accumulating) across builds -- which is what would
+      // happen if the ordinal counter were ever hoisted out of [_turnsOf]
+      // into persistent State instead of a fresh local `Map` per call.
+      //
+      // Deliberately NOT claimed: that any ONE of the three 'yes'
+      // segments keeps "its own" ordinal across the rebuild. That is
+      // undefined for content-identical segments -- nothing observable
+      // (not even `identityKey` itself) distinguishes "the first yes"
+      // from "the second" once they are equal in every field, so there is
+      // no experiment that could tell three duplicates apart before and
+      // after to check which one moved. What IS real and worth pinning:
+      // the SAME three-element key set comes out both times, proving the
+      // map starts fresh each build rather than carrying a count forward
+      // from the last one (which would instead print `#3`, `#4`, `#5` the
+      // second time).
+      final testRoom = room();
+      final phone = half(
+        _me,
+        texts: const ['yes', 'yes', 'yes'],
+        captured: 3,
+        transcribed: 3,
+        atMs: [_callStart, _callStart, _callStart],
+        deviceId: 'PHONE',
+      );
+
+      await pumpWithRecordings(tester, testRoom, serving([phone]));
+      final beforeYesKeys = [
+        for (final turn in renderedTurns(tester))
+          if (turn.text == 'yes') turn.identityKey,
+      ];
+      expect(
+        beforeYesKeys,
+        hasLength(3),
+        reason: 'all three duplicates must still render as their own turn',
+      );
+      expect(
+        beforeYesKeys.toSet(),
+        hasLength(3),
+        reason:
+            'a third duplicate must get its own ordinal, not collide '
+            'back onto the first or second',
+      );
+
+      await pumpWithRecordings(
+        tester,
+        testRoom,
+        serving([
+          phone,
+          // A second device, one segment, EARLIER than all three
+          // duplicates -- `_assembleDevices` places it at the FRONT of the
+          // merged list (see "identityKey survives a second device's half
+          // joining..." above).
+          half(
+            _me,
+            texts: const ['early'],
+            atMs: [_callStart - 5000],
+            deviceId: 'LAPTOP',
+          ),
+        ]),
+      );
+      final afterTurns = renderedTurns(tester);
+
+      // Pins that the rebuild actually took effect, rather than trusting
+      // the assertions below to fail some OTHER way if the second pump
+      // silently kept rendering the first call's data or assembly dropped
+      // the laptop half: exactly one new turn, and it leads the other
+      // three -- the same "inserted at the FRONT" premise the existing
+      // second-device test above pins for non-duplicate content.
+      expect(
+        afterTurns,
+        hasLength(4),
+        reason: 'the second device\'s "early" segment must also render',
+      );
+      expect(afterTurns.where((t) => t.text == 'early'), hasLength(1));
+      expect(
+        afterTurns.first.text,
+        'early',
+        reason:
+            '_assembleDevices places the earlier second-device segment '
+            'at the FRONT of the merged list, ahead of all three '
+            'duplicates',
+      );
+
+      final afterYesKeys = [
+        for (final turn in afterTurns)
+          if (turn.text == 'yes') turn.identityKey,
+      ];
+      // SET equality, deliberately not List equality: this claims exactly
+      // what the doc comment above claims and no more. Nothing observable
+      // ties a particular ordinal to a particular one of the three
+      // content-identical segments, so a hypothetical merge that validly
+      // reordered them relative to each other -- while still assigning the
+      // same {#0, #1, #2} as a group -- would be a fact about
+      // `_assembleDevices`'s ordering, not a defect in `identityKey`, and
+      // must not fail this test.
+      expect(
+        afterYesKeys.toSet(),
+        beforeYesKeys.toSet(),
+        reason:
+            'the duplicate group\'s key SET must come out identical both '
+            'times -- {#0, #1, #2} again, not {#3, #4, #5} -- proving the '
+            'ordinal counter is a fresh map per build rather than state '
+            'that accumulates across one',
+      );
+      expect(
+        afterTurns.map((t) => t.identityKey).toSet(),
+        hasLength(afterTurns.length),
+        reason:
+            'the new "early" turn must still get its own distinct key '
+            'alongside the three duplicates',
       );
     });
   });
