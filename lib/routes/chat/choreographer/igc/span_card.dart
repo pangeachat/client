@@ -152,6 +152,21 @@ class SpanCardState extends State<SpanCard> {
     );
   }
 
+  /// Give up the composer's focus as the overflow menu opens.
+  ///
+  /// The menu pushes a route over the chat and takes the focus with it, so on
+  /// mobile the keyboard drops. That route hands the focus back when it
+  /// closes, and the keyboard came straight back up — a full close-and-open
+  /// animation for one tap on the menu (#8957). Unfocusing here clears the
+  /// focused child of the chat's focus scope, so the closing menu has nothing
+  /// to restore: the keyboard goes down once and stays down while the learner
+  /// works the card. The feedback dialog and the settings panel are reached
+  /// through this menu, so they inherit the same quiet.
+  ///
+  /// A [FocusNode] that does not hold the focus ignores `unfocus`, which is
+  /// what leaves a learner driving the card from a keyboard where they were.
+  void _onOpenMenu() => _choreographer.inputFocus.unfocus();
+
   void _openLearningSettings() {
     final router = GoRouter.of(context);
     final target = WorkspaceNav.openSettings(
@@ -294,6 +309,7 @@ class SpanCardState extends State<SpanCard> {
                     onToggleAutoIGC: _toggleAutoIGC,
                     onFeedback: _showFeedbackDialog,
                     onLearningSettings: _openLearningSettings,
+                    onOpenMenu: _onOpenMenu,
                     onClose: widget.controller.close,
                   ),
                   Flexible(
@@ -508,6 +524,9 @@ class SpanCardHeader extends StatelessWidget {
   final VoidCallback onLearningSettings;
   final VoidCallback onClose;
 
+  /// Called as the overflow menu opens, before it pushes its route.
+  final VoidCallback onOpenMenu;
+
   const SpanCardHeader({
     super.key,
     required this.targetId,
@@ -520,6 +539,7 @@ class SpanCardHeader extends StatelessWidget {
     required this.onFeedback,
     required this.onLearningSettings,
     required this.onClose,
+    required this.onOpenMenu,
   });
 
   /// The width an [IconButton] takes at the default visual density.
@@ -669,6 +689,7 @@ class SpanCardHeader extends StatelessWidget {
       // inside this card (see SpanCard.build), so the icon carries the name.
       tooltip: l10n.moreOptions,
       icon: Icon(Icons.more_vert, semanticLabel: l10n.moreOptions),
+      onOpened: onOpenMenu,
       onSelected: (action) {
         switch (action) {
           case SpanCardAction.listenFirst:
