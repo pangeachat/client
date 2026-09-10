@@ -413,16 +413,18 @@ One vocabulary covers how content opens:
   One pair folds **by declaration** rather than width: a child whose registry entry sets [`stacksOnParent`](../../lib/features/navigation/panel_registry.dart) (the add-course subpage) always folds its parent, so the whole flow is one panel and the map behind it keeps the width — see [course-preview.instructions.md](course-preview.instructions.md) (#7826).
 
 **Panel widths come in three named families, not per-panel numbers (#7572).**
-Panels that can replace each other in a slot share one min/comfort/ideal
-triple (`PanelWidths` in the registry), so navigating between them never
-resizes the column — the width-jump QA kept catching. The families: **list**
-(the thin index columns — the chat list, the DM-create picker), **wide** (the
-live/content surfaces — a chat, a session, an activity or course card, and the
-course flow pages, which host forms and media and earn the same room), and
-**tool** (the entire right column — settings, analytics and its details,
-practice — one width for every tool panel). The only remaining width step is
-the deliberate list↔wide difference. A new panel type joins a family; it does
-not invent its own widths.
+Panels that can replace each other in a slot share one min/comfort/ideal triple
+(`PanelWidths` in the registry), so navigating between them never resizes the
+column — the width-jump QA kept catching. The families: **list** (the narrow
+column — the index surfaces (the chat list, the Courses hub, the DM-create
+picker, the archive) plus the add-course flow pages, which stay at the hub's
+width rather than widening out from under it), **wide** (the live/content
+surfaces — a chat, a session, an activity or course card, and the course
+management pages (details / invite / edit), which host forms and media and earn
+the same room), and **tool** (the entire right column — settings, analytics and
+its details, practice — one width for every tool panel). The only remaining
+width step is the deliberate list↔wide difference. A new panel type joins a
+family; it does not invent its own widths.
 
 **Opening is a fit test, not a depth count.** A surface opens a new panel when
 the column is under its two-panel budget *and* the budget can grant the newcomer
