@@ -1,0 +1,682 @@
+import 'dart:async';
+
+import 'package:flutter/foundation.dart';
+import 'package:flutter_test/flutter_test.dart';
+
+import 'package:fluffychat/routes/chat/calls/call_playback_controller.dart';
+import 'package:fluffychat/routes/chat/calls/turn_timeline.dart';
+
+const _mergedEventId = '\$merged:example.org';
+const _otherEventId = '\$other:example.org';
+
+Future<void> _flush() => Future<void>.delayed(Duration.zero);
+
+/// A [ValueNotifier] that counts its own `addListener`/`removeListener`
+/// calls, so a test can prove a listener was actually removed on dispose
+/// without touching `ChangeNotifier.hasListeners` -- which is `@protected`,
+/// so reading it from a test file trips `invalid_use_of_protected_member`
+/// under `flutter analyze`. Counting through the public override avoids
+/// that entirely.
+class _CountingOwnership extends ValueNotifier<String?> {
+  _CountingOwnership(super.value);
+
+  int addCount = 0;
+  int removeCount = 0;
+
+  @override
+  void addListener(VoidCallback listener) {
+    addCount++;
+    super.addListener(listener);
+  }
+
+  @override
+  void removeListener(VoidCallback listener) {
+    removeCount++;
+    super.removeListener(listener);
+  }
+}
+
+/// Fakes every dependency [CallPlaybackController] injects, so these tests
+/// never touch `just_audio` or `MatrixState`. [startGate]/[seekGate] let a
+/// test hold [startMergedPlayer]/[seek] open mid-await, to prove the
+/// ownership recheck between transaction steps. [claimsOwnershipOnStart]
+/// mirrors the real wiring's side effect of loading the merged event (it
+/// claims `voiceMessageEventId`) -- off by default so the abort tests keep
+/// full control of [ownership] themselves.
+class _Spies {
+  final position = StreamController<Duration>.broadcast();
+  final playing = StreamController<bool>.broadcast();
+  final ownership = _CountingOwnership(null);
+
+  int startCallCount = 0;
+  int playCallCount = 0;
+  final seeks = <Duration>[];
+
+  Completer<void>? startGate;
+  Completer<void>? seekGate;
+  bool claimsOwnershipOnStart = false;
+
+  Future<void> startMergedPlayer() async {
+    startCallCount++;
+    final gate = startGate;
+    if (gate != null) await gate.future;
+    if (claimsOwnershipOnStart) ownership.value = _mergedEventId;
+  }
+
+  Future<void> seek(Duration position) async {
+    seeks.add(position);
+    final gate = seekGate;
+    if (gate != null) await gate.future;
+  }
+
+  Future<void> play() async {
+    playCallCount++;
+  }
+
+  CallPlaybackController controller(List<CallTurn> turns) =>
+      CallPlaybackController(
+        position: position.stream,
+        playing: playing.stream,
+        ownership: ownership,
+        mergedEventId: _mergedEventId,
+        turns: turns,
+        startMergedPlayer: startMergedPlayer,
+        seek: seek,
+        play: play,
+      );
+
+  Future<void> dispose() async {
+    await position.close();
+    await playing.close();
+  }
+}
+
+void main() {
+  var nextIdentity = 0;
+  CallTurn turn({int? audioStartMs, int? audioEndMs}) => CallTurn(
+    senderId: '@a:server',
+    name: 'Alice',
+    isMe: false,
+    at: Duration.zero,
+    text: 'hello',
+    identityKey: 'turn-${nextIdentity++}',
+    audioStartMs: audioStartMs,
+    audioEndMs: audioEndMs,
+  );
+
+  group('active-index resolution', () {
+    test(
+      'resolves the eligible turn with the greatest audioStartMs <= the position',
+      () async {
+        final spies = _Spies();
+        addTearDown(spies.dispose);
+        final controller = spies.controller([
+          turn(audioStartMs: 0),
+          turn(audioStartMs: 1000),
+          turn(audioStartMs: 2000),
+        ]);
+        addTearDown(controller.dispose);
+
+        spies.ownership.value = _mergedEventId;
+        spies.position.add(const Duration(milliseconds: 1500));
+        await _flush();
+
+        expect(controller.activeIndex.value, 1);
+      },
+    );
+
+    test(
+      'a tie in audioStartMs is broken by display order -- the later turn wins',
+      () async {
+        // MUTATION: in _resolveActiveIndex, change the tie-break comparison
+        // from `start >= bestStart` to `start > bestStart` -- on a tie it would
+        // then keep the EARLIER index (0) instead of the later one (1). RED:
+        // this assertion expects 1 and would see 0.
+        final spies = _Spies();
+        addTearDown(spies.dispose);
+        final controller = spies.controller([
+          turn(audioStartMs: 500),
+          turn(audioStartMs: 500),
+        ]);
+        addTearDown(controller.dispose);
+
+        spies.ownership.value = _mergedEventId;
+        spies.position.add(const Duration(milliseconds: 600));
+        await _flush();
+
+        expect(controller.activeIndex.value, 1);
+      },
+    );
+
+    test(
+      'no eligible turn (null, or all after the position) resolves to null',
+      () async {
+        final spies = _Spies();
+        addTearDown(spies.dispose);
+        final controller = spies.controller([
+          turn(audioStartMs: null),
+          turn(audioStartMs: 5000),
+        ]);
+        addTearDown(controller.dispose);
+
+        spies.ownership.value = _mergedEventId;
+        spies.position.add(const Duration(milliseconds: 100));
+        await _flush();
+
+        expect(controller.activeIndex.value, isNull);
+      },
+    );
+
+    test(
+      'a position tick recorded before we owned the player never contaminates our resolution',
+      () async {
+        // MUTATION: delete the `_lastPositionMs = null;` reset at the top of
+        // _onOwnershipChanged. RED: the foreign 9000ms reading below survives
+        // the ownership change and gets treated as OUR position the instant
+        // ownership is gained, resolving to turn 1 (8000 <= 9000) instead of
+        // staying null (no owned tick has arrived yet). `_onPosition` itself
+        // deliberately carries no ownership check of its own -- see
+        // `_lastPositionMs`'s doc comment for why that would be redundant
+        // with this reset.
+        final spies = _Spies();
+        addTearDown(spies.dispose);
+        final controller = spies.controller([
+          turn(audioStartMs: 0),
+          turn(audioStartMs: 8000),
+        ]);
+        addTearDown(controller.dispose);
+
+        spies.position.add(
+          const Duration(milliseconds: 9000),
+        ); // some OTHER track's position; we own nothing yet
+        await _flush();
+
+        spies.ownership.value =
+            _mergedEventId; // gained -- no fresh tick of OUR OWN yet
+        await _flush();
+
+        expect(
+          controller.activeIndex.value,
+          isNull,
+          reason:
+              'the 9000ms reading belonged to whatever played before we '
+              'owned the merged event and must not be reused as if it were '
+              'ours',
+        );
+      },
+    );
+  });
+
+  group('de-dupe', () {
+    test(
+      'notifies once per real change, not once per position event',
+      () async {
+        // Pins the OBSERVABLE contract (exactly one notify per real change),
+        // which is what matters to a consumer -- not which line happens to
+        // enforce it. `_activeIndexNotifier` is a plain `ValueNotifier`,
+        // which already refuses to notify for a same-value assignment, so
+        // deleting `_setActiveIndex`'s own
+        // `if (newIndex == _activeIndexNotifier.value) return;` guard does
+        // NOT flip this test red on its own -- the library covers it
+        // regardless. That guard is kept anyway, as a self-documenting
+        // restatement of intent (mirroring `highlightCurrentText` in
+        // `message_selection_overlay.dart`) and a safeguard against a future
+        // change of the underlying storage, not as this test's mutation
+        // target.
+        final spies = _Spies();
+        addTearDown(spies.dispose);
+        final controller = spies.controller([
+          turn(audioStartMs: 0),
+          turn(audioStartMs: 1000),
+        ]);
+        addTearDown(controller.dispose);
+
+        var notifyCount = 0;
+        controller.activeIndex.addListener(() => notifyCount++);
+
+        spies.ownership.value = _mergedEventId; // no notify yet (still null)
+        spies.position.add(
+          const Duration(milliseconds: 100),
+        ); // real change: null -> 0
+        await _flush();
+        expect(controller.activeIndex.value, 0);
+        expect(notifyCount, 1);
+
+        spies.position.add(const Duration(milliseconds: 300)); // still 0
+        await _flush();
+        spies.position.add(const Duration(milliseconds: 500)); // still 0
+        await _flush();
+        expect(controller.activeIndex.value, 0);
+        expect(notifyCount, 1);
+
+        spies.position.add(
+          const Duration(milliseconds: 1200),
+        ); // real change: 0 -> 1
+        await _flush();
+        expect(controller.activeIndex.value, 1);
+        expect(notifyCount, 2);
+      },
+    );
+  });
+
+  group('ownership', () {
+    test(
+      'losing ownership clears the active index synchronously, not on the next position event',
+      () async {
+        // MUTATION: in _recompute, change
+        // `_setActiveIndex(_owns && positionMs != null ? ... : null);` to only
+        // call _setActiveIndex when _owns is true (drop the explicit "else
+        // clear" branch). RED: activeIndex stays 0 instead of becoming null,
+        // since no position event follows the ownership change here -- and
+        // nothing is awaited between the write below and the check, so even a
+        // MICROTASK-deferred clear would also show red here.
+        final spies = _Spies();
+        addTearDown(spies.dispose);
+        final controller = spies.controller([turn(audioStartMs: 0)]);
+        addTearDown(controller.dispose);
+
+        spies.ownership.value = _mergedEventId;
+        spies.position.add(const Duration(milliseconds: 0));
+        await _flush();
+        expect(controller.activeIndex.value, 0);
+
+        spies.ownership.value = _otherEventId;
+        // No await at all: ValueNotifier.notifyListeners fires synchronously,
+        // so a genuinely immediate clear must already be visible with
+        // nothing awaited in between.
+        expect(controller.activeIndex.value, isNull);
+      },
+    );
+
+    test(
+      'regaining ownership requires a fresh position tick before re-activating',
+      () async {
+        // The old reading belonged to the player instance/track as it stood
+        // BEFORE this regain and must not be replayed as if it still applied
+        // -- see _lastPositionMs's doc comment.
+        final spies = _Spies();
+        addTearDown(spies.dispose);
+        final controller = spies.controller([
+          turn(audioStartMs: 0),
+          turn(audioStartMs: 1000),
+        ]);
+        addTearDown(controller.dispose);
+
+        spies.ownership.value = _mergedEventId;
+        spies.position.add(const Duration(milliseconds: 1200));
+        await _flush();
+        expect(controller.activeIndex.value, 1);
+
+        spies.ownership.value = _otherEventId;
+        await _flush();
+        expect(controller.activeIndex.value, isNull);
+
+        spies.ownership.value = _mergedEventId; // regained, no fresh tick yet
+        await _flush();
+        expect(controller.activeIndex.value, isNull);
+
+        spies.position.add(
+          const Duration(milliseconds: 200),
+        ); // fresh tick under the NEW ownership
+        await _flush();
+        expect(controller.activeIndex.value, 0);
+      },
+    );
+
+    test(
+      'a controller constructed while already owning resolves the same way once a position tick arrives',
+      () async {
+        // Not a distinct code path any more (see the constructor's comment):
+        // both activeIndex and isPlaying start at their "nothing known yet"
+        // default regardless of ownership at construction, and only ever
+        // change from a REAL position/playing event. This pins that a
+        // pre-set ownership does not need special-casing -- the very first
+        // event after construction resolves exactly as it would if ownership
+        // had changed to this value instead of having started there.
+        final spies = _Spies();
+        addTearDown(spies.dispose);
+        spies.ownership.value = _mergedEventId; // set BEFORE construction
+        final controller = spies.controller([turn(audioStartMs: 0)]);
+        addTearDown(controller.dispose);
+
+        expect(controller.activeIndex.value, isNull);
+
+        spies.position.add(const Duration(milliseconds: 100));
+        await _flush();
+
+        expect(controller.activeIndex.value, 0);
+      },
+    );
+  });
+
+  group('seekToTurn', () {
+    test(
+      'a full transaction from non-owner succeeds: load, seek, then play',
+      () async {
+        final spies = _Spies()..claimsOwnershipOnStart = true;
+        addTearDown(spies.dispose);
+        final controller = spies.controller([turn(audioStartMs: 3000)]);
+        addTearDown(controller.dispose);
+        // ownership starts as neither merged nor other -> the load step runs
+        // and (per this fake's wiring) claims ownership, letting the
+        // transaction proceed all the way through.
+
+        await controller.seekToTurn(0);
+
+        expect(spies.startCallCount, 1);
+        expect(spies.seeks, [const Duration(milliseconds: 3000)]);
+        expect(spies.playCallCount, 1);
+      },
+    );
+
+    test(
+      'aborts before seeking when ownership changes during the awaited load',
+      () async {
+        // MUTATION: in _awaitWhileOwned, delete the `watch` listener
+        // (return `!_disposed && _owns` instead). RED: seek and play both
+        // fire even though ownership moved away mid-load -- this specific
+        // scenario also happens to still be caught by a plain post-await
+        // `_owns` check, since ownership never comes back; see the ABA test
+        // below for the case that requires watching every intermediate
+        // change, not just the value at the end.
+        final spies = _Spies()..startGate = Completer<void>();
+        addTearDown(spies.dispose);
+        final controller = spies.controller([turn(audioStartMs: 3000)]);
+        addTearDown(controller.dispose);
+        // ownership starts as neither merged nor other -> forces the load step.
+
+        final pending = controller.seekToTurn(0);
+        await _flush();
+        expect(spies.startCallCount, 1);
+
+        spies.ownership.value =
+            _otherEventId; // someone else took the player mid-load
+        spies.startGate!.complete();
+        await pending;
+
+        expect(spies.seeks, isEmpty);
+        expect(spies.playCallCount, 0);
+      },
+    );
+
+    test(
+      'aborts even when startMergedPlayer reclaims ownership after an interruption (ABA)',
+      () async {
+        // MUTATION: in _awaitWhileOwned, drop the `watch` listener and
+        // return `!_disposed && _owns` (a plain post-await read) instead.
+        // RED: because THIS fake's startMergedPlayer claims mergedEventId as
+        // its own last step (mirroring the real wiring), a plain post-await
+        // read of _owns is true by construction the moment it returns --
+        // regardless of the otherEventId selection in between -- so seek and
+        // play both fire, resuming a transaction the user had already moved
+        // away from. Only watching every intermediate value (not just the
+        // one at the end) tells the reclaim apart from a clean load.
+        final spies = _Spies()
+          ..startGate = Completer<void>()
+          ..claimsOwnershipOnStart = true;
+        addTearDown(spies.dispose);
+        final controller = spies.controller([turn(audioStartMs: 3000)]);
+        addTearDown(controller.dispose);
+        // ownership starts as neither merged nor other -> forces the load step.
+
+        final pending = controller.seekToTurn(0);
+        await _flush();
+        expect(spies.startCallCount, 1);
+
+        spies.ownership.value =
+            _otherEventId; // the user picks a per-device half mid-load
+        spies.startGate!
+            .complete(); // load finishes and reclaims mergedEventId anyway
+        await pending;
+
+        expect(
+          spies.seeks,
+          isEmpty,
+          reason:
+              'the reclaim happened only because THIS transaction finally '
+              'finished loading, not because the user asked for the merged '
+              'recording again',
+        );
+        expect(spies.playCallCount, 0);
+      },
+    );
+
+    test(
+      'aborts before playing when ownership changes during the awaited seek',
+      () async {
+        // MUTATION: same as the load-abort test above, but for the SECOND
+        // `_awaitWhileOwned` call (around `seek`). RED: play fires even
+        // though ownership moved away mid-seek.
+        final spies = _Spies()..seekGate = Completer<void>();
+        addTearDown(spies.dispose);
+        final controller = spies.controller([turn(audioStartMs: 3000)]);
+        addTearDown(controller.dispose);
+        spies.ownership.value =
+            _mergedEventId; // already owns -> load step skipped
+
+        final pending = controller.seekToTurn(0);
+        await _flush();
+        expect(spies.seeks, [const Duration(milliseconds: 3000)]);
+
+        spies.ownership.value = _otherEventId; // taken mid-seek
+        spies.seekGate!.complete();
+        await pending;
+
+        expect(spies.playCallCount, 0);
+      },
+    );
+
+    test('an in-flight seek ignores an overlapping tap', () async {
+      // MUTATION: delete the `_seekInFlight` guard (or drop setting it to
+      // true before the first await). RED: both taps reach seek(), so
+      // spies.seeks gains a second entry instead of staying at one.
+      final spies = _Spies()..seekGate = Completer<void>();
+      addTearDown(spies.dispose);
+      final controller = spies.controller([
+        turn(audioStartMs: 1000),
+        turn(audioStartMs: 2000),
+      ]);
+      addTearDown(controller.dispose);
+      spies.ownership.value = _mergedEventId;
+
+      final first = controller.seekToTurn(0);
+      await _flush();
+      final second = controller.seekToTurn(1); // overlapping -> must be ignored
+
+      spies.seekGate!.complete();
+      await Future.wait([first, second]);
+
+      expect(spies.seeks, [const Duration(milliseconds: 1000)]);
+      expect(spies.playCallCount, 1);
+    });
+
+    test('seeking a turn with no audioStartMs is a no-op', () async {
+      // MUTATION: delete `if (startMs == null) return;` and force-unwrap
+      // `startMs!` at the seek call site instead. RED: this throws instead
+      // of quietly doing nothing (spies.seeks would never even get checked).
+      final spies = _Spies();
+      addTearDown(spies.dispose);
+      final controller = spies.controller([turn(audioStartMs: null)]);
+      addTearDown(controller.dispose);
+      spies.ownership.value = _mergedEventId;
+
+      await controller.seekToTurn(0);
+
+      expect(spies.startCallCount, 0);
+      expect(spies.seeks, isEmpty);
+      expect(spies.playCallCount, 0);
+    });
+  });
+
+  group('isPlaying', () {
+    test(
+      'tracks the playing stream only while the merged event owns the player',
+      () async {
+        final spies = _Spies();
+        addTearDown(spies.dispose);
+        final controller = spies.controller([turn(audioStartMs: 0)]);
+        addTearDown(controller.dispose);
+
+        expect(controller.isPlaying.value, isFalse);
+
+        spies.playing.add(true); // not yet owning -> stays false
+        await _flush();
+        expect(controller.isPlaying.value, isFalse);
+
+        spies.ownership.value = _mergedEventId;
+        spies.playing.add(true);
+        await _flush();
+        expect(controller.isPlaying.value, isTrue);
+
+        spies.ownership.value =
+            _otherEventId; // lost ownership -> false immediately
+        await _flush();
+        expect(controller.isPlaying.value, isFalse);
+      },
+    );
+
+    test(
+      'gaining ownership recomputes isPlaying from the last known playing state',
+      () async {
+        // MUTATION: remove the `_recomputePlaying();` call from
+        // _onOwnershipChanged (leaving only the position-side effects there).
+        // RED: isPlaying stays false after gaining ownership, since the
+        // earlier `true` player-state event was correctly suppressed (not yet
+        // ours) and nothing re-derives it once ownership catches up -- with
+        // no SECOND playing event in this test, only the ownership-triggered
+        // recompute can make this pass.
+        final spies = _Spies();
+        addTearDown(spies.dispose);
+        final controller = spies.controller([turn(audioStartMs: 0)]);
+        addTearDown(controller.dispose);
+
+        spies.playing.add(
+          true,
+        ); // the underlying player is already playing SOMETHING else
+        await _flush();
+        expect(controller.isPlaying.value, isFalse);
+
+        spies.ownership.value =
+            _mergedEventId; // now ours -- no NEW playing event follows
+        await _flush();
+
+        expect(controller.isPlaying.value, isTrue);
+      },
+    );
+  });
+
+  group('disposal', () {
+    test(
+      'cancels its subscriptions and stops notifying once disposed',
+      () async {
+        final spies = _Spies();
+        addTearDown(spies.dispose);
+        final controller = spies.controller([
+          turn(audioStartMs: 0),
+          turn(audioStartMs: 5000),
+        ]);
+        spies.ownership.value = _mergedEventId;
+        spies.position.add(const Duration(milliseconds: 0));
+        await _flush();
+        expect(controller.activeIndex.value, 0);
+        expect(spies.position.hasListener, isTrue);
+        expect(spies.playing.hasListener, isTrue);
+        expect(
+          spies.ownership.addCount,
+          1,
+          reason: 'the constructor registers exactly one ownership listener',
+        );
+        expect(spies.ownership.removeCount, 0);
+
+        var notifyCount = 0;
+        controller.activeIndex.addListener(() => notifyCount++);
+        controller.isPlaying.addListener(() => notifyCount++);
+
+        controller.dispose();
+
+        expect(
+          spies.position.hasListener,
+          isFalse,
+          reason: 'dispose must cancel the position subscription',
+        );
+        expect(
+          spies.playing.hasListener,
+          isFalse,
+          reason: 'dispose must cancel the playing subscription',
+        );
+        expect(
+          spies.ownership.removeCount,
+          1,
+          reason:
+              'dispose must remove the SAME ownership listener the '
+              'constructor added, not merely stop reacting to it',
+        );
+
+        // MUTATION: delete the `if (_disposed) return;` guard at the top of
+        // _setActiveIndex (the sink every mutating path funnels through, per
+        // the comment above it). RED: updateTurns's differing resolution below
+        // reaches the already-disposed activeIndex notifier and throws ("used
+        // after being disposed") instead of quietly no-op'ing.
+        expect(
+          () => controller.updateTurns([turn(audioStartMs: null)]),
+          returnsNormally,
+        );
+        expect(controller.activeIndex.value, 0);
+
+        // A stray event on a stream we no longer listen to, and a stray
+        // ownership write, must not resurrect any callback either.
+        spies.position.add(const Duration(milliseconds: 6000));
+        spies.ownership.value = _otherEventId;
+        await _flush();
+
+        expect(
+          notifyCount,
+          0,
+          reason:
+              'no listener attached before dispose may ever fire again '
+              'after it',
+        );
+        expect(controller.dispose, returnsNormally);
+      },
+    );
+
+    test(
+      'removes an in-flight transaction\'s temporary ownership watcher immediately, not once it settles',
+      () async {
+        // MUTATION: delete the `for (final watch in _activeOwnershipWatches)`
+        // cleanup loop in dispose() (leaving only
+        // `ownership.removeListener(_onOwnershipChanged)`). RED: removeCount
+        // stays at 1 immediately after dispose instead of 2 -- the
+        // in-flight seek's temporary watcher (added by _awaitWhileOwned)
+        // would otherwise stay registered on `ownership` until the gated
+        // seek below finally completes, or forever if it never did.
+        final spies = _Spies()..seekGate = Completer<void>();
+        addTearDown(spies.dispose);
+        final controller = spies.controller([turn(audioStartMs: 3000)]);
+        spies.ownership.value =
+            _mergedEventId; // already owns -> load step skipped
+
+        final pending = controller.seekToTurn(0);
+        await _flush(); // now inside the awaited seek() -- its watcher is live
+        expect(
+          spies.ownership.addCount,
+          2,
+          reason: 'the constructor listener plus this transaction\'s watcher',
+        );
+
+        controller.dispose();
+
+        expect(
+          spies.ownership.removeCount,
+          2,
+          reason:
+              'both listeners must be gone immediately on dispose, not '
+              'left registered until the pending seek happens to finish',
+        );
+
+        spies.seekGate!.complete(); // let the disposed transaction unwind
+        await pending;
+      },
+    );
+  });
+}
