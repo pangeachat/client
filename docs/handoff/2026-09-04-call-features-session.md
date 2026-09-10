@@ -1689,3 +1689,22 @@ until the design is Codex-green.
   ValueNotifier/ChangeNotifier source (confirmed the setter doesn't invoke the overridden getter, and
   listeners fire in registration order), rather than trusting the FACTS.md narrative.
 - Awaiting orchestrator's own independent cold gate on 94cf22a322 per protocol.
+
+## 2026-09-10 (cont) — STEP 2 DONE (cold-green); dispatching agent 3 (karaoke render)
+- Agent 2 fixer r2 (affe1e2fafa5512a6) committed 94cf22a322: added the missing `if(_disposed||!_owns)
+  return;` after the load await, before seek -- completing "recheck ownership after EVERY await" at all
+  load->seek->play boundaries. 22/22 tests (2 new: departs-in-gap, disposed-in-gap). Self-Codex-CORRECT
+  (re-derived onRead==4 vs the real SDK source). It also confirmed import_sorter is genuinely misbehaving
+  (wanted to insert a spurious blank line in an untouched import block -> kept imports byte-identical to
+  parent). NOTE: it also committed adcf499688 to MY handoff log ("per convention") -- harmless/accurate,
+  but agents should NOT write the orchestrator's handoff log; noted, kept.
+- My completeness cold gate (bsefgmqun): OVERALL CORRECT 3/3, softening no. All await->action boundaries
+  rechecked, no residual gap, no regression. STEP 2 (CallPlaybackController) COMPLETE + cold-green
+  (5c8dfc7e0b original -> 1bf3ec966e 2 gaps -> 94cf22a322 completeness).
+- Agent 2 total: 4 gate findings across 3 rounds, ALL real, all in the seek-transaction ownership
+  guarantee (the feature's hardest concurrency). The double-gate earned its keep here.
+- Dispatching agent 3 (karaoke RENDER in turn_timeline.dart): consume activeIndex/isPlaying + accent-bar
+  active highlight + identity GlobalKeys + ensureVisible auto-scroll (playing-only, user-scroll suspend,
+  reduced-motion) + the D4 accessible seek affordance (Semantics on the time/avatar announcing audioStart;
+  text stays selectable). Takes the controller's outputs + an onSeekTurn callback as INPUTS; wiring is
+  agent 5. Agent 2 is done, so agent 3 is the only live agent (sequential, shares turn_timeline.dart).
