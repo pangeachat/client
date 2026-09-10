@@ -1434,3 +1434,30 @@ until the design is Codex-green.
   recording-aligned turns, loading states, karaoke highlight/auto-scroll/tap-seek) + draft the governed
   doc section (voice-video-calls "What a turn's time promises") for owner review; Codex-gate the DESIGN
   to green; gist; WAIT for owner go; then agents build+self-gate; then my cold green; then report.
+
+## 2026-09-10 (cont) — item-1 cold gate caught a double-upload; root-caused + fixed + re-gating
+- Ran a cold Codex behaviour+pinning gate on the committed item-1 fix (17bbfbec89). BEHAVIOUR
+  VERDICT: ISSUES-FOUND (softening: NO). Real hole my `preserveCarrier:true` opened:
+  stretch A records -> handed to a sibling; this device re-elected (stretch B) -> B's tap dies
+  BEFORE any frame. The audio generation opens on the FIRST frame (call_capture.dart:1286) and
+  `onRunEnded` does not cancel it (call_audio_recorder.dart:824), so the recorder's CURRENT
+  generation is still A's (the sibling's half). The fix latched carrier=true for B -> finish
+  uploads A again -> merged recording double-covers the stretch. Pre-fix (bare stop) this could
+  not happen. Gate also: pinning missed the zero-frame case.
+- ROOT CAUSE / RULE: carrier=true at the final stop IFF the recorder's current generation is one
+  THIS device recorded this stretch and did not hand over. A zero-frame stretch holds no
+  generation of its own; latching there resurrects the prior (handed-over) one.
+- FIX: new per-stretch flag `_recordedFrameThisStretch` (set on any `recorderLive` frame incl.
+  muted, in _onFrames; cleared in start()); added to the latch condition. Chosen over
+  `_audioRunFormat != null` because that is only set when a recording SINK is wired, and the
+  default test `service()` wires none -> gating on it would have broken the 5 passing peer-drop/
+  carrier tests. The new flag is sink-independent and semantically precise.
+- TESTS: added 2 (zero-frame tap death -> no carry; zero-frame-after-handover -> does not
+  resurrect the sibling half). MUTATION-PROVEN: with `&& _recordedFrameThisStretch` removed both
+  FAIL (Expected false, Actual true); restored -> call_capture_test +126 green, format clean.
+- IN FLIGHT: re-gate (codex, task baw46zt0p, dir gate-item1b, 309-line combined diff <350);
+  full calls bucket (task buk4y063e). Amend the item-1 commit once both green.
+- LESSON: a one-line carrier latch in the capture service can desync from the recorder's
+  generation lifecycle (generation opens on first frame, lingers after handover). Any change to
+  `wasCarryingBeforeLastStop` must be reasoned against "which generation will finish upload",
+  not just the tap/stretch state. The cold gate earned its place here.
