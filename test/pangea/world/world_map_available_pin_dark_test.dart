@@ -204,10 +204,11 @@ void main() {
       final icon = tester.widget<Icon>(find.byIcon(Icons.add));
       expect(
         icon.color,
-        ActivityPinState.available.labelColor,
+        themeFor(Brightness.light).colorScheme.primary,
         reason:
             'the light-purple fill is too pale for a white plus, so in light '
-            'mode the glyph takes the pin\'s dark-purple label colour',
+            'mode the glyph takes the pin\'s dark-purple label colour — which '
+            '#8968 now resolves through the theme',
       );
     });
 
