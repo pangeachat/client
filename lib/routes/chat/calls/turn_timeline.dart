@@ -152,7 +152,11 @@ class CallTurn {
   /// anything ELSE in the half does -- and, since two segments can share an
   /// `atMs` (one malformed chunk's shared fallback offset), a tiebreak of the
   /// segment's own span and its own text, both embedded verbatim -- see
-  /// `_turnIdentityKey` for why neither is reduced to a lossy digest.
+  /// `_turnIdentityKey` for why neither is reduced to a lossy digest. A
+  /// content tie survives even that -- two segments can share atMs, span AND
+  /// text all at once -- so a final ordinal breaks it; see
+  /// `_turnIdentityKey` for how that ordinal stays stable across a rebuild
+  /// too.
   final String identityKey;
 
   const CallTurn({

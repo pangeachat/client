@@ -2609,6 +2609,103 @@ void main() {
     );
 
     testWidgets(
+      'a sender with two recordings where the merge names only one gets no '
+      'window on ANY of their turns',
+      (tester) async {
+        // The real defect: `CaptureElection`'s own doc describes a
+        // convergence race where two of one account's devices can each start
+        // capturing before their rosters converge, and an ordinary capture
+        // drop-and-rejoin reaches the same shape -- either way this sender
+        // ends up with TWO `pangea.call_audio` recordings for one call. When
+        // the merge names only one of them there is no per-segment recording
+        // id to say which of this sender's SEGMENTS the excluded recording's
+        // audio belongs to, so NONE of their turns may claim a window --
+        // never one that might be pointing at audio that was never mixed in.
+        //
+        // The peer speaks but uploads no recording of their own, which keeps
+        // this fixture's TOTAL recording count at two. A third recording here
+        // would also trip `selectMergedRow`'s unrelated more-than-two-halves
+        // v1-scope suppression (`call_audio_merged_selection.dart`) and
+        // suppress the merged row entirely -- a different rule, already
+        // exercised elsewhere, and not what this test is pinning.
+        final testRoom = room();
+        final mePhone = audioEvent(_me, deviceId: 'PHONE');
+        final meLaptop = audioEvent(_me, deviceId: 'LAPTOP');
+        await pumpWithRecordings(
+          tester,
+          testRoom,
+          serving([
+            half(_me, texts: const ['hello'], atMs: [_callStart]),
+            half(_peer, texts: const ['hi'], atMs: [_callStart + 1000]),
+            mePhone,
+            meLaptop,
+            mergedEvent(
+              _me,
+              // Only the phone's recording is named -- the laptop's is not.
+              sourceEventIds: [mePhone.eventId],
+              mergedStartSfuMs: _callStart - 2000,
+            ),
+          ]),
+        );
+
+        final turns = renderedTurns(tester);
+        final hello = turns.singleWhere((t) => t.text == 'hello');
+        final hi = turns.singleWhere((t) => t.text == 'hi');
+
+        expect(
+          hello.audioStartMs,
+          isNull,
+          reason:
+              'one of this sender\'s two recordings is absent from the '
+              'merge, so none of their turns may window into it',
+        );
+        expect(hello.audioEndMs, isNull);
+        expect(
+          hi.audioStartMs,
+          isNull,
+          reason:
+              'a separate, already-correct rule: the peer uploaded no '
+              'recording of their own at all, so they were never covered '
+              'either',
+        );
+        expect(hi.audioEndMs, isNull);
+      },
+    );
+
+    testWidgets('a sender with two recordings where the merge names BOTH stays '
+        'window-eligible', (tester) async {
+      // The other side of the same rule, pinned separately so a fix that
+      // over-corrects -- requiring exactly one recording, say -- would show
+      // up here rather than hiding behind the single-recording coverage
+      // every other window test in this file already exercises.
+      final testRoom = room();
+      final mePhone = audioEvent(_me, deviceId: 'PHONE');
+      final meLaptop = audioEvent(_me, deviceId: 'LAPTOP');
+      await pumpWithRecordings(
+        tester,
+        testRoom,
+        serving([
+          half(_me, texts: const ['hello'], atMs: [_callStart]),
+          mePhone,
+          meLaptop,
+          mergedEvent(
+            _me,
+            sourceEventIds: [mePhone.eventId, meLaptop.eventId],
+            mergedStartSfuMs: _callStart - 2000,
+          ),
+        ]),
+      );
+
+      final hello = renderedTurns(tester).single;
+      expect(
+        hello.audioStartMs,
+        isNotNull,
+        reason: 'every one of this sender\'s recordings is named',
+      );
+      expect(hello.audioEndMs, isNotNull);
+    });
+
+    testWidgets(
       'no two turns in a transcript share an identityKey, even when one '
       'sender contributes from two devices',
       (tester) async {
@@ -2753,5 +2850,41 @@ void main() {
         );
       },
     );
+
+    testWidgets('two segments with identical content in one half still get '
+        'DIFFERENT identityKeys', (tester) async {
+      // Content alone is not injective either: an approximate "yes", a
+      // pause, then another "yes" can both be estimated to the identical
+      // chunk, so two genuinely distinct turns can share senderId, atMs,
+      // spanMs AND text all at once. `identityKey` keys a `GlobalKey`
+      // (build step 3's karaoke auto-scroll/highlight), and two widgets
+      // sharing one `GlobalKey` throws -- so this has to resolve to two
+      // distinct keys even though nothing about their CONTENT tells them
+      // apart.
+      final testRoom = room();
+      await pumpWithRecordings(
+        tester,
+        testRoom,
+        serving([
+          half(
+            _me,
+            texts: const ['yes', 'yes'],
+            captured: 2,
+            transcribed: 2,
+            atMs: [_callStart, _callStart],
+          ),
+        ]),
+      );
+
+      final turns = renderedTurns(tester);
+      expect(turns, hasLength(2));
+      expect(
+        turns.map((t) => t.identityKey).toSet(),
+        hasLength(2),
+        reason:
+            'two genuinely distinct turns must not collide just because '
+            'they share every content field',
+      );
+    });
   });
 }

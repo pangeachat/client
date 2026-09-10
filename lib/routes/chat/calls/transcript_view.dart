@@ -570,8 +570,10 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
   /// from -- needed because a [TranscriptHalf] carries no event id of its own
   /// once `_assembleDevices` (`transcript_assembly.dart`) has folded one
   /// sender's devices into it, so the only way to ask "is this half's audio
-  /// part of the merge" is by the sender's RECORDING event id, read off this
-  /// list, against [CallAudioMergedContent.sourceEventIds].
+  /// part of the merge" is by the sender's RECORDING event id(s), read off
+  /// this list, against [CallAudioMergedContent.sourceEventIds] -- ALL of
+  /// them, when a sender has more than one; see the coverage check below for
+  /// why.
   List<CallTurn> _turnsOf(
     CallTranscript transcript,
     L10n l10n, {
@@ -688,36 +690,53 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     // of one sender's `pangea.call_transcript` events into one half and keeps
     // none of their ids -- so the only id this reader can compare against
     // [CallAudioMergedContent.sourceEventIds] is that sender's
-    // `pangea.call_audio` RECORDING event, read off [recordings]. A sender
-    // with no recording at all, or whose recording this merge does not name,
-    // is not covered: their turns get no window rather than one measured
-    // against audio that was never mixed in.
+    // `pangea.call_audio` RECORDING event(s), read off [recordings]. A sender
+    // with no recording at all is not covered, obviously; a sender with one
+    // or more recordings is covered only when EVERY one of them is named by
+    // this merge.
     //
-    // SENDER-level, not event-level -- a real, currently open gap, and NOT
-    // one cleanly fenced off to a ">2 halves" future feature. A sender with
-    // TWO recordings -- two devices, a capture drop-and-rejoin, or the
-    // ordinary convergence race `CaptureElection`'s own doc describes (two of
-    // one account's devices can each start capturing before their rosters
-    // converge, one then stopping) -- where this merge names only one would
-    // still pass every one of that sender's turns here, including the
-    // excluded recording's. `TranscriptHalf` cannot narrow it further:
-    // `_assembleDevices` has already folded a sender's several recordings
-    // into one half before this method ever sees it, and kept no
-    // per-segment recording id to check against instead. `CaptureElection`
-    // does not guarantee a sender produces only one recording across a whole
-    // call -- its own convergence-race case above is two devices BOTH
-    // believing themselves elected before their rosters agree, so it is not
-    // a basis for calling this gap closed today. Precise, per-recording
-    // coverage needs identity this layer does not carry; it belongs with the
-    // >2-halves device-switch
-    // merge work, pangeachat/client#8878, which needs the same identity. No
-    // behaviour change here.
+    // SENDER-level, not event-level -- and deliberately conservative rather
+    // than precise, CLOSED here rather than deferred. A sender can produce
+    // more than one `pangea.call_audio` recording for one call -- two
+    // devices, a capture drop-and-rejoin, or the ordinary convergence race
+    // `CaptureElection`'s own doc describes (two of one account's devices can
+    // each start capturing before their rosters converge, one then stopping)
+    // -- and when this merge names only SOME of them, there is no way from
+    // here to tell which of that sender's SEGMENTS came from the named
+    // recording and which from the excluded one: `_assembleDevices` has
+    // already folded a sender's several recordings into one half before this
+    // method ever sees it, and kept no per-segment recording id to check
+    // instead. Requiring EVERY recording of a sender to be named, rather than
+    // ANY, is what keeps that unknown from ever reaching the screen: such a
+    // sender gets NO window on ANY of their turns rather than a window that
+    // might point at audio never mixed in -- no karaoke rather than wrong
+    // karaoke. The ordinary two-party case (each sender exactly one
+    // recording, both named) is unaffected: "every recording of one is
+    // named" and "the one recording is named" are the same statement.
+    //
+    // A FUTURE per-segment, per-recording-precise coverage could still narrow
+    // this to the exact stretch each recording actually contributed -- it
+    // needs identity this layer does not carry, and belongs with the
+    // >2-halves device-switch merge work, pangeachat/client#8878, which needs
+    // the same identity. This is not that: it is the conservative rule that
+    // makes today's coverage check HONEST rather than merely narrower than it
+    // claims to be.
+    final recordingsBySender = <String, List<CallAudioRecording>>{};
+    for (final recording in recordings) {
+      recordingsBySender
+          .putIfAbsent(recording.senderId, () => [])
+          .add(recording);
+    }
     final mergeCoveredSenderIds = mergedRow == null
         ? const <String>{}
         : <String>{
-            for (final recording in recordings)
-              if (mergedRow.content.sourceEventIds.contains(recording.eventId))
-                recording.senderId,
+            for (final entry in recordingsBySender.entries)
+              if (entry.value.every(
+                (recording) => mergedRow.content.sourceEventIds.contains(
+                  recording.eventId,
+                ),
+              ))
+                entry.key,
           };
 
     // Whether [half]'s turns may carry a recording-timeline window at all.
@@ -738,6 +757,11 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
         mergeCoveredSenderIds.contains(half.senderId);
 
     final turns = <CallTurn>[];
+    // Shared across every half, deliberately: [_turnContentKey] already
+    // embeds [senderId], so two different senders' segments never share a
+    // content key and this one map naturally scopes each sender's own
+    // ordinals without having to be reset per half.
+    final identityOrdinals = <String, int>{};
     for (final entry in placed) {
       final eligible = windowEligible(entry.half);
       for (final segment in entry.half.segments) {
@@ -780,7 +804,11 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
             langCode: entry.half.langCode,
             audioStartMs: audioStartMs,
             audioEndMs: audioEndMs,
-            identityKey: _turnIdentityKey(entry.half.senderId, segment),
+            identityKey: _turnIdentityKey(
+              entry.half.senderId,
+              segment,
+              identityOrdinals,
+            ),
           ),
         );
       }
@@ -815,19 +843,39 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
   /// `transcript_segments.dart`). [spanMs] -- null for a precise segment, the
   /// chunk's own delta for an approximate one -- and the segment's own
   /// [TranscriptSegment.text] break that tie before falling back to an
-  /// accident: two segments identical in text, position AND span would still
-  /// collide, but nothing built from their content could tell those two
-  /// apart either, since they are indistinguishable on the wire.
+  /// accident.
+  ///
+  /// CONTENT alone is still not quite injective: two segments can share
+  /// senderId, atMs, spanMs AND text all at once -- an approximate "yes", a
+  /// pause, then another "yes" the writer estimated to the identical chunk,
+  /// with nothing on the wire to tell the two apart. [ordinals] is what
+  /// closes that gap. It counts occurrences PER content key -- the same
+  /// string this method would otherwise return outright -- across every
+  /// segment already keyed in this call to [_turnsOf], and the count is
+  /// appended as one final field: the first segment with any given content
+  /// key is `#0`, a genuine duplicate is `#1`, a third is `#2`, and so on.
+  /// This is deliberately NOT a plain index into the half's segment list --
+  /// see the doc above for why a bare position breaks a [GlobalKey] -- it is
+  /// a position WITHIN one content-key GROUP, so it only moves when a
+  /// SIBLING with the identical content is inserted ahead of it, never when
+  /// an unrelated segment is: a later segment with fresh content leaves
+  /// every existing key exactly as it was, and a later segment that happens
+  /// to repeat an earlier one's content becomes the next ordinal in that
+  /// group rather than colliding with it.
   ///
   /// The text is embedded VERBATIM, never hashed. A hash is lossy by
   /// construction -- two DIFFERENT texts can share one `hashCode`, which
   /// would silently reintroduce the same collision this key exists to rule
   /// out, only rarer and undetectable. `#` cannot appear in [senderId] (a
   /// Matrix user id) or in a formatted integer, so it never creates an
-  /// ambiguous boundary among the first three fields; the text is placed
-  /// LAST, where a `#` inside it can only ever be part of the text, never
-  /// mistaken for a field separator, because nothing reads this key back
-  /// apart again -- it is compared only for equality.
+  /// ambiguous boundary among the first three fields. The ordinal is placed
+  /// LAST, after the text, for the same reason the text used to be last:
+  /// nothing reads this key back apart again, it is compared only for
+  /// equality, and a `#` inside the text can only ever be part of the text
+  /// because the ordinal that follows it is itself pure digits with no `#`
+  /// of its own -- so reading from the end, the LAST `#` in the whole string
+  /// is always this method's own final separator, whatever the text
+  /// contains.
   ///
   /// [spanMs] is interpolated directly rather than defaulted to a sentinel
   /// integer: Dart prints a null `int?` as the literal string `null`, which
@@ -836,7 +884,24 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
   /// that approximate segment's own span happens to be signed -- this holds
   /// without having to lean on [TranscriptSegment.spanMs] never being
   /// negative in practice.
-  String _turnIdentityKey(String senderId, TranscriptSegment segment) =>
+  String _turnIdentityKey(
+    String senderId,
+    TranscriptSegment segment,
+    Map<String, int> ordinals,
+  ) {
+    final contentKey = _turnContentKey(senderId, segment);
+    final ordinal = ordinals.update(
+      contentKey,
+      (occurrences) => occurrences + 1,
+      ifAbsent: () => 0,
+    );
+    return '$contentKey#$ordinal';
+  }
+
+  /// The content-derived portion of [_turnIdentityKey], broken out so the
+  /// per-content-key ordinal counter there can group segments by this exact
+  /// string without duplicating its derivation.
+  String _turnContentKey(String senderId, TranscriptSegment segment) =>
       '$senderId#${segment.atMs!}#${segment.spanMs}#${segment.text}';
 
   /// What may be said about one segment's moment.
