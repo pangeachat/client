@@ -626,14 +626,11 @@ class Message extends StatelessWidget {
                                                               fontWeight:
                                                                   FontWeight
                                                                       .bold,
-                                                              color:
-                                                                  (theme.brightness ==
-                                                                      Brightness
-                                                                          .light
-                                                                  ? displayname
-                                                                        .color
-                                                                  : displayname
-                                                                        .lightColorText),
+                                                              color: displayname
+                                                                  .timelineNameColor(
+                                                                    theme
+                                                                        .brightness,
+                                                                  ),
                                                               // #Pangea
                                                               // shadows:
                                                               //     !wallpaperMode

@@ -204,9 +204,7 @@ class UserProfileName extends StatelessWidget {
           style: colorize
               ? (style ?? const TextStyle()).copyWith(
                   color:
-                      (theme.brightness == Brightness.light
-                          ? name?.darkColor
-                          : name?.lightColorText) ??
+                      name?.profileNameColor(theme.brightness) ??
                       theme.colorScheme.primary,
                 )
               : style,
