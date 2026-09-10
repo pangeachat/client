@@ -106,7 +106,11 @@ class Avatar extends StatelessWidget {
                 : noPic
                 ? Container(
                     decoration: BoxDecoration(
-                      color: backgroundColor ?? name?.lightColorAvatar,
+                      color:
+                          backgroundColor ??
+                          (theme.brightness == Brightness.light
+                              ? name?.avatarColorLight
+                              : name?.avatarColorDark),
                     ),
                     alignment: Alignment.center,
                     child: Text(
@@ -147,7 +151,11 @@ class Avatar extends StatelessWidget {
                     placeholder: (_) => noPic
                         ? Container(
                             decoration: BoxDecoration(
-                              color: backgroundColor ?? name?.lightColorAvatar,
+                              color:
+                                  backgroundColor ??
+                                  (theme.brightness == Brightness.light
+                                      ? name?.avatarColorLight
+                                      : name?.avatarColorDark),
                             ),
                             alignment: Alignment.center,
                             child: Text(
