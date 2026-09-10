@@ -23,6 +23,34 @@ class _CountingOwnership extends ValueNotifier<String?> {
   int addCount = 0;
   int removeCount = 0;
 
+  /// Bumped on every read of [value] (the getter, never the setter) since
+  /// whenever a test last reset it to 0. Lets a test arm [onRead] to fire on
+  /// one SPECIFIC internal `ownership.value` read -- e.g. the one inside
+  /// `_awaitWhileOwned`'s return statement -- by counting up to a known
+  /// number from a known starting point, rather than guessing at timing.
+  int readCount = 0;
+
+  /// Invoked synchronously, with the just-incremented [readCount], every
+  /// time [value] is read -- AFTER this read's own return value has already
+  /// been captured, so a hook that itself writes [value] (e.g. to simulate
+  /// ownership departing right after a specific read observed it) can never
+  /// change what THIS read returns, only what the NEXT one does. That
+  /// ordering is what makes it possible to deterministically construct "read
+  /// N saw the old value, read N+1 sees the new one" -- the exact shape of
+  /// the gap between `_awaitWhileOwned`'s verdict and a caller acting on it
+  /// -- without depending on real (and in practice unschedulable, since
+  /// Dart's `await` chain resolves such a fully-synchronous sequence in one
+  /// uninterruptible cascade) microtask-timing races.
+  void Function(int readCount)? onRead;
+
+  @override
+  String? get value {
+    readCount++;
+    final result = super.value;
+    onRead?.call(readCount);
+    return result;
+  }
+
   @override
   void addListener(VoidCallback listener) {
     addCount++;
@@ -56,7 +84,16 @@ class _Spies {
   Completer<void>? seekGate;
   bool claimsOwnershipOnStart = false;
 
+  /// Invoked synchronously as the very first thing inside
+  /// [startMergedPlayer], before it does anything else -- lets a test give
+  /// this action a synchronous prefix that mutates [ownership] BEFORE the
+  /// function ever reaches an `await` (or, absent a [startGate], before it
+  /// reaches its own `return`), to prove `_awaitWhileOwned` observes a
+  /// change made in that window.
+  void Function()? onStartMergedPlayerSync;
+
   Future<void> startMergedPlayer() async {
+    onStartMergedPlayerSync?.call();
     startCallCount++;
     final gate = startGate;
     if (gate != null) await gate.future;
@@ -442,6 +479,53 @@ void main() {
     );
 
     test(
+      'aborts when startMergedPlayer flips ownership synchronously before its own first suspension',
+      () async {
+        // MUTATION: revert _awaitWhileOwned's parameter from a thunk back to
+        // an already-started future -- change the two call sites back to
+        // `_awaitWhileOwned(startMergedPlayer())` /
+        // `_awaitWhileOwned(seek(...))`, and _awaitWhileOwned's own
+        // signature back to `Future<bool> _awaitWhileOwned(Future<void>
+        // action)`. RED: `startMergedPlayer()` is then evaluated as a plain
+        // argument expression BEFORE _awaitWhileOwned's own body runs, so
+        // its synchronous prefix -- everything up to its first `await`,
+        // which here is the whole adversarial flap below, since this fake
+        // never awaits anything when no startGate is set -- executes before
+        // the `watch` listener exists to see it. seek and play both fire
+        // even though the user moved away and only came back because THIS
+        // load reclaimed the merged event.
+        final spies = _Spies();
+        addTearDown(spies.dispose);
+        final controller = spies.controller([turn(audioStartMs: 3000)]);
+        addTearDown(controller.dispose);
+        // ownership starts null (not merged) -> forces the load step, which
+        // is where this fake's synchronous hook lives.
+
+        spies.onStartMergedPlayerSync = () {
+          spies.ownership.value = _otherEventId; // user grabs a per-device half
+          spies.ownership.value =
+              _mergedEventId; // and this same load reclaims it -- both
+          // writes complete before startMergedPlayer's body reaches an
+          // `await` (there is none here, since no startGate is set), i.e.
+          // before its Future is even handed back to whichever code called
+          // it.
+        };
+
+        await controller.seekToTurn(0);
+
+        expect(
+          spies.seeks,
+          isEmpty,
+          reason:
+              'ownership left mergedEventId during startMergedPlayer\'s own '
+              'synchronous prefix; a watcher registered only once that call '
+              'is already running can never see it',
+        );
+        expect(spies.playCallCount, 0);
+      },
+    );
+
+    test(
       'aborts before playing when ownership changes during the awaited seek',
       () async {
         // MUTATION: same as the load-abort test above, but for the SECOND
@@ -463,6 +547,67 @@ void main() {
         await pending;
 
         expect(spies.playCallCount, 0);
+      },
+    );
+
+    test(
+      'aborts when ownership leaves in the gap between the seek verdict and play()',
+      () async {
+        // MUTATION: delete the `if (_disposed || !_owns) return;` guard
+        // immediately before `await play();` in seekToTurn. RED:
+        // _awaitWhileOwned already decided "still owned" for the seek --
+        // that decision is exactly what this test flips ownership away
+        // right after -- so without a final synchronous re-read, play()
+        // fires on a verdict that is already stale by the time it is used.
+        //
+        // This forces the interleaving deterministically rather than racing
+        // a real timer/microtask against it: _CountingOwnership.onRead runs
+        // AFTER a read has already captured its own return value (see its
+        // doc comment), so flipping `ownership.value` from inside it changes
+        // what the NEXT read sees without touching the read that triggered
+        // it. A real production race would come from genuine async I/O
+        // inside seek()/play() (the real ones talk to a platform channel);
+        // Dart resolves an all-synchronous chain like this test's fakes in
+        // one uninterruptible cascade, so a `scheduleMicrotask`-based
+        // departure can never actually land inside it -- this hook is what
+        // makes the scenario reproducible at all in a fast, deterministic
+        // unit test.
+        final spies = _Spies();
+        addTearDown(spies.dispose);
+        final controller = spies.controller([turn(audioStartMs: 3000)]);
+        addTearDown(controller.dispose);
+        spies.ownership.value =
+            _mergedEventId; // already owns -> load step skipped, so the
+        // only internal `ownership.value` reads left in this transaction
+        // are: (1) seekToTurn's own top-of-function `!_owns` check, then (2)
+        // _awaitWhileOwned's verdict read for the seek call -- counted below
+        // to target (2) precisely instead of guessing at timing.
+        spies.ownership.readCount = 0;
+        spies.ownership.onRead = (count) {
+          if (count != 2) return;
+          // _awaitWhileOwned's verdict read for the seek call just captured
+          // "still merged" as ITS answer (unaffected by this, since [value]
+          // returns the pre-hook value -- see its doc comment); ownership
+          // leaves the instant after, simulating the departure landing in
+          // the gap between that verdict and seekToTurn acting on it.
+          spies.ownership.value = _otherEventId;
+        };
+
+        await controller.seekToTurn(0);
+
+        expect(
+          spies.seeks,
+          [const Duration(milliseconds: 3000)],
+          reason: 'the seek itself already committed before ownership left',
+        );
+        expect(
+          spies.playCallCount,
+          0,
+          reason:
+              'ownership left mergedEventId after _awaitWhileOwned decided '
+              '"still owned" for the seek but before seekToTurn acted on '
+              'that decision',
+        );
       },
     );
 

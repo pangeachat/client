@@ -238,12 +238,22 @@ class CallPlaybackController extends ChangeNotifier {
   ///    ever seen away from [mergedEventId] while that was in flight.
   /// 2. Await [seek] to the turn's start; abort BEFORE playing under the
   ///    same rule.
-  /// 3. Await [play].
+  /// 3. Re-read [_owns] ONE LAST TIME, synchronously, with no await between
+  ///    that read and calling [play] -- then await [play].
   ///
-  /// Each recheck is "was ownership ever seen away from [mergedEventId]
-  /// during the await", not merely "does it read as [mergedEventId] now" --
-  /// see [_awaitWhileOwned] for why a plain before/after comparison is not
-  /// enough here.
+  /// Each recheck in steps 1-2 is "was ownership ever seen away from
+  /// [mergedEventId] during the await", not merely "does it read as
+  /// [mergedEventId] now" -- see [_awaitWhileOwned] for why a plain
+  /// before/after comparison is not enough there, and for why it alone is
+  /// still not enough to greenlight step 3: this function's own resumption,
+  /// after [_awaitWhileOwned] returns its verdict, is itself a fresh
+  /// suspension point -- nothing guarantees [ownership] cannot change in
+  /// whatever gap exists between that verdict being decided and this
+  /// function acting on it (in production [seek] is a real platform call, a
+  /// genuine yield point the user's own next tap can land inside). Step 3's
+  /// guard is what actually gets read at the last possible synchronous
+  /// instant before [play] runs; without it, a `true` decided one step ago
+  /// could already be stale by the time it is used.
   ///
   /// A no-op for a turn with no `audioStartMs` (nothing to seek to), and for
   /// a tap that arrives while a previous one is still in flight -- overlap is
@@ -257,22 +267,29 @@ class CallPlaybackController extends ChangeNotifier {
     _seekInFlight = true;
     try {
       if (!_owns) {
-        if (!await _awaitWhileOwned(startMergedPlayer())) return;
+        if (!await _awaitWhileOwned(() => startMergedPlayer())) return;
       }
-      if (!await _awaitWhileOwned(seek(Duration(milliseconds: startMs)))) {
+      if (!await _awaitWhileOwned(
+        () => seek(Duration(milliseconds: startMs)),
+      )) {
         return;
       }
+      // Last synchronous instant before playing: _awaitWhileOwned's `true`
+      // above was decided as of the moment seek() resolved, so it alone
+      // cannot prove ownership is STILL ours right now -- only re-reading
+      // it here, with nothing awaited between this line and `play()`, can.
+      if (_disposed || !_owns) return;
       await play();
     } finally {
       _seekInFlight = false;
     }
   }
 
-  /// Awaits [action] and reports whether [ownership] stayed at
-  /// [mergedEventId] (or was never seen otherwise) the whole time -- false
-  /// if [_disposed], or if [ownership] was EVER observed to differ from
-  /// [mergedEventId] while [action] was in flight, even if it reads back as
-  /// [mergedEventId] again by the time [action] completes.
+  /// Awaits the future [action] produces and reports whether [ownership]
+  /// stayed at [mergedEventId] (or was never seen otherwise) the whole time
+  /// -- false if [_disposed], or if [ownership] was EVER observed to differ
+  /// from [mergedEventId] while [action] was running, even if it reads back
+  /// as [mergedEventId] again by the time it completes.
   ///
   /// That last case is not hypothetical: [startMergedPlayer]'s OWN job is to
   /// claim [mergedEventId] as a side effect of completing, so a plain
@@ -284,7 +301,27 @@ class CallPlaybackController extends ChangeNotifier {
   /// watches for the INTERRUPTION itself, not just the value at either end
   /// -- an ABA race a two-point check cannot see. Watching every change
   /// [ownership] makes while [action] runs is what closes it.
-  Future<bool> _awaitWhileOwned(Future<void> action) async {
+  ///
+  /// [action] is a THUNK -- called HERE, not by the caller -- specifically
+  /// so the `watch` listener below is registered BEFORE [action] starts
+  /// running, not after. Every call site used to pass an ALREADY-STARTED
+  /// future (e.g. `_awaitWhileOwned(startMergedPlayer())`), which evaluates
+  /// `startMergedPlayer()` as a plain argument expression before this
+  /// function's own body runs at all -- including [startMergedPlayer]'s own
+  /// synchronous prefix, the part of an `async` function that runs
+  /// immediately, before its first `await`, one full step ahead of the
+  /// listener meant to watch it. An ownership change [startMergedPlayer] or
+  /// [seek] makes synchronously, before either ever suspends, would fire
+  /// and be missed with nothing listening yet. Calling the thunk only after
+  /// `addListener` closes that window.
+  ///
+  /// A caller MUST STILL re-read [_owns] at its own last synchronous instant
+  /// before acting on a `true` result here (see [seekToTurn]'s guard right
+  /// before [play]): a `true` returned here is only a statement about the
+  /// instant it was decided, not a lease on the future -- the caller's own
+  /// resumption after awaiting this function is itself a fresh suspension
+  /// point [ownership] can change across before anything further runs.
+  Future<bool> _awaitWhileOwned(Future<void> Function() action) async {
     var interrupted = false;
     void watch() {
       if (ownership.value != mergedEventId) interrupted = true;
@@ -293,7 +330,7 @@ class CallPlaybackController extends ChangeNotifier {
     _activeOwnershipWatches.add(watch);
     ownership.addListener(watch);
     try {
-      await action;
+      await action();
     } finally {
       ownership.removeListener(watch);
       _activeOwnershipWatches.remove(watch);
