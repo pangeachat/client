@@ -1860,16 +1860,21 @@ void main() {
 
     testWidgets(
       // Mutation: in `didUpdateWidget`, replace the `_onActiveIndexChanged()`
-      // call with a direct `_lastActiveIndex = ...` assignment, AND/OR
-      // replace `_syncIsPlayingListener`'s trailing `_onIsPlayingChanged()`
-      // call with a direct `_lastIsPlaying = widget.isPlaying?.value ??
-      // false;` assignment (silently adopting the swapped listenable's
-      // value as the new baseline, either way) -> the auto-scroll assertion
-      // below goes RED. The highlight assertion does NOT: `build` reads
-      // `widget.activeIndex?.value` directly regardless of this mutation,
-      // so the swapped-in turn highlights correctly either way -- only the
-      // auto-scroll SIDE EFFECT depends on the swap being treated as a real
-      // change.
+      // call with a direct `_lastActiveIndex = ...` assignment (silently
+      // adopting the swapped listenable's value as the new baseline) -> the
+      // auto-scroll assertion below goes RED. Replacing ONLY
+      // `_syncIsPlayingListener`'s trailing `_onIsPlayingChanged()` call
+      // does NOT turn this test red on its own: `_onActiveIndexChanged`'s
+      // own deferred callback re-reads `widget.isPlaying?.value` FRESH
+      // (never through `_lastIsPlaying`) to decide whether to auto-scroll,
+      // so the activeIndex swap here still triggers a scroll regardless --
+      // the FOLLOWING test isolates that mutation instead, by holding
+      // `activeIndex`'s object fixed and swapping only `isPlaying`. The
+      // highlight assertion does NOT go red under this test's own mutation
+      // either: `build` reads `widget.activeIndex?.value` directly
+      // regardless of it, so the swapped-in turn highlights correctly
+      // either way -- only the auto-scroll SIDE EFFECT depends on the
+      // `activeIndex` swap being treated as a real change.
       'swapping the activeIndex/isPlaying listenables for new objects still '
       'active/playing is treated as a real change, not a silent new '
       'baseline',
