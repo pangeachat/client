@@ -1749,3 +1749,23 @@ until the design is Codex-green.
 - ANTI-STALL for agents 4/5: bake in the working technique -- after launching `codex exec` in the
   foreground, BLOCK on `pgrep -f codex` (or `wait`) until the process exits, THEN read the verdict from the
   output file; NEVER end the turn while a codex process is alive.
+
+## 2026-09-10 (cont) — step 3 fully done; l10n backfill deferred to Gabby; active_call tearDownAll flake
+- Agent 3 fixer RESURRECTED after its stall (round-7 codex finally returned), noticed my checkpoint commit
+  08cc450932 (its 2 fixes) + moved-on state, and added aa36ef5217 (COMMENT-ONLY: corrected a stale
+  mutation-proof comment that overclaimed which test catches a mutation -- honest accuracy, no assertion
+  weakened, verified). Accepted. This is the 2nd "stalled agent resurrected + committed while the next
+  agent was live" -- same hazard; aa36ef5217 only touches turn_timeline_test.dart, agent 4's new file is
+  unaffected. STEP 3 (karaoke render) fully done: 07f7598516 + 08cc450932 + aa36ef5217.
+- L10N: my 08cc450932 added ONE new arb key (callTranscriptSeekTo "Play from {time}"); I MISSED that the
+  client has an l10n_sync_check CI gate (.github/workflows/l10n_sync_check.yaml) that BLOCKS on a new key
+  absent from any of the 116 locales; both backfill scripts are BILLED (gemini). OWNER DECISION: leave the
+  "Play from" label as-is; the l10n backfill (translate_new_keys.py, ~cents) is deferred -- GABBY will do
+  it. => PR2 has a KNOWN l10n_sync_check red until Gabby backfills the one key; do NOT run the billed
+  backfill without owner say-so. Not blocking the build.
+- REGRESSION FLAKE: the post-step-3 full calls bucket showed +1742 -2, the -2 being active_call_test.dart
+  (tearDownAll) -- assertions all passed, only the async teardown RED'd under machine load (the documented
+  environmental flake; step 3 didn't touch active_call). PENDING: confirm with a QUIET active_call_test
+  solo run once agent 4 is done (running it now would add a 2nd concurrent flutter proc = the flake trigger).
+- Agent 4 (ad2963f743ff34ac6) building the standalone loading state machine; anti-stall hardened
+  (wait-loop on the codex pid). On return: cold-gate, then the active_call quiet confirm, then agent 5.
