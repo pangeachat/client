@@ -1577,3 +1577,26 @@ until the design is Codex-green.
   import_sorter --no-comments; full protocol (self-gate + NEW commit, no amend/push/PR). On return I
   re-cold-gate the two fixes. LESSON: agent briefs must use `dart run import_sorter:main --no-comments
   --exit-if-changed` (omitting --no-comments rewrites ~1600 files).
+
+## 2026-09-10 (cont) — STEP 1 DONE (cold-green); agent 2 (playback controller) dispatched
+- Fixer r2 (a190b6aa9baf96261) STALLED: backgrounded its codex self-gate + ended its turn (2nd agent to
+  hit the codex-buffering anti-pattern). Its WORK was uncommitted but present. I killed the orphaned codex,
+  verified full-local-green myself (import_sorter --no-comments/format/analyze clean; 95 tests pass), and
+  read the diff to confirm it made exactly the two specified fixes:
+  - Q1: `_turnContentKey` + a per-content-key ORDINAL (`contentKey#N`) -> unique AND stable (moves only for
+    identical-content siblings inserted ahead); ordinal is pure digits last so the final `#` is unambiguous.
+  - Q2: `recordingsBySender` + `.every(r in sourceEventIds)` -> a sender is eligible only if ALL their
+    recordings are in the merge; else no window (conservative, no wrong seek). Comment reframed: CLOSED
+    conservatively, not deferred.
+- My cold gate r3 (sole gate, per the stall fallback): behaviour (bmaro4qve) CORRECT 5/5, pinning (bm1nmaak1)
+  CORRECT 5/5, both GATE-SOFTENING no. Committed f12bcac0ad (I made the commit the stalled agent didn't).
+  STEP 1 (timeline model) COMPLETE + cold-green.
+- Agent 2 (af6b526de0e01f128, sonnet) dispatched: `CallPlaybackController` (playhead+ownership->active turn;
+  greatest audioStartMs<=pos, tie-break later-in-display; immediate clear on ownership change; serialized
+  seek with ownership recheck after EVERY await incl. seek-before-play; in-flight guard; dispose cancels
+  subs + no-notify-after-dispose). Injected deps for testability; render/wiring is agents 3/5. Brief hardened
+  with a strong ANTI-STALL note (foreground codex, never background) after 2 stalls.
+- Running the full calls bucket now as a step-1 regression check.
+- PROCESS NOTE: agent codex self-gate keeps stalling (backgrounded). Fallback (verify local-green + my cold
+  gate as sole gate) works but costs me the verify+commit. If it recurs, switch agents to "commit on
+  local-green, my cold gate is the gate" explicitly.
