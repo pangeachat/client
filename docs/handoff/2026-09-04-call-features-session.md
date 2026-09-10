@@ -1461,3 +1461,28 @@ until the design is Codex-green.
   generation lifecycle (generation opens on first frame, lingers after handover). Any change to
   `wasCarryingBeforeLastStop` must be reasoned against "which generation will finish upload",
   not just the tap/stretch state. The cold gate earned its place here.
+
+## 2026-09-10 (cont) — re-gate found the carrier bug CLASS; guard reverted; scope decision pending
+- Re-gate (baw46zt0p) of the amended item-1: closed the exact zero-frame tap-death (v1) but FAILED on
+  the CLASS: (3a) handover A -> zero-frame re-election B -> direct HANGUP still snapshots `_running`
+  (the hangup branch is unguarded) -> re-uploads A (sibling's half); (3b) the `_recordedFrameThisStretch`
+  guard INTRODUCES a v1-reachable DROP -- learner records A, PEER connection flaps (drop/return/drop)
+  while learner is SILENT (zero-frame B) -> A (owned, never handed over) is dropped.
+- ROOT CAUSE (the class): `wasCarryingBeforeLastStop` is a per-STRETCH flag, but it gates which RECORDER
+  GENERATION `finish` uploads, and that generation has its own lifecycle (opens on first frame, lingers
+  after a handover). The two desync across a zero-frame stretch. No per-stretch guard fixes it (it can't
+  tell an owned-but-idle prior generation from a handed-over one); only tracking generation OWNERSHIP does.
+- ACTION: reverted the guard + its 2 tests via `git checkout HEAD -- call_capture.dart call_capture_test.dart`.
+  Working tree now == committed 17bbfbec89 (`_onTapDied` -> `stop(preserveCarrier: true)` ONLY). That fix
+  is CORRECT for a normal 1:1 call (single device each side): no handover -> `_discardOnStop` never true
+  -> no double-upload, no 3b. It DOES add a v2 double-upload (needs a 2-device handover) vs baseline.
+- SCOPE: all remaining carrier edge cases (first-gate tap-death double-upload, 3a) require a MID-CALL
+  2-DEVICE HANDOVER -- the same territory as the DEFERRED v2 device-switch merge (issue pangeachat/client#8878).
+  Decision put to owner: (B, recommended) ship the v1-correct fix, fold the carrier/generation-ownership
+  redesign into #8878 with a code comment; or (A) redesign the carrier flag to track ownership now
+  (fixes every case, but bigger + churns the invariant-heavy carrier tests + pulls v2 work forward).
+- DESIGN GATE (bk69sm474): REVISE, 6 hardening points (all sound, none fundamental): null-not-shift0 for
+  unreconciled halves + precise-turn empty-window rule; karaoke controller ownership/disposal/atomic seek;
+  loading machine needs a real expiry timer not just participants; player won't fit 56px toolbar + lazy
+  slivers break ensureVisible; lock printed-label/order invariance tests; a11y/RTL/reduced-motion/gesture.
+  Revising the spec (v2) + re-gate. No owner decision needed on design.
