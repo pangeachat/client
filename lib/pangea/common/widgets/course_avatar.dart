@@ -7,6 +7,7 @@ import 'package:fluffychat/features/course_plans/map_clipper.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/invited_course_badge.dart';
 import 'package:fluffychat/pangea/spaces/knocking_users_badge.dart';
+import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/unread_rooms_badge.dart';
 
@@ -91,16 +92,21 @@ class CourseAvatar extends StatelessWidget {
         builder: (context, snapshot) {
           final eventId = snapshot.data;
           if (eventId != null) {
+            // The white bell on the joinable green every other ping surface
+            // wears -- `CoursePingBadge` on the course plan, the Catch up row,
+            // `WorldMapPingedBadge` on a pin -- so one ping reads as one thing
+            // wherever the learner meets it (#8484). This badge was the last
+            // one still on the theme's primaryContainer.
             return b.Badge(
               badgeStyle: b.BadgeStyle(
-                badgeColor: Theme.of(context).colorScheme.primaryContainer,
+                badgeColor: ActivityPinState.joinable.color,
                 elevation: 4,
                 borderSide: BorderSide.none,
                 padding: const EdgeInsetsGeometry.all(2),
               ),
-              badgeContent: Icon(
+              badgeContent: const Icon(
                 Icons.notifications_outlined,
-                color: Theme.of(context).colorScheme.onPrimaryContainer,
+                color: Colors.white,
                 size: 12,
               ),
               position: position,

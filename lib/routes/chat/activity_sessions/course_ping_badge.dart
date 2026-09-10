@@ -3,11 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 
-/// The activity and session a course ping pointed at.
+/// The activity and session a course ping pointed at, and the coursemate who
+/// sent it. [senderId] names them rather than a display name: the ping event
+/// is composed in the SENDER's locale with their localpart, so a surface that
+/// shows who pinged resolves the name against the course's own member list
+/// instead of reading it back out of the message body (#8944).
 typedef CoursePingBadgeData = ({
   String courseId,
   String activityId,
   String sessionRoomId,
+  String senderId,
 });
 
 /// In-memory carrier for the ping the learner is following (#8319).
