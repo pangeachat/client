@@ -537,21 +537,39 @@ void main() {
 
     // #8972: the hub is an index of course tiles, so it draws at the chat
     // list's width — switching rail sections between them must not resize the
-    // column. Its subpages keep the wide family.
-    test('the hub is list-width, like the chat list it swaps with', () {
-      final hub = PanelTypesEnum.addcourse.def;
+    // column — and its subpages share that width, so entering the add-course
+    // flow doesn't resize it either.
+    test('the hub and its subpages are list-width, like the chat list', () {
       final chats = PanelTypesEnum.chats.def;
-      expect(hub.minWidth, chats.minWidth);
-      expect(hub.reasonableMin, chats.reasonableMin);
-      expect(hub.idealWidth, chats.idealWidth);
+      for (final type in [
+        PanelTypesEnum.addcourse,
+        PanelTypesEnum.addcoursepage,
+      ]) {
+        expect(type.def.minWidth, chats.minWidth, reason: '$type min');
+        expect(
+          type.def.reasonableMin,
+          chats.reasonableMin,
+          reason: '$type comfort',
+        );
+        expect(type.def.idealWidth, chats.idealWidth, reason: '$type ideal');
+      }
+      final chatsWidth = run(left: [PanelTypesEnum.chats]).left.single.width;
       expect(
         run(left: [PanelTypesEnum.addcourse]).left.single.width,
-        run(left: [PanelTypesEnum.chats]).left.single.width,
+        chatsWidth,
       );
-      expect(
-        PanelTypesEnum.addcoursepage.def.idealWidth,
-        PanelWidths.wideIdeal,
+      // The subpage always folds the hub, so it is the column's only panel.
+      final flow = run(
+        left: [PanelTypesEnum.addcourse, PanelTypesEnum.addcoursepage],
       );
+      expect(flow.left[1].width, chatsWidth);
+    });
+
+    // The chips on a course tile fit one line at the list ideal: a tile spends
+    // 124 on card margin, list padding, the 48px avatar and its gap, and the
+    // widest chip row (Intermediate Mid (B1), three-digit counts) needs 316.
+    test('the list ideal leaves a course tile room for unwrapped chips', () {
+      expect(PanelWidths.listIdeal - 124, greaterThanOrEqualTo(316.0));
     });
 
     test('only the add-course subpage declares the always-fold', () {
