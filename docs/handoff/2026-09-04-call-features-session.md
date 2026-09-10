@@ -1621,3 +1621,21 @@ until the design is Codex-green.
   cold-gated. Agent 2 (af6b526de0e01f128) is the only live agent now.
 - Unrelated shared-stack stash present (WIP on satvik/call-audio-recording) -- another worktree's, NOT
   mine; never touch it.
+
+## 2026-09-10 (cont) — agent 2 (CallPlaybackController) committed 5c8dfc7e0b; cold-gate found 2 seek gaps
+- Agent 2 (af6b526de0e01f128) committed 5c8dfc7e0b: CallPlaybackController (playhead+ownership->active
+  turn; serialized seek w/ _awaitWhileOwned watching EVERY intermediate ownership change to close the ABA;
+  in-flight guard; disposal cancels subs + in-flight watchers). Self-Codex-green 4 rounds (found+fixed real
+  bugs: position contamination, isPlaying-stuck-false, ABA reclaim, in-flight listener leak). 19
+  mutation-proven tests. Foreground codex worked (anti-stall held). Flagged a real WIRING precondition: a
+  bare Stream<Duration> can't tag ticks by owner, so a post-ABA stale tick needs sync subscription teardown
+  at the wiring layer (agent 5) -- correctly not closable inside the controller.
+- My cold gate: behaviour (ba957i59i) ISSUES-FOUND (softening no), 5/6 CORRECT. Q1 = 2 narrow seek gaps:
+  (A) _awaitWhileOwned gets an already-started future -> watcher registered AFTER the action starts, so a
+  SYNCHRONOUS ownership flip during the action's sync portion is missed; (B) a microtask gap between
+  _awaitWhileOwned's internal _owns check and play() lets ownership leave then play() still runs. Both
+  narrow (prod ownership changes are user-driven) but break the "never play the wrong source" guarantee.
+  I independently READ the ownership+seekToTurn tests -- genuinely strong (the ABA test is a standout).
+- FIXER (a344faed6a3ea914a) dispatched: (A) _awaitWhileOwned takes a THUNK, add watcher then await action();
+  (B) final synchronous `if(!_owns) return;` immediately before play(). + mutation-proven tests. Full
+  protocol + hardened anti-stall. On return I cold-gate the fix. Q2-Q6 CORRECT (untouched).
