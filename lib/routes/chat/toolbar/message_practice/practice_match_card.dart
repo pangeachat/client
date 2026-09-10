@@ -96,35 +96,38 @@ class MatchActivityCard extends StatelessWidget {
             alignment: WrapAlignment.center,
             spacing: 4.0,
             runSpacing: 4.0,
-            children: currentActivity.matchContent.choices.map((
-              PracticeExerciseChoice cf,
-            ) {
-              final bool? wasCorrect = controller.wasCorrectMatch(cf);
-              return ChoiceAnimationWidget(
-                isSelected: selectedChoice == cf,
-                isCorrect: wasCorrect,
-                child: PracticeMatchItem(
-                  token: currentActivity.tokens.firstWhereOrNull(
-                    (t) => t.vocabConstructID == cf.form.cId,
-                  ),
-                  isSelected: selectedChoice == cf,
-                  isCorrect: wasCorrect,
-                  constructForm: cf,
-                  content: choiceDisplayContent(
-                    context,
-                    cf.choiceContent,
-                    fontSize,
-                  ),
-                  audioContent:
-                      currentActivity is WordListeningPracticeExerciseModel
-                      ? cf.choiceContent
-                      : null,
-                  controller: controller,
-                  shimmer: controller.showChoiceShimmer,
-                  playbackSpeedController: playbackSpeedController,
-                ),
-              );
-            }).toList(),
+            // A choice that has been placed correctly belongs to its word and
+            // cannot answer another blank, so it leaves the tray (#6259).
+            children: currentActivity.matchContent.choices
+                .where((cf) => !controller.isChoicePlaced(cf))
+                .map((PracticeExerciseChoice cf) {
+                  final bool? wasCorrect = controller.wasCorrectMatch(cf);
+                  return ChoiceAnimationWidget(
+                    isSelected: selectedChoice == cf,
+                    isCorrect: wasCorrect,
+                    child: PracticeMatchItem(
+                      token: currentActivity.tokens.firstWhereOrNull(
+                        (t) => t.vocabConstructID == cf.form.cId,
+                      ),
+                      isSelected: selectedChoice == cf,
+                      isCorrect: wasCorrect,
+                      constructForm: cf,
+                      content: choiceDisplayContent(
+                        context,
+                        cf.choiceContent,
+                        fontSize,
+                      ),
+                      audioContent:
+                          currentActivity is WordListeningPracticeExerciseModel
+                          ? cf.choiceContent
+                          : null,
+                      controller: controller,
+                      shimmer: controller.showChoiceShimmer,
+                      playbackSpeedController: playbackSpeedController,
+                    ),
+                  );
+                })
+                .toList(),
           ),
         ],
       ],
