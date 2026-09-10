@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-09-09 11:24:59.714103",
+    "@@last_modified": "2026-09-10 09:51:42.118208",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2312,5 +2312,7 @@
     "upNext": "Кийинки",
     "writingAssistanceSuggestion": "Сунуш",
     "errorFetchingWordInfo": "Сөз маалыматын алуу мүмкүн болбой калды",
-    "contentCreatedBy": "Түзгөн"
+    "contentCreatedBy": "Түзгөн",
+    "coursePreview": "Курсту алдын ала көрүү",
+    "numActivities": "{count, plural, =1{1 иш-аракет} other{{count} иш-аракеттер}}"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-09 11:24:58.502908",
+    "@@last_modified": "2026-09-10 09:51:40.962400",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10822,5 +10822,7 @@
     "upNext": "הבא בתור",
     "writingAssistanceSuggestion": "הצעה",
     "errorFetchingWordInfo": "אחזור פרטי המילה נכשל",
-    "contentCreatedBy": "נוצר על ידי"
+    "contentCreatedBy": "נוצר על ידי",
+    "coursePreview": "תצוגה מקדימה של הקורס",
+    "numActivities": "{count, plural, =1{פעילות 1} other{{count} פעילויות}}"
 }

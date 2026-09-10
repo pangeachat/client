@@ -1263,7 +1263,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-09-09 11:25:02.682823",
+    "@@last_modified": "2026-09-10 09:51:45.468335",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10865,5 +10865,7 @@
     "upNext": "即將播放",
     "writingAssistanceSuggestion": "建議",
     "errorFetchingWordInfo": "未能獲取單字資訊",
-    "contentCreatedBy": "創建者"
+    "contentCreatedBy": "創建者",
+    "coursePreview": "課程預覽",
+    "numActivities": "{count, plural, =1{1 個活動} other{{count} 個活動}}"
 }

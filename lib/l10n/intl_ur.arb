@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-09-09 11:25:02.233007",
+    "@@last_modified": "2026-09-10 09:51:45.091744",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2312,5 +2312,7 @@
     "upNext": "اگلا",
     "writingAssistanceSuggestion": "تجویز",
     "errorFetchingWordInfo": "لفظ کی معلومات حاصل کرنے میں ناکامی",
-    "contentCreatedBy": "تخلیق کردہ"
+    "contentCreatedBy": "تخلیق کردہ",
+    "coursePreview": "کورس کا جائزہ",
+    "numActivities": "{count, plural, =1{1 سرگرمی} other{{count} سرگرمیاں}}"
 }

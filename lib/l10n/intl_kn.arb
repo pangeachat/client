@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-09-09 11:24:59.537978",
+    "@@last_modified": "2026-09-10 09:51:41.873821",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2312,5 +2312,7 @@
     "upNext": "ಮುಂದೆ",
     "writingAssistanceSuggestion": "ಸಲಹೆ",
     "errorFetchingWordInfo": "ಪದದ ಮಾಹಿತಿಯನ್ನು ಪಡೆಯಲು ವಿಫಲವಾಗಿದೆ",
-    "contentCreatedBy": "ರಚಿಸಿದವರು"
+    "contentCreatedBy": "ರಚಿಸಿದವರು",
+    "coursePreview": "ಕೋರ್ಸ್ ಪೂರ್ವವೀಕ್ಷಣೆ",
+    "numActivities": "{count, plural, =1{1 ಚಟುವಟಿಕೆ} other{{count} ಚಟುವಟಿಕೆಗಳು}}"
 }

@@ -114,7 +114,13 @@ class AnalyticsPracticeTarget {
 }
 
 class AnalyticsPracticeSessionModel {
-  final DateTime startedAt;
+  /// Wall-clock zero, stamped by [markStarted] when the first exercise is on
+  /// screen — NOT when the session's targets were picked. Null until then, so
+  /// a slow first generation never spends the learner's speed bonus before
+  /// they can answer anything (#8966). See
+  /// practice-exercises.instructions.md § Loading & Generation Sequencing.
+  DateTime? startedAt;
+
   final ConstructTypeEnum type;
   final List<AnalyticsPracticeTarget> practiceTargets;
   final String userL1;
@@ -123,7 +129,7 @@ class AnalyticsPracticeSessionModel {
   AnalyticsPracticeSessionState state;
 
   AnalyticsPracticeSessionModel({
-    required this.startedAt,
+    this.startedAt,
     required this.type,
     required this.practiceTargets,
     required this.userL1,
@@ -208,6 +214,10 @@ class AnalyticsPracticeSessionModel {
     return L10n.of(context).youveCompletedPractice;
   }
 
+  /// Start the clock, once. Idempotent because every exercise after the first
+  /// arrives through the same path.
+  void markStarted() => startedAt ??= DateTime.now();
+
   void setElapsedSeconds(int seconds) =>
       state = state.copyWith(elapsedSeconds: seconds);
 
@@ -226,7 +236,9 @@ class AnalyticsPracticeSessionModel {
 
   factory AnalyticsPracticeSessionModel.fromJson(Map<String, dynamic> json) {
     return AnalyticsPracticeSessionModel(
-      startedAt: DateTime.parse(json['startedAt'] as String),
+      startedAt: json['startedAt'] != null
+          ? DateTime.parse(json['startedAt'] as String)
+          : null,
       type: ConstructTypeEnum.values.firstWhere(
         (e) => e.name == json['type'] as String,
         orElse: () => ConstructTypeEnum.vocab,
@@ -243,7 +255,7 @@ class AnalyticsPracticeSessionModel {
 
   Map<String, dynamic> toJson() {
     return {
-      'startedAt': startedAt.toIso8601String(),
+      'startedAt': startedAt?.toIso8601String(),
       'type': type.name,
       'practiceTargets': practiceTargets.map((e) => e.toJson()).toList(),
       'userL1': userL1,

@@ -16,12 +16,17 @@ class AddCourseTile extends StatelessWidget {
   /// bell. Supplied by [AddCourseTileList], which watches the member list.
   final bool hasKnockingUsers;
 
+  /// Max title lines before ellipsizing. The course preview's minimized header
+  /// passes 1 — a wrapped title can overflow the short sheet (#7826).
+  final int titleMaxLines;
+
   const AddCourseTile({
     super.key,
     required this.content,
     this.onTap,
     this.expanded = false,
     this.hasKnockingUsers = false,
+    this.titleMaxLines = 2,
   });
 
   @override
@@ -53,7 +58,7 @@ class AddCourseTile extends StatelessWidget {
     return Material(
       type: MaterialType.transparency,
       child: Semantics(
-        button: true,
+        button: onTap != null,
         label: label,
         child: InkWell(
           onTap: onTap,
@@ -96,7 +101,7 @@ class AddCourseTile extends StatelessWidget {
                                   child: Text(
                                     title,
                                     style: theme.textTheme.bodyLarge,
-                                    maxLines: 2,
+                                    maxLines: titleMaxLines,
                                     overflow: TextOverflow.ellipsis,
                                   ),
                                 ),

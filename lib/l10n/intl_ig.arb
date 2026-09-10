@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-09-09 11:24:59.150518",
+    "@@last_modified": "2026-09-10 09:51:41.529557",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2312,5 +2312,7 @@
     "upNext": "Ihe na-abịa",
     "writingAssistanceSuggestion": "Nkwanye",
     "errorFetchingWordInfo": "Enweghị ike iwepụta ozi okwu",
-    "contentCreatedBy": "Onye kere ya"
+    "contentCreatedBy": "Onye kere ya",
+    "coursePreview": "Nlele mmalite ọmụmụ ihe",
+    "numActivities": "{count, plural, =1{1 ọrụ} other{{count} ọrụ}}"
 }

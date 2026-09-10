@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-09-09 11:24:56.989843",
+    "@@last_modified": "2026-09-10 09:51:39.832722",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2312,5 +2312,7 @@
     "upNext": "Sunod",
     "writingAssistanceSuggestion": "Sugyot",
     "errorFetchingWordInfo": "Napakyas sa pagkuha sa impormasyon sa pulong",
-    "contentCreatedBy": "Gibuhat ni"
+    "contentCreatedBy": "Gibuhat ni",
+    "coursePreview": "Preview sa kurso",
+    "numActivities": "{count, plural, =1{1 kalihokan} other{{count} ka kalihokan}}"
 }

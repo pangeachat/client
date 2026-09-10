@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-09-09 11:25:02.213042",
+    "@@last_modified": "2026-09-10 09:51:44.809842",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10209,5 +10209,7 @@
     "upNext": "Sırada",
     "writingAssistanceSuggestion": "Öneri",
     "errorFetchingWordInfo": "Kelime bilgisi alınamadı",
-    "contentCreatedBy": "Oluşturan"
+    "contentCreatedBy": "Oluşturan",
+    "coursePreview": "Kurs önizlemesi",
+    "numActivities": "{count, plural, =1{1 aktivite} other{{count} aktivite}}"
 }

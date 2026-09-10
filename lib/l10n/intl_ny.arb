@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-09-09 11:25:00.866008",
+    "@@last_modified": "2026-09-10 09:51:43.212271",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2312,5 +2312,7 @@
     "upNext": "Chotsatira",
     "writingAssistanceSuggestion": "Malingaliro",
     "errorFetchingWordInfo": "Zalephera kupeza zambiri za mawu",
-    "contentCreatedBy": "Anapangidwa ndi"
+    "contentCreatedBy": "Anapangidwa ndi",
+    "coursePreview": "Kukambirana za maphunziro",
+    "numActivities": "{count, plural, =1{ntchito imodzi} other{ntchito {count}}}"
 }

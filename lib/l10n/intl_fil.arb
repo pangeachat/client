@@ -2080,7 +2080,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-09-09 11:24:58.063539",
+    "@@last_modified": "2026-09-10 09:51:40.454727",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10768,5 +10768,7 @@
     "upNext": "Susunod",
     "writingAssistanceSuggestion": "Mungkahi",
     "errorFetchingWordInfo": "Nabigong kunin ang impormasyon ng salita",
-    "contentCreatedBy": "Ginawa ni"
+    "contentCreatedBy": "Ginawa ni",
+    "coursePreview": "Preview ng kurso",
+    "numActivities": "{count, plural, =1{1 aktibidad} other{{count} aktibidad}}"
 }

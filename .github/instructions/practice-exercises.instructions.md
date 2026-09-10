@@ -155,10 +155,12 @@ When all targets are answered, [`CompletedActivitySessionView`](../../lib/pangea
 
 ### Loading & Generation Sequencing
 
-Standalone practice loads in two phases, and only the first sits behind the loading screen:
+Standalone practice loads in two phases, and the learner waits behind a spinner for both:
 
 1. **Selection** ([`AnalyticsPracticeSessionRepo.get`](../../lib/routes/analytics/construct_analytics/practice/analytics_practice_session_repo.dart)) picks the session's targets from aggregated constructs (local analytics).
 2. **Content generation** ([`PracticeSessionController.getNextExercise`](../../lib/routes/analytics/construct_analytics/practice/analytics_practice_session_controller.dart)) turns targets into exercises. The **first** exercise is awaited and shown; the moment it resolves, generation of **every** remaining exercise is kicked off eagerly and concurrently (`_fillExerciseQueue`), so later exercises are prefetched and waiting by the time the learner reaches them.
+
+**The session clock's zero is the first exercise appearing, not the end of selection.** Neither loading phase is on the learner's clock: the timer reads a frozen `00:00` throughout, and the cluster badge only appears once there is a clock to show. Generation is a network call whose length the learner does not control, and elapsed time buys a speed bonus — charging them for the wait would spend part of that bonus before they can answer anything (#8966).
 
 Selection must stay cheap: it reads aggregated constructs from local analytics and does **not** resolve per-target example messages, audio, or Matrix events. Those resolve during content generation, inside the eager background queue. The goal is not to defer the work — every exercise is still prefetched — but to keep it from gating first paint: resolving example messages *during selection* blocked the first exercise on N serial event fetches, which made practice load slowly and inconsistently (#7702).
 
@@ -182,11 +184,7 @@ badge, and the same-section analytics block — live in
   XP awarded), the explicit **End session** control (confirms, discards
   progress), being replaced by a newly started session (confirms), by automatically closing after [AnalyticsPracticeConstants.idleTimeout](../../lib/routes/analytics/construct_analytics/practice/analytics_practice_constants.dart) inactivity, or by the account logging out — a session belongs to one learner and never carries into the next account. Ending
   clears the holder and the cluster badge.
-- **Elapsed time is wall-clock from session start**, not time-on-screen. The
-  timer keeps counting while the panel is closed — an anti-cheat mechanism in
-  its own right: leaving mid-session to consult a dictionary or an AI costs
-  the clock, so the speed bonus rewards finishing unaided in one sitting. The
-  cluster badge shows the same running clock.
+- **Elapsed time is wall-clock from the first exercise appearing** (see [Loading & Generation Sequencing](#loading--generation-sequencing)), not time-on-screen. The timer keeps counting while the panel is closed — an anti-cheat mechanism in its own right: leaving mid-session to consult a dictionary or an AI costs the clock, so the speed bonus rewards finishing unaided in one sitting. The cluster badge shows the same running clock.
 
 ### Subscription Gate
 

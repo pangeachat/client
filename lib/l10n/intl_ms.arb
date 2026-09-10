@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-09-09 11:25:00.427331",
+    "@@last_modified": "2026-09-10 09:51:42.838491",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2312,5 +2312,7 @@
     "upNext": "Seterusnya",
     "writingAssistanceSuggestion": "Cadangan",
     "errorFetchingWordInfo": "Gagal mengambil maklumat perkataan",
-    "contentCreatedBy": "Dicipta oleh"
+    "contentCreatedBy": "Dicipta oleh",
+    "coursePreview": "Pratonton kursus",
+    "numActivities": "{count, plural, =1{1 aktiviti} other{{count} aktiviti}}"
 }

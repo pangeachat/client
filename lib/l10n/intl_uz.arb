@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-09-09 11:25:02.716895",
+    "@@last_modified": "2026-09-10 09:51:45.011110",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9912,5 +9912,7 @@
     "upNext": "Keyingisi",
     "writingAssistanceSuggestion": "Taklif",
     "errorFetchingWordInfo": "So'z ma'lumotlarini olishda xatolik yuz berdi",
-    "contentCreatedBy": "Yaratdi"
+    "contentCreatedBy": "Yaratdi",
+    "coursePreview": "Kursni ko'rib chiqish",
+    "numActivities": "{count, plural, =1{1 faoliyat} other{{count} faoliyat}}"
 }

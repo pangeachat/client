@@ -6,15 +6,27 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/customized_svg.dart';
 
+/// Where the level number is drawn relative to the shield.
+enum LevelNumberPlacement {
+  /// Overlaid on the shield — the learner's own level, drawn large enough that
+  /// the digits fit inside the mark ([ClusterLevelMedal]).
+  inside,
+
+  /// Beside the shield, the same `icon + count` shape the star total uses. The
+  /// inline chips are ~18px tall, where a number inside is cramped and gets
+  /// worse with two digits or at large OS text sizes (#8918).
+  trailing,
+}
+
 /// The gold ribbon/shield that represents a learner's level across the app —
 /// the single source of the level symbol, so the right-nav cluster medal
 /// ([ClusterLevelMedal]) and the inline level chips (profile cards, analytics
 /// headers) all render the same mark instead of a bare `⭐`.
 ///
-/// [level] is overlaid on the shield when non-null; pass null for a plain
-/// level glyph beside its own text label. [height] drives the shield size and
-/// the number scales from it. Presentational only — wrap it in an `InkWell` /
-/// `Semantics` where it needs to be tappable.
+/// [level] is drawn per [numberPlacement] when non-null; pass null for a plain
+/// level glyph beside its own text label. [height] drives the shield size, and
+/// an inside number scales from it. Presentational only — wrap it in an
+/// `InkWell` / `Semantics` where it needs to be tappable.
 class LevelRibbon extends StatelessWidget {
   final int? level;
   final double height;
@@ -24,7 +36,34 @@ class LevelRibbon extends StatelessWidget {
   /// panel in the mark itself rather than behind it (#8067).
   final Color? color;
 
-  const LevelRibbon({required this.height, this.level, this.color, super.key});
+  final LevelNumberPlacement numberPlacement;
+
+  /// Style for a [LevelNumberPlacement.trailing] number, so it matches the text
+  /// it sits beside. Ignored for an inside number, which scales from [height]
+  /// to fit the shield.
+  final TextStyle? numberStyle;
+
+  const LevelRibbon({
+    required this.height,
+    this.level,
+    this.color,
+    this.numberPlacement = LevelNumberPlacement.inside,
+    this.numberStyle,
+    super.key,
+  });
+
+  /// The [height] at which the shield reads as the same size as a Material
+  /// icon drawn at [iconSize] beside it.
+  ///
+  /// The two do not match at equal nominal sizes: a Material icon insets its
+  /// glyph inside its box — `Icons.star` at 16 paints 12.75 of ink — while the
+  /// shield path fills its viewBox edge to edge. A shield handed the icon's own
+  /// size therefore out-draws it by about a quarter.
+  static double heightForIconSize(double iconSize) =>
+      iconSize * _materialIconInkRatio;
+
+  /// Measured off a rendered `Icons.star`: 12.75 of ink in a 16 box.
+  static const double _materialIconInkRatio = 0.8;
 
   /// The shield outline from Figma (icon/warning-secondary), filled [hexcode].
   static String _shieldSvg(String hexcode) =>
@@ -46,31 +85,45 @@ class LevelRibbon extends StatelessWidget {
     final level = this.level;
     if (level == null) return ribbon;
 
+    // Shield and number announce as one "Level N" whichever side the number is
+    // on, so a trailing digit is never read as a loose number (#8918).
     return Semantics(
-      label: L10n.of(context).level,
-      child: SizedBox(
-        width: width,
-        height: height,
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            ribbon,
-            // The number sits slightly above the ribbon's notched base.
-            Padding(
-              padding: EdgeInsets.only(bottom: height * 0.11),
-              child: Text(
-                '$level',
-                style: TextStyle(
-                  fontSize: height * 0.42,
-                  height: 1.0,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
+      container: true,
+      excludeSemantics: true,
+      label: '${L10n.of(context).level} $level',
+      child: switch (numberPlacement) {
+        LevelNumberPlacement.inside => SizedBox(
+          width: width,
+          height: height,
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              ribbon,
+              // The number sits slightly above the ribbon's notched base.
+              Padding(
+                padding: EdgeInsets.only(bottom: height * 0.11),
+                child: Text(
+                  '$level',
+                  style: TextStyle(
+                    fontSize: height * 0.42,
+                    height: 1.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
                 ),
               ),
-            ),
+            ],
+          ),
+        ),
+        LevelNumberPlacement.trailing => Row(
+          mainAxisSize: MainAxisSize.min,
+          spacing: 2.0,
+          children: [
+            ribbon,
+            Text('$level', style: numberStyle),
           ],
         ),
-      ),
+      },
     );
   }
 }

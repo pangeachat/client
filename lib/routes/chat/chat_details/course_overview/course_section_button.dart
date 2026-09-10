@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 
-/// A course-page section's "See all" button — label + chevron, opening the
-/// section's full subpage within the card.
+/// A course-page section's "See all" button, opening the section's full
+/// subpage within the card.
 ///
 /// It rides its section header's action row (#8744), where it sits beside
 /// the title rather than below the section's content: a priority action, in
@@ -36,30 +36,21 @@ class CourseSectionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
-    // Not [FilledButton.tonalIcon]: it pads as if its icon led — 16 on the
-    // icon's side, 24 on the label's — and doesn't flip for a trailing one,
-    // which left the chevron in the wide pad and the pill lopsided (#8898).
-    // The plain button pads both sides alike.
+    // The label alone, with no trailing chevron (#8898): a chevron glyph is
+    // drawn inside a 24px box with about 5px of its own space either side of
+    // it, so it cannot sit evenly against a button's padding — every Material
+    // button pads its two ends alike (24/24) or pads the icon's end wider
+    // (16/24, and it doesn't flip for a trailing icon), and both render the
+    // pill's right side wider than its left. Dropping it is what makes the
+    // two sides match at every text scale, and it shortens the pill, which
+    // is what the report asked for. The tonal fill is the affordance.
+    //
+    // A long localization can outrun a narrow course column; the label is a
+    // plain [Text], so it wraps inside the width the header allows it rather
+    // than overflowing the header's row.
     return FilledButton.tonal(
       onPressed: onPressed,
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        spacing: 8.0,
-        children: [
-          // A long localization plus the button's own padding can outrun a
-          // narrow course column; the label stays flexible, so it wraps
-          // inside the width the header allows it rather than overflowing
-          // the header's row.
-          Flexible(
-            child: Text(
-              l10n.seeAll,
-              semanticsLabel: l10n.seeAllSection(section),
-            ),
-          ),
-          // The chevron trails the label, pointing at the subpage it opens.
-          const Icon(Icons.chevron_right),
-        ],
-      ),
+      child: Text(l10n.seeAll, semanticsLabel: l10n.seeAllSection(section)),
     );
   }
 }

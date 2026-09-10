@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -39,6 +40,7 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   const starredId = '@starred:example.invalid';
+  const bigNumbersId = '@big:example.invalid';
   const levelOnlyId = '@levelonly:example.invalid';
   const otherLanguageId = '@other:example.invalid';
   const emptyId = '@empty:example.invalid';
@@ -65,6 +67,10 @@ void main() {
         'de': LanguageAnalyticsProfileEntry(3, 0, stars: 12),
       }),
       levelOnlyId: profile({'de': LanguageAnalyticsProfileEntry(2, 0)}),
+      // Two digits on both counts — the widest the row gets in practice.
+      bigNumbersId: profile({
+        'de': LanguageAnalyticsProfileEntry(12, 0, stars: 99),
+      }),
       // Studying something else: nothing published for the course's language.
       otherLanguageId: profile({
         'es': LanguageAnalyticsProfileEntry(5, 0, stars: 40),
@@ -137,6 +143,42 @@ void main() {
   ) async {
     await pumpStats(tester, emptyId);
     expect(tester.getSize(find.byType(CourseMemberStats)), Size.zero);
+  });
+
+  // The shield path fills its box edge to edge; a Material icon insets its
+  // glyph inside its own (`Icons.star` at 16 paints 12.75 of ink). So a shield
+  // that reads as the star's equal is drawn a little SMALLER than the star's
+  // nominal size — and never larger, which is what the old `iconSize + 2`
+  // produced back when the number still had to fit inside it (#8918).
+  testWidgets('the level shield is drawn no larger than the star beside it', (
+    tester,
+  ) async {
+    await pumpStats(tester, starredId);
+    final star = tester.getSize(find.byIcon(Icons.star));
+    final shield = tester.getSize(find.byType(SvgPicture));
+    expect(shield.height, lessThan(star.height));
+    expect(shield.height, greaterThan(star.height * 0.7));
+  });
+
+  // Moving the level number out of the shield widened the row (#8918): the
+  // star pair and the level pair now sit side by side. At normal text size
+  // both must still fit the card outright, with no scale-down — the FittedBox
+  // is there for large OS text sizes, not for the default one.
+  testWidgets('the star and level fit the card unscaled at normal text size', (
+    tester,
+  ) async {
+    await pumpStats(tester, bigNumbersId, inCard: true);
+    final row = find
+        .descendant(of: find.byType(FittedBox), matching: find.byType(Row))
+        .first;
+    // getSize is the row's own layout; getRect is what the FittedBox paints.
+    expect(
+      tester.getRect(row).width,
+      closeTo(tester.getSize(row).width, 0.01),
+      reason: 'the row was scaled down to fit the card',
+    );
+    expect(find.text('99'), findsOneWidget);
+    expect(find.text('12'), findsOneWidget);
   });
 
   // The card is ~100px wide and 20px high and cannot grow, so at large OS text

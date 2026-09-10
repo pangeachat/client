@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-09-09 11:24:59.655261",
+    "@@last_modified": "2026-09-10 09:51:42.038797",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2312,5 +2312,7 @@
     "upNext": "لە دوایدا",
     "writingAssistanceSuggestion": "پێشنیار",
     "errorFetchingWordInfo": "نەتوانرا زانیاریی وشە وەربگیرێت",
-    "contentCreatedBy": "دروستکراوە لەلایەن"
+    "contentCreatedBy": "دروستکراوە لەلایەن",
+    "coursePreview": "پێشەکیی خول",
+    "numActivities": "{count, plural, =1{1 چالاکی} other{{count} چالاکی}}"
 }

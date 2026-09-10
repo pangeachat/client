@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-09-09 11:25:02.739503",
+    "@@last_modified": "2026-09-10 09:51:45.489636",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9908,5 +9908,7 @@
     "upNext": "接下来",
     "writingAssistanceSuggestion": "建议",
     "errorFetchingWordInfo": "获取单词信息失败",
-    "contentCreatedBy": "创建者"
+    "contentCreatedBy": "创建者",
+    "coursePreview": "课程预览",
+    "numActivities": "{count, plural, =1{1 项活动} other{{count} 项活动}}"
 }

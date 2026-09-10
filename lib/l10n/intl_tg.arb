@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-09-09 11:25:02.285516",
+    "@@last_modified": "2026-09-10 09:51:44.872427",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2312,5 +2312,7 @@
     "upNext": "Баъдӣ",
     "writingAssistanceSuggestion": "Пешниҳод",
     "errorFetchingWordInfo": "Маълумот дар бораи калимаро гирифтан нашуд",
-    "contentCreatedBy": "Сохта шудааст аз ҷониби"
+    "contentCreatedBy": "Сохта шудааст аз ҷониби",
+    "coursePreview": "Пешнамоиши курс",
+    "numActivities": "{count, plural, =1{1 фаъолият} other{{count} фаъолият}}"
 }

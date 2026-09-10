@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-09 11:24:57.839819",
+    "@@last_modified": "2026-09-10 09:51:40.390373",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9996,5 +9996,7 @@
     "upNext": "بعدی",
     "writingAssistanceSuggestion": "پیشنهاد",
     "errorFetchingWordInfo": "دریافت اطلاعات کلمه با مشکل مواجه شد",
-    "contentCreatedBy": "ایجاد شده توسط"
+    "contentCreatedBy": "ایجاد شده توسط",
+    "coursePreview": "پیش‌نمایش دوره",
+    "numActivities": "{count, plural, =1{۱ فعالیت} other{{count} فعالیت}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-09-09 11:25:00.950931",
+    "@@last_modified": "2026-09-10 09:51:43.695659",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2312,5 +2312,7 @@
     "upNext": "ପରବର୍ତ୍ତୀ",
     "writingAssistanceSuggestion": "ପରାମର୍ଶ",
     "errorFetchingWordInfo": "ଶବ୍ଦ ସୂଚନା ଆଣିବାରେ ବିଫଳ ହେଲା",
-    "contentCreatedBy": "ଏହାଙ୍କ ଦ୍ୱାରା ତିଆରି ହୋଇଛି"
+    "contentCreatedBy": "ଏହାଙ୍କ ଦ୍ୱାରା ତିଆରି ହୋଇଛି",
+    "coursePreview": "କୋର୍ସର ପୂର୍ବାବଲୋକନ",
+    "numActivities": "{count, plural, =1{୧ଟି କାର୍ଯ୍ୟକଳାପ} other{{count}ଟି କାର୍ଯ୍ୟକଳାପ}}"
 }

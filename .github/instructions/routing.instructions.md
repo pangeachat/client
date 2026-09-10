@@ -410,6 +410,7 @@ One vocabulary covers how content opens:
   rule applies positionally — the first token folds behind the second — so a
   chat opened in a course folds the course card behind it, and closing the chat
   reveals the card as it was left (#7332).
+  One pair folds **by declaration** rather than width: a child whose registry entry sets [`stacksOnParent`](../../lib/features/navigation/panel_registry.dart) (the add-course subpage) always folds its parent, so the whole flow is one panel and the map behind it keeps the width — see [course-preview.instructions.md](course-preview.instructions.md) (#7826).
 
 **Panel widths come in three named families, not per-panel numbers (#7572).**
 Panels that can replace each other in a slot share one min/comfort/ideal
@@ -577,9 +578,9 @@ just tall enough to show all their rows — all chats, or all joined courses (th
 add-course buttons when there are none) — capped by the height available below
 the analytics bar (a short list yields a short sheet; a long one fills to the
 cap and scrolls). The **add-course subpages open at full height** — start my
-own, browse public courses, and the course preview they push all show content
-unrelated to the map behind them, so a half-open sheet only de-emphasizes what
-the learner navigated there for (#8659). Other sections open at roughly half
+own, browse public courses, and enter a code show list/form content unrelated
+to the map behind them, so a half-open sheet only de-emphasizes what the
+learner navigated there for (#8659). The exception is the **course preview** those lists push: it rests low, because the map behind it is showing that course's activities (#7826) — see [course-preview.instructions.md](course-preview.instructions.md). Other sections open at roughly half
 the screen. The 4 rail
 icons remain anchored at the bottom of the widget at all heights. Content inside
 the expanded area is **scrollable**.
@@ -614,7 +615,7 @@ half, full — is ephemeral view state, exactly like fold recency above: a cold
 link or a refresh with an open **section** token (the chat list, the Courses
 hub) or an **activity plan** draws it expanded at its default rest height (the
 leaf rule) — content-fit for the list sections (the chat list, the Courses
-hub), full for the add-course subpages (#8659), roughly half otherwise; a
+hub), full for the add-course subpages (#8659) but low for the course preview they push (#7826), roughly half otherwise; a
 **course card** draws at its remembered height —
 the collapsed peek by
 default (see the per-course memory above), so the scoped map leads. The
@@ -839,7 +840,7 @@ until it is explicitly ended, finished, or times out.
   control (the same leave affordance as leaving a chat); ending discards
   in-progress work, so it asks first. The panel's **X is just "leave"** —
   drops the panel, reveals what's beneath, never prompts.
-- **The timer runs on wall-clock** from session start and keeps counting while
+- **The timer runs on wall-clock** from the first exercise appearing (the loading phases are not on the learner's clock) and keeps counting while
   the panel is closed. This is itself an anti-cheat mechanism: stepping out
   mid-session to consult a dictionary or an AI costs the clock, so the speed
   bonus rewards finishing unaided in one sitting.

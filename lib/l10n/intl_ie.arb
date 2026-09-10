@@ -3093,7 +3093,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-09-09 11:24:58.993623",
+    "@@last_modified": "2026-09-10 09:51:41.686696",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10540,5 +10540,7 @@
     "upNext": "An chéad cheann eile",
     "writingAssistanceSuggestion": "Moladh",
     "errorFetchingWordInfo": "Níor éirigh leis an eolas focal a fháil",
-    "contentCreatedBy": "Cruthaithe ag"
+    "contentCreatedBy": "Cruthaithe ag",
+    "coursePreview": "Réamhbhreathnú ar an gcúrsa",
+    "numActivities": "{count, plural, =1{1 gníomhaíocht} other{{count} gníomhaíochtaí}}"
 }

@@ -15,6 +15,7 @@ import 'package:fluffychat/features/navigation/panel_focus.dart';
 import 'package:fluffychat/features/navigation/panel_registry.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
+import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
 import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
@@ -685,6 +686,12 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
   /// activity-start-page.instructions.md.
   static const double _activitySheetMinimizedHeight = 200.0;
 
+  /// The course PREVIEW's minimized rest height (#7826): the cavity handle +
+  /// the header tile + the CTA row, description/modules dropped. Only the
+  /// tapped course rests low — the lists stay full. Kept in step with
+  /// `kCoursePreviewCompactMaxHeight` in selected_course_view.dart.
+  static const double _coursePreviewSheetMinimizedHeight = 188.0;
+
   GoRouterState get state => widget.state;
   _ShellLayout get layout => widget.layout;
 
@@ -706,6 +713,20 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
         : layout.leftTokens[layout.cavityIndex!];
     final isCourseCavity = cavityToken?.type.isCoursePanel == true;
     final isActivityCavity = cavityToken?.type == PanelTypesEnum.activity;
+    // The add-course flow's single-course PREVIEW state (#7826): rests low
+    // over the scoped map, unlike the flow's full-height list/form steps.
+    final cavityParam = cavityToken?.param;
+    final isCoursePreviewCavity =
+        cavityToken?.type == PanelTypesEnum.addcoursepage &&
+        cavityParam is AddCoursePageTokenParam &&
+        cavityParam.isCoursePreview;
+    // The own-flow's post-create INVITE step: deterministic full open (own
+    // key, no height memory) so a dragged list/preview height can't carry
+    // onto it.
+    final isCourseInviteCavity =
+        cavityToken?.type == PanelTypesEnum.addcoursepage &&
+        cavityParam is AddCoursePageTokenParam &&
+        cavityParam.showNewCourseInvitePage;
     final cavitySection = cavityToken?.type.cavitySection;
 
     // The floating search bar (routing.instructions.md → Single-column search
@@ -787,9 +808,10 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
       screenPadding: widget.screenPadding,
       hasSearchBar: topAttachment != null,
       // The activity plan has no rail and covers the analytics bar at full, so
-      // its full-height bound extends through both bands.
+      // its full-height bound extends through both bands. The course preview
+      // hides the rail too (#7826) but keeps the analytics bar.
       reserveAnalyticsBar: !isActivityCavity,
-      reserveRail: !isActivityCavity,
+      reserveRail: !isActivityCavity && !isCoursePreviewCavity,
     );
     final maxHeightFraction = screenHeight <= 0
         ? 0.8
@@ -807,6 +829,8 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
     double? preferredCavityHeight;
     if (isActivityCavity) {
       preferredCavityHeight = _activitySheetMinimizedHeight;
+    } else if (isCoursePreviewCavity) {
+      preferredCavityHeight = _coursePreviewSheetMinimizedHeight;
     } else if (cavityToken?.type == PanelTypesEnum.chats) {
       final visibleChats = client.rooms
           .where((room) => !room.isHiddenRoom && !room.isSpace)
@@ -848,6 +872,12 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
         cavityKey = param is ActivityTokenParam
             ? param.activityId
             : cavityToken.type.name;
+      } else if (isCoursePreviewCavity) {
+        // Distinct keys per step, so push/pop re-derive their own defaults
+        // instead of restoring each other's heights (#7826).
+        cavityKey = '${cavityToken.type.name}:preview';
+      } else if (isCourseInviteCavity) {
+        cavityKey = '${cavityToken.type.name}:invite';
       } else {
         cavityKey = cavityToken.type.name;
       }
@@ -1037,30 +1067,42 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
             cavityContextId: activeSpaceId,
             // A course card opens at peek (the map leads); the add-course
             // subpages open at full (their content is unrelated to the map,
-            // #8659); other sections and the activity plan open at half (the
-            // plan keeps its pin visible above — the Google Maps UX).
+            // #8659) — except the single-course preview they push, which
+            // rests low (#7826); other sections and the activity plan open at
+            // half (the plan keeps its pin visible above — the Google Maps
+            // UX).
             cavityDefaultsToPeek: cavityToken?.type.defaultCavityToPeek == true,
-            cavityDefaultsToFull: cavityToken?.type.defaultCavityToFull == true,
+            cavityDefaultsToFull:
+                cavityToken?.type.defaultCavityToFull == true &&
+                !isCoursePreviewCavity,
             // Dismissing the activity plan sheet (drag down, or its own back/X)
             // CLOSES the plan — dropping its token clears the map's activity
             // focus (#7614; world-map.instructions.md). Map taps do NOT dismiss:
             // the map stays live around the sheet (mapStaysLive below), so a tap
             // on another pin moves the selection directly. Sections and the
-            // course card keep collapse-not-close.
-            onDismissed: isActivityCavity && cavityToken != null
+            // course card keep collapse-not-close. Dragging a course PREVIEW
+            // down pops back to its list (#7826).
+            onDismissed: cavityToken != null && isActivityCavity
                 ? () => context.go(WorkspaceNav.closeLeft(uri, cavityToken))
+                : isCoursePreviewCavity
+                ? () => context.go(
+                    WorkspaceNav.openAddCoursePage(uri, cavityParam.subpage),
+                  )
                 : null,
-            // The map stays interactive around the activity plan and course card
-            // sheets: taps/pans in the exposed map pass through — tap another pin
-            // to select it directly; panning never dismisses. Dismissal is the
-            // drag-down handle or the sheet's own close control (#7742).
-            mapStaysLive: isActivityCavity || isCourseCavity,
-            // Tapping the plan's minimized rest expands it to full, alongside
-            // dragging up.
-            tapBodyExpands: isActivityCavity,
+            // The map stays interactive around the activity plan, course card,
+            // and course-preview sheets: taps/pans in the exposed map pass
+            // through — tap another pin to select it directly; panning never
+            // dismisses. Dismissal is the drag-down handle or the sheet's own
+            // close control (#7742).
+            mapStaysLive:
+                isActivityCavity || isCourseCavity || isCoursePreviewCavity,
+            // Tapping the plan's (or the course preview's) minimized rest
+            // expands it to full, alongside dragging up.
+            tapBodyExpands: isActivityCavity || isCoursePreviewCavity,
             // The activity plan covers the nav rail and owns the container; its
-            // app-bar X/back is the way out (which restores the rail).
-            hideRail: isActivityCavity,
+            // app-bar X/back is the way out (which restores the rail). The
+            // course preview does the same (#7826).
+            hideRail: isActivityCavity || isCoursePreviewCavity,
             // Publish whether the activity plan is at full — the shell hides the
             // analytics bar under it. Any other cavity reports false, so
             // switching away resets it.
@@ -1070,9 +1112,13 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
             preferredCavityHeightPx: preferredCavityHeight,
             // The activity plan's open stop is deterministic: it never remembers a
             // manual resize, so a maximized activity reopens minimized rather than
-            // carrying its height over (activity-start-page.instructions.md). Other
-            // cavities keep their remembered height.
-            rememberHeight: !isActivityCavity,
+            // carrying its height over (activity-start-page.instructions.md). The
+            // course preview and the post-create invite step follow the same
+            // rule (#7826). Other cavities keep their remembered height.
+            rememberHeight:
+                !isActivityCavity &&
+                !isCoursePreviewCavity &&
+                !isCourseInviteCavity,
             topAttachment: topAttachment,
             keyboardInset: widget.keyboardInset,
           );
@@ -1080,6 +1126,39 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
       ),
     );
   }
+}
+
+/// Whether [token] is the add-course flow's single-course PREVIEW state
+/// (#7826) — shared by the narrow cavity config, the camera's bottom padding,
+/// and the map-context derivation so the three can't disagree.
+bool _tokenIsCoursePreview(PanelToken token) {
+  final param = token.param;
+  return token.type == PanelTypesEnum.addcoursepage &&
+      param is AddCoursePageTokenParam &&
+      param.isCoursePreview;
+}
+
+/// The plan uuid the map should PREVIEW-scope to, or null when no course
+/// preview is open (#7826) — own: from the token; browse: via
+/// [CoursePreviewPlans] once the room summary lands (null until then).
+String? _previewPlanIdFor(List<PanelToken> leftTokens) {
+  for (final token in leftTokens) {
+    if (!_tokenIsCoursePreview(token)) continue;
+    final param = token.param;
+    if (param is! AddCoursePageTokenParam) continue;
+    switch (param.subpage) {
+      case AddCourseSubpageEnum.own:
+        return param.createCourseId;
+      case AddCourseSubpageEnum.browse:
+        final roomId = param.previewRoomId;
+        return roomId == null
+            ? null
+            : CoursePreviewPlans.planIdFor(shortRoomId(roomId));
+      case AddCourseSubpageEnum.private:
+        return null;
+    }
+  }
+  return null;
 }
 
 /// Device-local memory of the last course the learner opened, for the narrow
@@ -1483,6 +1562,13 @@ class _ShellLayout {
           _MobileNavLayerState._activitySheetMinimizedHeight +
           MediaQuery.viewPaddingOf(context).bottom +
           chromeMargin * 2;
+    } else if (hasCavity && _tokenIsCoursePreview(leftTokens[cavityIndex])) {
+      // The course preview's resting sheet (#7826) — the same estimate-not-
+      // live rule as the activity branch above.
+      mapBottomOverlay =
+          _MobileNavLayerState._coursePreviewSheetMinimizedHeight +
+          MediaQuery.viewPaddingOf(context).bottom +
+          chromeMargin * 2;
     }
 
     // The map actually visible between the open side panels — drives the pin
@@ -1495,12 +1581,17 @@ class _ShellLayout {
 
     // Scope the persistent map to the active course (world_v2 context). Set
     // post-frame — the map listens and calls setState, which can't run now.
+    // An open course PREVIEW outranks the `?c=` scope (#7826): it is the more
+    // deliberate, more recent act, and popping it re-derives the usual scope.
+    final previewPlanId = _previewPlanIdFor(leftTokens);
     final coursePlanId = activeSpaceId == null
         ? null
         : Matrix.of(
             context,
           ).client.getRoomById(activeSpaceId)?.coursePlan?.uuid;
-    final MapContext mapContext = coursePlanId == null
+    final MapContext mapContext = previewPlanId != null
+        ? CoursePreviewMapContext(previewPlanId)
+        : coursePlanId == null
         ? const WorldMapContext()
         : CourseMapContext(coursePlanId);
     // A full-screen surface on a narrow screen (a focused panel or a

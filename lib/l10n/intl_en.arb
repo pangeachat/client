@@ -4164,6 +4164,16 @@
             }
         }
     },
+    "numActivities": "{count, plural, =1{1 activity} other{{count} activities}}",
+    "@numActivities": {
+        "type": "String",
+        "description": "Count of activities in a course, on the course info chips.",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
     "coursePlan": "Course Plan",
     "upNext": "Up next",
     "@upNext": {
@@ -4990,6 +5000,7 @@
     "introChatDesc": "Anyone in the course can post.",
     "announcementsChatDesc": "Only course admins can post.",
     "mapSearchHint": "Search activities",
+    "coursePreview": "Course preview",
     "mapFilterAllLanguages": "All languages",
     "mapFilterNotStarted": "Not started",
     "mapFilterInProgress": "In progress",

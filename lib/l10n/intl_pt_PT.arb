@@ -2559,7 +2559,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-09-09 11:25:01.092346",
+    "@@last_modified": "2026-09-10 09:51:43.349334",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10825,5 +10825,7 @@
     "upNext": "A seguir",
     "writingAssistanceSuggestion": "Sugestão",
     "errorFetchingWordInfo": "Falha ao obter informações da palavra",
-    "contentCreatedBy": "Criado por"
+    "contentCreatedBy": "Criado por",
+    "coursePreview": "Pré-visualização do curso",
+    "numActivities": "{count, plural, =1{1 atividade} other{{count} atividades}}"
 }

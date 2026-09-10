@@ -26,6 +26,32 @@ void main() {
       await tester.pumpWidget(const SizedBox());
     });
 
+    testWidgets('frozen at 00:00 while the first exercise is generating', (
+      tester,
+    ) async {
+      // No startedAt yet: the session's targets are picked but nothing is on
+      // screen, so there is no clock to run — even asked to run (#8966).
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: PracticeTimerWidget(
+              startedAt: null,
+              onTimeUpdate: (_) {},
+              isRunning: true,
+            ),
+          ),
+        ),
+      );
+
+      expect(find.text('00:00'), findsOneWidget);
+
+      await tester.pump(const Duration(seconds: 3));
+      expect(find.text('00:00'), findsOneWidget);
+
+      // Unmount to cancel the periodic ticker before the test ends.
+      await tester.pumpWidget(const SizedBox());
+    });
+
     testWidgets('frozen when not running (e.g. session complete)', (
       tester,
     ) async {

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-09 11:24:57.698059",
+    "@@last_modified": "2026-09-10 09:51:40.085574",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10853,5 +10853,7 @@
     "upNext": "Poste",
     "writingAssistanceSuggestion": "Sugesto",
     "errorFetchingWordInfo": "Malsukcesis preni vortinformon",
-    "contentCreatedBy": "Kreita de"
+    "contentCreatedBy": "Kreita de",
+    "coursePreview": "Antaŭrigardo de la kurso",
+    "numActivities": "{count, plural, =1{1 agado} other{{count} agadoj}}"
 }

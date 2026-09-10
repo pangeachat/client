@@ -62,7 +62,15 @@ class _LevelDisplayNameState extends State<LevelDisplayName> {
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = widget.textStyle;
+    // One style for every value in the chip — the two language codes and the
+    // level — so the row reads as a single mark rather than a run of
+    // differently-weighted fragments.
+    final textStyle =
+        widget.textStyle ??
+        TextStyle(
+          fontWeight: FontWeight.bold,
+          color: Theme.of(context).colorScheme.primary,
+        );
     final iconSize = widget.iconSize;
     final showFlags = widget.showFlags;
     final padding = widget.padding;
@@ -124,15 +132,7 @@ class _LevelDisplayNameState extends State<LevelDisplayName> {
                   label:
                       "${L10n.of(context).sourceLanguage}: ${base?.displayName ?? baseCode}",
                   child: ExcludeSemantics(
-                    child: Text(
-                      baseCode.toUpperCase(),
-                      style:
-                          textStyle ??
-                          TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Theme.of(context).colorScheme.primary,
-                          ),
-                    ),
+                    child: Text(baseCode.toUpperCase(), style: textStyle),
                   ),
                 ),
                 Icon(Icons.chevron_right_outlined, size: iconSize ?? 16.0),
@@ -155,21 +155,21 @@ class _LevelDisplayNameState extends State<LevelDisplayName> {
                   label:
                       "${L10n.of(context).targetLanguage}: ${target?.displayName ?? targetCode}",
                   child: ExcludeSemantics(
-                    child: Text(
-                      targetCode.toUpperCase(),
-                      style:
-                          textStyle ??
-                          TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Theme.of(context).colorScheme.primary,
-                          ),
-                    ),
+                    child: Text(targetCode.toUpperCase(), style: textStyle),
                   ),
                 ),
               ],
               if (level != null) ...[
-                const SizedBox(width: 4.0),
-                LevelRibbon(level: level, height: (iconSize ?? 16.0) + 2.0),
+                // Wider than the 2.0 between the shield and its number, so the
+                // level reads as its own value rather than as a continuation
+                // of the language pair (#8918).
+                const SizedBox(width: 6.0),
+                LevelRibbon(
+                  level: level,
+                  height: LevelRibbon.heightForIconSize(iconSize ?? 16.0),
+                  numberPlacement: LevelNumberPlacement.trailing,
+                  numberStyle: textStyle,
+                ),
               ],
             ],
           ),

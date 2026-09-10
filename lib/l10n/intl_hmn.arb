@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-09-09 11:24:58.566614",
+    "@@last_modified": "2026-09-10 09:51:41.259543",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2312,5 +2312,7 @@
     "upNext": "Tom ntej no",
     "writingAssistanceSuggestion": "Tswv yim",
     "errorFetchingWordInfo": "Tsis tau nrhiav tau cov lus qhia",
-    "contentCreatedBy": "Tsim los ntawm"
+    "contentCreatedBy": "Tsim los ntawm",
+    "coursePreview": "Saib ua ntej kawm",
+    "numActivities": "{count, plural, =1{1 qho kev ua} other{{count} qho kev ua}}"
 }

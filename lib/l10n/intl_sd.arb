@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-09-09 11:25:01.411640",
+    "@@last_modified": "2026-09-10 09:51:43.836615",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2312,5 +2312,7 @@
     "upNext": "اڳيان",
     "writingAssistanceSuggestion": "تجويز",
     "errorFetchingWordInfo": "لفظ جي معلومات حاصل ڪرڻ ۾ ناڪامي ٿي",
-    "contentCreatedBy": "ٺاهيندڙ"
+    "contentCreatedBy": "ٺاهيندڙ",
+    "coursePreview": "ڪورس جو ڏيک",
+    "numActivities": "{count, plural, =1{1 سرگرمي} other{{count} سرگرميون}}"
 }

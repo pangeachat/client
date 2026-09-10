@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-09 11:25:02.688823",
+    "@@last_modified": "2026-09-10 09:51:45.484885",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10014,5 +10014,7 @@
     "upNext": "接下來",
     "writingAssistanceSuggestion": "建議",
     "errorFetchingWordInfo": "無法取得單字資訊",
-    "contentCreatedBy": "建立者"
+    "contentCreatedBy": "建立者",
+    "coursePreview": "課程預覽",
+    "numActivities": "{count, plural, =1{1 個活動} other{{count} 個活動}}"
 }

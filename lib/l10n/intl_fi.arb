@@ -3536,7 +3536,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-09-09 11:24:58.068345",
+    "@@last_modified": "2026-09-10 09:51:40.385450",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9945,5 +9945,7 @@
     "upNext": "Seuraavaksi",
     "writingAssistanceSuggestion": "Ehdotus",
     "errorFetchingWordInfo": "Sanan tietojen nouto epäonnistui",
-    "contentCreatedBy": "Luonut"
+    "contentCreatedBy": "Luonut",
+    "coursePreview": "Kurssin esikatselu",
+    "numActivities": "{count, plural, =1{1 aktiviteetti} other{{count} aktiviteettia}}"
 }

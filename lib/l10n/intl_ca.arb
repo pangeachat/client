@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-09 11:24:56.906662",
+    "@@last_modified": "2026-09-10 09:51:39.651396",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10035,5 +10035,7 @@
     "upNext": "A continuació",
     "writingAssistanceSuggestion": "Suggeriment",
     "errorFetchingWordInfo": "No s'ha pogut obtenir la informació de la paraula",
-    "contentCreatedBy": "Creat per"
+    "contentCreatedBy": "Creat per",
+    "coursePreview": "Previsualització del curs",
+    "numActivities": "{count, plural, =1{1 activitat} other{{count} activitats}}"
 }

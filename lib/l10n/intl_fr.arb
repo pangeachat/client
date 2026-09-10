@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-09-09 11:24:58.107988",
+    "@@last_modified": "2026-09-10 09:51:40.509758",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10263,5 +10263,7 @@
     "upNext": "À suivre",
     "writingAssistanceSuggestion": "Suggestion",
     "errorFetchingWordInfo": "Échec de la récupération des informations sur le mot",
-    "contentCreatedBy": "Créé par"
+    "contentCreatedBy": "Créé par",
+    "coursePreview": "Aperçu du cours",
+    "numActivities": "{count, plural, =1{1 activité} other{{count} activités}}"
 }

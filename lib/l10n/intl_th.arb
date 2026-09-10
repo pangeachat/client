@@ -3093,7 +3093,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-09-09 11:25:02.218389",
+    "@@last_modified": "2026-09-10 09:51:44.722902",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10540,5 +10540,7 @@
     "upNext": "ถัดไป",
     "writingAssistanceSuggestion": "ข้อเสนอแนะ",
     "errorFetchingWordInfo": "ไม่สามารถดึงข้อมูลคำศัพท์ได้",
-    "contentCreatedBy": "สร้างโดย"
+    "contentCreatedBy": "สร้างโดย",
+    "coursePreview": "ดูตัวอย่างคอร์ส",
+    "numActivities": "{count, plural, =1{1 กิจกรรม} other{{count} กิจกรรม}}"
 }

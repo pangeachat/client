@@ -38,6 +38,24 @@ class TutorialOverlayWidget extends StatefulWidget {
     super.key,
   });
 
+  /// Whether this card carries the sequence-wide Skip control.
+  ///
+  /// Nearly every card does, so the way out sits in the same corner
+  /// throughout a walkthrough. Four cards do not: an uncatalogued sequence (a
+  /// test's) has nothing to skip out of, a branch's decline choice IS the
+  /// skip, a step may opt out ([TutorialStepStyle.showsSkip] — the greeting),
+  /// and a **one-step run** offers the learner nothing by it: skipping there
+  /// is indistinguishable from finishing, which a tap anywhere already does.
+  static bool showsSkip({
+    required TutorialSequenceKind? sequenceKind,
+    required TutorialStepStyle style,
+    required int totalSteps,
+  }) =>
+      sequenceKind != null &&
+      totalSteps > 1 &&
+      !style.isBranch &&
+      style.showsSkip;
+
   @override
   State<TutorialOverlayWidget> createState() => _TutorialOverlayWidgetState();
 }
@@ -356,14 +374,15 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
       height: tooltipSize.height,
       padding: _tooltipPadding,
       sequenceKind: widget.sequenceKind,
-      // Every card carries Skip except a branch (its decline choice IS the
-      // skip) and the steps that opt out ([showsSkip] — the greeting). On an
+      // See [TutorialOverlayWidget.showsSkip] for which cards carry it. On an
       // armed card it is a real click target like everywhere else: the card
       // sits above the armed step's pointer barrier.
       onSkip:
-          widget.sequenceKind != null &&
-              !step.style.isBranch &&
-              step.style.showsSkip
+          TutorialOverlayWidget.showsSkip(
+            sequenceKind: widget.sequenceKind,
+            style: step.style,
+            totalSteps: widget.totalSteps,
+          )
           ? widget.skipSequence
           : null,
       currentStep: widget.completedSteps,

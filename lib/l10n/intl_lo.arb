@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-09-09 11:24:59.928081",
+    "@@last_modified": "2026-09-10 09:51:42.377681",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2312,5 +2312,7 @@
     "upNext": "ຕໍ່ໄປ",
     "writingAssistanceSuggestion": "ຄຳແນະນຳ",
     "errorFetchingWordInfo": "ບໍ່ສາມາດດຶງຂໍ້ມູນຄຳສັບໄດ້",
-    "contentCreatedBy": "ສ້າງໂດຍ"
+    "contentCreatedBy": "ສ້າງໂດຍ",
+    "coursePreview": "ເບິ່ງຕົວຢ່າງຫຼັກສູດ",
+    "numActivities": "{count, plural, =1{1 ກິດຈະກຳ} other{{count} ກິດຈະກຳ}}"
 }

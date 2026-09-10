@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-09-09 11:25:02.869911",
+    "@@last_modified": "2026-09-10 09:51:45.642376",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2312,5 +2312,7 @@
     "upNext": "Ohun tó kàn",
     "writingAssistanceSuggestion": "Àbá",
     "errorFetchingWordInfo": "Kò lè gba ìsọfúnni ọ̀rọ̀",
-    "contentCreatedBy": "Ẹlẹ́dàá"
+    "contentCreatedBy": "Ẹlẹ́dàá",
+    "coursePreview": "Aworan iṣaaju ti ikẹkọọ",
+    "numActivities": "{count, plural, =1{iṣẹ́ kan} other{{count} àwọn iṣẹ́}}"
 }

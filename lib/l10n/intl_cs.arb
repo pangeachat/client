@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-09-09 11:24:57.036060",
+    "@@last_modified": "2026-09-10 09:51:39.705978",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10402,5 +10402,7 @@
     "upNext": "Další",
     "writingAssistanceSuggestion": "Návrh",
     "errorFetchingWordInfo": "Nepodařilo se načíst informace o slově",
-    "contentCreatedBy": "Vytvořil"
+    "contentCreatedBy": "Vytvořil",
+    "coursePreview": "Náhled kurzu",
+    "numActivities": "{count, plural, =1{1 aktivita} other{{count} aktivit}}"
 }

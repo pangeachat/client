@@ -202,6 +202,7 @@ class SpaceDetailsController extends State<SpaceDetails> {
         courseId: room.id,
         activityId: activityId,
         sessionRoomId: sessionRoomId,
+        senderId: event.senderId,
       ));
     }
 

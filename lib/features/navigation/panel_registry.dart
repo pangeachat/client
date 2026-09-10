@@ -121,6 +121,12 @@ sealed class PanelDef {
   /// UX. See `routing.instructions.md`.
   final bool mapContent;
 
+  /// This child ALWAYS folds its same-column [parent] behind it — one
+  /// navigation slot (list → detail, `←` back) regardless of width. Set on the
+  /// add-course subpage (#7826), where the map preview is what a second panel
+  /// would cost. The same fold the allocator applies under width pressure.
+  final bool stacksOnParent;
+
   const PanelDef({
     required this.column,
     required this.minWidth,
@@ -132,6 +138,7 @@ sealed class PanelDef {
     this.siblingGroups = const {},
     this.pushable = false,
     this.mapContent = false,
+    this.stacksOnParent = false,
   });
 
   /// The comfort floor the fold trigger uses: an explicit [reasonableMinWidth],
@@ -249,6 +256,7 @@ class AddCoursePagePanelDef extends PanelDef {
          parent: PanelTypesEnum.addcourse,
          mapContent:
              true, // the add-course flow is a map bottom sheet on mobile
+         stacksOnParent: true, // one slot for the whole flow, even on wide
        );
 }
 

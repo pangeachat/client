@@ -55,6 +55,21 @@ class AddCoursePageTokenParam extends TokenParam {
     }
   }
 
+  /// The single-course PREVIEW state of the browse / start-my-own flows
+  /// (#7826): the sheet rests low and the map scopes to the course's
+  /// activities. The own-flow's invite step is excluded — a form, not a
+  /// preview.
+  bool get isCoursePreview {
+    switch (subpage) {
+      case AddCourseSubpageEnum.browse:
+        return previewRoomId != null;
+      case AddCourseSubpageEnum.private:
+        return false;
+      case AddCourseSubpageEnum.own:
+        return createCourseId != null && !showNewCourseInvitePage;
+    }
+  }
+
   @override
   AddCoursePageTokenParam? get poppedParam {
     switch (subpage) {

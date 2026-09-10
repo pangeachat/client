@@ -130,74 +130,11 @@ class JoinedCourseStepView extends StatelessWidget {
                                         ),
                                         SizedBox(height: 2),
                                         if (coursePlan != null)
-                                          Wrap(
-                                            spacing: 4.0,
-                                            runSpacing: 2.0,
-                                            children: [
-                                              Container(
-                                                padding: EdgeInsets.symmetric(
-                                                  horizontal: 4.0,
-                                                ),
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(8),
-                                                  color: theme
-                                                      .colorScheme
-                                                      .surfaceContainer,
-                                                ),
-                                                child: CourseInfoChip(
-                                                  icon: Icons.language_outlined,
-                                                  text: coursePlan
-                                                      .targetLanguageDisplay,
-                                                  fontSize: 14,
-                                                  iconSize: 12,
-                                                ),
-                                              ),
-                                              Container(
-                                                padding: EdgeInsets.symmetric(
-                                                  horizontal: 4.0,
-                                                ),
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(8),
-                                                  color: theme
-                                                      .colorScheme
-                                                      .surfaceContainer,
-                                                ),
-                                                child: CourseInfoChip(
-                                                  icon: Icons.school_outlined,
-                                                  text: coursePlan
-                                                      .cefrLevel
-                                                      .string,
-                                                  fontSize: 14,
-                                                  iconSize: 12,
-                                                ),
-                                              ),
-                                              Container(
-                                                padding: EdgeInsets.symmetric(
-                                                  horizontal: 4.0,
-                                                ),
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(8),
-                                                  color: theme
-                                                      .colorScheme
-                                                      .surfaceContainer,
-                                                ),
-                                                child: CourseInfoChip(
-                                                  icon:
-                                                      Icons.event_note_outlined,
-                                                  text: L10n.of(context)
-                                                      .numModules(
-                                                        coursePlan
-                                                            .topicIds
-                                                            .length,
-                                                      ),
-                                                  fontSize: 14,
-                                                  iconSize: 12,
-                                                ),
-                                              ),
-                                            ],
+                                          CourseInfoChips(
+                                            coursePlan.uuid,
+                                            courseRoomId: room?.id,
+                                            fontSize: 14,
+                                            iconSize: 12,
                                           ),
                                       ],
                                     ),

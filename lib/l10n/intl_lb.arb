@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-09-09 11:24:59.889674",
+    "@@last_modified": "2026-09-10 09:51:42.137866",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2312,5 +2312,7 @@
     "upNext": "Als Nächstes",
     "writingAssistanceSuggestion": "Virschlag",
     "errorFetchingWordInfo": "Konnt d'Wuertinformatioun net ofruffen",
-    "contentCreatedBy": "Erstellt vun"
+    "contentCreatedBy": "Erstellt vun",
+    "coursePreview": "Cours Virschau",
+    "numActivities": "{count, plural, =1{1 Aktivitéit} other{{count} Aktivitéiten}}"
 }

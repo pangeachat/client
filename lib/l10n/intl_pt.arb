@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-09 11:25:00.993157",
+    "@@last_modified": "2026-09-10 09:51:43.338863",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10852,5 +10852,7 @@
     "upNext": "A seguir",
     "writingAssistanceSuggestion": "Sugestão",
     "errorFetchingWordInfo": "Falha ao buscar informações da palavra",
-    "contentCreatedBy": "Criado por"
+    "contentCreatedBy": "Criado por",
+    "coursePreview": "Prévia do curso",
+    "numActivities": "{count, plural, =1{1 atividade} other{{count} atividades}}"
 }

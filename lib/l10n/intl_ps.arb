@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-09-09 11:25:01.176302",
+    "@@last_modified": "2026-09-10 09:51:43.312058",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2312,5 +2312,7 @@
     "upNext": "بل",
     "writingAssistanceSuggestion": "وړاندیز",
     "errorFetchingWordInfo": "د کلمې معلوماتو په ترلاسه کولو کې پاتې راغلی",
-    "contentCreatedBy": "جوړ شوی د"
+    "contentCreatedBy": "جوړ شوی د",
+    "coursePreview": "د کورس مخکتنه",
+    "numActivities": "{count, plural, =1{1 فعالیت} other{{count} فعالیتونه}}"
 }

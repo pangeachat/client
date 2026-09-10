@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-09-09 11:24:57.390727",
+    "@@last_modified": "2026-09-10 09:51:39.864168",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2312,5 +2312,7 @@
     "upNext": "Dopu",
     "writingAssistanceSuggestion": "Suggerimentu",
     "errorFetchingWordInfo": "Fallimentu di ricuperà l'infurmazione di a parolla",
-    "contentCreatedBy": "Creatu da"
+    "contentCreatedBy": "Creatu da",
+    "coursePreview": "Anticipu di u corsu",
+    "numActivities": "{count, plural, =1{1 attività} other{{count} attività}}"
 }

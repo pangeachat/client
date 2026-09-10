@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-09-09 11:25:01.689651",
+    "@@last_modified": "2026-09-10 09:51:44.034846",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2312,5 +2312,7 @@
     "upNext": "Zvinotevera",
     "writingAssistanceSuggestion": "Zano",
     "errorFetchingWordInfo": "Zvakakona kutora ruzivo rwezwi",
-    "contentCreatedBy": "Yakagadzirwa na"
+    "contentCreatedBy": "Yakagadzirwa na",
+    "coursePreview": "Taridza kosi",
+    "numActivities": "{count, plural, =1{1 chiitiko} other{{count} zviitiko}}"
 }

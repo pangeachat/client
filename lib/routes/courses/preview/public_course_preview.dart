@@ -13,11 +13,13 @@ import 'package:fluffychat/features/join_codes/space_code_controller.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/courses/add_course_tile_content.dart';
 import 'package:fluffychat/routes/courses/own/selected_course_view.dart';
+import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -43,6 +45,13 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
   Object? roomSummaryError;
   bool loadingRoomSummary = false;
 
+  /// The preview modules list's outline loader (#7826). Created lazily — the
+  /// quest id arrives with the room summary.
+  QuestObjectivesLoader? _objectivesLoader;
+
+  QuestObjectivesLoader get objectivesProvider => _objectivesLoader ??=
+      QuestObjectivesLoader(client: Matrix.of(context).client);
+
   @override
   initState() {
     super.initState();
@@ -53,8 +62,18 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
   void didUpdateWidget(covariant PublicCoursePreview oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.roomID != oldWidget.roomID) {
+      final oldRoomID = oldWidget.roomID;
+      if (oldRoomID != null) CoursePreviewPlans.clear(shortRoomId(oldRoomID));
       _loadSummary();
     }
+  }
+
+  @override
+  void dispose() {
+    final roomID = widget.roomID;
+    if (roomID != null) CoursePreviewPlans.clear(shortRoomId(roomID));
+    _objectivesLoader?.dispose();
+    super.dispose();
   }
 
   /// world_v2: the public course preview is route-driven
@@ -149,8 +168,16 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
       }
     }
 
-    if (roomSummary?.coursePlan != null) {
-      await loadCourse(roomSummary!.coursePlan!.uuid);
+    final planUuid = roomSummary?.coursePlan?.uuid;
+    if (planUuid != null) {
+      if (mounted) {
+        // Scope the map to this course the moment the plan id is known — the
+        // URL only carries the room id, so the page publishes the resolution
+        // (#7826).
+        CoursePreviewPlans.publish(shortRoomId(widget.roomID!), planUuid);
+        objectivesProvider.loadOutline(planUuid);
+      }
+      await loadCourse(planUuid);
     } else {
       ErrorHandler.logError(
         e: Exception("No course plan found in room summary"),
@@ -262,5 +289,6 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
     ctaButtonText: roomSummary?.joinRule == JoinRules.knock
         ? L10n.of(context).knock
         : L10n.of(context).join,
+    objectivesProvider: _objectivesLoader,
   );
 }

@@ -88,6 +88,15 @@ abstract class AppConfig {
       ? completedGreen
       : success;
 
+  /// The caution counterpart of [successByTheme], for **foreground** use —
+  /// text, an icon, a diff underline. [warning] measures 3.01:1 on the light
+  /// surface and 2.44:1 on the darkest light card, under the 3:1 a mark
+  /// carrying meaning needs; [warningDeep] holds 4.02:1 and 3.26:1 there
+  /// (#8764). Dark already passes, so only the light branch deepens. Fill uses
+  /// — chips, pills, toggles, backfills — keep [warning] itself.
+  static Color warningByTheme(BuildContext context) =>
+      Theme.of(context).brightness == Brightness.light ? warningDeep : warning;
+
   /// Readable ink on top of [goldByTheme], which is a light fill in both
   /// brightnesses — so both branches resolve to a dark tone.
   static Color onGoldByTheme(BuildContext context) {
@@ -128,6 +137,10 @@ abstract class AppConfig {
   static const Color success = Color(0xFF33D057);
   static const Color error = Colors.red;
   static const Color warning = Color.fromARGB(255, 210, 124, 12);
+
+  /// [warning] deepened for the light theme — see [warningByTheme], which is
+  /// how foreground code should reach it.
+  static const Color warningDeep = Color(0xFFB4690A);
   static const Color activeToggleColor = Color(0xFF33D057);
   static const Color yellowLight = Color.fromARGB(255, 247, 218, 120);
   static const Color yellowDark = Color.fromARGB(255, 253, 191, 1);

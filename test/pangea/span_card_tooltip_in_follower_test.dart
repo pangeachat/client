@@ -159,6 +159,7 @@ void main() {
                   onFeedback: () {},
                   onLearningSettings: () {},
                   onClose: () {},
+                  onOpenMenu: () {},
                 ),
               ),
             ),

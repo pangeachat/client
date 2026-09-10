@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-09-09 11:25:00.602422",
+    "@@last_modified": "2026-09-10 09:51:42.894776",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2312,5 +2312,7 @@
     "upNext": "နောက်တစ်ခု",
     "writingAssistanceSuggestion": "အကြံပြုချက်",
     "errorFetchingWordInfo": "စကားလုံးအချက်အလက်များကို ယူဆောင်ရာတွင် အမှားအယွင်းရှိခဲ့သည်",
-    "contentCreatedBy": "ဖန်တီးသူ"
+    "contentCreatedBy": "ဖန်တီးသူ",
+    "coursePreview": "သင်တန်းအစမ်းကြည့်ရန်",
+    "numActivities": "{count, plural, =1{လုပ်ဆောင်ချက် ၁ ခု} other{လုပ်ဆောင်ချက် {count} ခု}}"
 }

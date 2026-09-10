@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-09-09 11:25:00.218890",
+    "@@last_modified": "2026-09-10 09:51:42.602668",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2312,5 +2312,7 @@
     "upNext": "Panuku",
     "writingAssistanceSuggestion": "Tohu",
     "errorFetchingWordInfo": "I rahua te tiki i ngā mōhiohio kupu",
-    "contentCreatedBy": "Nā"
+    "contentCreatedBy": "Nā",
+    "coursePreview": "Arokite kōhi",
+    "numActivities": "{count, plural, =1{1 mahi} other{{count} mahi}}"
 }

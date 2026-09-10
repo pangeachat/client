@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-09-09 11:24:59.633486",
+    "@@last_modified": "2026-09-10 09:51:42.018934",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2312,5 +2312,7 @@
     "upNext": "Di wan we de kam",
     "writingAssistanceSuggestion": "Advays",
     "errorFetchingWordInfo": "Di wod infomeshon nɔ kɔmɔt",
-    "contentCreatedBy": "Pikin we mek am"
+    "contentCreatedBy": "Pikin we mek am",
+    "coursePreview": "Kɔs witnes",
+    "numActivities": "{count, plural, =1{1 aktiviti} other{{count} aktiviti dɛn}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-09-09 11:24:58.565555",
+    "@@last_modified": "2026-09-10 09:51:41.366842",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2312,5 +2312,7 @@
     "upNext": "Apre sa",
     "writingAssistanceSuggestion": "Sijesyon",
     "errorFetchingWordInfo": "Nou pa t kapab jwenn enfòmasyon sou mo a",
-    "contentCreatedBy": "Kreye pa"
+    "contentCreatedBy": "Kreye pa",
+    "coursePreview": "Apèsi sou kou a",
+    "numActivities": "{count, plural, =1{1 aktivite} other{{count} aktivite}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-09-09 11:24:58.487856",
+    "@@last_modified": "2026-09-10 09:51:40.924224",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2312,5 +2312,7 @@
     "upNext": "Aʻe aʻe",
     "writingAssistanceSuggestion": "Manaʻo kōkua",
     "errorFetchingWordInfo": "ʻAʻole i loaʻa ka ʻike huaʻōlelo",
-    "contentCreatedBy": "Hana ʻia e"
+    "contentCreatedBy": "Hana ʻia e",
+    "coursePreview": "Nānā mua papa",
+    "numActivities": "{count, plural, =1{1 hana} other{{count} mau hana}}"
 }

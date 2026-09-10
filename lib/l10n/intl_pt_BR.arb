@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-09 11:25:01.055987",
+    "@@last_modified": "2026-09-10 09:51:43.314221",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9908,5 +9908,7 @@
     "upNext": "A seguir",
     "writingAssistanceSuggestion": "Sugestão",
     "errorFetchingWordInfo": "Falha ao buscar informações da palavra",
-    "contentCreatedBy": "Criado por"
+    "contentCreatedBy": "Criado por",
+    "coursePreview": "Prévia do curso",
+    "numActivities": "{count, plural, =1{1 atividade} other{{count} atividades}}"
 }

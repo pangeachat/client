@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-09-09 11:25:01.847947",
+    "@@last_modified": "2026-09-10 09:51:44.555451",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2312,5 +2312,7 @@
     "upNext": "Salajengna",
     "writingAssistanceSuggestion": "Saran",
     "errorFetchingWordInfo": "Gagal ngala inpormasi kecap",
-    "contentCreatedBy": "Dijieun ku"
+    "contentCreatedBy": "Dijieun ku",
+    "coursePreview": "Sawangan kursus",
+    "numActivities": "{count, plural, =1{1 kagiatan} other{{count} kagiatan}}"
 }
