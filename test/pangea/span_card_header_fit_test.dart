@@ -16,6 +16,7 @@ void main() {
   late int feedbackTaps;
   late int settingsTaps;
   late int closeTaps;
+  late int menuOpens;
 
   setUp(() {
     listenToggles = [];
@@ -23,6 +24,7 @@ void main() {
     feedbackTaps = 0;
     settingsTaps = 0;
     closeTaps = 0;
+    menuOpens = 0;
   });
 
   Future<void> pumpHeader(
@@ -53,6 +55,7 @@ void main() {
                 onFeedback: () => feedbackTaps++,
                 onLearningSettings: () => settingsTaps++,
                 onClose: () => closeTaps++,
+                onOpenMenu: () => menuOpens++,
               ),
             ),
           ),
@@ -202,6 +205,18 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(listenToggles, ['wa-listen-test']);
+    });
+
+    // #8957 — the card hands the composer's focus off on this callback, so
+    // the closing menu has nothing to give the focus back to and the mobile
+    // keyboard stays down. What that buys is measured in
+    // span_card_menu_focus_test.dart.
+    testWidgets('reports that it opened', (tester) async {
+      await pumpHeader(tester, title: shortTitle, width: 400);
+      expect(menuOpens, 0);
+
+      await openMenu(tester);
+      expect(menuOpens, 1);
     });
   });
 }
