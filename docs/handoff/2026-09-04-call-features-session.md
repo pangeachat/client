@@ -1522,3 +1522,16 @@ until the design is Codex-green.
   self-gate); on RED, root-cause + SendMessage the SAME agent to fix, re-gate, loop to green (pivot at 4,
   stop at 7-8); then one final cold green over the assembled delta. Spec section 9 updated.
 - Design re-gate round 3 running (gate-design3). On SOUND-TO-BUILD -> present spec for owner GO -> build.
+
+## 2026-09-10 (cont) — design spec SOUND-TO-BUILD (4 gate rounds); awaiting owner GO
+- Design re-gate round 4 (bddfnd2rr): SOUND-TO-BUILD. All 3 PASS: seek ownership race fully closed
+  (recheck after every await; check->seek and check->play have no suspension point); no other
+  architectural blocker; printed-time + standalone orderKeyMs semantics isolated + mutation-tested.
+- Design converged over 4 rounds: r1 6 broad findings -> r2 refinements (1/4/5 confirmed) -> v3 folds r2
+  -> r3 down to 1 blocker (seek recheck-before-play) + 2 clarifications -> v3.1 fixes -> r4 GREEN.
+- Spec v3.1 committed (37663d5309 area + v3.1 commit). Design phase DONE. Awaiting owner GO to build.
+- BUILD PLAN on GO: dispatch agents 1(timeline model)->2(CallPlaybackController)->3(karaoke render) in
+  order, then 4(loading machine in transcript_view), then 5(layout in transcript_view, rebased on 4);
+  6 = doc draft held for review. Orchestrator cold-gates EACH agent's diff; RED -> root-cause +
+  SendMessage the same agent -> re-gate -> green; then one final cold green over the delta; then owner
+  review. No PR without explicit go. PR2 rebase on main after #8888/#8797 land.
