@@ -76,7 +76,8 @@ void main() {
           (widget) => widget is UnderlineText && widget.text == 'hola',
         ),
       );
-      expect(changed.underlineColor, AppConfig.warning);
+      expect(changed.underlineColor, AppConfig.warningDeep);
+      expect(changed.dashed, isFalse);
       final original = tester.widget<Text>(find.text('ola'));
       expect(original.style?.decoration, TextDecoration.lineThrough);
       expect(original.style?.color, messageForeground.withAlpha(160));
@@ -103,7 +104,8 @@ void main() {
         (widget) => widget is UnderlineText && widget.text == 'bonito',
       ),
     );
-    expect(inserted.underlineColor, AppConfig.warning);
+    expect(inserted.underlineColor, AppConfig.warningDeep);
+    expect(inserted.dashed, isFalse);
     expect(find.text('bonito', findRichText: true), findsOneWidget);
   });
 
@@ -117,7 +119,8 @@ void main() {
           (widget) => widget is UnderlineText && widget.text == word,
         ),
       );
-      expect(rendered.underlineColor, AppConfig.success);
+      expect(rendered.underlineColor, AppConfig.completedGreen);
+      expect(rendered.dashed, isTrue);
     }
     expect(find.byType(Text), findsNothing);
   });

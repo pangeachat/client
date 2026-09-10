@@ -57,7 +57,11 @@ void main() {
     );
     final spans = span.children!.cast<TextSpan>();
     final changed = spans.firstWhere((s) => s.text == 'hola');
-    expect(changed.style?.decorationColor, AppConfig.warning);
+    expect(changed.style?.decorationColor, AppConfig.warningDeep);
+    expect(changed.style?.decorationStyle, TextDecorationStyle.solid);
+    final unchanged = spans.firstWhere((s) => s.text == 'mundo');
+    expect(unchanged.style?.decorationColor, AppConfig.completedGreen);
+    expect(unchanged.style?.decorationStyle, TextDecorationStyle.dashed);
     c.dispose();
   });
 

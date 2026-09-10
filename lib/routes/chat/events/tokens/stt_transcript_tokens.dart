@@ -10,6 +10,11 @@ import 'package:fluffychat/widgets/hover_builder.dart';
 
 typedef SttTranscriptTokenPresentation = ({
   Color idleUnderlineColor,
+
+  /// Draw the idle underline dashed rather than solid, so it stays
+  /// distinguishable from its sibling with colour removed (SC 1.4.1). Applies
+  /// only to the idle rule; selection and hover keep their own solid one.
+  bool idleUnderlineDashed,
   String? secondaryText,
   TextStyle? secondaryStyle,
 });
@@ -121,8 +126,9 @@ class SttTranscriptTokens extends StatelessWidget {
                                   hovered: hovered,
                                   isNew: isNew,
                                 );
-                            final underline =
-                                presentation != null && !selected && !hovered
+                            final idle =
+                                presentation != null && !selected && !hovered;
+                            final underline = idle
                                 ? presentation.idleUnderlineColor
                                 : interactionUnderline;
                             final primary = UnderlineText(
@@ -130,6 +136,7 @@ class SttTranscriptTokens extends StatelessWidget {
                               style:
                                   style ?? DefaultTextStyle.of(context).style,
                               underlineColor: underline,
+                              dashed: idle && presentation.idleUnderlineDashed,
                             );
                             final secondaryText = presentation?.secondaryText;
                             final content = secondaryText == null
