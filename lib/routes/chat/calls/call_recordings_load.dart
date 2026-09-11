@@ -104,11 +104,19 @@ CallRecordingsLoadState resolveCallRecordingsLoadState({
 
 /// Owns the "Full call" slot's loading state across the recordings/merged
 /// reads and the grace timer (design spec section 3), with a fully injected
-/// clock and timer scheduler so a test drives every transition -- including a
-/// timer's own expiry -- without a real wait. Mirrors
-/// `CallAudioMergeCoordinator`'s own `clock`/`oneShotTimer` injection
-/// (`call_audio_merge_coordinator.dart`) rather than inventing a new shape for
-/// the same problem.
+/// MONOTONIC elapsed-time source and timer scheduler so a test drives every
+/// transition -- including a timer's own expiry -- without a real wait.
+/// Mirrors the INJECTION SHAPE of `CallAudioMergeCoordinator`'s own
+/// `clock`/`oneShotTimer` seams (`call_audio_merge_coordinator.dart`) rather
+/// than inventing a new one, but deliberately diverges on the clock's TYPE:
+/// that coordinator's `clock` is wall-clock (`DateTime Function()`), which is
+/// the right choice for ITS OWN job (comparing against `originServerTs`,
+/// timestamping retry backoffs -- genuinely wall-clock-relative concerns).
+/// This class's [CallRecordingsLoadController.grace] timing has no such
+/// relationship to wall-clock time at all -- it only ever needs to know how
+/// much REAL time has passed since reads completed -- so it is measured with
+/// a monotonic elapsed source instead, immune by construction to a wall-clock
+/// adjustment (NTP, a manual clock change) that would otherwise corrupt it.
 ///
 /// Deliberately excludes participants from the machine itself: the spec's
 /// expected-participant HINT only ever informs a per-half "Waiting for
@@ -173,30 +181,43 @@ CallRecordingsLoadState resolveCallRecordingsLoadState({
 /// legitimate reason to be extended, and keeping that door shut costs
 /// nothing.
 final class CallRecordingsLoadController {
-  /// [now] and [scheduleTimer] default to the real [DateTime.now] and a real
-  /// [Timer], respectively; a test injects fakes instead (see
-  /// call_recordings_load_test.dart's `_FakeClock`) so a grace window's own
-  /// expiry is provable without a real wait. BOTH carry the same contract a
-  /// real [DateTime.now]/[Timer] naturally satisfy but an injected
+  /// [elapsed] and [scheduleTimer] default to a real [Stopwatch]'s own
+  /// elapsed reading and a real [Timer], respectively -- mirroring
+  /// `CallAudioRecorder`'s own `elapsedMs`/`_stopwatch` injection shape
+  /// (`call_audio_recorder.dart`) rather than inventing a new one; a test
+  /// injects fakes instead (see call_recordings_load_test.dart's
+  /// `_FakeClock`) so a grace window's own expiry is provable without a real
+  /// wait. [elapsed] MUST be MONOTONIC NON-DECREASING -- every call must
+  /// return a value no smaller than any earlier call returned, exactly the
+  /// guarantee a real [Stopwatch] gives and a wall clock (subject to NTP
+  /// steps, manual changes, DST) does not; this is the whole reason [grace]
+  /// is measured against [elapsed] rather than a [DateTime]-based clock (see
+  /// the class doc). BOTH [elapsed] and [scheduleTimer] carry the same
+  /// contract a real [Stopwatch]/[Timer] naturally satisfy but an injected
   /// replacement must be written to honour: neither may synchronously call
   /// back into this controller before returning. For [scheduleTimer]
   /// specifically: one that calls, say, [update] or [dispose] before
   /// returning its [Timer] handle could see that handle assigned to
   /// [_timer] AFTER such a call already ran [_cancelTimer] against whatever
   /// was there before, leaking the handle this very call is about to
-  /// produce. [now] carries the identical risk from a different call site:
-  /// [_armTimer] calls [now] AFTER the disposed check in [_reevaluate] has
-  /// already passed, so a [now] that disposes this controller as a side
-  /// effect on that specific call would still let [_armTimer] finish
-  /// arming a timer for an already-disposed machine, because nothing
-  /// downstream of that one check re-verifies it. This is a contract on
-  /// both injected seams, not a runtime-enforced one on either: a fake
-  /// clock or scheduler that violates it is a test-double bug to fix in
-  /// the double, the same way a fake clock whose [now] moves BACKWARDS
-  /// between calls would be -- this class trusts both the same way it
-  /// trusts [resolveCallRecordingsLoadState] to be pure. Found by an
-  /// adversarial review of this exact file, which first raised it for
-  /// [scheduleTimer] and then, in a later round, for [now] too.
+  /// produce. [elapsed] carries the identical risk from a different call
+  /// site: [_armTimer] calls [elapsed] AFTER the disposed check in
+  /// [_reevaluate] has already passed, so an [elapsed] that disposes this
+  /// controller as a side effect on that specific call would still let
+  /// [_armTimer] finish arming a timer for an already-disposed machine,
+  /// because nothing downstream of that one check re-verifies it. This is a
+  /// contract on both injected seams, not a runtime-enforced one on either:
+  /// a fake clock or scheduler that violates it is a test-double bug to fix
+  /// in the double, the same way a fake [elapsed] that moves BACKWARDS
+  /// between calls -- violating the monotonic contract above -- would be.
+  /// This class trusts both the same way it trusts
+  /// [resolveCallRecordingsLoadState] to be pure. Found by an adversarial
+  /// review of this exact file, which first raised it for [scheduleTimer]
+  /// and then, in a later round, for the clock seam too (at the time still
+  /// wall-clock `now`, before a SEPARATE adversarial finding -- a wall-clock
+  /// correction silently extending the OVERALL grace across several
+  /// compounding re-arms, not merely one -- replaced it with this monotonic
+  /// [elapsed]).
   ///
   /// [grace] must be POSITIVE. A [Duration.zero] (or a call-to-call gap on
   /// the underlying clock even a positive but vanishingly small one could
@@ -205,85 +226,58 @@ final class CallRecordingsLoadController {
   /// which would defeat the entire point of a grace window.
   CallRecordingsLoadController({
     this.grace = kCallMergeGrace,
-    DateTime Function()? now,
+    Duration Function()? elapsed,
     Timer Function(Duration duration, void Function() callback)? scheduleTimer,
   }) : assert(grace > Duration.zero, 'grace must be positive'),
-       _now = now ?? DateTime.now,
-       _scheduleTimer = scheduleTimer ?? _realTimer;
+       _scheduleTimer = scheduleTimer ?? _realTimer {
+    _elapsed = elapsed ?? () => _stopwatch.elapsed;
+  }
 
   /// How long [CallRecordingsLoadState.pendingMerge] is held before this
   /// machine gives up and reports [CallRecordingsLoadState.unavailable].
   final Duration grace;
 
-  final DateTime Function() _now;
+  /// The monotonic elapsed-time seam every grace computation reads (see the
+  /// constructor's own doc for its contract). `late final`, assigned in the
+  /// constructor BODY rather than its initializer list, so its default can
+  /// reference [_stopwatch] -- an instance field, not yet available to an
+  /// initializer list expression evaluated before `this` exists.
+  late final Duration Function() _elapsed;
+
+  /// Backs [_elapsed] when no [elapsed] source is injected (the production
+  /// default) -- owned by this controller and started at construction; only
+  /// DIFFERENCES from it are ever taken, never its absolute value, so it
+  /// never needs resetting or stopping. See [_elapsed]'s own doc.
+  final Stopwatch _stopwatch = Stopwatch()..start();
+
   final Timer Function(Duration duration, void Function() callback)
   _scheduleTimer;
 
-  /// The single source of truth for [state]'s published value. Never
-  /// exposed directly (see [state]'s own doc) -- but one residual way to
-  /// observe a live reference to THIS object is inherent to using
-  /// [ValueNotifier]/[ChangeNotifier] at all, not something this class
-  /// itself can fix: in a DEBUG-mode run (never release or profile --
-  /// confirmed against this project's pinned Flutter SDK,
-  /// `foundation/memory_allocations.dart`: the dispatch that would do this
-  /// is wrapped in an `assert(() {...}())`, which compiles away entirely
-  /// outside debug mode) with a listener ALREADY registered on Flutter's
-  /// own `FlutterMemoryAllocations.instance` singleton before this object
-  /// is constructed, [ValueNotifier]'s own constructor publishes an
-  /// `ObjectCreated` event carrying this exact instance as `event.object`
-  /// -- no exception path, no debugger, and no private-field access needed.
-  /// This is universal to EVERY [ValueNotifier]/[ChangeNotifier]
-  /// constructed anywhere in this app while such a listener is attached --
-  /// which is precisely what Flutter DevTools' own memory/object-creation
-  /// tracking, an explicit opt-in developer tool, does -- not a property of
-  /// this class's own design, and not avoidable without abandoning
-  /// [ValueNotifier] here altogether, which would put this class out of
-  /// step with every other controller in this codebase for an exposure
-  /// that only ever exists in a debug or test run with that specific
-  /// tooling attached, never in a shipped release build. Disclosed here
-  /// rather than silently assumed away: an adversarial review of this exact
-  /// file raised it as a fourth path back to this object, after the three
-  /// genuinely closed above -- [state]'s own guard against a direct
-  /// downcast, this class no longer extending [ChangeNotifier] itself (see
-  /// the class doc), and [_ReadOnlyValueListenable.addListener]'s own guard
-  /// against the `informationCollector` leak.
+  /// The single source of truth for [state]'s published value.
   final ValueNotifier<CallRecordingsLoadState> _stateNotifier = ValueNotifier(
     CallRecordingsLoadState.loading,
   );
 
-  /// The concrete wrapper [state] exposes, held here under its own private,
-  /// concrete type (rather than only as [state]'s public [ValueListenable]
-  /// type) so [dispose] can reach [_ReadOnlyValueListenable._releaseListeners]
-  /// on it directly -- see that method's own doc for why disposal needs it.
-  late final _ReadOnlyValueListenable<CallRecordingsLoadState> _stateWrapper =
-      _ReadOnlyValueListenable(_stateNotifier);
-
-  /// A read-only view onto [_stateNotifier], wrapping rather than exposing
-  /// it directly. Returning [_stateNotifier] itself, merely typed as
-  /// [ValueListenable], does NOT actually stop an external caller from
-  /// downcasting it back to the concrete [ValueNotifier] and writing
-  /// `.value` directly -- Dart's static typing does not hide the runtime
-  /// type. A caller that did so (however unlikely) would trigger
-  /// [_stateNotifier]'s own `notifyListeners()` with [_evaluating] still
-  /// false, since that write never goes through [_reevaluate] at all; a
-  /// listener reacting by calling [dispose] would then hit the exact
-  /// `_notificationCallStackDepth == 0` assertion the whole
-  /// [_teardownDeferred] mechanism exists to prevent, completely unprotected
-  /// -- not extending [ChangeNotifier] (see the class doc) closes that
-  /// hazard for `this`, but [_stateNotifier] is a REAL [ValueNotifier] this
-  /// class owns and must still guard on its own terms; this wrapper is that
-  /// guard. Found by an adversarial review of this exact file.
-  ValueListenable<CallRecordingsLoadState> get state => _stateWrapper;
-
-  /// The number of listener registrations [state] is still holding
-  /// (counting a [state]-added listener registered twice as two -- see
-  /// [_ReadOnlyValueListenable._wrapped]'s own doc), exposed only so a test
-  /// can prove [dispose] releases every one of them -- see [dispose]'s own
-  /// doc, and [_ReadOnlyValueListenable._releaseListeners]'s. Not
-  /// meaningful outside a test: production code has no legitimate reason to
-  /// introspect its own listener count.
-  @visibleForTesting
-  int get debugListenerCount => _stateWrapper._listenerCount;
+  /// [state]'s own live value, exposed by returning [_stateNotifier]
+  /// directly -- merely typed as [ValueListenable] -- the same shape
+  /// `CallPlaybackController.activeIndex` already uses for its own
+  /// [ValueNotifier] (`call_playback_controller.dart`). An earlier version
+  /// of this class instead wrapped [_stateNotifier] in a bespoke read-only
+  /// [ValueListenable], re-implementing addListener/removeListener to stop a
+  /// caller downcasting back to the concrete [ValueNotifier] and to catch a
+  /// throwing listener before Flutter's own `notifyListeners()` could expose
+  /// the raw notifier through `FlutterErrorDetails.informationCollector`. An
+  /// adversarial review found that wrapper REMOVABLE: a caller reaching for
+  /// either of those is already doing something no ordinary consumer of
+  /// this class does; [ValueNotifier]'s own contract -- including that a
+  /// listener disposing mid-notification does not stop other,
+  /// already-scheduled listeners from still running -- is Flutter's own to
+  /// document and test, not this class's to re-implement; and the sibling
+  /// controller above already exposes its own notifiers this same direct
+  /// way, with no such wrapper. Removing it loses no safety a normal
+  /// consumer depends on, while cutting a large, self-contained chunk of
+  /// bespoke listener bookkeeping this class has no real need to own.
+  ValueListenable<CallRecordingsLoadState> get state => _stateNotifier;
 
   /// Assumed true until the first [update] call says otherwise, so a caller
   /// whose very first feed already reports `readsInFlight: false` still gets
@@ -293,13 +287,16 @@ final class CallRecordingsLoadController {
   int _halfCount = 0;
   bool _hasMerge = false;
 
-  /// Stamped the instant [_readsInFlight] is observed to transition from true
-  /// to false (spec section 3: "stamped the instant BOTH reads first
-  /// complete"), and re-stamped to "now" by [retry]. This is stamped
-  /// UNCONDITIONALLY on that edge -- regardless of what `halfCount`/`hasMerge`
-  /// happen to be at that moment -- so a half that trickles in only after an
-  /// initial zero-halves report still counts down from when reads first
-  /// completed, never from when the half itself arrived.
+  /// A MONOTONIC baseline (from [_elapsed], never a wall-clock timestamp --
+  /// see the constructor's own doc for why), stamped the instant
+  /// [_readsInFlight] is observed to transition from true to false (spec
+  /// section 3: "stamped the instant BOTH reads first complete"), and
+  /// re-stamped to the then-current [_elapsed] reading by [retry]. This is
+  /// stamped UNCONDITIONALLY on that edge -- regardless of what
+  /// `halfCount`/`hasMerge` happen to be at that moment -- so a half that
+  /// trickles in only after an initial zero-halves report still counts down
+  /// from when reads first completed, never from when the half itself
+  /// arrived.
   ///
   /// Null only before reads have ever been observed complete; [_graceElapsed]
   /// treats that as "not started" (false), which is safe because the only
@@ -307,7 +304,7 @@ final class CallRecordingsLoadController {
   /// [CallRecordingsLoadState.unavailable]) themselves require
   /// `readsInFlight == false`, and this field is always stamped in the SAME
   /// synchronous step that first flips [_readsInFlight] false.
-  DateTime? _graceStartedAt;
+  Duration? _graceStartedAt;
 
   Timer? _timer;
   bool _disposed = false;
@@ -357,7 +354,7 @@ final class CallRecordingsLoadController {
     // halves, or reads back in flight again, never re-stamps it -- only this
     // exact edge does; see the field's own doc for why that is deliberate.
     if (wasInFlight && !readsInFlight) {
-      _graceStartedAt = _now();
+      _graceStartedAt = _elapsed();
     }
 
     _reevaluate();
@@ -379,7 +376,7 @@ final class CallRecordingsLoadController {
   /// everything else.
   void retry() {
     if (_disposed) return;
-    _graceStartedAt = _now();
+    _graceStartedAt = _elapsed();
     _reevaluate();
   }
 
@@ -491,7 +488,6 @@ final class CallRecordingsLoadController {
       if (_teardownDeferred) {
         _teardownDeferred = false;
         _stateNotifier.dispose();
-        _stateWrapper._releaseListeners();
       }
     }
   }
@@ -499,8 +495,8 @@ final class CallRecordingsLoadController {
   /// Resolves the current state from scratch via
   /// [resolveCallRecordingsLoadState] and publishes it. The whole machine's
   /// STATE (never its timer) is re-derived from (`_readsInFlight`,
-  /// `_halfCount`, `_hasMerge`, `_graceStartedAt`, `_now()`) every time this
-  /// runs, so there is exactly one place state is decided -- but see
+  /// `_halfCount`, `_hasMerge`, `_graceStartedAt`, `_elapsed()`) every time
+  /// this runs, so there is exactly one place state is decided -- but see
   /// [_reevaluate]'s own doc for why this runs on EVERY call, including
   /// reentrant ones, unlike the timer-sync step.
   ///
@@ -560,7 +556,7 @@ final class CallRecordingsLoadController {
   bool _graceElapsed() {
     final startedAt = _graceStartedAt;
     if (startedAt == null) return false;
-    return _now().difference(startedAt) >= grace;
+    return _elapsed() - startedAt >= grace;
   }
 
   /// Schedules a single re-evaluation for whenever [grace] actually runs
@@ -578,42 +574,44 @@ final class CallRecordingsLoadController {
   /// should fail loudly the first time [CallRecordingsLoadState.pendingMerge]
   /// is reached without a stamp, not quietly hand out a full fresh grace.
   ///
-  /// [elapsed] itself is clamped to never read NEGATIVE before being
-  /// subtracted from [grace] below. [_now] is the real wall clock by
-  /// default (see the constructor's own doc), and a wall clock can jump
-  /// BACKWARD independent of how much real time has actually passed -- an
-  /// NTP step correction, a manual clock change, a timezone/DST edge case
-  /// -- entirely without a misbehaving injected [_now] (a REAL [Timer],
-  /// once armed, is scheduled against a MONOTONIC clock internally and
-  /// keeps firing on real elapsed time regardless of what the wall clock
-  /// does in the meantime; it is only THIS calculation, run again when
-  /// that timer fires or a fresh [update]/[retry] lands, that reads the
-  /// wall clock at all). Without the clamp, a wall clock that appears to
-  /// have gone backward since [startedAt] makes `grace -
-  /// elapsed` LARGER than [grace] itself -- e.g. a 60s backward correction
-  /// during a 30s grace would re-arm for 60s, not the 30s the caller was
-  /// promised, silently ballooning how long a genuinely-stuck call sits in
-  /// [CallRecordingsLoadState.pendingMerge] with no feedback. Clamping
-  /// [elapsed] to zero treats an apparent backward jump as "no time has
-  /// passed YET" -- the safe, conservative reading -- rather than
-  /// subtracting a negative and handing out more than a fresh [grace].
-  ///
-  /// This does NOT fully solve wall-clock adjustment in general: a FORWARD
-  /// jump (the wall clock skips ahead) still makes [elapsed] read LARGER
-  /// than the real time that has passed, which can move
+  /// `elapsedSinceStart` itself can never read negative: [_elapsed] is
+  /// contractually MONOTONIC NON-DECREASING (see the constructor's own
+  /// doc), and [startedAt] is itself an earlier reading of that very same
+  /// seam, so a later reading can only be greater or equal. An EARLIER
+  /// version of this method measured elapsed time off the WALL clock
+  /// (`_now().difference(startedAt)`) instead, and so needed to defensively
+  /// clamp a negative reading here too -- a wall clock can jump BACKWARD
+  /// independent of how much real time has actually passed (an NTP step
+  /// correction, a manual clock change, a timezone/DST edge case), which
+  /// not only could make a single re-arm's own remaining wait balloon past
+  /// a fresh [grace] (all that earlier clamp bounded), but, an adversarial
+  /// review found, could make the OVERALL wait balloon across SEVERAL such
+  /// re-arms in a row: one large backward correction made every subsequent
+  /// re-arm's own apparent elapsed keep reading "less than [grace]" against
+  /// the still-corrected wall clock, so the timer kept re-arming a fresh
+  /// [grace] on every firing until enough REAL time had finally passed to
+  /// outrun the correction -- reaching
+  /// [CallRecordingsLoadState.unavailable] several multiples of [grace]
+  /// later than promised, from a SINGLE wall-clock correction. Measuring
+  /// against [_elapsed] instead closes this structurally, in BOTH
+  /// directions (a forward wall-clock jump could also move
   /// [CallRecordingsLoadState.pendingMerge] to
-  /// [CallRecordingsLoadState.unavailable] earlier than a genuine [grace]
-  /// would have -- a strictly less harmful failure (the caller sees an
-  /// actionable [retry] rather than an indefinitely-extended wait) that
-  /// this clamp does not attempt to correct. Fully closing BOTH directions
-  /// would mean measuring elapsed time against a MONOTONIC clock rather
-  /// than [_now]'s wall-clock reading -- a larger change to this class's
-  /// injected-clock shape than this fix makes, and not undertaken here.
-  /// Found by an adversarial review of this exact file.
+  /// [CallRecordingsLoadState.unavailable] too early, which the old clamp
+  /// never addressed either): there is no wall-clock reading left anywhere
+  /// in this calculation for a correction to corrupt.
+  ///
+  /// `remaining` alone is still clamped to never go negative -- not for a
+  /// wall-clock reason anymore, but because [_elapsed] is read TWICE across
+  /// two different calls ([_graceElapsed], moments earlier in the same
+  /// [_reevaluate] pass, and here) with real, if tiny, time passing between
+  /// them; if that gap alone were ever enough to push `elapsedSinceStart` to
+  /// or past [grace], `remaining` would go negative and must be scheduled
+  /// immediately rather than handed to [_scheduleTimer] as a negative
+  /// duration.
   void _armTimer() {
     final startedAt = _graceStartedAt!;
-    final elapsed = _now().difference(startedAt);
-    final remaining = grace - (elapsed.isNegative ? Duration.zero : elapsed);
+    final elapsedSinceStart = _elapsed() - startedAt;
+    final remaining = grace - elapsedSinceStart;
     _timer = _scheduleTimer(
       remaining.isNegative ? Duration.zero : remaining,
       _onGraceElapsed,
@@ -672,17 +670,6 @@ final class CallRecordingsLoadController {
   /// disposal ever needed deferring in the first place; `this` was never at
   /// risk the same way.
   ///
-  /// [_stateWrapper._releaseListeners] runs at the exact same instant as
-  /// [_stateNotifier]'s own disposal, on BOTH branches below: [_stateNotifier]
-  /// disposing already drops every reference IT holds, but [_stateWrapper]'s
-  /// own `_wrapped` map is a SEPARATE reference this class holds to every
-  /// caller-supplied listener (and, transitively, anything a listener
-  /// closure captures) -- nothing else would release it, and leaving it
-  /// until only THIS controller itself became unreachable, rather than
-  /// clearing it the moment [_stateNotifier] itself is torn down, would keep
-  /// it alive for however much longer that turns out to be. See that
-  /// method's own doc.
-  ///
   /// Found, and the crash reproduced against the real SDK assertion, by an
   /// adversarial review of this exact file; see
   /// call_recordings_load_test.dart's "listener that calls dispose()" test.
@@ -694,203 +681,9 @@ final class CallRecordingsLoadController {
       _teardownDeferred = true;
     } else {
       _stateNotifier.dispose();
-      _stateWrapper._releaseListeners();
     }
   }
 
   static Timer _realTimer(Duration duration, void Function() callback) =>
       Timer(duration, callback);
-}
-
-/// Forwards [value]/[addListener]/[removeListener] to [_inner] without
-/// exposing [_inner] itself, so a caller holding only this wrapper's static
-/// type has no runtime object to downcast back to the concrete
-/// [ValueNotifier] and write `.value` on directly -- see
-/// [CallRecordingsLoadController.state]'s own doc for why that matters here
-/// specifically. No `dispose`, no `value` setter: nothing on this type
-/// itself can reach [_inner].
-///
-/// [addListener] does NOT forward [listener] directly, though -- see its own
-/// doc for the second, more surprising way [_inner] can otherwise escape.
-class _ReadOnlyValueListenable<T> implements ValueListenable<T> {
-  _ReadOnlyValueListenable(this._inner);
-
-  final ValueListenable<T> _inner;
-
-  /// Maps each caller-supplied [listener] to every WRAPPING closure
-  /// currently registered on [_inner] for it, oldest first, so
-  /// [removeListener] can find and remove the right one.
-  ///
-  /// A LIST, not a single wrapper, because [ChangeNotifier.addListener]
-  /// documents that adding the exact same [listener] reference more than
-  /// once is valid and additive -- "an additional instance is added, and
-  /// must be removed the same number of times it is added before it will
-  /// stop being called" -- and this wrapper must honour that same
-  /// multiplicity contract, not merely approximate it. An earlier version
-  /// of this map tracked only the LATEST wrapper per [listener] key,
-  /// documented at the time as an "accepted divergence" for how unusual
-  /// registering one callback twice already is -- but an adversarial
-  /// review of this exact file pointed out that framing does not make the
-  /// underlying behaviour correct: adding [listener] twice and removing it
-  /// twice left ONE wrapper permanently registered on [_inner] with no way
-  /// for the caller to reach it again, so a listener the caller correctly,
-  /// symmetrically removed kept firing anyway. Every registration is
-  /// tracked here now, so an Nth [addListener] genuinely requires an Nth
-  /// [removeListener] before [listener] stops firing, exactly matching
-  /// [_inner]'s own contract.
-  ///
-  /// This map is itself released by [_releaseListeners] once [_inner] is
-  /// disposed -- see that method's own doc for why disposing [_inner] alone
-  /// does not already take care of it.
-  final Map<VoidCallback, List<VoidCallback>> _wrapped = {};
-
-  @override
-  T get value => _inner.value;
-
-  /// Registers a WRAPPING closure for [listener] on [_inner], rather than
-  /// [listener] itself, so that a [listener] which THROWS is caught HERE --
-  /// before it ever reaches [_inner]'s own `notifyListeners()` catch block.
-  ///
-  /// Flutter's [ChangeNotifier.notifyListeners] catches a throwing
-  /// listener's exception and reports it via [FlutterError.reportError],
-  /// but the [FlutterErrorDetails] it builds attaches the notifying object
-  /// ITSELF -- [_inner], the very [ValueNotifier] this wrapper exists to
-  /// hide -- to `informationCollector` (as a `DiagnosticsProperty<
-  /// ChangeNotifier>`; confirmed against this project's pinned Flutter SDK,
-  /// `foundation/change_notifier.dart`). A caller with a global
-  /// `FlutterError.onError` handler that inspects `informationCollector()`
-  /// could recover a live reference to [_inner] from it and bypass this
-  /// wrapper entirely -- the SAME hazard a direct downcast of [state] would
-  /// be, reached a second way. This is the third round an adversarial
-  /// review of this file found a distinct path back to the raw notifier
-  /// (after direct exposure, and this class's own former [ChangeNotifier]
-  /// inheritance); catching every listener's exception before it ever
-  /// reaches [_inner]'s own notification loop closes the general class,
-  /// not just this one instance of it -- no listener registered THROUGH
-  /// this wrapper can ever trigger [_inner]'s own catch block at all.
-  ///
-  /// The caught exception is not swallowed: it is re-reported through a
-  /// SEPARATE `FlutterError.reportError` call whose own `informationCollector`
-  /// never mentions [_inner].
-  ///
-  /// That reporting call is itself wrapped in one more try/catch, for a
-  /// reason specific to `FlutterError.reportError` rather than general
-  /// paranoia: `FlutterError.reportError` does not guard its own call to
-  /// `FlutterError.onError` (confirmed against this project's pinned
-  /// Flutter SDK, `foundation/assertions.dart`: `onError?.call(details);`,
-  /// no try/catch of its own) -- and `onError` is GLOBAL, ambient state
-  /// this class does not own and never chose to trust the way it trusts its
-  /// own injected `now`/`scheduleTimer` seams. Any code anywhere in the
-  /// isolate can replace `onError`, including with one that itself throws.
-  /// Without this inner guard, a throwing `onError` would turn this very
-  /// reporting call into an exception escaping the wrapping closure below
-  /// -- reaching [_inner]'s OWN `notifyListeners()` catch block exactly as
-  /// if this wrapper did not exist, undoing the protection this method
-  /// exists to provide, and exposing [_inner] through THAT catch block's
-  /// own `informationCollector` instead. The inner catch swallows rather
-  /// than re-reports: re-reporting would just call the same
-  /// already-proven-broken handler again, and there is no more-honest place
-  /// left to route a broken global error handler's own failure. This is not
-  /// a NEW, fourth path back to the raw notifier -- it is a gap in THIS
-  /// path's own closure above, found in the same adversarial round as the
-  /// genuinely separate fourth path noted on [_stateNotifier]'s own doc:
-  /// without this inner guard, a broken `onError` would silently reopen the
-  /// exact path the outer catch above exists to close.
-  @override
-  void addListener(VoidCallback listener) {
-    void wrapped() {
-      try {
-        listener();
-      } catch (exception, stack) {
-        try {
-          FlutterError.reportError(
-            FlutterErrorDetails(
-              exception: exception,
-              stack: stack,
-              library: 'call_recordings_load',
-              context: ErrorDescription(
-                'while notifying a CallRecordingsLoadController.state '
-                'listener',
-              ),
-            ),
-          );
-        } catch (_) {
-          // See this method's own doc: a broken `FlutterError.onError`
-          // must not be allowed to turn this reporting attempt into an
-          // exception escaping `wrapped` itself.
-        }
-      }
-    }
-
-    // `_inner.addListener` runs FIRST, deliberately: it is the call that
-    // can fail (it throws if `_inner` is already disposed -- confirmed
-    // against this project's pinned Flutter SDK,
-    // `foundation/change_notifier.dart`'s own `addListener`, which asserts
-    // not-disposed before touching its internal list). A real
-    // [ValueNotifier]'s own `addListener` is atomic under that failure: it
-    // throws before mutating anything. Recording into [_wrapped] FIRST
-    // would make THIS wrapper's own `addListener` non-atomic by
-    // comparison -- a caller who (mistakenly) registers after disposal
-    // would still get the same throw, but would ALSO leave a stale entry
-    // in [_wrapped] that nothing could ever clean up afterward (`dispose`
-    // is already a no-op by that point). Ordering this call first restores
-    // the same atomicity a real [ValueNotifier] already gives callers.
-    // Found by an adversarial review of this exact file.
-    _inner.addListener(wrapped);
-    (_wrapped[listener] ??= []).add(wrapped);
-  }
-
-  /// Removes ONE registration of [listener] -- the OLDEST one still
-  /// tracked, not the newest -- matching [ChangeNotifier]'s own
-  /// multiplicity contract: a [listener] added N times keeps firing until
-  /// it has been removed N times too (see [_wrapped]'s own doc). WHICH of
-  /// the N functionally-identical wrapping closures gets removed is NOT
-  /// merely a bookkeeping preference -- it is observable when [listener]
-  /// removes itself reentrantly from inside its own first firing within a
-  /// single notification pass. [ChangeNotifier.removeListener] scans its
-  /// internal list from index 0 and removes (or, mid-notification, nulls)
-  /// the FIRST matching slot it finds; during an active notification, that
-  /// slot is the one whose call has ALREADY been dispatched, so a
-  /// not-yet-reached LATER slot holding the same raw listener is
-  /// unaffected and still fires -- meaning a [listener] registered twice
-  /// and removed once, from inside its own first call, fires TWICE in
-  /// that SAME pass (confirmed against this project's pinned Flutter SDK).
-  /// Removing the NEWEST wrapper here instead (an earlier version of this
-  /// method did, via `List.removeLast`) would remove the NOT-YET-fired
-  /// registration instead, silencing [listener] after only ONE call in
-  /// that pass -- a real behavioural divergence from [ChangeNotifier],
-  /// not merely a cosmetic one. Removing the OLDEST (`List.removeAt(0)`)
-  /// reproduces the exact same observable outcome instead. Found by an
-  /// adversarial review of this exact file.
-  @override
-  void removeListener(VoidCallback listener) {
-    final wrappers = _wrapped[listener];
-    if (wrappers == null || wrappers.isEmpty) return;
-    final wrapped = wrappers.removeAt(0);
-    _inner.removeListener(wrapped);
-    if (wrappers.isEmpty) _wrapped.remove(listener);
-  }
-
-  /// Drops every listener this wrapper is tracking, called once [_inner]
-  /// itself has been disposed (see
-  /// [CallRecordingsLoadController.dispose]'s own doc for both call sites).
-  /// [_inner]'s own disposal already clears every reference IT holds --
-  /// but [_wrapped] is a SEPARATE reference this wrapper itself holds to
-  /// every caller-supplied [VoidCallback] (as a map key, and again,
-  /// captured inside each of its paired wrapping closures, as a map
-  /// value). Nothing else releases that reference -- and anything a
-  /// caller's listener closure captures along with it -- for as long as
-  /// this wrapper, reachable through the owning
-  /// [CallRecordingsLoadController]'s [CallRecordingsLoadController.state],
-  /// itself stays reachable. Found by an adversarial review of this exact
-  /// file.
-  void _releaseListeners() => _wrapped.clear();
-
-  /// The total number of live registrations this wrapper is tracking --
-  /// summed across every [listener] key, not the number of distinct keys,
-  /// so a [listener] registered twice (see [_wrapped]'s own doc) counts as
-  /// two. Exposed only for
-  /// [CallRecordingsLoadController.debugListenerCount].
-  int get _listenerCount =>
-      _wrapped.values.fold(0, (sum, wrappers) => sum + wrappers.length);
 }

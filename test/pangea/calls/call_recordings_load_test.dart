@@ -8,14 +8,19 @@ import 'package:fluffychat/routes/chat/calls/call_recordings_load.dart';
 /// [CallRecordingsLoadController]'s loading machine (design spec section 3):
 /// a pure resolver total over (reads in flight?) x (halves present?) x
 /// (merge present?) x (grace elapsed?), plus a stateful shell that stamps a
-/// grace timestamp off a real clock and re-evaluates on every fed input.
+/// grace baseline off a MONOTONIC elapsed reading and re-evaluates on every
+/// fed input.
 ///
-/// Every controller test drives a FAKE clock and a FAKE one-shot timer
-/// scheduler (see [_FakeClock]/[_FakeTimer], mirroring
+/// Every controller test drives a FAKE monotonic clock and a FAKE one-shot
+/// timer scheduler (see [_FakeClock]/[_FakeTimer], mirroring
 /// `call_audio_merge_coordinator_test.dart`'s own `_Scheduler`/`_FakeTimer`
 /// simplified to one-shot only), so a grace window's own expiry is provable
-/// without a real wait. Where the task names a specific mutation, the
-/// comment on the test below names it and the assertion that catches it.
+/// without a real wait. [_FakeClock] additionally tracks a SEPARATE fake
+/// wall clock, unconnected to the controller (which has no wall-clock input
+/// at all -- see [CallRecordingsLoadController]'s own constructor), purely
+/// so a test can prove that a wall-clock correction has no effect on grace
+/// timing. Where the task names a specific mutation, the comment on the test
+/// below names it and the assertion that catches it.
 
 const _grace = Duration(seconds: 30);
 const _oneMs = Duration(milliseconds: 1);
@@ -163,7 +168,7 @@ void main() {
       // entirely does that.
       final clock = _FakeClock();
       final controller = CallRecordingsLoadController(
-        now: clock.now,
+        elapsed: clock.elapsed,
         scheduleTimer: clock.schedule,
       );
       addTearDown(controller.dispose);
@@ -182,28 +187,6 @@ void main() {
       expect(controller.state.value, CallRecordingsLoadState.pendingMerge);
       clock.advance(_oneMs);
       expect(controller.state.value, CallRecordingsLoadState.unavailable);
-    });
-
-    test('state cannot be downcast to the underlying ValueNotifier to write '
-        '.value directly, bypassing the disposal-safety machinery', () {
-      final h = _Harness();
-      // A caller holding only the declared `ValueListenable` static type
-      // could still, at runtime, attempt `(controller.state as
-      // ValueNotifier<CallRecordingsLoadState>).value = ...` -- writing
-      // straight to the inner notifier, triggering its `notifyListeners()`
-      // with `_evaluating` still false (that write never goes through
-      // `_reevaluate` at all), unprotected by the entire
-      // `_teardownDeferred` mechanism a listener-triggered `dispose()`
-      // relies on. This is only closed if `state`'s RUNTIME object is not
-      // actually a `ValueNotifier` at all.
-      //
-      // Mutation: change `state`'s getter back to `_stateNotifier` (the
-      // concrete notifier itself, merely typed as `ValueListenable`) ->
-      // `isA<ValueNotifier<...>>()` succeeds -> RED.
-      expect(
-        h.controller.state,
-        isNot(isA<ValueNotifier<CallRecordingsLoadState>>()),
-      );
     });
 
     test('the controller itself is not a Listenable -- there is no inherited '
@@ -225,209 +208,6 @@ void main() {
       // Mutation: make `CallRecordingsLoadController` extend
       // `ChangeNotifier` again -> `isA<Listenable>()` succeeds -> RED.
       expect(h.controller, isNot(isA<Listenable>()));
-    });
-
-    test('a throwing state listener does not leak the underlying notifier '
-        'through FlutterErrorDetails.informationCollector', () {
-      final h = _Harness();
-      h.controller.state.addListener(() {
-        throw StateError('a caller-registered listener with its own bug');
-      });
-
-      // Flutter's own `ChangeNotifier.notifyListeners()` catches a
-      // throwing listener and reports it with an `informationCollector`
-      // that attaches the notifying object ITSELF (a
-      // `DiagnosticsProperty<ChangeNotifier>` pointing at the real
-      // `_stateNotifier`) -- a caller with a global `FlutterError.onError`
-      // handler that inspects it could recover a live reference to the
-      // real notifier that way, bypassing `state`'s read-only wrapper
-      // entirely without ever needing a direct downcast.
-      final reported = <FlutterErrorDetails>[];
-      final previousOnError = FlutterError.onError;
-      FlutterError.onError = reported.add;
-      try {
-        h.controller.update(
-          readsInFlight: false,
-          halfCount: 1,
-          hasMerge: false,
-        );
-      } finally {
-        FlutterError.onError = previousOnError;
-      }
-
-      // The exception is still reported (not silently swallowed) ...
-      expect(reported, hasLength(1));
-      expect(reported.single.exception, isA<StateError>());
-      // ... but through a report that carries no `informationCollector`
-      // at all, since it never reached `_stateNotifier`'s OWN
-      // `notifyListeners()` catch block in the first place.
-      //
-      // Mutation: change `_ReadOnlyValueListenable.addListener` back to
-      // forwarding `listener` directly (`_inner.addListener(listener)`)
-      // instead of wrapping it -> the throw reaches `_inner`'s own catch
-      // block -> `informationCollector` is no longer null -> RED.
-      expect(reported.single.informationCollector, isNull);
-    });
-
-    test('a BROKEN FlutterError.onError does not reopen the leak the fix '
-        'above closes', () {
-      final h = _Harness();
-      h.controller.state.addListener(() {
-        throw StateError('a caller-registered listener with its own bug');
-      });
-
-      // `FlutterError.reportError` does not guard its own call to
-      // `FlutterError.onError` (`onError?.call(details);`, no try/catch --
-      // confirmed against this project's pinned Flutter SDK,
-      // `foundation/assertions.dart`), so a global handler that itself
-      // throws propagates that throw straight back out of the wrapper's own
-      // reporting attempt above. This `onError` records every report it
-      // receives, but throws back out on the FIRST one only -- exactly the
-      // shape a broken error-tracking integration could take, and precisely
-      // controlled so this test itself cannot be taken down by its own
-      // simulated failure.
-      final reported = <FlutterErrorDetails>[];
-      final previousOnError = FlutterError.onError;
-      FlutterError.onError = (details) {
-        reported.add(details);
-        if (reported.length == 1) {
-          throw StateError('onError itself is broken');
-        }
-      };
-      try {
-        h.controller.update(
-          readsInFlight: false,
-          halfCount: 1,
-          hasMerge: false,
-        );
-      } finally {
-        FlutterError.onError = previousOnError;
-      }
-
-      // With the wrapping closure's own reporting call correctly guarded,
-      // that throw is swallowed right there: the wrapping closure itself
-      // never throws, so `_inner`'s own `notifyListeners()` never sees this
-      // listener fail and never gets a chance to build its OWN,
-      // `_inner`-exposing report. Exactly one report happens -- the
-      // wrapper's own first, doomed attempt -- not two.
-      //
-      // Mutation: drop the inner try/catch around the `FlutterError.
-      // reportError` call inside the wrapping closure -> the broken
-      // `onError`'s throw escapes that closure -> `_inner.notifyListeners()`
-      // catches the closure itself throwing and reports IT via a SECOND,
-      // `_inner`-exposing `FlutterErrorDetails` (`onError`'s second call, at
-      // `reported.length == 2`, does not throw, so nothing here crashes
-      // uncontrolled) -> `reported` reads length 2 instead of 1 -> RED.
-      expect(reported, hasLength(1));
-    });
-
-    test('removeListener still removes the correct listener by identity after '
-        'the wrapping addListener requires for the throw-safety fix above', () {
-      final h = _Harness();
-      var callCount = 0;
-      void listener() => callCount++;
-
-      h.controller.state.addListener(listener);
-      h.controller.update(readsInFlight: false, halfCount: 1, hasMerge: false);
-      expect(callCount, 1);
-
-      h.controller.state.removeListener(listener);
-      // Mutation: make `removeListener` a no-op (or forward the wrong
-      // reference) -> `listener` keeps firing after removal ->
-      // callCount reads 2 below instead of 1 -> RED.
-      h.controller.update(readsInFlight: false, halfCount: 1, hasMerge: true);
-      expect(callCount, 1);
-    });
-
-    test('addListener after dispose() throws without retaining a stale '
-        'entry for a registration that never actually took', () {
-      final h = _Harness();
-      h.controller.dispose();
-
-      expect(
-        () => h.controller.state.addListener(() {}),
-        // `_inner` (the real ValueNotifier) throws on `addListener` once
-        // disposed -- confirmed against this project's pinned Flutter SDK.
-        throwsA(isA<FlutterError>()),
-      );
-      // Mutation: register into `_wrapped` BEFORE delegating to
-      // `_inner.addListener` (the original order) -> `_inner`'s own
-      // disposed-assert throws AFTER that map mutation has already
-      // happened, leaving a stale entry nothing can ever clean up
-      // afterward (`dispose()` is now a permanent no-op) ->
-      // debugListenerCount reads 1 instead of 0 -> RED.
-      expect(h.controller.debugListenerCount, 0);
-    });
-
-    test('adding the same listener twice and removing it twice fully '
-        'silences it, matching ValueNotifier\'s own multiplicity contract', () {
-      final h = _Harness();
-      var callCount = 0;
-      void listener() => callCount++;
-
-      h.controller.state.addListener(listener);
-      h.controller.state.addListener(listener);
-      expect(h.controller.debugListenerCount, 2);
-
-      h.controller.update(readsInFlight: false, halfCount: 1, hasMerge: false);
-      // Registered twice -> fires twice for one notification, matching
-      // ValueNotifier's own documented contract ("an additional instance
-      // is added, and must be removed the same number of times it is
-      // added before it will stop being called").
-      expect(callCount, 2);
-
-      h.controller.state.removeListener(listener);
-      h.controller.state.removeListener(listener);
-      expect(h.controller.debugListenerCount, 0);
-
-      // Mutation: track only the LATEST wrapper per listener key (a plain
-      // `Map<VoidCallback, VoidCallback>`, this file's earlier design) ->
-      // the second `addListener` above overwrites the map's only entry for
-      // `listener` instead of tracking both registrations -> the FIRST
-      // `removeListener` above removes the only registration the map
-      // still knows about, leaving the OTHER wrapped closure permanently
-      // registered on `_inner` with no way for the caller to reach it ->
-      // `listener` keeps firing below -> callCount reads 3 instead of 2 ->
-      // RED.
-      h.controller.update(readsInFlight: false, halfCount: 1, hasMerge: true);
-      expect(callCount, 2);
-    });
-
-    test('removing one of two duplicate registrations from WITHIN the '
-        'first firing still lets the second, already-in-flight firing '
-        'complete in the SAME notification pass', () {
-      final h = _Harness();
-      var callCount = 0;
-      void listener() {
-        callCount++;
-        if (callCount == 1) {
-          h.controller.state.removeListener(listener);
-        }
-      }
-
-      h.controller.state.addListener(listener);
-      h.controller.state.addListener(listener);
-
-      h.controller.update(readsInFlight: false, halfCount: 1, hasMerge: false);
-      // Registered twice; `listener` removes ONE registration of itself
-      // from inside its OWN first firing, in the same pass. A real
-      // ValueNotifier's own `removeListener` finds and removes (or, during
-      // an active notification, nulls) the FIRST matching slot by index --
-      // the one whose call has ALREADY been dispatched -- so the SECOND,
-      // not-yet-reached slot is unaffected and still fires: `listener`
-      // fires TWICE in this pass, not once.
-      //
-      // Mutation: remove the NEWEST tracked wrapper instead of the OLDEST
-      // (`List.removeLast` in `removeListener`, this file's earlier
-      // design) -> the NOT-YET-fired registration is the one silenced ->
-      // `listener`'s second, already-scheduled firing never happens ->
-      // callCount reads 1 instead of 2 -> RED.
-      expect(callCount, 2);
-
-      // The removal still genuinely took effect for FUTURE notifications,
-      // though: exactly one registration remains.
-      h.controller.update(readsInFlight: false, halfCount: 1, hasMerge: true);
-      expect(callCount, 3);
     });
 
     test('reads-complete + merge present -> ready, no timer armed', () {
@@ -515,54 +295,61 @@ void main() {
       },
     );
 
-    test('a wall-clock correction that jumps BACKWARD during the grace '
-        'window never re-arms for MORE than a fresh full grace', () {
-      // NOTE on what this test does NOT try to prove: given enough total
-      // real time and no FURTHER correction, an unclamped re-arm's own
-      // (inflated) due instant and a clamped chain of fresh-grace re-arms
-      // both eventually land on the exact same monotonic instant --
-      // `grace + correction`, algebraically, either way -- so checking
-      // only the EVENTUAL state cannot tell them apart. What genuinely
-      // differs, and what actually matters (bounding how long this
-      // machine can go without spontaneously re-checking itself, which is
-      // the difference between noticing a LATER, correcting clock change
-      // within a fresh `grace` and not noticing it for as long as the
-      // ORIGINAL correction happened to be), is the re-arm's OWN
-      // requested duration -- checked here directly via
-      // `_FakeClock.nextDueIn`.
+    test('a wall-clock correction during the grace window has NO EFFECT on '
+        'the monotonic grace timing -- unavailable arrives at exactly one '
+        'grace, never extended', () {
+      // Supersedes an earlier "round-8" test that pinned a WEAKER, only
+      // partial fix: that version bounded each INDIVIDUAL re-arm to at
+      // most a fresh `grace`, but the grace was still measured off the
+      // WALL clock (`now()`), so a single large backward correction could
+      // still balloon the OVERALL wait across several compounding re-arms.
+      // Concretely, for a -60s correction against a 30s grace: the real
+      // timer fires at real 30s, but the (wall-clock-computed) apparent
+      // elapsed there still reads -30s (clamped to 0), so it re-arms a
+      // FRESH 30s instead of resolving terminal; it fires again at real
+      // 60s, apparent elapsed reads 0s, re-arming yet another fresh 30s;
+      // only at real 90s does the apparent elapsed finally reach 30s and
+      // resolve `unavailable` -- three times the promised grace, entirely
+      // from one wall-clock correction.
+      //
+      // The actual fix: `_graceElapsed`/`_armTimer` now measure elapsed
+      // time with the injected MONOTONIC `elapsed` seam (see the
+      // constructor's own doc), never a wall clock -- so this controller
+      // has no wall-clock input left to correct in the first place.
+      // `adjustWallClock` below drives `_FakeClock`'s OWN separate wall
+      // clock (see its class doc), entirely unconnected to the controller;
+      // it is exercised here purely to prove that disconnection holds.
       final h = _Harness();
       h.controller.update(readsInFlight: false, halfCount: 1, hasMerge: false);
       expect(h.controller.state.value, CallRecordingsLoadState.pendingMerge);
-      expect(h.clock.nextDueIn, _grace);
 
-      // The wall clock (what `now()` reports) is corrected BACKWARD by
-      // 60s -- larger than the grace itself -- exactly the shape a real
-      // NTP step correction or a manual clock change can take. This does
-      // not itself fire or reschedule anything: a real `Timer`'s own
-      // monotonic scheduling is unaffected by a wall-clock change, which
-      // is why `_FakeClock` tracks due instants against a separate
-      // monotonic timeline, never against `now()`'s own value (see its
-      // own doc).
+      // A wall-clock correction (NTP step, manual clock change) moves the
+      // system's wall clock BACKWARD by 60s -- larger than the grace
+      // itself, and exactly the shape that made the overall wait balloon
+      // under the superseded fix described above.
       h.clock.adjustWallClock(const Duration(seconds: -60));
 
-      // Advancing to the ORIGINAL timer's own due fires it: `now()` reads
-      // WELL BEHIND `_graceStartedAt` (the correction was larger than the
-      // grace), so re-resolving correctly reports `graceElapsed: false`
-      // and the state stays `pendingMerge` -- but the RE-ARM that follows
-      // must not request more than a fresh grace's worth of additional
-      // waiting.
-      h.clock.advance(_grace);
+      // Advancing MONOTONIC time to just under one grace still reads
+      // pendingMerge ...
+      h.clock.advance(_grace - _oneMs);
       expect(h.controller.state.value, CallRecordingsLoadState.pendingMerge);
-
-      // Mutation: drop the `elapsed.isNegative ? Duration.zero : elapsed`
-      // clamp in `_armTimer` (subtract the raw, possibly-negative
-      // `elapsed` straight from `grace`) -> by the time this re-arm runs,
-      // 30s of REAL progress (the advance above) has already clawed back
-      // 30s of the original 60s correction, so `elapsed` here reads -30s,
-      // not the full -60s -> this re-arm computes `grace - (-30s) = 60s`
-      // of remaining wait, so the NEXT due instant is 60s away instead of
-      // a fresh 30s -> `nextDueIn` reads 60s instead of 30s -> RED.
-      expect(h.clock.nextDueIn, _grace);
+      // ... and to exactly one grace flips straight to unavailable RIGHT
+      // HERE -- not after a second or third additional grace the old
+      // wall-clock-diff bug would have demanded.
+      h.clock.advance(_oneMs);
+      // Mutation (the bug this test replaces): change `_graceElapsed`/
+      // `_armTimer` back to measuring elapsed time off a wall-clock
+      // reading (e.g. reintroducing a `now: DateTime Function()` seam and
+      // computing `now().difference(startedAt)`) instead of the injected
+      // monotonic `elapsed()` -> the -60s correction above makes the
+      // apparent elapsed read far less than the grace at this exact
+      // monotonic instant, so the state is still `pendingMerge` here (it
+      // would take a further ~60s of monotonic advance, via compounding
+      // re-arms, to finally reach `unavailable`) -> RED. Verified by
+      // temporarily reverting `_graceElapsed`/`_armTimer` to the prior
+      // wall-clock-diff implementation and confirming this exact
+      // assertion fails for this exact reason, then restoring the fix.
+      expect(h.controller.state.value, CallRecordingsLoadState.unavailable);
     });
 
     test('_FakeClock.advance() keeps now() in lockstep with real progress '
@@ -807,6 +594,20 @@ void main() {
       expect(notifyCount, 0);
       expect(h.controller.state.value, CallRecordingsLoadState.pendingMerge);
       expect(h.clock.scheduledCount, 0);
+
+      // The underlying notifier is genuinely disposed too here (the
+      // IMMEDIATE, non-reentrant path -- `dispose()` called from OUTSIDE
+      // any `_reevaluate` call, same as an ordinary widget's own
+      // `State.dispose()`), not merely logically flagged: `addListener` on
+      // an already-disposed `ValueNotifier` throws (confirmed against this
+      // project's pinned Flutter SDK). `state` is `_stateNotifier` itself
+      // (see its own doc), so this also proves `dispose()`'s immediate
+      // branch actually calls `_stateNotifier.dispose()`, not just sets the
+      // `_disposed` flag checked above.
+      expect(
+        () => h.controller.state.addListener(() {}),
+        throwsA(isA<FlutterError>()),
+      );
     });
 
     test('dispose() cancels a pending grace timer', () {
@@ -816,30 +617,6 @@ void main() {
 
       h.controller.dispose();
       expect(h.clock.scheduledCount, 0);
-    });
-
-    test('dispose() (the immediate, non-reentrant path) releases every '
-        'listener state was holding, not just the underlying notifier\'s '
-        'own list', () {
-      final h = _Harness();
-      h.controller.state.addListener(() {});
-      h.controller.state.addListener(() {});
-      expect(h.controller.debugListenerCount, 2);
-
-      // The immediate path: `dispose()` called from OUTSIDE any
-      // `_reevaluate` call, same as an ordinary widget's own
-      // `State.dispose()` -- `_evaluating` is false here, so this goes
-      // straight through `dispose()`'s `else` branch rather than the
-      // deferred one (see the sibling test below for that one).
-      h.controller.dispose();
-
-      // Mutation: drop the `_stateWrapper._releaseListeners()` call from
-      // `dispose()`'s `else` branch -> the map still holds both closures
-      // (and anything they capture) reachable through `state` for as long
-      // as this controller itself stays reachable, even though
-      // `_stateNotifier`'s OWN listener list has already been cleared by
-      // its own `dispose()` a line above -> RED.
-      expect(h.controller.debugListenerCount, 0);
     });
 
     // Reentrancy: `_setState` publishes through a `ValueNotifier`, which
@@ -989,47 +766,27 @@ void main() {
       // is a SEPARATE guard from the one above).
       expect(h.clock.scheduledCount, 0);
 
+      // The underlying notifier is genuinely disposed here too, via the
+      // DEFERRED teardown path (`_reevaluate`'s own `finally`, which has
+      // already run to completion by the time `update()` above returns,
+      // since `dispose()` was called from INSIDE the very notification the
+      // state change it reacts to just triggered -- see `dispose()`'s own
+      // doc): `addListener` on an already-disposed `ValueNotifier` throws
+      // (confirmed against this project's pinned Flutter SDK). This proves
+      // the DEFERRED branch specifically -- not just the immediate one the
+      // "no notify after dispose" test already covers -- actually calls
+      // `_stateNotifier.dispose()`, not just sets the `_disposed` flag.
+      expect(
+        () => h.controller.state.addListener(() {}),
+        throwsA(isA<FlutterError>()),
+      );
+
       // An ordinary second dispose() call -- e.g. the owning widget's own
       // `State.dispose()`, unaware a listener already tore this down --
       // must remain a harmless no-op. This one genuinely can throw straight
       // out to the caller (nothing wraps it in a notify loop), so
       // `returnsNormally` is the right check here.
       expect(() => h.controller.dispose(), returnsNormally);
-    });
-
-    test('dispose() (the DEFERRED, reentrant path above) also releases '
-        'every listener state was holding', () {
-      final h = _Harness();
-      h.controller.state.addListener(() {
-        if (h.controller.state.value == CallRecordingsLoadState.pendingMerge) {
-          h.controller.dispose();
-        }
-      });
-      // A second, ordinary listener alongside the one that disposes --
-      // proves this releases EVERY listener the wrapper holds, not just the
-      // one that happened to trigger the disposal.
-      h.controller.state.addListener(() {});
-      expect(h.controller.debugListenerCount, 2);
-
-      h.controller.update(readsInFlight: false, halfCount: 1, hasMerge: false);
-
-      // `dispose()` was called from INSIDE the very notification the state
-      // change it reacts to just triggered, so
-      // `_stateWrapper._releaseListeners()` cannot run until `_reevaluate`'s
-      // own top-level call finishes unwinding (see `dispose()`'s own doc) --
-      // this exercises `_reevaluate`'s deferred-teardown branch, not
-      // `dispose()`'s own immediate `else` branch the sibling test above
-      // (the one right after "dispose() cancels a pending grace timer")
-      // already covers.
-      //
-      // Mutation: drop the `_stateWrapper._releaseListeners()` call from
-      // `_reevaluate`'s deferred-teardown branch specifically, leaving the
-      // one in `dispose()`'s own immediate branch intact -> this exact
-      // REENTRANT disposal shape never releases the map at all -> RED
-      // (verified: the immediate-path sibling test does NOT catch this
-      // specific mutation, since it never takes the deferred branch at
-      // all).
-      expect(h.controller.debugListenerCount, 0);
     });
 
     test('a merge fed reentrantly still latches ready even when a later '
@@ -1103,26 +860,30 @@ class _Scheduled {
 }
 
 /// A fully manual clock + one-shot timer scheduler, standing in for
-/// [DateTime.now] and `Timer.new` on the same terms
-/// `call_audio_merge_coordinator_test.dart`'s own `_Scheduler`/`_FakeTimer`
-/// stand in for [DateTime.now]/`Timer.new` there -- simplified to one-shot
-/// only, since [CallRecordingsLoadController] never schedules a periodic
-/// timer.
+/// `Timer.new` on the same terms `call_audio_merge_coordinator_test.dart`'s
+/// own `_Scheduler`/`_FakeTimer` stand in for [DateTime.now]/`Timer.new`
+/// there -- simplified to one-shot only, since [CallRecordingsLoadController]
+/// never schedules a periodic timer.
 ///
-/// Tracks TWO separate timelines, not one, so a test can simulate a
-/// wall-clock correction (NTP, a manual clock change) independent of real
-/// elapsed time -- exactly as a real device can: [_monotonic] is real
-/// elapsed time, advanced ONLY by [advance], and is what every scheduled
-/// timer's own due instant is measured against (mirroring how a real
-/// [Timer] is scheduled against a monotonic clock internally, immune to a
-/// wall-clock change happening around it); [_wallClock] is what [now]
-/// reports, advanced by [advance] the same way an ordinary, uncorrected
-/// wall clock would be, but ALSO independently adjustable by
-/// [adjustWallClock] without moving [_monotonic] at all. An earlier version
-/// of this fake used a single [DateTime] for both purposes, which could not
-/// express a wall-clock correction as anything other than real time itself
-/// moving backward -- collapsing the exact distinction
-/// `CallRecordingsLoadController._armTimer`'s own clamp exists to handle.
+/// Tracks TWO separate timelines, not one: [_monotonic] is real elapsed
+/// time, advanced ONLY by [advance], and is what every scheduled timer's own
+/// due instant is measured against (mirroring how a real [Timer] is
+/// scheduled against a monotonic clock internally, immune to a wall-clock
+/// change happening around it) AND what [elapsed] reports -- the only clock
+/// [CallRecordingsLoadController] itself is ever given (see its
+/// constructor's own doc: it has no wall-clock input at all). [_wallClock]
+/// is a SEPARATE, purely-fake system wall clock that [now] reports,
+/// advanced by [advance] the same way an ordinary, uncorrected wall clock
+/// would be, but ALSO independently adjustable by [adjustWallClock] without
+/// moving [_monotonic] (or [elapsed]) at all. Nothing in
+/// [CallRecordingsLoadController] reads [now] or [_wallClock] post-fix; both
+/// are kept here purely so a test can simulate a wall-clock correction (NTP,
+/// a manual clock change) and prove the controller's grace timing is
+/// genuinely unaffected by it -- see the "wall-clock correction... has NO
+/// EFFECT" test. An earlier version of this fake used a single [DateTime]
+/// for both purposes, which could not express a wall-clock correction as
+/// anything other than real time itself moving backward -- collapsing the
+/// exact distinction that test relies on.
 class _FakeClock {
   DateTime _wallClock = DateTime.utc(2026, 1, 1);
   Duration _monotonic = Duration.zero;
@@ -1130,28 +891,16 @@ class _FakeClock {
 
   DateTime now() => _wallClock;
 
+  /// The monotonic elapsed-time seam [CallRecordingsLoadController] is
+  /// actually constructed with in every test (see [_Harness]) -- immune to
+  /// [adjustWallClock] by construction, exactly like a real [Stopwatch].
+  Duration elapsed() => _monotonic;
+
   /// Counts only still-active (neither fired nor cancelled) timers -- a
   /// direct way for a test to prove "no timer is currently armed" without
   /// reaching into the controller's own private state.
   int get scheduledCount =>
       _scheduled.where((entry) => entry.timer.isActive).length;
-
-  /// The remaining MONOTONIC duration until the earliest still-active
-  /// scheduled timer fires, or `null` if none is armed. Lets a test verify
-  /// a re-arm's OWN requested duration directly, which the EVENTUAL state
-  /// it leads to cannot always distinguish -- see the wall-clock-correction
-  /// test's own doc for why an inflated re-arm and a correctly-bounded one
-  /// can converge on the exact same final outcome given enough total
-  /// advancing, making the re-arm's own duration the only thing that
-  /// actually tells them apart.
-  Duration? get nextDueIn {
-    final activeDueTimes = _scheduled
-        .where((entry) => entry.timer.isActive)
-        .map((entry) => entry.due);
-    if (activeDueTimes.isEmpty) return null;
-    final earliest = activeDueTimes.reduce((a, b) => a < b ? a : b);
-    return earliest - _monotonic;
-  }
 
   Timer schedule(Duration duration, void Function() callback) {
     final timer = _FakeTimer();
@@ -1175,15 +924,19 @@ class _FakeClock {
   /// exact file caught: it let a callback firing PARTWAY through a single
   /// large [advance] call observe [now] already reflecting the FULL
   /// requested [duration], including real time that -- from that
-  /// callback's own point in the sequence -- has not actually elapsed
-  /// yet. That corrupted anything computed FROM [now] at that point (most
-  /// concretely, `CallRecordingsLoadController.retry`'s own re-stamp of
-  /// its grace window), producing a DIFFERENT, WRONG result depending
-  /// purely on how a test happened to CHUNK its [advance] calls -- e.g. a
-  /// single 60s [advance] spanning two grace-timer firings disagreeing
-  /// with two separate 30s [advance] calls reaching the exact same
-  /// due instants, with no clock correction involved at all. Stepping
-  /// both timelines together removes that chunking-dependence entirely.
+  /// callback's own point in the sequence -- had not actually elapsed
+  /// yet. Back when `CallRecordingsLoadController.retry` re-stamped its
+  /// grace window from [now] (wall-clock diffs -- since replaced by the
+  /// monotonic [elapsed] seam), that corruption produced a DIFFERENT,
+  /// WRONG result depending purely on how a test happened to CHUNK its
+  /// [advance] calls -- e.g. a single 60s [advance] spanning two
+  /// grace-timer firings disagreeing with two separate 30s [advance]
+  /// calls reaching the exact same due instants, with no clock correction
+  /// involved at all. [_monotonic] (and so [elapsed]) was never the buggy
+  /// half of that -- it is, and always was, stepped correctly here -- but
+  /// [_wallClock] is still advanced the same careful way for its own sake,
+  /// since [now] remains a general-purpose fake wall clock other tests (or
+  /// a future consumer) may still read.
   void advance(Duration duration) {
     final target = _monotonic + duration;
     while (true) {
@@ -1205,13 +958,13 @@ class _FakeClock {
   }
 
   /// Adjusts ONLY what [now] reports, by [duration] (negative moves it
-  /// BACKWARD), without moving real/[_monotonic] time or firing or
-  /// rescheduling anything -- simulating a wall-clock correction a real
-  /// system clock can undergo (NTP, a manual change, a timezone/DST edge
-  /// case) independent of how much real time has actually passed. A real
-  /// [Timer], once armed, is unaffected by exactly this kind of change,
-  /// which is why this fake's own [_scheduled] due instants are tracked
-  /// against [_monotonic], never against [now]'s own value.
+  /// BACKWARD), without moving real/[_monotonic] (or [elapsed]) time or
+  /// firing or rescheduling anything -- simulating a wall-clock correction
+  /// a real system clock can undergo (NTP, a manual change, a
+  /// timezone/DST edge case) independent of how much real time has
+  /// actually passed. [CallRecordingsLoadController] has no [now]-based
+  /// input to be corrupted by this at all post-fix -- this exists purely
+  /// so a test can prove exactly that.
   void adjustWallClock(Duration duration) {
     _wallClock = _wallClock.add(duration);
   }
@@ -1225,7 +978,7 @@ class _Harness {
   _Harness({Duration grace = _grace}) {
     controller = CallRecordingsLoadController(
       grace: grace,
-      now: clock.now,
+      elapsed: clock.elapsed,
       scheduleTimer: clock.schedule,
     );
   }
