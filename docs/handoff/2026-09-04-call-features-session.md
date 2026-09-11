@@ -1990,3 +1990,30 @@ until the design is Codex-green.
   + G (D1/D4 start/release + E1/E2 control), running in bg (bsmdih109). Holding the FULL CALLS bucket until
   the codex gates finish (avoid the active_call tearDownAll flake under CPU load). On green: full calls
   bucket + whole-branch cold-Codex + ChangeNotifier cleanup -> owner real-call test -> PR2 on go.
+
+## 2026-09-11 (cont) — gates F/G = NON-CONVERGENCE signal; STRUCTURAL round dispatched (adcebbac5353e3aef)
+- Confirmation gates F (refresh) + G (start/control) on 760508f165: BOTH ISSUES-FOUND / softening no. 4
+  findings, and 2 are SECOND-ORDER edges of round-2's OWN fixes, in the SAME 2 classes -> the red-to-root-cause
+  non-convergence signal (3 rounds, same classes => the CLASS is the bug, go structural).
+  G-1[P1]: the D1 seek-awaits-start added an await; _seekSharedPlayer doesn't re-validate (player,eventId)
+    AFTER it -> can seek a replacement player. Class: await-without-recheck (same as F2).
+  F-1[P1]: a sync during an IN-FLIGHT refresh is dropped (_refreshInFlight returns without remembering) ->
+    a merge-bearing sync lost until `unavailable` if no later sync. Class: refresh-coalescing (same as D2/D3).
+  G-2[P2]: _replayFromStart awaits seek then resumes unconditionally -> a pause tap in between is overridden.
+  G-3[P2]: stop()/dispose() futures discarded w/o error handlers -> unhandled async error on teardown reject.
+  Gates CLEARED (again): grace preservation, D3 shrink-eval-merge, D4 superseded detach, E1 completed-detection,
+  the bookkeeping catchError not swallowing the awaiter's failure.
+- All narrow (need concurrent taps / precise sync timing); feature works in the common case. But 2 are P1 and
+  the recurrence says point-fixing will keep finding same-class edges. DECISION: ONE STRUCTURAL round that
+  SIMPLIFIES (per the user's keep-it-simple steer) --
+    Class 1: a single guard predicate `_isCurrentMerged(player,eventId)` re-checked after EVERY await + a
+      generation token for the replay/op, REPLACING scattered ad-hoc rechecks (kills G-1/G-2 + the class).
+    Class 2: ONE trailing-edge coalescer (_refreshRequested set on every sync; drain-loop while re-requested;
+      starts only post-settle) REPLACING _refreshInFlight/_refreshPending/_initialReadsSettled special-cases
+      (kills F-1 + the D2/D3 class).
+    Class 3: error handlers on discarded teardown futures (G-3).
+  Re-spawned structural round (adcebbac5353e3aef, opus; SendMessage-to-subagent still absent) with
+  mutation-proven tests. THIS IS THE LAST HARDENING ROUND: on return, ONE final cold gate; if clean ->
+  assembly (full calls bucket + whole-branch cold-Codex + ChangeNotifier cleanup) -> owner real-call test ->
+  PR2 on go. If it STILL finds substantive new same-class races, STOP gating + document the ultra-narrow
+  residual as known v1 edges (diminishing returns; the human real-call test is the real validator for UI races).
