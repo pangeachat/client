@@ -1962,3 +1962,31 @@ until the design is Codex-green.
   (a7fb6bb08f2afcccd, opus; SendMessage-to-subagent still absent) with mutation-proven tests per finding.
   ON RETURN: re-cold-gate the deltas (should be small + converging), then assembly (full calls bucket +
   whole-branch cold-Codex + the trivial ChangeNotifier cleanup) -> owner real-call test -> PR2 on go.
+
+## 2026-09-11 (cont) — fixer round 2 committed 760508f165 (all 6 fixed); my confirmation cold gate F/G running
+- Fixer round 2 (a7fb6bb08f2afcccd) committed 760508f165 (transcript_view +355/-103, test +510; 103 tests
+  pass). Self-Codex round 2 CORRECT (its OWN round-1 self-gate caught that my suggested D2 "gate-until-settled"
+  would DROP an early sync that carries a merge -> it revised to DEFER-and-run-once; better than my brief).
+- MANUAL REVIEW (read the actual round-2 code, all correct):
+  D1 seek-seam: `_startMergedPlayer` is now a synchronous re-entrancy wrapper returning `_mergedStartFuture`;
+    `_seekSharedPlayer` awaits it before seeking; bookkeeping `.catchError((_){})` doesn't swallow the
+    awaiter's failure. Closes the previously-deferred turn-tap-during-download gap.
+  D2: `_refreshRecordings` DEFERS (`_refreshPending`) until `_initialReadsSettled`; `_feedLoadController`
+    sets settled + runs one deferred refresh. No clobber, no dropped early-sync merge.
+  D3: shrunk halves read uses `effectiveHalfCount=_shownHalfCount` to still show a same-sync merge; never
+    swaps away per-device rows (halfCountChanged = !shrank && ...).
+  D4/E1/E2: per the agent report + my read -- superseded-abort observation detach; _isAtEnd honors
+    ProcessingState.completed; _replayFromStart awaits seek(0) caught then resumes; pause error-handled.
+  No new l10n keys. Seams remain honest DI.
+- PRE-EXISTING INTERACTION (agent flagged; I confirmed in audio_player.dart:510-521): EVERY mounted
+  AudioPlayerWidget (incl. offstage per-device rows) attaches an `_onAudioStateChanged` that on
+  ProcessingState.completed does stop()+seek(0) on the CURRENT shared player -- so when the merged bar
+  finishes, the per-device rows reset it to 0. BENIGN: fires only at `completed` (voiceMessageEventId is
+  stable during playback, so no re-attach churn mid-play), and resetting to 0 just presents the finished
+  full-call as "ready to replay from start". Not a karaoke regression; out of scope (pre-existing FluffyChat
+  behavior). The agent isolated the E1/E2 UNIT tests with a no-per-device fixture to test the control's own
+  EOF logic deterministically -> the real per-device-present behavior is left for OWNER REAL-CALL testing.
+- CONFIRMATION cold gate (protocol: fresh verdict per agent commit): split F (D2/D3 refresh coordination)
+  + G (D1/D4 start/release + E1/E2 control), running in bg (bsmdih109). Holding the FULL CALLS bucket until
+  the codex gates finish (avoid the active_call tearDownAll flake under CPU load). On green: full calls
+  bucket + whole-branch cold-Codex + ChangeNotifier cleanup -> owner real-call test -> PR2 on go.
