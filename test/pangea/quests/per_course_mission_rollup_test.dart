@@ -191,8 +191,9 @@ void main() {
     });
 
     test('never become the anchor — there is nothing to play there', () {
-      // m1 is unsatisfied, so it anchors. Once it IS satisfied, the anchor must
-      // not fall through to an unplayable Mission.
+      // m1 is unsatisfied, so it anchors. Once it IS satisfied, the quest is
+      // done: the anchor must not fall through to an unplayable Mission, and
+      // (#8997) must not fall back to the satisfied one either.
       final satisfied = resolveProgression(
         outlines: [
           outline(
@@ -206,7 +207,7 @@ void main() {
         ],
         starsByActivity: const {'a1': 4},
       );
-      expect(satisfied.forCourse('A')!.anchorMissionId, 'm1');
+      expect(satisfied.forCourse('A')!.anchorMissionId, isNull);
     });
 
     test('a quest with no playable Mission has no anchor at all', () {
