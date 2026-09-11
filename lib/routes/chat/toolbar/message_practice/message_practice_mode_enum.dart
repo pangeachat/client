@@ -44,8 +44,16 @@ enum MessagePracticeMode {
     }
   }
 
-  Color iconButtonColor(BuildContext context, bool done) =>
-      done ? AppConfig.gold : Theme.of(context).colorScheme.primaryContainer;
+  /// The same pair as the reading-assistance mode buttons beside these, so
+  /// the round toolbar buttons read as one set on the dark scrim too.
+  Color iconButtonColor(BuildContext context, bool done) => done
+      ? AppConfig.goldByTheme(context)
+      : Theme.of(context).colorScheme.primaryContainer;
+
+  /// The ink that reads on [iconButtonColor].
+  Color iconButtonInk(BuildContext context, bool done) => done
+      ? AppConfig.onGoldByTheme(context)
+      : Theme.of(context).colorScheme.onPrimaryContainer;
 
   PracticeExerciseTypeEnum? get associatedActivityType {
     switch (this) {

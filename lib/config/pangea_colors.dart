@@ -104,4 +104,11 @@ extension PangeaColorsTheme on ThemeData {
   /// [ThemeData] in a test still resolves gold.
   PangeaColors get pangea =>
       extension<PangeaColors>() ?? PangeaColors.of(brightness);
+
+  /// The theme's light tone: the surface in light, its ink in dark. The ink
+  /// for a fill that has been darkened toward black, such as a pressed
+  /// button, where the fill's own on-colour no longer reads.
+  Color get lightTone => brightness == Brightness.light
+      ? colorScheme.surface
+      : colorScheme.onSurface;
 }

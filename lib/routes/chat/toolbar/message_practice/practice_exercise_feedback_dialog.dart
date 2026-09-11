@@ -160,7 +160,7 @@ class PracticeExerciseFeedbackDialogState
       opacity: enabled ? 1.0 : 0.5,
       child: Material(
         color: selected
-            ? theme.colorScheme.primaryContainer
+            ? theme.colorScheme.secondaryContainer
             : theme.colorScheme.surface,
         borderRadius: BorderRadius.circular(8.0),
         child: InkWell(

@@ -361,6 +361,10 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
+    final ink = widget.reacted == true
+        ? theme.colorScheme.onSecondaryContainer
+        : theme.colorScheme.onSurface;
+
     Widget content;
     if (widget.reactionKey.startsWith('mxc://')) {
       content = Row(
@@ -379,7 +383,7 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
               widget.count.toString(),
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: theme.colorScheme.onSurface,
+                color: ink,
                 fontSize: DefaultTextStyle.of(context).style.fontSize,
               ),
             ),
@@ -394,7 +398,7 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
       content = Text(
         renderKey.toString() + (widget.count > 1 ? ' ${widget.count}' : ''),
         style: TextStyle(
-          color: theme.colorScheme.onSurface,
+          color: ink,
           fontSize: DefaultTextStyle.of(context).style.fontSize,
         ),
       );
@@ -444,7 +448,7 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
                               child: Container(
                                 decoration: BoxDecoration(
                                   color: widget.reacted == true
-                                      ? theme.colorScheme.primaryContainer
+                                      ? theme.colorScheme.secondaryContainer
                                       : theme.colorScheme.surfaceContainerHigh,
                                   border: Border.all(
                                     color: widget.reacted == true
