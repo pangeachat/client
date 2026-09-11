@@ -207,11 +207,16 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
   /// concurrent recordings fetches. See [_refreshRecordings].
   bool _refreshInFlight = false;
 
-  /// Guards [_startMergedPlayer] against being RE-ENTERED while a start it
-  /// began is still downloading -- the "Full call" bar's play racing a turn
-  /// tap. A concurrent start would dispose the in-flight player and strand its
+  /// The in-flight [_startMergedPlayer] load, or null when no start is running
+  /// -- the "Full call" bar's play and a turn tap both reach the start. A
+  /// re-entrant caller is handed THIS future rather than a no-op `return`, so
+  /// it awaits the real load instead of proceeding to seek/play a player that
+  /// is still loading (its ownership is claimed SYNCHRONOUSLY at the start of
+  /// the load, so "owned" does not yet mean "loaded"). [_seekSharedPlayer]
+  /// awaits it for the same reason. Returning the in-flight future also stops a
+  /// concurrent fresh start from disposing the loading player and stranding its
   /// ownership claim.
-  bool _mergedStartInFlight = false;
+  Future<void>? _mergedStartFuture;
 
   /// The merged event id THIS screen last claimed via [_startMergedPlayer], so
   /// [_releaseMergedPlayerIfOwned] can require we still OWN that id before
@@ -230,6 +235,23 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
   /// settle ([_feedLoadController]) and on every displayed swap.
   int _shownHalfCount = 0;
   bool _shownHasMerge = false;
+
+  /// Whether the INITIAL [_load] reads have settled and fed the machine. A
+  /// [_refreshRecordings] triggered by a sync BEFORE that must not RUN yet: it
+  /// would swap [_recordings]/[_merged] out from under [_feedLoadController],
+  /// whose future-identity guard would then reject the initial reads' OWN
+  /// merge, dropping it until another sync or a retry. Reset by [_load] (a
+  /// [_retry] starts a fresh epoch), set when [_feedLoadController]'s reads
+  /// complete.
+  bool _initialReadsSettled = false;
+
+  /// A sync arrived while [_initialReadsSettled] was false, so its refresh was
+  /// DEFERRED rather than dropped: the initial reads do NOT guarantee they
+  /// capture a merge that was published after their request went out (the read
+  /// can return a stale empty snapshot), so a dropped early refresh could hide
+  /// a real "Full call" recording until the next sync. [_feedLoadController]
+  /// runs ONE deferred refresh the moment it settles. Reset by [_load].
+  bool _refreshPending = false;
 
   @override
   void initState() {
@@ -285,6 +307,12 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     // edge that stamps the grace window is fed by [_feedLoadController] when
     // the reads complete.
     _loadController.update(readsInFlight: true, halfCount: 0, hasMerge: false);
+    // A fresh read epoch: defer live refreshes until these initial reads settle
+    // and feed the machine, so an early sync cannot clobber that feed (see
+    // [_initialReadsSettled]). A stale pending refresh from a prior epoch is
+    // dropped -- these fresh reads capture current state.
+    _initialReadsSettled = false;
+    _refreshPending = false;
     _feedLoadController();
   }
 
@@ -330,6 +358,17 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
       // only swaps (and rebuilds) on a material change (see that method).
       _shownHalfCount = recs.length;
       _shownHasMerge = mergedRow != null;
+      // The initial reads have fed the machine; live refreshes may now run.
+      _initialReadsSettled = true;
+      // Run ONE refresh a sync deferred while the reads were in flight -- it may
+      // carry a merge these initial reads did not (a merge published after their
+      // request went out returns in a later read, not this one). It runs AFTER
+      // this feed, so it never clobbers it; if this feed already latched `ready`
+      // the deferred refresh returns at its own `ready` guard.
+      if (_refreshPending) {
+        _refreshPending = false;
+        unawaited(_refreshRecordings());
+      }
     });
   }
 
@@ -350,6 +389,16 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     // Once the merge is shown the machine is terminally `ready`: nothing more
     // to pick up, so stop re-reading.
     if (_loadController.state.value == CallRecordingsLoadState.ready) return;
+    // Not until the initial reads have settled and fed the machine: a refresh
+    // that swaps [_recordings]/[_merged] before then makes
+    // [_feedLoadController]'s future-identity guard drop the initial reads' own
+    // feed (see [_initialReadsSettled]). DEFER it rather than drop it -- the
+    // initial reads may not capture a merge published after their request went
+    // out, so [_feedLoadController] runs one remembered refresh once it settles.
+    if (!_initialReadsSettled) {
+      _refreshPending = true;
+      return;
+    }
     if (_refreshInFlight) return;
     _refreshInFlight = true;
 
@@ -377,18 +426,25 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
         return;
       }
       final recs = results[0] as List<CallAudioRecording>;
-      // Never let a refresh SHRINK what is shown. Halves only ACCUMULATE in
+      final mergedList = results[1] as List<CallAudioMergedRecording>;
+      // A refresh must never SHRINK what is shown. Halves only ACCUMULATE in
       // room history, so a smaller count than we already show is a transient
       // read failure ([_loadRecordings] turns any error into an empty list),
-      // not a real deletion. Adopting it would feed the controller a false
+      // not a real deletion: adopting it would feed the controller a false
       // `none`/reduced count AND swap away per-device rows -- unmounting (and
-      // thereby STOPPING) a per-device recording that might be playing. Drop
-      // such a refresh; a later good sync re-reads. A genuine new half only
-      // ever makes this count grow, which is not dropped.
-      if (recs.length < _shownHalfCount) return;
-      final mergedList = results[1] as List<CallAudioMergedRecording>;
-      final mergedRow = selectMergedRow(mergedList, recs.length);
-      final mergeableHalfCount = recs.length > 2 ? 0 : recs.length;
+      // thereby STOPPING) a per-device recording that might be playing.
+      //
+      // But a shrunk HALVES read must NOT suppress a merge the SAME sync read
+      // successfully: evaluate the merge against the LAST-KNOWN count and still
+      // feed and show it, so a real merge is not lost with a flaky halves read.
+      // Only a grown/equal read may adopt the new count and swap in the new
+      // per-device list; a shrunk one leaves the displayed rows untouched.
+      final shrank = recs.length < _shownHalfCount;
+      final effectiveHalfCount = shrank ? _shownHalfCount : recs.length;
+      final mergedRow = selectMergedRow(mergedList, effectiveHalfCount);
+      final mergeableHalfCount = effectiveHalfCount > 2
+          ? 0
+          : effectiveHalfCount;
       // FEED, never reset: `readsInFlight` stays false, so the true->false edge
       // that stamps the grace does NOT fire again and the monotonic grace keeps
       // running (see [CallRecordingsLoadController]'s own doc against re-stamps).
@@ -398,13 +454,14 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
         hasMerge: mergedRow != null,
       );
       // Swap the DISPLAYED futures only when the re-read MATERIALLY changes what
-      // is shown -- a merge now present, or the half count changed. The build's
-      // "settle both reads" invariant means these already-resolved futures never
-      // drop mergedRow to null for a frame the way a live player would be yanked
-      // (and before a merge is shown there is no player yet to yank); swapping on
-      // every sync would re-shimmer for nothing.
+      // is shown -- a merge now present, or (for a non-shrunk read) the half
+      // count changed. The build's "settle both reads" invariant means these
+      // already-resolved futures never drop mergedRow to null for a frame the
+      // way a live player would be yanked (and before a merge is shown there is
+      // no player yet to yank); swapping on every sync would re-shimmer for
+      // nothing.
       final mergeAppeared = mergedRow != null && !_shownHasMerge;
-      final halfCountChanged = recs.length != _shownHalfCount;
+      final halfCountChanged = !shrank && recs.length != _shownHalfCount;
       if (mergeAppeared || halfCountChanged) {
         setState(() {
           // [SynchronousFuture], NOT the already-completed `recordings`/`merged`
@@ -417,9 +474,15 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
           // before the player appears. A [SynchronousFuture] resolves inside
           // `_subscribe`, so the FutureBuilder is `done` on the SAME frame and
           // there is no flash. See FutureBuilder's own SynchronousFuture note.
-          _recordings = SynchronousFuture(recs);
+          //
+          // A shrunk halves read never swaps its (shorter) list in -- that would
+          // unmount a possibly-playing per-device row; only the merge is
+          // adopted, and the displayed per-device rows stay exactly as they are.
+          if (!shrank) {
+            _recordings = SynchronousFuture(recs);
+            _shownHalfCount = recs.length;
+          }
           _merged = SynchronousFuture(mergedList);
-          _shownHalfCount = recs.length;
           _shownHasMerge = mergedRow != null;
         });
       }
@@ -660,84 +723,113 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
   /// controller's post-await recheck then ABORTS the seek/play that would
   /// otherwise run on a source-less player, and a later tap re-enters here to
   /// reload instead of seeking a track that was never set.
-  Future<void> _startMergedPlayer(CallAudioMergedRecording row) async {
+  ///
+  /// RE-ENTRANT callers get the SAME in-flight start's future, not a no-op: the
+  /// bar's own play can race a turn tap, and a start that returned as a
+  /// successful no-op would let its caller seek/play a player still loading (a
+  /// no-op that returns success must still satisfy the caller's "player is
+  /// loaded" prerequisite). Handing back the in-flight future makes the later
+  /// caller await the real load -- then the controller's post-await recheck
+  /// seeks the now-loaded player correctly -- and if the start throws/aborts,
+  /// the awaiter throws and its transaction aborts too. This wrapper is the
+  /// synchronous re-entrancy gate; [_startMergedPlayerImpl] does the work.
+  Future<void> _startMergedPlayer(CallAudioMergedRecording row) {
+    final inFlight = _mergedStartFuture;
+    if (inFlight != null) return inFlight;
+    final future = _startMergedPlayerImpl(row);
+    _mergedStartFuture = future;
+    // Cleared when it settles (success or failure), so the NEXT start is fresh;
+    // guarded by identity so a start that somehow began after this one cleared
+    // does not have its own future nulled here. The `.catchError` is on THIS
+    // bookkeeping listener only -- it swallows nothing real, it just stops a
+    // FAILED start surfacing as a DUPLICATE unhandled async error here: the
+    // awaiting caller ([_startAndPlayMerged], [seekToTurn], [_seekSharedPlayer])
+    // already receives and handles the same failure for its own transaction.
+    future
+        .whenComplete(() {
+          if (identical(_mergedStartFuture, future)) _mergedStartFuture = null;
+        })
+        .catchError((Object _) {});
+    return future;
+  }
+
+  /// The body of [_startMergedPlayer] -- see that wrapper's doc. Claims the
+  /// shared player for the merged recording and loads its source WITHOUT
+  /// playing -- the controller seeks, then plays (see
+  /// [CallPlaybackController.seekToTurn]). Mirrors the app's own reload dance
+  /// (`select_mode_buttons.dart` `_reloadAndPlayAudio`, `audio_player.dart`
+  /// `_onButtonTap`): dispose whatever is playing, create a fresh player, claim
+  /// [MatrixState.voiceMessageEventId] SYNCHRONOUSLY (before the download await,
+  /// so [CallPlaybackController]'s ownership recheck sees it), observe that
+  /// fresh player, then load.
+  Future<void> _startMergedPlayerImpl(CallAudioMergedRecording row) async {
     final matrix = _matrix;
     if (matrix == null) return;
-    // Never re-enter while a start is still downloading: the bar's own play can
-    // race a turn tap (both reach here). A second entry would dispose the
-    // in-flight player and strand its claim; the guard makes the later caller a
-    // no-op (its own path already saw ownership claimed by the first).
-    if (_mergedStartInFlight) return;
-    _mergedStartInFlight = true;
+    matrix.audioPlayer
+      ?..stop()
+      ..dispose();
+    final player = matrix.audioPlayer =
+        (widget.audioPlayerFactory ?? AudioPlayer.new)();
+    matrix.voiceMessageEventId.value = row.eventId;
+    _startedMergedEventId = row.eventId;
+    _attachObservation(player);
     try {
-      matrix.audioPlayer
-        ?..stop()
-        ..dispose();
-      final player = matrix.audioPlayer =
-          (widget.audioPlayerFactory ?? AudioPlayer.new)();
-      matrix.voiceMessageEventId.value = row.eventId;
-      _startedMergedEventId = row.eventId;
-      _attachObservation(player);
-      try {
-        final file =
-            await (widget.mergedFileLoader?.call(row) ??
-                _mergedRecordingEvent(
-                  row,
-                  widget.room,
-                ).downloadAndDecryptAttachment());
-        // ABORT unless we are still mounted, still own the merged event, AND
-        // [player] is still the current shared player. The IDENTITY check is
-        // what the plain event-id check cannot do: a FRESH player started under
-        // the SAME merged id during this download (or the load below) must not
-        // be driven by this now-stale transaction -- seeking/playing it to this
-        // turn's position would hijack it. When [player] is still ours,
-        // [_releaseIfCurrent] returns the shared player to nobody (screen gone,
-        // or ownership moved) so no source-less player is left owned and the
-        // next tap reloads; when it is superseded, [_releaseIfCurrent] leaves
-        // the newer player untouched. Either way we throw to abort the caller's
-        // seek/play (see [_MergedStartAborted]).
-        if (!mounted ||
-            matrix.voiceMessageEventId.value != row.eventId ||
-            !identical(matrix.audioPlayer, player)) {
-          _releaseIfCurrent(matrix, player, row.eventId);
-          throw const _MergedStartAborted();
-        }
-        await MultiPlatformAudioPlayer(
-          audioPlayer: player,
-          bytes: file.bytes,
-          name: file.name,
-          mimeType: file.mimeType,
-        ).setAudioSource();
-        // Re-check across the load await too: a same-id swap DURING
-        // `setAudioSource` must not let this stale transaction drive the newer
-        // player either.
-        if (!mounted ||
-            matrix.voiceMessageEventId.value != row.eventId ||
-            !identical(matrix.audioPlayer, player)) {
-          _releaseIfCurrent(matrix, player, row.eventId);
-          throw const _MergedStartAborted();
-        }
-      } on _MergedStartAborted {
-        // Already released above if it was still ours; nothing to log -- this is
-        // a superseded/gone abort, not a load failure. Rethrow so the caller's
-        // seek/play transaction stops.
-        rethrow;
-      } catch (e, s) {
-        Logs().w('Could not load merged recording for karaoke seek', e, s);
+      final file =
+          await (widget.mergedFileLoader?.call(row) ??
+              _mergedRecordingEvent(
+                row,
+                widget.room,
+              ).downloadAndDecryptAttachment());
+      // ABORT unless we are still mounted, still own the merged event, AND
+      // [player] is still the current shared player. The IDENTITY check is
+      // what the plain event-id check cannot do: a FRESH player started under
+      // the SAME merged id during this download (or the load below) must not
+      // be driven by this now-stale transaction -- seeking/playing it to this
+      // turn's position would hijack it. When [player] is still ours,
+      // [_releaseIfCurrent] returns the shared player to nobody (screen gone,
+      // or ownership moved) so no source-less player is left owned and the
+      // next tap reloads; when it is superseded, [_releaseIfCurrent] leaves
+      // the newer player untouched. Either way we throw to abort the caller's
+      // seek/play (see [_MergedStartAborted]).
+      if (!mounted ||
+          matrix.voiceMessageEventId.value != row.eventId ||
+          !identical(matrix.audioPlayer, player)) {
         _releaseIfCurrent(matrix, player, row.eventId);
-        // A failed start must ABORT the controller's seek transaction, never
-        // return as if it succeeded: rethrow so `CallPlaybackController.seekToTurn`
-        // (and the bar-play path) stop before seeking/playing. When the identity
-        // guard in [_releaseIfCurrent] SKIPPED the release -- a FRESH merged
-        // playback was started under the same event id during this slow failed
-        // download -- returning normally would let this failed action seek+play
-        // THAT newer player to the wrong position; rethrowing prevents the
-        // hijack. Both the tap boundary ([_seekToTurnGuarded]) and the bar-play
-        // path ([_startAndPlayMerged]) catch it.
-        rethrow;
+        throw const _MergedStartAborted();
       }
-    } finally {
-      _mergedStartInFlight = false;
+      await MultiPlatformAudioPlayer(
+        audioPlayer: player,
+        bytes: file.bytes,
+        name: file.name,
+        mimeType: file.mimeType,
+      ).setAudioSource();
+      // Re-check across the load await too: a same-id swap DURING
+      // `setAudioSource` must not let this stale transaction drive the newer
+      // player either.
+      if (!mounted ||
+          matrix.voiceMessageEventId.value != row.eventId ||
+          !identical(matrix.audioPlayer, player)) {
+        _releaseIfCurrent(matrix, player, row.eventId);
+        throw const _MergedStartAborted();
+      }
+    } on _MergedStartAborted {
+      // Already released above if it was still ours; nothing to log -- this is
+      // a superseded/gone abort, not a load failure. Rethrow so the caller's
+      // seek/play transaction stops.
+      rethrow;
+    } catch (e, s) {
+      Logs().w('Could not load merged recording for karaoke seek', e, s);
+      _releaseIfCurrent(matrix, player, row.eventId);
+      // A failed start must ABORT the controller's seek transaction, never
+      // return as if it succeeded: rethrow so `CallPlaybackController.seekToTurn`
+      // (and the bar-play path) stop before seeking/playing. When the identity
+      // guard in [_releaseIfCurrent] SKIPPED the release -- a FRESH merged
+      // playback was started under the same event id during this slow failed
+      // download -- returning normally would let this failed action seek+play
+      // THAT newer player to the wrong position; rethrowing prevents the
+      // hijack. Both the tap boundary ([_seekToTurnGuarded]) and the bar-play
+      // path ([_startAndPlayMerged]) catch it.
+      rethrow;
     }
   }
 
@@ -757,6 +849,16 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
   ) {
     if (!identical(matrix.audioPlayer, player) ||
         matrix.voiceMessageEventId.value != eventId) {
+      // We no longer hold the shared player (a fresh player took the same id,
+      // or ownership moved), so clearing SHARED ownership is not ours to do --
+      // but detaching OUR OWN observation of the player WE started IS, and is
+      // independent of that. Without it, our position/playing subscriptions to
+      // the superseded [player] leak: no ownership-VALUE change fires the
+      // karaoke detach when the swap is under the same id. (Not reachable via
+      // the normal single-owner bar + in-flight guard, where nothing swaps
+      // `audioPlayer` under our id mid-load; the cheap honest guard for the
+      // injected/foreign case, and exercised by that test.)
+      if (identical(_observedPlayer, player)) _detachObservation();
       return;
     }
     _detachObservation();
@@ -797,6 +899,20 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
   }
 
   Future<void> _seekSharedPlayer(Duration position) async {
+    // Wait out an in-flight start first. Ownership is claimed SYNCHRONOUSLY at
+    // the top of [_startMergedPlayer]'s load, so when the bar's own play is
+    // mid-download the controller sees the merged event owned and routes here
+    // while the player has NO source yet -- and just_audio ignores a seek on an
+    // unloaded source, so the seek would be lost and playback would begin at 0
+    // instead of the tapped turn. Awaiting the in-flight start seeks the
+    // now-loaded player. If that start FAILED/aborted, this await throws, which
+    // aborts the seek transaction (logged at [_seekToTurnGuarded]) rather than
+    // seeking a player whose source was released -- and a start that succeeded
+    // and moved ownership elsewhere is caught by the controller's own recheck
+    // and by [_startMergedPlayer]'s superseded-abort, so no foreign player is
+    // seeked here.
+    final pending = _mergedStartFuture;
+    if (pending != null) await pending;
     final player = _matrix?.audioPlayer;
     if (player == null) return;
     // Observe the player we are about to seek. The controller only calls this
@@ -2342,6 +2458,14 @@ class _MergedFullCallControlState extends State<_MergedFullCallControl> {
   String get _mergedId => widget.row.eventId;
 
   bool _isAtEnd(AudioPlayer player) {
+    // End-of-track is recognised from the PROCESSING STATE first, not only
+    // position>=duration: a track that reached [ProcessingState.completed] with
+    // an unknown [AudioPlayer.duration] (which just_audio reports as null for
+    // some sources) would otherwise read as "not at end", showing a pause icon
+    // over silence and resuming at EOF on tap instead of replaying.
+    if (player.playerState.processingState == ProcessingState.completed) {
+      return true;
+    }
     final duration = player.duration;
     return duration != null && player.position >= duration;
   }
@@ -2352,12 +2476,21 @@ class _MergedFullCallControlState extends State<_MergedFullCallControl> {
     final player = owns ? _matrix.audioPlayer : null;
     if (player != null) {
       if (player.playing && !_isAtEnd(player)) {
-        unawaited(player.pause());
+        // Fire-and-forget, but error-handled: an unhandled rejected pause()
+        // would surface as an async error.
+        unawaited(
+          player.pause().catchError(
+            (Object e, StackTrace s) =>
+                Logs().w('Could not pause merged recording', e, s),
+          ),
+        );
+      } else if (_isAtEnd(player)) {
+        // Ran to the end: seek to 0 BEFORE resuming, awaited so a rejected seek
+        // aborts the replay rather than resuming at EOF.
+        unawaited(_replayFromStart(player));
       } else {
-        // Paused or finished: restart from the top if it ran to the end, then
-        // resume via the transcript's play path (which keeps observation
-        // attached to the shared player).
-        if (_isAtEnd(player)) unawaited(player.seek(Duration.zero));
+        // Paused mid-track: resume via the transcript's play path (which keeps
+        // observation attached to the shared player).
         unawaited(
           widget.onResume().catchError(
             (Object e, StackTrace s) =>
@@ -2388,6 +2521,30 @@ class _MergedFullCallControlState extends State<_MergedFullCallControl> {
             });
           }
         });
+  }
+
+  /// Replays [player] from the top: seek to zero, awaited inside a caught
+  /// transaction, THEN resume. Seeking before resuming (and awaiting the seek)
+  /// is what makes a replay start at 0 rather than resume at EOF; a rejected
+  /// seek is caught and aborts the replay instead of surfacing as an unhandled
+  /// async error. The seek is a real yield point, so ownership/identity are
+  /// re-checked after it before resuming -- the shared player may have been
+  /// taken over, or the control disposed, across the await.
+  Future<void> _replayFromStart(AudioPlayer player) async {
+    try {
+      await player.seek(Duration.zero);
+    } catch (e, s) {
+      Logs().w('Could not restart merged recording', e, s);
+      return;
+    }
+    if (!mounted) return;
+    if (_matrix.voiceMessageEventId.value != _mergedId) return;
+    if (!identical(_matrix.audioPlayer, player)) return;
+    try {
+      await widget.onResume();
+    } catch (e, s) {
+      Logs().w('Could not resume merged recording', e, s);
+    }
   }
 
   @override

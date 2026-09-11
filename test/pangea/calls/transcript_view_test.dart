@@ -77,12 +77,16 @@ class _FakeAudioPlayer implements AudioPlayer {
   final _positions = StreamController<Duration>.broadcast();
   final _states = StreamController<PlayerState>.broadcast();
   Duration _pos = Duration.zero;
-  bool _playing = false;
+  PlayerState _state = PlayerState(false, ProcessingState.ready);
 
   int playCount = 0;
   int pauseCount = 0;
   int seekCount = 0;
   bool disposed = false;
+
+  /// When true, [seek] REJECTS -- so a test can drive the replay-seek failure
+  /// path ([_MergedFullCallControlState._replayFromStart]).
+  bool failSeek = false;
 
   /// Drives a playback position through both streams' consumers.
   void emitPosition(Duration position) {
@@ -92,8 +96,15 @@ class _FakeAudioPlayer implements AudioPlayer {
 
   /// Drives a playing/paused edge through `playerStateStream`.
   void emitPlaying(bool playing) {
-    _playing = playing;
-    _states.add(PlayerState(playing, ProcessingState.ready));
+    _state = PlayerState(playing, ProcessingState.ready);
+    _states.add(_state);
+  }
+
+  /// Drives an end-of-track edge: `ProcessingState.completed` with the playing
+  /// flag still set, as just_audio reports it when a track runs to the end.
+  void emitCompleted() {
+    _state = PlayerState(true, ProcessingState.completed);
+    _states.add(_state);
   }
 
   @override
@@ -109,7 +120,10 @@ class _FakeAudioPlayer implements AudioPlayer {
   Duration? get duration => null;
 
   @override
-  bool get playing => _playing;
+  bool get playing => _state.playing;
+
+  @override
+  PlayerState get playerState => _state;
 
   @override
   Future<void> play() async {
@@ -130,6 +144,7 @@ class _FakeAudioPlayer implements AudioPlayer {
 
   @override
   Future<void> seek(Duration? position, {int? index}) async {
+    if (failSeek) throw StateError('seek rejected');
     seekCount++;
     if (position != null) _pos = position;
   }
@@ -4145,6 +4160,493 @@ void main() {
           isFalse,
           reason: 'no false-error flash during the live merge transition',
         );
+      },
+    );
+
+    // ---- Start concurrency, refresh coordination, control EOF/replay -------
+
+    testWidgets(
+      'a turn tapped while the bar-start is still loading waits for it, then '
+      'seeks the tapped turn (not 0)',
+      (tester) async {
+        // D1: ownership is claimed SYNCHRONOUSLY at the top of the merged
+        // start's load, so a turn tapped while the bar's own play is mid-
+        // download finds the merged event "owned" and routes straight to the
+        // seek -- on a player with no source yet, which just_audio ignores,
+        // starting playback at 0. The seek must WAIT for the in-flight start,
+        // then seek the now-loaded player.
+        final meAudio = audioEvent(_me);
+        final peerAudio = audioEvent(_peer);
+        final fake = _FakeAudioPlayer();
+        final loader = Completer<MatrixFile>();
+        await pumpWithRecordings(
+          tester,
+          room(),
+          serving(karaokeFixture(meAudio, peerAudio)),
+          audioPlayerFactory: () => fake,
+          mergedFileLoader: (_) => loader.future,
+        );
+
+        // Bar-start in flight: it claims ownership + attaches, then hangs on
+        // the pending download.
+        await tester.tap(find.byIcon(Icons.play_circle));
+        await tester.pump();
+        final matrixState = tester.state<MatrixState>(find.byType(_TestMatrix));
+        expect(matrixState.voiceMessageEventId.value, r'$merged');
+
+        // Tap the 'me' turn (audioStart 1000ms) WHILE the start is loading.
+        await tester.tap(find.text('0:01'));
+        await tester.pump();
+
+        // The seek has NOT fired yet -- it is waiting for the in-flight load.
+        // Mutation: drop `await _mergedStartFuture` in `_seekSharedPlayer` ->
+        // the seek runs now on the loading player -> seekCount == 1 -> RED.
+        expect(
+          fake.seekCount,
+          0,
+          reason:
+              'the seek must wait for the in-flight start, not run on a '
+              'still-loading player',
+        );
+
+        // Let the download finish: the start resolves, the deferred seek then
+        // runs on the now-loaded player and lands on the tapped turn (1000ms).
+        loader.complete(emptyMergedFile());
+        for (var i = 0; i < 20 && fake.seekCount == 0; i++) {
+          await tester.pump();
+          await tester.runAsync(
+            () => Future<void>.delayed(const Duration(milliseconds: 20)),
+          );
+        }
+        await tester.pump();
+        expect(fake.seekCount, greaterThan(0));
+        expect(
+          fake.position,
+          const Duration(milliseconds: 1000),
+          reason: 'the deferred seek lands on the tapped turn, not the start',
+        );
+
+        matrixState.audioPlayer = null;
+        matrixState.voiceMessageEventId.value = null;
+        await tester.pumpAndSettle();
+      },
+    );
+
+    testWidgets(
+      'a sync before the initial reads settle does not drop their merge',
+      (tester) async {
+        // D2: an early refresh that swaps the displayed futures before the
+        // initial reads settle would make `_feedLoadController`'s future-
+        // identity guard reject the initial reads' OWN merge. The refresh is
+        // gated on the initial reads settling, so the merge (present from the
+        // start) still shows.
+        final meAudio = audioEvent(_me);
+        final peerAudio = audioEvent(_peer);
+        final merged = mergedEvent(
+          _me,
+          sourceEventIds: [meAudio.eventId, peerAudio.eventId],
+        );
+        final recInitial =
+            Completer<({List<MatrixEvent> chunk, String? nextBatch})>();
+        final recRefresh =
+            Completer<({List<MatrixEvent> chunk, String? nextBatch})>();
+        final mergedInitial =
+            Completer<({List<MatrixEvent> chunk, String? nextBatch})>();
+        final mergedRefresh =
+            Completer<({List<MatrixEvent> chunk, String? nextBatch})>();
+        var recCalls = 0;
+        var mergedCalls = 0;
+        Future<({List<MatrixEvent> chunk, String? nextBatch})> fetch({
+          required String roomId,
+          required String eventId,
+          required String relType,
+          String? from,
+        }) {
+          if (relType == CallTranscriptContent.relType) {
+            return Future.value((
+              chunk: [
+                half(_me, texts: const ['hola']),
+                half(_peer, texts: const ['que tal']),
+              ],
+              nextBatch: null,
+            ));
+          }
+          if (relType == CallAudioContent.relType) {
+            recCalls++;
+            return recCalls == 1 ? recInitial.future : recRefresh.future;
+          }
+          mergedCalls++;
+          return mergedCalls == 1 ? mergedInitial.future : mergedRefresh.future;
+        }
+
+        final controller = CallRecordingsLoadController(
+          elapsed: () => Duration.zero,
+          scheduleTimer: (_, _) => Timer(Duration.zero, () {}),
+        );
+        await pumpWithRecordings(
+          tester,
+          room(),
+          fetch,
+          loadController: controller,
+        );
+
+        // The audio reads are still pending -> the bar shimmers, the initial
+        // reads have NOT settled.
+        expect(mergedPlayer(), findsNothing);
+
+        // A sync fires an early refresh (before the initial reads settle). With
+        // the gate it is a no-op; on the mutation it starts its own reads.
+        client.onSync.add(SyncUpdate(nextBatch: 's-early'));
+        await tester.pump();
+
+        // The refresh's reads land FIRST, reading the halves but (transiently)
+        // no merge -- and, on the mutation, swap the displayed futures.
+        recRefresh.complete((chunk: [meAudio, peerAudio], nextBatch: null));
+        mergedRefresh.complete((chunk: <MatrixEvent>[], nextBatch: null));
+        await tester.pumpAndSettle();
+
+        // Now the initial reads land WITH the merge.
+        recInitial.complete((chunk: [meAudio, peerAudio], nextBatch: null));
+        mergedInitial.complete((chunk: [merged], nextBatch: null));
+        await tester.pumpAndSettle();
+
+        // The merge still shows. Mutation: remove the `_initialReadsSettled`
+        // gate -> the early refresh clobbers the initial feed (identity guard
+        // drops it) and the displayed futures hold the no-merge refresh -> the
+        // player is dropped and the machine never reaches ready.
+        expect(controller.state.value, CallRecordingsLoadState.ready);
+        expect(mergedPlayer(), findsOneWidget);
+      },
+    );
+
+    testWidgets(
+      'a merge arriving before the initial reads settle is shown once they '
+      'settle (deferred refresh)',
+      (tester) async {
+        // D2 corollary: the initial reads do NOT guarantee they capture a merge
+        // published after their request went out -- the initial merged read can
+        // return empty while a merge arrives moments later. An early sync must
+        // therefore be DEFERRED, not dropped, and run once the initial reads
+        // settle; otherwise the merge stays hidden until another sync.
+        final meAudio = audioEvent(_me);
+        final peerAudio = audioEvent(_peer);
+        final merged = mergedEvent(
+          _me,
+          sourceEventIds: [meAudio.eventId, peerAudio.eventId],
+        );
+        final recInitial =
+            Completer<({List<MatrixEvent> chunk, String? nextBatch})>();
+        final mergedInitial =
+            Completer<({List<MatrixEvent> chunk, String? nextBatch})>();
+        var recCalls = 0;
+        var mergedCalls = 0;
+        Future<({List<MatrixEvent> chunk, String? nextBatch})> fetch({
+          required String roomId,
+          required String eventId,
+          required String relType,
+          String? from,
+        }) {
+          if (relType == CallTranscriptContent.relType) {
+            return Future.value((
+              chunk: [
+                half(_me, texts: const ['hola']),
+                half(_peer, texts: const ['que tal']),
+              ],
+              nextBatch: null,
+            ));
+          }
+          if (relType == CallAudioContent.relType) {
+            recCalls++;
+            // Initial read is gated (pending); the deferred refresh reads the
+            // halves immediately.
+            return recCalls == 1
+                ? recInitial.future
+                : Future.value((chunk: [meAudio, peerAudio], nextBatch: null));
+          }
+          mergedCalls++;
+          // Initial merged read returns EMPTY (the merge did not exist yet when
+          // it was dispatched); the deferred refresh reads the merge.
+          return mergedCalls == 1
+              ? mergedInitial.future
+              : Future.value((chunk: [merged], nextBatch: null));
+        }
+
+        final controller = CallRecordingsLoadController(
+          elapsed: () => Duration.zero,
+          scheduleTimer: (_, _) => Timer(Duration.zero, () {}),
+        );
+        await pumpWithRecordings(
+          tester,
+          room(),
+          fetch,
+          loadController: controller,
+        );
+
+        // Initial reads still pending -> shimmer, not settled.
+        expect(mergedPlayer(), findsNothing);
+
+        // A sync arrives before the initial reads settle: it is DEFERRED.
+        client.onSync.add(SyncUpdate(nextBatch: 's-early'));
+        await tester.pump();
+
+        // The initial reads settle WITHOUT a merge (stale empty snapshot); the
+        // deferred refresh then runs and reads the merge that has since arrived.
+        recInitial.complete((chunk: [meAudio, peerAudio], nextBatch: null));
+        mergedInitial.complete((chunk: <MatrixEvent>[], nextBatch: null));
+        await tester.pumpAndSettle();
+
+        // The merge shows via the deferred refresh. Mutation: drop the early
+        // sync instead of deferring it -> the deferred refresh never runs -> the
+        // merge stays hidden and the machine sits at pendingMerge.
+        expect(controller.state.value, CallRecordingsLoadState.ready);
+        expect(mergedPlayer(), findsOneWidget);
+      },
+    );
+
+    testWidgets(
+      'a refresh whose halves read fails still shows a merge read on the same '
+      'sync',
+      (tester) async {
+        // D3: a transient halves-read failure (-> empty) must not suppress a
+        // merge the same sync read successfully. The merge is evaluated against
+        // the last-known half count and still shown; the shrunk list is never
+        // adopted.
+        final meAudio = audioEvent(_me);
+        final peerAudio = audioEvent(_peer);
+        final merged = mergedEvent(
+          _me,
+          sourceEventIds: [meAudio.eventId, peerAudio.eventId],
+        );
+        var recCalls = 0;
+        var mergedCalls = 0;
+        Future<({List<MatrixEvent> chunk, String? nextBatch})> fetch({
+          required String roomId,
+          required String eventId,
+          required String relType,
+          String? from,
+        }) async {
+          if (relType == CallTranscriptContent.relType) {
+            return (
+              chunk: [
+                half(_me, texts: const ['hola']),
+                half(_peer, texts: const ['que tal']),
+              ],
+              nextBatch: null,
+            );
+          }
+          if (relType == CallAudioContent.relType) {
+            recCalls++;
+            // Initial read: two halves. Refresh read: FAILS (transient).
+            if (recCalls > 1) throw Exception('transient network');
+            return (chunk: [meAudio, peerAudio], nextBatch: null);
+          }
+          mergedCalls++;
+          // No merge initially; the merge lands on the refresh read.
+          return (
+            chunk: mergedCalls > 1 ? [merged] : <MatrixEvent>[],
+            nextBatch: null,
+          );
+        }
+
+        final controller = CallRecordingsLoadController(
+          elapsed: () => Duration.zero,
+          scheduleTimer: (_, _) => Timer(Duration.zero, () {}),
+        );
+        await pumpWithRecordings(
+          tester,
+          room(),
+          fetch,
+          loadController: controller,
+        );
+
+        // Two halves, no merge yet -> pendingMerge, no player.
+        expect(controller.state.value, CallRecordingsLoadState.pendingMerge);
+        expect(mergedPlayer(), findsNothing);
+
+        // A sync: the halves read fails (empty) but the merged read succeeds.
+        client.onSync.add(SyncUpdate(nextBatch: 's-merge'));
+        await tester.pumpAndSettle();
+
+        // The merge is shown despite the flaky halves read. Mutation: keep the
+        // blanket `if (recs.length < _shownHalfCount) return;` -> the whole
+        // refresh is dropped -> no player, still pendingMerge.
+        expect(controller.state.value, CallRecordingsLoadState.ready);
+        expect(mergedPlayer(), findsOneWidget);
+      },
+    );
+
+    testWidgets(
+      'a superseded merged start detaches its observation of the old player',
+      (tester) async {
+        // D4: when a fresh player takes the shared slot under the SAME merged
+        // id mid-download, the failing start's `_releaseIfCurrent` must not
+        // clear the (foreign) shared ownership -- but it must still detach OUR
+        // observation of the superseded player, or its subscriptions leak and
+        // its later position events keep driving the karaoke highlight. (Not
+        // reachable via the normal single-owner bar; the swap is injected here
+        // to exercise the identity-guard-skips branch.)
+        final meAudio = audioEvent(_me);
+        final peerAudio = audioEvent(_peer);
+        final p1 = _FakeAudioPlayer();
+        final loader = Completer<MatrixFile>();
+        await pumpWithRecordings(
+          tester,
+          room(),
+          serving(karaokeFixture(meAudio, peerAudio)),
+          audioPlayerFactory: () => p1,
+          mergedFileLoader: (_) => loader.future,
+        );
+
+        final matrixState = tester.state<MatrixState>(find.byType(_TestMatrix));
+
+        // Tap a turn: startMergedPlayer(p1) claims $merged, attaches
+        // observation to p1, then blocks on the hanging download.
+        await tester.tap(find.text('0:01'));
+        await tester.pump();
+        expect(identical(matrixState.audioPlayer, p1), isTrue);
+
+        // A fresh player takes the shared slot under the SAME merged id.
+        final p2 = _FakeAudioPlayer();
+        matrixState.audioPlayer = p2;
+
+        // p1's download fails -> the start aborts. `_releaseIfCurrent` sees p1
+        // is no longer current (p2 took over) so it does NOT clear shared
+        // ownership, but it DOES detach our observation of p1.
+        loader.completeError(Exception('merged download failed'));
+        await tester.pumpAndSettle();
+
+        // p2 (which we never owned) is left untouched, ownership intact.
+        expect(identical(matrixState.audioPlayer, p2), isTrue);
+        expect(matrixState.voiceMessageEventId.value, r'$merged');
+
+        // A later position on the superseded p1 must NOT drive the karaoke
+        // highlight -- our observation of it was detached. Mutation: drop the
+        // `if (identical(_observedPlayer, player)) _detachObservation();` -> p1
+        // stays observed -> this position resolves an active index.
+        p1.emitPosition(const Duration(milliseconds: 6000));
+        await tester.pump();
+        final timeline = tester.widget<TurnTimeline>(find.byType(TurnTimeline));
+        expect(
+          timeline.activeIndex!.value,
+          isNull,
+          reason:
+              'a superseded player we detached must no longer drive the '
+              'highlight',
+        );
+
+        matrixState.audioPlayer = null;
+        matrixState.voiceMessageEventId.value = null;
+        await p1.dispose();
+        await p2.dispose();
+      },
+    );
+
+    testWidgets(
+      'a completed merged track with unknown duration shows play and replays '
+      'from the start',
+      (tester) async {
+        // E1: a track that reached ProcessingState.completed with a null
+        // duration must read as at-end -- show the play affordance and, on tap,
+        // replay from 0 -- not show pause over silence and resume at EOF. The
+        // owned, completed player is installed directly (as the "clears its
+        // retry" test above does), so the assertion turns on `_isAtEnd`'s
+        // processing-state check, not the load dance.
+        //
+        // The merge is served with NO per-device recordings, deliberately: the
+        // stock per-device AudioPlayerWidgets stay mounted (offstage) and, on a
+        // shared-player `completed`, seek it back to 0 -- which would consume
+        // the completed state before this control saw it. That is a real "merge
+        // shown, no per-device rows" shape (a merge whose recordings read
+        // flaked, see D3), and it isolates THIS control's `_isAtEnd`.
+        await pumpWithRecordings(
+          tester,
+          room(),
+          serving([
+            half(_me, texts: const ['hola']),
+            half(_peer, texts: const ['que tal']),
+            mergedEvent(_me),
+          ]),
+        );
+        expect(mergedPlayer(), findsOneWidget);
+
+        final matrixState = tester.state<MatrixState>(find.byType(_TestMatrix));
+        final fake = _FakeAudioPlayer();
+        matrixState.audioPlayer = fake;
+        matrixState.voiceMessageEventId.value = r'$merged';
+        // The track ran to the end: completed, playing flag still set, duration
+        // unknown (the fake reports null).
+        fake.emitCompleted();
+        await tester.pump();
+
+        // The bar shows PLAY, not pause. Mutation: revert `_isAtEnd` to the
+        // duration-only check -> null duration reads as not-at-end -> pause.
+        expect(find.byIcon(Icons.play_circle), findsOneWidget);
+        expect(find.byIcon(Icons.pause_circle), findsNothing);
+
+        // Tapping replays from 0: it seeks to zero before resuming.
+        final seeksBefore = fake.seekCount;
+        await tester.tap(find.byIcon(Icons.play_circle));
+        await tester.pump();
+        expect(
+          fake.seekCount,
+          greaterThan(seeksBefore),
+          reason: 'a completed track replays from 0 (seek), not resume at EOF',
+        );
+        expect(fake.position, Duration.zero);
+
+        matrixState.audioPlayer = null;
+        matrixState.voiceMessageEventId.value = null;
+        await tester.pumpAndSettle();
+        await fake.dispose();
+      },
+    );
+
+    testWidgets(
+      'a rejected replay seek is handled and does not resume at EOF',
+      (tester) async {
+        // E2: the replay path awaits seek(0) inside a caught transaction and
+        // only resumes after it -- so a rejected seek aborts the replay (no
+        // unhandled async error, no resume at EOF) rather than firing seek-
+        // then-resume blind. Merge served with NO per-device rows (see E1) so
+        // nothing else consumes the completed state.
+        await pumpWithRecordings(
+          tester,
+          room(),
+          serving([
+            half(_me, texts: const ['hola']),
+            half(_peer, texts: const ['que tal']),
+            mergedEvent(_me),
+          ]),
+        );
+        expect(mergedPlayer(), findsOneWidget);
+
+        final matrixState = tester.state<MatrixState>(find.byType(_TestMatrix));
+        final fake = _FakeAudioPlayer();
+        matrixState.audioPlayer = fake;
+        matrixState.voiceMessageEventId.value = r'$merged';
+        // Completed (so the tap takes the replay path), and the next seek will
+        // REJECT.
+        fake.emitCompleted();
+        await tester.pump();
+        final playsBefore = fake.playCount;
+        fake.failSeek = true;
+
+        // Tap to replay: the seek rejects. The failure is caught (no unhandled
+        // async error fails the test) and playback does NOT resume at EOF.
+        // Mutation: revert to unawaited-seek-then-resume -> the rejected seek
+        // is an unhandled async error AND onResume still fires (playCount up).
+        await tester.tap(find.byIcon(Icons.play_circle));
+        await tester.pumpAndSettle();
+        expect(
+          fake.playCount,
+          playsBefore,
+          reason: 'a rejected replay seek must abort the replay, not resume',
+        );
+
+        matrixState.audioPlayer = null;
+        matrixState.voiceMessageEventId.value = null;
+        await tester.pumpAndSettle();
+        await fake.dispose();
       },
     );
   });
