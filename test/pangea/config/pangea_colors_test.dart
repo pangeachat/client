@@ -52,6 +52,7 @@ void main() {
     for (final colors in [light, dark]) {
       expect(colors.goldFixedDim, tone(80));
       expect(colors.onGoldFixed, tone(10));
+      expect(colors.goldHighlight, Color.lerp(tone(80), Colors.black, 0.2));
     }
   });
 

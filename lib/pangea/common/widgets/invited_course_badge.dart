@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:badges/badges.dart' as b;
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 
 /// The badge on the avatar of a course the learner has been invited to but
 /// hasn't joined yet. Gold rather than error-colored, and an envelope rather
@@ -19,14 +19,14 @@ class InvitedCourseBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     return b.Badge(
       badgeStyle: b.BadgeStyle(
-        badgeColor: AppConfig.goldByTheme(context),
+        badgeColor: Theme.of(context).pangea.goldFixedDim,
         elevation: 4,
         borderSide: BorderSide.none,
         padding: const EdgeInsetsGeometry.all(2),
       ),
       badgeContent: Icon(
         Icons.mail,
-        color: AppConfig.onGoldByTheme(context),
+        color: Theme.of(context).pangea.onGoldFixed,
         size: 12,
       ),
       position: position,

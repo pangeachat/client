@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 
 class ActivityStarRow extends StatelessWidget {
@@ -30,7 +30,7 @@ class ActivityStarRow extends StatelessWidget {
     // Both marks are theme-aware: the gold is unreadable on a light surface
     // and the old fixed grey was unreadable on a dark one, so each state used
     // to fail 1.4.11 in the theme the other passed (#8760).
-    final goldColor = AppConfig.goldMarkByTheme(context);
+    final goldColor = Theme.of(context).pangea.goldGraphic;
     final unearnedColor =
         emptyColor ?? Theme.of(context).colorScheme.onSurfaceVariant;
     if (condensed) {

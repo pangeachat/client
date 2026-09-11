@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/subscription/repo_v2/checkout_request.dart';
 import 'package:fluffychat/features/subscription/widgets/subscription_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -162,14 +162,14 @@ class DiscountCodeViewContent extends StatelessWidget {
                       children: [
                         Icon(
                           Icons.check,
-                          color: AppConfig.successByTheme(context),
+                          color: Theme.of(context).pangea.success,
                           size: 24.0,
                         ),
                         Flexible(
                           child: Text(
                             L10n.of(context).discountApplied(discountCopy),
                             style: TextStyle(
-                              color: AppConfig.successByTheme(context),
+                              color: Theme.of(context).pangea.success,
                             ),
                           ),
                         ),

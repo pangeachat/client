@@ -90,13 +90,13 @@ void main() {
       PangeaColors.of(Brightness.light).success,
       schemeFor(Brightness.light),
       textFloor,
-      what: 'successByTheme light (success)',
+      what: 'success, light',
     );
     expectClears(
       PangeaColors.of(Brightness.dark).success,
       schemeFor(Brightness.dark),
       textFloor,
-      what: 'successByTheme dark (success)',
+      what: 'success, dark',
     );
   });
 
@@ -106,13 +106,13 @@ void main() {
       PangeaColors.of(Brightness.light).warningGraphic,
       light,
       graphicFloor,
-      what: 'warningByTheme light (warningGraphic)',
+      what: 'warningGraphic, light',
     );
     expectClears(
       PangeaColors.of(Brightness.light).success,
       light,
       graphicFloor,
-      what: 'successByTheme light (success)',
+      what: 'success, light',
     );
 
     final dark = schemeFor(Brightness.dark);
@@ -120,13 +120,13 @@ void main() {
       AppConfig.warning,
       dark,
       graphicFloor,
-      what: 'warningByTheme dark (warning)',
+      what: 'warningGraphic, dark',
     );
     expectClears(
       PangeaColors.of(Brightness.dark).success,
       dark,
       graphicFloor,
-      what: 'successByTheme dark (success)',
+      what: 'success, dark',
     );
   });
 

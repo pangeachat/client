@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shimmer/shimmer.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/features/languages/language_flag_chip.dart';
@@ -476,7 +475,7 @@ class _ClusterTrackerButtonState extends State<ClusterTrackerButton> {
 /// Public so [WorldAnalyticsBar] can place it at the bar's left end.
 ///
 /// Unlike the trackers, the medal shows hover and the open Level panel in
-/// **its own gold** ([AppConfig.goldHighlightByTheme]) rather than behind
+/// **its own gold** ([PangeaColors.goldHighlight]) rather than behind
 /// itself: the trackers' circular wash sat gold-on-gold under a solid gold
 /// shield and read as a stray circle instead of feedback (#8067).
 class ClusterLevelMedal extends StatefulWidget {
@@ -528,7 +527,7 @@ class _ClusterLevelMedalState extends State<ClusterLevelMedal> {
               child: LevelRibbon(
                 height: 44,
                 level: widget.level,
-                color: lit ? AppConfig.goldHighlightByTheme(context) : null,
+                color: lit ? Theme.of(context).pangea.goldHighlight : null,
               ),
             ),
           ),

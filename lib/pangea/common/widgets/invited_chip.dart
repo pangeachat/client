@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 
 /// The gold "Invited" pill worn by anything the learner has been invited to but
@@ -10,7 +10,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 /// text half of the same state marker `InvitedCourseBadge` puts on the avatar.
 ///
 /// One widget for every surface so the pill can't drift between them, or from
-/// the badge beside it. The fill is [AppConfig.goldByTheme] used as given —
+/// the badge beside it. The fill is the theme's bright gold fill, [PangeaColors.goldFixedDim], used as given —
 /// washing it with a translucent surface first dragged the dark theme's gold
 /// toward the near-black surface and left it muddy and visibly off the badge on
 /// the same tile (#8109).
@@ -22,12 +22,12 @@ class InvitedChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final foregroundColor = AppConfig.onGoldByTheme(context);
+    final foregroundColor = Theme.of(context).pangea.onGoldFixed;
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
       decoration: BoxDecoration(
-        color: AppConfig.goldByTheme(context),
+        color: Theme.of(context).pangea.goldFixedDim,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(

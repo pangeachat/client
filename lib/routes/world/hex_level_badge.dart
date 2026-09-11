@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 
 /// The narrow bar's level badge: the Figma hexagon (pointy left/right, flat
@@ -43,8 +43,8 @@ class _HexLevelBadgeState extends State<HexLevelBadge> {
     final label = '${L10n.of(context).level} ${widget.level}';
     final lit = _hovered || widget.selected;
     final fill = lit
-        ? AppConfig.goldHighlightByTheme(context)
-        : AppConfig.goldByTheme(context);
+        ? Theme.of(context).pangea.goldHighlight
+        : Theme.of(context).pangea.goldFixedDim;
     // The outline is always a step darker than whatever the fill is, so the
     // lit badge deepens as one mark.
     final hsl = HSLColor.fromColor(fill);

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/subscription/repo_v2/products_response.dart';
 import 'package:fluffychat/features/subscription/widgets/frame_container.dart';
@@ -29,13 +29,13 @@ class SubscriptionOptionCard extends StatelessWidget {
         : theme.textTheme.titleSmall;
 
     final frameColor = selected
-        ? AppConfig.goldByTheme(context)
+        ? Theme.of(context).pangea.goldFixedDim
         : theme.colorScheme.primaryContainer;
 
     // The title sits on [frameColor], so its ink follows the frame — gold is a
     // light fill in both themes, where onPrimaryContainer is unreadable (#8303).
     final foregroundColor = selected
-        ? AppConfig.onGoldByTheme(context)
+        ? Theme.of(context).pangea.onGoldFixed
         : theme.colorScheme.onPrimaryContainer;
 
     return Semantics(

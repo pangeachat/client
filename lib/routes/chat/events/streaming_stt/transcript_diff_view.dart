@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
@@ -80,8 +80,8 @@ class TranscriptDiffView extends StatelessWidget {
                 .firstOrNull;
             return (
               idleUnderlineColor: changed
-                  ? AppConfig.warningByTheme(context)
-                  : AppConfig.successByTheme(context),
+                  ? Theme.of(context).pangea.warningGraphic
+                  : Theme.of(context).pangea.success,
               idleUnderlineDashed: !changed,
               secondaryText: source,
               secondaryStyle: source == null

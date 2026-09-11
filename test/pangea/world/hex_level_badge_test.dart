@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/hex_level_badge.dart';
 
@@ -110,10 +110,10 @@ void main() {
     ) async {
       final unlit = await pumpBadge(tester, selected: false);
       final context = tester.element(find.byType(Scaffold));
-      expect(unlit.fill, AppConfig.goldByTheme(context));
+      expect(unlit.fill, Theme.of(context).pangea.goldFixedDim);
 
       final lit = await pumpBadge(tester, selected: true);
-      expect(lit.fill, AppConfig.goldHighlightByTheme(context));
+      expect(lit.fill, Theme.of(context).pangea.goldHighlight);
     });
 
     testWidgets('the outline stays a step darker than whatever the fill is', (

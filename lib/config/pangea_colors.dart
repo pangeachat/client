@@ -20,6 +20,7 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
     required this.onGoldFixed,
     required this.goldContainer,
     required this.onGoldContainer,
+    required this.goldHighlight,
     required this.warning,
     required this.warningGraphic,
     required this.warningFixedDim,
@@ -57,6 +58,15 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
 
   /// Ink on [goldContainer].
   final Color onGoldContainer;
+
+  /// The gold a level badge wears while hovered, or while the Level panel it
+  /// opens is showing: [goldFixedDim] pulled a fifth of the way toward black.
+  /// The badge is itself a solid gold mark, so a wash behind it would be gold
+  /// on gold and a wash around it a circle the design doesn't want; the mark's
+  /// own gold shifts instead (#8067). Toward black rather than down the HSL
+  /// lightness axis, so the shift reads the same in both brightnesses, and no
+  /// further than keeps the badge's level number above 8:1.
+  final Color goldHighlight;
 
   /// Caution that reads as text: the course-language chip when the course is
   /// not in the learner's target language. Clears 4.5:1 on the surface.
@@ -140,6 +150,7 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
       onGoldFixed: Color(gold.get(10)),
       goldContainer: Color(gold.get(light ? 90 : 30)),
       onGoldContainer: Color(gold.get(light ? 10 : 90)),
+      goldHighlight: Color.lerp(Color(gold.get(80)), Colors.black, 0.2)!,
       warning: Color(warning.get(light ? 40 : 80)),
       warningGraphic: Color(warning.get(light ? 50 : 80)),
       warningFixedDim: Color(warning.get(80)),
@@ -165,6 +176,7 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
     Color? onGoldFixed,
     Color? goldContainer,
     Color? onGoldContainer,
+    Color? goldHighlight,
     Color? warning,
     Color? warningGraphic,
     Color? warningFixedDim,
@@ -186,6 +198,7 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
     onGoldFixed: onGoldFixed ?? this.onGoldFixed,
     goldContainer: goldContainer ?? this.goldContainer,
     onGoldContainer: onGoldContainer ?? this.onGoldContainer,
+    goldHighlight: goldHighlight ?? this.goldHighlight,
     warning: warning ?? this.warning,
     warningGraphic: warningGraphic ?? this.warningGraphic,
     warningFixedDim: warningFixedDim ?? this.warningFixedDim,
@@ -212,6 +225,7 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
       onGoldFixed: Color.lerp(onGoldFixed, other.onGoldFixed, t)!,
       goldContainer: Color.lerp(goldContainer, other.goldContainer, t)!,
       onGoldContainer: Color.lerp(onGoldContainer, other.onGoldContainer, t)!,
+      goldHighlight: Color.lerp(goldHighlight, other.goldHighlight, t)!,
       warning: Color.lerp(warning, other.warning, t)!,
       warningGraphic: Color.lerp(warningGraphic, other.warningGraphic, t)!,
       warningFixedDim: Color.lerp(warningFixedDim, other.warningFixedDim, t)!,

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/subscription/repo_v2/products_response.dart';
 import 'package:fluffychat/features/subscription/widgets/frame_container.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -78,9 +79,9 @@ void main() {
         final ink = titleInk(tester);
         expect(
           ink,
-          AppConfig.onGoldByTheme(
+          Theme.of(
             tester.element(find.byType(SubscriptionOptionCard)),
-          ),
+          ).pangea.onGoldFixed,
           reason:
               'the selected title bar is gold, so its ink is the shared '
               'on-gold tone rather than a colour of its own',

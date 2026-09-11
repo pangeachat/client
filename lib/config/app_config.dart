@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/utils/text_scaler_extension.dart';
 
@@ -17,11 +16,36 @@ abstract class AppConfig {
     return Uri.parse(hasScheme ? url : 'https://$url');
   }
 
+  // ---------------------------------------------------------------------------
+  // Colours
+  //
+  // Widgets read colour roles from the theme (Theme.of(context).pangea and
+  // colorScheme), per design-tokens.instructions.md. What lives here is:
+  //  - the key colours PangeaColors derives its role families from;
+  //  - the static colours older sites still read directly, which move to a
+  //    theme role as each site is touched.
+  // ---------------------------------------------------------------------------
+
+  // Key colours. Each is the one place its hue is written; PangeaColors turns
+  // it into a family of roles by tone.
+  static const Color gold = Color.fromARGB(255, 253, 191, 1);
+  static const Color warning = Color.fromARGB(255, 210, 124, 12);
+  static const Color success = Color(0xFF33D057);
+
+  /// The joinable-session green. PangeaColors.joinable is its tone that
+  /// carries white text; ActivityPinState still reads this as its static
+  /// fallback.
+  static const Color green = Color(0xFF34A853);
+
+  // Static colours still read directly by widget code (migrating).
   static const Color primaryColor = Color(0xFF8560E0);
   static const Color primaryColorLight = Color(0xFFDBC9FF);
   static const Color primaryColorDark = Color.fromARGB(255, 81, 66, 126);
-
   static const Color chatColor = primaryColor;
+  static const Color goldLight = Color.fromARGB(255, 254, 223, 73);
+  static const Color error = Colors.red;
+  static const Color activeToggleColor = Color(0xFF33D057);
+
   static const double messageFontSize = 16.0;
   static const bool allowOtherHomeservers = true;
   static const bool enableRegistration = true;
@@ -75,61 +99,6 @@ abstract class AppConfig {
       "https://play.google.com/store/account/orderhistory";
   static bool useActivityImageAsChatBackground = true;
   static const int overlayAnimationDuration = 250;
-  static const Color gold = Color.fromARGB(255, 253, 191, 1);
-  static const Color goldLight = Color.fromARGB(255, 254, 223, 73);
-
-  /// The bright gold fill: [PangeaColors.goldFixedDim]. Pair it with
-  /// [onGoldByTheme]. Sites that use it as a border, ring or progress fill
-  /// should read [PangeaColors.goldGraphic] instead.
-  static Color goldByTheme(BuildContext context) =>
-      Theme.of(context).pangea.goldFixedDim;
-
-  /// The gold a solid mark carrying meaning wears, an earned activity star
-  /// for one: [PangeaColors.goldGraphic], which clears 3:1 in both themes.
-  static Color goldMarkByTheme(BuildContext context) =>
-      Theme.of(context).pangea.goldGraphic;
-
-  /// Green for something finished, for foreground use: [PangeaColors.success],
-  /// the text tone, which clears 4.5:1 in both themes.
-  static Color successByTheme(BuildContext context) =>
-      Theme.of(context).pangea.success;
-
-  /// The caution counterpart of [successByTheme], for foreground use — text,
-  /// an icon, a diff underline: [PangeaColors.warningGraphic], which clears
-  /// 3:1 in both themes. Fill uses keep [warning] itself.
-  static Color warningByTheme(BuildContext context) =>
-      Theme.of(context).pangea.warningGraphic;
-
-  /// Readable ink on top of [goldByTheme]: [PangeaColors.onGoldFixed].
-  static Color onGoldByTheme(BuildContext context) =>
-      Theme.of(context).pangea.onGoldFixed;
-
-  /// The gold a **level badge** wears while hovered, or while the Level panel
-  /// it opens is showing: [goldByTheme] deepened by [_goldHighlightDepth].
-  ///
-  /// The cluster's trackers show those two states with a translucent gold wash
-  /// behind them, but the level badge is itself a solid gold mark — a wash
-  /// behind it is gold on gold and reads as nothing, and a wash *around* it is
-  /// a circle the design doesn't want. So the mark's own gold shifts instead
-  /// (#8067), on both the web cluster's shield medal and the mobile bar's hex
-  /// badge.
-  ///
-  /// Deepened toward black rather than down the HSL lightness axis: the dark
-  /// theme's [goldLight] sits near the top of that axis, where dropping
-  /// lightness mostly saturates the yellow and barely darkens it — the state
-  /// has to read as the same shift in both brightnesses.
-  static Color goldHighlightByTheme(BuildContext context) =>
-      Color.lerp(goldByTheme(context), Colors.black, _goldHighlightDepth)!;
-
-  /// How far [goldHighlightByTheme] pulls the gold toward black — enough to
-  /// read as a state change at a glance, not so far that the badge's black
-  /// level number loses contrast (both themes stay above 8:1).
-  static const double _goldHighlightDepth = 0.2;
-
-  static const Color success = Color(0xFF33D057);
-  static const Color error = Colors.red;
-  static const Color warning = Color.fromARGB(255, 210, 124, 12);
-  static const Color activeToggleColor = Color(0xFF33D057);
   static const double toolbarMaxHeight = 250.0;
   static const double toolbarMinWidth = 350.0;
   static const double toolbarMinHeight = 150.0;
@@ -199,6 +168,4 @@ abstract class AppConfig {
     "image/gif",
     "image/png",
   };
-
-  static const Color green = Color(0xFF34A853);
 }

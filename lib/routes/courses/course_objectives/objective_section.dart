@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
@@ -124,8 +124,8 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
                   satisfied ? Icons.check_circle : Icons.star,
                   size: 18.0,
                   color: satisfied
-                      ? AppConfig.successByTheme(context)
-                      : AppConfig.goldMarkByTheme(context),
+                      ? Theme.of(context).pangea.success
+                      : Theme.of(context).pangea.goldGraphic,
                 ),
                 const SizedBox(width: 4.0),
                 ExcludeSemantics(

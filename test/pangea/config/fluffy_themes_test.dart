@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 
@@ -54,32 +53,5 @@ void main() {
       expect(theme.pangea.gold, expected.gold);
       expect(theme.pangea.goldFixedDim, expected.goldFixedDim);
     }
-  });
-
-  testWidgets('the AppConfig gold helpers read the theme roles', (
-    tester,
-  ) async {
-    late BuildContext captured;
-    await tester.pumpWidget(
-      MaterialApp(
-        home: Builder(
-          builder: (context) => Theme(
-            data: FluffyThemes.buildTheme(context, Brightness.light, seed),
-            child: Builder(
-              builder: (inner) {
-                captured = inner;
-                return const SizedBox();
-              },
-            ),
-          ),
-        ),
-      ),
-    );
-    final roles = PangeaColors.of(Brightness.light);
-    expect(AppConfig.goldByTheme(captured), roles.goldFixedDim);
-    expect(AppConfig.onGoldByTheme(captured), roles.onGoldFixed);
-    expect(AppConfig.goldMarkByTheme(captured), roles.goldGraphic);
-    expect(AppConfig.warningByTheme(captured), roles.warningGraphic);
-    expect(AppConfig.successByTheme(captured), roles.success);
   });
 }

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as b;
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -57,7 +57,7 @@ class UnreadRoomsBadge extends StatelessWidget {
         // #Pangea
         padding: const EdgeInsetsGeometry.all(1),
         badgeColor: hasInvite
-            ? AppConfig.goldByTheme(context)
+            ? Theme.of(context).pangea.goldFixedDim
             : theme.colorScheme.primary,
         // Pangea#
         elevation: 4,
@@ -78,7 +78,7 @@ class UnreadRoomsBadge extends StatelessWidget {
             semanticsLabel: L10n.of(context).unreadLabel(unreadText),
             style: TextStyle(
               color: hasInvite
-                  ? AppConfig.onGoldByTheme(context)
+                  ? Theme.of(context).pangea.onGoldFixed
                   : theme.colorScheme.onPrimary,
               fontSize: 12,
             ),
