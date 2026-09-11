@@ -1835,3 +1835,29 @@ until the design is Codex-green.
   screen) at docs/handoff/2026-09-10-doc-addition-proposal.md. NOT applied to the instructions doc (agent
   never edits a governed doc unilaterally); it's the proposal for Will to review + a placement + open
   wording choices. Finalize the two behaviour-dependent sentences against what agent 5 actually ships.
+
+## 2026-09-10 (cont) — BUILD 5 returned (27b2131f61); confirmed live-refresh regression; cold-gating
+- Agent 5 (aa6e3a1bc5fcdd33c, 2.6h, 293 tools) committed 27b2131f61: transcript_view.dart +978/-176 (one
+  CustomScrollView, pinned _FullCallBarDelegate "Full call" bar driven by CallRecordingsLoadController,
+  AnimatedSize+Offstage expandable per-device rows that stay MOUNTED, non-lazy TurnTimeline; CallPlaybackController
+  from matrix.audioPlayer streams; single time-sort handed to BOTH controller+timeline (req3 same-tick ok,
+  req1 single-scrollable ok). Self-Codex: CORRECT/softening none (7 rounds). +2 shared files, +2 en arb keys.
+- >>> MY FINDING (verified by reading the code, NOT from the gate): LIVE AUTO-REFRESH DROPPED. initState->_load()
+  reads transcript/recordings/merged futures ONCE; the only re-read is _retry(); there is NO room/sync/timeline
+  subscription (grep: zero StreamBuilder/onUpdate/onSync). So a merge arriving AFTER the screen opens is NOT
+  picked up -- the bar sits in pendingMerge shimmer until the 30s grace, then flips to `unavailable` note+Retry,
+  and the retry button is NOT shown during shimmer. Common flow (open transcript right after a call, before the
+  peer half/merge upload completes) => 30s shimmer then a FALSE "No recording" + manual Retry. Contradicts the
+  explicit loading-states intent ("spinner while waiting ... then it appears"). Agent dropped it under PREFER-SIMPLE
+  because a setState(_load) refresh raced the terminal-`ready` latch across 3 rounds. red-to-root-cause: fix the
+  race (the _retry path ALREADY proves the clean fresh-epoch pattern -- replace controller + _load), do NOT drop
+  a required behaviour. => MUST-FIX in the fixer round.
+- Agent-5 flags to weigh: (a) shared audio_player.dart dispose now removes _onPlayerChange + cancels
+  _onAudioStateChanged UNCONDITIONALLY (genuine leak fix for every non-owning AudioPlayerWidget; blast radius =
+  all audio surfaces -> run the broad audio bucket at assembly); (b) multi_platform_audio_player awaits mobile
+  setFilePath (matches web; a seek-right-after now lands on a ready source); (c) documented narrow edge: if the
+  bar's own play-button DOWNLOAD fails, AudioPlayerWidget leaves voiceMessageEventId wedged -> a later turn tap
+  seeks a dead player (agent calls it pre-existing in AudioPlayerWidget; judge in-scope after the gate).
+- PLAN: my independent cold gate on the two RISKY areas (shared-audio lifecycle; karaoke seek/ownership races) --
+  layout+load-wiring is low-risk (load machine already cold-gated in build 4). Then ONE fixer round to agent 5
+  (SendMessage, keeps context) = restore live auto-refresh (root-caused) + any real gate findings. Keep it simple.
