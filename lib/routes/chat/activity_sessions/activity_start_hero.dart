@@ -256,7 +256,9 @@ class _ActivityStartHeroState extends State<ActivityStartHero> {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              theme.colorScheme.primaryContainer,
+              // The pale brand tint the gradient was designed around;
+              // primaryContainer is a vivid fill under fidelity.
+              theme.colorScheme.primaryFixed,
               theme.colorScheme.surface,
             ],
           ),
