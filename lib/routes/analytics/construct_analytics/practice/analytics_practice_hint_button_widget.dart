@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 
 class HintButton extends StatelessWidget {
@@ -16,9 +17,10 @@ class HintButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return PressableButton(
       borderRadius: BorderRadius.circular(20),
-      color: Theme.of(context).colorScheme.primaryContainer,
+      color: theme.colorScheme.primaryContainer,
       onPressed: onPressed,
       depressed: depressed,
       playSound: true,
@@ -32,11 +34,18 @@ class HintButton extends StatelessWidget {
             decoration: BoxDecoration(
               color: depressed
                   ? shadowColor
-                  : Theme.of(context).colorScheme.primaryContainer,
+                  : theme.colorScheme.primaryContainer,
               shape: BoxShape.circle,
             ),
           ),
-          Icon(icon, size: 20),
+          Icon(
+            icon,
+            size: 20,
+            // A darkened fill loses its own ink; the theme's light tone reads.
+            color: depressed
+                ? theme.lightTone
+                : theme.colorScheme.onPrimaryContainer,
+          ),
         ],
       ),
     );
