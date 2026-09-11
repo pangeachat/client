@@ -3,14 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/construct_use_type_enum.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
 
-/// The XP a use is worth is drawn in the theme's gold, not the light theme's
+/// The XP a use is worth is drawn in the theme's gold, not a hard-coded hex
 /// (#8491). The Level panel's own gold marks — the level shield, the XP ring
-/// the panel opens from — all read [AppConfig.goldByTheme], so a hard-coded
-/// [AppConfig.gold] here matched them in light mode and clashed in dark.
+/// the panel opens from — all read [AppConfig.goldByTheme], which resolves to
+/// the theme's [PangeaColors.goldFixedDim] in both brightnesses.
 void main() {
   OneConstructUse use(int xp) => OneConstructUse(
     useType: ConstructUseTypeEnum.corPA,
@@ -35,15 +36,17 @@ void main() {
     return tester.element(find.byType(Scaffold));
   }
 
-  testWidgets('positive XP wears the light theme gold', (tester) async {
-    final context = await pump(tester, Brightness.light);
-    expect(use(5).pointValueColor(context), AppConfig.gold);
-  });
-
-  testWidgets('positive XP wears the dark theme gold', (tester) async {
-    final context = await pump(tester, Brightness.dark);
-    expect(use(5).pointValueColor(context), AppConfig.goldLight);
-  });
+  for (final brightness in Brightness.values) {
+    testWidgets('positive XP wears the theme gold ($brightness)', (
+      tester,
+    ) async {
+      final context = await pump(tester, brightness);
+      expect(
+        use(5).pointValueColor(context),
+        PangeaColors.of(brightness).goldFixedDim,
+      );
+    });
+  }
 
   testWidgets('negative XP stays red in both themes', (tester) async {
     expect(

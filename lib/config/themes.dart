@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'app_config.dart';
 
@@ -45,6 +46,9 @@ abstract class FluffyThemes {
     final colorScheme = ColorScheme.fromSeed(
       brightness: brightness,
       seedColor: seed ?? Color(AppSettings.colorSchemeSeedInt.value),
+      // Keeps the seed's chroma so primary is the brand purple rather than
+      // the pastel the default tonalSpot expansion produces.
+      dynamicSchemeVariant: DynamicSchemeVariant.fidelity,
     );
     final isColumnMode = FluffyThemes.isColumnMode(context);
     return ThemeData(
@@ -52,6 +56,7 @@ abstract class FluffyThemes {
       useMaterial3: true,
       brightness: brightness,
       colorScheme: colorScheme,
+      extensions: [PangeaColors.of(brightness)],
       dividerColor: brightness == Brightness.dark
           ? colorScheme.surfaceContainerHighest
           : colorScheme.surfaceContainer,

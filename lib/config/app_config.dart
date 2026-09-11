@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/utils/text_scaler_extension.dart';
 
@@ -83,28 +84,16 @@ abstract class AppConfig {
   /// foreground code should reach it.
   static const Color goldDeep = Color(0xFF917424);
 
+  /// The bright gold fill: [PangeaColors.goldFixedDim]. Pair it with
+  /// [onGoldByTheme]. Sites that use it as a border, ring or progress fill
+  /// should read [PangeaColors.goldGraphic] instead.
   static Color goldByTheme(BuildContext context) =>
-      Theme.of(context).brightness == Brightness.light ? gold : goldLight;
+      Theme.of(context).pangea.goldFixedDim;
 
-  /// The gold a **solid mark carrying meaning** wears — an earned activity
-  /// star, where the fill itself is the information rather than decoration.
-  ///
-  /// The line against [goldByTheme] is whether the gold is what gets read.
-  /// A star, a trail marker, a progress bar's fill — the mark's presence or
-  /// extent *is* the information, so it needs the 3:1. A gold that sits
-  /// *behind* something read (a chip, a pill, a tinted card) is a background
-  /// and keeps [goldByTheme], because the ink on it carries the contrast —
-  /// the same split [warningByTheme] draws. So does decoration nothing is
-  /// read from: XP particles, the goal-star flight animation (#8983).
-  ///
-  /// [gold] is 1.58:1 on the light theme's surface and 1.28:1 on its cards,
-  /// far under the 3:1 WCAG 1.4.11 asks of a graphic the user has to read, so
-  /// light gets [goldDeep] (4.22:1 / 3.43:1). Dark keeps [gold], already
-  /// 11.18:1 / 7.39:1 there. One gold cannot serve both: [goldDeep] drops to
-  /// 2.77:1 on a dark card, and no step of the ramp clears 3:1 in all four
-  /// contexts (#8760).
+  /// The gold a solid mark carrying meaning wears, an earned activity star
+  /// for one: [PangeaColors.goldGraphic], which clears 3:1 in both themes.
   static Color goldMarkByTheme(BuildContext context) =>
-      Theme.of(context).brightness == Brightness.light ? goldDeep : gold;
+      Theme.of(context).pangea.goldGraphic;
 
   /// Green for something finished: [completedGreen] on light, where [success]
   /// is too pale to read on the surface, and [success] on dark.
@@ -122,14 +111,9 @@ abstract class AppConfig {
   static Color warningByTheme(BuildContext context) =>
       Theme.of(context).brightness == Brightness.light ? warningDeep : warning;
 
-  /// Readable ink on top of [goldByTheme], which is a light fill in both
-  /// brightnesses — so both branches resolve to a dark tone.
-  static Color onGoldByTheme(BuildContext context) {
-    final theme = Theme.of(context);
-    return theme.brightness == Brightness.light
-        ? theme.colorScheme.onSurface
-        : theme.colorScheme.surface;
-  }
+  /// Readable ink on top of [goldByTheme]: [PangeaColors.onGoldFixed].
+  static Color onGoldByTheme(BuildContext context) =>
+      Theme.of(context).pangea.onGoldFixed;
 
   /// The gold a **level badge** wears while hovered, or while the Level panel
   /// it opens is showing: [goldByTheme] deepened by [_goldHighlightDepth].
