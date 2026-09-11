@@ -1936,3 +1936,29 @@ until the design is Codex-green.
   dosage_audio x2 + streaming audio_message_edited_flag) = GREEN +91 (audio_player.dart untouched by the
   fixer, so valid at HEAD) -> the shared-widget leak fix breaks no AudioPlayerWidget caller; Gate A caveat
   closed. On cold-gate green: full calls bucket + whole-branch cold-Codex -> owner real-call test -> PR2 on go.
+- CallPlaybackController-extends-ChangeNotifier: CONFIRMED vestigial (never calls notifyListeners; nothing
+  listens to it as a ChangeNotifier -- it exposes ValueNotifiers). Harmless; trivial 2-line removal folded
+  into the assembly commit, not worth a dedicated gate cycle.
+
+## 2026-09-11 (cont) — cold gates D+E: 6 real edge findings; fixer round 2 dispatched (a7fb6bb08f2afcccd)
+- My independent cold gate on the fixer diff (2d1b1abf64), split D (live-refresh+lifecycle) + E (control):
+  both ISSUES-FOUND / softening no. 6 real findings, NONE repeats of round 1 -- second-order edges of the
+  ~600 new lines of concurrent UI, in 3 tidy classes. The gates explicitly CLEARED: grace preservation, the
+  already-shown-merge guard, the SynchronousFuture no-flash, dispose release, _starting clearing, the
+  post-frame _loadFailed clear, StreamGroup cancellation, div-by-zero.
+  CLASS 1 start-concurrency: D1[P1] _mergedStartInFlight guard returns a SUCCESS no-op -> a turn tap during
+    a bar-download seeks a still-loading player -> plays from 0 (this IS the prior "deferred gap"; the clean
+    fix = track+return the in-flight start future, so it's no longer deferred). D4[P3] superseded-start abort
+    leaks observation (_releaseIfCurrent returns before _detachObservation); likely UNREACHABLE under
+    single-owner+in-flight-guard, cheap 1-line detach or document.
+  CLASS 2 refresh-coordination: D2[P2] an early refresh swaps displayed futures -> _feedLoadController rejects
+    the initial reads' own merge by identity (fix = gate refresh on _initialReadsSettled). D3[P2] shrink guard
+    drops a SUCCESSFUL merge when the halves read transiently fails (fix = evaluate the merge with last-known
+    count; never adopt the shrunk list).
+  CLASS 3 control-EOF/replay: E1[P2] _isAtEnd false when duration==null -> a completed track can't replay
+    (fix = honor ProcessingState.completed). E2[P2] replay's unawaited seek(0)+resume has no error handler +
+    wrong ordering -> unhandled async error, plays from EOF (fix = await+catch seek before resume; catch pause).
+- All 6 real, all small/root-caused (altitude fix for D1; single gate for D2). Re-spawned fixer round 2
+  (a7fb6bb08f2afcccd, opus; SendMessage-to-subagent still absent) with mutation-proven tests per finding.
+  ON RETURN: re-cold-gate the deltas (should be small + converging), then assembly (full calls bucket +
+  whole-branch cold-Codex + the trivial ChangeNotifier cleanup) -> owner real-call test -> PR2 on go.
