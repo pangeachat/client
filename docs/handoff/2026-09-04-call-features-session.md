@@ -1892,3 +1892,17 @@ until the design is Codex-green.
 - PLAN: ask the 4a fork (bar-play karaoke vs documented tap-a-turn limitation), then ONE SendMessage fixer
   round to agent 5 = F1 + F2 + F5(live-refresh, onSync feed-not-reset) + F4 per the owner's call. Fixer
   brief drafted at scratchpad/fixer5-brief.md. No push/PR; audio + calls buckets at assembly.
+- OWNER DECISION (4a): "Bar play drives karaoke" -> the Full-call bar's play/pause drives transcript_view's
+  OWN merged-playback path (single-owner custom control), NOT a stock AudioPlayerWidget. This also collapses
+  the shared-player-churn root cause behind F1/F2/F4 (nothing external creates a merged-id player).
+- SendMessage-to-subagent NOT on this session's surface (ToolSearch returned only Gmail/Slack/CCD-session
+  sends) -> per resume-subagent-via-sendmessage, RE-SPAWNED a fresh fixer with full artifacts (agentId
+  a5f88dc6a789002e9, opus), self-contained brief covering F1 (consistent exit/identity-guarded release),
+  F2 (rethrow to abort the transaction; verify controller propagates), F4a (single-owner bar control reusing
+  _startMergedPlayer/_playSharedPlayer/observation + in-flight guard; per-device rows keep AudioPlayerWidget;
+  hard invariant preserved), F5 (onSync feed-not-reset, flicker-free swap). Mutation-proven tests for each;
+  full local gate + codex self-gate (block on pid); no push/PR/handoff edits; new arb keys English-only (Gabby).
+- ON FIXER RETURN: cold-gate the fixer diff (the F4a control + the race fixes), then whole-branch assembly:
+  broad AUDIO bucket (AudioPlayerWidget blast radius from the dispose leak fix) + full CALLS bucket (mind the
+  active_call tearDownAll env flake; one bucket at a time) + the CallPlaybackController-extends-ChangeNotifier
+  consistency item + whole-branch cold-Codex. Then owner real-call test -> PR2 on explicit go.
