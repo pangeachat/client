@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dart';
@@ -126,7 +125,10 @@ void main() {
           (widget) => widget is UnderlineText && widget.text == word,
         ),
       );
-      expect(rendered.underlineColor, AppConfig.completedGreen);
+      expect(
+        rendered.underlineColor,
+        PangeaColors.of(Brightness.light).success,
+      );
       expect(rendered.dashed, isTrue);
     }
     expect(find.byType(Text), findsNothing);

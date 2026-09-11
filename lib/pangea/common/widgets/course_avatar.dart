@@ -99,14 +99,14 @@ class CourseAvatar extends StatelessWidget {
             // one still on the theme's primaryContainer.
             return b.Badge(
               badgeStyle: b.BadgeStyle(
-                badgeColor: ActivityPinState.joinable.color,
+                badgeColor: ActivityPinState.joinable.bodyColor(context),
                 elevation: 4,
                 borderSide: BorderSide.none,
                 padding: const EdgeInsetsGeometry.all(2),
               ),
-              badgeContent: const Icon(
+              badgeContent: Icon(
                 Icons.notifications_outlined,
-                color: Colors.white,
+                color: ActivityPinState.joinable.onBodyColor(context),
                 size: 12,
               ),
               position: position,

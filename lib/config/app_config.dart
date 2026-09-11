@@ -95,12 +95,10 @@ abstract class AppConfig {
   static Color goldMarkByTheme(BuildContext context) =>
       Theme.of(context).pangea.goldGraphic;
 
-  /// Green for something finished: [completedGreen] on light, where [success]
-  /// is too pale to read on the surface, and [success] on dark.
+  /// Green for something finished, for foreground use: [PangeaColors.success],
+  /// the text tone, which clears 4.5:1 in both themes.
   static Color successByTheme(BuildContext context) =>
-      Theme.of(context).brightness == Brightness.light
-      ? completedGreen
-      : success;
+      Theme.of(context).pangea.success;
 
   /// The caution counterpart of [successByTheme], for foreground use — text,
   /// an icon, a diff underline: [PangeaColors.warningGraphic], which clears
@@ -218,5 +216,4 @@ abstract class AppConfig {
 
   static const Color green = Color(0xFF34A853);
   static const Color gray = Color(0xFFB4B2A9);
-  static const Color completedGreen = Color(0xFF3B6D11);
 }

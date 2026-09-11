@@ -87,13 +87,13 @@ void main() {
 
   test('discount-code success text clears 4.5:1 in both themes', () {
     expectClears(
-      AppConfig.completedGreen,
+      PangeaColors.of(Brightness.light).success,
       schemeFor(Brightness.light),
       textFloor,
-      what: 'successByTheme light (completedGreen)',
+      what: 'successByTheme light (success)',
     );
     expectClears(
-      AppConfig.success,
+      PangeaColors.of(Brightness.dark).success,
       schemeFor(Brightness.dark),
       textFloor,
       what: 'successByTheme dark (success)',
@@ -109,10 +109,10 @@ void main() {
       what: 'warningByTheme light (warningGraphic)',
     );
     expectClears(
-      AppConfig.completedGreen,
+      PangeaColors.of(Brightness.light).success,
       light,
       graphicFloor,
-      what: 'successByTheme light (completedGreen)',
+      what: 'successByTheme light (success)',
     );
 
     final dark = schemeFor(Brightness.dark);
@@ -123,7 +123,7 @@ void main() {
       what: 'warningByTheme dark (warning)',
     );
     expectClears(
-      AppConfig.success,
+      PangeaColors.of(Brightness.dark).success,
       dark,
       graphicFloor,
       what: 'successByTheme dark (success)',

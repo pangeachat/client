@@ -23,6 +23,10 @@ void main() {
     Hct.fromInt(AppConfig.warning.toARGB32()),
   );
   Color warningTone(int t) => Color(warningPalette.get(t));
+  final successPalette = TonalPalette.fromHct(
+    Hct.fromInt(AppConfig.success.toARGB32()),
+  );
+  Color successTone(int t) => Color(successPalette.get(t));
 
   final light = PangeaColors.of(Brightness.light);
   final dark = PangeaColors.of(Brightness.dark);
@@ -91,6 +95,74 @@ void main() {
         greaterThanOrEqualTo(4.5),
       );
     }
+  });
+
+  test('every success role is a tone of the success key colour', () {
+    expect(light.success, successTone(40));
+    expect(light.successGraphic, successTone(50));
+    expect(light.successContainer, successTone(90));
+    expect(dark.success, successTone(80));
+    expect(dark.successContainer, successTone(30));
+    for (final colors in [light, dark]) {
+      expect(colors.successFixedDim, successTone(80));
+      expect(colors.onSuccessFixed, successTone(10));
+    }
+  });
+
+  test('success clears its floors on the surface and the card', () {
+    for (final surface in [
+      lightScheme.surface,
+      lightScheme.surfaceContainerHighest,
+    ]) {
+      expect(contrast(light.success, surface), greaterThanOrEqualTo(4.5));
+      expect(
+        contrast(light.successGraphic, surface),
+        greaterThanOrEqualTo(3.0),
+      );
+    }
+    for (final surface in [
+      darkScheme.surface,
+      darkScheme.surfaceContainerHighest,
+    ]) {
+      expect(contrast(dark.success, surface), greaterThanOrEqualTo(4.5));
+      expect(contrast(dark.successGraphic, surface), greaterThanOrEqualTo(3.0));
+    }
+    for (final colors in [light, dark]) {
+      expect(
+        contrast(colors.onSuccessFixed, colors.successFixedDim),
+        greaterThanOrEqualTo(4.5),
+      );
+      expect(
+        contrast(colors.onSuccessContainer, colors.successContainer),
+        greaterThanOrEqualTo(4.5),
+      );
+    }
+  });
+
+  test('joinable is the same green in both themes and carries white text', () {
+    final joinablePalette = TonalPalette.fromHct(
+      Hct.fromInt(AppConfig.green.toARGB32()),
+    );
+    expect(light.joinable, dark.joinable);
+    expect(light.joinable, Color(joinablePalette.get(49)));
+    expect(light.onJoinable, Color(joinablePalette.get(100)));
+    expect(
+      contrast(light.onJoinable, light.joinable),
+      greaterThanOrEqualTo(4.5),
+    );
+    // One tone brighter would drop the ink under the floor.
+    expect(
+      contrast(light.onJoinable, Color(joinablePalette.get(50))),
+      lessThan(4.5),
+    );
+    expect(
+      contrast(light.joinable, lightScheme.surface),
+      greaterThanOrEqualTo(3.0),
+    );
+    expect(
+      contrast(dark.joinable, darkScheme.surface),
+      greaterThanOrEqualTo(3.0),
+    );
   });
 
   test('gold clears 4.5:1 as text on the surface and the card', () {

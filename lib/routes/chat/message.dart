@@ -526,9 +526,10 @@ class Message extends StatelessWidget {
                                             child:
                                                 event.status ==
                                                     EventStatus.error
-                                                ? const Icon(
+                                                ? Icon(
                                                     Icons.error,
-                                                    color: Colors.red,
+                                                    color:
+                                                        theme.colorScheme.error,
                                                   )
                                                 : event.fileSendingStatus !=
                                                       null

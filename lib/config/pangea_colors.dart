@@ -26,6 +26,14 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
     required this.onWarningFixed,
     required this.warningContainer,
     required this.onWarningContainer,
+    required this.success,
+    required this.successGraphic,
+    required this.successFixedDim,
+    required this.onSuccessFixed,
+    required this.successContainer,
+    required this.onSuccessContainer,
+    required this.joinable,
+    required this.onJoinable,
   });
 
   /// Gold that reads as text: a word, an XP count, an icon beside a label.
@@ -71,6 +79,35 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
   /// Ink on [warningContainer].
   final Color onWarningContainer;
 
+  /// Something finished, as text or an icon read as text: a verified check,
+  /// a completed label. Clears 4.5:1 on the surface.
+  final Color success;
+
+  /// Something finished, as a mark with a 3:1 floor: a diff underline for an
+  /// unchanged word, a completion tick.
+  final Color successGraphic;
+
+  /// The bright completion fill, the same value in both themes. Always pair
+  /// with [onSuccessFixed].
+  final Color successFixedDim;
+
+  /// Ink on [successFixedDim].
+  final Color onSuccessFixed;
+
+  /// A tinted completion surface. Always pair with [onSuccessContainer].
+  final Color successContainer;
+
+  /// Ink on [successContainer].
+  final Color onSuccessContainer;
+
+  /// The joinable-session green: the world map's "you can join this" pin
+  /// and the badges that echo it. The same value in both themes, at the
+  /// brightest tone of its ramp that still carries white text at 4.5:1.
+  final Color joinable;
+
+  /// Ink on [joinable].
+  final Color onJoinable;
+
   static final PangeaColors _light = _fromKey(Brightness.light);
   static final PangeaColors _dark = _fromKey(Brightness.dark);
 
@@ -78,12 +115,22 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
   factory PangeaColors.of(Brightness brightness) =>
       brightness == Brightness.light ? _light : _dark;
 
+  /// T49 is the brightest tone of the joinable ramp that clears 4.5:1 under
+  /// white ink; T50 measures 4.47:1.
+  static const int _joinableTone = 49;
+
   static PangeaColors _fromKey(Brightness brightness) {
-    // AppConfig.gold and AppConfig.warning are the key colours; every role
-    // below is a tone of one of them.
+    // AppConfig.gold, AppConfig.warning and AppConfig.success are the key
+    // colours; every role below is a tone of one of them.
     final gold = TonalPalette.fromHct(Hct.fromInt(AppConfig.gold.toARGB32()));
     final warning = TonalPalette.fromHct(
       Hct.fromInt(AppConfig.warning.toARGB32()),
+    );
+    final success = TonalPalette.fromHct(
+      Hct.fromInt(AppConfig.success.toARGB32()),
+    );
+    final joinable = TonalPalette.fromHct(
+      Hct.fromInt(AppConfig.green.toARGB32()),
     );
     final light = brightness == Brightness.light;
     return PangeaColors(
@@ -99,6 +146,14 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
       onWarningFixed: Color(warning.get(10)),
       warningContainer: Color(warning.get(light ? 90 : 30)),
       onWarningContainer: Color(warning.get(light ? 10 : 90)),
+      success: Color(success.get(light ? 40 : 80)),
+      successGraphic: Color(success.get(light ? 50 : 80)),
+      successFixedDim: Color(success.get(80)),
+      onSuccessFixed: Color(success.get(10)),
+      successContainer: Color(success.get(light ? 90 : 30)),
+      onSuccessContainer: Color(success.get(light ? 10 : 90)),
+      joinable: Color(joinable.get(_joinableTone)),
+      onJoinable: Color(joinable.get(100)),
     );
   }
 
@@ -116,6 +171,14 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
     Color? onWarningFixed,
     Color? warningContainer,
     Color? onWarningContainer,
+    Color? success,
+    Color? successGraphic,
+    Color? successFixedDim,
+    Color? onSuccessFixed,
+    Color? successContainer,
+    Color? onSuccessContainer,
+    Color? joinable,
+    Color? onJoinable,
   }) => PangeaColors(
     gold: gold ?? this.gold,
     goldGraphic: goldGraphic ?? this.goldGraphic,
@@ -129,6 +192,14 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
     onWarningFixed: onWarningFixed ?? this.onWarningFixed,
     warningContainer: warningContainer ?? this.warningContainer,
     onWarningContainer: onWarningContainer ?? this.onWarningContainer,
+    success: success ?? this.success,
+    successGraphic: successGraphic ?? this.successGraphic,
+    successFixedDim: successFixedDim ?? this.successFixedDim,
+    onSuccessFixed: onSuccessFixed ?? this.onSuccessFixed,
+    successContainer: successContainer ?? this.successContainer,
+    onSuccessContainer: onSuccessContainer ?? this.onSuccessContainer,
+    joinable: joinable ?? this.joinable,
+    onJoinable: onJoinable ?? this.onJoinable,
   );
 
   @override
@@ -155,6 +226,22 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
         other.onWarningContainer,
         t,
       )!,
+      success: Color.lerp(success, other.success, t)!,
+      successGraphic: Color.lerp(successGraphic, other.successGraphic, t)!,
+      successFixedDim: Color.lerp(successFixedDim, other.successFixedDim, t)!,
+      onSuccessFixed: Color.lerp(onSuccessFixed, other.onSuccessFixed, t)!,
+      successContainer: Color.lerp(
+        successContainer,
+        other.successContainer,
+        t,
+      )!,
+      onSuccessContainer: Color.lerp(
+        onSuccessContainer,
+        other.onSuccessContainer,
+        t,
+      )!,
+      joinable: Color.lerp(joinable, other.joinable, t)!,
+      onJoinable: Color.lerp(onJoinable, other.onJoinable, t)!,
     );
   }
 }

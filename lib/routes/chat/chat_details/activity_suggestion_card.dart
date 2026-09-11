@@ -67,8 +67,8 @@ class ActivitySuggestionCard extends StatelessWidget {
 
     // Match the map's state pins: a colour-state fill on the info section + a
     // bookmark banner, both in the pin's state hue
-    final stateColor = pinState?.color;
-    final onState = stateColor != null ? Colors.white : null;
+    final stateColor = pinState?.bodyColor(context);
+    final onState = pinState?.onBodyColor(context);
 
     // Shared style for the mode + participant-count labels
     final labelStyle = fontSizeSmall != null
@@ -219,7 +219,7 @@ class ActivitySuggestionCard extends StatelessWidget {
                         Icon(
                           pinState!.icon,
                           size: (fontSizeSmall ?? 11.0) + 3.0,
-                          color: Colors.white,
+                          color: onState,
                         ),
                         const SizedBox(width: 4.0),
                         Flexible(
@@ -229,7 +229,7 @@ class ActivitySuggestionCard extends StatelessWidget {
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
-                              color: Colors.white,
+                              color: onState,
                               fontSize: fontSizeSmall ?? 11.0,
                               fontWeight: FontWeight.w600,
                             ),

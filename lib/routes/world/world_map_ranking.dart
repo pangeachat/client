@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -55,11 +56,19 @@ enum ActivityPinState {
     ActivityPinState.available => AppConfig.primaryColorLight,
   };
 
-  Color bodyColor(BuildContext context) =>
-      this == ActivityPinState.available &&
-          Theme.of(context).brightness == Brightness.dark
-      ? AppConfig.primaryColorDark
-      : color;
+  Color bodyColor(BuildContext context) => switch (this) {
+    ActivityPinState.joinable => Theme.of(context).pangea.joinable,
+    ActivityPinState.available
+        when Theme.of(context).brightness == Brightness.dark =>
+      AppConfig.primaryColorDark,
+    _ => color,
+  };
+
+  /// Ink for the icon and text drawn on [bodyColor].
+  Color onBodyColor(BuildContext context) => switch (this) {
+    ActivityPinState.joinable => Theme.of(context).pangea.onJoinable,
+    _ => Colors.white,
+  };
 
   String label(L10n l10n) => switch (this) {
     ActivityPinState.ongoingPending => l10n.ongoingPendingLabel,

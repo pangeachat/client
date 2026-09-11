@@ -122,7 +122,9 @@ class Settings3PidView extends StatelessWidget {
                                           icon: const Icon(
                                             Icons.delete_forever_outlined,
                                           ),
-                                          color: Colors.red,
+                                          color: Theme.of(
+                                            context,
+                                          ).colorScheme.error,
                                           onPressed: () => controller
                                               .delete3Pid(identifier[i]),
                                         ),
