@@ -1861,3 +1861,34 @@ until the design is Codex-green.
 - PLAN: my independent cold gate on the two RISKY areas (shared-audio lifecycle; karaoke seek/ownership races) --
   layout+load-wiring is low-risk (load machine already cold-gated in build 4). Then ONE fixer round to agent 5
   (SendMessage, keeps context) = restore live auto-refresh (root-caused) + any real gate findings. Keep it simple.
+
+## 2026-09-10 (cont) — cold gates A+C returned; 4 real findings; ONE fixer round pending a 4a scope call
+- Room-update idiom found: chat_call_buttons.dart:178 subscribes room.client.onSync.stream.listen(...) +
+  cancels in dispose (documents why onSync over onRoomState). call_service.dart uses the same. That is the
+  root-caused shape for the live-refresh fix. WHY the agent's setState(_load) raced: _load() re-stamps
+  readsInFlight:true and RESETS the grace clock every sync -> under steady sync traffic the timeout never
+  fires. Correct fix FEEDS the existing controller (preserve monotonic grace), never resets/replaces it.
+- GATE A (shared audio lifecycle) = CORRECT / softening no. Verified against the just_audio setFilePath
+  preload contract + Flutter removeListener/cancel semantics: the unconditional dispose leak fix is sound,
+  the awaited setFilePath is correct. (Static review; omitted AudioPlayerWidget callers -> cover with the
+  audio test bucket at assembly.)
+- GATE C (karaoke seek/ownership) = ISSUES-FOUND / softening no. red-to-root-cause triage:
+  F1 REAL: _startMergedPlayer's post-download early-return (!mounted || ownership-moved) returns WITHOUT
+    releasing -> strands an owned, source-less shared player -> a later turn tap seeks a dead player. Rule:
+    every exit of _startMergedPlayer leaves ownership consistent (loaded, or released, identity-guarded).
+  F2 REAL: a FAILED _startMergedPlayer is swallowed; when the identity guard skips cleanup (a newer P2
+    exists under the same event id), the controller sees ownership still held and seeks/plays P2 to the
+    FAILED turn's position -> the old failed action hijacks the newer playback. Rule: a failed start must
+    ABORT the transaction (rethrow to the tap boundary, which already catches), not return as success.
+  F3 = confirmed CORRECT (unawaited play()).
+  F4 REAL: the "Full call" bar's own play button (a stock AudioPlayerWidget) is NOT observed -> NO karaoke
+    highlight until a turn is tapped; a same-id player swap also freezes the highlight. Confirmed the
+    mechanism: AudioPlayerWidget._onButtonTap sets voiceMessageEventId=A FIRST (audio_player.dart:302) then
+    creates the player only AFTER an async download, so "attach on the ownership edge" cannot work (player
+    not yet created). Robust fix = the bar's play/pause drives transcript_view's OWN karaoke path
+    (single-owner), not a stock AudioPlayerWidget. This is a product+design fork (headline feature) -> ASK
+    the owner before building it. F1/F2/F5 are fixed regardless.
+  F5 REAL (corroborates my finding): late merge/peer-half invisible until manual Retry.
+- PLAN: ask the 4a fork (bar-play karaoke vs documented tap-a-turn limitation), then ONE SendMessage fixer
+  round to agent 5 = F1 + F2 + F5(live-refresh, onSync feed-not-reset) + F4 per the owner's call. Fixer
+  brief drafted at scratchpad/fixer5-brief.md. No push/PR; audio + calls buckets at assembly.
