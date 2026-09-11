@@ -1797,7 +1797,8 @@ until the design is Codex-green.
 - Agent 4 fixer (a84d83c0dad8c2cac) STALLED (4th stall -- same codex-auto-background signature; its
   task-notification re-fired "Waiting for the Codex gate (retry)"). Killed the orphan, verified the
   uncommitted work: _ReadOnlyValueListenable wrapper GONE (0 occurrences), monotonic Stopwatch grace in,
-  diff -725/+271 (~454 net removed, 896->~440), dart format clean, analyze "No issues found!",
+  diff -725/+271 across both files (~454 net removed; call_recordings_load.dart itself 896->689, -23%;
+  tests 1235->988), dart format clean, analyze "No issues found!",
   call_recordings_load_test.dart = 29 passed; the backward-jump test (~line 298) pins the fix (a wall-clock
   correction during grace has NO effect; unavailable arrives at exactly one grace). Per the "keep it
   simple, ship" steer I did a light verify (not another full re-gate round) and committed 58948e1631.
@@ -1815,3 +1816,22 @@ until the design is Codex-green.
 - PENDING while agent 5 is live: NO flutter bucket (concurrency rule -- agent 5 runs flutter tests). On
   return: cold-gate agent 5, then whole-branch assembly (cold-Codex + full calls bucket + the
   CallPlaybackController-extends-ChangeNotifier consistency item), then owner real-call testing -> PR2 on go.
+- Agent 4 fixer RESURRECTED (post-commit) and reported: it verified the tree matched 58948e1631
+  byte-for-byte, re-ran the full local gate (green), and ran its OWN independent Codex gate against HEAD ->
+  FIX 1 CORRECT / FIX 2 CORRECT / softening no. A 2nd cold verdict agreeing with mine; it did NOT
+  re-commit (hazard did not materialise this time). Real counts: call_recordings_load.dart 896->689 (-23%),
+  tests 1235->988, 38->29 tests. Corrected the earlier "->~440" note (that was the combined source+test delta).
+
+## 2026-09-10 (cont) — BUILD 6 draft prepared (governed-doc proposal, owner-review-gated)
+- Used the agent-5 wait (no flutter allowed) to prep BUILD 6. Read the client voice-video-calls
+  .instructions.md: it ALREADY governs turn-time-semantics in prose ("What a turn's time promises" =
+  order-by-chunk-end/answer-before-question; "The clock both halves are merged in" = SFU shared clock,
+  monotonic-within-device, ~1s resolution). The symbol-grep (orderKeyMs/atMs/mergedStartSfuMs) found
+  nothing there precisely BECAUSE the doc is design-only (no code identifiers) -- correct, not a gap.
+- The REAL gap: the "Reading it back" section covers reading the transcript, NOT playing the merged
+  recording back -- new PR2 behaviour (full-call playback, the order-by-end/PLAY-FROM-START asymmetry,
+  karaoke highlight+auto-scroll+seek, recording loading states). New behaviour in a covered area = a design
+  decision to govern. Drafted a proposed "### Playing the call back" subsection (in the doc's voice, ~1
+  screen) at docs/handoff/2026-09-10-doc-addition-proposal.md. NOT applied to the instructions doc (agent
+  never edits a governed doc unilaterally); it's the proposal for Will to review + a placement + open
+  wording choices. Finalize the two behaviour-dependent sentences against what agent 5 actually ships.
