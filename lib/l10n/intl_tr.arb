@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-09-10 09:51:44.809842",
+    "@@last_modified": "2026-09-10 16:50:33.362578",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10211,5 +10211,9 @@
     "errorFetchingWordInfo": "Kelime bilgisi alınamadı",
     "contentCreatedBy": "Oluşturan",
     "coursePreview": "Kurs önizlemesi",
-    "numActivities": "{count, plural, =1{1 aktivite} other{{count} aktivite}}"
+    "numActivities": "{count, plural, =1{1 aktivite} other{{count} aktivite}}",
+    "teacherAnalyticsRequestTitle": "Öğretmen öğrenme ilerlemenizi istiyor",
+    "teacherAnalyticsRequestDesc": "{targetLang} dilinde kullandığınız tüm kelimeleri ve dil bilgisini, seviyenizi ve DP'nizi ve kurs etkinliklerinde gönderilen mesajları görecekler. Bire bir mesajlarınız paylaşılmayacaktır. Kursa katılmak için analizleri paylaşmak gereklidir.",
+    "shareAndJoin": "Paylaş ve katıl",
+    "goBack": "Geri dön"
 }

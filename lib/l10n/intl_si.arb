@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-09-10 09:51:43.941178",
+    "@@last_modified": "2026-09-10 16:50:30.992349",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "වචන තොරතුරු ලබාගැනීම අසාර්ථක විය",
     "contentCreatedBy": "නිර්මාණය කළේ",
     "coursePreview": "පාඨමාලා පෙරදසුන",
-    "numActivities": "{count, plural, =1{ක්‍රියාකාරකම් 1ක්} other{ක්‍රියාකාරකම් {count}ක්}}"
+    "numActivities": "{count, plural, =1{ක්‍රියාකාරකම් 1ක්} other{ක්‍රියාකාරකම් {count}ක්}}",
+    "teacherAnalyticsRequestTitle": "ගුරුවරයා ඔබේ ඉගෙනීමේ ප්‍රගතිය ඉල්ලයි",
+    "teacherAnalyticsRequestDesc": "ඔවුන්ට ඔබ {targetLang} භාෂාවෙන් භාවිත කළ සියලු වචන සහ ව්‍යාකරණ, ඔබේ මට්ටම සහ XP, සහ පාඨමාලා ක්‍රියාකාරකම්වල යවන ලද පණිවිඩ දැකගත හැකි වනු ඇත. ඔබේ 1-on-1 පණිවිඩ බෙදා නොගනු ඇත. පාඨමාලාවට සම්බන්ධ වීමට විශ්ලේෂණ බෙදාගැනීම අත්‍යවශ්‍ය වේ.",
+    "shareAndJoin": "බෙදාගෙන සම්බන්ධ වන්න",
+    "goBack": "ආපසු යන්න"
 }

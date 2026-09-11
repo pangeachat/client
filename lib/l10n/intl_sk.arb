@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-09-10 09:51:47.138122",
+    "@@last_modified": "2026-09-10 16:50:31.173030",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10855,5 +10855,9 @@
     "errorFetchingWordInfo": "Nepodarilo sa načítať informácie o slove",
     "contentCreatedBy": "Vytvoril",
     "coursePreview": "Ukážka kurzu",
-    "numActivities": "{count, plural, =1{1 aktivita} other{{count} aktivít}}"
+    "numActivities": "{count, plural, =1{1 aktivita} other{{count} aktivít}}",
+    "teacherAnalyticsRequestTitle": "Učiteľ žiada o váš pokrok v učení",
+    "teacherAnalyticsRequestDesc": "Uvidia všetky slová a gramatiku, ktoré ste použili v jazyku {targetLang}, vašu úroveň a XP, a správy odoslané v aktivitách kurzu. Vaše správy 1 na 1 nebudú zdieľané. Zdieľanie analýz je potrebné na pripojenie sa ku kurzu.",
+    "shareAndJoin": "Zdieľať a pripojiť sa",
+    "goBack": "Späť"
 }

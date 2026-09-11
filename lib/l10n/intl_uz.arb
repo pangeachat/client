@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-09-10 09:51:45.011110",
+    "@@last_modified": "2026-09-10 16:50:33.759152",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9914,5 +9914,9 @@
     "errorFetchingWordInfo": "So'z ma'lumotlarini olishda xatolik yuz berdi",
     "contentCreatedBy": "Yaratdi",
     "coursePreview": "Kursni ko'rib chiqish",
-    "numActivities": "{count, plural, =1{1 faoliyat} other{{count} faoliyat}}"
+    "numActivities": "{count, plural, =1{1 faoliyat} other{{count} faoliyat}}",
+    "teacherAnalyticsRequestTitle": "Oʻqituvchi sizning oʻquv jarayoningizni soʻrayapti",
+    "teacherAnalyticsRequestDesc": "Ular sizning {targetLang} tilida ishlatgan barcha soʻzlaringiz va grammatikangizni, darajangiz va XP’ingizni, shuningdek, kurs faoliyatida yuborilgan xabarlarni koʻrishadi. Sizning shaxsiy xabarlaringiz boʻlishilmaydi. Kursga qoʻshilish uchun tahlillarni boʻlishish talab qilinadi.",
+    "shareAndJoin": "Boʻlishish va qoʻshilish",
+    "goBack": "Ortga qaytish"
 }

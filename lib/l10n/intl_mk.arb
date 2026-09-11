@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-09-10 09:51:42.490473",
+    "@@last_modified": "2026-09-10 16:50:27.406604",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "Неуспешно преземање информации за зборот",
     "contentCreatedBy": "Создадено од",
     "coursePreview": "Преглед на курс",
-    "numActivities": "{count, plural, =1{1 активност} other{{count} активности}}"
+    "numActivities": "{count, plural, =1{1 активност} other{{count} активности}}",
+    "teacherAnalyticsRequestTitle": "Наставникот бара увид во вашиот напредок во учењето",
+    "teacherAnalyticsRequestDesc": "Ќе ги видат сите зборови и граматика што сте ги користеле на {targetLang}, вашето ниво и XP, и пораките испратени во активностите на курсот. Вашите 1-на-1 пораки нема да бидат споделени. Споделувањето аналитика е задолжително за да се приклучите на курсот.",
+    "shareAndJoin": "Сподели и приклучи се",
+    "goBack": "Врати се назад"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-09-10 09:51:44.002466",
+    "@@last_modified": "2026-09-10 16:50:31.883090",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "Ku guuldareystay in la helo macluumaadka ereyga",
     "contentCreatedBy": "Waxaa sameeyay",
     "coursePreview": "Hordhaca koorsada",
-    "numActivities": "{count, plural, =1{1 hawl} other{{count} hawlood}}"
+    "numActivities": "{count, plural, =1{1 hawl} other{{count} hawlood}}",
+    "teacherAnalyticsRequestTitle": "Macallinku wuxuu codsanayaa horumarkaaga waxbarasho",
+    "teacherAnalyticsRequestDesc": "Waxay arki doonaan dhammaan ereyada iyo naxwaha aad ku isticmaashay {targetLang}, heerkaaga iyo XP-gaaga, iyo fariimaha lagu soo diray hawlaha koorsada. Fariimahaaga 1-ka-1 ah lama wadaagi doono. Wadaagista falanqaynta ayaa loo baahan yahay si aad ugu biirto koorsada.",
+    "shareAndJoin": "Wadaag oo ku biir",
+    "goBack": "Dib u noqo"
 }

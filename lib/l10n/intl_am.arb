@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-09-10 09:51:39.310670",
+    "@@last_modified": "2026-09-10 16:50:17.865904",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "የቃሉን መረጃ ማምጣት አልተቻለም።",
     "contentCreatedBy": "የተፈጠረው በ",
     "coursePreview": "የኮርስ ቅድመ እይታ",
-    "numActivities": "{count, plural, =1{1 እንቅስቃሴ} other{{count} እንቅስቃሴዎች}}"
+    "numActivities": "{count, plural, =1{1 እንቅስቃሴ} other{{count} እንቅስቃሴዎች}}",
+    "teacherAnalyticsRequestTitle": "መምህሩ የመማር ሂደትዎን ይጠይቃል",
+    "teacherAnalyticsRequestDesc": "በ{targetLang} የተጠቀሟቸውን ቃላት እና ሰዋሰው፣ ደረጃዎ እና የልምድ ነጥብዎ፣ እና በኮርስ እንቅስቃሴዎች የተላኩ መልዕክቶችን ያያሉ። የእርስዎ 1-ለ-1 መልዕክቶች አይጋሩም። ኮርሱን ለመቀላቀል ትንታኔዎችን ማጋራት ያስፈልጋል።",
+    "shareAndJoin": "ያጋሩ እና ይቀላቀሉ",
+    "goBack": "ተመለስ"
 }

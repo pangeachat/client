@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-09-10 09:51:42.602668",
+    "@@last_modified": "2026-09-10 16:50:28.389874",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "I rahua te tiki i ngā mōhiohio kupu",
     "contentCreatedBy": "Nā",
     "coursePreview": "Arokite kōhi",
-    "numActivities": "{count, plural, =1{1 mahi} other{{count} mahi}}"
+    "numActivities": "{count, plural, =1{1 mahi} other{{count} mahi}}",
+    "teacherAnalyticsRequestTitle": "Kei te tono te kaiako i tō ahunga whakamua ako",
+    "teacherAnalyticsRequestDesc": "Ka kite rātou i ngā kupu me te wetereo katoa i whakamahia e koe i roto i te {targetLang}, tō taumata me tō XP, me ngā karere i tukuna i roto i ngā mahi akoranga. E kore ō karere takitahi e tohaina. Me tohatoha tātaritanga kia uru atu ai ki te akoranga.",
+    "shareAndJoin": "Tohaina ka uru mai",
+    "goBack": "Hoki atu"
 }

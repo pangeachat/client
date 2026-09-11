@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-09-10 09:51:43.855782",
+    "@@last_modified": "2026-09-10 16:50:28.538930",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "शब्द जानकारी प्राप्त गर्न असफल भयो",
     "contentCreatedBy": "द्वारा सिर्जना गरिएको",
     "coursePreview": "कोर्स पूर्वावलोकन",
-    "numActivities": "{count, plural, =1{१ गतिविधि} other{{count} गतिविधिहरू}}"
+    "numActivities": "{count, plural, =1{१ गतिविधि} other{{count} गतिविधिहरू}}",
+    "teacherAnalyticsRequestTitle": "शिक्षकले तपाईंको सिकाइ प्रगतिको अनुरोध गर्छन्",
+    "teacherAnalyticsRequestDesc": "उनीहरूले तपाईंले {targetLang} मा प्रयोग गर्नुभएका सबै शब्द र व्याकरण, तपाईंको स्तर र XP, र पाठ्यक्रम गतिविधिहरूमा पठाइएका सन्देशहरू देख्नेछन्। तपाईंका १-मा-१ सन्देशहरू साझेदारी गरिने छैनन्। पाठ्यक्रममा सामेल हुन विश्लेषणहरू साझेदारी गर्न आवश्यक छ।",
+    "shareAndJoin": "साझेदारी गर्नुहोस् र सामेल हुनुहोस्",
+    "goBack": "पछाडि जानुहोस्"
 }

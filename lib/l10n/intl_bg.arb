@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-09-10 09:51:39.192420",
+    "@@last_modified": "2026-09-10 16:50:17.907981",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "Неуспешно извличане на информация за думата",
     "contentCreatedBy": "Създадено от",
     "coursePreview": "Преглед на курса",
-    "numActivities": "{count, plural, =1{1 активност} other{{count} активности}}"
+    "numActivities": "{count, plural, =1{1 активност} other{{count} активности}}",
+    "teacherAnalyticsRequestTitle": "Учителят изисква вашия напредък в обучението",
+    "teacherAnalyticsRequestDesc": "Той ще види всички думи и граматика, които сте използвали в {targetLang}, вашето ниво и XP, както и съобщенията, изпратени в дейностите по курса. Вашите съобщения 1-на-1 няма да бъдат споделяни. Споделянето на анализи е задължително за присъединяване към курса.",
+    "shareAndJoin": "Споделяне и присъединяване",
+    "goBack": "Назад"
 }

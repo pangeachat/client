@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-09-10 09:51:39.940317",
+    "@@last_modified": "2026-09-10 16:50:18.890175",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9897,5 +9897,9 @@
     "errorFetchingWordInfo": "Fehler beim Abrufen der Wortinformationen",
     "contentCreatedBy": "Erstellt von",
     "coursePreview": "Kursvorschau",
-    "numActivities": "{count, plural, =1{1 Aktivität} other{{count} Aktivitäten}}"
+    "numActivities": "{count, plural, =1{1 Aktivität} other{{count} Aktivitäten}}",
+    "teacherAnalyticsRequestTitle": "Lehrer fragt nach deinem Lernfortschritt",
+    "teacherAnalyticsRequestDesc": "Sie sehen alle Wörter und Grammatik, die du in {targetLang} verwendet hast, dein Level und deine XP sowie die in Kursaktivitäten gesendeten Nachrichten. Deine 1-zu-1-Nachrichten werden nicht geteilt. Das Teilen von Analysedaten ist für die Teilnahme am Kurs erforderlich.",
+    "shareAndJoin": "Teilen und beitreten",
+    "goBack": "Zurück"
 }

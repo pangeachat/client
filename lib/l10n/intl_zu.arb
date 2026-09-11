@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-09-10 09:51:45.712580",
+    "@@last_modified": "2026-09-10 16:50:35.325214",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "Yehlulekile ukuthola ulwazi lwegama",
     "contentCreatedBy": "Kudalwe ngu",
     "coursePreview": "Ukubuka kuqala kwesifundo",
-    "numActivities": "{count, plural, =1{umsebenzi o-1} other{imisebenzi engu-{count}}}"
+    "numActivities": "{count, plural, =1{umsebenzi o-1} other{imisebenzi engu-{count}}}",
+    "teacherAnalyticsRequestTitle": "Uthisha ucela inqubekelaphambili yakho yokufunda",
+    "teacherAnalyticsRequestDesc": "Bazobona wonke amagama nohlelo lolimi olusebenzise ku-{targetLang}, izinga lakho ne-XP, nemilayezo ethunyelwe emisebenzini yesifundo. Imilayezo yakho yomuntu ngamunye ngeke yabiwe. Ukwabelana ngedatha yokuhlaziya kuyadingeka ukuze ujoyine isifundo.",
+    "shareAndJoin": "Yabelana bese ujoyina",
+    "goBack": "Buyela emuva"
 }

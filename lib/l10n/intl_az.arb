@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-09-10 09:51:39.602845",
+    "@@last_modified": "2026-09-10 16:50:18.278586",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "Söz məlumatı əldə edilmədi",
     "contentCreatedBy": "Yaradılıb",
     "coursePreview": "Kurs önizləməsi",
-    "numActivities": "{count, plural, =1{1 fəaliyyət} other{{count} fəaliyyət}}"
+    "numActivities": "{count, plural, =1{1 fəaliyyət} other{{count} fəaliyyət}}",
+    "teacherAnalyticsRequestTitle": "Müəllim öyrənmə tərəqqinizi tələb edir",
+    "teacherAnalyticsRequestDesc": "Onlar {targetLang} dilində istifadə etdiyiniz bütün sözləri və qrammatikanı, səviyyənizi və XP-nizi, həmçinin kurs fəaliyyətlərində göndərilən mesajları görəcəklər. Tək-tək mesajlarınız paylaşılmayacaq. Kursa qoşulmaq üçün analitikanın paylaşılması tələb olunur.",
+    "shareAndJoin": "Paylaş və qoşul",
+    "goBack": "Geri qayıt"
 }

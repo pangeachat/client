@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-09-10 09:51:42.625598",
+    "@@last_modified": "2026-09-10 16:50:29.296068",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "ꯋꯥꯔꯗ ꯏꯟꯐꯣ ꯄꯨꯊꯣꯛꯄꯗ ꯑꯔꯣꯟꯕ",
     "contentCreatedBy": "শেমখিবশিং",
     "coursePreview": "কোর্স প্রিভিউ",
-    "numActivities": "{count, plural, =1{1 থবক} other{{count} থবক}}"
+    "numActivities": "{count, plural, =1{1 থবক} other{{count} থবক}}",
+    "teacherAnalyticsRequestTitle": "ওজা অসিনা নহাক্কী লার্নিং প্রোগ্রেস হায়জরি",
+    "teacherAnalyticsRequestDesc": "মখোয়না নহাক্না {targetLang}তা শীজিন্নখিবা ৱাহৈ অমসুং গ্রামার পুম্নমক, নহাক্কী লেভেল অমসুং XP, অমসুং কোর্স এক্টিভিটিশিংদা থাজিনখিবা মেসেজশিং উবা ফংলগনি। নহাক্কী ১-অন-১ মেসেজশিং শেয়ার তৌরোই। কোর্সতা শরুক য়ানবগীদমক এনালিটিক্স শেয়ার তৌবা অসি মথৌ তাই।",
+    "shareAndJoin": "শেয়ার তৌদুনা শরুক য়াদুনা",
+    "goBack": "হাল্লকউ"
 }

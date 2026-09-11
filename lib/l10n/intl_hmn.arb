@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-09-10 09:51:41.259543",
+    "@@last_modified": "2026-09-10 16:50:22.136768",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "Tsis tau nrhiav tau cov lus qhia",
     "contentCreatedBy": "Tsim los ntawm",
     "coursePreview": "Saib ua ntej kawm",
-    "numActivities": "{count, plural, =1{1 qho kev ua} other{{count} qho kev ua}}"
+    "numActivities": "{count, plural, =1{1 qho kev ua} other{{count} qho kev ua}}",
+    "teacherAnalyticsRequestTitle": "Tus kws qhia ntawv thov koj qhov kev kawm tau zoo",
+    "teacherAnalyticsRequestDesc": "Lawv yuav pom tag nrho cov lus thiab cov qauv lus koj tau siv hauv {targetLang}, koj qib thiab XP, thiab cov lus xa hauv kev kawm. Koj cov lus 1-rau-1 yuav tsis raug qhia. Yuav tsum qhia cov ntaub ntawv txhawm rau koom nrog chav kawm.",
+    "shareAndJoin": "Qhia thiab koom",
+    "goBack": "Rov qab"
 }

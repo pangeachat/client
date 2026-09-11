@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-09-10 09:51:42.559486",
+    "@@last_modified": "2026-09-10 16:50:28.689692",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "Үгийн мэдээлэл татаж чадсангүй",
     "contentCreatedBy": "Үүсгэсэн",
     "coursePreview": "Хичээлийн урьдчилсан харах",
-    "numActivities": "{count, plural, =1{1 үйл ажиллагаа} other{{count} үйл ажиллагаа}}"
+    "numActivities": "{count, plural, =1{1 үйл ажиллагаа} other{{count} үйл ажиллагаа}}",
+    "teacherAnalyticsRequestTitle": "Багш таны сурсан ахиц дэвшлийг харах хүсэлт илгээсэн байна",
+    "teacherAnalyticsRequestDesc": "Тэд таны {targetLang} хэл дээр ашигласан бүх үг, дүрмийн мэдлэг, түвшин, туршлага, мөн хичээлийн үйл ажиллагаанд илгээсэн мессежүүдийг харах болно. Таны 1-ээс 1 мессежүүд хуваалцагдахгүй. Сургалтад хамрагдахын тулд аналитик мэдээллийг хуваалцах шаардлагатай.",
+    "shareAndJoin": "Хуваалцаж, нэгдэх",
+    "goBack": "Буцах"
 }

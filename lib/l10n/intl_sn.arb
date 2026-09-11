@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-09-10 09:51:44.034846",
+    "@@last_modified": "2026-09-10 16:50:31.849757",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "Zvakakona kutora ruzivo rwezwi",
     "contentCreatedBy": "Yakagadzirwa na",
     "coursePreview": "Taridza kosi",
-    "numActivities": "{count, plural, =1{1 chiitiko} other{{count} zviitiko}}"
+    "numActivities": "{count, plural, =1{1 chiitiko} other{{count} zviitiko}}",
+    "teacherAnalyticsRequestTitle": "Mudzidzisi akukumbira kufambira mberi kwako pakudzidza",
+    "teacherAnalyticsRequestDesc": "Vachaona mazwi ese negirama rawakashandisa mu{targetLang}, nhanho yako neXP, nemameseji akatumirwa mumabasa echikoro. Mameseji ako e1-on-1 haazogovaniswa. Kugovera analytics kunodiwa kuti ubatanidze kosi.",
+    "shareAndJoin": "Govera uye ubatanidze",
+    "goBack": "Dzokera shure"
 }

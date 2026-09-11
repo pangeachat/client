@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-10 09:51:43.550829",
+    "@@last_modified": "2026-09-10 16:50:30.394943",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10642,5 +10642,9 @@
     "errorFetchingWordInfo": "Nu s-au putut prelua informațiile despre cuvânt",
     "contentCreatedBy": "Creat de",
     "coursePreview": "Previzualizare curs",
-    "numActivities": "{count, plural, =1{1 activitate} other{{count} activități}}"
+    "numActivities": "{count, plural, =1{1 activitate} other{{count} activități}}",
+    "teacherAnalyticsRequestTitle": "Profesorul solicită progresul tău de învățare",
+    "teacherAnalyticsRequestDesc": "Vor vedea toate cuvintele și gramatica pe care le-ai folosit în {targetLang}, nivelul și XP-ul tău, precum și mesajele trimise în activitățile cursului. Mesajele tale 1-la-1 nu vor fi partajate. Partajarea analizelor este necesară pentru a te alătura cursului.",
+    "shareAndJoin": "Partajează și alătură-te",
+    "goBack": "Înapoi"
 }

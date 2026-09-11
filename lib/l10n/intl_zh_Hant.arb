@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-10 09:51:45.484885",
+    "@@last_modified": "2026-09-10 16:50:34.458562",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10016,5 +10016,9 @@
     "errorFetchingWordInfo": "無法取得單字資訊",
     "contentCreatedBy": "建立者",
     "coursePreview": "課程預覽",
-    "numActivities": "{count, plural, =1{1 個活動} other{{count} 個活動}}"
+    "numActivities": "{count, plural, =1{1 個活動} other{{count} 個活動}}",
+    "teacherAnalyticsRequestTitle": "老師要求您的學習進度",
+    "teacherAnalyticsRequestDesc": "他們將會看到您在{targetLang}中使用的所有單字和文法、您的等級和經驗值，以及在課程活動中發送的訊息。您的1對1訊息將不會被分享。分享分析資料是加入課程的必要條件。",
+    "shareAndJoin": "分享並加入",
+    "goBack": "返回"
 }

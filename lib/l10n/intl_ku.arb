@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-09-10 09:51:42.038797",
+    "@@last_modified": "2026-09-10 16:50:27.089290",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "نەتوانرا زانیاریی وشە وەربگیرێت",
     "contentCreatedBy": "دروستکراوە لەلایەن",
     "coursePreview": "پێشەکیی خول",
-    "numActivities": "{count, plural, =1{1 چالاکی} other{{count} چالاکی}}"
+    "numActivities": "{count, plural, =1{1 چالاکی} other{{count} چالاکی}}",
+    "teacherAnalyticsRequestTitle": "مامۆستا داوای پێشکەوتنی فێربوونت دەکات",
+    "teacherAnalyticsRequestDesc": "هەموو ئەو وشانە و ڕێزمانانەی کە لە {targetLang} بەکاریانهێناویت، ئاست و XPـەکەت، و ئەو پەیامانەی کە لە چالاکییەکانی خولەکەدا نێردراون دەبینن. پەیامە تاک بە تاکەکانت هاوبەش ناکرێن. هاوبەشکردنی شیکارییەکان پێویستە بۆ بەشداریکردن لە خولەکەدا.",
+    "shareAndJoin": "هاوبەشی بکە و بەژداربە",
+    "goBack": "گەڕانەوە"
 }

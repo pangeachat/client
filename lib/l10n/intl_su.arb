@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-09-10 09:51:44.555451",
+    "@@last_modified": "2026-09-10 16:50:32.440796",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "Gagal ngala inpormasi kecap",
     "contentCreatedBy": "Dijieun ku",
     "coursePreview": "Sawangan kursus",
-    "numActivities": "{count, plural, =1{1 kagiatan} other{{count} kagiatan}}"
+    "numActivities": "{count, plural, =1{1 kagiatan} other{{count} kagiatan}}",
+    "teacherAnalyticsRequestTitle": "Guru nyuhunkeun kamajuan diajar anjeun",
+    "teacherAnalyticsRequestDesc": "Aranjeunna bakal ningali sadaya kecap sareng tata basa anu anjeun anggo dina {targetLang}, tingkat anjeun sareng XP, sareng pesen anu dikirim dina kagiatan kursus. Pesen 1-on-1 anjeun moal dibagikeun. Ngabagikeun analitik diperyogikeun pikeun ngiringan kursus.",
+    "shareAndJoin": "Bagikeun sareng gabung",
+    "goBack": "Balik deui"
 }

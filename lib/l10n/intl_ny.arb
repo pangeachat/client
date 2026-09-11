@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-09-10 09:51:43.212271",
+    "@@last_modified": "2026-09-10 16:50:29.954948",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "Zalephera kupeza zambiri za mawu",
     "contentCreatedBy": "Anapangidwa ndi",
     "coursePreview": "Kukambirana za maphunziro",
-    "numActivities": "{count, plural, =1{ntchito imodzi} other{ntchito {count}}}"
+    "numActivities": "{count, plural, =1{ntchito imodzi} other{ntchito {count}}}",
+    "teacherAnalyticsRequestTitle": "Mphunzitsi akupempha momwe mukuphunzirira",
+    "teacherAnalyticsRequestDesc": "Adzawona mawu ndi galamala zonse zomwe mwagwiritsa ntchito mu {targetLang}, mulingo wanu ndi XP, komanso mauthenga otumizidwa muzochitika za maphunziro. Mauthenga anu a 1-pa-1 sadzagawidwa. Kugawana zambiri kumafunika kuti mulowe nawo mu maphunziro.",
+    "shareAndJoin": "Gawana ndikulowa",
+    "goBack": "Bwerera"
 }

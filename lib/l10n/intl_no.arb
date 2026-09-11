@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-09-10 09:51:43.185503",
+    "@@last_modified": "2026-09-10 16:50:28.991932",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "Kunne ikke hente ordinformasjon",
     "contentCreatedBy": "Opprettet av",
     "coursePreview": "Forhåndsvisning av kurs",
-    "numActivities": "{count, plural, =1{1 aktivitet} other{{count} aktiviteter}}"
+    "numActivities": "{count, plural, =1{1 aktivitet} other{{count} aktiviteter}}",
+    "teacherAnalyticsRequestTitle": "Lærer ber om din læringsfremgang",
+    "teacherAnalyticsRequestDesc": "De vil se alle ordene og grammatikken du har brukt i {targetLang}, ditt nivå og XP, og meldingene sendt i kursaktiviteter. Dine 1-til-1-meldinger vil ikke bli delt. Deling av analyser er påkrevd for å bli med på kurset.",
+    "shareAndJoin": "Del og bli med",
+    "goBack": "Gå tilbake"
 }

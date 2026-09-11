@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-09-10 09:51:41.873821",
+    "@@last_modified": "2026-09-10 16:50:25.293819",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "ಪದದ ಮಾಹಿತಿಯನ್ನು ಪಡೆಯಲು ವಿಫಲವಾಗಿದೆ",
     "contentCreatedBy": "ರಚಿಸಿದವರು",
     "coursePreview": "ಕೋರ್ಸ್ ಪೂರ್ವವೀಕ್ಷಣೆ",
-    "numActivities": "{count, plural, =1{1 ಚಟುವಟಿಕೆ} other{{count} ಚಟುವಟಿಕೆಗಳು}}"
+    "numActivities": "{count, plural, =1{1 ಚಟುವಟಿಕೆ} other{{count} ಚಟುವಟಿಕೆಗಳು}}",
+    "teacherAnalyticsRequestTitle": "ಶಿಕ್ಷಕರು ನಿಮ್ಮ ಕಲಿಕೆಯ ಪ್ರಗತಿಯನ್ನು ವಿನಂತಿಸುತ್ತಾರೆ",
+    "teacherAnalyticsRequestDesc": "ಅವರು ನೀವು {targetLang} ನಲ್ಲಿ ಬಳಸಿದ ಎಲ್ಲಾ ಪದಗಳು ಮತ್ತು ವ್ಯಾಕರಣ, ನಿಮ್ಮ ಮಟ್ಟ ಮತ್ತು XP, ಮತ್ತು ಕೋರ್ಸ್ ಚಟುವಟಿಕೆಗಳಲ್ಲಿ ಕಳುಹಿಸಿದ ಸಂದೇಶಗಳನ್ನು ನೋಡುತ್ತಾರೆ. ನಿಮ್ಮ 1-ಆನ್-1 ಸಂದೇಶಗಳನ್ನು ಹಂಚಿಕೊಳ್ಳಲಾಗುವುದಿಲ್ಲ. ಕೋರ್ಸ್‌ಗೆ ಸೇರಲು ವಿಶ್ಲೇಷಣೆಗಳನ್ನು ಹಂಚಿಕೊಳ್ಳುವುದು ಕಡ್ಡಾಯವಾಗಿದೆ.",
+    "shareAndJoin": "ಹಂಚಿಕೊಳ್ಳಿ ಮತ್ತು ಸೇರಿಕೊಳ್ಳಿ",
+    "goBack": "ಹಿಂದೆ ಹೋಗಿ"
 }

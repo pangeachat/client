@@ -2080,7 +2080,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-09-10 09:51:40.454727",
+    "@@last_modified": "2026-09-10 16:50:20.017677",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10770,5 +10770,9 @@
     "errorFetchingWordInfo": "Nabigong kunin ang impormasyon ng salita",
     "contentCreatedBy": "Ginawa ni",
     "coursePreview": "Preview ng kurso",
-    "numActivities": "{count, plural, =1{1 aktibidad} other{{count} aktibidad}}"
+    "numActivities": "{count, plural, =1{1 aktibidad} other{{count} aktibidad}}",
+    "teacherAnalyticsRequestTitle": "Hinihingi ng guro ang iyong pag-usad sa pag-aaral",
+    "teacherAnalyticsRequestDesc": "Makikita nila ang lahat ng salita at grammar na ginamit mo sa {targetLang}, ang iyong level at XP, at ang mga mensaheng ipinadala sa mga aktibidad ng kurso. Hindi ibabahagi ang iyong mga 1-on-1 na mensahe. Kinakailangan ang pagbabahagi ng analytics para makasali sa kurso.",
+    "shareAndJoin": "Ibahagi at sumali",
+    "goBack": "Bumalik"
 }

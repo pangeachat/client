@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-09-10 09:51:45.489636",
+    "@@last_modified": "2026-09-10 16:50:34.533548",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9910,5 +9910,9 @@
     "errorFetchingWordInfo": "获取单词信息失败",
     "contentCreatedBy": "创建者",
     "coursePreview": "课程预览",
-    "numActivities": "{count, plural, =1{1 项活动} other{{count} 项活动}}"
+    "numActivities": "{count, plural, =1{1 项活动} other{{count} 项活动}}",
+    "teacherAnalyticsRequestTitle": "老师请求查看您的学习进度",
+    "teacherAnalyticsRequestDesc": "他们将看到您在{targetLang}中使用的所有单词和语法、您的等级和经验值，以及在课程活动中发送的消息。您的1对1消息不会被分享。加入课程需要分享分析数据。",
+    "shareAndJoin": "分享并加入",
+    "goBack": "返回"
 }

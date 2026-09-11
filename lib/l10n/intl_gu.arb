@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-09-10 09:51:40.752567",
+    "@@last_modified": "2026-09-10 16:50:21.426975",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "શબ્દની માહિતી મેળવવામાં નિષ્ફળ",
     "contentCreatedBy": "આના દ્વારા બનાવવામાં આવ્યું",
     "coursePreview": "કોર્સનું પૂર્વાવલોકન",
-    "numActivities": "{count, plural, =1{1 પ્રવૃત્તિ} other{{count} પ્રવૃત્તિઓ}}"
+    "numActivities": "{count, plural, =1{1 પ્રવૃત્તિ} other{{count} પ્રવૃત્તિઓ}}",
+    "teacherAnalyticsRequestTitle": "શિક્ષક તમારી શીખવાની પ્રગતિની વિનંતી કરે છે",
+    "teacherAnalyticsRequestDesc": "તેઓ તમે {targetLang} માં ઉપયોગ કરેલા બધા શબ્દો અને વ્યાકરણ, તમારું સ્તર અને XP, અને કોર્સ પ્રવૃત્તિઓમાં મોકલેલા સંદેશાઓ જોશે. તમારા 1-ઓન-1 સંદેશાઓ શેર કરવામાં આવશે નહીં. કોર્સમાં જોડાવા માટે એનાલિટિક્સ શેર કરવું જરૂરી છે.",
+    "shareAndJoin": "શેર કરો અને જોડાઓ",
+    "goBack": "પાછા જાઓ"
 }

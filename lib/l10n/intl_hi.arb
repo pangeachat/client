@@ -3093,7 +3093,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-09-10 09:51:40.970693",
+    "@@last_modified": "2026-09-10 16:50:21.520081",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10542,5 +10542,9 @@
     "errorFetchingWordInfo": "शब्द की जानकारी लाने में विफल रहा",
     "contentCreatedBy": "इसके द्वारा बनाया गया",
     "coursePreview": "कोर्स का पूर्वावलोकन",
-    "numActivities": "{count, plural, =1{1 गतिविधि} other{{count} गतिविधियां}}"
+    "numActivities": "{count, plural, =1{1 गतिविधि} other{{count} गतिविधियां}}",
+    "teacherAnalyticsRequestTitle": "शिक्षक आपकी सीखने की प्रगति का अनुरोध करता है",
+    "teacherAnalyticsRequestDesc": "वे आपके द्वारा {targetLang} में उपयोग किए गए सभी शब्द और व्याकरण, आपका स्तर और XP, और पाठ्यक्रम गतिविधियों में भेजे गए संदेश देखेंगे। आपके 1-ऑन-1 संदेश साझा नहीं किए जाएंगे। पाठ्यक्रम में शामिल होने के लिए एनालिटिक्स साझा करना आवश्यक है।",
+    "shareAndJoin": "साझा करें और जुड़ें",
+    "goBack": "वापस जाएं"
 }

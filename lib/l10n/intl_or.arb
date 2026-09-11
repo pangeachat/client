@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-09-10 09:51:43.695659",
+    "@@last_modified": "2026-09-10 16:50:30.714431",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "ଶବ୍ଦ ସୂଚନା ଆଣିବାରେ ବିଫଳ ହେଲା",
     "contentCreatedBy": "ଏହାଙ୍କ ଦ୍ୱାରା ତିଆରି ହୋଇଛି",
     "coursePreview": "କୋର୍ସର ପୂର୍ବାବଲୋକନ",
-    "numActivities": "{count, plural, =1{୧ଟି କାର୍ଯ୍ୟକଳାପ} other{{count}ଟି କାର୍ଯ୍ୟକଳାପ}}"
+    "numActivities": "{count, plural, =1{୧ଟି କାର୍ଯ୍ୟକଳାପ} other{{count}ଟି କାର୍ଯ୍ୟକଳାପ}}",
+    "teacherAnalyticsRequestTitle": "ଶିକ୍ଷକ ଆପଣଙ୍କ ଶିକ୍ଷଣ ଅଗ୍ରଗତି ଅନୁରୋଧ କରନ୍ତି",
+    "teacherAnalyticsRequestDesc": "ସେମାନେ ଆପଣ {targetLang} ରେ ବ୍ୟବହାର କରିଥିବା ସମସ୍ତ ଶବ୍ଦ ଏବଂ ବ୍ୟାକରଣ, ଆପଣଙ୍କ ସ୍ତର ଏବଂ XP, ଏବଂ ପାଠ୍ୟକ୍ରମ କାର୍ଯ୍ୟକଳାପରେ ପଠାଯାଇଥିବା ବାର୍ତ୍ତାଗୁଡ଼ିକୁ ଦେଖିବେ। ଆପଣଙ୍କର 1-on-1 ବାର୍ତ୍ତାଗୁଡ଼ିକ ସେୟାର କରାଯିବ ନାହିଁ। ପାଠ୍ୟକ୍ରମରେ ଯୋଗଦେବା ପାଇଁ ଆନାଲିଟିକ୍ସ ସେୟାର କରିବା ଆବଶ୍ୟକ।",
+    "shareAndJoin": "ସେୟାର କରନ୍ତୁ ଏବଂ ଯୋଗ ଦିଅନ୍ତୁ",
+    "goBack": "ଫେରିଯାଆନ୍ତୁ"
 }

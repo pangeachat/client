@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-09-10 09:51:42.813892",
+    "@@last_modified": "2026-09-10 16:50:28.176393",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "Naqset il-ġbir tal-informazzjoni tal-kelma",
     "contentCreatedBy": "Maħluqa minn",
     "coursePreview": "Preview tal-kors",
-    "numActivities": "{count, plural, =1{1 attività} other{{count} attivitajiet}}"
+    "numActivities": "{count, plural, =1{1 attività} other{{count} attivitajiet}}",
+    "teacherAnalyticsRequestTitle": "L-għalliem jitlob il-progress tiegħek fit-tagħlim",
+    "teacherAnalyticsRequestDesc": "Se jaraw il-kliem u l-grammatika kollha li użajt f'{targetLang}', il-livell u l-XP tiegħek, u l-messaġġi mibgħuta fl-attivitajiet tal-kors. Il-messaġġi 1-on-1 tiegħek ma jinqasmux. Il-qsim tal-analitika huwa meħtieġ biex tingħaqad mal-kors.",
+    "shareAndJoin": "Aqsam u ingħaqad",
+    "goBack": "Mur lura"
 }

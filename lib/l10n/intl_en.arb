@@ -4935,9 +4935,18 @@
     "@showMoreOptionsHint": {
         "description": "Semantics hint fragment: TalkBack reads it as 'double tap and hold to <this>' on controls whose long-press opens the options menu."
     },
-    "analyticsAccessNoticeTitle": "Learning Analytics Required",
-    "analyticsAccessNoticeDesc": "Admins of this course want to view your analytics to track your learning progress. Allow them access to join.",
-    "shareAnalytics": "Share Analytics",
+    "teacherAnalyticsRequestTitle": "Teacher requests your learning progress",
+    "teacherAnalyticsRequestDesc": "They'll see all the words and grammar you've used in {targetLang}, your level and XP, and the messages sent in course activities. Your 1-on-1 messages will not be shared. Sharing analytics is required to join the course.",
+    "@teacherAnalyticsRequestDesc": {
+        "type": "String",
+        "placeholders": {
+            "targetLang": {
+                "type": "String"
+            }
+        }
+    },
+    "shareAndJoin": "Share and join",
+    "goBack": "Go back",
     "setPermissionsLevelDesc": "Please choose a predefined role below or enter a custom permission level. Pick a whole number between 0 and 100.",
     "reportContentIssue": "Report content issue",
     "userTypeTitle": "I use Pangea Chat to",

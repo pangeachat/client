@@ -3563,7 +3563,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-09-10 09:51:40.556380",
+    "@@last_modified": "2026-09-10 16:50:21.876241",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9921,5 +9921,9 @@
     "errorFetchingWordInfo": "Theip ar fhaisnéis focal a fháil",
     "contentCreatedBy": "Cruthaithe ag",
     "coursePreview": "Réamhamharc ar an gcúrsa",
-    "numActivities": "{count, plural, =1{1 ghníomhaíocht} other{{count} ghníomhaíocht}}"
+    "numActivities": "{count, plural, =1{1 ghníomhaíocht} other{{count} ghníomhaíocht}}",
+    "teacherAnalyticsRequestTitle": "Iarrann an múinteoir do dhul chun cinn foghlama",
+    "teacherAnalyticsRequestDesc": "Feicfidh siad na focail agus an ghramadach go léir a d'úsáid tú i {targetLang}, do leibhéal agus do XP, agus na teachtaireachtaí a seoladh i ngníomhaíochtaí an chúrsa. Ní roinnfear do theachtaireachtaí 1-ar-1. Ní mór an anailísíocht a roinnt chun dul isteach sa chúrsa.",
+    "shareAndJoin": "Roinn agus bí páirteach",
+    "goBack": "Téigh ar ais"
 }

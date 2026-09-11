@@ -3548,7 +3548,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-09-10 09:51:39.262998",
+    "@@last_modified": "2026-09-10 16:50:17.529025",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9924,5 +9924,9 @@
     "errorFetchingWordInfo": "Не атрымалася атрымаць інфармацыю пра слова",
     "contentCreatedBy": "Створана",
     "coursePreview": "Папярэдні прагляд курса",
-    "numActivities": "{count, plural, =1{1 занятак} other{{count} заняткаў}}"
+    "numActivities": "{count, plural, =1{1 занятак} other{{count} заняткаў}}",
+    "teacherAnalyticsRequestTitle": "Настаўнік запытвае ваш прагрэс у навучанні",
+    "teacherAnalyticsRequestDesc": "Яны ўбачаць усе словы і граматыку, якія вы выкарыстоўвалі ў {targetLang}, ваш узровень і XP, а таксама паведамленні, адпраўленыя ў рамках курсавых заняткаў. Вашы паведамленні 1-на-1 не будуць абагулены. Абагульванне аналітыкі патрабуецца для далучэння да курса.",
+    "shareAndJoin": "Падзяліцца і далучыцца",
+    "goBack": "Вярнуцца"
 }

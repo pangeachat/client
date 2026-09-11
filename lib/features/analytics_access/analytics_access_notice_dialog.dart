@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 
@@ -7,7 +8,11 @@ import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.
 /// Cancelling means leaving the course, so the dialog cannot be dismissed
 /// without picking one of the two buttons.
 class AnalyticsAccessNoticeDialog extends StatelessWidget {
-  const AnalyticsAccessNoticeDialog({super.key});
+  /// The course's target language, named in the body copy. Null when it could
+  /// not be resolved; the copy falls back to a generic "Target Language".
+  final LanguageModel? targetLanguage;
+
+  const AnalyticsAccessNoticeDialog({this.targetLanguage, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +26,7 @@ class AnalyticsAccessNoticeDialog extends StatelessWidget {
           borderRadius: BorderRadius.circular(12.0),
         ),
         child: Semantics(
-          label: l10n.analyticsAccessNoticeTitle,
+          label: l10n.teacherAnalyticsRequestTitle,
           liveRegion: true,
           container: true,
           child: ConstrainedBox(
@@ -38,7 +43,7 @@ class AnalyticsAccessNoticeDialog extends StatelessWidget {
                     child: Semantics(
                       container: true,
                       child: Text(
-                        l10n.analyticsAccessNoticeTitle,
+                        l10n.teacherAnalyticsRequestTitle,
                         textAlign: TextAlign.center,
                         style: theme.textTheme.titleLarge?.copyWith(
                           fontWeight: FontWeight.bold,
@@ -49,7 +54,10 @@ class AnalyticsAccessNoticeDialog extends StatelessWidget {
                   Semantics(
                     container: true,
                     child: Text(
-                      l10n.analyticsAccessNoticeDesc,
+                      l10n.teacherAnalyticsRequestDesc(
+                        targetLanguage?.getDisplayName(l10n) ??
+                            l10n.targetLanguage,
+                      ),
                       textAlign: TextAlign.center,
                       style: theme.textTheme.bodyMedium,
                     ),
@@ -66,7 +74,7 @@ class AnalyticsAccessNoticeDialog extends StatelessWidget {
                       context,
                     ).pop<OkCancelResult>(OkCancelResult.ok),
                     child: Text(
-                      l10n.shareAnalytics,
+                      l10n.shareAndJoin,
                       style: theme.textTheme.bodyLarge,
                     ),
                   ),
@@ -74,7 +82,7 @@ class AnalyticsAccessNoticeDialog extends StatelessWidget {
                     onPressed: () => Navigator.of(
                       context,
                     ).pop<OkCancelResult>(OkCancelResult.cancel),
-                    child: Text(l10n.leave),
+                    child: Text(l10n.goBack),
                   ),
                 ],
               ),

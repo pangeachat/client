@@ -7,8 +7,9 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 
 /// #8308 — cancelling this notice leaves the course, so the learner has to read
-/// it. The dialog gives the sharing choice the emphasis (a filled button) and
-/// says plainly what leaving costs, and no gesture may answer it for them.
+/// it. The dialog gives the sharing choice the emphasis (a filled button), the
+/// body says sharing is required to join, and no gesture may answer it for
+/// them.
 void main() {
   late OkCancelResult? result;
 
@@ -44,17 +45,18 @@ void main() {
       tester.element(find.byType(AnalyticsAccessNoticeDialog)),
     );
 
-    expect(find.text(l10n.analyticsAccessNoticeTitle), findsOneWidget);
-    expect(find.text(l10n.analyticsAccessNoticeDesc), findsOneWidget);
+    expect(find.text(l10n.teacherAnalyticsRequestTitle), findsOneWidget);
     expect(
-      find.widgetWithText(ElevatedButton, l10n.shareAnalytics),
+      find.text(l10n.teacherAnalyticsRequestDesc(l10n.targetLanguage)),
       findsOneWidget,
+      reason:
+          'no target language was passed, so the copy falls back to the generic name',
     );
     expect(
-      find.widgetWithText(TextButton, l10n.leave),
+      find.widgetWithText(ElevatedButton, l10n.shareAndJoin),
       findsOneWidget,
-      reason: 'declining leaves the course, so it says so',
     );
+    expect(find.widgetWithText(TextButton, l10n.goBack), findsOneWidget);
   });
 
   testWidgets('sharing grants access', (tester) async {
@@ -65,12 +67,14 @@ void main() {
     expect(result, OkCancelResult.ok);
   });
 
-  testWidgets('leaving declines', (tester) async {
+  testWidgets('going back declines', (tester) async {
     await pumpDialog(tester);
     await tester.tap(
       find.widgetWithText(
         TextButton,
-        L10n.of(tester.element(find.byType(AnalyticsAccessNoticeDialog))).leave,
+        L10n.of(
+          tester.element(find.byType(AnalyticsAccessNoticeDialog)),
+        ).goBack,
       ),
     );
     await tester.pumpAndSettle();

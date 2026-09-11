@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-09-10 09:51:41.656596",
+    "@@last_modified": "2026-09-10 16:50:23.640656",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "Gagal njupuk informasi tembung",
     "contentCreatedBy": "Digawe dening",
     "coursePreview": "Pratinjau kursus",
-    "numActivities": "{count, plural, =1{1 aktivitas} other{{count} aktivitas}}"
+    "numActivities": "{count, plural, =1{1 aktivitas} other{{count} aktivitas}}",
+    "teacherAnalyticsRequestTitle": "Guru njaluk kemajuan sinau sampeyan",
+    "teacherAnalyticsRequestDesc": "Dheweke bakal weruh kabeh tembung lan tata basa sing wis sampeyan gunakake ing {targetLang}, level lan XP sampeyan, lan pesen sing dikirim ing kegiatan kursus. Pesen 1-lawan-1 sampeyan ora bakal dituduhake. Nuduhake analitik dibutuhake kanggo melu kursus.",
+    "shareAndJoin": "Nuduhake lan gabung",
+    "goBack": "Bali"
 }

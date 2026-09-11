@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-09-10 09:51:42.518091",
+    "@@last_modified": "2026-09-10 16:50:27.261239",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "വാക്കിന്റെ വിവരങ്ങൾ ലഭ്യമാക്കുന്നതിൽ പരാജയപ്പെട്ടു",
     "contentCreatedBy": "സൃഷ്ടിച്ചത്",
     "coursePreview": "കോഴ്സ് പ്രിവ്യൂ",
-    "numActivities": "{count, plural, =1{1 പ്രവർത്തനം} other{{count} പ്രവർത്തനങ്ങൾ}}"
+    "numActivities": "{count, plural, =1{1 പ്രവർത്തനം} other{{count} പ്രവർത്തനങ്ങൾ}}",
+    "teacherAnalyticsRequestTitle": "അധ്യാപകൻ നിങ്ങളുടെ പഠന പുരോഗതി അഭ്യർത്ഥിക്കുന്നു",
+    "teacherAnalyticsRequestDesc": "നിങ്ങൾ {targetLang} ഉപയോഗിച്ച എല്ലാ വാക്കുകളും വ്യാകരണവും, നിങ്ങളുടെ നിലവാരവും XP-യും, കോഴ്‌സ് പ്രവർത്തനങ്ങളിൽ അയച്ച സന്ദേശങ്ങളും അവർക്ക് കാണാൻ കഴിയും. നിങ്ങളുടെ 1-ഓൺ-1 സന്ദേശങ്ങൾ പങ്കിടില്ല. കോഴ്‌സിൽ ചേരുന്നതിന് അനലിറ്റിക്‌സ് പങ്കിടേണ്ടത് ആവശ്യമാണ്.",
+    "shareAndJoin": "പങ്കിടുക, ചേരുക",
+    "goBack": "തിരികെ പോകുക"
 }

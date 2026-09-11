@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-09-10 09:51:44.872427",
+    "@@last_modified": "2026-09-10 16:50:33.786052",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "Маълумот дар бораи калимаро гирифтан нашуд",
     "contentCreatedBy": "Сохта шудааст аз ҷониби",
     "coursePreview": "Пешнамоиши курс",
-    "numActivities": "{count, plural, =1{1 фаъолият} other{{count} фаъолият}}"
+    "numActivities": "{count, plural, =1{1 фаъолият} other{{count} фаъолият}}",
+    "teacherAnalyticsRequestTitle": "Муаллим пешрафти омӯзиши шуморо дархост мекунад",
+    "teacherAnalyticsRequestDesc": "Онҳо ҳамаи калимаҳо ва грамматикаеро, ки шумо дар {targetLang} истифода бурдед, сатҳ ва XP-и шумо ва паёмҳои дар фаъолиятҳои курсӣ фиристодашударо мебинанд. Паёмҳои 1-ба-1-и шумо мубодила нахоҳанд шуд. Барои ҳамроҳ шудан ба курс мубодилаи таҳлилҳо ҳатмист.",
+    "shareAndJoin": "Мубодила ва ҳамроҳ шудан",
+    "goBack": "Бозгашт"
 }

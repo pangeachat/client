@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-10 09:51:39.536793",
+    "@@last_modified": "2026-09-10 16:50:17.300209",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10538,5 +10538,9 @@
     "errorFetchingWordInfo": "শব্দের তথ্য আনতে ব্যর্থ হয়েছে",
     "contentCreatedBy": "তৈরি করেছেন",
     "coursePreview": "কোর্স প্রিভিউ",
-    "numActivities": "{count, plural, =1{১টি কার্যকলাপ} other{{count}টি কার্যকলাপ}}"
+    "numActivities": "{count, plural, =1{১টি কার্যকলাপ} other{{count}টি কার্যকলাপ}}",
+    "teacherAnalyticsRequestTitle": "শিক্ষক আপনার শেখার অগ্রগতি জানতে চেয়েছেন",
+    "teacherAnalyticsRequestDesc": "তারা {targetLang} এ আপনার ব্যবহৃত সমস্ত শব্দ এবং ব্যাকরণ, আপনার স্তর এবং XP, এবং কোর্সের কার্যকলাপে পাঠানো বার্তাগুলি দেখতে পাবেন। আপনার 1-অন-1 বার্তাগুলি শেয়ার করা হবে না। কোর্সে যোগদানের জন্য অ্যানালিটিক্স শেয়ার করা আবশ্যক।",
+    "shareAndJoin": "শেয়ার করুন এবং যোগ দিন",
+    "goBack": "ফিরে যান"
 }

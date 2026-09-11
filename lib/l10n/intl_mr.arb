@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-09-10 09:51:42.714870",
+    "@@last_modified": "2026-09-10 16:50:27.770669",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "शब्दाची माहिती मिळवण्यात अयशस्वी",
     "contentCreatedBy": "यांनी तयार केले",
     "coursePreview": "अभ्यासक्रमाचे पूर्वावलोकन",
-    "numActivities": "{count, plural, =1{1 ॲक्टिव्हिटी} other{{count} ॲक्टिव्हिटीज}}"
+    "numActivities": "{count, plural, =1{1 ॲक्टिव्हिटी} other{{count} ॲक्टिव्हिटीज}}",
+    "teacherAnalyticsRequestTitle": "शिक्षक तुमच्या शिकण्याच्या प्रगतीची विनंती करत आहेत",
+    "teacherAnalyticsRequestDesc": "त्यांना तुम्ही {targetLang} मध्ये वापरलेले सर्व शब्द आणि व्याकरण, तुमची पातळी आणि XP, आणि अभ्यासक्रमाच्या क्रियाकलापांमध्ये पाठवलेले संदेश दिसतील. तुमचे 1-ऑन-1 संदेश शेअर केले जाणार नाहीत. अभ्यासक्रमात सामील होण्यासाठी विश्लेषण शेअर करणे आवश्यक आहे.",
+    "shareAndJoin": "शेअर करा आणि सामील व्हा",
+    "goBack": "मागे जा"
 }

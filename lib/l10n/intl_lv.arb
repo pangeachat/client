@@ -3535,7 +3535,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-09-10 09:51:42.379351",
+    "@@last_modified": "2026-09-10 16:50:26.591939",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -9910,5 +9910,9 @@
     "errorFetchingWordInfo": "Neizdevās ielādēt vārda informāciju",
     "contentCreatedBy": "Izveidoja",
     "coursePreview": "Kursa priekšskatījums",
-    "numActivities": "{count, plural, =1{1 aktivitāte} other{{count} aktivitātes}}"
+    "numActivities": "{count, plural, =1{1 aktivitāte} other{{count} aktivitātes}}",
+    "teacherAnalyticsRequestTitle": "Skolotājs pieprasa jūsu mācību progresu",
+    "teacherAnalyticsRequestDesc": "Viņi redzēs visus vārdus un gramatiku, ko esat izmantojis valodā {targetLang}, jūsu līmeni un XP, kā arī ziņas, kas nosūtītas kursa aktivitātēs. Jūsu individuālās ziņas netiks kopīgotas. Lai pievienotos kursam, ir jākopīgo analītika.",
+    "shareAndJoin": "Kopīgot un pievienoties",
+    "goBack": "Atgriezties"
 }

@@ -1802,7 +1802,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-09-10 09:51:43.844829",
+    "@@last_modified": "2026-09-10 16:50:31.031430",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10855,5 +10855,9 @@
     "errorFetchingWordInfo": "Pridobivanje informacij o besedi ni uspelo",
     "contentCreatedBy": "Ustvaril",
     "coursePreview": "Predogled tečaja",
-    "numActivities": "{count, plural, =1{1 dejavnost} other{{count} dejavnosti}}"
+    "numActivities": "{count, plural, =1{1 dejavnost} other{{count} dejavnosti}}",
+    "teacherAnalyticsRequestTitle": "Učitelj zahteva vaš napredek pri učenju",
+    "teacherAnalyticsRequestDesc": "Videli bodo vse besede in slovnico, ki ste jih uporabili v {targetLang}, vašo raven in XP ter sporočila, poslana v dejavnostih tečaja. Vaša sporočila 1-na-1 ne bodo deljena. Deljenje analitike je obvezno za pridružitev tečaju.",
+    "shareAndJoin": "Deli in se pridruži",
+    "goBack": "Nazaj"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-09-10 09:51:45.092976",
+    "@@last_modified": "2026-09-10 16:50:31.591754",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "Ua lē mafai ona aumai faʻamatalaga o le upu",
     "contentCreatedBy": "Fausia e",
     "coursePreview": "Aotelega o le kosi",
-    "numActivities": "{count, plural, =1{1 gaioiga} other{{count} gaioiga}}"
+    "numActivities": "{count, plural, =1{1 gaioiga} other{{count} gaioiga}}",
+    "teacherAnalyticsRequestTitle": "E talosaga le faiaoga mo lou alualu i luma i le aʻoga",
+    "teacherAnalyticsRequestDesc": "O le a latou vaʻai i upu ma kalama uma na e faʻaaogaina i le {targetLang}, lou tulaga ma le XP, ma feʻau na lafoina i galuega a le vasega. O au feʻau taʻitoʻatasi e le faʻasoaina. E manaʻomia le faʻasoaina o auʻiliʻiliga e auai ai i le vasega.",
+    "shareAndJoin": "Faʻasoa ma auai",
+    "goBack": "Toe foʻi"
 }

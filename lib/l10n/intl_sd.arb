@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-09-10 09:51:43.836615",
+    "@@last_modified": "2026-09-10 16:50:30.953227",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "لفظ جي معلومات حاصل ڪرڻ ۾ ناڪامي ٿي",
     "contentCreatedBy": "ٺاهيندڙ",
     "coursePreview": "ڪورس جو ڏيک",
-    "numActivities": "{count, plural, =1{1 سرگرمي} other{{count} سرگرميون}}"
+    "numActivities": "{count, plural, =1{1 سرگرمي} other{{count} سرگرميون}}",
+    "teacherAnalyticsRequestTitle": "استاد توهان جي سکڻ جي ترقي جي درخواست ڪري ٿو",
+    "teacherAnalyticsRequestDesc": "اهي سڀ لفظ ۽ گرامر ڏسندا جيڪي توهان {targetLang} ۾ استعمال ڪيا آهن، توهان جو ليول ۽ XP، ۽ ڪورس جي سرگرمين ۾ موڪليل پيغام. توهان جا 1-on-1 پيغام شيئر نه ڪيا ويندا. ڪورس ۾ شامل ٿيڻ لاءِ اينالائيٽڪس شيئر ڪرڻ لازمي آهي.",
+    "shareAndJoin": "شيئر ڪريو ۽ شامل ٿيو",
+    "goBack": "واپس وڃو"
 }

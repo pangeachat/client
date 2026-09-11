@@ -2559,7 +2559,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-09-10 09:51:43.349334",
+    "@@last_modified": "2026-09-10 16:50:30.026322",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10827,5 +10827,9 @@
     "errorFetchingWordInfo": "Falha ao obter informações da palavra",
     "contentCreatedBy": "Criado por",
     "coursePreview": "Pré-visualização do curso",
-    "numActivities": "{count, plural, =1{1 atividade} other{{count} atividades}}"
+    "numActivities": "{count, plural, =1{1 atividade} other{{count} atividades}}",
+    "teacherAnalyticsRequestTitle": "O professor solicitou o seu progresso de aprendizagem",
+    "teacherAnalyticsRequestDesc": "O professor verá todas as palavras e gramática que usou em {targetLang}, o seu nível e XP, e as mensagens enviadas nas atividades do curso. As suas mensagens 1-para-1 não serão partilhadas. A partilha de análises é necessária para participar no curso.",
+    "shareAndJoin": "Partilhar e participar",
+    "goBack": "Voltar"
 }

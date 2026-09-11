@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-09-10 09:51:45.287140",
+    "@@last_modified": "2026-09-10 16:50:34.178732",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "Ayiphumelelanga ukufumana ulwazi lwegama",
     "contentCreatedBy": "Yenziwe ngu",
     "coursePreview": "Ujongo lwekhosi",
-    "numActivities": "{count, plural, =1{1 umsebenzi} other{{count} imisebenzi}}"
+    "numActivities": "{count, plural, =1{1 umsebenzi} other{{count} imisebenzi}}",
+    "teacherAnalyticsRequestTitle": "Utitshala ucela inkqubela yakho yokufunda",
+    "teacherAnalyticsRequestDesc": "Baza kubona onke amagama kunye negrama oyisebenzisileyo kwi-{targetLang}, inqanaba lakho kunye ne-XP, kunye nemiyalezo ethunyelwe kwimisebenzi yekhosi. Imiyalezo yakho yobuqu ayizukwabelwana ngayo. Ukwabelana nge-analytics kuyafuneka ukuze ujoyine ikhosi.",
+    "shareAndJoin": "Yabelana kwaye ujoyine",
+    "goBack": "Buyela umva"
 }

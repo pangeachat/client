@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-09-10 09:51:44.213075",
+    "@@last_modified": "2026-09-10 16:50:31.803562",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "Dështoi marrja e informacionit të fjalës",
     "contentCreatedBy": "Krijuar nga",
     "coursePreview": "Parashikim kursi",
-    "numActivities": "{count, plural, =1{1 aktivitet} other{{count} aktivitete}}"
+    "numActivities": "{count, plural, =1{1 aktivitet} other{{count} aktivitete}}",
+    "teacherAnalyticsRequestTitle": "Mësuesi kërkon progresin tuaj të të nxënit",
+    "teacherAnalyticsRequestDesc": "Ata do të shohin të gjitha fjalët dhe gramatikën që keni përdorur në {targetLang}, nivelin tuaj dhe XP-në, si dhe mesazhet e dërguara në aktivitetet e kursit. Mesazhet tuaja 1-në-1 nuk do të ndahen. Ndarja e analitikave kërkohet për t'u bashkuar me kursin.",
+    "shareAndJoin": "Ndaj dhe bashkohu",
+    "goBack": "Kthehu"
 }

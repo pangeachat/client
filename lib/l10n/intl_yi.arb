@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-09-10 09:51:45.407955",
+    "@@last_modified": "2026-09-10 16:50:34.710924",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "נישט געקענט ברענגען וואָרט אינפֿאָרמאַציע",
     "contentCreatedBy": "געשאַפֿן פֿון",
     "coursePreview": "קורס פֿאָרויסיקע ווייַזונג",
-    "numActivities": "{count, plural, =1{1 טעטיקייט} other{{count} טעטיקייטן}}"
+    "numActivities": "{count, plural, =1{1 טעטיקייט} other{{count} טעטיקייטן}}",
+    "teacherAnalyticsRequestTitle": "לערער בעט דיין לערנען פּראָגרעס",
+    "teacherAnalyticsRequestDesc": "זיי וועלן זען אַלע די ווערטער און גראַמאַטיק וואָס איר האָט געניצט אין {targetLang}, דיין מדרגה און עקס-פּי, און די אַרטיקלען געשיקט אין קורס אַקטיוויטעטן. דיין 1-אויף-1 אַרטיקלען וועלן נישט זיין געטיילט. טיילן אַנאַליטיקס איז פארלאנגט צו פאַרבינדן דעם קורס.",
+    "shareAndJoin": "טיילן און פאַרבינדן",
+    "goBack": "גיי צוריק"
 }

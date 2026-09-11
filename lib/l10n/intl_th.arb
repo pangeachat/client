@@ -3093,7 +3093,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-09-10 09:51:44.722902",
+    "@@last_modified": "2026-09-10 16:50:33.518606",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10542,5 +10542,9 @@
     "errorFetchingWordInfo": "ไม่สามารถดึงข้อมูลคำศัพท์ได้",
     "contentCreatedBy": "สร้างโดย",
     "coursePreview": "ดูตัวอย่างคอร์ส",
-    "numActivities": "{count, plural, =1{1 กิจกรรม} other{{count} กิจกรรม}}"
+    "numActivities": "{count, plural, =1{1 กิจกรรม} other{{count} กิจกรรม}}",
+    "teacherAnalyticsRequestTitle": "ครูขอข้อมูลความคืบหน้าในการเรียนรู้ของคุณ",
+    "teacherAnalyticsRequestDesc": "ครูจะเห็นคำศัพท์และไวยากรณ์ทั้งหมดที่คุณใช้ในภาษา{targetLang} ระดับและ XP ของคุณ รวมถึงข้อความที่ส่งในกิจกรรมของคอร์ส ข้อความส่วนตัวของคุณจะไม่ถูกแชร์ การแชร์ข้อมูลวิเคราะห์เป็นสิ่งจำเป็นสำหรับการเข้าร่วมคอร์ส",
+    "shareAndJoin": "แชร์และเข้าร่วม",
+    "goBack": "ย้อนกลับ"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-09-10 09:51:40.509758",
+    "@@last_modified": "2026-09-10 16:50:20.401024",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10265,5 +10265,9 @@
     "errorFetchingWordInfo": "Échec de la récupération des informations sur le mot",
     "contentCreatedBy": "Créé par",
     "coursePreview": "Aperçu du cours",
-    "numActivities": "{count, plural, =1{1 activité} other{{count} activités}}"
+    "numActivities": "{count, plural, =1{1 activité} other{{count} activités}}",
+    "teacherAnalyticsRequestTitle": "L'enseignant demande vos progrès d'apprentissage",
+    "teacherAnalyticsRequestDesc": "Ils verront tous les mots et la grammaire que vous avez utilisés en {targetLang}, votre niveau et votre XP, ainsi que les messages envoyés dans les activités du cours. Vos messages individuels ne seront pas partagés. Le partage des analyses est requis pour rejoindre le cours.",
+    "shareAndJoin": "Partager et rejoindre",
+    "goBack": "Retourner"
 }

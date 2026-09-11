@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-09-10 09:51:45.642376",
+    "@@last_modified": "2026-09-10 16:50:35.570826",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "Kò lè gba ìsọfúnni ọ̀rọ̀",
     "contentCreatedBy": "Ẹlẹ́dàá",
     "coursePreview": "Aworan iṣaaju ti ikẹkọọ",
-    "numActivities": "{count, plural, =1{iṣẹ́ kan} other{{count} àwọn iṣẹ́}}"
+    "numActivities": "{count, plural, =1{iṣẹ́ kan} other{{count} àwọn iṣẹ́}}",
+    "teacherAnalyticsRequestTitle": "Olùkọ́ rẹ ń béèrè ìtẹ̀síwájú ẹ̀kọ́ rẹ",
+    "teacherAnalyticsRequestDesc": "Wọn yóò rí gbogbo àwọn ọ̀rọ̀ àti gírámà tí o ti lò nínú {targetLang}, ìpele rẹ àti XP, àti àwọn ìhìn iṣẹ́ tí a fi ránṣẹ́ nínú àwọn iṣẹ́ ìkẹ́kọ̀ọ́. A kì yóò pín àwọn ìhìn iṣẹ́ 1-sí-1 rẹ. Pípin àwọn àtúpalẹ̀ jẹ́ dandan láti darapọ̀ mọ́ ìkẹ́kọ̀ọ́ náà.",
+    "shareAndJoin": "Pín àti darapọ̀",
+    "goBack": "Padà sí ẹ̀yìn"
 }

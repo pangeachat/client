@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-09-10 09:51:40.666296",
+    "@@last_modified": "2026-09-10 16:50:21.073690",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "Net slagge om wurdynformaasje op te heljen",
     "contentCreatedBy": "Makke troch",
     "coursePreview": "Foarbyld fan de kursus",
-    "numActivities": "{count, plural, =1{1 aktiviteit} other{{count} aktiviteiten}}"
+    "numActivities": "{count, plural, =1{1 aktiviteit} other{{count} aktiviteiten}}",
+    "teacherAnalyticsRequestTitle": "Learkrêft freget dyn learfoarútgong op",
+    "teacherAnalyticsRequestDesc": "Se sille alle wurden en grammatika sjen dy'tsto brûkt hast yn it {targetLang}, dyn nivo en XP, en de berjochten dy't ferstjoerd binne yn kursusaktiviteiten. Dyn 1-op-1-berjochten wurde net dield. It dielen fan analyzes is ferplichte om mei te dwaan oan de kursus.",
+    "shareAndJoin": "Diele en meidwaan",
+    "goBack": "Werom"
 }

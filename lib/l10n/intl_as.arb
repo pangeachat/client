@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-09-10 09:51:39.406584",
+    "@@last_modified": "2026-09-10 16:50:18.647959",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "শব্দৰ তথ্য আহৰণ কৰাত ব্যৰ্থ হৈছে",
     "contentCreatedBy": "দ্বাৰা সৃষ্টি কৰা হৈছে",
     "coursePreview": "পাঠ্যক্ৰমৰ পূৰ্বলোকন",
-    "numActivities": "{count, plural, =1{1 কাৰ্য্যকলাপ} other{{count} কাৰ্য্যকলাপ}}"
+    "numActivities": "{count, plural, =1{1 কাৰ্য্যকলাপ} other{{count} কাৰ্য্যকলাপ}}",
+    "teacherAnalyticsRequestTitle": "শিক্ষকে আপোনাৰ শিক্ষণৰ অগ্ৰগতিৰ অনুৰোধ জনাইছে",
+    "teacherAnalyticsRequestDesc": "তেওঁলোকে আপুনি {targetLang}ত ব্যৱহাৰ কৰা সকলো শব্দ আৰু ব্যাকৰণ, আপোনাৰ স্তৰ আৰু XP, আৰু পাঠ্যক্ৰমৰ কাৰ্যকলাপত প্ৰেৰণ কৰা বাৰ্তাসমূহ দেখিব। আপোনাৰ 1-অন-1 বাৰ্তাসমূহ ভাগ বতৰা কৰা নহ'ব। পাঠ্যক্ৰমত যোগদান কৰিবলৈ বিশ্লেষণ ভাগ বতৰা কৰাটো বাধ্যতামূলক।",
+    "shareAndJoin": "ভাগ বতৰা কৰক আৰু যোগদান কৰক",
+    "goBack": "পিছলৈ যাওক"
 }

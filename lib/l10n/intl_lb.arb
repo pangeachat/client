@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-09-10 09:51:42.137866",
+    "@@last_modified": "2026-09-10 16:50:26.780400",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2314,5 +2314,9 @@
     "errorFetchingWordInfo": "Konnt d'Wuertinformatioun net ofruffen",
     "contentCreatedBy": "Erstellt vun",
     "coursePreview": "Cours Virschau",
-    "numActivities": "{count, plural, =1{1 Aktivitéit} other{{count} Aktivitéiten}}"
+    "numActivities": "{count, plural, =1{1 Aktivitéit} other{{count} Aktivitéiten}}",
+    "teacherAnalyticsRequestTitle": "Léierpersonal freet no dengem Léierfortschrëtt",
+    "teacherAnalyticsRequestDesc": "Si gesinn all d'Wierder an d'Grammatik, déi s du am {targetLang} benotzt hues, däin Niveau an deng XP, an d'Noriichten, déi an de Coursaktivitéite geschéckt goufen. Deng 1-op-1 Noriichte ginn net gedeelt. D'Deelen vun den Analyse-Donnéeë ass néideg fir de Cours matzemaachen.",
+    "shareAndJoin": "Deelen a matmaachen",
+    "goBack": "Zréck goen"
 }
