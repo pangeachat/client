@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/subscription/repo_v2/checkout_request.dart';
 import 'package:fluffychat/features/subscription/repo_v2/products_response.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -17,7 +17,7 @@ class SelectedSubscriptionPopup extends StatelessWidget {
     return DialogWrapper(
       backgroundColor: Theme.of(context).colorScheme.surface,
       borderRadius: 16.0,
-      side: BorderSide(color: AppConfig.goldByTheme(context)),
+      side: BorderSide(color: Theme.of(context).pangea.goldGraphic),
       maxWidth: 325.0,
       maxHeight: 600.0,
       child: Column(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -46,20 +47,23 @@ enum ActivityPinState {
   /// values.
   bool get isLive => isOngoing || this == ActivityPinState.joinable;
 
-  /// The pin body color. See world-map.instructions.md ("Pin state").
-  Color get color => switch (this) {
+  /// The pin body colour. See world-map.instructions.md ("Pin state").
+  Color bodyColor(BuildContext context) => switch (this) {
+    ActivityPinState.joinable => Theme.of(context).pangea.joinable,
     ActivityPinState.ongoingPending ||
     ActivityPinState.ongoingActive => AppConfig.primaryColor,
-    ActivityPinState.joinable => AppConfig.green,
     ActivityPinState.inProgress => AppConfig.gold,
-    ActivityPinState.available => AppConfig.primaryColorLight,
+    ActivityPinState.available =>
+      Theme.of(context).brightness == Brightness.dark
+          ? AppConfig.primaryColorDark
+          : AppConfig.primaryColorLight,
   };
 
-  Color bodyColor(BuildContext context) =>
-      this == ActivityPinState.available &&
-          Theme.of(context).brightness == Brightness.dark
-      ? AppConfig.primaryColorDark
-      : color;
+  /// Ink for the icon and text drawn on [bodyColor].
+  Color onBodyColor(BuildContext context) => switch (this) {
+    ActivityPinState.joinable => Theme.of(context).pangea.onJoinable,
+    _ => Colors.white,
+  };
 
   String label(L10n l10n) => switch (this) {
     ActivityPinState.ongoingPending => l10n.ongoingPendingLabel,
@@ -83,7 +87,7 @@ enum ActivityPinState {
   };
 
   /// The accent used for a large card's border / foreground — the state hue.
-  Color get accent => color;
+  Color accent(BuildContext context) => bodyColor(context);
 
   /// The label colour: the state hue, but for the three purple states retuned
   /// by the theme rather than taken raw from [AppConfig].
@@ -106,7 +110,8 @@ enum ActivityPinState {
     ActivityPinState.available ||
     ActivityPinState.ongoingPending ||
     ActivityPinState.ongoingActive => Theme.of(context).colorScheme.primary,
-    ActivityPinState.joinable || ActivityPinState.inProgress => color,
+    ActivityPinState.joinable ||
+    ActivityPinState.inProgress => bodyColor(context),
   };
 }
 

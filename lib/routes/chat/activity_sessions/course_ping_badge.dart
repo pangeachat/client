@@ -84,7 +84,7 @@ class CoursePingBadge extends StatelessWidget {
     return Semantics(
       label: L10n.of(context).pingedLabel,
       child: Material(
-        color: (pinState ?? ActivityPinState.joinable).color,
+        color: (pinState ?? ActivityPinState.joinable).bodyColor(context),
         elevation: 4.0,
         shape: const CircleBorder(),
         child: SizedBox(

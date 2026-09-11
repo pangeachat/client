@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -49,7 +49,7 @@ class ActivityDropdownContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final isColumnMode = FluffyThemes.isColumnMode(context);
-    final goldColor = AppConfig.goldByTheme(context);
+    final goldColor = theme.pangea.goldFixedDim;
 
     // The top row is the only toggle target. Padding is applied by the InkWell
     // wrapper below so its hover highlight matches the collapsed header.
@@ -106,10 +106,8 @@ class ActivityDropdownContent extends StatelessWidget {
             backgroundColor: hasCompletedOwnGoals
                 ? goldColor
                 : theme.colorScheme.primaryContainer,
-            foregroundColor: theme.brightness == Brightness.light
-                ? null
-                : hasCompletedOwnGoals
-                ? theme.colorScheme.surface
+            foregroundColor: hasCompletedOwnGoals
+                ? theme.pangea.onGoldFixed
                 : theme.colorScheme.onPrimaryContainer,
           ),
           child: Row(
@@ -128,14 +126,14 @@ class ActivityDropdownContent extends StatelessWidget {
           style: ElevatedButton.styleFrom(
             side: BorderSide(
               color: haveAllRolesCompletedAllGoals
-                  ? goldColor
+                  ? theme.pangea.goldGraphic
                   : theme.brightness == Brightness.light
                   ? theme.colorScheme.primary.withAlpha(120)
                   : theme.colorScheme.primaryContainer,
               width: 2,
             ),
             foregroundColor: haveAllRolesCompletedAllGoals
-                ? goldColor
+                ? theme.pangea.gold
                 : theme.colorScheme.primary,
             backgroundColor: theme.colorScheme.surface,
           ),

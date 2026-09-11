@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 
 /// The status colours that carry meaning as FOREGROUND — error text and its
@@ -86,32 +87,32 @@ void main() {
 
   test('discount-code success text clears 4.5:1 in both themes', () {
     expectClears(
-      AppConfig.completedGreen,
+      PangeaColors.of(Brightness.light).success,
       schemeFor(Brightness.light),
       textFloor,
-      what: 'successByTheme light (completedGreen)',
+      what: 'success, light',
     );
     expectClears(
-      AppConfig.success,
+      PangeaColors.of(Brightness.dark).success,
       schemeFor(Brightness.dark),
       textFloor,
-      what: 'successByTheme dark (success)',
+      what: 'success, dark',
     );
   });
 
   test('STT diff underlines clear 3:1 in both themes', () {
     final light = schemeFor(Brightness.light);
     expectClears(
-      AppConfig.warningDeep,
+      PangeaColors.of(Brightness.light).warningGraphic,
       light,
       graphicFloor,
-      what: 'warningByTheme light (warningDeep)',
+      what: 'warningGraphic, light',
     );
     expectClears(
-      AppConfig.completedGreen,
+      PangeaColors.of(Brightness.light).success,
       light,
       graphicFloor,
-      what: 'successByTheme light (completedGreen)',
+      what: 'success, light',
     );
 
     final dark = schemeFor(Brightness.dark);
@@ -119,13 +120,13 @@ void main() {
       AppConfig.warning,
       dark,
       graphicFloor,
-      what: 'warningByTheme dark (warning)',
+      what: 'warningGraphic, dark',
     );
     expectClears(
-      AppConfig.success,
+      PangeaColors.of(Brightness.dark).success,
       dark,
       graphicFloor,
-      what: 'successByTheme dark (success)',
+      what: 'success, dark',
     );
   });
 

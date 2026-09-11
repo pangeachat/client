@@ -157,7 +157,7 @@ Colour comes from the Material 3 scheme built in [`FluffyThemes`](../../lib/conf
 | Login to my account | `surface` at 40% opacity, label `onSurface` | Present on every slide but quieter. Translucent in both layouts, so whatever sits behind it reads through and it does not float as a solid rectangle with no edge. Taking `surface` rather than a fixed white keeps it pale-translucent in light mode and dark-translucent in dark, so one value serves both themes |
 | Active dot | `primary` | Matches the brand accent so position is readable at a glance |
 | Remaining dots | `outlineVariant` | Visible enough to count, quiet enough not to compete with the buttons |
-| Headline | `onPrimaryContainer` | The darkest tone of the brand hue, so the type holds against the map without introducing a colour outside the scheme |
+| Headline | `primary` | The brand hue at its text tone, so the type holds against the map through the surface-coloured stroke without introducing a colour outside the scheme |
 | Headline outline | `surface` | Tracks the background rather than a fixed white, so the outline still separates the type when the theme flips to dark |
 
 Both buttons share the corner radius defined in `AppConfig`, so they read as one control group rather than two unrelated shapes. The dots are fully rounded and cross-fade between the two roles when the slide changes, so the transition is visible without being animated distraction.

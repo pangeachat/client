@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shimmer/shimmer.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
@@ -237,7 +237,7 @@ class _PowerupsRow extends StatelessWidget {
                         painter: XpBorderPainter(
                           progress: progress,
                           trackColor: const Color.fromARGB(130, 135, 135, 135),
-                          progressColor: AppConfig.goldByTheme(context),
+                          progressColor: Theme.of(context).pangea.goldGraphic,
                           stroke: _xpStroke,
                           radius: _innerRadius + _xpStroke / 2,
                           anchor: XpBorderAnchor.leftCenter,

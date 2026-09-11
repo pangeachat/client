@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/svg.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/customized_svg.dart';
 
@@ -32,7 +32,7 @@ class LevelRibbon extends StatelessWidget {
   final double height;
 
   /// Fill for the shield; defaults to the theme's gold. The cluster medal
-  /// passes [AppConfig.goldHighlightByTheme] to show hover and the open Level
+  /// passes [PangeaColors.goldHighlight] to show hover and the open Level
   /// panel in the mark itself rather than behind it (#8067).
   final Color? color;
 
@@ -77,7 +77,7 @@ class LevelRibbon extends StatelessWidget {
     // Shield aspect ratio from the viewBox (24.6667 x 28.875).
     final width = height * (24.6667 / 28.875);
     final ribbon = SvgPicture.string(
-      _shieldSvg(colorToHex(color ?? AppConfig.goldByTheme(context))),
+      _shieldSvg(colorToHex(color ?? Theme.of(context).pangea.goldFixedDim)),
       width: width,
       height: height,
       fit: BoxFit.contain,

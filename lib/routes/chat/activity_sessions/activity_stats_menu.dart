@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
@@ -201,10 +201,8 @@ class _DoneButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppConfig.goldByTheme(context),
-        foregroundColor: theme.brightness == Brightness.light
-            ? null
-            : theme.colorScheme.surface,
+        backgroundColor: theme.pangea.goldFixedDim,
+        foregroundColor: theme.pangea.onGoldFixed,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,

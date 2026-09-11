@@ -114,7 +114,6 @@ class SpacesNavigationRail extends StatelessWidget {
                             // active, muted when not.
                             NaviRailItem(
                               isSelected: isWorld,
-                              backgroundColor: Colors.transparent,
                               // Exclude the logo's semanticsLabel so VoiceOver reads
                               // only the button tooltip ("world"), not the logo name.
                               icon: ExcludeSemantics(
@@ -148,7 +147,6 @@ class SpacesNavigationRail extends StatelessWidget {
                             // the left indicator bar conveys selection.
                             NaviRailItem(
                               isSelected: isChats,
-                              backgroundColor: Colors.transparent,
                               icon: Icon(
                                 Icons.forum_outlined,
                                 size: smallIconWidth,
@@ -183,7 +181,6 @@ class SpacesNavigationRail extends StatelessWidget {
                             // rail section — it opens from the top-right cluster.)
                             NaviRailItem(
                               isSelected: isCourseFind,
-                              backgroundColor: Colors.transparent,
                               icon: Icon(
                                 Icons.map_outlined,
                                 size: smallIconWidth,
@@ -331,7 +328,6 @@ class _SpaceItem extends StatelessWidget {
         toolTip: displayname,
         rovingId: space.id,
         isSelected: selected,
-        backgroundColor: Colors.transparent,
         borderRadius: BorderRadius.circular(0),
         // The avatar is an opaque banner, so InkWell's behind-the-child focus
         // highlight is imperceptible on it — wear the explicit gold ring

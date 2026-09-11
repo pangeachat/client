@@ -1,6 +1,6 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/routes/chat/events/streaming_stt/stt_diff_spans.dart';
 import 'package:fluffychat/routes/chat/events/streaming_stt/stt_partial_model.dart';
 import 'package:fluffychat/routes/chat/events/streaming_stt/stt_provenance.dart';
@@ -70,8 +70,8 @@ class EditableTranscriptController extends TextEditingController {
         diffBase,
         text,
         baseStyle: style,
-        changedColor: AppConfig.warningByTheme(context),
-        unchangedColor: AppConfig.successByTheme(context),
+        changedColor: Theme.of(context).pangea.warningGraphic,
+        unchangedColor: Theme.of(context).pangea.success,
       ),
     );
   }

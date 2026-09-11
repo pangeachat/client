@@ -2,7 +2,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target.dart';
@@ -39,7 +39,7 @@ class CourseProgressBar extends StatelessWidget {
   );
 }
 
-/// The overall course progress bar: a rounded gold fill over a gray track with
+/// The overall course progress bar: a rounded bright-gold fill, edged in the mark gold, over a gold-container track with
 /// a star sitting INSIDE the bar at the goal (right) end — no number. Learners
 /// read progress from the fill and tap/hover the bar for the exact
 /// earned/threshold (#7597, the Figma course-plan frame). A null [summary]
@@ -59,7 +59,6 @@ class ProgressBarRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final summary = this.summary;
-    final gold = AppConfig.goldMarkByTheme(context);
     final fraction = (summary?.fraction ?? 0.0).clamp(0.0, 1.0);
     final label = summary == null
         ? null
@@ -70,10 +69,10 @@ class ProgressBarRow extends StatelessWidget {
       child: Stack(
         alignment: Alignment.centerLeft,
         children: [
-          // Gray track.
+          // The track: the gold container, so the mark gold reads on it.
           DecoratedBox(
             decoration: BoxDecoration(
-              color: theme.colorScheme.surfaceContainerHighest,
+              color: theme.pangea.goldContainer,
               borderRadius: BorderRadius.circular(_barHeight / 2),
             ),
             child: const SizedBox.expand(),
@@ -87,15 +86,18 @@ class ProgressBarRow extends StatelessWidget {
                   _barHeight,
                   maxWidth * fraction,
                 );
-                // Gold fill — the learner's progress toward the goal. The
-                // SizedBox.expand child is load-bearing: a childless DecoratedBox in
-                // a loose Stack sizes to constraints.smallest (zero height) and
-                // paints nothing (#7603).
+                // Gold fill — the learner's progress toward the goal. The bright
+                // gold cannot clear 3:1 on any light track, so a hairline in the
+                // mark gold carries the fill's edge instead. The SizedBox.expand
+                // child is load-bearing: a childless DecoratedBox in a loose
+                // Stack sizes to constraints.smallest (zero height) and paints
+                // nothing (#7603).
                 return SizedBox(
                   width: containerWidth,
                   child: DecoratedBox(
                     decoration: BoxDecoration(
-                      color: gold,
+                      color: theme.pangea.goldFixedDim,
+                      border: Border.all(color: theme.pangea.goldGraphic),
                       borderRadius: BorderRadius.circular(_barHeight / 2),
                     ),
                     child: const SizedBox.expand(),
@@ -103,9 +105,9 @@ class ProgressBarRow extends StatelessWidget {
                 );
               },
             ),
-          // The goal star, inside the bar at the right end. A surface-coloured
-          // outline star sits behind it so it reads on both the gold fill (full
-          // progress) and the gray track.
+          // The goal star, inside the bar at the right end, in the mark gold so
+          // it clears 3:1 on the track; at full progress it sits on the fill as
+          // the silhouette the surface-coloured outline star behind it draws.
           Positioned(
             right: 5.0,
             child: SizedBox(
@@ -119,7 +121,11 @@ class ProgressBarRow extends StatelessWidget {
                     size: _barHeight - 3,
                     color: theme.colorScheme.surface,
                   ),
-                  Icon(Icons.star, size: _barHeight - 6, color: gold),
+                  Icon(
+                    Icons.star,
+                    size: _barHeight - 6,
+                    color: theme.pangea.goldGraphic,
+                  ),
                 ],
               ),
             ),

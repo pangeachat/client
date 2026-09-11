@@ -131,7 +131,7 @@ class Avatar extends StatelessWidget {
                     replacement: Center(
                       child: Icon(
                         icon ?? Icons.person_2,
-                        color: theme.colorScheme.tertiary,
+                        color: theme.colorScheme.onSurfaceVariant,
                         size: size / 1.5,
                       ),
                     ),
@@ -172,7 +172,7 @@ class Avatar extends StatelessWidget {
                         : Center(
                             child: Icon(
                               Icons.person_2,
-                              color: theme.colorScheme.tertiary,
+                              color: theme.colorScheme.onSurfaceVariant,
                               size: size / 1.5,
                             ),
                           ),

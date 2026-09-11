@@ -16,12 +16,31 @@ abstract class AppConfig {
     return Uri.parse(hasScheme ? url : 'https://$url');
   }
 
+  // ---------------------------------------------------------------------------
+  // Colours
+  //
+  // Widgets read colour roles from the theme (Theme.of(context).pangea and
+  // colorScheme), per design-tokens.instructions.md. What lives here is:
+  //  - the key colours PangeaColors derives its role families from;
+  //  - the static colours older sites still read directly, which move to a
+  //    theme role as each site is touched.
+  // ---------------------------------------------------------------------------
+
+  // Key colours. Each is the one place its hue is written; PangeaColors turns
+  // it into a family of roles by tone.
+  static const Color gold = Color.fromARGB(255, 253, 191, 1);
+  static const Color warning = Color.fromARGB(255, 210, 124, 12);
+  static const Color success = Color(0xFF33D057);
+
+  // Static colours still read directly by widget code (migrating).
   static const Color primaryColor = Color(0xFF8560E0);
   static const Color primaryColorLight = Color(0xFFDBC9FF);
   static const Color primaryColorDark = Color.fromARGB(255, 81, 66, 126);
-  static const Color secondaryColor = Color.fromARGB(255, 253, 191, 1);
-
   static const Color chatColor = primaryColor;
+  static const Color goldLight = Color.fromARGB(255, 254, 223, 73);
+  static const Color error = Colors.red;
+  static const Color activeToggleColor = Color(0xFF33D057);
+
   static const double messageFontSize = 16.0;
   static const bool allowOtherHomeservers = true;
   static const bool enableRegistration = true;
@@ -75,100 +94,6 @@ abstract class AppConfig {
       "https://play.google.com/store/account/orderhistory";
   static bool useActivityImageAsChatBackground = true;
   static const int overlayAnimationDuration = 250;
-  static const Color gold = Color.fromARGB(255, 253, 191, 1);
-  static const Color goldLight = Color.fromARGB(255, 254, 223, 73);
-
-  /// `Yellow.700` of the Figma Color Primitives ramp — the step [gold]
-  /// deepens to for the light theme. See [goldMarkByTheme], which is how
-  /// foreground code should reach it.
-  static const Color goldDeep = Color(0xFF917424);
-
-  static Color goldByTheme(BuildContext context) =>
-      Theme.of(context).brightness == Brightness.light ? gold : goldLight;
-
-  /// The gold a **solid mark carrying meaning** wears — an earned activity
-  /// star, where the fill itself is the information rather than decoration.
-  ///
-  /// The line against [goldByTheme] is whether the gold is what gets read.
-  /// A star, a trail marker, a progress bar's fill — the mark's presence or
-  /// extent *is* the information, so it needs the 3:1. A gold that sits
-  /// *behind* something read (a chip, a pill, a tinted card) is a background
-  /// and keeps [goldByTheme], because the ink on it carries the contrast —
-  /// the same split [warningByTheme] draws. So does decoration nothing is
-  /// read from: XP particles, the goal-star flight animation (#8983).
-  ///
-  /// [gold] is 1.58:1 on the light theme's surface and 1.28:1 on its cards,
-  /// far under the 3:1 WCAG 1.4.11 asks of a graphic the user has to read, so
-  /// light gets [goldDeep] (4.22:1 / 3.43:1). Dark keeps [gold], already
-  /// 11.18:1 / 7.39:1 there. One gold cannot serve both: [goldDeep] drops to
-  /// 2.77:1 on a dark card, and no step of the ramp clears 3:1 in all four
-  /// contexts (#8760).
-  static Color goldMarkByTheme(BuildContext context) =>
-      Theme.of(context).brightness == Brightness.light ? goldDeep : gold;
-
-  /// Green for something finished: [completedGreen] on light, where [success]
-  /// is too pale to read on the surface, and [success] on dark.
-  static Color successByTheme(BuildContext context) =>
-      Theme.of(context).brightness == Brightness.light
-      ? completedGreen
-      : success;
-
-  /// The caution counterpart of [successByTheme], for **foreground** use —
-  /// text, an icon, a diff underline. [warning] measures 3.01:1 on the light
-  /// surface and 2.44:1 on the darkest light card, under the 3:1 a mark
-  /// carrying meaning needs; [warningDeep] holds 4.02:1 and 3.26:1 there
-  /// (#8764). Dark already passes, so only the light branch deepens. Fill uses
-  /// — chips, pills, toggles, backfills — keep [warning] itself.
-  static Color warningByTheme(BuildContext context) =>
-      Theme.of(context).brightness == Brightness.light ? warningDeep : warning;
-
-  /// Readable ink on top of [goldByTheme], which is a light fill in both
-  /// brightnesses — so both branches resolve to a dark tone.
-  static Color onGoldByTheme(BuildContext context) {
-    final theme = Theme.of(context);
-    return theme.brightness == Brightness.light
-        ? theme.colorScheme.onSurface
-        : theme.colorScheme.surface;
-  }
-
-  /// The gold a **level badge** wears while hovered, or while the Level panel
-  /// it opens is showing: [goldByTheme] deepened by [_goldHighlightDepth].
-  ///
-  /// The cluster's trackers show those two states with a translucent gold wash
-  /// behind them, but the level badge is itself a solid gold mark — a wash
-  /// behind it is gold on gold and reads as nothing, and a wash *around* it is
-  /// a circle the design doesn't want. So the mark's own gold shifts instead
-  /// (#8067), on both the web cluster's shield medal and the mobile bar's hex
-  /// badge.
-  ///
-  /// Deepened toward black rather than down the HSL lightness axis: the dark
-  /// theme's [goldLight] sits near the top of that axis, where dropping
-  /// lightness mostly saturates the yellow and barely darkens it — the state
-  /// has to read as the same shift in both brightnesses.
-  static Color goldHighlightByTheme(BuildContext context) =>
-      Color.lerp(goldByTheme(context), Colors.black, _goldHighlightDepth)!;
-
-  /// How far [goldHighlightByTheme] pulls the gold toward black — enough to
-  /// read as a state change at a glance, not so far that the badge's black
-  /// level number loses contrast (both themes stay above 8:1).
-  static const double _goldHighlightDepth = 0.2;
-
-  // The "powerups" gold palette for the right-nav cluster (Figma
-  // AvatarLangFlags). See the cluster section of routing.instructions.md.
-  static const Color goldPill = Color(0xFFFDCE47); // powerups pill background
-  static const Color goldMedal = Color(0xFFF3C141); // level shield fill
-  static const Color goldMedalText = Color(0xFFC29B32); // level number
-  static const Color goldPale = Color(0xFFFCF2D0); // shield inner field
-  static const Color success = Color(0xFF33D057);
-  static const Color error = Colors.red;
-  static const Color warning = Color.fromARGB(255, 210, 124, 12);
-
-  /// [warning] deepened for the light theme — see [warningByTheme], which is
-  /// how foreground code should reach it.
-  static const Color warningDeep = Color(0xFFB4690A);
-  static const Color activeToggleColor = Color(0xFF33D057);
-  static const Color yellowLight = Color.fromARGB(255, 247, 218, 120);
-  static const Color yellowDark = Color.fromARGB(255, 253, 191, 1);
   static const double toolbarMaxHeight = 250.0;
   static const double toolbarMinWidth = 350.0;
   static const double toolbarMinHeight = 150.0;
@@ -238,8 +163,4 @@ abstract class AppConfig {
     "image/gif",
     "image/png",
   };
-
-  static const Color green = Color(0xFF34A853);
-  static const Color gray = Color(0xFFB4B2A9);
-  static const Color completedGreen = Color(0xFF3B6D11);
 }

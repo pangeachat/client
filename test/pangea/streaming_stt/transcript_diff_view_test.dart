@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
@@ -76,7 +76,10 @@ void main() {
           (widget) => widget is UnderlineText && widget.text == 'hola',
         ),
       );
-      expect(changed.underlineColor, AppConfig.warningDeep);
+      expect(
+        changed.underlineColor,
+        PangeaColors.of(Brightness.light).warningGraphic,
+      );
       expect(changed.dashed, isFalse);
       final original = tester.widget<Text>(find.text('ola'));
       expect(original.style?.decoration, TextDecoration.lineThrough);
@@ -104,7 +107,10 @@ void main() {
         (widget) => widget is UnderlineText && widget.text == 'bonito',
       ),
     );
-    expect(inserted.underlineColor, AppConfig.warningDeep);
+    expect(
+      inserted.underlineColor,
+      PangeaColors.of(Brightness.light).warningGraphic,
+    );
     expect(inserted.dashed, isFalse);
     expect(find.text('bonito', findRichText: true), findsOneWidget);
   });
@@ -119,7 +125,10 @@ void main() {
           (widget) => widget is UnderlineText && widget.text == word,
         ),
       );
-      expect(rendered.underlineColor, AppConfig.completedGreen);
+      expect(
+        rendered.underlineColor,
+        PangeaColors.of(Brightness.light).success,
+      );
       expect(rendered.dashed, isTrue);
     }
     expect(find.byType(Text), findsNothing);

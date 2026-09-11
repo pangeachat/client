@@ -103,10 +103,10 @@ class PangeaChatInputRow extends StatelessWidget {
                                           leading: CircleAvatar(
                                             backgroundColor: theme
                                                 .colorScheme
-                                                .onPrimaryContainer,
+                                                .primaryContainer,
                                             foregroundColor: theme
                                                 .colorScheme
-                                                .primaryContainer,
+                                                .onPrimaryContainer,
                                             child: const Icon(
                                               Icons.poll_outlined,
                                             ),

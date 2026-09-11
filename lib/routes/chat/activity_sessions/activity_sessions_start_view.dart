@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
@@ -456,7 +456,7 @@ class _ActivityStartInfoRow extends StatelessWidget {
               radius: 3.0,
               borderWidth: 1.0,
               alwaysShowCode: false,
-              tintColor: canSwitch ? theme.colorScheme.tertiary : null,
+              tintColor: canSwitch ? theme.pangea.warningGraphic : null,
             ),
           ),
           const SizedBox(width: 12.0),
@@ -574,10 +574,10 @@ class _ArchivedSessionFallbackBody extends StatelessWidget {
                   spacing: 4.0,
                   children: [
                     if (stars > 0) ...[
-                      const Icon(
+                      Icon(
                         Icons.star,
                         size: 18.0,
-                        color: AppConfig.goldLight,
+                        color: theme.pangea.goldGraphic,
                       ),
                       Text('$stars'),
                     ],

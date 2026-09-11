@@ -9,6 +9,7 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
@@ -838,7 +839,7 @@ class _SnackBarLink extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = Theme.of(context).colorScheme.primaryContainer;
+    final color = Theme.of(context).colorScheme.inversePrimary;
     return InkWell(
       onTap: onTap,
       child: Text(
@@ -1049,7 +1050,15 @@ class _MoreButton extends StatelessWidget {
             color: depressed ? shadowColor : theme.colorScheme.primaryContainer,
             shape: BoxShape.circle,
           ),
-          child: const Icon(Icons.more_horiz, size: 20),
+          child: Icon(
+            Icons.more_horiz,
+            size: 20,
+            // The pressed fill is the rest fill darkened, so its own ink can
+            // stop reading on it; the theme's light tone always does.
+            color: depressed
+                ? theme.lightTone
+                : theme.colorScheme.onPrimaryContainer,
+          ),
         ),
       ),
     );

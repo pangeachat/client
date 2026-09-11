@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_progress_bar.dart';
@@ -85,8 +86,11 @@ void main() {
     });
 
     // Both marks here are graphics the learner reads: the fill's extent is the
-    // progress, and the goal star marks the target. Gold was 1.28:1 against
-    // the track and 1.58:1 on the star's surface halo in light mode (#8983).
+    // progress, and the goal star marks the target. The bright gold fill cannot
+    // clear 3:1 on any light track, so its edge is drawn in the mark gold and
+    // that edge is what has to read against the track; the star reads against
+    // its surface halo. Gold was 1.28:1 against the track and 1.58:1 on the halo
+    // in light mode before (#8983).
     for (final brightness in [Brightness.light, Brightness.dark]) {
       testWidgets('fill and goal star clear 3:1 in ${brightness.name}', (
         tester,
@@ -101,13 +105,12 @@ void main() {
         );
         await tester.pumpAndSettle();
 
-        final scheme = Theme.of(
-          tester.element(find.byType(ProgressBarRow)),
-        ).colorScheme;
-        final fill =
-            (tester.widget<DecoratedBox>(fillFinder().first).decoration
-                    as BoxDecoration)
-                .color!;
+        final theme = Theme.of(tester.element(find.byType(ProgressBarRow)));
+        final scheme = theme.colorScheme;
+        final fillDecoration =
+            tester.widget<DecoratedBox>(fillFinder().first).decoration
+                as BoxDecoration;
+        final fillEdge = fillDecoration.border!.top.color;
         // The smaller of the two stacked stars is the gold one; the larger is
         // the surface-coloured halo behind it.
         final stars = tester.widgetList<Icon>(find.byIcon(Icons.star)).toList();
@@ -116,9 +119,9 @@ void main() {
             .color!;
 
         expect(
-          contrastRatio(fill, scheme.surfaceContainerHighest),
+          contrastRatio(fillEdge, theme.pangea.goldContainer),
           greaterThanOrEqualTo(minGraphicRatio),
-          reason: 'gold fill against the track in ${brightness.name}',
+          reason: 'gold fill edge against the track in ${brightness.name}',
         );
         expect(
           contrastRatio(goldStar, scheme.surface),

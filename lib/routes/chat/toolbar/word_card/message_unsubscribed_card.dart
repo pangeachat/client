@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/subscription/widgets/decorative_stars.dart';
 import 'package:fluffychat/features/subscription/widgets/locked_shimmer_box.dart';
 import 'package:fluffychat/features/subscription/widgets/unlock_button.dart';
@@ -20,7 +21,6 @@ class MessageUnsubscribedCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final isDarkMode = theme.brightness == Brightness.dark;
 
     return Container(
       constraints: const BoxConstraints(maxWidth: AppConfig.toolbarMinWidth),
@@ -52,9 +52,7 @@ class MessageUnsubscribedCard extends StatelessWidget {
                         fontSize: 28.0,
                         fontWeight: FontWeight.w600,
                         height: 1.2,
-                        color: isDarkMode
-                            ? AppConfig.yellowLight
-                            : AppConfig.yellowDark,
+                        color: theme.pangea.gold,
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),

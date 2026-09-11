@@ -51,10 +51,6 @@ class ChatEventList extends StatelessWidget {
     if (timeline == null) {
       return const Center(child: CupertinoActivityIndicator());
     }
-    final theme = Theme.of(context);
-
-    final colors = [theme.secondaryBubbleColor, theme.bubbleColor];
-
     final horizontalPadding = FluffyThemes.isColumnMode(context) ? 8.0 : 0.0;
 
     final events = timeline.events.filterByVisibleInGui(
@@ -281,7 +277,6 @@ class ChatEventList extends StatelessWidget {
                   previousEvent: previousEvent,
                   wallpaperMode: hasWallpaper,
                   scrollController: controller.scrollController,
-                  colors: colors,
                   isCollapsed: isCollapsed,
                   enterThread: controller.activeThreadId == null
                       ? controller.enterThread

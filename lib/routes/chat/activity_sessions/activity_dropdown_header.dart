@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_constants.dart';
 import 'package:fluffychat/features/languages/context_language_switch_target.dart';
@@ -118,7 +119,7 @@ class ActivityDropdownHeader extends StatelessWidget {
                             radius: 2.0,
                             borderWidth: 1.0,
                             alwaysShowCode: false,
-                            tintColor: Theme.of(context).colorScheme.tertiary,
+                            tintColor: Theme.of(context).pangea.warningGraphic,
                           ),
                   ),
                 ),

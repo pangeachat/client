@@ -104,7 +104,10 @@ class ContentCreatorChip extends StatelessWidget {
             color: theme.colorScheme.primaryContainer,
             shape: BoxShape.circle,
           ),
-          child: PangeaLogoSvg(width: avatarSize * 0.64),
+          child: PangeaLogoSvg(
+            width: avatarSize * 0.64,
+            forceColor: theme.colorScheme.onPrimaryContainer,
+          ),
         ),
       );
     }

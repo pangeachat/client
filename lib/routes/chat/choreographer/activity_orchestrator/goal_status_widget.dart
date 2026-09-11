@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -27,7 +27,7 @@ class GoalStatusWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final gold = AppConfig.goldMarkByTheme(context);
+    final gold = Theme.of(context).pangea.goldGraphic;
 
     Widget icon = Icon(
       complete ? Icons.star : Icons.star_border,

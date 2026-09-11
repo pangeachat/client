@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/activity_sessions/activity_media_enum.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_request.dart';
@@ -150,7 +150,7 @@ void main() {
         tester
             .widget<Icon>(headerIcon(tester, '4/4', Icons.check_circle))
             .color,
-        AppConfig.successByTheme(tester.element(find.text(objectiveText))),
+        Theme.of(tester.element(find.text(objectiveText))).pangea.success,
       );
       expect(colorOf(tester, objectiveText), scheme(tester).onSurfaceVariant);
       expect(colorOf(tester, '4/4'), scheme(tester).onSurfaceVariant);
@@ -178,7 +178,7 @@ void main() {
       // gold, not the decorative one (#8983).
       expect(
         tester.widget<Icon>(headerIcon(tester, '1/4', Icons.star)).color,
-        AppConfig.goldMarkByTheme(tester.element(find.text(objectiveText))),
+        Theme.of(tester.element(find.text(objectiveText))).pangea.goldGraphic,
       );
     });
   });

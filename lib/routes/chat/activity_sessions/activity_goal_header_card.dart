@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target.dart';
 
@@ -34,7 +35,7 @@ class ActivityGoalHeaderCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final gold = AppConfig.goldByTheme(context);
+    final gold = theme.pangea.goldFixedDim;
 
     return Align(
       alignment: Alignment.topCenter,
@@ -62,7 +63,9 @@ class ActivityGoalHeaderCard extends StatelessWidget {
                     : theme.colorScheme.surface,
                 borderRadius: BorderRadius.circular(AppConfig.borderRadius),
                 border: Border.all(
-                  color: isComplete ? gold : theme.dividerColor,
+                  color: isComplete
+                      ? theme.pangea.goldGraphic
+                      : theme.dividerColor,
                   width: isComplete ? 2.0 : 1.0,
                 ),
                 boxShadow: [

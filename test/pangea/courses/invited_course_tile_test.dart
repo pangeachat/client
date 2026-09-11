@@ -5,7 +5,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/invited_chip.dart';
 import 'package:fluffychat/pangea/common/widgets/invited_course_badge.dart';
@@ -102,11 +102,11 @@ void main() {
     expect(icon.icon, Icons.mail);
     expect(
       (pill.decoration! as BoxDecoration).color,
-      AppConfig.goldByTheme(context),
+      Theme.of(context).pangea.goldFixedDim,
     );
     expect(
       icon.color,
-      AppConfig.onGoldByTheme(context),
+      Theme.of(context).pangea.onGoldFixed,
       reason: 'gold is a light fill; the label needs dark ink to stay legible',
     );
   });
@@ -128,7 +128,7 @@ void main() {
 
       expect(icon.icon, Icons.mail);
       expect(icon.icon, isNot(Icons.error_outline));
-      expect(icon.color, AppConfig.onGoldByTheme(context));
+      expect(icon.color, Theme.of(context).pangea.onGoldFixed);
       expect(
         icon.color,
         isNot(Theme.of(context).colorScheme.error),
@@ -149,7 +149,7 @@ void main() {
         await pumpTile(tester, invited: true, brightness: brightness);
 
         final context = tester.element(find.byType(AddCourseTile));
-        final gold = AppConfig.goldByTheme(context);
+        final gold = Theme.of(context).pangea.goldFixedDim;
 
         final pill = tester.widget<Container>(
           find.descendant(
@@ -184,8 +184,8 @@ void main() {
 
     expect(
       (pill.decoration! as BoxDecoration).color,
-      AppConfig.goldLight,
-      reason: 'the hue named in #8109 — #FEDF49, shared with the level-up chip',
+      PangeaColors.of(Brightness.dark).goldFixedDim,
+      reason: 'the theme gold the level-up chip wears (#8109)',
     );
   });
 
@@ -228,7 +228,7 @@ void main() {
     await tester.pumpAndSettle();
 
     final context = tester.element(find.byType(InvitedChip));
-    final ink = AppConfig.onGoldByTheme(context);
+    final ink = Theme.of(context).pangea.onGoldFixed;
 
     expect(tester.widget<Icon>(find.byIcon(Icons.mail)).color, ink);
     expect(

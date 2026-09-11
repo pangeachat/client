@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/subscription/repo_v2/products_response.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/date_formatter.dart';
@@ -73,10 +74,8 @@ class SelectedSubscriptionView extends StatelessWidget {
         ElevatedButton(
           onPressed: onSubscribe,
           style: ElevatedButton.styleFrom(
-            backgroundColor: AppConfig.goldByTheme(context),
-            foregroundColor: theme.brightness == Brightness.light
-                ? theme.colorScheme.onSurface
-                : theme.colorScheme.surface,
+            backgroundColor: theme.pangea.goldFixedDim,
+            foregroundColor: theme.pangea.onGoldFixed,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
