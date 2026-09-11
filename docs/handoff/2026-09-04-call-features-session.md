@@ -1906,3 +1906,33 @@ until the design is Codex-green.
   broad AUDIO bucket (AudioPlayerWidget blast radius from the dispose leak fix) + full CALLS bucket (mind the
   active_call tearDownAll env flake; one bucket at a time) + the CallPlaybackController-extends-ChangeNotifier
   consistency item + whole-branch cold-Codex. Then owner real-call test -> PR2 on explicit go.
+
+## 2026-09-11 — fixer committed 2d1b1abf64 (all 4 findings + 5 follow-ons); my cold gate D+E running
+- Fixer (a5f88dc6) committed 2d1b1abf64 (transcript_view.dart +608/-56, test +725; NO handoff/push/PR).
+  Self-Codex: round-4 behaviour CORRECT + tests round confirming 9 mutations load-bearing. +96 tests pass.
+- MANUAL REVIEW (I read the new code myself, findings confirmed fixed at root cause):
+  F1 consistent exit: `_releaseIfCurrent` shared by the post-download early return, the post-setAudioSource
+    check, AND the catch; `_mergedStartInFlight` re-entrancy guard. Every exit leaves ownership consistent.
+  F2 abort-on-failure: catch rethrows after identity-guarded release; `_MergedStartAborted` for the
+    superseded/gone case; `_startAndPlayMerged` + `_seekToTurnGuarded` both catch. Verified seekToTurn
+    propagates a throwing startMergedPlayer.
+  F4a bar-play karaoke: `_MergedFullCallControl` (custom play/pause + LinearProgressIndicator + elapsed/total
+    + spinner + retry) drives `_startAndPlayMerged`/`onResume` -> observation attached synchronously ->
+    highlight follows a BAR-started playback. Reuses l10n.pause/resume/callTranscriptRetry (NO new arb keys).
+    Hard invariant preserved (per-device rows keep AudioPlayerWidget; no merged row -> no controllers).
+  F5 live-refresh: onSync subscription (chat_call_buttons idiom) -> `_refreshRecordings` re-reads + FEEDS
+    the controller (readsInFlight:false, monotonic grace preserved), debounced (`_refreshInFlight`), stops
+    at terminal `ready`, superseded/shrink guards, SynchronousFuture swap to avoid a false-error flash.
+    Two edges the fixer added beyond my brief: the SHRINK guard (a transient-empty read can't yank
+    per-device rows) and the SynchronousFuture swap. Both correct.
+  Follow-ons (dispose release / superseded-start aborts / per-device keying / no-false-error / bar-retry
+    clear): reviewed, sound. The two @visibleForTesting seams (audioPlayerFactory ?? AudioPlayer.new;
+    mergedFileLoader ?? real download) are honest DI with production defaults -- NOT gate-softening.
+  Deferred/accepted (unchanged): a turn tapped WHILE a bar-start is still downloading may not seek (needs a
+    CallPlaybackController change; documented narrow edge).
+- MY INDEPENDENT COLD GATE (protocol: my verdict, not the agent's): split by question, running in bg --
+  Gate D (live-refresh + shared-player lifecycle data-flow) + Gate E (the _MergedFullCallControl UI state
+  machine + start/release). Plus the AudioPlayerWidget blast-radius bucket (call_playback_controller +
+  dosage_audio x2 + streaming audio_message_edited_flag) = GREEN +91 (audio_player.dart untouched by the
+  fixer, so valid at HEAD) -> the shared-widget leak fix breaks no AudioPlayerWidget caller; Gate A caveat
+  closed. On cold-gate green: full calls bucket + whole-branch cold-Codex -> owner real-call test -> PR2 on go.
