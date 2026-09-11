@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 
 /// InkWell-backed tap target for opaque-filled controls (#7219): focusable and
 /// Enter/Space-activatable where a bare GestureDetector is not, with a gold
@@ -25,7 +25,7 @@ class FocusRingTapTarget extends StatefulWidget {
   static const double ringWidth = 2.0;
 
   static BorderSide ringSide(BuildContext context) =>
-      BorderSide(color: AppConfig.goldByTheme(context), width: ringWidth);
+      BorderSide(color: Theme.of(context).pangea.goldGraphic, width: ringWidth);
 
   /// Whether explicit focus rings should render at all right now — Flutter's
   /// gate for Material focus highlights: traditional (keyboard-driven) yes,

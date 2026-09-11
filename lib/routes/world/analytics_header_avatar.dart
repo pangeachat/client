@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -143,7 +143,9 @@ class AnalyticsHeaderAvatarInternal extends StatelessWidget {
                                     135,
                                     135,
                                   ),
-                                  progressColor: AppConfig.goldByTheme(context),
+                                  progressColor: Theme.of(
+                                    context,
+                                  ).pangea.goldGraphic,
                                   stroke: _xpStroke,
                                 ),
                                 child: Padding(

@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:shimmer/shimmer.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/features/languages/language_flag_chip.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
@@ -206,7 +207,7 @@ class _PowerupsPill extends StatelessWidget {
                       painter: XpBorderPainter(
                         progress: progress,
                         trackColor: const Color.fromARGB(130, 135, 135, 135),
-                        progressColor: AppConfig.goldByTheme(context),
+                        progressColor: Theme.of(context).pangea.goldGraphic,
                         stroke: _xpStroke,
                         radius: _innerRadius + _xpStroke / 2,
                       ),
@@ -404,7 +405,7 @@ class _ClusterTrackerButtonState extends State<ClusterTrackerButton> {
               onHover: (h) => setState(() => _hovered = h),
               hoverColor: liveSessionStart != null
                   ? Colors.transparent
-                  : AppConfig.goldByTheme(context).withAlpha(50),
+                  : Theme.of(context).pangea.goldFixedDim.withAlpha(50),
               borderRadius: BorderRadius.circular(100),
               child: Semantics(
                 button: true,
@@ -430,7 +431,9 @@ class _ClusterTrackerButtonState extends State<ClusterTrackerButton> {
                       // analytics is showing stays lit (#7977).
                       : selected
                       ? BoxDecoration(
-                          color: AppConfig.goldByTheme(context).withAlpha(50),
+                          color: Theme.of(
+                            context,
+                          ).pangea.goldFixedDim.withAlpha(50),
                           borderRadius: BorderRadius.circular(100),
                         )
                       : null,

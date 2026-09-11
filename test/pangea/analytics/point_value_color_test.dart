@@ -2,16 +2,14 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/construct_use_type_enum.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
 
-/// The XP a use is worth is drawn in the theme's gold, not a hard-coded hex
-/// (#8491). The Level panel's own gold marks — the level shield, the XP ring
-/// the panel opens from — all read [AppConfig.goldByTheme], which resolves to
-/// the theme's [PangeaColors.goldFixedDim] in both brightnesses.
+/// The XP a use is worth is drawn in the theme's text gold, not a hard-coded
+/// hex (#8491): [PangeaColors.gold], which clears 4.5:1 on the surface in both
+/// brightnesses.
 void main() {
   OneConstructUse use(int xp) => OneConstructUse(
     useType: ConstructUseTypeEnum.corPA,
@@ -41,23 +39,21 @@ void main() {
       tester,
     ) async {
       final context = await pump(tester, brightness);
-      expect(
-        use(5).pointValueColor(context),
-        PangeaColors.of(brightness).goldFixedDim,
-      );
+      expect(use(5).pointValueColor(context), PangeaColors.of(brightness).gold);
     });
   }
 
-  testWidgets('negative XP stays red in both themes', (tester) async {
-    expect(
-      use(-2).pointValueColor(await pump(tester, Brightness.light)),
-      Colors.red,
-    );
-    expect(
-      use(-2).pointValueColor(await pump(tester, Brightness.dark)),
-      Colors.red,
-    );
-  });
+  for (final brightness in Brightness.values) {
+    testWidgets('negative XP wears the theme error colour ($brightness)', (
+      tester,
+    ) async {
+      final context = await pump(tester, brightness);
+      expect(
+        use(-2).pointValueColor(context),
+        Theme.of(context).colorScheme.error,
+      );
+    });
+  }
 
   testWidgets('zero XP is neither gold nor red', (tester) async {
     final context = await pump(tester, Brightness.dark);

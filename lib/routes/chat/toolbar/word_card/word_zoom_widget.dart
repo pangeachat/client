@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/listening_exposure_declaration.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
@@ -350,9 +351,7 @@ class _WordCardHeaderState extends State<_WordCardHeader>
                       fontSize: 28.0,
                       fontWeight: FontWeight.w600,
                       height: 1.2,
-                      color: Theme.of(context).brightness == Brightness.light
-                          ? AppConfig.yellowDark
-                          : AppConfig.yellowLight,
+                      color: Theme.of(context).pangea.gold,
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),

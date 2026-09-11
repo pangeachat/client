@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/subscription/subscription_constants.dart';
 import 'package:fluffychat/features/subscription/widgets/pro_features_card.dart';
@@ -18,10 +19,7 @@ class FreeTrialStepView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final gold = Color.alphaBlend(
-      Theme.of(context).colorScheme.surface.withAlpha(70),
-      AppConfig.gold,
-    );
+    final gold = theme.pangea.goldFixedDim;
 
     final isColumnMode = FluffyThemes.isColumnMode(context);
 
@@ -104,7 +102,7 @@ class FreeTrialStepView extends StatelessWidget {
                                           Text(
                                             L10n.of(context).sevenDaysFree,
                                             style: largeTextStyle?.copyWith(
-                                              color: gold,
+                                              color: theme.pangea.gold,
                                               fontWeight: FontWeight.w900,
                                             ),
                                             textAlign: TextAlign.center,

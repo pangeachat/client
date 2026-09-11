@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/analytics_access/course_settings_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_builder.dart';
@@ -197,7 +198,7 @@ class CourseInvitePageController extends State<CourseInvitePage>
     final header = course != null
         ? Container(
             decoration: BoxDecoration(
-              border: Border.all(color: AppConfig.gold),
+              border: Border.all(color: Theme.of(context).pangea.goldGraphic),
               borderRadius: BorderRadius.circular(12),
             ),
             padding: const EdgeInsets.all(16.0),
