@@ -17,6 +17,12 @@ class PTV2Repo extends BaseRepo<PTRequest, PTResponse> {
   static final PTV2Repo _instance = PTV2Repo._internal();
   static PTV2Repo get instance => _instance;
 
+  /// The word card's other read. Same reasoning as `LemmaInfoRepo`: every
+  /// caller shimmers for the whole await, so a throttle is worth waiting out
+  /// rather than surfacing as a red error the user cannot act on (#8794).
+  @override
+  bool get retryOnRateLimit => true;
+
   @override
   Future<Response> fetch(Requests req, PTRequest request) =>
       req.post(url: PApiUrls.phoneticTranscriptionV2, body: request.toJson());

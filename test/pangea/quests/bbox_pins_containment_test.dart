@@ -13,7 +13,6 @@ import 'package:latlong2/latlong.dart';
 
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/features/quests/repo/activity_map_repo.dart';
-import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/pangea/common/network/rate_limit_pause.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -61,8 +60,8 @@ void main() {
     MatrixState.pangeaController = FakePangeaController(accessToken: 'token');
   });
 
-  setUp(QuestRepo.activityReadPause.reset);
-  tearDown(QuestRepo.activityReadPause.reset);
+  setUp(RateLimitPause.choreo.reset);
+  tearDown(RateLimitPause.choreo.reset);
 
   final bounds = LatLngBounds(const LatLng(0, 0), const LatLng(1, 1));
 
@@ -140,7 +139,7 @@ void main() {
         (_) async => throw http.ClientException('Failed to fetch'),
       );
 
-      expect(QuestRepo.activityReadPause.isPaused, isFalse);
+      expect(RateLimitPause.choreo.isPaused, isFalse);
     });
 
     test('a good response still parses to pins', () async {

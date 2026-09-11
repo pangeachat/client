@@ -28,16 +28,49 @@ class RateLimitedException implements Exception {
 /// K/cooldown requests — at the 2026-08-04 incident's K=104 that is 104/min
 /// against a 60/min budget, still saturated. Only a pause that ignores the key
 /// restores the invariant "we stop when the server says stop", independent of
-/// K. `ActivityPlanRepo` reached the same conclusion first (#8160) and keeps
-/// its equivalent state inline.
+/// K. `ActivityPlanRepo` reached the same conclusion first (#8160).
 ///
 /// **One instance per budget, never one global instance.** Choreo meters
 /// `/choreo` and `/subscription` separately, so an activity 429 must never
 /// stall checkout. The boundary that matters is the budget, not the class:
 /// reads that the same limiter counts together share an instance, and reads it
 /// counts apart never do.
+///
+/// Those instances live here, as [choreo] and [subscription], and [forError]
+/// is the only way to reach one. Holding them anywhere else is what let three
+/// separate pauses (`QuestRepo.activityReadPause`, `ActivityPlanRepo`'s inline
+/// `_rateLimitedUntil`, and nothing at all for every other repo) each track a
+/// fraction of ONE server-side budget: a 429 seen by the activity read paused
+/// the map while the word card kept spending the same 60/min, which honours
+/// nothing (#8794).
 class RateLimitPause {
   RateLimitPause([this.duration = defaultDuration]);
+
+  /// The pause for choreo's `choreo` budget — every `/choreo/*` endpoint.
+  static final RateLimitPause choreo = RateLimitPause();
+
+  /// The pause for choreo's `subscription` budget — the whole money surface.
+  static final RateLimitPause subscription = RateLimitPause();
+
+  /// The pause covering the budget [error] was metered against, or null when
+  /// the limiter does not meter it (the CMS and teacher-BFF hosts, and any
+  /// failure that carries no path).
+  ///
+  /// Mirrors the server's `_scope_for` exactly — the budget boundary IS the
+  /// first path segment — so the two cannot drift, and no repo has to declare
+  /// which budget it draws from. A repo whose `ErrorResponseParser` replaces
+  /// the typed failure with its own type carries no path and so arms nothing;
+  /// today that is only `CheckoutRepo`, on the budget this must never pause
+  /// anyway.
+  static RateLimitPause? forError(Object? error) {
+    if (error is! PangeaHttpException) return null;
+    final path = error.path;
+    if (path == '/subscription' || path.startsWith('/subscription/')) {
+      return subscription;
+    }
+    if (path.startsWith('/choreo/')) return choreo;
+    return null;
+  }
 
   /// Matches the pause `ActivityPlanRepo` applies to the sibling activity read
   /// and the window choreo's limiter meters over.
@@ -61,6 +94,24 @@ class RateLimitPause {
     if (now().isBefore(until)) return true;
     _until = null;
     return false;
+  }
+
+  /// How long until reads on this budget may resume — [Duration.zero] when
+  /// not paused.
+  ///
+  /// Today this is only ever an over-estimate: the 429 carries no
+  /// `Retry-After`, so [recordFailure] can do no better than assume the full
+  /// [defaultDuration] window from the moment we saw it, and choreo's limiter
+  /// is per gunicorn worker, so another worker may have headroom right now.
+  /// A caller that waits on this must cap what it will actually wait for.
+  /// When choreo starts sending the header (pangeachat/2-step-choreographer
+  /// side of #8794), the header replaces the assumption and this becomes the
+  /// real number.
+  Duration get remaining {
+    final until = _until;
+    if (until == null) return Duration.zero;
+    final left = until.difference(now());
+    return left.isNegative ? Duration.zero : left;
   }
 
   /// Whether [error] means the backend throttled us — a 429, or a read a
@@ -117,6 +168,11 @@ class RateLimitPause {
     );
     return true;
   }
+
+  /// Test seam: arm this pause for [duration] without a live 429 coming back
+  /// from the network layer.
+  @visibleForTesting
+  void armForTesting(Duration duration) => _until = now().add(duration);
 
   /// Drops the pause. For tests, and for an explicit user-initiated refresh,
   /// which must never be suppressed. Also clears the report gate so a fresh

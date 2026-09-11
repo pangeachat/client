@@ -8,6 +8,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_fetch_response.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
+import 'package:fluffychat/pangea/common/network/rate_limit_pause.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'fake_pangea_controller.dart';
 
@@ -56,10 +57,17 @@ void main() {
   setUp(() {
     clock = DateTime(2026, 8, 4, 12);
     ActivityPlanRepo.now = () => clock;
+    // The repo's per-key backoff and the shared budget pause each have their
+    // own clock seam; a test that advances only one leaves the other on wall
+    // time, so both point at this fake clock.
+    RateLimitPause.now = () => clock;
     repo.resetBackoff();
   });
 
-  tearDownAll(() => ActivityPlanRepo.now = DateTime.now);
+  tearDownAll(() {
+    ActivityPlanRepo.now = DateTime.now;
+    RateLimitPause.now = DateTime.now;
+  });
 
   /// Lets the in-flight fetch settle so `_hydrating` clears.
   ///
@@ -125,7 +133,7 @@ void main() {
       // visible pin, so K keys each backing off independently still emit
       // K/cooldown requests. At the incident's K=104 that is 104/min against a
       // 60/min budget — still saturated.
-      repo.rateLimitedForTesting(const Duration(seconds: 60));
+      RateLimitPause.choreo.armForTesting(const Duration(seconds: 60));
 
       expect(repo.ensure('any-a', l1: 'en'), isFalse);
       expect(repo.ensure('any-b', l1: 'en'), isFalse);
@@ -133,7 +141,7 @@ void main() {
     });
 
     test('the pause lifts on its own', () {
-      repo.rateLimitedForTesting(const Duration(seconds: 60));
+      RateLimitPause.choreo.armForTesting(const Duration(seconds: 60));
       expect(repo.ensure('lift-1', l1: 'en'), isFalse);
 
       clock = clock.add(const Duration(seconds: 61));

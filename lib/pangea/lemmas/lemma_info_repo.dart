@@ -21,6 +21,13 @@ class LemmaInfoRepo extends BaseRepo<LemmaInfoRequest, LemmaInfoResponse> {
   static final LemmaInfoRepo _instance = LemmaInfoRepo._internal();
   static LemmaInfoRepo get instance => _instance;
 
+  /// Every caller renders a shimmer for the whole await
+  /// (`LemmaMeaningBuilder`, `PracticeController`), so waiting out a throttle
+  /// costs a longer loading state rather than an error the user cannot act on
+  /// (#8794).
+  @override
+  bool get retryOnRateLimit => true;
+
   @override
   Future<Response> fetch(Requests req, LemmaInfoRequest request) =>
       req.post(url: PApiUrls.lemmaDictionary, body: request.toJson());

@@ -4,7 +4,6 @@ import 'package:async/async.dart';
 import 'package:flutter_map/flutter_map.dart';
 
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
-import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/pangea/common/network/rate_limit_pause.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
@@ -39,7 +38,7 @@ class ActivityMapRepo {
   /// list — which means the viewport genuinely holds no activities:
   ///
   /// - [RateLimitedException] — choreo rate-limited us and
-  ///   [QuestRepo.activityReadPause] is running (#8360), so the read was never
+  ///   [RateLimitPause.choreo] is running (#8360), so the read was never
   ///   made. Panning is what fires this read, so a per-viewport backoff would
   ///   be no backoff at all; instead the pause itself reports the
   ///   suppression once per activation via
@@ -55,8 +54,8 @@ class ActivityMapRepo {
     String? l1,
     int limit = 200,
   }) async {
-    if (QuestRepo.activityReadPause.isPaused) {
-      QuestRepo.activityReadPause.reportSuppressionOnce({
+    if (RateLimitPause.choreo.isPaused) {
+      RateLimitPause.choreo.reportSuppressionOnce({
         'min_lat': bounds.south,
         'min_lng': bounds.west,
         'max_lat': bounds.north,
@@ -96,7 +95,7 @@ class ActivityMapRepo {
       );
     } catch (e, s) {
       // Before the report, so the pause is armed even if reporting throws.
-      QuestRepo.activityReadPause.recordFailure(e);
+      RateLimitPause.choreo.recordFailure(e);
       // Decoding and card mapping sit inside the try with the request on
       // purpose: they run on a future nobody awaits too, so a malformed body
       // escaped exactly as far as a failed fetch did.

@@ -11,6 +11,7 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_fetch_reques
 import 'package:fluffychat/features/activity_sessions/activity_plan_fetch_response.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
+import 'package:fluffychat/pangea/common/network/rate_limit_pause.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/base_repo.dart';
@@ -138,20 +139,25 @@ class ActivityPlanRepo
   /// *increased* load ~100x and kept the per-user budget exhausted for hours.
   final Map<String, DateTime> _nextAttempt = {};
 
-  /// Repo-wide pause after the backend rate-limits us.
+  /// The pause this repo honours is [RateLimitPause.choreo] — the one instance
+  /// tracking the `/choreo` budget, armed by `BaseRepo` on any 429 from any
+  /// repo on it.
   ///
   /// [_nextAttempt] is per key, and the number of keys is unbounded (the world
   /// map hydrates one per visible pin — 104 distinct ids during the incident).
   /// K keys under a per-key cooldown still emit K/cooldown requests, which at
-  /// K=104 exceeds the 60/min budget on its own. Only a repo-wide pause
-  /// restores the invariant "we stop when the server says stop", independent
-  /// of K. Deliberately scoped to this repo rather than shared: choreo budgets
-  /// `/choreo` and `/subscription` separately, so an activity 429 must never
-  /// stall checkout.
-  DateTime? _rateLimitedUntil;
-
+  /// K=104 exceeds the 60/min budget on its own. Only a pause that ignores the
+  /// key restores the invariant "we stop when the server says stop",
+  /// independent of K.
+  ///
+  /// This was an inline `_rateLimitedUntil` until #8794. Scoping it to this
+  /// repo did keep an activity 429 from stalling checkout, but it also meant
+  /// only activity reads could arm it and only activity reads could see it:
+  /// the same 60/min the map had just exhausted stayed fully open to the word
+  /// card, the tokenizer, and TTS. The shared instance is scoped to the
+  /// BUDGET, which is the boundary that was meant all along — `/subscription`
+  /// still has its own.
   static const Duration _attemptCooldown = Duration(seconds: 60);
-  static const Duration _rateLimitPause = Duration(seconds: 60);
 
   /// Ceiling on hydrations in flight at once.
   ///
@@ -159,7 +165,7 @@ class ActivityPlanRepo
   /// whole per-user `/choreo/*` minute budget in one frame and starving the next
   /// unrelated call — `/choreo/tokenize`, which backs free message rendering.
   ///
-  /// No backoff can prevent that, and [_rateLimitedUntil] is not a counter-
+  /// No backoff can prevent that, and [RateLimitPause.choreo] is not a counter-
   /// example: every guard in [ensure] is temporal or outcome-keyed, so on a COLD
   /// view all of them are empty BY DEFINITION. Nothing has resolved, nothing has
   /// been attempted, and no pause can be armed because no response has come back
@@ -217,7 +223,7 @@ class ActivityPlanRepo
   void resetBackoff() {
     _nextAttempt.clear();
     _confirmedRemoved.clear();
-    _rateLimitedUntil = null;
+    RateLimitPause.choreo.reset();
     // The backlog goes too. Dropping it loses nothing: clearing [_nextAttempt]
     // above un-parks every queued key, so `build()` re-offers them on the next
     // frame and they hydrate under the fresh budget. Keeping them would instead
@@ -230,12 +236,6 @@ class ActivityPlanRepo
     }
     _queued.clear();
   }
-
-  /// Test seam: simulate the repo having just been rate-limited, without
-  /// needing a live 429 from the network layer.
-  @visibleForTesting
-  void rateLimitedForTesting(Duration pause) =>
-      _rateLimitedUntil = now().add(pause);
 
   @override
   Future<Response> fetch(Requests req, ActivityPlanFetchRequest request) {
@@ -342,13 +342,12 @@ class ActivityPlanRepo
     final result = await get(request, forceRefresh: forceRefresh);
     if (result.isError) {
       final error = result.asError!.error;
-      // A 429 is a statement about RATE, not about this key, so it pauses the
-      // whole repo. Per-key backoff alone cannot honour it: the map hydrates
-      // one key per visible pin, and K keys each backing off independently
+      // The pause is armed by `BaseRepo` on the way out of the failed fetch,
+      // for every repo on the budget rather than only this one — so there is
+      // nothing to arm here. A 429 is a statement about RATE, not about this
+      // key: per-key backoff alone cannot honour it, since the map hydrates
+      // one key per visible pin and K keys each backing off independently
       // still emit K/cooldown requests.
-      if (PangeaHttpException.statusCodeOf(error) == 429) {
-        _rateLimitedUntil = now().add(_rateLimitPause);
-      }
       final status = classifyLookupError(error);
       if (status == ActivityPlanLookupStatus.removed) {
         _confirmedRemoved.mark(activityId);
@@ -478,11 +477,7 @@ class ActivityPlanRepo
     //
     // And it has to run before `_revalidated.add`, so bailing here cannot spend
     // the once-per-session revalidate token on a call that never fetched.
-    final pausedUntil = _rateLimitedUntil;
-    if (pausedUntil != null) {
-      if (at.isBefore(pausedUntil)) return false;
-      _rateLimitedUntil = null;
-    }
+    if (RateLimitPause.choreo.isPaused) return false;
     final doRevalidate = revalidate && _revalidated.add(key);
     if (!doRevalidate) {
       if (_resolved.containsKey(key)) return false;
@@ -520,8 +515,7 @@ class ActivityPlanRepo
   /// the time the next iteration tests it.
   void _pump() {
     while (_inFlight < _maxInFlight && _queued.isNotEmpty) {
-      final pausedUntil = _rateLimitedUntil;
-      if (pausedUntil != null && now().isBefore(pausedUntil)) {
+      if (RateLimitPause.choreo.isPaused) {
         // Rate-limited while this backlog waited. Draining it anyway would just
         // spend the NEXT window the moment the pause lifts: the same burst,
         // spread thin, not prevented. Dropping is safe because every queued key
