@@ -20,7 +20,6 @@ abstract class AppConfig {
   static const Color primaryColor = Color(0xFF8560E0);
   static const Color primaryColorLight = Color(0xFFDBC9FF);
   static const Color primaryColorDark = Color.fromARGB(255, 81, 66, 126);
-  static const Color secondaryColor = Color.fromARGB(255, 253, 191, 1);
 
   static const Color chatColor = primaryColor;
   static const double messageFontSize = 16.0;
@@ -79,11 +78,6 @@ abstract class AppConfig {
   static const Color gold = Color.fromARGB(255, 253, 191, 1);
   static const Color goldLight = Color.fromARGB(255, 254, 223, 73);
 
-  /// `Yellow.700` of the Figma Color Primitives ramp — the step [gold]
-  /// deepens to for the light theme. See [goldMarkByTheme], which is how
-  /// foreground code should reach it.
-  static const Color goldDeep = Color(0xFF917424);
-
   /// The bright gold fill: [PangeaColors.goldFixedDim]. Pair it with
   /// [onGoldByTheme]. Sites that use it as a border, ring or progress fill
   /// should read [PangeaColors.goldGraphic] instead.
@@ -132,18 +126,10 @@ abstract class AppConfig {
   /// level number loses contrast (both themes stay above 8:1).
   static const double _goldHighlightDepth = 0.2;
 
-  // The "powerups" gold palette for the right-nav cluster (Figma
-  // AvatarLangFlags). See the cluster section of routing.instructions.md.
-  static const Color goldPill = Color(0xFFFDCE47); // powerups pill background
-  static const Color goldMedal = Color(0xFFF3C141); // level shield fill
-  static const Color goldMedalText = Color(0xFFC29B32); // level number
-  static const Color goldPale = Color(0xFFFCF2D0); // shield inner field
   static const Color success = Color(0xFF33D057);
   static const Color error = Colors.red;
   static const Color warning = Color.fromARGB(255, 210, 124, 12);
   static const Color activeToggleColor = Color(0xFF33D057);
-  static const Color yellowLight = Color.fromARGB(255, 247, 218, 120);
-  static const Color yellowDark = Color.fromARGB(255, 253, 191, 1);
   static const double toolbarMaxHeight = 250.0;
   static const double toolbarMinWidth = 350.0;
   static const double toolbarMinHeight = 150.0;
@@ -215,5 +201,4 @@ abstract class AppConfig {
   };
 
   static const Color green = Color(0xFF34A853);
-  static const Color gray = Color(0xFFB4B2A9);
 }
