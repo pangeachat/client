@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "Imeshindwa kupata maelezo ya neno",
     "contentCreatedBy": "Imeundwa na",
     "coursePreview": "Onyesho la kukagua kozi",
-    "numActivities": "{count, plural, =1{shughuli 1} other{shughuli {count}}}"
+    "numActivities": "{count, plural, =1{shughuli 1} other{shughuli {count}}}",
+    "practiceTapABlank": "Gonga nafasi iliyo wazi ili ujaze",
+    "practiceListeningPrompt": "Kipi kinasema ‘{word}’?",
+    "practiceMeaningPrompt": "‘{word}’ inamaanisha nini?",
+    "practiceEmojiPrompt": "Chagua emoji ya ‘{word}’",
+    "practiceStepProgress": "{done} kati ya {total}"
 }

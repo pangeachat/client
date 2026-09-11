@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "បរាជ័យក្នុងការទាញយកព័ត៌មានពាក្យ",
     "contentCreatedBy": "បង្កើត​ដោយ",
     "coursePreview": "មើលវគ្គសិក្សាជាមុន",
-    "numActivities": "{count, plural, =1{1 សកម្មភាព} other{{count} សកម្មភាព}}"
+    "numActivities": "{count, plural, =1{1 សកម្មភាព} other{{count} សកម្មភាព}}",
+    "practiceTapABlank": "ប៉ះចន្លោះទំនេរដើម្បីបំពេញ",
+    "practiceListeningPrompt": "តើពាក្យមួយណាដែលនិយាយថា ‘{word}’?",
+    "practiceMeaningPrompt": "តើ ‘{word}’ មានន័យដូចម្តេច?",
+    "practiceEmojiPrompt": "ជ្រើសរើស Emoji សម្រាប់ ‘{word}’",
+    "practiceStepProgress": "{done} នៃ {total}"
 }

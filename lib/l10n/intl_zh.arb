@@ -9910,5 +9910,10 @@
     "errorFetchingWordInfo": "获取单词信息失败",
     "contentCreatedBy": "创建者",
     "coursePreview": "课程预览",
-    "numActivities": "{count, plural, =1{1 项活动} other{{count} 项活动}}"
+    "numActivities": "{count, plural, =1{1 项活动} other{{count} 项活动}}",
+    "practiceTapABlank": "点击空白处填写",
+    "practiceListeningPrompt": "哪个是“{word}”？",
+    "practiceMeaningPrompt": "“{word}”是什么意思？",
+    "practiceEmojiPrompt": "为“{word}”选择一个表情符号",
+    "practiceStepProgress": "{done}/{total}"
 }

@@ -9910,5 +9910,10 @@
     "errorFetchingWordInfo": "Woordinformatie ophalen mislukt",
     "contentCreatedBy": "Gemaakt door",
     "coursePreview": "Cursusvoorbeeld",
-    "numActivities": "{count, plural, =1{1 activiteit} other{{count} activiteiten}}"
+    "numActivities": "{count, plural, =1{1 activiteit} other{{count} activiteiten}}",
+    "practiceTapABlank": "Tik op een leeg veld om het in te vullen",
+    "practiceListeningPrompt": "Welke zegt ‘{word}’?",
+    "practiceMeaningPrompt": "Wat betekent ‘{word}’?",
+    "practiceEmojiPrompt": "Kies een emoji voor ‘{word}’",
+    "practiceStepProgress": "{done} van {total}"
 }

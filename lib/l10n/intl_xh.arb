@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "Ayiphumelelanga ukufumana ulwazi lwegama",
     "contentCreatedBy": "Yenziwe ngu",
     "coursePreview": "Ujongo lwekhosi",
-    "numActivities": "{count, plural, =1{1 umsebenzi} other{{count} imisebenzi}}"
+    "numActivities": "{count, plural, =1{1 umsebenzi} other{{count} imisebenzi}}",
+    "practiceTapABlank": "Cofa indawo engenanto ukuze uyizale",
+    "practiceListeningPrompt": "Yeyiphi ethi ‘{word}’?",
+    "practiceMeaningPrompt": "Ithetha ukuthini ‘{word}’?",
+    "practiceEmojiPrompt": "Khetha i-emoji ye-‘{word}’",
+    "practiceStepProgress": "{done} kweziyi-{total}"
 }

@@ -10810,5 +10810,10 @@
     "errorFetchingWordInfo": "სიტყვის ინფორმაციის მოძიება ვერ მოხერხდა",
     "contentCreatedBy": "შექმნილია",
     "coursePreview": "კურსის გადახედვა",
-    "numActivities": "{count, plural, =1{1 აქტივობა} other{{count} აქტივობა}}"
+    "numActivities": "{count, plural, =1{1 აქტივობა} other{{count} აქტივობა}}",
+    "practiceTapABlank": "შეეხეთ ცარიელ ადგილს მის შესავსებად",
+    "practiceListeningPrompt": "რომელი ამბობს „{word}“?",
+    "practiceMeaningPrompt": "რას ნიშნავს „{word}“?",
+    "practiceEmojiPrompt": "აირჩიეთ ემოჯი „{word}“-ისთვის",
+    "practiceStepProgress": "{done} / {total}"
 }

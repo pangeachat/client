@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "Неуспешно преземање информации за зборот",
     "contentCreatedBy": "Создадено од",
     "coursePreview": "Преглед на курс",
-    "numActivities": "{count, plural, =1{1 активност} other{{count} активности}}"
+    "numActivities": "{count, plural, =1{1 активност} other{{count} активности}}",
+    "practiceTapABlank": "Допрете празно поле за да го пополните",
+    "practiceListeningPrompt": "Кое вели „{word}“?",
+    "practiceMeaningPrompt": "Што значи „{word}“?",
+    "practiceEmojiPrompt": "Изберете емоџи за „{word}“",
+    "practiceStepProgress": "{done} од {total}"
 }

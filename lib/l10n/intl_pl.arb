@@ -9995,5 +9995,10 @@
     "errorFetchingWordInfo": "Nie udało się pobrać informacji o słowie",
     "contentCreatedBy": "Utworzone przez",
     "coursePreview": "Podgląd kursu",
-    "numActivities": "{count, plural, =1{1 aktywność} other{{count} aktywności}}"
+    "numActivities": "{count, plural, =1{1 aktywność} other{{count} aktywności}}",
+    "practiceTapABlank": "Dotknij luki, aby ją wypełnić",
+    "practiceListeningPrompt": "Które oznacza „{word}”?",
+    "practiceMeaningPrompt": "Co oznacza „{word}”?",
+    "practiceEmojiPrompt": "Wybierz emoji dla „{word}”",
+    "practiceStepProgress": "{done} z {total}"
 }

@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "Маълумот дар бораи калимаро гирифтан нашуд",
     "contentCreatedBy": "Сохта шудааст аз ҷониби",
     "coursePreview": "Пешнамоиши курс",
-    "numActivities": "{count, plural, =1{1 фаъолият} other{{count} фаъолият}}"
+    "numActivities": "{count, plural, =1{1 фаъолият} other{{count} фаъолият}}",
+    "practiceTapABlank": "Барои пур кардан ба ҷои холӣ ламс кунед",
+    "practiceListeningPrompt": "Кадомаш мегӯяд ‘{word}’?",
+    "practiceMeaningPrompt": "‘{word}’ чӣ маъно дорад?",
+    "practiceEmojiPrompt": "Барои ‘{word}’ эмодзи интихоб кунед",
+    "practiceStepProgress": "{done} аз {total}"
 }

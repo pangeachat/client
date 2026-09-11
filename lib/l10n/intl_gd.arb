@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "Dh'fhàillig fiosrachadh facal fhaighinn",
     "contentCreatedBy": "Air a chruthachadh le",
     "coursePreview": "Ro-shealladh cùrsa",
-    "numActivities": "{count, plural, =1{1 ghnìomhachd} other{{count} gnìomhachdan}}"
+    "numActivities": "{count, plural, =1{1 ghnìomhachd} other{{count} gnìomhachdan}}",
+    "practiceTapABlank": "Tap beàrn gus a lìonadh",
+    "practiceListeningPrompt": "Cò am fear a chanas ‘{word}’?",
+    "practiceMeaningPrompt": "Dè tha ‘{word}’ a’ ciallachadh?",
+    "practiceEmojiPrompt": "Tagh emoji airson ‘{word}’",
+    "practiceStepProgress": "{done} de {total}"
 }

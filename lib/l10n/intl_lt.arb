@@ -10691,5 +10691,10 @@
     "errorFetchingWordInfo": "Nepavyko gauti žodžio informacijos",
     "contentCreatedBy": "Sukūrė",
     "coursePreview": "Kurso peržiūra",
-    "numActivities": "{count, plural, =1{1 veikla} other{{count} veiklos}}"
+    "numActivities": "{count, plural, =1{1 veikla} other{{count} veiklos}}",
+    "practiceTapABlank": "Palieskite tuščią vietą, kad užpildytumėte",
+    "practiceListeningPrompt": "Kuris sako „{word}“?",
+    "practiceMeaningPrompt": "Ką reiškia „{word}“?",
+    "practiceEmojiPrompt": "Pasirinkite jaustuką žodžiui „{word}“",
+    "practiceStepProgress": "{done} iš {total}"
 }

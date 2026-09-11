@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "لفظ جي معلومات حاصل ڪرڻ ۾ ناڪامي ٿي",
     "contentCreatedBy": "ٺاهيندڙ",
     "coursePreview": "ڪورس جو ڏيک",
-    "numActivities": "{count, plural, =1{1 سرگرمي} other{{count} سرگرميون}}"
+    "numActivities": "{count, plural, =1{1 سرگرمي} other{{count} سرگرميون}}",
+    "practiceTapABlank": "خالي جاءِ ڀرڻ لاءِ ان تي ٽيپ ڪريو",
+    "practiceListeningPrompt": "ڪهڙو چوي ٿو ‘{word}’؟",
+    "practiceMeaningPrompt": "‘{word}’ جو ڇا مطلب آهي؟",
+    "practiceEmojiPrompt": "‘{word}’ لاءِ هڪ ايموجي چونڊيو",
+    "practiceStepProgress": "{total} مان {done}"
 }

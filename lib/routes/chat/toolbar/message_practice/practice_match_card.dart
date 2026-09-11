@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/choice_animation.dart';
 import 'package:fluffychat/routes/chat/events/audio_playback_speed_controller.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/message_audio_card.dart';
@@ -63,50 +64,72 @@ class MatchActivityCard extends StatelessWidget {
     }
 
     final selectedChoice = controller.selectedChoice;
+    final selectedSlotToken = controller.selectedSlotToken;
+    final theme = Theme.of(context);
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       mainAxisSize: MainAxisSize.max,
-      spacing: 4.0,
+      spacing: 8.0,
       children: [
         if (mode == MessagePracticeMode.listening)
           MessageAudioCard(
             messageEvent: controller.pangeaMessageEvent,
             playbackSpeedController: playbackSpeedController,
           ),
-        Wrap(
-          alignment: WrapAlignment.center,
-          spacing: 4.0,
-          runSpacing: 4.0,
-          children: currentActivity.matchContent.choices.map((
-            PracticeExerciseChoice cf,
-          ) {
-            final bool? wasCorrect = controller.wasCorrectMatch(cf);
-            return ChoiceAnimationWidget(
-              isSelected: selectedChoice == cf,
-              isCorrect: wasCorrect,
-              child: PracticeMatchItem(
-                token: currentActivity.tokens.firstWhereOrNull(
-                  (t) => t.vocabConstructID == cf.form.cId,
-                ),
-                isSelected: selectedChoice == cf,
-                isCorrect: wasCorrect,
-                constructForm: cf,
-                content: choiceDisplayContent(
-                  context,
-                  cf.choiceContent,
-                  fontSize,
-                ),
-                audioContent:
-                    currentActivity is WordListeningPracticeExerciseModel
-                    ? cf.choiceContent
-                    : null,
-                controller: controller,
-                shimmer: controller.showChoiceShimmer,
-                playbackSpeedController: playbackSpeedController,
-              ),
-            );
-          }).toList(),
-        ),
+        // Until a blank is chosen there is nothing here to pick up: the
+        // exercise starts on the message, in every mode.
+        if (selectedSlotToken == null)
+          Text(
+            L10n.of(context).practiceTapABlank,
+            style: theme.textTheme.bodyMedium,
+            textAlign: TextAlign.center,
+          )
+        else ...[
+          Text(
+            mode.prompt(context, selectedSlotToken.text.content),
+            style: theme.textTheme.bodyLarge?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          Wrap(
+            alignment: WrapAlignment.center,
+            spacing: 4.0,
+            runSpacing: 4.0,
+            // A choice that has been placed correctly belongs to its word and
+            // cannot answer another blank, so it leaves the tray (#6259).
+            children: currentActivity.matchContent.choices
+                .where((cf) => !controller.isChoicePlaced(cf))
+                .map((PracticeExerciseChoice cf) {
+                  final bool? wasCorrect = controller.wasCorrectMatch(cf);
+                  return ChoiceAnimationWidget(
+                    isSelected: selectedChoice == cf,
+                    isCorrect: wasCorrect,
+                    child: PracticeMatchItem(
+                      token: currentActivity.tokens.firstWhereOrNull(
+                        (t) => t.vocabConstructID == cf.form.cId,
+                      ),
+                      isSelected: selectedChoice == cf,
+                      isCorrect: wasCorrect,
+                      constructForm: cf,
+                      content: choiceDisplayContent(
+                        context,
+                        cf.choiceContent,
+                        fontSize,
+                      ),
+                      audioContent:
+                          currentActivity is WordListeningPracticeExerciseModel
+                          ? cf.choiceContent
+                          : null,
+                      controller: controller,
+                      shimmer: controller.showChoiceShimmer,
+                      playbackSpeedController: playbackSpeedController,
+                    ),
+                  );
+                })
+                .toList(),
+          ),
+        ],
       ],
     );
   }

@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "لفظ کی معلومات حاصل کرنے میں ناکامی",
     "contentCreatedBy": "تخلیق کردہ",
     "coursePreview": "کورس کا جائزہ",
-    "numActivities": "{count, plural, =1{1 سرگرمی} other{{count} سرگرمیاں}}"
+    "numActivities": "{count, plural, =1{1 سرگرمی} other{{count} سرگرمیاں}}",
+    "practiceTapABlank": "خالی جگہ پُر کرنے کے لیے تھپتھپائیں",
+    "practiceListeningPrompt": "کون سا ‘{word}’ کہتا ہے؟",
+    "practiceMeaningPrompt": "‘{word}’ کا کیا مطلب ہے؟",
+    "practiceEmojiPrompt": "‘{word}’ کے لیے ایک ایموجی منتخب کریں",
+    "practiceStepProgress": "{total} میں سے {done}"
 }

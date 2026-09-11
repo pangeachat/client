@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "Di wod infomeshon nɔ kɔmɔt",
     "contentCreatedBy": "Pikin we mek am",
     "coursePreview": "Kɔs witnes",
-    "numActivities": "{count, plural, =1{1 aktiviti} other{{count} aktiviti dɛn}}"
+    "numActivities": "{count, plural, =1{1 aktiviti} other{{count} aktiviti dɛn}}",
+    "practiceTapABlank": "Tap wan blank fɔ fil am",
+    "practiceListeningPrompt": "Us wan se ‘{word}’?",
+    "practiceMeaningPrompt": "Wetin ‘{word}’ min?",
+    "practiceEmojiPrompt": "Pik wan emoji fɔ ‘{word}’",
+    "practiceStepProgress": "{done} pan {total}"
 }

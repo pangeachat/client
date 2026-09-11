@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "Dështoi marrja e informacionit të fjalës",
     "contentCreatedBy": "Krijuar nga",
     "coursePreview": "Parashikim kursi",
-    "numActivities": "{count, plural, =1{1 aktivitet} other{{count} aktivitete}}"
+    "numActivities": "{count, plural, =1{1 aktivitet} other{{count} aktivitete}}",
+    "practiceTapABlank": "Trokit një vend bosh për ta plotësuar",
+    "practiceListeningPrompt": "Cila thotë ‘{word}’?",
+    "practiceMeaningPrompt": "Çfarë do të thotë ‘{word}’?",
+    "practiceEmojiPrompt": "Zgjidh një emoji për ‘{word}’",
+    "practiceStepProgress": "{done} nga {total}"
 }

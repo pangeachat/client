@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "Tsis tau nrhiav tau cov lus qhia",
     "contentCreatedBy": "Tsim los ntawm",
     "coursePreview": "Saib ua ntej kawm",
-    "numActivities": "{count, plural, =1{1 qho kev ua} other{{count} qho kev ua}}"
+    "numActivities": "{count, plural, =1{1 qho kev ua} other{{count} qho kev ua}}",
+    "practiceTapABlank": "Coj tus khoob kom sau",
+    "practiceListeningPrompt": "Tus twg hais tias ‘{word}’?",
+    "practiceMeaningPrompt": "‘{word}’ txhais li cas?",
+    "practiceEmojiPrompt": "Xaiv ib lub emoji rau ‘{word}’",
+    "practiceStepProgress": "{done} ntawm {total}"
 }

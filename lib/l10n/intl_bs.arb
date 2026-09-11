@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "Preuzimanje informacija o riječi nije uspjelo",
     "contentCreatedBy": "Kreirao/la",
     "coursePreview": "Pregled kursa",
-    "numActivities": "{count, plural, =1{1 aktivnost} other{{count} aktivnosti}}"
+    "numActivities": "{count, plural, =1{1 aktivnost} other{{count} aktivnosti}}",
+    "practiceTapABlank": "Dodirnite prazno polje da ga popunite",
+    "practiceListeningPrompt": "Koja kaže „{word}“?",
+    "practiceMeaningPrompt": "Šta znači „{word}“?",
+    "practiceEmojiPrompt": "Odaberite emoji za „{word}“",
+    "practiceStepProgress": "{done} od {total}"
 }

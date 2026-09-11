@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "נישט געקענט ברענגען וואָרט אינפֿאָרמאַציע",
     "contentCreatedBy": "געשאַפֿן פֿון",
     "coursePreview": "קורס פֿאָרויסיקע ווייַזונג",
-    "numActivities": "{count, plural, =1{1 טעטיקייט} other{{count} טעטיקייטן}}"
+    "numActivities": "{count, plural, =1{1 טעטיקייט} other{{count} טעטיקייטן}}",
+    "practiceTapABlank": "דרוקט אויף אַ ליידיקן פלאַץ צו אויספילן",
+    "practiceListeningPrompt": "וועלכער זאָגט ‘{word}’?",
+    "practiceMeaningPrompt": "וואָס מיינט ‘{word}’?",
+    "practiceEmojiPrompt": "קלויבט אויס אַן עמאָדזשי פֿאַר ‘{word}’",
+    "practiceStepProgress": "{done} פֿון {total}"
 }

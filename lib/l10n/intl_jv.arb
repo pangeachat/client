@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "Gagal njupuk informasi tembung",
     "contentCreatedBy": "Digawe dening",
     "coursePreview": "Pratinjau kursus",
-    "numActivities": "{count, plural, =1{1 aktivitas} other{{count} aktivitas}}"
+    "numActivities": "{count, plural, =1{1 aktivitas} other{{count} aktivitas}}",
+    "practiceTapABlank": "Tutul sing kosong kanggo ngisi",
+    "practiceListeningPrompt": "Sing endi sing ngucapake ‘{word}’?",
+    "practiceMeaningPrompt": "Apa tegese ‘{word}’?",
+    "practiceEmojiPrompt": "Pilih emoji kanggo ‘{word}’",
+    "practiceStepProgress": "{done} saka {total}"
 }

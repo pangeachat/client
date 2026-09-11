@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "Yehlulekile ukuthola ulwazi lwegama",
     "contentCreatedBy": "Kudalwe ngu",
     "coursePreview": "Ukubuka kuqala kwesifundo",
-    "numActivities": "{count, plural, =1{umsebenzi o-1} other{imisebenzi engu-{count}}}"
+    "numActivities": "{count, plural, =1{umsebenzi o-1} other{imisebenzi engu-{count}}}",
+    "practiceTapABlank": "Thepha okungenalutho ukuze ukugcwalise",
+    "practiceListeningPrompt": "Iyiphi ethi ‘{word}’?",
+    "practiceMeaningPrompt": "Isho ukuthini i-‘{word}’?",
+    "practiceEmojiPrompt": "Khetha i-emoji ye-‘{word}’",
+    "practiceStepProgress": "{done} koku-{total}"
 }

@@ -44,6 +44,22 @@ enum MessagePracticeMode {
     }
   }
 
+  /// What the tray asks once a blank is chosen. Naming the word keeps the
+  /// exercise legible without the instruction banner.
+  String prompt(BuildContext context, String word) {
+    switch (this) {
+      case MessagePracticeMode.listening:
+        return L10n.of(context).practiceListeningPrompt(word);
+      case MessagePracticeMode.wordMeaning:
+        return L10n.of(context).practiceMeaningPrompt(word);
+      case MessagePracticeMode.wordEmoji:
+        return L10n.of(context).practiceEmojiPrompt(word);
+      case MessagePracticeMode.wordMorph:
+      case MessagePracticeMode.noneSelected:
+        return '';
+    }
+  }
+
   Color iconButtonColor(BuildContext context, bool done) =>
       done ? AppConfig.gold : Theme.of(context).colorScheme.primaryContainer;
 

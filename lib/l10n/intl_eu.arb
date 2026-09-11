@@ -9910,5 +9910,10 @@
     "errorFetchingWordInfo": "Ezin izan da hitzaren informazioa eskuratu",
     "contentCreatedBy": "Nork sortua",
     "coursePreview": "Ikastaroaren aurrebista",
-    "numActivities": "{count, plural, =1{jarduera 1} other{{count} jarduera}}"
+    "numActivities": "{count, plural, =1{jarduera 1} other{{count} jarduera}}",
+    "practiceTapABlank": "Ukitu hutsune bat betetzeko",
+    "practiceListeningPrompt": "Zeinek dio ‘{word}’?",
+    "practiceMeaningPrompt": "Zer esan nahi du ‘{word}’ hitzak?",
+    "practiceEmojiPrompt": "Aukeratu emoji bat ‘{word}’ hitzarentzat",
+    "practiceStepProgress": "{done}/{total}"
 }

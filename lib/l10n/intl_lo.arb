@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "ບໍ່ສາມາດດຶງຂໍ້ມູນຄຳສັບໄດ້",
     "contentCreatedBy": "ສ້າງໂດຍ",
     "coursePreview": "ເບິ່ງຕົວຢ່າງຫຼັກສູດ",
-    "numActivities": "{count, plural, =1{1 ກິດຈະກຳ} other{{count} ກິດຈະກຳ}}"
+    "numActivities": "{count, plural, =1{1 ກິດຈະກຳ} other{{count} ກິດຈະກຳ}}",
+    "practiceTapABlank": "ແຕະບ່ອນຫວ່າງເພື່ອຕື່ມໃສ່",
+    "practiceListeningPrompt": "ອັນໃດທີ່ເວົ້າວ່າ ‘{word}’?",
+    "practiceMeaningPrompt": "‘{word}’ ໝາຍຄວາມວ່າແນວໃດ?",
+    "practiceEmojiPrompt": "ເລືອກອີໂມຈິສຳລັບ ‘{word}’",
+    "practiceStepProgress": "{done} ຈາກ {total}"
 }

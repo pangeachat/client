@@ -10428,5 +10428,10 @@
     "errorFetchingWordInfo": "Kunde inte hämta ordinformation",
     "contentCreatedBy": "Skapad av",
     "coursePreview": "Kursförhandsvisning",
-    "numActivities": "{count, plural, =1{1 aktivitet} other{{count} aktiviteter}}"
+    "numActivities": "{count, plural, =1{1 aktivitet} other{{count} aktiviteter}}",
+    "practiceTapABlank": "Tryck på en tom lucka för att fylla i den",
+    "practiceListeningPrompt": "Vilken säger ”{word}”?",
+    "practiceMeaningPrompt": "Vad betyder ”{word}”?",
+    "practiceEmojiPrompt": "Välj en emoji för ”{word}”",
+    "practiceStepProgress": "{done} av {total}"
 }

@@ -9910,5 +9910,10 @@
     "errorFetchingWordInfo": "Produciuse un erro ao obter a información da palabra",
     "contentCreatedBy": "Creado por",
     "coursePreview": "Previsualización do curso",
-    "numActivities": "{count, plural, =1{1 actividade} other{{count} actividades}}"
+    "numActivities": "{count, plural, =1{1 actividade} other{{count} actividades}}",
+    "practiceTapABlank": "Toca un espazo en branco para enchelo",
+    "practiceListeningPrompt": "Cal di «{word}»?",
+    "practiceMeaningPrompt": "Que significa «{word}»?",
+    "practiceEmojiPrompt": "Escolle un emoji para «{word}»",
+    "practiceStepProgress": "{done} de {total}"
 }

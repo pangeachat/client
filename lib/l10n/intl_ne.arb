@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "शब्द जानकारी प्राप्त गर्न असफल भयो",
     "contentCreatedBy": "द्वारा सिर्जना गरिएको",
     "coursePreview": "कोर्स पूर्वावलोकन",
-    "numActivities": "{count, plural, =1{१ गतिविधि} other{{count} गतिविधिहरू}}"
+    "numActivities": "{count, plural, =1{१ गतिविधि} other{{count} गतिविधिहरू}}",
+    "practiceTapABlank": "भर्नका लागि खाली ठाउँमा ट्याप गर्नुहोस्",
+    "practiceListeningPrompt": "कुनले ‘{word}’ भन्छ?",
+    "practiceMeaningPrompt": "‘{word}’ को अर्थ के हो?",
+    "practiceEmojiPrompt": "‘{word}’ को लागि एउटा इमोजी छान्नुहोस्",
+    "practiceStepProgress": "{total} मध्ये {done}"
 }

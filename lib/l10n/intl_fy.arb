@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "Net slagge om wurdynformaasje op te heljen",
     "contentCreatedBy": "Makke troch",
     "coursePreview": "Foarbyld fan de kursus",
-    "numActivities": "{count, plural, =1{1 aktiviteit} other{{count} aktiviteiten}}"
+    "numActivities": "{count, plural, =1{1 aktiviteit} other{{count} aktiviteiten}}",
+    "practiceTapABlank": "Tik op in leech fjild om it yn te foljen",
+    "practiceListeningPrompt": "Hokker seit ‘{word}’?",
+    "practiceMeaningPrompt": "Wat betsjut ‘{word}’?",
+    "practiceEmojiPrompt": "Kies in emoji foar ‘{word}’",
+    "practiceStepProgress": "{done} fan {total}"
 }

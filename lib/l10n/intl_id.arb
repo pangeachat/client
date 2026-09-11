@@ -9983,5 +9983,10 @@
     "errorFetchingWordInfo": "Gagal mengambil info kata",
     "contentCreatedBy": "Dibuat oleh",
     "coursePreview": "Pratinjau kursus",
-    "numActivities": "{count, plural, =1{1 aktivitas} other{{count} aktivitas}}"
+    "numActivities": "{count, plural, =1{1 aktivitas} other{{count} aktivitas}}",
+    "practiceTapABlank": "Ketuk bagian kosong untuk mengisinya",
+    "practiceListeningPrompt": "Yang mana yang mengatakan '{word}'?",
+    "practiceMeaningPrompt": "Apa arti '{word}'?",
+    "practiceEmojiPrompt": "Pilih emoji untuk '{word}'",
+    "practiceStepProgress": "{done} dari {total}"
 }

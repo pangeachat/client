@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "Nou pa t kapab jwenn enfòmasyon sou mo a",
     "contentCreatedBy": "Kreye pa",
     "coursePreview": "Apèsi sou kou a",
-    "numActivities": "{count, plural, =1{1 aktivite} other{{count} aktivite}}"
+    "numActivities": "{count, plural, =1{1 aktivite} other{{count} aktivite}}",
+    "practiceTapABlank": "Tape yon espas vid pou ranpli li",
+    "practiceListeningPrompt": "Kilès ki di ‘{word}’?",
+    "practiceMeaningPrompt": "Kisa ‘{word}’ vle di?",
+    "practiceEmojiPrompt": "Chwazi yon emoji pou ‘{word}’",
+    "practiceStepProgress": "{done} sou {total}"
 }

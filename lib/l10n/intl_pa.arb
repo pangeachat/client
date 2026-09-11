@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "ਸ਼ਬਦ ਦੀ ਜਾਣਕਾਰੀ ਪ੍ਰਾਪਤ ਕਰਨ ਵਿੱਚ ਅਸਫਲ",
     "contentCreatedBy": "ਇਸ ਦੁਆਰਾ ਬਣਾਇਆ ਗਿਆ",
     "coursePreview": "ਕੋਰਸ ਝਲਕ",
-    "numActivities": "{count, plural, =1{1 ਗਤੀਵਿਧੀ} other{{count} ਗਤੀਵਿਧੀਆਂ}}"
+    "numActivities": "{count, plural, =1{1 ਗਤੀਵਿਧੀ} other{{count} ਗਤੀਵਿਧੀਆਂ}}",
+    "practiceTapABlank": "ਇਸ ਨੂੰ ਭਰਨ ਲਈ ਇੱਕ ਖਾਲੀ ਥਾਂ 'ਤੇ ਟੈਪ ਕਰੋ",
+    "practiceListeningPrompt": "ਕਿਹੜਾ ‘{word}’ ਕਹਿੰਦਾ ਹੈ?",
+    "practiceMeaningPrompt": "‘{word}’ ਦਾ ਕੀ ਅਰਥ ਹੈ?",
+    "practiceEmojiPrompt": "‘{word}’ ਲਈ ਇੱਕ ਇਮੋਜੀ ਚੁਣੋ",
+    "practiceStepProgress": "{total} ਵਿੱਚੋਂ {done}"
 }

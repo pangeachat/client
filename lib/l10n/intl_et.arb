@@ -9907,5 +9907,10 @@
     "errorFetchingWordInfo": "Sõnateabe hankimine ebaõnnestus",
     "contentCreatedBy": "Looja",
     "coursePreview": "Kursuse eelvaade",
-    "numActivities": "{count, plural, =1{1 tegevus} other{{count} tegevust}}"
+    "numActivities": "{count, plural, =1{1 tegevus} other{{count} tegevust}}",
+    "practiceTapABlank": "Täitmiseks puuduta tühja kohta",
+    "practiceListeningPrompt": "Milline neist ütleb „{word}“?",
+    "practiceMeaningPrompt": "Mida tähendab „{word}“?",
+    "practiceEmojiPrompt": "Vali emotikon sõnale „{word}“",
+    "practiceStepProgress": "{done} / {total}"
 }

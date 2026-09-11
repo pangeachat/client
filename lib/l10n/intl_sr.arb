@@ -10859,5 +10859,10 @@
     "errorFetchingWordInfo": "Nije uspelo preuzimanje informacija o reči",
     "contentCreatedBy": "Kreirao/la",
     "coursePreview": "Pregled kursa",
-    "numActivities": "{count, plural, =1{1 aktivnost} other{{count} aktivnosti}}"
+    "numActivities": "{count, plural, =1{1 aktivnost} other{{count} aktivnosti}}",
+    "practiceTapABlank": "Dodirnite prazno polje da ga popunite",
+    "practiceListeningPrompt": "Koja reč kaže „{word}“?",
+    "practiceMeaningPrompt": "Šta znači „{word}“?",
+    "practiceEmojiPrompt": "Izaberite emodži za „{word}“",
+    "practiceStepProgress": "{done} od {total}"
 }

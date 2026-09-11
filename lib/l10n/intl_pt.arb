@@ -10854,5 +10854,10 @@
     "errorFetchingWordInfo": "Falha ao buscar informações da palavra",
     "contentCreatedBy": "Criado por",
     "coursePreview": "Prévia do curso",
-    "numActivities": "{count, plural, =1{1 atividade} other{{count} atividades}}"
+    "numActivities": "{count, plural, =1{1 atividade} other{{count} atividades}}",
+    "practiceTapABlank": "Toque no espaço em branco para preencher",
+    "practiceListeningPrompt": "Qual deles diz ‘{word}’?",
+    "practiceMeaningPrompt": "O que ‘{word}’ significa?",
+    "practiceEmojiPrompt": "Escolha um emoji para ‘{word}’",
+    "practiceStepProgress": "{done} de {total}"
 }

@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "የቃሉን መረጃ ማምጣት አልተቻለም።",
     "contentCreatedBy": "የተፈጠረው በ",
     "coursePreview": "የኮርስ ቅድመ እይታ",
-    "numActivities": "{count, plural, =1{1 እንቅስቃሴ} other{{count} እንቅስቃሴዎች}}"
+    "numActivities": "{count, plural, =1{1 እንቅስቃሴ} other{{count} እንቅስቃሴዎች}}",
+    "practiceTapABlank": "ለመሙላት ባዶ ቦታ ይንኩ።",
+    "practiceListeningPrompt": "የትኛው ነው ‘{word}’ የሚለው?",
+    "practiceMeaningPrompt": "‘{word}’ ምን ማለት ነው?",
+    "practiceEmojiPrompt": "ለ‘{word}’ ኢሞጂ ይምረጡ",
+    "practiceStepProgress": "{total} ከ {done}"
 }

@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "Napakyas sa pagkuha sa impormasyon sa pulong",
     "contentCreatedBy": "Gibuhat ni",
     "coursePreview": "Preview sa kurso",
-    "numActivities": "{count, plural, =1{1 kalihokan} other{{count} ka kalihokan}}"
+    "numActivities": "{count, plural, =1{1 kalihokan} other{{count} ka kalihokan}}",
+    "practiceTapABlank": "Pindota ang blangko aron pun-on",
+    "practiceListeningPrompt": "Asa niini ang nag-ingon og ‘{word}’?",
+    "practiceMeaningPrompt": "Unsay gipasabot sa ‘{word}’?",
+    "practiceEmojiPrompt": "Pagpili og emoji para sa ‘{word}’",
+    "practiceStepProgress": "{done} sa {total}"
 }

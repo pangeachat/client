@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "શબ્દની માહિતી મેળવવામાં નિષ્ફળ",
     "contentCreatedBy": "આના દ્વારા બનાવવામાં આવ્યું",
     "coursePreview": "કોર્સનું પૂર્વાવલોકન",
-    "numActivities": "{count, plural, =1{1 પ્રવૃત્તિ} other{{count} પ્રવૃત્તિઓ}}"
+    "numActivities": "{count, plural, =1{1 પ્રવૃત્તિ} other{{count} પ્રવૃત્તિઓ}}",
+    "practiceTapABlank": "ખાલી જગ્યા ભરવા માટે તેના પર ટેપ કરો",
+    "practiceListeningPrompt": "‘{word}’ કયું બોલે છે?",
+    "practiceMeaningPrompt": "‘{word}’ નો અર્થ શું થાય છે?",
+    "practiceEmojiPrompt": "‘{word}’ માટે એક ઇમોજી પસંદ કરો",
+    "practiceStepProgress": "{total} માંથી {done}"
 }

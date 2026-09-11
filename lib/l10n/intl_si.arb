@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "වචන තොරතුරු ලබාගැනීම අසාර්ථක විය",
     "contentCreatedBy": "නිර්මාණය කළේ",
     "coursePreview": "පාඨමාලා පෙරදසුන",
-    "numActivities": "{count, plural, =1{ක්‍රියාකාරකම් 1ක්} other{ක්‍රියාකාරකම් {count}ක්}}"
+    "numActivities": "{count, plural, =1{ක්‍රියාකාරකම් 1ක්} other{ක්‍රියාකාරකම් {count}ක්}}",
+    "practiceTapABlank": "එය පිරවීමට හිස් තැනක් තට්ටු කරන්න",
+    "practiceListeningPrompt": "‘{word}’ යැයි කියන්නේ කුමන එකද?",
+    "practiceMeaningPrompt": "‘{word}’ යන්නෙහි තේරුම කුමක්ද?",
+    "practiceEmojiPrompt": "‘{word}’ සඳහා ඉමොජියක් තෝරන්න",
+    "practiceStepProgress": "{total}න් {done}"
 }

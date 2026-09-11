@@ -3,7 +3,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 import 'package:material_symbols_icons/symbols.dart';
-import 'package:shimmer/shimmer.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
@@ -57,10 +56,7 @@ class TokenPracticeButton extends StatelessWidget {
       controller.selectedMorph?.token == token &&
       controller.selectedMorph?.morph == _activity?.morphFeature;
 
-  void _onMatch(PracticeExerciseChoice form) {
-    controller.onChoiceSelect(null);
-    controller.onMatch(token, form);
-  }
+  void _onMatch(PracticeExerciseChoice form) => controller.onMatch(token, form);
 
   @override
   Widget build(BuildContext context) {
@@ -92,11 +88,15 @@ class TokenPracticeButton extends StatelessWidget {
                 !PracticeRecordController.hasAnyCorrectChoices(_activity!),
           );
         } else {
+          final selectedSlotToken = controller.selectedSlotToken;
           child = _StandardMatchButton(
-            selectedChoice: controller.selectedChoice,
+            isSelected: selectedSlotToken == token,
+            isDimmed: selectedSlotToken != null && selectedSlotToken != token,
+            shimmer: controller.showSlotShimmer,
             width: width,
             borderColor: textColor,
-            onMatch: (choice) => _onMatch(choice),
+            onSelect: () => controller.onSlotSelect(token),
+            onMatch: _onMatch,
           );
         }
 
@@ -121,57 +121,69 @@ class TokenPracticeButton extends StatelessWidget {
   }
 }
 
+/// A blank under one word. Tapping it makes that word the exercise's target,
+/// which is what brings the tray's answers up; it stays a drop target so a
+/// dragged answer still lands.
 class _StandardMatchButton extends StatelessWidget {
-  final PracticeExerciseChoice? selectedChoice;
+  final bool isSelected;
+  final bool isDimmed;
+  final bool shimmer;
   final double width;
   final Color borderColor;
+  final VoidCallback onSelect;
   final Function(PracticeExerciseChoice choice) onMatch;
 
   const _StandardMatchButton({
-    required this.selectedChoice,
+    required this.isSelected,
+    required this.isDimmed,
+    required this.shimmer,
     required this.width,
     required this.borderColor,
+    required this.onSelect,
     required this.onMatch,
   });
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return DragTarget<PracticeExerciseChoice>(
       builder: (BuildContext context, accepted, rejected) {
-        final double colorAlpha =
-            0.3 +
-            (selectedChoice != null ? 0.4 : 0.0) +
-            (accepted.isNotEmpty ? 0.3 : 0.0);
+        final bool highlighted = isSelected || accepted.isNotEmpty;
+        final double colorAlpha = highlighted
+            ? 1.0
+            : isDimmed
+            ? 0.15
+            : 0.3;
 
-        final theme = Theme.of(context);
         final borderRadius = BorderRadius.circular(AppConfig.borderRadius - 4);
 
         return Material(
           type: MaterialType.transparency,
           child: InkWell(
-            onTap: selectedChoice != null
-                ? () => onMatch(selectedChoice!)
-                : null,
+            onTap: onSelect,
             borderRadius: borderRadius,
+            // A foreground painter: the blank's fill is opaque, so a border
+            // painted behind it only showed the half of the stroke that spilled
+            // outside the box.
             child: CustomPaint(
-              painter: DottedBorderPainter(
-                color: borderColor.withAlpha((colorAlpha * 255).toInt()),
+              foregroundPainter: DottedBorderPainter(
+                color: (highlighted ? theme.colorScheme.primary : borderColor)
+                    .withAlpha((colorAlpha * 255).toInt()),
                 borderRadius: borderRadius,
               ),
-              child: Shimmer.fromColors(
-                enabled: selectedChoice != null,
-                baseColor: selectedChoice != null
-                    ? AppConfig.gold.withAlpha(20)
-                    : Colors.transparent,
-                highlightColor: selectedChoice != null
-                    ? AppConfig.gold.withAlpha(50)
-                    : Colors.transparent,
+              child: ShimmerBackground(
+                enabled: shimmer,
+                // Without this the pulse defaults to the standard corner
+                // radius and bulges past the blank's own, tighter outline.
+                borderRadius: borderRadius,
                 child: Container(
                   padding: const EdgeInsets.only(top: 10.0),
                   width: max(width, 24.0),
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                    color: theme.colorScheme.surface,
+                    color: highlighted
+                        ? theme.colorScheme.primaryContainer
+                        : theme.colorScheme.surface,
                     borderRadius: borderRadius,
                   ),
                 ),
@@ -211,6 +223,7 @@ class _MorphMatchButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(AppConfig.borderRadius - 4),
             child: ShimmerBackground(
               enabled: shimmer,
+              borderRadius: BorderRadius.circular(AppConfig.borderRadius - 4),
               child: SizedBox(
                 width: width,
                 child: Center(

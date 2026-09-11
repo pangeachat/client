@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "শব্দৰ তথ্য আহৰণ কৰাত ব্যৰ্থ হৈছে",
     "contentCreatedBy": "দ্বাৰা সৃষ্টি কৰা হৈছে",
     "coursePreview": "পাঠ্যক্ৰমৰ পূৰ্বলোকন",
-    "numActivities": "{count, plural, =1{1 কাৰ্য্যকলাপ} other{{count} কাৰ্য্যকলাপ}}"
+    "numActivities": "{count, plural, =1{1 কাৰ্য্যকলাপ} other{{count} কাৰ্য্যকলাপ}}",
+    "practiceTapABlank": "পূৰণ কৰিবলৈ এটা খালী ঠাইত টিপক",
+    "practiceListeningPrompt": "কোনটোৱে ‘{word}’ বুলি কয়?",
+    "practiceMeaningPrompt": "‘{word}’ মানে কি?",
+    "practiceEmojiPrompt": "‘{word}’ ৰ বাবে এটা ইমোজি বাছক",
+    "practiceStepProgress": "{total} ৰ ভিতৰত {done}"
 }

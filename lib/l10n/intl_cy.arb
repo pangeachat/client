@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "Methwyd â nôl gwybodaeth am y gair",
     "contentCreatedBy": "Crëwyd gan",
     "coursePreview": "Rhagolwg cwrs",
-    "numActivities": "{count, plural, =1{1 gweithgaredd} other{{count} gweithgaredd}}"
+    "numActivities": "{count, plural, =1{1 gweithgaredd} other{{count} gweithgaredd}}",
+    "practiceTapABlank": "Tapiwch fwlch i'w lenwi",
+    "practiceListeningPrompt": "Pa un sy'n dweud ‘{word}’?",
+    "practiceMeaningPrompt": "Beth mae ‘{word}’ yn ei olygu?",
+    "practiceEmojiPrompt": "Dewiswch emoji ar gyfer ‘{word}’",
+    "practiceStepProgress": "{done} o {total}"
 }

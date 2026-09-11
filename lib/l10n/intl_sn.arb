@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "Zvakakona kutora ruzivo rwezwi",
     "contentCreatedBy": "Yakagadzirwa na",
     "coursePreview": "Taridza kosi",
-    "numActivities": "{count, plural, =1{1 chiitiko} other{{count} zviitiko}}"
+    "numActivities": "{count, plural, =1{1 chiitiko} other{{count} zviitiko}}",
+    "practiceTapABlank": "Tinya nzvimbo isina chinhu kuti uzadze",
+    "practiceListeningPrompt": "Ndeipi inoti ‘{word}’?",
+    "practiceMeaningPrompt": "‘{word}’ zvinorevei?",
+    "practiceEmojiPrompt": "Sarudza emoji ye ‘{word}’",
+    "practiceStepProgress": "{done} pa {total}"
 }

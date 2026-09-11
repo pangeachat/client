@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "Söz məlumatı əldə edilmədi",
     "contentCreatedBy": "Yaradılıb",
     "coursePreview": "Kurs önizləməsi",
-    "numActivities": "{count, plural, =1{1 fəaliyyət} other{{count} fəaliyyət}}"
+    "numActivities": "{count, plural, =1{1 fəaliyyət} other{{count} fəaliyyət}}",
+    "practiceTapABlank": "Doldurmaq üçün boşluğa toxunun",
+    "practiceListeningPrompt": "Hansı ‘{word}’ deyir?",
+    "practiceMeaningPrompt": "‘{word}’ nə deməkdir?",
+    "practiceEmojiPrompt": "‘{word}’ üçün bir emoji seçin",
+    "practiceStepProgress": "{done} / {total}"
 }

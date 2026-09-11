@@ -10016,5 +10016,10 @@
     "errorFetchingWordInfo": "無法取得單字資訊",
     "contentCreatedBy": "建立者",
     "coursePreview": "課程預覽",
-    "numActivities": "{count, plural, =1{1 個活動} other{{count} 個活動}}"
+    "numActivities": "{count, plural, =1{1 個活動} other{{count} 個活動}}",
+    "practiceTapABlank": "點擊空格填寫",
+    "practiceListeningPrompt": "哪一個是「{word}」？",
+    "practiceMeaningPrompt": "「{word}」是什麼意思？",
+    "practiceEmojiPrompt": "為「{word}」選擇一個表情符號",
+    "practiceStepProgress": "{done}/{total}"
 }

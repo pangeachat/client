@@ -10404,5 +10404,10 @@
     "errorFetchingWordInfo": "Nepodařilo se načíst informace o slově",
     "contentCreatedBy": "Vytvořil",
     "coursePreview": "Náhled kurzu",
-    "numActivities": "{count, plural, =1{1 aktivita} other{{count} aktivit}}"
+    "numActivities": "{count, plural, =1{1 aktivita} other{{count} aktivit}}",
+    "practiceTapABlank": "Klepnutím na prázdné místo jej vyplníte",
+    "practiceListeningPrompt": "Který z nich říká „{word}“?",
+    "practiceMeaningPrompt": "Co znamená „{word}“?",
+    "practiceEmojiPrompt": "Vyberte emoji pro „{word}“",
+    "practiceStepProgress": "{done} z {total}"
 }

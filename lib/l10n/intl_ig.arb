@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "Enweghị ike iwepụta ozi okwu",
     "contentCreatedBy": "Onye kere ya",
     "coursePreview": "Nlele mmalite ọmụmụ ihe",
-    "numActivities": "{count, plural, =1{1 ọrụ} other{{count} ọrụ}}"
+    "numActivities": "{count, plural, =1{1 ọrụ} other{{count} ọrụ}}",
+    "practiceTapABlank": "Pịa oghere ka ijupụta ya",
+    "practiceListeningPrompt": "Kedu nke na-ekwu ‘{word}’?",
+    "practiceMeaningPrompt": "Gịnị ka ‘{word}’ pụtara?",
+    "practiceEmojiPrompt": "Họrọ emoji maka ‘{word}’",
+    "practiceStepProgress": "{done} n'ime {total}"
 }

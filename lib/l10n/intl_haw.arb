@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "ʻAʻole i loaʻa ka ʻike huaʻōlelo",
     "contentCreatedBy": "Hana ʻia e",
     "coursePreview": "Nānā mua papa",
-    "numActivities": "{count, plural, =1{1 hana} other{{count} mau hana}}"
+    "numActivities": "{count, plural, =1{1 hana} other{{count} mau hana}}",
+    "practiceTapABlank": "Kaomi i kahi hakahaka e hoʻopiha ai",
+    "practiceListeningPrompt": "ʻO wai ka mea e ʻōlelo ana ‘{word}’?",
+    "practiceMeaningPrompt": "He aha ke ʻano o ‘{word}’?",
+    "practiceEmojiPrompt": "E koho i kahi emoji no ‘{word}’",
+    "practiceStepProgress": "{done} o {total}"
 }

@@ -9521,5 +9521,10 @@
     "errorFetchingWordInfo": "ཚིག་གི་ཆ་འཕྲིན་ལེན་མ་ཐུབ།",
     "contentCreatedBy": "བཟོ་མཁན།",
     "coursePreview": "སློབ་ཚན་སྔོན་མཐོང་།",
-    "numActivities": "{count, plural, =1{༡ བྱེད་སྒོ་} other{{count} བྱེད་སྒོ་}}"
+    "numActivities": "{count, plural, =1{༡ བྱེད་སྒོ་} other{{count} བྱེད་སྒོ་}}",
+    "practiceTapABlank": "སྟོང་པ་ཞིག་ལ་རེག་ནས་བཀང་།",
+    "practiceListeningPrompt": "གང་གིས་ ‘{word}’ ཟེར་གྱི་འདུག",
+    "practiceMeaningPrompt": "‘{word}’ ལ་དོན་ཅི་ཞིག་ཡོད།",
+    "practiceEmojiPrompt": "‘{word}’ ལ་ཨི་མོ་ཇི་ཞིག་འདེམས་རོགས།",
+    "practiceStepProgress": "{total} ནང་ནས་ {done}"
 }

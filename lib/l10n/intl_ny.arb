@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "Zalephera kupeza zambiri za mawu",
     "contentCreatedBy": "Anapangidwa ndi",
     "coursePreview": "Kukambirana za maphunziro",
-    "numActivities": "{count, plural, =1{ntchito imodzi} other{ntchito {count}}}"
+    "numActivities": "{count, plural, =1{ntchito imodzi} other{ntchito {count}}}",
+    "practiceTapABlank": "Dinani malo opanda kanthu kuti mudzaze",
+    "practiceListeningPrompt": "Ndi chiti chomwe chimati ‘{word}’?",
+    "practiceMeaningPrompt": "Kodi ‘{word}’ amatanthauza chiyani?",
+    "practiceEmojiPrompt": "Sankhani emoji ya ‘{word}’",
+    "practiceStepProgress": "{done} mwa {total}"
 }

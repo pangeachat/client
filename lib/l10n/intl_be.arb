@@ -9924,5 +9924,10 @@
     "errorFetchingWordInfo": "Не атрымалася атрымаць інфармацыю пра слова",
     "contentCreatedBy": "Створана",
     "coursePreview": "Папярэдні прагляд курса",
-    "numActivities": "{count, plural, =1{1 занятак} other{{count} заняткаў}}"
+    "numActivities": "{count, plural, =1{1 занятак} other{{count} заняткаў}}",
+    "practiceTapABlank": "Націсніце на пустое месца, каб запоўніць яго",
+    "practiceListeningPrompt": "Што азначае «{word}»?",
+    "practiceMeaningPrompt": "Што азначае «{word}»?",
+    "practiceEmojiPrompt": "Выберыце эмодзі для «{word}»",
+    "practiceStepProgress": "{done} з {total}"
 }

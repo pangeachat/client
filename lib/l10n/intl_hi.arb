@@ -10542,5 +10542,10 @@
     "errorFetchingWordInfo": "शब्द की जानकारी लाने में विफल रहा",
     "contentCreatedBy": "इसके द्वारा बनाया गया",
     "coursePreview": "कोर्स का पूर्वावलोकन",
-    "numActivities": "{count, plural, =1{1 गतिविधि} other{{count} गतिविधियां}}"
+    "numActivities": "{count, plural, =1{1 गतिविधि} other{{count} गतिविधियां}}",
+    "practiceTapABlank": "इसे भरने के लिए एक खाली जगह पर टैप करें",
+    "practiceListeningPrompt": "‘{word}’ कौन सा कहता है?",
+    "practiceMeaningPrompt": "‘{word}’ का क्या मतलब है?",
+    "practiceEmojiPrompt": "‘{word}’ के लिए एक इमोजी चुनें",
+    "practiceStepProgress": "{total} में से {done}"
 }

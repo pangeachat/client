@@ -10265,5 +10265,10 @@
     "errorFetchingWordInfo": "Échec de la récupération des informations sur le mot",
     "contentCreatedBy": "Créé par",
     "coursePreview": "Aperçu du cours",
-    "numActivities": "{count, plural, =1{1 activité} other{{count} activités}}"
+    "numActivities": "{count, plural, =1{1 activité} other{{count} activités}}",
+    "practiceTapABlank": "Touchez un champ vide pour le remplir",
+    "practiceListeningPrompt": "Lequel dit « {word} » ?",
+    "practiceMeaningPrompt": "Que signifie « {word} » ?",
+    "practiceEmojiPrompt": "Choisissez un émoji pour « {word} »",
+    "practiceStepProgress": "{done} sur {total}"
 }

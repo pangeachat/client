@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "Үгийн мэдээлэл татаж чадсангүй",
     "contentCreatedBy": "Үүсгэсэн",
     "coursePreview": "Хичээлийн урьдчилсан харах",
-    "numActivities": "{count, plural, =1{1 үйл ажиллагаа} other{{count} үйл ажиллагаа}}"
+    "numActivities": "{count, plural, =1{1 үйл ажиллагаа} other{{count} үйл ажиллагаа}}",
+    "practiceTapABlank": "Хоосон зайг бөглөхийн тулд товшино уу",
+    "practiceListeningPrompt": "Алийг нь ‘{word}’ гэж хэлдэг вэ?",
+    "practiceMeaningPrompt": "‘{word}’ гэдэг нь юу гэсэн үг вэ?",
+    "practiceEmojiPrompt": "‘{word}’ үгэнд тохирох эможиг сонгоно уу",
+    "practiceStepProgress": "{total}-аас {done}"
 }

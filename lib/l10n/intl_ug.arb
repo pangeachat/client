@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "سۆز ئۇچۇرىنى ئېلىش مەغلۇپ بولدى",
     "contentCreatedBy": "قۇرغۇچى",
     "coursePreview": "دېرس ئالدىن كۆرۈش",
-    "numActivities": "{count, plural, =1{1 پائالىيەت} other{{count} پائالىيەت}}"
+    "numActivities": "{count, plural, =1{1 پائالىيەت} other{{count} پائالىيەت}}",
+    "practiceTapABlank": "بوش ئورۇننى بېسىپ تولدۇرۇڭ",
+    "practiceListeningPrompt": "قايسىسى «{word}» دەيدۇ؟",
+    "practiceMeaningPrompt": "«{word}» نىڭ مەنىسى نېمە؟",
+    "practiceEmojiPrompt": "«{word}» ئۈچۈن بىر ئىموجى تاللاڭ",
+    "practiceStepProgress": "{total} دىن {done}"
 }

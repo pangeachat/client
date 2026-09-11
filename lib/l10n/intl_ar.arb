@@ -10216,5 +10216,10 @@
     "errorFetchingWordInfo": "فشل جلب معلومات الكلمة",
     "contentCreatedBy": "تم الإنشاء بواسطة",
     "coursePreview": "معاينة الدورة",
-    "numActivities": "{count, plural, =1{نشاط واحد} other{{count} أنشطة}}"
+    "numActivities": "{count, plural, =1{نشاط واحد} other{{count} أنشطة}}",
+    "practiceTapABlank": "اضغط على الفراغ لملئه",
+    "practiceListeningPrompt": "أيٌّ منها يقول '{word}'؟",
+    "practiceMeaningPrompt": "ماذا تعني '{word}'؟",
+    "practiceEmojiPrompt": "اختر رمزًا تعبيريًا لـ '{word}'",
+    "practiceStepProgress": "{done} من {total}"
 }

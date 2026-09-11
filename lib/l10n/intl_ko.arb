@@ -10103,5 +10103,10 @@
     "errorFetchingWordInfo": "단어 정보를 가져오지 못했습니다.",
     "contentCreatedBy": "제작자",
     "coursePreview": "코스 미리보기",
-    "numActivities": "{count, plural, =1{1개의 활동} other{{count}개의 활동}}"
+    "numActivities": "{count, plural, =1{1개의 활동} other{{count}개의 활동}}",
+    "practiceTapABlank": "빈칸을 탭하여 채우세요",
+    "practiceListeningPrompt": "‘{word}’라고 말하는 것은 어느 것인가요?",
+    "practiceMeaningPrompt": "‘{word}’는 무슨 뜻인가요?",
+    "practiceEmojiPrompt": "‘{word}’에 맞는 이모티콘을 선택하세요",
+    "practiceStepProgress": "{done}/{total}"
 }

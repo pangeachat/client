@@ -10542,5 +10542,10 @@
     "errorFetchingWordInfo": "Níor éirigh leis an eolas focal a fháil",
     "contentCreatedBy": "Cruthaithe ag",
     "coursePreview": "Réamhbhreathnú ar an gcúrsa",
-    "numActivities": "{count, plural, =1{1 gníomhaíocht} other{{count} gníomhaíochtaí}}"
+    "numActivities": "{count, plural, =1{1 gníomhaíocht} other{{count} gníomhaíochtaí}}",
+    "practiceTapABlank": "Tapáil bán chun é a líonadh",
+    "practiceListeningPrompt": "Cé acu a deir ‘{word}’?",
+    "practiceMeaningPrompt": "Cad a chiallaíonn ‘{word}’?",
+    "practiceEmojiPrompt": "Roghnaigh emoji do ‘{word}’",
+    "practiceStepProgress": "{done} de {total}"
 }

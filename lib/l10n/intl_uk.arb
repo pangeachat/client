@@ -9910,5 +9910,10 @@
     "errorFetchingWordInfo": "Не вдалося отримати інформацію про слово",
     "contentCreatedBy": "Створено",
     "coursePreview": "Попередній перегляд курсу",
-    "numActivities": "{count, plural, =1{1 активність} other{{count} активності}}"
+    "numActivities": "{count, plural, =1{1 активність} other{{count} активності}}",
+    "practiceTapABlank": "Натисніть на пропуск, щоб заповнити його",
+    "practiceListeningPrompt": "Що означає «{word}»?",
+    "practiceMeaningPrompt": "Що означає «{word}»?",
+    "practiceEmojiPrompt": "Виберіть емодзі для «{word}»",
+    "practiceStepProgress": "{done} з {total}"
 }

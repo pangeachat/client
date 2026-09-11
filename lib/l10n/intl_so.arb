@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "Ku guuldareystay in la helo macluumaadka ereyga",
     "contentCreatedBy": "Waxaa sameeyay",
     "coursePreview": "Hordhaca koorsada",
-    "numActivities": "{count, plural, =1{1 hawl} other{{count} hawlood}}"
+    "numActivities": "{count, plural, =1{1 hawl} other{{count} hawlood}}",
+    "practiceTapABlank": "Taabo meel bannaan si aad u buuxiso",
+    "practiceListeningPrompt": "Keebaa leh ‘{word}’?",
+    "practiceMeaningPrompt": "Maxay ka dhigan tahay ‘{word}’?",
+    "practiceEmojiPrompt": "Dooro emoji u dhigma ‘{word}’",
+    "practiceStepProgress": "{done} ka mid ah {total}"
 }

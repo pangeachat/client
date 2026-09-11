@@ -10824,5 +10824,10 @@
     "errorFetchingWordInfo": "אחזור פרטי המילה נכשל",
     "contentCreatedBy": "נוצר על ידי",
     "coursePreview": "תצוגה מקדימה של הקורס",
-    "numActivities": "{count, plural, =1{פעילות 1} other{{count} פעילויות}}"
+    "numActivities": "{count, plural, =1{פעילות 1} other{{count} פעילויות}}",
+    "practiceTapABlank": "הקש על רווח כדי למלא אותו",
+    "practiceListeningPrompt": "איזה מהם אומר '{word}'?",
+    "practiceMeaningPrompt": "מה פירוש '{word}'?",
+    "practiceEmojiPrompt": "בחר אימוג'י עבור '{word}'",
+    "practiceStepProgress": "{done} מתוך {total}"
 }

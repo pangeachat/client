@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "Բառի տեղեկությունները բեռնել չհաջողվեց",
     "contentCreatedBy": "Ստեղծվել է",
     "coursePreview": "Դասընթացի նախադիտում",
-    "numActivities": "{count, plural, =1{1 գործողություն} other{{count} գործողություններ}}"
+    "numActivities": "{count, plural, =1{1 գործողություն} other{{count} գործողություններ}}",
+    "practiceTapABlank": "Հպեք բաց թողնված բառին՝ այն լրացնելու համար",
+    "practiceListeningPrompt": "Ո՞րն է ասում «{word}»։",
+    "practiceMeaningPrompt": "Ի՞նչ է նշանակում «{word}» բառը։",
+    "practiceEmojiPrompt": "Ընտրեք էմոջի «{word}» բառի համար",
+    "practiceStepProgress": "{done}-ը՝ {total}-ից"
 }

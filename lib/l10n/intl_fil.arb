@@ -10770,5 +10770,10 @@
     "errorFetchingWordInfo": "Nabigong kunin ang impormasyon ng salita",
     "contentCreatedBy": "Ginawa ni",
     "coursePreview": "Preview ng kurso",
-    "numActivities": "{count, plural, =1{1 aktibidad} other{{count} aktibidad}}"
+    "numActivities": "{count, plural, =1{1 aktibidad} other{{count} aktibidad}}",
+    "practiceTapABlank": "I-tap ang patlang para punan",
+    "practiceListeningPrompt": "Alin ang nagsasabing ‘{word}’?",
+    "practiceMeaningPrompt": "Ano ang ibig sabihin ng ‘{word}’?",
+    "practiceEmojiPrompt": "Pumili ng emoji para sa ‘{word}’",
+    "practiceStepProgress": "{done} sa {total}"
 }

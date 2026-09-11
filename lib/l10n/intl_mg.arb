@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "Tsy nahomby ny fakana ny mombamomba ny teny",
     "contentCreatedBy": "Noforonin'i",
     "coursePreview": "Topi-maso amin'ny taranja",
-    "numActivities": "{count, plural, =1{Hetsika 1} other{Hetsika {count}}}"
+    "numActivities": "{count, plural, =1{Hetsika 1} other{Hetsika {count}}}",
+    "practiceTapABlank": "Tsindrio ny banga hamenoana azy",
+    "practiceListeningPrompt": "Iza no milaza hoe ‘{word}’?",
+    "practiceMeaningPrompt": "Inona no dikan'ny ‘{word}’?",
+    "practiceEmojiPrompt": "Mifidiana emoji ho an'ny ‘{word}’",
+    "practiceStepProgress": "{done} amin'ny {total}"
 }

@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "Mistókst að sækja orðaupplýsingar",
     "contentCreatedBy": "Búið til af",
     "coursePreview": "Forskoðun námskeiðs",
-    "numActivities": "{count, plural, =1{1 virkni} other{{count} virknir}}"
+    "numActivities": "{count, plural, =1{1 virkni} other{{count} virknir}}",
+    "practiceTapABlank": "Pikkaðu á eyðu til að fylla hana út",
+    "practiceListeningPrompt": "Hver segir „{word}“?",
+    "practiceMeaningPrompt": "Hvað þýðir „{word}“?",
+    "practiceEmojiPrompt": "Veldu emoji fyrir „{word}“",
+    "practiceStepProgress": "{done} af {total}"
 }

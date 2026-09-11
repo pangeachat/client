@@ -10542,5 +10542,10 @@
     "errorFetchingWordInfo": "ไม่สามารถดึงข้อมูลคำศัพท์ได้",
     "contentCreatedBy": "สร้างโดย",
     "coursePreview": "ดูตัวอย่างคอร์ส",
-    "numActivities": "{count, plural, =1{1 กิจกรรม} other{{count} กิจกรรม}}"
+    "numActivities": "{count, plural, =1{1 กิจกรรม} other{{count} กิจกรรม}}",
+    "practiceTapABlank": "แตะช่องว่างเพื่อเติมคำ",
+    "practiceListeningPrompt": "คำไหนอ่านว่า '{word}'?",
+    "practiceMeaningPrompt": "'{word}' หมายความว่าอะไร?",
+    "practiceEmojiPrompt": "เลือกอิโมจิสำหรับ '{word}'",
+    "practiceStepProgress": "{done} จาก {total}"
 }

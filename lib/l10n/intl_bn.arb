@@ -10538,5 +10538,10 @@
     "errorFetchingWordInfo": "শব্দের তথ্য আনতে ব্যর্থ হয়েছে",
     "contentCreatedBy": "তৈরি করেছেন",
     "coursePreview": "কোর্স প্রিভিউ",
-    "numActivities": "{count, plural, =1{১টি কার্যকলাপ} other{{count}টি কার্যকলাপ}}"
+    "numActivities": "{count, plural, =1{১টি কার্যকলাপ} other{{count}টি কার্যকলাপ}}",
+    "practiceTapABlank": "পূরণের জন্য একটি ফাঁকা জায়গায় ট্যাপ করুন",
+    "practiceListeningPrompt": "কোনটি ‘{word}’ বলে?",
+    "practiceMeaningPrompt": "‘{word}’ এর অর্থ কী?",
+    "practiceEmojiPrompt": "‘{word}’ এর জন্য একটি ইমোজি বেছে নিন",
+    "practiceStepProgress": "{total} এর মধ্যে {done}"
 }

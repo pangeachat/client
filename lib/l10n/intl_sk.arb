@@ -10855,5 +10855,10 @@
     "errorFetchingWordInfo": "Nepodarilo sa načítať informácie o slove",
     "contentCreatedBy": "Vytvoril",
     "coursePreview": "Ukážka kurzu",
-    "numActivities": "{count, plural, =1{1 aktivita} other{{count} aktivít}}"
+    "numActivities": "{count, plural, =1{1 aktivita} other{{count} aktivít}}",
+    "practiceTapABlank": "Ťuknutím vyplňte prázdne miesto",
+    "practiceListeningPrompt": "Ktoré hovorí „{word}“?",
+    "practiceMeaningPrompt": "Čo znamená „{word}“?",
+    "practiceEmojiPrompt": "Vyberte emoji pre „{word}“",
+    "practiceStepProgress": "{done} z {total}"
 }

@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "Gagal ngala inpormasi kecap",
     "contentCreatedBy": "Dijieun ku",
     "coursePreview": "Sawangan kursus",
-    "numActivities": "{count, plural, =1{1 kagiatan} other{{count} kagiatan}}"
+    "numActivities": "{count, plural, =1{1 kagiatan} other{{count} kagiatan}}",
+    "practiceTapABlank": "Toél nu kosong pikeun ngeusianana",
+    "practiceListeningPrompt": "Nu mana nu nyebutkeun ‘{word}’?",
+    "practiceMeaningPrompt": "Naon hartina ‘{word}’?",
+    "practiceEmojiPrompt": "Pilih hiji emoji pikeun ‘{word}’",
+    "practiceStepProgress": "{done} tina {total}"
 }

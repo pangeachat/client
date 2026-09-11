@@ -10642,5 +10642,10 @@
     "errorFetchingWordInfo": "Nu s-au putut prelua informațiile despre cuvânt",
     "contentCreatedBy": "Creat de",
     "coursePreview": "Previzualizare curs",
-    "numActivities": "{count, plural, =1{1 activitate} other{{count} activități}}"
+    "numActivities": "{count, plural, =1{1 activitate} other{{count} activități}}",
+    "practiceTapABlank": "Atingeți un spațiu gol pentru a-l completa",
+    "practiceListeningPrompt": "Care dintre ele spune „{word}”?",
+    "practiceMeaningPrompt": "Ce înseamnă „{word}”?",
+    "practiceEmojiPrompt": "Alegeți un emoji pentru „{word}”",
+    "practiceStepProgress": "{done} din {total}"
 }

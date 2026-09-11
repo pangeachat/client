@@ -4323,6 +4323,43 @@
     "reportGrammarIssueTooltip": "Report grammar information issue",
     "grammarFeedbackDialogTitle": "Grammar Information Feedback",
     "grammarFeedbackSubmittedDesc": "Thanks! The explanation has been updated based on your feedback.",
+    "practiceTapABlank": "Tap a blank to fill it",
+    "@practiceTapABlank": {},
+    "practiceListeningPrompt": "Which one says \u2018{word}\u2019?",
+    "@practiceListeningPrompt": {
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "practiceMeaningPrompt": "What does \u2018{word}\u2019 mean?",
+    "@practiceMeaningPrompt": {
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "practiceEmojiPrompt": "Pick an emoji for \u2018{word}\u2019",
+    "@practiceEmojiPrompt": {
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "practiceStepProgress": "{done} of {total}",
+    "@practiceStepProgress": {
+        "placeholders": {
+            "done": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
     "practiceFeedbackButtonTooltip": "Report a problem with this exercise",
     "practiceFeedbackDialogTitle": "Practice Exercise Feedback",
     "practiceFeedbackSelectPair": "Which pair looks wrong?",

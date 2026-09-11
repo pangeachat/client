@@ -10855,5 +10855,10 @@
     "errorFetchingWordInfo": "Pridobivanje informacij o besedi ni uspelo",
     "contentCreatedBy": "Ustvaril",
     "coursePreview": "Predogled tečaja",
-    "numActivities": "{count, plural, =1{1 dejavnost} other{{count} dejavnosti}}"
+    "numActivities": "{count, plural, =1{1 dejavnost} other{{count} dejavnosti}}",
+    "practiceTapABlank": "Tapnite prazno polje, da ga izpolnite",
+    "practiceListeningPrompt": "Kateri pravi »{word}«?",
+    "practiceMeaningPrompt": "Kaj pomeni »{word}«?",
+    "practiceEmojiPrompt": "Izberite emoji za »{word}«",
+    "practiceStepProgress": "{done} od {total}"
 }

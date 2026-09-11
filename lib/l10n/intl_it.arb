@@ -9983,5 +9983,10 @@
     "errorFetchingWordInfo": "Impossibile recuperare le informazioni sulla parola",
     "contentCreatedBy": "Creato da",
     "coursePreview": "Anteprima del corso",
-    "numActivities": "{count, plural, =1{1 attività} other{{count} attività}}"
+    "numActivities": "{count, plural, =1{1 attività} other{{count} attività}}",
+    "practiceTapABlank": "Tocca uno spazio vuoto per riempirlo",
+    "practiceListeningPrompt": "Quale dice '{word}'?",
+    "practiceMeaningPrompt": "Cosa significa '{word}'?",
+    "practiceEmojiPrompt": "Scegli un'emoji per '{word}'",
+    "practiceStepProgress": "{done} di {total}"
 }

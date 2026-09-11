@@ -10211,5 +10211,10 @@
     "errorFetchingWordInfo": "Kelime bilgisi alınamadı",
     "contentCreatedBy": "Oluşturan",
     "coursePreview": "Kurs önizlemesi",
-    "numActivities": "{count, plural, =1{1 aktivite} other{{count} aktivite}}"
+    "numActivities": "{count, plural, =1{1 aktivite} other{{count} aktivite}}",
+    "practiceTapABlank": "Doldurmak için boşluğa dokunun",
+    "practiceListeningPrompt": "Hangisi ‘{word}’ diyor?",
+    "practiceMeaningPrompt": "‘{word}’ ne anlama geliyor?",
+    "practiceEmojiPrompt": "‘{word}’ için bir emoji seçin",
+    "practiceStepProgress": "{total} üzerinden {done}"
 }

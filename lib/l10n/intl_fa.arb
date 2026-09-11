@@ -9998,5 +9998,10 @@
     "errorFetchingWordInfo": "دریافت اطلاعات کلمه با مشکل مواجه شد",
     "contentCreatedBy": "ایجاد شده توسط",
     "coursePreview": "پیش‌نمایش دوره",
-    "numActivities": "{count, plural, =1{۱ فعالیت} other{{count} فعالیت}}"
+    "numActivities": "{count, plural, =1{۱ فعالیت} other{{count} فعالیت}}",
+    "practiceTapABlank": "برای پر کردن، روی جای خالی ضربه بزنید",
+    "practiceListeningPrompt": "کدام یک می‌گوید «{word}»؟",
+    "practiceMeaningPrompt": "«{word}» به چه معناست؟",
+    "practiceEmojiPrompt": "یک ایموجی برای «{word}» انتخاب کنید",
+    "practiceStepProgress": "{done} از {total}"
 }

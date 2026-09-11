@@ -10346,5 +10346,10 @@
     "errorFetchingWordInfo": "Dohvaćanje informacija o riječi nije uspjelo",
     "contentCreatedBy": "Izradio",
     "coursePreview": "Pregled tečaja",
-    "numActivities": "{count, plural, =1{1 aktivnost} other{{count} aktivnosti}}"
+    "numActivities": "{count, plural, =1{1 aktivnost} other{{count} aktivnosti}}",
+    "practiceTapABlank": "Dodirnite prazninu da biste je ispunili",
+    "practiceListeningPrompt": "Koja kaže „{word}“?",
+    "practiceMeaningPrompt": "Što znači „{word}“?",
+    "practiceEmojiPrompt": "Odaberite emoji za „{word}“",
+    "practiceStepProgress": "{done} od {total}"
 }

@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "An kasa samun bayanan kalmar",
     "contentCreatedBy": "Wanda ya kirkira",
     "coursePreview": "Samfoti na darasi",
-    "numActivities": "{count, plural, =1{Aiki 1} other{Ayyuka {count}}}"
+    "numActivities": "{count, plural, =1{Aiki 1} other{Ayyuka {count}}}",
+    "practiceTapABlank": "Danna wani wuri mara komai don cikawa",
+    "practiceListeningPrompt": "Wanne ne ke cewa ‘{word}’?",
+    "practiceMeaningPrompt": "Menene ma'anar ‘{word}’?",
+    "practiceEmojiPrompt": "Zaɓi emoji don ‘{word}’",
+    "practiceStepProgress": "{done} na {total}"
 }

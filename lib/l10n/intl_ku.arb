@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "نەتوانرا زانیاریی وشە وەربگیرێت",
     "contentCreatedBy": "دروستکراوە لەلایەن",
     "coursePreview": "پێشەکیی خول",
-    "numActivities": "{count, plural, =1{1 چالاکی} other{{count} چالاکی}}"
+    "numActivities": "{count, plural, =1{1 چالاکی} other{{count} چالاکی}}",
+    "practiceTapABlank": "بۆ پڕکردنەوەی، دەست لە بۆشایییەک بدە",
+    "practiceListeningPrompt": "کامیان دەڵێت '‎{word}‎'؟",
+    "practiceMeaningPrompt": "وشەی '‎{word}‎' چی دەگەیەنێت؟",
+    "practiceEmojiPrompt": "ئیمۆجییەک بۆ '‎{word}‎' هەڵبژێرە",
+    "practiceStepProgress": "{done} لە {total}"
 }

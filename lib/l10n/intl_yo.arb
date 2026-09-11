@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "Kò lè gba ìsọfúnni ọ̀rọ̀",
     "contentCreatedBy": "Ẹlẹ́dàá",
     "coursePreview": "Aworan iṣaaju ti ikẹkọọ",
-    "numActivities": "{count, plural, =1{iṣẹ́ kan} other{{count} àwọn iṣẹ́}}"
+    "numActivities": "{count, plural, =1{iṣẹ́ kan} other{{count} àwọn iṣẹ́}}",
+    "practiceTapABlank": "Tẹ ibi òfo láti kún ún",
+    "practiceListeningPrompt": "Èwo ni ó sọ pé ‘{word}’?",
+    "practiceMeaningPrompt": "Kí ni ‘{word}’ túmọ̀ sí?",
+    "practiceEmojiPrompt": "Yan emoji kan fún ‘{word}’",
+    "practiceStepProgress": "{done} nínú {total}"
 }

@@ -10855,5 +10855,10 @@
     "errorFetchingWordInfo": "Malsukcesis preni vortinformon",
     "contentCreatedBy": "Kreita de",
     "coursePreview": "Antaŭrigardo de la kurso",
-    "numActivities": "{count, plural, =1{1 agado} other{{count} agadoj}}"
+    "numActivities": "{count, plural, =1{1 agado} other{{count} agadoj}}",
+    "practiceTapABlank": "Frapu malplenaĵon por plenigi ĝin",
+    "practiceListeningPrompt": "Kiu diras ‘{word}’?",
+    "practiceMeaningPrompt": "Kion signifas ‘{word}’?",
+    "practiceEmojiPrompt": "Elektu emoji-on por ‘{word}’",
+    "practiceStepProgress": "{done} el {total}"
 }

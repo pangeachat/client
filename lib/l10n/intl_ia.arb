@@ -10846,5 +10846,10 @@
     "errorFetchingWordInfo": "Falleva recercar information del parola",
     "contentCreatedBy": "Create per",
     "coursePreview": "Previsualisation del curso",
-    "numActivities": "{count, plural, =1{1 activitate} other{{count} activitates}}"
+    "numActivities": "{count, plural, =1{1 activitate} other{{count} activitates}}",
+    "practiceTapABlank": "Tocca un spatio vacue pro plenar lo",
+    "practiceListeningPrompt": "Qual dice ‘{word}’?",
+    "practiceMeaningPrompt": "Que significa ‘{word}’?",
+    "practiceEmojiPrompt": "Selige un emoji pro ‘{word}’",
+    "practiceStepProgress": "{done} de {total}"
 }

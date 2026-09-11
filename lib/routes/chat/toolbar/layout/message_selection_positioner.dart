@@ -17,7 +17,6 @@ import 'package:fluffychat/routes/chat/reaction_listener.dart';
 import 'package:fluffychat/routes/chat/toolbar/layout/over_message_overlay.dart';
 import 'package:fluffychat/routes/chat/toolbar/layout/practice_mode_transition_animation.dart';
 import 'package:fluffychat/routes/chat/toolbar/layout/reading_assistance_mode_enum.dart';
-import 'package:fluffychat/routes/chat/toolbar/message_practice/reading_assistance_input_bar.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_selection_overlay.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_toolbar_host.dart';
 import 'package:fluffychat/routes/chat/toolbar/word_card/word_card_switcher.dart';
@@ -416,16 +415,6 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                 PracticeModeTransitionAnimation(
                   targetId: "overlay_center_message_${widget.event.eventId}",
                   controller: this,
-                ),
-                Positioned(
-                  left: 0,
-                  right: 0,
-                  bottom: 20,
-                  child: ReadingAssistanceInputBar(
-                    widget.overlayController.practiceController,
-                    maxWidth: widget.overlayController.maxWidth,
-                    selectedToken: widget.overlayController.selectedToken,
-                  ),
                 ),
                 Positioned(
                   top: FluffyThemes.isColumnMode(context)

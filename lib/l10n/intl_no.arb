@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "Kunne ikke hente ordinformasjon",
     "contentCreatedBy": "Opprettet av",
     "coursePreview": "Forhåndsvisning av kurs",
-    "numActivities": "{count, plural, =1{1 aktivitet} other{{count} aktiviteter}}"
+    "numActivities": "{count, plural, =1{1 aktivitet} other{{count} aktiviteter}}",
+    "practiceTapABlank": "Trykk på et tomt felt for å fylle det",
+    "practiceListeningPrompt": "Hvilken sier «{word}»?",
+    "practiceMeaningPrompt": "Hva betyr «{word}»?",
+    "practiceEmojiPrompt": "Velg en emoji for «{word}»",
+    "practiceStepProgress": "{done} av {total}"
 }

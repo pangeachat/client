@@ -9914,5 +9914,10 @@
     "errorFetchingWordInfo": "So'z ma'lumotlarini olishda xatolik yuz berdi",
     "contentCreatedBy": "Yaratdi",
     "coursePreview": "Kursni ko'rib chiqish",
-    "numActivities": "{count, plural, =1{1 faoliyat} other{{count} faoliyat}}"
+    "numActivities": "{count, plural, =1{1 faoliyat} other{{count} faoliyat}}",
+    "practiceTapABlank": "Boʻsh joyni toʻldirish uchun bosing",
+    "practiceListeningPrompt": "Qaysi biri „{word}“ deydi?",
+    "practiceMeaningPrompt": "„{word}“ nimani anglatadi?",
+    "practiceEmojiPrompt": "„{word}“ uchun emojini tanlang",
+    "practiceStepProgress": "{done} / {total}"
 }

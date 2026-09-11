@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "စကားလုံးအချက်အလက်များကို ယူဆောင်ရာတွင် အမှားအယွင်းရှိခဲ့သည်",
     "contentCreatedBy": "ဖန်တီးသူ",
     "coursePreview": "သင်တန်းအစမ်းကြည့်ရန်",
-    "numActivities": "{count, plural, =1{လုပ်ဆောင်ချက် ၁ ခု} other{လုပ်ဆောင်ချက် {count} ခု}}"
+    "numActivities": "{count, plural, =1{လုပ်ဆောင်ချက် ၁ ခု} other{လုပ်ဆောင်ချက် {count} ခု}}",
+    "practiceTapABlank": "ဖြည့်ရန် အကွက်လွတ်ကို နှိပ်ပါ",
+    "practiceListeningPrompt": "ဘယ်တစ်ခုက ‘{word}’ လို့ ပြောတာလဲ။",
+    "practiceMeaningPrompt": "‘{word}’ က ဘာကို ဆိုလိုတာလဲ။",
+    "practiceEmojiPrompt": "‘{word}’ အတွက် အီမိုဂျီတစ်ခု ရွေးပါ",
+    "practiceStepProgress": "{total} ခုထဲက {done}"
 }

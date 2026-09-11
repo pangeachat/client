@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "Defuit verbi notitias petere",
     "contentCreatedBy": "Creatum ab",
     "coursePreview": "Praevisio cursus",
-    "numActivities": "{count, plural, =1{1 actio} other{{count} actiones}}"
+    "numActivities": "{count, plural, =1{1 actio} other{{count} actiones}}",
+    "practiceTapABlank": "Tange spatium vacuum ut impleas",
+    "practiceListeningPrompt": "Quod dicit ‘{word}’?",
+    "practiceMeaningPrompt": "Quid significat ‘{word}’?",
+    "practiceEmojiPrompt": "Elige emoji pro ‘{word}’",
+    "practiceStepProgress": "{done} de {total}"
 }

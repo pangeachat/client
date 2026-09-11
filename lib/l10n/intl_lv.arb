@@ -9910,5 +9910,10 @@
     "errorFetchingWordInfo": "Neizdevās ielādēt vārda informāciju",
     "contentCreatedBy": "Izveidoja",
     "coursePreview": "Kursa priekšskatījums",
-    "numActivities": "{count, plural, =1{1 aktivitāte} other{{count} aktivitātes}}"
+    "numActivities": "{count, plural, =1{1 aktivitāte} other{{count} aktivitātes}}",
+    "practiceTapABlank": "Pieskarieties tukšajai vietai, lai to aizpildītu",
+    "practiceListeningPrompt": "Kurš saka „{word}”?",
+    "practiceMeaningPrompt": "Ko nozīmē „{word}”?",
+    "practiceEmojiPrompt": "Izvēlieties emocijzīmi vārdam „{word}”",
+    "practiceStepProgress": "{done} no {total}"
 }

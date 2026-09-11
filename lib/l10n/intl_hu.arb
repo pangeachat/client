@@ -10013,5 +10013,10 @@
     "errorFetchingWordInfo": "A szóadatok lekérése sikertelen",
     "contentCreatedBy": "Létrehozta",
     "coursePreview": "Tanfolyam előnézete",
-    "numActivities": "{count, plural, =1{1 tevékenység} other{{count} tevékenység}}"
+    "numActivities": "{count, plural, =1{1 tevékenység} other{{count} tevékenység}}",
+    "practiceTapABlank": "Koppints egy üres helyre a kitöltéshez",
+    "practiceListeningPrompt": "Melyik mondja azt, hogy „{word}”?",
+    "practiceMeaningPrompt": "Mit jelent az, hogy „{word}”?",
+    "practiceEmojiPrompt": "Válassz egy emojit a „{word}” szóhoz",
+    "practiceStepProgress": "{done}/{total}"
 }

@@ -7202,5 +7202,10 @@
     "errorFetchingWordInfo": "Không thể tìm nạp thông tin từ",
     "contentCreatedBy": "Được tạo bởi",
     "coursePreview": "Xem trước khóa học",
-    "numActivities": "{count, plural, =1{1 hoạt động} other{{count} hoạt động}}"
+    "numActivities": "{count, plural, =1{1 hoạt động} other{{count} hoạt động}}",
+    "practiceTapABlank": "Chạm vào chỗ trống để điền",
+    "practiceListeningPrompt": "Cái nào nói ‘{word}’?",
+    "practiceMeaningPrompt": "‘{word}’ nghĩa là gì?",
+    "practiceEmojiPrompt": "Chọn một biểu tượng cảm xúc cho ‘{word}’",
+    "practiceStepProgress": "{done} trên {total}"
 }

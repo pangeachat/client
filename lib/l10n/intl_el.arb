@@ -10785,5 +10785,10 @@
     "errorFetchingWordInfo": "Αποτυχία ανάκτησης πληροφοριών λέξης",
     "contentCreatedBy": "Δημιουργήθηκε από",
     "coursePreview": "Προεπισκόπηση μαθήματος",
-    "numActivities": "{count, plural, =1{1 δραστηριότητα} other{{count} δραστηριότητες}}"
+    "numActivities": "{count, plural, =1{1 δραστηριότητα} other{{count} δραστηριότητες}}",
+    "practiceTapABlank": "Πατήστε ένα κενό για να το συμπληρώσετε",
+    "practiceListeningPrompt": "Ποιο λέει «{word}»;",
+    "practiceMeaningPrompt": "Τι σημαίνει «{word}»;",
+    "practiceEmojiPrompt": "Διαλέξτε ένα emoji για το «{word}»",
+    "practiceStepProgress": "{done} από {total}"
 }

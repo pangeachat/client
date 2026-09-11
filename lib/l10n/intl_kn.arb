@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "ಪದದ ಮಾಹಿತಿಯನ್ನು ಪಡೆಯಲು ವಿಫಲವಾಗಿದೆ",
     "contentCreatedBy": "ರಚಿಸಿದವರು",
     "coursePreview": "ಕೋರ್ಸ್ ಪೂರ್ವವೀಕ್ಷಣೆ",
-    "numActivities": "{count, plural, =1{1 ಚಟುವಟಿಕೆ} other{{count} ಚಟುವಟಿಕೆಗಳು}}"
+    "numActivities": "{count, plural, =1{1 ಚಟುವಟಿಕೆ} other{{count} ಚಟುವಟಿಕೆಗಳು}}",
+    "practiceTapABlank": "ಭರ್ತಿ ಮಾಡಲು ಖಾಲಿ ಜಾಗವನ್ನು ಟ್ಯಾಪ್ ಮಾಡಿ",
+    "practiceListeningPrompt": "‘{word}’ ಎಂದು ಯಾವುದು ಹೇಳುತ್ತದೆ?",
+    "practiceMeaningPrompt": "‘{word}’ ಎಂದರೆ ಏನು?",
+    "practiceEmojiPrompt": "‘{word}’ ಗಾಗಿ ಎಮೋಜಿಯನ್ನು ಆರಿಸಿ",
+    "practiceStepProgress": "{total} ರಲ್ಲಿ {done}"
 }

@@ -9947,5 +9947,10 @@
     "errorFetchingWordInfo": "Sanan tietojen nouto epäonnistui",
     "contentCreatedBy": "Luonut",
     "coursePreview": "Kurssin esikatselu",
-    "numActivities": "{count, plural, =1{1 aktiviteetti} other{{count} aktiviteettia}}"
+    "numActivities": "{count, plural, =1{1 aktiviteetti} other{{count} aktiviteettia}}",
+    "practiceTapABlank": "Täytä tyhjä kohta napauttamalla",
+    "practiceListeningPrompt": "Kumpi sanoo ”{word}”?",
+    "practiceMeaningPrompt": "Mitä ”{word}” tarkoittaa?",
+    "practiceEmojiPrompt": "Valitse emoji sanalle ”{word}”",
+    "practiceStepProgress": "{done}/{total}"
 }

@@ -9921,5 +9921,10 @@
     "errorFetchingWordInfo": "Theip ar fhaisnéis focal a fháil",
     "contentCreatedBy": "Cruthaithe ag",
     "coursePreview": "Réamhamharc ar an gcúrsa",
-    "numActivities": "{count, plural, =1{1 ghníomhaíocht} other{{count} ghníomhaíocht}}"
+    "numActivities": "{count, plural, =1{1 ghníomhaíocht} other{{count} ghníomhaíocht}}",
+    "practiceTapABlank": "Beartaigh ar spás bán chun é a líonadh",
+    "practiceListeningPrompt": "Cé acu a deir ‘{word}’?",
+    "practiceMeaningPrompt": "Cad a chiallaíonn ‘{word}’?",
+    "practiceEmojiPrompt": "Roghnaigh emoji do ‘{word}’",
+    "practiceStepProgress": "{done} as {total}"
 }

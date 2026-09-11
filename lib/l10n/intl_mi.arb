@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "I rahua te tiki i ngā mōhiohio kupu",
     "contentCreatedBy": "Nā",
     "coursePreview": "Arokite kōhi",
-    "numActivities": "{count, plural, =1{1 mahi} other{{count} mahi}}"
+    "numActivities": "{count, plural, =1{1 mahi} other{{count} mahi}}",
+    "practiceTapABlank": "Pāwhiritia tētahi wāhi wātea hei whakakī",
+    "practiceListeningPrompt": "Ko tēhea te kī ‘{word}’?",
+    "practiceMeaningPrompt": "He aha te tikanga o ‘{word}’?",
+    "practiceEmojiPrompt": "Kōwhiria he emoji mō ‘{word}’",
+    "practiceStepProgress": "Kua oti {done} o te {total}"
 }

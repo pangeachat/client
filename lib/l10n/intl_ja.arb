@@ -10679,5 +10679,10 @@
     "errorFetchingWordInfo": "単語情報の取得に失敗しました",
     "contentCreatedBy": "作成者",
     "coursePreview": "コースプレビュー",
-    "numActivities": "{count, plural, =1{1件のアクティビティ} other{{count}件のアクティビティ}}"
+    "numActivities": "{count, plural, =1{1件のアクティビティ} other{{count}件のアクティビティ}}",
+    "practiceTapABlank": "空欄をタップして埋めましょう",
+    "practiceListeningPrompt": "「{word}」と言っているのはどれ？",
+    "practiceMeaningPrompt": "「{word}」の意味は？",
+    "practiceEmojiPrompt": "「{word}」に合う絵文字を選んでください",
+    "practiceStepProgress": "{done}/{total}"
 }

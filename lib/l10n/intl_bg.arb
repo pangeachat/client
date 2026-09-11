@@ -2314,5 +2314,10 @@
     "errorFetchingWordInfo": "Неуспешно извличане на информация за думата",
     "contentCreatedBy": "Създадено от",
     "coursePreview": "Преглед на курса",
-    "numActivities": "{count, plural, =1{1 активност} other{{count} активности}}"
+    "numActivities": "{count, plural, =1{1 активност} other{{count} активности}}",
+    "practiceTapABlank": "Докоснете празно място, за да го попълните",
+    "practiceListeningPrompt": "Кой казва „{word}“?",
+    "practiceMeaningPrompt": "Какво означава „{word}“?",
+    "practiceEmojiPrompt": "Изберете емоджи за „{word}“",
+    "practiceStepProgress": "{done} от {total}"
 }
