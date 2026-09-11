@@ -11,6 +11,7 @@ import 'package:matrix/matrix.dart';
 import 'package:receive_sharing_intent/receive_sharing_intent.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_preview_client_extension.dart';
 import 'package:fluffychat/features/analytics_access/access_notice_extension.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_access_extension.dart';
@@ -61,7 +62,7 @@ enum PopupMenuAction {
   archive,
 }
 
-enum ActiveFilter { allChats, messages, groups, unread, spaces }
+enum ActiveFilter { allChats, messages, groups, activities, unread, spaces }
 
 extension LocalizedActiveFilter on ActiveFilter {
   String toLocalizedString(BuildContext context) {
@@ -69,11 +70,13 @@ extension LocalizedActiveFilter on ActiveFilter {
       case ActiveFilter.allChats:
         return L10n.of(context).all;
       case ActiveFilter.messages:
-        return L10n.of(context).messages;
+        return L10n.of(context).dms;
       case ActiveFilter.unread:
         return L10n.of(context).unread;
       case ActiveFilter.groups:
         return L10n.of(context).groups;
+      case ActiveFilter.activities:
+        return L10n.of(context).activities;
       case ActiveFilter.spaces:
         // #Pangea
         // return L10n.of(context).spaces;
@@ -294,8 +297,14 @@ class ChatListController extends State<ChatList>
         // #Pangea
         // return (room) => !room.isSpace && !room.isDirectChat;
         return (room) =>
-            !room.isSpace && !room.isDirectChat && !room.isHiddenRoom;
+            !room.isSpace &&
+            !room.isDirectChat &&
+            !room.isHiddenRoom &&
+            !room.isActivitySession;
       // Pangea#
+      case ActiveFilter.activities:
+        return (room) =>
+            !room.isSpace && !room.isHiddenRoom && room.isActivitySession;
       case ActiveFilter.unread:
         // #Pangea
         // return (room) => room.isUnreadOrInvited;
