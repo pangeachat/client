@@ -169,14 +169,14 @@ class PangeaInvitationSelectionView extends StatelessWidget {
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor:
                                           theme.colorScheme.primaryContainer,
+                                      foregroundColor:
+                                          theme.colorScheme.onPrimaryContainer,
                                       padding: const EdgeInsets.symmetric(
                                         horizontal: 20,
                                       ),
                                     ),
-                                    icon: Icon(
+                                    icon: const Icon(
                                       Icons.check_circle_outline,
-                                      color:
-                                          theme.colorScheme.onPrimaryContainer,
                                     ),
                                     label: Text(L10n.of(context).acceptAll),
                                     // Accepting a knock issues an

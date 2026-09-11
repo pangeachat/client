@@ -106,10 +106,8 @@ class ActivityDropdownContent extends StatelessWidget {
             backgroundColor: hasCompletedOwnGoals
                 ? goldColor
                 : theme.colorScheme.primaryContainer,
-            foregroundColor: theme.brightness == Brightness.light
-                ? null
-                : hasCompletedOwnGoals
-                ? theme.colorScheme.surface
+            foregroundColor: hasCompletedOwnGoals
+                ? AppConfig.onGoldByTheme(context)
                 : theme.colorScheme.onPrimaryContainer,
           ),
           child: Row(
