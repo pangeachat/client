@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -49,7 +49,7 @@ class ActivityDropdownContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final isColumnMode = FluffyThemes.isColumnMode(context);
-    final goldColor = AppConfig.goldByTheme(context);
+    final goldColor = theme.pangea.goldFixedDim;
 
     // The top row is the only toggle target. Padding is applied by the InkWell
     // wrapper below so its hover highlight matches the collapsed header.
@@ -107,7 +107,7 @@ class ActivityDropdownContent extends StatelessWidget {
                 ? goldColor
                 : theme.colorScheme.primaryContainer,
             foregroundColor: hasCompletedOwnGoals
-                ? AppConfig.onGoldByTheme(context)
+                ? theme.pangea.onGoldFixed
                 : theme.colorScheme.onPrimaryContainer,
           ),
           child: Row(

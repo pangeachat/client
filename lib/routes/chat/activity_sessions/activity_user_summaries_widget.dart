@@ -4,7 +4,7 @@ import 'package:collection/collection.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
@@ -371,10 +371,7 @@ class _ParticipantSummaryCard extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(12.0),
       decoration: ShapeDecoration(
-        color: Color.alphaBlend(
-          Theme.of(context).colorScheme.surface.withAlpha(70),
-          AppConfig.gold,
-        ),
+        color: Theme.of(context).pangea.goldFixedDim,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       ),
       child: Column(
@@ -394,7 +391,10 @@ class _ParticipantSummaryCard extends StatelessWidget {
               Flexible(
                 child: Text(
                   "${role?.role ?? L10n.of(context).participant} | $displayName",
-                  style: const TextStyle(fontSize: 14.0),
+                  style: TextStyle(
+                    fontSize: 14.0,
+                    color: Theme.of(context).pangea.onGoldFixed,
+                  ),
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
@@ -402,7 +402,10 @@ class _ParticipantSummaryCard extends StatelessWidget {
           ),
           Text(
             participant.displayFeedback(displayName),
-            style: const TextStyle(fontSize: 14.0),
+            style: TextStyle(
+              fontSize: 14.0,
+              color: Theme.of(context).pangea.onGoldFixed,
+            ),
           ),
           Center(
             child: Wrap(
@@ -412,7 +415,10 @@ class _ParticipantSummaryCard extends StatelessWidget {
               children: [
                 Text(
                   participant.cefrLevel,
-                  style: const TextStyle(fontSize: 14.0),
+                  style: TextStyle(
+                    fontSize: 14.0,
+                    color: Theme.of(context).pangea.onGoldFixed,
+                  ),
                 ),
                 if (superlatives?['vocab']?.contains(
                       participant.participantId,
@@ -430,7 +436,10 @@ class _ParticipantSummaryCard extends StatelessWidget {
                 if (participant.superlatives.isNotEmpty)
                   Text(
                     participant.superlatives.first,
-                    style: const TextStyle(fontSize: 14.0),
+                    style: TextStyle(
+                      fontSize: 14.0,
+                      color: Theme.of(context).pangea.onGoldFixed,
+                    ),
                   ),
               ],
             ),
@@ -448,12 +457,14 @@ class SuperlativeTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Only ever drawn on the gold summary card.
+    final ink = Theme.of(context).pangea.onGoldFixed;
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Icon(icon, size: 14, color: Theme.of(context).colorScheme.onSurface),
+        Icon(icon, size: 14, color: ink),
         const SizedBox(width: 2),
-        const Text("1st", style: TextStyle(fontSize: 14.0)),
+        Text("1st", style: TextStyle(fontSize: 14.0, color: ink)),
       ],
     );
   }

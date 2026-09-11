@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:material_symbols_icons/symbols.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_type_enum.dart';
@@ -47,12 +47,12 @@ enum MessagePracticeMode {
   /// The same pair as the reading-assistance mode buttons beside these, so
   /// the round toolbar buttons read as one set on the dark scrim too.
   Color iconButtonColor(BuildContext context, bool done) => done
-      ? AppConfig.goldByTheme(context)
+      ? Theme.of(context).pangea.goldFixedDim
       : Theme.of(context).colorScheme.primaryContainer;
 
   /// The ink that reads on [iconButtonColor].
   Color iconButtonInk(BuildContext context, bool done) => done
-      ? AppConfig.onGoldByTheme(context)
+      ? Theme.of(context).pangea.onGoldFixed
       : Theme.of(context).colorScheme.onPrimaryContainer;
 
   PracticeExerciseTypeEnum? get associatedActivityType {
