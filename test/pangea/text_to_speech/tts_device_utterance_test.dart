@@ -225,4 +225,96 @@ void main() {
       expect(await u.outcome, TtsDeviceOutcome.failed);
     });
   });
+
+  /// `playedToEnd` — the stricter fact word-level listening exposure needs
+  /// (#8493). `played` is not it: an utterance cut off still counts as
+  /// listening minutes, but did not expose the learner to the words it never
+  /// reached.
+  ///
+  /// The signal ORDER is the whole problem. On the web `completionHandler`
+  /// arrives first and carries the news. On native it never does: Android
+  /// resolves the pending `speak` result from inside `onDone` and posts
+  /// `speak.onComplete` to the same `Handler` immediately after, and iOS does
+  /// the same through one channel in `didFinish` — so the future always
+  /// settles this utterance a turn before the callback runs, and the resolved
+  /// value is the only completion evidence that arrives in time.
+  group('playedToEnd', () {
+    test('web order: completion handler, then the speak future', () async {
+      final u = fresh()
+        ..onEngineStart()
+        ..onEngineComplete()
+        ..onSpeakReturned();
+      expect(await u.outcome, TtsDeviceOutcome.played);
+      expect(u.playedToEnd, isTrue);
+    });
+
+    test(
+      'native order: speak resolves 1, then the completion handler',
+      () async {
+        final u = fresh()
+          ..onEngineStart()
+          ..onSpeakReturned(engineCompleted: true)
+          ..onEngineComplete();
+        expect(await u.outcome, TtsDeviceOutcome.played);
+        expect(u.playedToEnd, isTrue);
+      },
+    );
+
+    test(
+      'a completion handler arriving after the settle cannot repair it',
+      () async {
+        // The regression this guards: on native the callback ALWAYS lands here,
+        // so a `speak` resolution that drops the engine's verdict means exposure
+        // never mints on Android or iOS while the audio plays perfectly.
+        final u = fresh()
+          ..onEngineStart()
+          ..onSpeakReturned()
+          ..onEngineComplete();
+        expect(await u.outcome, TtsDeviceOutcome.played);
+        expect(u.playedToEnd, isFalse);
+      },
+    );
+
+    test('cut off by the next tap: heard, but not to its end', () async {
+      final u = fresh()
+        ..onEngineStart()
+        ..requestStop()
+        ..onEngineCancel();
+      expect(await u.outcome, TtsDeviceOutcome.played);
+      expect(u.playedToEnd, isFalse);
+    });
+
+    test(
+      'interrupted from outside the app: heard, but not to its end',
+      () async {
+        // No stop of ours, so absence-of-stop would have called this complete.
+        final u = fresh()
+          ..onEngineStart()
+          ..onEngineError('interrupted');
+        expect(await u.outcome, TtsDeviceOutcome.played);
+        expect(u.playedToEnd, isFalse);
+      },
+    );
+
+    test('a stop disqualifies it even if speak still resolves 1', () async {
+      final u = fresh()
+        ..onEngineStart()
+        ..requestStop()
+        ..onSpeakReturned(engineCompleted: true);
+      expect(u.playedToEnd, isFalse);
+    });
+
+    test('a completion without a start is not a playback', () async {
+      // The previous utterance's end landing on this one, which never spoke.
+      final u = fresh()..onSpeakReturned(engineCompleted: true);
+      expect(await u.outcome, TtsDeviceOutcome.failed);
+      expect(u.playedToEnd, isFalse);
+    });
+
+    test('a watchdog failure is never complete', () async {
+      final u = TtsDeviceUtterance(startTimeout: Duration.zero)..arm();
+      expect(await u.outcome, TtsDeviceOutcome.failed);
+      expect(u.playedToEnd, isFalse);
+    });
+  });
 }
