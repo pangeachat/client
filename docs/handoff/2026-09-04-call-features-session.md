@@ -1769,3 +1769,26 @@ until the design is Codex-green.
   solo run once agent 4 is done (running it now would add a 2nd concurrent flutter proc = the flake trigger).
 - Agent 4 (ad2963f743ff34ac6) building the standalone loading state machine; anti-stall hardened
   (wait-loop on the codex pid). On return: cold-gate, then the active_call quiet confirm, then agent 5.
+
+## 2026-09-10 (cont) — agent 4 (loading) committed c1dec52ede; cold-gate found a REAL bug + over-engineering
+- Agent 4 (ad2963f743ff34ac6) committed c1dec52ede: CallRecordingsLoadController (896 lines = ~236 code +
+  ~660 comment; 38 tests). Self-Codex 10 rounds -> CORRECT (foreground held, NO stall -- the pid-wait
+  anti-stall worked). Interface: resolveCallRecordingsLoadState(...) + a controller w/ ValueListenable<state>
+  + update/retry/dispose.
+- My cold gate (b5ea1oa5k) -- the scrutiny paid off: RESOLVER CORRECT, but ISSUES-FOUND (softening no):
+  (1) REAL BUG the 10 rounds missed: grace uses WALL-CLOCK now(), so a backward clock jump EXTENDS the
+  total wait (round-8's clamp bounds each timer re-arm, not the overall grace) -> fix with a MONOTONIC
+  Stopwatch. (2) WRAPPER: REMOVABLE -- the bespoke _ReadOnlyValueListenable downcast-protection wrapper
+  (~80 code lines + the rounds-5-9 self-inflicted listener-contract bugs) is gold-plating; the gate
+  confirmed direct exposure `get state => _stateNotifier` loses no real safety + matches the sibling. Its
+  "listeners run after mid-notify dispose" note is standard ValueNotifier behaviour once the wrapper is gone.
+- FIXER (a84d83c0dad8c2cac) dispatched: monotonic grace (injectable Stopwatch) + drop the wrapper (expose
+  the ValueNotifier directly, like CallPlaybackController) + drop the wrapper's contract tests. On return I
+  cold-gate. LESSON: a 10-round self-gate can still miss a real bug (the wall-clock grace) AND perfect the
+  wrong thing (a wrapper that shouldn't exist) -- the independent cold gate + a design-necessity question
+  ("is this wrapper needed?") caught both. Over-engineering is a review target, not just correctness.
+- FLAKE CLOSED: active_call_test solo run = 180 green, teardown clean -> the post-step-3 bucket -2 was
+  confirmed the concurrent-load tearDownAll flake, NOT a regression.
+- CARRY: agent 4 flagged CallPlaybackController (agent 2) extends ChangeNotifier vestigially (exposes
+  ValueNotifiers, may never call its own notifyListeners) -> a minor consistency/cleanliness item; check +
+  fix during the whole-branch (assembly) review if it never uses the inherited notifier.
