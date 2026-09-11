@@ -2039,3 +2039,29 @@ until the design is Codex-green.
   (full calls bucket + whole-branch cold-Codex + ChangeNotifier cleanup) -> owner real-call test -> PR2 on go.
   If it finds a NEW substantive same-class race -> ONE targeted fix, re-verify, then STOP gating regardless
   (diminishing returns; human real-call test validates UI races). No open-ended round 5.
+
+## 2026-09-11 (cont) — HARDENING COMPLETE (b36ebe346c) + ChangeNotifier cleanup (1aa1555227); full calls bucket running
+- Final gate J on effb4df5f3 returned ISSUES-FOUND but it was a FALSE positive from MY discontinuous sed
+  extract (stale post-edit line numbers truncated guard 2b + guard 3); the gate itself said "No concrete
+  regression... incomplete review evidence, not a demonstrated defect". Re-gated with complete contiguous
+  methods (J2): guards 1 (refresh-throw) + 3 (replay row-capture) CERTIFIED CORRECT; guard 2 had ONE residual
+  edge-of-an-edge (a THROWING seek during a same-id supersession skips the detach) -- unreachable in v1 (only
+  the guarded _startMergedPlayer makes a merged-id player) and not a regression.
+- Per my STOP RULE, closed that last uniformity edge trivially (wrap the seek: on throw, if superseded,
+  detach then rethrow -- mirrors the two already-certified explicit-abort detaches) and STOPPED gating
+  transcript_view. Committed all 4 guards as b36ebe346c (transcript_view only; 109 tests green; format/
+  import-sort/analyze clean). Did NOT re-gate a 6-line closure that mirrors certified code = the churn to avoid.
+  5 gate rounds total on this integration; findings strictly decreased in severity/reachability to
+  theoretical/unreachable-in-v1 -> the concurrency surface is thoroughly hardened (predicate after every
+  await at all sites, uniform observation-detach on every supersession exit, trailing-edge coalescer,
+  generation token, error handlers on every fired player future).
+- ChangeNotifier item RESOLVED: re-checked -- the test's super.addListener/hasListeners are on
+  _CountingOwnership (a ValueNotifier double for the OWNERSHIP notifier), NOT on the controller, so the
+  controller's `extends ChangeNotifier` is genuinely vestigial. Removed it + @override + super.dispose()
+  (foundation import stays for ValueNotifier); 22 controller tests green. Committed 1aa1555227.
+- NOW: full calls bucket (test/pangea/calls/) running as the assembly regression (alone; an active_call
+  tearDownAll RED would be the known env flake -- my changes never touched active_call). On green: whole-branch
+  is component-cold-gated (builds 1-5 + shared audio all gated); report to owner for REAL-CALL testing (the
+  validator for the unreachable-in-v1 UI-race edges + the per-device EOF interaction) -> PR2 on explicit go
+  (rebase on main after #8888/#8797) -> Gabby runs the l10n backfill (2 deferred en-only keys: callTranscriptSeekTo,
+  callTranscriptPreparingRecording/NoRecording).
