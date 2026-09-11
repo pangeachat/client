@@ -55,35 +55,29 @@ enum L2SupportEnum {
     }
   }
 
+  /// One hue, four steps: grey for no support, then a lavender that deepens
+  /// with the tier, so a fully supported language is the emphasised one.
+  /// Each step is a fill with its own ink.
   Badge toBadge(BuildContext context) {
-    final theme = Theme.of(context);
-    Color color;
-    String label;
-
-    switch (this) {
-      case L2SupportEnum.na:
-        color = theme.colorScheme.onSurface.withAlpha(100); // Muted grey
-        label = toLocalizedString(context);
-        break;
-      case L2SupportEnum.alpha:
-        color = theme.colorScheme.primary.withAlpha(100); // Subtle primary
-        label = toLocalizedString(context);
-        break;
-      case L2SupportEnum.beta:
-        color = theme.colorScheme.secondary.withAlpha(100); // Subtle secondary
-        label = toLocalizedString(context);
-        break;
-      case L2SupportEnum.full:
-        color = theme.colorScheme.tertiary.withAlpha(100); // Subtle tertiary
-        label = toLocalizedString(context);
-        break;
-    }
+    final scheme = Theme.of(context).colorScheme;
+    final color = switch (this) {
+      L2SupportEnum.na => scheme.surfaceContainerHighest,
+      L2SupportEnum.alpha => scheme.secondaryContainer,
+      L2SupportEnum.beta => scheme.primaryFixedDim,
+      L2SupportEnum.full => scheme.primaryContainer,
+    };
+    final ink = switch (this) {
+      L2SupportEnum.na => scheme.onSurfaceVariant,
+      L2SupportEnum.alpha => scheme.onSecondaryContainer,
+      L2SupportEnum.beta => scheme.onPrimaryFixedVariant,
+      L2SupportEnum.full => scheme.onPrimaryContainer,
+    };
 
     return Badge(
       label: Text(
-        label,
-        style: theme.textTheme.bodySmall?.copyWith(
-          color: theme.colorScheme.onSurface.withAlpha(200), // Dimmed text
+        toLocalizedString(context),
+        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+          color: ink,
           fontWeight: FontWeight.w500,
         ),
       ),
