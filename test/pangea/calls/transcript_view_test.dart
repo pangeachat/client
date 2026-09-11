@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -10,9 +11,11 @@ import 'package:matrix/matrix.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/shimmer_box.dart';
 import 'package:fluffychat/routes/chat/audio_player.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_merged_event.dart';
+import 'package:fluffychat/routes/chat/calls/call_recordings_load.dart';
 import 'package:fluffychat/routes/chat/calls/call_timeline_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_event.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
@@ -1854,8 +1857,11 @@ void main() {
     Future<void> pumpWithRecordings(
       WidgetTester tester,
       Room testRoom,
-      RelationsFetcher fetcher,
-    ) async {
+      RelationsFetcher fetcher, {
+      // Injected only by the load-state tests below, which drive the "Full
+      // call" slot's grace clock deterministically rather than waiting 30s.
+      CallRecordingsLoadController? loadController,
+    }) async {
       await tester.pumpWidget(
         _TestMatrix(
           clients: [client],
@@ -1886,6 +1892,7 @@ void main() {
               room: testRoom,
               callKey: _callKey,
               fetcher: fetcher,
+              recordingsLoadController: loadController,
             ),
           ),
         ),
@@ -1903,6 +1910,21 @@ void main() {
     /// [AudioPlayerWidget]'s own fields (`players.map((p) => p.senderId)`).
     List<CallTurn> renderedTurns(WidgetTester tester) =>
         tester.widget<TurnTimeline>(find.byType(TurnTimeline)).turns;
+
+    /// The per-device recording rows are collapsed by default behind the
+    /// Full-call bar's chevron (spec section 2/D3: "Full call is the hero"),
+    /// so a test that asserts on those rows opens them first.
+    Future<void> expandDeviceRows(WidgetTester tester) async {
+      await tester.tap(find.byIcon(Icons.expand_more));
+      await tester.pumpAndSettle();
+    }
+
+    /// One [AudioPlayerWidget] for the MERGED recording specifically -- the
+    /// pinned bar's player, keyed by the merged event's own id -- told apart
+    /// from the per-device rows' players.
+    Finder mergedPlayer() => find.byWidgetPredicate(
+      (w) => w is AudioPlayerWidget && w.eventId == r'$merged',
+    );
 
     testWidgets('N recordings render N players, each labelled by its speaker', (
       tester,
@@ -1923,6 +1945,11 @@ void main() {
           audioEvent(_peer),
         ]),
       );
+
+      // The per-device rows are collapsed behind the Full-call bar's chevron
+      // by default; open them to assert on the players. There is no merged
+      // recording in this fixture, so the bar itself holds no player.
+      await expandDeviceRows(tester);
 
       final players = tester
           .widgetList<AudioPlayerWidget>(find.byType(AudioPlayerWidget))
@@ -1999,25 +2026,34 @@ void main() {
         ]),
       );
 
-      // Three players: the two halves plus the one merged row.
+      // The merged recording is the hero: its player sits in the pinned bar
+      // (keyed by the merged event's own id), and the per-device halves are
+      // collapsed behind the bar's chevron until the reader opens them.
+      expect(
+        mergedPlayer(),
+        findsOneWidget,
+        reason: 'the merged row is the pinned bar, keyed by its own id',
+      );
+      expect(find.text('Full call'), findsOneWidget);
+      expect(
+        find.text('Recordings'),
+        findsNothing,
+        reason: 'the per-device rows are collapsed by default',
+      );
+
+      await expandDeviceRows(tester);
+
+      // Now the two halves show, alongside the merged bar: three players.
       final players = tester
           .widgetList<AudioPlayerWidget>(find.byType(AudioPlayerWidget))
           .toList();
       expect(players, hasLength(3));
-      expect(
-        players.where((p) => p.eventId == r'$merged').toList(),
-        hasLength(1),
-        reason: 'the merged row is keyed by the merged event\'s own id',
-      );
-
-      // The primary heading is present, and it sits ABOVE the halves' heading.
-      expect(find.text('Full call'), findsOneWidget);
       expect(find.text('Recordings'), findsOneWidget);
+      // The pinned Full-call bar sits ABOVE the revealed per-device rows.
       expect(
         tester.getTopLeft(find.text('Full call')).dy,
         lessThan(tester.getTopLeft(find.text('Recordings')).dy),
-        reason:
-            'the merged full-call recording renders first, above the halves',
+        reason: 'the merged full-call recording is first, above the halves',
       );
     });
 
@@ -2120,13 +2156,29 @@ void main() {
         ]),
       );
 
+      // More than two halves is a mid-call device switch: the merged row is
+      // suppressed, so the bar never shows the merged PLAYER (the "Full call"
+      // label is the slot's own, always present) -- even though a stale
+      // two-half merge is in the room.
       expect(
-        find.text('Full call'),
+        mergedPlayer(),
         findsNothing,
         reason: 'more than two halves suppresses the merged row',
       );
-      // The per-device halves are untouched: three players, none of them the
-      // merged one, under the ordinary "Recordings" heading.
+      // And the bar shows the "no recording" note IMMEDIATELY, not a
+      // "Preparing" shimmer that waits out the full grace for a merge that can
+      // never arrive (the v1 suppression is definitive). Mutation: feed the
+      // machine the raw half count for a >2-half call -> pendingMerge shimmer
+      // -> this fails.
+      expect(find.text('No recording of the full call.'), findsOneWidget);
+      expect(
+        find.byType(ShimmerBox),
+        findsNothing,
+        reason: 'a suppressed merge is a definite no, not a pending one',
+      );
+      // The per-device halves are untouched: three players once revealed, none
+      // of them the merged one, under the ordinary "Recordings" heading.
+      await expandDeviceRows(tester);
       expect(find.text('Recordings'), findsOneWidget);
       final players = tester
           .widgetList<AudioPlayerWidget>(find.byType(AudioPlayerWidget))
@@ -3020,6 +3072,366 @@ void main() {
         reason:
             'the new "early" turn must still get its own distinct key '
             'alongside the three duplicates',
+      );
+    });
+
+    // ---- The pinned "Full call" slot's load states (spec section 3) -------
+
+    testWidgets(
+      'the sticky bar shows a shimmer while the reads are in flight',
+      (tester) async {
+        // The transcript resolves so the body renders, but the recordings and
+        // merged reads never land -- so the bar is stuck LOADING, which is a
+        // shimmer with no "Preparing" caption (that is pendingMerge's).
+        RelationsFetcher transcriptOnly(List<MatrixEvent> transcript) =>
+            ({
+              required String roomId,
+              required String eventId,
+              required String relType,
+              String? from,
+            }) {
+              if (relType == CallTranscriptContent.relType) {
+                return Future.value((chunk: transcript, nextBatch: null));
+              }
+              // The audio reads hang, holding the machine in `loading`.
+              return Completer<({List<MatrixEvent> chunk, String? nextBatch})>()
+                  .future;
+            };
+
+        await pumpWithRecordings(
+          tester,
+          room(),
+          transcriptOnly([
+            half(_me, texts: const ['hola']),
+          ]),
+        );
+
+        expect(find.byType(ShimmerBox), findsOneWidget);
+        expect(find.byType(AudioPlayerWidget), findsNothing);
+        expect(find.text('Preparing the full recording…'), findsNothing);
+        expect(find.text('No recording of the full call.'), findsNothing);
+      },
+    );
+
+    testWidgets(
+      'the sticky bar shows a "preparing" shimmer while a merge is still '
+      'pending',
+      (tester) async {
+        // Reads done, a half present, no merge yet, grace not elapsed:
+        // pendingMerge -> shimmer WITH the "Preparing" caption.
+        await pumpWithRecordings(
+          tester,
+          room(),
+          serving([
+            half(_me, texts: const ['hola']),
+            half(_peer, texts: const ['que tal']),
+            audioEvent(_me),
+            audioEvent(_peer),
+          ]),
+        );
+
+        expect(find.byType(ShimmerBox), findsOneWidget);
+        expect(find.text('Preparing the full recording…'), findsOneWidget);
+        expect(mergedPlayer(), findsNothing);
+      },
+    );
+
+    testWidgets('the sticky bar shows the merged player when ready', (
+      tester,
+    ) async {
+      final meAudio = audioEvent(_me);
+      final peerAudio = audioEvent(_peer);
+      await pumpWithRecordings(
+        tester,
+        room(),
+        serving([
+          half(_me, texts: const ['hola']),
+          half(_peer, texts: const ['que tal']),
+          meAudio,
+          peerAudio,
+          mergedEvent(
+            _me,
+            sourceEventIds: [meAudio.eventId, peerAudio.eventId],
+          ),
+        ]),
+      );
+
+      expect(mergedPlayer(), findsOneWidget);
+      expect(find.byType(ShimmerBox), findsNothing);
+      expect(find.text('No recording of the full call.'), findsNothing);
+    });
+
+    testWidgets('the sticky bar shows the "no recording" note when there is '
+        'none, without a retry', (tester) async {
+      // Zero halves: nothing is coming, so the note shows IMMEDIATELY and
+      // offers no retry (spec section 3's NONE bullet).
+      await pumpWithRecordings(
+        tester,
+        room(),
+        serving([
+          half(_me, texts: const ['hola']),
+          half(_peer, texts: const ['que tal']),
+        ]),
+      );
+
+      expect(find.text('No recording of the full call.'), findsOneWidget);
+      expect(find.byType(ShimmerBox), findsNothing);
+      expect(find.byType(AudioPlayerWidget), findsNothing);
+      expect(
+        find.widgetWithText(TextButton, 'Try again'),
+        findsNothing,
+        reason: 'none offers no retry -- nothing is coming',
+      );
+    });
+
+    testWidgets('the sticky bar shows the note WITH a retry once the grace '
+        'has elapsed', (tester) async {
+      // A half present, no merge, and the grace run out -> unavailable: the
+      // note plus a retry. The grace clock is injected so the ~30s window is
+      // elapsed deterministically rather than waited out.
+      var elapsed = Duration.zero;
+      final controller = CallRecordingsLoadController(
+        elapsed: () => elapsed,
+        // The captured callback is never fired here; the test drives the
+        // transition with a fresh `update` once the clock is past the grace.
+        // The returned timer fires a harmless no-op and is cancelled on
+        // dispose, so nothing is left pending.
+        scheduleTimer: (_, _) => Timer(Duration.zero, () {}),
+      );
+
+      await pumpWithRecordings(
+        tester,
+        room(),
+        serving([
+          half(_me, texts: const ['hola']),
+          half(_peer, texts: const ['que tal']),
+          audioEvent(_me),
+          audioEvent(_peer),
+        ]),
+        loadController: controller,
+      );
+
+      // The reads landed while the clock read zero, stamping the grace start
+      // there; it is pendingMerge until the grace elapses.
+      expect(controller.state.value, CallRecordingsLoadState.pendingMerge);
+
+      elapsed = kCallMergeGrace + const Duration(seconds: 1);
+      controller.update(readsInFlight: false, halfCount: 2, hasMerge: false);
+      await tester.pumpAndSettle();
+
+      expect(controller.state.value, CallRecordingsLoadState.unavailable);
+      expect(find.text('No recording of the full call.'), findsOneWidget);
+      expect(
+        find.widgetWithText(TextButton, 'Try again'),
+        findsOneWidget,
+        reason: 'unavailable offers a retry',
+      );
+    });
+
+    testWidgets('the chevron expands and collapses the per-device rows', (
+      tester,
+    ) async {
+      await pumpWithRecordings(
+        tester,
+        room(),
+        serving([
+          half(_me, texts: const ['hola']),
+          half(_peer, texts: const ['que tal']),
+          audioEvent(_me),
+          audioEvent(_peer),
+        ]),
+      );
+
+      // Collapsed by default: no "Recordings" heading, no per-device players.
+      expect(find.text('Recordings'), findsNothing);
+      expect(find.byType(AudioPlayerWidget), findsNothing);
+
+      await tester.tap(find.byIcon(Icons.expand_more));
+      await tester.pumpAndSettle();
+      expect(find.text('Recordings'), findsOneWidget);
+      expect(find.byType(AudioPlayerWidget), findsNWidgets(2));
+
+      await tester.tap(find.byIcon(Icons.expand_less));
+      await tester.pumpAndSettle();
+      expect(find.text('Recordings'), findsNothing);
+      expect(find.byType(AudioPlayerWidget), findsNothing);
+
+      // Collapse HIDES the rows without unmounting them: the two per-device
+      // players are still in the tree (offstage), so they are never disposed
+      // -- which is what stops the collapse from leaking their shared-player
+      // listeners or clearing ownership mid-unmount. Mutation: collapse to
+      // `SizedBox.shrink()` instead of `Offstage` -> this finds 0.
+      expect(
+        find.byType(AudioPlayerWidget, skipOffstage: false),
+        findsNWidgets(2),
+        reason: 'collapsed rows stay mounted (offstage), never disposed',
+      );
+    });
+
+    // ---- Karaoke wiring (spec section 4) ----------------------------------
+
+    testWidgets('with a merged recording the timeline is wired for karaoke, '
+        'and tapping a turn seeks it', (tester) async {
+      final testRoom = room();
+      final meAudio = audioEvent(_me);
+      final peerAudio = audioEvent(_peer);
+      await pumpWithRecordings(
+        tester,
+        testRoom,
+        serving([
+          half(_me, texts: const ['hello'], atMs: [_callStart + 6000]),
+          half(_peer, texts: const ['their turn'], atMs: [_callStart + 20000]),
+          meAudio,
+          peerAudio,
+          mergedEvent(
+            _me,
+            sourceEventIds: [meAudio.eventId, peerAudio.eventId],
+            mergedStartSfuMs: _callStart,
+          ),
+        ]),
+      );
+
+      // The timeline is handed a live controller's outputs, not the null
+      // gate: highlight, playing state and seek are all wired.
+      final timeline = tester.widget<TurnTimeline>(find.byType(TurnTimeline));
+      expect(timeline.activeIndex, isNotNull);
+      expect(timeline.isPlaying, isNotNull);
+      expect(timeline.onSeekTurn, isNotNull);
+
+      final matrixState = tester.state<MatrixState>(find.byType(_TestMatrix));
+      // Capture the FIRST ownership the tap claims. The seek claims the merged
+      // event synchronously (before its own load), but the load then FAILS in
+      // this homeserver-less test, which releases ownership again -- so the
+      // durable proof the seek fired is the claim itself, recorded the instant
+      // it happens rather than read after the fact.
+      String? claimedByTap;
+      matrixState.voiceMessageEventId.addListener(() {
+        claimedByTap ??= matrixState.voiceMessageEventId.value;
+      });
+      expect(matrixState.voiceMessageEventId.value, isNot(r'$merged'));
+
+      await tester.tap(find.text('0:06'));
+      await tester.pumpAndSettle();
+
+      expect(
+        claimedByTap,
+        r'$merged',
+        reason: 'the seek claimed the shared player for the merged recording',
+      );
+
+      // The failed load already released ownership and disposed the player it
+      // created, so nothing is left pending; belt-and-suspenders in case a
+      // future change leaves it owned.
+      matrixState.audioPlayer?.dispose();
+      matrixState.audioPlayer = null;
+      matrixState.voiceMessageEventId.value = null;
+      await tester.pumpAndSettle();
+    });
+
+    testWidgets('the timeline and the karaoke controller share ONE turn order '
+        '(interleaved speakers), so highlight/seek index the same turn', (
+      tester,
+    ) async {
+      // `_turnsOf` yields turns GROUPED by half, but TurnTimeline renders them
+      // sorted by time and its activeIndex/onSeekTurn are indices into THAT
+      // order. The integration must sort ONCE and hand the same list to both
+      // the controller and the timeline; otherwise an interleaved conversation
+      // highlights and seeks the wrong turn. Two speakers whose turns
+      // interleave in time but not by half: me speaks first and last, the peer
+      // in between.
+      final testRoom = room();
+      final meAudio = audioEvent(_me);
+      final peerAudio = audioEvent(_peer);
+      await pumpWithRecordings(
+        tester,
+        testRoom,
+        serving([
+          half(
+            _me,
+            texts: const ['first', 'third'],
+            captured: 2,
+            transcribed: 2,
+            atMs: [_callStart, _callStart + 20000],
+          ),
+          half(_peer, texts: const ['second'], atMs: [_callStart + 10000]),
+          meAudio,
+          peerAudio,
+          mergedEvent(
+            _me,
+            sourceEventIds: [meAudio.eventId, peerAudio.eventId],
+            mergedStartSfuMs: _callStart,
+          ),
+        ]),
+      );
+
+      // The list handed to TurnTimeline (and, identically, to the controller)
+      // is time-sorted, NOT half-grouped. Mutation: drop the sort in
+      // `_syncPlayback`/build and this reads ['first','third','second'].
+      expect(
+        renderedTurns(tester).map((t) => t.text).toList(),
+        ['first', 'second', 'third'],
+        reason:
+            'the controller and the timeline must index the SAME '
+            'time-sorted order, not the speaker-grouped one',
+      );
+    });
+
+    testWidgets('with no merged recording the timeline is NOT wired for '
+        'karaoke -- it renders exactly as today', (tester) async {
+      await pumpWithRecordings(
+        tester,
+        room(),
+        serving([
+          half(_me, texts: const ['hello'], atMs: [_callStart]),
+          half(_peer, texts: const ['hi'], atMs: [_callStart + 1000]),
+        ]),
+      );
+
+      final timeline = tester.widget<TurnTimeline>(find.byType(TurnTimeline));
+      expect(
+        timeline.activeIndex,
+        isNull,
+        reason: 'the master gate is null with no merged recording on screen',
+      );
+      expect(timeline.isPlaying, isNull);
+      expect(timeline.onSeekTurn, isNull);
+    });
+
+    testWidgets('the load controller is disposed when the dialog closes', (
+      tester,
+    ) async {
+      final controller = CallRecordingsLoadController();
+      final meAudio = audioEvent(_me);
+      final peerAudio = audioEvent(_peer);
+      await pumpWithRecordings(
+        tester,
+        room(),
+        serving([
+          half(_me, texts: const ['hello'], atMs: [_callStart]),
+          half(_peer, texts: const ['hi'], atMs: [_callStart + 1000]),
+          meAudio,
+          peerAudio,
+          mergedEvent(
+            _me,
+            sourceEventIds: [meAudio.eventId, peerAudio.eventId],
+            mergedStartSfuMs: _callStart,
+          ),
+        ]),
+        loadController: controller,
+      );
+
+      // A merged row is on screen, so BOTH the load controller and the
+      // playback controller are live. Closing the dialog runs the state's
+      // dispose, which tears the playback controller down (its own disposal is
+      // unit-tested) and then disposes this load controller.
+      expect(controller.state.value, CallRecordingsLoadState.ready);
+      await tester.pumpWidget(const SizedBox());
+      await tester.pumpAndSettle();
+
+      expect(
+        () => controller.state.addListener(() {}),
+        throwsA(anything),
+        reason: 'a disposed ValueNotifier rejects new listeners',
       );
     });
   });

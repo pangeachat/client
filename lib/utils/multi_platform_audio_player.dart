@@ -53,7 +53,14 @@ class MultiPlatformAudioPlayer {
 
   Future<void> _setAudioSourceOnMobile() async {
     final file = await _generateAudioFile();
-    audioPlayer.setFilePath(file.path);
+    // Awaited, matching the web path above: `setFilePath` returns a future
+    // that completes only once the source is actually LOADED. Firing it
+    // unawaited let `setAudioSource` return before loading finished, so a
+    // caller that seeks right after (the call-transcript karaoke seek) issued
+    // the seek before the source was ready -- just_audio does not honour a
+    // seek on an unloaded source, so it played from the start. Awaiting also
+    // surfaces a load error here instead of dropping it.
+    await audioPlayer.setFilePath(file.path);
   }
 
   Future<File> _generateAudioFile() async {
