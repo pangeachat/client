@@ -2017,3 +2017,25 @@ until the design is Codex-green.
   assembly (full calls bucket + whole-branch cold-Codex + ChangeNotifier cleanup) -> owner real-call test ->
   PR2 on go. If it STILL finds substantive new same-class races, STOP gating + document the ultra-narrow
   residual as known v1 edges (diminishing returns; the human real-call test is the real validator for UI races).
+
+## 2026-09-11 (cont) — structural round committed effb4df5f3 (converged); my FINAL cold gate H/I running
+- Structural round (adcebbac) committed effb4df5f3 (transcript_view +292/-180; 109 tests = 103 preserved + 6
+  new). It made the two classes structurally safe AND its OWN Codex self-gate CONVERGED: self-gate round 1
+  found 3 MORE same-class edges (retry-during-drain strands syncs; _startAndPlayMerged captured player AFTER
+  the await; _seekSharedPlayer aborted silently w/o post-seek recheck), fixed all at the class level, self-gate
+  round 2 = CORRECT. This is the convergence I was waiting for (the agent's own gate stopped finding edges).
+  Structures (verified by grep at the expected sites): _isCurrentMerged(player,eventId) predicate re-checked
+  after EVERY await at 5 sites (throws to abort the controller txn); _drainRefreshes trailing-edge coalescer
+  (_refreshRequested/_refreshDraining) REPLACING the 3 ad-hoc flags; _tapGeneration in the control;
+  _fireAndForget on all discarded teardown futures.
+- Agent flags: G-1 seek-site recheck + one capture are REDUNDANT with the in-flight-start's own throwing abort
+  (throw-dominated, so mutating only those sites stays green) -> it mutation-proved the underlying PREDICATE
+  instead (neuter _isCurrentMerged -> RED); the independently-reachable guards (coalescer settle-gate, G-2
+  generation, G-3 handler, post-seek recheck) are each directly mutation-proven. Also noted a PRE-EXISTING
+  TEST-ONLY caveat: an injected recordingsLoadController isn't replaced on _retry -- not a production
+  regression, out of scope.
+- MY FINAL cold gate (protocol: fresh verdict on the biggest single rewrite): split H (the coalescer) + I
+  (the predicate + await-guards + generation), running in bg (b13cmk9gb). STOP RULE: if CORRECT -> assembly
+  (full calls bucket + whole-branch cold-Codex + ChangeNotifier cleanup) -> owner real-call test -> PR2 on go.
+  If it finds a NEW substantive same-class race -> ONE targeted fix, re-verify, then STOP gating regardless
+  (diminishing returns; human real-call test validates UI races). No open-ended round 5.
