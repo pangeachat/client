@@ -19,11 +19,33 @@ bool botHoldsLiveSeat(
   String botUserId,
 ) => assignedRoles.any((r) => r.userId == botUserId);
 
+/// Whether this session is a learner alone with the bot: the activity has
+/// exactly two roles and the bot holds one of them. The surfaces that only
+/// make sense between people are dropped in that case — "End for all" (there
+/// is nobody else to end it for) and starting a poll (the bot cannot vote in
+/// one, so the poll would sit unanswered forever — #8982).
+@visibleForTesting
+bool isTwoPersonBotSession(
+  int roleCount,
+  Iterable<ActivityRoleModel> assignedRoles,
+  String botUserId,
+) => roleCount == 2 && botHoldsLiveSeat(assignedRoles, botUserId);
+
 extension BotActivtyRoleRoomExtension on Room {
   bool get botHasActivityRole => botHoldsLiveSeat(
     assignedRoles?.values ?? const [],
     BotName.byEnvironment,
   );
+
+  bool get isTwoPersonBotActivity {
+    final roles = activityRoles?.roles;
+    if (roles == null) return false;
+    return isTwoPersonBotSession(
+      roles.length,
+      assignedRoles?.values ?? const [],
+      BotName.byEnvironment,
+    );
+  }
 
   Future<void> addBotToActivity() =>
       client.setRoomStateWithKey(id, PangeaEventTypes.botParticipant, "", {});
