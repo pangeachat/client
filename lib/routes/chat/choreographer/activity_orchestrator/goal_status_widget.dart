@@ -27,7 +27,7 @@ class GoalStatusWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final gold = AppConfig.goldByTheme(context);
+    final gold = AppConfig.goldMarkByTheme(context);
 
     Widget icon = Icon(
       complete ? Icons.star : Icons.star_border,

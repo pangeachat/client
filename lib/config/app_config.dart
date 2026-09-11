@@ -89,6 +89,14 @@ abstract class AppConfig {
   /// The gold a **solid mark carrying meaning** wears — an earned activity
   /// star, where the fill itself is the information rather than decoration.
   ///
+  /// The line against [goldByTheme] is whether the gold is what gets read.
+  /// A star, a trail marker, a progress bar's fill — the mark's presence or
+  /// extent *is* the information, so it needs the 3:1. A gold that sits
+  /// *behind* something read (a chip, a pill, a tinted card) is a background
+  /// and keeps [goldByTheme], because the ink on it carries the contrast —
+  /// the same split [warningByTheme] draws. So does decoration nothing is
+  /// read from: XP particles, the goal-star flight animation (#8983).
+  ///
   /// [gold] is 1.58:1 on the light theme's surface and 1.28:1 on its cards,
   /// far under the 3:1 WCAG 1.4.11 asks of a graphic the user has to read, so
   /// light gets [goldDeep] (4.22:1 / 3.43:1). Dark keeps [gold], already

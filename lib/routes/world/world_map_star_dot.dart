@@ -32,7 +32,7 @@ class WorldMapStarDot extends StatelessWidget {
     child: Icon(
       superStar ? Icons.hotel_class : Icons.star,
       size: superStar ? PinSize.superStarGlyphSize : PinSize.starGlyphSize,
-      color: AppConfig.gold,
+      color: AppConfig.goldMarkByTheme(context),
     ),
   );
 }

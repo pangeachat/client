@@ -1,31 +1,16 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/activity_star_row.dart';
+import 'contrast_ratio.dart';
 
-/// WCAG 1.4.11 asks 3:1 of a graphic the user has to read. The star row is
-/// one: the count of filled vs unfilled stars *is* the content (#8760).
-const minRatio = 3.0;
-
-double _luminance(Color c) {
-  double channel(double v) =>
-      v <= 0.03928 ? v / 12.92 : pow((v + 0.055) / 1.055, 2.4).toDouble();
-  return 0.2126 * channel(c.r) + 0.7152 * channel(c.g) + 0.0722 * channel(c.b);
-}
-
-double contrast(Color a, Color b) {
-  final la = _luminance(a);
-  final lb = _luminance(b);
-  return (max(la, lb) + 0.05) / (min(la, lb) + 0.05);
-}
-
+/// The star row is a graphic the user has to read: the count of filled vs
+/// unfilled stars *is* the content (#8760).
 void main() {
   for (final brightness in [Brightness.light, Brightness.dark]) {
-    testWidgets('star row clears $minRatio:1 in ${brightness.name}', (
+    testWidgets('star row clears $minGraphicRatio:1 in ${brightness.name}', (
       tester,
     ) async {
       final scheme = ColorScheme.fromSeed(
@@ -66,13 +51,13 @@ void main() {
         scheme.surfaceContainerHighest,
       ]) {
         expect(
-          contrast(earned, background),
-          greaterThanOrEqualTo(minRatio),
+          contrastRatio(earned, background),
+          greaterThanOrEqualTo(minGraphicRatio),
           reason: 'earned star on $background in ${brightness.name}',
         );
         expect(
-          contrast(unearned, background),
-          greaterThanOrEqualTo(minRatio),
+          contrastRatio(unearned, background),
+          greaterThanOrEqualTo(minGraphicRatio),
           reason: 'unearned star on $background in ${brightness.name}',
         );
       }

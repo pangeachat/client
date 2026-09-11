@@ -125,7 +125,7 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
                   size: 18.0,
                   color: satisfied
                       ? AppConfig.successByTheme(context)
-                      : AppConfig.goldByTheme(context),
+                      : AppConfig.goldMarkByTheme(context),
                 ),
                 const SizedBox(width: 4.0),
                 ExcludeSemantics(

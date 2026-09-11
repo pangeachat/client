@@ -189,6 +189,12 @@ void main() {
           tester.element(find.text(objectiveText)),
         ).textTheme.bodyMedium?.color,
       );
+      // The star's fill is what carries the fraction, so it wears the readable
+      // gold, not the decorative one (#8983).
+      expect(
+        tester.widget<Icon>(headerIcon(tester, '1/4', Icons.star)).color,
+        AppConfig.goldMarkByTheme(tester.element(find.text(objectiveText))),
+      );
     });
   });
 }
