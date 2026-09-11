@@ -2065,3 +2065,21 @@ until the design is Codex-green.
   validator for the unreachable-in-v1 UI-race edges + the per-device EOF interaction) -> PR2 on explicit go
   (rebase on main after #8888/#8797) -> Gabby runs the l10n backfill (2 deferred en-only keys: callTranscriptSeekTo,
   callTranscriptPreparingRecording/NoRecording).
+
+## 2026-09-11 (cont) — ASSEMBLY GREEN: all buckets pass (one confirmed env flake); ready for owner real-call test
+- Full calls bucket (test/pangea/calls/) = +1804 -1. The -1 was call_media_test "capture transitions..."
+  failing on a `LiveKit Exception: [TimeoutException] Timeout` in CallMedia.disconnect -- a load-induced
+  async-timeout flake, NOT a regression: (a) git diff confirms call_media.dart/call_capture.dart untouched
+  by the Build-5+ work, (b) solo re-run = 58/58 GREEN incl. that exact test. Same class as the active_call
+  tearDownAll env flake (a call test's teardown/disconnect timing out under full-bucket machine load).
+- FEATURE GREEN across buckets: calls 1804 (1 env flake, solo-green), transcript_view 109, controller 22,
+  recordings_load 29 (build 4), audio blast-radius 91. Whole branch is component-cold-gated (builds 1-5 +
+  shared audio + 5 hardening gate rounds on the merged-player). analyze/format/import-sort clean throughout.
+- STATE: PR2 work complete + verified locally. Branch satvik/call-features-combined. NOT pushed, NO PR (per
+  the standing "PR only on explicit per-PR go"). REMAINING before PR2: (1) OWNER real-call testing -- the
+  validator for the unreachable-in-v1 UI-race edges + the pre-existing per-device-EOF interaction; (2) rebase
+  on main after #8888/#8797 land; (3) explicit owner go; (4) Gabby runs the l10n backfill for the 3 en-only
+  keys (callTranscriptSeekTo, callTranscriptPreparingRecording, callTranscriptNoRecording) -- l10n_sync_check
+  will be RED until then (known, not blocking the build). Build 6 governed-doc proposal
+  (docs/handoff/2026-09-10-doc-addition-proposal.md) awaits Will's review. v2 mid-call device-switch merge =
+  issue pangeachat/client#8878.
