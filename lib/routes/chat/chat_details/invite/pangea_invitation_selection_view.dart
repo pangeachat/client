@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/join_codes/share_room_button.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -455,16 +456,16 @@ class _InviteContactListTile extends StatelessWidget {
                 ),
                 decoration: BoxDecoration(
                   color: participant!.powerLevel >= 100
-                      ? theme.colorScheme.tertiary
-                      : theme.colorScheme.tertiaryContainer,
+                      ? theme.pangea.goldFixedDim
+                      : theme.pangea.goldContainer,
                   borderRadius: BorderRadius.circular(AppConfig.borderRadius),
                 ),
                 child: Text(
                   permissionBatch,
                   style: theme.textTheme.labelSmall?.copyWith(
                     color: participant.powerLevel >= 100
-                        ? theme.colorScheme.onTertiary
-                        : theme.colorScheme.onTertiaryContainer,
+                        ? theme.pangea.onGoldFixed
+                        : theme.pangea.onGoldContainer,
                   ),
                 ),
               )
