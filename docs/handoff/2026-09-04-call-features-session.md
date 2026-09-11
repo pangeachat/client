@@ -1792,3 +1792,26 @@ until the design is Codex-green.
 - CARRY: agent 4 flagged CallPlaybackController (agent 2) extends ChangeNotifier vestigially (exposes
   ValueNotifiers, may never call its own notifyListeners) -> a minor consistency/cleanliness item; check +
   fix during the whole-branch (assembly) review if it never uses the inherited notifier.
+
+## 2026-09-10 (cont) — BUILD 4 DONE (58948e1631 cold-green); agent 5 (layout+wiring) dispatched
+- Agent 4 fixer (a84d83c0dad8c2cac) STALLED (4th stall -- same codex-auto-background signature; its
+  task-notification re-fired "Waiting for the Codex gate (retry)"). Killed the orphan, verified the
+  uncommitted work: _ReadOnlyValueListenable wrapper GONE (0 occurrences), monotonic Stopwatch grace in,
+  diff -725/+271 (~454 net removed, 896->~440), dart format clean, analyze "No issues found!",
+  call_recordings_load_test.dart = 29 passed; the backward-jump test (~line 298) pins the fix (a wall-clock
+  correction during grace has NO effect; unavailable arrives at exactly one grace). Per the "keep it
+  simple, ship" steer I did a light verify (not another full re-gate round) and committed 58948e1631.
+  BUILD 4 DONE. Steps 1,2,3,4 all complete + cold-green.
+- Did NOT re-engage the stalled fixer (resurrecting it risks a duplicate commit while agent 5 is live --
+  the 3rd instance of that hazard would have been self-inflicted). Its work is fully captured in 58948e1631.
+- BUILD 5 (aa6e3a1bc5fcdd33c, opus) dispatched -- the final integration: transcript_view.dart -> a SINGLE
+  CustomScrollView with a pinned SliverPersistentHeader "Full call" bar (driven by
+  CallRecordingsLoadController states: loading/pendingMerge->shimmer, ready->merged AudioPlayerWidget,
+  none/unavailable->note+retry), AnimatedSize expandable per-device rows, non-lazy TurnTimeline; construct
+  CallPlaybackController from matrix.audioPlayer streams + voiceMessageEventId + turns, wire
+  activeIndex/isPlaying/seekToTurn into TurnTimeline; dispose both. HARD INVARIANT: no merged recording =>
+  renders exactly as today, no controllers. Brief carries the 3 gate-surfaced wiring requirements + the
+  pid-wait anti-stall + the keep-it-simple steer (accept correct code, reserve fixer cycles for real bugs).
+- PENDING while agent 5 is live: NO flutter bucket (concurrency rule -- agent 5 runs flutter tests). On
+  return: cold-gate agent 5, then whole-branch assembly (cold-Codex + full calls bucket + the
+  CallPlaybackController-extends-ChangeNotifier consistency item), then owner real-call testing -> PR2 on go.
