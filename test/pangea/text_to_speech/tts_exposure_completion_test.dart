@@ -117,6 +117,32 @@ void main() {
     );
   });
 
+  test('the same finish in native signal order records its lemmas', () async {
+    // The web and native plugins deliver a clean finish in OPPOSITE orders,
+    // and only the web one puts `speak.onComplete` first. On native the speak
+    // future resolves from inside the engine's own completion callback and the
+    // callback is posted immediately after, so it lands a turn late — into an
+    // utterance that has already settled. Exposure fired correctly on web and
+    // not at all on Android or iOS, with the audio playing normally on every
+    // one of them (#8493).
+    engine.onSpeak = FakeSpeakBehavior.startAndCompleteNativeOrder;
+
+    await TtsController.tryToSpeak(
+      'hablar',
+      langCode: 'es',
+      useCase: TtsUseCase.words,
+      allowChoreoPlay: false,
+      listening: SpyProbe(buffer: DosageAudioBuffer()),
+      exposure: hablar(),
+    );
+
+    expect(
+      recordedExposures(),
+      1,
+      reason: 'the platform that delivers the news last still delivered it',
+    );
+  });
+
   test('an utterance cut off mid-read records nothing', () async {
     // The everyday case, not an edge one: read-aloud stops on drafting, on
     // selecting a message, and on losing focus, and every one of those routes
