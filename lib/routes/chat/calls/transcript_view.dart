@@ -426,7 +426,15 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
         if (_loadController.state.value == CallRecordingsLoadState.ready) {
           return;
         }
-        await _refreshOnce();
+        // A pass that throws (unexpected -- [_refreshOnce]'s reads swallow their
+        // own errors into empty lists) must NOT exit the loop and strand a
+        // request a sync re-armed during it. Catch so the loop re-checks
+        // [_refreshRequested] and drains a still-pending request on the next pass.
+        try {
+          await _refreshOnce();
+        } catch (e, s) {
+          Logs().w('Call recordings live-refresh pass failed', e, s);
+        }
       }
     } finally {
       _refreshDraining = false;
@@ -1006,20 +1014,41 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     if (eventId == null ||
         player == null ||
         !_isCurrentMerged(player, eventId)) {
+      // Detach our observation of the captured player if it is still the one we
+      // observe: a SAME-ID player swap fires no ownership notification, so
+      // [_onVoiceOwnershipChanged] would not have detached it. Uniform with the
+      // start path's release (unreachable in v1 -- only the guarded
+      // [_startMergedPlayer] creates a merged-id player -- so this is defense in
+      // depth for the "every abort leaves no stale observation" rule).
+      if (player != null && identical(_observedPlayer, player)) {
+        _detachObservation();
+      }
       throw const _MergedStartAborted();
     }
     // Observe the player we are about to seek -- idempotent, so a karaoke-started
     // seek (already attached) re-attaches for free; a bar-started one attaches
     // here, which is what makes the turn tap follow along.
     _attachObservation(player);
-    // Deliberately NOT caught here: a seek failure must ABORT the transaction
-    // (the controller awaits this before play), and [_seekToTurnGuarded] is
-    // where it is logged.
-    await player.seek(position);
+    // The seek failure itself is deliberately NOT swallowed: it must ABORT the
+    // transaction (the controller awaits this before play), logged at
+    // [_seekToTurnGuarded]. But if a same-id swap superseded the captured player
+    // during the (throwing) seek, detach our now-stale observation of it before
+    // propagating -- uniform with the explicit aborts above/below, so EVERY
+    // supersession exit of this method leaves no stale observation.
+    try {
+      await player.seek(position);
+    } catch (_) {
+      if (!_isCurrentMerged(player, eventId) &&
+          identical(_observedPlayer, player)) {
+        _detachObservation();
+      }
+      rethrow;
+    }
     // Re-validate AFTER the seek await too (every await re-validates): a same-id
     // swap DURING the seek must abort the play, which the controller's
     // ownership-only post-seek check cannot see. Throw to propagate the abort.
     if (!_isCurrentMerged(player, eventId)) {
+      if (identical(_observedPlayer, player)) _detachObservation();
       throw const _MergedStartAborted();
     }
   }
@@ -2642,6 +2671,12 @@ class _MergedFullCallControlState extends State<_MergedFullCallControl> {
   /// identity: it may have been taken over, or the control disposed, across the
   /// await).
   Future<void> _replayFromStart(AudioPlayer player, int generation) async {
+    // Captured BEFORE the seek: this replay is for THIS row's merged event.
+    // `_mergedId` reads `widget.row`, which the parent may rebind to a DIFFERENT
+    // merge on this same State across the await (unreachable in v1 -- one stable
+    // merge per call); comparing the captured id below, not the live `_mergedId`,
+    // stops a stale replay resuming a different recording.
+    final eventId = _mergedId;
     try {
       await player.seek(Duration.zero);
     } catch (e, s) {
@@ -2650,7 +2685,8 @@ class _MergedFullCallControlState extends State<_MergedFullCallControl> {
     }
     if (!mounted) return;
     if (generation != _tapGeneration) return;
-    if (_matrix.voiceMessageEventId.value != _mergedId) return;
+    if (_mergedId != eventId) return;
+    if (_matrix.voiceMessageEventId.value != eventId) return;
     if (!identical(_matrix.audioPlayer, player)) return;
     try {
       await widget.onResume();
