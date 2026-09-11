@@ -8,9 +8,9 @@ import 'package:fluffychat/features/languages/language_flag_chip.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/activity_participant_row.dart';
 import 'package:fluffychat/pangea/common/widgets/activity_tile_body.dart';
 import 'package:fluffychat/routes/chat_list/unread_bubble.dart';
-import 'package:fluffychat/routes/world/activity_participant_row.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 import 'package:fluffychat/routes/world/world_map_pinged_badge.dart';
@@ -125,15 +125,17 @@ class _WorldMapLargeCardAnimatedState extends State<WorldMapLargeCardAnimated>
 /// - **Joinable** (green border) — title, then a door icon + the participant
 ///   row (filled/unfilled avatar circles, one per role). No image, stars, or
 ///   message preview.
-/// - **Ongoing/Pending** (dark-purple border) — same layout as Joinable, an
-///   hourglass icon in place of the door: the learner holds a role, but the
-///   room doesn't yet have enough people for the chat to have started.
+/// - **Ongoing/Pending** (dark-purple border) — the Active card's geometry
+///   (the activity's circular thumbnail leading, title beside it) with the
+///   Joinable body: an hourglass icon in place of the door, then the
+///   participant row — the same row the same session's Chats-list tile shows.
+///   The learner holds a role, but the room doesn't yet have enough people for
+///   the chat to have started.
 /// - **Ongoing/Active** (dark-purple border) — *is* a chat-list tile, sharing
 ///   its body widget ([ActivityTileBody]) with the Chats-list tile for the same
 ///   session: the activity's circular thumbnail leading, and beside it the
 ///   title over the last chat event (with its sender's avatar) over the row of
-///   currently-gained stars — the only large-card state that shows stars, and
-///   the only one with an image.
+///   currently-gained stars — the only large-card state that shows stars.
 ///
 /// Every state lays out against a leading gutter ([_LeadingGutter]) so its
 /// title sits directly above its content on one left edge, with the dismiss X
@@ -232,8 +234,7 @@ class WorldMapLargeCard extends StatelessWidget {
   /// wide: at 44 a two-line title had barely half the card left.
   static const double _thumbnailSize = 40.0;
 
-  bool get _hasThumbnail =>
-      state == ActivityPinState.ongoingActive && liveRoom != null;
+  bool get _hasThumbnail => state.isOngoing && liveRoom != null;
 
   /// Width of the leading gutter. Holds the thumbnail where there is one; on a
   /// plain card it is blank but still wide enough that the corner X, which
@@ -567,6 +568,10 @@ class _CardBody extends StatelessWidget {
       accent: accent,
       participants: liveRoom?.largeCardParticipantIds ?? participants,
       openSlots: liveRoom?.numRemainingRoles ?? openSlots,
+      // The Active body's sender avatar is 24 (ActivityTileBody), and this row
+      // renders in the Chats-list pending tile too — one size keeps the two
+      // states and the two surfaces in step.
+      avatarSize: 24,
     ),
     ActivityPinState.ongoingActive => ActivityTileBody(
       room: liveRoom,
