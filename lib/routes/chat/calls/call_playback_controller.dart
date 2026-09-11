@@ -21,7 +21,7 @@ import 'package:fluffychat/routes/chat/calls/turn_timeline.dart';
 /// `Stream<PlayerState>` for the same reason -- the wiring becomes
 /// `playerStateStream.map((s) => s.playing)`, and no test here needs to
 /// construct a `PlayerState`.
-class CallPlaybackController extends ChangeNotifier {
+class CallPlaybackController {
   CallPlaybackController({
     required Stream<Duration> position,
     required Stream<bool> playing,
@@ -357,7 +357,6 @@ class CallPlaybackController extends ChangeNotifier {
     return !_disposed && !interrupted && _owns;
   }
 
-  @override
   void dispose() {
     if (_disposed) return;
     _disposed = true;
@@ -374,6 +373,5 @@ class CallPlaybackController extends ChangeNotifier {
     _activeOwnershipWatches.clear();
     _activeIndexNotifier.dispose();
     _isPlayingNotifier.dispose();
-    super.dispose();
   }
 }
