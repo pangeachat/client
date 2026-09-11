@@ -838,7 +838,7 @@ class _SnackBarLink extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = Theme.of(context).colorScheme.primaryContainer;
+    final color = Theme.of(context).colorScheme.inversePrimary;
     return InkWell(
       onTap: onTap,
       child: Text(
