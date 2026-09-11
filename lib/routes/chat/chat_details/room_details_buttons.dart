@@ -67,7 +67,7 @@ class RoomDetailsButton extends StatelessWidget {
                         color: hovered
                             ? Theme.of(
                                 context,
-                              ).colorScheme.primaryContainer.withAlpha(200)
+                              ).colorScheme.secondaryContainer.withAlpha(200)
                             : Colors.transparent,
                         borderRadius: BorderRadius.circular(8),
                       ),

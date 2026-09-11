@@ -94,6 +94,9 @@ class AnalyticsPracticeView extends StatelessWidget {
               height: 20.0,
               widthPercent: progress,
               barColor: Theme.of(context).colorScheme.primary,
+              backgroundColor: Theme.of(
+                context,
+              ).colorScheme.surfaceContainerHighest,
             ),
           ),
         ),
