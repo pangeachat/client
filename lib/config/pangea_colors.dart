@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:material_color_utilities/material_color_utilities.dart';
 
+import 'package:fluffychat/config/app_config.dart';
+
 /// Brand colours that must not move when the learner changes the seed.
 ///
 /// Every role is a tone of one key colour, so its contrast against the
@@ -19,10 +21,6 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
     required this.goldContainer,
     required this.onGoldContainer,
   });
-
-  /// The one place the gold key colour appears. Every role below is a tone
-  /// of it.
-  static const int goldKey = 0xFFFDBF01;
 
   /// Gold that reads as text: a word, an XP count, an icon beside a label.
   /// Clears 4.5:1 on the surface in both themes.
@@ -54,7 +52,10 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
       brightness == Brightness.light ? _light : _dark;
 
   static PangeaColors _fromKey(Brightness brightness) {
-    final palette = TonalPalette.fromHct(Hct.fromInt(goldKey));
+    // AppConfig.gold is the key colour; every role below is a tone of it.
+    final palette = TonalPalette.fromHct(
+      Hct.fromInt(AppConfig.gold.toARGB32()),
+    );
     final light = brightness == Brightness.light;
     return PangeaColors(
       gold: Color(palette.get(light ? 40 : 80)),
