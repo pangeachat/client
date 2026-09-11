@@ -494,7 +494,7 @@ class HtmlMessage extends StatelessWidget {
         .copyWith(fontSize: fontSize);
 
     final underlineColor = pangeaMessageEvent!.ownMessage
-        ? Theme.of(context).colorScheme.primaryContainer.withAlpha(200)
+        ? Theme.of(context).colorScheme.onPrimary.withAlpha(200)
         : Theme.of(context).colorScheme.primary.withAlpha(200);
 
     final practiceMode = overlayController?.practiceController.practiceMode;

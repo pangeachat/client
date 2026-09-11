@@ -83,7 +83,7 @@ class _StyleExampleMessage extends StatelessWidget {
                     style: textStyle,
                     underlineColor: Theme.of(
                       context,
-                    ).colorScheme.primaryContainer.withAlpha(200),
+                    ).colorScheme.onPrimary.withAlpha(200),
                   ),
                 ),
               ),
