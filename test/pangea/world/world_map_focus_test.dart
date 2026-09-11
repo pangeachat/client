@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -108,8 +109,9 @@ void main() {
     const primary = Color(0xFF112233);
     // The focused pin haloes in its state hue (here `available`), not the theme
     // primary — the treatment is state-coloured now, no outline.
+    // `available` in the light theme these tests pump: the light brand tint.
     final glowColor = WorldMapSelection.glow(
-      ActivityPinState.available.color,
+      AppConfig.primaryColorLight,
     ).first.color;
 
     testWidgets('a focused small dot casts the state glow', (tester) async {

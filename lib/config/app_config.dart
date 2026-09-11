@@ -32,11 +32,6 @@ abstract class AppConfig {
   static const Color warning = Color.fromARGB(255, 210, 124, 12);
   static const Color success = Color(0xFF33D057);
 
-  /// The joinable-session green. PangeaColors.joinable is its tone that
-  /// carries white text; ActivityPinState still reads this as its static
-  /// fallback.
-  static const Color green = Color(0xFF34A853);
-
   // Static colours still read directly by widget code (migrating).
   static const Color primaryColor = Color(0xFF8560E0);
   static const Color primaryColorLight = Color(0xFFDBC9FF);

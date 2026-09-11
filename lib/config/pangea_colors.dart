@@ -129,6 +129,11 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
   /// white ink; T50 measures 4.47:1.
   static const int _joinableTone = 49;
 
+  /// The joinable-session green, the key colour [joinable] is a tone of. Read
+  /// nowhere else; the world map reaches the state colour through
+  /// ActivityPinState.bodyColor.
+  static const Color joinableKey = Color(0xFF34A853);
+
   static PangeaColors _fromKey(Brightness brightness) {
     // AppConfig.gold, AppConfig.warning and AppConfig.success are the key
     // colours; every role below is a tone of one of them.
@@ -139,9 +144,7 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
     final success = TonalPalette.fromHct(
       Hct.fromInt(AppConfig.success.toARGB32()),
     );
-    final joinable = TonalPalette.fromHct(
-      Hct.fromInt(AppConfig.green.toARGB32()),
-    );
+    final joinable = TonalPalette.fromHct(Hct.fromInt(joinableKey.toARGB32()));
     final light = brightness == Brightness.light;
     return PangeaColors(
       gold: Color(gold.get(light ? 40 : 80)),

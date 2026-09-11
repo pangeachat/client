@@ -147,8 +147,9 @@ void main() {
   group('selected glow (#7349)', () {
     // The focused card haloes in its state hue (here `available`) with no
     // outline — the same treatment as a selected pin.
+    // `available` in the light theme these tests pump: the light brand tint.
     final glowColor = WorldMapSelection.glow(
-      ActivityPinState.available.accent,
+      AppConfig.primaryColorLight,
     ).first.color;
 
     testWidgets('a focused card casts the state glow around the balloon', (

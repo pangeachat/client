@@ -47,21 +47,16 @@ enum ActivityPinState {
   /// values.
   bool get isLive => isOngoing || this == ActivityPinState.joinable;
 
-  /// The pin body color. See world-map.instructions.md ("Pin state").
-  Color get color => switch (this) {
-    ActivityPinState.ongoingPending ||
-    ActivityPinState.ongoingActive => AppConfig.primaryColor,
-    ActivityPinState.joinable => AppConfig.green,
-    ActivityPinState.inProgress => AppConfig.gold,
-    ActivityPinState.available => AppConfig.primaryColorLight,
-  };
-
+  /// The pin body colour. See world-map.instructions.md ("Pin state").
   Color bodyColor(BuildContext context) => switch (this) {
     ActivityPinState.joinable => Theme.of(context).pangea.joinable,
-    ActivityPinState.available
-        when Theme.of(context).brightness == Brightness.dark =>
-      AppConfig.primaryColorDark,
-    _ => color,
+    ActivityPinState.ongoingPending ||
+    ActivityPinState.ongoingActive => AppConfig.primaryColor,
+    ActivityPinState.inProgress => AppConfig.gold,
+    ActivityPinState.available =>
+      Theme.of(context).brightness == Brightness.dark
+          ? AppConfig.primaryColorDark
+          : AppConfig.primaryColorLight,
   };
 
   /// Ink for the icon and text drawn on [bodyColor].
@@ -92,7 +87,7 @@ enum ActivityPinState {
   };
 
   /// The accent used for a large card's border / foreground — the state hue.
-  Color get accent => color;
+  Color accent(BuildContext context) => bodyColor(context);
 
   /// The label colour: the state hue, but for the three purple states retuned
   /// by the theme rather than taken raw from [AppConfig].
@@ -115,7 +110,8 @@ enum ActivityPinState {
     ActivityPinState.available ||
     ActivityPinState.ongoingPending ||
     ActivityPinState.ongoingActive => Theme.of(context).colorScheme.primary,
-    ActivityPinState.joinable || ActivityPinState.inProgress => color,
+    ActivityPinState.joinable ||
+    ActivityPinState.inProgress => bodyColor(context),
   };
 }
 

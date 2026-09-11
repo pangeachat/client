@@ -142,7 +142,7 @@ void main() {
 
   test('joinable is the same green in both themes and carries white text', () {
     final joinablePalette = TonalPalette.fromHct(
-      Hct.fromInt(AppConfig.green.toARGB32()),
+      Hct.fromInt(PangeaColors.joinableKey.toARGB32()),
     );
     expect(light.joinable, dark.joinable);
     expect(light.joinable, Color(joinablePalette.get(49)));
