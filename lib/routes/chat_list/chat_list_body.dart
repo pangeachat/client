@@ -281,16 +281,15 @@ class ChatListViewBody extends StatelessWidget {
                           .isEmpty)
                     Padding(
                       padding: const EdgeInsetsGeometry.all(16.0),
-                      child: Text(
-                        switch (controller.activeFilter) {
-                          ActiveFilter.groups =>
-                            L10n.of(context).emptyGroupsSearch,
-                          ActiveFilter.activities =>
-                            L10n.of(context).emptyActivitiesSearch,
-                          _ => L10n.of(context).emptyChatSearch,
-                        },
-                        textAlign: TextAlign.center,
-                      ),
+                      child: Text(switch (controller.activeFilter) {
+                        ActiveFilter.groups => L10n.of(
+                          context,
+                        ).emptyGroupsSearch,
+                        ActiveFilter.activities => L10n.of(
+                          context,
+                        ).emptyActivitiesSearch,
+                        _ => L10n.of(context).emptyChatSearch,
+                      }, textAlign: TextAlign.center),
                     ),
                   if (!controller.isSearchMode &&
                       client.prevBatch != null &&
