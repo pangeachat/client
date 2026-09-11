@@ -22,19 +22,6 @@ abstract class FluffyThemes {
   static bool isThreeColumnMode(BuildContext context) =>
       MediaQuery.sizeOf(context).width > FluffyThemes.columnWidth * 3.5;
 
-  static LinearGradient backgroundGradient(BuildContext context, int alpha) {
-    final colorScheme = Theme.of(context).colorScheme;
-    return LinearGradient(
-      begin: Alignment.topCenter,
-      colors: [
-        colorScheme.primaryContainer.withAlpha(alpha),
-        colorScheme.secondaryContainer.withAlpha(alpha),
-        colorScheme.tertiaryContainer.withAlpha(alpha),
-        colorScheme.primaryContainer.withAlpha(alpha),
-      ],
-    );
-  }
-
   static const Duration animationDuration = Duration(milliseconds: 250);
   static const Curve animationCurve = Curves.easeInOut;
 
@@ -171,10 +158,4 @@ extension BubbleColorTheme on ThemeData {
   Color get onBubbleColor => brightness == Brightness.light
       ? colorScheme.onPrimary
       : colorScheme.onPrimaryContainer;
-
-  Color get secondaryBubbleColor => HSLColor.fromColor(
-    brightness == Brightness.light
-        ? colorScheme.tertiary
-        : colorScheme.tertiaryContainer,
-  ).withSaturation(0.5).toColor();
 }

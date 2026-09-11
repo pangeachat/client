@@ -177,18 +177,6 @@ class ChatView extends StatelessWidget {
             }
             return Scaffold(
               appBar: AppBar(
-                // #Pangea
-                // actionsIconTheme: IconThemeData(
-                //   color: controller.selectedEvents.isEmpty
-                //       ? null
-                //       : theme.colorScheme.onTertiaryContainer,
-                // ),
-                // backgroundColor: controller.selectedEvents.isEmpty
-                //     ? controller.activeThreadId != null
-                //           ? theme.colorScheme.secondaryContainer
-                //           : null
-                //     : theme.colorScheme.tertiaryContainer,
-                // Pangea#
                 automaticallyImplyLeading: false,
                 leading: controller.selectMode
                     ? IconButton(
@@ -201,7 +189,6 @@ class ChatView extends StatelessWidget {
                         icon: const Icon(Icons.close),
                         onPressed: controller.closeThread,
                         tooltip: L10n.of(context).backToMainChat,
-                        color: theme.colorScheme.onSecondaryContainer,
                       )
                     // #Pangea
                     : controller.widget.backButton != null
@@ -260,8 +247,6 @@ class ChatView extends StatelessWidget {
                               icon: const Icon(Icons.message),
                               label: Text(L10n.of(context).replyInThread),
                               style: TextButton.styleFrom(
-                                foregroundColor:
-                                    theme.colorScheme.onSecondaryContainer,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(4),
                                 ),
