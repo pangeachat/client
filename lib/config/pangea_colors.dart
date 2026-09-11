@@ -20,6 +20,12 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
     required this.onGoldFixed,
     required this.goldContainer,
     required this.onGoldContainer,
+    required this.warning,
+    required this.warningGraphic,
+    required this.warningFixedDim,
+    required this.onWarningFixed,
+    required this.warningContainer,
+    required this.onWarningContainer,
   });
 
   /// Gold that reads as text: a word, an XP count, an icon beside a label.
@@ -44,6 +50,27 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
   /// Ink on [goldContainer].
   final Color onGoldContainer;
 
+  /// Caution that reads as text: the course-language chip when the course is
+  /// not in the learner's target language. Clears 4.5:1 on the surface.
+  final Color warning;
+
+  /// Caution as a mark with a 3:1 floor: the language-mismatch ring on a flag
+  /// chip, a diff underline.
+  final Color warningGraphic;
+
+  /// The bright caution fill, the same value in both themes. Always pair with
+  /// [onWarningFixed].
+  final Color warningFixedDim;
+
+  /// Ink on [warningFixedDim].
+  final Color onWarningFixed;
+
+  /// A tinted caution surface. Always pair with [onWarningContainer].
+  final Color warningContainer;
+
+  /// Ink on [warningContainer].
+  final Color onWarningContainer;
+
   static final PangeaColors _light = _fromKey(Brightness.light);
   static final PangeaColors _dark = _fromKey(Brightness.dark);
 
@@ -52,18 +79,26 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
       brightness == Brightness.light ? _light : _dark;
 
   static PangeaColors _fromKey(Brightness brightness) {
-    // AppConfig.gold is the key colour; every role below is a tone of it.
-    final palette = TonalPalette.fromHct(
-      Hct.fromInt(AppConfig.gold.toARGB32()),
+    // AppConfig.gold and AppConfig.warning are the key colours; every role
+    // below is a tone of one of them.
+    final gold = TonalPalette.fromHct(Hct.fromInt(AppConfig.gold.toARGB32()));
+    final warning = TonalPalette.fromHct(
+      Hct.fromInt(AppConfig.warning.toARGB32()),
     );
     final light = brightness == Brightness.light;
     return PangeaColors(
-      gold: Color(palette.get(light ? 40 : 80)),
-      goldGraphic: Color(palette.get(light ? 50 : 80)),
-      goldFixedDim: Color(palette.get(80)),
-      onGoldFixed: Color(palette.get(10)),
-      goldContainer: Color(palette.get(light ? 90 : 30)),
-      onGoldContainer: Color(palette.get(light ? 10 : 90)),
+      gold: Color(gold.get(light ? 40 : 80)),
+      goldGraphic: Color(gold.get(light ? 50 : 80)),
+      goldFixedDim: Color(gold.get(80)),
+      onGoldFixed: Color(gold.get(10)),
+      goldContainer: Color(gold.get(light ? 90 : 30)),
+      onGoldContainer: Color(gold.get(light ? 10 : 90)),
+      warning: Color(warning.get(light ? 40 : 80)),
+      warningGraphic: Color(warning.get(light ? 50 : 80)),
+      warningFixedDim: Color(warning.get(80)),
+      onWarningFixed: Color(warning.get(10)),
+      warningContainer: Color(warning.get(light ? 90 : 30)),
+      onWarningContainer: Color(warning.get(light ? 10 : 90)),
     );
   }
 
@@ -75,6 +110,12 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
     Color? onGoldFixed,
     Color? goldContainer,
     Color? onGoldContainer,
+    Color? warning,
+    Color? warningGraphic,
+    Color? warningFixedDim,
+    Color? onWarningFixed,
+    Color? warningContainer,
+    Color? onWarningContainer,
   }) => PangeaColors(
     gold: gold ?? this.gold,
     goldGraphic: goldGraphic ?? this.goldGraphic,
@@ -82,6 +123,12 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
     onGoldFixed: onGoldFixed ?? this.onGoldFixed,
     goldContainer: goldContainer ?? this.goldContainer,
     onGoldContainer: onGoldContainer ?? this.onGoldContainer,
+    warning: warning ?? this.warning,
+    warningGraphic: warningGraphic ?? this.warningGraphic,
+    warningFixedDim: warningFixedDim ?? this.warningFixedDim,
+    onWarningFixed: onWarningFixed ?? this.onWarningFixed,
+    warningContainer: warningContainer ?? this.warningContainer,
+    onWarningContainer: onWarningContainer ?? this.onWarningContainer,
   );
 
   @override
@@ -94,6 +141,20 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
       onGoldFixed: Color.lerp(onGoldFixed, other.onGoldFixed, t)!,
       goldContainer: Color.lerp(goldContainer, other.goldContainer, t)!,
       onGoldContainer: Color.lerp(onGoldContainer, other.onGoldContainer, t)!,
+      warning: Color.lerp(warning, other.warning, t)!,
+      warningGraphic: Color.lerp(warningGraphic, other.warningGraphic, t)!,
+      warningFixedDim: Color.lerp(warningFixedDim, other.warningFixedDim, t)!,
+      onWarningFixed: Color.lerp(onWarningFixed, other.onWarningFixed, t)!,
+      warningContainer: Color.lerp(
+        warningContainer,
+        other.warningContainer,
+        t,
+      )!,
+      onWarningContainer: Color.lerp(
+        onWarningContainer,
+        other.onWarningContainer,
+        t,
+      )!,
     );
   }
 }

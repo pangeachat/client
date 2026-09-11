@@ -19,6 +19,10 @@ void main() {
   const seed = Color(0xFF8560E0);
   final palette = TonalPalette.fromHct(Hct.fromInt(AppConfig.gold.toARGB32()));
   Color tone(int t) => Color(palette.get(t));
+  final warningPalette = TonalPalette.fromHct(
+    Hct.fromInt(AppConfig.warning.toARGB32()),
+  );
+  Color warningTone(int t) => Color(warningPalette.get(t));
 
   final light = PangeaColors.of(Brightness.light);
   final dark = PangeaColors.of(Brightness.dark);
@@ -44,6 +48,48 @@ void main() {
     for (final colors in [light, dark]) {
       expect(colors.goldFixedDim, tone(80));
       expect(colors.onGoldFixed, tone(10));
+    }
+  });
+
+  test('every warning role is a tone of the warning key colour', () {
+    expect(light.warning, warningTone(40));
+    expect(light.warningGraphic, warningTone(50));
+    expect(light.warningContainer, warningTone(90));
+    expect(dark.warning, warningTone(80));
+    expect(dark.warningContainer, warningTone(30));
+    for (final colors in [light, dark]) {
+      expect(colors.warningFixedDim, warningTone(80));
+      expect(colors.onWarningFixed, warningTone(10));
+    }
+  });
+
+  test('warning clears its floors on the surface and the card', () {
+    for (final surface in [
+      lightScheme.surface,
+      lightScheme.surfaceContainerHighest,
+    ]) {
+      expect(contrast(light.warning, surface), greaterThanOrEqualTo(4.5));
+      expect(
+        contrast(light.warningGraphic, surface),
+        greaterThanOrEqualTo(3.0),
+      );
+    }
+    for (final surface in [
+      darkScheme.surface,
+      darkScheme.surfaceContainerHighest,
+    ]) {
+      expect(contrast(dark.warning, surface), greaterThanOrEqualTo(4.5));
+      expect(contrast(dark.warningGraphic, surface), greaterThanOrEqualTo(3.0));
+    }
+    for (final colors in [light, dark]) {
+      expect(
+        contrast(colors.onWarningFixed, colors.warningFixedDim),
+        greaterThanOrEqualTo(4.5),
+      );
+      expect(
+        contrast(colors.onWarningContainer, colors.warningContainer),
+        greaterThanOrEqualTo(4.5),
+      );
     }
   });
 

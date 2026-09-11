@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/routes/chat/events/streaming_stt/editable_transcript.dart';
 import 'package:fluffychat/routes/chat/events/streaming_stt/stt_partial_model.dart';
 
@@ -57,7 +58,10 @@ void main() {
     );
     final spans = span.children!.cast<TextSpan>();
     final changed = spans.firstWhere((s) => s.text == 'hola');
-    expect(changed.style?.decorationColor, AppConfig.warningDeep);
+    expect(
+      changed.style?.decorationColor,
+      PangeaColors.of(Brightness.light).warningGraphic,
+    );
     expect(changed.style?.decorationStyle, TextDecorationStyle.solid);
     final unchanged = spans.firstWhere((s) => s.text == 'mundo');
     expect(unchanged.style?.decorationColor, AppConfig.completedGreen);

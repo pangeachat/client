@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 
 /// The status colours that carry meaning as FOREGROUND — error text and its
@@ -102,10 +103,10 @@ void main() {
   test('STT diff underlines clear 3:1 in both themes', () {
     final light = schemeFor(Brightness.light);
     expectClears(
-      AppConfig.warningDeep,
+      PangeaColors.of(Brightness.light).warningGraphic,
       light,
       graphicFloor,
-      what: 'warningByTheme light (warningDeep)',
+      what: 'warningByTheme light (warningGraphic)',
     );
     expectClears(
       AppConfig.completedGreen,

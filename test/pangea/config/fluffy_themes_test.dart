@@ -79,5 +79,6 @@ void main() {
     expect(AppConfig.goldByTheme(captured), roles.goldFixedDim);
     expect(AppConfig.onGoldByTheme(captured), roles.onGoldFixed);
     expect(AppConfig.goldMarkByTheme(captured), roles.goldGraphic);
+    expect(AppConfig.warningByTheme(captured), roles.warningGraphic);
   });
 }
