@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_storage/get_storage.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_plan_fetch_request.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_fetch_response.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
@@ -246,22 +247,61 @@ void main() {
   });
 
   group('a pause suppresses asking, never answering', () {
+    /// Seeds the TTL cache the way a prior successful fetch would have.
+    Future<void> seed(String activityId) => repo.setCached(
+      ActivityPlanFetchRequest(activityId: activityId, l1: 'en'),
+      ActivityPlanFetchResponse(
+        rawPlan: {
+          'activity_id': activityId,
+          'roles': [
+            {'role_id': 'r1', 'name': 'Cliente'},
+          ],
+        },
+        l1: 'en',
+        versionId: 'v1',
+      ),
+    );
+
     test('a cached plan still serves while paused', () async {
       // Withholding a plan we already hold would turn a throttle into a blank
       // surface for a learner who could have been served from memory — strictly
       // worse than before the pause existed. Only a read that would reach the
       // network is gated.
-      expect(
-        repo.cachedPlan('cached-1', l1: 'en'),
-        isNull,
-        reason: 'precondition: nothing cached for this key yet',
-      );
-
+      await seed('cached-1');
       repo.rateLimitedForTesting();
 
-      // With no cache, the pause applies.
-      final uncached = await repo.lookup('cached-1', l1: 'en');
-      expect(uncached.error, isA<RateLimitedException>());
+      final result = await repo.lookup('cached-1', l1: 'en');
+
+      expect(result.status, ActivityPlanLookupStatus.found);
+      expect(result.plan?.activityId, 'cached-1');
+      expect(result.error, isNull);
+    });
+
+    test('an uncached read is still gated while paused', () async {
+      // The other half of the same rule: this one WOULD reach the network.
+      repo.rateLimitedForTesting();
+      final result = await repo.lookup('uncached-1', l1: 'en');
+      expect(result.status, ActivityPlanLookupStatus.failed);
+      expect(result.error, isA<RateLimitedException>());
+    });
+
+    test('forceRefresh is not exempt — it fetches regardless', () async {
+      await seed('cached-2');
+      repo.rateLimitedForTesting();
+
+      final result = await repo.lookup(
+        'cached-2',
+        l1: 'en',
+        forceRefresh: true,
+      );
+
+      expect(
+        result.error,
+        isA<RateLimitedException>(),
+        reason:
+            'a forced refresh bypasses the cache by definition, so serving it '
+            'from cache would silently ignore what the caller asked for',
+      );
     });
   });
 
