@@ -11,7 +11,7 @@ description: >-
 
 # Local Flutter web dev — startup & restart
 
-The client runs as `fvm flutter run -d web-server --web-port=8090` and is viewed in an **external** Chrome (the Claude-in-Chrome extension), not a Flutter-launched Chrome. The broader stack (Synapse, Choreographer, CMS, bot) is managed by the `pangea-local-setup` control plane (`local-dev/pangea`); this skill is the Flutter-specific nuance that control plane does not solve.
+The client runs as `fvm flutter run -d web-server --web-port=8090` and is viewed in an **external** Chrome (the Claude-in-Chrome extension), not a Flutter-launched Chrome. The broader stack (Synapse, Choreographer, CMS, bot) is brought up by the `pangea-local-setup` skill; this skill is the Flutter-specific nuance that one does not solve.
 
 > **Toolchain (do this first, every time).** The repo pins **Flutter 3.41.4** via `client/.fvmrc`, and CI hard-fails if `.fvmrc` disagrees with `.github/workflows/versions.env`. A bare `flutter` is whatever is global on the machine (often a *different* version → a build that doesn't match what ships, and subtle breakage). **Run everything through the pinned toolchain: `fvm flutter …` / `fvm dart …`.** fvm lives at `~/.pub-cache/bin` — if it's not on PATH, prefix `export PATH="$HOME/.pub-cache/bin:$PATH"`. If fvm is missing entirely: `dart pub global activate fvm && (cd <repo>/client && fvm install)`.
 
@@ -200,7 +200,7 @@ curl -s http://localhost:8090/.env | grep -E "SYNAPSE_URL|HOME_SERVER|CHOREO_API
 
 > `CMS_API` is the **host root** — the client appends `/cms/api/...` itself (`PayloadClient.basePath = "/cms/api"`), so do not include `/cms`. Only the **legacy** Synapse-only local setup (no seeded local CMS) leaves `CMS_API` at staging — and there, authed course content does not load. The full local stack uses `http://localhost:13134`.
 
-`local-dev/pangea env` (the control plane) regenerates the localhost values via `lib/gen-env.sh`; land its output in `.env.local` (the local profile) and activate with `scripts/use-env.sh local`, then clean-restart so the new `.env` is served.
+Set the localhost values in `client/.env.local` (the local profile — `.env` is generated from it, so never edit `.env` in place), activate with `scripts/use-env.sh local`, then clean-restart so the new `.env` is served.
 
 ### Switching environments (local ↔ staging)
 
