@@ -30,11 +30,23 @@ class PangeaHttpException implements Exception {
 
   static const int maxDetailLength = 200;
 
+  /// How long the server asked us to wait before retrying, from its
+  /// `Retry-After` header. Null when it said nothing.
+  ///
+  /// Only a throttle sends this, and honouring it matters more than it looks:
+  /// a rejection is far cheaper for the server to produce than a success, so a
+  /// client that guesses its own backoff and guesses short raises load at the
+  /// exact moment it should be shedding it. That is the 2026-08-04 staging
+  /// latch — a 429 returned ~100x faster than a success and turned one fetch
+  /// per 5s into ~20/sec per card.
+  final Duration? retryAfter;
+
   PangeaHttpException({
     required this.statusCode,
     required this.method,
     required this.path,
     String? detail,
+    this.retryAfter,
   }) : detail = detail == null || detail.length <= maxDetailLength
            ? detail
            : detail.substring(0, maxDetailLength);
@@ -49,8 +61,28 @@ class PangeaHttpException implements Exception {
       method: request?.method ?? 'UNKNOWN',
       path: request == null ? 'unknown' : normalizePath(request.url),
       detail: detail ?? detailFromResponse(response),
+      retryAfter: retryAfterFromResponse(response),
     );
   }
+
+  /// The `Retry-After` delay, or null when absent or unparseable.
+  ///
+  /// Only the delta-seconds form is read. The HTTP-date form is legal but we
+  /// never send it, and a client clock that disagrees with the server's would
+  /// turn it into an arbitrary wait — so an unrecognised value is treated as
+  /// "no advice given" and the caller falls back to its own default, rather
+  /// than being handed a number that could be wildly wrong.
+  static Duration? retryAfterFromResponse(http.Response response) {
+    final raw = response.headers['retry-after'];
+    if (raw == null) return null;
+    final seconds = int.tryParse(raw.trim());
+    if (seconds == null || seconds < 0) return null;
+    return Duration(seconds: seconds);
+  }
+
+  /// [retryAfter] when [error] is a throttle that carried one.
+  static Duration? retryAfterOf(Object? error) =>
+      error is PangeaHttpException ? error.retryAfter : null;
 
   /// The typed failure for a Synapse Pangea module call. Those sites reach the
   /// homeserver through the Matrix SDK's `Api.httpClient` rather than

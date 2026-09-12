@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:http/http.dart' as http;
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
@@ -21,6 +22,7 @@ import 'package:fluffychat/utils/localized_exception_extension.dart';
 /// (the writing-assistance bar), and `toLocalizedString` (the FluffyChat-wide
 /// mapper the course plan renders through).
 void main() {
+  _retryAfterTests();
   TestWidgetsFlutterBinding.ensureInitialized();
 
   late L10n enL10n;
@@ -165,5 +167,72 @@ void main() {
         );
       },
     );
+  });
+}
+
+/// `Retry-After` parsing. The header is the server telling us exactly when its
+/// window frees up; misreading it is worse than ignoring it, so anything that
+/// is not a plain non-negative second count is treated as "no advice given"
+/// and the caller falls back to its own default.
+void _retryAfterTests() {
+  http.Response respond(Map<String, String> headers) => http.Response(
+    '{}',
+    429,
+    headers: headers,
+    request: http.Request('GET', Uri.parse('https://x/y')),
+  );
+
+  group('Retry-After', () {
+    test('a delta-seconds value is read', () {
+      expect(
+        PangeaHttpException.retryAfterFromResponse(
+          respond({'retry-after': '42'}),
+        ),
+        const Duration(seconds: 42),
+      );
+    });
+
+    test('surrounding whitespace does not defeat it', () {
+      expect(
+        PangeaHttpException.retryAfterFromResponse(
+          respond({'retry-after': ' 7 '}),
+        ),
+        const Duration(seconds: 7),
+      );
+    });
+
+    test('an absent header is no advice, not zero', () {
+      // Zero would mean "retry immediately", the opposite of what silence means.
+      expect(PangeaHttpException.retryAfterFromResponse(respond({})), isNull);
+    });
+
+    test('an HTTP-date value is declined rather than guessed at', () {
+      // Legal HTTP, but we never send it, and a client clock that disagrees
+      // with the server's would turn it into an arbitrary wait.
+      expect(
+        PangeaHttpException.retryAfterFromResponse(
+          respond({'retry-after': 'Wed, 21 Oct 2026 07:28:00 GMT'}),
+        ),
+        isNull,
+      );
+    });
+
+    test('a negative value is declined', () {
+      expect(
+        PangeaHttpException.retryAfterFromResponse(
+          respond({'retry-after': '-5'}),
+        ),
+        isNull,
+      );
+    });
+
+    test('it rides on the typed exception for callers to read', () {
+      final e = PangeaHttpException.fromResponse(
+        respond({'retry-after': '15'}),
+      );
+      expect(e.retryAfter, const Duration(seconds: 15));
+      expect(PangeaHttpException.retryAfterOf(e), const Duration(seconds: 15));
+      expect(PangeaHttpException.retryAfterOf(Exception('other')), isNull);
+    });
   });
 }

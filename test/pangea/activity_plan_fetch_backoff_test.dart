@@ -8,6 +8,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_fetch_response.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
+import 'package:fluffychat/pangea/common/network/rate_limit_pause.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'fake_pangea_controller.dart';
 
@@ -196,6 +197,78 @@ void main() {
           PangeaHttpException(statusCode: 429, method: 'GET', path: '/a/{id}'),
         ),
         ActivityPlanLookupStatus.failed,
+      );
+    });
+  });
+
+  group('the pause gates the direct read path, not only ensure()', () {
+    // `lookup` ARMED the pause and never observed it, so every caller that does
+    // not go through `ensure` — the activity start page, the summary read —
+    // walked through an armed pause and re-asked a server that had just said
+    // stop. `ensure` was the only gate, which made the invariant partial.
+    test('lookup declines while paused, without asking the backend', () async {
+      repo.rateLimitedForTesting();
+
+      final result = await repo.lookup('paused-1', l1: 'en');
+
+      expect(result.status, ActivityPlanLookupStatus.failed);
+      expect(
+        result.error,
+        isA<RateLimitedException>(),
+        reason:
+            'the caller must be able to show "wait a moment" rather than '
+            '"check your connection" — and without spending a request to '
+            'rediscover a throttle we already know about',
+      );
+    });
+
+    test('getPlan is gated too, since it delegates to lookup', () async {
+      repo.rateLimitedForTesting();
+      expect(await repo.getPlan('paused-2', l1: 'en'), isNull);
+    });
+
+    test('the read resumes once the pause lapses', () async {
+      repo.rateLimitedForTesting(const Duration(seconds: 30));
+
+      expect(
+        (await repo.lookup('paused-3', l1: 'en')).error,
+        isA<RateLimitedException>(),
+      );
+
+      clock = clock.add(const Duration(seconds: 31));
+      final after = await repo.lookup('paused-3', l1: 'en');
+      expect(
+        after.error,
+        isNot(isA<RateLimitedException>()),
+        reason: 'a throttle is transient — the pause must clear itself',
+      );
+    });
+  });
+
+  group('the server decides how long we wait', () {
+    test('a Retry-After shorter than the default is honoured', () async {
+      // Guessing a flat minute when the server said five seconds costs the
+      // learner 55s of a surface that could already have loaded.
+      repo.rateLimitedForTesting(const Duration(seconds: 5));
+
+      clock = clock.add(const Duration(seconds: 6));
+
+      expect(
+        (await repo.lookup('retry-1', l1: 'en')).error,
+        isNot(isA<RateLimitedException>()),
+      );
+    });
+
+    test('a Retry-After longer than the default is honoured', () async {
+      // The direction that protects the SERVER: retrying at 60s when it asked
+      // for 120s is what turns a throttle into sustained load.
+      repo.rateLimitedForTesting(const Duration(seconds: 120));
+
+      clock = clock.add(const Duration(seconds: 61));
+
+      expect(
+        (await repo.lookup('retry-2', l1: 'en')).error,
+        isA<RateLimitedException>(),
       );
     });
   });

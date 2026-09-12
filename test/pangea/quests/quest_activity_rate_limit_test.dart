@@ -69,7 +69,7 @@ void main() {
     });
 
     test('the pause lifts on its own — a throttle is not terminal', () {
-      final pause = RateLimitPause(const Duration(seconds: 60));
+      final pause = RateLimitPause(duration: const Duration(seconds: 60));
       pause.recordFailure(http(429));
       expect(pause.isPaused, isTrue);
 
@@ -119,7 +119,7 @@ void main() {
       });
 
       test('every further call during the SAME activation reports false', () {
-        final pause = RateLimitPause(const Duration(seconds: 60));
+        final pause = RateLimitPause(duration: const Duration(seconds: 60));
         pause.recordFailure(http(429));
         expect(pause.reportSuppressionOnce({'call': 1}), isTrue);
         expect(pause.reportSuppressionOnce({'call': 2}), isFalse);
@@ -129,7 +129,7 @@ void main() {
       test(
         'a fresh 429 after the window lapses re-arms it for a new report',
         () {
-          final pause = RateLimitPause(const Duration(seconds: 60));
+          final pause = RateLimitPause(duration: const Duration(seconds: 60));
           pause.recordFailure(http(429));
           expect(pause.reportSuppressionOnce({'call': 1}), isTrue);
 

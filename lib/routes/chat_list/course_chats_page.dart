@@ -133,7 +133,6 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
     // no v1 course-plan activity-id set to filter against anymore.
     for (final chunk in discoveredChildren) {
       final summary = _roomSummaries[chunk.roomId];
-      Logs().w("Summary: $summary");
       if (summary == null) {
         continue;
       }
