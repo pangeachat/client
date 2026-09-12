@@ -98,7 +98,15 @@ class PangeaHttpException implements Exception {
     http.StreamedResponse response,
     List<int> body,
   ) => PangeaHttpException.fromResponse(
-    http.Response.bytes(body, response.statusCode, request: request),
+    // Headers come across too: `http.Response.bytes` defaults them to empty, so
+    // omitting them silently drops `Retry-After` on this path and the caller
+    // falls back to guessing — the one thing the header exists to stop.
+    http.Response.bytes(
+      body,
+      response.statusCode,
+      request: request,
+      headers: response.headers,
+    ),
   );
 
   static final _uuid = RegExp(

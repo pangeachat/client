@@ -355,19 +355,26 @@ class ActivityPlanRepo
     // path every fetch drains into, or it does not hold at all. A cached plan
     // is unaffected: [cachedPlan] answers without reaching this, so a pause
     // suppresses re-fetching, never reading.
-    if (_rateLimitPause.isPaused) {
+    final request = _request(activityId, l1, version: version);
+    // Not knowable yet, not gone: `failed` is the transient status, so callers
+    // keep the activity and retry rather than treating it as removed.
+    if (request == null) {
+      return const ActivityPlanLookup(ActivityPlanLookupStatus.failed);
+    }
+    // The pause suppresses ASKING, never answering. A plan already in the TTL
+    // cache costs no request, so withholding it would turn a throttle into a
+    // blank surface for a learner who could have been served from memory —
+    // strictly worse than before the pause existed. Only a read that would
+    // actually reach the network is gated, which is why the cache is consulted
+    // first and `forceRefresh` (which will fetch regardless) is not exempt.
+    final servableFromCache = !forceRefresh && getCached(request) != null;
+    if (_rateLimitPause.isPaused && !servableFromCache) {
       _rateLimitPause.reportSuppressionOnce({'activityId': activityId});
       return ActivityPlanLookup(
         ActivityPlanLookupStatus.failed,
         null,
         RateLimitedException(),
       );
-    }
-    final request = _request(activityId, l1, version: version);
-    // Not knowable yet, not gone: `failed` is the transient status, so callers
-    // keep the activity and retry rather than treating it as removed.
-    if (request == null) {
-      return const ActivityPlanLookup(ActivityPlanLookupStatus.failed);
     }
     final result = await get(request, forceRefresh: forceRefresh);
     if (result.isError) {
@@ -547,11 +554,19 @@ class ActivityPlanRepo
       if (_rateLimitPause.isPaused) {
         // Rate-limited while this backlog waited. Draining it anyway would just
         // spend the NEXT window the moment the pause lifts: the same burst,
-        // spread thin, not prevented. Dropping is safe because every queued key
-        // is parked in [_nextAttempt], so `build()` re-offers it once both the
-        // pause and the cooldown have lapsed.
+        // spread thin, not prevented. Dropping is safe because `build()`
+        // re-offers every key on the next frame.
+        //
+        // The attempt park is released with them. These entries never reached
+        // the network, so there is no attempt to back off from — and leaving
+        // them parked for the full [_attemptCooldown] would outlast a shorter
+        // pause: the server says come back in 5s, and the cooldown then holds
+        // the screen empty for the remaining 55. That could not happen while
+        // the pause was itself a hardcoded 60s, which is exactly why honouring
+        // `Retry-After` is what surfaced it.
         for (final item in _queued) {
           _hydrating.remove(item.key);
+          _nextAttempt.remove(item.key);
         }
         _queued.clear();
         return;

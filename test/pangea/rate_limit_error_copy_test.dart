@@ -226,6 +226,24 @@ void _retryAfterTests() {
       );
     });
 
+    test('a streamed response keeps its headers', () {
+      // `http.Response.bytes` defaults headers to empty, so materializing a
+      // streamed 429 without passing them silently drops the one header the
+      // caller needs and sends it back to guessing.
+      final request = http.Request('GET', Uri.parse('https://x/y'));
+      final streamed = http.StreamedResponse(
+        const Stream<List<int>>.empty(),
+        429,
+        headers: {'retry-after': '12'},
+      );
+      final e = PangeaHttpException.fromStreamedResponse(
+        request,
+        streamed,
+        <int>[],
+      );
+      expect(e.retryAfter, const Duration(seconds: 12));
+    });
+
     test('it rides on the typed exception for callers to read', () {
       final e = PangeaHttpException.fromResponse(
         respond({'retry-after': '15'}),

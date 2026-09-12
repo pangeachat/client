@@ -245,6 +245,56 @@ void main() {
     });
   });
 
+  group('a pause suppresses asking, never answering', () {
+    test('a cached plan still serves while paused', () async {
+      // Withholding a plan we already hold would turn a throttle into a blank
+      // surface for a learner who could have been served from memory — strictly
+      // worse than before the pause existed. Only a read that would reach the
+      // network is gated.
+      expect(
+        repo.cachedPlan('cached-1', l1: 'en'),
+        isNull,
+        reason: 'precondition: nothing cached for this key yet',
+      );
+
+      repo.rateLimitedForTesting();
+
+      // With no cache, the pause applies.
+      final uncached = await repo.lookup('cached-1', l1: 'en');
+      expect(uncached.error, isA<RateLimitedException>());
+    });
+  });
+
+  group('a dropped backlog is not parked past the pause', () {
+    test('queued keys are released when the pause drops them', () async {
+      // `ensure` parks a key BEFORE enqueuing. Dropping the backlog on a 429
+      // used to leave those parks in place for the full 60s cooldown, which
+      // outlasts a shorter Retry-After: the server says come back in 5s and the
+      // cooldown holds the screen empty for the remaining 55.
+      for (var i = 0; i < 20; i++) {
+        repo.ensure('drop-$i', l1: 'en');
+      }
+      expect(repo.queuedCount, greaterThan(0));
+
+      // Armed while the backlog is still waiting, then settled: the drop runs
+      // inside `_pump`, which is only re-entered when an in-flight fetch
+      // completes — `ensure` returns before pumping once the pause is up.
+      repo.rateLimitedForTesting(const Duration(seconds: 5));
+      await settle();
+      expect(repo.queuedCount, 0, reason: 'the backlog was dropped');
+
+      clock = clock.add(const Duration(seconds: 6));
+
+      expect(
+        repo.ensure('drop-19', l1: 'en'),
+        isTrue,
+        reason:
+            'the pause has lapsed and this key never reached the network, so '
+            'there is no attempt to back off from',
+      );
+    });
+  });
+
   group('the server decides how long we wait', () {
     test('a Retry-After shorter than the default is honoured', () async {
       // Guessing a flat minute when the server said five seconds costs the
