@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:collection';
+import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 
@@ -7,6 +8,7 @@ import 'package:http/http.dart' show Response;
 import 'package:sentry_flutter/sentry_flutter.dart' show SentryLevel;
 
 import 'package:fluffychat/features/activity_sessions/activity_media_repo.dart';
+import 'package:fluffychat/features/activity_sessions/activity_plan_batch.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_fetch_request.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_fetch_response.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
@@ -19,6 +21,16 @@ import 'package:fluffychat/pangea/common/utils/confirmed_removed_cache.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/persistent_repo_cache.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+
+/// One hydration waiting for a slot: the key that identifies it in the repo's
+/// suppression state, plus what the read needs.
+typedef _QueuedHydration = ({
+  String activityId,
+  String? l1,
+  String? version,
+  String key,
+  bool forceRefresh,
+});
 
 /// How a plan [ActivityPlanRepo.lookup] resolved.
 enum ActivityPlanLookupStatus {
@@ -153,9 +165,7 @@ class ActivityPlanRepo
   /// it inline; it now uses the shared [RateLimitPause] that was extracted
   /// from it, so the two cannot drift — notably over how long to wait, which
   /// is now the server's `Retry-After` rather than either one's guess.
-  final RateLimitPause _rateLimitPause = RateLimitPause(
-    clock: () => ActivityPlanRepo.now(),
-  );
+  RateLimitPause get _rateLimitPause => RateLimitPause.choreoReads;
 
   static const Duration _attemptCooldown = Duration(seconds: 60);
 
@@ -187,21 +197,28 @@ class ActivityPlanRepo
   /// issues no I/O, so the frame-rate re-offer is bounded CPU, never traffic.
   static const int _maxQueued = 120;
 
+  /// Most activities one request may carry. Matches the backend's own cap on
+  /// the batch read, so a full batch is never rejected as oversized — a limit
+  /// the client could exceed would turn a hydration into a 422 and leave the
+  /// screen empty.
+  static const int _maxBatchSize = 50;
+
   int _inFlight = 0;
+
+  /// Completes when the batch currently carrying a storage key finishes.
+  ///
+  /// `BaseRepo` de-duplicates concurrent reads of one key through its own
+  /// in-flight registry, but a batched read never enters it — so without this a
+  /// learner opening an activity while its card is still hydrating would send a
+  /// second request for the same plan, spend the allowance twice, and expose
+  /// the direct read to a throttle the batch had already survived. [lookup]
+  /// joins the batch instead of racing it.
+  final Map<String, Future<void>> _batchInFlight = {};
 
   /// Hydrations accepted by [ensure] and awaiting a free slot. Keys here are in
   /// [_hydrating] (so a rebuild cannot enqueue them twice) and parked in
   /// [_nextAttempt] (so dropping one cannot produce a frame-rate retry).
-  final Queue<
-    ({
-      String activityId,
-      String? l1,
-      String? version,
-      String key,
-      bool forceRefresh,
-    })
-  >
-  _queued = Queue();
+  final Queue<_QueuedHydration> _queued = Queue();
 
   @visibleForTesting
   int get inFlightCount => _inFlight;
@@ -209,10 +226,20 @@ class ActivityPlanRepo
   @visibleForTesting
   int get queuedCount => _queued.length;
 
-  /// Test seam: [ensure]'s clock. Backoff is wall-clock, so tests would
+  /// Test seam: this repo's clock. Backoff is wall-clock, so tests would
   /// otherwise need real delays.
+  ///
+  /// Reads and writes [RateLimitPause.now] rather than holding its own, so the
+  /// attempt cooldowns here and the shared pause can never disagree about what
+  /// time it is. Two seams for one subsystem meant a test advancing this one
+  /// left the pause frozen, and the pause then never lapsed — which reads in
+  /// the output as the suppression logic being wrong rather than the clocks
+  /// being out of step.
   @visibleForTesting
-  static DateTime Function() now = DateTime.now;
+  static DateTime Function() get now => RateLimitPause.now;
+
+  @visibleForTesting
+  static set now(DateTime Function() clock) => RateLimitPause.now = clock;
 
   /// Drops all suppression state, persisted verdicts included. Exposed for
   /// tests and for an explicit user-initiated refresh, which must never be
@@ -367,6 +394,25 @@ class ActivityPlanRepo
     // strictly worse than before the pause existed. Only a read that would
     // actually reach the network is gated, which is why the cache is consulted
     // first and `forceRefresh` (which will fetch regardless) is not exempt.
+    // Join a batch already carrying this key instead of racing it with a second
+    // request for the same plan. Skipped for a forced refresh, which exists to
+    // go past whatever is already in flight.
+    if (!forceRefresh) {
+      final inFlight = _batchInFlight[request.storageKey];
+      if (inFlight != null) {
+        await inFlight;
+        final landed = _resolved[request.storageKey];
+        if (landed != null) {
+          return ActivityPlanLookup(ActivityPlanLookupStatus.found, landed);
+        }
+        // The batch did not produce this plan (removed, unavailable, or a
+        // failed request). Fall through: the checks below decide which of those
+        // it was, on the same evidence the single read always used.
+        if (await _confirmedRemoved.contains(activityId)) {
+          return const ActivityPlanLookup(ActivityPlanLookupStatus.removed);
+        }
+      }
+    }
     final servableFromCache = !forceRefresh && getCached(request) != null;
     if (_rateLimitPause.isPaused && !servableFromCache) {
       _rateLimitPause.reportSuppressionOnce({'activityId': activityId});
@@ -538,8 +584,29 @@ class ActivityPlanRepo
       key: key,
       forceRefresh: doRevalidate,
     ));
-    _pump();
+    _schedulePump();
     return true;
+  }
+
+  /// Whether a pump is already queued for the end of this turn.
+  bool _pumpScheduled = false;
+
+  /// Dispatches after the current synchronous pass, not during it.
+  ///
+  /// This is what makes a screen cost ONE request. [ensure] is called per card
+  /// from `build()`, so a frame offers its keys one at a time; pumping inline
+  /// meant the first key was already in flight before the second arrived, and
+  /// a 12-card screen dispatched 12 times — batching that never batched. A
+  /// microtask runs before the next event-loop turn, so nothing is delayed in
+  /// any sense a learner could perceive; it only lets the frame finish
+  /// enqueuing first.
+  void _schedulePump() {
+    if (_pumpScheduled) return;
+    _pumpScheduled = true;
+    scheduleMicrotask(() {
+      _pumpScheduled = false;
+      _pump();
+    });
   }
 
   /// Dispatches from [_queued] while a slot is free, then stops.
@@ -571,37 +638,212 @@ class ActivityPlanRepo
         _queued.clear();
         return;
       }
-      final item = _queued.removeFirst();
+      final batch = _takeBatch();
+      if (batch.isEmpty) return;
       _inFlight++;
-      getPlan(
-            item.activityId,
-            l1: item.l1,
-            version: item.version,
-            forceRefresh: item.forceRefresh,
-          )
+      final hydration = _hydrateBatch(batch);
+      for (final item in batch) {
+        _batchInFlight[item.key] = hydration;
+      }
+      hydration
           .catchError((Object e, StackTrace s) {
-            // `getPlan` is fire-and-forget here, and `.plan`'s mapping runs
-            // outside BaseRepo's try/catch, so without this a malformed body is
-            // an unhandled async error. The parked entry stays put, so it
+            // Fire-and-forget, and the response mapping runs outside the
+            // network layer's try/catch, so without this a malformed body is an
+            // unhandled async error. The parked entries stay put, so they
             // cannot re-arm.
             ErrorHandler.logError(
               e: e,
               s: s,
               data: {
-                'activityId': item.activityId,
-                'l1': item.l1,
-                'version': item.version,
+                'activityIds': batch.map((i) => i.activityId).toList(),
+                'l1': batch.first.l1,
               },
               level: SentryLevel.warning,
             );
-            return null;
           })
           .whenComplete(() {
             _inFlight--;
-            _hydrating.remove(item.key);
-            _pump();
+            for (final item in batch) {
+              _hydrating.remove(item.key);
+              _batchInFlight.remove(item.key);
+            }
+            _schedulePump();
           });
     }
+  }
+
+  /// Takes the next group of queued keys that can travel in ONE request.
+  ///
+  /// A batch carries a single `l1` for every activity in it, so the group is
+  /// cut at the first key with a different one rather than reordering the
+  /// queue: hydration order is the order surfaces asked, and a learner watching
+  /// a screen fill in should not see it rearranged to suit the transport. In
+  /// practice one screen shares one display language and the cut never fires.
+  ///
+  /// A `forceRefresh` (revalidating) key is taken alone. The batch read always
+  /// returns current content, so it cannot express "ignore your cache for this
+  /// one and not those" — grouping them would silently downgrade a revalidate
+  /// into an ordinary read.
+  /// One activity appears at most ONCE per request. The wire format keys pinned
+  /// versions by activity id, so the same activity at two versions — a pinned
+  /// session read and an unpinned map read, say — cannot both be expressed, and
+  /// the single returned plan would then be cached under BOTH version keys. A
+  /// learner would be scored against roles and goals from a version they were
+  /// never pinned to. The later one waits for the next request instead.
+  List<_QueuedHydration> _takeBatch() {
+    if (_queued.isEmpty) return const [];
+    final first = _queued.removeFirst();
+    if (first.forceRefresh) return [first];
+    final batch = <_QueuedHydration>[first];
+    final taken = {first.activityId};
+    final deferred = <_QueuedHydration>[];
+    while (batch.length < _maxBatchSize && _queued.isNotEmpty) {
+      final next = _queued.first;
+      if (next.l1 != first.l1 || next.forceRefresh) break;
+      _queued.removeFirst();
+      if (taken.add(next.activityId)) {
+        batch.add(next);
+      } else {
+        deferred.add(next);
+      }
+    }
+    // Deferred keys go back at the FRONT, in order: they were asked for before
+    // everything still queued behind them, and a key that keeps losing its
+    // place would starve.
+    for (final item in deferred.reversed) {
+      _queued.addFirst(item);
+    }
+    return batch;
+  }
+
+  /// Reads a whole batch in one request and files each outcome where the
+  /// single-read path files it — the cache, the removed-verdict cache, or
+  /// nowhere (left parked, to be retried).
+  ///
+  /// A single-activity batch still goes through here rather than falling back
+  /// to [getPlan]: one code path means the two cannot answer differently, and
+  /// the backend charges the same either way.
+  Future<void> _hydrateBatch(List<_QueuedHydration> batch) async {
+    // The language is resolved ONCE, here, and carried through acceptance. The
+    // viewer's display language is mutable: recomputing it after the response
+    // lands would file a plan fetched for the old language under the new
+    // language's key, and the resolved-plan map would then suppress the
+    // hydration that would have fetched the right one.
+    final l1 = batch.first.l1 ?? _viewerDisplayLanguage;
+
+    final wanted = <_QueuedHydration>[];
+    for (final item in batch) {
+      // Known-dead ids never travel. [ensure]'s gate is synchronous, so on a
+      // cold start it cannot see verdicts still being read off disk — the
+      // awaited check is what makes the suppression hold for a NEW session's
+      // first reads too, and dropping it would put the whole CLIENT-EB0 loop
+      // back (753 events across 9 users in 24h, for ids the backend had
+      // already called gone).
+      if (await _confirmedRemoved.contains(item.activityId)) continue;
+      // Cache first, exactly as the single read does through `BaseRepo.get`.
+      // A cold start has an empty resolved-plan map but a full TTL cache, so
+      // without this every surface's first paint would re-fetch plans already
+      // on disk — spending allowance to receive what we are holding.
+      if (!item.forceRefresh) {
+        final cached = getCached(_requestFor(item, l1));
+        if (cached != null) {
+          await _accept(item, l1, cached);
+          continue;
+        }
+      }
+      wanted.add(item);
+    }
+    if (wanted.isEmpty) {
+      notifyListeners();
+      return;
+    }
+
+    final request = ActivityPlanBatchRequest(
+      activityIds: wanted.map((i) => i.activityId).toList(),
+      l1: l1,
+      versions: {
+        for (final item in wanted)
+          if (item.version != null) item.activityId: item.version!,
+      },
+    );
+
+    final ActivityPlanBatchResponse result;
+    try {
+      final res = await createRequests()
+          .post(
+            url: PApiUrls.activityBatch,
+            body: request.toJson(),
+            // No user-context enrichment: this is a catalog read, and the
+            // learner's CEFR and gender say nothing about which plans to
+            // return. Sending them would also leave the request depending on
+            // the backend ignoring fields it does not model.
+            enrichBody: false,
+          )
+          .timeout(timeout);
+      result = ActivityPlanBatchResponse.fromJson(
+        jsonDecode(res.body) as Map<String, dynamic>,
+      );
+    } catch (e, s) {
+      // A 429 is about RATE, so it pauses every read on this budget rather than
+      // the keys that happened to be in this batch.
+      _rateLimitPause.recordFailure(e);
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {'activityIds': request.activityIds, 'l1': l1},
+        // The shared severity table: a throttle or a gone/routine status is a
+        // warning, anything else an error.
+        level: PangeaHttpException.severityOf(e),
+      );
+      return;
+    }
+
+    // Media resolution runs CONCURRENTLY across the batch. It is a second
+    // network hop per plan, so awaiting it one plan at a time would serialize
+    // the whole screen behind the slowest media read — and a plan with no media
+    // at all would wait on plans that have some. Before batching, each
+    // hydration carried its own media independently.
+    await Future.wait([
+      for (final item in wanted)
+        if (result.activities[item.activityId] case final fetched?)
+          _accept(item, l1, fetched),
+    ]);
+
+    for (final item in wanted) {
+      if (result.activities.containsKey(item.activityId)) continue;
+      if (result.removed.contains(item.activityId)) {
+        _confirmedRemoved.mark(item.activityId);
+      }
+      // `unavailable`, and anything the backend omitted entirely, is left
+      // parked: transient by definition, so the key stays eligible once its
+      // cooldown lapses rather than being recorded as a verdict.
+    }
+    notifyListeners();
+  }
+
+  ActivityPlanFetchRequest _requestFor(_QueuedHydration item, String l1) =>
+      ActivityPlanFetchRequest(
+        activityId: item.activityId,
+        l1: l1,
+        version: item.version,
+      );
+
+  /// Files one plan exactly as [lookup] does for a single read: cache it, clear
+  /// any stale removed-verdict, resolve its media, and release the attempt park.
+  Future<void> _accept(
+    _QueuedHydration item,
+    String l1,
+    ActivityPlanFetchResponse fetched,
+  ) async {
+    final request = _requestFor(item, l1);
+    // Same policy hook the single read uses — a body whose mapping throws is
+    // refused rather than memoized for the full TTL.
+    if (!shouldCache(fetched)) return;
+    await setCached(request, fetched);
+    _confirmedRemoved.unmark(item.activityId);
+    _resolved[request.storageKey] = await resolveMedia(fetched.plan);
+    // Cleared only after a fully-mapped success, matching [lookup].
+    _nextAttempt.remove(request.storageKey);
   }
 
   /// Resolves upload-referenced media blocks to CDN urls. Applied to every

@@ -107,6 +107,11 @@ class PApiUrls {
   /// Query: min_lat, min_lng, max_lat, max_lng, l2?, cefr_level?, l1?, limit?.
   static String activitiesBbox = "${PApiUrls._choreoRoute}/v2/activities/bbox";
 
+  /// `POST /choreo/v2/activity/batch` — the many-at-once form of
+  /// [activityById]. A POST only because a long id list does not belong in a
+  /// URI; it reads the same catalog.
+  static String activityBatch = "${PApiUrls._choreoRoute}/v2/activity/batch";
+
   /// The quest's activities (full canonical plans + LO refs) in one read —
   /// the membership-aware course listing. Query: course_room_id? — when it
   /// names a course the caller is a joined member of, the quest owner's
