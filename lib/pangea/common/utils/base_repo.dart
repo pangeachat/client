@@ -27,6 +27,15 @@ abstract class BaseRepo<
 
   final Map<String, Future<Result<TResponse>>> _inflightCache = {};
 
+  /// The read already running for [request], if one is. Lets a subclass that
+  /// reads several keys in one call join a single read that started first,
+  /// instead of issuing a second request for the same content — the same
+  /// de-duplication [get] does for itself, made available to a path that does
+  /// not go through it.
+  @protected
+  Future<Result<TResponse>>? inFlightFor(TRequest request) =>
+      _inflightCache[request.storageKey];
+
   final Duration cacheDuration;
   final Duration timeout;
   final TResponse Function(Map<String, dynamic>) responseFromJson;

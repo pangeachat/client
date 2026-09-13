@@ -651,7 +651,12 @@ class ActivityPlanRepo
         _queued.clear();
         return;
       }
-      final batch = _takeBatch();
+      // Bounded by what is FREE, not by the request-size cap: taking a full
+      // batch while 12 activities are still hydrating would put 62 in flight
+      // and defeat the very bound this loop tests.
+      final batch = _takeBatch(
+        (_maxInFlight - _inFlight).clamp(0, _maxBatchSize),
+      );
       if (batch.isEmpty) return;
       _inFlight += batch.length;
       final hydration = _hydrateBatch(batch);
@@ -703,14 +708,14 @@ class ActivityPlanRepo
   /// the single returned plan would then be cached under BOTH version keys. A
   /// learner would be scored against roles and goals from a version they were
   /// never pinned to. The later one waits for the next request instead.
-  List<_QueuedHydration> _takeBatch() {
-    if (_queued.isEmpty) return const [];
+  List<_QueuedHydration> _takeBatch(int capacity) {
+    if (_queued.isEmpty || capacity <= 0) return const [];
     final first = _queued.removeFirst();
     if (first.forceRefresh) return [first];
     final batch = <_QueuedHydration>[first];
     final taken = {first.activityId};
     final deferred = <_QueuedHydration>[];
-    while (batch.length < _maxBatchSize && _queued.isNotEmpty) {
+    while (batch.length < capacity && _queued.isNotEmpty) {
       final next = _queued.first;
       if (next.l1 != first.l1 || next.forceRefresh) break;
       _queued.removeFirst();
@@ -745,6 +750,10 @@ class ActivityPlanRepo
     final l1 = batch.first.l1 ?? _viewerDisplayLanguage;
 
     final wanted = <_QueuedHydration>[];
+    // Cache-hit acceptance is collected, not awaited here: it resolves media,
+    // which is a second network hop, so awaiting it during preparation would
+    // hold the batch request behind plans we already have.
+    final settling = <Future<void>>[];
     for (final item in batch) {
       // Known-dead ids never travel. [ensure]'s gate is synchronous, so on a
       // cold start it cannot see verdicts still being read off disk — the
@@ -757,16 +766,47 @@ class ActivityPlanRepo
       // A cold start has an empty resolved-plan map but a full TTL cache, so
       // without this every surface's first paint would re-fetch plans already
       // on disk — spending allowance to receive what we are holding.
+      final request = _requestFor(item, l1);
       if (!item.forceRefresh) {
-        final cached = getCached(_requestFor(item, l1));
+        final cached = getCached(request);
         if (cached != null) {
-          await _accept(item, l1, cached);
+          // `renewTtl: false` — this content came off disk unchanged, and
+          // restamping it would extend its freshness without anyone having
+          // re-read it, so a stale plan could outlive its TTL indefinitely
+          // across frequent restarts. Only a network response earns a new
+          // timestamp, which is what `BaseRepo.get` does.
+          settling.add(_accept(item, l1, cached, renewTtl: false));
+          continue;
+        }
+        // A single read may already be in flight for this key — the start page
+        // asking just before the map's cards did. Join it rather than sending a
+        // second request for the same plan: `BaseRepo` de-duplicates its own
+        // reads, and a batch that ignored that registry would spend the
+        // allowance twice and race two writers onto one cache entry.
+        final single = inFlightFor(request);
+        if (single != null) {
+          settling.add(single);
           continue;
         }
       }
       wanted.add(item);
     }
     if (wanted.isEmpty) {
+      await Future.wait(settling);
+      notifyListeners();
+      return;
+    }
+
+    // Rechecked immediately before sending. Preparation above awaits disk and
+    // media, and a sibling read on the same budget can earn a 429 in that
+    // window — so the check `_pump` made is already stale by here, and sending
+    // anyway would ignore a stop the server has already issued. The parks go
+    // with it: these never reached the network, so there is no attempt to back
+    // off from.
+    if (_rateLimitPause.isPaused) {
+      for (final item in wanted) {
+        _nextAttempt.remove(_requestFor(item, l1).storageKey);
+      }
       notifyListeners();
       return;
     }
@@ -817,6 +857,7 @@ class ActivityPlanRepo
     // at all would wait on plans that have some. Before batching, each
     // hydration carried its own media independently.
     await Future.wait([
+      ...settling,
       for (final item in wanted)
         if (result.activities[item.activityId] case final fetched?)
           _accept(item, l1, fetched),
@@ -846,13 +887,14 @@ class ActivityPlanRepo
   Future<void> _accept(
     _QueuedHydration item,
     String l1,
-    ActivityPlanFetchResponse fetched,
-  ) async {
+    ActivityPlanFetchResponse fetched, {
+    bool renewTtl = true,
+  }) async {
     final request = _requestFor(item, l1);
     // Same policy hook the single read uses — a body whose mapping throws is
     // refused rather than memoized for the full TTL.
     if (!shouldCache(fetched)) return;
-    await setCached(request, fetched);
+    if (renewTtl) await setCached(request, fetched);
     _confirmedRemoved.unmark(item.activityId);
     _resolved[request.storageKey] = await resolveMedia(fetched.plan);
     // Cleared only after a fully-mapped success, matching [lookup].

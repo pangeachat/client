@@ -10,6 +10,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_plan_fetch_request.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'fake_pangea_controller.dart';
@@ -363,6 +364,86 @@ void main() {
       );
 
       expect(sent, isNotEmpty);
+    });
+
+    test('a cache hit does not renew the plan\'s freshness', () async {
+      // Restamping content that came off disk unchanged would extend its TTL
+      // without anyone re-reading it, so a stale plan could outlive its hour
+      // indefinitely across frequent restarts. Asserted on the persisted
+      // timestamp because the TTL is measured against real wall-clock, which
+      // the repo's clock seam does not drive.
+      await capture((_) => batchOf(found: ['ttl-1']), () async {
+        repo.ensure('ttl-1', l1: 'en');
+        await settle();
+      });
+
+      final box = GetStorage('activity_plan_storage');
+      final key = ActivityPlanFetchRequest(
+        activityId: 'ttl-1',
+        l1: 'en',
+      ).storageKey;
+      final stamped = (box.read(key) as Map)['timestamp'] as int;
+
+      // A fresh session serves it from disk rather than the network.
+      final next = ActivityPlanRepo.forTesting();
+      final requests = await capture(
+        (_) => batchOf(found: ['ttl-1']),
+        () async {
+          next.ensure('ttl-1', l1: 'en');
+          await settle();
+        },
+      );
+      expect(requests, isEmpty, reason: 'precondition: served from cache');
+
+      expect(
+        (box.read(key) as Map)['timestamp'],
+        stamped,
+        reason: 'only a network response earns a new timestamp',
+      );
+    });
+
+    test('a batch never exceeds the free in-flight capacity', () async {
+      // Taking a full batch while activities are still hydrating would put more
+      // in flight than the bound allows — the bound this loop exists to hold.
+      final gate = Completer<void>();
+      final sent = <String>[];
+
+      await http.runWithClient(
+        () async {
+          for (var i = 0; i < 30; i++) {
+            repo.ensure('cap-a-$i', l1: 'en');
+          }
+          await settle();
+          expect(sent.length, 30);
+
+          // A second frame offers 50 more while the first 30 are still in flight.
+          for (var i = 0; i < 50; i++) {
+            repo.ensure('cap-b-$i', l1: 'en');
+          }
+          await settle();
+          expect(
+            sent.length,
+            lessThanOrEqualTo(50),
+            reason:
+                '30 in flight leaves room for 20, not for another full batch',
+          );
+
+          gate.complete();
+          await settle();
+        },
+        () {
+          return MockClient((request) async {
+            sent.addAll(
+              ((jsonDecode(request.body)
+                          as Map<String, dynamic>)['activity_ids']
+                      as List)
+                  .cast<String>(),
+            );
+            await gate.future;
+            return batchOf();
+          });
+        },
+      );
     });
 
     test('a refresh travels alone', () async {
