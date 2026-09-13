@@ -185,10 +185,17 @@ class ActivityPlanRepo
   /// on CONCURRENCY closes that, which is why this is a separate mechanism
   /// rather than another cooldown.
   ///
-  /// 6 is chosen to be small against the 60/min budget (a cold view of 60 pins
-  /// drains over seconds instead of one frame) while still hydrating a visible
-  /// screen fast enough that cards do not pop in one at a time.
-  static const int _maxInFlight = 6;
+  /// Counted in ACTIVITIES, not requests. Each activity in a batch costs the
+  /// learner's allowance exactly what it would have cost alone, so bounding
+  /// batches instead would bound nothing that matters: six batches of
+  /// [_maxBatchSize] is 300 activities from one frame, well past the whole
+  /// minute's allowance — the bound would read as tighter than the original
+  /// per-read one while being fifty times looser.
+  ///
+  /// One full batch at a time. A screen still travels as one request, and a
+  /// view larger than a batch drains over successive turns rather than in a
+  /// single frame.
+  static const int _maxInFlight = _maxBatchSize;
 
   /// Ceiling on ACCEPTED-but-not-yet-dispatched hydrations. A view with more
   /// distinct keys than this is offering more work than the budget can absorb;
@@ -395,12 +402,18 @@ class ActivityPlanRepo
     // actually reach the network is gated, which is why the cache is consulted
     // first and `forceRefresh` (which will fetch regardless) is not exempt.
     // Join a batch already carrying this key instead of racing it with a second
-    // request for the same plan. Skipped for a forced refresh, which exists to
-    // go past whatever is already in flight.
+    // request for the same plan.
+    final inFlight = _batchInFlight[request.storageKey];
+    if (inFlight != null) {
+      // Awaited even for a forced refresh, which must not RACE the batch: both
+      // write the same cache entry, and with no ordering the batch's older
+      // response could land last and overwrite the fresher content the refresh
+      // was asked for. A refresh still refetches afterwards — it only stops
+      // being concurrent with the read it supersedes.
+      await inFlight;
+    }
     if (!forceRefresh) {
-      final inFlight = _batchInFlight[request.storageKey];
       if (inFlight != null) {
-        await inFlight;
         final landed = _resolved[request.storageKey];
         if (landed != null) {
           return ActivityPlanLookup(ActivityPlanLookupStatus.found, landed);
@@ -640,7 +653,7 @@ class ActivityPlanRepo
       }
       final batch = _takeBatch();
       if (batch.isEmpty) return;
-      _inFlight++;
+      _inFlight += batch.length;
       final hydration = _hydrateBatch(batch);
       for (final item in batch) {
         _batchInFlight[item.key] = hydration;
@@ -662,7 +675,7 @@ class ActivityPlanRepo
             );
           })
           .whenComplete(() {
-            _inFlight--;
+            _inFlight -= batch.length;
             for (final item in batch) {
               _hydrating.remove(item.key);
               _batchInFlight.remove(item.key);

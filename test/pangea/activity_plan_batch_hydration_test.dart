@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
@@ -289,6 +290,138 @@ void main() {
             'exposes the direct read to a throttle the batch already survived',
       );
     });
+  });
+
+  group('the rules the batch advertises', () {
+    test('a queue larger than one batch is split at the cap', () async {
+      final ids = [for (var i = 0; i < 51; i++) 'cap-$i'];
+
+      final requests = await capture((_) => batchOf(found: ids), () async {
+        for (final id in ids) {
+          repo.ensure(id, l1: 'en');
+        }
+        await settle();
+        await settle();
+      });
+
+      final sentIds = <String>[];
+      for (final r in requests) {
+        final batch =
+            ((jsonDecode(r.body) as Map<String, dynamic>)['activity_ids']
+                    as List)
+                .cast<String>();
+        expect(
+          batch.length,
+          lessThanOrEqualTo(50),
+          reason: 'the backend rejects an oversized batch as a 422',
+        );
+        sentIds.addAll(batch);
+      }
+      expect(sentIds.length, sentIds.toSet().length);
+    });
+
+    test('in-flight work is bounded by activities, not by requests', () async {
+      // Each activity in a batch costs the allowance what it would have cost
+      // alone, so counting batches would bound nothing that matters: six
+      // batches of 50 is 300 activities from one frame, past the whole minute's
+      // allowance, while reading as a tighter bound than the per-read one it
+      // replaced.
+      final gate = Completer<void>();
+      final ids = [for (var i = 0; i < 120; i++) 'flood-$i'];
+      final sent = <String>[];
+
+      await http.runWithClient(
+        () async {
+          for (final id in ids) {
+            repo.ensure(id, l1: 'en');
+          }
+          await settle();
+
+          expect(
+            sent.length,
+            lessThanOrEqualTo(50),
+            reason:
+                '120 keys offered at once must not all be in flight before a '
+                'single response has come back',
+          );
+
+          gate.complete();
+          await settle();
+        },
+        () {
+          return MockClient((request) async {
+            sent.addAll(
+              ((jsonDecode(request.body)
+                          as Map<String, dynamic>)['activity_ids']
+                      as List)
+                  .cast<String>(),
+            );
+            await gate.future;
+            return batchOf(found: ids);
+          });
+        },
+      );
+
+      expect(sent, isNotEmpty);
+    });
+
+    test('a refresh travels alone', () async {
+      // The read cannot express "ignore your cache for this one and not those",
+      // so grouping a revalidate would silently downgrade it to a normal read.
+      final requests = await capture(
+        (_) => batchOf(found: ['solo-1', 'plain-1', 'plain-2']),
+        () async {
+          repo.ensure('plain-1', l1: 'en');
+          repo.ensure('solo-1', l1: 'en', revalidate: true);
+          repo.ensure('plain-2', l1: 'en');
+          await settle();
+          await settle();
+        },
+      );
+
+      final withSolo = requests.where(
+        (r) =>
+            ((jsonDecode(r.body) as Map<String, dynamic>)['activity_ids']
+                    as List)
+                .contains('solo-1'),
+      );
+      expect(withSolo, hasLength(1));
+      expect(
+        ((jsonDecode(withSolo.single.body)
+                    as Map<String, dynamic>)['activity_ids']
+                as List)
+            .length,
+        1,
+      );
+    });
+
+    test(
+      'an unavailable id is asked for again once its cooldown lapses',
+      () async {
+        await capture((_) => batchOf(unavailable: ['retry-me']), () async {
+          repo.ensure('retry-me', l1: 'en');
+          await settle();
+        });
+        expect(await repo.isConfirmedRemoved('retry-me'), isFalse);
+
+        clock = clock.add(const Duration(seconds: 61));
+        final later = await capture(
+          (_) => batchOf(found: ['retry-me']),
+          () async {
+            repo.ensure('retry-me', l1: 'en');
+            await settle();
+          },
+        );
+
+        expect(
+          ((jsonDecode(later.single.body)
+                  as Map<String, dynamic>)['activity_ids']
+              as List),
+          contains('retry-me'),
+          reason: 'a failed read is transient — the id must stay eligible',
+        );
+      },
+    );
   });
 
   group('a batch carries one display language', () {
