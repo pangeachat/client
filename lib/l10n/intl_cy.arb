@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-09-10 16:50:19.159990",
+    "@@last_modified": "2026-09-14 12:45:23.017665",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2318,5 +2318,15 @@
     "teacherAnalyticsRequestTitle": "Mae athro yn gofyn am eich cynnydd dysgu",
     "teacherAnalyticsRequestDesc": "Byddant yn gweld yr holl eiriau a gramadeg rydych chi wedi'u defnyddio yn {targetLang}, eich lefel ac XP, a'r negeseuon a anfonwyd mewn gweithgareddau cwrs. Ni fydd eich negeseuon 1-ar-1 yn cael eu rhannu. Mae rhannu dadansoddiadau yn ofynnol i ymuno â'r cwrs.",
     "shareAndJoin": "Rhannu ac ymuno",
-    "goBack": "Mynd yn ôl"
+    "goBack": "Mynd yn ôl",
+    "emptyGroupsSearch": "Ni ddarganfuwyd unrhyw grwpiau. Gwnewch yn siŵr bod eich chwiliad wedi'i sillafu'n gywir.",
+    "emptyActivitiesSearch": "Ni ddarganfuwyd unrhyw weithgareddau. Gwnewch yn siŵr bod eich chwiliad wedi'i sillafu'n gywir.",
+    "chatListFiltersLabel": "Hidlwyr sgwrsio",
+    "dms": "Negeseuon Uniongyrchol",
+    "allFilterTooltip": "Dangos pob sgwrs",
+    "dmsFilterTooltip": "Dangos negeseuon uniongyrchol yn unig",
+    "groupsFilterTooltip": "Dangos sgyrsiau grŵp yn unig",
+    "activitiesFilterTooltip": "Dangos gweithgareddau yn unig",
+    "noGroupChatsYet": "Nid ydych mewn unrhyw sgyrsiau grŵp eto.",
+    "noActivitiesYet": "Nid ydych mewn unrhyw weithgareddau eto."
 }

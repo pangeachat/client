@@ -110,8 +110,9 @@ class QuestObjectivesLoader {
   /// the star display at all.
   bool get hasResolvedProgress => _scopedQuest != null;
 
-  /// The "Up next" Mission — the shared resolver's anchor — or null until the
-  /// resolution lands. Callers fall back to the first Mission in the outline.
+  /// The "Up next" Mission — the shared resolver's anchor — or null when there
+  /// is no next step: before the resolution lands, and once every Mission in
+  /// the course is satisfied (#8997). No Mission wears the label then.
   String? get anchorMissionId => _scopedQuest?.anchorMissionId;
 
   /// The next-Mission gradient (0..[kBandCeiling]) for an activity satisfying

@@ -2,11 +2,15 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
-/// Paints the collapsed avatar's XP ring: a full gray circular track with a
+import 'package:fluffychat/routes/world/xp_border_painter.dart';
+
+/// Paints the collapsed avatar's XP ring: a full opaque circular track with a
 /// gold arc filling clockwise from the level badge for [progress] (0-1) of the way to
 /// the next level. The cluster's `XpBorderPainter` traces the powerups pill's
 /// rounded-rect outline instead, so the circular avatar needs this simpler
-/// circular counterpart rather than reusing it as-is.
+/// circular counterpart rather than reusing it as-is. Like its sibling, the
+/// track strokes [XpBorderPainter.trackExtra] wider than the arc so the arc
+/// rides inside it and never meets raw map imagery (#8763, WCAG SC 1.4.11).
 class CircularXpRingPainter extends CustomPainter {
   final double progress;
   final Color trackColor;
@@ -26,6 +30,10 @@ class CircularXpRingPainter extends CustomPainter {
     final radius = (size.shortestSide - stroke) / 2;
     final rect = Rect.fromCircle(center: center, radius: radius);
 
+    // The widened track keeps the arc's centerline (and so the avatar and
+    // badge layout) untouched, overshooting the paint box by trackExtra / 2 on
+    // each side instead: outward over the map like the badge celebration this
+    // Stack already paints with Clip.none, inward under the opaque avatar.
     canvas.drawArc(
       rect,
       0,
@@ -33,7 +41,7 @@ class CircularXpRingPainter extends CustomPainter {
       false,
       Paint()
         ..style = PaintingStyle.stroke
-        ..strokeWidth = stroke
+        ..strokeWidth = stroke + XpBorderPainter.trackExtra
         ..color = trackColor,
     );
 

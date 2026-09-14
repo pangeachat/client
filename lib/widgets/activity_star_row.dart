@@ -53,8 +53,15 @@ class ActivityStarRow extends StatelessWidget {
       // SizedBox(height: 16) — so a second run paints outside the card (#8595).
       // Shrinking keeps it one row; [condensed] is the fallback for counts too
       // high to stay readable at any scale.
+      //
+      // Start-aligned, not the FittedBox default of centred: a host that hands
+      // this a tight width would otherwise float the stars in whatever space
+      // is left over, so the same row sat at a different offset depending on
+      // its neighbours -- the Stars list's rows drifted with the presence of a
+      // CEFR label (#9032). Hosts that want it centred centre it themselves.
       child: FittedBox(
         fit: BoxFit.scaleDown,
+        alignment: AlignmentDirectional.centerStart,
         child: Row(
           mainAxisSize: MainAxisSize.min,
           spacing: 2.0,

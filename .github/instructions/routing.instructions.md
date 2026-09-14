@@ -895,8 +895,11 @@ On a narrow screen the cluster becomes the
 [single-column analytics nav bar](#single-column-analytics-nav-bar) — same elements,
 same tokens, horizontal at the top.
 It has its own gold **"powerups" visual** (per Figma), top to bottom: the user's
-**avatar** wrapped in an XP ring (a gray track that fills gold clockwise toward
-the next level, resetting on level-up); a gold **powerups pill** of three
+**avatar** wrapped in an XP ring (an opaque track that fills gold clockwise
+toward the next level, resetting on level-up — deep gray in light, deep gold in
+dark, stroked wider than the gold arc so the arc rides inside it and stays
+readable over map tiles: `AppConfig.xpTrackByTheme`, #8763); a gold **powerups
+pill** of three
 trackers — total **Stars** earned, **Grammar**, **Vocabulary** — with the
 **level medal** overhanging its base; and the active L2 **flag** below. The
 Stars count is the learner's stars summed across activities, best per activity

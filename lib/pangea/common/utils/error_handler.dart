@@ -98,21 +98,37 @@ class ErrorHandler {
   /// ~30 events/day. [logError] collapses everything matching here into one
   /// grouping ([_expiredTokenFingerprint]) and one report per app session.
   ///
-  /// Three shapes, all the same condition:
+  /// Four shapes, all the same condition:
   /// - the Matrix SDK's own `M_UNKNOWN_TOKEN` failure;
   /// - a choreo 401 — choreo validates the bearer via Synapse WhoAmI, and an
   ///   expired token makes that check itself 401;
   /// - a Pangea Synapse-module 401 — the homeserver rejecting the bearer
-  ///   directly.
+  ///   directly;
+  /// - a CMS read answered 403 ([_isCmsReadDenied]) — the same rejection,
+  ///   one hop later and mislabelled.
   ///
-  /// Any other 401 (e.g. one with no expired-token detail) keeps its own
-  /// per-endpoint grouping and is never capped.
+  /// Any other 401 or 403 (a 401 with no expired-token detail, a 403 on a
+  /// write) keeps its own per-endpoint grouping and is never capped.
   static bool _isExpiredTokenError(Object e) {
     if (e is MatrixException) return e.error == MatrixError.M_UNKNOWN_TOKEN;
-    if (e is! PangeaHttpException || e.statusCode != 401) return false;
+    if (e is! PangeaHttpException) return false;
+    if (e.statusCode == 403) return _isCmsReadDenied(e);
+    if (e.statusCode != 401) return false;
     return (e.detail?.contains('Matrix WhoAmI non-200 (401)') ?? false) ||
         e.path.startsWith('/_synapse/client/pangea');
   }
+
+  /// Whether [e] is a CMS read denied with Payload's generic 403. The CMS
+  /// validates the bearer through its own Synapse whoami hop; a rejected
+  /// token makes that hop 401, the auth strategy swallows it into "no user",
+  /// and the read rule denies with a detail-less 403. Every collection the
+  /// client reads admits any Matrix user, so on a read that 403 can only be
+  /// the token — it landed in the same boot burst as the 401s, one hop later,
+  /// as its own error-level issue (CLIENT-EBF, #8372). Writes are left out:
+  /// their rules are per-role, so a 403 there can be a real permission bug
+  /// and keeps the 403 row of the severity table.
+  static bool _isCmsReadDenied(PangeaHttpException e) =>
+      e.method == 'GET' && e.path.startsWith('/cms/api/');
 
   /// The grouping key and session cap key for a request that never reached a
   /// server.

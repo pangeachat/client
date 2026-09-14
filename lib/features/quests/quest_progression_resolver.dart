@@ -69,9 +69,8 @@ class QuestProgress {
   final List<String> orderedMissionIds;
 
   /// The anchor (next) Mission: the first Mission in order whose star total is
-  /// below the threshold; once every Mission is satisfied, the lowest-star
-  /// Mission (so a finished quest keeps pointing at the weakest area). Null only
-  /// when the sequence is empty.
+  /// below the threshold. Null when there is no next step — every scored
+  /// Mission satisfied, or none scored at all.
   final String? anchorMissionId;
 
   final Map<String, int> indexByMission;
@@ -290,9 +289,9 @@ ProgressionResolution resolveProgression({
 }
 
 /// The anchor (next) Mission for one quest's ordered [seq]: the first Mission
-/// whose rollup is below threshold; once all are satisfied, the lowest-star
-/// Mission, tie-broken by earliest quest order (deterministic, so the anchor
-/// does not flicker between equal-star frames).
+/// whose rollup is below threshold. Null once every scored Mission is
+/// satisfied — a finished quest has no next step, and naming one anyway
+/// pointed the learner back at work already done (#8997).
 ///
 /// Missions absent from [rollup] are unscored — the outline gives them no
 /// activities — so they are skipped. Anchoring one would point the learner at a
@@ -304,15 +303,5 @@ String? _anchorFor(List<String> seq, Map<String, MissionProgress> rollup) {
     if (progress == null) continue;
     if (!progress.satisfied) return missionId;
   }
-  String? lowest;
-  int? lowestStars;
-  for (final missionId in seq) {
-    final progress = rollup[missionId];
-    if (progress == null) continue;
-    if (lowestStars == null || progress.stars < lowestStars) {
-      lowest = missionId;
-      lowestStars = progress.stars;
-    }
-  }
-  return lowest;
+  return null;
 }

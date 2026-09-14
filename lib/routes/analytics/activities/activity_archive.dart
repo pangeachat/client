@@ -17,6 +17,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/routes/analytics/analytics_navigation_util.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
+import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/activity_star_row.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
@@ -145,7 +146,15 @@ class AnalyticsActivityItem extends StatelessWidget {
         : RovingFocusGroup.nodeOf(context, rovingId);
 
     final activity = room.activityPlan;
-    final title = activity?.title ?? '';
+    // A v3 session's plan is hydrated from CMS, so it can be null (still
+    // loading, or gone from the backend) and can land with an empty title. The
+    // room was named after the activity at creation, so fall back to the room
+    // name rather than a blank row (#9033) — the same rung the start page's
+    // archived session lands on (activities.instructions.md).
+    final planTitle = activity?.title ?? '';
+    final title = planTitle.isNotEmpty
+        ? planTitle
+        : room.getLocalizedDisplayname(MatrixLocals(L10n.of(context)));
     final goals = room.ownRole?.allGoals;
 
     final cefrLevel = room.activitySummaryByL1?.summary?.participants

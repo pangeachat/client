@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-10 16:50:19.801911",
+    "@@last_modified": "2026-09-14 12:45:22.887544",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10859,5 +10859,15 @@
     "teacherAnalyticsRequestTitle": "Instruisto petas vian lernan progreson",
     "teacherAnalyticsRequestDesc": "Ili vidos ĉiujn vortojn kaj gramatikon, kiujn vi uzis en {targetLang}, vian nivelon kaj spertopunktojn, kaj la mesaĝojn senditajn en kursaj agadoj. Viaj unu-al-unu mesaĝoj ne estos kundividitaj. Kundivido de analizoj estas postulata por aliĝi al la kurso.",
     "shareAndJoin": "Kunhavigi kaj aliĝi",
-    "goBack": "Reen"
+    "goBack": "Reen",
+    "emptyGroupsSearch": "Neniuj grupoj trovitaj. Certigu, ke via serĉo estas ĝuste literumita.",
+    "emptyActivitiesSearch": "Neniuj agadoj trovitaj. Certigu, ke via serĉo estas ĝuste literumita.",
+    "chatListFiltersLabel": "Babilfiltriloj",
+    "dms": "DM-oj",
+    "allFilterTooltip": "Montri ĉiujn babilojn",
+    "dmsFilterTooltip": "Montri nur rektajn mesaĝojn",
+    "groupsFilterTooltip": "Montri nur grupajn babilojn",
+    "activitiesFilterTooltip": "Montri nur agadojn",
+    "noGroupChatsYet": "Vi ankoraŭ ne estas en iuj grupaj babiloj.",
+    "noActivitiesYet": "Vi ankoraŭ ne estas en iuj agadoj."
 }

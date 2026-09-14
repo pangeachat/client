@@ -3452,6 +3452,12 @@ class ChatController extends State<ChatPageWithRoom>
         ? await choreographer.requestWritingAssistance(manual: manual)
         : await choreographer.rerunWithFeedback(feedback);
 
+    // The run outlives the chat when the learner leaves mid-request, and a
+    // disposed State has no context for the card, the composer focus, or a
+    // send (CLIENT-EP8, #8993). #8952 declines the controller's own updates
+    // after that exit; this is the caller's side of it.
+    if (!mounted) return;
+
     if (choreographer.assistanceState == AssistanceStateEnum.fetched) {
       showNextMatch();
     } else if (choreographer.assistanceState ==

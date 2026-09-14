@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-09-10 16:50:28.071373",
+    "@@last_modified": "2026-09-14 12:45:30.701333",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2318,5 +2318,15 @@
     "teacherAnalyticsRequestTitle": "Guru meminta kemajuan pembelajaran anda",
     "teacherAnalyticsRequestDesc": "Mereka akan melihat semua perkataan dan tatabahasa yang anda gunakan dalam {targetLang}, tahap dan XP anda, serta mesej yang dihantar dalam aktiviti kursus. Mesej 1-dengan-1 anda tidak akan dikongsi. Perkongsian analitik diperlukan untuk menyertai kursus.",
     "shareAndJoin": "Kongsi dan sertai",
-    "goBack": "Kembali"
+    "goBack": "Kembali",
+    "emptyGroupsSearch": "Tiada kumpulan ditemui. Pastikan carian anda dieja dengan betul.",
+    "emptyActivitiesSearch": "Tiada aktiviti ditemui. Pastikan carian anda dieja dengan betul.",
+    "chatListFiltersLabel": "Penapis sembang",
+    "dms": "DM",
+    "allFilterTooltip": "Tunjukkan semua sembang",
+    "dmsFilterTooltip": "Tunjukkan hanya mesej langsung",
+    "groupsFilterTooltip": "Tunjukkan hanya sembang kumpulan",
+    "activitiesFilterTooltip": "Tunjukkan hanya aktiviti",
+    "noGroupChatsYet": "Anda belum menyertai mana-mana sembang kumpulan.",
+    "noActivitiesYet": "Anda belum menyertai mana-mana aktiviti."
 }

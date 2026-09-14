@@ -157,21 +157,6 @@ void main() {
       expect(find.text(upNextLabel), findsNothing);
     });
 
-    testWidgets('a satisfied Mission that is also Up next keeps the label and '
-        'the check', (tester) async {
-      // Every Mission satisfied → the resolver anchors on the weakest one.
-      await pumpAt(
-        tester,
-        1200,
-        isUpNext: true,
-        progress: const MissionProgress(stars: 4, threshold: 4),
-      );
-
-      expect(find.text(upNextLabel), findsOneWidget);
-      expect(headerIcon(tester, '4/4', Icons.check_circle), findsOneWidget);
-      expect(colorOf(tester, objectiveText), scheme(tester).primary);
-    });
-
     testWidgets('a later Mission stays plain', (tester) async {
       await pumpAt(
         tester,

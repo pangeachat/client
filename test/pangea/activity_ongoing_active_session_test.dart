@@ -1,17 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/features/activity_sessions/activity_media_enum.dart';
-import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
-import 'package:fluffychat/features/activity_sessions/activity_plan_request.dart';
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
-import 'package:fluffychat/features/activity_sessions/activity_roles_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
-import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_awarded_goals.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
-import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
-import 'package:fluffychat/routes/chat/events/constants/pangea_room_types.dart';
-import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
+import 'activity_session_fixtures.dart';
 import 'get_test_client.dart';
 
 /// #8278 — the Chats-list tile shows a session's star row only where its world
@@ -25,10 +18,7 @@ import 'get_test_client.dart';
 void main() {
   late Client client;
 
-  const userId = '@test:fakeServer.notExisting';
   const otherId = '@other:fakeServer.notExisting';
-  const activityId = 'activity-123';
-  const sessionId = '!session:fakeServer.notExisting';
 
   setUp(() async {
     client = await getTestClient();
@@ -37,106 +27,17 @@ void main() {
     await client.dispose();
   });
 
-  Event stateEvent(
-    Room room, {
-    required String type,
-    required Map<String, dynamic> content,
-    String stateKey = '',
-  }) => Event(
-    type: type,
-    content: content,
-    stateKey: stateKey,
-    senderId: userId,
-    eventId: '\$${type}_$stateKey',
-    originServerTs: DateTime.utc(2026, 1, 1, 12),
-    room: room,
-  );
-
-  ActivityRoleGoal goal(int n) =>
-      ActivityRoleGoal(id: 'g$n', goalSlug: 'slug-$n', description: 'goal $n');
-
-  /// Two roles of three goals each — the uniform-per-role shape generation
-  /// produces, so the learner's own role carries the whole total.
-  ActivityPlanModel plan() => ActivityPlanModel(
-    req: ActivityPlanRequest(
-      topic: 'sport',
-      mode: 'Roleplay',
-      objective: 'meet a fan',
-      media: MediaEnum.nan,
-      cefrLevel: LanguageLevelTypeEnum.a1,
-      languageOfInstructions: 'en',
-      targetLanguage: 'es',
-      numberOfParticipants: 2,
-    ),
-    title: 'Meet a Fan at the Stadium',
-    learningObjective: 'meet a fan',
-    instructions: 'i',
-    vocab: const [],
-    activityId: activityId,
-    roles: {
-      'r1': ActivityRole(
-        id: 'r1',
-        name: 'Fan',
-        goal: null,
-        goals: [goal(1), goal(2), goal(3)],
-      ),
-      'r2': ActivityRole(
-        id: 'r2',
-        name: 'Visitor',
-        goal: null,
-        goals: [goal(4), goal(5), goal(6)],
-      ),
-    },
-  );
-
   /// A session room carrying [roles] as seat assignments and [awarded] as the
-  /// orchestrator's per-role awards.
+  /// orchestrator's per-role awards ([activitySessionRoom]).
   Room session({
     required Map<String, ActivityRoleModel> roles,
     Map<String, List<String>> awarded = const {},
-  }) {
-    final room = Room(
-      id: sessionId,
-      client: client,
-      membership: Membership.join,
-    );
-    room.setState(
-      stateEvent(
-        room,
-        type: EventTypes.RoomCreate,
-        content: {'type': '${PangeaRoomTypes.activitySession}:$activityId'},
-      ),
-    );
-    room.setState(
-      stateEvent(
-        room,
-        type: PangeaEventTypes.activityPlan,
-        content: plan().toJson(),
-      ),
-    );
-    room.setState(
-      stateEvent(
-        room,
-        type: PangeaEventTypes.activityRole,
-        content: ActivityRolesModel(roles).toJson(),
-      ),
-    );
-    if (awarded.isNotEmpty) {
-      room.setState(
-        stateEvent(
-          room,
-          type: PangeaEventTypes.orchestratorAwardedGoals,
-          content: OrchestratorAwardedGoals(awards: awarded).toJson(),
-        ),
-      );
-    }
-    return room;
-  }
+  }) => activitySessionRoom(client, roles: roles, awarded: awarded);
 
   ActivityRoleModel mine({DateTime? finishedAt, DateTime? archivedAt}) =>
       ActivityRoleModel(
         id: 'r1',
-        userId: userId,
+        userId: testSessionUserId,
         role: 'Fan',
         finishedAt: finishedAt,
         archivedAt: archivedAt,

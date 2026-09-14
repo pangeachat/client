@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-09-10 16:50:21.857965",
+    "@@last_modified": "2026-09-14 12:45:25.226376",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2318,5 +2318,15 @@
     "teacherAnalyticsRequestTitle": "Malami yana neman ci gaban karatunka",
     "teacherAnalyticsRequestDesc": "Za su ga duk kalmomin da nahawun da ka yi amfani da su a {targetLang}, matsayinka da XP, da kuma saƙonnin da aka aiko a ayyukan kwas. Ba za a raba saƙonninka na 1-da-1 ba. Ana buƙatar raba nazarin don shiga kwas ɗin.",
     "shareAndJoin": "Raba kuma shiga",
-    "goBack": "Koma baya"
+    "goBack": "Koma baya",
+    "emptyGroupsSearch": "Ba a sami ƙungiyoyi ba. Tabbatar cewa an rubuta bincikenka daidai.",
+    "emptyActivitiesSearch": "Ba a sami ayyuka ba. Tabbatar cewa an rubuta bincikenka daidai.",
+    "chatListFiltersLabel": "Tacewar taɗi",
+    "dms": "Saƙonnin kai tsaye",
+    "allFilterTooltip": "Nuna duk taɗi",
+    "dmsFilterTooltip": "Nuna saƙonnin kai tsaye kawai",
+    "groupsFilterTooltip": "Nuna taɗin rukuni kawai",
+    "activitiesFilterTooltip": "Nuna ayyuka kawai",
+    "noGroupChatsYet": "Ba ka cikin kowane taɗin rukuni tukuna.",
+    "noActivitiesYet": "Ba ka cikin kowane ayyuka tukuna."
 }

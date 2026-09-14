@@ -12,6 +12,8 @@ import 'sentry_capture_harness.dart';
 const _whoAmIDetail =
     'Matrix WhoAmI API request failed: Matrix WhoAmI non-200 (401)';
 
+const _uuid = '2e0d6c1e-4f2a-4b6b-9c3d-0a1b2c3d4e5f';
+
 /// #8698: one expired Matrix token fails every surface at once — parallel
 /// calls at app boot 401 before the SDK's soft-logout refresh lands — and
 /// scattered into seven per-endpoint Sentry issues (CLIENT-EHD, -EBG, -EBK,
@@ -29,15 +31,22 @@ void main() {
 
   tearDown(() => harness.close());
 
-  PangeaHttpException http401(String path, {String? detail, String? body}) =>
-      PangeaHttpException.fromResponse(
-        Response(
-          body ?? '',
-          401,
-          request: Request('GET', Uri.parse('https://api.pangea.chat$path')),
-        ),
-        detail: detail,
-      );
+  PangeaHttpException http(
+    int status,
+    String path, {
+    String method = 'GET',
+    String? detail,
+  }) => PangeaHttpException.fromResponse(
+    Response(
+      '',
+      status,
+      request: Request(method, Uri.parse('https://api.pangea.chat$path')),
+    ),
+    detail: detail,
+  );
+
+  PangeaHttpException http401(String path, {String? detail}) =>
+      http(401, path, detail: detail);
 
   final choreo = http401('/choreo/v2/activities/bbox', detail: _whoAmIDetail);
   final synapseModule = http401(
@@ -49,10 +58,15 @@ void main() {
     'error': 'Access token has expired',
     'soft_logout': true,
   });
+  // The CMS answers a rejected bearer with Payload's generic 403 and no
+  // detail — its Matrix auth strategy swallows Synapse's 401 into "no user"
+  // and the read rule then denies — so the same boot burst lands one hop
+  // later as a 403 on a read (CLIENT-EBF, #8372).
+  final cmsRead = http(403, '/cms/api/quest-plans/$_uuid');
 
   group('expired-token collapse', () {
-    test('all three surfaces land in one grouping', () async {
-      for (final e in [choreo, synapseModule, sdk]) {
+    test('every surface lands in one grouping', () async {
+      for (final e in [choreo, synapseModule, sdk, cmsRead]) {
         ErrorHandler.resetReportedOnceKeysForTest();
         final event = await harness.capture(
           () => ErrorHandler.logError(e: e, data: {}),
@@ -71,6 +85,7 @@ void main() {
         final next = await harness.capture(() {
           ErrorHandler.logError(e: synapseModule, data: {});
           ErrorHandler.logError(e: sdk, data: {});
+          ErrorHandler.logError(e: cmsRead, data: {});
           ErrorHandler.logError(e: Exception('sentinel'), data: {});
         });
         expect(next.throwable.toString(), contains('sentinel'));
@@ -105,6 +120,38 @@ void main() {
       );
       expect(second.fingerprint, first.fingerprint);
     });
+
+    test('a CMS read denied 403 is the token, not a permission bug', () async {
+      final event = await harness.capture(
+        () => ErrorHandler.logError(e: cmsRead, data: {}),
+      );
+      expect(event.fingerprint, ['pangea-auth', 'expired-matrix-token']);
+      expect(event.level, SentryLevel.warning);
+    });
+
+    // Negative controls: the carve-out is a CMS *read*. A write's rules are
+    // per-role, and nothing outside the CMS answers a rejected bearer with a
+    // 403, so both keep the 403 row — per-endpoint grouping at error.
+    test(
+      'a CMS write 403 and a non-CMS 403 keep per-endpoint error grouping',
+      () async {
+        final cmsWrite = http(403, '/cms/api/quest-plans', method: 'POST');
+        final choreo403 = http(403, '/choreo/v2/activity/$_uuid');
+        for (final (e, fingerprint) in [
+          (cmsWrite, ['pangea-http', '403', 'POST', '/cms/api/quest-plans']),
+          (
+            choreo403,
+            ['pangea-http', '403', 'GET', '/choreo/v2/activity/{id}'],
+          ),
+        ]) {
+          final event = await harness.capture(
+            () => ErrorHandler.logError(e: e, data: {}),
+          );
+          expect(event.fingerprint, fingerprint);
+          expect(event.level, SentryLevel.error);
+        }
+      },
+    );
 
     test(
       'a non-M_UNKNOWN_TOKEN MatrixException keeps default grouping',

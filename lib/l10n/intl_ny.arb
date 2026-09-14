@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-09-10 16:50:29.954948",
+    "@@last_modified": "2026-09-14 12:45:32.644637",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2318,5 +2318,15 @@
     "teacherAnalyticsRequestTitle": "Mphunzitsi akupempha momwe mukuphunzirira",
     "teacherAnalyticsRequestDesc": "Adzawona mawu ndi galamala zonse zomwe mwagwiritsa ntchito mu {targetLang}, mulingo wanu ndi XP, komanso mauthenga otumizidwa muzochitika za maphunziro. Mauthenga anu a 1-pa-1 sadzagawidwa. Kugawana zambiri kumafunika kuti mulowe nawo mu maphunziro.",
     "shareAndJoin": "Gawana ndikulowa",
-    "goBack": "Bwerera"
+    "goBack": "Bwerera",
+    "emptyGroupsSearch": "Palibe magulu omwe apezedwa. Onetsetsani kuti mawu anu ofufuzira alembedwa molondola.",
+    "emptyActivitiesSearch": "Palibe zochitika zomwe zapezedwa. Onetsetsani kuti mawu anu ofufuzira alembedwa molondola.",
+    "chatListFiltersLabel": "Zosefera zocheza",
+    "dms": "Ma DM",
+    "allFilterTooltip": "Onetsani macheza onse",
+    "dmsFilterTooltip": "Onetsani mauthenga achindunji okha",
+    "groupsFilterTooltip": "Onetsani macheza amagulu okha",
+    "activitiesFilterTooltip": "Onetsani zochitika zokha",
+    "noGroupChatsYet": "Simuli m'macheza amagulu aliwonse pakadali pano.",
+    "noActivitiesYet": "Simuli m'zochitika zilizonse pakadali pano."
 }

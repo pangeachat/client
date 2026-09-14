@@ -93,9 +93,9 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
 
     // Three header states (#8874): the Up-next Mission wears an "Up next"
     // label and the primary accent; a satisfied Mission trades its star for a
-    // check and mutes its text; the rest stay plain. Up next wins the text colour
-    // when both apply (every Mission satisfied → the resolver anchors on the
-    // weakest one).
+    // check and mutes its text; the rest stay plain. The first two are mutually
+    // exclusive: the anchor is unsatisfied by definition, and a course whose
+    // every Mission is satisfied has no anchor at all (#8997).
     final satisfied = widget.progress?.satisfied ?? false;
     final headerColor = widget.isUpNext
         ? theme.colorScheme.primary

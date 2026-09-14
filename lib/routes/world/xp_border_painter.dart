@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/config/pangea_colors.dart';
+
 /// Where the XP progress starts and ends on the pill's border — the spot the
 /// level medal overhangs, so the gold grows out from under the badge and
 /// arrives back at it at 1.0.
@@ -13,11 +15,14 @@ enum XpBorderAnchor {
   leftCenter,
 }
 
-/// Paints the cluster's XP border: a gray rounded-rect track around the powerups
-/// pill, with a gold stroke that fills from the [anchor] (where the level medal
-/// sits) for [progress] (0–1) of the way to the next level, arriving back at
-/// the medal at 1.0. The path starts and ends at the anchor so a sub-path
-/// extracted from its start grows out from under the badge.
+/// Paints the cluster's XP border: an opaque rounded-rect track around the
+/// powerups pill, with a gold stroke that fills from the [anchor] (where the
+/// level medal sits) for [progress] (0–1) of the way to the next level,
+/// arriving back at the medal at 1.0. The path starts and ends at the anchor
+/// so a sub-path extracted from its start grows out from under the badge.
+/// The track strokes [trackExtra] wider than the arc, so the arc rides inside
+/// it and its adjacent color is the track — never the raw map imagery the
+/// ring paints over (#8763, WCAG SC 1.4.11).
 class XpBorderPainter extends CustomPainter {
   final double progress;
   final Color trackColor;
@@ -25,6 +30,25 @@ class XpBorderPainter extends CustomPainter {
   final double stroke;
   final double radius;
   final XpBorderAnchor anchor;
+
+  /// How much wider the unfilled track strokes than the [progressColor] arc
+  /// riding inside it. Callers keeping the pill clear of the ring pad by
+  /// stroke + trackExtra.
+  static const double trackExtra = 4.0;
+
+  /// The unfilled track for [theme]: `goldTrack`, a dark gold in light and a
+  /// mid gold in dark, opaque so the arc's adjacent colour is the track and
+  /// not the map (#8763). It clears 3:1 against the tiles it rides over in
+  /// both themes; see xp_ring_contrast_test.
+  static Color trackColorFor(ThemeData theme) => theme.pangea.goldTrack;
+
+  /// The filled arc for [theme]: the bright gold in light, and in dark the
+  /// paler `goldFixed`, the tone that still clears 3:1 on the mid-gold track
+  /// (the bright gold measures 2.64:1 on it).
+  static Color arcColorFor(ThemeData theme) =>
+      theme.brightness == Brightness.light
+      ? theme.pangea.goldFixedDim
+      : theme.pangea.goldFixed;
 
   XpBorderPainter({
     required this.progress,
@@ -36,11 +60,12 @@ class XpBorderPainter extends CustomPainter {
   });
 
   Path _border(Size size) {
+    final inset = (stroke + trackExtra) / 2;
     final r = Rect.fromLTRB(
-      stroke / 2,
-      stroke / 2,
-      size.width - stroke / 2,
-      size.height - stroke / 2,
+      inset,
+      inset,
+      size.width - inset,
+      size.height - inset,
     );
     final rad = radius;
     final arc = Radius.circular(rad);
@@ -116,7 +141,7 @@ class XpBorderPainter extends CustomPainter {
       path,
       Paint()
         ..style = PaintingStyle.stroke
-        ..strokeWidth = stroke
+        ..strokeWidth = stroke + trackExtra
         ..color = trackColor,
     );
 

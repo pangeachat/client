@@ -44,12 +44,15 @@ void main() {
     expect(light.gold, tone(40));
     expect(light.goldGraphic, tone(50));
     expect(light.goldContainer, tone(90));
+    expect(light.goldTrack, tone(20));
     expect(light.onGoldContainer, tone(10));
     expect(dark.gold, tone(80));
     expect(dark.goldGraphic, tone(80));
     expect(dark.goldContainer, tone(30));
+    expect(dark.goldTrack, tone(50));
     expect(dark.onGoldContainer, tone(90));
     for (final colors in [light, dark]) {
+      expect(colors.goldFixed, tone(90));
       expect(colors.goldFixedDim, tone(80));
       expect(colors.onGoldFixed, tone(10));
       expect(colors.goldHighlight, Color.lerp(tone(80), Colors.black, 0.2));

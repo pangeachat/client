@@ -37,10 +37,10 @@ class RateLimitedException implements Exception {
 /// reads that the same limiter counts together share an instance, and reads it
 /// counts apart never do.
 class RateLimitPause {
-  RateLimitPause([this.duration = defaultDuration]);
+  RateLimitPause({this.duration = defaultDuration, DateTime Function()? clock})
+    : _clock = clock;
 
-  /// Matches the pause `ActivityPlanRepo` applies to the sibling activity read
-  /// and the window choreo's limiter meters over.
+  /// Matches the window choreo's limiter meters over.
   static const Duration defaultDuration = Duration(seconds: 60);
 
   final Duration duration;
@@ -53,12 +53,22 @@ class RateLimitPause {
   @visibleForTesting
   static DateTime Function() now = DateTime.now;
 
+  /// An owner whose own backoff state is already on a test clock passes it
+  /// here, so the two cannot disagree. Without it a holder with its own `now`
+  /// seam has TWO clocks for one pause: a test that advances the holder's
+  /// clock leaves this one frozen, and the pause never lapses — which reads in
+  /// the test output as the suppression logic being wrong rather than the
+  /// clocks being out of step.
+  final DateTime Function()? _clock;
+
+  DateTime _now() => (_clock ?? now)();
+
   /// Whether reads on this budget are currently suppressed. Clears itself once
   /// the window has lapsed — a throttle is transient, never terminal.
   bool get isPaused {
     final until = _until;
     if (until == null) return false;
-    if (now().isBefore(until)) return true;
+    if (_now().isBefore(until)) return true;
     _until = null;
     return false;
   }
@@ -76,9 +86,15 @@ class RateLimitPause {
   /// Any other failure says something about the request, not about our rate:
   /// pausing on those would let one bad row take down every read on the
   /// budget.
+  ///
+  /// Waits exactly as long as the server's `Retry-After` says, falling back to
+  /// [duration] only when it sent none. Guessing is what the fallback is for,
+  /// and guessing short is expensive: a 429 costs the server ~100x less than a
+  /// success, so retrying early adds load precisely when it should be shedding
+  /// it (the 2026-08-04 staging latch).
   void recordFailure(Object? error) {
     if (PangeaHttpException.statusCodeOf(error) == 429) {
-      _until = now().add(duration);
+      _until = _now().add(PangeaHttpException.retryAfterOf(error) ?? duration);
     }
   }
 

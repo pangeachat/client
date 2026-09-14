@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-09-10 16:50:35.325214",
+    "@@last_modified": "2026-09-14 12:45:40.019532",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2318,5 +2318,15 @@
     "teacherAnalyticsRequestTitle": "Uthisha ucela inqubekelaphambili yakho yokufunda",
     "teacherAnalyticsRequestDesc": "Bazobona wonke amagama nohlelo lolimi olusebenzise ku-{targetLang}, izinga lakho ne-XP, nemilayezo ethunyelwe emisebenzini yesifundo. Imilayezo yakho yomuntu ngamunye ngeke yabiwe. Ukwabelana ngedatha yokuhlaziya kuyadingeka ukuze ujoyine isifundo.",
     "shareAndJoin": "Yabelana bese ujoyina",
-    "goBack": "Buyela emuva"
+    "goBack": "Buyela emuva",
+    "emptyGroupsSearch": "Awekho amaqembu atholakele. Qiniseka ukuthi usesho lwakho lupelwe kahle.",
+    "emptyActivitiesSearch": "Awekho umsebenzi otholakele. Qiniseka ukuthi usesho lwakho lupelwe kahle.",
+    "chatListFiltersLabel": "Izihlungi zengxoxo",
+    "dms": "Ama-DM",
+    "allFilterTooltip": "Bonisa zonke izingxoxo",
+    "dmsFilterTooltip": "Bonisa imilayezo eqondile kuphela",
+    "groupsFilterTooltip": "Bonisa izingxoxo zeqembu kuphela",
+    "activitiesFilterTooltip": "Bonisa imisebenzi kuphela",
+    "noGroupChatsYet": "Awukho kunoma yiziphi izingxoxo zeqembu okwamanje.",
+    "noActivitiesYet": "Awukho kunoma yimuphi umsebenzi okwamanje."
 }

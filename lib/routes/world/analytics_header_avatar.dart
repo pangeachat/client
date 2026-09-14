@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -10,6 +9,7 @@ import 'package:fluffychat/routes/world/level_up_badge_celebration.dart';
 import 'package:fluffychat/routes/world/user_cluster_view_model.dart';
 import 'package:fluffychat/routes/world/user_cluster_view_model_builder.dart';
 import 'package:fluffychat/routes/world/world_user_cluster.dart';
+import 'package:fluffychat/routes/world/xp_border_painter.dart';
 
 class AnalyticsHeaderAvatar extends StatelessWidget {
   const AnalyticsHeaderAvatar({super.key});
@@ -137,15 +137,12 @@ class AnalyticsHeaderAvatarInternal extends StatelessWidget {
                                 size: Size.square(_avatarSize + 2 * _xpStroke),
                                 painter: CircularXpRingPainter(
                                   progress: progress,
-                                  trackColor: const Color.fromARGB(
-                                    130,
-                                    135,
-                                    135,
-                                    135,
+                                  trackColor: XpBorderPainter.trackColorFor(
+                                    Theme.of(context),
                                   ),
-                                  progressColor: Theme.of(
-                                    context,
-                                  ).pangea.goldGraphic,
+                                  progressColor: XpBorderPainter.arcColorFor(
+                                    Theme.of(context),
+                                  ),
                                   stroke: _xpStroke,
                                 ),
                                 child: Padding(

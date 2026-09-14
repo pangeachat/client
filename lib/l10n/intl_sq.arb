@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-09-10 16:50:31.803562",
+    "@@last_modified": "2026-09-14 12:45:35.196679",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2318,5 +2318,15 @@
     "teacherAnalyticsRequestTitle": "Mësuesi kërkon progresin tuaj të të nxënit",
     "teacherAnalyticsRequestDesc": "Ata do të shohin të gjitha fjalët dhe gramatikën që keni përdorur në {targetLang}, nivelin tuaj dhe XP-në, si dhe mesazhet e dërguara në aktivitetet e kursit. Mesazhet tuaja 1-në-1 nuk do të ndahen. Ndarja e analitikave kërkohet për t'u bashkuar me kursin.",
     "shareAndJoin": "Ndaj dhe bashkohu",
-    "goBack": "Kthehu"
+    "goBack": "Kthehu",
+    "emptyGroupsSearch": "Asnjë grup nuk u gjet. Sigurohuni që kërkimi juaj të jetë shkruar saktë.",
+    "emptyActivitiesSearch": "Asnjë aktivitet nuk u gjet. Sigurohuni që kërkimi juaj të jetë shkruar saktë.",
+    "chatListFiltersLabel": "Filtra bisede",
+    "dms": "Mesazhe direkte",
+    "allFilterTooltip": "Shfaq të gjitha bisedat",
+    "dmsFilterTooltip": "Shfaq vetëm mesazhet direkte",
+    "groupsFilterTooltip": "Shfaq vetëm bisedat në grup",
+    "activitiesFilterTooltip": "Shfaq vetëm aktivitetet",
+    "noGroupChatsYet": "Nuk jeni ende në asnjë bisedë në grup.",
+    "noActivitiesYet": "Nuk jeni ende në asnjë aktivitet."
 }

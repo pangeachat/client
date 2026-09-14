@@ -68,8 +68,29 @@ class _TutorialTargetState extends State<TutorialTarget> {
     final target = MatrixState.pAnyState.layerLinkAndKey(targetId);
     return CompositedTransformTarget(
       link: target.link,
-      key: target.key,
-      child: widget.child,
+      child: Stack(
+        // Lay out and paint exactly as the bare child did: the child keeps the
+        // incoming constraints, and nothing it paints outside its box is
+        // clipped.
+        fit: StackFit.passthrough,
+        clipBehavior: Clip.none,
+        alignment: Alignment.topLeft,
+        children: [
+          widget.child,
+          // The registry's GlobalKey rides a childless leaf filling the
+          // child's box — it is only ever read for the target's rect
+          // ([PangeaAnyState.getRenderBox]) — rather than wrapping the child.
+          // A GlobalKey carries its whole subtree to wherever its host moves
+          // next, and these hosts move: re-keying a panel on a token param
+          // change, or growing a course card out of the context bar, both swap
+          // the host in one frame. Wrapping therefore reparented a page-sized
+          // subtree, and doing that from inside a LayoutBuilder's build throws
+          // as soon as the subtree holds a shown OverlayPortal — the overlay
+          // child is adopted mid-layout (#9046). The leaf measures the same
+          // rect and carries nothing.
+          Positioned.fill(child: SizedBox.expand(key: target.key)),
+        ],
+      ),
     );
   }
 }

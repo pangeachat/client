@@ -16,8 +16,10 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
   const PangeaColors({
     required this.gold,
     required this.goldGraphic,
+    required this.goldFixed,
     required this.goldFixedDim,
     required this.onGoldFixed,
+    required this.goldTrack,
     required this.goldContainer,
     required this.onGoldContainer,
     required this.goldHighlight,
@@ -46,12 +48,24 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
   /// progress fill. Closer to the key colour than [gold] on light.
   final Color goldGraphic;
 
+  /// The pale gold, the same value in both themes, one step above
+  /// [goldFixedDim] as Material's `primaryFixed` sits above `primaryFixedDim`:
+  /// the XP ring's arc in dark, where the bright gold cannot clear 3:1 on the
+  /// ring's own track. Always pair with [onGoldFixed].
+  final Color goldFixed;
+
   /// The bright gold fill, the same value in both themes. Always pair with
   /// [onGoldFixed].
   final Color goldFixedDim;
 
-  /// Ink on [goldFixedDim].
+  /// Ink on [goldFixedDim] and [goldFixed].
   final Color onGoldFixed;
+
+  /// The unfilled length of a gold ring that paints over map tiles rather
+  /// than a surface: dark in light so the bright arc rides on it, a mid gold
+  /// in dark so it still reads over near-black cartography (#8763). Not for
+  /// a bar on a surface, which takes the neutral track.
+  final Color goldTrack;
 
   /// A tinted gold surface for washes and backfills. Always pair with
   /// [onGoldContainer].
@@ -165,8 +179,10 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
     return PangeaColors(
       gold: Color(gold.get(light ? 40 : 80)),
       goldGraphic: Color(gold.get(light ? 50 : 80)),
+      goldFixed: Color(gold.get(90)),
       goldFixedDim: Color(gold.get(80)),
       onGoldFixed: Color(gold.get(10)),
+      goldTrack: Color(gold.get(light ? 20 : 50)),
       goldContainer: Color(gold.get(light ? 90 : 30)),
       onGoldContainer: Color(gold.get(light ? 10 : 90)),
       goldHighlight: Color.lerp(Color(gold.get(80)), Colors.black, 0.2)!,
@@ -192,8 +208,10 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
   PangeaColors copyWith({
     Color? gold,
     Color? goldGraphic,
+    Color? goldFixed,
     Color? goldFixedDim,
     Color? onGoldFixed,
+    Color? goldTrack,
     Color? goldContainer,
     Color? onGoldContainer,
     Color? goldHighlight,
@@ -215,8 +233,10 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
   }) => PangeaColors(
     gold: gold ?? this.gold,
     goldGraphic: goldGraphic ?? this.goldGraphic,
+    goldFixed: goldFixed ?? this.goldFixed,
     goldFixedDim: goldFixedDim ?? this.goldFixedDim,
     onGoldFixed: onGoldFixed ?? this.onGoldFixed,
+    goldTrack: goldTrack ?? this.goldTrack,
     goldContainer: goldContainer ?? this.goldContainer,
     onGoldContainer: onGoldContainer ?? this.onGoldContainer,
     goldHighlight: goldHighlight ?? this.goldHighlight,
@@ -243,8 +263,10 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
     return PangeaColors(
       gold: Color.lerp(gold, other.gold, t)!,
       goldGraphic: Color.lerp(goldGraphic, other.goldGraphic, t)!,
+      goldFixed: Color.lerp(goldFixed, other.goldFixed, t)!,
       goldFixedDim: Color.lerp(goldFixedDim, other.goldFixedDim, t)!,
       onGoldFixed: Color.lerp(onGoldFixed, other.onGoldFixed, t)!,
+      goldTrack: Color.lerp(goldTrack, other.goldTrack, t)!,
       goldContainer: Color.lerp(goldContainer, other.goldContainer, t)!,
       onGoldContainer: Color.lerp(onGoldContainer, other.onGoldContainer, t)!,
       goldHighlight: Color.lerp(goldHighlight, other.goldHighlight, t)!,

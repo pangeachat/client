@@ -11,6 +11,7 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_fetch_reques
 import 'package:fluffychat/features/activity_sessions/activity_plan_fetch_response.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
+import 'package:fluffychat/pangea/common/network/rate_limit_pause.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/base_repo.dart';
@@ -143,15 +144,20 @@ class ActivityPlanRepo
   /// [_nextAttempt] is per key, and the number of keys is unbounded (the world
   /// map hydrates one per visible pin — 104 distinct ids during the incident).
   /// K keys under a per-key cooldown still emit K/cooldown requests, which at
-  /// K=104 exceeds the 60/min budget on its own. Only a repo-wide pause
-  /// restores the invariant "we stop when the server says stop", independent
-  /// of K. Deliberately scoped to this repo rather than shared: choreo budgets
-  /// `/choreo` and `/subscription` separately, so an activity 429 must never
-  /// stall checkout.
-  DateTime? _rateLimitedUntil;
+  /// K=104 exceeds the budget on its own. Only a repo-wide pause restores the
+  /// invariant "we stop when the server says stop", independent of K.
+  ///
+  /// Its own instance, not a shared one: choreo meters the activity reads and
+  /// the subscription surface on separate budgets, so an activity 429 must
+  /// never stall checkout. This repo grew the mechanism first (#8160) and kept
+  /// it inline; it now uses the shared [RateLimitPause] that was extracted
+  /// from it, so the two cannot drift — notably over how long to wait, which
+  /// is now the server's `Retry-After` rather than either one's guess.
+  final RateLimitPause _rateLimitPause = RateLimitPause(
+    clock: () => ActivityPlanRepo.now(),
+  );
 
   static const Duration _attemptCooldown = Duration(seconds: 60);
-  static const Duration _rateLimitPause = Duration(seconds: 60);
 
   /// Ceiling on hydrations in flight at once.
   ///
@@ -159,7 +165,7 @@ class ActivityPlanRepo
   /// whole per-user `/choreo/*` minute budget in one frame and starving the next
   /// unrelated call — `/choreo/tokenize`, which backs free message rendering.
   ///
-  /// No backoff can prevent that, and [_rateLimitedUntil] is not a counter-
+  /// No backoff can prevent that, and [_rateLimitPause] is not a counter-
   /// example: every guard in [ensure] is temporal or outcome-keyed, so on a COLD
   /// view all of them are empty BY DEFINITION. Nothing has resolved, nothing has
   /// been attempted, and no pause can be armed because no response has come back
@@ -217,7 +223,7 @@ class ActivityPlanRepo
   void resetBackoff() {
     _nextAttempt.clear();
     _confirmedRemoved.clear();
-    _rateLimitedUntil = null;
+    _rateLimitPause.reset();
     // The backlog goes too. Dropping it loses nothing: clearing [_nextAttempt]
     // above un-parks every queued key, so `build()` re-offers them on the next
     // frame and they hydrate under the fresh budget. Keeping them would instead
@@ -232,10 +238,19 @@ class ActivityPlanRepo
   }
 
   /// Test seam: simulate the repo having just been rate-limited, without
-  /// needing a live 429 from the network layer.
+  /// needing a live 429 from the network layer. [pause] stands in for the
+  /// server's `Retry-After`, so it also covers the header being honoured.
   @visibleForTesting
-  void rateLimitedForTesting(Duration pause) =>
-      _rateLimitedUntil = now().add(pause);
+  void rateLimitedForTesting([
+    Duration pause = RateLimitPause.defaultDuration,
+  ]) => _rateLimitPause.recordFailure(
+    PangeaHttpException(
+      statusCode: 429,
+      method: 'GET',
+      path: '/test',
+      retryAfter: pause,
+    ),
+  );
 
   @override
   Future<Response> fetch(Requests req, ActivityPlanFetchRequest request) {
@@ -333,11 +348,33 @@ class ActivityPlanRepo
     if (await _confirmedRemoved.contains(activityId)) {
       return const ActivityPlanLookup(ActivityPlanLookupStatus.removed);
     }
+    // The pause is OBSERVED here, not only armed here. [ensure] used to be the
+    // only gate, which left every direct caller — the start page, the summary
+    // read — walking through an armed pause to re-ask a server that had just
+    // said stop. "We stop when the server says stop" has to hold on the one
+    // path every fetch drains into, or it does not hold at all. A cached plan
+    // is unaffected: [cachedPlan] answers without reaching this, so a pause
+    // suppresses re-fetching, never reading.
     final request = _request(activityId, l1, version: version);
     // Not knowable yet, not gone: `failed` is the transient status, so callers
     // keep the activity and retry rather than treating it as removed.
     if (request == null) {
       return const ActivityPlanLookup(ActivityPlanLookupStatus.failed);
+    }
+    // The pause suppresses ASKING, never answering. A plan already in the TTL
+    // cache costs no request, so withholding it would turn a throttle into a
+    // blank surface for a learner who could have been served from memory —
+    // strictly worse than before the pause existed. Only a read that would
+    // actually reach the network is gated, which is why the cache is consulted
+    // first and `forceRefresh` (which will fetch regardless) is not exempt.
+    final servableFromCache = !forceRefresh && getCached(request) != null;
+    if (_rateLimitPause.isPaused && !servableFromCache) {
+      _rateLimitPause.reportSuppressionOnce({'activityId': activityId});
+      return ActivityPlanLookup(
+        ActivityPlanLookupStatus.failed,
+        null,
+        RateLimitedException(),
+      );
     }
     final result = await get(request, forceRefresh: forceRefresh);
     if (result.isError) {
@@ -346,9 +383,7 @@ class ActivityPlanRepo
       // whole repo. Per-key backoff alone cannot honour it: the map hydrates
       // one key per visible pin, and K keys each backing off independently
       // still emit K/cooldown requests.
-      if (PangeaHttpException.statusCodeOf(error) == 429) {
-        _rateLimitedUntil = now().add(_rateLimitPause);
-      }
+      _rateLimitPause.recordFailure(error);
       final status = classifyLookupError(error);
       if (status == ActivityPlanLookupStatus.removed) {
         _confirmedRemoved.mark(activityId);
@@ -478,11 +513,7 @@ class ActivityPlanRepo
     //
     // And it has to run before `_revalidated.add`, so bailing here cannot spend
     // the once-per-session revalidate token on a call that never fetched.
-    final pausedUntil = _rateLimitedUntil;
-    if (pausedUntil != null) {
-      if (at.isBefore(pausedUntil)) return false;
-      _rateLimitedUntil = null;
-    }
+    if (_rateLimitPause.isPaused) return false;
     final doRevalidate = revalidate && _revalidated.add(key);
     if (!doRevalidate) {
       if (_resolved.containsKey(key)) return false;
@@ -520,15 +551,22 @@ class ActivityPlanRepo
   /// the time the next iteration tests it.
   void _pump() {
     while (_inFlight < _maxInFlight && _queued.isNotEmpty) {
-      final pausedUntil = _rateLimitedUntil;
-      if (pausedUntil != null && now().isBefore(pausedUntil)) {
+      if (_rateLimitPause.isPaused) {
         // Rate-limited while this backlog waited. Draining it anyway would just
         // spend the NEXT window the moment the pause lifts: the same burst,
-        // spread thin, not prevented. Dropping is safe because every queued key
-        // is parked in [_nextAttempt], so `build()` re-offers it once both the
-        // pause and the cooldown have lapsed.
+        // spread thin, not prevented. Dropping is safe because `build()`
+        // re-offers every key on the next frame.
+        //
+        // The attempt park is released with them. These entries never reached
+        // the network, so there is no attempt to back off from — and leaving
+        // them parked for the full [_attemptCooldown] would outlast a shorter
+        // pause: the server says come back in 5s, and the cooldown then holds
+        // the screen empty for the remaining 55. That could not happen while
+        // the pause was itself a hardcoded 60s, which is exactly why honouring
+        // `Retry-After` is what surfaced it.
         for (final item in _queued) {
           _hydrating.remove(item.key);
+          _nextAttempt.remove(item.key);
         }
         _queued.clear();
         return;

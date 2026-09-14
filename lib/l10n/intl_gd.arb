@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-09-10 16:50:21.382860",
+    "@@last_modified": "2026-09-14 12:45:24.451581",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2318,5 +2318,15 @@
     "teacherAnalyticsRequestTitle": "Tha tidsear ag iarraidh d’fhiosrachadh adhartais ionnsachaidh",
     "teacherAnalyticsRequestDesc": "Chì iad na faclan is gràmar a chleachd thu ann an {targetLang}, d’ìre is XP, agus na teachdaireachdan a chaidh a chur ann an gnìomhachdan cùrsa. Cha tèid na teachdaireachdan 1-air-1 agad a cho-roinn. Feumar anailisean a cho-roinn gus a dhol a-steach don chùrsa.",
     "shareAndJoin": "Co-roinn is gabh a-steach",
-    "goBack": "Rach air ais"
+    "goBack": "Rach air ais",
+    "emptyGroupsSearch": "Cha deach buidheann sam bith a lorg. Dèan cinnteach gu bheil an rannsachadh agad air a litreachadh gu ceart.",
+    "emptyActivitiesSearch": "Cha deach gnìomhachd sam bith a lorg. Dèan cinnteach gu bheil an rannsachadh agad air a litreachadh gu ceart.",
+    "chatListFiltersLabel": "Criathragan cabadaich",
+    "dms": "DM",
+    "allFilterTooltip": "Seall a h-uile cabadaich",
+    "dmsFilterTooltip": "Seall dìreach teachdaireachdan dìreach",
+    "groupsFilterTooltip": "Seall dìreach cabadaich buidhne",
+    "activitiesFilterTooltip": "Seall dìreach gnìomhachdan",
+    "noGroupChatsYet": "Chan eil thu ann an cabadaich buidhne sam bith fhathast.",
+    "noActivitiesYet": "Chan eil thu ann an gnìomhachd sam bith fhathast."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-09-10 16:50:22.484453",
+    "@@last_modified": "2026-09-14 12:45:25.736855",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2318,5 +2318,15 @@
     "teacherAnalyticsRequestTitle": "Pwofesè a mande pwogrè aprantisaj ou",
     "teacherAnalyticsRequestDesc": "Y ap wè tout mo ak gramè ou te itilize nan {targetLang}, nivo ou ak XP ou, ak mesaj yo voye nan aktivite kou yo. Mesaj 1-a-1 ou yo p ap pataje. Pataje analiz yo obligatwa pou w antre nan kou a.",
     "shareAndJoin": "Pataje epi antre",
-    "goBack": "Retounen"
+    "goBack": "Retounen",
+    "emptyGroupsSearch": "Pa gen gwoup yo jwenn. Asire w ke rechèch ou an byen ekri.",
+    "emptyActivitiesSearch": "Pa gen aktivite yo jwenn. Asire w ke rechèch ou an byen ekri.",
+    "chatListFiltersLabel": "Filtè chat",
+    "dms": "DM yo",
+    "allFilterTooltip": "Montre tout chat yo",
+    "dmsFilterTooltip": "Montre sèlman mesaj dirèk yo",
+    "groupsFilterTooltip": "Montre sèlman chat gwoup yo",
+    "activitiesFilterTooltip": "Montre sèlman aktivite yo",
+    "noGroupChatsYet": "Ou poko nan okenn chat gwoup.",
+    "noActivitiesYet": "Ou poko nan okenn aktivite."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-09-10 16:50:19.640328",
+    "@@last_modified": "2026-09-14 12:45:23.267131",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8133,5 +8133,15 @@
     "teacherAnalyticsRequestTitle": "El profesor solicita tu progreso de aprendizaje",
     "teacherAnalyticsRequestDesc": "Verá todas las palabras y la gramática que has usado en {targetLang}, tu nivel y XP, y los mensajes enviados en las actividades del curso. Tus mensajes individuales no se compartirán. Es necesario compartir los análisis para unirte al curso.",
     "shareAndJoin": "Compartir y unirse",
-    "goBack": "Volver"
+    "goBack": "Volver",
+    "emptyGroupsSearch": "No se encontraron grupos. Asegúrate de que la búsqueda esté bien escrita.",
+    "emptyActivitiesSearch": "No se encontraron actividades. Asegúrate de que la búsqueda esté bien escrita.",
+    "chatListFiltersLabel": "Filtros de chat",
+    "dms": "MD",
+    "allFilterTooltip": "Mostrar todos los chats",
+    "dmsFilterTooltip": "Mostrar solo mensajes directos",
+    "groupsFilterTooltip": "Mostrar solo chats de grupo",
+    "activitiesFilterTooltip": "Mostrar solo actividades",
+    "noGroupChatsYet": "Todavía no estás en ningún chat de grupo.",
+    "noActivitiesYet": "Todavía no estás en ninguna actividad."
 }

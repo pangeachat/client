@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-09-10 16:50:32.389496",
+    "@@last_modified": "2026-09-14 12:45:36.218864",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2318,5 +2318,15 @@
     "teacherAnalyticsRequestTitle": "Mwalimu anaomba maendeleo yako ya kujifunza",
     "teacherAnalyticsRequestDesc": "Wataona maneno na sarufi zote ulizotumia katika {targetLang}, kiwango chako na XP, na jumbe zilizotumwa katika shughuli za kozi. Jumbe zako za 1-kwa-1 hazitashirikiwa. Kushiriki takwimu kunahitajika ili kujiunga na kozi.",
     "shareAndJoin": "Shiriki na ujiunge",
-    "goBack": "Rudi nyuma"
+    "goBack": "Rudi nyuma",
+    "emptyGroupsSearch": "Hakuna vikundi vilivyopatikana. Hakikisha utafutaji wako umeandikwa kwa usahihi.",
+    "emptyActivitiesSearch": "Hakuna shughuli zilizopatikana. Hakikisha utafutaji wako umeandikwa kwa usahihi.",
+    "chatListFiltersLabel": "Vichujio vya gumzo",
+    "dms": "DM",
+    "allFilterTooltip": "Onyesha gumzo zote",
+    "dmsFilterTooltip": "Onyesha tu jumbe za moja kwa moja",
+    "groupsFilterTooltip": "Onyesha tu gumzo za kikundi",
+    "activitiesFilterTooltip": "Onyesha tu shughuli",
+    "noGroupChatsYet": "Bado hauko kwenye gumzo lolote la kikundi.",
+    "noActivitiesYet": "Bado hauko kwenye shughuli zozote."
 }

@@ -206,7 +206,9 @@ void main() {
       expect(r.quests.single.anchorMissionId, 'm2');
     });
 
-    test('all satisfied -> lowest-star Mission, earliest-order tie-break', () {
+    test('a fully satisfied quest has no anchor — nothing is Up next', () {
+      // #8997: the anchor used to fall back to the weakest Mission, so a
+      // learner who had earned every star still saw "Up next" on work done.
       final r = resolveProgression(
         outlines: [
           outline(
@@ -218,10 +220,9 @@ void main() {
             },
           ),
         ],
-        // all >= 10; m2 & m3 tie for lowest (10) -> earliest wins (m2)
-        starsByActivity: {'a': 15, 'b': 10, 'c': 10},
+        starsByActivity: {'a': 15, 'b': 10, 'c': 10}, // all >= 10
       );
-      expect(r.quests.single.anchorMissionId, 'm2');
+      expect(r.quests.single.anchorMissionId, isNull);
     });
 
     test('an empty sequence yields no quest entry', () {

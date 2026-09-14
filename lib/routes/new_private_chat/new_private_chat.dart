@@ -1,12 +1,11 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/features/user/user_search_extension.dart';
+import 'package:fluffychat/features/user/direct_chat_contacts_extension.dart';
+import 'package:fluffychat/features/user/user_directory_search.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/new_private_chat/new_private_chat_view.dart';
 import 'package:fluffychat/utils/fluffy_share.dart';
@@ -14,8 +13,10 @@ import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../../widgets/adaptive_dialogs/user_dialog.dart';
 
-// #Pangea
-// Pangea#
+/// Which set of people the panel is searching. The invite page's own filters
+/// are room-scoped and mean nothing here, so this panel carries just the two
+/// that do (#9009).
+enum NewChatFilter { contacts, public }
 
 class NewPrivateChat extends StatefulWidget {
   final Widget? closeButton;
@@ -30,49 +31,56 @@ class NewPrivateChatController extends State<NewPrivateChat> {
   final TextEditingController controller = TextEditingController();
   final FocusNode textFieldFocus = FocusNode();
 
-  Future<List<Profile>>? searchResponse;
+  late final UserDirectorySearch directorySearch;
 
-  Timer? _searchCoolDown;
+  NewChatFilter filter = NewChatFilter.contacts;
 
-  static const Duration _coolDown = Duration(milliseconds: 500);
+  @override
+  void initState() {
+    super.initState();
+    directorySearch = UserDirectorySearch(
+      client: Matrix.of(context).client,
+      onChanged: () {
+        if (mounted) setState(() {});
+      },
+    );
+  }
 
-  void searchUsers([String? input]) async {
+  @override
+  void dispose() {
+    directorySearch.dispose();
+    controller.dispose();
+    textFieldFocus.dispose();
+    super.dispose();
+  }
+
+  /// The people the user already has a direct chat with, narrowed by what is
+  /// typed. Local, so it answers every keystroke without a request.
+  List<User> get contacts => Matrix.of(
+    context,
+  ).client.directChatContacts.matching(controller.text).sortedByDisplayname();
+
+  void searchUsers([String? input]) {
     final searchTerm = input ?? controller.text;
-    if (searchTerm.isEmpty) {
-      _searchCoolDown?.cancel();
-      setState(() {
-        searchResponse = _searchCoolDown = null;
-      });
-      return;
+    // Only the public filter spends a request; the contacts list re-filters
+    // locally off the rebuild this setState triggers.
+    if (filter == NewChatFilter.public) {
+      directorySearch.search(searchTerm);
     }
-
-    _searchCoolDown?.cancel();
-    _searchCoolDown = Timer(_coolDown, () {
-      setState(() {
-        searchResponse = _searchUser(searchTerm);
-      });
-    });
+    setState(() {});
   }
 
-  Future<List<Profile>> _searchUser(String searchTerm) async {
-    // #Pangea
-    // final result = await Matrix.of(
-    //   context,
-    // ).client.searchUserDirectory(searchTerm);
-    final result = await Matrix.of(context).client.searchUser(searchTerm);
-    // Pangea#
-    final profiles = result.results;
-
-    // #Pangea
-    // if (searchTerm.isValidMatrixId &&
-    //     searchTerm.sigil == '@' &&
-    //     !profiles.any((profile) => profile.userId == searchTerm)) {
-    //   profiles.add(Profile(userId: searchTerm));
-    // }
-    // Pangea#
-
-    return profiles;
+  void setFilter(NewChatFilter newFilter) {
+    if (filter == newFilter) return;
+    setState(() => filter = newFilter);
+    // Switching to public with a term already typed searches it straight
+    // away — the user has waited through the debounce once already.
+    if (newFilter == NewChatFilter.public && controller.text.isNotEmpty) {
+      directorySearch.searchNow(controller.text);
+    }
   }
+
+  void retrySearch() => directorySearch.searchNow(controller.text);
 
   void inviteAction() => FluffyShare.shareInviteLink(context);
 

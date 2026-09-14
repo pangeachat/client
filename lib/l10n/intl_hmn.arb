@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-09-10 16:50:22.136768",
+    "@@last_modified": "2026-09-14 12:45:25.609535",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2318,5 +2318,15 @@
     "teacherAnalyticsRequestTitle": "Tus kws qhia ntawv thov koj qhov kev kawm tau zoo",
     "teacherAnalyticsRequestDesc": "Lawv yuav pom tag nrho cov lus thiab cov qauv lus koj tau siv hauv {targetLang}, koj qib thiab XP, thiab cov lus xa hauv kev kawm. Koj cov lus 1-rau-1 yuav tsis raug qhia. Yuav tsum qhia cov ntaub ntawv txhawm rau koom nrog chav kawm.",
     "shareAndJoin": "Qhia thiab koom",
-    "goBack": "Rov qab"
+    "goBack": "Rov qab",
+    "emptyGroupsSearch": "Tsis pom ib pab pawg twg. Nco ntsoov tias koj qhov kev tshawb nrhiav sau kom raug.",
+    "emptyActivitiesSearch": "Tsis pom ib qho haujlwm twg. Nco ntsoov tias koj qhov kev tshawb nrhiav sau kom raug.",
+    "chatListFiltersLabel": "Kev lim dej sib tham",
+    "dms": "DMs",
+    "allFilterTooltip": "Qhia tag nrho cov kev sib tham",
+    "dmsFilterTooltip": "Qhia tsuas yog cov lus ncaj qha",
+    "groupsFilterTooltip": "Qhia tsuas yog cov pab pawg sib tham",
+    "activitiesFilterTooltip": "Qhia tsuas yog cov haujlwm",
+    "noGroupChatsYet": "Koj tseem tsis tau nyob hauv ib pab pawg sib tham twg.",
+    "noActivitiesYet": "Koj tseem tsis tau nyob hauv ib qho haujlwm twg."
 }

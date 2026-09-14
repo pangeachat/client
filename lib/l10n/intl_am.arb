@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-09-10 16:50:17.865904",
+    "@@last_modified": "2026-09-14 12:45:21.270070",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2318,5 +2318,15 @@
     "teacherAnalyticsRequestTitle": "መምህሩ የመማር ሂደትዎን ይጠይቃል",
     "teacherAnalyticsRequestDesc": "በ{targetLang} የተጠቀሟቸውን ቃላት እና ሰዋሰው፣ ደረጃዎ እና የልምድ ነጥብዎ፣ እና በኮርስ እንቅስቃሴዎች የተላኩ መልዕክቶችን ያያሉ። የእርስዎ 1-ለ-1 መልዕክቶች አይጋሩም። ኮርሱን ለመቀላቀል ትንታኔዎችን ማጋራት ያስፈልጋል።",
     "shareAndJoin": "ያጋሩ እና ይቀላቀሉ",
-    "goBack": "ተመለስ"
+    "goBack": "ተመለስ",
+    "emptyGroupsSearch": "ምንም ቡድኖች አልተገኙም። የፍለጋ ቃልዎ በትክክል መጻፉን ያረጋግጡ።",
+    "emptyActivitiesSearch": "ምንም እንቅስቃሴዎች አልተገኙም። የፍለጋ ቃልዎ በትክክል መጻፉን ያረጋግጡ።",
+    "chatListFiltersLabel": "የውይይት ማጣሪያዎች",
+    "dms": "ቀጥተኛ መልዕክቶች",
+    "allFilterTooltip": "ሁሉንም ውይይቶች አሳይ",
+    "dmsFilterTooltip": "ቀጥተኛ መልዕክቶችን ብቻ አሳይ",
+    "groupsFilterTooltip": "የቡድን ውይይቶችን ብቻ አሳይ",
+    "activitiesFilterTooltip": "እንቅስቃሴዎችን ብቻ አሳይ",
+    "noGroupChatsYet": "እስካሁን በማንኛውም የቡድን ውይይት ውስጥ የለዎትም።",
+    "noActivitiesYet": "እስካሁን በማንኛውም እንቅስቃሴ ውስጥ የለዎትም።"
 }

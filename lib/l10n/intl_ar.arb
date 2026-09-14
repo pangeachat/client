@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-09-10 16:50:17.386487",
+    "@@last_modified": "2026-09-14 12:45:21.427823",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10220,5 +10220,15 @@
     "teacherAnalyticsRequestTitle": "المعلم يطلب تقدمك التعليمي",
     "teacherAnalyticsRequestDesc": "سيرون جميع الكلمات والقواعد التي استخدمتها في {targetLang}، ومستواك ونقاط الخبرة، والرسائل المرسلة في أنشطة الدورة التدريبية. لن تتم مشاركة رسائلك الفردية. مشاركة التحليلات مطلوبة للانضمام إلى الدورة التدريبية.",
     "shareAndJoin": "مشاركة وانضمام",
-    "goBack": "العودة"
+    "goBack": "العودة",
+    "emptyGroupsSearch": "لم يتم العثور على مجموعات. تأكد من أن بحثك مكتوب بشكل صحيح.",
+    "emptyActivitiesSearch": "لم يتم العثور على أنشطة. تأكد من أن بحثك مكتوب بشكل صحيح.",
+    "chatListFiltersLabel": "فلاتر الدردشة",
+    "dms": "الرسائل المباشرة",
+    "allFilterTooltip": "إظهار جميع الدردشات",
+    "dmsFilterTooltip": "إظهار الرسائل المباشرة فقط",
+    "groupsFilterTooltip": "إظهار دردشات المجموعات فقط",
+    "activitiesFilterTooltip": "إظهار الأنشطة فقط",
+    "noGroupChatsYet": "أنت لست في أي دردشات جماعية بعد.",
+    "noActivitiesYet": "أنت لست في أي أنشطة بعد."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-09-10 16:50:29.480099",
+    "@@last_modified": "2026-09-14 12:45:32.236917",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9999,5 +9999,15 @@
     "teacherAnalyticsRequestTitle": "Nauczyciel prosi o Twój postęp w nauce",
     "teacherAnalyticsRequestDesc": "Nauczyciel zobaczy wszystkie słowa i gramatykę, których użyłeś w {targetLang}, Twój poziom i XP, oraz wiadomości wysłane w ramach zajęć. Twoje wiadomości 1-na-1 nie będą udostępniane. Udostępnianie danych analitycznych jest wymagane, aby dołączyć do kursu.",
     "shareAndJoin": "Udostępnij i dołącz",
-    "goBack": "Wróć"
+    "goBack": "Wróć",
+    "emptyGroupsSearch": "Nie znaleziono grup. Upewnij się, że wyszukiwanie jest poprawnie napisane.",
+    "emptyActivitiesSearch": "Nie znaleziono aktywności. Upewnij się, że wyszukiwanie jest poprawnie napisane.",
+    "chatListFiltersLabel": "Filtry czatu",
+    "dms": "DM-y",
+    "allFilterTooltip": "Pokaż wszystkie czaty",
+    "dmsFilterTooltip": "Pokaż tylko wiadomości bezpośrednie",
+    "groupsFilterTooltip": "Pokaż tylko czaty grupowe",
+    "activitiesFilterTooltip": "Pokaż tylko aktywności",
+    "noGroupChatsYet": "Nie jesteś jeszcze w żadnych czatach grupowych.",
+    "noActivitiesYet": "Nie uczestniczysz jeszcze w żadnych aktywnościach."
 }
