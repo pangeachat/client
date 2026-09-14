@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-09-10 16:50:32.440796",
+    "@@last_modified": "2026-09-14 12:45:36.507724",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2318,5 +2318,15 @@
     "teacherAnalyticsRequestTitle": "Guru nyuhunkeun kamajuan diajar anjeun",
     "teacherAnalyticsRequestDesc": "Aranjeunna bakal ningali sadaya kecap sareng tata basa anu anjeun anggo dina {targetLang}, tingkat anjeun sareng XP, sareng pesen anu dikirim dina kagiatan kursus. Pesen 1-on-1 anjeun moal dibagikeun. Ngabagikeun analitik diperyogikeun pikeun ngiringan kursus.",
     "shareAndJoin": "Bagikeun sareng gabung",
-    "goBack": "Balik deui"
+    "goBack": "Balik deui",
+    "emptyGroupsSearch": "Teu aya grup anu kapanggih. Pastikeun pamilarian anjeun leres.",
+    "emptyActivitiesSearch": "Teu aya kagiatan anu kapanggih. Pastikeun pamilarian anjeun leres.",
+    "chatListFiltersLabel": "Saringan obrolan",
+    "dms": "DM",
+    "allFilterTooltip": "Témbongkeun sadaya obrolan",
+    "dmsFilterTooltip": "Témbongkeun ukur pesen langsung",
+    "groupsFilterTooltip": "Témbongkeun ukur obrolan grup",
+    "activitiesFilterTooltip": "Témbongkeun ukur kagiatan",
+    "noGroupChatsYet": "Anjeun teu acan aya dina obrolan grup mana waé.",
+    "noActivitiesYet": "Anjeun teu acan aya dina kagiatan mana waé."
 }

@@ -44,6 +44,64 @@ extension DefaultChatsRoomExtension on Room {
   bool hasDefaultChat(CourseDefaultChatsEnum type) =>
       pangeaSpaceChildren.any((r) => r.isDefaultChatByType(type));
 
+  /// Joins the course's default chats (introductions, announcements) that
+  /// exist but this user has not joined yet. Runs when the course page opens,
+  /// so a member is in them without having to go looking for them (#9031).
+  ///
+  /// The space hierarchy is what this needs: an unjoined child is not in
+  /// `client.rooms`, and its canonical alias is the only thing marking it as
+  /// a default chat.
+  Future<void> joinDefaultChats() async {
+    final missing = CourseDefaultChatsEnum.values
+        .where((type) => !hasDefaultChat(type))
+        .toSet();
+    if (missing.isEmpty) return;
+
+    String? from;
+    // A busy course has more children than fit on one page (every activity
+    // session is one), and the default chats are not guaranteed to be on the
+    // first, so page until they are found — under the same failsafe cap on
+    // calls to the server the course chat list uses.
+    for (int page = 0; page < 5 && missing.isNotEmpty; page++) {
+      final GetSpaceHierarchyResponse response;
+      try {
+        response = await client.getSpaceHierarchy(
+          id,
+          maxDepth: 1,
+          from: from,
+          limit: 100,
+        );
+      } catch (e, s) {
+        ErrorHandler.logError(e: e, s: s, data: {'spaceId': id});
+        return;
+      }
+
+      for (final chunk in response.rooms) {
+        final alias = chunk.canonicalAlias;
+        if (alias == null) continue;
+
+        final type = missing.firstWhereOrNull(
+          (type) => alias.localpart?.startsWith(type.alias) == true,
+        );
+        if (type == null) continue;
+        missing.remove(type);
+
+        try {
+          await client.joinRoom(alias);
+        } catch (e, s) {
+          ErrorHandler.logError(
+            e: e,
+            s: s,
+            data: {'alias': alias, 'spaceId': id},
+          );
+        }
+      }
+
+      from = response.nextBatch;
+      if (from == null) return;
+    }
+  }
+
   bool dismissedDefaultChat(CourseDefaultChatsEnum type) {
     switch (type) {
       case CourseDefaultChatsEnum.introductions:

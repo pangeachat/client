@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-09-10 16:50:19.958393",
+    "@@last_modified": "2026-09-14 12:45:23.740217",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9914,5 +9914,15 @@
     "teacherAnalyticsRequestTitle": "Irakasleak zure ikaskuntza-aurrerapena eskatzen du",
     "teacherAnalyticsRequestDesc": "Erabili dituzun hitz eta gramatika guztiak ikusiko dituzte {targetLang} hizkuntzan, zure maila eta XP, eta ikastaro-jardueretan bidalitako mezuak. Zure banakako mezuak ez dira partekatuko. Analitika partekatzea derrigorrezkoa da ikastaroan sartzeko.",
     "shareAndJoin": "Partekatu eta sartu",
-    "goBack": "Atzera"
+    "goBack": "Atzera",
+    "emptyGroupsSearch": "Ez da talderik aurkitu. Ziurtatu bilaketa zuzen idatzita dagoela.",
+    "emptyActivitiesSearch": "Ez da jarduerarik aurkitu. Ziurtatu bilaketa zuzen idatzita dagoela.",
+    "chatListFiltersLabel": "Txat-iragazkiak",
+    "dms": "Mezu zuzenak",
+    "allFilterTooltip": "Txat guztiak erakutsi",
+    "dmsFilterTooltip": "Mezu zuzenak soilik erakutsi",
+    "groupsFilterTooltip": "Talde-txatak soilik erakutsi",
+    "activitiesFilterTooltip": "Jarduerak soilik erakutsi",
+    "noGroupChatsYet": "Oraindik ez zaude talde-txatetan.",
+    "noActivitiesYet": "Oraindik ez zaude jardueretan."
 }

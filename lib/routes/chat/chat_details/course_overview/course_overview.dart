@@ -258,7 +258,7 @@ class _CourseOverviewState extends State<CourseOverview> {
                                 .controller
                                 .roomSummariesModel
                                 .hasCompletedActivity(
-                                  room.client.userID!,
+                                  room.client.userID,
                                   activityId,
                                 ),
                             objectivesProvider:

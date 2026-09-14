@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-09-10 16:50:34.178732",
+    "@@last_modified": "2026-09-14 12:45:38.791148",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2318,5 +2318,15 @@
     "teacherAnalyticsRequestTitle": "Utitshala ucela inkqubela yakho yokufunda",
     "teacherAnalyticsRequestDesc": "Baza kubona onke amagama kunye negrama oyisebenzisileyo kwi-{targetLang}, inqanaba lakho kunye ne-XP, kunye nemiyalezo ethunyelwe kwimisebenzi yekhosi. Imiyalezo yakho yobuqu ayizukwabelwana ngayo. Ukwabelana nge-analytics kuyafuneka ukuze ujoyine ikhosi.",
     "shareAndJoin": "Yabelana kwaye ujoyine",
-    "goBack": "Buyela umva"
+    "goBack": "Buyela umva",
+    "emptyGroupsSearch": "Akukho maqela afunyenweyo. Qinisekisa ukuba upelo lwakho luchanekile.",
+    "emptyActivitiesSearch": "Akukho misebenzi ifunyenweyo. Qinisekisa ukuba upelo lwakho luchanekile.",
+    "chatListFiltersLabel": "Izihluzi zencoko",
+    "dms": "Ii-DM",
+    "allFilterTooltip": "Bonisa zonke iincoko",
+    "dmsFilterTooltip": "Bonisa kuphela imiyalezo ethe ngqo",
+    "groupsFilterTooltip": "Bonisa kuphela iincoko zeqela",
+    "activitiesFilterTooltip": "Bonisa kuphela imisebenzi",
+    "noGroupChatsYet": "Akukho ncoko zeqela ukulo okwangoku.",
+    "noActivitiesYet": "Akukho misebenzi ukuyo okwangoku."
 }

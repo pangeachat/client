@@ -1802,7 +1802,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-09-10 16:50:31.031430",
+    "@@last_modified": "2026-09-14 12:45:34.433244",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10859,5 +10859,15 @@
     "teacherAnalyticsRequestTitle": "Učitelj zahteva vaš napredek pri učenju",
     "teacherAnalyticsRequestDesc": "Videli bodo vse besede in slovnico, ki ste jih uporabili v {targetLang}, vašo raven in XP ter sporočila, poslana v dejavnostih tečaja. Vaša sporočila 1-na-1 ne bodo deljena. Deljenje analitike je obvezno za pridružitev tečaju.",
     "shareAndJoin": "Deli in se pridruži",
-    "goBack": "Nazaj"
+    "goBack": "Nazaj",
+    "emptyGroupsSearch": "Ni najdenih skupin. Prepričajte se, da je iskanje pravilno črkovano.",
+    "emptyActivitiesSearch": "Ni najdenih dejavnosti. Prepričajte se, da je iskanje pravilno črkovano.",
+    "chatListFiltersLabel": "Filtri klepeta",
+    "dms": "DM-ji",
+    "allFilterTooltip": "Prikaži vse klepete",
+    "dmsFilterTooltip": "Prikaži samo neposredna sporočila",
+    "groupsFilterTooltip": "Prikaži samo skupinske klepete",
+    "activitiesFilterTooltip": "Prikaži samo dejavnosti",
+    "noGroupChatsYet": "Še niste v nobenem skupinskem klepetu.",
+    "noActivitiesYet": "Še niste v nobeni dejavnosti."
 }

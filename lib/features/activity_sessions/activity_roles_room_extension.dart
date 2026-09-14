@@ -138,7 +138,12 @@ extension ActivityRolesRoomExtension on Room {
     }
   }
 
-  ActivityRoleModel? get ownRoleState => activityRoles?.role(client.userID!);
+  /// Null for a signed-out account: a world-map card can still build through
+  /// logout, and it has no role to show (#9019).
+  ActivityRoleModel? get ownRoleState {
+    final userId = client.userID;
+    return userId == null ? null : activityRoles?.role(userId);
+  }
 
   ActivityRole? get ownRole {
     final role = ownRoleState;

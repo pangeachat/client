@@ -394,7 +394,7 @@ class _CourseSectionSubpage extends StatelessWidget {
                   collapsibleMissions: true,
                   hasCompletedActivity: (activityId) => controller
                       .roomSummariesModel
-                      .hasCompletedActivity(room.client.userID!, activityId),
+                      .hasCompletedActivity(room.client.userID, activityId),
                   objectivesProvider: controller.objectivesProvider,
                 ),
               ),

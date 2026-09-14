@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-10 16:50:23.137617",
+    "@@last_modified": "2026-09-14 12:45:25.848736",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9987,5 +9987,15 @@
     "teacherAnalyticsRequestTitle": "Guru meminta progres belajar Anda",
     "teacherAnalyticsRequestDesc": "Mereka akan melihat semua kata dan tata bahasa yang Anda gunakan dalam {targetLang}, level dan XP Anda, serta pesan yang dikirim dalam aktivitas kursus. Pesan 1 lawan 1 Anda tidak akan dibagikan. Berbagi analitik diperlukan untuk bergabung dengan kursus.",
     "shareAndJoin": "Bagikan dan bergabung",
-    "goBack": "Kembali"
+    "goBack": "Kembali",
+    "emptyGroupsSearch": "Tidak ada grup yang ditemukan. Pastikan ejaan pencarian Anda sudah benar.",
+    "emptyActivitiesSearch": "Tidak ada aktivitas yang ditemukan. Pastikan ejaan pencarian Anda sudah benar.",
+    "chatListFiltersLabel": "Filter obrolan",
+    "dms": "Pesan Langsung",
+    "allFilterTooltip": "Tampilkan semua obrolan",
+    "dmsFilterTooltip": "Hanya tampilkan pesan langsung",
+    "groupsFilterTooltip": "Hanya tampilkan obrolan grup",
+    "activitiesFilterTooltip": "Hanya tampilkan aktivitas",
+    "noGroupChatsYet": "Anda belum bergabung dalam obrolan grup apa pun.",
+    "noActivitiesYet": "Anda belum bergabung dalam aktivitas apa pun."
 }

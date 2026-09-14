@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-09-10 16:50:33.513987",
+    "@@last_modified": "2026-09-14 12:45:37.855288",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2318,5 +2318,15 @@
     "teacherAnalyticsRequestTitle": "استاد آپ کی سیکھنے کی پیشرفت کی درخواست کرتا ہے",
     "teacherAnalyticsRequestDesc": "وہ تمام الفاظ اور گرامر دیکھیں گے جو آپ نے {targetLang} میں استعمال کیے ہیں، آپ کی سطح اور XP، اور کورس کی سرگرمیوں میں بھیجے گئے پیغامات۔ آپ کے 1-on-1 پیغامات شیئر نہیں کیے جائیں گے۔ کورس میں شامل ہونے کے لیے تجزیات کا اشتراک کرنا ضروری ہے۔",
     "shareAndJoin": "شیئر کریں اور شامل ہوں",
-    "goBack": "واپس جائیں"
+    "goBack": "واپس جائیں",
+    "emptyGroupsSearch": "کوئی گروپس نہیں ملے۔ یقینی بنائیں کہ آپ کی تلاش کی ہجے درست ہے۔",
+    "emptyActivitiesSearch": "کوئی سرگرمیاں نہیں ملیں۔ یقینی بنائیں کہ آپ کی تلاش کی ہجے درست ہے۔",
+    "chatListFiltersLabel": "چیٹ فلٹرز",
+    "dms": "براہ راست پیغامات",
+    "allFilterTooltip": "تمام چیٹس دکھائیں",
+    "dmsFilterTooltip": "صرف براہ راست پیغامات دکھائیں",
+    "groupsFilterTooltip": "صرف گروپ چیٹس دکھائیں",
+    "activitiesFilterTooltip": "صرف سرگرمیاں دکھائیں",
+    "noGroupChatsYet": "آپ ابھی تک کسی گروپ چیٹ میں نہیں ہیں۔",
+    "noActivitiesYet": "آپ ابھی تک کسی سرگرمی میں نہیں ہیں۔"
 }

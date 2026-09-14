@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-09-10 16:50:32.443945",
+    "@@last_modified": "2026-09-14 12:45:37.007508",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2318,5 +2318,15 @@
     "teacherAnalyticsRequestTitle": "Mosuoe o kopa tsoelo-pele ea hau ea ho ithuta",
     "teacherAnalyticsRequestDesc": "Ba tla bona mantsoe le sebōpeho-puo tsohle tseo u li sebelisitseng ho {targetLang}, boemo ba hau le XP, le melaetsa e rometsoeng mesebetsing ea thupelo. Melaetsa ea hau ea motho ka mong e ke ke ea arolelanoa. Ho arolelana lintlha tsa tlhahlobo hoa hlokahala ho kenela thupelo.",
     "shareAndJoin": "Arolelana 'me u kene",
-    "goBack": "Khutla"
+    "goBack": "Khutla",
+    "emptyGroupsSearch": "Ha ho lihlopha tse fumanehileng. Etsa bonnete ba hore patlisiso ea hau e ngotsoe ka nepo.",
+    "emptyActivitiesSearch": "Ha ho mesebetsi e fumanehileng. Etsa bonnete ba hore patlisiso ea hau e ngotsoe ka nepo.",
+    "chatListFiltersLabel": "Lisefa tsa moqoqo",
+    "dms": "Melaetsa e tobileng",
+    "allFilterTooltip": "Bontša meqoqo kaofela",
+    "dmsFilterTooltip": "Bontša melaetsa e tobileng feela",
+    "groupsFilterTooltip": "Bontša meqoqo ea lihlopha feela",
+    "activitiesFilterTooltip": "Bontša mesebetsi feela",
+    "noGroupChatsYet": "Ha o so be le meqoqo ea lihlopha.",
+    "noActivitiesYet": "Ha o so be le mesebetsi."
 }

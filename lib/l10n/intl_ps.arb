@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-09-10 16:50:29.659864",
+    "@@last_modified": "2026-09-14 12:45:33.574936",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2318,5 +2318,15 @@
     "teacherAnalyticsRequestTitle": "ښوونکی ستاسو د زده کړې پرمختګ غواړي",
     "teacherAnalyticsRequestDesc": "دوی به ټول هغه ټکي او ګرامر وګوري چې تاسو په {targetLang} کې کارولي دي، ستاسو کچه او XP، او په کورس فعالیتونو کې لیږل شوي پیغامونه. ستاسو 1-on-1 پیغامونه به شریک نشي. د کورس سره یوځای کیدو لپاره د تحلیلونو شریکول اړین دي.",
     "shareAndJoin": "شریک کړئ او یوځای شئ",
-    "goBack": "بیرته لاړ شئ"
+    "goBack": "بیرته لاړ شئ",
+    "emptyGroupsSearch": "هیڅ ګروپ ونه موندل شو. ډاډ ترلاسه کړئ چې ستاسو لټون سم لیکل شوی.",
+    "emptyActivitiesSearch": "هیڅ فعالیت ونه موندل شو. ډاډ ترلاسه کړئ چې ستاسو لټون سم لیکل شوی.",
+    "chatListFiltersLabel": "د خبرو اترو فلټرونه",
+    "dms": "مستقیم پیغامونه",
+    "allFilterTooltip": "ټولې خبرې اترې وښایاست",
+    "dmsFilterTooltip": "یوازې مستقیم پیغامونه وښایاست",
+    "groupsFilterTooltip": "یوازې ګروپي خبرې اترې وښایاست",
+    "activitiesFilterTooltip": "یوازې فعالیتونه وښایاست",
+    "noGroupChatsYet": "تاسو لا تر اوسه په هیڅ ګروپي خبرو اترو کې نه یاست.",
+    "noActivitiesYet": "تاسو لا تر اوسه په هیڅ فعالیت کې نه یاست."
 }

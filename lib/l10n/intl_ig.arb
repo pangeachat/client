@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-09-10 16:50:25.588975",
+    "@@last_modified": "2026-09-14 12:45:26.838386",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2318,5 +2318,15 @@
     "teacherAnalyticsRequestTitle": "Onye nkuzi gị na-arịọ maka ọganihu mmụta gị",
     "teacherAnalyticsRequestDesc": "Ha ga-ahụ okwu na ụtọasụsụ niile ị jiri na {targetLang}, ọkwa gị na XP, yana ozi ezigara n'ime ihe omume ọmụmụ. Agaghị ekekọrịta ozi 1-na-1 gị. Achọrọ ịkekọrịta nyocha iji sonye na ọmụmụ ihe ahụ.",
     "shareAndJoin": "Kekọrịta ma sonye",
-    "goBack": "Gaa azụ"
+    "goBack": "Gaa azụ",
+    "emptyGroupsSearch": "Achọtaghị otu ọ bụla. Gbaa mbọ hụ na edere nchọta gị nke ọma.",
+    "emptyActivitiesSearch": "Achọtaghị ihe omume ọ bụla. Gbaa mbọ hụ na edere nchọta gị nke ọma.",
+    "chatListFiltersLabel": "Nyocha nkata",
+    "dms": "Ozi ozugbo",
+    "allFilterTooltip": "Gosi nkata niile",
+    "dmsFilterTooltip": "Gosi naanị ozi ozugbo",
+    "groupsFilterTooltip": "Gosi naanị nkata otu",
+    "activitiesFilterTooltip": "Gosi naanị ihe omume",
+    "noGroupChatsYet": "Ị nọbeghị na nkata otu ọ bụla.",
+    "noActivitiesYet": "Ị nọbeghị na ihe omume ọ bụla."
 }

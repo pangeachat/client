@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-09-10 16:50:19.893254",
+    "@@last_modified": "2026-09-14 12:45:23.328612",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9911,5 +9911,15 @@
     "teacherAnalyticsRequestTitle": "Õpetaja soovib näha sinu õppimise edenemist",
     "teacherAnalyticsRequestDesc": "Nad näevad kõiki sõnu ja grammatikat, mida oled kasutanud keeles {targetLang}, sinu taset ja XP-d ning kursuse tegevustes saadetud sõnumeid. Sinu 1-ühele sõnumeid ei jagata. Kursusega liitumiseks on analüütika jagamine kohustuslik.",
     "shareAndJoin": "Jaga ja liitu",
-    "goBack": "Mine tagasi"
+    "goBack": "Mine tagasi",
+    "emptyGroupsSearch": "Ühtegi gruppi ei leitud. Veenduge, et otsing on õigesti kirjutatud.",
+    "emptyActivitiesSearch": "Ühtegi tegevust ei leitud. Veenduge, et otsing on õigesti kirjutatud.",
+    "chatListFiltersLabel": "Vestluse filtrid",
+    "dms": "Otsevestlused",
+    "allFilterTooltip": "Näita kõiki vestlusi",
+    "dmsFilterTooltip": "Näita ainult otsevestlusi",
+    "groupsFilterTooltip": "Näita ainult grupivestlusi",
+    "activitiesFilterTooltip": "Näita ainult tegevusi",
+    "noGroupChatsYet": "Te pole veel üheski grupivestluses.",
+    "noActivitiesYet": "Te pole veel üheski tegevuses."
 }

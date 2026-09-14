@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-09-10 16:50:31.883090",
+    "@@last_modified": "2026-09-14 12:45:35.603227",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2318,5 +2318,15 @@
     "teacherAnalyticsRequestTitle": "Macallinku wuxuu codsanayaa horumarkaaga waxbarasho",
     "teacherAnalyticsRequestDesc": "Waxay arki doonaan dhammaan ereyada iyo naxwaha aad ku isticmaashay {targetLang}, heerkaaga iyo XP-gaaga, iyo fariimaha lagu soo diray hawlaha koorsada. Fariimahaaga 1-ka-1 ah lama wadaagi doono. Wadaagista falanqaynta ayaa loo baahan yahay si aad ugu biirto koorsada.",
     "shareAndJoin": "Wadaag oo ku biir",
-    "goBack": "Dib u noqo"
+    "goBack": "Dib u noqo",
+    "emptyGroupsSearch": "Lama helin kooxo. Hubi in raadintaadu si sax ah u qoran tahay.",
+    "emptyActivitiesSearch": "Lama helin waxqabadyo. Hubi in raadintaadu si sax ah u qoran tahay.",
+    "chatListFiltersLabel": "Shaandheeyayaasha sheekaysiga",
+    "dms": "DM-yada",
+    "allFilterTooltip": "Tus dhammaan sheekaysiyada",
+    "dmsFilterTooltip": "Tus kaliya fariimaha tooska ah",
+    "groupsFilterTooltip": "Tus kaliya sheekaysiyada kooxda",
+    "activitiesFilterTooltip": "Tus kaliya waxqabadyada",
+    "noGroupChatsYet": "Weli kuma jirtid wax sheekaysi kooxeed ah.",
+    "noActivitiesYet": "Weli kuma jirtid wax waxqabadyo ah."
 }

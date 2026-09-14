@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-09-10 16:50:28.389874",
+    "@@last_modified": "2026-09-14 12:45:29.591544",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2318,5 +2318,15 @@
     "teacherAnalyticsRequestTitle": "Kei te tono te kaiako i tō ahunga whakamua ako",
     "teacherAnalyticsRequestDesc": "Ka kite rātou i ngā kupu me te wetereo katoa i whakamahia e koe i roto i te {targetLang}, tō taumata me tō XP, me ngā karere i tukuna i roto i ngā mahi akoranga. E kore ō karere takitahi e tohaina. Me tohatoha tātaritanga kia uru atu ai ki te akoranga.",
     "shareAndJoin": "Tohaina ka uru mai",
-    "goBack": "Hoki atu"
+    "goBack": "Hoki atu",
+    "emptyGroupsSearch": "Kāore he rōpū i kitea. Kia tika te tuhi o tō rapunga.",
+    "emptyActivitiesSearch": "Kāore he mahi i kitea. Kia tika te tuhi o tō rapunga.",
+    "chatListFiltersLabel": "Ngā tātari kōrerorero",
+    "dms": "Ngā Karere Tika",
+    "allFilterTooltip": "Whakaatu i ngā kōrerorero katoa",
+    "dmsFilterTooltip": "Whakaatu i ngā karere tika anake",
+    "groupsFilterTooltip": "Whakaatu i ngā kōrerorero rōpū anake",
+    "activitiesFilterTooltip": "Whakaatu i ngā mahi anake",
+    "noGroupChatsYet": "Kāore anō koe kia uru ki tētahi kōrerorero rōpū.",
+    "noActivitiesYet": "Kāore anō koe kia uru ki tētahi mahi."
 }

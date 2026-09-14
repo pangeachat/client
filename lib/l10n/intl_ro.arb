@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-10 16:50:30.394943",
+    "@@last_modified": "2026-09-14 12:45:33.570304",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10646,5 +10646,15 @@
     "teacherAnalyticsRequestTitle": "Profesorul solicită progresul tău de învățare",
     "teacherAnalyticsRequestDesc": "Vor vedea toate cuvintele și gramatica pe care le-ai folosit în {targetLang}, nivelul și XP-ul tău, precum și mesajele trimise în activitățile cursului. Mesajele tale 1-la-1 nu vor fi partajate. Partajarea analizelor este necesară pentru a te alătura cursului.",
     "shareAndJoin": "Partajează și alătură-te",
-    "goBack": "Înapoi"
+    "goBack": "Înapoi",
+    "emptyGroupsSearch": "Nu s-au găsit grupuri. Asigură-te că ai scris corect căutarea.",
+    "emptyActivitiesSearch": "Nu s-au găsit activități. Asigură-te că ai scris corect căutarea.",
+    "chatListFiltersLabel": "Filtre chat",
+    "dms": "Mesaje directe",
+    "allFilterTooltip": "Arată toate chat-urile",
+    "dmsFilterTooltip": "Arată doar mesajele directe",
+    "groupsFilterTooltip": "Arată doar chat-urile de grup",
+    "activitiesFilterTooltip": "Arată doar activitățile",
+    "noGroupChatsYet": "Nu ești încă în niciun chat de grup.",
+    "noActivitiesYet": "Nu ești încă în nicio activitate."
 }

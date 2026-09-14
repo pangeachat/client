@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-10 16:50:33.473519",
+    "@@last_modified": "2026-09-14 12:45:38.160480",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7206,5 +7206,15 @@
     "teacherAnalyticsRequestTitle": "Giáo viên yêu cầu xem tiến độ học tập của bạn",
     "teacherAnalyticsRequestDesc": "Họ sẽ thấy tất cả các từ và ngữ pháp bạn đã sử dụng trong {targetLang}, cấp độ và XP của bạn, cũng như các tin nhắn đã gửi trong hoạt động khóa học. Tin nhắn 1-1 của bạn sẽ không được chia sẻ. Chia sẻ phân tích là bắt buộc để tham gia khóa học.",
     "shareAndJoin": "Chia sẻ và tham gia",
-    "goBack": "Quay lại"
+    "goBack": "Quay lại",
+    "emptyGroupsSearch": "Không tìm thấy nhóm nào. Hãy đảm bảo bạn đã nhập đúng chính tả.",
+    "emptyActivitiesSearch": "Không tìm thấy hoạt động nào. Hãy đảm bảo bạn đã nhập đúng chính tả.",
+    "chatListFiltersLabel": "Bộ lọc trò chuyện",
+    "dms": "Tin nhắn trực tiếp",
+    "allFilterTooltip": "Hiển thị tất cả cuộc trò chuyện",
+    "dmsFilterTooltip": "Chỉ hiển thị tin nhắn trực tiếp",
+    "groupsFilterTooltip": "Chỉ hiển thị trò chuyện nhóm",
+    "activitiesFilterTooltip": "Chỉ hiển thị hoạt động",
+    "noGroupChatsYet": "Bạn chưa tham gia bất kỳ cuộc trò chuyện nhóm nào.",
+    "noActivitiesYet": "Bạn chưa tham gia bất kỳ hoạt động nào."
 }

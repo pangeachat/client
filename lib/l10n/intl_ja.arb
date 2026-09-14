@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-09-10 16:50:23.362310",
+    "@@last_modified": "2026-09-14 12:45:26.753543",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10683,5 +10683,15 @@
     "teacherAnalyticsRequestTitle": "先生があなたの学習進捗をリクエストしています",
     "teacherAnalyticsRequestDesc": "先生は、あなたが{targetLang}で使ったすべての単語と文法、あなたのレベルとXP、コースアクティビティで送信されたメッセージを見ることができます。あなたの1対1のメッセージは共有されません。コースに参加するには、分析情報の共有が必要です。",
     "shareAndJoin": "共有して参加",
-    "goBack": "戻る"
+    "goBack": "戻る",
+    "emptyGroupsSearch": "グループが見つかりません。検索のスペルが正しいことを確認してください。",
+    "emptyActivitiesSearch": "アクティビティが見つかりません。検索のスペルが正しいことを確認してください。",
+    "chatListFiltersLabel": "チャットフィルター",
+    "dms": "DM",
+    "allFilterTooltip": "すべてのチャットを表示",
+    "dmsFilterTooltip": "ダイレクトメッセージのみを表示",
+    "groupsFilterTooltip": "グループチャットのみを表示",
+    "activitiesFilterTooltip": "アクティビティのみを表示",
+    "noGroupChatsYet": "まだグループチャットに参加していません。",
+    "noActivitiesYet": "まだアクティビティに参加していません。"
 }

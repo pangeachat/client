@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-09-10 16:50:19.078055",
+    "@@last_modified": "2026-09-14 12:45:22.202720",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2318,5 +2318,15 @@
     "teacherAnalyticsRequestTitle": "U prufessore dumanda u vostru prugressu d'apprendimentu",
     "teacherAnalyticsRequestDesc": "Videranu tutte e parolle è a grammatica chì avete usatu in {targetLang}, u vostru livellu è XP, è i messaghji mandati in l'attività di u corsu. I vostri messaghji 1-à-1 ùn seranu micca spartuti. A spartera di l'analitiche hè necessaria per unisce à u corsu.",
     "shareAndJoin": "Sparte è unisciti",
-    "goBack": "Torna in daretu"
+    "goBack": "Torna in daretu",
+    "emptyGroupsSearch": "Nisun gruppu trovu. Assicuratevi chì a vostra ricerca sia scritta currettamente.",
+    "emptyActivitiesSearch": "Nisuna attività trovata. Assicuratevi chì a vostra ricerca sia scritta currettamente.",
+    "chatListFiltersLabel": "Filtri di chat",
+    "dms": "Messagi Diretti",
+    "allFilterTooltip": "Mostra tutte e chat",
+    "dmsFilterTooltip": "Mostra solu i messagi diretti",
+    "groupsFilterTooltip": "Mostra solu e chat di gruppu",
+    "activitiesFilterTooltip": "Mostra solu l'attività",
+    "noGroupChatsYet": "Ùn site ancu in nisuna chat di gruppu.",
+    "noActivitiesYet": "Ùn site ancu in nisuna attività."
 }
