@@ -168,6 +168,41 @@ void main() {
     });
   });
 
+  /// Sentry CLIENT-EPV (#9052). The card opens from a post-frame callback that
+  /// reads `context`; when the chip is disposed between the tap and that frame
+  /// — the session ends, the learner backs out — `State.context` threw on the
+  /// dead element. There is no card to position at that point, so the callback
+  /// must simply return.
+  testWidgets('a chip disposed before its frame does not throw', (
+    tester,
+  ) async {
+    final semantics = tester.ensureSemantics();
+    try {
+      await pumpVocab(tester);
+
+      // Activated WITHOUT pumping, so the post-frame callback is queued and
+      // has not run yet — the window the crash lives in.
+      final node = tester.semantics.find(
+        find.descendant(
+          of: find.byType(ActivityVocabWidget),
+          matching: find.ancestor(
+            of: find.text(vocab.first.lemma, findRichText: true),
+            matching: find.byType(InkWell),
+          ),
+        ),
+      );
+      node.owner!.performAction(node.id, SemanticsAction.tap);
+
+      // The session goes away under the learner before that frame arrives.
+      await tester.pumpWidget(const MaterialApp(home: SizedBox.shrink()));
+      await tester.pump(const Duration(seconds: 1));
+
+      expect(tester.takeException(), isNull);
+    } finally {
+      semantics.dispose();
+    }
+  });
+
   testWidgets(
     'selecting another chip moves the card rather than stacking one',
     (tester) async {
