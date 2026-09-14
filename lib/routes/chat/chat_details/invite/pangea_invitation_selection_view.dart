@@ -2,25 +2,24 @@ import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:collection/collection.dart';
-import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/join_codes/share_room_button.dart';
+import 'package:fluffychat/features/user/widgets/user_filter_chip_row.dart';
+import 'package:fluffychat/features/user/widgets/user_result_tile.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/room_unavailable_panel.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/invite/invite_all_in_space_tile.dart';
 import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection.dart';
 import 'package:fluffychat/routes/chat/chat_details/invite/room_settings_constants.dart';
+import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
-import 'package:fluffychat/widgets/adaptive_dialogs/user_dialog.dart';
-import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/pangea_search_bar.dart';
-import 'package:fluffychat/widgets/users/level_display_name.dart';
 import 'package:fluffychat/widgets/users/member_actions_popup_menu_button.dart';
 
 class PangeaInvitationSelectionView extends StatelessWidget {
@@ -114,34 +113,19 @@ class PangeaInvitationSelectionView extends StatelessWidget {
                         )
                       : null,
                 ),
-                Semantics(
-                  label: L10n.of(context).userSearchTagsLabel,
-                  container: true,
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        spacing: 12.0,
-                        children: controller.availableFilters.map((filter) {
-                          return FilterChip(
-                            label: filter == InvitationFilter.participants
-                                ? Row(
-                                    spacing: 4.0,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      const Icon(Icons.group, size: 16.0),
-                                      Text(controller.filterLabel(filter)),
-                                    ],
-                                  )
-                                : Text(controller.filterLabel(filter)),
-                            onSelected: (_) => controller.setFilter(filter),
-                            selected: controller.filter == filter,
-                          );
-                        }).toList(),
-                      ),
-                    ),
-                  ),
+                UserFilterChipRow(
+                  chips: controller.availableFilters
+                      .map(
+                        (filter) => UserFilterChip(
+                          label: controller.filterLabel(filter),
+                          icon: filter == InvitationFilter.participants
+                              ? Icons.group
+                              : null,
+                          selected: controller.filter == filter,
+                          onSelected: () => controller.setFilter(filter),
+                        ),
+                      )
+                      .toList(),
                 ),
                 Expanded(
                   child: StreamBuilder<Object>(
@@ -198,14 +182,25 @@ class PangeaInvitationSelectionView extends StatelessWidget {
                                         ? Padding(
                                             padding: const EdgeInsets.all(24.0),
                                             child: Text(
-                                              controller
-                                                          .controller
-                                                          .text
-                                                          .isNotEmpty &&
-                                                      controller
-                                                              .controller
-                                                              .text ==
-                                                          controller.lastSearch
+                                              // A failed search must not read
+                                              // as "nobody by that name" —
+                                              // the directory is rate-limited,
+                                              // so a burst of keystrokes can
+                                              // answer 429 (#9009).
+                                              controller.searchError != null
+                                                  ? controller.searchError!
+                                                        .toLocalizedString(
+                                                          context,
+                                                        )
+                                                  : controller
+                                                            .controller
+                                                            .text
+                                                            .isNotEmpty &&
+                                                        controller
+                                                                .controller
+                                                                .text ==
+                                                            controller
+                                                                .lastSearch
                                                   ? L10n.of(
                                                       context,
                                                     ).emptyInviteSearchHint
@@ -379,101 +374,56 @@ class _InviteContactListTile extends StatelessWidget {
         ? L10n.of(context).moderator
         : null;
 
-    return Semantics(
-      label: profile.displayName,
-      container: true,
-      child: ListTile(
-        onTap: participant != null
-            ? () => showMemberActionsPopupMenu(
-                context: context,
-                user: participant,
-              )
-            : null,
-        leading: Semantics(
-          label: L10n.of(context).profile,
-          container: true,
-          child: ExcludeSemantics(
-            child: Avatar(
-              mxContent: profile.avatarUrl,
-              name: profile.displayName,
-              presenceUserId: profile.userId,
-              onTap: () => UserDialog.show(
-                context: context,
-                profile: profile,
-                uri: GoRouterState.of(context).uri,
+    return UserResultTile(
+      profile: profile,
+      onTap: participant != null
+          ? () =>
+                showMemberActionsPopupMenu(context: context, user: participant)
+          : null,
+      trailing:
+          [
+            Membership.invite,
+            Membership.knock,
+            Membership.ban,
+          ].contains(membership)
+          ? Container(
+              padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+              margin: const EdgeInsets.symmetric(horizontal: 8),
+              decoration: BoxDecoration(
+                color: theme.colorScheme.secondaryContainer,
+                borderRadius: BorderRadius.circular(8),
               ),
-            ),
-          ),
-        ),
-        title: ExcludeSemantics(
-          child: Text(
-            profile.displayName ?? profile.userId.localpart ?? l10n.user,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-          ),
-        ),
-        subtitle: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // https://github.com/pangeachat/client/issues/3047
-            const SizedBox(height: 2.0),
-            Text(
-              profile.userId,
-              style: const TextStyle(fontSize: 12.0),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
-            LevelDisplayName(userId: profile.userId),
-          ],
-        ),
-        trailing:
-            [
-              Membership.invite,
-              Membership.knock,
-              Membership.ban,
-            ].contains(membership)
-            ? Container(
-                padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
-                margin: const EdgeInsets.symmetric(horizontal: 8),
-                decoration: BoxDecoration(
-                  color: theme.colorScheme.secondaryContainer,
-                  borderRadius: BorderRadius.circular(8),
+              child: Text(
+                controller.membershipCopy(membership)!,
+                style: theme.textTheme.labelSmall?.copyWith(
+                  color: theme.colorScheme.onSecondaryContainer,
                 ),
-                child: Text(
-                  controller.membershipCopy(membership)!,
-                  style: theme.textTheme.labelSmall?.copyWith(
-                    color: theme.colorScheme.onSecondaryContainer,
-                  ),
-                ),
-              )
-            : permissionBatch != null
-            ? Container(
-                margin: const EdgeInsets.only(right: 12.0),
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 6,
-                ),
-                decoration: BoxDecoration(
-                  color: participant!.powerLevel >= 100
-                      ? theme.colorScheme.tertiary
-                      : theme.colorScheme.tertiaryContainer,
-                  borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-                ),
-                child: Text(
-                  permissionBatch,
-                  style: theme.textTheme.labelSmall?.copyWith(
-                    color: participant.powerLevel >= 100
-                        ? theme.colorScheme.onTertiary
-                        : theme.colorScheme.onTertiaryContainer,
-                  ),
-                ),
-              )
-            : TextButton.icon(
-                onPressed: isMember || !canInvite ? null : onTap,
-                label: Text(isMember ? l10n.participant : l10n.invite),
-                icon: Icon(isMember ? Icons.check : Icons.add),
               ),
-      ),
+            )
+          : permissionBatch != null
+          ? Container(
+              margin: const EdgeInsets.only(right: 12.0),
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+              decoration: BoxDecoration(
+                color: participant!.powerLevel >= 100
+                    ? theme.colorScheme.tertiary
+                    : theme.colorScheme.tertiaryContainer,
+                borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+              ),
+              child: Text(
+                permissionBatch,
+                style: theme.textTheme.labelSmall?.copyWith(
+                  color: participant.powerLevel >= 100
+                      ? theme.colorScheme.onTertiary
+                      : theme.colorScheme.onTertiaryContainer,
+                ),
+              ),
+            )
+          : TextButton.icon(
+              onPressed: isMember || !canInvite ? null : onTap,
+              label: Text(isMember ? l10n.participant : l10n.invite),
+              icon: Icon(isMember ? Icons.check : Icons.add),
+            ),
     );
   }
 }
