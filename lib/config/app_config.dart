@@ -29,7 +29,6 @@ abstract class AppConfig {
   // Key colours. Each is the one place its hue is written; PangeaColors turns
   // it into a family of roles by tone.
   static const Color gold = Color.fromARGB(255, 253, 191, 1);
-  static const Color warning = Color.fromARGB(255, 210, 124, 12);
   static const Color success = Color(0xFF33D057);
 
   // Static colours still read directly by widget code (migrating).

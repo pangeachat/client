@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/routes/chat/events/tokens/highlight_style.dart';
 
 class TokenRenderingUtil {
@@ -65,7 +66,7 @@ class TokenRenderingUtil {
   /// Wraps [child] in the target-vocab backfill highlight when [highlight] is
   /// true, otherwise returns [child] unchanged. [color] defaults to the gold
   /// vocab tint (issue #7659) so existing callers are byte-identical; the STT
-  /// edit-diff passes [AppConfig.warning]. Keeps the typed and spoken
+  /// edit-diff passes [PangeaColors.warningGraphic]. Keeps the typed and spoken
   /// highlights visually identical.
   static Widget vocabHighlight({
     required bool highlight,

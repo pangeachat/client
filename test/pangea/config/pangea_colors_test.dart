@@ -20,7 +20,7 @@ void main() {
   final palette = TonalPalette.fromHct(Hct.fromInt(AppConfig.gold.toARGB32()));
   Color tone(int t) => Color(palette.get(t));
   final warningPalette = TonalPalette.fromHct(
-    Hct.fromInt(AppConfig.warning.toARGB32()),
+    Hct.fromInt(PangeaColors.warningKey.toARGB32()),
   );
   Color warningTone(int t) => Color(warningPalette.get(t));
   final successPalette = TonalPalette.fromHct(

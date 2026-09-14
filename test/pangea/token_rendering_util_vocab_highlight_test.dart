@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/routes/chat/events/tokens/token_rendering_util.dart';
 
 /// Coverage for the shared target-vocab highlight helpers used by BOTH the
@@ -100,7 +101,7 @@ void main() {
       (tester) async {
         final result = TokenRenderingUtil.vocabHighlight(
           highlight: true,
-          color: AppConfig.warning,
+          color: PangeaColors.warningKey,
           child: const Text('hola'),
         );
         await tester.pumpWidget(
@@ -117,7 +118,7 @@ void main() {
         final decoration = box.decoration as BoxDecoration;
         // Full geometry parity with the pre-extraction vocabHighlight
         // (token_rendering_util.dart:65-72): tint alpha 50, radius 12, pad 4.
-        expect(decoration.color, AppConfig.warning.withAlpha(50));
+        expect(decoration.color, PangeaColors.warningKey.withAlpha(50));
         expect(decoration.borderRadius, BorderRadius.circular(12));
         final padding = tester.widget<Padding>(
           find

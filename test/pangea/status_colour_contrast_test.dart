@@ -117,7 +117,7 @@ void main() {
 
     final dark = schemeFor(Brightness.dark);
     expectClears(
-      AppConfig.warning,
+      PangeaColors.of(Brightness.dark).warningGraphic,
       dark,
       graphicFloor,
       what: 'warningGraphic, dark',
@@ -140,7 +140,7 @@ void main() {
   test('the bright constants this issue replaced still fail on light', () {
     final card = schemeFor(Brightness.light).surfaceContainerHighest;
     expect(contrast(AppConfig.success, card), lessThan(graphicFloor));
-    expect(contrast(AppConfig.warning, card), lessThan(graphicFloor));
+    expect(contrast(PangeaColors.warningKey, card), lessThan(graphicFloor));
     expect(contrast(AppConfig.error, card), lessThan(textFloor));
   });
 }
