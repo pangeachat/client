@@ -852,6 +852,18 @@ class ActivityPlanRepo
     // handled in the catch below, which reports its own exception.
     final unsatisfied = <_QueuedHydration>[];
 
+    if (wanted.isNotEmpty && _rateLimitPause.isPaused) {
+      // Armed between `_pump`'s check and here — preparation awaits disk, and a
+      // sibling read on the same budget can earn a 429 in that window. The
+      // request is not sent, and the parks go with it: these keys never reached
+      // the network, so there is no attempt to back off from, and leaving them
+      // parked would hold them for the full cooldown even after a much shorter
+      // `Retry-After` has lapsed.
+      for (final item in wanted) {
+        _nextAttempt.remove(_requestFor(item, l1).storageKey);
+      }
+    }
+
     if (wanted.isNotEmpty && !_rateLimitPause.isPaused) {
       final request = ActivityPlanBatchRequest(
         activityIds: wanted.map((i) => i.activityId).toList(),

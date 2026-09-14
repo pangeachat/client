@@ -738,6 +738,35 @@ void main() {
       },
     );
 
+    test('an armed pause declines the read and leaves no park behind', () async {
+      // NOTE the boundary of this test: arming the pause up front means `ensure`
+      // declines before anything queues. The related case — the pause arming
+      // DURING preparation, after `_pump` has already checked it — is a race
+      // between a sibling read's 429 and this batch's own disk reads, and is
+      // not constructible deterministically here; the park release for that
+      // path is verified by inspection only.
+      repo.rateLimitedForTesting(const Duration(seconds: 5));
+
+      final requests = await capture(
+        (_) => batchOf(found: ['paused-a']),
+        () async {
+          repo.ensure('paused-a', l1: 'en');
+          await settle();
+          await settle();
+        },
+      );
+      expect(requests, isEmpty, reason: 'the pause stops the request');
+
+      clock = clock.add(const Duration(seconds: 6));
+      expect(
+        repo.ensure('paused-a', l1: 'en'),
+        isTrue,
+        reason:
+            'the pause lapsed and this key never reached the network, so '
+            'nothing should still be holding it back',
+      );
+    });
+
     test('a refresh travels alone', () async {
       // The read cannot express "ignore your cache for this one and not those",
       // so grouping a revalidate would silently downgrade it to a normal read.
