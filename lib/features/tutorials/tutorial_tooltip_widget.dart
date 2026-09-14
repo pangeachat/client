@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/features/tutorials/tutorial_copy.dart';
 import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
@@ -133,8 +134,9 @@ class TutorialTooltipWidget extends StatelessWidget {
                     borderRadius: BorderRadius.circular(AppConfig.borderRadius),
                     // Green from the first step: the bar reports progress made,
                     // and a color that only arrives at the end read as the
-                    // earlier steps not counting.
-                    color: AppConfig.success,
+                    // earlier steps not counting. The mark tone, so the fill
+                    // clears 3:1 on the card in both themes.
+                    color: theme.pangea.successGraphic,
                   ),
                 ),
               ],

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/languages/locale_provider.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/settings/settings_learning/learning_settings_view_model.dart';
@@ -72,7 +72,7 @@ class _AppLanguageSettingsTileState extends State<AppLanguageSettingsTile> {
                   '${l10n.appInTargetLanguageStaysInBaseLanguage}'
             : l10n.appInTargetLanguageDesc,
       ),
-      activeThumbColor: AppConfig.success,
+      activeThumbColor: Theme.of(context).pangea.successFixedDim,
       onChanged: widget.viewModel.setAppLanguageIsTarget,
     );
   }
