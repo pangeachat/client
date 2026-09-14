@@ -27,37 +27,38 @@ void main() {
   };
 
   for (final brightness in [Brightness.light, Brightness.dark]) {
-    testWidgets('xp ring track clears $minGraphicRatio:1 in ${brightness.name}', (
-      tester,
-    ) async {
-      late Color track;
-      late Color arc;
-      await tester.pumpWidget(
-        MaterialApp(
-          theme: ThemeData(useMaterial3: true, brightness: brightness),
-          home: Builder(
-            builder: (context) {
-              track = AppConfig.xpTrackByTheme(context);
-              arc = AppConfig.goldByTheme(context);
-              return const SizedBox.shrink();
-            },
+    testWidgets(
+      'xp ring track clears $minGraphicRatio:1 in ${brightness.name}',
+      (tester) async {
+        late Color track;
+        late Color arc;
+        await tester.pumpWidget(
+          MaterialApp(
+            theme: ThemeData(useMaterial3: true, brightness: brightness),
+            home: Builder(
+              builder: (context) {
+                track = AppConfig.xpTrackByTheme(context);
+                arc = AppConfig.goldByTheme(context);
+                return const SizedBox.shrink();
+              },
+            ),
           ),
-        ),
-      );
-
-      expect(
-        contrastRatio(arc, track),
-        greaterThanOrEqualTo(minGraphicRatio),
-        reason: 'progress boundary (arc vs track) in ${brightness.name}',
-      );
-      final tiles = brightness == Brightness.light ? lightTiles : darkTiles;
-      for (final tile in tiles.entries) {
-        expect(
-          contrastRatio(track, tile.value),
-          greaterThanOrEqualTo(minGraphicRatio),
-          reason: 'track outline over ${tile.key} tile in ${brightness.name}',
         );
-      }
-    });
+
+        expect(
+          contrastRatio(arc, track),
+          greaterThanOrEqualTo(minGraphicRatio),
+          reason: 'progress boundary (arc vs track) in ${brightness.name}',
+        );
+        final tiles = brightness == Brightness.light ? lightTiles : darkTiles;
+        for (final tile in tiles.entries) {
+          expect(
+            contrastRatio(track, tile.value),
+            greaterThanOrEqualTo(minGraphicRatio),
+            reason: 'track outline over ${tile.key} tile in ${brightness.name}',
+          );
+        }
+      },
+    );
   }
 }
