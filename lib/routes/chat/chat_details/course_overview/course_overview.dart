@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
@@ -411,7 +411,7 @@ class CourseSettingsButtonList extends StatelessWidget {
                   secondary: b.icon,
                   value: b.value,
                   onChanged: b.enabled ? (value) => b.onPressed?.call() : null,
-                  activeThumbColor: AppConfig.success,
+                  activeThumbColor: Theme.of(context).pangea.successFixedDim,
                   // The section already carries the page inset, so the tile
                   // keeps just enough of its own to breathe against the
                   // hover surface's edge; compact so the settings read as
