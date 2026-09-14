@@ -198,19 +198,19 @@ void main() {
     test(
       'a lone right summary yields (collapses) instead of being overlapped',
       () {
-        // course + room (independent left panels) + the analytics summary can't
-        // all honor their hard mins in this column-mode budget, and analytics
-        // has no same-column child to fold behind. It is the lowest priority
-        // (analytics 40 < course 60 < room 80), so it collapses to make room
-        // rather than being overlapped by the left column.
+        // One panel per column, so NOTHING can fold (a fold needs two panels in
+        // one column) — the only configuration that still reaches Tier 2 now
+        // that the fold is positional (#9030). Just past the two-column
+        // breakpoint their hard mins (360 + 360) overflow the budget, so the
+        // lowest-priority panel (analytics 40 < room 80) collapses rather than
+        // being overlapped by the left column.
         final l = run(
-          viewport: 1200,
-          left: [PanelTypesEnum.course, PanelTypesEnum.room],
+          viewport: 860,
+          left: [PanelTypesEnum.room],
           right: [PanelTypesEnum.analytics],
         );
         expect(l.right.single.vis, PanelVis.hidden); // analytics yields
-        expect(l.left[0].vis, PanelVis.full); // course
-        expect(l.left[1].vis, PanelVis.full); // room
+        expect(l.left.single.vis, PanelVis.full); // room
         expectNoOverlap(l);
       },
     );
@@ -508,6 +508,62 @@ void main() {
       expect(activity.minWidth, room.minWidth);
       expect(activity.reasonableMin, room.reasonableMin);
       expect(activity.idealWidth, room.idealWidth);
+    });
+  });
+
+  group('the fold is positional, not registry-linked (#9030)', () {
+    // routing.instructions.md: "When a column's two panels are not a registry
+    // master/detail pair (a course card with a live room beside it), the same
+    // rule applies positionally — the first token folds behind the second."
+    // `course` has no parent and `room`'s parent is `chats`, so before #9030
+    // this pair could not fold at all: both held a full slot, the left column
+    // ate the budget, and Tier 2 evicted the analytics panel instead.
+    test('a chat opened in a course folds the course card behind it', () {
+      // 1100px: the pair's comfort widths (480 + 480 + a 16 gap) no longer fit
+      // the budget, which is the fold trigger.
+      final l = run(
+        viewport: 1100,
+        left: [PanelTypesEnum.course, PanelTypesEnum.room],
+      );
+      expect(l.left[0].vis, PanelVis.hidden); // course folds
+      expect(l.left[1].vis, PanelVis.full); // the live room keeps the column
+      // Closing the room reveals the card as it was left, so its control is ←.
+      expect(l.left[1].foldedOver, isTrue);
+      expectNoOverlap(l);
+    });
+
+    test('the folded course leaves room for the analytics panel — the '
+        'reported bug', () {
+      // The repro state of #9030: a course, an activity chat opened from its
+      // chats section, and an analytics page. The analytics panel must draw
+      // whichever left panel the user touched most recently, so pressing an
+      // analytics button is never a no-op.
+      for (final focusHint in [0, 1, 2]) {
+        final l = run(
+          viewport: 1200,
+          left: [PanelTypesEnum.course, PanelTypesEnum.room],
+          right: [PanelTypesEnum.analytics],
+          focusHint: focusHint,
+        );
+        expect(
+          l.right.single.vis,
+          PanelVis.full,
+          reason: 'analytics must draw with focusHint=$focusHint',
+        );
+        expect(l.left[1].vis, PanelVis.full); // the room keeps the column
+        expectNoOverlap(l);
+      }
+    });
+
+    test('nothing folds while both panels still fit their comfort width', () {
+      // The fold is a response to width pressure, never a default (#7467).
+      final l = run(
+        viewport: 1700,
+        left: [PanelTypesEnum.course, PanelTypesEnum.room],
+      );
+      expect(l.left.every((s) => s.vis == PanelVis.full), isTrue);
+      expect(l.left.every((s) => !s.foldedOver), isTrue);
+      expectNoOverlap(l);
     });
   });
 

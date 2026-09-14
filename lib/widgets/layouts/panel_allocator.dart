@@ -76,14 +76,16 @@ class WorkspaceLayout {
 /// N panels per column (it superseded the old single-panel-per-side budget).
 /// Both columns draw from one budget: each panel grows greedily to its ideal
 /// (the map fills whatever is left), and when they can't all fit, they compress
-/// toward their reasonable-min and only then **fold** — a **parent** (master)
-/// drops out of the layout behind its **child** (detail), which keeps the column
-/// (not drawn, no stripe; the parent one back-step away), never a full-screen
-/// takeover. Folding reads the registry's explicit parent/child/sibling tree
-/// ([PanelDef.parent]). Narrow-mode focus seats the most-recently-opened panel
-/// ([focusHint]) and falls back to the active leaf of that same tree when there
-/// is no recency (a cold deep link). Pure + unit-tested. See
-/// `routing.instructions.md`.
+/// toward their reasonable-min and only then **fold** — the panel BENEATH drops
+/// out of the layout behind the one above it in the same column, which keeps the
+/// column (not drawn, no stripe; the folded panel one back-step away), never a
+/// full-screen takeover. Folding is **positional** — a column's first token is
+/// the one that folds, whether or not the registry relates the pair — so a
+/// `course` card folds behind a live `room` exactly as a `chats` list folds
+/// behind its own room (#9030). Narrow-mode focus still reads the registry tree
+/// ([PanelDef.parent]): it seats the most-recently-opened panel ([focusHint])
+/// and falls back to that tree's active leaf when there is no recency (a cold
+/// deep link). Pure + unit-tested. See `routing.instructions.md`.
 abstract class PanelAllocator {
   /// Right margin reserved for the top-right cluster on EVERY column-mode
   /// layout. The cluster is persistent chrome drawn whenever the column
@@ -201,14 +203,16 @@ abstract class PanelAllocator {
     // comfort floor), or — failing that — at least their hard min so the two
     // columns never overlap. Two tiers:
     //
-    // Tier 1 — **fold a parent behind its same-column child**: the parent is
+    // Tier 1 — **fold the panel beneath behind the one above it**, per column
+    // and by POSITION (the first token folds, registry pair or not): it is
     // simply not drawn (no stripe, no reserved width), its content one back-step
-    // away on the child that keeps the column (reached by closing the detail).
-    // Per-column, lowest-priority master first. A child is never folded, so a
-    // live `room` (the chat list's detail) keeps its session.
+    // away on the panel that keeps the column (reached by closing that panel).
+    // Lowest-priority foldable first. The panel on top is never folded, so a
+    // live `room` keeps its session whether the chat list or a course card sits
+    // beneath it.
     //
     // Tier 2 — **collapse for left↔right parity** (#7088): when no same-column
-    // parent-fold is available AND the survivors' hard mins would overflow (the
+    // fold is available AND the survivors' hard mins would overflow (the
     // columns would otherwise overlap), collapse the lowest-priority panel across
     // BOTH columns — but never the just-opened ([focusHint]) panel, so opening a
     // panel is never a visible no-op. A collapsed panel is hidden entirely
@@ -242,13 +246,16 @@ abstract class PanelAllocator {
       final needReasonable =
           vis.fold(0.0, (s, e) => s + e.def.reasonableMin) + gapsFor(vis);
       if (needReasonable <= content) break;
-      // Tier 1: fold a parent behind its same-column child.
+      // Tier 1: fold the panel BENEATH behind the one above it in its column.
+      // Positional, not registry-linked: a column's first token is the one that
+      // folds whether or not the pair is a declared master/detail
+      // (routing.instructions.md → "the same rule applies positionally"), so a
+      // chat opened in a course folds the course card behind it (#9030).
       final foldable = vis
           .where(
-            (parent) => vis.any(
-              (child) =>
-                  child.column == parent.column &&
-                  child.def.parent == parent.def.type,
+            (beneath) => vis.any(
+              (above) =>
+                  above.column == beneath.column && above.index > beneath.index,
             ),
           )
           .toList();
@@ -297,14 +304,15 @@ abstract class PanelAllocator {
     // Position: left column fills from the rail rightward; right column is
     // right-justified (its group ends at viewport - gutter). Folded panels are
     // skipped — not drawn, no gap reserved — order otherwise preserved.
-    // A surviving panel is "folded over" when its own PARENT (same column) was
-    // folded away above — closing it reveals that folded master (a back-step),
-    // so its close control becomes `←`. Read straight off the explicit parent
-    // link, so only the child whose master folded gets the back arrow; an
-    // independent panel (a live room with no folded master) keeps a normal close.
+    // A surviving panel is "folded over" when a panel BENEATH it in the same
+    // column was folded away above — closing it reveals that panel (a
+    // back-step), so its close control becomes `←`. Positional, matching the
+    // fold itself: a course folded behind a chat is just as much a back-step as
+    // a chat list folded behind its room (#9030). A panel with nothing folded
+    // beneath it keeps a normal close.
     // See `close_affordance.dart` / `routing.instructions.md`.
     bool isFoldedOver(_Entry e) =>
-        folded.any((f) => f.column == e.column && f.def.type == e.def.parent);
+        folded.any((f) => f.column == e.column && f.index < e.index);
 
     final placement = <_Entry, PanelSlot>{};
     var x = railWidth;
