@@ -54,7 +54,7 @@ void main() {
     'world_readable': true,
     'guest_can_join': false,
     'children_state': <dynamic>[],
-    if (alias != null) 'canonical_alias': alias,
+    'canonical_alias': ?alias,
   };
 
   /// Serves [pages] of hierarchy children, recording each page requested.
