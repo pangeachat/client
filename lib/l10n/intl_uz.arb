@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-09-10 16:50:33.759152",
+    "@@last_modified": "2026-09-14 12:45:38.125695",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9918,5 +9918,15 @@
     "teacherAnalyticsRequestTitle": "Oʻqituvchi sizning oʻquv jarayoningizni soʻrayapti",
     "teacherAnalyticsRequestDesc": "Ular sizning {targetLang} tilida ishlatgan barcha soʻzlaringiz va grammatikangizni, darajangiz va XP’ingizni, shuningdek, kurs faoliyatida yuborilgan xabarlarni koʻrishadi. Sizning shaxsiy xabarlaringiz boʻlishilmaydi. Kursga qoʻshilish uchun tahlillarni boʻlishish talab qilinadi.",
     "shareAndJoin": "Boʻlishish va qoʻshilish",
-    "goBack": "Ortga qaytish"
+    "goBack": "Ortga qaytish",
+    "emptyGroupsSearch": "Guruhlar topilmadi. Qidiruvingiz toʻgʻri yozilganligiga ishonch hosil qiling.",
+    "emptyActivitiesSearch": "Faoliyatlar topilmadi. Qidiruvingiz toʻgʻri yozilganligiga ishonch hosil qiling.",
+    "chatListFiltersLabel": "Chat filtrlari",
+    "dms": "Shaxsiy xabarlar",
+    "allFilterTooltip": "Barcha chatlarni koʻrsatish",
+    "dmsFilterTooltip": "Faqat shaxsiy xabarlarni koʻrsatish",
+    "groupsFilterTooltip": "Faqat guruh chatlarini koʻrsatish",
+    "activitiesFilterTooltip": "Faqat faoliyatlarni koʻrsatish",
+    "noGroupChatsYet": "Siz hali hech qanday guruh chatlarida emassiz.",
+    "noActivitiesYet": "Siz hali hech qanday faoliyatlarda emassiz."
 }

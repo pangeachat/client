@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-09-10 16:50:33.362578",
+    "@@last_modified": "2026-09-14 12:45:37.075514",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10215,5 +10215,15 @@
     "teacherAnalyticsRequestTitle": "Öğretmen öğrenme ilerlemenizi istiyor",
     "teacherAnalyticsRequestDesc": "{targetLang} dilinde kullandığınız tüm kelimeleri ve dil bilgisini, seviyenizi ve DP'nizi ve kurs etkinliklerinde gönderilen mesajları görecekler. Bire bir mesajlarınız paylaşılmayacaktır. Kursa katılmak için analizleri paylaşmak gereklidir.",
     "shareAndJoin": "Paylaş ve katıl",
-    "goBack": "Geri dön"
+    "goBack": "Geri dön",
+    "emptyGroupsSearch": "Grup bulunamadı. Aramanızın doğru yazıldığından emin olun.",
+    "emptyActivitiesSearch": "Etkinlik bulunamadı. Aramanızın doğru yazıldığından emin olun.",
+    "chatListFiltersLabel": "Sohbet filtreleri",
+    "dms": "DM'ler",
+    "allFilterTooltip": "Tüm sohbetleri göster",
+    "dmsFilterTooltip": "Yalnızca doğrudan mesajları göster",
+    "groupsFilterTooltip": "Yalnızca grup sohbetlerini göster",
+    "activitiesFilterTooltip": "Yalnızca etkinlikleri göster",
+    "noGroupChatsYet": "Henüz hiçbir grup sohbetinde değilsiniz.",
+    "noActivitiesYet": "Henüz hiçbir etkinlikte değilsiniz."
 }

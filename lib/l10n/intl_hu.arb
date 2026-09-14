@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-09-10 16:50:22.851474",
+    "@@last_modified": "2026-09-14 12:45:25.814924",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10017,5 +10017,15 @@
     "teacherAnalyticsRequestTitle": "A tanár kéri a tanulási haladásodat",
     "teacherAnalyticsRequestDesc": "Látni fogja az összes szót és nyelvtant, amit használtál a(z) {targetLang} nyelvben, a szintedet és az XP-det, valamint a tanfolyami tevékenységek során küldött üzeneteket. Az 1-az-1-hez üzeneteid nem lesznek megosztva. Az analitika megosztása kötelező a tanfolyamhoz való csatlakozáshoz.",
     "shareAndJoin": "Megosztás és csatlakozás",
-    "goBack": "Vissza"
+    "goBack": "Vissza",
+    "emptyGroupsSearch": "Nincsenek csoportok. Ellenőrizd, hogy helyesen írtad-e be a keresést.",
+    "emptyActivitiesSearch": "Nincsenek tevékenységek. Ellenőrizd, hogy helyesen írtad-e be a keresést.",
+    "chatListFiltersLabel": "Csevegésszűrők",
+    "dms": "DM-ek",
+    "allFilterTooltip": "Összes csevegés megjelenítése",
+    "dmsFilterTooltip": "Csak közvetlen üzenetek megjelenítése",
+    "groupsFilterTooltip": "Csak csoportos csevegések megjelenítése",
+    "activitiesFilterTooltip": "Csak tevékenységek megjelenítése",
+    "noGroupChatsYet": "Még nem vagy tagja egyetlen csoportos csevegésnek sem.",
+    "noActivitiesYet": "Még nem vagy tagja egyetlen tevékenységnek sem."
 }

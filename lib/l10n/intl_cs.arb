@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-09-10 16:50:18.726077",
+    "@@last_modified": "2026-09-14 12:45:22.371582",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10408,5 +10408,15 @@
     "teacherAnalyticsRequestTitle": "Učitel požaduje váš pokrok v učení",
     "teacherAnalyticsRequestDesc": "Uvidí všechna slova a gramatiku, které jste použili v jazyce {targetLang}, vaši úroveň a XP a zprávy odeslané v rámci aktivit kurzu. Vaše zprávy 1 na 1 nebudou sdíleny. Sdílení analýz je nutné pro připojení ke kurzu.",
     "shareAndJoin": "Sdílet a připojit se",
-    "goBack": "Zpět"
+    "goBack": "Zpět",
+    "emptyGroupsSearch": "Nebyly nalezeny žádné skupiny. Zkontrolujte, zda je hledaný výraz napsán správně.",
+    "emptyActivitiesSearch": "Nebyly nalezeny žádné aktivity. Zkontrolujte, zda je hledaný výraz napsán správně.",
+    "chatListFiltersLabel": "Filtry chatu",
+    "dms": "Přímé zprávy",
+    "allFilterTooltip": "Zobrazit všechny chaty",
+    "dmsFilterTooltip": "Zobrazit pouze přímé zprávy",
+    "groupsFilterTooltip": "Zobrazit pouze skupinové chaty",
+    "activitiesFilterTooltip": "Zobrazit pouze aktivity",
+    "noGroupChatsYet": "Zatím nejste v žádných skupinových chatech.",
+    "noActivitiesYet": "Zatím nejste v žádných aktivitách."
 }

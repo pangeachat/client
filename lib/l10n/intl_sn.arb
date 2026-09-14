@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-09-10 16:50:31.849757",
+    "@@last_modified": "2026-09-14 12:45:35.791725",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2318,5 +2318,15 @@
     "teacherAnalyticsRequestTitle": "Mudzidzisi akukumbira kufambira mberi kwako pakudzidza",
     "teacherAnalyticsRequestDesc": "Vachaona mazwi ese negirama rawakashandisa mu{targetLang}, nhanho yako neXP, nemameseji akatumirwa mumabasa echikoro. Mameseji ako e1-on-1 haazogovaniswa. Kugovera analytics kunodiwa kuti ubatanidze kosi.",
     "shareAndJoin": "Govera uye ubatanidze",
-    "goBack": "Dzokera shure"
+    "goBack": "Dzokera shure",
+    "emptyGroupsSearch": "Hapana mapoka awanikwa. Ita shuwa kuti zvauri kutsvaga zvakanyorwa nemazvo.",
+    "emptyActivitiesSearch": "Hapana zviitiko zvawanikwa. Ita shuwa kuti zvauri kutsvaga zvakanyorwa nemazvo.",
+    "chatListFiltersLabel": "Mafirita ekutaura",
+    "dms": "DMs",
+    "allFilterTooltip": "Ratidza hurukuro dzose",
+    "dmsFilterTooltip": "Ratidza mameseji akananga chete",
+    "groupsFilterTooltip": "Ratidza hurukuro dzemapoka chete",
+    "activitiesFilterTooltip": "Ratidza zviitiko chete",
+    "noGroupChatsYet": "Hausati uri mune chero hurukuro dzeboka.",
+    "noActivitiesYet": "Hausati uri mune chero zviitiko."
 }

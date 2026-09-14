@@ -3536,7 +3536,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-09-10 16:50:20.309536",
+    "@@last_modified": "2026-09-14 12:45:23.640260",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9951,5 +9951,15 @@
     "teacherAnalyticsRequestTitle": "Opettaja pyytää oppimiskehitystäsi",
     "teacherAnalyticsRequestDesc": "He näkevät kaikki sanat ja kieliopin, joita olet käyttänyt kielellä {targetLang}, tasosi ja XP:si sekä kurssitoiminnoissa lähetetyt viestit. Yksityisviestejäsi ei jaeta. Analytiikan jakaminen vaaditaan kurssille liittymiseen.",
     "shareAndJoin": "Jaa ja liity",
-    "goBack": "Takaisin"
+    "goBack": "Takaisin",
+    "emptyGroupsSearch": "Ryhmiä ei löytynyt. Varmista, että hakusi on kirjoitettu oikein.",
+    "emptyActivitiesSearch": "Toimintoja ei löytynyt. Varmista, että hakusi on kirjoitettu oikein.",
+    "chatListFiltersLabel": "Keskustelusuodattimet",
+    "dms": "Suorat viestit",
+    "allFilterTooltip": "Näytä kaikki keskustelut",
+    "dmsFilterTooltip": "Näytä vain suorat viestit",
+    "groupsFilterTooltip": "Näytä vain ryhmäkeskustelut",
+    "activitiesFilterTooltip": "Näytä vain toiminnot",
+    "noGroupChatsYet": "Et ole vielä missään ryhmäkeskustelussa.",
+    "noActivitiesYet": "Et ole vielä mukana missään toiminnossa."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-10 16:50:21.667828",
+    "@@last_modified": "2026-09-14 12:45:25.145931",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10828,5 +10828,15 @@
     "teacherAnalyticsRequestTitle": "המורה מבקש את התקדמות הלמידה שלך",
     "teacherAnalyticsRequestDesc": "הם יראו את כל המילים והדקדוק שהשתמשת בהם ב-{targetLang}, את הרמה ונקודות הניסיון שלך, ואת ההודעות שנשלחו בפעילויות הקורס. ההודעות האישיות שלך לא ישותפו. שיתוף נתונים אנליטיים נדרש כדי להצטרף לקורס.",
     "shareAndJoin": "שתף והצטרף",
-    "goBack": "חזור"
+    "goBack": "חזור",
+    "emptyGroupsSearch": "לא נמצאו קבוצות. ודא/י שהחיפוש שלך מאוית נכון.",
+    "emptyActivitiesSearch": "לא נמצאו פעילויות. ודא/י שהחיפוש שלך מאוית נכון.",
+    "chatListFiltersLabel": "מסנני צ'אט",
+    "dms": "הודעות פרטיות",
+    "allFilterTooltip": "הצג את כל הצ'אטים",
+    "dmsFilterTooltip": "הצג רק הודעות פרטיות",
+    "groupsFilterTooltip": "הצג רק צ'אטים קבוצתיים",
+    "activitiesFilterTooltip": "הצג רק פעילויות",
+    "noGroupChatsYet": "עדיין אינך חבר/ה באף צ'אט קבוצתי.",
+    "noActivitiesYet": "עדיין אינך חבר/ה באף פעילות."
 }

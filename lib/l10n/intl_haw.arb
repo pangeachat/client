@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-09-10 16:50:21.920934",
+    "@@last_modified": "2026-09-14 12:45:25.088322",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2318,5 +2318,15 @@
     "teacherAnalyticsRequestTitle": "Ke noi mai nei ke kumu i kou holomua aʻo",
     "teacherAnalyticsRequestDesc": "E ʻike ana lākou i nā huaʻōlelo a me nā lula pili ʻōlelo a pau āu i hoʻohana ai ma ka ʻōlelo {targetLang}, kou pae a me kou XP, a me nā leka i hoʻouna ʻia i nā hana papa. ʻAʻole e kaʻana like ʻia kāu mau leka 1-a-1. Pono ke kaʻana like ʻana i nā ʻikepili e komo i ka papa.",
     "shareAndJoin": "Kaʻana like a komo",
-    "goBack": "Hoʻi hope"
+    "goBack": "Hoʻi hope",
+    "emptyGroupsSearch": "ʻAʻohe pūʻulu i loaʻa. E hōʻoia i ka pololei o kāu huli ʻana.",
+    "emptyActivitiesSearch": "ʻAʻohe hana i loaʻa. E hōʻoia i ka pololei o kāu huli ʻana.",
+    "chatListFiltersLabel": "Nā kānana kamaʻilio",
+    "dms": "DM",
+    "allFilterTooltip": "Hōʻike i nā kamaʻilio āpau",
+    "dmsFilterTooltip": "Hōʻike i nā leka pololei wale nō",
+    "groupsFilterTooltip": "Hōʻike i nā kamaʻilio pūʻulu wale nō",
+    "activitiesFilterTooltip": "Hōʻike i nā hana wale nō",
+    "noGroupChatsYet": "ʻAʻole ʻoe i loko o kekahi kamaʻilio pūʻulu.",
+    "noActivitiesYet": "ʻAʻole ʻoe i loko o kekahi hana."
 }

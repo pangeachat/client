@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-10 16:50:31.611075",
+    "@@last_modified": "2026-09-14 12:45:35.898727",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10863,5 +10863,15 @@
     "teacherAnalyticsRequestTitle": "Nastavnik zahteva vaš napredak u učenju",
     "teacherAnalyticsRequestDesc": "Videće sve reči i gramatiku koje ste koristili u {targetLang}, vaš nivo i XP, kao i poruke poslate u aktivnostima kursa. Vaše 1-na-1 poruke neće biti deljene. Deljenje analitike je obavezno za pridruživanje kursu.",
     "shareAndJoin": "Podeli i pridruži se",
-    "goBack": "Nazad"
+    "goBack": "Nazad",
+    "emptyGroupsSearch": "Nema pronađenih grupa. Proverite da li ste ispravno napisali pretragu.",
+    "emptyActivitiesSearch": "Nema pronađenih aktivnosti. Proverite da li ste ispravno napisali pretragu.",
+    "chatListFiltersLabel": "Filteri za ćaskanje",
+    "dms": "DM-ovi",
+    "allFilterTooltip": "Prikaži sva ćaskanja",
+    "dmsFilterTooltip": "Prikaži samo direktne poruke",
+    "groupsFilterTooltip": "Prikaži samo grupna ćaskanja",
+    "activitiesFilterTooltip": "Prikaži samo aktivnosti",
+    "noGroupChatsYet": "Još uvek niste ni u jednom grupnom ćaskanju.",
+    "noActivitiesYet": "Još uvek niste ni u jednoj aktivnosti."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-09-10 16:50:18.278586",
+    "@@last_modified": "2026-09-14 12:45:20.835227",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2318,5 +2318,15 @@
     "teacherAnalyticsRequestTitle": "Müəllim öyrənmə tərəqqinizi tələb edir",
     "teacherAnalyticsRequestDesc": "Onlar {targetLang} dilində istifadə etdiyiniz bütün sözləri və qrammatikanı, səviyyənizi və XP-nizi, həmçinin kurs fəaliyyətlərində göndərilən mesajları görəcəklər. Tək-tək mesajlarınız paylaşılmayacaq. Kursa qoşulmaq üçün analitikanın paylaşılması tələb olunur.",
     "shareAndJoin": "Paylaş və qoşul",
-    "goBack": "Geri qayıt"
+    "goBack": "Geri qayıt",
+    "emptyGroupsSearch": "Heç bir qrup tapılmadı. Axtarışınızın düzgün yazıldığından əmin olun.",
+    "emptyActivitiesSearch": "Heç bir fəaliyyət tapılmadı. Axtarışınızın düzgün yazıldığından əmin olun.",
+    "chatListFiltersLabel": "Çat filtrləri",
+    "dms": "Birbaşa mesajlar",
+    "allFilterTooltip": "Bütün çatları göstər",
+    "dmsFilterTooltip": "Yalnız birbaşa mesajları göstər",
+    "groupsFilterTooltip": "Yalnız qrup çatlarını göstər",
+    "activitiesFilterTooltip": "Yalnız fəaliyyətləri göstər",
+    "noGroupChatsYet": "Hələ heç bir qrup çatında deyilsiniz.",
+    "noActivitiesYet": "Hələ heç bir fəaliyyətdə deyilsiniz."
 }

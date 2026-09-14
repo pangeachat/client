@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-09-10 16:50:31.591754",
+    "@@last_modified": "2026-09-14 12:45:34.927851",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2318,5 +2318,15 @@
     "teacherAnalyticsRequestTitle": "E talosaga le faiaoga mo lou alualu i luma i le aʻoga",
     "teacherAnalyticsRequestDesc": "O le a latou vaʻai i upu ma kalama uma na e faʻaaogaina i le {targetLang}, lou tulaga ma le XP, ma feʻau na lafoina i galuega a le vasega. O au feʻau taʻitoʻatasi e le faʻasoaina. E manaʻomia le faʻasoaina o auʻiliʻiliga e auai ai i le vasega.",
     "shareAndJoin": "Faʻasoa ma auai",
-    "goBack": "Toe foʻi"
+    "goBack": "Toe foʻi",
+    "emptyGroupsSearch": "E leai ni vaega na maua. Ia mautinoa ua sa'o le sipelaga o lau sailiga.",
+    "emptyActivitiesSearch": "E leai ni gaioiga na maua. Ia mautinoa ua sa'o le sipelaga o lau sailiga.",
+    "chatListFiltersLabel": "Faamama talatalanoaga",
+    "dms": "DM",
+    "allFilterTooltip": "Fa'aali talatalanoaga uma",
+    "dmsFilterTooltip": "Fa'aali na'o fe'au tuusa'o",
+    "groupsFilterTooltip": "Fa'aali na'o talatalanoaga fa'avaega",
+    "activitiesFilterTooltip": "Fa'aali na'o gaioiga",
+    "noGroupChatsYet": "E te le'i auai i ni talatalanoaga fa'avaega.",
+    "noActivitiesYet": "E te le'i auai i ni gaioiga."
 }

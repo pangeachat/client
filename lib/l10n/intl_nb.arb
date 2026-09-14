@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-10 16:50:28.301626",
+    "@@last_modified": "2026-09-14 12:45:30.494780",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9971,5 +9971,15 @@
     "teacherAnalyticsRequestTitle": "Lærer ber om din læringsfremgang",
     "teacherAnalyticsRequestDesc": "De vil se alle ordene og grammatikken du har brukt i {targetLang}, ditt nivå og XP, og meldingene sendt i kursaktiviteter. Dine 1-til-1-meldinger vil ikke bli delt. Deling av analyser er påkrevd for å delta på kurset.",
     "shareAndJoin": "Del og bli med",
-    "goBack": "Gå tilbake"
+    "goBack": "Gå tilbake",
+    "emptyGroupsSearch": "Ingen grupper funnet. Sørg for at søket ditt er stavet riktig.",
+    "emptyActivitiesSearch": "Ingen aktiviteter funnet. Sørg for at søket ditt er stavet riktig.",
+    "chatListFiltersLabel": "Chatfiltre",
+    "dms": "DM-er",
+    "allFilterTooltip": "Vis alle chatter",
+    "dmsFilterTooltip": "Vis kun direktemeldinger",
+    "groupsFilterTooltip": "Vis kun gruppechatter",
+    "activitiesFilterTooltip": "Vis kun aktiviteter",
+    "noGroupChatsYet": "Du er ikke med i noen gruppechatter ennå.",
+    "noActivitiesYet": "Du er ikke med i noen aktiviteter ennå."
 }

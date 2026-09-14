@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-09-10 16:50:25.503012",
+    "@@last_modified": "2026-09-14 12:45:28.420600",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2318,5 +2318,15 @@
     "teacherAnalyticsRequestTitle": "Magister petit progressum tuum discendi",
     "teacherAnalyticsRequestDesc": "Videbunt omnia verba et grammaticam quibus usus es in {targetLang}, gradum tuum et XP, et nuntios in actionibus cursus missos. Nuntii tui singulares non communicabuntur. Communicatio analyticorum requiritur ad cursum ingrediendum.",
     "shareAndJoin": "Communica et iunge",
-    "goBack": "Redi"
+    "goBack": "Redi",
+    "emptyGroupsSearch": "Nulli greges reperti sunt. Fac ut quaesitum tuum recte scriptum sit.",
+    "emptyActivitiesSearch": "Nullae actiones repertae sunt. Fac ut quaesitum tuum recte scriptum sit.",
+    "chatListFiltersLabel": "Filtra colloquii",
+    "dms": "Nuntii Directi",
+    "allFilterTooltip": "Monstra omnia colloquia",
+    "dmsFilterTooltip": "Monstra tantum nuntios directos",
+    "groupsFilterTooltip": "Monstra tantum colloquia gregum",
+    "activitiesFilterTooltip": "Monstra tantum actiones",
+    "noGroupChatsYet": "Nondum in ullis colloquiis gregum es.",
+    "noActivitiesYet": "Nondum in ullis actionibus es."
 }
