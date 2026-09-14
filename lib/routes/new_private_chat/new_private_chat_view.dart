@@ -118,7 +118,7 @@ class NewPrivateChatView extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 18.0,
-                  vertical: 4.0,
+                  vertical: 12.0,
                 ),
                 child: Semantics(
                   label: "${l10n.yourGlobalUserIdIs} $userId",
