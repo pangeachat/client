@@ -6,6 +6,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/pangea/extensions/friend_dm_extension.dart';
 import 'package:fluffychat/routes/chat_list/chat_list.dart';
+import 'package:fluffychat/routes/chat_list/chat_list_filter_pills.dart';
 import 'package:fluffychat/routes/chat_list/chat_list_item.dart';
 import 'package:fluffychat/routes/chat_list/course_chats_page.dart';
 import 'package:fluffychat/routes/chat_list/dm_list_tile.dart';
@@ -78,6 +79,12 @@ class ChatListViewBody extends StatelessWidget {
       builder: (context, _) {
         final rooms = controller.filteredRooms;
 
+        // The bot / support tiles and the invite-a-friend prompt all nudge
+        // toward starting a DM, so only the filters that show DMs carry them.
+        final showDmNudges =
+            controller.activeFilter == ActiveFilter.allChats ||
+            controller.activeFilter == ActiveFilter.messages;
+
         // One Tab stop for the room list, arrow keys inside; Tab lands on
         // the open chat (#8877).
         return RovingFocusGroup(
@@ -109,6 +116,9 @@ class ChatListViewBody extends StatelessWidget {
                   controller: controller,
                   showSearch: rooms.length >= 7,
                 ),
+              SliverToBoxAdapter(
+                child: ChatListFilterPills(controller: controller),
+              ),
               // Pangea#
               SliverList(
                 delegate: SliverChildListDelegate([
@@ -271,8 +281,35 @@ class ChatListViewBody extends StatelessWidget {
                           .isEmpty)
                     Padding(
                       padding: const EdgeInsetsGeometry.all(16.0),
+                      child: Text(switch (controller.activeFilter) {
+                        ActiveFilter.groups => L10n.of(
+                          context,
+                        ).emptyGroupsSearch,
+                        ActiveFilter.activities => L10n.of(
+                          context,
+                        ).emptyActivitiesSearch,
+                        _ => L10n.of(context).emptyChatSearch,
+                      }, textAlign: TextAlign.center),
+                    ),
+                  if (!controller.isSearchMode &&
+                      client.prevBatch != null &&
+                      rooms.isEmpty &&
+                      controller.activeFilter == ActiveFilter.groups)
+                    Padding(
+                      padding: const EdgeInsetsGeometry.all(16.0),
                       child: Text(
-                        L10n.of(context).emptyChatSearch,
+                        L10n.of(context).noGroupChatsYet,
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  if (!controller.isSearchMode &&
+                      client.prevBatch != null &&
+                      rooms.isEmpty &&
+                      controller.activeFilter == ActiveFilter.activities)
+                    Padding(
+                      padding: const EdgeInsetsGeometry.all(16.0),
+                      child: Text(
+                        L10n.of(context).noActivitiesYet,
                         textAlign: TextAlign.center,
                       ),
                     ),
@@ -311,7 +348,9 @@ class ChatListViewBody extends StatelessWidget {
               // #Pangea
               if (client.prevBatch != null)
                 SliverToBoxAdapter(
-                  child: DMListTile(visible: !controller.isSearchMode),
+                  child: DMListTile(
+                    visible: !controller.isSearchMode && showDmNudges,
+                  ),
                 ),
               const SliverToBoxAdapter(child: SizedBox(height: 8.0)),
               // Until the user has a DM with another person, the list closes on
@@ -320,6 +359,7 @@ class ChatListViewBody extends StatelessWidget {
               // row once the list is long enough to scroll (#8395).
               if (client.prevBatch != null &&
                   !controller.isSearchMode &&
+                  showDmNudges &&
                   !client.hasFriendDM)
                 const SliverFillRemaining(
                   hasScrollBody: false,

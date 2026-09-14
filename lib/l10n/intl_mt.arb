@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-09-10 16:50:28.176393",
+    "@@last_modified": "2026-09-14 12:45:34.281470",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2318,5 +2318,15 @@
     "teacherAnalyticsRequestTitle": "L-għalliem jitlob il-progress tiegħek fit-tagħlim",
     "teacherAnalyticsRequestDesc": "Se jaraw il-kliem u l-grammatika kollha li użajt f'{targetLang}', il-livell u l-XP tiegħek, u l-messaġġi mibgħuta fl-attivitajiet tal-kors. Il-messaġġi 1-on-1 tiegħek ma jinqasmux. Il-qsim tal-analitika huwa meħtieġ biex tingħaqad mal-kors.",
     "shareAndJoin": "Aqsam u ingħaqad",
-    "goBack": "Mur lura"
+    "goBack": "Mur lura",
+    "emptyGroupsSearch": "Ma nstabu l-ebda gruppi. Kun żgur li l-kitba tat-tfittxija tiegħek hija korretta.",
+    "emptyActivitiesSearch": "Ma nstabu l-ebda attivitajiet. Kun żgur li l-kitba tat-tfittxija tiegħek hija korretta.",
+    "chatListFiltersLabel": "Filtri taċ-chat",
+    "dms": "Messaġġi Diretti",
+    "allFilterTooltip": "Uri l-chats kollha",
+    "dmsFilterTooltip": "Uri biss messaġġi diretti",
+    "groupsFilterTooltip": "Uri biss chats tal-grupp",
+    "activitiesFilterTooltip": "Uri biss attivitajiet",
+    "noGroupChatsYet": "Għadek m'intix f'xi chats tal-grupp.",
+    "noActivitiesYet": "Għadek m'intix f'xi attivitajiet."
 }

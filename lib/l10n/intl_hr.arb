@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-09-10 16:50:22.274176",
+    "@@last_modified": "2026-09-14 12:45:25.680993",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10350,5 +10350,15 @@
     "teacherAnalyticsRequestTitle": "Profesor traži vaš napredak u učenju",
     "teacherAnalyticsRequestDesc": "Vidjet će sve riječi i gramatiku koje ste koristili u {targetLang}, vašu razinu i XP, te poruke poslane u aktivnostima tečaja. Vaše 1-na-1 poruke neće biti podijeljene. Dijeljenje analitike je obavezno za pridruživanje tečaju.",
     "shareAndJoin": "Podijeli i pridruži se",
-    "goBack": "Natrag"
+    "goBack": "Natrag",
+    "emptyGroupsSearch": "Nema pronađenih grupa. Provjerite jeste li ispravno napisali pretragu.",
+    "emptyActivitiesSearch": "Nema pronađenih aktivnosti. Provjerite jeste li ispravno napisali pretragu.",
+    "chatListFiltersLabel": "Filtri chata",
+    "dms": "Izravne poruke",
+    "allFilterTooltip": "Prikaži sve chatove",
+    "dmsFilterTooltip": "Prikaži samo izravne poruke",
+    "groupsFilterTooltip": "Prikaži samo grupne chatove",
+    "activitiesFilterTooltip": "Prikaži samo aktivnosti",
+    "noGroupChatsYet": "Još niste ni u jednom grupnom chatu.",
+    "noActivitiesYet": "Još niste ni u jednoj aktivnosti."
 }

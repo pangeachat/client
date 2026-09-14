@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-09-10 16:50:30.953227",
+    "@@last_modified": "2026-09-14 12:45:34.626612",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2318,5 +2318,15 @@
     "teacherAnalyticsRequestTitle": "استاد توهان جي سکڻ جي ترقي جي درخواست ڪري ٿو",
     "teacherAnalyticsRequestDesc": "اهي سڀ لفظ ۽ گرامر ڏسندا جيڪي توهان {targetLang} ۾ استعمال ڪيا آهن، توهان جو ليول ۽ XP، ۽ ڪورس جي سرگرمين ۾ موڪليل پيغام. توهان جا 1-on-1 پيغام شيئر نه ڪيا ويندا. ڪورس ۾ شامل ٿيڻ لاءِ اينالائيٽڪس شيئر ڪرڻ لازمي آهي.",
     "shareAndJoin": "شيئر ڪريو ۽ شامل ٿيو",
-    "goBack": "واپس وڃو"
+    "goBack": "واپس وڃو",
+    "emptyGroupsSearch": "ڪو به گروپ نه مليو. پڪ ڪريو ته توهان جي ڳولا صحيح نموني لکيل آهي.",
+    "emptyActivitiesSearch": "ڪا به سرگرمي نه ملي. پڪ ڪريو ته توهان جي ڳولا صحيح نموني لکيل آهي.",
+    "chatListFiltersLabel": "چيٽ فلٽر",
+    "dms": "سڌا پيغام",
+    "allFilterTooltip": "سڀ چيٽ ڏيکاريو",
+    "dmsFilterTooltip": "صرف سڌا پيغام ڏيکاريو",
+    "groupsFilterTooltip": "صرف گروپ چيٽ ڏيکاريو",
+    "activitiesFilterTooltip": "صرف سرگرميون ڏيکاريو",
+    "noGroupChatsYet": "توهان اڃا تائين ڪنهن به گروپ چيٽ ۾ نه آهيو.",
+    "noActivitiesYet": "توهان اڃا تائين ڪنهن به سرگرمي ۾ نه آهيو."
 }

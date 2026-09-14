@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-09-10 16:50:23.441325",
+    "@@last_modified": "2026-09-14 12:45:26.823066",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2318,5 +2318,15 @@
     "teacherAnalyticsRequestTitle": "Kennari biður um framvindu náms þíns",
     "teacherAnalyticsRequestDesc": "Þeir munu sjá öll orð og málfræði sem þú hefur notað í {targetLang}, stig þitt og XP, og skilaboð send í námskeiðsverkefnum. 1-á-1 skilaboðin þín verða ekki deilt. Deiling greiningargagna er nauðsynleg til að taka þátt í námskeiðinu.",
     "shareAndJoin": "Deila og taka þátt",
-    "goBack": "Fara til baka"
+    "goBack": "Fara til baka",
+    "emptyGroupsSearch": "Engir hópar fundust. Gakktu úr skugga um að leitin þín sé rétt stafsett.",
+    "emptyActivitiesSearch": "Engin verkefni fundust. Gakktu úr skugga um að leitin þín sé rétt stafsett.",
+    "chatListFiltersLabel": "Síur fyrir spjall",
+    "dms": "Bein skilaboð",
+    "allFilterTooltip": "Sýna öll spjöll",
+    "dmsFilterTooltip": "Sýna aðeins bein skilaboð",
+    "groupsFilterTooltip": "Sýna aðeins hópspjöll",
+    "activitiesFilterTooltip": "Sýna aðeins verkefni",
+    "noGroupChatsYet": "Þú ert ekki í neinum hópspjöllum ennþá.",
+    "noActivitiesYet": "Þú ert ekki í neinum verkefnum ennþá."
 }

@@ -3563,7 +3563,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-09-10 16:50:21.876241",
+    "@@last_modified": "2026-09-14 12:45:24.819298",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9925,5 +9925,15 @@
     "teacherAnalyticsRequestTitle": "Iarrann an múinteoir do dhul chun cinn foghlama",
     "teacherAnalyticsRequestDesc": "Feicfidh siad na focail agus an ghramadach go léir a d'úsáid tú i {targetLang}, do leibhéal agus do XP, agus na teachtaireachtaí a seoladh i ngníomhaíochtaí an chúrsa. Ní roinnfear do theachtaireachtaí 1-ar-1. Ní mór an anailísíocht a roinnt chun dul isteach sa chúrsa.",
     "shareAndJoin": "Roinn agus bí páirteach",
-    "goBack": "Téigh ar ais"
+    "goBack": "Téigh ar ais",
+    "emptyGroupsSearch": "Níor aimsíodh aon ghrúpaí. Cinntigh go bhfuil do chuardach litrithe i gceart.",
+    "emptyActivitiesSearch": "Níor aimsíodh aon ghníomhaíochtaí. Cinntigh go bhfuil do chuardach litrithe i gceart.",
+    "chatListFiltersLabel": "Scagairí comhrá",
+    "dms": "Teachtaireachtaí Díreacha",
+    "allFilterTooltip": "Taispeáin gach comhrá",
+    "dmsFilterTooltip": "Taispeáin teachtaireachtaí díreacha amháin",
+    "groupsFilterTooltip": "Taispeáin comhráite grúpa amháin",
+    "activitiesFilterTooltip": "Taispeáin gníomhaíochtaí amháin",
+    "noGroupChatsYet": "Níl tú in aon chomhráite grúpa go fóill.",
+    "noActivitiesYet": "Níl tú in aon ghníomhaíochtaí go fóill."
 }

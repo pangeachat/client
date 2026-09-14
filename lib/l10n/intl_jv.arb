@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-09-10 16:50:23.640656",
+    "@@last_modified": "2026-09-14 12:45:27.334373",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2318,5 +2318,15 @@
     "teacherAnalyticsRequestTitle": "Guru njaluk kemajuan sinau sampeyan",
     "teacherAnalyticsRequestDesc": "Dheweke bakal weruh kabeh tembung lan tata basa sing wis sampeyan gunakake ing {targetLang}, level lan XP sampeyan, lan pesen sing dikirim ing kegiatan kursus. Pesen 1-lawan-1 sampeyan ora bakal dituduhake. Nuduhake analitik dibutuhake kanggo melu kursus.",
     "shareAndJoin": "Nuduhake lan gabung",
-    "goBack": "Bali"
+    "goBack": "Bali",
+    "emptyGroupsSearch": "Ora ana grup sing ditemokake. Priksa manawa panlusuran sampeyan wis bener.",
+    "emptyActivitiesSearch": "Ora ana aktivitas sing ditemokake. Priksa manawa panlusuran sampeyan wis bener.",
+    "chatListFiltersLabel": "Filter obrolan",
+    "dms": "DM",
+    "allFilterTooltip": "Tampilake kabeh obrolan",
+    "dmsFilterTooltip": "Tampilake mung pesen langsung",
+    "groupsFilterTooltip": "Tampilake mung obrolan grup",
+    "activitiesFilterTooltip": "Tampilake mung aktivitas",
+    "noGroupChatsYet": "Sampeyan durung melu obrolan grup apa-apa.",
+    "noActivitiesYet": "Sampeyan durung melu aktivitas apa-apa."
 }

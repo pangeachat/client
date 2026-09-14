@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-09-10 16:50:29.296068",
+    "@@last_modified": "2026-09-14 12:45:30.905783",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2318,5 +2318,15 @@
     "teacherAnalyticsRequestTitle": "ওজা অসিনা নহাক্কী লার্নিং প্রোগ্রেস হায়জরি",
     "teacherAnalyticsRequestDesc": "মখোয়না নহাক্না {targetLang}তা শীজিন্নখিবা ৱাহৈ অমসুং গ্রামার পুম্নমক, নহাক্কী লেভেল অমসুং XP, অমসুং কোর্স এক্টিভিটিশিংদা থাজিনখিবা মেসেজশিং উবা ফংলগনি। নহাক্কী ১-অন-১ মেসেজশিং শেয়ার তৌরোই। কোর্সতা শরুক য়ানবগীদমক এনালিটিক্স শেয়ার তৌবা অসি মথৌ তাই।",
     "shareAndJoin": "শেয়ার তৌদুনা শরুক য়াদুনা",
-    "goBack": "হাল্লকউ"
+    "goBack": "হাল্লকউ",
+    "emptyGroupsSearch": "Group amattafao fangdribafao. Nanggi search adu chumna type toubani haibadu yengjillu.",
+    "emptyActivitiesSearch": "Activity amattafao fangdribafao. Nanggi search adu chumna type toubani haibadu yengjillu.",
+    "chatListFiltersLabel": "Chat filters",
+    "dms": "DMs",
+    "allFilterTooltip": "Chat pumnamak ujasanu",
+    "dmsFilterTooltip": "Direct message khaktamak ujasanu",
+    "groupsFilterTooltip": "Group chat khaktamak ujasanu",
+    "activitiesFilterTooltip": "Activity khaktamak ujasanu",
+    "noGroupChatsYet": "Nang group chat amattada letrifaode.",
+    "noActivitiesYet": "Nang activity amattada letrifaode."
 }

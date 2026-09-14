@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-10 16:50:25.136583",
+    "@@last_modified": "2026-09-14 12:45:27.975223",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10107,5 +10107,15 @@
     "teacherAnalyticsRequestTitle": "선생님이 학습 진행 상황을 요청합니다",
     "teacherAnalyticsRequestDesc": "선생님은 {targetLang}에서 사용한 모든 단어와 문법, 레벨 및 XP, 그리고 코스 활동에서 보낸 메시지를 볼 수 있습니다. 1대1 메시지는 공유되지 않습니다. 코스에 참여하려면 분석 공유가 필요합니다.",
     "shareAndJoin": "공유하고 참여하기",
-    "goBack": "뒤로 가기"
+    "goBack": "뒤로 가기",
+    "emptyGroupsSearch": "그룹을 찾을 수 없습니다. 검색어 철자가 맞는지 확인하세요.",
+    "emptyActivitiesSearch": "활동을 찾을 수 없습니다. 검색어 철자가 맞는지 확인하세요.",
+    "chatListFiltersLabel": "채팅 필터",
+    "dms": "DM",
+    "allFilterTooltip": "모든 채팅 표시",
+    "dmsFilterTooltip": "다이렉트 메시지만 표시",
+    "groupsFilterTooltip": "그룹 채팅만 표시",
+    "activitiesFilterTooltip": "활동만 표시",
+    "noGroupChatsYet": "아직 참여 중인 그룹 채팅이 없습니다.",
+    "noActivitiesYet": "아직 참여 중인 활동이 없습니다."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-09-10 16:50:27.247842",
+    "@@last_modified": "2026-09-14 12:45:29.552360",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2318,5 +2318,15 @@
     "teacherAnalyticsRequestTitle": "Mangataka ny fandrosoanao amin'ny fianarana ny mpampianatra anao",
     "teacherAnalyticsRequestDesc": "Ho hitan'izy ireo avokoa ny teny sy fitsipika rehetra nampiasainao tamin'ny teny {targetLang}, ny haavonao sy ny XP-nao, ary ny hafatra nalefa tamin'ny hetsika fianarana. Tsy hozaraina ny hafatrao manokana. Ilaina ny fizarana ny angon-drakitra momba ny fandrosoanao mba hidirana amin'ny fianarana.",
     "shareAndJoin": "Zarao ary midira",
-    "goBack": "Miverina"
+    "goBack": "Miverina",
+    "emptyGroupsSearch": "Tsy misy vondrona hita. Ataovy izay hahazoana antoka fa voasoratra tsara ny fikarohanao.",
+    "emptyActivitiesSearch": "Tsy misy hetsika hita. Ataovy izay hahazoana antoka fa voasoratra tsara ny fikarohanao.",
+    "chatListFiltersLabel": "Sivana resaka",
+    "dms": "DM",
+    "allFilterTooltip": "Asehoy ny resaka rehetra",
+    "dmsFilterTooltip": "Asehoy ny hafatra mivantana ihany",
+    "groupsFilterTooltip": "Asehoy ny resaka vondrona ihany",
+    "activitiesFilterTooltip": "Asehoy ny hetsika ihany",
+    "noGroupChatsYet": "Mbola tsy ao anaty vondrona resaka ianao.",
+    "noActivitiesYet": "Mbola tsy ao anaty hetsika ianao."
 }

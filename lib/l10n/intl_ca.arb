@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-10 16:50:18.443498",
+    "@@last_modified": "2026-09-14 12:45:22.075998",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10041,5 +10041,15 @@
     "teacherAnalyticsRequestTitle": "El professor sol·licita el teu progrés d'aprenentatge",
     "teacherAnalyticsRequestDesc": "Veuran totes les paraules i la gramàtica que has utilitzat a {targetLang}, el teu nivell i XP, i els missatges enviats a les activitats del curs. Els teus missatges 1 a 1 no es compartiran. Cal compartir les analítiques per unir-se al curs.",
     "shareAndJoin": "Compartir i unir-se",
-    "goBack": "Tornar"
+    "goBack": "Tornar",
+    "emptyGroupsSearch": "No s'han trobat grups. Assegura't que la cerca estigui ben escrita.",
+    "emptyActivitiesSearch": "No s'han trobat activitats. Assegura't que la cerca estigui ben escrita.",
+    "chatListFiltersLabel": "Filtres de xat",
+    "dms": "MD",
+    "allFilterTooltip": "Mostra tots els xats",
+    "dmsFilterTooltip": "Mostra només missatges directes",
+    "groupsFilterTooltip": "Mostra només xats de grup",
+    "activitiesFilterTooltip": "Mostra només activitats",
+    "noGroupChatsYet": "Encara no ets en cap xat de grup.",
+    "noActivitiesYet": "Encara no ets en cap activitat."
 }

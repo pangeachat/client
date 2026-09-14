@@ -2080,7 +2080,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-09-10 16:50:20.017677",
+    "@@last_modified": "2026-09-14 12:45:23.635637",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10774,5 +10774,15 @@
     "teacherAnalyticsRequestTitle": "Hinihingi ng guro ang iyong pag-usad sa pag-aaral",
     "teacherAnalyticsRequestDesc": "Makikita nila ang lahat ng salita at grammar na ginamit mo sa {targetLang}, ang iyong level at XP, at ang mga mensaheng ipinadala sa mga aktibidad ng kurso. Hindi ibabahagi ang iyong mga 1-on-1 na mensahe. Kinakailangan ang pagbabahagi ng analytics para makasali sa kurso.",
     "shareAndJoin": "Ibahagi at sumali",
-    "goBack": "Bumalik"
+    "goBack": "Bumalik",
+    "emptyGroupsSearch": "Walang nakitang grupo. Siguraduhin na tama ang baybay ng iyong hinahanap.",
+    "emptyActivitiesSearch": "Walang nakitang aktibidad. Siguraduhin na tama ang baybay ng iyong hinahanap.",
+    "chatListFiltersLabel": "Mga filter ng chat",
+    "dms": "Mga DM",
+    "allFilterTooltip": "Ipakita ang lahat ng chat",
+    "dmsFilterTooltip": "Ipakita lang ang mga direktang mensahe",
+    "groupsFilterTooltip": "Ipakita lang ang mga group chat",
+    "activitiesFilterTooltip": "Ipakita lang ang mga aktibidad",
+    "noGroupChatsYet": "Wala ka pa sa anumang group chat.",
+    "noActivitiesYet": "Wala ka pa sa anumang aktibidad."
 }

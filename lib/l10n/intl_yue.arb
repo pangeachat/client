@@ -1263,7 +1263,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-09-10 16:50:34.368255",
+    "@@last_modified": "2026-09-14 12:45:38.349777",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10871,5 +10871,15 @@
     "teacherAnalyticsRequestTitle": "老師要求你的學習進度",
     "teacherAnalyticsRequestDesc": "他們會看到你在{targetLang}中使用的所有單字和文法、你的等級和經驗值，以及在課程活動中發送的訊息。你的1對1訊息將不會被分享。分享分析是加入課程的必要條件。",
     "shareAndJoin": "分享並加入",
-    "goBack": "返回"
+    "goBack": "返回",
+    "emptyGroupsSearch": "搵唔到群組。請確保你嘅搜尋拼寫正確。",
+    "emptyActivitiesSearch": "搵唔到活動。請確保你嘅搜尋拼寫正確。",
+    "chatListFiltersLabel": "聊天篩選器",
+    "dms": "私訊",
+    "allFilterTooltip": "顯示所有聊天",
+    "dmsFilterTooltip": "只顯示私訊",
+    "groupsFilterTooltip": "只顯示群組聊天",
+    "activitiesFilterTooltip": "只顯示活動",
+    "noGroupChatsYet": "你仲未加入任何群組聊天。",
+    "noActivitiesYet": "你仲未參與任何活動。"
 }

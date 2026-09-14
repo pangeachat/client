@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-09-10 16:50:18.890175",
+    "@@last_modified": "2026-09-14 12:45:22.393196",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9901,5 +9901,15 @@
     "teacherAnalyticsRequestTitle": "Lehrer fragt nach deinem Lernfortschritt",
     "teacherAnalyticsRequestDesc": "Sie sehen alle Wörter und Grammatik, die du in {targetLang} verwendet hast, dein Level und deine XP sowie die in Kursaktivitäten gesendeten Nachrichten. Deine 1-zu-1-Nachrichten werden nicht geteilt. Das Teilen von Analysedaten ist für die Teilnahme am Kurs erforderlich.",
     "shareAndJoin": "Teilen und beitreten",
-    "goBack": "Zurück"
+    "goBack": "Zurück",
+    "emptyGroupsSearch": "Keine Gruppen gefunden. Stellen Sie sicher, dass Ihre Suche richtig geschrieben ist.",
+    "emptyActivitiesSearch": "Keine Aktivitäten gefunden. Stellen Sie sicher, dass Ihre Suche richtig geschrieben ist.",
+    "chatListFiltersLabel": "Chat-Filter",
+    "dms": "DMs",
+    "allFilterTooltip": "Alle Chats anzeigen",
+    "dmsFilterTooltip": "Nur Direktnachrichten anzeigen",
+    "groupsFilterTooltip": "Nur Gruppenchats anzeigen",
+    "activitiesFilterTooltip": "Nur Aktivitäten anzeigen",
+    "noGroupChatsYet": "Sie sind noch in keinen Gruppenchats.",
+    "noActivitiesYet": "Sie sind noch in keinen Aktivitäten."
 }

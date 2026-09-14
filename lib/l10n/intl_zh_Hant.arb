@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-10 16:50:34.458562",
+    "@@last_modified": "2026-09-14 12:45:39.028239",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10020,5 +10020,15 @@
     "teacherAnalyticsRequestTitle": "老師要求您的學習進度",
     "teacherAnalyticsRequestDesc": "他們將會看到您在{targetLang}中使用的所有單字和文法、您的等級和經驗值，以及在課程活動中發送的訊息。您的1對1訊息將不會被分享。分享分析資料是加入課程的必要條件。",
     "shareAndJoin": "分享並加入",
-    "goBack": "返回"
+    "goBack": "返回",
+    "emptyGroupsSearch": "找不到任何群組。請確認您的搜尋拼寫正確。",
+    "emptyActivitiesSearch": "找不到任何活動。請確認您的搜尋拼寫正確。",
+    "chatListFiltersLabel": "聊天篩選器",
+    "dms": "私訊",
+    "allFilterTooltip": "顯示所有聊天",
+    "dmsFilterTooltip": "僅顯示私訊",
+    "groupsFilterTooltip": "僅顯示群組聊天",
+    "activitiesFilterTooltip": "僅顯示活動",
+    "noGroupChatsYet": "您尚未加入任何群組聊天。",
+    "noActivitiesYet": "您尚未加入任何活動。"
 }
