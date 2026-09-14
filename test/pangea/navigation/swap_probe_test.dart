@@ -114,7 +114,13 @@ void main() {
       // popups whose hard-mins overflow, only the focused one stays full. Open
       // settings, THEN a course — the course is most-recent, so it holds focus
       // and (protected from the collapse) stays full while settings yields.
-      const vp = 900.0;
+      //
+      // 845, not 900: the course panel's floor (#9037) relieves 180px of the
+      // pressure before Tier 2 is reached, so the band moved down to just above
+      // the two-column breakpoint — floored course 300 + settings hard-min 360
+      // overflows a 845 - 193 budget, and nothing can fold (one panel per
+      // column). Picked from those sums, not by feel.
+      const vp = 845.0;
       var u = Uri.parse(WorkspaceNav.openSettings(Uri.parse('/')));
       layoutOf(u, vp, columnMode: true); // build 1: settings (right)
       u = Uri.parse(WorkspaceNav.openCourse(u, '!space:server'));

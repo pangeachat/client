@@ -3,12 +3,14 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/navigation/panel_floor.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/archive/archive.dart';
 import 'package:fluffychat/routes/new_private_chat/new_private_chat.dart';
 import 'package:fluffychat/routes/world/activity_detail_panel.dart';
+import 'package:fluffychat/routes/world/course_context_bar.dart';
 import 'package:fluffychat/routes/world/left_panel/course_card_reveal.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_add_course_subpage.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_chat_list_subpage.dart';
@@ -62,6 +64,14 @@ class WorkspaceLeftPanel extends StatelessWidget {
   /// The shell sets this from its previous build; ignored for other tokens.
   final bool revealFromBar;
 
+  /// Draw this panel at its FLOOR — its collapsed state — instead of its full
+  /// surface, and why. The course panel is the only one with a floor, and its
+  /// floor is the [CourseContextBar]: the card and the bar are one panel in one
+  /// slot, which is why collapsing never moves what is open beside it (#9037).
+  /// Null draws the panel's full surface. See world-map.instructions.md → The
+  /// course context bar.
+  final PanelFloor? atFloor;
+
   const WorkspaceLeftPanel({
     super.key,
     required this.token,
@@ -71,6 +81,7 @@ class WorkspaceLeftPanel extends StatelessWidget {
     this.courseCreationCompleter,
     this.bare = false,
     this.revealFromBar = false,
+    this.atFloor,
   });
 
   @override
@@ -98,6 +109,15 @@ class WorkspaceLeftPanel extends StatelessWidget {
         param: param,
         closeButton: closeButton,
         courseCreationCompleter: courseCreationCompleter,
+      ),
+      // The course panel at its floor is the context bar — the same panel, its
+      // other state. It keeps its own chevron (the one control a floor panel
+      // has), except where the floor was imposed by width rather than chosen:
+      // there is no expanded state to move to at that width, and a control
+      // that cannot do what it says is worse than none (#9037).
+      CoursePanelToken() when atFloor != null => CourseContextBar(
+        spaceId: activeSpaceIdFor(currentUri) ?? '',
+        showChevron: atFloor == PanelFloor.chosen,
       ),
       CoursePanelToken(param: final param) => LeftPanelCourseDetailsSubpage(
         param: param,
@@ -158,6 +178,11 @@ class WorkspaceLeftPanel extends StatelessWidget {
       explicitChildNodes: true,
       child: bare
           ? surface
+          : token is CoursePanelToken && atFloor != null
+          // At its floor the panel rests at the bar's own height — the height
+          // the card's reveal starts and ends at, so the two states hand over
+          // without a jump (#8866).
+          ? PanelCard(height: CourseContextBar.height, child: surface)
           : token is CoursePanelToken && isColumnMode
           ? CourseCardReveal(animateIn: revealFromBar, child: surface)
           : PanelCard(child: surface),

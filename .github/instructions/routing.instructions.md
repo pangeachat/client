@@ -36,7 +36,14 @@ The whole grammar in one place. The path is always `/`; state rides in the query
 
 - **`?c=<spaceid>`** — the **course context**: the course the workspace is scoped
   to, absent for the whole world. Read by the map and the course panels alike
-  (see [The course context](#the-course-context)).
+  (see [The course context](#the-course-context)). It also **names an open
+  course panel**: under a context the course panel is always on screen, and a
+  `course` token in `?left=` says it is EXPANDED — its card rather than its
+  floor, the context bar ([Closing a panel](#closing-a-panel-x-or-back-arrow)).
+  So `?c=!s` alone is the course at its bar, and `?c=!s&left=course` is the
+  card, in the same slot. This is the one panel the token list does not spell
+  out, and it is why collapsing the card moves nothing else in the column
+  ([#9037](https://github.com/pangeachat/client/issues/9037)).
 - **`?left=` and `?right=`** — comma-separated ordered lists of **panel tokens**,
   one token per open panel, ordered from bottom to top.
 - A token is **`type:param`**. The type names the surface (`chats`, `room`,
@@ -157,12 +164,14 @@ moving to Chats or Settings — all leave `?c=` untouched; closing panels is
 precisely how you get a clear look at the scoped map (#7087) — as far as the
 course panel allows: it has a floor rather than a close, so it collapses to
 its indicator instead of clearing away ([Closing a panel](#closing-a-panel-x-or-back-arrow)).
-What the learner then sees in the **wide** map's search slot is the **course
-context bar** — the closed card's header, saying which course the map is scoped
-to and leading back into the card
-([world-map.instructions.md](world-map.instructions.md#the-course-context-bar));
-it is chrome, not a panel, and carries no close control, because `?c=` is
-cleared by the World control below, never by dismissing its indicator. On narrow
+What the learner then sees on **wide** is the course panel at its **floor** —
+the [course context bar](world-map.instructions.md#the-course-context-bar), the
+closed card's header, saying which course the map is scoped to and leading back
+into the card. It is that panel's other state, drawn in that panel's own slot,
+so the collapse frees the card's height to the map without moving anything else
+in the column ([#9037](https://github.com/pangeachat/client/issues/9037)); it
+carries no close control, because `?c=` is cleared by the World control below,
+never by dismissing its indicator. On narrow
 there is no bar: the peek's own header does that naming, which is why the peek
 cannot be dismissed
 ([#8816](https://github.com/pangeachat/client/issues/8816)). The context
@@ -318,9 +327,17 @@ user came from:
   ([#8816](https://github.com/pangeachat/client/issues/8816)), and it has a
   floor on **both** form factors: the nav cavity's collapsed peek on narrow,
   the [course context bar](world-map.instructions.md#the-course-context-bar) on
-  wide. Either way the course never leaves the screen, so there is nothing an X
-  could reveal and nowhere a back arrow could go — only two states to move
-  between. The chevron keeps one place per form factor, in both states: on
+  wide. **Both states are the same panel in the same slot** — the floor is a
+  state of the panel, never a separate surface drawn somewhere else — which is
+  what makes the two states a toggle rather than a relayout: nothing open beside
+  the course moves when it changes state
+  ([#9037](https://github.com/pangeachat/client/issues/9037)). Either way the
+  course never leaves the screen, so there is nothing an X could reveal and
+  nowhere a back arrow could go — only two states to move between. The one
+  exception is a floor the width budget **imposed** rather than the learner
+  choosing it ([Opening, pushing, and folding](#opening-pushing-and-folding)):
+  there the chevron is not drawn at all, because at that width there is no
+  expanded state to move to. The chevron keeps one place per form factor, in both states: on
   **wide** it rides the **trailing** edge beside the course's share / focus
   actions, in the open card and the context bar alike
   ([#8866](https://github.com/pangeachat/client/issues/8866)); on **narrow** it
@@ -402,6 +419,20 @@ One vocabulary covers how content opens:
 - **Push / pop** — open a page *within* a panel, onto that panel's own stack;
   the back arrow **pops** it. Each panel is its own little navigator. Security
   then change-password, a chat then its members: all pushes.
+- **Degrade to a floor** — the width-driven version of a *collapse*, and the
+  first move under pressure for the one panel that has a floor. A panel with a
+  **floor** (a collapsed state of its own — today only the course panel, whose
+  floor is the context bar) shrinks into that floor instead of folding: it keeps
+  its slot, stays drawn at the floor's width, and frees the rest to the panels
+  beside it. The course therefore never stops naming the map it scopes. The
+  floor buys one step, not immunity — a floored panel folds like any other if
+  even the floor will not fit, because holding a header row's width while a
+  whole panel in the other column is evicted to pay for it is the starvation
+  [#9030](https://github.com/pangeachat/client/issues/9030) fixed. A floor
+  reached this way is **imposed**, not chosen, so the panel offers no control
+  out of it: there is no expanded state to move to at that width, and the budget
+  would degrade it again on the same frame. The learner's own choice still rides
+  the URL and takes effect when width returns (#9037).
 - **Fold / unfold** — the width-driven version of a push: when the width budget
   can no longer honor reasonable minimums, a column's **master folds** behind
   its **detail** — not drawn, one back-step away — and **unfolds** back to two
@@ -460,9 +491,10 @@ widths** so the allocator can place and degrade it predictably:
 - **Hard min** — the absolute floor before the panel must yield entirely.
 
 When the open panels want more than fits, they compress from max toward
-reasonable min and the map absorbs the slack. Past that point the one degrade
-move is **fold** (defined in the panel model above), which drops the pair's cost
-to one panel's width. Folding never discards a panel — both stay in the URL, so
+reasonable min and the map absorbs the slack. Past that point the degrade moves are
+**degrade to a floor** and then **fold** (both defined in the panel model
+above) — the first shrinks a panel with a collapsed state into it, the second
+drops the pair's cost to one panel's width. Folding never discards a panel — both stay in the URL, so
 widening unfolds back to two — and the surviving panel is never torn down, so a
 folded live chat keeps its session.
 

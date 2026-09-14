@@ -35,6 +35,14 @@ abstract class PanelWidths {
   static const double toolMin = 360;
   static const double toolComfort = 440;
   static const double toolIdeal = 520;
+
+  /// The width a panel at its FLOOR takes ([PanelDef.floorWidth]). The floor
+  /// state is a single header row — a title, two icon actions and a chevron —
+  /// so it is comfortable at the narrowest width any panel in the system uses,
+  /// and narrow enough that degrading to it actually buys the panel beside it
+  /// room. Well clear of the ~220 below which the course bar's contents stop
+  /// fitting at all.
+  static const double floorWidth = listMin;
 }
 
 /// Static layout metadata for a panel type. Pure data (no widgets), so the URL
@@ -129,6 +137,15 @@ sealed class PanelDef {
   /// UX. See `routing.instructions.md`.
   final bool mapContent;
 
+  /// The width this panel takes at its **floor** — its collapsed state — or
+  /// null for a panel that has no floor. A panel with a floor is never folded
+  /// away under width pressure: it degrades to its floor and keeps a slot, so
+  /// it is always on screen in one of its two states. The course panel is the
+  /// only one; its floor is the context bar (world-map.instructions.md). See
+  /// [PanelSlot.atFloor] and `routing.instructions.md` → Opening, pushing, and
+  /// folding.
+  final double? floorWidth;
+
   /// This child ALWAYS folds its same-column [parent] behind it — one
   /// navigation slot (list → detail, `←` back) regardless of width. Set on the
   /// add-course subpage (#7826), where the map preview is what a second panel
@@ -147,7 +164,11 @@ sealed class PanelDef {
     this.pushable = false,
     this.mapContent = false,
     this.stacksOnParent = false,
+    this.floorWidth,
   });
+
+  /// Whether this panel has a collapsed state to degrade to instead of folding.
+  bool get hasFloor => floorWidth != null;
 
   /// The comfort floor the fold trigger uses: an explicit [reasonableMinWidth],
   /// or the hard [minWidth] when none is set.
@@ -217,6 +238,10 @@ class CoursePanelDef extends PanelDef {
          type: PanelTypesEnum.course,
          column: PanelColumn.left,
          priority: 60,
+         // The only panel with a floor: its collapsed state is the course
+         // context bar, so width pressure shrinks it to the bar rather than
+         // folding it away. A course never stops naming the map it scopes.
+         floorWidth: PanelWidths.floorWidth,
          mapContent:
              true, // selecting a course scopes the map (mobile: bottom sheet)
        );

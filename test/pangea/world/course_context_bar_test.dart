@@ -111,7 +111,11 @@ void main() {
   /// The bar as the map mounts it: a course-scoped workspace (`?c=`) with no
   /// course panel in `?left=` — the state it exists for — on a wide screen,
   /// the only form factor that has a bar.
-  Future<void> pumpBar(WidgetTester tester, {bool showActions = true}) async {
+  Future<void> pumpBar(
+    WidgetTester tester, {
+    bool showActions = true,
+    bool showChevron = true,
+  }) async {
     tester.view.physicalSize = const Size(1280, 800);
     tester.view.devicePixelRatio = 1.0;
     addTearDown(tester.view.resetPhysicalSize);
@@ -129,6 +133,7 @@ void main() {
                 child: CourseContextBar(
                   spaceId: spaceId,
                   showActions: showActions,
+                  showChevron: showChevron,
                 ),
               ),
             ),
@@ -180,6 +185,31 @@ void main() {
     // The context is a scope, not a panel: reopening the card must not disturb
     // it (routing.instructions.md → The course context).
     expect(activeSpaceIdFor(uri), spaceId);
+  });
+
+  // #9037 — the bar is the course panel's floor, and the floor can be
+  // IMPOSED by the width budget rather than chosen by the learner. There is no
+  // expanded state to move to at that width (the budget would degrade it again
+  // on the same frame), so the panel offers no control at all: neither the
+  // chevron nor the whole-bar pointer tap that shares its action. A control
+  // that cannot do what it says is worse than none.
+  testWidgets('a width-imposed floor offers no chevron and no tap', (
+    tester,
+  ) async {
+    await pumpBar(tester, showChevron: false);
+
+    expect(find.byType(ChevronToggle), findsNothing);
+
+    await tester.tap(find.text(courseName));
+    await tester.pumpAndSettle();
+
+    expect(
+      parseOpenPanels(
+        router.routerDelegate.currentConfiguration.uri,
+      ).left.any((t) => t.type == PanelTypesEnum.course),
+      isFalse,
+      reason: 'an imposed floor must not offer to expand what cannot expand',
+    );
   });
 
   testWidgets('carries no close control', (tester) async {

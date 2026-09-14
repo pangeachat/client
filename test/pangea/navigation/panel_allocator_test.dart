@@ -518,15 +518,37 @@ void main() {
     // `course` has no parent and `room`'s parent is `chats`, so before #9030
     // this pair could not fold at all: both held a full slot, the left column
     // ate the budget, and Tier 2 evicted the analytics panel instead.
-    test('a chat opened in a course folds the course card behind it', () {
+    // The positional rule still picks the course as the one that yields; what
+    // it yields TO gained a step in #9037. The course panel has a floor, so
+    // pressure takes it to that floor first — drawn, at the bar's width — and
+    // folds it only when even the floor will not fit.
+    test('a chat opened in a course degrades the card to its floor', () {
       // 1100px: the pair's comfort widths (480 + 480 + a 16 gap) no longer fit
-      // the budget, which is the fold trigger.
+      // the budget, which is the degrade trigger. Floored, the pair needs
+      // 300 + 480 + 16, which does.
       final l = run(
         viewport: 1100,
         left: [PanelTypesEnum.course, PanelTypesEnum.room],
       );
-      expect(l.left[0].vis, PanelVis.hidden); // course folds
+      expect(l.left[0].vis, PanelVis.full); // the course is still drawn…
+      expect(l.left[0].atFloor, isTrue); // …as its context bar
+      expect(l.left[0].width, PanelWidths.floorWidth);
       expect(l.left[1].vis, PanelVis.full); // the live room keeps the column
+      // Nothing folded, so the room's control stays an X: the course is right
+      // there beside it, not a back-step away.
+      expect(l.left[1].foldedOver, isFalse);
+      expectNoOverlap(l);
+    });
+
+    test('and folds behind the chat once even the floor will not fit', () {
+      // 900px: 300 + 480 + 16 overflows the budget too, so the positional fold
+      // takes the floored course and the room keeps the column alone.
+      final l = run(
+        viewport: 900,
+        left: [PanelTypesEnum.course, PanelTypesEnum.room],
+      );
+      expect(l.left[0].vis, PanelVis.hidden); // course folds
+      expect(l.left[1].vis, PanelVis.full);
       // Closing the room reveals the card as it was left, so its control is ←.
       expect(l.left[1].foldedOver, isTrue);
       expectNoOverlap(l);
@@ -636,6 +658,88 @@ void main() {
           reason: '$type stacksOnParent',
         );
       }
+    });
+  });
+
+  // #9037 — the course panel is the only one with a FLOOR: its collapsed state
+  // (the context bar) is a real state of the panel, not its absence, so width
+  // pressure shrinks it to that floor rather than dropping it from the column.
+  group('a panel with a floor degrades to it, not away (#9037)', () {
+    test('only the course panel declares a floor', () {
+      for (final type in PanelTypesEnum.values) {
+        expect(
+          type.def.hasFloor,
+          type == PanelTypesEnum.course,
+          reason: '$type hasFloor',
+        );
+      }
+      expect(PanelTypesEnum.course.def.floorWidth, PanelWidths.floorWidth);
+    });
+
+    test('no pressure, no floor — the card keeps its full width', () {
+      final l = run(left: [PanelTypesEnum.course, PanelTypesEnum.room]);
+      expect(l.left[0].atFloor, isFalse);
+      expect(l.left[0].width, greaterThan(PanelWidths.floorWidth));
+    });
+
+    test('the floor is taken before anything folds', () {
+      final l = run(
+        viewport: 1100,
+        left: [PanelTypesEnum.course, PanelTypesEnum.room],
+      );
+      expect(l.left.every((s) => s.vis == PanelVis.full), isTrue);
+      expect(l.left[0].atFloor, isTrue);
+      expect(l.left[1].atFloor, isFalse);
+      expectNoOverlap(l);
+    });
+
+    // The floor buys one degradation step, not immunity. Holding 300px for a
+    // header row while a whole panel in the other column was evicted to pay for
+    // it is the starvation #9030 fixed — so a floored panel is foldable again.
+    test(
+      'a floored panel still yields rather than starve the other column',
+      () {
+        for (final focusHint in [0, 1, 2]) {
+          final l = run(
+            viewport: 1200,
+            left: [PanelTypesEnum.course, PanelTypesEnum.room],
+            right: [PanelTypesEnum.analytics],
+            focusHint: focusHint,
+          );
+          expect(
+            l.right.single.vis,
+            PanelVis.full,
+            reason: 'analytics must draw with focusHint=$focusHint (#9030)',
+          );
+          expectNoOverlap(l);
+        }
+      },
+    );
+
+    // A floored panel is DRAWN, so there is nothing behind the panel beside it
+    // to go back to: that panel's close stays an X. Only a real fold earns the
+    // back arrow.
+    test('a floored neighbour never turns a close into a back arrow', () {
+      for (final viewport in [1600.0, 1300.0, 1100.0, 1000.0]) {
+        final l = run(
+          viewport: viewport,
+          left: [PanelTypesEnum.course, PanelTypesEnum.room],
+        );
+        if (l.left[0].vis == PanelVis.hidden) continue; // genuinely folded
+        expect(
+          l.left[1].foldedOver,
+          isFalse,
+          reason: 'room reads folded-over at $viewport',
+        );
+      }
+    });
+
+    test('narrow mode seats one panel and never floors', () {
+      final l = run(
+        isColumnMode: false,
+        left: [PanelTypesEnum.course, PanelTypesEnum.room],
+      );
+      expect(l.left.every((s) => !s.atFloor), isTrue);
     });
   });
 }

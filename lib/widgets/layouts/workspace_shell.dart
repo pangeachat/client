@@ -11,6 +11,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/dm_invite/dm_invite_ferry_consumer.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
+import 'package:fluffychat/features/navigation/panel_floor.dart';
 import 'package:fluffychat/features/navigation/panel_focus.dart';
 import 'package:fluffychat/features/navigation/panel_registry.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
@@ -31,10 +32,11 @@ import 'package:fluffychat/pangea/spaces/knocking_users_badge.dart';
 import 'package:fluffychat/pangea/spaces/knocking_users_builder.dart';
 import 'package:fluffychat/routes/chat_list/dm_list_tile.dart';
 import 'package:fluffychat/routes/chat_list/friend_dm_prompt.dart';
-import 'package:fluffychat/routes/world/activity_course_dock.dart';
+import 'package:fluffychat/routes/world/course_context_bar.dart';
 import 'package:fluffychat/routes/world/left_panel/workspace_left_panel.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/mobile_search_bar.dart';
+import 'package:fluffychat/routes/world/panel_card.dart';
 import 'package:fluffychat/routes/world/right_panel/workspace_right_panel.dart';
 import 'package:fluffychat/routes/world/world_analytics_bar.dart';
 import 'package:fluffychat/routes/world/world_map.dart';
@@ -345,12 +347,11 @@ class WorkspaceShell extends StatelessWidget {
                     rightOverlayWidth: l.allocation.mapRightOverlay,
                     bottomOverlayHeight: l.mapBottomOverlay,
                     availableVisibleMapWidth: l.availableVisibleMapWidth,
-                    // The map's top-left slot: the search overlay on the world
-                    // map, the course context bar under a `?c=` scope whose
-                    // panel is closed (#8736).
+                    // The map's top-left slot carries the search overlay on the
+                    // world map, and nothing at all under a `?c=` scope: the
+                    // course names itself from its own panel in the left
+                    // column, in either of its two states (#9037).
                     courseScopeSpaceId: activeSpaceIdFor(state.uri),
-                    coursePanelOpen: l.coursePanelVisible,
-                    activityPanelOpen: l.activityPanelVisible,
                     focus: mapFocusFor(state),
                   ),
                 ),
@@ -486,30 +487,36 @@ class WorkspaceShell extends StatelessWidget {
                                 // clears the system top bar (#7143); PanelCard's 12px top
                                 // margin aligns them with the top-right cluster.
                                 top: 0,
-                                bottom: 0,
+                                // A panel at its FLOOR is only as tall as that
+                                // floor. Stretching it to the column's height
+                                // would leave a full-height transparent slab
+                                // over the map: harmless to paint, but its
+                                // semantics container covers the same rect, and
+                                // on web that reads as a node sitting over the
+                                // map's pins (#8903's failure mode). (#9037)
+                                bottom: l.leftAtFloor[i] == null ? 0 : null,
+                                height: l.leftAtFloor[i] == null
+                                    ? null
+                                    : CourseContextBar.height +
+                                          PanelCard.margin.vertical,
                                 left: l.allocation.left[i].left,
                                 width: l.allocation.left[i].width,
-                                // Docks the course context bar above an open
-                                // activity plan, sharing its left edge; a
-                                // pass-through for every other panel (#8816).
                                 child: FocusTraversalOrder(
                                   order: WorkspaceOrder.leftPanels.focusOrder,
-                                  child: ActivityCourseDock(
+                                  child: LeftPanelLayer(
                                     token: l.leftTokens[i],
-                                    isColumnMode: l.isColumnMode,
-                                    spaceId: activeSpaceIdFor(state.uri),
-                                    child: LeftPanelLayer(
-                                      token: l.leftTokens[i],
-                                      state: state,
-                                      foldedOver:
-                                          l.allocation.left[i].foldedOver,
-                                      getRoomKey: _roomKeyFor,
-                                      bare:
-                                          !l.isColumnMode &&
-                                          l.allocation.left[i].vis ==
-                                              PanelVis.full,
-                                      revealFromBar: l.revealCoursePanel,
-                                    ),
+                                    state: state,
+                                    foldedOver: l.allocation.left[i].foldedOver,
+                                    getRoomKey: _roomKeyFor,
+                                    bare:
+                                        !l.isColumnMode &&
+                                        l.allocation.left[i].vis ==
+                                            PanelVis.full,
+                                    // The course panel's floor state — the
+                                    // context bar in the card's own slot
+                                    // (#9037).
+                                    atFloor: l.leftAtFloor[i],
+                                    revealFromBar: l.revealCoursePanel,
                                   ),
                                 ),
                               ),
@@ -1323,15 +1330,10 @@ class _ShellLayout {
   /// exposed map above the sheet (#7640). 0 everywhere else.
   final double mapBottomOverlay;
 
-  /// Whether a course panel is actually DRAWN — open in `?left=` and not
-  /// folded away by the allocator. The map's course context bar stands down
-  /// only for a panel the learner can see; a folded one names the course
-  /// nowhere, which is exactly the state the bar exists for (#8736).
-  final bool coursePanelVisible;
-
-  /// An activity plan panel is drawn in the left column — the course context
-  /// bar docks above it rather than in the map slot (#8816).
-  final bool activityPanelVisible;
+  /// Per left slot: draw that panel at its FLOOR — for the course panel, the
+  /// context bar instead of the card — and why, or null for its full surface.
+  /// Parallel to [leftTokens] (#9037).
+  final List<PanelFloor?> leftAtFloor;
 
   /// The course card is appearing where the context bar was on the previous
   /// build, so it grows out of the bar ([CourseCardReveal], #8866).
@@ -1362,8 +1364,7 @@ class _ShellLayout {
     required this.leftInset,
     required this.mapLeftOverlay,
     required this.mapBottomOverlay,
-    required this.coursePanelVisible,
-    required this.activityPanelVisible,
+    required this.leftAtFloor,
     required this.revealCoursePanel,
     required this.availableVisibleMapWidth,
     required this.mapContext,
@@ -1383,7 +1384,22 @@ class _ShellLayout {
     // model as the right column. Every section is token-driven now (the
     // route-driven `_MainView` left card was retired), so the left column is
     // entirely the allocator's; the only fixed left inset is the nav rail.
-    final leftTokens = parseOpenPanels(state.uri).left;
+    final parsedLeft = parseOpenPanels(state.uri).left;
+
+    // The course panel is present whenever `?c=` is — the token only says it is
+    // EXPANDED (routing.instructions.md → Reading a workspace URL). Its absence
+    // under a context is the collapsed state, so seat it here as a real panel at
+    // its floor rather than leaving the column and drawing a bar somewhere else:
+    // the card and the bar are one panel in one slot, so collapsing never moves
+    // what is open beside it (#9037). Wide only — on narrow the nav cavity's
+    // peek is the course's floor and the cavity is always its host (#8816).
+    final courseAtFloor =
+        isColumnMode &&
+        activeSpaceIdFor(state.uri) != null &&
+        !parsedLeft.any((t) => t.type.isCoursePanel);
+    final leftTokens = courseAtFloor
+        ? [const CoursePanelToken(), ...parsedLeft]
+        : parsedLeft;
     final leftDefs = [for (final token in leftTokens) token.type.def];
     final hasLeftTokens = leftTokens.isNotEmpty;
 
@@ -1452,25 +1468,34 @@ class _ShellLayout {
       focusHint: focusHint,
     );
 
-    final visibleLeftTypes = [
+    // Which left slots draw their panel at its FLOOR — the course card as the
+    // context bar. Two reasons, one appearance: the learner collapsed it (no
+    // token, seated above as [courseAtFloor]) or the width budget degraded it
+    // rather than folding it away ([PanelSlot.atFloor]). See
+    // world-map.instructions.md → The course context bar.
+    final leftAtFloor = <PanelFloor?>[
       for (var i = 0; i < leftTokens.length; i++)
-        if (layout.left[i].vis != PanelVis.hidden) leftTokens[i].type,
+        if (courseAtFloor && i == 0)
+          PanelFloor.chosen
+        else if (layout.left[i].atFloor)
+          PanelFloor.imposed
+        else
+          null,
     ];
-    final coursePanelVisible = visibleLeftTypes.any(
-      (type) => type.isCoursePanel,
-    );
-    // An open activity plan takes the course context bar OUT of the map slot:
-    // it docks above the plan instead, beside its own parent (#8816).
-    final activityPanelVisible = visibleLeftTypes.contains(
-      PanelTypesEnum.activity,
-    );
 
-    // The bar shows on wide under a course whose card is not drawn — in the
-    // map slot or docked above an activity plan. A card drawn on the very
-    // next build is replacing it, and grows out of it (#8866).
-    final revealCoursePanel = coursePanelVisible && _courseBarWasShowing;
+    // The course CARD is drawn: its panel survived and is not at its floor.
+    final courseCardVisible = [
+      for (var i = 0; i < leftTokens.length; i++)
+        if (layout.left[i].vis != PanelVis.hidden && leftAtFloor[i] == null)
+          leftTokens[i].type,
+    ].any((type) => type.isCoursePanel);
+
+    // A card drawn where the bar just was grows out of it (#8866). Both states
+    // are now the same panel in the same slot, so this is a state change within
+    // one panel rather than one widget replacing another.
+    final revealCoursePanel = courseCardVisible && _courseBarWasShowing;
     _courseBarWasShowing =
-        isColumnMode && activeSpaceId != null && !coursePanelVisible;
+        isColumnMode && activeSpaceId != null && !courseCardVisible;
 
     // The narrow focus: the one panel the allocator seats full-screen, if any.
     // [focusedIsRight] distinguishes a right panel (renders under the expanded
@@ -1623,8 +1648,7 @@ class _ShellLayout {
       leftInset: leftInset,
       mapLeftOverlay: mapLeftOverlay,
       mapBottomOverlay: mapBottomOverlay,
-      coursePanelVisible: coursePanelVisible,
-      activityPanelVisible: activityPanelVisible,
+      leftAtFloor: leftAtFloor,
       revealCoursePanel: revealCoursePanel,
       availableVisibleMapWidth: availableVisibleMapWidth,
       mapContext: mapContext,

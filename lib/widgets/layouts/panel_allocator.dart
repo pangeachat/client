@@ -32,11 +32,20 @@ class PanelSlot {
   /// here. See `routing.instructions.md`.
   final bool foldedOver;
 
+  /// True when this panel was degraded to its **floor** ([PanelDef.floorWidth])
+  /// to relieve width pressure: it keeps a slot and is drawn, at the floor's
+  /// width, in its collapsed state. The panel renders its floor rather than its
+  /// full surface — for the course panel that is the context bar. Distinct from
+  /// a panel the learner collapsed themselves, which the URL records; both draw
+  /// the same thing. See `routing.instructions.md`.
+  final bool atFloor;
+
   const PanelSlot({
     required this.left,
     required this.width,
     required this.vis,
     this.foldedOver = false,
+    this.atFloor = false,
   });
 }
 
@@ -227,6 +236,16 @@ abstract class PanelAllocator {
         ? all[focusHint]
         : null;
     final folded = <_Entry>{};
+    // Panels degraded to their FLOOR ([PanelDef.floorWidth]): still drawn,
+    // still holding a slot, sized at the floor instead of their full widths.
+    final floored = <_Entry>{};
+    double reasonableOf(_Entry e) =>
+        floored.contains(e) ? e.def.floorWidth! : e.def.reasonableMin;
+    double minOf(_Entry e) =>
+        floored.contains(e) ? e.def.floorWidth! : e.def.minWidth;
+    double idealOf(_Entry e) =>
+        floored.contains(e) ? e.def.floorWidth! : e.def.idealWidth;
+
     // Registry-declared ALWAYS-folds ([PanelDef.stacksOnParent], #7826): the
     // same fold as the pressure tiers below, just unconditional — the width
     // the parent would claim stays with the map.
@@ -244,19 +263,42 @@ abstract class PanelAllocator {
       final vis = all.where((e) => !folded.contains(e)).toList();
       if (vis.length <= 1) break;
       final needReasonable =
-          vis.fold(0.0, (s, e) => s + e.def.reasonableMin) + gapsFor(vis);
+          vis.fold(0.0, (s, e) => s + reasonableOf(e)) + gapsFor(vis);
       if (needReasonable <= content) break;
+      // Tier 0: a panel with a FLOOR degrades to it instead of folding. Its
+      // collapsed state is a real state of the panel, not an absence, so
+      // shrinking to it keeps the surface on screen AND frees most of its
+      // width — strictly better than dropping it and better than holding a
+      // full card's width for a header row. The course panel is the only one:
+      // a course must never stop naming the map it scopes, and a bar the
+      // learner cannot expand (the token is open; the fold would just retake
+      // it) is a control that cannot do what it says (#9037).
+      final floorable = vis
+          .where((e) => e.def.hasFloor && !floored.contains(e))
+          .toList();
+      if (floorable.isNotEmpty) {
+        floorable.sort((a, b) => a.def.priority.compareTo(b.def.priority));
+        floored.add(floorable.first);
+        continue;
+      }
       // Tier 1: fold the panel BENEATH behind the one above it in its column.
       // Positional, not registry-linked: a column's first token is the one that
       // folds whether or not the pair is a declared master/detail
       // (routing.instructions.md → "the same rule applies positionally"), so a
       // chat opened in a course folds the course card behind it (#9030).
+      // A panel with a floor is folded only AFTER Tier 0 has taken it to that
+      // floor: the floor buys it one extra step, not immunity. Immunity would
+      // hold 300px for a header row while a whole panel in the other column
+      // was evicted to pay for it — the starvation #9030 fixed.
       final foldable = vis
           .where(
-            (beneath) => vis.any(
-              (above) =>
-                  above.column == beneath.column && above.index > beneath.index,
-            ),
+            (beneath) =>
+                (!beneath.def.hasFloor || floored.contains(beneath)) &&
+                vis.any(
+                  (above) =>
+                      above.column == beneath.column &&
+                      above.index > beneath.index,
+                ),
           )
           .toList();
       if (foldable.isNotEmpty) {
@@ -268,8 +310,7 @@ abstract class PanelAllocator {
       }
       // Tier 2: no parent-fold left. Only collapse when the hard mins would
       // actually overflow (panels would overlap); otherwise let them compress.
-      final needMin =
-          vis.fold(0.0, (s, e) => s + e.def.minWidth) + gapsFor(vis);
+      final needMin = vis.fold(0.0, (s, e) => s + minOf(e)) + gapsFor(vis);
       if (needMin <= content) break;
       final collapsible = vis.where((e) => e != focusEntry).toList();
       if (collapsible.isEmpty) break;
@@ -281,21 +322,16 @@ abstract class PanelAllocator {
     // hard mins by distributing the surplus across each panel's headroom.
     final fulls = all.where((e) => !folded.contains(e)).toList();
     final avail = math.max(0.0, content - gapsFor(fulls));
-    final sumIdeal = fulls.fold(0.0, (s, e) => s + e.def.idealWidth);
-    final sumMin = fulls.fold(0.0, (s, e) => s + e.def.minWidth);
-    final headroom = fulls.fold(
-      0.0,
-      (s, e) => s + (e.def.idealWidth - e.def.minWidth),
-    );
+    final sumIdeal = fulls.fold(0.0, (s, e) => s + idealOf(e));
+    final sumMin = fulls.fold(0.0, (s, e) => s + minOf(e));
+    final headroom = fulls.fold(0.0, (s, e) => s + (idealOf(e) - minOf(e)));
     final widths = <_Entry, double>{};
     for (final e in fulls) {
       if (sumIdeal <= avail || headroom <= 0) {
-        widths[e] = e.def.idealWidth;
+        widths[e] = idealOf(e);
       } else {
         final surplus = math.max(0.0, avail - sumMin);
-        widths[e] =
-            e.def.minWidth +
-            (e.def.idealWidth - e.def.minWidth) / headroom * surplus;
+        widths[e] = minOf(e) + (idealOf(e) - minOf(e)) / headroom * surplus;
       }
     }
 
@@ -322,6 +358,7 @@ abstract class PanelAllocator {
         width: widthOf(e),
         vis: PanelVis.full,
         foldedOver: isFoldedOver(e),
+        atFloor: floored.contains(e),
       );
       x += widthOf(e) + panelGap;
     }
@@ -345,6 +382,7 @@ abstract class PanelAllocator {
         width: w,
         vis: PanelVis.full,
         foldedOver: isFoldedOver(e),
+        atFloor: floored.contains(e),
       );
       rEdge -= w + panelGap;
     }

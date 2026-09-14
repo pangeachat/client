@@ -22,10 +22,12 @@ import 'package:fluffychat/widgets/matrix.dart';
 /// the same [PanelHeader] chrome, the course's name, its two header actions
 /// ([CourseHeaderActions]) and, trailing them, the same chevron the open card
 /// carries, one rotation apart ([ChevronToggle]) — over the course's progress
-/// bar at the header's content inset ([CoursePeekProgressBar]). The map sizes
-/// it to the course panel's own width, and the card grows out of it and
-/// shrinks back into it ([CourseCardReveal]), so the two states read as one
-/// surface changing height rather than two widgets swapping (#8866).
+/// bar at the header's content inset ([CoursePeekProgressBar]). It is the
+/// course panel's FLOOR, drawn in that panel's own slot in the left column, so
+/// it is already the card's width and the card grows out of it and shrinks back
+/// into it ([CourseCardReveal]) — the two states read as one surface changing
+/// height rather than two widgets swapping (#8866), and nothing open beside the
+/// course moves when it changes state (#9037).
 ///
 /// It exists so the scoped map always says WHICH course it is scoped to: with
 /// the card closed the only signal was the rail's course highlight, easy to
@@ -35,15 +37,13 @@ import 'package:fluffychat/widgets/matrix.dart';
 /// tapping it anywhere but its actions reopens the course card, whose own
 /// header collapses it back the same way ([SpaceDetailsHeader], #8909).
 ///
-/// **Wide only** (#8816). It rides the map's search slot, except with an
-/// activity plan open, where it docks above that panel instead
-/// ([ActivityCourseDock]). Narrow has no bar at all: the course panel there is
+/// **Wide only** (#8816). Narrow has no bar at all: the course panel there is
 /// always mounted at least at its peek, and that peek is this same header in
 /// this same place, so a bar would duplicate the panel it points at. See
 /// world-map.instructions.md → The course context bar.
 ///
-/// Owns its own [QuestObjectivesLoader] rather than borrowing the panel's:
-/// the panel is closed exactly when this shows, so there is none to borrow.
+/// Owns its own [QuestObjectivesLoader] rather than borrowing the card's:
+/// the card is not built while this is, so there is none to borrow.
 /// Both read the same cached outline + shared progression, so the two can't
 /// disagree about the star totals (quests.instructions.md).
 class CourseContextBar extends StatefulWidget {
@@ -54,16 +54,21 @@ class CourseContextBar extends StatefulWidget {
   /// passes none.
   final SemanticsSortKey? sortKey;
 
-  /// Whether the bar carries the course's share / focus-on-map actions. The
-  /// dock above an activity plan passes false: the plan's own header carries
-  /// the same pair, and one per column is enough (#8866). The chevron stays
-  /// either way — it is the way back to the card.
+  /// Whether the bar carries the course's share / focus-on-map actions.
   final bool showActions;
+
+  /// Whether the bar offers its expand chevron — and, with it, the whole-bar
+  /// pointer tap that shares the chevron's action. False where the floor was
+  /// imposed by width rather than chosen ([PanelFloor.imposed]): there is no
+  /// expanded state to move to at that width, so the control would promise
+  /// what it cannot do (#9037).
+  final bool showChevron;
 
   const CourseContextBar({
     required this.spaceId,
     this.sortKey,
     this.showActions = true,
+    this.showChevron = true,
     super.key,
   });
 
@@ -174,7 +179,10 @@ class _CourseContextBarState extends State<CourseContextBar> {
         // an invisible dead stop for a keyboard user (2.4.7), and an
         // announced one would read this same tap twice.
         child: InkWell(
-          onTap: _openCourse,
+          // No tap where the floor was imposed by width: expanding would be
+          // re-seating a token that is already open, and the budget would
+          // degrade it again on the same frame (#9037).
+          onTap: widget.showChevron ? _openCourse : null,
           customBorder: shape,
           excludeFromSemantics: true,
           canRequestFocus: false,
@@ -205,11 +213,12 @@ class _CourseContextBarState extends State<CourseContextBar> {
                     // focusable control, carrying the collapsed state the
                     // open card's chevron carries expanded — so a screen
                     // reader hears the same control in both states.
-                    ChevronToggle(
-                      expanded: false,
-                      onTap: _openCourse,
-                      meaning: ChevronMeaning.disclosure,
-                    ),
+                    if (widget.showChevron)
+                      ChevronToggle(
+                        expanded: false,
+                        onTap: _openCourse,
+                        meaning: ChevronMeaning.disclosure,
+                      ),
                   ],
                 ),
               ),
