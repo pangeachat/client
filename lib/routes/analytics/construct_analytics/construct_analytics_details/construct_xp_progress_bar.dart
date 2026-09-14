@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
 
-import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/analytics/analytics_constants.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_level_enum.dart';
@@ -59,11 +58,7 @@ class ConstructXPProgressBar extends StatelessWidget {
                 ),
               ],
             ),
-            AnimatedProgressBar(
-              height: 20.0,
-              widthPercent: progress,
-              backgroundColor: Theme.of(context).pangea.goldContainer,
-            ),
+            AnimatedProgressBar(height: 20.0, widthPercent: progress),
           ],
         );
       },

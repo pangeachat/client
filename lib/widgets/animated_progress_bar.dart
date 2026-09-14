@@ -45,8 +45,11 @@ class AnimatedProgressBar extends StatelessWidget {
                   borderRadius: const BorderRadius.all(
                     Radius.circular(AppConfig.borderRadius),
                   ),
+                  // The neutral track Material's own indicators use, so the
+                  // fill is the only colour in the bar.
                   color:
-                      backgroundColor ?? Theme.of(context).pangea.goldContainer,
+                      backgroundColor ??
+                      Theme.of(context).colorScheme.surfaceContainerHighest,
                 ),
               ),
             ),
@@ -56,14 +59,12 @@ class AnimatedProgressBar extends StatelessWidget {
                 duration: duration ?? FluffyThemes.animationDuration,
                 height: height,
                 width: progressWidth,
-                // The default bar is the bright gold, which cannot clear 3:1 on
-                // its track, so its edge is drawn in the mark gold instead; a
-                // caller's own bar colour is left as given.
+                // The default bar is the bright gold, drawn plain: it sits at
+                // about 1.3:1 on the light track, and the edge that once
+                // carried it was dropped by design (2026-09-14), as on the
+                // course progress bar.
                 decoration: BoxDecoration(
                   color: barColor ?? Theme.of(context).pangea.goldFixedDim,
-                  border: barColor == null
-                      ? Border.all(color: Theme.of(context).pangea.goldGraphic)
-                      : null,
                   borderRadius: const BorderRadius.all(
                     Radius.circular(AppConfig.borderRadius),
                   ),
