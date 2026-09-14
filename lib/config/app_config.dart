@@ -33,7 +33,6 @@ abstract class AppConfig {
 
   // Static colours still read directly by widget code (migrating).
   static const Color primaryColor = Color(0xFF8560E0);
-  static const Color goldLight = Color.fromARGB(255, 254, 223, 73);
   static const Color error = Colors.red;
   static const Color activeToggleColor = Color(0xFF33D057);
 

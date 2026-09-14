@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:confetti/confetti.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/overlay/overlay.dart';
 import 'package:fluffychat/features/overlay/overlay_display_details.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -127,6 +127,7 @@ class _StarRainWidgetState extends State<StarRainWidget> {
         duration: opacityDuration,
         child: LayoutBuilder(
           builder: (context, constaints) {
+            final pangea = Theme.of(context).pangea;
             final quarterWidth = constaints.maxWidth / 4;
             // Both emitters opt out of the package's low-frame-rate
             // pause: it suppresses ALL particle emission on any frame slower
@@ -154,7 +155,7 @@ class _StarRainWidgetState extends State<StarRainWidget> {
                       minBlastForce: 10,
                       maxBlastForce: 40,
                       gravity: 0.07,
-                      colors: const [AppConfig.goldLight, AppConfig.gold],
+                      colors: [pangea.goldFixedDim, pangea.goldHighlight],
                       pauseEmissionOnLowFrameRate: false,
                       createParticlePath: drawStar,
                     ),
@@ -177,7 +178,7 @@ class _StarRainWidgetState extends State<StarRainWidget> {
                       gravity: 0.07,
                       emissionFrequency: 0.1,
                       numberOfParticles: numParticles,
-                      colors: const [AppConfig.goldLight, AppConfig.gold],
+                      colors: [pangea.goldFixedDim, pangea.goldHighlight],
                       pauseEmissionOnLowFrameRate: false,
                       createParticlePath: drawStar,
                     ),
