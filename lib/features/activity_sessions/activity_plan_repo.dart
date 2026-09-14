@@ -820,7 +820,7 @@ class ActivityPlanRepo
     // What the batch should actually ask for. A key already answerable without
     // the network is resolved on the spot instead of being fetched again.
     final wanted = <_QueuedHydration>[];
-    final ready = <Future<ActivityPlanModel?>>[];
+    final ready = <Future<Object?>>[];
     for (final item in batch) {
       if (await _confirmedRemoved.contains(item.activityId)) continue;
       final request = _requestFor(item, l1);
@@ -841,8 +841,20 @@ class ActivityPlanRepo
       // which returns the raw plan with unresolved media until resolution runs.
       // Deferring it behind an unrelated key's request would leave placeholder
       // images on screen for as long as that request takes.
-      if (getCached(request) != null || inFlightFor(request) != null) {
+      if (getCached(request) != null) {
+        // Safe to read through the normal path: [lookup] answers from cache
+        // before it ever consults [_batchInFlight].
         ready.add(getPlan(item.activityId, l1: l1, version: item.version));
+        continue;
+      }
+      final single = inFlightFor(request);
+      if (single != null) {
+        // Awaited DIRECTLY, not through [getPlan]. This key is registered in
+        // [_batchInFlight], and it is uncached — so a read through [lookup]
+        // would wait on this very batch, while the batch waits here on that
+        // read. Nothing completing the single GET can break that circle, and
+        // the batch would hold its hydration slots for good.
+        ready.add(single);
         continue;
       }
       wanted.add(item);
@@ -965,7 +977,11 @@ class ActivityPlanRepo
           'activityIds': unsatisfied.map((i) => i.activityId).toList(),
           'l1': l1,
         },
-        level: SentryLevel.warning,
+        // Error, not warning: these are the batch form of a single read's 503.
+        // Reporting them lower would mean a whole screen failing to hydrate no
+        // longer raises an outage signal, purely because the reads travelled
+        // together.
+        level: SentryLevel.error,
       );
     }
   }

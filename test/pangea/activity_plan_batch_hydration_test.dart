@@ -767,6 +767,66 @@ void main() {
       );
     });
 
+    // NOTE: this exercises the interleaving and asserts both keys land, but it
+    // is NOT a deadlock guard — the circular wait it relates to is a race (once
+    // the direct read caches the key, the batch's read answers from cache and
+    // never joins), so it does not reproduce deterministically. The fix for it
+    // is verified by inspection: a single read already in flight is awaited
+    // directly, which cannot wait on the batch.
+    test('a batch and a concurrent single read both land', () async {
+      // An uncached key already being read singly is registered in the batch's
+      // in-flight map, so reading it through the normal path would wait on this
+      // batch while the batch waits on that read. Nothing completing the GET
+      // breaks that circle, and the batch never releases its slots.
+      final gate = Completer<void>();
+
+      await http
+          .runWithClient(
+            () async {
+              // A direct read starts first and is still on the wire.
+              final direct = repo.lookup('circ-1', l1: 'en');
+              await Future<void>.delayed(const Duration(milliseconds: 5));
+              // Now the same key is offered to a batch alongside another.
+              repo.ensure('circ-1', l1: 'en');
+              repo.ensure('circ-2', l1: 'en');
+              await settle();
+              gate.complete();
+              await direct;
+              await settle();
+            },
+            () {
+              return MockClient((request) async {
+                await gate.future;
+                if (request.method == 'POST') return batchOf(found: ['circ-2']);
+                return http.Response(
+                  jsonEncode({
+                    'plan': planBody('circ-1'),
+                    'l1': 'en',
+                    'version_id': 'v1',
+                  }),
+                  200,
+                );
+              });
+            },
+          )
+          .timeout(
+            const Duration(seconds: 5),
+            onTimeout: () => throw StateError('hydration deadlocked'),
+          );
+
+      // Asserted on the key ONLY the batch can deliver. `circ-1` arrives via the
+      // direct read either way, so it cannot tell a completed batch from a
+      // deadlocked one.
+      await settle();
+      expect(
+        repo.cachedPlan('circ-2', l1: 'en'),
+        isNotNull,
+        reason:
+            'the batch must have completed, not stalled waiting on a read '
+            'that was waiting on it',
+      );
+    });
+
     test('a refresh travels alone', () async {
       // The read cannot express "ignore your cache for this one and not those",
       // so grouping a revalidate would silently downgrade it to a normal read.
