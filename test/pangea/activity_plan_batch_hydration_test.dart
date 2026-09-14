@@ -446,6 +446,31 @@ void main() {
       );
     });
 
+    test('an unsatisfied key does not fall back to its own request', () async {
+      // The prefetch fills the cache and the ordinary read serves from it. A
+      // key the batch did not satisfy has no cache entry, so reading it would
+      // send a request of its own — the fan-out this path exists to remove,
+      // arriving by the back door on exactly the degraded responses where it
+      // hurts most.
+      final requests = await capture(
+        (_) => batchOf(found: ['got-1'], unavailable: ['missed-1', 'missed-2']),
+        () async {
+          repo.ensure('got-1', l1: 'en');
+          repo.ensure('missed-1', l1: 'en');
+          repo.ensure('missed-2', l1: 'en');
+          await settle();
+          await settle();
+        },
+      );
+
+      expect(
+        requests.length,
+        1,
+        reason: 'two unsatisfied keys must not become two more requests',
+      );
+      expect(repo.cachedPlan('got-1', l1: 'en'), isNotNull);
+    });
+
     test('a refresh travels alone', () async {
       // The read cannot express "ignore your cache for this one and not those",
       // so grouping a revalidate would silently downgrade it to a normal read.

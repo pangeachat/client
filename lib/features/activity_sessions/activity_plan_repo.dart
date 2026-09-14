@@ -659,10 +659,20 @@ class ActivityPlanRepo
       );
       if (batch.isEmpty) return;
       _inFlight += batch.length;
-      final hydration = _hydrateBatch(batch);
+      // Registered for the NETWORK window only — the span in which a concurrent
+      // [lookup] would otherwise send a second request for a key this batch is
+      // already fetching. Cleared before the resolve phase so the map never
+      // advertises a wait that has already finished.
+      final prefetch = _prefetchBatch(batch);
       for (final item in batch) {
-        _batchInFlight[item.key] = hydration;
+        _batchInFlight[item.key] = prefetch;
       }
+      final hydration = prefetch.then((_) {
+        for (final item in batch) {
+          _batchInFlight.remove(item.key);
+        }
+        return _resolveBatch(batch);
+      });
       hydration
           .catchError((Object e, StackTrace s) {
             // Fire-and-forget, and the response mapping runs outside the
@@ -741,139 +751,129 @@ class ActivityPlanRepo
   /// A single-activity batch still goes through here rather than falling back
   /// to [getPlan]: one code path means the two cannot answer differently, and
   /// the backend charges the same either way.
-  Future<void> _hydrateBatch(List<_QueuedHydration> batch) async {
-    // The language is resolved ONCE, here, and carried through acceptance. The
-    // viewer's display language is mutable: recomputing it after the response
-    // lands would file a plan fetched for the old language under the new
-    // language's key, and the resolved-plan map would then suppress the
-    // hydration that would have fetched the right one.
+  /// Reads a batch by PREFILLING the cache, then letting the ordinary
+  /// single-read path serve every key from it.
+  ///
+  /// The batch does exactly one thing: turn N round trips into one. Everything
+  /// that happens to a plan afterwards — the cache read, the TTL, media
+  /// resolution, de-duplication against a concurrent read, the removed-verdict
+  /// gate, the rate-limit pause — stays in [lookup] and `BaseRepo.get`, which
+  /// already do all of it.
+  ///
+  /// This shape is deliberate and was arrived at the hard way. The first
+  /// version accepted responses itself, in parallel to `BaseRepo`, and had to
+  /// re-derive each of those behaviours; review found six of them missing one
+  /// at a time, because nothing about the new path made their absence visible.
+  /// A prefetch cannot have that bug class: there is no second acceptance path
+  /// to forget anything in.
+  Future<void> _prefetchBatch(List<_QueuedHydration> batch) async {
     final l1 = batch.first.l1 ?? _viewerDisplayLanguage;
 
+    // What the batch should actually ask for. A key already answerable without
+    // the network is dropped here rather than fetched and thrown away.
     final wanted = <_QueuedHydration>[];
-    // Cache-hit acceptance is collected, not awaited here: it resolves media,
-    // which is a second network hop, so awaiting it during preparation would
-    // hold the batch request behind plans we already have.
-    final settling = <Future<void>>[];
     for (final item in batch) {
-      // Known-dead ids never travel. [ensure]'s gate is synchronous, so on a
-      // cold start it cannot see verdicts still being read off disk — the
-      // awaited check is what makes the suppression hold for a NEW session's
-      // first reads too, and dropping it would put the whole CLIENT-EB0 loop
-      // back (753 events across 9 users in 24h, for ids the backend had
-      // already called gone).
       if (await _confirmedRemoved.contains(item.activityId)) continue;
-      // Cache first, exactly as the single read does through `BaseRepo.get`.
-      // A cold start has an empty resolved-plan map but a full TTL cache, so
-      // without this every surface's first paint would re-fetch plans already
-      // on disk — spending allowance to receive what we are holding.
       final request = _requestFor(item, l1);
-      if (!item.forceRefresh) {
-        final cached = getCached(request);
-        if (cached != null) {
-          // `renewTtl: false` — this content came off disk unchanged, and
-          // restamping it would extend its freshness without anyone having
-          // re-read it, so a stale plan could outlive its TTL indefinitely
-          // across frequent restarts. Only a network response earns a new
-          // timestamp, which is what `BaseRepo.get` does.
-          settling.add(_accept(item, l1, cached, renewTtl: false));
-          continue;
-        }
-        // A single read may already be in flight for this key — the start page
-        // asking just before the map's cards did. Join it rather than sending a
-        // second request for the same plan: `BaseRepo` de-duplicates its own
-        // reads, and a batch that ignored that registry would spend the
-        // allowance twice and race two writers onto one cache entry.
-        final single = inFlightFor(request);
-        if (single != null) {
-          settling.add(single);
-          continue;
-        }
+      if (item.forceRefresh) {
+        wanted.add(item);
+        continue;
       }
+      // Fresh on disk, or already being read by someone else: either way the
+      // single read below resolves it without a request, so including it would
+      // spend allowance for nothing.
+      if (getCached(request) != null || inFlightFor(request) != null) continue;
       wanted.add(item);
     }
-    if (wanted.isEmpty) {
-      await Future.wait(settling);
-      notifyListeners();
-      return;
-    }
 
-    // Rechecked immediately before sending. Preparation above awaits disk and
-    // media, and a sibling read on the same budget can earn a 429 in that
-    // window — so the check `_pump` made is already stale by here, and sending
-    // anyway would ignore a stop the server has already issued. The parks go
-    // with it: these never reached the network, so there is no attempt to back
-    // off from.
-    if (_rateLimitPause.isPaused) {
-      for (final item in wanted) {
-        _nextAttempt.remove(_requestFor(item, l1).storageKey);
-      }
-      notifyListeners();
-      return;
-    }
-
-    final request = ActivityPlanBatchRequest(
-      activityIds: wanted.map((i) => i.activityId).toList(),
-      l1: l1,
-      versions: {
-        for (final item in wanted)
-          if (item.version != null) item.activityId: item.version!,
-      },
-    );
-
-    final ActivityPlanBatchResponse result;
-    try {
-      final res = await createRequests()
-          .post(
-            url: PApiUrls.activityBatch,
-            body: request.toJson(),
-            // No user-context enrichment: this is a catalog read, and the
-            // learner's CEFR and gender say nothing about which plans to
-            // return. Sending them would also leave the request depending on
-            // the backend ignoring fields it does not model.
-            enrichBody: false,
-          )
-          .timeout(timeout);
-      result = ActivityPlanBatchResponse.fromJson(
-        jsonDecode(res.body) as Map<String, dynamic>,
+    if (wanted.isNotEmpty && !_rateLimitPause.isPaused) {
+      final request = ActivityPlanBatchRequest(
+        activityIds: wanted.map((i) => i.activityId).toList(),
+        l1: l1,
+        versions: {
+          for (final item in wanted)
+            if (item.version != null) item.activityId: item.version!,
+        },
       );
-    } catch (e, s) {
-      // A 429 is about RATE, so it pauses every read on this budget rather than
-      // the keys that happened to be in this batch.
-      _rateLimitPause.recordFailure(e);
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {'activityIds': request.activityIds, 'l1': l1},
-        // The shared severity table: a throttle or a gone/routine status is a
-        // warning, anything else an error.
-        level: PangeaHttpException.severityOf(e),
-      );
-      return;
-    }
-
-    // Media resolution runs CONCURRENTLY across the batch. It is a second
-    // network hop per plan, so awaiting it one plan at a time would serialize
-    // the whole screen behind the slowest media read — and a plan with no media
-    // at all would wait on plans that have some. Before batching, each
-    // hydration carried its own media independently.
-    await Future.wait([
-      ...settling,
-      for (final item in wanted)
-        if (result.activities[item.activityId] case final fetched?)
-          _accept(item, l1, fetched),
-    ]);
-
-    for (final item in wanted) {
-      if (result.activities.containsKey(item.activityId)) continue;
-      if (result.removed.contains(item.activityId)) {
-        _confirmedRemoved.mark(item.activityId);
+      try {
+        final res = await createRequests()
+            .post(
+              url: PApiUrls.activityBatch,
+              body: request.toJson(),
+              // No user-context enrichment: this is a catalog read, and the
+              // learner's CEFR and gender say nothing about which plans to
+              // return. Sending them would also leave the request depending on
+              // the backend ignoring fields it does not model.
+              enrichBody: false,
+            )
+            .timeout(timeout);
+        final result = ActivityPlanBatchResponse.fromJson(
+          jsonDecode(res.body) as Map<String, dynamic>,
+        );
+        for (final item in wanted) {
+          final fetched = result.activities[item.activityId];
+          if (fetched != null) {
+            // The ONLY write this method performs, and it is a network
+            // response, so it earns a new timestamp exactly as `BaseRepo.get`'s
+            // would. `shouldCache` is the same policy hook the single read
+            // applies to a body whose mapping throws.
+            if (shouldCache(fetched)) {
+              await setCached(_requestFor(item, l1), fetched);
+            }
+          } else if (result.removed.contains(item.activityId)) {
+            _confirmedRemoved.mark(item.activityId);
+          }
+          // `unavailable`, and anything omitted, is left alone: the read below
+          // will find no cache entry and simply not resolve, which leaves the
+          // key eligible once its cooldown lapses.
+        }
+      } catch (e, s) {
+        // A 429 is about RATE, so it pauses every read on this budget rather
+        // than the keys that happened to be in this batch.
+        _rateLimitPause.recordFailure(e);
+        ErrorHandler.logError(
+          e: e,
+          s: s,
+          data: {'activityIds': request.activityIds, 'l1': l1},
+          // The shared severity table: a throttle or a gone/routine status is a
+          // warning, anything else an error.
+          level: PangeaHttpException.severityOf(e),
+        );
       }
-      // `unavailable`, and anything the backend omitted entirely, is left
-      // parked: transient by definition, so the key stays eligible once its
-      // cooldown lapses rather than being recorded as a verdict.
     }
-    notifyListeners();
   }
+
+  /// Resolves every key of a prefetched batch through the ordinary read.
+  ///
+  /// Where the prefetch landed a plan this is a cache hit and costs nothing;
+  /// where it did not, the read's own gates decide what happens — and a pause
+  /// armed by the prefetch stops it there, so a failed batch cannot fan back
+  /// out into N single requests. Concurrent, because each one may resolve media.
+  ///
+  /// The batch's keys are dropped from [_batchInFlight] before this runs, so
+  /// the map holds only reads that are genuinely still in the network phase.
+  /// That is hygiene, not a correctness requirement: [lookup] awaits whatever
+  /// it finds there, and by this point that future has already completed.
+  Future<void> _resolveBatch(List<_QueuedHydration> batch) async {
+    final l1 = batch.first.l1 ?? _viewerDisplayLanguage;
+    await Future.wait([
+      for (final item in batch)
+        if (_answerableWithoutAsking(_requestFor(item, l1)))
+          getPlan(item.activityId, l1: l1, version: item.version),
+    ]);
+  }
+
+  /// Whether reading this key will come back without a request of its own —
+  /// because the prefetch landed it, it was already cached, or someone else is
+  /// already fetching it (which [BaseRepo] joins rather than duplicates).
+  ///
+  /// The batch resolves ONLY these. A key the batch did not satisfy — reported
+  /// unavailable, or omitted — is left parked instead: reading it here would
+  /// issue a single request per unsatisfied key, which is the fan-out this
+  /// whole path exists to remove, arriving by the back door on exactly the
+  /// degraded responses where it hurts most.
+  bool _answerableWithoutAsking(ActivityPlanFetchRequest request) =>
+      getCached(request) != null || inFlightFor(request) != null;
 
   ActivityPlanFetchRequest _requestFor(_QueuedHydration item, String l1) =>
       ActivityPlanFetchRequest(
@@ -881,25 +881,6 @@ class ActivityPlanRepo
         l1: l1,
         version: item.version,
       );
-
-  /// Files one plan exactly as [lookup] does for a single read: cache it, clear
-  /// any stale removed-verdict, resolve its media, and release the attempt park.
-  Future<void> _accept(
-    _QueuedHydration item,
-    String l1,
-    ActivityPlanFetchResponse fetched, {
-    bool renewTtl = true,
-  }) async {
-    final request = _requestFor(item, l1);
-    // Same policy hook the single read uses — a body whose mapping throws is
-    // refused rather than memoized for the full TTL.
-    if (!shouldCache(fetched)) return;
-    if (renewTtl) await setCached(request, fetched);
-    _confirmedRemoved.unmark(item.activityId);
-    _resolved[request.storageKey] = await resolveMedia(fetched.plan);
-    // Cleared only after a fully-mapped success, matching [lookup].
-    _nextAttempt.remove(request.storageKey);
-  }
 
   /// Resolves upload-referenced media blocks to CDN urls. Applied to every
   /// fetched plan, and by fallback consumers to legacy plans read from room
