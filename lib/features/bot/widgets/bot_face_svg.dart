@@ -81,9 +81,29 @@ class BotFaceState extends State<BotFace> {
   @override
   void didUpdateWidget(BotFace oldWidget) {
     super.didUpdateWidget(oldWidget);
+    if (oldWidget.useRive != widget.useRive) {
+      // Avatar flips this per row, so the widget has to be able to drop the
+      // animation and pick it back up rather than assuming the first value
+      // holds for its lifetime.
+      widget.useRive ? _load() : _unload();
+      return;
+    }
     if (!widget.useRive) return;
     if (oldWidget.expression != widget.expression) _playExpression();
     if (oldWidget.forceColor != widget.forceColor) _applyColour();
+  }
+
+  /// Drop the animation and fall back to the static image.
+  void _unload() {
+    _settleTimer?.cancel();
+    _settleTimer = null;
+    setState(() {
+      _controller?.dispose();
+      _file?.dispose();
+      _controller = null;
+      _file = null;
+      _viewModel = null;
+    });
   }
 
   @override
@@ -127,7 +147,9 @@ class BotFaceState extends State<BotFace> {
       controller.stateMachine.bindViewModelInstance(viewModel);
     }
 
-    if (!mounted) {
+    // `useRive` can have been turned off while the asset was decoding, so a
+    // late load must not install a controller the widget no longer wants.
+    if (!mounted || !widget.useRive) {
       controller.dispose();
       file.dispose();
       return;

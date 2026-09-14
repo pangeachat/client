@@ -63,6 +63,34 @@ void main() {
     expect(names, containsAll(['botColor', 'backgroundColor']));
   });
 
+  test('backgroundColor drives the render', () async {
+    Future<List<int>> renderWithBackdrop(Color backdrop) async {
+      final artboard = file.artboard('BotIconArtboard')!;
+      final machine = artboard.stateMachine(_stateMachineName)!;
+      final viewModel = file
+          .viewModelByName(_viewModelName)!
+          .createDefaultInstance()!;
+      machine.bindViewModelInstance(viewModel);
+      viewModel.color('botColor')!.value = const Color(0xFF8560E0);
+      viewModel.color('backgroundColor')!.value = backdrop;
+      for (var i = 0; i < _settleFrames; i++) {
+        machine.advanceAndApply(1 / 60);
+      }
+      final pixels = await _pixels(await _render(artboard));
+      machine.dispose();
+      return pixels;
+    }
+
+    // The widget binds this to transparent. The asset ships it opaque white,
+    // so if the binding stops reaching the artboard every bot face gains a
+    // white box behind it and nothing else would catch that.
+    expect(
+      await renderWithBackdrop(Colors.transparent),
+      isNot(equals(await renderWithBackdrop(const Color(0xFFFFFFFF)))),
+      reason: 'binding backgroundColor must change what is drawn',
+    );
+  });
+
   test('every BotExpression maps to a trigger that exists in the asset', () {
     final names = file
         .viewModelByName(_viewModelName)!
@@ -139,6 +167,43 @@ void main() {
           reason: '${expression.trigger} must visibly change the artboard',
         );
       }
+    },
+    timeout: const Timeout(Duration(seconds: 120)),
+  );
+
+  test(
+    'idle releases an emote that is holding',
+    () async {
+      final artboard = file.artboard('BotIconArtboard')!;
+      final machine = artboard.stateMachine(_stateMachineName)!;
+      final viewModel = file
+          .viewModelByName(_viewModelName)!
+          .createDefaultInstance()!;
+      machine.bindViewModelInstance(viewModel);
+      for (var i = 0; i < _settleFrames; i++) {
+        machine.advanceAndApply(1 / 60);
+      }
+
+      viewModel.trigger(BotExpression.addled.trigger)!.trigger();
+      for (var i = 0; i < 90; i++) {
+        machine.advanceAndApply(1 / 60);
+      }
+      final holding = await _pixels(await _render(artboard));
+
+      // Emotes carry no exit of their own; idle is the only way back. If that
+      // stops working the bot sticks on whichever face it last showed.
+      viewModel.trigger(BotExpression.idle.trigger)!.trigger();
+      for (var i = 0; i < 90; i++) {
+        machine.advanceAndApply(1 / 60);
+      }
+      final released = await _pixels(await _render(artboard));
+
+      expect(
+        released,
+        isNot(equals(holding)),
+        reason: 'firing idle must move the artboard off the held emote',
+      );
+      machine.dispose();
     },
     timeout: const Timeout(Duration(seconds: 120)),
   );
