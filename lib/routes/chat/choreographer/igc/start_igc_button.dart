@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:async/async.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/routes/chat/choreographer/assistance_state_enum.dart';
 import 'package:fluffychat/routes/chat/choreographer/choreographer.dart';
 import 'package:fluffychat/routes/chat/choreographer/choreographer_state_extension.dart';
@@ -176,7 +177,7 @@ class _StartIGCButtonState extends State<StartIGCButton>
         }
 
         final segmentPercent = 100 / matches.length;
-        final colors = Theme.of(context).colorScheme;
+        final theme = Theme.of(context);
         return matches.map((m) {
           final isActiveMatch =
               m.originalMatch.match.offset ==
@@ -192,8 +193,8 @@ class _StartIGCButtonState extends State<StartIGCButton>
             segmentPercent,
             m.updatedMatch.status.isOpen
                 ? (m.updatedMatch.match.isSuggestion
-                      ? colors.primary
-                      : colors.error)
+                      ? theme.colorScheme.primary
+                      : theme.pangea.errorGraphic)
                 : AppConfig.success,
             opacity: opacity,
           );

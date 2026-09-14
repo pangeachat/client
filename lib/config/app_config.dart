@@ -20,19 +20,14 @@ abstract class AppConfig {
   // Colours
   //
   // Widgets read colour roles from the theme (Theme.of(context).pangea and
-  // colorScheme), per design-tokens.instructions.md. What lives here is:
-  //  - the key colours PangeaColors derives its role families from;
-  //  - the static colours older sites still read directly, which move to a
-  //    theme role as each site is touched.
+  // colorScheme), per design-tokens.instructions.md. What lives here is the
+  // key colours PangeaColors derives its role families from: each is the one
+  // place its hue is written, and the extension turns it into roles by tone.
+  // The direct reads of these keys that remain in widget code move to a role
+  // as each site is touched.
   // ---------------------------------------------------------------------------
-
-  // Key colours. Each is the one place its hue is written; PangeaColors turns
-  // it into a family of roles by tone.
   static const Color gold = Color.fromARGB(255, 253, 191, 1);
   static const Color success = Color(0xFF33D057);
-
-  // Static colours still read directly by widget code (migrating).
-  static const Color error = Colors.red;
 
   static const double messageFontSize = 16.0;
   static const bool allowOtherHomeservers = true;

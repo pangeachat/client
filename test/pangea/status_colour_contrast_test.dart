@@ -130,6 +130,17 @@ void main() {
     );
   });
 
+  test('the composer error underline clears 3:1 in both themes', () {
+    for (final brightness in Brightness.values) {
+      expectClears(
+        PangeaColors.of(brightness).errorGraphic,
+        schemeFor(brightness),
+        graphicFloor,
+        what: 'errorGraphic, $brightness',
+      );
+    }
+  });
+
   // The negative control. If these ever start passing, the floors above have
   // stopped meaning anything and the whole file is vacuous.
   //
@@ -141,6 +152,7 @@ void main() {
     final card = schemeFor(Brightness.light).surfaceContainerHighest;
     expect(contrast(AppConfig.success, card), lessThan(graphicFloor));
     expect(contrast(PangeaColors.warningKey, card), lessThan(graphicFloor));
-    expect(contrast(AppConfig.error, card), lessThan(textFloor));
+    // Colors.red was AppConfig.error until every site read the scheme's error.
+    expect(contrast(Colors.red, card), lessThan(textFloor));
   });
 }

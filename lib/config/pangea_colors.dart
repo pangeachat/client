@@ -35,6 +35,7 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
     required this.onSuccessContainer,
     required this.joinable,
     required this.onJoinable,
+    required this.errorGraphic,
   });
 
   /// Gold that reads as text: a word, an XP count, an icon beside a label.
@@ -118,6 +119,15 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
   /// Ink on [joinable].
   final Color onJoinable;
 
+  /// An error as a mark with a 3:1 floor: the composer's correction
+  /// underline and highlight, a ring segment, a wrong-answer tint. A tone of
+  /// Material's own error palette, so it is the same red as
+  /// `colorScheme.error`; but the scheme's dark `error` is a T80 pastel that
+  /// reads as pink on an underline, so this is the most chromatic tone that
+  /// still clears 3:1 on the darkest card: T50 in light, T60 in dark. Text
+  /// and the icon beside it keep `colorScheme.error`.
+  final Color errorGraphic;
+
   static final PangeaColors _light = _fromKey(Brightness.light);
   static final PangeaColors _dark = _fromKey(Brightness.dark);
 
@@ -148,6 +158,9 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
       Hct.fromInt(AppConfig.success.toARGB32()),
     );
     final joinable = TonalPalette.fromHct(Hct.fromInt(joinableKey.toARGB32()));
+    // Material's error palette (DynamicScheme.errorPalette): hue 25, chroma
+    // 84, the one every ColorScheme.fromSeed shares whatever the seed.
+    final error = TonalPalette.of(25.0, 84.0);
     final light = brightness == Brightness.light;
     return PangeaColors(
       gold: Color(gold.get(light ? 40 : 80)),
@@ -171,6 +184,7 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
       onSuccessContainer: Color(success.get(light ? 10 : 90)),
       joinable: Color(joinable.get(_joinableTone)),
       onJoinable: Color(joinable.get(100)),
+      errorGraphic: Color(error.get(light ? 50 : 60)),
     );
   }
 
@@ -197,6 +211,7 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
     Color? onSuccessContainer,
     Color? joinable,
     Color? onJoinable,
+    Color? errorGraphic,
   }) => PangeaColors(
     gold: gold ?? this.gold,
     goldGraphic: goldGraphic ?? this.goldGraphic,
@@ -219,6 +234,7 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
     onSuccessContainer: onSuccessContainer ?? this.onSuccessContainer,
     joinable: joinable ?? this.joinable,
     onJoinable: onJoinable ?? this.onJoinable,
+    errorGraphic: errorGraphic ?? this.errorGraphic,
   );
 
   @override
@@ -262,6 +278,7 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
       )!,
       joinable: Color.lerp(joinable, other.joinable, t)!,
       onJoinable: Color.lerp(onJoinable, other.onJoinable, t)!,
+      errorGraphic: Color.lerp(errorGraphic, other.errorGraphic, t)!,
     );
   }
 }

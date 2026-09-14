@@ -5,6 +5,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 
 enum AssistanceStateEnum {
@@ -24,7 +25,7 @@ enum AssistanceStateEnum {
       case AssistanceStateEnum.fetched:
         return Colors.grey[400]!;
       case AssistanceStateEnum.error:
-        return AppConfig.error;
+        return Theme.of(context).pangea.errorGraphic;
       case AssistanceStateEnum.noSub:
       case AssistanceStateEnum.notFetched:
       case AssistanceStateEnum.fetching:

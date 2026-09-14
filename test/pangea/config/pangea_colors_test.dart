@@ -140,6 +140,28 @@ void main() {
     }
   });
 
+  test('errorGraphic is a tone of the error palette and clears 3:1', () {
+    // Material's error palette, the one every fromSeed scheme shares.
+    final errorPalette = TonalPalette.of(25.0, 84.0);
+    expect(light.errorGraphic, Color(errorPalette.get(50)));
+    expect(dark.errorGraphic, Color(errorPalette.get(60)));
+    // The scheme's own light error is T40 of the same palette, so the mark
+    // is the same red one tone brighter.
+    expect(lightScheme.error, Color(errorPalette.get(40)));
+    for (final surface in [
+      lightScheme.surface,
+      lightScheme.surfaceContainerHighest,
+    ]) {
+      expect(contrast(light.errorGraphic, surface), greaterThanOrEqualTo(3.0));
+    }
+    for (final surface in [
+      darkScheme.surface,
+      darkScheme.surfaceContainerHighest,
+    ]) {
+      expect(contrast(dark.errorGraphic, surface), greaterThanOrEqualTo(3.0));
+    }
+  });
+
   test('joinable is the same green in both themes and carries white text', () {
     final joinablePalette = TonalPalette.fromHct(
       Hct.fromInt(PangeaColors.joinableKey.toARGB32()),
