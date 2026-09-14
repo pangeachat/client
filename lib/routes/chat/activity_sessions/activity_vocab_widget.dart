@@ -231,8 +231,13 @@ class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
         MatrixState.pAnyState.closeOverlay(_vocabKey(other));
       }
     }
-    WidgetsBinding.instance.addPostFrameCallback(
-      (_) => OverlayUtil.showPositionedCard(
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      // The chip can be gone by the time this frame runs — the session ends,
+      // the learner backs out — and `context` on a disposed State throws
+      // (#9052). There is no card left to position then. The card's own
+      // onClose below already guards the same way.
+      if (!mounted) return;
+      OverlayUtil.showPositionedCard(
         context: context,
         cardToShow: _WordCardWrapper(
           v: vocab,
@@ -258,8 +263,8 @@ class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
           // clip the card back to its unscaled size at large device text.
           maxHeight: AppConfig.scaledToolbarMaxHeight(context),
         ),
-      ),
-    );
+      );
+    });
   }
 
   @override
