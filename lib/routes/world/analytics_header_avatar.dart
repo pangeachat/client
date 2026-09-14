@@ -137,12 +137,7 @@ class AnalyticsHeaderAvatarInternal extends StatelessWidget {
                                 size: Size.square(_avatarSize + 2 * _xpStroke),
                                 painter: CircularXpRingPainter(
                                   progress: progress,
-                                  trackColor: const Color.fromARGB(
-                                    130,
-                                    135,
-                                    135,
-                                    135,
-                                  ),
+                                  trackColor: AppConfig.xpTrackByTheme(context),
                                   progressColor: AppConfig.goldByTheme(context),
                                   stroke: _xpStroke,
                                 ),

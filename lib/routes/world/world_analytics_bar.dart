@@ -236,14 +236,16 @@ class _PowerupsRow extends StatelessWidget {
                       child: CustomPaint(
                         painter: XpBorderPainter(
                           progress: progress,
-                          trackColor: const Color.fromARGB(130, 135, 135, 135),
+                          trackColor: AppConfig.xpTrackByTheme(context),
                           progressColor: AppConfig.goldByTheme(context),
                           stroke: _xpStroke,
                           radius: _innerRadius + _xpStroke / 2,
                           anchor: XpBorderAnchor.leftCenter,
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.all(_xpStroke),
+                          padding: const EdgeInsets.all(
+                            _xpStroke + XpBorderPainter.trackExtra,
+                          ),
                           child: Container(
                             decoration: BoxDecoration(
                               color: Theme.of(

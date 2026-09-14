@@ -195,23 +195,25 @@ class _PowerupsPill extends StatelessWidget {
               // pill's bounds (badge pulse + chip); don't clip it.
               clipBehavior: Clip.none,
               children: [
-                // The pill's frame IS the XP ring: a gray track that fills gold clockwise
-                // from the bottom-center (where the level medal sits) toward the next
-                // level. The trackers sit on a white field inside it; there is no solid
-                // gold fill — the only gold is the XP progress.
+                // The pill's frame IS the XP ring: an opaque track that fills gold
+                // clockwise from the bottom-center (where the level medal sits) toward
+                // the next level. The trackers sit on a white field inside it; there is
+                // no solid gold fill — the only gold is the XP progress.
                 Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     CustomPaint(
                       painter: XpBorderPainter(
                         progress: progress,
-                        trackColor: const Color.fromARGB(130, 135, 135, 135),
+                        trackColor: AppConfig.xpTrackByTheme(context),
                         progressColor: AppConfig.goldByTheme(context),
                         stroke: _xpStroke,
                         radius: _innerRadius + _xpStroke / 2,
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(_xpStroke),
+                        padding: const EdgeInsets.all(
+                          _xpStroke + XpBorderPainter.trackExtra,
+                        ),
                         child: Container(
                           decoration: BoxDecoration(
                             color: Theme.of(
