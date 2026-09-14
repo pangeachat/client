@@ -44,6 +44,8 @@ class CourseInfoSummariesModel extends RoomSummariesModel {
       .whereType<String>()
       .toSet();
 
-  bool hasCompletedActivity(String userID, String activityID) =>
-      _completedActivities(userID).contains(activityID);
+  /// False for a signed-out account (no user id), which is what a course
+  /// page still building through logout asks (#9019).
+  bool hasCompletedActivity(String? userID, String activityID) =>
+      userID != null && _completedActivities(userID).contains(activityID);
 }
