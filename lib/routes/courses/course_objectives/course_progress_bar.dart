@@ -39,8 +39,9 @@ class CourseProgressBar extends StatelessWidget {
   );
 }
 
-/// The overall course progress bar: a rounded bright-gold fill, edged in the mark gold, over a gold-container track with
-/// a star sitting INSIDE the bar at the goal (right) end — no number. Learners
+/// The overall course progress bar: a rounded bright-gold fill over a neutral
+/// surface track with a star sitting INSIDE the bar at the goal (right) end —
+/// no number. Learners
 /// read progress from the fill and tap/hover the bar for the exact
 /// earned/threshold (#7597, the Figma course-plan frame). A null [summary]
 /// renders the muted empty state (pre-resolve), keeping the header height
@@ -69,10 +70,11 @@ class ProgressBarRow extends StatelessWidget {
       child: Stack(
         alignment: Alignment.centerLeft,
         children: [
-          // The track: the gold container, so the mark gold reads on it.
+          // The track: the neutral surface tone Material's own progress
+          // indicators use, so the fill is the only gold in the bar.
           DecoratedBox(
             decoration: BoxDecoration(
-              color: theme.pangea.goldContainer,
+              color: theme.colorScheme.surfaceContainerHighest,
               borderRadius: BorderRadius.circular(_barHeight / 2),
             ),
             child: const SizedBox.expand(),
@@ -86,18 +88,18 @@ class ProgressBarRow extends StatelessWidget {
                   _barHeight,
                   maxWidth * fraction,
                 );
-                // Gold fill — the learner's progress toward the goal. The bright
-                // gold cannot clear 3:1 on any light track, so a hairline in the
-                // mark gold carries the fill's edge instead. The SizedBox.expand
-                // child is load-bearing: a childless DecoratedBox in a loose
-                // Stack sizes to constraints.smallest (zero height) and paints
-                // nothing (#7603).
+                // Gold fill — the learner's progress toward the goal, drawn
+                // without an edge: the bright gold sits at about 1.3:1 on the
+                // light track, and the hairline that once carried its edge was
+                // dropped by design (2026-09-14); the tooltip carries the exact
+                // count. The SizedBox.expand child is load-bearing: a childless
+                // DecoratedBox in a loose Stack sizes to constraints.smallest
+                // (zero height) and paints nothing (#7603).
                 return SizedBox(
                   width: containerWidth,
                   child: DecoratedBox(
                     decoration: BoxDecoration(
                       color: theme.pangea.goldFixedDim,
-                      border: Border.all(color: theme.pangea.goldGraphic),
                       borderRadius: BorderRadius.circular(_barHeight / 2),
                     ),
                     child: const SizedBox.expand(),
