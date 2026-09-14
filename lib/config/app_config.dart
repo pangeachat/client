@@ -106,6 +106,20 @@ abstract class AppConfig {
   static Color goldMarkByTheme(BuildContext context) =>
       Theme.of(context).brightness == Brightness.light ? goldDeep : gold;
 
+  /// The XP ring's unfilled track (#8763). Opaque, and stroked wider than the
+  /// gold arc (XpBorderPainter.trackExtra) so the arc rides inside it — the
+  /// track, not the map imagery behind the ring, is the arc's adjacent color.
+  /// Light is the light theme's onSurface value as a fixed constant (the dark
+  /// theme's onSurface sits 1.05:1 against the gold and would erase the
+  /// progress boundary); dark is [goldDeep] under the unchanged [goldLight]
+  /// arc. Measured in #8763: boundary 7.67:1 light / 3.36:1 dark, outline
+  /// 7.95–12.75:1 light / 3.49–4.26:1 dark, one documented residual of 2.68:1
+  /// against CARTO's sparse #373737 detail linework.
+  static Color xpTrackByTheme(BuildContext context) =>
+      Theme.of(context).brightness == Brightness.light
+      ? const Color(0xFF34313A)
+      : goldDeep;
+
   /// Green for something finished: [completedGreen] on light, where [success]
   /// is too pale to read on the surface, and [success] on dark.
   static Color successByTheme(BuildContext context) =>
