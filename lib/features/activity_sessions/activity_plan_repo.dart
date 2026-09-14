@@ -26,7 +26,11 @@ import 'package:fluffychat/widgets/matrix.dart';
 /// suppression state, plus what the read needs.
 typedef _QueuedHydration = ({
   String activityId,
-  String? l1,
+  // The CONCRETE display language, resolved once when the key was queued. The
+  // viewer's language is mutable, so recomputing it later means the prefetch
+  // caches under one language while the resolve looks under another — the
+  // plans are then skipped, their media never resolves, and nothing notifies.
+  String l1,
   String? version,
   String key,
   bool forceRefresh,
@@ -436,9 +440,16 @@ class ActivityPlanRepo
     }
     if (!forceRefresh) {
       if (inFlight != null) {
-        final landed = _resolved[request.storageKey];
-        if (landed != null) {
-          return ActivityPlanLookup(ActivityPlanLookupStatus.found, landed);
+        // Re-read through the TTL-checked cache rather than trusting the
+        // resolved copy: an entry can expire while its batch runs, and the
+        // resolved map would still be holding the previous plan — returning it
+        // would serve stale content and, worse, walk straight past a removal
+        // the batch had just confirmed.
+        if (getCached(request) != null) {
+          final landed = _resolved[request.storageKey];
+          if (landed != null) {
+            return ActivityPlanLookup(ActivityPlanLookupStatus.found, landed);
+          }
         }
         if (await _confirmedRemoved.contains(activityId)) {
           return const ActivityPlanLookup(ActivityPlanLookupStatus.removed);
@@ -640,7 +651,7 @@ class ActivityPlanRepo
     _hydrating.add(key);
     _queued.add((
       activityId: activityId,
-      l1: l1,
+      l1: request.l1,
       version: version,
       key: key,
       forceRefresh: doRevalidate,
@@ -815,7 +826,7 @@ class ActivityPlanRepo
   /// A prefetch cannot have that bug class: there is no second acceptance path
   /// to forget anything in.
   Future<void> _prefetchBatch(List<_QueuedHydration> batch) async {
-    final l1 = batch.first.l1 ?? _viewerDisplayLanguage;
+    final l1 = batch.first.l1;
 
     // What the batch should actually ask for. A key already answerable without
     // the network is resolved on the spot instead of being fetched again.
@@ -954,8 +965,21 @@ class ActivityPlanRepo
       }
     }
 
-    // Cached members were dispatched at the top and run alongside the request.
-    await Future.wait(ready);
+    // Deliberately NOT awaited. These are already under way and complete on
+    // their own; holding the batch open for them would make a plan the request
+    // already returned wait on an unrelated slow read before anything is
+    // notified — the per-key path completed each one independently.
+    unawaited(
+      Future.wait(ready).catchError((Object e, StackTrace s) {
+        ErrorHandler.logError(
+          e: e,
+          s: s,
+          data: {'activityIds': batch.map((i) => i.activityId).toList()},
+          level: SentryLevel.warning,
+        );
+        return <Object?>[];
+      }),
+    );
 
     if (unsatisfied.isNotEmpty) {
       for (final item in unsatisfied) {
@@ -998,7 +1022,7 @@ class ActivityPlanRepo
   /// That is hygiene, not a correctness requirement: [lookup] awaits whatever
   /// it finds there, and by this point that future has already completed.
   Future<void> _resolveBatch(List<_QueuedHydration> batch) async {
-    final l1 = batch.first.l1 ?? _viewerDisplayLanguage;
+    final l1 = batch.first.l1;
     await Future.wait([
       for (final item in batch)
         if (_answerableWithoutAsking(_requestFor(item, l1)))
