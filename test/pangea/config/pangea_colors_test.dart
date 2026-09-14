@@ -17,7 +17,9 @@ double contrast(Color a, Color b) {
 
 void main() {
   const seed = Color(0xFF8560E0);
-  final palette = TonalPalette.fromHct(Hct.fromInt(AppConfig.gold.toARGB32()));
+  final palette = TonalPalette.fromHct(
+    Hct.fromInt(PangeaColors.goldKey.toARGB32()),
+  );
   Color tone(int t) => Color(palette.get(t));
   final warningPalette = TonalPalette.fromHct(
     Hct.fromInt(PangeaColors.warningKey.toARGB32()),

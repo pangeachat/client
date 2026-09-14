@@ -153,6 +153,10 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
   /// white ink; T50 measures 4.47:1.
   static const int _joinableTone = 49;
 
+  /// The brand gold, the key colour the gold family is tones of. Read
+  /// nowhere else; widgets take a gold role from the theme.
+  static const Color goldKey = Color(0xFFFDBF01);
+
   /// The caution orange, the key colour the warning family is tones of.
   /// Orange rather than the org doc's red, which lands on Material's error
   /// tones. Read nowhere else.
@@ -164,9 +168,9 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
   static const Color joinableKey = Color(0xFF34A853);
 
   static PangeaColors _fromKey(Brightness brightness) {
-    // AppConfig.gold, AppConfig.success and the keys above are the key colours;
-    // every role below is a tone of one of them.
-    final gold = TonalPalette.fromHct(Hct.fromInt(AppConfig.gold.toARGB32()));
+    // AppConfig.success and the keys above are the key colours; every role
+    // below is a tone of one of them.
+    final gold = TonalPalette.fromHct(Hct.fromInt(goldKey.toARGB32()));
     final warning = TonalPalette.fromHct(Hct.fromInt(warningKey.toARGB32()));
     final success = TonalPalette.fromHct(
       Hct.fromInt(AppConfig.success.toARGB32()),

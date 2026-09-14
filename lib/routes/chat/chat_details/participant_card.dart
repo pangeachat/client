@@ -70,6 +70,7 @@ class ParticipantCard extends StatelessWidget {
   /// The ring for [user]: its position among [leaders] (the level-sorted top
   /// three), unless the user is the bot or has no level to rank by.
   static LinearGradient? leaderboardGradientFor(
+    BuildContext context,
     User user,
     List<User> leaders, {
     required bool hasLevel,
@@ -77,7 +78,7 @@ class ParticipantCard extends StatelessWidget {
     final leaderIndex = leaders.indexOf(user);
     if (leaderIndex == -1) return null;
     if (user.id == BotName.byEnvironment || !hasLevel) return null;
-    return leaderIndex.leaderboardGradient;
+    return leaderIndex.leaderboardGradient(context);
   }
 
   @override

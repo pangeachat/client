@@ -26,7 +26,6 @@ abstract class AppConfig {
   // The direct reads of these keys that remain in widget code move to a role
   // as each site is touched.
   // ---------------------------------------------------------------------------
-  static const Color gold = Color.fromARGB(255, 253, 191, 1);
   static const Color success = Color(0xFF33D057);
 
   static const double messageFontSize = 16.0;

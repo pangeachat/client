@@ -45,6 +45,7 @@ class RoomParticipantsSection extends StatelessWidget {
                   user: user,
                   room: room,
                   gradient: ParticipantCard.leaderboardGradientFor(
+                    context,
                     user,
                     originalLeaders,
                     hasLevel:

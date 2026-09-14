@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
@@ -52,7 +51,7 @@ enum ActivityPinState {
     ActivityPinState.joinable => Theme.of(context).pangea.joinable,
     ActivityPinState.ongoingPending || ActivityPinState.ongoingActive =>
       Theme.of(context).colorScheme.primaryContainer,
-    ActivityPinState.inProgress => AppConfig.gold,
+    ActivityPinState.inProgress => Theme.of(context).pangea.goldFixedDim,
     ActivityPinState.available => Theme.of(
       context,
     ).colorScheme.secondaryContainer,
@@ -63,6 +62,7 @@ enum ActivityPinState {
     ActivityPinState.joinable => Theme.of(context).pangea.onJoinable,
     ActivityPinState.ongoingPending || ActivityPinState.ongoingActive =>
       Theme.of(context).colorScheme.onPrimaryContainer,
+    ActivityPinState.inProgress => Theme.of(context).pangea.onGoldFixed,
     _ => Colors.white,
   };
 

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/routes/chat/events/tokens/token_rendering_util.dart';
 
@@ -84,7 +83,12 @@ void main() {
         ),
       );
       final decoration = decoratedBox.decoration as BoxDecoration;
-      expect(decoration.color, AppConfig.gold.withAlpha(50));
+      expect(
+        decoration.color,
+        Theme.of(
+          tester.element(find.text('hola')),
+        ).pangea.goldFixedDim.withAlpha(50),
+      );
       // Pin the gold caller's full geometry so the shared-helper extraction is
       // provably pixel-identical for the real existing caller, not just color.
       expect(decoration.borderRadius, BorderRadius.circular(12));

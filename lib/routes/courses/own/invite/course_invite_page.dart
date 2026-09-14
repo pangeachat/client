@@ -333,12 +333,15 @@ class CourseInvitePageController extends State<CourseInvitePage>
                                   size: avatarSize,
                                 ),
                                 ...List.generate(visibleAvatars, (index) {
+                                  final pangea = Theme.of(context).pangea;
                                   return CircleAvatar(
                                     radius: avatarSize / 2,
-                                    backgroundColor: AppConfig.gold.withAlpha(
-                                      80,
+                                    backgroundColor: pangea.goldContainer,
+                                    child: Icon(
+                                      Icons.person,
+                                      size: 20.0,
+                                      color: pangea.onGoldContainer,
                                     ),
-                                    child: const Icon(Icons.person, size: 20.0),
                                   );
                                 }),
                                 const Icon(Icons.more_horiz, size: 24.0),
