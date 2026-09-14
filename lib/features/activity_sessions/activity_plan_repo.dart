@@ -439,19 +439,24 @@ class ActivityPlanRepo
         if (await _confirmedRemoved.contains(activityId)) {
           return const ActivityPlanLookup(ActivityPlanLookupStatus.removed);
         }
-        // The batch tried this key and could not satisfy it. Falling through to
-        // a fetch would send one request per joining caller at the exact moment
-        // the backend is already failing — the fan-out this path exists to
-        // remove, re-appearing under load. The attempt is shared, failure
-        // included; the key stays parked and eligible once its cooldown lapses.
-        final failure = _unsatisfied[request.storageKey];
-        if (failure != null) {
-          return ActivityPlanLookup(
-            ActivityPlanLookupStatus.failed,
-            null,
-            failure,
-          );
-        }
+      }
+    }
+
+    // The batch tried this key and could not satisfy it. Falling through to a
+    // fetch would send one request per caller at the exact moment the backend
+    // is already failing — the fan-out this path exists to remove, re-appearing
+    // under load. Checked whether or not a batch is still in flight: the record
+    // is what stops the NEXT caller too, not just the ones that happened to
+    // arrive mid-request. It is not sticky — `ensure` clears it when the key's
+    // cooldown lapses and it is offered again.
+    if (!forceRefresh) {
+      final failure = _unsatisfied[request.storageKey];
+      if (failure != null) {
+        return ActivityPlanLookup(
+          ActivityPlanLookupStatus.failed,
+          null,
+          failure,
+        );
       }
     }
     final servableFromCache = !forceRefresh && getCached(request) != null;
@@ -825,7 +830,8 @@ class ActivityPlanRepo
       wanted.add(item);
     }
 
-    // Keys the batch asked for and did not come back with.
+    // Keys a SUCCESSFUL response did not come back with. A failed request is
+    // handled in the catch below, which reports its own exception.
     final unsatisfied = <_QueuedHydration>[];
 
     if (wanted.isNotEmpty && !_rateLimitPause.isPaused) {
@@ -861,6 +867,12 @@ class ActivityPlanRepo
             // applies to a body whose mapping throws.
             if (shouldCache(fetched)) {
               await setCached(_requestFor(item, l1), fetched);
+            } else {
+              // The body came back but will not map. Recorded like any other
+              // key the batch could not satisfy: without this it is skipped in
+              // silence, and a caller already awaiting the batch finds no
+              // outcome and sends its own request for the same unmappable plan.
+              unsatisfied.add(item);
             }
           } else if (result.removed.contains(item.activityId)) {
             _confirmedRemoved.mark(item.activityId);
@@ -886,7 +898,11 @@ class ActivityPlanRepo
           // warning, anything else an error.
           level: PangeaHttpException.severityOf(e),
         );
-        unsatisfied.addAll(wanted);
+        // Recorded for joining callers, but NOT added to `unsatisfied`: the
+        // report above already carries this failure with its real exception,
+        // and re-reporting it as the generic batch type would both duplicate it
+        // and bypass ErrorHandler's per-session de-duplication for offline and
+        // expired-token conditions — the two that repeat most.
         for (final item in wanted) {
           _unsatisfied[_requestFor(item, l1).storageKey] = e;
         }
@@ -964,6 +980,11 @@ class ActivityPlanRepo
     final resolved = await resolveMedia(result.asValue!.value.plan);
     _resolved[request.storageKey] = resolved;
     _unsatisfied.remove(request.storageKey);
+    // Released here as well as on the network path. A plan with less than the
+    // cooldown left on its TTL hydrates fine from cache, but leaving the park
+    // in place means that when the entry does expire, `ensure` refuses to
+    // reload it for the rest of the minute and the card simply empties.
+    _nextAttempt.remove(request.storageKey);
     notifyListeners();
     return ActivityPlanLookup(ActivityPlanLookupStatus.found, resolved);
   }

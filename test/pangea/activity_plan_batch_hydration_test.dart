@@ -567,6 +567,85 @@ void main() {
       );
     });
 
+    test('an unmappable body is recorded, not skipped in silence', () async {
+      // The body came back but will not map, so the cache policy rejects it.
+      // Without recording that, a caller already awaiting the batch finds no
+      // outcome and sends its own request for the same unmappable plan.
+      final requests = await capture(
+        (_) async {
+          return http.Response(
+            jsonEncode({
+              'activities': {
+                // No `roles` — `shouldCache` refuses a body whose mapping throws.
+                'bad-1': {
+                  'plan': {'activity_id': 'bad-1', 'roles': 'not-a-list'},
+                  'l1': 'en',
+                  'version_id': 'v1',
+                },
+              },
+              'removed': <String>[],
+              'unavailable': <String>[],
+            }),
+            200,
+          );
+        },
+        () async {
+          repo.ensure('bad-1', l1: 'en');
+          await settle();
+          final joined = await repo.lookup('bad-1', l1: 'en');
+          expect(joined.status, ActivityPlanLookupStatus.failed);
+          await settle();
+        },
+      );
+
+      expect(
+        requests.length,
+        1,
+        reason: 'a rejected body must not become a second request for it',
+      );
+      expect(
+        await repo.isConfirmedRemoved('bad-1'),
+        isFalse,
+        reason: 'unmappable is not a verdict that the activity is gone',
+      );
+    });
+
+    test('a cache-served hydration releases the attempt park', () async {
+      // `ensure` parks a key before it queues. The network path clears that on
+      // success; the cache path must too. A plan with less than the cooldown
+      // left on its TTL hydrates fine from cache, but a park left in place
+      // means that when the entry does expire, `ensure` refuses to reload it
+      // for the rest of the minute and the card simply empties.
+      await capture((_) => batchOf(found: ['park-1']), () async {
+        repo.ensure('park-1', l1: 'en');
+        await settle();
+        await settle();
+      });
+
+      // A cold instance hydrates the same key from disk — the cache path.
+      final cold = ActivityPlanRepo.forTesting();
+      await capture((_) => batchOf(found: ['park-1']), () async {
+        cold.ensure('park-1', l1: 'en');
+        await settle();
+        await settle();
+      });
+      expect(cold.cachedPlan('park-1', l1: 'en'), isNotNull);
+
+      // Stand in for the entry expiring: drop it, then let `cachedPlan` clear
+      // the resolved copy so `ensure` is deciding on the park alone.
+      final request = ActivityPlanFetchRequest(activityId: 'park-1', l1: 'en');
+      await cold.invalidate(request);
+      expect(cold.cachedPlan('park-1', l1: 'en'), isNull);
+
+      expect(
+        cold.ensure('park-1', l1: 'en'),
+        isTrue,
+        reason:
+            'the cache hydration succeeded, so nothing should still be holding '
+            'this key back from reloading once its plan is gone',
+      );
+    });
+
     test('a refresh travels alone', () async {
       // The read cannot express "ignore your cache for this one and not those",
       // so grouping a revalidate would silently downgrade it to a normal read.
