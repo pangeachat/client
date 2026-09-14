@@ -830,6 +830,45 @@ void main() {
       );
     });
 
+    test('a pause arming mid-preparation drops the request and the parks', () async {
+      // The gap the sibling test could not reach. `_pump` checks the pause, then
+      // preparation awaits the removed-verdict cache — a real async gap. Arming
+      // the pause in a microtask queued behind the pump's lands inside that gap,
+      // which is the window a sibling read's 429 would arrive in.
+      final sent = <String>[];
+
+      await http.runWithClient(
+        () async {
+          repo.ensure('midprep-1', l1: 'en');
+          scheduleMicrotask(
+            () => repo.rateLimitedForTesting(const Duration(seconds: 5)),
+          );
+          await settle();
+        },
+        () {
+          return MockClient((request) async {
+            sent.add(request.url.path);
+            return batchOf(found: ['midprep-1']);
+          });
+        },
+      );
+
+      expect(
+        sent,
+        isEmpty,
+        reason: 'the server had said stop before this request left',
+      );
+
+      clock = clock.add(const Duration(seconds: 6));
+      expect(
+        repo.ensure('midprep-1', l1: 'en'),
+        isTrue,
+        reason:
+            'the key never reached the network, so nothing should still be '
+            'holding it back once the pause lapses',
+      );
+    });
+
     test('a refresh travels alone', () async {
       // The read cannot express "ignore your cache for this one and not those",
       // so grouping a revalidate would silently downgrade it to a normal read.
