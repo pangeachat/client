@@ -73,7 +73,7 @@ class ColorThemePicker extends StatelessWidget {
                             // chosen.
                             (currentColor == null &&
                                 systemColor == null &&
-                                color == AppConfig.chatColor))
+                                color == AppConfig.primaryColor))
                         ? Center(
                             child: Icon(
                               Icons.check,

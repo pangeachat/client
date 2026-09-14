@@ -114,7 +114,7 @@ class SettingsStyleController extends State<SettingsStyle> {
   static final List<Color?> customColors = [
     null,
     // #Pangea
-    // AppConfig.chatColor,
+    // AppConfig.primaryColor,
     // Colors.indigo,
     // Colors.blue,
     // Colors.blueAccent,
@@ -136,7 +136,7 @@ class SettingsStyleController extends State<SettingsStyle> {
     // Colors.grey,
     // Colors.white,
     // Colors.black,
-    AppConfig.chatColor,
+    AppConfig.primaryColor,
     Colors.blue,
     Colors.teal,
     Colors.green,
