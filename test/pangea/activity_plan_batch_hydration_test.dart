@@ -646,6 +646,98 @@ void main() {
       );
     });
 
+    test('a failed batch does not block a direct read forever', () async {
+      // `ensure` clears the memo when a surface re-offers a key, but the
+      // activity start page only ever calls `lookup` — it is never re-offered
+      // anything. Without an expiry, reopening that activity after
+      // connectivity came back would keep returning the old failure.
+      await capture((_) => batchOf(unavailable: ['stuck-1']), () async {
+        repo.ensure('stuck-1', l1: 'en');
+        await settle();
+        await settle();
+      });
+
+      final duringCooldown = await repo.lookup('stuck-1', l1: 'en');
+      expect(duringCooldown.status, ActivityPlanLookupStatus.failed);
+
+      clock = clock.add(const Duration(seconds: 61));
+      // A direct read goes to the SINGLE endpoint, so it needs the single
+      // response shape — the batch body would not map.
+      final requests = await capture(
+        (request) async {
+          if (request.method == 'POST') return batchOf(found: ['stuck-1']);
+          return http.Response(
+            jsonEncode({
+              'plan': planBody('stuck-1'),
+              'l1': 'en',
+              'version_id': 'v1',
+            }),
+            200,
+          );
+        },
+        () async {
+          final after = await repo.lookup('stuck-1', l1: 'en');
+          expect(
+            after.status,
+            ActivityPlanLookupStatus.found,
+            reason: 'a transient failure must stay retryable',
+          );
+        },
+      );
+      expect(requests, hasLength(1));
+    });
+
+    test(
+      'a cached member is resolved without waiting for the request',
+      () async {
+        // Surfaces read through `cachedPlan`, which returns the raw plan with
+        // unresolved media until resolution runs. Deferring a cached key behind
+        // an unrelated key's request leaves placeholder images on screen for as
+        // long as that request takes.
+        await capture((_) => batchOf(found: ['warm-media']), () async {
+          repo.ensure('warm-media', l1: 'en');
+          await settle();
+          await settle();
+        });
+
+        final cold = ActivityPlanRepo.forTesting();
+        final gate = Completer<void>();
+
+        await http.runWithClient(
+          () async {
+            cold.ensure('warm-media', l1: 'en');
+            cold.ensure('cold-one', l1: 'en');
+            await settle();
+
+            // `cachedPlan` falls back to the RAW plan, so non-null proves
+            // nothing — the raw path re-maps a fresh object on every call, while
+            // a resolved plan is stored and handed back as the same instance.
+            // Identity is what separates "media resolved" from "still a
+            // placeholder".
+            final first = cold.cachedPlan('warm-media', l1: 'en');
+            final second = cold.cachedPlan('warm-media', l1: 'en');
+            expect(first, isNotNull);
+            expect(
+              identical(first, second),
+              isTrue,
+              reason:
+                  'the cached member must be RESOLVED while the other key is '
+                  'still on the wire, not left raw with placeholder media',
+            );
+
+            gate.complete();
+            await settle();
+          },
+          () {
+            return MockClient((request) async {
+              await gate.future;
+              return batchOf(found: ['cold-one']);
+            });
+          },
+        );
+      },
+    );
+
     test('a refresh travels alone', () async {
       // The read cannot express "ignore your cache for this one and not those",
       // so grouping a revalidate would silently downgrade it to a normal read.

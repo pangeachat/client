@@ -222,13 +222,17 @@ class ActivityPlanRepo
   /// joins the batch instead of racing it.
   final Map<String, Future<void>> _batchInFlight = {};
 
-  /// Keys a batch asked for and could not satisfy, with the failure behind it.
+  /// Keys a batch asked for and could not satisfy: the failure, and the moment
+  /// the memo stops standing in for a real attempt.
   ///
-  /// Read by [lookup] so a caller joining a failed batch shares its outcome
-  /// instead of re-asking — otherwise every joiner sends its own request at the
-  /// moment the backend is already failing. Cleared when the key next succeeds
-  /// or is re-attempted, so a failure is never sticky.
-  final Map<String, Object> _unsatisfied = {};
+  /// Read by [lookup] so callers share a failed batch's outcome instead of each
+  /// re-asking at the moment the backend is already failing. It EXPIRES with
+  /// the attempt cooldown, which is what keeps it from becoming permanent:
+  /// `ensure` clears it when a surface re-offers the key, but a page that only
+  /// ever calls [lookup] — the activity start page — is never re-offered
+  /// anything, so without the expiry, reopening that activity after
+  /// connectivity came back would keep returning the old failure forever.
+  final Map<String, ({Object error, DateTime until})> _unsatisfied = {};
 
   /// Hydrations accepted by [ensure] and awaiting a free slot. Keys here are in
   /// [_hydrating] (so a rebuild cannot enqueue them twice) and parked in
@@ -452,11 +456,17 @@ class ActivityPlanRepo
     if (!forceRefresh) {
       final failure = _unsatisfied[request.storageKey];
       if (failure != null) {
-        return ActivityPlanLookup(
-          ActivityPlanLookupStatus.failed,
-          null,
-          failure,
-        );
+        if (now().isBefore(failure.until)) {
+          return ActivityPlanLookup(
+            ActivityPlanLookupStatus.failed,
+            null,
+            failure.error,
+          );
+        }
+        // Lapsed: the memo has served its purpose and this caller may try
+        // again, which is the whole difference between sharing one failure and
+        // being stuck with it.
+        _unsatisfied.remove(request.storageKey);
       }
     }
     final servableFromCache = !forceRefresh && getCached(request) != null;
@@ -808,8 +818,9 @@ class ActivityPlanRepo
     final l1 = batch.first.l1 ?? _viewerDisplayLanguage;
 
     // What the batch should actually ask for. A key already answerable without
-    // the network is dropped here rather than fetched and thrown away.
+    // the network is resolved on the spot instead of being fetched again.
     final wanted = <_QueuedHydration>[];
+    final ready = <Future<ActivityPlanModel?>>[];
     for (final item in batch) {
       if (await _confirmedRemoved.contains(item.activityId)) continue;
       final request = _requestFor(item, l1);
@@ -823,10 +834,17 @@ class ActivityPlanRepo
         wanted.add(item);
         continue;
       }
-      // Fresh on disk, or already being read by someone else: either way the
-      // single read below resolves it without a request, so including it would
-      // spend allowance for nothing.
-      if (getCached(request) != null || inFlightFor(request) != null) continue;
+      // Fresh on disk, or already being read by someone else: either way it
+      // needs no request, so including it would spend allowance for nothing.
+      // Resolved IMMEDIATELY rather than with the rest of the batch — it is
+      // ready now, and the surfaces that show it read through `cachedPlan`,
+      // which returns the raw plan with unresolved media until resolution runs.
+      // Deferring it behind an unrelated key's request would leave placeholder
+      // images on screen for as long as that request takes.
+      if (getCached(request) != null || inFlightFor(request) != null) {
+        ready.add(getPlan(item.activityId, l1: l1, version: item.version));
+        continue;
+      }
       wanted.add(item);
     }
 
@@ -904,16 +922,25 @@ class ActivityPlanRepo
         // and bypass ErrorHandler's per-session de-duplication for offline and
         // expired-token conditions — the two that repeat most.
         for (final item in wanted) {
-          _unsatisfied[_requestFor(item, l1).storageKey] = e;
+          _unsatisfied[_requestFor(item, l1).storageKey] = (
+            error: e,
+            until: now().add(_attemptCooldown),
+          );
         }
       }
     }
+
+    // Cached members were dispatched at the top and run alongside the request.
+    await Future.wait(ready);
 
     if (unsatisfied.isNotEmpty) {
       for (final item in unsatisfied) {
         _unsatisfied.putIfAbsent(
           _requestFor(item, l1).storageKey,
-          () => const ActivityBatchUnsatisfied(),
+          () => (
+            error: const ActivityBatchUnsatisfied(),
+            until: now().add(_attemptCooldown),
+          ),
         );
       }
       // One event for the batch, not one per activity: they failed together,
