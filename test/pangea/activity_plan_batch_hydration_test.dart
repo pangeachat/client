@@ -51,7 +51,7 @@ void main() {
   setUp(() {
     clock = DateTime(2026, 9, 13, 12);
     ActivityPlanRepo.now = () => clock;
-    repo.resetBackoff();
+    repo.resetForTesting();
   });
 
   tearDownAll(() => ActivityPlanRepo.now = DateTime.now);
@@ -410,22 +410,25 @@ void main() {
 
       await http.runWithClient(
         () async {
-          for (var i = 0; i < 30; i++) {
+          // One full batch goes out; the rest of the frame's keys wait.
+          for (var i = 0; i < 40; i++) {
             repo.ensure('cap-a-$i', l1: 'en');
           }
           await settle();
-          expect(sent.length, 30);
+          final firstWave = sent.length;
+          expect(firstWave, lessThanOrEqualTo(18));
 
-          // A second frame offers 50 more while the first 30 are still in flight.
-          for (var i = 0; i < 50; i++) {
+          // A second frame piles on while the first wave is still in flight.
+          for (var i = 0; i < 40; i++) {
             repo.ensure('cap-b-$i', l1: 'en');
           }
           await settle();
           expect(
             sent.length,
-            lessThanOrEqualTo(50),
+            firstWave,
             reason:
-                '30 in flight leaves room for 20, not for another full batch',
+                'every slot is occupied, so nothing more may go out until one '
+                'of those activities finishes',
           );
 
           gate.complete();

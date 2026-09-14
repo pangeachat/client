@@ -208,11 +208,19 @@ class ActivityPlanRepo
   /// issues no I/O, so the frame-rate re-offer is bounded CPU, never traffic.
   static const int _maxQueued = 120;
 
-  /// Most activities one request may carry. Matches the backend's own cap on
-  /// the batch read, so a full batch is never rejected as oversized — a limit
-  /// the client could exceed would turn a hydration into a 422 and leave the
-  /// screen empty.
-  static const int _maxBatchSize = 50;
+  /// Most activities one request may carry.
+  ///
+  /// The backend accepts up to 50, but accepting is not the constraint that
+  /// matters: it reads six at a time and answers only when ALL of them are
+  /// done, so a request's duration is roughly its size divided by six, times
+  /// the slowest read in it. Fifty cold plans needing translation would run
+  /// past the request deadline — and losing the whole batch is worse than the
+  /// round trips it saved, because every key in it is then parked as failed.
+  ///
+  /// Eighteen is three of the backend's waves, which finishes comfortably
+  /// inside the deadline even when every plan is a cold translation, and still
+  /// turns a course screen from dozens of round trips into two or three.
+  static const int _maxBatchSize = 18;
 
   int _inFlight = 0;
 
@@ -286,6 +294,22 @@ class ActivityPlanRepo
       _hydrating.remove(item.key);
     }
     _queued.clear();
+  }
+
+  /// Test seam: drop in-flight accounting as well as backoff state.
+  ///
+  /// [resetBackoff] deliberately leaves [_inFlight] alone, because zeroing it
+  /// while requests are genuinely outstanding would let the next pump exceed
+  /// the cap. A test that ends with a gated request still in flight has no such
+  /// request — the client it ran under is gone — so its slots would otherwise
+  /// leak into the next test and starve it of capacity.
+  @visibleForTesting
+  void resetForTesting() {
+    resetBackoff();
+    _inFlight = 0;
+    _hydrating.clear();
+    _batchInFlight.clear();
+    _resolved.clear();
   }
 
   /// Test seam: simulate the repo having just been rate-limited, without
@@ -440,16 +464,14 @@ class ActivityPlanRepo
     }
     if (!forceRefresh) {
       if (inFlight != null) {
-        // Re-read through the TTL-checked cache rather than trusting the
-        // resolved copy: an entry can expire while its batch runs, and the
-        // resolved map would still be holding the previous plan — returning it
-        // would serve stale content and, worse, walk straight past a removal
-        // the batch had just confirmed.
+        // Re-resolve from the cache rather than handing back whatever is in the
+        // resolved map. That map is not versioned: after a revalidation it can
+        // still hold the PREVIOUS plan while the raw cache already carries the
+        // refreshed one, so returning it would show a learner old roles and
+        // goal text despite a successful refresh — and if the batch had
+        // confirmed the activity removed, walk straight past that too.
         if (getCached(request) != null) {
-          final landed = _resolved[request.storageKey];
-          if (landed != null) {
-            return ActivityPlanLookup(ActivityPlanLookupStatus.found, landed);
-          }
+          return _servedFromCache(activityId, request, forceRefresh);
         }
         if (await _confirmedRemoved.contains(activityId)) {
           return const ActivityPlanLookup(ActivityPlanLookupStatus.removed);
@@ -718,26 +740,46 @@ class ActivityPlanRepo
       );
       if (batch.isEmpty) return;
       _inFlight += batch.length;
+
+      // Releases ONE activity's slot. Capacity is returned per activity, not
+      // per batch: a single slow media read would otherwise hold every slot its
+      // batch took, so 49 finished plans could not let one more activity start
+      // until the straggler timed out. Before batching, that read occupied one
+      // slot and one only.
+      void release(_QueuedHydration item) {
+        _inFlight--;
+        _hydrating.remove(item.key);
+        _batchInFlight.remove(item.key);
+        _schedulePump();
+      }
+
       // Registered for the NETWORK window only — the span in which a concurrent
       // [lookup] would otherwise send a second request for a key this batch is
-      // already fetching. Cleared before the resolve phase so the map never
-      // advertises a wait that has already finished.
+      // already fetching.
       final prefetch = _prefetchBatch(batch);
       for (final item in batch) {
         _batchInFlight[item.key] = prefetch;
       }
-      final hydration = prefetch.then((_) {
-        for (final item in batch) {
-          _batchInFlight.remove(item.key);
-        }
-        return _resolveBatch(batch);
-      });
-      hydration
+
+      prefetch
+          .then((handled) {
+            for (final item in batch) {
+              _batchInFlight.remove(item.key);
+              // Already under way from the preparation pass — resolving it
+              // again would issue a second media read for the same plan, since
+              // that repo caches completed responses but not in-flight ones.
+              if (handled.contains(item.key)) {
+                release(item);
+                continue;
+              }
+              _resolveMember(item).whenComplete(() => release(item));
+            }
+          })
           .catchError((Object e, StackTrace s) {
             // Fire-and-forget, and the response mapping runs outside the
             // network layer's try/catch, so without this a malformed body is an
             // unhandled async error. The parked entries stay put, so they
-            // cannot re-arm.
+            // cannot re-arm — but the slots must come back either way.
             ErrorHandler.logError(
               e: e,
               s: s,
@@ -747,14 +789,9 @@ class ActivityPlanRepo
               },
               level: SentryLevel.warning,
             );
-          })
-          .whenComplete(() {
-            _inFlight -= batch.length;
             for (final item in batch) {
-              _hydrating.remove(item.key);
-              _batchInFlight.remove(item.key);
+              release(item);
             }
-            _schedulePump();
           });
     }
   }
@@ -825,15 +862,22 @@ class ActivityPlanRepo
   /// at a time, because nothing about the new path made their absence visible.
   /// A prefetch cannot have that bug class: there is no second acceptance path
   /// to forget anything in.
-  Future<void> _prefetchBatch(List<_QueuedHydration> batch) async {
+  Future<Set<String>> _prefetchBatch(List<_QueuedHydration> batch) async {
     final l1 = batch.first.l1;
 
     // What the batch should actually ask for. A key already answerable without
     // the network is resolved on the spot instead of being fetched again.
     final wanted = <_QueuedHydration>[];
     final ready = <Future<Object?>>[];
+    // Keys this pass has already taken care of: answered from cache, joined to
+    // someone else's read, or known removed. The caller must not resolve them
+    // a second time.
+    final handled = <String>{};
     for (final item in batch) {
-      if (await _confirmedRemoved.contains(item.activityId)) continue;
+      if (await _confirmedRemoved.contains(item.activityId)) {
+        handled.add(item.key);
+        continue;
+      }
       final request = _requestFor(item, l1);
       if (item.forceRefresh) {
         // A refresh goes past the CACHE, not past a read already in progress.
@@ -855,6 +899,7 @@ class ActivityPlanRepo
       if (getCached(request) != null) {
         // Safe to read through the normal path: [lookup] answers from cache
         // before it ever consults [_batchInFlight].
+        handled.add(item.key);
         ready.add(getPlan(item.activityId, l1: l1, version: item.version));
         continue;
       }
@@ -865,6 +910,7 @@ class ActivityPlanRepo
         // would wait on this very batch, while the batch waits here on that
         // read. Nothing completing the single GET can break that circle, and
         // the batch would hold its hydration slots for good.
+        handled.add(item.key);
         ready.add(single);
         continue;
       }
@@ -884,6 +930,7 @@ class ActivityPlanRepo
       // `Retry-After` has lapsed.
       for (final item in wanted) {
         _nextAttempt.remove(_requestFor(item, l1).storageKey);
+        handled.add(item.key);
       }
     }
 
@@ -1008,26 +1055,22 @@ class ActivityPlanRepo
         level: SentryLevel.error,
       );
     }
+
+    return handled;
   }
 
-  /// Resolves every key of a prefetched batch through the ordinary read.
+  /// Resolves ONE prefetched key through the ordinary read.
   ///
   /// Where the prefetch landed a plan this is a cache hit and costs nothing;
   /// where it did not, the read's own gates decide what happens — and a pause
   /// armed by the prefetch stops it there, so a failed batch cannot fan back
-  /// out into N single requests. Concurrent, because each one may resolve media.
+  /// out into N single requests.
   ///
-  /// The batch's keys are dropped from [_batchInFlight] before this runs, so
-  /// the map holds only reads that are genuinely still in the network phase.
-  /// That is hygiene, not a correctness requirement: [lookup] awaits whatever
-  /// it finds there, and by this point that future has already completed.
-  Future<void> _resolveBatch(List<_QueuedHydration> batch) async {
-    final l1 = batch.first.l1;
-    await Future.wait([
-      for (final item in batch)
-        if (_answerableWithoutAsking(_requestFor(item, l1)))
-          getPlan(item.activityId, l1: l1, version: item.version),
-    ]);
+  /// Per key rather than per batch so one slow media read cannot hold the
+  /// others' hydration slots.
+  Future<void> _resolveMember(_QueuedHydration item) async {
+    if (!_answerableWithoutAsking(_requestFor(item, item.l1))) return;
+    await getPlan(item.activityId, l1: item.l1, version: item.version);
   }
 
   /// Whether reading this key will come back without a request of its own —
