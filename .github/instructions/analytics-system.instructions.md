@@ -34,6 +34,7 @@ Different interactions contribute different amounts of XP, reflecting effort. Ea
 
 - **Clicking a new word** in the toolbar (first view) — small XP (passive learning)
 - **Correct practice answers** (emoji matching, meaning selection, listening) — moderate XP
+- **Assigning an emoji to a word** — moderate XP, awarded once per construct. Changing the emoji afterwards earns nothing, however quickly the learner changes it: the association should be free to improve, and re-picking is not a way to earn repeat XP. Answering the emoji-matching practice exercise is a separate earning event and is not capped this way.
 - **Wrong practice answers** — a small negative XP value, deliberately, to discourage guessing through a multiple-choice item. Skipped or unanswered items are worth 0. See `ConstructUseTypeEnum.pointValue` for the per-type values.
 - **Using a word in writing** (via the choreographer) — XP based on the construct use type
 - **Hearing a word** through read-aloud or voice-message playback — 0 XP. The exposure is the data; see [Listening exposure](#listening-exposure).
