@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/subscription/enums/subscription_paywall_status_enum.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/choreographer/choreo_constants.dart';
@@ -38,17 +37,15 @@ class PangeaTextController extends TextEditingController {
   TextStyle _underlineStyle(Color color, bool isSelected) =>
       underlineStyleForTesting(color, isSelected);
 
-  Color _underlineColor(PangeaMatch match) {
+  Color _underlineColor(PangeaMatch match, ColorScheme colors) {
     final status = match.status;
     final opacity = status.underlineOpacity;
     final alpha = (255 * opacity).ceil();
-    // Automatic corrections use primary color
-    if (status == PangeaMatchStatusEnum.automatic) {
-      return AppConfig.primaryColor.withAlpha(alpha);
-    }
-
-    // Use choice-based coloring: purple for all-alternative matches, red for errors
-    return match.match.color.withAlpha(alpha);
+    // Automatic corrections and all-alternative matches draw in primary,
+    // matches carrying a correction in the error colour.
+    final isPrimary =
+        status == PangeaMatchStatusEnum.automatic || match.match.isSuggestion;
+    return (isPrimary ? colors.primary : colors.error).withAlpha(alpha);
   }
 
   void setSystemText(String newText, EditTypeEnum type) {
@@ -95,8 +92,9 @@ class PangeaTextController extends TextEditingController {
     final subscription =
         MatrixState.pangeaController.subscriptionController.paywallStatus;
 
+    final colors = Theme.of(context).colorScheme;
     if (subscription == SubscriptionPaywallStatus.shouldShowPaywall) {
-      return _buildPaywallSpan(style);
+      return _buildPaywallSpan(style, colors);
     }
 
     if (choreographer.igcController.currentText == null) {
@@ -111,23 +109,22 @@ class PangeaTextController extends TextEditingController {
     return TextSpan(
       style: style,
       children: [
-        ..._buildTokenSpan(style),
+        ..._buildTokenSpan(style, colors),
         TextSpan(text: parts[1], style: style),
       ],
     );
   }
 
-  TextSpan _buildPaywallSpan(TextStyle? style) => TextSpan(
+  TextSpan _buildPaywallSpan(TextStyle? style, ColorScheme colors) => TextSpan(
     text: text,
-    style: style?.merge(
-      _underlineStyle(const Color.fromARGB(187, 132, 96, 224), false),
-    ),
+    style: style?.merge(_underlineStyle(colors.primary.withAlpha(187), false)),
   );
 
   InlineSpan _buildMatchSpan(
     PangeaMatchState match,
     bool isSelected,
     TextStyle? existingStyle,
+    ColorScheme colors,
   ) {
     final span = choreographer.igcController.currentText!.characters
         .getRange(
@@ -139,7 +136,7 @@ class PangeaTextController extends TextEditingController {
     // If selected, do full highlight with match color.
     // If open, do underline with high opacity match color.
     // Otherwise (viewed / accepted), do underline with lower opacity match color.
-    final matchColor = _underlineColor(match.updatedMatch);
+    final matchColor = _underlineColor(match.updatedMatch, colors);
     final underlineStyle = _underlineStyle(matchColor, isSelected);
     final textStyle = existingStyle != null
         ? existingStyle.merge(underlineStyle)
@@ -168,7 +165,10 @@ class PangeaTextController extends TextEditingController {
 
   /// Returns a list of [TextSpan]s used to display the text in the input field
   /// with the appropriate styling for each error match.
-  List<InlineSpan> _buildTokenSpan(TextStyle? defaultStyle) {
+  List<InlineSpan> _buildTokenSpan(
+    TextStyle? defaultStyle,
+    ColorScheme colors,
+  ) {
     final textSpanMatches = choreographer.igcController.matches.sorted(
       (a, b) =>
           a.updatedMatch.match.offset.compareTo(b.updatedMatch.match.offset),
@@ -192,7 +192,7 @@ class PangeaTextController extends TextEditingController {
           openMatch?.offset == match.updatedMatch.match.offset &&
           openMatch?.length == match.updatedMatch.match.length;
 
-      spans.add(_buildMatchSpan(match, isSelected, defaultStyle));
+      spans.add(_buildMatchSpan(match, isSelected, defaultStyle, colors));
       cursor =
           match.updatedMatch.match.offset + match.updatedMatch.match.length;
     }

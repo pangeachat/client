@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/text_normalization_util.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -124,16 +123,13 @@ class SpanData {
   bool isOffsetInMatchSpan(int offset) =>
       offset >= this.offset && offset <= this.offset + length;
 
-  /// Returns purple if all choices are alternatives (suggestions),
-  /// or red if any choice is a correction/error.
-  Color get color {
-    if (choices != null &&
-        choices!.isNotEmpty &&
-        choices!.every((c) => c.type.isSuggestion)) {
-      return AppConfig.primaryColor; // Purple for suggestions
-    }
-    return AppConfig.error; // Red for errors
-  }
+  /// True when every choice is an alternative (a suggestion) rather than a
+  /// correction. Suggestions draw in the scheme's primary, corrections in its
+  /// error colour; the widgets resolve those roles from the theme.
+  bool get isSuggestion =>
+      choices != null &&
+      choices!.isNotEmpty &&
+      choices!.every((c) => c.type.isSuggestion);
 
   SpanChoice? get bestChoice {
     return choices?.firstWhereOrNull((choice) => choice.type.isSuggestion);

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/pangea_colors.dart';
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/features/subscription/repo_v2/products_response.dart';
 import 'package:fluffychat/features/subscription/widgets/frame_container.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -29,7 +29,7 @@ void main() {
     brightness: brightness,
     colorScheme: ColorScheme.fromSeed(
       brightness: brightness,
-      seedColor: AppConfig.primaryColor,
+      seedColor: Color(AppSettings.colorSchemeSeedInt.defaultValue),
     ),
   );
 

@@ -406,11 +406,7 @@ class VocabAnalyticsListView extends StatelessWidget {
                               },
                               constructId: vocabItem.id,
                               rovingId: vocabItem.id.storageKey,
-                              textColor:
-                                  Theme.of(context).brightness ==
-                                      Brightness.light
-                                  ? vocabItem.lemmaCategory.darkColor(context)
-                                  : vocabItem.lemmaCategory.color(context),
+                              textColor: vocabItem.lemmaCategory.color(context),
                               level: vocabItem.lemmaCategory,
                               selected:
                                   vocabItem.id == selectedConstruct ||

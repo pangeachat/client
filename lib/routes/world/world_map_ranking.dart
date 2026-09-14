@@ -50,8 +50,8 @@ enum ActivityPinState {
   /// The pin body colour. See world-map.instructions.md ("Pin state").
   Color bodyColor(BuildContext context) => switch (this) {
     ActivityPinState.joinable => Theme.of(context).pangea.joinable,
-    ActivityPinState.ongoingPending ||
-    ActivityPinState.ongoingActive => AppConfig.primaryColor,
+    ActivityPinState.ongoingPending || ActivityPinState.ongoingActive =>
+      Theme.of(context).colorScheme.primaryContainer,
     ActivityPinState.inProgress => AppConfig.gold,
     ActivityPinState.available => Theme.of(
       context,
@@ -61,6 +61,8 @@ enum ActivityPinState {
   /// Ink for the icon and text drawn on [bodyColor].
   Color onBodyColor(BuildContext context) => switch (this) {
     ActivityPinState.joinable => Theme.of(context).pangea.onJoinable,
+    ActivityPinState.ongoingPending || ActivityPinState.ongoingActive =>
+      Theme.of(context).colorScheme.onPrimaryContainer,
     _ => Colors.white,
   };
 
@@ -88,11 +90,11 @@ enum ActivityPinState {
   /// The accent used for a large card's border / foreground — the state hue.
   Color accent(BuildContext context) => bodyColor(context);
 
-  /// The label colour: the state hue, but for the three purple states retuned
-  /// by the theme rather than taken raw from [AppConfig].
+  /// The label colour: the state hue, but for the three purple states the
+  /// scheme's text tone rather than the fill's.
   ///
   /// Wherever this colour is a large card's TEXT it sits on
-  /// `colorScheme.surface`, and the raw `AppConfig.primaryColor` measures
+  /// `colorScheme.surface`, and the raw seed purple the pins once used measured
   /// 4.2:1 over that surface in BOTH themes — under WCAG AA's 4.5:1 for the
   /// card's 13px/14px type, which is what made the dark card's title unreadable
   /// (#8968). `colorScheme.primary` is the same brand hue tonally retuned for

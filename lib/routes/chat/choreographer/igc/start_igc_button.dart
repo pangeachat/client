@@ -176,6 +176,7 @@ class _StartIGCButtonState extends State<StartIGCButton>
         }
 
         final segmentPercent = 100 / matches.length;
+        final colors = Theme.of(context).colorScheme;
         return matches.map((m) {
           final isActiveMatch =
               m.originalMatch.match.offset ==
@@ -190,7 +191,9 @@ class _StartIGCButtonState extends State<StartIGCButton>
           return Segment(
             segmentPercent,
             m.updatedMatch.status.isOpen
-                ? m.updatedMatch.match.color
+                ? (m.updatedMatch.match.isSuggestion
+                      ? colors.primary
+                      : colors.error)
                 : AppConfig.success,
             opacity: opacity,
           );

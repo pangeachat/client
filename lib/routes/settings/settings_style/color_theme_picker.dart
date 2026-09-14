@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/utils/color_value.dart';
 import 'settings_style.dart';
@@ -47,6 +47,9 @@ class ColorThemePicker extends StatelessWidget {
         itemCount: colors.length,
         itemBuilder: (context, i) {
           final color = colors[i];
+          final defaultSeed = Color(
+            AppSettings.colorSchemeSeedInt.defaultValue,
+          );
           return Padding(
             padding: const EdgeInsets.all(12.0),
             child: Tooltip(
@@ -73,7 +76,7 @@ class ColorThemePicker extends StatelessWidget {
                             // chosen.
                             (currentColor == null &&
                                 systemColor == null &&
-                                color == AppConfig.primaryColor))
+                                color == defaultSeed))
                         ? Center(
                             child: Icon(
                               Icons.check,

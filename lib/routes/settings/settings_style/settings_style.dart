@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:file_picker/file_picker.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/utils/account_config.dart';
 import 'package:fluffychat/utils/file_selector.dart';
@@ -114,7 +113,7 @@ class SettingsStyleController extends State<SettingsStyle> {
   static final List<Color?> customColors = [
     null,
     // #Pangea
-    // AppConfig.primaryColor,
+    // Color(AppSettings.colorSchemeSeedInt.defaultValue),
     // Colors.indigo,
     // Colors.blue,
     // Colors.blueAccent,
@@ -136,7 +135,7 @@ class SettingsStyleController extends State<SettingsStyle> {
     // Colors.grey,
     // Colors.white,
     // Colors.black,
-    AppConfig.primaryColor,
+    Color(AppSettings.colorSchemeSeedInt.defaultValue),
     Colors.blue,
     Colors.teal,
     Colors.green,

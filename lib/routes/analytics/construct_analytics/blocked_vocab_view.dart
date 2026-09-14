@@ -183,11 +183,7 @@ class _BlockedVocabViewState extends State<BlockedVocabView>
                                 return VocabAnalyticsListTile(
                                   constructId: item.id,
                                   level: item.lemmaCategory,
-                                  textColor:
-                                      Theme.of(context).brightness ==
-                                          Brightness.light
-                                      ? item.lemmaCategory.darkColor(context)
-                                      : item.lemmaCategory.color(context),
+                                  textColor: item.lemmaCategory.color(context),
                                   selected: _selected.contains(item.id),
                                   blocked: true,
                                   onTap: _selectMode
