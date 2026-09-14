@@ -11,6 +11,17 @@
 
 ## Quick Reference
 
+### Commands — always through `fvm`
+
+This repo pins its Flutter SDK with fvm, and a bare `flutter`/`dart` silently runs whatever SDK is on PATH. That resolves, compiles, and goes green against the wrong version, so the failure is a false pass rather than an error.
+
+```sh
+fvm flutter test
+fvm flutter analyze
+fvm dart format .
+fvm use            # in a fresh worktree, before anything else
+```
+
 ### Project Structure
 See [codebase-organization.instructions.md](instructions/codebase-organization.instructions.md) for the full map and the Placement Decision Tree. In brief:
 - `lib/routes/` — on-screen UI, by nav section (GoRouter destinations)
