@@ -72,7 +72,7 @@ class _AppLanguageSettingsTileState extends State<AppLanguageSettingsTile> {
                   '${l10n.appInTargetLanguageStaysInBaseLanguage}'
             : l10n.appInTargetLanguageDesc,
       ),
-      activeThumbColor: AppConfig.activeToggleColor,
+      activeThumbColor: AppConfig.success,
       onChanged: widget.viewModel.setAppLanguageIsTarget,
     );
   }

@@ -71,7 +71,7 @@ class AutocorrectSettingsTileState extends State<AutocorrectSettingsTile> {
             ? L10n.of(context).autocorrectMobileOnly
             : ToolSetting.enableAutocorrect.toolDescription(context),
       ),
-      activeThumbColor: AppConfig.activeToggleColor,
+      activeThumbColor: AppConfig.success,
       onChanged: widget.isWeb ? null : _onChanged,
     );
 

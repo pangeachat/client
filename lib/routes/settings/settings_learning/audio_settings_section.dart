@@ -87,7 +87,7 @@ class AudioSettingsSection extends StatelessWidget {
                       ? setting.toolDescription(context)
                       : L10n.of(context).listenFirstNeedsChoiceAudio,
                 ),
-                activeThumbColor: AppConfig.activeToggleColor,
+                activeThumbColor: AppConfig.success,
                 onChanged: !hasChoiceAudio
                     ? null
                     : (v) => viewModel.updateToolSetting(setting, v),
@@ -104,7 +104,7 @@ class AudioSettingsSection extends StatelessWidget {
                 value: viewModel.getToolSetting(setting),
                 title: Text(setting.toolName(context)),
                 subtitle: Text(setting.toolDescription(context)),
-                activeThumbColor: AppConfig.activeToggleColor,
+                activeThumbColor: AppConfig.success,
                 onChanged: !hasVoice
                     ? null
                     : (v) async {

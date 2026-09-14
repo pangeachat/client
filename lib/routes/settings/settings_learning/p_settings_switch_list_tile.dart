@@ -46,7 +46,7 @@ class PSettingsSwitchListTileState
     return SwitchListTile.adaptive(
       value: currentValue,
       title: Text(widget.title),
-      activeThumbColor: AppConfig.activeToggleColor,
+      activeThumbColor: AppConfig.success,
       subtitle: widget.subtitle != null ? Text(widget.subtitle!) : null,
       onChanged: widget.enabled
           ? (bool newValue) async {

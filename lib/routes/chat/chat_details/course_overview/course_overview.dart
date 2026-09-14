@@ -411,7 +411,7 @@ class CourseSettingsButtonList extends StatelessWidget {
                   secondary: b.icon,
                   value: b.value,
                   onChanged: b.enabled ? (value) => b.onPressed?.call() : null,
-                  activeThumbColor: AppConfig.activeToggleColor,
+                  activeThumbColor: AppConfig.success,
                   // The section already carries the page inset, so the tile
                   // keeps just enough of its own to breathe against the
                   // hover surface's edge; compact so the settings read as

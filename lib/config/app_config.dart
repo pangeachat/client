@@ -34,7 +34,6 @@ abstract class AppConfig {
   // Static colours still read directly by widget code (migrating).
   static const Color primaryColor = Color(0xFF8560E0);
   static const Color error = Colors.red;
-  static const Color activeToggleColor = Color(0xFF33D057);
 
   static const double messageFontSize = 16.0;
   static const bool allowOtherHomeservers = true;
