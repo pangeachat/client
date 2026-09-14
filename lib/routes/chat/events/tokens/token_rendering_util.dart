@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/routes/chat/events/tokens/highlight_style.dart';
 
@@ -40,6 +39,7 @@ class TokenRenderingUtil {
   }
 
   static Color underlineColor(
+    BuildContext context,
     Color underlineColor, {
     bool selected = false,
     bool highlighted = false,
@@ -49,7 +49,8 @@ class TokenRenderingUtil {
   }) {
     if (practiceMode) return Colors.white.withAlpha(0);
     if (highlighted) return underlineColor;
-    if (isNew) return AppConfig.success.withAlpha(200);
+    // A new word's underline is the success mark, drawn nearly opaque.
+    if (isNew) return Theme.of(context).pangea.successGraphic.withAlpha(200);
     if (selected) return underlineColor;
     if (hovered) return underlineColor.withAlpha(100);
     return Colors.white.withAlpha(0);

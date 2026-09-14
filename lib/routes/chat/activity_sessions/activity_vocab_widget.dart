@@ -340,6 +340,7 @@ class _VocabChip extends StatelessWidget {
                 fontSize: 14,
               ),
               underlineColor: TokenRenderingUtil.underlineColor(
+                context,
                 Theme.of(context).colorScheme.primary.withAlpha(200),
                 isNew: isNew,
                 selected: isSelected,

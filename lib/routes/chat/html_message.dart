@@ -609,6 +609,7 @@ class HtmlMessage extends StatelessWidget {
                               linkStyle: linkStyle,
                               textDirection: pangeaMessageEvent?.textDirection,
                               underlineColor: TokenRenderingUtil.underlineColor(
+                                context,
                                 underlineColor,
                                 selected: selected,
                                 highlighted: highlighted,
