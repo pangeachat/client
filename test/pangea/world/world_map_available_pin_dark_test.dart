@@ -103,7 +103,12 @@ void main() {
         state: ActivityPinState.available,
         tier: PinTier.mid,
       );
-      expect(midFill(tester), AppConfig.primaryColorLight);
+      expect(
+        midFill(tester),
+        Theme.of(
+          tester.element(find.byType(Scaffold)),
+        ).colorScheme.secondaryContainer,
+      );
 
       await pump(
         tester,
@@ -113,7 +118,9 @@ void main() {
       );
       expect(
         smallFill(tester),
-        AppConfig.primaryColorLight,
+        Theme.of(
+          tester.element(find.byType(Scaffold)),
+        ).colorScheme.secondaryContainer,
         reason: 'the light theme is unchanged by #8174',
       );
     });
@@ -142,15 +149,11 @@ void main() {
       );
       expect(
         mid,
-        AppConfig.primaryColorDark,
+        Theme.of(
+          tester.element(find.byType(Scaffold)),
+        ).colorScheme.secondaryContainer,
         reason:
-            'the dark fill is the fixed darker-purple brand constant, not the '
-            'theme-seeded primaryContainer',
-      );
-      expect(
-        mid,
-        isNot(AppConfig.primaryColorLight),
-        reason: 'the near-white light-brand fill is what #8174 replaced',
+            'the dark fill is the theme\'s secondaryContainer, deep in dark',
       );
       expect(
         mid,

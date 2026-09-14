@@ -34,8 +34,6 @@ abstract class AppConfig {
 
   // Static colours still read directly by widget code (migrating).
   static const Color primaryColor = Color(0xFF8560E0);
-  static const Color primaryColorLight = Color(0xFFDBC9FF);
-  static const Color primaryColorDark = Color.fromARGB(255, 81, 66, 126);
   static const Color chatColor = primaryColor;
   static const Color goldLight = Color.fromARGB(255, 254, 223, 73);
   static const Color error = Colors.red;

@@ -53,10 +53,9 @@ enum ActivityPinState {
     ActivityPinState.ongoingPending ||
     ActivityPinState.ongoingActive => AppConfig.primaryColor,
     ActivityPinState.inProgress => AppConfig.gold,
-    ActivityPinState.available =>
-      Theme.of(context).brightness == Brightness.dark
-          ? AppConfig.primaryColorDark
-          : AppConfig.primaryColorLight,
+    ActivityPinState.available => Theme.of(
+      context,
+    ).colorScheme.secondaryContainer,
   };
 
   /// Ink for the icon and text drawn on [bodyColor].

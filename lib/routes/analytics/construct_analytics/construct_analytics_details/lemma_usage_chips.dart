@@ -107,9 +107,7 @@ class LemmaUsageChips extends StatelessWidget {
     final Color neutralColor = theme.brightness == Brightness.light
         ? Colors.grey[600]!
         : Colors.grey[400]!;
-    final Color heardColor = theme.brightness == Brightness.light
-        ? AppConfig.primaryColorDark
-        : AppConfig.primaryColorLight;
+    final Color heardColor = theme.colorScheme.primary;
 
     final List<Widget> chips = [
       if (counts.positive > 0)

@@ -303,8 +303,8 @@ class _MediumDotContent extends StatelessWidget {
     // former outside label used the same colour) — which #8968 also lifted over
     // the 3:1 SC 1.4.11 floor, from 2.91:1 to 4.25:1 against that pale fill, by
     // resolving that purple through the theme. Dark mode keeps white — the
-    // `available` pin fills with the darker `AppConfig.primaryColorDark` purple
-    // there, which a white glyph reads cleanly over (world-map.instructions.md,
+    // `available` pin fills with the theme's `secondaryContainer`, deep in
+    // dark, which a white glyph reads cleanly over (world-map.instructions.md,
     // "Pin state").
     final glyphColor =
         state == ActivityPinState.available &&
