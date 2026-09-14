@@ -15,9 +15,7 @@ import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_room_types.dart';
 import 'package:fluffychat/routes/chat_list/chat_list.dart';
 import 'package:fluffychat/routes/chat_list/course_chats_view.dart';
@@ -72,7 +70,7 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
       loadCourse(courseId);
     }
 
-    loadHierarchy(reload: true).then((_) => _joinDefaultChats());
+    loadHierarchy(reload: true);
     _setRoomSubscription();
   }
 
@@ -189,47 +187,6 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
           ),
         )
         .listen((update) => loadHierarchy(reload: true, background: true));
-  }
-
-  Future<void> _joinDefaultChats() async {
-    if (_discoveredChildren == null) return;
-    final found = List<SpaceRoomsChunk$2>.from(_discoveredChildren!);
-
-    final List<Future> joinFutures = [];
-    for (final chunk in found) {
-      if (chunk.canonicalAlias == null) continue;
-      final alias = chunk.canonicalAlias!;
-
-      final isDefaultChat =
-          (alias.localpart ?? '').startsWith(
-            SpaceConstants.announcementsChatAlias,
-          ) ||
-          (alias.localpart ?? '').startsWith(
-            SpaceConstants.introductionChatAlias,
-          );
-
-      if (!isDefaultChat) continue;
-
-      joinFutures.add(
-        widget.client
-            .joinRoom(alias)
-            .then((_) {
-              _discoveredChildren?.remove(chunk);
-            })
-            .catchError((e, s) {
-              ErrorHandler.logError(
-                e: e,
-                s: s,
-                data: {'alias': alias, 'spaceId': widget.roomId},
-              );
-              return null;
-            }),
-      );
-    }
-
-    if (joinFutures.isNotEmpty) {
-      await Future.wait(joinFutures);
-    }
   }
 
   Future<void> loadHierarchy({
