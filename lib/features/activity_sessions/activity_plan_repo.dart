@@ -222,6 +222,14 @@ class ActivityPlanRepo
   /// joins the batch instead of racing it.
   final Map<String, Future<void>> _batchInFlight = {};
 
+  /// Keys a batch asked for and could not satisfy, with the failure behind it.
+  ///
+  /// Read by [lookup] so a caller joining a failed batch shares its outcome
+  /// instead of re-asking — otherwise every joiner sends its own request at the
+  /// moment the backend is already failing. Cleared when the key next succeeds
+  /// or is re-attempted, so a failure is never sticky.
+  final Map<String, Object> _unsatisfied = {};
+
   /// Hydrations accepted by [ensure] and awaiting a free slot. Keys here are in
   /// [_hydrating] (so a rebuild cannot enqueue them twice) and parked in
   /// [_nextAttempt] (so dropping one cannot produce a frame-rate retry).
@@ -257,6 +265,7 @@ class ActivityPlanRepo
   void resetBackoff() {
     _nextAttempt.clear();
     _confirmedRemoved.clear();
+    _unsatisfied.clear();
     _rateLimitPause.reset();
     // The backlog goes too. Dropping it loses nothing: clearing [_nextAttempt]
     // above un-parks every queued key, so `build()` re-offers them on the next
@@ -401,6 +410,15 @@ class ActivityPlanRepo
     // strictly worse than before the pause existed. Only a read that would
     // actually reach the network is gated, which is why the cache is consulted
     // first and `forceRefresh` (which will fetch regardless) is not exempt.
+    // Answerable from cache: serve it. Checked BEFORE the batch join below,
+    // because a batch registers every key it was given while the prefetch asks
+    // only for the ones it could not already answer — so joining first would
+    // make a cached activity wait out an unrelated key's network read, up to
+    // the full request timeout, to return something it had all along.
+    if (!forceRefresh && getCached(request) != null) {
+      return _servedFromCache(activityId, request, forceRefresh);
+    }
+
     // Join a batch already carrying this key instead of racing it with a second
     // request for the same plan.
     final inFlight = _batchInFlight[request.storageKey];
@@ -418,11 +436,21 @@ class ActivityPlanRepo
         if (landed != null) {
           return ActivityPlanLookup(ActivityPlanLookupStatus.found, landed);
         }
-        // The batch did not produce this plan (removed, unavailable, or a
-        // failed request). Fall through: the checks below decide which of those
-        // it was, on the same evidence the single read always used.
         if (await _confirmedRemoved.contains(activityId)) {
           return const ActivityPlanLookup(ActivityPlanLookupStatus.removed);
+        }
+        // The batch tried this key and could not satisfy it. Falling through to
+        // a fetch would send one request per joining caller at the exact moment
+        // the backend is already failing — the fan-out this path exists to
+        // remove, re-appearing under load. The attempt is shared, failure
+        // included; the key stays parked and eligible once its cooldown lapses.
+        final failure = _unsatisfied[request.storageKey];
+        if (failure != null) {
+          return ActivityPlanLookup(
+            ActivityPlanLookupStatus.failed,
+            null,
+            failure,
+          );
         }
       }
     }
@@ -453,6 +481,7 @@ class ActivityPlanRepo
     _confirmedRemoved.unmark(activityId);
     final resolved = await resolveMedia(result.asValue!.value.plan);
     _resolved[request.storageKey] = resolved;
+    _unsatisfied.remove(request.storageKey);
     // Cleared only on a fully-mapped success. `.plan` above is a lazy getter
     // that runs the whole v2 mapping, so a malformed body throws HERE, after a
     // perfectly good HTTP 200 — leaving the parked entry in place, which is
@@ -589,6 +618,10 @@ class ActivityPlanRepo
     // above could never be. Parking at ENQUEUE, not at dispatch, is what keeps
     // a queued key from being re-offered on every frame while it waits.
     _nextAttempt[key] = now().add(_attemptCooldown);
+    // The previous attempt's failure must not answer for this one — without
+    // this a key that failed once would keep reporting that failure to every
+    // joining caller instead of being re-read.
+    _unsatisfied.remove(key);
     _hydrating.add(key);
     _queued.add((
       activityId: activityId,
@@ -776,6 +809,12 @@ class ActivityPlanRepo
       if (await _confirmedRemoved.contains(item.activityId)) continue;
       final request = _requestFor(item, l1);
       if (item.forceRefresh) {
+        // A refresh goes past the CACHE, not past a read already in progress.
+        // Both would write the same entry with no ordering, so the older GET
+        // could land last and overwrite the very content the refresh went to
+        // fetch — and it would spend the allowance twice to do it.
+        final single = inFlightFor(request);
+        if (single != null) await single;
         wanted.add(item);
         continue;
       }
@@ -785,6 +824,9 @@ class ActivityPlanRepo
       if (getCached(request) != null || inFlightFor(request) != null) continue;
       wanted.add(item);
     }
+
+    // Keys the batch asked for and did not come back with.
+    final unsatisfied = <_QueuedHydration>[];
 
     if (wanted.isNotEmpty && !_rateLimitPause.isPaused) {
       final request = ActivityPlanBatchRequest(
@@ -822,10 +864,15 @@ class ActivityPlanRepo
             }
           } else if (result.removed.contains(item.activityId)) {
             _confirmedRemoved.mark(item.activityId);
+          } else {
+            // `unavailable`, and anything the backend omitted. The read is not
+            // retried here — that would be one request per unsatisfied key,
+            // the fan-out this path removes — but it is RECORDED and REPORTED.
+            // A single read that failed produced a Sentry event through the
+            // repo layer; batching must not turn a whole screen failing to
+            // hydrate into silence just because the HTTP call returned 200.
+            unsatisfied.add(item);
           }
-          // `unavailable`, and anything omitted, is left alone: the read below
-          // will find no cache entry and simply not resolve, which leaves the
-          // key eligible once its cooldown lapses.
         }
       } catch (e, s) {
         // A 429 is about RATE, so it pauses every read on this budget rather
@@ -839,7 +886,32 @@ class ActivityPlanRepo
           // warning, anything else an error.
           level: PangeaHttpException.severityOf(e),
         );
+        unsatisfied.addAll(wanted);
+        for (final item in wanted) {
+          _unsatisfied[_requestFor(item, l1).storageKey] = e;
+        }
       }
+    }
+
+    if (unsatisfied.isNotEmpty) {
+      for (final item in unsatisfied) {
+        _unsatisfied.putIfAbsent(
+          _requestFor(item, l1).storageKey,
+          () => const ActivityBatchUnsatisfied(),
+        );
+      }
+      // One event for the batch, not one per activity: they failed together,
+      // for one reason, and a per-key event would spend the report budget as
+      // fast as the reads that failed.
+      ErrorHandler.logError(
+        e: const ActivityBatchUnsatisfied(),
+        s: StackTrace.current,
+        data: {
+          'activityIds': unsatisfied.map((i) => i.activityId).toList(),
+          'l1': l1,
+        },
+        level: SentryLevel.warning,
+      );
     }
   }
 
@@ -874,6 +946,27 @@ class ActivityPlanRepo
   /// degraded responses where it hurts most.
   bool _answerableWithoutAsking(ActivityPlanFetchRequest request) =>
       getCached(request) != null || inFlightFor(request) != null;
+
+  /// The cached plan for [request], media-resolved, as a `found` lookup.
+  Future<ActivityPlanLookup> _servedFromCache(
+    String activityId,
+    ActivityPlanFetchRequest request,
+    bool forceRefresh,
+  ) async {
+    final result = await get(request, forceRefresh: forceRefresh);
+    if (result.isError) {
+      return ActivityPlanLookup(
+        ActivityPlanLookupStatus.failed,
+        null,
+        result.asError!.error,
+      );
+    }
+    final resolved = await resolveMedia(result.asValue!.value.plan);
+    _resolved[request.storageKey] = resolved;
+    _unsatisfied.remove(request.storageKey);
+    notifyListeners();
+    return ActivityPlanLookup(ActivityPlanLookupStatus.found, resolved);
+  }
 
   ActivityPlanFetchRequest _requestFor(_QueuedHydration item, String l1) =>
       ActivityPlanFetchRequest(

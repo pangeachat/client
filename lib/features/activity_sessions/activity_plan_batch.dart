@@ -73,3 +73,18 @@ class ActivityPlanBatchResponse {
     );
   }
 }
+
+/// A batch read came back without a plan for an activity it asked for — the
+/// backend reported it `unavailable`, or omitted it.
+///
+/// Typed so the report says what happened rather than arriving as a bare
+/// instance, and so it is distinguishable from a request that failed outright:
+/// the HTTP call succeeded, and only some of what it carried did not.
+class ActivityBatchUnsatisfied implements Exception {
+  const ActivityBatchUnsatisfied();
+
+  @override
+  String toString() =>
+      'ActivityBatchUnsatisfied: the batch returned no plan for one or more '
+      'activities it was asked for';
+}

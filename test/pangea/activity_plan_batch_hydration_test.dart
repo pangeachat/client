@@ -471,6 +471,102 @@ void main() {
       expect(repo.cachedPlan('got-1', l1: 'en'), isNotNull);
     });
 
+    test(
+      'a cached activity does not wait on someone else\'s network read',
+      () async {
+        // A batch registers every key it was given, but the prefetch asks only
+        // for the ones it could not already answer. Joining before checking the
+        // cache would make a cached activity wait out an unrelated key's request
+        // — up to the full timeout — to return something it had all along.
+        await capture((_) => batchOf(found: ['ready-1']), () async {
+          repo.ensure('ready-1', l1: 'en');
+          await settle();
+          await settle();
+        });
+        expect(repo.cachedPlan('ready-1', l1: 'en'), isNotNull);
+
+        // A COLD instance: the TTL cache holds 'ready-1' but nothing is
+        // resolved in memory, which is what makes `ensure` offer it to a
+        // batch at all — a resolved plan is declined before it ever queues.
+        final cold = ActivityPlanRepo.forTesting();
+        final gate = Completer<void>();
+        await http.runWithClient(
+          () async {
+            // 'slow-1' goes to the network; 'ready-1' is already cached.
+            cold.ensure('slow-1', l1: 'en');
+            cold.ensure('ready-1', l1: 'en');
+            await settle();
+
+            final served = await cold
+                .lookup('ready-1', l1: 'en')
+                .timeout(
+                  const Duration(seconds: 2),
+                  onTimeout: () =>
+                      throw StateError('a cached read waited on the network'),
+                );
+            expect(served.status, ActivityPlanLookupStatus.found);
+
+            gate.complete();
+            await settle();
+          },
+          () {
+            return MockClient((request) async {
+              await gate.future;
+              return batchOf(found: ['slow-1']);
+            });
+          },
+        );
+      },
+    );
+
+    test('a failed batch is shared, not re-asked by every joiner', () async {
+      // Falling through to a fetch would send one request per joining caller at
+      // the exact moment the backend is already failing.
+      final gate = Completer<void>();
+      var requests = 0;
+
+      await http.runWithClient(
+        () async {
+          for (var i = 0; i < 5; i++) {
+            repo.ensure('down-$i', l1: 'en');
+          }
+          await settle();
+
+          final joiners = [
+            for (var i = 0; i < 5; i++) repo.lookup('down-$i', l1: 'en'),
+          ];
+          gate.complete();
+          final results = await Future.wait(joiners);
+
+          for (final r in results) {
+            expect(r.status, ActivityPlanLookupStatus.failed);
+            expect(
+              r.status,
+              isNot(ActivityPlanLookupStatus.removed),
+              reason:
+                  'a failed read is not a verdict that the activity is gone',
+            );
+          }
+          await settle();
+        },
+        () {
+          return MockClient((request) async {
+            requests++;
+            await gate.future;
+            return batchOf(
+              unavailable: [for (var i = 0; i < 5; i++) 'down-$i'],
+            );
+          });
+        },
+      );
+
+      expect(
+        requests,
+        1,
+        reason: 'five joiners on a failed batch must not become five requests',
+      );
+    });
+
     test('a refresh travels alone', () async {
       // The read cannot express "ignore your cache for this one and not those",
       // so grouping a revalidate would silently downgrade it to a normal read.
