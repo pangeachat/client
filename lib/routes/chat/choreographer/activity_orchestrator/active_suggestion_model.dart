@@ -3,6 +3,10 @@ import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orche
 
 class ActiveSuggestionModel {
   final OrchestratorRoleSuggestions suggestion;
+
+  /// The `based_on_event_id` of the orchestrator output that produced
+  /// this suggestion — the turn internal feedback points at.
+  final String basedOnEventId;
   final List<OrchestratorSuggestion> shuffledChoices;
 
   final OrchestratorSuggestion? selectedChoice;
@@ -10,6 +14,7 @@ class ActiveSuggestionModel {
 
   ActiveSuggestionModel({
     required this.suggestion,
+    required this.basedOnEventId,
     this.selectedChoice,
     this.acceptedChoice,
     List<OrchestratorSuggestion>? shuffledChoices,
@@ -21,6 +26,7 @@ class ActiveSuggestionModel {
     OrchestratorSuggestion? acceptedChoice,
   }) => ActiveSuggestionModel(
     suggestion: suggestion,
+    basedOnEventId: basedOnEventId,
     selectedChoice: selectedChoice ?? this.selectedChoice,
     acceptedChoice: acceptedChoice ?? this.acceptedChoice,
     shuffledChoices: shuffledChoices,
