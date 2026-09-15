@@ -75,7 +75,11 @@ class AnalyticsAccessNoticeDialog extends StatelessWidget {
                     ).pop<OkCancelResult>(OkCancelResult.ok),
                     child: Text(
                       l10n.shareAndJoin,
-                      style: theme.textTheme.bodyLarge,
+                      // bodyLarge carries onSurface; the label needs the
+                      // fill's ink.
+                      style: theme.textTheme.bodyLarge?.copyWith(
+                        color: theme.colorScheme.onPrimary,
+                      ),
                     ),
                   ),
                   TextButton(

@@ -71,7 +71,11 @@ class SuggestMobileDialog extends StatelessWidget {
                       ).pop<OkCancelResult>(OkCancelResult.cancel),
                       child: Text(
                         l10n.gotIt,
-                        style: Theme.of(context).textTheme.bodyLarge,
+                        // bodyLarge carries onSurface; the label needs the
+                        // fill's ink.
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                          color: Theme.of(context).colorScheme.onPrimary,
+                        ),
                         textAlign: TextAlign.center,
                       ),
                     ),

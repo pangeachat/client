@@ -109,7 +109,14 @@ class RegistrationEmailPopupState extends State<RegistrationEmailPopup> {
                         children: [
                           Text(
                             l10n.iHaveClickedOnLink,
-                            style: Theme.of(context).textTheme.bodyLarge,
+                            // bodyLarge carries onSurface; the label needs
+                            // the fill's ink.
+                            style: Theme.of(context).textTheme.bodyLarge
+                                ?.copyWith(
+                                  color: Theme.of(
+                                    context,
+                                  ).colorScheme.onPrimary,
+                                ),
                           ),
                         ],
                       ),
