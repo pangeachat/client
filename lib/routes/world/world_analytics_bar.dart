@@ -242,7 +242,7 @@ class _PowerupsRow extends StatelessWidget {
                             Theme.of(context),
                           ),
                           stroke: _xpStroke,
-                          radius: _innerRadius + _xpStroke / 2,
+                          innerRadius: _innerRadius,
                           anchor: XpBorderAnchor.leftCenter,
                         ),
                         child: Padding(

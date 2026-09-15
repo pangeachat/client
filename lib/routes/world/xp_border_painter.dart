@@ -28,7 +28,12 @@ class XpBorderPainter extends CustomPainter {
   final Color trackColor;
   final Color progressColor;
   final double stroke;
-  final double radius;
+
+  /// The corner radius of the rounded rect the pill's content fills, which is
+  /// also the track's inner edge: the track is stroked outward from it, so
+  /// the two meet exactly at the corners and nothing shows through between
+  /// them. The path's own radius follows from this and the stroke.
+  final double innerRadius;
   final XpBorderAnchor anchor;
 
   /// How much wider the unfilled track strokes than the [progressColor] arc
@@ -55,11 +60,14 @@ class XpBorderPainter extends CustomPainter {
     required this.trackColor,
     required this.progressColor,
     required this.stroke,
-    required this.radius,
+    required this.innerRadius,
     this.anchor = XpBorderAnchor.bottomCenter,
   });
 
   Path _border(Size size) {
+    // The path is the track's centreline: half the track's width in from the
+    // edge, with a corner radius half the track's width out from the content
+    // corner, so the track's inner edge lands on the content's rounded rect.
     final inset = (stroke + trackExtra) / 2;
     final r = Rect.fromLTRB(
       inset,
@@ -67,7 +75,7 @@ class XpBorderPainter extends CustomPainter {
       size.width - inset,
       size.height - inset,
     );
-    final rad = radius;
+    final rad = innerRadius + inset;
     final arc = Radius.circular(rad);
     switch (anchor) {
       case XpBorderAnchor.bottomCenter:
@@ -164,6 +172,6 @@ class XpBorderPainter extends CustomPainter {
       old.progressColor != progressColor ||
       old.trackColor != trackColor ||
       old.stroke != stroke ||
-      old.radius != radius ||
+      old.innerRadius != innerRadius ||
       old.anchor != anchor;
 }
