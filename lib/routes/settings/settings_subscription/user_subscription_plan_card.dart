@@ -56,15 +56,16 @@ class UserSubscriptionPlanCard extends StatelessWidget {
                   : theme.textTheme.titleMedium)
               ?.copyWith(
                 fontWeight: FontWeight.bold,
-                color: theme.colorScheme.onPrimary,
+                color: theme.colorScheme.onPrimaryContainer,
               ),
       titlePadding: isColumnMode
           ? const EdgeInsets.all(12.0)
           : const EdgeInsets.all(4.0),
       padding: EdgeInsets.all(8.0),
-      frameColor: theme.colorScheme.primary,
+      frameColor: theme.colorScheme.primaryContainer,
+      outlineColor: theme.colorScheme.surface,
       backgroundColor: theme.colorScheme.surface,
-      foregroundColor: theme.colorScheme.onPrimary,
+      foregroundColor: theme.colorScheme.onPrimaryContainer,
       borderRadius: 12.0,
       child: Column(
         spacing: 12.0,

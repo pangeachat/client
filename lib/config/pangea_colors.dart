@@ -316,4 +316,20 @@ extension PangeaColorsTheme on ThemeData {
   /// [ThemeData] in a test still resolves gold.
   PangeaColors get pangea =>
       extension<PangeaColors>() ?? PangeaColors.of(brightness);
+
+  /// The theme's light tone: the surface in light, its ink in dark. The ink
+  /// for a fill that has been darkened toward black, such as a pressed
+  /// button, where the fill's own on-colour no longer reads.
+  Color get lightTone => brightness == Brightness.light
+      ? colorScheme.surface
+      : colorScheme.onSurface;
+
+  /// The ring a round toolbar button and its 3-D lip wear, or null when none
+  /// is needed. In dark the lip (primaryContainer darkened) sinks into the
+  /// overlay at 2.5:1, so the pale brand lavender `primaryFixed` rings both:
+  /// 11.1:1 on the overlay, 4.5:1 on the lip and the pressed fill, 2.5:1 on
+  /// the button top. In light the lip already stands off the overlay at
+  /// 10:1, so no ring.
+  Color? get pressableOutline =>
+      brightness == Brightness.dark ? colorScheme.primaryFixed : null;
 }

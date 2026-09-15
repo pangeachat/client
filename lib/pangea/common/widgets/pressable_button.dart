@@ -21,6 +21,21 @@ class PressableButton extends StatefulWidget {
   final double colorFactor;
   final bool visible;
 
+  /// A ring drawn around the lip (and, by the caller, around the top) so the
+  /// button's silhouette has a boundary of its own. On a dark overlay the
+  /// lip — the fill darkened toward black — sinks into the backdrop (2.5:1
+  /// for primaryContainer); the ring stands off it instead. Null draws none;
+  /// see ThemeData.pressableOutline for the theme's choice.
+  final Color? outlineColor;
+
+  /// The ring's width, shared with [topBorder] so top and lip match.
+  static const double outlineWidth = 1.5;
+
+  /// The border a caller gives its top shape for [outlineColor].
+  static BoxBorder? topBorder(Color? outlineColor) => outlineColor == null
+      ? null
+      : Border.all(color: outlineColor, width: outlineWidth);
+
   const PressableButton({
     required this.borderRadius,
     required this.builder,
@@ -32,6 +47,7 @@ class PressableButton extends StatefulWidget {
     this.playSound = false,
     this.colorFactor = 0.3,
     this.visible = true,
+    this.outlineColor,
     super.key,
   });
 
@@ -176,6 +192,9 @@ class PressableButtonState extends State<PressableButton>
                         decoration: BoxDecoration(
                           color: shadowColor,
                           borderRadius: widget.borderRadius,
+                          border: PressableButton.topBorder(
+                            widget.outlineColor,
+                          ),
                         ),
                         padding: EdgeInsets.only(
                           bottom: !_depressed

@@ -9,6 +9,7 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
@@ -753,7 +754,8 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                               key: target.key,
                               borderRadius: BorderRadius.circular(20),
                               depressed: mode == selectedMode || !enabled,
-                              color: theme.colorScheme.primary,
+                              color: theme.colorScheme.primaryContainer,
+                              outlineColor: theme.pressableOutline,
                               onPressed: enabled
                                   ? () => updateMode(mode)
                                   : modeDisabled,
@@ -776,8 +778,11 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                                   decoration: BoxDecoration(
                                     color: depressed
                                         ? shadowColor
-                                        : theme.colorScheme.primary,
+                                        : theme.colorScheme.primaryContainer,
                                     shape: BoxShape.circle,
+                                    border: PressableButton.topBorder(
+                                      theme.pressableOutline,
+                                    ),
                                   ),
                                   child: ValueListenableBuilder(
                                     valueListenable: _isPlayingNotifier,
@@ -790,7 +795,9 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                                           playing:
                                               mode == SelectMode.audio &&
                                               playing,
-                                          color: theme.colorScheme.onPrimary,
+                                          color: theme
+                                              .colorScheme
+                                              .onPrimaryContainer,
                                         ),
                                   ),
                                 );
@@ -1045,7 +1052,8 @@ class _MoreButton extends StatelessWidget {
       message: L10n.of(context).more,
       child: PressableButton(
         borderRadius: BorderRadius.circular(20),
-        color: theme.colorScheme.primary,
+        color: theme.colorScheme.primaryContainer,
+        outlineColor: theme.pressableOutline,
         onPressed: () => _showMenu(context),
         playSound: true,
         colorFactor: theme.brightness == Brightness.light ? 0.55 : 0.3,
@@ -1054,15 +1062,18 @@ class _MoreButton extends StatelessWidget {
           height: 40.0,
           width: 40.0,
           decoration: BoxDecoration(
-            color: depressed ? shadowColor : theme.colorScheme.primary,
+            color: depressed ? shadowColor : theme.colorScheme.primaryContainer,
             shape: BoxShape.circle,
+            border: PressableButton.topBorder(theme.pressableOutline),
           ),
           child: Icon(
             Icons.more_horiz,
             size: 20,
-            // onPrimary reads on the fill and on its pressed, darkened cut in
-            // both themes (3.9:1 dark, 14.5:1 light).
-            color: theme.colorScheme.onPrimary,
+            // The pressed fill is the rest fill darkened, so its own ink can
+            // stop reading on it; the theme's light tone always does.
+            color: depressed
+                ? theme.lightTone
+                : theme.colorScheme.onPrimaryContainer,
           ),
         ),
       ),

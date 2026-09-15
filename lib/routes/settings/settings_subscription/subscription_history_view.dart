@@ -210,14 +210,15 @@ class _InvoiceHistoryList extends StatelessWidget {
                   : theme.textTheme.titleMedium)
               ?.copyWith(
                 fontWeight: FontWeight.bold,
-                color: theme.colorScheme.onPrimary,
+                color: theme.colorScheme.onPrimaryContainer,
               ),
       titlePadding: isColumnMode
           ? const EdgeInsets.all(12.0)
           : const EdgeInsets.symmetric(vertical: 4.0, horizontal: 12.0),
-      frameColor: theme.colorScheme.primary,
+      frameColor: theme.colorScheme.primaryContainer,
+      outlineColor: theme.colorScheme.surface,
       backgroundColor: theme.colorScheme.surface,
-      foregroundColor: theme.colorScheme.onPrimary,
+      foregroundColor: theme.colorScheme.onPrimaryContainer,
       padding: EdgeInsets.all(8.0),
       borderRadius: 12.0,
       expandable: true,

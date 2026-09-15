@@ -261,10 +261,18 @@ class FullAccessContent extends StatelessWidget {
               decoration: BoxDecoration(
                 color: theme.colorScheme.surface,
                 border: Border.all(
-                  color: theme.colorScheme.primary,
+                  color: theme.colorScheme.primaryContainer,
                   width: 3.0,
                 ),
                 borderRadius: BorderRadius.circular(12.0),
+                // A ring in the page's surface colour cuts the card out from
+                // the star art behind it (tester report, 2026-09-15).
+                boxShadow: [
+                  BoxShadow(
+                    color: theme.colorScheme.surface,
+                    spreadRadius: 3.0,
+                  ),
+                ],
               ),
               child: Row(
                 children: [

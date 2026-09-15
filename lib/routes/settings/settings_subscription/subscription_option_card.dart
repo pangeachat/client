@@ -28,18 +28,15 @@ class SubscriptionOptionCard extends StatelessWidget {
         ? theme.textTheme.titleMedium
         : theme.textTheme.titleSmall;
 
-    // The frame is primary, not primaryContainer: in dark the latter sat at
-    // the lightness of the star background behind these cards and merged
-    // with it (tester report, 2026-09-15).
     final frameColor = selected
         ? Theme.of(context).pangea.goldFixedDim
-        : theme.colorScheme.primary;
+        : theme.colorScheme.primaryContainer;
 
     // The title sits on [frameColor], so its ink follows the frame — gold is a
-    // light fill in both themes, where onPrimary is unreadable (#8303).
+    // light fill in both themes, where onPrimaryContainer is unreadable (#8303).
     final foregroundColor = selected
         ? Theme.of(context).pangea.onGoldFixed
-        : theme.colorScheme.onPrimary;
+        : theme.colorScheme.onPrimaryContainer;
 
     return Semantics(
       button: true,
@@ -58,6 +55,8 @@ class SubscriptionOptionCard extends StatelessWidget {
             child: FrameContainer(
               title: plan.duration.cardTitle(l10n),
               frameColor: frameColor,
+              // Cut out from the star art behind the cards (tester report, 2026-09-15).
+              outlineColor: theme.colorScheme.surface,
               backgroundColor: theme.colorScheme.surface,
               foregroundColor: foregroundColor,
               padding: EdgeInsets.all(8.0),
