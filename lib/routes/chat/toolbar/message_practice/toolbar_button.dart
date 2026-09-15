@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/message_practice_mode_enum.dart';
@@ -52,9 +51,8 @@ class ToolbarButton extends StatelessWidget {
               child: Icon(
                 mode.icon,
                 size: 20,
-                // The pressed fill is the rest fill darkened, so its own ink
-                // can stop reading on it; the theme's light tone always does.
-                color: depressed ? theme.lightTone : ink,
+                // The fill's own ink reads on its pressed, darkened cut too.
+                color: ink,
               ),
             ),
           ),

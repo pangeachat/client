@@ -45,15 +45,17 @@ enum MessagePracticeMode {
   }
 
   /// The same pair as the reading-assistance mode buttons beside these, so
-  /// the round toolbar buttons read as one set on the dark scrim too.
+  /// the round toolbar buttons read as one set: the primary fill, whose
+  /// pressed, darkened cut still stands off the dark overlay (4.2:1, where
+  /// primaryContainer's sank to 2.5:1).
   Color iconButtonColor(BuildContext context, bool done) => done
       ? Theme.of(context).pangea.goldFixedDim
-      : Theme.of(context).colorScheme.primaryContainer;
+      : Theme.of(context).colorScheme.primary;
 
-  /// The ink that reads on [iconButtonColor].
+  /// The ink that reads on [iconButtonColor], pressed or not.
   Color iconButtonInk(BuildContext context, bool done) => done
       ? Theme.of(context).pangea.onGoldFixed
-      : Theme.of(context).colorScheme.onPrimaryContainer;
+      : Theme.of(context).colorScheme.onPrimary;
 
   PracticeExerciseTypeEnum? get associatedActivityType {
     switch (this) {

@@ -99,10 +99,10 @@ void main() {
         final scheme = themeFor(brightness).colorScheme;
         expect(
           titleInk(tester),
-          scheme.onPrimaryContainer,
+          scheme.onPrimary,
           reason: '#8303 is scoped to the selected card',
         );
-        expect(frame(tester).frameColor, scheme.primaryContainer);
+        expect(frame(tester).frameColor, scheme.primary);
       });
     });
   }

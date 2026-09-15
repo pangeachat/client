@@ -261,7 +261,7 @@ class FullAccessContent extends StatelessWidget {
               decoration: BoxDecoration(
                 color: theme.colorScheme.surface,
                 border: Border.all(
-                  color: theme.colorScheme.primaryContainer,
+                  color: theme.colorScheme.primary,
                   width: 3.0,
                 ),
                 borderRadius: BorderRadius.circular(12.0),
