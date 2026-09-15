@@ -49,6 +49,19 @@ class WorldMapConstants {
   static bool canZoomIn(double zoom) => zoom < maxZoom;
   static bool canZoomOut(double zoom, double minZoom) => zoom > minZoom;
 
+  /// The zoom a pinch of [scale] lands on from [startZoom], clamped to the
+  /// map's range ([minZoom] is the caller's viewport-derived floor, #7813). A
+  /// pinch reports how far the gesture scaled the world, and one zoom level is
+  /// exactly a doubling of that scale, so the level delta is the factor's
+  /// base-2 logarithm. That is the same conversion flutter_map applies to a
+  /// touch pinch, so a pinch moves the camera by the same amount whether the
+  /// fingers are on a touchscreen or a trackpad (#8556).
+  static double zoomAfterPinch(
+    double startZoom,
+    double scale,
+    double minZoom,
+  ) => (startZoom + math.log(scale) / math.ln2).clamp(minZoom, maxZoom);
+
   /// The zoom the DELIBERATE focus button glides to for an activity (#7616) —
   /// close enough to read it as "this specific spot" (neighborhood/building
   /// level). Selection itself never zooms; only the button uses this.

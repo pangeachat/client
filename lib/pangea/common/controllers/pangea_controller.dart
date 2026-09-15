@@ -10,6 +10,7 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
 import 'package:fluffychat/features/bot/bot_client_extension.dart';
+import 'package:fluffychat/features/keyboards/keyboard_prompt_local_store.dart';
 import 'package:fluffychat/features/languages/locale_provider.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/notifications/notifications_client_extension.dart';
@@ -57,6 +58,8 @@ class PangeaController {
     subscriptionController.initialize(userID);
     matrixState.client.setPangeaPushRules();
     TtsController.setAvailableLanguages();
+    ObservedKeyboardStore.initialize();
+    KeyboardPromptDismissalStore.initialize();
   }
 
   Future<void> _onLogin(BuildContext context, String? userID) async {

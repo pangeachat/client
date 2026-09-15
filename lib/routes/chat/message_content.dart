@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/setting_keys.dart';
+import 'package:fluffychat/features/analytics/listening_exposure_declaration.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
@@ -247,6 +248,12 @@ class MessageContent extends StatelessWidget {
                   senderId: event.senderId,
                   ownUserId: event.room.client.userID,
                 ),
+                // A voice message's lemmas come from its speech-to-text
+                // transcript, the only place they exist. No usable transcript
+                // means nothing to attribute, and the default exemption stands
+                // — see message-read-aloud.instructions.md (Word-level
+                // exposure).
+                exposure: _voiceMessageExposure(pangeaMessageEvent),
                 // Pangea#
               );
             } else {
@@ -462,6 +469,33 @@ class MessageContent extends StatelessWidget {
           },
         );
     }
+  }
+
+  /// The lemmas of a voice message, read from its speech-to-text transcript.
+  ///
+  /// The transcript is the only place a voice message's words exist — nothing
+  /// else tokenises somebody else's audio — so a message without a usable one
+  /// declares an exemption rather than guessing.
+  static ListeningExposureDeclaration _voiceMessageExposure(
+    PangeaMessageEvent? message,
+  ) {
+    final stt = message?.getSpeechToTextLocal(preferTokens: true);
+    final tokens = stt?.results.isEmpty ?? true
+        ? null
+        : stt!.transcript.sttTokens.map((t) => t.token);
+    if (tokens == null || tokens.isEmpty) {
+      return const ListeningExposureDeclaration.exempt(
+        "voice message has no usable transcript",
+      );
+    }
+    // The transcript's OWN language, never the learner's L2. Nothing gates a
+    // voice message on the target language — in a multilingual room someone
+    // speaks whatever they speak — so this is the one path where assuming the
+    // L2 would file French hearings as Spanish vocabulary.
+    return ListeningExposureDeclaration.ofTokens(
+      tokens,
+      langCode: stt!.langCode,
+    );
   }
 }
 

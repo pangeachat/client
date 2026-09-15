@@ -2748,14 +2748,12 @@
     "enableAutocorrectPopupTitle": "ཁྱེད་ཀྱང་སྒྲོམ་བཅོས་བཀོད་ལག་ཁྱེར་བཀོད་པའི་སྒྲོམ་བཅོས་སྤྱོད་ལམ་ལ་འགྱོ།",
     "enableAutocorrectPopupSteps": "  • དེའི་སྒྲོམ\n  • དེའི་རང་བཞིན\n  • ཁྱེད་རང་གི་ཁྱེར་སྒྲོམ\n  • ཁྱེད་རང་གི་ཁྱེར་སྒྲོམ་ཚུ\n  • གསར་བའི་ཁྱེར་སྒྲོམ་ལ་འབོད།",
     "enableAutocorrectPopupDescription": "ལུས་སྐད་གཏོད་ནས་སྒྲོམ་བཅོས་བཀོད་ལག་ཁྱེར་བཀོད་པའི་སྒྲོམ་བཅོས་སྤྱོད་ལམ་ལ་འགྱོ།",
-    "downloadGboardSteps": " • Gboard ལག་ཁྱེར་བཀོད།\n  • ཁྱེད་རང་གི་ཉེར་སྤྱོད་སྒྲོམ་གཏོད།\n  • སྒྲོམ་བཅོས་ཚུ\n  • ཁྱེད་རང་གི་ཁྱེར་སྒྲོམ་ལ་འབོད།\n  • སྒྲོམ་བཅོས་ཚུ\n  • ཁྱེད་རང་གི་ཁྱེར་སྒྲོམ་རིགས་ཚུ\n  • ཚར་བར་བཟོ།",
     "enableAutocorrectWarning": "འཚོལ་བ! ཁྱེད་ཀྱང་སྒྲོམ་བཅོས་བཀོད་ལག་ཁྱེར་བཀོད་ལ་འགྱོ།",
     "displayName": "མིང་ཚིག",
     "leaveRoomDescription": "ཁྱེད་ཀྱང་འདི་ནས་ཁྱེད་རང་གི་ཆོས་ཚོད་ལ་འགྱོ། གཞན་ཚོ་ཁྱེད་ཀྱང་འདི་ལ་འགྱོ་བའི་སྟེང་ཁྱེད་རང་གི་འགྱོ་བ་ལ་ལེན་སྤྱོད་བྱེད་ཡོད།",
     "confirmUserId": "ཁྱེད་ཀྱང་ཁྱེར་བཀོད་ལག་ཁྱེར་བཀོད་ལག་ལ་འགྱོ་སྟེང་ཁྱེད་ཀྱང་ཁྱེར་བཀོད་ལག་ལ་འགྱོ་བའི་སྟེང་ཁྱེད་རང་གི་ཁྱེར་སྒྲོམ་ལ་འགྱོ།",
     "paidSubscriptionStarts": "ལོ་འགྱོ {startDate}",
     "cancelInSubscriptionSettings": "• ལོ་འགྱོ་ལས་འགྱོ་སྟེང་ཁྱེད་ཀྱང་འགྱོ།",
-    "downloadGboard": "Gboard ལག་ཁྱེར་བཀོད།",
     "autocorrectNotAvailable": "གལ་ཏེ་ཁྱེད་ཀྱང་འདི་ལ་ལོག་ལས་བསྐྱར་བརྗེ་མི་འབྱུང་། ལོག་ལས་བསྐྱར་བརྗེ་ལ་ལོག་ལས་བསྐྱར་བརྗེ་ལ་འགྱོ།",
     "pleaseUpdateApp": "ཁྱེད་རང་ལ་ལོག་ལས་བསྐྱར་བརྗེ་ལ་འགྱོ།",
     "chooseEmojiInstructionsBody": "གྲུབ་ཚིག་ལ་གཅིག་ལ་བསྐྱར་བརྗེ་བྱེད་ནས་ཁྱེད་ཀྱང་གི་ཚིག་གི་སྤྱོད་ལམ་ལ་འགྱོ། བརྗེ་བཅོས་མེད་ནི་ལས་འགྱོ་མི་འདུག! མེད་ཚད་མེད་ལས་འགྱོ་མི་འདུག! 😅",
@@ -2922,7 +2920,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-08-24 11:54:14.844993",
+    "@@last_modified": "2026-08-25 15:25:41.537974",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -5434,10 +5432,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -5463,10 +5457,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -9370,8 +9360,18 @@
     "autocorrectAndroidFallbackTitle": "གལ་ཏེ་ཁྱེད་ཀྱི་ལྕགས་པར་གྱིས་ཁྱེད་ཀྱི་དམིགས་ཡུལ་སྐད་ཡིག་མི་འདོན་ན། Gboard སྒྲིག་འཇུག་བྱས་ནས་སྐད་ཡིག་དེ་ནང་འདིར་ཁ་སྣོན་བྱེད་རོགས།",
     "resendInSeconds": "བསྐྱར་དུ་གཏོང་ ({seconds})",
     "mapLevelFallbackNotice": "ད་ལྟ་ {selected} བྱེད་སྒོ་མི་འདུག དེའི་ཚབ་ཏུ་ {shown} བསྟན་ཡོད།",
+    "openKeyboardSettings": "མཐེབ་གཞོང་སྒྲིག་སྟངས་ཁ་ཕྱེ།",
+    "keyboardPromptAddKeyboardMessage": "རང་གི་དམིགས་ཡུལ་སྐད་ཡིག་ལ་མཐེབ་གཞོང་ཞིག་སྣོན་པ་དང་། དེ་ལྟར་བྱས་ན་རང་འགུལ་ཡོ་བསྲང་གིས་ལས་ཀ་བྱེད་ཐུབ།",
+    "keyboardPromptAddKeyboardAction": "མཐེབ་གཞོང་སྣོན་པ།",
+    "keyboardPromptSwitchKeyboardMessage": "རང་གི་མཐེབ་གཞོང་སྟེང་གི་འཛམ་གླིང་རྟགས་ལ་རེག་ནས་རང་གི་དམིགས་ཡུལ་སྐད་ཡིག་ལ་བསྒྱུར་བ།",
     "switchLanguageChipLabel": "{language}ལ་སྒྱུར་",
     "languageDropdownLevel": "རིམ་པ་{level}",
     "whatAreYouLearning": "ཁྱེད་རང་གིས་ཅི་ཞིག་སྦྱོང་བཞིན་ཡོད།",
-    "languageSwitcherBaseLanguageLabel": "ཁྱེད་ཀྱི་གཞི་རྩའི་སྐད་ཡིག"
+    "languageSwitcherBaseLanguageLabel": "ཁྱེད་ཀྱི་གཞི་རྩའི་སྐད་ཡིག",
+    "listenModeDescription": "གདམ་ག་ཞིག་ལ་རེག་ནས་ཉོན། གང་ཡང་འདེམས་མི་འདུག",
+    "rateActivityLiked": "དགའ་པོ་བྱུང་།",
+    "rateActivityDisliked": "དགའ་པོ་མ་བྱུང་།",
+    "constructUseHrdDesc": "ཐོས་པ་",
+    "timesHeard": "{count, plural, =1{ཐེངས་གཅིག་གོ་སོང་།} other{ཐེངས་ {count} གོ་སོང་།}}",
+    "allSettings": "སྒྲིག་འགོད་ཡོངས་"
 }

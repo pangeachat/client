@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/features/languages/language_flag_or_fallback.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/pangea/common/widgets/network_svg.dart';
 
@@ -47,6 +48,7 @@ class LanguageFlagChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final language = this.language;
     final code = (language?.langCodeShort ?? langCode).toUpperCase();
     // Stroke scales with the font so the outline reads the same at any size
     // (4px at the cluster's 18pt).
@@ -69,8 +71,6 @@ class LanguageFlagChip extends StatelessWidget {
       ],
     );
 
-    final showFlag = language?.shouldShowFlag ?? false;
-
     return Container(
       width: width,
       height: height,
@@ -80,25 +80,34 @@ class LanguageFlagChip extends StatelessWidget {
         color: tintColor ?? theme.colorScheme.primary,
         borderRadius: BorderRadius.circular(radius + borderWidth),
       ),
-      child: showFlag
-          ? ClipRRect(
-              borderRadius: BorderRadius.circular(radius),
-              child: Stack(
-                children: [
-                  NetworkSvg(
-                    svgUrl: language!.svgUrl.toString(),
-                    width: width,
-                    height: height,
-                    fit: BoxFit.cover,
-                    errorWidget: outlinedText,
-                    placeholder: SizedBox(width: width, height: height),
-                  ),
-                  if (alwaysShowCode)
-                    Positioned(child: Center(child: outlinedText)),
-                ],
+      child: language == null
+          ? outlinedText
+          : LanguageFlagOrFallback(
+              language: language,
+              flag: ClipRRect(
+                borderRadius: BorderRadius.circular(radius),
+                child: Stack(
+                  children: [
+                    NetworkSvg(
+                      svgUrl: language.svgUrl.toString(),
+                      width: width,
+                      height: height,
+                      fit: BoxFit.cover,
+                      // Markup that arrived but won't parse. The code is
+                      // already drawn over it when [alwaysShowCode], and a
+                      // second copy of it lands off-centre (#8548).
+                      errorWidget: alwaysShowCode
+                          ? const SizedBox.shrink()
+                          : Center(child: outlinedText),
+                      placeholder: SizedBox(width: width, height: height),
+                    ),
+                    if (alwaysShowCode)
+                      Positioned(child: Center(child: outlinedText)),
+                  ],
+                ),
               ),
-            )
-          : outlinedText,
+              fallback: outlinedText,
+            ),
     );
   }
 }
