@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/utils/string_color.dart';
 
 /// #8762 — exhaustive WCAG 2.1 SC 1.4.3 audit of the name-derived palette.
@@ -20,9 +20,11 @@ void main() {
     'B', 'C', 'D', 'E', 'F', 'G', // buckets 6–11
   ];
 
-  final lightScheme = ColorScheme.fromSeed(seedColor: AppConfig.primaryColor);
+  final lightScheme = ColorScheme.fromSeed(
+    seedColor: Color(AppSettings.colorSchemeSeedInt.defaultValue),
+  );
   final darkScheme = ColorScheme.fromSeed(
-    seedColor: AppConfig.primaryColor,
+    seedColor: Color(AppSettings.colorSchemeSeedInt.defaultValue),
     brightness: Brightness.dark,
   );
 

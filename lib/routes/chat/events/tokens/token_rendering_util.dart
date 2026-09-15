@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/routes/chat/events/tokens/highlight_style.dart';
 
 class TokenRenderingUtil {
@@ -39,6 +39,7 @@ class TokenRenderingUtil {
   }
 
   static Color underlineColor(
+    BuildContext context,
     Color underlineColor, {
     bool selected = false,
     bool highlighted = false,
@@ -48,7 +49,8 @@ class TokenRenderingUtil {
   }) {
     if (practiceMode) return Colors.white.withAlpha(0);
     if (highlighted) return underlineColor;
-    if (isNew) return AppConfig.success.withAlpha(200);
+    // A new word's underline is the success mark, drawn nearly opaque.
+    if (isNew) return Theme.of(context).pangea.successGraphic.withAlpha(200);
     if (selected) return underlineColor;
     if (hovered) return underlineColor.withAlpha(100);
     return Colors.white.withAlpha(0);
@@ -63,16 +65,22 @@ class TokenRenderingUtil {
       vocabLemmas != null && vocabLemmas.contains(lemmaText.toLowerCase());
 
   /// Wraps [child] in the target-vocab backfill highlight when [highlight] is
-  /// true, otherwise returns [child] unchanged. [color] defaults to the gold
-  /// vocab tint (issue #7659) so existing callers are byte-identical; the STT
-  /// edit-diff passes [AppConfig.warning]. Keeps the typed and spoken
-  /// highlights visually identical.
+  /// true, otherwise returns [child] unchanged. [color] defaults to the theme's
+  /// bright gold, the vocab tint (issue #7659), resolved where the box renders;
+  /// the STT edit-diff passes [PangeaColors.warningGraphic]. Keeps the typed
+  /// and spoken highlights visually identical.
   static Widget vocabHighlight({
     required bool highlight,
     required Widget child,
-    Color color = AppConfig.gold,
+    Color? color,
   }) {
     if (!highlight) return child;
-    return highlightBox(color: color, child: child);
+    if (color != null) return highlightBox(color: color, child: child);
+    return Builder(
+      builder: (context) => highlightBox(
+        color: Theme.of(context).pangea.goldFixedDim,
+        child: child,
+      ),
+    );
   }
 }

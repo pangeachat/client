@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 
 /// The completed-activity **trail marker**: a gold [Icons.star] (one role done)
@@ -32,7 +32,7 @@ class WorldMapStarDot extends StatelessWidget {
     child: Icon(
       superStar ? Icons.hotel_class : Icons.star,
       size: superStar ? PinSize.superStarGlyphSize : PinSize.starGlyphSize,
-      color: AppConfig.goldMarkByTheme(context),
+      color: Theme.of(context).pangea.goldGraphic,
     ),
   );
 }

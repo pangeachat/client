@@ -96,7 +96,7 @@ class SpaceAnalyticsView extends StatelessWidget {
                             customButton: Container(
                               height: !mini ? 36.0 : 26.0,
                               decoration: BoxDecoration(
-                                color: theme.colorScheme.primaryContainer,
+                                color: theme.colorScheme.primary,
                                 borderRadius: BorderRadius.circular(40),
                               ),
                               padding: EdgeInsets.symmetric(
@@ -123,7 +123,7 @@ class SpaceAnalyticsView extends StatelessWidget {
                                     ),
                                   Icon(
                                     Icons.arrow_drop_down,
-                                    color: theme.colorScheme.onPrimaryContainer,
+                                    color: theme.colorScheme.onPrimary,
                                     size: !mini ? 24.0 : 14.0,
                                   ),
                                 ],
@@ -344,7 +344,7 @@ class _MenuButton extends StatelessWidget {
               width: hideLabel ?? mini ? height : null,
               decoration: BoxDecoration(
                 color: enabled
-                    ? theme.colorScheme.primaryContainer
+                    ? theme.colorScheme.primary
                     : theme.disabledColor,
                 borderRadius: BorderRadius.circular(40),
               ),
@@ -357,7 +357,7 @@ class _MenuButton extends StatelessWidget {
                       message: text,
                       child: Icon(
                         icon,
-                        color: theme.colorScheme.onPrimaryContainer,
+                        color: theme.colorScheme.onPrimary,
                         size: !mini ? 24.0 : 14.0,
                       ),
                     )
@@ -366,13 +366,13 @@ class _MenuButton extends StatelessWidget {
                       children: [
                         Icon(
                           icon,
-                          color: theme.colorScheme.onPrimaryContainer,
+                          color: theme.colorScheme.onPrimary,
                           size: !mini ? 24.0 : 14.0,
                         ),
                         Text(
                           text,
                           style: TextStyle(
-                            color: theme.colorScheme.onPrimaryContainer,
+                            color: theme.colorScheme.onPrimary,
                             fontSize: !mini ? 16.0 : 12.0,
                           ),
                         ),

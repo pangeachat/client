@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/settings/settings_learning/learning_settings_view_model.dart';
 import 'package:fluffychat/routes/settings/settings_learning/p_settings_switch_list_tile.dart';
@@ -87,7 +87,7 @@ class AudioSettingsSection extends StatelessWidget {
                       ? setting.toolDescription(context)
                       : L10n.of(context).listenFirstNeedsChoiceAudio,
                 ),
-                activeThumbColor: AppConfig.activeToggleColor,
+                activeThumbColor: Theme.of(context).pangea.successFixedDim,
                 onChanged: !hasChoiceAudio
                     ? null
                     : (v) => viewModel.updateToolSetting(setting, v),
@@ -104,7 +104,7 @@ class AudioSettingsSection extends StatelessWidget {
                 value: viewModel.getToolSetting(setting),
                 title: Text(setting.toolName(context)),
                 subtitle: Text(setting.toolDescription(context)),
-                activeThumbColor: AppConfig.activeToggleColor,
+                activeThumbColor: Theme.of(context).pangea.successFixedDim,
                 onChanged: !hasVoice
                     ? null
                     : (v) async {

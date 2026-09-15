@@ -93,6 +93,12 @@ class BotFaceState extends State<BotFace> {
     if (oldWidget.forceColor != widget.forceColor) _applyColour();
   }
 
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _applyColour();
+  }
+
   /// Drop the animation and fall back to the static image.
   void _unload() {
     _settleTimer?.cancel();
@@ -174,8 +180,11 @@ class BotFaceState extends State<BotFace> {
   void _applyColour() {
     final viewModel = _viewModel;
     if (viewModel == null) return;
+    // The brand fill, from the theme: the seed purple in light and the
+    // scheme's lighter cut of it in dark. Re-applied when the theme changes
+    // (didChangeDependencies), since the Rive view model holds a value.
     viewModel.color('botColor')?.value =
-        widget.forceColor ?? AppConfig.primaryColor;
+        widget.forceColor ?? Theme.of(context).colorScheme.primaryContainer;
     // The bot is drawn over dialogs, list rows and the map, so its own
     // backdrop has to be clear. The asset defaults this to opaque white.
     viewModel.color('backgroundColor')?.value = Colors.transparent;

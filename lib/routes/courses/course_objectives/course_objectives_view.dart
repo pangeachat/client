@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
@@ -761,8 +760,9 @@ class _PingedActivityBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final onJoinable = ActivityPinState.joinable.onBodyColor(context);
     return Material(
-      color: AppConfig.green,
+      color: ActivityPinState.joinable.bodyColor(context),
       elevation: 4.0,
       borderRadius: BorderRadius.circular(24.0),
       child: InkWell(
@@ -774,19 +774,15 @@ class _PingedActivityBar extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             spacing: 8.0,
             children: [
-              Icon(
-                Icons.notifications_outlined,
-                size: 18.0,
-                color: Colors.white,
-              ),
+              Icon(Icons.notifications_outlined, size: 18.0, color: onJoinable),
               Text(
                 L10n.of(context).pingedActivity,
                 style: TextStyle(
-                  color: Colors.white,
+                  color: onJoinable,
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              Icon(Icons.arrow_downward, size: 18.0, color: Colors.white),
+              Icon(Icons.arrow_downward, size: 18.0, color: onJoinable),
             ],
           ),
         ),
@@ -835,12 +831,8 @@ class _QuestLoadErrorView extends StatelessWidget {
                     icon: Icon(Icons.map_outlined, size: 20.0),
                     label: Text(L10n.of(context).addCoursePlan),
                     style: FilledButton.styleFrom(
-                      backgroundColor: Theme.of(
-                        context,
-                      ).colorScheme.primaryContainer,
-                      foregroundColor: Theme.of(
-                        context,
-                      ).colorScheme.onPrimaryContainer,
+                      backgroundColor: Theme.of(context).colorScheme.primary,
+                      foregroundColor: Theme.of(context).colorScheme.onPrimary,
                       padding: const EdgeInsets.symmetric(vertical: 14.0),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0),

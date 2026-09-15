@@ -64,8 +64,8 @@ class AnalyticsAccessNoticeDialog extends StatelessWidget {
                   ),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: theme.colorScheme.primaryContainer,
-                      foregroundColor: theme.colorScheme.onPrimaryContainer,
+                      backgroundColor: theme.colorScheme.primary,
+                      foregroundColor: theme.colorScheme.onPrimary,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(16.0),
                       ),
@@ -75,7 +75,11 @@ class AnalyticsAccessNoticeDialog extends StatelessWidget {
                     ).pop<OkCancelResult>(OkCancelResult.ok),
                     child: Text(
                       l10n.shareAndJoin,
-                      style: theme.textTheme.bodyLarge,
+                      // bodyLarge carries onSurface; the label needs the
+                      // fill's ink.
+                      style: theme.textTheme.bodyLarge?.copyWith(
+                        color: theme.colorScheme.onPrimary,
+                      ),
                     ),
                   ),
                   TextButton(

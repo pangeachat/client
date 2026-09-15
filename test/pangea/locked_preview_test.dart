@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/subscription/widgets/decorative_stars.dart';
 import 'package:fluffychat/features/subscription/widgets/paywall_card.dart';
 import 'package:fluffychat/features/subscription/widgets/unlock_button.dart';
@@ -56,7 +56,7 @@ void main() {
         );
 
         final context = tester.element(find.byType(UnlockButton));
-        final gold = AppConfig.goldByTheme(context);
+        final gold = Theme.of(context).pangea.goldFixedDim;
 
         expect(
           tester.widget<PressableButton>(find.byType(PressableButton)).color,

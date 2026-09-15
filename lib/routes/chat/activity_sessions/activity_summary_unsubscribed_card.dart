@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/subscription/widgets/decorative_stars.dart';
 import 'package:fluffychat/features/subscription/widgets/locked_shimmer_box.dart';
@@ -94,9 +94,9 @@ class ActivitySummaryUnsubscribedCard extends StatelessWidget {
                         LockedShimmerBox(
                           // Tinted like the practice page's example message, so the
                           // summary reads as the content and not as more chrome.
-                          baseColor: AppConfig.goldByTheme(
+                          baseColor: Theme.of(
                             context,
-                          ).withAlpha(70),
+                          ).pangea.goldFixedDim.withAlpha(70),
                           width: double.infinity,
                           height: _summaryHeight,
                           borderRadius: BorderRadius.circular(12.0),

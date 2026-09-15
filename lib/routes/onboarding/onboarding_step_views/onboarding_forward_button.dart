@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 /// The single forward CTA at the bottom of an onboarding step.
 ///
-/// Filled with the darker `primary` colour — matching the activity start
-/// page's primary CTA — so it can't be confused with the lighter
-/// `primaryContainer` selection options above it (#8639).
+/// Filled with the `primary` colour — matching the activity start page's
+/// primary CTA — so it can't be confused with the tonal `secondaryContainer`
+/// selection options above it (#8639).
 class OnboardingForwardButton extends StatelessWidget {
   final VoidCallback? onPressed;
   final String label;

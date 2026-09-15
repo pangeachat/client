@@ -93,12 +93,10 @@ class RegistrationEmailPopupState extends State<RegistrationEmailPopup> {
                     ),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Theme.of(
-                          context,
-                        ).colorScheme.primaryContainer,
+                        backgroundColor: Theme.of(context).colorScheme.primary,
                         foregroundColor: Theme.of(
                           context,
-                        ).colorScheme.onPrimaryContainer,
+                        ).colorScheme.onPrimary,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16.0),
                         ),
@@ -111,7 +109,14 @@ class RegistrationEmailPopupState extends State<RegistrationEmailPopup> {
                         children: [
                           Text(
                             l10n.iHaveClickedOnLink,
-                            style: Theme.of(context).textTheme.bodyLarge,
+                            // bodyLarge carries onSurface; the label needs
+                            // the fill's ink.
+                            style: Theme.of(context).textTheme.bodyLarge
+                                ?.copyWith(
+                                  color: Theme.of(
+                                    context,
+                                  ).colorScheme.onPrimary,
+                                ),
                           ),
                         ],
                       ),

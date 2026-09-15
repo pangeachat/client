@@ -53,10 +53,7 @@ class VocabDetailsView extends StatelessWidget with ConstructRestorer {
         final construct = snapshot.data;
         final level = construct?.lemmaCategory ?? ConstructLevelEnum.seeds;
 
-        final Color textColor =
-            (Theme.of(context).brightness != Brightness.light
-            ? level.color(context)
-            : level.darkColor(context));
+        final Color textColor = level.color(context);
 
         // Distinct surface forms, deduped case-insensitively by text. Forms
         // are display-only here — audio buttons beside individual forms were

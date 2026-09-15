@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 
 /// The gold attention card the course page opens with: [icon] and [title]
@@ -62,7 +63,7 @@ class _CourseAttentionCardState extends State<CourseAttentionCard> {
         margin: const EdgeInsets.only(bottom: 12.0),
         padding: const EdgeInsets.all(12.0),
         decoration: BoxDecoration(
-          color: AppConfig.goldByTheme(context).withAlpha(30),
+          color: Theme.of(context).pangea.goldFixedDim.withAlpha(30),
           borderRadius: BorderRadius.circular(AppConfig.borderRadius),
         ),
         child: Column(

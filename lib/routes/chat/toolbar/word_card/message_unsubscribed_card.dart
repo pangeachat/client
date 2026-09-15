@@ -20,7 +20,6 @@ class MessageUnsubscribedCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final isDarkMode = theme.brightness == Brightness.dark;
 
     return Container(
       constraints: const BoxConstraints(maxWidth: AppConfig.toolbarMinWidth),
@@ -52,9 +51,7 @@ class MessageUnsubscribedCard extends StatelessWidget {
                         fontSize: 28.0,
                         fontWeight: FontWeight.w600,
                         height: 1.2,
-                        color: isDarkMode
-                            ? AppConfig.yellowLight
-                            : AppConfig.yellowDark,
+                        color: theme.colorScheme.primary,
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),

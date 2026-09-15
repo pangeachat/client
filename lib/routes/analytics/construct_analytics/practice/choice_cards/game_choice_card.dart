@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -90,13 +90,14 @@ class _GameChoiceCardState extends State<GameChoiceCard>
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
 
     final baseColor = colorScheme.surfaceContainerHighest;
     final hoverColor = colorScheme.onSurface.withValues(alpha: 0.08);
     final tintColor = widget.isCorrect
-        ? AppConfig.success.withValues(alpha: 0.3)
-        : AppConfig.error.withValues(alpha: 0.3);
+        ? theme.pangea.successGraphic.withValues(alpha: 0.3)
+        : theme.pangea.errorGraphic.withValues(alpha: 0.3);
 
     return CompositedTransformTarget(
       link: MatrixState.pAnyState.layerLinkAndKey(widget.targetId).link,

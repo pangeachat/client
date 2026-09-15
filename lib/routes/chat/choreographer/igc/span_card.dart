@@ -423,7 +423,7 @@ class _MatchContent extends StatelessWidget {
                       choices: currentMatch.choices?.map((e) {
                         return Choice<SpanChoice>(
                           value: e,
-                          color: e.selected ? e.type.color : null,
+                          color: e.selected ? e.type.color(context) : null,
                           isGold: e.type.isSuggestion,
                         );
                       }).toList(),
@@ -628,11 +628,9 @@ class SpanCardHeader extends StatelessWidget {
             icon: Icon(Icons.headphones_outlined, semanticLabel: name),
             selectedIcon: Icon(Icons.headphones, semanticLabel: name),
             style: IconButton.styleFrom(
-              backgroundColor: listenFirst
-                  ? theme.colorScheme.primaryContainer
-                  : null,
+              backgroundColor: listenFirst ? theme.colorScheme.primary : null,
               foregroundColor: listenFirst
-                  ? theme.colorScheme.onPrimaryContainer
+                  ? theme.colorScheme.onPrimary
                   : theme.iconTheme.color,
             ),
             onPressed: () => onToggleListenFirst(targetId),

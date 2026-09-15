@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/features/analytics_data/analytics_update_dispatcher.dart';
 import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.dart';
@@ -290,7 +290,7 @@ void main() {
       expect(trackerHighlights, findsNothing);
       expect(
         badgeFill(tester),
-        AppConfig.goldByTheme(tester.element(find.byType(Scaffold))),
+        Theme.of(tester.element(find.byType(Scaffold))).pangea.goldFixedDim,
       );
     });
 
@@ -314,7 +314,7 @@ void main() {
         expect(trackerHighlights, findsOneWidget);
         expect(
           badgeFill(tester),
-          AppConfig.goldByTheme(tester.element(find.byType(Scaffold))),
+          Theme.of(tester.element(find.byType(Scaffold))).pangea.goldFixedDim,
         );
       });
     }
@@ -332,7 +332,7 @@ void main() {
       // The badge's own gold deepens — no wash of any kind around it (#8067).
       expect(
         badgeFill(tester),
-        AppConfig.goldHighlightByTheme(tester.element(find.byType(Scaffold))),
+        Theme.of(tester.element(find.byType(Scaffold))).pangea.goldHighlight,
       );
       expect(levelWash, findsNothing);
     });
@@ -356,7 +356,7 @@ void main() {
     ) async {
       await pumpBar(tester, viewModel: MockUserClusterViewModel());
       final context = tester.element(find.byType(Scaffold));
-      expect(badgeFill(tester), AppConfig.goldByTheme(context));
+      expect(badgeFill(tester), Theme.of(context).pangea.goldFixedDim);
 
       final pointer = TestPointer(1, PointerDeviceKind.mouse);
       await tester.sendEventToBinding(
@@ -364,13 +364,13 @@ void main() {
       );
       await tester.pump();
 
-      expect(badgeFill(tester), AppConfig.goldHighlightByTheme(context));
+      expect(badgeFill(tester), Theme.of(context).pangea.goldHighlight);
       expect(levelWash, findsNothing);
 
       // And it goes back when the pointer leaves.
       await tester.sendEventToBinding(pointer.hover(Offset.zero));
       await tester.pump();
-      expect(badgeFill(tester), AppConfig.goldByTheme(context));
+      expect(badgeFill(tester), Theme.of(context).pangea.goldFixedDim);
     });
   });
 

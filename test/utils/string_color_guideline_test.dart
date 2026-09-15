@@ -7,7 +7,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_storage/get_storage.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/utils/string_color.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 
@@ -40,7 +40,7 @@ void main() {
 
   Widget page(Brightness brightness) {
     final scheme = ColorScheme.fromSeed(
-      seedColor: AppConfig.primaryColor,
+      seedColor: Color(AppSettings.colorSchemeSeedInt.defaultValue),
       brightness: brightness,
     );
     Text nameText(String name, Color color) => Text(

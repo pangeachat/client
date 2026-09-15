@@ -225,9 +225,13 @@ class MorphTagChip extends StatelessWidget {
                   ? LinearGradient(
                       begin: Alignment.centerLeft,
                       end: Alignment.centerRight,
+                      // The stage colour as a wash, the same low alpha the
+                      // vocab filter's selected ring uses.
                       colors: <Color>[
-                        constructAnalytics?.lemmaCategory.color(context) ??
-                            ConstructLevelEnum.seeds.color(context),
+                        (constructAnalytics?.lemmaCategory ??
+                                ConstructLevelEnum.seeds)
+                            .color(context)
+                            .withAlpha(50),
                         Colors.transparent,
                       ],
                     )

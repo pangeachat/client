@@ -3,8 +3,10 @@
 //
 // Per activity-start-page.instructions.md § The CTA row, the web CTA list (and
 // the mobile row it mirrors) carries a two-tier hierarchy: exactly one PRIMARY
-// action is the darker filled `primary`; every following action is a fully
-// filled but lighter `primaryContainer` button — never a bare outline. The
+// action is the filled `primary`; every following action is a fully filled
+// tonal `secondaryContainer` button — never a bare outline (under the fidelity
+// scheme `primaryContainer` is a near twin of `primary`, so it is no longer
+// the quieter step). The
 // button also went public so the archived fallback body can render its Leave
 // action outside the CTA footer (#8064), and it takes an optional leading icon
 // so the state CTAs can echo the map pins' iconography.
@@ -49,7 +51,7 @@ void main() {
     expect(tester.getSize(find.byType(ElevatedButton)).width, 480.0);
   });
 
-  testWidgets('the secondary variant is a lighter filled button, never an '
+  testWidgets('the secondary variant is a tonal filled button, never an '
       'outline', (tester) async {
     await tester.pumpWidget(
       wrap(
@@ -61,10 +63,13 @@ void main() {
     final context = tester.element(find.byType(ElevatedButton));
     final scheme = Theme.of(context).colorScheme;
 
-    expect(button.style?.backgroundColor?.resolve({}), scheme.primaryContainer);
+    expect(
+      button.style?.backgroundColor?.resolve({}),
+      scheme.secondaryContainer,
+    );
     expect(
       button.style?.foregroundColor?.resolve({}),
-      scheme.onPrimaryContainer,
+      scheme.onSecondaryContainer,
     );
     expect(find.byType(OutlinedButton), findsNothing);
   });

@@ -9,6 +9,7 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
@@ -753,14 +754,14 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                               key: target.key,
                               borderRadius: BorderRadius.circular(20),
                               depressed: mode == selectedMode || !enabled,
-                              color: theme.colorScheme.primaryContainer,
+                              color: theme.toolbarButtonFill,
                               onPressed: enabled
                                   ? () => updateMode(mode)
                                   : modeDisabled,
                               playSound: enabled && mode != SelectMode.audio,
-                              colorFactor: theme.brightness == Brightness.light
-                                  ? 0.55
-                                  : 0.3,
+                              // The lip is the fill darkened; a third keeps it
+                              // above the dark scrim (3.5:1 light, 2.5:1 dark).
+                              colorFactor: 0.3,
                               builder: (context, depressed, shadowColor) {
                                 final canShimmer =
                                     !InstructionsEnum
@@ -776,7 +777,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                                   decoration: BoxDecoration(
                                     color: depressed
                                         ? shadowColor
-                                        : theme.colorScheme.primaryContainer,
+                                        : theme.toolbarButtonFill,
                                     shape: BoxShape.circle,
                                   ),
                                   child: ValueListenableBuilder(
@@ -790,9 +791,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                                           playing:
                                               mode == SelectMode.audio &&
                                               playing,
-                                          color: theme
-                                              .colorScheme
-                                              .onPrimaryContainer,
+                                          color: theme.onToolbarButtonFill,
                                         ),
                                   ),
                                 );
@@ -848,7 +847,7 @@ class _SnackBarLink extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = Theme.of(context).colorScheme.primaryContainer;
+    final color = Theme.of(context).colorScheme.inversePrimary;
     return InkWell(
       onTap: onTap,
       child: Text(
@@ -1047,19 +1046,25 @@ class _MoreButton extends StatelessWidget {
       message: L10n.of(context).more,
       child: PressableButton(
         borderRadius: BorderRadius.circular(20),
-        color: theme.colorScheme.primaryContainer,
+        color: theme.toolbarButtonFill,
         onPressed: () => _showMenu(context),
         playSound: true,
-        colorFactor: theme.brightness == Brightness.light ? 0.55 : 0.3,
+        colorFactor: 0.3,
         builder: (context, depressed, shadowColor) => AnimatedContainer(
           duration: FluffyThemes.animationDuration,
           height: 40.0,
           width: 40.0,
           decoration: BoxDecoration(
-            color: depressed ? shadowColor : theme.colorScheme.primaryContainer,
+            color: depressed ? shadowColor : theme.toolbarButtonFill,
             shape: BoxShape.circle,
           ),
-          child: const Icon(Icons.more_horiz, size: 20),
+          child: Icon(
+            Icons.more_horiz,
+            size: 20,
+            // The pressed fill is the rest fill darkened, so its own ink can
+            // stop reading on it; the theme's light tone always does.
+            color: depressed ? theme.lightTone : theme.onToolbarButtonFill,
+          ),
         ),
       ),
     );

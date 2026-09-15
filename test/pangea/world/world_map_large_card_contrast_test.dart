@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/world_map_large_card.dart';
@@ -12,7 +12,7 @@ import 'package:fluffychat/routes/world/world_map_ranking.dart';
 
 /// Covers #8968: a playtester could not read the large card's title in the dark
 /// theme. The title is ink on `colorScheme.surface`, and it used to take the raw
-/// `AppConfig.primaryColor` — which measures 4.20:1 over the dark surface and
+/// seed purple — which measures 4.20:1 over the dark surface and
 /// 4.21:1 over the light one, both under WCAG 2.1 AA's 4.5:1 for the card's
 /// 13px/14px type (accessibility.instructions.md targets AA).
 ///
@@ -57,7 +57,8 @@ void main() {
     brightness: brightness,
     colorScheme: ColorScheme.fromSeed(
       brightness: brightness,
-      seedColor: AppConfig.primaryColor,
+      seedColor: Color(AppSettings.colorSchemeSeedInt.defaultValue),
+      dynamicSchemeVariant: DynamicSchemeVariant.fidelity,
     ),
   );
 
@@ -109,11 +110,14 @@ void main() {
 
   // `available` is the state the playtester reported; the two Ongoing states
   // rendered the identical purple on the identical surface, so they are the
-  // same defect and are covered here rather than left to reappear.
+  // same defect and are covered here rather than left to reappear. `joinable`
+  // joined once its title read the pin's fill green, a fill tone that
+  // measured 4.00:1 on the dark surface.
   for (final state in [
     ActivityPinState.available,
     ActivityPinState.ongoingPending,
     ActivityPinState.ongoingActive,
+    ActivityPinState.joinable,
   ]) {
     for (final brightness in [Brightness.dark, Brightness.light]) {
       for (final isFocused in [false, true]) {

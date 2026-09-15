@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/features/analytics/analytics_constants.dart';
 import 'package:fluffychat/features/analytics_data/analytics_update_dispatcher.dart';
@@ -218,7 +219,7 @@ class _LevelUpBadgeCelebrationState extends State<LevelUpBadgeCelebration>
 
   @override
   Widget build(BuildContext context) {
-    final gold = AppConfig.goldByTheme(context);
+    final gold = Theme.of(context).pangea.goldFixedDim;
     final celebratedLevel = _celebratedLevel;
 
     return Stack(

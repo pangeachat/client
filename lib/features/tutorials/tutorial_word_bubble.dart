@@ -198,6 +198,7 @@ class _TutorialWordBubbleState extends State<TutorialWordBubble>
                 text: widget.greeting.word,
                 style: widget.style ?? DefaultTextStyle.of(context).style,
                 underlineColor: TokenRenderingUtil.underlineColor(
+                  context,
                   theme.colorScheme.primary.withAlpha(200),
                   isNew: _isNew,
                   selected: _cardOpen,

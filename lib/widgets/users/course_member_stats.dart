@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/user/public_profile_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -121,7 +121,7 @@ class _CourseMemberStatsState extends State<CourseMemberStats> {
                           Icon(
                             Icons.star,
                             size: widget.iconSize,
-                            color: AppConfig.goldLight,
+                            color: Theme.of(context).pangea.goldGraphic,
                           ),
                           Text('$stars', style: widget.textStyle),
                         ],

@@ -50,7 +50,6 @@ class _PangeaChatListSearchFieldState extends State<PangeaChatListSearchField> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     final controller = widget.controller;
     return Padding(
       padding: const EdgeInsets.all(16.0),
@@ -68,14 +67,12 @@ class _PangeaChatListSearchFieldState extends State<PangeaChatListSearchField> {
                   tooltip: L10n.of(context).cancel,
                   icon: const Icon(Icons.close_outlined),
                   onPressed: _close,
-                  color: theme.colorScheme.onPrimaryContainer,
                 )
               : controller.isSearchMode
               ? IconButton(
                   tooltip: L10n.of(context).cancel,
                   icon: const Icon(Icons.close_outlined),
                   onPressed: controller.cancelSearch,
-                  color: theme.colorScheme.onPrimaryContainer,
                 )
               : null,
         ),

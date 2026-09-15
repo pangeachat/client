@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/user/analytics_profile_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -159,9 +159,11 @@ class LoadParticipantsBuilderState extends State<LoadParticipantsBuilder> {
 }
 
 extension LeaderboardGradient on int {
-  LinearGradient? get leaderboardGradient {
+  /// The medal ring for this leaderboard position: the theme's bright gold,
+  /// then silver and bronze, each shot through with white.
+  LinearGradient? leaderboardGradient(BuildContext context) {
     final Color? color = this == 0
-        ? AppConfig.gold
+        ? Theme.of(context).pangea.goldFixedDim
         : this == 1
         ? Colors.grey[400]!
         : this == 2

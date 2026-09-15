@@ -10,6 +10,12 @@ class FrameContainer extends StatefulWidget {
   final Color backgroundColor;
   final Color foregroundColor;
 
+  /// A ring around the frame in the page's own surface colour, so a frame
+  /// drawn over a busy backdrop (the subscription page's star art) is cut
+  /// out from it rather than merging with it. Null draws no ring.
+  final Color? outlineColor;
+  final double outlineWidth;
+
   final double borderWidth;
   final double borderRadius;
 
@@ -38,6 +44,8 @@ class FrameContainer extends StatefulWidget {
     this.expandable = false,
     this.initiallyExpanded = true,
     this.titleStyle,
+    this.outlineColor,
+    this.outlineWidth = 3,
   });
 
   @override
@@ -96,7 +104,7 @@ class _FrameContainerState extends State<FrameContainer>
       ),
     );
 
-    return Container(
+    final frame = Container(
       decoration: BoxDecoration(
         color: widget.frameColor,
         borderRadius: BorderRadius.circular(widget.borderRadius),
@@ -149,6 +157,18 @@ class _FrameContainerState extends State<FrameContainer>
           ],
         ),
       ),
+    );
+    final outlineColor = widget.outlineColor;
+    if (outlineColor == null) return frame;
+    return Container(
+      decoration: BoxDecoration(
+        color: outlineColor,
+        borderRadius: BorderRadius.circular(
+          widget.borderRadius + widget.outlineWidth,
+        ),
+      ),
+      padding: EdgeInsets.all(widget.outlineWidth),
+      child: frame,
     );
   }
 }

@@ -4,7 +4,7 @@ import 'package:flutter/rendering.dart';
 import 'package:matrix/matrix_api_lite/utils/logs.dart';
 import 'package:provider/provider.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/languages/language_constants.dart';
 import 'package:fluffychat/features/languages/language_display_name_prefix_widget.dart';
@@ -247,8 +247,7 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
                                             child: SizedBox.expand(
                                               child: Material(
                                                 color: isSelected
-                                                    ? AppConfig.goldLight
-                                                          .withAlpha(100)
+                                                    ? theme.pangea.goldContainer
                                                     : theme
                                                           .colorScheme
                                                           .surfaceContainer,
@@ -259,9 +258,9 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
                                                       ),
                                                   side: isSelected
                                                       ? BorderSide(
-                                                          color: AppConfig
-                                                              .yellowDark
-                                                              .withAlpha(100),
+                                                          color: theme
+                                                              .pangea
+                                                              .goldGraphic,
                                                           width: 4.0,
                                                         )
                                                       : BorderSide(

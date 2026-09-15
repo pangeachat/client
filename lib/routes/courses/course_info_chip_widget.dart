@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/languages/context_language_switch_target.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
@@ -170,7 +171,7 @@ class CourseInfoChipsState extends State<CourseInfoChips> {
             fontSize: widget.fontSize,
             iconSize: widget.iconSize,
             padding: widget.padding,
-            color: canSwitch ? Theme.of(context).colorScheme.tertiary : null,
+            color: canSwitch ? Theme.of(context).pangea.warning : null,
           ),
         ),
         CourseInfoChip(

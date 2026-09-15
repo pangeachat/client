@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/features/subscription/widgets/subscription_card.dart';
 
 /// Covers #8751: the subscription surfaces used to wrap their content in an
@@ -18,7 +18,7 @@ void main() {
     brightness: brightness,
     colorScheme: ColorScheme.fromSeed(
       brightness: brightness,
-      seedColor: AppConfig.primaryColor,
+      seedColor: Color(AppSettings.colorSchemeSeedInt.defaultValue),
     ),
   );
 

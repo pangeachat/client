@@ -107,10 +107,10 @@ class UserTypeStepViewState extends State<UserTypeStepView> {
                                       _setSelectedType(UserType.teacher),
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: type == UserType.teacher
-                                        ? theme.colorScheme.primaryContainer
+                                        ? theme.colorScheme.secondaryContainer
                                         : theme.colorScheme.surfaceContainer,
                                     foregroundColor: type == UserType.teacher
-                                        ? theme.colorScheme.onPrimaryContainer
+                                        ? theme.colorScheme.onSecondaryContainer
                                         : theme.colorScheme.onSurface,
                                   ),
                                   child: Row(
@@ -142,10 +142,10 @@ class UserTypeStepViewState extends State<UserTypeStepView> {
                                       _setSelectedType(UserType.student),
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: type == UserType.student
-                                        ? theme.colorScheme.primaryContainer
+                                        ? theme.colorScheme.secondaryContainer
                                         : theme.colorScheme.surfaceContainer,
                                     foregroundColor: type == UserType.student
-                                        ? theme.colorScheme.onPrimaryContainer
+                                        ? theme.colorScheme.onSecondaryContainer
                                         : theme.colorScheme.onSurface,
                                   ),
                                   child: Row(

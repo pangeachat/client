@@ -4,7 +4,7 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 
 enum AssistanceStateEnum {
@@ -22,9 +22,9 @@ enum AssistanceStateEnum {
     switch (this) {
       case AssistanceStateEnum.noMessage:
       case AssistanceStateEnum.fetched:
-        return Colors.grey[400]!;
+        return Theme.of(context).colorScheme.outline;
       case AssistanceStateEnum.error:
-        return AppConfig.error;
+        return Theme.of(context).pangea.errorGraphic;
       case AssistanceStateEnum.noSub:
       case AssistanceStateEnum.notFetched:
       case AssistanceStateEnum.fetching:
@@ -32,7 +32,7 @@ enum AssistanceStateEnum {
         return Theme.of(context).colorScheme.primary;
       case AssistanceStateEnum.suggestionComplete:
       case AssistanceStateEnum.igcComplete:
-        return AppConfig.success;
+        return Theme.of(context).pangea.successGraphic;
     }
   }
 
@@ -63,7 +63,7 @@ enum AssistanceStateEnum {
         return Theme.of(context).colorScheme.primary;
       case AssistanceStateEnum.suggestionComplete:
       case AssistanceStateEnum.igcComplete:
-        return AppConfig.success;
+        return Theme.of(context).pangea.successGraphic;
     }
   }
 

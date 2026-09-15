@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/choice_array.dart';
@@ -176,10 +177,15 @@ class SuggestionCardState extends State<SuggestionCard> {
                             final isSelected = e == selected;
                             return Choice(
                               value: e,
-                              // Match the IGC SpanCard scheme: green for the correct
-                              // (best) option, red for a distractor.
+                              // Match the IGC SpanCard scheme: the success
+                              // mark for the correct (best) option, the error
+                              // mark for a distractor.
                               color: isSelected
-                                  ? (isBest ? Colors.green : Colors.red)
+                                  ? (isBest
+                                        ? Theme.of(
+                                            context,
+                                          ).pangea.successGraphic
+                                        : Theme.of(context).pangea.errorGraphic)
                                   : null,
                               isGold: isBest,
                             );

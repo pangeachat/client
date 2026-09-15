@@ -241,10 +241,8 @@ class CourseCodePageState extends State<CourseCodePage> {
                               onPressed: _code.isNotEmpty ? _submit : null,
                               label: Text(L10n.of(context).submit),
                               style: FilledButton.styleFrom(
-                                backgroundColor:
-                                    theme.colorScheme.primaryContainer,
-                                foregroundColor:
-                                    theme.colorScheme.onPrimaryContainer,
+                                backgroundColor: theme.colorScheme.primary,
+                                foregroundColor: theme.colorScheme.onPrimary,
                                 padding: const EdgeInsets.symmetric(
                                   vertical: 14.0,
                                 ),
