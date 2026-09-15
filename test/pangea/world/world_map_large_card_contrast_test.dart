@@ -58,6 +58,7 @@ void main() {
     colorScheme: ColorScheme.fromSeed(
       brightness: brightness,
       seedColor: Color(AppSettings.colorSchemeSeedInt.defaultValue),
+      dynamicSchemeVariant: DynamicSchemeVariant.fidelity,
     ),
   );
 
@@ -109,11 +110,14 @@ void main() {
 
   // `available` is the state the playtester reported; the two Ongoing states
   // rendered the identical purple on the identical surface, so they are the
-  // same defect and are covered here rather than left to reappear.
+  // same defect and are covered here rather than left to reappear. `joinable`
+  // joined once its title read the pin's fill green, a fill tone that
+  // measured 4.00:1 on the dark surface.
   for (final state in [
     ActivityPinState.available,
     ActivityPinState.ongoingPending,
     ActivityPinState.ongoingActive,
+    ActivityPinState.joinable,
   ]) {
     for (final brightness in [Brightness.dark, Brightness.light]) {
       for (final isFocused in [false, true]) {

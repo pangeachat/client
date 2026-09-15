@@ -67,9 +67,18 @@ class MessageMorphChoiceItemState extends State<MessageMorphChoiceItem> {
   Widget build(BuildContext context) {
     final color = _color;
     final iconSize = FluffyThemes.isColumnMode(context) ? 24.0 : 16.0;
-    final style = FluffyThemes.isColumnMode(context)
-        ? Theme.of(context).textTheme.bodyLarge
-        : Theme.of(context).textTheme.bodySmall;
+    final pangea = Theme.of(context).pangea;
+    // The outcome fills pair with their own ink.
+    final Color? onColor = widget.isGold == null
+        ? null
+        : widget.isGold!
+        ? pangea.onSuccessContainer
+        : pangea.onWarningContainer;
+    final style =
+        (FluffyThemes.isColumnMode(context)
+                ? Theme.of(context).textTheme.bodyLarge
+                : Theme.of(context).textTheme.bodySmall)
+            ?.copyWith(color: onColor);
 
     final feature = widget.cId.category;
     final tag = widget.cId.lemma;

@@ -108,10 +108,10 @@ void main() {
       what: 'warningGraphic, light',
     );
     expectClears(
-      PangeaColors.of(Brightness.light).success,
+      PangeaColors.of(Brightness.light).successGraphic,
       light,
       graphicFloor,
-      what: 'success, light',
+      what: 'successGraphic, light',
     );
 
     final dark = schemeFor(Brightness.dark);
@@ -122,10 +122,10 @@ void main() {
       what: 'warningGraphic, dark',
     );
     expectClears(
-      PangeaColors.of(Brightness.dark).success,
+      PangeaColors.of(Brightness.dark).successGraphic,
       dark,
       graphicFloor,
-      what: 'success, dark',
+      what: 'successGraphic, dark',
     );
   });
 

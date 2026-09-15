@@ -78,7 +78,8 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
   /// on gold and a wash around it a circle the design doesn't want; the mark's
   /// own gold shifts instead (#8067). Toward black rather than down the HSL
   /// lightness axis, so the shift reads the same in both brightnesses, and no
-  /// further than keeps the badge's level number above 8:1.
+  /// further than keeps the badge's level number, in [onGoldFixed], above
+  /// 6:1 (6.41:1).
   final Color goldHighlight;
 
   /// Caution that reads as text: the course-language chip when the course is

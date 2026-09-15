@@ -81,7 +81,7 @@ class TranscriptDiffView extends StatelessWidget {
             return (
               idleUnderlineColor: changed
                   ? Theme.of(context).pangea.warningGraphic
-                  : Theme.of(context).pangea.success,
+                  : Theme.of(context).pangea.successGraphic,
               idleUnderlineDashed: !changed,
               secondaryText: source,
               secondaryStyle: source == null

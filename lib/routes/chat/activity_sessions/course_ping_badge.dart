@@ -93,7 +93,7 @@ class CoursePingBadge extends StatelessWidget {
           child: Icon(
             Icons.notifications_outlined,
             size: size * 0.6,
-            color: Colors.white,
+            color: (pinState ?? ActivityPinState.joinable).onBodyColor(context),
           ),
         ),
       ),

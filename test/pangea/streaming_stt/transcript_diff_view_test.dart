@@ -127,7 +127,7 @@ void main() {
       );
       expect(
         rendered.underlineColor,
-        PangeaColors.of(Brightness.light).success,
+        PangeaColors.of(Brightness.light).successGraphic,
       );
       expect(rendered.dashed, isTrue);
     }

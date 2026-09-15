@@ -71,7 +71,7 @@ class EditableTranscriptController extends TextEditingController {
         text,
         baseStyle: style,
         changedColor: Theme.of(context).pangea.warningGraphic,
-        unchangedColor: Theme.of(context).pangea.success,
+        unchangedColor: Theme.of(context).pangea.successGraphic,
       ),
     );
   }

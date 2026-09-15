@@ -82,7 +82,7 @@ class _HexLevelBadgeState extends State<HexLevelBadge> {
                     style: TextStyle(
                       fontSize: widget.fontSize,
                       fontWeight: FontWeight.bold,
-                      color: Colors.black,
+                      color: Theme.of(context).pangea.onGoldFixed,
                     ),
                   ),
                 ),

@@ -65,7 +65,7 @@ void main() {
     final unchanged = spans.firstWhere((s) => s.text == 'mundo');
     expect(
       unchanged.style?.decorationColor,
-      PangeaColors.of(Brightness.light).success,
+      PangeaColors.of(Brightness.light).successGraphic,
     );
     expect(unchanged.style?.decorationStyle, TextDecorationStyle.dashed);
     c.dispose();
