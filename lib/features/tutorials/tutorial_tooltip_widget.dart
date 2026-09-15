@@ -167,9 +167,9 @@ class TutorialTooltipWidget extends StatelessWidget {
                     Expanded(
                       child: _TutorialChoiceButton(
                         label: choice.label,
-                        // The app's colour hierarchy: the darker filled primary
-                        // leads (the advancing choice); the decline is a fully
-                        // filled but lighter primaryContainer button.
+                        // The app's colour hierarchy: the filled primary leads
+                        // (the advancing choice); the decline is a fully filled
+                        // tonal secondaryContainer button, as in the CTA row.
                         secondary:
                             choice.outcome != TutorialChoiceOutcome.advance,
                         onPressed: () => onChoice?.call(choice.outcome),
@@ -249,9 +249,9 @@ class _TutorialChoiceButton extends StatelessWidget {
     final scheme = Theme.of(context).colorScheme;
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: secondary ? scheme.primaryContainer : scheme.primary,
+        backgroundColor: secondary ? scheme.secondaryContainer : scheme.primary,
         foregroundColor: secondary
-            ? scheme.onPrimaryContainer
+            ? scheme.onSecondaryContainer
             : scheme.onPrimary,
         padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 6.0),
         minimumSize: const Size(0, 36),

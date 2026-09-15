@@ -82,13 +82,15 @@ class _CourseCtaChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    // The lead chip is the filled primary; every other chip is the tonal
+    // secondaryContainer pill, as in the activity page's CTA row.
     final style = ElevatedButton.styleFrom(
       backgroundColor: filled
           ? theme.colorScheme.primary
-          : theme.colorScheme.primaryContainer,
+          : theme.colorScheme.secondaryContainer,
       foregroundColor: filled
           ? theme.colorScheme.onPrimary
-          : theme.colorScheme.onPrimaryContainer,
+          : theme.colorScheme.onSecondaryContainer,
       elevation: 0.0,
       shape: const StadiumBorder(),
       padding: const EdgeInsets.symmetric(horizontal: 20.0),

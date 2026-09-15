@@ -148,6 +148,8 @@ class ActivitySuggestionCard extends StatelessWidget {
                               earned: starsEarned.clamp(0, _starsTotal),
                               iconSize: 12,
                               condensed: _starsTotal > 7,
+                              // On the state fill both stars take its ink.
+                              earnedColor: onState,
                               emptyColor: onState,
                             ),
                           Row(
