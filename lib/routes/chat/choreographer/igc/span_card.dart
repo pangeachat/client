@@ -423,7 +423,7 @@ class _MatchContent extends StatelessWidget {
                       choices: currentMatch.choices?.map((e) {
                         return Choice<SpanChoice>(
                           value: e,
-                          color: e.selected ? e.type.color : null,
+                          color: e.selected ? e.type.color(context) : null,
                           isGold: e.type.isSuggestion,
                         );
                       }).toList(),

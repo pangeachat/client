@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/settings/settings_security/settings_3pid/settings_3pid.dart';
 import 'package:fluffychat/routes/world/panel_card.dart';
@@ -74,8 +75,8 @@ class Settings3PidView extends StatelessWidget {
                               leading: CircleAvatar(
                                 backgroundColor: theme.scaffoldBackgroundColor,
                                 foregroundColor: identifier.isEmpty
-                                    ? Colors.orange
-                                    : Colors.grey,
+                                    ? theme.pangea.warning
+                                    : theme.colorScheme.onSurfaceVariant,
                                 child: Icon(
                                   identifier.isEmpty
                                       ? Icons.warning_outlined
@@ -113,7 +114,9 @@ class Settings3PidView extends StatelessWidget {
                                         leading: CircleAvatar(
                                           backgroundColor:
                                               theme.scaffoldBackgroundColor,
-                                          foregroundColor: Colors.grey,
+                                          foregroundColor: theme
+                                              .colorScheme
+                                              .onSurfaceVariant,
                                           child: Icon(identifier[i].iconData),
                                         ),
                                         title: Text(identifier[i].address),

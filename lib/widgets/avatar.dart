@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
@@ -199,10 +200,10 @@ class Avatar extends StatelessWidget {
                 return const SizedBox.shrink();
               }
               final dotColor = presence.presence.isOnline
-                  ? Colors.green
+                  ? Theme.of(context).pangea.successGraphic
                   : presence.presence.isUnavailable
-                  ? Colors.orange
-                  : Colors.grey;
+                  ? Theme.of(context).pangea.warningGraphic
+                  : Theme.of(context).colorScheme.outline;
               return Positioned(
                 // #Pangea
                 // bottom: -3,

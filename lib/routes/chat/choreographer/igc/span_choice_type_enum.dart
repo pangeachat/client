@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 
 enum SpanChoiceTypeEnum {
@@ -50,18 +51,19 @@ extension SpanChoiceExt on SpanChoiceTypeEnum {
     }
   }
 
-  Color get color {
+  /// The choice's mark colour once selected: the success mark for a right
+  /// answer, the error mark for a distractor.
+  Color color(BuildContext context) {
     switch (this) {
       case SpanChoiceTypeEnum.suggestion:
       // ignore: deprecated_member_use_from_same_package
       case SpanChoiceTypeEnum.bestCorrection:
-        return Colors.green;
       case SpanChoiceTypeEnum.alt:
       // ignore: deprecated_member_use_from_same_package
       case SpanChoiceTypeEnum.bestAnswer:
-        return Colors.green;
+        return Theme.of(context).pangea.successGraphic;
       case SpanChoiceTypeEnum.distractor:
-        return Colors.red;
+        return Theme.of(context).pangea.errorGraphic;
     }
   }
 }

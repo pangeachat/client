@@ -298,8 +298,6 @@ class SpanChoice {
     return feedback!;
   }
 
-  Color get color => type.color;
-
   // override == operator and hashcode
   @override
   bool operator ==(Object other) {
