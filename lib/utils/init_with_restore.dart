@@ -6,6 +6,7 @@ import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/config/setting_keys.dart';
+import 'package:fluffychat/features/notifications/nse_session.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 
@@ -72,6 +73,8 @@ extension InitWithRestoreExtension on Client {
     await storage?.delete(
       key: '${AppSettings.applicationName.value}_session_backup_$clientName',
     );
+    // The notification extension must not outlive the session it holds.
+    await NseSession.clear();
   }
 
   Future<void> initWithRestore({void Function()? onMigration}) async {
@@ -129,6 +132,12 @@ extension InitWithRestoreExtension on Client {
                     level: SentryLevel.warning,
                   ),
                 ),
+          );
+          // The notification service extension needs the same credentials to
+          // fetch an avatar for a notification the app never sees. It reports
+          // its own failures, which are cosmetic.
+          unawaited(
+            NseSession.store(accessToken: accessToken, homeserver: homeserver),
           );
         }
       }
