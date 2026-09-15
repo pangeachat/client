@@ -93,12 +93,10 @@ class RegistrationEmailPopupState extends State<RegistrationEmailPopup> {
                     ),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Theme.of(
-                          context,
-                        ).colorScheme.primaryContainer,
+                        backgroundColor: Theme.of(context).colorScheme.primary,
                         foregroundColor: Theme.of(
                           context,
-                        ).colorScheme.onPrimaryContainer,
+                        ).colorScheme.onPrimary,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16.0),
                         ),
