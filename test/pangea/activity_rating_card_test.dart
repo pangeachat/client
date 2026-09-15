@@ -104,6 +104,24 @@ void main() {
     expect(find.byIcon(Icons.thumb_down_outlined), findsOneWidget);
   });
 
+  testWidgets('thumbs are labelled by what the tap means, not yes/no', (
+    tester,
+  ) async {
+    await pumpCard(tester, sessionRoom(finished: true));
+    final l10n = L10n.of(tester.element(find.byType(ActivityRatingCard)));
+
+    String tooltipOf(IconData icon) => tester
+        .widget<Tooltip>(
+          find.ancestor(of: find.byIcon(icon), matching: find.byType(Tooltip)),
+        )
+        .message!;
+
+    expect(tooltipOf(Icons.thumb_up_outlined), l10n.rateActivityLiked);
+    expect(tooltipOf(Icons.thumb_down_outlined), l10n.rateActivityDisliked);
+    expect(tooltipOf(Icons.thumb_up_outlined), isNot(l10n.yes));
+    expect(tooltipOf(Icons.thumb_down_outlined), isNot(l10n.no));
+  });
+
   testWidgets('comment and submit stay hidden until a thumb is picked', (
     tester,
   ) async {

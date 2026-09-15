@@ -71,6 +71,14 @@ All three endpoint suites resolve their target URLs through one helper, [`endpoi
 
 `synapse_endpoint_test.dart` also doubles as a local seeding tool: with `TEST_COURSE_CODE` + `SEED_USERS` set in `.env`, its seed test registers (best-effort) and joins several learners to a course via the real `knock_with_code` call, so you can see a multi-user course locally. Creating brand-new accounts still needs the operator path (`register_new_matrix_user`) when open registration is off.
 
+### Contract tests — `test/pangea/synapse_contract/`
+
+Synapse contract tests exercise the exact requests the Pangea client sends to the homeserver — the layer above matrix-dart-sdk, which is tested upstream. A test belongs here iff Pangea changes the bytes on the wire or the request sequence: custom room-creation shapes, `pangea.*` event and account-data types, non-spec content keys (`access_code` in join rules, custom `m.room.create` content), Pangea module endpoints, and multi-request orchestration. Vanilla SDK calls are deliberately out of scope — re-testing SDK plumbing is redundant.
+
+Two mechanisms: raw-endpoint tests (the `synapse_endpoint_test.dart` pattern) for `_synapse/client/pangea/*` module endpoints, and live-SDK tests that instantiate a real `Client`, log in, and call the client's own extension methods — so the wire bytes are exactly what the app sends and no fixture can drift. Writes assert success **plus a server-side state read-back** (a 200 alone hides silent normalization); reads must parse into the client's own model classes; the typed error contracts client code branches on (e.g. `ORG.PANGEA.BANNED_FROM_ROOM`) get named tests.
+
+Same tier and env plumbing as the other endpoint suites (`endpoint_test_env.dart`; local-only, skips without `.env`). **Before any Synapse version bump, this suite must pass against both the current and the target version on the local stack** — that run is a listed precondition in the upgrade's deploy note. The suite assumes the stock local stack: open registration (m.login.dummy), a non-zero `delete_room_purge_delay_seconds`, an on-domain bot account, and — on Synapse ≥1.159 — an `rc_room_creation` override above the suite's room churn; the harness refuses non-localhost targets unless `CONTRACT_SUITE_ALLOW_REMOTE=1`.
+
 ## Current State
 
 - **Unit tests**: Dart tests in `test/` and `test/pangea/` — model parsing, schema validation, data transforms, and choreo/synapse/cms endpoint tests.

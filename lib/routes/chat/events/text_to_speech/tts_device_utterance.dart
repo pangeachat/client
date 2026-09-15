@@ -109,25 +109,86 @@ class TtsDeviceUtterance {
   }
 
   /// Plugin `completionHandler`.
-  void onEngineComplete() => _engineEnd();
+  void onEngineComplete() {
+    // The ONLY positive evidence that the utterance reached its end.
+    _engineReportedComplete = true;
+    _engineEnd();
+  }
 
   /// Plugin `cancelHandler` — the engine confirmed a stop.
-  void onEngineCancel() => _engineEnd();
+  void onEngineCancel() {
+    _engineReportedComplete = false;
+    _engineEnd();
+  }
 
   /// Plugin `errorHandler`. The Web Speech API reports interruptions here too
   /// (`interrupted` after speech began, `canceled` before); the message does
   /// not matter, only whether a start preceded it and whether a stop was asked.
-  void onEngineError(dynamic message) => _engineEnd();
+  void onEngineError(dynamic message) {
+    // Chrome reports an interruption here. Whatever ended this utterance, it
+    // was not a clean finish.
+    _engineReportedComplete = false;
+    _engineEnd();
+  }
 
   /// The plugin's `speak` future resolved. On native this means finished (or,
   /// on Android, stopped); on the web it means the engine fired `end`. Either
   /// way audio was heard only if a start was reported first — a completion
   /// with no start is the previous utterance's `end` event landing on this
   /// one, which never spoke.
-  void onSpeakReturned() => _settle();
+  ///
+  /// [engineCompleted] says the RESOLVED VALUE itself is the engine's
+  /// completion verdict, and is how [playedToEnd] is ever true on native. Both
+  /// native plugins resolve `speak` from inside their own completion callback
+  /// and post `speak.onComplete` immediately after it — Android through one
+  /// `Handler`, iOS through one channel — so the future always wins that race
+  /// and settles this utterance a turn before `completionHandler` arrives. The
+  /// value carries the same fact the late callback would have: on Android
+  /// `speak` resolves `1` only from `onDone` (a stop resolves `0`), and on iOS
+  /// only from `didFinish`. Without it, exposure never mints on any native
+  /// platform while the audio plays perfectly (#8493).
+  void onSpeakReturned({bool engineCompleted = false}) {
+    if (engineCompleted) _engineReportedComplete = true;
+    _settle();
+  }
 
   /// The plugin's `speak` future threw.
   void onSpeakThrew() => _settle(TtsDeviceOutcome.failed);
+
+  /// Whether this utterance ran to its end.
+  ///
+  /// [TtsDeviceOutcome.played] deliberately does NOT answer this: for listening
+  /// minutes an utterance that was cut off still counts, because the learner
+  /// heard the part that played. Word-level exposure is the opposite — it is
+  /// all-or-nothing per lemma, and a read stopped after two words did not
+  /// expose the learner to the rest of the sentence.
+  ///
+  /// **Positive evidence only.** This is not "ended and we did not stop it":
+  /// an utterance cut short by a phone call, by audio focus moving to another
+  /// app, or by the browser cancelling `speechSynthesis` ends with no stop of
+  /// ours, and defining completion by the absence of our own stop would count
+  /// every one of those as fully heard. It requires the engine to have
+  /// reported a completion — through `completionHandler`, or through the
+  /// `speak` future resolving with the engine's own completion verdict, which
+  /// is the only one of the two that ever arrives in time on native. See
+  /// [onSpeakReturned].
+  ///
+  /// The cost is under-counting on a platform that reports a completion
+  /// through neither — exposure would simply not be recorded there. That is
+  /// the right direction to fail for a research signal: a gap is visible, a
+  /// phantom is not.
+  ///
+  /// Captured at settle time rather than derived on read: [stopRequested] is
+  /// mutable, and a LATER request's stop must not retroactively reclassify an
+  /// utterance that had already finished.
+  bool get playedToEnd => _playedToEnd;
+  bool _playedToEnd = false;
+
+  /// Whether the engine reported this utterance COMPLETING, as opposed to
+  /// ending some other way. Set from `completionHandler` on the web and from
+  /// the resolved `speak` value on native; see [onSpeakReturned] for why the
+  /// callback alone is not enough.
+  bool _engineReportedComplete = false;
 
   TtsDeviceOutcome get _endedOutcome {
     if (started) return TtsDeviceOutcome.played;
@@ -141,6 +202,12 @@ class TtsDeviceUtterance {
 
   void _settle([TtsDeviceOutcome? outcome]) {
     dispose();
-    if (!_outcome.isCompleted) _outcome.complete(outcome ?? _endedOutcome);
+    if (_outcome.isCompleted) return;
+    // A clean finish is: audio started, the engine said it completed, and
+    // nothing asked it to stop. An explicit outcome is only ever passed for a
+    // failure, so it disqualifies too.
+    _playedToEnd =
+        outcome == null && started && !stopRequested && _engineReportedComplete;
+    _outcome.complete(outcome ?? _endedOutcome);
   }
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-08-24 11:54:17.808567",
+    "@@last_modified": "2026-08-25 15:25:43.540834",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -2751,14 +2751,12 @@
     "enableAutocorrectPopupTitle": "ターゲット言語のキーボードを追加するには、次の場所に移動してください：",
     "enableAutocorrectPopupSteps": "  • 設定\n  • 一般\n  • キーボード\n  • キーボード\n  • 新しいキーボードを追加",
     "enableAutocorrectPopupDescription": "言語を選択したら、キーボードの左下にある小さな地球儀アイコンをクリックして、新しくインストールしたキーボードを有効にできます。",
-    "downloadGboardSteps": "• Gboardをダウンロード\n  • アプリを開く\n  • 言語\n  • キーボードを追加\n  • 言語を選択\n  • キーボードの種類を選択\n  • 完了",
     "enableAutocorrectWarning": "警告！対象の言語キーボードを追加する必要があります",
     "displayName": "表示名",
     "leaveRoomDescription": "このチャットを退出しようとしています。 他のユーザーにはあなたが退出したことが表示されます。",
     "confirmUserId": "アカウントを削除するには、Pangea Chatのユーザー名を確認してください。",
     "paidSubscriptionStarts": "{startDate}から開始",
     "cancelInSubscriptionSettings": "• サブスクリプション設定でいつでもキャンセル可能",
-    "downloadGboard": "Gboardをダウンロード",
     "autocorrectNotAvailable": "申し訳ありませんが、このプラットフォームではこの機能はサポートされていません。今後のアップデートにご期待ください！",
     "pleaseUpdateApp": "続行するにはアプリを更新してください。",
     "chooseEmojiInstructionsBody": "絵文字とそれが最もよく表す言葉を一致させてください。心配しないで！意見が異なってもポイントは差し引かれません。😊",
@@ -6156,10 +6154,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -6185,10 +6179,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -10528,8 +10518,18 @@
     "autocorrectAndroidFallbackTitle": "キーボードが目標言語に対応していない場合は、Gboardをインストールして言語を追加してください。",
     "resendInSeconds": "再送信 ({seconds})",
     "mapLevelFallbackNotice": "{selected}のアクティビティはまだありません。代わりに{shown}を表示しています。",
+    "openKeyboardSettings": "キーボード設定を開く",
+    "keyboardPromptAddKeyboardMessage": "オートコレクトを有効にするには、学習言語のキーボードを追加してください。",
+    "keyboardPromptAddKeyboardAction": "キーボードを追加",
+    "keyboardPromptSwitchKeyboardMessage": "キーボードの地球儀アイコンをタップして、学習言語に切り替えてください。",
     "switchLanguageChipLabel": "{language}に切り替える",
     "languageDropdownLevel": "レベル{level}",
     "whatAreYouLearning": "何を学習していますか？",
-    "languageSwitcherBaseLanguageLabel": "あなたの母国語"
+    "languageSwitcherBaseLanguageLabel": "あなたの母国語",
+    "listenModeDescription": "選択肢をタップして聞きます。何も選択されていません。",
+    "rateActivityLiked": "よかった",
+    "rateActivityDisliked": "よくなかった",
+    "constructUseHrdDesc": "聞きました",
+    "timesHeard": "{count, plural, =1{1回聞きました} other{{count}回聞きました}}",
+    "allSettings": "すべての設定"
 }

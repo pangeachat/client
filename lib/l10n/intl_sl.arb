@@ -1604,14 +1604,12 @@
     "enableAutocorrectPopupTitle": "Dodajte tipkovnico za ciljni jezik tako, da greste na:",
     "enableAutocorrectPopupSteps": "  • Nastavitve\n  • Splošno\n  • Tipkovnica\n  • Tipkovnice\n  • Dodaj novo tipkovnico",
     "enableAutocorrectPopupDescription": "Ko je jezik izbran, lahko kliknete na majhno ikono zemljevide na spodnjem levem delu tipkovnice, da aktivirate novo nameščeno tipkovnico.",
-    "downloadGboardSteps": " • Prenesi Gboard\n  • Odpri aplikacijo\n  • Jezik\n  • Dodaj tipkovnico\n  • Izberi jezik\n  • Izberi vrsto tipkovnice\n  • Končano",
     "enableAutocorrectWarning": "Opozorilo! Potrebno je dodati tipkovnico ciljanega jezika",
     "displayName": "Prikazno ime",
     "leaveRoomDescription": "Približujete se izstopu iz tega klepeta. Drugi uporabniki bodo videli, da ste zapustili klepet.",
     "confirmUserId": "Prosimo, potrdite svoje uporabniško ime Pangea Chata, da izbrišete svoj račun.",
     "paidSubscriptionStarts": "Začne se {startDate}",
     "cancelInSubscriptionSettings": " • Prekliči kadarkoli v nastavitvah naročnine",
-    "downloadGboard": "Prenesi Gboard",
     "autocorrectNotAvailable": "Na žalost vaša platforma trenutno ni podprta za to funkcijo. Ostanite z nami za nadaljnji razvoj!",
     "pleaseUpdateApp": "Prosimo, posodobite aplikacijo za nadaljevanje.",
     "chooseEmojiInstructionsBody": "Ujemajte emojije z besedami, ki jih najbolje predstavljajo. Ne skrbite! Ni kazni za nesoglasje. 😅",
@@ -1805,7 +1803,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-08-24 11:54:21.179132",
+    "@@last_modified": "2026-08-25 15:25:45.896060",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6332,10 +6330,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -6361,10 +6355,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -10704,8 +10694,18 @@
     "autocorrectAndroidFallbackTitle": "Če vaša tipkovnica ne ponuja vašega ciljnega jezika, namestite Gboard in dodajte jezik tam:",
     "resendInSeconds": "Ponovno pošlji ({seconds})",
     "mapLevelFallbackNotice": "Še ni dejavnosti {selected} – namesto tega so prikazane dejavnosti {shown}.",
+    "openKeyboardSettings": "Odpri nastavitve tipkovnice",
+    "keyboardPromptAddKeyboardMessage": "Dodajte tipkovnico za ciljni jezik, da bo samodejni popravek deloval.",
+    "keyboardPromptAddKeyboardAction": "Dodaj tipkovnico",
+    "keyboardPromptSwitchKeyboardMessage": "Dotaknite se ikone globusa na tipkovnici, da preklopite na ciljni jezik.",
     "switchLanguageChipLabel": "Preklopi na {language}",
     "languageDropdownLevel": "Stopnja {level}",
     "whatAreYouLearning": "Kaj se učiš?",
-    "languageSwitcherBaseLanguageLabel": "Tvoj osnovni jezik"
+    "languageSwitcherBaseLanguageLabel": "Tvoj osnovni jezik",
+    "listenModeDescription": "Tapnite izbiro, da jo slišite. Nič ni izbrano.",
+    "rateActivityLiked": "Všeč mi je bilo",
+    "rateActivityDisliked": "Ni mi bilo všeč",
+    "constructUseHrdDesc": "Slišal",
+    "timesHeard": "{count, plural, =1{Slišano enkrat} other{Slišano {count} krat}}",
+    "allSettings": "Vse nastavitve"
 }

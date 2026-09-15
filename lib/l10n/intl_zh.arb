@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-08-24 11:54:23.290953",
+    "@@last_modified": "2026-08-25 15:25:47.055057",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -3360,14 +3360,12 @@
     "enableAutocorrectPopupTitle": "通过以下步骤添加目标语言键盘：",
     "enableAutocorrectPopupSteps": "  • 设置\n  • 通用\n  • 键盘\n  • 键盘\n  • 添加新键盘",
     "enableAutocorrectPopupDescription": "选择语言后，可以点击键盘左下角的小地球图标，激活新安装的键盘。",
-    "downloadGboardSteps": " • 下载Gboard\n  • 打开应用\n  • 语言\n  • 添加键盘\n  • 选择语言\n  • 选择键盘类型\n  • 完成",
     "enableAutocorrectWarning": "警告！需要添加目标语言键盘",
     "displayName": "显示名称",
     "leaveRoomDescription": "你即将离开此聊天。其他用户将看到你已离开聊天。",
     "confirmUserId": "请确认您的Pangea聊天用户名以删除您的账户。",
     "paidSubscriptionStarts": "开始于 {startDate}",
     "cancelInSubscriptionSettings": "• 在订阅设置中随时取消",
-    "downloadGboard": "下载Gboard",
     "autocorrectNotAvailable": "很抱歉，您的平台目前不支持此功能。请关注后续开发！",
     "pleaseUpdateApp": "请更新应用以继续。",
     "chooseEmojiInstructionsBody": "将表情符号与它们最能代表的单词匹配。别担心！不同意也不会扣分。😊",
@@ -5567,10 +5565,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -5596,10 +5590,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -9759,8 +9749,18 @@
     "autocorrectAndroidFallbackTitle": "如果您的键盘不提供目标语言，请安装 Gboard 并在其中添加该语言：",
     "resendInSeconds": "重新发送 ({seconds})",
     "mapLevelFallbackNotice": "暂无{selected}活动，显示{shown}。",
+    "openKeyboardSettings": "打开键盘设置",
+    "keyboardPromptAddKeyboardMessage": "为您的目标语言添加键盘，以便自动更正功能正常运行。",
+    "keyboardPromptAddKeyboardAction": "添加键盘",
+    "keyboardPromptSwitchKeyboardMessage": "点击键盘上的地球图标，切换到您的目标语言。",
     "switchLanguageChipLabel": "切换到{language}",
     "languageDropdownLevel": "级别 {level}",
     "whatAreYouLearning": "您在学什么？",
-    "languageSwitcherBaseLanguageLabel": "您的母语"
+    "languageSwitcherBaseLanguageLabel": "您的母语",
+    "listenModeDescription": "点击一个选项来听。未选择任何内容。",
+    "rateActivityLiked": "喜欢",
+    "rateActivityDisliked": "不喜欢",
+    "constructUseHrdDesc": "听过",
+    "timesHeard": "{count, plural, =1{听到一次} other{听到{count}次}}",
+    "allSettings": "所有设置"
 }
