@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:material_color_utilities/material_color_utilities.dart';
 
-import 'package:fluffychat/config/app_config.dart';
-
 /// Brand colours that must not move when the learner changes the seed.
 ///
 /// Every role is a tone of one key colour, so its contrast against the
@@ -157,6 +155,10 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
   /// nowhere else; widgets take a gold role from the theme.
   static const Color goldKey = Color(0xFFFDBF01);
 
+  /// The success green, the key colour the success family is tones of. Read
+  /// nowhere else; widgets take a success role from the theme.
+  static const Color successKey = Color(0xFF33D057);
+
   /// The caution orange, the key colour the warning family is tones of.
   /// Orange rather than the org doc's red, which lands on Material's error
   /// tones. Read nowhere else.
@@ -168,13 +170,11 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
   static const Color joinableKey = Color(0xFF34A853);
 
   static PangeaColors _fromKey(Brightness brightness) {
-    // AppConfig.success and the keys above are the key colours; every role
-    // below is a tone of one of them.
+    // The keys above are the key colours; every role below is a tone of one
+    // of them.
     final gold = TonalPalette.fromHct(Hct.fromInt(goldKey.toARGB32()));
     final warning = TonalPalette.fromHct(Hct.fromInt(warningKey.toARGB32()));
-    final success = TonalPalette.fromHct(
-      Hct.fromInt(AppConfig.success.toARGB32()),
-    );
+    final success = TonalPalette.fromHct(Hct.fromInt(successKey.toARGB32()));
     final joinable = TonalPalette.fromHct(Hct.fromInt(joinableKey.toARGB32()));
     // Material's error palette (DynamicScheme.errorPalette): hue 25, chroma
     // 84, the one every ColorScheme.fromSeed shares whatever the seed.

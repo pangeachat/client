@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:intl/intl.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/analytics/construct_use_model.dart';
 import 'package:fluffychat/features/analytics/construct_use_type_enum.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
@@ -111,14 +111,14 @@ class LemmaUsageChips extends StatelessWidget {
       if (counts.positive > 0)
         _UsageChip(
           count: counts.positive,
-          color: AppConfig.success,
+          color: theme.pangea.success,
           icon: Icons.check,
           label: l10n.usedCorrectly(counts.positive),
         ),
       if (counts.negative > 0)
         _UsageChip(
           count: counts.negative,
-          color: Colors.red,
+          color: theme.colorScheme.error,
           icon: Icons.close,
           label: l10n.usedIncorrectly(counts.negative),
         ),

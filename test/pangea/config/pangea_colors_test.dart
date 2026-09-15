@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:material_color_utilities/material_color_utilities.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/pangea_colors.dart';
 
 /// WCAG 2 contrast ratio between two opaque colours.
@@ -26,7 +25,7 @@ void main() {
   );
   Color warningTone(int t) => Color(warningPalette.get(t));
   final successPalette = TonalPalette.fromHct(
-    Hct.fromInt(AppConfig.success.toARGB32()),
+    Hct.fromInt(PangeaColors.successKey.toARGB32()),
   );
   Color successTone(int t) => Color(successPalette.get(t));
 

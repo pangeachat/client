@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 
@@ -150,7 +149,7 @@ void main() {
   // against every surface rather than just the lightest one.
   test('the bright constants this issue replaced still fail on light', () {
     final card = schemeFor(Brightness.light).surfaceContainerHighest;
-    expect(contrast(AppConfig.success, card), lessThan(graphicFloor));
+    expect(contrast(PangeaColors.successKey, card), lessThan(graphicFloor));
     expect(contrast(PangeaColors.warningKey, card), lessThan(graphicFloor));
     // Colors.red was AppConfig.error until every site read the scheme's error.
     expect(contrast(Colors.red, card), lessThan(textFloor));

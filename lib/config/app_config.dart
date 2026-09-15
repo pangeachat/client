@@ -17,17 +17,6 @@ abstract class AppConfig {
   }
 
   // ---------------------------------------------------------------------------
-  // Colours
-  //
-  // Widgets read colour roles from the theme (Theme.of(context).pangea and
-  // colorScheme), per design-tokens.instructions.md. What lives here is the
-  // key colours PangeaColors derives its role families from: each is the one
-  // place its hue is written, and the extension turns it into roles by tone.
-  // The direct reads of these keys that remain in widget code move to a role
-  // as each site is touched.
-  // ---------------------------------------------------------------------------
-  static const Color success = Color(0xFF33D057);
-
   static const double messageFontSize = 16.0;
   static const bool allowOtherHomeservers = true;
   static const bool enableRegistration = true;

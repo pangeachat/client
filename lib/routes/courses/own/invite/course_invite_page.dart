@@ -6,7 +6,6 @@ import 'package:flutter/material.dart' hide Visibility;
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/analytics_access/course_settings_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
@@ -382,7 +381,9 @@ class CourseInvitePageController extends State<CourseInvitePage>
                                       context: context,
                                       future: () => _setVisibility(v),
                                     ),
-                                    activeThumbColor: AppConfig.success,
+                                    activeThumbColor: Theme.of(
+                                      context,
+                                    ).pangea.successFixedDim,
                                   );
                                 },
                               ),
@@ -410,7 +411,9 @@ class CourseInvitePageController extends State<CourseInvitePage>
                                       future: () =>
                                           _setRequireAnalyticsAccess(v),
                                     ),
-                                    activeThumbColor: AppConfig.success,
+                                    activeThumbColor: Theme.of(
+                                      context,
+                                    ).pangea.successFixedDim,
                                   );
                                 },
                               ),
