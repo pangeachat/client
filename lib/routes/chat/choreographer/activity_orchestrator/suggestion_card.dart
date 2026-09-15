@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
+import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -97,6 +98,9 @@ class SuggestionCardState extends State<SuggestionCard> {
       context: context,
       roomId: widget.controller.room.id,
       basedOnEventId: model.basedOnEventId,
+      ownRoleId: model.suggestion.roleId,
+      goalCompletion: model.goalCompletion,
+      activityPlan: widget.controller.room.activityPlan,
     );
   }
 

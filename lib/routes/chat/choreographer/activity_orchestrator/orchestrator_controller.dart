@@ -150,6 +150,7 @@ class OrchestratorController {
             : ActiveSuggestionModel(
                 suggestion: suggestion,
                 basedOnEventId: output.basedOnEventId,
+                goalCompletion: output.goalCompletion,
               ),
       );
     } catch (e, s) {
@@ -228,6 +229,7 @@ class OrchestratorController {
       ActiveSuggestionModel(
         suggestion: activeSuggestion.suggestion,
         basedOnEventId: activeSuggestion.basedOnEventId,
+        goalCompletion: activeSuggestion.goalCompletion,
       ),
     );
   }

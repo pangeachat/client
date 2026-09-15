@@ -32,6 +32,8 @@ class OrchestratorFeedbackRepo {
     required String roomId,
     required String basedOnEventId,
     required OrchestratorFeedbackPart part,
+    required String targetRoleId,
+    String? targetGoalId,
     required String comment,
   }) async {
     final requests = Requests(
@@ -44,6 +46,10 @@ class OrchestratorFeedbackRepo {
           "room_id": roomId,
           "based_on_event_id": basedOnEventId,
           "part": part.wireValue,
+          // The award or bucket under review. The server refuses a target the
+          // stored turn does not hold, which is how "you flagged the wrong
+          // turn" surfaces to the reviewer instead of being recorded.
+          "target": {"role_id": targetRoleId, "goal_id": ?targetGoalId},
           // Trimmed here as well as server-side: the server rejects a blank
           // comment with a 422 and a reviewer should never reach that.
           "comment": comment.trim(),
@@ -59,6 +65,8 @@ class OrchestratorFeedbackRepo {
           "roomId": roomId,
           "basedOnEventId": basedOnEventId,
           "part": part.wireValue,
+          "targetRoleId": targetRoleId,
+          "targetGoalId": targetGoalId,
           "status": e is PangeaHttpException ? e.statusCode : null,
           // The comment is deliberately absent: it is reviewer prose about
           // learner content and does not belong in Sentry.
