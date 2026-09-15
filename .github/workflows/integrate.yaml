@@ -81,6 +81,13 @@ jobs:
           flutter-version: ${{ env.FLUTTER_VERSION }}
           cache: true
       - run: flutter pub get
+      # rive_native ships its runtime as a prebuilt native library that is
+      # downloaded into the build directory rather than resolved by pub, so a
+      # fresh checkout has no `librive_native_plugin.so` and any test that
+      # loads a .riv fails at `RiveNative.init()`. Same one-time setup the
+      # TestFlight job runs for iOS.
+      - name: Set up rive_native
+        run: dart run rive_native:setup --platform linux
       - run: flutter gen-l10n
       - name: Add Firebase Messaging
         env:

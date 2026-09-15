@@ -149,6 +149,43 @@ void main() {
     });
   });
 
+  group('an expired-token 401', () {
+    // #8701 collapses the boot burst of 401s into one grouping; a Pangea
+    // Synapse-module 401 is one of its shapes. The module serves endpoints
+    // under two prefixes, and only the versioned one matched — room_preview
+    // under unstable/org.pangea kept its own issue (CLIENT-EKC, #9061).
+    test('shares one group under either module path prefix', () async {
+      const expiredToken = ['pangea-auth', 'expired-matrix-token'];
+      expect(
+        await fingerprintOf(
+          () => ErrorHandler.logError(
+            e: http(
+              401,
+              path: '/_synapse/client/unstable/org.pangea/room_preview',
+              detail: 'M_UNAUTHORIZED',
+            ),
+            data: {},
+          ),
+        ),
+        expiredToken,
+      );
+      // One report per session: reset the cap so the second shape captures.
+      ErrorHandler.resetReportedOnceKeysForTest();
+      expect(
+        await fingerprintOf(
+          () => ErrorHandler.logError(
+            e: http(
+              401,
+              path: '/_synapse/client/pangea/v1/activity_session_previews',
+            ),
+            data: {},
+          ),
+        ),
+        expiredToken,
+      );
+    });
+  });
+
   group('a timeout', () {
     test('groups per named operation, not in the frameless bucket', () async {
       expect(
