@@ -48,8 +48,11 @@ class _ManualProfileClient extends Client {
 
   final List<_ManualFetch> fetches = [];
 
+  /// Null once the test signs the account out.
+  String? signedInUserId = _userId;
+
   @override
-  String? get userID => _userId;
+  String? get userID => signedInUserId;
 
   // fetchOwnProfile funnels into this, so the override sees every fetch.
   @override
@@ -213,6 +216,34 @@ void main() {
     );
     await _afterQuietPeriod();
     expect(client.fetches, hasLength(2), reason: 'burst fully drained');
+  });
+
+  // CLIENT-EQ4 (#9060): the signal is legitimate while signed in, but its
+  // trailing fetch fires a quiet period later — after a logout, on a client
+  // whose user id is gone.
+  test('a trailing fetch that fires after sign-out is skipped', () async {
+    final client = _ManualProfileClient(database: await _inMemoryDatabase());
+    final viewModel = WorldUserClusterViewModel(
+      analyticsService: _FakeAnalyticsService(),
+      client: client,
+      profileRefreshQuietPeriod: _quietPeriod,
+    );
+    addTearDown(viewModel.dispose);
+
+    client.onUserProfileUpdate.add(_userId);
+    await pumpEventQueue();
+    expect(client.fetches, hasLength(1));
+    // A second signal lands mid-fetch and is deferred to a trailing fetch.
+    client.onUserProfileUpdate.add(_userId);
+    await pumpEventQueue();
+    client.fetches[0].completer.complete(
+      Profile(userId: _userId, avatarUrl: Uri.parse('mxc://server/new')),
+    );
+    await pumpEventQueue();
+
+    client.signedInUserId = null;
+    await _afterQuietPeriod();
+    expect(client.fetches, hasLength(1), reason: 'no fetch once signed out');
   });
 
   test('a fetch that lands after dispose is dropped', () async {

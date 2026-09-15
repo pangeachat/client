@@ -345,7 +345,11 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
   /// SDK refreshes with whatever the last fetch saw — an update signal must
   /// not be answered from it.
   Future<void> _loadProfile({bool fromServer = false}) async {
-    if (_disposed) return;
+    // A deferred fetch can fire after sign-out: the signal landed while
+    // signed in and the quiet timer outlived the session (#9060). A client
+    // with no user id has no profile to load.
+    final userId = client.userID;
+    if (_disposed || userId == null) return;
     if (_loadingProfile) {
       _profileRefreshPending = true;
       return;
@@ -356,7 +360,7 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
       // with an empty profile), so the avatar falls back to the initial.
       final profile = fromServer
           ? await client.getProfileFromUserId(
-              client.userID!,
+              userId,
               maxCacheAge: Duration.zero,
             )
           : await client.fetchOwnProfile();
