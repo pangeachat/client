@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-24 11:54:20.889713",
+    "@@last_modified": "2026-08-25 15:25:45.522007",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -2825,14 +2825,12 @@
     "enableAutocorrectPopupTitle": "Adaugă tastatura limbii tale țintă accesând:",
     "enableAutocorrectPopupSteps": "  • Setări\n  • General\n  • Tastatură\n  • Tastaturi\n  • Adaugă tastatură nouă",
     "enableAutocorrectPopupDescription": "Odată ce limba este selectată, poți face clic pe micuța pictogramă glob pe partea stângă jos a tastaturii pentru a activa tastatura recent instalată.",
-    "downloadGboardSteps": " • Descarcă Gboard\n  • Deschide aplicația\n  • Limbi\n  • Adaugă tastatură\n  • Selectează limba\n  • Selectează tipul de tastatură\n  • Gata",
     "enableAutocorrectWarning": "Avertisment! Necesită adăugarea tastaturii limbii tale țintă",
     "displayName": "Nume afișat",
     "leaveRoomDescription": "Ești pe cale să părăsești acest chat. Alți utilizatori vor vedea că ai părăsit chat-ul.",
     "confirmUserId": "Te rugăm să confirmi numele de utilizator Pangea Chat pentru a-ți șterge contul.",
     "paidSubscriptionStarts": "Începând cu {startDate}",
     "cancelInSubscriptionSettings": "• Anulează oricând din setările de abonament",
-    "downloadGboard": "Descarcă Gboard",
     "autocorrectNotAvailable": "Din păcate, platforma dvs. nu este în prezent compatibilă pentru această funcție. Rămâneți aproape pentru dezvoltări viitoare!",
     "pleaseUpdateApp": "Vă rugăm să actualizați aplicația pentru a continua.",
     "chooseEmojiInstructionsBody": "Potrivește emoji-urile cu cuvintele pe care le reprezintă cel mai bine. Nu vă faceți griji! Nu vor fi penalizări pentru dezacord. 😅",
@@ -6119,10 +6117,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -6148,10 +6142,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -10491,8 +10481,18 @@
     "autocorrectAndroidFallbackTitle": "Dacă tastatura ta nu oferă limba țintă, instalează Gboard și adaugă limba acolo:",
     "resendInSeconds": "Retrimite ({seconds})",
     "mapLevelFallbackNotice": "Încă nu există activități {selected} — se afișează {shown} în schimb.",
+    "openKeyboardSettings": "Deschide Setările Tastaturii",
+    "keyboardPromptAddKeyboardMessage": "Adaugă o tastatură pentru limba țintă, astfel încât corectarea automată să funcționeze.",
+    "keyboardPromptAddKeyboardAction": "Adaugă tastatură",
+    "keyboardPromptSwitchKeyboardMessage": "Atinge pictograma glob de pe tastatură pentru a comuta la limba țintă.",
     "switchLanguageChipLabel": "Treci la {language}",
     "languageDropdownLevel": "Nivelul {level}",
     "whatAreYouLearning": "Ce înveți?",
-    "languageSwitcherBaseLanguageLabel": "Limba ta de bază"
+    "languageSwitcherBaseLanguageLabel": "Limba ta de bază",
+    "listenModeDescription": "Atingeți o opțiune pentru a o auzi. Nu este selectat nimic.",
+    "rateActivityLiked": "Mi-a plăcut",
+    "rateActivityDisliked": "Nu mi-a plăcut",
+    "constructUseHrdDesc": "Auzit",
+    "timesHeard": "{count, plural, =1{Ascultat o dată} other{Ascultat de {count} ori}}",
+    "allSettings": "Toate setările"
 }

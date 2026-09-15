@@ -10,6 +10,7 @@ import 'package:fluffychat/features/languages/analytics_language_order.dart';
 import 'package:fluffychat/features/languages/l2_support_enum.dart';
 import 'package:fluffychat/features/languages/language_display_name_postfix_widget.dart';
 import 'package:fluffychat/features/languages/language_flag_chip.dart';
+import 'package:fluffychat/features/languages/language_flag_or_fallback.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/user/analytics_profile_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -274,7 +275,8 @@ class LanguageDropDownEntry extends StatelessWidget {
   /// context") and, when [languageModel] also has a usable flag, promotes
   /// the leading icon from [Avatar]'s hashed-letter circle to
   /// [LanguageFlagChip]. A language with analytics but no usable flag (a
-  /// variant-disambiguated base language, or one lacking a flag asset) keeps
+  /// variant-disambiguated base language, one lacking a flag asset, or one
+  /// whose flag couldn't be fetched — see [LanguageFlagOrFallback]) keeps
   /// the circle rather than falling to [LanguageFlagChip]'s own two-letter
   /// code badge, which reads as squished at this row's size next to a full
   /// circle.
@@ -292,22 +294,27 @@ class LanguageDropDownEntry extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final analytics = this.analytics;
+    final avatar = Avatar(name: languageModel.langCode, size: 30);
     return Row(
       children: [
         Opacity(
           opacity: enabled ? 1 : 0.5,
           child: ExcludeSemantics(
-            child: analytics != null && languageModel.shouldShowFlag
-                ? LanguageFlagChip(
+            child: analytics != null
+                ? LanguageFlagOrFallback(
                     language: languageModel,
-                    langCode: languageModel.langCode,
-                    width: 30,
-                    height: 22,
-                    radius: 4,
-                    borderWidth: 1,
-                    alwaysShowCode: false,
+                    flag: LanguageFlagChip(
+                      language: languageModel,
+                      langCode: languageModel.langCode,
+                      width: 30,
+                      height: 22,
+                      radius: 4,
+                      borderWidth: 1,
+                      alwaysShowCode: false,
+                    ),
+                    fallback: avatar,
                   )
-                : Avatar(name: languageModel.langCode, size: 30),
+                : avatar,
           ),
         ),
         const SizedBox(width: 10),

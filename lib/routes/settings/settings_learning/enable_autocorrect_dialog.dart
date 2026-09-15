@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 
+import 'package:android_intent_plus/android_intent.dart';
 import 'package:app_settings/app_settings.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
@@ -64,8 +64,9 @@ class IOSEnableAutocorrectDialog extends StatelessWidget {
 
 /// On Android the composer passes the target language to the keyboard
 /// (`hintLocales`), so no manual keyboard switch is needed — the dialog just
-/// explains that, and keeps the Gboard walkthrough as the fallback for
-/// keyboards that have no pack for the language (#8466).
+/// explains that, and its action takes the learner straight to the system's
+/// keyboard-management screen for the case where the keyboard has no pack for
+/// the language, per target-language-keyboard.instructions.md.
 class AndroidEnableAutocorrectDialog extends StatelessWidget {
   const AndroidEnableAutocorrectDialog({super.key});
 
@@ -80,10 +81,6 @@ class AndroidEnableAutocorrectDialog extends StatelessWidget {
           children: [
             Text(L10n.of(context).autocorrectAndroidDialogBody),
             Text(L10n.of(context).autocorrectAndroidFallbackTitle),
-            Text(
-              L10n.of(context).downloadGboardSteps,
-              textAlign: TextAlign.start,
-            ),
           ],
         ),
       ),
@@ -94,16 +91,27 @@ class AndroidEnableAutocorrectDialog extends StatelessWidget {
         ),
         AdaptiveDialogAction(
           onPressed: () {
-            launchUrl(
-              Uri.parse(
-                'https://play.google.com/store/apps/details?id=com.google.android.inputmethod.latin',
-              ),
-            );
+            _openKeyboardSettings();
             Navigator.of(context).pop(true);
           },
-          child: Text(L10n.of(context).downloadGboard),
+          child: Text(L10n.of(context).openKeyboardSettings),
         ),
       ],
     );
+  }
+
+  /// `ACTION_INPUT_METHOD_SETTINGS` opens the system's keyboard-management
+  /// screen directly, where the learner can enable a keyboard or add a
+  /// language pack to one they already have. Android's own docs warn a
+  /// matching activity may not exist on some builds, so fall back to the
+  /// app's general settings screen.
+  static Future<void> _openKeyboardSettings() async {
+    try {
+      await const AndroidIntent(
+        action: 'android.settings.INPUT_METHOD_SETTINGS',
+      ).launch();
+    } catch (_) {
+      await AppSettings.openAppSettings();
+    }
   }
 }

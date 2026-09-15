@@ -27,6 +27,7 @@ class ErrorHandler {
         options.tracesSampleRate = 0.02;
         options.environment = sentryEnvironment;
       });
+      await applyBuildTags();
     }
 
     // Error handling. Both global sinks route through [logError] rather than
@@ -44,6 +45,15 @@ class ErrorHandler {
       return true;
     };
   }
+
+  /// Puts [Environment.sentryBuildTags] on the global scope, so every event
+  /// says which build produced it — including the native crashes and app-start
+  /// failures the SDK captures without passing through [logError], which a
+  /// per-report tag would miss.
+  @visibleForTesting
+  static Future<void> applyBuildTags() async => Sentry.configureScope(
+    (scope) => Environment.sentryBuildTags.forEach(scope.setTag),
+  );
 
   /// Whether [e] belongs in Sentry at all. [UnsubscribedException] does not:
   /// it is control flow — an unsubscribed user reaching a paid endpoint — and

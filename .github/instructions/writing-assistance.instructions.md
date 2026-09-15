@@ -106,6 +106,8 @@ The card positions itself relative to the currently selected match's highlighted
 │  🤖  Hint text explaining the   │  ← Bot face left-aligned, hint text beside it
 │      suggestion in detail       │
 │                                 │
+│  🎧 Listen                      │  ← While on, tapping a choice only plays it
+│                                 │
 │  ┌──────┐ ┌──────┐ ┌──────┐    │  ← Choices: horizontal if they fit,
 │  │ word │ │ word │ │ undo │    │     vertical if not. Undo action at end.
 │  └──────┘ └──────┘ └──────┘    │
@@ -136,6 +138,15 @@ The card positions itself relative to the currently selected match's highlighted
 > **Open question — auto-advance viewing**: When the user accepts a choice and the card auto-advances to the next match, does that brief display count as "viewed"? Try the current behavior in practice and adjust if users feel they're missing content.
 
 > **Open question — text re-editing**: If the user edits text after matches have been returned (e.g., types more, backspaces into a matched region), what happens to existing matches? Current behavior is to re-fetch. Consider whether partial invalidation is worth the complexity or if a full re-fetch on significant edits is acceptable.
+
+### Hearing a choice
+
+Learners who know a language by ear before they know its script cannot tell the choices apart on sight, and the only way to hear one is to tap it — which also answers with it. A **Listen** toggle sits between the hint and the choices. While it is on, tapping a choice plays that choice and does nothing else: no selection, no status change, no replacement, and a line under the row says so. Turning it off restores the normal behaviour, where a tap selects.
+
+- The toggle belongs to the current match. Advancing to another match, or closing the card, turns it off — a mode the learner can't see is a mode that surprises them.
+- Listening never changes a match's status. A match still becomes `viewed` by being opened and navigated away from.
+- With choice audio switched off in learning settings, the toggle opens the same "audio is off" popup other explicit audio buttons do, pointing at the setting, rather than entering a mode that plays nothing. See [word-text-to-speech.instructions.md](word-text-to-speech.instructions.md).
+- Only writing assistance gets the mode. The choices row is shared with practice and activity surfaces; their behaviour is unchanged.
 
 ### What We're Removing
 

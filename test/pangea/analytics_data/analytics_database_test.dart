@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 import 'package:fluffychat/features/analytics/analytics_constants.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
@@ -670,6 +671,41 @@ void main() {
       );
       final total = [...vocab, ...morph].fold(0, (t, c) => t + c.points);
       expect(total, AnalyticsConstants.xpForFlower + 15 + 20);
+    });
+  });
+
+  /// A raw write that fails must reach the caller. `addAnalytics` credits a
+  /// use once and only once, so a write it is told succeeded is never retried
+  /// — the uses would be neither uploaded nor recoverable (#8537).
+  ///
+  /// Each test drops only the raw table, leaving the aggregate tables intact,
+  /// so the failure is isolated to the raw write. The preceding successful
+  /// call warms the box key cache, which keeps the drop off the read path.
+  group('raw write failures surface to the caller', () {
+    test('updateLocalAnalytics rethrows a failed raw local write', () async {
+      await db.updateLocalAnalytics(usesFor('casa', count: 1), testLang);
+
+      await db.database!.execute('DROP TABLE box_local_constructs');
+
+      await expectLater(
+        db.updateLocalAnalytics(usesFor('perro', count: 1), testLang),
+        throwsA(isA<DatabaseException>()),
+      );
+    });
+
+    test('updateServerAnalytics rethrows a failed raw server write', () async {
+      await db.updateServerAnalytics([
+        events.event(usesFor('casa', count: 1), ts: at(10)),
+      ], testLang);
+
+      await db.database!.execute('DROP TABLE box_server_constructs');
+
+      await expectLater(
+        db.updateServerAnalytics([
+          events.event(usesFor('perro', count: 1), ts: at(20)),
+        ], testLang),
+        throwsA(isA<DatabaseException>()),
+      );
     });
   });
 }

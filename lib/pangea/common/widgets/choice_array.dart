@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/analytics/listening_exposure_declaration.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
 import 'package:fluffychat/features/dosage/dosage_tts_listening_probe.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -43,6 +44,15 @@ class ChoicesArray<T> extends StatelessWidget {
   /// default here.
   final String roomId;
 
+  /// When true, tapping a choice plays it and nothing else — [onPressed] is
+  /// not called, so nothing is selected or replaced.
+  ///
+  /// Writing assistance's Listen mode, and only its. A learner who knows a
+  /// language by ear cannot tell the choices apart on sight, and hearing one
+  /// used to cost them the answer. Every other caller leaves this false and
+  /// keeps the shipped behaviour, where a tap selects.
+  final bool listenMode;
+
   const ChoicesArray({
     super.key,
     required this.choices,
@@ -55,6 +65,7 @@ class ChoicesArray<T> extends StatelessWidget {
     this.getDisplayCopy,
     this.id,
     this.enabled = true,
+    this.listenMode = false,
   });
 
   @override
@@ -68,7 +79,7 @@ class ChoicesArray<T> extends StatelessWidget {
           (index, entry) => ChoiceItem<T>(
             onLongPress: onLongPress,
             onPressed: (T value, int index) {
-              onPressed(value, index);
+              if (!listenMode) onPressed(value, index);
               if (enableAudio && langCode != null) {
                 TtsController.tryToSpeak(
                   // Display string is used for TTS
@@ -88,6 +99,15 @@ class ChoicesArray<T> extends StatelessWidget {
                   // an account switch mid-playback must not post under a stale
                   // one. A fresh probe per call: it holds a running
                   // measurement.
+                  // A choice is spoken as raw text: this widget serves
+                  // writing assistance and the activity orchestrator and is
+                  // handed strings, not tokens, so there is no construct to
+                  // file the hearing under. Deriving a lemma from the surface
+                  // form would file it under the wrong word, which is worse
+                  // than not recording it.
+                  exposure: const ListeningExposureDeclaration.exempt(
+                    "choice text is not resolved to a construct here",
+                  ),
                   listening: DosageTtsListeningProbe(
                     category: DosageListeningCategory.practiceAudio,
                     roomId: roomId,
