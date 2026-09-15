@@ -1384,20 +1384,25 @@ class _ShellLayout {
     // entirely the allocator's; the only fixed left inset is the nav rail.
     final parsedLeft = parseOpenPanels(state.uri).left;
 
-    // The course panel is present whenever `?c=` is — the token only says it is
-    // EXPANDED (routing.instructions.md → Reading a workspace URL). Its absence
-    // under a context is the collapsed state, so seat it here as a real panel at
-    // its floor rather than leaving the column and drawing a bar somewhere else:
-    // the card and the bar are one panel in one slot, so collapsing never moves
-    // what is open beside it (#9037). Wide only — on narrow the nav cavity's
-    // peek is the course's floor and the cavity is always its host (#8816).
+    // A `?c=` context with no `course` token is the course panel COLLAPSED
+    // (routing.instructions.md → Reading a workspace URL), and its collapsed
+    // state — the context bar — is a panel like any other, seated here rather
+    // than drawn as chrome somewhere else (#9037).
+    //
+    // But only when the column is otherwise EMPTY. A one-line bar is not worth
+    // a panel's vertical strip of the workspace, so with anything else open the
+    // collapsed course simply is not seated: the panel beside it keeps the rail
+    // and widens into the freed strip. That is why every producer seats the
+    // course LAST — collapsing then hands its width back without moving what is
+    // open beside it, and expanding takes it back from the same end.
+    //
+    // Wide only: on narrow the nav cavity's peek is the course's floor and the
+    // cavity is always its host (#8816).
     final courseAtFloor =
         isColumnMode &&
         activeSpaceIdFor(state.uri) != null &&
-        !parsedLeft.any((t) => t.type.isCoursePanel);
-    final leftTokens = courseAtFloor
-        ? [const CoursePanelToken(), ...parsedLeft]
-        : parsedLeft;
+        parsedLeft.isEmpty;
+    final leftTokens = courseAtFloor ? const [CoursePanelToken()] : parsedLeft;
     final leftDefs = [for (final token in leftTokens) token.type.def];
     final hasLeftTokens = leftTokens.isNotEmpty;
 
@@ -1474,12 +1479,11 @@ class _ShellLayout {
           leftTokens[i].type,
     ].any((type) => type.isCoursePanel);
 
-    // A card drawn where the bar just was grows out of it (#8866). Both states
-    // are now the same panel in the same slot, so this is a state change within
-    // one panel rather than one widget replacing another.
+    // A card drawn where the bar just was grows out of it (#8866).
     final revealCoursePanel = courseCardVisible && _courseBarWasShowing;
-    _courseBarWasShowing =
-        isColumnMode && activeSpaceId != null && !courseCardVisible;
+    // Only a bar that was actually SEATED can be grown out of — a card opening
+    // where nothing was must not replay the grow (#8866).
+    _courseBarWasShowing = courseAtFloor;
 
     // The narrow focus: the one panel the allocator seats full-screen, if any.
     // [focusedIsRight] distinguishes a right panel (renders under the expanded
