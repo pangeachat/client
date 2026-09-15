@@ -85,7 +85,9 @@ class ProFeaturesCard extends StatelessWidget {
                 spacing: 8.0,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(e.icon, color: gold, size: 20.0),
+                  // On the surface body a gold mark reads goldGraphic; the
+                  // bright fill gold belongs to the frame and its title.
+                  Icon(e.icon, color: theme.pangea.goldGraphic, size: 20.0),
                   Flexible(
                     child: Semantics(
                       container: true,
