@@ -132,18 +132,15 @@ class QuestPlansRepo {
   ///
   /// The catalog hands back a page of course ids at a time; fetching them one
   /// by one costs a round trip per card, which is felt directly as browse
-  /// latency. Ids that do not resolve are simply absent from the result.
-  ///
-  /// [requireMissions] defaults to true to preserve the creation picker's rule
-  /// (#7700); catalog callers pass false.
+  /// latency. Ids that do not resolve are simply absent from the result —
+  /// including a quest with no missions, which [_fromQuestPlanJson] refuses.
   static Future<Map<String, CoursePlanModel>> getMany(
-    List<String> questIds, {
-    bool requireMissions = true,
-  }) async {
+    List<String> questIds,
+  ) async {
     if (questIds.isEmpty) return const {};
     final resp = await _client().find<CoursePlanModel?>(
       _collection,
-      (json) => _fromQuestPlanJson(json, requireMissions: requireMissions),
+      _fromQuestPlanJson,
       limit: questIds.length,
       where: {
         'id': {'in': questIds},
@@ -159,10 +156,7 @@ class QuestPlansRepo {
   /// JSON → synthesized [CoursePlanModel]. Returns ``null`` on a missing /
   /// malformed quest-plans row so the caller can filter it out cleanly
   /// instead of inserting a broken card.
-  static CoursePlanModel? _fromQuestPlanJson(
-    Map<String, dynamic> json, {
-    bool requireMissions = true,
-  }) {
+  static CoursePlanModel? _fromQuestPlanJson(Map<String, dynamic> json) {
     final id = json['id'] as String?;
     final req = json['req'] as Map<String, dynamic>?;
     final res = json['res'] as Map<String, dynamic>?;
@@ -183,16 +177,13 @@ class QuestPlansRepo {
 
     final sequence = res['learning_objective_sequence'] as List<dynamic>?;
     final missionCount = sequence?.length ?? 0;
-    // A quest-plan with no missions has no content to build a course from — it
-    // would show as a "0 modules" card the learner can't actually create, so
-    // the creation picker drops it (#7700).
-    //
-    // Browsing is the other way round: whether a published course space appears
-    // in the catalog is decided by the catalog endpoint, from room state alone,
-    // and never by the contents of the quest behind it. A course whose quest is
-    // empty is still a real, joinable course. Callers reading the catalog pass
-    // requireMissions: false. See public-courses.instructions.md.
-    if (requireMissions && missionCount == 0) return null;
+    // A quest-plan with no missions has no content to build a course from, and
+    // none to join one for either: it renders as a "0 activities" card that
+    // leads nowhere. Every surface that resolves a plan drops it — the creation
+    // picker (#7700) and the browse-public catalog (#9088) alike. One rule in
+    // one place, so a card can never be offered by a list the detail page then
+    // refuses; see course-preview.instructions.md.
+    if (missionCount == 0) return null;
     // Placeholder strings carry the *count* so the "N modules" chip reads
     // correctly. They are never resolved against the v1 ``course-plan-topics``
     // collection — no v3 surface walks ``topicIds`` on a synthesized model.

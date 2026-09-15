@@ -56,11 +56,13 @@ class PublicCourseSearchController
       ),
     );
 
-    // Eligibility — which rooms are courses, and which language they are in —
-    // belongs to the catalog endpoint, which filters before it paginates. The
-    // only reason a returned course is dropped here is that its plan did not
-    // resolve, so there is no title to render a card with.
-    // See public-courses.instructions.md in synapse-pangea-chat.
+    // Which rooms are courses, and which language they are in, belongs to the
+    // catalog endpoint, which filters before it paginates
+    // (public-courses.instructions.md in synapse-pangea-chat). The only reason
+    // a returned course is dropped here is that its plan did not resolve — it
+    // is gone, or it carries no missions, which is the same thing to a learner:
+    // there is nothing to render a card for and nothing behind the card to open
+    // (#9088). See course-preview.instructions.md.
     final renderableCourses = unjoinedCourses.where(
       (c) => _coursePlans[c.courseId] != null,
     );
@@ -239,13 +241,8 @@ class PublicCourseSearchController
   ) async {
     try {
       // world_v2: resolve the page's public-course ids from the v3 quest-plans
-      // layer in one request. requireMissions is false because a course whose
-      // quest has no missions is still a real course in the catalog — only the
-      // creation picker refuses those (public-courses.instructions.md, #7700).
-      final plans = await QuestPlansRepo.getMany(
-        courseIds,
-        requireMissions: false,
-      );
+      // layer in one request.
+      final plans = await QuestPlansRepo.getMany(courseIds);
       return Result.value(plans);
     } catch (e, s) {
       ErrorHandler.logError(e: e, s: s, data: {'courseIds': courseIds});
