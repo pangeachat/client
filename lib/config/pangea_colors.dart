@@ -324,12 +324,18 @@ extension PangeaColorsTheme on ThemeData {
       ? colorScheme.surface
       : colorScheme.onSurface;
 
-  /// The ring a round toolbar button and its 3-D lip wear, or null when none
-  /// is needed. In dark the lip (primaryContainer darkened) sinks into the
-  /// overlay at 2.5:1, so the pale brand lavender `primaryFixed` rings both:
-  /// 11.1:1 on the overlay, 4.5:1 on the lip and the pressed fill, 2.5:1 on
-  /// the button top. In light the lip already stands off the overlay at
-  /// 10:1, so no ring.
-  Color? get pressableOutline =>
-      brightness == Brightness.dark ? colorScheme.primaryFixed : null;
+  /// The fill of a round toolbar button, which floats over a dark scrim in
+  /// both themes. It has to stand off that scrim and not be the own-message
+  /// bubble's colour: in light the bubble is `primary`, so the button takes
+  /// the pale `primaryFixedDim` (6.8:1 on the scrim, where `primaryContainer`
+  /// sat at 2.5:1); in dark the bubble is that pale lavender, so the button
+  /// keeps `primaryContainer` (4.4:1).
+  Color get toolbarButtonFill => brightness == Brightness.light
+      ? colorScheme.primaryFixedDim
+      : colorScheme.primaryContainer;
+
+  /// Ink on [toolbarButtonFill].
+  Color get onToolbarButtonFill => brightness == Brightness.light
+      ? colorScheme.onPrimaryFixedVariant
+      : colorScheme.onPrimaryContainer;
 }

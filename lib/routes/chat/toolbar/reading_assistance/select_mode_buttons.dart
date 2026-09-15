@@ -754,15 +754,14 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                               key: target.key,
                               borderRadius: BorderRadius.circular(20),
                               depressed: mode == selectedMode || !enabled,
-                              color: theme.colorScheme.primaryContainer,
-                              outlineColor: theme.pressableOutline,
+                              color: theme.toolbarButtonFill,
                               onPressed: enabled
                                   ? () => updateMode(mode)
                                   : modeDisabled,
                               playSound: enabled && mode != SelectMode.audio,
-                              colorFactor: theme.brightness == Brightness.light
-                                  ? 0.55
-                                  : 0.3,
+                              // The lip is the fill darkened; a third keeps it
+                              // above the dark scrim (3.5:1 light, 2.5:1 dark).
+                              colorFactor: 0.3,
                               builder: (context, depressed, shadowColor) {
                                 final canShimmer =
                                     !InstructionsEnum
@@ -778,11 +777,8 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                                   decoration: BoxDecoration(
                                     color: depressed
                                         ? shadowColor
-                                        : theme.colorScheme.primaryContainer,
+                                        : theme.toolbarButtonFill,
                                     shape: BoxShape.circle,
-                                    border: PressableButton.topBorder(
-                                      theme.pressableOutline,
-                                    ),
                                   ),
                                   child: ValueListenableBuilder(
                                     valueListenable: _isPlayingNotifier,
@@ -795,9 +791,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                                           playing:
                                               mode == SelectMode.audio &&
                                               playing,
-                                          color: theme
-                                              .colorScheme
-                                              .onPrimaryContainer,
+                                          color: theme.onToolbarButtonFill,
                                         ),
                                   ),
                                 );
@@ -1052,28 +1046,24 @@ class _MoreButton extends StatelessWidget {
       message: L10n.of(context).more,
       child: PressableButton(
         borderRadius: BorderRadius.circular(20),
-        color: theme.colorScheme.primaryContainer,
-        outlineColor: theme.pressableOutline,
+        color: theme.toolbarButtonFill,
         onPressed: () => _showMenu(context),
         playSound: true,
-        colorFactor: theme.brightness == Brightness.light ? 0.55 : 0.3,
+        colorFactor: 0.3,
         builder: (context, depressed, shadowColor) => AnimatedContainer(
           duration: FluffyThemes.animationDuration,
           height: 40.0,
           width: 40.0,
           decoration: BoxDecoration(
-            color: depressed ? shadowColor : theme.colorScheme.primaryContainer,
+            color: depressed ? shadowColor : theme.toolbarButtonFill,
             shape: BoxShape.circle,
-            border: PressableButton.topBorder(theme.pressableOutline),
           ),
           child: Icon(
             Icons.more_horiz,
             size: 20,
             // The pressed fill is the rest fill darkened, so its own ink can
             // stop reading on it; the theme's light tone always does.
-            color: depressed
-                ? theme.lightTone
-                : theme.colorScheme.onPrimaryContainer,
+            color: depressed ? theme.lightTone : theme.onToolbarButtonFill,
           ),
         ),
       ),

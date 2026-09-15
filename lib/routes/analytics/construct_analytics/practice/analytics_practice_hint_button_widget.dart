@@ -20,8 +20,7 @@ class HintButton extends StatelessWidget {
     final theme = Theme.of(context);
     return PressableButton(
       borderRadius: BorderRadius.circular(20),
-      color: theme.colorScheme.primaryContainer,
-      outlineColor: theme.pressableOutline,
+      color: theme.toolbarButtonFill,
       onPressed: onPressed,
       depressed: depressed,
       playSound: true,
@@ -33,20 +32,15 @@ class HintButton extends StatelessWidget {
             height: 40.0,
             width: 40.0,
             decoration: BoxDecoration(
-              color: depressed
-                  ? shadowColor
-                  : theme.colorScheme.primaryContainer,
+              color: depressed ? shadowColor : theme.toolbarButtonFill,
               shape: BoxShape.circle,
-              border: PressableButton.topBorder(theme.pressableOutline),
             ),
           ),
           Icon(
             icon,
             size: 20,
             // A darkened fill loses its own ink; the theme's light tone reads.
-            color: depressed
-                ? theme.lightTone
-                : theme.colorScheme.onPrimaryContainer,
+            color: depressed ? theme.lightTone : theme.onToolbarButtonFill,
           ),
         ],
       ),

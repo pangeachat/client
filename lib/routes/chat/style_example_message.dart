@@ -128,22 +128,20 @@ class _StyleExampleToolbarButtons extends StatelessWidget {
               alignment: Alignment.center,
               child: PressableButton(
                 borderRadius: BorderRadius.circular(20),
-                color: theme.colorScheme.primaryContainer,
-                outlineColor: theme.pressableOutline,
+                color: theme.toolbarButtonFill,
                 onPressed: null,
-                colorFactor: theme.brightness == Brightness.light ? 0.55 : 0.3,
+                colorFactor: 0.3,
                 builder: (_, _, _) => Container(
                   height: 40.0,
                   width: 40.0,
                   decoration: BoxDecoration(
-                    color: theme.colorScheme.primaryContainer,
+                    color: theme.toolbarButtonFill,
                     shape: BoxShape.circle,
-                    border: PressableButton.topBorder(theme.pressableOutline),
                   ),
                   child: Icon(
                     mode.icon,
                     size: 20,
-                    color: theme.colorScheme.onPrimaryContainer,
+                    color: theme.onToolbarButtonFill,
                   ),
                 ),
               ),

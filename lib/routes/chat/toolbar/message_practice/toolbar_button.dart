@@ -37,10 +37,9 @@ class ToolbarButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
           depressed: isSelected,
           color: color,
-          outlineColor: theme.pressableOutline,
           onPressed: setMode,
           playSound: true,
-          colorFactor: theme.brightness == Brightness.light ? 0.55 : 0.3,
+          colorFactor: 0.3,
           builder: (context, depressed, shadowColor) => ShimmerBackground(
             enabled: shimmer,
             child: Container(
@@ -49,7 +48,6 @@ class ToolbarButton extends StatelessWidget {
               decoration: BoxDecoration(
                 color: depressed ? shadowColor : color,
                 shape: BoxShape.circle,
-                border: PressableButton.topBorder(theme.pressableOutline),
               ),
               child: Icon(
                 mode.icon,
