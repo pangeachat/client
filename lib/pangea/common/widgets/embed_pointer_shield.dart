@@ -1,3 +1,6 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+
 /// A transparent DOM layer of our own, laid over an embed so that the browser's
 /// mouse events land on Flutter instead of on the embed.
 ///
@@ -11,8 +14,20 @@
 /// them as usual, so whatever is painted above the shield receives the gesture.
 ///
 /// Paint it *below* the widgets that should receive the pointer and *above* the
-/// embed. It renders nothing off web, where Flutter owns every pixel already.
-library;
+/// embed. Off web Flutter owns every pixel and there is nothing to shield.
+///
+/// Kept out of semantics: a platform view stays `aria-hidden` while no
+/// semantics node is made for it, so the shield never reaches the accessibility
+/// tree. Assistive tech activates the embed's own DOM directly, where there is
+/// nothing to shield it from.
+class EmbedPointerShield extends StatelessWidget {
+  const EmbedPointerShield({super.key});
 
-export 'package:fluffychat/pangea/common/widgets/embed_pointer_shield_stub.dart'
-    if (dart.library.js_interop) 'package:fluffychat/pangea/common/widgets/embed_pointer_shield_web.dart';
+  @override
+  Widget build(BuildContext context) => kIsWeb
+      // `fromTagName` sizes the element to the slot itself, and the framework
+      // keeps the web-only half behind its own conditional import — so this
+      // compiles everywhere and needs nothing of ours to be web-specific.
+      ? ExcludeSemantics(child: HtmlElementView.fromTagName(tagName: 'div'))
+      : const SizedBox.shrink();
+}
