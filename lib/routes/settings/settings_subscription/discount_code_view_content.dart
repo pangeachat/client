@@ -46,8 +46,8 @@ class DiscountCodeViewContent extends StatelessWidget {
             child: ElevatedButton(
               onPressed: viewModel.validatePromoCode,
               style: ElevatedButton.styleFrom(
-                backgroundColor: theme.colorScheme.primaryContainer,
-                foregroundColor: theme.colorScheme.onPrimaryContainer,
+                backgroundColor: theme.colorScheme.primary,
+                foregroundColor: theme.colorScheme.onPrimary,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(32.0),
@@ -180,8 +180,8 @@ class DiscountCodeViewContent extends StatelessWidget {
                   valueListenable: viewModel.selectedSubscription,
                   builder: (context, selected, _) => ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: theme.colorScheme.primaryContainer,
-                      foregroundColor: theme.colorScheme.onPrimaryContainer,
+                      backgroundColor: theme.colorScheme.primary,
+                      foregroundColor: theme.colorScheme.onPrimary,
                     ),
                     onPressed: selected != null
                         ? () => onSubscribe(

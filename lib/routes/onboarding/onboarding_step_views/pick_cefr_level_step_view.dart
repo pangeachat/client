@@ -141,10 +141,12 @@ class PickCefrLevelStepViewState extends State<PickCefrLevelStepView> {
                                         _setLevel(selected ? null : level),
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: selected
-                                          ? theme.colorScheme.primaryContainer
+                                          ? theme.colorScheme.secondaryContainer
                                           : theme.colorScheme.surfaceContainer,
                                       foregroundColor: selected
-                                          ? theme.colorScheme.onPrimaryContainer
+                                          ? theme
+                                                .colorScheme
+                                                .onSecondaryContainer
                                           : theme.colorScheme.onSurface,
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(16),

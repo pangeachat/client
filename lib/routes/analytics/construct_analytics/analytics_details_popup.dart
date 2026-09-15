@@ -509,10 +509,10 @@ class _PracticeButton extends StatelessWidget {
         label: Text(label, semanticsLabel: tooltip),
         style: FilledButton.styleFrom(
           backgroundColor: enabled
-              ? colorScheme.primaryContainer
+              ? colorScheme.primary
               : colorScheme.surfaceContainer,
           foregroundColor: enabled
-              ? colorScheme.onPrimaryContainer
+              ? colorScheme.onPrimary
               : colorScheme.onSurface.withValues(alpha: 0.5),
         ),
       ),

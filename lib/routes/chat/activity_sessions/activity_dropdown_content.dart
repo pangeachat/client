@@ -105,10 +105,10 @@ class ActivityDropdownContent extends StatelessWidget {
           style: ElevatedButton.styleFrom(
             backgroundColor: hasCompletedOwnGoals
                 ? goldColor
-                : theme.colorScheme.primaryContainer,
+                : theme.colorScheme.primary,
             foregroundColor: hasCompletedOwnGoals
                 ? theme.pangea.onGoldFixed
-                : theme.colorScheme.onPrimaryContainer,
+                : theme.colorScheme.onPrimary,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,

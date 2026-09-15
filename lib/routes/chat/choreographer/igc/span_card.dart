@@ -628,11 +628,9 @@ class SpanCardHeader extends StatelessWidget {
             icon: Icon(Icons.headphones_outlined, semanticLabel: name),
             selectedIcon: Icon(Icons.headphones, semanticLabel: name),
             style: IconButton.styleFrom(
-              backgroundColor: listenFirst
-                  ? theme.colorScheme.primaryContainer
-                  : null,
+              backgroundColor: listenFirst ? theme.colorScheme.primary : null,
               foregroundColor: listenFirst
-                  ? theme.colorScheme.onPrimaryContainer
+                  ? theme.colorScheme.onPrimary
                   : theme.iconTheme.color,
             ),
             onPressed: () => onToggleListenFirst(targetId),

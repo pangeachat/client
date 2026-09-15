@@ -153,9 +153,9 @@ class PangeaInvitationSelectionView extends StatelessWidget {
                                 ? ElevatedButton.icon(
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor:
-                                          theme.colorScheme.primaryContainer,
+                                          theme.colorScheme.primary,
                                       foregroundColor:
-                                          theme.colorScheme.onPrimaryContainer,
+                                          theme.colorScheme.onPrimary,
                                       padding: const EdgeInsets.symmetric(
                                         horizontal: 20,
                                       ),

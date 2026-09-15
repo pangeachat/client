@@ -125,7 +125,7 @@ void main() {
       ),
     );
 
-    expect(selectedColor, theme.colorScheme.primaryContainer);
+    expect(selectedColor, theme.colorScheme.secondaryContainer);
     expect(ctaColor, theme.colorScheme.primary);
     expect(ctaColor, isNot(selectedColor));
   });
