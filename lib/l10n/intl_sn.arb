@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-09-14 12:45:35.791725",
+    "@@last_modified": "2026-09-15 11:13:51.837276",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "Ratidza hurukuro dzemapoka chete",
     "activitiesFilterTooltip": "Ratidza zviitiko chete",
     "noGroupChatsYet": "Hausati uri mune chero hurukuro dzeboka.",
-    "noActivitiesYet": "Hausati uri mune chero zviitiko."
+    "noActivitiesYet": "Hausati uri mune chero zviitiko.",
+    "unblock": "Vhura"
 }

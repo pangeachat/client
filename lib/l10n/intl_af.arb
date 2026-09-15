@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-09-14 12:45:20.824242",
+    "@@last_modified": "2026-09-15 11:13:46.186167",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "Wys slegs groepkletse",
     "activitiesFilterTooltip": "Wys slegs aktiwiteite",
     "noGroupChatsYet": "Jy is nog nie in enige groepkletse nie.",
-    "noActivitiesYet": "Jy is nog nie in enige aktiwiteite nie."
+    "noActivitiesYet": "Jy is nog nie in enige aktiwiteite nie.",
+    "unblock": "Deblokkeer"
 }

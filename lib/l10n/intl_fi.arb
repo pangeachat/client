@@ -3536,7 +3536,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-09-14 12:45:23.640260",
+    "@@last_modified": "2026-09-15 11:13:47.163265",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9961,5 +9961,6 @@
     "groupsFilterTooltip": "Näytä vain ryhmäkeskustelut",
     "activitiesFilterTooltip": "Näytä vain toiminnot",
     "noGroupChatsYet": "Et ole vielä missään ryhmäkeskustelussa.",
-    "noActivitiesYet": "Et ole vielä mukana missään toiminnossa."
+    "noActivitiesYet": "Et ole vielä mukana missään toiminnossa.",
+    "unblock": "Poista esto"
 }

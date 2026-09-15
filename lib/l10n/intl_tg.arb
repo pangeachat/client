@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-09-14 12:45:37.169737",
+    "@@last_modified": "2026-09-15 11:13:52.342204",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "Танҳо чатҳои гурӯҳиро нишон диҳед",
     "activitiesFilterTooltip": "Танҳо фаъолиятҳоро нишон диҳед",
     "noGroupChatsYet": "Шумо ҳанӯз дар ягон чати гурӯҳӣ нестед.",
-    "noActivitiesYet": "Шумо ҳанӯз дар ягон фаъолият нестед."
+    "noActivitiesYet": "Шумо ҳанӯз дар ягон фаъолият нестед.",
+    "unblock": "Кушодан"
 }

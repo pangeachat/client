@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-09-14 12:45:34.626612",
+    "@@last_modified": "2026-09-15 11:13:51.479044",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "صرف گروپ چيٽ ڏيکاريو",
     "activitiesFilterTooltip": "صرف سرگرميون ڏيکاريو",
     "noGroupChatsYet": "توهان اڃا تائين ڪنهن به گروپ چيٽ ۾ نه آهيو.",
-    "noActivitiesYet": "توهان اڃا تائين ڪنهن به سرگرمي ۾ نه آهيو."
+    "noActivitiesYet": "توهان اڃا تائين ڪنهن به سرگرمي ۾ نه آهيو.",
+    "unblock": "ان بلاڪ ڪريو"
 }

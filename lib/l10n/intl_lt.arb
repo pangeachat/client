@@ -2967,7 +2967,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-09-14 12:45:29.054027",
+    "@@last_modified": "2026-09-15 11:13:49.660071",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10705,5 +10705,6 @@
     "groupsFilterTooltip": "Rodyti tik grupinius pokalbius",
     "activitiesFilterTooltip": "Rodyti tik veiklas",
     "noGroupChatsYet": "Dar nesate jokiuose grupiniuose pokalbiuose.",
-    "noActivitiesYet": "Dar nedalyvaujate jokioje veikloje."
+    "noActivitiesYet": "Dar nedalyvaujate jokioje veikloje.",
+    "unblock": "Atblokuoti"
 }

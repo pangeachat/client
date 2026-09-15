@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-09-14 12:45:23.017665",
+    "@@last_modified": "2026-09-15 11:13:46.614618",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "Dangos sgyrsiau grŵp yn unig",
     "activitiesFilterTooltip": "Dangos gweithgareddau yn unig",
     "noGroupChatsYet": "Nid ydych mewn unrhyw sgyrsiau grŵp eto.",
-    "noActivitiesYet": "Nid ydych mewn unrhyw weithgareddau eto."
+    "noActivitiesYet": "Nid ydych mewn unrhyw weithgareddau eto.",
+    "unblock": "Dadflocio"
 }

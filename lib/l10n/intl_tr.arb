@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-09-14 12:45:37.075514",
+    "@@last_modified": "2026-09-15 11:13:52.379029",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10225,5 +10225,6 @@
     "groupsFilterTooltip": "Yalnızca grup sohbetlerini göster",
     "activitiesFilterTooltip": "Yalnızca etkinlikleri göster",
     "noGroupChatsYet": "Henüz hiçbir grup sohbetinde değilsiniz.",
-    "noActivitiesYet": "Henüz hiçbir etkinlikte değilsiniz."
+    "noActivitiesYet": "Henüz hiçbir etkinlikte değilsiniz.",
+    "unblock": "Engellemeyi Kaldır"
 }

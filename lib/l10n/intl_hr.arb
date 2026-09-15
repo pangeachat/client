@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-09-14 12:45:25.680993",
+    "@@last_modified": "2026-09-15 11:13:48.233103",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10360,5 +10360,6 @@
     "groupsFilterTooltip": "Prikaži samo grupne chatove",
     "activitiesFilterTooltip": "Prikaži samo aktivnosti",
     "noGroupChatsYet": "Još niste ni u jednom grupnom chatu.",
-    "noActivitiesYet": "Još niste ni u jednoj aktivnosti."
+    "noActivitiesYet": "Još niste ni u jednoj aktivnosti.",
+    "unblock": "Deblokiraj"
 }

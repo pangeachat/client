@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-09-14 12:45:21.517160",
+    "@@last_modified": "2026-09-15 11:13:46.099202",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "কেৱল গোট চাটসমূহ দেখুৱাওক",
     "activitiesFilterTooltip": "কেৱল কাৰ্য্যকলাপসমূহ দেখুৱাওক",
     "noGroupChatsYet": "আপুনি এতিয়ালৈকে কোনো গোট চাটত নাই।",
-    "noActivitiesYet": "আপুনি এতিয়ালৈকে কোনো কাৰ্য্যকলাপত নাই।"
+    "noActivitiesYet": "আপুনি এতিয়ালৈকে কোনো কাৰ্য্যকলাপত নাই।",
+    "unblock": "আনব্লক কৰক"
 }

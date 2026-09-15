@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-09-14 12:45:30.701333",
+    "@@last_modified": "2026-09-15 11:13:50.210833",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "Tunjukkan hanya sembang kumpulan",
     "activitiesFilterTooltip": "Tunjukkan hanya aktiviti",
     "noGroupChatsYet": "Anda belum menyertai mana-mana sembang kumpulan.",
-    "noActivitiesYet": "Anda belum menyertai mana-mana aktiviti."
+    "noActivitiesYet": "Anda belum menyertai mana-mana aktiviti.",
+    "unblock": "Nyahsekat"
 }

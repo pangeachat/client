@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-09-14 12:45:33.574936",
+    "@@last_modified": "2026-09-15 11:13:50.846187",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "یوازې ګروپي خبرې اترې وښایاست",
     "activitiesFilterTooltip": "یوازې فعالیتونه وښایاست",
     "noGroupChatsYet": "تاسو لا تر اوسه په هیڅ ګروپي خبرو اترو کې نه یاست.",
-    "noActivitiesYet": "تاسو لا تر اوسه په هیڅ فعالیت کې نه یاست."
+    "noActivitiesYet": "تاسو لا تر اوسه په هیڅ فعالیت کې نه یاست.",
+    "unblock": "بلاک لرې کړئ"
 }

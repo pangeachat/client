@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-09-14 12:45:23.267131",
+    "@@last_modified": "2026-09-15 11:13:46.980845",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8143,5 +8143,6 @@
     "groupsFilterTooltip": "Mostrar solo chats de grupo",
     "activitiesFilterTooltip": "Mostrar solo actividades",
     "noGroupChatsYet": "Todavía no estás en ningún chat de grupo.",
-    "noActivitiesYet": "Todavía no estás en ninguna actividad."
+    "noActivitiesYet": "Todavía no estás en ninguna actividad.",
+    "unblock": "Desbloquear"
 }

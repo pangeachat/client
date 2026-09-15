@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-14 12:45:22.887544",
+    "@@last_modified": "2026-09-15 11:13:46.801762",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10869,5 +10869,6 @@
     "groupsFilterTooltip": "Montri nur grupajn babilojn",
     "activitiesFilterTooltip": "Montri nur agadojn",
     "noGroupChatsYet": "Vi ankoraŭ ne estas en iuj grupaj babiloj.",
-    "noActivitiesYet": "Vi ankoraŭ ne estas en iuj agadoj."
+    "noActivitiesYet": "Vi ankoraŭ ne estas en iuj agadoj.",
+    "unblock": "Malbloki"
 }

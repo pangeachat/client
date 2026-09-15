@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-14 12:45:25.145931",
+    "@@last_modified": "2026-09-15 11:13:48.123042",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10838,5 +10838,6 @@
     "groupsFilterTooltip": "הצג רק צ'אטים קבוצתיים",
     "activitiesFilterTooltip": "הצג רק פעילויות",
     "noGroupChatsYet": "עדיין אינך חבר/ה באף צ'אט קבוצתי.",
-    "noActivitiesYet": "עדיין אינך חבר/ה באף פעילות."
+    "noActivitiesYet": "עדיין אינך חבר/ה באף פעילות.",
+    "unblock": "בטל חסימה"
 }

@@ -1263,7 +1263,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-09-14 12:45:38.349777",
+    "@@last_modified": "2026-09-15 11:13:52.911184",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10881,5 +10881,6 @@
     "groupsFilterTooltip": "只顯示群組聊天",
     "activitiesFilterTooltip": "只顯示活動",
     "noGroupChatsYet": "你仲未加入任何群組聊天。",
-    "noActivitiesYet": "你仲未參與任何活動。"
+    "noActivitiesYet": "你仲未參與任何活動。",
+    "unblock": "解除封鎖"
 }

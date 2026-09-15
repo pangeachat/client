@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-09-14 12:45:38.791148",
+    "@@last_modified": "2026-09-15 11:13:52.769394",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "Bonisa kuphela iincoko zeqela",
     "activitiesFilterTooltip": "Bonisa kuphela imisebenzi",
     "noGroupChatsYet": "Akukho ncoko zeqela ukulo okwangoku.",
-    "noActivitiesYet": "Akukho misebenzi ukuyo okwangoku."
+    "noActivitiesYet": "Akukho misebenzi ukuyo okwangoku.",
+    "unblock": "Vula"
 }

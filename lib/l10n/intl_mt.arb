@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-09-14 12:45:34.281470",
+    "@@last_modified": "2026-09-15 11:13:50.239011",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "Uri biss chats tal-grupp",
     "activitiesFilterTooltip": "Uri biss attivitajiet",
     "noGroupChatsYet": "Għadek m'intix f'xi chats tal-grupp.",
-    "noActivitiesYet": "Għadek m'intix f'xi attivitajiet."
+    "noActivitiesYet": "Għadek m'intix f'xi attivitajiet.",
+    "unblock": "Neħħi l-imblukkar"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-14 12:45:20.867457",
+    "@@last_modified": "2026-09-15 11:13:46.139958",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10552,5 +10552,6 @@
     "groupsFilterTooltip": "শুধুমাত্র গ্রুপ চ্যাট দেখান",
     "activitiesFilterTooltip": "শুধুমাত্র কার্যকলাপ দেখান",
     "noGroupChatsYet": "আপনি এখনো কোনো গ্রুপ চ্যাটে নেই।",
-    "noActivitiesYet": "আপনি এখনো কোনো কার্যকলাপে নেই।"
+    "noActivitiesYet": "আপনি এখনো কোনো কার্যকলাপে নেই।",
+    "unblock": "আনব্লক করুন"
 }

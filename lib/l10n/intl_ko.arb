@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-14 12:45:27.975223",
+    "@@last_modified": "2026-09-15 11:13:49.316182",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10117,5 +10117,6 @@
     "groupsFilterTooltip": "그룹 채팅만 표시",
     "activitiesFilterTooltip": "활동만 표시",
     "noGroupChatsYet": "아직 참여 중인 그룹 채팅이 없습니다.",
-    "noActivitiesYet": "아직 참여 중인 활동이 없습니다."
+    "noActivitiesYet": "아직 참여 중인 활동이 없습니다.",
+    "unblock": "차단 해제"
 }

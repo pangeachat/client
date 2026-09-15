@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-09-14 12:45:30.938030",
+    "@@last_modified": "2026-09-15 11:13:49.995508",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "फक्त ग्रुप चॅट्स दाखवा",
     "activitiesFilterTooltip": "फक्त अ‍ॅक्टिव्हिटी दाखवा",
     "noGroupChatsYet": "तुम्ही अजून कोणत्याही ग्रुप चॅटमध्ये नाही.",
-    "noActivitiesYet": "तुम्ही अजून कोणत्याही अ‍ॅक्टिव्हिटीमध्ये नाही."
+    "noActivitiesYet": "तुम्ही अजून कोणत्याही अ‍ॅक्टिव्हिटीमध्ये नाही.",
+    "unblock": "अनब्लॉक करा"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-09-14 12:45:39.032502",
+    "@@last_modified": "2026-09-15 11:13:52.945585",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9924,5 +9924,6 @@
     "groupsFilterTooltip": "仅显示群聊",
     "activitiesFilterTooltip": "仅显示活动",
     "noGroupChatsYet": "您还没有加入任何群聊。",
-    "noActivitiesYet": "您还没有参加任何活动。"
+    "noActivitiesYet": "您还没有参加任何活动。",
+    "unblock": "取消屏蔽"
 }

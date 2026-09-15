@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-09-14 12:45:30.850291",
+    "@@last_modified": "2026-09-15 11:13:50.010194",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "Зөвхөн бүлгийн чатыг харуулах",
     "activitiesFilterTooltip": "Зөвхөн үйл ажиллагааг харуулах",
     "noGroupChatsYet": "Та одоогоор ямар ч бүлгийн чатад ороогүй байна.",
-    "noActivitiesYet": "Та одоогоор ямар ч үйл ажиллагаанд ороогүй байна."
+    "noActivitiesYet": "Та одоогоор ямар ч үйл ажиллагаанд ороогүй байна.",
+    "unblock": "Хаалтыг цуцлах"
 }

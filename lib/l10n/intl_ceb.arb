@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-09-14 12:45:22.344121",
+    "@@last_modified": "2026-09-15 11:13:46.573209",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "Ipakita lang ang mga group chat",
     "activitiesFilterTooltip": "Ipakita lang ang mga kalihokan",
     "noGroupChatsYet": "Wala ka pa sa bisan unsang group chat.",
-    "noActivitiesYet": "Wala ka pa sa bisan unsang kalihokan."
+    "noActivitiesYet": "Wala ka pa sa bisan unsang kalihokan.",
+    "unblock": "I-unblock"
 }

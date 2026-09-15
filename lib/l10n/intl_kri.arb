@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-09-14 12:45:28.808865",
+    "@@last_modified": "2026-09-15 11:13:49.078090",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "Sho ɔnli grup chat dɛn",
     "activitiesFilterTooltip": "Sho ɔnli aktiviti dɛn",
     "noGroupChatsYet": "Yu nɔ de insay ɛni grup chat yet.",
-    "noActivitiesYet": "Yu nɔ de insay ɛni aktiviti yet."
+    "noActivitiesYet": "Yu nɔ de insay ɛni aktiviti yet.",
+    "unblock": "Ful-am"
 }

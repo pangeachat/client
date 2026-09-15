@@ -3093,7 +3093,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-09-14 12:45:37.136171",
+    "@@last_modified": "2026-09-15 11:13:52.442539",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10556,5 +10556,6 @@
     "groupsFilterTooltip": "แสดงเฉพาะแชทกลุ่ม",
     "activitiesFilterTooltip": "แสดงเฉพาะกิจกรรม",
     "noGroupChatsYet": "คุณยังไม่ได้อยู่ในแชทกลุ่มใดๆ",
-    "noActivitiesYet": "คุณยังไม่ได้อยู่ในกิจกรรมใดๆ"
+    "noActivitiesYet": "คุณยังไม่ได้อยู่ในกิจกรรมใดๆ",
+    "unblock": "เลิกบล็อก"
 }

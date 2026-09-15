@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-09-14 12:45:33.080400",
+    "@@last_modified": "2026-09-15 11:13:50.813789",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "କେବଳ ଗ୍ରୁପ୍ ଚାଟ୍ ଦେଖାନ୍ତୁ",
     "activitiesFilterTooltip": "କେବଳ କାର୍ଯ୍ୟକଳାପ ଦେଖାନ୍ତୁ",
     "noGroupChatsYet": "ଆପଣ ଏପର୍ଯ୍ୟନ୍ତ କୌଣସି ଗ୍ରୁପ୍ ଚାଟ୍‌ରେ ନାହାଁନ୍ତି।",
-    "noActivitiesYet": "ଆପଣ ଏପର୍ଯ୍ୟନ୍ତ କୌଣସି କାର୍ଯ୍ୟକଳାପରେ ନାହାଁନ୍ତି।"
+    "noActivitiesYet": "ଆପଣ ଏପର୍ଯ୍ୟନ୍ତ କୌଣସି କାର୍ଯ୍ୟକଳାପରେ ନାହାଁନ୍ତି।",
+    "unblock": "ଅନବ୍ଲକ୍ କରନ୍ତୁ"
 }
