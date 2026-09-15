@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/choice_array.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/active_suggestion_model.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_controller.dart';
+import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_feedback_dialog.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_suggestion.dart';
 import 'package:fluffychat/routes/chat/choreographer/choreographer.dart';
 import 'package:fluffychat/routes/chat/choreographer/choreographer_state_extension.dart';
@@ -84,8 +86,19 @@ class SuggestionCardState extends State<SuggestionCard> {
     _close();
   }
 
-  // TODO ORCHESTRATOR: add feedback mechanism
-  // void _showFeedbackDialog() {}
+  /// Internal reviewer feedback (staging only). Records the objection against
+  /// the stored orchestrator turn and regenerates it there; nothing in this
+  /// room changes, so the card is left exactly as it is and the learner can
+  /// still send the suggestion they were shown.
+  Future<void> _showFeedbackDialog() async {
+    final model = suggestionsModel;
+    if (model == null) return;
+    await showOrchestratorFeedbackDialog(
+      context: context,
+      roomId: widget.controller.room.id,
+      basedOnEventId: model.basedOnEventId,
+    );
+  }
 
   void _onChoiceSelected(OrchestratorSuggestion choice) {
     try {
@@ -153,13 +166,18 @@ class SuggestionCardState extends State<SuggestionCard> {
                           ),
                         ),
                       ),
-                      // TODO ORCHESTRATOR: add feedback mechanism
-                      // IconButton(
-                      //   icon: const Icon(Icons.flag_outlined),
-                      //   color: theme.iconTheme.color,
-                      //   onPressed: _showFeedbackDialog,
-                      // ),
-                      SizedBox(height: 40.0, width: 40.0),
+                      // Staging only: an instrument for the team, not a
+                      // learner-facing feature. The spacer keeps the title
+                      // centred against the close button where it is absent.
+                      if (Environment.isStagingEnvironment)
+                        IconButton(
+                          tooltip: L10n.of(context).orchestratorFeedbackTooltip,
+                          icon: const Icon(Icons.flag_outlined),
+                          color: theme.iconTheme.color,
+                          onPressed: _showFeedbackDialog,
+                        )
+                      else
+                        const SizedBox(height: 40.0, width: 40.0),
                     ],
                   ),
                   ConstrainedBox(
