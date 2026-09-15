@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
@@ -131,7 +132,11 @@ class UserDialog extends StatelessWidget {
                                                 ? Icons.check_circle
                                                 : Icons.copy,
                                             size: 12,
-                                            color: copied ? Colors.green : null,
+                                            color: copied
+                                                ? Theme.of(
+                                                    context,
+                                                  ).pangea.success
+                                                : null,
                                           ),
                                         ),
                                       ),

@@ -124,7 +124,7 @@ class OverlayMessage extends StatelessWidget {
     var color = theme.colorScheme.surfaceContainerHigh;
     if (ownMessage) {
       color = displayEvent.status.isError
-          ? Colors.redAccent
+          ? theme.colorScheme.error
           : theme.colorScheme.primary;
     }
 

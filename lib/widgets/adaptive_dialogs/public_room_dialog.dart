@@ -5,6 +5,7 @@ import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -150,7 +151,9 @@ class PublicRoomDialog extends StatelessWidget {
                                               ? Icons.check_circle
                                               : Icons.copy,
                                           size: 12,
-                                          color: copied ? Colors.green : null,
+                                          color: copied
+                                              ? Theme.of(context).pangea.success
+                                              : null,
                                         ),
                                       ),
                                     ),

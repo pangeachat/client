@@ -100,11 +100,9 @@ class LemmaUsageChips extends StatelessWidget {
 
     final Color textColor = construct.lemmaCategory.color(context);
 
-    // Greys and the heard colour flip with the theme so the chips keep
-    // contrast against both card grounds.
-    final Color neutralColor = theme.brightness == Brightness.light
-        ? Colors.grey[600]!
-        : Colors.grey[400]!;
+    // The neutral chip takes the muted ink, which flips with the theme so
+    // the chips keep contrast against both card grounds.
+    final Color neutralColor = theme.colorScheme.onSurfaceVariant;
     final Color heardColor = theme.colorScheme.primary;
 
     final List<Widget> chips = [

@@ -22,7 +22,7 @@ enum AssistanceStateEnum {
     switch (this) {
       case AssistanceStateEnum.noMessage:
       case AssistanceStateEnum.fetched:
-        return Colors.grey[400]!;
+        return Theme.of(context).colorScheme.outline;
       case AssistanceStateEnum.error:
         return Theme.of(context).pangea.errorGraphic;
       case AssistanceStateEnum.noSub:

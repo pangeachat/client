@@ -284,7 +284,7 @@ class Message extends StatelessWidget {
       //     ? Colors.redAccent
       //     : theme.bubbleColor;
       color = displayEvent.status.isError
-          ? Colors.redAccent
+          ? theme.colorScheme.error
           : theme.colorScheme.primary;
       // Pangea#
     }
