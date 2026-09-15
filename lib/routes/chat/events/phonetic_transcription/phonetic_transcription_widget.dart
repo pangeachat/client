@@ -285,8 +285,12 @@ class _PhoneticTranscriptionViewState extends State<PhoneticTranscriptionView> {
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 150),
               decoration: BoxDecoration(
+                // The hover wash: the surface's ink at a fifth, so it
+                // follows the theme.
                 color: hovering
-                    ? Colors.grey.withAlpha((0.2 * 255).round())
+                    ? Theme.of(
+                        context,
+                      ).colorScheme.onSurface.withAlpha((0.2 * 255).round())
                     : Colors.transparent,
                 borderRadius: BorderRadius.circular(6),
               ),

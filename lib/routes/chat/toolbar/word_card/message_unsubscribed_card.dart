@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/subscription/widgets/decorative_stars.dart';
 import 'package:fluffychat/features/subscription/widgets/locked_shimmer_box.dart';
 import 'package:fluffychat/features/subscription/widgets/unlock_button.dart';
@@ -52,7 +51,7 @@ class MessageUnsubscribedCard extends StatelessWidget {
                         fontSize: 28.0,
                         fontWeight: FontWeight.w600,
                         height: 1.2,
-                        color: theme.pangea.gold,
+                        color: theme.colorScheme.primary,
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
