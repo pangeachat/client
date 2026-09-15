@@ -15,6 +15,8 @@ Every role on the extension is a tone of one key colour, so its contrast against
 
 **No colour lives in `AppConfig`.** The key colours a theme extension turns into roles are constants on the extension itself (`PangeaColors.goldKey`, `successKey`, `warningKey`, `joinableKey`), read nowhere else; a widget reads a role from the theme, never a key or a helper. Do not add a static colour to `AppConfig`, and do not add a key that no extension consumes.
 
+**A fill is chosen by the shape it fills.** A flat pill or chip on a surface — an XP or vocab count, a download status, a reacted reaction, a selected feedback row — fills with `secondaryContainer` and inks with `onSecondaryContainer`. A round toolbar button — the practice modes, more, hint, the reading-assistance modes — fills with `primaryContainer` under `onPrimaryContainer`, and while pressed draws its icon in `ThemeData.lightTone` (the surface in light, its ink in dark), because the pressed fill is darkened toward black and its own ink no longer reads on it. `primaryContainer` is a vivid fill under the fidelity variant, never a quiet tint: a pill that lets its text inherit `onSurface` on it measures 3.7:1 in light and 2.5:1 in dark. Decided 2026-09-11 from a side-by-side of the two treatments.
+
 ## Why the seed is not a token
 
 The client builds its Material 3 palette with `ColorScheme.fromSeed`, and the seed is read from `AppSettings.colorSchemeSeedInt`, a setting a learner can change in Settings → Style. A synced value can therefore only set the *default* seed; it can never describe what a given user sees. Anything that must hold a fixed brand value reads the theme extension instead, because that is the only layer a user preference does not move.

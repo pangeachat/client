@@ -47,8 +47,10 @@ class PercentMarkerBar extends StatelessWidget {
                 width: constraints.maxWidth,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(height / 2),
+                  // The neutral track the other progress bars use.
                   color:
-                      backgroundColor ?? Theme.of(context).pangea.goldContainer,
+                      backgroundColor ??
+                      Theme.of(context).colorScheme.surfaceContainerHighest,
                 ),
               ),
             ),

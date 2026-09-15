@@ -83,8 +83,10 @@ class CompletedAnalyticsPracticeExercisesView extends StatelessWidget {
                 widthPercent: accuracy / 100.0,
                 markerWidth: 20.0,
                 markerColor: Theme.of(context).pangea.successGraphic,
+                // The neutral track, washed gold when the accuracy bonus
+                // was earned.
                 backgroundColor: !accuracyAchievement
-                    ? Theme.of(context).colorScheme.surfaceContainerHighest
+                    ? null
                     : Color.alphaBlend(
                         Theme.of(
                           context,
