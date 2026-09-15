@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
@@ -27,6 +29,13 @@ class MessageAnalyticsFeedbackState extends State<MessageAnalyticsFeedback>
   late AnimationController _numbersController;
   late AnimationController _bubbleController;
   late AnimationController _tickerController;
+
+  /// Both delays are held as timers and cancelled in [dispose]: the bubble is
+  /// an overlay keyed on its message, and it can be torn down inside the first
+  /// 400 ms, where a bare `Future.delayed` callback would drive a disposed
+  /// controller (CLIENT-CYK, #9070).
+  Timer? _numbersTimer;
+  Timer? _closeTimer;
 
   late Animation<double> _numbersOpacityAnimation;
   late Animation<double> _bubbleScaleAnimation;
@@ -72,20 +81,21 @@ class MessageAnalyticsFeedbackState extends State<MessageAnalyticsFeedback>
     });
 
     _bubbleController.forward();
-    Future.delayed(
+    _numbersTimer = Timer(
       const Duration(milliseconds: 400),
       _numbersController.forward,
     );
-    Future.delayed(const Duration(milliseconds: 4000), () async {
-      if (mounted) {
-        await _bubbleController.reverse();
-        widget.close();
-      }
+    _closeTimer = Timer(const Duration(milliseconds: 4000), () async {
+      await _bubbleController.reverse();
+      // The reverse can outlive the bubble too.
+      if (mounted) widget.close();
     });
   }
 
   @override
   void dispose() {
+    _numbersTimer?.cancel();
+    _closeTimer?.cancel();
     _numbersController.dispose();
     _bubbleController.dispose();
     _tickerController.dispose();

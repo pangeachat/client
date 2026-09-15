@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-09-14 12:45:34.927851",
+    "@@last_modified": "2026-09-15 11:13:51.943650",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "Fa'aali na'o talatalanoaga fa'avaega",
     "activitiesFilterTooltip": "Fa'aali na'o gaioiga",
     "noGroupChatsYet": "E te le'i auai i ni talatalanoaga fa'avaega.",
-    "noActivitiesYet": "E te le'i auai i ni gaioiga."
+    "noActivitiesYet": "E te le'i auai i ni gaioiga.",
+    "unblock": "Tatala le poloka"
 }

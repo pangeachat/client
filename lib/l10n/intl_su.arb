@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-09-14 12:45:36.507724",
+    "@@last_modified": "2026-09-15 11:13:52.280081",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "Témbongkeun ukur obrolan grup",
     "activitiesFilterTooltip": "Témbongkeun ukur kagiatan",
     "noGroupChatsYet": "Anjeun teu acan aya dina obrolan grup mana waé.",
-    "noActivitiesYet": "Anjeun teu acan aya dina kagiatan mana waé."
+    "noActivitiesYet": "Anjeun teu acan aya dina kagiatan mana waé.",
+    "unblock": "Buka blokir"
 }

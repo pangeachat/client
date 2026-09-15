@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-09-14 12:45:28.110488",
+    "@@last_modified": "2026-09-15 11:13:49.014723",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "ಗುಂಪು ಚಾಟ್‌ಗಳನ್ನು ಮಾತ್ರ ತೋರಿಸಿ",
     "activitiesFilterTooltip": "ಚಟುವಟಿಕೆಗಳನ್ನು ಮಾತ್ರ ತೋರಿಸಿ",
     "noGroupChatsYet": "ನೀವು ಇನ್ನೂ ಯಾವುದೇ ಗುಂಪು ಚಾಟ್‌ಗಳಲ್ಲಿಲ್ಲ.",
-    "noActivitiesYet": "ನೀವು ಇನ್ನೂ ಯಾವುದೇ ಚಟುವಟಿಕೆಗಳಲ್ಲಿಲ್ಲ."
+    "noActivitiesYet": "ನೀವು ಇನ್ನೂ ಯಾವುದೇ ಚಟುವಟಿಕೆಗಳಲ್ಲಿಲ್ಲ.",
+    "unblock": "ಅನಿರ್ಬಂಧಿಸಿ"
 }

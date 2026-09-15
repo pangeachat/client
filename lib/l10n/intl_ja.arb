@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-09-14 12:45:26.753543",
+    "@@last_modified": "2026-09-15 11:13:48.620747",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10693,5 +10693,6 @@
     "groupsFilterTooltip": "グループチャットのみを表示",
     "activitiesFilterTooltip": "アクティビティのみを表示",
     "noGroupChatsYet": "まだグループチャットに参加していません。",
-    "noActivitiesYet": "まだアクティビティに参加していません。"
+    "noActivitiesYet": "まだアクティビティに参加していません。",
+    "unblock": "ブロックを解除"
 }

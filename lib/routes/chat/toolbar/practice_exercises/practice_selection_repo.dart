@@ -74,7 +74,7 @@ class PracticeSelectionRepo {
   }
 
   static Future<PracticeSelection?> _getCached(String eventId) async {
-    final json = _cache.read(eventId);
+    final json = await _cache.read(eventId);
     if (json == null) return null;
 
     try {

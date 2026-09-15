@@ -51,6 +51,7 @@ class UserDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     final client = Matrix.of(context).client;
     final dmRoomId = client.getDirectChatFromUserId(profile.userId);
+    final blocked = client.ignoredUsers.contains(profile.userId);
     final displayname =
         localizedPangeaUserName(profile.userId, L10n.of(context)) ??
         profile.displayName ??
@@ -229,13 +230,19 @@ class UserDialog extends StatelessWidget {
                 router.go(
                   WorkspaceNav.openSettings(
                     uri,
-                    page: 'security/ignorelist/${profile.userId}',
+                    // Already blocked: send them to the block list to remove
+                    // the user, with nothing seeded into the block-a-user field.
+                    page: blocked
+                        ? 'security/ignorelist'
+                        : 'security/ignorelist/${profile.userId}',
                   ),
                 );
               },
               child: Text(
-                L10n.of(context).block,
-                style: TextStyle(color: theme.colorScheme.error),
+                blocked ? L10n.of(context).unblock : L10n.of(context).block,
+                style: blocked
+                    ? null
+                    : TextStyle(color: theme.colorScheme.error),
               ),
             ),
         ],

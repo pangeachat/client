@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-09-14 12:45:23.740217",
+    "@@last_modified": "2026-09-15 11:13:47.211329",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9924,5 +9924,6 @@
     "groupsFilterTooltip": "Talde-txatak soilik erakutsi",
     "activitiesFilterTooltip": "Jarduerak soilik erakutsi",
     "noGroupChatsYet": "Oraindik ez zaude talde-txatetan.",
-    "noActivitiesYet": "Oraindik ez zaude jardueretan."
+    "noActivitiesYet": "Oraindik ez zaude jardueretan.",
+    "unblock": "Desblokeatu"
 }

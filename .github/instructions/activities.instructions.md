@@ -68,6 +68,20 @@ Download exports the full message history — sender, timestamp, original and se
 - **Any room member can export.** The download only surfaces content the member can already read in the chat, so it grants no new visibility. Do not gate it behind power level. The one real cost is that it puts an off-platform copy of a whole room's messages — everyone's, in a group or multi-learner session — in one member's hands; for research-study or minor-heavy rooms that off-platform copy is a genuinely different exposure from in-app reading, and is the open question to revisit if the studies need tighter control.
 - **Web and desktop only, for now.** The download is `kIsWeb`-gated because the native mobile write path (`download_file_util.dart`, storage-permission + Downloads dir) has never shipped and is unvalidated. Enabling mobile is deliberately deferred until that path is tested — until then a completed session on native shows no ⋮ menu at all (Download would be its only item).
 
+## Plans arrive a screenful at a time
+
+A course screen shows one activity per session room, and each needs its plan. Fetching them one at a time made a single screen cost dozens of round trips, so [`ActivityPlanRepo`](../../lib/features/activity_sessions/activity_plan_repo.dart) collects the keys a frame asks for and reads them in one request. Cards still appear together; what changed is how many times the device asks.
+
+Collecting them depends on waiting: surfaces request a plan per card as they build, so dispatching on the first request would send it before the second arrived and batch nothing. The repo therefore dispatches after the frame finishes asking — soon enough that nothing is perceptibly delayed, late enough that a screen travels as one request.
+
+Three rules decide what can share a request, and each exists because ignoring it would quietly change what a caller asked for:
+
+- **One display language per request.** The read applies a single language to everything in it, so a key wanting a different one starts a new request rather than being reordered into an existing one — hydration follows the order surfaces asked, and a learner watching a screen fill in should not see it rearranged to suit the transport.
+- **A refresh travels alone.** Re-reading past the cache is the whole point of a refresh, and a shared request cannot ask for that on behalf of one activity and not the others.
+- **Activities already known to be gone never travel.** The backend's "this is gone" verdict outlives the app session, so a known-dead activity is dropped before the request rather than re-asked — re-asking is a loop this system has already been through once.
+
+Batching changes the number of requests, never their standing: each activity in a request costs the learner's allowance exactly what it would have cost alone, and one activity's failure never decides another's. What the backend guarantees in return is in the [org activities doc](../../../.github/.github/instructions/activities.instructions.md).
+
 ## When the activity can't be fetched
 
 Some session rooms reference an activity that no longer exists on the backend. The fallback ladder and the view-only contract are the org doc's ([Removed or unresolvable activities](../../../.github/.github/instructions/activities.instructions.md#editing-semantics)); what the client shows on each rung:

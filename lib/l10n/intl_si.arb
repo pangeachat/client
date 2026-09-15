@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-09-14 12:45:34.631933",
+    "@@last_modified": "2026-09-15 11:13:51.266064",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "කණ්ඩායම් චැට් පමණක් පෙන්වන්න",
     "activitiesFilterTooltip": "ක්‍රියාකාරකම් පමණක් පෙන්වන්න",
     "noGroupChatsYet": "ඔබ තවමත් කිසිදු කණ්ඩායම් චැට් එකක නැත.",
-    "noActivitiesYet": "ඔබ තවමත් කිසිදු ක්‍රියාකාරකමක නැත."
+    "noActivitiesYet": "ඔබ තවමත් කිසිදු ක්‍රියාකාරකමක නැත.",
+    "unblock": "අවහිර නොකරන්න"
 }

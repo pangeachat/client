@@ -2,18 +2,20 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/activity_participant_row.dart';
 import 'package:fluffychat/pangea/common/widgets/activity_tile_body.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/calls/call_timeline_event.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
-import 'package:fluffychat/routes/chat_list/open_roles_indicator.dart';
+import 'package:fluffychat/routes/world/world_map_room_extension.dart';
 import 'package:fluffychat/utils/room_status_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../../utils/matrix_sdk_extensions/matrix_locals.dart';
@@ -94,20 +96,23 @@ class ChatListItemSubtitle extends StatelessWidget {
           ),
         );
       } else if (!room.isActivityStarted) {
-        return FutureBuilder(
-          future: room.requestParticipants(
-            [Membership.join, Membership.invite, Membership.knock],
-            false,
-            true,
-          ),
-          builder: (context, _) {
-            return OpenRolesIndicator(
-              roles: activity?.roles.values.toList() ?? [],
-              assignedRoles: room.assignedRoles?.values.toList() ?? [],
-              room: room,
-              space: room.courseParent,
-            );
-          },
+        // The same hourglass + filled-first participant row the map's
+        // ongoing-pending large card shows for this session, from the same
+        // room-state pair, so the tile and the card cannot drift. The row's
+        // UserProfileAvatars fetch their own profiles by id (#8192), so no
+        // participant warmup is needed here.
+        return ActivityParticipantRow(
+          icon: Icons.hourglass_bottom,
+          // The ongoing state's accent — the very purple the map card passes
+          // for this same hourglass (ActivityPinState.ongoingPending), so the
+          // two surfaces match. An icon only needs non-text contrast (3:1), so
+          // the raw brand purple is safe where 13px text would not be (#8968).
+          accent: AppConfig.primaryColor,
+          participants: room.largeCardParticipantIds,
+          openSlots: room.numRemainingRoles,
+          // Matches the Active tile's sender-avatar size (ActivityTileBody)
+          // and the map card's pending row.
+          avatarSize: 24,
         );
       } else if (room.isActivityFinished) {
         return ExcludeSemantics(

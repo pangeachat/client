@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-09-14 12:45:26.838386",
+    "@@last_modified": "2026-09-15 11:13:49.611273",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "Gosi naanị nkata otu",
     "activitiesFilterTooltip": "Gosi naanị ihe omume",
     "noGroupChatsYet": "Ị nọbeghị na nkata otu ọ bụla.",
-    "noActivitiesYet": "Ị nọbeghị na ihe omume ọ bụla."
+    "noActivitiesYet": "Ị nọbeghị na ihe omume ọ bụla.",
+    "unblock": "Wepụ mgbochi"
 }

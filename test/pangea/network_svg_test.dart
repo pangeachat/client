@@ -44,7 +44,7 @@ void main() {
   var urlCounter = 0;
   String freshUrl() => 'https://assets.example.test/flag-${urlCounter++}.svg';
 
-  /// Runs [body] with every top-level `http` call served by [handler].
+  /// Runs [body] with every `http` call served by [handler].
   Future<T> withClient<T>(
     Future<http.Response> Function(http.Request) handler,
     Future<T> Function() body,
@@ -92,7 +92,7 @@ void main() {
       expect(fetches, 1);
     });
 
-    test('a failure is not retried for the rest of the session', () async {
+    test('a failure is not retried straight away', () async {
       final url = freshUrl();
       var fetches = 0;
 
@@ -108,6 +108,65 @@ void main() {
       );
 
       expect(fetches, 1);
+    });
+
+    /// A failure used to be final for the session, so one bad moment left a
+    /// screen of flags showing their fallback until the app restarted (#9080).
+    test('a failure is retried once the cooldown has passed', () async {
+      final url = freshUrl();
+      var fetches = 0;
+
+      final result = await withClient(
+        (_) async {
+          fetches++;
+          if (fetches == 1) throw http.ClientException('Failed to fetch');
+          return http.Response(svg, 200);
+        },
+        () async {
+          await SvgRepo.get(url);
+          SvgRepo.expireFailuresForTest();
+          return SvgRepo.get(url);
+        },
+      );
+
+      expect(fetches, 2);
+      expect(result.asValue?.value, svg);
+    });
+
+    /// The repo pools one client so connections are reused (#9080), but
+    /// `runWithClient`'s factory is zone-local: cached past its zone, the
+    /// previous case's mock goes on answering the next case's fetches.
+    test('the pooled client never outlives its client-factory zone', () async {
+      final failed = await withClient(
+        (_) async => throw http.ClientException('Failed to fetch'),
+        () => SvgRepo.get(freshUrl()),
+      );
+      final loaded = await withClient(
+        (_) async => http.Response(svg, 200),
+        () => SvgRepo.get(freshUrl()),
+      );
+
+      expect(failed.isError, isTrue);
+      expect(loaded.asValue?.value, svg);
+    });
+
+    /// Unbounded, a language list put ~67 simultaneous connections on one host,
+    /// which a phone answers with DNS failures, resets and 504s (#9080).
+    test('fetches run under a concurrency cap', () async {
+      final urls = List.generate(20, (_) => freshUrl());
+      var inFlight = 0;
+      var peak = 0;
+
+      await withClient((_) async {
+        inFlight++;
+        if (inFlight > peak) peak = inFlight;
+        await Future<void>.delayed(Duration.zero);
+        inFlight--;
+        return http.Response(svg, 200);
+      }, () => Future.wait(urls.map(SvgRepo.get)));
+
+      expect(peak, lessThanOrEqualTo(6));
+      expect(peak, greaterThan(1), reason: 'the cap still allows parallelism');
     });
 
     test('a fetched SVG comes back intact', () async {

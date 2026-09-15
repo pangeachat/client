@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-09-14 12:45:29.591544",
+    "@@last_modified": "2026-09-15 11:13:50.040538",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "Whakaatu i ngā kōrerorero rōpū anake",
     "activitiesFilterTooltip": "Whakaatu i ngā mahi anake",
     "noGroupChatsYet": "Kāore anō koe kia uru ki tētahi kōrerorero rōpū.",
-    "noActivitiesYet": "Kāore anō koe kia uru ki tētahi mahi."
+    "noActivitiesYet": "Kāore anō koe kia uru ki tētahi mahi.",
+    "unblock": "Wewete"
 }

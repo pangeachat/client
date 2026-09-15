@@ -396,6 +396,16 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
     }
 
     if (updatedMode == SelectMode.speechTranslation) {
+      // The buttons were built for the message that was under the toolbar,
+      // but [messageEvent] re-reads the overlay's message live — so a swap
+      // between build and tap leaves this tap pointing at a text message,
+      // which requestSpeechToText rejects outright (#9054). Drop the tap and
+      // clear the mode, rather than leave the toolbar in a mode whose content
+      // can never load.
+      if (messageEvent.isAudioMessage != true) {
+        controller.setSelectMode(null);
+        return;
+      }
       await controller.fetchSpeechTranslation();
     }
 

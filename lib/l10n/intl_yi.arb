@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-09-14 12:45:39.468505",
+    "@@last_modified": "2026-09-15 11:13:53.203255",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "ווייַזן נאָר גרופּע טשאַץ",
     "activitiesFilterTooltip": "ווייַזן נאָר אַקטיוויטעטן",
     "noGroupChatsYet": "איר זענט נאָך נישט אין קיין גרופּע טשאַץ.",
-    "noActivitiesYet": "איר זענט נאָך נישט אין קיין אַקטיוויטעטן."
+    "noActivitiesYet": "איר זענט נאָך נישט אין קיין אַקטיוויטעטן.",
+    "unblock": "אַנבלאָקירן"
 }

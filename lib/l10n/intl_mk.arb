@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-09-14 12:45:29.473874",
+    "@@last_modified": "2026-09-15 11:13:49.772647",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "Прикажи само групни разговори",
     "activitiesFilterTooltip": "Прикажи само активности",
     "noGroupChatsYet": "Сè уште не сте во ниту еден групен разговор.",
-    "noActivitiesYet": "Сè уште не сте во ниту една активност."
+    "noActivitiesYet": "Сè уште не сте во ниту една активност.",
+    "unblock": "Одблокирај"
 }

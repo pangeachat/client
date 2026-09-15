@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-09-14 12:45:20.954320",
+    "@@last_modified": "2026-09-15 11:13:46.145391",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "Показване само на групови чатове",
     "activitiesFilterTooltip": "Показване само на дейности",
     "noGroupChatsYet": "Все още не сте в нито един групов чат.",
-    "noActivitiesYet": "Все още не сте в никакви дейности."
+    "noActivitiesYet": "Все още не сте в никакви дейности.",
+    "unblock": "Отблокиране"
 }

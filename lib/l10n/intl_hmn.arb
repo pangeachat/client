@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-09-14 12:45:25.609535",
+    "@@last_modified": "2026-09-15 11:13:48.111735",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "Qhia tsuas yog cov pab pawg sib tham",
     "activitiesFilterTooltip": "Qhia tsuas yog cov haujlwm",
     "noGroupChatsYet": "Koj tseem tsis tau nyob hauv ib pab pawg sib tham twg.",
-    "noActivitiesYet": "Koj tseem tsis tau nyob hauv ib qho haujlwm twg."
+    "noActivitiesYet": "Koj tseem tsis tau nyob hauv ib qho haujlwm twg.",
+    "unblock": "Tshem tawm kev thaiv"
 }

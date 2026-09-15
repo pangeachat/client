@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-09-14 12:45:21.427823",
+    "@@last_modified": "2026-09-15 11:13:46.286278",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10230,5 +10230,6 @@
     "groupsFilterTooltip": "إظهار دردشات المجموعات فقط",
     "activitiesFilterTooltip": "إظهار الأنشطة فقط",
     "noGroupChatsYet": "أنت لست في أي دردشات جماعية بعد.",
-    "noActivitiesYet": "أنت لست في أي أنشطة بعد."
+    "noActivitiesYet": "أنت لست في أي أنشطة بعد.",
+    "unblock": "إلغاء الحظر"
 }

@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-09-14 12:45:38.125695",
+    "@@last_modified": "2026-09-15 11:13:52.871917",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9928,5 +9928,6 @@
     "groupsFilterTooltip": "Faqat guruh chatlarini koʻrsatish",
     "activitiesFilterTooltip": "Faqat faoliyatlarni koʻrsatish",
     "noGroupChatsYet": "Siz hali hech qanday guruh chatlarida emassiz.",
-    "noActivitiesYet": "Siz hali hech qanday faoliyatlarda emassiz."
+    "noActivitiesYet": "Siz hali hech qanday faoliyatlarda emassiz.",
+    "unblock": "Blokdan chiqarish"
 }

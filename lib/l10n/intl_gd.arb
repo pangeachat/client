@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-09-14 12:45:24.451581",
+    "@@last_modified": "2026-09-15 11:13:47.741746",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "Seall dìreach cabadaich buidhne",
     "activitiesFilterTooltip": "Seall dìreach gnìomhachdan",
     "noGroupChatsYet": "Chan eil thu ann an cabadaich buidhne sam bith fhathast.",
-    "noActivitiesYet": "Chan eil thu ann an gnìomhachd sam bith fhathast."
+    "noActivitiesYet": "Chan eil thu ann an gnìomhachd sam bith fhathast.",
+    "unblock": "Dì-bhacaich"
 }

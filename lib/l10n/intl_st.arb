@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-09-14 12:45:37.007508",
+    "@@last_modified": "2026-09-15 11:13:51.892393",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "Bontša meqoqo ea lihlopha feela",
     "activitiesFilterTooltip": "Bontša mesebetsi feela",
     "noGroupChatsYet": "Ha o so be le meqoqo ea lihlopha.",
-    "noActivitiesYet": "Ha o so be le mesebetsi."
+    "noActivitiesYet": "Ha o so be le mesebetsi.",
+    "unblock": "Notlolla"
 }

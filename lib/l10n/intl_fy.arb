@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-09-14 12:45:24.370701",
+    "@@last_modified": "2026-09-15 11:13:47.324829",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "Lit allinnich groepspetearen sjen",
     "activitiesFilterTooltip": "Lit allinnich aktiviteiten sjen",
     "noGroupChatsYet": "Jo sitte noch net yn groepspetearen.",
-    "noActivitiesYet": "Jo sitte noch net yn aktiviteiten."
+    "noActivitiesYet": "Jo sitte noch net yn aktiviteiten.",
+    "unblock": "Deblokkearje"
 }

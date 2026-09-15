@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-14 12:45:36.156569",
+    "@@last_modified": "2026-09-15 11:13:52.333437",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -10016,5 +10016,6 @@
     "groupsFilterTooltip": "குழு அரட்டைகளை மட்டும் காட்டு",
     "activitiesFilterTooltip": "செயல்பாடுகளை மட்டும் காட்டு",
     "noGroupChatsYet": "நீங்கள் இன்னும் எந்த குழு அரட்டைகளிலும் இல்லை.",
-    "noActivitiesYet": "நீங்கள் இன்னும் எந்த செயல்பாடுகளிலும் இல்லை."
+    "noActivitiesYet": "நீங்கள் இன்னும் எந்த செயல்பாடுகளிலும் இல்லை.",
+    "unblock": "தடைநீக்கு"
 }

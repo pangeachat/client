@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-09-14 12:45:29.190032",
+    "@@last_modified": "2026-09-15 11:13:49.525211",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "Nëmme Gruppechats weisen",
     "activitiesFilterTooltip": "Nëmmen Aktivitéite weisen",
     "noGroupChatsYet": "Dir sidd nach a kengem Gruppechat.",
-    "noActivitiesYet": "Dir sidd nach a keng Aktivitéiten."
+    "noActivitiesYet": "Dir sidd nach a keng Aktivitéiten.",
+    "unblock": "Spär ophiewen"
 }

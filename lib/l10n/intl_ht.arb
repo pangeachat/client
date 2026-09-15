@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-09-14 12:45:25.736855",
+    "@@last_modified": "2026-09-15 11:13:48.104714",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "Montre sèlman chat gwoup yo",
     "activitiesFilterTooltip": "Montre sèlman aktivite yo",
     "noGroupChatsYet": "Ou poko nan okenn chat gwoup.",
-    "noActivitiesYet": "Ou poko nan okenn aktivite."
+    "noActivitiesYet": "Ou poko nan okenn aktivite.",
+    "unblock": "Debloke"
 }

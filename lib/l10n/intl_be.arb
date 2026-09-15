@@ -3548,7 +3548,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-09-14 12:45:21.107346",
+    "@@last_modified": "2026-09-15 11:13:46.151005",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9938,5 +9938,6 @@
     "groupsFilterTooltip": "Паказаць толькі групавыя чаты",
     "activitiesFilterTooltip": "Паказаць толькі дзейнасці",
     "noGroupChatsYet": "Вы яшчэ не ўдзельнічаеце ні ў адным групавым чаце.",
-    "noActivitiesYet": "Вы яшчэ не ўдзельнічаеце ні ў адной дзейнасці."
+    "noActivitiesYet": "Вы яшчэ не ўдзельнічаеце ні ў адной дзейнасці.",
+    "unblock": "Разблакіраваць"
 }
