@@ -11,7 +11,6 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/dm_invite/dm_invite_ferry_consumer.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
-import 'package:fluffychat/features/navigation/panel_floor.dart';
 import 'package:fluffychat/features/navigation/panel_focus.dart';
 import 'package:fluffychat/features/navigation/panel_registry.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
@@ -494,11 +493,11 @@ class WorkspaceShell extends StatelessWidget {
                                 // semantics container covers the same rect, and
                                 // on web that reads as a node sitting over the
                                 // map's pins (#8903's failure mode). (#9037)
-                                bottom: l.leftAtFloor[i] == null ? 0 : null,
-                                height: l.leftAtFloor[i] == null
-                                    ? null
-                                    : CourseContextBar.height +
-                                          PanelCard.margin.vertical,
+                                bottom: l.courseAtFloor && i == 0 ? null : 0,
+                                height: l.courseAtFloor && i == 0
+                                    ? CourseContextBar.height +
+                                          PanelCard.margin.vertical
+                                    : null,
                                 left: l.allocation.left[i].left,
                                 width: l.allocation.left[i].width,
                                 child: FocusTraversalOrder(
@@ -515,7 +514,7 @@ class WorkspaceShell extends StatelessWidget {
                                     // The course panel's floor state — the
                                     // context bar in the card's own slot
                                     // (#9037).
-                                    atFloor: l.leftAtFloor[i],
+                                    atFloor: l.courseAtFloor && i == 0,
                                     revealFromBar: l.revealCoursePanel,
                                   ),
                                 ),
@@ -1330,10 +1329,9 @@ class _ShellLayout {
   /// exposed map above the sheet (#7640). 0 everywhere else.
   final double mapBottomOverlay;
 
-  /// Per left slot: draw that panel at its FLOOR — for the course panel, the
-  /// context bar instead of the card — and why, or null for its full surface.
-  /// Parallel to [leftTokens] (#9037).
-  final List<PanelFloor?> leftAtFloor;
+  /// The collapsed course panel is seated at the head of [leftTokens] — draw
+  /// that slot as the context bar rather than the card (#9037).
+  final bool courseAtFloor;
 
   /// The course card is appearing where the context bar was on the previous
   /// build, so it grows out of the bar ([CourseCardReveal], #8866).
@@ -1364,7 +1362,7 @@ class _ShellLayout {
     required this.leftInset,
     required this.mapLeftOverlay,
     required this.mapBottomOverlay,
-    required this.leftAtFloor,
+    required this.courseAtFloor,
     required this.revealCoursePanel,
     required this.availableVisibleMapWidth,
     required this.mapContext,
@@ -1468,25 +1466,11 @@ class _ShellLayout {
       focusHint: focusHint,
     );
 
-    // Which left slots draw their panel at its FLOOR — the course card as the
-    // context bar. Two reasons, one appearance: the learner collapsed it (no
-    // token, seated above as [courseAtFloor]) or the width budget degraded it
-    // rather than folding it away ([PanelSlot.atFloor]). See
-    // world-map.instructions.md → The course context bar.
-    final leftAtFloor = <PanelFloor?>[
-      for (var i = 0; i < leftTokens.length; i++)
-        if (courseAtFloor && i == 0)
-          PanelFloor.chosen
-        else if (layout.left[i].atFloor)
-          PanelFloor.imposed
-        else
-          null,
-    ];
-
-    // The course CARD is drawn: its panel survived and is not at its floor.
+    // The course CARD is drawn: a course panel survived and is not the
+    // collapsed one seated above.
     final courseCardVisible = [
       for (var i = 0; i < leftTokens.length; i++)
-        if (layout.left[i].vis != PanelVis.hidden && leftAtFloor[i] == null)
+        if (layout.left[i].vis != PanelVis.hidden && !(courseAtFloor && i == 0))
           leftTokens[i].type,
     ].any((type) => type.isCoursePanel);
 
@@ -1648,7 +1632,7 @@ class _ShellLayout {
       leftInset: leftInset,
       mapLeftOverlay: mapLeftOverlay,
       mapBottomOverlay: mapBottomOverlay,
-      leftAtFloor: leftAtFloor,
+      courseAtFloor: courseAtFloor,
       revealCoursePanel: revealCoursePanel,
       availableVisibleMapWidth: availableVisibleMapWidth,
       mapContext: mapContext,

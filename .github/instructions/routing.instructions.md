@@ -333,11 +333,16 @@ user came from:
   the course moves when it changes state
   ([#9037](https://github.com/pangeachat/client/issues/9037)). Either way the
   course never leaves the screen, so there is nothing an X could reveal and
-  nowhere a back arrow could go — only two states to move between. The one
-  exception is a floor the width budget **imposed** rather than the learner
-  choosing it ([Opening, pushing, and folding](#opening-pushing-and-folding)):
-  there the chevron is not drawn at all, because at that width there is no
-  expanded state to move to. The chevron keeps one place per form factor, in both states: on
+  nowhere a back arrow could go — only two states to move between, and the
+  chevron is offered in both. **Width never picks the state.** A collapsed
+  panel folds under pressure like any other, and an expanded one folds rather
+  than being shrunk into its floor: a floor the budget imposed would carry a
+  chevron with nothing to do — the token is already open, and expanding would
+  be retaken on the same frame
+  ([#9037](https://github.com/pangeachat/client/issues/9037)). So wherever the
+  bar is drawn, its chevron works. The cost is that between the two-column
+  breakpoint and the width the card and a chat both fit, a folded course names
+  itself nowhere; the chat's back arrow is the way back to it. The chevron keeps one place per form factor, in both states: on
   **wide** it rides the **trailing** edge beside the course's share / focus
   actions, in the open card and the context bar alike
   ([#8866](https://github.com/pangeachat/client/issues/8866)); on **narrow** it
@@ -419,20 +424,6 @@ One vocabulary covers how content opens:
 - **Push / pop** — open a page *within* a panel, onto that panel's own stack;
   the back arrow **pops** it. Each panel is its own little navigator. Security
   then change-password, a chat then its members: all pushes.
-- **Degrade to a floor** — the width-driven version of a *collapse*, and the
-  first move under pressure for the one panel that has a floor. A panel with a
-  **floor** (a collapsed state of its own — today only the course panel, whose
-  floor is the context bar) shrinks into that floor instead of folding: it keeps
-  its slot, stays drawn at the floor's width, and frees the rest to the panels
-  beside it. The course therefore never stops naming the map it scopes. The
-  floor buys one step, not immunity — a floored panel folds like any other if
-  even the floor will not fit, because holding a header row's width while a
-  whole panel in the other column is evicted to pay for it is the starvation
-  [#9030](https://github.com/pangeachat/client/issues/9030) fixed. A floor
-  reached this way is **imposed**, not chosen, so the panel offers no control
-  out of it: there is no expanded state to move to at that width, and the budget
-  would degrade it again on the same frame. The learner's own choice still rides
-  the URL and takes effect when width returns (#9037).
 - **Fold / unfold** — the width-driven version of a push: when the width budget
   can no longer honor reasonable minimums, a column's **master folds** behind
   its **detail** — not drawn, one back-step away — and **unfolds** back to two
@@ -491,10 +482,9 @@ widths** so the allocator can place and degrade it predictably:
 - **Hard min** — the absolute floor before the panel must yield entirely.
 
 When the open panels want more than fits, they compress from max toward
-reasonable min and the map absorbs the slack. Past that point the degrade moves are
-**degrade to a floor** and then **fold** (both defined in the panel model
-above) — the first shrinks a panel with a collapsed state into it, the second
-drops the pair's cost to one panel's width. Folding never discards a panel — both stay in the URL, so
+reasonable min and the map absorbs the slack. Past that point the one degrade
+move is **fold** (defined in the panel model above), which drops the pair's cost
+to one panel's width. Folding never discards a panel — both stay in the URL, so
 widening unfolds back to two — and the surviving panel is never torn down, so a
 folded live chat keeps its session.
 

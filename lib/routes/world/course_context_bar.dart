@@ -57,18 +57,10 @@ class CourseContextBar extends StatefulWidget {
   /// Whether the bar carries the course's share / focus-on-map actions.
   final bool showActions;
 
-  /// Whether the bar offers its expand chevron — and, with it, the whole-bar
-  /// pointer tap that shares the chevron's action. False where the floor was
-  /// imposed by width rather than chosen ([PanelFloor.imposed]): there is no
-  /// expanded state to move to at that width, so the control would promise
-  /// what it cannot do (#9037).
-  final bool showChevron;
-
   const CourseContextBar({
     required this.spaceId,
     this.sortKey,
     this.showActions = true,
-    this.showChevron = true,
     super.key,
   });
 
@@ -179,10 +171,7 @@ class _CourseContextBarState extends State<CourseContextBar> {
         // an invisible dead stop for a keyboard user (2.4.7), and an
         // announced one would read this same tap twice.
         child: InkWell(
-          // No tap where the floor was imposed by width: expanding would be
-          // re-seating a token that is already open, and the budget would
-          // degrade it again on the same frame (#9037).
-          onTap: widget.showChevron ? _openCourse : null,
+          onTap: _openCourse,
           customBorder: shape,
           excludeFromSemantics: true,
           canRequestFocus: false,
@@ -213,12 +202,11 @@ class _CourseContextBarState extends State<CourseContextBar> {
                     // focusable control, carrying the collapsed state the
                     // open card's chevron carries expanded — so a screen
                     // reader hears the same control in both states.
-                    if (widget.showChevron)
-                      ChevronToggle(
-                        expanded: false,
-                        onTap: _openCourse,
-                        meaning: ChevronMeaning.disclosure,
-                      ),
+                    ChevronToggle(
+                      expanded: false,
+                      onTap: _openCourse,
+                      meaning: ChevronMeaning.disclosure,
+                    ),
                   ],
                 ),
               ),

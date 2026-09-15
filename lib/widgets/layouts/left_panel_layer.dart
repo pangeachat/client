@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
-import 'package:fluffychat/features/navigation/panel_floor.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
@@ -31,8 +30,8 @@ class LeftPanelLayer extends StatelessWidget {
   final bool revealFromBar;
 
   /// Draw this panel at its FLOOR — the course panel as its context bar
-  /// rather than its card — and why (#9037). Null draws the full surface.
-  final PanelFloor? atFloor;
+  /// rather than its card (#9037).
+  final bool atFloor;
 
   const LeftPanelLayer({
     super.key,
@@ -42,7 +41,7 @@ class LeftPanelLayer extends StatelessWidget {
     required this.getRoomKey,
     this.bare = false,
     this.revealFromBar = false,
-    this.atFloor,
+    this.atFloor = false,
   });
 
   @override
