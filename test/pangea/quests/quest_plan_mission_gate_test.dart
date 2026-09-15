@@ -19,9 +19,10 @@ import '../fake_pangea_controller.dart';
 /// cards while the preview refused the same rows, and the learner saw "Oops,
 /// something went wrong" on every tap.
 ///
-/// What is pinned here: the Mission gate is one rule applied wherever a course
-/// plan is resolved, so the list and the detail page can never disagree about
-/// whether a course exists.
+/// What is pinned here: every surface that offers a course to a learner applies
+/// the Mission gate, so the list and the detail page can never disagree about
+/// whether a course exists — and the deliberate opt-out still works for a
+/// caller that wants every row, rather than every offerable course.
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -112,6 +113,16 @@ void main() {
         expect(plans['real-quest']!.topicIds, hasLength(3));
       },
     );
+  });
+
+  test('a caller can opt out of the gate explicitly', () async {
+    await withRows([questRow('empty-quest', missions: 0)], () async {
+      final plans = await QuestPlansRepo.getMany([
+        'empty-quest',
+      ], requireMissions: false);
+      expect(plans.keys, ['empty-quest']);
+      expect(plans['empty-quest']!.topicIds, isEmpty);
+    });
   });
 
   test('resolving one quest by id applies the same gate', () async {

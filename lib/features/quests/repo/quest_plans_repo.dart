@@ -132,15 +132,20 @@ class QuestPlansRepo {
   ///
   /// The catalog hands back a page of course ids at a time; fetching them one
   /// by one costs a round trip per card, which is felt directly as browse
-  /// latency. Ids that do not resolve are simply absent from the result —
-  /// including a quest with no missions, which [_fromQuestPlanJson] refuses.
+  /// latency. Ids that do not resolve are simply absent from the result.
+  ///
+  /// [requireMissions] defaults to true, so a Mission-less quest is absent too.
+  /// A caller that genuinely wants every row a page of ids resolves to —
+  /// counting or repairing them, rather than offering them to a learner — opts
+  /// out explicitly.
   static Future<Map<String, CoursePlanModel>> getMany(
-    List<String> questIds,
-  ) async {
+    List<String> questIds, {
+    bool requireMissions = true,
+  }) async {
     if (questIds.isEmpty) return const {};
     final resp = await _client().find<CoursePlanModel?>(
       _collection,
-      _fromQuestPlanJson,
+      (json) => _fromQuestPlanJson(json, requireMissions: requireMissions),
       limit: questIds.length,
       where: {
         'id': {'in': questIds},
@@ -156,7 +161,10 @@ class QuestPlansRepo {
   /// JSON → synthesized [CoursePlanModel]. Returns ``null`` on a missing /
   /// malformed quest-plans row so the caller can filter it out cleanly
   /// instead of inserting a broken card.
-  static CoursePlanModel? _fromQuestPlanJson(Map<String, dynamic> json) {
+  static CoursePlanModel? _fromQuestPlanJson(
+    Map<String, dynamic> json, {
+    bool requireMissions = true,
+  }) {
     final id = json['id'] as String?;
     final req = json['req'] as Map<String, dynamic>?;
     final res = json['res'] as Map<String, dynamic>?;
@@ -179,11 +187,15 @@ class QuestPlansRepo {
     final missionCount = sequence?.length ?? 0;
     // A quest-plan with no missions has no content to build a course from, and
     // none to join one for either: it renders as a "0 activities" card that
-    // leads nowhere. Every surface that resolves a plan drops it — the creation
-    // picker (#7700) and the browse-public catalog (#9088) alike. One rule in
-    // one place, so a card can never be offered by a list the detail page then
-    // refuses; see course-preview.instructions.md.
-    if (missionCount == 0) return null;
+    // leads nowhere. Every surface that offers a course to a learner drops it —
+    // the creation picker (#7700) and the browse-public catalog (#9088) alike;
+    // see course-preview.instructions.md.
+    //
+    // Hence the default. This method is usually passed as a tear-off, which
+    // silently takes it, and a call site that quietly inherited the opposite
+    // value is exactly how browse came to list cards the preview refused
+    // (#9088). Opt out deliberately, at the call site, or not at all.
+    if (requireMissions && missionCount == 0) return null;
     // Placeholder strings carry the *count* so the "N modules" chip reads
     // correctly. They are never resolved against the v1 ``course-plan-topics``
     // collection — no v3 surface walks ``topicIds`` on a synthesized model.

@@ -241,8 +241,14 @@ class PublicCourseSearchController
   ) async {
     try {
       // world_v2: resolve the page's public-course ids from the v3 quest-plans
-      // layer in one request.
-      final plans = await QuestPlansRepo.getMany(courseIds);
+      // layer in one request. requireMissions is passed rather than inherited:
+      // browse is where the two eligibility rules drifted apart (#9088), so the
+      // rule it applies is stated here, where anyone changing this list reads
+      // it.
+      final plans = await QuestPlansRepo.getMany(
+        courseIds,
+        requireMissions: true,
+      );
       return Result.value(plans);
     } catch (e, s) {
       ErrorHandler.logError(e: e, s: s, data: {'courseIds': courseIds});
