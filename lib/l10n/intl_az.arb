@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-09-14 12:45:20.835227",
+    "@@last_modified": "2026-09-15 11:13:46.161081",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "Yalnız qrup çatlarını göstər",
     "activitiesFilterTooltip": "Yalnız fəaliyyətləri göstər",
     "noGroupChatsYet": "Hələ heç bir qrup çatında deyilsiniz.",
-    "noActivitiesYet": "Hələ heç bir fəaliyyətdə deyilsiniz."
+    "noActivitiesYet": "Hələ heç bir fəaliyyətdə deyilsiniz.",
+    "unblock": "Blokdan çıxar"
 }

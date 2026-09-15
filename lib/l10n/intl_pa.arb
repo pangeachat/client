@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-09-14 12:45:32.473988",
+    "@@last_modified": "2026-09-15 11:13:50.819455",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "ਸਿਰਫ਼ ਸਮੂਹ ਚੈਟਾਂ ਦਿਖਾਓ",
     "activitiesFilterTooltip": "ਸਿਰਫ਼ ਗਤੀਵਿਧੀਆਂ ਦਿਖਾਓ",
     "noGroupChatsYet": "ਤੁਸੀਂ ਅਜੇ ਕਿਸੇ ਸਮੂਹ ਚੈਟ ਵਿੱਚ ਨਹੀਂ ਹੋ।",
-    "noActivitiesYet": "ਤੁਸੀਂ ਅਜੇ ਕਿਸੇ ਗਤੀਵਿਧੀ ਵਿੱਚ ਨਹੀਂ ਹੋ।"
+    "noActivitiesYet": "ਤੁਸੀਂ ਅਜੇ ਕਿਸੇ ਗਤੀਵਿਧੀ ਵਿੱਚ ਨਹੀਂ ਹੋ।",
+    "unblock": "ਅਨਬਲੌਕ ਕਰੋ"
 }

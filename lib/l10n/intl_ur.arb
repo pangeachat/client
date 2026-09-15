@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-09-14 12:45:37.855288",
+    "@@last_modified": "2026-09-15 11:13:53.209064",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "صرف گروپ چیٹس دکھائیں",
     "activitiesFilterTooltip": "صرف سرگرمیاں دکھائیں",
     "noGroupChatsYet": "آپ ابھی تک کسی گروپ چیٹ میں نہیں ہیں۔",
-    "noActivitiesYet": "آپ ابھی تک کسی سرگرمی میں نہیں ہیں۔"
+    "noActivitiesYet": "آپ ابھی تک کسی سرگرمی میں نہیں ہیں۔",
+    "unblock": "غیر مسدود کریں"
 }

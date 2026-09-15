@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-09-14 12:45:27.669820",
+    "@@last_modified": "2026-09-15 11:13:49.022701",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "Тек топтық чаттарды көрсету",
     "activitiesFilterTooltip": "Тек әрекеттерді көрсету",
     "noGroupChatsYet": "Сіз әлі ешқандай топтық чаттарда жоқсыз.",
-    "noActivitiesYet": "Сіз әлі ешқандай әрекеттерде жоқсыз."
+    "noActivitiesYet": "Сіз әлі ешқандай әрекеттерде жоқсыз.",
+    "unblock": "Блоктан шығару"
 }

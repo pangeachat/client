@@ -1118,6 +1118,8 @@
     },
     "block": "Block",
     "@block": {},
+    "unblock": "Unblock",
+    "@unblock": {},
     "blockedUsers": "Blocked users",
     "@blockedUsers": {},
     "blockListDescription": "You can block users who are disturbing you. You won't be able to receive any messages or room invites from the users on your personal block list.",

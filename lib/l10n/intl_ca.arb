@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-14 12:45:22.075998",
+    "@@last_modified": "2026-09-15 11:13:46.409284",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10051,5 +10051,6 @@
     "groupsFilterTooltip": "Mostra només xats de grup",
     "activitiesFilterTooltip": "Mostra només activitats",
     "noGroupChatsYet": "Encara no ets en cap xat de grup.",
-    "noActivitiesYet": "Encara no ets en cap activitat."
+    "noActivitiesYet": "Encara no ets en cap activitat.",
+    "unblock": "Desbloquejar"
 }

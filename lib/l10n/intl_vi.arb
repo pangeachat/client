@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-14 12:45:38.160480",
+    "@@last_modified": "2026-09-15 11:13:52.987316",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7216,5 +7216,6 @@
     "groupsFilterTooltip": "Chỉ hiển thị trò chuyện nhóm",
     "activitiesFilterTooltip": "Chỉ hiển thị hoạt động",
     "noGroupChatsYet": "Bạn chưa tham gia bất kỳ cuộc trò chuyện nhóm nào.",
-    "noActivitiesYet": "Bạn chưa tham gia bất kỳ hoạt động nào."
+    "noActivitiesYet": "Bạn chưa tham gia bất kỳ hoạt động nào.",
+    "unblock": "Bỏ chặn"
 }

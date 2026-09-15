@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-14 12:45:39.028239",
+    "@@last_modified": "2026-09-15 11:13:53.281202",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10030,5 +10030,6 @@
     "groupsFilterTooltip": "僅顯示群組聊天",
     "activitiesFilterTooltip": "僅顯示活動",
     "noGroupChatsYet": "您尚未加入任何群組聊天。",
-    "noActivitiesYet": "您尚未加入任何活動。"
+    "noActivitiesYet": "您尚未加入任何活動。",
+    "unblock": "解除封鎖"
 }

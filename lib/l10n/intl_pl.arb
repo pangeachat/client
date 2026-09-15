@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-09-14 12:45:32.236917",
+    "@@last_modified": "2026-09-15 11:13:50.897318",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10009,5 +10009,6 @@
     "groupsFilterTooltip": "Pokaż tylko czaty grupowe",
     "activitiesFilterTooltip": "Pokaż tylko aktywności",
     "noGroupChatsYet": "Nie jesteś jeszcze w żadnych czatach grupowych.",
-    "noActivitiesYet": "Nie uczestniczysz jeszcze w żadnych aktywnościach."
+    "noActivitiesYet": "Nie uczestniczysz jeszcze w żadnych aktywnościach.",
+    "unblock": "Odblokuj"
 }

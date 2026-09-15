@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-09-14 12:45:35.196679",
+    "@@last_modified": "2026-09-15 11:13:51.784118",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "Shfaq vetëm bisedat në grup",
     "activitiesFilterTooltip": "Shfaq vetëm aktivitetet",
     "noGroupChatsYet": "Nuk jeni ende në asnjë bisedë në grup.",
-    "noActivitiesYet": "Nuk jeni ende në asnjë aktivitet."
+    "noActivitiesYet": "Nuk jeni ende në asnjë aktivitet.",
+    "unblock": "Zhbloko"
 }

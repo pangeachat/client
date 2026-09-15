@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-09-14 12:45:26.823066",
+    "@@last_modified": "2026-09-15 11:13:48.841526",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "Sýna aðeins hópspjöll",
     "activitiesFilterTooltip": "Sýna aðeins verkefni",
     "noGroupChatsYet": "Þú ert ekki í neinum hópspjöllum ennþá.",
-    "noActivitiesYet": "Þú ert ekki í neinum verkefnum ennþá."
+    "noActivitiesYet": "Þú ert ekki í neinum verkefnum ennþá.",
+    "unblock": "Aflæsa"
 }

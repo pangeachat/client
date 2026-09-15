@@ -2559,7 +2559,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-09-14 12:45:32.818256",
+    "@@last_modified": "2026-09-15 11:13:51.089024",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10841,5 +10841,6 @@
     "groupsFilterTooltip": "Mostrar apenas chats de grupo",
     "activitiesFilterTooltip": "Mostrar apenas atividades",
     "noGroupChatsYet": "Ainda não está em nenhum chat de grupo.",
-    "noActivitiesYet": "Ainda não está em nenhuma atividade."
+    "noActivitiesYet": "Ainda não está em nenhuma atividade.",
+    "unblock": "Desbloquear"
 }

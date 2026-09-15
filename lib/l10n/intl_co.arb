@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-09-14 12:45:22.202720",
+    "@@last_modified": "2026-09-15 11:13:46.658094",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "Mostra solu e chat di gruppu",
     "activitiesFilterTooltip": "Mostra solu l'attività",
     "noGroupChatsYet": "Ùn site ancu in nisuna chat di gruppu.",
-    "noActivitiesYet": "Ùn site ancu in nisuna attività."
+    "noActivitiesYet": "Ùn site ancu in nisuna attività.",
+    "unblock": "Sbluccà"
 }

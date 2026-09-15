@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-09-14 12:45:30.113325",
+    "@@last_modified": "2026-09-15 11:13:52.850242",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "ഗ്രൂപ്പ് ചാറ്റുകൾ മാത്രം കാണിക്കുക",
     "activitiesFilterTooltip": "പ്രവർത്തനങ്ങൾ മാത്രം കാണിക്കുക",
     "noGroupChatsYet": "നിങ്ങൾ ഇതുവരെ ഒരു ഗ്രൂപ്പ് ചാറ്റിലും ഇല്ല.",
-    "noActivitiesYet": "നിങ്ങൾ ഇതുവരെ ഒരു പ്രവർത്തനത്തിലും ഇല്ല."
+    "noActivitiesYet": "നിങ്ങൾ ഇതുവരെ ഒരു പ്രവർത്തനത്തിലും ഇല്ല.",
+    "unblock": "അൺബ്ലോക്ക് ചെയ്യുക"
 }

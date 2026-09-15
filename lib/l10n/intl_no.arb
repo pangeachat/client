@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-09-14 12:45:41.156001",
+    "@@last_modified": "2026-09-15 11:13:50.645801",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "Vis kun gruppechatter",
     "activitiesFilterTooltip": "Vis kun aktiviteter",
     "noGroupChatsYet": "Du er ikke med i noen gruppechatter ennå.",
-    "noActivitiesYet": "Du er ikke med i noen aktiviteter ennå."
+    "noActivitiesYet": "Du er ikke med i noen aktiviteter ennå.",
+    "unblock": "Opphev blokkering"
 }

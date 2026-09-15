@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-09-14 12:45:32.644637",
+    "@@last_modified": "2026-09-15 11:13:50.892432",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "Onetsani macheza amagulu okha",
     "activitiesFilterTooltip": "Onetsani zochitika zokha",
     "noGroupChatsYet": "Simuli m'macheza amagulu aliwonse pakadali pano.",
-    "noActivitiesYet": "Simuli m'zochitika zilizonse pakadali pano."
+    "noActivitiesYet": "Simuli m'zochitika zilizonse pakadali pano.",
+    "unblock": "Chotsani choletsa"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-09-14 12:45:23.704858",
+    "@@last_modified": "2026-09-15 11:13:47.331489",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10279,5 +10279,6 @@
     "groupsFilterTooltip": "Afficher uniquement les chats de groupe",
     "activitiesFilterTooltip": "Afficher uniquement les activités",
     "noGroupChatsYet": "Vous ne faites partie d'aucun chat de groupe pour le moment.",
-    "noActivitiesYet": "Vous ne participez à aucune activité pour le moment."
+    "noActivitiesYet": "Vous ne participez à aucune activité pour le moment.",
+    "unblock": "Débloquer"
 }

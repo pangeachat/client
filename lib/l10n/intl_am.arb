@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-09-14 12:45:21.270070",
+    "@@last_modified": "2026-09-15 11:13:46.702800",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "የቡድን ውይይቶችን ብቻ አሳይ",
     "activitiesFilterTooltip": "እንቅስቃሴዎችን ብቻ አሳይ",
     "noGroupChatsYet": "እስካሁን በማንኛውም የቡድን ውይይት ውስጥ የለዎትም።",
-    "noActivitiesYet": "እስካሁን በማንኛውም እንቅስቃሴ ውስጥ የለዎትም።"
+    "noActivitiesYet": "እስካሁን በማንኛውም እንቅስቃሴ ውስጥ የለዎትም።",
+    "unblock": "እገዳ አንሳ"
 }

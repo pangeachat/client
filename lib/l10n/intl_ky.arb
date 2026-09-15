@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-09-14 12:45:29.472299",
+    "@@last_modified": "2026-09-15 11:13:49.449808",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "Топтук чаттарды гана көрсөтүү",
     "activitiesFilterTooltip": "Иш-чараларды гана көрсөтүү",
     "noGroupChatsYet": "Сиз азырынча эч кандай топтук чатта эмессиз.",
-    "noActivitiesYet": "Сиз азырынча эч кандай иш-чарада эмессиз."
+    "noActivitiesYet": "Сиз азырынча эч кандай иш-чарада эмессиз.",
+    "unblock": "Бөгөттөн чыгаруу"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-09-14 12:45:27.334373",
+    "@@last_modified": "2026-09-15 11:13:48.947541",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2328,5 +2328,6 @@
     "groupsFilterTooltip": "Tampilake mung obrolan grup",
     "activitiesFilterTooltip": "Tampilake mung aktivitas",
     "noGroupChatsYet": "Sampeyan durung melu obrolan grup apa-apa.",
-    "noActivitiesYet": "Sampeyan durung melu aktivitas apa-apa."
+    "noActivitiesYet": "Sampeyan durung melu aktivitas apa-apa.",
+    "unblock": "Batal Blokir"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-09-14 12:45:25.814924",
+    "@@last_modified": "2026-09-15 11:13:48.584025",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10027,5 +10027,6 @@
     "groupsFilterTooltip": "Csak csoportos csevegések megjelenítése",
     "activitiesFilterTooltip": "Csak tevékenységek megjelenítése",
     "noGroupChatsYet": "Még nem vagy tagja egyetlen csoportos csevegésnek sem.",
-    "noActivitiesYet": "Még nem vagy tagja egyetlen tevékenységnek sem."
+    "noActivitiesYet": "Még nem vagy tagja egyetlen tevékenységnek sem.",
+    "unblock": "Feloldás"
 }
