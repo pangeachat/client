@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
+import 'package:sentry_flutter/sentry_flutter.dart' show SentryLevel;
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/utils/string_color.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -118,14 +120,62 @@ class _UserProfileBuilderState extends State<UserProfileBuilder> {
     // draws its own empty-seat treatment.
     if (userId == null) return;
 
-    Matrix.of(context).client.getProfileFromUserId(userId).then((profile) {
-      _lastResolved[userId] = profile;
-      // Drop a stale completion: the widget may have moved to another user
-      // (marker recycling) while this lookup was in flight.
-      if (mounted && widget.userId == userId && _profile != profile) {
-        setState(() => _profile = profile);
-      }
-    });
+    Matrix.of(context).client
+        .getProfileFromUserId(userId)
+        .then((profile) {
+          _lastResolved[userId] = profile;
+          _reportIfEmpty(userId, profile);
+          // Drop a stale completion: the widget may have moved to another user
+          // (marker recycling) while this lookup was in flight.
+          if (mounted && widget.userId == userId && _profile != profile) {
+            setState(() => _profile = profile);
+          }
+        })
+        .catchError((Object e, StackTrace s) {
+          // Belt and braces. `getProfileFromUserId` does not currently reject —
+          // it swallows its own fetch error (see `_reportIfEmpty`) — but a
+          // rejection reaching here unhandled would be invisible, so it is
+          // reported rather than trusted not to happen.
+          ErrorHandler.logErrorOnce(
+            key: 'user-profile-resolve:$userId:${e.runtimeType}',
+            e: e,
+            s: s,
+            data: {'userId': userId},
+            level: SentryLevel.warning,
+          );
+        });
+  }
+
+  /// Report a profile that resolved to nothing at all.
+  ///
+  /// This is where the failure actually hides. `Client.getProfileFromUserId`
+  /// never rejects: it catches its own fetch error, logs at debug, and returns
+  /// a [Profile] carrying the user id and two nulls. A failed lookup and a real
+  /// account that simply set no display name are therefore the SAME value here,
+  /// and every caller renders the same fallback for both — the localpart on a
+  /// role card, the owner's full MXID beside a blank contact icon on a content
+  /// credit. So a teacher's name silently becomes a raw id on screen and
+  /// nothing anywhere records it (client#8819, reported from Android QA).
+  ///
+  /// Both causes are worth a report, which is why the ambiguity does not matter
+  /// much in practice. A wholly empty profile means one of: the fetch failed;
+  /// the account does not exist on THIS homeserver (a stored MXID from another
+  /// environment — the case that first surfaced this); or the account exists
+  /// and is blank. The first two are defects, the third is a prompt to set a
+  /// display name, and none of them should be invisible.
+  ///
+  /// Once per user id per session: this widget remounts constantly — the reason
+  /// [_lastResolved] exists at all — so an id that never resolves would
+  /// otherwise report on every rebuild. Warning, not error: one unresolved
+  /// profile degrades a name, it does not break the surface.
+  void _reportIfEmpty(String userId, Profile profile) {
+    if (profile.displayName != null || profile.avatarUrl != null) return;
+    ErrorHandler.logErrorOnce(
+      key: 'user-profile-empty:$userId',
+      e: 'Matrix profile resolved empty — no display name and no avatar',
+      data: {'userId': userId},
+      level: SentryLevel.warning,
+    );
   }
 
   @override

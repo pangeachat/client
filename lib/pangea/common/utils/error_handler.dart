@@ -155,6 +155,12 @@ class ErrorHandler {
   @visibleForTesting
   static void resetReportedOnceKeysForTest() => _reportedOnceKeys.clear();
 
+  /// The [logErrorOnce] keys spent this session — how a test asserts that a
+  /// degrade path actually reported rather than swallowing its failure.
+  @visibleForTesting
+  static Set<String> get reportedOnceKeysForTest =>
+      Set.unmodifiable(_reportedOnceKeys);
+
   /// [logError], capped at one report per app session per [key]. For known
   /// recurring degrade paths — e.g. a joined course whose quest plan no longer
   /// resolves, retried on every sync (#8083) — the first event per session
