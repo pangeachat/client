@@ -56,7 +56,7 @@ class BotFace extends StatefulWidget {
 }
 
 class BotFaceState extends State<BotFace> {
-  static const _assetPath = 'assets/pangea/bot_faces/pangea_bot.riv';
+  static const _assetPath = 'assets/pangea/bot_faces/pangea_bot_databound.riv';
   static const _stateMachineName = 'BotIconStateMachine';
   static const _viewModelName = 'BotIconViewModel';
 
