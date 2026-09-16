@@ -10,6 +10,8 @@ import { expect, test } from "../fixtures";
  *   - 2.4.2 Page Titled .......... document.title is non-empty (gate)
  *   - 2.1.1 Keyboard ............. Tab reaches multiple distinct controls (gate)
  *   - 2.1.2 No Keyboard Trap ..... focus is not pinned to one node (gate)
+ *   - 3.2.1 On Focus ............. a closing menu hands DOM focus straight back
+ *                                  to the control that opened it (gate)
  *
  * Reported, not gated (see accessibility.instructions.md tiering):
  *   - 2.4.2 distinct-per-view titles (known gap; logged)
@@ -129,4 +131,54 @@ test.describe("Structural a11y gates", () => {
       );
     });
   }
+
+  // 3.2.1 On Focus — a menu that closes must hand DOM focus straight back to the
+  // control that opened it (#9049). If the focused item's element is removed
+  // first, the engine parks focus on <flutter-view> for a frame; VoiceOver reads
+  // that as the whole page, and its cursor stays there even after focus reaches
+  // the pill. Flutter's own focus tree recovers either way, so this is asserted
+  // at the DOM, where the screen reader is.
+  test("world map: a closing filter menu never passes focus through the page host", async ({ page }) => {
+    await gotoSurface(page, "/", surfaces[0].sentinel(page));
+
+    const pill = page.getByRole("button", { name: intl.mapFilterAllLevels }).first();
+    await expect(pill).toBeVisible({ timeout: 30_000 });
+
+    // Record every element that takes focus, not just where it settles: in
+    // Chrome it settles on the pill either way, and the detour is the fault.
+    const pillId = await pill.evaluate((el: HTMLElement) => {
+      el.focus();
+      (window as any).__focusins = [];
+      document.addEventListener(
+        "focusin",
+        (e) => (window as any).__focusins.push((e.target as HTMLElement).tagName.toLowerCase()),
+        true,
+      );
+      return el.id;
+    });
+    expect(await page.evaluate(() => document.activeElement?.id), "pill never took focus").toBe(pillId);
+
+    const drain = () =>
+      page.evaluate(() => {
+        const seen = (window as any).__focusins as string[];
+        (window as any).__focusins = [];
+        return seen;
+      });
+
+    // Enter opens the menu; it is then closed both ways — Escape, and Enter on
+    // the auto-focused first item, which picks "All levels", the value the pill
+    // already holds, so the second pass starts where the first did.
+    for (const closeKey of ["Escape", "Enter"]) {
+      await page.keyboard.press("Enter");
+      await page.waitForTimeout(700);
+      await drain();
+
+      await page.keyboard.press(closeKey);
+      await page.waitForTimeout(1000);
+
+      const seen = await drain();
+      expect(seen, `closing with ${closeKey} passed focus through the page host; focusins=${JSON.stringify(seen)}`).not.toContain("flutter-view");
+      expect(await page.evaluate(() => document.activeElement?.id), `closing with ${closeKey} did not leave focus on the pill`).toBe(pillId);
+    }
+  });
 });

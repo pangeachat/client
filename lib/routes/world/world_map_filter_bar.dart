@@ -6,6 +6,9 @@ import 'package:fluffychat/routes/settings/settings_learning/language_level_type
 import 'package:fluffychat/routes/world/world_map_filter.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 
+import 'package:fluffychat/routes/world/semantics_dom_focus_stub.dart'
+    if (dart.library.js_interop) 'package:fluffychat/routes/world/semantics_dom_focus_web.dart';
+
 /// The world-map filter row: one dropdown-pill per category (Level, Party size,
 /// Status), each defaulting to "All …" (no narrowing) and set via its dropdown
 /// rather than toggled — plus a trailing reset control that appears whenever any
@@ -223,9 +226,16 @@ class _FilterDropdownPill extends StatefulWidget {
 class _FilterDropdownPillState extends State<_FilterDropdownPill> {
   final MenuController _menuController = MenuController();
 
-  /// The pill's focus node, handed to [MenuAnchor.childFocusNode] so closing
-  /// the menu (Escape, or selecting an item) returns focus to the pill.
+  /// The pill's focus node, handed to [MenuAnchor.childFocusNode]: the menu
+  /// focuses it as it opens, so it is the scope's last focus and the one
+  /// framework focus falls back to when the menu closes.
   final FocusNode _buttonFocusNode = FocusNode(debugLabel: 'FilterPill');
+
+  /// The pill's DOM focus, taken as the menu opens and given back as it closes
+  /// — before the focused item's element is removed, so a screen reader stays
+  /// on the pill instead of landing on the whole page (#9049). Null off the
+  /// web and whenever the menu was opened without DOM focus on the pill.
+  SemanticsDomFocus? _openerDomFocus;
 
   @override
   void dispose() {
@@ -253,6 +263,22 @@ class _FilterDropdownPillState extends State<_FilterDropdownPill> {
     return MenuAnchor(
       controller: _menuController,
       childFocusNode: _buttonFocusNode,
+      onOpen: () => _openerDomFocus = SemanticsDomFocus.capture(),
+      // Runs as close() starts, while the menu's elements are still in the
+      // page — every close path (Escape, selection, outside tap, the pill
+      // itself) comes through here.
+      onClose: () {
+        final opener = _openerDomFocus;
+        _openerDomFocus = null;
+        if (opener == null) return;
+        opener.restore();
+        // Framework focus in the same frame as the unmount, too. The flush
+        // that removes the menu also re-inserts an ancestor of the pill,
+        // which knocks DOM focus back off it; with the pill already marked
+        // focused in that flush the engine refocuses it before the flush
+        // ends, instead of a frame later with the page focused in between.
+        _buttonFocusNode.requestFocus();
+      },
       menuChildren: [
         for (final e in widget.entries)
           MenuItemButton(
