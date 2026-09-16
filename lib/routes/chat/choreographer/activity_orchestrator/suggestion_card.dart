@@ -18,14 +18,17 @@ import 'package:fluffychat/routes/chat/choreographer/igc/writing_assistance_popu
 import 'package:fluffychat/routes/chat/choreographer/igc/writing_asssitance_popup_manager.dart';
 
 class SuggestionCard extends StatefulWidget {
-  final String overlayKey;
   final OrchestratorController controller;
   final WritingAssistancePopupManager popupManager;
 
+  /// The height available in the shared popup slot above the input field. The
+  /// card sizes to its content up to this, and only then scrolls.
+  final double maxHeight;
+
   const SuggestionCard({
-    required this.overlayKey,
     required this.controller,
     required this.popupManager,
+    required this.maxHeight,
     super.key,
   });
 
@@ -138,14 +141,11 @@ class SuggestionCardState extends State<SuggestionCard> {
       widget.popupManager,
       child: suggestionsModel == null
           ? const SizedBox.shrink()
-          : Container(
-              constraints: const BoxConstraints(maxWidth: 350),
-              padding: EdgeInsets.all(10.0),
-              decoration: BoxDecoration(
-                color: theme.cardColor,
-                border: Border.all(width: 2, color: theme.colorScheme.primary),
-                borderRadius: const BorderRadius.all(Radius.circular(25)),
-              ),
+          // Width and chrome come from the shared overlay container the span
+          // card already uses; the card only claims the height it needs, up to
+          // the space above the input field (#9074).
+          : ConstrainedBox(
+              constraints: BoxConstraints(maxHeight: widget.maxHeight),
               child: Column(
                 mainAxisSize: .min,
                 children: [
@@ -184,8 +184,9 @@ class SuggestionCardState extends State<SuggestionCard> {
                         const SizedBox(height: 40.0, width: 40.0),
                     ],
                   ),
-                  ConstrainedBox(
-                    constraints: BoxConstraints(maxHeight: 250.0),
+                  // Scrolls only once the choices outgrow the slot, the way
+                  // the span card's content does.
+                  Flexible(
                     child: SingleChildScrollView(
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
