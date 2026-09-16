@@ -132,6 +132,10 @@ abstract class AppConfig {
   static bool isAllowedImage(Uri imageUrl) =>
       _allowedImageHosts.contains(imageUrl.host);
 
+  /// Handed to the iOS notification service extension, which resolves avatars
+  /// in its own process and needs the same allow-list rather than a copy of it.
+  static Set<String> get allowedImageHosts => _allowedImageHosts;
+
   static Set<String> get allowedMimeTypes => {
     "image/jpeg",
     "image/jpg",

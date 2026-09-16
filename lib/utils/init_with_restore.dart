@@ -5,6 +5,7 @@ import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/config/setting_keys.dart';
+import 'package:fluffychat/features/notifications/nse_session.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 
@@ -86,6 +87,9 @@ extension InitWithRestoreExtension on Client {
   /// day, because refresh tokens are in use and the server's access token
   /// lifetime is 24 hours.
   ///
+  /// The iOS notification service extension gets the same token here, for the
+  /// same reason: it fetches avatars while the app is not running.
+  ///
   /// A write can fail before the first unlock since boot. That is a transient
   /// the next write retries, so it is reported as a warning and never thrown.
   Future<void> storeSessionBackup() async {
@@ -122,6 +126,7 @@ extension InitWithRestoreExtension on Client {
         level: SentryLevel.warning,
       );
     }
+    await NseSession.store(accessToken: accessToken, homeserver: homeserver);
   }
 
   Future<void> initWithRestore({void Function()? onMigration}) async {
