@@ -144,22 +144,12 @@ class WorldMap extends StatefulWidget {
   final double availableVisibleMapWidth;
 
   /// The `?c=` course context's space id, or null on the world map. With a
-  /// course selected the map's top-left slot carries the course context bar
-  /// instead of the search overlay (#8736) — the scoped map must always say
-  /// WHICH course scopes it. Fed by the shell, which owns the route facts.
+  /// course selected the map's top-left slot drops its search overlay (#8736)
+  /// — the search bar reading as the map's own control is half of what tells a
+  /// scoped map from the world map. WHICH course scopes it is said by the
+  /// course panel in the left column, in either of its states (#9037). Fed by
+  /// the shell, which owns the route facts.
   final String? courseScopeSpaceId;
-
-  /// Whether a course panel (the card or one of its management pages) is open.
-  /// The panel already names the course, so the context bar stands down and
-  /// the slot stays empty — the search overlay does NOT come back while a
-  /// course is selected (#8736, reversing #7716).
-  final bool coursePanelOpen;
-
-  /// An activity plan is open in the left column: the course context bar docks
-  /// above THAT panel instead of taking the map's search slot, so the slot
-  /// draws nothing here (#8816; world-map.instructions.md → The course context
-  /// bar).
-  final bool activityPanelOpen;
 
   /// When set, the map brings this target into the exposed canvas (the area the
   /// left column and detail panel don't cover) instead of fitting the whole
@@ -178,8 +168,6 @@ class WorldMap extends StatefulWidget {
     this.bottomOverlayHeight = 0.0,
     this.availableVisibleMapWidth = 0.0,
     this.courseScopeSpaceId,
-    this.coursePanelOpen = false,
-    this.activityPanelOpen = false,
     this.focus,
   });
 
