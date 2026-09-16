@@ -14,7 +14,7 @@ assignees: ''
 
 ---
 **TO TEST**
-> After implementation, include a list of changes to be looked over
+> To reproduce the bug and verify the fix
 - [ ] 
 
 ---
