@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 
 /// The narrow bar's level badge: the Figma hexagon (pointy left/right, flat
 /// top/bottom) with a darker gold border and the level number centered —
@@ -53,38 +54,34 @@ class _HexLevelBadgeState extends State<HexLevelBadge> {
         .toColor();
     return Tooltip(
       message: label,
-      // Semantics below names this; exclude the Tooltip so the label isn't
+      // The target names this; exclude the Tooltip so the label isn't
       // announced twice.
       excludeFromSemantics: true,
-      child: Semantics(
-        button: true,
-        label: label,
-        container: true,
-        excludeSemantics: true,
-        // Expose the tap on the announced node for assistive tech (#7185).
+      child: FocusRingTapTarget(
         onTap: widget.onTap,
-        child: MouseRegion(
-          cursor: SystemMouseCursors.click,
-          onEnter: (_) => setState(() => _hovered = true),
-          onExit: (_) => setState(() => _hovered = false),
-          child: GestureDetector(
-            behavior: HitTestBehavior.opaque,
-            onTap: widget.onTap,
-            child: CustomPaint(
-              size: Size(widget.width, widget.height),
-              painter: HexBadgePainter(fill: fill, border: border),
-              child: SizedBox(
-                width: widget.width,
-                height: widget.height,
-                child: Center(
-                  child: Text(
-                    '${widget.level}',
-                    style: TextStyle(
-                      fontSize: widget.fontSize,
-                      fontWeight: FontWeight.bold,
-                      color: Theme.of(context).pangea.onGoldFixed,
-                    ),
-                  ),
+        label: label,
+        onHover: (hovered) => setState(() => _hovered = hovered),
+        // The badge's own gold carries hover (#8067).
+        hoverColor: Colors.transparent,
+        // The ring traces the hexagon, two-tone because it crosses the XP
+        // ring and the map (#9114), and INSIDE the box: the bar's shimmer
+        // masks only this box, so it may not paint past it (#7801). While
+        // focused it covers the badge's darker outline.
+        shape: const PathBorder(outline: _hexOutline),
+        twoToneRing: true,
+        child: CustomPaint(
+          size: Size(widget.width, widget.height),
+          painter: HexBadgePainter(fill: fill, border: border),
+          child: SizedBox(
+            width: widget.width,
+            height: widget.height,
+            child: Center(
+              child: Text(
+                '${widget.level}',
+                style: TextStyle(
+                  fontSize: widget.fontSize,
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).pangea.onGoldFixed,
                 ),
               ),
             ),
@@ -93,23 +90,29 @@ class _HexLevelBadgeState extends State<HexLevelBadge> {
       ),
     );
   }
+
+  /// The hexagon's outer edge — the outline's outside, not its centreline —
+  /// so the ring inside it starts at the box edge and covers the outline.
+  static Path _hexOutline(Rect rect) =>
+      hexBadgePath(rect.size, inset: 0).shift(rect.topLeft);
 }
 
 /// Builds the badge hexagon inside [size]: vertices at the horizontal extremes,
 /// flat top and bottom edges (the Figma component).
 ///
-/// The path is inset by half [hexBadgeStrokeWidth] on every side so the
-/// centered outline — and the round joins, which reach exactly half a stroke
-/// past each vertex — paint **entirely inside** the badge's own box. Nothing
-/// may bleed outside: the narrow analytics bar sits the badge flush against
-/// the left edge of a shimmering `Stack`, and `Shimmer`'s mask covers only the
-/// render box, so an escaping pixel keeps its real gold while the rest of the
-/// cluster is gray (#7801). [XpBorderPainter] insets for the same reason.
+/// By default the path is inset by half [hexBadgeStrokeWidth] on every side so
+/// the centered outline — and the round joins, which reach exactly half a
+/// stroke past each vertex — paint **entirely inside** the badge's own box.
+/// Nothing may bleed outside: the narrow analytics bar sits the badge flush
+/// against the left edge of a shimmering `Stack`, and `Shimmer`'s mask covers
+/// only the render box, so an escaping pixel keeps its real gold while the
+/// rest of the cluster is gray (#7801). [XpBorderPainter] insets for the same
+/// reason.
 @visibleForTesting
-Path hexBadgePath(Size size) {
-  final d = hexBadgeStrokeWidth / 2;
-  final w = size.width - hexBadgeStrokeWidth;
-  final h = size.height - hexBadgeStrokeWidth;
+Path hexBadgePath(Size size, {double inset = hexBadgeStrokeWidth / 2}) {
+  final d = inset;
+  final w = size.width - 2 * inset;
+  final h = size.height - 2 * inset;
   return Path()
     ..moveTo(d, d + h / 2)
     ..lineTo(d + w * 0.25, d)

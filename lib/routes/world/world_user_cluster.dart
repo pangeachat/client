@@ -510,36 +510,39 @@ class ClusterLevelMedal extends StatefulWidget {
 class _ClusterLevelMedalState extends State<ClusterLevelMedal> {
   bool _hovered = false;
 
+  /// Room around the shield for the two-tone ring, which sits outside it.
+  static const double _ringClearance = 2 * FocusRingTapTarget.ringWidth;
+
+  static Path _shieldOutline(Rect rect) =>
+      LevelRibbon.shieldPath(rect.deflate(_ringClearance));
+
   @override
   Widget build(BuildContext context) {
     final label = '${L10n.of(context).level} ${widget.level}';
     final lit = _hovered || widget.selected;
     return Tooltip(
       message: label,
-      // Semantics below names this; exclude the Tooltip to avoid "Level 2 Level 2".
+      // The target names this; exclude the Tooltip to avoid "Level 2 Level 2".
       excludeFromSemantics: true,
-      // The name sits outside the InkWell and the content is excluded inside
-      // it, so name, role, focus and tap are one semantics node (#8873).
-      child: Semantics(
-        button: true,
+      child: FocusRingTapTarget(
+        onTap: widget.onTap,
         label: label,
-        child: InkWell(
-          onTap: widget.onTap,
-          onHover: (hovered) => setState(() => _hovered = hovered),
-          // No circular wash behind the shield — the shield's own gold carries
-          // hover (#8067). The focus highlight is left alone: keyboard users
-          // still get a visible ring.
-          hoverColor: Colors.transparent,
-          borderRadius: BorderRadius.circular(100.0),
-          child: ExcludeSemantics(
-            child: Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: LevelRibbon(
-                height: 44,
-                level: widget.level,
-                color: lit ? Theme.of(context).pangea.goldHighlight : null,
-              ),
-            ),
+        onHover: (hovered) => setState(() => _hovered = hovered),
+        // No wash behind the shield — the shield's own gold carries hover
+        // (#8067).
+        hoverColor: Colors.transparent,
+        // The ring traces the shield rather than circling it (#8067), and is
+        // two-tone because it crosses the XP ring and the map, where the gold
+        // ring measures 1.0 to 2.9:1 (#9114).
+        shape: const PathBorder(outline: _shieldOutline),
+        twoToneRing: true,
+        ringStrokeAlign: BorderSide.strokeAlignOutside,
+        child: Padding(
+          padding: const EdgeInsets.all(_ringClearance),
+          child: LevelRibbon(
+            height: 44,
+            level: widget.level,
+            color: lit ? Theme.of(context).pangea.goldHighlight : null,
           ),
         ),
       ),

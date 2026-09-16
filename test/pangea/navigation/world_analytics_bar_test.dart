@@ -246,6 +246,42 @@ void main() {
     });
   });
 
+  /// #9114: the hexagon badge was a bare GestureDetector, so Tab skipped it.
+  group('full bar — keyboard', () {
+    T? focusedAncestor<T extends Widget>() => FocusManager
+        .instance
+        .primaryFocus
+        ?.context
+        ?.findAncestorWidgetOfExactType<T>();
+
+    testWidgets('the level badge is a Tab stop, before the trackers', (
+      tester,
+    ) async {
+      final viewModel = MockUserClusterViewModel();
+      await pumpBar(tester, viewModel: viewModel);
+
+      await tester.sendKeyEvent(LogicalKeyboardKey.tab);
+      await tester.pumpAndSettle();
+      expect(focusedAncestor<HexLevelBadge>(), isNotNull);
+
+      await tester.sendKeyEvent(LogicalKeyboardKey.tab);
+      await tester.pumpAndSettle();
+      expect(
+        focusedAncestor<ClusterTrackerButton>()?.indicator,
+        ProgressIndicatorEnum.stars,
+      );
+    });
+
+    testWidgets('the level badge is one named, focusable button', (
+      tester,
+    ) async {
+      final semantics = tester.ensureSemantics();
+      await pumpBar(tester, viewModel: MockUserClusterViewModel());
+      expectOneNodeControl(tester, '${l10nOf(tester).level} 1');
+      semantics.dispose();
+    });
+  });
+
   /// The open-panel highlight: the bar is the single-column rendering of the
   /// web cluster, so whichever analytics page is open is lit here too — all
   /// four controls, the level badge included (#7977, #8062).
