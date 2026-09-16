@@ -108,8 +108,10 @@ void main() {
     const primary = Color(0xFF112233);
     // The focused pin haloes in its state hue (here `available`), not the theme
     // primary — the treatment is state-coloured now, no outline.
-    final glowColor = WorldMapSelection.glow(
-      ActivityPinState.available.color,
+    Color glowColor(WidgetTester tester) => WorldMapSelection.glow(
+      Theme.of(
+        tester.element(find.byType(Scaffold)),
+      ).colorScheme.secondaryContainer,
     ).first.color;
 
     testWidgets('a focused small dot casts the state glow', (tester) async {
@@ -119,7 +121,7 @@ void main() {
         isFocused: true,
         primary: primary,
       );
-      expect(hasStateGlow(tester, glowColor), isTrue);
+      expect(hasStateGlow(tester, glowColor(tester)), isTrue);
     });
 
     testWidgets('a focused mid pin casts the state glow', (tester) async {
@@ -129,7 +131,7 @@ void main() {
         isFocused: true,
         primary: primary,
       );
-      expect(hasStateGlow(tester, glowColor), isTrue);
+      expect(hasStateGlow(tester, glowColor(tester)), isTrue);
     });
 
     testWidgets('an unfocused dot casts no glow', (tester) async {
@@ -139,7 +141,7 @@ void main() {
         isFocused: false,
         primary: primary,
       );
-      expect(hasStateGlow(tester, glowColor), isFalse);
+      expect(hasStateGlow(tester, glowColor(tester)), isFalse);
     });
   });
 }

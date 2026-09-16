@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
@@ -83,7 +84,7 @@ class _StyleExampleMessage extends StatelessWidget {
                     style: textStyle,
                     underlineColor: Theme.of(
                       context,
-                    ).colorScheme.primaryContainer.withAlpha(200),
+                    ).colorScheme.onPrimary.withAlpha(200),
                   ),
                 ),
               ),
@@ -127,20 +128,20 @@ class _StyleExampleToolbarButtons extends StatelessWidget {
               alignment: Alignment.center,
               child: PressableButton(
                 borderRadius: BorderRadius.circular(20),
-                color: theme.colorScheme.primaryContainer,
+                color: theme.toolbarButtonFill,
                 onPressed: null,
-                colorFactor: theme.brightness == Brightness.light ? 0.55 : 0.3,
+                colorFactor: 0.3,
                 builder: (_, _, _) => Container(
                   height: 40.0,
                   width: 40.0,
                   decoration: BoxDecoration(
-                    color: theme.colorScheme.primaryContainer,
+                    color: theme.toolbarButtonFill,
                     shape: BoxShape.circle,
                   ),
                   child: Icon(
                     mode.icon,
                     size: 20,
-                    color: theme.colorScheme.onPrimaryContainer,
+                    color: theme.onToolbarButtonFill,
                   ),
                 ),
               ),

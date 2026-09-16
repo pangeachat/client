@@ -18,7 +18,7 @@ class NaviRailItem extends StatelessWidget {
   final Widget icon;
   final Widget? selectedIcon;
   final bool Function(Room)? unreadBadgeFilter;
-  final Color? backgroundColor;
+  final Color backgroundColor;
   final BorderRadius? borderRadius;
   final double naviRailWidth;
 
@@ -48,7 +48,7 @@ class NaviRailItem extends StatelessWidget {
     this.selectedIcon,
     this.unreadBadgeFilter,
     required this.naviRailWidth,
-    this.backgroundColor,
+    this.backgroundColor = Colors.transparent,
     this.borderRadius,
     this.focusRingShape,
     this.tutorialTargetId,
@@ -136,13 +136,7 @@ class NaviRailItem extends StatelessWidget {
                                 // bounds the ripple; no Material clip, so angular
                                 // icons (e.g. the Pangea mark) aren't cut.
                                 child: Material(
-                                  color:
-                                      backgroundColor ??
-                                      (isSelected
-                                          ? theme.colorScheme.primaryContainer
-                                          : theme
-                                                .colorScheme
-                                                .surfaceContainerHigh),
+                                  color: backgroundColor,
                                   borderRadius: borderRadius,
                                   // The label takes no pointer input, so one
                                   // that has already shown can't stall the

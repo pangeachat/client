@@ -7,6 +7,7 @@ import 'package:matrix/matrix.dart';
 import 'package:mime/mime.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/user/own_profile_client_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -373,13 +374,13 @@ class _UserHomePageState extends State<UserHomePage> {
                     onChanged: _viewModel.setPublicProfile,
                     title: Text(L10n.of(context).publicProfileTitle),
                     subtitle: Text(L10n.of(context).publicProfileDesc),
-                    activeThumbColor: AppConfig.activeToggleColor,
+                    activeThumbColor: Theme.of(context).pangea.successFixedDim,
                   ),
                   SwitchListTile.adaptive(
                     value: _viewModel.showDeveloperOptions,
                     title: Text(L10n.of(context).showDeveloperOptions),
                     subtitle: Text(L10n.of(context).showDeveloperOptionsDesc),
-                    activeThumbColor: AppConfig.activeToggleColor,
+                    activeThumbColor: Theme.of(context).pangea.successFixedDim,
                     onChanged: _viewModel.setShowDeveloperOptions,
                   ),
                 ],

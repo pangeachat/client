@@ -263,13 +263,11 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
 
     final handler = JoinRoomAnalyticsConsentHandler(joinResp, room);
     final joinedRoomId = await handler.handle(context);
-    if (joinedRoomId == null) {
-      ErrorHandler.logError(
-        e: Exception("Failed to fetch roomID in public course preview"),
-        data: {'roomID': widget.roomID},
-      );
-      throw Exception("Failed to fetch roomID");
-    }
+    // Null means the learner declined the analytics notice and the handler has
+    // already left the room. A decline is a choice, not a failure: stay on the
+    // preview with Join still offered (#9103). A real failure inside the
+    // handler still throws.
+    if (joinedRoomId == null) return;
 
     context.go(
       WorkspaceNav.openCourse(GoRouterState.of(context).uri, joinedRoomId),

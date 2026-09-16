@@ -103,7 +103,10 @@ class ErrorHandler {
   /// - a choreo 401 — choreo validates the bearer via Synapse WhoAmI, and an
   ///   expired token makes that check itself 401;
   /// - a Pangea Synapse-module 401 — the homeserver rejecting the bearer
-  ///   directly;
+  ///   directly, under either of the module's path prefixes (the versioned
+  ///   `/_synapse/client/pangea/v1/…` and the `unstable/org.pangea/…`
+  ///   endpoints — `room_preview` there landed as its own per-endpoint
+  ///   issue, CLIENT-EKC, #9061);
   /// - a CMS read answered 403 ([_isCmsReadDenied]) — the same rejection,
   ///   one hop later and mislabelled.
   ///
@@ -115,7 +118,8 @@ class ErrorHandler {
     if (e.statusCode == 403) return _isCmsReadDenied(e);
     if (e.statusCode != 401) return false;
     return (e.detail?.contains('Matrix WhoAmI non-200 (401)') ?? false) ||
-        e.path.startsWith('/_synapse/client/pangea');
+        e.path.startsWith('/_synapse/client/pangea') ||
+        e.path.startsWith('/_synapse/client/unstable/org.pangea');
   }
 
   /// Whether [e] is a CMS read denied with Payload's generic 403. The CMS
@@ -150,6 +154,12 @@ class ErrorHandler {
 
   @visibleForTesting
   static void resetReportedOnceKeysForTest() => _reportedOnceKeys.clear();
+
+  /// The [logErrorOnce] keys spent this session — how a test asserts that a
+  /// degrade path actually reported rather than swallowing its failure.
+  @visibleForTesting
+  static Set<String> get reportedOnceKeysForTest =>
+      Set.unmodifiable(_reportedOnceKeys);
 
   /// [logError], capped at one report per app session per [key]. For known
   /// recurring degrade paths — e.g. a joined course whose quest plan no longer

@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-09-14 12:45:23.267131",
+    "@@last_modified": "2026-09-16 10:14:08.469965",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8143,5 +8143,17 @@
     "groupsFilterTooltip": "Mostrar solo chats de grupo",
     "activitiesFilterTooltip": "Mostrar solo actividades",
     "noGroupChatsYet": "Todavía no estás en ningún chat de grupo.",
-    "noActivitiesYet": "Todavía no estás en ninguna actividad."
+    "noActivitiesYet": "Todavía no estás en ninguna actividad.",
+    "unblock": "Desbloquear",
+    "orchestratorFeedbackTooltip": "Marcar este contenido",
+    "orchestratorFeedbackTitle": "¿Qué está mal aquí?",
+    "orchestratorFeedbackPartSuggestion": "Las sugerencias",
+    "orchestratorFeedbackPartGoals": "Los premios por objetivos",
+    "orchestratorFeedbackCommentHint": "Di qué está mal",
+    "orchestratorFeedbackPickAward": "¿Qué estrella?",
+    "orchestratorFeedbackPickAwardRequired": "Elige la estrella que estás cuestionando",
+    "orchestratorFeedbackNoAwards": "En este turno no se otorgaron estrellas, así que no hay nada que cuestionar aquí.",
+    "orchestratorFeedbackCommentRequired": "Añade un comentario para que sepamos qué arreglar",
+    "orchestratorFeedbackSubmit": "Enviar",
+    "orchestratorFeedbackThanks": "Marcado. ¡Gracias!"
 }

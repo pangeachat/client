@@ -251,11 +251,22 @@ abstract class PanelAllocator {
       // folds whether or not the pair is a declared master/detail
       // (routing.instructions.md → "the same rule applies positionally"), so a
       // chat opened in a course folds the course card behind it (#9030).
+      //
+      // A panel with a FLOOR is the exception, in both directions, because its
+      // single control is the expand/collapse chevron — it can show neither an
+      // X nor a back arrow ([CloseAffordance]). So nothing may fold behind it
+      // (whatever folded there could never be revealed, #9037), and it yields
+      // first whatever its position, which is right anyway: it has a collapsed
+      // state to fall back to and the panels beside it do not.
+      bool hasFloor(_Entry e) => e.def.type.hasCavityFloor;
       final foldable = vis
           .where(
             (beneath) => vis.any(
               (above) =>
-                  above.column == beneath.column && above.index > beneath.index,
+                  above.column == beneath.column &&
+                  above != beneath &&
+                  !hasFloor(above) &&
+                  (hasFloor(beneath) || above.index > beneath.index),
             ),
           )
           .toList();

@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-09-14 12:45:24.371828",
+    "@@last_modified": "2026-09-16 10:14:10.076198",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9924,5 +9924,17 @@
     "groupsFilterTooltip": "Mostrar só chats de grupo",
     "activitiesFilterTooltip": "Mostrar só actividades",
     "noGroupChatsYet": "Aínda non estás en ningún chat de grupo.",
-    "noActivitiesYet": "Aínda non estás en ningunha actividade."
+    "noActivitiesYet": "Aínda non estás en ningunha actividade.",
+    "unblock": "Desbloquear",
+    "orchestratorFeedbackTooltip": "Marcar este contido",
+    "orchestratorFeedbackTitle": "Que hai de malo aquí?",
+    "orchestratorFeedbackPartSuggestion": "As suxestións",
+    "orchestratorFeedbackPartGoals": "As recompensas por obxectivos",
+    "orchestratorFeedbackCommentHint": "Indica que está mal",
+    "orchestratorFeedbackPickAward": "Que estrela?",
+    "orchestratorFeedbackPickAwardRequired": "Escolle a estrela que estás a cuestionar",
+    "orchestratorFeedbackNoAwards": "Esta quenda non concedeu ningunha estrela, polo que non hai nada que cuestionar aquí.",
+    "orchestratorFeedbackCommentRequired": "Engade un comentario para que saibamos que arranxar",
+    "orchestratorFeedbackSubmit": "Enviar",
+    "orchestratorFeedbackThanks": "Marcado. Grazas!"
 }

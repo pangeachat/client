@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-14 12:45:35.709201",
+    "@@last_modified": "2026-09-16 10:14:22.413576",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10442,5 +10442,17 @@
     "groupsFilterTooltip": "Visa endast gruppchattar",
     "activitiesFilterTooltip": "Visa endast aktiviteter",
     "noGroupChatsYet": "Du är inte med i några gruppchattar än.",
-    "noActivitiesYet": "Du är inte med i några aktiviteter än."
+    "noActivitiesYet": "Du är inte med i några aktiviteter än.",
+    "unblock": "Avblockera",
+    "orchestratorFeedbackTooltip": "Flagga detta innehåll",
+    "orchestratorFeedbackTitle": "Vad är fel här?",
+    "orchestratorFeedbackPartSuggestion": "Förslagen",
+    "orchestratorFeedbackPartGoals": "Målutmärkelserna",
+    "orchestratorFeedbackCommentHint": "Säg vad som är fel med det",
+    "orchestratorFeedbackPickAward": "Vilken stjärna?",
+    "orchestratorFeedbackPickAwardRequired": "Välj stjärnan du ifrågasätter",
+    "orchestratorFeedbackNoAwards": "Denna omgång tilldelades inga stjärnor, så det finns inget att ifrågasätta här.",
+    "orchestratorFeedbackCommentRequired": "Lägg till en kommentar så vi vet vad vi ska åtgärda",
+    "orchestratorFeedbackSubmit": "Skicka",
+    "orchestratorFeedbackThanks": "Flagga. Tack!"
 }

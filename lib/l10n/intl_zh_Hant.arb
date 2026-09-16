@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-14 12:45:39.028239",
+    "@@last_modified": "2026-09-16 10:14:25.105247",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10030,5 +10030,17 @@
     "groupsFilterTooltip": "僅顯示群組聊天",
     "activitiesFilterTooltip": "僅顯示活動",
     "noGroupChatsYet": "您尚未加入任何群組聊天。",
-    "noActivitiesYet": "您尚未加入任何活動。"
+    "noActivitiesYet": "您尚未加入任何活動。",
+    "unblock": "解除封鎖",
+    "orchestratorFeedbackTooltip": "舉報此內容",
+    "orchestratorFeedbackTitle": "這裡有什麼問題？",
+    "orchestratorFeedbackPartSuggestion": "建議",
+    "orchestratorFeedbackPartGoals": "目標獎勵",
+    "orchestratorFeedbackCommentHint": "說明有什麼問題",
+    "orchestratorFeedbackPickAward": "哪顆星？",
+    "orchestratorFeedbackPickAwardRequired": "請選擇您有疑問的星級",
+    "orchestratorFeedbackNoAwards": "此回合沒有頒發星級，因此這裡沒有可質疑的內容。",
+    "orchestratorFeedbackCommentRequired": "請新增評論，以便我們知道要修正什麼",
+    "orchestratorFeedbackSubmit": "傳送",
+    "orchestratorFeedbackThanks": "已舉報。謝謝！"
 }

@@ -1937,7 +1937,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-09-14 12:45:27.589417",
+    "@@last_modified": "2026-09-16 10:14:13.925271",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10824,5 +10824,17 @@
     "groupsFilterTooltip": "მხოლოდ ჯგუფური ჩეთების ჩვენება",
     "activitiesFilterTooltip": "მხოლოდ აქტივობების ჩვენება",
     "noGroupChatsYet": "თქვენ ჯერ არ ხართ არცერთ ჯგუფურ ჩეთში.",
-    "noActivitiesYet": "თქვენ ჯერ არ ხართ არცერთ აქტივობაში."
+    "noActivitiesYet": "თქვენ ჯერ არ ხართ არცერთ აქტივობაში.",
+    "unblock": "განბლოკვა",
+    "orchestratorFeedbackTooltip": "მონიშნეთ ეს კონტენტი",
+    "orchestratorFeedbackTitle": "რა არის აქ არასწორი?",
+    "orchestratorFeedbackPartSuggestion": "შემოთავაზებები",
+    "orchestratorFeedbackPartGoals": "მიზნის ჯილდოები",
+    "orchestratorFeedbackCommentHint": "თქვით, რა არის მასში არასწორი",
+    "orchestratorFeedbackPickAward": "რომელი ვარსკვლავი?",
+    "orchestratorFeedbackPickAwardRequired": "აირჩიეთ ვარსკვლავი, რომელსაც ეჭვქვეშ აყენებთ",
+    "orchestratorFeedbackNoAwards": "ამ სვლამ ვარსკვლავები არ დააჯილდოვა, ამიტომ აქ არაფერია საეჭვო.",
+    "orchestratorFeedbackCommentRequired": "დაამატეთ კომენტარი, რომ ვიცოდეთ რა უნდა გამოსწორდეს",
+    "orchestratorFeedbackSubmit": "გაგზავნა",
+    "orchestratorFeedbackThanks": "მონიშნულია. მადლობა!"
 }

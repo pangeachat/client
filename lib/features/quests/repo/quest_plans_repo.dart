@@ -134,8 +134,10 @@ class QuestPlansRepo {
   /// by one costs a round trip per card, which is felt directly as browse
   /// latency. Ids that do not resolve are simply absent from the result.
   ///
-  /// [requireMissions] defaults to true to preserve the creation picker's rule
-  /// (#7700); catalog callers pass false.
+  /// [requireMissions] defaults to true, so a Mission-less quest is absent too.
+  /// A caller that genuinely wants every row a page of ids resolves to —
+  /// counting or repairing them, rather than offering them to a learner — opts
+  /// out explicitly.
   static Future<Map<String, CoursePlanModel>> getMany(
     List<String> questIds, {
     bool requireMissions = true,
@@ -183,15 +185,16 @@ class QuestPlansRepo {
 
     final sequence = res['learning_objective_sequence'] as List<dynamic>?;
     final missionCount = sequence?.length ?? 0;
-    // A quest-plan with no missions has no content to build a course from — it
-    // would show as a "0 modules" card the learner can't actually create, so
-    // the creation picker drops it (#7700).
+    // A quest-plan with no missions has no content to build a course from, and
+    // none to join one for either: it renders as a "0 activities" card that
+    // leads nowhere. Every surface that offers a course to a learner drops it —
+    // the creation picker (#7700) and the browse-public catalog (#9088) alike;
+    // see course-preview.instructions.md.
     //
-    // Browsing is the other way round: whether a published course space appears
-    // in the catalog is decided by the catalog endpoint, from room state alone,
-    // and never by the contents of the quest behind it. A course whose quest is
-    // empty is still a real, joinable course. Callers reading the catalog pass
-    // requireMissions: false. See public-courses.instructions.md.
+    // Hence the default. This method is usually passed as a tear-off, which
+    // silently takes it, and a call site that quietly inherited the opposite
+    // value is exactly how browse came to list cards the preview refused
+    // (#9088). Opt out deliberately, at the call site, or not at all.
     if (requireMissions && missionCount == 0) return null;
     // Placeholder strings carry the *count* so the "N modules" chip reads
     // correctly. They are never resolved against the v1 ``course-plan-topics``

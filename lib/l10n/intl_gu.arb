@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-09-14 12:45:24.665705",
+    "@@last_modified": "2026-09-16 10:14:10.358671",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2328,5 +2328,17 @@
     "groupsFilterTooltip": "ફક્ત જૂથ ચેટ્સ બતાવો",
     "activitiesFilterTooltip": "ફક્ત પ્રવૃત્તિઓ બતાવો",
     "noGroupChatsYet": "તમે હજી સુધી કોઈપણ જૂથ ચેટ્સમાં નથી.",
-    "noActivitiesYet": "તમે હજી સુધી કોઈપણ પ્રવૃત્તિઓમાં નથી."
+    "noActivitiesYet": "તમે હજી સુધી કોઈપણ પ્રવૃત્તિઓમાં નથી.",
+    "unblock": "અનબ્લોક કરો",
+    "orchestratorFeedbackTooltip": "આ સામગ્રીને ફ્લેગ કરો",
+    "orchestratorFeedbackTitle": "અહીં શું ખોટું છે?",
+    "orchestratorFeedbackPartSuggestion": "સૂચનો",
+    "orchestratorFeedbackPartGoals": "લક્ષ્ય પુરસ્કારો",
+    "orchestratorFeedbackCommentHint": "તેમાં શું ખોટું છે તે કહો",
+    "orchestratorFeedbackPickAward": "કયો સ્ટાર?",
+    "orchestratorFeedbackPickAwardRequired": "તમે જે સ્ટાર પર પ્રશ્ન કરી રહ્યા છો તે પસંદ કરો",
+    "orchestratorFeedbackNoAwards": "આ વારામાં કોઈ સ્ટાર મળ્યો નથી, તેથી અહીં પ્રશ્ન કરવા જેવું કંઈ નથી.",
+    "orchestratorFeedbackCommentRequired": "એક ટિપ્પણી ઉમેરો જેથી અમને ખબર પડે કે શું સુધારવું છે",
+    "orchestratorFeedbackSubmit": "મોકલો",
+    "orchestratorFeedbackThanks": "ફ્લેગ કર્યું. આભાર!"
 }

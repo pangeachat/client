@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-09-14 12:45:31.427863",
+    "@@last_modified": "2026-09-16 10:14:18.083240",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2328,5 +2328,17 @@
     "groupsFilterTooltip": "समूह च्याटहरू मात्र देखाउनुहोस्",
     "activitiesFilterTooltip": "गतिविधिहरू मात्र देखाउनुहोस्",
     "noGroupChatsYet": "तपाईं अहिलेसम्म कुनै समूह च्याटमा हुनुहुन्न।",
-    "noActivitiesYet": "तपाईं अहिलेसम्म कुनै गतिविधिमा हुनुहुन्न।"
+    "noActivitiesYet": "तपाईं अहिलेसम्म कुनै गतिविधिमा हुनुहुन्न।",
+    "unblock": "अनब्लक गर्नुहोस्",
+    "orchestratorFeedbackTooltip": "यो सामग्रीलाई फ्ल्याग गर्नुहोस्",
+    "orchestratorFeedbackTitle": "यहाँ के गलत छ?",
+    "orchestratorFeedbackPartSuggestion": "सुझावहरू",
+    "orchestratorFeedbackPartGoals": "लक्ष्य पुरस्कारहरू",
+    "orchestratorFeedbackCommentHint": "यसमा के गलत छ भन्नुहोस्",
+    "orchestratorFeedbackPickAward": "कुन तारा?",
+    "orchestratorFeedbackPickAwardRequired": "तपाईंले प्रश्न गरिरहनुभएको तारा छान्नुहोस्",
+    "orchestratorFeedbackNoAwards": "यस पालोमा कुनै ताराहरू प्रदान गरिएन, त्यसैले यहाँ प्रश्न गर्न केही छैन।",
+    "orchestratorFeedbackCommentRequired": "टिप्पणी थप्नुहोस् ताकि हामीलाई के ठीक गर्ने भनेर थाहा होस्",
+    "orchestratorFeedbackSubmit": "पठाउनुहोस्",
+    "orchestratorFeedbackThanks": "फ्ल्याग गरियो। धन्यवाद!"
 }

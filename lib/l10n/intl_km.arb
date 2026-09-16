@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-09-14 12:45:27.899870",
+    "@@last_modified": "2026-09-16 10:14:13.973230",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2328,5 +2328,17 @@
     "groupsFilterTooltip": "បង្ហាញតែការជជែកជាក្រុមប៉ុណ្ណោះ",
     "activitiesFilterTooltip": "បង្ហាញតែសកម្មភាពប៉ុណ្ណោះ",
     "noGroupChatsYet": "អ្នកមិនទាន់បានចូលរួមក្នុងការជជែកជាក្រុមណាមួយនៅឡើយទេ។",
-    "noActivitiesYet": "អ្នកមិនទាន់បានចូលរួមក្នុងសកម្មភាពណាមួយនៅឡើយទេ។"
+    "noActivitiesYet": "អ្នកមិនទាន់បានចូលរួមក្នុងសកម្មភាពណាមួយនៅឡើយទេ។",
+    "unblock": "ឈប់ទប់ស្កាត់",
+    "orchestratorFeedbackTooltip": "ដាក់ទង់លើមាតិកានេះ",
+    "orchestratorFeedbackTitle": "មានអ្វីខុសនៅទីនេះ?",
+    "orchestratorFeedbackPartSuggestion": "សំណូមពរ",
+    "orchestratorFeedbackPartGoals": "រង្វាន់គោលដៅ",
+    "orchestratorFeedbackCommentHint": "និយាយថាមានអ្វីខុសជាមួយវា",
+    "orchestratorFeedbackPickAward": "ផ្កាយមួយណា?",
+    "orchestratorFeedbackPickAwardRequired": "ជ្រើសរើសផ្កាយដែលអ្នកកំពុងសួរ",
+    "orchestratorFeedbackNoAwards": "វេននេះមិនបានផ្តល់ផ្កាយទេ ដូច្នេះគ្មានអ្វីត្រូវសួរនៅទីនេះទេ។",
+    "orchestratorFeedbackCommentRequired": "បន្ថែមមតិយោបល់ដើម្បីឱ្យយើងដឹងពីអ្វីដែលត្រូវជួសជុល",
+    "orchestratorFeedbackSubmit": "ផ្ញើ",
+    "orchestratorFeedbackThanks": "បានដាក់ទង់។ អរគុណ!"
 }

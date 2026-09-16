@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-14 12:45:22.075998",
+    "@@last_modified": "2026-09-16 10:14:07.351804",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10051,5 +10051,17 @@
     "groupsFilterTooltip": "Mostra només xats de grup",
     "activitiesFilterTooltip": "Mostra només activitats",
     "noGroupChatsYet": "Encara no ets en cap xat de grup.",
-    "noActivitiesYet": "Encara no ets en cap activitat."
+    "noActivitiesYet": "Encara no ets en cap activitat.",
+    "unblock": "Desbloquejar",
+    "orchestratorFeedbackTooltip": "Marca aquest contingut",
+    "orchestratorFeedbackTitle": "Què hi ha de malament aquí?",
+    "orchestratorFeedbackPartSuggestion": "Els suggeriments",
+    "orchestratorFeedbackPartGoals": "Les recompenses d'objectius",
+    "orchestratorFeedbackCommentHint": "Digues què hi ha de malament",
+    "orchestratorFeedbackPickAward": "Quina estrella?",
+    "orchestratorFeedbackPickAwardRequired": "Tria l'estrella que vols qüestionar",
+    "orchestratorFeedbackNoAwards": "Aquesta ronda no ha atorgat cap estrella, així que no hi ha res a qüestionar.",
+    "orchestratorFeedbackCommentRequired": "Afegeix un comentari perquè sapiguem què hem de solucionar",
+    "orchestratorFeedbackSubmit": "Envia",
+    "orchestratorFeedbackThanks": "Marcar. Gràcies!"
 }

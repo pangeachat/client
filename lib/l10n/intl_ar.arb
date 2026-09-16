@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-09-14 12:45:21.427823",
+    "@@last_modified": "2026-09-16 10:14:05.789854",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10230,5 +10230,17 @@
     "groupsFilterTooltip": "إظهار دردشات المجموعات فقط",
     "activitiesFilterTooltip": "إظهار الأنشطة فقط",
     "noGroupChatsYet": "أنت لست في أي دردشات جماعية بعد.",
-    "noActivitiesYet": "أنت لست في أي أنشطة بعد."
+    "noActivitiesYet": "أنت لست في أي أنشطة بعد.",
+    "unblock": "إلغاء الحظر",
+    "orchestratorFeedbackTooltip": "الإبلاغ عن هذه المحتوى",
+    "orchestratorFeedbackTitle": "ما الخطأ هنا؟",
+    "orchestratorFeedbackPartSuggestion": "الاقتراحات",
+    "orchestratorFeedbackPartGoals": "جوائز الأهداف",
+    "orchestratorFeedbackCommentHint": "اذكر الخطأ",
+    "orchestratorFeedbackPickAward": "أي نجمة؟",
+    "orchestratorFeedbackPickAwardRequired": "اختر النجمة التي تستفسر عنها",
+    "orchestratorFeedbackNoAwards": "لم تمنح هذه الجولة أي نجوم، لذا لا يوجد شيء للاستفسار عنه هنا.",
+    "orchestratorFeedbackCommentRequired": "أضف تعليقًا حتى نعرف ما يجب إصلاحه",
+    "orchestratorFeedbackSubmit": "إرسال",
+    "orchestratorFeedbackThanks": "تم الإبلاغ. شكرًا!"
 }

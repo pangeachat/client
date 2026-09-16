@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-14 12:45:38.160480",
+    "@@last_modified": "2026-09-16 10:14:24.319698",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7216,5 +7216,17 @@
     "groupsFilterTooltip": "Chỉ hiển thị trò chuyện nhóm",
     "activitiesFilterTooltip": "Chỉ hiển thị hoạt động",
     "noGroupChatsYet": "Bạn chưa tham gia bất kỳ cuộc trò chuyện nhóm nào.",
-    "noActivitiesYet": "Bạn chưa tham gia bất kỳ hoạt động nào."
+    "noActivitiesYet": "Bạn chưa tham gia bất kỳ hoạt động nào.",
+    "unblock": "Bỏ chặn",
+    "orchestratorFeedbackTooltip": "Gắn cờ nội dung này",
+    "orchestratorFeedbackTitle": "Có gì sai ở đây?",
+    "orchestratorFeedbackPartSuggestion": "Các gợi ý",
+    "orchestratorFeedbackPartGoals": "Phần thưởng mục tiêu",
+    "orchestratorFeedbackCommentHint": "Nói rõ vấn đề là gì",
+    "orchestratorFeedbackPickAward": "Ngôi sao nào?",
+    "orchestratorFeedbackPickAwardRequired": "Chọn ngôi sao bạn đang thắc mắc",
+    "orchestratorFeedbackNoAwards": "Lượt này không có ngôi sao nào được trao, nên không có gì để thắc mắc ở đây.",
+    "orchestratorFeedbackCommentRequired": "Thêm bình luận để chúng tôi biết cần sửa gì",
+    "orchestratorFeedbackSubmit": "Gửi",
+    "orchestratorFeedbackThanks": "Đã gắn cờ. Cảm ơn!"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-09-14 12:45:29.190032",
+    "@@last_modified": "2026-09-16 10:14:15.047724",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2328,5 +2328,17 @@
     "groupsFilterTooltip": "Nëmme Gruppechats weisen",
     "activitiesFilterTooltip": "Nëmmen Aktivitéite weisen",
     "noGroupChatsYet": "Dir sidd nach a kengem Gruppechat.",
-    "noActivitiesYet": "Dir sidd nach a keng Aktivitéiten."
+    "noActivitiesYet": "Dir sidd nach a keng Aktivitéiten.",
+    "unblock": "Spär ophiewen",
+    "orchestratorFeedbackTooltip": "Dësen Inhalt markéieren",
+    "orchestratorFeedbackTitle": "Wat ass hei falsch?",
+    "orchestratorFeedbackPartSuggestion": "D'Virschléi",
+    "orchestratorFeedbackPartGoals": "D'Zil-Auszeechnungen",
+    "orchestratorFeedbackCommentHint": "Sot wat domat falsch ass",
+    "orchestratorFeedbackPickAward": "Wéi ee Stär?",
+    "orchestratorFeedbackPickAwardRequired": "Wielt de Stär deen Dir a Fro stellt",
+    "orchestratorFeedbackNoAwards": "Dës Ronn huet keng Stäre verginn, also gëtt et hei näischt a Fro ze stellen.",
+    "orchestratorFeedbackCommentRequired": "Füügt e Kommentar bäi, fir datt mir wëssen wat ze fixéieren ass",
+    "orchestratorFeedbackSubmit": "Schécken",
+    "orchestratorFeedbackThanks": "Markéiert. Merci!"
 }

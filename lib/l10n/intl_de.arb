@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-09-14 12:45:22.393196",
+    "@@last_modified": "2026-09-16 10:14:07.760405",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9911,5 +9911,17 @@
     "groupsFilterTooltip": "Nur Gruppenchats anzeigen",
     "activitiesFilterTooltip": "Nur Aktivitäten anzeigen",
     "noGroupChatsYet": "Sie sind noch in keinen Gruppenchats.",
-    "noActivitiesYet": "Sie sind noch in keinen Aktivitäten."
+    "noActivitiesYet": "Sie sind noch in keinen Aktivitäten.",
+    "unblock": "Blockierung aufheben",
+    "orchestratorFeedbackTooltip": "Diesen Inhalt melden",
+    "orchestratorFeedbackTitle": "Was stimmt hier nicht?",
+    "orchestratorFeedbackPartSuggestion": "Die Vorschläge",
+    "orchestratorFeedbackPartGoals": "Die Zielauszeichnungen",
+    "orchestratorFeedbackCommentHint": "Beschreibe, was daran falsch ist",
+    "orchestratorFeedbackPickAward": "Welcher Stern?",
+    "orchestratorFeedbackPickAwardRequired": "Wähle den Stern aus, den du hinterfragst",
+    "orchestratorFeedbackNoAwards": "In dieser Runde wurden keine Sterne vergeben, daher gibt es hier nichts zu hinterfragen.",
+    "orchestratorFeedbackCommentRequired": "Füge einen Kommentar hinzu, damit wir wissen, was wir beheben müssen",
+    "orchestratorFeedbackSubmit": "Senden",
+    "orchestratorFeedbackThanks": "Gemeldet. Danke!"
 }

@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
@@ -51,6 +52,7 @@ class UserDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     final client = Matrix.of(context).client;
     final dmRoomId = client.getDirectChatFromUserId(profile.userId);
+    final blocked = client.ignoredUsers.contains(profile.userId);
     final displayname =
         localizedPangeaUserName(profile.userId, L10n.of(context)) ??
         profile.displayName ??
@@ -131,7 +133,11 @@ class UserDialog extends StatelessWidget {
                                                 ? Icons.check_circle
                                                 : Icons.copy,
                                             size: 12,
-                                            color: copied ? Colors.green : null,
+                                            color: copied
+                                                ? Theme.of(
+                                                    context,
+                                                  ).pangea.success
+                                                : null,
                                           ),
                                         ),
                                       ),
@@ -229,13 +235,19 @@ class UserDialog extends StatelessWidget {
                 router.go(
                   WorkspaceNav.openSettings(
                     uri,
-                    page: 'security/ignorelist/${profile.userId}',
+                    // Already blocked: send them to the block list to remove
+                    // the user, with nothing seeded into the block-a-user field.
+                    page: blocked
+                        ? 'security/ignorelist'
+                        : 'security/ignorelist/${profile.userId}',
                   ),
                 );
               },
               child: Text(
-                L10n.of(context).block,
-                style: TextStyle(color: theme.colorScheme.error),
+                blocked ? L10n.of(context).unblock : L10n.of(context).block,
+                style: blocked
+                    ? null
+                    : TextStyle(color: theme.colorScheme.error),
               ),
             ),
         ],

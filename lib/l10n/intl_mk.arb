@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-09-14 12:45:29.473874",
+    "@@last_modified": "2026-09-16 10:14:16.588269",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2328,5 +2328,17 @@
     "groupsFilterTooltip": "Прикажи само групни разговори",
     "activitiesFilterTooltip": "Прикажи само активности",
     "noGroupChatsYet": "Сè уште не сте во ниту еден групен разговор.",
-    "noActivitiesYet": "Сè уште не сте во ниту една активност."
+    "noActivitiesYet": "Сè уште не сте во ниту една активност.",
+    "unblock": "Одблокирај",
+    "orchestratorFeedbackTooltip": "Пријави ја содржината",
+    "orchestratorFeedbackTitle": "Што не е во ред тука?",
+    "orchestratorFeedbackPartSuggestion": "Предлозите",
+    "orchestratorFeedbackPartGoals": "Наградите за цел",
+    "orchestratorFeedbackCommentHint": "Кажете што не е во ред со тоа",
+    "orchestratorFeedbackPickAward": "Која ѕвезда?",
+    "orchestratorFeedbackPickAwardRequired": "Изберете ја ѕвездата што ја доведувате во прашање",
+    "orchestratorFeedbackNoAwards": "Овој потег не додели ѕвезди, така што нема што да се доведува во прашање тука.",
+    "orchestratorFeedbackCommentRequired": "Додадете коментар за да знаеме што да поправиме",
+    "orchestratorFeedbackSubmit": "Испрати",
+    "orchestratorFeedbackThanks": "Пријавено. Благодарам!"
 }

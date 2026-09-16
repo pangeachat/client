@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/routes/world/xp_border_painter.dart';
 import 'contrast_ratio.dart';
 
 /// The XP ring paints outside the powerups pill, directly over map tiles, and
@@ -37,8 +37,8 @@ void main() {
             theme: ThemeData(useMaterial3: true, brightness: brightness),
             home: Builder(
               builder: (context) {
-                track = AppConfig.xpTrackByTheme(context);
-                arc = AppConfig.goldByTheme(context);
+                track = XpBorderPainter.trackColorFor(Theme.of(context));
+                arc = XpBorderPainter.arcColorFor(Theme.of(context));
                 return const SizedBox.shrink();
               },
             ),

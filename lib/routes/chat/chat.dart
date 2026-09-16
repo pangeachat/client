@@ -85,6 +85,7 @@ import 'package:fluffychat/routes/chat/choreographer/choreographer.dart';
 import 'package:fluffychat/routes/chat/choreographer/choreographer_state_extension.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/pangea_match_state_model.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/span_card.dart';
+import 'package:fluffychat/routes/chat/choreographer/igc/writing_assistance_popup_slot.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/writing_asssitance_popup_manager.dart';
 import 'package:fluffychat/routes/chat/choreographer/text_editing/edit_type_enum.dart';
 import 'package:fluffychat/routes/chat/choreographer/text_editing/pangea_text_controller.dart';
@@ -3292,27 +3293,7 @@ class ChatController extends State<ChatPageWithRoom>
     }
 
     if (!isSpanCardOpen) {
-      // Size the popup to the chat's available space: as wide as the input
-      // field, and as tall as the space above it, so choices are visible
-      // without scrolling (#8130). The card itself sizes to its content.
-      final inputRenderBox = MatrixState.pAnyState.getRenderBox(
-        ChoreoConstants.inputTransformTargetKey,
-      );
-      final overlayRenderBox = OverlayUtil.overlayRenderBox(context);
-
-      double maxWidth = 325;
-      double maxHeight = 325;
-      if (inputRenderBox != null && overlayRenderBox != null) {
-        maxWidth = inputRenderBox.size.width;
-        final spaceAboveInput = OverlayUtil.localOffset(
-          inputRenderBox,
-          overlayRenderBox,
-        ).dy;
-        maxHeight = (spaceAboveInput - kToolbarHeight - 16.0).clamp(
-          200.0,
-          double.infinity,
-        );
-      }
+      final slot = WritingAssistancePopupSlot.measure(context);
 
       _spanCardOverlayController.open(
         context,
@@ -3320,13 +3301,12 @@ class ChatController extends State<ChatPageWithRoom>
           context: context,
           cardToShow: SpanCard(
             controller: _spanCardOverlayController,
-            // Leave room for the OverlayContainer's padding and border.
-            maxHeight: maxHeight - 24.0,
+            maxHeight: slot.cardMaxHeight,
           ),
           displayDetails: PositionedOverlayDisplayDetails(
             overlayKey: overlayKey,
-            maxHeight: maxHeight,
-            maxWidth: maxWidth,
+            maxHeight: slot.maxHeight,
+            maxWidth: slot.maxWidth,
             transformTargetId: ChoreoConstants.inputTransformTargetKey,
             ignorePointer: true,
             // Taps outside the card still reach the input field and other
@@ -3347,23 +3327,32 @@ class ChatController extends State<ChatPageWithRoom>
       return;
     }
 
+    // The same slot, measured the same way as the span card's: the two cards
+    // take turns in one place above the input field, so they are sized and
+    // dressed by one set of rules rather than each by its own (#9074).
+    final slot = WritingAssistancePopupSlot.measure(context);
+
     _spanCardOverlayController.open(
       context,
-      openOverlay: (overlayKey) => OverlayUtil.showOverlay(
+      openOverlay: (overlayKey) => OverlayUtil.showPositionedCard(
         context: context,
-        child: SuggestionCard(
-          overlayKey: overlayKey,
+        cardToShow: SuggestionCard(
           controller: choreographer.orchestratorController,
           popupManager: _spanCardOverlayController,
+          maxHeight: slot.cardMaxHeight,
         ),
-        displayDetails: TransformOverlayDisplayDetails(
+        displayDetails: PositionedOverlayDisplayDetails(
           overlayKey: overlayKey,
+          maxHeight: slot.maxHeight,
+          maxWidth: slot.maxWidth,
           transformTargetId: ChoreoConstants.inputTransformTargetKey,
           ignorePointer: true,
-          targetAnchor: Alignment.topCenter,
-          followerAnchor: Alignment.bottomCenter,
+          // Taps outside the card still reach the input field, but taps on the
+          // card stop there (#8181).
           blockPointerThrough: true,
+          isScrollable: false,
         ),
+        overlayPosition: OverlayPosition.above,
       ),
     );
   }

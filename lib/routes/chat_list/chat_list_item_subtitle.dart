@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
@@ -15,6 +14,7 @@ import 'package:fluffychat/routes/chat/calls/call_timeline_event.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
+import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_room_extension.dart';
 import 'package:fluffychat/utils/room_status_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -103,11 +103,11 @@ class ChatListItemSubtitle extends StatelessWidget {
         // participant warmup is needed here.
         return ActivityParticipantRow(
           icon: Icons.hourglass_bottom,
-          // The ongoing state's accent — the very purple the map card passes
+          // The ongoing state's accent — the very fill the map card passes
           // for this same hourglass (ActivityPinState.ongoingPending), so the
           // two surfaces match. An icon only needs non-text contrast (3:1), so
-          // the raw brand purple is safe where 13px text would not be (#8968).
-          accent: AppConfig.primaryColor,
+          // the brand fill is safe where 13px text would not be (#8968).
+          accent: ActivityPinState.ongoingPending.bodyColor(context),
           participants: room.largeCardParticipantIds,
           openSlots: room.numRemainingRoles,
           // Matches the Active tile's sender-avatar size (ActivityTileBody)

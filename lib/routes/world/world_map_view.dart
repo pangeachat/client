@@ -19,14 +19,12 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
-import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
-import 'package:fluffychat/routes/world/course_context_bar.dart';
 import 'package:fluffychat/routes/world/course_preview_banner.dart';
 import 'package:fluffychat/routes/world/dot_markers_layer.dart';
 import 'package:fluffychat/routes/world/exiting_large_markers_layer.dart';
@@ -1273,14 +1271,11 @@ class _WorldMapViewState extends State<WorldMapView>
     // put the minimized bar 4px right of the panel it replaces (#8816).
     final searchLeft =
         widget.controller.widget.leftOverlayWidth + PanelCard.margin.left;
-    // The slot's ideal width: the search overlay's own, or — under a course —
-    // the course panel's, so the closed card is the open card's exact size
-    // and only the chevron's rotation changes between them (#8866). The
-    // panel draws its card inside PanelCard's margin; the bar has none, so it
-    // takes the panel's ideal less both margins.
-    final slotIdeal = courseScopeSpaceId == null
-        ? 360.0
-        : PanelTypesEnum.course.def.idealWidth - PanelCard.margin.horizontal;
+    // The slot's ideal width. One value now: the course context bar left this
+    // slot for the course panel's own (#9037), so what remains is the search
+    // overlay and — in course scope — the empty-view card, which reads well at
+    // the same width.
+    const slotIdeal = 360.0;
     final searchWidth = math.min(
       slotIdeal,
       MediaQuery.sizeOf(context).width -
@@ -1406,11 +1401,7 @@ class _WorldMapViewState extends State<WorldMapView>
           // bar above the nav widget instead (the shell mounts it — see
           // routing.instructions.md → Single-column search bar), and this
           // top-left spot belongs to the analytics bar.
-          if (FluffyThemes.isColumnMode(context) &&
-              searchWidth >= 220 &&
-              !(courseScopeSpaceId != null &&
-                  (widget.controller.widget.coursePanelOpen ||
-                      widget.controller.widget.activityPanelOpen)))
+          if (FluffyThemes.isColumnMode(context) && searchWidth >= 220)
             Positioned(
               top: 12,
               left: searchLeft,
@@ -1428,36 +1419,26 @@ class _WorldMapViewState extends State<WorldMapView>
                       mapContext is CoursePreviewMapContext
                       ? const SizedBox.shrink()
                       : child!,
+                  // A course scope takes the slot's SEARCH away — the search
+                  // bar reading as the map's own control is half of what tells
+                  // a scoped map from the world map (#8736) — but not the
+                  // empty-view card: the pills still apply in course scope, so
+                  // without it an emptied course map has no visible lever back
+                  // (#8401's dead end). Naming the course is the course
+                  // panel's own job now, in either of its states (#9037).
                   child: courseScopeSpaceId != null
                       ? SafeArea(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              CourseContextBar(
-                                spaceId: courseScopeSpaceId,
-                                sortKey: WorkspaceOrder.mapChrome.sortKey,
-                              ),
-                              // The bar replaces the search field and the pills,
-                              // not the empty-view card: those pills still apply
-                              // in course scope, so without the card an emptied
-                              // course map has no visible lever back (#8401's
-                              // dead end).
-                              if (widget.controller.emptyVerdict !=
-                                  MapEmptyVerdict.none)
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 8.0),
-                                  child: WorldMapEmptyViewCard(
-                                    sortKey: WorkspaceOrder.mapChrome.sortKey,
-                                    verdict: widget.controller.emptyVerdict,
-                                    canZoomOut: widget.controller.canZoomOut,
-                                    onWidenSearch:
-                                        widget.controller.widenFilters,
-                                    onZoomOut: widget.controller.resetToWorld,
-                                  ),
+                          child:
+                              widget.controller.emptyVerdict ==
+                                  MapEmptyVerdict.none
+                              ? const SizedBox.shrink()
+                              : WorldMapEmptyViewCard(
+                                  sortKey: WorkspaceOrder.mapChrome.sortKey,
+                                  verdict: widget.controller.emptyVerdict,
+                                  canZoomOut: widget.controller.canZoomOut,
+                                  onWidenSearch: widget.controller.widenFilters,
+                                  onZoomOut: widget.controller.resetToWorld,
                                 ),
-                            ],
-                          ),
                         )
                       : WorldMapSearchOverlay(
                           filter: widget.controller.filter,

@@ -126,6 +126,13 @@ class PApiUrls {
   /// 422 = comment rejected by moderation.
   static String activityRate = "${PApiUrls._choreoRoute}/v2/activity/rate";
 
+  /// `POST /choreo/orchestrate/feedback` — internal reviewer feedback on a
+  /// stored orchestrator turn. Carries only a pointer to the turn: the
+  /// choreographer regenerates from the request it already stored for that
+  /// call. Staging only; see conversation-orchestrator.instructions.md.
+  static String orchestratorFeedback =
+      "${PApiUrls._choreoRoute}/orchestrate/feedback";
+
   static String tokenFeedback = "${PApiUrls._choreoRoute}/token/feedback";
   static String tokenFeedbackV2 = "${PApiUrls._choreoRoute}/token/feedback_v2";
 

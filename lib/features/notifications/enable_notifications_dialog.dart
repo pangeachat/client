@@ -57,12 +57,10 @@ class EnableNotificationsDialog extends StatelessWidget {
                     container: true,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Theme.of(
-                          context,
-                        ).colorScheme.primaryContainer,
+                        backgroundColor: Theme.of(context).colorScheme.primary,
                         foregroundColor: Theme.of(
                           context,
-                        ).colorScheme.onPrimaryContainer,
+                        ).colorScheme.onPrimary,
                         padding: const EdgeInsets.symmetric(
                           horizontal: 24,
                           vertical: 12,
@@ -75,7 +73,14 @@ class EnableNotificationsDialog extends StatelessWidget {
                         children: [
                           Text(
                             l10n.enableNotifications,
-                            style: Theme.of(context).textTheme.bodyLarge,
+                            // bodyLarge carries onSurface; the label needs
+                            // the fill's ink.
+                            style: Theme.of(context).textTheme.bodyLarge
+                                ?.copyWith(
+                                  color: Theme.of(
+                                    context,
+                                  ).colorScheme.onPrimary,
+                                ),
                             textAlign: TextAlign.center,
                           ),
                         ],

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-14 12:45:35.898727",
+    "@@last_modified": "2026-09-16 10:14:21.832087",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10873,5 +10873,17 @@
     "groupsFilterTooltip": "Prikaži samo grupna ćaskanja",
     "activitiesFilterTooltip": "Prikaži samo aktivnosti",
     "noGroupChatsYet": "Još uvek niste ni u jednom grupnom ćaskanju.",
-    "noActivitiesYet": "Još uvek niste ni u jednoj aktivnosti."
+    "noActivitiesYet": "Još uvek niste ni u jednoj aktivnosti.",
+    "unblock": "Deblokiraj",
+    "orchestratorFeedbackTooltip": "Označi ovaj sadržaj",
+    "orchestratorFeedbackTitle": "Šta je ovde pogrešno?",
+    "orchestratorFeedbackPartSuggestion": "Predlozi",
+    "orchestratorFeedbackPartGoals": "Nagrade za ciljeve",
+    "orchestratorFeedbackCommentHint": "Recite šta nije u redu sa tim",
+    "orchestratorFeedbackPickAward": "Koja zvezda?",
+    "orchestratorFeedbackPickAwardRequired": "Izaberite zvezdu koju dovodite u pitanje",
+    "orchestratorFeedbackNoAwards": "Ovaj potez nije dodelio zvezde, tako da ovde nema šta da se dovodi u pitanje.",
+    "orchestratorFeedbackCommentRequired": "Dodajte komentar kako bismo znali šta da popravimo",
+    "orchestratorFeedbackSubmit": "Pošalji",
+    "orchestratorFeedbackThanks": "Označeno. Hvala!"
 }

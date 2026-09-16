@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -46,20 +46,31 @@ enum ActivityPinState {
   /// values.
   bool get isLive => isOngoing || this == ActivityPinState.joinable;
 
-  /// The pin body color. See world-map.instructions.md ("Pin state").
-  Color get color => switch (this) {
-    ActivityPinState.ongoingPending ||
-    ActivityPinState.ongoingActive => AppConfig.primaryColor,
-    ActivityPinState.joinable => AppConfig.green,
-    ActivityPinState.inProgress => AppConfig.gold,
-    ActivityPinState.available => AppConfig.primaryColorLight,
+  /// The pin body colour. See world-map.instructions.md ("Pin state").
+  Color bodyColor(BuildContext context) => switch (this) {
+    ActivityPinState.joinable => Theme.of(context).pangea.joinable,
+    ActivityPinState.ongoingPending || ActivityPinState.ongoingActive =>
+      Theme.of(context).colorScheme.primaryContainer,
+    ActivityPinState.inProgress => Theme.of(context).pangea.goldFixedDim,
+    ActivityPinState.available => Theme.of(
+      context,
+    ).colorScheme.secondaryContainer,
   };
 
-  Color bodyColor(BuildContext context) =>
-      this == ActivityPinState.available &&
-          Theme.of(context).brightness == Brightness.dark
-      ? AppConfig.primaryColorDark
-      : color;
+  /// Ink for the icon and text drawn on [bodyColor].
+  Color onBodyColor(BuildContext context) => switch (this) {
+    ActivityPinState.joinable => Theme.of(context).pangea.onJoinable,
+    ActivityPinState.ongoingPending || ActivityPinState.ongoingActive =>
+      Theme.of(context).colorScheme.onPrimaryContainer,
+    ActivityPinState.inProgress => Theme.of(context).pangea.onGoldFixed,
+    // The pale light-mode available fill is too pale for white (1.57:1); it
+    // takes the dark-purple label colour there (#8243, #8968). The deep
+    // dark-mode fill carries white at 9.3:1.
+    ActivityPinState.available =>
+      Theme.of(context).brightness == Brightness.light
+          ? Theme.of(context).colorScheme.primary
+          : Colors.white,
+  };
 
   String label(L10n l10n) => switch (this) {
     ActivityPinState.ongoingPending => l10n.ongoingPendingLabel,
@@ -83,21 +94,20 @@ enum ActivityPinState {
   };
 
   /// The accent used for a large card's border / foreground — the state hue.
-  Color get accent => color;
+  Color accent(BuildContext context) => bodyColor(context);
 
-  /// The label colour: the state hue, but for the three purple states retuned
-  /// by the theme rather than taken raw from [AppConfig].
+  /// The label colour: the state hue as a TEXT tone, never the fill's tone.
   ///
   /// Wherever this colour is a large card's TEXT it sits on
-  /// `colorScheme.surface`, and the raw `AppConfig.primaryColor` measures
+  /// `colorScheme.surface`, and the raw seed purple the pins once used measured
   /// 4.2:1 over that surface in BOTH themes — under WCAG AA's 4.5:1 for the
   /// card's 13px/14px type, which is what made the dark card's title unreadable
   /// (#8968). `colorScheme.primary` is the same brand hue tonally retuned for
   /// the surface behind it, so it clears AA in both directions (10.97:1 dark,
-  /// 6.14:1 light) from one expression, with no second hardcoded purple to keep
-  /// in step. `joinable`'s green and the completed star's gold keep their own
-  /// hue — green already clears AA on the dark surface, and neither has a
-  /// theme token to resolve through.
+  /// 6.14:1 light) from one expression. The joinable pin's fill green is a
+  /// fill tone that carries white, not a text tone (4.0:1 on the dark
+  /// surface), so its label reads the success text tone (6.1:1 light, 10.9:1
+  /// dark); the completed star's label likewise reads the gold text tone.
   ///
   /// Not the same colour as the card's border, which stays the state hue via
   /// [bodyColor] so card and pin still read as one state
@@ -106,7 +116,8 @@ enum ActivityPinState {
     ActivityPinState.available ||
     ActivityPinState.ongoingPending ||
     ActivityPinState.ongoingActive => Theme.of(context).colorScheme.primary,
-    ActivityPinState.joinable || ActivityPinState.inProgress => color,
+    ActivityPinState.joinable => Theme.of(context).pangea.success,
+    ActivityPinState.inProgress => Theme.of(context).pangea.gold,
   };
 }
 

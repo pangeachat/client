@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-09-14 12:45:30.850291",
+    "@@last_modified": "2026-09-16 10:14:16.963283",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2328,5 +2328,17 @@
     "groupsFilterTooltip": "Зөвхөн бүлгийн чатыг харуулах",
     "activitiesFilterTooltip": "Зөвхөн үйл ажиллагааг харуулах",
     "noGroupChatsYet": "Та одоогоор ямар ч бүлгийн чатад ороогүй байна.",
-    "noActivitiesYet": "Та одоогоор ямар ч үйл ажиллагаанд ороогүй байна."
+    "noActivitiesYet": "Та одоогоор ямар ч үйл ажиллагаанд ороогүй байна.",
+    "unblock": "Хаалтыг цуцлах",
+    "orchestratorFeedbackTooltip": "Энэ агуулгыг тэмдэглэх",
+    "orchestratorFeedbackTitle": "Энд юу буруу байна вэ?",
+    "orchestratorFeedbackPartSuggestion": "Саналууд",
+    "orchestratorFeedbackPartGoals": "Зорилгын шагналууд",
+    "orchestratorFeedbackCommentHint": "Юу нь буруу байгааг хэлнэ үү",
+    "orchestratorFeedbackPickAward": "Аль од вэ?",
+    "orchestratorFeedbackPickAwardRequired": "Таны эргэлзэж буй одыг сонгоно уу",
+    "orchestratorFeedbackNoAwards": "Энэ эргэлтэд од олгогдоогүй тул энд эргэлзэх зүйл алга.",
+    "orchestratorFeedbackCommentRequired": "Юуг засах ёстойг мэдэхийн тулд сэтгэгдэл нэмнэ үү",
+    "orchestratorFeedbackSubmit": "Илгээх",
+    "orchestratorFeedbackThanks": "Тэмдэглэгдсэн. Баярлалаа!"
 }

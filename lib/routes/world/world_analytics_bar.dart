@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shimmer/shimmer.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
@@ -236,10 +235,14 @@ class _PowerupsRow extends StatelessWidget {
                       child: CustomPaint(
                         painter: XpBorderPainter(
                           progress: progress,
-                          trackColor: AppConfig.xpTrackByTheme(context),
-                          progressColor: AppConfig.goldByTheme(context),
+                          trackColor: XpBorderPainter.trackColorFor(
+                            Theme.of(context),
+                          ),
+                          progressColor: XpBorderPainter.arcColorFor(
+                            Theme.of(context),
+                          ),
                           stroke: _xpStroke,
-                          radius: _innerRadius + _xpStroke / 2,
+                          innerRadius: _innerRadius,
                           anchor: XpBorderAnchor.leftCenter,
                         ),
                         child: Padding(

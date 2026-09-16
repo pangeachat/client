@@ -350,9 +350,7 @@ class _WordCardHeaderState extends State<_WordCardHeader>
                       fontSize: 28.0,
                       fontWeight: FontWeight.w600,
                       height: 1.2,
-                      color: Theme.of(context).brightness == Brightness.light
-                          ? AppConfig.yellowDark
-                          : AppConfig.yellowLight,
+                      color: Theme.of(context).colorScheme.primary,
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),

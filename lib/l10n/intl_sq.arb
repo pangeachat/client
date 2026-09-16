@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-09-14 12:45:35.196679",
+    "@@last_modified": "2026-09-16 10:14:21.830951",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2328,5 +2328,17 @@
     "groupsFilterTooltip": "Shfaq vetëm bisedat në grup",
     "activitiesFilterTooltip": "Shfaq vetëm aktivitetet",
     "noGroupChatsYet": "Nuk jeni ende në asnjë bisedë në grup.",
-    "noActivitiesYet": "Nuk jeni ende në asnjë aktivitet."
+    "noActivitiesYet": "Nuk jeni ende në asnjë aktivitet.",
+    "unblock": "Zhbloko",
+    "orchestratorFeedbackTooltip": "Raporto këtë përmbajtje",
+    "orchestratorFeedbackTitle": "Çfarë nuk shkon këtu?",
+    "orchestratorFeedbackPartSuggestion": "Sugjerimet",
+    "orchestratorFeedbackPartGoals": "Shpërblimet e objektivave",
+    "orchestratorFeedbackCommentHint": "Thuaj çfarë nuk shkon me të",
+    "orchestratorFeedbackPickAward": "Cili yll?",
+    "orchestratorFeedbackPickAwardRequired": "Zgjidhni yllin që po vini në dyshim",
+    "orchestratorFeedbackNoAwards": "Kjo kthesë nuk dha asnjë yll, kështu që nuk ka asgjë për të vënë në dyshim këtu.",
+    "orchestratorFeedbackCommentRequired": "Shtoni një koment që të dimë çfarë të rregullojmë",
+    "orchestratorFeedbackSubmit": "Dërgo",
+    "orchestratorFeedbackThanks": "U raportua. Faleminderit!"
 }

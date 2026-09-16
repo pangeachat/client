@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/world_map_pin_shape.dart';
@@ -26,13 +26,16 @@ void main() {
     learningObjectiveRefs: [],
   );
 
-  // Seeded the way FluffyThemes.buildTheme seeds the real app, so the scheme
-  // roles under test are the ones the app actually resolves.
+  // Seeded and expanded the way FluffyThemes.buildTheme builds the real app's
+  // scheme (fidelity variant), so the roles under test are the ones the app
+  // actually resolves: under the default tonalSpot expansion primaryContainer
+  // is a pale tint, under fidelity it is the vivid brand purple.
   ThemeData themeFor(Brightness brightness) => ThemeData(
     brightness: brightness,
     colorScheme: ColorScheme.fromSeed(
       brightness: brightness,
-      seedColor: AppConfig.primaryColor,
+      seedColor: Color(AppSettings.colorSchemeSeedInt.defaultValue),
+      dynamicSchemeVariant: DynamicSchemeVariant.fidelity,
     ),
   );
 
@@ -103,7 +106,12 @@ void main() {
         state: ActivityPinState.available,
         tier: PinTier.mid,
       );
-      expect(midFill(tester), AppConfig.primaryColorLight);
+      expect(
+        midFill(tester),
+        Theme.of(
+          tester.element(find.byType(Scaffold)),
+        ).colorScheme.secondaryContainer,
+      );
 
       await pump(
         tester,
@@ -113,7 +121,9 @@ void main() {
       );
       expect(
         smallFill(tester),
-        AppConfig.primaryColorLight,
+        Theme.of(
+          tester.element(find.byType(Scaffold)),
+        ).colorScheme.secondaryContainer,
         reason: 'the light theme is unchanged by #8174',
       );
     });
@@ -142,26 +152,25 @@ void main() {
       );
       expect(
         mid,
-        AppConfig.primaryColorDark,
+        Theme.of(
+          tester.element(find.byType(Scaffold)),
+        ).colorScheme.secondaryContainer,
         reason:
-            'the dark fill is the fixed darker-purple brand constant, not the '
-            'theme-seeded primaryContainer',
+            'the dark fill is the theme\'s secondaryContainer, deep in dark',
+      );
+      final ongoing = ActivityPinState.ongoingActive.bodyColor(
+        tester.element(find.byType(Scaffold)),
       );
       expect(
         mid,
-        isNot(AppConfig.primaryColorLight),
-        reason: 'the near-white light-brand fill is what #8174 replaced',
-      );
-      expect(
-        mid,
-        isNot(AppConfig.primaryColor),
+        isNot(ongoing),
         reason:
             'it must not become the Ongoing purple — the states have to stay '
             'tellable apart',
       );
       expect(
         mid.computeLuminance(),
-        lessThan(AppConfig.primaryColor.computeLuminance()),
+        lessThan(ongoing.computeLuminance()),
         reason:
             'darker than the Ongoing purple, so it reads as the quiet state '
             'rather than a variant of the live one',
@@ -232,35 +241,58 @@ void main() {
       );
     });
 
-    testWidgets('live states are identical in both themes', (tester) async {
-      for (final state in [
-        ActivityPinState.joinable,
-        ActivityPinState.ongoingActive,
-      ]) {
-        await pump(
-          tester,
-          brightness: Brightness.light,
-          state: state,
-          tier: PinTier.mid,
-        );
-        final light = midFill(tester);
+    testWidgets('the joinable fill is identical in both themes', (
+      tester,
+    ) async {
+      await pump(
+        tester,
+        brightness: Brightness.light,
+        state: ActivityPinState.joinable,
+        tier: PinTier.mid,
+      );
+      final light = midFill(tester);
 
-        await pump(
-          tester,
-          brightness: Brightness.dark,
-          state: state,
-          tier: PinTier.mid,
-        );
+      await pump(
+        tester,
+        brightness: Brightness.dark,
+        state: ActivityPinState.joinable,
+        tier: PinTier.mid,
+      );
 
-        expect(
-          midFill(tester),
-          light,
-          reason:
-              '#8174 is scoped to the available pin; $state must look the '
-              'same in both themes',
-        );
-      }
+      expect(
+        midFill(tester),
+        light,
+        reason:
+            '#8174 is scoped to the available pin; the joinable green is the '
+            'extension\'s role, the same in both themes',
+      );
     });
+
+    testWidgets(
+      'the ongoing fill is the scheme\'s brand container in each theme',
+      (tester) async {
+        // Ongoing reads the scheme rather than a fixed purple, so it is the
+        // vivid brand purple in light and the scheme's lighter dark-theme cut
+        // of it, each under its own onPrimaryContainer ink.
+        for (final brightness in [Brightness.light, Brightness.dark]) {
+          await pump(
+            tester,
+            brightness: brightness,
+            state: ActivityPinState.ongoingActive,
+            tier: PinTier.mid,
+          );
+          final scheme = Theme.of(
+            tester.element(find.byType(Scaffold)),
+          ).colorScheme;
+          expect(
+            midFill(tester),
+            scheme.primaryContainer,
+            reason:
+                'the ongoing body is primaryContainer in ${brightness.name}',
+          );
+        }
+      },
+    );
   });
 }
 

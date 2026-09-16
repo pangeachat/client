@@ -3093,7 +3093,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-09-14 12:45:24.780909",
+    "@@last_modified": "2026-09-16 10:14:10.596335",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10556,5 +10556,17 @@
     "groupsFilterTooltip": "केवल समूह चैट दिखाएं",
     "activitiesFilterTooltip": "केवल गतिविधियां दिखाएं",
     "noGroupChatsYet": "आप अभी तक किसी समूह चैट में नहीं हैं.",
-    "noActivitiesYet": "आप अभी तक किसी गतिविधि में नहीं हैं."
+    "noActivitiesYet": "आप अभी तक किसी गतिविधि में नहीं हैं.",
+    "unblock": "अनब्लॉक करें",
+    "orchestratorFeedbackTooltip": "इस सामग्री को फ़्लैग करें",
+    "orchestratorFeedbackTitle": "यहाँ क्या गलत है?",
+    "orchestratorFeedbackPartSuggestion": "सुझाव",
+    "orchestratorFeedbackPartGoals": "लक्ष्य पुरस्कार",
+    "orchestratorFeedbackCommentHint": "बताएँ कि इसमें क्या गलत है",
+    "orchestratorFeedbackPickAward": "कौन सा स्टार?",
+    "orchestratorFeedbackPickAwardRequired": "वह स्टार चुनें जिस पर आप सवाल उठा रहे हैं",
+    "orchestratorFeedbackNoAwards": "इस बारी में कोई स्टार नहीं दिया गया, इसलिए यहाँ सवाल उठाने के लिए कुछ भी नहीं है।",
+    "orchestratorFeedbackCommentRequired": "एक टिप्पणी जोड़ें ताकि हमें पता चले कि क्या ठीक करना है",
+    "orchestratorFeedbackSubmit": "भेजें",
+    "orchestratorFeedbackThanks": "फ़्लैग किया गया। धन्यवाद!"
 }

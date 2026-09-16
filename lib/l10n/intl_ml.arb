@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-09-14 12:45:30.113325",
+    "@@last_modified": "2026-09-16 10:14:16.152983",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2328,5 +2328,17 @@
     "groupsFilterTooltip": "ഗ്രൂപ്പ് ചാറ്റുകൾ മാത്രം കാണിക്കുക",
     "activitiesFilterTooltip": "പ്രവർത്തനങ്ങൾ മാത്രം കാണിക്കുക",
     "noGroupChatsYet": "നിങ്ങൾ ഇതുവരെ ഒരു ഗ്രൂപ്പ് ചാറ്റിലും ഇല്ല.",
-    "noActivitiesYet": "നിങ്ങൾ ഇതുവരെ ഒരു പ്രവർത്തനത്തിലും ഇല്ല."
+    "noActivitiesYet": "നിങ്ങൾ ഇതുവരെ ഒരു പ്രവർത്തനത്തിലും ഇല്ല.",
+    "unblock": "അൺബ്ലോക്ക് ചെയ്യുക",
+    "orchestratorFeedbackTooltip": "ഈ ഉള്ളടക്കം ഫ്ലാഗ് ചെയ്യുക",
+    "orchestratorFeedbackTitle": "ഇവിടെ എന്താണ് തെറ്റ്?",
+    "orchestratorFeedbackPartSuggestion": "നിർദ്ദേശങ്ങൾ",
+    "orchestratorFeedbackPartGoals": "ലക്ഷ്യ നേട്ടങ്ങൾ",
+    "orchestratorFeedbackCommentHint": "ഇതിൽ എന്താണ് തെറ്റെന്ന് പറയുക",
+    "orchestratorFeedbackPickAward": "ഏത് സ്റ്റാർ?",
+    "orchestratorFeedbackPickAwardRequired": "നിങ്ങൾ ചോദ്യം ചെയ്യുന്ന സ്റ്റാർ തിരഞ്ഞെടുക്കുക",
+    "orchestratorFeedbackNoAwards": "ഈ അവസരത്തിൽ സ്റ്റാറുകളൊന്നും ലഭിച്ചില്ല, അതിനാൽ ഇവിടെ ചോദ്യം ചെയ്യാൻ ഒന്നുമില്ല.",
+    "orchestratorFeedbackCommentRequired": "എന്താണ് ശരിയാക്കേണ്ടതെന്ന് അറിയാൻ ഒരു കമന്റ് ചേർക്കുക",
+    "orchestratorFeedbackSubmit": "അയയ്ക്കുക",
+    "orchestratorFeedbackThanks": "ഫ്ലാഗ് ചെയ്തു. നന്ദി!"
 }

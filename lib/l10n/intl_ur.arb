@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-09-14 12:45:37.855288",
+    "@@last_modified": "2026-09-16 10:14:24.022096",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2328,5 +2328,17 @@
     "groupsFilterTooltip": "صرف گروپ چیٹس دکھائیں",
     "activitiesFilterTooltip": "صرف سرگرمیاں دکھائیں",
     "noGroupChatsYet": "آپ ابھی تک کسی گروپ چیٹ میں نہیں ہیں۔",
-    "noActivitiesYet": "آپ ابھی تک کسی سرگرمی میں نہیں ہیں۔"
+    "noActivitiesYet": "آپ ابھی تک کسی سرگرمی میں نہیں ہیں۔",
+    "unblock": "غیر مسدود کریں",
+    "orchestratorFeedbackTooltip": "اس مواد پر پرچم لگائیں",
+    "orchestratorFeedbackTitle": "یہاں کیا غلط ہے؟",
+    "orchestratorFeedbackPartSuggestion": "تجاویز",
+    "orchestratorFeedbackPartGoals": "مقصد کے ایوارڈز",
+    "orchestratorFeedbackCommentHint": "بتائیں کہ اس میں کیا غلط ہے",
+    "orchestratorFeedbackPickAward": "کون سا ستارہ؟",
+    "orchestratorFeedbackPickAwardRequired": "جس ستارے پر آپ سوال کر رہے ہیں اسے منتخب کریں",
+    "orchestratorFeedbackNoAwards": "اس باری میں کوئی ستارہ نہیں دیا گیا، لہذا یہاں سوال کرنے کے لیے کچھ نہیں ہے۔",
+    "orchestratorFeedbackCommentRequired": "ایک تبصرہ شامل کریں تاکہ ہمیں معلوم ہو کہ کیا ٹھیک کرنا ہے",
+    "orchestratorFeedbackSubmit": "بھیجیں",
+    "orchestratorFeedbackThanks": "پرچم لگا دیا گیا۔ شکریہ!"
 }

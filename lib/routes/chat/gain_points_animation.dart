@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/overlay/overlay.dart';
 import 'package:fluffychat/features/overlay/overlay_display_details.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -53,8 +54,8 @@ class PointsGainedAnimation extends StatefulWidget {
 
 class PointsGainedAnimationState extends State<PointsGainedAnimation>
     with SingleTickerProviderStateMixin {
-  final Color? gainColor = AppConfig.gold;
-  final Color? loseColor = Colors.red;
+  Color get gainColor => Theme.of(context).pangea.goldGraphic;
+  Color get loseColor => Theme.of(context).pangea.errorGraphic;
 
   AnimationController? _controller;
   Animation<double>? _fadeAnimation;
@@ -153,7 +154,7 @@ class PointsGainedAnimationState extends State<PointsGainedAnimation>
       textScaler: TextScaler.noScaling,
       style: TextStyle(
         fontSize: _particleFontSize,
-        color: textColor ?? Theme.of(context).colorScheme.primary,
+        color: textColor,
         height: 1.3,
       ),
     );

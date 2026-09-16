@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 
 /// The status colours that carry meaning as FOREGROUND — error text and its
@@ -86,47 +86,58 @@ void main() {
 
   test('discount-code success text clears 4.5:1 in both themes', () {
     expectClears(
-      AppConfig.completedGreen,
+      PangeaColors.of(Brightness.light).success,
       schemeFor(Brightness.light),
       textFloor,
-      what: 'successByTheme light (completedGreen)',
+      what: 'success, light',
     );
     expectClears(
-      AppConfig.success,
+      PangeaColors.of(Brightness.dark).success,
       schemeFor(Brightness.dark),
       textFloor,
-      what: 'successByTheme dark (success)',
+      what: 'success, dark',
     );
   });
 
   test('STT diff underlines clear 3:1 in both themes', () {
     final light = schemeFor(Brightness.light);
     expectClears(
-      AppConfig.warningDeep,
+      PangeaColors.of(Brightness.light).warningGraphic,
       light,
       graphicFloor,
-      what: 'warningByTheme light (warningDeep)',
+      what: 'warningGraphic, light',
     );
     expectClears(
-      AppConfig.completedGreen,
+      PangeaColors.of(Brightness.light).successGraphic,
       light,
       graphicFloor,
-      what: 'successByTheme light (completedGreen)',
+      what: 'successGraphic, light',
     );
 
     final dark = schemeFor(Brightness.dark);
     expectClears(
-      AppConfig.warning,
+      PangeaColors.of(Brightness.dark).warningGraphic,
       dark,
       graphicFloor,
-      what: 'warningByTheme dark (warning)',
+      what: 'warningGraphic, dark',
     );
     expectClears(
-      AppConfig.success,
+      PangeaColors.of(Brightness.dark).successGraphic,
       dark,
       graphicFloor,
-      what: 'successByTheme dark (success)',
+      what: 'successGraphic, dark',
     );
+  });
+
+  test('the composer error underline clears 3:1 in both themes', () {
+    for (final brightness in Brightness.values) {
+      expectClears(
+        PangeaColors.of(brightness).errorGraphic,
+        schemeFor(brightness),
+        graphicFloor,
+        what: 'errorGraphic, $brightness',
+      );
+    }
   });
 
   // The negative control. If these ever start passing, the floors above have
@@ -138,8 +149,9 @@ void main() {
   // against every surface rather than just the lightest one.
   test('the bright constants this issue replaced still fail on light', () {
     final card = schemeFor(Brightness.light).surfaceContainerHighest;
-    expect(contrast(AppConfig.success, card), lessThan(graphicFloor));
-    expect(contrast(AppConfig.warning, card), lessThan(graphicFloor));
-    expect(contrast(AppConfig.error, card), lessThan(textFloor));
+    expect(contrast(PangeaColors.successKey, card), lessThan(graphicFloor));
+    expect(contrast(PangeaColors.warningKey, card), lessThan(graphicFloor));
+    // Colors.red was AppConfig.error until every site read the scheme's error.
+    expect(contrast(Colors.red, card), lessThan(textFloor));
   });
 }

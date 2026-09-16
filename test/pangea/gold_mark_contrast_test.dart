@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/goal_status_widget.dart';
 import 'package:fluffychat/routes/world/world_map_star_dot.dart';
@@ -54,9 +54,9 @@ void main() {
       // `surface` until the role is complete and a gold tint after; the active
       // goal's star sits on a translucent onSurface circle over either.
       final goldTint = Color.alphaBlend(
-        AppConfig.goldByTheme(
+        Theme.of(
           tester.element(find.byType(GoalStatusWidget)),
-        ).withAlpha(40),
+        ).pangea.goldFixedDim.withAlpha(40),
         scheme.surface,
       );
       final activeCircle = Color.alphaBlend(

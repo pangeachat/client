@@ -185,17 +185,20 @@ class ActivityParticipantList extends StatelessWidget {
                     ),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: theme.colorScheme.primaryContainer,
+                        color: theme.colorScheme.secondaryContainer,
                         borderRadius: BorderRadius.circular(18.0),
                       ),
                       padding: const EdgeInsets.all(4.0),
-                      child: Opacity(
-                        opacity: 0.5,
-                        child: Row(
-                          spacing: 4.0,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Avatar(
+                      // Only the avatar fades to say "here, but not in the
+                      // activity": fading the name as well halved its contrast
+                      // against the fill.
+                      child: Row(
+                        spacing: 4.0,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Opacity(
+                            opacity: 0.5,
+                            child: Avatar(
                               size: 18.0,
                               mxContent: member.avatarUrl,
                               name: member.localizedDisplayname(
@@ -203,20 +206,20 @@ class ActivityParticipantList extends StatelessWidget {
                               ),
                               userId: member.id,
                             ),
-                            ConstrainedBox(
-                              constraints: const BoxConstraints(maxWidth: 80.0),
-                              child: Text(
-                                member.localizedDisplayname(L10n.of(context)),
-                                style: TextStyle(
-                                  fontSize: 12.0,
-                                  color: theme.colorScheme.onPrimaryContainer,
-                                ),
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 1,
+                          ),
+                          ConstrainedBox(
+                            constraints: const BoxConstraints(maxWidth: 80.0),
+                            child: Text(
+                              member.localizedDisplayname(L10n.of(context)),
+                              style: TextStyle(
+                                fontSize: 12.0,
+                                color: theme.colorScheme.onSecondaryContainer,
                               ),
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
                   );

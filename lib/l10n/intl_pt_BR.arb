@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-14 12:45:32.481769",
+    "@@last_modified": "2026-09-16 10:14:19.412102",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9924,5 +9924,17 @@
     "groupsFilterTooltip": "Mostrar apenas chats em grupo",
     "activitiesFilterTooltip": "Mostrar apenas atividades",
     "noGroupChatsYet": "Você ainda não está em nenhum chat em grupo.",
-    "noActivitiesYet": "Você ainda não está em nenhuma atividade."
+    "noActivitiesYet": "Você ainda não está em nenhuma atividade.",
+    "unblock": "Desbloquear",
+    "orchestratorFeedbackTooltip": "Sinalizar este conteúdo",
+    "orchestratorFeedbackTitle": "O que há de errado aqui?",
+    "orchestratorFeedbackPartSuggestion": "As sugestões",
+    "orchestratorFeedbackPartGoals": "As recompensas de meta",
+    "orchestratorFeedbackCommentHint": "Diga o que há de errado",
+    "orchestratorFeedbackPickAward": "Qual estrela?",
+    "orchestratorFeedbackPickAwardRequired": "Escolha a estrela que você está questionando",
+    "orchestratorFeedbackNoAwards": "Esta rodada não concedeu estrelas, então não há nada para questionar aqui.",
+    "orchestratorFeedbackCommentRequired": "Adicione um comentário para sabermos o que corrigir",
+    "orchestratorFeedbackSubmit": "Enviar",
+    "orchestratorFeedbackThanks": "Sinalizado. Obrigado!"
 }

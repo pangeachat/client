@@ -147,7 +147,11 @@ class OrchestratorController {
       _setActiveSuggestion(
         suggestion == null
             ? null
-            : ActiveSuggestionModel(suggestion: suggestion),
+            : ActiveSuggestionModel(
+                suggestion: suggestion,
+                basedOnEventId: output.basedOnEventId,
+                goalCompletion: output.goalCompletion,
+              ),
       );
     } catch (e, s) {
       ErrorHandler.logError(e: e, s: s, data: event.content);
@@ -222,7 +226,11 @@ class OrchestratorController {
     final activeSuggestion = _activeSuggestion;
     if (activeSuggestion == null) return;
     _setActiveSuggestion(
-      ActiveSuggestionModel(suggestion: activeSuggestion.suggestion),
+      ActiveSuggestionModel(
+        suggestion: activeSuggestion.suggestion,
+        basedOnEventId: activeSuggestion.basedOnEventId,
+        goalCompletion: activeSuggestion.goalCompletion,
+      ),
     );
   }
 

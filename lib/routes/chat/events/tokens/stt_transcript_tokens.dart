@@ -119,6 +119,7 @@ class SttTranscriptTokens extends StatelessWidget {
                           builder: (context) {
                             final interactionUnderline =
                                 TokenRenderingUtil.underlineColor(
+                                  context,
                                   Theme.of(
                                     context,
                                   ).colorScheme.primary.withAlpha(200),

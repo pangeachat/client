@@ -3093,7 +3093,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-09-14 12:45:26.872728",
+    "@@last_modified": "2026-09-16 10:14:12.857638",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10556,5 +10556,17 @@
     "groupsFilterTooltip": "Taispeáin comhráite grúpa amháin",
     "activitiesFilterTooltip": "Taispeáin gníomhaíochtaí amháin",
     "noGroupChatsYet": "Níl tú in aon chomhráite grúpa fós.",
-    "noActivitiesYet": "Níl tú in aon ghníomhaíochtaí fós."
+    "noActivitiesYet": "Níl tú in aon ghníomhaíochtaí fós.",
+    "unblock": "Díghlasáil",
+    "orchestratorFeedbackTooltip": "Bratach an t-ábhar seo",
+    "orchestratorFeedbackTitle": "Cad atá mícheart anseo?",
+    "orchestratorFeedbackPartSuggestion": "Na moltaí",
+    "orchestratorFeedbackPartGoals": "Na duaiseanna spriocanna",
+    "orchestratorFeedbackCommentHint": "Abair cad atá mícheart leis",
+    "orchestratorFeedbackPickAward": "Cén réalta?",
+    "orchestratorFeedbackPickAwardRequired": "Roghnaigh an réalta atá tú ag ceistiú",
+    "orchestratorFeedbackNoAwards": "Níor bronnadh aon réaltaí sa seal seo, mar sin níl aon rud le ceistiú anseo.",
+    "orchestratorFeedbackCommentRequired": "Cuir trácht leis ionas go mbeidh a fhios againn cad atá le socrú",
+    "orchestratorFeedbackSubmit": "Seol",
+    "orchestratorFeedbackThanks": "Bratach. Go raibh maith agat!"
 }

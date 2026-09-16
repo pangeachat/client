@@ -12,7 +12,7 @@ import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
 /// These assert the asset, not the widget tree: a [RiveWidget] never settles
 /// under `flutter test`, so pumping one hangs until the suite times out.
 /// Rendering the artboard straight to a canvas exercises the same runtime.
-const _assetPath = 'assets/pangea/bot_faces/pangea_bot.riv';
+const _assetPath = 'assets/pangea/bot_faces/pangea_bot_databound.riv';
 const _stateMachineName = 'BotIconStateMachine';
 const _viewModelName = 'BotIconViewModel';
 

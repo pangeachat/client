@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-09-14 12:45:35.791725",
+    "@@last_modified": "2026-09-16 10:14:21.512769",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2328,5 +2328,17 @@
     "groupsFilterTooltip": "Ratidza hurukuro dzemapoka chete",
     "activitiesFilterTooltip": "Ratidza zviitiko chete",
     "noGroupChatsYet": "Hausati uri mune chero hurukuro dzeboka.",
-    "noActivitiesYet": "Hausati uri mune chero zviitiko."
+    "noActivitiesYet": "Hausati uri mune chero zviitiko.",
+    "unblock": "Vhura",
+    "orchestratorFeedbackTooltip": "Maka zvirimo izvi",
+    "orchestratorFeedbackTitle": "Chii chisina kururama pano?",
+    "orchestratorFeedbackPartSuggestion": "Mazano",
+    "orchestratorFeedbackPartGoals": "Mibairo yezvinangwa",
+    "orchestratorFeedbackCommentHint": "Taura chii chisina kururama nazvo",
+    "orchestratorFeedbackPickAward": "Nyenyedzi ipi?",
+    "orchestratorFeedbackPickAwardRequired": "Sarudza nyenyedzi yauri kubvunza",
+    "orchestratorFeedbackNoAwards": "Kutendeuka uku hakuna kupa nyenyedzi, saka hapana chekubvunza pano.",
+    "orchestratorFeedbackCommentRequired": "Wedzera chirevo kuti tizive chekugadzirisa",
+    "orchestratorFeedbackSubmit": "Tumira",
+    "orchestratorFeedbackThanks": "Yamaka. Ndatenda!"
 }

@@ -11,6 +11,7 @@ import 'package:matrix/matrix.dart';
 import 'package:provider/provider.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/content_creator_chip.dart';
 import 'package:fluffychat/pangea/common/widgets/user_profile_builder.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -166,6 +167,37 @@ void main() {
       reason: "a person's activity must never be credited to Pangea",
     );
     expect(find.byType(SvgPicture), findsNothing);
+  });
+
+  testWidgets('an empty profile is reported, not silently degraded', (
+    tester,
+  ) async {
+    // `Client.getProfileFromUserId` never rejects: it swallows its own fetch
+    // error and returns a Profile carrying the user id and two nulls. So a
+    // failed lookup and a blank account are the SAME value here, every caller
+    // renders the same fallback for both, and a teacher's name silently
+    // becomes a raw MXID on screen with nothing recording it (reported from
+    // Android QA on #8819). The empty profile is therefore what has to be
+    // reported — it is the only signal available.
+    ErrorHandler.resetReportedOnceKeysForTest();
+    await pumpChip(tester, ownerId: namelessOwner);
+
+    expect(
+      ErrorHandler.reportedOnceKeysForTest,
+      contains('user-profile-empty:$namelessOwner'),
+    );
+  });
+
+  testWidgets('a resolved profile reports nothing', (tester) async {
+    ErrorHandler.resetReportedOnceKeysForTest();
+    await pumpChip(tester, ownerId: namedOwner);
+
+    expect(
+      ErrorHandler.reportedOnceKeysForTest.where(
+        (k) => k.startsWith('user-profile-empty:'),
+      ),
+      isEmpty,
+    );
   });
 
   testWidgets('an owner with no display name shows the stored MXID whole', (

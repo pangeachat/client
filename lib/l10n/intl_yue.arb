@@ -1263,7 +1263,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-09-14 12:45:38.349777",
+    "@@last_modified": "2026-09-16 10:14:24.365832",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10881,5 +10881,17 @@
     "groupsFilterTooltip": "只顯示群組聊天",
     "activitiesFilterTooltip": "只顯示活動",
     "noGroupChatsYet": "你仲未加入任何群組聊天。",
-    "noActivitiesYet": "你仲未參與任何活動。"
+    "noActivitiesYet": "你仲未參與任何活動。",
+    "unblock": "解除封鎖",
+    "orchestratorFeedbackTooltip": "舉報此內容",
+    "orchestratorFeedbackTitle": "這裡有什麼問題？",
+    "orchestratorFeedbackPartSuggestion": "建議",
+    "orchestratorFeedbackPartGoals": "目標獎勵",
+    "orchestratorFeedbackCommentHint": "說明有什麼問題",
+    "orchestratorFeedbackPickAward": "哪顆星？",
+    "orchestratorFeedbackPickAwardRequired": "請選擇您有疑問的星級",
+    "orchestratorFeedbackNoAwards": "這回合沒有頒發星級，所以這裡沒有什麼可質疑的。",
+    "orchestratorFeedbackCommentRequired": "請添加評論，以便我們知道要修復什麼",
+    "orchestratorFeedbackSubmit": "發送",
+    "orchestratorFeedbackThanks": "已舉報。謝謝！"
 }

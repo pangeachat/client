@@ -109,8 +109,8 @@ class LoginOptionsViewState extends State<LoginOptionsView> {
                   child: ElevatedButton(
                     onPressed: () => context.go('/home/login/email'),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: theme.colorScheme.primaryContainer,
-                      foregroundColor: theme.colorScheme.onPrimaryContainer,
+                      backgroundColor: theme.colorScheme.primary,
+                      foregroundColor: theme.colorScheme.onPrimary,
                     ),
                     child: Row(
                       spacing: 8.0,
@@ -119,9 +119,7 @@ class LoginOptionsViewState extends State<LoginOptionsView> {
                         ExcludeSemantics(
                           child: PangeaLogoSvg(
                             width: 20,
-                            forceColor: Theme.of(
-                              context,
-                            ).colorScheme.onPrimaryContainer,
+                            forceColor: Theme.of(context).colorScheme.onPrimary,
                           ),
                         ),
                         Text(L10n.of(context).email),

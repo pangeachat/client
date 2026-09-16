@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-09-14 12:45:28.420600",
+    "@@last_modified": "2026-09-16 10:14:14.741347",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2328,5 +2328,17 @@
     "groupsFilterTooltip": "Monstra tantum colloquia gregum",
     "activitiesFilterTooltip": "Monstra tantum actiones",
     "noGroupChatsYet": "Nondum in ullis colloquiis gregum es.",
-    "noActivitiesYet": "Nondum in ullis actionibus es."
+    "noActivitiesYet": "Nondum in ullis actionibus es.",
+    "unblock": "Reserare",
+    "orchestratorFeedbackTooltip": "Hanc rem notare",
+    "orchestratorFeedbackTitle": "Quid hic peccatur?",
+    "orchestratorFeedbackPartSuggestion": "Suggestiones",
+    "orchestratorFeedbackPartGoals": "Praemia proposita",
+    "orchestratorFeedbackCommentHint": "Dic quid peccetur",
+    "orchestratorFeedbackPickAward": "Quae stella?",
+    "orchestratorFeedbackPickAwardRequired": "Elige stellam quam quaeris",
+    "orchestratorFeedbackNoAwards": "Hoc tempore nullae stellae datae sunt, ergo nihil hic quaerendum est.",
+    "orchestratorFeedbackCommentRequired": "Adde commentarium ut sciamus quid corrigendum sit",
+    "orchestratorFeedbackSubmit": "Mitte",
+    "orchestratorFeedbackThanks": "Notatum. Gratias!"
 }

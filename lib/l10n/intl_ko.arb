@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-14 12:45:27.975223",
+    "@@last_modified": "2026-09-16 10:14:14.049461",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10117,5 +10117,17 @@
     "groupsFilterTooltip": "그룹 채팅만 표시",
     "activitiesFilterTooltip": "활동만 표시",
     "noGroupChatsYet": "아직 참여 중인 그룹 채팅이 없습니다.",
-    "noActivitiesYet": "아직 참여 중인 활동이 없습니다."
+    "noActivitiesYet": "아직 참여 중인 활동이 없습니다.",
+    "unblock": "차단 해제",
+    "orchestratorFeedbackTooltip": "이 콘텐츠 신고",
+    "orchestratorFeedbackTitle": "무엇이 잘못되었나요?",
+    "orchestratorFeedbackPartSuggestion": "제안",
+    "orchestratorFeedbackPartGoals": "목표 달성 보상",
+    "orchestratorFeedbackCommentHint": "무엇이 잘못되었는지 알려주세요",
+    "orchestratorFeedbackPickAward": "어떤 별인가요?",
+    "orchestratorFeedbackPickAwardRequired": "문제가 있는 별을 선택하세요",
+    "orchestratorFeedbackNoAwards": "이번 턴에는 별 보상이 없으므로, 문제 삼을 것이 없습니다.",
+    "orchestratorFeedbackCommentRequired": "무엇을 수정해야 할지 알 수 있도록 의견을 추가해주세요",
+    "orchestratorFeedbackSubmit": "보내기",
+    "orchestratorFeedbackThanks": "신고되었습니다. 감사합니다!"
 }

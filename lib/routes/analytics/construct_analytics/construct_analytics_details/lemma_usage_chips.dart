@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:intl/intl.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/analytics/construct_use_model.dart';
 import 'package:fluffychat/features/analytics/construct_use_type_enum.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
@@ -98,31 +98,25 @@ class LemmaUsageChips extends StatelessWidget {
     final theme = Theme.of(context);
     final l10n = L10n.of(context);
 
-    final Color textColor = (theme.brightness != Brightness.light
-        ? construct.lemmaCategory.color(context)
-        : construct.lemmaCategory.darkColor(context));
+    final Color textColor = construct.lemmaCategory.color(context);
 
-    // Greys and the heard colour flip with the theme so the chips keep
-    // contrast against both card grounds.
-    final Color neutralColor = theme.brightness == Brightness.light
-        ? Colors.grey[600]!
-        : Colors.grey[400]!;
-    final Color heardColor = theme.brightness == Brightness.light
-        ? AppConfig.primaryColorDark
-        : AppConfig.primaryColorLight;
+    // The neutral chip takes the muted ink, which flips with the theme so
+    // the chips keep contrast against both card grounds.
+    final Color neutralColor = theme.colorScheme.onSurfaceVariant;
+    final Color heardColor = theme.colorScheme.primary;
 
     final List<Widget> chips = [
       if (counts.positive > 0)
         _UsageChip(
           count: counts.positive,
-          color: AppConfig.success,
+          color: theme.pangea.success,
           icon: Icons.check,
           label: l10n.usedCorrectly(counts.positive),
         ),
       if (counts.negative > 0)
         _UsageChip(
           count: counts.negative,
-          color: Colors.red,
+          color: theme.colorScheme.error,
           icon: Icons.close,
           label: l10n.usedIncorrectly(counts.negative),
         ),

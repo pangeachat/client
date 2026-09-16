@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/routes/world/world_map_pinged_badge.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 
@@ -47,13 +46,23 @@ void main() {
     final decoration = await pumpBadge(tester);
 
     expect(decoration.shape, BoxShape.circle);
-    expect(decoration.color, AppConfig.green);
+    expect(
+      decoration.color,
+      ActivityPinState.joinable.bodyColor(
+        tester.element(find.byType(WorldMapPingedBadge)),
+      ),
+    );
     expect(decoration.border!.top.color, Colors.white);
   });
 
   testWidgets('the fill tracks the joinable pin it marks', (tester) async {
     final decoration = await pumpBadge(tester);
 
-    expect(decoration.color, ActivityPinState.joinable.color);
+    expect(
+      decoration.color,
+      ActivityPinState.joinable.bodyColor(
+        tester.element(find.byType(WorldMapPingedBadge)),
+      ),
+    );
   });
 }

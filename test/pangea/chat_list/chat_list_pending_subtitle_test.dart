@@ -4,11 +4,11 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/activity_participant_row.dart';
 import 'package:fluffychat/routes/chat_list/chat_list_item_subtitle.dart';
+import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/widgets/activity_star_row.dart';
 import '../activity_session_fixtures.dart';
 import '../get_test_client.dart';
@@ -64,7 +64,12 @@ void main() {
         find.byType(ActivityParticipantRow),
       );
       expect(row.avatarSize, 24);
-      expect(row.accent, AppConfig.primaryColor);
+      expect(
+        row.accent,
+        ActivityPinState.ongoingPending.bodyColor(
+          tester.element(find.byType(ActivityParticipantRow)),
+        ),
+      );
       expect(row.participants, isEmpty);
       expect(row.openSlots, 2);
     },

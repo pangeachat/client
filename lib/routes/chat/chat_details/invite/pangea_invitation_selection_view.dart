@@ -5,6 +5,7 @@ import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/join_codes/share_room_button.dart';
 import 'package:fluffychat/features/user/widgets/user_filter_chip_row.dart';
@@ -152,15 +153,15 @@ class PangeaInvitationSelectionView extends StatelessWidget {
                                 ? ElevatedButton.icon(
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor:
-                                          theme.colorScheme.primaryContainer,
+                                          theme.colorScheme.primary,
+                                      foregroundColor:
+                                          theme.colorScheme.onPrimary,
                                       padding: const EdgeInsets.symmetric(
                                         horizontal: 20,
                                       ),
                                     ),
-                                    icon: Icon(
+                                    icon: const Icon(
                                       Icons.check_circle_outline,
-                                      color:
-                                          theme.colorScheme.onPrimaryContainer,
                                     ),
                                     label: Text(L10n.of(context).acceptAll),
                                     // Accepting a knock issues an
@@ -406,16 +407,16 @@ class _InviteContactListTile extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
               decoration: BoxDecoration(
                 color: participant!.powerLevel >= 100
-                    ? theme.colorScheme.tertiary
-                    : theme.colorScheme.tertiaryContainer,
+                    ? theme.pangea.goldFixedDim
+                    : theme.pangea.goldContainer,
                 borderRadius: BorderRadius.circular(AppConfig.borderRadius),
               ),
               child: Text(
                 permissionBatch,
                 style: theme.textTheme.labelSmall?.copyWith(
                   color: participant.powerLevel >= 100
-                      ? theme.colorScheme.onTertiary
-                      : theme.colorScheme.onTertiaryContainer,
+                      ? theme.pangea.onGoldFixed
+                      : theme.pangea.onGoldContainer,
                 ),
               ),
             )

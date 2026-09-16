@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-09-14 12:45:28.110488",
+    "@@last_modified": "2026-09-16 10:14:13.800117",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2328,5 +2328,17 @@
     "groupsFilterTooltip": "ಗುಂಪು ಚಾಟ್‌ಗಳನ್ನು ಮಾತ್ರ ತೋರಿಸಿ",
     "activitiesFilterTooltip": "ಚಟುವಟಿಕೆಗಳನ್ನು ಮಾತ್ರ ತೋರಿಸಿ",
     "noGroupChatsYet": "ನೀವು ಇನ್ನೂ ಯಾವುದೇ ಗುಂಪು ಚಾಟ್‌ಗಳಲ್ಲಿಲ್ಲ.",
-    "noActivitiesYet": "ನೀವು ಇನ್ನೂ ಯಾವುದೇ ಚಟುವಟಿಕೆಗಳಲ್ಲಿಲ್ಲ."
+    "noActivitiesYet": "ನೀವು ಇನ್ನೂ ಯಾವುದೇ ಚಟುವಟಿಕೆಗಳಲ್ಲಿಲ್ಲ.",
+    "unblock": "ಅನಿರ್ಬಂಧಿಸಿ",
+    "orchestratorFeedbackTooltip": "ಈ ವಿಷಯವನ್ನು ಫ್ಲ್ಯಾಗ್ ಮಾಡಿ",
+    "orchestratorFeedbackTitle": "ಇಲ್ಲಿ ಏನು ತಪ್ಪಾಗಿದೆ?",
+    "orchestratorFeedbackPartSuggestion": "ಸಲಹೆಗಳು",
+    "orchestratorFeedbackPartGoals": "ಗುರಿ ಪ್ರಶಸ್ತಿಗಳು",
+    "orchestratorFeedbackCommentHint": "ಅದರಲ್ಲಿ ಏನು ತಪ್ಪಾಗಿದೆ ಎಂದು ಹೇಳಿ",
+    "orchestratorFeedbackPickAward": "ಯಾವ ನಕ್ಷತ್ರ?",
+    "orchestratorFeedbackPickAwardRequired": "ನೀವು ಪ್ರಶ್ನಿಸುತ್ತಿರುವ ನಕ್ಷತ್ರವನ್ನು ಆರಿಸಿ",
+    "orchestratorFeedbackNoAwards": "ಈ ತಿರುವಿನಲ್ಲಿ ಯಾವುದೇ ನಕ್ಷತ್ರಗಳನ್ನು ನೀಡಲಾಗಿಲ್ಲ, ಆದ್ದರಿಂದ ಇಲ್ಲಿ ಪ್ರಶ್ನಿಸಲು ಏನೂ ಇಲ್ಲ.",
+    "orchestratorFeedbackCommentRequired": "ನಾವು ಏನನ್ನು ಸರಿಪಡಿಸಬೇಕು ಎಂದು ತಿಳಿಯಲು ಕಾಮೆಂಟ್ ಸೇರಿಸಿ",
+    "orchestratorFeedbackSubmit": "ಕಳುಹಿಸಿ",
+    "orchestratorFeedbackThanks": "ಫ್ಲ್ಯಾಗ್ ಮಾಡಲಾಗಿದೆ. ಧನ್ಯವಾದಗಳು!"
 }

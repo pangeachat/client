@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/features/tutorials/tutorial_copy.dart';
 import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
@@ -133,8 +134,9 @@ class TutorialTooltipWidget extends StatelessWidget {
                     borderRadius: BorderRadius.circular(AppConfig.borderRadius),
                     // Green from the first step: the bar reports progress made,
                     // and a color that only arrives at the end read as the
-                    // earlier steps not counting.
-                    color: AppConfig.success,
+                    // earlier steps not counting. The mark tone, so the fill
+                    // clears 3:1 on the card in both themes.
+                    color: theme.pangea.successGraphic,
                   ),
                 ),
               ],
@@ -165,9 +167,9 @@ class TutorialTooltipWidget extends StatelessWidget {
                     Expanded(
                       child: _TutorialChoiceButton(
                         label: choice.label,
-                        // The app's colour hierarchy: the darker filled primary
-                        // leads (the advancing choice); the decline is a fully
-                        // filled but lighter primaryContainer button.
+                        // The app's colour hierarchy: the filled primary leads
+                        // (the advancing choice); the decline is a fully filled
+                        // tonal secondaryContainer button, as in the CTA row.
                         secondary:
                             choice.outcome != TutorialChoiceOutcome.advance,
                         onPressed: () => onChoice?.call(choice.outcome),
@@ -247,9 +249,9 @@ class _TutorialChoiceButton extends StatelessWidget {
     final scheme = Theme.of(context).colorScheme;
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: secondary ? scheme.primaryContainer : scheme.primary,
+        backgroundColor: secondary ? scheme.secondaryContainer : scheme.primary,
         foregroundColor: secondary
-            ? scheme.onPrimaryContainer
+            ? scheme.onSecondaryContainer
             : scheme.onPrimary,
         padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 6.0),
         minimumSize: const Size(0, 36),

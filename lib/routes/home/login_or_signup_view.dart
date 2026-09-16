@@ -126,10 +126,8 @@ class _LoginOrSignupViewState extends State<LoginOrSignupView> {
                             ElevatedButton(
                               onPressed: () => context.go('/home/signup'),
                               style: ElevatedButton.styleFrom(
-                                backgroundColor:
-                                    theme.colorScheme.primaryContainer,
-                                foregroundColor:
-                                    theme.colorScheme.onPrimaryContainer,
+                                backgroundColor: theme.colorScheme.primary,
+                                foregroundColor: theme.colorScheme.onPrimary,
                               ),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -305,7 +303,7 @@ class _LoginCarousel extends StatelessWidget {
   }
 }
 
-/// A slide headline punched out of the backdrop: a fill in the darkest brand
+/// A slide headline punched out of the backdrop: a fill in the primary brand
 /// tone over a stroke in the surface colour, so it stays legible over the map
 /// in light mode and dark mode alike.
 class _SlideHeadline extends StatelessWidget {
@@ -345,7 +343,7 @@ class _SlideHeadline extends StatelessWidget {
           textAlign: TextAlign.center,
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
-          style: _style.copyWith(color: colorScheme.onPrimaryContainer),
+          style: _style.copyWith(color: colorScheme.primary),
         ),
       ],
     );

@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-09-14 12:45:34.281470",
+    "@@last_modified": "2026-09-16 10:14:17.921062",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2328,5 +2328,17 @@
     "groupsFilterTooltip": "Uri biss chats tal-grupp",
     "activitiesFilterTooltip": "Uri biss attivitajiet",
     "noGroupChatsYet": "Għadek m'intix f'xi chats tal-grupp.",
-    "noActivitiesYet": "Għadek m'intix f'xi attivitajiet."
+    "noActivitiesYet": "Għadek m'intix f'xi attivitajiet.",
+    "unblock": "Neħħi l-imblukkar",
+    "orchestratorFeedbackTooltip": "Immarka dan il-kontenut",
+    "orchestratorFeedbackTitle": "X'hemm ħażin hawn?",
+    "orchestratorFeedbackPartSuggestion": "Is-suġġerimenti",
+    "orchestratorFeedbackPartGoals": "Il-premjijiet tal-miri",
+    "orchestratorFeedbackCommentHint": "Għid x'hemm ħażin fih",
+    "orchestratorFeedbackPickAward": "Liema stilla?",
+    "orchestratorFeedbackPickAwardRequired": "Agħżel l-istilla li qed tiddubita",
+    "orchestratorFeedbackNoAwards": "Din id-dawra ma tat l-ebda stilla, allura m'hemm xejn x'tiddubita hawn.",
+    "orchestratorFeedbackCommentRequired": "Żid kumment biex inkunu nafu x'għandna nirranġaw",
+    "orchestratorFeedbackSubmit": "Ibgħat",
+    "orchestratorFeedbackThanks": "Immarkat. Grazzi!"
 }

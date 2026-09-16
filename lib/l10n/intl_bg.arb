@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-09-14 12:45:20.954320",
+    "@@last_modified": "2026-09-16 10:14:06.083688",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2328,5 +2328,17 @@
     "groupsFilterTooltip": "Показване само на групови чатове",
     "activitiesFilterTooltip": "Показване само на дейности",
     "noGroupChatsYet": "Все още не сте в нито един групов чат.",
-    "noActivitiesYet": "Все още не сте в никакви дейности."
+    "noActivitiesYet": "Все още не сте в никакви дейности.",
+    "unblock": "Отблокиране",
+    "orchestratorFeedbackTooltip": "Докладвай това съдържание",
+    "orchestratorFeedbackTitle": "Какво не е наред тук?",
+    "orchestratorFeedbackPartSuggestion": "Предложенията",
+    "orchestratorFeedbackPartGoals": "Наградите за цел",
+    "orchestratorFeedbackCommentHint": "Кажете какво не е наред",
+    "orchestratorFeedbackPickAward": "Коя звезда?",
+    "orchestratorFeedbackPickAwardRequired": "Изберете звездата, която оспорвате",
+    "orchestratorFeedbackNoAwards": "Този ход не донесе звезди, така че няма какво да се оспорва тук.",
+    "orchestratorFeedbackCommentRequired": "Добавете коментар, за да знаем какво да поправим",
+    "orchestratorFeedbackSubmit": "Изпрати",
+    "orchestratorFeedbackThanks": "Докладвано. Благодарим!"
 }

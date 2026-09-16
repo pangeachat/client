@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-14 12:45:30.494780",
+    "@@last_modified": "2026-09-16 10:14:17.665921",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9981,5 +9981,17 @@
     "groupsFilterTooltip": "Vis kun gruppechatter",
     "activitiesFilterTooltip": "Vis kun aktiviteter",
     "noGroupChatsYet": "Du er ikke med i noen gruppechatter ennå.",
-    "noActivitiesYet": "Du er ikke med i noen aktiviteter ennå."
+    "noActivitiesYet": "Du er ikke med i noen aktiviteter ennå.",
+    "unblock": "Opphev blokkering",
+    "orchestratorFeedbackTooltip": "Rapporter dette innholdet",
+    "orchestratorFeedbackTitle": "Hva er feil her?",
+    "orchestratorFeedbackPartSuggestion": "Forslagene",
+    "orchestratorFeedbackPartGoals": "Målbelønningene",
+    "orchestratorFeedbackCommentHint": "Si hva som er feil med det",
+    "orchestratorFeedbackPickAward": "Hvilken stjerne?",
+    "orchestratorFeedbackPickAwardRequired": "Velg stjernen du stiller spørsmål ved",
+    "orchestratorFeedbackNoAwards": "Denne runden ga ingen stjerner, så det er ingenting å stille spørsmål ved her.",
+    "orchestratorFeedbackCommentRequired": "Legg til en kommentar slik at vi vet hva vi skal fikse",
+    "orchestratorFeedbackSubmit": "Send",
+    "orchestratorFeedbackThanks": "Rapportert. Takk!"
 }

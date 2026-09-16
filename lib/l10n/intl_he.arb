@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-14 12:45:25.145931",
+    "@@last_modified": "2026-09-16 10:14:10.894348",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10838,5 +10838,17 @@
     "groupsFilterTooltip": "הצג רק צ'אטים קבוצתיים",
     "activitiesFilterTooltip": "הצג רק פעילויות",
     "noGroupChatsYet": "עדיין אינך חבר/ה באף צ'אט קבוצתי.",
-    "noActivitiesYet": "עדיין אינך חבר/ה באף פעילות."
+    "noActivitiesYet": "עדיין אינך חבר/ה באף פעילות.",
+    "unblock": "בטל חסימה",
+    "orchestratorFeedbackTooltip": "סמן תוכן זה",
+    "orchestratorFeedbackTitle": "מה לא בסדר כאן?",
+    "orchestratorFeedbackPartSuggestion": "ההצעות",
+    "orchestratorFeedbackPartGoals": "פרסי היעדים",
+    "orchestratorFeedbackCommentHint": "ציין מה לא בסדר בזה",
+    "orchestratorFeedbackPickAward": "איזה כוכב?",
+    "orchestratorFeedbackPickAwardRequired": "בחר את הכוכב שאתה מטיל בו ספק",
+    "orchestratorFeedbackNoAwards": "בתור זה לא הוענקו כוכבים, כך שאין מה להטיל ספק כאן.",
+    "orchestratorFeedbackCommentRequired": "הוסף תגובה כדי שנדע מה לתקן",
+    "orchestratorFeedbackSubmit": "שלח",
+    "orchestratorFeedbackThanks": "סומן. תודה!"
 }

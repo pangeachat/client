@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-09-14 12:45:23.328612",
+    "@@last_modified": "2026-09-16 10:14:08.802982",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9921,5 +9921,17 @@
     "groupsFilterTooltip": "Näita ainult grupivestlusi",
     "activitiesFilterTooltip": "Näita ainult tegevusi",
     "noGroupChatsYet": "Te pole veel üheski grupivestluses.",
-    "noActivitiesYet": "Te pole veel üheski tegevuses."
+    "noActivitiesYet": "Te pole veel üheski tegevuses.",
+    "unblock": "Deblokeeri",
+    "orchestratorFeedbackTooltip": "Märgi see sisu",
+    "orchestratorFeedbackTitle": "Mis siin valesti on?",
+    "orchestratorFeedbackPartSuggestion": "Soovitused",
+    "orchestratorFeedbackPartGoals": "Eesmärgi auhinnad",
+    "orchestratorFeedbackCommentHint": "Ütle, mis sellega valesti on",
+    "orchestratorFeedbackPickAward": "Milline täht?",
+    "orchestratorFeedbackPickAwardRequired": "Vali täht, mida kahtluse alla sead",
+    "orchestratorFeedbackNoAwards": "See voor ei andnud ühtegi tähte, seega pole siin midagi kahtluse alla seada.",
+    "orchestratorFeedbackCommentRequired": "Lisa kommentaar, et teaksime, mida parandada",
+    "orchestratorFeedbackSubmit": "Saada",
+    "orchestratorFeedbackThanks": "Märgitud. Aitäh!"
 }

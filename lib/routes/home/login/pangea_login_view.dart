@@ -133,8 +133,8 @@ class PasswordLoginView extends StatelessWidget {
                         ? controller.login
                         : null,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: theme.colorScheme.primaryContainer,
-                      foregroundColor: theme.colorScheme.onPrimaryContainer,
+                      backgroundColor: theme.colorScheme.primary,
+                      foregroundColor: theme.colorScheme.onPrimary,
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,

@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-09-14 12:45:22.371582",
+    "@@last_modified": "2026-09-16 10:14:07.679671",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10418,5 +10418,17 @@
     "groupsFilterTooltip": "Zobrazit pouze skupinové chaty",
     "activitiesFilterTooltip": "Zobrazit pouze aktivity",
     "noGroupChatsYet": "Zatím nejste v žádných skupinových chatech.",
-    "noActivitiesYet": "Zatím nejste v žádných aktivitách."
+    "noActivitiesYet": "Zatím nejste v žádných aktivitách.",
+    "unblock": "Odblokovat",
+    "orchestratorFeedbackTooltip": "Nahlásit tento obsah",
+    "orchestratorFeedbackTitle": "Co je zde špatně?",
+    "orchestratorFeedbackPartSuggestion": "Návrhy",
+    "orchestratorFeedbackPartGoals": "Odměny za cíle",
+    "orchestratorFeedbackCommentHint": "Napište, co je s tím špatně",
+    "orchestratorFeedbackPickAward": "Která hvězda?",
+    "orchestratorFeedbackPickAwardRequired": "Vyberte hvězdu, kterou zpochybňujete",
+    "orchestratorFeedbackNoAwards": "V tomto tahu nebyly uděleny žádné hvězdy, takže zde není co zpochybňovat.",
+    "orchestratorFeedbackCommentRequired": "Přidejte komentář, abychom věděli, co opravit",
+    "orchestratorFeedbackSubmit": "Odeslat",
+    "orchestratorFeedbackThanks": "Nahlášeno. Děkujeme!"
 }

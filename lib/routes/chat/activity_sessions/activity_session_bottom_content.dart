@@ -224,8 +224,9 @@ class _ActivitySessionDetailsTile extends StatelessWidget {
                                         borderRadius: BorderRadius.circular(
                                           AppConfig.borderRadius,
                                         ),
-                                        color:
-                                            theme.colorScheme.primaryContainer,
+                                        color: theme
+                                            .colorScheme
+                                            .secondaryContainer,
                                       ),
                                       child: Row(
                                         spacing: 4.0,
@@ -253,8 +254,9 @@ class _ActivitySessionDetailsTile extends StatelessWidget {
                                         borderRadius: BorderRadius.circular(
                                           AppConfig.borderRadius,
                                         ),
-                                        color:
-                                            theme.colorScheme.primaryContainer,
+                                        color: theme
+                                            .colorScheme
+                                            .secondaryContainer,
                                       ),
                                       child: Row(
                                         spacing: 4.0,
@@ -282,8 +284,9 @@ class _ActivitySessionDetailsTile extends StatelessWidget {
                                         borderRadius: BorderRadius.circular(
                                           AppConfig.borderRadius,
                                         ),
-                                        color:
-                                            theme.colorScheme.primaryContainer,
+                                        color: theme
+                                            .colorScheme
+                                            .secondaryContainer,
                                       ),
                                       child: Row(
                                         spacing: 4.0,

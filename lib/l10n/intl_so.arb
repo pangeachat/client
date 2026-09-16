@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-09-14 12:45:35.603227",
+    "@@last_modified": "2026-09-16 10:14:21.603470",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2328,5 +2328,17 @@
     "groupsFilterTooltip": "Tus kaliya sheekaysiyada kooxda",
     "activitiesFilterTooltip": "Tus kaliya waxqabadyada",
     "noGroupChatsYet": "Weli kuma jirtid wax sheekaysi kooxeed ah.",
-    "noActivitiesYet": "Weli kuma jirtid wax waxqabadyo ah."
+    "noActivitiesYet": "Weli kuma jirtid wax waxqabadyo ah.",
+    "unblock": "Ka fur",
+    "orchestratorFeedbackTooltip": "Calaamadee waxyaabahan",
+    "orchestratorFeedbackTitle": "Maxaa halkan ka qaldan?",
+    "orchestratorFeedbackPartSuggestion": "Talooyinka",
+    "orchestratorFeedbackPartGoals": "Abaalmarinnada yoolka",
+    "orchestratorFeedbackCommentHint": "Sheeg waxa ka qaldan",
+    "orchestratorFeedbackPickAward": "Xiddigee?",
+    "orchestratorFeedbackPickAwardRequired": "Dooro xiddigta aad su'aashayso",
+    "orchestratorFeedbackNoAwards": "Wareeggan ma jirin xiddigo la bixiyay, sidaa darteed ma jirto wax halkan laga su'aalo.",
+    "orchestratorFeedbackCommentRequired": "Ku dar faallo si aan u ogaano waxa la hagaajinayo",
+    "orchestratorFeedbackSubmit": "Dir",
+    "orchestratorFeedbackThanks": "La calaamadeeyay. Waad mahadsan tahay!"
 }

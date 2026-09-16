@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-09-14 12:45:30.701333",
+    "@@last_modified": "2026-09-16 10:14:16.900014",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2328,5 +2328,17 @@
     "groupsFilterTooltip": "Tunjukkan hanya sembang kumpulan",
     "activitiesFilterTooltip": "Tunjukkan hanya aktiviti",
     "noGroupChatsYet": "Anda belum menyertai mana-mana sembang kumpulan.",
-    "noActivitiesYet": "Anda belum menyertai mana-mana aktiviti."
+    "noActivitiesYet": "Anda belum menyertai mana-mana aktiviti.",
+    "unblock": "Nyahsekat",
+    "orchestratorFeedbackTooltip": "Tandakan kandungan ini",
+    "orchestratorFeedbackTitle": "Apa yang salah di sini?",
+    "orchestratorFeedbackPartSuggestion": "Cadangan",
+    "orchestratorFeedbackPartGoals": "Anugerah matlamat",
+    "orchestratorFeedbackCommentHint": "Nyatakan apa yang salah dengannya",
+    "orchestratorFeedbackPickAward": "Bintang yang mana?",
+    "orchestratorFeedbackPickAwardRequired": "Pilih bintang yang anda persoalkan",
+    "orchestratorFeedbackNoAwards": "Giliran ini tidak menganugerahkan bintang, jadi tiada apa yang perlu dipersoalkan di sini.",
+    "orchestratorFeedbackCommentRequired": "Tambah komen supaya kami tahu apa yang perlu diperbaiki",
+    "orchestratorFeedbackSubmit": "Hantar",
+    "orchestratorFeedbackThanks": "Ditandakan. Terima kasih!"
 }

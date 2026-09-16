@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-09-14 12:45:28.808865",
+    "@@last_modified": "2026-09-16 10:14:14.731958",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2328,5 +2328,17 @@
     "groupsFilterTooltip": "Sho ɔnli grup chat dɛn",
     "activitiesFilterTooltip": "Sho ɔnli aktiviti dɛn",
     "noGroupChatsYet": "Yu nɔ de insay ɛni grup chat yet.",
-    "noActivitiesYet": "Yu nɔ de insay ɛni aktiviti yet."
+    "noActivitiesYet": "Yu nɔ de insay ɛni aktiviti yet.",
+    "unblock": "Ful-am",
+    "orchestratorFeedbackTooltip": "Flag dis tin",
+    "orchestratorFeedbackTitle": "Wetin wrong ya?",
+    "orchestratorFeedbackPartSuggestion": "Di advays dɛn",
+    "orchestratorFeedbackPartGoals": "Di star dɛn we yu gɛt",
+    "orchestratorFeedbackCommentHint": "Tɛl wi wetin wrong wit am",
+    "orchestratorFeedbackPickAward": "Us star?",
+    "orchestratorFeedbackPickAwardRequired": "Pik di star we yu de kwɛstion",
+    "orchestratorFeedbackNoAwards": "Dis tɔn nɔ gi yu ɛni star, so nɔtin nɔ de fɔ kwɛstion ya.",
+    "orchestratorFeedbackCommentRequired": "Put kɔmɛnt so wi go no wetin fɔ fiks",
+    "orchestratorFeedbackSubmit": "Sɛn",
+    "orchestratorFeedbackThanks": "Dɛn dɔn flag am. Tɛnki!"
 }

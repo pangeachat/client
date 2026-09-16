@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-09-14 12:45:20.835227",
+    "@@last_modified": "2026-09-16 10:14:06.407242",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2328,5 +2328,17 @@
     "groupsFilterTooltip": "Yalnız qrup çatlarını göstər",
     "activitiesFilterTooltip": "Yalnız fəaliyyətləri göstər",
     "noGroupChatsYet": "Hələ heç bir qrup çatında deyilsiniz.",
-    "noActivitiesYet": "Hələ heç bir fəaliyyətdə deyilsiniz."
+    "noActivitiesYet": "Hələ heç bir fəaliyyətdə deyilsiniz.",
+    "unblock": "Blokdan çıxar",
+    "orchestratorFeedbackTooltip": "Bu məzmunu işarələ",
+    "orchestratorFeedbackTitle": "Burada nə səhvdir?",
+    "orchestratorFeedbackPartSuggestion": "Təkliflər",
+    "orchestratorFeedbackPartGoals": "Məqsəd mükafatları",
+    "orchestratorFeedbackCommentHint": "Nəyin səhv olduğunu deyin",
+    "orchestratorFeedbackPickAward": "Hansı ulduz?",
+    "orchestratorFeedbackPickAwardRequired": "Şübhə etdiyiniz ulduzu seçin",
+    "orchestratorFeedbackNoAwards": "Bu növbədə heç bir ulduz verilmədi, buna görə burada sorğu-sual ediləcək heç nə yoxdur.",
+    "orchestratorFeedbackCommentRequired": "Nəyi düzəltməli olduğumuzu bilmək üçün şərh əlavə edin",
+    "orchestratorFeedbackSubmit": "Göndər",
+    "orchestratorFeedbackThanks": "İşarələndi. Təşəkkürlər!"
 }

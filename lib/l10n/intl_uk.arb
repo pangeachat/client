@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-09-14 12:45:37.645154",
+    "@@last_modified": "2026-09-16 10:14:23.866861",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9924,5 +9924,17 @@
     "groupsFilterTooltip": "Показати лише групові чати",
     "activitiesFilterTooltip": "Показати лише активності",
     "noGroupChatsYet": "Ви ще не берете участь у жодних групових чатах.",
-    "noActivitiesYet": "Ви ще не берете участь у жодних активностях."
+    "noActivitiesYet": "Ви ще не берете участь у жодних активностях.",
+    "unblock": "Розблокувати",
+    "orchestratorFeedbackTooltip": "Повідомити про проблему",
+    "orchestratorFeedbackTitle": "Що тут не так?",
+    "orchestratorFeedbackPartSuggestion": "Пропозиції",
+    "orchestratorFeedbackPartGoals": "Нагороди за цілі",
+    "orchestratorFeedbackCommentHint": "Опишіть проблему",
+    "orchestratorFeedbackPickAward": "Яка зірка?",
+    "orchestratorFeedbackPickAwardRequired": "Виберіть зірку, щодо якої у вас є питання",
+    "orchestratorFeedbackNoAwards": "Цей хід не приніс зірок, тому тут немає про що повідомляти.",
+    "orchestratorFeedbackCommentRequired": "Додайте коментар, щоб ми знали, що виправити",
+    "orchestratorFeedbackSubmit": "Надіслати",
+    "orchestratorFeedbackThanks": "Повідомлено. Дякуємо!"
 }

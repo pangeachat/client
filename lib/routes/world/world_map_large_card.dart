@@ -116,8 +116,8 @@ class _WorldMapLargeCardAnimatedState extends State<WorldMapLargeCardAnimated>
 /// (`inProgress`) never renders here — it is a gold-star dot, excluded by the
 /// ranking/placement gate before this widget is ever built.
 ///
-/// - **Available** (border maps the mid pin's body colour — light-purple in
-///   light mode, the darker `AppConfig.primaryColorDark` purple in dark;
+/// - **Available** (border maps the mid pin's body colour — the theme's
+///   `secondaryContainer`, pale in light mode and deep in dark;
 ///   dark-purple title) — title, then a row with the L2 language flag, CEFR
 ///   level, and designed party size (a people icon + the role count). No session
 ///   exists yet, so no participant avatars, rating, or stars. Dimmed to 50% when
@@ -248,10 +248,9 @@ class WorldMapLargeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     // The outer frame (border + caret) maps the mid pin's BODY colour, so the
     // card and its pin read as one state. That is theme-aware: for `available`
-    // in dark mode it is the darker `AppConfig.primaryColorDark` purple
-    // (matching the dark-mode available pin, #8174), not the light-mode
-    // light-purple fill. `bodyColor` == the state hue for every other state and
-    // for light mode, so only available-in-dark changes here.
+    // it is the theme's `secondaryContainer`, deep in dark mode (matching the
+    // dark-mode available pin, #8174) and pale in light. `bodyColor` == the
+    // state hue for every other state.
     final baseAccent = state.bodyColor(context);
 
     // Selected (focused) treatment: NO outline. The state-accent frame darkens

@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-09-14 12:45:21.517160",
+    "@@last_modified": "2026-09-16 10:14:06.484601",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2328,5 +2328,17 @@
     "groupsFilterTooltip": "কেৱল গোট চাটসমূহ দেখুৱাওক",
     "activitiesFilterTooltip": "কেৱল কাৰ্য্যকলাপসমূহ দেখুৱাওক",
     "noGroupChatsYet": "আপুনি এতিয়ালৈকে কোনো গোট চাটত নাই।",
-    "noActivitiesYet": "আপুনি এতিয়ালৈকে কোনো কাৰ্য্যকলাপত নাই।"
+    "noActivitiesYet": "আপুনি এতিয়ালৈকে কোনো কাৰ্য্যকলাপত নাই।",
+    "unblock": "আনব্লক কৰক",
+    "orchestratorFeedbackTooltip": "এই বিষয়বস্তুটো ফ্লেগ কৰক",
+    "orchestratorFeedbackTitle": "ইয়াত কি ভুল হৈছে?",
+    "orchestratorFeedbackPartSuggestion": "পৰামৰ্শসমূহ",
+    "orchestratorFeedbackPartGoals": "লক্ষ্যৰ পুৰস্কাৰসমূহ",
+    "orchestratorFeedbackCommentHint": "ইয়াত কি ভুল হৈছে কওক",
+    "orchestratorFeedbackPickAward": "কোনটো তৰা?",
+    "orchestratorFeedbackPickAwardRequired": "আপুনি প্ৰশ্ন কৰা তৰাটো বাছনি কৰক",
+    "orchestratorFeedbackNoAwards": "এই পালত কোনো তৰা দিয়া হোৱা নাছিল, গতিকে ইয়াত প্ৰশ্ন কৰিবলৈ একো নাই।",
+    "orchestratorFeedbackCommentRequired": "এটা মন্তব্য যোগ কৰক যাতে আমি কি ঠিক কৰিব লাগে জানিব পাৰো",
+    "orchestratorFeedbackSubmit": "প্ৰেৰণ কৰক",
+    "orchestratorFeedbackThanks": "ফ্লেগ কৰা হৈছে। ধন্যবাদ!"
 }

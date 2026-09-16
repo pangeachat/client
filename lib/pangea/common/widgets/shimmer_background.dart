@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 
 /// A single ticker driving every [ShimmerBackground] on screen.
 ///
@@ -88,11 +89,7 @@ class ShimmerBackground extends StatelessWidget {
     final borderRadius =
         this.borderRadius ?? BorderRadius.circular(AppConfig.borderRadius);
 
-    final color =
-        shimmerColor ??
-        (theme.brightness == Brightness.light
-            ? AppConfig.gold
-            : AppConfig.goldLight);
+    final color = shimmerColor ?? theme.pangea.goldFixedDim;
 
     return Stack(
       children: [

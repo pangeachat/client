@@ -75,8 +75,13 @@ class ChatListItem extends StatelessWidget {
     final directChatMatrixId = room.directChatMatrixID;
     final isDirectChat = directChatMatrixId != null;
     final hasNotifications = room.notificationCount > 0;
+    // The selected row is a raised neutral surface, not an accent fill: the
+    // same `surfaceContainerHigh` the settings list marks its active row
+    // with, and the tone the row's default `onSurface` ink is paired with.
+    // `secondaryContainer` under the fidelity scheme is a saturated tint that
+    // read as a highlight over the whole tile rather than a selection.
     final backgroundColor = activeChat
-        ? theme.colorScheme.secondaryContainer
+        ? theme.colorScheme.surfaceContainerHigh
         : null;
     final displayname = room.getLocalizedDisplayname(
       MatrixLocals(L10n.of(context)),
@@ -314,7 +319,7 @@ class ChatListItem extends StatelessWidget {
                                       .localizedTimeShort(context),
                                   style: TextStyle(
                                     fontSize: 12,
-                                    color: theme.colorScheme.outline,
+                                    color: theme.colorScheme.onSurfaceVariant,
                                   ),
                                 ),
                               ),
@@ -375,14 +380,18 @@ class ChatListItem extends StatelessWidget {
                                         Icon(
                                           Icons.message_outlined,
                                           size: 12,
-                                          color: theme.colorScheme.outline,
+                                          color: theme
+                                              .colorScheme
+                                              .onSurfaceVariant,
                                         ),
                                         const SizedBox(width: 4),
                                         Text(
                                           L10n.of(context).thread,
                                           style: TextStyle(
                                             fontSize: 12,
-                                            color: theme.colorScheme.outline,
+                                            color: theme
+                                                .colorScheme
+                                                .onSurfaceVariant,
                                           ),
                                         ),
                                       ],
@@ -420,7 +429,7 @@ class ChatListItem extends StatelessWidget {
                                     // Pangea#
                                     style: TextStyle(
                                       fontSize: subtitleFontSize,
-                                      color: theme.colorScheme.outline,
+                                      color: theme.colorScheme.onSurfaceVariant,
                                     ),
                                   ),
                                 )
@@ -430,7 +439,13 @@ class ChatListItem extends StatelessWidget {
                                     typingText,
                                     style: TextStyle(
                                       fontSize: subtitleFontSize,
-                                      color: theme.colorScheme.primary,
+                                      // primary is 4.3:1 on the active tile's
+                                      // fill; the fill's own ink reads there.
+                                      color: activeChat
+                                          ? theme
+                                                .colorScheme
+                                                .onSecondaryContainer
+                                          : theme.colorScheme.primary,
                                     ),
                                     maxLines: 1,
                                     softWrap: false,
@@ -509,7 +524,9 @@ class ChatListItem extends StatelessWidget {
                                         fontSize: subtitleFontSize,
                                         color: unread || room.hasNewMessages
                                             ? theme.colorScheme.onSurface
-                                            : theme.colorScheme.outline,
+                                            : theme
+                                                  .colorScheme
+                                                  .onSurfaceVariant,
                                         decoration:
                                             room.lastEvent?.redacted == true
                                             ? TextDecoration.lineThrough

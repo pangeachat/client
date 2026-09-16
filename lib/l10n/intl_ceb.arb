@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-09-14 12:45:22.344121",
+    "@@last_modified": "2026-09-16 10:14:07.685596",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2328,5 +2328,17 @@
     "groupsFilterTooltip": "Ipakita lang ang mga group chat",
     "activitiesFilterTooltip": "Ipakita lang ang mga kalihokan",
     "noGroupChatsYet": "Wala ka pa sa bisan unsang group chat.",
-    "noActivitiesYet": "Wala ka pa sa bisan unsang kalihokan."
+    "noActivitiesYet": "Wala ka pa sa bisan unsang kalihokan.",
+    "unblock": "I-unblock",
+    "orchestratorFeedbackTooltip": "I-flag kini nga content",
+    "orchestratorFeedbackTitle": "Unsay sayop dinhi?",
+    "orchestratorFeedbackPartSuggestion": "Ang mga sugyot",
+    "orchestratorFeedbackPartGoals": "Ang mga ganti sa tumong",
+    "orchestratorFeedbackCommentHint": "Isulti kung unsay sayop niini",
+    "orchestratorFeedbackPickAward": "Unsang bituon?",
+    "orchestratorFeedbackPickAwardRequired": "Pilia ang bituon nga imong gikuwestiyon",
+    "orchestratorFeedbackNoAwards": "Kini nga turno walay gihatag nga mga bituon, busa walay angay kuwestiyonon dinhi.",
+    "orchestratorFeedbackCommentRequired": "Pagdugang og komento aron mahibal-an namo kung unsa ang ayuhon",
+    "orchestratorFeedbackSubmit": "Ipadala",
+    "orchestratorFeedbackThanks": "Na-flag. Salamat!"
 }

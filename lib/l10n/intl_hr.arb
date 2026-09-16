@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-09-14 12:45:25.680993",
+    "@@last_modified": "2026-09-16 10:14:11.224095",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10360,5 +10360,17 @@
     "groupsFilterTooltip": "Prikaži samo grupne chatove",
     "activitiesFilterTooltip": "Prikaži samo aktivnosti",
     "noGroupChatsYet": "Još niste ni u jednom grupnom chatu.",
-    "noActivitiesYet": "Još niste ni u jednoj aktivnosti."
+    "noActivitiesYet": "Još niste ni u jednoj aktivnosti.",
+    "unblock": "Deblokiraj",
+    "orchestratorFeedbackTooltip": "Označi ovaj sadržaj",
+    "orchestratorFeedbackTitle": "Što je ovdje pogrešno?",
+    "orchestratorFeedbackPartSuggestion": "Prijedlozi",
+    "orchestratorFeedbackPartGoals": "Nagrade za ciljeve",
+    "orchestratorFeedbackCommentHint": "Recite što je pogrešno",
+    "orchestratorFeedbackPickAward": "Koja zvjezdica?",
+    "orchestratorFeedbackPickAwardRequired": "Odaberite zvjezdicu koju dovodite u pitanje",
+    "orchestratorFeedbackNoAwards": "Ovaj krug nije dodijelio zvjezdice, tako da ovdje nema ništa za dovoditi u pitanje.",
+    "orchestratorFeedbackCommentRequired": "Dodajte komentar kako bismo znali što popraviti",
+    "orchestratorFeedbackSubmit": "Pošalji",
+    "orchestratorFeedbackThanks": "Označeno. Hvala!"
 }

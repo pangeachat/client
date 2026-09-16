@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 
@@ -113,11 +114,13 @@ class PermissionsListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
+    // The level's hue as a wash: admin gold and moderator brand, matching the
+    // permission badges; member the success green.
     final color = permission >= 100
-        ? Colors.orangeAccent
+        ? theme.pangea.goldFixedDim
         : permission >= 50
-        ? Colors.blueAccent
-        : Colors.greenAccent;
+        ? theme.colorScheme.primary
+        : theme.pangea.successGraphic;
     return ListTile(
       title: Text(
         getLocalizedPowerLevelString(context),

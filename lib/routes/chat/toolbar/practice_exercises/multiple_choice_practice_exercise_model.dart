@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
-
-import 'package:fluffychat/config/app_config.dart';
 
 class MultipleChoicePracticeExercise {
   /// choices, including the correct answer
@@ -13,9 +9,6 @@ class MultipleChoicePracticeExercise {
     required this.choices,
     required this.answers,
   });
-
-  Color choiceColor(String value) =>
-      answers.contains(value) ? AppConfig.success : AppConfig.warning;
 
   bool isCorrect(String value) => answers.contains(value);
 

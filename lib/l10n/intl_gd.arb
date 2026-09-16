@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-09-14 12:45:24.451581",
+    "@@last_modified": "2026-09-16 10:14:10.372119",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2328,5 +2328,17 @@
     "groupsFilterTooltip": "Seall dìreach cabadaich buidhne",
     "activitiesFilterTooltip": "Seall dìreach gnìomhachdan",
     "noGroupChatsYet": "Chan eil thu ann an cabadaich buidhne sam bith fhathast.",
-    "noActivitiesYet": "Chan eil thu ann an gnìomhachd sam bith fhathast."
+    "noActivitiesYet": "Chan eil thu ann an gnìomhachd sam bith fhathast.",
+    "unblock": "Dì-bhacaich",
+    "orchestratorFeedbackTooltip": "Comharraich an susbaint seo",
+    "orchestratorFeedbackTitle": "Dè tha ceàrr an seo?",
+    "orchestratorFeedbackPartSuggestion": "Na molaidhean",
+    "orchestratorFeedbackPartGoals": "Na duaisean amasan",
+    "orchestratorFeedbackCommentHint": "Innis dè tha ceàrr leis",
+    "orchestratorFeedbackPickAward": "Dè an rionnag?",
+    "orchestratorFeedbackPickAwardRequired": "Tagh an rionnag a tha thu a' ceasnachadh",
+    "orchestratorFeedbackNoAwards": "Cha d' fhuair an tionndadh seo rionnagan, mar sin chan eil dad ri cheasnachadh an seo.",
+    "orchestratorFeedbackCommentRequired": "Cuir beachd ris gus am bi fios againn dè a nì sinn",
+    "orchestratorFeedbackSubmit": "Cuir",
+    "orchestratorFeedbackThanks": "Air a chomharrachadh. Tapadh leat!"
 }

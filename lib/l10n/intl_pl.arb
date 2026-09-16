@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-09-14 12:45:32.236917",
+    "@@last_modified": "2026-09-16 10:14:19.223420",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10009,5 +10009,17 @@
     "groupsFilterTooltip": "Pokaż tylko czaty grupowe",
     "activitiesFilterTooltip": "Pokaż tylko aktywności",
     "noGroupChatsYet": "Nie jesteś jeszcze w żadnych czatach grupowych.",
-    "noActivitiesYet": "Nie uczestniczysz jeszcze w żadnych aktywnościach."
+    "noActivitiesYet": "Nie uczestniczysz jeszcze w żadnych aktywnościach.",
+    "unblock": "Odblokuj",
+    "orchestratorFeedbackTooltip": "Zgłoś tę treść",
+    "orchestratorFeedbackTitle": "Co tu jest nie tak?",
+    "orchestratorFeedbackPartSuggestion": "Sugestie",
+    "orchestratorFeedbackPartGoals": "Nagrody za cele",
+    "orchestratorFeedbackCommentHint": "Opisz, co jest nie tak",
+    "orchestratorFeedbackPickAward": "Która gwiazdka?",
+    "orchestratorFeedbackPickAwardRequired": "Wybierz gwiazdkę, którą kwestionujesz",
+    "orchestratorFeedbackNoAwards": "Ta tura nie przyznała żadnych gwiazdek, więc nie ma tu nic do kwestionowania.",
+    "orchestratorFeedbackCommentRequired": "Dodaj komentarz, abyśmy wiedzieli, co naprawić",
+    "orchestratorFeedbackSubmit": "Wyślij",
+    "orchestratorFeedbackThanks": "Zgłoszono. Dziękujemy!"
 }

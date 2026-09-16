@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-09-14 12:45:34.927851",
+    "@@last_modified": "2026-09-16 10:14:21.542265",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2328,5 +2328,17 @@
     "groupsFilterTooltip": "Fa'aali na'o talatalanoaga fa'avaega",
     "activitiesFilterTooltip": "Fa'aali na'o gaioiga",
     "noGroupChatsYet": "E te le'i auai i ni talatalanoaga fa'avaega.",
-    "noActivitiesYet": "E te le'i auai i ni gaioiga."
+    "noActivitiesYet": "E te le'i auai i ni gaioiga.",
+    "unblock": "Tatala le poloka",
+    "orchestratorFeedbackTooltip": "Faailoga lenei anotusi",
+    "orchestratorFeedbackTitle": "O le a le mea ua sese iinei?",
+    "orchestratorFeedbackPartSuggestion": "O fautuaga",
+    "orchestratorFeedbackPartGoals": "O faailoga sini",
+    "orchestratorFeedbackCommentHint": "Taʻu mai le mea ua sese ai",
+    "orchestratorFeedbackPickAward": "O le a le fetu?",
+    "orchestratorFeedbackPickAwardRequired": "Filifili le fetu o loʻo e fesiligia",
+    "orchestratorFeedbackNoAwards": "E leai ni fetu na maua i lenei taʻamilosaga, o lea e leai se mea e fesiligia iinei.",
+    "orchestratorFeedbackCommentRequired": "Faʻaopoopo se faʻamatalaga ina ia matou iloa le mea e faʻaleleia",
+    "orchestratorFeedbackSubmit": "Auina atu",
+    "orchestratorFeedbackThanks": "Ua faailogaina. Faafetai!"
 }
