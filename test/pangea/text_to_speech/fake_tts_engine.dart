@@ -6,10 +6,22 @@ import 'package:flutter_test/flutter_test.dart';
 
 /// What the fake engine does when asked to `speak`.
 enum FakeSpeakBehavior {
-  /// A real engine on a good day: reports a start, then a completion, and the
-  /// speak future resolves with the completion — the order every platform
-  /// delivers.
+  /// A clean finish in WEB order: a start, then `speak.onComplete`, and only
+  /// then the speak future resolving. The browser plugin's `onEnd` completes
+  /// its completer first, but the reply has to unwind back out through the
+  /// plugin registrar while `speak.onComplete` reaches the app directly, so
+  /// the callback is what lands first.
   startAndComplete,
+
+  /// The same clean finish in NATIVE order: a start, then the speak future
+  /// resolving with `1`, and only then `speak.onComplete`. Both native plugins
+  /// resolve the pending speak result from inside their own completion
+  /// callback and post `speak.onComplete` immediately after — Android through
+  /// one `Handler`, iOS through one channel — so the future always wins and
+  /// the callback arrives a turn late, into an utterance that has already
+  /// settled. The resolved `1` is the only completion evidence that arrives in
+  /// time; a device utterance is not complete without it (#8493).
+  startAndCompleteNativeOrder,
 
   /// The utterance is accepted, starts, and then never ends on its own — it
   /// stays in flight until something stops it. What a word being spoken looks
@@ -105,10 +117,19 @@ class FakeTtsEngine {
   }
 
   /// Finish the in-flight utterance as a real engine would at end of speech.
-  Future<void> completeInFlight() async {
+  ///
+  /// [nativeOrder] resolves the speak future before the callback rather than
+  /// after it — see [FakeSpeakBehavior.startAndCompleteNativeOrder].
+  Future<void> completeInFlight({bool nativeOrder = false}) async {
     final c = _inFlight;
     if (c == null) return;
     _inFlight = null;
+    if (nativeOrder) {
+      if (!c.isCompleted) c.complete(1);
+      await Future<void>.delayed(Duration.zero);
+      await emit('speak.onComplete');
+      return;
+    }
     await emit('speak.onComplete');
     if (!c.isCompleted) c.complete(1);
   }
@@ -137,6 +158,9 @@ class FakeTtsEngine {
     _inFlightStarted = false;
     switch (onSpeak) {
       case FakeSpeakBehavior.startAndComplete:
+      case FakeSpeakBehavior.startAndCompleteNativeOrder:
+        final nativeOrder =
+            onSpeak == FakeSpeakBehavior.startAndCompleteNativeOrder;
         // The callbacks are dispatched asynchronously, as they are on every
         // platform, so the controller's `speak` await is already pending
         // when they land.
@@ -147,7 +171,7 @@ class FakeTtsEngine {
           await emit('speak.onStart');
           await Future<void>.delayed(Duration.zero);
           if (!identical(_inFlight, completer)) return;
-          await completeInFlight();
+          await completeInFlight(nativeOrder: nativeOrder);
         }());
         return completer.future;
       case FakeSpeakBehavior.startAndHang:

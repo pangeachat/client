@@ -66,20 +66,39 @@
       // release token is injected by the deploy's __BUILD_VERSION__ sed.
       var report = function (state, level) {
         try {
+          // Only a host positively identified as staging or production reports,
+          // under exactly those two environment names -- the same rule the Dart
+          // side applies via Environment.sentryEnvironment (#8505, #8544). A
+          // locally served build has its errors in the console already, and the
+          // 'development' this used to send is outside the org allow-list, so it
+          // was pure noise in every environment-filtered view. Gated ahead of
+          // the de-dupe below so a non-reporting host does not spend its key.
+          var host = location.hostname;
+          var env = host === 'app.pangea.chat' ? 'production'
+            : (host === 'app.staging.pangea.chat' ? 'staging' : null);
+          if (!env) return;
           var rk = 'pangea-sw-report-' + state;
           try { if (sessionStorage.getItem(rk)) return; sessionStorage.setItem(rk, '1'); } catch (e) {}
           var id = '';
           try { if (self.crypto && crypto.randomUUID) id = crypto.randomUUID().replace(/-/g, ''); } catch (e) {}
           while (id.length < 32) id += Math.floor(Math.random() * 16).toString(16);
-          var host = location.hostname;
-          var env = host.indexOf('staging') !== -1 ? 'staging'
-            : (host === 'app.pangea.chat' ? 'production' : 'development');
+          // The deploy's __BUILD_VERSION__ sed fills this with an 8-char commit
+          // SHA. Matched by shape rather than against the placeholder literal:
+          // that sed is a global replace, so a second copy of the token here
+          // would be substituted too and the test would always pass. On a
+          // deployed host 'local' therefore means the sed step did not run --
+          // which is exactly the bug release.yaml carried until #8245.
+          var release = '__BUILD_VERSION__';
           var ev = {
             event_id: id, timestamp: Date.now() / 1000, platform: 'javascript',
             logger: 'sw-killswitch', level: level, environment: env,
-            release: '__BUILD_VERSION__',
+            release: release,
             message: 'Legacy service worker degraded state (' + state + ')',
-            tags: { sw_state: state, sw_controller: (sw.controller && sw.controller.scriptURL) || 'unknown' },
+            tags: {
+              sw_state: state,
+              sw_controller: (sw.controller && sw.controller.scriptURL) || 'unknown',
+              build_channel: /^[0-9a-f]{8}$/.test(release) ? 'ci' : 'local'
+            },
             request: { url: location.href, headers: { 'User-Agent': navigator.userAgent } }
           };
           var body = JSON.stringify({ event_id: id, sent_at: new Date().toISOString() })
