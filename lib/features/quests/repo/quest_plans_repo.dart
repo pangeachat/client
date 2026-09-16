@@ -261,9 +261,10 @@ class QuestPlansRepo {
       cefrLevel: LanguageLevelTypeEnum.fromString(targetCefr),
       topicIds: placeholderTopicIds,
       mediaIds: const [],
-      // Manually curated in the CMS (quest volume is one row at a time, not
-      // a generated bulk pipeline) — absent on most rows today, which is a
-      // normal state, not an error. See quest-plans.ts.
+      // Populated by generate-quest's media-first cover search, or hand-set
+      // in the CMS admin for a quest made another way — absent on a quest
+      // whose search found nothing (or hasn't run), which is a normal state,
+      // not an error. See quest-plans.ts.
       //
       // `Map.operator[]` takes `Object?`, so this alone covers every miss —
       // a null map, a null id, or an id the batch lookup didn't resolve —
