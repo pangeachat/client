@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-09-15 11:13:48.446169",
+    "@@last_modified": "2026-09-16 10:14:12.862438",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2329,5 +2329,16 @@
     "activitiesFilterTooltip": "Ցուցադրել միայն գործողությունները",
     "noGroupChatsYet": "Դուք դեռևս որևէ խմբային զրույցում չեք։",
     "noActivitiesYet": "Դուք դեռևս որևէ գործողության մեջ չեք։",
-    "unblock": "Ապաարգելափակել"
+    "unblock": "Ապաարգելափակել",
+    "orchestratorFeedbackTooltip": "Նշել այս բովանդակությունը",
+    "orchestratorFeedbackTitle": "Ի՞նչն է սխալ այստեղ:",
+    "orchestratorFeedbackPartSuggestion": "Առաջարկները",
+    "orchestratorFeedbackPartGoals": "Նպատակային պարգևները",
+    "orchestratorFeedbackCommentHint": "Նշեք, թե ինչն է սխալ դրա հետ",
+    "orchestratorFeedbackPickAward": "Ո՞ր աստղը:",
+    "orchestratorFeedbackPickAwardRequired": "Ընտրեք այն աստղը, որը կասկածի տակ եք դնում",
+    "orchestratorFeedbackNoAwards": "Այս փուլում աստղեր չեն շնորհվել, ուստի այստեղ հարցնելու ոչինչ չկա։",
+    "orchestratorFeedbackCommentRequired": "Ավելացրեք մեկնաբանություն, որպեսզի իմանանք, թե ինչ շտկել",
+    "orchestratorFeedbackSubmit": "Ուղարկել",
+    "orchestratorFeedbackThanks": "Նշված է։ Շնորհակալություն։"
 }

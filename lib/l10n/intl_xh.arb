@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-09-15 11:13:52.769394",
+    "@@last_modified": "2026-09-16 10:14:25.456688",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2329,5 +2329,16 @@
     "activitiesFilterTooltip": "Bonisa kuphela imisebenzi",
     "noGroupChatsYet": "Akukho ncoko zeqela ukulo okwangoku.",
     "noActivitiesYet": "Akukho misebenzi ukuyo okwangoku.",
-    "unblock": "Vula"
+    "unblock": "Vula",
+    "orchestratorFeedbackTooltip": "Phawula lo mxholo",
+    "orchestratorFeedbackTitle": "Yintoni engalunganga apha?",
+    "orchestratorFeedbackPartSuggestion": "Iingcebiso",
+    "orchestratorFeedbackPartGoals": "Amabhaso eenjongo",
+    "orchestratorFeedbackCommentHint": "Xela ukuba yintoni engalunganga kuyo",
+    "orchestratorFeedbackPickAward": "Yeyiphi inkwenkwezi?",
+    "orchestratorFeedbackPickAwardRequired": "Khetha inkwenkwezi oyibuzayo",
+    "orchestratorFeedbackNoAwards": "Eli jiko alizange linike naziphi na iinkwenkwezi, ngoko akukho nto yokubuza apha.",
+    "orchestratorFeedbackCommentRequired": "Yongeza uluvo ukuze sazi ukuba silungise ntoni",
+    "orchestratorFeedbackSubmit": "Thumela",
+    "orchestratorFeedbackThanks": "Iphawulwe. Enkosi!"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-15 11:13:51.183357",
+    "@@last_modified": "2026-09-16 10:14:20.169304",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10869,5 +10869,16 @@
     "activitiesFilterTooltip": "Mostrar apenas atividades",
     "noGroupChatsYet": "Você ainda não está em nenhum chat em grupo.",
     "noActivitiesYet": "Você ainda não está em nenhuma atividade.",
-    "unblock": "Desbloquear"
+    "unblock": "Desbloquear",
+    "orchestratorFeedbackTooltip": "Sinalizar este conteúdo",
+    "orchestratorFeedbackTitle": "O que há de errado aqui?",
+    "orchestratorFeedbackPartSuggestion": "As sugestões",
+    "orchestratorFeedbackPartGoals": "As recompensas de meta",
+    "orchestratorFeedbackCommentHint": "Diga o que há de errado com isso",
+    "orchestratorFeedbackPickAward": "Qual estrela?",
+    "orchestratorFeedbackPickAwardRequired": "Escolha a estrela que você está questionando",
+    "orchestratorFeedbackNoAwards": "Esta rodada não concedeu estrelas, então não há nada para questionar aqui.",
+    "orchestratorFeedbackCommentRequired": "Adicione um comentário para sabermos o que corrigir",
+    "orchestratorFeedbackSubmit": "Enviar",
+    "orchestratorFeedbackThanks": "Sinalizado. Obrigado!"
 }

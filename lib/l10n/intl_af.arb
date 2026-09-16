@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-09-15 11:13:46.186167",
+    "@@last_modified": "2026-09-16 10:14:05.815167",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2329,5 +2329,16 @@
     "activitiesFilterTooltip": "Wys slegs aktiwiteite",
     "noGroupChatsYet": "Jy is nog nie in enige groepkletse nie.",
     "noActivitiesYet": "Jy is nog nie in enige aktiwiteite nie.",
-    "unblock": "Deblokkeer"
+    "unblock": "Deblokkeer",
+    "orchestratorFeedbackTooltip": "Rapporteer hierdie inhoud",
+    "orchestratorFeedbackTitle": "Wat is hier fout?",
+    "orchestratorFeedbackPartSuggestion": "Die voorstelle",
+    "orchestratorFeedbackPartGoals": "Die doelwit-toekennings",
+    "orchestratorFeedbackCommentHint": "Sê wat daarmee fout is",
+    "orchestratorFeedbackPickAward": "Watter ster?",
+    "orchestratorFeedbackPickAwardRequired": "Kies die ster wat jy bevraagteken",
+    "orchestratorFeedbackNoAwards": "Hierdie beurt het geen sterre toegeken nie, so daar is niks om hier te bevraagteken nie.",
+    "orchestratorFeedbackCommentRequired": "Voeg 'n opmerking by sodat ons weet wat om reg te maak",
+    "orchestratorFeedbackSubmit": "Stuur",
+    "orchestratorFeedbackThanks": "Gerapporteer. Dankie!"
 }

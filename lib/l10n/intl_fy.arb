@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-09-15 11:13:47.324829",
+    "@@last_modified": "2026-09-16 10:14:09.707396",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2329,5 +2329,16 @@
     "activitiesFilterTooltip": "Lit allinnich aktiviteiten sjen",
     "noGroupChatsYet": "Jo sitte noch net yn groepspetearen.",
     "noActivitiesYet": "Jo sitte noch net yn aktiviteiten.",
-    "unblock": "Deblokkearje"
+    "unblock": "Deblokkearje",
+    "orchestratorFeedbackTooltip": "Markearje dizze ynhâld",
+    "orchestratorFeedbackTitle": "Wat is hjir mis?",
+    "orchestratorFeedbackPartSuggestion": "De suggestjes",
+    "orchestratorFeedbackPartGoals": "De doelprizen",
+    "orchestratorFeedbackCommentHint": "Sis wat der mis mei is",
+    "orchestratorFeedbackPickAward": "Hokker stjer?",
+    "orchestratorFeedbackPickAwardRequired": "Kies de stjer dy't jo yn twifel lûke",
+    "orchestratorFeedbackNoAwards": "Dizze beurt hat gjin stjerren takend, dus der is hjir neat te befreegjen.",
+    "orchestratorFeedbackCommentRequired": "Foegje in opmerking ta sadat wy witte wat wy reparearje moatte",
+    "orchestratorFeedbackSubmit": "Ferstjoere",
+    "orchestratorFeedbackThanks": "Markearre. Tank!"
 }

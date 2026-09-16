@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-09-15 11:13:52.600215",
+    "@@last_modified": "2026-09-16 10:14:24.347877",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2329,5 +2329,16 @@
     "activitiesFilterTooltip": "پەقەت پائالىيەتلەرنى كۆرسەت",
     "noGroupChatsYet": "تېخى ھېچقانداق گۇرۇپپا پاراڭلىرىغا قاتناشمىدىڭىز.",
     "noActivitiesYet": "تېخى ھېچقانداق پائالىيەتكە قاتناشمىدىڭىز.",
-    "unblock": "قۇلۇپنى ئېچىش"
+    "unblock": "قۇلۇپنى ئېچىش",
+    "orchestratorFeedbackTooltip": "بۇ مەزمۇننى بەلگە قىلىڭ",
+    "orchestratorFeedbackTitle": "بۇ يەردە نېمە خاتالىق بار؟",
+    "orchestratorFeedbackPartSuggestion": "تەكلىپلەر",
+    "orchestratorFeedbackPartGoals": "نىشان مۇكاپاتلىرى",
+    "orchestratorFeedbackCommentHint": "بۇنىڭدا نېمە خاتالىق بارلىقىنى ئېيتىڭ",
+    "orchestratorFeedbackPickAward": "قايسى يۇلتۇز؟",
+    "orchestratorFeedbackPickAwardRequired": "گۇمانلىنىۋاتقان يۇلتۇزنى تاللاڭ",
+    "orchestratorFeedbackNoAwards": "بۇ نۆۋەتتە يۇلتۇز مۇكاپاتلانمىدى، شۇڭا بۇ يەردە گۇمانلىنىدىغان ھېچقانداق نەرسە يوق.",
+    "orchestratorFeedbackCommentRequired": "بىر باھا قوشۇڭ، شۇنداق قىلساق نېمىنى ئوڭشاشنى بىلىمىز",
+    "orchestratorFeedbackSubmit": "يوللاڭ",
+    "orchestratorFeedbackThanks": "بەلگە قىلىندى. رەھمەت!"
 }

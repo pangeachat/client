@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-09-15 11:13:50.892432",
+    "@@last_modified": "2026-09-16 10:14:19.118984",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2329,5 +2329,16 @@
     "activitiesFilterTooltip": "Onetsani zochitika zokha",
     "noGroupChatsYet": "Simuli m'macheza amagulu aliwonse pakadali pano.",
     "noActivitiesYet": "Simuli m'zochitika zilizonse pakadali pano.",
-    "unblock": "Chotsani choletsa"
+    "unblock": "Chotsani choletsa",
+    "orchestratorFeedbackTooltip": "Chongani zomwe zili mkati",
+    "orchestratorFeedbackTitle": "Chavuta ndi chiyani apa?",
+    "orchestratorFeedbackPartSuggestion": "Malingaliro",
+    "orchestratorFeedbackPartGoals": "Mphotho za zolinga",
+    "orchestratorFeedbackCommentHint": "Nenani chomwe chalakwika",
+    "orchestratorFeedbackPickAward": "Nyenyezi iti?",
+    "orchestratorFeedbackPickAwardRequired": "Sankhani nyenyezi yomwe mukukayikira",
+    "orchestratorFeedbackNoAwards": "Panthawi ino palibe nyenyezi zomwe zaperekedwa, choncho palibe chokayikira apa.",
+    "orchestratorFeedbackCommentRequired": "Onjezani ndemanga kuti tidziwe choti tikonze",
+    "orchestratorFeedbackSubmit": "Tumiza",
+    "orchestratorFeedbackThanks": "Chongedwa. Zikomo!"
 }

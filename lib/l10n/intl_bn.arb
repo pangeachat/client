@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-15 11:13:46.139958",
+    "@@last_modified": "2026-09-16 10:14:05.758205",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10553,5 +10553,16 @@
     "activitiesFilterTooltip": "শুধুমাত্র কার্যকলাপ দেখান",
     "noGroupChatsYet": "আপনি এখনো কোনো গ্রুপ চ্যাটে নেই।",
     "noActivitiesYet": "আপনি এখনো কোনো কার্যকলাপে নেই।",
-    "unblock": "আনব্লক করুন"
+    "unblock": "আনব্লক করুন",
+    "orchestratorFeedbackTooltip": "এই বিষয়বস্তু ফ্ল্যাগ করুন",
+    "orchestratorFeedbackTitle": "এখানে কী ভুল আছে?",
+    "orchestratorFeedbackPartSuggestion": "পরামর্শগুলি",
+    "orchestratorFeedbackPartGoals": "লক্ষ্য পুরস্কারগুলি",
+    "orchestratorFeedbackCommentHint": "এতে কী ভুল আছে বলুন",
+    "orchestratorFeedbackPickAward": "কোন তারকা?",
+    "orchestratorFeedbackPickAwardRequired": "আপনি যে তারকাটি নিয়ে প্রশ্ন করছেন সেটি বেছে নিন",
+    "orchestratorFeedbackNoAwards": "এই রাউন্ডে কোনো তারকা পুরস্কার দেওয়া হয়নি, তাই এখানে প্রশ্ন করার মতো কিছু নেই।",
+    "orchestratorFeedbackCommentRequired": "একটি মন্তব্য যোগ করুন যাতে আমরা জানতে পারি কী ঠিক করতে হবে",
+    "orchestratorFeedbackSubmit": "পাঠান",
+    "orchestratorFeedbackThanks": "ফ্ল্যাগ করা হয়েছে। ধন্যবাদ!"
 }

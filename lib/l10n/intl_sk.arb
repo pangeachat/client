@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-09-15 11:13:51.283363",
+    "@@last_modified": "2026-09-16 10:14:20.555352",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10870,5 +10870,16 @@
     "activitiesFilterTooltip": "Zobraziť iba aktivity",
     "noGroupChatsYet": "Zatiaľ nie ste v žiadnych skupinových chatoch.",
     "noActivitiesYet": "Zatiaľ nie ste v žiadnych aktivitách.",
-    "unblock": "Odblokovať"
+    "unblock": "Odblokovať",
+    "orchestratorFeedbackTooltip": "Označiť tento obsah",
+    "orchestratorFeedbackTitle": "Čo je tu zlé?",
+    "orchestratorFeedbackPartSuggestion": "Návrhy",
+    "orchestratorFeedbackPartGoals": "Ocenenia za ciele",
+    "orchestratorFeedbackCommentHint": "Povedzte, čo je na tom zlé",
+    "orchestratorFeedbackPickAward": "Ktorá hviezda?",
+    "orchestratorFeedbackPickAwardRequired": "Vyberte hviezdu, ktorú spochybňujete",
+    "orchestratorFeedbackNoAwards": "V tomto kole neboli udelené žiadne hviezdy, takže tu nie je čo spochybňovať.",
+    "orchestratorFeedbackCommentRequired": "Pridajte komentár, aby sme vedeli, čo opraviť",
+    "orchestratorFeedbackSubmit": "Odoslať",
+    "orchestratorFeedbackThanks": "Označené. Ďakujeme!"
 }

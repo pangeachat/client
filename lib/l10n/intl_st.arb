@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-09-15 11:13:51.892393",
+    "@@last_modified": "2026-09-16 10:14:22.632225",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2329,5 +2329,16 @@
     "activitiesFilterTooltip": "Bontša mesebetsi feela",
     "noGroupChatsYet": "Ha o so be le meqoqo ea lihlopha.",
     "noActivitiesYet": "Ha o so be le mesebetsi.",
-    "unblock": "Notlolla"
+    "unblock": "Notlolla",
+    "orchestratorFeedbackTooltip": "Tšoaea se ka hare mona",
+    "orchestratorFeedbackTitle": "Ke eng se fosahetseng mona?",
+    "orchestratorFeedbackPartSuggestion": "Litlhahiso",
+    "orchestratorFeedbackPartGoals": "Likhau tsa lipakane",
+    "orchestratorFeedbackCommentHint": "Bolela hore na ke eng se fosahetseng ka sona",
+    "orchestratorFeedbackPickAward": "Naleli efe?",
+    "orchestratorFeedbackPickAwardRequired": "Khetha naleli eo u e botsang",
+    "orchestratorFeedbackNoAwards": "Nako ena ha ea fana ka lipalo, kahoo ha ho letho leo u ka le botsang mona.",
+    "orchestratorFeedbackCommentRequired": "Kenya maikutlo e le hore re tsebe hore na re lokise eng",
+    "orchestratorFeedbackSubmit": "Romela",
+    "orchestratorFeedbackThanks": "E tšoailoe. Kea leboha!"
 }

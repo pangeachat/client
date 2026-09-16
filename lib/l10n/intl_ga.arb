@@ -3563,7 +3563,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-09-15 11:13:47.538842",
+    "@@last_modified": "2026-09-16 10:14:09.998005",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9936,5 +9936,16 @@
     "activitiesFilterTooltip": "Taispeáin gníomhaíochtaí amháin",
     "noGroupChatsYet": "Níl tú in aon chomhráite grúpa go fóill.",
     "noActivitiesYet": "Níl tú in aon ghníomhaíochtaí go fóill.",
-    "unblock": "Díbhlocáil"
+    "unblock": "Díbhlocáil",
+    "orchestratorFeedbackTooltip": "Bratach ar an ábhar seo",
+    "orchestratorFeedbackTitle": "Cad atá mícheart anseo?",
+    "orchestratorFeedbackPartSuggestion": "Na moltaí",
+    "orchestratorFeedbackPartGoals": "Na gradaim spriocanna",
+    "orchestratorFeedbackCommentHint": "Abair cad atá mícheart leis",
+    "orchestratorFeedbackPickAward": "Cén réalta?",
+    "orchestratorFeedbackPickAwardRequired": "Roghnaigh an réalta atá tú ag ceistiú",
+    "orchestratorFeedbackNoAwards": "Níor bronnadh aon réaltaí sa seal seo, mar sin níl aon rud le ceistiú anseo.",
+    "orchestratorFeedbackCommentRequired": "Cuir trácht leis ionas go mbeidh a fhios againn cad atá le socrú",
+    "orchestratorFeedbackSubmit": "Seol",
+    "orchestratorFeedbackThanks": "Bratach curtha. Go raibh maith agat!"
 }

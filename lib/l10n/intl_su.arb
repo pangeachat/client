@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-09-15 11:13:52.280081",
+    "@@last_modified": "2026-09-16 10:14:22.344048",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2329,5 +2329,16 @@
     "activitiesFilterTooltip": "Témbongkeun ukur kagiatan",
     "noGroupChatsYet": "Anjeun teu acan aya dina obrolan grup mana waé.",
     "noActivitiesYet": "Anjeun teu acan aya dina kagiatan mana waé.",
-    "unblock": "Buka blokir"
+    "unblock": "Buka blokir",
+    "orchestratorFeedbackTooltip": "Laporkeun eusi ieu",
+    "orchestratorFeedbackTitle": "Aya naon di dieu?",
+    "orchestratorFeedbackPartSuggestion": "Saran-saran",
+    "orchestratorFeedbackPartGoals": "Panghargaan tujuan",
+    "orchestratorFeedbackCommentHint": "Sebutkeun naon nu salah",
+    "orchestratorFeedbackPickAward": "Béntang nu mana?",
+    "orchestratorFeedbackPickAwardRequired": "Pilih béntang nu ditaroskeun",
+    "orchestratorFeedbackNoAwards": "Giliran ieu teu meunang béntang, jadi teu aya nu tiasa ditaroskeun.",
+    "orchestratorFeedbackCommentRequired": "Tambihkeun koméntar supados urang terang naon nu kedah dilereskeun",
+    "orchestratorFeedbackSubmit": "Kirim",
+    "orchestratorFeedbackThanks": "Dilaporkeun. Hatur nuhun!"
 }

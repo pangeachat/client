@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-15 11:13:46.997827",
+    "@@last_modified": "2026-09-16 10:14:09.337200",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10013,5 +10013,16 @@
     "activitiesFilterTooltip": "فقط فعالیت‌ها را نمایش بده",
     "noGroupChatsYet": "شما هنوز در هیچ چت گروهی نیستید.",
     "noActivitiesYet": "شما هنوز در هیچ فعالیتی نیستید.",
-    "unblock": "رفع انسداد"
+    "unblock": "رفع انسداد",
+    "orchestratorFeedbackTooltip": "پرچم‌گذاری این محتوا",
+    "orchestratorFeedbackTitle": "مشکل چیست؟",
+    "orchestratorFeedbackPartSuggestion": "پیشنهادها",
+    "orchestratorFeedbackPartGoals": "جوایز هدف",
+    "orchestratorFeedbackCommentHint": "بگویید مشکلش چیست",
+    "orchestratorFeedbackPickAward": "کدام ستاره؟",
+    "orchestratorFeedbackPickAwardRequired": "ستاره‌ای که به آن اعتراض دارید را انتخاب کنید",
+    "orchestratorFeedbackNoAwards": "در این نوبت هیچ ستاره‌ای اهدا نشد، بنابراین چیزی برای اعتراض وجود ندارد.",
+    "orchestratorFeedbackCommentRequired": "یک نظر اضافه کنید تا بدانیم چه چیزی را باید اصلاح کنیم",
+    "orchestratorFeedbackSubmit": "ارسال",
+    "orchestratorFeedbackThanks": "پرچم‌گذاری شد. ممنون!"
 }

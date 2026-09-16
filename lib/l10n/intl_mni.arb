@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-09-15 11:13:50.132912",
+    "@@last_modified": "2026-09-16 10:14:17.890010",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2329,5 +2329,16 @@
     "activitiesFilterTooltip": "Activity khaktamak ujasanu",
     "noGroupChatsYet": "Nang group chat amattada letrifaode.",
     "noActivitiesYet": "Nang activity amattada letrifaode.",
-    "unblock": "ব্লক তৌবা থাদোকপ"
+    "unblock": "ব্লক তৌবা থাদোকপ",
+    "orchestratorFeedbackTooltip": "असी कंटेंट असिदा फ्लैग तौ",
+    "orchestratorFeedbackTitle": "मागी मारल करिनो?",
+    "orchestratorFeedbackPartSuggestion": "सुझावশিং",
+    "orchestratorFeedbackPartGoals": "गोल अवार्डশিং",
+    "orchestratorFeedbackCommentHint": "मागी मारल करिनो हैबिदु हैयू",
+    "orchestratorFeedbackPickAward": "कनागि स्टार?",
+    "orchestratorFeedbackPickAwardRequired": "नंगना कनागि स्टार दुगी मताबु खंगनिबादु खनगत्लु",
+    "orchestratorFeedbackNoAwards": "असी टर्न असिना स्टार पीदे, मर्मदी असीदा खंगनिबा अमुत्तंग लैते।",
+    "orchestratorFeedbackCommentRequired": "अमुक फगत्निबा करिनो हैबिदु खंगनिबाना कमेंट अम पीयू",
+    "orchestratorFeedbackSubmit": "थमो",
+    "orchestratorFeedbackThanks": "फ्लैग तौरे। थगत्चरी!"
 }

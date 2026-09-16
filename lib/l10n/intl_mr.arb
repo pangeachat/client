@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-09-15 11:13:49.995508",
+    "@@last_modified": "2026-09-16 10:14:17.043392",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2329,5 +2329,16 @@
     "activitiesFilterTooltip": "फक्त अ‍ॅक्टिव्हिटी दाखवा",
     "noGroupChatsYet": "तुम्ही अजून कोणत्याही ग्रुप चॅटमध्ये नाही.",
     "noActivitiesYet": "तुम्ही अजून कोणत्याही अ‍ॅक्टिव्हिटीमध्ये नाही.",
-    "unblock": "अनब्लॉक करा"
+    "unblock": "अनब्लॉक करा",
+    "orchestratorFeedbackTooltip": "या आशयाला ध्वजांकित करा",
+    "orchestratorFeedbackTitle": "येथे काय चूक आहे?",
+    "orchestratorFeedbackPartSuggestion": "सूचना",
+    "orchestratorFeedbackPartGoals": "ध्येय पुरस्कार",
+    "orchestratorFeedbackCommentHint": "यात काय चूक आहे ते सांगा",
+    "orchestratorFeedbackPickAward": "कोणता तारा?",
+    "orchestratorFeedbackPickAwardRequired": "तुम्ही ज्या ताऱ्यावर प्रश्न विचारत आहात तो निवडा",
+    "orchestratorFeedbackNoAwards": "या वळणावर कोणतेही तारे दिले नाहीत, त्यामुळे येथे प्रश्न विचारण्यासारखे काहीही नाही.",
+    "orchestratorFeedbackCommentRequired": "एक टिप्पणी जोडा जेणेकरून आम्हाला काय दुरुस्त करायचे आहे ते कळेल",
+    "orchestratorFeedbackSubmit": "पाठवा",
+    "orchestratorFeedbackThanks": "ध्वजांकित केले. धन्यवाद!"
 }

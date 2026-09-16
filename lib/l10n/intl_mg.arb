@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-09-15 11:13:49.825730",
+    "@@last_modified": "2026-09-16 10:14:16.395110",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2329,5 +2329,16 @@
     "activitiesFilterTooltip": "Asehoy ny hetsika ihany",
     "noGroupChatsYet": "Mbola tsy ao anaty vondrona resaka ianao.",
     "noActivitiesYet": "Mbola tsy ao anaty hetsika ianao.",
-    "unblock": "Esory amin'ny lisitra mainty"
+    "unblock": "Esory amin'ny lisitra mainty",
+    "orchestratorFeedbackTooltip": "Mariho ity votoaty ity",
+    "orchestratorFeedbackTitle": "Inona no tsy mety eto?",
+    "orchestratorFeedbackPartSuggestion": "Ny soso-kevitra",
+    "orchestratorFeedbackPartGoals": "Ny loka tanjona",
+    "orchestratorFeedbackCommentHint": "Lazao izay tsy mety aminy",
+    "orchestratorFeedbackPickAward": "Kintana iza?",
+    "orchestratorFeedbackPickAwardRequired": "Fidio ny kintana tianao anontaniana",
+    "orchestratorFeedbackNoAwards": "Tsy nisy kintana nomena tamin'ity fihodinana ity, ka tsy misy azo anontaniana eto.",
+    "orchestratorFeedbackCommentRequired": "Ampio fanehoan-kevitra mba ho fantatray izay tokony ahitsy",
+    "orchestratorFeedbackSubmit": "Alefaso",
+    "orchestratorFeedbackThanks": "Voamarika. Misaotra!"
 }

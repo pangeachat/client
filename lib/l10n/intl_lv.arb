@@ -3535,7 +3535,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-09-15 11:13:49.599717",
+    "@@last_modified": "2026-09-16 10:14:15.947102",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -9925,5 +9925,16 @@
     "activitiesFilterTooltip": "Rādīt tikai aktivitātes",
     "noGroupChatsYet": "Jūs vēl neesat nevienā grupas tērzēšanā.",
     "noActivitiesYet": "Jūs vēl neesat nevienā aktivitātē.",
-    "unblock": "Atbloķēt"
+    "unblock": "Atbloķēt",
+    "orchestratorFeedbackTooltip": "Atzīmēt šo saturu",
+    "orchestratorFeedbackTitle": "Kas šeit ir nepareizi?",
+    "orchestratorFeedbackPartSuggestion": "Ieteikumi",
+    "orchestratorFeedbackPartGoals": "Mērķa balvas",
+    "orchestratorFeedbackCommentHint": "Pastāstiet, kas ar to nav kārtībā",
+    "orchestratorFeedbackPickAward": "Kura zvaigzne?",
+    "orchestratorFeedbackPickAwardRequired": "Izvēlieties zvaigzni, kuru apšaubāt",
+    "orchestratorFeedbackNoAwards": "Šajā gājienā netika piešķirtas zvaigznes, tāpēc šeit nav ko apšaubīt.",
+    "orchestratorFeedbackCommentRequired": "Pievienojiet komentāru, lai mēs zinātu, ko labot",
+    "orchestratorFeedbackSubmit": "Sūtīt",
+    "orchestratorFeedbackThanks": "Atzīmēts. Paldies!"
 }

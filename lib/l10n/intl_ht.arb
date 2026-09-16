@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-09-15 11:13:48.104714",
+    "@@last_modified": "2026-09-16 10:14:12.166872",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2329,5 +2329,16 @@
     "activitiesFilterTooltip": "Montre sèlman aktivite yo",
     "noGroupChatsYet": "Ou poko nan okenn chat gwoup.",
     "noActivitiesYet": "Ou poko nan okenn aktivite.",
-    "unblock": "Debloke"
+    "unblock": "Debloke",
+    "orchestratorFeedbackTooltip": "Signale kontni sa a",
+    "orchestratorFeedbackTitle": "Kisa ki pa bon la a?",
+    "orchestratorFeedbackPartSuggestion": "Sijesyon yo",
+    "orchestratorFeedbackPartGoals": "Prim objektif yo",
+    "orchestratorFeedbackCommentHint": "Di sa ki pa bon ladan l",
+    "orchestratorFeedbackPickAward": "Ki etwal?",
+    "orchestratorFeedbackPickAwardRequired": "Chwazi etwal ou ap kesyone a",
+    "orchestratorFeedbackNoAwards": "Pa gen etwal ki te bay nan tou sa, kidonk pa gen anyen pou kesyone la a.",
+    "orchestratorFeedbackCommentRequired": "Ajoute yon kòmantè pou nou ka konnen kisa pou nou korije",
+    "orchestratorFeedbackSubmit": "Voye",
+    "orchestratorFeedbackThanks": "Signale. Mèsi!"
 }

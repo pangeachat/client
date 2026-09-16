@@ -2967,7 +2967,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-09-15 11:13:49.660071",
+    "@@last_modified": "2026-09-16 10:14:15.252835",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10706,5 +10706,16 @@
     "activitiesFilterTooltip": "Rodyti tik veiklas",
     "noGroupChatsYet": "Dar nesate jokiuose grupiniuose pokalbiuose.",
     "noActivitiesYet": "Dar nedalyvaujate jokioje veikloje.",
-    "unblock": "Atblokuoti"
+    "unblock": "Atblokuoti",
+    "orchestratorFeedbackTooltip": "Pažymėti šį turinį",
+    "orchestratorFeedbackTitle": "Kas čia negerai?",
+    "orchestratorFeedbackPartSuggestion": "Pasiūlymai",
+    "orchestratorFeedbackPartGoals": "Tikslų apdovanojimai",
+    "orchestratorFeedbackCommentHint": "Parašykite, kas negerai",
+    "orchestratorFeedbackPickAward": "Kuri žvaigždė?",
+    "orchestratorFeedbackPickAwardRequired": "Pasirinkite žvaigždę, dėl kurios kyla klausimų",
+    "orchestratorFeedbackNoAwards": "Šis ėjimas neapdovanojo jokiomis žvaigždėmis, todėl čia nėra ko klausti.",
+    "orchestratorFeedbackCommentRequired": "Pridėkite komentarą, kad žinotume, ką taisyti",
+    "orchestratorFeedbackSubmit": "Siųsti",
+    "orchestratorFeedbackThanks": "Pažymėta. Ačiū!"
 }

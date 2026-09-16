@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-09-15 11:13:53.203255",
+    "@@last_modified": "2026-09-16 10:14:25.499516",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2329,5 +2329,16 @@
     "activitiesFilterTooltip": "ווייַזן נאָר אַקטיוויטעטן",
     "noGroupChatsYet": "איר זענט נאָך נישט אין קיין גרופּע טשאַץ.",
     "noActivitiesYet": "איר זענט נאָך נישט אין קיין אַקטיוויטעטן.",
-    "unblock": "אַנבלאָקירן"
+    "unblock": "אַנבלאָקירן",
+    "orchestratorFeedbackTooltip": "פֿאָן דעם אינהאַלט",
+    "orchestratorFeedbackTitle": "וואָס איז דאָ פֿאַלש?",
+    "orchestratorFeedbackPartSuggestion": "די פֿאָרשלאָגן",
+    "orchestratorFeedbackPartGoals": "די ציל-פּרעמיעס",
+    "orchestratorFeedbackCommentHint": "זאָג וואָס איז פֿאַלש דערמיט",
+    "orchestratorFeedbackPickAward": "וועלכע שטערן?",
+    "orchestratorFeedbackPickAwardRequired": "קלויבט אויס דעם שטערן וואָס איר פֿרעגט",
+    "orchestratorFeedbackNoAwards": "די דאָזיקע ריי האָט נישט באַלוינט קיין שטערן, אַזוי אַז ס'איז נישטאָ וואָס צו פֿרעגן דאָ.",
+    "orchestratorFeedbackCommentRequired": "לייגט צו אַ קאָמענטאַר כּדי מיר זאָלן וויסן וואָס צו פֿאַרריכטן",
+    "orchestratorFeedbackSubmit": "שיקן",
+    "orchestratorFeedbackThanks": "פֿאַרפֿאָנט. אַ דאַנק!"
 }

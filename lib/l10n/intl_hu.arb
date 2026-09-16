@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-09-15 11:13:48.584025",
+    "@@last_modified": "2026-09-16 10:14:11.753231",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10028,5 +10028,16 @@
     "activitiesFilterTooltip": "Csak tevékenységek megjelenítése",
     "noGroupChatsYet": "Még nem vagy tagja egyetlen csoportos csevegésnek sem.",
     "noActivitiesYet": "Még nem vagy tagja egyetlen tevékenységnek sem.",
-    "unblock": "Feloldás"
+    "unblock": "Feloldás",
+    "orchestratorFeedbackTooltip": "Tartalom megjelölése",
+    "orchestratorFeedbackTitle": "Mi a probléma?",
+    "orchestratorFeedbackPartSuggestion": "A javaslatok",
+    "orchestratorFeedbackPartGoals": "A céljutalmak",
+    "orchestratorFeedbackCommentHint": "Írja le, mi a probléma",
+    "orchestratorFeedbackPickAward": "Melyik csillag?",
+    "orchestratorFeedbackPickAwardRequired": "Válassza ki a megkérdőjelezett csillagot",
+    "orchestratorFeedbackNoAwards": "Ez a kör nem osztott ki csillagokat, így nincs mit megkérdőjelezni.",
+    "orchestratorFeedbackCommentRequired": "Adjon hozzá egy megjegyzést, hogy tudjuk, mit kell javítani",
+    "orchestratorFeedbackSubmit": "Küldés",
+    "orchestratorFeedbackThanks": "Megjelölve. Köszönjük!"
 }

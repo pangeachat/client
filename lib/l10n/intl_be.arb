@@ -3548,7 +3548,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-09-15 11:13:46.151005",
+    "@@last_modified": "2026-09-16 10:14:06.079371",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9939,5 +9939,16 @@
     "activitiesFilterTooltip": "Паказаць толькі дзейнасці",
     "noGroupChatsYet": "Вы яшчэ не ўдзельнічаеце ні ў адным групавым чаце.",
     "noActivitiesYet": "Вы яшчэ не ўдзельнічаеце ні ў адной дзейнасці.",
-    "unblock": "Разблакіраваць"
+    "unblock": "Разблакіраваць",
+    "orchestratorFeedbackTooltip": "Пазначыць гэты кантэнт",
+    "orchestratorFeedbackTitle": "Што тут не так?",
+    "orchestratorFeedbackPartSuggestion": "Прапановы",
+    "orchestratorFeedbackPartGoals": "Узнагароды за мэты",
+    "orchestratorFeedbackCommentHint": "Скажыце, што з гэтым не так",
+    "orchestratorFeedbackPickAward": "Якая зорка?",
+    "orchestratorFeedbackPickAwardRequired": "Выберыце зорку, якую вы ставіце пад сумнеў",
+    "orchestratorFeedbackNoAwards": "У гэтым ходзе не было ўзнагароджана зорак, таму тут няма чаго ставіць пад сумнеў.",
+    "orchestratorFeedbackCommentRequired": "Дадайце каментарый, каб мы ведалі, што выправіць",
+    "orchestratorFeedbackSubmit": "Адправіць",
+    "orchestratorFeedbackThanks": "Пазначана. Дзякуй!"
 }

@@ -1334,7 +1334,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-09-15 11:13:46.756636",
+    "@@last_modified": "2026-09-16 10:14:07.358320",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10845,5 +10845,16 @@
     "activitiesFilterTooltip": "Vis kun aktiviteter",
     "noGroupChatsYet": "Du er ikke med i nogen gruppechats endnu.",
     "noActivitiesYet": "Du er ikke med i nogen aktiviteter endnu.",
-    "unblock": "Fjern blokering"
+    "unblock": "Fjern blokering",
+    "orchestratorFeedbackTooltip": "Marker dette indhold",
+    "orchestratorFeedbackTitle": "Hvad er der galt her?",
+    "orchestratorFeedbackPartSuggestion": "Forslagene",
+    "orchestratorFeedbackPartGoals": "Målpræmierne",
+    "orchestratorFeedbackCommentHint": "Fortæl, hvad der er galt med det",
+    "orchestratorFeedbackPickAward": "Hvilken stjerne?",
+    "orchestratorFeedbackPickAwardRequired": "Vælg den stjerne, du sætter spørgsmålstegn ved",
+    "orchestratorFeedbackNoAwards": "Denne omgang tildelte ingen stjerner, så der er intet at sætte spørgsmålstegn ved her.",
+    "orchestratorFeedbackCommentRequired": "Tilføj en kommentar, så vi ved, hvad vi skal rette",
+    "orchestratorFeedbackSubmit": "Send",
+    "orchestratorFeedbackThanks": "Markeret. Tak!"
 }
