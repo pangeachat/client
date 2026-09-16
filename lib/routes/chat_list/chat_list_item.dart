@@ -75,8 +75,13 @@ class ChatListItem extends StatelessWidget {
     final directChatMatrixId = room.directChatMatrixID;
     final isDirectChat = directChatMatrixId != null;
     final hasNotifications = room.notificationCount > 0;
+    // The selected row is a raised neutral surface, not an accent fill: the
+    // same `surfaceContainerHigh` the settings list marks its active row
+    // with, and the tone the row's default `onSurface` ink is paired with.
+    // `secondaryContainer` under the fidelity scheme is a saturated tint that
+    // read as a highlight over the whole tile rather than a selection.
     final backgroundColor = activeChat
-        ? theme.colorScheme.secondaryContainer
+        ? theme.colorScheme.surfaceContainerHigh
         : null;
     final displayname = room.getLocalizedDisplayname(
       MatrixLocals(L10n.of(context)),
