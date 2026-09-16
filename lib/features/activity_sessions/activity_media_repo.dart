@@ -73,9 +73,10 @@ class ActivityMediaRepo {
   }
 
   /// Normalizes a relative CMS media path (e.g. `/cms/api/media/file/x.png`)
-  /// to an absolute URL. Only local dev needs this — staging/prod always
-  /// return an already-absolute URL via the shared-content CDN, so `raw`
-  /// there just passes through unchanged. Mirrors choreos `_resolve_media_url`.
+  /// to an absolute URL. Needed only when the CMS serves media directly,
+  /// with no CDN in front of it (local CMS, by convention); staging/prod
+  /// always sit behind one, so `raw` there is already absolute and passes
+  /// through unchanged. Mirrors choreo's `_resolve_media_url`.
   static String? _resolveMediaUri(String? raw) {
     if (raw == null) return null;
     final parsed = Uri.tryParse(raw);
