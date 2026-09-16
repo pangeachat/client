@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_feedback_repo.dart';
+import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_role_goal_completion.dart';
 
 /// Internal reviewer feedback on an orchestrator turn (staging only).
 ///
@@ -13,21 +15,43 @@ Future<void> showOrchestratorFeedbackDialog({
   required BuildContext context,
   required String roomId,
   required String basedOnEventId,
+  required String ownRoleId,
+  required List<OrchestratorRoleGoalCompletion> goalCompletion,
+  ActivityPlanModel? activityPlan,
 }) => showDialog<void>(
   context: context,
   builder: (_) => _OrchestratorFeedbackDialog(
     roomId: roomId,
     basedOnEventId: basedOnEventId,
+    ownRoleId: ownRoleId,
+    goalCompletion: goalCompletion,
+    activityPlan: activityPlan,
   ),
 );
+
+/// One flaggable award: the role it belongs to and the exact `goal_id` string
+/// the turn recorded. The id is sent back verbatim so the server can match it
+/// against the stored turn; the description is only for display.
+class _Award {
+  final String roleId;
+  final String goalId;
+  final String description;
+  const _Award(this.roleId, this.goalId, this.description);
+}
 
 class _OrchestratorFeedbackDialog extends StatefulWidget {
   final String roomId;
   final String basedOnEventId;
+  final String ownRoleId;
+  final List<OrchestratorRoleGoalCompletion> goalCompletion;
+  final ActivityPlanModel? activityPlan;
 
   const _OrchestratorFeedbackDialog({
     required this.roomId,
     required this.basedOnEventId,
+    required this.ownRoleId,
+    required this.goalCompletion,
+    this.activityPlan,
   });
 
   @override
@@ -39,10 +63,33 @@ class _OrchestratorFeedbackDialogState
     extends State<_OrchestratorFeedbackDialog> {
   final TextEditingController _comment = TextEditingController();
   OrchestratorFeedbackPart _part = OrchestratorFeedbackPart.suggestion;
+  _Award? _award;
   bool _submitting = false;
   String? _error;
 
-  bool get _canSubmit => _comment.text.trim().isNotEmpty && !_submitting;
+  late final List<_Award> _awards = _buildAwards();
+
+  /// Flattens the turn's awards and resolves each id to its goal text where
+  /// the activity plan has it. The id is what gets sent; the text only makes
+  /// the choice legible.
+  List<_Award> _buildAwards() {
+    final out = <_Award>[];
+    for (final entry in widget.goalCompletion) {
+      final goals = widget.activityPlan?.roles[entry.roleId]?.allGoals ?? [];
+      for (final id in entry.goalIds) {
+        final match = goals.where((g) => g.goalSlug == id || g.id == id);
+        out.add(_Award(entry.roleId, id, match.firstOrNull?.description ?? id));
+      }
+    }
+    return out;
+  }
+
+  bool get _needsAward => _part == OrchestratorFeedbackPart.goalCompletion;
+
+  bool get _canSubmit =>
+      _comment.text.trim().isNotEmpty &&
+      !_submitting &&
+      (!_needsAward || _award != null);
 
   @override
   void dispose() {
@@ -61,6 +108,8 @@ class _OrchestratorFeedbackDialogState
       roomId: widget.roomId,
       basedOnEventId: widget.basedOnEventId,
       part: _part,
+      targetRoleId: _needsAward ? _award!.roleId : widget.ownRoleId,
+      targetGoalId: _needsAward ? _award!.goalId : null,
       comment: _comment.text,
     );
     if (!mounted) return;
@@ -103,8 +152,42 @@ class _OrchestratorFeedbackDialogState
             selected: {_part},
             onSelectionChanged: _submitting
                 ? null
-                : (s) => setState(() => _part = s.first),
+                : (s) => setState(() {
+                    _part = s.first;
+                    _award = null;
+                  }),
           ),
+          if (_needsAward) ...[
+            const SizedBox(height: 16.0),
+            if (_awards.isEmpty)
+              Text(
+                l10n.orchestratorFeedbackNoAwards,
+                style: Theme.of(context).textTheme.bodySmall,
+              )
+            else
+              DropdownButtonFormField<_Award>(
+                initialValue: _award,
+                isExpanded: true,
+                decoration: InputDecoration(
+                  labelText: l10n.orchestratorFeedbackPickAward,
+                  helperText: l10n.orchestratorFeedbackPickAwardRequired,
+                ),
+                items: _awards
+                    .map(
+                      (a) => DropdownMenuItem(
+                        value: a,
+                        child: Text(
+                          '${a.roleId} — ${a.description}',
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    )
+                    .toList(),
+                onChanged: _submitting
+                    ? null
+                    : (a) => setState(() => _award = a),
+              ),
+          ],
           const SizedBox(height: 16.0),
           TextField(
             controller: _comment,
