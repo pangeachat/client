@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-09-15 11:13:48.111735",
+    "@@last_modified": "2026-09-16 10:14:11.209742",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2329,5 +2329,16 @@
     "activitiesFilterTooltip": "Qhia tsuas yog cov haujlwm",
     "noGroupChatsYet": "Koj tseem tsis tau nyob hauv ib pab pawg sib tham twg.",
     "noActivitiesYet": "Koj tseem tsis tau nyob hauv ib qho haujlwm twg.",
-    "unblock": "Tshem tawm kev thaiv"
+    "unblock": "Tshem tawm kev thaiv",
+    "orchestratorFeedbackTooltip": "Taw qhov no",
+    "orchestratorFeedbackTitle": "Dab tsi tsis yog?",
+    "orchestratorFeedbackPartSuggestion": "Cov lus qhia",
+    "orchestratorFeedbackPartGoals": "Cov khoom plig",
+    "orchestratorFeedbackCommentHint": "Hais tias dab tsi tsis yog",
+    "orchestratorFeedbackPickAward": "Lub hnub qub twg?",
+    "orchestratorFeedbackPickAwardRequired": "Xaiv lub hnub qub koj tab tom nug",
+    "orchestratorFeedbackNoAwards": "Lub sijhawm no tsis muaj hnub qub, yog li tsis muaj dab tsi yuav nug.",
+    "orchestratorFeedbackCommentRequired": "Ntxiv ib nqe lus kom peb paub yuav kho li cas",
+    "orchestratorFeedbackSubmit": "Xa",
+    "orchestratorFeedbackThanks": "Taw lawm. Ua tsaug!"
 }

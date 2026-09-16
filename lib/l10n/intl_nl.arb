@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-15 11:13:50.475910",
+    "@@last_modified": "2026-09-16 10:14:17.778481",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9925,5 +9925,16 @@
     "activitiesFilterTooltip": "Toon alleen activiteiten",
     "noGroupChatsYet": "Je zit nog niet in groepschats.",
     "noActivitiesYet": "Je zit nog niet in activiteiten.",
-    "unblock": "Deblokkeren"
+    "unblock": "Deblokkeren",
+    "orchestratorFeedbackTooltip": "Markeer deze inhoud",
+    "orchestratorFeedbackTitle": "Wat is hier mis?",
+    "orchestratorFeedbackPartSuggestion": "De suggesties",
+    "orchestratorFeedbackPartGoals": "De doelbeloningen",
+    "orchestratorFeedbackCommentHint": "Zeg wat er mis mee is",
+    "orchestratorFeedbackPickAward": "Welke ster?",
+    "orchestratorFeedbackPickAwardRequired": "Kies de ster die je in twijfel trekt",
+    "orchestratorFeedbackNoAwards": "Deze beurt heeft geen sterren toegekend, dus er is hier niets om in twijfel te trekken.",
+    "orchestratorFeedbackCommentRequired": "Voeg een opmerking toe zodat we weten wat we moeten oplossen",
+    "orchestratorFeedbackSubmit": "Verzenden",
+    "orchestratorFeedbackThanks": "Gemarkeerd. Bedankt!"
 }

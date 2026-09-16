@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart';
 
@@ -51,6 +52,8 @@ void main() {
   const slotHeight = 600.0;
 
   setUp(() {
+    // The card reads Environment.isStagingEnvironment in build.
+    dotenv.testLoad(mergeWith: <String, String>{});
     MatrixState.pAnyState = PangeaAnyState();
   });
 
@@ -68,6 +71,7 @@ void main() {
           ),
         ),
       ),
+      basedOnEventId: r'$evt001',
     );
 
     return MaterialApp(

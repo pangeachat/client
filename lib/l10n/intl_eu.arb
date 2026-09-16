@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-09-15 11:13:47.211329",
+    "@@last_modified": "2026-09-16 10:14:09.170451",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9925,5 +9925,16 @@
     "activitiesFilterTooltip": "Jarduerak soilik erakutsi",
     "noGroupChatsYet": "Oraindik ez zaude talde-txatetan.",
     "noActivitiesYet": "Oraindik ez zaude jardueretan.",
-    "unblock": "Desblokeatu"
+    "unblock": "Desblokeatu",
+    "orchestratorFeedbackTooltip": "Markatu eduki hau",
+    "orchestratorFeedbackTitle": "Zer dago gaizki hemen?",
+    "orchestratorFeedbackPartSuggestion": "Iradokizunak",
+    "orchestratorFeedbackPartGoals": "Helburuen sariak",
+    "orchestratorFeedbackCommentHint": "Esan zer dagoen gaizki",
+    "orchestratorFeedbackPickAward": "Zein izar?",
+    "orchestratorFeedbackPickAwardRequired": "Aukeratu zalantzan jartzen duzun izarra",
+    "orchestratorFeedbackNoAwards": "Txanda honek ez du izarrik eman, beraz, ez dago ezer zalantzan jartzeko.",
+    "orchestratorFeedbackCommentRequired": "Gehitu iruzkin bat zer konpondu behar dugun jakin dezagun",
+    "orchestratorFeedbackSubmit": "Bidali",
+    "orchestratorFeedbackThanks": "Markatuta. Eskerrik asko!"
 }

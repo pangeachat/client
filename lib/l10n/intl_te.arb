@@ -1324,7 +1324,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-09-15 11:13:52.628413",
+    "@@last_modified": "2026-09-16 10:14:23.116139",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10875,5 +10875,16 @@
     "activitiesFilterTooltip": "కార్యకలాపాలను మాత్రమే చూపించు",
     "noGroupChatsYet": "మీరు ఇంకా ఏ గ్రూప్ చాట్‌లలోనూ లేరు.",
     "noActivitiesYet": "మీరు ఇంకా ఏ కార్యకలాపాలలోనూ లేరు.",
-    "unblock": "అన్‌బ్లాక్ చేయండి"
+    "unblock": "అన్‌బ్లాక్ చేయండి",
+    "orchestratorFeedbackTooltip": "ఈ కంటెంట్‌ను ఫ్లాగ్ చేయండి",
+    "orchestratorFeedbackTitle": "ఇక్కడ ఏమి తప్పు ఉంది?",
+    "orchestratorFeedbackPartSuggestion": "సూచనలు",
+    "orchestratorFeedbackPartGoals": "లక్ష్య అవార్డులు",
+    "orchestratorFeedbackCommentHint": "దీనితో ఏమి తప్పు ఉందో చెప్పండి",
+    "orchestratorFeedbackPickAward": "ఏ నక్షత్రం?",
+    "orchestratorFeedbackPickAwardRequired": "మీరు ప్రశ్నిస్తున్న నక్షత్రాన్ని ఎంచుకోండి",
+    "orchestratorFeedbackNoAwards": "ఈ మలుపులో నక్షత్రాలు ఇవ్వబడలేదు, కాబట్టి ఇక్కడ ప్రశ్నించడానికి ఏమీ లేదు.",
+    "orchestratorFeedbackCommentRequired": "మేము ఏమి సరిదిద్దాలో తెలుసుకోవడానికి ఒక వ్యాఖ్యను జోడించండి",
+    "orchestratorFeedbackSubmit": "పంపు",
+    "orchestratorFeedbackThanks": "ఫ్లాగ్ చేయబడింది. ధన్యవాదాలు!"
 }

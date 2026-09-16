@@ -335,6 +335,45 @@ void main() {
   });
 
   group('openCourse (open / switch tab)', () {
+    // #9037 — the course seats LAST in the left column, after whatever it
+    // opens over. Its collapsed state is the absence of the token, so the card
+    // and its collapse share the far end of the column: collapsing hands the
+    // width back without moving the panel beside it, and expanding takes it
+    // from the same end. Seated first, collapsing re-justified everything else
+    // to the rail and expanding pushed it back — the reported jump.
+    test('the course seats after the panels it opens over', () {
+      for (final start in ['/?left=chats', '/?left=chats,room:!abc']) {
+        final left = parseOpenPanels(
+          u(WorkspaceNav.openCourse(u(start), '!space:server')),
+        ).left;
+        expect(
+          left.last.type,
+          PanelTypesEnum.course,
+          reason: 'course must be last from $start',
+        );
+        expect(left.first.type, PanelTypesEnum.chats);
+      }
+    });
+
+    test('so does a section switch, and the card re-shown from the bar', () {
+      final section = parseOpenPanels(
+        u(WorkspaceNav.openCourseSection(u('/?left=room:!abc'), '!s:server')),
+      ).left;
+      expect(section.map((t) => t.type), [
+        PanelTypesEnum.room,
+        PanelTypesEnum.course,
+      ]);
+
+      // The context bar's tap (openCourseTab) — the collapsed → expanded move.
+      final reopened = parseOpenPanels(
+        u(WorkspaceNav.openCourseTab(u('/?c=!s&left=room:!abc'))),
+      ).left;
+      expect(reopened.map((t) => t.type), [
+        PanelTypesEnum.room,
+        PanelTypesEnum.course,
+      ]);
+    });
+
     test('switching tabs replaces the course token rather than stacking', () {
       // The course id lives in the `?m=course:` map filter; the token param is
       // just the tab (a bare course token with no filter is dropped at parse).

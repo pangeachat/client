@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-09-15 11:13:53.037262",
+    "@@last_modified": "2026-09-16 10:14:26.067270",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2329,5 +2329,16 @@
     "activitiesFilterTooltip": "Fi àwọn iṣẹ́ nìkan hàn",
     "noGroupChatsYet": "O kò sí nínú àwọn ìjíròrò ẹgbẹ́ kankan bẹ́ẹ̀ síbẹ̀.",
     "noActivitiesYet": "O kò sí nínú àwọn iṣẹ́ kankan bẹ́ẹ̀ síbẹ̀.",
-    "unblock": "Ṣíwọ́dúró"
+    "unblock": "Ṣíwọ́dúró",
+    "orchestratorFeedbackTooltip": "Fi àkóónú yìí sílẹ̀",
+    "orchestratorFeedbackTitle": "Kí ló yẹ kó tọ́ níbí?",
+    "orchestratorFeedbackPartSuggestion": "Àwọn àbá",
+    "orchestratorFeedbackPartGoals": "Àwọn àmì-ẹ̀yẹ ète",
+    "orchestratorFeedbackCommentHint": "Sọ ohun tó yẹ kó tọ́ níbẹ̀",
+    "orchestratorFeedbackPickAward": "Ìràwọ̀ wo?",
+    "orchestratorFeedbackPickAwardRequired": "Yan ìràwọ̀ tí o n bèèrè nípa rẹ̀",
+    "orchestratorFeedbackNoAwards": "Ìgbésẹ̀ yìí kò fúnni ní ìràwọ̀ kankan, nítorí náà kò sí ohun tí a lè bèèrè nípa rẹ̀ níbí.",
+    "orchestratorFeedbackCommentRequired": "Fi àlàyé kún un kí a lè mọ ohun tí a fẹ́ túnṣe",
+    "orchestratorFeedbackSubmit": "Ránṣẹ́",
+    "orchestratorFeedbackThanks": "Ti fi sílẹ̀. Ẹ ṣeun!"
 }

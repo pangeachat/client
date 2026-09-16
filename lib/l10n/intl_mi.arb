@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-09-15 11:13:50.040538",
+    "@@last_modified": "2026-09-16 10:14:16.370888",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2329,5 +2329,16 @@
     "activitiesFilterTooltip": "Whakaatu i ngā mahi anake",
     "noGroupChatsYet": "Kāore anō koe kia uru ki tētahi kōrerorero rōpū.",
     "noActivitiesYet": "Kāore anō koe kia uru ki tētahi mahi.",
-    "unblock": "Wewete"
+    "unblock": "Wewete",
+    "orchestratorFeedbackTooltip": "Tohua tēnei ihirangi",
+    "orchestratorFeedbackTitle": "He aha te he o konei?",
+    "orchestratorFeedbackPartSuggestion": "Ngā kōrero āwhina",
+    "orchestratorFeedbackPartGoals": "Ngā tohu whāinga",
+    "orchestratorFeedbackCommentHint": "Kōrerohia te he o taua mea",
+    "orchestratorFeedbackPickAward": "Ko tēhea whetū?",
+    "orchestratorFeedbackPickAwardRequired": "Tīpakohia te whetū e pātai ana koe",
+    "orchestratorFeedbackNoAwards": "Kāore he whetū i whakawhiwhia i tēnei hurihanga, nō reira kāore he mea hei pātai i konei.",
+    "orchestratorFeedbackCommentRequired": "Tāpirihia he kōrero kia mōhio ai mātou ki te whakatika",
+    "orchestratorFeedbackSubmit": "Tukuna",
+    "orchestratorFeedbackThanks": "Kua tohua. Ngā mihi!"
 }

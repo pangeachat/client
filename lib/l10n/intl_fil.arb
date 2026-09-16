@@ -2080,7 +2080,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-09-15 11:13:47.349378",
+    "@@last_modified": "2026-09-16 10:14:09.314279",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10785,5 +10785,16 @@
     "activitiesFilterTooltip": "Ipakita lang ang mga aktibidad",
     "noGroupChatsYet": "Wala ka pa sa anumang group chat.",
     "noActivitiesYet": "Wala ka pa sa anumang aktibidad.",
-    "unblock": "I-unblock"
+    "unblock": "I-unblock",
+    "orchestratorFeedbackTooltip": "I-flag ang nilalamang ito",
+    "orchestratorFeedbackTitle": "Ano ang mali rito?",
+    "orchestratorFeedbackPartSuggestion": "Ang mga suhestiyon",
+    "orchestratorFeedbackPartGoals": "Ang mga gantimpala sa layunin",
+    "orchestratorFeedbackCommentHint": "Sabihin kung ano ang mali rito",
+    "orchestratorFeedbackPickAward": "Aling bituin?",
+    "orchestratorFeedbackPickAwardRequired": "Piliin ang bituing kinukuwestiyon mo",
+    "orchestratorFeedbackNoAwards": "Walang iginawad na bituin sa pagkakataong ito, kaya walang dapat kuwestiyunin dito.",
+    "orchestratorFeedbackCommentRequired": "Magdagdag ng komento para malaman namin kung ano ang aayusin",
+    "orchestratorFeedbackSubmit": "Ipadala",
+    "orchestratorFeedbackThanks": "Na-flag. Salamat!"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-09-15 11:13:51.674542",
+    "@@last_modified": "2026-09-16 10:14:19.863066",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10897,5 +10897,16 @@
     "activitiesFilterTooltip": "Показать только мероприятия",
     "noGroupChatsYet": "Вы пока не состоите ни в одном групповом чате.",
     "noActivitiesYet": "Вы пока не участвуете ни в одном мероприятии.",
-    "unblock": "Разблокировать"
+    "unblock": "Разблокировать",
+    "orchestratorFeedbackTooltip": "Пометить этот контент",
+    "orchestratorFeedbackTitle": "Что здесь не так?",
+    "orchestratorFeedbackPartSuggestion": "Предложения",
+    "orchestratorFeedbackPartGoals": "Награды за цели",
+    "orchestratorFeedbackCommentHint": "Опишите проблему",
+    "orchestratorFeedbackPickAward": "Какая звезда?",
+    "orchestratorFeedbackPickAwardRequired": "Выберите звезду, которую вы оспариваете",
+    "orchestratorFeedbackNoAwards": "В этом ходу не было наград, поэтому здесь нечего оспаривать.",
+    "orchestratorFeedbackCommentRequired": "Добавьте комментарий, чтобы мы знали, что исправить",
+    "orchestratorFeedbackSubmit": "Отправить",
+    "orchestratorFeedbackThanks": "Помечено. Спасибо!"
 }

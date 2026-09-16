@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-09-15 11:13:49.611273",
+    "@@last_modified": "2026-09-16 10:14:13.064793",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2329,5 +2329,16 @@
     "activitiesFilterTooltip": "Gosi naanị ihe omume",
     "noGroupChatsYet": "Ị nọbeghị na nkata otu ọ bụla.",
     "noActivitiesYet": "Ị nọbeghị na ihe omume ọ bụla.",
-    "unblock": "Wepụ mgbochi"
+    "unblock": "Wepụ mgbochi",
+    "orchestratorFeedbackTooltip": "Kọwaa ihe a",
+    "orchestratorFeedbackTitle": "Gịnị dị njọ ebe a?",
+    "orchestratorFeedbackPartSuggestion": "Atụmatụ ndị ahụ",
+    "orchestratorFeedbackPartGoals": "Ihe nrite ebumnuche",
+    "orchestratorFeedbackCommentHint": "Kwuo ihe dị njọ na ya",
+    "orchestratorFeedbackPickAward": "Kpakpando nke?",
+    "orchestratorFeedbackPickAwardRequired": "Họrọ kpakpando ị na-ajụ ajụjụ",
+    "orchestratorFeedbackNoAwards": "Ntụgharị a enyeghị kpakpando ọ bụla, yabụ na ọ nweghị ihe ị ga-ajụ ebe a.",
+    "orchestratorFeedbackCommentRequired": "Tinye okwu ka anyị mara ihe anyị ga-edozi",
+    "orchestratorFeedbackSubmit": "Zipụ",
+    "orchestratorFeedbackThanks": "Akọwapụtara. Daalụ!"
 }

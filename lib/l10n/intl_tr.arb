@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-09-15 11:13:52.379029",
+    "@@last_modified": "2026-09-16 10:14:22.865841",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10226,5 +10226,16 @@
     "activitiesFilterTooltip": "Yalnızca etkinlikleri göster",
     "noGroupChatsYet": "Henüz hiçbir grup sohbetinde değilsiniz.",
     "noActivitiesYet": "Henüz hiçbir etkinlikte değilsiniz.",
-    "unblock": "Engellemeyi Kaldır"
+    "unblock": "Engellemeyi Kaldır",
+    "orchestratorFeedbackTooltip": "Bu içeriği işaretle",
+    "orchestratorFeedbackTitle": "Burada ne yanlış var?",
+    "orchestratorFeedbackPartSuggestion": "Öneriler",
+    "orchestratorFeedbackPartGoals": "Hedef ödülleri",
+    "orchestratorFeedbackCommentHint": "Neyin yanlış olduğunu belirtin",
+    "orchestratorFeedbackPickAward": "Hangi yıldız?",
+    "orchestratorFeedbackPickAwardRequired": "Sorguladığınız yıldızı seçin",
+    "orchestratorFeedbackNoAwards": "Bu turda yıldız verilmedi, bu yüzden burada sorgulanacak bir şey yok.",
+    "orchestratorFeedbackCommentRequired": "Neyi düzelteceğimizi bilmemiz için bir yorum ekleyin",
+    "orchestratorFeedbackSubmit": "Gönder",
+    "orchestratorFeedbackThanks": "İşaretlendi. Teşekkürler!"
 }

@@ -638,4 +638,56 @@ void main() {
       }
     });
   });
+
+  // #9037 — the course seats LAST now, so the positional rule alone would fold
+  // the CHAT behind the course card. That would strand it: a panel with a floor
+  // shows only its chevron ([CloseAffordance]), so it can offer neither an X nor
+  // a back arrow to reveal whatever folded behind it.
+  group('a floor panel is the one that yields, whatever its position', () {
+    test('a chat seated before the course folds the COURSE, not the chat', () {
+      final l = run(
+        viewport: 1100,
+        left: [PanelTypesEnum.room, PanelTypesEnum.course],
+      );
+      expect(l.left[1].vis, PanelVis.hidden); // the course yields
+      expect(l.left[0].vis, PanelVis.full); // the live chat keeps the column
+      // Nothing folded BENEATH the chat, so its control stays an X — which
+      // reveals the course card just the same, by dropping the chat.
+      expect(l.left[0].foldedOver, isFalse);
+      expectNoOverlap(l);
+    });
+
+    test('and it still yields when seated first (#9030 is unchanged)', () {
+      final l = run(
+        viewport: 1100,
+        left: [PanelTypesEnum.course, PanelTypesEnum.room],
+      );
+      expect(l.left[0].vis, PanelVis.hidden);
+      expect(l.left[1].vis, PanelVis.full);
+      expect(l.left[1].foldedOver, isTrue); // folded beneath → back arrow
+      expectNoOverlap(l);
+    });
+
+    test('a pair with no floor still folds purely by position', () {
+      final l = run(
+        viewport: 1100,
+        left: [PanelTypesEnum.chats, PanelTypesEnum.room],
+      );
+      expect(l.left[0].width + l.left[1].width, greaterThan(0));
+      final tight = run(
+        viewport: 900,
+        left: [PanelTypesEnum.chats, PanelTypesEnum.room],
+      );
+      expect(tight.left[0].vis, PanelVis.hidden); // the list, beneath, folds
+      expect(tight.left[1].vis, PanelVis.full);
+      expect(tight.left[1].foldedOver, isTrue);
+    });
+
+    test('exactly one panel type declares a floor', () {
+      final withFloor = PanelTypesEnum.values
+          .where((t) => t.hasCavityFloor)
+          .toList();
+      expect(withFloor, [PanelTypesEnum.course]);
+    });
+  });
 }
