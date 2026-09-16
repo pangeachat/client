@@ -24,6 +24,7 @@ import 'package:fluffychat/features/tutorials/tutorial_target.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/routes/world/course_preview_banner.dart';
 import 'package:fluffychat/routes/world/dot_markers_layer.dart';
@@ -1648,6 +1649,10 @@ class _MapZoomControls extends StatelessWidget {
           final canZoomOut =
               zoom == null ||
               WorldMapConstants.canZoomOut(zoom, controller.minZoom);
+          // M3's own focus overlay on these measures 1.2:1 (#8880).
+          final focusRing = ButtonStyle(
+            side: FocusRingTapTarget.ringSideProperty(context),
+          );
           return Semantics(
             label: l10n.mapZoomLabel,
             container: true,
@@ -1657,17 +1662,20 @@ class _MapZoomControls extends StatelessWidget {
                 IconButton(
                   icon: const Icon(Icons.public),
                   tooltip: l10n.resetMapView,
+                  style: focusRing,
                   onPressed: controller.resetToWorld,
                 ),
                 Divider(height: 1.0, color: theme.colorScheme.outlineVariant),
                 IconButton(
                   icon: const Icon(Icons.add),
                   tooltip: l10n.zoomIn,
+                  style: focusRing,
                   onPressed: canZoomIn ? () => controller.zoomBy(1) : null,
                 ),
                 IconButton(
                   icon: const Icon(Icons.remove),
                   tooltip: l10n.zoomOut,
+                  style: focusRing,
                   onPressed: canZoomOut ? () => controller.zoomBy(-1) : null,
                 ),
               ],
