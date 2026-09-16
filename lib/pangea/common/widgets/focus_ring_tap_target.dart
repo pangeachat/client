@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
 
-/// InkWell-backed tap target for opaque-filled controls (#7219): focusable and
-/// Enter/Space-activatable where a bare GestureDetector is not, with a gold
-/// ring painted while focused — an opaque fill swallows InkWell's
-/// behind-the-child focus highlight, so these need an explicit ring. Worn by
-/// the top-right cluster's avatar and language flag, and (via
-/// [NaviRailItem.focusRingShape]) the nav rail's course avatars (#8724).
+/// InkWell-backed tap target with a gold ring painted while focused (#7219):
+/// focusable and Enter/Space-activatable where a bare GestureDetector is not.
+/// InkWell's own focus highlight is no indicator here — an opaque fill
+/// swallows it, and on a clear or lightly washed control it measures 1.3 to
+/// 1.5:1 (#8880) — so the ring replaces it. Worn by the top-right cluster's avatar,
+/// stat trackers and language flag, and (via [NaviRailItem.focusRingShape])
+/// the nav rail's course avatars (#8724).
 ///
 /// The ring paints in the FOREGROUND: a background decoration is painted
 /// before the child, so an opaque child swallows the stroke down to a
@@ -26,6 +27,19 @@ class FocusRingTapTarget extends StatefulWidget {
 
   static BorderSide ringSide(BuildContext context) =>
       BorderSide(color: Theme.of(context).pangea.goldGraphic, width: ringWidth);
+
+  /// The same ring as a [ButtonStyle.side], for a control that is already a
+  /// Material button (the map's zoom controls, #8880): wrapping one in this
+  /// widget would nest a second focusable and cost a dead Tab stop. Gated on
+  /// [highlightsEnabled] here too, because [WidgetState.focused] is set
+  /// whether or not Material would show a focus highlight.
+  static WidgetStateProperty<BorderSide> ringSideProperty(
+    BuildContext context,
+  ) => WidgetStateProperty.resolveWith(
+    (states) => states.contains(WidgetState.focused) && highlightsEnabled
+        ? ringSide(context)
+        : BorderSide.none,
+  );
 
   /// Whether explicit focus rings should render at all right now — Flutter's
   /// gate for Material focus highlights: traditional (keyboard-driven) yes,
@@ -51,12 +65,25 @@ class FocusRingTapTarget extends StatefulWidget {
   /// [MenuAnchor.childFocusNode] so a closing menu returns focus here).
   final FocusNode? focusNode;
 
+  /// Passed through to the InkWell.
+  final ValueChanged<bool>? onHover;
+  final Color? hoverColor;
+
+  /// Where the ring sits on [shape]'s edge, as [BorderSide.strokeAlign].
+  /// Inside by default; outside for a control whose own fill can match the
+  /// ring's luminance, so focus repaints the surface around the fill rather
+  /// than the fill itself.
+  final double ringStrokeAlign;
+
   const FocusRingTapTarget({
     required this.onTap,
     required this.shape,
     required this.child,
     this.label,
     this.focusNode,
+    this.onHover,
+    this.hoverColor,
+    this.ringStrokeAlign = BorderSide.strokeAlignInside,
     super.key,
   });
 
@@ -91,13 +118,20 @@ class _FocusRingTapTargetState extends State<FocusRingTapTarget> {
       onTap: widget.onTap,
       focusNode: widget.focusNode,
       customBorder: widget.shape,
+      onHover: widget.onHover,
+      hoverColor: widget.hoverColor,
+      // The ring is the indicator. The wash would only darken the field just
+      // inside it, below 3:1 on a lit tracker (#8880).
+      focusColor: Colors.transparent,
       onFocusChange: (focused) => setState(() => _focused = focused),
       child: DecoratedBox(
         position: DecorationPosition.foreground,
         decoration: ShapeDecoration(
           shape: widget.shape.copyWith(
             side: showRing
-                ? FocusRingTapTarget.ringSide(context)
+                ? FocusRingTapTarget.ringSide(
+                    context,
+                  ).copyWith(strokeAlign: widget.ringStrokeAlign)
                 : BorderSide.none,
           ),
         ),
