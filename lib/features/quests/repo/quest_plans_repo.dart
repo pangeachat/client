@@ -1,3 +1,4 @@
+import 'package:fluffychat/features/activity_sessions/activity_media_repo.dart';
 import 'package:fluffychat/features/course_plans/courses/course_filter.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/features/course_plans/payload_client/payload_client.dart';
@@ -88,15 +89,19 @@ class QuestPlansRepo {
     int page = 1,
     int limit = 10,
   }) async {
-    final resp = await _client().find<CoursePlanModel?>(
+    final resp = await _client().find<Map<String, dynamic>>(
       _collection,
-      _fromQuestPlanJson,
+      (json) => json,
       page: page,
       limit: limit,
       where: _whereFor(filter),
       depth: 0,
     );
-    final quests = resp.docs.whereType<CoursePlanModel>().toList();
+    final imageUrls = await _resolveImageUrls(resp.docs);
+    final quests = resp.docs
+        .map((json) => _fromQuestPlanJson(json, imageUrls: imageUrls))
+        .whereType<CoursePlanModel>()
+        .toList();
     return (quests: quests, hasNextPage: resp.hasNextPage);
   }
 
@@ -113,11 +118,13 @@ class QuestPlansRepo {
   static Future<CoursePlanModel?> get(String questId) async {
     if (await QuestRepo.removedQuests.contains(questId)) return null;
     try {
-      final plan = await _client().findById<CoursePlanModel?>(
+      final json = await _client().findById<Map<String, dynamic>>(
         _collection,
         questId,
-        _fromQuestPlanJson,
+        (json) => json,
       );
+      final imageUrls = await _resolveImageUrls([json]);
+      final plan = _fromQuestPlanJson(json, imageUrls: imageUrls);
       QuestRepo.removedQuests.unmark(questId);
       return plan;
     } catch (e) {
@@ -141,19 +148,59 @@ class QuestPlansRepo {
     bool requireMissions = true,
   }) async {
     if (questIds.isEmpty) return const {};
-    final resp = await _client().find<CoursePlanModel?>(
+    final resp = await _client().find<Map<String, dynamic>>(
       _collection,
-      (json) => _fromQuestPlanJson(json, requireMissions: requireMissions),
+      (json) => json,
       limit: questIds.length,
       where: {
         'id': {'in': questIds},
       },
       depth: 0,
     );
-    return {
-      for (final plan in resp.docs.whereType<CoursePlanModel>())
-        plan.uuid: plan,
-    };
+    final imageUrls = await _resolveImageUrls(resp.docs);
+    final result = <String, CoursePlanModel>{};
+    for (final json in resp.docs) {
+      final plan = _fromQuestPlanJson(
+        json,
+        requireMissions: requireMissions,
+        imageUrls: imageUrls,
+      );
+      if (plan != null) result[plan.uuid] = plan;
+    }
+    return result;
+  }
+
+  /// Batch-resolves each rows `image.upload_id` via [ActivityMediaRepo.resolve]
+  /// A row with no image, or a lookup miss,
+  /// is simply absent from the result; callers treat `imageUrls[id] == null`
+  /// the same as no image (letter avatar fallback), not as an error.
+  static Future<Map<String, Uri>> _resolveImageUrls(
+    List<Map<String, dynamic>> rawDocs,
+  ) async {
+    final uploadIds = rawDocs
+        .map((json) => json['image'] as Map?)
+        .map((image) => image?['upload_id'] as String?)
+        .whereType<String>()
+        .toSet()
+        .toList();
+    if (uploadIds.isEmpty) return const {};
+
+    try {
+      final resolved = await ActivityMediaRepo.resolve(uploadIds);
+      final urls = <String, Uri>{};
+      for (final entry in resolved.entries) {
+        // Already an absolute URL — ActivityMediaRepo.resolve() normalizes
+        // a relative CMS path itself, for every caller, not just this one.
+        final raw = entry.value.thumbnailUrl ?? entry.value.url;
+        final uri = Uri.tryParse(raw);
+        if (uri != null) urls[entry.key] = uri;
+      }
+      return urls;
+    } catch (_) {
+      // A media lookup failure must not sink the whole quest list — it
+      // degrades to the same letter-avatar fallback as a quest with no image.
+      return const {};
+    }
   }
 
   /// JSON → synthesized [CoursePlanModel]. Returns ``null`` on a missing /
@@ -162,6 +209,7 @@ class QuestPlansRepo {
   static CoursePlanModel? _fromQuestPlanJson(
     Map<String, dynamic> json, {
     bool requireMissions = true,
+    Map<String, Uri>? imageUrls,
   }) {
     final id = json['id'] as String?;
     final req = json['req'] as Map<String, dynamic>?;
@@ -201,6 +249,9 @@ class QuestPlansRepo {
       (i) => 'quest:$id:mission:$i',
     );
 
+    // Top-level field, a sibling of req/res, not nested inside either.
+    final imageUploadId = (json['image'] as Map?)?['upload_id'] as String?;
+
     return CoursePlanModel(
       uuid: id,
       title: name,
@@ -210,6 +261,16 @@ class QuestPlansRepo {
       cefrLevel: LanguageLevelTypeEnum.fromString(targetCefr),
       topicIds: placeholderTopicIds,
       mediaIds: const [],
+      // Manually curated in the CMS (quest volume is one row at a time, not
+      // a generated bulk pipeline) — absent on most rows today, which is a
+      // normal state, not an error. See quest-plans.ts.
+      //
+      // `Map.operator[]` takes `Object?`, so this alone covers every miss —
+      // a null map, a null id, or an id the batch lookup didn't resolve —
+      // without a ternary. (A ternary here parses ambiguously: `cond ?
+      // map?[key] : null` reads the `?` after `map` as a second ternary's,
+      // not the null-aware index, and fails to compile.)
+      imageUrl: imageUrls?[imageUploadId],
       createdAt:
           DateTime.tryParse(json['createdAt'] as String? ?? '') ??
           DateTime.now(),
