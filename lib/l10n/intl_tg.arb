@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-09-15 11:13:52.342204",
+    "@@last_modified": "2026-09-16 10:14:23.607477",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2329,5 +2329,16 @@
     "activitiesFilterTooltip": "Танҳо фаъолиятҳоро нишон диҳед",
     "noGroupChatsYet": "Шумо ҳанӯз дар ягон чати гурӯҳӣ нестед.",
     "noActivitiesYet": "Шумо ҳанӯз дар ягон фаъолият нестед.",
-    "unblock": "Кушодан"
+    "unblock": "Кушодан",
+    "orchestratorFeedbackTooltip": "Ин мундариҷаро қайд кунед",
+    "orchestratorFeedbackTitle": "Дар ин ҷо чӣ нодуруст аст?",
+    "orchestratorFeedbackPartSuggestion": "Пешниҳодҳо",
+    "orchestratorFeedbackPartGoals": "Мукофотҳои ҳадаф",
+    "orchestratorFeedbackCommentHint": "Бигӯед, ки чӣ нодуруст аст",
+    "orchestratorFeedbackPickAward": "Кадом ситора?",
+    "orchestratorFeedbackPickAwardRequired": "Ситораеро, ки зери шубҳа доред, интихоб кунед",
+    "orchestratorFeedbackNoAwards": "Ин давр ситораҳо надод, аз ин рӯ дар ин ҷо чизе барои савол додан нест.",
+    "orchestratorFeedbackCommentRequired": "Шарҳ илова кунед, то бидонем, ки чиро ислоҳ кунем",
+    "orchestratorFeedbackSubmit": "Ирсол",
+    "orchestratorFeedbackThanks": "Қайд карда шуд. Ташаккур!"
 }

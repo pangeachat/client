@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-09-15 11:13:47.806675",
+    "@@last_modified": "2026-09-16 10:14:11.158148",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2329,5 +2329,16 @@
     "activitiesFilterTooltip": "Nuna ayyuka kawai",
     "noGroupChatsYet": "Ba ka cikin kowane taɗin rukuni tukuna.",
     "noActivitiesYet": "Ba ka cikin kowane ayyuka tukuna.",
-    "unblock": "Cire Katanga"
+    "unblock": "Cire Katanga",
+    "orchestratorFeedbackTooltip": "Alama wannan abun ciki",
+    "orchestratorFeedbackTitle": "Mene ne ba daidai ba a nan?",
+    "orchestratorFeedbackPartSuggestion": "Shawara",
+    "orchestratorFeedbackPartGoals": "Kyautar manufa",
+    "orchestratorFeedbackCommentHint": "Faɗi abin da ba daidai ba ne da shi",
+    "orchestratorFeedbackPickAward": "Wace tauraro?",
+    "orchestratorFeedbackPickAwardRequired": "Zaɓi tauraron da kake tambaya",
+    "orchestratorFeedbackNoAwards": "Wannan juyin bai ba da taurari ba, don haka babu abin da za a tambaya a nan.",
+    "orchestratorFeedbackCommentRequired": "Ƙara sharhi don mu san abin da za mu gyara",
+    "orchestratorFeedbackSubmit": "Aika",
+    "orchestratorFeedbackThanks": "An yi alama. Na gode!"
 }

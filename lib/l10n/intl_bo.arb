@@ -2919,7 +2919,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-09-15 11:13:46.162191",
+    "@@last_modified": "2026-09-16 10:14:07.189552",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9536,5 +9536,16 @@
     "activitiesFilterTooltip": "བྱེད་སྒོ་ཁོ་ན་སྟོན།",
     "noGroupChatsYet": "ཁྱེད་ད་དུང་ཚོགས་པའི་ཁ་བརྡ་གང་ལའང་མི་ཞུགས།",
     "noActivitiesYet": "ཁྱེད་ད་དུང་བྱེད་སྒོ་གང་ལའང་མི་ཞུགས།",
-    "unblock": "མི་འགོག་"
+    "unblock": "མི་འགོག་",
+    "orchestratorFeedbackTooltip": "འདིར་དམིགས་བསལ་གྱི་རྟགས་རྒྱོབ།",
+    "orchestratorFeedbackTitle": "འདིར་གང་ནོར་འདུག",
+    "orchestratorFeedbackPartSuggestion": "བསམ་འཆར།",
+    "orchestratorFeedbackPartGoals": "དམིགས་ཡུལ་གྱི་བྱ་དགའ།",
+    "orchestratorFeedbackCommentHint": "འདིར་གང་ནོར་འདུག་བཤད་རོགས།",
+    "orchestratorFeedbackPickAward": "སྐར་མ་གང་།",
+    "orchestratorFeedbackPickAwardRequired": "ཁྱེད་ཀྱིས་དོགས་པ་ཟ་བའི་སྐར་མ་དེ་འདེམས་རོགས།",
+    "orchestratorFeedbackNoAwards": "ཐེངས་འདིར་སྐར་མ་གཅིག་ཀྱང་ཐོབ་མེད་པས་འདིར་དོགས་པ་ཟ་རྒྱུ་གང་ཡང་མེད།",
+    "orchestratorFeedbackCommentRequired": "ང་ཚོས་གང་ཞིག་བཟོ་དགོས་པ་ཤེས་ཆེད་དུ་མཆན་ཞིག་རྒྱོབ།",
+    "orchestratorFeedbackSubmit": "བསྐུར།",
+    "orchestratorFeedbackThanks": "དམིགས་བསལ་གྱི་རྟགས་བརྒྱབ་ཟིན། ཐུགས་རྗེ་ཆེ།"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-09-15 11:13:46.702800",
+    "@@last_modified": "2026-09-16 10:14:06.381323",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2329,5 +2329,16 @@
     "activitiesFilterTooltip": "እንቅስቃሴዎችን ብቻ አሳይ",
     "noGroupChatsYet": "እስካሁን በማንኛውም የቡድን ውይይት ውስጥ የለዎትም።",
     "noActivitiesYet": "እስካሁን በማንኛውም እንቅስቃሴ ውስጥ የለዎትም።",
-    "unblock": "እገዳ አንሳ"
+    "unblock": "እገዳ አንሳ",
+    "orchestratorFeedbackTooltip": "ይህን ይዘት ምልክት አድርግ",
+    "orchestratorFeedbackTitle": "እዚህ ምን ችግር አለ?",
+    "orchestratorFeedbackPartSuggestion": "ጥቆማዎቹ",
+    "orchestratorFeedbackPartGoals": "የግብ ሽልማቶች",
+    "orchestratorFeedbackCommentHint": "ምን ችግር እንዳለበት ይንገሩ",
+    "orchestratorFeedbackPickAward": "የትኛውን ኮከብ?",
+    "orchestratorFeedbackPickAwardRequired": "የምትጠይቀውን ኮከብ ምረጥ",
+    "orchestratorFeedbackNoAwards": "ይህ ዙር ምንም ኮከቦችን አልሸለመም፣ ስለዚህ እዚህ የሚጠየቅ ነገር የለም።",
+    "orchestratorFeedbackCommentRequired": "ምን ማስተካከል እንዳለብን እንድናውቅ አስተያየት ያክሉ",
+    "orchestratorFeedbackSubmit": "ላክ",
+    "orchestratorFeedbackThanks": "ምልክት ተደርጓል። እናመሰግናለን!"
 }

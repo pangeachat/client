@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-15 11:13:52.333437",
+    "@@last_modified": "2026-09-16 10:14:23.060174",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -10017,5 +10017,16 @@
     "activitiesFilterTooltip": "செயல்பாடுகளை மட்டும் காட்டு",
     "noGroupChatsYet": "நீங்கள் இன்னும் எந்த குழு அரட்டைகளிலும் இல்லை.",
     "noActivitiesYet": "நீங்கள் இன்னும் எந்த செயல்பாடுகளிலும் இல்லை.",
-    "unblock": "தடைநீக்கு"
+    "unblock": "தடைநீக்கு",
+    "orchestratorFeedbackTooltip": "இந்த உள்ளடக்கத்தைக் கொடியிடு",
+    "orchestratorFeedbackTitle": "இங்கே என்ன தவறு?",
+    "orchestratorFeedbackPartSuggestion": "பரிந்துரைகள்",
+    "orchestratorFeedbackPartGoals": "இலக்கு விருதுகள்",
+    "orchestratorFeedbackCommentHint": "இதில் என்ன தவறு என்று கூறுங்கள்",
+    "orchestratorFeedbackPickAward": "எந்த நட்சத்திரம்?",
+    "orchestratorFeedbackPickAwardRequired": "நீங்கள் கேள்வி கேட்கும் நட்சத்திரத்தைத் தேர்ந்தெடுக்கவும்",
+    "orchestratorFeedbackNoAwards": "இந்த முறை எந்த நட்சத்திரங்களும் வழங்கப்படவில்லை, எனவே இங்கே கேள்வி கேட்க எதுவும் இல்லை.",
+    "orchestratorFeedbackCommentRequired": "நாங்கள் எதைச் சரிசெய்ய வேண்டும் என்பதை அறிய ஒரு கருத்தைச் சேர்க்கவும்",
+    "orchestratorFeedbackSubmit": "அனுப்பு",
+    "orchestratorFeedbackThanks": "கொடியிடப்பட்டது. நன்றி!"
 }

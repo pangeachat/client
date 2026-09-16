@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-09-15 11:13:52.414160",
+    "@@last_modified": "2026-09-16 10:14:22.851042",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2329,5 +2329,16 @@
     "activitiesFilterTooltip": "Onyesha tu shughuli",
     "noGroupChatsYet": "Bado hauko kwenye gumzo lolote la kikundi.",
     "noActivitiesYet": "Bado hauko kwenye shughuli zozote.",
-    "unblock": "Ondoa kizuizi"
+    "unblock": "Ondoa kizuizi",
+    "orchestratorFeedbackTooltip": "Weka alama kwenye maudhui haya",
+    "orchestratorFeedbackTitle": "Kuna nini kibaya hapa?",
+    "orchestratorFeedbackPartSuggestion": "Mapendekezo",
+    "orchestratorFeedbackPartGoals": "Tuzo za malengo",
+    "orchestratorFeedbackCommentHint": "Sema kuna nini kibaya nacho",
+    "orchestratorFeedbackPickAward": "Nyota ipi?",
+    "orchestratorFeedbackPickAwardRequired": "Chagua nyota unayohoji",
+    "orchestratorFeedbackNoAwards": "Zamu hii haikutoa nyota zozote, kwa hivyo hakuna cha kuhoji hapa.",
+    "orchestratorFeedbackCommentRequired": "Ongeza maoni ili tujue nini cha kurekebisha",
+    "orchestratorFeedbackSubmit": "Tuma",
+    "orchestratorFeedbackThanks": "Imewekewa alama. Asante!"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-09-15 11:13:50.819455",
+    "@@last_modified": "2026-09-16 10:14:18.845526",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2329,5 +2329,16 @@
     "activitiesFilterTooltip": "ਸਿਰਫ਼ ਗਤੀਵਿਧੀਆਂ ਦਿਖਾਓ",
     "noGroupChatsYet": "ਤੁਸੀਂ ਅਜੇ ਕਿਸੇ ਸਮੂਹ ਚੈਟ ਵਿੱਚ ਨਹੀਂ ਹੋ।",
     "noActivitiesYet": "ਤੁਸੀਂ ਅਜੇ ਕਿਸੇ ਗਤੀਵਿਧੀ ਵਿੱਚ ਨਹੀਂ ਹੋ।",
-    "unblock": "ਅਨਬਲੌਕ ਕਰੋ"
+    "unblock": "ਅਨਬਲੌਕ ਕਰੋ",
+    "orchestratorFeedbackTooltip": "ਇਸ ਸਮੱਗਰੀ ਨੂੰ ਫਲੈਗ ਕਰੋ",
+    "orchestratorFeedbackTitle": "ਇੱਥੇ ਕੀ ਗਲਤ ਹੈ?",
+    "orchestratorFeedbackPartSuggestion": "ਸੁਝਾਅ",
+    "orchestratorFeedbackPartGoals": "ਟੀਚੇ ਦੇ ਇਨਾਮ",
+    "orchestratorFeedbackCommentHint": "ਦੱਸੋ ਇਸ ਵਿੱਚ ਕੀ ਗਲਤ ਹੈ",
+    "orchestratorFeedbackPickAward": "ਕਿਹੜਾ ਸਟਾਰ?",
+    "orchestratorFeedbackPickAwardRequired": "ਉਹ ਸਟਾਰ ਚੁਣੋ ਜਿਸ ਬਾਰੇ ਤੁਸੀਂ ਸਵਾਲ ਕਰ ਰਹੇ ਹੋ",
+    "orchestratorFeedbackNoAwards": "ਇਸ ਵਾਰੀ ਕੋਈ ਸਟਾਰ ਨਹੀਂ ਦਿੱਤਾ ਗਿਆ, ਇਸ ਲਈ ਇੱਥੇ ਸਵਾਲ ਕਰਨ ਲਈ ਕੁਝ ਵੀ ਨਹੀਂ ਹੈ।",
+    "orchestratorFeedbackCommentRequired": "ਇੱਕ ਟਿੱਪਣੀ ਸ਼ਾਮਲ ਕਰੋ ਤਾਂ ਜੋ ਸਾਨੂੰ ਪਤਾ ਲੱਗੇ ਕਿ ਕੀ ਠੀਕ ਕਰਨਾ ਹੈ",
+    "orchestratorFeedbackSubmit": "ਭੇਜੋ",
+    "orchestratorFeedbackThanks": "ਫਲੈਗ ਕੀਤਾ ਗਿਆ। ਧੰਨਵਾਦ!"
 }

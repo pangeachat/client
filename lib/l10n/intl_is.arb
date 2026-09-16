@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-09-15 11:13:48.841526",
+    "@@last_modified": "2026-09-16 10:14:13.014187",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2329,5 +2329,16 @@
     "activitiesFilterTooltip": "Sýna aðeins verkefni",
     "noGroupChatsYet": "Þú ert ekki í neinum hópspjöllum ennþá.",
     "noActivitiesYet": "Þú ert ekki í neinum verkefnum ennþá.",
-    "unblock": "Aflæsa"
+    "unblock": "Aflæsa",
+    "orchestratorFeedbackTooltip": "Fána þetta efni",
+    "orchestratorFeedbackTitle": "Hvað er athugavert hér?",
+    "orchestratorFeedbackPartSuggestion": "Tillögurnar",
+    "orchestratorFeedbackPartGoals": "Markmiðaverðlaunin",
+    "orchestratorFeedbackCommentHint": "Segðu hvað er athugavert við þetta",
+    "orchestratorFeedbackPickAward": "Hvaða stjarna?",
+    "orchestratorFeedbackPickAwardRequired": "Veldu stjörnuna sem þú ert að efast um",
+    "orchestratorFeedbackNoAwards": "Þessi umferð veitti engar stjörnur, svo það er ekkert til að efast um hér.",
+    "orchestratorFeedbackCommentRequired": "Bættu við athugasemd svo við vitum hvað á að laga",
+    "orchestratorFeedbackSubmit": "Senda",
+    "orchestratorFeedbackThanks": "Fánað. Takk!"
 }

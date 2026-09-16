@@ -3093,7 +3093,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-09-15 11:13:52.442539",
+    "@@last_modified": "2026-09-16 10:14:23.135677",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10557,5 +10557,16 @@
     "activitiesFilterTooltip": "แสดงเฉพาะกิจกรรม",
     "noGroupChatsYet": "คุณยังไม่ได้อยู่ในแชทกลุ่มใดๆ",
     "noActivitiesYet": "คุณยังไม่ได้อยู่ในกิจกรรมใดๆ",
-    "unblock": "เลิกบล็อก"
+    "unblock": "เลิกบล็อก",
+    "orchestratorFeedbackTooltip": "ตั้งค่าสถานะเนื้อหานี้",
+    "orchestratorFeedbackTitle": "มีอะไรผิดปกติที่นี่",
+    "orchestratorFeedbackPartSuggestion": "ข้อเสนอแนะ",
+    "orchestratorFeedbackPartGoals": "รางวัลเป้าหมาย",
+    "orchestratorFeedbackCommentHint": "บอกว่ามีอะไรผิดปกติ",
+    "orchestratorFeedbackPickAward": "ดาวดวงไหน",
+    "orchestratorFeedbackPickAwardRequired": "เลือกดาวที่คุณกำลังตั้งคำถาม",
+    "orchestratorFeedbackNoAwards": "เทิร์นนี้ไม่ได้รับดาว ดังนั้นจึงไม่มีอะไรต้องตั้งคำถามที่นี่",
+    "orchestratorFeedbackCommentRequired": "เพิ่มความคิดเห็นเพื่อให้เราทราบว่าจะแก้ไขอะไร",
+    "orchestratorFeedbackSubmit": "ส่ง",
+    "orchestratorFeedbackThanks": "ตั้งค่าสถานะแล้ว ขอบคุณ!"
 }

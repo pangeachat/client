@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-15 11:13:51.667184",
+    "@@last_modified": "2026-09-16 10:14:12.018121",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9998,5 +9998,16 @@
     "activitiesFilterTooltip": "Hanya tampilkan aktivitas",
     "noGroupChatsYet": "Anda belum bergabung dalam obrolan grup apa pun.",
     "noActivitiesYet": "Anda belum bergabung dalam aktivitas apa pun.",
-    "unblock": "Buka Blokir"
+    "unblock": "Buka Blokir",
+    "orchestratorFeedbackTooltip": "Tandai konten ini",
+    "orchestratorFeedbackTitle": "Ada apa ini?",
+    "orchestratorFeedbackPartSuggestion": "Saran-saran",
+    "orchestratorFeedbackPartGoals": "Penghargaan tujuan",
+    "orchestratorFeedbackCommentHint": "Sebutkan apa yang salah",
+    "orchestratorFeedbackPickAward": "Bintang yang mana?",
+    "orchestratorFeedbackPickAwardRequired": "Pilih bintang yang Anda pertanyakan",
+    "orchestratorFeedbackNoAwards": "Giliran ini tidak memberikan bintang, jadi tidak ada yang perlu dipertanyakan di sini.",
+    "orchestratorFeedbackCommentRequired": "Tambahkan komentar agar kami tahu apa yang harus diperbaiki",
+    "orchestratorFeedbackSubmit": "Kirim",
+    "orchestratorFeedbackThanks": "Ditandai. Terima kasih!"
 }
