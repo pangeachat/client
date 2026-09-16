@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -53,9 +52,10 @@ class SessionBackup {
 }
 
 extension InitWithRestoreExtension on Client {
-  /// The keychain store for the session backup. Backups are written on every
-  /// client init, including iOS background launches (push, prewarming) while
-  /// the device is locked, where the plugin default accessibility
+  /// The keychain store for the session backup. Backups are written every time
+  /// a client becomes logged in (see [storeSessionBackup]), including iOS
+  /// background launches (push, prewarming) while the device is locked, where
+  /// the plugin default accessibility
   /// (`kSecAttrAccessibleWhenUnlocked`) makes the item unreachable and the
   /// write fails with `errSecInteractionNotAllowed` (-25308, Sentry
   /// CLIENT-4ZN). `first_unlock` keeps it reachable after the first unlock
@@ -66,23 +66,72 @@ extension InitWithRestoreExtension on Client {
     iOptions: IOSOptions(accessibility: KeychainAccessibility.first_unlock),
   );
 
+  static String sessionBackupKey(String clientName) =>
+      '${AppSettings.applicationName.value}_session_backup_$clientName';
+
+  static FlutterSecureStorage? get _storage =>
+      PlatformInfos.isMobile || PlatformInfos.isLinux
+      ? sessionBackupStorage
+      : null;
+
   static Future<void> deleteSessionBackup(String clientName) async {
-    final storage = PlatformInfos.isMobile || PlatformInfos.isLinux
-        ? sessionBackupStorage
-        : null;
-    await storage?.delete(
-      key: '${AppSettings.applicationName.value}_session_backup_$clientName',
-    );
-    // The notification extension must not outlive the session it holds.
-    await NseSession.clear();
+    await _storage?.delete(key: sessionBackupKey(clientName));
+  }
+
+  /// Writes this session to the backup [initWithRestore] restores from, which
+  /// is also what a push handled while the app is closed authenticates with.
+  ///
+  /// [ClientManager.createClient] calls this every time the client becomes
+  /// logged in: the end of init, a fresh login, and every access token
+  /// refresh. Writing it only at startup left a token that expired within a
+  /// day, because refresh tokens are in use and the server's access token
+  /// lifetime is 24 hours.
+  ///
+  /// The iOS notification service extension gets the same token here, for the
+  /// same reason: it fetches avatars while the app is not running.
+  ///
+  /// A write can fail before the first unlock since boot. That is a transient
+  /// the next write retries, so it is reported as a warning and never thrown.
+  Future<void> storeSessionBackup() async {
+    final storage = _storage;
+    if (storage == null) return;
+    final accessToken = this.accessToken;
+    final homeserver = this.homeserver?.toString();
+    final deviceId = deviceID;
+    final userId = userID;
+    if (accessToken == null ||
+        homeserver == null ||
+        deviceId == null ||
+        userId == null) {
+      return;
+    }
+    Logs().v('Store session in backup');
+    try {
+      await storage.write(
+        key: sessionBackupKey(clientName),
+        value: SessionBackup(
+          olmAccount: encryption?.pickledOlmAccount,
+          accessToken: accessToken,
+          deviceId: deviceId,
+          homeserver: homeserver,
+          deviceName: deviceName,
+          userId: userId,
+        ).toString(),
+      );
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {'client_name': clientName},
+        level: SentryLevel.warning,
+      );
+    }
+    await NseSession.store(accessToken: accessToken, homeserver: homeserver);
   }
 
   Future<void> initWithRestore({void Function()? onMigration}) async {
-    final storageKey =
-        '${AppSettings.applicationName.value}_session_backup_$clientName';
-    final storage = PlatformInfos.isMobile || PlatformInfos.isLinux
-        ? sessionBackupStorage
-        : null;
+    final storageKey = sessionBackupKey(clientName);
+    final storage = _storage;
 
     try {
       await init(
@@ -92,55 +141,6 @@ extension InitWithRestoreExtension on Client {
         waitForFirstSync: false,
         waitUntilLoadCompletedLoaded: false,
       );
-      if (isLogged()) {
-        final accessToken = this.accessToken;
-        final homeserver = this.homeserver?.toString();
-        final deviceId = deviceID;
-        final userId = userID;
-        final hasBackup =
-            accessToken != null &&
-            homeserver != null &&
-            deviceId != null &&
-            userId != null;
-        assert(hasBackup);
-        if (hasBackup) {
-          Logs().v('Store session in backup');
-          // Deliberately not awaited (init latency), but no longer left to
-          // fail as an unhandled async error either: a backup write can still
-          // fail before the first unlock since boot, and that is a transient
-          // the next launch retries — a warning, not an error. Handled here
-          // rather than awaited inside this try so a write failure can never
-          // trip the restore path below.
-          unawaited(
-            storage
-                ?.write(
-                  key: storageKey,
-                  value: SessionBackup(
-                    olmAccount: encryption?.pickledOlmAccount,
-                    accessToken: accessToken,
-                    deviceId: deviceId,
-                    homeserver: homeserver,
-                    deviceName: deviceName,
-                    userId: userId,
-                  ).toString(),
-                )
-                .catchError(
-                  (Object e, StackTrace s) => ErrorHandler.logError(
-                    e: e,
-                    s: s,
-                    data: {'client_name': clientName},
-                    level: SentryLevel.warning,
-                  ),
-                ),
-          );
-          // The notification service extension needs the same credentials to
-          // fetch an avatar for a notification the app never sees. It reports
-          // its own failures, which are cosmetic.
-          unawaited(
-            NseSession.store(accessToken: accessToken, homeserver: homeserver),
-          );
-        }
-      }
     } catch (e, s) {
       Logs().wtf('Client init failed!', e, s);
       final sessionBackupString = await storage?.read(key: storageKey);
