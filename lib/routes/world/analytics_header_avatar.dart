@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 import 'package:fluffychat/routes/world/circular_xp_ring_painter.dart';
 import 'package:fluffychat/routes/world/hex_level_badge.dart';
 import 'package:fluffychat/routes/world/level_up_badge_celebration.dart';
@@ -29,11 +30,11 @@ class AnalyticsHeaderAvatar extends StatelessWidget {
 }
 
 /// The avatar circle wearing the XP ring, the level badge, and the small
-/// flag (Figma collapsed component) — one tap target, announced as a single
-/// button. Plain values only; [AnalyticsHeaderAvatar] is its Matrix-aware
-/// host, mounting it in a full-screen chat's app bar (routing.instructions.md
-/// → "Single-column analytics nav bar"). [scale] shrinks the whole cluster
-/// proportionally so it fits a toolbar.
+/// flag (Figma collapsed component) — one control: a single Tab stop,
+/// announced as a single button. Plain values only; [AnalyticsHeaderAvatar]
+/// is its Matrix-aware host, mounting it in a full-screen chat's app bar
+/// (routing.instructions.md → "Single-column analytics nav bar"). [scale]
+/// shrinks the whole cluster proportionally so it fits a toolbar.
 class AnalyticsHeaderAvatarInternal extends StatelessWidget {
   final UserClusterViewModel viewModel;
   final double scale;
@@ -84,6 +85,16 @@ class AnalyticsHeaderAvatarInternal extends StatelessWidget {
   double get _badgeFontSize => _badgeFontSizeBase * scale;
   double get _flagBottomOffset => _flagBottomOffsetBase * scale;
 
+  /// The focus ring's [BorderSide.strokeAlign], which moves the stroke out by
+  /// half ring widths past 1: one ring width clear of the XP track, which
+  /// overshoots the ring box by half its extra width. Gold next to the XP ring
+  /// measures 1.3 to 2.9:1; next to the app bar it clears 4.2:1 (#9117).
+  static const double _ringStrokeAlign =
+      BorderSide.strokeAlignOutside +
+      2 *
+          (XpBorderPainter.trackExtra / 2 + FocusRingTapTarget.ringWidth) /
+          FocusRingTapTarget.ringWidth;
+
   @override
   Widget build(BuildContext context) {
     final label = L10n.of(context).analyticsAndSettingsLabel;
@@ -95,122 +106,131 @@ class AnalyticsHeaderAvatarInternal extends StatelessWidget {
           cursor: SystemMouseCursors.click,
           child: Tooltip(
             message: label,
-            // The Semantics below already names this control; exclude the Tooltip
-            // so its message isn't announced twice.
+            // The target below names this control; exclude the Tooltip so its
+            // message isn't announced twice.
             excludeFromSemantics: true,
-            child: Semantics(
-              button: true,
-              label: label,
-              // A bounded node of its own: without `container` the annotation
-              // merges into the stretched ancestor, so assistive tech (and the
-              // widget tests' semantics taps) target the full-width bar area
-              // instead of the circle.
-              container: true,
-              excludeSemantics: true,
-              // Expose the tap on the announced node for assistive tech (#7185).
-              onTap: () => viewModel.openAnalyticsSummary(context),
-              child: GestureDetector(
-                behavior: HitTestBehavior.opaque,
-                onTap: () => viewModel.openAnalyticsSummary(context),
-                // Level + XP ring re-read on every construct-stream tick, the
-                // same way the full bar and the web cluster do — subscribed
-                // during build, per analytics-system.instructions.md "Key
-                // Contracts". Without this the badge froze at the level it
-                // mounted with while the chip celebrated a later one (#8437).
-                child: StreamBuilder(
-                  stream: viewModel.constructUpdateStream,
-                  builder: (context, _) =>
-                      FutureBuilder<DerivedAnalyticsDataModel>(
-                        future: viewModel.derivedAnalyticsData,
-                        builder: (context, snapshot) {
-                          final derived =
-                              snapshot.data ??
-                              viewModel.cachedDerivedAnalyticsData;
-                          final level = derived?.level ?? 1;
-                          final progress = (derived?.levelProgress ?? 0.0)
-                              .clamp(0.0, 1.0);
-                          return Stack(
-                            clipBehavior: Clip.none,
-                            alignment: Alignment.center,
-                            children: [
-                              CustomPaint(
-                                size: Size.square(_avatarSize + 2 * _xpStroke),
-                                painter: CircularXpRingPainter(
-                                  progress: progress,
-                                  trackColor: XpBorderPainter.trackColorFor(
-                                    Theme.of(context),
-                                  ),
-                                  progressColor: XpBorderPainter.arcColorFor(
-                                    Theme.of(context),
-                                  ),
-                                  stroke: _xpStroke,
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsets.all(_xpStroke),
-                                  child: ListenableBuilder(
-                                    listenable: Listenable.merge([
-                                      viewModel.avatarUrl,
-                                      viewModel.displayName,
-                                    ]),
-                                    builder: (context, _) => ClusterAvatar(
-                                      avatarUrl: viewModel.avatarUrl.value,
-                                      name: viewModel.displayName.value,
-                                      onTap: () => viewModel
-                                          .openAnalyticsSummary(context),
-                                      size: _avatarSize,
-                                    ),
-                                  ),
+            // Level + XP ring re-read on every construct-stream tick, the
+            // same way the full bar and the web cluster do — subscribed
+            // during build, per analytics-system.instructions.md "Key
+            // Contracts". Without this the badge froze at the level it
+            // mounted with while the chip celebrated a later one (#8437).
+            child: StreamBuilder(
+              stream: viewModel.constructUpdateStream,
+              builder: (context, _) => FutureBuilder<DerivedAnalyticsDataModel>(
+                future: viewModel.derivedAnalyticsData,
+                builder: (context, snapshot) {
+                  final derived =
+                      snapshot.data ?? viewModel.cachedDerivedAnalyticsData;
+                  final level = derived?.level ?? 1;
+                  final progress = (derived?.levelProgress ?? 0.0).clamp(
+                    0.0,
+                    1.0,
+                  );
+                  return Stack(
+                    clipBehavior: Clip.none,
+                    alignment: Alignment.center,
+                    children: [
+                      // The one control: name, role, focus and tap on one
+                      // node, and one Tab stop (#9117). Its ring paints over
+                      // this child only, so it passes under the badge and
+                      // flag rather than across them.
+                      FocusRingTapTarget(
+                        onTap: () => viewModel.openAnalyticsSummary(context),
+                        label: label,
+                        shape: const CircleBorder(),
+                        ringStrokeAlign: _ringStrokeAlign,
+                        // The avatar inside is decoration, not a Tab stop.
+                        child: ExcludeFocus(
+                          child: CustomPaint(
+                            size: Size.square(_avatarSize + 2 * _xpStroke),
+                            painter: CircularXpRingPainter(
+                              progress: progress,
+                              trackColor: XpBorderPainter.trackColorFor(
+                                Theme.of(context),
+                              ),
+                              progressColor: XpBorderPainter.arcColorFor(
+                                Theme.of(context),
+                              ),
+                              stroke: _xpStroke,
+                            ),
+                            child: Padding(
+                              padding: EdgeInsets.all(_xpStroke),
+                              child: ListenableBuilder(
+                                listenable: Listenable.merge([
+                                  viewModel.avatarUrl,
+                                  viewModel.displayName,
+                                ]),
+                                builder: (context, _) => ClusterAvatar(
+                                  avatarUrl: viewModel.avatarUrl.value,
+                                  name: viewModel.displayName.value,
+                                  onTap: () =>
+                                      viewModel.openAnalyticsSummary(context),
+                                  size: _avatarSize,
                                 ),
                               ),
-                              Positioned(
-                                top: _badgeTopOffset,
-                                left: _badgeLeftOffset,
-                                child: IgnorePointer(
-                                  child: Material(
-                                    type: MaterialType.transparency,
-                                    child: LevelUpBadgeCelebration(
-                                      levelUpdates: viewModel.levelUpdates,
-                                      child: HexLevelBadge(
-                                        level: level,
-                                        onTap: () => viewModel
-                                            .openAnalyticsSummary(context),
-                                        width: _badgeWidth,
-                                        height: _badgeHeight,
-                                        fontSize: _badgeFontSize,
+                            ),
+                          ),
+                        ),
+                      ),
+                      // The badge and flag are decoration too: no pointer,
+                      // focus or semantics of their own, so all three reach
+                      // the control beneath.
+                      Positioned.fill(
+                        child: IgnorePointer(
+                          child: ExcludeFocus(
+                            child: ExcludeSemantics(
+                              child: Stack(
+                                clipBehavior: Clip.none,
+                                alignment: Alignment.center,
+                                children: [
+                                  Positioned(
+                                    top: _badgeTopOffset,
+                                    left: _badgeLeftOffset,
+                                    child: Material(
+                                      type: MaterialType.transparency,
+                                      child: LevelUpBadgeCelebration(
+                                        levelUpdates: viewModel.levelUpdates,
+                                        child: HexLevelBadge(
+                                          level: level,
+                                          onTap: () => viewModel
+                                              .openAnalyticsSummary(context),
+                                          width: _badgeWidth,
+                                          height: _badgeHeight,
+                                          fontSize: _badgeFontSize,
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              ),
-                              if (l2 != null)
-                                Positioned(
-                                  bottom: _flagBottomOffset,
-                                  child: IgnorePointer(
-                                    child:
-                                        flagBuilder?.call(
-                                          l2,
-                                          () => viewModel.openAnalyticsSummary(
-                                            context,
+                                  if (l2 != null)
+                                    Positioned(
+                                      bottom: _flagBottomOffset,
+                                      child:
+                                          flagBuilder?.call(
+                                            l2,
+                                            () => viewModel
+                                                .openAnalyticsSummary(context),
+                                            _flagWidth,
+                                            _flagHeight,
+                                            _flagFontSize,
+                                          ) ??
+                                          ClusterLanguageFlag(
+                                            language: l2,
+                                            onTap: () => viewModel
+                                                .openAnalyticsSummary(context),
+                                            width: _flagWidth,
+                                            height: _flagHeight,
+                                            fontSize: _flagFontSize,
                                           ),
-                                          _flagWidth,
-                                          _flagHeight,
-                                          _flagFontSize,
-                                        ) ??
-                                        ClusterLanguageFlag(
-                                          language: l2,
-                                          onTap: () => viewModel
-                                              .openAnalyticsSummary(context),
-                                          width: _flagWidth,
-                                          height: _flagHeight,
-                                          fontSize: _flagFontSize,
-                                        ),
-                                  ),
-                                ),
-                            ],
-                          );
-                        },
+                                    ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
-                ),
+                    ],
+                  );
+                },
               ),
             ),
           ),
