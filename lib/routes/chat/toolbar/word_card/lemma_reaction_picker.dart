@@ -230,7 +230,6 @@ class LemmaReactionPickerState extends State<LemmaReactionPicker>
                     children: [
                       ShimmerBackground(
                         enabled: enabled && _selectedEmoji == null,
-                        delayBetweenPulses: const Duration(seconds: 5),
                         child: CompositedTransformTarget(
                           link: MatrixState.pAnyState
                               .layerLinkAndKey(targetId)
