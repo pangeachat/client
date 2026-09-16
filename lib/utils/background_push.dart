@@ -35,6 +35,7 @@ import 'package:unifiedpush/unifiedpush.dart';
 import 'package:unifiedpush_ui/unifiedpush_ui.dart';
 
 import 'package:fluffychat/features/languages/language_constants.dart';
+import 'package:fluffychat/features/notifications/background_push_notification.dart';
 import 'package:fluffychat/features/notifications/notification_tap_utils.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/main.dart';
@@ -303,7 +304,7 @@ class BackgroundPush {
         })) ??
         [];
     var setNewPusher = false;
-    // Just the plain app id, we add the .data_message suffix later
+    // Just the plain app id, we add the Android suffix later
     var appId = AppConfig.pushNotificationsAppId;
     // we need the deviceAppId to remove potential legacy UP pusher
     var deviceAppId = '$appId.${client.deviceID}';
@@ -312,7 +313,13 @@ class BackgroundPush {
       deviceAppId = deviceAppId.substring(0, 64);
     }
     if (!useDeviceSpecificAppId && PlatformInfos.isAndroid) {
-      appId += '.data_message';
+      // Sygnal sends this app ID data-only pushes, which BackgroundPushNotification
+      // turns into a notification with the avatar. Released builds register
+      // '.data_message', which still gets visible notifications: flipping that
+      // one would leave every build that hasn't updated with no notification at
+      // all while closed. Re-registering under this ID drops the old pusher,
+      // since it shares the pushkey.
+      appId += '.data_only';
     }
     final thisAppId = useDeviceSpecificAppId ? deviceAppId : appId;
     if (gatewayUrl != null && token != null) {
@@ -608,8 +615,18 @@ Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   // Required for background isolate
   WidgetsFlutterBinding.ensureInitialized();
   final instance = BackgroundPush._instance;
-  if (instance == null) return;
-  await instance._onOpenNotification(message);
+  if (instance != null) {
+    // The main isolate is alive and already showing this through onMessage.
+    await instance._onOpenNotification(message);
+    return;
+  }
+  // onBackgroundMessage is registered on every platform, and every iOS push
+  // carries content-available, so this also runs on a backgrounded iPhone.
+  // iOS already shows the notification itself and decorates it in the
+  // notification service extension; building a second one here would
+  // duplicate it.
+  if (!PlatformInfos.isAndroid) return;
+  await BackgroundPushNotification.show(message.data);
 }
 
 // Pangea#
