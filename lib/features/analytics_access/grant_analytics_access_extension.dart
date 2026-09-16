@@ -42,7 +42,12 @@ extension GrantAnalyticsAccessExtension on Api {
       // This call bypasses `Requests` (Synapse endpoint, Matrix SDK client and
       // token), so it raises the typed failure itself rather than throwing the
       // response — see repos-and-error-handling.instructions.md.
-      throw PangeaHttpException.fromResponse(response);
+      throw PangeaHttpException.fromResponse(
+        response,
+        detail:
+            PangeaHttpException.detailFromResponse(response) ??
+            _failureReason(response),
+      );
     }
 
     _reportGrantFailures(response, courseRoomId, analyticsRoomId);
@@ -95,5 +100,22 @@ extension GrantAnalyticsAccessExtension on Api {
             .toList(),
       },
     );
+  }
+}
+
+/// The module's `{"error": reason}` on a non-200, read only when the body has
+/// no `detail` or `errcode` for [PangeaHttpException.detailFromResponse] to
+/// prefer. That parser deliberately never reads `error`, because a module's
+/// free text can echo learner input — but this endpoint's reasons are fixed
+/// strings ("Caller is not a joined member of mx_course_id", ...) and the only
+/// way to tell its 403s apart in Sentry (CLIENT-EFF, #9098). The exception
+/// caps it like any other detail.
+String? _failureReason(Response response) {
+  try {
+    final decoded = jsonDecode(response.body);
+    final reason = decoded is Map ? decoded['error'] : null;
+    return reason is String ? reason : null;
+  } catch (_) {
+    return null;
   }
 }
