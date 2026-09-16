@@ -42,8 +42,8 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
   /// Clears 4.5:1 on the surface in both themes.
   final Color gold;
 
-  /// Gold for a mark with a 3:1 floor: an earned star, a focus ring, a
-  /// progress fill. Closer to the key colour than [gold] on light.
+  /// Gold for a mark with a 3:1 floor: an earned star, a focus ring, a diff
+  /// underline. Closer to the key colour than [gold] on light.
   final Color goldGraphic;
 
   /// The pale gold, the same value in both themes, one step above
