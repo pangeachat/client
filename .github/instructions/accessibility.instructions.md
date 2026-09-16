@@ -83,6 +83,14 @@ Some pages replace their content under chrome that stays put: the onboarding wiz
 
 A list of like controls — the nav rail's joined courses, the chat list's rooms, the world map's drawn pins — is one Tab stop, not one per item: a keyboard user reaches whatever sits past the list in one press, the way a screen-reader user steps over a group. The rail's three section icons (World, Chats, Courses) stay stops of their own, so Tab walks the rail the way a screen reader browses it: the three items, then the joined-course list as one group. Inside the list, Up and Down move focus one item at a time and stop at the ends (no wrap, because losing your place in a long list disorients); Enter or Space activates the focused item; Tab or Shift+Tab leaves. Tab lands on the item last focused in the list, else the selected item (the open chat, the lit rail section), else the first item on screen — never on nothing, even when the selected item is scrolled out of view. Shared implementation for widget lists: [`RovingFocusGroup`](../../lib/pangea/common/widgets/roving_focus_group.dart), which an item joins by its `rovingId`; the map pins draw to a canvas and author the same behaviour themselves ([world-map.instructions.md](world-map.instructions.md)). The course page's Chats section does not use it yet.
 
+## Focus rings
+
+Every custom control authors its own keyboard focus ring. The ring shows only while the learner moves by keyboard, never on touch or a pointer click, and it must clear 3:1 against everything next to it (WCAG 2.1 1.4.11). Its colour and shape follow from what it sits on. Shared implementation: [`FocusRingTapTarget`](../../lib/pangea/common/widgets/focus_ring_tap_target.dart).
+
+- **On app chrome the ring is gold** (`goldGraphic`, see [design-tokens.instructions.md](design-tokens.instructions.md)). This covers the map's zoom controls, the cluster's avatar, stat trackers and language flag, and the nav rail's course avatars.
+- **Where a ring crosses map tiles or the XP ring, it is two-tone:** a white band toward the control and a near-black band toward its surroundings. No single colour clears 3:1 over arbitrary tiles, but one of these two always does. This covers the map pins ([world-map.instructions.md](world-map.instructions.md#keyboard-access)), the level medal and the narrow bar's level badge. Next to the XP ring and the shield, the gold ring measured 1.0 to 2.9:1 (#9114).
+- **On a solid mark the ring follows the mark's outline** (the level shield, the hexagon badge) instead of circling it, because a circle around the shield read as a stray artifact (#8067). The hexagon badge's ring sits inside its own box, because the narrow bar's loading shimmer masks only that box and anything painted outside it stays in colour (#7801).
+
 ## Quick habits for anyone building UI
 
 1. **Every control says what it does.** If it has no visible text, it needs a `tooltip:` / label. "Send message", not "tap here".

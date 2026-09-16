@@ -186,7 +186,7 @@ Pins draw to an opaque canvas, so keyboard access is authored, like screen-reade
 - **One Tab stop.** Tab reaches the map's Activities group once, and one further Tab leaves it. The pin budget draws up to ~93 pins at desktop width, so per-pin Tab stops would put a ninety-press wall between the learner and everything behind the map.
 - **Arrow keys rove the drawn pins in ranking order.** Traversal covers exactly the budget-capped drawn set, in the order the layer already announces: large cards, then mid pins, then dots. Keyboard order is therefore the map's attention order ([Priority matrix](#priority-matrix)), never the whole library. When a pan culls the roved pin, focus stays in the group (the index clamps) instead of dropping.
 - **Enter or Space is a tap.** Activating a roved pin runs the same tap-to-focus behavior as a pointer tap ([Tap any pin to Focus](#tap-any-pin-to-focus)): the pin promotes to its focused large card and the plan page opens. Esc steps back from a pin to the group level.
-- **The focus ring is authored.** The browser cannot draw its ring on the canvas, so the layer paints its own on the roved pin: a double ring (light inner, dark outer) that keeps non-text contrast over any tile imagery in either theme.
+- **The focus ring is authored.** The browser cannot draw its ring on the canvas, so the layer paints its own on the roved pin: the two-tone ring ([accessibility.instructions.md](accessibility.instructions.md#focus-rings)).
 - **Search is the find-something-specific path.** On wide screens the results dropdown ([Search](#search)) is arrow-navigable and Enter-selectable — the keyboard form of select-flies-and-focuses. On narrow screens the pins themselves are the results, and the roving group covers them.
 
 

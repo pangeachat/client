@@ -8,6 +8,7 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 
@@ -84,10 +85,11 @@ class PinSemanticsLayerState extends State<PinSemanticsLayer> {
 
   /// The ring pair is deliberately NOT theme tokens: it must hold non-text
   /// contrast (WCAG 1.4.11) over arbitrary tile imagery in both themes, and
-  /// white-inside-near-black does that on any backdrop.
-  static const Color _ringInner = Colors.white;
-  static const Color _ringOuter = Color(0xDD000000);
-  static const double _ringStroke = 2.0;
+  /// white-inside-near-black does that on any backdrop. Shared with the level
+  /// badges' ring, which crosses the same tiles (#9114).
+  static const Color _ringInner = FocusRingTapTarget.twoToneInner;
+  static const Color _ringOuter = FocusRingTapTarget.twoToneOuter;
+  static const double _ringStroke = FocusRingTapTarget.ringWidth;
 
   final FocusNode _focusNode = FocusNode(debugLabel: 'PinSemanticsLayer');
 

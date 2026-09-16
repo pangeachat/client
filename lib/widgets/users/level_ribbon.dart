@@ -65,17 +65,43 @@ class LevelRibbon extends StatelessWidget {
   /// Measured off a rendered `Icons.star`: 12.75 of ink in a 16 box.
   static const double _materialIconInkRatio = 0.8;
 
-  /// The shield outline from Figma (icon/warning-secondary), filled [hexcode].
+  /// The shield outline from Figma (icon/warning-secondary), in its viewBox
+  /// units ([_viewBox]). The one source for both the drawn SVG and
+  /// [shieldPath], so a focus ring traced from the path hugs the drawn mark.
+  static const _shieldPoints = <Offset>[
+    Offset(4.33333, 28.875),
+    Offset(4.33333, 17.5656),
+    Offset(0, 10.3125),
+    Offset(6.16667, 0),
+    Offset(18.5, 0),
+    Offset(24.6667, 10.3125),
+    Offset(20.3333, 17.5656),
+    Offset(20.3333, 28.875),
+    Offset(12.3333, 26.125),
+  ];
+  static const _viewBox = Size(24.6667, 28.875);
+
   static String _shieldSvg(String hexcode) =>
-      '<svg viewBox="0 0 24.6667 28.875" xmlns="http://www.w3.org/2000/svg">'
-      '<path d="M4.33333 28.875V17.5656L0 10.3125L6.16667 0H18.5L24.6667 '
-      '10.3125L20.3333 17.5656V28.875L12.3333 26.125L4.33333 28.875Z" '
+      '<svg viewBox="0 0 ${_viewBox.width} ${_viewBox.height}" '
+      'xmlns="http://www.w3.org/2000/svg"><path d="'
+      'M${_shieldPoints.map((p) => '${p.dx} ${p.dy}').join('L')}Z" '
       'fill="$hexcode"/></svg>';
+
+  /// The shield's outline scaled into [rect], which should have the shield's
+  /// aspect ratio (as a [LevelRibbon]'s own box does).
+  static Path shieldPath(Rect rect) => Path()
+    ..addPolygon([
+      for (final p in _shieldPoints)
+        rect.topLeft +
+            Offset(
+              p.dx * rect.width / _viewBox.width,
+              p.dy * rect.height / _viewBox.height,
+            ),
+    ], true);
 
   @override
   Widget build(BuildContext context) {
-    // Shield aspect ratio from the viewBox (24.6667 x 28.875).
-    final width = height * (24.6667 / 28.875);
+    final width = height * _viewBox.aspectRatio;
     final ribbon = SvgPicture.string(
       _shieldSvg(colorToHex(color ?? Theme.of(context).pangea.goldFixedDim)),
       width: width,
