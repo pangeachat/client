@@ -3536,7 +3536,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-09-15 11:13:47.163265",
+    "@@last_modified": "2026-09-16 10:14:09.128775",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9962,5 +9962,16 @@
     "activitiesFilterTooltip": "Näytä vain toiminnot",
     "noGroupChatsYet": "Et ole vielä missään ryhmäkeskustelussa.",
     "noActivitiesYet": "Et ole vielä mukana missään toiminnossa.",
-    "unblock": "Poista esto"
+    "unblock": "Poista esto",
+    "orchestratorFeedbackTooltip": "Merkitse tämä sisältö",
+    "orchestratorFeedbackTitle": "Mikä tässä on vialla?",
+    "orchestratorFeedbackPartSuggestion": "Ehdotukset",
+    "orchestratorFeedbackPartGoals": "Tavoitepalkinnot",
+    "orchestratorFeedbackCommentHint": "Kerro, mikä siinä on vialla",
+    "orchestratorFeedbackPickAward": "Mikä tähti?",
+    "orchestratorFeedbackPickAwardRequired": "Valitse tähti, jota kyseenalaistat",
+    "orchestratorFeedbackNoAwards": "Tällä kierroksella ei jaettu tähtiä, joten tässä ei ole mitään kyseenalaistettavaa.",
+    "orchestratorFeedbackCommentRequired": "Lisää kommentti, jotta tiedämme mitä korjata",
+    "orchestratorFeedbackSubmit": "Lähetä",
+    "orchestratorFeedbackThanks": "Merkitty. Kiitos!"
 }

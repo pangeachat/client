@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-09-15 11:13:46.658094",
+    "@@last_modified": "2026-09-16 10:14:07.356805",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2329,5 +2329,16 @@
     "activitiesFilterTooltip": "Mostra solu l'attività",
     "noGroupChatsYet": "Ùn site ancu in nisuna chat di gruppu.",
     "noActivitiesYet": "Ùn site ancu in nisuna attività.",
-    "unblock": "Sbluccà"
+    "unblock": "Sbluccà",
+    "orchestratorFeedbackTooltip": "Signalà stu cuntenutu",
+    "orchestratorFeedbackTitle": "Chì ci hè di male quì?",
+    "orchestratorFeedbackPartSuggestion": "I suggerimenti",
+    "orchestratorFeedbackPartGoals": "I premii di l'obiettivu",
+    "orchestratorFeedbackCommentHint": "Dite ciò chì ùn va micca",
+    "orchestratorFeedbackPickAward": "Quale stella?",
+    "orchestratorFeedbackPickAwardRequired": "Sceglite a stella chì interrugate",
+    "orchestratorFeedbackNoAwards": "Stu turnu ùn hà micca attribuitu stelle, dunque ùn ci hè nunda da interrugà quì.",
+    "orchestratorFeedbackCommentRequired": "Aghjunghjite un cummentariu per chì sapemu ciò chì deve esse riparatu",
+    "orchestratorFeedbackSubmit": "Mandà",
+    "orchestratorFeedbackThanks": "Signalatu. Grazie!"
 }

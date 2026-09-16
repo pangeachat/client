@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-09-15 11:13:51.266064",
+    "@@last_modified": "2026-09-16 10:14:21.417022",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2329,5 +2329,16 @@
     "activitiesFilterTooltip": "ක්‍රියාකාරකම් පමණක් පෙන්වන්න",
     "noGroupChatsYet": "ඔබ තවමත් කිසිදු කණ්ඩායම් චැට් එකක නැත.",
     "noActivitiesYet": "ඔබ තවමත් කිසිදු ක්‍රියාකාරකමක නැත.",
-    "unblock": "අවහිර නොකරන්න"
+    "unblock": "අවහිර නොකරන්න",
+    "orchestratorFeedbackTooltip": "මෙම අන්තර්ගතය සලකුණු කරන්න",
+    "orchestratorFeedbackTitle": "මෙහි ඇති වැරැද්ද කුමක්ද?",
+    "orchestratorFeedbackPartSuggestion": "යෝජනා",
+    "orchestratorFeedbackPartGoals": "ඉලක්ක සම්මාන",
+    "orchestratorFeedbackCommentHint": "එහි ඇති වැරැද්ද කුමක්දැයි කියන්න",
+    "orchestratorFeedbackPickAward": "කුමන තරුවද?",
+    "orchestratorFeedbackPickAwardRequired": "ඔබ ප්‍රශ්න කරන තරුව තෝරන්න",
+    "orchestratorFeedbackNoAwards": "මෙම වාරයේ තරු ප්‍රදානය නොකළ නිසා, මෙහි ප්‍රශ්න කිරීමට කිසිවක් නැත.",
+    "orchestratorFeedbackCommentRequired": "අපට නිවැරදි කළ යුතු දේ දැන ගැනීමට අදහසක් එක් කරන්න",
+    "orchestratorFeedbackSubmit": "යවන්න",
+    "orchestratorFeedbackThanks": "සලකුණු කරන ලදී. ස්තූතියි!"
 }

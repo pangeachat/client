@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-09-15 11:13:52.871917",
+    "@@last_modified": "2026-09-16 10:14:24.334412",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9929,5 +9929,16 @@
     "activitiesFilterTooltip": "Faqat faoliyatlarni koʻrsatish",
     "noGroupChatsYet": "Siz hali hech qanday guruh chatlarida emassiz.",
     "noActivitiesYet": "Siz hali hech qanday faoliyatlarda emassiz.",
-    "unblock": "Blokdan chiqarish"
+    "unblock": "Blokdan chiqarish",
+    "orchestratorFeedbackTooltip": "Bu kontentni belgilash",
+    "orchestratorFeedbackTitle": "Bu yerda nima noto‘g‘ri?",
+    "orchestratorFeedbackPartSuggestion": "Takliflar",
+    "orchestratorFeedbackPartGoals": "Maqsad mukofotlari",
+    "orchestratorFeedbackCommentHint": "Nima noto‘g‘ri ekanligini ayting",
+    "orchestratorFeedbackPickAward": "Qaysi yulduz?",
+    "orchestratorFeedbackPickAwardRequired": "Savol berayotgan yulduzni tanlang",
+    "orchestratorFeedbackNoAwards": "Bu navbatda hech qanday yulduz berilmadi, shuning uchun bu yerda savol beradigan narsa yo‘q.",
+    "orchestratorFeedbackCommentRequired": "Nima tuzatish kerakligini bilishimiz uchun izoh qo‘shing",
+    "orchestratorFeedbackSubmit": "Yuborish",
+    "orchestratorFeedbackThanks": "Belgilandi. Rahmat!"
 }

@@ -7,6 +7,10 @@ description: "The course preview — tapping a course in the add-course lists re
 
 Tapping a course in the add-course lists (browse public / start my own) should sell the decision visually: the map behind the page becomes a preview of that course — its activities as live pins — while the page carries the plan details and the join/create action (#7826).
 
+## What the lists offer
+
+A course is offered in either list only when its quest resolves **and** carries at least one Mission. A quest with no Missions has no activities under it, so its card reads "0 activities" and there is nothing behind the card to open: browse used to list these while the preview refused them, which the learner saw as "Oops, something went wrong" (#9088). The same rule was first written for start-my-own alone (#7700) and is now applied once, wherever a course plan is resolved, so neither list can offer a card the preview will reject.
+
 ## The flow
 
 - The **lists open at full height** on narrow — nothing behind them matters yet ([routing.instructions.md](routing.instructions.md), #8659).

@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-09-15 11:13:50.846187",
+    "@@last_modified": "2026-09-16 10:14:20.290984",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2329,5 +2329,16 @@
     "activitiesFilterTooltip": "یوازې فعالیتونه وښایاست",
     "noGroupChatsYet": "تاسو لا تر اوسه په هیڅ ګروپي خبرو اترو کې نه یاست.",
     "noActivitiesYet": "تاسو لا تر اوسه په هیڅ فعالیت کې نه یاست.",
-    "unblock": "بلاک لرې کړئ"
+    "unblock": "بلاک لرې کړئ",
+    "orchestratorFeedbackTooltip": "دا مواد په نښه کړئ",
+    "orchestratorFeedbackTitle": "دلته څه ستونزه ده؟",
+    "orchestratorFeedbackPartSuggestion": "وړاندیزونه",
+    "orchestratorFeedbackPartGoals": "د هدف جایزې",
+    "orchestratorFeedbackCommentHint": "ووایه چې څه ستونزه ده",
+    "orchestratorFeedbackPickAward": "کومه ستوري؟",
+    "orchestratorFeedbackPickAwardRequired": "هغه ستوري غوره کړئ چې تاسو یې پوښتنه کوئ",
+    "orchestratorFeedbackNoAwards": "دې وار هیڅ ستوري نه دي ورکړل شوي، نو دلته د پوښتنې لپاره هیڅ نشته.",
+    "orchestratorFeedbackCommentRequired": "یو نظر اضافه کړئ ترڅو موږ پوه شو چې څه سم کړو",
+    "orchestratorFeedbackSubmit": "استول",
+    "orchestratorFeedbackThanks": "په نښه شو. مننه!"
 }

@@ -86,6 +86,10 @@ class DefaultChatCreationTile extends StatelessWidget {
         clipBehavior: Clip.hardEdge,
         color: Colors.transparent,
         child: ListTile(
+          // The chat rows' own inset ([ChatListItem]), not the ListTile
+          // default of 16: these rows interleave with chat rows, so the
+          // avatar column and the titles have to land on the same left edge.
+          contentPadding: const EdgeInsets.symmetric(horizontal: 8),
           // An empty avatar slot on the chat rows' avatar column, with a "+"
           // for the chat the tap would create — not the add-chat glyph, which
           // is the Chats header's shortcut button one row up and read here as

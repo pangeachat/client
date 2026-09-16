@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-09-15 11:13:47.331489",
+    "@@last_modified": "2026-09-16 10:14:09.318860",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10280,5 +10280,16 @@
     "activitiesFilterTooltip": "Afficher uniquement les activités",
     "noGroupChatsYet": "Vous ne faites partie d'aucun chat de groupe pour le moment.",
     "noActivitiesYet": "Vous ne participez à aucune activité pour le moment.",
-    "unblock": "Débloquer"
+    "unblock": "Débloquer",
+    "orchestratorFeedbackTooltip": "Signaler ce contenu",
+    "orchestratorFeedbackTitle": "Qu'est-ce qui ne va pas ici ?",
+    "orchestratorFeedbackPartSuggestion": "Les suggestions",
+    "orchestratorFeedbackPartGoals": "Les récompenses d'objectifs",
+    "orchestratorFeedbackCommentHint": "Décrivez le problème",
+    "orchestratorFeedbackPickAward": "Quelle étoile ?",
+    "orchestratorFeedbackPickAwardRequired": "Choisissez l'étoile que vous remettez en question",
+    "orchestratorFeedbackNoAwards": "Ce tour n'a attribué aucune étoile, il n'y a donc rien à remettre en question ici.",
+    "orchestratorFeedbackCommentRequired": "Ajoutez un commentaire pour que nous sachions quoi corriger",
+    "orchestratorFeedbackSubmit": "Envoyer",
+    "orchestratorFeedbackThanks": "Signalé. Merci !"
 }

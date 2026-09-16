@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-15 11:13:48.483972",
+    "@@last_modified": "2026-09-16 10:14:12.525849",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9998,5 +9998,16 @@
     "activitiesFilterTooltip": "Mostra solo le attività",
     "noGroupChatsYet": "Non sei ancora in nessuna chat di gruppo.",
     "noActivitiesYet": "Non sei ancora in nessuna attività.",
-    "unblock": "Sblocca"
+    "unblock": "Sblocca",
+    "orchestratorFeedbackTooltip": "Segnala questo contenuto",
+    "orchestratorFeedbackTitle": "Cosa c'è che non va qui?",
+    "orchestratorFeedbackPartSuggestion": "I suggerimenti",
+    "orchestratorFeedbackPartGoals": "I premi obiettivo",
+    "orchestratorFeedbackCommentHint": "Spiega cosa c'è che non va",
+    "orchestratorFeedbackPickAward": "Quale stella?",
+    "orchestratorFeedbackPickAwardRequired": "Scegli la stella che stai mettendo in discussione",
+    "orchestratorFeedbackNoAwards": "Questo turno non ha assegnato stelle, quindi non c'è nulla da mettere in discussione qui.",
+    "orchestratorFeedbackCommentRequired": "Aggiungi un commento in modo da sapere cosa correggere",
+    "orchestratorFeedbackSubmit": "Invia",
+    "orchestratorFeedbackThanks": "Contenuto segnalato. Grazie!"
 }

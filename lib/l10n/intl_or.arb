@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-09-15 11:13:50.813789",
+    "@@last_modified": "2026-09-16 10:14:19.373081",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2329,5 +2329,16 @@
     "activitiesFilterTooltip": "କେବଳ କାର୍ଯ୍ୟକଳାପ ଦେଖାନ୍ତୁ",
     "noGroupChatsYet": "ଆପଣ ଏପର୍ଯ୍ୟନ୍ତ କୌଣସି ଗ୍ରୁପ୍ ଚାଟ୍‌ରେ ନାହାଁନ୍ତି।",
     "noActivitiesYet": "ଆପଣ ଏପର୍ଯ୍ୟନ୍ତ କୌଣସି କାର୍ଯ୍ୟକଳାପରେ ନାହାଁନ୍ତି।",
-    "unblock": "ଅନବ୍ଲକ୍ କରନ୍ତୁ"
+    "unblock": "ଅନବ୍ଲକ୍ କରନ୍ତୁ",
+    "orchestratorFeedbackTooltip": "ଏହି ବିଷୟବସ୍ତୁକୁ ଫ୍ଲାଗ୍ କରନ୍ତୁ",
+    "orchestratorFeedbackTitle": "ଏଠାରେ କ’ଣ ଭୁଲ୍ ଅଛି?",
+    "orchestratorFeedbackPartSuggestion": "ପରାମର୍ଶଗୁଡ଼ିକ",
+    "orchestratorFeedbackPartGoals": "ଲକ୍ଷ୍ୟ ପୁରସ୍କାରଗୁଡ଼ିକ",
+    "orchestratorFeedbackCommentHint": "ଏଥିରେ କ’ଣ ଭୁଲ୍ ଅଛି କୁହନ୍ତୁ",
+    "orchestratorFeedbackPickAward": "କେଉଁ ଷ୍ଟାର୍?",
+    "orchestratorFeedbackPickAwardRequired": "ଆପଣ ପ୍ରଶ୍ନ କରୁଥିବା ଷ୍ଟାର୍ ବାଛନ୍ତୁ",
+    "orchestratorFeedbackNoAwards": "ଏହି ପାଳିରେ କୌଣସି ଷ୍ଟାର୍ ଦିଆଯାଇ ନାହିଁ, ତେଣୁ ଏଠାରେ ପ୍ରଶ୍ନ କରିବାକୁ କିଛି ନାହିଁ।",
+    "orchestratorFeedbackCommentRequired": "ଏକ ମନ୍ତବ୍ୟ ଯୋଡ଼ନ୍ତୁ ଯାହାଦ୍ୱାରା ଆମେ ଜାଣିପାରିବୁ କ’ଣ ଠିକ୍ କରିବାକୁ ହେବ",
+    "orchestratorFeedbackSubmit": "ପଠାନ୍ତୁ",
+    "orchestratorFeedbackThanks": "ଫ୍ଲାଗ୍ କରାଯାଇଛି। ଧନ୍ୟବାଦ!"
 }

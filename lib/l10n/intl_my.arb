@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-09-15 11:13:50.384380",
+    "@@last_modified": "2026-09-16 10:14:18.481510",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2329,5 +2329,16 @@
     "activitiesFilterTooltip": "လုပ်ဆောင်မှုများသာ ပြပါ",
     "noGroupChatsYet": "သင်သည် မည်သည့်အဖွဲ့လိုက်ချက်တင်တွင်မှ မရှိသေးပါ။",
     "noActivitiesYet": "သင်သည် မည်သည့်လုပ်ဆောင်မှုတွင်မှ မရှိသေးပါ။",
-    "unblock": "ပိတ်ဆို့ထားခြင်းမှ ပယ်ဖျက်ရန်"
+    "unblock": "ပိတ်ဆို့ထားခြင်းမှ ပယ်ဖျက်ရန်",
+    "orchestratorFeedbackTooltip": "ဤအကြောင်းအရာကို အလံပြရန်",
+    "orchestratorFeedbackTitle": "ဒီမှာ ဘာမှားနေတာလဲ။",
+    "orchestratorFeedbackPartSuggestion": "အကြံပြုချက်များ",
+    "orchestratorFeedbackPartGoals": "ပန်းတိုင်ဆုများ",
+    "orchestratorFeedbackCommentHint": "ဘာမှားနေလဲ ပြောပြပါ",
+    "orchestratorFeedbackPickAward": "ဘယ်ကြယ်လဲ။",
+    "orchestratorFeedbackPickAwardRequired": "သင်မေးခွန်းထုတ်လိုသော ကြယ်ကို ရွေးပါ",
+    "orchestratorFeedbackNoAwards": "ဤအလှည့်တွင် ကြယ်များ မချီးမြှင့်ခဲ့ပါ၊ ထို့ကြောင့် ဤနေရာတွင် မေးခွန်းထုတ်စရာမရှိပါ။",
+    "orchestratorFeedbackCommentRequired": "ကျွန်ုပ်တို့ ဘာပြင်ရမည်ကို သိစေရန် မှတ်ချက်တစ်ခု ထည့်ပါ",
+    "orchestratorFeedbackSubmit": "ပို့ရန်",
+    "orchestratorFeedbackThanks": "အလံပြထားသည်။ ကျေးဇူးတင်ပါသည်။"
 }

@@ -95,6 +95,12 @@ Each `ReplacementTypeEnum` category gets a distinct, friendly color. Colors shou
 
 ---
 
+## The popup slot
+
+One slot sits above the message input field, and the span card and the suggestion card take turns in it. The slot is as wide as the input field and as tall as the space above it, so it moves with the composer and with the window instead of being a fixed box. A card sizes to its own content inside it and only scrolls once the content outgrows the space. Background, border and corner rounding belong to the slot, not to either card, so the learner sees one component that changes what it holds rather than two that resemble each other.
+
+---
+
 ## Span Card (Redesigned)
 
 A single, persistent popup that changes content as the user taps different highlighted matches. No open/close animation between matches — the card stays in place and its content transitions smoothly.

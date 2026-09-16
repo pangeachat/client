@@ -1802,7 +1802,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-09-15 11:13:51.644775",
+    "@@last_modified": "2026-09-16 10:14:20.883179",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10870,5 +10870,16 @@
     "activitiesFilterTooltip": "Prikaži samo dejavnosti",
     "noGroupChatsYet": "Še niste v nobenem skupinskem klepetu.",
     "noActivitiesYet": "Še niste v nobeni dejavnosti.",
-    "unblock": "Odblokiraj"
+    "unblock": "Odblokiraj",
+    "orchestratorFeedbackTooltip": "Prijavi to vsebino",
+    "orchestratorFeedbackTitle": "Kaj je narobe tukaj?",
+    "orchestratorFeedbackPartSuggestion": "Predlogi",
+    "orchestratorFeedbackPartGoals": "Nagrade za cilje",
+    "orchestratorFeedbackCommentHint": "Povejte, kaj je narobe",
+    "orchestratorFeedbackPickAward": "Katera zvezdica?",
+    "orchestratorFeedbackPickAwardRequired": "Izberite zvezdico, ki jo sprašujete",
+    "orchestratorFeedbackNoAwards": "Ta poteza ni podelila zvezdic, zato tukaj ni ničesar za vprašati.",
+    "orchestratorFeedbackCommentRequired": "Dodajte komentar, da bomo vedeli, kaj popraviti",
+    "orchestratorFeedbackSubmit": "Pošlji",
+    "orchestratorFeedbackThanks": "Prijavljeno. Hvala!"
 }

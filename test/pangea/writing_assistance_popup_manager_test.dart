@@ -222,9 +222,9 @@ void main() {
         localizationsDelegates: L10n.localizationsDelegates,
         supportedLocales: L10n.supportedLocales,
         home: SuggestionCard(
-          overlayKey: 'writing-assistance-popup-overlay',
           controller: _FakeOrchestratorController(),
           popupManager: manager,
+          maxHeight: 300.0,
         ),
       ),
     );

@@ -2559,7 +2559,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-09-15 11:13:51.089024",
+    "@@last_modified": "2026-09-16 10:14:19.064493",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10842,5 +10842,16 @@
     "activitiesFilterTooltip": "Mostrar apenas atividades",
     "noGroupChatsYet": "Ainda não está em nenhum chat de grupo.",
     "noActivitiesYet": "Ainda não está em nenhuma atividade.",
-    "unblock": "Desbloquear"
+    "unblock": "Desbloquear",
+    "orchestratorFeedbackTooltip": "Assinalar este conteúdo",
+    "orchestratorFeedbackTitle": "O que está errado aqui?",
+    "orchestratorFeedbackPartSuggestion": "As sugestões",
+    "orchestratorFeedbackPartGoals": "As recompensas de objetivo",
+    "orchestratorFeedbackCommentHint": "Diz o que está errado",
+    "orchestratorFeedbackPickAward": "Que estrela?",
+    "orchestratorFeedbackPickAwardRequired": "Escolhe a estrela que estás a questionar",
+    "orchestratorFeedbackNoAwards": "Esta vez não atribuiu estrelas, por isso não há nada a questionar aqui.",
+    "orchestratorFeedbackCommentRequired": "Adiciona um comentário para sabermos o que corrigir",
+    "orchestratorFeedbackSubmit": "Enviar",
+    "orchestratorFeedbackThanks": "Assinalado. Obrigado!"
 }

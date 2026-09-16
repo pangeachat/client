@@ -36,7 +36,14 @@ The whole grammar in one place. The path is always `/`; state rides in the query
 
 - **`?c=<spaceid>`** — the **course context**: the course the workspace is scoped
   to, absent for the whole world. Read by the map and the course panels alike
-  (see [The course context](#the-course-context)).
+  (see [The course context](#the-course-context)). It also **names an open
+  course panel**: under a context the course panel is always on screen, and a
+  `course` token in `?left=` says it is EXPANDED — its card rather than its
+  floor, the context bar ([Closing a panel](#closing-a-panel-x-or-back-arrow)).
+  So `?c=!s` alone is the course at its bar, and `?c=!s&left=course` is the
+  card, in the same slot. This is the one panel the token list does not spell
+  out, and it is why collapsing the card moves nothing else in the column
+  ([#9037](https://github.com/pangeachat/client/issues/9037)).
 - **`?left=` and `?right=`** — comma-separated ordered lists of **panel tokens**,
   one token per open panel, ordered from bottom to top.
 - A token is **`type:param`**. The type names the surface (`chats`, `room`,
@@ -55,12 +62,22 @@ The rules that keep the grammar legible:
 
 - **First beneath, second on top — in both lists.** A column's first token is
   the panel that folds behind under width pressure; the second stays visible.
-  For a master/detail pair that means master first, then detail; for a pair the
-  registry does not relate (a course card with a live room beside it) it means
-  context first, then content. Each column draws its first panel at its own
-  screen edge with the second blooming toward the center — but that
-  justification is the renderer's concern; the URL never mirrors pixel
-  placement.
+  For a master/detail pair that means master first, then detail. Each column
+  draws its first panel at its own screen edge with the second blooming toward
+  the center — but that justification is the renderer's concern; the URL never
+  mirrors pixel placement.
+- **The course seats LAST in its column** — after the chat list, chat or
+  session it opens over, not before them
+  ([#9037](https://github.com/pangeachat/client/issues/9037)). It is the one
+  panel whose collapsed state is the *absence* of its token, so card and
+  collapse share the far end of the column: collapsing hands the width back to
+  the panel beside it without moving that panel, and expanding takes it from
+  the same end. Seated first, every collapse re-justified the whole column to
+  the rail and every expand pushed it back — a chat changing halves of the
+  screen because a card beside it opened. It is also the one panel that can
+  reveal nothing folded behind it (its single control is the chevron), so the
+  fold reads that, not position: **a panel with a floor yields first whatever
+  its place in the list, and nothing ever folds behind one.**
 - **Token params are short, human-readable values.** Never JSON or any nested
   structure, and never a repeat of what the token type already says: a construct
   detail is `vocab:abrigadoro.adj` — the construct type is the token type, so it
@@ -157,12 +174,18 @@ moving to Chats or Settings — all leave `?c=` untouched; closing panels is
 precisely how you get a clear look at the scoped map (#7087) — as far as the
 course panel allows: it has a floor rather than a close, so it collapses to
 its indicator instead of clearing away ([Closing a panel](#closing-a-panel-x-or-back-arrow)).
-What the learner then sees in the **wide** map's search slot is the **course
-context bar** — the closed card's header, saying which course the map is scoped
-to and leading back into the card
-([world-map.instructions.md](world-map.instructions.md#the-course-context-bar));
-it is chrome, not a panel, and carries no close control, because `?c=` is
-cleared by the World control below, never by dismissing its indicator. On narrow
+What the learner then sees on **wide**, with nothing else open in the column, is
+the course panel at its **floor** — the
+[course context bar](world-map.instructions.md#the-course-context-bar), the
+closed card's header, saying which course the map is scoped to and leading back
+into the card. It is that panel's other state, drawn in that panel's own slot,
+not chrome placed somewhere else. With another panel open the collapsed course
+is not seated at all: a one-line bar is not worth a panel's strip of the
+workspace, and because the course seats last, the panel beside it simply widens
+into the strip the card gave back
+([#9037](https://github.com/pangeachat/client/issues/9037)). Either way it
+carries no close control, because `?c=` is cleared by the World control below,
+never by dismissing its indicator. On narrow
 there is no bar: the peek's own header does that naming, which is why the peek
 cannot be dismissed
 ([#8816](https://github.com/pangeachat/client/issues/8816)). The context
@@ -318,9 +341,21 @@ user came from:
   ([#8816](https://github.com/pangeachat/client/issues/8816)), and it has a
   floor on **both** form factors: the nav cavity's collapsed peek on narrow,
   the [course context bar](world-map.instructions.md#the-course-context-bar) on
-  wide. Either way the course never leaves the screen, so there is nothing an X
-  could reveal and nowhere a back arrow could go — only two states to move
-  between. The chevron keeps one place per form factor, in both states: on
+  wide. **Both states belong to the panel** — the floor is a state of it,
+  never a separate surface drawn somewhere else — and because the course seats
+  last in its column, moving between them hands width back or takes it from the
+  far end, so the panel beside it never moves
+  ([#9037](https://github.com/pangeachat/client/issues/9037)). Either way the
+  course never leaves the screen, so there is nothing an X could reveal and
+  nowhere a back arrow could go — only two states to move between, and the
+  chevron is offered in both. **Width never picks the state.** An expanded panel folds under
+  pressure rather than being shrunk into its floor: a floor the budget imposed would carry a
+  chevron with nothing to do — the token is already open, and expanding would
+  be retaken on the same frame
+  ([#9037](https://github.com/pangeachat/client/issues/9037)). So wherever the
+  bar is drawn, its chevron works. The cost is that between the two-column
+  breakpoint and the width the card and a chat both fit, a folded course names
+  itself nowhere; the chat's back arrow is the way back to it. The chevron keeps one place per form factor, in both states: on
   **wide** it rides the **trailing** edge beside the course's share / focus
   actions, in the open card and the context bar alike
   ([#8866](https://github.com/pangeachat/client/issues/8866)); on **narrow** it
@@ -407,9 +442,15 @@ One vocabulary covers how content opens:
   its **detail** — not drawn, one back-step away — and **unfolds** back to two
   panels when width returns. When a column's two panels are not a registry
   master/detail pair (a `course` card with a live `room` beside it), the same
-  rule applies positionally — the first token folds behind the second — so a
-  chat opened in a course folds the course card behind it, and closing the chat
-  reveals the card as it was left (#7332).
+  rule applies positionally — the first token folds behind the second (#9030).
+  **A panel with a floor overrides position, in both directions**
+  ([#9037](https://github.com/pangeachat/client/issues/9037)): it yields first
+  wherever it sits, and nothing ever folds behind it. Its single control is the
+  chevron — it can show neither an X nor a back arrow — so whatever folded
+  behind it could never be revealed, and it is the one panel with a collapsed
+  state to fall back to anyway. So a chat opened in a course folds the course
+  card behind it whichever order they sit in, and closing the chat reveals the
+  card as it was left (#7332).
   One pair folds **by declaration** rather than width: a child whose registry entry sets [`stacksOnParent`](../../lib/features/navigation/panel_registry.dart) (the add-course subpage) always folds its parent, so the whole flow is one panel and the map behind it keeps the width — see [course-preview.instructions.md](course-preview.instructions.md) (#7826).
 
 **Panel widths come in three named families, not per-panel numbers (#7572).**

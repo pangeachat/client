@@ -3,11 +3,14 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
+import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/choice_array.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/active_suggestion_model.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_controller.dart';
+import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_feedback_dialog.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_suggestion.dart';
 import 'package:fluffychat/routes/chat/choreographer/choreographer.dart';
 import 'package:fluffychat/routes/chat/choreographer/choreographer_state_extension.dart';
@@ -15,14 +18,17 @@ import 'package:fluffychat/routes/chat/choreographer/igc/writing_assistance_popu
 import 'package:fluffychat/routes/chat/choreographer/igc/writing_asssitance_popup_manager.dart';
 
 class SuggestionCard extends StatefulWidget {
-  final String overlayKey;
   final OrchestratorController controller;
   final WritingAssistancePopupManager popupManager;
 
+  /// The height available in the shared popup slot above the input field. The
+  /// card sizes to its content up to this, and only then scrolls.
+  final double maxHeight;
+
   const SuggestionCard({
-    required this.overlayKey,
     required this.controller,
     required this.popupManager,
+    required this.maxHeight,
     super.key,
   });
 
@@ -84,8 +90,22 @@ class SuggestionCardState extends State<SuggestionCard> {
     _close();
   }
 
-  // TODO ORCHESTRATOR: add feedback mechanism
-  // void _showFeedbackDialog() {}
+  /// Internal reviewer feedback (staging only). Records the objection against
+  /// the stored orchestrator turn and regenerates it there; nothing in this
+  /// room changes, so the card is left exactly as it is and the learner can
+  /// still send the suggestion they were shown.
+  Future<void> _showFeedbackDialog() async {
+    final model = suggestionsModel;
+    if (model == null) return;
+    await showOrchestratorFeedbackDialog(
+      context: context,
+      roomId: widget.controller.room.id,
+      basedOnEventId: model.basedOnEventId,
+      ownRoleId: model.suggestion.roleId,
+      goalCompletion: model.goalCompletion,
+      activityPlan: widget.controller.room.activityPlan,
+    );
+  }
 
   void _onChoiceSelected(OrchestratorSuggestion choice) {
     try {
@@ -121,14 +141,11 @@ class SuggestionCardState extends State<SuggestionCard> {
       widget.popupManager,
       child: suggestionsModel == null
           ? const SizedBox.shrink()
-          : Container(
-              constraints: const BoxConstraints(maxWidth: 350),
-              padding: EdgeInsets.all(10.0),
-              decoration: BoxDecoration(
-                color: theme.cardColor,
-                border: Border.all(width: 2, color: theme.colorScheme.primary),
-                borderRadius: const BorderRadius.all(Radius.circular(25)),
-              ),
+          // Width and chrome come from the shared overlay container the span
+          // card already uses; the card only claims the height it needs, up to
+          // the space above the input field (#9074).
+          : ConstrainedBox(
+              constraints: BoxConstraints(maxHeight: widget.maxHeight),
               child: Column(
                 mainAxisSize: .min,
                 children: [
@@ -153,17 +170,23 @@ class SuggestionCardState extends State<SuggestionCard> {
                           ),
                         ),
                       ),
-                      // TODO ORCHESTRATOR: add feedback mechanism
-                      // IconButton(
-                      //   icon: const Icon(Icons.flag_outlined),
-                      //   color: theme.iconTheme.color,
-                      //   onPressed: _showFeedbackDialog,
-                      // ),
-                      SizedBox(height: 40.0, width: 40.0),
+                      // Staging only: an instrument for the team, not a
+                      // learner-facing feature. The spacer keeps the title
+                      // centred against the close button where it is absent.
+                      if (Environment.isStagingEnvironment)
+                        IconButton(
+                          tooltip: L10n.of(context).orchestratorFeedbackTooltip,
+                          icon: const Icon(Icons.flag_outlined),
+                          color: theme.iconTheme.color,
+                          onPressed: _showFeedbackDialog,
+                        )
+                      else
+                        const SizedBox(height: 40.0, width: 40.0),
                     ],
                   ),
-                  ConstrainedBox(
-                    constraints: BoxConstraints(maxHeight: 250.0),
+                  // Scrolls only once the choices outgrow the slot, the way
+                  // the span card's content does.
+                  Flexible(
                     child: SingleChildScrollView(
                       child: Padding(
                         padding: const EdgeInsets.symmetric(

@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-09-15 11:13:51.479044",
+    "@@last_modified": "2026-09-16 10:14:21.105976",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2329,5 +2329,16 @@
     "activitiesFilterTooltip": "صرف سرگرميون ڏيکاريو",
     "noGroupChatsYet": "توهان اڃا تائين ڪنهن به گروپ چيٽ ۾ نه آهيو.",
     "noActivitiesYet": "توهان اڃا تائين ڪنهن به سرگرمي ۾ نه آهيو.",
-    "unblock": "ان بلاڪ ڪريو"
+    "unblock": "ان بلاڪ ڪريو",
+    "orchestratorFeedbackTooltip": "هن مواد کي نشان لڳايو",
+    "orchestratorFeedbackTitle": "هتي ڇا غلط آهي؟",
+    "orchestratorFeedbackPartSuggestion": "تجويزون",
+    "orchestratorFeedbackPartGoals": "مقصد جا انعام",
+    "orchestratorFeedbackCommentHint": "چئو ته ان ۾ ڇا غلط آهي",
+    "orchestratorFeedbackPickAward": "ڪهڙو ستارو؟",
+    "orchestratorFeedbackPickAwardRequired": "اهو ستارو چونڊيو جنهن تي توهان سوال ڪري رهيا آهيو",
+    "orchestratorFeedbackNoAwards": "هن موڙ ڪو به ستارو نه ڏنو، تنهنڪري هتي سوال ڪرڻ لاءِ ڪجهه به ناهي.",
+    "orchestratorFeedbackCommentRequired": "هڪ تبصرو شامل ڪريو ته جيئن اسان کي خبر پوي ته ڇا درست ڪرڻو آهي",
+    "orchestratorFeedbackSubmit": "موڪليو",
+    "orchestratorFeedbackThanks": "نشان لڳايو ويو. مهرباني!"
 }

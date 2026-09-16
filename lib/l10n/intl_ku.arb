@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-09-15 11:13:49.305804",
+    "@@last_modified": "2026-09-16 10:14:15.418874",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2329,5 +2329,16 @@
     "activitiesFilterTooltip": "تەنها چالاکییەکان نیشان بدە",
     "noGroupChatsYet": "هێشتا لە هیچ چاتێکی گرووپدا نیت.",
     "noActivitiesYet": "هێشتا لە هیچ چالاکییەکدا نیت.",
-    "unblock": "لابردنی بلۆک"
+    "unblock": "لابردنی بلۆک",
+    "orchestratorFeedbackTooltip": "ئەم ناوەڕۆکە ئاڵا بکە",
+    "orchestratorFeedbackTitle": "کێشەکە چییە لێرەدا؟",
+    "orchestratorFeedbackPartSuggestion": "پێشنیارەکان",
+    "orchestratorFeedbackPartGoals": "خەڵاتەکانی ئامانج",
+    "orchestratorFeedbackCommentHint": "بڵێ کێشەکەی چییە",
+    "orchestratorFeedbackPickAward": "کام ئەستێرە؟",
+    "orchestratorFeedbackPickAwardRequired": "ئەو ئەستێرەیە هەڵبژێرە کە پرسیاری لەسەر دەکەیت",
+    "orchestratorFeedbackNoAwards": "ئەم خولە هیچ ئەستێرەیەکی نەبەخشی، بۆیە هیچ شتێک نییە لێرەدا پرسیاری لەسەر بکرێت.",
+    "orchestratorFeedbackCommentRequired": "کۆمێنتێک زیاد بکە بۆ ئەوەی بزانین چی چاک بکەینەوە",
+    "orchestratorFeedbackSubmit": "ناردن",
+    "orchestratorFeedbackThanks": "ئاڵا کرا. سوپاس!"
 }
