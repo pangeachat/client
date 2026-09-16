@@ -58,6 +58,11 @@ extension ActivitySummaryRoomExtension on Room {
     ActivitySummaryModel summary,
     String langCode,
   ) async {
+    // Every writer routes through here, and a summary request can outlive the
+    // session that started it: sign out while it generates and the SDK's
+    // `bearerToken!` is null by the time the result is written (CLIENT-EQW,
+    // #9099). A signed-out account has nothing to record — skip, don't throw.
+    if (!client.isLogged()) return;
     await client.setRoomStateWithKey(
       id,
       PangeaEventTypes.activitySummary,
