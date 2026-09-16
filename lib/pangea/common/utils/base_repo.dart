@@ -77,7 +77,10 @@ abstract class BaseRepo<
       return inflight;
     }
 
-    final future = _fetch(request);
+    // The RETRYING operation is what goes in the inflight cache, not the first
+    // attempt — a concurrent caller must join the retry and see its result,
+    // not be handed the 429 the attempt it joined already returned.
+    final future = _fetchThroughRateLimit(request);
     _inflightCache[key] = future;
     final result = await future;
 
@@ -127,6 +130,61 @@ abstract class BaseRepo<
   @protected
   @visibleForTesting
   String? reportOnceKey(TRequest request, Object error) => null;
+
+  /// Whether a 429 on this repo's reads is worth waiting out and retrying once
+  /// before it is surfaced.
+  ///
+  /// Opt-in, and false by default, because waiting is only free where the
+  /// caller renders a loading state for the whole await and holds no shared
+  /// resource meanwhile. `ActivityPlanRepo` is the counter-example on both
+  /// counts: it dispatches behind a 6-slot in-flight bound, so a waiting read
+  /// would hold a slot the rest of the view needs, and it deliberately PARKS a
+  /// rate-limited key rather than re-attempting it (#8160). The word card's
+  /// two reads are the opposite — one await each, straight into a shimmer
+  /// (#8794).
+  @protected
+  @visibleForTesting
+  bool get retryOnRateLimit => false;
+
+  /// The longest a [retryOnRateLimit] repo will wait out a throttle before
+  /// surfacing it instead.
+  ///
+  /// The wait itself is always the server's. Choreo's `Retry-After` gives the
+  /// earliest moment a retry can succeed, and its rate-limiting design requires
+  /// clients to honour it rather than guess (2-step-choreographer
+  /// authentication.instructions.md § Rate limiting), so retrying any sooner is
+  /// never on the table. This bounds only whether we are willing to wait that
+  /// long at all: the surface shimmers for the whole wait, and past this a card
+  /// reads as hung, so the learner is better served by the error — #8794's
+  /// "still error out if fetch time exceeds a reasonable limit".
+  static const Duration maxRateLimitWait = Duration(seconds: 5);
+
+  /// Test seam for the wait, which is otherwise wall-clock.
+  @visibleForTesting
+  static Future<void> Function(Duration) delay = Future.delayed;
+
+  /// [_fetch], plus the one retry [retryOnRateLimit] asks for — when, and only
+  /// when, the server says one can succeed within [maxRateLimitWait].
+  Future<Result<TResponse>> _fetchThroughRateLimit(TRequest request) async {
+    final result = await _fetch(request);
+    final error = result.asError?.error;
+    if (!retryOnRateLimit || PangeaHttpException.statusCodeOf(error) != 429) {
+      return result;
+    }
+
+    // No header is no advice, and no advice is no retry. That is a choreo
+    // predating 2-step-choreographer#3193 — production, until its next release
+    // — which then behaves exactly as it did before this retry existed.
+    final wait = PangeaHttpException.retryAfterOf(error);
+    if (wait == null || wait > maxRateLimitWait) return result;
+
+    await delay(wait);
+    // Reported like any other attempt. A 429 that arrives AFTER honouring
+    // `Retry-After` is new signal, not a repeat — choreo keeps a window per
+    // worker process, so the header speaks only for the worker that answered —
+    // and a retry that fails some other way is a failure in its own right.
+    return _fetch(request);
+  }
 
   Future<Result<TResponse>> _fetch(TRequest request) async {
     try {
