@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
 
@@ -38,47 +39,65 @@ class BackgroundPushNotification {
       return;
     }
 
-    final l10n = await lookupL10n(PlatformDispatcher.instance.locale);
-    final store = await AppSettings.init();
-    final accounts = await _accounts(
-      store.getStringList(ClientManager.clientNamespace) ?? const <String>[],
-    );
+    // Before this handler existed, Android drew these notifications itself, so
+    // a failure here must still show one. Without this, an error loading the
+    // locale, the settings or the plugin posted nothing at all.
+    L10n? l10n;
+    try {
+      l10n = await lookupL10n(PlatformDispatcher.instance.locale);
+      final store = await AppSettings.init();
+      final accounts = await _accounts(
+        store.getStringList(ClientManager.clientNamespace) ?? const <String>[],
+      );
 
-    // With a single account there is nothing to resolve, so even a failed
-    // lookup below leaves a notification that opens the right account.
-    var resolved = _ResolvedPush(
-      clientName: accounts.length == 1 ? accounts.single.clientName : null,
-      avatar: null,
-    );
-    if (accounts.isNotEmpty) {
-      final httpClient = http.Client();
-      try {
-        resolved = await _resolve(
-          httpClient,
-          accounts,
-          roomId,
-          _string(data['sender']),
-        );
-      } catch (e, s) {
-        Logs().w('[Push] Avatar lookup failed; showing without one', e, s);
-      } finally {
-        httpClient.close();
+      // With a single account there is nothing to resolve, so even a failed
+      // lookup below leaves a notification that opens the right account.
+      var resolved = _ResolvedPush(
+        clientName: accounts.length == 1 ? accounts.single.clientName : null,
+        avatar: null,
+      );
+      if (accounts.isNotEmpty) {
+        final httpClient = http.Client();
+        try {
+          resolved = await _resolve(
+            httpClient,
+            accounts,
+            roomId,
+            _string(data['sender']),
+          );
+        } catch (e, s) {
+          Logs().w('[Push] Avatar lookup failed; showing without one', e, s);
+        } finally {
+          httpClient.close();
+        }
       }
-    }
 
-    await _post(data, roomId, resolved.clientName, resolved.avatar, l10n);
+      await _post(data, roomId, resolved.clientName, resolved.avatar, l10n);
+    } catch (e, s) {
+      Logs().e(
+        '[Push] Background notification failed; showing a generic one',
+        e,
+        s,
+      );
+      await _postFallback(data, roomId, l10n);
+    }
   }
 
   static Future<List<_PushAccount>> _accounts(List<String> clientNames) async {
     final accounts = <_PushAccount>[];
     for (final clientName in clientNames) {
-      final backup = await InitWithRestoreExtension.sessionBackupStorage.read(
-        key: '${AppSettings.applicationName.value}_session_backup_$clientName',
-      );
-      if (backup != null) {
-        accounts.add(
-          _PushAccount(clientName, SessionBackup.fromJsonString(backup)),
+      // One unreadable backup costs that account its avatar, not the others.
+      try {
+        final backup = await InitWithRestoreExtension.sessionBackupStorage.read(
+          key: InitWithRestoreExtension.sessionBackupKey(clientName),
         );
+        if (backup != null) {
+          accounts.add(
+            _PushAccount(clientName, SessionBackup.fromJsonString(backup)),
+          );
+        }
+      } catch (e, s) {
+        Logs().w('[Push] Unreadable session backup for $clientName', e, s);
       }
     }
     return accounts;
@@ -89,11 +108,12 @@ class BackgroundPushNotification {
   ///
   /// The room's avatar state comes first. Reading it also identifies the
   /// account, since the payload carries none: 200 is a member with a room
-  /// avatar, 404 a member of a room without one (a direct chat), and 403 an
-  /// account that cannot read it -- a different account, an invite not yet
-  /// accepted, or an expired session (M_FORBIDDEN also covers invalidated
-  /// tokens). An expired session fails the fallback below too, so it degrades to
-  /// a notification without an avatar rather than to the wrong account.
+  /// avatar and 404 a member of a room without one (a direct chat). Anything
+  /// else moves on to the next account: 403 is a different account or an
+  /// invite not yet accepted, 401 an expired or replaced token, and a failed
+  /// request proves nothing either way. An expired session fails the fallback
+  /// below too, so it degrades to a notification without an avatar rather than
+  /// to the wrong account.
   ///
   /// With no room avatar the sender's own avatar stands in, exactly as on iOS,
   /// and that includes invites. A profile needs no room membership, so the
@@ -113,10 +133,11 @@ class BackgroundPushNotification {
         '/_matrix/client/v3/rooms/${Uri.encodeComponent(roomId)}'
         '/state/m.room.avatar',
       );
-      if (response == null || response.statusCode == 403) continue;
+      final status = response?.statusCode;
+      if (status != 200 && status != 404) continue;
       member = account;
-      if (response.statusCode == 200) {
-        url = _string(_json(response.body)['url']);
+      if (status == 200) {
+        url = _string(_json(response!.body)['url']);
       }
       break;
     }
@@ -219,13 +240,25 @@ class BackgroundPushNotification {
     }
   }
 
-  static Future<void> _post(
-    Map<String, dynamic> data,
-    String roomId,
-    String? clientName,
-    Uint8List? avatar,
-    L10n l10n,
-  ) async {
+  /// The notification text for a data message.
+  ///
+  /// A member event has no body, so an invite gets the words Sygnal used to
+  /// write for it, which are also what pushHelper shows when the app is open.
+  @visibleForTesting
+  static String bodyFor(Map<String, dynamic> data, L10n l10n) {
+    if (data['type'] == EventTypes.RoomMember &&
+        data['content_membership'] == 'invite') {
+      if (data['content_reason'] == 'invite_on_knock') {
+        return l10n.knockAccepted;
+      }
+      final inviter =
+          _string(data['sender_display_name']) ?? _string(data['sender']);
+      if (inviter != null) return l10n.youInvitedBy(inviter);
+    }
+    return _string(data['content_body']) ?? l10n.openAppToReadMessages;
+  }
+
+  static Future<FlutterLocalNotificationsPlugin> _plugin() async {
     final plugin = FlutterLocalNotificationsPlugin();
     await plugin.initialize(
       const InitializationSettings(
@@ -233,13 +266,69 @@ class BackgroundPushNotification {
       ),
       onDidReceiveBackgroundNotificationResponse: notificationTapBackground,
     );
+    return plugin;
+  }
+
+  /// Carries every string field of the message, so a tap routes exactly as it
+  /// did when Android drew the notification: a course ping to its activity
+  /// session, a check-in to its analytics.
+  static String _payload(
+    Map<String, dynamic> data,
+    String roomId,
+    String? clientName,
+  ) => FluffyChatPushPayload(
+    clientName,
+    roomId,
+    _string(data['event_id']),
+    additionalData: {
+      for (final entry in data.entries)
+        if (entry.value is String) entry.key: entry.value as String,
+    },
+  ).toString();
+
+  static Future<void> _postFallback(
+    Map<String, dynamic> data,
+    String roomId,
+    L10n? l10n,
+  ) async {
+    try {
+      l10n ??= await lookupL10n(const Locale('en'));
+      final plugin = await _plugin();
+      await plugin.show(
+        roomId.hashCode,
+        l10n.newMessageInPangeaChat,
+        l10n.openAppToReadMessages,
+        NotificationDetails(
+          android: AndroidNotificationDetails(
+            AppConfig.pushNotificationsChannelId,
+            l10n.incomingMessages,
+            importance: Importance.high,
+            priority: Priority.max,
+            shortcutId: roomId,
+          ),
+        ),
+        payload: _payload(data, roomId, null),
+      );
+    } catch (e, s) {
+      Logs().e('[Push] Fallback notification also failed', e, s);
+    }
+  }
+
+  static Future<void> _post(
+    Map<String, dynamic> data,
+    String roomId,
+    String? clientName,
+    Uint8List? avatar,
+    L10n l10n,
+  ) async {
+    final plugin = await _plugin();
 
     final roomName = _string(data['room_name']);
     final senderName =
         _string(data['sender_display_name']) ??
         _string(data['sender']) ??
         l10n.newMessageInPangeaChat;
-    final body = _string(data['content_body']) ?? l10n.openAppToReadMessages;
+    final body = bodyFor(data, l10n);
     final icon = avatar == null ? null : ByteArrayAndroidIcon(avatar);
     final id = roomId.hashCode;
 
@@ -273,6 +362,11 @@ class BackgroundPushNotification {
           number: int.tryParse(_string(data['unread']) ?? ''),
           category: AndroidNotificationCategory.message,
           shortcutId: roomId,
+          // The same as pushHelper. Android creates the channel from the first
+          // notification posted to it and never updates it, so a lower
+          // importance here would stop every later notification from popping up.
+          importance: Importance.high,
+          priority: Priority.max,
           styleInformation:
               existing ??
               MessagingStyleInformation(
@@ -283,15 +377,7 @@ class BackgroundPushNotification {
               ),
         ),
       ),
-      payload: FluffyChatPushPayload(
-        clientName,
-        roomId,
-        _string(data['event_id']),
-        additionalData: {
-          for (final entry in data.entries)
-            if (entry.value is String) entry.key: entry.value as String,
-        },
-      ).toString(),
+      payload: _payload(data, roomId, clientName),
     );
   }
 
