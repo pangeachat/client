@@ -133,19 +133,20 @@ test.describe("Structural a11y gates", () => {
   }
 
   // 3.2.1 On Focus — a menu that closes must hand DOM focus straight back to the
-  // control that opened it (#9049). If the focused item's element is removed
-  // first, the engine parks focus on <flutter-view> for a frame; VoiceOver reads
-  // that as the whole page, and its cursor stays there even after focus reaches
-  // the pill. Flutter's own focus tree recovers either way, so this is asserted
-  // at the DOM, where the screen reader is.
-  test("world map: a closing filter menu never passes focus through the page host", async ({ page }) => {
+  // control that opened it, in one move (#9049). Two ways it goes wrong, both
+  // visible to a screen reader as a flash to the page root: the focused item's
+  // element is removed first, and the engine parks focus on <flutter-view>; or
+  // the pill already holds focus but its page subtree is re-inserted as the
+  // menu goes, which knocks focus off and back on. Flutter's own focus tree
+  // recovers either way, so this is asserted at the DOM, where the reader is.
+  test("world map: a closing filter menu returns focus to its pill in one step", async ({ page }) => {
     await gotoSurface(page, "/", surfaces[0].sentinel(page));
 
     const pill = page.getByRole("button", { name: intl.mapFilterAllLevels }).first();
     await expect(pill).toBeVisible({ timeout: 30_000 });
 
-    // Record every element that takes focus, not just where it settles: in
-    // Chrome it settles on the pill either way, and the detour is the fault.
+    // Record every element that takes focus, not just where it settles: it
+    // settles on the pill either way, and the detour is the fault.
     const pillId = await pill.evaluate((el: HTMLElement) => {
       el.focus();
       (window as any).__focusins = [];
@@ -177,7 +178,7 @@ test.describe("Structural a11y gates", () => {
       await page.waitForTimeout(1000);
 
       const seen = await drain();
-      expect(seen, `closing with ${closeKey} passed focus through the page host; focusins=${JSON.stringify(seen)}`).not.toContain("flutter-view");
+      expect(seen, `closing with ${closeKey} did not move focus to the pill in one step; focusins=${JSON.stringify(seen)}`).toEqual(["flt-semantics"]);
       expect(await page.evaluate(() => document.activeElement?.id), `closing with ${closeKey} did not leave focus on the pill`).toBe(pillId);
     }
   });

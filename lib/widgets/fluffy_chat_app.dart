@@ -104,7 +104,22 @@ class FluffyChatApp extends StatelessWidget {
               // router, so a call announces itself wherever the learner is
               // rather than only on the chat it belongs to.
               child: IncomingCallBanner(
-                child: GlobalCallTile(child: testWidget ?? child),
+                child: GlobalCallTile(
+                  // Give the router's pages a semantics layer of their own that
+                  // exists whether or not an overlay is up. Without it the
+                  // framework only creates that layer when an OverlayPortal
+                  // child (a menu, a tooltip) appears beside the page, and
+                  // removes it again when the overlay goes — moving the whole
+                  // page's semantics subtree each time. On the web that move
+                  // re-inserts the page's elements, which drops DOM focus from
+                  // whatever control holds it, and a screen reader flashes to
+                  // the page root before focus comes back (#9049).
+                  child: Semantics(
+                    container: true,
+                    explicitChildNodes: true,
+                    child: testWidget ?? child,
+                  ),
+                ),
               ),
             ),
           ),

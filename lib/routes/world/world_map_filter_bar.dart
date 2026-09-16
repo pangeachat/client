@@ -272,12 +272,6 @@ class _FilterDropdownPillState extends State<_FilterDropdownPill> {
         _openerDomFocus = null;
         if (opener == null) return;
         opener.restore();
-        // Framework focus in the same frame as the unmount, too. The flush
-        // that removes the menu also re-inserts an ancestor of the pill,
-        // which knocks DOM focus back off it; with the pill already marked
-        // focused in that flush the engine refocuses it before the flush
-        // ends, instead of a frame later with the page focused in between.
-        _buttonFocusNode.requestFocus();
       },
       menuChildren: [
         for (final e in widget.entries)
