@@ -43,7 +43,8 @@ enum ConstructUseTypeEnum {
   incIGC,
   ignIGC,
 
-  // suggestions
+  /// accepted orchestrator suggestion. Deprecated with the suggestion flow;
+  /// kept because a similar assistance flow may replace it.
   sug,
 
   /// word meaning practice exercise
