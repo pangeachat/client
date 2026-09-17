@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "Испрати",
     "orchestratorFeedbackThanks": "Пријавено. Благодарам!",
     "analyticsSubscriptionWarningTitle": "Вашиот напредок не се следи",
-    "analyticsSubscriptionWarningBody": "Без претплата, вашите пораки не заработуваат XP или не додаваат нови зборови и граматика."
+    "analyticsSubscriptionWarningBody": "Без претплата, вашите пораки не заработуваат XP или не додаваат нови зборови и граматика.",
+    "noOpenSessions": "Нема отворени сесии во моментов"
 }

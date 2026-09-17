@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "שיקן",
     "orchestratorFeedbackThanks": "פֿאַרפֿאָנט. אַ דאַנק!",
     "analyticsSubscriptionWarningTitle": "אײַער פּראָגרעס װערט נישט נאָכגעפֿאָלגט",
-    "analyticsSubscriptionWarningBody": "אָן אַ אַבאָנעמענט, פֿאַרדינען אײַערע מעסעדזשעס נישט קײן XP אָדער לײגן צו קײן נײַע װערטער און גראַמאַטיק."
+    "analyticsSubscriptionWarningBody": "אָן אַ אַבאָנעמענט, פֿאַרדינען אײַערע מעסעדזשעס נישט קײן XP אָדער לײגן צו קײן נײַע װערטער און גראַמאַטיק.",
+    "noOpenSessions": "קיין אָפֿענע סעסיעס איצט נישט"
 }

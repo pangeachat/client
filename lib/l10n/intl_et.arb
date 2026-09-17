@@ -9935,5 +9935,6 @@
     "orchestratorFeedbackSubmit": "Saada",
     "orchestratorFeedbackThanks": "Märgitud. Aitäh!",
     "analyticsSubscriptionWarningTitle": "Sinu edusamme ei jälgita",
-    "analyticsSubscriptionWarningBody": "Ilma tellimuseta ei teeni sinu sõnumid XP-d ega lisa uusi sõnu ja grammatikat."
+    "analyticsSubscriptionWarningBody": "Ilma tellimuseta ei teeni sinu sõnumid XP-d ega lisa uusi sõnu ja grammatikat.",
+    "noOpenSessions": "Praegu avatud seansse pole"
 }

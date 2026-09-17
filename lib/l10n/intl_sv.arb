@@ -10456,5 +10456,6 @@
     "orchestratorFeedbackSubmit": "Skicka",
     "orchestratorFeedbackThanks": "Flagga. Tack!",
     "analyticsSubscriptionWarningTitle": "Din utveckling spåras inte",
-    "analyticsSubscriptionWarningBody": "Utan en prenumeration ger dina meddelanden varken XP eller nya ord och grammatik."
+    "analyticsSubscriptionWarningBody": "Utan en prenumeration ger dina meddelanden varken XP eller nya ord och grammatik.",
+    "noOpenSessions": "Inga öppna sessioner just nu"
 }

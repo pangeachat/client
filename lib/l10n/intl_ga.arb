@@ -9949,5 +9949,6 @@
     "orchestratorFeedbackSubmit": "Seol",
     "orchestratorFeedbackThanks": "Bratach curtha. Go raibh maith agat!",
     "analyticsSubscriptionWarningTitle": "Níl do dhul chun cinn á rianú",
-    "analyticsSubscriptionWarningBody": "Gan síntiús, ní bhaineann do theachtaireachtaí XP amach ná ní chuireann siad focail agus gramadach nua leis."
+    "analyticsSubscriptionWarningBody": "Gan síntiús, ní bhaineann do theachtaireachtaí XP amach ná ní chuireann siad focail agus gramadach nua leis.",
+    "noOpenSessions": "Níl seisiúin oscailte ar bith ann faoi láthair"
 }

@@ -9925,5 +9925,6 @@
     "orchestratorFeedbackSubmit": "Senden",
     "orchestratorFeedbackThanks": "Gemeldet. Danke!",
     "analyticsSubscriptionWarningTitle": "Dein Fortschritt wird nicht verfolgt",
-    "analyticsSubscriptionWarningBody": "Ohne Abonnement bringen deine Nachrichten weder XP noch neue Wörter und Grammatik."
+    "analyticsSubscriptionWarningBody": "Ohne Abonnement bringen deine Nachrichten weder XP noch neue Wörter und Grammatik.",
+    "noOpenSessions": "Momentan keine offenen Sitzungen"
 }

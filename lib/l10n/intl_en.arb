@@ -4261,6 +4261,7 @@
     },
     "activityComplete": "This activity has been completed. The activity summary should be available below.",
     "joinOpenSession": "Join open session",
+    "noOpenSessions": "No open sessions right now",
     "activityNotFound": "Activity not found",
     "starsEarnedOfTotal": "{earned} of {total} stars earned",
     "@starsEarnedOfTotal": {

@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "Stuur",
     "orchestratorFeedbackThanks": "Gerapporteer. Dankie!",
     "analyticsSubscriptionWarningTitle": "Jou vordering word nie nagespoor nie",
-    "analyticsSubscriptionWarningBody": "Sonder 'n intekening verdien jou boodskappe nie XP nie en voeg dit nie nuwe woorde en grammatika by nie."
+    "analyticsSubscriptionWarningBody": "Sonder 'n intekening verdien jou boodskappe nie XP nie en voeg dit nie nuwe woorde en grammatika by nie.",
+    "noOpenSessions": "Geen oop sessies tans nie"
 }

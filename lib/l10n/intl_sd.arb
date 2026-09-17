@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "موڪليو",
     "orchestratorFeedbackThanks": "نشان لڳايو ويو. مهرباني!",
     "analyticsSubscriptionWarningTitle": "توهان جي ترقي ٽريڪ نه ٿي رهي آهي",
-    "analyticsSubscriptionWarningBody": "سبسڪرپشن کان سواءِ، توهان جا پيغام XP حاصل نٿا ڪن يا نوان لفظ ۽ گرامر شامل نٿا ڪن."
+    "analyticsSubscriptionWarningBody": "سبسڪرپشن کان سواءِ، توهان جا پيغام XP حاصل نٿا ڪن يا نوان لفظ ۽ گرامر شامل نٿا ڪن.",
+    "noOpenSessions": "هن وقت ڪو به کليل سيشن ناهي"
 }

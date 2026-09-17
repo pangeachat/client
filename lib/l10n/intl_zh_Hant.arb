@@ -10044,5 +10044,6 @@
     "orchestratorFeedbackSubmit": "傳送",
     "orchestratorFeedbackThanks": "已舉報。謝謝！",
     "analyticsSubscriptionWarningTitle": "您的進度未被追蹤",
-    "analyticsSubscriptionWarningBody": "如果沒有訂閱，您的訊息將無法獲得經驗值，也無法新增單字和文法。"
+    "analyticsSubscriptionWarningBody": "如果沒有訂閱，您的訊息將無法獲得經驗值，也無法新增單字和文法。",
+    "noOpenSessions": "目前沒有開放的會話"
 }

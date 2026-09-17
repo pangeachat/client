@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "Tuma",
     "orchestratorFeedbackThanks": "Imewekewa alama. Asante!",
     "analyticsSubscriptionWarningTitle": "Maendeleo yako hayafuatiliwi",
-    "analyticsSubscriptionWarningBody": "Bila usajili, jumbe zako hazipati XP au kuongeza maneno na sarufi mpya."
+    "analyticsSubscriptionWarningBody": "Bila usajili, jumbe zako hazipati XP au kuongeza maneno na sarufi mpya.",
+    "noOpenSessions": "Hakuna vipindi vilivyo wazi kwa sasa"
 }

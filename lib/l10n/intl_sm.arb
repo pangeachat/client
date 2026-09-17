@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "Auina atu",
     "orchestratorFeedbackThanks": "Ua faailogaina. Faafetai!",
     "analyticsSubscriptionWarningTitle": "E le o siakiina lou alualu i luma",
-    "analyticsSubscriptionWarningBody": "A aunoa ma se saofaga, e le maua e au feʻau ni XP pe faʻaopoopoina ni upu fou ma le kalama."
+    "analyticsSubscriptionWarningBody": "A aunoa ma se saofaga, e le maua e au feʻau ni XP pe faʻaopoopoina ni upu fou ma le kalama.",
+    "noOpenSessions": "Leai ni sauniga tatala i le taimi nei"
 }

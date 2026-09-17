@@ -10670,5 +10670,6 @@
     "orchestratorFeedbackSubmit": "Trimite",
     "orchestratorFeedbackThanks": "Semnalat. Mulțumim!",
     "analyticsSubscriptionWarningTitle": "Progresul tău nu este urmărit",
-    "analyticsSubscriptionWarningBody": "Fără un abonament, mesajele tale nu câștigă XP și nu adaugă cuvinte și gramatică noi."
+    "analyticsSubscriptionWarningBody": "Fără un abonament, mesajele tale nu câștigă XP și nu adaugă cuvinte și gramatică noi.",
+    "noOpenSessions": "Nicio sesiune deschisă în acest moment"
 }

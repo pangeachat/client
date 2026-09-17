@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "Sɛn",
     "orchestratorFeedbackThanks": "Dɛn dɔn flag am. Tɛnki!",
     "analyticsSubscriptionWarningTitle": "Yu prɔgrɛs nɔ de sho",
-    "analyticsSubscriptionWarningBody": "If yu nɔ sɔbskrayb, yu mɛsej dɛn nɔ go de ɛn yu XP ɔ ad nyu wɔd ɛn grama."
+    "analyticsSubscriptionWarningBody": "If yu nɔ sɔbskrayb, yu mɛsej dɛn nɔ go de ɛn yu XP ɔ ad nyu wɔd ɛn grama.",
+    "noOpenSessions": "No open sessions right now"
 }

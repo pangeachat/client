@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "يوللاڭ",
     "orchestratorFeedbackThanks": "بەلگە قىلىندى. رەھمەت!",
     "analyticsSubscriptionWarningTitle": "تەرەققىياتىڭىز خاتىرىلەنمەيدۇ",
-    "analyticsSubscriptionWarningBody": "مۇشتەرى بولمىسىڭىز، ئۇچۇرلىرىڭىز XP كە ئېرىشەلمەيدۇ ھەمدە يېڭى سۆز ۋە گرامماتىكا قوشالمايدۇ."
+    "analyticsSubscriptionWarningBody": "مۇشتەرى بولمىسىڭىز، ئۇچۇرلىرىڭىز XP كە ئېرىشەلمەيدۇ ھەمدە يېڭى سۆز ۋە گرامماتىكا قوشالمايدۇ.",
+    "noOpenSessions": "ھازىر ئوچۇق دەرس يوق"
 }

@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "Romela",
     "orchestratorFeedbackThanks": "E tšoailoe. Kea leboha!",
     "analyticsSubscriptionWarningTitle": "Tsoelo-pele ea hau ha e lateloe",
-    "analyticsSubscriptionWarningBody": "Ntle le peeletso, melaetsa ea hau ha e fumane XP kapa ho eketsa mantsoe le sebōpeho-puo se secha."
+    "analyticsSubscriptionWarningBody": "Ntle le peeletso, melaetsa ea hau ha e fumane XP kapa ho eketsa mantsoe le sebōpeho-puo se secha.",
+    "noOpenSessions": "Ha ho lithuto tse bulehileng hajoale"
 }

@@ -9942,5 +9942,6 @@
     "orchestratorFeedbackSubmit": "Yuborish",
     "orchestratorFeedbackThanks": "Belgilandi. Rahmat!",
     "analyticsSubscriptionWarningTitle": "Taraqqiyotingiz kuzatilmayapti",
-    "analyticsSubscriptionWarningBody": "Obunasiz xabarlaringiz XP olib kelmaydi va yangi soʻzlar hamda grammatika qoʻshmaydi."
+    "analyticsSubscriptionWarningBody": "Obunasiz xabarlaringiz XP olib kelmaydi va yangi soʻzlar hamda grammatika qoʻshmaydi.",
+    "noOpenSessions": "Hozircha ochiq seanslar yo'q"
 }

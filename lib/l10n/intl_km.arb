@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "ផ្ញើ",
     "orchestratorFeedbackThanks": "បានដាក់ទង់។ អរគុណ!",
     "analyticsSubscriptionWarningTitle": "វឌ្ឍនភាពរបស់អ្នកមិនត្រូវបានតាមដានទេ",
-    "analyticsSubscriptionWarningBody": "បើគ្មានការជាវទេ សាររបស់អ្នកមិនទទួលបាន XP ឬបន្ថែមពាក្យ និងវេយ្យាករណ៍ថ្មីៗទេ។"
+    "analyticsSubscriptionWarningBody": "បើគ្មានការជាវទេ សាររបស់អ្នកមិនទទួលបាន XP ឬបន្ថែមពាក្យ និងវេយ្យាករណ៍ថ្មីៗទេ។",
+    "noOpenSessions": "បច្ចុប្បន្ន​គ្មាន​វគ្គ​បើក​ទេ"
 }

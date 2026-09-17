@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "Voye",
     "orchestratorFeedbackThanks": "Signale. Mèsi!",
     "analyticsSubscriptionWarningTitle": "Pwogrè ou pa anrejistre",
-    "analyticsSubscriptionWarningBody": "San yon abònman, mesaj ou yo pa touche XP oswa ajoute nouvo mo ak gramè."
+    "analyticsSubscriptionWarningBody": "San yon abònman, mesaj ou yo pa touche XP oswa ajoute nouvo mo ak gramè.",
+    "noOpenSessions": "Pa gen okenn sesyon ouvè kounye a"
 }

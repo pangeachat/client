@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "Alefaso",
     "orchestratorFeedbackThanks": "Voamarika. Misaotra!",
     "analyticsSubscriptionWarningTitle": "Tsy voarakitra ny fandrosoanao",
-    "analyticsSubscriptionWarningBody": "Raha tsy misy famandrihana, ny hafatrao dia tsy mahazo XP na manampy teny sy fitsipika vaovao."
+    "analyticsSubscriptionWarningBody": "Raha tsy misy famandrihana, ny hafatrao dia tsy mahazo XP na manampy teny sy fitsipika vaovao.",
+    "noOpenSessions": "Tsy misy fotoam-pianarana misokatra amin'izao fotoana izao"
 }

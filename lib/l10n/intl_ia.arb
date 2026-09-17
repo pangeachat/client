@@ -10874,5 +10874,6 @@
     "orchestratorFeedbackSubmit": "Inviar",
     "orchestratorFeedbackThanks": "Marcate. Gratias!",
     "analyticsSubscriptionWarningTitle": "Tu progresso non es traciate",
-    "analyticsSubscriptionWarningBody": "Sin un subscription, tu messages non gania XP o adde nove parolas e grammatica."
+    "analyticsSubscriptionWarningBody": "Sin un subscription, tu messages non gania XP o adde nove parolas e grammatica.",
+    "noOpenSessions": "Nulle sessiones aperte nunc"
 }

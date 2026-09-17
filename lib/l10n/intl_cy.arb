@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "Anfon",
     "orchestratorFeedbackThanks": "Wedi'i fflagio. Diolch!",
     "analyticsSubscriptionWarningTitle": "Nid yw eich cynnydd yn cael ei olrhain",
-    "analyticsSubscriptionWarningBody": "Heb danysgrifiad, nid yw eich negeseuon yn ennill XP nac yn ychwanegu geiriau a gramadeg newydd."
+    "analyticsSubscriptionWarningBody": "Heb danysgrifiad, nid yw eich negeseuon yn ennill XP nac yn ychwanegu geiriau a gramadeg newydd.",
+    "noOpenSessions": "Dim sesiynau ar agor ar hyn o bryd"
 }

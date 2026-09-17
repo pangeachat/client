@@ -10011,5 +10011,6 @@
     "orchestratorFeedbackSubmit": "Invia",
     "orchestratorFeedbackThanks": "Contenuto segnalato. Grazie!",
     "analyticsSubscriptionWarningTitle": "I tuoi progressi non vengono monitorati",
-    "analyticsSubscriptionWarningBody": "Senza un abbonamento, i tuoi messaggi non guadagnano XP né aggiungono nuove parole e grammatica."
+    "analyticsSubscriptionWarningBody": "Senza un abbonamento, i tuoi messaggi non guadagnano XP né aggiungono nuove parole e grammatica.",
+    "noOpenSessions": "Nessuna sessione aperta al momento"
 }

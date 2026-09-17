@@ -10888,5 +10888,6 @@
     "orchestratorFeedbackSubmit": "పంపు",
     "orchestratorFeedbackThanks": "ఫ్లాగ్ చేయబడింది. ధన్యవాదాలు!",
     "analyticsSubscriptionWarningTitle": "మీ పురోగతి ట్రాక్ చేయబడటం లేదు",
-    "analyticsSubscriptionWarningBody": "సబ్‌స్క్రిప్షన్ లేకుండా, మీ సందేశాలు XPని సంపాదించవు లేదా కొత్త పదాలు మరియు వ్యాకరణాన్ని జోడించవు."
+    "analyticsSubscriptionWarningBody": "సబ్‌స్క్రిప్షన్ లేకుండా, మీ సందేశాలు XPని సంపాదించవు లేదా కొత్త పదాలు మరియు వ్యాకరణాన్ని జోడించవు.",
+    "noOpenSessions": "ప్రస్తుతానికి ఓపెన్ సెషన్‌లు లేవు"
 }

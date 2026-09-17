@@ -9938,5 +9938,6 @@
     "orchestratorFeedbackSubmit": "Bidali",
     "orchestratorFeedbackThanks": "Markatuta. Eskerrik asko!",
     "analyticsSubscriptionWarningTitle": "Zure aurrerapena ez da jarraitzen ari",
-    "analyticsSubscriptionWarningBody": "Harpidetzarik gabe, zure mezuek ez dute XPrik irabazten, ezta hitz eta gramatika berririk gehitzen ere."
+    "analyticsSubscriptionWarningBody": "Harpidetzarik gabe, zure mezuek ez dute XPrik irabazten, ezta hitz eta gramatika berririk gehitzen ere.",
+    "noOpenSessions": "Ez dago saio irekirik oraintxe bertan"
 }

@@ -9938,5 +9938,6 @@
     "orchestratorFeedbackSubmit": "Verzenden",
     "orchestratorFeedbackThanks": "Gemarkeerd. Bedankt!",
     "analyticsSubscriptionWarningTitle": "Je voortgang wordt niet bijgehouden",
-    "analyticsSubscriptionWarningBody": "Zonder abonnement leveren je berichten geen XP op en voegen ze geen nieuwe woorden en grammatica toe."
+    "analyticsSubscriptionWarningBody": "Zonder abonnement leveren je berichten geen XP op en voegen ze geen nieuwe woorden en grammatica toe.",
+    "noOpenSessions": "Momenteel geen open sessies"
 }

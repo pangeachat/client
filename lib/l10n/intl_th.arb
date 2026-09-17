@@ -10570,5 +10570,6 @@
     "orchestratorFeedbackSubmit": "ส่ง",
     "orchestratorFeedbackThanks": "ตั้งค่าสถานะแล้ว ขอบคุณ!",
     "analyticsSubscriptionWarningTitle": "ความคืบหน้าของคุณไม่ถูกติดตาม",
-    "analyticsSubscriptionWarningBody": "หากไม่มีการสมัครสมาชิก ข้อความของคุณจะไม่ได้รับ XP หรือเพิ่มคำศัพท์และไวยากรณ์ใหม่ๆ"
+    "analyticsSubscriptionWarningBody": "หากไม่มีการสมัครสมาชิก ข้อความของคุณจะไม่ได้รับ XP หรือเพิ่มคำศัพท์และไวยากรณ์ใหม่ๆ",
+    "noOpenSessions": "ขณะนี้ไม่มีเซสชันที่เปิดอยู่"
 }

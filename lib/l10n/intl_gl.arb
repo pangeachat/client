@@ -9938,5 +9938,6 @@
     "orchestratorFeedbackSubmit": "Enviar",
     "orchestratorFeedbackThanks": "Marcado. Grazas!",
     "analyticsSubscriptionWarningTitle": "Non se está a rexistrar o teu progreso",
-    "analyticsSubscriptionWarningBody": "Sen unha subscrición, as túas mensaxes non gañan XP nin engaden novas palabras e gramática."
+    "analyticsSubscriptionWarningBody": "Sen unha subscrición, as túas mensaxes non gañan XP nin engaden novas palabras e gramática.",
+    "noOpenSessions": "Non hai sesións abertas agora mesmo"
 }

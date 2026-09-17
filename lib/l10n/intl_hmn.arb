@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "Xa",
     "orchestratorFeedbackThanks": "Taw lawm. Ua tsaug!",
     "analyticsSubscriptionWarningTitle": "Koj qhov kev kawm tsis raug taug qab",
-    "analyticsSubscriptionWarningBody": "Yog tsis muaj kev txhawb nqa, koj cov lus yuav tsis tau XP lossis ntxiv cov lus tshiab thiab kev kawm sau ntawv."
+    "analyticsSubscriptionWarningBody": "Yog tsis muaj kev txhawb nqa, koj cov lus yuav tsis tau XP lossis ntxiv cov lus tshiab thiab kev kawm sau ntawv.",
+    "noOpenSessions": "Tsis muaj kev sib tham qhib tam sim no"
 }

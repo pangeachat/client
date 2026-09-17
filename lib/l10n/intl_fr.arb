@@ -10293,5 +10293,6 @@
     "orchestratorFeedbackSubmit": "Envoyer",
     "orchestratorFeedbackThanks": "Signalé. Merci !",
     "analyticsSubscriptionWarningTitle": "Votre progression n'est pas suivie",
-    "analyticsSubscriptionWarningBody": "Sans abonnement, vos messages ne rapportent pas d'XP et n'ajoutent pas de nouveaux mots ou de nouvelle grammaire."
+    "analyticsSubscriptionWarningBody": "Sans abonnement, vos messages ne rapportent pas d'XP et n'ajoutent pas de nouveaux mots ou de nouvelle grammaire.",
+    "noOpenSessions": "Aucune session ouverte pour le moment"
 }

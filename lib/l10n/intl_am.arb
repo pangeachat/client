@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "ላክ",
     "orchestratorFeedbackThanks": "ምልክት ተደርጓል። እናመሰግናለን!",
     "analyticsSubscriptionWarningTitle": "ሂደትዎ እየተከታተለ አይደለም",
-    "analyticsSubscriptionWarningBody": "ያለ ምዝገባ፣ መልዕክቶችዎ XP አያስገኙም ወይም አዲስ ቃላትን እና ሰዋስውን አይጨምሩም።"
+    "analyticsSubscriptionWarningBody": "ያለ ምዝገባ፣ መልዕክቶችዎ XP አያስገኙም ወይም አዲስ ቃላትን እና ሰዋስውን አይጨምሩም።",
+    "noOpenSessions": "በአሁኑ ጊዜ ክፍት ክፍለ ጊዜዎች የሉም"
 }

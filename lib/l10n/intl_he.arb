@@ -10852,5 +10852,6 @@
     "orchestratorFeedbackSubmit": "שלח",
     "orchestratorFeedbackThanks": "סומן. תודה!",
     "analyticsSubscriptionWarningTitle": "ההתקדמות שלך לא נשמרת",
-    "analyticsSubscriptionWarningBody": "בלי מינוי, ההודעות שלך לא יצברו נקודות ניסיון או יוסיפו מילים ודקדוק חדשים."
+    "analyticsSubscriptionWarningBody": "בלי מינוי, ההודעות שלך לא יצברו נקודות ניסיון או יוסיפו מילים ודקדוק חדשים.",
+    "noOpenSessions": "אין שיעורים פתוחים כרגע"
 }

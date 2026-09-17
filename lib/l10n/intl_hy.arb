@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "Ուղարկել",
     "orchestratorFeedbackThanks": "Նշված է։ Շնորհակալություն։",
     "analyticsSubscriptionWarningTitle": "Ձեր առաջընթացը չի հետևվում",
-    "analyticsSubscriptionWarningBody": "Առանց բաժանորդագրության՝ ձեր հաղորդագրությունները չեն վաստակում XP և չեն ավելացնում նոր բառեր ու քերականություն:"
+    "analyticsSubscriptionWarningBody": "Առանց բաժանորդագրության՝ ձեր հաղորդագրությունները չեն վաստակում XP և չեն ավելացնում նոր բառեր ու քերականություն:",
+    "noOpenSessions": "Այս պահին բաց սեսիաներ չկան"
 }

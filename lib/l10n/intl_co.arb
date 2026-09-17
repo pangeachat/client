@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "Mandà",
     "orchestratorFeedbackThanks": "Signalatu. Grazie!",
     "analyticsSubscriptionWarningTitle": "U vostru prugressu ùn hè micca seguitatu",
-    "analyticsSubscriptionWarningBody": "Senza un abbunamentu, i vostri messagi ùn guadagnanu micca XP o aghjunghjenu parolle è grammatica novi."
+    "analyticsSubscriptionWarningBody": "Senza un abbunamentu, i vostri messagi ùn guadagnanu micca XP o aghjunghjenu parolle è grammatica novi.",
+    "noOpenSessions": "Nisuna sessione aperta avà"
 }

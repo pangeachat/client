@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "Ferstjoere",
     "orchestratorFeedbackThanks": "Markearre. Tank!",
     "analyticsSubscriptionWarningTitle": "Jo foarútgong wurdt net folge",
-    "analyticsSubscriptionWarningBody": "Sûnder abonnemint fertsjinje jo berjochten gjin XP en foegje se gjin nije wurden en grammatika ta."
+    "analyticsSubscriptionWarningBody": "Sûnder abonnemint fertsjinje jo berjochten gjin XP en foegje se gjin nije wurden en grammatika ta.",
+    "noOpenSessions": "Gjin iepen sesjes op it stuit"
 }

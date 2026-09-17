@@ -10838,5 +10838,6 @@
     "orchestratorFeedbackSubmit": "გაგზავნა",
     "orchestratorFeedbackThanks": "მონიშნულია. მადლობა!",
     "analyticsSubscriptionWarningTitle": "თქვენი პროგრესი არ აღირიცხება",
-    "analyticsSubscriptionWarningBody": "გამოწერის გარეშე, თქვენი შეტყობინებები არ იღებს XP-ს და არ ამატებს ახალ სიტყვებსა და გრამატიკას."
+    "analyticsSubscriptionWarningBody": "გამოწერის გარეშე, თქვენი შეტყობინებები არ იღებს XP-ს და არ ამატებს ახალ სიტყვებსა და გრამატიკას.",
+    "noOpenSessions": "ამჟამად ღია სესიები არ არის"
 }

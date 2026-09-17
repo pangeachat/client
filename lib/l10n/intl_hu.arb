@@ -10041,5 +10041,6 @@
     "orchestratorFeedbackSubmit": "Küldés",
     "orchestratorFeedbackThanks": "Megjelölve. Köszönjük!",
     "analyticsSubscriptionWarningTitle": "Nem követjük a fejlődésedet",
-    "analyticsSubscriptionWarningBody": "Előfizetés nélkül az üzeneteid nem hoznak XP-t, és nem adnak hozzá új szavakat vagy nyelvtant."
+    "analyticsSubscriptionWarningBody": "Előfizetés nélkül az üzeneteid nem hoznak XP-t, és nem adnak hozzá új szavakat vagy nyelvtant.",
+    "noOpenSessions": "Jelenleg nincsenek nyitott munkamenetek"
 }

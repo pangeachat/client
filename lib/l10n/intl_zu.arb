@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "Thumela",
     "orchestratorFeedbackThanks": "Kuphawuliwe. Ngiyabonga!",
     "analyticsSubscriptionWarningTitle": "Intuthuko yakho ayilandelwa",
-    "analyticsSubscriptionWarningBody": "Ngaphandle kokubhalisa, imilayezo yakho ayitholi i-XP noma ingezi amagama amasha nohlelo lolimi."
+    "analyticsSubscriptionWarningBody": "Ngaphandle kokubhalisa, imilayezo yakho ayitholi i-XP noma ingezi amagama amasha nohlelo lolimi.",
+    "noOpenSessions": "Azikho izikhathi ezivulekile okwamanje"
 }

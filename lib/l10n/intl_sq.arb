@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "Dërgo",
     "orchestratorFeedbackThanks": "U raportua. Faleminderit!",
     "analyticsSubscriptionWarningTitle": "Progresin tuaj nuk po e ndjekim",
-    "analyticsSubscriptionWarningBody": "Pa një abonim, mesazhet tuaja nuk fitojnë XP ose nuk shtojnë fjalë dhe gramatikë të reja."
+    "analyticsSubscriptionWarningBody": "Pa një abonim, mesazhet tuaja nuk fitojnë XP ose nuk shtojnë fjalë dhe gramatikë të reja.",
+    "noOpenSessions": "Asnjë sesion i hapur tani"
 }

@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "അയയ്ക്കുക",
     "orchestratorFeedbackThanks": "ഫ്ലാഗ് ചെയ്തു. നന്ദി!",
     "analyticsSubscriptionWarningTitle": "നിങ്ങളുടെ പുരോഗതി ട്രാക്ക് ചെയ്യുന്നില്ല",
-    "analyticsSubscriptionWarningBody": "സബ്‌സ്‌ക്രിപ്‌ഷൻ ഇല്ലാതെ, നിങ്ങളുടെ സന്ദേശങ്ങൾക്ക് XP നേടാനോ പുതിയ വാക്കുകളും വ്യാകരണവും ചേർക്കാനോ കഴിയില്ല."
+    "analyticsSubscriptionWarningBody": "സബ്‌സ്‌ക്രിപ്‌ഷൻ ഇല്ലാതെ, നിങ്ങളുടെ സന്ദേശങ്ങൾക്ക് XP നേടാനോ പുതിയ വാക്കുകളും വ്യാകരണവും ചേർക്കാനോ കഴിയില്ല.",
+    "noOpenSessions": "ഇപ്പോൾ തുറന്ന സെഷനുകളൊന്നുമില്ല"
 }

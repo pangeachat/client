@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "প্ৰেৰণ কৰক",
     "orchestratorFeedbackThanks": "ফ্লেগ কৰা হৈছে। ধন্যবাদ!",
     "analyticsSubscriptionWarningTitle": "আপোনাৰ অগ্ৰগতি ট্ৰেক কৰা হোৱা নাই",
-    "analyticsSubscriptionWarningBody": "গ্ৰাহক সেৱা অবিহনে, আপোনাৰ বাৰ্তাবোৰে XP উপাৰ্জন নকৰে বা নতুন শব্দ আৰু ব্যাকৰণ যোগ নকৰে।"
+    "analyticsSubscriptionWarningBody": "গ্ৰাহক সেৱা অবিহনে, আপোনাৰ বাৰ্তাবোৰে XP উপাৰ্জন নকৰে বা নতুন শব্দ আৰু ব্যাকৰণ যোগ নকৰে।",
+    "noOpenSessions": "বৰ্তমান কোনো খোলা ছেছন নাই"
 }

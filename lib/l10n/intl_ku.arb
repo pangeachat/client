@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "ناردن",
     "orchestratorFeedbackThanks": "ئاڵا کرا. سوپاس!",
     "analyticsSubscriptionWarningTitle": "پێشکەوتنەکەت بەدواداچوونی بۆ ناکرێت",
-    "analyticsSubscriptionWarningBody": "بەبێ بەشداریکردن، پەیامەکانت XP بەدەست ناهێنن و وشە و ڕێزمانی نوێ زیاد ناکەن."
+    "analyticsSubscriptionWarningBody": "بەبێ بەشداریکردن، پەیامەکانت XP بەدەست ناهێنن و وشە و ڕێزمانی نوێ زیاد ناکەن.",
+    "noOpenSessions": "هیچ دەستپێکێکی کراوە نییە لە ئێستادا"
 }

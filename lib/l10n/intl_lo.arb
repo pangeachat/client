@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "ສົ່ງ",
     "orchestratorFeedbackThanks": "ຕິດທຸງແລ້ວ. ຂອບໃຈ!",
     "analyticsSubscriptionWarningTitle": "ຄວາມຄືບໜ້າຂອງທ່ານບໍ່ໄດ້ຖືກຕິດຕາມ",
-    "analyticsSubscriptionWarningBody": "ຖ້າບໍ່ມີການສະໝັກໃຊ້, ຂໍ້ຄວາມຂອງທ່ານຈະບໍ່ໄດ້ຮັບ XP ຫຼືເພີ່ມຄຳສັບ ແລະ ໄວຍາກອນໃໝ່."
+    "analyticsSubscriptionWarningBody": "ຖ້າບໍ່ມີການສະໝັກໃຊ້, ຂໍ້ຄວາມຂອງທ່ານຈະບໍ່ໄດ້ຮັບ XP ຫຼືເພີ່ມຄຳສັບ ແລະ ໄວຍາກອນໃໝ່.",
+    "noOpenSessions": "ບໍ່ມີເຊສຊັນເປີດໃນຕອນນີ້"
 }

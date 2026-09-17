@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "Изпрати",
     "orchestratorFeedbackThanks": "Докладвано. Благодарим!",
     "analyticsSubscriptionWarningTitle": "Напредъкът ви не се проследява",
-    "analyticsSubscriptionWarningBody": "Без абонамент съобщенията ви не носят XP и не добавят нови думи и граматика."
+    "analyticsSubscriptionWarningBody": "Без абонамент съобщенията ви не носят XP и не добавят нови думи и граматика.",
+    "noOpenSessions": "В момента няма отворени сесии"
 }

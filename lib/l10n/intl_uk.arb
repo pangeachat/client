@@ -9938,5 +9938,6 @@
     "orchestratorFeedbackSubmit": "Надіслати",
     "orchestratorFeedbackThanks": "Повідомлено. Дякуємо!",
     "analyticsSubscriptionWarningTitle": "Ваш прогрес не відстежується",
-    "analyticsSubscriptionWarningBody": "Без підписки ваші повідомлення не приносять XP і не додають нових слів та граматики."
+    "analyticsSubscriptionWarningBody": "Без підписки ваші повідомлення не приносять XP і не додають нових слів та граматики.",
+    "noOpenSessions": "Наразі немає відкритих сесій"
 }

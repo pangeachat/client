@@ -7230,5 +7230,6 @@
     "orchestratorFeedbackSubmit": "Gửi",
     "orchestratorFeedbackThanks": "Đã gắn cờ. Cảm ơn!",
     "analyticsSubscriptionWarningTitle": "Tiến độ của bạn không được theo dõi",
-    "analyticsSubscriptionWarningBody": "Nếu không có gói đăng ký, tin nhắn của bạn sẽ không nhận được XP hoặc thêm từ và ngữ pháp mới."
+    "analyticsSubscriptionWarningBody": "Nếu không có gói đăng ký, tin nhắn của bạn sẽ không nhận được XP hoặc thêm từ và ngữ pháp mới.",
+    "noOpenSessions": "Hiện không có phiên nào đang mở"
 }

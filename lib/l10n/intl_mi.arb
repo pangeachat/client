@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "Tukuna",
     "orchestratorFeedbackThanks": "Kua tohua. Ngā mihi!",
     "analyticsSubscriptionWarningTitle": "Kāore tō ahunga whakamua i te aroturukitia",
-    "analyticsSubscriptionWarningBody": "Ki te kore he ohaurunga, kāore ō karere e whiwhi XP, e tāpiri kupu hou, wetereo hoki."
+    "analyticsSubscriptionWarningBody": "Ki te kore he ohaurunga, kāore ō karere e whiwhi XP, e tāpiri kupu hou, wetereo hoki.",
+    "noOpenSessions": "Kāore he hui tuwhera i tēnei wā"
 }

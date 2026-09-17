@@ -10131,5 +10131,6 @@
     "orchestratorFeedbackSubmit": "보내기",
     "orchestratorFeedbackThanks": "신고되었습니다. 감사합니다!",
     "analyticsSubscriptionWarningTitle": "진행 상황이 추적되지 않습니다",
-    "analyticsSubscriptionWarningBody": "구독하지 않으면 메시지로 XP를 얻거나 새로운 단어와 문법을 추가할 수 없습니다."
+    "analyticsSubscriptionWarningBody": "구독하지 않으면 메시지로 XP를 얻거나 새로운 단어와 문법을 추가할 수 없습니다.",
+    "noOpenSessions": "현재 열려 있는 세션이 없습니다."
 }

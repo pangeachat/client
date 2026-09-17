@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "ପଠାନ୍ତୁ",
     "orchestratorFeedbackThanks": "ଫ୍ଲାଗ୍ କରାଯାଇଛି। ଧନ୍ୟବାଦ!",
     "analyticsSubscriptionWarningTitle": "ଆପଣଙ୍କ ପ୍ରଗତି ଟ୍ରାକ୍ କରାଯାଉ ନାହିଁ",
-    "analyticsSubscriptionWarningBody": "ସବସ୍କ୍ରିପସନ୍ ବିନା, ଆପଣଙ୍କ ବାର୍ତ୍ତାଗୁଡ଼ିକ XP ଅର୍ଜନ କରନ୍ତି ନାହିଁ କିମ୍ବା ନୂତନ ଶବ୍ଦ ଏବଂ ବ୍ୟାକରଣ ଯୋଗ କରନ୍ତି ନାହିଁ।"
+    "analyticsSubscriptionWarningBody": "ସବସ୍କ୍ରିପସନ୍ ବିନା, ଆପଣଙ୍କ ବାର୍ତ୍ତାଗୁଡ଼ିକ XP ଅର୍ଜନ କରନ୍ତି ନାହିଁ କିମ୍ବା ନୂତନ ଶବ୍ଦ ଏବଂ ବ୍ୟାକରଣ ଯୋଗ କରନ୍ତି ନାହିଁ।",
+    "noOpenSessions": "ବର୍ତ୍ତମାନ କୌଣସି ଖୋଲା ଅଧିବେଶନ ନାହିଁ"
 }

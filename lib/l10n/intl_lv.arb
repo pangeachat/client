@@ -9938,5 +9938,6 @@
     "orchestratorFeedbackSubmit": "Sūtīt",
     "orchestratorFeedbackThanks": "Atzīmēts. Paldies!",
     "analyticsSubscriptionWarningTitle": "Jūsu progress netiek izsekots",
-    "analyticsSubscriptionWarningBody": "Bez abonementa jūsu ziņojumi nenopelna XP un nepievieno jaunus vārdus un gramatiku."
+    "analyticsSubscriptionWarningBody": "Bez abonementa jūsu ziņojumi nenopelna XP un nepievieno jaunus vārdus un gramatiku.",
+    "noOpenSessions": "Pašlaik nav atvērtu sesiju"
 }

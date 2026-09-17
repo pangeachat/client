@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "استول",
     "orchestratorFeedbackThanks": "په نښه شو. مننه!",
     "analyticsSubscriptionWarningTitle": "ستاسو پرمختګ نه تعقیبیږي",
-    "analyticsSubscriptionWarningBody": "پرته له ګډون، ستاسو پیغامونه XP نه ګټي او نه نوې کلمې او ګرامر اضافه کوي."
+    "analyticsSubscriptionWarningBody": "پرته له ګډون، ستاسو پیغامونه XP نه ګټي او نه نوې کلمې او ګرامر اضافه کوي.",
+    "noOpenSessions": "اوسمهال خلاصې ناستې نشته"
 }

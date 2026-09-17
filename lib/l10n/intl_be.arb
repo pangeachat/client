@@ -9952,5 +9952,6 @@
     "orchestratorFeedbackSubmit": "Адправіць",
     "orchestratorFeedbackThanks": "Пазначана. Дзякуй!",
     "analyticsSubscriptionWarningTitle": "Ваш прагрэс не адсочваецца",
-    "analyticsSubscriptionWarningBody": "Без падпіскі вашы паведамленні не прыносяць XP і не дадаюць новых слоў і граматыкі."
+    "analyticsSubscriptionWarningBody": "Без падпіскі вашы паведамленні не прыносяць XP і не дадаюць новых слоў і граматыкі.",
+    "noOpenSessions": "Зараз няма адкрытых сесій"
 }

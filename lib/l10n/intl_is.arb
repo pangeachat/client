@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "Senda",
     "orchestratorFeedbackThanks": "Fánað. Takk!",
     "analyticsSubscriptionWarningTitle": "Framfarir þínar eru ekki skráðar",
-    "analyticsSubscriptionWarningBody": "Án áskriftar fá skilaboðin þín ekki XP eða bæta við nýjum orðum og málfræði."
+    "analyticsSubscriptionWarningBody": "Án áskriftar fá skilaboðin þín ekki XP eða bæta við nýjum orðum og málfræði.",
+    "noOpenSessions": "Engar opnar lotur í augnablikinu"
 }

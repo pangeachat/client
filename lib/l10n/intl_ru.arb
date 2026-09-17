@@ -10910,5 +10910,6 @@
     "orchestratorFeedbackSubmit": "Отправить",
     "orchestratorFeedbackThanks": "Помечено. Спасибо!",
     "analyticsSubscriptionWarningTitle": "Ваш прогресс не отслеживается",
-    "analyticsSubscriptionWarningBody": "Без подписки ваши сообщения не приносят XP и не добавляют новые слова и грамматику."
+    "analyticsSubscriptionWarningBody": "Без подписки ваши сообщения не приносят XP и не добавляют новые слова и грамматику.",
+    "noOpenSessions": "Сейчас нет открытых сессий"
 }
