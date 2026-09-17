@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-17 11:52:04.711231",
+    "@@last_modified": "2026-09-17 15:10:04.016059",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10027,5 +10027,8 @@
     "orchestratorFeedbackThanks": "پرچم‌گذاری شد. ممنون!",
     "analyticsSubscriptionWarningTitle": "پیشرفت شما ردیابی نمی‌شود",
     "analyticsSubscriptionWarningBody": "بدون اشتراک، پیام‌های شما امتیاز XP کسب نمی‌کنند و کلمات و گرامر جدیدی اضافه نمی‌کنند.",
-    "noOpenSessions": "در حال حاضر هیچ جلسه بازی باز نیست"
+    "noOpenSessions": "در حال حاضر هیچ جلسه بازی باز نیست",
+    "xpAmount": "{count} امتیاز تجربه",
+    "vocabItemsUsed": "{count, plural, =1{۱ لغت استفاده شد} other{{count} لغت استفاده شد}}",
+    "grammarItemsUsed": "{count, plural, =1{۱ مورد گرامر استفاده شد} other{{count} مورد گرامر استفاده شد}}"
 }

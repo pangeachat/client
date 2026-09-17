@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-09-17 11:52:03.831305",
+    "@@last_modified": "2026-09-17 15:10:02.691456",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2343,5 +2343,8 @@
     "orchestratorFeedbackThanks": "ምልክት ተደርጓል። እናመሰግናለን!",
     "analyticsSubscriptionWarningTitle": "ሂደትዎ እየተከታተለ አይደለም",
     "analyticsSubscriptionWarningBody": "ያለ ምዝገባ፣ መልዕክቶችዎ XP አያስገኙም ወይም አዲስ ቃላትን እና ሰዋስውን አይጨምሩም።",
-    "noOpenSessions": "በአሁኑ ጊዜ ክፍት ክፍለ ጊዜዎች የሉም"
+    "noOpenSessions": "በአሁኑ ጊዜ ክፍት ክፍለ ጊዜዎች የሉም",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 የቃላት ንጥል ጥቅም ላይ ውሏል} other{{count} የቃላት ንጥሎች ጥቅም ላይ ውለዋል}}",
+    "grammarItemsUsed": "{count, plural, =1{1 ሰዋሰው ንጥል ጥቅም ላይ ውሏል} other{{count} ሰዋሰው ንጥሎች ጥቅም ላይ ውለዋል}}"
 }

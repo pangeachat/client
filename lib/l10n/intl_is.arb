@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-09-17 11:52:06.721622",
+    "@@last_modified": "2026-09-17 15:10:05.931944",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2343,5 +2343,8 @@
     "orchestratorFeedbackThanks": "Fánað. Takk!",
     "analyticsSubscriptionWarningTitle": "Framfarir þínar eru ekki skráðar",
     "analyticsSubscriptionWarningBody": "Án áskriftar fá skilaboðin þín ekki XP eða bæta við nýjum orðum og málfræði.",
-    "noOpenSessions": "Engar opnar lotur í augnablikinu"
+    "noOpenSessions": "Engar opnar lotur í augnablikinu",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 orðaforðahlutur notaður} other{{count} orðaforðahlutir notaðir}}",
+    "grammarItemsUsed": "{count, plural, =1{1 málfræðihlutur notaður} other{{count} málfræðihlutir notaðir}}"
 }

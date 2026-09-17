@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-09-17 11:52:13.532521",
+    "@@last_modified": "2026-09-17 15:10:12.067691",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2343,5 +2343,8 @@
     "orchestratorFeedbackThanks": "פֿאַרפֿאָנט. אַ דאַנק!",
     "analyticsSubscriptionWarningTitle": "אײַער פּראָגרעס װערט נישט נאָכגעפֿאָלגט",
     "analyticsSubscriptionWarningBody": "אָן אַ אַבאָנעמענט, פֿאַרדינען אײַערע מעסעדזשעס נישט קײן XP אָדער לײגן צו קײן נײַע װערטער און גראַמאַטיק.",
-    "noOpenSessions": "קיין אָפֿענע סעסיעס איצט נישט"
+    "noOpenSessions": "קיין אָפֿענע סעסיעס איצט נישט",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 וואָקאַב נומער געניצט} other{{count} וואָקאַב נומערן געניצט}}",
+    "grammarItemsUsed": "{count, plural, =1{1 גראַמאַטיק נומער געניצט} other{{count} גראַמאַטיק נומערן געניצט}}"
 }

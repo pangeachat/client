@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-09-17 11:52:09.761832",
+    "@@last_modified": "2026-09-17 15:10:09.664266",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2343,5 +2343,8 @@
     "orchestratorFeedbackThanks": "ଫ୍ଲାଗ୍ କରାଯାଇଛି। ଧନ୍ୟବାଦ!",
     "analyticsSubscriptionWarningTitle": "ଆପଣଙ୍କ ପ୍ରଗତି ଟ୍ରାକ୍ କରାଯାଉ ନାହିଁ",
     "analyticsSubscriptionWarningBody": "ସବସ୍କ୍ରିପସନ୍ ବିନା, ଆପଣଙ୍କ ବାର୍ତ୍ତାଗୁଡ଼ିକ XP ଅର୍ଜନ କରନ୍ତି ନାହିଁ କିମ୍ବା ନୂତନ ଶବ୍ଦ ଏବଂ ବ୍ୟାକରଣ ଯୋଗ କରନ୍ତି ନାହିଁ।",
-    "noOpenSessions": "ବର୍ତ୍ତମାନ କୌଣସି ଖୋଲା ଅଧିବେଶନ ନାହିଁ"
+    "noOpenSessions": "ବର୍ତ୍ତମାନ କୌଣସି ଖୋଲା ଅଧିବେଶନ ନାହିଁ",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 ଶବ୍ଦକୋଷ ବସ୍ତୁ ବ୍ୟବହୃତ ହୋଇଛି} other{{count} ଶବ୍ଦକୋଷ ବସ୍ତୁ ବ୍ୟବହୃତ ହୋଇଛି}}",
+    "grammarItemsUsed": "{count, plural, =1{1 ବ୍ୟାକରଣ ବସ୍ତୁ ବ୍ୟବହୃତ ହୋଇଛି} other{{count} ବ୍ୟାକରଣ ବସ୍ତୁ ବ୍ୟବହୃତ ହୋଇଛି}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-09-17 11:52:08.175383",
+    "@@last_modified": "2026-09-17 15:10:07.611205",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2343,5 +2343,8 @@
     "orchestratorFeedbackThanks": "Пријавено. Благодарам!",
     "analyticsSubscriptionWarningTitle": "Вашиот напредок не се следи",
     "analyticsSubscriptionWarningBody": "Без претплата, вашите пораки не заработуваат XP или не додаваат нови зборови и граматика.",
-    "noOpenSessions": "Нема отворени сесии во моментов"
+    "noOpenSessions": "Нема отворени сесии во моментов",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 искористен збор} other{{count} искористени зборови}}",
+    "grammarItemsUsed": "{count, plural, =1{1 искористена граматичка ставка} other{{count} искористени граматички ставки}}"
 }

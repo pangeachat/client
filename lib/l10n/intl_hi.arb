@@ -3093,7 +3093,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-09-17 11:52:05.436679",
+    "@@last_modified": "2026-09-17 15:10:05.011615",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10571,5 +10571,8 @@
     "orchestratorFeedbackThanks": "फ़्लैग किया गया। धन्यवाद!",
     "analyticsSubscriptionWarningTitle": "आपकी प्रगति ट्रैक नहीं की जा रही है",
     "analyticsSubscriptionWarningBody": "सदस्यता के बिना, आपके संदेशों से XP नहीं मिलता है और न ही नए शब्द और व्याकरण जुड़ते हैं।",
-    "noOpenSessions": "अभी कोई सत्र खुला नहीं है"
+    "noOpenSessions": "अभी कोई सत्र खुला नहीं है",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 शब्दावली आइटम उपयोग किया गया} other{{count} शब्दावली आइटम उपयोग किए गए}}",
+    "grammarItemsUsed": "{count, plural, =1{1 व्याकरण आइटम उपयोग किया गया} other{{count} व्याकरण आइटम उपयोग किए गए}}"
 }

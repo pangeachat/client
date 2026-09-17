@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-17 11:52:12.498834",
+    "@@last_modified": "2026-09-17 15:10:11.863062",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7231,5 +7231,8 @@
     "orchestratorFeedbackThanks": "Đã gắn cờ. Cảm ơn!",
     "analyticsSubscriptionWarningTitle": "Tiến độ của bạn không được theo dõi",
     "analyticsSubscriptionWarningBody": "Nếu không có gói đăng ký, tin nhắn của bạn sẽ không nhận được XP hoặc thêm từ và ngữ pháp mới.",
-    "noOpenSessions": "Hiện không có phiên nào đang mở"
+    "noOpenSessions": "Hiện không có phiên nào đang mở",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{Đã dùng 1 mục từ vựng} other{Đã dùng {count} mục từ vựng}}",
+    "grammarItemsUsed": "{count, plural, =1{Đã dùng 1 mục ngữ pháp} other{Đã dùng {count} mục ngữ pháp}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-09-17 11:52:03.700509",
+    "@@last_modified": "2026-09-17 15:10:03.366039",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10433,5 +10433,8 @@
     "orchestratorFeedbackThanks": "Nahlášeno. Děkujeme!",
     "analyticsSubscriptionWarningTitle": "Váš pokrok není sledován",
     "analyticsSubscriptionWarningBody": "Bez předplatného vaše zprávy nezískávají XP ani nepřidávají nová slova a gramatiku.",
-    "noOpenSessions": "Momentálně nejsou otevřené žádné relace"
+    "noOpenSessions": "Momentálně nejsou otevřené žádné relace",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 použitá položka slovní zásoby} other{{count} použité položky slovní zásoby}}",
+    "grammarItemsUsed": "{count, plural, =1{1 použitá položka gramatiky} other{{count} použité položky gramatiky}}"
 }

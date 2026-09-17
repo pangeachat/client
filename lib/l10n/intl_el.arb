@@ -3400,7 +3400,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-09-17 11:52:04.163868",
+    "@@last_modified": "2026-09-17 15:10:03.547604",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10814,5 +10814,8 @@
     "orchestratorFeedbackThanks": "Έγινε αναφορά. Ευχαριστούμε!",
     "analyticsSubscriptionWarningTitle": "Η πρόοδός σας δεν παρακολουθείται",
     "analyticsSubscriptionWarningBody": "Χωρίς συνδρομή, τα μηνύματά σας δεν κερδίζουν XP ούτε προσθέτουν νέες λέξεις και γραμματική.",
-    "noOpenSessions": "Δεν υπάρχουν ανοιχτές συνεδρίες αυτήν τη στιγμή"
+    "noOpenSessions": "Δεν υπάρχουν ανοιχτές συνεδρίες αυτήν τη στιγμή",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{Χρησιμοποιήθηκε 1 στοιχείο λεξιλογίου} other{Χρησιμοποιήθηκαν {count} στοιχεία λεξιλογίου}}",
+    "grammarItemsUsed": "{count, plural, =1{Χρησιμοποιήθηκε 1 στοιχείο γραμματικής} other{Χρησιμοποιήθηκαν {count} στοιχεία γραμματικής}}"
 }

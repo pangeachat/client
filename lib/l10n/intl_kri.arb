@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-09-17 11:53:06.543385",
+    "@@last_modified": "2026-09-17 15:10:06.812560",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2343,5 +2343,8 @@
     "orchestratorFeedbackThanks": "Dɛn dɔn flag am. Tɛnki!",
     "analyticsSubscriptionWarningTitle": "Yu prɔgrɛs nɔ de sho",
     "analyticsSubscriptionWarningBody": "If yu nɔ sɔbskrayb, yu mɛsej dɛn nɔ go de ɛn yu XP ɔ ad nyu wɔd ɛn grama.",
-    "noOpenSessions": "No open sessions right now"
+    "noOpenSessions": "No open sessions right now",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 vocab item dɛn dɔn yuz} other{{count} vocab item dɛn dɔn yuz}}",
+    "grammarItemsUsed": "{count, plural, =1{1 grammar item dɛn dɔn yuz} other{{count} grammar item dɛn dɔn yuz}}"
 }

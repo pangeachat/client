@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-09-17 11:52:03.117426",
+    "@@last_modified": "2026-09-17 15:10:02.651492",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2343,5 +2343,8 @@
     "orchestratorFeedbackThanks": "Докладвано. Благодарим!",
     "analyticsSubscriptionWarningTitle": "Напредъкът ви не се проследява",
     "analyticsSubscriptionWarningBody": "Без абонамент съобщенията ви не носят XP и не добавят нови думи и граматика.",
-    "noOpenSessions": "В момента няма отворени сесии"
+    "noOpenSessions": "В момента няма отворени сесии",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 използван елемент от речника} other{{count} използвани елементи от речника}}",
+    "grammarItemsUsed": "{count, plural, =1{1 използван граматичен елемент} other{{count} използвани граматични елементи}}"
 }

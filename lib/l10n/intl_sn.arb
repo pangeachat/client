@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-09-17 11:52:10.839024",
+    "@@last_modified": "2026-09-17 15:10:10.220125",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2343,5 +2343,8 @@
     "orchestratorFeedbackThanks": "Yamaka. Ndatenda!",
     "analyticsSubscriptionWarningTitle": "Kufambira mberi kwako hakusi kuteverwa",
     "analyticsSubscriptionWarningBody": "Pasina kunyoresa, mameseji ako haawane XP kana kuwedzera mazwi matsva negirama.",
-    "noOpenSessions": "Hapana zvikamu zvakavhurika parizvino"
+    "noOpenSessions": "Hapana zvikamu zvakavhurika parizvino",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 izwi rakashandiswa} other{{count} mazwi akashandiswa}}",
+    "grammarItemsUsed": "{count, plural, =1{1 girama yakashandiswa} other{{count} girama dzakashandiswa}}"
 }

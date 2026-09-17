@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-17 11:52:12.817746",
+    "@@last_modified": "2026-09-17 15:10:12.128861",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10045,5 +10045,8 @@
     "orchestratorFeedbackThanks": "已舉報。謝謝！",
     "analyticsSubscriptionWarningTitle": "您的進度未被追蹤",
     "analyticsSubscriptionWarningBody": "如果沒有訂閱，您的訊息將無法獲得經驗值，也無法新增單字和文法。",
-    "noOpenSessions": "目前沒有開放的會話"
+    "noOpenSessions": "目前沒有開放的會話",
+    "xpAmount": "{count} 經驗值",
+    "vocabItemsUsed": "{count, plural, =1{已使用 1 個詞彙項目} other{已使用 {count} 個詞彙項目}}",
+    "grammarItemsUsed": "{count, plural, =1{已使用 1 個文法項目} other{已使用 {count} 個文法項目}}"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-17 11:52:05.509394",
+    "@@last_modified": "2026-09-17 15:10:04.984647",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10853,5 +10853,8 @@
     "orchestratorFeedbackThanks": "סומן. תודה!",
     "analyticsSubscriptionWarningTitle": "ההתקדמות שלך לא נשמרת",
     "analyticsSubscriptionWarningBody": "בלי מינוי, ההודעות שלך לא יצברו נקודות ניסיון או יוסיפו מילים ודקדוק חדשים.",
-    "noOpenSessions": "אין שיעורים פתוחים כרגע"
+    "noOpenSessions": "אין שיעורים פתוחים כרגע",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{פריט אוצר מילים אחד בשימוש} other{{count} פריטי אוצר מילים בשימוש}}",
+    "grammarItemsUsed": "{count, plural, =1{פריט דקדוק אחד בשימוש} other{{count} פריטי דקדוק בשימוש}}"
 }

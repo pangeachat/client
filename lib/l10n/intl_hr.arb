@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-09-17 11:52:05.865317",
+    "@@last_modified": "2026-09-17 15:10:05.560386",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10375,5 +10375,8 @@
     "orchestratorFeedbackThanks": "Označeno. Hvala!",
     "analyticsSubscriptionWarningTitle": "Vaš napredak se ne prati",
     "analyticsSubscriptionWarningBody": "Bez pretplate, vaše poruke ne donose XP niti dodaju nove riječi i gramatiku.",
-    "noOpenSessions": "Trenutno nema otvorenih sesija"
+    "noOpenSessions": "Trenutno nema otvorenih sesija",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 korištena stavka rječnika} other{{count} korištenih stavki rječnika}}",
+    "grammarItemsUsed": "{count, plural, =1{1 korištena gramatička stavka} other{{count} korištenih gramatičkih stavki}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-09-17 11:52:08.008224",
+    "@@last_modified": "2026-09-17 15:10:07.498489",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2343,5 +2343,8 @@
     "orchestratorFeedbackThanks": "ຕິດທຸງແລ້ວ. ຂອບໃຈ!",
     "analyticsSubscriptionWarningTitle": "ຄວາມຄືບໜ້າຂອງທ່ານບໍ່ໄດ້ຖືກຕິດຕາມ",
     "analyticsSubscriptionWarningBody": "ຖ້າບໍ່ມີການສະໝັກໃຊ້, ຂໍ້ຄວາມຂອງທ່ານຈະບໍ່ໄດ້ຮັບ XP ຫຼືເພີ່ມຄຳສັບ ແລະ ໄວຍາກອນໃໝ່.",
-    "noOpenSessions": "ບໍ່ມີເຊສຊັນເປີດໃນຕອນນີ້"
+    "noOpenSessions": "ບໍ່ມີເຊສຊັນເປີດໃນຕອນນີ້",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{ໃຊ້ຄຳສັບ 1 ຄຳ} other{ໃຊ້ຄຳສັບ {count} ຄຳແລ້ວ}}",
+    "grammarItemsUsed": "{count, plural, =1{ໃຊ້ໄວຍາກອນ 1 ອັນ} other{ໃຊ້ໄວຍາກອນ {count} ອັນແລ້ວ}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-09-17 11:52:03.272214",
+    "@@last_modified": "2026-09-17 15:10:02.710462",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2343,5 +2343,8 @@
     "orchestratorFeedbackThanks": "İşarələndi. Təşəkkürlər!",
     "analyticsSubscriptionWarningTitle": "Tərəqqiniz izlənilmir",
     "analyticsSubscriptionWarningBody": "Abunəlik olmadan mesajlarınız XP qazanmır və yeni sözlər, qrammatika əlavə etmir.",
-    "noOpenSessions": "Hal-hazırda açıq sessiya yoxdur"
+    "noOpenSessions": "Hal-hazırda açıq sessiya yoxdur",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 lüğət elementi istifadə edildi} other{{count} lüğət elementi istifadə edildi}}",
+    "grammarItemsUsed": "{count, plural, =1{1 qrammatika elementi istifadə edildi} other{{count} qrammatika elementi istifadə edildi}}"
 }

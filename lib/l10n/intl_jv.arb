@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-09-17 11:52:06.866267",
+    "@@last_modified": "2026-09-17 15:10:06.442438",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2343,5 +2343,8 @@
     "orchestratorFeedbackThanks": "Wis ditandhani. Matur nuwun!",
     "analyticsSubscriptionWarningTitle": "Kemajuanmu ora dilacak",
     "analyticsSubscriptionWarningBody": "Tanpa langganan, pesenmu ora entuk XP utawa nambah tembung lan tata basa anyar.",
-    "noOpenSessions": "Ora ana sesi sing mbukak saiki"
+    "noOpenSessions": "Ora ana sesi sing mbukak saiki",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 item kosakata digunakake} other{{count} item kosakata digunakake}}",
+    "grammarItemsUsed": "{count, plural, =1{1 item tata basa digunakake} other{{count} item tata basa digunakake}}"
 }

@@ -2080,7 +2080,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-09-17 11:52:04.735804",
+    "@@last_modified": "2026-09-17 15:10:04.213727",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10799,5 +10799,8 @@
     "orchestratorFeedbackThanks": "Na-flag. Salamat!",
     "analyticsSubscriptionWarningTitle": "Hindi sinusubaybayan ang iyong pag-usad",
     "analyticsSubscriptionWarningBody": "Kung walang subscription, hindi makakakuha ng XP ang iyong mga mensahe o makakapagdagdag ng mga bagong salita at grammar.",
-    "noOpenSessions": "Walang bukas na session sa ngayon"
+    "noOpenSessions": "Walang bukas na session sa ngayon",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 item ng bokabularyo ang ginamit} other{{count} item ng bokabularyo ang ginamit}}",
+    "grammarItemsUsed": "{count, plural, =1{1 item ng gramatika ang ginamit} other{{count} item ng gramatika ang ginamit}}"
 }

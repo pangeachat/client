@@ -1802,7 +1802,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-09-17 11:52:10.428865",
+    "@@last_modified": "2026-09-17 15:10:10.165703",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10884,5 +10884,8 @@
     "orchestratorFeedbackThanks": "Prijavljeno. Hvala!",
     "analyticsSubscriptionWarningTitle": "Vaš napredek se ne spremlja",
     "analyticsSubscriptionWarningBody": "Brez naročnine vaša sporočila ne prinašajo XP-ja in ne dodajajo novih besed ali slovnice.",
-    "noOpenSessions": "Trenutno ni odprtih sej"
+    "noOpenSessions": "Trenutno ni odprtih sej",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 uporabljena beseda} other{{count} uporabljene besede}}",
+    "grammarItemsUsed": "{count, plural, =1{1 uporabljena slovnična postavka} other{{count} uporabljene slovnične postavke}}"
 }

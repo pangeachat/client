@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-09-17 11:52:07.429125",
+    "@@last_modified": "2026-09-17 15:10:06.725713",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2343,5 +2343,8 @@
     "orchestratorFeedbackThanks": "ಫ್ಲ್ಯಾಗ್ ಮಾಡಲಾಗಿದೆ. ಧನ್ಯವಾದಗಳು!",
     "analyticsSubscriptionWarningTitle": "ನಿಮ್ಮ ಪ್ರಗತಿಯನ್ನು ಟ್ರ್ಯಾಕ್ ಮಾಡಲಾಗುತ್ತಿಲ್ಲ",
     "analyticsSubscriptionWarningBody": "ಚಂದಾದಾರಿಕೆ ಇಲ್ಲದೆ, ನಿಮ್ಮ ಸಂದೇಶಗಳು XP ಗಳಿಸುವುದಿಲ್ಲ ಅಥವಾ ಹೊಸ ಪದಗಳು ಮತ್ತು ವ್ಯಾಕರಣವನ್ನು ಸೇರಿಸುವುದಿಲ್ಲ.",
-    "noOpenSessions": "ಈಗ ಯಾವುದೇ ತೆರೆದ ಸೆಷನ್‌ಗಳಿಲ್ಲ"
+    "noOpenSessions": "ಈಗ ಯಾವುದೇ ತೆರೆದ ಸೆಷನ್‌ಗಳಿಲ್ಲ",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 ಶಬ್ದಕೋಶ ಐಟಂ ಬಳಸಲಾಗಿದೆ} other{{count} ಶಬ್ದಕೋಶ ಐಟಂಗಳನ್ನು ಬಳಸಲಾಗಿದೆ}}",
+    "grammarItemsUsed": "{count, plural, =1{1 ವ್ಯಾಕರಣ ಐಟಂ ಬಳಸಲಾಗಿದೆ} other{{count} ವ್ಯಾಕರಣ ಐಟಂಗಳನ್ನು ಬಳಸಲಾಗಿದೆ}}"
 }

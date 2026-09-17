@@ -1,5 +1,5 @@
 ---
-applyTo: "lib/features/activity_sessions/**,lib/features/quests/**,lib/routes/chat/activity_sessions/**,lib/routes/chat/chat_details/**"
+applyTo: "lib/features/activity_sessions/**,lib/features/quests/**,lib/routes/analytics/activities/**,lib/routes/chat/activity_sessions/**,lib/routes/chat/chat_details/**"
 description: "Client design for activities: thin cards, the start page's room-driven state, navigation, and the media carousel (video next)."
 ---
 
@@ -48,6 +48,16 @@ Once the summary lands the header goes away and the summary carries the goals �
 Saving a completed session is automatic — the design (what saving means, when it happens, and how stars bank on it) is the org doc's ([Saving and stars](../../../.github/.github/instructions/activities.instructions.md#saving-and-stars)); what the client owns is where the save runs. [`ActivityAutoSaveService`](../../lib/features/activity_sessions/activity_auto_save_service.dart) watches activity-role state changes across **all** rooms, not just the open chat, so a session that completes while the learner is elsewhere — or that completed before this login — still saves on the next sync. The save is idempotent, so a second device observing the same completion is harmless. A room whose plan is still hydrating is retried once the plan lands; a room whose plan is gone entirely (the archived-view rung in [When the activity can't be fetched](#when-the-activity-cant-be-fetched)) cannot resolve a target language and is skipped.
 
 The profile star counter ([`totalStarsEarned`](../../lib/routes/chat/choreographer/activity_orchestrator/orchestrator_client_extension.dart)) counts saved sessions only. In-session star displays and per-activity progress on cards stay live — only the profile total waits for the save.
+
+## The Stars list
+
+A saved session's row ([`AnalyticsActivityItem`](../../lib/routes/analytics/activities/activity_archive.dart)) is the learner's record of that session: the activity's title (the room's name once the plan is gone), their stars, their level, the XP they earned, and how many different vocabulary and grammar items they used. Every number comes from the summary saved with the session, so the row and the end-of-activity card can never disagree. Tapping a row opens the session.
+
+The stats sit under the stars as one compact line — XP first, in the gold that marks XP everywhere else, then a vocabulary count and a grammar count behind the same two icons the analytics bar uses for words and grammar. The counts are of distinct items used in that session, not of items new to the learner: the saved summary does not record which were new, and the row never shows a number the summary cannot back. A count of zero shows as zero rather than dropping the stat, so the rows stay aligned down the list.
+
+A session with no saved summary — an older one, or one whose generation failed — keeps its title and stars and shows nothing else: no level, no stats, and no gap where they would be. A summary is saved per display language, so a learner who has since changed their first language sees that same reduced row.
+
+The open row carries the selected fill, and XP gives up the gold there so it stays readable against it.
 
 ## Rating an activity
 

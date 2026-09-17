@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-09-17 11:52:12.075701",
+    "@@last_modified": "2026-09-17 15:10:11.771596",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9943,5 +9943,8 @@
     "orchestratorFeedbackThanks": "Belgilandi. Rahmat!",
     "analyticsSubscriptionWarningTitle": "Taraqqiyotingiz kuzatilmayapti",
     "analyticsSubscriptionWarningBody": "Obunasiz xabarlaringiz XP olib kelmaydi va yangi soʻzlar hamda grammatika qoʻshmaydi.",
-    "noOpenSessions": "Hozircha ochiq seanslar yo'q"
+    "noOpenSessions": "Hozircha ochiq seanslar yo'q",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 ta lugʻat elementi ishlatildi} other{{count} ta lugʻat elementi ishlatildi}}",
+    "grammarItemsUsed": "{count, plural, =1{1 ta grammatika elementi ishlatildi} other{{count} ta grammatika elementi ishlatildi}}"
 }

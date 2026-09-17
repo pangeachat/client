@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-09-17 11:52:09.581814",
+    "@@last_modified": "2026-09-17 15:10:09.367752",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2343,5 +2343,8 @@
     "orchestratorFeedbackThanks": "ਫਲੈਗ ਕੀਤਾ ਗਿਆ। ਧੰਨਵਾਦ!",
     "analyticsSubscriptionWarningTitle": "ਤੁਹਾਡੀ ਪ੍ਰਗਤੀ ਨੂੰ ਟਰੈਕ ਨਹੀਂ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ",
     "analyticsSubscriptionWarningBody": "ਗਾਹਕੀ ਤੋਂ ਬਿਨਾਂ, ਤੁਹਾਡੇ ਸੁਨੇਹੇ XP ਨਹੀਂ ਕਮਾਉਂਦੇ ਜਾਂ ਨਵੇਂ ਸ਼ਬਦ ਅਤੇ ਵਿਆਕਰਨ ਨਹੀਂ ਜੋੜਦੇ।",
-    "noOpenSessions": "ਇਸ ਵੇਲੇ ਕੋਈ ਖੁੱਲ੍ਹਾ ਸੈਸ਼ਨ ਨਹੀਂ ਹੈ"
+    "noOpenSessions": "ਇਸ ਵੇਲੇ ਕੋਈ ਖੁੱਲ੍ਹਾ ਸੈਸ਼ਨ ਨਹੀਂ ਹੈ",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 ਸ਼ਬਦਾਵਲੀ ਆਈਟਮ ਵਰਤੀ ਗਈ} other{{count} ਸ਼ਬਦਾਵਲੀ ਆਈਟਮਾਂ ਵਰਤੀਆਂ ਗਈਆਂ}}",
+    "grammarItemsUsed": "{count, plural, =1{1 ਵਿਆਕਰਨ ਆਈਟਮ ਵਰਤੀ ਗਈ} other{{count} ਵਿਆਕਰਨ ਆਈਟਮਾਂ ਵਰਤੀਆਂ ਗਈਆਂ}}"
 }

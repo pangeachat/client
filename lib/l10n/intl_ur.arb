@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-09-17 11:52:12.292918",
+    "@@last_modified": "2026-09-17 15:10:11.840503",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2343,5 +2343,8 @@
     "orchestratorFeedbackThanks": "پرچم لگا دیا گیا۔ شکریہ!",
     "analyticsSubscriptionWarningTitle": "آپ کی پیشرفت ٹریک نہیں کی جا رہی ہے",
     "analyticsSubscriptionWarningBody": "سبسکرپشن کے بغیر، آپ کے پیغامات XP حاصل نہیں کرتے اور نہ ہی نئے الفاظ اور گرامر شامل کرتے ہیں۔",
-    "noOpenSessions": "فی الحال کوئی سیشن کھلا نہیں ہے"
+    "noOpenSessions": "فی الحال کوئی سیشن کھلا نہیں ہے",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 ذخیرہ الفاظ کا آئٹم استعمال ہوا} other{{count} ذخیرہ الفاظ کے آئٹمز استعمال ہوئے}}",
+    "grammarItemsUsed": "{count, plural, =1{1 گرامر کا آئٹم استعمال ہوا} other{{count} گرامر کے آئٹمز استعمال ہوئے}}"
 }

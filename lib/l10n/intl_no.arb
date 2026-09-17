@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-09-17 11:52:09.109994",
+    "@@last_modified": "2026-09-17 15:10:09.264653",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2343,5 +2343,8 @@
     "orchestratorFeedbackThanks": "Flagget. Takk!",
     "analyticsSubscriptionWarningTitle": "Fremgangen din spores ikke",
     "analyticsSubscriptionWarningBody": "Uten et abonnement vil ikke meldingene dine gi XP eller legge til nye ord og grammatikk.",
-    "noOpenSessions": "Ingen åpne økter akkurat nå"
+    "noOpenSessions": "Ingen åpne økter akkurat nå",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 vokabular-element brukt} other{{count} vokabular-elementer brukt}}",
+    "grammarItemsUsed": "{count, plural, =1{1 grammatikk-element brukt} other{{count} grammatikk-elementer brukt}}"
 }

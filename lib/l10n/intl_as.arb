@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-09-17 11:52:03.462942",
+    "@@last_modified": "2026-09-17 15:10:02.889864",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2343,5 +2343,8 @@
     "orchestratorFeedbackThanks": "ফ্লেগ কৰা হৈছে। ধন্যবাদ!",
     "analyticsSubscriptionWarningTitle": "আপোনাৰ অগ্ৰগতি ট্ৰেক কৰা হোৱা নাই",
     "analyticsSubscriptionWarningBody": "গ্ৰাহক সেৱা অবিহনে, আপোনাৰ বাৰ্তাবোৰে XP উপাৰ্জন নকৰে বা নতুন শব্দ আৰু ব্যাকৰণ যোগ নকৰে।",
-    "noOpenSessions": "বৰ্তমান কোনো খোলা ছেছন নাই"
+    "noOpenSessions": "বৰ্তমান কোনো খোলা ছেছন নাই",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{১টা শব্দভাণ্ডাৰৰ বস্তু ব্যৱহৃত হৈছে} other{{count}টা শব্দভাণ্ডাৰৰ বস্তু ব্যৱহৃত হৈছে}}",
+    "grammarItemsUsed": "{count, plural, =1{১টা ব্যাকৰণৰ বস্তু ব্যৱহৃত হৈছে} other{{count}টা ব্যাকৰণৰ বস্তু ব্যৱহৃত হৈছে}}"
 }

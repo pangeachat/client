@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-09-17 11:52:09.412600",
+    "@@last_modified": "2026-09-17 15:10:09.323535",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10024,5 +10024,8 @@
     "orchestratorFeedbackThanks": "Zgłoszono. Dziękujemy!",
     "analyticsSubscriptionWarningTitle": "Twoje postępy nie są śledzone",
     "analyticsSubscriptionWarningBody": "Bez subskrypcji Twoje wiadomości nie zdobywają PD ani nie dodają nowych słów i gramatyki.",
-    "noOpenSessions": "Brak otwartych sesji"
+    "noOpenSessions": "Brak otwartych sesji",
+    "xpAmount": "{count} PD",
+    "vocabItemsUsed": "{count, plural, =1{1 słowo użyte} other{{count} słów użytych}}",
+    "grammarItemsUsed": "{count, plural, =1{1 zagadnienie gramatyczne użyte} other{{count} zagadnień gramatycznych użytych}}"
 }

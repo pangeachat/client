@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-09-17 11:52:12.556222",
+    "@@last_modified": "2026-09-17 15:10:12.017509",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9939,5 +9939,8 @@
     "orchestratorFeedbackThanks": "已标记。谢谢！",
     "analyticsSubscriptionWarningTitle": "您的进度未被追踪",
     "analyticsSubscriptionWarningBody": "没有订阅，您的消息将无法获得经验值，也无法添加新单词和语法。",
-    "noOpenSessions": "当前没有开放会话"
+    "noOpenSessions": "当前没有开放会话",
+    "xpAmount": "{count} 经验值",
+    "vocabItemsUsed": "{count, plural, =1{已使用1个词汇项目} other{已使用{count}个词汇项目}}",
+    "grammarItemsUsed": "{count, plural, =1{已使用1个语法项目} other{已使用{count}个语法项目}}"
 }

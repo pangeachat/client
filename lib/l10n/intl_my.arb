@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-09-17 11:52:09.317387",
+    "@@last_modified": "2026-09-17 15:10:08.582830",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2343,5 +2343,8 @@
     "orchestratorFeedbackThanks": "အလံပြထားသည်။ ကျေးဇူးတင်ပါသည်။",
     "analyticsSubscriptionWarningTitle": "သင်၏တိုးတက်မှုကို ခြေရာခံမထားပါ",
     "analyticsSubscriptionWarningBody": "စာရင်းသွင်းခြင်းမရှိဘဲ သင်၏မက်ဆေ့ချ်များသည် XP ရရှိမည်မဟုတ်သလို စကားလုံးအသစ်များနှင့် သဒ္ဒါများကိုလည်း ထပ်ထည့်မည်မဟုတ်ပါ။",
-    "noOpenSessions": "ယခုဖွင့်ထားသော စကားဝိုင်းများ မရှိပါ"
+    "noOpenSessions": "ယခုဖွင့်ထားသော စကားဝိုင်းများ မရှိပါ",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{ဝေါဟာရ ၁ ခု အသုံးပြုပြီး} other{ဝေါဟာရ {count} ခု အသုံးပြုပြီး}}",
+    "grammarItemsUsed": "{count, plural, =1{သဒ္ဒါ ၁ ခု အသုံးပြုပြီး} other{သဒ္ဒါ {count} ခု အသုံးပြုပြီး}}"
 }

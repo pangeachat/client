@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-09-17 11:52:11.912978",
+    "@@last_modified": "2026-09-17 15:10:11.321659",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2343,5 +2343,8 @@
     "orchestratorFeedbackThanks": "Қайд карда шуд. Ташаккур!",
     "analyticsSubscriptionWarningTitle": "Пешрафти шумо пайгирӣ намешавад",
     "analyticsSubscriptionWarningBody": "Бе обуна, паёмҳои шумо XP ба даст намеоранд ва калимаҳо ва грамматикаи нав илова намекунанд.",
-    "noOpenSessions": "Ҳоло ягон сессияи кушода нест"
+    "noOpenSessions": "Ҳоло ягон сессияи кушода нест",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 калимаи луғат истифода шуд} other{{count} калимаҳои луғат истифода шуданд}}",
+    "grammarItemsUsed": "{count, plural, =1{1 қоидаи грамматикӣ истифода шуд} other{{count} қоидаҳои грамматикӣ истифода шуданд}}"
 }

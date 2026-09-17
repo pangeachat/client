@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-09-17 11:52:07.592394",
+    "@@last_modified": "2026-09-17 15:10:07.343928",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2343,5 +2343,8 @@
     "orchestratorFeedbackThanks": "Белгиленди. Рахмат!",
     "analyticsSubscriptionWarningTitle": "Прогрессиңиз көзөмөлдөнбөйт",
     "analyticsSubscriptionWarningBody": "Жазылуусуз билдирүүлөрүңүз XP таппайт же жаңы сөздөрдү жана грамматиканы кошпойт.",
-    "noOpenSessions": "Учурда ачык сессиялар жок"
+    "noOpenSessions": "Учурда ачык сессиялар жок",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 лексикалык бирдик колдонулду} other{{count} лексикалык бирдик колдонулду}}",
+    "grammarItemsUsed": "{count, plural, =1{1 грамматикалык бирдик колдонулду} other{{count} грамматикалык бирдик колдонулду}}"
 }

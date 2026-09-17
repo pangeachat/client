@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-09-17 11:52:08.297026",
+    "@@last_modified": "2026-09-17 15:10:07.792511",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2343,5 +2343,8 @@
     "orchestratorFeedbackThanks": "Voamarika. Misaotra!",
     "analyticsSubscriptionWarningTitle": "Tsy voarakitra ny fandrosoanao",
     "analyticsSubscriptionWarningBody": "Raha tsy misy famandrihana, ny hafatrao dia tsy mahazo XP na manampy teny sy fitsipika vaovao.",
-    "noOpenSessions": "Tsy misy fotoam-pianarana misokatra amin'izao fotoana izao"
+    "noOpenSessions": "Tsy misy fotoam-pianarana misokatra amin'izao fotoana izao",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 teny nampiasaina} other{{count} teny nampiasaina}}",
+    "grammarItemsUsed": "{count, plural, =1{1 fitsipika nampiasaina} other{{count} fitsipika nampiasaina}}"
 }

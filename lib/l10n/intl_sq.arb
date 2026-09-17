@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-09-17 11:52:10.921099",
+    "@@last_modified": "2026-09-17 15:10:10.394160",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2343,5 +2343,8 @@
     "orchestratorFeedbackThanks": "U raportua. Faleminderit!",
     "analyticsSubscriptionWarningTitle": "Progresin tuaj nuk po e ndjekim",
     "analyticsSubscriptionWarningBody": "Pa një abonim, mesazhet tuaja nuk fitojnë XP ose nuk shtojnë fjalë dhe gramatikë të reja.",
-    "noOpenSessions": "Asnjë sesion i hapur tani"
+    "noOpenSessions": "Asnjë sesion i hapur tani",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 fjalë e re e përdorur} other{{count} fjalë të reja të përdorura}}",
+    "grammarItemsUsed": "{count, plural, =1{1 element gramatikor i përdorur} other{{count} elemente gramatikore të përdorura}}"
 }

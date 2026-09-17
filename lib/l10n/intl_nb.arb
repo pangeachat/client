@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-17 11:52:08.765472",
+    "@@last_modified": "2026-09-17 15:10:08.325507",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9996,5 +9996,8 @@
     "orchestratorFeedbackThanks": "Rapportert. Takk!",
     "analyticsSubscriptionWarningTitle": "Fremgangen din spores ikke",
     "analyticsSubscriptionWarningBody": "Uten et abonnement vil ikke meldingene dine gi XP eller legge til nye ord og grammatikk.",
-    "noOpenSessions": "Ingen åpne økter akkurat nå"
+    "noOpenSessions": "Ingen åpne økter akkurat nå",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 vokabulargjenstand brukt} other{{count} vokabulargjenstander brukt}}",
+    "grammarItemsUsed": "{count, plural, =1{1 grammatikkgjenstand brukt} other{{count} grammatikkgjenstander brukt}}"
 }

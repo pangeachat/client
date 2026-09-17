@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-09-17 11:52:07.409537",
+    "@@last_modified": "2026-09-17 15:10:06.504304",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2343,5 +2343,8 @@
     "orchestratorFeedbackThanks": "Белгіленді. Рахмет!",
     "analyticsSubscriptionWarningTitle": "Сіздің үлгеріміңіз қадағаланбайды",
     "analyticsSubscriptionWarningBody": "Жазылымсыз сіздің хабарламаларыңыз XP ұпайларын әкелмейді немесе жаңа сөздер мен грамматиканы қоспайды.",
-    "noOpenSessions": "Қазір ашық сессиялар жоқ"
+    "noOpenSessions": "Қазір ашық сессиялар жоқ",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 сөздік элементі қолданылды} other{{count} сөздік элементтері қолданылды}}",
+    "grammarItemsUsed": "{count, plural, =1{1 грамматикалық элемент қолданылды} other{{count} грамматикалық элементтер қолданылды}}"
 }

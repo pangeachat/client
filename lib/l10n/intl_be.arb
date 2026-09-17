@@ -3548,7 +3548,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-09-17 11:52:03.147308",
+    "@@last_modified": "2026-09-17 15:10:02.539477",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9953,5 +9953,8 @@
     "orchestratorFeedbackThanks": "Пазначана. Дзякуй!",
     "analyticsSubscriptionWarningTitle": "Ваш прагрэс не адсочваецца",
     "analyticsSubscriptionWarningBody": "Без падпіскі вашы паведамленні не прыносяць XP і не дадаюць новых слоў і граматыкі.",
-    "noOpenSessions": "Зараз няма адкрытых сесій"
+    "noOpenSessions": "Зараз няма адкрытых сесій",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{выкарыстаны 1 слоўнікавы элемент} other{выкарыстана {count} слоўнікавых элементаў}}",
+    "grammarItemsUsed": "{count, plural, =1{выкарыстаны 1 граматычны элемент} other{выкарыстана {count} граматычных элементаў}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-09-17 11:52:13.049466",
+    "@@last_modified": "2026-09-17 15:10:12.518872",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2343,5 +2343,8 @@
     "orchestratorFeedbackThanks": "Ti fi sílẹ̀. Ẹ ṣeun!",
     "analyticsSubscriptionWarningTitle": "A kò ṣe àkọsílẹ̀ ìtẹ̀síwájú rẹ",
     "analyticsSubscriptionWarningBody": "Láìsí àbáwọlé, àwọn ìránṣẹ́ rẹ kò ní jẹ́ kó o rí XP tàbí kó o fi àwọn ọ̀rọ̀ àti gírámà tuntun kún un.",
-    "noOpenSessions": "Ko si igba ipade to ṣi silẹ lọwọlọwọ"
+    "noOpenSessions": "Ko si igba ipade to ṣi silẹ lọwọlọwọ",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{ohun èlò fún ìkẹ́kọ̀ọ́ ọ̀rọ̀ kan lò} other{{count} ohun èlò fún ìkẹ́kọ̀ọ́ ọ̀rọ̀ lò}}",
+    "grammarItemsUsed": "{count, plural, =1{ohun èlò ìkẹ́kọ̀ọ́ gírámà kan lò} other{{count} ohun èlò ìkẹ́kọ̀ọ́ gírámà lò}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-09-17 11:52:11.483124",
+    "@@last_modified": "2026-09-17 15:10:11.355751",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2343,5 +2343,8 @@
     "orchestratorFeedbackThanks": "Imewekewa alama. Asante!",
     "analyticsSubscriptionWarningTitle": "Maendeleo yako hayafuatiliwi",
     "analyticsSubscriptionWarningBody": "Bila usajili, jumbe zako hazipati XP au kuongeza maneno na sarufi mpya.",
-    "noOpenSessions": "Hakuna vipindi vilivyo wazi kwa sasa"
+    "noOpenSessions": "Hakuna vipindi vilivyo wazi kwa sasa",
+    "xpAmount": "XP {count}",
+    "vocabItemsUsed": "{count, plural, =1{kipengee 1 cha msamiati kimetumika} other{vipengee {count} vya msamiati vimetumika}}",
+    "grammarItemsUsed": "{count, plural, =1{kipengee 1 cha sarufi kimetumika} other{vipengee {count} vya sarufi vimetumika}}"
 }

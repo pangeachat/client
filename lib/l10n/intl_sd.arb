@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-09-17 11:52:11.292501",
+    "@@last_modified": "2026-09-17 15:10:10.019746",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2343,5 +2343,8 @@
     "orchestratorFeedbackThanks": "نشان لڳايو ويو. مهرباني!",
     "analyticsSubscriptionWarningTitle": "توهان جي ترقي ٽريڪ نه ٿي رهي آهي",
     "analyticsSubscriptionWarningBody": "سبسڪرپشن کان سواءِ، توهان جا پيغام XP حاصل نٿا ڪن يا نوان لفظ ۽ گرامر شامل نٿا ڪن.",
-    "noOpenSessions": "هن وقت ڪو به کليل سيشن ناهي"
+    "noOpenSessions": "هن وقت ڪو به کليل سيشن ناهي",
+    "xpAmount": "{count} ايڪس پي",
+    "vocabItemsUsed": "{count, plural, =1{1 لفظ استعمال ٿيو} other{{count} لفظ استعمال ٿيا}}",
+    "grammarItemsUsed": "{count, plural, =1{1 گرامر جو آئٽم استعمال ٿيو} other{{count} گرامر جا آئٽم استعمال ٿيا}}"
 }

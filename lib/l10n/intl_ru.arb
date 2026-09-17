@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-09-17 11:52:10.070140",
+    "@@last_modified": "2026-09-17 15:10:09.924145",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10911,5 +10911,8 @@
     "orchestratorFeedbackThanks": "Помечено. Спасибо!",
     "analyticsSubscriptionWarningTitle": "Ваш прогресс не отслеживается",
     "analyticsSubscriptionWarningBody": "Без подписки ваши сообщения не приносят XP и не добавляют новые слова и грамматику.",
-    "noOpenSessions": "Сейчас нет открытых сессий"
+    "noOpenSessions": "Сейчас нет открытых сессий",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{использовано 1 словарное слово} other{использовано {count} словарных слов}}",
+    "grammarItemsUsed": "{count, plural, =1{использовано 1 грамматическое правило} other{использовано {count} грамматических правил}}"
 }

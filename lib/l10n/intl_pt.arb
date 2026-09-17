@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-17 11:52:09.717367",
+    "@@last_modified": "2026-09-17 15:10:09.271260",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10883,5 +10883,8 @@
     "orchestratorFeedbackThanks": "Sinalizado. Obrigado!",
     "analyticsSubscriptionWarningTitle": "Seu progresso não está sendo monitorado",
     "analyticsSubscriptionWarningBody": "Sem uma assinatura, suas mensagens não ganham XP nem adicionam novas palavras e gramática.",
-    "noOpenSessions": "Nenhuma sessão aberta no momento"
+    "noOpenSessions": "Nenhuma sessão aberta no momento",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 item de vocabulário usado} other{{count} itens de vocabulário usados}}",
+    "grammarItemsUsed": "{count, plural, =1{1 item de gramática usado} other{{count} itens de gramática usados}}"
 }

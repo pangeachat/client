@@ -2967,7 +2967,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-09-17 11:52:07.866641",
+    "@@last_modified": "2026-09-17 15:10:07.557966",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10720,5 +10720,8 @@
     "orchestratorFeedbackThanks": "Pažymėta. Ačiū!",
     "analyticsSubscriptionWarningTitle": "Jūsų pažanga nesekama",
     "analyticsSubscriptionWarningBody": "Be prenumeratos jūsų žinutės neuždirba XP ir neprideda naujų žodžių bei gramatikos.",
-    "noOpenSessions": "Šiuo metu nėra atvirų sesijų"
+    "noOpenSessions": "Šiuo metu nėra atvirų sesijų",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 žodyno elementas panaudotas} other{{count} žodyno elementų panaudota}}",
+    "grammarItemsUsed": "{count, plural, =1{1 gramatikos elementas panaudotas} other{{count} gramatikos elementų panaudota}}"
 }

@@ -3093,7 +3093,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-09-17 11:52:11.766262",
+    "@@last_modified": "2026-09-17 15:10:11.216956",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10571,5 +10571,8 @@
     "orchestratorFeedbackThanks": "ตั้งค่าสถานะแล้ว ขอบคุณ!",
     "analyticsSubscriptionWarningTitle": "ความคืบหน้าของคุณไม่ถูกติดตาม",
     "analyticsSubscriptionWarningBody": "หากไม่มีการสมัครสมาชิก ข้อความของคุณจะไม่ได้รับ XP หรือเพิ่มคำศัพท์และไวยากรณ์ใหม่ๆ",
-    "noOpenSessions": "ขณะนี้ไม่มีเซสชันที่เปิดอยู่"
+    "noOpenSessions": "ขณะนี้ไม่มีเซสชันที่เปิดอยู่",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{ใช้คำศัพท์ 1 รายการ} other{ใช้คำศัพท์ {count} รายการ}}",
+    "grammarItemsUsed": "{count, plural, =1{ใช้ไวยากรณ์ 1 รายการ} other{ใช้ไวยากรณ์ {count} รายการ}}"
 }

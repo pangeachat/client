@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-09-17 11:52:09.861571",
+    "@@last_modified": "2026-09-17 15:10:09.376812",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2343,5 +2343,8 @@
     "orchestratorFeedbackThanks": "په نښه شو. مننه!",
     "analyticsSubscriptionWarningTitle": "ستاسو پرمختګ نه تعقیبیږي",
     "analyticsSubscriptionWarningBody": "پرته له ګډون، ستاسو پیغامونه XP نه ګټي او نه نوې کلمې او ګرامر اضافه کوي.",
-    "noOpenSessions": "اوسمهال خلاصې ناستې نشته"
+    "noOpenSessions": "اوسمهال خلاصې ناستې نشته",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 د لغتونو توکی کارول شوی} other{{count} د لغتونو توکي کارول شوي}}",
+    "grammarItemsUsed": "{count, plural, =1{1 د ګرامر توکی کارول شوی} other{{count} د ګرامر توکي کارول شوي}}"
 }

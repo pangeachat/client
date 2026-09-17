@@ -1263,7 +1263,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-09-17 11:52:12.565535",
+    "@@last_modified": "2026-09-17 15:10:12.166464",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10896,5 +10896,8 @@
     "orchestratorFeedbackThanks": "已舉報。謝謝！",
     "analyticsSubscriptionWarningTitle": "您的進度未被追蹤",
     "analyticsSubscriptionWarningBody": "如果沒有訂閱，您的訊息將不會獲得經驗值，也不會增加新單字和文法。",
-    "noOpenSessions": "目前沒有開放嘅會話"
+    "noOpenSessions": "目前沒有開放嘅會話",
+    "xpAmount": "{count} 經驗值",
+    "vocabItemsUsed": "{count, plural, =1{已用1個詞彙項目} other{已用{count}個詞彙項目}}",
+    "grammarItemsUsed": "{count, plural, =1{已用1個文法項目} other{已用{count}個文法項目}}"
 }

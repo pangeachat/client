@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-09-17 11:52:06.461323",
+    "@@last_modified": "2026-09-17 15:10:26.574217",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2343,5 +2343,8 @@
     "orchestratorFeedbackThanks": "Նշված է։ Շնորհակալություն։",
     "analyticsSubscriptionWarningTitle": "Ձեր առաջընթացը չի հետևվում",
     "analyticsSubscriptionWarningBody": "Առանց բաժանորդագրության՝ ձեր հաղորդագրությունները չեն վաստակում XP և չեն ավելացնում նոր բառեր ու քերականություն:",
-    "noOpenSessions": "Այս պահին բաց սեսիաներ չկան"
+    "noOpenSessions": "Այս պահին բաց սեսիաներ չկան",
+    "xpAmount": "{count} Փորձի միավոր",
+    "vocabItemsUsed": "{count, plural, =1{Օգտագործվել է 1 բառապաշարային միավոր} other{Օգտագործվել է {count} բառապաշարային միավոր}}",
+    "grammarItemsUsed": "{count, plural, =1{Օգտագործվել է 1 քերականական միավոր} other{Օգտագործվել է {count} քերականական միավոր}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-09-17 11:52:03.939924",
+    "@@last_modified": "2026-09-17 15:10:03.256391",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2343,5 +2343,8 @@
     "orchestratorFeedbackThanks": "Signalatu. Grazie!",
     "analyticsSubscriptionWarningTitle": "U vostru prugressu ùn hè micca seguitatu",
     "analyticsSubscriptionWarningBody": "Senza un abbunamentu, i vostri messagi ùn guadagnanu micca XP o aghjunghjenu parolle è grammatica novi.",
-    "noOpenSessions": "Nisuna sessione aperta avà"
+    "noOpenSessions": "Nisuna sessione aperta avà",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 elementu di vucabulariu usatu} other{{count} elementi di vucabulariu usati}}",
+    "grammarItemsUsed": "{count, plural, =1{1 elementu di grammatica usatu} other{{count} elementi di grammatica usati}}"
 }

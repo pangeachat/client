@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-09-17 11:52:04.876172",
+    "@@last_modified": "2026-09-17 15:10:04.061617",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9939,5 +9939,8 @@
     "orchestratorFeedbackThanks": "Markatuta. Eskerrik asko!",
     "analyticsSubscriptionWarningTitle": "Zure aurrerapena ez da jarraitzen ari",
     "analyticsSubscriptionWarningBody": "Harpidetzarik gabe, zure mezuek ez dute XPrik irabazten, ezta hitz eta gramatika berririk gehitzen ere.",
-    "noOpenSessions": "Ez dago saio irekirik oraintxe bertan"
+    "noOpenSessions": "Ez dago saio irekirik oraintxe bertan",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{hiztegi-elementu 1 erabili da} other{{count} hiztegi-elementu erabili dira}}",
+    "grammarItemsUsed": "{count, plural, =1{gramatika-elementu 1 erabili da} other{{count} gramatika-elementu erabili dira}}"
 }

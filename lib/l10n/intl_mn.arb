@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-09-17 11:52:08.717849",
+    "@@last_modified": "2026-09-17 15:10:08.208267",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2343,5 +2343,8 @@
     "orchestratorFeedbackThanks": "Тэмдэглэгдсэн. Баярлалаа!",
     "analyticsSubscriptionWarningTitle": "Таны ахиц дэвшил хянагдахгүй байна",
     "analyticsSubscriptionWarningBody": "Захиалгагүйгээр таны мессеж XP оноо авахгүй бөгөөд шинэ үг, дүрмийн санд нэмэгдэхгүй.",
-    "noOpenSessions": "Одоогоор нээлттэй хичээл байхгүй байна"
+    "noOpenSessions": "Одоогоор нээлттэй хичээл байхгүй байна",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 үгийн сангийн зүйл ашигласан} other{{count} үгийн сангийн зүйл ашигласан}}",
+    "grammarItemsUsed": "{count, plural, =1{1 дүрмийн зүйл ашигласан} other{{count} дүрмийн зүйл ашигласан}}"
 }

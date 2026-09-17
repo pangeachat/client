@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-09-17 11:52:03.214984",
+    "@@last_modified": "2026-09-17 15:10:02.526431",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2343,5 +2343,8 @@
     "orchestratorFeedbackThanks": "Gerapporteer. Dankie!",
     "analyticsSubscriptionWarningTitle": "Jou vordering word nie nagespoor nie",
     "analyticsSubscriptionWarningBody": "Sonder 'n intekening verdien jou boodskappe nie XP nie en voeg dit nie nuwe woorde en grammatika by nie.",
-    "noOpenSessions": "Geen oop sessies tans nie"
+    "noOpenSessions": "Geen oop sessies tans nie",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 woordeskatitem gebruik} other{{count} woordeskatitems gebruik}}",
+    "grammarItemsUsed": "{count, plural, =1{1 grammatika-item gebruik} other{{count} grammatika-items gebruik}}"
 }

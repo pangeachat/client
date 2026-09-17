@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-09-17 11:52:03.927616",
+    "@@last_modified": "2026-09-17 15:10:03.374290",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9926,5 +9926,8 @@
     "orchestratorFeedbackThanks": "Gemeldet. Danke!",
     "analyticsSubscriptionWarningTitle": "Dein Fortschritt wird nicht verfolgt",
     "analyticsSubscriptionWarningBody": "Ohne Abonnement bringen deine Nachrichten weder XP noch neue Wörter und Grammatik.",
-    "noOpenSessions": "Momentan keine offenen Sitzungen"
+    "noOpenSessions": "Momentan keine offenen Sitzungen",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 Vokabel verwendet} other{{count} Vokabeln verwendet}}",
+    "grammarItemsUsed": "{count, plural, =1{1 Grammatik-Element verwendet} other{{count} Grammatik-Elemente verwendet}}"
 }
