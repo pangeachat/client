@@ -119,6 +119,7 @@ class SelectedCourseController extends State<SelectedCourse>
         .createPangeaSpace(
           name: course.title,
           topic: course.description,
+          avatarUrl: course.imageUrl?.toString(),
           visibility: sdk.Visibility.public,
           joinRules: sdk.JoinRules.knock,
           initialState: [

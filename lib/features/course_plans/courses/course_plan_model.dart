@@ -18,9 +18,11 @@ import 'package:fluffychat/routes/settings/settings_learning/language_level_type
 ///
 /// The v1 methods on this class — [topicListComplete], [loadedTopics],
 /// [activityIDs], [fetchTopics], [mediaListComplete], [loadedMediaUrls],
-/// [fetchMediaUrls], [imageUrl] — query the v1 cms collections directly and
-/// **do not work on quest-synthesized instances** (the placeholder topic ids
-/// never resolve). New consumers should either:
+/// [fetchMediaUrls] — query the v1 cms collections directly and **do not
+/// work on quest-synthesized instances** (the placeholder topic ids never
+/// resolve). [imageUrl] is the exception: both v1 and quest-synthesized
+/// instances populate it consistently (v1 always null; v3 resolved by
+/// [QuestPlansRepo._resolveImageUrls]). New consumers should either:
 ///
 /// - go through the v3 path (`QuestRepo.outline(uuid)` for the full
 ///   per-mission activity grouping; `QuestRepo.questPins(uuid)` for the world
@@ -59,6 +61,13 @@ class CoursePlanModel {
   /// course, so display surfaces show no credit rather than a guessed one.
   final String? ownerId;
 
+  /// Picker thumbnail. Null for a v1 course (no course-level media field ever
+  /// existed there) and for a v3-synthesized course whose quest has no image
+  /// uploaded yet — both fall back to a letter avatar, which is the normal
+  /// state today since quest images are manually curated, not generated. See
+  /// [QuestPlansRepo._resolveImageUrls].
+  final Uri? imageUrl;
+
   CoursePlanModel({
     required this.targetLanguage,
     required this.languageOfInstructions,
@@ -71,6 +80,7 @@ class CoursePlanModel {
     required this.updatedAt,
     required this.createdAt,
     this.ownerId,
+    this.imageUrl,
   });
 
   LanguageModel? get targetLanguageModel =>
@@ -126,8 +136,4 @@ class CoursePlanModel {
       'owner_mxid': ?ownerId,
     };
   }
-
-  /// Picker thumbnail. world_v2: courses are v3 quests with no course-level
-  /// media, so this is null and the card UI falls back to a letter avatar.
-  Uri? get imageUrl => null;
 }
