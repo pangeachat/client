@@ -45,6 +45,18 @@
           },
           {
             "type": "command",
+            "command": "python3 \"$HOME/PangeaChat/.github/scripts/pretooluse-push-gate.py\""
+          },
+          {
+            "type": "command",
+            "command": "python3 \"$HOME/PangeaChat/.github/scripts/pretooluse-branch-gate.py\""
+          },
+          {
+            "type": "command",
+            "command": "python3 \"$HOME/PangeaChat/.github/scripts/pretooluse-signin-gate.py\""
+          },
+          {
+            "type": "command",
             "command": "bash \"$HOME/PangeaChat/.github/scripts/pretooluse-issue-gate.sh\""
           },
           {
