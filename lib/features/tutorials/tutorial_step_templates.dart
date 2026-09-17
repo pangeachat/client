@@ -156,17 +156,6 @@ class TutorialStepTemplates {
     ),
   ];
 
-  /// One step, one tap: it ends with the goal list open, so the learner is
-  /// looking at the goals they are about to play for.
-  static final List<TutorialStepTemplate> activityGoals = [
-    TutorialStepTemplate(
-      tooltip: (l10n, _) => l10n.tutorialActivityGoals,
-      tooltipSize: const Size(290, 170),
-      borderRadius: AppConfig.borderRadius,
-      padding: 4.0,
-    ),
-  ];
-
   /// One step: the open-sessions list on the start page's Join subpage — what
   /// a live session is, and that the humans in it may not answer right away.
   static final List<TutorialStepTemplate> openSessions = [
