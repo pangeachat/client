@@ -35,6 +35,7 @@ import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/map_exit_tracker.dart';
 import 'package:fluffychat/routes/world/panel_card.dart';
 import 'package:fluffychat/routes/world/pin_semantics_layer.dart';
+import 'package:fluffychat/routes/world/tile_http_client.dart';
 import 'package:fluffychat/routes/world/tile_retry_queue.dart';
 import 'package:fluffychat/routes/world/trackpad_pinch_zoom.dart';
 import 'package:fluffychat/routes/world/world_analytics_bar.dart';
@@ -217,13 +218,21 @@ class _WorldMapViewState extends State<WorldMapView>
   ///
   /// One provider instance for the State's lifetime: `TileLayer` disposes its
   /// final widget's provider, but never intermediate ones, so constructing a
-  /// fresh provider each build would leak its internal HTTP client.
+  /// fresh provider each build would leak its HTTP client.
+  ///
+  /// The client is ours, not flutter_map's internal one, so that a native
+  /// connection drop surfaces as an error tile instead of a silent
+  /// transparent success (#8844) — see [TileHttpClient]. flutter_map only
+  /// closes a client it created itself; this one is closed in [dispose].
+  final TileHttpClient _tileHttpClient = TileHttpClient();
+
   late final NetworkTileProvider _tileProvider = NetworkTileProvider(
     headers: {
       if (!kIsWeb)
         'User-Agent':
             'flutter_map (com.talktolearn.chat; +${AppConfig.website})',
     },
+    httpClient: _tileHttpClient,
     // A blocking provider tends to answer with an error status whose body is
     // itself a decodable "blocked" image; flutter_map's default decodes and
     // DISPLAYS it, hiding the block from `errorTileCallback`. Treat any
@@ -244,7 +253,8 @@ class _WorldMapViewState extends State<WorldMapView>
   ///   a block spike across sessions in Sentry (and alert on it later), never
   ///   event spam. Explicit warning level — a tile block degrades the map, it
   ///   doesn't break the app.
-  /// - Anything else (socket errors, timeouts, aborts) is the user's own
+  /// - Anything else ([TileConnectionException] from [_tileHttpClient]:
+  ///   socket errors, timeouts, connection drops) is the user's own
   ///   connectivity — a rate-limited breadcrumb only, context on whatever
   ///   event reports next. An offline learner must not generate events. The
   ///   tile is queued on [_tileRetries] so it fills in once the network is
@@ -920,6 +930,7 @@ class _WorldMapViewState extends State<WorldMapView>
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
     _tileRetries.dispose();
+    _tileHttpClient.close();
     _mapKeyboardFocusNode.dispose();
     super.dispose();
   }
