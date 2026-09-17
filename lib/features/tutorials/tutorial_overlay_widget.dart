@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/tutorials/tutorial_copy.dart';
 import 'package:fluffychat/features/tutorials/tutorial_overlay_state_machine.dart';
@@ -386,8 +387,16 @@ class _TutorialScrim extends StatelessWidget {
           colorFilter: const ColorFilter.mode(Colors.black, BlendMode.srcOut),
           child: Stack(
             children: [
+              // The srcOut filter above INVERTS this layer's alpha: what the
+              // learner sees is black at `1 - alpha`, and the opaque holes
+              // below punch straight through to nothing. Written as the
+              // inverse so the constant here is the darkness it produces.
               Container(
-                decoration: BoxDecoration(color: Colors.black.withAlpha(100)),
+                decoration: BoxDecoration(
+                  color: Colors.black.withValues(
+                    alpha: 1 - Theme.of(context).scrimOpacity,
+                  ),
+                ),
               ),
 
               /// One "hole" per lit target.

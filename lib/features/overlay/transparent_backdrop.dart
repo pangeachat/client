@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import '../../widgets/matrix.dart';
 
@@ -36,7 +37,8 @@ class TransparentBackdrop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Color targetColor =
-        backgroundColor?.withAlpha((0.8 * 255).round()) ?? Colors.transparent;
+        backgroundColor?.withValues(alpha: Theme.of(context).scrimOpacity) ??
+        Colors.transparent;
 
     return TweenAnimationBuilder<double>(
       tween: Tween<double>(begin: animateBackground ? 0.0 : 1.0, end: 1.0),
