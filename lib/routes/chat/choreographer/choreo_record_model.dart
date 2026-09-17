@@ -21,11 +21,18 @@ class ChoreoRecordModel {
   final List<PangeaMatch> openMatches;
   final String originalText;
 
+  /// Texts the learner pasted into the composer. Their tokens are excluded
+  /// from construct uses. Serialized with the record: the activity summary
+  /// scores a message from the record loaded back off the event, not the
+  /// live one, so provenance held only in memory reads as self-written
+  /// (#9095).
   final Set<String> _pastedStrings = {};
 
-  /// Texts inserted by accepting an orchestrator suggestion chip. Like
-  /// [pastedStrings], in-memory only — suggestion tokens must not score as
-  /// self-written language (#7665).
+  /// Texts inserted by accepting an orchestrator suggestion chip. Their tokens
+  /// score as the suggestion use type, not as self-written language (#7665).
+  /// Orchestrator suggestions are deprecated. The recording stays because a
+  /// similar assistance flow may replace them and inherit it; any such flow is
+  /// serialized here the same way (#9095).
   final Set<String> _suggestionStrings = {};
 
   ChoreoRecordModel({
@@ -128,7 +135,7 @@ class ChoreoRecordModel {
       );
     }
 
-    return ChoreoRecordModel(
+    final record = ChoreoRecordModel(
       choreoSteps: steps,
       originalText: originalText ?? defaultOriginalText!,
       openMatches: (jsonDecode(json[_openMatchesKey] ?? "[]") as Iterable)
@@ -138,11 +145,22 @@ class ChoreoRecordModel {
           .toList()
           .cast<PangeaMatch>(),
     );
+    record._pastedStrings.addAll(_stringsFromJson(json[_pastedStringsKey]));
+    record._suggestionStrings.addAll(
+      _stringsFromJson(json[_suggestionStringsKey]),
+    );
+    return record;
   }
+
+  /// Records saved before #9095 carry neither key.
+  static List<String> _stringsFromJson(dynamic raw) =>
+      raw == null ? const [] : (raw as List).cast<String>();
 
   static const _stepsKey = "stps";
   static const _openMatchesKey = "mtchs";
   static const _originalTextKey = "ogtxt_v2";
+  static const _pastedStringsKey = "pstd";
+  static const _suggestionStringsKey = "sugg";
 
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
@@ -151,6 +169,8 @@ class ChoreoRecordModel {
       openMatches.map((e) => e.toJson()).toList(),
     );
     data[_originalTextKey] = originalText;
+    data[_pastedStringsKey] = _pastedStrings.toList();
+    data[_suggestionStringsKey] = _suggestionStrings.toList();
     return data;
   }
 

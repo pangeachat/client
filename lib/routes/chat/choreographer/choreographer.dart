@@ -378,8 +378,11 @@ class Choreographer extends ChangeNotifier {
     final acceptedChoice = suggestion?.acceptedChoice;
     if (acceptedChoice != null) {
       // Record BEFORE setSystemText so the lazily-created record snapshots
-      // pre-suggestion input as originalText; excluded from XP like pastes
-      // (#7665).
+      // pre-suggestion input as originalText; scored as a suggestion use, not
+      // as self-written language (#7665). Orchestrator suggestions are
+      // deprecated. This stays because a similar assistance flow may replace
+      // them, and it must record what it inserts on the choreo record the
+      // same way (#9095).
       _record.addSuggestionString(acceptedChoice.text);
       textController.setSystemText(
         acceptedChoice.text,

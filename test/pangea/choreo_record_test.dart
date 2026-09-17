@@ -80,22 +80,35 @@ void main() async {
       );
     });
 
-    test("suggestionStrings is in-memory only, like pastedStrings", () {
-      // Send-time scoring reads the live record (#7665); neither exclusion
-      // set is serialized.
+    test("pastedStrings and suggestionStrings survive a toJson round trip", () {
+      // The activity summary scores from the record loaded off the event, so
+      // provenance held only in memory would score as self-written (#9095).
       final record = ChoreoRecordModel(
         originalText: "",
         choreoSteps: [],
         openMatches: [],
       );
-
-      expect(record.suggestionStrings, isEmpty);
       record.addSuggestionString("quiero un café");
       record.addPastedString("hola");
 
       final received = ChoreoRecordModel.fromJson(record.toJson());
-      expect(received.suggestionStrings, isEmpty);
+      expect(received.suggestionStrings, {"quiero un café"});
+      expect(received.pastedStrings, {"hola"});
+    });
+
+    test("fromJson tolerates records saved without the provenance keys", () {
+      final record = ChoreoRecordModel(
+        originalText: "",
+        choreoSteps: [],
+        openMatches: [],
+      );
+      final json = record.toJson()
+        ..remove("pstd")
+        ..remove("sugg");
+
+      final received = ChoreoRecordModel.fromJson(json);
       expect(received.pastedStrings, isEmpty);
+      expect(received.suggestionStrings, isEmpty);
     });
 
     test("Test that fromJSON converts old version correctly", () {

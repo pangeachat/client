@@ -236,6 +236,7 @@ The user can send at any time. There is no gate on unresolved matches.
 
 - **Send button** remains separate from the assistance ring (to the right of it in the input row).
 - On send, the choreographer tokenizes the final text and saves a `ChoreoRecordModel` with the message, recording which matches were viewed, accepted, or left open.
+- **The saved record is the message's provenance.** Everything that scores a message reads the record as it was saved with the message, never the copy in memory: the analytics that assign each word a construct use type, and the activity summary, which scores a finished activity's messages long after they were sent. So any text an assistance flow puts into the composer on the learner's behalf is written into the record's saved form, next to the match history. Today that is pasted text and accepted orchestrator suggestions, and it holds for any flow added later, whatever shape the next suggestion takes. A flow that keeps what it inserted only in memory scores correctly on the sender's device at send time and nowhere else, because those words read as self-written the moment the record is loaded back from the event. That is how tapped orchestrator suggestions came to score as self-written in the activity summary ([#9095](https://github.com/pangeachat/client/issues/9095)). Orchestrator suggestions are deprecated; their recording stays because a similar assistance flow may replace them and inherit it.
 
 ---
 
