@@ -63,32 +63,37 @@ void main() {
     expect(names, containsAll(['botColor', 'backgroundColor']));
   });
 
-  test('backgroundColor drives the render', () async {
-    Future<List<int>> renderWithBackdrop(Color backdrop) async {
-      final artboard = file.artboard('BotIconArtboard')!;
-      final machine = artboard.stateMachine(_stateMachineName)!;
-      final viewModel = file
-          .viewModelByName(_viewModelName)!
-          .createDefaultInstance()!;
-      machine.bindViewModelInstance(viewModel);
-      viewModel.color('botColor')!.value = const Color(0xFF8560E0);
-      viewModel.color('backgroundColor')!.value = backdrop;
-      for (var i = 0; i < _settleFrames; i++) {
-        machine.advanceAndApply(1 / 60);
-      }
-      final pixels = await _pixels(await _render(artboard));
-      machine.dispose();
-      return pixels;
+  test('the artboard leaves its backdrop clear', () async {
+    final artboard = file.artboard('BotIconArtboard')!;
+    final machine = artboard.stateMachine(_stateMachineName)!;
+    final viewModel = file
+        .viewModelByName(_viewModelName)!
+        .createDefaultInstance()!;
+    machine.bindViewModelInstance(viewModel);
+    viewModel.color('botColor')!.value = const Color(0xFF8560E0);
+    viewModel.trigger(BotExpression.idle.trigger)!.trigger();
+    for (var i = 0; i < _settleFrames; i++) {
+      machine.advanceAndApply(1 / 60);
     }
 
-    // The widget binds this to transparent. The asset ships it opaque white,
-    // so if the binding stops reaching the artboard every bot face gains a
-    // white box behind it and nothing else would catch that.
+    // The bot is drawn over dialogs, list rows and a map, so the artboard has
+    // to leave everything it does not paint fully clear. An earlier export
+    // shipped a full-bleed backdrop that put a grey box behind every bot face,
+    // and the property meant to control it could not switch the alpha off.
+    final pixels = await _pixels(await _render(artboard));
+    var clear = 0;
+    for (var i = 3; i < pixels.length; i += 4) {
+      if (pixels[i] == 0) clear++;
+    }
+    final clearRatio = clear / (pixels.length / 4);
     expect(
-      await renderWithBackdrop(Colors.transparent),
-      isNot(equals(await renderWithBackdrop(const Color(0xFFFFFFFF)))),
-      reason: 'binding backgroundColor must change what is drawn',
+      clearRatio,
+      greaterThan(0.25),
+      reason:
+          'the artboard must not paint its own background; '
+          'only ${(clearRatio * 100).toStringAsFixed(1)}% of the frame is clear',
     );
+    machine.dispose();
   });
 
   test('every BotExpression maps to a trigger that exists in the asset', () {

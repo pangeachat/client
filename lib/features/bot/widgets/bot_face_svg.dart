@@ -185,9 +185,6 @@ class BotFaceState extends State<BotFace> {
     // (didChangeDependencies), since the Rive view model holds a value.
     viewModel.color('botColor')?.value =
         widget.forceColor ?? Theme.of(context).colorScheme.primaryContainer;
-    // The bot is drawn over dialogs, list rows and the map, so its own
-    // backdrop has to be clear. The asset defaults this to opaque white.
-    viewModel.color('backgroundColor')?.value = Colors.transparent;
   }
 
   void _playExpression() {
