@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:fluffychat/features/user/public_profile_model.dart';
 import 'package:fluffychat/features/user/user_controller.dart';
+import 'package:fluffychat/features/user/user_model.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
 
@@ -68,11 +69,21 @@ class _FakeUserController implements UserController {
   bool get languagesSet => false;
 
   /// A real, never-firing stream. Every content-language chip subscribes to
-  /// this in build (`ContextLanguageSwitchTarget`), where the [noSuchMethod]
-  /// null would throw on `.stream`.
+  /// this in build (`ContextLanguageSwitchTarget`), and `QuestObjectivesLoader`
+  /// subscribes to it in its constructor to re-read a course outline when the
+  /// display language changes (#9151) — where the [noSuchMethod] null throws
+  /// before the widget can build at all.
   @override
   final StreamController<LanguageUpdate> languageStream =
       StreamController<LanguageUpdate>.broadcast();
+
+  /// The other half of that pair, and real for the same reason: a profile
+  /// write reaches exactly one of the two, and the "app in target language"
+  /// toggle — which changes no language but does change the resolved display
+  /// one — arrives here. Nothing emits on either unless a test does.
+  @override
+  final StreamController<Profile> settingsUpdateStream =
+      StreamController<Profile>.broadcast();
 
   @override
   dynamic noSuchMethod(Invocation invocation) => null;
