@@ -2559,7 +2559,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-09-17 11:52:10.316226",
+    "@@last_modified": "2026-09-17 15:10:09.259108",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10854,5 +10854,8 @@
     "orchestratorFeedbackThanks": "Assinalado. Obrigado!",
     "analyticsSubscriptionWarningTitle": "O seu progresso não está a ser registado",
     "analyticsSubscriptionWarningBody": "Sem uma subscrição, as suas mensagens não ganham XP nem adicionam novas palavras e gramática.",
-    "noOpenSessions": "Nenhuma sessão aberta neste momento"
+    "noOpenSessions": "Nenhuma sessão aberta neste momento",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 item de vocabulário usado} other{{count} itens de vocabulário usados}}",
+    "grammarItemsUsed": "{count, plural, =1{1 item de gramática usado} other{{count} itens de gramática usados}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-09-17 11:52:07.723886",
+    "@@last_modified": "2026-09-17 15:10:07.372395",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2341,5 +2341,8 @@
     "orchestratorFeedbackThanks": "Markéiert. Merci!",
     "analyticsSubscriptionWarningTitle": "Däi Fortschrëtt gëtt net opgeholl",
     "analyticsSubscriptionWarningBody": "Ouni Abonnement verdéngen deng Messagen keng XP a fügen keng nei Wierder a Grammatik derbäi.",
-    "noOpenSessions": "Keng oppe Sessiounen am Moment"
+    "noOpenSessions": "Keng oppe Sessiounen am Moment",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 Vokabel benotzt} other{{count} Vokabelen benotzt}}",
+    "grammarItemsUsed": "{count, plural, =1{1 Grammairelement benotzt} other{{count} Grammairelementer benotzt}}"
 }

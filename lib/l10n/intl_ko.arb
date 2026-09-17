@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-17 11:52:07.133402",
+    "@@last_modified": "2026-09-17 15:10:06.613636",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10130,5 +10130,8 @@
     "orchestratorFeedbackThanks": "신고되었습니다. 감사합니다!",
     "analyticsSubscriptionWarningTitle": "진행 상황이 추적되지 않습니다",
     "analyticsSubscriptionWarningBody": "구독하지 않으면 메시지로 XP를 얻거나 새로운 단어와 문법을 추가할 수 없습니다.",
-    "noOpenSessions": "현재 열려 있는 세션이 없습니다."
+    "noOpenSessions": "현재 열려 있는 세션이 없습니다.",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{단어 항목 1개 사용됨} other{{count}개 단어 항목 사용됨}}",
+    "grammarItemsUsed": "{count, plural, =1{문법 항목 1개 사용됨} other{{count}개 문법 항목 사용됨}}"
 }

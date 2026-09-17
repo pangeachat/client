@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-09-17 11:52:09.315132",
+    "@@last_modified": "2026-09-17 15:10:09.731690",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2341,5 +2341,8 @@
     "orchestratorFeedbackThanks": "Chongedwa. Zikomo!",
     "analyticsSubscriptionWarningTitle": "Kupita patsogolo kwanu sikukuwonedwa",
     "analyticsSubscriptionWarningBody": "Popanda kulembetsa, mauthenga anu sakupeza XP kapena kuwonjezera mawu atsopano ndi galamala.",
-    "noOpenSessions": "Palibe zokambirana zomwe zikuchitika pakali pano"
+    "noOpenSessions": "Palibe zokambirana zomwe zikuchitika pakali pano",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{Chinthu chimodzi chogwiritsidwa ntchito} other{Zinthu {count} zogwiritsidwa ntchito}}",
+    "grammarItemsUsed": "{count, plural, =1{Chinthu chimodzi cha galamala chogwiritsidwa ntchito} other{Zinthu {count} za galamala zogwiritsidwa ntchito}}"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-17 11:52:04.433650",
+    "@@last_modified": "2026-09-17 15:10:03.542016",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10882,5 +10882,8 @@
     "orchestratorFeedbackThanks": "Raportita. Dankon!",
     "analyticsSubscriptionWarningTitle": "Via progreso ne estas spurata",
     "analyticsSubscriptionWarningBody": "Sen abono, viaj mesaĝoj ne gajnas XP aŭ aldonas novajn vortojn kaj gramatikon.",
-    "noOpenSessions": "Neniuj malfermitaj sesioj nun"
+    "noOpenSessions": "Neniuj malfermitaj sesioj nun",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 vortfaradaĵo uzita} other{{count} vortfaradaĵoj uzitaj}}",
+    "grammarItemsUsed": "{count, plural, =1{1 gramatikaĵo uzita} other{{count} gramatikaĵoj uzitaj}}"
 }

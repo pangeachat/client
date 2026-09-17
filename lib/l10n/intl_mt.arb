@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-09-17 11:52:09.237785",
+    "@@last_modified": "2026-09-17 15:10:08.512046",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2341,5 +2341,8 @@
     "orchestratorFeedbackThanks": "Immarkat. Grazzi!",
     "analyticsSubscriptionWarningTitle": "Il-progress tiegħek mhuwiex qed jiġi ssorveljat",
     "analyticsSubscriptionWarningBody": "Mingħajr abbonament, il-messaġġi tiegħek ma jaqilgħux XP jew iżidu kliem u grammatika ġodda.",
-    "noOpenSessions": "Bħalissa m'hemmx sessjonijiet miftuħa"
+    "noOpenSessions": "Bħalissa m'hemmx sessjonijiet miftuħa",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 oġġett tal-vokabularju użat} other{{count} oġġetti tal-vokabularju użati}}",
+    "grammarItemsUsed": "{count, plural, =1{1 oġġett tal-grammatika użat} other{{count} oġġetti tal-grammatika użati}}"
 }

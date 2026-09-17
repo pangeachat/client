@@ -1334,7 +1334,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-09-17 11:52:05.900634",
+    "@@last_modified": "2026-09-17 15:10:05.458745",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10857,5 +10857,8 @@
     "orchestratorFeedbackThanks": "Markeret. Tak!",
     "analyticsSubscriptionWarningTitle": "Din fremgang spores ikke",
     "analyticsSubscriptionWarningBody": "Uden et abonnement optjener dine beskeder ikke XP eller tilføjer nye ord og grammatik.",
-    "noOpenSessions": "Ingen åbne sessioner lige nu"
+    "noOpenSessions": "Ingen åbne sessioner lige nu",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 ordforrådselement brugt} other{{count} ordforrådselementer brugt}}",
+    "grammarItemsUsed": "{count, plural, =1{1 grammatikelement brugt} other{{count} grammatikelementer brugt}}"
 }

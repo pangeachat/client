@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-09-17 11:52:13.064362",
+    "@@last_modified": "2026-09-17 15:10:13.277702",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2341,5 +2341,8 @@
     "orchestratorFeedbackThanks": "Kuphawuliwe. Ngiyabonga!",
     "analyticsSubscriptionWarningTitle": "Intuthuko yakho ayilandelwa",
     "analyticsSubscriptionWarningBody": "Ngaphandle kokubhalisa, imilayezo yakho ayitholi i-XP noma ingezi amagama amasha nohlelo lolimi.",
-    "noOpenSessions": "Azikho izikhathi ezivulekile okwamanje"
+    "noOpenSessions": "Azikho izikhathi ezivulekile okwamanje",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 into yohlelo lolimi esetshenzisiwe} other{{count} izinto zohlelo lolimi ezisetshenzisiwe}}",
+    "grammarItemsUsed": "{count, plural, =1{1 into yohlelo lolimi esetshenzisiwe} other{{count} izinto zohlelo lolimi ezisetshenzisiwe}}"
 }

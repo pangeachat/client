@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-09-17 11:52:07.570811",
+    "@@last_modified": "2026-09-17 15:10:08.700659",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2341,5 +2341,8 @@
     "orchestratorFeedbackThanks": "Notatum. Gratias!",
     "analyticsSubscriptionWarningTitle": "Progressus tuus non sequitur",
     "analyticsSubscriptionWarningBody": "Sine subscriptione, nuntii tui XP non merentur nec nova verba et grammaticam addunt.",
-    "noOpenSessions": "Nullae sessiones apertae nunc"
+    "noOpenSessions": "Nullae sessiones apertae nunc",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 vocabuli res adhibita} other{{count} vocabuli res adhibitae}}",
+    "grammarItemsUsed": "{count, plural, =1{1 grammaticae res adhibita} other{{count} grammaticae res adhibitae}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-09-17 11:52:07.481471",
+    "@@last_modified": "2026-09-17 15:10:06.862131",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2341,5 +2341,8 @@
     "orchestratorFeedbackThanks": "ئاڵا کرا. سوپاس!",
     "analyticsSubscriptionWarningTitle": "پێشکەوتنەکەت بەدواداچوونی بۆ ناکرێت",
     "analyticsSubscriptionWarningBody": "بەبێ بەشداریکردن، پەیامەکانت XP بەدەست ناهێنن و وشە و ڕێزمانی نوێ زیاد ناکەن.",
-    "noOpenSessions": "هیچ دەستپێکێکی کراوە نییە لە ئێستادا"
+    "noOpenSessions": "هیچ دەستپێکێکی کراوە نییە لە ئێستادا",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 وشەی فێربوون بەکارهات} other{{count} وشەی فێربوون بەکارهاتن}}",
+    "grammarItemsUsed": "{count, plural, =1{1 بابەتی ڕێزمان بەکارهات} other{{count} بابەتی ڕێزمان بەکارهاتن}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-09-17 11:52:05.508464",
+    "@@last_modified": "2026-09-17 15:10:04.978064",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2341,5 +2341,8 @@
     "orchestratorFeedbackThanks": "ફ્લેગ કર્યું. આભાર!",
     "analyticsSubscriptionWarningTitle": "તમારી પ્રગતિ ટ્રૅક થઈ રહી નથી",
     "analyticsSubscriptionWarningBody": "સબ્સ્ક્રિપ્શન વિના, તમારા સંદેશાઓ XP કમાતા નથી અથવા નવા શબ્દો અને વ્યાકરણ ઉમેરતા નથી.",
-    "noOpenSessions": "હાલમાં કોઈ ખુલ્લી સત્રો નથી"
+    "noOpenSessions": "હાલમાં કોઈ ખુલ્લી સત્રો નથી",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 શબ્દભંડોળ આઇટમ વપરાઈ} other{{count} શબ્દભંડોળ આઇટમ્સ વપરાઈ}}",
+    "grammarItemsUsed": "{count, plural, =1{1 વ્યાકરણ આઇટમ વપરાઈ} other{{count} વ્યાકરણ આઇટમ્સ વપરાઈ}}"
 }

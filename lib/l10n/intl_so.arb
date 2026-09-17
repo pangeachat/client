@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-09-17 11:52:11.095380",
+    "@@last_modified": "2026-09-17 15:10:10.455432",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2341,5 +2341,8 @@
     "orchestratorFeedbackThanks": "La calaamadeeyay. Waad mahadsan tahay!",
     "analyticsSubscriptionWarningTitle": "Horumarkaaga lama dabagalo",
     "analyticsSubscriptionWarningBody": "Adigoon is-diiwaangelin, fariimahaagu ma kasbadaan XP mana ku daraan ereyo iyo naxwaha cusub.",
-    "noOpenSessions": "Ma jiraan fadhiyo furan hadda"
+    "noOpenSessions": "Ma jiraan fadhiyo furan hadda",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 erey la isticmaalay} other{{count} ereyo la isticmaalay}}",
+    "grammarItemsUsed": "{count, plural, =1{1 qaanuun naxwe ah la isticmaalay} other{{count} qaanuuno naxwe ah la isticmaalay}}"
 }

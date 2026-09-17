@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-09-17 11:52:06.453905",
+    "@@last_modified": "2026-09-17 15:10:05.673541",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10040,5 +10040,8 @@
     "orchestratorFeedbackThanks": "Megjelölve. Köszönjük!",
     "analyticsSubscriptionWarningTitle": "Nem követjük a fejlődésedet",
     "analyticsSubscriptionWarningBody": "Előfizetés nélkül az üzeneteid nem hoznak XP-t, és nem adnak hozzá új szavakat vagy nyelvtant.",
-    "noOpenSessions": "Jelenleg nincsenek nyitott munkamenetek"
+    "noOpenSessions": "Jelenleg nincsenek nyitott munkamenetek",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 szókincs elem felhasználva} other{{count} szókincs elem felhasználva}}",
+    "grammarItemsUsed": "{count, plural, =1{1 nyelvtani elem felhasználva} other{{count} nyelvtani elem felhasználva}}"
 }

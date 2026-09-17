@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-09-17 11:52:11.346462",
+    "@@last_modified": "2026-09-17 15:10:10.211259",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2341,5 +2341,8 @@
     "orchestratorFeedbackThanks": "Ua faailogaina. Faafetai!",
     "analyticsSubscriptionWarningTitle": "E le o siakiina lou alualu i luma",
     "analyticsSubscriptionWarningBody": "A aunoa ma se saofaga, e le maua e au feʻau ni XP pe faʻaopoopoina ni upu fou ma le kalama.",
-    "noOpenSessions": "Leai ni sauniga tatala i le taimi nei"
+    "noOpenSessions": "Leai ni sauniga tatala i le taimi nei",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 upu faʻaaoga} other{{count} upu faʻaaoga}}",
+    "grammarItemsUsed": "{count, plural, =1{1 kalama faʻaaoga} other{{count} kalama faʻaaoga}}"
 }

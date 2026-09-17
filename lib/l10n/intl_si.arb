@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-09-17 11:52:10.430465",
+    "@@last_modified": "2026-09-17 15:10:10.046413",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2341,5 +2341,8 @@
     "orchestratorFeedbackThanks": "සලකුණු කරන ලදී. ස්තූතියි!",
     "analyticsSubscriptionWarningTitle": "ඔබගේ ප්‍රගතිය නිරීක්ෂණය නොවේ",
     "analyticsSubscriptionWarningBody": "දායකත්වයක් නොමැතිව, ඔබගේ පණිවිඩ XP උපයන්නේ නැත, නැතහොත් නව වචන සහ ව්‍යාකරණ එකතු නොකරයි.",
-    "noOpenSessions": "දැනට විවෘත සැසි නොමැත"
+    "noOpenSessions": "දැනට විවෘත සැසි නොමැත",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 වචන මාලා අයිතමයක් භාවිතා කරන ලදී} other{{count} වචන මාලා අයිතම භාවිතා කරන ලදී}}",
+    "grammarItemsUsed": "{count, plural, =1{1 ව්‍යාකරණ අයිතමයක් භාවිතා කරන ලදී} other{{count} ව්‍යාකරණ අයිතම භාවිතා කරන ලදී}}"
 }

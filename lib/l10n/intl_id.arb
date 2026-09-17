@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-17 11:52:06.103608",
+    "@@last_modified": "2026-09-17 15:10:05.637776",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10010,5 +10010,8 @@
     "orchestratorFeedbackThanks": "Ditandai. Terima kasih!",
     "analyticsSubscriptionWarningTitle": "Kemajuan Anda tidak dilacak",
     "analyticsSubscriptionWarningBody": "Tanpa langganan, pesan Anda tidak mendapatkan XP atau menambahkan kata dan tata bahasa baru.",
-    "noOpenSessions": "Tidak ada sesi terbuka saat ini"
+    "noOpenSessions": "Tidak ada sesi terbuka saat ini",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 item kosakata digunakan} other{{count} item kosakata digunakan}}",
+    "grammarItemsUsed": "{count, plural, =1{1 item tata bahasa digunakan} other{{count} item tata bahasa digunakan}}"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-17 11:52:03.695134",
+    "@@last_modified": "2026-09-17 15:10:03.277323",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10064,5 +10064,8 @@
     "orchestratorFeedbackThanks": "Marcar. Gràcies!",
     "analyticsSubscriptionWarningTitle": "El teu progrés no s'està registrant",
     "analyticsSubscriptionWarningBody": "Sense una subscripció, els teus missatges no guanyen XP ni afegeixen paraules i gramàtica noves.",
-    "noOpenSessions": "No hi ha sessions obertes ara mateix"
+    "noOpenSessions": "No hi ha sessions obertes ara mateix",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 element de vocabulari utilitzat} other{{count} elements de vocabulari utilitzats}}",
+    "grammarItemsUsed": "{count, plural, =1{1 element de gramàtica utilitzat} other{{count} elements de gramàtica utilitzats}}"
 }

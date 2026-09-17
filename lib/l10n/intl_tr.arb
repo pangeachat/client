@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-09-17 11:52:11.973474",
+    "@@last_modified": "2026-09-17 15:10:11.098253",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10238,5 +10238,8 @@
     "orchestratorFeedbackThanks": "İşaretlendi. Teşekkürler!",
     "analyticsSubscriptionWarningTitle": "İlerlemeniz takip edilmiyor",
     "analyticsSubscriptionWarningBody": "Abonelik olmadan mesajlarınız XP kazandırmaz veya yeni kelime ve dil bilgisi eklemez.",
-    "noOpenSessions": "Şu anda açık oturum yok"
+    "noOpenSessions": "Şu anda açık oturum yok",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 kelime öğesi kullanıldı} other{{count} kelime öğesi kullanıldı}}",
+    "grammarItemsUsed": "{count, plural, =1{1 dil bilgisi öğesi kullanıldı} other{{count} dil bilgisi öğesi kullanıldı}}"
 }

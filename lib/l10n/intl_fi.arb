@@ -3536,7 +3536,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-09-17 11:52:04.697186",
+    "@@last_modified": "2026-09-17 15:10:04.043009",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9974,5 +9974,8 @@
     "orchestratorFeedbackThanks": "Merkitty. Kiitos!",
     "analyticsSubscriptionWarningTitle": "Edistymistäsi ei seurata",
     "analyticsSubscriptionWarningBody": "Ilman tilausta viestisi eivät kerrytä XP:tä tai lisää uusia sanoja ja kielioppia.",
-    "noOpenSessions": "Ei avoimia istuntoja juuri nyt"
+    "noOpenSessions": "Ei avoimia istuntoja juuri nyt",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 sanastoesine käytetty} other{{count} sanastoesinettä käytetty}}",
+    "grammarItemsUsed": "{count, plural, =1{1 kielioppiesine käytetty} other{{count} kielioppiesinettä käytetty}}"
 }

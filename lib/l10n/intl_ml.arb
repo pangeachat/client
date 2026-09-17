@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-09-17 11:52:08.166590",
+    "@@last_modified": "2026-09-17 15:10:07.661066",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2341,5 +2341,8 @@
     "orchestratorFeedbackThanks": "ഫ്ലാഗ് ചെയ്തു. നന്ദി!",
     "analyticsSubscriptionWarningTitle": "നിങ്ങളുടെ പുരോഗതി ട്രാക്ക് ചെയ്യുന്നില്ല",
     "analyticsSubscriptionWarningBody": "സബ്‌സ്‌ക്രിപ്‌ഷൻ ഇല്ലാതെ, നിങ്ങളുടെ സന്ദേശങ്ങൾക്ക് XP നേടാനോ പുതിയ വാക്കുകളും വ്യാകരണവും ചേർക്കാനോ കഴിയില്ല.",
-    "noOpenSessions": "ഇപ്പോൾ തുറന്ന സെഷനുകളൊന്നുമില്ല"
+    "noOpenSessions": "ഇപ്പോൾ തുറന്ന സെഷനുകളൊന്നുമില്ല",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{ഒരു പദാവലി ഇനം ഉപയോഗിച്ചു} other{{count} പദാവലി ഇനങ്ങൾ ഉപയോഗിച്ചു}}",
+    "grammarItemsUsed": "{count, plural, =1{ഒരു വ്യാകരണ ഇനം ഉപയോഗിച്ചു} other{{count} വ്യാകരണ ഇനങ്ങൾ ഉപയോഗിച്ചു}}"
 }

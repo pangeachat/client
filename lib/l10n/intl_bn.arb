@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-17 11:52:03.128375",
+    "@@last_modified": "2026-09-17 15:10:02.511137",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10565,5 +10565,8 @@
     "orchestratorFeedbackThanks": "ফ্ল্যাগ করা হয়েছে। ধন্যবাদ!",
     "analyticsSubscriptionWarningTitle": "আপনার অগ্রগতি ট্র্যাক করা হচ্ছে না",
     "analyticsSubscriptionWarningBody": "সাবস্ক্রিপশন ছাড়া, আপনার বার্তাগুলি XP অর্জন করে না বা নতুন শব্দ ও ব্যাকরণ যোগ করে না।",
-    "noOpenSessions": "এখন কোনো সেশন খোলা নেই"
+    "noOpenSessions": "এখন কোনো সেশন খোলা নেই",
+    "xpAmount": "{count} এক্সপি",
+    "vocabItemsUsed": "{count, plural, =1{১টি শব্দ ব্যবহার করা হয়েছে} other{{count}টি শব্দ ব্যবহার করা হয়েছে}}",
+    "grammarItemsUsed": "{count, plural, =1{১টি ব্যাকরণ আইটেম ব্যবহার করা হয়েছে} other{{count}টি ব্যাকরণ আইটেম ব্যবহার করা হয়েছে}}"
 }

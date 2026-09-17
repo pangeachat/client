@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-09-17 11:52:04.851311",
+    "@@last_modified": "2026-09-17 15:10:04.203348",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2341,5 +2341,8 @@
     "orchestratorFeedbackThanks": "Markearre. Tank!",
     "analyticsSubscriptionWarningTitle": "Jo foarútgong wurdt net folge",
     "analyticsSubscriptionWarningBody": "Sûnder abonnemint fertsjinje jo berjochten gjin XP en foegje se gjin nije wurden en grammatika ta.",
-    "noOpenSessions": "Gjin iepen sesjes op it stuit"
+    "noOpenSessions": "Gjin iepen sesjes op it stuit",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 wurdskatitem brûkt} other{{count} wurdskatitems brûkt}}",
+    "grammarItemsUsed": "{count, plural, =1{1 grammatika-item brûkt} other{{count} grammatika-items brûkt}}"
 }

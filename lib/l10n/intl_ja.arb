@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-09-17 11:52:06.638014",
+    "@@last_modified": "2026-09-17 15:10:06.443578",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10706,5 +10706,8 @@
     "orchestratorFeedbackThanks": "報告されました。ありがとうございます！",
     "analyticsSubscriptionWarningTitle": "進捗は記録されていません",
     "analyticsSubscriptionWarningBody": "サブスクリプションがない場合、メッセージでXPを獲得したり、新しい単語や文法を追加したりすることはできません。",
-    "noOpenSessions": "現在、開いているセッションはありません"
+    "noOpenSessions": "現在、開いているセッションはありません",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1語彙項目を使用} other{{count}語彙項目を使用}}",
+    "grammarItemsUsed": "{count, plural, =1{1文法項目を使用} other{{count}文法項目を使用}}"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-17 11:52:10.122059",
+    "@@last_modified": "2026-09-17 15:10:09.489095",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10669,5 +10669,8 @@
     "orchestratorFeedbackThanks": "Semnalat. Mulțumim!",
     "analyticsSubscriptionWarningTitle": "Progresul tău nu este urmărit",
     "analyticsSubscriptionWarningBody": "Fără un abonament, mesajele tale nu câștigă XP și nu adaugă cuvinte și gramatică noi.",
-    "noOpenSessions": "Nicio sesiune deschisă în acest moment"
+    "noOpenSessions": "Nicio sesiune deschisă în acest moment",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 element de vocabular utilizat} other{{count} elemente de vocabular utilizate}}",
+    "grammarItemsUsed": "{count, plural, =1{1 element de gramatică utilizat} other{{count} elemente de gramatică utilizate}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-09-17 11:52:03.151049",
+    "@@last_modified": "2026-09-17 15:10:02.492349",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10243,5 +10243,8 @@
     "orchestratorFeedbackThanks": "تم الإبلاغ. شكرًا!",
     "analyticsSubscriptionWarningTitle": "لا يتم تتبع تقدمك",
     "analyticsSubscriptionWarningBody": "بدون اشتراك، لا تكسب رسائلك نقاط خبرة أو تضيف كلمات وقواعد جديدة.",
-    "noOpenSessions": "لا توجد جلسات مفتوحة الآن"
+    "noOpenSessions": "لا توجد جلسات مفتوحة الآن",
+    "xpAmount": "{count} نقطة خبرة",
+    "vocabItemsUsed": "{count, plural, =1{تم استخدام عنصر مفردات واحد} other{تم استخدام {count} من عناصر المفردات}}",
+    "grammarItemsUsed": "{count, plural, =1{تم استخدام عنصر قواعد واحد} other{تم استخدام {count} من عناصر القواعد}}"
 }

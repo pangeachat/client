@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-09-17 11:52:04.017146",
+    "@@last_modified": "2026-09-17 15:10:03.665267",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2341,5 +2341,8 @@
     "orchestratorFeedbackThanks": "Wedi'i fflagio. Diolch!",
     "analyticsSubscriptionWarningTitle": "Nid yw eich cynnydd yn cael ei olrhain",
     "analyticsSubscriptionWarningBody": "Heb danysgrifiad, nid yw eich negeseuon yn ennill XP nac yn ychwanegu geiriau a gramadeg newydd.",
-    "noOpenSessions": "Dim sesiynau ar agor ar hyn o bryd"
+    "noOpenSessions": "Dim sesiynau ar agor ar hyn o bryd",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 eitem geirfa wedi'i defnyddio} other{{count} eitemau geirfa wedi'u defnyddio}}",
+    "grammarItemsUsed": "{count, plural, =1{1 eitem ramadeg wedi'i defnyddio} other{{count} eitemau gramadeg wedi'u defnyddio}}"
 }

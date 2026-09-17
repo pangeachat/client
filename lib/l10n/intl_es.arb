@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-09-17 11:52:04.297133",
+    "@@last_modified": "2026-09-17 15:10:03.719857",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8156,5 +8156,8 @@
     "orchestratorFeedbackThanks": "Marcado. ¡Gracias!",
     "analyticsSubscriptionWarningTitle": "Tu progreso no se está registrando",
     "analyticsSubscriptionWarningBody": "Sin una suscripción, tus mensajes no ganan XP ni añaden nuevas palabras y gramática.",
-    "noOpenSessions": "No hay sesiones abiertas en este momento"
+    "noOpenSessions": "No hay sesiones abiertas en este momento",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 elemento de vocabulario usado} other{{count} elementos de vocabulario usados}}",
+    "grammarItemsUsed": "{count, plural, =1{1 elemento de gramática usado} other{{count} elementos de gramática usados}}"
 }

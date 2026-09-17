@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-17 11:52:11.544211",
+    "@@last_modified": "2026-09-17 15:10:11.139942",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -10029,5 +10029,8 @@
     "orchestratorFeedbackThanks": "கொடியிடப்பட்டது. நன்றி!",
     "analyticsSubscriptionWarningTitle": "உங்கள் முன்னேற்றம் கண்காணிக்கப்படவில்லை",
     "analyticsSubscriptionWarningBody": "சந்தா இல்லாமல், உங்கள் செய்திகள் XP-ஐப் பெறாது அல்லது புதிய சொற்களையும் இலக்கணத்தையும் சேர்க்காது.",
-    "noOpenSessions": "தற்போது திறந்த அமர்வுகள் இல்லை"
+    "noOpenSessions": "தற்போது திறந்த அமர்வுகள் இல்லை",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 சொல்லகராதி உருப்படி பயன்படுத்தப்பட்டது} other{{count} சொல்லகராதி உருப்படிகள் பயன்படுத்தப்பட்டன}}",
+    "grammarItemsUsed": "{count, plural, =1{1 இலக்கண உருப்படி பயன்படுத்தப்பட்டது} other{{count} இலக்கண உருப்படிகள் பயன்படுத்தப்பட்டன}}"
 }

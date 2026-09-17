@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-17 11:52:06.492755",
+    "@@last_modified": "2026-09-17 15:10:06.512616",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -10010,5 +10010,8 @@
     "orchestratorFeedbackThanks": "Contenuto segnalato. Grazie!",
     "analyticsSubscriptionWarningTitle": "I tuoi progressi non vengono monitorati",
     "analyticsSubscriptionWarningBody": "Senza un abbonamento, i tuoi messaggi non guadagnano XP né aggiungono nuove parole e grammatica.",
-    "noOpenSessions": "Nessuna sessione aperta al momento"
+    "noOpenSessions": "Nessuna sessione aperta al momento",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 elemento di vocabolario usato} other{{count} elementi di vocabolario usati}}",
+    "grammarItemsUsed": "{count, plural, =1{1 elemento grammaticale usato} other{{count} elementi grammaticali usati}}"
 }

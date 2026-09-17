@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-09-17 11:52:11.278117",
+    "@@last_modified": "2026-09-17 15:10:11.106618",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2341,5 +2341,8 @@
     "orchestratorFeedbackThanks": "Dilaporkeun. Hatur nuhun!",
     "analyticsSubscriptionWarningTitle": "Kamajuan anjeun teu dilacak",
     "analyticsSubscriptionWarningBody": "Tanpa langganan, pesen anjeun moal nampi XP atanapi nambihan kecap sareng tata basa énggal.",
-    "noOpenSessions": "Teu aya sési anu kabuka ayeuna"
+    "noOpenSessions": "Teu aya sési anu kabuka ayeuna",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 item kosakata dipaké} other{{count} item kosakata dipaké}}",
+    "grammarItemsUsed": "{count, plural, =1{1 item tata basa dipaké} other{{count} item tata basa dipaké}}"
 }

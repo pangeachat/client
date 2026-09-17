@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-17 11:52:09.031785",
+    "@@last_modified": "2026-09-17 15:10:08.577129",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9937,5 +9937,8 @@
     "orchestratorFeedbackThanks": "Gemarkeerd. Bedankt!",
     "analyticsSubscriptionWarningTitle": "Je voortgang wordt niet bijgehouden",
     "analyticsSubscriptionWarningBody": "Zonder abonnement leveren je berichten geen XP op en voegen ze geen nieuwe woorden en grammatica toe.",
-    "noOpenSessions": "Momenteel geen open sessies"
+    "noOpenSessions": "Momenteel geen open sessies",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 vocabulaire-item gebruikt} other{{count} vocabulaire-items gebruikt}}",
+    "grammarItemsUsed": "{count, plural, =1{1 grammatica-item gebruikt} other{{count} grammatica-items gebruikt}}"
 }

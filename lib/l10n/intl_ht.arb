@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-09-17 11:52:06.186429",
+    "@@last_modified": "2026-09-17 15:10:05.727020",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2341,5 +2341,8 @@
     "orchestratorFeedbackThanks": "Signale. Mèsi!",
     "analyticsSubscriptionWarningTitle": "Pwogrè ou pa anrejistre",
     "analyticsSubscriptionWarningBody": "San yon abònman, mesaj ou yo pa touche XP oswa ajoute nouvo mo ak gramè.",
-    "noOpenSessions": "Pa gen okenn sesyon ouvè kounye a"
+    "noOpenSessions": "Pa gen okenn sesyon ouvè kounye a",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 atik vokabilè itilize} other{{count} atik vokabilè itilize}}",
+    "grammarItemsUsed": "{count, plural, =1{1 atik gramè itilize} other{{count} atik gramè itilize}}"
 }

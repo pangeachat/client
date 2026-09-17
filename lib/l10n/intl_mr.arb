@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-09-17 11:52:08.462753",
+    "@@last_modified": "2026-09-17 15:10:08.140998",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2341,5 +2341,8 @@
     "orchestratorFeedbackThanks": "ध्वजांकित केले. धन्यवाद!",
     "analyticsSubscriptionWarningTitle": "तुमच्या प्रगतीचा मागोवा घेतला जात नाहीये",
     "analyticsSubscriptionWarningBody": "सदस्यत्वाशिवाय, तुमचे संदेश XP मिळवत नाहीत किंवा नवीन शब्द आणि व्याकरण जोडत नाहीत.",
-    "noOpenSessions": "सध्या कोणतेही सत्र सुरू नाही"
+    "noOpenSessions": "सध्या कोणतेही सत्र सुरू नाही",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 शब्दसंग्रह आयटम वापरला} other{{count} शब्दसंग्रह आयटम वापरले}}",
+    "grammarItemsUsed": "{count, plural, =1{1 व्याकरण आयटम वापरला} other{{count} व्याकरण आयटम वापरले}}"
 }

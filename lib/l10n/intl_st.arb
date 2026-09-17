@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-09-17 11:52:11.481781",
+    "@@last_modified": "2026-09-17 15:10:11.281357",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2341,5 +2341,8 @@
     "orchestratorFeedbackThanks": "E tšoailoe. Kea leboha!",
     "analyticsSubscriptionWarningTitle": "Tsoelo-pele ea hau ha e lateloe",
     "analyticsSubscriptionWarningBody": "Ntle le peeletso, melaetsa ea hau ha e fumane XP kapa ho eketsa mantsoe le sebōpeho-puo se secha.",
-    "noOpenSessions": "Ha ho lithuto tse bulehileng hajoale"
+    "noOpenSessions": "Ha ho lithuto tse bulehileng hajoale",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{Ntho e le 'ngoe ea mantsoe e sebelisitsoe} other{Lintho tse {count} tsa mantsoe li sebelisitsoe}}",
+    "grammarItemsUsed": "{count, plural, =1{Ntho e le 'ngoe ea sebōpeho-puo e sebelisitsoe} other{Lintho tse {count} tsa sebōpeho-puo li sebelisitsoe}}"
 }

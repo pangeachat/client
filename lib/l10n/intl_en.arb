@@ -5575,5 +5575,32 @@
     "tutorialOpenSessions": "These are activities other people are playing. Join one to chat, but be aware they might not respond right away.",
     "tutorialActivityRoles": "These are the roles you can play in this activity. Pick the one that interests you!",
     "analyticsSubscriptionWarningTitle": "Your progress isn't being tracked",
-    "analyticsSubscriptionWarningBody": "Without a subscription, your messages don't earn XP or add new words and grammar."
+    "analyticsSubscriptionWarningBody": "Without a subscription, your messages don't earn XP or add new words and grammar.",
+    "xpAmount": "{count} XP",
+    "@xpAmount": {
+        "description": "The XP a learner earned in one activity session, on its row in the Stars list.",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "vocabItemsUsed": "{count, plural, =1{1 vocab item used} other{{count} vocab items used}}",
+    "@vocabItemsUsed": {
+        "description": "Spoken label for the vocabulary count on a saved activity's row in the Stars list.",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "grammarItemsUsed": "{count, plural, =1{1 grammar item used} other{{count} grammar items used}}",
+    "@grammarItemsUsed": {
+        "description": "Spoken label for the grammar count on a saved activity's row in the Stars list.",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    }
 }

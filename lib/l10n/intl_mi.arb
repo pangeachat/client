@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-09-17 11:52:08.360529",
+    "@@last_modified": "2026-09-17 15:10:07.724265",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2341,5 +2341,8 @@
     "orchestratorFeedbackThanks": "Kua tohua. Ngā mihi!",
     "analyticsSubscriptionWarningTitle": "Kāore tō ahunga whakamua i te aroturukitia",
     "analyticsSubscriptionWarningBody": "Ki te kore he ohaurunga, kāore ō karere e whiwhi XP, e tāpiri kupu hou, wetereo hoki.",
-    "noOpenSessions": "Kāore he hui tuwhera i tēnei wā"
+    "noOpenSessions": "Kāore he hui tuwhera i tēnei wā",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 tūemi kupu hou i whakamahia} other{{count} tūemi kupu hou i whakamahia}}",
+    "grammarItemsUsed": "{count, plural, =1{1 tūemi wetereo i whakamahia} other{{count} tūemi wetereo i whakamahia}}"
 }

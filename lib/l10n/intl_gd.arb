@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-09-17 11:52:05.615409",
+    "@@last_modified": "2026-09-17 15:10:04.905817",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2341,5 +2341,8 @@
     "orchestratorFeedbackThanks": "Air a chomharrachadh. Tapadh leat!",
     "analyticsSubscriptionWarningTitle": "Chan eilear a' cumail sùil air an adhartas agad",
     "analyticsSubscriptionWarningBody": "Mura h-eil ballrachd agad, cha choisinn na teachdaireachdan agad XP no cha chuir iad faclan is gràmar ùr ris.",
-    "noOpenSessions": "Chan eil seiseanan fosgailte ann an-dràsta"
+    "noOpenSessions": "Chan eil seiseanan fosgailte ann an-dràsta",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 nì faclair air a chleachdadh} other{{count} nithean faclair air an cleachdadh}}",
+    "grammarItemsUsed": "{count, plural, =1{1 nì gràmair air a chleachdadh} other{{count} nithean gràmair air an cleachdadh}}"
 }

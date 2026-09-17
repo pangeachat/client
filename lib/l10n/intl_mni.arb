@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-09-17 11:52:08.898731",
+    "@@last_modified": "2026-09-17 15:10:08.242206",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2341,5 +2341,8 @@
     "orchestratorFeedbackThanks": "फ्लैग तौरे। थगत्चरी!",
     "analyticsSubscriptionWarningTitle": "నంగ్గి ప్రోగ్రెస్ ట్రాక్ తౌద్రి",
     "analyticsSubscriptionWarningBody": "సబ్స్క్రిప్షన్ లৈতబాద, నంగ్గి మెసేజసింగ్నా XP ఫంగ్లోయి అథూబా వర్డ్స్ అమసుంగ్ గ్రామర్ హప్లోయి.",
-    "noOpenSessions": "Houjikta session amata pangkhide"
+    "noOpenSessions": "Houjikta session amata pangkhide",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 ৱোকেব আইটেম শীজিন্নখি} other{{count} ৱোকেব আইটেম শীজিন্নখি}}",
+    "grammarItemsUsed": "{count, plural, =1{1 গ্রামার আইটেম শীজিন্নখি} other{{count} গ্রামার আইটেম শীজিন্নখি}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-09-17 11:52:06.924170",
+    "@@last_modified": "2026-09-17 15:10:06.020624",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2341,5 +2341,8 @@
     "orchestratorFeedbackThanks": "Akọwapụtara. Daalụ!",
     "analyticsSubscriptionWarningTitle": "Anaghị eso ọganihu gị",
     "analyticsSubscriptionWarningBody": "Na-enweghị ndebanye aha, ozi gị anaghị enweta XP ma ọ bụ tinye okwu na ụtọ asụsụ ọhụrụ.",
-    "noOpenSessions": "Enweghị nnọkọ mepere emepe ugbu a"
+    "noOpenSessions": "Enweghị nnọkọ mepere emepe ugbu a",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{eji otu okwu} other{{count} eji okwu}}",
+    "grammarItemsUsed": "{count, plural, =1{eji otu ụtọasụsụ} other{{count} eji ụtọasụsụ}}"
 }

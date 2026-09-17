@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-09-17 11:52:04.594170",
+    "@@last_modified": "2026-09-17 15:10:03.984701",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9934,5 +9934,8 @@
     "orchestratorFeedbackThanks": "Märgitud. Aitäh!",
     "analyticsSubscriptionWarningTitle": "Sinu edusamme ei jälgita",
     "analyticsSubscriptionWarningBody": "Ilma tellimuseta ei teeni sinu sõnumid XP-d ega lisa uusi sõnu ja grammatikat.",
-    "noOpenSessions": "Praegu avatud seansse pole"
+    "noOpenSessions": "Praegu avatud seansse pole",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 sõnavaraüksus kasutatud} other{{count} sõnavaraüksust kasutatud}}",
+    "grammarItemsUsed": "{count, plural, =1{1 grammatikaüksus kasutatud} other{{count} grammatikaüksust kasutatud}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-09-17 11:52:11.923109",
+    "@@last_modified": "2026-09-17 15:10:11.780216",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9937,5 +9937,8 @@
     "orchestratorFeedbackThanks": "Повідомлено. Дякуємо!",
     "analyticsSubscriptionWarningTitle": "Ваш прогрес не відстежується",
     "analyticsSubscriptionWarningBody": "Без підписки ваші повідомлення не приносять XP і не додають нових слів та граматики.",
-    "noOpenSessions": "Наразі немає відкритих сесій"
+    "noOpenSessions": "Наразі немає відкритих сесій",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{використано 1 лексичний елемент} other{використано {count} лексичних елементів}}",
+    "grammarItemsUsed": "{count, plural, =1{використано 1 граматичний елемент} other{використано {count} граматичних елементів}}"
 }

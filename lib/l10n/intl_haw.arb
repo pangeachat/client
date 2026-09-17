@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-09-17 11:52:06.477392",
+    "@@last_modified": "2026-09-17 15:10:05.172804",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2341,5 +2341,8 @@
     "orchestratorFeedbackThanks": "Ua hōʻailona ʻia. Mahalo!",
     "analyticsSubscriptionWarningTitle": "ʻAʻole e mālama ʻia ana kou holomua",
     "analyticsSubscriptionWarningBody": "Me ka ʻole o ke kau inoa, ʻaʻole e loaʻa i kāu mau leka ka XP a ʻaʻole e hoʻohui i nā huaʻōlelo a me nā lula hou.",
-    "noOpenSessions": "ʻAʻohe kau hāmama i kēia manawa"
+    "noOpenSessions": "ʻAʻohe kau hāmama i kēia manawa",
+    "xpAmount": "{count} XP",
+    "vocabItemsUsed": "{count, plural, =1{1 mea huaʻōlelo i hoʻohana ʻia} other{{count} mau mea huaʻōlelo i hoʻohana ʻia}}",
+    "grammarItemsUsed": "{count, plural, =1{1 mea paukū i hoʻohana ʻia} other{{count} mau mea paukū i hoʻohana ʻia}}"
 }
