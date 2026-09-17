@@ -2,20 +2,24 @@
 <html>
 
 <head>
+  <meta charset="UTF-8">
   <!-- #Pangea -->
   <!-- iOS Smart App Banner: Safari renders a native "Open in app" strip.
-       app-argument carries the CURRENT URL, so a shared link (`/<code>`
-       course join, `/<uuid>` activity) opened in Safari or an in-app browser
-       hops into the installed app with the link intact; "View" goes to the
-       App Store. Injected via script because the argument must be the live
-       URL (joining-courses.instructions.md, Deep Linking). -->
+       The tag is static because Safari evaluates it at page load and a
+       script-created tag has not been shown to work (#9138). app-argument
+       is appended by script because it must be the CURRENT URL, so "Open"
+       can carry a shared link (`/<code>` course join, `/<uuid>` activity)
+       into the installed app; if Safari reads only the served HTML the
+       argument is ignored, and an installed app still gets the link through
+       the Universal Links banner Safari shows on its own. "View" goes to the
+       App Store. Safari-only by Apple's design: Chrome, Firefox and in-app
+       browsers on iOS never render it (joining-courses.instructions.md,
+       Deep Linking). -->
+  <meta name="apple-itunes-app" content="app-id=1445118630">
   <script>
     (function () {
-      const meta = document.createElement('meta');
-      meta.name = 'apple-itunes-app';
-      meta.content =
-        'app-id=1445118630, app-argument=' + window.location.href;
-      document.head.appendChild(meta);
+      const meta = document.querySelector('meta[name="apple-itunes-app"]');
+      meta.content += ', app-argument=' + window.location.href;
     })();
   </script>
   <!-- Pangea# -->
@@ -34,8 +38,16 @@
   -->
   <base href="$FLUTTER_BASE_HREF">
 
-  <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <!-- Viewport for everything that renders before the Flutter engine starts:
+       the splash loader and the mobile "Open in app" bar. Without it a phone
+       lays the page out at desktop width (~980px) and scales it down, so the
+       bar and loader appear tiny until the engine installs its own viewport
+       meta seconds later (#9138). The engine removes every viewport meta and
+       adds its own at startup; width and initial-scale match, so the swap
+       changes nothing on screen. flt-viewport silences the debug-build
+       warning about a foreign tag. -->
+  <meta name="viewport" flt-viewport content="width=device-width, initial-scale=1.0">
 
   <!-- #Pangea: one-time eviction of any legacy service worker.
        Current builds use --pwa-strategy=none and register no service worker.
