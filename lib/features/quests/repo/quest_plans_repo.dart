@@ -265,12 +265,6 @@ class QuestPlansRepo {
       // in the CMS admin for a quest made another way — absent on a quest
       // whose search found nothing (or hasn't run), which is a normal state,
       // not an error. See quest-plans.ts.
-      //
-      // `Map.operator[]` takes `Object?`, so this alone covers every miss —
-      // a null map, a null id, or an id the batch lookup didn't resolve —
-      // without a ternary. (A ternary here parses ambiguously: `cond ?
-      // map?[key] : null` reads the `?` after `map` as a second ternary's,
-      // not the null-aware index, and fails to compile.)
       imageUrl: imageUrls?[imageUploadId],
       createdAt:
           DateTime.tryParse(json['createdAt'] as String? ?? '') ??
