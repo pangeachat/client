@@ -5,6 +5,7 @@ import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target.dart';
 import 'package:fluffychat/pangea/common/widgets/embed_pointer_shield.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/goal_header_constants.dart';
 
 /// The floating goal-header card shared by the live session and the start/
 /// summary pages. It crossfades between its [collapsed] face (star summary +
@@ -41,7 +42,7 @@ class ActivityGoalHeaderCard extends StatelessWidget {
     return Align(
       alignment: Alignment.topCenter,
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: EdgeInsets.all(GoalHeaderConstants.cardMargin(context)),
         child: ConstrainedBox(
           constraints: const BoxConstraints(
             maxWidth: FluffyThemes.columnWidth * 1.5,

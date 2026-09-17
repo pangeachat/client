@@ -67,6 +67,13 @@ class _FakeUserController implements UserController {
   @override
   bool get languagesSet => false;
 
+  /// A real, never-firing stream. Every content-language chip subscribes to
+  /// this in build (`ContextLanguageSwitchTarget`), where the [noSuchMethod]
+  /// null would throw on `.stream`.
+  @override
+  final StreamController<LanguageUpdate> languageStream =
+      StreamController<LanguageUpdate>.broadcast();
+
   @override
   dynamic noSuchMethod(Invocation invocation) => null;
 }

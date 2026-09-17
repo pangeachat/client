@@ -98,9 +98,9 @@ class ActivityDropdownHeader extends StatelessWidget {
         InkWell(
           onTap: onToggle,
           child: Padding(
-            padding: const EdgeInsets.symmetric(
+            padding: EdgeInsets.symmetric(
               horizontal: 12.0,
-              vertical: GoalHeaderConstants.topPadding,
+              vertical: GoalHeaderConstants.topPadding(context),
             ),
             child: Row(
               children: [
@@ -133,14 +133,14 @@ class ActivityDropdownHeader extends StatelessWidget {
           ),
         ),
         if (subtitle != null)
-          // No top padding: the toggle row's own bottom padding already
-          // separates the subtitle from the stars.
+          // The top gap is small because the toggle row's own bottom padding
+          // already separates the subtitle from the stars.
           Padding(
-            padding: const EdgeInsets.fromLTRB(
+            padding: EdgeInsets.fromLTRB(
               16.0,
               10.0,
               16.0,
-              GoalHeaderConstants.topPadding,
+              GoalHeaderConstants.topPadding(context),
             ),
             child: subtitle,
           ),
