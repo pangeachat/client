@@ -77,7 +77,7 @@ class JoinedCourseStepView extends StatelessWidget {
                       ),
                     ),
                   ),
-                if (coursePlan != null)
+                if (room != null || coursePlan != null)
                   Padding(
                     padding: EdgeInsetsGeometry.symmetric(horizontal: 16.0),
                     child: Container(
@@ -111,7 +111,11 @@ class JoinedCourseStepView extends StatelessWidget {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        coursePlan.title,
+                                        coursePlan?.title ??
+                                            room?.getLocalizedDisplayname(
+                                              MatrixLocals(L10n.of(context)),
+                                            ) ??
+                                            '',
                                         maxLines: 3,
                                         overflow: TextOverflow.ellipsis,
                                         style: TextStyle(
@@ -119,80 +123,86 @@ class JoinedCourseStepView extends StatelessWidget {
                                         ),
                                       ),
                                       SizedBox(height: 2),
-                                      Wrap(
-                                        spacing: 4.0,
-                                        runSpacing: 2.0,
-                                        children: [
-                                          Container(
-                                            padding: EdgeInsets.symmetric(
-                                              horizontal: 4.0,
-                                            ),
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(8),
-                                              color: theme
-                                                  .colorScheme
-                                                  .surfaceContainer,
-                                            ),
-                                            child: CourseInfoChip(
-                                              icon: Icons.language_outlined,
-                                              text: coursePlan
-                                                  .targetLanguageDisplay,
-                                              fontSize: 14,
-                                              iconSize: 12,
-                                            ),
-                                          ),
-                                          Container(
-                                            padding: EdgeInsets.symmetric(
-                                              horizontal: 4.0,
-                                            ),
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(8),
-                                              color: theme
-                                                  .colorScheme
-                                                  .surfaceContainer,
-                                            ),
-                                            child: CourseInfoChip(
-                                              icon: Icons.school_outlined,
-                                              text: coursePlan.cefrLevel.string,
-                                              fontSize: 14,
-                                              iconSize: 12,
-                                            ),
-                                          ),
-                                          Container(
-                                            padding: EdgeInsets.symmetric(
-                                              horizontal: 4.0,
-                                            ),
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(8),
-                                              color: theme
-                                                  .colorScheme
-                                                  .surfaceContainer,
-                                            ),
-                                            child: CourseInfoChip(
-                                              icon: Icons.event_note_outlined,
-                                              text: L10n.of(context).numModules(
-                                                coursePlan.topicIds.length,
+                                      if (coursePlan != null)
+                                        Wrap(
+                                          spacing: 4.0,
+                                          runSpacing: 2.0,
+                                          children: [
+                                            Container(
+                                              padding: EdgeInsets.symmetric(
+                                                horizontal: 4.0,
                                               ),
-                                              fontSize: 14,
-                                              iconSize: 12,
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                                color: theme
+                                                    .colorScheme
+                                                    .surfaceContainer,
+                                              ),
+                                              child: CourseInfoChip(
+                                                icon: Icons.language_outlined,
+                                                text: coursePlan
+                                                    .targetLanguageDisplay,
+                                                fontSize: 14,
+                                                iconSize: 12,
+                                              ),
                                             ),
-                                          ),
-                                        ],
-                                      ),
+                                            Container(
+                                              padding: EdgeInsets.symmetric(
+                                                horizontal: 4.0,
+                                              ),
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                                color: theme
+                                                    .colorScheme
+                                                    .surfaceContainer,
+                                              ),
+                                              child: CourseInfoChip(
+                                                icon: Icons.school_outlined,
+                                                text:
+                                                    coursePlan.cefrLevel.string,
+                                                fontSize: 14,
+                                                iconSize: 12,
+                                              ),
+                                            ),
+                                            Container(
+                                              padding: EdgeInsets.symmetric(
+                                                horizontal: 4.0,
+                                              ),
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                                color: theme
+                                                    .colorScheme
+                                                    .surfaceContainer,
+                                              ),
+                                              child: CourseInfoChip(
+                                                icon: Icons.event_note_outlined,
+                                                text: L10n.of(context)
+                                                    .numModules(
+                                                      coursePlan
+                                                          .topicIds
+                                                          .length,
+                                                    ),
+                                                fontSize: 14,
+                                                iconSize: 12,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                     ],
                                   ),
                                 ),
                               ],
                             ),
                           ),
-                          Text(
-                            coursePlan.description,
-                            maxLines: 3,
-                            overflow: TextOverflow.ellipsis,
-                          ),
+                          if (coursePlan != null)
+                            Text(
+                              coursePlan.description,
+                              maxLines: 3,
+                              overflow: TextOverflow.ellipsis,
+                            ),
                         ],
                       ),
                     ),

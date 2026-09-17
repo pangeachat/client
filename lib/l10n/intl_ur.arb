@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-08-25 15:25:46.812094",
+    "@@last_modified": "2026-08-26 15:28:56.586142",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "پسند نہیں آیا",
     "constructUseHrdDesc": "سنا",
     "timesHeard": "{count, plural, =1{ایک بار سنا} other{{count} بار سنا}}",
-    "allSettings": "تمام ترتیبات"
+    "allSettings": "تمام ترتیبات",
+    "usedCorrectly": "{count, plural, =1{ایک بار صحیح استعمال کیا گیا} other{{count} بار صحیح استعمال کیا گیا}}",
+    "usedIncorrectly": "{count, plural, =1{ایک بار غلط استعمال کیا گیا} other{{count} بار غلط استعمال کیا گیا}}",
+    "usedWithoutScoring": "{count, plural, =1{ایک بار بغیر اسکور کے استعمال کیا گیا} other{{count} بار بغیر اسکور کے استعمال کیا گیا}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-08-25 15:25:46.538922",
+    "@@last_modified": "2026-08-26 15:28:56.052198",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "Мақбул надонистам",
     "constructUseHrdDesc": "Шунидам",
     "timesHeard": "{count, plural, =1{Як бор шунида шуд} other{{count} бор шунида шуд}}",
-    "allSettings": "Ҳамаи танзимот"
+    "allSettings": "Ҳамаи танзимот",
+    "usedCorrectly": "{count, plural, =1{Як маротиба дуруст истифода шуд} other{{count} маротиба дуруст истифода шуд}}",
+    "usedIncorrectly": "{count, plural, =1{Як маротиба нодуруст истифода шуд} other{{count} маротиба нодуруст истифода шуд}}",
+    "usedWithoutScoring": "{count, plural, =1{Як маротиба бе хол истифода шуд} other{{count} маротиба бе хол истифода шуд}}"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-25 15:25:46.940164",
+    "@@last_modified": "2026-08-26 15:28:56.710171",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7054,5 +7054,8 @@
     "rateActivityDisliked": "Không thích",
     "constructUseHrdDesc": "Đã nghe",
     "timesHeard": "{count, plural, =1{Đã nghe một lần} other{Đã nghe {count} lần}}",
-    "allSettings": "Tất cả cài đặt"
+    "allSettings": "Tất cả cài đặt",
+    "usedCorrectly": "{count, plural, =1{Đã dùng đúng một lần} other{Đã dùng đúng {count} lần}}",
+    "usedIncorrectly": "{count, plural, =1{Đã dùng sai một lần} other{Đã dùng sai {count} lần}}",
+    "usedWithoutScoring": "{count, plural, =1{Đã dùng một lần nhưng không tính điểm} other{Đã dùng {count} lần nhưng không tính điểm}}"
 }

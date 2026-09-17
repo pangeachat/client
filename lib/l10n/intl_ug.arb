@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-08-25 15:25:46.670577",
+    "@@last_modified": "2026-08-26 15:28:56.059014",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "ياقتۇرمىدىم",
     "constructUseHrdDesc": "ئاڭلىدى",
     "timesHeard": "{count, plural, =1{بىر قېتىم ئاڭلىدى} other{{count} قېتىم ئاڭلىدى}}",
-    "allSettings": "ھەممە تەڭشەكلەر"
+    "allSettings": "ھەممە تەڭشەكلەر",
+    "usedCorrectly": "{count, plural, =1{بىر قېتىم توغرا ئىشلەتكەن} other{{count} قېتىم توغرا ئىشلەتكەن}}",
+    "usedIncorrectly": "{count, plural, =1{بىر قېتىم خاتا ئىشلەتكەن} other{{count} قېتىم خاتا ئىشلەتكەن}}",
+    "usedWithoutScoring": "{count, plural, =1{بىر قېتىم نومۇرسىز ئىشلەتكەن} other{{count} قېتىم نومۇرسىز ئىشلەتكەن}}"
 }

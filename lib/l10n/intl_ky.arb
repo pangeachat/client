@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-08-25 15:25:44.042766",
+    "@@last_modified": "2026-08-26 15:28:51.359448",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "Жаккан жок",
     "constructUseHrdDesc": "Уктум",
     "timesHeard": "{count, plural, =1{Бир жолу угулду} other{{count} жолу угулду}}",
-    "allSettings": "Бардык жөндөөлөр"
+    "allSettings": "Бардык жөндөөлөр",
+    "usedCorrectly": "{count, plural, =1{Бир жолу туура колдонулду} other{{count} жолу туура колдонулду}}",
+    "usedIncorrectly": "{count, plural, =1{Бир жолу туура эмес колдонулду} other{{count} жолу туура эмес колдонулду}}",
+    "usedWithoutScoring": "{count, plural, =1{Бир жолу упайсыз колдонулду} other{{count} жолу упайсыз колдонулду}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-08-25 15:25:45.514507",
+    "@@last_modified": "2026-08-26 15:28:54.215044",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10734,5 +10734,8 @@
     "rateActivityDisliked": "Не понравилось",
     "constructUseHrdDesc": "Услышано",
     "timesHeard": "{count, plural, =1{Прослушано 1 раз} other{Прослушано {count} раз}}",
-    "allSettings": "Все настройки"
+    "allSettings": "Все настройки",
+    "usedCorrectly": "{count, plural, =1{Использовано правильно 1 раз} other{Использовано правильно {count} раз}}",
+    "usedIncorrectly": "{count, plural, =1{Использовано неправильно 1 раз} other{Использовано неправильно {count} раз}}",
+    "usedWithoutScoring": "{count, plural, =1{Использовано 1 раз без оценки} other{Использовано {count} раз без оценки}}"
 }

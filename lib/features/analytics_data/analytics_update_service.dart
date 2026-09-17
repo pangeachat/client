@@ -211,6 +211,7 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
 
     final data = await dataService.derivedData(update.targetLang.langCodeShort);
     MatrixState.pangeaController.userController.updateAnalyticsProfile(
+      languageCode: update.targetLang.langCodeShort,
       level: data.level,
     );
   }

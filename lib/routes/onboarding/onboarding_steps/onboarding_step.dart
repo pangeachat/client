@@ -25,15 +25,22 @@ abstract class OnboardingStep {
 
   String get stepDestination => PRoutes.chatsList;
 
-  /// The joined-course space id this step should land on, or null for every
-  /// step whose destination is a plain path ([stepDestination]). The token
-  /// destination needs the current workspace URI to build (a course opens via
-  /// `WorkspaceNav.openCourseSection`, not a path literal), which only the
-  /// call site (`OnboardingController`, with a `BuildContext`) has — so the
-  /// step exposes the space id and the caller builds the location, rather
-  /// than pushing a `Uri` parameter through every step. See
+  /// The joined-course space id onboarding lands on when it ends, or null when
+  /// no course was joined — then the plain path ([stepDestination]) is used.
+  /// The token destination needs the current workspace URI to build (a course
+  /// opens via `WorkspaceNav.openCourseSection`, not a path literal), which
+  /// only the call site (`OnboardingController`, with a `BuildContext`) has —
+  /// so the step exposes the space id and the caller builds the location,
+  /// rather than pushing a `Uri` parameter through every step.
+  ///
+  /// It reads the shared onboarding state rather than being answered per step,
+  /// because the controller asks whichever step ENDED the flow, and that isn't
+  /// always the joined-course page: a new user is inside the trial window, so
+  /// the trial page follows it, and answering null there landed a learner who
+  /// had just joined a course on the chat list (#8593). Any flow that joined a
+  /// course lands on that course, whatever step it ends on. See
   /// `routing.instructions.md`.
-  String? get joinedCourseSpaceId => null;
+  String? get joinedCourseSpaceId => state.joinedRoomId;
 
   String nextStepText(L10n l10n) => l10n.next;
 

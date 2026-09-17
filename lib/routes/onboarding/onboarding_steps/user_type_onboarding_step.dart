@@ -1,11 +1,10 @@
-import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/course_code_onboarding_step.dart';
-import 'package:fluffychat/routes/onboarding/onboarding_steps/joined_course_onboarding_step.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_steps/course_join_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/user_type_enum.dart';
 
-class UserTypeOnboardingStep extends OnboardingStep {
+class UserTypeOnboardingStep extends OnboardingStep with CourseJoinStep {
   UserTypeOnboardingStep({
     required super.client,
     required super.state,
@@ -27,37 +26,10 @@ class UserTypeOnboardingStep extends OnboardingStep {
     if (courseCode != null) {
       try {
         final roomId = await state.courseProvider.joinSpaceWithCode(courseCode);
-        final course = await state.courseProvider.getCourseByRoomId(roomId);
-
-        state.setJoinedRoomId(roomId);
-        state.setJoinedCoursePlan(course);
-
-        final targetLangCode = course.targetLanguage;
-        final baseLangCode = course.languageOfInstructions;
-        final cefrLevel = course.cefrLevel;
-
-        final targetLang = PLanguageStore.byLangCode(targetLangCode);
-        final baseLang = PLanguageStore.byLangCode(baseLangCode);
-
-        state.setTargetLanguage(targetLang);
-        state.setBaseLanguage(baseLang);
-        state.setLanguageLevel(cefrLevel);
-
-        await state.accountUpdater.updateProfile((profile) {
-          return profile.copyWith(
-            userSettings: profile.userSettings.copyWith(
-              targetLanguage: targetLangCode,
-              sourceLanguage: baseLangCode,
-              cefrLevel: cefrLevel,
-            ),
-          );
-        });
-
-        return JoinedCourseOnboardingStep(
-          client: client,
-          state: state,
-          maxRemainingSteps: 0,
-        );
+        // Only a failed JOIN falls through to the code step. A joined course
+        // whose quest doesn't resolve continues as a joined-course flow
+        // (#8593) — see joining-courses.instructions.md.
+        return await stepAfterJoin(roomId);
       } catch (e, s) {
         ErrorHandler.logError(
           e: e,

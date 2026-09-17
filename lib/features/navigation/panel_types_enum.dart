@@ -85,7 +85,9 @@ enum PanelTypesEnum {
 
   bool get isSettingsPanel => _settingsPanels.contains(this);
 
-  bool get _isAddCoursePanel => _addCoursePanels.contains(this);
+  /// The Courses hub family (the hub + its add-course flow pages) — the
+  /// Courses rail item's OWN surface, as opposed to a specific course's.
+  bool get isAddCoursePanel => _addCoursePanels.contains(this);
 
   bool get isCoursePanel => _coursePanels.contains(this);
 
@@ -130,7 +132,7 @@ enum PanelTypesEnum {
   // instead of toggling (#7537).
   AppSection? get cavitySection {
     if (isLeftChatList) return AppSection.chats;
-    if (_isAddCoursePanel) return AppSection.courses;
+    if (isAddCoursePanel) return AppSection.courses;
     return null;
   }
 

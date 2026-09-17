@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-08-25 15:25:44.533242",
+    "@@last_modified": "2026-08-26 15:28:52.322523",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "Не ми се допадна",
     "constructUseHrdDesc": "Слушнато",
     "timesHeard": "{count, plural, =1{Слушнато еднаш} other{Слушнато {count} пати}}",
-    "allSettings": "Сите поставки"
+    "allSettings": "Сите поставки",
+    "usedCorrectly": "{count, plural, =1{Употребено правилно еднаш} other{Употребено правилно {count} пати}}",
+    "usedIncorrectly": "{count, plural, =1{Употребено неправилно еднаш} other{Употребено неправилно {count} пати}}",
+    "usedWithoutScoring": "{count, plural, =1{Употребено еднаш без бодување} other{Употребено {count} пати без бодување}}"
 }

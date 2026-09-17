@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-25 15:25:42.455575",
+    "@@last_modified": "2026-08-26 15:28:48.425117",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9850,5 +9850,8 @@
     "rateActivityDisliked": "نپسندیدم",
     "constructUseHrdDesc": "شنیده شد",
     "timesHeard": "{count, plural, =1{یک بار شنیده شد} other{{count} بار شنیده شد}}",
-    "allSettings": "همه تنظیمات"
+    "allSettings": "همه تنظیمات",
+    "usedCorrectly": "{count, plural, =1{یک بار درست استفاده شد} other{{count} بار درست استفاده شد}}",
+    "usedIncorrectly": "{count, plural, =1{یک بار نادرست استفاده شد} other{{count} بار نادرست استفاده شد}}",
+    "usedWithoutScoring": "{count, plural, =1{یک بار بدون امتیازدهی استفاده شد} other{{count} بار بدون امتیازدهی استفاده شد}}"
 }

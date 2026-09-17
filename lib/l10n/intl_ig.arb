@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-08-25 15:25:43.547960",
+    "@@last_modified": "2026-08-26 15:28:50.490496",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "Ọ masịghị m",
     "constructUseHrdDesc": "Anụrụ",
     "timesHeard": "{count, plural, =1{Anụrụ otu ugboro} other{Anụrụ ugboro {count}}}",
-    "allSettings": "Ntọala niile"
+    "allSettings": "Ntọala niile",
+    "usedCorrectly": "{count, plural, =1{Ejiri ya nke ọma otu ugboro} other{Ejiri ya nke ọma ugboro {count}}}",
+    "usedIncorrectly": "{count, plural, =1{Ejiri ya na-ezighi ezi otu ugboro} other{Ejiri ya na-ezighi ezi ugboro {count}}}",
+    "usedWithoutScoring": "{count, plural, =1{Ejiri ya otu ugboro na-enweghị akara} other{Ejiri ya ugboro {count} na-enweghị akara}}"
 }

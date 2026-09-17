@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-25 15:25:43.065664",
+    "@@last_modified": "2026-08-26 15:28:49.717162",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "Pa t renmen li",
     "constructUseHrdDesc": "Tande",
     "timesHeard": "{count, plural, =1{Tande yon fwa} other{Tande {count} fwa}}",
-    "allSettings": "Tout paramèt"
+    "allSettings": "Tout paramèt",
+    "usedCorrectly": "{count, plural, =1{Itilize kòrèkteman yon fwa} other{Itilize kòrèkteman {count} fwa}}",
+    "usedIncorrectly": "{count, plural, =1{Itilize mal yon fwa} other{Itilize mal {count} fwa}}",
+    "usedWithoutScoring": "{count, plural, =1{Itilize yon fwa san nòt} other{Itilize {count} fwa san nòt}}"
 }

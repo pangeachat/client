@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-25 15:25:45.328461",
+    "@@last_modified": "2026-08-26 15:28:53.920082",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9847,5 +9847,8 @@
     "rateActivityDisliked": "Nie podobało mi się",
     "constructUseHrdDesc": "Usłyszane",
     "timesHeard": "{count, plural, =1{Usłyszano raz} other{Usłyszano {count} razy}}",
-    "allSettings": "Wszystkie ustawienia"
+    "allSettings": "Wszystkie ustawienia",
+    "usedCorrectly": "{count, plural, =1{Użyto poprawnie raz} other{Użyto poprawnie {count} razy}}",
+    "usedIncorrectly": "{count, plural, =1{Użyto niepoprawnie raz} other{Użyto niepoprawnie {count} razy}}",
+    "usedWithoutScoring": "{count, plural, =1{Użyto raz bez punktacji} other{Użyto {count} razy bez punktacji}}"
 }

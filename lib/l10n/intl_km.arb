@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-08-25 15:25:43.989574",
+    "@@last_modified": "2026-08-26 15:28:51.138239",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "មិនចូលចិត្ត",
     "constructUseHrdDesc": "បានឮ",
     "timesHeard": "{count, plural, =1{បានឮម្ដង} other{បានឮ {count} ដង}}",
-    "allSettings": "ការកំណត់ទាំងអស់"
+    "allSettings": "ការកំណត់ទាំងអស់",
+    "usedCorrectly": "{count, plural, =1{ប្រើបានត្រឹមត្រូវម្ដង} other{ប្រើបានត្រឹមត្រូវ {count} ដង}}",
+    "usedIncorrectly": "{count, plural, =1{ប្រើខុសម្ដង} other{ប្រើខុស {count} ដង}}",
+    "usedWithoutScoring": "{count, plural, =1{ប្រើម្ដងដោយគ្មានពិន្ទុ} other{ប្រើ {count} ដងដោយគ្មានពិន្ទុ}}"
 }

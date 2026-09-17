@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-08-25 15:25:45.272575",
+    "@@last_modified": "2026-08-26 15:28:53.909840",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "نه خوښ شو",
     "constructUseHrdDesc": "اوریدل شوی",
     "timesHeard": "{count, plural, =1{یو ځل اوریدل شوی} other{{count} ځله اوریدل شوی}}",
-    "allSettings": "ټول تنظیمات"
+    "allSettings": "ټول تنظیمات",
+    "usedCorrectly": "{count, plural, =1{یو ځل په سمه توګه کارول شوی} other{{count} ځله په سمه توګه کارول شوی}}",
+    "usedIncorrectly": "{count, plural, =1{یو ځل په غلطه توګه کارول شوی} other{{count} ځله په غلطه توګه کارول شوی}}",
+    "usedWithoutScoring": "{count, plural, =1{یو ځل له نمرې پرته کارول شوی} other{{count} ځله له نمرې پرته کارول شوی}}"
 }

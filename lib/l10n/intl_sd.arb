@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-08-25 15:25:45.707116",
+    "@@last_modified": "2026-08-26 15:28:54.968936",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "پسند نه آيو",
     "constructUseHrdDesc": "ٻڌو",
     "timesHeard": "{count, plural, =1{هڪ دفعو ٻڌو} other{{count} دفعا ٻڌو}}",
-    "allSettings": "سڀ سيٽنگون"
+    "allSettings": "سڀ سيٽنگون",
+    "usedCorrectly": "{count, plural, =1{هڪ ڀيرو صحيح استعمال ڪيو ويو} other{{count} ڀيرا صحيح استعمال ڪيو ويو}}",
+    "usedIncorrectly": "{count, plural, =1{هڪ ڀيرو غلط استعمال ڪيو ويو} other{{count} ڀيرا غلط استعمال ڪيو ويو}}",
+    "usedWithoutScoring": "{count, plural, =1{هڪ ڀيرو بغير اسڪور جي استعمال ڪيو ويو} other{{count} ڀيرا بغير اسڪور جي استعمال ڪيو ويو}}"
 }

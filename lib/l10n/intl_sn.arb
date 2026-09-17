@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-08-25 15:25:46.127988",
+    "@@last_modified": "2026-08-26 15:28:55.036229",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "Handina kuzvifarira",
     "constructUseHrdDesc": "Ndakanzwa",
     "timesHeard": "{count, plural, =1{Yanzwika kamwe chete} other{Yanzwika ka {count}}}",
-    "allSettings": "Zvirongwa zvese"
+    "allSettings": "Zvirongwa zvese",
+    "usedCorrectly": "{count, plural, =1{Yashandiswa nemazvo kamwe chete} other{Yashandiswa nemazvo {count} nguva}}",
+    "usedIncorrectly": "{count, plural, =1{Yashandiswa zvisirizvo kamwe chete} other{Yashandiswa zvisirizvo {count} nguva}}",
+    "usedWithoutScoring": "{count, plural, =1{Yashandiswa kamwe chete isina kuverengerwa} other{Yashandiswa {count} nguva isina kuverengerwa}}"
 }

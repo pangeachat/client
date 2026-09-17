@@ -1803,7 +1803,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-08-25 15:25:45.896060",
+    "@@last_modified": "2026-08-26 15:28:54.988775",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10707,5 +10707,8 @@
     "rateActivityDisliked": "Ni mi bilo všeč",
     "constructUseHrdDesc": "Slišal",
     "timesHeard": "{count, plural, =1{Slišano enkrat} other{Slišano {count} krat}}",
-    "allSettings": "Vse nastavitve"
+    "allSettings": "Vse nastavitve",
+    "usedCorrectly": "{count, plural, =1{Uporabljeno pravilno enkrat} other{Uporabljeno pravilno {count}-krat}}",
+    "usedIncorrectly": "{count, plural, =1{Uporabljeno nepravilno enkrat} other{Uporabljeno nepravilno {count}-krat}}",
+    "usedWithoutScoring": "{count, plural, =1{Uporabljeno enkrat brez točkovanja} other{Uporabljeno {count}-krat brez točkovanja}}"
 }

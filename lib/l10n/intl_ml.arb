@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-08-25 15:25:44.513038",
+    "@@last_modified": "2026-08-26 15:28:52.162245",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "ഇഷ്ടപ്പെട്ടില്ല",
     "constructUseHrdDesc": "കേട്ടു",
     "timesHeard": "{count, plural, =1{ഒരു തവണ കേട്ടു} other{{count} തവണ കേട്ടു}}",
-    "allSettings": "എല്ലാ ക്രമീകരണങ്ങളും"
+    "allSettings": "എല്ലാ ക്രമീകരണങ്ങളും",
+    "usedCorrectly": "{count, plural, =1{ഒരു തവണ ശരിയായി ഉപയോഗിച്ചു} other{{count} തവണ ശരിയായി ഉപയോഗിച്ചു}}",
+    "usedIncorrectly": "{count, plural, =1{ഒരു തവണ തെറ്റായി ഉപയോഗിച്ചു} other{{count} തവണ തെറ്റായി ഉപയോഗിച്ചു}}",
+    "usedWithoutScoring": "{count, plural, =1{സ്കോർ ചെയ്യാതെ ഒരു തവണ ഉപയോഗിച്ചു} other{സ്കോർ ചെയ്യാതെ {count} തവണ ഉപയോഗിച്ചു}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-08-25 15:25:46.952835",
+    "@@last_modified": "2026-08-26 15:28:57.035883",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "Andiyithandanga",
     "constructUseHrdDesc": "Kuviwe",
     "timesHeard": "{count, plural, =1{Kuviwe kanye} other{Kuviwe {count} izihlandlo}}",
-    "allSettings": "Zonke izicwangciso"
+    "allSettings": "Zonke izicwangciso",
+    "usedCorrectly": "{count, plural, =1{Isetyenziswe ngokuchanekileyo kube kanye} other{Isetyenziswe ngokuchanekileyo {count} amaxesha}}",
+    "usedIncorrectly": "{count, plural, =1{Isetyenziswe ngokungachanekanga kube kanye} other{Isetyenziswe ngokungachanekanga {count} amaxesha}}",
+    "usedWithoutScoring": "{count, plural, =1{Isetyenziswe kube kanye ngaphandle kokufumana amanqaku} other{Isetyenziswe {count} amaxesha ngaphandle kokufumana amanqaku}}"
 }

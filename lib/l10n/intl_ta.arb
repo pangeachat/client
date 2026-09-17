@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-25 15:25:46.418968",
+    "@@last_modified": "2026-08-26 15:28:55.986133",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9854,5 +9854,8 @@
     "rateActivityDisliked": "பிடிக்கவில்லை",
     "constructUseHrdDesc": "கேட்டது",
     "timesHeard": "{count, plural, =1{ஒருமுறை கேட்டது} other{{count} முறை கேட்டது}}",
-    "allSettings": "அனைத்து அமைப்புகளும்"
+    "allSettings": "அனைத்து அமைப்புகளும்",
+    "usedCorrectly": "{count, plural, =1{ஒரு முறை சரியாகப் பயன்படுத்தப்பட்டது} other{{count} முறை சரியாகப் பயன்படுத்தப்பட்டது}}",
+    "usedIncorrectly": "{count, plural, =1{ஒரு முறை தவறாகப் பயன்படுத்தப்பட்டது} other{{count} முறை தவறாகப் பயன்படுத்தப்பட்டது}}",
+    "usedWithoutScoring": "{count, plural, =1{மதிப்பெண் இல்லாமல் ஒரு முறை பயன்படுத்தப்பட்டது} other{மதிப்பெண் இல்லாமல் {count} முறை பயன்படுத்தப்பட்டது}}"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-25 15:25:45.522007",
+    "@@last_modified": "2026-08-26 15:28:53.950052",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10494,5 +10494,8 @@
     "rateActivityDisliked": "Nu mi-a plăcut",
     "constructUseHrdDesc": "Auzit",
     "timesHeard": "{count, plural, =1{Ascultat o dată} other{Ascultat de {count} ori}}",
-    "allSettings": "Toate setările"
+    "allSettings": "Toate setările",
+    "usedCorrectly": "{count, plural, =1{Folosit corect o dată} other{Folosit corect de {count} ori}}",
+    "usedIncorrectly": "{count, plural, =1{Folosit incorect o dată} other{Folosit incorect de {count} ori}}",
+    "usedWithoutScoring": "{count, plural, =1{Folosit o dată fără punctaj} other{Folosit de {count} ori fără punctaj}}"
 }

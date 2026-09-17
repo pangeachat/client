@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-25 15:25:41.447719",
+    "@@last_modified": "2026-08-26 15:28:46.683386",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10068,5 +10068,8 @@
     "rateActivityDisliked": "لم يعجبني",
     "constructUseHrdDesc": "سمعت",
     "timesHeard": "{count, plural, =1{سمعت مرة واحدة} other{سمعت {count} مرات}}",
-    "allSettings": "جميع الإعدادات"
+    "allSettings": "جميع الإعدادات",
+    "usedCorrectly": "{count, plural, =1{استخدم بشكل صحيح مرة واحدة} other{استخدم بشكل صحيح {count} مرات}}",
+    "usedIncorrectly": "{count, plural, =1{استخدم بشكل غير صحيح مرة واحدة} other{استخدم بشكل غير صحيح {count} مرات}}",
+    "usedWithoutScoring": "{count, plural, =1{استخدم مرة واحدة بدون تسجيل نقاط} other{استخدم {count} مرات بدون تسجيل نقاط}}"
 }

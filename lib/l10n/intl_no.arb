@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-08-25 15:25:45.130067",
+    "@@last_modified": "2026-08-26 15:28:53.134074",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "Likte det ikke",
     "constructUseHrdDesc": "Hørt",
     "timesHeard": "{count, plural, =1{Hørt én gang} other{Hørt {count} ganger}}",
-    "allSettings": "Alle innstillinger"
+    "allSettings": "Alle innstillinger",
+    "usedCorrectly": "{count, plural, =1{Brukt riktig én gang} other{Brukt riktig {count} ganger}}",
+    "usedIncorrectly": "{count, plural, =1{Brukt feil én gang} other{Brukt feil {count} ganger}}",
+    "usedWithoutScoring": "{count, plural, =1{Brukt én gang uten poeng} other{Brukt {count} ganger uten poeng}}"
 }

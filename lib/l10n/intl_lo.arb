@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-08-25 15:25:44.372035",
+    "@@last_modified": "2026-08-26 15:28:52.005317",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "ບໍ່ມັກ",
     "constructUseHrdDesc": "ໄດ້ຍິນ",
     "timesHeard": "{count, plural, =1{ໄດ້ຍິນໜຶ່ງເທື່ອ} other{ໄດ້ຍິນ {count} ເທື່ອ}}",
-    "allSettings": "ການຕັ້ງຄ່າທັງໝົດ"
+    "allSettings": "ການຕັ້ງຄ່າທັງໝົດ",
+    "usedCorrectly": "{count, plural, =1{ໃຊ້ຖືກຕ້ອງໜຶ່ງຄັ້ງ} other{ໃຊ້ຖືກຕ້ອງ {count} ຄັ້ງ}}",
+    "usedIncorrectly": "{count, plural, =1{ໃຊ້ຜິດໜຶ່ງຄັ້ງ} other{ໃຊ້ຜິດ {count} ຄັ້ງ}}",
+    "usedWithoutScoring": "{count, plural, =1{ໃຊ້ໜຶ່ງຄັ້ງໂດຍບໍ່ມີຄະແນນ} other{ໃຊ້ {count} ຄັ້ງໂດຍບໍ່ມີຄະແນນ}}"
 }

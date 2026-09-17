@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-08-25 15:25:44.143392",
+    "@@last_modified": "2026-08-26 15:28:51.445378",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "پەسەندنەکرا",
     "constructUseHrdDesc": "بیستراوە",
     "timesHeard": "{count, plural, =1{یەکجار بیستراوە} other{{count} جار بیستراوە}}",
-    "allSettings": "هەموو ڕێکخستنەکان"
+    "allSettings": "هەموو ڕێکخستنەکان",
+    "usedCorrectly": "{count, plural, =1{یەک جار بە دروستی بەکار هات} other{ {count} جار بە دروستی بەکار هات}}",
+    "usedIncorrectly": "{count, plural, =1{یەک جار بە هەڵە بەکار هات} other{ {count} جار بە هەڵە بەکار هات}}",
+    "usedWithoutScoring": "{count, plural, =1{یەک جار بەبێ نمرەدان بەکار هات} other{ {count} جار بەبێ نمرەدان بەکار هات}}"
 }

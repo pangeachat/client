@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-08-25 15:25:42.478212",
+    "@@last_modified": "2026-08-26 15:28:48.646824",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10117,5 +10117,8 @@
     "rateActivityDisliked": "Je n'ai pas aimé",
     "constructUseHrdDesc": "Entendu",
     "timesHeard": "{count, plural, =1{Écouté une fois} other{Écouté {count} fois}}",
-    "allSettings": "Tous les paramètres"
+    "allSettings": "Tous les paramètres",
+    "usedCorrectly": "{count, plural, =1{Utilisé correctement une fois} other{Utilisé correctement {count} fois}}",
+    "usedIncorrectly": "{count, plural, =1{Utilisé incorrectement une fois} other{Utilisé incorrectement {count} fois}}",
+    "usedWithoutScoring": "{count, plural, =1{Utilisé une fois sans marquer de point} other{Utilisé {count} fois sans marquer de point}}"
 }

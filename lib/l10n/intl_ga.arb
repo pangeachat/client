@@ -3564,7 +3564,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-08-25 15:25:42.637296",
+    "@@last_modified": "2026-08-26 15:28:48.974751",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9773,5 +9773,8 @@
     "rateActivityDisliked": "Níor thaitin sé liom",
     "constructUseHrdDesc": "Chuala",
     "timesHeard": "{count, plural, =1{Éisteacht aon uair amháin} other{Éisteacht {count} uair}}",
-    "allSettings": "Gach socrú"
+    "allSettings": "Gach socrú",
+    "usedCorrectly": "{count, plural, =1{Úsáidte i gceart uair amháin} other{Úsáidte i gceart {count} uair}}",
+    "usedIncorrectly": "{count, plural, =1{Úsáidte go mícheart uair amháin} other{Úsáidte go mícheart {count} uair}}",
+    "usedWithoutScoring": "{count, plural, =1{Úsáidte uair amháin gan scór} other{Úsáidte {count} uair gan scór}}"
 }

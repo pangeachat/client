@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-08-25 15:25:44.681395",
+    "@@last_modified": "2026-08-26 15:28:53.199476",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "পাম্বদে",
     "constructUseHrdDesc": "তাঞ্জা",
     "timesHeard": "{count, plural, =1{ꯑꯣꯟ ꯑꯃꯥ ꯇꯥꯈ꯭ꯔꯦ} other{{count} ꯑꯣꯟ ꯇꯥꯈ꯭ꯔꯦ}}",
-    "allSettings": "सेटिंग्स पीबी"
+    "allSettings": "सेटिंग्स पीबी",
+    "usedCorrectly": "{count, plural, =1{ꯑꯣꯟꯗꯥ ꯃꯥꯟꯅꯥ ꯁꯤꯖꯤꯟꯅꯈ꯭ꯔꯦ} other{{count} ꯑꯣꯟꯗꯥ ꯃꯥꯟꯅꯥ ꯁꯤꯖꯤꯟꯅꯈ꯭ꯔꯦ}}",
+    "usedIncorrectly": "{count, plural, =1{ꯑꯣꯟꯗꯥ ꯃꯥꯟꯅꯗꯅꯥ ꯁꯤꯖꯤꯟꯅꯈ꯭ꯔꯦ} other{{count} ꯑꯣꯟꯗꯥ ꯃꯥꯟꯅꯗꯅꯥ ꯁꯤꯖꯤꯟꯅꯈ꯭ꯔꯦ}}",
+    "usedWithoutScoring": "{count, plural, =1{ꯁ꯭ꯀꯣꯔ ꯇꯧꯗꯅꯥ ꯑꯣꯟꯗꯥ ꯁꯤꯖꯤꯟꯅꯈ꯭ꯔꯦ} other{ꯁ꯭ꯀꯣꯔ ꯇꯧꯗꯅꯥ {count} ꯑꯣꯟꯗꯥ ꯁꯤꯖꯤꯟꯅꯈ꯭ꯔꯦ}}"
 }

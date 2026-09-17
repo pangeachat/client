@@ -1,3 +1,6 @@
+import 'package:matrix/matrix.dart';
+
+import 'package:fluffychat/routes/onboarding/onboarding_state_controller.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/free_trial_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/onboarding_step.dart';
 
@@ -8,15 +11,17 @@ class JoinedCourseOnboardingStep extends OnboardingStep {
     required super.maxRemainingSteps,
   });
 
-  // world_v2: a joined course opens as a token-native `course` panel
-  // (`WorkspaceNav.openCourseSection`), not a path — building that needs the
-  // current workspace URI, which only `OnboardingController` (with a
-  // `BuildContext`) has. This step exposes the space id via
-  // [joinedCourseSpaceId]; the base [stepDestination] (the chat list) is the
-  // fallback the controller uses only when no space id is set. See
-  // `routing.instructions.md`.
-  @override
-  String? get joinedCourseSpaceId => state.joinedRoomId;
+  /// The trial page follows for a user still inside the trial window, so this
+  /// page is not always the last step — [maxRemainingSteps] has to say so, or
+  /// its button reads "Let's go" with a page still to come.
+  static JoinedCourseOnboardingStep next({
+    required Client client,
+    required OnboardingStateController state,
+  }) => JoinedCourseOnboardingStep(
+    client: client,
+    state: state,
+    maxRemainingSteps: state.trialInfoProvider.shouldShowTrialPage ? 1 : 0,
+  );
 
   @override
   Future<OnboardingStep?> execute() async =>
@@ -24,7 +29,7 @@ class JoinedCourseOnboardingStep extends OnboardingStep {
       ? FreeTrialOnboardingStep(
           client: client,
           state: state,
-          maxRemainingSteps: maxRemainingSteps,
+          maxRemainingSteps: 0,
         )
       : null;
 
@@ -33,7 +38,7 @@ class JoinedCourseOnboardingStep extends OnboardingStep {
       ? FreeTrialOnboardingStep(
           client: client,
           state: state,
-          maxRemainingSteps: maxRemainingSteps,
+          maxRemainingSteps: 0,
         )
       : null;
 }

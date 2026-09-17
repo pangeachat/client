@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-25 15:25:41.908382",
+    "@@last_modified": "2026-08-26 15:28:47.601252",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9889,5 +9889,8 @@
     "rateActivityDisliked": "No m'ha agradat",
     "constructUseHrdDesc": "Sentit",
     "timesHeard": "{count, plural, =1{Sentida una vegada} other{Sentida {count} vegades}}",
-    "allSettings": "Tots els ajustos"
+    "allSettings": "Tots els ajustos",
+    "usedCorrectly": "{count, plural, =1{Usat correctament una vegada} other{Usat correctament {count} vegades}}",
+    "usedIncorrectly": "{count, plural, =1{Usat incorrectament una vegada} other{Usat incorrectament {count} vegades}}",
+    "usedWithoutScoring": "{count, plural, =1{Usat una vegada sense puntuació} other{Usat {count} vegades sense puntuació}}"
 }

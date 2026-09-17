@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-25 15:25:44.165419",
+    "@@last_modified": "2026-08-26 15:28:51.303650",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "Non placuit",
     "constructUseHrdDesc": "Audivit",
     "timesHeard": "{count, plural, =1{Semel auditum} other{Auditum {count} vicibus}}",
-    "allSettings": "Omnia optiones"
+    "allSettings": "Omnia optiones",
+    "usedCorrectly": "{count, plural, =1{Semel recte usus} other{Recte usus {count} vicibus}}",
+    "usedIncorrectly": "{count, plural, =1{Semel perperam usus} other{Perperam usus {count} vicibus}}",
+    "usedWithoutScoring": "{count, plural, =1{Semel usus sine punctis} other{Usus {count} vicibus sine punctis}}"
 }
