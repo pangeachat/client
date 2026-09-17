@@ -3563,7 +3563,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-09-16 10:14:09.998005",
+    "@@last_modified": "2026-09-17 11:52:05.381386",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9947,5 +9947,7 @@
     "orchestratorFeedbackNoAwards": "Níor bronnadh aon réaltaí sa seal seo, mar sin níl aon rud le ceistiú anseo.",
     "orchestratorFeedbackCommentRequired": "Cuir trácht leis ionas go mbeidh a fhios againn cad atá le socrú",
     "orchestratorFeedbackSubmit": "Seol",
-    "orchestratorFeedbackThanks": "Bratach curtha. Go raibh maith agat!"
+    "orchestratorFeedbackThanks": "Bratach curtha. Go raibh maith agat!",
+    "analyticsSubscriptionWarningTitle": "Níl do dhul chun cinn á rianú",
+    "analyticsSubscriptionWarningBody": "Gan síntiús, ní bhaineann do theachtaireachtaí XP amach ná ní chuireann siad focail agus gramadach nua leis."
 }

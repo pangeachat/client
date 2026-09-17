@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-09-16 10:14:22.344048",
+    "@@last_modified": "2026-09-17 11:52:11.278117",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "Giliran ieu teu meunang béntang, jadi teu aya nu tiasa ditaroskeun.",
     "orchestratorFeedbackCommentRequired": "Tambihkeun koméntar supados urang terang naon nu kedah dilereskeun",
     "orchestratorFeedbackSubmit": "Kirim",
-    "orchestratorFeedbackThanks": "Dilaporkeun. Hatur nuhun!"
+    "orchestratorFeedbackThanks": "Dilaporkeun. Hatur nuhun!",
+    "analyticsSubscriptionWarningTitle": "Kamajuan anjeun teu dilacak",
+    "analyticsSubscriptionWarningBody": "Tanpa langganan, pesen anjeun moal nampi XP atanapi nambihan kecap sareng tata basa énggal."
 }

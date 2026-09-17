@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-09-16 10:14:13.393503",
+    "@@last_modified": "2026-09-17 11:52:06.866267",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "Giliran iki ora menehi lintang, dadi ora ana sing perlu ditakokake ing kene.",
     "orchestratorFeedbackCommentRequired": "Tambahna komentar supaya kita ngerti apa sing kudu didandani",
     "orchestratorFeedbackSubmit": "Kirim",
-    "orchestratorFeedbackThanks": "Wis ditandhani. Matur nuwun!"
+    "orchestratorFeedbackThanks": "Wis ditandhani. Matur nuwun!",
+    "analyticsSubscriptionWarningTitle": "Kemajuanmu ora dilacak",
+    "analyticsSubscriptionWarningBody": "Tanpa langganan, pesenmu ora entuk XP utawa nambah tembung lan tata basa anyar."
 }

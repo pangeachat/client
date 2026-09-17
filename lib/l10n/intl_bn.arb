@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-16 10:14:05.758205",
+    "@@last_modified": "2026-09-17 11:52:03.128375",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10564,5 +10564,7 @@
     "orchestratorFeedbackNoAwards": "এই রাউন্ডে কোনো তারকা পুরস্কার দেওয়া হয়নি, তাই এখানে প্রশ্ন করার মতো কিছু নেই।",
     "orchestratorFeedbackCommentRequired": "একটি মন্তব্য যোগ করুন যাতে আমরা জানতে পারি কী ঠিক করতে হবে",
     "orchestratorFeedbackSubmit": "পাঠান",
-    "orchestratorFeedbackThanks": "ফ্ল্যাগ করা হয়েছে। ধন্যবাদ!"
+    "orchestratorFeedbackThanks": "ফ্ল্যাগ করা হয়েছে। ধন্যবাদ!",
+    "analyticsSubscriptionWarningTitle": "আপনার অগ্রগতি ট্র্যাক করা হচ্ছে না",
+    "analyticsSubscriptionWarningBody": "সাবস্ক্রিপশন ছাড়া, আপনার বার্তাগুলি XP অর্জন করে না বা নতুন শব্দ ও ব্যাকরণ যোগ করে না।"
 }

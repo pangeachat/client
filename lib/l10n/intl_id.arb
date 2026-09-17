@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-16 10:14:12.018121",
+    "@@last_modified": "2026-09-17 11:52:06.103608",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10009,5 +10009,7 @@
     "orchestratorFeedbackNoAwards": "Giliran ini tidak memberikan bintang, jadi tidak ada yang perlu dipertanyakan di sini.",
     "orchestratorFeedbackCommentRequired": "Tambahkan komentar agar kami tahu apa yang harus diperbaiki",
     "orchestratorFeedbackSubmit": "Kirim",
-    "orchestratorFeedbackThanks": "Ditandai. Terima kasih!"
+    "orchestratorFeedbackThanks": "Ditandai. Terima kasih!",
+    "analyticsSubscriptionWarningTitle": "Kemajuan Anda tidak dilacak",
+    "analyticsSubscriptionWarningBody": "Tanpa langganan, pesan Anda tidak mendapatkan XP atau menambahkan kata dan tata bahasa baru."
 }

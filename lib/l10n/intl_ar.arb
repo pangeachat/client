@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-09-16 10:14:05.789854",
+    "@@last_modified": "2026-09-17 11:52:03.151049",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10242,5 +10242,7 @@
     "orchestratorFeedbackNoAwards": "لم تمنح هذه الجولة أي نجوم، لذا لا يوجد شيء للاستفسار عنه هنا.",
     "orchestratorFeedbackCommentRequired": "أضف تعليقًا حتى نعرف ما يجب إصلاحه",
     "orchestratorFeedbackSubmit": "إرسال",
-    "orchestratorFeedbackThanks": "تم الإبلاغ. شكرًا!"
+    "orchestratorFeedbackThanks": "تم الإبلاغ. شكرًا!",
+    "analyticsSubscriptionWarningTitle": "لا يتم تتبع تقدمك",
+    "analyticsSubscriptionWarningBody": "بدون اشتراك، لا تكسب رسائلك نقاط خبرة أو تضيف كلمات وقواعد جديدة."
 }

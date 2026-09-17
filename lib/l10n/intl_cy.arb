@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-09-16 10:14:08.325654",
+    "@@last_modified": "2026-09-17 11:52:04.017146",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "Ni ddyfarnodd y tro hwn unrhyw sêr, felly does dim byd i'w gwestiynu yma.",
     "orchestratorFeedbackCommentRequired": "Ychwanegwch sylw fel ein bod yn gwybod beth i'w drwsio",
     "orchestratorFeedbackSubmit": "Anfon",
-    "orchestratorFeedbackThanks": "Wedi'i fflagio. Diolch!"
+    "orchestratorFeedbackThanks": "Wedi'i fflagio. Diolch!",
+    "analyticsSubscriptionWarningTitle": "Nid yw eich cynnydd yn cael ei olrhain",
+    "analyticsSubscriptionWarningBody": "Heb danysgrifiad, nid yw eich negeseuon yn ennill XP nac yn ychwanegu geiriau a gramadeg newydd."
 }

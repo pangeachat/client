@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-16 10:14:25.105247",
+    "@@last_modified": "2026-09-17 11:52:12.817746",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10042,5 +10042,7 @@
     "orchestratorFeedbackNoAwards": "此回合沒有頒發星級，因此這裡沒有可質疑的內容。",
     "orchestratorFeedbackCommentRequired": "請新增評論，以便我們知道要修正什麼",
     "orchestratorFeedbackSubmit": "傳送",
-    "orchestratorFeedbackThanks": "已舉報。謝謝！"
+    "orchestratorFeedbackThanks": "已舉報。謝謝！",
+    "analyticsSubscriptionWarningTitle": "您的進度未被追蹤",
+    "analyticsSubscriptionWarningBody": "如果沒有訂閱，您的訊息將無法獲得經驗值，也無法新增單字和文法。"
 }

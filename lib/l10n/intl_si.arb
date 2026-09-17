@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-09-16 10:14:21.417022",
+    "@@last_modified": "2026-09-17 11:52:10.430465",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "මෙම වාරයේ තරු ප්‍රදානය නොකළ නිසා, මෙහි ප්‍රශ්න කිරීමට කිසිවක් නැත.",
     "orchestratorFeedbackCommentRequired": "අපට නිවැරදි කළ යුතු දේ දැන ගැනීමට අදහසක් එක් කරන්න",
     "orchestratorFeedbackSubmit": "යවන්න",
-    "orchestratorFeedbackThanks": "සලකුණු කරන ලදී. ස්තූතියි!"
+    "orchestratorFeedbackThanks": "සලකුණු කරන ලදී. ස්තූතියි!",
+    "analyticsSubscriptionWarningTitle": "ඔබගේ ප්‍රගතිය නිරීක්ෂණය නොවේ",
+    "analyticsSubscriptionWarningBody": "දායකත්වයක් නොමැතිව, ඔබගේ පණිවිඩ XP උපයන්නේ නැත, නැතහොත් නව වචන සහ ව්‍යාකරණ එකතු නොකරයි."
 }

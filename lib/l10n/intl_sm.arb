@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-09-16 10:14:21.542265",
+    "@@last_modified": "2026-09-17 11:52:11.346462",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "E leai ni fetu na maua i lenei taʻamilosaga, o lea e leai se mea e fesiligia iinei.",
     "orchestratorFeedbackCommentRequired": "Faʻaopoopo se faʻamatalaga ina ia matou iloa le mea e faʻaleleia",
     "orchestratorFeedbackSubmit": "Auina atu",
-    "orchestratorFeedbackThanks": "Ua faailogaina. Faafetai!"
+    "orchestratorFeedbackThanks": "Ua faailogaina. Faafetai!",
+    "analyticsSubscriptionWarningTitle": "E le o siakiina lou alualu i luma",
+    "analyticsSubscriptionWarningBody": "A aunoa ma se saofaga, e le maua e au feʻau ni XP pe faʻaopoopoina ni upu fou ma le kalama."
 }

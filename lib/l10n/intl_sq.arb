@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-09-16 10:14:21.830951",
+    "@@last_modified": "2026-09-17 11:52:10.921099",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "Kjo kthesë nuk dha asnjë yll, kështu që nuk ka asgjë për të vënë në dyshim këtu.",
     "orchestratorFeedbackCommentRequired": "Shtoni një koment që të dimë çfarë të rregullojmë",
     "orchestratorFeedbackSubmit": "Dërgo",
-    "orchestratorFeedbackThanks": "U raportua. Faleminderit!"
+    "orchestratorFeedbackThanks": "U raportua. Faleminderit!",
+    "analyticsSubscriptionWarningTitle": "Progresin tuaj nuk po e ndjekim",
+    "analyticsSubscriptionWarningBody": "Pa një abonim, mesazhet tuaja nuk fitojnë XP ose nuk shtojnë fjalë dhe gramatikë të reja."
 }

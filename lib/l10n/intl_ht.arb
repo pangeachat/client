@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-09-16 10:14:12.166872",
+    "@@last_modified": "2026-09-17 11:52:06.186429",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "Pa gen etwal ki te bay nan tou sa, kidonk pa gen anyen pou kesyone la a.",
     "orchestratorFeedbackCommentRequired": "Ajoute yon kòmantè pou nou ka konnen kisa pou nou korije",
     "orchestratorFeedbackSubmit": "Voye",
-    "orchestratorFeedbackThanks": "Signale. Mèsi!"
+    "orchestratorFeedbackThanks": "Signale. Mèsi!",
+    "analyticsSubscriptionWarningTitle": "Pwogrè ou pa anrejistre",
+    "analyticsSubscriptionWarningBody": "San yon abònman, mesaj ou yo pa touche XP oswa ajoute nouvo mo ak gramè."
 }

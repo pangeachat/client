@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-09-16 10:14:23.866861",
+    "@@last_modified": "2026-09-17 11:52:11.923109",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9936,5 +9936,7 @@
     "orchestratorFeedbackNoAwards": "Цей хід не приніс зірок, тому тут немає про що повідомляти.",
     "orchestratorFeedbackCommentRequired": "Додайте коментар, щоб ми знали, що виправити",
     "orchestratorFeedbackSubmit": "Надіслати",
-    "orchestratorFeedbackThanks": "Повідомлено. Дякуємо!"
+    "orchestratorFeedbackThanks": "Повідомлено. Дякуємо!",
+    "analyticsSubscriptionWarningTitle": "Ваш прогрес не відстежується",
+    "analyticsSubscriptionWarningBody": "Без підписки ваші повідомлення не приносять XP і не додають нових слів та граматики."
 }

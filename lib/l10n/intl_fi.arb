@@ -3536,7 +3536,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-09-16 10:14:09.128775",
+    "@@last_modified": "2026-09-17 11:52:04.697186",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9973,5 +9973,7 @@
     "orchestratorFeedbackNoAwards": "Tällä kierroksella ei jaettu tähtiä, joten tässä ei ole mitään kyseenalaistettavaa.",
     "orchestratorFeedbackCommentRequired": "Lisää kommentti, jotta tiedämme mitä korjata",
     "orchestratorFeedbackSubmit": "Lähetä",
-    "orchestratorFeedbackThanks": "Merkitty. Kiitos!"
+    "orchestratorFeedbackThanks": "Merkitty. Kiitos!",
+    "analyticsSubscriptionWarningTitle": "Edistymistäsi ei seurata",
+    "analyticsSubscriptionWarningBody": "Ilman tilausta viestisi eivät kerrytä XP:tä tai lisää uusia sanoja ja kielioppia."
 }

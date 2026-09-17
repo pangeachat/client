@@ -3548,7 +3548,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-09-16 10:14:06.079371",
+    "@@last_modified": "2026-09-17 11:52:03.147308",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9950,5 +9950,7 @@
     "orchestratorFeedbackNoAwards": "У гэтым ходзе не было ўзнагароджана зорак, таму тут няма чаго ставіць пад сумнеў.",
     "orchestratorFeedbackCommentRequired": "Дадайце каментарый, каб мы ведалі, што выправіць",
     "orchestratorFeedbackSubmit": "Адправіць",
-    "orchestratorFeedbackThanks": "Пазначана. Дзякуй!"
+    "orchestratorFeedbackThanks": "Пазначана. Дзякуй!",
+    "analyticsSubscriptionWarningTitle": "Ваш прагрэс не адсочваецца",
+    "analyticsSubscriptionWarningBody": "Без падпіскі вашы паведамленні не прыносяць XP і не дадаюць новых слоў і граматыкі."
 }

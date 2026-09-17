@@ -3093,7 +3093,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-09-16 10:14:10.596335",
+    "@@last_modified": "2026-09-17 11:52:05.436679",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10568,5 +10568,7 @@
     "orchestratorFeedbackNoAwards": "इस बारी में कोई स्टार नहीं दिया गया, इसलिए यहाँ सवाल उठाने के लिए कुछ भी नहीं है।",
     "orchestratorFeedbackCommentRequired": "एक टिप्पणी जोड़ें ताकि हमें पता चले कि क्या ठीक करना है",
     "orchestratorFeedbackSubmit": "भेजें",
-    "orchestratorFeedbackThanks": "फ़्लैग किया गया। धन्यवाद!"
+    "orchestratorFeedbackThanks": "फ़्लैग किया गया। धन्यवाद!",
+    "analyticsSubscriptionWarningTitle": "आपकी प्रगति ट्रैक नहीं की जा रही है",
+    "analyticsSubscriptionWarningBody": "सदस्यता के बिना, आपके संदेशों से XP नहीं मिलता है और न ही नए शब्द और व्याकरण जुड़ते हैं।"
 }

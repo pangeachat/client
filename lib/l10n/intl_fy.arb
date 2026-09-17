@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-09-16 10:14:09.707396",
+    "@@last_modified": "2026-09-17 11:52:04.851311",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "Dizze beurt hat gjin stjerren takend, dus der is hjir neat te befreegjen.",
     "orchestratorFeedbackCommentRequired": "Foegje in opmerking ta sadat wy witte wat wy reparearje moatte",
     "orchestratorFeedbackSubmit": "Ferstjoere",
-    "orchestratorFeedbackThanks": "Markearre. Tank!"
+    "orchestratorFeedbackThanks": "Markearre. Tank!",
+    "analyticsSubscriptionWarningTitle": "Jo foarútgong wurdt net folge",
+    "analyticsSubscriptionWarningBody": "Sûnder abonnemint fertsjinje jo berjochten gjin XP en foegje se gjin nije wurden en grammatika ta."
 }

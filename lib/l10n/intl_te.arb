@@ -1324,7 +1324,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-09-16 10:14:23.116139",
+    "@@last_modified": "2026-09-17 11:52:11.492554",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10886,5 +10886,7 @@
     "orchestratorFeedbackNoAwards": "ఈ మలుపులో నక్షత్రాలు ఇవ్వబడలేదు, కాబట్టి ఇక్కడ ప్రశ్నించడానికి ఏమీ లేదు.",
     "orchestratorFeedbackCommentRequired": "మేము ఏమి సరిదిద్దాలో తెలుసుకోవడానికి ఒక వ్యాఖ్యను జోడించండి",
     "orchestratorFeedbackSubmit": "పంపు",
-    "orchestratorFeedbackThanks": "ఫ్లాగ్ చేయబడింది. ధన్యవాదాలు!"
+    "orchestratorFeedbackThanks": "ఫ్లాగ్ చేయబడింది. ధన్యవాదాలు!",
+    "analyticsSubscriptionWarningTitle": "మీ పురోగతి ట్రాక్ చేయబడటం లేదు",
+    "analyticsSubscriptionWarningBody": "సబ్‌స్క్రిప్షన్ లేకుండా, మీ సందేశాలు XPని సంపాదించవు లేదా కొత్త పదాలు మరియు వ్యాకరణాన్ని జోడించవు."
 }

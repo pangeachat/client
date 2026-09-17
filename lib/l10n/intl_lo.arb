@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-09-16 10:14:15.757523",
+    "@@last_modified": "2026-09-17 11:52:08.008224",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "ຮອບນີ້ບໍ່ມີດາວທີ່ໄດ້ຮັບລາງວັນ, ສະນັ້ນບໍ່ມີຫຍັງທີ່ຈະຕ້ອງຕັ້ງຄຳຖາມຢູ່ບ່ອນນີ້.",
     "orchestratorFeedbackCommentRequired": "ເພີ່ມຄຳຄິດເຫັນເພື່ອໃຫ້ພວກເຮົາຮູ້ວ່າຈະແກ້ໄຂຫຍັງ",
     "orchestratorFeedbackSubmit": "ສົ່ງ",
-    "orchestratorFeedbackThanks": "ຕິດທຸງແລ້ວ. ຂອບໃຈ!"
+    "orchestratorFeedbackThanks": "ຕິດທຸງແລ້ວ. ຂອບໃຈ!",
+    "analyticsSubscriptionWarningTitle": "ຄວາມຄືບໜ້າຂອງທ່ານບໍ່ໄດ້ຖືກຕິດຕາມ",
+    "analyticsSubscriptionWarningBody": "ຖ້າບໍ່ມີການສະໝັກໃຊ້, ຂໍ້ຄວາມຂອງທ່ານຈະບໍ່ໄດ້ຮັບ XP ຫຼືເພີ່ມຄຳສັບ ແລະ ໄວຍາກອນໃໝ່."
 }

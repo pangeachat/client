@@ -2559,7 +2559,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-09-16 10:14:19.064493",
+    "@@last_modified": "2026-09-17 11:52:10.316226",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10853,5 +10853,7 @@
     "orchestratorFeedbackNoAwards": "Esta vez não atribuiu estrelas, por isso não há nada a questionar aqui.",
     "orchestratorFeedbackCommentRequired": "Adiciona um comentário para sabermos o que corrigir",
     "orchestratorFeedbackSubmit": "Enviar",
-    "orchestratorFeedbackThanks": "Assinalado. Obrigado!"
+    "orchestratorFeedbackThanks": "Assinalado. Obrigado!",
+    "analyticsSubscriptionWarningTitle": "O seu progresso não está a ser registado",
+    "analyticsSubscriptionWarningBody": "Sem uma subscrição, as suas mensagens não ganham XP nem adicionam novas palavras e gramática."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-09-16 10:14:08.802982",
+    "@@last_modified": "2026-09-17 11:52:04.594170",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9933,5 +9933,7 @@
     "orchestratorFeedbackNoAwards": "See voor ei andnud ühtegi tähte, seega pole siin midagi kahtluse alla seada.",
     "orchestratorFeedbackCommentRequired": "Lisa kommentaar, et teaksime, mida parandada",
     "orchestratorFeedbackSubmit": "Saada",
-    "orchestratorFeedbackThanks": "Märgitud. Aitäh!"
+    "orchestratorFeedbackThanks": "Märgitud. Aitäh!",
+    "analyticsSubscriptionWarningTitle": "Sinu edusamme ei jälgita",
+    "analyticsSubscriptionWarningBody": "Ilma tellimuseta ei teeni sinu sõnumid XP-d ega lisa uusi sõnu ja grammatikat."
 }

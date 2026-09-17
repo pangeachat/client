@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-09-16 10:14:11.753231",
+    "@@last_modified": "2026-09-17 11:52:06.453905",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10039,5 +10039,7 @@
     "orchestratorFeedbackNoAwards": "Ez a kör nem osztott ki csillagokat, így nincs mit megkérdőjelezni.",
     "orchestratorFeedbackCommentRequired": "Adjon hozzá egy megjegyzést, hogy tudjuk, mit kell javítani",
     "orchestratorFeedbackSubmit": "Küldés",
-    "orchestratorFeedbackThanks": "Megjelölve. Köszönjük!"
+    "orchestratorFeedbackThanks": "Megjelölve. Köszönjük!",
+    "analyticsSubscriptionWarningTitle": "Nem követjük a fejlődésedet",
+    "analyticsSubscriptionWarningBody": "Előfizetés nélkül az üzeneteid nem hoznak XP-t, és nem adnak hozzá új szavakat vagy nyelvtant."
 }

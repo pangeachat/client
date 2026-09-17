@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-09-16 10:14:22.865841",
+    "@@last_modified": "2026-09-17 11:52:11.973474",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10237,5 +10237,7 @@
     "orchestratorFeedbackNoAwards": "Bu turda yıldız verilmedi, bu yüzden burada sorgulanacak bir şey yok.",
     "orchestratorFeedbackCommentRequired": "Neyi düzelteceğimizi bilmemiz için bir yorum ekleyin",
     "orchestratorFeedbackSubmit": "Gönder",
-    "orchestratorFeedbackThanks": "İşaretlendi. Teşekkürler!"
+    "orchestratorFeedbackThanks": "İşaretlendi. Teşekkürler!",
+    "analyticsSubscriptionWarningTitle": "İlerlemeniz takip edilmiyor",
+    "analyticsSubscriptionWarningBody": "Abonelik olmadan mesajlarınız XP kazandırmaz veya yeni kelime ve dil bilgisi eklemez."
 }

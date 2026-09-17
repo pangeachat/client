@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-09-16 10:14:25.456688",
+    "@@last_modified": "2026-09-17 11:52:12.393862",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "Eli jiko alizange linike naziphi na iinkwenkwezi, ngoko akukho nto yokubuza apha.",
     "orchestratorFeedbackCommentRequired": "Yongeza uluvo ukuze sazi ukuba silungise ntoni",
     "orchestratorFeedbackSubmit": "Thumela",
-    "orchestratorFeedbackThanks": "Iphawulwe. Enkosi!"
+    "orchestratorFeedbackThanks": "Iphawulwe. Enkosi!",
+    "analyticsSubscriptionWarningTitle": "Inkqubela yakho ayilandelelwa",
+    "analyticsSubscriptionWarningBody": "Ngaphandle kobhaliso, imiyalezo yakho ayifumani XP okanye yongeze amagama amatsha kunye negrama."
 }

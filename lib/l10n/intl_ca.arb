@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-16 10:14:07.351804",
+    "@@last_modified": "2026-09-17 11:52:03.695134",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10063,5 +10063,7 @@
     "orchestratorFeedbackNoAwards": "Aquesta ronda no ha atorgat cap estrella, així que no hi ha res a qüestionar.",
     "orchestratorFeedbackCommentRequired": "Afegeix un comentari perquè sapiguem què hem de solucionar",
     "orchestratorFeedbackSubmit": "Envia",
-    "orchestratorFeedbackThanks": "Marcar. Gràcies!"
+    "orchestratorFeedbackThanks": "Marcar. Gràcies!",
+    "analyticsSubscriptionWarningTitle": "El teu progrés no s'està registrant",
+    "analyticsSubscriptionWarningBody": "Sense una subscripció, els teus missatges no guanyen XP ni afegeixen paraules i gramàtica noves."
 }

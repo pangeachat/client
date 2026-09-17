@@ -5574,5 +5574,7 @@
     "tutorialSequenceTitleOpenSessions": "Open sessions",
     "tutorialSequenceTitleActivityRoles": "Choosing a role",
     "tutorialOpenSessions": "These are activities other people are playing. Join one to chat, but be aware they might not respond right away.",
-    "tutorialActivityRoles": "These are the roles you can play in this activity. Pick the one that interests you!"
+    "tutorialActivityRoles": "These are the roles you can play in this activity. Pick the one that interests you!",
+    "analyticsSubscriptionWarningTitle": "Your progress isn't being tracked",
+    "analyticsSubscriptionWarningBody": "Without a subscription, your messages don't earn XP or add new words and grammar."
 }

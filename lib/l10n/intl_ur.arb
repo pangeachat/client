@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-09-16 10:14:24.022096",
+    "@@last_modified": "2026-09-17 11:52:12.292918",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "اس باری میں کوئی ستارہ نہیں دیا گیا، لہذا یہاں سوال کرنے کے لیے کچھ نہیں ہے۔",
     "orchestratorFeedbackCommentRequired": "ایک تبصرہ شامل کریں تاکہ ہمیں معلوم ہو کہ کیا ٹھیک کرنا ہے",
     "orchestratorFeedbackSubmit": "بھیجیں",
-    "orchestratorFeedbackThanks": "پرچم لگا دیا گیا۔ شکریہ!"
+    "orchestratorFeedbackThanks": "پرچم لگا دیا گیا۔ شکریہ!",
+    "analyticsSubscriptionWarningTitle": "آپ کی پیشرفت ٹریک نہیں کی جا رہی ہے",
+    "analyticsSubscriptionWarningBody": "سبسکرپشن کے بغیر، آپ کے پیغامات XP حاصل نہیں کرتے اور نہ ہی نئے الفاظ اور گرامر شامل کرتے ہیں۔"
 }

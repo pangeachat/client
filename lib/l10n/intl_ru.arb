@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-09-16 10:14:19.863066",
+    "@@last_modified": "2026-09-17 11:52:10.070140",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10908,5 +10908,7 @@
     "orchestratorFeedbackNoAwards": "В этом ходу не было наград, поэтому здесь нечего оспаривать.",
     "orchestratorFeedbackCommentRequired": "Добавьте комментарий, чтобы мы знали, что исправить",
     "orchestratorFeedbackSubmit": "Отправить",
-    "orchestratorFeedbackThanks": "Помечено. Спасибо!"
+    "orchestratorFeedbackThanks": "Помечено. Спасибо!",
+    "analyticsSubscriptionWarningTitle": "Ваш прогресс не отслеживается",
+    "analyticsSubscriptionWarningBody": "Без подписки ваши сообщения не приносят XP и не добавляют новые слова и грамматику."
 }

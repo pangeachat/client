@@ -1334,7 +1334,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-09-16 10:14:07.358320",
+    "@@last_modified": "2026-09-17 11:52:05.900634",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10856,5 +10856,7 @@
     "orchestratorFeedbackNoAwards": "Denne omgang tildelte ingen stjerner, så der er intet at sætte spørgsmålstegn ved her.",
     "orchestratorFeedbackCommentRequired": "Tilføj en kommentar, så vi ved, hvad vi skal rette",
     "orchestratorFeedbackSubmit": "Send",
-    "orchestratorFeedbackThanks": "Markeret. Tak!"
+    "orchestratorFeedbackThanks": "Markeret. Tak!",
+    "analyticsSubscriptionWarningTitle": "Din fremgang spores ikke",
+    "analyticsSubscriptionWarningBody": "Uden et abonnement optjener dine beskeder ikke XP eller tilføjer nye ord og grammatik."
 }

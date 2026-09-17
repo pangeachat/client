@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-09-16 10:14:15.418874",
+    "@@last_modified": "2026-09-17 11:52:07.481471",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "ئەم خولە هیچ ئەستێرەیەکی نەبەخشی، بۆیە هیچ شتێک نییە لێرەدا پرسیاری لەسەر بکرێت.",
     "orchestratorFeedbackCommentRequired": "کۆمێنتێک زیاد بکە بۆ ئەوەی بزانین چی چاک بکەینەوە",
     "orchestratorFeedbackSubmit": "ناردن",
-    "orchestratorFeedbackThanks": "ئاڵا کرا. سوپاس!"
+    "orchestratorFeedbackThanks": "ئاڵا کرا. سوپاس!",
+    "analyticsSubscriptionWarningTitle": "پێشکەوتنەکەت بەدواداچوونی بۆ ناکرێت",
+    "analyticsSubscriptionWarningBody": "بەبێ بەشداریکردن، پەیامەکانت XP بەدەست ناهێنن و وشە و ڕێزمانی نوێ زیاد ناکەن."
 }

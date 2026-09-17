@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-09-16 10:14:07.356805",
+    "@@last_modified": "2026-09-17 11:52:03.939924",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "Stu turnu ùn hà micca attribuitu stelle, dunque ùn ci hè nunda da interrugà quì.",
     "orchestratorFeedbackCommentRequired": "Aghjunghjite un cummentariu per chì sapemu ciò chì deve esse riparatu",
     "orchestratorFeedbackSubmit": "Mandà",
-    "orchestratorFeedbackThanks": "Signalatu. Grazie!"
+    "orchestratorFeedbackThanks": "Signalatu. Grazie!",
+    "analyticsSubscriptionWarningTitle": "U vostru prugressu ùn hè micca seguitatu",
+    "analyticsSubscriptionWarningBody": "Senza un abbunamentu, i vostri messagi ùn guadagnanu micca XP o aghjunghjenu parolle è grammatica novi."
 }

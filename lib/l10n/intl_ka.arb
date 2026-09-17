@@ -1937,7 +1937,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-09-16 10:14:13.925271",
+    "@@last_modified": "2026-09-17 11:52:07.299188",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10836,5 +10836,7 @@
     "orchestratorFeedbackNoAwards": "ამ სვლამ ვარსკვლავები არ დააჯილდოვა, ამიტომ აქ არაფერია საეჭვო.",
     "orchestratorFeedbackCommentRequired": "დაამატეთ კომენტარი, რომ ვიცოდეთ რა უნდა გამოსწორდეს",
     "orchestratorFeedbackSubmit": "გაგზავნა",
-    "orchestratorFeedbackThanks": "მონიშნულია. მადლობა!"
+    "orchestratorFeedbackThanks": "მონიშნულია. მადლობა!",
+    "analyticsSubscriptionWarningTitle": "თქვენი პროგრესი არ აღირიცხება",
+    "analyticsSubscriptionWarningBody": "გამოწერის გარეშე, თქვენი შეტყობინებები არ იღებს XP-ს და არ ამატებს ახალ სიტყვებსა და გრამატიკას."
 }

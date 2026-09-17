@@ -26,6 +26,7 @@ import 'package:fluffychat/pangea/common/widgets/feedback_response_dialog.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_and_tags.dart';
+import 'package:fluffychat/routes/analytics/analytics_subscription_warning.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/analytics_more_menu.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/morph_details_view.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/vocab_analytics_details_view.dart';
@@ -390,6 +391,11 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView>
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            if (widget.construct == null)
+              AnalyticsSubscriptionWarning(
+                subscription:
+                    MatrixState.pangeaController.subscriptionController,
+              ),
             Expanded(
               child: analyticsService.isInitializing || loadingAnalytics
                   ? Center(child: CircularProgressIndicator.adaptive())

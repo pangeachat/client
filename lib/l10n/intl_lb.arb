@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-09-16 10:14:15.047724",
+    "@@last_modified": "2026-09-17 11:52:07.723886",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "Dës Ronn huet keng Stäre verginn, also gëtt et hei näischt a Fro ze stellen.",
     "orchestratorFeedbackCommentRequired": "Füügt e Kommentar bäi, fir datt mir wëssen wat ze fixéieren ass",
     "orchestratorFeedbackSubmit": "Schécken",
-    "orchestratorFeedbackThanks": "Markéiert. Merci!"
+    "orchestratorFeedbackThanks": "Markéiert. Merci!",
+    "analyticsSubscriptionWarningTitle": "Däi Fortschrëtt gëtt net opgeholl",
+    "analyticsSubscriptionWarningBody": "Ouni Abonnement verdéngen deng Messagen keng XP a fügen keng nei Wierder a Grammatik derbäi."
 }

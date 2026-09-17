@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-16 10:14:20.169304",
+    "@@last_modified": "2026-09-17 11:52:09.717367",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10880,5 +10880,7 @@
     "orchestratorFeedbackNoAwards": "Esta rodada não concedeu estrelas, então não há nada para questionar aqui.",
     "orchestratorFeedbackCommentRequired": "Adicione um comentário para sabermos o que corrigir",
     "orchestratorFeedbackSubmit": "Enviar",
-    "orchestratorFeedbackThanks": "Sinalizado. Obrigado!"
+    "orchestratorFeedbackThanks": "Sinalizado. Obrigado!",
+    "analyticsSubscriptionWarningTitle": "Seu progresso não está sendo monitorado",
+    "analyticsSubscriptionWarningBody": "Sem uma assinatura, suas mensagens não ganham XP nem adicionam novas palavras e gramática."
 }

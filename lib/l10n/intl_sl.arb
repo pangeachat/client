@@ -1802,7 +1802,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-09-16 10:14:20.883179",
+    "@@last_modified": "2026-09-17 11:52:10.428865",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10881,5 +10881,7 @@
     "orchestratorFeedbackNoAwards": "Ta poteza ni podelila zvezdic, zato tukaj ni ničesar za vprašati.",
     "orchestratorFeedbackCommentRequired": "Dodajte komentar, da bomo vedeli, kaj popraviti",
     "orchestratorFeedbackSubmit": "Pošlji",
-    "orchestratorFeedbackThanks": "Prijavljeno. Hvala!"
+    "orchestratorFeedbackThanks": "Prijavljeno. Hvala!",
+    "analyticsSubscriptionWarningTitle": "Vaš napredek se ne spremlja",
+    "analyticsSubscriptionWarningBody": "Brez naročnine vaša sporočila ne prinašajo XP-ja in ne dodajajo novih besed ali slovnice."
 }

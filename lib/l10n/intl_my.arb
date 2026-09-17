@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-09-16 10:14:18.481510",
+    "@@last_modified": "2026-09-17 11:52:09.317387",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "ဤအလှည့်တွင် ကြယ်များ မချီးမြှင့်ခဲ့ပါ၊ ထို့ကြောင့် ဤနေရာတွင် မေးခွန်းထုတ်စရာမရှိပါ။",
     "orchestratorFeedbackCommentRequired": "ကျွန်ုပ်တို့ ဘာပြင်ရမည်ကို သိစေရန် မှတ်ချက်တစ်ခု ထည့်ပါ",
     "orchestratorFeedbackSubmit": "ပို့ရန်",
-    "orchestratorFeedbackThanks": "အလံပြထားသည်။ ကျေးဇူးတင်ပါသည်။"
+    "orchestratorFeedbackThanks": "အလံပြထားသည်။ ကျေးဇူးတင်ပါသည်။",
+    "analyticsSubscriptionWarningTitle": "သင်၏တိုးတက်မှုကို ခြေရာခံမထားပါ",
+    "analyticsSubscriptionWarningBody": "စာရင်းသွင်းခြင်းမရှိဘဲ သင်၏မက်ဆေ့ချ်များသည် XP ရရှိမည်မဟုတ်သလို စကားလုံးအသစ်များနှင့် သဒ္ဒါများကိုလည်း ထပ်ထည့်မည်မဟုတ်ပါ။"
 }

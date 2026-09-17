@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-09-16 10:14:14.731958",
+    "@@last_modified": "2026-09-17 11:53:06.543385",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "Dis tɔn nɔ gi yu ɛni star, so nɔtin nɔ de fɔ kwɛstion ya.",
     "orchestratorFeedbackCommentRequired": "Put kɔmɛnt so wi go no wetin fɔ fiks",
     "orchestratorFeedbackSubmit": "Sɛn",
-    "orchestratorFeedbackThanks": "Dɛn dɔn flag am. Tɛnki!"
+    "orchestratorFeedbackThanks": "Dɛn dɔn flag am. Tɛnki!",
+    "analyticsSubscriptionWarningTitle": "Yu prɔgrɛs nɔ de sho",
+    "analyticsSubscriptionWarningBody": "If yu nɔ sɔbskrayb, yu mɛsej dɛn nɔ go de ɛn yu XP ɔ ad nyu wɔd ɛn grama."
 }

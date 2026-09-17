@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-09-16 10:14:20.555352",
+    "@@last_modified": "2026-09-17 11:52:10.353684",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10881,5 +10881,7 @@
     "orchestratorFeedbackNoAwards": "V tomto kole neboli udelené žiadne hviezdy, takže tu nie je čo spochybňovať.",
     "orchestratorFeedbackCommentRequired": "Pridajte komentár, aby sme vedeli, čo opraviť",
     "orchestratorFeedbackSubmit": "Odoslať",
-    "orchestratorFeedbackThanks": "Označené. Ďakujeme!"
+    "orchestratorFeedbackThanks": "Označené. Ďakujeme!",
+    "analyticsSubscriptionWarningTitle": "Váš pokrok sa nesleduje",
+    "analyticsSubscriptionWarningBody": "Bez predplatného vaše správy nezískavajú XP ani nepridávajú nové slová a gramatiku."
 }
