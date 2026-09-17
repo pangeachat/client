@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "Илгээх",
     "orchestratorFeedbackThanks": "Тэмдэглэгдсэн. Баярлалаа!",
     "analyticsSubscriptionWarningTitle": "Таны ахиц дэвшил хянагдахгүй байна",
-    "analyticsSubscriptionWarningBody": "Захиалгагүйгээр таны мессеж XP оноо авахгүй бөгөөд шинэ үг, дүрмийн санд нэмэгдэхгүй."
+    "analyticsSubscriptionWarningBody": "Захиалгагүйгээр таны мессеж XP оноо авахгүй бөгөөд шинэ үг, дүрмийн санд нэмэгдэхгүй.",
+    "noOpenSessions": "Одоогоор нээлттэй хичээл байхгүй байна"
 }

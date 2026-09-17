@@ -10570,5 +10570,6 @@
     "orchestratorFeedbackSubmit": "Seol",
     "orchestratorFeedbackThanks": "Bratach. Go raibh maith agat!",
     "analyticsSubscriptionWarningTitle": "Ní dhéantar do dhul chun cinn a rianú",
-    "analyticsSubscriptionWarningBody": "Gan síntiús, ní bhaineann do theachtaireachtaí XP amach ná ní chuireann siad focail agus gramadach nua leis."
+    "analyticsSubscriptionWarningBody": "Gan síntiús, ní bhaineann do theachtaireachtaí XP amach ná ní chuireann siad focail agus gramadach nua leis.",
+    "noOpenSessions": "Níl seisiúin oscailte ar bith faoi láthair"
 }

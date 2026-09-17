@@ -10883,5 +10883,6 @@
     "orchestratorFeedbackSubmit": "Pošlji",
     "orchestratorFeedbackThanks": "Prijavljeno. Hvala!",
     "analyticsSubscriptionWarningTitle": "Vaš napredek se ne spremlja",
-    "analyticsSubscriptionWarningBody": "Brez naročnine vaša sporočila ne prinašajo XP-ja in ne dodajajo novih besed ali slovnice."
+    "analyticsSubscriptionWarningBody": "Brez naročnine vaša sporočila ne prinašajo XP-ja in ne dodajajo novih besed ali slovnice.",
+    "noOpenSessions": "Trenutno ni odprtih sej"
 }

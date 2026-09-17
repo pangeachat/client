@@ -10239,5 +10239,6 @@
     "orchestratorFeedbackSubmit": "Gönder",
     "orchestratorFeedbackThanks": "İşaretlendi. Teşekkürler!",
     "analyticsSubscriptionWarningTitle": "İlerlemeniz takip edilmiyor",
-    "analyticsSubscriptionWarningBody": "Abonelik olmadan mesajlarınız XP kazandırmaz veya yeni kelime ve dil bilgisi eklemez."
+    "analyticsSubscriptionWarningBody": "Abonelik olmadan mesajlarınız XP kazandırmaz veya yeni kelime ve dil bilgisi eklemez.",
+    "noOpenSessions": "Şu anda açık oturum yok"
 }

@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "Göndər",
     "orchestratorFeedbackThanks": "İşarələndi. Təşəkkürlər!",
     "analyticsSubscriptionWarningTitle": "Tərəqqiniz izlənilmir",
-    "analyticsSubscriptionWarningBody": "Abunəlik olmadan mesajlarınız XP qazanmır və yeni sözlər, qrammatika əlavə etmir."
+    "analyticsSubscriptionWarningBody": "Abunəlik olmadan mesajlarınız XP qazanmır və yeni sözlər, qrammatika əlavə etmir.",
+    "noOpenSessions": "Hal-hazırda açıq sessiya yoxdur"
 }

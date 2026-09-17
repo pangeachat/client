@@ -80,7 +80,27 @@ class _NotStartedSessionBottomContent extends StatelessWidget {
                 ? controller.visibleCompletedSessions
                 : controller.activityStatuses.getSessionsByStatus(status);
 
-            if (roomSummaries.isEmpty) return const SizedBox.shrink();
+            if (roomSummaries.isEmpty) {
+              if (status != ActivitySummaryStatus.notStarted) {
+                return const SizedBox.shrink();
+              }
+              // The join list updates live, so its last session can fill
+              // while it is open (#9134): say so instead of leaving the page
+              // blank, and announce it to a screen reader watching the list.
+              return Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 36.0,
+                  vertical: 32.0,
+                ),
+                child: Semantics(
+                  liveRegion: true,
+                  child: Text(
+                    L10n.of(context).noOpenSessions,
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                ),
+              );
+            }
 
             final section = _ActivitySummaryStatusSection(
               status: status,

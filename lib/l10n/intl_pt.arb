@@ -10882,5 +10882,6 @@
     "orchestratorFeedbackSubmit": "Enviar",
     "orchestratorFeedbackThanks": "Sinalizado. Obrigado!",
     "analyticsSubscriptionWarningTitle": "Seu progresso não está sendo monitorado",
-    "analyticsSubscriptionWarningBody": "Sem uma assinatura, suas mensagens não ganham XP nem adicionam novas palavras e gramática."
+    "analyticsSubscriptionWarningBody": "Sem uma assinatura, suas mensagens não ganham XP nem adicionam novas palavras e gramática.",
+    "noOpenSessions": "Nenhuma sessão aberta no momento"
 }

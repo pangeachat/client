@@ -9975,5 +9975,6 @@
     "orchestratorFeedbackSubmit": "Lähetä",
     "orchestratorFeedbackThanks": "Merkitty. Kiitos!",
     "analyticsSubscriptionWarningTitle": "Edistymistäsi ei seurata",
-    "analyticsSubscriptionWarningBody": "Ilman tilausta viestisi eivät kerrytä XP:tä tai lisää uusia sanoja ja kielioppia."
+    "analyticsSubscriptionWarningBody": "Ilman tilausta viestisi eivät kerrytä XP:tä tai lisää uusia sanoja ja kielioppia.",
+    "noOpenSessions": "Ei avoimia istuntoja juuri nyt"
 }

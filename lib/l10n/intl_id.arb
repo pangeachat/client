@@ -10011,5 +10011,6 @@
     "orchestratorFeedbackSubmit": "Kirim",
     "orchestratorFeedbackThanks": "Ditandai. Terima kasih!",
     "analyticsSubscriptionWarningTitle": "Kemajuan Anda tidak dilacak",
-    "analyticsSubscriptionWarningBody": "Tanpa langganan, pesan Anda tidak mendapatkan XP atau menambahkan kata dan tata bahasa baru."
+    "analyticsSubscriptionWarningBody": "Tanpa langganan, pesan Anda tidak mendapatkan XP atau menambahkan kata dan tata bahasa baru.",
+    "noOpenSessions": "Tidak ada sesi terbuka saat ini"
 }

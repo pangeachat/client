@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "Zipụ",
     "orchestratorFeedbackThanks": "Akọwapụtara. Daalụ!",
     "analyticsSubscriptionWarningTitle": "Anaghị eso ọganihu gị",
-    "analyticsSubscriptionWarningBody": "Na-enweghị ndebanye aha, ozi gị anaghị enweta XP ma ọ bụ tinye okwu na ụtọ asụsụ ọhụrụ."
+    "analyticsSubscriptionWarningBody": "Na-enweghị ndebanye aha, ozi gị anaghị enweta XP ma ọ bụ tinye okwu na ụtọ asụsụ ọhụrụ.",
+    "noOpenSessions": "Enweghị nnọkọ mepere emepe ugbu a"
 }

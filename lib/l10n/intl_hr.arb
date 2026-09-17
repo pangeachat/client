@@ -10374,5 +10374,6 @@
     "orchestratorFeedbackSubmit": "Pošalji",
     "orchestratorFeedbackThanks": "Označeno. Hvala!",
     "analyticsSubscriptionWarningTitle": "Vaš napredak se ne prati",
-    "analyticsSubscriptionWarningBody": "Bez pretplate, vaše poruke ne donose XP niti dodaju nove riječi i gramatiku."
+    "analyticsSubscriptionWarningBody": "Bez pretplate, vaše poruke ne donose XP niti dodaju nove riječi i gramatiku.",
+    "noOpenSessions": "Trenutno nema otvorenih sesija"
 }

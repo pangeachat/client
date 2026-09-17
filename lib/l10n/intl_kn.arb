@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "ಕಳುಹಿಸಿ",
     "orchestratorFeedbackThanks": "ಫ್ಲ್ಯಾಗ್ ಮಾಡಲಾಗಿದೆ. ಧನ್ಯವಾದಗಳು!",
     "analyticsSubscriptionWarningTitle": "ನಿಮ್ಮ ಪ್ರಗತಿಯನ್ನು ಟ್ರ್ಯಾಕ್ ಮಾಡಲಾಗುತ್ತಿಲ್ಲ",
-    "analyticsSubscriptionWarningBody": "ಚಂದಾದಾರಿಕೆ ಇಲ್ಲದೆ, ನಿಮ್ಮ ಸಂದೇಶಗಳು XP ಗಳಿಸುವುದಿಲ್ಲ ಅಥವಾ ಹೊಸ ಪದಗಳು ಮತ್ತು ವ್ಯಾಕರಣವನ್ನು ಸೇರಿಸುವುದಿಲ್ಲ."
+    "analyticsSubscriptionWarningBody": "ಚಂದಾದಾರಿಕೆ ಇಲ್ಲದೆ, ನಿಮ್ಮ ಸಂದೇಶಗಳು XP ಗಳಿಸುವುದಿಲ್ಲ ಅಥವಾ ಹೊಸ ಪದಗಳು ಮತ್ತು ವ್ಯಾಕರಣವನ್ನು ಸೇರಿಸುವುದಿಲ್ಲ.",
+    "noOpenSessions": "ಈಗ ಯಾವುದೇ ತೆರೆದ ಸೆಷನ್‌ಗಳಿಲ್ಲ"
 }

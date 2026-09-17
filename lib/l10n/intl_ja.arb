@@ -10707,5 +10707,6 @@
     "orchestratorFeedbackSubmit": "送信",
     "orchestratorFeedbackThanks": "報告されました。ありがとうございます！",
     "analyticsSubscriptionWarningTitle": "進捗は記録されていません",
-    "analyticsSubscriptionWarningBody": "サブスクリプションがない場合、メッセージでXPを獲得したり、新しい単語や文法を追加したりすることはできません。"
+    "analyticsSubscriptionWarningBody": "サブスクリプションがない場合、メッセージでXPを獲得したり、新しい単語や文法を追加したりすることはできません。",
+    "noOpenSessions": "現在、開いているセッションはありません"
 }

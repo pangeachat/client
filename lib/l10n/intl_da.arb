@@ -10858,5 +10858,6 @@
     "orchestratorFeedbackSubmit": "Send",
     "orchestratorFeedbackThanks": "Markeret. Tak!",
     "analyticsSubscriptionWarningTitle": "Din fremgang spores ikke",
-    "analyticsSubscriptionWarningBody": "Uden et abonnement optjener dine beskeder ikke XP eller tilføjer nye ord og grammatik."
+    "analyticsSubscriptionWarningBody": "Uden et abonnement optjener dine beskeder ikke XP eller tilføjer nye ord og grammatik.",
+    "noOpenSessions": "Ingen åbne sessioner lige nu"
 }

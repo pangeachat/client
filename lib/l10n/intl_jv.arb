@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "Kirim",
     "orchestratorFeedbackThanks": "Wis ditandhani. Matur nuwun!",
     "analyticsSubscriptionWarningTitle": "Kemajuanmu ora dilacak",
-    "analyticsSubscriptionWarningBody": "Tanpa langganan, pesenmu ora entuk XP utawa nambah tembung lan tata basa anyar."
+    "analyticsSubscriptionWarningBody": "Tanpa langganan, pesenmu ora entuk XP utawa nambah tembung lan tata basa anyar.",
+    "noOpenSessions": "Ora ana sesi sing mbukak saiki"
 }

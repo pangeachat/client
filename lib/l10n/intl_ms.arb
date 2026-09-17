@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "Hantar",
     "orchestratorFeedbackThanks": "Ditandakan. Terima kasih!",
     "analyticsSubscriptionWarningTitle": "Kemajuan anda tidak dijejaki",
-    "analyticsSubscriptionWarningBody": "Tanpa langganan, mesej anda tidak memperoleh XP atau menambah perkataan dan tatabahasa baharu."
+    "analyticsSubscriptionWarningBody": "Tanpa langganan, mesej anda tidak memperoleh XP atau menambah perkataan dan tatabahasa baharu.",
+    "noOpenSessions": "Tiada sesi dibuka sekarang"
 }

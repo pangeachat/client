@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "Mitte",
     "orchestratorFeedbackThanks": "Notatum. Gratias!",
     "analyticsSubscriptionWarningTitle": "Progressus tuus non sequitur",
-    "analyticsSubscriptionWarningBody": "Sine subscriptione, nuntii tui XP non merentur nec nova verba et grammaticam addunt."
+    "analyticsSubscriptionWarningBody": "Sine subscriptione, nuntii tui XP non merentur nec nova verba et grammaticam addunt.",
+    "noOpenSessions": "Nullae sessiones apertae nunc"
 }

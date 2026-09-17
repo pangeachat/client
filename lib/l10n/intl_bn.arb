@@ -10566,5 +10566,6 @@
     "orchestratorFeedbackSubmit": "পাঠান",
     "orchestratorFeedbackThanks": "ফ্ল্যাগ করা হয়েছে। ধন্যবাদ!",
     "analyticsSubscriptionWarningTitle": "আপনার অগ্রগতি ট্র্যাক করা হচ্ছে না",
-    "analyticsSubscriptionWarningBody": "সাবস্ক্রিপশন ছাড়া, আপনার বার্তাগুলি XP অর্জন করে না বা নতুন শব্দ ও ব্যাকরণ যোগ করে না।"
+    "analyticsSubscriptionWarningBody": "সাবস্ক্রিপশন ছাড়া, আপনার বার্তাগুলি XP অর্জন করে না বা নতুন শব্দ ও ব্যাকরণ যোগ করে না।",
+    "noOpenSessions": "এখন কোনো সেশন খোলা নেই"
 }

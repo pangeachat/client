@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "Schécken",
     "orchestratorFeedbackThanks": "Markéiert. Merci!",
     "analyticsSubscriptionWarningTitle": "Däi Fortschrëtt gëtt net opgeholl",
-    "analyticsSubscriptionWarningBody": "Ouni Abonnement verdéngen deng Messagen keng XP a fügen keng nei Wierder a Grammatik derbäi."
+    "analyticsSubscriptionWarningBody": "Ouni Abonnement verdéngen deng Messagen keng XP a fügen keng nei Wierder a Grammatik derbäi.",
+    "noOpenSessions": "Keng oppe Sessiounen am Moment"
 }

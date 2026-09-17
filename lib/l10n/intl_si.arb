@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "යවන්න",
     "orchestratorFeedbackThanks": "සලකුණු කරන ලදී. ස්තූතියි!",
     "analyticsSubscriptionWarningTitle": "ඔබගේ ප්‍රගතිය නිරීක්ෂණය නොවේ",
-    "analyticsSubscriptionWarningBody": "දායකත්වයක් නොමැතිව, ඔබගේ පණිවිඩ XP උපයන්නේ නැත, නැතහොත් නව වචන සහ ව්‍යාකරණ එකතු නොකරයි."
+    "analyticsSubscriptionWarningBody": "දායකත්වයක් නොමැතිව, ඔබගේ පණිවිඩ XP උපයන්නේ නැත, නැතහොත් නව වචන සහ ව්‍යාකරණ එකතු නොකරයි.",
+    "noOpenSessions": "දැනට විවෘත සැසි නොමැත"
 }

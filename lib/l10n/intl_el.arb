@@ -10813,5 +10813,6 @@
     "orchestratorFeedbackSubmit": "Αποστολή",
     "orchestratorFeedbackThanks": "Έγινε αναφορά. Ευχαριστούμε!",
     "analyticsSubscriptionWarningTitle": "Η πρόοδός σας δεν παρακολουθείται",
-    "analyticsSubscriptionWarningBody": "Χωρίς συνδρομή, τα μηνύματά σας δεν κερδίζουν XP ούτε προσθέτουν νέες λέξεις και γραμματική."
+    "analyticsSubscriptionWarningBody": "Χωρίς συνδρομή, τα μηνύματά σας δεν κερδίζουν XP ούτε προσθέτουν νέες λέξεις και γραμματική.",
+    "noOpenSessions": "Δεν υπάρχουν ανοιχτές συνεδρίες αυτήν τη στιγμή"
 }

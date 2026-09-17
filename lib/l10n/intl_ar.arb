@@ -10244,5 +10244,6 @@
     "orchestratorFeedbackSubmit": "إرسال",
     "orchestratorFeedbackThanks": "تم الإبلاغ. شكرًا!",
     "analyticsSubscriptionWarningTitle": "لا يتم تتبع تقدمك",
-    "analyticsSubscriptionWarningBody": "بدون اشتراك، لا تكسب رسائلك نقاط خبرة أو تضيف كلمات وقواعد جديدة."
+    "analyticsSubscriptionWarningBody": "بدون اشتراك، لا تكسب رسائلك نقاط خبرة أو تضيف كلمات وقواعد جديدة.",
+    "noOpenSessions": "لا توجد جلسات مفتوحة الآن"
 }

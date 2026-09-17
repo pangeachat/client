@@ -10855,5 +10855,6 @@
     "orchestratorFeedbackSubmit": "Enviar",
     "orchestratorFeedbackThanks": "Assinalado. Obrigado!",
     "analyticsSubscriptionWarningTitle": "O seu progresso não está a ser registado",
-    "analyticsSubscriptionWarningBody": "Sem uma subscrição, as suas mensagens não ganham XP nem adicionam novas palavras e gramática."
+    "analyticsSubscriptionWarningBody": "Sem uma subscrição, as suas mensagens não ganham XP nem adicionam novas palavras e gramática.",
+    "noOpenSessions": "Nenhuma sessão aberta neste momento"
 }

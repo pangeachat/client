@@ -10719,5 +10719,6 @@
     "orchestratorFeedbackSubmit": "Siųsti",
     "orchestratorFeedbackThanks": "Pažymėta. Ačiū!",
     "analyticsSubscriptionWarningTitle": "Jūsų pažanga nesekama",
-    "analyticsSubscriptionWarningBody": "Be prenumeratos jūsų žinutės neuždirba XP ir neprideda naujų žodžių bei gramatikos."
+    "analyticsSubscriptionWarningBody": "Be prenumeratos jūsų žinutės neuždirba XP ir neprideda naujų žodžių bei gramatikos.",
+    "noOpenSessions": "Šiuo metu nėra atvirų sesijų"
 }

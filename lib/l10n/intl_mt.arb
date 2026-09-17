@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "Ibgħat",
     "orchestratorFeedbackThanks": "Immarkat. Grazzi!",
     "analyticsSubscriptionWarningTitle": "Il-progress tiegħek mhuwiex qed jiġi ssorveljat",
-    "analyticsSubscriptionWarningBody": "Mingħajr abbonament, il-messaġġi tiegħek ma jaqilgħux XP jew iżidu kliem u grammatika ġodda."
+    "analyticsSubscriptionWarningBody": "Mingħajr abbonament, il-messaġġi tiegħek ma jaqilgħux XP jew iżidu kliem u grammatika ġodda.",
+    "noOpenSessions": "Bħalissa m'hemmx sessjonijiet miftuħa"
 }

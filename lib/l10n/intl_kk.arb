@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "Жіберу",
     "orchestratorFeedbackThanks": "Белгіленді. Рахмет!",
     "analyticsSubscriptionWarningTitle": "Сіздің үлгеріміңіз қадағаланбайды",
-    "analyticsSubscriptionWarningBody": "Жазылымсыз сіздің хабарламаларыңыз XP ұпайларын әкелмейді немесе жаңа сөздер мен грамматиканы қоспайды."
+    "analyticsSubscriptionWarningBody": "Жазылымсыз сіздің хабарламаларыңыз XP ұпайларын әкелмейді немесе жаңа сөздер мен грамматиканы қоспайды.",
+    "noOpenSessions": "Қазір ашық сессиялар жоқ"
 }

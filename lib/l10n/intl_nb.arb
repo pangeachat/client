@@ -9995,5 +9995,6 @@
     "orchestratorFeedbackSubmit": "Send",
     "orchestratorFeedbackThanks": "Rapportert. Takk!",
     "analyticsSubscriptionWarningTitle": "Fremgangen din spores ikke",
-    "analyticsSubscriptionWarningBody": "Uten et abonnement vil ikke meldingene dine gi XP eller legge til nye ord og grammatikk."
+    "analyticsSubscriptionWarningBody": "Uten et abonnement vil ikke meldingene dine gi XP eller legge til nye ord og grammatikk.",
+    "noOpenSessions": "Ingen åpne økter akkurat nå"
 }

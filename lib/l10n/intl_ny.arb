@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "Tumiza",
     "orchestratorFeedbackThanks": "Chongedwa. Zikomo!",
     "analyticsSubscriptionWarningTitle": "Kupita patsogolo kwanu sikukuwonedwa",
-    "analyticsSubscriptionWarningBody": "Popanda kulembetsa, mauthenga anu sakupeza XP kapena kuwonjezera mawu atsopano ndi galamala."
+    "analyticsSubscriptionWarningBody": "Popanda kulembetsa, mauthenga anu sakupeza XP kapena kuwonjezera mawu atsopano ndi galamala.",
+    "noOpenSessions": "Palibe zokambirana zomwe zikuchitika pakali pano"
 }

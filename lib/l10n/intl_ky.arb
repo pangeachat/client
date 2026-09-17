@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "Жөнөтүү",
     "orchestratorFeedbackThanks": "Белгиленди. Рахмат!",
     "analyticsSubscriptionWarningTitle": "Прогрессиңиз көзөмөлдөнбөйт",
-    "analyticsSubscriptionWarningBody": "Жазылуусуз билдирүүлөрүңүз XP таппайт же жаңы сөздөрдү жана грамматиканы кошпойт."
+    "analyticsSubscriptionWarningBody": "Жазылуусуз билдирүүлөрүңүз XP таппайт же жаңы сөздөрдү жана грамматиканы кошпойт.",
+    "noOpenSessions": "Учурда ачык сессиялар жок"
 }

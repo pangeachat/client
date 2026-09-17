@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "Ipadala",
     "orchestratorFeedbackThanks": "Na-flag. Salamat!",
     "analyticsSubscriptionWarningTitle": "Ang imong pag-uswag wala gisubay",
-    "analyticsSubscriptionWarningBody": "Kung walay subscription, ang imong mga mensahe dili makakuha og XP o makadugang og bag-ong mga pulong ug grammar."
+    "analyticsSubscriptionWarningBody": "Kung walay subscription, ang imong mga mensahe dili makakuha og XP o makadugang og bag-ong mga pulong ug grammar.",
+    "noOpenSessions": "Walay bukas nga sesyon karon"
 }

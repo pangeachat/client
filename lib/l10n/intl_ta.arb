@@ -10030,5 +10030,6 @@
     "orchestratorFeedbackSubmit": "அனுப்பு",
     "orchestratorFeedbackThanks": "கொடியிடப்பட்டது. நன்றி!",
     "analyticsSubscriptionWarningTitle": "உங்கள் முன்னேற்றம் கண்காணிக்கப்படவில்லை",
-    "analyticsSubscriptionWarningBody": "சந்தா இல்லாமல், உங்கள் செய்திகள் XP-ஐப் பெறாது அல்லது புதிய சொற்களையும் இலக்கணத்தையும் சேர்க்காது."
+    "analyticsSubscriptionWarningBody": "சந்தா இல்லாமல், உங்கள் செய்திகள் XP-ஐப் பெறாது அல்லது புதிய சொற்களையும் இலக்கணத்தையும் சேர்க்காது.",
+    "noOpenSessions": "தற்போது திறந்த அமர்வுகள் இல்லை"
 }

@@ -10798,5 +10798,6 @@
     "orchestratorFeedbackSubmit": "Ipadala",
     "orchestratorFeedbackThanks": "Na-flag. Salamat!",
     "analyticsSubscriptionWarningTitle": "Hindi sinusubaybayan ang iyong pag-usad",
-    "analyticsSubscriptionWarningBody": "Kung walang subscription, hindi makakakuha ng XP ang iyong mga mensahe o makakapagdagdag ng mga bagong salita at grammar."
+    "analyticsSubscriptionWarningBody": "Kung walang subscription, hindi makakakuha ng XP ang iyong mga mensahe o makakapagdagdag ng mga bagong salita at grammar.",
+    "noOpenSessions": "Walang bukas na session sa ngayon"
 }

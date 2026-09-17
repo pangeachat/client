@@ -10883,5 +10883,6 @@
     "orchestratorFeedbackSubmit": "Odoslať",
     "orchestratorFeedbackThanks": "Označené. Ďakujeme!",
     "analyticsSubscriptionWarningTitle": "Váš pokrok sa nesleduje",
-    "analyticsSubscriptionWarningBody": "Bez predplatného vaše správy nezískavajú XP ani nepridávajú nové slová a gramatiku."
+    "analyticsSubscriptionWarningBody": "Bez predplatného vaše správy nezískavajú XP ani nepridávajú nové slová a gramatiku.",
+    "noOpenSessions": "Momentálne žiadne otvorené relácie"
 }

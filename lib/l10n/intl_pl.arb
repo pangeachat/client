@@ -10023,5 +10023,6 @@
     "orchestratorFeedbackSubmit": "Wyślij",
     "orchestratorFeedbackThanks": "Zgłoszono. Dziękujemy!",
     "analyticsSubscriptionWarningTitle": "Twoje postępy nie są śledzone",
-    "analyticsSubscriptionWarningBody": "Bez subskrypcji Twoje wiadomości nie zdobywają PD ani nie dodają nowych słów i gramatyki."
+    "analyticsSubscriptionWarningBody": "Bez subskrypcji Twoje wiadomości nie zdobywają PD ani nie dodają nowych słów i gramatyki.",
+    "noOpenSessions": "Brak otwartych sesji"
 }

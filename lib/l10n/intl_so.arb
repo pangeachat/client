@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "Dir",
     "orchestratorFeedbackThanks": "La calaamadeeyay. Waad mahadsan tahay!",
     "analyticsSubscriptionWarningTitle": "Horumarkaaga lama dabagalo",
-    "analyticsSubscriptionWarningBody": "Adigoon is-diiwaangelin, fariimahaagu ma kasbadaan XP mana ku daraan ereyo iyo naxwaha cusub."
+    "analyticsSubscriptionWarningBody": "Adigoon is-diiwaangelin, fariimahaagu ma kasbadaan XP mana ku daraan ereyo iyo naxwaha cusub.",
+    "noOpenSessions": "Ma jiraan fadhiyo furan hadda"
 }

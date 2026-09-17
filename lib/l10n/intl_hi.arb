@@ -10570,5 +10570,6 @@
     "orchestratorFeedbackSubmit": "भेजें",
     "orchestratorFeedbackThanks": "फ़्लैग किया गया। धन्यवाद!",
     "analyticsSubscriptionWarningTitle": "आपकी प्रगति ट्रैक नहीं की जा रही है",
-    "analyticsSubscriptionWarningBody": "सदस्यता के बिना, आपके संदेशों से XP नहीं मिलता है और न ही नए शब्द और व्याकरण जुड़ते हैं।"
+    "analyticsSubscriptionWarningBody": "सदस्यता के बिना, आपके संदेशों से XP नहीं मिलता है और न ही नए शब्द और व्याकरण जुड़ते हैं।",
+    "noOpenSessions": "अभी कोई सत्र खुला नहीं है"
 }

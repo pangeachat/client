@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "Cuir",
     "orchestratorFeedbackThanks": "Air a chomharrachadh. Tapadh leat!",
     "analyticsSubscriptionWarningTitle": "Chan eilear a' cumail sùil air an adhartas agad",
-    "analyticsSubscriptionWarningBody": "Mura h-eil ballrachd agad, cha choisinn na teachdaireachdan agad XP no cha chuir iad faclan is gràmar ùr ris."
+    "analyticsSubscriptionWarningBody": "Mura h-eil ballrachd agad, cha choisinn na teachdaireachdan agad XP no cha chuir iad faclan is gràmar ùr ris.",
+    "noOpenSessions": "Chan eil seiseanan fosgailte ann an-dràsta"
 }

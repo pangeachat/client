@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "Kirim",
     "orchestratorFeedbackThanks": "Dilaporkeun. Hatur nuhun!",
     "analyticsSubscriptionWarningTitle": "Kamajuan anjeun teu dilacak",
-    "analyticsSubscriptionWarningBody": "Tanpa langganan, pesen anjeun moal nampi XP atanapi nambihan kecap sareng tata basa énggal."
+    "analyticsSubscriptionWarningBody": "Tanpa langganan, pesen anjeun moal nampi XP atanapi nambihan kecap sareng tata basa énggal.",
+    "noOpenSessions": "Teu aya sési anu kabuka ayeuna"
 }

@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "Ránṣẹ́",
     "orchestratorFeedbackThanks": "Ti fi sílẹ̀. Ẹ ṣeun!",
     "analyticsSubscriptionWarningTitle": "A kò ṣe àkọsílẹ̀ ìtẹ̀síwájú rẹ",
-    "analyticsSubscriptionWarningBody": "Láìsí àbáwọlé, àwọn ìránṣẹ́ rẹ kò ní jẹ́ kó o rí XP tàbí kó o fi àwọn ọ̀rọ̀ àti gírámà tuntun kún un."
+    "analyticsSubscriptionWarningBody": "Láìsí àbáwọlé, àwọn ìránṣẹ́ rẹ kò ní jẹ́ kó o rí XP tàbí kó o fi àwọn ọ̀rọ̀ àti gírámà tuntun kún un.",
+    "noOpenSessions": "Ko si igba ipade to ṣi silẹ lọwọlọwọ"
 }

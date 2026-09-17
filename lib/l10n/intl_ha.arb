@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "Aika",
     "orchestratorFeedbackThanks": "An yi alama. Na gode!",
     "analyticsSubscriptionWarningTitle": "Ba a bin diddigin ci gabanka",
-    "analyticsSubscriptionWarningBody": "Ba tare da biyan kuɗi ba, saƙonninka ba sa samun XP ko ƙara sabbin kalmomi da nahawu."
+    "analyticsSubscriptionWarningBody": "Ba tare da biyan kuɗi ba, saƙonninka ba sa samun XP ko ƙara sabbin kalmomi da nahawu.",
+    "noOpenSessions": "Babu wani zama a buɗe a yanzu"
 }

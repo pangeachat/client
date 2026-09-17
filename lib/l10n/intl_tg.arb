@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "Ирсол",
     "orchestratorFeedbackThanks": "Қайд карда шуд. Ташаккур!",
     "analyticsSubscriptionWarningTitle": "Пешрафти шумо пайгирӣ намешавад",
-    "analyticsSubscriptionWarningBody": "Бе обуна, паёмҳои шумо XP ба даст намеоранд ва калимаҳо ва грамматикаи нав илова намекунанд."
+    "analyticsSubscriptionWarningBody": "Бе обуна, паёмҳои шумо XP ба даст намеоранд ва калимаҳо ва грамматикаи нав илова намекунанд.",
+    "noOpenSessions": "Ҳоло ягон сессияи кушода нест"
 }

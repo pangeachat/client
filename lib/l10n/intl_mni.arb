@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "थमो",
     "orchestratorFeedbackThanks": "फ्लैग तौरे। थगत्चरी!",
     "analyticsSubscriptionWarningTitle": "నంగ్గి ప్రోగ్రెస్ ట్రాక్ తౌద్రి",
-    "analyticsSubscriptionWarningBody": "సబ్స్క్రిప్షన్ లৈতబాద, నంగ్గి మెసేజసింగ్నా XP ఫంగ్లోయి అథూబా వర్డ్స్ అమసుంగ్ గ్రామర్ హప్లోయి."
+    "analyticsSubscriptionWarningBody": "సబ్స్క్రిప్షన్ లৈতబాద, నంగ్గి మెసేజసింగ్నా XP ఫంగ్లోయి అథూబా వర్డ్స్ అమసుంగ్ గ్రామర్ హప్లోయి.",
+    "noOpenSessions": "Houjikta session amata pangkhide"
 }

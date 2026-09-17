@@ -10065,5 +10065,6 @@
     "orchestratorFeedbackSubmit": "Envia",
     "orchestratorFeedbackThanks": "Marcar. Gràcies!",
     "analyticsSubscriptionWarningTitle": "El teu progrés no s'està registrant",
-    "analyticsSubscriptionWarningBody": "Sense una subscripció, els teus missatges no guanyen XP ni afegeixen paraules i gramàtica noves."
+    "analyticsSubscriptionWarningBody": "Sense una subscripció, els teus missatges no guanyen XP ni afegeixen paraules i gramàtica noves.",
+    "noOpenSessions": "No hi ha sessions obertes ara mateix"
 }

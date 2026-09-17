@@ -2342,5 +2342,6 @@
     "orchestratorFeedbackSubmit": "Tumira",
     "orchestratorFeedbackThanks": "Yamaka. Ndatenda!",
     "analyticsSubscriptionWarningTitle": "Kufambira mberi kwako hakusi kuteverwa",
-    "analyticsSubscriptionWarningBody": "Pasina kunyoresa, mameseji ako haawane XP kana kuwedzera mazwi matsva negirama."
+    "analyticsSubscriptionWarningBody": "Pasina kunyoresa, mameseji ako haawane XP kana kuwedzera mazwi matsva negirama.",
+    "noOpenSessions": "Hapana zvikamu zvakavhurika parizvino"
 }
