@@ -83,6 +83,10 @@ Some pages replace their content under chrome that stays put: the onboarding wiz
 
 A list of like controls — the nav rail's joined courses, the chat list's rooms, the world map's drawn pins — is one Tab stop, not one per item: a keyboard user reaches whatever sits past the list in one press, the way a screen-reader user steps over a group. The rail's three section icons (World, Chats, Courses) stay stops of their own, so Tab walks the rail the way a screen reader browses it: the three items, then the joined-course list as one group. Inside the list, Up and Down move focus one item at a time and stop at the ends (no wrap, because losing your place in a long list disorients); Enter or Space activates the focused item; Tab or Shift+Tab leaves. Tab lands on the item last focused in the list, else the selected item (the open chat, the lit rail section), else the first item on screen — never on nothing, even when the selected item is scrolled out of view. Shared implementation for widget lists: [`RovingFocusGroup`](../../lib/pangea/common/widgets/roving_focus_group.dart), which an item joins by its `rovingId`; the map pins draw to a canvas and author the same behaviour themselves ([world-map.instructions.md](world-map.instructions.md)). The course page's Chats section does not use it yet.
 
+## Long-press menus
+
+A long-press menu can be opened without a long press. On iOS and Android, the screen reader gets the menu from the node's long-press action and from a named custom action. Flutter's web engine sends neither to the browser, so on web a widget opts in: its semantics node carries the [`ShowMenuLongPress`](../../lib/pangea/common/utils/show_menu_long_press.dart) identifier, and the browser's `contextmenu` event on that node, which VoiceOver's "show menu" sends, opens the long-press menu instead of the browser's page menu. Chat-list rows opt in; other long-press menus do not yet. While the semantics tree is on, a mouse right-click on an opted-in node opens the same menu.
+
 ## Focus rings
 
 Every custom control authors its own keyboard focus ring. The ring shows only while the learner moves by keyboard, never on touch or a pointer click, and it must clear 3:1 against everything next to it (WCAG 2.1 1.4.11). Its colour and shape follow from what it sits on. Shared implementation: [`FocusRingTapTarget`](../../lib/pangea/common/widgets/focus_ring_tap_target.dart).
@@ -96,7 +100,7 @@ Every custom control authors its own keyboard focus ring. The ring shows only wh
 1. **Every control says what it does.** If it has no visible text, it needs a `tooltip:` / label. "Send message", not "tap here".
 2. **Every image is described or silenced.** A `semanticLabel:` if it carries meaning, `excludeFromSemantics: true` if it's decoration. No image is left to announce its filename.
 3. **Never rely on color alone.** Pair color with text, an icon, or a shape (pin state, grammar tags, error states).
-4. **Mouse work must be keyboard work.** Reachable with Tab, triggerable with Enter/Space, with a visible focus ring; nothing traps focus. A list of like controls is one Tab stop with the arrow keys moving inside it — see [One Tab stop per list](#one-tab-stop-per-list).
+4. **Mouse work must be keyboard work.** Reachable with Tab, triggerable with Enter/Space, with a visible focus ring; nothing traps focus. A list of like controls is one Tab stop with the arrow keys moving inside it — see [One Tab stop per list](#one-tab-stop-per-list). A long-press menu also opens without a long press — see [Long-press menus](#long-press-menus).
 5. **Visible label = accessible name.** What a sighted user reads and what a screen reader speaks should match.
 6. **Group and label inputs.** Each field has a label; errors are stated in text, not just a red border.
 7. **Announce what changes.** Loading, success, and error states reach assistive tech (live regions), not just a visual flash.
