@@ -46,14 +46,13 @@ class MorphAnalyticsListView extends StatelessWidget {
             child: CustomScrollView(
               key: const PageStorageKey<String>('morph-analytics'),
               slivers: [
+                // Its own padding, so the gap collapses with it on dismissal.
                 const SliverToBoxAdapter(
                   child: InstructionsInlineTooltip(
                     instructionsEnum: InstructionsEnum.morphAnalyticsList,
+                    padding: EdgeInsets.only(bottom: 16.0),
                   ),
                 ),
-
-                if (!InstructionsEnum.morphAnalyticsList.isToggledOff)
-                  const SliverToBoxAdapter(child: SizedBox(height: 16.0)),
 
                 // Morph feature boxes
                 SliverList(

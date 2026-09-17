@@ -172,6 +172,30 @@ void main() {
       expect(find.byIcon(Icons.check), findsNWidgets(2));
     });
 
+    // #9124 — the menu opens over the card in a near-identical surface colour.
+    testWidgets('is outlined, so it stands apart from the card', (
+      tester,
+    ) async {
+      await pumpHeader(tester, title: shortTitle, width: 400);
+      await openMenu(tester);
+
+      final menuSurface = tester.widget<Material>(
+        find
+            .ancestor(
+              of: find.text('Report content issue'),
+              matching: find.byType(Material),
+            )
+            .first,
+      );
+      final outline = (menuSurface.shape! as OutlinedBorder).side;
+      final primary = Theme.of(
+        tester.element(find.byType(SpanCardHeader)),
+      ).colorScheme.primary;
+
+      expect(outline.style, BorderStyle.solid);
+      expect(outline.color, primary);
+    });
+
     testWidgets('leaves a mode that is off unchecked', (tester) async {
       await pumpHeader(tester, title: shortTitle, width: 400, autoIGC: false);
       await openMenu(tester);

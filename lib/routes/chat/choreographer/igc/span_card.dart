@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
@@ -393,6 +394,8 @@ class _MatchContent extends StatelessWidget {
     required this.listenFirst,
   });
 
+  static const _contentSpacing = 12.0;
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -409,7 +412,6 @@ class _MatchContent extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 24.0),
           child: Column(
-            spacing: 12.0,
             children: [
               Text(
                 descriptionText,
@@ -418,6 +420,7 @@ class _MatchContent extends StatelessWidget {
                 ),
                 textAlign: TextAlign.center,
               ),
+              const SizedBox(height: _contentSpacing),
               isOpen
                   ? ChoicesArray<SpanChoice>(
                       choices: currentMatch.choices?.map((e) {
@@ -483,15 +486,14 @@ class _MatchContent extends StatelessWidget {
                         ),
                       ],
                     ),
-              // Dropped entirely once dismissed, not left to render at zero
-              // height: this Column has `spacing`, which it applies to a
-              // zero-height child too, so a dismissed instruction still grew
-              // the card by 12px every time Listen First was switched on.
+              // The explainer owns the gap above it, so dismissing it collapses
+              // the gap at once — the card only rebuilds when the write syncs.
               if (isOpen &&
                   listenFirst &&
                   !InstructionsEnum.listenFirst.isToggledOff)
                 const InstructionsInlineTooltip(
                   instructionsEnum: InstructionsEnum.listenFirst,
+                  padding: EdgeInsets.only(top: _contentSpacing),
                 ),
             ],
           ),
@@ -692,6 +694,12 @@ class SpanCardHeader extends StatelessWidget {
 
     final menu = PopupMenuButton<SpanCardAction>(
       useRootNavigator: true,
+      // The menu opens over the card in a near-identical surface colour, so it
+      // takes the card's primary outline to stand apart from it (#9124).
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppConfig.borderRadius / 2),
+        side: BorderSide(color: Theme.of(context).colorScheme.primary),
+      ),
       // An unnamed PopupMenuButton falls back to the framework default, and
       // the a11y floor check does not cover it. The tooltip is suppressed
       // inside this card (see SpanCard.build), so the icon carries the name.
