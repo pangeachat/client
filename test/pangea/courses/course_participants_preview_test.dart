@@ -14,6 +14,7 @@ import 'package:fluffychat/pangea/common/constants/default_power_level.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_participants_preview.dart';
 import 'package:fluffychat/routes/chat/chat_details/participant_card.dart';
+import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../fake_pangea_controller.dart';
 import '../get_test_client.dart';
@@ -41,7 +42,8 @@ class _TestMatrix extends Matrix {
 /// user may invite — a section showing every member is exactly the one whose
 /// useful next step is inviting more, and a full one still is — while "See
 /// all" appears only when the card line was truncated, since a subpage
-/// repeating the same cards is not worth offering.
+/// repeating the same cards is not worth offering. And for #9109: a card's
+/// role badge sits across its avatar's top edge rather than in a row below.
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -213,6 +215,40 @@ void main() {
     expect(find.byType(ParticipantCard), findsNWidgets(fits));
     expect(find.text('See all'), findsOneWidget);
     expect(inviteButton(), findsOneWidget);
+
+    await drain(tester);
+  });
+
+  testWidgets('the role badge straddles the avatar top edge', (tester) async {
+    await pumpPreview(tester, courseRoom(members: fits));
+
+    final label = find.text('Admin');
+    final card = find.ancestor(
+      of: label,
+      matching: find.byType(ParticipantCard),
+    );
+    // The badge's chip is the label's nearest Container.
+    final badge = tester.getRect(
+      find.ancestor(of: label, matching: find.byType(Container)).first,
+    );
+    final avatarFinder = find
+        .descendant(of: card, matching: find.byType(Avatar))
+        .first;
+    final avatar = tester.getRect(avatarFinder);
+
+    expect(badge.top, lessThan(avatar.top));
+    expect(badge.bottom, greaterThan(avatar.top));
+    // It rises into the card's own top padding, not over the section header.
+    expect(badge.top, greaterThanOrEqualTo(tester.getRect(card).top));
+    expect(badge.bottom, lessThan(tester.getRect(find.text('Testy')).top));
+
+    // The badge covers part of the avatar; a tap there still reaches the
+    // avatar, which opens the member menu.
+    final avatarBox = tester.renderObject(avatarFinder);
+    final hit = tester.hitTestOnBinding(
+      Offset(badge.center.dx, badge.bottom - 2),
+    );
+    expect(hit.path.map((entry) => entry.target), contains(avatarBox));
 
     await drain(tester);
   });
