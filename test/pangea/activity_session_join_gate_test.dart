@@ -13,6 +13,7 @@ import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_model.dart';
 import 'package:fluffychat/features/room_summaries/activity_sessions_status_model.dart';
 import 'package:fluffychat/features/room_summaries/activity_summary_status_enum.dart';
+import 'package:fluffychat/features/room_summaries/room_summaries_model.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 
@@ -241,6 +242,50 @@ void main() {
         model.getSessionsByStatus(ActivitySummaryStatus.notStarted),
         hasLength(1),
       );
+    });
+  });
+
+  group('ActivitySessionSummariesModel.withPreviews — the start page\'s live '
+      'join list (#9134)', () {
+    RoomSummaryResponse waiting() => RoomSummaryResponse(
+      membershipSummary: {ana: 'join'},
+      activityId: 'act-1',
+      activityPlan: plan(2),
+      activityRoles: ActivityRolesModel({
+        'role_0': ActivityRoleModel(id: 'role_0', userId: ana),
+      }),
+    );
+
+    RoomSummaryResponse filled() => RoomSummaryResponse(
+      membershipSummary: {ana: 'join', bot: 'join'},
+      activityId: 'act-1',
+      activityPlan: plan(2),
+      activityRoles: fullRoles(),
+    );
+
+    test('a fresher read showing the bot took the last seat stops offering '
+        'the session', () {
+      final model = ActivitySessionSummariesModel({
+        '!session:x': waiting(),
+      }, activityId: 'act-1');
+      expect(model.openSessions, {'!session:x'});
+
+      final updated = model.withPreviews({'!session:x': filled()});
+
+      expect(updated.openSessions, isEmpty);
+    });
+
+    test('a session the fresher read leaves out keeps its last read — '
+        'discovery never carries the rooms the learner has joined', () {
+      final model = ActivitySessionSummariesModel({
+        '!left-out:x': waiting(),
+        '!session:x': waiting(),
+      }, activityId: 'act-1');
+
+      final updated = model.withPreviews({'!session:x': filled()});
+
+      expect(updated.getRoomSummary('!left-out:x'), isNotNull);
+      expect(updated.openSessions, {'!left-out:x'});
     });
   });
 }

@@ -29,6 +29,15 @@ class ActivitySessionSummariesModel extends RoomSummariesModel {
 
   ActivitySessionsStatusModel get activitySessionStatuses =>
       ActivitySessionsStatusModel(_activityInstances);
+
+  /// This model with [previews] laid over it: a fresher read replaces the
+  /// sessions it covers, and every session it leaves out keeps its last read.
+  ActivitySessionSummariesModel withPreviews(
+    Map<String, RoomSummaryResponse> previews,
+  ) => ActivitySessionSummariesModel({
+    ..._roomSummaries,
+    ...previews,
+  }, activityId: activityId);
 }
 
 class CourseInfoSummariesModel extends RoomSummariesModel {

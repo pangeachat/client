@@ -163,6 +163,7 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
     _initSummariesFromCache();
     _load();
 
+    DiscoveredSessionsCache.instance.addListener(_onDiscoveredSessionsChanged);
     PanelFocusController.instance.addListener(_onPanelFocusChanged);
     _syncTutorialRegistration();
     _subscribeTutorialRoomState();
@@ -197,6 +198,24 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
     _summariesLoading = cached == null;
   }
 
+  /// Keep the join list live while the page stays open, from the same cache
+  /// the course page renders its Open state from (#9134). Discovery re-reads
+  /// the course spaces on sync, and a session filling announces itself into
+  /// them (#8735), so a session that fills while the learner waits stops being
+  /// offered. Laid over the page's own read rather than replacing it:
+  /// discovery leaves out sessions the learner has joined and the page's
+  /// per-room extras.
+  void _onDiscoveredSessionsChanged() {
+    final cached = DiscoveredSessionsCache.instance.forActivity(
+      widget.activityId,
+    );
+    if (!mounted || cached == null) return;
+    setState(
+      () => _roomSummariesModel = _roomSummariesModel.withPreviews(cached),
+    );
+    _maybeStartStartPageTutorials();
+  }
+
   @override
   void didUpdateWidget(covariant ActivitySessionStartPage oldWidget) {
     super.didUpdateWidget(oldWidget);
@@ -220,6 +239,9 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
   void dispose() {
     scrollController.dispose();
     pickedRoleNotifier.dispose();
+    DiscoveredSessionsCache.instance.removeListener(
+      _onDiscoveredSessionsChanged,
+    );
     PanelFocusController.instance.removeListener(_onPanelFocusChanged);
     _tutorialRoomStateSubscription?.cancel();
     _unregisterTutorialLaunchers();
