@@ -5542,7 +5542,6 @@
         }
     },
     "tutorialWorldMapPickActivity": "This is a conversation activity you can play with me or a partner. Click on it to start playing!",
-    "tutorialActivityGoals": "Here are the goals for the role you're playing, send messages that complete them and earn stars!",
     "tutorialCoursePlanIntro": "Welcome to your course, {courseName}! It will take you through a learning journey with your course mates.",
     "@tutorialCoursePlanIntro": {
         "placeholders": {
@@ -5570,7 +5569,6 @@
     "tutorialSequenceTitleWorldOrientation": "Exploring the world",
     "tutorialSequenceTitleCourseOrientation": "Exploring your course",
     "tutorialSequenceTitleAppTour": "App tour",
-    "tutorialSequenceTitleActivityGoals": "Goals & stars",
     "tutorialSequenceTitleChat": "Language tools",
     "tutorialSequenceTitleOpenSessions": "Open sessions",
     "tutorialSequenceTitleActivityRoles": "Choosing a role",

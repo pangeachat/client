@@ -23,7 +23,6 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_constants.dart';
-import 'package:fluffychat/features/activity_sessions/activity_summary_room_extension.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
@@ -56,10 +55,8 @@ import 'package:fluffychat/features/tutorials/tutorial_constants.dart';
 import 'package:fluffychat/features/tutorials/tutorial_enum.dart';
 import 'package:fluffychat/features/tutorials/tutorial_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_overlay_controller.dart';
-import 'package:fluffychat/features/tutorials/tutorial_seen_backfill.dart';
 import 'package:fluffychat/features/tutorials/tutorial_sequences.dart';
 import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
-import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
@@ -793,10 +790,6 @@ class ChatController extends State<ChatPageWithRoom>
         TutorialEnum.selectModeButtons,
         _openToolbarForSelectModeTutorial,
         role: TutorialLaunchRole.opener,
-      )
-      ..registerLauncher(
-        TutorialEnum.activityGoals,
-        _launchActivityGoalsTutorial,
       );
   }
 
@@ -814,104 +807,7 @@ class ChatController extends State<ChatPageWithRoom>
         TutorialEnum.selectModeButtons,
         _openToolbarForSelectModeTutorial,
         role: TutorialLaunchRole.opener,
-      )
-      ..unregisterLauncher(
-        TutorialEnum.activityGoals,
-        _launchActivityGoalsTutorial,
       );
-  }
-
-  /// Whether the goal header the tutorial points at is actually on screen.
-  /// The conditions themselves live in [activityGoalHeaderGate], beside the
-  /// activity's other gates and testable without a room.
-  bool get _hasGoalHeader => activityGoalHeaderGate(
-    showsStartPage: room.showsActivityStartPage,
-    showsActivityChatUI: room.showActivityChatUI,
-    hasSummary: room.hasGeneratedActivitySummary,
-    hasPickedRole: room.hasPickedRole,
-    hasGoals: room.ownRole?.allGoals.isNotEmpty ?? false,
-  );
-
-  /// At most one pending check, so the plan-hydrate notifier costs one callback
-  /// rather than one per notification.
-  bool _goalsTutorialCheckScheduled = false;
-
-  void _maybeStartActivityGoalsTutorial() {
-    if (_goalsTutorialCheckScheduled) return;
-    _goalsTutorialCheckScheduled = true;
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _goalsTutorialCheckScheduled = false;
-      _checkActivityGoalsTutorial();
-    });
-    // A post-frame callback only runs if a frame is coming, and this trigger's
-    // re-ask signals (plan hydration, sync, the profile) arrive between frames;
-    // without asking for one, the flag above latches and swallows every later
-    // re-ask.
-    WidgetsBinding.instance.ensureVisualUpdate();
-  }
-
-  /// Every condition below starts out false on a cold open — the plan is still
-  /// being fetched so there is no role or goals, panel focus lands a frame late,
-  /// and the profile is still loading — so nothing here concludes, it just
-  /// re-asks. See tutorials.instructions.md on trigger evaluation.
-  void _checkActivityGoalsTutorial() {
-    if (!mounted) return;
-
-    if (!MatrixState
-        .pangeaController
-        .userController
-        .initCompleter
-        .isCompleted) {
-      return;
-    }
-    // The veteran backfill may be about to mark this tutorial seen — wait for
-    // its one evaluation; resolution re-asks (registered in _pangeaInit).
-    if (!TutorialSeenBackfill.instance.isResolved) return;
-    if (!tutorialOverlayController.isPending(TutorialEnum.activityGoals)) {
-      return;
-    }
-    // Surface first, so a resume can actually be shown.
-    if (!isFocused || !_hasGoalHeader) return;
-
-    // Already running: it may have been left off screen — this chat's own
-    // dispose force-closes every overlay, the tutorial's included.
-    if (tutorialOverlayController.hasActiveSequence) {
-      tutorialOverlayController.resumeIfStranded();
-    }
-    // Requested even while another sequence runs — requestSequence QUEUES.
-    // Returning early instead dropped the request whenever the chat sequence
-    // held the overlay, and the next re-ask was typically the activity's end
-    // ("goal tutorial only appears when the activity ends", the playtest bug).
-    tutorialOverlayController.requestSequence(
-      TutorialSequences.activityGoalsSequence,
-    );
-  }
-
-  /// Points at the goal header and does nothing else — a tap anywhere just
-  /// dismisses the card.
-  ///
-  /// It used to expand the goal list for the learner. In play that misled them:
-  /// the expanded header leads with **"I'm done!"**, so a step whose whole
-  /// message is "here is what to play for" handed them the button that ends the
-  /// activity before they had said anything. Same reasoning as the app tour's
-  /// Practice step — showing where something lives is not the same as opening
-  /// it, and a step that acts for the learner has to be sure the action is one
-  /// they would want.
-  Future<void> _launchActivityGoalsTutorial() async {
-    if (!mounted || !_hasGoalHeader) return;
-    tutorialOverlayController.launchTutorial(
-      context: context,
-      tutorial: TutorialModel(
-        tutorialType: TutorialEnum.activityGoals,
-        stepsData: [
-          TutorialStepData.single(
-            targetKey: TutorialTargetIds.activityGoalHeader,
-            canShowNextStep: () => true,
-          ),
-        ],
-      ),
-      isFocused: isFocused,
-    );
   }
 
   /// Re-opens the toolbar so SelectModeButtons mounts and registers as the
@@ -997,9 +893,6 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   void _activityRolesListener() {
-    // Role state is what decides whether the goal header exists, so this is also
-    // where the goal-header tutorial gets its chance.
-    _maybeStartActivityGoalsTutorial();
     if (activeGoalNotifier.value != null || room.currentGoal == null) return;
     activeGoalNotifier.value = room.currentGoal;
   }
@@ -1180,19 +1073,6 @@ class ChatController extends State<ChatPageWithRoom>
         version: room.pinnedActivityVersionId,
         revalidate: true,
       );
-      // The goal header only exists once the plan lands, and the plan is
-      // fetched, so hydration is the moment to re-ask.
-      ActivityPlanRepo.instance.addListener(_maybeStartActivityGoalsTutorial);
-      // And once more when the profile lands, in case it loads after every other
-      // hook has already had its turn (a fresh login straight into an activity).
-      MatrixState.pangeaController.userController.initCompleter.future.then(
-        (_) => _maybeStartActivityGoalsTutorial(),
-      );
-      // And when the veteran backfill resolves — it may have just marked this
-      // tutorial seen, or cleared the way for it.
-      TutorialSeenBackfill.instance.ensureResolved().then(
-        (_) => _maybeStartActivityGoalsTutorial(),
-      );
     }
 
     _goalCompletionSubscription?.cancel();
@@ -1203,23 +1083,20 @@ class ChatController extends State<ChatPageWithRoom>
         .listen(_goalCompletionListener);
 
     _activityRolesSubscription?.cancel();
-    // Power levels and membership gate the goal header too
-    // (activityGoalHeaderGate reads showActivityChatUI and assignedRoles), and
-    // either can land after the role state on a fresh session — so they re-ask
-    // like role events do. The listener is idempotent and the check coalesces,
-    // so member-event volume costs one post-frame callback.
+    // Role state only: the listener reads [Room.currentGoal], which resolves
+    // through the activity-role event and the awarded-goal state the goal
+    // stream already covers. Power-level and membership events used to be here
+    // too, for the goal-header tutorial's own gate — that tutorial is gone
+    // (#9145) and nothing left in this listener reads either.
     _activityRolesSubscription = room.client.onRoomState.stream
         .where(
           (event) =>
               event.roomId == room.id &&
-              (event.state.type == PangeaEventTypes.activityRole ||
-                  event.state.type == EventTypes.RoomPowerLevels ||
-                  event.state.type == EventTypes.RoomMember),
+              event.state.type == PangeaEventTypes.activityRole,
         )
         .listen((_) => _activityRolesListener());
 
     _registerTutorialLaunchers();
-    _maybeStartActivityGoalsTutorial();
 
     inputFocus.addListener(_inputFocusListener);
 
@@ -1528,7 +1405,6 @@ class ChatController extends State<ChatPageWithRoom>
     _tokensSubscription?.cancel();
     _readingAssistanceTutorialSubscription?.cancel();
     PanelFocusController.instance.removeListener(_onFocusChanged);
-    ActivityPlanRepo.instance.removeListener(_maybeStartActivityGoalsTutorial);
     _router.routeInformationProvider.removeListener(_onRouteChanged);
     scrollController.dispose();
     inputFocus.dispose();
@@ -1541,9 +1417,9 @@ class ChatController extends State<ChatPageWithRoom>
     // Nothing can show the remaining steps once this chat is gone. Progress is
     // persisted, so the next chat resumes where this one left off, and giving
     // the sequence up here is what lets a queued one start.
-    tutorialOverlayController
-      ..releaseSequence(TutorialSequences.chatTutorialSequence)
-      ..releaseSequence(TutorialSequences.activityGoalsSequence);
+    tutorialOverlayController.releaseSequence(
+      TutorialSequences.chatTutorialSequence,
+    );
     activeGoalNotifier.dispose();
     //Pangea#
     super.dispose();
@@ -1596,9 +1472,6 @@ class ChatController extends State<ChatPageWithRoom>
     if (!mounted) return;
     if (isFocused) {
       _resumeTimeline();
-      // Focus is published a frame after the chat mounts, so this is the first
-      // point the goal-header tutorial can pass its own focus check.
-      _maybeStartActivityGoalsTutorial();
     } else {
       _suspendTimeline();
     }

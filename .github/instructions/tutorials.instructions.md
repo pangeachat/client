@@ -59,7 +59,7 @@ A second controller would contend for the same overlay key and the loser would s
 
 **A tap step MAY act for the learner.** Tapping anywhere is the whole interaction; the step may then open the toolbar, open the panel it was describing, or open the activity it is pointing at, and gates its advance on that having worked. Most steps are tap steps, because most of what a tutorial does is *show*.
 
-**Acting for the learner is a choice each step earns, not the default.** A step only performs the thing it is describing when that is plainly what the learner would want next. Two do not: the app tour's Practice step, because the button is disabled until ten words are collected; and the activity goal header, because expanding it leads with *"I'm done!"* and a learner nudged into tapping that finishes the activity before playing it. Both simply show where the thing is. When in doubt, show.
+**Acting for the learner is a choice each step earns, not the default.** A step only performs the thing it is describing when that is plainly what the learner would want next. One does not: the app tour's Practice step, because the button is disabled until ten words are collected. It simply shows where the thing is. When in doubt, show.
 
 **An armed step hands the screen back.** Where the point of the step is that the learner does it themselves — picking a role, joining an open session, opening an activity from the course carousel — the tutorial cannot absorb their taps: every tap reaches the app. And any tap while the card is up, on the lit target or off it, **also completes the step and marks it seen**: the learner saw the card and acted, and the earlier leave-it-armed dismissal re-offered the same card on every return visit, which read as the tutorial repeating itself. The arming — the step's done-signal — still matters with the card away: a step whose overlay was torn down (its surface unmounted, another sequence ran in front) completes quietly when the learner does the thing anyway. So an armed step needs no timeout: a learner can never be stuck under the scrim waiting.
 
@@ -100,7 +100,6 @@ A tutorial is offered when it is unseen, its trigger fires, and its gate passes.
 | `welcome` | Orientation | first arrival at **either** the world map or a course plan — once ever, whichever comes first |
 | `worldMap` | Orientation | first world map with pins actually rendered |
 | `coursePlan` | Orientation | first joined course whose page is showing its Activities row |
-| `activityGoals` | Orientation | first activity chat showing a goal header |
 | `appTour` | Orientation | next arrival at a map after the learner's first finished activity |
 | `openSessions` | Orientation | first open-sessions join list showing, with sessions in it |
 | `activityRoles` | Orientation | first role selection showing its role cards |
@@ -114,14 +113,14 @@ That yields two paths, and no learner is ever taught the same thing twice:
 
 | Arrives | Sees, in order |
 |---|---|
-| **with no course code** | `welcome` + `worldMap` → `activityGoals` on their first activity → `appTour` after their first finished activity → `coursePlan` whenever they later join a course |
-| **by course code** | `welcome` + `coursePlan` → `activityGoals` → `appTour`, whose last step is the **World** icon → `worldMap` on the map it opens |
+| **with no course code** | `welcome` + `worldMap` → `appTour` after their first finished activity → `coursePlan` whenever they later join a course |
+| **by course code** | `welcome` + `coursePlan` → `appTour`, whose last step is the **World** icon → `worldMap` on the map it opens |
 
 The app tour ending on World is what closes the second path: a course-code learner may never have opened the world map, so the tour hands them to it, and the world tutorial picks up from there.
 
 ### Veterans skip what they have already lived
 
-An account with a **finished activity session on record at sign-in** is marked past `welcome`, `worldMap`, `appTour`, `activityGoals`, and `activityRoles`, in one profile write ([`TutorialSeenBackfill`](../../lib/features/tutorials/tutorial_seen_backfill.dart)). Those five narrate a flow this learner has already lived — being greeted, toured, and told what a goal header is annoyed the veterans it happened to. The per-case tutorials stay offerable: the open-sessions list, the chat tools, and the course plan are surfaces a veteran may genuinely never have used, and best usability wins there.
+An account with a **finished activity session on record at sign-in** is marked past `welcome`, `worldMap`, `appTour`, and `activityRoles`, in one profile write ([`TutorialSeenBackfill`](../../lib/features/tutorials/tutorial_seen_backfill.dart)). Those four narrate a flow this learner has already lived — being greeted and toured annoyed the veterans it happened to. The per-case tutorials stay offerable: the open-sessions list, the chat tools, and the course plan are surfaces a veteran may genuinely never have used, and best usability wins there.
 
 The judgment is made **once per session, when the rooms first load** — a learner who finishes their *first* activity mid-session is not a veteran and keeps their tour. Triggers gate on the evaluation having run, and its resolution re-asks them, because on a big account the map can render pins (and the welcome could fire) before the first sync delivers the rooms that prove the learner a veteran.
 
@@ -172,15 +171,13 @@ Mirrors `worldMap` — an introduction to the surface, then "go start one", with
 
 **No two-role filter here, unlike the map.** On the world map, two-role activities are singled out because the bot fills one seat and a 3+ role activity is a dead end for a learner with nobody to play with. Inside a course that reasoning inverts: its activities were hand-picked by the course author, so a 3+ role one is a deliberate part of the syllabus — which is why the [world map](world-map.instructions.md) already declines to demote it there. The step points at the row and lets the learner choose.
 
-### activityGoals
+### Nothing orients inside the activity chat
 
-One step, one tap. It lights the **goal header** once the activity chat is running: playing your role and completing goals earns stars, and stars move you through a course's Missions.
+The activity chat carries no orientation step. There was a goal-header step ([#9145](https://github.com/pangeachat/client/issues/9145)): it lit the floating goal header and said that playing your role and completing goals earns stars. It was removed because the header teaches that by itself — a learner earns a star within a few messages and reads the bar without being told — while the card kept arriving late in the activity, after the star, and interrupted the play it was describing. It also contended for the single overlay with the chat sequence, so whichever was requested first held the screen and the other waited behind it.
 
-**It points, and does nothing else** — a tap anywhere dismisses the card. It used to expand the goal list for the learner, which in play misled them: the expanded header leads with **"I'm done!"**, so a step whose whole message is *here is what to play for* handed them the button that ends the activity before they had said anything. Showing where something lives is not the same as opening it.
+A waiting-room step went earlier, pointing at the invite and play-with-the-bot controls: too little earned for an interruption at that moment, and the waiting room already shows both controls plainly. Completing every goal and finishing for credit get nothing either — those surfaces explain themselves. The start page in front of the chat carries its own two one-step tutorials, `openSessions` and `activityRoles`, below.
 
-**Nothing else inside the activity *chat* gets a step.** There was a waiting-room step before this one, pointing at the invite and play-with-the-bot controls — it was removed because it earned too little for an interruption at that moment, and the waiting room already shows both controls plainly. Completing every goal and finishing for credit likewise get nothing: those surfaces explain themselves, and a second interruption inside a learner's first activity costs more attention than it returns. The start page in front of the chat carries its own two one-step tutorials — `openSessions` and `activityRoles`, below.
-
-The chat sequence may fire in the same activity, on the learner's first L2 message containing a new word. They stay **separate sequences with separate counters** — the learner sees two short progress bars, each card naming its own walkthrough, not one long one — and whichever asks for the overlay second queues behind the first.
+So the chat sequence is the only tutorial that runs in this surface, on the learner's first L2 message containing a word new to them. With nothing else asking for the overlay here it starts when that message arrives, instead of queueing behind a card the learner has yet to dismiss.
 
 ### openSessions and activityRoles
 
