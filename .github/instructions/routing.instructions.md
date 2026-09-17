@@ -634,16 +634,18 @@ browse public) ride the panel header as compact right-justified icons, so the
 joined-course list keeps the vertical space; when the learner is in no courses
 yet they drop to full-width buttons in the body as the empty state.
 
+**Courses are ordered by recent activity.** A course's activity is the newest event in the course space itself or in any of its chats and activity sessions the learner has joined. This is the same timestamp the chat list sorts by. The course space's own timeline holds little beyond setup, so the space alone is not enough. The most recently active course comes first, and the order updates live as activity arrives: sending a message in one of a course's chats moves that course to the top of its group. Pending invites have no activity yet, so they are ordered by name. Courses with tied activity are also ordered by name (#9004).
+
 **The Courses hub groups by role — only when the learner holds both.** A
 learner who both administers courses and takes courses sees the list split
 into **Teaching** (courses where they hold admin power, ≥ 100 — the same signal
 as the knock badge; there is no separate teacher role) and **Learning** (every
-other joined course), each alphabetical, with pending invites in their own
+other joined course), each in activity order, with pending invites in their own
 **Invited** group ahead of both (an invite's role is unknown until join, so it
 is never sorted as teaching). Section headers carry the count and collapse on
 tap; collapsed state is device-local view state, never in the URL, and resets
 with the app. **A learner who holds only one role sees no headers at all** —
-the flat invited-first alphabetical list — so the split appears only where it
+the flat invited-first list, in activity order — so the split appears only where it
 helps (#8425). Applies on web and narrow alike; content-fit counts the header
 rows. The mobile course shortcut is a single avatar and does not carry role.
 
