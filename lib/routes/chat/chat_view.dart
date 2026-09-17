@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:badges/badges.dart';
-import 'package:go_router/go_router.dart';
+import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
@@ -14,6 +14,7 @@ import 'package:fluffychat/features/activity_sessions/activity_roles_room_extens
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_finished_status_message.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_rating_card.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_popup_menu.dart';
@@ -24,14 +25,15 @@ import 'package:fluffychat/routes/chat/calls/chat_call_host.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/routes/chat/chat_app_bar_list_tile.dart';
 import 'package:fluffychat/routes/chat/chat_app_bar_title.dart';
+import 'package:fluffychat/routes/chat/chat_details/chat_context_menu_action.dart';
 import 'package:fluffychat/routes/chat/chat_event_list.dart';
 import 'package:fluffychat/routes/chat/chat_floating_action_button.dart';
 import 'package:fluffychat/routes/chat/chat_input_bar.dart';
 import 'package:fluffychat/routes/chat/pinned_events.dart';
+import 'package:fluffychat/routes/chat_list/chat_list.dart';
 import 'package:fluffychat/routes/world/analytics_header_avatar.dart';
 import 'package:fluffychat/utils/account_config.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
-import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
@@ -79,29 +81,28 @@ class ChatView extends StatelessWidget {
     // Whether calling is offered at all is ChatCallButtons' own decision, not a
     // condition written here: this list cannot be mounted without a live
     // ChatController, so a gate at this site is a gate no test can reach.
+    final space = controller.room.pangeaSpaceParents.firstOrNull;
     return [
       ChatCallButtons(controller.room),
-      IconButton(
-        icon: const Icon(Icons.search_outlined),
-        tooltip: L10n.of(context).search,
-        onPressed: () {
-          NavigationUtil.goToSpaceRoute(controller.room.id, [
-            'search',
-          ], context);
-        },
-      ),
-      IconButton(
-        icon: const Icon(Icons.settings_outlined),
-        tooltip: L10n.of(context).chatDetails,
-        onPressed: () {
-          if (GoRouterState.of(context).uri.path.endsWith('/details')) {
-            NavigationUtil.goToSpaceRoute(controller.room.id, [], context);
-          } else {
-            NavigationUtil.goToSpaceRoute(controller.room.id, [
-              'details',
-            ], context);
-          }
-        },
+      // Search and chat details used to be icons of their own here. They now
+      // sit in this More menu, alongside every action the chat-list row's
+      // long-press menu offers, so none of them needs a long-press to reach.
+      PopupMenuButton<ChatContextAction>(
+        useRootNavigator: true,
+        itemBuilder: (itemContext) => chatContextMenuItems(
+          itemContext,
+          room: controller.room,
+          space: space,
+          source: ChatMenuSource.chatHeader,
+        ),
+        onSelected: (action) => handleChatContextAction(
+          action,
+          context: context,
+          outerContext: context,
+          room: controller.room,
+          space: space,
+          source: ChatMenuSource.chatHeader,
+        ),
       ),
       ?analyticsAvatar,
     ];
