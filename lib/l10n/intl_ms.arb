@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-09-16 10:14:16.900014",
+    "@@last_modified": "2026-09-17 11:52:08.494146",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "Giliran ini tidak menganugerahkan bintang, jadi tiada apa yang perlu dipersoalkan di sini.",
     "orchestratorFeedbackCommentRequired": "Tambah komen supaya kami tahu apa yang perlu diperbaiki",
     "orchestratorFeedbackSubmit": "Hantar",
-    "orchestratorFeedbackThanks": "Ditandakan. Terima kasih!"
+    "orchestratorFeedbackThanks": "Ditandakan. Terima kasih!",
+    "analyticsSubscriptionWarningTitle": "Kemajuan anda tidak dijejaki",
+    "analyticsSubscriptionWarningBody": "Tanpa langganan, mesej anda tidak memperoleh XP atau menambah perkataan dan tatabahasa baharu."
 }

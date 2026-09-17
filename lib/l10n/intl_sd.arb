@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-09-16 10:14:21.105976",
+    "@@last_modified": "2026-09-17 11:52:11.292501",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "هن موڙ ڪو به ستارو نه ڏنو، تنهنڪري هتي سوال ڪرڻ لاءِ ڪجهه به ناهي.",
     "orchestratorFeedbackCommentRequired": "هڪ تبصرو شامل ڪريو ته جيئن اسان کي خبر پوي ته ڇا درست ڪرڻو آهي",
     "orchestratorFeedbackSubmit": "موڪليو",
-    "orchestratorFeedbackThanks": "نشان لڳايو ويو. مهرباني!"
+    "orchestratorFeedbackThanks": "نشان لڳايو ويو. مهرباني!",
+    "analyticsSubscriptionWarningTitle": "توهان جي ترقي ٽريڪ نه ٿي رهي آهي",
+    "analyticsSubscriptionWarningBody": "سبسڪرپشن کان سواءِ، توهان جا پيغام XP حاصل نٿا ڪن يا نوان لفظ ۽ گرامر شامل نٿا ڪن."
 }

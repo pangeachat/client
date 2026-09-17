@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-09-16 10:14:13.929869",
+    "@@last_modified": "2026-09-17 11:52:07.409537",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "Бұл айналымда жұлдыздар берілмеді, сондықтан мұнда сұрақ қоятын ештеңе жоқ.",
     "orchestratorFeedbackCommentRequired": "Не түзету керектігін білуіміз үшін түсініктеме қосыңыз",
     "orchestratorFeedbackSubmit": "Жіберу",
-    "orchestratorFeedbackThanks": "Белгіленді. Рахмет!"
+    "orchestratorFeedbackThanks": "Белгіленді. Рахмет!",
+    "analyticsSubscriptionWarningTitle": "Сіздің үлгеріміңіз қадағаланбайды",
+    "analyticsSubscriptionWarningBody": "Жазылымсыз сіздің хабарламаларыңыз XP ұпайларын әкелмейді немесе жаңа сөздер мен грамматиканы қоспайды."
 }

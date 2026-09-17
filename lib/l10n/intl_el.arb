@@ -3400,7 +3400,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-09-16 10:14:08.575568",
+    "@@last_modified": "2026-09-17 11:52:04.163868",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10811,5 +10811,7 @@
     "orchestratorFeedbackNoAwards": "Αυτή η σειρά δεν απένειμε αστέρια, οπότε δεν υπάρχει τίποτα να αμφισβητήσεις εδώ.",
     "orchestratorFeedbackCommentRequired": "Πρόσθεσε ένα σχόλιο για να ξέρουμε τι να διορθώσουμε",
     "orchestratorFeedbackSubmit": "Αποστολή",
-    "orchestratorFeedbackThanks": "Έγινε αναφορά. Ευχαριστούμε!"
+    "orchestratorFeedbackThanks": "Έγινε αναφορά. Ευχαριστούμε!",
+    "analyticsSubscriptionWarningTitle": "Η πρόοδός σας δεν παρακολουθείται",
+    "analyticsSubscriptionWarningBody": "Χωρίς συνδρομή, τα μηνύματά σας δεν κερδίζουν XP ούτε προσθέτουν νέες λέξεις και γραμματική."
 }

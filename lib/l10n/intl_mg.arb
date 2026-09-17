@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-09-16 10:14:16.395110",
+    "@@last_modified": "2026-09-17 11:52:08.297026",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "Tsy nisy kintana nomena tamin'ity fihodinana ity, ka tsy misy azo anontaniana eto.",
     "orchestratorFeedbackCommentRequired": "Ampio fanehoan-kevitra mba ho fantatray izay tokony ahitsy",
     "orchestratorFeedbackSubmit": "Alefaso",
-    "orchestratorFeedbackThanks": "Voamarika. Misaotra!"
+    "orchestratorFeedbackThanks": "Voamarika. Misaotra!",
+    "analyticsSubscriptionWarningTitle": "Tsy voarakitra ny fandrosoanao",
+    "analyticsSubscriptionWarningBody": "Raha tsy misy famandrihana, ny hafatrao dia tsy mahazo XP na manampy teny sy fitsipika vaovao."
 }

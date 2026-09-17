@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-09-16 10:14:17.890010",
+    "@@last_modified": "2026-09-17 11:52:08.898731",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "असी टर्न असिना स्टार पीदे, मर्मदी असीदा खंगनिबा अमुत्तंग लैते।",
     "orchestratorFeedbackCommentRequired": "अमुक फगत्निबा करिनो हैबिदु खंगनिबाना कमेंट अम पीयू",
     "orchestratorFeedbackSubmit": "थमो",
-    "orchestratorFeedbackThanks": "फ्लैग तौरे। थगत्चरी!"
+    "orchestratorFeedbackThanks": "फ्लैग तौरे। थगत्चरी!",
+    "analyticsSubscriptionWarningTitle": "నంగ్గి ప్రోగ్రెస్ ట్రాక్ తౌద్రి",
+    "analyticsSubscriptionWarningBody": "సబ్స్క్రిప్షన్ లৈতబాద, నంగ్గి మెసేజసింగ్నా XP ఫంగ్లోయి అథూబా వర్డ్స్ అమసుంగ్ గ్రామర్ హప్లోయి."
 }

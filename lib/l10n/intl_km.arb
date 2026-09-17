@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-09-16 10:14:13.973230",
+    "@@last_modified": "2026-09-17 11:52:07.205883",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "វេននេះមិនបានផ្តល់ផ្កាយទេ ដូច្នេះគ្មានអ្វីត្រូវសួរនៅទីនេះទេ។",
     "orchestratorFeedbackCommentRequired": "បន្ថែមមតិយោបល់ដើម្បីឱ្យយើងដឹងពីអ្វីដែលត្រូវជួសជុល",
     "orchestratorFeedbackSubmit": "ផ្ញើ",
-    "orchestratorFeedbackThanks": "បានដាក់ទង់។ អរគុណ!"
+    "orchestratorFeedbackThanks": "បានដាក់ទង់។ អរគុណ!",
+    "analyticsSubscriptionWarningTitle": "វឌ្ឍនភាពរបស់អ្នកមិនត្រូវបានតាមដានទេ",
+    "analyticsSubscriptionWarningBody": "បើគ្មានការជាវទេ សាររបស់អ្នកមិនទទួលបាន XP ឬបន្ថែមពាក្យ និងវេយ្យាករណ៍ថ្មីៗទេ។"
 }

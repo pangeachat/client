@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-09-16 10:14:07.760405",
+    "@@last_modified": "2026-09-17 11:52:03.927616",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9923,5 +9923,7 @@
     "orchestratorFeedbackNoAwards": "In dieser Runde wurden keine Sterne vergeben, daher gibt es hier nichts zu hinterfragen.",
     "orchestratorFeedbackCommentRequired": "Füge einen Kommentar hinzu, damit wir wissen, was wir beheben müssen",
     "orchestratorFeedbackSubmit": "Senden",
-    "orchestratorFeedbackThanks": "Gemeldet. Danke!"
+    "orchestratorFeedbackThanks": "Gemeldet. Danke!",
+    "analyticsSubscriptionWarningTitle": "Dein Fortschritt wird nicht verfolgt",
+    "analyticsSubscriptionWarningBody": "Ohne Abonnement bringen deine Nachrichten weder XP noch neue Wörter und Grammatik."
 }

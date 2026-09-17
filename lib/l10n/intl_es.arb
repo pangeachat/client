@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-09-16 10:14:08.469965",
+    "@@last_modified": "2026-09-17 11:52:04.297133",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8155,5 +8155,7 @@
     "orchestratorFeedbackNoAwards": "En este turno no se otorgaron estrellas, así que no hay nada que cuestionar aquí.",
     "orchestratorFeedbackCommentRequired": "Añade un comentario para que sepamos qué arreglar",
     "orchestratorFeedbackSubmit": "Enviar",
-    "orchestratorFeedbackThanks": "Marcado. ¡Gracias!"
+    "orchestratorFeedbackThanks": "Marcado. ¡Gracias!",
+    "analyticsSubscriptionWarningTitle": "Tu progreso no se está registrando",
+    "analyticsSubscriptionWarningBody": "Sin una suscripción, tus mensajes no ganan XP ni añaden nuevas palabras y gramática."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-09-16 10:14:13.800117",
+    "@@last_modified": "2026-09-17 11:52:07.429125",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "ಈ ತಿರುವಿನಲ್ಲಿ ಯಾವುದೇ ನಕ್ಷತ್ರಗಳನ್ನು ನೀಡಲಾಗಿಲ್ಲ, ಆದ್ದರಿಂದ ಇಲ್ಲಿ ಪ್ರಶ್ನಿಸಲು ಏನೂ ಇಲ್ಲ.",
     "orchestratorFeedbackCommentRequired": "ನಾವು ಏನನ್ನು ಸರಿಪಡಿಸಬೇಕು ಎಂದು ತಿಳಿಯಲು ಕಾಮೆಂಟ್ ಸೇರಿಸಿ",
     "orchestratorFeedbackSubmit": "ಕಳುಹಿಸಿ",
-    "orchestratorFeedbackThanks": "ಫ್ಲ್ಯಾಗ್ ಮಾಡಲಾಗಿದೆ. ಧನ್ಯವಾದಗಳು!"
+    "orchestratorFeedbackThanks": "ಫ್ಲ್ಯಾಗ್ ಮಾಡಲಾಗಿದೆ. ಧನ್ಯವಾದಗಳು!",
+    "analyticsSubscriptionWarningTitle": "ನಿಮ್ಮ ಪ್ರಗತಿಯನ್ನು ಟ್ರ್ಯಾಕ್ ಮಾಡಲಾಗುತ್ತಿಲ್ಲ",
+    "analyticsSubscriptionWarningBody": "ಚಂದಾದಾರಿಕೆ ಇಲ್ಲದೆ, ನಿಮ್ಮ ಸಂದೇಶಗಳು XP ಗಳಿಸುವುದಿಲ್ಲ ಅಥವಾ ಹೊಸ ಪದಗಳು ಮತ್ತು ವ್ಯಾಕರಣವನ್ನು ಸೇರಿಸುವುದಿಲ್ಲ."
 }

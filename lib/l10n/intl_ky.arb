@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-09-16 10:14:14.772499",
+    "@@last_modified": "2026-09-17 11:52:07.592394",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "Бул бурулуш эч кандай жылдыз берген жок, ошондуктан бул жерде суроо бере турган эч нерсе жок.",
     "orchestratorFeedbackCommentRequired": "Эмнени оңдошубуз керектигин билүү үчүн комментарий кошуңуз",
     "orchestratorFeedbackSubmit": "Жөнөтүү",
-    "orchestratorFeedbackThanks": "Белгиленди. Рахмат!"
+    "orchestratorFeedbackThanks": "Белгиленди. Рахмат!",
+    "analyticsSubscriptionWarningTitle": "Прогрессиңиз көзөмөлдөнбөйт",
+    "analyticsSubscriptionWarningBody": "Жазылуусуз билдирүүлөрүңүз XP таппайт же жаңы сөздөрдү жана грамматиканы кошпойт."
 }

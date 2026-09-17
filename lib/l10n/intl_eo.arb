@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-16 10:14:08.066616",
+    "@@last_modified": "2026-09-17 11:52:04.433650",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10881,5 +10881,7 @@
     "orchestratorFeedbackNoAwards": "Ĉi tiu vico ne aljuĝis stelojn, do estas nenio pridubinda ĉi tie.",
     "orchestratorFeedbackCommentRequired": "Aldonu komenton por ke ni sciu kion ripari",
     "orchestratorFeedbackSubmit": "Sendi",
-    "orchestratorFeedbackThanks": "Raportita. Dankon!"
+    "orchestratorFeedbackThanks": "Raportita. Dankon!",
+    "analyticsSubscriptionWarningTitle": "Via progreso ne estas spurata",
+    "analyticsSubscriptionWarningBody": "Sen abono, viaj mesaĝoj ne gajnas XP aŭ aldonas novajn vortojn kaj gramatikon."
 }

@@ -2080,7 +2080,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-09-16 10:14:09.314279",
+    "@@last_modified": "2026-09-17 11:52:04.735804",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10796,5 +10796,7 @@
     "orchestratorFeedbackNoAwards": "Walang iginawad na bituin sa pagkakataong ito, kaya walang dapat kuwestiyunin dito.",
     "orchestratorFeedbackCommentRequired": "Magdagdag ng komento para malaman namin kung ano ang aayusin",
     "orchestratorFeedbackSubmit": "Ipadala",
-    "orchestratorFeedbackThanks": "Na-flag. Salamat!"
+    "orchestratorFeedbackThanks": "Na-flag. Salamat!",
+    "analyticsSubscriptionWarningTitle": "Hindi sinusubaybayan ang iyong pag-usad",
+    "analyticsSubscriptionWarningBody": "Kung walang subscription, hindi makakakuha ng XP ang iyong mga mensahe o makakapagdagdag ng mga bagong salita at grammar."
 }

@@ -2967,7 +2967,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-09-16 10:14:15.252835",
+    "@@last_modified": "2026-09-17 11:52:07.866641",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10717,5 +10717,7 @@
     "orchestratorFeedbackNoAwards": "Šis ėjimas neapdovanojo jokiomis žvaigždėmis, todėl čia nėra ko klausti.",
     "orchestratorFeedbackCommentRequired": "Pridėkite komentarą, kad žinotume, ką taisyti",
     "orchestratorFeedbackSubmit": "Siųsti",
-    "orchestratorFeedbackThanks": "Pažymėta. Ačiū!"
+    "orchestratorFeedbackThanks": "Pažymėta. Ačiū!",
+    "analyticsSubscriptionWarningTitle": "Jūsų pažanga nesekama",
+    "analyticsSubscriptionWarningBody": "Be prenumeratos jūsų žinutės neuždirba XP ir neprideda naujų žodžių bei gramatikos."
 }

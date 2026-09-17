@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-09-16 10:14:05.929547",
+    "@@last_modified": "2026-09-17 11:52:03.021569",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "Ovaj krug nije dodijelio zvjezdice, tako da ovdje nema ništa za dovoditi u pitanje.",
     "orchestratorFeedbackCommentRequired": "Dodajte komentar kako bismo znali šta da popravimo",
     "orchestratorFeedbackSubmit": "Pošalji",
-    "orchestratorFeedbackThanks": "Označeno. Hvala!"
+    "orchestratorFeedbackThanks": "Označeno. Hvala!",
+    "analyticsSubscriptionWarningTitle": "Vaš napredak se ne prati",
+    "analyticsSubscriptionWarningBody": "Bez pretplate, vaše poruke ne donose XP niti dodaju nove riječi i gramatiku."
 }

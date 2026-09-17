@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-09-16 10:14:19.223420",
+    "@@last_modified": "2026-09-17 11:52:09.412600",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10021,5 +10021,7 @@
     "orchestratorFeedbackNoAwards": "Ta tura nie przyznała żadnych gwiazdek, więc nie ma tu nic do kwestionowania.",
     "orchestratorFeedbackCommentRequired": "Dodaj komentarz, abyśmy wiedzieli, co naprawić",
     "orchestratorFeedbackSubmit": "Wyślij",
-    "orchestratorFeedbackThanks": "Zgłoszono. Dziękujemy!"
+    "orchestratorFeedbackThanks": "Zgłoszono. Dziękujemy!",
+    "analyticsSubscriptionWarningTitle": "Twoje postępy nie są śledzone",
+    "analyticsSubscriptionWarningBody": "Bez subskrypcji Twoje wiadomości nie zdobywają PD ani nie dodają nowych słów i gramatyki."
 }

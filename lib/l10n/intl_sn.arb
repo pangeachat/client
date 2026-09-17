@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-09-16 10:14:21.512769",
+    "@@last_modified": "2026-09-17 11:52:10.839024",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "Kutendeuka uku hakuna kupa nyenyedzi, saka hapana chekubvunza pano.",
     "orchestratorFeedbackCommentRequired": "Wedzera chirevo kuti tizive chekugadzirisa",
     "orchestratorFeedbackSubmit": "Tumira",
-    "orchestratorFeedbackThanks": "Yamaka. Ndatenda!"
+    "orchestratorFeedbackThanks": "Yamaka. Ndatenda!",
+    "analyticsSubscriptionWarningTitle": "Kufambira mberi kwako hakusi kuteverwa",
+    "analyticsSubscriptionWarningBody": "Pasina kunyoresa, mameseji ako haawane XP kana kuwedzera mazwi matsva negirama."
 }

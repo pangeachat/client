@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-09-16 10:14:12.862438",
+    "@@last_modified": "2026-09-17 11:52:06.461323",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "Այս փուլում աստղեր չեն շնորհվել, ուստի այստեղ հարցնելու ոչինչ չկա։",
     "orchestratorFeedbackCommentRequired": "Ավելացրեք մեկնաբանություն, որպեսզի իմանանք, թե ինչ շտկել",
     "orchestratorFeedbackSubmit": "Ուղարկել",
-    "orchestratorFeedbackThanks": "Նշված է։ Շնորհակալություն։"
+    "orchestratorFeedbackThanks": "Նշված է։ Շնորհակալություն։",
+    "analyticsSubscriptionWarningTitle": "Ձեր առաջընթացը չի հետևվում",
+    "analyticsSubscriptionWarningBody": "Առանց բաժանորդագրության՝ ձեր հաղորդագրությունները չեն վաստակում XP և չեն ավելացնում նոր բառեր ու քերականություն:"
 }

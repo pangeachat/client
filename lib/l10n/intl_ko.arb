@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-16 10:14:14.049461",
+    "@@last_modified": "2026-09-17 11:52:07.133402",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10129,5 +10129,7 @@
     "orchestratorFeedbackNoAwards": "이번 턴에는 별 보상이 없으므로, 문제 삼을 것이 없습니다.",
     "orchestratorFeedbackCommentRequired": "무엇을 수정해야 할지 알 수 있도록 의견을 추가해주세요",
     "orchestratorFeedbackSubmit": "보내기",
-    "orchestratorFeedbackThanks": "신고되었습니다. 감사합니다!"
+    "orchestratorFeedbackThanks": "신고되었습니다. 감사합니다!",
+    "analyticsSubscriptionWarningTitle": "진행 상황이 추적되지 않습니다",
+    "analyticsSubscriptionWarningBody": "구독하지 않으면 메시지로 XP를 얻거나 새로운 단어와 문법을 추가할 수 없습니다."
 }

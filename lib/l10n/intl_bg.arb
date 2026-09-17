@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-09-16 10:14:06.083688",
+    "@@last_modified": "2026-09-17 11:52:03.117426",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "Този ход не донесе звезди, така че няма какво да се оспорва тук.",
     "orchestratorFeedbackCommentRequired": "Добавете коментар, за да знаем какво да поправим",
     "orchestratorFeedbackSubmit": "Изпрати",
-    "orchestratorFeedbackThanks": "Докладвано. Благодарим!"
+    "orchestratorFeedbackThanks": "Докладвано. Благодарим!",
+    "analyticsSubscriptionWarningTitle": "Напредъкът ви не се проследява",
+    "analyticsSubscriptionWarningBody": "Без абонамент съобщенията ви не носят XP и не добавят нови думи и граматика."
 }

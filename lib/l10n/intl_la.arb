@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-09-16 10:14:14.741347",
+    "@@last_modified": "2026-09-17 11:52:07.570811",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "Hoc tempore nullae stellae datae sunt, ergo nihil hic quaerendum est.",
     "orchestratorFeedbackCommentRequired": "Adde commentarium ut sciamus quid corrigendum sit",
     "orchestratorFeedbackSubmit": "Mitte",
-    "orchestratorFeedbackThanks": "Notatum. Gratias!"
+    "orchestratorFeedbackThanks": "Notatum. Gratias!",
+    "analyticsSubscriptionWarningTitle": "Progressus tuus non sequitur",
+    "analyticsSubscriptionWarningBody": "Sine subscriptione, nuntii tui XP non merentur nec nova verba et grammaticam addunt."
 }

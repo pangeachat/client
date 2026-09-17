@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-09-16 10:14:22.632225",
+    "@@last_modified": "2026-09-17 11:52:11.481781",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "Nako ena ha ea fana ka lipalo, kahoo ha ho letho leo u ka le botsang mona.",
     "orchestratorFeedbackCommentRequired": "Kenya maikutlo e le hore re tsebe hore na re lokise eng",
     "orchestratorFeedbackSubmit": "Romela",
-    "orchestratorFeedbackThanks": "E tšoailoe. Kea leboha!"
+    "orchestratorFeedbackThanks": "E tšoailoe. Kea leboha!",
+    "analyticsSubscriptionWarningTitle": "Tsoelo-pele ea hau ha e lateloe",
+    "analyticsSubscriptionWarningBody": "Ntle le peeletso, melaetsa ea hau ha e fumane XP kapa ho eketsa mantsoe le sebōpeho-puo se secha."
 }

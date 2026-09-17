@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-09-16 10:14:09.318860",
+    "@@last_modified": "2026-09-17 11:52:04.634793",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10291,5 +10291,7 @@
     "orchestratorFeedbackNoAwards": "Ce tour n'a attribué aucune étoile, il n'y a donc rien à remettre en question ici.",
     "orchestratorFeedbackCommentRequired": "Ajoutez un commentaire pour que nous sachions quoi corriger",
     "orchestratorFeedbackSubmit": "Envoyer",
-    "orchestratorFeedbackThanks": "Signalé. Merci !"
+    "orchestratorFeedbackThanks": "Signalé. Merci !",
+    "analyticsSubscriptionWarningTitle": "Votre progression n'est pas suivie",
+    "analyticsSubscriptionWarningBody": "Sans abonnement, vos messages ne rapportent pas d'XP et n'ajoutent pas de nouveaux mots ou de nouvelle grammaire."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-16 10:14:19.469185",
+    "@@last_modified": "2026-09-17 11:52:10.122059",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10668,5 +10668,7 @@
     "orchestratorFeedbackNoAwards": "Această rundă nu a acordat stele, deci nu este nimic de pus la îndoială aici.",
     "orchestratorFeedbackCommentRequired": "Adaugă un comentariu ca să știm ce să remediem",
     "orchestratorFeedbackSubmit": "Trimite",
-    "orchestratorFeedbackThanks": "Semnalat. Mulțumim!"
+    "orchestratorFeedbackThanks": "Semnalat. Mulțumim!",
+    "analyticsSubscriptionWarningTitle": "Progresul tău nu este urmărit",
+    "analyticsSubscriptionWarningBody": "Fără un abonament, mesajele tale nu câștigă XP și nu adaugă cuvinte și gramatică noi."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-09-16 10:14:17.043392",
+    "@@last_modified": "2026-09-17 11:52:08.462753",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "या वळणावर कोणतेही तारे दिले नाहीत, त्यामुळे येथे प्रश्न विचारण्यासारखे काहीही नाही.",
     "orchestratorFeedbackCommentRequired": "एक टिप्पणी जोडा जेणेकरून आम्हाला काय दुरुस्त करायचे आहे ते कळेल",
     "orchestratorFeedbackSubmit": "पाठवा",
-    "orchestratorFeedbackThanks": "ध्वजांकित केले. धन्यवाद!"
+    "orchestratorFeedbackThanks": "ध्वजांकित केले. धन्यवाद!",
+    "analyticsSubscriptionWarningTitle": "तुमच्या प्रगतीचा मागोवा घेतला जात नाहीये",
+    "analyticsSubscriptionWarningBody": "सदस्यत्वाशिवाय, तुमचे संदेश XP मिळवत नाहीत किंवा नवीन शब्द आणि व्याकरण जोडत नाहीत."
 }

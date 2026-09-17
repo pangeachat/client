@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-09-16 10:14:05.815167",
+    "@@last_modified": "2026-09-17 11:52:03.214984",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "Hierdie beurt het geen sterre toegeken nie, so daar is niks om hier te bevraagteken nie.",
     "orchestratorFeedbackCommentRequired": "Voeg 'n opmerking by sodat ons weet wat om reg te maak",
     "orchestratorFeedbackSubmit": "Stuur",
-    "orchestratorFeedbackThanks": "Gerapporteer. Dankie!"
+    "orchestratorFeedbackThanks": "Gerapporteer. Dankie!",
+    "analyticsSubscriptionWarningTitle": "Jou vordering word nie nagespoor nie",
+    "analyticsSubscriptionWarningBody": "Sonder 'n intekening verdien jou boodskappe nie XP nie en voeg dit nie nuwe woorde en grammatika by nie."
 }

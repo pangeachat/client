@@ -3093,7 +3093,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-09-16 10:14:12.857638",
+    "@@last_modified": "2026-09-17 11:52:06.560580",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10568,5 +10568,7 @@
     "orchestratorFeedbackNoAwards": "Níor bronnadh aon réaltaí sa seal seo, mar sin níl aon rud le ceistiú anseo.",
     "orchestratorFeedbackCommentRequired": "Cuir trácht leis ionas go mbeidh a fhios againn cad atá le socrú",
     "orchestratorFeedbackSubmit": "Seol",
-    "orchestratorFeedbackThanks": "Bratach. Go raibh maith agat!"
+    "orchestratorFeedbackThanks": "Bratach. Go raibh maith agat!",
+    "analyticsSubscriptionWarningTitle": "Ní dhéantar do dhul chun cinn a rianú",
+    "analyticsSubscriptionWarningBody": "Gan síntiús, ní bhaineann do theachtaireachtaí XP amach ná ní chuireann siad focail agus gramadach nua leis."
 }

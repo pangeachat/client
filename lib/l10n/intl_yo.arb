@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-09-16 10:14:26.067270",
+    "@@last_modified": "2026-09-17 11:52:13.049466",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "Ìgbésẹ̀ yìí kò fúnni ní ìràwọ̀ kankan, nítorí náà kò sí ohun tí a lè bèèrè nípa rẹ̀ níbí.",
     "orchestratorFeedbackCommentRequired": "Fi àlàyé kún un kí a lè mọ ohun tí a fẹ́ túnṣe",
     "orchestratorFeedbackSubmit": "Ránṣẹ́",
-    "orchestratorFeedbackThanks": "Ti fi sílẹ̀. Ẹ ṣeun!"
+    "orchestratorFeedbackThanks": "Ti fi sílẹ̀. Ẹ ṣeun!",
+    "analyticsSubscriptionWarningTitle": "A kò ṣe àkọsílẹ̀ ìtẹ̀síwájú rẹ",
+    "analyticsSubscriptionWarningBody": "Láìsí àbáwọlé, àwọn ìránṣẹ́ rẹ kò ní jẹ́ kó o rí XP tàbí kó o fi àwọn ọ̀rọ̀ àti gírámà tuntun kún un."
 }
