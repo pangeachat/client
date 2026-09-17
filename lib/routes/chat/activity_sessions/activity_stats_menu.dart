@@ -15,6 +15,7 @@ import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/embed_pointer_shield.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_dropdown_content.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_dropdown_header.dart';
@@ -144,7 +145,12 @@ class ActivityStatsMenu extends StatelessWidget with GoalProgressMixin {
               bottom: showDropdown ? 0 : null,
               child: Stack(
                 children: [
-                  if (showDropdown)
+                  if (showDropdown) ...[
+                    // Same reason as the card's own shield (#9063): the dim
+                    // covers the timeline, and a tap on it over a live video
+                    // embed would otherwise reach the video instead of closing
+                    // the dropdown.
+                    const Positioned.fill(child: EmbedPointerShield()),
                     Positioned.fill(
                       child: GestureDetector(
                         behavior: HitTestBehavior.opaque,
@@ -152,6 +158,7 @@ class ActivityStatsMenu extends StatelessWidget with GoalProgressMixin {
                         child: ColoredBox(color: Colors.black.withAlpha(100)),
                       ),
                     ),
+                  ],
                   ActivityGoalHeaderCard(
                     showDropdown: showDropdown,
                     isComplete: allComplete,

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:chewie/chewie.dart';
 import 'package:video_player/video_player.dart';
 
+import 'package:fluffychat/pangea/common/widgets/embed_click_to_engage.dart';
+
 /// Plays an uploaded (non-Matrix) video from a resolved CDN URL, sized to its
 /// carousel cell. The timeline's [EventVideoPlayer] is bound to a Matrix event
 /// and downloads/decrypts its bytes; an activity-media block instead carries a
@@ -11,6 +13,10 @@ import 'package:video_player/video_player.dart';
 ///
 /// Each instance holds a live decoder, so only the carousel's active page
 /// should mount one — siblings stay thumbnails.
+///
+/// On web the `<video>` is a DOM element that takes the mouse from the page
+/// around it, so it only gets the pointer once the learner clicks it
+/// ([EmbedClickToEngage], #9063); that click plays or pauses.
 class ActivityVideoPlayer extends StatefulWidget {
   final String url;
   final double? aspectRatio;
@@ -72,6 +78,16 @@ class _ActivityVideoPlayerState extends State<ActivityVideoPlayer> {
     super.dispose();
   }
 
+  void _togglePlayback() {
+    final controller = _videoController;
+    if (controller == null || !controller.value.isInitialized) return;
+    if (controller.value.isPlaying) {
+      controller.pause();
+    } else {
+      controller.play();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     if (_failed) {
@@ -81,6 +97,9 @@ class _ActivityVideoPlayerState extends State<ActivityVideoPlayer> {
     if (chewie == null) {
       return const Center(child: CircularProgressIndicator.adaptive());
     }
-    return Chewie(controller: chewie);
+    return EmbedClickToEngage(
+      onEngage: _togglePlayback,
+      child: Chewie(controller: chewie),
+    );
   }
 }
