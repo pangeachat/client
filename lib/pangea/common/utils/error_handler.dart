@@ -79,7 +79,19 @@ class ErrorHandler {
   /// production
   /// as `Instance of 'UnsubscribedException'` (CLIENT-E4T, #8373). A rule
   /// copied per call site drifts; a rule with one home cannot.
-  static bool shouldReport(Object? e) => e is! UnsubscribedException;
+  static bool shouldReport(Object? e) {
+    if (e is UnsubscribedException) return false;
+    // A request timeout while the app is not resumed describes the device's
+    // sleep, not the network: the OS suspends the socket and every pending
+    // timer fires together on wake (severity table, Timeout row; #9132).
+    if (e is TimeoutException && _appNotResumed) return false;
+    return true;
+  }
+
+  static bool get _appNotResumed {
+    final state = WidgetsBinding.instance.lifecycleState;
+    return state != null && state != AppLifecycleState.resumed;
+  }
 
   /// Keys already reported this session via [logErrorOnce].
   static final Set<String> _reportedOnceKeys = {};
