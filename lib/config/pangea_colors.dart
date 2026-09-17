@@ -324,12 +324,25 @@ extension PangeaColorsTheme on ThemeData {
       ? colorScheme.surface
       : colorScheme.onSurface;
 
-  /// The fill of a round toolbar button, which floats over a dark scrim in
+  /// How dark the scrim paints over the screen an overlay covers — the
+  /// message toolbar's backdrop and the tutorial's spotlight layer, the two
+  /// surfaces that darken the whole app rather than a widget.
+  ///
+  /// Lighter in dark than in light, because a different thing limits each.
+  /// In light the scrim is the background the round [toolbarButtonFill]
+  /// buttons sit on, and past 0.6 that pale fill drops under the 3:1
+  /// non-text floor. In dark the surface under the scrim is already near
+  /// black, so those buttons hold about 6.2:1 whatever the alpha, and all
+  /// the alpha decides is how much of the chat survives: at 0.8 almost none
+  /// of it did and the panel read as a solid black rectangle.
+  double get scrimOpacity => brightness == Brightness.light ? 0.6 : 0.45;
+
+  /// The fill of a round toolbar button, which floats over the scrim in
   /// both themes. It has to stand off that scrim and not be the own-message
   /// bubble's colour: in light the bubble is `primary`, so the button takes
-  /// the pale `primaryFixedDim` (6.8:1 on the scrim, where `primaryContainer`
-  /// sat at 2.5:1); in dark the bubble is that pale lavender, so the button
-  /// keeps `primaryContainer` (4.4:1).
+  /// the pale `primaryFixedDim` (3.5:1 on the scrim, where `primaryContainer`
+  /// is under 2:1); in dark the bubble is that pale lavender, so the button
+  /// keeps `primaryContainer` (6.2:1, since the dark scrim is near black).
   Color get toolbarButtonFill => brightness == Brightness.light
       ? colorScheme.primaryFixedDim
       : colorScheme.primaryContainer;
