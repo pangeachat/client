@@ -15,9 +15,28 @@ extension ChildrenAndParentsRoomExtension on Room {
       .where((space) => space.spaceChildren.any((room) => room.roomId == id))
       .toList();
 
-  List<Room> get pangeaSpaceChildren => client.rooms
-      .where((r) => spaceChildren.any((child) => r.id == child.roomId))
-      .toList();
+  List<Room> get pangeaSpaceChildren {
+    final childIds = spaceChildren.map((child) => child.roomId).toSet();
+    return client.rooms.where((r) => childIds.contains(r.id)).toList();
+  }
+
+  /// The newest event in this space or in any child chat or activity session
+  /// the user has joined. A course space's own timeline is mostly setup state,
+  /// so its real activity lives in its children (#9004). Analytics rooms are
+  /// excluded: a learner's analytics room is a child of every course they are
+  /// in, so its membership changes would move all of those courses at once.
+  /// Meaningful for joined spaces only: an invite's
+  /// [Room.latestEventReceivedTime] is the current time.
+  DateTime get spaceActivityTime =>
+      [
+            this,
+            ...pangeaSpaceChildren.where(
+              (child) =>
+                  child.membership == Membership.join && !child.isAnalyticsRoom,
+            ),
+          ]
+          .map((room) => room.latestEventReceivedTime)
+          .reduce((a, b) => a.isAfter(b) ? a : b);
 
   /// Wrapper around call to setSpaceChild with added functionality
   /// to prevent adding one room to multiple spaces, and resets the
