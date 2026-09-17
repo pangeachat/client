@@ -9,17 +9,18 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_room_extens
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
+import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/users/course_member_stats.dart';
 import 'package:fluffychat/widgets/users/level_display_name.dart';
 import 'package:fluffychat/widgets/users/member_actions_popup_menu_button.dart';
 
 /// One participant's member card: avatar (with the top-3 leaderboard ring),
-/// name, the member's stars and level in the course's language, and the
-/// permission/membership badge. A space with no course language recorded —
-/// anything created before it was written to room state — falls back to the
-/// learner chip ([LevelDisplayName]), which shows their own language pair. Tapping the avatar opens the
-/// member actions menu. Shared by the full participant list
+/// the permission/membership badge across the avatar's top edge, name, and the
+/// member's stars and level in the course's language. A space with no course
+/// language recorded — anything created before it was written to room state —
+/// falls back to the learner chip ([LevelDisplayName]), which shows their own
+/// language pair. Tapping the avatar opens the member actions menu. Shared by the full participant list
 /// (RoomParticipantsSection) and the course page's Participants preview.
 class ParticipantCard extends StatelessWidget {
   static const double width = 100.0;
@@ -87,18 +88,29 @@ class ParticipantCard extends StatelessWidget {
 
     final courseLanguage = room.coursePlan?.l2;
 
-    final permissionBatch = user.powerLevel >= 100
-        ? L10n.of(context).admin
-        : user.powerLevel >= 50
-        ? L10n.of(context).moderator
-        : '';
-
-    final membershipBatch = switch (user.membership) {
-      Membership.ban => null,
-      Membership.invite => L10n.of(context).invited,
-      Membership.join => null,
-      Membership.knock => L10n.of(context).knocking,
-      Membership.leave => null,
+    final badge = switch (user.membership) {
+      Membership.invite => _ParticipantBadge(
+        label: L10n.of(context).invited,
+        color: theme.colorScheme.secondaryContainer,
+        onColor: theme.colorScheme.onSecondaryContainer,
+      ),
+      Membership.knock => _ParticipantBadge(
+        label: L10n.of(context).knocking,
+        color: theme.colorScheme.secondaryContainer,
+        onColor: theme.colorScheme.onSecondaryContainer,
+      ),
+      _ when user.powerLevel >= SpaceConstants.powerLevelOfAdmin =>
+        _ParticipantBadge(
+          label: L10n.of(context).admin,
+          color: theme.pangea.goldFixedDim,
+          onColor: theme.pangea.onGoldFixed,
+        ),
+      _ when user.powerLevel >= 50 => _ParticipantBadge(
+        label: L10n.of(context).moderator,
+        color: theme.pangea.goldContainer,
+        onColor: theme.pangea.onGoldContainer,
+      ),
+      _ => null,
     };
 
     return Semantics(
@@ -114,6 +126,7 @@ class ParticipantCard extends StatelessWidget {
               children: [
                 Stack(
                   alignment: Alignment.center,
+                  clipBehavior: Clip.none,
                   children: [
                     if (gradient != null)
                       ExcludeSemantics(
@@ -157,6 +170,20 @@ class ParticipantCard extends StatelessWidget {
                         );
                       },
                     ),
+                    // Straddles the avatar's top edge (#9109), rising into the
+                    // card's top padding instead of reserving a row below the
+                    // stats that most cards leave empty. Taps fall through to
+                    // the avatar beneath.
+                    if (badge != null)
+                      Positioned(
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        child: FractionalTranslation(
+                          translation: const Offset(0, -0.5),
+                          child: Center(child: IgnorePointer(child: badge)),
+                        ),
+                      ),
                   ],
                 ),
                 Text(
@@ -182,57 +209,44 @@ class ParticipantCard extends StatelessWidget {
                           showFlags: false,
                         ),
                 ),
-                Container(
-                  height: 24.0,
-                  alignment: Alignment.center,
-                  child: membershipBatch != null
-                      ? Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 12,
-                            vertical: 4,
-                          ),
-                          decoration: BoxDecoration(
-                            color: theme.colorScheme.secondaryContainer,
-                            borderRadius: BorderRadius.circular(
-                              AppConfig.borderRadius,
-                            ),
-                          ),
-                          child: Text(
-                            membershipBatch,
-                            style: theme.textTheme.labelSmall?.copyWith(
-                              color: theme.colorScheme.onSecondaryContainer,
-                            ),
-                          ),
-                        )
-                      : permissionBatch.isNotEmpty
-                      ? Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 12,
-                            vertical: 4,
-                          ),
-                          decoration: BoxDecoration(
-                            color: user.powerLevel >= 100
-                                ? theme.pangea.goldFixedDim
-                                : theme.pangea.goldContainer,
-                            borderRadius: BorderRadius.circular(
-                              AppConfig.borderRadius,
-                            ),
-                          ),
-                          child: Text(
-                            permissionBatch,
-                            style: theme.textTheme.labelSmall?.copyWith(
-                              color: user.powerLevel >= 100
-                                  ? theme.pangea.onGoldFixed
-                                  : theme.pangea.onGoldContainer,
-                            ),
-                          ),
-                        )
-                      : null,
-                ),
               ],
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+/// A permission or membership label on a [ParticipantCard]. Ringed in the
+/// surface color, like the avatar's presence dot, so it separates from the
+/// avatar image or leaderboard ring it overlaps.
+class _ParticipantBadge extends StatelessWidget {
+  final String label;
+  final Color color;
+  final Color onColor;
+
+  const _ParticipantBadge({
+    required this.label,
+    required this.color,
+    required this.onColor,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 2),
+      decoration: BoxDecoration(
+        color: color,
+        border: Border.all(color: theme.colorScheme.surface, width: 2),
+        borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+      ),
+      child: Text(
+        label,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+        style: theme.textTheme.labelSmall?.copyWith(color: onColor),
       ),
     );
   }
