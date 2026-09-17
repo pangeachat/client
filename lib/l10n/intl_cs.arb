@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-09-16 10:14:07.679671",
+    "@@last_modified": "2026-09-17 11:52:03.700509",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10430,5 +10430,7 @@
     "orchestratorFeedbackNoAwards": "V tomto tahu nebyly uděleny žádné hvězdy, takže zde není co zpochybňovat.",
     "orchestratorFeedbackCommentRequired": "Přidejte komentář, abychom věděli, co opravit",
     "orchestratorFeedbackSubmit": "Odeslat",
-    "orchestratorFeedbackThanks": "Nahlášeno. Děkujeme!"
+    "orchestratorFeedbackThanks": "Nahlášeno. Děkujeme!",
+    "analyticsSubscriptionWarningTitle": "Váš pokrok není sledován",
+    "analyticsSubscriptionWarningBody": "Bez předplatného vaše zprávy nezískávají XP ani nepřidávají nová slova a gramatiku."
 }

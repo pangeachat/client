@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-09-16 10:14:10.358671",
+    "@@last_modified": "2026-09-17 11:52:05.508464",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "આ વારામાં કોઈ સ્ટાર મળ્યો નથી, તેથી અહીં પ્રશ્ન કરવા જેવું કંઈ નથી.",
     "orchestratorFeedbackCommentRequired": "એક ટિપ્પણી ઉમેરો જેથી અમને ખબર પડે કે શું સુધારવું છે",
     "orchestratorFeedbackSubmit": "મોકલો",
-    "orchestratorFeedbackThanks": "ફ્લેગ કર્યું. આભાર!"
+    "orchestratorFeedbackThanks": "ફ્લેગ કર્યું. આભાર!",
+    "analyticsSubscriptionWarningTitle": "તમારી પ્રગતિ ટ્રૅક થઈ રહી નથી",
+    "analyticsSubscriptionWarningBody": "સબ્સ્ક્રિપ્શન વિના, તમારા સંદેશાઓ XP કમાતા નથી અથવા નવા શબ્દો અને વ્યાકરણ ઉમેરતા નથી."
 }

@@ -3093,7 +3093,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-09-16 10:14:23.135677",
+    "@@last_modified": "2026-09-17 11:52:11.766262",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10568,5 +10568,7 @@
     "orchestratorFeedbackNoAwards": "เทิร์นนี้ไม่ได้รับดาว ดังนั้นจึงไม่มีอะไรต้องตั้งคำถามที่นี่",
     "orchestratorFeedbackCommentRequired": "เพิ่มความคิดเห็นเพื่อให้เราทราบว่าจะแก้ไขอะไร",
     "orchestratorFeedbackSubmit": "ส่ง",
-    "orchestratorFeedbackThanks": "ตั้งค่าสถานะแล้ว ขอบคุณ!"
+    "orchestratorFeedbackThanks": "ตั้งค่าสถานะแล้ว ขอบคุณ!",
+    "analyticsSubscriptionWarningTitle": "ความคืบหน้าของคุณไม่ถูกติดตาม",
+    "analyticsSubscriptionWarningBody": "หากไม่มีการสมัครสมาชิก ข้อความของคุณจะไม่ได้รับ XP หรือเพิ่มคำศัพท์และไวยากรณ์ใหม่ๆ"
 }

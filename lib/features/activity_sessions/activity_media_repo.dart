@@ -56,10 +56,11 @@ class ActivityMediaRepo {
 
     for (final doc in resp.docs) {
       final id = doc['id'] as String?;
-      final url = doc['url'] as String?;
+      final url = _resolveMediaUri(doc['url'] as String?);
       if (id == null || url == null) continue;
       final sizes = doc['sizes'] as Map<String, dynamic>?;
-      String? sizeUrl(String key) => (sizes?[key] as Map?)?['url'] as String?;
+      String? sizeUrl(String key) =>
+          _resolveMediaUri((sizes?[key] as Map?)?['url'] as String?);
       final info = (
         url: url,
         thumbnailUrl: sizeUrl('thumbnail'),
@@ -69,5 +70,18 @@ class ActivityMediaRepo {
       result[id] = info;
     }
     return result;
+  }
+
+  /// Normalizes a relative CMS media path (e.g. `/cms/api/media/file/x.png`)
+  /// to an absolute URL. Needed only when the CMS serves media directly,
+  /// with no CDN in front of it (local CMS, by convention); staging/prod
+  /// always sit behind one, so `raw` there is already absolute and passes
+  /// through unchanged. Mirrors choreo's `_resolve_media_url`.
+  static String? _resolveMediaUri(String? raw) {
+    if (raw == null) return null;
+    final parsed = Uri.tryParse(raw);
+    if (parsed == null) return null;
+    if (parsed.hasScheme) return raw;
+    return Uri.parse(Environment.cmsApi).resolveUri(parsed).toString();
   }
 }

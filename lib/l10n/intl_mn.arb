@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-09-16 10:14:16.963283",
+    "@@last_modified": "2026-09-17 11:52:08.717849",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "Энэ эргэлтэд од олгогдоогүй тул энд эргэлзэх зүйл алга.",
     "orchestratorFeedbackCommentRequired": "Юуг засах ёстойг мэдэхийн тулд сэтгэгдэл нэмнэ үү",
     "orchestratorFeedbackSubmit": "Илгээх",
-    "orchestratorFeedbackThanks": "Тэмдэглэгдсэн. Баярлалаа!"
+    "orchestratorFeedbackThanks": "Тэмдэглэгдсэн. Баярлалаа!",
+    "analyticsSubscriptionWarningTitle": "Таны ахиц дэвшил хянагдахгүй байна",
+    "analyticsSubscriptionWarningBody": "Захиалгагүйгээр таны мессеж XP оноо авахгүй бөгөөд шинэ үг, дүрмийн санд нэмэгдэхгүй."
 }

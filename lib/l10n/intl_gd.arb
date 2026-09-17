@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-09-16 10:14:10.372119",
+    "@@last_modified": "2026-09-17 11:52:05.615409",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "Cha d' fhuair an tionndadh seo rionnagan, mar sin chan eil dad ri cheasnachadh an seo.",
     "orchestratorFeedbackCommentRequired": "Cuir beachd ris gus am bi fios againn dè a nì sinn",
     "orchestratorFeedbackSubmit": "Cuir",
-    "orchestratorFeedbackThanks": "Air a chomharrachadh. Tapadh leat!"
+    "orchestratorFeedbackThanks": "Air a chomharrachadh. Tapadh leat!",
+    "analyticsSubscriptionWarningTitle": "Chan eilear a' cumail sùil air an adhartas agad",
+    "analyticsSubscriptionWarningBody": "Mura h-eil ballrachd agad, cha choisinn na teachdaireachdan agad XP no cha chuir iad faclan is gràmar ùr ris."
 }

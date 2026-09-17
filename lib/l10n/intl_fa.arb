@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-16 10:14:09.337200",
+    "@@last_modified": "2026-09-17 11:52:04.711231",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10024,5 +10024,7 @@
     "orchestratorFeedbackNoAwards": "در این نوبت هیچ ستاره‌ای اهدا نشد، بنابراین چیزی برای اعتراض وجود ندارد.",
     "orchestratorFeedbackCommentRequired": "یک نظر اضافه کنید تا بدانیم چه چیزی را باید اصلاح کنیم",
     "orchestratorFeedbackSubmit": "ارسال",
-    "orchestratorFeedbackThanks": "پرچم‌گذاری شد. ممنون!"
+    "orchestratorFeedbackThanks": "پرچم‌گذاری شد. ممنون!",
+    "analyticsSubscriptionWarningTitle": "پیشرفت شما ردیابی نمی‌شود",
+    "analyticsSubscriptionWarningBody": "بدون اشتراک، پیام‌های شما امتیاز XP کسب نمی‌کنند و کلمات و گرامر جدیدی اضافه نمی‌کنند."
 }

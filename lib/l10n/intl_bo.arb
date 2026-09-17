@@ -2919,7 +2919,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-09-16 10:14:07.189552",
+    "@@last_modified": "2026-09-17 11:52:03.835637",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9547,5 +9547,7 @@
     "orchestratorFeedbackNoAwards": "ཐེངས་འདིར་སྐར་མ་གཅིག་ཀྱང་ཐོབ་མེད་པས་འདིར་དོགས་པ་ཟ་རྒྱུ་གང་ཡང་མེད།",
     "orchestratorFeedbackCommentRequired": "ང་ཚོས་གང་ཞིག་བཟོ་དགོས་པ་ཤེས་ཆེད་དུ་མཆན་ཞིག་རྒྱོབ།",
     "orchestratorFeedbackSubmit": "བསྐུར།",
-    "orchestratorFeedbackThanks": "དམིགས་བསལ་གྱི་རྟགས་བརྒྱབ་ཟིན། ཐུགས་རྗེ་ཆེ།"
+    "orchestratorFeedbackThanks": "དམིགས་བསལ་གྱི་རྟགས་བརྒྱབ་ཟིན། ཐུགས་རྗེ་ཆེ།",
+    "analyticsSubscriptionWarningTitle": "ཁྱེད་ཀྱི་ཡར་རྒྱས་ལ་བརྟག་དཔྱད་བྱེད་ཀྱི་མེད།",
+    "analyticsSubscriptionWarningBody": "དངུལ་སྤྲོད་མ་བྱས་ན། ཁྱེད་ཀྱི་འཕྲིན་ཐུང་ལ་ཉམས་མྱོང་སྐར་མ་མི་ཐོབ་ལ། ཚིག་གསར་པ་དང་བརྡ་སྤྲོད་ཀྱང་མི་འཕེལ།"
 }

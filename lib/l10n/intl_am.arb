@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-09-16 10:14:06.381323",
+    "@@last_modified": "2026-09-17 11:52:03.831305",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "ይህ ዙር ምንም ኮከቦችን አልሸለመም፣ ስለዚህ እዚህ የሚጠየቅ ነገር የለም።",
     "orchestratorFeedbackCommentRequired": "ምን ማስተካከል እንዳለብን እንድናውቅ አስተያየት ያክሉ",
     "orchestratorFeedbackSubmit": "ላክ",
-    "orchestratorFeedbackThanks": "ምልክት ተደርጓል። እናመሰግናለን!"
+    "orchestratorFeedbackThanks": "ምልክት ተደርጓል። እናመሰግናለን!",
+    "analyticsSubscriptionWarningTitle": "ሂደትዎ እየተከታተለ አይደለም",
+    "analyticsSubscriptionWarningBody": "ያለ ምዝገባ፣ መልዕክቶችዎ XP አያስገኙም ወይም አዲስ ቃላትን እና ሰዋስውን አይጨምሩም።"
 }

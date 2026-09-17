@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-09-16 10:14:20.290984",
+    "@@last_modified": "2026-09-17 11:52:09.861571",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "دې وار هیڅ ستوري نه دي ورکړل شوي، نو دلته د پوښتنې لپاره هیڅ نشته.",
     "orchestratorFeedbackCommentRequired": "یو نظر اضافه کړئ ترڅو موږ پوه شو چې څه سم کړو",
     "orchestratorFeedbackSubmit": "استول",
-    "orchestratorFeedbackThanks": "په نښه شو. مننه!"
+    "orchestratorFeedbackThanks": "په نښه شو. مننه!",
+    "analyticsSubscriptionWarningTitle": "ستاسو پرمختګ نه تعقیبیږي",
+    "analyticsSubscriptionWarningBody": "پرته له ګډون، ستاسو پیغامونه XP نه ګټي او نه نوې کلمې او ګرامر اضافه کوي."
 }

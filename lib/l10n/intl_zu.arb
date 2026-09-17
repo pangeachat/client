@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-09-16 10:14:26.159896",
+    "@@last_modified": "2026-09-17 11:52:13.064362",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "Leli thuba alizange linikeze zinkanyezi, ngakho-ke akukho ongakubuza lapha.",
     "orchestratorFeedbackCommentRequired": "Faka amazwana ukuze sazi ukuthi yini okufanele siyilungise",
     "orchestratorFeedbackSubmit": "Thumela",
-    "orchestratorFeedbackThanks": "Kuphawuliwe. Ngiyabonga!"
+    "orchestratorFeedbackThanks": "Kuphawuliwe. Ngiyabonga!",
+    "analyticsSubscriptionWarningTitle": "Intuthuko yakho ayilandelwa",
+    "analyticsSubscriptionWarningBody": "Ngaphandle kokubhalisa, imilayezo yakho ayitholi i-XP noma ingezi amagama amasha nohlelo lolimi."
 }

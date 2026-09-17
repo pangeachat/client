@@ -360,6 +360,10 @@ class ClusterTrackerButton extends StatefulWidget {
 }
 
 class _ClusterTrackerButtonState extends State<ClusterTrackerButton> {
+  /// The tap target, the hover and open-panel fills, and the focus ring all
+  /// share this geometry.
+  static const OutlinedBorder _shape = StadiumBorder();
+
   ProgressIndicatorEnum get indicator => widget.indicator;
   int get count => widget.count;
   VoidCallback get onTap => widget.onTap;
@@ -402,72 +406,72 @@ class _ClusterTrackerButtonState extends State<ClusterTrackerButton> {
             message: liveSessionStart != null
                 ? L10n.of(context).practice
                 : indicator.tooltip(context),
-            // The Semantics below carries the full "<stat>: <count>" name;
+            // The target below carries the full "<stat>: <count>" name;
             // exclude the Tooltip so it isn't announced twice ("Stars Stars: 0").
             excludeFromSemantics: true,
-            child: InkWell(
+            child: FocusRingTapTarget(
               onTap: onTap,
+              shape: _shape,
+              // The exact count — assistive tech is never given the
+              // abbreviation.
+              label: semanticsLabel,
+              // Outside the stadium: the live badge's primary fill is within
+              // 1.6:1 of the gold ring, the surface around it is not (#8880).
+              ringStrokeAlign: BorderSide.strokeAlignOutside,
               onHover: (h) => setState(() => _hovered = h),
               hoverColor: liveSessionStart != null
                   ? Colors.transparent
                   : Theme.of(context).pangea.goldFixedDim.withAlpha(50),
-              borderRadius: BorderRadius.circular(100),
-              child: Semantics(
-                button: true,
-                // The exact count — assistive tech is never given the
-                // abbreviation.
-                label: semanticsLabel,
-                excludeSemantics: true,
-                // While a session is live the badge takes the button's place:
-                // ONE stadium fill on exactly the hover-highlight geometry
-                // (same radius, same padded bounds), practice icon over the
-                // running timer inside it. Painted as INK (not a Container) so
-                // Material's press splash renders on top of the fill — the same
-                // white flash the sibling trackers give.
-                child: Ink(
-                  decoration: liveSessionStart != null
-                      ? BoxDecoration(
-                          color: Theme.of(context).colorScheme.primary
-                              .withValues(alpha: _hovered ? 1.0 : 0.75),
-                          borderRadius: BorderRadius.circular(100),
-                        )
-                      // Open-panel highlight: a persistent version of the hover
-                      // wash on the same padded geometry, so the tracker whose
-                      // analytics is showing stays lit (#7977).
-                      : selected
-                      ? BoxDecoration(
-                          color: Theme.of(
-                            context,
-                          ).pangea.goldFixedDim.withAlpha(50),
-                          borderRadius: BorderRadius.circular(100),
-                        )
-                      : null,
-                  padding: EdgeInsets.symmetric(
-                    horizontal: horizontalPadding,
-                    vertical: 9,
-                  ),
-                  child: liveSessionStart != null
-                      ? PracticeSessionBadge(
-                          startedAt: liveSessionStart,
-                          iconSize: iconSize,
-                          fontSize: fontSize,
-                        )
-                      : Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Icon(indicator.icon, size: iconSize),
-                            const SizedBox(height: 3),
-                            Text(
-                              compactCount(count),
-                              style: TextStyle(
-                                fontSize: fontSize,
-                                height: 1.1,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ],
+              // While a session is live the badge takes the button's place:
+              // ONE stadium fill on exactly the hover-highlight geometry
+              // (same shape, same padded bounds), practice icon over the
+              // running timer inside it. Painted as INK (not a Container) so
+              // Material's press splash renders on top of the fill — the same
+              // white flash the sibling trackers give.
+              child: Ink(
+                decoration: liveSessionStart != null
+                    ? ShapeDecoration(
+                        color: Theme.of(context).colorScheme.primary.withValues(
+                          alpha: _hovered ? 1.0 : 0.75,
                         ),
+                        shape: _shape,
+                      )
+                    // Open-panel highlight: a persistent version of the hover
+                    // wash on the same padded geometry, so the tracker whose
+                    // analytics is showing stays lit (#7977).
+                    : selected
+                    ? ShapeDecoration(
+                        color: Theme.of(
+                          context,
+                        ).pangea.goldFixedDim.withAlpha(50),
+                        shape: _shape,
+                      )
+                    : null,
+                padding: EdgeInsets.symmetric(
+                  horizontal: horizontalPadding,
+                  vertical: 9,
                 ),
+                child: liveSessionStart != null
+                    ? PracticeSessionBadge(
+                        startedAt: liveSessionStart,
+                        iconSize: iconSize,
+                        fontSize: fontSize,
+                      )
+                    : Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(indicator.icon, size: iconSize),
+                          const SizedBox(height: 3),
+                          Text(
+                            compactCount(count),
+                            style: TextStyle(
+                              fontSize: fontSize,
+                              height: 1.1,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
+                      ),
               ),
             ),
           );
@@ -506,36 +510,39 @@ class ClusterLevelMedal extends StatefulWidget {
 class _ClusterLevelMedalState extends State<ClusterLevelMedal> {
   bool _hovered = false;
 
+  /// Room around the shield for the two-tone ring, which sits outside it.
+  static const double _ringClearance = 2 * FocusRingTapTarget.ringWidth;
+
+  static Path _shieldOutline(Rect rect) =>
+      LevelRibbon.shieldPath(rect.deflate(_ringClearance));
+
   @override
   Widget build(BuildContext context) {
     final label = '${L10n.of(context).level} ${widget.level}';
     final lit = _hovered || widget.selected;
     return Tooltip(
       message: label,
-      // Semantics below names this; exclude the Tooltip to avoid "Level 2 Level 2".
+      // The target names this; exclude the Tooltip to avoid "Level 2 Level 2".
       excludeFromSemantics: true,
-      // The name sits outside the InkWell and the content is excluded inside
-      // it, so name, role, focus and tap are one semantics node (#8873).
-      child: Semantics(
-        button: true,
+      child: FocusRingTapTarget(
+        onTap: widget.onTap,
         label: label,
-        child: InkWell(
-          onTap: widget.onTap,
-          onHover: (hovered) => setState(() => _hovered = hovered),
-          // No circular wash behind the shield — the shield's own gold carries
-          // hover (#8067). The focus highlight is left alone: keyboard users
-          // still get a visible ring.
-          hoverColor: Colors.transparent,
-          borderRadius: BorderRadius.circular(100.0),
-          child: ExcludeSemantics(
-            child: Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: LevelRibbon(
-                height: 44,
-                level: widget.level,
-                color: lit ? Theme.of(context).pangea.goldHighlight : null,
-              ),
-            ),
+        onHover: (hovered) => setState(() => _hovered = hovered),
+        // No wash behind the shield — the shield's own gold carries hover
+        // (#8067).
+        hoverColor: Colors.transparent,
+        // The ring traces the shield rather than circling it (#8067), and is
+        // two-tone because it crosses the XP ring and the map, where the gold
+        // ring measures 1.0 to 2.9:1 (#9114).
+        shape: const PathBorder(outline: _shieldOutline),
+        twoToneRing: true,
+        ringStrokeAlign: BorderSide.strokeAlignOutside,
+        child: Padding(
+          padding: const EdgeInsets.all(_ringClearance),
+          child: LevelRibbon(
+            height: 44,
+            level: widget.level,
+            color: lit ? Theme.of(context).pangea.goldHighlight : null,
           ),
         ),
       ),

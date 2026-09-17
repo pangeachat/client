@@ -52,7 +52,7 @@ Severity is a property of the failure, not of the author's judgment at the call 
 
 | Condition                  | Level   | Why                                                                       |
 | -------------------------- | ------- | ------------------------------------------------------------------------- |
-| Timeout                    | warning | Transient; retry is the answer                                            |
+| Timeout                    | warning | Transient; retry is the answer. Not reported at all while the app is not resumed (backgrounded, or a hidden web tab): the OS suspends the socket and every pending timer fires together on wake, so the event describes the device's sleep, not the network — 95% of production timeout events in Sept 2026 were backgrounded (#9132). Enforced at the reporting sink (`ErrorHandler.shouldReport`), so every timeout site is covered |
 | 401                        | warning | Token lifecycle is routine                                                |
 | 404, 410                   | warning | The resource is gone — a normal state, e.g. a stale room reference        |
 | 429                        | warning | Expected under load                                                       |

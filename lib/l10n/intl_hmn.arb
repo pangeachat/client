@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-09-16 10:14:11.209742",
+    "@@last_modified": "2026-09-17 11:52:05.904789",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "Lub sijhawm no tsis muaj hnub qub, yog li tsis muaj dab tsi yuav nug.",
     "orchestratorFeedbackCommentRequired": "Ntxiv ib nqe lus kom peb paub yuav kho li cas",
     "orchestratorFeedbackSubmit": "Xa",
-    "orchestratorFeedbackThanks": "Taw lawm. Ua tsaug!"
+    "orchestratorFeedbackThanks": "Taw lawm. Ua tsaug!",
+    "analyticsSubscriptionWarningTitle": "Koj qhov kev kawm tsis raug taug qab",
+    "analyticsSubscriptionWarningBody": "Yog tsis muaj kev txhawb nqa, koj cov lus yuav tsis tau XP lossis ntxiv cov lus tshiab thiab kev kawm sau ntawv."
 }

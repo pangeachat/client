@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-16 10:14:23.060174",
+    "@@last_modified": "2026-09-17 11:52:11.544211",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -10028,5 +10028,7 @@
     "orchestratorFeedbackNoAwards": "இந்த முறை எந்த நட்சத்திரங்களும் வழங்கப்படவில்லை, எனவே இங்கே கேள்வி கேட்க எதுவும் இல்லை.",
     "orchestratorFeedbackCommentRequired": "நாங்கள் எதைச் சரிசெய்ய வேண்டும் என்பதை அறிய ஒரு கருத்தைச் சேர்க்கவும்",
     "orchestratorFeedbackSubmit": "அனுப்பு",
-    "orchestratorFeedbackThanks": "கொடியிடப்பட்டது. நன்றி!"
+    "orchestratorFeedbackThanks": "கொடியிடப்பட்டது. நன்றி!",
+    "analyticsSubscriptionWarningTitle": "உங்கள் முன்னேற்றம் கண்காணிக்கப்படவில்லை",
+    "analyticsSubscriptionWarningBody": "சந்தா இல்லாமல், உங்கள் செய்திகள் XP-ஐப் பெறாது அல்லது புதிய சொற்களையும் இலக்கணத்தையும் சேர்க்காது."
 }

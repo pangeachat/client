@@ -2,17 +2,20 @@ import 'dart:async';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/features/analytics_data/analytics_update_dispatcher.dart';
 import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 import 'package:fluffychat/routes/world/analytics_header_avatar.dart';
 import 'package:fluffychat/routes/world/circular_xp_ring_painter.dart';
 import 'package:fluffychat/routes/world/hex_level_badge.dart';
@@ -22,6 +25,8 @@ import 'package:fluffychat/routes/world/world_analytics_bar.dart';
 import 'package:fluffychat/routes/world/world_user_cluster.dart';
 import 'package:fluffychat/routes/world/xp_border_painter.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
+import '../contrast_ratio.dart';
+import '../one_node_control.dart';
 import 'mock_user_cluster_view_model.dart';
 
 /// Coverage for the world_v2 single-column analytics NAV BAR
@@ -37,8 +42,9 @@ void main() {
   final es = LanguageModel(langCode: 'es', displayName: 'Spanish');
 
   /// The offline flag stand-in: the real chip loads a network SVG whose async
-  /// parse throws into the test zone; this carries the same semantics
-  /// contract (label + tap).
+  /// parse throws into the test zone; this carries the same semantics and
+  /// focus contract as [ClusterLanguageFlag] (a named [FocusRingTapTarget]),
+  /// so a Tab stop it adds shows up here too.
   Widget flagStandIn(
     LanguageModel language,
     VoidCallback onTap,
@@ -46,20 +52,16 @@ void main() {
     double height,
     double fontSize,
   ) => Builder(
-    builder: (context) => Semantics(
-      button: true,
+    builder: (context) => FocusRingTapTarget(
+      onTap: onTap,
+      shape: const RoundedRectangleBorder(),
       label:
           '${language.getDisplayName(L10n.of(context))}, '
           '${L10n.of(context).learningSettings}',
-      excludeSemantics: true,
-      onTap: onTap,
-      child: GestureDetector(
-        onTap: onTap,
-        child: SizedBox(
-          width: width,
-          height: height,
-          child: Text(language.langCodeShort.toUpperCase()),
-        ),
+      child: SizedBox(
+        width: width,
+        height: height,
+        child: Text(language.langCodeShort.toUpperCase()),
       ),
     ),
   );
@@ -244,6 +246,42 @@ void main() {
     });
   });
 
+  /// #9114: the hexagon badge was a bare GestureDetector, so Tab skipped it.
+  group('full bar — keyboard', () {
+    T? focusedAncestor<T extends Widget>() => FocusManager
+        .instance
+        .primaryFocus
+        ?.context
+        ?.findAncestorWidgetOfExactType<T>();
+
+    testWidgets('the level badge is a Tab stop, before the trackers', (
+      tester,
+    ) async {
+      final viewModel = MockUserClusterViewModel();
+      await pumpBar(tester, viewModel: viewModel);
+
+      await tester.sendKeyEvent(LogicalKeyboardKey.tab);
+      await tester.pumpAndSettle();
+      expect(focusedAncestor<HexLevelBadge>(), isNotNull);
+
+      await tester.sendKeyEvent(LogicalKeyboardKey.tab);
+      await tester.pumpAndSettle();
+      expect(
+        focusedAncestor<ClusterTrackerButton>()?.indicator,
+        ProgressIndicatorEnum.stars,
+      );
+    });
+
+    testWidgets('the level badge is one named, focusable button', (
+      tester,
+    ) async {
+      final semantics = tester.ensureSemantics();
+      await pumpBar(tester, viewModel: MockUserClusterViewModel());
+      expectOneNodeControl(tester, '${l10nOf(tester).level} 1');
+      semantics.dispose();
+    });
+  });
+
   /// The open-panel highlight: the bar is the single-column rendering of the
   /// web cluster, so whichever analytics page is open is lit here too — all
   /// four controls, the level badge included (#7977, #8062).
@@ -409,6 +447,104 @@ void main() {
       expect(find.bySemanticsLabel('${l10n.vocab}: 0'), findsNothing);
 
       semantics.dispose();
+    });
+
+    /// #9117: the named button was not focusable, while the avatar and flag
+    /// inside it were each a Tab stop of their own.
+    testWidgets('is one named, focusable button', (tester) async {
+      final semantics = tester.ensureSemantics();
+      await pumpAvatar(tester, viewModel: MockUserClusterViewModel());
+      expectOneNodeControl(tester, l10nOf(tester).analyticsAndSettingsLabel);
+      semantics.dispose();
+    });
+
+    testWidgets('is one Tab stop; Enter and Space open the summary', (
+      tester,
+    ) async {
+      final viewModel = MockUserClusterViewModel();
+      await pumpAvatar(tester, viewModel: viewModel);
+
+      final stops = <FocusNode>{};
+      for (var i = 0; i < 4; i++) {
+        await tester.sendKeyEvent(LogicalKeyboardKey.tab);
+        await tester.pump();
+        final focus = FocusManager.instance.primaryFocus!;
+        expect(
+          focus.context
+              ?.findAncestorWidgetOfExactType<FocusRingTapTarget>()
+              ?.label,
+          l10nOf(tester).analyticsAndSettingsLabel,
+          reason: 'Tab $i lands on the header control, not the avatar or flag',
+        );
+        stops.add(focus);
+      }
+      expect(stops, hasLength(1));
+
+      await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+      await tester.pump();
+      expect(viewModel.taps, 1);
+      await tester.sendKeyEvent(LogicalKeyboardKey.space);
+      await tester.pump();
+      expect(viewModel.taps, 2);
+    });
+
+    testWidgets('the gold ring clears the XP ring and passes under the '
+        'badge and flag', (tester) async {
+      FocusManager.instance.highlightStrategy =
+          FocusHighlightStrategy.alwaysTraditional;
+      addTearDown(
+        () => FocusManager.instance.highlightStrategy =
+            FocusHighlightStrategy.automatic,
+      );
+      await pumpAvatar(tester, viewModel: MockUserClusterViewModel());
+      await tester.sendKeyEvent(LogicalKeyboardKey.tab);
+      await tester.pumpAndSettle();
+
+      final target = find.byWidgetPredicate(
+        (w) =>
+            w is FocusRingTapTarget &&
+            w.label == l10nOf(tester).analyticsAndSettingsLabel,
+      );
+      final ring = tester
+          .widgetList<DecoratedBox>(
+            find.descendant(of: target, matching: find.byType(DecoratedBox)),
+          )
+          .map((box) => box.decoration)
+          .whereType<ShapeDecoration>()
+          .map((d) => (d.shape as OutlinedBorder).side)
+          .singleWhere((side) => side.width == FocusRingTapTarget.ringWidth);
+      final theme = Theme.of(tester.element(target));
+      expect(ring.color, theme.pangea.goldGraphic);
+      expect(
+        (ring.strokeOffset - ring.width) / 2,
+        greaterThan(XpBorderPainter.trackExtra / 2),
+        reason: 'the band starts past the track, which overshoots the ring box',
+      );
+
+      // The ring paints over its own child only.
+      for (final decoration in [
+        find.byType(HexLevelBadge),
+        find.text(es.langCodeShort.toUpperCase()),
+      ]) {
+        expect(decoration, findsOneWidget);
+        expect(find.ancestor(of: decoration, matching: target), findsNothing);
+      }
+
+      // Its only neighbour is the app bar.
+      for (final brightness in Brightness.values) {
+        expect(
+          contrastRatio(
+            PangeaColors.of(brightness).goldGraphic,
+            ColorScheme.fromSeed(
+              seedColor: Color(AppSettings.colorSchemeSeedInt.defaultValue),
+              brightness: brightness,
+              dynamicSchemeVariant: DynamicSchemeVariant.fidelity,
+            ).surface,
+          ),
+          greaterThanOrEqualTo(minGraphicRatio),
+          reason: brightness.name,
+        );
+      }
     });
 
     testWidgets('tap fires the single callback (no timers, no expansion)', (

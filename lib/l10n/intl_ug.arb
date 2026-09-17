@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-09-16 10:14:24.347877",
+    "@@last_modified": "2026-09-17 11:52:12.451579",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "بۇ نۆۋەتتە يۇلتۇز مۇكاپاتلانمىدى، شۇڭا بۇ يەردە گۇمانلىنىدىغان ھېچقانداق نەرسە يوق.",
     "orchestratorFeedbackCommentRequired": "بىر باھا قوشۇڭ، شۇنداق قىلساق نېمىنى ئوڭشاشنى بىلىمىز",
     "orchestratorFeedbackSubmit": "يوللاڭ",
-    "orchestratorFeedbackThanks": "بەلگە قىلىندى. رەھمەت!"
+    "orchestratorFeedbackThanks": "بەلگە قىلىندى. رەھمەت!",
+    "analyticsSubscriptionWarningTitle": "تەرەققىياتىڭىز خاتىرىلەنمەيدۇ",
+    "analyticsSubscriptionWarningBody": "مۇشتەرى بولمىسىڭىز، ئۇچۇرلىرىڭىز XP كە ئېرىشەلمەيدۇ ھەمدە يېڭى سۆز ۋە گرامماتىكا قوشالمايدۇ."
 }

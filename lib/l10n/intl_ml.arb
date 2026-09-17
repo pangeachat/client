@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-09-16 10:14:16.152983",
+    "@@last_modified": "2026-09-17 11:52:08.166590",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "ഈ അവസരത്തിൽ സ്റ്റാറുകളൊന്നും ലഭിച്ചില്ല, അതിനാൽ ഇവിടെ ചോദ്യം ചെയ്യാൻ ഒന്നുമില്ല.",
     "orchestratorFeedbackCommentRequired": "എന്താണ് ശരിയാക്കേണ്ടതെന്ന് അറിയാൻ ഒരു കമന്റ് ചേർക്കുക",
     "orchestratorFeedbackSubmit": "അയയ്ക്കുക",
-    "orchestratorFeedbackThanks": "ഫ്ലാഗ് ചെയ്തു. നന്ദി!"
+    "orchestratorFeedbackThanks": "ഫ്ലാഗ് ചെയ്തു. നന്ദി!",
+    "analyticsSubscriptionWarningTitle": "നിങ്ങളുടെ പുരോഗതി ട്രാക്ക് ചെയ്യുന്നില്ല",
+    "analyticsSubscriptionWarningBody": "സബ്‌സ്‌ക്രിപ്‌ഷൻ ഇല്ലാതെ, നിങ്ങളുടെ സന്ദേശങ്ങൾക്ക് XP നേടാനോ പുതിയ വാക്കുകളും വ്യാകരണവും ചേർക്കാനോ കഴിയില്ല."
 }

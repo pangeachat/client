@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-09-16 10:14:17.921062",
+    "@@last_modified": "2026-09-17 11:52:09.237785",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "Din id-dawra ma tat l-ebda stilla, allura m'hemm xejn x'tiddubita hawn.",
     "orchestratorFeedbackCommentRequired": "Żid kumment biex inkunu nafu x'għandna nirranġaw",
     "orchestratorFeedbackSubmit": "Ibgħat",
-    "orchestratorFeedbackThanks": "Immarkat. Grazzi!"
+    "orchestratorFeedbackThanks": "Immarkat. Grazzi!",
+    "analyticsSubscriptionWarningTitle": "Il-progress tiegħek mhuwiex qed jiġi ssorveljat",
+    "analyticsSubscriptionWarningBody": "Mingħajr abbonament, il-messaġġi tiegħek ma jaqilgħux XP jew iżidu kliem u grammatika ġodda."
 }

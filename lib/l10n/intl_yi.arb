@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-09-16 10:14:25.499516",
+    "@@last_modified": "2026-09-17 11:52:13.532521",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "די דאָזיקע ריי האָט נישט באַלוינט קיין שטערן, אַזוי אַז ס'איז נישטאָ וואָס צו פֿרעגן דאָ.",
     "orchestratorFeedbackCommentRequired": "לייגט צו אַ קאָמענטאַר כּדי מיר זאָלן וויסן וואָס צו פֿאַרריכטן",
     "orchestratorFeedbackSubmit": "שיקן",
-    "orchestratorFeedbackThanks": "פֿאַרפֿאָנט. אַ דאַנק!"
+    "orchestratorFeedbackThanks": "פֿאַרפֿאָנט. אַ דאַנק!",
+    "analyticsSubscriptionWarningTitle": "אײַער פּראָגרעס װערט נישט נאָכגעפֿאָלגט",
+    "analyticsSubscriptionWarningBody": "אָן אַ אַבאָנעמענט, פֿאַרדינען אײַערע מעסעדזשעס נישט קײן XP אָדער לײגן צו קײן נײַע װערטער און גראַמאַטיק."
 }

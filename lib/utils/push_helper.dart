@@ -483,7 +483,11 @@ class FluffyChatPushPayload {
     Map<String, String> additionalData = {};
     if (parts.length > 3) {
       try {
-        additionalData = Map<String, String>.from(jsonDecode(parts[3]));
+        // The JSON is the rest of the payload: a value inside it can contain
+        // '|' (a message body), which must not truncate it.
+        additionalData = Map<String, String>.from(
+          jsonDecode(parts.sublist(3).join('|')),
+        );
       } catch (e, s) {
         Logs().e('Unable to parse additional data from payload', e, s);
       }

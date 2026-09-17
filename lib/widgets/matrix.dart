@@ -24,6 +24,7 @@ import 'package:fluffychat/features/dosage/dosage_engagement_tracker.dart';
 import 'package:fluffychat/features/languages/language_constants.dart';
 import 'package:fluffychat/features/languages/locale_provider.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/notifications/nse_session.dart';
 import 'package:fluffychat/features/overlay/any_state_holder.dart';
 import 'package:fluffychat/features/tutorials/tutorial_overlay_controller.dart';
 import 'package:fluffychat/features/user/user_controller.dart';
@@ -906,6 +907,9 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
           } catch (e, st) {
             Logs().e('Could not forget the signed-out client name', e, st);
           }
+          // Best-effort like the store write, and it never throws. The iOS
+          // notification extension must not keep a signed-out session's token.
+          unawaited(NseSession.clear());
           _accountsChanged();
           // Pangea#
         }

@@ -6,6 +6,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/show_menu_long_press.dart';
 import 'package:fluffychat/routes/chat_list/chat_list_item.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -218,6 +219,24 @@ void main() {
     row.owner!.performAction(row.id, SemanticsAction.customAction, actionId);
     await tester.pumpAndSettle();
     expect(menuOpened, 1);
+    semantics.dispose();
+  });
+
+  testWidgets('the row opts in to show-menu on web only when it has a menu', (
+    tester,
+  ) async {
+    final semantics = tester.ensureSemantics();
+    await pumpItem(tester, makeRoom(), onLongPress: (_) {});
+    expect(
+      rowButtonNode(tester).getSemanticsData().identifier,
+      ShowMenuLongPress.semanticsIdentifier,
+      reason:
+          'the web bridge routes a screen reader\'s "show menu" only to '
+          'opted-in nodes, instead of the browser\'s page menu',
+    );
+
+    await pumpItem(tester, makeRoom());
+    expect(rowButtonNode(tester).getSemanticsData().identifier, isEmpty);
     semantics.dispose();
   });
 

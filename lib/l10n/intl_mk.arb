@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-09-16 10:14:16.588269",
+    "@@last_modified": "2026-09-17 11:52:08.175383",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "Овој потег не додели ѕвезди, така што нема што да се доведува во прашање тука.",
     "orchestratorFeedbackCommentRequired": "Додадете коментар за да знаеме што да поправиме",
     "orchestratorFeedbackSubmit": "Испрати",
-    "orchestratorFeedbackThanks": "Пријавено. Благодарам!"
+    "orchestratorFeedbackThanks": "Пријавено. Благодарам!",
+    "analyticsSubscriptionWarningTitle": "Вашиот напредок не се следи",
+    "analyticsSubscriptionWarningBody": "Без претплата, вашите пораки не заработуваат XP или не додаваат нови зборови и граматика."
 }

@@ -1263,7 +1263,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-09-16 10:14:24.365832",
+    "@@last_modified": "2026-09-17 11:52:12.565535",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10893,5 +10893,7 @@
     "orchestratorFeedbackNoAwards": "這回合沒有頒發星級，所以這裡沒有什麼可質疑的。",
     "orchestratorFeedbackCommentRequired": "請添加評論，以便我們知道要修復什麼",
     "orchestratorFeedbackSubmit": "發送",
-    "orchestratorFeedbackThanks": "已舉報。謝謝！"
+    "orchestratorFeedbackThanks": "已舉報。謝謝！",
+    "analyticsSubscriptionWarningTitle": "您的進度未被追蹤",
+    "analyticsSubscriptionWarningBody": "如果沒有訂閱，您的訊息將不會獲得經驗值，也不會增加新單字和文法。"
 }

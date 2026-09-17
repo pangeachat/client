@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-09-16 10:14:06.484601",
+    "@@last_modified": "2026-09-17 11:52:03.462942",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "এই পালত কোনো তৰা দিয়া হোৱা নাছিল, গতিকে ইয়াত প্ৰশ্ন কৰিবলৈ একো নাই।",
     "orchestratorFeedbackCommentRequired": "এটা মন্তব্য যোগ কৰক যাতে আমি কি ঠিক কৰিব লাগে জানিব পাৰো",
     "orchestratorFeedbackSubmit": "প্ৰেৰণ কৰক",
-    "orchestratorFeedbackThanks": "ফ্লেগ কৰা হৈছে। ধন্যবাদ!"
+    "orchestratorFeedbackThanks": "ফ্লেগ কৰা হৈছে। ধন্যবাদ!",
+    "analyticsSubscriptionWarningTitle": "আপোনাৰ অগ্ৰগতি ট্ৰেক কৰা হোৱা নাই",
+    "analyticsSubscriptionWarningBody": "গ্ৰাহক সেৱা অবিহনে, আপোনাৰ বাৰ্তাবোৰে XP উপাৰ্জন নকৰে বা নতুন শব্দ আৰু ব্যাকৰণ যোগ নকৰে।"
 }

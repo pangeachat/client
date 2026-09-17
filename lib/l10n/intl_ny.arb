@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-09-16 10:14:19.118984",
+    "@@last_modified": "2026-09-17 11:52:09.315132",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "Panthawi ino palibe nyenyezi zomwe zaperekedwa, choncho palibe chokayikira apa.",
     "orchestratorFeedbackCommentRequired": "Onjezani ndemanga kuti tidziwe choti tikonze",
     "orchestratorFeedbackSubmit": "Tumiza",
-    "orchestratorFeedbackThanks": "Chongedwa. Zikomo!"
+    "orchestratorFeedbackThanks": "Chongedwa. Zikomo!",
+    "analyticsSubscriptionWarningTitle": "Kupita patsogolo kwanu sikukuwonedwa",
+    "analyticsSubscriptionWarningBody": "Popanda kulembetsa, mauthenga anu sakupeza XP kapena kuwonjezera mawu atsopano ndi galamala."
 }

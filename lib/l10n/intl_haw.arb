@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-09-16 10:14:10.888733",
+    "@@last_modified": "2026-09-17 11:52:06.477392",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "ʻAʻohe hōkū i hāʻawi ʻia i kēia huli, no laila, ʻaʻohe mea e nīnau ai ma ʻaneʻi.",
     "orchestratorFeedbackCommentRequired": "E hoʻohui i kahi manaʻo i ʻike mākou i ka mea e hoʻoponopono ai",
     "orchestratorFeedbackSubmit": "Hoʻouna",
-    "orchestratorFeedbackThanks": "Ua hōʻailona ʻia. Mahalo!"
+    "orchestratorFeedbackThanks": "Ua hōʻailona ʻia. Mahalo!",
+    "analyticsSubscriptionWarningTitle": "ʻAʻole e mālama ʻia ana kou holomua",
+    "analyticsSubscriptionWarningBody": "Me ka ʻole o ke kau inoa, ʻaʻole e loaʻa i kāu mau leka ka XP a ʻaʻole e hoʻohui i nā huaʻōlelo a me nā lula hou."
 }

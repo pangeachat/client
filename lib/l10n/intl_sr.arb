@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-16 10:14:21.832087",
+    "@@last_modified": "2026-09-17 11:52:10.954286",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10885,5 +10885,7 @@
     "orchestratorFeedbackNoAwards": "Ovaj potez nije dodelio zvezde, tako da ovde nema šta da se dovodi u pitanje.",
     "orchestratorFeedbackCommentRequired": "Dodajte komentar kako bismo znali šta da popravimo",
     "orchestratorFeedbackSubmit": "Pošalji",
-    "orchestratorFeedbackThanks": "Označeno. Hvala!"
+    "orchestratorFeedbackThanks": "Označeno. Hvala!",
+    "analyticsSubscriptionWarningTitle": "Vaš napredak se ne prati",
+    "analyticsSubscriptionWarningBody": "Bez pretplate, vaše poruke ne donose XP niti dodaju nove reči i gramatiku."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-16 10:14:17.665921",
+    "@@last_modified": "2026-09-17 11:52:08.765472",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9993,5 +9993,7 @@
     "orchestratorFeedbackNoAwards": "Denne runden ga ingen stjerner, så det er ingenting å stille spørsmål ved her.",
     "orchestratorFeedbackCommentRequired": "Legg til en kommentar slik at vi vet hva vi skal fikse",
     "orchestratorFeedbackSubmit": "Send",
-    "orchestratorFeedbackThanks": "Rapportert. Takk!"
+    "orchestratorFeedbackThanks": "Rapportert. Takk!",
+    "analyticsSubscriptionWarningTitle": "Fremgangen din spores ikke",
+    "analyticsSubscriptionWarningBody": "Uten et abonnement vil ikke meldingene dine gi XP eller legge til nye ord og grammatikk."
 }

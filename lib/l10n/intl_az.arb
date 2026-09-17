@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-09-16 10:14:06.407242",
+    "@@last_modified": "2026-09-17 11:52:03.272214",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "Bu növbədə heç bir ulduz verilmədi, buna görə burada sorğu-sual ediləcək heç nə yoxdur.",
     "orchestratorFeedbackCommentRequired": "Nəyi düzəltməli olduğumuzu bilmək üçün şərh əlavə edin",
     "orchestratorFeedbackSubmit": "Göndər",
-    "orchestratorFeedbackThanks": "İşarələndi. Təşəkkürlər!"
+    "orchestratorFeedbackThanks": "İşarələndi. Təşəkkürlər!",
+    "analyticsSubscriptionWarningTitle": "Tərəqqiniz izlənilmir",
+    "analyticsSubscriptionWarningBody": "Abunəlik olmadan mesajlarınız XP qazanmır və yeni sözlər, qrammatika əlavə etmir."
 }

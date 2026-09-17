@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
+import 'package:fluffychat/pangea/common/widgets/embed_click_to_engage.dart';
+
 /// Inline YouTube embed for an activity media block. YouTube blocks are always
 /// embedded against their URL, never re-hosted (YouTube ToS), and this is the
 /// one player that runs on both Flutter web and mobile.
@@ -17,6 +19,11 @@ import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 /// so the learner's own YouTube caption setting decides whether they show. The
 /// package's defaults do the opposite — they force captions on and hardcode a
 /// preference of English (#8828).
+///
+/// The embed only takes the mouse once the learner clicks it, so the page
+/// around it keeps scrolling while they are just passing over ([
+/// EmbedClickToEngage], #9063). That first click spends itself on play/pause,
+/// the same thing a click on a YouTube player does.
 ///
 /// The embed stays inline: fullscreen is fully disabled (no fullscreen button,
 /// no auto-fullscreen on landscape rotation, no fullscreen-on-vertical-drag).
@@ -102,15 +109,26 @@ class _ActivityYoutubePlayerState extends State<ActivityYoutubePlayer> {
     super.dispose();
   }
 
+  void _togglePlayback() {
+    if (_controller.value.playerState == PlayerState.playing) {
+      _controller.pauseVideo();
+    } else {
+      _controller.playVideo();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return YoutubePlayer(
-      controller: _controller,
-      aspectRatio: widget.aspectRatio,
-      // Inline only (#7500): don't auto-fullscreen on landscape rotation, and
-      // don't let a vertical drag push into fullscreen.
-      autoFullScreen: false,
-      enableFullScreenOnVerticalDrag: false,
+    return EmbedClickToEngage(
+      onEngage: _togglePlayback,
+      child: YoutubePlayer(
+        controller: _controller,
+        aspectRatio: widget.aspectRatio,
+        // Inline only (#7500): don't auto-fullscreen on landscape rotation, and
+        // don't let a vertical drag push into fullscreen.
+        autoFullScreen: false,
+        enableFullScreenOnVerticalDrag: false,
+      ),
     );
   }
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-09-16 10:14:21.603470",
+    "@@last_modified": "2026-09-17 11:52:11.095380",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "Wareeggan ma jirin xiddigo la bixiyay, sidaa darteed ma jirto wax halkan laga su'aalo.",
     "orchestratorFeedbackCommentRequired": "Ku dar faallo si aan u ogaano waxa la hagaajinayo",
     "orchestratorFeedbackSubmit": "Dir",
-    "orchestratorFeedbackThanks": "La calaamadeeyay. Waad mahadsan tahay!"
+    "orchestratorFeedbackThanks": "La calaamadeeyay. Waad mahadsan tahay!",
+    "analyticsSubscriptionWarningTitle": "Horumarkaaga lama dabagalo",
+    "analyticsSubscriptionWarningBody": "Adigoon is-diiwaangelin, fariimahaagu ma kasbadaan XP mana ku daraan ereyo iyo naxwaha cusub."
 }

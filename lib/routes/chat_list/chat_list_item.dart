@@ -6,6 +6,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/show_menu_long_press.dart';
 import 'package:fluffychat/pangea/common/widgets/invited_chip.dart';
 import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -238,8 +239,12 @@ class ChatListItem extends StatelessWidget {
                 // reads the hint override ("double tap and hold to show more
                 // options"), and — since iOS ignores hint overrides — the
                 // same menu is also a named custom action in the VoiceOver
-                // actions rotor and TalkBack's actions menu.
+                // actions rotor and TalkBack's actions menu. The web engine
+                // publishes neither, so the row opts in to ShowMenuLongPress.
                 Semantics(
+                  identifier: onLongPress == null
+                      ? null
+                      : ShowMenuLongPress.semanticsIdentifier,
                   onLongPressHint: onLongPress == null
                       ? null
                       : L10n.of(context).showMoreOptionsHint,

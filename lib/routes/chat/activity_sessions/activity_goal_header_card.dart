@@ -4,6 +4,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target.dart';
+import 'package:fluffychat/pangea/common/widgets/embed_pointer_shield.dart';
 
 /// The floating goal-header card shared by the live session and the start/
 /// summary pages. It crossfades between its [collapsed] face (star summary +
@@ -80,6 +81,12 @@ class ActivityGoalHeaderCard extends StatelessWidget {
                 type: MaterialType.transparency,
                 child: Stack(
                   children: [
+                    // Behind everything: on web the card floats over a chat
+                    // timeline that can hold a live video embed, and a click on
+                    // a Flutter layer over an embed is taken by the embed, not
+                    // by the card (#9063). The shield wins the click back; the
+                    // card's own controls, painted above it, then get it.
+                    const Positioned.fill(child: EmbedPointerShield()),
                     // Behind the content: swallow taps that land on the card's own
                     // footprint but miss a real control (the padding between the
                     // top row and subtitle, the gaps between goal rows, the border).

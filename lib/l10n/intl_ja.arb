@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-09-16 10:14:12.704392",
+    "@@last_modified": "2026-09-17 11:52:06.638014",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10705,5 +10705,7 @@
     "orchestratorFeedbackNoAwards": "このターンではスターが授与されなかったため、問題にするものはありません。",
     "orchestratorFeedbackCommentRequired": "修正すべき点がわかるようにコメントを追加してください",
     "orchestratorFeedbackSubmit": "送信",
-    "orchestratorFeedbackThanks": "報告されました。ありがとうございます！"
+    "orchestratorFeedbackThanks": "報告されました。ありがとうございます！",
+    "analyticsSubscriptionWarningTitle": "進捗は記録されていません",
+    "analyticsSubscriptionWarningBody": "サブスクリプションがない場合、メッセージでXPを獲得したり、新しい単語や文法を追加したりすることはできません。"
 }

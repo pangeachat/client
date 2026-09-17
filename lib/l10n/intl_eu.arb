@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-09-16 10:14:09.170451",
+    "@@last_modified": "2026-09-17 11:52:04.876172",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9936,5 +9936,7 @@
     "orchestratorFeedbackNoAwards": "Txanda honek ez du izarrik eman, beraz, ez dago ezer zalantzan jartzeko.",
     "orchestratorFeedbackCommentRequired": "Gehitu iruzkin bat zer konpondu behar dugun jakin dezagun",
     "orchestratorFeedbackSubmit": "Bidali",
-    "orchestratorFeedbackThanks": "Markatuta. Eskerrik asko!"
+    "orchestratorFeedbackThanks": "Markatuta. Eskerrik asko!",
+    "analyticsSubscriptionWarningTitle": "Zure aurrerapena ez da jarraitzen ari",
+    "analyticsSubscriptionWarningBody": "Harpidetzarik gabe, zure mezuek ez dute XPrik irabazten, ezta hitz eta gramatika berririk gehitzen ere."
 }

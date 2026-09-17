@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-16 10:14:10.894348",
+    "@@last_modified": "2026-09-17 11:52:05.509394",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10850,5 +10850,7 @@
     "orchestratorFeedbackNoAwards": "בתור זה לא הוענקו כוכבים, כך שאין מה להטיל ספק כאן.",
     "orchestratorFeedbackCommentRequired": "הוסף תגובה כדי שנדע מה לתקן",
     "orchestratorFeedbackSubmit": "שלח",
-    "orchestratorFeedbackThanks": "סומן. תודה!"
+    "orchestratorFeedbackThanks": "סומן. תודה!",
+    "analyticsSubscriptionWarningTitle": "ההתקדמות שלך לא נשמרת",
+    "analyticsSubscriptionWarningBody": "בלי מינוי, ההודעות שלך לא יצברו נקודות ניסיון או יוסיפו מילים ודקדוק חדשים."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-09-16 10:14:22.851042",
+    "@@last_modified": "2026-09-17 11:52:11.483124",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2340,5 +2340,7 @@
     "orchestratorFeedbackNoAwards": "Zamu hii haikutoa nyota zozote, kwa hivyo hakuna cha kuhoji hapa.",
     "orchestratorFeedbackCommentRequired": "Ongeza maoni ili tujue nini cha kurekebisha",
     "orchestratorFeedbackSubmit": "Tuma",
-    "orchestratorFeedbackThanks": "Imewekewa alama. Asante!"
+    "orchestratorFeedbackThanks": "Imewekewa alama. Asante!",
+    "analyticsSubscriptionWarningTitle": "Maendeleo yako hayafuatiliwi",
+    "analyticsSubscriptionWarningBody": "Bila usajili, jumbe zako hazipati XP au kuongeza maneno na sarufi mpya."
 }
