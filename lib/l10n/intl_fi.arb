@@ -3537,7 +3537,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-08-25 15:25:42.403132",
+    "@@last_modified": "2026-08-26 15:28:48.514197",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9799,5 +9799,8 @@
     "rateActivityDisliked": "En pitänyt siitä",
     "constructUseHrdDesc": "Kuultu",
     "timesHeard": "{count, plural, =1{Kuultu kerran} other{Kuultu {count} kertaa}}",
-    "allSettings": "Kaikki asetukset"
+    "allSettings": "Kaikki asetukset",
+    "usedCorrectly": "{count, plural, =1{Käytetty oikein kerran} other{Käytetty oikein {count} kertaa}}",
+    "usedIncorrectly": "{count, plural, =1{Käytetty väärin kerran} other{Käytetty väärin {count} kertaa}}",
+    "usedWithoutScoring": "{count, plural, =1{Käytetty kerran ilman pisteitä} other{Käytetty {count} kertaa ilman pisteitä}}"
 }

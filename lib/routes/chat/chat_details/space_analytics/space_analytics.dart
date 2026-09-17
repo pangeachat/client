@@ -207,8 +207,12 @@ class SpaceAnalyticsState extends State<SpaceAnalytics>
 
       for (final lang in resp.languageAnalytics!.entries) {
         if (lang.value.analyticsRoomId == null) continue;
-        _langsToUsers[lang.key] ??= [];
-        _langsToUsers[lang.key]!.add(u);
+        // Entries are keyed by short language code; the filter is a language
+        // list, so resolve one to the other here.
+        final language = PLanguageStore.byLangCode(lang.key);
+        if (language == null) continue;
+        _langsToUsers[language] ??= [];
+        _langsToUsers[language]!.add(u);
       }
     });
 
@@ -382,11 +386,7 @@ class SpaceAnalyticsState extends State<SpaceAnalytics>
   }
 
   String? _analyticsRoomIdOfUser(User user, LanguageModel lang) {
-    final profile = _profiles[user];
-    if (profile == null || profile.languageAnalytics == null) return null;
-
-    final entry = profile.languageAnalytics![lang];
-    return entry?.analyticsRoomId;
+    return _profiles[user]?.analyticsRoomIdByLanguage(lang.langCode);
   }
 
   Room? _analyticsRoomOfUser(User user, LanguageModel lang) {

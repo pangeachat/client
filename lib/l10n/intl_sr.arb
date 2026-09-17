@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-25 15:25:46.073793",
+    "@@last_modified": "2026-08-26 15:28:54.998349",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10711,5 +10711,8 @@
     "rateActivityDisliked": "Nije mi se svidelo",
     "constructUseHrdDesc": "Čuo/čula",
     "timesHeard": "{count, plural, =1{Čuo jednom} other{Čuo {count} puta}}",
-    "allSettings": "Sva podešavanja"
+    "allSettings": "Sva podešavanja",
+    "usedCorrectly": "{count, plural, =1{Korišćeno ispravno jednom} other{Korišćeno ispravno {count} puta}}",
+    "usedIncorrectly": "{count, plural, =1{Korišćeno pogrešno jednom} other{Korišćeno pogrešno {count} puta}}",
+    "usedWithoutScoring": "{count, plural, =1{Korišćeno jednom bez bodovanja} other{Korišćeno {count} puta bez bodovanja}}"
 }

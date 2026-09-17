@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-08-25 15:25:46.274792",
+    "@@last_modified": "2026-08-26 15:28:55.858010",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "Teu resep",
     "constructUseHrdDesc": "Kadangu",
     "timesHeard": "{count, plural, =1{Kaping dangu sakali} other{Kaping dangu {count} kali}}",
-    "allSettings": "Sadaya setélan"
+    "allSettings": "Sadaya setélan",
+    "usedCorrectly": "{count, plural, =1{Dipaké bener sakali} other{Dipaké bener {count} kali}}",
+    "usedIncorrectly": "{count, plural, =1{Dipaké salah sakali} other{Dipaké salah {count} kali}}",
+    "usedWithoutScoring": "{count, plural, =1{Dipaké sakali tanpa skor} other{Dipaké {count} kali tanpa skor}}"
 }

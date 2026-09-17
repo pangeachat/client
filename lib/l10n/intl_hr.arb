@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-08-25 15:25:43.039414",
+    "@@last_modified": "2026-08-26 15:28:49.410806",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10198,5 +10198,8 @@
     "rateActivityDisliked": "Nije mi se svidjelo",
     "constructUseHrdDesc": "Čuo",
     "timesHeard": "{count, plural, =1{Čuo jednom} other{Čuo {count} puta}}",
-    "allSettings": "Sve postavke"
+    "allSettings": "Sve postavke",
+    "usedCorrectly": "{count, plural, =1{Korišteno točno jednom} other{Korišteno točno {count} puta}}",
+    "usedIncorrectly": "{count, plural, =1{Korišteno netočno jednom} other{Korišteno netočno {count} puta}}",
+    "usedWithoutScoring": "{count, plural, =1{Korišteno jednom bez bodovanja} other{Korišteno {count} puta bez bodovanja}}"
 }

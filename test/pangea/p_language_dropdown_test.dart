@@ -180,8 +180,8 @@ void main() {
         PublicProfileModel(
           analytics: AnalyticsProfileModel(
             languageAnalytics: {
-              spanish: LanguageAnalyticsProfileEntry(4, 0),
-              french: LanguageAnalyticsProfileEntry(7, 0),
+              'es': LanguageAnalyticsProfileEntry(4, 0),
+              'fr': LanguageAnalyticsProfileEntry(7, 0),
             },
           ),
         ),
@@ -203,6 +203,8 @@ void main() {
       expect(spanishIndex, lessThan(italianIndex));
 
       expect(find.text(enL10n.languageDropdownLevel(7)), findsOneWidget);
+      // Spanish alone. Spanish (Mexico) is a regional variant over the same
+      // analytics, so it shows no level of its own and is not promoted (#8582).
       expect(find.text(enL10n.languageDropdownLevel(4)), findsOneWidget);
       expect(find.byType(Divider), findsOneWidget);
     },
@@ -225,7 +227,7 @@ void main() {
     MatrixState.pangeaController.userController.setPublicProfile(
       PublicProfileModel(
         analytics: AnalyticsProfileModel(
-          languageAnalytics: {french: LanguageAnalyticsProfileEntry(7, 0)},
+          languageAnalytics: {'fr': LanguageAnalyticsProfileEntry(7, 0)},
         ),
       ),
     );
@@ -247,8 +249,8 @@ void main() {
         PublicProfileModel(
           analytics: AnalyticsProfileModel(
             languageAnalytics: {
-              spanish: LanguageAnalyticsProfileEntry(15, 0),
-              spanishMexico: LanguageAnalyticsProfileEntry(3, 0),
+              'es': LanguageAnalyticsProfileEntry(15, 0),
+              'fr': LanguageAnalyticsProfileEntry(7, 0),
             },
           ),
         ),
@@ -259,8 +261,8 @@ void main() {
       final spanishEntry = find.byWidgetPredicate(
         (w) => w is LanguageDropDownEntry && w.languageModel == spanish,
       );
-      final spanishMexicoEntry = find.byWidgetPredicate(
-        (w) => w is LanguageDropDownEntry && w.languageModel == spanishMexico,
+      final frenchEntry = find.byWidgetPredicate(
+        (w) => w is LanguageDropDownEntry && w.languageModel == french,
       );
 
       expect(
@@ -274,17 +276,54 @@ void main() {
         ),
         findsNothing,
       );
-      expect(find.text(enL10n.languageDropdownLevel(15)), findsOneWidget);
 
-      // Spanish (Mexico) is unambiguous, so it keeps its flag.
+      // French has no localized sibling here, so the promotion to a real flag
+      // still happens for an analytics row that has a usable one.
       expect(
         find.descendant(
-          of: spanishMexicoEntry,
+          of: frenchEntry,
           matching: find.byType(LanguageFlagChip),
         ),
         findsOneWidget,
       );
-      expect(find.text(enL10n.languageDropdownLevel(3)), findsOneWidget);
     },
   );
+
+  testWidgets('a regional variant shows no level and no flag promotion', (
+    tester,
+  ) async {
+    // es and es-MX are one language with one analytics room and one local
+    // partition. The level belongs to the language, so Spanish carries it and
+    // Spanish (Mexico) is an ordinary unlabelled row — showing a level against
+    // each variant read as separate progress the learner never had (#8582).
+    MatrixState.pangeaController.userController.setPublicProfile(
+      PublicProfileModel(
+        analytics: AnalyticsProfileModel(
+          languageAnalytics: {'es': LanguageAnalyticsProfileEntry(15, 0)},
+        ),
+      ),
+    );
+
+    await openDropdown(tester);
+
+    final spanishMexicoEntry = find.byWidgetPredicate(
+      (w) => w is LanguageDropDownEntry && w.languageModel == spanishMexico,
+    );
+
+    expect(find.text(enL10n.languageDropdownLevel(15)), findsOneWidget);
+    expect(
+      find.descendant(
+        of: spanishMexicoEntry,
+        matching: find.text(enL10n.languageDropdownLevel(15)),
+      ),
+      findsNothing,
+    );
+    expect(
+      find.descendant(
+        of: spanishMexicoEntry,
+        matching: find.byType(LanguageFlagChip),
+      ),
+      findsNothing,
+    );
+  });
 }

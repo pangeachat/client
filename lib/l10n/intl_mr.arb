@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-08-25 15:25:44.810863",
+    "@@last_modified": "2026-08-26 15:28:52.938321",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "आवडले नाही",
     "constructUseHrdDesc": "ऐकले",
     "timesHeard": "{count, plural, =1{एकदा ऐकले} other{{count} वेळा ऐकले}}",
-    "allSettings": "सर्व सेटिंग्ज"
+    "allSettings": "सर्व सेटिंग्ज",
+    "usedCorrectly": "{count, plural, =1{एकदा योग्यरित्या वापरले} other{{count} वेळा योग्यरित्या वापरले}}",
+    "usedIncorrectly": "{count, plural, =1{एकदा चुकीच्या पद्धतीने वापरले} other{{count} वेळा चुकीच्या पद्धतीने वापरले}}",
+    "usedWithoutScoring": "{count, plural, =1{एकदा स्कोअर न करता वापरले} other{{count} वेळा स्कोअर न करता वापरले}}"
 }

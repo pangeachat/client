@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-08-25 15:25:46.263098",
+    "@@last_modified": "2026-08-26 15:28:56.080744",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "Ha ke a e rata",
     "constructUseHrdDesc": "Utloile",
     "timesHeard": "{count, plural, =1{Utluilwe hang fela} other{Utluilwe {count} dinako}}",
-    "allSettings": "Litlhophiso tsohle"
+    "allSettings": "Litlhophiso tsohle",
+    "usedCorrectly": "{count, plural, =1{E sebelisitsoe hantle hang} other{E sebelisitsoe hantle ka makhetlo a {count}}}",
+    "usedIncorrectly": "{count, plural, =1{E sebelisitsoe hampe hang} other{E sebelisitsoe hampe ka makhetlo a {count}}}",
+    "usedWithoutScoring": "{count, plural, =1{E sebelisitsoe hang ntle le ho fumana lintlha} other{E sebelisitsoe ka makhetlo a {count} ntle le ho fumana lintlha}}"
 }

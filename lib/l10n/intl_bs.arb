@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-08-25 15:25:41.378260",
+    "@@last_modified": "2026-08-26 15:28:46.718276",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "Nije mi se svidjelo",
     "constructUseHrdDesc": "Čuo",
     "timesHeard": "{count, plural, =1{Čuo jednom} other{Čuo {count} puta}}",
-    "allSettings": "Sve postavke"
+    "allSettings": "Sve postavke",
+    "usedCorrectly": "{count, plural, =1{Korišteno ispravno jednom} other{Korišteno ispravno {count} puta}}",
+    "usedIncorrectly": "{count, plural, =1{Korišteno pogrešno jednom} other{Korišteno pogrešno {count} puta}}",
+    "usedWithoutScoring": "{count, plural, =1{Korišteno jednom bez bodovanja} other{Korišteno {count} puta bez bodovanja}}"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-25 15:25:44.000990",
+    "@@last_modified": "2026-08-26 15:28:51.159685",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9955,5 +9955,8 @@
     "rateActivityDisliked": "마음에 들지 않아요",
     "constructUseHrdDesc": "들었어요",
     "timesHeard": "{count, plural, =1{1회 들음} other{{count}회 들음}}",
-    "allSettings": "모든 설정"
+    "allSettings": "모든 설정",
+    "usedCorrectly": "{count, plural, =1{1회 올바르게 사용됨} other{{count}회 올바르게 사용됨}}",
+    "usedIncorrectly": "{count, plural, =1{1회 잘못 사용됨} other{{count}회 잘못 사용됨}}",
+    "usedWithoutScoring": "{count, plural, =1{1회 사용됨 (점수 없음)} other{{count}회 사용됨 (점수 없음)}}"
 }

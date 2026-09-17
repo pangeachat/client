@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-08-25 15:25:44.826462",
+    "@@last_modified": "2026-08-26 15:28:53.012609",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "Ma għoġobnix",
     "constructUseHrdDesc": "Smajt",
     "timesHeard": "{count, plural, =1{Misma darba} other{Misma {count} darbiet}}",
-    "allSettings": "Is-settings kollha"
+    "allSettings": "Is-settings kollha",
+    "usedCorrectly": "{count, plural, =1{Użat b'mod korrett darba} other{Użat b'mod korrett {count} darbiet}}",
+    "usedIncorrectly": "{count, plural, =1{Użat b'mod żbaljat darba} other{Użat b'mod żbaljat {count} darbiet}}",
+    "usedWithoutScoring": "{count, plural, =1{Użat darba mingħajr punteġġ} other{Użat {count} darbiet mingħajr punteġġ}}"
 }

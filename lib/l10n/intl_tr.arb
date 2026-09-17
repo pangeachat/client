@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-08-25 15:25:46.598761",
+    "@@last_modified": "2026-08-26 15:28:55.794132",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10063,5 +10063,8 @@
     "rateActivityDisliked": "Beğenilmedi",
     "constructUseHrdDesc": "Duyuldu",
     "timesHeard": "{count, plural, =1{Bir kez duyuldu} other{{count} kez duyuldu}}",
-    "allSettings": "Tüm ayarlar"
+    "allSettings": "Tüm ayarlar",
+    "usedCorrectly": "{count, plural, =1{Bir kez doğru kullanıldı} other{{count} kez doğru kullanıldı}}",
+    "usedIncorrectly": "{count, plural, =1{Bir kez yanlış kullanıldı} other{{count} kez yanlış kullanıldı}}",
+    "usedWithoutScoring": "{count, plural, =1{Puanlama olmadan bir kez kullanıldı} other{Puanlama olmadan {count} kez kullanıldı}}"
 }

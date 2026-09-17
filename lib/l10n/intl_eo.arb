@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-25 15:25:42.004170",
+    "@@last_modified": "2026-08-26 15:28:48.134097",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10707,5 +10707,8 @@
     "rateActivityDisliked": "Malŝatis ĝin",
     "constructUseHrdDesc": "Aŭdita",
     "timesHeard": "{count, plural, =1{Aŭdita unufoje} other{Aŭdita {count} fojojn}}",
-    "allSettings": "Ĉiuj agordoj"
+    "allSettings": "Ĉiuj agordoj",
+    "usedCorrectly": "{count, plural, =1{Uzita ĝuste unufoje} other{Uzita ĝuste {count} fojojn}}",
+    "usedIncorrectly": "{count, plural, =1{Uzita malĝuste unufoje} other{Uzita malĝuste {count} fojojn}}",
+    "usedWithoutScoring": "{count, plural, =1{Uzita unufoje sen poentado} other{Uzita {count} fojojn sen poentado}}"
 }

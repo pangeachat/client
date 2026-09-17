@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-08-25 15:25:43.998942",
+    "@@last_modified": "2026-08-26 15:28:51.085396",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "ಇಷ್ಟವಾಗಲಿಲ್ಲ",
     "constructUseHrdDesc": "ಕೇಳಿದೆ",
     "timesHeard": "{count, plural, =1{ಒಮ್ಮೆ ಕೇಳಲಾಗಿದೆ} other{{count} ಬಾರಿ ಕೇಳಲಾಗಿದೆ}}",
-    "allSettings": "ಎಲ್ಲಾ ಸೆಟ್ಟಿಂಗ್‌ಗಳು"
+    "allSettings": "ಎಲ್ಲಾ ಸೆಟ್ಟಿಂಗ್‌ಗಳು",
+    "usedCorrectly": "{count, plural, =1{ಒಮ್ಮೆ ಸರಿಯಾಗಿ ಬಳಸಲಾಗಿದೆ} other{{count} ಬಾರಿ ಸರಿಯಾಗಿ ಬಳಸಲಾಗಿದೆ}}",
+    "usedIncorrectly": "{count, plural, =1{ಒಮ್ಮೆ ತಪ್ಪಾಗಿ ಬಳಸಲಾಗಿದೆ} other{{count} ಬಾರಿ ತಪ್ಪಾಗಿ ಬಳಸಲಾಗಿದೆ}}",
+    "usedWithoutScoring": "{count, plural, =1{ಸ್ಕೋರಿಂಗ್ ಇಲ್ಲದೆ ಒಮ್ಮೆ ಬಳಸಲಾಗಿದೆ} other{ಸ್ಕೋರಿಂಗ್ ಇಲ್ಲದೆ {count} ಬಾರಿ ಬಳಸಲಾಗಿದೆ}}"
 }

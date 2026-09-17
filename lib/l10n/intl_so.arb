@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-25 15:25:46.040504",
+    "@@last_modified": "2026-08-26 15:28:54.970504",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "Ma jeclaysan",
     "constructUseHrdDesc": "La maqlay",
     "timesHeard": "{count, plural, =1{Hal mar la maqlay} other{{count} jeer la maqlay}}",
-    "allSettings": "Dhammaan goobaha"
+    "allSettings": "Dhammaan goobaha",
+    "usedCorrectly": "{count, plural, =1{Hal mar si sax ah loo isticmaalay} other{{count} jeer si sax ah loo isticmaalay}}",
+    "usedIncorrectly": "{count, plural, =1{Hal mar si qaldan loo isticmaalay} other{{count} jeer si qaldan loo isticmaalay}}",
+    "usedWithoutScoring": "{count, plural, =1{Hal mar la isticmaalay dhibco la'aan} other{{count} jeer la isticmaalay dhibco la'aan}}"
 }

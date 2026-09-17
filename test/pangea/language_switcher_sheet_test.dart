@@ -113,7 +113,7 @@ void main() {
   void seedController({
     required String base,
     required String target,
-    Map<LanguageModel, LanguageAnalyticsProfileEntry>? languageAnalytics,
+    Map<String, LanguageAnalyticsProfileEntry>? languageAnalytics,
   }) {
     client.accountData[UserConstants.userProfile] = BasicEvent(
       type: UserConstants.userProfile,
@@ -170,7 +170,7 @@ void main() {
     seedController(
       base: 'en',
       target: 'fr',
-      languageAnalytics: {french: LanguageAnalyticsProfileEntry(7, 0)},
+      languageAnalytics: {'fr': LanguageAnalyticsProfileEntry(7, 0)},
     );
     await pumpSheet(tester);
 
@@ -213,7 +213,7 @@ void main() {
       seedController(
         base: 'en',
         target: 'fr',
-        languageAnalytics: {french: LanguageAnalyticsProfileEntry(7, 0)},
+        languageAnalytics: {'fr': LanguageAnalyticsProfileEntry(7, 0)},
       );
       await pumpSheet(tester);
 
@@ -228,7 +228,7 @@ void main() {
     seedController(
       base: 'en',
       target: 'fr',
-      languageAnalytics: {french: LanguageAnalyticsProfileEntry(7, 0)},
+      languageAnalytics: {'fr': LanguageAnalyticsProfileEntry(7, 0)},
     );
     await pumpSheet(tester);
     expect(find.byType(Divider), findsOneWidget);
@@ -248,8 +248,8 @@ void main() {
       base: 'en',
       target: 'fr',
       languageAnalytics: {
-        spanish: LanguageAnalyticsProfileEntry(4, 0),
-        french: LanguageAnalyticsProfileEntry(7, 0),
+        'es': LanguageAnalyticsProfileEntry(4, 0),
+        'fr': LanguageAnalyticsProfileEntry(7, 0),
       },
     );
     await pumpSheet(tester, targetedLanguage: italian);
@@ -268,8 +268,8 @@ void main() {
         base: 'en',
         target: 'fr',
         languageAnalytics: {
-          spanish: LanguageAnalyticsProfileEntry(4, 0),
-          french: LanguageAnalyticsProfileEntry(7, 0),
+          'es': LanguageAnalyticsProfileEntry(4, 0),
+          'fr': LanguageAnalyticsProfileEntry(7, 0),
         },
       );
       await pumpSheet(tester, targetedLanguage: spanish);

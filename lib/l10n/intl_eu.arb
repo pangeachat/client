@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-08-25 15:25:42.487562",
+    "@@last_modified": "2026-08-26 15:28:48.498075",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9762,5 +9762,8 @@
     "rateActivityDisliked": "Ez zait gustatu",
     "constructUseHrdDesc": "Entzunda",
     "timesHeard": "{count, plural, =1{Behin entzun da} other{{count} aldiz entzun da}}",
-    "allSettings": "Ezarpen guztiak"
+    "allSettings": "Ezarpen guztiak",
+    "usedCorrectly": "{count, plural, =1{Behin zuzen erabilia} other{{count} aldiz zuzen erabilia}}",
+    "usedIncorrectly": "{count, plural, =1{Behin gaizki erabilia} other{{count} aldiz gaizki erabilia}}",
+    "usedWithoutScoring": "{count, plural, =1{Behin erabilia puntuaziorik gabe} other{{count} aldiz erabilia puntuaziorik gabe}}"
 }

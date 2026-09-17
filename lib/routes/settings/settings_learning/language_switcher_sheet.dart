@@ -73,26 +73,10 @@ class _LanguageSwitcherSheetState extends State<LanguageSwitcherSheet> {
     final l10n = L10n.of(context);
     final userController = MatrixState.pangeaController.userController;
     final languages = MatrixState.pangeaController.pLanguageStore.targetOptions;
-    final analyticsByLanguage =
-        userController.publicProfile?.analytics.languageAnalytics;
-    final order = AnalyticsLanguageOrder.of(languages, analyticsByLanguage);
     final currentLanguage = userController.userL2;
     final baseLanguage = userController.userL1;
 
-    // The targeted language leads the top group, ahead of the analytics
-    // languages it's drawn from or otherwise joins — see [targetedLanguage].
     final targeted = widget.targetedLanguage;
-    final topGroup = [
-      if (targeted != null && languages.contains(targeted)) targeted,
-      ...order.analyticsLanguages.where((lang) => lang != targeted),
-    ];
-    final remainingGroup = order.remainingLanguages
-        .where((lang) => lang != targeted)
-        .toList();
-    final fullOrder = [...topGroup, ...remainingGroup];
-    final dividerIndex = topGroup.isNotEmpty && remainingGroup.isNotEmpty
-        ? topGroup.length
-        : -1;
 
     return Scaffold(
       appBar: AppBar(
@@ -114,44 +98,74 @@ class _LanguageSwitcherSheetState extends State<LanguageSwitcherSheet> {
             ),
           ),
           Expanded(
-            child: ValueListenableBuilder(
-              valueListenable: _query,
-              builder: (context, query, _) {
-                final showDivider = query.isEmpty && dividerIndex != -1;
-                final displayLanguages = query.isEmpty
-                    ? fullOrder
-                    : fullOrder
-                          .where(
-                            (lang) =>
-                                LanguageModel.search(lang, query, context),
-                          )
-                          .toList();
+            // Subscribed during build and read inside the builder, so a level
+            // corrected while the sheet is open updates here rather than
+            // waiting for an unrelated rebuild (#8582).
+            child: StreamBuilder(
+              stream: userController.publicProfileStream.stream,
+              builder: (context, _) => ValueListenableBuilder(
+                valueListenable: _query,
+                builder: (context, query, _) {
+                  final analytics = userController.publicProfile?.analytics;
+                  final order = AnalyticsLanguageOrder.of(languages, analytics);
 
-                return ListView(
-                  children: [
-                    for (var i = 0; i < displayLanguages.length; i++) ...[
-                      if (showDivider && i == dividerIndex)
-                        const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 16.0),
-                          child: Divider(height: 1),
+                  // The targeted language leads the top group, ahead of the
+                  // analytics languages it's drawn from or otherwise joins —
+                  // see [targetedLanguage].
+                  final topGroup = [
+                    if (targeted != null && languages.contains(targeted))
+                      targeted,
+                    ...order.analyticsLanguages.where(
+                      (lang) => lang != targeted,
+                    ),
+                  ];
+                  final remainingGroup = order.remainingLanguages
+                      .where((lang) => lang != targeted)
+                      .toList();
+                  final fullOrder = [...topGroup, ...remainingGroup];
+                  final dividerIndex =
+                      topGroup.isNotEmpty && remainingGroup.isNotEmpty
+                      ? topGroup.length
+                      : -1;
+
+                  final showDivider = query.isEmpty && dividerIndex != -1;
+                  final displayLanguages = query.isEmpty
+                      ? fullOrder
+                      : fullOrder
+                            .where(
+                              (lang) =>
+                                  LanguageModel.search(lang, query, context),
+                            )
+                            .toList();
+
+                  return ListView(
+                    children: [
+                      for (var i = 0; i < displayLanguages.length; i++) ...[
+                        if (showDivider && i == dividerIndex)
+                          const Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 16.0),
+                            child: Divider(height: 1),
+                          ),
+                        _LanguageSwitcherRow(
+                          language: displayLanguages[i],
+                          analytics: analytics?.displayEntryFor(
+                            displayLanguages[i],
+                          ),
+                          isCurrent: UserController.isCurrentTargetLanguage(
+                            displayLanguages[i],
+                            currentLanguage?.langCode,
+                          ),
+                          isBaseLanguage: UserController.isBaseLanguage(
+                            displayLanguages[i],
+                            baseLanguage?.langCode,
+                          ),
+                          onSelect: () => _selectLanguage(displayLanguages[i]),
                         ),
-                      _LanguageSwitcherRow(
-                        language: displayLanguages[i],
-                        analytics: analyticsByLanguage?[displayLanguages[i]],
-                        isCurrent: UserController.isCurrentTargetLanguage(
-                          displayLanguages[i],
-                          currentLanguage?.langCode,
-                        ),
-                        isBaseLanguage: UserController.isBaseLanguage(
-                          displayLanguages[i],
-                          baseLanguage?.langCode,
-                        ),
-                        onSelect: () => _selectLanguage(displayLanguages[i]),
-                      ),
+                      ],
                     ],
-                  ],
-                );
-              },
+                  );
+                },
+              ),
             ),
           ),
         ],

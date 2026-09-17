@@ -3094,7 +3094,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-08-25 15:25:43.461050",
+    "@@last_modified": "2026-08-26 15:28:50.450811",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10394,5 +10394,8 @@
     "rateActivityDisliked": "Níor thaitin sé liom",
     "constructUseHrdDesc": "Cluinntinn",
     "timesHeard": "{count, plural, =1{Cluinntí aon uair amháin} other{Cluinntí {count} uair}}",
-    "allSettings": "Gach suíomh"
+    "allSettings": "Gach suíomh",
+    "usedCorrectly": "{count, plural, =1{Úsáidte i gceart uair amháin} other{Úsáidte i gceart {count} uair}}",
+    "usedIncorrectly": "{count, plural, =1{Úsáidte go mícheart uair amháin} other{Úsáidte go mícheart {count} uair}}",
+    "usedWithoutScoring": "{count, plural, =1{Úsáidte uair amháin gan scór} other{Úsáidte {count} uair gan scór}}"
 }

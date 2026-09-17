@@ -85,13 +85,19 @@ class _LevelDisplayNameState extends State<LevelDisplayName> {
         }
 
         final analytics = snapshot.data?.analytics;
-        final base = analytics?.baseLanguage;
-        final target = analytics?.targetLanguage;
+        final baseCode = analytics?.baseLanguage;
+        final targetCode = analytics?.targetLanguage;
         final level = analytics?.level;
+
+        // The codes and level come straight off the profile; the resolved
+        // models are only needed for the flag and the spoken language name, so
+        // a language list that hasn't loaded costs a flag, not the whole chip.
+        final base = analytics?.baseLanguageModel;
+        final target = analytics?.targetLanguageModel;
 
         // Nothing learned to show — including the failed-lookup case, which
         // resolves to a null profile.
-        if (base == null && target == null && level == null) {
+        if (baseCode == null && targetCode == null && level == null) {
           return const SizedBox.shrink();
         }
 
@@ -100,8 +106,8 @@ class _LevelDisplayNameState extends State<LevelDisplayName> {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              if (base != null && target != null) ...[
-                if (showFlags) ...[
+              if (baseCode != null && targetCode != null) ...[
+                if (showFlags && base != null) ...[
                   ExcludeSemantics(
                     child: NetworkSvg(
                       svgUrl: base.svgUrl.toString(),
@@ -116,10 +122,10 @@ class _LevelDisplayNameState extends State<LevelDisplayName> {
                 ],
                 Semantics(
                   label:
-                      "${L10n.of(context).sourceLanguage}: ${base.displayName}",
+                      "${L10n.of(context).sourceLanguage}: ${base?.displayName ?? baseCode}",
                   child: ExcludeSemantics(
                     child: Text(
-                      base.langCodeShort.toUpperCase(),
+                      baseCode.toUpperCase(),
                       style:
                           textStyle ??
                           TextStyle(
@@ -131,8 +137,8 @@ class _LevelDisplayNameState extends State<LevelDisplayName> {
                 ),
                 Icon(Icons.chevron_right_outlined, size: iconSize ?? 16.0),
               ],
-              if (target != null) ...[
-                if (showFlags) ...[
+              if (targetCode != null) ...[
+                if (showFlags && target != null) ...[
                   ExcludeSemantics(
                     child: NetworkSvg(
                       svgUrl: target.svgUrl.toString(),
@@ -147,10 +153,10 @@ class _LevelDisplayNameState extends State<LevelDisplayName> {
                 ],
                 Semantics(
                   label:
-                      "${L10n.of(context).targetLanguage}: ${target.displayName}",
+                      "${L10n.of(context).targetLanguage}: ${target?.displayName ?? targetCode}",
                   child: ExcludeSemantics(
                     child: Text(
-                      target.langCodeShort.toUpperCase(),
+                      targetCode.toUpperCase(),
                       style:
                           textStyle ??
                           TextStyle(

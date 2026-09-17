@@ -14,7 +14,6 @@ import 'package:matrix/matrix.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
-import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/user/analytics_profile_model.dart';
 import 'package:fluffychat/features/user/public_profile_model.dart';
@@ -216,16 +215,14 @@ void main() {
   test(
     'an analytics room id this user did not create is forgotten, its level kept',
     () {
-      final spanish = LanguageModel(langCode: 'es', displayName: 'Spanish');
-      final french = LanguageModel(langCode: 'fr', displayName: 'French');
       final analytics = AnalyticsProfileModel(
         languageAnalytics: {
-          spanish: LanguageAnalyticsProfileEntry(
+          'es': LanguageAnalyticsProfileEntry(
             4,
             0,
             analyticsRoomId: '!mine:fakeServer.notExisting',
           ),
-          french: LanguageAnalyticsProfileEntry(
+          'fr': LanguageAnalyticsProfileEntry(
             7,
             0,
             analyticsRoomId: '!theirs:fakeServer.notExisting',
@@ -236,15 +233,15 @@ void main() {
       analytics.clearForeignAnalyticsRoomIds({'!mine:fakeServer.notExisting'});
 
       expect(
-        analytics.languageAnalytics![spanish]!.analyticsRoomId,
+        analytics.languageAnalytics!['es']!.analyticsRoomId,
         '!mine:fakeServer.notExisting',
       );
       // Dropped: the instructor-access grant reads this id to pick the room it
       // invites instructors into, and a room the caller did not create is
       // refused — leaving that student's instructors with no access at all.
-      expect(analytics.languageAnalytics![french]!.analyticsRoomId, isNull);
+      expect(analytics.languageAnalytics!['fr']!.analyticsRoomId, isNull);
       // The level is not ours to judge here, so it stays.
-      expect(analytics.languageAnalytics![french]!.level, 7);
+      expect(analytics.languageAnalytics!['fr']!.level, 7);
     },
   );
 }

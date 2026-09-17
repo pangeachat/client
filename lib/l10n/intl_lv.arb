@@ -3536,7 +3536,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-08-25 15:25:44.493477",
+    "@@last_modified": "2026-08-26 15:28:51.950412",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -9762,5 +9762,8 @@
     "rateActivityDisliked": "Nepatika",
     "constructUseHrdDesc": "Dzirdēts",
     "timesHeard": "{count, plural, =1{Dzirdēts vienu reizi} other{Dzirdēts {count} reizes}}",
-    "allSettings": "Visi iestatījumi"
+    "allSettings": "Visi iestatījumi",
+    "usedCorrectly": "{count, plural, =1{Izmantots pareizi vienu reizi} other{Izmantots pareizi {count} reizes}}",
+    "usedIncorrectly": "{count, plural, =1{Izmantots nepareizi vienu reizi} other{Izmantots nepareizi {count} reizes}}",
+    "usedWithoutScoring": "{count, plural, =1{Izmantots vienu reizi bez punktu skaita} other{Izmantots {count} reizes bez punktu skaita}}"
 }

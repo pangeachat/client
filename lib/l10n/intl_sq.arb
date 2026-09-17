@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-08-25 15:25:46.090928",
+    "@@last_modified": "2026-08-26 15:28:54.979935",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "Nuk më pëlqeu",
     "constructUseHrdDesc": "Dëgjuar",
     "timesHeard": "{count, plural, =1{Dëgjuar një herë} other{Dëgjuar {count} herë}}",
-    "allSettings": "Të gjitha cilësimet"
+    "allSettings": "Të gjitha cilësimet",
+    "usedCorrectly": "{count, plural, =1{Përdorur saktë një herë} other{Përdorur saktë {count} herë}}",
+    "usedIncorrectly": "{count, plural, =1{Përdorur gabim një herë} other{Përdorur gabim {count} herë}}",
+    "usedWithoutScoring": "{count, plural, =1{Përdorur një herë pa pikëzim} other{Përdorur {count} herë pa pikëzim}}"
 }

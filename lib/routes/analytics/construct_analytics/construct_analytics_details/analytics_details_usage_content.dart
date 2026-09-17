@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/features/analytics/construct_use_model.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/learning_skills_enum.dart';
-import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/lemma_usage_dots.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/lemma_usage_chips.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/lemma_use_example_messages.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -23,7 +23,7 @@ class AnalyticsDetailsUsageContent extends StatelessWidget {
           ),
         ),
         ...LearningSkillsEnum.values.where((v) => v.isVisible).map((skill) {
-          return LemmaUsageDots(
+          return LemmaUsageChips(
             construct: construct,
             category: skill,
             tooltip: skill.tooltip(context),

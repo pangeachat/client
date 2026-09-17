@@ -7,8 +7,10 @@ extension CoursePingRoomExtension on Room {
   Future<Event?> get unreadCoursePingEvent async {
     try {
       final timeline = await getTimeline();
+      // A learner's own ping must not notify them (#8610) — the badges this
+      // feeds exist to draw OTHER coursemates to the session.
       final lastCoursePing = timeline.events.firstWhereOrNull(
-        (e) => e.isCoursePing,
+        (e) => e.isCoursePing && e.senderId != client.userID,
       );
       if (lastCoursePing == null) return null;
 
