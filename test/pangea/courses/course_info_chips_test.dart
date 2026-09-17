@@ -1,8 +1,10 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
 
 import 'package:async/async.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart' show Client, Event, Membership, Room;
 import 'package:provider/provider.dart';
@@ -18,7 +20,10 @@ import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/routes/courses/add_course_tile.dart';
+import 'package:fluffychat/routes/courses/add_course_tile_content.dart';
 import 'package:fluffychat/routes/courses/course_info_chip_widget.dart';
+import 'package:fluffychat/routes/courses/course_members_chip.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../get_test_client.dart';
@@ -93,6 +98,8 @@ void main() {
   );
 
   setUpAll(() async {
+    // The course tile's avatar resolves the bot name from the environment.
+    dotenv.testLoad(mergeWith: {'BOT_NAME': 'Pangea Bot'});
     SharedPreferences.setMockInitialValues({
       PrefKey.lastFetched: DateTime.now().toIso8601String(),
       PrefKey.languagesKey: jsonEncode({
@@ -250,5 +257,82 @@ void main() {
     );
 
     expect(find.text('3 activities'), findsOneWidget);
+  });
+
+  // #9129 — on a narrow course tile the member count wrapped as its own
+  // block beside the course chips, centered against them instead of lined up.
+  Future<void> pumpTile(WidgetTester tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        locale: const Locale('en'),
+        localizationsDelegates: L10n.localizationsDelegates,
+        supportedLocales: L10n.supportedLocales,
+        home: Scaffold(
+          body: Align(
+            alignment: Alignment.topLeft,
+            // Phone width, where the chips wrap onto a second run.
+            child: SizedBox(
+              width: 360,
+              child: AddCourseTile(
+                content: CombinedAddCourseTileContent(
+                  title: 'Español 101',
+                  courseId: questId,
+                  members: 12,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+  }
+
+  Finder chipWithIcon(IconData icon) => find.ancestor(
+    of: find.byIcon(icon),
+    matching: find.byType(CourseInfoChip),
+  );
+
+  testWidgets(
+    'a course tile tops the member count level with the course chips',
+    (tester) async {
+      QuestRepo.debugBuildOutline = (_, {String? courseRoomId}) async =>
+          Result.value(
+            outline([
+              group('lo-1', ['a', 'b']),
+            ]),
+          );
+      await pumpTile(tester);
+
+      final membersTop = tester.getTopLeft(chipWithIcon(Icons.group)).dy;
+      expect(tester.getTopLeft(chipWithIcon(Icons.language)).dy, membersTop);
+      expect(
+        tester.getTopLeft(chipWithIcon(Icons.location_on)).dy,
+        greaterThan(membersTop),
+        reason: 'the chips must wrap at this width for the check to mean much',
+      );
+    },
+  );
+
+  testWidgets('a course tile shows the member count while the outline loads', (
+    tester,
+  ) async {
+    final pendingOutline = Completer<Result<QuestOutline>>();
+    QuestRepo.debugBuildOutline = (_, {String? courseRoomId}) =>
+        pendingOutline.future;
+    await pumpTile(tester);
+
+    expect(find.byType(CourseMembersChip), findsOneWidget);
+    expect(chipWithIcon(Icons.school), findsNothing);
+
+    pendingOutline.complete(
+      Result.value(
+        outline([
+          group('lo-1', ['a']),
+        ]),
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(chipWithIcon(Icons.school), findsOneWidget);
   });
 }

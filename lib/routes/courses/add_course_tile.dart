@@ -5,6 +5,7 @@ import 'package:fluffychat/pangea/common/widgets/course_avatar.dart';
 import 'package:fluffychat/pangea/common/widgets/invited_chip.dart';
 import 'package:fluffychat/routes/courses/add_course_tile_content.dart';
 import 'package:fluffychat/routes/courses/course_info_chip_widget.dart';
+import 'package:fluffychat/routes/courses/course_members_chip.dart';
 
 class AddCourseTile extends StatelessWidget {
   final AddCourseTileContent content;
@@ -116,36 +117,22 @@ class AddCourseTile extends StatelessWidget {
                                 ),
                             ],
                           ),
-                          Wrap(
-                            spacing: 8.0,
-                            runSpacing: 8.0,
-                            crossAxisAlignment: WrapCrossAlignment.center,
-                            children: [
-                              if (invited)
-                                ExcludeSemantics(child: InvitedChip()),
-                              if (members != null && !invited)
-                                Semantics(
-                                  label: L10n.of(
-                                    context,
-                                  ).countParticipants(members),
-                                  child: ExcludeSemantics(
-                                    child: CourseInfoChip(
-                                      icon: Icons.group,
-                                      text: '$members',
-                                      fontSize: 12.0,
-                                      iconSize: 12.0,
-                                    ),
-                                  ),
-                                ),
-                              if (courseId != null && !invited)
-                                CourseInfoChips(
-                                  courseId,
-                                  courseRoomId: content.courseRoomId,
-                                  fontSize: 12.0,
-                                  iconSize: 12.0,
-                                ),
-                            ],
-                          ),
+                          if (invited)
+                            ExcludeSemantics(child: InvitedChip())
+                          else if (courseId != null)
+                            CourseInfoChips(
+                              courseId,
+                              courseRoomId: content.courseRoomId,
+                              members: members,
+                              fontSize: 12.0,
+                              iconSize: 12.0,
+                            )
+                          else if (members != null)
+                            CourseMembersChip(
+                              members,
+                              fontSize: 12.0,
+                              iconSize: 12.0,
+                            ),
                         ],
                       ),
                     ),

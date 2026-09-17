@@ -7,6 +7,7 @@ import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/courses/course_members_chip.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -76,6 +77,11 @@ class CourseInfoChips extends StatefulWidget {
   /// and can't count a different activity set than the panel renders.
   final String? courseRoomId;
 
+  /// Leads the row as a [CourseMembersChip] when set. It lives in this wrap,
+  /// not a sibling of it, so every chip lines up on the same runs (#9129), and
+  /// it shows while the outline is still loading.
+  final int? members;
+
   final double? fontSize;
   final double? iconSize;
   final EdgeInsets? padding;
@@ -84,6 +90,7 @@ class CourseInfoChips extends StatefulWidget {
     this.courseId, {
     super.key,
     this.courseRoomId,
+    this.members,
     this.fontSize,
     this.iconSize,
     this.padding,
@@ -146,48 +153,55 @@ class CourseInfoChipsState extends State<CourseInfoChips> {
   @override
   Widget build(BuildContext context) {
     final outline = _outline;
-    if (outline == null) {
-      return const SizedBox.shrink();
-    }
-
-    final activityCount = objectiveGroupsWithActivities(
-      outline.groups,
-    ).fold<int>(0, (sum, group) => sum + group.activities.length);
+    final members = widget.members;
 
     return Wrap(
       spacing: 8.0,
       runSpacing: 8.0,
       children: [
-        // Doubles as the switch to this course's language when it isn't the
-        // learner's target (profile.instructions.md, "Switching from
-        // context").
-        ContextLanguageSwitchTarget(
-          contentLanguage: PLanguageStore.byLangCode(
-            outline.quest.targetLanguage,
-          ),
-          builder: (context, canSwitch) => CourseInfoChip(
-            icon: Icons.language,
-            text: outline.quest.targetLanguageDisplay,
+        if (members != null)
+          CourseMembersChip(
+            members,
             fontSize: widget.fontSize,
             iconSize: widget.iconSize,
             padding: widget.padding,
-            color: canSwitch ? Theme.of(context).pangea.warning : null,
           ),
-        ),
-        CourseInfoChip(
-          icon: Icons.school,
-          text: outline.quest.cefrLevel.title(context),
-          fontSize: widget.fontSize,
-          iconSize: widget.iconSize,
-          padding: widget.padding,
-        ),
-        CourseInfoChip(
-          icon: Icons.location_on,
-          text: L10n.of(context).numActivities(activityCount),
-          fontSize: widget.fontSize,
-          iconSize: widget.iconSize,
-          padding: widget.padding,
-        ),
+        if (outline != null) ...[
+          // Doubles as the switch to this course's language when it isn't the
+          // learner's target (profile.instructions.md, "Switching from
+          // context").
+          ContextLanguageSwitchTarget(
+            contentLanguage: PLanguageStore.byLangCode(
+              outline.quest.targetLanguage,
+            ),
+            builder: (context, canSwitch) => CourseInfoChip(
+              icon: Icons.language,
+              text: outline.quest.targetLanguageDisplay,
+              fontSize: widget.fontSize,
+              iconSize: widget.iconSize,
+              padding: widget.padding,
+              color: canSwitch ? Theme.of(context).pangea.warning : null,
+            ),
+          ),
+          CourseInfoChip(
+            icon: Icons.school,
+            text: outline.quest.cefrLevel.title(context),
+            fontSize: widget.fontSize,
+            iconSize: widget.iconSize,
+            padding: widget.padding,
+          ),
+          CourseInfoChip(
+            icon: Icons.location_on,
+            text: L10n.of(context).numActivities(
+              objectiveGroupsWithActivities(
+                outline.groups,
+              ).fold<int>(0, (sum, group) => sum + group.activities.length),
+            ),
+            fontSize: widget.fontSize,
+            iconSize: widget.iconSize,
+            padding: widget.padding,
+          ),
+        ],
       ],
     );
   }
