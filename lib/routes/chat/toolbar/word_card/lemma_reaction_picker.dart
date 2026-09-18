@@ -11,6 +11,7 @@ import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_meaning_builder.dart';
 import 'package:fluffychat/routes/analytics/analytics_navigation_util.dart';
 import 'package:fluffychat/routes/chat/reaction_listener.dart';
@@ -109,7 +110,7 @@ class LemmaReactionPickerState extends State<LemmaReactionPicker>
 
     _reactionSubscription = ReactionListener(
       event: event,
-      onUpdate: (_) => _setUserReactionEvents(),
+      onUpdate: _setUserReactionEvents,
     );
   }
 
@@ -172,7 +173,7 @@ class LemmaReactionPickerState extends State<LemmaReactionPicker>
       final reactionEvent = _userReactionEvents[emoji];
       reactionEvent != null
           ? await reactionEvent.redactEvent()
-          : await event.room.sendReaction(event.eventId, emoji);
+          : await event.room.sendReactionOrDiscard(event.eventId, emoji);
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,

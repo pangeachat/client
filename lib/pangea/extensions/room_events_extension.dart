@@ -25,6 +25,21 @@ extension EventsRoomExtension on Room {
     }
   }
 
+  /// Reacts to [eventId] with [key]. The SDK keeps a failed send in the timeline
+  /// as an errored local echo, which renders as a delivered reaction (#9167).
+  Future<void> sendReactionOrDiscard(String eventId, String key) async {
+    final txid = client.generateUniqueTransactionId();
+    final data = {'roomId': id, 'eventId': eventId};
+    try {
+      if (await sendReaction(eventId, key, txid: txid) != null) return;
+      ErrorHandler.logError(e: 'Reaction failed to send', data: data);
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: data);
+    }
+    final failedEcho = await client.database.getEventById(txid, this);
+    await failedEcho?.cancelSend();
+  }
+
   Future<Event?> sendPangeaEvent({
     required Map<String, dynamic> content,
     required String parentEventId,

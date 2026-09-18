@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/toolbar/layout/message_selection_positioner.dart';
 import 'package:fluffychat/routes/chat/toolbar/reading_assistance/select_mode_buttons.dart';
 import 'package:fluffychat/routes/chat/toolbar/word_card/reading_assistance_content.dart';
@@ -29,7 +30,8 @@ class WordCardSwitcher extends StatelessWidget {
               : mode != SelectMode.emoji &&
                     config.showReactionPicker &&
                     chat != null &&
-                    !controller.pangeaMessageEvent.room.isActivityFinished
+                    !controller.pangeaMessageEvent.room.isActivityFinished &&
+                    controller.pangeaMessageEvent.room.canSendReactions
               ? ValueListenableBuilder(
                   valueListenable: controller.reactionNotifier,
                   builder: (context, _, _) =>

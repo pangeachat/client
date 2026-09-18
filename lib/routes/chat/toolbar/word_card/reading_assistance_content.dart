@@ -4,6 +4,7 @@ import 'package:matrix/matrix_api_lite/model/message_types.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/routes/chat/events/phonetic_transcription/pt_v2_models.dart';
 import 'package:fluffychat/routes/chat/events/token_info_feedback/token_info_feedback_request.dart';
@@ -58,7 +59,8 @@ class ReadingAssistanceContent extends StatelessWidget {
         langCode: overlayController.pangeaMessageEvent.messageDisplayLangCode,
         enableEmojiSelection: true,
         enableEmojiReactions:
-            !overlayController.pangeaMessageEvent.room.isActivityFinished,
+            !overlayController.pangeaMessageEvent.room.isActivityFinished &&
+            overlayController.pangeaMessageEvent.room.canSendReactions,
         enableAnalyticsNavigation:
             overlayController.config.enableWordCardAnalyticsNavigation,
         onFlagTokenInfo:
