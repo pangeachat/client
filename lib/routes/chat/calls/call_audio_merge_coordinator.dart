@@ -222,7 +222,7 @@ class CallAudioMergeCoordinator {
     String? myDeviceId,
   ) {
     if (_disposed) return;
-    _keepPending(_makeKey(roomId, callKey));
+    unawaited(_keepPending(_makeKey(roomId, callKey)));
     _schedule(roomId, callKey, myUserId, myDeviceId);
   }
 
@@ -230,7 +230,7 @@ class CallAudioMergeCoordinator {
   /// case this device did not post it) and evaluate.
   void onSyncedCallAudio(String roomId, String callKey) {
     if (_disposed) return;
-    _keepPending(_makeKey(roomId, callKey));
+    unawaited(_keepPending(_makeKey(roomId, callKey)));
     _schedule(roomId, callKey, _myUserId(), _myDeviceId());
   }
 
@@ -343,12 +343,12 @@ class CallAudioMergeCoordinator {
     String? myDeviceId,
   ) async {
     // Step 1a: keep the durable entry BEFORE any await or cap admission.
-    _keepPending(key);
-    if (_isExpiredOrGone(key)) return;
+    await _keepPending(key);
+    if (await _isExpiredOrGone(key)) return;
     // A quarantined call gets NO further attempt from ANY trigger (rule 7's
     // "no further attempts"), so a permanently-failing send cannot mint an
     // orphan upload on every sync or startup -- not only the drain/scan skip it.
-    if (_isQuarantined(key)) return;
+    if (await _isQuarantined(key)) return;
 
     await _sem.acquire();
     final tracker = _StageTracker();
@@ -389,7 +389,7 @@ class CallAudioMergeCoordinator {
           await _retire(key, decided);
           return;
         case PendingIncomplete():
-          _keepPending(key);
+          await _keepPending(key);
           return;
         case NotCandidate():
           // Leave the index for the real candidates; nothing for this device.
@@ -541,18 +541,18 @@ class CallAudioMergeCoordinator {
         mergedStartSfuMs: mergeable.mergedStartSfuMs,
       );
       if (sentId == null) {
-        _recordTransient(key);
+        await _recordTransient(key);
         return;
       }
       await _index.remove(key);
     } on _StageTimeout {
       // Step 9: a hung stage. Transient; the permit stays held via the tracker.
-      _recordTransient(key);
+      await _recordTransient(key);
     } catch (_) {
       // Step 9: fetch/download/upload/send threw, or a runtime mix failure.
       // TRANSIENT -- deliberately NOT a terminal catch (only the narrow
       // FormatException around the mix stage is terminal).
-      _recordTransient(key);
+      await _recordTransient(key);
     } finally {
       // Permit-until-settle: release only when the last underlying stage future
       // settles. A hung stage's future is still pending here, so its permit is
@@ -633,7 +633,7 @@ class CallAudioMergeCoordinator {
       // single captured `now` could go stale and schedule a just-expired one.
       // (The scheduled pass's own expiry check backstops this either way.)
       final now = _clock();
-      final payload = _index.read(key);
+      final payload = await _index.read(key);
       if (payload == null) continue; // box-expired/malformed; already dropped.
       final firstSeenAt = _dateOf(payload, _kFirstSeenAt);
       if (firstSeenAt == null || _logicallyExpired(firstSeenAt, now)) {
@@ -658,8 +658,8 @@ class CallAudioMergeCoordinator {
   /// Writes a fresh entry if absent; otherwise KEEPS the existing one untouched
   /// (never rewriting it, so `firstSeenAt` and the box's own timestamp are not
   /// refreshed). A logically expired or unanchored entry is dropped.
-  void _keepPending(String key) {
-    final existing = _index.read(key);
+  Future<void> _keepPending(String key) async {
+    final existing = await _index.read(key);
     final now = _clock();
     if (existing == null) {
       unawaited(_writeEntry(key, now, 0, false, now));
@@ -678,8 +678,8 @@ class CallAudioMergeCoordinator {
   /// expired one is left gone (never resurrected with a fresh `firstSeenAt`),
   /// so a failure cannot renew a call's TTL lease -- creating an entry is
   /// `_keepPending`'s index-before-await job alone.
-  void _recordTransient(String key) {
-    final existing = _index.read(key);
+  Future<void> _recordTransient(String key) async {
+    final existing = await _index.read(key);
     if (existing == null) return;
     final now = _clock();
     final firstSeenAt = _dateOf(existing, _kFirstSeenAt);
@@ -725,15 +725,16 @@ class CallAudioMergeCoordinator {
   /// True once an entry is past its logical TTL, so a caller can skip and drop
   /// it. Anchored to the immutable `firstSeenAt`, never the box's own write
   /// timestamp (which a rewrite refreshes).
-  bool _isExpiredOrGone(String key) {
-    final existing = _index.read(key);
+  Future<bool> _isExpiredOrGone(String key) async {
+    final existing = await _index.read(key);
     if (existing == null) return true;
     final firstSeenAt = _dateOf(existing, _kFirstSeenAt);
     if (firstSeenAt == null) return true;
     return _logicallyExpired(firstSeenAt, _clock());
   }
 
-  bool _isQuarantined(String key) => _index.read(key)?[_kQuarantined] == true;
+  Future<bool> _isQuarantined(String key) async =>
+      (await _index.read(key))?[_kQuarantined] == true;
 
   bool _logicallyExpired(DateTime firstSeenAt, DateTime now) =>
       now.difference(firstSeenAt) > indexTtl;

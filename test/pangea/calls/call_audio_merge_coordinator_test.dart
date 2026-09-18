@@ -335,7 +335,8 @@ class _Harness {
     return '\$merged_ack_${sendCalls.length}:example.com';
   }
 
-  Map<String, dynamic>? entry(String callKey) => index.read('$_room|$callKey');
+  Future<Map<String, dynamic>?> entry(String callKey) =>
+      index.read('$_room|$callKey');
 }
 
 // -----------------------------------------------------------------------------
@@ -406,7 +407,11 @@ void main() {
           _room,
           reason: 'the merge is sent into the room the call happened in',
         );
-        expect(h.entry(_callKey), isNull, reason: 'the index entry is cleared');
+        expect(
+          await h.entry(_callKey),
+          isNull,
+          reason: 'the index entry is cleared',
+        );
       },
     );
   });
@@ -432,7 +437,7 @@ void main() {
       await _pump();
 
       expect(h.sendCalls, isEmpty);
-      expect(h.entry(_callKey), isNull);
+      expect(await h.entry(_callKey), isNull);
     });
   });
 
@@ -456,14 +461,14 @@ void main() {
         h.coordinator.onCallFinished(_room, _callKey, _alice, _deviceA);
         await _pump();
         expect(h.sendCalls, isEmpty, reason: 'incomplete: only one half');
-        expect(h.entry(_callKey), isNotNull, reason: 'held in the index');
+        expect(await h.entry(_callKey), isNotNull, reason: 'held in the index');
 
         backend.addHalf(_callKey, _half(_bob, _deviceB, eventId: _bobEvent));
         h.coordinator.onSyncedCallAudio(_room, _callKey);
         await _pump();
 
         expect(h.sendCalls, hasLength(1));
-        expect(h.entry(_callKey), isNull);
+        expect(await h.entry(_callKey), isNull);
       },
     );
   });
@@ -510,7 +515,7 @@ void main() {
         await _pump();
 
         expect(rank1.sendCalls, isEmpty, reason: 'rank 1 stood down');
-        expect(rank1.entry(_callKey), isNull);
+        expect(await rank1.entry(_callKey), isNull);
       },
     );
 
@@ -537,7 +542,7 @@ void main() {
       await _pump();
 
       expect(rank1.sendCalls, hasLength(1), reason: 'no rank 0 appeared');
-      expect(rank1.entry(_callKey), isNull);
+      expect(await rank1.entry(_callKey), isNull);
     });
   });
 
@@ -589,7 +594,11 @@ void main() {
       await _pump();
 
       expect(h.sendCalls, isEmpty);
-      expect(h.entry(_callKey), isNull, reason: 'terminal: removed from index');
+      expect(
+        await h.entry(_callKey),
+        isNull,
+        reason: 'terminal: removed from index',
+      );
     });
   });
 
@@ -699,7 +708,7 @@ void main() {
         expect(h.uploadCalls, isEmpty, reason: 'aborted before upload');
         expect(h.sendCalls, isEmpty);
         expect(
-          h.entry(_callKey),
+          await h.entry(_callKey),
           isNull,
           reason: 'a >2-half call is retired terminal by the re-validate',
         );
@@ -734,7 +743,11 @@ void main() {
       expect(h.downloadCalls, isEmpty, reason: 'never got past the backoff');
       expect(h.uploadCalls, isEmpty);
       expect(h.sendCalls, isEmpty);
-      expect(h.entry(_callKey), isNull, reason: 'retired by the merged event');
+      expect(
+        await h.entry(_callKey),
+        isNull,
+        reason: 'retired by the merged event',
+      );
     });
   });
 
@@ -774,7 +787,7 @@ void main() {
       await scheduler.elapse(_stageTimeout); // the hung fetch times out.
       await _pump();
 
-      final entry = h.entry(_callKey)!;
+      final entry = (await h.entry(_callKey))!;
       expect(entry['attemptCount'], 1, reason: 'a counted transient');
 
       // The permit is still held by the hung underlying future (permit-until-
@@ -797,7 +810,11 @@ void main() {
         isTrue,
         reason: 'permit freed -> call2 fetched',
       );
-      expect(h.entry('\$call2'), isNull, reason: 'call2 ran + retired merged');
+      expect(
+        await h.entry('\$call2'),
+        isNull,
+        reason: 'call2 ran + retired merged',
+      );
     });
   });
 
@@ -824,7 +841,7 @@ void main() {
         h.coordinator.onSyncedCallAudio(_room, _callKey);
         await _pump();
       }
-      final entry = h.entry(_callKey)!;
+      final entry = (await h.entry(_callKey))!;
       expect(entry['attemptCount'], 3);
       expect(entry['quarantined'], true);
 
@@ -876,7 +893,11 @@ void main() {
 
       expect(h.uploadCalls, isEmpty);
       expect(h.sendCalls, isEmpty);
-      expect(h.entry(_callKey), isNull, reason: 'terminal: index cleared');
+      expect(
+        await h.entry(_callKey),
+        isNull,
+        reason: 'terminal: index cleared',
+      );
     });
 
     test('a runtime failure stays transient (counted, kept)', () async {
@@ -890,7 +911,7 @@ void main() {
       expect(h.uploadCalls, isEmpty);
       expect(h.sendCalls, isEmpty);
       expect(
-        h.entry(_callKey)?['attemptCount'],
+        (await h.entry(_callKey))?['attemptCount'],
         1,
         reason: 'transient: counted, still in the index',
       );
@@ -906,7 +927,7 @@ void main() {
 
       expect(h.uploadCalls, isEmpty);
       expect(h.sendCalls, isEmpty);
-      expect(h.entry(_callKey), isNull);
+      expect(await h.entry(_callKey), isNull);
     });
   });
 
@@ -1084,7 +1105,7 @@ void main() {
       expect(h.sendCalls, isEmpty, reason: 'aborted: no post from a re-pass');
       expect(mergedFetches, 1, reason: 'no second fetch after the abort');
       expect(
-        index.read('$_room|$_callKey'),
+        await index.read('$_room|$_callKey'),
         isNull,
         reason:
             'the merged-event removal stays removed -- the aborted attempt runs '
@@ -1175,7 +1196,7 @@ void main() {
       h.coordinator.onCallFinished(_room, _callKey, _alice, _deviceA);
       await _pump();
       expect(h.sendCalls, hasLength(1), reason: 'first attempt: send failed');
-      expect(h.entry(_callKey)?['attemptCount'], 1);
+      expect((await h.entry(_callKey))?['attemptCount'], 1);
 
       // No further external trigger; only the periodic drain wakes it.
       h.sendReturnsNull = false;
@@ -1188,7 +1209,7 @@ void main() {
         reason: 'the drain retried the transient',
       );
       expect(
-        h.entry(_callKey),
+        await h.entry(_callKey),
         isNull,
         reason: 'the retry succeeded + cleared',
       );
@@ -1230,7 +1251,7 @@ void main() {
           hasLength(1),
           reason: 'start() reconciled the call from the index alone',
         );
-        expect(h.entry(_callKey), isNull);
+        expect(await h.entry(_callKey), isNull);
       },
     );
   });
@@ -1254,12 +1275,21 @@ void main() {
       );
 
       h.coordinator.onCallFinished(_room, _callKey, _alice, _deviceA);
-      // Synchronously, before any pump: the entry already exists.
-      expect(h.entry(_callKey), isNotNull, reason: 'written before any await');
+      // The trigger keeps the durable entry before the fetch is admitted. With
+      // the async ExpiringStorageBox the keep is itself asynchronous, so the
+      // write lands once the trigger's microtasks settle rather than strictly
+      // synchronously; the fetch stays gated throughout, so this is still
+      // before it resolves (rule 2's crash-safety point).
+      await _pump();
+      expect(
+        await h.entry(_callKey),
+        isNotNull,
+        reason: 'written before the gated fetch resolves',
+      );
 
       await _pump();
       // The fetch is still gated (unresolved), yet the entry stands.
-      expect(h.entry(_callKey), isNotNull);
+      expect(await h.entry(_callKey), isNotNull);
       gate.complete();
       await _pump();
     });
@@ -1285,14 +1315,18 @@ void main() {
       h.coordinator.start();
       h.coordinator.onCallFinished(_room, _callKey, _alice, _deviceA);
       await _pump();
-      expect(h.entry(_callKey), isNotNull, reason: 'held while incomplete');
+      expect(
+        await h.entry(_callKey),
+        isNotNull,
+        reason: 'held while incomplete',
+      );
 
       // Six days of daily drains -- each re-evaluates (and re-keeps) the entry,
       // but must NOT refresh firstSeenAt.
       await scheduler.elapse(const Duration(days: 6));
       await _pump();
       expect(
-        h.entry(_callKey),
+        await h.entry(_callKey),
         isNotNull,
         reason: 'still inside the 7-day logical TTL',
       );
@@ -1301,7 +1335,7 @@ void main() {
       await scheduler.elapse(const Duration(days: 2));
       await _pump();
       expect(
-        h.entry(_callKey),
+        await h.entry(_callKey),
         isNull,
         reason: 'dropped at firstSeenAt + TTL, not renewed by the drains',
       );

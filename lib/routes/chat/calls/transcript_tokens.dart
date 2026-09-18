@@ -252,6 +252,7 @@ class _TappableTokens extends StatelessWidget {
                   text: slice,
                   style: style,
                   underlineColor: TokenRenderingUtil.underlineColor(
+                    context,
                     Theme.of(context).colorScheme.primary.withAlpha(200),
                     selected: false,
                     hovered: hovered,
