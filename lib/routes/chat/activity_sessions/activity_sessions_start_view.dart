@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'package:collection/collection.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:go_router/go_router.dart';
+import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
@@ -19,6 +21,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/content_creator_chip.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_rating_meter.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_bottom_content.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_button_widget.dart';
@@ -26,7 +29,9 @@ import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_start_hero.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_vocab_widget.dart';
+import 'package:fluffychat/routes/chat/chat_details/chat_context_menu_action.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
+import 'package:fluffychat/routes/chat_list/chat_list.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
@@ -161,12 +166,13 @@ class ActivitySessionStartView extends StatelessWidget {
               ),
             ),
             actions: [
-              // While a confirmed session waits to fill, the "…" menu (leave /
-              // delete) stands in for share on web and is a net-new action on
-              // mobile — so nobody confuses sharing the activity with inviting
-              // people into the room. See activity-start-page.instructions.md.
-              if (controller.isPendingSession)
-                _WaitingRoomMenuButton(controller)
+              // While a confirmed session waits to fill, the "…" menu stands in
+              // for share on web and is a net-new action on mobile — so nobody
+              // confuses sharing the activity with inviting people into the
+              // room. See activity-start-page.instructions.md.
+              if (controller.activityRoom case final room?
+                  when controller.isPendingSession)
+                _WaitingRoomMenuButton(room)
               // Web hosts share in the app bar, left of focus; mobile keeps it
               // as a chip in the bottom CTA row instead.
               else if (FluffyThemes.isColumnMode(context))
@@ -364,52 +370,33 @@ class ActivitySessionStartView extends StatelessWidget {
   }
 }
 
-enum _WaitingRoomAction { leave, delete }
-
-/// The waiting-room "…" menu in the app bar: leave the session, or — if you own
-/// the room ([ActivitySessionStartState.canDeleteSession]) — delete it for
-/// everyone. The same exit chat offers, surfaced while a confirmed session
+/// The waiting-room "…" menu in the app bar: the same actions the session's
+/// chat-list row offers, from the same list, surfaced while a confirmed session
 /// waits to fill. See activity-start-page.instructions.md.
 class _WaitingRoomMenuButton extends StatelessWidget {
-  final ActivitySessionStartState controller;
+  final Room room;
 
-  const _WaitingRoomMenuButton(this.controller);
+  const _WaitingRoomMenuButton(this.room);
 
   @override
   Widget build(BuildContext context) {
-    return PopupMenuButton<_WaitingRoomAction>(
+    final space = room.pangeaSpaceParents.firstOrNull;
+    return PopupMenuButton<ChatContextAction>(
       tooltip: L10n.of(context).moreOptions,
-      onSelected: (action) {
-        switch (action) {
-          case _WaitingRoomAction.leave:
-            controller.leaveSession();
-          case _WaitingRoomAction.delete:
-            controller.deleteSession();
-        }
-      },
-      itemBuilder: (context) => [
-        PopupMenuItem(
-          value: _WaitingRoomAction.leave,
-          child: Row(
-            children: [
-              const Icon(Icons.logout_outlined),
-              const SizedBox(width: 12.0),
-              Text(L10n.of(context).leave),
-            ],
-          ),
-        ),
-        if (controller.canDeleteSession)
-          PopupMenuItem(
-            value: _WaitingRoomAction.delete,
-            child: Row(
-              children: [
-                const Icon(Icons.delete_outlined),
-                const SizedBox(width: 12.0),
-                Text(L10n.of(context).delete),
-              ],
-            ),
-          ),
-      ],
+      itemBuilder: (itemContext) => chatContextMenuItems(
+        itemContext,
+        room: room,
+        space: space,
+        source: ChatMenuSource.startPage,
+      ),
+      onSelected: (action) => handleChatContextAction(
+        action,
+        context: context,
+        outerContext: context,
+        room: room,
+        space: space,
+        source: ChatMenuSource.startPage,
+      ),
     );
   }
 }

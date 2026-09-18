@@ -1296,6 +1296,13 @@ enum ChatContextAction {
   // addToSpace,
   delete,
   endActivity,
+  // Offered only by the chat header's More menu: the first two replaced the
+  // icon buttons that used to open them, the last two are what an activity
+  // session's menu has always carried.
+  search,
+  details,
+  invite,
+  download,
   // Pangea#
   block,
 }

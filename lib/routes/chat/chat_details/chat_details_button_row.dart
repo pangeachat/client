@@ -27,8 +27,7 @@ class ChatDetailsButtonRow extends StatefulWidget {
   State<ChatDetailsButtonRow> createState() => ChatDetailsButtonRowState();
 }
 
-class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow>
-    with ChatDownloadProvider {
+class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
   StreamSubscription? notificationChangeSub;
 
   @override
@@ -106,7 +105,7 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow>
       ButtonDetails(
         title: l10n.download,
         icon: const Icon(Icons.download_outlined, size: 30.0),
-        onPressed: () => downloadChatAction(room.id, context),
+        onPressed: () => showChatDownloadDialog(room.id, context),
         // Any room member can export the transcript — it only surfaces content
         // they can already read in the chat. Web/desktop only for now; the
         // native mobile download path is unvalidated, so mobile is deferred.

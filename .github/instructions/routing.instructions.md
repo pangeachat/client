@@ -835,7 +835,7 @@ behaves the same on mobile and desktop.
 | A course management page (invite, edit, access, permissions, change-course) | the course card's More menu | left | opens as a `coursepage` detail **beside the card**, folding onto it only under width pressure — the same fit test as a settings page. Never replaces the card |
 | Chat list | the rail | left | open panel (master) |
 | Live chat / session | a chat-list row, an activity launch, **a course room row** | left | open panel (detail); one live view at a time. A course room rides over the course context (`?c=` stays), so closing it reveals the course |
-| Chat members / settings (a regular chat) | the chat header | the chat panel | push (members/search live *within* the chat, not beside it) |
+| Chat members / settings (a regular chat) | the chat header's More menu | the chat panel | push (members/search live *within* the chat, not beside it) |
 | Analytics (vocab / grammar / sessions) | a top-right cluster tracker (the **Stars** tracker opens the sessions panel) | right | open panel (master) |
 | Level | the **level medal** on the powerups pill | right | open panel (an analytics tab) |
 | A construct detail | tapping a vocab/grammar item | right | open panel (detail) beside its summary; **one detail at a time, across both columns** — a vocab detail, a grammar detail, and a completed-activity `session` review share ONE slot (a live `room` chat is independent and stays open); folds under pressure |
@@ -846,6 +846,10 @@ behaves the same on mobile and desktop.
 | A settings leaf (password, blocked users, emotes, …) | within its settings page | the settings panel | push |
 | Courses (your courses + add a course) | the **Courses** rail icon | left | open panel (master) — joined-course tiles plus the add-course options (start-my-own / browse / enter-code); tiles sit under Invited / Teaching / Learning headers when the learner holds both roles ([grouping rule](#single-column-bottom-nav)) |
 | Activity plan | a course's activity list, a map pin (tap) | map content | a left-column `activity:<id>` panel over the map (the nav widget's cavity at half height on narrow, pin visible above), camera on its pin. It claims the single **live view** (a `liveView` sibling of `room`/`session`), so opening it drops any open chat and starting the session drops the plan; it sizes by the registry like a `room` (#7385). When the learner already holds an unfinished session, the bound session room rides in the token param so the plan offers resume instead of a fresh instance (#7257). Its close follows the [affordance rule](#closing-a-panel-x-or-back-arrow): with `?c=` set (opened from the course's activity list, or from a pin on the course-scoped map) a back arrow returns to the course card; with no context (a world-map pin, a standalone shared link) an X reveals the map. **Start** launches the session, which runs as a chat room (one live view) |
+
+### A chat's header actions
+
+Every chat header carries one **More** menu. It offers search and chat details, which used to be icons of their own, and every action the chat-list row's long-press menu offers: go to course, notifications, mark read or unread, pin, leave, delete. Long-press is a gesture many learners never discover, so no action may be reachable only that way. Both menus are built from one list ([`chatContextMenuItems`](../../lib/routes/chat/chat_details/chat_context_menu_action.dart)), so an action added to either shows up in both. The header drops only "open this chat", which is already on screen. A regular chat also carries the call buttons; an activity session carries Invite and Download in its menu instead ([activities.instructions.md](activities.instructions.md)). A session that has not started shows its start page in place of the chat, and that page's menu follows the same rule ([activity-start-page.instructions.md](activity-start-page.instructions.md)).
 
 ### One live session at a time
 

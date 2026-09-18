@@ -40,14 +40,12 @@ import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_response_dialog.dart';
 import 'package:fluffychat/pangea/extensions/leave_room_extension.dart';
-import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/archived_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/confirmed_role_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/full_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/not_started_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/select_role_session_controller.dart';
-import 'package:fluffychat/routes/chat/chat_details/delete_room_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -541,28 +539,16 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
         !room.isActivityStarted;
   }
 
-  /// Only the room's admin (its creator, under the default power levels) can
-  /// delete it for everyone; a plain member can only leave — mirroring chat's
-  /// own leave/delete gating.
-  bool get canDeleteSession => activityRoom?.isRoomAdmin == true;
-
-  /// Leave the current session room and close its panel. Shared by the
-  /// waiting-room menu and the archived fallback's lone exit — a session that
-  /// can never continue would otherwise sit in the chat list forever (#8064).
-  /// An archived session is often one the homeserver has already forgotten, so
-  /// it leaves via [LeaveRoomExtension.leaveIgnoringUnknownRoom].
+  /// Leave the current session room and close its panel: the archived
+  /// fallback's lone exit — a session that can never continue would otherwise
+  /// sit in the chat list forever (#8064). An archived session is often one the
+  /// homeserver has already forgotten, so it leaves via
+  /// [LeaveRoomExtension.leaveIgnoringUnknownRoom]. The waiting room's "…" menu
+  /// leaves through the shared chat menu instead.
   Future<void> leaveSession() => _exitSessionRoom(
     action: (room) => room.leaveIgnoringUnknownRoom(),
     message: L10n.of(context).leaveRoomDescription,
     okLabel: L10n.of(context).leave,
-  );
-
-  /// Delete the session room for everyone — admin-only ([canDeleteSession]),
-  /// the same purge chat's delete uses — then close its panel.
-  Future<void> deleteSession() => _exitSessionRoom(
-    action: (room) => room.delete(),
-    message: L10n.of(context).deleteChatDesc,
-    okLabel: L10n.of(context).delete,
   );
 
   /// Confirm, run [action] on the session room, wait for the resulting leave to
