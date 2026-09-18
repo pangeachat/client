@@ -5,14 +5,15 @@ import 'package:flutter/semantics.dart' show SemanticsSortKey;
 
 import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
 
-/// A right-column panel's named group (routing.instructions.md, "Every panel
-/// is a named group to assistive tech"), and where a panel the learner just
-/// opened from the user cluster lands: the group itself, so a screen reader
-/// announces the page, claimed one discrete beat after the panel mounts — the
-/// delay `OnboardingPageGroup` uses, past the web engine's view-host focus hop
-/// (#8769). The group is never a Tab stop, so the next Tab reaches the panel's
-/// first control. Only a mount that finds [PanelEntryIntent] armed claims;
-/// every other way a panel opens leaves focus where it was.
+/// A workspace panel's named group (routing.instructions.md, "Every panel is
+/// a named group to assistive tech"), and where a panel the learner just
+/// opened from the user cluster or the rail lands: the group itself, so a
+/// screen reader announces the page, claimed one discrete beat after the
+/// panel mounts — the delay `OnboardingPageGroup` uses, past the web engine's
+/// view-host focus hop (#8769). The group is never a Tab stop, so the next Tab
+/// reaches the panel's first control. Only a mount that finds
+/// [PanelEntryIntent] armed claims; every other way a panel opens leaves focus
+/// where it was.
 class PanelEntryFocus extends StatefulWidget {
   final String label;
   final SemanticsSortKey sortKey;
@@ -66,7 +67,8 @@ class _PanelEntryFocusState extends State<PanelEntryFocus> {
     return Semantics(
       label: widget.label,
       container: true,
-      // Browse-order key on the group itself (#8755) — see WorkspaceLeftPanel.
+      // Browse-order key on the group itself (#8755): a key on an unlabeled
+      // wrapper formed an extra node VoiceOver reordered heuristically.
       sortKey: widget.sortKey,
       // Keep descendants as their own nodes: without this, loose text with no
       // container of its own (the Level drilldown's "LVL 15 … XP" header)

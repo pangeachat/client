@@ -1,13 +1,14 @@
 import 'package:flutter/foundation.dart';
 
-/// One-shot "the learner just opened a panel from the user cluster" signal.
+/// One-shot "the learner just opened a panel from the user cluster or the
+/// rail" signal.
 ///
-/// Armed by the cluster's open methods right before they navigate, and taken
-/// by the first `PanelEntryFocus` that mounts, which then moves keyboard focus
-/// from the pressed cluster button onto the panel's first control
-/// (routing.instructions.md, "Every panel is a named group to assistive
-/// tech"). A panel opened any other way — a URL, the rail, a map pin — never
-/// arms it, so focus stays where it was.
+/// Armed by the cluster's open methods and the rail's course items right
+/// before they navigate, and taken by the first `PanelEntryFocus` that mounts,
+/// which then moves keyboard focus from the pressed control onto the panel's
+/// named group (routing.instructions.md, "Every panel is a named group to
+/// assistive tech"). A panel opened any other way — a URL, the rail's section
+/// icons, a map pin — never arms it, so focus stays where it was.
 ///
 /// An arm expires after [ttl]: a press that changed nothing (the panel was
 /// already open, so nothing mounted) must not move focus on some unrelated
