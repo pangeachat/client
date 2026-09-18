@@ -2083,3 +2083,26 @@ until the design is Codex-green.
   will be RED until then (known, not blocking the build). Build 6 governed-doc proposal
   (docs/handoff/2026-09-10-doc-addition-proposal.md) awaits Will's review. v2 mid-call device-switch merge =
   issue pangeachat/client#8878.
+
+## 2026-09-18 — owner e2e LOVED it; 3 UI polish tweaks done; merging main (116 behind)
+- Owner real-call test (2 humans): feature worked END-TO-END, auto-scroll + ordering perfect. Confirmed the
+  transcript is NOT made from the mix -- each device transcribes its own half, ordered on the shared SFU clock;
+  the merge is only for playback/karaoke.
+- 3 UI tweaks:
+  #1 (2030a0fc73): active karaoke turn was greyed (secondaryContainer wash muted the own/primary bubble) ->
+     own turns now take a primaryContainer LIFT (brighter), peer keeps the secondaryContainer wash. turn_timeline.dart.
+  #2+#3 (6c14ea918f): Full-call bar is now a FLOATING overlay card (reused ActivityGoalHeaderCard's chrome from
+     lib/routes/chat/activity_sessions/, NOT its crossfade) over the single CustomScrollView (Stack sibling,
+     top-padded), so the per-device recordings expand as a dropdown OVER the transcript -- visible during karaoke
+     auto-scroll (the old inline-at-top rows were off-screen mid-playback). SINGLE-PLAYER rule kept (merged control
+     is one stable instance in the always-visible header; only the rows toggle via AnimatedSize+Offstage, players
+     stay mounted). Avatars added to per-device rows (room.unsafeGetUserFromMemoryOrFallback + Avatar). All
+     invariants verified untouched (single scrollable, same-tick _syncPlayback, controllers/coalescer/predicate).
+     152 UI tests green (transcript_view 110 + turn_timeline 42).
+- CODEX DOWN: ChatGPT quota exhausted until Sep 21 (Gemini tiers 404) -> the agent's self-gate + MY cold gate
+  cannot run. Substituted a careful manual diff review (invariants confirmed) + green suite + owner visual e2e.
+  The final PR-readiness cross-model gate must wait for Sep 21 OR proceed on CI-green + manual review (owner call).
+- MERGE ASSESSMENT: base d6ef346712 (#8801); 116 behind; main changed 771 files, branch 66. Recording/transcript
+  files DON'T conflict (clean). 11 conflict files: call_session.dart, ring_player.dart, incoming_call_banner.dart,
+  expiring_storage_box.dart (+2 tests), intl_en.arb, pubspec.yaml/.lock, 2 ringtone mp3s. Merging main in
+  (never force-push) + resolving + re-testing the calls bucket next; then rebuild APK+web for the owner's final e2e.
