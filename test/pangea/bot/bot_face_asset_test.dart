@@ -138,6 +138,50 @@ void main() {
     );
   });
 
+  test('an opening expression lands straight after skipEnter', () async {
+    // Addled swaps on the next frame; the other emotes ease in from the
+    // resting pose, the slowest (nonGold) showing by frame 5.
+    const landingFrames = 10;
+
+    Future<List<int>> renderOpening(BotExpression? expression) async {
+      final artboard = file.artboard('BotIconArtboard')!;
+      final machine = artboard.stateMachine(_stateMachineName)!;
+      final viewModel = file
+          .viewModelByName(_viewModelName)!
+          .createDefaultInstance()!;
+      machine.bindViewModelInstance(viewModel);
+      BotFaceState.skipEnter(machine);
+      if (expression != null) {
+        viewModel.trigger(expression.trigger)!.trigger();
+      }
+      for (var i = 0; i < landingFrames; i++) {
+        machine.advanceAndApply(1 / 60);
+      }
+      final pixels = await _pixels(await _render(artboard));
+      machine.dispose();
+      return pixels;
+    }
+
+    // A dialog that opens addled must not show the bot dropping in with its
+    // resting face first. If skipEnter stops short of the end of Enter, the
+    // trigger is swallowed and the bot is still resting here.
+    final resting = await renderOpening(null);
+    expect(
+      await renderOpening(null),
+      equals(resting),
+      reason: 'renders must repeat, or the comparisons below prove nothing',
+    );
+    for (final expression in BotExpression.values.where(
+      (e) => e != BotExpression.idle,
+    )) {
+      expect(
+        await renderOpening(expression),
+        isNot(equals(resting)),
+        reason: '${expression.trigger} was swallowed after skipEnter',
+      );
+    }
+  });
+
   test(
     'each expression trigger changes the render once Enter has finished',
     () async {
