@@ -22,13 +22,17 @@ import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
-/// Which surface a chat's action menu was opened from. Both offer the same
-/// actions on the room and differ only at the ends: [chatList] leads with the
-/// chat itself and, after a leave or delete, closes just that row's panel so
-/// the list survives; [chatHeader] leads with search and chat details — the
-/// surfaces the header used to expose as separate icons — and falls back to the
-/// workspace exit, so the learner is never left looking at a room they left.
-enum ChatMenuSource { chatList, chatHeader }
+/// Which surface a chat's action menu was opened from. All of them offer the
+/// same actions on the room and differ only at the ends: [chatList] leads with
+/// the chat itself and, after a leave or delete, closes just that row's panel
+/// so the list survives; [chatHeader] leads with search and chat details — the
+/// surfaces the header used to expose as separate icons — plus a session's
+/// Invite and Download. [chatHeader] and [startPage] are the room's own
+/// surface, so a leave or delete there falls back to the workspace exit and
+/// the learner is never left looking at a room they left. [startPage] carries
+/// none of the header's extras: its waiting room already has an invite button,
+/// and there is no chat yet to search.
+enum ChatMenuSource { chatList, chatHeader, startPage }
 
 extension on ChatContextAction {
   bool enabled({
@@ -343,11 +347,23 @@ Future<void> handleChatContextAction(
   final l10n = L10n.of(context);
 
   /// Where a leave or delete leaves the learner: a chat-list row drops only
-  /// that room's panel so the list survives, while the room's own header has
+  /// that room's panel so the list survives, while the room's own surface has
   /// to send them somewhere else entirely.
-  void closeRoom(BuildContext context) => source == ChatMenuSource.chatHeader
-      ? closeOwnRoomPanel(context, room.id)
-      : closeRoomPanelFromList(context, room.id);
+  void closeRoom(BuildContext context) => source == ChatMenuSource.chatList
+      ? closeRoomPanelFromList(context, room.id)
+      : closeOwnRoomPanel(context, room.id);
+
+  /// Waits for a leave or delete to land in sync, so the room is gone from the
+  /// chat list before its panel closes. The room's own surface can unmount
+  /// while that happens — the room it shows is going away — so the result says
+  /// whether [outerContext] is still there to navigate from.
+  Future<bool> settled() async {
+    final r = room.client.getRoomById(room.id);
+    if (r != null && r.membership != Membership.leave) {
+      await room.client.waitForRoomInSync(room.id, leave: true);
+    }
+    return outerContext.mounted;
+  }
 
   switch (action) {
     case ChatContextAction.open:
@@ -426,7 +442,7 @@ Future<void> handleChatContextAction(
         cancelLabel: l10n.cancel,
         isDestructive: true,
       );
-      if (confirmed != OkCancelResult.ok) return;
+      if (confirmed != OkCancelResult.ok || !outerContext.mounted) return;
 
       final isSpace = room.isSpace;
       // An old session the homeserver has forgotten answers /leave with a 404
@@ -440,20 +456,15 @@ Future<void> handleChatContextAction(
             : room.leave,
       );
 
-      final r = room.client.getRoomById(room.id);
-      if (r != null && r.membership != Membership.leave) {
-        await room.client.waitForRoomInSync(room.id, leave: true);
-      }
+      // A failed leave never lands in sync, so waiting for it would only stall.
+      if (resp.isError || !await settled()) return;
 
-      if (!resp.isError) {
-        // Leaving a whole course is the World/home reset: drop every panel and
-        // the `?c=` scope, back to the world map at its personal default. A
-        // chat/DM/activity instead just drops its own panel.
-        isSpace
-            ? outerContext.go(WorkspaceNav.clearAll())
-            : closeRoom(outerContext);
-      }
-
+      // Leaving a whole course is the World/home reset: drop every panel and
+      // the `?c=` scope, back to the world map at its personal default. A
+      // chat/DM/activity instead just drops its own panel.
+      isSpace
+          ? outerContext.go(WorkspaceNav.clearAll())
+          : closeRoom(outerContext);
       return;
     case ChatContextAction.delete:
       if (room.isSpace) {
@@ -467,14 +478,13 @@ Future<void> handleChatContextAction(
           isDestructive: true,
           message: room.isSpace ? l10n.deleteSpaceDesc : l10n.deleteChatDesc,
         );
-        if (confirmed != OkCancelResult.ok) return;
+        if (confirmed != OkCancelResult.ok || !outerContext.mounted) return;
         final resp = await showFutureLoadingDialog(
           context: outerContext,
           future: room.delete,
         );
-        if (!resp.isError) {
-          closeRoom(outerContext);
-        }
+        if (resp.isError || !await settled()) return;
+        closeRoom(outerContext);
       }
       return;
     case ChatContextAction.endActivity:

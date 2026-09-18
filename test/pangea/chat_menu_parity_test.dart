@@ -105,6 +105,7 @@ void main() {
   Room buildSession({
     String roomId = testSessionRoomId,
     bool finished = false,
+    bool started = true,
   }) {
     final space = Room(
       id: spaceId,
@@ -130,13 +131,15 @@ void main() {
         // Both seats of twoRoleActivityPlan are taken, so the session counts as
         // started either way. That holds the leave rule constant: leave is off
         // for a learner holding a role in a started session, finished or not,
-        // so completion's own effect on the menu is isolated.
-        'r2': ActivityRoleModel(
-          id: 'r2',
-          userId: '@other:fakeServer.notExisting',
-          role: 'Visitor',
-          finishedAt: finished ? DateTime.utc(2026, 1, 1, 12) : null,
-        ),
+        // so completion's own effect on the menu is isolated. Leaving the
+        // second seat empty is the waiting room: a confirmed role, not started.
+        if (started)
+          'r2': ActivityRoleModel(
+            id: 'r2',
+            userId: '@other:fakeServer.notExisting',
+            role: 'Visitor',
+            finishedAt: finished ? DateTime.utc(2026, 1, 1, 12) : null,
+          ),
       },
     );
     setStateEvent(room, EventTypes.RoomPowerLevels, {
@@ -263,6 +266,31 @@ void main() {
         ChatContextAction.delete,
       ]),
     );
+  });
+
+  testWidgets('the waiting room menu offers exactly the chat-list actions', (
+    tester,
+  ) async {
+    final room = buildSession(started: false);
+    final context = await pumpContext(tester);
+
+    final list = actionsFor(context, room, ChatMenuSource.chatList);
+    final startPage = actionsFor(context, room, ChatMenuSource.startPage);
+
+    // The reported mismatch: the row offered these, the waiting room only
+    // Leave and Delete.
+    expect(
+      list,
+      containsAll([
+        ChatContextAction.goToSpace,
+        ChatContextAction.mute,
+        ChatContextAction.leave,
+        ChatContextAction.delete,
+      ]),
+    );
+    // Equality, not containment: the start page carries none of the chat
+    // header's extras either.
+    expect(startPage, list.difference({ChatContextAction.open}));
   });
 
   testWidgets('a session offers neither pin nor mark-unread', (tester) async {

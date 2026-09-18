@@ -44,7 +44,7 @@ When a session still needs more participants, the blocking notice keeps **Invite
 
 **Share** and **flag** do not sit in the web CTA list. **Share** is an app-bar action to the left of focus. **Flag** sits in the top-right of the text-content (description) section under the hero — so it rides the main step, not the join/completed sub-pages, where there is no description to anchor it. On mobile both stay as chips appended to the bottom CTA row.
 
-While a confirmed session waits to fill (chat not started), a **"…"** menu takes the app-bar share slot on web — and is net-new on mobile, which has no app-bar share — offering **Leave**, plus **Delete** for the room's admin (the same exit chat gives). It displaces share here so inviting people isn't confused with sharing the link.
+While a confirmed session waits to fill (chat not started), a **"…"** menu takes the app-bar share slot on web — and is net-new on mobile, which has no app-bar share. It offers exactly what the session's chat-list row offers, built from the same list ([routing.instructions.md](routing.instructions.md) → A chat's header actions): go to course, notifications, **Leave**, and **Delete** for the room's admin. It carries none of the chat header's extras: invite is already a button in the waiting room, and there is no chat yet to search. It displaces share here so inviting people isn't confused with sharing the link.
 
 
 ## Owning the container: nav rail and analytics bar
