@@ -7,6 +7,7 @@ import 'package:async/async.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/full_width_dialog.dart';
@@ -24,6 +25,7 @@ import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_tokens.dart';
 import 'package:fluffychat/routes/chat/calls/turn_timeline.dart';
 import 'package:fluffychat/utils/multi_platform_audio_player.dart';
+import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Opens the transcript of one finished call.
@@ -1082,6 +1084,18 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     _matrix = null;
   }
 
+  /// The vertical space the collapsed floating [_FullCallCard] occupies, used
+  /// as the transcript's top padding so the first turns clear the overlay
+  /// rather than sitting behind it. Scale-aware -- like the old pinned bar's
+  /// own extent was -- and deliberately a little generous: an overlay that
+  /// clips the first turn is worse than a small gap, and the gap reads as the
+  /// card's own breathing room. The card itself sizes to its content; this only
+  /// reserves room beneath it.
+  double _fullCallCardInset(BuildContext context) {
+    final textScale = MediaQuery.textScalerOf(context).scale(1);
+    return (132.0 * textScale).clamp(132.0, 300.0);
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
@@ -1248,95 +1262,80 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
                   // rendering EXACTLY as it does today.
                   _syncPlayback(mergedRow, displayTurns);
 
-                  return CustomScrollView(
-                    // ONE scrollable for the whole body (spec section 2):
-                    // [TurnTimeline]'s auto-scroll watches only its NEAREST
-                    // ancestor Scrollable, so the pinned Full-call bar, the
-                    // per-device rows and the turns must all live inside this
-                    // single one.
-                    slivers: [
-                      SliverPersistentHeader(
-                        pinned: true,
-                        delegate: _FullCallBarDelegate(
-                          theme: theme,
-                          l10n: l10n,
-                          state: _loadController.state,
-                          mergedPlayer: mergedRow == null
-                              ? null
-                              : _mergedRecordingPlayer(mergedRow, theme),
-                          hasDeviceRows: recordings.isNotEmpty,
-                          expanded: _devicesExpanded,
-                          onToggle: () => setState(
-                            () => _devicesExpanded = !_devicesExpanded,
-                          ),
-                          onRetry: _retry,
-                          textScale: MediaQuery.textScalerOf(context).scale(1),
-                        ),
-                      ),
-                      // The per-device rows, a SEPARATE sliver, collapsed by
-                      // default behind the bar's chevron (spec section 2/D3).
-                      SliverToBoxAdapter(
-                        child: recordings.isEmpty
-                            ? const SizedBox.shrink()
-                            : AnimatedSize(
-                                duration: FluffyThemes.animationDuration,
-                                curve: FluffyThemes.animationCurve,
-                                alignment: Alignment.topCenter,
-                                // Collapse HIDES the rows ([Offstage]) rather
-                                // than removing them: the per-device
-                                // [AudioPlayerWidget]s stay MOUNTED across
-                                // expand/collapse, so a collapse never triggers
-                                // their disposal. Removing them would (a) leak
-                                // the shared-player listeners a non-owning
-                                // AudioPlayerWidget's dispose does not clean up,
-                                // and (b) for an actively-playing device row,
-                                // clear `voiceMessageEventId` mid-unmount and
-                                // make the still-mounted Full-call bar setState
-                                // during the locked build phase. Offstage keeps
-                                // them alive and un-laid-out (so it still
-                                // animates 0<->full and `find` skips them while
-                                // collapsed).
-                                child: Offstage(
-                                  offstage: !_devicesExpanded,
-                                  child: Padding(
-                                    padding: const EdgeInsets.fromLTRB(
-                                      16,
-                                      8,
-                                      16,
-                                      0,
-                                    ),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: _recordingsSection(
-                                        recordings,
-                                        theme,
-                                        l10n,
-                                      ),
-                                    ),
-                                  ),
-                                ),
+                  // The "Full call" recording is a FLOATING card overlaying
+                  // the transcript from the top -- like the activities goals
+                  // dropdown (`ActivityGoalHeaderCard`) -- so expanding the
+                  // per-device rows is visible at ANY scroll position,
+                  // including once karaoke has auto-scrolled DOWN into the
+                  // turns. Inline at the top of the scroll content (the prior
+                  // design) the rows opened off-screen and the chevron did
+                  // nothing visible.
+                  //
+                  // The transcript stays a SINGLE [CustomScrollView] (spec
+                  // section 2: [TurnTimeline]'s karaoke auto-scroll watches its
+                  // NEAREST ancestor [Scrollable], so there must be exactly
+                  // one). The card is a [Stack] SIBLING painted OVER it, never
+                  // a second scrollable -- it does not intercept the
+                  // transcript's own scroll (its footprint sits above the
+                  // turns, which are pushed clear by the scroll view's top
+                  // padding) and its expansion overlays rather than reflows the
+                  // conversation.
+                  return Stack(
+                    children: [
+                      // The transcript: the one scrollable. Its top padding
+                      // clears the collapsed floating card so the first turns
+                      // are not hidden behind the overlay. NON-LAZY body (a
+                      // plain [SliverToBoxAdapter], matching today's eager
+                      // build), so every turn keeps a live [BuildContext] for
+                      // karaoke's `Scrollable.ensureVisible` (spec section 2).
+                      CustomScrollView(
+                        slivers: [
+                          SliverToBoxAdapter(
+                            child: Padding(
+                              padding: EdgeInsets.fromLTRB(
+                                16,
+                                _fullCallCardInset(context),
+                                16,
+                                24,
                               ),
-                      ),
-                      // The caveats, the conversation and its notes -- NON-LAZY
-                      // (a plain [SliverToBoxAdapter], matching today's eager
-                      // [ListView] build), so every turn keeps a live
-                      // [BuildContext] for karaoke's `Scrollable.ensureVisible`
-                      // (spec section 2).
-                      SliverToBoxAdapter(
-                        child: Padding(
-                          padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
-                          child: _bodySection(
-                            transcript: transcript,
-                            displayTurns: displayTurns,
-                            notes: notes,
-                            clocksUnreconciled: clocksUnreconciled,
-                            approximate: approximate,
-                            unstated: unstated,
-                            theme: theme,
-                            l10n: l10n,
+                              child: _bodySection(
+                                transcript: transcript,
+                                displayTurns: displayTurns,
+                                notes: notes,
+                                clocksUnreconciled: clocksUnreconciled,
+                                approximate: approximate,
+                                unstated: unstated,
+                                theme: theme,
+                                l10n: l10n,
+                              ),
+                            ),
                           ),
+                        ],
+                      ),
+                      // The floating Full-call card, OVER the transcript. Its
+                      // always-visible header is the merged player / load-state
+                      // face plus the chevron; only the per-device rows BELOW
+                      // it animate open/closed, overlaying the transcript when
+                      // expanded (spec section 2/D3). The merged player is a
+                      // SINGLE stateful instance kept in that header -- never
+                      // duplicated across an expand/collapse -- see
+                      // [_FullCallCard]'s own doc.
+                      _FullCallCard(
+                        theme: theme,
+                        l10n: l10n,
+                        state: _loadController.state,
+                        mergedPlayer: mergedRow == null
+                            ? null
+                            : _mergedRecordingPlayer(mergedRow, theme),
+                        hasDeviceRows: recordings.isNotEmpty,
+                        expanded: _devicesExpanded,
+                        onToggle: () => setState(
+                          () => _devicesExpanded = !_devicesExpanded,
                         ),
+                        onRetry: _retry,
+                        deviceRows: recordings.isEmpty
+                            ? const <Widget>[]
+                            : _recordingsSection(recordings, theme, l10n),
                       ),
                     ],
                   );
@@ -1446,16 +1445,36 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
       const SizedBox(height: 6),
       for (final recording in recordings) ...[
         Padding(
-          padding: const EdgeInsets.only(bottom: 4),
-          child: Text(
-            // The SAME name the transcript itself uses for this half's
-            // sender -- "You" for our own recording, the transcript's own
-            // fallback-to-Matrix-displayname for the other side -- so one
-            // person is never called two different things on one screen.
-            _nameFor(recording.senderId, l10n),
-            style: theme.textTheme.bodyMedium?.copyWith(
-              fontWeight: FontWeight.w600,
-            ),
+          padding: const EdgeInsets.only(bottom: 6),
+          child: Row(
+            children: [
+              // The speaker's OWN avatar, built from the room member -- its
+              // name/letter is [_displayNameOf] (the real display name, never
+              // the "You" label), for the same reason the timeline's avatars
+              // are: the fallback would otherwise draw a "Y" for every one of
+              // your own recordings.
+              Avatar(
+                userId: recording.senderId,
+                mxContent: _avatarOf(recording.senderId),
+                name: _displayNameOf(recording.senderId),
+                size: 36,
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text(
+                  // The SAME name the transcript itself uses for this half's
+                  // sender -- "You" for our own recording, the transcript's own
+                  // fallback-to-Matrix-displayname for the other side -- so one
+                  // person is never called two different things on one screen.
+                  _nameFor(recording.senderId, l10n),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
         AudioPlayerWidget(
@@ -2327,18 +2346,30 @@ class _Message extends StatelessWidget {
   }
 }
 
-/// The pinned "Full call" slot (spec section 2, item 1): always present, its
-/// content driven by the [CallRecordingsLoadController]'s [state] -- the
-/// merged player when ready, a shimmer while loading or preparing, a compact
-/// note (with retry when the grace has elapsed) when there is none.
+/// The floating "Full call" card (spec section 2, item 1): always present once
+/// the transcript has rendered, its content driven by the
+/// [CallRecordingsLoadController]'s [state] -- the merged player when ready, a
+/// shimmer while loading or preparing, a compact note (with retry when the
+/// grace has elapsed) when there is none.
 ///
-/// A custom delegate rather than a `SliverAppBar`: a 56px app bar cannot hold
-/// a 40-bar audio player. Opaque [ColorScheme.surface], so the turns scroll
-/// UNDER it. The extent is scale-aware ([_base] scaled by the text scale,
-/// clamped) so the player and label do not clip at large text sizes; the
-/// "Full call" label ellipsises rather than wrapping.
-class _FullCallBarDelegate extends SliverPersistentHeaderDelegate {
-  _FullCallBarDelegate({
+/// Reuses `ActivityGoalHeaderCard`'s floating chrome -- [Align] top-center, an
+/// [AnimatedContainer]/[AnimatedSize] that is rounded, shadowed, bordered and
+/// filled with opaque [ColorScheme.surface] -- so it OVERLAYS the transcript
+/// rather than living inside the scroll content: expanding the per-device rows
+/// is then visible at any scroll position, including after karaoke has
+/// auto-scrolled down into the turns.
+///
+/// It deliberately does NOT reuse that card's [AnimatedCrossFade] between a
+/// collapsed and an expanded FACE. The merged [mergedPlayer]
+/// ([_MergedFullCallControl]) is STATEFUL and owns the shared audio player;
+/// building it inside both faces of a crossfade would create two instances
+/// fighting over that one player. Instead the header -- the label, the single
+/// [mergedPlayer]/load-state face, and the chevron -- is ALWAYS shown, and only
+/// the per-device rows BELOW it animate open/closed via [AnimatedSize]. The
+/// player therefore stays a single instance at a stable position and never
+/// rebuilds on a toggle.
+class _FullCallCard extends StatelessWidget {
+  const _FullCallCard({
     required this.theme,
     required this.l10n,
     required this.state,
@@ -2347,7 +2378,7 @@ class _FullCallBarDelegate extends SliverPersistentHeaderDelegate {
     required this.expanded,
     required this.onToggle,
     required this.onRetry,
-    required this.textScale,
+    required this.deviceRows,
   });
 
   final ThemeData theme;
@@ -2356,74 +2387,143 @@ class _FullCallBarDelegate extends SliverPersistentHeaderDelegate {
 
   /// The merged recording's player, pre-built by the state, or null when no
   /// merged row is on screen (so [CallRecordingsLoadState.ready] can never be
-  /// reached without one).
+  /// reached without one). A SINGLE instance kept in the header -- see the
+  /// class doc.
   final Widget? mergedPlayer;
 
-  /// Whether there are per-device rows to reveal -- the chevron is shown only
-  /// then (a call with zero halves has nothing to toggle).
+  /// Whether there are per-device rows to reveal -- the chevron and the
+  /// expandable section are shown only then (a call with zero halves has
+  /// nothing to toggle).
   final bool hasDeviceRows;
   final bool expanded;
   final VoidCallback onToggle;
   final VoidCallback onRetry;
-  final double textScale;
 
-  /// The bar's height at a text scale of 1: the "Full call" label, a small
-  /// gap, and the tallest content (the ~60px player), plus vertical padding.
-  static const double _base = 112;
-
-  double get _extent => (_base * textScale).clamp(_base, 260.0);
+  /// The per-device recording rows ([_recordingsSection]'s output), revealed by
+  /// the chevron. Empty when [hasDeviceRows] is false.
+  final List<Widget> deviceRows;
 
   @override
-  double get minExtent => _extent;
-
-  @override
-  double get maxExtent => _extent;
-
-  @override
-  Widget build(
-    BuildContext context,
-    double shrinkOffset,
-    bool overlapsContent,
-  ) {
-    // [SizedBox.expand] so the child FILLS the declared [_extent]: a pinned
-    // persistent header's geometry is invalid ("layoutExtent exceeds
-    // paintExtent") if the child paints shorter than min/maxExtent, which a
-    // bare content Column (sized to its ~60px player) does. The content itself
-    // stays top-aligned inside; the slack is the bar's own breathing room.
-    return SizedBox.expand(
-      child: Material(
-        color: theme.colorScheme.surface,
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(16, 8, 8, 8),
-          child: ValueListenableBuilder<CallRecordingsLoadState>(
-            valueListenable: state,
-            builder: (context, loadState, _) => Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Text(
-                  l10n.callTranscriptFullCall,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: theme.textTheme.titleSmall?.copyWith(
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                const SizedBox(height: 4),
-                Row(
-                  children: [
-                    Expanded(child: _content(loadState)),
-                    if (hasDeviceRows)
-                      IconButton(
-                        onPressed: onToggle,
-                        tooltip: l10n.callTranscriptRecordings,
-                        icon: Icon(
-                          expanded ? Icons.expand_less : Icons.expand_more,
-                        ),
-                      ),
-                  ],
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.topCenter,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(
+            maxWidth: FluffyThemes.columnWidth * 1.5,
+          ),
+          child: AnimatedContainer(
+            duration: FluffyThemes.animationDuration,
+            curve: Curves.easeInOut,
+            clipBehavior: Clip.antiAlias,
+            decoration: BoxDecoration(
+              // Opaque, so the card COVERS the transcript scrolling beneath it
+              // rather than letting the turns show through the overlay.
+              color: theme.colorScheme.surface,
+              borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+              border: Border.all(color: theme.dividerColor),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withAlpha(30),
+                  blurRadius: 8.0,
+                  offset: const Offset(0, 2),
                 ),
               ],
+            ),
+            child: Material(
+              type: MaterialType.transparency,
+              child: Stack(
+                children: [
+                  // Swallow taps that land on the card's own footprint but miss
+                  // a real control, so they never fall through to a transcript
+                  // turn beneath the overlay (which would seek karaoke from a
+                  // tap the reader meant for the card). Mirrors
+                  // ActivityGoalHeaderCard's own tap guard.
+                  Positioned.fill(
+                    child: GestureDetector(
+                      behavior: HitTestBehavior.opaque,
+                      onTap: () {},
+                      child: const SizedBox.expand(),
+                    ),
+                  ),
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      // The ALWAYS-visible header: label + the single
+                      // player/load-state face + the chevron. Its
+                      // ValueListenableBuilder is what re-renders the FACE on a
+                      // state change; the [mergedPlayer] instance itself is
+                      // stable across those rebuilds and across a toggle.
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(16, 10, 8, 10),
+                        child: ValueListenableBuilder<CallRecordingsLoadState>(
+                          valueListenable: state,
+                          builder: (context, loadState, _) => Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              Text(
+                                l10n.callTranscriptFullCall,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: theme.textTheme.titleSmall?.copyWith(
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              const SizedBox(height: 4),
+                              Row(
+                                children: [
+                                  Expanded(child: _content(loadState)),
+                                  if (hasDeviceRows)
+                                    IconButton(
+                                      onPressed: onToggle,
+                                      tooltip: l10n.callTranscriptRecordings,
+                                      icon: Icon(
+                                        expanded
+                                            ? Icons.expand_less
+                                            : Icons.expand_more,
+                                      ),
+                                    ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      // The per-device rows, revealed by the chevron and
+                      // overlaying the transcript when open. Collapse HIDES them
+                      // ([Offstage]) rather than removing them: the per-device
+                      // [AudioPlayerWidget]s stay MOUNTED across expand/collapse,
+                      // so a collapse never triggers their disposal. Removing
+                      // them would (a) leak the shared-player listeners a
+                      // non-owning AudioPlayerWidget's dispose does not clean up,
+                      // and (b) for an actively-playing device row, clear
+                      // `voiceMessageEventId` mid-unmount and setState during the
+                      // locked build phase. Offstage keeps them alive and
+                      // un-laid-out (so it still animates 0<->full and `find`
+                      // skips them while collapsed).
+                      if (hasDeviceRows)
+                        AnimatedSize(
+                          duration: FluffyThemes.animationDuration,
+                          curve: FluffyThemes.animationCurve,
+                          alignment: Alignment.topCenter,
+                          child: Offstage(
+                            offstage: !expanded,
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: deviceRows,
+                              ),
+                            ),
+                          ),
+                        ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -2508,13 +2608,6 @@ class _FullCallBarDelegate extends SliverPersistentHeaderDelegate {
       ],
     );
   }
-
-  @override
-  bool shouldRebuild(covariant _FullCallBarDelegate old) =>
-      // A fresh delegate is built every frame with new closures/data, so this
-      // is conservatively always true; the header is cheap and its own
-      // ValueListenableBuilder is what actually re-renders on a state change.
-      true;
 }
 
 /// Thrown inside [_CallTranscriptViewState._startMergedPlayer] to ABORT a start

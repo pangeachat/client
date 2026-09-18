@@ -26,6 +26,7 @@ import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_view.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_writer.dart';
 import 'package:fluffychat/routes/chat/calls/turn_timeline.dart';
+import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../fake_pangea_controller.dart';
 import '../get_test_client.dart';
@@ -2039,17 +2040,17 @@ void main() {
         tester.widget<TurnTimeline>(find.byType(TurnTimeline)).turns;
 
     /// The per-device recording rows are collapsed by default behind the
-    /// Full-call bar's chevron (spec section 2/D3: "Full call is the hero"),
-    /// so a test that asserts on those rows opens them first.
+    /// floating Full-call card's chevron (spec section 2/D3: "Full call is the
+    /// hero"), so a test that asserts on those rows opens them first.
     Future<void> expandDeviceRows(WidgetTester tester) async {
       await tester.tap(find.byIcon(Icons.expand_more));
       await tester.pumpAndSettle();
     }
 
-    /// The pinned bar's MERGED-recording transport. It is no longer a stock
+    /// The floating card's MERGED-recording transport. It is no longer a stock
     /// [AudioPlayerWidget] (the per-device rows still are) but the private
-    /// custom control that drives karaoke on bar-play, so it is found by runtime
-    /// type -- the test cannot import a private widget.
+    /// custom control that drives karaoke on card-play, so it is found by
+    /// runtime type -- the test cannot import a private widget.
     Finder mergedPlayer() => find.byWidgetPredicate(
       (w) => w.runtimeType.toString() == '_MergedFullCallControl',
     );
@@ -2074,9 +2075,9 @@ void main() {
         ]),
       );
 
-      // The per-device rows are collapsed behind the Full-call bar's chevron
+      // The per-device rows are collapsed behind the floating card's chevron
       // by default; open them to assert on the players. There is no merged
-      // recording in this fixture, so the bar itself holds no player.
+      // recording in this fixture, so the card header itself holds no player.
       await expandDeviceRows(tester);
 
       final players = tester
@@ -2106,6 +2107,42 @@ void main() {
       // Literal, like every other string this file asserts on -- the ARB
       // source of truth is `lib/l10n/intl_en.arb`'s `callTranscriptRecordings`.
       expect(find.text('Recordings'), findsOneWidget);
+    });
+
+    testWidgets('each per-device recording row shows its speaker\'s avatar', (
+      tester,
+    ) async {
+      // Change #3: every per-device row carries its speaker's avatar beside the
+      // name, so the expanded dropdown reads as a roster rather than a bare
+      // list. No merged recording and no `atMs` here, so the only avatars on
+      // screen come from the device rows -- the per-speaker `_HalfSection`
+      // carries none, and there is no karaoke timeline (whose turns draw their
+      // own). Three recordings, three avatars.
+      final testRoom = room();
+      await pumpWithRecordings(
+        tester,
+        testRoom,
+        serving([
+          half(_me, texts: const ['hola']),
+          half(_peer, texts: const ['que tal']),
+          audioEvent(_me, deviceId: 'PHONE'),
+          audioEvent(_me, deviceId: 'LAPTOP'),
+          audioEvent(_peer),
+        ]),
+      );
+
+      // Collapsed by default: the rows -- and their avatars -- are offstage.
+      expect(find.byType(Avatar), findsNothing);
+
+      await expandDeviceRows(tester);
+
+      // One avatar per per-device recording row. Mutation: drop the Avatar from
+      // `_recordingsSection` -> this finds none.
+      expect(
+        find.byType(Avatar),
+        findsNWidgets(3),
+        reason: 'each per-device recording row shows its speaker\'s avatar',
+      );
     });
 
     testWidgets(
@@ -2154,13 +2191,13 @@ void main() {
         ]),
       );
 
-      // The merged recording is the hero: its player sits in the pinned bar
+      // The merged recording is the hero: its player sits in the floating card
       // (keyed by the merged event's own id), and the per-device halves are
-      // collapsed behind the bar's chevron until the reader opens them.
+      // collapsed behind the card's chevron until the reader opens them.
       expect(
         mergedPlayer(),
         findsOneWidget,
-        reason: 'the merged row is the pinned bar, keyed by its own id',
+        reason: 'the merged row is the floating card, keyed by its own id',
       );
       expect(find.text('Full call'), findsOneWidget);
       expect(
@@ -2180,7 +2217,7 @@ void main() {
       expect(players, hasLength(2));
       expect(mergedPlayer(), findsOneWidget);
       expect(find.text('Recordings'), findsOneWidget);
-      // The pinned Full-call bar sits ABOVE the revealed per-device rows.
+      // The Full-call card header sits ABOVE the revealed per-device rows.
       expect(
         tester.getTopLeft(find.text('Full call')).dy,
         lessThan(tester.getTopLeft(find.text('Recordings')).dy),
@@ -3209,7 +3246,7 @@ void main() {
     // ---- The pinned "Full call" slot's load states (spec section 3) -------
 
     testWidgets(
-      'the sticky bar shows a shimmer while the reads are in flight',
+      'the floating card shows a shimmer while the reads are in flight',
       (tester) async {
         // The transcript resolves so the body renders, but the recordings and
         // merged reads never land -- so the bar is stuck LOADING, which is a
@@ -3245,7 +3282,7 @@ void main() {
     );
 
     testWidgets(
-      'the sticky bar shows a "preparing" shimmer while a merge is still '
+      'the floating card shows a "preparing" shimmer while a merge is still '
       'pending',
       (tester) async {
         // Reads done, a half present, no merge yet, grace not elapsed:
@@ -3267,7 +3304,7 @@ void main() {
       },
     );
 
-    testWidgets('the sticky bar shows the merged player when ready', (
+    testWidgets('the floating card shows the merged player when ready', (
       tester,
     ) async {
       final meAudio = audioEvent(_me);
@@ -3292,7 +3329,7 @@ void main() {
       expect(find.text('No recording of the full call.'), findsNothing);
     });
 
-    testWidgets('the sticky bar shows the "no recording" note when there is '
+    testWidgets('the floating card shows the "no recording" note when there is '
         'none, without a retry', (tester) async {
       // Zero halves: nothing is coming, so the note shows IMMEDIATELY and
       // offers no retry (spec section 3's NONE bullet).
@@ -3315,7 +3352,7 @@ void main() {
       );
     });
 
-    testWidgets('the sticky bar shows the note WITH a retry once the grace '
+    testWidgets('the floating card shows the note WITH a retry once the grace '
         'has elapsed', (tester) async {
       // A half present, no merge, and the grace run out -> unavailable: the
       // note plus a retry. The grace clock is injected so the ~30s window is
@@ -3591,7 +3628,7 @@ void main() {
         MatrixFile(bytes: Uint8List(0), name: 'm.wav', mimeType: 'audio/wav');
 
     testWidgets(
-      'pressing the Full-call bar play drives the karaoke highlight, and '
+      'pressing the Full-call card play drives the karaoke highlight, and '
       'pause pauses -- with no prior turn tap',
       (tester) async {
         // The owner-decided behaviour (F4a): the bar's OWN play must drive
