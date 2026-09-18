@@ -2106,3 +2106,21 @@ until the design is Codex-green.
   files DON'T conflict (clean). 11 conflict files: call_session.dart, ring_player.dart, incoming_call_banner.dart,
   expiring_storage_box.dart (+2 tests), intl_en.arb, pubspec.yaml/.lock, 2 ringtone mp3s. Merging main in
   (never force-push) + resolving + re-testing the calls bucket next; then rebuild APK+web for the owner's final e2e.
+
+## 2026-09-18 (cont) — main merged (812418cd01); ring→main #8888; API-drift fix dispatched
+- Merge origin/main into satvik/call-features-combined = 812418cd01. 5 conflicts all #8807 ring (developed on
+  this branch, merged to main as #8888) -> took MAIN's canonical ring: ring_player.dart, incoming_call_banner.dart,
+  ring_player_test.dart, call_session_test.dart whole-file --theirs; call_session.dart's 3 ring hunks take-theirs
+  (lazy _tonesInstance, call.ogg, dispose) while my RECORDING integration (CallAudioRecorder/CallCaptureService/
+  merge-coordinator wiring) auto-merged + verified intact. arb/pubspec/storage/mp3 auto-merged. DROPPED: this
+  branch's MP3-vs-OGG iOS/macOS reconnect-cue fix (out of PR2 scope) -> FLAG as a separate follow-up vs main
+  (main's #8888 uses call.ogg, silent on iOS/macOS per this branch's finding).
+- POST-MERGE analyze = 19 issues (main API drift into the recording code, NOT a regression): (A) main made
+  ExpiringStorageBox.read async (Future) -> call_audio_merge_coordinator's 5 _index.read sites need await +
+  _keepPending/_recordTransient/_isQuarantined/_isExpiredOrGone go async + callers thread await (fire-and-forget
+  boundaries use unawaited); (B) main changed TokenRenderingUtil.underlineColor to (BuildContext, Color, {named})
+  -> transcript_tokens.dart:255 needs `context` first arg. Dispatched fixer ae05a11520b6fda95 (opus). analyze->0
+  IS the gate for type-drift (+ calls bucket for behaviour); codex still down till Sep 21 so no cross-model gate.
+- ON FIXER RETURN: analyze-clean + calls bucket -> rebuild APK+web for owner's final e2e on the MERGED build ->
+  PR on owner go (cross-model gate deferred to Sep 21 or owner accepts CI+review). PR2 diff vs main stays
+  recording/transcript-only (ring now matches main).
