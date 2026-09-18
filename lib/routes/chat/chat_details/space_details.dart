@@ -9,9 +9,9 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
+import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
 import 'package:fluffychat/features/navigation/token_params/course_details_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
-import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
