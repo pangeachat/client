@@ -2150,3 +2150,15 @@ until the design is Codex-green.
 - NEXT: rebuild APK + web on the MERGED build (812418cd01 + drift fix + #2 fixes) for the owner's final e2e.
   PR on owner go. Deferred follow-ups: (a) the MP3-vs-OGG iOS/macOS reconnect-cue fix vs main; (b) the
   _keepPending per-key serialization; (c) Gabby's l10n backfill for the en-only keys.
+
+## 2026-09-18 (cont) — e2e-READY on the merged build; waiting on phone reconnect
+- Rebuilt on the merged build (812418cd01 + gated fixes): WEB peer live on :8091 (merged+UI; SW-cache -> use
+  a fresh tab); APK = 291MB single-ABI arm64 at build/app/outputs/flutter-apk/app-debug.apk (Sep 18 15:30).
+  pubspec .env toggled for the mobile build + restored (tree clean). LAN stack up at 192.168.1.156 (all 4
+  services 200; earlier "all DOWN" was a transient curl timeout, not real).
+- Phone DISCONNECTED since the earlier e2e; a 15-min auto-install watcher timed out (no device). APK is built
+  + ready; install on reconnect via: adb uninstall com.talktolearn.chat && adb install <the apk> (keeps
+  FluffyChat). Everything gated + clean; PR on owner go after the final e2e.
+- OPEN follow-ups (none block the e2e/PR of the recording feature): (a) MP3-vs-OGG iOS/macOS reconnect-cue
+  fix vs main (dropped in the ring->main merge); (b) _keepPending per-key serialization (negligible
+  pre-existing race); (c) Gabby's l10n backfill for the en-only keys (l10n_sync_check red until then).
