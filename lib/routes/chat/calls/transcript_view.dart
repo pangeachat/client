@@ -2511,11 +2511,38 @@ class _FullCallCard extends StatelessWidget {
                           alignment: Alignment.topCenter,
                           child: Offstage(
                             offstage: !expanded,
-                            child: Padding(
-                              padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: deviceRows,
+                            // Cap the expanded rows to a fraction of the viewport
+                            // and scroll them WITHIN the card (the activities
+                            // ActivityDropdownContent pattern), so a short/
+                            // landscape viewport -- or a many-device call --
+                            // scrolls the rows here instead of overflowing the
+                            // stationary overlay card, which cannot scroll and
+                            // would clip the lower rows out of reach. This inner
+                            // scrollable is NOT [TurnTimeline]'s ancestor: the
+                            // transcript's single CustomScrollView is untouched,
+                            // so karaoke auto-scroll still watches the right
+                            // Scrollable. Short lists shrink-wrap below the cap
+                            // (SingleChildScrollView sizes to min(content, max)),
+                            // so there is no dead space when only a row or two.
+                            child: ConstrainedBox(
+                              constraints: BoxConstraints(
+                                maxHeight:
+                                    MediaQuery.sizeOf(context).height * 0.4,
+                              ),
+                              child: SingleChildScrollView(
+                                child: Padding(
+                                  padding: const EdgeInsets.fromLTRB(
+                                    16,
+                                    0,
+                                    16,
+                                    12,
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: deviceRows,
+                                  ),
+                                ),
                               ),
                             ),
                           ),
