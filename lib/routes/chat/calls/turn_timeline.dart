@@ -993,14 +993,21 @@ class _Turn extends StatelessWidget {
     // is where these values come from.
     final baseColor = turn.isMe ? scheme.primary : scheme.surfaceContainerHigh;
     // ACTIVE HIGHLIGHT is never colour alone (see the accent `border` below
-    // too): a wash of `secondaryContainer` blended OVER the turn's own fill,
-    // not a flat swap to it the way `chat_list_item.dart:67` tints a chat
-    // row -- that row has no fill of its own to protect, but replacing an
-    // own/peer bubble's colour outright would erase the one thing that tells
-    // the two sides apart mid-call.
-    final bubbleColor = isActive
-        ? Color.alphaBlend(scheme.secondaryContainer.withAlpha(90), baseColor)
-        : baseColor;
+    // too): a wash blended OVER the turn's own fill, not a flat swap to it the
+    // way `chat_list_item.dart:67` tints a chat row -- that row has no fill of
+    // its own to protect, but replacing an own/peer bubble's colour outright
+    // would erase the one thing that tells the two sides apart mid-call. The
+    // wash LIFTS the fill rather than muting it: an own turn is already the
+    // vivid `primary`, so a `secondaryContainer` wash greyed it out -- it takes
+    // a `primaryContainer` lift instead (brighter, still its own colour); the
+    // peer's surface fill has room for the softer `secondaryContainer` wash.
+    final bubbleColor = !isActive
+        ? baseColor
+        : Color.alphaBlend(
+            (turn.isMe ? scheme.primaryContainer : scheme.secondaryContainer)
+                .withAlpha(turn.isMe ? 140 : 90),
+            baseColor,
+          );
     final textColor = turn.isMe ? scheme.onPrimary : scheme.onSurface;
 
     const hardCorner = Radius.circular(4);
