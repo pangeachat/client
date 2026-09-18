@@ -8,6 +8,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/home/signup/registration_email_popup.dart';
 import 'package:fluffychat/routes/home/signup/request_token_client_extension.dart';
+import 'package:fluffychat/utils/matrix_sdk_extensions/store_reconnect_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
 import 'package:fluffychat/widgets/fluffy_chat_app.dart';
@@ -116,6 +117,11 @@ extension UiaRequestManager on MatrixState {
               ),
             );
             // Pangea#
+            // The learner left the browser to open the link, and the sign-up
+            // that completes here writes to the store straight away.
+            if (!client.isLogged()) {
+              await (await getLoginClient()).reconnectStore();
+            }
             return uiaRequest.completeStage(auth);
           }
           return uiaRequest.cancel();
