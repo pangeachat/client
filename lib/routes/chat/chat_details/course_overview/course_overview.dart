@@ -7,6 +7,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -106,13 +107,20 @@ class _CourseOverviewState extends State<CourseOverview> {
     );
   }
 
-  void _openSubpage(SpaceSettingsTabs section) => context.go(
-    WorkspaceNav.openCourseTab(
-      GoRouterState.of(context).uri,
-      tab: section,
-      expanded: true,
-    ),
-  );
+  void _openSubpage(SpaceSettingsTabs section) {
+    // The subpage is a different course token, so the panel is rebuilt and
+    // takes the pressed "See all" with it; the subpage that mounts lands focus
+    // on its own group (routing.instructions.md, "Every panel is a named group
+    // to assistive tech").
+    PanelEntryIntent.instance.armForSwap();
+    context.go(
+      WorkspaceNav.openCourseTab(
+        GoRouterState.of(context).uri,
+        tab: section,
+        expanded: true,
+      ),
+    );
+  }
 
   /// Scroll the page from a mouse wheel anywhere over the panel — the gaps
   /// between rows are hit-transparent and this panel floats over the world

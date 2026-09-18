@@ -7,6 +7,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/features/course_plans/map_border.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
+import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
@@ -284,6 +285,10 @@ class _SpaceItem extends StatelessWidget {
     final membership = space.membership;
 
     if (!{Membership.invite, Membership.leave}.contains(membership)) {
+      // Like a cluster open, a rail course open lands focus on the course
+      // panel that mounts (routing.instructions.md, "Every panel is a named
+      // group to assistive tech").
+      PanelEntryIntent.instance.arm();
       context.go(
         // A left-nav click replaces the open left panels rather than stacking
         // beside them (drop any open room/section). See routing.instructions.md.
@@ -307,6 +312,7 @@ class _SpaceItem extends StatelessWidget {
     final joinedRoomId = await handler.handle(context);
     if (joinedRoomId == null) return;
 
+    PanelEntryIntent.instance.arm();
     context.go(
       WorkspaceNav.openCourseSection(uri, joinedRoomId, keepRoom: false),
     );

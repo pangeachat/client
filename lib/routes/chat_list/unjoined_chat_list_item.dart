@@ -4,16 +4,22 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class UnjoinedChatListItem extends StatelessWidget {
   final SpaceRoomsChunk$2 chunk;
   final VoidCallback onTap;
+
+  /// This row's id in the enclosing [RovingFocusGroup]. Null outside a group.
+  final String? rovingId;
+
   const UnjoinedChatListItem({
     super.key,
     required this.chunk,
     required this.onTap,
+    this.rovingId,
   });
 
   @override
@@ -29,6 +35,9 @@ class UnjoinedChatListItem extends StatelessWidget {
           visualDensity: const VisualDensity(vertical: -0.5),
           contentPadding: const EdgeInsets.symmetric(horizontal: 8),
           onTap: onTap,
+          focusNode: rovingId == null
+              ? null
+              : RovingFocusGroup.nodeOf(context, rovingId!),
           leading: Avatar(
             mxContent: chunk.avatarUrl,
             name: displayname,

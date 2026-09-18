@@ -10,6 +10,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
@@ -550,6 +551,11 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   void _openActivity(QuestActivity ref) {
     if (widget.readOnly) return;
     final room = widget.room;
+    // The activity takes the card's slot, and the pressed card goes with it,
+    // so the activity panel that mounts claims focus
+    // (routing.instructions.md, "Every panel is a named group to assistive
+    // tech").
+    PanelEntryIntent.instance.armForSwap();
     if (room == null) {
       // Token-native open; the course context (if any) is kept, so the plan
       // closes back to it. See routing.instructions.md.

@@ -19,6 +19,7 @@ import 'package:fluffychat/routes/world/left_panel/left_panel_courses_list_view.
 import 'package:fluffychat/routes/world/left_panel/left_panel_room_details_subpage.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_room_subpage.dart';
 import 'package:fluffychat/routes/world/panel_card.dart';
+import 'package:fluffychat/routes/world/right_panel/panel_entry_focus.dart';
 import 'package:fluffychat/widgets/layouts/workspace_shell.dart';
 import 'package:fluffychat/widgets/share_scaffold_dialog.dart';
 
@@ -165,18 +166,18 @@ class WorkspaceLeftPanel extends StatelessWidget {
     // Every workspace panel is one named semantic group (#8729) — authored
     // here, where every left-column token resolves, so a panel cannot miss it
     // by drawing its own chrome. The group also wraps the [bare] branch: it is
-    // semantics, not visual chrome.
-    return Semantics(
+    // semantics, not visual chrome. It is also where a course the rail just
+    // opened lands focus (see PanelEntryFocus).
+    return PanelEntryFocus(
+      // The claim runs on mount. A course expanding from its floor keeps the
+      // slot's element (the token encodes the same either way), so the group
+      // is re-keyed on the floor state to mount afresh and claim.
+      key: ValueKey(atFloor),
+      panel: token.type,
       label: L10n.of(
         context,
       ).pageLabel(token.type.displayName(L10n.of(context))),
-      container: true,
-      // Browse-order key on the group itself (#8755): a wrapper annotation
-      // formed an extra unlabeled node VoiceOver reordered heuristically.
       sortKey: WorkspaceOrder.leftPanels.sortKey,
-      // Keep descendants as their own nodes so loose text without a container
-      // never merges into the panel's name (see WorkspaceRightPanel).
-      explicitChildNodes: true,
       child: bare
           ? surface
           : token is CoursePanelToken && atFloor

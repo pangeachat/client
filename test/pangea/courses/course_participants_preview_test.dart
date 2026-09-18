@@ -1,6 +1,8 @@
 import 'dart:io';
+import 'dart:ui' show Tristate;
 
 import 'package:flutter/material.dart';
+import 'package:flutter/semantics.dart';
 import 'package:flutter/services.dart';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -44,6 +46,8 @@ class _TestMatrix extends Matrix {
 /// all" appears only when the card line was truncated, since a subpage
 /// repeating the same cards is not worth offering. And for #9109: a card's
 /// role badge sits across its avatar's top edge rather than in a row below.
+/// And for #9154: the cards are reachable by keyboard, as one Tab stop with
+/// the arrow keys moving between them.
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -250,6 +254,59 @@ void main() {
     );
     expect(hit.path.map((entry) => entry.target), contains(avatarBox));
 
+    await drain(tester);
+  });
+
+  testWidgets('the cards are one Tab stop, each a focusable button (#9154)', (
+    tester,
+  ) async {
+    final handle = tester.ensureSemantics();
+    await pumpPreview(tester, courseRoom(members: fits));
+
+    /// The label of the node assistive tech is on.
+    String focusedLabel() => tester.semantics
+        .simulatedAccessibilityTraversal()
+        .where((n) => n.flagsCollection.isFocused == Tristate.isTrue)
+        .map((n) => n.getSemanticsData().label)
+        .join('|');
+
+    Future<void> press(LogicalKeyboardKey key) async {
+      await tester.sendKeyEvent(key);
+      await tester.pump();
+    }
+
+    // Tab: the header's invite shortcut, then the line's first card — the
+    // admin leads the display order.
+    await press(LogicalKeyboardKey.tab);
+    await press(LogicalKeyboardKey.tab);
+    expect(focusedLabel(), contains('Testy'));
+
+    // The arrow keys move between cards.
+    await press(LogicalKeyboardKey.arrowRight);
+    expect(focusedLabel(), contains('Member 1'));
+    await press(LogicalKeyboardKey.arrowLeft);
+    expect(focusedLabel(), contains('Testy'));
+
+    // Tab leaves the line in one press, past the cards not visited.
+    await press(LogicalKeyboardKey.arrowRight);
+    await press(LogicalKeyboardKey.tab);
+    expect(focusedLabel(), isNot(contains('Member')));
+
+    // Each card is one node: a button that takes focus and a tap, named for
+    // its member.
+    for (final name in ['Testy', 'Member 1', 'Member 2']) {
+      final nodes = tester.semantics
+          .simulatedAccessibilityTraversal()
+          .where((n) => n.getSemanticsData().label.contains(name))
+          .toList();
+      expect(nodes, hasLength(1), reason: '$name is one node');
+      final data = nodes.single.getSemanticsData();
+      expect(nodes.single.flagsCollection.isButton, isTrue, reason: name);
+      expect(data.hasAction(SemanticsAction.focus), isTrue, reason: name);
+      expect(data.hasAction(SemanticsAction.tap), isTrue, reason: name);
+    }
+
+    handle.dispose();
     await drain(tester);
   });
 }
