@@ -173,6 +173,7 @@ class WorkspaceLeftPanel extends StatelessWidget {
       // slot's element (the token encodes the same either way), so the group
       // is re-keyed on the floor state to mount afresh and claim.
       key: ValueKey(atFloor),
+      panel: token.type,
       label: L10n.of(
         context,
       ).pageLabel(token.type.displayName(L10n.of(context))),

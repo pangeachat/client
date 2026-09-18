@@ -165,4 +165,179 @@ void main() {
     expect(cluster.hasPrimaryFocus, isFalse);
     expect(intent.take(), isFalse);
   });
+
+  // A page pushed or popped within a panel — a course section's "See all",
+  // the back arrow out of it — is a different token, so the panel remounts and
+  // the pressed control goes with it. armForSwap drops the focus history
+  // before it arms, as the onboarding swap does (#7582): otherwise the
+  // framework restores focus to the last control still alive, the rail item,
+  // until the claim (#9154).
+  testWidgets('a push that removes the pressed control lands on the new page', (
+    tester,
+  ) async {
+    final handle = tester.ensureSemantics();
+    final rail = FocusNode(debugLabel: 'rail');
+    final seeAll = FocusNode(debugLabel: 'seeAll');
+    addTearDown(rail.dispose);
+    addTearDown(seeAll.dispose);
+
+    // The shell's shape: the rail, then the panel keyed on its token.
+    Widget pushHost({required bool pushed}) => MaterialApp(
+      home: FocusTraversalGroup(
+        policy: OrderedTraversalPolicy(),
+        child: Scaffold(
+          body: Column(
+            children: [
+              FocusTraversalOrder(
+                order: const NumericFocusOrder(1),
+                child: ElevatedButton(
+                  focusNode: rail,
+                  onPressed: () {},
+                  child: const Text('Course A'),
+                ),
+              ),
+              FocusTraversalOrder(
+                order: const NumericFocusOrder(2),
+                child: FocusTraversalGroup(
+                  policy: OrderedTraversalPolicy(),
+                  child: PanelEntryFocus(
+                    key: ValueKey(pushed),
+                    label: pushed ? 'Vocab page' : 'Course page',
+                    sortKey: const OrdinalSortKey(2),
+                    intent: intent,
+                    child: pushed
+                        ? IconButton(
+                            focusNode: close,
+                            tooltip: 'Back',
+                            icon: const Icon(Icons.arrow_back),
+                            onPressed: () {},
+                          )
+                        : TextButton(
+                            focusNode: seeAll,
+                            onPressed: () {},
+                            child: const Text('See all'),
+                          ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+
+    // The learner came from the rail, then reached "See all".
+    await tester.pumpWidget(pushHost(pushed: false));
+    rail.requestFocus();
+    await tester.pump();
+    seeAll.requestFocus();
+    await tester.pump();
+    expect(seeAll.hasPrimaryFocus, isTrue);
+
+    // What the opener does, then the navigation's rebuild.
+    intent.armForSwap();
+    await tester.pumpWidget(pushHost(pushed: true));
+    await tester.pump();
+    expect(rail.hasPrimaryFocus, isFalse, reason: 'no older control restored');
+
+    await tester.pump(PanelEntryFocus.claimDelay);
+    expect(groupFocused(tester), isTrue);
+    await tester.sendKeyEvent(LogicalKeyboardKey.tab);
+    await tester.pump();
+    expect(close.hasPrimaryFocus, isTrue);
+    handle.dispose();
+  });
+
+  // A closed detail returns focus to its parent. Beside the detail the parent
+  // is already on screen, so nothing mounts: the arm names it, and the panel
+  // on screen takes it (#9154). An arm that names no one is never taken by a
+  // panel on screen, so it still reaches the panel that mounts.
+  group('a named arm', () {
+    late FocusNode invite;
+
+    setUp(() => invite = FocusNode(debugLabel: 'invite'));
+    tearDown(() => invite.dispose());
+
+    // The course card with the invite page open beside it.
+    Widget besideHost({required bool detailOpen}) => MaterialApp(
+      home: FocusTraversalGroup(
+        policy: OrderedTraversalPolicy(),
+        child: Scaffold(
+          body: Row(
+            children: [
+              FocusTraversalGroup(
+                policy: OrderedTraversalPolicy(),
+                child: PanelEntryFocus(
+                  label: 'Course page',
+                  sortKey: const OrdinalSortKey(1),
+                  panel: 'course',
+                  intent: intent,
+                  child: TextButton(
+                    focusNode: invite,
+                    onPressed: () {},
+                    child: const Text('Invite'),
+                  ),
+                ),
+              ),
+              if (detailOpen)
+                FocusTraversalGroup(
+                  policy: OrderedTraversalPolicy(),
+                  child: PanelEntryFocus(
+                    label: 'Invite page',
+                    sortKey: const OrdinalSortKey(2),
+                    panel: 'coursepage',
+                    intent: intent,
+                    child: IconButton(
+                      focusNode: close,
+                      tooltip: 'Close Invite',
+                      icon: const Icon(Icons.close),
+                      onPressed: () {},
+                    ),
+                  ),
+                ),
+            ],
+          ),
+        ),
+      ),
+    );
+
+    bool courseFocused(WidgetTester tester) =>
+        tester.semantics.simulatedAccessibilityTraversal().any(
+          (n) =>
+              n.getSemanticsData().label == 'Course page' &&
+              n.flagsCollection.isFocused == Tristate.isTrue,
+        );
+
+    testWidgets('is taken by that panel while it is already on screen', (
+      tester,
+    ) async {
+      final handle = tester.ensureSemantics();
+      await tester.pumpWidget(besideHost(detailOpen: true));
+      close.requestFocus();
+      await tester.pump();
+      expect(close.hasPrimaryFocus, isTrue);
+
+      // What the close control does, then the navigation's rebuild.
+      intent.armForSwap(target: 'course');
+      await tester.pumpWidget(besideHost(detailOpen: false));
+      await tester.pump(PanelEntryFocus.claimDelay);
+      expect(courseFocused(tester), isTrue);
+      await tester.sendKeyEvent(LogicalKeyboardKey.tab);
+      await tester.pump();
+      expect(invite.hasPrimaryFocus, isTrue);
+      handle.dispose();
+    });
+
+    testWidgets('that names no one is left for the panel that mounts', (
+      tester,
+    ) async {
+      final handle = tester.ensureSemantics();
+      await tester.pumpWidget(besideHost(detailOpen: true));
+      intent.arm();
+      await tester.pump(PanelEntryFocus.claimDelay);
+      expect(courseFocused(tester), isFalse);
+      expect(intent.take(), isTrue, reason: 'still there for a mount');
+      handle.dispose();
+    });
+  });
 }

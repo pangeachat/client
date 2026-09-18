@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/features/navigation/close_affordance.dart';
+import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_close_location.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
@@ -86,6 +87,7 @@ class LeftPanelCloseButton extends StatelessWidget {
   // room.
   void _close(BuildContext context) {
     final uri = _liveUri(context);
+    _armReturnFocus(uri);
     if (token.type.isRoomPanel) {
       final param = token.param;
       final close = roomTokenCloseLocation(
@@ -96,6 +98,22 @@ class LeftPanelCloseButton extends StatelessWidget {
       return;
     }
     context.go(WorkspaceNav.closeSection(uri, token));
+  }
+
+  /// Closing a detail hands focus to the panel it returns to: the pressed
+  /// control is destroyed with this panel, so that panel claims focus
+  /// (routing.instructions.md, "Every panel is a named group to assistive
+  /// tech"). A chat closed beside its list is left to the framework's own
+  /// focus restore.
+  void _armReturnFocus(Uri uri) {
+    if (foldedOver) {
+      // Whatever folded beneath mounts fresh. Folding is positional, so it is
+      // not always the registry parent, and the arm names no one.
+      PanelEntryIntent.instance.armForSwap();
+    } else if (!token.type.isRoomPanel && parentIsOpen(uri, token)) {
+      // The parent is on screen beside this panel, so nothing mounts: name it.
+      PanelEntryIntent.instance.armForSwap(target: token.type.def.parent);
+    }
   }
 
   /// Shrink the wide course card to the bar's height first, then drop its
@@ -115,11 +133,16 @@ class LeftPanelCloseButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // A popped page's parent mounts in its place and claims focus (see
+    // [_armReturnFocus]). A chat's sub-pages are the exception: the chat panel
+    // survives its pops, so the framework's own focus restore stays inside it.
     final page = token.param;
     if (_isPushedSubPage && page != null) {
       return BackButton(
-        onPressed: () =>
-            context.go(WorkspaceNav.popPage(_liveUri(context), token)),
+        onPressed: () {
+          if (!token.type.isRoomPanel) PanelEntryIntent.instance.armForSwap();
+          context.go(WorkspaceNav.popPage(_liveUri(context), token));
+        },
       );
     }
 
