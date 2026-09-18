@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 
@@ -31,13 +30,13 @@ class ActivityRatingMeter extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
           decoration: BoxDecoration(
-            color: AppConfig.primaryColor,
+            color: theme.colorScheme.primaryContainer,
             borderRadius: BorderRadius.circular(10),
           ),
           child: Text(
             L10n.of(context).newActivityBadge,
             style: theme.textTheme.labelSmall?.copyWith(
-              color: Colors.white,
+              color: theme.colorScheme.onPrimaryContainer,
               fontWeight: FontWeight.bold,
             ),
           ),

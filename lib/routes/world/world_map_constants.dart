@@ -1,7 +1,8 @@
 import 'dart:math' as math;
 
-import 'package:flutter/animation.dart';
+import 'package:flutter/widgets.dart';
 
+import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
 class WorldMapConstants {
@@ -49,6 +50,27 @@ class WorldMapConstants {
   static bool canZoomIn(double zoom) => zoom < maxZoom;
   static bool canZoomOut(double zoom, double minZoom) => zoom > minZoom;
 
+  /// The map's gesture and keyboard config. The camera never rotates: north
+  /// stays up so the tiles' labels and every pin stay readable. Dropping the
+  /// `rotate` flag removes the two-finger twist; cursor/keyboard rotation is
+  /// switched off separately because flutter_map enables it by default and
+  /// does NOT gate it on that flag — a click or drag on the map with Ctrl
+  /// held snapped north to the cursor's angle, tilting the whole map and
+  /// every pin with it (#8859).
+  static InteractionOptions interactionOptions({
+    required FocusNode keyboardFocusNode,
+  }) => InteractionOptions(
+    flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
+    cursorKeyboardRotationOptions: CursorKeyboardRotationOptions.disabled(),
+    // Keep the map's invisible focus target out of Tab traversal, and stop it
+    // grabbing focus at mount (KeyboardOptions defaults autofocus to TRUE) —
+    // both derail the workspace tab order (#7219).
+    keyboardOptions: KeyboardOptions(
+      focusNode: keyboardFocusNode,
+      autofocus: false,
+    ),
+  );
+
   /// The zoom a pinch of [scale] lands on from [startZoom], clamped to the
   /// map's range ([minZoom] is the caller's viewport-derived floor, #7813). A
   /// pinch reports how far the gesture scaled the world, and one zoom level is
@@ -88,6 +110,19 @@ class WorldMapConstants {
   /// moment a plan re-hydrates, but nothing re-hydrates when no reference-shape
   /// sessions are in view, so this bounds it. See `WorldMapController`.
   static const Duration l1WarmupMax = Duration(seconds: 4);
+
+  // #8844 — a tile that failed on connectivity is retried in place by
+  // `TileRetryQueue`, since flutter_map never reloads a failed tile that stays
+  // on screen.
+
+  /// The first retry of a failed tile: quick enough that a blip (a tunnel, a
+  /// lift) heals almost as soon as it ends.
+  static const Duration tileRetryBaseDelay = Duration(seconds: 2);
+
+  /// The backoff ceiling while retries keep failing: bounds how long a
+  /// returning network can leave a hole on screen, and how often a
+  /// broken-but-connected network sends a doomed request per tile.
+  static const Duration tileRetryMaxDelay = Duration(seconds: 15);
 
   // #7239 — gentler combined pan/zoom glide.
 

@@ -33,8 +33,8 @@ class CourseRoleSection {
 /// The learner's courses split by their role in each — the model behind the
 /// Courses hub's sections and the nav rail's grouped order (#8425).
 ///
-/// Each group keeps the alphabetical (localized display name) order of the
-/// underlying sorted course list.
+/// Each group keeps the order of the underlying sorted course list (recent
+/// activity, then name).
 class CourseRoleGroups {
   final List<Room> invited;
   final List<Room> teaching;
@@ -61,7 +61,7 @@ class CourseRoleGroups {
   ];
 
   /// Every course in display order. When [isGrouped] is false this is exactly
-  /// the pre-#8425 order (invites first, then joined courses alphabetically).
+  /// the sorted course list (invites first, then joined courses).
   List<Room> get ordered => [...invited, ...teaching, ...learning];
 
   int get courseCount => invited.length + teaching.length + learning.length;

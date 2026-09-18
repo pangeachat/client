@@ -198,19 +198,19 @@ void main() {
     test(
       'a lone right summary yields (collapses) instead of being overlapped',
       () {
-        // course + room (independent left panels) + the analytics summary can't
-        // all honor their hard mins in this column-mode budget, and analytics
-        // has no same-column child to fold behind. It is the lowest priority
-        // (analytics 40 < course 60 < room 80), so it collapses to make room
-        // rather than being overlapped by the left column.
+        // One panel per column, so NOTHING can fold (a fold needs two panels in
+        // one column) — the only configuration that still reaches Tier 2 now
+        // that the fold is positional (#9030). Just past the two-column
+        // breakpoint their hard mins (360 + 360) overflow the budget, so the
+        // lowest-priority panel (analytics 40 < room 80) collapses rather than
+        // being overlapped by the left column.
         final l = run(
-          viewport: 1200,
-          left: [PanelTypesEnum.course, PanelTypesEnum.room],
+          viewport: 860,
+          left: [PanelTypesEnum.room],
           right: [PanelTypesEnum.analytics],
         );
         expect(l.right.single.vis, PanelVis.hidden); // analytics yields
-        expect(l.left[0].vis, PanelVis.full); // course
-        expect(l.left[1].vis, PanelVis.full); // room
+        expect(l.left.single.vis, PanelVis.full); // room
         expectNoOverlap(l);
       },
     );
@@ -508,6 +508,186 @@ void main() {
       expect(activity.minWidth, room.minWidth);
       expect(activity.reasonableMin, room.reasonableMin);
       expect(activity.idealWidth, room.idealWidth);
+    });
+  });
+
+  group('the fold is positional, not registry-linked (#9030)', () {
+    // routing.instructions.md: "When a column's two panels are not a registry
+    // master/detail pair (a course card with a live room beside it), the same
+    // rule applies positionally — the first token folds behind the second."
+    // `course` has no parent and `room`'s parent is `chats`, so before #9030
+    // this pair could not fold at all: both held a full slot, the left column
+    // ate the budget, and Tier 2 evicted the analytics panel instead.
+    test('a chat opened in a course folds the course card behind it', () {
+      // 1100px: the pair's comfort widths (480 + 480 + a 16 gap) no longer fit
+      // the budget, which is the fold trigger.
+      final l = run(
+        viewport: 1100,
+        left: [PanelTypesEnum.course, PanelTypesEnum.room],
+      );
+      expect(l.left[0].vis, PanelVis.hidden); // course folds
+      expect(l.left[1].vis, PanelVis.full); // the live room keeps the column
+      // Closing the room reveals the card as it was left, so its control is ←.
+      expect(l.left[1].foldedOver, isTrue);
+      expectNoOverlap(l);
+    });
+
+    test('the folded course leaves room for the analytics panel — the '
+        'reported bug', () {
+      // The repro state of #9030: a course, an activity chat opened from its
+      // chats section, and an analytics page. The analytics panel must draw
+      // whichever left panel the user touched most recently, so pressing an
+      // analytics button is never a no-op.
+      for (final focusHint in [0, 1, 2]) {
+        final l = run(
+          viewport: 1200,
+          left: [PanelTypesEnum.course, PanelTypesEnum.room],
+          right: [PanelTypesEnum.analytics],
+          focusHint: focusHint,
+        );
+        expect(
+          l.right.single.vis,
+          PanelVis.full,
+          reason: 'analytics must draw with focusHint=$focusHint',
+        );
+        expect(l.left[1].vis, PanelVis.full); // the room keeps the column
+        expectNoOverlap(l);
+      }
+    });
+
+    test('nothing folds while both panels still fit their comfort width', () {
+      // The fold is a response to width pressure, never a default (#7467).
+      final l = run(
+        viewport: 1700,
+        left: [PanelTypesEnum.course, PanelTypesEnum.room],
+      );
+      expect(l.left.every((s) => s.vis == PanelVis.full), isTrue);
+      expect(l.left.every((s) => !s.foldedOver), isTrue);
+      expectNoOverlap(l);
+    });
+  });
+
+  group('registry-declared always-fold (stacksOnParent, #7826)', () {
+    test(
+      'the add-course hub folds behind its subpage even on a wide viewport',
+      () {
+        final l = run(
+          left: [PanelTypesEnum.addcourse, PanelTypesEnum.addcoursepage],
+        );
+        // 1600px fits both comfortably — the fold is by declaration, not width.
+        expect(l.left[0].vis, PanelVis.hidden);
+        expect(l.left[1].vis, PanelVis.full);
+        // The subpage closes back to the folded hub, so its control reads ←.
+        expect(l.left[1].foldedOver, isTrue);
+        // The width the hub would have claimed stays with the map.
+        expect(l.mapLeftOverlay, 73 + l.left[1].width);
+        expectNoOverlap(l);
+      },
+    );
+
+    test('the hub alone (no subpage open) still draws', () {
+      final l = run(left: [PanelTypesEnum.addcourse]);
+      expect(l.left.single.vis, PanelVis.full);
+      expect(l.left.single.foldedOver, isFalse);
+    });
+
+    // #8972: the hub is an index of course tiles, so it draws at the chat
+    // list's width — switching rail sections between them must not resize the
+    // column — and its subpages share that width, so entering the add-course
+    // flow doesn't resize it either.
+    test('the hub and its subpages are list-width, like the chat list', () {
+      final chats = PanelTypesEnum.chats.def;
+      for (final type in [
+        PanelTypesEnum.addcourse,
+        PanelTypesEnum.addcoursepage,
+      ]) {
+        expect(type.def.minWidth, chats.minWidth, reason: '$type min');
+        expect(
+          type.def.reasonableMin,
+          chats.reasonableMin,
+          reason: '$type comfort',
+        );
+        expect(type.def.idealWidth, chats.idealWidth, reason: '$type ideal');
+      }
+      final chatsWidth = run(left: [PanelTypesEnum.chats]).left.single.width;
+      expect(
+        run(left: [PanelTypesEnum.addcourse]).left.single.width,
+        chatsWidth,
+      );
+      // The subpage always folds the hub, so it is the column's only panel.
+      final flow = run(
+        left: [PanelTypesEnum.addcourse, PanelTypesEnum.addcoursepage],
+      );
+      expect(flow.left[1].width, chatsWidth);
+    });
+
+    // The chips on a course tile fit one line at the list ideal: a tile spends
+    // 124 on card margin, list padding, the 48px avatar and its gap, and the
+    // widest chip row (Intermediate Mid (B1), three-digit counts) needs 316.
+    test('the list ideal leaves a course tile room for unwrapped chips', () {
+      expect(PanelWidths.listIdeal - 124, greaterThanOrEqualTo(316.0));
+    });
+
+    test('only the add-course subpage declares the always-fold', () {
+      for (final type in PanelTypesEnum.values) {
+        expect(
+          type.def.stacksOnParent,
+          type == PanelTypesEnum.addcoursepage,
+          reason: '$type stacksOnParent',
+        );
+      }
+    });
+  });
+
+  // #9037 — the course seats LAST now, so the positional rule alone would fold
+  // the CHAT behind the course card. That would strand it: a panel with a floor
+  // shows only its chevron ([CloseAffordance]), so it can offer neither an X nor
+  // a back arrow to reveal whatever folded behind it.
+  group('a floor panel is the one that yields, whatever its position', () {
+    test('a chat seated before the course folds the COURSE, not the chat', () {
+      final l = run(
+        viewport: 1100,
+        left: [PanelTypesEnum.room, PanelTypesEnum.course],
+      );
+      expect(l.left[1].vis, PanelVis.hidden); // the course yields
+      expect(l.left[0].vis, PanelVis.full); // the live chat keeps the column
+      // Nothing folded BENEATH the chat, so its control stays an X — which
+      // reveals the course card just the same, by dropping the chat.
+      expect(l.left[0].foldedOver, isFalse);
+      expectNoOverlap(l);
+    });
+
+    test('and it still yields when seated first (#9030 is unchanged)', () {
+      final l = run(
+        viewport: 1100,
+        left: [PanelTypesEnum.course, PanelTypesEnum.room],
+      );
+      expect(l.left[0].vis, PanelVis.hidden);
+      expect(l.left[1].vis, PanelVis.full);
+      expect(l.left[1].foldedOver, isTrue); // folded beneath → back arrow
+      expectNoOverlap(l);
+    });
+
+    test('a pair with no floor still folds purely by position', () {
+      final l = run(
+        viewport: 1100,
+        left: [PanelTypesEnum.chats, PanelTypesEnum.room],
+      );
+      expect(l.left[0].width + l.left[1].width, greaterThan(0));
+      final tight = run(
+        viewport: 900,
+        left: [PanelTypesEnum.chats, PanelTypesEnum.room],
+      );
+      expect(tight.left[0].vis, PanelVis.hidden); // the list, beneath, folds
+      expect(tight.left[1].vis, PanelVis.full);
+      expect(tight.left[1].foldedOver, isTrue);
+    });
+
+    test('exactly one panel type declares a floor', () {
+      final withFloor = PanelTypesEnum.values
+          .where((t) => t.hasCavityFloor)
+          .toList();
+      expect(withFloor, [PanelTypesEnum.course]);
     });
   });
 }

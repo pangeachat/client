@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'package:http/http.dart' show ClientException;
 import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
@@ -78,7 +79,19 @@ class ErrorHandler {
   /// production
   /// as `Instance of 'UnsubscribedException'` (CLIENT-E4T, #8373). A rule
   /// copied per call site drifts; a rule with one home cannot.
-  static bool shouldReport(Object? e) => e is! UnsubscribedException;
+  static bool shouldReport(Object? e) {
+    if (e is UnsubscribedException) return false;
+    // A request timeout while the app is not resumed describes the device's
+    // sleep, not the network: the OS suspends the socket and every pending
+    // timer fires together on wake (severity table, Timeout row; #9132).
+    if (e is TimeoutException && _appNotResumed) return false;
+    return true;
+  }
+
+  static bool get _appNotResumed {
+    final state = WidgetsBinding.instance.lifecycleState;
+    return state != null && state != AppLifecycleState.resumed;
+  }
 
   /// Keys already reported this session via [logErrorOnce].
   static final Set<String> _reportedOnceKeys = {};
@@ -97,24 +110,68 @@ class ErrorHandler {
   /// ~30 events/day. [logError] collapses everything matching here into one
   /// grouping ([_expiredTokenFingerprint]) and one report per app session.
   ///
-  /// Three shapes, all the same condition:
+  /// Four shapes, all the same condition:
   /// - the Matrix SDK's own `M_UNKNOWN_TOKEN` failure;
   /// - a choreo 401 — choreo validates the bearer via Synapse WhoAmI, and an
   ///   expired token makes that check itself 401;
   /// - a Pangea Synapse-module 401 — the homeserver rejecting the bearer
-  ///   directly.
+  ///   directly, under either of the module's path prefixes (the versioned
+  ///   `/_synapse/client/pangea/v1/…` and the `unstable/org.pangea/…`
+  ///   endpoints — `room_preview` there landed as its own per-endpoint
+  ///   issue, CLIENT-EKC, #9061);
+  /// - a CMS read answered 403 ([_isCmsReadDenied]) — the same rejection,
+  ///   one hop later and mislabelled.
   ///
-  /// Any other 401 (e.g. one with no expired-token detail) keeps its own
-  /// per-endpoint grouping and is never capped.
+  /// Any other 401 or 403 (a 401 with no expired-token detail, a 403 on a
+  /// write) keeps its own per-endpoint grouping and is never capped.
   static bool _isExpiredTokenError(Object e) {
     if (e is MatrixException) return e.error == MatrixError.M_UNKNOWN_TOKEN;
-    if (e is! PangeaHttpException || e.statusCode != 401) return false;
+    if (e is! PangeaHttpException) return false;
+    if (e.statusCode == 403) return _isCmsReadDenied(e);
+    if (e.statusCode != 401) return false;
     return (e.detail?.contains('Matrix WhoAmI non-200 (401)') ?? false) ||
-        e.path.startsWith('/_synapse/client/pangea');
+        e.path.startsWith('/_synapse/client/pangea') ||
+        e.path.startsWith('/_synapse/client/unstable/org.pangea');
   }
+
+  /// Whether [e] is a CMS read denied with Payload's generic 403. The CMS
+  /// validates the bearer through its own Synapse whoami hop; a rejected
+  /// token makes that hop 401, the auth strategy swallows it into "no user",
+  /// and the read rule denies with a detail-less 403. Every collection the
+  /// client reads admits any Matrix user, so on a read that 403 can only be
+  /// the token — it landed in the same boot burst as the 401s, one hop later,
+  /// as its own error-level issue (CLIENT-EBF, #8372). Writes are left out:
+  /// their rules are per-role, so a 403 there can be a real permission bug
+  /// and keeps the 403 row of the severity table.
+  static bool _isCmsReadDenied(PangeaHttpException e) =>
+      e.method == 'GET' && e.path.startsWith('/cms/api/');
+
+  /// The grouping key and session cap key for a request that never reached a
+  /// server.
+  static const List<String> _noResponseFingerprint = [
+    'pangea-network',
+    'no-response',
+  ];
+
+  /// Whether [e] is a request that got no response at all — offline, DNS,
+  /// CORS, a blocked request. `package:http` raises every one of those as a
+  /// [ClientException] (on mobile it wraps the socket failure in one); a
+  /// status code would mean a server answered. A dead connection fails every
+  /// surface at once, the same shape as the expired token — one learner
+  /// offline for seven seconds produced ten flag reports (CLIENT-EGM) on top
+  /// of a 3,588-event catch-all (CLIENT-5XY, #8890) — so it collapses the same
+  /// way: one grouping, one report per app session, warning per the
+  /// no-response row of the severity table.
+  static bool _isNoResponse(Object e) => e is ClientException;
 
   @visibleForTesting
   static void resetReportedOnceKeysForTest() => _reportedOnceKeys.clear();
+
+  /// The [logErrorOnce] keys spent this session — how a test asserts that a
+  /// degrade path actually reported rather than swallowing its failure.
+  @visibleForTesting
+  static Set<String> get reportedOnceKeysForTest =>
+      Set.unmodifiable(_reportedOnceKeys);
 
   /// [logError], capped at one report per app session per [key]. For known
   /// recurring degrade paths — e.g. a joined course whose quest plan no longer
@@ -137,9 +194,10 @@ class ErrorHandler {
   }
 
   /// Reports [e] to Sentry at [level], defaulting to the one severity table
-  /// ([PangeaHttpException.severityOf]): a timeout and the routine statuses
-  /// (401, 404, 410, 429) are warnings, everything else — including any
-  /// failure carrying no HTTP status — an error. Severity is a property of the
+  /// ([PangeaHttpException.severityOf]): a timeout, a request that never
+  /// reached a server, and the routine statuses (401, 404, 410, 429) are
+  /// warnings, everything else — including any other failure carrying no HTTP
+  /// status — an error. Severity is a property of the
   /// failure, not of the author's judgment at the call site, so it is decided
   /// here rather than at each of ~240 reporting sites, which is where it
   /// drifted before (repos-and-error-handling.instructions.md § Severity
@@ -169,14 +227,18 @@ class ErrorHandler {
   }) async {
     if (!shouldReport(e)) return;
 
-    // One expired token is one condition regardless of which call surfaced
-    // it: a single grouping, one report per app session ([logErrorOnce]
-    // semantics — the first event carries the signal, Sentry tallies users),
-    // and warning severity per the 401 row of the severity table.
-    final expiredToken = _isExpiredTokenError(e);
-    if (expiredToken && !_reportedOnceKeys.add(_expiredTokenFingerprint.last)) {
-      return;
-    }
+    // One condition is one report regardless of which call surfaced it. An
+    // expired token or a connection that never reaches a server fails every
+    // in-flight call at once, so each collapses into a single grouping and
+    // one report per app session ([logErrorOnce] semantics — the first event
+    // carries the signal, Sentry tallies users) at warning, per the 401 and
+    // no-response rows of the severity table.
+    final collapsed = _isExpiredTokenError(e)
+        ? _expiredTokenFingerprint
+        : _isNoResponse(e)
+        ? _noResponseFingerprint
+        : null;
+    if (collapsed != null && !_reportedOnceKeys.add(collapsed.last)) return;
 
     debugPrint("error message: $e");
 
@@ -189,12 +251,10 @@ class ErrorHandler {
       withScope: (scope) {
         scope.level =
             level ??
-            (expiredToken
+            (collapsed != null
                 ? SentryLevel.warning
                 : PangeaHttpException.severityOf(e));
-        final fingerprint = expiredToken
-            ? _expiredTokenFingerprint
-            : PangeaHttpException.fingerprintOf(e);
+        final fingerprint = collapsed ?? PangeaHttpException.fingerprintOf(e);
         if (fingerprint != null) scope.fingerprint = fingerprint;
       },
     );

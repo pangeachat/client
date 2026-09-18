@@ -37,6 +37,26 @@
         "hooks": [
           {
             "type": "command",
+            "command": "bash \"$HOME/PangeaChat/.github/scripts/pretooluse-prod-gate.sh\""
+          },
+          {
+            "type": "command",
+            "command": "bash \"$HOME/PangeaChat/.github/scripts/pretooluse-commit-gate.sh\""
+          },
+          {
+            "type": "command",
+            "command": "python3 \"$HOME/PangeaChat/.github/scripts/pretooluse-push-gate.py\""
+          },
+          {
+            "type": "command",
+            "command": "python3 \"$HOME/PangeaChat/.github/scripts/pretooluse-branch-gate.py\""
+          },
+          {
+            "type": "command",
+            "command": "python3 \"$HOME/PangeaChat/.github/scripts/pretooluse-signin-gate.py\""
+          },
+          {
+            "type": "command",
             "command": "bash \"$HOME/PangeaChat/.github/scripts/pretooluse-issue-gate.sh\""
           },
           {
@@ -50,6 +70,10 @@
           {
             "type": "command",
             "command": "bash \"$HOME/PangeaChat/.github/scripts/pretooluse-reminders.sh\""
+          },
+          {
+            "type": "command",
+            "command": "bash \"$HOME/PangeaChat/.github/scripts/pretooluse-edit-path.sh\""
           }
         ]
       },
@@ -72,6 +96,16 @@
           {
             "type": "command",
             "command": "bash \"${CLAUDE_PROJECT_DIR}/.github/scripts/pretooluse-flutter-guard.sh\""
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$HOME/PangeaChat/.github/scripts/stop-ops-direct-check.py\""
           }
         ]
       }

@@ -825,9 +825,16 @@ class TtsController {
       // Not awaited directly: on the web this future never resolves when the
       // utterance errors, and on iOS it never resolves when a later stop
       // drops it. It is one of three signals that settle the utterance.
+      //
+      // Its VALUE matters as well as its arrival. On native the plugin
+      // resolves `speak` from inside its own completion callback and posts
+      // `speak.onComplete` right after, so this always settles the utterance
+      // before `completionHandler` runs — and `1` is the only evidence of a
+      // clean finish that arrives in time. See
+      // `TtsDeviceUtterance.onSpeakReturned`.
       unawaited(
         Future(() => _tts.speak(text)).then(
-          (_) => utterance.onSpeakReturned(),
+          (result) => utterance.onSpeakReturned(engineCompleted: result == 1),
           onError: (Object e, StackTrace s) {
             _log('Error playing audio from device: $e', tid);
             error_handler.ErrorHandler.logError(
@@ -847,7 +854,8 @@ class TtsController {
       _log(
         'Device playback ended: ${outcome.name} '
         '(started=${utterance.started} stopRequested=${utterance.stopRequested} '
-        'engineEnded=${utterance.engineHasEnded})',
+        'engineEnded=${utterance.engineHasEnded} '
+        'playedToEnd=${utterance.playedToEnd})',
         tid,
       );
 

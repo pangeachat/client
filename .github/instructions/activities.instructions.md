@@ -1,5 +1,5 @@
 ---
-applyTo: "lib/features/activity_sessions/**,lib/features/quests/**,lib/routes/chat/activity_sessions/**,lib/routes/chat/chat_details/**"
+applyTo: "lib/features/activity_sessions/**,lib/features/quests/**,lib/routes/analytics/activities/**,lib/routes/chat/activity_sessions/**,lib/routes/chat/chat_details/**"
 description: "Client design for activities: thin cards, the start page's room-driven state, navigation, and the media carousel (video next)."
 ---
 
@@ -31,6 +31,8 @@ The page's **layout and gestures** — the mobile grow-before-scroll sheet, the 
 
 A running activity carries its progress in a **goal header** pinned to the top of the conversation — a horizontal row of stars, one per goal, with the active goal named beneath them. It stays visible and sticky as the learner scrolls the timeline, and it is styled to read as a button (rounded corners, a drop shadow that lifts it off the conversation, a subtle hover state) because it is one: tapping it opens the full goal list. [`ActivityStatsMenu`](../../lib/routes/chat/activity_sessions/activity_stats_menu.dart) hosts it in the live session; the collapsed row is [`ActivityDropdownHeader`](../../lib/routes/chat/activity_sessions/activity_dropdown_header.dart) and the dropped-down panel is [`ActivityDropdownContent`](../../lib/routes/chat/activity_sessions/activity_dropdown_content.dart).
 
+The header floats over the conversation, so the height it takes is chat the learner cannot read. A narrow window therefore uses smaller values for the header's own padding — the card's outer margin, and the band above and below the star row — while the stars and the goal label keep their size ([#9147](https://github.com/pangeachat/client/issues/9147)). Both faces use the same values, so the top of the header does not move when it opens. The lower limit is the toggle row's tap target, which stays at least 48px tall. The metrics are defined in one place, [`GoalHeaderConstants`](../../lib/routes/chat/activity_sessions/goal_header_constants.dart).
+
 Stars fill in the goals' fixed order and never reshuffle — the goal a learner sees first stays first from start to finish. The **active goal** is the first one still unfinished: its star has a highlighted fill around it, and its description is the label under the row. Completing a goal fills its star wherever it sits, active or not; only when the _active_ goal's star fills does the next unfinished goal become active. So with three goals and the first active, finishing the second fills the second star while the first stays active; finishing the first then fills its star and hands active status to the third. Whenever any star is earned it flies up from the conversation and lands in its slot in the header, filling it in ([`GoalStarAnimation`](../../lib/routes/chat/choreographer/activity_orchestrator/goal_star_animation.dart), one star per goal via [`GoalStatusWidget`](../../lib/routes/chat/choreographer/activity_orchestrator/goal_status_widget.dart)).
 
 Tapping the header drops it down. The stars shift from a horizontal row into a vertical column, and **each** goal — not just the active one — gets its full description beside its star. Tapping again collapses it. The end-activity actions live in this dropped-down view and are always reachable there: **"I'm done!"** ends the session for the tapping learner, and a learner may end early — the button is live before every star is filled and turns gold once they have completed all their own goals. **"End for all"** appears for admins (outside two-person bot sessions) and ends it for everyone. A learner who marked themselves done but changed their mind gets **"Wait, I'm not done!"** to return to the activity. Which buttons show is the `_showEndForMe` / `_showEndForAll` / `_showWaitNotDone` logic in [`ActivityStatsMenu`](../../lib/routes/chat/activity_sessions/activity_stats_menu.dart).
@@ -49,6 +51,16 @@ Saving a completed session is automatic — the design (what saving means, when 
 
 The profile star counter ([`totalStarsEarned`](../../lib/routes/chat/choreographer/activity_orchestrator/orchestrator_client_extension.dart)) counts saved sessions only. In-session star displays and per-activity progress on cards stay live — only the profile total waits for the save.
 
+## The Stars list
+
+A saved session's row ([`AnalyticsActivityItem`](../../lib/routes/analytics/activities/activity_archive.dart)) is the learner's record of that session: the activity's title (the room's name once the plan is gone), their stars, their level, the XP they earned, and how many different vocabulary and grammar items they used. Every number comes from the summary saved with the session, so the row and the end-of-activity card can never disagree. Tapping a row opens the session.
+
+The stats sit under the stars as one compact line — XP first, in the gold that marks XP everywhere else, then a vocabulary count and a grammar count behind the same two icons the analytics bar uses for words and grammar. The counts are of distinct items used in that session, not of items new to the learner: the saved summary does not record which were new, and the row never shows a number the summary cannot back. A count of zero shows as zero rather than dropping the stat, so the rows stay aligned down the list.
+
+A session with no saved summary — an older one, or one whose generation failed — keeps its title and stars and shows nothing else: no level, no stats, and no gap where they would be. A summary is saved per display language, so a learner who has since changed their first language sees that same reduced row.
+
+The open row carries the selected fill, and XP gives up the gold there so it stays readable against it.
+
 ## Rating an activity
 
 Once a learner's own role is finished ("I'm done!", or an admin's "End for all"), a rating card pins to the bottom of the chat, above the finished-status bar: thumbs up/down, an optional comment, submit, and a dismiss X ([`ActivityRatingCard`](../../lib/routes/chat/activity_sessions/activity_rating_card.dart)). The "must have played" gate is client-trusted for v1 — a finished role is the evidence of play. Three rules govern when it shows ([#7194](https://github.com/pangeachat/client/issues/7194)):
@@ -61,12 +73,26 @@ The aggregate — an up-fraction and rater count served with the single-activity
 
 ## Downloading the transcript
 
-The session's app bar carries a "More" (⋮) menu ([`ActivitySessionPopupMenu`](../../lib/routes/chat/activity_sessions/activity_session_popup_menu.dart)). A **live** session offers Invite, Leave, and Download; a **completed** session — finished for everyone (`isActivityFinished`) — keeps the menu but offers **Download only**, since Invite and Leave no longer apply once the session is over. The gate is the session ending for all, _not_ the learner's own role archiving (`hasArchivedActivity`): an observer who never took a role, or a learner who finished while others played on, is still looking at a session that has ended, and the archived-role state is both narrower and reached only after auto-save. Completing a session must not strip the menu: a learner returning to a finished session still needs to export it. (Regular, non-activity chats expose the same export from the chat-details button row, not this menu.)
+The session's app bar carries the same **More** menu as any other chat ([routing.instructions.md](routing.instructions.md) → A chat's header actions): everything the session's chat-list row offers — go to course, notifications, end activity, leave, delete — plus **Invite** and **Download**, which exports the transcript. **Invite** is the one item the completion gate itself removes — a session that has ended, meaning finished for everyone (`isActivityFinished`), cannot be joined, though a learner coming back to it still needs to export it. That gate is the session ending for all, not the learner's own role archiving (`hasArchivedActivity`), which is narrower and reached only after auto-save — an observer who never took a role is still looking at a session that has ended. What else the menu shows tracks the learner's own role rather than the session's completion: End activity is offered only while they hold a role they have not finished, and Leave only until they have taken a role in a session that has started. (Regular, non-activity chats export from the chat-details button row instead.)
 
 Download exports the full message history — sender, timestamp, original and sent message, and use type — as TXT / CSV / XLSX ([`lib/features/download/`](../../lib/features/download/)). Two decisions govern who sees it and where:
 
 - **Any room member can export.** The download only surfaces content the member can already read in the chat, so it grants no new visibility. Do not gate it behind power level. The one real cost is that it puts an off-platform copy of a whole room's messages — everyone's, in a group or multi-learner session — in one member's hands; for research-study or minor-heavy rooms that off-platform copy is a genuinely different exposure from in-app reading, and is the open question to revisit if the studies need tighter control.
 - **Web and desktop only, for now.** The download is `kIsWeb`-gated because the native mobile write path (`download_file_util.dart`, storage-permission + Downloads dir) has never shipped and is unvalidated. Enabling mobile is deliberately deferred until that path is tested — until then a completed session on native shows no ⋮ menu at all (Download would be its only item).
+
+## Plans arrive a screenful at a time
+
+A course screen shows one activity per session room, and each needs its plan. Fetching them one at a time made a single screen cost dozens of round trips, so [`ActivityPlanRepo`](../../lib/features/activity_sessions/activity_plan_repo.dart) collects the keys a frame asks for and reads them in one request. Cards still appear together; what changed is how many times the device asks.
+
+Collecting them depends on waiting: surfaces request a plan per card as they build, so dispatching on the first request would send it before the second arrived and batch nothing. The repo therefore dispatches after the frame finishes asking — soon enough that nothing is perceptibly delayed, late enough that a screen travels as one request.
+
+Three rules decide what can share a request, and each exists because ignoring it would quietly change what a caller asked for:
+
+- **One display language per request.** The read applies a single language to everything in it, so a key wanting a different one starts a new request rather than being reordered into an existing one — hydration follows the order surfaces asked, and a learner watching a screen fill in should not see it rearranged to suit the transport.
+- **A refresh travels alone.** Re-reading past the cache is the whole point of a refresh, and a shared request cannot ask for that on behalf of one activity and not the others.
+- **Activities already known to be gone never travel.** The backend's "this is gone" verdict outlives the app session, so a known-dead activity is dropped before the request rather than re-asked — re-asking is a loop this system has already been through once.
+
+Batching changes the number of requests, never their standing: each activity in a request costs the learner's allowance exactly what it would have cost alone, and one activity's failure never decides another's. What the backend guarantees in return is in the [org activities doc](../../../.github/.github/instructions/activities.instructions.md).
 
 ## When the activity can't be fetched
 
@@ -98,6 +124,8 @@ Video is where the two surfaces differ most:
 - **On a compact surface — a card, a map pin — the first block stands in for the carousel, carrying a small video tag (not a play badge) when it's a video.** That is what makes a card carousel-aware: a video-first activity leads with its video, not an unrelated image. The tag differentiates video without a play badge's false promise of play-in-place: tapping the card doesn't play the video there; it opens the activity, where the video starts. (A centered play badge on a card read as "play here" and did nothing on tap — see [pangeachat/client#7543](https://github.com/pangeachat/client/issues/7543).)
 
 That tap is the _only_ time a video starts on its own, and it starts **muted, with a tap to unmute**. Muting is what lets it start at all — browsers block sound the learner didn't ask for — and it keeps the feel consistent with tap-to-play everywhere else. The request to autoplay travels with the activity's link, so reopening or sharing that link replays the same thing, the same way "skip to role selection" and "reopen this session" do.
+
+**Captions are the learner's to turn on, and ours to aim.** We never switch captions on for them — a learner who keeps captions off in YouTube keeps them off here. What we do state is which track to prefer once they turn them on: **the activity's target language**, so a Spanish activity captions in Spanish. Same-language subtitles are what supports listening practice, and tying the preference to the activity rather than to the app's UI language keeps it right for a learner working across several languages. When the activity's language is unknown we say nothing and let YouTube choose, rather than naming a language the activity may not be in. A learner who wants their L1 instead already has it — YouTube's own caption menu carries every track and its auto-translations, which is why [#7693](https://github.com/pangeachat/client/issues/7693) needed no toggle of ours. Both halves have to be set deliberately: left alone, the embed forces captions on and asks for English whatever the activity is ([#8828](https://github.com/pangeachat/client/issues/8828)).
 
 ---
 

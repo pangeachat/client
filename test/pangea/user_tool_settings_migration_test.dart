@@ -199,12 +199,20 @@ void main() {
       );
     });
 
-    test('audioSettings lists exactly the four audio toggles', () {
+    test('audioSettings lists exactly the five audio toggles', () {
       expect(ToolSetting.audioSettings, [
         ToolSetting.audioWords,
         ToolSetting.audioChoices,
+        // Ordered next to the choices audio it sequences (#8823).
+        ToolSetting.listenFirst,
         ToolSetting.audioOnNewMessage,
         ToolSetting.audioOnMessageClick,
+      ]);
+    });
+
+    test('only Listen First depends on choice audio', () {
+      expect(ToolSetting.values.where((s) => s.requiresChoiceAudio), [
+        ToolSetting.listenFirst,
       ]);
     });
   });

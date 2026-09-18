@@ -1,12 +1,12 @@
 ---
-applyTo: "lib/pangea/choreographer/**"
+applyTo: "lib/routes/chat/choreographer/**"
 ---
 
 # Writing Assistance — Design & Architecture
 
 Writing assistance is a friendly, non-judgmental helper that quietly reviews what the user types and offers suggestions. It must never feel like error correction — it's a learning companion.
 
-> **⚠️ IT (Interactive Translation) is deprecated.** Do not add new IT functionality. Translation will become a match type within writing assistance.
+> **⚠️ IT (Interactive Translation) is deprecated.** Do not add new IT functionality. Translation is now a match type within writing assistance.
 
 ## Design Intent
 
@@ -53,7 +53,13 @@ The current `StartIGCButton` is updated to display a **segmented ring**, indicat
 | Zero matches    | Check visible, **solid green ring**  |
 | Input cleared   | Ring **animates out**, returns to idle          |
 | Re-fetch        | Icon **spins again**, old segments cleared      |
+| Suggestion waiting | Lightbulb with two primary-colored segments; tapping the ring opens the suggestion card (closes it if already open) |
+| Suggestion accepted | Lightbulb, **solid green ring**; tapping does nothing, and editing the accepted text returns the ring to the check states |
 | Error           | error indicator (TBD) |
+
+A **suggestion** is the activity orchestrator's proposed next message, offered while the composer is empty. It is a separate flow from grammar matches, so in the two lightbulb states the ring is named "Suggestion" rather than "Check" (its tooltip and accessible name are the same string).
+
+**Withdrawn as soon as the learner writes.** The suggestion is an offer to fill an empty composer, so the first typed character withdraws it — the ring returns to its check states, and the suggestion card closes with it. Leaving the card up would hold a set of choices, distractors included, over a message the learner has decided to write themselves; and since only one writing assistance card is on screen at a time, it would also be sitting in the place the span card needs when they ask for a check. An accepted suggestion is the exception, because its text is now the message: that card stays for its brief confirmation and then closes itself, and typing over the accepted text withdraws the suggestion like any other edit.
 
 The ring **animates in** when segments first appear and **animates out** when the input field is cleared. When the user edits text and triggers a re-fetch, the icon spins again and old segments are discarded — the new response rebuilds the ring from scratch.
 
@@ -89,6 +95,12 @@ Each `ReplacementTypeEnum` category gets a distinct, friendly color. Colors shou
 
 ---
 
+## The popup slot
+
+One slot sits above the message input field, and the span card and the suggestion card take turns in it. The slot is as wide as the input field and as tall as the space above it, so it moves with the composer and with the window instead of being a fixed box. A card sizes to its own content inside it and only scrolls once the content outgrows the space. Background, border and corner rounding belong to the slot, not to either card, so the learner sees one component that changes what it holds rather than two that resemble each other.
+
+---
+
 ## Span Card (Redesigned)
 
 A single, persistent popup that changes content as the user taps different highlighted matches. No open/close animation between matches — the card stays in place and its content transitions smoothly.
@@ -101,16 +113,24 @@ The card positions itself relative to the currently selected match's highlighted
 
 ```
 ┌─────────────────────────────────┐
-│  ✕       Edit Category Title   🚩 │  ← Header: close, category name (e.g. "Verb Conjugation"), flag
+│  ✕   Edit Category Title  🎧 ⋮ │  ← Header: close, category name (e.g. "Verb Conjugation"), Listen First, menu
 │                                 │
 │  🤖  Hint text explaining the   │  ← Bot face left-aligned, hint text beside it
 │      suggestion in detail       │
 │                                 │
-│  🎧 Listen                      │  ← While on, tapping a choice only plays it
-│                                 │
 │  ┌──────┐ ┌──────┐ ┌──────┐    │  ← Choices: horizontal if they fit,
 │  │ word │ │ word │ │ undo │    │     vertical if not. Undo action at end.
 │  └──────┘ └──────┘ └──────┘    │
+│                                 │
+│  💡 Listen First explainer   ✕  │  ← Only while Listen First is on, until dismissed
+└─────────────────────────────────┘
+```
+
+**When the header runs out of room**, Listen First folds into the menu too, so the category name keeps its full width:
+
+```
+┌─────────────────────────────────┐
+│  ✕   Subject Verb Agreement  ⋮  │  ← Listen First joins the menu
 └─────────────────────────────────┘
 ```
 
@@ -141,12 +161,40 @@ The card positions itself relative to the currently selected match's highlighted
 
 ### Hearing a choice
 
-Learners who know a language by ear before they know its script cannot tell the choices apart on sight, and the only way to hear one is to tap it — which also answers with it. A **Listen** toggle sits between the hint and the choices. While it is on, tapping a choice plays that choice and does nothing else: no selection, no status change, no replacement, and a line under the row says so. Turning it off restores the normal behaviour, where a tap selects.
+Learners who know a language by ear before they know its script cannot tell the choices apart on sight, and the only way to hear one is to tap it — which also answers with it. **Listen First** is the mode that separates the two. While it is on, one tap on a choice plays it and changes nothing; a second tap on the **same** choice, inside the platform double-tap window, selects it. With it off, a tap selects as it always has.
 
-- The toggle belongs to the current match. Advancing to another match, or closing the card, turns it off — a mode the learner can't see is a mode that surprises them.
+The mode is an icon-only toggle in the card header, next to the flag — on or off, no third state, off until the learner turns it on.
+
+- **It is remembered, per learner, across matches and sessions.** Knowing a language by ear is a property of the learner, not of one correction; resetting it per match made them re-arm it on every highlighted word. The visible header toggle is what keeps a remembered mode from being an invisible one.
+- **Only the same choice arms.** The second tap has to land on the choice the first one played — tapping a different choice plays that one instead and arms nothing — and a tap after the window has closed replays rather than selects. Both failures cost a replay, never a wrong word in the message, which is the direction this mode exists to fail in.
+- **The mode only appears where there are choices to hear.** An accepted match shows a diff and an undo, so the header drops the toggle rather than offering a mode that applies to nothing.
 - Listening never changes a match's status. A match still becomes `viewed` by being opened and navigated away from.
-- With choice audio switched off in learning settings, the toggle opens the same "audio is off" popup other explicit audio buttons do, pointing at the setting, rather than entering a mode that plays nothing. See [word-text-to-speech.instructions.md](word-text-to-speech.instructions.md).
+- The explainer under the choices is a **dismissable instruction tooltip** ([`InstructionsEnum.listenFirst`](../../lib/features/instructions/instructions_enum.dart)) — it teaches the one-click/double-click split once and then stays gone, rather than taxing the card's height for every learner who already knows.
+- With choice audio switched off in learning settings, the toggle opens the same "audio is off" popup other explicit audio buttons do, pointing at the setting, rather than entering a mode that plays nothing — and stores nothing, since being told why you can't have the mode is not choosing it. See [word-text-to-speech.instructions.md](word-text-to-speech.instructions.md).
 - Only writing assistance gets the mode. The choices row is shared with practice and activity surfaces; their behaviour is unchanged.
+
+**Where it is set.** Two surfaces write one stored value (`ToolSetting.listenFirst`), so they cannot disagree: the card's header toggle, and a row in the **Audio** section of learning settings, next to the Choices audio it sequences. The settings row is disabled, with the reason in place of its description, whenever Choices audio is off — from settings there is no popup to open, so the tile carries the dependency itself rather than flipping into silence.
+
+### Header actions and width
+
+The header carries the category name and, on the right, the Listen First toggle and a `⋮` overflow menu.
+
+**Listen First is the only action with a place in the header itself.** It is the one a learner flips *while reading this card*, so it has to be one tap away. Everything else the card offers is a trip out of it — turn the whole feature off, report this content, open the settings page — and a trip can afford a menu. The menu is always present; there is no flag icon in the header any more, and reporting is one of its entries.
+
+The menu holds, in order:
+
+| Entry | Kind |
+| --- | --- |
+| **Listen first** | Mode, checked when on — present only when it has folded in from the header, and only on a match that has choices |
+| **Enable writing assistance** | Mode, checked when on — the same `autoIGC` toggle learning settings owns, so a learner handed a card they did not want can stop it from where they are |
+| **Report content issue** | Action — the feedback dialog |
+| **Learning settings** | Action — opens the learning settings page |
+
+The name is what the learner opened the card to read and it is the part that grows — "Subject Verb Agreement" leaves no room for the toggle on a phone where "Spelling" leaves plenty — so **the toggle yields to the title, not the reverse**: when the measured title cannot sit beside both the toggle and the menu, Listen First folds into the menu.
+
+The trigger is the measured width of this title in this card at this text scale, not a device breakpoint. A fixed breakpoint gets both cases wrong at once — it hides the toggle on a short title that had room, and keeps it on a long one that didn't — and a learner scaling their text up moves the line again.
+
+**The anchor id is per match.** The "audio is off" popup positions itself against a `GlobalKey` that [`PangeaAnyState`](../../lib/features/overlay/any_state_holder.dart) caches by id and never evicts, so a constant id is claimed by every header that ever mounts — and two are mounted at once whenever one card is torn down while its replacement builds. That is a duplicate-`GlobalKey` throw on every rebuild, which the learner sees as a flashing red screen. Whichever control currently shows Listen First holds the anchor; never both.
 
 ### What We're Removing
 
@@ -188,6 +236,7 @@ The user can send at any time. There is no gate on unresolved matches.
 
 - **Send button** remains separate from the assistance ring (to the right of it in the input row).
 - On send, the choreographer tokenizes the final text and saves a `ChoreoRecordModel` with the message, recording which matches were viewed, accepted, or left open.
+- **The saved record is the message's provenance.** Everything that scores a message reads the record as it was saved with the message, never the copy in memory: the analytics that assign each word a construct use type, and the activity summary, which scores a finished activity's messages long after they were sent. So any text an assistance flow puts into the composer on the learner's behalf is written into the record's saved form, next to the match history. Today that is pasted text and accepted orchestrator suggestions, and it holds for any flow added later, whatever shape the next suggestion takes. A flow that keeps what it inserted only in memory scores correctly on the sender's device at send time and nowhere else, because those words read as self-written the moment the record is loaded back from the event. That is how tapped orchestrator suggestions came to score as self-written in the activity summary ([#9095](https://github.com/pangeachat/client/issues/9095)). Orchestrator suggestions are deprecated; their recording stays because a similar assistance flow may replace them and inherit it.
 
 ---
 
@@ -211,6 +260,14 @@ Categories returned by `/grammar_v2`. Each gets a distinct color in the ring and
 | **Surface**             | punct, diacritics, spell, cap                                                                                                                                                                                                                                   | **Auto-applied**, bright immediately, undo via span card. Hint text displayed only if server provides one (non-null) — omitted for obvious corrections, included when pedagogically useful (e.g. explaining an accent rule). |
 | **Word choice**         | false cognate, L1 interference, collocation, semantic confusion                                                                                                                                                                                                 | Highlight + ring segment, user-viewable                  |
 | **Style / fluency**     | style, fluency, didYouMean, transcription, translation, other                                                                                                                                                                                                   | Highlight + ring segment, user-viewable                  |
+
+### What each category records in analytics
+
+Every match a learner engages with becomes a construct use on the words it covered, and the match's category is what decides which kind. A **translation** match — a span the learner wrote outside their target language, which the correction renders in it — records as a translation use. Every other category records as a grammar-correction use. The two families are scored differently; see [analytics-system.instructions.md](analytics-system.instructions.md) for what a use type commits you to.
+
+That two-way split is the whole of what analytics distinguishes today, and it is narrower than the category table above. Word choice, style and transcription matches all record as grammar corrections, so a learner who accepts a false-cognate fix is told they got a grammar correction right. This is a known gap, tracked in [pangeachat/.github#479](https://github.com/pangeachat/.github/issues/479) — not the intended end state.
+
+The distinction used to come for free, because grammar correction and translation were separate flows behind separate endpoints. Since writing assistance merged them into one, the match's category is the only thing that still carries it, and anything needing to tell the two apart reads the category. Messages sent before the merge are the exception: they identify their translation matches by the rule the old flow stored on them, and are still read that way so their scores do not shift. Translation construct uses therefore stay in the vocabulary even though the interactive-translation flow that introduced them is gone.
 
 ---
 
@@ -248,9 +305,11 @@ Choreographer (ChangeNotifier)
 
 ## Deprecated: Interactive Translation (IT)
 
-> **Do not extend. Scheduled for removal.**
+> **Do not extend.**
 
-The `it/` directory, `ITController`, and all IT-related code (`it_bar.dart`, `it_feedback_card.dart`, `word_data_card.dart`, `choreo_mode_enum.dart`) will be removed. Translation will become a match type within writing assistance.
+The interactive-translation flow is gone: nothing routes to it, and no new message can produce an interactive-translation step. Translation is a writing-assistance match type instead.
+
+Two things deliberately survive it. Messages sent before the cutover still carry interactive-translation steps, so the code that reads them stays until those events stop mattering. And the translation construct-use types are live again, minted from translation matches per [What each category records in analytics](#what-each-category-records-in-analytics) — do not remove them as dead interactive-translation code.
 
 ---
 

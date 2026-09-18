@@ -99,6 +99,9 @@ class CoursePlanAddCourseTileContent extends AddCourseTileContent {
   String title(_) => course.title;
 
   @override
+  Uri? get imageUrl => course.imageUrl;
+
+  @override
   String? get courseId => course.uuid;
 
   @override

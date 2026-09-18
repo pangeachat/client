@@ -129,6 +129,11 @@ class PickCefrLevelStepViewState extends State<PickCefrLevelStepView> {
                           itemBuilder: (context, i) {
                             final level = levels[i];
                             final selected = selectedLevel == level;
+                            // The text styles carry onSurface; the labels
+                            // take the option's own ink instead.
+                            final ink = selected
+                                ? theme.colorScheme.onSecondaryContainer
+                                : theme.colorScheme.onSurface;
                             return Opacity(
                               opacity: selectedLevel != null && !selected
                                   ? 0.5
@@ -141,10 +146,12 @@ class PickCefrLevelStepViewState extends State<PickCefrLevelStepView> {
                                         _setLevel(selected ? null : level),
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: selected
-                                          ? theme.colorScheme.primaryContainer
+                                          ? theme.colorScheme.secondaryContainer
                                           : theme.colorScheme.surfaceContainer,
                                       foregroundColor: selected
-                                          ? theme.colorScheme.onPrimaryContainer
+                                          ? theme
+                                                .colorScheme
+                                                .onSecondaryContainer
                                           : theme.colorScheme.onSurface,
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(16),
@@ -162,13 +169,15 @@ class PickCefrLevelStepViewState extends State<PickCefrLevelStepView> {
                                               style: theme.textTheme.titleMedium
                                                   ?.copyWith(
                                                     fontWeight: FontWeight.bold,
+                                                    color: ink,
                                                   ),
                                             ),
                                           ],
                                         ),
                                         Text(
                                           level.description(context),
-                                          style: theme.textTheme.labelLarge,
+                                          style: theme.textTheme.labelLarge
+                                              ?.copyWith(color: ink),
                                         ),
                                       ],
                                     ),

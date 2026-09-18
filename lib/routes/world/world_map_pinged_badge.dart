@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 
 /// The "recruiting host" badge (world-map.instructions.md, "Pin state"): a bell
 /// glyph in a green circle, shown TOP-RIGHT on a pin or large card whose session
@@ -18,21 +18,23 @@ class WorldMapPingedBadge extends StatelessWidget {
   const WorldMapPingedBadge({super.key});
 
   /// The `joinable` state green — the fill the course-plan ping badge and the
-  /// open-session pin both use, which is what makes the three read as one signal.
-  static const Color _fill = AppConfig.green;
-
+  /// open-session pin both use, which is what makes the three read as one
+  /// signal — with its ink.
   @override
-  Widget build(BuildContext context) => Container(
-    padding: const EdgeInsets.all(3),
-    decoration: BoxDecoration(
-      color: _fill,
-      shape: BoxShape.circle,
-      border: Border.all(color: Colors.white, width: 1.5),
-    ),
-    child: const Icon(
-      Icons.notifications_outlined,
-      size: 12,
-      color: Colors.white,
-    ),
-  );
+  Widget build(BuildContext context) {
+    final colors = Theme.of(context).pangea;
+    return Container(
+      padding: const EdgeInsets.all(3),
+      decoration: BoxDecoration(
+        color: colors.joinable,
+        shape: BoxShape.circle,
+        border: Border.all(color: colors.onJoinable, width: 1.5),
+      ),
+      child: Icon(
+        Icons.notifications_outlined,
+        size: 12,
+        color: colors.onJoinable,
+      ),
+    );
+  }
 }

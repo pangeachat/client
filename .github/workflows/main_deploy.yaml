@@ -199,15 +199,15 @@ jobs:
             --exclude "flutter_service_worker.js" \
             --exclude "version.json" \
             --exclude "manifest.json" \
-            --exclude "assets/FontManifest.json" \
-            --exclude "assets/AssetManifest.bin*" \
-            --exclude "assets/fonts/*"
+            --exclude "assets/*"
 
           # =========================
-          # 2. FONT FILES
-          # Stable names, can change between deploys
+          # 2. FLUTTER ASSET BUNDLE
+          # Asset paths are never versioned (assets/<path> stays the same when
+          # the file changes), so an image, SVG or Rive file edited at the same
+          # path would otherwise stay stale in every browser for a year (#9059).
           # =========================
-          aws s3 sync ./build/web/assets/fonts s3://$WEBAPP_S3_BUCKET/assets/fonts \
+          aws s3 sync ./build/web/assets s3://$WEBAPP_S3_BUCKET/assets \
             --cache-control "no-cache, must-revalidate"
 
           # =========================

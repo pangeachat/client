@@ -1,12 +1,65 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 
+/// A single ticker driving every [ShimmerBackground] on screen.
+///
+/// The pulse is a pure function of elapsed time rather than of when a
+/// particular widget started animating, so shimmers stay in phase however
+/// they mount, unmount, or pause — hovering one role card no longer leaves
+/// it flashing against the beat of its neighbours.
+///
+/// The ticker only runs while something is listening.
+class _ShimmerClock extends ChangeNotifier {
+  _ShimmerClock._();
+
+  static final _ShimmerClock instance = _ShimmerClock._();
+
+  late final Ticker _ticker = Ticker((elapsed) {
+    _elapsed = elapsed;
+    notifyListeners();
+    // A shimmer whose run just ended removed itself during that notification,
+    // and hasListeners doesn't drop until notifyListeners returns.
+    if (!hasListeners) _ticker.stop();
+  });
+
+  Duration _elapsed = Duration.zero;
+  Duration get elapsed => _elapsed;
+
+  @override
+  void addListener(VoidCallback listener) {
+    super.addListener(listener);
+    if (!_ticker.isActive) {
+      // A restarted ticker counts from zero; a run must not start from the
+      // last run's time.
+      _elapsed = Duration.zero;
+      _ticker.start();
+    }
+  }
+
+  @override
+  void removeListener(VoidCallback listener) {
+    super.removeListener(listener);
+    if (!hasListeners) _ticker.stop();
+  }
+}
+
+/// Pulses a wash over [child] to draw the eye to it.
+///
+/// Each time the shimmer turns on — it mounts, [enabled] flips on, or its
+/// route comes back on screen — it pulses [pulsesPerRun] times and stops.
+/// Motion that starts on its own and lasts more than five seconds needs a
+/// pause control under WCAG 2.2.2 (#9003); a run this short needs none.
 class ShimmerBackground extends StatefulWidget {
   final Widget child;
   final Color? shimmerColor;
   final bool enabled;
   final BorderRadius? borderRadius;
+
+  /// Rest after each pulse. It counts toward the run, so keep [runDuration]
+  /// under five seconds.
   final Duration delayBetweenPulses;
   final double maxOpacity;
 
@@ -20,137 +73,131 @@ class ShimmerBackground extends StatefulWidget {
     this.maxOpacity = 0.3,
   });
 
+  static const Duration pulseDuration = Duration(milliseconds: 1000);
+
+  static const int pulsesPerRun = 2;
+
+  Duration get _cycle => pulseDuration * 2 + delayBetweenPulses;
+
+  @visibleForTesting
+  Duration get runDuration => _cycle * pulsesPerRun;
+
+  /// Pulse strength at [elapsed], from 0 at rest to 1 at full: a pulse fades
+  /// in over [pulseDuration], back out over another, then holds at rest for
+  /// [delayBetweenPulses] before the next one.
+  @visibleForTesting
+  double pulseProgress(Duration elapsed) {
+    final int pulse = pulseDuration.inMicroseconds;
+    final int cycle = _cycle.inMicroseconds;
+    final int t = elapsed.inMicroseconds % cycle;
+
+    final double linear = t < pulse
+        ? t / pulse
+        : t < pulse * 2
+        ? 2 - t / pulse
+        : 0.0;
+
+    return Curves.easeInOut.transform(linear);
+  }
+
   @override
   State<ShimmerBackground> createState() => _ShimmerBackgroundState();
 }
 
-class _ShimmerBackgroundState extends State<ShimmerBackground>
-    with SingleTickerProviderStateMixin {
-  late final AnimationController _controller;
-  late final Animation<double> _animation;
+class _ShimmerBackgroundState extends State<ShimmerBackground> {
+  static _ShimmerClock get _clock => _ShimmerClock.instance;
 
-  static const Duration pulseDuration = Duration(milliseconds: 1000);
+  /// Clock time the current run started at; null when no run is going.
+  Duration? _runStart;
 
-  bool _disposed = false;
-  bool _isPulsing = false;
+  /// The run ended while the shimmer stayed on. Cleared when it turns off, so
+  /// turning it back on starts a new run.
+  bool _runDone = false;
 
   @override
-  void initState() {
-    super.initState();
-
-    _controller = AnimationController(duration: pulseDuration, vsync: this);
-
-    _animation = Tween<double>(
-      begin: 0.0,
-      end: widget.maxOpacity,
-    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
-
-    if (widget.enabled) {
-      _startPulsing();
-    }
-  }
-
-  void _startPulsing() {
-    if (_disposed || !mounted) return;
-
-    if (widget.delayBetweenPulses == Duration.zero) {
-      _controller.repeat(reverse: true);
-      return;
-    }
-
-    _pulseLoop();
-  }
-
-  Future<void> _pulseLoop() async {
-    if (_isPulsing) return;
-
-    _isPulsing = true;
-
-    try {
-      while (mounted &&
-          !_disposed &&
-          widget.enabled &&
-          widget.delayBetweenPulses != Duration.zero) {
-        await _controller.forward();
-
-        if (!mounted || _disposed || !widget.enabled) break;
-
-        await _controller.reverse();
-
-        if (!mounted || _disposed || !widget.enabled) break;
-
-        await Future.delayed(widget.delayBetweenPulses);
-
-        if (!mounted || _disposed || !widget.enabled) break;
-      }
-    } finally {
-      _isPulsing = false;
-    }
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _syncRun();
   }
 
   @override
   void didUpdateWidget(ShimmerBackground oldWidget) {
     super.didUpdateWidget(oldWidget);
-
-    if (widget.enabled == oldWidget.enabled) return;
-
-    if (widget.enabled) {
-      _startPulsing();
-    } else {
-      _controller.stop();
-      _controller.reset();
-    }
+    _syncRun();
   }
 
   @override
   void dispose() {
-    _disposed = true;
-
-    _controller.stop();
-    _controller.dispose();
-
+    _endRun();
     super.dispose();
+  }
+
+  void _syncRun() {
+    // TickerMode is false for routes that aren't on screen — no reason to
+    // hold the shared ticker awake for a shimmer nobody can see.
+    if (!widget.enabled || !TickerMode.valuesOf(context).enabled) {
+      _endRun();
+      _runDone = false;
+      return;
+    }
+    if (_runStart != null || _runDone) return;
+
+    _clock.addListener(_onTick);
+    // Start at the top of the pulse the clock is in, so a shimmer that turns
+    // on beside running ones joins them in phase, and that pulse counts.
+    final int cycle = widget._cycle.inMicroseconds;
+    _runStart = Duration(
+      microseconds: _clock.elapsed.inMicroseconds ~/ cycle * cycle,
+    );
+  }
+
+  void _onTick() => setState(() {
+    if (_clock.elapsed - _runStart! >= widget.runDuration) {
+      _endRun();
+      _runDone = true;
+    }
+  });
+
+  void _endRun() {
+    if (_runStart == null) return;
+    _clock.removeListener(_onTick);
+    _runStart = null;
   }
 
   @override
   Widget build(BuildContext context) {
-    if (!widget.enabled) {
-      return widget.child;
-    }
+    if (_runStart == null && !_runDone) return widget.child;
 
     final theme = Theme.of(context);
 
     final borderRadius =
         widget.borderRadius ?? BorderRadius.circular(AppConfig.borderRadius);
 
-    final color =
-        widget.shimmerColor ??
-        (theme.brightness == Brightness.light
-            ? AppConfig.gold
-            : AppConfig.goldLight);
+    final color = widget.shimmerColor ?? theme.pangea.goldFixedDim;
 
-    return AnimatedBuilder(
-      animation: _animation,
-      builder: (context, child) {
-        return Stack(
-          children: [
-            widget.child,
-            Positioned.fill(
-              child: IgnorePointer(
-                child: ClipRRect(
-                  borderRadius: borderRadius,
-                  child: DecoratedBox(
-                    decoration: BoxDecoration(
-                      color: color.withValues(alpha: _animation.value),
-                      borderRadius: borderRadius,
+    // The Stack stays after the run ends, so the child isn't remounted.
+    return Stack(
+      children: [
+        widget.child,
+        if (_runStart != null)
+          Positioned.fill(
+            child: IgnorePointer(
+              child: ClipRRect(
+                borderRadius: borderRadius,
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: color.withValues(
+                      alpha:
+                          widget.pulseProgress(_clock.elapsed) *
+                          widget.maxOpacity,
                     ),
+                    borderRadius: borderRadius,
                   ),
                 ),
               ),
             ),
-          ],
-        );
-      },
+          ),
+      ],
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'dart:ui' show Tristate;
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -51,6 +52,50 @@ void main() {
     // built until localizations finish loading.
     await tester.pumpAndSettle();
   }
+
+  // The tiles have no fixed count, so they are one Tab stop with the arrow
+  // keys moving between them, across section headers (#9154;
+  // accessibility.instructions.md, "One Tab stop per list").
+  testWidgets('the course tiles are one Tab stop, walked by the arrows', (
+    tester,
+  ) async {
+    final tapped = <int>[];
+    await pump(
+      tester,
+      AddCourseTileList(
+        content: [
+          _StubCourseTileContent('Deutsch A1'),
+          _StubCourseTileContent('Español 2'),
+          _StubCourseTileContent('Korean Basics'),
+        ],
+        onTap: tapped.add,
+        sectionHeaders: {
+          0: const [Text('Teaching')],
+          2: const [Text('Learning')],
+        },
+      ),
+    );
+
+    Future<void> press(LogicalKeyboardKey key) async {
+      await tester.sendKeyEvent(key);
+      await tester.pump();
+    }
+
+    // Tab enters on the first tile; Down moves on, past the header between.
+    await press(LogicalKeyboardKey.tab);
+    await press(LogicalKeyboardKey.enter);
+    expect(tapped, [0]);
+    await press(LogicalKeyboardKey.arrowDown);
+    await press(LogicalKeyboardKey.arrowDown);
+    await press(LogicalKeyboardKey.enter);
+    expect(tapped, [0, 2]);
+
+    // The list is one stop. It is the only one in this host, so Tab wraps
+    // back to it, on the tile last focused; it never lands on the middle tile.
+    await press(LogicalKeyboardKey.tab);
+    await press(LogicalKeyboardKey.enter);
+    expect(tapped, [0, 2, 2]);
+  });
 
   group('AddCourseTileList.sectionHeaders', () {
     testWidgets('renders headers above their section and keeps tap indices', (

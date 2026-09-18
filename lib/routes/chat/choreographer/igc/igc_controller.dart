@@ -76,6 +76,11 @@ class IgcController {
     prevMessages: prevMessages,
   );
 
+  /// True once [dispose] has run. A writing assistance run that resolves after
+  /// the user closed the chat still holds a reference to this controller, so
+  /// every entry point it can reach has to decline rather than act.
+  bool get isDisposed => matchUpdateStream.isClosed;
+
   void dispose() {
     matchUpdateStream.close();
     _activeMatch.dispose();
@@ -140,6 +145,8 @@ class IgcController {
   }
 
   void updateMatchStatus(PangeaMatchState match, PangeaMatchStatusEnum status) {
+    if (isDisposed) return;
+
     final PangeaMatchState currentMatch = _matches.firstWhere(
       (m) => m.originalMatch == match.originalMatch,
       orElse: () => throw StateError('No match found while updating match.'),
@@ -187,6 +194,8 @@ class IgcController {
   }
 
   Future<void> acceptNormalizationMatches() async {
+    if (isDisposed) return;
+
     final matches = openNormalizationMatches;
     if (matches.isEmpty) return;
 

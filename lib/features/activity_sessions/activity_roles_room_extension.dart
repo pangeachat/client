@@ -116,7 +116,12 @@ extension ActivityRolesRoomExtension on Room {
     }
   }
 
-  ActivityRoleModel? get ownRoleState => activityRoles?.role(client.userID!);
+  /// Null for a signed-out account: a world-map card can still build through
+  /// logout, and it has no role to show (#9019).
+  ActivityRoleModel? get ownRoleState {
+    final userId = client.userID;
+    return userId == null ? null : activityRoles?.role(userId);
+  }
 
   ActivityRole? get ownRole {
     final role = ownRoleState;
@@ -129,6 +134,18 @@ extension ActivityRolesRoomExtension on Room {
     final availableRoles = activityPlan?.roles;
     return max(0, (availableRoles?.length ?? 0) - (assignedRoles?.length ?? 0));
   }
+
+  /// Whether the chat view shows the activity's **start page** (its role picker
+  /// / waiting room) in place of the timeline.
+  ///
+  /// The one home for this question, because two places need the same answer and
+  /// they drifted when each stated it: the chat view decides what to render, and
+  /// anything asking "is the activity chat UI actually on screen?" has to agree.
+  /// Note that [showActivityChatUI] does NOT answer it: that one is about
+  /// whether role and summary state are locked down, not about what is being
+  /// drawn.
+  bool get showsActivityStartPage =>
+      isActivitySession && activityId != null && !isActivityStarted;
 
   bool get isActivityStarted => activityStartedGate(
     finished: isActivityFinished,

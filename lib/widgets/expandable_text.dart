@@ -1,9 +1,9 @@
 import 'dart:math' as math;
 
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 
 /// Text collapsed to [maxLines] with an inline "Show more" tail when it
 /// overflows, expanding in place to the full text with an inline "Show less".
@@ -22,20 +22,11 @@ class ExpandableText extends StatefulWidget {
 class ExpandableTextState extends State<ExpandableText> {
   bool _expanded = false;
 
-  late final TapGestureRecognizer _toggleRecognizer = TapGestureRecognizer()
-    ..onTap = () => setState(() => _expanded = !_expanded);
-
   @override
   void didUpdateWidget(covariant ExpandableText oldWidget) {
     super.didUpdateWidget(oldWidget);
     // The slot is reused across courses; a new description starts collapsed.
     if (oldWidget.text != widget.text) _expanded = false;
-  }
-
-  @override
-  void dispose() {
-    _toggleRecognizer.dispose();
-    super.dispose();
   }
 
   @override
@@ -46,6 +37,30 @@ class ExpandableTextState extends State<ExpandableText> {
     );
     final textDirection = Directionality.of(context);
     final textScaler = MediaQuery.textScalerOf(context);
+
+    // The toggle is a real control set inline with the text — a Tab stop
+    // with a focus ring, announced as a button — where a tap recognizer on a
+    // span is reachable by pointer only (#9154).
+    WidgetSpan toggle(String label) => WidgetSpan(
+      alignment: PlaceholderAlignment.baseline,
+      baseline: TextBaseline.alphabetic,
+      // Its own node: a paragraph merges an inline widget's semantics into
+      // its text unless the widget is a boundary, which would announce the
+      // whole description as one button.
+      child: Semantics(
+        container: true,
+        child: FocusRingTapTarget(
+          onTap: () => setState(() => _expanded = !_expanded),
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(4.0)),
+          ),
+          // Outside the glyphs, so the ring never crosses the label.
+          ringStrokeAlign: BorderSide.strokeAlignOutside,
+          label: label,
+          child: Text(label, style: linkStyle),
+        ),
+      ),
+    );
 
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -69,19 +84,16 @@ class ExpandableTextState extends State<ExpandableText> {
             TextSpan(
               style: style,
               children: [
-                TextSpan(text: widget.text),
-                TextSpan(
-                  text: ' ${l10n.showLess}',
-                  style: linkStyle,
-                  recognizer: _toggleRecognizer,
-                ),
+                TextSpan(text: '${widget.text} '),
+                toggle(l10n.showLess),
               ],
             ),
           );
         }
 
         // Cut the visible text where the "… Show more" tail still fits on
-        // the last collapsed line.
+        // the last collapsed line. Measured as plain text: the inline control
+        // draws the same glyphs in the same style, so it takes the same width.
         final tailText = '… ${l10n.showMore}';
         final tailPainter = TextPainter(
           text: TextSpan(text: tailText, style: linkStyle),
@@ -111,11 +123,8 @@ class ExpandableTextState extends State<ExpandableText> {
             style: style,
             children: [
               TextSpan(text: visible),
-              TextSpan(
-                text: tailText,
-                style: linkStyle,
-                recognizer: _toggleRecognizer,
-              ),
+              TextSpan(text: '… ', style: linkStyle),
+              toggle(l10n.showMore),
             ],
           ),
         );

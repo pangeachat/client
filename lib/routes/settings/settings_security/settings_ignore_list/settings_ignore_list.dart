@@ -7,6 +7,7 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import '../../../../widgets/matrix.dart';
 import 'settings_ignore_list_view.dart';
@@ -104,7 +105,10 @@ class SettingsIgnoreListController extends State<SettingsIgnoreList> {
                   false,
             );
             await client.ignoreUser(userId);
-            await syncFuture.timeout(Duration(seconds: 10));
+            await syncFuture.timeoutNamed(
+              const Duration(seconds: 10),
+              'ignoreUser: account data sync',
+            );
           } catch (e, s) {
             ErrorHandler.logError(
               e: e,
@@ -142,7 +146,10 @@ class SettingsIgnoreListController extends State<SettingsIgnoreList> {
                   false,
             );
             await client.unignoreUser(userId);
-            await syncFuture.timeout(Duration(seconds: 10));
+            await syncFuture.timeoutNamed(
+              const Duration(seconds: 10),
+              'unignoreUser: account data sync',
+            );
           } catch (e, s) {
             ErrorHandler.logError(
               e: e,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/subscription/widgets/decorative_stars.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
@@ -82,7 +82,7 @@ class _UnlockPill extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final gold = AppConfig.goldByTheme(context);
+    final gold = Theme.of(context).pangea.goldFixedDim;
 
     return PressableButton(
       borderRadius: _borderRadius,
@@ -112,7 +112,7 @@ class _UnlockPill extends StatelessWidget {
           style: TextStyle(
             fontSize: fontSize,
             fontWeight: FontWeight.w600,
-            color: AppConfig.onGoldByTheme(context),
+            color: Theme.of(context).pangea.onGoldFixed,
           ),
         ),
       ),

@@ -39,8 +39,6 @@ jobs:
         with:
           flutter-version: ${{ env.FLUTTER_VERSION }}
           cache: true
-      - name: Install dependencies
-        run: sudo apt-get update && sudo apt-get install nodejs -y
       - uses: moonrepo/setup-rust@ede6de059f8046a5e236c94046823e2af11ca670 # v1
       - run: rustup component add rust-src --toolchain nightly-x86_64-unknown-linux-gnu
       - run: flutter pub get
@@ -178,15 +176,15 @@ jobs:
             --exclude "flutter_service_worker.js" \
             --exclude "version.json" \
             --exclude "manifest.json" \
-            --exclude "assets/FontManifest.json" \
-            --exclude "assets/AssetManifest.bin*" \
-            --exclude "assets/fonts/*"
+            --exclude "assets/*"
 
           # =========================
-          # 2. FONT FILES
-          # Stable names, can change between deploys
+          # 2. FLUTTER ASSET BUNDLE
+          # Asset paths are never versioned (assets/<path> stays the same when
+          # the file changes), so an image, SVG or Rive file edited at the same
+          # path would otherwise stay stale in every browser for a year (#9059).
           # =========================
-          aws s3 sync ./build/web/assets/fonts s3://$WEBAPP_S3_BUCKET/assets/fonts \
+          aws s3 sync ./build/web/assets s3://$WEBAPP_S3_BUCKET/assets \
             --cache-control "no-cache, must-revalidate"
 
           # =========================

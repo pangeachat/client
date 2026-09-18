@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/config/pangea_colors.dart';
+import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/languages/context_language_switch_target.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/courses/course_members_chip.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class CourseInfoChip extends StatelessWidget {
   final IconData icon;
@@ -49,12 +53,18 @@ class CourseInfoChip extends StatelessWidget {
   }
 }
 
-/// The course's language / level / module chips, read from the quest outline.
+/// The course's language / level / activity chips, read from the quest outline.
 ///
-/// The module count is the Missions the learner will actually *see* — the same
-/// `objectiveGroupsWithActivities` filter the course panel lists through — so a
-/// Mission with no activities can no longer be counted here while being hidden
-/// there (#7976). That rules out the plan-level count
+/// The count is **activities**, not Missions (#8949): a Mission holds anywhere
+/// from 1 to 6 activities, so the Mission count says little about how much
+/// content a course carries, and "activity" is the word the rest of the app
+/// uses.
+///
+/// It counts the activities the learner will actually *see*: those under the
+/// Missions the same `objectiveGroupsWithActivities` filter the course panel
+/// lists through keeps, restricted by the same per-course activity pin the
+/// panel applies. Neither surface can then claim content the other hides
+/// (#7976). That rules out the plan-level count
 /// (`CoursePlanModel.topicIds.length`), which is the quest's whole Mission
 /// sequence, activity-less ones included.
 class CourseInfoChips extends StatefulWidget {
@@ -67,6 +77,11 @@ class CourseInfoChips extends StatefulWidget {
   /// and can't count a different activity set than the panel renders.
   final String? courseRoomId;
 
+  /// Leads the row as a [CourseMembersChip] when set. It lives in this wrap,
+  /// not a sibling of it, so every chip lines up on the same runs (#9129), and
+  /// it shows while the outline is still loading.
+  final int? members;
+
   final double? fontSize;
   final double? iconSize;
   final EdgeInsets? padding;
@@ -75,6 +90,7 @@ class CourseInfoChips extends StatefulWidget {
     this.courseId, {
     super.key,
     this.courseRoomId,
+    this.members,
     this.fontSize,
     this.iconSize,
     this.padding,
@@ -118,55 +134,74 @@ class CourseInfoChipsState extends State<CourseInfoChips> {
       courseRoomId: widget.courseRoomId,
     );
     if (!mounted || loadGen != _loadGeneration) return;
+    // Restricted to the course's own activity pin, where there is a joined
+    // course room to read one from — `QuestRepo.outline` caches one outline per
+    // quest, shared by every course built from it, so the pin has to be applied
+    // per course. Without it the chip would count activities the course panel
+    // does not list (#7976). Unjoined tiles (previews, the plan picker) resolve
+    // no room and stay unrestricted, which is what the quest itself holds.
+    final pins = widget.courseRoomId == null
+        ? null
+        : Matrix.of(context).client
+              .getRoomById(widget.courseRoomId!)
+              ?.teacherMode
+              .pinnedActivitiesByObjective;
     // A failed read is already logged by the repo; the chips just stay hidden.
-    setState(() => _outline = result.result);
+    setState(() => _outline = result.result?.restrictedTo(pins));
   }
 
   @override
   Widget build(BuildContext context) {
     final outline = _outline;
-    if (outline == null) {
-      return const SizedBox.shrink();
-    }
-
-    // Deliberately unpinned: pinning fails open (`effectivePinnedActivityIds`),
-    // so it can never empty a Mission and never changes this count.
-    final moduleCount = objectiveGroupsWithActivities(outline.groups).length;
+    final members = widget.members;
 
     return Wrap(
       spacing: 8.0,
       runSpacing: 8.0,
       children: [
-        // Doubles as the switch to this course's language when it isn't the
-        // learner's target (profile.instructions.md, "Switching from
-        // context").
-        ContextLanguageSwitchTarget(
-          contentLanguage: PLanguageStore.byLangCode(
-            outline.quest.targetLanguage,
-          ),
-          builder: (context, canSwitch) => CourseInfoChip(
-            icon: Icons.language,
-            text: outline.quest.targetLanguageDisplay,
+        if (members != null)
+          CourseMembersChip(
+            members,
             fontSize: widget.fontSize,
             iconSize: widget.iconSize,
             padding: widget.padding,
-            color: canSwitch ? Theme.of(context).colorScheme.tertiary : null,
           ),
-        ),
-        CourseInfoChip(
-          icon: Icons.school,
-          text: outline.quest.cefrLevel.title(context),
-          fontSize: widget.fontSize,
-          iconSize: widget.iconSize,
-          padding: widget.padding,
-        ),
-        CourseInfoChip(
-          icon: Icons.location_on,
-          text: L10n.of(context).numModules(moduleCount),
-          fontSize: widget.fontSize,
-          iconSize: widget.iconSize,
-          padding: widget.padding,
-        ),
+        if (outline != null) ...[
+          // Doubles as the switch to this course's language when it isn't the
+          // learner's target (profile.instructions.md, "Switching from
+          // context").
+          ContextLanguageSwitchTarget(
+            contentLanguage: PLanguageStore.byLangCode(
+              outline.quest.targetLanguage,
+            ),
+            builder: (context, canSwitch) => CourseInfoChip(
+              icon: Icons.language,
+              text: outline.quest.targetLanguageDisplay,
+              fontSize: widget.fontSize,
+              iconSize: widget.iconSize,
+              padding: widget.padding,
+              color: canSwitch ? Theme.of(context).pangea.warning : null,
+            ),
+          ),
+          CourseInfoChip(
+            icon: Icons.school,
+            text: outline.quest.cefrLevel.title(context),
+            fontSize: widget.fontSize,
+            iconSize: widget.iconSize,
+            padding: widget.padding,
+          ),
+          CourseInfoChip(
+            icon: Icons.location_on,
+            text: L10n.of(context).numActivities(
+              objectiveGroupsWithActivities(
+                outline.groups,
+              ).fold<int>(0, (sum, group) => sum + group.activities.length),
+            ),
+            fontSize: widget.fontSize,
+            iconSize: widget.iconSize,
+            padding: widget.padding,
+          ),
+        ],
       ],
     );
   }

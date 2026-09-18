@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart' show Logs;
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/analytics/construct_use_type_enum.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
@@ -392,8 +391,6 @@ class Transcript {
     if (wordTimings != null)
       "word_timings": wordTimings!.map((e) => e.toJson()).toList(),
   };
-
-  Color get color => confidence > 80 ? AppConfig.success : AppConfig.warning;
 }
 
 /// Raw ASR word timing carried on the skip-tokenize path. Timestamps are

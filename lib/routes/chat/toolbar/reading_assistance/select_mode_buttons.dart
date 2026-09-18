@@ -9,11 +9,13 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
 import 'package:fluffychat/features/dosage/dosage_shared_player_tracker.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
+import 'package:fluffychat/features/tutorials/tutorial_constants.dart';
 import 'package:fluffychat/features/tutorials/tutorial_enum.dart';
 import 'package:fluffychat/features/tutorials/tutorial_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
@@ -216,7 +218,6 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
   String get _playerOwnerId => "${messageEvent.eventId}_button";
 
   StreamSubscription? _audioSub;
-  StreamSubscription? _tutorialSub;
 
   MatrixState? matrix;
 
@@ -236,35 +237,29 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
     matrix?.voiceMessageEventId.addListener(_onListeningOwnershipChange);
     // Pangea#
 
-    final chat = widget.controller.chatController;
-    if (chat != null &&
-        chat.tutorialOverlayController.isTutorialQueued(
-          TutorialEnum.selectModeButtons,
-        )) {
-      Future.delayed(Duration(milliseconds: 1000), () {
-        if (mounted && controller.selectedMode.value == null) {
-          _startSelectModeTutorial();
-        }
-      });
-    } else {
-      _shimmerTranslateButton.value = true;
-      _tutorialSub = chat?.tutorialOverlayController.forwardTutorialStream
-          .listen((tutorial) {
-            if (!mounted) return;
-            if (tutorial == TutorialEnum.selectModeButtons &&
-                controller.selectedMode.value == null) {
-              _startSelectModeTutorial();
-            }
-          });
-    }
+    // This widget owns the select-mode targets and only exists while the
+    // toolbar is open, so it registers as their owner; registering while the
+    // tutorial is already waiting is itself the launch trigger.
+    final tutorials = MatrixState.tutorialOverlayController;
+    tutorials.registerLauncher(
+      TutorialEnum.selectModeButtons,
+      _startSelectModeTutorial,
+    );
+    // The shimmer nudges toward the translate button; the tutorial does that
+    // job itself while it runs, and turns the shimmer back on when it moves on.
+    _shimmerTranslateButton.value = !tutorials.isCurrentTutorial(
+      TutorialEnum.selectModeButtons,
+    );
   }
 
   @override
   void dispose() {
-    final tutorial =
-        widget.controller.chatController?.tutorialOverlayController;
-    if (tutorial != null &&
-        tutorial.state.isTutorialActive(TutorialEnum.selectModeButtons) &&
+    final tutorial = MatrixState.tutorialOverlayController;
+    tutorial.unregisterLauncher(
+      TutorialEnum.selectModeButtons,
+      _startSelectModeTutorial,
+    );
+    if (tutorial.state.isTutorialActive(TutorialEnum.selectModeButtons) &&
         !tutorial.state.model.isStepTransitioning) {
       tutorial.resetTutorial();
     }
@@ -282,7 +277,6 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
     matrix?.audioPlayer = null;
     matrix?.voiceMessageEventId.value = null;
     _audioSub?.cancel();
-    _tutorialSub?.cancel();
     _playerStateSub?.cancel();
     _isPlayingNotifier.dispose();
     controller.playTokenNotifier.removeListener(_playToken);
@@ -299,9 +293,10 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
   bool get _canRefresh =>
       messageEvent.eventId == widget.controller.chatController?.refreshEventID;
 
-  void _startSelectModeTutorial() {
+  Future<void> _startSelectModeTutorial() async {
     final chat = widget.controller.chatController;
     if (chat == null) return;
+    if (!mounted || controller.selectedMode.value != null) return;
 
     _shimmerTranslateButton.value = false;
 
@@ -314,34 +309,39 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
       return;
     }
 
-    chat.tutorialOverlayController.launchTutorial(
+    // The app-scoped controller, not the chat's — the chat only supplies the
+    // event and token this tutorial points at.
+    MatrixState.tutorialOverlayController.launchTutorial(
       context: context,
-      tutorial: SelectModeButtonsTutorialModel(
-        data: [
-          TutorialStepData(
+      tutorial: TutorialModel(
+        tutorialType: TutorialEnum.selectModeButtons,
+        stepsData: [
+          TutorialStepData.single(
             targetKey: tokenTarget,
             onTap: () async {
               widget.overlayController.updateSelectedSpan(
                 chat.tutorialToken!.text,
               );
-              await Future.delayed(Duration(milliseconds: 4000));
+              await Future.delayed(TutorialConstants.stepDemoDelay);
               widget.overlayController.updateSelectedSpan(null);
               _shimmerTranslateButton.value = true;
             },
             canShowNextStep: () =>
                 mounted && controller.selectedMode.value == null,
           ),
-          TutorialStepData(
+          TutorialStepData.single(
             targetKey: translateTarget,
             onTap: () async {
+              // The translation fetch already serializes ahead of this pause,
+              // so the learner's wait is network + demo.
               await updateMode(SelectMode.translate);
-              await Future.delayed(Duration(milliseconds: 4000));
+              await Future.delayed(TutorialConstants.stepDemoDelay);
             },
             canShowNextStep: () =>
                 mounted &&
                 controller.selectedMode.value == SelectMode.translate,
           ),
-          TutorialStepData(
+          TutorialStepData.single(
             targetKey: audioTarget,
             onTap: () async {
               await updateMode(SelectMode.audio);
@@ -350,7 +350,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
             canShowNextStep: () =>
                 mounted && controller.selectedMode.value == SelectMode.audio,
           ),
-          TutorialStepData(
+          TutorialStepData.single(
             targetKey: msgTarget,
             onTap: () async => widget.controller.clearSelectedEvents(),
             canShowNextStep: () => true,
@@ -397,6 +397,16 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
     }
 
     if (updatedMode == SelectMode.speechTranslation) {
+      // The buttons were built for the message that was under the toolbar,
+      // but [messageEvent] re-reads the overlay's message live — so a swap
+      // between build and tap leaves this tap pointing at a text message,
+      // which requestSpeechToText rejects outright (#9054). Drop the tap and
+      // clear the mode, rather than leave the toolbar in a mode whose content
+      // can never load.
+      if (messageEvent.isAudioMessage != true) {
+        controller.setSelectMode(null);
+        return;
+      }
       await controller.fetchSpeechTranslation();
     }
 
@@ -744,14 +754,14 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                               key: target.key,
                               borderRadius: BorderRadius.circular(20),
                               depressed: mode == selectedMode || !enabled,
-                              color: theme.colorScheme.primaryContainer,
+                              color: theme.toolbarButtonFill,
                               onPressed: enabled
                                   ? () => updateMode(mode)
                                   : modeDisabled,
                               playSound: enabled && mode != SelectMode.audio,
-                              colorFactor: theme.brightness == Brightness.light
-                                  ? 0.55
-                                  : 0.3,
+                              // The lip is the fill darkened; a third keeps it
+                              // above the dark scrim (3.5:1 light, 2.5:1 dark).
+                              colorFactor: 0.3,
                               builder: (context, depressed, shadowColor) {
                                 final canShimmer =
                                     !InstructionsEnum
@@ -767,7 +777,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                                   decoration: BoxDecoration(
                                     color: depressed
                                         ? shadowColor
-                                        : theme.colorScheme.primaryContainer,
+                                        : theme.toolbarButtonFill,
                                     shape: BoxShape.circle,
                                   ),
                                   child: ValueListenableBuilder(
@@ -781,9 +791,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                                           playing:
                                               mode == SelectMode.audio &&
                                               playing,
-                                          color: theme
-                                              .colorScheme
-                                              .onPrimaryContainer,
+                                          color: theme.onToolbarButtonFill,
                                         ),
                                   ),
                                 );
@@ -839,7 +847,7 @@ class _SnackBarLink extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = Theme.of(context).colorScheme.primaryContainer;
+    final color = Theme.of(context).colorScheme.inversePrimary;
     return InkWell(
       onTap: onTap,
       child: Text(
@@ -1038,19 +1046,25 @@ class _MoreButton extends StatelessWidget {
       message: L10n.of(context).more,
       child: PressableButton(
         borderRadius: BorderRadius.circular(20),
-        color: theme.colorScheme.primaryContainer,
+        color: theme.toolbarButtonFill,
         onPressed: () => _showMenu(context),
         playSound: true,
-        colorFactor: theme.brightness == Brightness.light ? 0.55 : 0.3,
+        colorFactor: 0.3,
         builder: (context, depressed, shadowColor) => AnimatedContainer(
           duration: FluffyThemes.animationDuration,
           height: 40.0,
           width: 40.0,
           decoration: BoxDecoration(
-            color: depressed ? shadowColor : theme.colorScheme.primaryContainer,
+            color: depressed ? shadowColor : theme.toolbarButtonFill,
             shape: BoxShape.circle,
           ),
-          child: const Icon(Icons.more_horiz, size: 20),
+          child: Icon(
+            Icons.more_horiz,
+            size: 20,
+            // The pressed fill is the rest fill darkened, so its own ink can
+            // stop reading on it; the theme's light tone always does.
+            color: depressed ? theme.lightTone : theme.onToolbarButtonFill,
+          ),
         ),
       ),
     );

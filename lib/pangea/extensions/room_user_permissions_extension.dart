@@ -4,7 +4,12 @@ extension UserPermissionsRoomExtension on Room {
   bool isMadeByUser(String userId) =>
       getState(EventTypes.RoomCreate)?.senderId == userId;
 
-  bool get isRoomAdmin => ownPowerLevel >= SpaceConstants.powerLevelOfAdmin;
+  /// False for a signed-out account: the SDK's [ownPowerLevel] reads
+  /// `client.userID!`, and the chat list can still build through logout
+  /// (#9019).
+  bool get isRoomAdmin =>
+      client.userID != null &&
+      ownPowerLevel >= SpaceConstants.powerLevelOfAdmin;
 
   /// Whether the user may redact an event sent by [senderId].
   ///
@@ -15,6 +20,10 @@ extension UserPermissionsRoomExtension on Room {
   /// (#8402).
   bool canRedactEventFrom(String senderId) =>
       senderId == client.userID || (!isDirectChat && canRedact);
+
+  /// Whether the room's power levels let the user react. A read-only room such
+  /// as announcements rejects a learner's reaction (#9167).
+  bool get canSendReactions => canSendEvent(EventTypes.Reaction);
 
   /// The users currently knocking on this room, from the locally loaded member
   /// list. Empty for non-admins: only an admin can accept/deny a knock, so

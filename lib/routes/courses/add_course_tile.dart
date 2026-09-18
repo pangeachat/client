@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/course_avatar.dart';
 import 'package:fluffychat/pangea/common/widgets/invited_chip.dart';
+import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/routes/courses/add_course_tile_content.dart';
 import 'package:fluffychat/routes/courses/course_info_chip_widget.dart';
+import 'package:fluffychat/routes/courses/course_members_chip.dart';
 
 class AddCourseTile extends StatelessWidget {
   final AddCourseTileContent content;
@@ -16,12 +18,23 @@ class AddCourseTile extends StatelessWidget {
   /// bell. Supplied by [AddCourseTileList], which watches the member list.
   final bool hasKnockingUsers;
 
+  /// Max title lines before ellipsizing. The course preview's minimized header
+  /// passes 1 — a wrapped title can overflow the short sheet (#7826).
+  final int titleMaxLines;
+
+  /// This tile's id in the enclosing [RovingFocusGroup]: a course list is one
+  /// Tab stop, with the arrow keys moving between its tiles. Null for a tile
+  /// outside a group.
+  final String? rovingId;
+
   const AddCourseTile({
     super.key,
     required this.content,
     this.onTap,
     this.expanded = false,
     this.hasKnockingUsers = false,
+    this.titleMaxLines = 2,
+    this.rovingId,
   });
 
   @override
@@ -53,10 +66,13 @@ class AddCourseTile extends StatelessWidget {
     return Material(
       type: MaterialType.transparency,
       child: Semantics(
-        button: true,
+        button: onTap != null,
         label: label,
         child: InkWell(
           onTap: onTap,
+          focusNode: rovingId == null
+              ? null
+              : RovingFocusGroup.nodeOf(context, rovingId!),
           borderRadius: BorderRadius.circular(12.0),
           child: Container(
             padding: const EdgeInsets.all(12.0),
@@ -96,7 +112,7 @@ class AddCourseTile extends StatelessWidget {
                                   child: Text(
                                     title,
                                     style: theme.textTheme.bodyLarge,
-                                    maxLines: 2,
+                                    maxLines: titleMaxLines,
                                     overflow: TextOverflow.ellipsis,
                                   ),
                                 ),
@@ -111,36 +127,22 @@ class AddCourseTile extends StatelessWidget {
                                 ),
                             ],
                           ),
-                          Wrap(
-                            spacing: 8.0,
-                            runSpacing: 8.0,
-                            crossAxisAlignment: WrapCrossAlignment.center,
-                            children: [
-                              if (invited)
-                                ExcludeSemantics(child: InvitedChip()),
-                              if (members != null && !invited)
-                                Semantics(
-                                  label: L10n.of(
-                                    context,
-                                  ).countParticipants(members),
-                                  child: ExcludeSemantics(
-                                    child: CourseInfoChip(
-                                      icon: Icons.group,
-                                      text: '$members',
-                                      fontSize: 12.0,
-                                      iconSize: 12.0,
-                                    ),
-                                  ),
-                                ),
-                              if (courseId != null && !invited)
-                                CourseInfoChips(
-                                  courseId,
-                                  courseRoomId: content.courseRoomId,
-                                  fontSize: 12.0,
-                                  iconSize: 12.0,
-                                ),
-                            ],
-                          ),
+                          if (invited)
+                            ExcludeSemantics(child: InvitedChip())
+                          else if (courseId != null)
+                            CourseInfoChips(
+                              courseId,
+                              courseRoomId: content.courseRoomId,
+                              members: members,
+                              fontSize: 12.0,
+                              iconSize: 12.0,
+                            )
+                          else if (members != null)
+                            CourseMembersChip(
+                              members,
+                              fontSize: 12.0,
+                              iconSize: 12.0,
+                            ),
                         ],
                       ),
                     ),

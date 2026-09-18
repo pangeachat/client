@@ -13,7 +13,6 @@ import 'package:fluffychat/utils/other_party_can_receive.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/utils/size_string.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
-import 'package:fluffychat/widgets/adaptive_dialogs/dialog_text_field.dart';
 import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import '../../utils/resize_video.dart';
 
@@ -44,8 +43,6 @@ class SendFileDialogState extends State<SendFileDialog> {
 
   /// Images smaller than 20kb don't need compression.
   static const int minSizeToCompress = 20 * 1000;
-
-  final TextEditingController _labelTextController = TextEditingController();
 
   Future<void> _send() async {
     final scaffoldMessenger = ScaffoldMessenger.of(widget.outerContext);
@@ -107,17 +104,18 @@ class SendFileDialogState extends State<SendFileDialog> {
           );
         }
 
-        final label = _labelTextController.text.trim();
+        // No caption: text sent with a file bypasses writing assistance, so
+        // learners send it as its own message from the composer (#9108).
+        Future<String?> sendFile() => widget.room.sendFileEvent(
+          file,
+          thumbnail: thumbnail,
+          shrinkImageMaxDimension: compress ? 1600 : null,
+          threadRootEventId: widget.threadRootEventId,
+          threadLastEventId: widget.threadLastEventId,
+        );
 
         try {
-          await widget.room.sendFileEvent(
-            file,
-            thumbnail: thumbnail,
-            shrinkImageMaxDimension: compress ? 1600 : null,
-            extraContent: label.isEmpty ? null : {'body': label},
-            threadRootEventId: widget.threadRootEventId,
-            threadLastEventId: widget.threadLastEventId,
-          );
+          await sendFile();
         } on MatrixException catch (e) {
           final retryAfterMs = e.retryAfterMs;
           if (e.error != MatrixError.M_LIMIT_EXCEEDED || retryAfterMs == null) {
@@ -141,12 +139,7 @@ class SendFileDialogState extends State<SendFileDialog> {
 
           scaffoldMessenger.showLoadingSnackBar(l10n.sendingAttachment);
 
-          await widget.room.sendFileEvent(
-            file,
-            thumbnail: thumbnail,
-            shrinkImageMaxDimension: compress ? 1600 : null,
-            extraContent: label.isEmpty ? null : {'body': label},
-          );
+          await sendFile();
         }
       }
       scaffoldMessenger.clearSnackBars();
@@ -348,18 +341,6 @@ class SendFileDialogState extends State<SendFileDialog> {
                             ),
                           ),
                         ],
-                      ),
-                    ),
-                  if (widget.files.length == 1)
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 8.0),
-                      child: DialogTextField(
-                        controller: _labelTextController,
-                        labelText: L10n.of(context).optionalMessage,
-                        minLines: 1,
-                        maxLines: 3,
-                        maxLength: 255,
-                        counterText: '',
                       ),
                     ),
                   // Workaround for SwitchListTile.adaptive crashes in CupertinoDialog

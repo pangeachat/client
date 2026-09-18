@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shimmer/shimmer.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/features/languages/language_flag_chip.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/tutorials/tutorial_target.dart';
+import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_session_badge.dart';
@@ -71,7 +73,7 @@ class WorldUserClusterInternal extends StatelessWidget {
         final l2 = viewModel.userL2;
         return Semantics(
           label: L10n.of(context).analyticsAndSettingsLabel,
-          sortKey: BrowseOrder.cluster,
+          sortKey: WorkspaceOrder.cluster.sortKey,
           container: true,
           child: FocusTraversalGroup(
             policy: OrderedTraversalPolicy(),
@@ -141,27 +143,19 @@ class ClusterAvatar extends StatelessWidget {
       cursor: SystemMouseCursors.click,
       child: Tooltip(
         message: label,
-        // The Semantics below already names this control; without this the
+        // The target below already names this control; without this the
         // Tooltip's own message is announced too, doubling the accessible name
         // ("Account Account"). See accessibility.instructions.md.
         excludeFromSemantics: true,
-        child: Semantics(
-          button: true,
-          label: label,
-          excludeSemantics: true,
-          // Expose the tap on the announced node so screen-reader users can
-          // activate it (e.g. open Settings); GestureDetector alone leaves the
-          // button unactivatable via assistive tech. See issue #7185.
+        child: FocusRingTapTarget(
           onTap: onTap,
-          child: FocusRingTapTarget(
-            onTap: onTap,
-            shape: const CircleBorder(),
-            child: Avatar(
-              mxContent: avatarUrl,
-              name: name,
-              size: size,
-              showPresence: false,
-            ),
+          shape: const CircleBorder(),
+          label: label,
+          child: Avatar(
+            mxContent: avatarUrl,
+            name: name,
+            size: size,
+            showPresence: false,
           ),
         ),
       ),
@@ -201,23 +195,29 @@ class _PowerupsPill extends StatelessWidget {
               // pill's bounds (badge pulse + chip); don't clip it.
               clipBehavior: Clip.none,
               children: [
-                // The pill's frame IS the XP ring: a gray track that fills gold clockwise
-                // from the bottom-center (where the level medal sits) toward the next
-                // level. The trackers sit on a white field inside it; there is no solid
-                // gold fill — the only gold is the XP progress.
+                // The pill's frame IS the XP ring: an opaque track that fills gold
+                // clockwise from the bottom-center (where the level medal sits) toward
+                // the next level. The trackers sit on a white field inside it; there is
+                // no solid gold fill — the only gold is the XP progress.
                 Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     CustomPaint(
                       painter: XpBorderPainter(
                         progress: progress,
-                        trackColor: const Color.fromARGB(130, 135, 135, 135),
-                        progressColor: AppConfig.goldByTheme(context),
+                        trackColor: XpBorderPainter.trackColorFor(
+                          Theme.of(context),
+                        ),
+                        progressColor: XpBorderPainter.arcColorFor(
+                          Theme.of(context),
+                        ),
                         stroke: _xpStroke,
-                        radius: _innerRadius + _xpStroke / 2,
+                        innerRadius: _innerRadius,
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(_xpStroke),
+                        padding: const EdgeInsets.all(
+                          _xpStroke + XpBorderPainter.trackExtra,
+                        ),
                         child: Container(
                           decoration: BoxDecoration(
                             color: Theme.of(
@@ -262,6 +262,8 @@ class _PowerupsPill extends StatelessWidget {
                                 ),
                                 ClusterTrackerButton(
                                   indicator: ProgressIndicatorEnum.wordsUsed,
+                                  tutorialTargetId:
+                                      TutorialTargetIds.analyticsVocabTracker,
                                   count: vocab,
                                   selected:
                                       selectedTab ==
@@ -336,6 +338,11 @@ class ClusterTrackerButton extends StatefulWidget {
   final double iconSize;
   final double fontSize;
 
+  /// Registers this tracker as a tutorial spotlight target. Shares its id
+  /// between the wide cluster and the narrow analytics bar — only one is ever
+  /// mounted.
+  final String? tutorialTargetId;
+
   const ClusterTrackerButton({
     required this.indicator,
     required this.count,
@@ -344,6 +351,7 @@ class ClusterTrackerButton extends StatefulWidget {
     this.horizontalPadding = 16,
     this.iconSize = 24,
     this.fontSize = 16,
+    this.tutorialTargetId,
     super.key,
   });
 
@@ -352,6 +360,10 @@ class ClusterTrackerButton extends StatefulWidget {
 }
 
 class _ClusterTrackerButtonState extends State<ClusterTrackerButton> {
+  /// The tap target, the hover and open-panel fills, and the focus ring all
+  /// share this geometry.
+  static const OutlinedBorder _shape = StadiumBorder();
+
   ProgressIndicatorEnum get indicator => widget.indicator;
   int get count => widget.count;
   VoidCallback get onTap => widget.onTap;
@@ -371,64 +383,68 @@ class _ClusterTrackerButtonState extends State<ClusterTrackerButton> {
     // wears the practice badge (icon + running timer) and its tap RESUMES the
     // session instead of opening analytics (gated in the view model). See
     // routing.instructions.md § Practice is a persistent background session.
-    return ListenableBuilder(
-      listenable: PracticeSessionHolder.instance,
-      builder: (context, _) {
-        final holder = PracticeSessionHolder.instance;
-        final tracksPractice =
-            indicator == ProgressIndicatorEnum.wordsUsed ||
-            indicator == ProgressIndicatorEnum.morphsUsed;
-        final liveSessionStart =
-            tracksPractice && holder.liveType == indicator.constructType
-            ? holder.current?.sessionController.session?.startedAt
-            : null;
+    return TutorialTarget(
+      targetId: widget.tutorialTargetId,
+      child: ListenableBuilder(
+        listenable: PracticeSessionHolder.instance,
+        builder: (context, _) {
+          final holder = PracticeSessionHolder.instance;
+          final tracksPractice =
+              indicator == ProgressIndicatorEnum.wordsUsed ||
+              indicator == ProgressIndicatorEnum.morphsUsed;
+          final liveSessionStart =
+              tracksPractice && holder.liveType == indicator.constructType
+              ? holder.current?.sessionController.session?.startedAt
+              : null;
 
-        final semanticsLabel = liveSessionStart != null
-            ? '${indicator.tooltip(context)}: $count — '
-                  '${L10n.of(context).practice}'
-            : '${indicator.tooltip(context)}: $count';
+          final semanticsLabel = liveSessionStart != null
+              ? '${indicator.tooltip(context)}: $count — '
+                    '${L10n.of(context).practice}'
+              : '${indicator.tooltip(context)}: $count';
 
-        return Tooltip(
-          message: liveSessionStart != null
-              ? L10n.of(context).practice
-              : indicator.tooltip(context),
-          // The Semantics below carries the full "<stat>: <count>" name;
-          // exclude the Tooltip so it isn't announced twice ("Stars Stars: 0").
-          excludeFromSemantics: true,
-          child: InkWell(
-            onTap: onTap,
-            onHover: (h) => setState(() => _hovered = h),
-            hoverColor: liveSessionStart != null
-                ? Colors.transparent
-                : AppConfig.goldByTheme(context).withAlpha(50),
-            borderRadius: BorderRadius.circular(100),
-            child: Semantics(
-              button: true,
+          return Tooltip(
+            message: liveSessionStart != null
+                ? L10n.of(context).practice
+                : indicator.tooltip(context),
+            // The target below carries the full "<stat>: <count>" name;
+            // exclude the Tooltip so it isn't announced twice ("Stars Stars: 0").
+            excludeFromSemantics: true,
+            child: FocusRingTapTarget(
+              onTap: onTap,
+              shape: _shape,
               // The exact count — assistive tech is never given the
               // abbreviation.
               label: semanticsLabel,
-              excludeSemantics: true,
+              // Outside the stadium: the live badge's primary fill is within
+              // 1.6:1 of the gold ring, the surface around it is not (#8880).
+              ringStrokeAlign: BorderSide.strokeAlignOutside,
+              onHover: (h) => setState(() => _hovered = h),
+              hoverColor: liveSessionStart != null
+                  ? Colors.transparent
+                  : Theme.of(context).pangea.goldFixedDim.withAlpha(50),
               // While a session is live the badge takes the button's place:
               // ONE stadium fill on exactly the hover-highlight geometry
-              // (same radius, same padded bounds), practice icon over the
+              // (same shape, same padded bounds), practice icon over the
               // running timer inside it. Painted as INK (not a Container) so
               // Material's press splash renders on top of the fill — the same
               // white flash the sibling trackers give.
               child: Ink(
                 decoration: liveSessionStart != null
-                    ? BoxDecoration(
+                    ? ShapeDecoration(
                         color: Theme.of(context).colorScheme.primary.withValues(
                           alpha: _hovered ? 1.0 : 0.75,
                         ),
-                        borderRadius: BorderRadius.circular(100),
+                        shape: _shape,
                       )
                     // Open-panel highlight: a persistent version of the hover
                     // wash on the same padded geometry, so the tracker whose
                     // analytics is showing stays lit (#7977).
                     : selected
-                    ? BoxDecoration(
-                        color: AppConfig.goldByTheme(context).withAlpha(50),
-                        borderRadius: BorderRadius.circular(100),
+                    ? ShapeDecoration(
+                        color: Theme.of(
+                          context,
+                        ).pangea.goldFixedDim.withAlpha(50),
+                        shape: _shape,
                       )
                     : null,
                 padding: EdgeInsets.symmetric(
@@ -458,9 +474,9 @@ class _ClusterTrackerButtonState extends State<ClusterTrackerButton> {
                       ),
               ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }
@@ -469,7 +485,7 @@ class _ClusterTrackerButtonState extends State<ClusterTrackerButton> {
 /// Public so [WorldAnalyticsBar] can place it at the bar's left end.
 ///
 /// Unlike the trackers, the medal shows hover and the open Level panel in
-/// **its own gold** ([AppConfig.goldHighlightByTheme]) rather than behind
+/// **its own gold** ([PangeaColors.goldHighlight]) rather than behind
 /// itself: the trackers' circular wash sat gold-on-gold under a solid gold
 /// shield and read as a stray circle instead of feedback (#8067).
 class ClusterLevelMedal extends StatefulWidget {
@@ -494,35 +510,39 @@ class ClusterLevelMedal extends StatefulWidget {
 class _ClusterLevelMedalState extends State<ClusterLevelMedal> {
   bool _hovered = false;
 
+  /// Room around the shield for the two-tone ring, which sits outside it.
+  static const double _ringClearance = 2 * FocusRingTapTarget.ringWidth;
+
+  static Path _shieldOutline(Rect rect) =>
+      LevelRibbon.shieldPath(rect.deflate(_ringClearance));
+
   @override
   Widget build(BuildContext context) {
     final label = '${L10n.of(context).level} ${widget.level}';
     final lit = _hovered || widget.selected;
     return Tooltip(
       message: label,
-      // Semantics below names this; exclude the Tooltip to avoid "Level 2 Level 2".
+      // The target names this; exclude the Tooltip to avoid "Level 2 Level 2".
       excludeFromSemantics: true,
-      child: InkWell(
+      child: FocusRingTapTarget(
         onTap: widget.onTap,
+        label: label,
         onHover: (hovered) => setState(() => _hovered = hovered),
-        // No circular wash behind the shield — the shield's own gold carries
-        // hover (#8067). The focus highlight is left alone: keyboard users
-        // still get a visible ring.
+        // No wash behind the shield — the shield's own gold carries hover
+        // (#8067).
         hoverColor: Colors.transparent,
-        borderRadius: BorderRadius.circular(100.0),
-        child: Semantics(
-          button: true,
-          label: label,
-          excludeSemantics: true,
-          // Expose the tap on the announced node for assistive tech (#7185).
-          onTap: widget.onTap,
-          child: Padding(
-            padding: const EdgeInsets.all(4.0),
-            child: LevelRibbon(
-              height: 44,
-              level: widget.level,
-              color: lit ? AppConfig.goldHighlightByTheme(context) : null,
-            ),
+        // The ring traces the shield rather than circling it (#8067), and is
+        // two-tone because it crosses the XP ring and the map, where the gold
+        // ring measures 1.0 to 2.9:1 (#9114).
+        shape: const PathBorder(outline: _shieldOutline),
+        twoToneRing: true,
+        ringStrokeAlign: BorderSide.strokeAlignOutside,
+        child: Padding(
+          padding: const EdgeInsets.all(_ringClearance),
+          child: LevelRibbon(
+            height: 44,
+            level: widget.level,
+            color: lit ? Theme.of(context).pangea.goldHighlight : null,
           ),
         ),
       ),
@@ -571,30 +591,24 @@ class ClusterLanguageFlag extends StatelessWidget {
       cursor: SystemMouseCursors.click,
       child: Tooltip(
         message: l10n.learningSettings,
-        // Semantics below names this (language + settings); exclude the Tooltip
-        // so its message isn't appended again.
+        // The target below names this (language + settings); exclude the
+        // Tooltip so its message isn't appended again.
         excludeFromSemantics: true,
-        child: Semantics(
-          button: true,
-          label: '${language.getDisplayName(l10n)}, ${l10n.learningSettings}',
-          excludeSemantics: true,
-          // Expose the tap on the announced node for assistive tech (#7185).
+        // InkWell hit-tests its whole rect, so the entire chip is tappable —
+        // not just the painted glyphs / flag pixels.
+        child: FocusRingTapTarget(
           onTap: onTap,
-          // InkWell hit-tests its whole rect, so the entire chip is tappable —
-          // not just the painted glyphs / flag pixels.
-          child: FocusRingTapTarget(
-            onTap: onTap,
-            // The chip's own outer rounding (its radius + borderWidth).
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8.0),
-            ),
-            child: LanguageFlagChip(
-              language: language,
-              langCode: language.langCode,
-              width: width,
-              height: height,
-              fontSize: fontSize,
-            ),
+          // The chip's own outer rounding (its radius + borderWidth).
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.0),
+          ),
+          label: '${language.getDisplayName(l10n)}, ${l10n.learningSettings}',
+          child: LanguageFlagChip(
+            language: language,
+            langCode: language.langCode,
+            width: width,
+            height: height,
+            fontSize: fontSize,
           ),
         ),
       ),

@@ -7,6 +7,7 @@ void main() {
     courseId: '!course:server',
     activityId: 'activity-1',
     sessionRoomId: '!session:server',
+    senderId: '@host:server',
   );
 
   group('CoursePingBadgeCache', () {
@@ -69,6 +70,7 @@ void main() {
         courseId: '!course:server',
         activityId: 'activity-2',
         sessionRoomId: '!session2:server',
+        senderId: '@host:server',
       ));
 
       CoursePingBadgeCache.clearForCourse('!course:server');

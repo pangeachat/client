@@ -174,6 +174,13 @@ class LearningSettingsViewModel extends ChangeNotifier {
         return _updatedProfile.userSettings.targetLanguage != null &&
             _selectedTargetLanguage != null &&
             toolSettings.audioChoices;
+      // Listen First only sequences choice audio, so it reads off wherever
+      // that audio cannot play at all. The section additionally disables the
+      // tile while the choices toggle itself is off.
+      case ToolSetting.listenFirst:
+        return _updatedProfile.userSettings.targetLanguage != null &&
+            _selectedTargetLanguage != null &&
+            toolSettings.listenFirst;
       // Read-aloud is silent without a known-good device voice, so the toggle
       // reads off there whatever the account setting says — otherwise a
       // default-on toggle claims audio the device cannot produce (#8326).
@@ -217,6 +224,7 @@ class LearningSettingsViewModel extends ChangeNotifier {
       ToolSetting.autoIGC => toolSettings.copyWith(autoIGC: value),
       ToolSetting.audioWords => toolSettings.copyWith(audioWords: value),
       ToolSetting.audioChoices => toolSettings.copyWith(audioChoices: value),
+      ToolSetting.listenFirst => toolSettings.copyWith(listenFirst: value),
       ToolSetting.audioOnNewMessage => toolSettings.copyWith(
         audioOnNewMessage: value,
       ),

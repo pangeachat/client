@@ -17,6 +17,8 @@ import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/features/analytics_data/analytics_updater_mixin.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/features/tutorials/tutorial_target.dart';
+import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
@@ -24,6 +26,7 @@ import 'package:fluffychat/pangea/common/widgets/feedback_response_dialog.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_and_tags.dart';
+import 'package:fluffychat/routes/analytics/analytics_subscription_warning.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/analytics_more_menu.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/morph_details_view.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/vocab_analytics_details_view.dart';
@@ -370,7 +373,14 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView>
           // (construct == null); a construct detail shows the report flag
           // instead, so the two never collide.
           if (widget.construct == null && widget.showPracticeButton) ...[
-            _PracticeButton(view: widget.view),
+            TutorialTarget(
+              // Per construct type: the vocabulary and grammar panels are this
+              // same widget, and either may be the one open.
+              targetId: TutorialTargetIds.analyticsPracticeButton(
+                widget.view.name,
+              ),
+              child: _PracticeButton(view: widget.view),
+            ),
             const SizedBox(width: 8.0),
           ],
           if (widget.construct == null) AnalyticsMoreMenu(view: widget.view),
@@ -381,6 +391,11 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView>
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            if (widget.construct == null)
+              AnalyticsSubscriptionWarning(
+                subscription:
+                    MatrixState.pangeaController.subscriptionController,
+              ),
             Expanded(
               child: analyticsService.isInitializing || loadingAnalytics
                   ? Center(child: CircularProgressIndicator.adaptive())
@@ -500,10 +515,10 @@ class _PracticeButton extends StatelessWidget {
         label: Text(label, semanticsLabel: tooltip),
         style: FilledButton.styleFrom(
           backgroundColor: enabled
-              ? colorScheme.primaryContainer
+              ? colorScheme.primary
               : colorScheme.surfaceContainer,
           foregroundColor: enabled
-              ? colorScheme.onPrimaryContainer
+              ? colorScheme.onPrimary
               : colorScheme.onSurface.withValues(alpha: 0.5),
         ),
       ),

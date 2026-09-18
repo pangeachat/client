@@ -269,9 +269,6 @@ abstract class WorkspaceNav {
   }) {
     final lists = parseOpenPanels(current);
     final left = <PanelToken>[
-      CoursePanelToken(
-        tab != null ? CourseDetailsTokenParam(activeTab: tab) : null,
-      ),
       // Drop any prior course token, the Courses launcher (`addcourse`), a stale
       // management page (`coursepage`), and an open immersive `activity` —
       // picking/re-showing a course card is an exit FROM the activity (the
@@ -279,6 +276,14 @@ abstract class WorkspaceNav {
       // here), so the live-view activity must not co-render beside the card
       // (#7385). A live `room` is kept (a course can scope a chat).
       ...lists.left.where((t) => !t.type.shouldDropOnOpenCourse),
+      // The course seats LAST, after whatever it is opening over
+      // (routing.instructions.md → Reading a workspace URL). The card and its
+      // collapsed state then occupy the same end of the column, so collapsing
+      // hands the freed width to the panel beside it without moving it
+      // ([#9037](https://github.com/pangeachat/client/issues/9037)).
+      CoursePanelToken(
+        tab != null ? CourseDetailsTokenParam(activeTab: tab) : null,
+      ),
     ];
     final parts = WorkspaceQuery.parts(current.query);
     WorkspaceQuery.removeKeys(parts, {'c', 'left'});
@@ -310,10 +315,11 @@ abstract class WorkspaceNav {
   }) {
     final lists = parseOpenPanels(current);
     final left = <PanelToken>[
+      if (keepRoom) ...lists.left.where((t) => t.type == PanelTypesEnum.room),
+      // Last, like every other course open (#9037).
       CoursePanelToken(
         tab != null ? CourseDetailsTokenParam(activeTab: tab) : null,
       ),
-      if (keepRoom) ...lists.left.where((t) => t.type == PanelTypesEnum.room),
     ];
     final parts = WorkspaceQuery.parts(current.query);
     WorkspaceQuery.removeKeys(parts, {
@@ -349,8 +355,8 @@ abstract class WorkspaceNav {
               t.type != PanelTypesEnum.activity,
         )
         .toList();
-    next.insert(
-      0,
+    // Last, like every other course open (#9037).
+    next.add(
       CoursePanelToken(
         CourseDetailsTokenParam(activeTab: tab, expanded: expanded),
       ),
@@ -496,7 +502,9 @@ abstract class WorkspaceNav {
     if (reopenCourseCard &&
         activeSpaceIdFor(current) != null &&
         left.every((t) => t.type != PanelTypesEnum.course)) {
-      left.insert(0, const CoursePanelToken());
+      left.add(
+        const CoursePanelToken(),
+      ); // last, like every course open (#9037)
     }
     if (left.isNotEmpty) {
       parts.add('left=${left.map((t) => t.encode()).join(',')}');

@@ -1,23 +1,28 @@
 import 'package:flutter/material.dart';
 
+import 'package:collection/collection.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:go_router/go_router.dart';
+import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/languages/context_language_switch_target.dart';
 import 'package:fluffychat/features/languages/language_flag_chip.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
+import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/room_close_location.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/content_creator_chip.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_rating_meter.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_bottom_content.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_button_widget.dart';
@@ -25,8 +30,9 @@ import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_start_hero.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_vocab_widget.dart';
+import 'package:fluffychat/routes/chat/chat_details/chat_context_menu_action.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
-import 'package:fluffychat/routes/home/pangea_logo_svg.dart';
+import 'package:fluffychat/routes/chat_list/chat_list.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
@@ -120,12 +126,17 @@ class ActivitySessionStartView extends StatelessWidget {
                           context,
                         ).backButtonTooltip,
                         icon: const Icon(Icons.arrow_back),
-                        onPressed: () => GoRouter.of(context).go(
-                          WorkspaceNav.dropActivityOverlay(
-                            uri,
-                            reopenCourseCard: true,
-                          ),
-                        ),
+                        onPressed: () {
+                          // The course card that mounts claims focus; this
+                          // arrow goes with the activity panel.
+                          PanelEntryIntent.instance.armForSwap();
+                          GoRouter.of(context).go(
+                            WorkspaceNav.dropActivityOverlay(
+                              uri,
+                              reopenCourseCard: true,
+                            ),
+                          );
+                        },
                       )
                     : embedded
                     // Unscoped (pin entry) → X dismisses to the map.
@@ -161,12 +172,13 @@ class ActivitySessionStartView extends StatelessWidget {
               ),
             ),
             actions: [
-              // While a confirmed session waits to fill, the "…" menu (leave /
-              // delete) stands in for share on web and is a net-new action on
-              // mobile — so nobody confuses sharing the activity with inviting
-              // people into the room. See activity-start-page.instructions.md.
-              if (controller.isPendingSession)
-                _WaitingRoomMenuButton(controller)
+              // While a confirmed session waits to fill, the "…" menu stands in
+              // for share on web and is a net-new action on mobile — so nobody
+              // confuses sharing the activity with inviting people into the
+              // room. See activity-start-page.instructions.md.
+              if (controller.activityRoom case final room?
+                  when controller.isPendingSession)
+                _WaitingRoomMenuButton(room)
               // Web hosts share in the app bar, left of focus; mobile keeps it
               // as a chip in the bottom CTA row instead.
               else if (FluffyThemes.isColumnMode(context))
@@ -342,6 +354,8 @@ class ActivitySessionStartView extends StatelessWidget {
                                   padding: const EdgeInsets.all(12.0),
                                   child: ActivitySessionBottomContent(
                                     sessionController,
+                                    openSessionsTargetId:
+                                        controller.openSessionsTargetId,
                                   ),
                                 ),
                               ],
@@ -362,52 +376,33 @@ class ActivitySessionStartView extends StatelessWidget {
   }
 }
 
-enum _WaitingRoomAction { leave, delete }
-
-/// The waiting-room "…" menu in the app bar: leave the session, or — if you own
-/// the room ([ActivitySessionStartState.canDeleteSession]) — delete it for
-/// everyone. The same exit chat offers, surfaced while a confirmed session
+/// The waiting-room "…" menu in the app bar: the same actions the session's
+/// chat-list row offers, from the same list, surfaced while a confirmed session
 /// waits to fill. See activity-start-page.instructions.md.
 class _WaitingRoomMenuButton extends StatelessWidget {
-  final ActivitySessionStartState controller;
+  final Room room;
 
-  const _WaitingRoomMenuButton(this.controller);
+  const _WaitingRoomMenuButton(this.room);
 
   @override
   Widget build(BuildContext context) {
-    return PopupMenuButton<_WaitingRoomAction>(
+    final space = room.pangeaSpaceParents.firstOrNull;
+    return PopupMenuButton<ChatContextAction>(
       tooltip: L10n.of(context).moreOptions,
-      onSelected: (action) {
-        switch (action) {
-          case _WaitingRoomAction.leave:
-            controller.leaveSession();
-          case _WaitingRoomAction.delete:
-            controller.deleteSession();
-        }
-      },
-      itemBuilder: (context) => [
-        PopupMenuItem(
-          value: _WaitingRoomAction.leave,
-          child: Row(
-            children: [
-              const Icon(Icons.logout_outlined),
-              const SizedBox(width: 12.0),
-              Text(L10n.of(context).leave),
-            ],
-          ),
-        ),
-        if (controller.canDeleteSession)
-          PopupMenuItem(
-            value: _WaitingRoomAction.delete,
-            child: Row(
-              children: [
-                const Icon(Icons.delete_outlined),
-                const SizedBox(width: 12.0),
-                Text(L10n.of(context).delete),
-              ],
-            ),
-          ),
-      ],
+      itemBuilder: (itemContext) => chatContextMenuItems(
+        itemContext,
+        room: room,
+        space: space,
+        source: ChatMenuSource.startPage,
+      ),
+      onSelected: (action) => handleChatContextAction(
+        action,
+        context: context,
+        outerContext: context,
+        room: room,
+        space: space,
+        source: ChatMenuSource.startPage,
+      ),
     );
   }
 }
@@ -415,8 +410,9 @@ class _WaitingRoomMenuButton extends StatelessWidget {
 /// The always-visible second row under the title: who made the activity and
 /// its at-a-glance facts (L2, level, participant count, rating). It sits above
 /// the scrollable body so a map explorer sees the essentials without expanding
-/// the sheet. Creator is fixed to PangeaChat until learners can author their
-/// own activities. See activity-start-page.instructions.md.
+/// the sheet. The creator is the plan's own owner — Pangea's name and logo
+/// only for content Pangea genuinely owns ([ContentCreatorChip]), never for a
+/// teacher's. See activity-start-page.instructions.md.
 class _ActivityStartInfoRow extends StatelessWidget {
   final ActivityPlanModel activity;
 
@@ -433,27 +429,10 @@ class _ActivityStartInfoRow extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(12.0, 0.0, 8.0, 8.0),
       child: Row(
         children: [
-          Container(
-            width: 28.0,
-            height: 28.0,
-            padding: const EdgeInsets.all(5.0),
-            decoration: BoxDecoration(
-              color: theme.colorScheme.primaryContainer,
-              shape: BoxShape.circle,
-            ),
-            child: const PangeaLogoSvg(width: 18.0),
-          ),
-          const SizedBox(width: 8.0),
-          Expanded(
-            child: Text(
-              'PangeaChat',
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: theme.textTheme.bodyMedium?.copyWith(
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ),
+          // An activity whose read path carries no owner credits nobody: the
+          // chip collapses and the Expanded keeps the facts to the right in
+          // place, rather than crediting Pangea for someone else's work.
+          Expanded(child: ContentCreatorChip(ownerId: activity.ownerId)),
           const SizedBox(width: 8.0),
           // Never empty: the flag when the language resolves to one, else a
           // langcode chip (shared with the analytics cluster's flag). Doubles
@@ -470,7 +449,7 @@ class _ActivityStartInfoRow extends StatelessWidget {
               radius: 3.0,
               borderWidth: 1.0,
               alwaysShowCode: false,
-              tintColor: canSwitch ? theme.colorScheme.tertiary : null,
+              tintColor: canSwitch ? theme.pangea.warningGraphic : null,
             ),
           ),
           const SizedBox(width: 12.0),
@@ -588,10 +567,10 @@ class _ArchivedSessionFallbackBody extends StatelessWidget {
                   spacing: 4.0,
                   children: [
                     if (stars > 0) ...[
-                      const Icon(
+                      Icon(
                         Icons.star,
                         size: 18.0,
-                        color: AppConfig.goldLight,
+                        color: theme.pangea.goldGraphic,
                       ),
                       Text('$stars'),
                     ],

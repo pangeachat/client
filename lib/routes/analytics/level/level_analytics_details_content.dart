@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
@@ -10,6 +10,7 @@ import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
+import 'package:fluffychat/routes/analytics/analytics_subscription_warning.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/users/level_ribbon.dart';
 
@@ -46,6 +47,10 @@ class LevelAnalyticsDetailsContent extends StatelessWidget {
           builder: (context, _) {
             return Column(
               children: [
+                AnalyticsSubscriptionWarning(
+                  subscription:
+                      MatrixState.pangeaController.subscriptionController,
+                ),
                 FutureBuilder(
                   future: language != null
                       ? analyticsService.derivedData(language)
@@ -72,7 +77,7 @@ class LevelAnalyticsDetailsContent extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: isColumnMode ? 24 : 16,
                                 fontWeight: FontWeight.w900,
-                                color: AppConfig.goldByTheme(context),
+                                color: Theme.of(context).pangea.gold,
                               ),
                             ),
                           ],
@@ -82,7 +87,7 @@ class LevelAnalyticsDetailsContent extends StatelessWidget {
                           style: TextStyle(
                             fontSize: isColumnMode ? 24 : 16,
                             fontWeight: FontWeight.w900,
-                            color: AppConfig.goldByTheme(context),
+                            color: Theme.of(context).pangea.gold,
                           ),
                         ),
                       ],

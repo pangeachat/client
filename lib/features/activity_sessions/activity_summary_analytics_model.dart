@@ -29,13 +29,13 @@ class ActivitySummaryAnalyticsModel {
   }
 
   /// Unique constructs of a given type for a specific user
-  int _uniqueConstructCountForUser(String userId, ConstructTypeEnum type) {
+  int uniqueConstructCountForUser(String userId, ConstructTypeEnum type) {
     final userAnalytics = constructs[userId];
     if (userAnalytics == null) return 0;
     return userAnalytics.constructsOfType(type).length;
   }
 
-  int _xpForUser(String userId) {
+  int xpForUser(String userId) {
     final userAnalytics = constructs[userId];
     if (userAnalytics == null) return 0;
 
@@ -81,7 +81,7 @@ class ActivitySummaryAnalyticsModel {
 
     for (final userId in userIds) {
       //vocab
-      final vocabCount = _uniqueConstructCountForUser(
+      final vocabCount = uniqueConstructCountForUser(
         userId,
         ConstructTypeEnum.vocab,
       );
@@ -89,7 +89,7 @@ class ActivitySummaryAnalyticsModel {
       if (vocabCount > maxVocab) maxVocab = vocabCount;
 
       //grammar
-      final grammarCount = _uniqueConstructCountForUser(
+      final grammarCount = uniqueConstructCountForUser(
         userId,
         ConstructTypeEnum.morph,
       );
@@ -97,7 +97,7 @@ class ActivitySummaryAnalyticsModel {
       if (grammarCount > maxGrammar) maxGrammar = grammarCount;
 
       //XP
-      final xpCount = _xpForUser(userId);
+      final xpCount = xpForUser(userId);
       allXPs[userId] = xpCount;
       if (xpCount > maxXp) maxXp = xpCount;
     }

@@ -173,11 +173,11 @@ class SettingsSecurityView extends StatelessWidget {
                     ),
                   Divider(color: theme.dividerColor),
                   ListTile(
-                    iconColor: Colors.red,
+                    iconColor: theme.colorScheme.error,
                     leading: const Icon(Icons.delete_outlined),
                     title: Text(
                       L10n.of(context).deleteAccount,
-                      style: const TextStyle(color: Colors.red),
+                      style: TextStyle(color: theme.colorScheme.error),
                     ),
                     onTap: controller.deleteAccountAction,
                   ),

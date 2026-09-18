@@ -4,7 +4,7 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 
 enum AssistanceStateEnum {
@@ -22,9 +22,9 @@ enum AssistanceStateEnum {
     switch (this) {
       case AssistanceStateEnum.noMessage:
       case AssistanceStateEnum.fetched:
-        return Colors.grey[400]!;
+        return Theme.of(context).colorScheme.outline;
       case AssistanceStateEnum.error:
-        return AppConfig.error;
+        return Theme.of(context).pangea.errorGraphic;
       case AssistanceStateEnum.noSub:
       case AssistanceStateEnum.notFetched:
       case AssistanceStateEnum.fetching:
@@ -32,25 +32,23 @@ enum AssistanceStateEnum {
         return Theme.of(context).colorScheme.primary;
       case AssistanceStateEnum.suggestionComplete:
       case AssistanceStateEnum.igcComplete:
-        return AppConfig.success;
+        return Theme.of(context).pangea.successGraphic;
     }
   }
 
-  String tooltip(BuildContext context) {
-    switch (this) {
-      case AssistanceStateEnum.noSub:
-        return L10n.of(context).writingAssistanceNoSub;
-      case AssistanceStateEnum.error:
-        return L10n.of(context).viewError;
-      case AssistanceStateEnum.notFetched:
-      case AssistanceStateEnum.igcComplete:
-      case AssistanceStateEnum.suggesting:
-        L10n.of(context).check;
-      default:
-        return "";
-    }
-    return "";
-  }
+  /// Never empty: this is the button's accessible name as well as its tooltip.
+  String tooltip(BuildContext context) => switch (this) {
+    AssistanceStateEnum.noSub => L10n.of(context).writingAssistanceNoSub,
+    AssistanceStateEnum.error => L10n.of(context).viewError,
+    AssistanceStateEnum.notFetched ||
+    AssistanceStateEnum.igcComplete => L10n.of(context).check,
+    // The lightbulb states are named for what the button offers (#8904).
+    AssistanceStateEnum.suggesting || AssistanceStateEnum.suggestionComplete =>
+      L10n.of(context).writingAssistanceSuggestion,
+    AssistanceStateEnum.noMessage ||
+    AssistanceStateEnum.fetching ||
+    AssistanceStateEnum.fetched => L10n.of(context).writingAssistanceNoSub,
+  };
 
   Color sendButtonColor(BuildContext context) {
     switch (this) {
@@ -65,7 +63,7 @@ enum AssistanceStateEnum {
         return Theme.of(context).colorScheme.primary;
       case AssistanceStateEnum.suggestionComplete:
       case AssistanceStateEnum.igcComplete:
-        return AppConfig.success;
+        return Theme.of(context).pangea.successGraphic;
     }
   }
 
@@ -75,6 +73,19 @@ enum AssistanceStateEnum {
     AssistanceStateEnum.suggesting => true,
     AssistanceStateEnum.noSub => true,
     AssistanceStateEnum.error => true,
+    _ => false,
+  };
+
+  /// Whether the suggestion card may stay on screen in this state.
+  ///
+  /// The suggestion is an offer to fill an empty composer, so the states that
+  /// justify the card are the two lightbulb ones: a suggestion waiting, and an
+  /// accepted suggestion whose text is now the message. Anything else — above
+  /// all the learner typing their own message — withdraws it (#8953). See
+  /// writing-assistance.instructions.md.
+  bool get keepsSuggestionCardOpen => switch (this) {
+    AssistanceStateEnum.suggesting => true,
+    AssistanceStateEnum.suggestionComplete => true,
     _ => false,
   };
 

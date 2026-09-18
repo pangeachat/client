@@ -11,6 +11,7 @@ import 'package:matrix/matrix.dart';
 import 'package:receive_sharing_intent/receive_sharing_intent.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_preview_client_extension.dart';
 import 'package:fluffychat/features/analytics_access/access_notice_extension.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_access_extension.dart';
@@ -61,7 +62,7 @@ enum PopupMenuAction {
   archive,
 }
 
-enum ActiveFilter { allChats, messages, groups, unread, spaces }
+enum ActiveFilter { allChats, messages, groups, activities, unread, spaces }
 
 extension LocalizedActiveFilter on ActiveFilter {
   String toLocalizedString(BuildContext context) {
@@ -69,11 +70,13 @@ extension LocalizedActiveFilter on ActiveFilter {
       case ActiveFilter.allChats:
         return L10n.of(context).all;
       case ActiveFilter.messages:
-        return L10n.of(context).messages;
+        return L10n.of(context).dms;
       case ActiveFilter.unread:
         return L10n.of(context).unread;
       case ActiveFilter.groups:
         return L10n.of(context).groups;
+      case ActiveFilter.activities:
+        return L10n.of(context).activities;
       case ActiveFilter.spaces:
         // #Pangea
         // return L10n.of(context).spaces;
@@ -294,8 +297,14 @@ class ChatListController extends State<ChatList>
         // #Pangea
         // return (room) => !room.isSpace && !room.isDirectChat;
         return (room) =>
-            !room.isSpace && !room.isDirectChat && !room.isHiddenRoom;
+            !room.isSpace &&
+            !room.isDirectChat &&
+            !room.isHiddenRoom &&
+            !room.isActivitySession;
       // Pangea#
+      case ActiveFilter.activities:
+        return (room) =>
+            !room.isSpace && !room.isHiddenRoom && room.isActivitySession;
       case ActiveFilter.unread:
         // #Pangea
         // return (room) => room.isUnreadOrInvited;
@@ -392,6 +401,7 @@ class ChatListController extends State<ChatList>
       );
     } catch (e, s) {
       Logs().w('Searching has crashed', e, s);
+      if (!mounted) return;
       // #Pangea
       ScaffoldMessenger.of(context).showSnackBarAnnounced(
         SnackBar(content: Text(e.toLocalizedString(context))),
@@ -399,7 +409,7 @@ class ChatListController extends State<ChatList>
       );
       // Pangea#
     }
-    if (!isSearchMode) return;
+    if (!mounted || !isSearchMode) return;
     setState(() {
       isSearching = false;
       this.roomSearchResult = roomSearchResult;
@@ -742,6 +752,9 @@ class ChatListController extends State<ChatList>
 
   @override
   void dispose() {
+    // A search debounced just before the list closes would otherwise run
+    // against a disposed State (CLIENT-CFA).
+    _coolDown?.cancel();
     _intentDataStreamSubscription?.cancel();
     _intentFileStreamSubscription?.cancel();
     //#Pangea
@@ -1283,6 +1296,13 @@ enum ChatContextAction {
   // addToSpace,
   delete,
   endActivity,
+  // Offered only by the chat header's More menu: the first two replaced the
+  // icon buttons that used to open them, the last two are what an activity
+  // session's menu has always carried.
+  search,
+  details,
+  invite,
+  download,
   // Pangea#
   block,
 }

@@ -20,18 +20,25 @@ class SuggestedActivity {
 
 /// The course page's suggested activities: the course plan's activities scored
 /// by the world map's Priority matrix ([pinScore]), with the sessions the
-/// learner is already in dropped, capped to [cap].
+/// learner is already in and the activities they have finished dropped, capped
+/// to [cap].
 ///
 /// The same weighted score the map ranks pins by, so the two surfaces agree on
 /// what matters — an open session others can be joined in outranks a pinged
 /// one, which outranks whatever the course's next Mission points at
-/// ([missionGradient]), which outranks an activity already finished. Reusing
-/// [pinScore] is what keeps them from drifting as the weights are tuned.
+/// ([missionGradient]). Reusing [pinScore] is what keeps them from drifting as
+/// the weights are tuned.
 ///
-/// Three of the map's terms deliberately do not apply here:
+/// Four of the map's terms deliberately do not apply here:
 ///  * **ongoing** — an activity the learner already holds a role in is filtered
 ///    out entirely rather than scored. The course page suggests what to do
 ///    next; a session already under way is resumed from the Chats section.
+///  * **completed** — a finished activity is likewise dropped rather than
+///    demoted (#8901). The map keeps it as the learner's trail; a shortlist of
+///    what to do next has no room for what is done, and the full plan behind
+///    "See all" still shows it with its check. The one exception is a
+///    coursemate's open session on it — still something to join, so it stays
+///    and ranks as joinable.
 ///  * **multi_person_first_map** — world-map only. A course's activities were
 ///    hand-picked by its author, so a 3+ role one is part of the syllabus, not
 ///    a dead end (world-map.instructions.md, "Priority matrix").
@@ -62,6 +69,9 @@ List<SuggestedActivity> rankSuggestedActivities({
   for (final suggestion in byActivity.values) {
     final signals = signalsFor(suggestion.activityId);
     if (signals.state.isOngoing) continue;
+    if (signals.isCompleted && signals.state != ActivityPinState.joinable) {
+      continue;
+    }
     final plan = suggestion.activity.plan;
     scored.add((
       suggestion,

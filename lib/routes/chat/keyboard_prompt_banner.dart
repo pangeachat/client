@@ -21,6 +21,16 @@ import 'package:fluffychat/routes/settings/settings_learning/enable_autocorrect_
 /// how DegradationBanner sits in ChatInputBar, so its shadow isn't clipped
 /// by the box's Clip.hardEdge.
 class KeyboardPromptBanner extends StatefulWidget {
+  /// How long after the composer gains focus before the keyboards are read.
+  /// The keyboard only learns which language the composer is writing in as
+  /// it attaches, and Gboard answers that hint by enabling the language
+  /// itself a moment after it opens — a detection taken at the instant of
+  /// focus reported the learner unequipped and was wrong within the second
+  /// (#8856). Long enough for the keyboard to open and react on the devices
+  /// seen so far; a slower one costs a single stale prompt that the next
+  /// focus resolves.
+  static const keyboardSettleDelay = Duration(seconds: 1);
+
   final FocusNode composerFocusNode;
 
   /// Read fresh on every check rather than passed once, so a language
@@ -52,6 +62,13 @@ class KeyboardPromptBannerState extends State<KeyboardPromptBanner>
   int _refreshGeneration = 0;
   int _pollGeneration = 0;
 
+  /// The target language the current state — a shown step, or nothing — was
+  /// resolved against. A rebuild alone is not a reason to resolve again: the
+  /// chat view rebuilds on every frame of the keyboard's inset animation, and
+  /// re-reading the keyboard mid-animation is what closed the prompt in
+  /// #8856. Only a target language other than this one is.
+  String? _resolvedLanguageCode;
+
   @override
   void initState() {
     super.initState();
@@ -66,11 +83,10 @@ class KeyboardPromptBannerState extends State<KeyboardPromptBanner>
     if (oldWidget.composerFocusNode != widget.composerFocusNode) {
       oldWidget.composerFocusNode.removeListener(_onFocusChange);
       widget.composerFocusNode.addListener(_onFocusChange);
+      _refresh();
+      return;
     }
-    // Reusing this widget for a different room (same composer FocusNode)
-    // means a different target language — re-resolve rather than keep
-    // showing the previous room's step.
-    _refresh();
+    if (widget.targetLanguageCode() != _resolvedLanguageCode) _refresh();
   }
 
   @override
@@ -110,20 +126,22 @@ class KeyboardPromptBannerState extends State<KeyboardPromptBanner>
   }
 
   Future<void> _refresh() async {
+    final languageCode = widget.targetLanguageCode();
+    _resolvedLanguageCode = languageCode;
     // Covers the unfocused-resume path too: didChangeAppLifecycleState fires
     // for every resume, whether or not the composer holds focus.
     if (!widget.composerFocusNode.hasFocus) {
       _clear();
       return;
     }
-
-    final languageCode = widget.targetLanguageCode();
     if (languageCode == null) {
       _clear();
       return;
     }
 
     final generation = ++_refreshGeneration;
+    await Future<void>.delayed(KeyboardPromptBanner.keyboardSettleDelay);
+    if (!_stillCurrent(generation, languageCode)) return;
     // Reading either store before it has loaded resurrects a dismissed
     // prompt and reads an observed keyboard as unobserved. Only a cold start
     // pays for the wait; once startup has hydrated them this is a plain

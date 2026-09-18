@@ -80,7 +80,11 @@ class _ActivityStartHeroState extends State<ActivityStartHero> {
     // inexitable fullscreen — #7672/#7673), so play it on its own screen.
     // Web/desktop play inline below, where a platform view behaves.
     if (hero != null && PlatformInfos.isMobile) {
-      openActivityVideo(context, hero);
+      openActivityVideo(
+        context,
+        hero,
+        captionLanguage: _activity.req.targetLanguage,
+      );
       return;
     }
     setState(() {
@@ -180,6 +184,9 @@ class _ActivityStartHeroState extends State<ActivityStartHero> {
                         isShimmering: _session.isRoleShimmering,
                         showStarsCard: _session.showStarsCard,
                         completedGoalsForRole: _session.completedGoalIdsForRole,
+                        tutorialTargetId: _controller.activityRolesTargetId,
+                        onTutorialTargetMounted:
+                            _controller.onTutorialSurfaceChanged,
                       ),
                     ),
                   ),
@@ -207,7 +214,10 @@ class _ActivityStartHeroState extends State<ActivityStartHero> {
     final hero = _hero;
     if (_playing && hero != null) {
       final player = hero.isYoutube
-          ? ActivityYoutubePlayer(url: hero.url ?? '')
+          ? ActivityYoutubePlayer(
+              url: hero.url ?? '',
+              captionLanguage: _activity.req.targetLanguage,
+            )
           : ActivityVideoPlayer(url: hero.resolvedUrl ?? '', autoPlay: true);
       return ColoredBox(
         color: Colors.black,
@@ -246,7 +256,9 @@ class _ActivityStartHeroState extends State<ActivityStartHero> {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              theme.colorScheme.primaryContainer,
+              // The pale brand tint the gradient was designed around;
+              // primaryContainer is a vivid fill under fidelity.
+              theme.colorScheme.primaryFixed,
               theme.colorScheme.surface,
             ],
           ),

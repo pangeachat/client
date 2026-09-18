@@ -6,7 +6,9 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/show_menu_long_press.dart';
 import 'package:fluffychat/pangea/common/widgets/invited_chip.dart';
+import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat_list/chat_list_item_subtitle.dart';
 import 'package:fluffychat/routes/chat_list/unread_bubble.dart';
@@ -26,6 +28,11 @@ class ChatListItem extends StatelessWidget {
   final void Function()? onForget;
   final void Function() onTap;
   final String? filter;
+
+  /// This row's id in the enclosing [RovingFocusGroup]: the chat list is one
+  /// Tab stop, with the arrow keys moving between rows (#8877). Null for a
+  /// row outside a group.
+  final String? rovingId;
   // #Pangea
   final BorderRadius? borderRadius;
 
@@ -44,6 +51,7 @@ class ChatListItem extends StatelessWidget {
     this.onForget,
     this.filter,
     this.space,
+    this.rovingId,
     super.key,
     // #Pangea
     this.borderRadius,
@@ -55,6 +63,10 @@ class ChatListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final rovingId = this.rovingId;
+    final focusNode = rovingId == null
+        ? null
+        : RovingFocusGroup.nodeOf(context, rovingId);
 
     final isMuted = room.pushRuleState != PushRuleState.notify;
     final typingText = room.getLocalizedTypingText(context);
@@ -64,8 +76,13 @@ class ChatListItem extends StatelessWidget {
     final directChatMatrixId = room.directChatMatrixID;
     final isDirectChat = directChatMatrixId != null;
     final hasNotifications = room.notificationCount > 0;
+    // The selected row is a raised neutral surface, not an accent fill: the
+    // same `surfaceContainerHigh` the settings list marks its active row
+    // with, and the tone the row's default `onSurface` ink is paired with.
+    // `secondaryContainer` under the fidelity scheme is a saturated tint that
+    // read as a highlight over the whole tile rather than a selection.
     final backgroundColor = activeChat
-        ? theme.colorScheme.secondaryContainer
+        ? theme.colorScheme.surfaceContainerHigh
         : null;
     final displayname = room.getLocalizedDisplayname(
       MatrixLocals(L10n.of(context)),
@@ -222,8 +239,12 @@ class ChatListItem extends StatelessWidget {
                 // reads the hint override ("double tap and hold to show more
                 // options"), and — since iOS ignores hint overrides — the
                 // same menu is also a named custom action in the VoiceOver
-                // actions rotor and TalkBack's actions menu.
+                // actions rotor and TalkBack's actions menu. The web engine
+                // publishes neither, so the row opts in to ShowMenuLongPress.
                 Semantics(
+                  identifier: onLongPress == null
+                      ? null
+                      : ShowMenuLongPress.semanticsIdentifier,
                   onLongPressHint: onLongPress == null
                       ? null
                       : L10n.of(context).showMoreOptionsHint,
@@ -236,6 +257,7 @@ class ChatListItem extends StatelessWidget {
                               onLongPress?.call(context),
                         },
                   child: ListTile(
+                    focusNode: focusNode,
                     visualDensity: const VisualDensity(vertical: -0.5),
                     contentPadding: const EdgeInsets.symmetric(horizontal: 8),
                     onLongPress: () => onLongPress?.call(context),
@@ -302,7 +324,7 @@ class ChatListItem extends StatelessWidget {
                                       .localizedTimeShort(context),
                                   style: TextStyle(
                                     fontSize: 12,
-                                    color: theme.colorScheme.outline,
+                                    color: theme.colorScheme.onSurfaceVariant,
                                   ),
                                 ),
                               ),
@@ -363,14 +385,18 @@ class ChatListItem extends StatelessWidget {
                                         Icon(
                                           Icons.message_outlined,
                                           size: 12,
-                                          color: theme.colorScheme.outline,
+                                          color: theme
+                                              .colorScheme
+                                              .onSurfaceVariant,
                                         ),
                                         const SizedBox(width: 4),
                                         Text(
                                           L10n.of(context).thread,
                                           style: TextStyle(
                                             fontSize: 12,
-                                            color: theme.colorScheme.outline,
+                                            color: theme
+                                                .colorScheme
+                                                .onSurfaceVariant,
                                           ),
                                         ),
                                       ],
@@ -408,7 +434,7 @@ class ChatListItem extends StatelessWidget {
                                     // Pangea#
                                     style: TextStyle(
                                       fontSize: subtitleFontSize,
-                                      color: theme.colorScheme.outline,
+                                      color: theme.colorScheme.onSurfaceVariant,
                                     ),
                                   ),
                                 )
@@ -418,7 +444,13 @@ class ChatListItem extends StatelessWidget {
                                     typingText,
                                     style: TextStyle(
                                       fontSize: subtitleFontSize,
-                                      color: theme.colorScheme.primary,
+                                      // primary is 4.3:1 on the active tile's
+                                      // fill; the fill's own ink reads there.
+                                      color: activeChat
+                                          ? theme
+                                                .colorScheme
+                                                .onSecondaryContainer
+                                          : theme.colorScheme.primary,
                                     ),
                                     maxLines: 1,
                                     softWrap: false,
@@ -497,7 +529,9 @@ class ChatListItem extends StatelessWidget {
                                         fontSize: subtitleFontSize,
                                         color: unread || room.hasNewMessages
                                             ? theme.colorScheme.onSurface
-                                            : theme.colorScheme.outline,
+                                            : theme
+                                                  .colorScheme
+                                                  .onSurfaceVariant,
                                         decoration:
                                             room.lastEvent?.redacted == true
                                             ? TextDecoration.lineThrough

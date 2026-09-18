@@ -1118,6 +1118,8 @@
     },
     "block": "Block",
     "@block": {},
+    "unblock": "Unblock",
+    "@unblock": {},
     "blockedUsers": "Blocked users",
     "@blockedUsers": {},
     "blockListDescription": "You can block users who are disturbing you. You won't be able to receive any messages or room invites from the users on your personal block list.",
@@ -3488,10 +3490,20 @@
         "description": "Shown in the email signup form when the homeserver reports the chosen username is already registered."
     },
     "listen": "Listen",
-    "listenModeDescription": "Tap a choice to hear it. Nothing is selected.",
-    "@listenModeDescription": {
+    "listenFirst": "Listen first",
+    "@listenFirst": {
         "type": "text",
-        "description": "Shown under the choices in the writing assistance card while Listen mode is on, explaining that tapping a choice only plays its audio."
+        "description": "Name of the writing assistance card's Listen First toggle, used as the header icon's tooltip and as its label in the card's overflow menu."
+    },
+    "listenFirstDescription": "When Listen First is on, one click just plays audio and double-click selects the option.",
+    "@listenFirstDescription": {
+        "type": "text",
+        "description": "Dismissable instruction shown under the choices in the writing assistance card while Listen First is on, explaining the one-click/double-click split. Also the Listen First row's subtitle in the audio section of learning settings."
+    },
+    "listenFirstNeedsChoiceAudio": "Turn on Choices audio to use Listen First.",
+    "@listenFirstNeedsChoiceAudio": {
+        "type": "text",
+        "description": "Subtitle on the disabled Listen First row in learning settings, shown when the Choices audio toggle is off and Listen First would have nothing to play."
     },
     "trialPeriodExpired": "Your trial period has expired",
     "translations": "translations",
@@ -3766,6 +3778,7 @@
     "callHistoryNoAnswer": "No answer",
     "callHistoryDeclined": "Call declined",
     "callHistoryYouDeclined": "You declined this call",
+    "callHistoryTranscript": "Transcript",
     "callTranscriptTitle": "Call transcript",
     "callTranscriptLoadFailed": "Could not load the transcript",
     "callTranscriptRetry": "Try again",
@@ -4081,11 +4094,13 @@
     "saved": "Saved",
     "reset": "Reset",
     "errorFetchingDefinition": "Failed to fetch definition",
+    "errorFetchingWordInfo": "Failed to fetch word info",
     "errorProcessAnalytics": "Failed to process analytics",
     "errorDownloading": "Download failed",
     "translationError": "Translation error",
     "check": "Check",
     "unableToFindRoom": "No chat or course found with that code. Please try again.",
+    "unableToJoinCourseError": "We couldn't add you to this course right now. Please try again, or ask your teacher.",
     "numCompletedActivities": "Number of completed activities",
     "viewingAnalytics": "Viewing {visible}/{users} Analytics",
     "@viewingAnalytics": {
@@ -4163,7 +4178,21 @@
             }
         }
     },
+    "numActivities": "{count, plural, =1{1 activity} other{{count} activities}}",
+    "@numActivities": {
+        "type": "String",
+        "description": "Count of activities in a course, on the course info chips.",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
     "coursePlan": "Course Plan",
+    "upNext": "Up next",
+    "@upNext": {
+        "description": "Label on the course plan's next Mission (learning objective) header — the one the learner should work on next."
+    },
     "editCourseLater": "You can edit template title, descriptions, and course image later.",
     "createCourse": "Create course",
     "stats": "Stats",
@@ -4200,6 +4229,17 @@
     "rateActivityCommentHint": "Add a comment (optional)",
     "rateActivityCommentRejected": "Your comment couldn't be posted. Try rewording it, or submit your rating without a comment.",
     "rateActivityThanks": "Thanks for your feedback!",
+    "orchestratorFeedbackTooltip": "Flag this content",
+    "orchestratorFeedbackTitle": "What's wrong here?",
+    "orchestratorFeedbackPartSuggestion": "The suggestions",
+    "orchestratorFeedbackPartGoals": "The goal awards",
+    "orchestratorFeedbackCommentHint": "Say what's wrong with it",
+    "orchestratorFeedbackPickAward": "Which star?",
+    "orchestratorFeedbackPickAwardRequired": "Pick the star you're questioning",
+    "orchestratorFeedbackNoAwards": "This turn awarded no stars, so there's nothing to question here.",
+    "orchestratorFeedbackCommentRequired": "Add a comment so we know what to fix",
+    "orchestratorFeedbackSubmit": "Send",
+    "orchestratorFeedbackThanks": "Flagged. Thanks!",
     "activityRatingMeterLabel": "{percent}% positive ({count, plural, =1{1 rating} other{{count} ratings}})",
     "@activityRatingMeterLabel": {
         "type": "String",
@@ -4233,6 +4273,7 @@
     },
     "activityComplete": "This activity has been completed. The activity summary should be available below.",
     "joinOpenSession": "Join open session",
+    "noOpenSessions": "No open sessions right now",
     "activityNotFound": "Activity not found",
     "starsEarnedOfTotal": "{earned} of {total} stars earned",
     "@starsEarnedOfTotal": {
@@ -4302,6 +4343,8 @@
     "courseStartDesc": "Pangea Bot is ready to go anytime!\n\n...but learning is better with friends!",
     "languageMismatchTitle": "Language mismatch",
     "emptyChatSearch": "No DMs or chats found. Make sure your search is spelled correctly.",
+    "emptyGroupsSearch": "No groups found. Make sure your search is spelled correctly.",
+    "emptyActivitiesSearch": "No activities found. Make sure your search is spelled correctly.",
     "languageMismatchDesc": "Your target language doesn't match the language of this activity. Update your target language?",
     "reportWordIssueTooltip": "Report word information issue",
     "tokenInfoFeedbackDialogTitle": "Word Information Feedback",
@@ -4694,6 +4737,7 @@
     "youveCompletedPractice": "You've completed practice, keep it up to get better!",
     "courseDescription": "Courses consist of 3-8 modules each with activities to encourage practicing words in different contexts",
     "emailVerificationFailed": "Email verification failed. Please try again.",
+    "unlockActivitySummaries": "Unlock activity summaries",
     "unlockLearningTools": "Unlock word tools",
     "unlockPremiumAudio": "Unlock premium audio",
     "unlockTranslations": "Unlock translations",
@@ -4919,9 +4963,18 @@
     "@showMoreOptionsHint": {
         "description": "Semantics hint fragment: TalkBack reads it as 'double tap and hold to <this>' on controls whose long-press opens the options menu."
     },
-    "analyticsAccessNoticeTitle": "Learning Analytics Required",
-    "analyticsAccessNoticeDesc": "Admins of this course want to view your analytics to track your learning progress. Allow them access to join.",
-    "shareAnalytics": "Share Analytics",
+    "teacherAnalyticsRequestTitle": "Teacher requests your learning progress",
+    "teacherAnalyticsRequestDesc": "They'll see all the words and grammar you've used in {targetLang}, your level and XP, and the messages sent in course activities. Your 1-on-1 messages will not be shared. Sharing analytics is required to join the course.",
+    "@teacherAnalyticsRequestDesc": {
+        "type": "String",
+        "placeholders": {
+            "targetLang": {
+                "type": "String"
+            }
+        }
+    },
+    "shareAndJoin": "Share and join",
+    "goBack": "Go back",
     "setPermissionsLevelDesc": "Please choose a predefined role below or enter a custom permission level. Pick a whole number between 0 and 100.",
     "reportContentIssue": "Report content issue",
     "userTypeTitle": "I use Pangea Chat to",
@@ -4956,6 +5009,7 @@
     "shorterName": "Please limit name length to 50 characters or fewer.",
     "enterAName": "Please enter a name.",
     "writingAssistanceNoSub": "Writing assistance",
+    "writingAssistanceSuggestion": "Suggestion",
     "viewError": "View error",
     "gotIt": "Got it!",
     "chatDownloadDesc": "Downloads the full message history, including sender, date sent, original message, sent message, and use type.",
@@ -4983,6 +5037,7 @@
     "introChatDesc": "Anyone in the course can post.",
     "announcementsChatDesc": "Only course admins can post.",
     "mapSearchHint": "Search activities",
+    "coursePreview": "Course preview",
     "mapFilterAllLanguages": "All languages",
     "mapFilterNotStarted": "Not started",
     "mapFilterInProgress": "In progress",
@@ -5010,6 +5065,8 @@
     "@scrollToBottom": {},
     "courseImage": "Course image",
     "@courseImage": {},
+    "contentCreatedBy": "Created by",
+    "@contentCreatedBy": {},
     "avatarPreview": "Avatar preview",
     "@avatarPreview": {},
     "emotePreview": "Emote preview: {name}",
@@ -5286,6 +5343,14 @@
     "chatSearchPageLabel": "Chat search page",
     "selectImageLabel": "Select image",
     "userSearchTagsLabel": "Search in...",
+    "chatListFiltersLabel": "Chat filters",
+    "dms": "DMs",
+    "allFilterTooltip": "Show all chats",
+    "dmsFilterTooltip": "Show only direct messages",
+    "groupsFilterTooltip": "Show only group chats",
+    "activitiesFilterTooltip": "Show only activities",
+    "noGroupChatsYet": "You aren't in any group chats yet.",
+    "noActivitiesYet": "You aren't in any activities yet.",
     "courseDetails": "Course details",
     "objective": "Objective",
     "emptyInviteSearchHint": "Can't find who you're looking for? They may need to allow their profile to be found in search. Check Edit Profile in Settings.",
@@ -5478,5 +5543,76 @@
     },
     "resetLanguageLevel": "Reset language level",
     "noPermissionToInviteUsers": "You don't have permission to invite members here.",
-    "@noPermissionToInviteUsers": {}
+    "@noPermissionToInviteUsers": {},
+    "tutorialWelcome": "I'm Pangea Bot, your guide and AI conversation partner. Let's get learning!",
+    "tutorialWorldMapIntro": "This is the world map. Every roleplay activity in {language} lives here.",
+    "@tutorialWorldMapIntro": {
+        "placeholders": {
+            "language": {
+                "type": "String"
+            }
+        }
+    },
+    "tutorialWorldMapPickActivity": "This is a conversation activity you can play with me or a partner. Click on it to start playing!",
+    "tutorialCoursePlanIntro": "Welcome to your course, {courseName}! It will take you through a learning journey with your course mates.",
+    "@tutorialCoursePlanIntro": {
+        "placeholders": {
+            "courseName": {
+                "type": "String"
+            }
+        }
+    },
+    "tutorialCoursePlanProgress": "As you do activities and gain stars, you'll make progress here.",
+    "tutorialCoursePlanPickActivity": "These are the activities to try next in your course. Tap one to open and start it!",
+    "tutorialCoursePlanNoActivities": "Tap any activity in your plan to open and start it!",
+    "tutorialAppTourOffer": "Great job finishing your first activity! Would you like me to show you around the app?",
+    "tutorialAppTourAccept": "Give me a tour",
+    "tutorialAppTourDecline": "Skip",
+    "tutorialAppTourChats": "This is your chat list \u2014 find friends to chat with, or talk to me any time.",
+    "tutorialAppTourCoursesSome": "Your courses live here. Looks like you've joined one already!",
+    "tutorialAppTourCoursesNone": "Courses live here \u2014 you can join one with a code, or make your own.",
+    "tutorialAppTourAnalytics": "This is your progress: every word and grammar form you've used.",
+    "tutorialAppTourPractice": "You'll find personalized practice lessons here, as long as you've unlocked at least 10 vocab words",
+    "tutorialAppTourWorld": "And this brings you back to the world map any time. Happy learning!",
+    "edited": "Edited",
+    "@edited": {},
+    "attach": "Attach",
+    "@attach": {},
+    "tutorialSequenceTitleWorldOrientation": "Exploring the world",
+    "tutorialSequenceTitleCourseOrientation": "Exploring your course",
+    "tutorialSequenceTitleAppTour": "App tour",
+    "tutorialSequenceTitleChat": "Language tools",
+    "tutorialSequenceTitleOpenSessions": "Open sessions",
+    "tutorialSequenceTitleActivityRoles": "Choosing a role",
+    "tutorialOpenSessions": "These are activities other people are playing. Join one to chat, but be aware they might not respond right away.",
+    "tutorialActivityRoles": "These are the roles you can play in this activity. Pick the one that interests you!",
+    "analyticsSubscriptionWarningTitle": "Your progress isn't being tracked",
+    "analyticsSubscriptionWarningBody": "Without a subscription, your messages don't earn XP or add new words and grammar.",
+    "xpAmount": "{count} XP",
+    "@xpAmount": {
+        "description": "The XP a learner earned in one activity session, on its row in the Stars list.",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "vocabItemsUsed": "{count, plural, =1{1 vocab item used} other{{count} vocab items used}}",
+    "@vocabItemsUsed": {
+        "description": "Spoken label for the vocabulary count on a saved activity's row in the Stars list.",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "grammarItemsUsed": "{count, plural, =1{1 grammar item used} other{{count} grammar items used}}",
+    "@grammarItemsUsed": {
+        "description": "Spoken label for the grammar count on a saved activity's row in the Stars list.",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    }
 }

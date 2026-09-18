@@ -1,3 +1,4 @@
+import 'package:fluffychat/features/activity_sessions/activity_media_repo.dart';
 import 'package:fluffychat/features/course_plans/courses/course_filter.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/features/course_plans/payload_client/payload_client.dart';
@@ -27,6 +28,9 @@ import 'package:fluffychat/widgets/matrix.dart';
 /// - ``req.target_language`` → ``targetLanguage`` (L2).
 /// - ``req.target_l1`` → ``languageOfInstructions`` (L1).
 /// - ``req.target_cefr`` → ``cefrLevel``.
+/// - ``owner_mxid`` → ``ownerId`` (the credit; the plain-text mirror, never
+///   the ``owner`` relationship — a learner's token cannot read
+///   ``matrix-users``).
 /// - ``res.learning_objective_sequence.length`` → ``topicIds.length`` as a
 ///   non-empty placeholder list, so the "N modules" chip reads correctly. The
 ///   placeholder strings are never resolved against the v1 topics collection
@@ -85,15 +89,19 @@ class QuestPlansRepo {
     int page = 1,
     int limit = 10,
   }) async {
-    final resp = await _client().find<CoursePlanModel?>(
+    final resp = await _client().find<Map<String, dynamic>>(
       _collection,
-      _fromQuestPlanJson,
+      (json) => json,
       page: page,
       limit: limit,
       where: _whereFor(filter),
       depth: 0,
     );
-    final quests = resp.docs.whereType<CoursePlanModel>().toList();
+    final imageUrls = await _resolveImageUrls(resp.docs);
+    final quests = resp.docs
+        .map((json) => _fromQuestPlanJson(json, imageUrls: imageUrls))
+        .whereType<CoursePlanModel>()
+        .toList();
     return (quests: quests, hasNextPage: resp.hasNextPage);
   }
 
@@ -110,11 +118,13 @@ class QuestPlansRepo {
   static Future<CoursePlanModel?> get(String questId) async {
     if (await QuestRepo.removedQuests.contains(questId)) return null;
     try {
-      final plan = await _client().findById<CoursePlanModel?>(
+      final json = await _client().findById<Map<String, dynamic>>(
         _collection,
         questId,
-        _fromQuestPlanJson,
+        (json) => json,
       );
+      final imageUrls = await _resolveImageUrls([json]);
+      final plan = _fromQuestPlanJson(json, imageUrls: imageUrls);
       QuestRepo.removedQuests.unmark(questId);
       return plan;
     } catch (e) {
@@ -131,26 +141,68 @@ class QuestPlansRepo {
   /// by one costs a round trip per card, which is felt directly as browse
   /// latency. Ids that do not resolve are simply absent from the result.
   ///
-  /// [requireMissions] defaults to true to preserve the creation picker's rule
-  /// (#7700); catalog callers pass false.
+  /// [requireMissions] defaults to true, so a Mission-less quest is absent too.
+  /// A caller that genuinely wants every row a page of ids resolves to —
+  /// counting or repairing them, rather than offering them to a learner — opts
+  /// out explicitly.
   static Future<Map<String, CoursePlanModel>> getMany(
     List<String> questIds, {
     bool requireMissions = true,
   }) async {
     if (questIds.isEmpty) return const {};
-    final resp = await _client().find<CoursePlanModel?>(
+    final resp = await _client().find<Map<String, dynamic>>(
       _collection,
-      (json) => _fromQuestPlanJson(json, requireMissions: requireMissions),
+      (json) => json,
       limit: questIds.length,
       where: {
         'id': {'in': questIds},
       },
       depth: 0,
     );
-    return {
-      for (final plan in resp.docs.whereType<CoursePlanModel>())
-        plan.uuid: plan,
-    };
+    final imageUrls = await _resolveImageUrls(resp.docs);
+    final result = <String, CoursePlanModel>{};
+    for (final json in resp.docs) {
+      final plan = _fromQuestPlanJson(
+        json,
+        requireMissions: requireMissions,
+        imageUrls: imageUrls,
+      );
+      if (plan != null) result[plan.uuid] = plan;
+    }
+    return result;
+  }
+
+  /// Batch-resolves each rows `image.upload_id` via [ActivityMediaRepo.resolve]
+  /// A row with no image, or a lookup miss,
+  /// is simply absent from the result; callers treat `imageUrls[id] == null`
+  /// the same as no image (letter avatar fallback), not as an error.
+  static Future<Map<String, Uri>> _resolveImageUrls(
+    List<Map<String, dynamic>> rawDocs,
+  ) async {
+    final uploadIds = rawDocs
+        .map((json) => json['image'] as Map?)
+        .map((image) => image?['upload_id'] as String?)
+        .whereType<String>()
+        .toSet()
+        .toList();
+    if (uploadIds.isEmpty) return const {};
+
+    try {
+      final resolved = await ActivityMediaRepo.resolve(uploadIds);
+      final urls = <String, Uri>{};
+      for (final entry in resolved.entries) {
+        // Already an absolute URL — ActivityMediaRepo.resolve() normalizes
+        // a relative CMS path itself, for every caller, not just this one.
+        final raw = entry.value.thumbnailUrl ?? entry.value.url;
+        final uri = Uri.tryParse(raw);
+        if (uri != null) urls[entry.key] = uri;
+      }
+      return urls;
+    } catch (_) {
+      // A media lookup failure must not sink the whole quest list — it
+      // degrades to the same letter-avatar fallback as a quest with no image.
+      return const {};
+    }
   }
 
   /// JSON → synthesized [CoursePlanModel]. Returns ``null`` on a missing /
@@ -159,6 +211,7 @@ class QuestPlansRepo {
   static CoursePlanModel? _fromQuestPlanJson(
     Map<String, dynamic> json, {
     bool requireMissions = true,
+    Map<String, Uri>? imageUrls,
   }) {
     final id = json['id'] as String?;
     final req = json['req'] as Map<String, dynamic>?;
@@ -180,15 +233,16 @@ class QuestPlansRepo {
 
     final sequence = res['learning_objective_sequence'] as List<dynamic>?;
     final missionCount = sequence?.length ?? 0;
-    // A quest-plan with no missions has no content to build a course from — it
-    // would show as a "0 modules" card the learner can't actually create, so
-    // the creation picker drops it (#7700).
+    // A quest-plan with no missions has no content to build a course from, and
+    // none to join one for either: it renders as a "0 activities" card that
+    // leads nowhere. Every surface that offers a course to a learner drops it —
+    // the creation picker (#7700) and the browse-public catalog (#9088) alike;
+    // see course-preview.instructions.md.
     //
-    // Browsing is the other way round: whether a published course space appears
-    // in the catalog is decided by the catalog endpoint, from room state alone,
-    // and never by the contents of the quest behind it. A course whose quest is
-    // empty is still a real, joinable course. Callers reading the catalog pass
-    // requireMissions: false. See public-courses.instructions.md.
+    // Hence the default. This method is usually passed as a tear-off, which
+    // silently takes it, and a call site that quietly inherited the opposite
+    // value is exactly how browse came to list cards the preview refused
+    // (#9088). Opt out deliberately, at the call site, or not at all.
     if (requireMissions && missionCount == 0) return null;
     // Placeholder strings carry the *count* so the "N modules" chip reads
     // correctly. They are never resolved against the v1 ``course-plan-topics``
@@ -197,6 +251,9 @@ class QuestPlansRepo {
       missionCount,
       (i) => 'quest:$id:mission:$i',
     );
+
+    // Top-level field, a sibling of req/res, not nested inside either.
+    final imageUploadId = (json['image'] as Map?)?['upload_id'] as String?;
 
     return CoursePlanModel(
       uuid: id,
@@ -207,12 +264,24 @@ class QuestPlansRepo {
       cefrLevel: LanguageLevelTypeEnum.fromString(targetCefr),
       topicIds: placeholderTopicIds,
       mediaIds: const [],
+      // Populated by generate-quest's media-first cover search, or hand-set
+      // in the CMS admin for a quest made another way — absent on a quest
+      // whose search found nothing (or hasn't run), which is a normal state,
+      // not an error. See quest-plans.ts.
+      imageUrl: imageUrls?[imageUploadId],
       createdAt:
           DateTime.tryParse(json['createdAt'] as String? ?? '') ??
           DateTime.now(),
       updatedAt:
           DateTime.tryParse(json['updatedAt'] as String? ?? '') ??
           DateTime.now(),
+      // Who is credited on the create-course page. The plain-text mirror, not
+      // the `owner` relationship beside it: `owner` is a per-env matrix-users
+      // row id, and that collection is service- and admin-read only, so a
+      // learner's token can read this quest and never resolve the person
+      // behind it. Absent on a row whose owner was never recorded — which is
+      // NOT the same as Pangea's own (`CoursePlanModel.ownerId`).
+      ownerId: json['owner_mxid'] as String?,
     );
   }
 }

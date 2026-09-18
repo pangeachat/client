@@ -136,7 +136,21 @@ class TtsDeviceUtterance {
   /// way audio was heard only if a start was reported first — a completion
   /// with no start is the previous utterance's `end` event landing on this
   /// one, which never spoke.
-  void onSpeakReturned() => _settle();
+  ///
+  /// [engineCompleted] says the RESOLVED VALUE itself is the engine's
+  /// completion verdict, and is how [playedToEnd] is ever true on native. Both
+  /// native plugins resolve `speak` from inside their own completion callback
+  /// and post `speak.onComplete` immediately after it — Android through one
+  /// `Handler`, iOS through one channel — so the future always wins that race
+  /// and settles this utterance a turn before `completionHandler` arrives. The
+  /// value carries the same fact the late callback would have: on Android
+  /// `speak` resolves `1` only from `onDone` (a stop resolves `0`), and on iOS
+  /// only from `didFinish`. Without it, exposure never mints on any native
+  /// platform while the audio plays perfectly (#8493).
+  void onSpeakReturned({bool engineCompleted = false}) {
+    if (engineCompleted) _engineReportedComplete = true;
+    _settle();
+  }
 
   /// The plugin's `speak` future threw.
   void onSpeakThrew() => _settle(TtsDeviceOutcome.failed);
@@ -154,12 +168,15 @@ class TtsDeviceUtterance {
   /// app, or by the browser cancelling `speechSynthesis` ends with no stop of
   /// ours, and defining completion by the absence of our own stop would count
   /// every one of those as fully heard. It requires the engine to have
-  /// reported a completion.
+  /// reported a completion — through `completionHandler`, or through the
+  /// `speak` future resolving with the engine's own completion verdict, which
+  /// is the only one of the two that ever arrives in time on native. See
+  /// [onSpeakReturned].
   ///
-  /// The cost is under-counting on a platform whose plugin never fires
-  /// `completionHandler` — exposure would simply not be recorded there. That
-  /// is the right direction to fail for a research signal: a gap is visible,
-  /// a phantom is not.
+  /// The cost is under-counting on a platform that reports a completion
+  /// through neither — exposure would simply not be recorded there. That is
+  /// the right direction to fail for a research signal: a gap is visible, a
+  /// phantom is not.
   ///
   /// Captured at settle time rather than derived on read: [stopRequested] is
   /// mutable, and a LATER request's stop must not retroactively reclassify an
@@ -168,7 +185,9 @@ class TtsDeviceUtterance {
   bool _playedToEnd = false;
 
   /// Whether the engine reported this utterance COMPLETING, as opposed to
-  /// ending some other way.
+  /// ending some other way. Set from `completionHandler` on the web and from
+  /// the resolved `speak` value on native; see [onSpeakReturned] for why the
+  /// callback alone is not enough.
   bool _engineReportedComplete = false;
 
   TtsDeviceOutcome get _endedOutcome {

@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/overlay/overlay.dart';
 import 'package:fluffychat/features/overlay/overlay_display_details.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -53,8 +54,10 @@ class PointsGainedAnimation extends StatefulWidget {
 
 class PointsGainedAnimationState extends State<PointsGainedAnimation>
     with SingleTickerProviderStateMixin {
-  final Color? gainColor = AppConfig.gold;
-  final Color? loseColor = Colors.red;
+  /// The progress bar's gold, not the 3:1 mark gold: the burst is decoration
+  /// that repeats what the bar shows (#9112).
+  Color get gainColor => Theme.of(context).pangea.goldFixedDim;
+  Color get loseColor => Theme.of(context).pangea.errorGraphic;
 
   AnimationController? _controller;
   Animation<double>? _fadeAnimation;
@@ -153,34 +156,37 @@ class PointsGainedAnimationState extends State<PointsGainedAnimation>
       textScaler: TextScaler.noScaling,
       style: TextStyle(
         fontSize: _particleFontSize,
-        color: textColor ?? Theme.of(context).colorScheme.primary,
+        color: textColor,
         height: 1.3,
       ),
     );
 
-    return Material(
-      type: MaterialType.transparency,
-      child: FadeTransition(
-        opacity: _fadeAnimation!,
-        child: IgnorePointer(
-          ignoring: _controller!.isAnimating,
-          child: Stack(
-            children: List.generate(_points.abs(), (index) {
-              return AnimatedBuilder(
-                animation: _controller!,
-                builder: (context, child) {
-                  final progress = _progressAnimation!.value;
-                  final trajectory = _trajectories[index];
-                  return Transform.translate(
-                    offset: Offset(
-                      trajectory.dx * progress,
-                      trajectory.dy * progress + gravity * pow(progress, 2),
-                    ),
-                    child: plusWidget,
-                  );
-                },
-              );
-            }),
+    // Decoration: a screen reader would otherwise read every "+" glyph.
+    return ExcludeSemantics(
+      child: Material(
+        type: MaterialType.transparency,
+        child: FadeTransition(
+          opacity: _fadeAnimation!,
+          child: IgnorePointer(
+            ignoring: _controller!.isAnimating,
+            child: Stack(
+              children: List.generate(_points.abs(), (index) {
+                return AnimatedBuilder(
+                  animation: _controller!,
+                  builder: (context, child) {
+                    final progress = _progressAnimation!.value;
+                    final trajectory = _trajectories[index];
+                    return Transform.translate(
+                      offset: Offset(
+                        trajectory.dx * progress,
+                        trajectory.dy * progress + gravity * pow(progress, 2),
+                      ),
+                      child: plusWidget,
+                    );
+                  },
+                );
+              }),
+            ),
           ),
         ),
       ),

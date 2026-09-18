@@ -36,7 +36,14 @@ The whole grammar in one place. The path is always `/`; state rides in the query
 
 - **`?c=<spaceid>`** — the **course context**: the course the workspace is scoped
   to, absent for the whole world. Read by the map and the course panels alike
-  (see [The course context](#the-course-context)).
+  (see [The course context](#the-course-context)). It also **names an open
+  course panel**: under a context the course panel is always on screen, and a
+  `course` token in `?left=` says it is EXPANDED — its card rather than its
+  floor, the context bar ([Closing a panel](#closing-a-panel-x-or-back-arrow)).
+  So `?c=!s` alone is the course at its bar, and `?c=!s&left=course` is the
+  card, in the same slot. This is the one panel the token list does not spell
+  out, and it is why collapsing the card moves nothing else in the column
+  ([#9037](https://github.com/pangeachat/client/issues/9037)).
 - **`?left=` and `?right=`** — comma-separated ordered lists of **panel tokens**,
   one token per open panel, ordered from bottom to top.
 - A token is **`type:param`**. The type names the surface (`chats`, `room`,
@@ -55,12 +62,22 @@ The rules that keep the grammar legible:
 
 - **First beneath, second on top — in both lists.** A column's first token is
   the panel that folds behind under width pressure; the second stays visible.
-  For a master/detail pair that means master first, then detail; for a pair the
-  registry does not relate (a course card with a live room beside it) it means
-  context first, then content. Each column draws its first panel at its own
-  screen edge with the second blooming toward the center — but that
-  justification is the renderer's concern; the URL never mirrors pixel
-  placement.
+  For a master/detail pair that means master first, then detail. Each column
+  draws its first panel at its own screen edge with the second blooming toward
+  the center — but that justification is the renderer's concern; the URL never
+  mirrors pixel placement.
+- **The course seats LAST in its column** — after the chat list, chat or
+  session it opens over, not before them
+  ([#9037](https://github.com/pangeachat/client/issues/9037)). It is the one
+  panel whose collapsed state is the *absence* of its token, so card and
+  collapse share the far end of the column: collapsing hands the width back to
+  the panel beside it without moving that panel, and expanding takes it from
+  the same end. Seated first, every collapse re-justified the whole column to
+  the rail and every expand pushed it back — a chat changing halves of the
+  screen because a card beside it opened. It is also the one panel that can
+  reveal nothing folded behind it (its single control is the chevron), so the
+  fold reads that, not position: **a panel with a floor yields first whatever
+  its place in the list, and nothing ever folds behind one.**
 - **Token params are short, human-readable values.** Never JSON or any nested
   structure, and never a repeat of what the token type already says: a construct
   detail is `vocab:abrigadoro.adj` — the construct type is the token type, so it
@@ -154,13 +171,24 @@ token over the course-scoped map.
 **Context persists, and navigation never consumes it.** Opening, closing, and
 switching panels — closing the course card itself, tapping an activity pin,
 moving to Chats or Settings — all leave `?c=` untouched; closing panels is
-precisely how you get a clear look at the scoped map (#7087). What the learner
-then sees in the map's search slot is the **course context bar** — the closed
-card's header, saying which course the map is scoped to and leading back into
-the card
-([world-map.instructions.md](world-map.instructions.md#the-course-context-bar));
-it is chrome, not a panel, and carries no close control, because `?c=` is
-cleared by the World control below, never by dismissing its indicator. The context
+precisely how you get a clear look at the scoped map (#7087) — as far as the
+course panel allows: it has a floor rather than a close, so it collapses to
+its indicator instead of clearing away ([Closing a panel](#closing-a-panel-x-or-back-arrow)).
+What the learner then sees on **wide**, with nothing else open in the column, is
+the course panel at its **floor** — the
+[course context bar](world-map.instructions.md#the-course-context-bar), the
+closed card's header, saying which course the map is scoped to and leading back
+into the card. It is that panel's other state, drawn in that panel's own slot,
+not chrome placed somewhere else. With another panel open the collapsed course
+is not seated at all: a one-line bar is not worth a panel's strip of the
+workspace, and because the course seats last, the panel beside it simply widens
+into the strip the card gave back
+([#9037](https://github.com/pangeachat/client/issues/9037)). Either way it
+carries no close control, because `?c=` is cleared by the World control below,
+never by dismissing its indicator. On narrow
+there is no bar: the peek's own header does that naming, which is why the peek
+cannot be dismissed
+([#8816](https://github.com/pangeachat/client/issues/8816)). The context
 changes in three ways: selecting another **course** replaces it; the
 **World/home** control clears it; and **leaving or deleting the course you are
 in** clears it. The latter two are the same deliberate full reset — dropping
@@ -274,8 +302,11 @@ learner opens analytics or settings on the right at the same time.
 
 Each open surface is its own panel with its own close, and closing one leaves
 the rest open (close the chat list but keep the chat; close a course card to
-widen the map while the chat stays open). Selecting a section from the **left
-nav rail** (Chats, Courses, a course) **replaces** the open left-column panels
+widen the map while the chat stays open) — except a panel with a **floor**
+instead of a close, which is the course panel alone
+([Closing a panel](#closing-a-panel-x-or-back-arrow)). Selecting a
+section from the **left nav rail** (Chats, Courses, a course) **replaces** the
+open left-column panels
 with that section rather than stacking beside them, while right-column
 companions (analytics, a detail) stay open. Opening a course from a map pin or a
 Courses-list tile is navigating within your content, not a rail section switch,
@@ -289,7 +320,11 @@ if a context is set, the world otherwise.
 
 Every workspace panel announces as one named semantic group — "Settings page", "Vocab page", "Chats page" — before its content, so a screen-reader user always knows which panel they entered and can treat panels as landmarks. The group is authored where every column token resolves ([`WorkspaceLeftPanel`](../../lib/routes/world/left_panel/workspace_left_panel.dart), [`WorkspaceRightPanel`](../../lib/routes/world/right_panel/workspace_right_panel.dart)), never in a panel's own view or chrome, so a panel cannot lose its group by drawing its own header — the failure that left the analytics panels and the whole left column ungrouped while settings was grouped (#8729). The group's name and the panel's "Close X" label share one source ([`PanelTypesEnum`](../../lib/features/navigation/panel_types_enum.dart), `displayName` beside `closeButtonLabel`), so the two can never disagree.
 
-A screen reader browses the workspace in reading order, not paint order: the nav rail first, then the open left panels, the open right panels, the user cluster / analytics bar, and the map — the backdrop everything overlays — last (#8755). The browse order is authored with ordinal sort keys ([`BrowseOrder`](../../lib/widgets/layouts/workspace_shell.dart)) on each region's *labeled* semantic container (a key on an unlabeled wrapper forms a generic node VoiceOver reorders). VoiceOver additionally sorts overlapping siblings by their horizontal centers regardless of keys, so the full-bleed map cannot key its way out of mid-sweep: the map group's container is anchored to a thin right-edge strip whose children — pins, attribution, zoom controls — overflow to their true positions, with pointer hits passed through beyond the strip's bounds. Only the search/context slot sits outside the group, keyed between the cluster and the map.
+A screen reader browses the workspace in reading order, not paint order: the nav rail first, then the open left panels, the open right panels, the user cluster / analytics bar, and the map — the backdrop everything overlays — last (#8755). Keyboard Tab walks the same sequence, ending with the map's search/context slot, its zoom controls, and the map's own single stop (#8810): the primary navigation and the panel a learner just opened never sit behind the backdrop they are drawn over. One rank per region ([`WorkspaceOrder`](../../lib/widgets/layouts/workspace_shell.dart)) feeds both orders, because they are separate mechanisms that otherwise drift — a sort key reorders only the semantics tree, and Tab follows Flutter's own traversal policy. The sort key goes on each region's *labeled* semantic container (a key on an unlabeled wrapper forms a generic node VoiceOver reorders); the focus order goes on the region's slot in the shell's ordered focus-traversal group. VoiceOver additionally sorts overlapping siblings by their horizontal centers regardless of keys, so the full-bleed map cannot key its way out of mid-sweep: the map group's container is anchored to a thin right-edge strip whose children — pins, attribution, zoom controls — overflow to their true positions, with pointer hits passed through beyond the strip's bounds. Only the search/context slot sits outside the group, keyed between the cluster and the map.
+
+When a user-cluster button or a rail course opens a panel, focus moves from that control to the panel itself — its named group, so a screen reader announces the page it just entered — one discrete claim after the panel mounts, so the panel a learner just opened is where their next keypress lands. The group is not a Tab stop: the next Tab reaches the panel's first control, today its header's close or back button. A panel opened any other way — a URL, the rail's section icons, a map pin — leaves focus where it was. This is the shape of the onboarding step group (accessibility.instructions.md, "Focus after an in-place content swap"). The claim is armed by the cluster's open methods ([`UserClusterViewModel`](../../lib/routes/world/user_cluster_view_model.dart)), the rail's course items ([`SpacesNavigationRail`](../../lib/widgets/navigation_rail.dart)), the course page's "See all" links ([`CourseOverview`](../../lib/routes/chat/chat_details/course_overview/course_overview.dart)) and management-page openers ([`SpaceDetailsController`](../../lib/routes/chat/chat_details/space_details.dart)), and the left panels' close and back control ([`LeftPanelCloseButton`](../../lib/routes/world/left_panel/left_panel_close_button.dart)), through a one-shot [`PanelEntryIntent`](../../lib/features/navigation/panel_entry_intent.dart) that expires within a second so a press that opened nothing cannot move focus later, and taken by the group either column's dispatcher authors ([`PanelEntryFocus`](../../lib/routes/world/right_panel/panel_entry_focus.dart)) when the panel mounts.
+
+Moving within a panel family claims the same way, because each of these moves destroys the panel the pressed control sits in, and the control with it: a course section's "See all", the back arrow out of it, a management page opened from the course card, such as invite or edit, an activity opened from a course's activity row and the back arrow that returns from it to the card, and the close or back control of a detail whose parent is open, such as that same page closing back to the card. The parent is either folded beneath the detail, where it mounts fresh and claims like any opened panel, or on screen beside it, where nothing mounts, so the claim names the parent and the panel already on screen takes it. These controls first drop the focus history, as the onboarding step swap does, so focus is never handed back to an older control such as the rail while the claim is pending. Chat panels are not part of this: a chat's sub-page pops, and a chat closed beside its list, leave focus to the framework.
 
 ### Closing a panel: X or back arrow
 
@@ -303,6 +338,50 @@ user came from:
   context closes back to the course card.
 - An **X** means closing simply reveals what is beneath: the other panels and
   the map.
+- An **expand/collapse chevron** replaces both where a panel has a **floor
+  instead of a close**. The only one is the course panel under `?c=`
+  ([#8816](https://github.com/pangeachat/client/issues/8816)), and it has a
+  floor on **both** form factors: the nav cavity's collapsed peek on narrow,
+  the [course context bar](world-map.instructions.md#the-course-context-bar) on
+  wide. **Both states belong to the panel** — the floor is a state of it,
+  never a separate surface drawn somewhere else — and because the course seats
+  last in its column, moving between them hands width back or takes it from the
+  far end, so the panel beside it never moves
+  ([#9037](https://github.com/pangeachat/client/issues/9037)). Either way the
+  course never leaves the screen, so there is nothing an X could reveal and
+  nowhere a back arrow could go — only two states to move between, and the
+  chevron is offered in both. **Width never picks the state.** An expanded panel folds under
+  pressure rather than being shrunk into its floor: a floor the budget imposed would carry a
+  chevron with nothing to do — the token is already open, and expanding would
+  be retaken on the same frame
+  ([#9037](https://github.com/pangeachat/client/issues/9037)). So wherever the
+  bar is drawn, its chevron works. The cost is that between the two-column
+  breakpoint and the width the card and a chat both fit, a folded course names
+  itself nowhere; the chat's back arrow is the way back to it. The chevron keeps one place per form factor, in both states: on
+  **wide** it rides the **trailing** edge beside the course's share / focus
+  actions, in the open card and the context bar alike
+  ([#8866](https://github.com/pangeachat/client/issues/8866)); on **narrow** it
+  keeps the **leading** slot the X would have taken, where every other cavity
+  surface's control sits. One control in one place is the point; a panel whose
+  close and whose expand sat on opposite sides of the header made two states
+  look like two different surfaces. On **wide** the whole header is the pointer
+  target for that control in both states: the bar reopens the card on a tap
+  anywhere but its actions, and the open card's header collapses it the same
+  way ([#8909](https://github.com/pangeachat/client/issues/8909)) — one surface
+  toggling, not a whole-surface tap one way and a single glyph the other. The
+  chevron stays the one announced, focusable control; the header tap adds no
+  second node.
+
+  **Which way it points follows the surface, not the state's name.** On narrow
+  the cavity is a sheet that slides, so the chevron points the way it will
+  travel — up at the floor, down when open. On wide nothing slides: the panel
+  appears in place, so it takes the ordinary **disclosure** convention instead
+  — down to reveal the card, up to hide it again — the exact inverse. The two
+  are deliberately not unified: a glyph naming a direction of motion is wrong
+  where there is no motion, and one naming disclosure is wrong on a sheet the
+  learner drags by hand. Both are spelled out in
+  [`ChevronMeaning`](../../lib/routes/world/left_panel/floor_chevron.dart), so
+  a host declares which it is under instead of inheriting one by accident.
 
 **Navigation never clears context or any other state to force one affordance or
 the other.** If a panel shows the wrong affordance, its tree placement or the
@@ -365,21 +444,30 @@ One vocabulary covers how content opens:
   its **detail** — not drawn, one back-step away — and **unfolds** back to two
   panels when width returns. When a column's two panels are not a registry
   master/detail pair (a `course` card with a live `room` beside it), the same
-  rule applies positionally — the first token folds behind the second — so a
-  chat opened in a course folds the course card behind it, and closing the chat
-  reveals the card as it was left (#7332).
+  rule applies positionally — the first token folds behind the second (#9030).
+  **A panel with a floor overrides position, in both directions**
+  ([#9037](https://github.com/pangeachat/client/issues/9037)): it yields first
+  wherever it sits, and nothing ever folds behind it. Its single control is the
+  chevron — it can show neither an X nor a back arrow — so whatever folded
+  behind it could never be revealed, and it is the one panel with a collapsed
+  state to fall back to anyway. So a chat opened in a course folds the course
+  card behind it whichever order they sit in, and closing the chat reveals the
+  card as it was left (#7332).
+  One pair folds **by declaration** rather than width: a child whose registry entry sets [`stacksOnParent`](../../lib/features/navigation/panel_registry.dart) (the add-course subpage) always folds its parent, so the whole flow is one panel and the map behind it keeps the width — see [course-preview.instructions.md](course-preview.instructions.md) (#7826).
 
 **Panel widths come in three named families, not per-panel numbers (#7572).**
-Panels that can replace each other in a slot share one min/comfort/ideal
-triple (`PanelWidths` in the registry), so navigating between them never
-resizes the column — the width-jump QA kept catching. The families: **list**
-(the thin index columns — the chat list, the DM-create picker), **wide** (the
-live/content surfaces — a chat, a session, an activity or course card, and the
-course flow pages, which host forms and media and earn the same room), and
-**tool** (the entire right column — settings, analytics and its details,
-practice — one width for every tool panel). The only remaining width step is
-the deliberate list↔wide difference. A new panel type joins a family; it does
-not invent its own widths.
+Panels that can replace each other in a slot share one min/comfort/ideal triple
+(`PanelWidths` in the registry), so navigating between them never resizes the
+column — the width-jump QA kept catching. The families: **list** (the narrow
+column — the index surfaces (the chat list, the Courses hub, the DM-create
+picker, the archive) plus the add-course flow pages, which stay at the hub's
+width rather than widening out from under it), **wide** (the live/content
+surfaces — a chat, a session, an activity or course card, and the course
+management pages (details / invite / edit), which host forms and media and earn
+the same room), and **tool** (the entire right column — settings, analytics and
+its details, practice — one width for every tool panel). The only remaining
+width step is the deliberate list↔wide difference. A new panel type joins a
+family; it does not invent its own widths.
 
 **Opening is a fit test, not a depth count.** A surface opens a new panel when
 the column is under its two-panel budget *and* the budget can grant the newcomer
@@ -476,6 +564,22 @@ swipe up for the full plan. On a wide screen the same content is a bounded
 panel beside the map. Only the *launched session* — a live chat — is a
 full-screen surface (see *Full-screen surfaces* below).
 
+**The course panel's peek is a floor, not a size it can be dismissed past.**
+Under `?c=` the narrow course panel is always mounted: dragging it down settles
+at the collapsed peek instead of dismissing, and the peek carries an expand
+chevron rather than an X
+([Closing a panel](#closing-a-panel-x-or-back-arrow)), so the course menu is
+never off screen and is always one tap from expanding
+([#8816](https://github.com/pangeachat/client/issues/8816)). This is how a
+narrow scoped map says **which** course scopes it — the job the
+[course context bar](world-map.instructions.md#the-course-context-bar) does on
+wide, and the reason narrow has no bar. The floor is against the panel's OWN
+gestures — a drag or its chevron; selecting another rail section still replaces
+it like any left panel, and the rail's course shortcut brings it straight back.
+The floor belongs to the course panel alone: an
+activity plan still dismisses, and a full-screen activity carries **no** course
+indicator above it, because the plan needs the vertical space.
+
 The widget remembers its height **per course** (and per activity): opening a
 chat over it tears it down, and closing that chat reopens it at the size the
 learner left *that* course at, while a different course still opens at the
@@ -519,9 +623,9 @@ just tall enough to show all their rows — all chats, or all joined courses (th
 add-course buttons when there are none) — capped by the height available below
 the analytics bar (a short list yields a short sheet; a long one fills to the
 cap and scrolls). The **add-course subpages open at full height** — start my
-own, browse public courses, and the course preview they push all show content
-unrelated to the map behind them, so a half-open sheet only de-emphasizes what
-the learner navigated there for (#8659). Other sections open at roughly half
+own, browse public courses, and enter a code show list/form content unrelated
+to the map behind them, so a half-open sheet only de-emphasizes what the
+learner navigated there for (#8659). The exception is the **course preview** those lists push: it rests low, because the map behind it is showing that course's activities (#7826) — see [course-preview.instructions.md](course-preview.instructions.md). Other sections open at roughly half
 the screen. The 4 rail
 icons remain anchored at the bottom of the widget at all heights. Content inside
 the expanded area is **scrollable**.
@@ -532,16 +636,18 @@ browse public) ride the panel header as compact right-justified icons, so the
 joined-course list keeps the vertical space; when the learner is in no courses
 yet they drop to full-width buttons in the body as the empty state.
 
+**Courses are ordered by recent activity.** A course's activity is the newest event in the course space itself or in any of its chats and activity sessions the learner has joined. This is the same timestamp the chat list sorts by. The course space's own timeline holds little beyond setup, so the space alone is not enough. The most recently active course comes first, and the order updates live as activity arrives: sending a message in one of a course's chats moves that course to the top of its group. Pending invites have no activity yet, so they are ordered by name. Courses with tied activity are also ordered by name (#9004).
+
 **The Courses hub groups by role — only when the learner holds both.** A
 learner who both administers courses and takes courses sees the list split
 into **Teaching** (courses where they hold admin power, ≥ 100 — the same signal
 as the knock badge; there is no separate teacher role) and **Learning** (every
-other joined course), each alphabetical, with pending invites in their own
+other joined course), each in activity order, with pending invites in their own
 **Invited** group ahead of both (an invite's role is unknown until join, so it
 is never sorted as teaching). Section headers carry the count and collapse on
 tap; collapsed state is device-local view state, never in the URL, and resets
 with the app. **A learner who holds only one role sees no headers at all** —
-the flat invited-first alphabetical list — so the split appears only where it
+the flat invited-first list, in activity order — so the split appears only where it
 helps (#8425). Applies on web and narrow alike; content-fit counts the header
 rows. The mobile course shortcut is a single avatar and does not carry role.
 
@@ -556,7 +662,7 @@ half, full — is ephemeral view state, exactly like fold recency above: a cold
 link or a refresh with an open **section** token (the chat list, the Courses
 hub) or an **activity plan** draws it expanded at its default rest height (the
 leaf rule) — content-fit for the list sections (the chat list, the Courses
-hub), full for the add-course subpages (#8659), roughly half otherwise; a
+hub), full for the add-course subpages (#8659) but low for the course preview they push (#7826), roughly half otherwise; a
 **course card** draws at its remembered height —
 the collapsed peek by
 default (see the per-course memory above), so the scoped map leads. The
@@ -731,7 +837,7 @@ behaves the same on mobile and desktop.
 | A course management page (invite, edit, access, permissions, change-course) | the course card's More menu | left | opens as a `coursepage` detail **beside the card**, folding onto it only under width pressure — the same fit test as a settings page. Never replaces the card |
 | Chat list | the rail | left | open panel (master) |
 | Live chat / session | a chat-list row, an activity launch, **a course room row** | left | open panel (detail); one live view at a time. A course room rides over the course context (`?c=` stays), so closing it reveals the course |
-| Chat members / settings (a regular chat) | the chat header | the chat panel | push (members/search live *within* the chat, not beside it) |
+| Chat members / settings (a regular chat) | the chat header's More menu | the chat panel | push (members/search live *within* the chat, not beside it) |
 | Analytics (vocab / grammar / sessions) | a top-right cluster tracker (the **Stars** tracker opens the sessions panel) | right | open panel (master) |
 | Level | the **level medal** on the powerups pill | right | open panel (an analytics tab) |
 | A construct detail | tapping a vocab/grammar item | right | open panel (detail) beside its summary; **one detail at a time, across both columns** — a vocab detail, a grammar detail, and a completed-activity `session` review share ONE slot (a live `room` chat is independent and stays open); folds under pressure |
@@ -742,6 +848,10 @@ behaves the same on mobile and desktop.
 | A settings leaf (password, blocked users, emotes, …) | within its settings page | the settings panel | push |
 | Courses (your courses + add a course) | the **Courses** rail icon | left | open panel (master) — joined-course tiles plus the add-course options (start-my-own / browse / enter-code); tiles sit under Invited / Teaching / Learning headers when the learner holds both roles ([grouping rule](#single-column-bottom-nav)) |
 | Activity plan | a course's activity list, a map pin (tap) | map content | a left-column `activity:<id>` panel over the map (the nav widget's cavity at half height on narrow, pin visible above), camera on its pin. It claims the single **live view** (a `liveView` sibling of `room`/`session`), so opening it drops any open chat and starting the session drops the plan; it sizes by the registry like a `room` (#7385). When the learner already holds an unfinished session, the bound session room rides in the token param so the plan offers resume instead of a fresh instance (#7257). Its close follows the [affordance rule](#closing-a-panel-x-or-back-arrow): with `?c=` set (opened from the course's activity list, or from a pin on the course-scoped map) a back arrow returns to the course card; with no context (a world-map pin, a standalone shared link) an X reveals the map. **Start** launches the session, which runs as a chat room (one live view) |
+
+### A chat's header actions
+
+Every chat header carries one **More** menu. It offers search and chat details, which used to be icons of their own, and every action the chat-list row's long-press menu offers: go to course, notifications, mark read or unread, pin, leave, delete. Long-press is a gesture many learners never discover, so no action may be reachable only that way. Both menus are built from one list ([`chatContextMenuItems`](../../lib/routes/chat/chat_details/chat_context_menu_action.dart)), so an action added to either shows up in both. The header drops only "open this chat", which is already on screen. A regular chat also carries the call buttons; an activity session carries Invite and Download in its menu instead ([activities.instructions.md](activities.instructions.md)). A session that has not started shows its start page in place of the chat, and that page's menu follows the same rule ([activity-start-page.instructions.md](activity-start-page.instructions.md)).
 
 ### One live session at a time
 
@@ -781,7 +891,7 @@ until it is explicitly ended, finished, or times out.
   control (the same leave affordance as leaving a chat); ending discards
   in-progress work, so it asks first. The panel's **X is just "leave"** —
   drops the panel, reveals what's beneath, never prompts.
-- **The timer runs on wall-clock** from session start and keeps counting while
+- **The timer runs on wall-clock** from the first exercise appearing (the loading phases are not on the learner's clock) and keeps counting while
   the panel is closed. This is itself an anti-cheat mechanism: stepping out
   mid-session to consult a dictionary or an AI costs the clock, so the speed
   bonus rewards finishing unaided in one sitting.
@@ -834,8 +944,11 @@ On a narrow screen the cluster becomes the
 [single-column analytics nav bar](#single-column-analytics-nav-bar) — same elements,
 same tokens, horizontal at the top.
 It has its own gold **"powerups" visual** (per Figma), top to bottom: the user's
-**avatar** wrapped in an XP ring (a gray track that fills gold clockwise toward
-the next level, resetting on level-up); a gold **powerups pill** of three
+**avatar** wrapped in an XP ring (an opaque track that fills gold clockwise
+toward the next level, resetting on level-up — deep gray in light, deep gold in
+dark, stroked wider than the gold arc so the arc rides inside it and stays
+readable over map tiles: `AppConfig.xpTrackByTheme`, #8763); a gold **powerups
+pill** of three
 trackers — total **Stars** earned, **Grammar**, **Vocabulary** — with the
 **level medal** overhanging its base; and the active L2 **flag** below. The
 Stars count is the learner's stars summed across activities, best per activity

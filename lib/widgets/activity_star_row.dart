@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 
 class ActivityStarRow extends StatelessWidget {
@@ -10,9 +10,17 @@ class ActivityStarRow extends StatelessWidget {
   final bool condensed;
 
   /// Colour for the empty (unearned) star borders and the condensed count text.
-  /// Defaults to [AppConfig.grayText]; pass white when the row sits on a
-  /// coloured (Ongoing/Open) card so the borders read against the fill.
+  /// Defaults to the theme's `onSurfaceVariant`; pass the fill's ink when the
+  /// row sits on a coloured (Ongoing/Open) card so the borders read against
+  /// the fill.
   final Color? emptyColor;
+
+  /// Colour for the earned stars. Defaults to the gold mark, which is tuned
+  /// for the theme's surfaces; on a saturated state fill (an ongoing or
+  /// joinable activity card) pass the fill's ink instead — the gold reads
+  /// muddy on a vivid purple or green, so there an earned star is a solid
+  /// star in the ink and an unearned one an outline in the same ink.
+  final Color? earnedColor;
 
   const ActivityStarRow({
     super.key,
@@ -21,12 +29,19 @@ class ActivityStarRow extends StatelessWidget {
     this.iconSize = 16,
     this.condensed = false,
     this.emptyColor,
+    this.earnedColor,
   });
 
   @override
   Widget build(BuildContext context) {
     if (total == 0) return const SizedBox.shrink();
     final filled = earned.clamp(0, total);
+    // Both marks are theme-aware: the gold is unreadable on a light surface
+    // and the old fixed grey was unreadable on a dark one, so each state used
+    // to fail 1.4.11 in the theme the other passed (#8760).
+    final goldColor = earnedColor ?? Theme.of(context).pangea.goldGraphic;
+    final unearnedColor =
+        emptyColor ?? Theme.of(context).colorScheme.onSurfaceVariant;
     if (condensed) {
       return Row(
         mainAxisSize: MainAxisSize.min,
@@ -34,9 +49,9 @@ class ActivityStarRow extends StatelessWidget {
         children: [
           Text(
             "$filled/$total",
-            style: TextStyle(fontSize: iconSize, color: emptyColor),
+            style: TextStyle(fontSize: iconSize, color: unearnedColor),
           ),
-          Icon(Icons.star, size: iconSize, color: AppConfig.gold),
+          Icon(Icons.star, size: iconSize, color: goldColor),
         ],
       );
     }
@@ -47,8 +62,15 @@ class ActivityStarRow extends StatelessWidget {
       // SizedBox(height: 16) — so a second run paints outside the card (#8595).
       // Shrinking keeps it one row; [condensed] is the fallback for counts too
       // high to stay readable at any scale.
+      //
+      // Start-aligned, not the FittedBox default of centred: a host that hands
+      // this a tight width would otherwise float the stars in whatever space
+      // is left over, so the same row sat at a different offset depending on
+      // its neighbours -- the Stars list's rows drifted with the presence of a
+      // CEFR label (#9032). Hosts that want it centred centre it themselves.
       child: FittedBox(
         fit: BoxFit.scaleDown,
+        alignment: AlignmentDirectional.centerStart,
         child: Row(
           mainAxisSize: MainAxisSize.min,
           spacing: 2.0,
@@ -57,9 +79,7 @@ class ActivityStarRow extends StatelessWidget {
             (i) => Icon(
               i < filled ? Icons.star : Icons.star_border,
               size: iconSize,
-              color: i < filled
-                  ? AppConfig.gold
-                  : (emptyColor ?? AppConfig.grayText),
+              color: i < filled ? goldColor : unearnedColor,
             ),
           ),
         ),

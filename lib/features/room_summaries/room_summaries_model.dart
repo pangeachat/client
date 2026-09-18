@@ -29,6 +29,15 @@ class ActivitySessionSummariesModel extends RoomSummariesModel {
 
   ActivitySessionsStatusModel get activitySessionStatuses =>
       ActivitySessionsStatusModel(_activityInstances);
+
+  /// This model with [previews] laid over it: a fresher read replaces the
+  /// sessions it covers, and every session it leaves out keeps its last read.
+  ActivitySessionSummariesModel withPreviews(
+    Map<String, RoomSummaryResponse> previews,
+  ) => ActivitySessionSummariesModel({
+    ..._roomSummaries,
+    ...previews,
+  }, activityId: activityId);
 }
 
 class CourseInfoSummariesModel extends RoomSummariesModel {
@@ -44,6 +53,8 @@ class CourseInfoSummariesModel extends RoomSummariesModel {
       .whereType<String>()
       .toSet();
 
-  bool hasCompletedActivity(String userID, String activityID) =>
-      _completedActivities(userID).contains(activityID);
+  /// False for a signed-out account (no user id), which is what a course
+  /// page still building through logout asks (#9019).
+  bool hasCompletedActivity(String? userID, String activityID) =>
+      userID != null && _completedActivities(userID).contains(activityID);
 }

@@ -40,18 +40,33 @@ void main() {
         });
   }
 
-  /// Resolving a step spans several sequential awaits — both store
-  /// hydrations, then the platform channel — and each needs the fake-async
-  /// zone's microtask queue drained again before the next one resumes. One
-  /// pumpAndSettle does not get far enough down that chain, so the banner
-  /// reads as un-rendered while it is really still mid-resolve. Bounded so a
-  /// genuinely stuck future still fails the test rather than hanging.
-  Future<void> settle(WidgetTester tester) async {
+  Future<void> drain(WidgetTester tester) async {
     for (var i = 0; i < 10; i++) {
       await tester.pump(Duration.zero);
     }
+  }
+
+  /// Resolving a step spans several sequential awaits — the localizations
+  /// load that mounts the composer, the focus change that starts the
+  /// keyboard-settle delay, then after it both store hydrations and the
+  /// platform channel — and each needs the fake-async zone's microtask queue
+  /// drained again before the next one resumes. One pumpAndSettle does not
+  /// get far enough down that chain, so the banner reads as un-rendered
+  /// while it is really still mid-resolve. The delay is elapsed only once
+  /// the focus change has been delivered, since it counts from there.
+  /// Bounded so a genuinely stuck future still fails the test rather than
+  /// hanging.
+  Future<void> settle(WidgetTester tester) async {
+    await drain(tester);
+    await tester.pump(KeyboardPromptBanner.keyboardSettleDelay);
+    await drain(tester);
     await tester.pumpAndSettle();
   }
+
+  /// Bumped to rebuild the banner's parent without changing anything it is
+  /// given — the chat view does this on every frame of the keyboard's inset
+  /// animation.
+  late ValueNotifier<int> parentRebuilds;
 
   /// Returns the composer's FocusNode so tests can drive focus loss, and the
   /// language holder so tests can change target language mid-flight.
@@ -62,8 +77,10 @@ void main() {
   }) async {
     final focusNode = FocusNode();
     final language = ValueNotifier<String?>(targetLanguageCode);
+    parentRebuilds = ValueNotifier<int>(0);
     addTearDown(focusNode.dispose);
     addTearDown(language.dispose);
+    addTearDown(parentRebuilds.dispose);
     await tester.pumpWidget(
       MaterialApp(
         locale: const Locale('en'),
@@ -74,11 +91,11 @@ void main() {
             children: [
               // Rebuilt on language change so didUpdateWidget fires, the way
               // the real ChatInputBar rebuilds the banner from its parent.
-              ValueListenableBuilder<String?>(
-                valueListenable: language,
-                builder: (context, value, _) => KeyboardPromptBanner(
+              ListenableBuilder(
+                listenable: Listenable.merge([language, parentRebuilds]),
+                builder: (context, _) => KeyboardPromptBanner(
                   composerFocusNode: focusNode,
-                  targetLanguageCode: () => value,
+                  targetLanguageCode: () => language.value,
                 ),
               ),
               // A bare FocusNode never attaches to the focus tree, so
@@ -151,6 +168,56 @@ void main() {
     expect(find.text('Add your target language keyboard'), findsOneWidget);
     expect(find.textContaining('Warning!'), findsNothing);
     expect(find.text('Autocorrect in your target language'), findsNothing);
+  });
+
+  // #8856 — Gboard enables the hinted language itself a moment after it
+  // opens, so a read taken at the instant of focus is stale within the
+  // second. The step is resolved only once the keyboard has had that chance.
+  testWidgets(
+    'a keyboard that enables the language as it opens never prompts',
+    (tester) async {
+      await onPlatform(TargetPlatform.android, () async {
+        mockChannel(enabledTags: ['en-US']);
+        final (focusNode, _) = await pumpBanner(
+          tester,
+          targetLanguageCode: 'es',
+          hasFocus: false,
+        );
+
+        focusNode.requestFocus();
+        await drain(tester);
+        // Nothing yet: the keyboard is read only once it has settled.
+        expect(find.text(addKeyboardMessage), findsNothing);
+
+        // Gboard reacts to the composer's hint inside the settle window.
+        mockChannel(enabledTags: ['en-US', 'es-MX']);
+        await settle(tester);
+        expect(find.text(addKeyboardMessage), findsNothing);
+      });
+    },
+  );
+
+  // #8856 — the chat view rebuilds the banner on every frame of the keyboard's
+  // inset animation. A shown step stays put through those; only a dismissal,
+  // a fresh focus, a resume, or a change of target language re-resolves it.
+  testWidgets('a rebuild does not re-read the keyboard once a step is shown', (
+    tester,
+  ) async {
+    await onPlatform(TargetPlatform.android, () async {
+      mockChannel(enabledTags: ['en-US']);
+      await pumpBanner(tester, targetLanguageCode: 'es', hasFocus: true);
+      expect(find.text(addKeyboardMessage), findsOneWidget);
+
+      // A re-read now would find the keyboard equipped and clear the step.
+      mockChannel(enabledTags: ['en-US', 'es-MX']);
+      for (var i = 0; i < 5; i++) {
+        parentRebuilds.value++;
+        await tester.pump();
+      }
+      await settle(tester);
+
+      expect(find.text(addKeyboardMessage), findsOneWidget);
+    });
   });
 
   testWidgets('shows nothing on Android once the language matches', (

@@ -136,12 +136,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     final previous = _ringing;
     _ringing = ring;
     if (ring != null) {
-      // MP3, not OGG: audioplayers on iOS/macOS (AVFoundation) has no OGG
-      // Vorbis decoder, so an .ogg ring plays SILENTLY on Apple platforms --
-      // the banner shows but never rings. The base VoIP ringtone
-      // (user_media_manager.dart) still uses phone.ogg through its own path;
-      // this is the Pangea RingPlayer cue and must be Apple-decodable.
-      _ringPlayer.play(ring.event.eventId, asset: 'sounds/phone.mp3');
+      _ringPlayer.play(ring.event.eventId, asset: 'sounds/phone.ogg');
     } else if (previous != null) {
       _ringPlayer.stop(previous.event.eventId);
     }
@@ -900,7 +895,10 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     _activeCall?.removeListener(_onActiveCallChanged);
     _offerWatch?.cancel();
     _siblingAnswered?.cancel();
-    _ringPlayer.stopAll();
+    // Release the ring player's native AudioPlayer (dispose stops it first),
+    // so an incoming-ring banner leaves none behind. Same leak class as the
+    // caller-side tones in call_session.
+    unawaited(_ringPlayer.dispose());
     super.dispose();
   }
 

@@ -28,6 +28,9 @@ import 'config/setting_keys.dart';
 import 'utils/background_push.dart';
 import 'widgets/fluffy_chat_app.dart';
 
+import 'package:fluffychat/pangea/common/utils/show_menu_long_press_bridge_stub.dart'
+    if (dart.library.js_interop) 'package:fluffychat/pangea/common/utils/show_menu_long_press_bridge_web.dart';
+
 ReceivePort? mainIsolateReceivePort;
 
 void main() async {
@@ -62,6 +65,8 @@ void main() async {
   if (Environment.enableSemantics) {
     WidgetsBinding.instance.ensureSemantics();
   }
+
+  if (PlatformInfos.isWeb) ShowMenuLongPressBridge.install();
 
   await Future.wait([
     ErrorHandler.initialize(),

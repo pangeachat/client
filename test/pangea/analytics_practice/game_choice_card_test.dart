@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/choice_cards/game_choice_card.dart';
 
 /// A card rebuilt after the practice panel closed must come back showing the
@@ -29,6 +29,12 @@ void main() {
     ),
   );
 
+  /// The wrong-answer tint: the pumped theme's error mark at the card's
+  /// alpha.
+  Color errorTint(WidgetTester tester) => Theme.of(
+    tester.element(find.byType(GameChoiceCard)),
+  ).pangea.errorGraphic.withValues(alpha: 0.3);
+
   Color? tintOf(WidgetTester tester) {
     final container = tester.widget<Container>(
       find.descendant(
@@ -48,7 +54,7 @@ void main() {
     testWidgets('a choice selected earlier in the session is tinted on first '
         'build', (tester) async {
       await pumpCard(tester, isSelected: true);
-      expect(tintOf(tester), AppConfig.error.withValues(alpha: 0.3));
+      expect(tintOf(tester), errorTint(tester));
     });
 
     testWidgets('a flip card selected earlier rebuilds already revealed', (
@@ -63,7 +69,7 @@ void main() {
       await pumpCard(tester, isSelected: false);
       await tester.tap(find.byType(GameChoiceCard));
       await tester.pump();
-      expect(tintOf(tester), AppConfig.error.withValues(alpha: 0.3));
+      expect(tintOf(tester), errorTint(tester));
     });
   });
 }

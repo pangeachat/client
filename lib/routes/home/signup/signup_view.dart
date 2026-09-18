@@ -93,8 +93,8 @@ class SignupPageView extends StatelessWidget {
                   ElevatedButton(
                     onPressed: () => context.go('/home/signup/email'),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: theme.colorScheme.primaryContainer,
-                      foregroundColor: theme.colorScheme.onPrimaryContainer,
+                      backgroundColor: theme.colorScheme.primary,
+                      foregroundColor: theme.colorScheme.onPrimary,
                     ),
                     child: Row(
                       spacing: 8.0,
@@ -103,9 +103,7 @@ class SignupPageView extends StatelessWidget {
                         ExcludeSemantics(
                           child: PangeaLogoSvg(
                             width: 20,
-                            forceColor: Theme.of(
-                              context,
-                            ).colorScheme.onPrimaryContainer,
+                            forceColor: Theme.of(context).colorScheme.onPrimary,
                           ),
                         ),
                         Text(L10n.of(context).withEmail),

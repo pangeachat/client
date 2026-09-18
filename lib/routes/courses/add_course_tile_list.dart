@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/pangea/spaces/knocking_users_builder.dart';
 import 'package:fluffychat/routes/courses/add_course_tile.dart';
 import 'package:fluffychat/routes/courses/add_course_tile_content.dart';
@@ -41,41 +42,49 @@ class AddCourseTileList extends StatelessWidget {
   Widget build(BuildContext context) {
     final entries = _entries;
     final itemCount = entries.length + (extraContent?.length ?? 0);
-    return ListView.separated(
-      controller: controller,
-      separatorBuilder: (_, _) => SizedBox(height: spacing),
-      itemCount: itemCount,
-      itemBuilder: (context, index) {
-        if (index >= entries.length) {
-          final adjustedIndex = index - entries.length;
-          return extraContent?[adjustedIndex] ?? SizedBox.shrink();
-        }
-        final entry = entries[index];
-        if (entry.header != null) return entry.header!;
+    // The tiles have no fixed count, so they are one Tab stop with the arrow
+    // keys moving between them (accessibility.instructions.md, "One Tab stop
+    // per list"). Section headers between them stay stops of their own.
+    return RovingFocusGroup(
+      ids: [for (var i = 0; i < content.length; i++) '$i'],
+      child: ListView.separated(
+        controller: controller,
+        separatorBuilder: (_, _) => SizedBox(height: spacing),
+        itemCount: itemCount,
+        itemBuilder: (context, index) {
+          if (index >= entries.length) {
+            final adjustedIndex = index - entries.length;
+            return extraContent?[adjustedIndex] ?? SizedBox.shrink();
+          }
+          final entry = entries[index];
+          if (entry.header != null) return entry.header!;
 
-        // Mobile has no nav rail, so the courses list is where an admin sees
-        // that someone is knocking — the same red "!" the rail's course avatar
-        // wears (#8246). Only room-backed tiles can have a knock; previews and
-        // course-plan suggestions skip the member request entirely.
-        final contentIndex = entry.contentIndex!;
-        final tileContent = content[contentIndex];
-        final space = tileContent.space;
-        if (space == null) {
-          return AddCourseTile(
-            content: tileContent,
-            onTap: () => onTap(contentIndex),
+          // Mobile has no nav rail, so the courses list is where an admin sees
+          // that someone is knocking — the same red "!" the rail's course avatar
+          // wears (#8246). Only room-backed tiles can have a knock; previews and
+          // course-plan suggestions skip the member request entirely.
+          final contentIndex = entry.contentIndex!;
+          final tileContent = content[contentIndex];
+          final space = tileContent.space;
+          if (space == null) {
+            return AddCourseTile(
+              content: tileContent,
+              onTap: () => onTap(contentIndex),
+              rovingId: '$contentIndex',
+            );
+          }
+
+          return KnockingUsersBuilder(
+            room: space,
+            builder: (context, knockingUsers) => AddCourseTile(
+              content: tileContent,
+              onTap: () => onTap(contentIndex),
+              hasKnockingUsers: knockingUsers.isNotEmpty,
+              rovingId: '$contentIndex',
+            ),
           );
-        }
-
-        return KnockingUsersBuilder(
-          room: space,
-          builder: (context, knockingUsers) => AddCourseTile(
-            content: tileContent,
-            onTap: () => onTap(contentIndex),
-            hasKnockingUsers: knockingUsers.isNotEmpty,
-          ),
-        );
-      },
+        },
+      ),
     );
   }
 }

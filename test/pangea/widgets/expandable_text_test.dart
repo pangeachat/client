@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
@@ -60,5 +61,35 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.textContaining(l10n.showMore), findsOneWidget);
     expect(find.textContaining(longText), findsNothing);
+  });
+
+  // The toggle is a button in the Tab order, not a tap recognizer on the
+  // span (#9154), and it keeps focus across the swap so a second Enter
+  // collapses what the first expanded.
+  testWidgets('the toggle is a Tab stop that Enter activates', (tester) async {
+    final handle = tester.ensureSemantics();
+    final context = await pump(tester, longText);
+    final l10n = L10n.of(context);
+    expect(
+      tester.semantics.simulatedAccessibilityTraversal().any(
+        (n) =>
+            n.getSemanticsData().label == l10n.showMore &&
+            n.flagsCollection.isButton,
+      ),
+      isTrue,
+      reason: 'the toggle announces as a button',
+    );
+
+    await tester.sendKeyEvent(LogicalKeyboardKey.tab);
+    await tester.pump();
+    await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+    await tester.pumpAndSettle();
+    expect(find.textContaining(longText), findsOneWidget);
+
+    await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+    await tester.pumpAndSettle();
+    expect(find.textContaining(longText), findsNothing);
+    expect(find.textContaining(l10n.showMore), findsOneWidget);
+    handle.dispose();
   });
 }

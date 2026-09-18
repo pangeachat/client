@@ -39,6 +39,8 @@ class _FakeSound implements RingSound {
   Future<void> busy() async => log.add('busy');
   @override
   Future<void> playOnce(String asset) async => log.add('once:$asset');
+  @override
+  Future<void> dispose() async => log.add('dispose');
 }
 
 /// The narrowest fakes a session needs: a service whose join answers, media
@@ -2358,9 +2360,7 @@ void main() {
         expect(
           fake.log,
           contains('start:sounds/ringback.mp3'),
-          reason:
-              'placing a call loops the ringback tone, not the '
-              'reconnecting cue',
+          reason: 'placing a call loops the ringback tone, not call.ogg',
         );
 
         // The peer answers: they appear in the roster.
@@ -2423,6 +2423,28 @@ void main() {
       );
       session.endCall();
       await pumpEventQueue();
+    });
+
+    test('disposing the session releases its tone player', () async {
+      // Every terminal outcome touches the tone player, so a call that placed
+      // one must DISPOSE it on teardown -- stopping it is not enough, or one
+      // native AudioPlayer leaks per call.
+      final fake = _FakeSound();
+      final session = await place(fake: fake);
+      await pumpEventQueue();
+      expect(
+        fake.log,
+        contains('start:sounds/ringback.mp3'),
+        reason: 'placing the call built the tone player',
+      );
+
+      session.dispose();
+      await pumpEventQueue();
+      expect(
+        fake.log,
+        contains('dispose'),
+        reason: 'the session disposes its tone player, leaking no AudioPlayer',
+      );
     });
   });
 }

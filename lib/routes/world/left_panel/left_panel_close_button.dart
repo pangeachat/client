@@ -3,12 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/features/navigation/close_affordance.dart';
+import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_close_location.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/world/left_panel/course_card_reveal.dart';
+import 'package:fluffychat/routes/world/left_panel/floor_chevron.dart';
 
 /// The panel's close control. A pushed sub-page ([_isPushedSubPage]) backs out
 /// ONE level via popPage (a course management page → the card; a room sub-page
@@ -50,6 +53,10 @@ class LeftPanelCloseButton extends StatelessWidget {
     isPushedPage: false,
     revealsMaster:
         foldedOver || (!isColumnMode && parentIsOpen(currentUri, token)),
+    // Both form factors: the course is never fully dismissed, only handed
+    // between its two states — the nav cavity's peek on narrow, the course
+    // context bar on wide — so one chevron replaces the X everywhere (#8816).
+    hasFloor: token.type.hasCavityFloor,
   );
 
   /// The LIVE workspace URL at click time. The left panel does NOT rebuild when
@@ -80,6 +87,7 @@ class LeftPanelCloseButton extends StatelessWidget {
   // room.
   void _close(BuildContext context) {
     final uri = _liveUri(context);
+    _armReturnFocus(uri);
     if (token.type.isRoomPanel) {
       final param = token.param;
       final close = roomTokenCloseLocation(
@@ -92,14 +100,59 @@ class LeftPanelCloseButton extends StatelessWidget {
     context.go(WorkspaceNav.closeSection(uri, token));
   }
 
+  /// Closing a detail hands focus to the panel it returns to: the pressed
+  /// control is destroyed with this panel, so that panel claims focus
+  /// (routing.instructions.md, "Every panel is a named group to assistive
+  /// tech"). A chat closed beside its list is left to the framework's own
+  /// focus restore.
+  void _armReturnFocus(Uri uri) {
+    if (foldedOver) {
+      // Whatever folded beneath mounts fresh. Folding is positional, so it is
+      // not always the registry parent, and the arm names no one.
+      PanelEntryIntent.instance.armForSwap();
+    } else if (!token.type.isRoomPanel && parentIsOpen(uri, token)) {
+      // The parent is on screen beside this panel, so nothing mounts: name it.
+      PanelEntryIntent.instance.armForSwap(target: token.type.def.parent);
+    }
+  }
+
+  /// Shrink the wide course card to the bar's height first, then drop its
+  /// token so the bar takes over at the size the card reached (#8866). A
+  /// card torn down mid-shrink has nothing to hand over, so it navigates
+  /// nowhere; a host with no reveal (narrow, a test) closes at once.
+  ///
+  /// Public because the card's header runs this same collapse on a tap
+  /// ([SpaceDetailsHeader], #8909): the chevron and the header are one
+  /// control with two hit areas, so they share one action rather than two
+  /// copies of it. [context] is any context inside the card's reveal.
+  Future<void> collapseToBar(BuildContext context) async {
+    final reveal = CourseCardReveal.maybeOf(context);
+    if (reveal != null && !await reveal.collapse()) return;
+    if (context.mounted) _close(context);
+  }
+
   @override
   Widget build(BuildContext context) {
+    // A popped page's parent mounts in its place and claims focus (see
+    // [_armReturnFocus]). A chat's sub-pages are the exception: the chat panel
+    // survives its pops, so the framework's own focus restore stays inside it.
     final page = token.param;
     if (_isPushedSubPage && page != null) {
       return BackButton(
-        onPressed: () =>
-            context.go(WorkspaceNav.popPage(_liveUri(context), token)),
+        onPressed: () {
+          if (!token.type.isRoomPanel) PanelEntryIntent.instance.armForSwap();
+          context.go(WorkspaceNav.popPage(_liveUri(context), token));
+        },
       );
+    }
+
+    // A floor panel is never dismissed, so its one control is the chevron
+    // (#8816; routing.instructions.md -> Closing a panel). Off-cavity — the
+    // wide panel — collapsing is dropping the token, which hands the course
+    // to the context bar; in the cavity the chevron drives the sheet directly
+    // and this fallback goes unused.
+    if (_closeAffordance.showChevron) {
+      return FloorChevron(onToggleOffCavity: () => collapseToBar(context));
     }
 
     return _closeAffordance.showBack

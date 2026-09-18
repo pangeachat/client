@@ -2,12 +2,17 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 
+import 'package:async/async.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
+import 'package:fluffychat/features/quests/quests_client_extension.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
+import 'package:fluffychat/routes/world/joined_objective_cache.dart';
+import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 typedef QuestLoader = ValueNotifier<AsyncState<QuestOutline>>;
 
@@ -17,8 +22,9 @@ typedef QuestLoader = ValueNotifier<AsyncState<QuestOutline>>;
 /// (still loading / no data) maps to an empty list.
 ///
 /// The single home of "which Missions does the learner actually see": the
-/// course panel's list and the "N modules" chip both count through it, so a
-/// hidden Mission can never be listed by one and counted by the other (#7976).
+/// course panel's list and the info chips' activity count both read through
+/// it, so a hidden Mission's activities can never be listed by one and counted
+/// by the other (#7976).
 List<QuestObjectiveGroup> objectiveGroupsWithActivities(
   List<QuestObjectiveGroup>? groups,
 ) => (groups ?? const <QuestObjectiveGroup>[])
@@ -27,12 +33,71 @@ List<QuestObjectiveGroup> objectiveGroupsWithActivities(
 
 class QuestObjectivesLoader {
   final Client client;
-  QuestObjectivesLoader({required this.client});
+
+  QuestObjectivesLoader({required this.client}) {
+    // A star is awarded as room state on a session room, so the panel's star
+    // numbers go stale the moment the learner earns one — the counts sat at
+    // their load-time values until the page was left and re-entered (#8915).
+    // Re-resolve on room sync, on the same rate-limited tick the world map
+    // and the objectives list already recompute on, so the two surfaces can't
+    // drift apart on the same award.
+    _starsSub = client.onSync.stream
+        .where((s) => s.hasRoomUpdate)
+        .rateLimit(const Duration(seconds: 2))
+        .listen((_) => _resolveProgression(_loadGeneration));
+
+    // Activity-card text is served in the resolved display language (#8577)
+    // and [QuestRepo.outline] keys its cache on it — but nothing asked again
+    // when that language changed, so a course surface went on showing the
+    // previous language's cards until it was rebuilt from scratch (#9151).
+    // The world map's `_refetchOnDisplayLanguageChange` is this same trigger
+    // on these same two streams; this is its course-side counterpart.
+    //
+    // Both streams, because a profile write reaches exactly one of them: a
+    // base- or target-language change emits on `languageStream`, and the
+    // "app in target language" toggle — which changes no language but does
+    // change the resolved display one — emits on `settingsUpdateStream`.
+    //
+    // Guarded on the controller for the same reason [QuestRepo.displayL1]
+    // guards its read: a loader can be constructed before (or without) one.
+    if (MatrixState.isPangeaControllerInitialized) {
+      final user = MatrixState.pangeaController.userController;
+      _displayLanguageSub = StreamGroup.merge([
+        user.languageStream.stream,
+        user.settingsUpdateStream.stream,
+      ]).listen((_) => _refetchOnDisplayLanguageChange());
+    }
+  }
 
   final QuestLoader _questLoader = QuestLoader(AsyncLoading());
-  final ValueNotifier<ProgressionResolution> _progression = ValueNotifier(
-    ProgressionResolution.empty,
-  );
+
+  /// The shared progression, published by whichever loader resolved it last
+  /// and read by every live one — the "resolve once, never per surface" rule
+  /// of quests.instructions.md, made literal.
+  ///
+  /// Session-scoped rather than per-loader because the resolution spans every
+  /// joined course and every read is scoped by course id ([forCourse]), so
+  /// there is no course whose numbers a second loader could get wrong. What
+  /// per-loader state cost was a flicker: the course card and the context bar
+  /// are one surface swapping widgets (#8866), and each new instance started
+  /// at [ProgressionResolution.empty], so collapsing or expanding the course
+  /// panel blanked its progress bar for the frames the fresh loader took to
+  /// re-resolve what the outgoing one already knew (#8938).
+  static final ValueNotifier<ProgressionResolution> _progression =
+      ValueNotifier(ProgressionResolution.empty);
+
+  /// The learner's joined-course outlines. Rebuilt on each [loadOutline] (a
+  /// few quest reads), then re-resolved from on every sync tick. Kept across
+  /// ticks so a tick re-runs only the pure resolve: rebuilding it there would
+  /// re-request every course whose outline failed, since failures are
+  /// deliberately never cached ([QuestRepo.outline]).
+  final JoinedObjectiveCache _objectiveCache = JoinedObjectiveCache();
+  StreamSubscription? _starsSub;
+  StreamSubscription? _displayLanguageSub;
+
+  /// The last [loadOutline] call, kept so a display-language change can re-run
+  /// exactly the read that is now stale. Null until the first load.
+  _OutlineRequest? _request;
 
   int _loadGeneration = 0;
   bool _disposed = false;
@@ -47,8 +112,10 @@ class QuestObjectivesLoader {
   String? _courseId;
 
   void dispose() {
+    _starsSub?.cancel();
+    _displayLanguageSub?.cancel();
     _questLoader.dispose();
-    _progression.dispose();
+    // _progression is shared across loaders — never disposed with one of them.
     _disposed = true;
   }
 
@@ -73,8 +140,9 @@ class QuestObjectivesLoader {
   /// the star display at all.
   bool get hasResolvedProgress => _scopedQuest != null;
 
-  /// The "Up next" Mission — the shared resolver's anchor — or null until the
-  /// resolution lands. Callers fall back to the first Mission in the outline.
+  /// The "Up next" Mission — the shared resolver's anchor — or null when there
+  /// is no next step: before the resolution lands, and once every Mission in
+  /// the course is satisfied (#8997). No Mission wears the label then.
   String? get anchorMissionId => _scopedQuest?.anchorMissionId;
 
   /// The next-Mission gradient (0..[kBandCeiling]) for an activity satisfying
@@ -102,10 +170,54 @@ class QuestObjectivesLoader {
         _ => const [],
       };
 
+  /// Re-resolve the shared progression from the cached outlines and the
+  /// learner's current per-activity stars — the SAME inputs and resolver the
+  /// world map uses, so the star numbers can never disagree
+  /// (quests.instructions.md). Pure and cheap: no network, no reads beyond
+  /// room state the client already holds.
+  ///
+  /// Publishes nothing before the first rebuild lands, so a course whose
+  /// outlines aren't in yet keeps its muted empty bar rather than briefly
+  /// showing a denominator resolved from another course's cache.
+  void _resolveProgression(int loadGen) {
+    if (_disposed || _objectiveCache.outlines.isEmpty) return;
+    _updateProgression(
+      _objectiveCache.resolution(client.userStarsByActivity),
+      loadGen,
+    );
+  }
+
   void _updateProgression(ProgressionResolution value, int loadGen) {
     if (!_disposed && loadGen == _loadGeneration) {
       _progression.value = value;
     }
+  }
+
+  /// Re-read the outline when the resolved display language no longer matches
+  /// the one the current outline was read in (#9151).
+  ///
+  /// Compares rather than firing on every event: `settingsUpdateStream` emits
+  /// for every profile write — CEFR level, voice, tooltips — and only a change
+  /// to the resolved display language invalidates what is loaded. No
+  /// `forceRefresh`: [QuestRepo.outline] already keys on the language, so the
+  /// new one misses the cache on its own, and forcing would also bypass the
+  /// persisted removed-quest verdict this has no reason to re-ask.
+  ///
+  /// A null [_OutlineRequest.questId] is a surface with no quest to show (a
+  /// preview with no plan) — there is nothing to re-read, and re-running the
+  /// previous course's load would show the wrong course.
+  void _refetchOnDisplayLanguageChange() {
+    final request = _request;
+    if (request == null ||
+        request.questId == null ||
+        request.displayL1 == QuestRepo.displayL1) {
+      return;
+    }
+    loadOutline(
+      request.questId,
+      pinnedActivitiesByObjective: request.pinnedActivitiesByObjective,
+      courseRoomId: request.courseRoomId,
+    );
   }
 
   void _updateQuest(AsyncState<QuestOutline> value, int loadGen) {
@@ -131,7 +243,12 @@ class QuestObjectivesLoader {
     _loadGeneration++;
     final loadGen = _loadGeneration;
     _courseId = courseRoomId ?? questId;
-    _updateProgression(ProgressionResolution.empty, loadGen);
+    _request = _OutlineRequest(
+      questId: questId,
+      pinnedActivitiesByObjective: pinnedActivitiesByObjective,
+      courseRoomId: courseRoomId,
+      displayL1: QuestRepo.displayL1,
+    );
 
     // world_v2 → v3: the course space's coursePlan.uuid (or the previewed
     // plan's uuid) points at a quest-plans id. The outline (Missions + their
@@ -165,8 +282,30 @@ class QuestObjectivesLoader {
 
     _updateQuest(AsyncLoaded(outline), loadGen);
 
-    ProgressionResolution.resolveJoinedProgression(
+    await _objectiveCache.rebuildFromJoinedCourses(
       client,
-    ).then((p) => _updateProgression(p, loadGen));
+      // The SAME reporter the world map's rebuild passes — one throttle key,
+      // one severity rule, so this path and the map's can't disagree about a
+      // failure only one of them will end up reporting (#8470).
+      onError: reportCourseOutlineFailure,
+    );
+    _resolveProgression(loadGen);
   }
+}
+
+/// The arguments of one [QuestObjectivesLoader.loadOutline], with the display
+/// language it resolved under — what a profile change is compared against
+/// before the outline is re-read (#9151).
+class _OutlineRequest {
+  const _OutlineRequest({
+    required this.questId,
+    required this.pinnedActivitiesByObjective,
+    required this.courseRoomId,
+    required this.displayL1,
+  });
+
+  final String? questId;
+  final Map<String, List<String>>? pinnedActivitiesByObjective;
+  final String? courseRoomId;
+  final String displayL1;
 }

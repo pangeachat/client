@@ -20,9 +20,11 @@ import 'package:fluffychat/features/user/user_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/svg_repo.dart';
+import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_switcher_sheet.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../utils/test_client.dart';
+import 'one_node_control.dart';
 
 class _FakeMatrixState extends MatrixState {
   _FakeMatrixState(this._client);
@@ -155,6 +157,9 @@ void main() {
       find.bySemanticsLabel(enL10n.switchLanguageChipLabel('Spanish')),
       findsOneWidget,
     );
+    expectOneNodeControl(tester, enL10n.switchLanguageChipLabel('Spanish'));
+    // Keyboard focus shows as the gold ring, not InkWell's wash (#9154).
+    expect(find.byType(FocusRingTapTarget), findsOneWidget);
 
     await tester.tap(find.byKey(const Key('chip')));
     await tester.pumpAndSettle();

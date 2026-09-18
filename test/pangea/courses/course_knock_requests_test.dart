@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:ui' show Tristate;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -202,11 +203,38 @@ void main() {
       courseRoom(ownPowerLevel: SpaceConstants.powerLevelOfAdmin),
     );
 
-    // The bell belongs to course pings; a pending knock wears the same "!"
-    // the course avatar's badge does.
+    // The bell belongs to course pings; a pending knock wears the same
+    // add-person glyph the course avatar's badge does.
     expect(find.byIcon(KnockingUsersBadge.icon), findsOneWidget);
     expect(find.byIcon(Icons.notifications_outlined), findsNothing);
   });
+
+  testWidgets(
+    'Approve admits the knocker rather than opening the invite page',
+    (tester) async {
+      // #8939: the button used to route to the invite page to pick the user out
+      // again. It has to issue the invite itself — the same `acceptKnock` the
+      // member list's Approve sends.
+      final room = courseRoom(ownPowerLevel: SpaceConstants.powerLevelOfAdmin);
+      client.rooms.add(room);
+      FakeMatrixApi.calledEndpoints.clear();
+      await pumpKnockRequests(tester, room);
+
+      final context = tester.element(find.byType(CourseKnockRequests));
+      await tester.tap(find.text(L10n.of(context).approve));
+      // Not pumpAndSettle: the approve runs behind a loading dialog whose
+      // spinner never stops animating.
+      await tester.pump();
+      await tester.pump(const Duration(seconds: 1));
+
+      expect(
+        FakeMatrixApi.calledEndpoints.keys.any(
+          (endpoint) => endpoint.endsWith('/invite'),
+        ),
+        isTrue,
+      );
+    },
+  );
 
   testWidgets('the bulk action denies rather than marks read', (tester) async {
     await pumpKnockRequests(
@@ -265,5 +293,68 @@ void main() {
       find.text(L10n.of(context).usersAreTryingToJoinCourse),
       findsOneWidget,
     );
+  });
+
+  // The rows have no fixed count, so they are one Tab stop: the arrow keys
+  // walk each row's two controls in reading order and on into the next row,
+  // stopping at the last row on screen, and "Load more" extends the walk
+  // (#9154; accessibility.instructions.md, "One Tab stop per list").
+  testWidgets('the join request rows are one Tab stop, walked by the arrows', (
+    tester,
+  ) async {
+    final handle = tester.ensureSemantics();
+    await pumpKnockRequests(
+      tester,
+      courseRoom(ownPowerLevel: SpaceConstants.powerLevelOfAdmin, knockers: 3),
+    );
+    final l10n = L10n.of(tester.element(find.byType(CourseKnockRequests)));
+
+    /// The label of the node assistive tech is on.
+    String focusedLabel() => tester.semantics
+        .simulatedAccessibilityTraversal()
+        .where((n) => n.flagsCollection.isFocused == Tristate.isTrue)
+        .map((n) => n.getSemanticsData().label)
+        .join('|');
+
+    Future<void> press(LogicalKeyboardKey key) async {
+      await tester.sendKeyEvent(key);
+      await tester.pump();
+    }
+
+    // Tab: the bulk action, then the rows as one stop, on the first avatar.
+    await press(LogicalKeyboardKey.tab);
+    expect(focusedLabel(), l10n.denyAllUsers);
+    await press(LogicalKeyboardKey.tab);
+    final firstKnocker = focusedLabel();
+    expect(firstKnocker, isNot(l10n.approve));
+
+    // Right walks the row's two controls, then on into the next row.
+    await press(LogicalKeyboardKey.arrowRight);
+    expect(focusedLabel(), l10n.approve);
+    await press(LogicalKeyboardKey.arrowRight);
+    final secondKnocker = focusedLabel();
+    expect(secondKnocker, isNot(anyOf(l10n.approve, firstKnocker)));
+    await press(LogicalKeyboardKey.arrowRight);
+    expect(focusedLabel(), l10n.approve);
+
+    // Two rows show before the expander, so the walk stops here.
+    await press(LogicalKeyboardKey.arrowRight);
+    expect(focusedLabel(), l10n.approve);
+
+    // Tab leaves the rows in one press, onto the expander.
+    await press(LogicalKeyboardKey.tab);
+    expect(focusedLabel(), l10n.loadMore);
+    await press(LogicalKeyboardKey.enter);
+    await tester.pumpAndSettle();
+
+    // Expanded: the expander is gone, so focus returns to the row control the
+    // learner left, and the third row is now part of the walk.
+    expect(focusedLabel(), l10n.approve);
+    await press(LogicalKeyboardKey.arrowRight);
+    expect(
+      focusedLabel(),
+      isNot(anyOf(l10n.approve, firstKnocker, secondKnocker)),
+    );
+    handle.dispose();
   });
 }

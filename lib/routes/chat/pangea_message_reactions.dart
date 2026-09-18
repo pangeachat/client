@@ -8,6 +8,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/emoji_burst.dart';
 import 'package:fluffychat/routes/chat/reaction_listener.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_toolbar_host.dart';
@@ -63,7 +64,7 @@ class _PangeaMessageReactionsState extends State<PangeaMessageReactions> {
     );
   }
 
-  void _onReactionUpdate(SyncUpdate update) {
+  void _onReactionUpdate() {
     //Identifies newly added reactions so they can be animated on arrival
     final previousReactions = Set<String>.from(_reactionMap.keys);
     _updateReactionMap();
@@ -132,7 +133,7 @@ class _PangeaMessageReactionsState extends State<PangeaMessageReactions> {
                 reactionKey: r.key,
                 count: r.count,
                 reacted: r.reacted,
-                onTap: widget.enabled
+                onTap: widget.enabled && widget.event.room.canSendReactions
                     ? () => _handleReactionTap(r, allReactionEvents)
                     : null,
                 onLongPress: widget.enabled
@@ -181,7 +182,10 @@ class _PangeaMessageReactionsState extends State<PangeaMessageReactions> {
         );
       }
     } else {
-      await widget.event.room.sendReaction(widget.event.eventId, reaction.key);
+      await widget.event.room.sendReactionOrDiscard(
+        widget.event.eventId,
+        reaction.key,
+      );
     }
   }
 }
@@ -361,6 +365,10 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
+    final ink = widget.reacted == true
+        ? theme.colorScheme.onSecondaryContainer
+        : theme.colorScheme.onSurface;
+
     Widget content;
     if (widget.reactionKey.startsWith('mxc://')) {
       content = Row(
@@ -379,7 +387,7 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
               widget.count.toString(),
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: theme.colorScheme.onSurface,
+                color: ink,
                 fontSize: DefaultTextStyle.of(context).style.fontSize,
               ),
             ),
@@ -394,7 +402,7 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
       content = Text(
         renderKey.toString() + (widget.count > 1 ? ' ${widget.count}' : ''),
         style: TextStyle(
-          color: theme.colorScheme.onSurface,
+          color: ink,
           fontSize: DefaultTextStyle.of(context).style.fontSize,
         ),
       );
@@ -444,7 +452,7 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
                               child: Container(
                                 decoration: BoxDecoration(
                                   color: widget.reacted == true
-                                      ? theme.colorScheme.primaryContainer
+                                      ? theme.colorScheme.secondaryContainer
                                       : theme.colorScheme.surfaceContainerHigh,
                                   border: Border.all(
                                     color: widget.reacted == true

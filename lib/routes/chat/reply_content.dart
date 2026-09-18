@@ -34,8 +34,10 @@ class ReplyContent extends StatelessWidget {
         : replyEvent;
     final fontSize = AppConfig.messageFontSize;
     // #Pangea
+    // The own bubble is filled with primary (message.dart), so the quote's
+    // bar and name take its ink; the other party's keeps the tertiary accent.
     final color = ownMessage
-        ? theme.colorScheme.tertiaryContainer
+        ? theme.colorScheme.onPrimary
         : theme.colorScheme.tertiary;
     // final color = theme.brightness == Brightness.dark
     // ? theme.colorScheme.onTertiaryContainer

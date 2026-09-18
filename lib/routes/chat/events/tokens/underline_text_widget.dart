@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 
 import 'package:flutter_linkify/flutter_linkify.dart';
@@ -6,6 +8,10 @@ import 'package:fluffychat/utils/url_launcher.dart';
 
 const double tokenUnderlineHeight = 3;
 const double tokenUnderlineGap = 2;
+
+/// A dash's length as a multiple of the rule's thickness. Long enough to read
+/// as a dashed line rather than a dotted one at the 3px token thickness.
+const double _dashLengthRatio = 2;
 
 class UnderlineText extends StatelessWidget {
   final String text;
@@ -16,6 +22,12 @@ class UnderlineText extends StatelessWidget {
   final double underlineHeight;
   final double gap;
 
+  /// Draw the rule as dashes rather than one continuous bar, so two underlines
+  /// can be told apart without relying on their colours (SC 1.4.1). The STT
+  /// transcript diff dashes its unchanged words; see [sttUnchangedUnderlineStyle],
+  /// which is the same distinction on the [TextDecoration] rendering path.
+  final bool dashed;
+
   const UnderlineText({
     super.key,
     required this.text,
@@ -25,6 +37,7 @@ class UnderlineText extends StatelessWidget {
     this.underlineColor,
     this.underlineHeight = tokenUnderlineHeight,
     this.gap = tokenUnderlineGap,
+    this.dashed = false,
   });
 
   @override
@@ -66,6 +79,7 @@ class UnderlineText extends StatelessWidget {
         underlineHeight: underlineHeight,
         gap: gap,
         textScaler: textScaler,
+        dashed: dashed,
       ),
       child: richText,
     );
@@ -79,6 +93,7 @@ class _UnderlinePainter extends CustomPainter {
   final double underlineHeight;
   final double gap;
   final TextScaler textScaler;
+  final bool dashed;
 
   _UnderlinePainter({
     required this.span,
@@ -87,6 +102,7 @@ class _UnderlinePainter extends CustomPainter {
     required this.underlineHeight,
     required this.gap,
     required this.textScaler,
+    required this.dashed,
   });
 
   @override
@@ -109,10 +125,22 @@ class _UnderlinePainter extends CustomPainter {
     for (final line in lines) {
       final y = line.baseline + gap;
 
-      canvas.drawRect(
-        Rect.fromLTWH(line.left, y, line.width, underlineHeight),
-        paint,
-      );
+      if (!dashed) {
+        canvas.drawRect(
+          Rect.fromLTWH(line.left, y, line.width, underlineHeight),
+          paint,
+        );
+        continue;
+      }
+      // Dashes rather than one bar, so this underline reads as a different
+      // mark from a solid one with colour removed (SC 1.4.1, #8764). The last
+      // dash is clipped to the word's end rather than overhanging it.
+      final period = underlineHeight * _dashLengthRatio + underlineHeight;
+      final end = line.left + line.width;
+      for (var x = line.left; x < end; x += period) {
+        final width = math.min(underlineHeight * _dashLengthRatio, end - x);
+        canvas.drawRect(Rect.fromLTWH(x, y, width, underlineHeight), paint);
+      }
     }
   }
 
@@ -122,6 +150,7 @@ class _UnderlinePainter extends CustomPainter {
         oldDelegate.underlineColor != underlineColor ||
         oldDelegate.gap != gap ||
         oldDelegate.underlineHeight != underlineHeight ||
-        oldDelegate.textScaler != textScaler;
+        oldDelegate.textScaler != textScaler ||
+        oldDelegate.dashed != dashed;
   }
 }

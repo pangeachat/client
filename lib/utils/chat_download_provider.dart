@@ -8,16 +8,16 @@ import 'package:fluffychat/features/download/download_type_enum.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-mixin ChatDownloadProvider {
-  Future<void> downloadChatAction(String roomId, BuildContext context) async {
-    final Room? room = Matrix.of(context).client.getRoomById(roomId);
-    if (room == null) return;
+/// Opens the transcript-export dialog for [roomId], or does nothing when the
+/// client no longer holds that room.
+Future<void> showChatDownloadDialog(String roomId, BuildContext context) async {
+  final Room? room = Matrix.of(context).client.getRoomById(roomId);
+  if (room == null) return;
 
-    await showDialog(
-      context: context,
-      builder: (context) => ChatDownloadDialog(room: room),
-    );
-  }
+  await showDialog(
+    context: context,
+    builder: (context) => ChatDownloadDialog(room: room),
+  );
 }
 
 class ChatDownloadDialog extends StatefulWidget {

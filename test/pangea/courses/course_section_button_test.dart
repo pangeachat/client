@@ -36,7 +36,11 @@ void main() {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                CourseSectionHeader(title: title, icon: icon, trailing: button),
+                CourseSectionHeader(
+                  title: title,
+                  icon: icon,
+                  actions: [button],
+                ),
               ],
             ),
           ),
@@ -60,22 +64,55 @@ void main() {
     expect(find.text('See all'), findsOneWidget);
     // The visible label stays short; the accessible name carries it plus the
     // section, so it still contains what a sighted user reads.
-    final semantics = tester.getSemantics(find.byType(TextButton));
+    final semantics = tester.getSemantics(find.byType(FilledButton));
     expect(semantics.label, contains('See all Chats'));
   });
 
-  testWidgets('is a text link, not a filled pill', (tester) async {
+  testWidgets('is a tonal pill, not a text link', (tester) async {
     await pump(
       tester,
       const CourseSectionButton(section: 'Chats', onPressed: _noop),
     );
 
-    // #8475 made these filled so they wouldn't read as the Mission text
-    // right above them; in the header there is no such neighbour, and Will's
-    // #8744 review asked for the lighter treatment back.
-    expect(find.byType(FilledButton), findsNothing);
-    expect(find.byType(TextButton), findsOneWidget);
-    expect(find.byIcon(Icons.chevron_right), findsOneWidget);
+    // #8475 filled these so they wouldn't read as the Mission text right
+    // above them; #8744 moved them into the header as text links, which
+    // #8815 found too easy to miss. Tonal is the middle: a pill, but not the
+    // solid fill of a call to action.
+    expect(find.byType(TextButton), findsNothing);
+    expect(find.byType(FilledButton), findsOneWidget);
+    final surface = tester.widget<Material>(
+      find
+          .descendant(
+            of: find.byType(FilledButton),
+            matching: find.byType(Material),
+          )
+          .first,
+    );
+    final colors = Theme.of(
+      tester.element(find.byType(FilledButton)),
+    ).colorScheme;
+    expect(surface.color, colors.secondaryContainer);
+  });
+
+  testWidgets('carries nothing beside its label, so its ends match', (
+    tester,
+  ) async {
+    await pump(
+      tester,
+      const CourseSectionButton(section: 'Chats', onPressed: _noop),
+    );
+
+    // A chevron sits in a 24px box with about 5px of its own space either
+    // side of it, so a trailing one always renders the pill's right side
+    // wider than its left, whichever button pads it (#8898). Nothing trails
+    // the label now, and the two ends measure alike.
+    expect(find.byIcon(Icons.chevron_right), findsNothing);
+    final button = tester.getRect(find.byType(FilledButton));
+    final label = tester.getRect(find.text('See all'));
+    expect(
+      label.left - button.left,
+      moreOrLessEquals(button.right - label.right),
+    );
   });
 
   testWidgets('sits at the end of its header, opposite the title', (
@@ -90,7 +127,7 @@ void main() {
     // Same row as the title — not stacked under the section's content — and
     // flush with the section's trailing edge.
     final title = tester.getRect(find.text('Chats'));
-    final button = tester.getRect(find.byType(TextButton));
+    final button = tester.getRect(find.byType(FilledButton));
     expect(button.left, greaterThan(title.right));
     expect(button.right, moreOrLessEquals(width, epsilon: 1.0));
 
@@ -98,7 +135,7 @@ void main() {
     // a button that stretched would sit exactly at that cap.
     expect(button.width, lessThan(width * 0.7));
 
-    await tester.tap(find.byType(TextButton));
+    await tester.tap(find.byType(FilledButton));
     expect(taps, 1);
   });
 
