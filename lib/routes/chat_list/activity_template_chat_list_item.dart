@@ -4,6 +4,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_media_video_tag.dart';
 import 'package:fluffychat/routes/chat_list/extended_space_rooms_chunk.dart';
 import 'package:fluffychat/routes/chat_list/open_roles_indicator.dart';
@@ -16,11 +17,16 @@ class ActivityTemplateChatListItem extends StatelessWidget {
   final List<ExtendedSpaceRoomsChunk> sessions;
   final Function(ExtendedSpaceRoomsChunk) joinActivity;
 
+  /// Whether the Join buttons take their focus nodes from an enclosing
+  /// [RovingFocusGroup], by their session's room id.
+  final bool roving;
+
   const ActivityTemplateChatListItem({
     super.key,
     required this.space,
     required this.sessions,
     required this.joinActivity,
+    this.roving = false,
   });
 
   @override
@@ -104,6 +110,9 @@ class ActivityTemplateChatListItem extends StatelessWidget {
                   ConstrainedBox(
                     constraints: const BoxConstraints(maxHeight: 24.0),
                     child: ElevatedButton(
+                      focusNode: roving
+                          ? RovingFocusGroup.nodeOf(context, e.chunk.roomId)
+                          : null,
                       onPressed: () => showFutureLoadingDialog(
                         context: context,
                         future: () => joinActivity(e),

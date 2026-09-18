@@ -12,6 +12,7 @@ import 'package:fluffychat/features/user/widgets/user_filter_chip_row.dart';
 import 'package:fluffychat/features/user/widgets/user_result_tile.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/room_unavailable_panel.dart';
+import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/invite/invite_all_in_space_tile.dart';
 import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection.dart';
@@ -214,112 +215,141 @@ class PangeaInvitationSelectionView extends StatelessWidget {
                                                     ).publicInviteDescChat,
                                             ),
                                           )
-                                        : ListView.builder(
-                                            controller:
-                                                controller.scrollController,
-                                            itemCount:
-                                                controller.foundProfiles.length,
-                                            itemBuilder:
-                                                (
-                                                  BuildContext context,
-                                                  int i,
-                                                ) => _InviteContactListTile(
-                                                  profile: controller
-                                                      .foundProfiles[i],
+                                        : RovingFocusGroup(
+                                            ids: [
+                                              for (final profile
+                                                  in controller.foundProfiles)
+                                                ..._inviteRowRovingIds(
+                                                  controller,
+                                                  profile.userId,
                                                   isMember: participants
-                                                      .contains(
-                                                        controller
-                                                            .foundProfiles[i]
-                                                            .userId,
-                                                      ),
+                                                      .contains(profile.userId),
                                                   canInvite: canInvite,
-                                                  onTap: () =>
-                                                      controller.inviteAction(
-                                                        controller
-                                                            .foundProfiles[i]
-                                                            .userId,
-                                                      ),
-                                                  controller: controller,
                                                 ),
-                                          )
-                                  : ListView.builder(
-                                      controller: controller.scrollController,
-                                      itemCount: contacts.length + 2,
-                                      itemBuilder: (BuildContext context, int i) {
-                                        if (i == 0) {
-                                          return controller
-                                                  .showInviteAllInSpaceButton
-                                              ? InviteAllInSpaceTile(
-                                                  avatar: controller
-                                                      .spaceParent!
-                                                      .avatar,
-                                                  displayname: controller
-                                                      .spaceParent!
-                                                      .getLocalizedDisplayname(),
-                                                  memberCount:
-                                                      controller
-                                                          .spaceParent!
-                                                          .summary
-                                                          .mJoinedMemberCount ??
-                                                      1,
-                                                  onPressed: canInvite
-                                                      ? controller
-                                                            .inviteAllInSpace
-                                                      : null,
-                                                )
-                                              : const SizedBox();
-                                        }
-
-                                        i--;
-
-                                        if (i == contacts.length) {
-                                          return ExcludeSemantics(
-                                            child: Padding(
-                                              padding: const EdgeInsets.all(
-                                                16.0,
-                                              ),
-                                              child: SizedBox(
-                                                width: 450,
-                                                child: CachedNetworkImage(
-                                                  imageUrl:
-                                                      "${AppConfig.assetsBaseURL}/${RoomSettingsConstants.referFriendAsset}",
-                                                  errorWidget:
-                                                      (context, url, error) =>
-                                                          const SizedBox(),
-                                                  placeholder: (context, url) =>
-                                                      const Center(
-                                                        child:
-                                                            CircularProgressIndicator.adaptive(),
-                                                      ),
-                                                ),
-                                              ),
+                                            ],
+                                            child: ListView.builder(
+                                              controller:
+                                                  controller.scrollController,
+                                              itemCount: controller
+                                                  .foundProfiles
+                                                  .length,
+                                              itemBuilder:
+                                                  (
+                                                    BuildContext context,
+                                                    int i,
+                                                  ) => _InviteContactListTile(
+                                                    profile: controller
+                                                        .foundProfiles[i],
+                                                    isMember: participants
+                                                        .contains(
+                                                          controller
+                                                              .foundProfiles[i]
+                                                              .userId,
+                                                        ),
+                                                    canInvite: canInvite,
+                                                    onTap: () =>
+                                                        controller.inviteAction(
+                                                          controller
+                                                              .foundProfiles[i]
+                                                              .userId,
+                                                        ),
+                                                    controller: controller,
+                                                  ),
                                             ),
+                                          )
+                                  : RovingFocusGroup(
+                                      ids: [
+                                        for (final contact in contacts)
+                                          ..._inviteRowRovingIds(
+                                            controller,
+                                            contact.id,
+                                            isMember: participants.contains(
+                                              contact.id,
+                                            ),
+                                            canInvite: canInvite,
+                                          ),
+                                      ],
+                                      child: ListView.builder(
+                                        controller: controller.scrollController,
+                                        itemCount: contacts.length + 2,
+                                        itemBuilder: (BuildContext context, int i) {
+                                          if (i == 0) {
+                                            return controller
+                                                    .showInviteAllInSpaceButton
+                                                ? InviteAllInSpaceTile(
+                                                    avatar: controller
+                                                        .spaceParent!
+                                                        .avatar,
+                                                    displayname: controller
+                                                        .spaceParent!
+                                                        .getLocalizedDisplayname(),
+                                                    memberCount:
+                                                        controller
+                                                            .spaceParent!
+                                                            .summary
+                                                            .mJoinedMemberCount ??
+                                                        1,
+                                                    onPressed: canInvite
+                                                        ? controller
+                                                              .inviteAllInSpace
+                                                        : null,
+                                                  )
+                                                : const SizedBox();
+                                          }
+
+                                          i--;
+
+                                          if (i == contacts.length) {
+                                            return ExcludeSemantics(
+                                              child: Padding(
+                                                padding: const EdgeInsets.all(
+                                                  16.0,
+                                                ),
+                                                child: SizedBox(
+                                                  width: 450,
+                                                  child: CachedNetworkImage(
+                                                    imageUrl:
+                                                        "${AppConfig.assetsBaseURL}/${RoomSettingsConstants.referFriendAsset}",
+                                                    errorWidget:
+                                                        (context, url, error) =>
+                                                            const SizedBox(),
+                                                    placeholder:
+                                                        (
+                                                          context,
+                                                          url,
+                                                        ) => const Center(
+                                                          child:
+                                                              CircularProgressIndicator.adaptive(),
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            );
+                                          }
+                                          return _InviteContactListTile(
+                                            user: contacts[i],
+                                            profile: Profile(
+                                              avatarUrl: contacts[i].avatarUrl,
+                                              displayName:
+                                                  localizedPangeaUserName(
+                                                    contacts[i].id,
+                                                    L10n.of(context),
+                                                  ) ??
+                                                  contacts[i].displayName ??
+                                                  contacts[i].id.localpart ??
+                                                  L10n.of(context).user,
+                                              userId: contacts[i].id,
+                                            ),
+                                            isMember: participants.contains(
+                                              contacts[i].id,
+                                            ),
+                                            canInvite: canInvite,
+                                            onTap: () => controller
+                                                .inviteAction(contacts[i].id),
+                                            controller: controller,
                                           );
-                                        }
-                                        return _InviteContactListTile(
-                                          user: contacts[i],
-                                          profile: Profile(
-                                            avatarUrl: contacts[i].avatarUrl,
-                                            displayName:
-                                                localizedPangeaUserName(
-                                                  contacts[i].id,
-                                                  L10n.of(context),
-                                                ) ??
-                                                contacts[i].displayName ??
-                                                contacts[i].id.localpart ??
-                                                L10n.of(context).user,
-                                            userId: contacts[i].id,
-                                          ),
-                                          isMember: participants.contains(
-                                            contacts[i].id,
-                                          ),
-                                          canInvite: canInvite,
-                                          onTap: () => controller.inviteAction(
-                                            contacts[i].id,
-                                          ),
-                                          controller: controller,
-                                        );
-                                      },
+                                        },
+                                      ),
                                     ),
                             ),
                           ),
@@ -335,6 +365,55 @@ class PangeaInvitationSelectionView extends StatelessWidget {
       ),
     );
   }
+}
+
+/// Which of a contact row's two controls exist: the member menu the row
+/// opens, and a live Invite button. Shared by the row and by its list's
+/// roving ids so the two cannot drift, because an id whose control cannot take
+/// focus would leave the list with no Tab stop.
+({User? participant, bool showsInviteButton, bool canInviteUser})
+_inviteRowControls(
+  PangeaInvitationSelectionController controller,
+  String userId, {
+  required bool isMember,
+  required bool canInvite,
+}) {
+  final participant = controller.participants?.firstWhereOrNull(
+    (p) => p.id == userId,
+  );
+  final showsInviteButton =
+      !const [
+        Membership.invite,
+        Membership.knock,
+        Membership.ban,
+      ].contains(participant?.membership) &&
+      (participant == null || participant.powerLevel < 50);
+  return (
+    participant: participant,
+    showsInviteButton: showsInviteButton,
+    canInviteUser: showsInviteButton && !isMember && canInvite,
+  );
+}
+
+/// A contact row's controls in reading order. The contact lists have no fixed
+/// length, so each is one Tab stop with the arrow keys stepping through these
+/// (accessibility.instructions.md, "One Tab stop per list").
+List<String> _inviteRowRovingIds(
+  PangeaInvitationSelectionController controller,
+  String userId, {
+  required bool isMember,
+  required bool canInvite,
+}) {
+  final controls = _inviteRowControls(
+    controller,
+    userId,
+    isMember: isMember,
+    canInvite: canInvite,
+  );
+  return [
+    if (controls.participant != null) '$userId:menu',
+    if (controls.canInviteUser) '$userId:invite',
+  ];
 }
 
 class _InviteContactListTile extends StatelessWidget {
@@ -362,9 +441,13 @@ class _InviteContactListTile extends StatelessWidget {
     final l10n = L10n.of(context);
     final theme = Theme.of(context);
 
-    final participant = controller.participants?.firstWhereOrNull(
-      (p) => p.id == profile.userId,
+    final controls = _inviteRowControls(
+      controller,
+      profile.userId,
+      isMember: isMember,
+      canInvite: canInvite,
     );
+    final participant = controls.participant;
     final membership = participant?.membership;
 
     final String? permissionBatch = participant == null
@@ -377,6 +460,9 @@ class _InviteContactListTile extends StatelessWidget {
 
     return UserResultTile(
       profile: profile,
+      focusNode: participant != null
+          ? RovingFocusGroup.nodeOf(context, '${profile.userId}:menu')
+          : null,
       onTap: participant != null
           ? () =>
                 showMemberActionsPopupMenu(context: context, user: participant)
@@ -421,6 +507,9 @@ class _InviteContactListTile extends StatelessWidget {
               ),
             )
           : TextButton.icon(
+              focusNode: controls.canInviteUser
+                  ? RovingFocusGroup.nodeOf(context, '${profile.userId}:invite')
+                  : null,
               onPressed: isMember || !canInvite ? null : onTap,
               label: Text(isMember ? l10n.participant : l10n.invite),
               icon: Icon(isMember ? Icons.check : Icons.add),

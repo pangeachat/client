@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 
 /// The gold attention card the course page opens with: [icon] and [title]
 /// over a bulk action, then [rows] capped at [_maxCollapsedRows] behind a
@@ -30,14 +31,21 @@ class CourseAttentionCard extends StatefulWidget {
   final VoidCallback onAction;
   final List<Widget> rows;
 
+  /// For each of [rows], the roving ids of its focusable controls, in order.
+  /// The rows have no fixed count, so they are one Tab stop with the arrow
+  /// keys moving through their controls (accessibility.instructions.md, "One
+  /// Tab stop per list"); each control takes its node from the group by id.
+  final List<List<String>> rowRovingIds;
+
   const CourseAttentionCard({
     required this.icon,
     required this.title,
     required this.actionLabel,
     required this.onAction,
     required this.rows,
+    required this.rowRovingIds,
     super.key,
-  });
+  }) : assert(rows.length == rowRovingIds.length);
 
   @override
   State<CourseAttentionCard> createState() => _CourseAttentionCardState();
@@ -104,7 +112,18 @@ class _CourseAttentionCardState extends State<CourseAttentionCard> {
               ],
             ),
             const SizedBox(height: 4.0),
-            ...visible,
+            // Only the rows on screen: an id with no built control would
+            // leave an arrow key with nowhere to go.
+            RovingFocusGroup(
+              ids: [
+                for (final ids in widget.rowRovingIds.take(visible.length))
+                  ...ids,
+              ],
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: visible,
+              ),
+            ),
             if (hiddenCount > 0)
               Center(
                 child: TextButton(

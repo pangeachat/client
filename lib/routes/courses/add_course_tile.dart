@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/course_avatar.dart';
 import 'package:fluffychat/pangea/common/widgets/invited_chip.dart';
+import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/routes/courses/add_course_tile_content.dart';
 import 'package:fluffychat/routes/courses/course_info_chip_widget.dart';
 import 'package:fluffychat/routes/courses/course_members_chip.dart';
@@ -21,6 +22,11 @@ class AddCourseTile extends StatelessWidget {
   /// passes 1 — a wrapped title can overflow the short sheet (#7826).
   final int titleMaxLines;
 
+  /// This tile's id in the enclosing [RovingFocusGroup]: a course list is one
+  /// Tab stop, with the arrow keys moving between its tiles. Null for a tile
+  /// outside a group.
+  final String? rovingId;
+
   const AddCourseTile({
     super.key,
     required this.content,
@@ -28,6 +34,7 @@ class AddCourseTile extends StatelessWidget {
     this.expanded = false,
     this.hasKnockingUsers = false,
     this.titleMaxLines = 2,
+    this.rovingId,
   });
 
   @override
@@ -63,6 +70,9 @@ class AddCourseTile extends StatelessWidget {
         label: label,
         child: InkWell(
           onTap: onTap,
+          focusNode: rovingId == null
+              ? null
+              : RovingFocusGroup.nodeOf(context, rovingId!),
           borderRadius: BorderRadius.circular(12.0),
           child: Container(
             padding: const EdgeInsets.all(12.0),
