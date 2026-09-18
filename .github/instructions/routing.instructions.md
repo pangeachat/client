@@ -849,7 +849,7 @@ behaves the same on mobile and desktop.
 
 ### A chat's header actions
 
-A regular chat's header carries the call buttons and one **More** menu, the same control an activity session's header has. It offers search and chat details, which used to be icons of their own, and every action the chat-list row's long-press menu offers: go to course, notifications, mark read or unread, pin, leave, delete. Long-press is a gesture many learners never discover, so no action may be reachable only that way. Both menus are built from one list ([`chatContextMenuItems`](../../lib/routes/chat/chat_details/chat_context_menu_action.dart)), so an action added to either shows up in both. The header drops only "open this chat", which is already on screen.
+Every chat header carries one **More** menu. It offers search and chat details, which used to be icons of their own, and every action the chat-list row's long-press menu offers: go to course, notifications, mark read or unread, pin, leave, delete. Long-press is a gesture many learners never discover, so no action may be reachable only that way. Both menus are built from one list ([`chatContextMenuItems`](../../lib/routes/chat/chat_details/chat_context_menu_action.dart)), so an action added to either shows up in both. The header drops only "open this chat", which is already on screen. A regular chat also carries the call buttons; an activity session carries Invite and Download in its menu instead ([activities.instructions.md](activities.instructions.md)).
 
 ### One live session at a time
 

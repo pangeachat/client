@@ -1,6 +1,5 @@
 import 'dart:ui' as ui;
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:badges/badges.dart';
@@ -17,7 +16,6 @@ import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_finished_status_message.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_rating_card.dart';
-import 'package:fluffychat/routes/chat/activity_sessions/activity_session_popup_menu.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_stats_menu.dart';
 import 'package:fluffychat/routes/chat/calls/chat_call_buttons.dart';
@@ -58,32 +56,18 @@ class ChatView extends StatelessWidget {
         ? null
         : const AnalyticsHeaderAvatar();
 
-    if (controller.room.showActivityChatUI) {
-      // A completed session (finished for everyone) keeps its "More" menu, but
-      // only to download the transcript — leave/invite no longer apply once the
-      // session is over. Gate on isActivityFinished, not the learner's own
-      // archived role: an observer with no role, or a learner who finished while
-      // others played on, is still looking at a session that has ended for all.
-      // Download is web/desktop only for now, so on native a completed session
-      // has no menu items; omit the button entirely there.
-      final bool isCompleted = controller.room.isActivityFinished;
-      return [
-        if (!isCompleted || kIsWeb)
-          ActivitySessionPopupMenu(
-            controller.room,
-            onLeave: controller.onLeave,
-            isCompleted: isCompleted,
-          ),
-        ?analyticsAvatar,
-      ];
-    }
+    // An activity session's header carries the same More menu as any other
+    // chat — its own Invite and Download ride in it, but so does everything
+    // the chat-list row's long-press menu offers. Calling is a regular-chat
+    // affordance only.
+    final isSession = controller.room.showActivityChatUI;
 
     // Whether calling is offered at all is ChatCallButtons' own decision, not a
     // condition written here: this list cannot be mounted without a live
     // ChatController, so a gate at this site is a gate no test can reach.
     final space = controller.room.pangeaSpaceParents.firstOrNull;
     return [
-      ChatCallButtons(controller.room),
+      if (!isSession) ChatCallButtons(controller.room),
       // Search and chat details used to be icons of their own here. They now
       // sit in this More menu, alongside every action the chat-list row's
       // long-press menu offers, so none of them needs a long-press to reach.

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
@@ -9,10 +10,12 @@ import 'package:fluffychat/features/activity_sessions/activity_room_extension.da
 import 'package:fluffychat/features/navigation/room_close_location.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/extensions/leave_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/delete_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/delete_space_dialog.dart';
 import 'package:fluffychat/routes/chat_list/chat_list.dart';
+import 'package:fluffychat/utils/chat_download_provider.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
@@ -39,6 +42,18 @@ extension on ChatContextAction {
       case ChatContextAction.search:
       case ChatContextAction.details:
         return source == ChatMenuSource.chatHeader;
+      case ChatContextAction.invite:
+        // A session that has ended for everyone can no longer be joined.
+        return source == ChatMenuSource.chatHeader &&
+            room.isActivitySession &&
+            !room.isActivityFinished;
+      case ChatContextAction.download:
+        // Any member may export a transcript. Web/desktop only for now — the
+        // native mobile download path is unvalidated. A regular chat exports
+        // from its details button row instead.
+        return source == ChatMenuSource.chatHeader &&
+            room.isActivitySession &&
+            kIsWeb;
       case ChatContextAction.goToSpace:
         return space != null;
       case ChatContextAction.favorite:
@@ -155,6 +170,30 @@ List<PopupMenuEntry<ChatContextAction>> chatContextMenuItems(
             const Icon(Icons.settings_outlined),
             const SizedBox(width: 12),
             Text(l10n.chatDetails),
+          ],
+        ),
+      ),
+    if (on(ChatContextAction.invite))
+      PopupMenuItem(
+        value: ChatContextAction.invite,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Icon(Icons.person_add_outlined),
+            const SizedBox(width: 12),
+            Text(l10n.invite),
+          ],
+        ),
+      ),
+    if (on(ChatContextAction.download))
+      PopupMenuItem(
+        value: ChatContextAction.download,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Icon(Icons.download_outlined),
+            const SizedBox(width: 12),
+            Text(l10n.download),
           ],
         ),
       ),
@@ -324,6 +363,12 @@ Future<void> handleChatContextAction(
           ? NavigationUtil.goToSpaceRoute(room.id, [], context)
           : NavigationUtil.goToSpaceRoute(room.id, ['details'], context);
       return;
+    case ChatContextAction.invite:
+      NavigationUtil.goToSpaceRoute(room.id, ['invite'], context);
+      return;
+    case ChatContextAction.download:
+      await showChatDownloadDialog(room.id, context);
+      return;
     case ChatContextAction.goToSpace:
       // world_v2: token nav to the course card (sets ?m=course:<id>&left=course),
       // not the legacy /rooms/spaces path.
@@ -384,9 +429,15 @@ Future<void> handleChatContextAction(
       if (confirmed != OkCancelResult.ok) return;
 
       final isSpace = room.isSpace;
+      // An old session the homeserver has forgotten answers /leave with a 404
+      // that is not a failure — the learner is out of it either way (#8234).
       final resp = await showFutureLoadingDialog(
         context: outerContext,
-        future: isSpace ? room.leaveSpace : room.leave,
+        future: isSpace
+            ? room.leaveSpace
+            : room.isActivitySession
+            ? room.leaveIgnoringUnknownRoom
+            : room.leave,
       );
 
       final r = room.client.getRoomById(room.id);
