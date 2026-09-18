@@ -10,6 +10,7 @@ import 'package:fluffychat/features/activity_sessions/activity_roles_room_extens
 import 'package:fluffychat/features/languages/context_language_switch_target.dart';
 import 'package:fluffychat/features/languages/language_flag_chip.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
+import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/room_close_location.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
@@ -120,12 +121,17 @@ class ActivitySessionStartView extends StatelessWidget {
                           context,
                         ).backButtonTooltip,
                         icon: const Icon(Icons.arrow_back),
-                        onPressed: () => GoRouter.of(context).go(
-                          WorkspaceNav.dropActivityOverlay(
-                            uri,
-                            reopenCourseCard: true,
-                          ),
-                        ),
+                        onPressed: () {
+                          // The course card that mounts claims focus; this
+                          // arrow goes with the activity panel.
+                          PanelEntryIntent.instance.armForSwap();
+                          GoRouter.of(context).go(
+                            WorkspaceNav.dropActivityOverlay(
+                              uri,
+                              reopenCourseCard: true,
+                            ),
+                          );
+                        },
                       )
                     : embedded
                     // Unscoped (pin entry) → X dismisses to the map.
