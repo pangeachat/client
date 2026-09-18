@@ -2124,3 +2124,29 @@ until the design is Codex-green.
 - ON FIXER RETURN: analyze-clean + calls bucket -> rebuild APK+web for owner's final e2e on the MERGED build ->
   PR on owner go (cross-model gate deferred to Sep 21 or owner accepts CI+review). PR2 diff vs main stays
   recording/transcript-only (ring now matches main).
+
+## 2026-09-18 (cont) — codex back; drift fix (f030b6988e) + #2 overflow fix (0b3771fef9) gated
+- Drift fixer f030b6988e (async cascade + underlineColor) = analyze 0, calls bucket 1823 + known call_media
+  disconnect flake (solo 58/58), coordinator 26/26. Its one non-mechanical test change (rule-2 "written before
+  the fetch resolves") VERIFIED HONEST: the fetch is held gated throughout the isNotNull asserts, so the
+  crash-safety contract stands; only the now-impossible synchronous timing relaxed. No softening.
+- MY cold gate on the async cascade (codex back): ISSUES-FOUND/softening no, ONE P2 with reachability caveat:
+  two concurrent _keepPending for the same absent key can both read null then both write, so B overwrites A's
+  firstSeenAt. DECISIVE CHECK: merge-base box had SYNC read + ALREADY-ASYNC write; main changed ONLY read
+  (sync->async). So the race STRUCTURALLY PRE-EXISTED (the always-async write already allowed it); the
+  async-read change only WIDENS the window. No crash-safety regression (write was always async -> handler
+  return never durable; the index-before-await rule holds). Impact NEGLIGIBLE: firstSeenAt only moves LATER
+  by the sub-second gap between onCallFinished/onSyncedCallAudio -> TTL extended by seconds on a minutes
+  window (<1%). DEFERRED as a documented follow-up (per-key keep serialization / atomic put-if-absent) --
+  NOT a merge regression, and touching the hardened coordinator concurrency for a <1% nit risks more than it
+  fixes. Gate otherwise confirmed the adaptation sound (null checks correct, no guard weakened, semaphore +
+  single-t0 snapshot preserved).
+- #2 floating-card cold gate (deferred from the codex outage): invariants ALL CLEARED (single scrollable,
+  single merged-player build, tap-swallow covers footprint, players mounted across collapse). One real P2:
+  expanded rows could overflow a short/landscape viewport (stationary card can't scroll -> clip). FIXED
+  0b3771fef9: cap the rows to 40% viewport height + SingleChildScrollView inside the card (the activities
+  ActivityDropdownContent pattern); inner scroll is NOT TurnTimeline's ancestor so the single-scrollable
+  invariant holds; short lists shrink-wrap below the cap. analyze clean, 110 transcript_view tests green.
+- NEXT: rebuild APK + web on the MERGED build (812418cd01 + drift fix + #2 fixes) for the owner's final e2e.
+  PR on owner go. Deferred follow-ups: (a) the MP3-vs-OGG iOS/macOS reconnect-cue fix vs main; (b) the
+  _keepPending per-key serialization; (c) Gabby's l10n backfill for the en-only keys.
