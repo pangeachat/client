@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 
+import 'package:async/async.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
@@ -11,6 +12,7 @@ import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/routes/world/joined_objective_cache.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 typedef QuestLoader = ValueNotifier<AsyncState<QuestOutline>>;
 
@@ -43,6 +45,28 @@ class QuestObjectivesLoader {
         .where((s) => s.hasRoomUpdate)
         .rateLimit(const Duration(seconds: 2))
         .listen((_) => _resolveProgression(_loadGeneration));
+
+    // Activity-card text is served in the resolved display language (#8577)
+    // and [QuestRepo.outline] keys its cache on it — but nothing asked again
+    // when that language changed, so a course surface went on showing the
+    // previous language's cards until it was rebuilt from scratch (#9151).
+    // The world map's `_refetchOnDisplayLanguageChange` is this same trigger
+    // on these same two streams; this is its course-side counterpart.
+    //
+    // Both streams, because a profile write reaches exactly one of them: a
+    // base- or target-language change emits on `languageStream`, and the
+    // "app in target language" toggle — which changes no language but does
+    // change the resolved display one — emits on `settingsUpdateStream`.
+    //
+    // Guarded on the controller for the same reason [QuestRepo.displayL1]
+    // guards its read: a loader can be constructed before (or without) one.
+    if (MatrixState.isPangeaControllerInitialized) {
+      final user = MatrixState.pangeaController.userController;
+      _displayLanguageSub = StreamGroup.merge([
+        user.languageStream.stream,
+        user.settingsUpdateStream.stream,
+      ]).listen((_) => _refetchOnDisplayLanguageChange());
+    }
   }
 
   final QuestLoader _questLoader = QuestLoader(AsyncLoading());
@@ -69,6 +93,11 @@ class QuestObjectivesLoader {
   /// deliberately never cached ([QuestRepo.outline]).
   final JoinedObjectiveCache _objectiveCache = JoinedObjectiveCache();
   StreamSubscription? _starsSub;
+  StreamSubscription? _displayLanguageSub;
+
+  /// The last [loadOutline] call, kept so a display-language change can re-run
+  /// exactly the read that is now stale. Null until the first load.
+  _OutlineRequest? _request;
 
   int _loadGeneration = 0;
   bool _disposed = false;
@@ -84,6 +113,7 @@ class QuestObjectivesLoader {
 
   void dispose() {
     _starsSub?.cancel();
+    _displayLanguageSub?.cancel();
     _questLoader.dispose();
     // _progression is shared across loaders — never disposed with one of them.
     _disposed = true;
@@ -163,6 +193,33 @@ class QuestObjectivesLoader {
     }
   }
 
+  /// Re-read the outline when the resolved display language no longer matches
+  /// the one the current outline was read in (#9151).
+  ///
+  /// Compares rather than firing on every event: `settingsUpdateStream` emits
+  /// for every profile write — CEFR level, voice, tooltips — and only a change
+  /// to the resolved display language invalidates what is loaded. No
+  /// `forceRefresh`: [QuestRepo.outline] already keys on the language, so the
+  /// new one misses the cache on its own, and forcing would also bypass the
+  /// persisted removed-quest verdict this has no reason to re-ask.
+  ///
+  /// A null [_OutlineRequest.questId] is a surface with no quest to show (a
+  /// preview with no plan) — there is nothing to re-read, and re-running the
+  /// previous course's load would show the wrong course.
+  void _refetchOnDisplayLanguageChange() {
+    final request = _request;
+    if (request == null ||
+        request.questId == null ||
+        request.displayL1 == QuestRepo.displayL1) {
+      return;
+    }
+    loadOutline(
+      request.questId,
+      pinnedActivitiesByObjective: request.pinnedActivitiesByObjective,
+      courseRoomId: request.courseRoomId,
+    );
+  }
+
   void _updateQuest(AsyncState<QuestOutline> value, int loadGen) {
     if (!_disposed && loadGen == _loadGeneration) {
       _questLoader.value = value;
@@ -186,6 +243,12 @@ class QuestObjectivesLoader {
     _loadGeneration++;
     final loadGen = _loadGeneration;
     _courseId = courseRoomId ?? questId;
+    _request = _OutlineRequest(
+      questId: questId,
+      pinnedActivitiesByObjective: pinnedActivitiesByObjective,
+      courseRoomId: courseRoomId,
+      displayL1: QuestRepo.displayL1,
+    );
 
     // world_v2 → v3: the course space's coursePlan.uuid (or the previewed
     // plan's uuid) points at a quest-plans id. The outline (Missions + their
@@ -228,4 +291,21 @@ class QuestObjectivesLoader {
     );
     _resolveProgression(loadGen);
   }
+}
+
+/// The arguments of one [QuestObjectivesLoader.loadOutline], with the display
+/// language it resolved under — what a profile change is compared against
+/// before the outline is re-read (#9151).
+class _OutlineRequest {
+  const _OutlineRequest({
+    required this.questId,
+    required this.pinnedActivitiesByObjective,
+    required this.courseRoomId,
+    required this.displayL1,
+  });
+
+  final String? questId;
+  final Map<String, List<String>>? pinnedActivitiesByObjective;
+  final String? courseRoomId;
+  final String displayL1;
 }
