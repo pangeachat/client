@@ -1,5 +1,5 @@
 // IndexedDB only exists in a browser, so the VM suite skips this file. Run it
-// with `fvm flutter test --platform chrome test/utils/store_reconnect_extension_test.dart`.
+// with `fvm flutter test --platform chrome test/pangea/store_reconnect_extension_test.dart`.
 @TestOn('browser')
 library;
 

@@ -39,6 +39,7 @@ import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/call_session.dart' as call_ui;
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_repo.dart';
 import 'package:fluffychat/utils/client_manager.dart';
+import 'package:fluffychat/utils/matrix_sdk_extensions/store_reconnect_extension.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/utils/uia_request_manager.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/screen_size_warning_dialog.dart';
@@ -547,8 +548,12 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   void markClientTearingDownForTest(String clientName) =>
       _clientsTearingDown.add(clientName);
 
+  /// The client a login or sign-up runs on. Every caller is about to write a
+  /// new session to its store, so the store's connection is checked here: a
+  /// learner may have left the browser since the client was created (#9163).
   Future<Client> getLoginClient() async {
     if (canReuseClientForLogin) {
+      await client.reconnectStoreIfClosed();
       return client;
     }
     final candidate = _loginClientCandidate ??=
@@ -634,6 +639,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       _accountsChanged();
     }
     // Pangea#
+    await candidate.reconnectStoreIfClosed();
     return candidate;
   }
 
