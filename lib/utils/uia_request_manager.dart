@@ -120,7 +120,7 @@ extension UiaRequestManager on MatrixState {
             // The learner left the browser to open the link, and the sign-up
             // that completes here writes to the store straight away.
             if (!client.isLogged()) {
-              await (await getLoginClient()).reconnectStore();
+              await (await getLoginClient()).reconnectStoreIfClosed();
             }
             return uiaRequest.completeStage(auth);
           }
