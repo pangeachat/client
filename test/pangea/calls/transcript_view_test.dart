@@ -1448,6 +1448,206 @@ void main() {
     });
   });
 
+  group('live transcript refresh', () {
+    testWidgets(
+      'a half that arrives AFTER the initial load is shown live, without a '
+      'manual retry',
+      (tester) async {
+        // P3: the recording-based half is transcribed POST-hangup, so its
+        // `pangea.call_transcript` event can land seconds after the call
+        // ends -- while the transcript is already open. Before this fix,
+        // `initState` read the relations ONCE and nothing subscribed to a
+        // later sync for the TRANSCRIPT itself (only the recordings/merged
+        // relations already did), so the screen stayed stuck reporting the
+        // peer absent until a manual retry.
+        var peerHalfArrived = false;
+        Future<({List<MatrixEvent> chunk, String? nextBatch})> fetch({
+          required String roomId,
+          required String eventId,
+          required String relType,
+          String? from,
+        }) async => (
+          chunk: [
+            half(_me, texts: const ['hola']),
+            if (peerHalfArrived) half(_peer, texts: const ['que tal']),
+          ],
+          nextBatch: null,
+        );
+
+        await pump(tester, fetch);
+
+        // The peer's half has not arrived yet -- reported absent, not silent.
+        expect(find.textContaining('No transcript from'), findsOneWidget);
+        expect(find.text('que tal'), findsNothing);
+
+        // The peer's half is published; a sync picks it up live.
+        peerHalfArrived = true;
+        client.onSync.add(SyncUpdate(nextBatch: 's1'));
+        await tester.pumpAndSettle();
+
+        // Shown WITHOUT a manual retry. Mutation: never subscribe the
+        // transcript to onSync (or skip re-reading it there) -> this stays
+        // absent and the test fails.
+        expect(find.textContaining('No transcript from'), findsNothing);
+        expect(find.text('que tal'), findsOneWidget);
+      },
+    );
+
+    testWidgets(
+      'a second device from a sender who already has a half is still picked '
+      'up live',
+      (tester) async {
+        // Cold-gate finding: an earlier version stopped the live-refresh
+        // loop once every sender's arrival was anything other than
+        // [HalfArrival.none] -- but a sender's SECOND device can post its
+        // own half well after the first, growing
+        // [TranscriptHalf.deviceCount] and its segments, and BOTH senders
+        // having "arrived" at all says nothing about whether that is still
+        // to come. Both halves are present from the start; only the second
+        // device is added later.
+        var secondDeviceArrived = false;
+        Future<({List<MatrixEvent> chunk, String? nextBatch})> fetch({
+          required String roomId,
+          required String eventId,
+          required String relType,
+          String? from,
+        }) async => (
+          chunk: [
+            half(_me, texts: const ['hola'], deviceId: 'PHONE'),
+            if (secondDeviceArrived)
+              half(_me, texts: const ['tambien esto'], deviceId: 'LAPTOP'),
+            half(_peer, texts: const ['que tal']),
+          ],
+          nextBatch: null,
+        );
+
+        await pump(tester, fetch);
+
+        expect(find.text('hola'), findsOneWidget);
+        expect(find.text('que tal'), findsOneWidget);
+        expect(find.text('tambien esto'), findsNothing);
+
+        // The second device posts AFTER both senders already had a half --
+        // exactly the state a "stop once everyone has arrived" gate would
+        // treat as terminal.
+        secondDeviceArrived = true;
+        client.onSync.add(SyncUpdate(nextBatch: 's1'));
+        await tester.pumpAndSettle();
+
+        expect(
+          find.text('tambien esto'),
+          findsOneWidget,
+          reason:
+              'a second device joining after both sides had already '
+              'arrived must still be picked up live',
+        );
+      },
+    );
+
+    testWidgets(
+      'a sync that changes nothing leaves an already-shown transcript alone',
+      (tester) async {
+        // The other half of the live-refresh contract (and the "must not
+        // regress an already-present transcript" requirement): a re-read
+        // must not blank or re-shimmer a transcript that is already
+        // correctly shown just because a sync arrived. Both halves are
+        // present from the start and never change.
+        await pump(
+          tester,
+          serving([
+            half(_me, texts: const ['hola']),
+            half(_peer, texts: const ['que tal']),
+          ]),
+        );
+
+        expect(find.text('hola'), findsOneWidget);
+        expect(find.text('que tal'), findsOneWidget);
+
+        client.onSync.add(SyncUpdate(nextBatch: 's1'));
+        // A single frame first, not straight to `pumpAndSettle`: the words
+        // must never even MOMENTARILY disappear while the unchanged re-read
+        // is in flight -- `pumpAndSettle` alone would hide a one-frame flash
+        // to a stale/absent state if the swap logic ever adopted a read
+        // before comparing it.
+        await tester.pump();
+        expect(find.text('hola'), findsOneWidget);
+        expect(find.text('que tal'), findsOneWidget);
+
+        await tester.pumpAndSettle();
+
+        expect(find.text('hola'), findsOneWidget);
+        expect(find.text('que tal'), findsOneWidget);
+        expect(find.textContaining('No transcript from'), findsNothing);
+      },
+    );
+  });
+
+  group('transcriptChanged', () {
+    // Real [CallTranscript]s from the real assembly pipeline
+    // ([fetchCallTranscript]), not hand-built [TranscriptHalf]s -- the
+    // fixtures a hand-built half would need to stay honest (accounting,
+    // arrival, issue all derived/interdependent) are exactly what [half]
+    // already produces via the writer's own shapes.
+    const roomId = '!c:fakeServer.notExisting';
+
+    Future<CallTranscript> read(List<MatrixEvent> events) =>
+        fetchCallTranscript(
+          fetch: serving(events),
+          roomId: roomId,
+          callKey: _callKey,
+          selfId: _me,
+          expectedSenders: const [_me, _peer],
+        );
+
+    test('a positionsMarked flip is a change even with identical segments and '
+        'issue', () async {
+      // Cold-gate counterexample: both reads carry a valid `at_span_ms`
+      // (so `issue` is `timesApproximate` either way -- `issue`'s own
+      // ordering checks it before `timesUnstated`), and differ ONLY in
+      // whether the writer marks its positions. `_timeKindOf` reads
+      // `positionsMarked` directly and would print every one of this
+      // half's turns as `unstated` for the first read and `atOrBefore`
+      // for the second -- a real render difference `issue` alone hides.
+      final a = await read([
+        half(
+          _me,
+          texts: const ['hola'],
+          atMs: const [1000],
+          spanMs: const [500],
+          positionsMarked: false,
+        ),
+        half(_peer, texts: const ['que tal']),
+      ]);
+      final b = await read([
+        half(
+          _me,
+          texts: const ['hola'],
+          atMs: const [1000],
+          spanMs: const [500],
+        ),
+        half(_peer, texts: const ['que tal']),
+      ]);
+
+      expect(
+        a.halves.firstWhere((h) => h.senderId == _me).issue,
+        b.halves.firstWhere((h) => h.senderId == _me).issue,
+        reason: 'the counterexample only works if issue agrees either way',
+      );
+      expect(transcriptChanged(a, b), isTrue);
+    });
+
+    test('an identical re-read is not a change', () async {
+      final events = [
+        half(_me, texts: const ['hola']),
+        half(_peer, texts: const ['que tal']),
+      ];
+      final a = await read(events);
+      final b = await read(events);
+
+      expect(transcriptChanged(a, b), isFalse);
+    });
+  });
+
   group('two devices, two clocks', () {
     // The SFU's clock when both devices joined -- two seconds before the first
     // word, which is what an ordinary call looks like.

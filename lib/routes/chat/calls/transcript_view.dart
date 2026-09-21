@@ -98,6 +98,59 @@ Future<void> showCallTranscript(
   );
 }
 
+/// Whether a live re-read of the transcript, [next], would render any
+/// DIFFERENTLY from what is already shown, [shown] -- the live-refresh
+/// change gate (see [_CallTranscriptViewState._refreshTranscript]), so a
+/// sync that brings back byte-for-byte the same transcript never triggers a
+/// rebuild.
+///
+/// [CallTranscript]/[TranscriptHalf] carry no value equality of their own --
+/// both are assembled fresh on every read, over and over, for as long as the
+/// dialog stays open -- so this compares exactly the fields the screen
+/// itself draws from a half: [TranscriptHalf.segments] (each
+/// [TranscriptSegment] does carry value equality), and the
+/// state/arrival/issue/device-count/clock-anchor/language/positions-marked
+/// [_HalfSection]/[_noteFor]/[_turnsOf]/[_timeKindOf] read to decide what a
+/// half's section says and where and HOW its turns land -- plus the
+/// whole-transcript [CallTranscript.readLimits] the top caveats are drawn
+/// from.
+///
+/// [TranscriptHalf.issue] is a derived getter, not a stored field, but
+/// comparing it here still earns its keep: it is the ONE value [_noteFor]
+/// and [_HalfSection] actually branch on for everything accounting-shaped,
+/// so two reads that agree on every displayed word but would explain an
+/// empty half differently are still caught.
+///
+/// [TranscriptHalf.positionsMarked] gets its OWN comparison rather than
+/// riding along with [issue]: a cold review found a concrete counterexample
+/// where two reads share the identical `issue` (`timesApproximate`, which
+/// [issue]'s own ordering checks before `timesUnstated`) while
+/// `positionsMarked` flips false->true -- and [_timeKindOf] reads
+/// `positionsMarked` DIRECTLY, forcing every turn to [TurnTime.unstated]
+/// whenever it is false regardless of `issue`. Missing that flip would leave
+/// a turn's printed time (or the caveat about it) stale.
+@visibleForTesting
+bool transcriptChanged(CallTranscript shown, CallTranscript next) {
+  if (!setEquals(shown.readLimits, next.readLimits)) return true;
+  if (shown.halves.length != next.halves.length) return true;
+  for (var i = 0; i < shown.halves.length; i++) {
+    final a = shown.halves[i];
+    final b = next.halves[i];
+    if (a.senderId != b.senderId ||
+        a.state != b.state ||
+        a.arrival != b.arrival ||
+        a.issue != b.issue ||
+        a.deviceCount != b.deviceCount ||
+        a.clockAnchor != b.clockAnchor ||
+        a.langCode != b.langCode ||
+        a.positionsMarked != b.positionsMarked ||
+        !listEquals(a.segments, b.segments)) {
+      return true;
+    }
+  }
+  return false;
+}
+
 class CallTranscriptView extends StatefulWidget {
   final Room room;
   final String callKey;
@@ -198,12 +251,16 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
   StreamSubscription<Duration>? _observedPositionSub;
   StreamSubscription<PlayerState>? _observedStateSub;
 
-  /// Follows room syncs so a merge (or a peer's half) that lands AFTER the
-  /// screen opened is picked up live -- a sync ARMS [_refreshRequested] and the
-  /// single coalescer [_drainRefreshes] does the work. Cancelled in [dispose].
-  /// Uses `onSync` (not `onRoomState`) for the same reason
-  /// `chat_call_buttons.dart` does -- it is the one stream every room change
-  /// rides on.
+  /// Follows room syncs so a merge, half, or transcript update that lands
+  /// AFTER the screen opened is picked up live -- a sync ARMS
+  /// [_refreshRequested] and [_transcriptRefreshRequested] and their TWO
+  /// independent coalescers, [_drainRefreshes] and
+  /// [_drainTranscriptRefreshes], each do their own work (see
+  /// [_transcriptRefreshRequested]'s doc for why there are two rather than
+  /// one). One subscription feeds both; cancelling it here in [dispose]
+  /// stops both from being armed again. Uses `onSync` (not `onRoomState`)
+  /// for the same reason `chat_call_buttons.dart` does -- it is the one
+  /// stream every room change rides on.
   StreamSubscription<SyncUpdate>? _sync;
 
   /// Armed by EVERY sync (see [_requestRefresh]); consumed by the one
@@ -218,6 +275,40 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
   /// pass) rather than starting a second overlapping drain. The "if not already
   /// running" half of the coalescer.
   bool _refreshDraining = false;
+
+  /// The transcript's OWN analogue of [_refreshRequested], armed by every
+  /// sync and consumed by its OWN coalescer, [_drainTranscriptRefreshes] --
+  /// kept SEPARATE from the recordings/merged pair above rather than folded
+  /// into one shared pass. A cold review caught the reason: even after the
+  /// transcript and recordings/merged fetches were split into independent
+  /// arms WITHIN one pass (so one arm's `setState` no longer waits on the
+  /// other's), the two arms were still awaited together by [_refreshOnce],
+  /// so a slow transcript relations walk (up to [kMaxRelationPages] pages)
+  /// kept the SHARED coalescer busy and delayed the NEXT sync's recordings
+  /// pass from even STARTING -- a cross-pass version of the same coupling
+  /// bug, one level up. Two fully independent coalescers, sharing only the
+  /// `onSync` subscription that arms them both, is what actually removes it.
+  bool _transcriptRefreshRequested = false;
+
+  /// True while [_drainTranscriptRefreshes]'s own loop is running. The
+  /// transcript's OWN analogue of [_refreshDraining].
+  bool _transcriptRefreshDraining = false;
+
+  /// Bumped on every fresh [_load] epoch (a [_retry] included). Captured by
+  /// [_refreshTranscript] before its own await and rechecked after, so a
+  /// refresh pass STARTED in an OLDER epoch cannot adopt its now-stale
+  /// result over -- or be overwritten by -- the epoch that superseded it
+  /// mid-flight. A cold review found this window: [_load]'s own initial-read
+  /// `.then()` already guards itself via future identity against
+  /// [_transcript] (a [_retry] reassigns it), but a REFRESH pass has no
+  /// future of its own to compare -- it reads [_shownTranscript] instead,
+  /// and [_load] resets that to null on every epoch, so a stale pass
+  /// completing after a retry would see `shown == null` and wrongly adopt
+  /// its OWN (superseded) result as if it were the new epoch's first read.
+  /// The transcript-side analogue of the `identical(controller,
+  /// _loadController)` check [_refreshRecordingsAndMerged] already does for
+  /// its own concern via [_loadController]'s own identity.
+  int _transcriptEpoch = 0;
 
   /// The in-flight [_startMergedPlayer] load, or null when no start is running
   /// -- the "Full call" bar's play and a turn tap both reach the start. A
@@ -248,6 +339,39 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
   int _shownHalfCount = 0;
   bool _shownHasMerge = false;
 
+  /// What the currently-DISPLAYED [_transcript] future resolved to, or null
+  /// before the initial read has landed.
+  ///
+  /// The transcript's own live-refresh baseline -- the analogue of
+  /// [_shownHalfCount]/[_shownHasMerge] above, kept separate because a
+  /// transcript half and a recording/merge are independent facts about the
+  /// call that can each arrive on their own schedule. [_refreshTranscript]
+  /// swaps a fresh read into [_transcript] whenever there is nothing shown
+  /// yet, or [transcriptChanged] says the new read would render differently
+  /// from this.
+  ///
+  /// Fed twice: once by [_load] itself, the instant the INITIAL read lands
+  /// (NOT by [_feedLoadController], which is deliberately decoupled from
+  /// whether the transcript read even succeeds -- see its own doc), and again
+  /// by every swap in [_refreshTranscript]. Reset to null at the start of
+  /// every fresh [_load] epoch, so a [_retry] never compares a new call's
+  /// first read against the previous one's last.
+  ///
+  /// DELIBERATELY has no "settled, stop checking" counterpart the way
+  /// [_shownHalfCount]/[_shownHasMerge] do via [CallRecordingsLoadState]. An
+  /// earlier version tried one (every half's `arrival != HalfArrival.none`)
+  /// and a cold review found it unsound: a `rejected` arrival (malformed
+  /// content, or an event naming a different call) does not mean the real
+  /// half will never land, and a sender's [TranscriptHalf.deviceCount] can
+  /// keep growing as more of their devices post -- both are cases the
+  /// "settled" half already looked, on its own terms, like nothing more
+  /// could arrive. [_refreshTranscript] therefore always re-reads on every
+  /// live-refresh pass, for as long as the dialog stays open; the cost of
+  /// that is bounded to an extra relations walk per sync (never a wrong
+  /// answer), which is a straight trade against the alternative of a
+  /// genuine update going unnoticed.
+  CallTranscript? _shownTranscript;
+
   /// Whether the INITIAL [_load] reads have settled and fed the machine. Until
   /// then a sync only ARMS [_refreshRequested] and [_drainRefreshes] does NOT
   /// start: a pre-settle drain would swap [_recordings]/[_merged] out from under
@@ -276,12 +400,24 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     _sync = widget.room.client.onSync.stream.listen((_) => _requestRefresh());
   }
 
-  /// Arms a live re-read and kicks the coalescer. EVERY sync funnels through
-  /// here, so a merge (or half) that lands after the screen opened is always
-  /// remembered. Before the initial reads settle it only sets the flag --
-  /// [_feedLoadController] kicks the first drain -- so an early sync can neither
-  /// clobber the initial feed nor be lost.
+  /// Arms a live re-read and kicks BOTH coalescers -- [_drainRefreshes] for
+  /// recordings/merged and [_drainTranscriptRefreshes] for the transcript,
+  /// entirely independent of each other (see [_transcriptRefreshRequested]'s
+  /// doc for why they are not one shared pass). EVERY sync funnels through
+  /// here, so a merge, half, or later device (or transcript update) that
+  /// lands after the screen opened is always remembered.
+  ///
+  /// The transcript's own drain has no equivalent of [_initialReadsSettled]
+  /// to wait on -- [_refreshTranscript] is safe to run from the very first
+  /// sync onward, since it only ever ADOPTS a read (see [_shownTranscript])
+  /// and never depends on the recordings/merged machine's own state. The
+  /// recordings/merged drain keeps its EXISTING gate: before those initial
+  /// reads settle it only sets the flag -- [_feedLoadController] kicks the
+  /// first drain -- so an early sync can neither clobber that feed nor be
+  /// lost.
   void _requestRefresh() {
+    _transcriptRefreshRequested = true;
+    unawaited(_drainTranscriptRefreshes());
     _refreshRequested = true;
     if (!_initialReadsSettled) return;
     unawaited(_drainRefreshes());
@@ -303,7 +439,7 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     // `relType` (see `RelationsFetcher`), and a second one here would be a
     // second thing a test double has to stand in for.
     final fetch = widget.fetcher ?? relationsFetcherFor(widget.room.client);
-    _transcript = fetchCallTranscript(
+    final transcript = fetchCallTranscript(
       fetch: fetch,
       roomId: widget.room.id,
       callKey: widget.callKey,
@@ -312,6 +448,37 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
       participantsKnown: participants.known,
       encrypted: widget.room.encrypted,
     );
+    _transcript = transcript;
+    // Feeds the transcript's OWN live-refresh baseline the instant this
+    // initial read lands, so the very first sync after the screen opens can
+    // already tell whether anything ACTUALLY changed. [_refreshTranscript]
+    // adopts unconditionally while [_shownTranscript] is still null (it has
+    // to, to close the race documented on that method), so without this seed
+    // the first sync-triggered pass would find no baseline to compare
+    // against and rebuild EVEN IF nothing changed since this initial read --
+    // a spurious rebuild this seed is what avoids. Guarded by future identity,
+    // the same guard
+    // [_feedLoadController] uses for its own two reads, so a [_retry] that
+    // replaces [_transcript] before this lands drops the now-superseded
+    // result rather than stamping the baseline from a read the retried screen
+    // never showed. A FAILED initial read is left alone -- [_shownTranscript]
+    // simply stays null, and the `FutureBuilder`'s own error/retry path in
+    // [build] is what the reader sees; this callback only ever writes on
+    // success. The `onError` no-op is load-bearing, not decorative: the
+    // `FutureBuilder` in [build] holds its OWN subscription to this same
+    // [transcript] future and already turns a rejection into its error UI,
+    // but THIS is a SECOND, independent subscription -- without a handler
+    // here too, a failed initial read would leave THIS listener's own
+    // derived future rejected with nobody awaiting it, a DUPLICATE unhandled
+    // async error (which, left unhandled in a test run, can fail an
+    // unrelated LATER test whose turn it is when the zone's error handler
+    // fires). Swallowed, not logged: the same failure is already visible to
+    // the reader via [build], and [fetchCallTranscript] itself is the one
+    // real source worth logging from.
+    transcript.then((t) {
+      if (!mounted || !identical(transcript, _transcript)) return;
+      _shownTranscript = t;
+    }, onError: (Object _, StackTrace _) {});
     // Started here, alongside the transcript fetch, so the relation types are
     // read CONCURRENTLY rather than one after the other. The transcript fetch
     // stays FIRST so it is the read whose failure surfaces as the retryable
@@ -333,6 +500,15 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     // per pass, so it simply drops (controller identity) or adopts the new one.
     _initialReadsSettled = false;
     _refreshRequested = false;
+    // Reset alongside the epoch above: a [_retry] must judge its OWN first
+    // read against nothing, never against the previous call's last-shown
+    // transcript.
+    _shownTranscript = null;
+    _transcriptRefreshRequested = false;
+    // Bumped so a transcript refresh pass still running from the PRIOR epoch
+    // discards its result instead of adopting it as (or overwriting) this
+    // epoch's first read -- see [_transcriptEpoch]'s own doc.
+    _transcriptEpoch++;
     _feedLoadController();
   }
 
@@ -423,11 +599,6 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
         if (!_initialReadsSettled) return;
         _refreshRequested = false;
         if (!mounted) return;
-        // Once the merge is shown the machine is terminally `ready`: nothing
-        // more to pick up, so stop re-reading.
-        if (_loadController.state.value == CallRecordingsLoadState.ready) {
-          return;
-        }
         // A pass that throws (unexpected -- [_refreshOnce]'s reads swallow their
         // own errors into empty lists) must NOT exit the loop and strand a
         // request a sync re-armed during it. Catch so the loop re-checks
@@ -443,18 +614,69 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     }
   }
 
-  /// One re-read + feed pass, driven by [_drainRefreshes]. Re-reads ONLY the
-  /// recordings + merged relations and FEEDS the existing load controller, so a
-  /// merge (or a peer's half) that arrives AFTER the screen opened is shown live
-  /// -- without a manual retry. Touches none of the coalescing flags; the loop
-  /// owns those.
+  /// One recordings/merged re-read pass, driven by [_drainRefreshes]. A thin
+  /// wrapper around [_refreshRecordingsAndMerged] -- kept as its own method
+  /// (rather than inlined) only because [_drainRefreshes]'s own doc comments
+  /// elsewhere in this file already refer to it by this name.
+  ///
+  /// The transcript is DELIBERATELY not part of this pass or this coalescer
+  /// -- see [_drainTranscriptRefreshes] and [_transcriptRefreshRequested]'s
+  /// doc for why a cold review found even a SHARED `Future.wait` between the
+  /// two arms (an earlier version of this method) insufficient: it kept this
+  /// coalescer busy for as long as the transcript's own relations walk took,
+  /// which could delay the NEXT sync's recordings pass from starting at all.
   Future<void> _refreshOnce() async {
-    // Captured so a [_retry] that REPLACES the controller (and re-reads via
-    // [_load]) mid-flight drops this now-superseded pass rather than feeding
-    // a fresh controller stale data -- the future-identity guard's analogue for
-    // a read whose futures are local rather than stored.
-    final controller = _loadController;
     final fetch = widget.fetcher ?? relationsFetcherFor(widget.room.client);
+    await _refreshRecordingsAndMerged(_loadController, fetch);
+  }
+
+  /// The transcript's OWN trailing-edge coalescer, running entirely
+  /// independently of [_drainRefreshes] (see [_transcriptRefreshRequested]'s
+  /// doc). Mirrors that method's shape -- run at most one pass at a time;
+  /// loop for as long as a sync re-armed the request during the previous
+  /// pass, so a burst of syncs collapses to one trailing pass rather than a
+  /// stampede of concurrent reads -- but has no settle gate to wait on (see
+  /// [_requestRefresh]) and no "everything terminal, stop" exit: the
+  /// transcript has no safe equivalent of [CallRecordingsLoadState.ready] to
+  /// AND against (see [_shownTranscript]'s doc for why "every half has
+  /// arrived" is not trustworthy as "nothing more ever will"). Looping
+  /// forever here costs at most one relations walk per sync for a call whose
+  /// transcript genuinely never completes -- never a missed update.
+  Future<void> _drainTranscriptRefreshes() async {
+    if (_transcriptRefreshDraining) return;
+    _transcriptRefreshDraining = true;
+    try {
+      while (_transcriptRefreshRequested) {
+        _transcriptRefreshRequested = false;
+        if (!mounted) return;
+        final fetch = widget.fetcher ?? relationsFetcherFor(widget.room.client);
+        // A pass that throws (unexpected -- [_loadTranscript] swallows its own
+        // errors into null) must NOT exit the loop and strand a request a
+        // sync re-armed during it -- the same reasoning as [_drainRefreshes]'s
+        // own catch.
+        try {
+          await _refreshTranscript(fetch);
+        } catch (e, s) {
+          Logs().w('Call transcript live-refresh pass failed', e, s);
+        }
+      }
+    } finally {
+      _transcriptRefreshDraining = false;
+    }
+  }
+
+  /// The recordings/merged re-read, unchanged behavior from before the
+  /// transcript existed on this screen at all -- its own standalone method
+  /// only so [_refreshOnce] has a stable name to wrap (see that method's doc).
+  Future<void> _refreshRecordingsAndMerged(
+    CallRecordingsLoadController controller,
+    RelationsFetcher fetch,
+  ) async {
+    // Skip the fetch entirely once the merge is already shown (terminal
+    // `ready`): nothing more can change for this concern, and re-reading
+    // forever after that point would be pure waste -- unlike the transcript
+    // arm, which has no such safe stopping point (see [_shownTranscript]).
+    if (controller.state.value == CallRecordingsLoadState.ready) return;
     final recordings = _loadRecordings(fetch);
     final merged = _loadMerged(fetch);
     final results = await Future.wait<Object>([recordings, merged]);
@@ -532,6 +754,48 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     }
   }
 
+  /// The transcript arm of a live-refresh pass. ALWAYS re-reads -- unlike
+  /// [_refreshRecordingsAndMerged] above, the transcript has no safe "nothing
+  /// more can ever arrive" signal to skip on (see [_shownTranscript]'s doc),
+  /// so this keeps trying on every sync for as long as the dialog stays open.
+  ///
+  /// Adopts the read as the shown baseline whenever there is NOTHING shown
+  /// yet ([_shownTranscript] null), not only when [transcriptChanged] fires.
+  /// This is what closes a race a cold review found: the INITIAL read issued
+  /// by [_load] can still be in flight when a sync-triggered pass here
+  /// finishes first with the missing half already included. Discarding that
+  /// result (the earlier behavior, gated on `shown != null`) left the screen
+  /// waiting on the slower initial read, which -- having gone out before the
+  /// half was posted -- would land without it and never re-arm a further
+  /// pass. Adopting whichever read lands FIRST as the baseline removes the
+  /// wait entirely; if the slower initial read then completes afterwards,
+  /// [_load]'s own future-identity guard on its `.then()` sees `_transcript`
+  /// has already moved on and drops it, so the two can never fight over which
+  /// one is shown -- WITHIN one [_load] epoch. ACROSS a [_retry], that guard
+  /// does not help a pass started here: a cold review found that a refresh
+  /// begun before a retry, completing AFTER it, would see [_shownTranscript]
+  /// reset to null by the new epoch and wrongly adopt its own now-STALE
+  /// result as if it were that epoch's first read (or, completing first,
+  /// overwrite the new epoch's own already-adopted read via
+  /// [transcriptChanged]). [_transcriptEpoch] is the fix: captured before
+  /// this method's own await, rechecked after, so a pass from a superseded
+  /// epoch is dropped exactly like [_refreshRecordingsAndMerged] drops one
+  /// via `identical(controller, _loadController)`.
+  Future<void> _refreshTranscript(RelationsFetcher fetch) async {
+    final epoch = _transcriptEpoch;
+    final newTranscript = await _loadTranscript(fetch);
+    if (!mounted || newTranscript == null || epoch != _transcriptEpoch) {
+      return;
+    }
+    final shown = _shownTranscript;
+    if (shown == null || transcriptChanged(shown, newTranscript)) {
+      setState(() {
+        _transcript = SynchronousFuture(newTranscript);
+        _shownTranscript = newTranscript;
+      });
+    }
+  }
+
   /// [fetchCallAudio], with a failure turned into an empty list rather than
   /// left to propagate.
   ///
@@ -580,6 +844,43 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
         s,
       );
       return const <CallAudioMergedRecording>[];
+    }
+  }
+
+  /// Re-reads the transcript for [_refreshTranscript]'s live-refresh pass. A
+  /// failure is turned into `null` -- "nothing new to show this pass" --
+  /// rather than left to propagate, the same shape as
+  /// [_loadRecordings]/[_loadMerged]. UNLIKE those two, the safe default is
+  /// null and never an empty [CallTranscript]: "no recordings" is a fact this
+  /// screen may show, but an EMPTY transcript is a claim that nobody said
+  /// anything, and a transient re-read hiccup must never manufacture that
+  /// claim over a transcript that is already correctly shown. Logged for the
+  /// same reason every other caught read failure in this feature is:
+  /// "nothing changed" and "could not read it" are different facts, and only
+  /// the log can still tell them apart afterwards.
+  Future<CallTranscript?> _loadTranscript(RelationsFetcher fetch) async {
+    final me = widget.room.client.userID;
+    final participants = callParticipants(
+      me: me,
+      peerId: callPeerOf(widget.room),
+    );
+    try {
+      return await fetchCallTranscript(
+        fetch: fetch,
+        roomId: widget.room.id,
+        callKey: widget.callKey,
+        selfId: me,
+        expectedSenders: participants.ids,
+        participantsKnown: participants.known,
+        encrypted: widget.room.encrypted,
+      );
+    } catch (e, s) {
+      Logs().w(
+        'Call transcript live-refresh pass failed for ${widget.callKey}',
+        e,
+        s,
+      );
+      return null;
     }
   }
 
