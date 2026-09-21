@@ -2750,3 +2750,27 @@ until the design is Codex-green.
   cold-gate SYNCHRONOUSLY. Will re-run my independent gate on its fix before integrating.
 - P3 (agent a8edab5) still running; base not yet verified (isolation:worktree branches off
   origin/main -- confirm P3 rebased onto ca91df4328 like P2 did).
+
+### 2026-09-21 (cont) — P2 + P3 INTEGRATED onto the branch; 437 tests green
+- P2 FINAL (cafc06e8b3): my 2 findings + a 3rd (null-owner) all fixed, 9 mutation-proven guards, 236
+  tests. P3 FINAL (34a0b0634d): live-update coalescer, epoch guard, 3-round self-gate GREEN.
+- CROSS-MODEL GATE OUTAGE: codex CLI hit its usage limit (until Sep 25); gpt-worker/gemini-worker are
+  ALL model_not_found (gpt-5.6-sol, gpt-5.5, gemini-3.1-pro-low -- CLIProxyAPI misconfigured). So NO
+  codex/gpt/gemini gate could run on the FINAL commits. SUBSTITUTE: my own rigorous independent Claude
+  review of both (P2 outbox: 3 fixes correct + complete, guard persist-before-send, non-fatal, no new
+  issues; P3: epoch guard drops stale cross-retry passes, coalescers independent, transcriptChanged
+  covers all displayed fields incl positionsMarked, dispose/mounted safe) + the agents' own codex
+  self-gates on near-final states (P2 rounds 1-4 GREEN + round-5 fix; P3 3 rounds GREEN) + 437 green
+  tests. GAP for the PR pre-push bar: re-run a cross-model gate on the final commits when codex
+  returns (Sep 25) or the proxy is fixed, BEFORE opening PR2.
+- INTEGRATED (cherry-pick onto satvik/call-features-combined, clean, disjoint surfaces): c40e4d0c53
+  (P2 import fixes) + 1b5a853739 (P2 outbox) + 69cad6f9cf (P3 live-update). Skipped P3's handoff commit
+  (a1255bc8db) to avoid a docs conflict; writing handoff here instead.
+- VERIFY on integrated branch: flutter analyze clean; dart format 0-changed; import_sorter 0-sorted;
+  test/pangea/calls/{outbox,service,transcript_view,recorder,segments,record} = 437/437. (Full-dir
+  parallel run still has PRE-EXISTING interference in call_media_test/call_session_test/
+  call_notification_test -- unrelated, run touched files in isolation, tracked task_c340b22a.)
+- STATE: v2 = P1 (any-duration) + P2 (reliable, survives kill) + P3 (live UI). Client path COMPLETE.
+  Flag CALL_RECORDING_TRANSCRIPT default OFF. Server backstop (P4-P5) still the deferred follow-up.
+- NEXT: E2E for the showcase -- flip the flag on, rebuild phone APK + web (P1+P2+P3), stack up, real
+  call, verify recording-based transcript + no lost half + live update.
