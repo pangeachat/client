@@ -279,7 +279,10 @@ class SelectModeController with LemmaEmojiSetter {
       _lastTranslationResponse = resp;
       _translationLoader.value = AsyncLoaded(resp.bestTranslation);
     } catch (e) {
-      _translationLoader.value = AsyncError(e.toString());
+      // The raw error, not a description of it: the error indicator keys its
+      // copy on the failure (a 429 shows "wait a moment and try again")
+      // (#8705).
+      _translationLoader.value = AsyncError(e);
     }
   }
 }

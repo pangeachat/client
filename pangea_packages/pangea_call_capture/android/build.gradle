@@ -1,0 +1,66 @@
+group 'chat.pangea.call_capture'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    ext.kotlin_version = '1.9.0'
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.1.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+    namespace 'chat.pangea.call_capture'
+    compileSdk 34
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+    defaultConfig {
+        minSdk 21
+    }
+}
+
+dependencies {
+    // CallStyle and the compat notification builder for the foreground call
+    // service. The app already ships androidx.core; api scope is unnecessary.
+    implementation 'androidx.core:core:1.13.1'
+
+    // The audio processing controller this reads from belongs to the WebRTC
+    // plugin. It is already a dependency of the app; declaring it compileOnly
+    // keeps this package from pinning its version.
+    compileOnly project(':flutter_webrtc')
+
+    // And WebRTC itself, for the same reason and with the same scope. The
+    // adapter above IMPLEMENTS org.webrtc.ExternalAudioProcessingFactory
+    // .AudioProcessing, and Kotlin cannot use a class whose supertype it cannot
+    // see. The WebRTC plugin depends on this at `implementation` scope, which
+    // deliberately does not pass it on, so asking for the plugin alone left the
+    // supertype off this module's classpath and nothing here compiled at all.
+    //
+    // Kept in step with flutter_webrtc's own version by hand: two copies of the
+    // WebRTC runtime in one app is a duplicate-class failure at packaging time,
+    // which is exactly why this is compileOnly — the app ships the plugin's.
+    compileOnly 'io.github.webrtc-sdk:android:144.7559.09'
+}

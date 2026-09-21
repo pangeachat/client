@@ -52,7 +52,13 @@ extension OrchestratorClientExtension on Client {
 
       sessions.add((
         activityId: activityId,
-        earned: room.orchestratorAwardedGoals.awards[roleId]?.length ?? 0,
+        // Counted through the plan's own goals, like every other reader of this
+        // state (and like `userStarsByActivity`, which the course panel sums):
+        // the raw award list can hold an id the current plan no longer carries,
+        // and records one goal under BOTH its slug and its id during the
+        // migration window, either of which would count a star twice. This
+        // total is published and never lowered, so an over-count is permanent.
+        earned: room.ownCompletedGoals.length,
         saved: room.hasArchivedActivity,
       ));
     }

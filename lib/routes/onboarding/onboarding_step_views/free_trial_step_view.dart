@@ -7,6 +7,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/subscription/subscription_constants.dart';
 import 'package:fluffychat/features/subscription/widgets/pro_features_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_step_views/onboarding_forward_button.dart';
 
 class FreeTrialStepView extends StatelessWidget {
   final VoidCallback forward;
@@ -153,14 +154,9 @@ class FreeTrialStepView extends StatelessWidget {
                     ),
                     Semantics(
                       container: true,
-                      child: ElevatedButton(
+                      child: OnboardingForwardButton(
                         onPressed: forward,
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: theme.colorScheme.primaryContainer,
-                          foregroundColor: theme.colorScheme.onPrimaryContainer,
-                          minimumSize: const Size.fromHeight(48),
-                        ),
-                        child: Text(L10n.of(context).claimTrial),
+                        label: L10n.of(context).claimTrial,
                       ),
                     ),
                     const SizedBox(height: 8),

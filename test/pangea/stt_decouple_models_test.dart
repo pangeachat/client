@@ -227,12 +227,15 @@ void main() {
 
     test('WordTiming.confidence is normalized to a bounded 0..100 int '
         '(fractions rounded, out-of-range clamped)', () {
+      // Bang, because fromJson is nullable now: an entry it cannot read costs
+      // the timings rather than throwing and costing the words with them. Every
+      // confidence below IS readable, so a null here would be a real failure.
       WordTiming parse(Object confidence) => WordTiming.fromJson({
         'word': 'hola',
         'start_time_ms': 0,
         'end_time_ms': 100,
         'confidence': confidence,
-      });
+      })!;
 
       // Fraction -> rounded int (never a fractional confidence).
       expect(parse(98.6).confidence, 99);
@@ -244,6 +247,177 @@ void main() {
       // In-range values pass through unchanged, incl. a valid 0.
       expect(parse(0).confidence, 0);
       expect(parse(73).confidence, 73);
+    });
+
+    group('a response a provider malformed', () {
+      // The rule these all pin: a defect in a field BESIDE the text must never
+      // cost the text. The parse used to couple them -- one bad timing entry
+      // threw, the throw came out of the whole response parse, and the sink
+      // that catches it marks the chunk failed and counts it LOST. Up to ninety
+      // seconds of somebody's speech, for one malformed number.
+      Map<String, dynamic> withTimings(List<Object?> timings) {
+        final json = normalJson();
+        (json['results'][0]['transcripts'][0]
+                as Map<String, dynamic>)['word_timings'] =
+            timings;
+        return json;
+      }
+
+      final unreadable = <String, List<Object?>>{
+        'a missing word': [
+          {'start_time_ms': 0, 'end_time_ms': 100, 'confidence': 90},
+        ],
+        'a non-string word': [
+          {'word': 7, 'start_time_ms': 0, 'end_time_ms': 100, 'confidence': 90},
+        ],
+        'a missing confidence': [
+          {'word': 'hola', 'start_time_ms': 0, 'end_time_ms': 100},
+        ],
+        'a non-numeric confidence': [
+          {
+            'word': 'hola',
+            'start_time_ms': 0,
+            'end_time_ms': 100,
+            'confidence': 'high',
+          },
+        ],
+        'a NaN confidence': [
+          {
+            'word': 'hola',
+            'start_time_ms': 0,
+            'end_time_ms': 100,
+            'confidence': double.nan,
+          },
+        ],
+        'an infinite timestamp': [
+          {
+            'word': 'hola',
+            'start_time_ms': double.infinity,
+            'end_time_ms': 100,
+            'confidence': 90,
+          },
+        ],
+        'a non-numeric timestamp': [
+          {
+            'word': 'hola',
+            'start_time_ms': 'start',
+            'end_time_ms': 100,
+            'confidence': 90,
+          },
+        ],
+        'an entry that is not a map': ['hola'],
+        'a null entry': [null],
+        'one bad entry among good ones': [
+          {
+            'word': 'hola',
+            'start_time_ms': 0,
+            'end_time_ms': 100,
+            'confidence': 90,
+          },
+          {'word': 'mundo', 'end_time_ms': 300, 'confidence': 'high'},
+        ],
+      };
+
+      unreadable.forEach((what, timings) {
+        test('$what costs the timings and keeps the words', () {
+          final model = SpeechToTextResponseModel.fromJson(
+            withTimings(timings),
+          );
+
+          expect(model.hasUsableTranscript, isTrue);
+          expect(model.transcript.text, 'hola mundo');
+          expect(
+            model.transcript.wordTimings,
+            isNull,
+            reason: 'all or nothing: a partial list moves where the cuts land',
+          );
+        });
+      });
+
+      test('and a readable list is still read', () {
+        // The control. Without it every assertion above would still hold with
+        // word timings removed from the model altogether.
+        final model = SpeechToTextResponseModel.fromJson(
+          withTimings([
+            {
+              'word': 'hola',
+              'start_time_ms': 0,
+              'end_time_ms': 100,
+              'confidence': 90,
+            },
+          ]),
+        );
+
+        expect(model.transcript.wordTimings, hasLength(1));
+        expect(model.transcript.wordTimings!.single.word, 'hola');
+      });
+
+      test('a word_timings that is not a list at all is simply absent', () {
+        final json = normalJson();
+        (json['results'][0]['transcripts'][0]
+                as Map<String, dynamic>)['word_timings'] =
+            'hola';
+
+        final model = SpeechToTextResponseModel.fromJson(json);
+        expect(model.transcript.wordTimings, isNull);
+        expect(model.transcript.text, 'hola mundo');
+      });
+
+      test('an unreadable token list costs the tokens and keeps the words', () {
+        // Tokens are the ANALYTICS. Empty is a state this app already produces
+        // deliberately on the skip-tokenize path, and every consumer gates on
+        // hasUsableTokens.
+        final json = normalJson();
+        (json['results'][0]['transcripts'][0]
+            as Map<String, dynamic>)['stt_tokens'] = [
+          'not a token',
+        ];
+
+        final model = SpeechToTextResponseModel.fromJson(json);
+        expect(model.hasUsableTranscript, isTrue);
+        expect(model.transcript.text, 'hola mundo');
+        expect(model.hasUsableTokens, isFalse);
+        expect(model.transcript.sttTokens, isEmpty);
+      });
+
+      test('unreadable metadata costs the metadata and keeps the words', () {
+        // service, confidence, lang_code and words_per_hr are decoration and
+        // provenance beside the speech. Each of them threw before.
+        final json = normalJson();
+        json['service'] = 42;
+        final transcript =
+            json['results'][0]['transcripts'][0] as Map<String, dynamic>;
+        transcript['confidence'] = 'very';
+        transcript['lang_code'] = 7;
+        transcript['words_per_hr'] = 1.5;
+
+        final model = SpeechToTextResponseModel.fromJson(json);
+        expect(model.hasUsableTranscript, isTrue);
+        expect(model.transcript.text, 'hola mundo');
+        expect(model.service, isNull);
+        expect(model.transcript.confidence, 0);
+        expect(model.transcript.langCode, '', reason: 'empty means unknown');
+        expect(model.transcript.wordsPerHr, 1);
+      });
+
+      test('a double-scaled transcript confidence no longer throws', () {
+        // `confidence / 100` produces a DOUBLE, which went straight into an int
+        // field: a confidence of 250 threw a type error out of the parse and
+        // cost the chunk its words.
+        final json = normalJson();
+        (json['results'][0]['transcripts'][0]
+                as Map<String, dynamic>)['confidence'] =
+            250;
+
+        final model = SpeechToTextResponseModel.fromJson(json);
+        expect(model.transcript.confidence, 3);
+        expect(model.transcript.text, 'hola mundo');
+      });
+
+      test('a conforming confidence passes through untouched', () {
+        final model = SpeechToTextResponseModel.fromJson(normalJson());
+        expect(model.transcript.confidence, 94);
+      });
     });
 
     test('hasUsableTokens is false when tokens are empty, true otherwise', () {

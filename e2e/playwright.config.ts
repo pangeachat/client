@@ -19,6 +19,100 @@ for (const file of [".env.staging", ".env"]) {
  * Playwright config for Pangea Chat E2E tests (web).
  * See https://playwright.dev/docs/test-configuration.
  */
+/**
+ * Refuses to run anything that places a real CALL against a deployed host.
+ *
+ * The nightly cron runs `mode=full`, which is the whole of `e2e/scripts/`,
+ * against https://app.staging.pangea.chat. A call spec swept up by that would
+ * dial a real call every night, unattended, against a shared account, and
+ * push both halves of the audio through a BILLED speech-to-text provider.
+ *
+ * Placement is not a safeguard: "it lives outside e2e/scripts" holds only
+ * until somebody moves it back. This is the safeguard, and it fails closed --
+ * a call spec anywhere under this config, pointed anywhere but a local stack,
+ * stops the run rather than quietly spending money.
+ *
+ * Calls are tested by the harness in client/test/e2e instead, which drives
+ * two real browsers and a real phone against a local stack and never runs in
+ * CI.
+ */
+function refuseRemoteCallSpecs(): void {
+  const target = process.env.BASE_URL || "";
+  const isLocal =
+    target === "" ||
+    /^https?:\/\/(localhost|127\.0\.0\.1|0\.0\.0\.0|\[::1\])(:|\/|$)/.test(target);
+  if (isLocal) return;
+
+  const dir = path.join(__dirname, "scripts");
+  if (!fs.existsSync(dir)) return;
+
+  // Judged on what a spec DOES, not what it is called. An earlier version
+  // matched filenames containing "call", which any rename walks straight
+  // past -- voice.spec.ts, transcript.spec.ts, rtc.spec.ts. What actually
+  // makes a spec unsafe against a deployed host is that it opens a
+  // microphone or drives the call controls, and those leave marks in the
+  // source that a rename does not remove.
+  const MARKS = [
+    /permissions\s*:\s*\[[^\]]*microphone/i,
+    /use-file-for-fake-audio-capture/i,
+    /use-fake-device-for-media-stream/i,
+    /getUserMedia/i,
+    /\bcallAnswer\b|\bcallHangUp\b|\bstartCall\b|\bstartVideoCall\b/,
+  ];
+
+  // Every file a spec could reach, not just the spec.
+  //
+  // Scanning spec bodies alone is defeated by moving one import out: a spec
+  // that calls `placeCall()` from a helper carries none of the marks itself.
+  // The whole directory is read instead -- helpers included -- so a call
+  // placed at any depth still shows up. Coarse on purpose: a false positive
+  // here costs a name in an allowlist, and a false negative costs a real
+  // call against a deployed host, every night, on somebody's bill.
+  // Every executable file, not just TypeScript: a helper written as .js or
+  // .mjs under this tree is imported exactly as easily and was a plain way
+  // round an earlier version of this.
+  const CODE = /\.(ts|tsx|js|mjs|cjs)$/;
+
+  // Comments are NOT stripped, and that is the deliberate direction.
+  //
+  // An earlier version stripped them with a regex so that a spec explaining
+  // in prose why it does not touch getUserMedia would not be refused for
+  // saying the word. A regex cannot parse JavaScript: `const s = "//";`
+  // followed by a real getUserMedia call is truncated at the string, and the
+  // guard walks straight past an actual call. That is a bypass, introduced to
+  // avoid an inconvenience.
+  //
+  // The asymmetry decides it. A false positive here costs somebody one line
+  // in the nightly allowlist, or a reworded comment. A false negative costs a
+  // real call against a deployed host, unattended, every night, on somebody's
+  // bill. So this errs toward refusing, and a spec that trips it on prose
+  // alone should say so in its own words rather than teach the guard to
+  // squint.
+
+  const marked = fs
+    .readdirSync(dir, { recursive: true })
+    .map(String)
+    .filter((f) => CODE.test(f))
+    .filter((f) => {
+      const body = fs.readFileSync(path.join(dir, f), "utf-8");
+      return MARKS.some((m) => m.test(body));
+    });
+
+  const offenders = marked;
+
+  if (offenders.length > 0) {
+    throw new Error(
+      `Refusing to run against ${target}: ${offenders.join(", ")} opens a ` +
+        `microphone or drives the call controls, which against a deployed ` +
+        `host places a REAL call and bills a speech-to-text provider. Calls ` +
+        `belong to the harness in client/test/e2e, which runs against a ` +
+        `local stack only.`,
+    );
+  }
+}
+
+refuseRemoteCallSpecs();
+
 export default defineConfig({
   testDir: "./scripts",
 

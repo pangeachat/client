@@ -174,8 +174,12 @@ jobs:
         with:
           flutter-version: ${{ env.FLUTTER_VERSION }}
           cache: true
-      - name: Use Xcode 16.4
-        run: sudo xcode-select --switch /Applications/Xcode_16.4.app
+      # Matches the Xcode the TestFlight workflow ships with. When these drift,
+      # CI validates against an SDK the released app is never built with. That
+      # is how connectivity_plus 7.3.1 (iOS 26 SDK, pulled in by livekit_client)
+      # passed every PR and only broke on merge.
+      - name: Use Xcode 26.3
+        run: sudo xcode-select --switch /Applications/Xcode_26.3.app
       - run: brew install sqlcipher
       - uses: moonrepo/setup-rust@ede6de059f8046a5e236c94046823e2af11ca670 # v1
       - name: Add Firebase Messaging

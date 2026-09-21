@@ -73,6 +73,24 @@ class PangeaHttpException implements Exception {
   );
   static final _objectId = RegExp(r'^[0-9a-fA-F]{24}$');
   static final _numericId = RegExp(r'^\d+$');
+
+  /// A hyphenated slug carrying at least one digit — the shape of our
+  /// human-readable content ids (`sp101-m1-a`, `germ1-nyc-m13`).
+  ///
+  /// A digit is what separates them from the hyphenated words that are real
+  /// route segments: every one the client can build (`analytics-events`,
+  /// `audio-signals`, `engagement-spans`, `message-events`,
+  /// `session-outcomes`, and the CMS's `quest-plans`) is letters-only, so
+  /// requiring both a hyphen and a digit templates the ids without ever
+  /// renaming an endpoint. Underscored (`text_to_speech`,
+  /// `phonetic_transcription_v2`) and dotted (`org.matrix.msc4075.rtc`)
+  /// segments cannot match at all — the character class excludes both — which
+  /// is what keeps a versioned endpoint from reading as a resource.
+  static final _slugId = RegExp(
+    r'^(?=.*\d)[a-z0-9]+(-[a-z0-9]+)+$',
+    caseSensitive: false,
+  );
+
   static const _matrixSigils = ['!', '@', r'$', '#', '+'];
 
   /// The path of [url] with each opaque id segment replaced by `{id}`.
@@ -87,6 +105,7 @@ class PangeaHttpException implements Exception {
       _uuid.hasMatch(segment) ||
       _objectId.hasMatch(segment) ||
       _numericId.hasMatch(segment) ||
+      _slugId.hasMatch(segment) ||
       _matrixSigils.any(segment.startsWith);
 
   /// The HTTP status of [error] when it carries one — a [PangeaHttpException],

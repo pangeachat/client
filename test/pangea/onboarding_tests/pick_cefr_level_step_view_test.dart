@@ -16,6 +16,7 @@ import 'package:fluffychat/routes/onboarding/trial_info_provider.dart';
 import 'package:fluffychat/routes/onboarding/user_type_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../get_test_client.dart';
+import 'announcement_capture.dart';
 
 class _FakeMatrixState extends MatrixState {
   _FakeMatrixState(this._client);
@@ -104,6 +105,81 @@ void main() {
       find.bySemanticsLabel('What level are you?\n$subtitle'),
       findsOneWidget,
     );
+    semantics.dispose();
+  });
+
+  // #8639 — once a level is picked, the unselected levels dim to half opacity
+  // so the selection reads at a glance.
+  testWidgets('selecting a level dims the other levels', (tester) async {
+    await pumpStep(tester, UserType.student);
+
+    double levelOpacity(String title) => tester
+        .widget<Opacity>(
+          find
+              .ancestor(
+                of: find.widgetWithText(ElevatedButton, title),
+                matching: find.byType(Opacity),
+              )
+              .first,
+        )
+        .opacity;
+
+    // The profile default (A1) is seeded as selected on entry.
+    expect(levelOpacity('Novice Mid (A1)'), 1.0);
+    expect(levelOpacity('Novice High (A2)'), 0.5);
+
+    await tester.tap(find.widgetWithText(ElevatedButton, 'Novice High (A2)'));
+    await tester.pump();
+
+    expect(levelOpacity('Novice High (A2)'), 1.0);
+    expect(levelOpacity('Novice Mid (A1)'), 0.5);
+    expect(levelOpacity('Novice Low (Pre A1)'), 0.5);
+  });
+
+  // #8690 — the picked level must reach assistive tech: it carries the
+  // semantics selected flag, and picking or unpicking is announced.
+  testWidgets('the picked level reads as selected and is announced', (
+    tester,
+  ) async {
+    final semantics = tester.ensureSemantics();
+    final announcements = captureAnnouncements(tester);
+    await pumpStep(tester, UserType.student);
+    // The entry seed (A1 profile default) restores state the user didn't just
+    // change, so it must stay silent — only the user's own taps announce.
+    expect(announcements, isEmpty);
+
+    await tester.tap(find.widgetWithText(ElevatedButton, 'Novice High (A2)'));
+    await tester.pump();
+
+    expect(
+      tester.getSemantics(
+        find.widgetWithText(ElevatedButton, 'Novice High (A2)'),
+      ),
+      isSemantics(isSelected: true),
+    );
+    expect(
+      tester.getSemantics(
+        find.widgetWithText(ElevatedButton, 'Novice Mid (A1)'),
+      ),
+      isSemantics(isSelected: false, hasSelectedState: true),
+    );
+    expect(announcements, ['Selected Novice High (A2) as language level']);
+
+    // Tapping the selected level again clears the choice.
+    await tester.tap(find.widgetWithText(ElevatedButton, 'Novice High (A2)'));
+    await tester.pump();
+
+    expect(
+      tester.getSemantics(
+        find.widgetWithText(ElevatedButton, 'Novice High (A2)'),
+      ),
+      isSemantics(isSelected: false, hasSelectedState: true),
+    );
+    expect(announcements, [
+      'Selected Novice High (A2) as language level',
+      'Reset language level',
+    ]);
+
     semantics.dispose();
   });
 }

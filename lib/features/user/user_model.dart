@@ -83,9 +83,17 @@ class UserSettings {
     return data;
   }
 
-  static UserSettings? migrateFromAccountData() {
+  /// Reads the pre-migration, per-key account-data shape.
+  ///
+  /// [client] names the account to read. Omitted, it is the globally active
+  /// one — which is all every existing caller ever meant, since they run from
+  /// a settings surface belonging to whoever is signed in. Passed explicitly,
+  /// this reads a SPECIFIC account's legacy data instead: a call resolves its
+  /// languages from the room's own account rather than from whichever account
+  /// happens to be foregrounded (see [UserController.languageCodesFor]).
+  static UserSettings? migrateFromAccountData({Client? client}) {
     final accountData =
-        MatrixState.pangeaController.matrixState.client.accountData;
+        (client ?? MatrixState.pangeaController.matrixState.client).accountData;
 
     if (!accountData.containsKey(UserConstants.userDateOfBirth)) return null;
     final dobContent = accountData[UserConstants.userDateOfBirth]!

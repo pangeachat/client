@@ -16,7 +16,10 @@ class InviteAllInSpaceTile extends StatelessWidget {
   final Uri? avatar;
   final String displayname;
   final int memberCount;
-  final VoidCallback onPressed;
+
+  /// Null disables the invite button — the viewer lacks the room's invite
+  /// power (#8694).
+  final VoidCallback? onPressed;
 
   const InviteAllInSpaceTile({
     required this.avatar,

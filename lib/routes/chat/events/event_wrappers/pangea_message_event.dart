@@ -56,7 +56,9 @@ class PangeaMessageEvent {
     if (event.type != EventTypes.Message) {
       debugger(when: kDebugMode);
       ErrorHandler.logError(
-        m: "${event.type} should not be used to make a PangeaMessageEvent",
+        e: Exception(
+          "${event.type} should not be used to make a PangeaMessageEvent",
+        ),
         data: {"event": event.toJson()},
       );
     }
@@ -139,12 +141,7 @@ class PangeaMessageEvent {
         originalWrittenContent,
       );
     } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: _latestEdit.content,
-        m: "error parsing choreoRecord",
-      );
+      ErrorHandler.logError(e: e, s: s, data: _latestEdit.content);
       return null;
     }
   }
@@ -155,12 +152,7 @@ class PangeaMessageEvent {
       return PangeaMessageTokens.fromJson(content);
     } catch (e, s) {
       debugger(when: kDebugMode);
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: content ?? {},
-        m: "error parsing tokensSent",
-      );
+      ErrorHandler.logError(e: e, s: s, data: content ?? {});
       return null;
     }
   }
@@ -204,7 +196,6 @@ class PangeaMessageEvent {
       }
     } catch (err, s) {
       ErrorHandler.logError(
-        m: "error parsing originalSent",
         e: err,
         s: s,
         data: {"event": _latestEdit.toJson()},
@@ -229,7 +220,6 @@ class PangeaMessageEvent {
         );
       } catch (err, s) {
         ErrorHandler.logError(
-          m: "error parsing originalWritten",
           e: err,
           s: s,
           data: {"event": _latestEdit.toJson()},
@@ -469,12 +459,7 @@ class PangeaMessageEvent {
         }
       } catch (e, s) {
         debugger(when: kDebugMode);
-        ErrorHandler.logError(
-          e: e,
-          s: s,
-          data: {"event": audio.toJson()},
-          m: "error parsing data in getTextToSpeechLocal",
-        );
+        ErrorHandler.logError(e: e, s: s, data: {"event": audio.toJson()});
       }
     }
     return null;
@@ -543,12 +528,7 @@ class PangeaMessageEvent {
       } catch (err, s) {
         // A parse error on the embed is not fatal: fall through to a
         // representation that may hold a valid transcript.
-        ErrorHandler.logError(
-          e: err,
-          s: s,
-          data: {"event": _event.toJson()},
-          m: "error parsing embedded stt",
-        );
+        ErrorHandler.logError(e: err, s: s, data: {"event": _event.toJson()});
       }
     }
 
@@ -567,12 +547,7 @@ class PangeaMessageEvent {
             matchEmbed: embedded,
           )?.content.speechToText;
         } catch (err, s) {
-          ErrorHandler.logError(
-            e: err,
-            s: s,
-            data: {"event": _event.toJson()},
-            m: "error reading stt representation",
-          );
+          ErrorHandler.logError(e: err, s: s, data: {"event": _event.toJson()});
           return null;
         }
       },

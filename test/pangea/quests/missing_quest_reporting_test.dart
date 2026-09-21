@@ -18,6 +18,13 @@ import 'package:fluffychat/routes/world/joined_objective_cache.dart';
 /// course panel's, and since both spend the SAME throttle key, whichever
 /// surface the learner opened first decided the severity. Both now go through
 /// the one [reportCourseOutlineFailure], whose budget is pinned below.
+///
+/// #8691 moved the missing-quest report itself into [QuestRepo.quest] (once
+/// per quest id per session, at the actual fetch, with fetches capped by the
+/// persisted removed verdict) — so this reporter now SKIPS
+/// [MissingQuestException] entirely; its per-room budget below is pinned with
+/// the other outline failures it still owns. The skip itself is pinned in
+/// quest_plan_removed_persistence_test.dart.
 void main() {
   test('MissingQuestException has a diagnosable toString', () {
     expect(
@@ -56,13 +63,13 @@ void main() {
       final first = await reportCourseOutlineFailure(
         '!room:server',
         'quest-1',
-        MissingQuestException(),
+        Exception('choreo unreachable'),
         StackTrace.current,
       );
       final second = await reportCourseOutlineFailure(
         '!room:server',
         'quest-1',
-        MissingQuestException(),
+        Exception('choreo unreachable'),
         StackTrace.current,
       );
       expect(first, isTrue);
@@ -76,7 +83,7 @@ void main() {
         await reportCourseOutlineFailure(
           '!r1:server',
           'quest-1',
-          MissingQuestException(),
+          Exception('choreo unreachable'),
           StackTrace.current,
         ),
         isTrue,
@@ -85,7 +92,7 @@ void main() {
         await reportCourseOutlineFailure(
           '!r2:server',
           'quest-1',
-          MissingQuestException(),
+          Exception('choreo unreachable'),
           StackTrace.current,
         ),
         isTrue,

@@ -226,7 +226,10 @@ class ApproveMemberAction extends MemberAction {
   String text(L10n l10n) => l10n.approve;
 
   @override
-  bool visible() => user.membership == Membership.knock;
+  // Accepting a knock issues an invite, so the action needs the viewer to
+  // hold the room's invite power — without it the approval can only fail
+  // with M_FORBIDDEN (#8694).
+  bool visible() => user.membership == Membership.knock && user.room.canInvite;
 
   @override
   Future<void> execute(BuildContext context) => showFutureLoadingDialog(

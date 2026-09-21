@@ -12,6 +12,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/preset_avatar_picker.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_state_controller.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_step_views/onboarding_forward_button.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/profile_setup_onboarding_step.dart';
 import 'package:fluffychat/utils/file_selector.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -258,34 +259,12 @@ class ProfileSetupStepViewState extends State<ProfileSetupStepView> {
             ),
           ),
         ),
-        ElevatedButton(
+        OnboardingForwardButton(
           onPressed: _step.enableGoForward ? widget.forward : null,
-          style: ElevatedButton.styleFrom(
-            backgroundColor: theme.colorScheme.primaryContainer,
-            foregroundColor: theme.colorScheme.onPrimaryContainer,
-            minimumSize: const Size.fromHeight(48),
-          ),
-          child: SizedBox(
-            height: 24,
-            child: Center(
-              child: AnimatedSwitcher(
-                duration: const Duration(milliseconds: 200),
-                child: widget.loading
-                    ? SizedBox(
-                        key: const ValueKey('loading'),
-                        width: double.infinity,
-                        child: const LinearProgressIndicator(),
-                      )
-                    : Text(
-                        widget.hasNextStep
-                            ? _step.nextStepText(L10n.of(context))
-                            : _step.lastStepText(L10n.of(context)),
-                        key: const ValueKey('text'),
-                        textAlign: TextAlign.center,
-                      ),
-              ),
-            ),
-          ),
+          loading: widget.loading,
+          label: widget.hasNextStep
+              ? _step.nextStepText(L10n.of(context))
+              : _step.lastStepText(L10n.of(context)),
         ),
       ],
     );

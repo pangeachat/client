@@ -14,8 +14,10 @@ import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
+import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_client_extension.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 /// Whether a session is due for an automatic save: the session ended, this
 /// user finished their own role, and they haven't saved it yet. A user who
@@ -27,6 +29,19 @@ bool activityAutoSaveGate({
   required bool hasCompletedRole,
   required bool hasArchivedActivity,
 }) => isActivityFinished && hasCompletedRole && !hasArchivedActivity;
+
+/// Whether the account this service belongs to may publish its star total now.
+///
+/// Only while it is the ACTIVE account. The services are per-account and all
+/// run at once, but the user controller they publish through is a single global
+/// that resolves the active account — so a background account would file its
+/// own count on the active account's profile, and a published total is never
+/// lowered, so nothing would ever correct it.
+@visibleForTesting
+bool activeAccountPublishesStars({
+  required String? serviceUserId,
+  required String? activeUserId,
+}) => serviceUserId != null && serviceUserId == activeUserId;
 
 /// Saves completed activity sessions automatically — records the session to
 /// the learner's analytics room and archives their role — so a session that
@@ -84,7 +99,12 @@ class ActivityAutoSaveService {
 
     _roleStateSub = client.onRoomState.stream
         .where((event) => event.state.type == PangeaEventTypes.activityRole)
-        .listen((event) => _maybeSave(client.getRoomById(event.roomId)));
+        .listen((event) {
+          _maybeSave(client.getRoomById(event.roomId));
+          // Stars bank when the role archives, so the published total is
+          // recounted on the same signal that banks them.
+          _publishStarTotal();
+        });
 
     // Reference plans hydrate asynchronously; a room skipped because its plan
     // hadn't resolved yet is retried when the repo notifies.
@@ -102,6 +122,51 @@ class ActivityAutoSaveService {
     for (final room in client.rooms) {
       _maybeSave(room);
     }
+    _publishStarTotal();
+  }
+
+  /// Publishes the learner's banked star total for the language they are
+  /// studying, so classmates can see it on a participant card.
+  ///
+  /// Runs from the sweep, which happens after the first sync AND every time a
+  /// reference plan hydrates — the sessions counted here are matched to a
+  /// language by their plan, so a total counted before those plans land is too
+  /// low and the recount is what corrects it. Nothing awaits this: the publish
+  /// only ever raises the number, so a run that counted an incomplete set is
+  /// ignored rather than believed. See profile.instructions.md.
+  void _publishStarTotal() {
+    // `initState` runs `initMatrix()` — which starts this service — BEFORE it
+    // assigns `MatrixState.pangeaController`, and a restored, already-synced
+    // session reaches [start]'s sweep without ever awaiting, so the first
+    // publish can land while that `late` field is still unset and reading it
+    // throws (#8712). Skipping is free: the next sweep republishes, and the
+    // total only ever rises, so a skipped run costs nothing a later one does
+    // not correct.
+    if (!MatrixState.isPangeaControllerInitialized) return;
+
+    final userController = MatrixState.pangeaController.userController;
+
+    // A background account publishes on its next sweep after it is switched to
+    // — see [activeAccountPublishesStars] for why it must not publish now.
+    if (!activeAccountPublishesStars(
+      serviceUserId: client.userID,
+      activeUserId: userController.client.userID,
+    )) {
+      return;
+    }
+
+    final l2 = userController.userL2;
+    if (l2 == null) return;
+
+    userController
+        .updateAnalyticsStars(
+          languageCode: l2.langCodeShort,
+          stars: client.totalStarsEarned(l2),
+        )
+        .catchError(
+          (Object e, StackTrace s) =>
+              ErrorHandler.logError(e: e, s: s, data: {'lang': l2.langCode}),
+        );
   }
 
   Future<void> _maybeSave(Room? room) async {

@@ -382,12 +382,7 @@ class WorldMapPinsManager {
         } catch (e, s) {
           // A room that won't load its members keeps the fallback seats it
           // already had; the throttle above paces the retry.
-          ErrorHandler.logError(
-            e: e,
-            s: s,
-            m: 'session participant refill failed',
-            data: {'roomId': room.id},
-          );
+          ErrorHandler.logError(e: e, s: s, data: {'roomId': room.id});
         }
       }
     } finally {
@@ -447,12 +442,7 @@ class WorldMapPinsManager {
               l1Code: null,
             );
           } catch (e, s) {
-            ErrorHandler.logError(
-              e: e,
-              s: s,
-              m: 'activity_session_previews read failed',
-              data: const {},
-            );
+            ErrorHandler.logError(e: e, s: s, data: const {});
           }
         }(),
         () async {
@@ -463,12 +453,7 @@ class WorldMapPinsManager {
               l1Code: null,
             );
           } catch (e, s) {
-            ErrorHandler.logError(
-              e: e,
-              s: s,
-              m: 'invited-session preview read failed',
-              data: const {},
-            );
+            ErrorHandler.logError(e: e, s: s, data: const {});
           }
         }(),
       ]);
@@ -703,6 +688,7 @@ class WorldMapPinsManager {
     final pins = (await ActivityMapRepo.bboxPins(
       bounds: bounds,
       l2: l2,
+      l1: l1,
     )).result;
     // An error is "no fresh answer for this viewport", never "no activities
     // here" — the read was suppressed by the rate-limit pause (#8360) or it

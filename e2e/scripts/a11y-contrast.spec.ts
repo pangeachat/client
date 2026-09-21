@@ -165,11 +165,22 @@ async function sampleContrast(
     const host = document.querySelector("flt-semantics-host");
     if (!host) return [];
     const out: any[] = [];
-    const nodes = host.querySelectorAll("[aria-label]");
-    for (const el of Array.from(nodes)) {
-      // Leaf only: no labeled descendant (avoid container rects).
-      if (el.querySelector("[aria-label]")) continue;
-      const label = (el.getAttribute("aria-label") || "").trim();
+    // A node is "named" if it has aria-label OR direct text content — current
+    // Flutter emits most control names as text children, not aria-label.
+    const nameOf = (el: Element) => {
+      const aria = (el.getAttribute("aria-label") || "").trim();
+      if (aria) return aria;
+      return Array.from(el.childNodes)
+        .filter((n) => n.nodeType === 3)
+        .map((n) => (n.textContent || "").trim())
+        .join(" ")
+        .trim();
+    };
+    const named = Array.from(host.querySelectorAll("*")).filter((el) => nameOf(el));
+    for (const el of named) {
+      // Leaf only: no named descendant (avoid container rects).
+      if (Array.from(el.querySelectorAll("*")).some((d) => nameOf(d))) continue;
+      const label = nameOf(el);
       if (!label) continue;
       const r = el.getBoundingClientRect();
       if (r.width < 4 || r.height < 4) continue;
@@ -221,7 +232,7 @@ test.describe("Contrast triage report (non-gating)", () => {
   test("sample contrast and emit triage candidates", async ({ page }) => {
     const surfaces: { name: string; path: string; sentinel: import("@playwright/test").Locator }[] = [
       { name: "world map", path: "/", sentinel: page.getByRole("textbox", { name: intl.mapSearchHint }) },
-      { name: "chat list", path: "/?left=chats", sentinel: page.getByRole("button", { name: intl.chatWithSupport }).first() },
+      { name: "chat list", path: "/?left=chats", sentinel: page.getByText(intl.chats).first() },
       { name: "settings", path: "/?right=settings", sentinel: page.getByRole("button", { name: intl.learningSettings }).first() },
     ];
 

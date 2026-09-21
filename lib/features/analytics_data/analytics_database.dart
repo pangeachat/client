@@ -55,6 +55,11 @@ class AnalyticsDatabase with DatabaseFileStorage {
   late Box<Map> _aggregatedLocalMorphConstructsBox;
   late Box<Map> _derivedStatsBox;
 
+  /// Suffix for local batch keys, so batches written in the same millisecond
+  /// get distinct keys (see [updateLocalAnalytics]). Process-wide: two open
+  /// databases (a teardown race) must still never mint the same key.
+  static int _localBatchSeq = 0;
+
   static const String _serverConstructsBoxName = 'box_server_constructs';
 
   static const String _localConstructsBoxName = 'box_local_constructs';
@@ -406,6 +411,23 @@ class AnalyticsDatabase with DatabaseFileStorage {
   Future<List<OneConstructUse>> getLocalUses(String language) =>
       _readLocalUses(language);
 
+  /// The pending (not-yet-uploaded) use batches for [language], keyed by
+  /// their storage key — so a flush can later delete exactly the batches it
+  /// uploaded ([clearLocalConstructData]) and no others.
+  Future<Map<String, List<OneConstructUse>>> getLocalUseBatches(
+    String language,
+  ) async {
+    final keys = (await _localConstructsBox.getAllKeys())
+        .where((key) => _isLanguageKey(key, language))
+        .toList();
+    if (keys.isEmpty) return {};
+
+    final values = await _localConstructsBox.getAll(keys);
+    return {
+      for (var i = 0; i < keys.length; i++) keys[i]: _parseUses(values[i]),
+    };
+  }
+
   Future<List<OneConstructUse>> _readLocalUses(
     String language, {
     String? roomId,
@@ -525,11 +547,22 @@ class AnalyticsDatabase with DatabaseFileStorage {
     return results;
   }
 
-  Future<void> clearLocalConstructData(String language) async {
+  /// Deletes the uploaded local batches ([batchKeys], from
+  /// [getLocalUseBatches]) and rebuilds [language]'s local aggregates from the
+  /// batches that remain.
+  ///
+  /// Deleting only the uploaded batches is the point (#7720): a use recorded
+  /// while an upload was in flight sits in a batch that was NOT in the uploaded
+  /// event, and a whole-language wipe here destroyed it before it was ever
+  /// sent. Surviving batches are rare and small, so the rebuild is cheap.
+  Future<void> clearLocalConstructData(
+    String language, {
+    required Iterable<String> batchKeys,
+  }) async {
     await _transaction(() async {
-      final localKeys = (await _localConstructsBox.getAllKeys())
-          .where((key) => _isLanguageKey(key, language))
-          .toList();
+      await _localConstructsBox.deleteAll(batchKeys.toList());
+
+      final survivors = await _readLocalUses(language);
 
       final localVocabAggKeys =
           (await _aggregatedLocalVocabConstructsBox.getAllKeys())
@@ -541,9 +574,10 @@ class AnalyticsDatabase with DatabaseFileStorage {
               .where((key) => _isLanguageKey(key, language))
               .toList();
 
-      await _localConstructsBox.deleteAll(localKeys);
       await _aggregatedLocalVocabConstructsBox.deleteAll(localVocabAggKeys);
       await _aggregatedLocalMorphConstructsBox.deleteAll(localMorphAggKeys);
+
+      await _writeLocalAggregates(survivors, language);
     });
   }
 
@@ -601,6 +635,47 @@ class AnalyticsDatabase with DatabaseFileStorage {
 
     final existingMap = Map.fromIterables(keys, existing);
     return _aggregateConstructs(grouped, existingMap);
+  }
+
+  /// Folds [uses] into the local vocab/morph aggregate boxes. Callers run
+  /// inside a [_transaction].
+  Future<void> _writeLocalAggregates(
+    List<OneConstructUse> uses,
+    String language,
+  ) async {
+    if (uses.isEmpty) return;
+
+    final List<OneConstructUse> vocabUses = [];
+    final List<OneConstructUse> morphUses = [];
+    for (final u in uses) {
+      u.constructType == ConstructTypeEnum.vocab
+          ? vocabUses.add(u)
+          : morphUses.add(u);
+    }
+
+    final aggVocabUpdates = await _aggregateFromBox(
+      _aggregatedLocalVocabConstructsBox,
+      _groupUses(vocabUses, language),
+    );
+
+    for (final entry in aggVocabUpdates.entries) {
+      await _aggregatedLocalVocabConstructsBox.put(
+        entry.key,
+        entry.value.toJson(),
+      );
+    }
+
+    final aggMorphUpdates = await _aggregateFromBox(
+      _aggregatedLocalMorphConstructsBox,
+      _groupUses(morphUses, language),
+    );
+
+    for (final entry in aggMorphUpdates.entries) {
+      await _aggregatedLocalMorphConstructsBox.put(
+        entry.key,
+        entry.value.toJson(),
+      );
+    }
   }
 
   /// The uncapped xp sum of every stored aggregate of [type] for [language] —
@@ -921,45 +996,18 @@ class AnalyticsDatabase with DatabaseFileStorage {
 
     final stopwatch = Stopwatch()..start();
     await _transaction(() async {
-      // Store local constructs
-      final key = DateTime.now().millisecondsSinceEpoch;
+      // Store local constructs. The sequence suffix keeps two batches written
+      // in the same millisecond on distinct keys — a bare timestamp key let
+      // the second put silently overwrite the first, whose uses were then
+      // never uploaded (#7720).
+      final key =
+          '${DateTime.now().millisecondsSinceEpoch}-${_localBatchSeq++}';
       await _localConstructsBox.put(
-        _langKey(key.toString(), language),
+        _langKey(key, language),
         uses.map((u) => u.toJson()).toList(),
       );
 
-      final List<OneConstructUse> vocabUses = [];
-      final List<OneConstructUse> morphUses = [];
-      for (final u in uses) {
-        u.constructType == ConstructTypeEnum.vocab
-            ? vocabUses.add(u)
-            : morphUses.add(u);
-      }
-
-      // Update aggregates
-      final aggVocabUpdates = await _aggregateFromBox(
-        _aggregatedLocalVocabConstructsBox,
-        _groupUses(vocabUses, language),
-      );
-
-      for (final entry in aggVocabUpdates.entries) {
-        await _aggregatedLocalVocabConstructsBox.put(
-          entry.key,
-          entry.value.toJson(),
-        );
-      }
-
-      final aggMorphUpdates = await _aggregateFromBox(
-        _aggregatedLocalMorphConstructsBox,
-        _groupUses(morphUses, language),
-      );
-
-      for (final entry in aggMorphUpdates.entries) {
-        await _aggregatedLocalMorphConstructsBox.put(
-          entry.key,
-          entry.value.toJson(),
-        );
-      }
+      await _writeLocalAggregates(uses, language);
     });
 
     await _updateLastUpdated(DateTime.now(), language);

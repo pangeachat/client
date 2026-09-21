@@ -32,7 +32,6 @@ extension ChildrenAndParentsRoomExtension on Room {
       } catch (e) {
         ErrorHandler.logError(
           e: e,
-          m: 'Failed to remove child from parent',
           data: {"roomID": roomId, "parentID": parent.id},
         );
       }

@@ -109,7 +109,9 @@ class RepresentationEvent {
     if (choreoEvents.length > 1) {
       debugger(when: kDebugMode);
       ErrorHandler.logError(
-        m: 'should not have more than one choreoEvent per representation ${_event?.eventId}',
+        e: Exception(
+          'should not have more than one choreoEvent per representation ${_event?.eventId}',
+        ),
         s: StackTrace.current,
         data: {"event": _event?.toJson()},
       );

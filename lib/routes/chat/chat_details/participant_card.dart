@@ -4,15 +4,20 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
+import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
 import 'package:fluffychat/widgets/avatar.dart';
+import 'package:fluffychat/widgets/users/course_member_stats.dart';
 import 'package:fluffychat/widgets/users/level_display_name.dart';
 import 'package:fluffychat/widgets/users/member_actions_popup_menu_button.dart';
 
 /// One participant's member card: avatar (with the top-3 leaderboard ring),
-/// name, level, and permission/membership badge. Tapping the avatar opens the
+/// name, the member's stars and level in the course's language, and the
+/// permission/membership badge. A space with no course language recorded —
+/// anything created before it was written to room state — falls back to the
+/// learner chip ([LevelDisplayName]), which shows their own language pair. Tapping the avatar opens the
 /// member actions menu. Shared by the full participant list
 /// (RoomParticipantsSection) and the course page's Participants preview.
 class ParticipantCard extends StatelessWidget {
@@ -77,6 +82,8 @@ class ParticipantCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
+    final courseLanguage = room.coursePlan?.l2;
 
     final permissionBatch = user.powerLevel >= 100
         ? L10n.of(context).admin
@@ -161,11 +168,17 @@ class ParticipantCard extends StatelessWidget {
                 Container(
                   height: 20.0,
                   alignment: Alignment.center,
-                  child: LevelDisplayName(
-                    userId: user.id,
-                    textStyle: theme.textTheme.labelSmall,
-                    showFlags: false,
-                  ),
+                  child: courseLanguage != null
+                      ? CourseMemberStats(
+                          userId: user.id,
+                          langCode: courseLanguage,
+                          textStyle: theme.textTheme.labelSmall,
+                        )
+                      : LevelDisplayName(
+                          userId: user.id,
+                          textStyle: theme.textTheme.labelSmall,
+                          showFlags: false,
+                        ),
                 ),
                 Container(
                   height: 24.0,

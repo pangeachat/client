@@ -56,6 +56,22 @@ class AnalyticsStreamUpdate {
   });
 }
 
+/// A local analytics update that got nowhere.
+///
+/// Thrown when the work BEFORE the local write fails, so nothing was stored.
+/// The distinction matters to anything that credits once and only once -- a
+/// call's speech, most of all: a failure that stored nothing can be tried
+/// again, and one that stored something cannot, because trying again would
+/// count the same words twice.
+class AnalyticsNotStoredException implements Exception {
+  final Object cause;
+
+  const AnalyticsNotStoredException(this.cause);
+
+  @override
+  String toString() => 'AnalyticsNotStoredException: $cause';
+}
+
 class AnalyticsDataService {
   _AnalyticsClient? _analyticsClient;
 
@@ -88,7 +104,26 @@ class AnalyticsDataService {
   Completer<void> initCompleter = Completer<void>();
   Object? initError;
 
-  AnalyticsDataService(this._accountClient) {
+  /// Opens the analytics store. Injectable so a test can drive the real init
+  /// path against an in-memory database.
+  ///
+  /// Nothing could reach that path before (#8611): every existing test either
+  /// fakes this whole service or drives [AnalyticsDatabase] directly. That gap
+  /// is how #8592 shipped a read on the init path which waited for init to
+  /// finish — a hang that a green suite could not see.
+  final Future<AnalyticsDatabase> Function(String name) _databaseBuilder;
+
+  /// Completes once the store is open and the service can serve reads that do
+  /// not gate on init — strictly BEFORE [initCompleter], which waits for the
+  /// whole of [_initAnalytics]. A test uses it to reach the state the init path
+  /// actually runs in: store ready, init still in flight.
+  @visibleForTesting
+  final Completer<void> databaseReady = Completer<void>();
+
+  AnalyticsDataService(
+    this._accountClient, {
+    Future<AnalyticsDatabase> Function(String name)? databaseBuilder,
+  }) : _databaseBuilder = databaseBuilder ?? analyticsDatabaseBuilder {
     updateDispatcher = AnalyticsUpdateDispatcher(this);
     updateService = AnalyticsUpdateService(this);
     _initDatabase(_accountClient);
@@ -161,10 +196,9 @@ class AnalyticsDataService {
       ),
     );
 
-    final database = await analyticsDatabaseBuilder(
-      "${client.clientName}_analytics",
-    );
+    final database = await _databaseBuilder("${client.clientName}_analytics");
     _analyticsClient = _AnalyticsClient(client: client, database: database);
+    if (!databaseReady.isCompleted) databaseReady.complete();
 
     if (client.isLogged()) {
       // Pin the dosage account mxid the moment we know we are logged in, BEFORE
@@ -470,6 +504,14 @@ class AnalyticsDataService {
     return _analyticsClientGetter.database.getLocalUses(language);
   }
 
+  /// See [AnalyticsDatabase.getLocalUseBatches].
+  Future<Map<String, List<OneConstructUse>>> getLocalUseBatches(
+    String language,
+  ) async {
+    await _ensureInitialized();
+    return _analyticsClientGetter.database.getLocalUseBatches(language);
+  }
+
   Future<int> getLocalConstructCount(String language) async {
     await _ensureInitialized();
     return _analyticsClientGetter.database.getLocalConstructCount(language);
@@ -662,11 +704,21 @@ class AnalyticsDataService {
         .toList();
     final updateIds = addedConstructs.map((c) => c.identifier).toSet();
 
-    final prevData = await derivedData(language);
-    final prevConstructs = await getConstructUses(updateIds.toList(), language);
+    // Everything up to the local write can fail, and a caller that has
+    // already marked the work done -- a call crediting a learner's speech
+    // once and only once -- needs to tell "nothing landed" from "it landed
+    // and something after it failed". Only the first is safe to try again.
+    final DerivedAnalyticsDataModel prevData;
+    final Map<ConstructIdentifier, ConstructUses> prevConstructs;
+    try {
+      prevData = await derivedData(language);
+      prevConstructs = await getConstructUses(updateIds.toList(), language);
 
-    _invalidateCaches();
-    await _ensureInitialized();
+      _invalidateCaches();
+      await _ensureInitialized();
+    } catch (e, s) {
+      Error.throwWithStackTrace(AnalyticsNotStoredException(e), s);
+    }
 
     final blocked = blockedConstructs;
     final newUnusedConstructs = updateIds
@@ -886,15 +938,24 @@ class AnalyticsDataService {
     _invalidateCaches();
   }
 
-  /// Drop the local (not-yet-uploaded) uses and aggregates, then re-derive
-  /// the XP total. This runs right after the uploaded copy has echoed back
-  /// from the analytics room; the recompute that echo triggered saw the
-  /// uses on both sides, so the total is settled here rather than on the
-  /// next unrelated sync.
-  Future<void> clearLocalAnalytics(String language) async {
+  /// Drop the uploaded local batches ([batchKeys]) and rebuild the local
+  /// aggregates from whatever is still pending, then re-derive the XP total.
+  /// This runs right after the uploaded copy has echoed back from the
+  /// analytics room; the recompute that echo triggered saw the uses on both
+  /// sides, so the total is settled here rather than on the next unrelated
+  /// sync. Only the uploaded batches may be dropped — uses recorded while the
+  /// upload was in flight were not in it, and clearing the whole language
+  /// destroyed them before they were ever sent (#7720).
+  Future<void> clearLocalAnalytics(
+    String language,
+    Iterable<String> batchKeys,
+  ) async {
     _invalidateCaches();
     await _ensureInitialized();
-    await _analyticsClientGetter.database.clearLocalConstructData(language);
+    await _analyticsClientGetter.database.clearLocalConstructData(
+      language,
+      batchKeys: batchKeys,
+    );
     _invalidateCaches();
     await _recomputeTotalXP(language);
   }
