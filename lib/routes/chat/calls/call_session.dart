@@ -17,6 +17,7 @@ import 'package:fluffychat/routes/chat/calls/call_record.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/call_timeline_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_event.dart';
+import 'package:fluffychat/routes/chat/calls/call_transcript_outbox.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart';
 import 'package:fluffychat/routes/chat/calls/ring_player.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
@@ -290,6 +291,36 @@ class CallSession extends ChangeNotifier {
     final writerUserId = room.client.userID ?? '';
     final writerDeviceId = room.client.deviceID;
 
+    // This device's transcript half, straight to the room.
+    Future<String?> sendTranscriptEvent(
+      Map<String, dynamic> content,
+      String txnId,
+    ) => room.sendEvent(
+      content,
+      type: CallTranscriptContent.relType,
+      txid: txnId,
+    );
+
+    // The recording-based half is published SECONDS after hangup, once a
+    // whole-recording speech-to-text round trip has returned -- by which point
+    // a phone whose user has walked away has backgrounded, and the OS drops the
+    // late send. The outbox remembers the built half on disk BEFORE the send
+    // and replays it on the next launch or foreground if it did not land; the
+    // deterministic transaction id makes the replay a no-op when it did. See
+    // [CallService.flushPendingCallTranscripts] for the replay.
+    //
+    // OFF (the default), this is the bare send -- byte-for-byte the behaviour
+    // before the feature, the outbox never constructed or touched. The problem
+    // it solves is specific to the recording-based path: the live-chunk half
+    // publishes FIRST, before that STT, so it is not late.
+    final TranscriptSender transcriptSend = recordingTranscript
+        ? CallTranscriptOutbox().guard(
+            room.id,
+            writerUserId,
+            sendTranscriptEvent,
+          )
+        : sendTranscriptEvent;
+
     final record =
         recordOverride ??
         CallRecord(
@@ -313,11 +344,7 @@ class CallSession extends ChangeNotifier {
                 required bool drainComplete,
                 String? langCode,
               }) => writeCallTranscript(
-                send: (content, txid) => room.sendEvent(
-                  content,
-                  type: CallTranscriptContent.relType,
-                  txid: txid,
-                ),
+                send: transcriptSend,
                 callKey: callKey,
                 // Both taken from the latches above, never read off the client
                 // here: this closure runs once per RETRY, and the transaction

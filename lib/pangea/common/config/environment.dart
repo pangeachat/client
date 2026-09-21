@@ -284,6 +284,11 @@ class Environment {
   /// transcription is missing falls back to its live-chunk half unchanged, so a
   /// call can carry one recording-based half and one live half.
   static bool get callRecordingTranscript =>
+      // `dotenv.env` throws when no env has been loaded, which a unit test that
+      // reaches this (a call service replaying a pending half) legitimately has
+      // not. No env loaded means no flag set, so the feature is off -- guarded
+      // like `DosageMessageSignals` guards its own read.
+      dotenv.isInitialized &&
       dotenv.env["CALL_RECORDING_TRANSCRIPT"]?.toLowerCase() == 'true';
 
   static String get pushGatewayUrl => isStagingEnvironment

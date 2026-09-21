@@ -13,6 +13,8 @@ import 'package:fluffychat/routes/chat/calls/call_breadcrumb.dart';
 import 'package:fluffychat/routes/chat/calls/call_notification.dart';
 import 'package:fluffychat/routes/chat/calls/call_timeouts.dart';
 import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
+import 'package:fluffychat/routes/chat/calls/call_transcript_event.dart';
+import 'package:fluffychat/routes/chat/calls/call_transcript_outbox.dart';
 import 'package:fluffychat/routes/chat/calls/pangea_voip_delegate.dart';
 import 'package:fluffychat/routes/chat/calls/rtc_focus.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_repo.dart';
@@ -29,6 +31,28 @@ class CallService {
   final PangeaVoipDelegate delegate;
   final CallTokenRepo _tokens;
   final RtcFocusDiscovery _discovery;
+
+  /// Where this device's own transcript halves wait when their hangup-time
+  /// publish did not land, so a launch or foreground can replay them. Injected
+  /// only in tests; left null otherwise so the default build constructs nothing
+  /// here -- the durable store is created lazily inside the replay, which only
+  /// runs when the feature is on.
+  final CallTranscriptOutbox? _transcriptOutbox;
+
+  /// Whether the recording-based transcript feature is on. Passed in from the
+  /// construction site rather than read here, so this service -- unit-tested
+  /// without a `.env` loaded -- never touches `dotenv`, and a test can exercise
+  /// the replay directly. Off by default, so the replay is inert.
+  final bool _recordingTranscriptEnabled;
+
+  /// The startup replay runs once, on the first sync after launch. A foreground
+  /// replay (see `MatrixState.didChangeAppLifecycleState`) is not latched -- a
+  /// half dropped this session must still be picked up when the app comes back.
+  bool _flushedPendingTranscripts = false;
+
+  /// One replay at a time: the first-sync and foreground triggers can land
+  /// together, and a second concurrent pass would read the store mid-drain.
+  bool _flushingTranscripts = false;
 
   VoIP? _voip;
   RtcFocus? _focus;
@@ -183,10 +207,14 @@ class CallService {
     Duration? joinWithin,
     Duration? leaveWithin,
     CallTimeouts? timeouts,
+    CallTranscriptOutbox? transcriptOutbox,
+    bool recordingTranscriptEnabled = false,
   }) : delegate = delegate ?? PangeaVoipDelegate(),
        timeouts = timeouts ?? pangeaCallTimeouts(),
        _tokens = tokenRepo ?? CallTokenRepo(),
        _discovery = focusDiscovery ?? RtcFocusDiscovery(),
+       _transcriptOutbox = transcriptOutbox,
+       _recordingTranscriptEnabled = recordingTranscriptEnabled,
        _joinWithin = joinWithin ?? const Duration(seconds: 30),
        _leaveWithin = leaveWithin ?? const Duration(seconds: 3) {
     // Only the (cheap, timer-free) sync subscriptions are wired here; the box +
@@ -382,6 +410,11 @@ class CallService {
   /// then), and a still-loading coordinator buffers the event via
   /// [_driveMergeCoordinator] rather than dropping it.
   void handleSync(SyncUpdate update) {
+    // The first sync after launch is the reliable "client is up" signal, and
+    // the moment to replay a transcript half whose publish the app was killed
+    // before finishing. Latched to once (foreground handles later drops); a
+    // no-op when the feature is off.
+    _maybeFlushPendingTranscriptsOnce();
     dispatchSyncedCallAudioEvents(
       update,
       onHalf: (roomId, callKey) => _driveMergeCoordinator(
@@ -391,6 +424,60 @@ class CallService {
         (coordinator) => coordinator.onSyncedMergedEvent(roomId, callKey),
       ),
     );
+  }
+
+  void _maybeFlushPendingTranscriptsOnce() {
+    if (_flushedPendingTranscripts || !_recordingTranscriptEnabled) return;
+    _flushedPendingTranscripts = true;
+    unawaited(flushPendingCallTranscripts());
+  }
+
+  /// Replays this device's own transcript halves whose hangup-time publish did
+  /// not land -- dropped when the app backgrounded or was killed at hangup,
+  /// after the whole-recording speech-to-text returned but before the send
+  /// confirmed. Called on the first sync after launch and on every foreground.
+  ///
+  /// Safe to call repeatedly and concurrently: each half is dropped the moment
+  /// its resend confirms, and a half that already landed collapses server-side
+  /// under its deterministic transaction id, so a resend is a no-op. A no-op
+  /// entirely when the recording-based feature is off -- nothing is ever
+  /// written to the outbox on the default path -- so this touches no storage
+  /// then, exactly as before.
+  Future<void> flushPendingCallTranscripts() async {
+    if (!_recordingTranscriptEnabled) return;
+    if (_disposed || _flushingTranscripts) return;
+    _flushingTranscripts = true;
+    try {
+      // The resend needs the target room, and a cold launch reaches here before
+      // the room list has finished loading out of the database. Waiting is
+      // cheap and bounded (the load is local); without it getRoomById would
+      // miss and the half would wait for the next foreground. Mirrors
+      // [rejoinOffers], which waits for the same reason.
+      try {
+        await client.roomsLoading;
+      } catch (e, s) {
+        Logs().w('Could not wait for the room list before a flush', e, s);
+      }
+      if (_disposed) return;
+      // Constructed here, not as a field default, so the default build makes
+      // nothing until a replay actually runs (which only happens when the
+      // feature is on). A test injects its own.
+      final outbox = _transcriptOutbox ?? CallTranscriptOutbox();
+      await outbox.flush(
+        (roomId, txnId, content) async => client
+            .getRoomById(roomId)
+            ?.sendEvent(
+              content,
+              type: CallTranscriptContent.relType,
+              txid: txnId,
+            ),
+        // Only this account's own halves are replayed -- the store is shared by
+        // every account on the device.
+        owner: client.userID,
+      );
+    } finally {
+      _flushingTranscripts = false;
+    }
   }
 
   /// Re-runs the merge coordinator whenever the sync loop RECONNECTS -- an error

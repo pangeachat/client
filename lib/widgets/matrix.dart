@@ -30,6 +30,7 @@ import 'package:fluffychat/features/tutorials/tutorial_overlay_controller.dart';
 import 'package:fluffychat/features/user/user_controller.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/dev_login.dart';
+import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/p_vguard.dart';
@@ -245,6 +246,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
           (c) => c.clientName == clientName,
           orElse: () => client,
         ),
+        recordingTranscriptEnabled: Environment.callRecordingTranscript,
       );
 
   // #Pangea
@@ -269,7 +271,10 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   CallService callServiceForClient(Client client) {
     final existing = _callServices[client.clientName];
     if (existing != null && identical(existing.client, client)) return existing;
-    return _callServices[client.clientName] = CallService(client);
+    return _callServices[client.clientName] = CallService(
+      client,
+      recordingTranscriptEnabled: Environment.callRecordingTranscript,
+    );
   }
   // Pangea#
 
@@ -1136,6 +1141,13 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
 
     if (state == AppLifecycleState.resumed) {
       pangeaController.subscriptionController.refreshOnAppResume(client.userID);
+      // A call transcript half whose publish was dropped when the app
+      // backgrounded at hangup is replayed now that it is back. Each service
+      // self-gates on the feature flag and drops any half that already landed
+      // as a server-side no-op, so this is inert on the default build.
+      for (final service in _callServices.values) {
+        unawaited(service.flushPendingCallTranscripts());
+      }
     }
   }
 
