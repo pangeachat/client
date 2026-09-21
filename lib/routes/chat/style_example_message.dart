@@ -5,11 +5,13 @@ import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
+import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/routes/chat/events/tokens/underline_text_widget.dart';
 import 'package:fluffychat/routes/chat/toolbar/reading_assistance/select_mode_buttons.dart';
 import 'package:fluffychat/routes/chat/toolbar/word_card/word_zoom_widget.dart';
+import 'package:fluffychat/widgets/avatar.dart';
 
 class StyleExampleMessage extends StatelessWidget {
   const StyleExampleMessage({super.key});
@@ -27,6 +29,13 @@ class StyleExampleMessage extends StatelessWidget {
           _StyleExampleWordCard(),
           _StyleExampleMessage(),
           _StyleExampleToolbarButtons(),
+          // The bot wears the learner's chosen colour, so the swatch they are
+          // about to tap changes it. Shown as a reply on the other side, with
+          // its avatar, because that is where they meet it in a chat.
+          Align(
+            alignment: Alignment.centerLeft,
+            child: _StyleExampleBotMessage(),
+          ),
         ],
       ),
     );
@@ -98,6 +107,50 @@ class _StyleExampleMessage extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class _StyleExampleBotMessage extends StatelessWidget {
+  const _StyleExampleBotMessage();
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.end,
+      spacing: 8.0,
+      children: [
+        // Still rather than animated: this is the face a message avatar wears
+        // in a chat, and a settings page has no reason to run a state machine.
+        const BotFace(
+          width: Avatar.defaultSize,
+          expression: BotExpression.idle,
+          animate: false,
+        ),
+        Flexible(
+          child: Container(
+            constraints: const BoxConstraints(
+              maxWidth: FluffyThemes.maxTimelineWidth,
+            ),
+            decoration: BoxDecoration(
+              color: theme.colorScheme.surfaceContainerHigh,
+              borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              child: Text(
+                'Hello!',
+                style: TextStyle(
+                  color: theme.colorScheme.onSurface,
+                  fontSize: AppConfig.messageFontSize,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
