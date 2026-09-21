@@ -12,24 +12,63 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 /// isolation.
 class SentryCaptureHarness {
   Completer<SentryEvent>? _pending;
+  Completer<void>? _sentinelArrived;
+  SentryOptions? _options;
+
+  /// The runtime type names of the event processors still installed, so a test
+  /// can assert the async enricher is gone without reaching into Sentry's
+  /// internal `currentHub`.
+  List<String> get activeEventProcessors =>
+      _options?.eventProcessors.map((p) => p.runtimeType.toString()).toList() ??
+      const [];
 
   /// Every event reported since [init], for asserting that a path reports
   /// nothing at all.
   final events = <SentryEvent>[];
 
-  Future<void> init() => Sentry.init((options) {
-    options.dsn = 'https://public@sentry.invalid/1';
-    options.beforeSend = (event, hint) {
-      events.add(event);
-      _pending?.complete(event);
-      // Dropped: the assertion is on the event, and nothing should leave
-      // the test.
-      return null;
-    };
-  });
+  Future<void> init() async {
+    late SentryOptions captured;
+    await Sentry.init((options) {
+      captured = options;
+      options.dsn = 'https://public@sentry.invalid/1';
+      options.beforeSend = (event, hint) {
+        events.add(event);
+        // Never let a completer throw out of here. Sentry catches an exception
+        // from beforeSend and KEEPS the event, which would send it to transport
+        // — the one thing this harness exists to prevent.
+        try {
+          if (event.throwable is _NoReportSentinel) {
+            if (_sentinelArrived?.isCompleted == false) {
+              _sentinelArrived!.complete();
+            }
+          } else if (_pending?.isCompleted == false) {
+            _pending!.complete(event);
+          }
+        } catch (_) {
+          // silent-ok: a completed completer is not a test failure; the event
+          // is already recorded in `events`, which is what assertions read.
+        }
+        // Dropped: the assertion is on the event, and nothing should leave
+        // the test.
+        return null;
+      };
+    });
+    _options = captured;
+    // Strip the enricher. On Linux it shells out (`cat /proc/meminfo`) BEFORE
+    // beforeSend, so two captures can spawn separate processes and finish out of
+    // order — which would silently break the barrier [expectNoReport] relies on,
+    // on CI only, where nobody watches a green run. With it gone, the path from
+    // `captureException` to `beforeSend` is pure microtask work.
+    for (final processor in captured.eventProcessors) {
+      if (processor.runtimeType.toString().contains('Enricher')) {
+        captured.removeEventProcessor(processor);
+      }
+    }
+  }
 
   Future<void> close() async {
     _pending = null;
+    _sentinelArrived = null;
     await Sentry.close();
   }
 
@@ -54,16 +93,23 @@ class SentryCaptureHarness {
   ///
   /// Ordering is what makes this sound, not a delay. After [work] runs, this
   /// reports a sentinel of its own and waits for the sentinel to reach
-  /// [beforeSend]. Any event [work] enqueued was enqueued first, so once the
-  /// sentinel has arrived, anything real has arrived too — and the queue is
-  /// pure async here, because the harness's [beforeSend] drops every event
-  /// before transport and no I/O reorders the chain. A fixed `Future.delayed`
-  /// would only move the flake, not remove it.
+  /// [beforeSend]. Anything [work] reported was enqueued first and travels the
+  /// identical code path with the identical number of suspension points, so on
+  /// a FIFO microtask queue it arrives first too.
+  ///
+  /// That argument needs the pipeline to contain no I/O, which is why [init]
+  /// strips the enricher — on Linux it shells out to `/proc/meminfo` before
+  /// `beforeSend`, and two captures racing two processes can finish in either
+  /// order. A `Future.delayed` instead of the sentinel would only have moved
+  /// the flake somewhere less visible.
   Future<void> expectNoReport(FutureOr<void> Function() work) async {
     final before = events.length;
     await work();
-    final sentinel = _NoReportSentinel();
-    await capture(() => Sentry.captureException(sentinel));
+    final arrived = Completer<void>();
+    _sentinelArrived = arrived;
+    Sentry.captureException(_NoReportSentinel());
+    await arrived.future.timeout(const Duration(seconds: 5));
+    _sentinelArrived = null;
     final unexpected = events
         .skip(before)
         .where((e) => e.throwable is! _NoReportSentinel)

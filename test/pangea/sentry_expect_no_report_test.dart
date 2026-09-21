@@ -62,6 +62,36 @@ void main() {
     },
   );
 
+  test('the enricher is stripped, so no I/O can reorder the pipeline', () {
+    // The barrier argument depends on this. If a future SDK renames the
+    // processor or adds another async one, this fails here rather than flaking
+    // on Linux CI, where nobody is watching a run that is already green.
+    final names = sentry.activeEventProcessors;
+    expect(
+      names.where((n) => n.contains('Enricher')),
+      isEmpty,
+      reason: 'an async enricher would break expectNoReport ordering: $names',
+    );
+  });
+
+  test(
+    'a real report arriving first does not break the sentinel wait',
+    () async {
+      // Guards the completer reuse: if an unawaited real report completed the
+      // sentinel's waiter, the sentinel would complete it again, throw out of
+      // beforeSend, and Sentry would KEEP the event and send it.
+      await expectLater(
+        () => sentry.expectNoReport(() {
+          Sentry.captureException(StateError('first'));
+          Sentry.captureException(StateError('second'));
+        }),
+        throwsA(isA<TestFailure>()),
+      );
+      // Still usable afterwards — nothing was left half-completed.
+      await sentry.expectNoReport(() {});
+    },
+  );
+
   test(
     'reports the throwable it caught, so a failure is diagnosable',
     () async {
