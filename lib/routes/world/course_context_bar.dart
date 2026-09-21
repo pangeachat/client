@@ -110,11 +110,13 @@ class _CourseContextBarState extends State<CourseContextBar> {
 
   /// Post-frame because this runs from `build`: [loadOutline] seats its
   /// loading state synchronously, and notifying the progress bar's listeners
-  /// mid-build is a setState-during-build.
+  /// mid-build is a setState-during-build. The course scope cannot wait that
+  /// long — this very build reads the progress — so it is set here, now.
   void _ensureOutline(Room room) {
     final key = '${room.id}:${room.coursePlan?.uuid}';
     if (_loadedFor == key) return;
     _loadedFor = key;
+    _objectivesProvider.scopeToCourse(room.id);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
       _objectivesProvider.loadOutline(
