@@ -2538,3 +2538,31 @@ until the design is Codex-green.
 - NEXT: confirm flag-off re-gate GREEN; bring choreo up (:8012, STANDARD choreo -- NOT the reconcile
   worktree, this path uses raw word_timings); web-harness E2E + inspect the published half in Synapse
   DB; report + give owner the phone-test steps. PR2 only on explicit owner go.
+
+### 2026-09-21 (cont) — recorder mechanism tests + full-suite check; feature COMPLETE
+- ALL THREE COLD GATES GREEN (CORRECT / GATE-SOFTENING: NONE): behavior, tests, flag-off no-op.
+- RECORDER MECHANISM TESTS (commit ebc836ffe0, +4): finish() transcribes its own WAV and fills
+  recordingSegments from the provider word list (request carries the bytes + timings + speaker langs);
+  an STT failure leaves recordingSegments empty + audio half intact (non-fatal); feature off -> empty;
+  a non-carrier device never transcribes (finish returns before the WAV is built). Closes the
+  completion-order coverage note. Recorder 50/50 green.
+- SESSION COMMITS on satvik/call-features-combined (all local, no push): 12c4395af7 (wiring+tests),
+  3fea9acf0c (handoff), 2e896f2e64 (flag-off no-op), 3ddfe01c73 (handoff), ebc836ffe0 (recorder tests),
+  + this handoff commit.
+- FULL calls-dir test run: recording-transcript surfaces ALL GREEN (recorder 50, call_record 70,
+  transcript_segments 132). ONE PRE-EXISTING failure, UNRELATED to this work: call_media_test.dart
+  "...watches are given back when the call is disposed - did not complete" (1 test in isolation; ~52
+  under full-dir interference -- a hang/stream-lifecycle issue). PROVEN not ours: call_media.dart +
+  call_media_test.dart are byte-identical to origin/main; call_media_test imports NONE of the
+  recording-transcript files; the only branch-modified dep it imports is transcript_assembly.dart
+  (+39 additive, from earlier combined work, not this session). Flagged as task_c340b22a for a
+  dedicated fix (MUST be green before PR2 -- pre-push full-CI gate). Do NOT weaken the test.
+- FEATURE STATUS: recording-based call transcript write-side is COMPLETE, cold-gate GREEN, fully unit
+  tested, flag-gated (CALL_RECORDING_TRANSCRIPT, default OFF), revertible. Reader/merge untouched.
+- E2E STILL PENDING (needs owner): real-audio quality check on the phone. Phone is DISCONNECTED. Steps
+  for owner: reconnect phone (USB) + unlock; then build APK with the flag on (uncomment `.env` in
+  pubspec per pangea-call-testing skill; set CALL_RECORDING_TRANSCRIPT=true in client .env; JAVA_HOME +
+  rustup shim; `flutter build apk --debug`; adb install -r), lan-cutover.sh lan, choreo up on :8012
+  (STANDARD choreo -- raw word_timings), make a call, I verify the recording-based half in the local
+  Synapse DB. Web harness (transcript.js, fake audio) can verify the MECHANISM without the phone but
+  not real-voice quality.
