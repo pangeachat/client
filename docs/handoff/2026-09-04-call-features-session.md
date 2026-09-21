@@ -2785,3 +2785,15 @@ until the design is Codex-green.
   (bg8b6mk9z, P1+P2+P3); pubspec .env uncommented for the APK build (RE-COMMENT after). Phone
   DISCONNECTED -> APK build+install + the call wait on the owner reconnecting it. Stack all up
   (Synapse/lk-jwt/LiveKit/choreo/web 200).
+
+### 2026-09-21 (cont) — BOTH cross-model gates GREEN (gpt-5.5 medium); gap closed
+- gate-p2-final (cafc06e8b3 outbox): VERDICT CORRECT / GATE-SOFTENING NONE.
+- gate-p3-final (34a0b0634d live-update): VERDICT CORRECT / GATE-SOFTENING NONE.
+- The "no cross-model gate on final commits" caveat is CLOSED. Full verification now: my independent
+  review (clean; caught+fixed 2 P2 bugs incl data-loss) + agent self-gates (P2 5 rounds, P3 3 rounds)
+  + cross-model gpt-5.5-medium gates GREEN + 437 tests + analyze/format/import_sorter clean.
+- Client feature v2 (P1 any-duration + P2 durable outbox + P3 live UI) is CODE-COMPLETE + fully
+  gate-green on satvik/call-features-combined. Web endpoint rebuilt + serving (:8090, flag on).
+- REMAINING for showcase: phone APK build+install (P1+P2+P3, flag on) + the real call. Phone
+  DISCONNECTED -> waiting on owner to reconnect. pubspec .env still uncommented for the pending APK
+  build (RE-COMMENT after). Server backstop (P4-P5) remains the deferred follow-up; PR2 on owner go.
