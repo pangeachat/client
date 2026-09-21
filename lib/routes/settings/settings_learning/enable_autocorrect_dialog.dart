@@ -1,5 +1,4 @@
-import 'dart:io';
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:android_intent_plus/android_intent.dart';
@@ -8,9 +7,10 @@ import 'package:app_settings/app_settings.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
 
-/// Platform-specific instructions for enabling device autocorrect. Only shown
-/// on mobile — on web the autocorrect toggle is disabled entirely (see
-/// AutocorrectSettingsTile).
+/// Platform-specific instructions for enabling device autocorrect. Shown in
+/// the app and in a phone or tablet browser — desktop web locks the toggle
+/// instead (see AutocorrectSettingsTile). A browser cannot open device
+/// settings, so [isWeb] leaves that action out.
 ///
 /// Reached from two places with different framing. The autocorrect settings
 /// toggle keeps each platform's default [title], which warns that the setting
@@ -20,22 +20,32 @@ import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart'
 class EnableAutocorrectDialog extends StatelessWidget {
   final String? title;
 
-  const EnableAutocorrectDialog({super.key, this.title});
+  /// Injectable because kIsWeb is a compile-time constant, which widget tests
+  /// on the VM can't flip.
+  final bool isWeb;
+
+  const EnableAutocorrectDialog({super.key, this.title, this.isWeb = kIsWeb});
 
   @override
   Widget build(BuildContext context) {
-    if (Platform.isIOS) {
-      return IOSEnableAutocorrectDialog(title: title);
+    // dart:io's Platform throws on web; this also names a browser's device.
+    if (defaultTargetPlatform == TargetPlatform.iOS) {
+      return IOSEnableAutocorrectDialog(title: title, isWeb: isWeb);
     }
 
-    return AndroidEnableAutocorrectDialog(title: title);
+    return AndroidEnableAutocorrectDialog(title: title, isWeb: isWeb);
   }
 }
 
 class IOSEnableAutocorrectDialog extends StatelessWidget {
   final String? title;
+  final bool isWeb;
 
-  const IOSEnableAutocorrectDialog({super.key, this.title});
+  const IOSEnableAutocorrectDialog({
+    super.key,
+    this.title,
+    this.isWeb = kIsWeb,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -60,13 +70,14 @@ class IOSEnableAutocorrectDialog extends StatelessWidget {
           onPressed: () => Navigator.of(context).pop(true),
           child: Text(L10n.of(context).close),
         ),
-        AdaptiveDialogAction(
-          onPressed: () {
-            AppSettings.openAppSettings();
-            Navigator.of(context).pop(true);
-          },
-          child: Text(L10n.of(context).settings),
-        ),
+        if (!isWeb)
+          AdaptiveDialogAction(
+            onPressed: () {
+              AppSettings.openAppSettings();
+              Navigator.of(context).pop(true);
+            },
+            child: Text(L10n.of(context).settings),
+          ),
       ],
     );
   }
@@ -76,23 +87,36 @@ class IOSEnableAutocorrectDialog extends StatelessWidget {
 /// (`hintLocales`), so no manual keyboard switch is needed — the dialog just
 /// explains that, and its action takes the learner straight to the system's
 /// keyboard-management screen for the case where the keyboard has no pack for
-/// the language, per target-language-keyboard.instructions.md.
+/// the language, per target-language-keyboard.instructions.md. A browser
+/// cannot send `hintLocales`, so there the learner is told to switch by hand.
 class AndroidEnableAutocorrectDialog extends StatelessWidget {
   final String? title;
+  final bool isWeb;
 
-  const AndroidEnableAutocorrectDialog({super.key, this.title});
+  const AndroidEnableAutocorrectDialog({
+    super.key,
+    this.title,
+    this.isWeb = kIsWeb,
+  });
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog.adaptive(
-      title: Text(title ?? L10n.of(context).autocorrectAndroidDialogTitle),
+      title: Text(
+        title ??
+            (isWeb
+                ? L10n.of(context).enableAutocorrectWarning
+                : L10n.of(context).autocorrectAndroidDialogTitle),
+      ),
       content: SingleChildScrollView(
         child: Column(
           spacing: 8.0,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(L10n.of(context).autocorrectAndroidDialogBody),
+            if (!isWeb) Text(L10n.of(context).autocorrectAndroidDialogBody),
             Text(L10n.of(context).autocorrectAndroidFallbackTitle),
+            if (isWeb)
+              Text(L10n.of(context).keyboardPromptSwitchKeyboardMessage),
           ],
         ),
       ),
@@ -101,13 +125,14 @@ class AndroidEnableAutocorrectDialog extends StatelessWidget {
           onPressed: () => Navigator.of(context).pop(true),
           child: Text(L10n.of(context).close),
         ),
-        AdaptiveDialogAction(
-          onPressed: () {
-            _openKeyboardSettings();
-            Navigator.of(context).pop(true);
-          },
-          child: Text(L10n.of(context).openKeyboardSettings),
-        ),
+        if (!isWeb)
+          AdaptiveDialogAction(
+            onPressed: () {
+              _openKeyboardSettings();
+              Navigator.of(context).pop(true);
+            },
+            child: Text(L10n.of(context).openKeyboardSettings),
+          ),
       ],
     );
   }
