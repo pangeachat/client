@@ -78,7 +78,7 @@ class RoomCreationStateEventState extends State<RoomCreationStateEvent> {
                         name: roomName,
                         size: Avatar.defaultSize * 2,
                         userId: event.room.directChatMatrixID,
-                        useRive: true,
+                        animate: true,
                       ),
                     ),
                     Text(

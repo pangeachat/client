@@ -41,6 +41,7 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
     required this.onActivityOpen,
     required this.activityOngoing,
     required this.onActivityOngoing,
+    required this.botFill,
     required this.errorGraphic,
   });
 
@@ -165,6 +166,14 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
   /// Ink on [activityOngoing]: white in both themes.
   final Color onActivityOngoing;
 
+  /// The bot's body fill. The same purple in both themes and whatever seed the
+  /// learner picks, because the bot is a character rather than part of the UI:
+  /// the same face appears in places the app cannot recolour, and a bot that
+  /// changed colour with the theme read as another piece of chrome. The one
+  /// role that is its key rather than a tone of it, so a graphic on a surface
+  /// at 4.4:1 in light and far clear of the 3:1 floor on the dark surfaces.
+  final Color botFill;
+
   /// An error as a mark with a 3:1 floor: the composer's correction
   /// underline and highlight, a ring segment, a wrong-answer tint. A tone of
   /// Material's own error palette, so it is the same red as
@@ -212,6 +221,10 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
   /// so the states don't move when the learner picks another app colour.
   /// Read nowhere else.
   static const Color activityKey = Color(0xFF8560E0);
+
+  /// The brand purple, the bot's body colour and the default scheme seed.
+  /// Read nowhere else; widgets take [botFill] from the theme.
+  static const Color brandKey = Color(0xFF8560E0);
 
   static PangeaColors _fromKey(Brightness brightness) {
     // The keys above are the key colours; every role below is a tone of one
@@ -264,6 +277,7 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
       onActivityOpen: Color(open.get(100)),
       activityOngoing: Color(activity.get(_activityOngoingTone)),
       onActivityOngoing: Color(activity.get(100)),
+      botFill: brandKey,
       errorGraphic: Color(error.get(light ? 50 : 60)),
     );
   }
@@ -297,6 +311,7 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
     Color? onActivityOpen,
     Color? activityOngoing,
     Color? onActivityOngoing,
+    Color? botFill,
     Color? errorGraphic,
   }) => PangeaColors(
     gold: gold ?? this.gold,
@@ -326,6 +341,7 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
     onActivityOpen: onActivityOpen ?? this.onActivityOpen,
     activityOngoing: activityOngoing ?? this.activityOngoing,
     onActivityOngoing: onActivityOngoing ?? this.onActivityOngoing,
+    botFill: botFill ?? this.botFill,
     errorGraphic: errorGraphic ?? this.errorGraphic,
   );
 
@@ -388,6 +404,7 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
         other.onActivityOngoing,
         t,
       )!,
+      botFill: Color.lerp(botFill, other.botFill, t)!,
       errorGraphic: Color.lerp(errorGraphic, other.errorGraphic, t)!,
     );
   }
