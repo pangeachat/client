@@ -2349,3 +2349,36 @@ until the design is Codex-green.
 - STATE: branch satvik/call-features-combined, tree clean; buildSegments = proven original; 78/78 green,
   analyze 0. Net client code change this session = 0 (two attempts reverted -- correctly, no defect ships).
   Doc delta (87980cdd4b) still committed; its section 3 needs the correction above.
+
+### 2026-09-21 (cont) — ROOT CAUSE nailed from REAL captures; fix = C (choreo word_timings reconcile)
+- Found choreo's on-disk STT captures: 2-step-choreographer/app/handlers/speech_to_text/.generations/*_metadata.json
+  (1154 real provider responses incl. the exact failing call $HbAqRPluNz). Analyzed alignment (client _core
+  1:1 rule) per provider.
+- DEFINITIVE CAUSE (data): the phone half hit openai-whisper-1; its word_timings list occasionally has ONE
+  MORE token than its transcript -- HYPHENATED/COMPOUND speech: transcript "uh-huh" (1 word) vs word_timings
+  ["uh","huh"] (2). Client's strict `spoken.length != words.length` -> null -> whole-chunk block ordered at
+  chunk END -> the drag. Confirmed on the failing call: 2 misaligned chunks, both count off-by-one ("hello
+  yeah yeah..." 21v20; "uh-huh almost okay..." 12v11). Web half aligned (no hyphenates). Content-dependent =
+  why it looked intermittent. Whisper overall 298/312 aligned (~95%); failures are these off-by-ones.
+  Provider mix in captures: whisper 778, deepgram 38, google 23. (Sample rate 48k phone / 16k web is a
+  red herring -- the cause is tokenization, not rate.)
+- FIX = C (choreo), clean + deterministic: where word_timings are built (word_info_to_stt.py:109), reconcile
+  them to the TRANSCRIPT's whitespace words -- greedily merge provider words whose normalized concatenation
+  reconstructs one transcript word (uh+huh -> uh-huh, combined start/end), emitting one WordTiming per
+  transcript word with .word = the TRANSCRIPT word. Then client alignment is 1:1 by construction -> proven
+  cut path orders every turn. Numbers ("2026" vs "twenty twenty six") won't reconstruct -> leave raw ->
+  client safely blocks that chunk (no misattribution), per the doc's "leave unmatched, deterministic"
+  philosophy (speech-to-text.instructions.md Token-to-Word Alignment). NO client change; driver/A now
+  unnecessary for correctness (optional polish).
+- SCOPE (governed): reconcile ONLY on the include_word_timings (call-transcript) path -- do NOT touch the
+  skip_tokenize word_timings (streaming/voice "frozen user_stt contract", streaming-stt.instructions.md).
+  The word_timings<->transcript contract for the call transcript is a DOC GAP -> draft a note in
+  speech-to-text.instructions.md for OWNER review (do not commit doc unilaterally). NOTE: providers
+  (google/deepgram/openai adapters) each build word_timings; confirm word_info_to_stt is the shared chokepoint
+  vs per-adapter before placing the reconcile.
+- STATE: client branch satvik/call-features-combined clean, buildSegments = proven original (78/78 green),
+  net client code change this session = 0 (2 attempts correctly reverted). choreo on main (make a branch).
+  Client doc delta 87890? -> 87880cdd4b committed; its section 3 still needs the honest correction (pending
+  owner wording approval). PLAN: choreo branch -> TDD reconcile (real uh-huh + 2026 + clean cases) -> wire
+  into include_word_timings -> lint.sh + unit -> cold gate -> full local stack + phone E2E ($HbAqRPluNz-style
+  call orders correctly) -> choreo PR + client PR2 on owner go.
