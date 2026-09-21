@@ -383,6 +383,7 @@ List<String>? _alignedToTranscript(List<WordTiming> timings, String text) {
 List<TranscriptSegment> buildSegments(
   List<TranscribedChunk> ordered, {
   Duration pause = kUtterancePause,
+  bool trustTimings = false,
 }) {
   final segments = <TranscriptSegment>[];
 
@@ -398,10 +399,24 @@ List<TranscriptSegment> buildSegments(
     }
 
     // The transcript's own words, one per timing, or null when the two do not
-    // line up. Null means this chunk is not cut at all: the timings describe
-    // something other than the text being shown, so neither the words nor the
-    // positions taken from them can be trusted.
-    final aligned = _alignedToTranscript(timings, transcript.text);
+    // line up. Null means the punctuated text cannot be cut by these timings:
+    // they describe something other than the words being shown.
+    final fromTranscript = _alignedToTranscript(timings, transcript.text);
+
+    // A trusted source -- the post-call recording pass -- still positions its
+    // turns from the timings when the word list will not reconstruct the
+    // punctuated transcript one for one: it then shows the provider's OWN words
+    // for each utterance, at the cost of the smart-formatted spelling, so the
+    // ordering is right even where the provider's two outputs disagree. The
+    // live fallback does not pass `trustTimings`, so a re-cut word list there
+    // still costs only the finer position, never the text. Neither path trusts
+    // a malformed sequence -- an unusable timing is no better a position than
+    // none, and the whole-chunk fallback below is where both send it.
+    final aligned =
+        fromTranscript ??
+        (trustTimings && _isWellFormedSequence(timings, chunk.durationMs)
+            ? [for (final timing in timings) timing.word.trim()]
+            : null);
     if (aligned == null) {
       // Refused for its WORDS, so the text is the transcript's whole. Estimated
       // by when speech began, and bounded by the chunk it came from: refusing a
@@ -415,6 +430,12 @@ List<TranscriptSegment> buildSegments(
       );
       continue;
     }
+
+    // Whether the words being cut came FROM the punctuated transcript (the
+    // ordinary path) or from the provider's own word list (a trusted source
+    // whose transcript would not line up). The rebuild check below is a claim
+    // about the transcript's text and says nothing about a word-list cut.
+    final alignedFromTranscript = fromTranscript != null;
 
     // Decided ONCE per chunk, before anything is cut. The cut runs either way:
     // a chunk that cannot be positioned still gets whatever finer segmentation
@@ -580,7 +601,7 @@ List<TranscriptSegment> buildSegments(
         .skip(countBefore)
         .map((segment) => segment.text)
         .join(' ');
-    if (_words(rebuilt) != _words(transcript.text)) {
+    if (alignedFromTranscript && _words(rebuilt) != _words(transcript.text)) {
       segments.removeRange(countBefore, segments.length);
       // Back to the whole chunk, even when the timings were a flawless
       // sequence: a position taken from a cut that lost text would describe the

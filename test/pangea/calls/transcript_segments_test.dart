@@ -276,6 +276,57 @@ void main() {
       expect(segments.single.atMs, _chunkStart);
     });
 
+    test(
+      'a trusted source positions a misaligned chunk from its own timings, '
+      'not as one chunk-end blob',
+      () {
+        // The recording pass. The provider's word list is misspelt
+        // (helo/thair/frend) so it will not line up with the punctuated
+        // transcript, and the live path collapses the chunk to one approximate
+        // blob ordered at its END -- which is what dragged a speaker's opening
+        // line 25 seconds late in a real call. On a trusted source the
+        // well-formed timings still cut the chunk at its pause and place each
+        // utterance at its own moment.
+        final chunk = _chunk(
+          'hello there friend',
+          timings: [
+            ('helo', 0, 300),
+            ('thair', 400, 700),
+            // 1.3s pause: a second utterance.
+            ('frend', 2000, 2300),
+          ],
+        );
+
+        // Default (live) path is UNCHANGED: one approximate whole-chunk blob.
+        final live = buildSegments([chunk]);
+        expect(live.map((s) => s.text), ['hello there friend']);
+        expect(live.single.positionIsApproximate, isTrue);
+
+        // Trusted (recording) path: cut at the pause, each utterance exact and
+        // at its own start -- the second at 2s, not dragged to the chunk's end.
+        final trusted = buildSegments([chunk], trustTimings: true);
+        expect(trusted.map((s) => s.text), ['helo thair', 'frend']);
+        expect(trusted.every((s) => !s.positionIsApproximate), isTrue);
+        expect(trusted.first.atMs, _chunkStart);
+        expect(trusted.last.atMs, _chunkStart + 2000);
+      },
+    );
+
+    test('a trusted source still refuses a MALFORMED sequence', () {
+      // Trust buys nothing when the timings are unusable: a start after its end
+      // is not a position. The word list also would not align (helo != hello),
+      // so this is the trusted path meeting a malformed sequence -- and it still
+      // falls back to the whole chunk rather than inventing an order from noise.
+      final chunk = _chunk(
+        'hello dos',
+        timings: [('helo', 500, 100), ('dos', 600, 900)],
+      );
+
+      final trusted = buildSegments([chunk], trustTimings: true);
+      expect(trusted.map((s) => s.text), ['hello dos']);
+      expect(trusted.single.positionIsApproximate, isTrue);
+    });
+
     test('a symbol that changes a word is not stripped away', () {
       final segments = buildSegments([
         _chunk('C++ rocks', timings: [('C', 0, 100), ('rocks', 150, 300)]),
