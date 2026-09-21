@@ -2691,3 +2691,11 @@ until the design is Codex-green.
   silent-skip keeps absolute placement; contiguous coverage for valid caps.
 - recorder 55/55, analyze+format clean. P1 re-gate RUNNING (gate-p1-chunking-v2).
 - Commits: c75b6a3d19 (P1), 12ae6d827b (P1 gate fixes).
+
+### 2026-09-21 (cont) — P1 re-gate GREEN
+- gate-p1-chunking-v2: VERDICT CORRECT / GATE-SOFTENING NONE. Both prior findings fixed, no new
+  issues. P1 (any-duration chunked STT) is DONE + cold-gate GREEN. Commits c75b6a3d19 + 12ae6d827b.
+- This resolves the owner's duration concern: a call of any length (up to ~1hr = ~17 pieces) is
+  transcribed in cap-sized pieces and merged onto one recording timeline. Client path only so far.
+- REMAINING: P2 client reliability (keep-alive), P3 reader live-update, P4-P5 choreo server backstop
+  (P5 needs owner decision on Matrix event authoring), P6 E2E. Flag default OFF until E2E-proven.
