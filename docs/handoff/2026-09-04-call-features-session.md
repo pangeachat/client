@@ -2735,3 +2735,18 @@ until the design is Codex-green.
 - P2 also flagged: call_notification_test's source-scan wants a `mounted` check at
   transcript_view.dart:2837 (P3's surface) -- P3 should address. Plus 2 tests flake only under the
   full parallel batch (pass in isolation).
+
+### 2026-09-21 (cont) — my independent P2 gate caught 2 real issues the agent's self-gate missed
+- gate-p2-wiring: VERDICT CORRECT / NONE (flag-off preserves original send; flag-on preserves
+  room/content/txn/identity; first-sync latch once; audio path untouched).
+- gate-p2-outbox: VERDICT ISSUES-FOUND / NONE -- two REAL defects (validates the independent gate):
+  1. DATA-LOSS: readAll() doesn't check the record's txn_id matches its pref-KEY suffix; a
+     malformed/crafted mismatched entry -> a confirmed send removes by record.txn_id and deletes a
+     DIFFERENT account's genuine unsent half. Fix: remove strictly by the source key and/or reject
+     records whose txn_id != key suffix.
+  2. flush() has no OUTBOX-internal overlapping-flush guard (CallService._flushingTranscripts + dedup
+     protect production, so not a live bug, but the module must honor the contract).
+- Sent both back to agent ad70f4c (SendMessage, resumed) to root-cause + fix + mutation-prove + self
+  cold-gate SYNCHRONOUSLY. Will re-run my independent gate on its fix before integrating.
+- P3 (agent a8edab5) still running; base not yet verified (isolation:worktree branches off
+  origin/main -- confirm P3 rebased onto ca91df4328 like P2 did).
