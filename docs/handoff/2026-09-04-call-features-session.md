@@ -2651,3 +2651,29 @@ until the design is Codex-green.
   Phone APK rebuilding flag-off (old live path, byte-for-byte per the gates); laptop web just reloads.
   Committed code UNCHANGED -- the recording-based feature stays flag-gated-dark on the branch; flip is
   .env-only (the revertibility the feature was built for). Follow-up: server-side recording-based STT.
+
+### 2026-09-21 (cont) — OWNER GO: build recording-transcript v2 (client-robust + choreo backstop). P1 DONE.
+- OWNER confirmed the architecture: client transcribes its OWN recording via choreo (chunked for any
+  length) + posts its half; choreo ALSO transcribes the uploaded recording + posts the same half as a
+  backstop; BOTH post under the deterministic txn id so Synapse dedups -> safe. "Do both in parallel."
+  Owner insight (correct): recording-based is far better ordered than live because, like the MIX, it's
+  each device's CONTINUOUS recording on one clock -> natural word timings, no chunk-boundary artifacts,
+  no drops. Design spec: docs/handoff/recording-transcript-v2-design.md (committed).
+- P1 DONE + committed (c75b6a3d19): any-duration chunked STT.
+  - transcript_segments: extracted buildRecordingSegmentsFromTimings (core of buildRecordingSegments);
+    the wrapper delegates. Behavior-preserving.
+  - call_audio_recorder._recordingSegmentsFrom: downsample 16kHz mono, then split into <=cap pieces,
+    transcribe each, offset each piece's word timings by pieceStartMs=(offset*1000/(rate*frame)),
+    merge, buildRecordingSegmentsFromTimings. Single-piece (short call) = unchanged single-response
+    path. Silent piece skipped; no-timings piece -> [] (no partial half); any throw -> [] (non-fatal).
+    maxSttPieceBytes injectable for tests (_maxSttPieceBytes=7MB -> ~3.6min/piece at 16kHz).
+  - Tests: multi-piece merge + OFFSET placement proven via atMs [1000,2500]; silent-middle skipped;
+    no-timings abandons. recorder 54/54, segments 86/86, analyze+format clean.
+  - Cold-gate RUNNING (gate-p1-chunking).
+- REMAINING (v2 plan): P2 client reliability (keep-alive at hangup so the phone's half isn't lost to
+  backgrounding -- the observed issue 2; iOS is the hard part), P3 reader live-update + recording-
+  preferred, P4 choreo server-side transcribe, P5 server-side POST (OPEN: how choreo authors the
+  Matrix event as the speaker -- appservice/bot/module; the main design risk, needs owner input),
+  P6 E2E. Flag stays default OFF until E2E-proven.
+- NOTE: flag currently 'false' in the worktree/web .env + the installed phone build is flag-off (old
+  live path). Re-enable for E2E once P1-P3 land.
