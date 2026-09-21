@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
 
 /// The bot is drawn two ways, animated and as a still, and both have to come
@@ -95,19 +94,25 @@ void main() {
     );
   });
 
-  test('the bot keeps one colour whatever the theme', () {
-    // The whole point of the single source: a learner who recolours the app
-    // still sees the same character, and the animated and still faces beside
-    // each other cannot disagree.
-    expect(
-      PangeaColors.of(Brightness.light).botFill,
-      equals(PangeaColors.of(Brightness.dark).botFill),
-      reason: 'the bot must not change colour between themes',
+  test('a still is drawn per colour, so a themed bot matches its surface', () {
+    // The bot takes colorScheme.primary, the same role the language chip
+    // beside it uses, so it changes with the learner's theme. The still cache
+    // is therefore keyed by colour: one baked picture would put a stale bot
+    // next to a themed chip.
+    final light = ColorScheme.fromSeed(
+      brightness: Brightness.light,
+      seedColor: const Color(0xFF2196F3),
+      dynamicSchemeVariant: DynamicSchemeVariant.fidelity,
+    );
+    final purple = ColorScheme.fromSeed(
+      brightness: Brightness.light,
+      seedColor: const Color(0xFF8560E0),
+      dynamicSchemeVariant: DynamicSchemeVariant.fidelity,
     );
     expect(
-      PangeaColors.of(Brightness.light).botFill,
-      equals(PangeaColors.brandKey),
-      reason: 'the bot is the brand purple, not a tone of it',
+      light.primary,
+      isNot(equals(purple.primary)),
+      reason: 'a different seed must give the bot a different colour',
     );
   });
 }
