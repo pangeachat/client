@@ -2317,3 +2317,35 @@ until the design is Codex-green.
 - NEXT: owner approves the section-3 doc correction -> build the driver (plain buildSegments) + rec-1 wiring +
   A -> cold-gate -> build APK+web -> owner phone E2E (validates full-file alignment rate) -> C (choreo) ->
   final gate -> PR.
+
+### 2026-09-21 (cont) — approach (b) also RED; CLASS confirmed unsound; C is the real order fix
+- Owner clarified: keep provider punctuation, "do not let punctuations or anything spoil the order at any
+  cost." Re-implemented trustTimings as approach (b): distribute the PUNCTUATED transcript across the word
+  list's pause-cut utterances (text always the transcript's; positions from timings). Committed 3fd39ac9a4,
+  82/82 green, format+analyze clean. Cold-gated it (gate-distribute).
+- Gate VERDICT round 2: ISSUES-FOUND (confirmed issues A/B fixed + word-conservation holds), but a NEW real
+  defect: proportional-by-COUNT misassigns text when the two TOKENIZATIONS diverge. Ex: transcript "2026. Yes."
+  vs word list [twenty,twenty,six,yes] -> "Yes." (spoken at 10s, after a 9.3s pause) gets lumped into the
+  segment at 0s and marked EXACT -> answer-before-question reintroduced; and "agree." (250ms) placed at 10000ms.
+  Root: a single transcript token can map to many timed words (numbers, contractions), so count-proportion
+  attaches text to the wrong time.
+- CLASS CONFIRMED (2 rounds, red-to-root-cause "stop patching, go structural"): the CLIENT cannot soundly
+  sub-cut a MISALIGNED chunk -- every text<->time heuristic (word-list text; proportional split) breaks on
+  real input. The ONLY sound basis for sub-cutting is a real 1:1 alignment (Tier 3). REVERTED (b) ->
+  a5ae6530d4. buildSegments is the proven original; NO client change is correct for misaligned chunks.
+- THE FIX (reframed, C-led): order "at any cost" is delivered by making ALIGNMENT SUCCEED, not by client
+  heuristics. (1) C (choreo) is the ROOT fix + now clearly ESSENTIAL: the provider must return a word list
+  whose TOKENS correspond to the punctuated transcript (same tokenization: numbers, contractions, casing) so
+  _alignedToTranscript succeeds -> Tier 3 sub-cuts perfectly -> order exact. (2) DRIVER (full-file, one clean
+  pass) feeds alignment a far better input than seam-cut live chunks (which split words mid-syllable and
+  cause the tokenization mismatches). (3) Residual truly-misaligned chunk -> original whole-chunk END block
+  (honest, rare with C); for the recording FULL-file that means the half sorts late -> which is exactly why C
+  must make alignment succeed. A shrinks the LIVE fallback chunk so its END-block is never far off.
+- DOC: section 3's committed wording ("trusts those timings to place a turn even when misaligned ... boundary
+  can fall a little off") promises sound misaligned sub-cutting, which is UNACHIEVABLE. Must be corrected to:
+  text always the transcript's; a turn is cut+positioned from timings ONLY where the word list reconstructs
+  the transcript word-for-word; the recording pass + C make that the norm; a still-misaligned chunk keeps its
+  whole text as one positioned block. Proposed to owner; not committed.
+- STATE: branch satvik/call-features-combined, tree clean; buildSegments = proven original; 78/78 green,
+  analyze 0. Net client code change this session = 0 (two attempts reverted -- correctly, no defect ships).
+  Doc delta (87980cdd4b) still committed; its section 3 needs the correction above.
