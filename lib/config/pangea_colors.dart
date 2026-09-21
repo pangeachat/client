@@ -34,7 +34,6 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
     required this.successContainer,
     required this.onSuccessContainer,
     required this.joinable,
-    required this.botFill,
     required this.onJoinable,
     required this.errorGraphic,
   });
@@ -130,14 +129,6 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
   /// brightest tone of its ramp that still carries white text at 4.5:1.
   final Color joinable;
 
-  /// The bot's body fill. The same purple in both themes and whatever seed the
-  /// learner picks, because the bot is a character rather than part of the UI:
-  /// the same face appears in places the app cannot recolour, and a bot that
-  /// changed colour with the theme read as another piece of chrome. The one
-  /// role that is its key rather than a tone of it, so a graphic on a surface
-  /// at 4.4:1 in light and far clear of the 3:1 floor on the dark surfaces.
-  final Color botFill;
-
   /// Ink on [joinable].
   final Color onJoinable;
 
@@ -179,10 +170,6 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
   /// ActivityPinState.bodyColor.
   static const Color joinableKey = Color(0xFF34A853);
 
-  /// The brand purple, the bot's body colour and the default scheme seed.
-  /// Read nowhere else; widgets take [botFill] from the theme.
-  static const Color brandKey = Color(0xFF8560E0);
-
   static PangeaColors _fromKey(Brightness brightness) {
     // The keys above are the key colours; every role below is a tone of one
     // of them.
@@ -217,7 +204,6 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
       successContainer: Color(success.get(light ? 90 : 30)),
       onSuccessContainer: Color(success.get(light ? 10 : 90)),
       joinable: Color(joinable.get(_joinableTone)),
-      botFill: brandKey,
       onJoinable: Color(joinable.get(100)),
       errorGraphic: Color(error.get(light ? 50 : 60)),
     );
@@ -247,7 +233,6 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
     Color? successContainer,
     Color? onSuccessContainer,
     Color? joinable,
-    Color? botFill,
     Color? onJoinable,
     Color? errorGraphic,
   }) => PangeaColors(
@@ -273,7 +258,6 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
     successContainer: successContainer ?? this.successContainer,
     onSuccessContainer: onSuccessContainer ?? this.onSuccessContainer,
     joinable: joinable ?? this.joinable,
-    botFill: botFill ?? this.botFill,
     onJoinable: onJoinable ?? this.onJoinable,
     errorGraphic: errorGraphic ?? this.errorGraphic,
   );
@@ -320,7 +304,6 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
         t,
       )!,
       joinable: Color.lerp(joinable, other.joinable, t)!,
-      botFill: Color.lerp(botFill, other.botFill, t)!,
       onJoinable: Color.lerp(onJoinable, other.onJoinable, t)!,
       errorGraphic: Color.lerp(errorGraphic, other.errorGraphic, t)!,
     );

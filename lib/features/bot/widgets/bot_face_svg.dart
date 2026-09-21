@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
-import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
 enum BotExpression { gold, nonGold, addled, idle, surprised }
@@ -310,12 +309,12 @@ class BotFaceState extends State<BotFace> {
     }
   }
 
-  /// The bot keeps the brand purple whatever theme the app is wearing, so it
-  /// reads [PangeaColors.botFill] rather than a scheme role that follows the
-  /// learner's seed. Both the animation and the still resolve the colour
-  /// here, so the two cannot disagree.
+  /// The bot wears the learner's chosen colour, the same `primary` the
+  /// language chip beside it uses, so the two read as one palette rather than
+  /// a themed app with a purple mascot dropped into it. Both the animation
+  /// and the still resolve the colour here, so the two cannot disagree.
   Color _colour(BuildContext context) =>
-      widget.forceColor ?? Theme.of(context).pangea.botFill;
+      widget.forceColor ?? Theme.of(context).colorScheme.primary;
 
   void _applyColour() {
     final viewModel = _viewModel;
