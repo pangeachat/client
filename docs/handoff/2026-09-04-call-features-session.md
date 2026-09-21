@@ -2285,3 +2285,35 @@ until the design is Codex-green.
   4. Consolidated cold Codex gate (buildSegments diff is small + ideal to gate; then the driver/wiring) ->
      fresh APK+web -> owner phone E2E -> final cross-model gate -> PR2 on owner go.
 - C (choreo, separate PR): always return word timestamps + punctuation; investigate web-vs-phone variance.
+
+### 2026-09-21 (cont) — cold gate RED on trustTimings -> REVERTED (f42da110a4). Fix is DRIVER+C, not buildSegments
+- Ran the cold Codex gate on 092e037449 (owner rightly flagged I'd deferred it -- standards are not relaxed
+  for budget; descope instead). VERDICT: ISSUES-FOUND, two REAL defects, both root-caused to ONE rule I broke:
+  I used the provider's WORD LIST as displayed TEXT when it disagreed with the punctuated transcript, so
+  (issue 2) an incomplete word list DROPPED transcript words ("hello world" timed as [hello] -> "hello"), and
+  (issue 5) a substituted word REPLACED what was said ("pay bob today" w/ [pay,alice,today] -> "pay alice
+  today"). My change also narrowed the rebuild-integrity gate (issue 4), disabling the very protection the
+  ORIGINAL code used. Gate confirmed the DEFAULT/live path was unchanged.
+- ROOT RULE (restored): displayed text is ALWAYS the punctuated transcript's own; timings supply POSITION
+  ONLY, and only where the word list reconstructs that text word-for-word. A misaligned chunk keeps its whole
+  text as one positioned block -- it is NOT cleanly rescuable client-side: word-list text corrupts (2/5), and
+  ordering a whole-chunk blob at its START reintroduces answer-before-question (the exact bug _add's
+  chunk-END rule prevents -- see _add doc). So NO buildSegments change is correct here.
+- ACTION: `git revert 092e037449` -> f42da110a4. buildSegments back to proven original; 78/78 green, analyze
+  0. The restored original tests already cover issue 2 ("timings covering only part of the text lose to the
+  full text", transcript_segments_test.dart:181) -- my change had bypassed it.
+- THE FIX (reframed, no delicate-code change): (1) DRIVER transcribes the clean FULL recording in one pass ->
+  the existing proven Tier-3 cut handles it WHEN the word list aligns; a full clean pass aligns far more often
+  than live chunks cut at silence mid-word. (2) C is now CENTRAL, not polish: when the provider's word list
+  disagrees with its transcript there is no clean client fix, so choreo must return word-timings that LINE UP
+  with the transcript. Driver calls buildSegments WITHOUT trustTimings (plain). If a real full-file pass still
+  misaligns, the fallback is one positioned block (honest, coarse) -- E2E on the owner's phone tells us how
+  often that happens; C removes it.
+- DOC: sections 1/2/4 of voice-video-calls.instructions.md still hold (recording source, m:ss norm, per-half
+  fallback). SECTION 3 (my committed wording "trusts those timings even when misaligned ... boundary can fall
+  a little off") now OVER-PROMISES the reverted behavior -> must be corrected to the honest original (text
+  always the transcript's; a misaligned chunk keeps whole text as one block). Proposed to owner for approval;
+  NOT yet committed.
+- NEXT: owner approves the section-3 doc correction -> build the driver (plain buildSegments) + rec-1 wiring +
+  A -> cold-gate -> build APK+web -> owner phone E2E (validates full-file alignment rate) -> C (choreo) ->
+  final gate -> PR.
