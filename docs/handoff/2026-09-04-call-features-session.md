@@ -2714,3 +2714,24 @@ until the design is Codex-green.
   combined, re-run test/pangea/calls, then E2E.
 - NOTE for next session if interrupted: agents are worktree-isolated; their commits live on their
   own worktrees until integrated. agent_ids above; outputs under tasks/<id>.output (do NOT cat).
+
+### 2026-09-21 (cont) — P2 agent converged; my independent cold-gate running; P3 still building
+- P2 (agent ad70f4c) FINAL: approach (b) DURABLE OUTBOX. New call_transcript_outbox.dart
+  (PendingCallTranscriptStore + CallTranscriptOutbox.guard/flush): persist the built
+  pangea.call_transcript event to SharedPreferences BEFORE send, remove only on confirmed send,
+  replay pending on next launch (first-sync latch) + app resume; owner-scoped; malformed prefs
+  skipped; dedup-safe via deterministic txn id + reader (sender, content-device-id). Wired flag-gated
+  (Environment.callRecordingTranscript) into call_session/call_service/matrix; flag-off byte-for-byte.
+  Commits on branch worktree-agent-ad70f4c567c19324e off ca91df4328: 96bbedf383 (feat) + 1d5509c2a4
+  (pre-existing import-order/unused-import cleanup on P1 files). Agent self-gate: 4 rounds -> GREEN
+  (R1 found cross-account leak + malformed-pref stranding + outbox-constructed-when-off, all fixed).
+  233/233 touched-surface tests, 6 mutation-proven. NOTE: isolation:worktree branched agents off
+  origin/main; P2 caught it + reset onto ca91df4328 (verified: ca91df4328 IS its ancestor). MUST
+  verify P3's base too.
+- MY INDEPENDENT COLD GATE (the owner's requirement) RUNNING, split: gate-p2-outbox (core logic,
+  265-line diff) + gate-p2-wiring (flag-gating + flush triggers, 254-line diff). Integrate onto
+  satvik/call-features-combined only after BOTH green + re-running test/pangea/calls in the combined
+  worktree.
+- P2 also flagged: call_notification_test's source-scan wants a `mounted` check at
+  transcript_view.dart:2837 (P3's surface) -- P3 should address. Plus 2 tests flake only under the
+  full parallel batch (pass in isolation).
