@@ -1793,6 +1793,7 @@ void main() {
         var called = false;
         var reqBytes = 0;
         var reqTimings = false;
+        var reqRate = 0;
         String? reqL1;
         String? reqL2;
         final r = recorder(
@@ -1800,6 +1801,7 @@ void main() {
             called = true;
             reqBytes = req.audioContent.length;
             reqTimings = req.includeWordTimings;
+            reqRate = req.config.sampleRateHertz;
             reqL1 = req.config.userL1;
             reqL2 = req.config.userL2;
             return spokenWord('hola', timed: true);
@@ -1818,11 +1820,45 @@ void main() {
         expect(called, isTrue);
         expect(reqBytes, greaterThan(0));
         expect(reqTimings, isTrue);
+        // Recorded at 16kHz already, so the STT copy is not resampled.
+        expect(reqRate, 16000);
         expect(reqL1, 'en');
         expect(reqL2, 'es');
         // The audio half still uploaded and sent -- transcription is additive.
         expect(uploads, hasLength(1));
         expect(sent, hasLength(1));
+      },
+    );
+
+    test(
+      'downsamples a 48kHz recording to 16kHz for STT (fits the request cap)',
+      () async {
+        var reqRate = 0;
+        var reqBytes = 0;
+        final r = recorder(
+          transcribe: (req) async {
+            reqRate = req.config.sampleRateHertz;
+            reqBytes = req.audioContent.length;
+            return spokenWord('hola', timed: true);
+          },
+          userL1: 'en',
+          userL2: 'es',
+        );
+        // A device that captures at 48kHz (phones do). One second of tone.
+        r.onRunStarted(1000, 48000, 1);
+        r.onFrame(_tone(48000));
+        r.onRunEnded();
+        await r.finish(wasCarrier: true, callKey: _callKey);
+
+        // The STT copy is 16kHz -- a third of the samples -- while the uploaded
+        // recording stays at the native 48kHz.
+        expect(reqRate, 16000);
+        final uploadedWav = uploads.single.bytes.length;
+        expect(reqBytes, lessThan(uploadedWav));
+        // ~1s at 16kHz mono PCM16 is ~32KB of samples; well under the native
+        // ~96KB. Assert it is roughly a third (allow WAV-header slack).
+        expect(reqBytes, lessThan(uploadedWav ~/ 2));
+        expect(r.recordingSegments.map((s) => s.text).toList(), ['hola']);
       },
     );
 

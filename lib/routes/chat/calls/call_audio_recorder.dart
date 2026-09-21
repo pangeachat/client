@@ -1124,8 +1124,12 @@ class CallAudioRecorder implements CallAudioRecordingSink {
           ? null
           : gen.runStartedAtMs - anchor.deviceMs;
 
+      // Taken once and reused: the upload wraps it into a WAV at the native
+      // rate, and the recording-based transcription below reads the SAME bytes
+      // (downsampling only its own STT copy). Draining twice is not possible.
+      final pcm = gen.takeBytes();
       final wav = pcm16ToWav(
-        gen.takeBytes(),
+        pcm,
         sampleRate: gen.sampleRate,
         channels: gen.channels,
       );
@@ -1148,9 +1152,10 @@ class CallAudioRecorder implements CallAudioRecordingSink {
           transcribe == null
           ? null
           : _recordingSegmentsFrom(
-              wav,
+              pcm,
               gen.runStartedAtMs,
               gen.sampleRate,
+              gen.channels,
               durationMs,
             );
 
@@ -1418,25 +1423,35 @@ class CallAudioRecorder implements CallAudioRecordingSink {
     }
   }
 
-  /// Transcribes this device's whole recording from the SAME [wav] bytes the
+  /// Transcribes this device's whole recording from the SAME [pcm] samples the
   /// mix is built from, producing the segments [CallRecord] prefers over the
   /// live-chunk transcript.
   ///
   /// Non-fatal by contract: a missing capability (feature off, or languages
-  /// not wired), an STT failure, or an empty result all yield an empty list,
-  /// and the caller then keeps the live-chunk transcript. It therefore never
-  /// throws and never blocks or fails the audio half.
+  /// not wired), an STT failure, an over-length recording, or an empty result
+  /// all yield an empty list, and the caller then keeps the live-chunk
+  /// transcript. It therefore never throws and never blocks or fails the audio
+  /// half.
   ///
-  /// Uses the provider's word list directly, exactly as the live chunk path
-  /// asks for it ([includeWordTimings], LINEAR16, the speaker's own two
-  /// languages captured at t0): [buildRecordingSegments] places each utterance
-  /// by its own word timing on [startedAtMs] -- the recording's device-clock
-  /// start, the same clock the live path's `atMs` uses -- so the reader's
-  /// per-half clock correction and ordering apply unchanged.
+  /// The STT copy is downsampled to [_sttSampleRate] (16 kHz mono). Speech STT
+  /// gains nothing above 16 kHz -- it is the capture design's own intended rate
+  /// and what the web half already sends -- and the choreographer caps STT
+  /// audio at 10 MB base64, which a native-rate recording (phones capture 48
+  /// kHz) blows in ~80 s, 422-ing the whole-recording request. Only this STT
+  /// copy is downsampled; the uploaded recording and the mix keep [sampleRate]
+  /// untouched. A recording still over the cap at 16 kHz (a very long call) is
+  /// left to the live half rather than sent to be rejected.
+  ///
+  /// Uses the provider's word list directly ([includeWordTimings], LINEAR16,
+  /// the speaker's own two languages captured at t0): [buildRecordingSegments]
+  /// places each utterance by its own word timing on [startedAtMs] -- the
+  /// recording's device-clock start, the same clock the live path's `atMs` uses
+  /// -- so the reader's per-half clock correction and ordering apply unchanged.
   Future<List<TranscriptSegment>> _recordingSegmentsFrom(
-    Uint8List wav,
+    Uint8List pcm,
     int startedAtMs,
     int sampleRate,
+    int channels,
     int durationMs,
   ) async {
     final transcribe = this.transcribe;
@@ -1446,13 +1461,37 @@ class CallAudioRecorder implements CallAudioRecordingSink {
     // configuration this runs against.
     if (transcribe == null || l1 == null || l2 == null) return const [];
     try {
+      // Downsample only the STT copy, and only for mono (every recording here
+      // is mono; a box-average over interleaved stereo would mix the channels).
+      var sttPcm = pcm;
+      var sttRate = sampleRate;
+      if (channels == 1 && sampleRate > _sttSampleRate) {
+        sttPcm = _downsamplePcm16Mono(pcm, sampleRate, _sttSampleRate);
+        sttRate = _sttSampleRate;
+      }
+      final sttWav = pcm16ToWav(
+        sttPcm,
+        sampleRate: sttRate,
+        channels: channels,
+      );
+      // Would 422 on the choreographer's 10 MB base64 cap even downsampled
+      // (base64 inflates ~4/3): leave it to the live half rather than spend a
+      // request to be rejected.
+      if (sttWav.length > _maxSttWavBytes) {
+        Logs().w(
+          'Call recording too long for a single STT request even at '
+          '${_sttSampleRate}Hz (${sttWav.length} bytes); the live transcript '
+          'stands',
+        );
+        return const [];
+      }
       final response = await transcribe(
         SpeechToTextRequestModel(
-          audioContent: wav,
+          audioContent: sttWav,
           includeWordTimings: true,
           config: SpeechToTextAudioConfigModel(
             encoding: AudioEncodingEnum.linear16,
-            sampleRateHertz: sampleRate,
+            sampleRateHertz: sttRate,
             userL1: l1,
             userL2: l2,
           ),
@@ -1467,5 +1506,49 @@ class CallAudioRecorder implements CallAudioRecordingSink {
       );
       return const [];
     }
+  }
+
+  /// The rate the STT copy of the recording is downsampled to. 16 kHz mono is
+  /// what speech-to-text providers accept natively (see `captureSampleRate` in
+  /// call_capture.dart) and keeps the request under the choreographer's cap.
+  static const _sttSampleRate = 16000;
+
+  /// The most a downsampled STT WAV may be before its base64 body would exceed
+  /// the choreographer's 10 MB (10485760 byte) audio_content cap. base64
+  /// inflates by 4/3, so the raw ceiling is ~7.86 MB; this leaves margin for
+  /// the WAV header and rounding. ~7.5 MB at 16 kHz mono is ~245 s of audio.
+  static const _maxSttWavBytes = 7500000;
+
+  /// Downsamples mono PCM16 [pcm] from [fromRate] to [toRate] by averaging each
+  /// output sample's span of input samples -- a box-filter decimation that
+  /// low-passes as it resamples, so it does not alias the way naive
+  /// sample-dropping would. Adequate for speech STT (not a mastering-grade
+  /// resampler); the uploaded recording and the mix never go through it.
+  /// Returns [pcm] unchanged when [fromRate] <= [toRate].
+  static Uint8List _downsamplePcm16Mono(
+    Uint8List pcm,
+    int fromRate,
+    int toRate,
+  ) {
+    if (fromRate <= toRate) return pcm;
+    final input = Int16List.view(
+      pcm.buffer,
+      pcm.offsetInBytes,
+      pcm.lengthInBytes ~/ 2,
+    );
+    final outLen = (input.length * toRate) ~/ fromRate;
+    final out = Int16List(outLen);
+    for (var j = 0; j < outLen; j++) {
+      final start = (j * fromRate) ~/ toRate;
+      var end = ((j + 1) * fromRate) ~/ toRate;
+      if (end <= start) end = start + 1;
+      if (end > input.length) end = input.length;
+      var sum = 0;
+      for (var i = start; i < end; i++) {
+        sum += input[i];
+      }
+      out[j] = (sum ~/ (end - start));
+    }
+    return Uint8List.view(out.buffer, 0, out.lengthInBytes);
   }
 }
