@@ -64,4 +64,37 @@ void main() {
       expect(profile.effectiveAutocorrect, isFalse);
     },
   );
+
+  // #9178 — a phone or tablet browser drives the same device keyboard the app
+  // does; only desktop web has none.
+  group('deviceAutocorrectAvailable', () {
+    test('every native build has it', () {
+      debugDefaultTargetPlatformOverride = TargetPlatform.macOS;
+      expect(UserToolSettings.deviceAutocorrectAvailable(isWeb: false), isTrue);
+    });
+
+    test('a phone or tablet browser has it', () {
+      for (final platform in [TargetPlatform.android, TargetPlatform.iOS]) {
+        debugDefaultTargetPlatformOverride = platform;
+        expect(
+          UserToolSettings.deviceAutocorrectAvailable(isWeb: true),
+          isTrue,
+        );
+      }
+    });
+
+    test('desktop web does not', () {
+      for (final platform in [
+        TargetPlatform.macOS,
+        TargetPlatform.windows,
+        TargetPlatform.linux,
+      ]) {
+        debugDefaultTargetPlatformOverride = platform;
+        expect(
+          UserToolSettings.deviceAutocorrectAvailable(isWeb: true),
+          isFalse,
+        );
+      }
+    });
+  });
 }
