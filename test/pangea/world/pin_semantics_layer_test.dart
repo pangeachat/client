@@ -105,13 +105,23 @@ void main() {
       await tester.pumpAndSettle();
 
       final l10n = L10n.of(tester.element(find.byType(Stack).first));
+      // Enriched label (#8753): title, language (display name, or the code
+      // when the language store is not loaded — as here), then status. The
+      // fixture has no CEFR and no live session, so those parts are absent.
       final label =
-          'Activity: Test Activity, '
+          'Activity: Test Activity, es, '
           '${ActivityPinState.available.label(l10n)}';
       final node = tester.getSemantics(
         find.bySemanticsLabel(RegExp('Test Activity')),
       );
       expect(node.label, label);
+      expect(
+        ActivityPinState.available.label(l10n),
+        isNot(contains('Create')),
+        reason:
+            'the available status must read as a status, not an action '
+            '(#8753 — "Create activity" sounded like the button creates one)',
+      );
       expect(
         node.getSemanticsData().hasAction(SemanticsAction.tap),
         isTrue,
@@ -490,6 +500,70 @@ void main() {
     );
     mapFocusNode.dispose();
     searchFocusNode.dispose();
+    semantics.dispose();
+  });
+
+  // #8753: the label carries what the expanded card shows visually — CEFR
+  // level on any pin that has one, and the live seat summary the view
+  // supplies for live-session pins.
+  testWidgets('a pin announces its level and live seat summary', (
+    tester,
+  ) async {
+    const liveCard = QuestActivityCard(
+      activityId: 'a9',
+      title: 'Mixer Night',
+      l2: 'es',
+      cefr: 'A2',
+      coordinates: [0, 0],
+      learningObjectiveRefs: [],
+    );
+    final semantics = tester.ensureSemantics();
+    final controller = MapController();
+
+    await tester.pumpWidget(
+      MaterialApp(
+        localizationsDelegates: L10n.localizationsDelegates,
+        supportedLocales: L10n.supportedLocales,
+        home: Stack(
+          children: [
+            Positioned.fill(
+              child: ExcludeSemantics(
+                child: FlutterMap(
+                  mapController: controller,
+                  options: const MapOptions(
+                    initialCenter: LatLng(0, 0),
+                    initialZoom: 3,
+                  ),
+                  children: const [],
+                ),
+              ),
+            ),
+            Positioned.fill(
+              child: PinSemanticsLayer(
+                mapController: controller,
+                cards: const [liveCard],
+                stateOf: (_) => ActivityPinState.joinable,
+                liveDetailOf: (_) => '2 of 4 players',
+                onTap: (_) {},
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    controller.move(const LatLng(0, 0), 3);
+    await tester.pumpAndSettle();
+
+    final l10n = L10n.of(tester.element(find.byType(Stack).first));
+    final node = tester.getSemantics(
+      find.bySemanticsLabel(RegExp('Mixer Night')),
+    );
+    expect(
+      node.label,
+      'Activity: Mixer Night, es, A2, 2 of 4 players, '
+      '${ActivityPinState.joinable.label(l10n)}',
+    );
     semantics.dispose();
   });
 

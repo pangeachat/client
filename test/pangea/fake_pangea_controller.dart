@@ -61,6 +61,12 @@ class _FakeUserController implements UserController {
   @override
   Future<PublicProfileModel?> getPublicProfile(String userId) async => null;
 
+  /// Languages unset — the fresh-profile default. The chat-list preview reads
+  /// this (`_LastEventPreview._showPangeaContent`), where the [noSuchMethod]
+  /// null would throw `Null is not a subtype of bool`.
+  @override
+  bool get languagesSet => false;
+
   @override
   dynamic noSuchMethod(Invocation invocation) => null;
 }

@@ -10,6 +10,7 @@ import 'package:http/testing.dart';
 
 import 'package:fluffychat/pangea/common/utils/svg_repo.dart';
 import 'package:fluffychat/pangea/common/widgets/network_svg.dart';
+import 'sentry_capture_harness.dart';
 
 /// Language flags used to render with `SvgPicture.network`, which lets
 /// vector_graphics own the fetch. On a transport failure it drops the future
@@ -116,6 +117,42 @@ void main() {
       );
 
       expect(result.asValue?.value, svg);
+    });
+  });
+
+  /// The Sentry title is the only thing a triager can act on. A status alone
+  /// names no asset (CLIENT-ECE), and a transport failure names one only when
+  /// the exception happens to be a `ClientException` carrying its uri
+  /// (CLIENT-EGM). Both branches carry the url themselves (#8733).
+  group('what SvgRepo reports', () {
+    late SentryCaptureHarness harness;
+
+    setUp(() async {
+      harness = SentryCaptureHarness();
+      await harness.init();
+    });
+
+    tearDown(() => harness.close());
+
+    test('a non-200 status names the url', () async {
+      final url = freshUrl();
+      final event = await withClient(
+        (_) async => http.Response('nope', 404),
+        () => harness.capture(() => SvgRepo.get(url)),
+      );
+
+      expect(event.throwable.toString(), contains('404'));
+      expect(event.throwable.toString(), contains(url));
+    });
+
+    test('a transport failure names the url', () async {
+      final url = freshUrl();
+      final event = await withClient(
+        (_) async => throw http.ClientException('Failed to fetch'),
+        () => harness.capture(() => SvgRepo.get(url)),
+      );
+
+      expect(event.throwable.toString(), contains(url));
     });
   });
 

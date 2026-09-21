@@ -67,8 +67,11 @@ class SvgRepo {
 
       final response = await http.get(Uri.parse(url));
       if (response.statusCode != 200) {
+        // The url is in the message, not only in `data`: it is the title and
+        // the searchable text in Sentry, and a status alone names no asset
+        // (CLIENT-ECE). Grouping is by stack, so per-url text stays one issue.
         ErrorHandler.logError(
-          e: Exception('Failed to load SVG: ${response.statusCode}'),
+          e: Exception('Failed to load SVG: ${response.statusCode} $url'),
           data: {"url": url},
           level: SentryLevel.warning,
         );
@@ -81,7 +84,9 @@ class SvgRepo {
       return Result.value(svgContent);
     } catch (e, stack) {
       ErrorHandler.logError(
-        e: Exception('Error fetching SVG: $e'),
+        // `$e` names the url only when it happens to be a ClientException;
+        // carry it explicitly so every failure type on this path does.
+        e: Exception('Error fetching SVG $url: $e'),
         data: {"url": url},
         s: stack,
         // A transport failure — offline, dropped connection, a blocked

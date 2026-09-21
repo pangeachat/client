@@ -17,6 +17,7 @@ MatrixEvent _half(
   String type = CallTranscriptContent.relType,
   int ts = 1000,
   ClockAnchor? anchor,
+  String? deviceId,
 }) => MatrixEvent(
   type: type,
   eventId: '\$ev-$sender-$ts',
@@ -27,6 +28,7 @@ MatrixEvent _half(
     'segments': [
       for (final t in texts) {'text': t},
     ],
+    'device_id': ?deviceId,
     // Spread from the writer's OWN serializer rather than hand-rolled. A
     // hand-written copy of the wire shape falls out of the declaration
     // contract the moment a field is added to it, and it does so silently:
@@ -146,7 +148,7 @@ void main() {
       );
 
       expect(_halfFor(transcript, bob).state, HalfState.absent);
-      expect(transcript.readerStoppedEarly, isFalse);
+      expect(transcript.readLimits, isEmpty);
     });
 
     test('hitting the PAGE cap reports incomplete, never absent', () async {
@@ -167,7 +169,7 @@ void main() {
       expect(p.froms, hasLength(3), reason: 'stops at the cap');
       expect(_halfFor(transcript, bob).state, HalfState.incomplete);
       expect(_halfFor(transcript, alice).state, HalfState.incomplete);
-      expect(transcript.readerStoppedEarly, isTrue);
+      expect(transcript.readLimits, {TranscriptReadLimit.readerCeiling});
     });
 
     test('hitting the EVENT cap reports incomplete, never absent', () async {
@@ -184,7 +186,7 @@ void main() {
       );
 
       expect(_halfFor(transcript, bob).state, HalfState.incomplete);
-      expect(transcript.readerStoppedEarly, isTrue);
+      expect(transcript.readLimits, {TranscriptReadLimit.readerCeiling});
     });
 
     test('a cap hit inside the LAST page is not exhaustion', () async {
@@ -208,7 +210,7 @@ void main() {
       );
 
       expect(_halfFor(transcript, bob).state, HalfState.incomplete);
-      expect(transcript.readerStoppedEarly, isTrue);
+      expect(transcript.readLimits, {TranscriptReadLimit.readerCeiling});
     });
 
     test('an event of the wrong TYPE under this relation is ignored', () async {
@@ -383,7 +385,7 @@ void main() {
         transcript.halves.map((h) => h.state),
         everyElement(HalfState.incomplete),
       );
-      expect(transcript.readerStoppedEarly, isTrue);
+      expect(transcript.readLimits, {TranscriptReadLimit.roomEncrypted});
     });
 
     test('an unencrypted room still concludes absence normally', () async {
@@ -431,6 +433,64 @@ void main() {
 
       expect(_halfFor(transcript, alice).clockAnchor, anchor);
       expect(_halfFor(transcript, bob).clockAnchor, isNull);
+    });
+  });
+
+  group('two devices of one account', () {
+    test('the device on the event reaches the half that is assembled', () async {
+      // The seam between the event and the reader. Without it the device id is
+      // parsed, dropped on the floor, and both halves key alike again -- which
+      // is the loss this whole change exists to stop, arrived at one layer
+      // further down and just as silently.
+      final p = _pages([
+        (
+          chunk: [
+            _half(alice, texts: ['hola'], ts: 100, deviceId: 'PHONE'),
+            _half(alice, texts: ['que tal'], ts: 200, deviceId: 'LAPTOP'),
+            _half(bob),
+          ],
+          next: null,
+        ),
+      ]);
+
+      final transcript = await fetchCallTranscript(
+        fetch: p.fetch,
+        roomId: _room,
+        callKey: _callKey,
+        expectedSenders: [alice, bob],
+      );
+
+      final half = _halfFor(transcript, alice);
+      expect(half.deviceCount, 2);
+      expect(
+        half.segments.map((s) => s.text),
+        // LAPTOP sorts before PHONE, and the order is the device order rather
+        // than the order the server happened to return them in.
+        ['que tal', 'hola'],
+      );
+    });
+
+    test('one device is still one half, unchanged', () async {
+      final p = _pages([
+        (
+          chunk: [
+            _half(alice, texts: ['hola'], ts: 100, deviceId: 'PHONE'),
+            _half(alice, texts: ['hola de nuevo'], ts: 200, deviceId: 'PHONE'),
+          ],
+          next: null,
+        ),
+      ]);
+
+      final transcript = await fetchCallTranscript(
+        fetch: p.fetch,
+        roomId: _room,
+        callKey: _callKey,
+        expectedSenders: [alice],
+      );
+
+      final half = _halfFor(transcript, alice);
+      expect(half.deviceCount, 1);
+      expect(half.segments.map((s) => s.text), ['hola de nuevo']);
     });
   });
 }

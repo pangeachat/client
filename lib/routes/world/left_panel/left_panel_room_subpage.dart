@@ -7,6 +7,7 @@ import 'package:fluffychat/features/navigation/room_close_location.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/room_unavailable_panel.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
@@ -14,6 +15,7 @@ import 'package:fluffychat/routes/chat/chat_details/chat_details.dart';
 import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection.dart';
 import 'package:fluffychat/routes/chat/chat_search/chat_search_page.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_room_details_subpage.dart';
+import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/share_scaffold_dialog.dart';
 
@@ -126,20 +128,30 @@ class LeftPanelRoomSubpage extends StatelessWidget {
     // panel instead of over the whole app. Its MaterialPageRoute lays down a
     // ModalBarrier, and ModalBarrier renders BlockSemantics, which drops the
     // semantics of everything painted BEFORE it — the sibling panel to the
-    // left. That drop stops propagating at a semantic boundary, and a
-    // semantics container is one, so this confines the blocking to the panel.
-    // Without it the whole chat list — rows and search field alike —
-    // disappears from the accessibility tree whenever a chat is open, and
-    // the search field, having no DOM input, cannot be typed into (#8459).
-    // The empty state above carries the same wrapper.
-    return Semantics(
-      container: true,
-      child: Navigator(
-        key: MatrixState.pAnyState
-            .layerLinkAndKey(chatPanelNavigatorId(tokenType, roomId))
-            .key,
-        onGenerateRoute: (_) => MaterialPageRoute(
-          builder: (_) => ChatPage(
+    // left. That drop stops propagating at a semantic boundary (#8459): the
+    // boundary is the named panel-group container every workspace panel gets
+    // from [WorkspaceLeftPanel] (#8729). No extra unlabeled container here —
+    // one used to confine the blocking, and a screen reader then stopped on
+    // it as a nameless group directly inside the named one, describing the
+    // whole chat by its children instead of announcing "Chat page".
+    return Navigator(
+      key: MatrixState.pAnyState
+          .layerLinkAndKey(chatPanelNavigatorId(tokenType, roomId))
+          .key,
+      onGenerateRoute: (_) => MaterialPageRoute(
+        // Every route publishes an unremovable scopesRoute semantics node —
+        // an unnamed screen-reader stop between the panel's named group and
+        // the chat. namesRoute is the framework's way to name it: on web the
+        // engine derives the route element's accessible name from this
+        // descendant. Named by the room's visible title (the page's actual
+        // heading), under the type-named "Chat page" group (#8729).
+        // explicitChildNodes keeps loose chat text (the activity instruction
+        // card) from being absorbed into this name.
+        builder: (context) => Semantics(
+          namesRoute: true,
+          explicitChildNodes: true,
+          label: room.getLocalizedDisplayname(MatrixLocals(L10n.of(context))),
+          child: ChatPage(
             roomId: roomId,
             eventId: param?.eventId,
             shareItems: shareItems,

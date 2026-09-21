@@ -320,6 +320,105 @@ void main() {
       expect(payload, f);
     });
   });
+  group('audio the capture path dropped before it arrived', () {
+    test('cuts what was buffered, so no chunk spans the gap', () {
+      // The gap has to become a BOUNDARY. Left inside a chunk, the samples
+      // either side of it are contiguous bytes with 500ms of missing time
+      // between them, and a word timing measured from the chunk's start lands
+      // half a second early for everything after the seam -- with nothing in
+      // the chunk that could say where the seam was.
+      final c = chunker();
+      c.add(frame(400));
+      final cut = c.skip(500);
+
+      expect(cut, isNotNull);
+      expect(cut!.index, 0);
+      expect(cut.duration.inMilliseconds, 400);
+      expect(cut.startedAtMs, runStart);
+
+      c.add(frame(300));
+      final after = c.flush()!;
+      expect(after.duration.inMilliseconds, 300);
+    });
+
+    test('places everything after it later by exactly the gap', () {
+      // The corruption this exists to stop. A position is derived from a
+      // running FRAME count, so frames that never arrived used to shift every
+      // later chunk earlier than it was spoken -- cumulatively, for the rest of
+      // the run, on a half that declares its positions pinned.
+      final c = chunker();
+      c.add(frame(400));
+      c.skip(500);
+      c.add(frame(300));
+
+      expect(c.flush()!.startedAtMs, runStart + 400 + 500);
+    });
+
+    test('adds up over several gaps', () {
+      // Cumulative is the whole shape of the bug: one drop moves everything
+      // after it, and the next moves everything after that again.
+      final c = chunker();
+      c.add(frame(200));
+      c.skip(100);
+      c.add(frame(200));
+      c.skip(300);
+      c.add(frame(200));
+
+      expect(c.flush()!.startedAtMs, runStart + 400 + 400);
+    });
+
+    test('moves the run end, so the next run cannot sit inside the gap', () {
+      // `endedAtMs` is the floor the NEXT run may not begin before. A gap that
+      // did not move it would let a later run be placed on top of audio this
+      // one already accounts for.
+      final c = chunker();
+      c.add(frame(200));
+      c.skip(700);
+
+      expect(c.endedAtMs, runStart + 200 + 700);
+    });
+
+    test('needs nothing buffered to move the positions after it', () {
+      // A drop can land immediately after a cut. There is nothing to cut a
+      // second time, and the gap still happened.
+      final c = chunker();
+      final cut = c.skip(250);
+      expect(cut, isNull);
+
+      c.add(frame(100));
+      expect(c.flush()!.startedAtMs, runStart + 250);
+    });
+
+    test('a gap of nothing is not a gap', () {
+      // The ordinary frame carries a zero, a hundred times a second. It must
+      // not cut a chunk, and it must not move anything.
+      final c = chunker();
+      c.add(frame(200));
+      expect(c.skip(0), isNull);
+      expect(c.skip(-5), isNull);
+      c.add(frame(100));
+
+      final only = c.flush()!;
+      expect(only.index, 0);
+      expect(only.startedAtMs, runStart);
+      expect(only.duration.inMilliseconds, 300);
+    });
+
+    test('the cut it makes keeps the numbering', () {
+      // A chunk cut by a gap is a chunk like any other: the sink keys a result
+      // by index, so a gap that reused one would have the next chunk read as a
+      // redelivery of it.
+      final c = chunker();
+      c.add(frame(100));
+      final first = c.skip(100)!;
+      c.add(frame(100));
+      final second = c.flush()!;
+
+      expect([first.index, second.index], [0, 1]);
+      expect(c.nextIndex, 2);
+    });
+  });
+
   group('a device that captures at a higher rate', () {
     test('still produces chunks the route will accept', () {
       // The ninety-second ceiling was sized for the 16 kHz this app asks for.

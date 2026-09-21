@@ -191,6 +191,16 @@ class CallTranscriptSink implements CallAudioSink {
     return work;
   }
 
+  @override
+  void discarded(PcmChunk chunk) {
+    // Recorded by INDEX, like every other set here, so a chunk that somehow
+    // arrived twice counts once. Disjoint from the rest by construction: the
+    // recorder sets a chunk aside instead of delivering it, so a discarded
+    // index never reaches [deliver] and cannot also be transcribed, failed or
+    // suppressed.
+    _discarded.add(chunk.index);
+  }
+
   /// Transcriptions still running, by chunk. Closing waits for these: the words
   /// are read the moment the call is over, and one still in flight would be
   /// missing from them.
@@ -367,13 +377,18 @@ class CallTranscriptSink implements CallAudioSink {
   /// [chunksTranscribed], it is what lets a reader see that a stretch of speech
   /// was captured and then lost, rather than never spoken.
   ///
-  /// Counts the SUPPRESSED chunks too. Both of the other counts are only
-  /// written inside `deliver()`, so a chunk this device chose not to send used
-  /// to vanish from the denominator entirely -- the one number that is supposed
-  /// to say "this much audio existed" quietly forgetting the audio nobody ever
-  /// saw.
+  /// Counts the SUPPRESSED chunks too, and the DISCARDED ones. Both of the
+  /// other counts are only written inside `deliver()`, so a chunk this device
+  /// chose not to send used to vanish from the denominator entirely -- the one
+  /// number that is supposed to say "this much audio existed" quietly
+  /// forgetting the audio nobody ever saw. A discarded chunk existed exactly as
+  /// a suppressed one did, and leaving it out would repeat that mistake for the
+  /// one decision in this feature that destroys audio outright.
   int get chunksCaptured =>
-      _transcribed.length + _failed.length + _suppressed.length;
+      _transcribed.length +
+      _failed.length +
+      _suppressed.length +
+      _discarded.length;
 
   /// How many chunks came back with something readable in them.
   int get chunksTranscribed =>
@@ -407,6 +422,24 @@ class CallTranscriptSink implements CallAudioSink {
   /// needs the number to do it with.
   int get chunksSuppressed => _suppressed.length;
   final Set<int> _suppressed = {};
+
+  /// Chunks this device captured and deliberately did not send, because
+  /// another of this account's devices was recording the same stretch.
+  ///
+  /// Deliberately NOT counted in [chunksLost], and for a different reason from
+  /// [chunksSuppressed]: a correct discard loses nothing at all, because the
+  /// words are in the sibling's half. Calling it a gap would mark a transcript
+  /// incomplete over audio that is present, one event away.
+  ///
+  /// It is published because a discard rests entirely on a claim about ANOTHER
+  /// device, and nothing in this half can check that claim. Chunk indices do
+  /// not line up across devices -- each numbers its own -- so what this affords
+  /// is not a lookup but a QUESTION worth asking: this half says a stretch was
+  /// set aside, and the sibling's half is where that speech has to be. A
+  /// discard that was wrong leaves it in neither. Without the count nobody
+  /// knows there is anything to look for.
+  int get chunksDiscarded => _discarded.length;
+  final Set<int> _discarded = {};
 
   /// The call's speaking analytics, as one batch.
   ///

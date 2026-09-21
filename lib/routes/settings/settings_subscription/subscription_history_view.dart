@@ -9,6 +9,7 @@ import 'package:fluffychat/features/subscription/repo_v2/invoice_history_respons
 import 'package:fluffychat/features/subscription/repo_v2/products_response.dart';
 import 'package:fluffychat/features/subscription/subscription_constants.dart';
 import 'package:fluffychat/features/subscription/widgets/frame_container.dart';
+import 'package:fluffychat/features/subscription/widgets/subscription_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/utils/date_formatter.dart';
@@ -77,10 +78,6 @@ class SubscriptionHistoryView extends StatelessWidget {
               alignment: Alignment.topCenter,
               child: Container(
                 padding: EdgeInsets.all(16.0),
-                decoration: BoxDecoration(
-                  color: theme.colorScheme.surface,
-                  borderRadius: BorderRadius.circular(24.0),
-                ),
                 constraints: BoxConstraints(maxWidth: 400),
                 child: Column(
                   spacing: 16.0,
@@ -116,11 +113,13 @@ class SubscriptionHistoryView extends StatelessWidget {
                                     children: [
                                       if (activeTrial != null &&
                                           trialDescription != null)
-                                        Text(
-                                          trialDescription,
-                                          style: isColumnMode
-                                              ? theme.textTheme.titleMedium
-                                              : theme.textTheme.titleSmall,
+                                        SubscriptionCard(
+                                          child: Text(
+                                            trialDescription,
+                                            style: isColumnMode
+                                                ? theme.textTheme.titleMedium
+                                                : theme.textTheme.titleSmall,
+                                          ),
                                         ),
                                       // The manage action is offered only once
                                       // a billing portal actually resolved. A
@@ -176,7 +175,11 @@ class SubscriptionHistoryView extends StatelessWidget {
                             AsyncError() => SizedBox.shrink(),
                             AsyncLoaded(value: final invoices) =>
                               invoices.isEmpty
-                                  ? Text(L10n.of(context).noPaymentHistoryFound)
+                                  ? SubscriptionCard(
+                                      child: Text(
+                                        L10n.of(context).noPaymentHistoryFound,
+                                      ),
+                                    )
                                   : _InvoiceHistoryList(invoices),
                           },
                     ),

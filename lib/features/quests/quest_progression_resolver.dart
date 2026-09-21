@@ -106,6 +106,31 @@ class QuestProgress {
     required this.rollup,
   });
 
+  /// This quest's own next-Mission contribution for an activity carrying
+  /// [refs]: 1.0 at the anchor Mission, decaying linearly to 0 over
+  /// [kBandFalloffMissions] Missions further along, 0 for a Mission that is
+  /// already satisfied or sits before the anchor. Unclamped — the caller caps
+  /// it at [kBandCeiling], which is where the cross-quest sum saturates.
+  double missionGradient(Set<String> refs) {
+    final anchor = anchorMissionId;
+    if (anchor == null) return 0;
+    final anchorIdx = indexByMission[anchor];
+    if (anchorIdx == null) return 0;
+    var contribution = 0.0;
+    for (final ref in refs) {
+      final idx = indexByMission[ref];
+      if (idx == null) continue; // ref not part of this quest
+      // Satisfied -> ~0, judged against THIS quest's own rollup: a Mission
+      // finished in one course must not silence it in another.
+      if (rollup[ref]?.satisfied ?? false) continue;
+      final distance = idx - anchorIdx;
+      if (distance < 0) continue; // a Mission before the anchor
+      final refContribution = 1.0 - distance / kBandFalloffMissions;
+      if (refContribution > 0) contribution += refContribution;
+    }
+    return contribution;
+  }
+
   /// This quest's star summary: each scored Mission's stars capped at its
   /// threshold, over the summed thresholds.
   ///
@@ -183,22 +208,7 @@ class ProgressionResolution {
     // order (rebuild completion order) is not.
     final bestByQuest = <String, double>{};
     for (final quest in quests) {
-      final anchor = quest.anchorMissionId;
-      if (anchor == null) continue;
-      final anchorIdx = quest.indexByMission[anchor];
-      if (anchorIdx == null) continue;
-      var contribution = 0.0;
-      for (final ref in refs) {
-        final idx = quest.indexByMission[ref];
-        if (idx == null) continue; // ref not part of this quest
-        // Satisfied → ~0, judged against THIS quest's own rollup: a Mission
-        // finished in one course must not silence it in another.
-        if (quest.rollup[ref]?.satisfied ?? false) continue;
-        final distance = idx - anchorIdx;
-        if (distance < 0) continue; // a Mission before the anchor
-        final refContribution = 1.0 - distance / kBandFalloffMissions;
-        if (refContribution > 0) contribution += refContribution;
-      }
+      final contribution = quest.missionGradient(refs);
       final best = bestByQuest[quest.questId];
       if (best == null || contribution > best) {
         bestByQuest[quest.questId] = contribution;

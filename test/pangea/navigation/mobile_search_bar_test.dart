@@ -15,7 +15,9 @@ import 'package:fluffychat/routes/world/world_map_level_fallback_notice.dart';
 /// the verdict-driven empty-view card with its remedy levers. The verdict
 /// DIAGNOSIS lives on the controller; here the bar just renders what it is
 /// told. The scope routing (map / chats / courses) is the shell's job and is
-/// covered there.
+/// covered there — including the one scope this bar no longer has a state
+/// for: under a course context the slot carries the course context bar
+/// instead, which retired the bar's compact minimize (#8736).
 void main() {
   Future<void> pumpBar(
     WidgetTester tester, {
@@ -28,8 +30,6 @@ void main() {
     VoidCallback? onWidenSearch,
     VoidCallback? onZoomOut,
     Listenable? viewRevision,
-    bool minimized = false,
-    VoidCallback? onRestore,
     WorldMapFilter Function()? filter,
   }) async {
     await tester.pumpWidget(
@@ -43,8 +43,6 @@ void main() {
               hintText: hintText,
               query: query,
               onQueryChanged: onQueryChanged ?? (_) {},
-              minimized: minimized,
-              onRestore: onRestore,
               filtersChild: filtersChild,
               emptyVerdict: emptyVerdict,
               canZoomOut: canZoomOut,
@@ -262,35 +260,6 @@ void main() {
     );
     expect(find.textContaining('in this area'), findsOneWidget);
     expect(find.text('Zoom out'), findsOneWidget);
-  });
-
-  testWidgets('minimized: one icon button, no field, filters or card', (
-    tester,
-  ) async {
-    // The course-scoped resting state (#7716, routing.instructions.md →
-    // Single-column search bar): the scoped map's own chrome owns the band, so
-    // search waits behind one tap — and everything that rides the expanded bar
-    // waits with it.
-    await pumpBar(
-      tester,
-      minimized: true,
-      filtersChild: const Text('FILTER CHIPS', key: Key('chips')),
-      emptyVerdict: () => MapEmptyVerdict.matchesOffscreen,
-      canZoomOut: () => true,
-    );
-    expect(find.byIcon(Icons.search), findsOneWidget);
-    expect(find.byType(TextField), findsNothing);
-    expect(find.byKey(const Key('chips')), findsNothing);
-    expect(find.byType(WorldMapEmptyViewCard), findsNothing);
-  });
-
-  testWidgets('minimized: tapping the icon asks the shell to restore', (
-    tester,
-  ) async {
-    var restored = false;
-    await pumpBar(tester, minimized: true, onRestore: () => restored = true);
-    await tester.tap(find.byIcon(Icons.search));
-    expect(restored, isTrue);
   });
 
   testWidgets('a viewRevision tick re-reads the live verdict', (tester) async {

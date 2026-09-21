@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart';
 
+import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
+
 /// What one of this account's devices has said about whether it is recording.
 ///
 /// THREE states, and the third one is the whole point. A device can be SILENT,
@@ -391,14 +393,31 @@ class CaptureElection {
   /// before its first frame arrives.
   ///
   /// AND THE JOIN STAMPS HAVE TO ORDER THE TWO DEVICES AT THE RESOLUTION THEY
-  /// ACTUALLY CARRY. `Participant.joinedAt` is derived from a whole-SECOND
-  /// field, so a stamp of 12:00:00 means "somewhere in the second beginning at
-  /// 12:00:00" and two equal stamps order NOTHING. The rule this replaced read
-  /// equality as "the successor was here first", so a device that joined at
-  /// 12:00:00.001 and recorded until a sibling joined at 12:00:00.900 threw
-  /// away nine hundred milliseconds the sibling was not in the room for. Only a
-  /// stamp a full resolution step earlier proves the successor was already
-  /// there, and a stretch cannot begin before the device recording it joined.
+  /// ACTUALLY CARRY. A stamp of 12:00:00 read off a whole-SECOND field means
+  /// "somewhere in the second beginning at 12:00:00", and two equal stamps
+  /// order NOTHING. The rule this replaced read equality as "the successor was
+  /// here first", so a device that joined at 12:00:00.001 and recorded until a
+  /// sibling joined at 12:00:00.900 threw away nine hundred milliseconds the
+  /// sibling was not in the room for. Only a stamp a full resolution step
+  /// earlier proves the successor was already there, and a stretch cannot begin
+  /// before the device recording it joined.
+  ///
+  /// WHICH RESOLUTION IS A QUESTION ABOUT THE PAIR IN HAND. `Participant.
+  /// joinedAt` is derived from a whole-second field, but the SFU also sends the
+  /// same instant to the millisecond, and this device now holds that reading
+  /// for every participant the SFU named — so [mySfuStamps] and
+  /// [successorSfuStamps] travel beside the coarse readings and
+  /// [_joinOrdering] decides, from the two stamps themselves, which pair is
+  /// being compared and therefore which of [joinStampResolution] and
+  /// [millisecondJoinStampResolution] applies. A pair where either half lacks
+  /// a millisecond reading is compared at the second, whatever the other half
+  /// carries.
+  ///
+  /// FACTS, NOT A CONCLUSION, in the same sense as every other argument here.
+  /// The stamps arrive exactly as the SFU stated them, zeros and all; whether
+  /// a zero means "the server said nothing" is decided in [_millisecondJoin]
+  /// rather than at the call site, because a caller that judged them first
+  /// would be a second place able to authorise a discard.
   ///
   /// WHAT THIS COSTS, because it is a real narrowing. A discard now needs this
   /// device to have WATCHED the successor recording, from its own first frame
@@ -442,16 +461,102 @@ class CaptureElection {
     required CaptureWatch watch,
     DateTime? myJoinedAt,
     DateTime? successorJoinedAt,
+    ({int secondsMs, int ms})? mySfuStamps,
+    ({int secondsMs, int ms})? successorSfuStamps,
   }) {
     if (successorReport.deviceId != successor.deviceId) return false;
     final run = successorReport.run;
     if (run == null) return false;
     if (!watch.heldThroughout(successor.deviceId, run)) return false;
-    if (myJoinedAt == null || successorJoinedAt == null) return false;
-    return !successorJoinedAt.add(joinStampResolution).isAfter(myJoinedAt);
+    final ordering = _joinOrdering(
+      myJoinedAt: myJoinedAt,
+      successorJoinedAt: successorJoinedAt,
+      mySfuStamps: mySfuStamps,
+      successorSfuStamps: successorSfuStamps,
+    );
+    if (ordering == null) return false;
+    return !ordering.successor.add(ordering.resolution).isAfter(ordering.mine);
   }
 
-  /// The resolution the join stamps this compares are actually measured at.
+  /// The two joins to order, and the resolution they are ordered at — or null
+  /// when this pair orders nothing.
+  ///
+  /// ONE PLACE PICKS BOTH HALVES, and that is the whole reason this is a
+  /// function rather than four arguments resolved at the comparison. A
+  /// millisecond stamp for one device against `Participant.joinedAt` for the
+  /// other is not a finer comparison, it is a comparison of two different
+  /// MEASUREMENTS: the coarse half names a one-second window and the fine half
+  /// names an instant inside one, so a mixed pair can read as ordered when the
+  /// two joins fell in the same second. Returning both halves together makes
+  /// that mixture unrepresentable rather than merely discouraged.
+  ///
+  /// THE FINE PAIR OR NEITHER. Both stamps come from `CallMedia`'s store, which
+  /// holds what the SFU said about each identity exactly as it said it; the
+  /// coarse pair comes from the roster's reading of the participant. A pair is
+  /// taken whole from one of those two, never assembled across them, so the
+  /// KNOWN LIMIT on `CallMedia.recordJoinStamps` — that its statements and the
+  /// roster's can describe different frames when an update arrives out of order
+  /// — never becomes a term in this comparison.
+  ///
+  /// The fallback is not a degraded version of the fine answer, it is the
+  /// answer this rule gave before a sibling's millisecond stamp was readable at
+  /// all. A mixed-version call — livekit-server has only sent `joined_at_ms`
+  /// since v1.8.4 — falls here, and so does one where the SFU named a device
+  /// the store never heard of. That is a REFUSAL to narrow, and refusing costs
+  /// a duplicate.
+  static ({DateTime mine, DateTime successor, Duration resolution})?
+  _joinOrdering({
+    required DateTime? myJoinedAt,
+    required DateTime? successorJoinedAt,
+    required ({int secondsMs, int ms})? mySfuStamps,
+    required ({int secondsMs, int ms})? successorSfuStamps,
+  }) {
+    final mineMs = _millisecondJoin(mySfuStamps);
+    final successorMs = _millisecondJoin(successorSfuStamps);
+    if (mineMs != null && successorMs != null) {
+      return (
+        mine: DateTime.fromMillisecondsSinceEpoch(mineMs),
+        successor: DateTime.fromMillisecondsSinceEpoch(successorMs),
+        resolution: millisecondJoinStampResolution,
+      );
+    }
+    if (myJoinedAt == null || successorJoinedAt == null) return null;
+    return (
+      mine: myJoinedAt,
+      successor: successorJoinedAt,
+      resolution: joinStampResolution,
+    );
+  }
+
+  /// One device's join to the millisecond, or null when what the SFU said about
+  /// it does not carry one.
+  ///
+  /// [ClockAnchor.millisecondRefinement] is the whole of the wire rule and is
+  /// deliberately not restated here: the transcript's clock anchor asks the
+  /// same question of the same two proto fields, and a second copy of the
+  /// window would be a second thing to get wrong. Absence is INSIDE that rule
+  /// rather than beside it — proto3 puts nothing on the wire for an unset field
+  /// 17, so a server that never set it and one that set it to zero arrive
+  /// identically, and zero fails the window whenever the coarse half is a real
+  /// time. There is no "was the field present" flag to consult and none to
+  /// invent.
+  ///
+  /// The ceiling is the one term added here, and it is added for the reason
+  /// `CallRoster.usableJoinTime` gives for applying it to the coarse reading: a
+  /// number this app would not believe about a clock is not a number the
+  /// election may displace a recording over. Without it a stamp naming the year
+  /// 5000 would be refused as a join time by the roster and accepted as one
+  /// here, and the fine path would destroy audio on a reading the coarse path
+  /// threw away.
+  static int? _millisecondJoin(({int secondsMs, int ms})? stamps) {
+    if (stamps == null) return null;
+    final ms = ClockAnchor.millisecondRefinement(stamps.secondsMs, stamps.ms);
+    if (ms == null || ms >= ClockAnchor.clockCeilingMs) return null;
+    return ms;
+  }
+
+  /// The resolution a pair of join stamps is compared at when only the COARSE
+  /// reading is available for them — which is the fallback, not the only value.
   ///
   /// livekit_client builds `Participant.joinedAt` by multiplying a whole-second
   /// protocol field by a thousand, so the milliseconds it appears to carry are
@@ -460,9 +565,31 @@ class CaptureElection {
   /// mechanism: it is what makes "the successor was already here" a fact rather
   /// than a coin toss.
   ///
-  /// Shrinking this is SAFE in the direction that matters and only ever gets
-  /// more discards right, but it must not be shrunk below what the source
-  /// actually measures. Too large refuses a discard that was sound; too small
-  /// destroys audio on an ordering nobody established.
+  /// Neither value may be shrunk below what its own source measures. Too large
+  /// refuses a discard that was sound; too small destroys audio on an ordering
+  /// nobody established.
   static const joinStampResolution = Duration(seconds: 1);
+
+  /// The resolution a pair is compared at when BOTH stamps are
+  /// millisecond-real, which is the finest either source measures.
+  ///
+  /// A QUESTION ABOUT THE PAIR, never about the call or the deployment, and
+  /// that is the part worth being exact about. The SFU sends the join twice —
+  /// `joined_at` in whole seconds, and `joined_at_ms` since livekit-server
+  /// v1.8.4 — so whether a device's join is known to the millisecond is a fact
+  /// about the frame that named THAT device. Two devices in one call can be
+  /// named by servers of different versions, and a mixed pair falls back to
+  /// [joinStampResolution] rather than assuming the half it cannot see.
+  ///
+  /// At this resolution the comparison reduces to a strict inequality: a
+  /// successor stamped in the same millisecond as us orders nothing and keeps
+  /// our tail, exactly as one stamped in the same second did before.
+  ///
+  /// It only ever gets more discards right, and the reason is arithmetic rather
+  /// than optimism. A pair the coarse rule discarded on has the successor's
+  /// whole second ending before ours begins, so its millisecond reading is
+  /// strictly earlier too and this rule discards on it as well. Narrowing
+  /// therefore adds discards and removes none — and every one it adds is a pair
+  /// whose order the SFU's own clock states outright.
+  static const millisecondJoinStampResolution = Duration(milliseconds: 1);
 }

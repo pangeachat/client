@@ -36,32 +36,29 @@ class CoursesHubPanel extends StatelessWidget {
     final client = Matrix.of(context).client;
     final l10n = L10n.of(context);
 
-    return Semantics(
-      label: L10n.of(context).pageLabel(L10n.of(context).courses),
-      container: true,
-      child: StreamBuilder(
-        stream: client.onSync.stream
-            .where((s) => s.hasRoomUpdate)
-            .rateLimit(const Duration(seconds: 1)),
-        builder: (context, _) {
-          final groups = client.coursesByRole(l10n);
-          return Column(
-            children: [
-              PanelHeader(
-                leading: closeButton,
-                title: l10n.courses,
-                // With courses present, the three add-course actions ride the
-                // header as right-justified icons; when empty they stay as full
-                // buttons in the body below (the empty state).
-                trailing: groups.courseCount == 0
-                    ? null
-                    : const AddCourseHeaderActions(),
-              ),
-              Expanded(child: LeftPanelCoursesListView(groups: groups)),
-            ],
-          );
-        },
-      ),
+    // The panel's one named group comes from the dispatcher (#8729).
+    return StreamBuilder(
+      stream: client.onSync.stream
+          .where((s) => s.hasRoomUpdate)
+          .rateLimit(const Duration(seconds: 1)),
+      builder: (context, _) {
+        final groups = client.coursesByRole(l10n);
+        return Column(
+          children: [
+            PanelHeader(
+              leading: closeButton,
+              title: l10n.courses,
+              // With courses present, the three add-course actions ride the
+              // header as right-justified icons; when empty they stay as full
+              // buttons in the body below (the empty state).
+              trailing: groups.courseCount == 0
+                  ? null
+                  : const AddCourseHeaderActions(),
+            ),
+            Expanded(child: LeftPanelCoursesListView(groups: groups)),
+          ],
+        );
+      },
     );
   }
 }

@@ -69,6 +69,66 @@ const accounts = {
   },
 };
 
+// TWO DEVICES of the learner account, for `transcript_two_devices.js`.
+//
+// Every entry above is one account with ONE Chrome profile, so the same user
+// could never open twice -- and two devices of one account in one call is
+// exactly the case a transcript half used to be destroyed by: keyed by the
+// account alone, the two halves were indistinguishable and the reader kept one
+// of them.
+//
+// A Chrome profile is a whole storage partition, so a second one signs in again
+// and Synapse mints a SECOND Matrix device for the same credentials. That is
+// all a device is here. The port is already a parameter of `openParticipant`,
+// so nothing else about the harness has to change.
+//
+// BOTH are new profiles rather than one new one beside `learner`. The scenario
+// needs two long fixtures nothing else uses -- see below -- and reusing the
+// `learner` profile would either change what every other scenario's microphone
+// plays or have two entries fighting over one profile lock.
+//
+// A VOICE EACH, and that is not a convenience. Two devices playing the same
+// audio write two halves nobody can tell apart, which is the exact shape of a
+// merge that quietly kept one of them: the check that matters would pass
+// hardest at the moment the feature was most broken.
+//
+// LONG, and that is not one either. `CaptureElection` lets only ONE of an
+// account's devices record at a time, so the only way to get speech into BOTH
+// halves is for the recorder to leave mid-call and the other device to take
+// over -- and a fixture Chrome has already played to the end (it is told
+// `%noloop`) hands the successor silence. Around two minutes, with the same
+// eight sentences three times over, so any stretch of the call carries words
+// whichever device is holding it.
+accounts.learnerFirstDevice = {
+  user: accounts.learner.user,
+  pass: accounts.learner.pass,
+  profile: profileDir('learner-first'),
+  wav: env('CALL_LEARNER_ONE_WAV', path.join(workDir, 'learner_one.wav')),
+};
+
+// A SECOND DEVICE of the learner account.
+//
+// Every entry above is one account with ONE Chrome profile, so the same user
+// could never open twice -- and two devices of one account in one call is
+// exactly the case a transcript half used to lose: keyed by the account alone,
+// the two halves were indistinguishable and the reader kept one of them.
+//
+// A Chrome profile is a whole storage partition, so a second one signs in
+// again and Synapse mints a SECOND Matrix device for the same credentials.
+// That is all a second device is here. The port is already a parameter of
+// `openParticipant`, so nothing else about the harness has to change.
+//
+// ITS OWN WAV, and that is not a convenience. Two devices playing the same
+// audio write two halves nobody can tell apart -- which is the exact shape of
+// a merge that quietly kept one of them, so the check that matters would pass
+// hardest when the feature was most broken.
+accounts.learnerSecondDevice = {
+  user: accounts.learner.user,
+  pass: accounts.learner.pass,
+  profile: profileDir('learner-second'),
+  wav: env('CALL_LEARNER_TWO_WAV', path.join(workDir, 'learner_two.wav')),
+};
+
 // The browser the harness drives. puppeteer-core ships no browser of its own,
 // so this has to be a real install; CHROME points at a different one.
 const chrome = env(

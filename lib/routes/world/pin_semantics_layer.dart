@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 
 import 'package:flutter_map/flutter_map.dart';
 
+import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
@@ -58,12 +59,19 @@ class PinSemanticsLayer extends StatefulWidget {
   final ActivityPinState Function(String activityId) stateOf;
   final void Function(QuestActivityCard card) onTap;
 
+  /// The live-session seat summary for a pin ("2 of 4 players"), or null for
+  /// a pin with no live session. Supplied by the view from the same
+  /// participant derivation the drawn cards use, so the announced and drawn
+  /// counts can never drift (#8753).
+  final String? Function(QuestActivityCard card)? liveDetailOf;
+
   const PinSemanticsLayer({
     super.key,
     required this.mapController,
     required this.cards,
     required this.stateOf,
     required this.onTap,
+    this.liveDetailOf,
   });
 
   @override
@@ -176,9 +184,17 @@ class PinSemanticsLayerState extends State<PinSemanticsLayer> {
     }
   }
 
-  String _labelOf(L10n l10n, QuestActivityCard card) =>
-      "${l10n.activityLabel(card.title)}, "
-      "${widget.stateOf(card.activityId).label(l10n)}";
+  /// The announced pin: title, language and level (what the expanded card
+  /// shows visually — announced on every pin since a card's content has no
+  /// semantics of its own, #8753/#8646), the live seat count where one
+  /// exists, then the status.
+  String _labelOf(L10n l10n, QuestActivityCard card) => [
+    l10n.activityLabel(card.title),
+    PLanguageStore.byLangCode(card.l2)?.displayName ?? card.l2,
+    ?card.cefr,
+    ?widget.liveDetailOf?.call(card),
+    widget.stateOf(card.activityId).label(l10n),
+  ].join(', ');
 
   @override
   Widget build(BuildContext context) {

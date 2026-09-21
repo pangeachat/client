@@ -9,6 +9,7 @@ import 'package:get_storage/get_storage.dart';
 
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 import 'package:fluffychat/routes/world/world_user_cluster.dart';
 
 /// Covers #7219's cluster half: the Settings avatar and the language flag were
@@ -36,8 +37,19 @@ void main() {
     dotenv.testLoad(mergeWith: {'BOT_NAME': '@bot:example.com'});
   });
 
+  // Rings render only in traditional (keyboard) highlight mode (#8724); pin
+  // it — the test binding's platform defaults to touch.
+  setUp(() {
+    FocusManager.instance.highlightStrategy =
+        FocusHighlightStrategy.alwaysTraditional;
+  });
+  tearDownAll(() {
+    FocusManager.instance.highlightStrategy = FocusHighlightStrategy.automatic;
+  });
+
   /// Whether [root]'s subtree currently paints the gold focus ring (the
-  /// 3px-side ShapeDecoration the [FocusRingTapTarget] draws while focused).
+  /// [FocusRingTapTarget.ringWidth]-side ShapeDecoration the
+  /// [FocusRingTapTarget] draws while focused).
   bool showsFocusRing(WidgetTester tester, Finder root) {
     return tester
         .widgetList<DecoratedBox>(
@@ -47,7 +59,8 @@ void main() {
           final decoration = box.decoration;
           return decoration is ShapeDecoration &&
               decoration.shape is OutlinedBorder &&
-              (decoration.shape as OutlinedBorder).side.width == 3.0;
+              (decoration.shape as OutlinedBorder).side.width ==
+                  FocusRingTapTarget.ringWidth;
         });
   }
 

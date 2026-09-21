@@ -41,48 +41,44 @@ class _LeftPanelChatListSubpageState extends State<LeftPanelChatListSubpage> {
     // sibling on narrow). Trailing: the expanding search toggle and the
     // new-chat action (the old floating Direct Message FAB, moved here so it
     // no longer covers list rows). See routing.instructions.md.
-    return Semantics(
-      label: l10n.pageLabel(l10n.chats),
-      container: true,
-      child: Column(
-        children: [
-          PanelHeader(
-            leading: widget.closeButton,
-            title: l10n.chats,
-            trailing: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ValueListenableBuilder<bool>(
-                  valueListenable: _searchVisible,
-                  builder: (context, searching, _) => IconButton(
-                    tooltip: l10n.search,
-                    isSelected: searching,
-                    icon: const Icon(Icons.search_outlined),
-                    onPressed: () => _searchVisible.value = !searching,
+    return Column(
+      children: [
+        PanelHeader(
+          leading: widget.closeButton,
+          title: l10n.chats,
+          trailing: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ValueListenableBuilder<bool>(
+                valueListenable: _searchVisible,
+                builder: (context, searching, _) => IconButton(
+                  tooltip: l10n.search,
+                  isSelected: searching,
+                  icon: const Icon(Icons.search_outlined),
+                  onPressed: () => _searchVisible.value = !searching,
+                ),
+              ),
+              IconButton(
+                tooltip: l10n.directMessage,
+                icon: const Icon(Icons.add_comment_outlined),
+                onPressed: () => context.go(
+                  WorkspaceNav.openLeft(
+                    GoRouterState.of(context).uri,
+                    NewPrivateChatPanelToken(),
                   ),
                 ),
-                IconButton(
-                  tooltip: l10n.directMessage,
-                  icon: const Icon(Icons.add_comment_outlined),
-                  onPressed: () => context.go(
-                    WorkspaceNav.openLeft(
-                      GoRouterState.of(context).uri,
-                      NewPrivateChatPanelToken(),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
-          Expanded(
-            child: ChatList(
-              activeChat: activeRoomIdFor(GoRouterState.of(context)),
-              activeSpace: null,
-              searchFieldVisibility: _searchVisible,
-            ),
+        ),
+        Expanded(
+          child: ChatList(
+            activeChat: activeRoomIdFor(GoRouterState.of(context)),
+            activeSpace: null,
+            searchFieldVisibility: _searchVisible,
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
