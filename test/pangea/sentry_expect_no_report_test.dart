@@ -62,15 +62,28 @@ void main() {
     },
   );
 
-  test('the enricher is stripped, so no I/O can reorder the pipeline', () {
+  test('only known synchronous event processors are installed', () {
     // The barrier argument depends on this. If a future SDK renames the
     // processor or adds another async one, this fails here rather than flaking
     // on Linux CI, where nobody is watching a run that is already green.
-    final names = sentry.activeEventProcessors;
+    // An allowlist, not a filter for 'Enricher'. Filtering on the same name the
+    // removal code uses can only ever agree with it: a renamed enricher, or any
+    // NEW async processor, would pass a name check and still break the ordering
+    // the sentinel depends on. Anything unrecognised has to be looked at and
+    // either confirmed synchronous or stripped in the harness.
+    const knownSynchronous = {
+      'IoExceptionEventProcessor',
+      'DeduplicationEventProcessor',
+      'ExceptionGroupEventProcessor',
+    };
     expect(
-      names.where((n) => n.contains('Enricher')),
+      sentry.activeEventProcessors.toSet().difference(knownSynchronous),
       isEmpty,
-      reason: 'an async enricher would break expectNoReport ordering: $names',
+      reason:
+          'an unrecognised event processor is installed. expectNoReport treats '
+          'the sentinel as a barrier, which only holds while every processor '
+          'ahead of beforeSend is synchronous. Confirm this one does no I/O and '
+          'add it here, or strip it in SentryCaptureHarness.init().',
     );
   });
 
