@@ -23,6 +23,8 @@ Every role on the extension is a tone of one key colour, so its contrast against
 
 The client builds its Material 3 palette with `ColorScheme.fromSeed`, and the seed is read from `AppSettings.colorSchemeSeedInt`, a setting a learner can change in Settings → Style. A synced value can therefore only set the *default* seed; it can never describe what a given user sees. Anything that must hold a fixed brand value reads the theme extension instead, because that is the only layer a user preference does not move.
 
+One surface reads the seed directly. The bot's face takes `AppSettings.colorSchemeSeedInt`, the swatch the learner tapped, because it has to be that colour exactly: the roles derived from the seed are tone-shifted per brightness, and in dark they left the bot a pale lavender against the surfaces around it. It is the only widget outside Settings that reads the seed, and it is the bot's whole body rather than a mark that has to hold a contrast floor against something. Anything whose colour has to behave against the surfaces takes a role.
+
 The seed is expanded with the `fidelity` scheme variant, which keeps the seed's chroma so primary reads as the brand purple; Flutter's default `tonalSpot` capped it at a pastel. Chosen 2026-09-11 from a side-by-side of the variants.
 
 Generated theme files are never hand-edited. See the invariant in the org doc.

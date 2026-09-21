@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
 enum BotExpression { gold, nonGold, addled, idle, surprised }
@@ -219,6 +220,15 @@ class BotFaceState extends State<BotFace> {
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // The seed change rebuilds the theme, and the Rive view model holds its
+    // colour rather than reading one, so an already-running bot needs the new
+    // colour pushed to it. The still path re-resolves on build.
+    _applyColour();
+  }
+
+  @override
   void dispose() {
     _settleTimer?.cancel();
     _controller?.dispose();
@@ -309,12 +319,18 @@ class BotFaceState extends State<BotFace> {
     }
   }
 
-  /// The bot wears the learner's chosen colour, the same `primary` the
-  /// language chip beside it uses, so the two read as one palette rather than
-  /// a themed app with a purple mascot dropped into it. Both the animation
-  /// and the still resolve the colour here, so the two cannot disagree.
+  /// The bot wears the learner's chosen colour: the seed itself, the swatch
+  /// they tapped in Settings, Change your style, rather than a scheme role
+  /// derived from it. The roles are tone-shifted per brightness, which in
+  /// dark left the bot a pale lavender that read as washed out against the
+  /// surfaces around it. Both the animation and the still resolve the colour
+  /// here, so the two cannot disagree.
+  ///
+  /// Reading the setting rather than the theme is deliberate and narrow: this
+  /// is the one surface that has to be the chosen colour exactly. Anything
+  /// needing a colour that behaves against the surfaces takes a role.
   Color _colour(BuildContext context) =>
-      widget.forceColor ?? Theme.of(context).colorScheme.primary;
+      widget.forceColor ?? Color(AppSettings.colorSchemeSeedInt.value);
 
   void _applyColour() {
     final viewModel = _viewModel;
