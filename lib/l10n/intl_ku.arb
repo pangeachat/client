@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-09-17 15:10:06.862131",
+    "@@last_modified": "2026-09-21 09:53:38.101048",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2344,5 +2344,7 @@
     "noOpenSessions": "هیچ دەستپێکێکی کراوە نییە لە ئێستادا",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 وشەی فێربوون بەکارهات} other{{count} وشەی فێربوون بەکارهاتن}}",
-    "grammarItemsUsed": "{count, plural, =1{1 بابەتی ڕێزمان بەکارهات} other{{count} بابەتی ڕێزمان بەکارهاتن}}"
+    "grammarItemsUsed": "{count, plural, =1{1 بابەتی ڕێزمان بەکارهات} other{{count} بابەتی ڕێزمان بەکارهاتن}}",
+    "playVideo": "ڤیدیۆ لێبدە",
+    "videoPlayer": "یاریزانی ڤیدیۆ"
 }

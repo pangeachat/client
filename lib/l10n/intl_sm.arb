@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-09-17 15:10:10.211259",
+    "@@last_modified": "2026-09-21 09:53:40.380789",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2344,5 +2344,7 @@
     "noOpenSessions": "Leai ni sauniga tatala i le taimi nei",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 upu faʻaaoga} other{{count} upu faʻaaoga}}",
-    "grammarItemsUsed": "{count, plural, =1{1 kalama faʻaaoga} other{{count} kalama faʻaaoga}}"
+    "grammarItemsUsed": "{count, plural, =1{1 kalama faʻaaoga} other{{count} kalama faʻaaoga}}",
+    "playVideo": "Tā le vitiō",
+    "videoPlayer": "Tagata taalo vitiō"
 }

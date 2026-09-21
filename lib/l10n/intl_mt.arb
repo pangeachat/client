@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-09-17 15:10:08.512046",
+    "@@last_modified": "2026-09-21 09:53:39.192214",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2344,5 +2344,7 @@
     "noOpenSessions": "Bħalissa m'hemmx sessjonijiet miftuħa",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 oġġett tal-vokabularju użat} other{{count} oġġetti tal-vokabularju użati}}",
-    "grammarItemsUsed": "{count, plural, =1{1 oġġett tal-grammatika użat} other{{count} oġġetti tal-grammatika użati}}"
+    "grammarItemsUsed": "{count, plural, =1{1 oġġett tal-grammatika użat} other{{count} oġġetti tal-grammatika użati}}",
+    "playVideo": "Daqq il-filmat",
+    "videoPlayer": "Plejer tal-vidjo"
 }

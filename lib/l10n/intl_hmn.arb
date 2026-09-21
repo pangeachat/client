@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-09-17 15:10:04.904614",
+    "@@last_modified": "2026-09-21 09:53:36.864761",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2344,5 +2344,7 @@
     "noOpenSessions": "Tsis muaj kev sib tham qhib tam sim no",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 lo lus siv} other{{count} lo lus siv}}",
-    "grammarItemsUsed": "{count, plural, =1{1 kab lus siv} other{{count} kab lus siv}}"
+    "grammarItemsUsed": "{count, plural, =1{1 kab lus siv} other{{count} kab lus siv}}",
+    "playVideo": "Ua yeeb yaj kiab",
+    "videoPlayer": "Tshuab ua yeeb yaj kiab"
 }

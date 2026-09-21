@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-17 15:10:11.863062",
+    "@@last_modified": "2026-09-21 09:53:41.655663",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7232,5 +7232,7 @@
     "noOpenSessions": "Hiện không có phiên nào đang mở",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{Đã dùng 1 mục từ vựng} other{Đã dùng {count} mục từ vựng}}",
-    "grammarItemsUsed": "{count, plural, =1{Đã dùng 1 mục ngữ pháp} other{Đã dùng {count} mục ngữ pháp}}"
+    "grammarItemsUsed": "{count, plural, =1{Đã dùng 1 mục ngữ pháp} other{Đã dùng {count} mục ngữ pháp}}",
+    "playVideo": "Phát video",
+    "videoPlayer": "Trình phát video"
 }

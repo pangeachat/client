@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-09-17 15:10:10.394160",
+    "@@last_modified": "2026-09-21 09:53:40.561935",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2344,5 +2344,7 @@
     "noOpenSessions": "Asnjë sesion i hapur tani",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 fjalë e re e përdorur} other{{count} fjalë të reja të përdorura}}",
-    "grammarItemsUsed": "{count, plural, =1{1 element gramatikor i përdorur} other{{count} elemente gramatikore të përdorura}}"
+    "grammarItemsUsed": "{count, plural, =1{1 element gramatikor i përdorur} other{{count} elemente gramatikore të përdorura}}",
+    "playVideo": "Luaj videon",
+    "videoPlayer": "Luajtës videoje"
 }

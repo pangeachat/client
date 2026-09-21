@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-09-17 15:10:06.443578",
+    "@@last_modified": "2026-09-21 09:53:37.950952",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10709,5 +10709,7 @@
     "noOpenSessions": "現在、開いているセッションはありません",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1語彙項目を使用} other{{count}語彙項目を使用}}",
-    "grammarItemsUsed": "{count, plural, =1{1文法項目を使用} other{{count}文法項目を使用}}"
+    "grammarItemsUsed": "{count, plural, =1{1文法項目を使用} other{{count}文法項目を使用}}",
+    "playVideo": "動画を再生",
+    "videoPlayer": "動画プレーヤー"
 }

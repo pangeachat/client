@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-09-17 15:10:06.020624",
+    "@@last_modified": "2026-09-21 09:53:37.513719",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2344,5 +2344,7 @@
     "noOpenSessions": "Enweghị nnọkọ mepere emepe ugbu a",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{eji otu okwu} other{{count} eji okwu}}",
-    "grammarItemsUsed": "{count, plural, =1{eji otu ụtọasụsụ} other{{count} eji ụtọasụsụ}}"
+    "grammarItemsUsed": "{count, plural, =1{eji otu ụtọasụsụ} other{{count} eji ụtọasụsụ}}",
+    "playVideo": "Kpọọ vidiyo",
+    "videoPlayer": "Onye na-egwu vidiyo"
 }

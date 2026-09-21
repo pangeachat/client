@@ -3535,7 +3535,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-09-17 15:10:07.493412",
+    "@@last_modified": "2026-09-21 09:53:38.415888",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -9940,5 +9940,7 @@
     "noOpenSessions": "Pašlaik nav atvērtu sesiju",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{Izmantots 1 vārdu krājuma vienums} other{Izmantoti {count} vārdu krājuma vienumi}}",
-    "grammarItemsUsed": "{count, plural, =1{Izmantots 1 gramatikas vienums} other{Izmantoti {count} gramatikas vienumi}}"
+    "grammarItemsUsed": "{count, plural, =1{Izmantots 1 gramatikas vienums} other{Izmantoti {count} gramatikas vienumi}}",
+    "playVideo": "Atskaņot video",
+    "videoPlayer": "Video atskaņotājs"
 }

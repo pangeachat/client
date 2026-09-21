@@ -3536,7 +3536,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-09-17 15:10:04.043009",
+    "@@last_modified": "2026-09-21 09:53:36.219703",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9977,5 +9977,7 @@
     "noOpenSessions": "Ei avoimia istuntoja juuri nyt",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 sanastoesine käytetty} other{{count} sanastoesinettä käytetty}}",
-    "grammarItemsUsed": "{count, plural, =1{1 kielioppiesine käytetty} other{{count} kielioppiesinettä käytetty}}"
+    "grammarItemsUsed": "{count, plural, =1{1 kielioppiesine käytetty} other{{count} kielioppiesinettä käytetty}}",
+    "playVideo": "Toista video",
+    "videoPlayer": "Videon toisto"
 }

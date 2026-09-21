@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-17 15:10:02.511137",
+    "@@last_modified": "2026-09-21 09:53:35.102205",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10568,5 +10568,7 @@
     "noOpenSessions": "এখন কোনো সেশন খোলা নেই",
     "xpAmount": "{count} এক্সপি",
     "vocabItemsUsed": "{count, plural, =1{১টি শব্দ ব্যবহার করা হয়েছে} other{{count}টি শব্দ ব্যবহার করা হয়েছে}}",
-    "grammarItemsUsed": "{count, plural, =1{১টি ব্যাকরণ আইটেম ব্যবহার করা হয়েছে} other{{count}টি ব্যাকরণ আইটেম ব্যবহার করা হয়েছে}}"
+    "grammarItemsUsed": "{count, plural, =1{১টি ব্যাকরণ আইটেম ব্যবহার করা হয়েছে} other{{count}টি ব্যাকরণ আইটেম ব্যবহার করা হয়েছে}}",
+    "playVideo": "ভিডিও চালান",
+    "videoPlayer": "ভিডিও প্লেয়ার"
 }

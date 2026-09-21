@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-09-17 15:10:05.931944",
+    "@@last_modified": "2026-09-21 09:53:37.582139",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2344,5 +2344,7 @@
     "noOpenSessions": "Engar opnar lotur í augnablikinu",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 orðaforðahlutur notaður} other{{count} orðaforðahlutir notaðir}}",
-    "grammarItemsUsed": "{count, plural, =1{1 málfræðihlutur notaður} other{{count} málfræðihlutir notaðir}}"
+    "grammarItemsUsed": "{count, plural, =1{1 málfræðihlutur notaður} other{{count} málfræðihlutir notaðir}}",
+    "playVideo": "Spila myndband",
+    "videoPlayer": "Myndbandsspilari"
 }

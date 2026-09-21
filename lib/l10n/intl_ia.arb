@@ -1362,7 +1362,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-09-17 15:10:05.711141",
+    "@@last_modified": "2026-09-21 09:53:37.272596",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10876,5 +10876,7 @@
     "noOpenSessions": "Nulle sessiones aperte nunc",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 articulo de vocabulario usate} other{{count} articulos de vocabulario usate}}",
-    "grammarItemsUsed": "{count, plural, =1{1 articulo de grammatica usate} other{{count} articulos de grammatica usate}}"
+    "grammarItemsUsed": "{count, plural, =1{1 articulo de grammatica usate} other{{count} articulos de grammatica usate}}",
+    "playVideo": "Reproducer video",
+    "videoPlayer": "Reproductor de video"
 }

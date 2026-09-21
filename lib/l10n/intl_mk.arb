@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-09-17 15:10:07.611205",
+    "@@last_modified": "2026-09-21 09:53:38.649146",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2344,5 +2344,7 @@
     "noOpenSessions": "Нема отворени сесии во моментов",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 искористен збор} other{{count} искористени зборови}}",
-    "grammarItemsUsed": "{count, plural, =1{1 искористена граматичка ставка} other{{count} искористени граматички ставки}}"
+    "grammarItemsUsed": "{count, plural, =1{1 искористена граматичка ставка} other{{count} искористени граматички ставки}}",
+    "playVideo": "Пушти видео",
+    "videoPlayer": "Видео плеер"
 }

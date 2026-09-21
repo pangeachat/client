@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-09-17 15:10:04.978064",
+    "@@last_modified": "2026-09-21 09:53:36.788580",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2344,5 +2344,7 @@
     "noOpenSessions": "હાલમાં કોઈ ખુલ્લી સત્રો નથી",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 શબ્દભંડોળ આઇટમ વપરાઈ} other{{count} શબ્દભંડોળ આઇટમ્સ વપરાઈ}}",
-    "grammarItemsUsed": "{count, plural, =1{1 વ્યાકરણ આઇટમ વપરાઈ} other{{count} વ્યાકરણ આઇટમ્સ વપરાઈ}}"
+    "grammarItemsUsed": "{count, plural, =1{1 વ્યાકરણ આઇટમ વપરાઈ} other{{count} વ્યાકરણ આઇટમ્સ વપરાઈ}}",
+    "playVideo": "વિડિઓ ચલાવો",
+    "videoPlayer": "વિડિઓ પ્લેયર"
 }

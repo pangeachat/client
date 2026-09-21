@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-09-17 15:10:09.264653",
+    "@@last_modified": "2026-09-21 09:53:39.255388",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2344,5 +2344,7 @@
     "noOpenSessions": "Ingen åpne økter akkurat nå",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 vokabular-element brukt} other{{count} vokabular-elementer brukt}}",
-    "grammarItemsUsed": "{count, plural, =1{1 grammatikk-element brukt} other{{count} grammatikk-elementer brukt}}"
+    "grammarItemsUsed": "{count, plural, =1{1 grammatikk-element brukt} other{{count} grammatikk-elementer brukt}}",
+    "playVideo": "Spill av video",
+    "videoPlayer": "Videospiller"
 }

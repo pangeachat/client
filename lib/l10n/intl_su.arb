@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-09-17 15:10:11.106618",
+    "@@last_modified": "2026-09-21 09:53:40.663034",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2344,5 +2344,7 @@
     "noOpenSessions": "Teu aya sési anu kabuka ayeuna",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 item kosakata dipaké} other{{count} item kosakata dipaké}}",
-    "grammarItemsUsed": "{count, plural, =1{1 item tata basa dipaké} other{{count} item tata basa dipaké}}"
+    "grammarItemsUsed": "{count, plural, =1{1 item tata basa dipaké} other{{count} item tata basa dipaké}}",
+    "playVideo": "Putar vidéo",
+    "videoPlayer": "Pamuter vidéo"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-09-17 15:10:05.727020",
+    "@@last_modified": "2026-09-21 09:53:37.192321",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2344,5 +2344,7 @@
     "noOpenSessions": "Pa gen okenn sesyon ouvè kounye a",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 atik vokabilè itilize} other{{count} atik vokabilè itilize}}",
-    "grammarItemsUsed": "{count, plural, =1{1 atik gramè itilize} other{{count} atik gramè itilize}}"
+    "grammarItemsUsed": "{count, plural, =1{1 atik gramè itilize} other{{count} atik gramè itilize}}",
+    "playVideo": "Gade videyo",
+    "videoPlayer": "Lektè videyo"
 }

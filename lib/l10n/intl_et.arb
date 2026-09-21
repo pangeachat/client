@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-09-17 15:10:03.984701",
+    "@@last_modified": "2026-09-21 09:53:36.140384",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9937,5 +9937,7 @@
     "noOpenSessions": "Praegu avatud seansse pole",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 sõnavaraüksus kasutatud} other{{count} sõnavaraüksust kasutatud}}",
-    "grammarItemsUsed": "{count, plural, =1{1 grammatikaüksus kasutatud} other{{count} grammatikaüksust kasutatud}}"
+    "grammarItemsUsed": "{count, plural, =1{1 grammatikaüksus kasutatud} other{{count} grammatikaüksust kasutatud}}",
+    "playVideo": "Esita video",
+    "videoPlayer": "Videopleier"
 }

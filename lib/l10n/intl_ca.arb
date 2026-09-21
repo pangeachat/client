@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-17 15:10:03.277323",
+    "@@last_modified": "2026-09-21 09:53:35.463365",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10067,5 +10067,7 @@
     "noOpenSessions": "No hi ha sessions obertes ara mateix",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 element de vocabulari utilitzat} other{{count} elements de vocabulari utilitzats}}",
-    "grammarItemsUsed": "{count, plural, =1{1 element de gramàtica utilitzat} other{{count} elements de gramàtica utilitzats}}"
+    "grammarItemsUsed": "{count, plural, =1{1 element de gramàtica utilitzat} other{{count} elements de gramàtica utilitzats}}",
+    "playVideo": "Reproduir vídeo",
+    "videoPlayer": "Reproductor de vídeo"
 }

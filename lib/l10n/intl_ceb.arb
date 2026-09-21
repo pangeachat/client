@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-09-17 15:10:03.202645",
+    "@@last_modified": "2026-09-21 09:53:36.333549",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2344,5 +2344,7 @@
     "noOpenSessions": "Walay bukas nga sesyon karon",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 ka butang sa bokabularyo ang gigamit} other{{count} ka butang sa bokabularyo ang gigamit}}",
-    "grammarItemsUsed": "{count, plural, =1{1 ka butang sa gramatika ang gigamit} other{{count} ka butang sa gramatika ang gigamit}}"
+    "grammarItemsUsed": "{count, plural, =1{1 ka butang sa gramatika ang gigamit} other{{count} ka butang sa gramatika ang gigamit}}",
+    "playVideo": "I-play ang video",
+    "videoPlayer": "Video player"
 }

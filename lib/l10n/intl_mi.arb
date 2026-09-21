@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-09-17 15:10:07.724265",
+    "@@last_modified": "2026-09-21 09:53:38.673698",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2344,5 +2344,7 @@
     "noOpenSessions": "Kāore he hui tuwhera i tēnei wā",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 tūemi kupu hou i whakamahia} other{{count} tūemi kupu hou i whakamahia}}",
-    "grammarItemsUsed": "{count, plural, =1{1 tūemi wetereo i whakamahia} other{{count} tūemi wetereo i whakamahia}}"
+    "grammarItemsUsed": "{count, plural, =1{1 tūemi wetereo i whakamahia} other{{count} tūemi wetereo i whakamahia}}",
+    "playVideo": "Whakatangihia te ataata",
+    "videoPlayer": "Pūwhakatangi ataata"
 }

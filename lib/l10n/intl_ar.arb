@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-09-17 15:10:02.492349",
+    "@@last_modified": "2026-09-21 09:53:35.125274",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10246,5 +10246,7 @@
     "noOpenSessions": "لا توجد جلسات مفتوحة الآن",
     "xpAmount": "{count} نقطة خبرة",
     "vocabItemsUsed": "{count, plural, =1{تم استخدام عنصر مفردات واحد} other{تم استخدام {count} من عناصر المفردات}}",
-    "grammarItemsUsed": "{count, plural, =1{تم استخدام عنصر قواعد واحد} other{تم استخدام {count} من عناصر القواعد}}"
+    "grammarItemsUsed": "{count, plural, =1{تم استخدام عنصر قواعد واحد} other{تم استخدام {count} من عناصر القواعد}}",
+    "playVideo": "تشغيل الفيديو",
+    "videoPlayer": "مشغل الفيديو"
 }

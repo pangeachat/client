@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-09-17 15:10:11.780216",
+    "@@last_modified": "2026-09-21 09:53:41.210702",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9940,5 +9940,7 @@
     "noOpenSessions": "Наразі немає відкритих сесій",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{використано 1 лексичний елемент} other{використано {count} лексичних елементів}}",
-    "grammarItemsUsed": "{count, plural, =1{використано 1 граматичний елемент} other{використано {count} граматичних елементів}}"
+    "grammarItemsUsed": "{count, plural, =1{використано 1 граматичний елемент} other{використано {count} граматичних елементів}}",
+    "playVideo": "Відтворити відео",
+    "videoPlayer": "Відеоплеєр"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-09-17 15:10:10.046413",
+    "@@last_modified": "2026-09-21 09:53:40.205456",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2344,5 +2344,7 @@
     "noOpenSessions": "දැනට විවෘත සැසි නොමැත",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 වචන මාලා අයිතමයක් භාවිතා කරන ලදී} other{{count} වචන මාලා අයිතම භාවිතා කරන ලදී}}",
-    "grammarItemsUsed": "{count, plural, =1{1 ව්‍යාකරණ අයිතමයක් භාවිතා කරන ලදී} other{{count} ව්‍යාකරණ අයිතම භාවිතා කරන ලදී}}"
+    "grammarItemsUsed": "{count, plural, =1{1 ව්‍යාකරණ අයිතමයක් භාවිතා කරන ලදී} other{{count} ව්‍යාකරණ අයිතම භාවිතා කරන ලදී}}",
+    "playVideo": "වීඩියෝ වාදනය කරන්න",
+    "videoPlayer": "වීඩියෝ වාදකය"
 }

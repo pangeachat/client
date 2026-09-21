@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-09-17 15:10:11.771596",
+    "@@last_modified": "2026-09-21 09:53:41.286173",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9944,5 +9944,7 @@
     "noOpenSessions": "Hozircha ochiq seanslar yo'q",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 ta lugʻat elementi ishlatildi} other{{count} ta lugʻat elementi ishlatildi}}",
-    "grammarItemsUsed": "{count, plural, =1{1 ta grammatika elementi ishlatildi} other{{count} ta grammatika elementi ishlatildi}}"
+    "grammarItemsUsed": "{count, plural, =1{1 ta grammatika elementi ishlatildi} other{{count} ta grammatika elementi ishlatildi}}",
+    "playVideo": "Videoni ijro etish",
+    "videoPlayer": "Video pleer"
 }

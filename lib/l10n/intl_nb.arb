@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-17 15:10:08.325507",
+    "@@last_modified": "2026-09-21 09:53:39.517043",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9997,5 +9997,7 @@
     "noOpenSessions": "Ingen åpne økter akkurat nå",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 vokabulargjenstand brukt} other{{count} vokabulargjenstander brukt}}",
-    "grammarItemsUsed": "{count, plural, =1{1 grammatikkgjenstand brukt} other{{count} grammatikkgjenstander brukt}}"
+    "grammarItemsUsed": "{count, plural, =1{1 grammatikkgjenstand brukt} other{{count} grammatikkgjenstander brukt}}",
+    "playVideo": "Spill av video",
+    "videoPlayer": "Videospiller"
 }

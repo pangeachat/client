@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-09-17 15:10:08.240729",
+    "@@last_modified": "2026-09-21 09:53:38.906875",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2344,5 +2344,7 @@
     "noOpenSessions": "Tiada sesi dibuka sekarang",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 item kosa kata digunakan} other{{count} item kosa kata digunakan}}",
-    "grammarItemsUsed": "{count, plural, =1{1 item tatabahasa digunakan} other{{count} item tatabahasa digunakan}}"
+    "grammarItemsUsed": "{count, plural, =1{1 item tatabahasa digunakan} other{{count} item tatabahasa digunakan}}",
+    "playVideo": "Mainkan video",
+    "videoPlayer": "Pemain video"
 }

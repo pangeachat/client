@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-09-17 15:10:05.172804",
+    "@@last_modified": "2026-09-21 09:53:36.901021",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2344,5 +2344,7 @@
     "noOpenSessions": "ʻAʻohe kau hāmama i kēia manawa",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 mea huaʻōlelo i hoʻohana ʻia} other{{count} mau mea huaʻōlelo i hoʻohana ʻia}}",
-    "grammarItemsUsed": "{count, plural, =1{1 mea paukū i hoʻohana ʻia} other{{count} mau mea paukū i hoʻohana ʻia}}"
+    "grammarItemsUsed": "{count, plural, =1{1 mea paukū i hoʻohana ʻia} other{{count} mau mea paukū i hoʻohana ʻia}}",
+    "playVideo": "Pāʻani wikiō",
+    "videoPlayer": "Mea pāʻani wikiō"
 }

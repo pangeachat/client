@@ -3093,7 +3093,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-09-17 15:10:05.939270",
+    "@@last_modified": "2026-09-21 09:53:37.507988",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10572,5 +10572,7 @@
     "noOpenSessions": "Níl seisiúin oscailte ar bith faoi láthair",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 focal-eirisch úsáidte} other{{count} focal-eirisch úsáidte}}",
-    "grammarItemsUsed": "{count, plural, =1{1 gramadach-eirisch úsáidte} other{{count} gramadach-eirisch úsáidte}}"
+    "grammarItemsUsed": "{count, plural, =1{1 gramadach-eirisch úsáidte} other{{count} gramadach-eirisch úsáidte}}",
+    "playVideo": "Seinn an físeán",
+    "videoPlayer": "Seinnteoir físeáin"
 }

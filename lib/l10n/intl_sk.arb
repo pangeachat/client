@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-09-17 15:10:09.977506",
+    "@@last_modified": "2026-09-21 09:53:40.096270",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10885,5 +10885,7 @@
     "noOpenSessions": "Momentálne žiadne otvorené relácie",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{použitá 1 slovná zásoba} other{použitých {count} slovných zásob}}",
-    "grammarItemsUsed": "{count, plural, =1{použitá 1 gramatická položka} other{použitých {count} gramatických položiek}}"
+    "grammarItemsUsed": "{count, plural, =1{použitá 1 gramatická položka} other{použitých {count} gramatických položiek}}",
+    "playVideo": "Prehrať video",
+    "videoPlayer": "Prehrávač videa"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-17 15:10:09.489095",
+    "@@last_modified": "2026-09-21 09:53:40.471629",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10672,5 +10672,7 @@
     "noOpenSessions": "Nicio sesiune deschisă în acest moment",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 element de vocabular utilizat} other{{count} elemente de vocabular utilizate}}",
-    "grammarItemsUsed": "{count, plural, =1{1 element de gramatică utilizat} other{{count} elemente de gramatică utilizate}}"
+    "grammarItemsUsed": "{count, plural, =1{1 element de gramatică utilizat} other{{count} elemente de gramatică utilizate}}",
+    "playVideo": "Redați videoclipul",
+    "videoPlayer": "Player video"
 }

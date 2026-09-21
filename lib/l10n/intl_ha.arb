@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-09-17 15:10:05.030871",
+    "@@last_modified": "2026-09-21 09:53:37.059379",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2344,5 +2344,7 @@
     "noOpenSessions": "Babu wani zama a buɗe a yanzu",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{An yi amfani da kalma 1} other{An yi amfani da kalmomi {count}}}",
-    "grammarItemsUsed": "{count, plural, =1{An yi amfani da nahawu 1} other{An yi amfani da nahawu {count}}}"
+    "grammarItemsUsed": "{count, plural, =1{An yi amfani da nahawu 1} other{An yi amfani da nahawu {count}}}",
+    "playVideo": "Kunna bidiyo",
+    "videoPlayer": "Mai kunna bidiyo"
 }

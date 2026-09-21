@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-17 15:10:05.637776",
+    "@@last_modified": "2026-09-21 09:53:37.369475",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10013,5 +10013,7 @@
     "noOpenSessions": "Tidak ada sesi terbuka saat ini",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 item kosakata digunakan} other{{count} item kosakata digunakan}}",
-    "grammarItemsUsed": "{count, plural, =1{1 item tata bahasa digunakan} other{{count} item tata bahasa digunakan}}"
+    "grammarItemsUsed": "{count, plural, =1{1 item tata bahasa digunakan} other{{count} item tata bahasa digunakan}}",
+    "playVideo": "Putar video",
+    "videoPlayer": "Pemutar video"
 }

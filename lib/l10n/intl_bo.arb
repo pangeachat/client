@@ -2919,7 +2919,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-09-17 15:10:02.973325",
+    "@@last_modified": "2026-09-21 09:53:35.439836",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9551,5 +9551,7 @@
     "noOpenSessions": "ད་ལྟ་སྦྱོང་བརྡར་གྱི་དུས་ཚོད་གང་ཡང་མི་འདུག",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{ཚིག་མཛོད་ཅིག་བེད་སྤྱོད་བྱས་སོང་།} other{ཚིག་མཛོད་ {count} བེད་སྤྱོད་བྱས་སོང་།}}",
-    "grammarItemsUsed": "{count, plural, =1{བརྡ་སྤྲོད་ཅིག་བེད་སྤྱོད་བྱས་སོང་།} other{བརྡ་སྤྲོད་ {count} བེད་སྤྱོད་བྱས་སོང་།}}"
+    "grammarItemsUsed": "{count, plural, =1{བརྡ་སྤྲོད་ཅིག་བེད་སྤྱོད་བྱས་སོང་།} other{བརྡ་སྤྲོད་ {count} བེད་སྤྱོད་བྱས་སོང་།}}",
+    "playVideo": "བརྙན་འཕྲིན་གཏོང་བ།",
+    "videoPlayer": "བརྙན་འཕྲིན་གཏོང་ཆས།"
 }

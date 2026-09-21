@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-17 15:10:06.613636",
+    "@@last_modified": "2026-09-21 09:53:37.942296",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10133,5 +10133,7 @@
     "noOpenSessions": "현재 열려 있는 세션이 없습니다.",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{단어 항목 1개 사용됨} other{{count}개 단어 항목 사용됨}}",
-    "grammarItemsUsed": "{count, plural, =1{문법 항목 1개 사용됨} other{{count}개 문법 항목 사용됨}}"
+    "grammarItemsUsed": "{count, plural, =1{문법 항목 1개 사용됨} other{{count}개 문법 항목 사용됨}}",
+    "playVideo": "동영상 재생",
+    "videoPlayer": "동영상 플레이어"
 }

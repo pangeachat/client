@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-09-17 15:10:11.361315",
+    "@@last_modified": "2026-09-21 09:53:42.290520",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2344,5 +2344,7 @@
     "noOpenSessions": "ھازىر ئوچۇق دەرس يوق",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 سۆزلۈك تۈرى ئىشلىتىلدى} other{{count} سۆزلۈك تۈرلىرى ئىشلىتىلدى}}",
-    "grammarItemsUsed": "{count, plural, =1{1 گرامماتىكا تۈرى ئىشلىتىلدى} other{{count} گرامماتىكا تۈرلىرى ئىشلىتىلدى}}"
+    "grammarItemsUsed": "{count, plural, =1{1 گرامماتىكا تۈرى ئىشلىتىلدى} other{{count} گرامماتىكا تۈرلىرى ئىشلىتىلدى}}",
+    "playVideo": "سىن قويۇش",
+    "videoPlayer": "سىن قويغۇچ"
 }
