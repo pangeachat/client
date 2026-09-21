@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
@@ -26,7 +24,7 @@ void main() {
 
   test('an unawaited dead request lands in the no-response grouping', () async {
     final event = await harness.capture(
-      () => runZonedGuarded(() {
+      () => ErrorHandler.runGuarded(() {
         // Unawaited, as `room.setTyping` is on every keystroke.
         Future<void>.error(
           ClientException(
@@ -37,7 +35,7 @@ void main() {
             ),
           ),
         );
-      }, ErrorHandler.onUncaughtError),
+      }, guard: true),
     );
     expect(event.fingerprint, ['pangea-network', 'no-response']);
     expect(event.level, SentryLevel.warning);

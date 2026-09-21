@@ -58,8 +58,14 @@ class ErrorHandler {
   ///
   /// [body] must initialize the binding and call `runApp` itself — Flutter
   /// requires the two to share a zone.
-  static void runGuarded(void Function() body) {
-    if (PlatformInfos.isWeb) {
+  ///
+  /// [guard] is whether this is a web build. Tests set it, because the suite
+  /// runs on the VM, where the web branch could not otherwise be exercised.
+  static void runGuarded(
+    void Function() body, {
+    @visibleForTesting bool guard = kIsWeb,
+  }) {
+    if (guard) {
       runZonedGuarded(body, onUncaughtError);
     } else {
       body();
@@ -68,7 +74,6 @@ class ErrorHandler {
 
   /// The sink for an error no caller handled: [PlatformDispatcher.onError]
   /// off web, the zone [runGuarded] opens on web.
-  @visibleForTesting
   static void onUncaughtError(Object e, StackTrace s) =>
       logError(e: e, s: s, data: {});
 
