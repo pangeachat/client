@@ -2472,3 +2472,42 @@ until the design is Codex-green.
      optimization is to defer live STT unless the recording is unavailable.
 - NOTE: choreo-from-worktree background uvicorn races on the port across restarts -- kill ALL + wait 8s +
   start ONE. Stack currently up (choreo-with-fix stable). E2E stack ready.
+
+### 2026-09-21 (cont) — recording-transcript WRITE-SIDE wired + tested + committed (12c4395af7)
+- OWNER SCOPE-DOWN (verbatim intent): "do not change any other crux of the feature, just get the
+  transcripts from the individual call recordings for each respective user, and ensure we can test this
+  and revert it back if it is very bad in quality." => implemented NARROWER than the earlier WIRING PLAN:
+  ONLY the segments source swaps, behind one flag. NO `source` event field, NO call_transcript_event.dart
+  change, NO accounting change, NO reader/merge change.
+- FLAG: Environment.callRecordingTranscript (env CALL_RECORDING_TRANSCRIPT, default OFF). Off = today's
+  behavior byte-for-byte (recorder never transcribes; live transcript-first order). Revert = flip flag.
+- CallAudioRecorder: new optional transcribe/userL1/userL2 + `List<TranscriptSegment> recordingSegments`
+  field. In _finish, `_recordingSegmentsFrom(wav, gen.runStartedAtMs, gen.sampleRate, durationMs)` is
+  KICKED OFF right after the wav is built (line ~1133) so it OVERLAPS the upload (no added audio latency),
+  and AWAITED in the delivery loop's inner `finally` so recordingSegments is set on every exit path before
+  finish() returns. Non-fatal (returns [] on null transcribe / STT error / no langs) so the live half
+  always stands. Uses word_timings directly via buildRecordingSegments (includeWordTimings, LINEAR16,
+  speaker's own L1/L2), mirroring CallTranscriptSink's request exactly.
+- CallRecord: new optional `RecordingTranscriptSource? recordingSegments` (() => List<TranscriptSegment>).
+  _publishTranscript now reads `recorded = recordingSegments?.call() ?? []`; segments = recorded.isNotEmpty
+  ? recorded : transcripts.segments (per-half fallback). finish() REORDERS only when the source is wired:
+  publishCallAudio (runs recorder.finish -> fills recordingSegments) BEFORE publishTranscript; when null,
+  original transcript-first order is byte-for-byte unchanged. Both remain ahead of the _credited gate.
+- call_session: `recordingTranscript = Environment.callRecordingTranscript` read once; recorder gets
+  transcribe/userL1/userL2 only when on; CallRecord gets `recordingSegments: () =>
+  audioRecorder.recordingSegments` only when on.
+- CAVEAT (known, accepted per scope-down): when recording-based segments are published, the capture
+  accounting (chunksLost/drainComplete/chunks*) still reports the LIVE chunk path. The reader NEVER hides
+  segments on accounting (transcript_assembly.explainsEmptiness requires segments.isEmpty), it only adds a
+  completeness NOTE -- so a complete recording-based transcript can still show a spurious "part may be
+  missing" note iff the live path happened to lose/te not-drain a chunk. Cosmetic; segments always display.
+  Follow-up (not in scope now): reflect recording-path completeness, or add a `source` field.
+- TESTS: call_record_test.dart +4 (prefer recording over live; fall back to live when recording empty;
+  audio-before-transcript order when wired; transcript-first when off) via a callOrder tracker + a
+  recordingSegments param on the record() harness. call_record 70/70; recorder + transcript_segments
+  132/132; analyze + format clean on all 5 touched files.
+- COMMIT: 12c4395af7 on satvik/call-features-combined (combined worktree). 5 files, +287/-15.
+- NEXT: (1) cold-gate the wiring behavior diff (gate dir /tmp, FACTS + the 4 source files, <350 lines);
+  (2) re-raise local stack (choreo :8012 LAN, web :8090, phone APK) with CALL_RECORDING_TRANSCRIPT=true and
+  E2E on the owner phone -- make a call, verify the recording-based half in the local Synapse DB; (3) PR2
+  only on explicit owner go. choreo reconcile branch remains set aside (not needed for this path).
