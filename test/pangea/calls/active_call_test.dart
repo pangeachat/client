@@ -17,6 +17,7 @@ import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
 import 'package:fluffychat/routes/chat/calls/capture_election.dart';
 import 'package:fluffychat/routes/chat/calls/pcm_chunker.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
+import 'call_token_repo_test.dart' show jwtWith;
 
 import 'package:pangea_call_capture/pangea_call_capture.dart'
     show CallForegroundControl;
@@ -286,6 +287,10 @@ class FakeCalls extends CallService {
   @override
   int get joinAttempt => 0;
 
+  /// The grant a successful join hands back. Settable so a test can supply a
+  /// token whose claims say something, which is what the roster is told.
+  CallToken grant = const CallToken(jwt: 'jwt', url: 'ws://sfu');
+
   @override
   Future<CallToken> join(matrix.Room room) async {
     trace('join');
@@ -294,7 +299,7 @@ class FakeCalls extends CallService {
     joinClaimed = true;
     if (holdJoin != null) await holdJoin!.future;
     if (joinError != null) throw joinError!;
-    return const CallToken(jwt: 'jwt', url: 'ws://sfu');
+    return grant;
   }
 
   /// The membership this account holds, as the room would report it. Overridden
@@ -308,7 +313,7 @@ class FakeCalls extends CallService {
   String? roomMembershipId = '\$membership';
 
   @override
-  String? membershipEventIdIn(matrix.Room room) =>
+  String? membershipEventIdIn(int? attempt) =>
       _retracted ? null : roomMembershipId;
 
   @override
@@ -363,8 +368,17 @@ class FakeMedia extends CallMedia {
   /// Supplied by the test rather than built from a live connection.
   FakeRoster? fakeRoster;
 
+  /// What the call told the roster about the token it dialled with.
+  MetadataGrant? rosterGrant;
+
   @override
-  CallRoster roster({required String myUserId}) => fakeRoster!;
+  CallRoster roster({
+    required String myUserId,
+    MetadataGrant metadataGrant = MetadataGrant.unknown,
+  }) {
+    rosterGrant = metadataGrant;
+    return fakeRoster!;
+  }
 
   @override
   AudioTrack? get publishedAudio => hasTrack ? _track : null;
@@ -577,6 +591,11 @@ class FakeRoster extends CallRoster {
   /// This device's own membership, once the SFU has given us one.
   (bool, DateTime)? myJoin;
 
+  /// The identity the SFU names THIS device by, when a test cares which string
+  /// that is. The real one is minted by the token service and is never the bare
+  /// user id.
+  String? myMemberIdentity;
+
   @override
   RosterRead get read => RosterRead(
     remotes: [
@@ -591,7 +610,7 @@ class FakeRoster extends CallRoster {
     me: myJoin == null
         ? null
         : RosterMember(
-            identity: myUserId,
+            identity: myMemberIdentity ?? myUserId,
             described: myJoin!.$1,
             joinedAt: myJoin!.$2,
           ),
@@ -731,7 +750,30 @@ class _NullSink implements CallAudioSink {
   @override
   Future<void> deliver(PcmChunk chunk, {Duration? within}) async {}
   @override
+  void discarded(PcmChunk chunk) {}
+
+  @override
   Future<bool> close() async => true;
+}
+
+/// A logged-in client that can be made to forget its device id mid-call.
+///
+/// The SDK clears the id on logout and offers no way to set one, and a call
+/// cannot start without one at all -- so the only window in which an election
+/// can see a null is a logout landing while a call is already up. This is the
+/// one way to stand a test in that window.
+class ForgetfulClient extends Client {
+  ForgetfulClient(
+    super.clientName, {
+    super.httpClient,
+    required super.database,
+  });
+
+  /// Set to reproduce the logout, from the moment it is set onward.
+  bool forgotDevice = false;
+
+  @override
+  String? get deviceID => forgotDevice ? null : super.deviceID;
 }
 
 void main() {
@@ -741,8 +783,8 @@ void main() {
 
   /// Logged in, because the recording election ranks this device against its
   /// siblings by device id and a client that never logged in has none.
-  Future<Client> bareClient() async {
-    final client = Client(
+  Future<ForgetfulClient> bareClient() async {
+    final client = ForgetfulClient(
       'active-call-test',
       httpClient: FakeMatrixApi(),
       database: await MatrixSdkDatabase.init(
@@ -2748,6 +2790,52 @@ void main() {
       expect(trace.steps, isNot(contains('capture.stop')));
     });
 
+    /// A device the SDK cannot name, which is a logout landing mid-call.
+    ///
+    /// The election breaks its tie on device id, and the empty string this used
+    /// to substitute for a missing one sorts BEFORE every real id — so such a
+    /// device elected ITSELF over every sibling, unconditionally, and both went
+    /// on to deliver the same stretch. Duplicate analytics is the one outcome
+    /// the election exists to prevent.
+    test('a device with no id stands aside rather than winning', () async {
+      final (call, calls, _, _) = await build();
+      final myDeviceId = calls.client.deviceID!;
+      calls.remotePresent = true;
+      calls.devicesInCall = [myDeviceId];
+      await call.start(roomStub(calls.client), video: false);
+      expect(call.isRecording, isTrue);
+      trace.steps.clear();
+
+      (calls.client as ForgetfulClient).forgotDevice = true;
+      // A sibling this device BEAT while it still had a name, so the outcome
+      // here can only have come from the missing id.
+      await calls.participantsBecome(['zzzzzzzzzz']);
+
+      expect(call.isRecording, isFalse);
+      expect(
+        trace.steps,
+        contains('capture.stop'),
+        reason: 'and what it already holds is flushed, not dropped',
+      );
+    });
+
+    test('a device with no id still records when it is alone', () async {
+      // Standing aside is for somebody. Alone there is nobody to produce a
+      // duplicate with, and refusing would cost the call's analytics to
+      // prevent nothing.
+      final (call, calls, _, _) = await build();
+      final myDeviceId = calls.client.deviceID!;
+      calls.remotePresent = true;
+      calls.devicesInCall = ['AAAAAAAAAA', myDeviceId];
+      await call.start(roomStub(calls.client), video: false);
+      expect(call.isRecording, isFalse, reason: 'the other device sorts lower');
+
+      (calls.client as ForgetfulClient).forgotDevice = true;
+      await calls.participantsBecome([]);
+
+      expect(call.isRecording, isTrue);
+    });
+
     test('a recorder that will not start does not fail the call', () async {
       // Recording is not the call. A tap that cannot open costs analytics; it
       // must never stop someone placing a voice call.
@@ -3280,6 +3368,93 @@ void main() {
       expect(capture.discardRequests.last, isFalse);
     });
 
+    /// The same handover [recordingBeside] sets up -- a sibling recording run 7
+    /// from before our first frame, taking over when our tap dies -- with both
+    /// devices stamped inside ONE second, so the coarse readings order nothing
+    /// and only the SFU's millisecond stamps can decide.
+    ///
+    /// [siblingMs] and [mineMs] are offsets into that second. The identity our
+    /// own stamp is filed under is deliberately NOT `'$userId:$deviceId'`: the
+    /// key is the string the SFU used, and a call site that composed one out of
+    /// the parts this device holds would look up a device nobody named, fall
+    /// back to the second, and look perfectly correct while doing it.
+    Future<bool> discardsWithFineStamps({
+      required int siblingMs,
+      required int mineMs,
+      bool siblingSentFineField = true,
+    }) async {
+      final (call, calls, media, capture) = await build();
+      const myIdentity = '@somebody:elsewhere:PHONE:2';
+      final siblingIdentity = '${calls.client.userID}:zzzzzzzzzz';
+      final secondsMs = joinedAt.millisecondsSinceEpoch;
+      calls.roster!.myMemberIdentity = myIdentity;
+      calls.roster!.myJoin = (true, joinedAt);
+      calls.roster!.joins = {siblingIdentity: (true, joinedAt)};
+      calls.roster!.attributes = {siblingIdentity: recording('7')};
+      media.recordJoinStamps([
+        (
+          identity: myIdentity,
+          secondsMs: secondsMs,
+          ms: secondsMs + mineMs,
+          sid: 'PA_mine',
+          version: 0,
+          hasLeft: false,
+        ),
+        (
+          identity: siblingIdentity,
+          secondsMs: secondsMs,
+          // Zero is what an SFU older than livekit-server v1.8.4 leaves on the
+          // wire, and it is indistinguishable from one that set the field to
+          // zero on purpose.
+          ms: siblingSentFineField ? secondsMs + siblingMs : 0,
+          sid: 'PA_sibling',
+          version: 0,
+          hasLeft: false,
+        ),
+      ]);
+      calls.remotePresent = true;
+      calls.devicesInCall = [calls.client.deviceID!, 'zzzzzzzzzz'];
+      await call.start(roomStub(calls.client), video: false);
+      expect(call.isRecording, isTrue, reason: 'the premise of these tests');
+
+      capture.loseTapForGood();
+      await pumpEventQueue();
+      await call.tickReelectionForTest();
+      expect(call.isRecording, isFalse, reason: 'the sibling has it now');
+
+      return capture.discardRequests.last;
+    }
+
+    test('the SFU millisecond stamps order a pair one second cannot', () async {
+      // The narrowing, end to end. Everything else is identical to the test
+      // above -- which keeps its tail because two whole-second stamps order
+      // nothing -- and the millisecond readings the SFU sent for the same two
+      // joins put the sibling in the room 452ms first.
+      expect(await discardsWithFineStamps(siblingMs: 48, mineMs: 500), isTrue);
+    });
+
+    test('the same pair the other way round still keeps our tail', () async {
+      // The shape the two-device experiment actually produced, and the reason
+      // the finer reading is not simply more discards: the sibling joined AFTER
+      // us inside the same second, so it holds none of what we recorded first.
+      expect(await discardsWithFineStamps(siblingMs: 500, mineMs: 48), isFalse);
+    });
+
+    test('a sibling behind an older SFU is still judged by the second', () async {
+      // A pair, not a deployment. Our own join is stated to the millisecond and
+      // the sibling's is not, and the two readings measure different things --
+      // one an instant, the other the second it fell in. Comparing them anyway
+      // would put the sibling 500ms ahead of us and destroy the tail.
+      expect(
+        await discardsWithFineStamps(
+          siblingMs: 48,
+          mineMs: 500,
+          siblingSentFineField: false,
+        ),
+        isFalse,
+      );
+    });
+
     test('the request is in before the reconcile that stops the tap', () async {
       // Teardown stops the recorder DIRECTLY, outside the serialised handover
       // chain, so its stop can reach the flush while this election's reconcile
@@ -3425,6 +3600,42 @@ void main() {
 
       expect(call.isRecording, isFalse);
       expect(capture.discardRequests.last, isFalse);
+    });
+  });
+
+  group('what the roster is told about the token', () {
+    // The roster is built from the media, which only dials with the token; the
+    // token itself is the call's. Without carrying it across, a write the SFU
+    // REFUSED and an SFU that stopped answering arrive at the roster's report
+    // as the same thrown error — and only one of them is a deployment we have
+    // to change. That indistinguishability is why the refusal read as an
+    // ordinary flake for the life of the feature.
+    test('carries a grant that cannot publish attributes', () async {
+      final (call, calls, media, _) = await build();
+      calls.grant = CallToken(
+        url: 'ws://sfu',
+        jwt: jwtWith({
+          'video': {'roomJoin': true, 'canPublish': true},
+        }),
+      );
+
+      await call.start(roomStub(calls.client), video: false);
+
+      expect(media.rosterGrant, MetadataGrant.absent);
+    });
+
+    test('and one that can', () async {
+      final (call, calls, media, _) = await build();
+      calls.grant = CallToken(
+        url: 'ws://sfu',
+        jwt: jwtWith({
+          'video': {'roomJoin': true, 'canUpdateOwnMetadata': true},
+        }),
+      );
+
+      await call.start(roomStub(calls.client), video: false);
+
+      expect(media.rosterGrant, MetadataGrant.granted);
     });
   });
 

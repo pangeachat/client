@@ -10,6 +10,7 @@ import 'package:fluffychat/routes/world/world_map_filter.dart';
 import 'package:fluffychat/routes/world/world_map_filter_bar.dart';
 import 'package:fluffychat/routes/world/world_map_level_fallback_notice.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
+import 'package:fluffychat/widgets/layouts/workspace_shell.dart';
 import 'package:fluffychat/widgets/pangea_search_bar.dart';
 
 /// Per-activity completion, derived client-side from Matrix session state.
@@ -126,6 +127,9 @@ class _WorldMapSearchOverlayState extends State<WorldMapSearchOverlay> {
 
     return Semantics(
       label: l10n.searchActivitiesLabel,
+      // Keyed so the overlay slots between the cluster and the map's anchored
+      // strip in the workspace browse order (#8755).
+      sortKey: BrowseOrder.mapChrome,
       container: true,
       child: SafeArea(
         child: FocusTraversalGroup(

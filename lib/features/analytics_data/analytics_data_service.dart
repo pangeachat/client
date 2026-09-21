@@ -148,7 +148,12 @@ class AnalyticsDataService {
 
   bool get isInitializing => !initCompleter.isCompleted;
   bool get hasInitError => initError != null;
-  bool get isLogged => _analyticsClientGetter.client.isLogged();
+
+  /// Read from the account client rather than the analytics client: the
+  /// latter is null before the store opens and again after [dispose], and a
+  /// caller on either side of that window (a late init send, the update
+  /// service's own teardown) needs an answer, not a null check.
+  bool get isLogged => _accountClient.isLogged();
 
   Room? _getAnalyticsRoomLocal(LanguageModel lang) =>
       _analyticsClientGetter.client.ownAnalyticsRoomLocal(lang: lang);

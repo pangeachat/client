@@ -7,7 +7,9 @@ import 'package:livekit_client/livekit_client.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/routes/chat/calls/call_audio_tap.dart';
+import 'package:fluffychat/routes/chat/calls/call_transcript_event.dart';
 import 'package:fluffychat/routes/chat/calls/pcm_chunker.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
 
 /// Where a completed chunk goes.
 ///
@@ -24,6 +26,21 @@ abstract class CallAudioSink {
   /// merely stopped waiting leaves the attempt running, and a retry that joins
   /// it is not a second attempt at all.
   Future<void> deliver(PcmChunk chunk, {Duration? within});
+
+  /// Records a chunk this recorder captured and deliberately did NOT deliver,
+  /// because another of this account's devices was recording the same stretch.
+  ///
+  /// Not a delivery and not a failure, so it belongs in neither [deliver] nor
+  /// its error path: the audio was read, cut, and then set aside on purpose.
+  /// It is here so that the sink's accounting still knows the chunk existed.
+  /// Without it the chunk was in no count at all -- the half published a clean
+  /// record of a stretch it had thrown away, and nothing downstream could tell
+  /// a correct discard from a wrong one, in either direction.
+  ///
+  /// Synchronous, and never fails: it records a fact rather than performing
+  /// work, and it is called from the flush that ends a run, where an
+  /// unawaited future would be an unhandled error at a hangup.
+  void discarded(PcmChunk chunk);
 
   /// Signals that no further chunks are coming for this call.
   ///
@@ -290,6 +307,75 @@ class CallCaptureService {
   /// hangup does not abandon audio the learner already spoke.
   final List<Future<void>> _inFlight = [];
 
+  /// How much of this call's audio the capture path lost before it could be
+  /// cut into a chunk, in milliseconds.
+  ///
+  /// Reported BY the tap, and only by a tap that accounts for its own drops.
+  /// It is a different fact from every count the sink keeps: those are all
+  /// about chunks, and this audio never became one -- so it is invisible to
+  /// `chunksCaptured`, `chunksLost` and `chunksSuppressed` alike, and a half
+  /// that carried only those read as complete over a hole in the recording.
+  ///
+  /// Per call, never reset, because a half describes a call rather than a
+  /// stretch of one.
+  int get captureDroppedMs => _captureDroppedMs;
+  int _captureDroppedMs = 0;
+
+  /// The stretches of this call this device captured and KEPT, in the order
+  /// they were recorded.
+  ///
+  /// One per run: a run is the uninterrupted span between a first frame and
+  /// whatever ends it, and its extent comes from the chunker's own exact frame
+  /// arithmetic rather than from stitching the chunks back together — a sum of
+  /// per-chunk durations truncates once per chunk, and a millisecond crack
+  /// between two stretches that were in fact continuous would read as a gap in
+  /// the coverage the half publishes.
+  ///
+  /// The tail a run handed to a sibling is CUT OFF this span and appears in
+  /// [discardedSpans] instead, so the two lists never describe the same
+  /// millisecond twice.
+  ///
+  /// Lives here rather than in the sink for the reason [captureDroppedMs] does:
+  /// this is what the CAPTURE path knows, and the sink counts chunks.
+  List<CaptureSpan> get keptSpans => List.unmodifiable(_keptSpans);
+  final List<CaptureSpan> _keptSpans = [];
+
+  /// The stretches this device captured and deliberately did not send, because
+  /// another of the account's devices was recording them.
+  ///
+  /// The extent behind the sink's `chunksDiscarded`, which is a count and names
+  /// no stretch. It is the whole reason a reader can ask whether the belief
+  /// that authorised the discard held: without it, a discard could only be
+  /// excused by a sibling having WRITTEN something, which is not the same as a
+  /// sibling having HELD this stretch.
+  List<CaptureSpan> get discardedSpans => List.unmodifiable(_discardedSpans);
+  final List<CaptureSpan> _discardedSpans = [];
+
+  /// Records one finished run: what it kept, and what it handed over.
+  ///
+  /// [handedOverFrom] is where the discarded tail begins, or null when nothing
+  /// was handed over. A run whose whole audio went to a sibling keeps nothing,
+  /// and states nothing: [CaptureSpan.of] refuses the empty stretch rather than
+  /// publishing a point.
+  void _recordRun({required int from, required int to, int? handedOverFrom}) {
+    _record(_keptSpans, from, handedOverFrom ?? to);
+    if (handedOverFrom != null) _record(_discardedSpans, handedOverFrom, to);
+  }
+
+  /// Adds one stretch, or nothing when it is not a stretch this writer may
+  /// state.
+  ///
+  /// Bounded one past `CallTranscriptContent.maxSpans`, which is where a list
+  /// stops being a statement this reader will act on. Past that point the event
+  /// omits the field whatever else is added, so the entries are not merely
+  /// unnecessary — recording them would be an unbounded list held for the
+  /// length of a call to make a decision that has already been made.
+  static void _record(List<CaptureSpan> into, int fromMs, int toMs) {
+    if (into.length > CallTranscriptContent.maxSpans) return;
+    final span = CaptureSpan.of(fromMs: fromMs, toMs: toMs);
+    if (span != null) into.add(span);
+  }
+
   /// [deliveryTimeout] is how long one attempt is given before it is treated as
   /// failed. Injectable so the stall can be tested without waiting for it.
   CallCaptureService({
@@ -494,8 +580,8 @@ class CallCaptureService {
       // for the hole that closes.
       detach = await tap.open(
         track,
-        (samples, sampleRate, channels) =>
-            _onFrames(samples, sampleRate, channels, session),
+        (samples, sampleRate, channels, {droppedMs = 0}) =>
+            _onFrames(samples, sampleRate, channels, session, droppedMs),
         // Carries the same session, for the same reason: a tap that dies long
         // after the stretch it belonged to ended must not end the one running
         // now.
@@ -713,6 +799,22 @@ class CallCaptureService {
   /// gap in the transcript, which is what a mute should be.
   bool _muted = false;
 
+  /// The mute state as of the LAST frame this saw, muted frames included.
+  ///
+  /// A frame's `droppedMs` is a duration with no timestamp, describing the
+  /// interval BEFORE it -- from the previous delivered frame to this one -- and
+  /// a mute can flip anywhere INSIDE that interval. Two facts bound it: the mute
+  /// state at each end, this field for the previous frame and `_muted` for the
+  /// current one. No single flag can place a mid-interval flip, so the drop is
+  /// counted UNLESS the interval was muted at BOTH ends; if either end was
+  /// unmuted, some of it could hold real speech and it must be counted. That
+  /// over-reports at worst a drop that was mostly muted -- a harmless
+  /// over-count on the safe side -- and never silently loses speech, which
+  /// reading a single end did: the previous frame alone lost a mute-then-unmute
+  /// drop, the current frame alone lost an unmute-then-mute one, each published
+  /// as `capture_dropped_ms: 0` over a hole in the recording.
+  bool _mutedAsOfLastFrame = false;
+
   /// Gates or ungates capture to match the microphone button.
   ///
   /// The run ends HERE rather than in [_onFrames], and on the false -> true
@@ -753,6 +855,20 @@ class CallCaptureService {
     // And so a later stretch cannot claim to have been captured before this
     // one finished. See [_notBeforeMs].
     _notBeforeMs = chunker.endedAtMs;
+
+    // What this run covered, stated HERE because this is where a run's extent
+    // is known exactly and where the decision to hand its tail over is taken.
+    // Both facts come off the chunker's own single-truncation arithmetic — the
+    // same numbers every chunk in the run was stamped from — so the stretch a
+    // sibling is asked to cover and the stretch this half claims to hold are
+    // measured the way the audio was, not reconstructed afterwards.
+    final handingOver = tail != null && _discardOnStop;
+    _recordRun(
+      from: chunker.runStartedAtMs,
+      to: chunker.endedAtMs,
+      handedOverFrom: handingOver ? tail.startedAtMs : null,
+    );
+
     if (tail == null) return;
     if (_discardOnStop) {
       // Another of this account's devices was recording the same words at the
@@ -765,6 +881,14 @@ class CallCaptureService {
         'Dropping call audio chunk ${tail.index}: another device of this '
         'account was recording the same stretch',
       );
+      // Told to the sink, not merely logged. A log is gone by the time anybody
+      // reads the transcript, and this is the one decision in the capture path
+      // that destroys audio on the strength of a claim about ANOTHER device --
+      // so the half has to carry the fact that it was made. A sibling's half
+      // showing the same stretch is what makes a discard verifiable after the
+      // event, and nothing could check it at all while this returned in
+      // silence.
+      sink.discarded(tail);
       return;
     }
     _hand(tail);
@@ -833,7 +957,15 @@ class CallCaptureService {
   /// the negotiated codec does. A change ends the current chunk rather than
   /// reinterpreting samples already collected at the old rate, which would
   /// stretch or compress what the learner said.
-  void _onFrames(Int16List samples, int sampleRate, int channels, int session) {
+  void _onFrames(
+    Int16List samples,
+    int sampleRate,
+    int channels,
+    int session,
+    int droppedMs,
+  ) {
+    // Whether this frame's SAMPLES belong to the stretch running now.
+    //
     // Gated on the SESSION, not on [_running] alone. When `tap.open` throws
     // there is no detach handle, so a tap installed before the throw cannot be
     // tracked in [_unreleased] and never comes off — and the next start sets
@@ -842,7 +974,65 @@ class CallCaptureService {
     // because that audio arrives afterwards. A callback that carries the
     // session it was opened for can only ever feed that one, which closes a
     // hole that predates the positions below.
-    if (session != _session || !_running || _stopping || _muted) return;
+    final forThisRun = session == _session && _running && !_stopping && !_muted;
+
+    // Counted ABOVE that gate, because a report that audio was lost is not the
+    // audio. Every reason the samples are refused below — a hangup already
+    // unwinding, a leaked tap, a stretch that has ended — is a reason not to
+    // RECORD post-stop microphone audio, and none of them is a reason to forget
+    // that a stretch we WERE recording had a hole in it.
+    //
+    // That distinction is the whole of the bug this closes. The tap reports a
+    // drop on the frame AFTER it, so the drop at the end of a call rides out on
+    // the tail the platform hands over as it detaches — which arrives once
+    // `_stopping` is set. Counted only inside the accepted path, that number was
+    // read, dropped on the floor, and the half published `capture_dropped_ms: 0`
+    // over a hole in the recording: the exact silent-completeness failure the
+    // field exists to prevent.
+    //
+    // A MUTED span is the one exclusion, and it is not a hole. Frames arriving
+    // while muted are dropped by us on purpose — a mute is a gap in the
+    // transcript, which is what a mute should be — so audio the platform lost
+    // inside that span is audio this device was refusing anyway. Counting it
+    // would report a failure for a stretch nobody was ever going to record, on
+    // every call where somebody muted, and leave the flag meaning nothing when
+    // it matters.
+    //
+    // But the mute state that decides this is the one during the DROPPED
+    // interval, not this frame's, and a mute can flip anywhere inside it. The
+    // interval runs from the previous delivered frame ([_mutedAsOfLastFrame]) to
+    // this one (`_muted`), and a duration with no timestamp cannot say where in
+    // between a flip fell — so the only safe reading is to skip the drop ONLY
+    // when the interval was muted at BOTH ends. If either end was unmuted, some
+    // of it could be real speech and it is counted. Reading a single end lost
+    // one direction each: the current end alone dropped an UNMUTED-then-muted
+    // report, the previous end alone dropped a muted-then-UNMUTED one — both
+    // published as `capture_dropped_ms: 0` over a hole. This over-counts at worst
+    // a mostly-muted drop, which is the safe way to be wrong.
+    if (droppedMs > 0 && !(_mutedAsOfLastFrame && _muted)) {
+      _captureDroppedMs += droppedMs;
+    }
+    // Advanced for EVERY frame, muted ones included, and BEFORE the gate below
+    // can return: it is this frame's mute state that governs the NEXT frame's
+    // dropped interval, whether or not this frame's own samples are recorded.
+    _mutedAsOfLastFrame = _muted;
+
+    if (!forThisRun) return;
+
+    // The chunker's side of the same gap, and only for the run that is live.
+    // The total above says how much went; this says WHERE, by cutting so no
+    // chunk spans it.
+    //
+    // The gap is given to the chunker only when there IS one to give it to. A
+    // run that has not started yet is placed from the clock at its first frame
+    // -- a reading already taken after the gap -- so telling a chunker built
+    // here about audio dropped before it existed would move the run later than
+    // the speech it holds. The total counts it either way: it is lost audio
+    // whether or not a run was open to lose it from.
+    if (droppedMs > 0) {
+      final cut = _chunker?.skip(droppedMs);
+      if (cut != null) _hand(cut);
+    }
 
     // Whether this frame is the one that STARTS a run, which is exactly whether
     // there was no chunker to put it in. A sample-rate change further down ends

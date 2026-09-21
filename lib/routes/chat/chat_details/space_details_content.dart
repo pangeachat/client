@@ -9,12 +9,11 @@ import 'package:fluffychat/features/analytics_access/course_settings_extension.d
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
-import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
-import 'package:fluffychat/features/join_codes/share_room_button.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/routes/chat/chat_details/course_header_actions.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_overview.dart';
 import 'package:fluffychat/routes/chat/chat_details/delete_space_dialog.dart';
 import 'package:fluffychat/routes/chat/chat_details/room_details_buttons.dart';
@@ -23,7 +22,6 @@ import 'package:fluffychat/routes/chat/chat_details/space_details.dart';
 import 'package:fluffychat/routes/chat_list/course_chats_page.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_objectives_view.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_progress_bar.dart';
-import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/panel_header.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -44,8 +42,11 @@ enum SpaceSettingsTabs {
     return SpaceSettingsTabs.values.firstWhereOrNull((e) => e.name == value);
   }
 
-  /// The section's display title — shared by the course page's section
-  /// headers and the pushed subpage's header title, so the two can't drift.
+  /// The section's display title — the pushed subpage's header title, and the
+  /// course page's section header wherever the two say the same thing, so
+  /// they can't drift. The one section they don't share is the course plan:
+  /// its subpage is the plan, while the course page heads that section
+  /// "Activities" after the row it actually shows (#8744).
   String title(BuildContext context) => switch (this) {
     SpaceSettingsTabs.course => L10n.of(context).coursePlan,
     SpaceSettingsTabs.chat => L10n.of(context).chats,
@@ -159,40 +160,11 @@ class SpaceDetailsHeader extends StatelessWidget {
     return PanelHeader(
       leading: leading,
       title: room.getLocalizedDisplayname(MatrixLocals(L10n.of(context))),
-      trailing: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          // Normalized with the activity start page: share on the left,
-          // focus on the right, and the shared `my_location` focus icon.
-          if (room.joinCode != null)
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ShareRoomButton(
-                room: room,
-                tooltip: L10n.of(context).shareCourse,
-                child: const Icon(Icons.share_outlined),
-              ),
-            ),
-          // The one camera path that zooms (#7616): course selection
-          // only pans, so this button zoom+pan-fits the map to all of
-          // the course's activities.
-          ValueListenableBuilder(
-            valueListenable: controller.objectivesProvider.questLoader,
-            builder: (context, _, _) {
-              if (controller
-                  .objectivesProvider
-                  .filteredObjectiveGroups
-                  .isNotEmpty) {
-                return IconButton(
-                  tooltip: L10n.of(context).focusOnMap,
-                  icon: const Icon(Icons.my_location),
-                  onPressed: MapCameraFocusRequests.request,
-                );
-              }
-              return const SizedBox.shrink();
-            },
-          ),
-        ],
+      // Shared with the map's course context bar, which is this header with
+      // the panel closed (#8736).
+      trailing: CourseHeaderActions(
+        room: room,
+        objectivesProvider: controller.objectivesProvider,
       ),
     );
   }

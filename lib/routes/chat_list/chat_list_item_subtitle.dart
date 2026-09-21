@@ -5,13 +5,16 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/activity_tile_body.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/calls/call_timeline_event.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/routes/chat_list/open_roles_indicator.dart';
+import 'package:fluffychat/utils/room_status_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../../utils/matrix_sdk_extensions/matrix_locals.dart';
 
@@ -25,6 +28,55 @@ class ChatListItemSubtitle extends StatelessWidget {
     required this.style,
   });
 
+  /// The subtitle text the row visibly shows, resolved synchronously so
+  /// [ChatListItem] can put it in the row's accessible name. Mirrors the
+  /// widget branches here and in [ChatListItem]'s subtitle: null where the
+  /// subtitle shows no text (the role avatars of a not-yet-started activity),
+  /// and the SDK's synchronous fallback body where the rendered preview
+  /// resolves asynchronously.
+  static String? semanticText(BuildContext context, Room room) {
+    final l10n = L10n.of(context);
+    if (room.isPendingInvite) return l10n.invited;
+    if (room.isSpace && room.membership == Membership.join) {
+      return l10n.countChats(room.spaceChildCount);
+    }
+    final typingText = room.getLocalizedTypingText(context);
+    if (typingText.isNotEmpty) return typingText;
+
+    final lastEvent = room.lastEvent;
+    if (lastEvent == null) {
+      if (room.membership != Membership.invite) return l10n.noMessagesYet;
+      return room
+              .getState(EventTypes.RoomMember, room.client.userID!)
+              ?.content
+              .tryGet<String>('reason') ??
+          (room.isDirectChat ? l10n.newChatRequest : l10n.inviteChat);
+    }
+
+    var withSenderName = true;
+    if (room.showActivityChatUI) {
+      if (room.hasArchivedActivity) return room.activityPlan?.learningObjective;
+      if (!room.isActivityStarted) return null;
+      if (room.isActivityFinished) return l10n.activityDone;
+      // The ongoing tile's avatar names the sender, so its text must not.
+      if (room.isOngoingActiveSession) withSenderName = false;
+    }
+
+    if (lastEvent.type == PangeaEventTypes.call) {
+      return callPreviewLine(l10n, lastEvent);
+    }
+    return lastEvent.calcLocalizedBodyFallback(
+      MatrixLocals(l10n),
+      hideReply: true,
+      hideEdit: true,
+      plaintextBody: true,
+      removeMarkdown: true,
+      withSenderNamePrefix:
+          withSenderName &&
+          (!room.isDirectChat || room.directChatMatrixID != lastEvent.senderId),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     if (room.showActivityChatUI) {
@@ -32,11 +84,14 @@ class ChatListItemSubtitle extends StatelessWidget {
       // list rebuilds on sync once ActivityPlanRepo fills it in).
       final activity = room.activityPlan;
       if (room.hasArchivedActivity) {
-        return Text(
-          activity?.learningObjective ?? '',
-          style: style,
-          maxLines: 2,
-          overflow: TextOverflow.ellipsis,
+        // Excluded: [semanticText] already carries this into the row's name.
+        return ExcludeSemantics(
+          child: Text(
+            activity?.learningObjective ?? '',
+            style: style,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
         );
       } else if (!room.isActivityStarted) {
         return FutureBuilder(
@@ -55,11 +110,13 @@ class ChatListItemSubtitle extends StatelessWidget {
           },
         );
       } else if (room.isActivityFinished) {
-        return Text(
-          L10n.of(context).activityDone,
-          style: style,
-          maxLines: 2,
-          overflow: TextOverflow.ellipsis,
+        return ExcludeSemantics(
+          child: Text(
+            L10n.of(context).activityDone,
+            style: style,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
         );
       } else if (room.isOngoingActiveSession) {
         // Both star numbers come from room state, the same pair the map reads.
@@ -84,7 +141,9 @@ class ChatListItemSubtitle extends StatelessWidget {
       }
     }
 
-    return _LastEventPreview(room: room, style: style);
+    return ExcludeSemantics(
+      child: _LastEventPreview(room: room, style: style),
+    );
   }
 }
 

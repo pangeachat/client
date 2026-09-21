@@ -5,6 +5,7 @@ import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 
 const _callKey = '\$membership:example.com';
+const _alice = '@alice:example.com';
 
 CallTranscriptContent _content({
   List<String> texts = const ['hola', 'que tal'],
@@ -13,12 +14,23 @@ CallTranscriptContent _content({
     chunksTranscribed: 3,
   ),
   String? langCode = 'es',
+  String? deviceId,
+  List<CaptureSpan> keptSpans = const [],
+  List<CaptureSpan> discardedSpans = const [],
 }) => CallTranscriptContent(
   callKey: _callKey,
   segments: [for (final text in texts) TranscriptSegment(text)],
   accounting: accounting,
   langCode: langCode,
+  deviceId: deviceId,
+  keptSpans: keptSpans,
+  discardedSpans: discardedSpans,
 );
+
+/// A stretch of a call, as a device's own clock saw it. A real instant,
+/// because the reader refuses a reading no clock could hold.
+CaptureSpan _span(int fromMs, int toMs) =>
+    CaptureSpan(fromMs: 1787994000000 + fromMs, toMs: 1787994000000 + toMs);
 
 void main() {
   group('CallTranscriptContent json', () {
@@ -366,10 +378,10 @@ void main() {
   });
 
   group('txnId', () {
-    test('is stable for the same call and sender', () {
+    test('is stable for the same call, sender and device', () {
       expect(
-        CallTranscriptContent.txnId(_callKey, '@alice:example.com'),
-        CallTranscriptContent.txnId(_callKey, '@alice:example.com'),
+        CallTranscriptContent.txnId(_callKey, _alice, 'PHONE'),
+        CallTranscriptContent.txnId(_callKey, _alice, 'PHONE'),
       );
     });
 
@@ -377,20 +389,104 @@ void main() {
       // Both halves are written against the same call_key; a shared txn id
       // would make the server collapse one speaker into the other.
       expect(
-        CallTranscriptContent.txnId(_callKey, '@alice:example.com'),
-        isNot(CallTranscriptContent.txnId(_callKey, '@bob:example.com')),
+        CallTranscriptContent.txnId(_callKey, _alice, 'PHONE'),
+        isNot(
+          CallTranscriptContent.txnId(_callKey, '@bob:example.com', 'PHONE'),
+        ),
       );
     });
 
     test('separates two calls by the same sender', () {
       expect(
-        CallTranscriptContent.txnId(_callKey, '@alice:example.com'),
+        CallTranscriptContent.txnId(_callKey, _alice, 'PHONE'),
         isNot(
-          CallTranscriptContent.txnId(
-            '\$other:example.com',
-            '@alice:example.com',
-          ),
+          CallTranscriptContent.txnId('\$other:example.com', _alice, 'PHONE'),
         ),
+      );
+    });
+
+    test('separates two DEVICES of one account in one call', () {
+      // The defect this field exists for. Keyed by (call, sender) alone, the
+      // learner's two devices sent one transaction id for two different halves
+      // of what they said -- so the second was a resend of the first as far as
+      // the server was concerned.
+      expect(
+        CallTranscriptContent.txnId(_callKey, _alice, 'PHONE'),
+        isNot(CallTranscriptContent.txnId(_callKey, _alice, 'LAPTOP')),
+      );
+    });
+
+    test('a device this reader would refuse scopes as no device at all', () {
+      // One rule for the wire and the key. A device id the event will not carry
+      // must not silently scope the transaction id either, or a resend from
+      // that writer would land as a second half.
+      expect(
+        CallTranscriptContent.txnId(_callKey, _alice, ''),
+        CallTranscriptContent.txnId(_callKey, _alice, null),
+      );
+      expect(
+        CallTranscriptContent.txnId(_callKey, _alice, 'D' * 256),
+        CallTranscriptContent.txnId(_callKey, _alice, null),
+      );
+    });
+
+    test('a resend from ONE device still collapses', () {
+      // The whole job of the id, and the one the device segment must not cost:
+      // the same device retrying the same half writes one event, not two.
+      expect(
+        CallTranscriptContent.txnId(_callKey, _alice, 'PHONE'),
+        CallTranscriptContent.txnId(_callKey, _alice, 'PHONE'),
+      );
+    });
+  });
+
+  group('device_id on the wire', () {
+    test('round-trips, and is absent when the writer did not say', () {
+      expect(
+        CallTranscriptContent.fromJson(
+          _content(deviceId: 'PHONE').toJson(),
+        )!.deviceId,
+        'PHONE',
+      );
+      expect(_content().toJson().containsKey('device_id'), isFalse);
+      expect(
+        CallTranscriptContent.fromJson(_content().toJson())!.deviceId,
+        isNull,
+      );
+    });
+
+    test('an unusable device id reads as ABSENT, never as a device', () {
+      // Room content is untrusted, and this value is a grouping key: an empty
+      // string would group every half carrying it together, and an unbounded
+      // one is a key held while a transcript is assembled.
+      for (final raw in <Object>[
+        '',
+        'D' * (CallTranscriptContent.maxDeviceIdChars + 1),
+        7,
+        <String>['PHONE'],
+      ]) {
+        final parsed = CallTranscriptContent.fromJson({
+          'call_key': _callKey,
+          'segments': [
+            {'text': 'hola'},
+          ],
+          'device_id': raw,
+        });
+        expect(parsed, isNotNull, reason: 'the words survive a bad device id');
+        expect(parsed!.deviceId, isNull);
+        expect(parsed.segments.single.text, 'hola');
+      }
+    });
+
+    test('a device id the reader would refuse is never written', () {
+      // The same rule guards both directions, so this writer cannot put a value
+      // on the wire that its own reader will drop.
+      expect(_content(deviceId: '').toJson().containsKey('device_id'), isFalse);
+      expect(
+        _content(
+          deviceId: 'D' * (CallTranscriptContent.maxDeviceIdChars + 1),
+        ).toJson().containsKey('device_id'),
+        isFalse,
       );
     });
   });
@@ -413,6 +509,23 @@ void main() {
           chunksCaptured: 3,
           chunksTranscribed: 3,
           captureRefused: true,
+          drainComplete: true,
+        ).toJson(),
+      });
+
+      expect(parsed.accounting.incoherent, isTrue);
+    });
+
+    test('a mic that never opened cannot have dropped audio either', () {
+      // The same rule reaching one count further. This check has already
+      // stopped holding twice, each time a count was added and not named here,
+      // so a half could say the microphone never opened AND that its capture
+      // path threw audio away -- two statements that cannot both be true.
+      final parsed = parse({
+        'segments': <dynamic>[],
+        ...const HalfAccounting(
+          captureRefused: true,
+          captureDroppedMs: 800,
           drainComplete: true,
         ).toJson(),
       });
@@ -760,6 +873,134 @@ void main() {
       ).toJson();
 
       expect(json.containsKey('positions_marked'), isFalse);
+    });
+  });
+
+  group('the stretches a half holds and hands over, on the wire', () {
+    test('round-trip, and absent when the writer did not say', () {
+      final parsed = CallTranscriptContent.fromJson(
+        _content(
+          keptSpans: [_span(0, 20000), _span(30000, 45000)],
+          discardedSpans: [_span(20000, 24000)],
+        ).toJson(),
+      )!;
+
+      expect(parsed.keptSpans, [_span(0, 20000), _span(30000, 45000)]);
+      expect(parsed.discardedSpans, [_span(20000, 24000)]);
+
+      // Absence is what an older build and a foreign client both send, and it
+      // has to be the same bytes as a writer with nothing to state.
+      final silent = _content().toJson();
+      expect(silent.containsKey('kept_spans'), isFalse);
+      expect(silent.containsKey('discarded_spans'), isFalse);
+      final read = CallTranscriptContent.fromJson(silent)!;
+      expect(read.keptSpans, isEmpty);
+      expect(read.discardedSpans, isEmpty);
+    });
+
+    test('one unreadable entry voids the whole statement', () {
+      // A partially read coverage list is a DIFFERENT claim from the one the
+      // writer made, and which direction it is wrong in depends on which list
+      // lost an entry. Refusing the statement is right about both.
+      for (final broken in <Object>[
+        <Object>[
+          [1787994000000, 1787994020000],
+          'not a span',
+        ],
+        <Object>[
+          [1787994000000],
+        ],
+        <Object>[
+          [1787994000000, 1787994000000, 1787994000000],
+        ],
+        <Object>[
+          ['1787994000000', 1787994020000],
+        ],
+        // Ends before it begins.
+        <Object>[
+          [1787994020000, 1787994000000],
+        ],
+        // Covers no moment at all.
+        <Object>[
+          [1787994000000, 1787994000000],
+        ],
+        // Negative, and past any date a clock can hold.
+        <Object>[
+          [-1, 1787994020000],
+        ],
+        <Object>[
+          [1787994000000, ClockAnchor.clockCeilingMs],
+        ],
+      ]) {
+        final parsed = CallTranscriptContent.fromJson({
+          'call_key': _callKey,
+          'segments': [
+            {'text': 'hola'},
+          ],
+          'kept_spans': broken,
+          'discarded_spans': broken,
+        });
+        expect(parsed, isNotNull, reason: 'the words survive a bad statement');
+        expect(parsed!.keptSpans, isEmpty, reason: 'against $broken');
+        expect(parsed.discardedSpans, isEmpty, reason: 'against $broken');
+        expect(parsed.segments.single.text, 'hola');
+      }
+    });
+
+    test('a list past the ceiling states nothing, in both directions', () {
+      // The bound is on the WORK one event can make the reader do: coverage
+      // compares every discarded stretch against every kept one across a
+      // sender's devices. Past it the half says nothing rather than something
+      // shortened, and the same rule stops this writer sending what its own
+      // reader would refuse.
+      List<CaptureSpan> spans(int count) => [
+        for (var i = 0; i < count; i++) _span(i * 100, i * 100 + 50),
+      ];
+
+      final atCeiling = _content(
+        keptSpans: spans(CallTranscriptContent.maxSpans),
+      ).toJson();
+      expect(atCeiling.containsKey('kept_spans'), isTrue);
+      expect(
+        CallTranscriptContent.fromJson(atCeiling)!.keptSpans,
+        hasLength(CallTranscriptContent.maxSpans),
+      );
+
+      final over = _content(
+        keptSpans: spans(CallTranscriptContent.maxSpans + 1),
+        discardedSpans: spans(CallTranscriptContent.maxSpans + 1),
+      ).toJson();
+      expect(over.containsKey('kept_spans'), isFalse);
+      expect(over.containsKey('discarded_spans'), isFalse);
+
+      // And the reader refuses one that reached it some other way.
+      final parsed = CallTranscriptContent.fromJson({
+        'call_key': _callKey,
+        'segments': [
+          {'text': 'hola'},
+        ],
+        'kept_spans': [
+          for (final span in spans(CallTranscriptContent.maxSpans + 1))
+            span.toJson(),
+        ],
+      })!;
+      expect(parsed.keptSpans, isEmpty);
+    });
+
+    test('a stretch this writer would refuse is never built', () {
+      // The same rule guards the writer, so a span that cannot describe audio
+      // is never on the wire to be read.
+      expect(CaptureSpan.of(fromMs: 1000, toMs: 1000), isNull);
+      expect(CaptureSpan.of(fromMs: 2000, toMs: 1000), isNull);
+      expect(CaptureSpan.of(fromMs: -1, toMs: 1000), isNull);
+      expect(
+        CaptureSpan.of(fromMs: 1000, toMs: ClockAnchor.clockCeilingMs),
+        isNull,
+      );
+      expect(
+        CaptureSpan.of(fromMs: 1000, toMs: 2000),
+        const CaptureSpan(fromMs: 1000, toMs: 2000),
+      );
     });
   });
 }

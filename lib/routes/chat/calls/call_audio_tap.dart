@@ -30,8 +30,25 @@ typedef DetachTap = FutureOr<void> Function();
 /// than read goes into the WAV header, halves or doubles the frame count
 /// derived from the byte length, and warps both the audio and every duration
 /// computed from it -- without failing anywhere.
+///
+/// [droppedMs] is audio the tap knows existed and could not hand over, sitting
+/// immediately BEFORE these samples. Only a tap that keeps its own drop
+/// accounting can report it; it is named and defaulted so that the ones which
+/// cannot are not made to write a number they have not measured. Zero reads
+/// downstream as no gap, which is what this pipeline assumed of every tap
+/// before the field existed — so a tap that drops audio invisibly is no worse
+/// off than it was, and no better.
+///
+/// It is a duration and not a sample count on purpose. The tap that reports it
+/// drops whole buffers cut for the rate in force at the time, and a rate can
+/// change between then and the batch that carries the number out.
 typedef CallAudioFrames =
-    void Function(Int16List samples, int sampleRate, int channels);
+    void Function(
+      Int16List samples,
+      int sampleRate,
+      int channels, {
+      int droppedMs,
+    });
 
 /// Says that an attach which ALREADY ANSWERED has turned out to be dead.
 ///
@@ -331,7 +348,18 @@ class PostEchoCancellationTap implements CallAudioTap {
       // this does not. A literal here is the only fact available rather than an
       // assumption over one we were handed; if that package ever grows a
       // channel count, it has to travel the same way the rate does.
-      (frame) => onFrames(_samplesOf(frame.pcm16), frame.sampleRate, 1),
+      //
+      // The dropped audio is forwarded because this platform is the one that
+      // drops it: the module hands over a batch every hundred milliseconds and
+      // the plugin holds a bounded set of buffers to put them in, so a stalled
+      // consumer costs audio rather than memory. Nothing further down can see
+      // that by looking at what arrived.
+      (frame) => onFrames(
+        _samplesOf(frame.pcm16),
+        frame.sampleRate,
+        1,
+        droppedMs: frame.droppedMs,
+      ),
       onError: (Object e, StackTrace s) =>
           Logs().w('The call audio tap reported an error', e, s),
     );

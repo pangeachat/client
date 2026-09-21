@@ -48,11 +48,37 @@ Future<bool> writeCallTranscript({
   required TranscriptSender send,
   required String? callKey,
   required String senderId,
+
+  /// Which of this account's devices is writing. Required rather than
+  /// defaulted, like every count beside it: a caller that omitted it would
+  /// publish a half indistinguishable from the other device's, and the reader
+  /// would keep one of the two. Null is a first-class answer for a client that
+  /// cannot name its own device -- the field is then simply left off the event.
+  required String? deviceId,
   required List<TranscriptSegment> segments,
   required int chunksCaptured,
   required int chunksTranscribed,
   required int chunksLost,
   required int chunksSuppressed,
+  required int chunksDiscarded,
+
+  /// The stretches this device captured and KEPT, and the stretches it handed
+  /// to a sibling instead of sending.
+  ///
+  /// Required rather than defaulted, like every count beside them, and for a
+  /// sharper reason than most: a caller that omitted the second would publish a
+  /// discard nothing can test, and one that omitted the first would leave a
+  /// sibling's discard unexcusable. Empty is a first-class answer for a device
+  /// with nothing to state — the fields are then simply left off the event, and
+  /// read back as a writer that did not say.
+  required List<CaptureSpan> keptSpans,
+  required List<CaptureSpan> discardedSpans,
+
+  // How much audio the capture path lost before it could become a chunk.
+  // Required rather than defaulted, like every count beside it: zero is a
+  // claim that nothing went, and a caller that forgot this would publish a
+  // clean half over a hole in the recording.
+  required int captureDroppedMs,
   required bool captureRefused,
   required bool drainComplete,
   String? langCode,
@@ -85,6 +111,8 @@ Future<bool> writeCallTranscript({
           chunksTranscribed: chunksTranscribed,
           chunksLost: chunksLost,
           chunksSuppressed: chunksSuppressed,
+          chunksDiscarded: chunksDiscarded,
+          captureDroppedMs: captureDroppedMs,
           captureRefused: captureRefused,
           truncated: omitted > 0,
           segmentsOmitted: omitted,
@@ -94,10 +122,19 @@ Future<bool> writeCallTranscript({
           declared: true,
         ),
         langCode: langCode,
-        // Inside the closure, so the packer measures the event that actually
-        // goes on the wire. Sizing without it and adding it afterwards would
-        // grow a half past the budget it was just checked against, and the
-        // server rejects the WHOLE half rather than its tail.
+        deviceId: deviceId,
+        // Inside the closure with everything else, so the packer measures them.
+        // A coverage statement is small beside a call's speech, and it is also
+        // the one part of a half that cannot be dropped to fit: the packer
+        // trims SEGMENTS, and a half that shed its extents to make room would
+        // silently stop excusing a sibling's discard.
+        keptSpans: keptSpans,
+        discardedSpans: discardedSpans,
+        // These two are inside the closure with everything else, so the packer
+        // measures the event that actually goes on the wire. Sizing without a
+        // field and adding it afterwards would grow a half past the budget it
+        // was just checked against, and the server rejects the WHOLE half
+        // rather than its tail.
         clockAnchor: clockAnchor,
         // Always, and only here. `buildSegments` marks every position it could
         // not pin down to a word, so a half from this writer carries the claim
@@ -136,7 +173,10 @@ Future<bool> writeCallTranscript({
     return false;
   }
 
-  await send(content.toJson(), CallTranscriptContent.txnId(callKey, senderId));
+  await send(
+    content.toJson(),
+    CallTranscriptContent.txnId(callKey, senderId, deviceId),
+  );
   return true;
 }
 

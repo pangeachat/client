@@ -43,40 +43,42 @@ class VocabAnalyticsListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Widget tile = HoverBuilder(
-      builder: (context, hovered) => Material(
-        type: MaterialType.transparency,
-        child: InkWell(
-          borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-          onTap: onTap,
-          onLongPress: onLongPress,
-          child: Container(
-            height: maxWidth,
-            width: maxWidth,
-            padding: EdgeInsets.all(padding),
-            decoration: BoxDecoration(
-              color: hovered || selected
-                  ? textColor.withAlpha(20)
-                  : Colors.transparent,
-              borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                StreamBuilder(
-                  // Read Matrix only when actually listening, so a tile pumped
-                  // with `listen: false` needs no Matrix ancestor and can be
-                  // widget-tested in a bare MaterialApp.
-                  stream: listen
-                      ? Matrix.of(context).analyticsDataService.updateDispatcher
-                            .lemmaUpdateStream(constructId)
-                      : null,
-                  builder: (context, snapshot) {
-                    final emoji =
-                        snapshot.data?.emojis?.firstOrNull ??
-                        (listen ? constructId.userSetEmoji : null);
+    // The stream is hoisted above the whole tile (not just the emoji slot) so
+    // the accessible name below can carry a live emoji change too (#8726).
+    return StreamBuilder(
+      // Read Matrix only when actually listening, so a tile pumped
+      // with `listen: false` needs no Matrix ancestor and can be
+      // widget-tested in a bare MaterialApp.
+      stream: listen
+          ? Matrix.of(context).analyticsDataService.updateDispatcher
+                .lemmaUpdateStream(constructId)
+          : null,
+      builder: (context, snapshot) {
+        final emoji =
+            snapshot.data?.emojis?.firstOrNull ??
+            (listen ? constructId.userSetEmoji : null);
 
-                    return Container(
+        final Widget tile = HoverBuilder(
+          builder: (context, hovered) => Material(
+            type: MaterialType.transparency,
+            child: InkWell(
+              borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+              onTap: onTap,
+              onLongPress: onLongPress,
+              child: Container(
+                height: maxWidth,
+                width: maxWidth,
+                padding: EdgeInsets.all(padding),
+                decoration: BoxDecoration(
+                  color: hovered || selected
+                      ? textColor.withAlpha(20)
+                      : Colors.transparent,
+                  borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
                       alignment: Alignment.center,
                       height: (maxWidth - padding * 2) * 0.6,
                       child: emoji != null
@@ -89,44 +91,53 @@ class VocabAnalyticsListTile extends StatelessWidget {
                                 color: textColor.withAlpha(100),
                               ),
                             ),
-                    );
-                  },
+                    ),
+                    Container(
+                      alignment: Alignment.center,
+                      padding: const EdgeInsets.only(top: 4),
+                      height: (maxWidth - padding * 2) * 0.4,
+                      child: ShrinkableText(
+                        text: constructId.lemma,
+                        maxWidth: maxWidth - padding * 2,
+                        style: TextStyle(fontSize: 16, color: textColor),
+                      ),
+                    ),
+                  ],
                 ),
-                Container(
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.only(top: 4),
-                  height: (maxWidth - padding * 2) * 0.4,
-                  child: ShrinkableText(
-                    text: constructId.lemma,
-                    maxWidth: maxWidth - padding * 2,
-                    style: TextStyle(fontSize: 16, color: textColor),
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
-        ),
-      ),
-    );
+        );
 
-    if (!blocked) return tile;
-
-    // One semantics node for the whole tile: the inner InkWell and lemma text
-    // are excluded so a screen reader reads "<lemma>, deleted" once rather than
-    // the lemma twice, and the tap/long-press are re-exposed here so the row
-    // stays reachable — Playwright resolves controls by role + name.
-    //
-    // Dimming is the only visual marker. That would normally be colour-alone,
-    // but every tile on the deleted-vocab page is blocked, so a per-tile badge
-    // marks nothing the page title doesn't already say — and the accessible
-    // name below carries the state for anyone not seeing the dimming.
-    return Semantics(
-      label: L10n.of(context).deletedWordLabel(constructId.lemma),
-      button: true,
-      container: true,
-      onTap: onTap,
-      onLongPress: onLongPress,
-      child: ExcludeSemantics(child: Opacity(opacity: 0.5, child: tile)),
+        // One semantics node for the whole tile, both branches: the inner
+        // tree is excluded and tap/long-press re-exposed here so the row
+        // stays reachable — Playwright resolves controls by role + name.
+        //
+        // Blocked: "<lemma>, deleted" once, rather than the lemma twice.
+        // Dimming is the only visual marker. That would normally be
+        // colour-alone, but every tile on the deleted-vocab page is blocked,
+        // so a per-tile badge marks nothing the page title doesn't already
+        // say — and the accessible name carries the state for anyone not
+        // seeing the dimming.
+        //
+        // Unblocked (#8726): "<lemma>, <emoji if set>, <stage>". Without
+        // this, the no-emoji placeholder dash was a text node — tiles
+        // announced as "-, <lemma>" — and the word's growth stage reached
+        // assistive tech nowhere.
+        final l10n = L10n.of(context);
+        return Semantics(
+          label: blocked
+              ? l10n.deletedWordLabel(constructId.lemma)
+              : [constructId.lemma, ?emoji, level.displayName(l10n)].join(', '),
+          button: true,
+          container: true,
+          onTap: onTap,
+          onLongPress: onLongPress,
+          child: ExcludeSemantics(
+            child: blocked ? Opacity(opacity: 0.5, child: tile) : tile,
+          ),
+        );
+      },
     );
   }
 }

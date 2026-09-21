@@ -105,22 +105,41 @@ class VocabAnalyticsListView extends StatelessWidget {
               .where((e) => e.lemmaCategory == constructLevelCategory)
               .length;
 
-          return InkWell(
+          // One named node per chip (#8726): the visual is a stage icon + a
+          // count badge, so without a label the badge count is the button's
+          // whole accessible name — a screen reader hears "14" with no
+          // referent. The inner tree is excluded and the tap re-exposed here
+          // (excluding alone would strip the InkWell's semantic tap action).
+          return Semantics(
+            label: constructLevelCategory.displayName(L10n.of(context)),
+            value: count.toString(),
+            selected:
+                controller.selectedConstructLevel == constructLevelCategory,
+            button: true,
+            container: true,
             onTap: () =>
                 controller.setSelectedConstructLevel(constructLevelCategory),
-            customBorder: const CircleBorder(),
-            child: Container(
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color:
-                    controller.selectedConstructLevel == constructLevelCategory
-                    ? constructLevelCategory.color(context).withAlpha(50)
-                    : null,
-              ),
-              padding: const EdgeInsets.all(8.0),
-              child: Badge(
-                label: Text(count.toString()),
-                child: constructLevelCategory.icon(40),
+            child: ExcludeSemantics(
+              child: InkWell(
+                onTap: () => controller.setSelectedConstructLevel(
+                  constructLevelCategory,
+                ),
+                customBorder: const CircleBorder(),
+                child: Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color:
+                        controller.selectedConstructLevel ==
+                            constructLevelCategory
+                        ? constructLevelCategory.color(context).withAlpha(50)
+                        : null,
+                  ),
+                  padding: const EdgeInsets.all(8.0),
+                  child: Badge(
+                    label: Text(count.toString()),
+                    child: constructLevelCategory.icon(40),
+                  ),
+                ),
               ),
             ),
           );
@@ -188,25 +207,34 @@ class VocabAnalyticsListView extends StatelessWidget {
                   FadeTransition(opacity: animation, child: child),
               child: Column(
                 children: [
+                  // The search row and the filter-chip row are exclusive
+                  // states of one control area, so each carries the same
+                  // "Filter and search" group (#8727 review) — exactly one
+                  // renders at a time.
                   if (controller.isSearching)
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      key: const ValueKey('search'),
-                      children: [
-                        Expanded(
-                          child: PangeaSearchBar(
-                            controller: controller.searchController,
-                            labelText: L10n.of(context).searchVocabHint,
-                            autofocus: true,
-                            focusNode: controller.searchFocusNode,
-                            suffixIcon: IconButton(
-                              tooltip: L10n.of(context).close,
-                              icon: const Icon(Icons.close),
-                              onPressed: controller.toggleSearching,
+                    Semantics(
+                      label: L10n.of(context).filterAndSearch,
+                      container: true,
+                      explicitChildNodes: true,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        key: const ValueKey('search'),
+                        children: [
+                          Expanded(
+                            child: PangeaSearchBar(
+                              controller: controller.searchController,
+                              labelText: L10n.of(context).searchVocabHint,
+                              autofocus: true,
+                              focusNode: controller.searchFocusNode,
+                              suffixIcon: IconButton(
+                                tooltip: L10n.of(context).close,
+                                icon: const Icon(Icons.close),
+                                onPressed: controller.toggleSearching,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   if (controller.selectMode)
                     Row(
@@ -236,11 +264,18 @@ class VocabAnalyticsListView extends StatelessWidget {
                       ],
                     ),
                   if (!controller.selectMode && !controller.isSearching)
-                    Row(
-                      spacing: FluffyThemes.isColumnMode(context) ? 16.0 : 4.0,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      key: const ValueKey('filters'),
-                      children: filters,
+                    Semantics(
+                      label: L10n.of(context).filterAndSearch,
+                      container: true,
+                      explicitChildNodes: true,
+                      child: Row(
+                        spacing: FluffyThemes.isColumnMode(context)
+                            ? 16.0
+                            : 4.0,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        key: const ValueKey('filters'),
+                        children: filters,
+                      ),
                     ),
                 ],
               ),
@@ -248,123 +283,130 @@ class VocabAnalyticsListView extends StatelessWidget {
           ),
         ),
         Expanded(
-          child: CustomScrollView(
-            key: const PageStorageKey("vocab-analytics-list-view-page-key"),
-            slivers: [
-              // Full-width tooltip
-              if (!controller.isSearching &&
-                  controller.selectedConstructLevel == null)
-                SliverToBoxAdapter(
-                  child: InstructionsInlineTooltip(
-                    instructionsEnum: sortedFilteredVocab.isEmpty
-                        ? InstructionsEnum.analyticsVocabListEmpty
-                        : InstructionsEnum.analyticsVocabList,
+          // The word grid announces as its own titled region ("Vocab list",
+          // #8727 review), separating it from the filter group above.
+          child: Semantics(
+            label: L10n.of(context).listLabel(L10n.of(context).vocab),
+            container: true,
+            explicitChildNodes: true,
+            child: CustomScrollView(
+              key: const PageStorageKey("vocab-analytics-list-view-page-key"),
+              slivers: [
+                // Full-width tooltip
+                if (!controller.isSearching &&
+                    controller.selectedConstructLevel == null)
+                  SliverToBoxAdapter(
+                    child: InstructionsInlineTooltip(
+                      instructionsEnum: sortedFilteredVocab.isEmpty
+                          ? InstructionsEnum.analyticsVocabListEmpty
+                          : InstructionsEnum.analyticsVocabList,
+                    ),
                   ),
-                ),
 
-              // Grid of vocab tiles
-              sortedFilteredVocab.isEmpty
-                  ? SliverToBoxAdapter(
-                      child: controller.selectedConstructLevel != null
-                          ? Padding(
-                              padding: const EdgeInsets.all(24.0),
-                              child: Text(
-                                controller.selectedConstructLevel ==
-                                        ConstructLevelEnum.seeds
-                                    ? L10n.of(context).vocabLevelsDescSeed
-                                    : L10n.of(context).vocabLevelsDesc,
-                                style: Theme.of(context).textTheme.bodyMedium,
-                                textAlign: TextAlign.center,
-                              ),
-                            )
-                          : const SizedBox.shrink(),
-                    )
-                  : SliverGrid(
-                      gridDelegate:
-                          const SliverGridDelegateWithMaxCrossAxisExtent(
-                            maxCrossAxisExtent: 100.0,
-                            mainAxisExtent: 100.0,
-                            crossAxisSpacing: 8.0,
-                            mainAxisSpacing: 8.0,
-                          ),
-                      delegate: SliverChildBuilderDelegate((context, index) {
-                        final vocabItem = sortedFilteredVocab[index];
-                        return VocabAnalyticsListTile(
-                          onTap: controller.selectMode
-                              ? () => controller.toggleSelectedConstruct(
-                                  vocabItem.id,
-                                )
-                              : () {
-                                  TtsController.tryToSpeak(
-                                    vocabItem.id.lemma,
-                                    langCode: MatrixState
-                                        .pangeaController
-                                        .userController
-                                        .userL2Code!,
-                                    useCase: TtsUseCase.words,
-                                    pos: vocabItem.id.category,
-                                    // Listening category 5 (#104): a WORD the
-                                    // learner tapped.
-                                    //
-                                    // Roomless, and permanently so. The vocab
-                                    // list is a cross-room aggregate of every
-                                    // word the learner has met, so there is no
-                                    // one room this tap belongs to — picking
-                                    // any of the rooms the word came from would
-                                    // be a guess dressed as a fact. Null says
-                                    // it plainly, and the serving side answers
-                                    // it the same way: counted in the language,
-                                    // absent from any course.
-                                    exposure: ListeningExposureDeclaration(
-                                      [vocabItem.id],
+                // Grid of vocab tiles
+                sortedFilteredVocab.isEmpty
+                    ? SliverToBoxAdapter(
+                        child: controller.selectedConstructLevel != null
+                            ? Padding(
+                                padding: const EdgeInsets.all(24.0),
+                                child: Text(
+                                  controller.selectedConstructLevel ==
+                                          ConstructLevelEnum.seeds
+                                      ? L10n.of(context).vocabLevelsDescSeed
+                                      : L10n.of(context).vocabLevelsDesc,
+                                  style: Theme.of(context).textTheme.bodyMedium,
+                                  textAlign: TextAlign.center,
+                                ),
+                              )
+                            : const SizedBox.shrink(),
+                      )
+                    : SliverGrid(
+                        gridDelegate:
+                            const SliverGridDelegateWithMaxCrossAxisExtent(
+                              maxCrossAxisExtent: 100.0,
+                              mainAxisExtent: 100.0,
+                              crossAxisSpacing: 8.0,
+                              mainAxisSpacing: 8.0,
+                            ),
+                        delegate: SliverChildBuilderDelegate((context, index) {
+                          final vocabItem = sortedFilteredVocab[index];
+                          return VocabAnalyticsListTile(
+                            onTap: controller.selectMode
+                                ? () => controller.toggleSelectedConstruct(
+                                    vocabItem.id,
+                                  )
+                                : () {
+                                    TtsController.tryToSpeak(
+                                      vocabItem.id.lemma,
                                       langCode: MatrixState
                                           .pangeaController
                                           .userController
                                           .userL2Code!,
-                                    ),
-                                    listening: DosageTtsListeningProbe(
-                                      category:
-                                          DosageListeningCategory.wordAudio,
-                                      roomId: null,
-                                      // Read live: an account switch or a token
-                                      // refresh mid-playback must not post
-                                      // under a stale identity.
-                                      userId: () => MatrixState
-                                          .pangeaController
-                                          .matrixState
-                                          .client
-                                          .userID,
-                                      accessToken: () => MatrixState
-                                          .pangeaController
-                                          .matrixState
-                                          .client
-                                          .accessToken,
-                                    ),
-                                  );
-                                  AnalyticsNavigationUtil.navigateToAnalytics(
-                                    context: context,
-                                    view: ProgressIndicatorEnum.wordsUsed,
-                                    construct: vocabItem.id,
-                                  );
-                                },
-                          onLongPress: () {
-                            controller.toggleSelectedConstruct(vocabItem.id);
-                          },
-                          constructId: vocabItem.id,
-                          textColor:
-                              Theme.of(context).brightness == Brightness.light
-                              ? vocabItem.lemmaCategory.darkColor(context)
-                              : vocabItem.lemmaCategory.color(context),
-                          level: vocabItem.lemmaCategory,
-                          selected:
-                              vocabItem.id == selectedConstruct ||
-                              controller.selectedConstructs.contains(
-                                vocabItem.id,
-                              ),
-                        );
-                      }, childCount: sortedFilteredVocab.length),
-                    ),
-            ],
+                                      useCase: TtsUseCase.words,
+                                      pos: vocabItem.id.category,
+                                      // Listening category 5 (#104): a WORD the
+                                      // learner tapped.
+                                      //
+                                      // Roomless, and permanently so. The vocab
+                                      // list is a cross-room aggregate of every
+                                      // word the learner has met, so there is no
+                                      // one room this tap belongs to — picking
+                                      // any of the rooms the word came from would
+                                      // be a guess dressed as a fact. Null says
+                                      // it plainly, and the serving side answers
+                                      // it the same way: counted in the language,
+                                      // absent from any course.
+                                      exposure: ListeningExposureDeclaration(
+                                        [vocabItem.id],
+                                        langCode: MatrixState
+                                            .pangeaController
+                                            .userController
+                                            .userL2Code!,
+                                      ),
+                                      listening: DosageTtsListeningProbe(
+                                        category:
+                                            DosageListeningCategory.wordAudio,
+                                        roomId: null,
+                                        // Read live: an account switch or a token
+                                        // refresh mid-playback must not post
+                                        // under a stale identity.
+                                        userId: () => MatrixState
+                                            .pangeaController
+                                            .matrixState
+                                            .client
+                                            .userID,
+                                        accessToken: () => MatrixState
+                                            .pangeaController
+                                            .matrixState
+                                            .client
+                                            .accessToken,
+                                      ),
+                                    );
+                                    AnalyticsNavigationUtil.navigateToAnalytics(
+                                      context: context,
+                                      view: ProgressIndicatorEnum.wordsUsed,
+                                      construct: vocabItem.id,
+                                    );
+                                  },
+                            onLongPress: () {
+                              controller.toggleSelectedConstruct(vocabItem.id);
+                            },
+                            constructId: vocabItem.id,
+                            textColor:
+                                Theme.of(context).brightness == Brightness.light
+                                ? vocabItem.lemmaCategory.darkColor(context)
+                                : vocabItem.lemmaCategory.color(context),
+                            level: vocabItem.lemmaCategory,
+                            selected:
+                                vocabItem.id == selectedConstruct ||
+                                controller.selectedConstructs.contains(
+                                  vocabItem.id,
+                                ),
+                          );
+                        }, childCount: sortedFilteredVocab.length),
+                      ),
+              ],
+            ),
           ),
         ),
       ],

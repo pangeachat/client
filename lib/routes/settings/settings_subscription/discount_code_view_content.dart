@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/subscription/repo_v2/checkout_request.dart';
+import 'package:fluffychat/features/subscription/widgets/subscription_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/discount_code_view_model.dart';
@@ -22,6 +23,7 @@ class DiscountCodeViewContent extends StatelessWidget {
     final theme = Theme.of(context);
     final inputArea = Container(
       decoration: BoxDecoration(
+        color: theme.colorScheme.surface,
         border: Border.all(color: theme.disabledColor),
         borderRadius: BorderRadius.circular(32.0),
       ),
@@ -63,16 +65,20 @@ class DiscountCodeViewContent extends StatelessWidget {
     final errorDisplay = Column(
       spacing: 10.0,
       children: [
-        Row(
-          spacing: 10.0,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(Icons.error_outline, color: AppConfig.error, size: 24.0),
-            Text(
-              L10n.of(context).invalidDiscountCode,
-              style: TextStyle(color: AppConfig.error),
-            ),
-          ],
+        SubscriptionCard(
+          child: Row(
+            spacing: 10.0,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.error_outline, color: AppConfig.error, size: 24.0),
+              Flexible(
+                child: Text(
+                  L10n.of(context).invalidDiscountCode,
+                  style: TextStyle(color: AppConfig.error),
+                ),
+              ),
+            ],
+          ),
         ),
         inputArea,
       ],
@@ -98,20 +104,24 @@ class DiscountCodeViewContent extends StatelessWidget {
                       switch (productsState) {
                         AsyncLoading() ||
                         AsyncIdle() => LinearProgressIndicator(),
-                        AsyncError() => Row(
-                          spacing: 10.0,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Icon(
-                              Icons.error_outline,
-                              color: AppConfig.error,
-                              size: 24.0,
-                            ),
-                            Text(
-                              L10n.of(context).oopsSomethingWentWrong,
-                              style: TextStyle(color: AppConfig.error),
-                            ),
-                          ],
+                        AsyncError() => SubscriptionCard(
+                          child: Row(
+                            spacing: 10.0,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(
+                                Icons.error_outline,
+                                color: AppConfig.error,
+                                size: 24.0,
+                              ),
+                              Flexible(
+                                child: Text(
+                                  L10n.of(context).oopsSomethingWentWrong,
+                                  style: TextStyle(color: AppConfig.error),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                         AsyncLoaded(value: final plans) =>
                           ValueListenableBuilder(
@@ -138,18 +148,22 @@ class DiscountCodeViewContent extends StatelessWidget {
                           ),
                       },
                 ),
-                Row(
-                  spacing: 10.0,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(Icons.check, color: AppConfig.success, size: 24.0),
-                    if (discountCopy != null)
-                      Text(
-                        L10n.of(context).discountApplied(discountCopy),
-                        style: TextStyle(color: AppConfig.success),
-                      ),
-                  ],
-                ),
+                if (discountCopy != null)
+                  SubscriptionCard(
+                    child: Row(
+                      spacing: 10.0,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.check, color: AppConfig.success, size: 24.0),
+                        Flexible(
+                          child: Text(
+                            L10n.of(context).discountApplied(discountCopy),
+                            style: TextStyle(color: AppConfig.success),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ValueListenableBuilder(
                   valueListenable: viewModel.selectedSubscription,
                   builder: (context, selected, _) => ElevatedButton(

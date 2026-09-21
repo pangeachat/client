@@ -15,6 +15,7 @@ import 'package:fluffychat/routes/world/user_cluster_view_model_builder.dart';
 import 'package:fluffychat/routes/world/world_user_cluster.dart';
 import 'package:fluffychat/routes/world/xp_border_painter.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
+import 'package:fluffychat/widgets/layouts/workspace_shell.dart';
 
 /// The full bar's plain-values rendering, isolated from the Matrix/analytics
 /// data plumbing above so it is unit-testable without a live Client: every
@@ -99,6 +100,7 @@ class WorldAnalyticsBarInternal extends StatelessWidget {
         return Semantics(
           container: true,
           label: L10n.of(context).analyticsAndSettingsLabel,
+          sortKey: BrowseOrder.cluster,
           child: Row(
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.center,

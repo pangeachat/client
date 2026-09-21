@@ -9,6 +9,7 @@ import 'package:fluffychat/routes/chat/calls/transcript_writer.dart';
 
 const _callKey = '\$membership:example.com';
 const _sender = '@alice:example.com';
+const _device = 'PHONE';
 
 /// Records what would have gone to the homeserver.
 class _Sent {
@@ -32,20 +33,30 @@ Future<bool> _write(
   int chunksTranscribed = 2,
   int chunksLost = 0,
   int chunksSuppressed = 0,
+  int chunksDiscarded = 0,
+  int captureDroppedMs = 0,
   bool drainComplete = true,
   bool encrypted = false,
   String? langCode = 'es',
   ClockAnchor? clockAnchor,
+  String? deviceId = _device,
+  List<CaptureSpan> keptSpans = const [],
+  List<CaptureSpan> discardedSpans = const [],
   int maxBytes = kMaxHalfBytes,
 }) => writeCallTranscript(
   send: sent.call,
   callKey: callKey,
   senderId: _sender,
+  deviceId: deviceId,
   segments: [for (final t in texts) TranscriptSegment(t)],
   chunksCaptured: chunksCaptured,
   chunksTranscribed: chunksTranscribed,
   chunksLost: chunksLost,
   chunksSuppressed: chunksSuppressed,
+  chunksDiscarded: chunksDiscarded,
+  keptSpans: keptSpans,
+  discardedSpans: discardedSpans,
+  captureDroppedMs: captureDroppedMs,
   captureRefused: false,
   drainComplete: drainComplete,
   encrypted: encrypted,
@@ -55,6 +66,94 @@ Future<bool> _write(
 );
 
 void main() {
+  group('what the half says about audio it did not send', () {
+    test('the two counts reach the wire and come back', () async {
+      // The published event is the only artefact a study can read afterwards.
+      // A count that stops at this writer is a count nobody will ever see.
+      final sent = _Sent();
+      await _write(sent, chunksDiscarded: 2, captureDroppedMs: 800);
+
+      final parsed = CallTranscriptContent.fromJson(sent.only)!;
+      expect(parsed.accounting.chunksDiscarded, 2);
+      expect(parsed.accounting.captureDroppedMs, 800);
+    });
+
+    test('dropped audio makes the half admit a gap', () async {
+      final sent = _Sent();
+      await _write(sent, captureDroppedMs: 800);
+
+      final parsed = CallTranscriptContent.fromJson(sent.only)!;
+      expect(parsed.accounting.writerAdmitsGaps, isTrue);
+    });
+
+    test('a deferred chunk does not', () async {
+      // A correct discard loses nothing, so a handover must not publish a
+      // transcript that reads as missing words.
+      final sent = _Sent();
+      await _write(sent, chunksCaptured: 3, chunksDiscarded: 1);
+
+      final parsed = CallTranscriptContent.fromJson(sent.only)!;
+      expect(parsed.accounting.chunksDiscarded, 1);
+      expect(parsed.accounting.writerAdmitsGaps, isFalse);
+    });
+
+    test('an ordinary half claims neither', () async {
+      final sent = _Sent();
+      await _write(sent);
+
+      final parsed = CallTranscriptContent.fromJson(sent.only)!;
+      expect(parsed.accounting.chunksDiscarded, 0);
+      expect(parsed.accounting.captureDroppedMs, 0);
+      expect(parsed.accounting.writerAdmitsGaps, isFalse);
+    });
+  });
+
+  group('the stretches the half states', () {
+    test('reach the wire and come back', () async {
+      // Without them, the count of discarded chunks names no stretch, and the
+      // only question a reader could ask of it was whether some OTHER half
+      // existed -- which is a different question and cleared a discard whose
+      // audio nothing held.
+      const kept = CaptureSpan(fromMs: 1787994000000, toMs: 1787994020000);
+      const handed = CaptureSpan(fromMs: 1787994020000, toMs: 1787994024000);
+      final sent = _Sent();
+      await _write(
+        sent,
+        chunksDiscarded: 1,
+        keptSpans: const [kept],
+        discardedSpans: const [handed],
+      );
+
+      final parsed = CallTranscriptContent.fromJson(sent.only)!;
+      expect(parsed.keptSpans, const [kept]);
+      expect(parsed.discardedSpans, const [handed]);
+    });
+
+    test('are inside what the packer measures', () async {
+      // A half packed to the budget and then given its extents would cross the
+      // line it was just checked against, and the server rejects the WHOLE
+      // half rather than its tail -- so the coverage statement has to be on the
+      // event the packer weighs. It is also the one part a packer may not shed:
+      // it trims segments, and a half that dropped its extents to fit would
+      // silently stop excusing a sibling's discard.
+      final withSpans = _Sent();
+      final without = _Sent();
+      await _write(
+        withSpans,
+        keptSpans: const [
+          CaptureSpan(fromMs: 1787994000000, toMs: 1787994020000),
+        ],
+      );
+      await _write(without);
+
+      expect(withSpans.bytes, greaterThan(without.bytes));
+      expect(
+        CallTranscriptContent.fromJson(withSpans.only)!.keptSpans,
+        hasLength(1),
+      );
+    });
+  });
+
   group('writeCallTranscript', () {
     test('writes one half, anchored so it can be found again', () async {
       final sent = _Sent();
@@ -68,7 +167,33 @@ void main() {
       });
       expect(
         sent.txnIds.single,
-        CallTranscriptContent.txnId(_callKey, _sender),
+        CallTranscriptContent.txnId(_callKey, _sender, _device),
+      );
+    });
+
+    test('the writing device reaches the wire and comes back', () async {
+      // The seam the reader's grouping rests on. Without it every half this
+      // app writes is indistinguishable from the learner's other device's, and
+      // the reader keeps one of the two -- which is the defect, reached from
+      // the writer instead of the reader.
+      final sent = _Sent();
+      await _write(sent);
+
+      expect(sent.only['device_id'], _device);
+      expect(CallTranscriptContent.fromJson(sent.only)!.deviceId, _device);
+    });
+
+    test('a writer that cannot name its device says nothing instead', () async {
+      // Absent is the honest answer for a client that does not know, and it is
+      // the same absence an older build leaves. Writing a placeholder would be
+      // a device id that groups every such half together under a name.
+      final sent = _Sent();
+      await _write(sent, deviceId: null);
+
+      expect(sent.only.containsKey('device_id'), isFalse);
+      expect(
+        sent.txnIds.single,
+        CallTranscriptContent.txnId(_callKey, _sender, null),
       );
     });
 
@@ -362,6 +487,7 @@ void main() {
         send: sent.call,
         callKey: _callKey,
         senderId: _sender,
+        deviceId: _device,
         segments: const [
           TranscriptSegment('hola', atMs: 1700000000000),
           TranscriptSegment('que tal', atMs: 1700000001000, spanMs: 44000),
@@ -370,6 +496,10 @@ void main() {
         chunksTranscribed: 2,
         chunksLost: 0,
         chunksSuppressed: 0,
+        chunksDiscarded: 0,
+        keptSpans: const [],
+        discardedSpans: const [],
+        captureDroppedMs: 0,
         captureRefused: false,
         drainComplete: true,
       );
@@ -390,6 +520,7 @@ void main() {
         send: sent.call,
         callKey: _callKey,
         senderId: _sender,
+        deviceId: _device,
         segments: [
           for (var i = 0; i < 400; i++)
             TranscriptSegment(
@@ -402,6 +533,10 @@ void main() {
         chunksTranscribed: 400,
         chunksLost: 0,
         chunksSuppressed: 0,
+        chunksDiscarded: 0,
+        keptSpans: const [],
+        discardedSpans: const [],
+        captureDroppedMs: 0,
         captureRefused: false,
         drainComplete: true,
         maxBytes: 2000,
