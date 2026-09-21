@@ -2162,3 +2162,41 @@ until the design is Codex-green.
 - OPEN follow-ups (none block the e2e/PR of the recording feature): (a) MP3-vs-OGG iOS/macOS reconnect-cue
   fix vs main (dropped in the ring->main merge); (b) _keepPending per-key serialization (negligible
   pre-existing race); (c) Gabby's l10n backfill for the en-only keys (l10n_sync_check red until then).
+
+## 2026-09-21 — transcript ORDERING bug root-caused; DESIGN PIVOT approved (recording-based transcript)
+- SYMPTOM (owner): a clean call (both halves ~1:04, no perm gap, recordings perfect) rendered the transcript
+  badly out of order, per-turn times not matching the recording. Distinct from the earlier perm-gap diagnosis.
+- ROOT CAUSE (proven on real events, call_key $HbAqRPluNz...): the phone half returned 3 COARSE chunk-level
+  segments (spans 25100ms, 13632ms) where the provider's word list failed the all-or-nothing 1:1 alignment
+  gate (_alignedToTranscript -> null -> whole-chunk fallback). Placement rule orderKeyMs = atMs + spanMs
+  (chunk-END, chosen to avoid answer-before-question) then dragged the phone's OPENING ("hello yeah yeah how
+  about you...", spoken ~1.5s) to render at 26.6s, after 6 of the web half's turns. Web half returned 10
+  EXACT segments (span=None) so it placed correctly. Clocks were fine (offsets 5ms/350ms); ordering math is
+  correct GIVEN the data -- the defect is coarse STT positions + a 45s chunk target making "one chunk late" =
+  up to 45s late. Dev test captures aligned 334/336, so this fallback almost never fired in testing; the real
+  phone hit it 2/3 chunks. Also observed: the phone half came back lowercase/unpunctuated vs web's punctuated
+  -> STT provider-output VARIANCE (prior clean call's phone half WAS exact+punctuated). LESSON logged below.
+- CLASS BUG: alignment is all-or-nothing per chunk; one re-cut word in a long chunk discards ALL its timing
+  and collapses it to one blob at chunk-END.
+- DESIGN PIVOT (owner approved, this session): transcript source becomes each user's OWN uploaded full
+  recording, transcribed post-call in ONE clean pass, positioned by word timings DIRECTLY (relax the
+  punctuation-match gate; text stays the transcript's own so no word is put in a mouth). Per-half LIVE 45s
+  transcript is the FALLBACK when a recording didn't upload (mic-perm gap / device death); halves decided
+  independently = fault tolerant. Preserves per-speaker attribution + per-speaker target language (NOT the
+  mix). Aligns with the documented lazy/on-demand intent.
+  - rec-1 (owner-accepted cost posture): capture live chunks but only spend STT on them if the recording
+    UPLOAD failed (known at call-end while chunks in memory) -> one STT pass per half, no double-spend, makes
+    A free on the happy path. Edge traded: upload-ok-but-later-unreadable -> no live fallback (rare).
+  - A (owner: "if needed"): shrink the live chunk target so the FALLBACK half is at most one short chunk off.
+  - C (owner: "we need that"): choreo STT ALWAYS returns word-level timestamps (correctness) + punctuation
+    (readability), consistently for web + mobile audio. SEPARATE choreo PR; can't diagnose the variance from
+    the client DB (STT responses not persisted). Decoupled from the client fix (client positions by timings;
+    C polishes text).
+- GOVERNANCE: this rewrites voice-video-calls.instructions.md (4 sections: What the transcript says / What a
+  turn's time promises / The words are the transcript's... / Failure is not all-or-nothing). Per the
+  invariant, a human signs every doc edit -- DRAFT for owner review BEFORE commit, THEN code. No PR w/o go.
+- STATE: branch satvik/call-features-combined, tree clean, analyze 0, existing feature cold-gate green.
+  Recording + merge + player + UI DONE. Transcript rework (#2 client, the main lift) is the only path to PR2.
+- NEXT (this session): draft the doc delta for owner review -> on OK, implement client recording-based path
+  (rec-1) + A, cold-gate each chunk, unit tests proved-to-fail-without-fix -> fresh APK+web -> owner phone
+  e2e -> final cross-model gate -> PR2 on owner go. C = parallel choreo track, fast-follow PR.
