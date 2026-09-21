@@ -2677,3 +2677,17 @@ until the design is Codex-green.
   P6 E2E. Flag stays default OFF until E2E-proven.
 - NOTE: flag currently 'false' in the worktree/web .env + the installed phone build is flag-off (old
   live path). Re-enable for E2E once P1-P3 land.
+
+### 2026-09-21 (cont) — P1 cold-gate found 2 real bugs; fixed + mutation-proven; re-gating
+- P1 gate (gate-p1-chunking) = ISSUES-FOUND (both proven by the reviewer's arithmetic):
+  1. A NEGATIVE/overlong piece-local word timestamp, once shifted by the piece start, could pass the
+     whole-recording bound and be placed at a spurious absolute time (single-piece path would reject
+     it). FIX (12ae6d827b): bound each timing to its OWN piece [0,pieceDurationMs] before the offset
+     (inline `shift`, since momentWithinChunk is @visibleForTesting) -> out-of-piece becomes null
+     (floor-placed). Pinned by a test MUTATION-PROVEN to fail without the bound (+0 -1).
+  2. Piece cap < one frame -> maxPieceBytes 0 -> divide-by-zero (test-override only; caught -> [] but
+     ugly). FIX: clamp maxPieceBytes = max(frame, aligned).
+  Also confirmed GREEN by the gate: extraction behavior-preserving; single-piece path gets full PCM;
+  silent-skip keeps absolute placement; contiguous coverage for valid caps.
+- recorder 55/55, analyze+format clean. P1 re-gate RUNNING (gate-p1-chunking-v2).
+- Commits: c75b6a3d19 (P1), 12ae6d827b (P1 gate fixes).
