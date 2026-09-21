@@ -2626,3 +2626,28 @@ until the design is Codex-green.
   login preserved). Laptop web (16kHz) unchanged -- it never needed the downsample. Stack all up.
 - AWAITING owner E2E round 2: re-call, expect BOTH halves recording-based (both unpunctuated),
   phone half complete incl. mute/unmute gap. Then verify via verify_call_transcript.py + PR2 on go.
+
+### 2026-09-21 (cont) — E2E round 2: phone half lost to post-hangup backgrounding; OWNER DEFERS to follow-up
+- E2E round 2 (2:22 call): BOTH audio halves uploaded (learner 16kHz 4.6MB, calltester 48kHz 13.6MB);
+  learner TRANSCRIPT half recording-based + complete (14 segs); calltester TRANSCRIPT half ABSENT.
+  calltester's downsampled STT returned 200 (transcript WAS built) -- so the publish, not STT, failed.
+- ROOT CAUSE (issue 2): the reorder publishes the transcript AFTER recorder.finish() awaits the ~25s
+  whole-recording STT. On the phone the user had walked to the laptop; the app backgrounded, and the
+  late _publishTranscript (25s post-hangup, +3 retries) was dropped. Laptop tab stayed open -> its
+  half published. Reader also shows stale "No transcript" until refresh (late half not live-picked-up).
+- ISSUE 1 (owner's duration concern, valid): choreo caps STT audio at 10MB base64 (hard-coded in
+  speech_to_text_schema.py). Downsample buys ~4min at 16kHz; a 10-60min call still overflows.
+  Compression (choreo accepts OGG_OPUS) doesn't fully solve it -- Google sync STT ~1min inline cap ->
+  long audio needs chunked/async STT regardless.
+- SHARED ROOT: whole-recording transcription is heavy (size + ~25s..minutes) and post-hangup on the
+  CLIENT is fragile (mobile backgrounding + the cap). Presented 3 options: A client-chunk+keepalive+
+  live-floor, B compress (rejected: doesn't solve Google 1min), C server-side (choreo transcribes the
+  already-uploaded recording, half published server-side -- robust for any duration, no client
+  lifecycle).
+- OWNER DECISION (verbatim intent): defer the ENTIRE recording-based transcript to a FOLLOW-UP
+  (server-side / Option C makes sense for reliability); FOR NOW flip the flag back OFF and retest the
+  OLD live-chunk architecture once more.
+- ACTION: CALL_RECORDING_TRANSCRIPT set 'false' in the (gitignored) worktree .env AND build/web/.env.
+  Phone APK rebuilding flag-off (old live path, byte-for-byte per the gates); laptop web just reloads.
+  Committed code UNCHANGED -- the recording-based feature stays flag-gated-dark on the branch; flip is
+  .env-only (the revertibility the feature was built for). Follow-up: server-side recording-based STT.
