@@ -718,6 +718,11 @@ class Message extends StatelessWidget {
                                                             visible:
                                                                 isButton &&
                                                                 !noBubble,
+                                                            // The row's InkWell
+                                                            // is already this
+                                                            // message's Tab
+                                                            // stop.
+                                                            focusable: false,
                                                             builder:
                                                                 (
                                                                   context,

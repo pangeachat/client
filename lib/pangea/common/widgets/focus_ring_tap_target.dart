@@ -144,44 +144,99 @@ class _FocusRingTapTargetState extends State<FocusRingTapTarget> {
       // inside it, below 3:1 on a lit tracker (#8880).
       focusColor: Colors.transparent,
       onFocusChange: (focused) => setState(() => _focused = focused),
-      child: _ring(
-        widget.twoToneRing
-            ? BorderSide(
-                color: _outside
-                    ? FocusRingTapTarget.twoToneInner
-                    : FocusRingTapTarget.twoToneOuter,
-                width: FocusRingTapTarget.ringWidth,
-              )
-            : FocusRingTapTarget.ringSide(context),
-        showRing,
-        // The two-tone ring's band away from the edge: painted first at
-        // double width, so the edge band above it leaves one [ringWidth] of
-        // it showing. Always mounted, so gaining focus never changes the tree.
-        _ring(
-          BorderSide(
-            color: _outside
-                ? FocusRingTapTarget.twoToneOuter
-                : FocusRingTapTarget.twoToneInner,
-            width: 2 * FocusRingTapTarget.ringWidth,
-          ),
-          showRing && widget.twoToneRing,
-          label == null ? widget.child : ExcludeSemantics(child: widget.child),
-        ),
+      child: FocusRing(
+        shape: widget.shape,
+        show: showRing,
+        strokeAlign: widget.ringStrokeAlign,
+        twoTone: widget.twoToneRing,
+        child: label == null
+            ? widget.child
+            : ExcludeSemantics(child: widget.child),
       ),
     );
     if (label == null) return target;
     return Semantics(button: true, label: label, child: target);
   }
+}
 
-  bool get _outside => widget.ringStrokeAlign == BorderSide.strokeAlignOutside;
+/// The ring's paint on its own, for a control that handles its own focus and
+/// activation and only needs the indicator ([PressableButton], #9191).
+/// [show] is the caller's to gate on [FocusRingTapTarget.highlightsEnabled].
+class FocusRing extends StatelessWidget {
+  final OutlinedBorder shape;
+  final bool show;
 
-  Widget _ring(BorderSide side, bool show, Widget child) => DecoratedBox(
+  /// See [FocusRingTapTarget.ringStrokeAlign].
+  final double strokeAlign;
+
+  /// See [FocusRingTapTarget.twoToneRing].
+  final bool twoTone;
+  final Widget child;
+
+  const FocusRing({
+    required this.shape,
+    required this.show,
+    required this.child,
+    this.strokeAlign = BorderSide.strokeAlignInside,
+    this.twoTone = false,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final outside = strokeAlign == BorderSide.strokeAlignOutside;
+    return _RingBand(
+      shape: shape,
+      side: twoTone
+          ? BorderSide(
+              color: outside
+                  ? FocusRingTapTarget.twoToneInner
+                  : FocusRingTapTarget.twoToneOuter,
+              width: FocusRingTapTarget.ringWidth,
+            )
+          : FocusRingTapTarget.ringSide(context),
+      strokeAlign: strokeAlign,
+      show: show,
+      // The two-tone ring's band away from the edge: painted first at double
+      // width, so the edge band above it leaves one [ringWidth] of it
+      // showing. Always mounted, so gaining focus never changes the tree.
+      child: _RingBand(
+        shape: shape,
+        side: BorderSide(
+          color: outside
+              ? FocusRingTapTarget.twoToneOuter
+              : FocusRingTapTarget.twoToneInner,
+          width: 2 * FocusRingTapTarget.ringWidth,
+        ),
+        strokeAlign: strokeAlign,
+        show: show && twoTone,
+        child: child,
+      ),
+    );
+  }
+}
+
+class _RingBand extends StatelessWidget {
+  final OutlinedBorder shape;
+  final BorderSide side;
+  final double strokeAlign;
+  final bool show;
+  final Widget child;
+
+  const _RingBand({
+    required this.shape,
+    required this.side,
+    required this.strokeAlign,
+    required this.show,
+    required this.child,
+  });
+
+  @override
+  Widget build(BuildContext context) => DecoratedBox(
     position: DecorationPosition.foreground,
     decoration: ShapeDecoration(
-      shape: widget.shape.copyWith(
-        side: show
-            ? side.copyWith(strokeAlign: widget.ringStrokeAlign)
-            : BorderSide.none,
+      shape: shape.copyWith(
+        side: show ? side.copyWith(strokeAlign: strokeAlign) : BorderSide.none,
       ),
     ),
     child: child,

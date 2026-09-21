@@ -22,6 +22,13 @@ sealed class OverlayDisplayDetails {
   /// areas and must stay click-through.
   final bool blockPointerThrough;
 
+  /// Makes the overlay modal to the keyboard, the way [blockSemantics] makes
+  /// it modal to a screen reader: Tab cycles through the overlay's own
+  /// controls, Escape dismisses it, and closing hands focus back to whatever
+  /// held it when the overlay opened (#9191). Off by default: most overlays
+  /// are cards or decorations beside page content the learner still uses.
+  final bool keyboardModal;
+
   final bool canPop;
 
   final VoidCallback? onDismiss;
@@ -38,6 +45,7 @@ sealed class OverlayDisplayDetails {
     this.ignorePointer = false,
     this.blockSemantics = false,
     this.blockPointerThrough = false,
+    this.keyboardModal = false,
     this.canPop = true,
     this.onDismiss,
   });
@@ -110,6 +118,7 @@ class CenteredOverlayDisplayDetails extends OverlayDisplayDetails {
     super.ignorePointer = false,
     super.blockSemantics = false,
     super.blockPointerThrough = false,
+    super.keyboardModal = false,
     super.canPop = true,
     super.onDismiss,
   });
