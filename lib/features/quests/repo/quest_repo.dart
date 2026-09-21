@@ -8,6 +8,7 @@ import 'package:sentry_flutter/sentry_flutter.dart' show SentryLevel;
 import 'package:fluffychat/features/activity_sessions/activity_media_block.dart';
 import 'package:fluffychat/features/activity_sessions/activity_media_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
+import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/course_plans/payload_client/payload_client.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/models/learning_objective_model.dart';
@@ -19,16 +20,18 @@ import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/pangea/common/network/rate_limit_pause.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
+import 'package:fluffychat/pangea/common/utils/confirmed_removed_cache.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// A quest plan id that no longer resolves in the CMS (confirmed 404). A known
 /// benign state — old course rooms keep referencing removed quests — which
-/// [QuestRepo.quest] returns WITHOUT reporting; callers render it as a known
-/// state (or report it at warning, never error). The `toString()` matters:
-/// without it, any report arrives in Sentry as `Instance of
-/// 'MissingQuestException'` (CLIENT-DQC, #8094).
+/// callers render as a known state. [QuestRepo.quest] owns its one report:
+/// once per quest id per session, at warning, at the actual fetch (#8691) —
+/// callers never re-report it. The `toString()` matters: without it, any
+/// report arrives in Sentry as `Instance of 'MissingQuestException'`
+/// (CLIENT-DQC, #8094).
 class MissingQuestException implements Exception {
   @override
   String toString() =>
@@ -57,6 +60,11 @@ class MissingQuestException implements Exception {
 /// `warning` or at `error` depending on which surface the learner opened first
 /// (#8470). Severity is a property of the failure, decided in the repo layer
 /// (repos-and-error-handling.instructions.md § Severity policy).
+///
+/// Since #8691, [reportCourseOutlineFailure] short-circuits
+/// [MissingQuestException] before computing a level — [QuestRepo.quest] owns
+/// that report now. The warning branch stays as the classification any other
+/// reporter of this exception must keep to.
 SentryLevel courseOutlineErrorLevel(Object error) =>
     error is MissingQuestException ? SentryLevel.warning : SentryLevel.error;
 
@@ -179,6 +187,34 @@ class QuestOutline {
 ///    topic/location join, no ring-offset hack).
 class QuestRepo {
   static const String _questPlansKey = 'quest-plans';
+
+  /// Test seam: the removed-verdict clock. Retention is wall-clock, so tests
+  /// would otherwise need real delays.
+  @visibleForTesting
+  static DateTime Function() now = DateTime.now;
+
+  /// Quest ids the CMS confirmed removed (404) — the cross-session half of
+  /// the gate whose in-session half is [_outlineCache]'s memoized
+  /// [MissingQuestException]. Without it every NEW session re-fetched and
+  /// re-reported every known-dead quest id once per course room (Sentry
+  /// CLIENT-EFH + CLIENT-CY3, #8691), the same loop [ActivityPlanRepo] closed
+  /// for activities. One verdict space for both this repo and
+  /// [QuestPlansRepo]: both read the same `quest-plans` collection by id.
+  ///
+  /// Mutable so a test can swap in a fresh instance over the same box — the
+  /// "next app session" seam ([newRemovedQuestsCache]). Production code never
+  /// reassigns it.
+  static ConfirmedRemovedCache removedQuests = newRemovedQuestsCache();
+
+  /// The one place the removed-verdict cache is configured, so the test
+  /// restart seam cannot drift from production's parameters.
+  @visibleForTesting
+  static ConfirmedRemovedCache newRemovedQuestsCache() => ConfirmedRemovedCache(
+    boxName: 'quest_removed_storage',
+    storageKey: 'confirmed_removed_ids',
+    retention: const Duration(hours: 24),
+    now: () => QuestRepo.now(),
+  );
   static const String _learningObjectivesKey = 'learning-objectives';
 
   /// Parse the choreo `GET /choreo/quests/{id}/activities` body into its raw
@@ -213,6 +249,23 @@ class QuestRepo {
       'version_id': entry['version_id'],
     };
   }
+
+  /// Test seam for [_displayL1]: the outline cache must be keyed by the
+  /// resolved display language, and tests have no [MatrixState] to flip.
+  @visibleForTesting
+  static String? debugDisplayL1;
+
+  /// The viewer's display language (L2 when the "app in target language"
+  /// toggle is on, else L1), sent as the quest-activities read's `l1` param so
+  /// card text follows the toggle (#8577). `'en'` covers a not-yet-initialized
+  /// controller — the read itself still fails safely through its try/catch —
+  /// and a user with no languages set, matching `ActivityPlanRepo`.
+  static String get _displayL1 =>
+      debugDisplayL1 ??
+      (MatrixState.isPangeaControllerInitialized
+          ? MatrixState.pangeaController.userController.displayLanguageCode ??
+                'en'
+          : 'en');
 
   /// Repo-wide pause after choreo rate-limits the activity reads (#8360).
   ///
@@ -250,6 +303,12 @@ class QuestRepo {
         queryParameters: {
           if (courseRoomId != null && courseRoomId.isNotEmpty)
             'course_room_id': courseRoomId,
+          // Overlays each plan's title/description/learning-objective from
+          // persisted translation rows, canonical fallback per activity —
+          // read-only server-side, never an LLM call (#8577). `version_id` is
+          // computed over canonical content, so it is identical across `l1`
+          // values and session pinning is unaffected.
+          'l1': _displayL1,
         },
       );
       final response = await Requests(
@@ -298,16 +357,37 @@ class QuestRepo {
   /// The quest with its ordered Learning Objective ids (one read). LO text is
   /// NOT populated by depth (Payload leaves the relationship-in-array a bare
   /// id), so [_learningObjectives] resolves it in a separate batch read.
-  static Future<Result<QuestPlan>> quest(String questId) async {
+  ///
+  /// A confirmed 404 is answered from [removedQuests] without a request, and
+  /// the repo owns its report — once per quest id per session, at warning,
+  /// only on an actual fetch (so the persisted verdict caps it at one per
+  /// retention window per user). [forceRefresh] bypasses the verdict: an
+  /// explicit refresh must never be suppressed, and a success then clears it.
+  static Future<Result<QuestPlan>> quest(
+    String questId, {
+    bool forceRefresh = false,
+  }) async {
+    if (!forceRefresh && await removedQuests.contains(questId)) {
+      return Result.error(MissingQuestException());
+    }
     try {
       final quest = await _client().findById(
         _questPlansKey,
         questId,
         (json) => QuestPlan.fromJson(json),
       );
+      removedQuests.unmark(questId);
       return Result.value(quest);
     } catch (e, s) {
       if (PangeaHttpException.statusCodeOf(e) == 404) {
+        removedQuests.mark(questId);
+        ErrorHandler.logErrorOnce(
+          key: 'quest-plan-404:$questId',
+          e: MissingQuestException(),
+          s: s,
+          data: {"quest_id": questId},
+          level: SentryLevel.warning,
+        );
         return Result.error(MissingQuestException());
       }
 
@@ -359,6 +439,12 @@ class QuestRepo {
   static Future<Result<List<String>>> activityLearningObjectiveRefs(
     String activityId,
   ) async {
+    // The shared negative cache: the backend already confirmed this id gone
+    // (this session or a prior one), so re-asking can only produce the same
+    // 404 this method maps to "no refs" below (CLIENT-EB0, #8691).
+    if (await ActivityPlanRepo.instance.isConfirmedRemoved(activityId)) {
+      return Result.value(const []);
+    }
     try {
       final response = await Requests(
         accessToken: MatrixState.pangeaController.userController.accessToken,
@@ -501,7 +587,11 @@ class QuestRepo {
 
   /// Process-lifetime cache of resolved outlines, keyed by quest id + course
   /// room (a course-member read can carry private activities a plain read
-  /// doesn't, so the two must not share a cache row). In-memory (not
+  /// doesn't, so the two must not share a cache row) + display language
+  /// (activity-card text follows the "app in target language" toggle, #8577,
+  /// so a flip must miss the old row rather than replay the other language —
+  /// the same key-by-l1 rule as `ActivityPlanFetchRequest.storageKey`).
+  /// In-memory (not
   /// GetStorage) because [QuestOutline] carries session-scoped media CDN URLs —
   /// same reasoning as `ActivityPlanRepo`'s in-memory resolve cache.
   ///
@@ -539,7 +629,8 @@ class QuestRepo {
 
   /// The full outline: quest + objective groups (LOs in order, each with its
   /// matching activities). Successes and confirmed 404s are cached per (quest
-  /// id, course room); transient errors are returned but never cached (see
+  /// id, course room, display language); transient errors are returned but
+  /// never cached (see
   /// [_outlineCache]). Concurrent
   /// calls for the same key share one in-flight read. [courseRoomId] admits
   /// the quest owner's private activities when the caller is a joined member
@@ -549,7 +640,7 @@ class QuestRepo {
     String? courseRoomId,
     bool forceRefresh = false,
   }) async {
-    final cacheKey = '$questId|${courseRoomId ?? ''}';
+    final cacheKey = '$questId|${courseRoomId ?? ''}|$_displayL1';
     if (!forceRefresh) {
       final cached = _outlineCache[cacheKey];
       if (cached != null) return Future.value(cached);
@@ -557,10 +648,15 @@ class QuestRepo {
       if (inflight != null) return inflight;
     }
 
-    final future = (debugBuildOutline ?? _buildOutline)(
-      questId,
-      courseRoomId: courseRoomId,
-    );
+    final future = debugBuildOutline != null
+        ? debugBuildOutline!(questId, courseRoomId: courseRoomId)
+        // forceRefresh travels down to [quest] so an explicit refresh also
+        // bypasses the persisted removed verdict, not just this memo.
+        : _buildOutline(
+            questId,
+            courseRoomId: courseRoomId,
+            forceRefresh: forceRefresh,
+          );
     _outlineInflight[cacheKey] = future;
 
     final outline = await future;
@@ -578,9 +674,10 @@ class QuestRepo {
   static Future<Result<QuestOutline>> _buildOutline(
     String questId, {
     String? courseRoomId,
+    bool forceRefresh = false,
   }) async {
     try {
-      final result = await QuestRepo.quest(questId);
+      final result = await QuestRepo.quest(questId, forceRefresh: forceRefresh);
       final quest = result.result;
       if (quest == null) {
         return Result.error(result.error ?? MissingQuestException());

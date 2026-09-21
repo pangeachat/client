@@ -25,6 +25,7 @@ void main() {
     String? cavityKey,
     String? cavityContextId,
     bool cavityDefaultsToPeek = false,
+    bool cavityDefaultsToFull = false,
     void Function(AppSection section)? onSectionTap,
     VoidCallback? onCourseShortcutTap,
     double maxHeightFraction = 0.75,
@@ -56,6 +57,7 @@ void main() {
             cavityKey: cavityKey,
             cavityContextId: cavityContextId,
             cavityDefaultsToPeek: cavityDefaultsToPeek,
+            cavityDefaultsToFull: cavityDefaultsToFull,
             maxHeightFraction: maxHeightFraction,
             preferredCavityHeightPx: preferredCavityHeightPx,
             cavitySection: cavitySection,
@@ -285,6 +287,25 @@ void main() {
       final screenHeight = 800.0;
       final maxHeightPx = screenHeight * 0.75;
       expect(cavityHeightOf(tester), closeTo(maxHeightPx * 0.5, 1.0));
+    });
+
+    testWidgets('a full-default cavity opens at full height (#8659)', (
+      tester,
+    ) async {
+      // The add-course subpages (start my own / browse public / the course
+      // preview) show content unrelated to the map behind them, so they open
+      // at the full growth bound rather than half.
+      await pumpNav(
+        tester,
+        activeSection: AppSection.courses,
+        cavityChild: const Text('Browse public courses'),
+        cavityKey: 'addcoursepage',
+        cavityDefaultsToFull: true,
+        maxHeightFraction: 0.75,
+      );
+
+      final maxHeightPx = 800.0 * 0.75;
+      expect(cavityHeightOf(tester), closeTo(maxHeightPx, 1.0));
     });
 
     testWidgets('a content-fit preferred height replaces half as the '

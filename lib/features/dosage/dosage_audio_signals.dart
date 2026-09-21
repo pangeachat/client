@@ -106,7 +106,6 @@ class DosageAudioSignals {
           e: e,
           s: s,
           level: SentryLevel.warning,
-          m: "Best-effort dosage voice-message emit failed (swallowed)",
           data: const {"signal": "voice-message"},
         ).catchError((_) {}),
       );
@@ -166,7 +165,6 @@ class DosageAudioSignals {
           e: e,
           s: s,
           level: SentryLevel.warning,
-          m: "Best-effort dosage audio emit failed (swallowed)",
           data: {"category": category.wireName},
         ).catchError((_) {}),
       );

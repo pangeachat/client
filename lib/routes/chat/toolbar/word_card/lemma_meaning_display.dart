@@ -33,9 +33,10 @@ class LemmaMeaningDisplay extends StatelessWidget {
       reloadNotifier: reloadNotifier,
       builder: (context, controller) {
         switch (controller.state) {
-          case AsyncError():
+          case AsyncError(error: final error):
             return ErrorIndicator(
               message: L10n.of(context).errorFetchingDefinition,
+              error: error,
               style: const TextStyle(fontSize: 14.0),
             );
           case AsyncLoaded(value: final lemmaInfo):

@@ -4,6 +4,7 @@ import 'package:http/testing.dart';
 import 'package:matrix/matrix_api_lite/generated/api.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/features/join_codes/knock_with_code_extension.dart';
 import 'package:fluffychat/features/join_codes/request_room_code_extension.dart';
 import 'package:fluffychat/features/room_summaries/activity_session_previews_extension.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
@@ -32,28 +33,37 @@ void main() {
   const unauthorized =
       '{"errcode":"M_UNAUTHORIZED","error":"Invalid access token passed."}';
 
-  /// Each site, as (name, path, call).
-  final sites = <String, (String, Future<void> Function(Api))>{
+  /// Each site, as (name, method, path, call).
+  final sites = <String, (String, String, Future<void> Function(Api))>{
     'room_preview': (
+      'GET',
       '/_synapse/client/unstable/org.pangea/room_preview',
       (a) => a.getRoomSummaries(['!r:server'], l1Code: 'en'),
     ),
     'activity_session_previews': (
+      'GET',
       '/_synapse/client/pangea/v1/activity_session_previews',
       (a) => a.getActivitySessionPreviews(['!s:server'], l1Code: 'en'),
     ),
     'request_room_code': (
+      'GET',
       '/_synapse/client/pangea/v1/request_room_code',
       (a) => a.getSpaceCode(),
     ),
     'public_courses': (
+      'GET',
       '/_synapse/client/unstable/org.pangea/public_courses',
       (a) => a.getPublicCourses(),
+    ),
+    'knock_with_code': (
+      'POST',
+      '/_synapse/client/pangea/v1/knock_with_code',
+      (a) => a.knockSpace('vldcde1'),
     ),
   };
 
   sites.forEach((name, site) {
-    final (path, call) = site;
+    final (method, path, call) = site;
 
     group('$name — 401', () {
       Future<PangeaHttpException> thrown() async {
@@ -82,7 +92,7 @@ void main() {
           expect(e.statusCode, 401);
           expect(
             e.toString(),
-            'PangeaHttpException: 401 GET $path — M_UNAUTHORIZED',
+            'PangeaHttpException: 401 $method $path — M_UNAUTHORIZED',
           );
         },
       );
@@ -117,9 +127,70 @@ void main() {
         fail('expected a PangeaHttpException');
       } on PangeaHttpException catch (e) {
         expect(e.detail, isNull);
-        expect(e.toString(), 'PangeaHttpException: 502 GET $path');
+        expect(e.toString(), 'PangeaHttpException: 502 $method $path');
         expect(PangeaHttpException.severityOf(e), SentryLevel.error);
       }
+    });
+  });
+
+  group('knock_with_code — code-not-found and rate limiting (#8693)', () {
+    const path = '/_synapse/client/pangea/v1/knock_with_code';
+
+    test('404 CODE_NOT_FOUND is typed, titled, and a warning', () async {
+      try {
+        await api(
+          404,
+          '{"errcode":"ORG.PANGEA.CODE_NOT_FOUND",'
+          '"error":"No rooms found with the access code: vldcde1"}',
+        ).knockSpace('vldcde1');
+        fail('expected a PangeaHttpException');
+      } on PangeaHttpException catch (e) {
+        expect(e.statusCode, 404);
+        expect(
+          e.toString(),
+          'PangeaHttpException: 404 POST $path — ORG.PANGEA.CODE_NOT_FOUND',
+        );
+        // A wrong code is an expected user mistake — but it stays reported,
+        // so a legitimately-distributed code that stops matching is visible.
+        expect(PangeaHttpException.severityOf(e), SentryLevel.warning);
+      }
+    });
+
+    test('a pre-errcode server 400 is typed with no detail', () async {
+      // Servers predating the 404/errcode split answer a bare 400 whose only
+      // content is free text, which detail never carries.
+      try {
+        await api(
+          400,
+          '{"error":"No rooms found with the access code: vldcde1"}',
+        ).knockSpace('vldcde1');
+        fail('expected a PangeaHttpException');
+      } on PangeaHttpException catch (e) {
+        expect(e.statusCode, 400);
+        expect(e.detail, isNull);
+        expect(e.toString(), isNot(contains('vldcde1')));
+      }
+    });
+
+    test('429 is readable via statusCodeOf — the retry-dialog test', () async {
+      try {
+        await api(429, '{"error":"Rate limited"}').knockSpace('vldcde1');
+        fail('expected a PangeaHttpException');
+      } on PangeaHttpException catch (e) {
+        expect(PangeaHttpException.statusCodeOf(e), 429);
+        expect(PangeaHttpException.severityOf(e), SentryLevel.warning);
+      }
+    });
+
+    test('the banned 403 still maps to BannedFromRoomException', () async {
+      await expectLater(
+        api(
+          403,
+          '{"errcode":"ORG.PANGEA.BANNED_FROM_ROOM","error":"banned",'
+          '"banned":["!r:server"]}',
+        ).knockSpace('vldcde1'),
+        throwsA(isA<BannedFromRoomException>()),
+      );
     });
   });
 

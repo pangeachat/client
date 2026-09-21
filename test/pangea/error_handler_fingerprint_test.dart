@@ -137,10 +137,10 @@ void main() {
       );
     });
 
-    test('a message-only report keeps Sentry default grouping', () async {
+    test('a non-HTTP exception keeps Sentry default grouping', () async {
       expect(
         await fingerprintOf(
-          () => ErrorHandler.logError(m: 'no exception', data: {}),
+          () => ErrorHandler.logError(e: Exception('no exception'), data: {}),
         ),
         anyOf(isNull, isEmpty),
       );

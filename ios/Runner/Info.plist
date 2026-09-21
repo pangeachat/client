@@ -94,6 +94,13 @@
 	<true/>
 	<key>UIBackgroundModes</key>
 	<array>
+		<!-- A call keeps running when the app leaves the screen. LiveKit puts
+		     the session in playAndRecord/videoChat on connect, but without this
+		     iOS suspends the process on background and the call dies. Camera
+		     capture still stops -- iOS does not allow it in the background --
+		     so a backgrounded video call continues as audio. "voip" belongs
+		     with CallKit and PushKit, which are separate work. -->
+		<string>audio</string>
 		<string>fetch</string>
 		<string>processing</string>
 		<string>remote-notification</string>

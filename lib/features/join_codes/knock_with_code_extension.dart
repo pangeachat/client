@@ -4,7 +4,9 @@ import 'package:http/http.dart' hide Client;
 import 'package:matrix/matrix.dart';
 import 'package:matrix/matrix_api_lite/generated/api.dart';
 
-extension on Api {
+import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
+
+extension KnockWithCodeApiExtension on Api {
   Future<KnockSpaceResponse> knockSpace(String code) async {
     final requestUri = Uri(path: '_synapse/client/pangea/v1/knock_with_code');
     final request = Request('POST', baseUri!.resolveUri(requestUri));
@@ -13,17 +15,28 @@ extension on Api {
     request.bodyBytes = utf8.encode(jsonEncode({'access_code': code}));
     final response = await httpClient.send(request);
     // Read the body up front — the stream can only be consumed once, and the
-    // error path now needs it too (to detect the banned-from-every-room 403).
-    final responseString = utf8.decode(await response.stream.toBytes());
+    // error path needs it too (the banned-403 body, the typed failure's
+    // errcode).
+    final responseBody = await response.stream.toBytes();
+    final responseString = utf8.decode(responseBody);
     if (response.statusCode != 200) {
       // A valid code where the user is banned from every matched room comes
       // back as 403 ORG.PANGEA.BANNED_FROM_ROOM: surface it as a typed
       // exception so the join flow can show a ban-specific message instead of
-      // the generic "code not found" (#7592). Anything else keeps throwing the
-      // raw response (downstream 429 handling still reads its statusCode).
+      // the generic "code not found" (#7592). Everything else becomes the
+      // typed HTTP failure — status in the Sentry title, errcode as detail —
+      // instead of the raw response's blind "Instance of 'StreamedResponse'"
+      // (#8693). Callers read the status off it: 404 is the server's
+      // ORG.PANGEA.CODE_NOT_FOUND for a code matching no room (a 400 from a
+      // server predating that split means the same to the user), and 429
+      // drives the retry dialog.
       final banned = BannedFromRoomException.fromErrorBody(responseString);
       if (banned != null) throw banned;
-      throw response;
+      throw PangeaHttpException.fromStreamedResponse(
+        request,
+        response,
+        responseBody,
+      );
     }
 
     return KnockSpaceResponse.fromJson(jsonDecode(responseString));

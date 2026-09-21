@@ -1,3 +1,5 @@
+import 'package:flutter/widgets.dart';
+
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
@@ -184,6 +186,54 @@ void main() {
       expect(holder.hasTimeoutNotice, isTrue);
     });
 
+    test(
+      'returning to the foreground expires a session idled out while away',
+      () {
+        // The watchdog Timer does not run while the app is backgrounded, so the
+        // resume hook is what catches this — not the timer (#7812).
+        final state = holder.claim(ConstructTypeEnum.vocab);
+        state.sessionController.session = _makeSession(ConstructTypeEnum.vocab);
+        state.lastInteractionAt = DateTime.now().subtract(
+          AnalyticsPracticeConstants.idleTimeout + const Duration(hours: 18),
+        );
+
+        holder.didChangeAppLifecycleState(AppLifecycleState.resumed);
+
+        expect(holder.current, isNull);
+        expect(holder.liveType, isNull);
+        expect(holder.hasTimeoutNotice, isTrue);
+      },
+    );
+
+    test('returning to the foreground leaves a session under the limit', () {
+      final state = holder.claim(ConstructTypeEnum.vocab);
+      state.sessionController.session = _makeSession(ConstructTypeEnum.vocab);
+      state.lastInteractionAt = DateTime.now().subtract(
+        AnalyticsPracticeConstants.idleTimeout - const Duration(minutes: 1),
+      );
+
+      holder.didChangeAppLifecycleState(AppLifecycleState.resumed);
+
+      expect(holder.current, same(state));
+      expect(holder.liveType, ConstructTypeEnum.vocab);
+      expect(holder.hasTimeoutNotice, isFalse);
+    });
+
+    test('backgrounding does not expire an idle session', () {
+      // Only the return to the foreground decides; leaving must not end a
+      // session the learner is coming back to.
+      final state = holder.claim(ConstructTypeEnum.vocab);
+      state.sessionController.session = _makeSession(ConstructTypeEnum.vocab);
+      state.lastInteractionAt = DateTime.now().subtract(
+        AnalyticsPracticeConstants.idleTimeout + const Duration(minutes: 1),
+      );
+
+      holder.didChangeAppLifecycleState(AppLifecycleState.paused);
+
+      expect(holder.current, same(state));
+      expect(holder.hasTimeoutNotice, isFalse);
+    });
+
     test('an explicit end leaves no timeout notice', () {
       final state = holder.claim(ConstructTypeEnum.vocab);
       state.sessionController.session = _makeSession(ConstructTypeEnum.vocab);
@@ -191,6 +241,22 @@ void main() {
       holder.end();
 
       expect(holder.hasTimeoutNotice, isFalse);
+    });
+
+    // The unit tests above call the hook directly. This one proves the holder
+    // is actually REGISTERED with the binding, which is the half of the wiring
+    // they can't reach.
+    testWidgets('the holder is wired to real lifecycle events', (tester) async {
+      final state = holder.claim(ConstructTypeEnum.vocab);
+      state.sessionController.session = _makeSession(ConstructTypeEnum.vocab);
+      state.lastInteractionAt = DateTime.now().subtract(
+        AnalyticsPracticeConstants.idleTimeout + const Duration(minutes: 1),
+      );
+
+      tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.resumed);
+
+      expect(holder.current, isNull);
+      expect(holder.hasTimeoutNotice, isTrue);
     });
 
     test('resume keeps mid-session progress intact', () {

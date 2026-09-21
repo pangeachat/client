@@ -58,10 +58,18 @@ class CourseSearchView<T> extends StatelessWidget {
                   spacing: 4.0,
                   children: [
                     Expanded(
+                      // The toggle button below stays mounted while the bar
+                      // opens, and the filter<->bar swap is immediate. On web
+                      // with the semantics tree on, removing a node near the
+                      // field AFTER it is focused (an unmounting just-clicked
+                      // button, an AnimatedSwitcher dropping its faded-out
+                      // child) makes Blink drop the field's focus, leaving a
+                      // bar that swallows keystrokes (#8581).
                       child: searching
                           ? PangeaSearchBar(
                               controller: courseSearch.searchController,
                               labelText: labelText,
+                              autofocus: true,
                               focusNode: courseSearch.focusNode,
                               suffixIcon: IconButton(
                                 icon: Icon(Icons.close),
@@ -82,12 +90,14 @@ class CourseSearchView<T> extends StatelessWidget {
                               },
                             ),
                     ),
-                    if (!searching)
-                      IconButton(
-                        icon: Icon(Icons.search),
-                        tooltip: L10n.of(context).search,
-                        onPressed: courseSearch.startSearching,
-                      ),
+                    IconButton(
+                      icon: Icon(Icons.search),
+                      tooltip: L10n.of(context).search,
+                      isSelected: searching,
+                      onPressed: searching
+                          ? courseSearch.stopSearching
+                          : courseSearch.startSearching,
+                    ),
                   ],
                 ),
               ),

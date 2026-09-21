@@ -168,7 +168,6 @@ extension OwnProfileClientExtension on Client {
     ErrorHandler.logError(
       e: e,
       s: s,
-      m: 'Own-profile write failed after the server applied it',
       data: {'observedBeforeFailure': observedBeforeFailure},
       level: SentryLevel.warning,
     );

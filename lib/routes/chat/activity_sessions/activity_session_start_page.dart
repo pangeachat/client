@@ -352,7 +352,10 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
             : await ActivityPlanRepo.instance.resolveMedia(statePlan);
         activityRemoved = true;
       case ActivityPlanLookupStatus.failed:
-        throw Exception("Activity plan fetch failed");
+        // Re-throw the lookup's own failure when it has one: the error view
+        // keys its copy on it (a 429 shows "wait a moment", not "check your
+        // connection") (#8705).
+        throw lookup.error ?? Exception("Activity plan fetch failed");
     }
   }
 

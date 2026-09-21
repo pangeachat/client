@@ -21,6 +21,7 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/p_vguard.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_session_holder.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/routes/settings/settings_style/style_settings_repo.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -66,11 +67,15 @@ class PangeaController {
     initControllers(userID);
     _registerSubscriptions();
 
-    // Locale is set by MatrixState's toggle-aware _setAppLanguage() once the
-    // profile loads (see matrix.dart's _setLanguageListener) — setting it
-    // here too raced that call and always won with the hardcoded L1,
-    // ignoring the "show app in the language I'm learning" toggle (#8509).
+    // Re-apply the locale now the profile is loaded for THIS account. This
+    // used to set L1 unconditionally, which ignored the "show the app in the
+    // language I'm learning" toggle; it must go through the toggle-aware
+    // resolver instead. It cannot be dropped altogether, though — the only
+    // other calls happen at app start, and neither profile stream emits on
+    // login (the sync's profile matches the one initialize() just cached), so
+    // a logout/login left the locale wherever _onLogout's null put it (#8509).
     userController.reinitialize().then((_) {
+      matrixState.setAppLanguage();
       GrammarConstructsProvider.fetchFeaturesAndTags();
     });
 
@@ -115,6 +120,10 @@ class PangeaController {
 
   void _onLogout(BuildContext context) {
     userController.clear();
+    // The practice holder is a global singleton, so a session left running by
+    // the account logging out would otherwise resume — timer and all — under
+    // the next account (#8617).
+    PracticeSessionHolder.instance.end();
     _languageSubscription?.cancel();
     _settingsSubscription?.cancel();
     _joinSpaceSubscription?.cancel();

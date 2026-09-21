@@ -506,7 +506,11 @@ section's content. The **chats sheet and the Courses hub open content-fit**:
 just tall enough to show all their rows — all chats, or all joined courses (the
 add-course buttons when there are none) — capped by the height available below
 the analytics bar (a short list yields a short sheet; a long one fills to the
-cap and scrolls). Other sections open at roughly half the screen. The 4 rail
+cap and scrolls). The **add-course subpages open at full height** — start my
+own, browse public courses, and the course preview they push all show content
+unrelated to the map behind them, so a half-open sheet only de-emphasizes what
+the learner navigated there for (#8659). Other sections open at roughly half
+the screen. The 4 rail
 icons remain anchored at the bottom of the widget at all heights. Content inside
 the expanded area is **scrollable**.
 
@@ -540,7 +544,8 @@ half, full — is ephemeral view state, exactly like fold recency above: a cold
 link or a refresh with an open **section** token (the chat list, the Courses
 hub) or an **activity plan** draws it expanded at its default rest height (the
 leaf rule) — content-fit for the list sections (the chat list, the Courses
-hub), roughly half otherwise; a **course card** draws at its remembered height —
+hub), full for the add-course subpages (#8659), roughly half otherwise; a
+**course card** draws at its remembered height —
 the collapsed peek by
 default (see the per-course memory above), so the scoped map leads. The
 collapsed rail over the bare map is just `/`. A shared URL never encodes how
@@ -748,7 +753,7 @@ until it is explicitly ended, finished, or times out.
   or a rail section drops the `practice` panel from the URL but keeps the
   session alive in memory; re-opening practice resumes exactly where it left
   off. No confirm dialog on leave. Session state is ephemeral view state, never
-  in the URL — a refresh or app restart starts fresh.
+  in the URL — a refresh, app restart, or logout starts fresh.
 - **One session at a time.** A single practice session is live across both
   sections. Starting practice in the other section, or restarting the same
   one, **replaces** it — confirming first only if the current one is

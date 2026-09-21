@@ -100,6 +100,57 @@ void main() {
         '/choreo/v2/activities/bbox',
       );
     });
+
+    test(
+      'templates human-readable content ids, so one endpoint is one issue',
+      () {
+        // Each of these was its own Sentry grouping (#8713): fourteen issues
+        // across two statuses for what is one endpoint.
+        for (final id in [
+          'sp101-m1-a',
+          'sp101-m2-b',
+          'sp101-m4-b',
+          'germ1-nyc-m1',
+          'germ1-nyc-m13',
+          'spanish-101-mission-1',
+        ]) {
+          expect(
+            PangeaHttpException.normalizePath(
+              Uri.parse('https://x/choreo/v2/activity/$id'),
+            ),
+            '/choreo/v2/activity/{id}',
+            reason: '$id should template',
+          );
+        }
+      },
+    );
+
+    test('never renames a real route segment', () {
+      // Every hyphenated segment the client can build (urls.dart) plus the
+      // shapes a digit-bearing rule could plausibly swallow. A regression here
+      // renames an endpoint in every Sentry title it appears in.
+      for (final segment in [
+        'analytics-events',
+        'audio-signals',
+        'engagement-spans',
+        'message-events',
+        'session-outcomes',
+        'quest-plans',
+        'v2',
+        'bbox',
+        'text_to_speech',
+        'phonetic_transcription_v2',
+        'grammar_constructs',
+        'activity_session_previews',
+        'org.matrix.msc4075.rtc.notification',
+      ]) {
+        expect(
+          PangeaHttpException.normalizePath(Uri.parse('https://x/a/$segment')),
+          '/a/$segment',
+          reason: '$segment is a route, not a resource',
+        );
+      }
+    });
   });
 
   group('PangeaHttpException.statusCodeOf', () {

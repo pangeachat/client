@@ -12,6 +12,7 @@ list(APPEND FLUTTER_PLUGIN_LIST
   flutter_webrtc
   gtk
   handy_window
+  livekit_client
   open_file_linux
   record_linux
   rive_native

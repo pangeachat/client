@@ -417,7 +417,6 @@ class DosageSignalsRepo {
         e: err,
         s: s,
         level: SentryLevel.warning,
-        m: "Best-effort dosage signal POST failed (swallowed)",
         data: {"signal": signal, "count": count},
       );
     } finally {
@@ -486,7 +485,6 @@ class DosageSignalsRepo {
         e: err,
         s: s,
         level: SentryLevel.warning,
-        m: "Best-effort dosage signal POST failed (swallowed)",
         data: {"signal": signal, "count": count},
       );
       return null;

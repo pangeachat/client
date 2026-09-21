@@ -125,6 +125,25 @@ void main() {
     expect(find.byIcon(Icons.close), findsNothing);
   });
 
+  testWidgets('the dismiss X never joins Tab traversal (#8714)', (
+    tester,
+  ) async {
+    await pumpCard(tester, onClose: () {});
+    final xFocus = Focus.maybeOf(
+      tester.element(find.byIcon(Icons.close)),
+      createDependency: false,
+    );
+    expect(
+      xFocus?.canRequestFocus ?? false,
+      isFalse,
+      reason:
+          'the X is pointer-only: the card draws inside the excluded map '
+          'subtree, where a focusable is an invisible dead Tab stop (2.4.7) — '
+          "the keyboard path to pins is the mirror layer's single roving stop "
+          '(#8714)',
+    );
+  });
+
   group('selected glow (#7349)', () {
     // The focused card haloes in its state hue (here `available`) with no
     // outline — the same treatment as a selected pin.

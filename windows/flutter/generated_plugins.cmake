@@ -5,6 +5,7 @@
 list(APPEND FLUTTER_PLUGIN_LIST
   app_links
   audioplayers_windows
+  connectivity_plus
   desktop_webview_window
   dynamic_color
   emoji_picker_flutter
@@ -14,6 +15,7 @@ list(APPEND FLUTTER_PLUGIN_LIST
   flutter_tts
   flutter_webrtc
   geolocator_windows
+  livekit_client
   permission_handler_windows
   record_windows
   rive_native
