@@ -19,7 +19,9 @@ import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 ///
 /// The ring is the two-tone pair because it sits beside arbitrary video
 /// frames, and it is laid out around [child] rather than over it, so no
-/// Flutter layer is ever composited above the embed.
+/// Flutter layer is ever composited above the embed. The control shrinks to
+/// [child] and centres itself, so the ring hugs the video whatever box the
+/// caller gives it.
 class ActivityVideoKeyboardControl extends StatefulWidget {
   final VoidCallback onTogglePlayback;
   final VoidCallback onToggleMute;
@@ -81,30 +83,32 @@ class _ActivityVideoKeyboardControlState
   Widget build(BuildContext context) {
     final showRing = _focused && FocusRingTapTarget.highlightsEnabled;
     final captions = widget.onToggleCaptions;
-    return Semantics(
-      container: true,
-      label: L10n.of(context).videoPlayer,
-      child: CallbackShortcuts(
-        bindings: {
-          const SingleActivator(LogicalKeyboardKey.space):
-              widget.onTogglePlayback,
-          const SingleActivator(LogicalKeyboardKey.enter):
-              widget.onTogglePlayback,
-          const SingleActivator(LogicalKeyboardKey.keyK):
-              widget.onTogglePlayback,
-          const SingleActivator(LogicalKeyboardKey.keyM): widget.onToggleMute,
-          const SingleActivator(LogicalKeyboardKey.keyC): ?captions,
-        },
-        child: Focus(
-          focusNode: _focusNode,
-          onFocusChange: (focused) => setState(() => _focused = focused),
-          child: _RingBand(
-            color: FocusRingTapTarget.twoToneOuter,
-            show: showRing,
+    return Center(
+      child: Semantics(
+        container: true,
+        label: L10n.of(context).videoPlayer,
+        child: CallbackShortcuts(
+          bindings: {
+            const SingleActivator(LogicalKeyboardKey.space):
+                widget.onTogglePlayback,
+            const SingleActivator(LogicalKeyboardKey.enter):
+                widget.onTogglePlayback,
+            const SingleActivator(LogicalKeyboardKey.keyK):
+                widget.onTogglePlayback,
+            const SingleActivator(LogicalKeyboardKey.keyM): widget.onToggleMute,
+            const SingleActivator(LogicalKeyboardKey.keyC): ?captions,
+          },
+          child: Focus(
+            focusNode: _focusNode,
+            onFocusChange: (focused) => setState(() => _focused = focused),
             child: _RingBand(
-              color: FocusRingTapTarget.twoToneInner,
+              color: FocusRingTapTarget.twoToneOuter,
               show: showRing,
-              child: ExcludeFocus(child: widget.child),
+              child: _RingBand(
+                color: FocusRingTapTarget.twoToneInner,
+                show: showRing,
+                child: ExcludeFocus(child: widget.child),
+              ),
             ),
           ),
         ),
