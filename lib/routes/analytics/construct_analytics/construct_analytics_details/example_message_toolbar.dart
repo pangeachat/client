@@ -120,6 +120,7 @@ Future<void> showAnalyticsExampleMessageToolbar({
       // must reach the root overlay to cover the whole page.
       rootOverlay: true,
       blockSemantics: true,
+      keyboardModal: true,
     ),
   );
 

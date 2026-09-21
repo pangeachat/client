@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/features/overlay/centered_overlay_widget.dart';
 import 'package:fluffychat/features/overlay/overlay_container.dart';
 import 'package:fluffychat/features/overlay/overlay_display_details.dart';
+import 'package:fluffychat/features/overlay/overlay_keyboard_modal.dart';
 import 'package:fluffychat/features/overlay/overlay_position.dart';
 import 'package:fluffychat/features/overlay/top_overlay_widget.dart';
 import 'package:fluffychat/features/overlay/transparent_backdrop.dart';
@@ -41,13 +42,26 @@ class OverlayUtil {
       //
       // Both sit inside the positioning widgets below so the absorbing area
       // follows the card, not the overlay's origin.
-      final Widget positionedChild = displayDetails.blockPointerThrough
+      final Widget pointerChild = displayDetails.blockPointerThrough
           ? Semantics(
               container: true,
               hitTestBehavior: ui.SemanticsHitTestBehavior.opaque,
               child: Listener(behavior: HitTestBehavior.opaque, child: child),
             )
           : child;
+
+      // Around the content only, not the backdrop: the backdrop's Dismiss
+      // control would otherwise be an invisible stop in the Tab cycle, and
+      // Escape already does its job for the keyboard.
+      final Widget positionedChild = displayDetails.keyboardModal
+          ? OverlayKeyboardModal(
+              onDismiss: () {
+                displayDetails.onDismiss?.call();
+                MatrixState.pAnyState.closeOverlay(displayDetails.overlayKey);
+              },
+              child: pointerChild,
+            )
+          : pointerChild;
 
       final OverlayEntry entry = OverlayEntry(
         builder: (_) => BlockSemantics(
