@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_rating_meter.dart';
+import 'contrast_ratio.dart';
 
 /// Render contract of the activity header's rating indicator (#8088): the
 /// aggregate reads as a thumbs-up share — a thumb icon plus the percentage —
@@ -14,11 +16,13 @@ void main() {
     WidgetTester tester, {
     double? average,
     int? count,
+    ThemeData? theme,
   }) async {
     await tester.pumpWidget(
       MaterialApp(
         localizationsDelegates: L10n.localizationsDelegates,
         supportedLocales: L10n.supportedLocales,
+        theme: theme,
         home: Scaffold(
           body: ActivityRatingMeter(average: average, count: count),
         ),
@@ -56,4 +60,49 @@ void main() {
     expect(find.byIcon(Icons.thumb_up_outlined), findsNothing);
     expect(find.textContaining('%'), findsNothing);
   });
+
+  /// Seeded the way `FluffyThemes.buildTheme` seeds the app, so the tones are
+  /// the ones a learner sees. The pill's ink is lerped along with its fill, so
+  /// the ratio is checked across the range, not only at the ends (#9174: 50%
+  /// measured 1.3:1).
+  ThemeData themeFor(Brightness brightness) => ThemeData(
+    brightness: brightness,
+    colorScheme: ColorScheme.fromSeed(
+      brightness: brightness,
+      seedColor: Color(AppSettings.colorSchemeSeedInt.defaultValue),
+      dynamicSchemeVariant: DynamicSchemeVariant.fidelity,
+    ),
+  );
+
+  for (final brightness in Brightness.values) {
+    testWidgets('the percentage clears 4.5:1 at every rating in '
+        '${brightness.name}', (tester) async {
+      for (final average in [0.0, 0.25, 0.5, 0.75, 1.0]) {
+        await pumpMeter(
+          tester,
+          average: average,
+          count: 4,
+          theme: themeFor(brightness),
+        );
+
+        final pill = tester.widget<Container>(
+          find.descendant(
+            of: find.byType(ActivityRatingMeter),
+            matching: find.byType(Container),
+          ),
+        );
+        final fill = (pill.decoration! as BoxDecoration).color!;
+        final text = tester.widget<Text>(find.textContaining('%'));
+        final icon = tester.widget<Icon>(find.byIcon(Icons.thumb_up_outlined));
+
+        for (final ink in [text.style!.color!, icon.color!]) {
+          expect(
+            contrastRatio(ink, fill),
+            greaterThanOrEqualTo(4.5),
+            reason: '${brightness.name} at $average: $ink on $fill',
+          );
+        }
+      }
+    });
+  }
 }
