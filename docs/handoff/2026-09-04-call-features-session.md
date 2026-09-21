@@ -2616,3 +2616,13 @@ until the design is Codex-green.
 - IN FLIGHT: cold-gate on the fix (gate-downsample); phone APK rebuilt with the fix + reinstalling.
   Next: gate GREEN -> owner re-calls -> expect BOTH halves recording-based (both unpunctuated), the
   phone half complete incl. any mute/unmute gap.
+
+### 2026-09-21 (cont) — downsample fix cold-gate GREEN; phone reinstalled; awaiting E2E round 2
+- Cold-gate on 5404deee28 (gate-downsample): VERDICT CORRECT / GATE-SOFTENING NONE. 7/7 -- one
+  takeBytes(), resampler bounds safe (1.24M span checks), typed-view/endianness correct, cap
+  7.5MB->exactly 10,000,000 base64 (<10485760), stereo skipped+guarded, non-fatal intact, sttRate
+  consistent between WAV+request.
+- Phone APK rebuilt with the fix + reinstalled (build 15:20:53, arm64, trim-caches freed to 1.8G,
+  login preserved). Laptop web (16kHz) unchanged -- it never needed the downsample. Stack all up.
+- AWAITING owner E2E round 2: re-call, expect BOTH halves recording-based (both unpunctuated),
+  phone half complete incl. mute/unmute gap. Then verify via verify_call_transcript.py + PR2 on go.
