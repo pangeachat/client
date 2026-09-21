@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:matrix/matrix.dart' show Logs;
 import 'package:permission_handler/permission_handler.dart';
 
+import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/routes/chat/calls/active_call.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_recorder.dart';
@@ -210,6 +211,14 @@ class CallSession extends ChangeNotifier {
     final audioSenderId = room.client.userID ?? '';
     final audioDeviceId = room.client.deviceID;
 
+    // The recording-based call transcript, read ONCE here and used to gate both
+    // the recorder's transcription below and CallRecord's preference for it. Off
+    // (the default) both stay unwired: the recorder never transcribes and its
+    // audio path is byte-for-byte today's, and CallRecord publishes the live
+    // 45-second transcript half exactly as before -- so the feature reverts by
+    // flipping this one flag.
+    final recordingTranscript = Environment.callRecordingTranscript;
+
     // Owns this device's own call-audio-recording half from first frame to
     // upload. A plain field, never overridden in a test the way [capture] and
     // [record] are: it does nothing unless [capture] actually feeds it a run
@@ -239,6 +248,14 @@ class CallSession extends ChangeNotifier {
       // failed at the send step, possibly in a process that has since
       // restarted, must not re-upload a recording that already landed.
       uploadStateStore: const SharedPreferencesCallAudioUploadStateStore(),
+      // Wired ONLY when the recording-based transcript feature is on. Off (the
+      // default) these stay null, so the recorder never transcribes and its
+      // audio path is unchanged. The two languages are the speaker's own,
+      // frozen at t0 exactly as the live sink above froze them, so this half
+      // and the live one can never disagree about the language.
+      transcribe: recordingTranscript ? transcribe : null,
+      userL1: recordingTranscript ? userL1 : null,
+      userL2: recordingTranscript ? userL2 : null,
     );
 
     // Built here rather than inline below, because the half published at the
@@ -373,6 +390,15 @@ class CallSession extends ChangeNotifier {
                 wasCarrier: capture.wasCarryingBeforeLastStop,
                 callKey: callKey,
               ),
+          // Gated on the same flag as the recorder's transcription above: when
+          // ON, CallRecord prefers this device's whole-recording segments over
+          // the live-chunk ones and publishes the audio half FIRST so they are
+          // ready to read; when OFF this is null and the live transcript-first
+          // path is unchanged. `audioRecorder.recordingSegments` is filled by
+          // `audioRecorder.finish`, which `publishCallAudio` above runs.
+          recordingSegments: recordingTranscript
+              ? () => audioRecorder.recordingSegments
+              : null,
           analytics: analytics,
         );
     return CallSession._(

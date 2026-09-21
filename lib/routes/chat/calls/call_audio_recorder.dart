@@ -10,7 +10,12 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_writer.dart';
+import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart'
+    show ChunkTranscriber;
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
+import 'package:fluffychat/routes/chat/events/speech_to_text/audio_encoding_enum.dart';
+import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_request_model.dart';
 import 'package:fluffychat/routes/chat/events/streaming_stt/wav_writer.dart';
 
 /// Uploads bytes to this homeserver's media repository, returning the `mxc://`
@@ -465,6 +470,22 @@ class CallAudioRecorder implements CallAudioRecordingSink {
   final Timer Function(Duration interval, void Function() onTick)?
   periodicTimerFactory;
 
+  /// Transcribes the whole recording once at finish, when wired (owner flag
+  /// `Environment.callRecordingTranscript`). Null leaves [recordingSegments]
+  /// empty and the live-chunk transcript stands, so every existing construction
+  /// and test is unchanged. Its two languages are the speaker's own, captured at
+  /// the call's t0 exactly as the live sink captures them.
+  final ChunkTranscriber? transcribe;
+  final String? userL1;
+  final String? userL2;
+
+  /// The whole-recording transcript segments, built at [finish] from the
+  /// device's OWN uploaded recording when [transcribe] is wired -- the source
+  /// the transcript half prefers over the live-chunk segments. Empty when the
+  /// feature is off or the transcription produced nothing, in which case the
+  /// live-chunk transcript is published unchanged.
+  List<TranscriptSegment> recordingSegments = const [];
+
   CallAudioRecorder({
     required this.senderId,
     required this.deviceId,
@@ -472,6 +493,9 @@ class CallAudioRecorder implements CallAudioRecordingSink {
     required this.upload,
     ClockAnchor? Function()? clockAnchor,
     int Function()? elapsedMs,
+    this.transcribe,
+    this.userL1,
+    this.userL2,
     this.maxBytes = _defaultMaxBytes,
     this.maxDuration = _defaultMaxDuration,
     this.deliveryAttempts = _defaultDeliveryAttempts,
@@ -1107,6 +1131,22 @@ class CallAudioRecorder implements CallAudioRecordingSink {
       );
       final durationMs = gen.duration.inMilliseconds;
 
+      // Transcribe THIS device's own recording -- the same bytes the mix is
+      // built from -- into the segments [CallRecord] prefers over the live
+      // 45-second chunks. Kicked off HERE, before the delivery loop, so it
+      // overlaps the upload rather than delaying it, and awaited in the loop's
+      // `finally` below so [recordingSegments] is set on every exit path before
+      // [finish] returns. Reads only local values and writes only
+      // [recordingSegments] (consumed after this returns), so it shares no
+      // mutable state with the loop. A null [transcribe] (feature off) makes it
+      // an immediate empty, leaving today's audio path byte-for-byte unchanged.
+      final pendingRecordingSegments = _recordingSegmentsFrom(
+        wav,
+        gen.runStartedAtMs,
+        gen.sampleRate,
+        durationMs,
+      );
+
       final cancelSignal = _cancelSignal = Completer<void>();
       try {
         Object? lastError;
@@ -1347,6 +1387,13 @@ class CallAudioRecorder implements CallAudioRecordingSink {
         );
       } finally {
         if (identical(_cancelSignal, cancelSignal)) _cancelSignal = null;
+        // Awaited on EVERY exit path of the delivery loop so
+        // [recordingSegments] is populated before [finish] returns --
+        // [CallRecord] reads it immediately after. The work was kicked off
+        // before the loop, so this reflects only the time it had not already
+        // overlapped with the upload; [_recordingSegmentsFrom] never throws, so
+        // it cannot mask an error leaving the try above.
+        recordingSegments = await pendingRecordingSegments;
       }
     } finally {
       // The single enforcement point: whichever of the exits above this
@@ -1358,6 +1405,57 @@ class CallAudioRecorder implements CallAudioRecordingSink {
       // and nothing here needs to know WHICH exit path it was.
       final uploadedUrl = gen.uploadedUrl;
       if (uploadedUrl != null && !gen.sent) _logOrphan(gen, uploadedUrl);
+    }
+  }
+
+  /// Transcribes this device's whole recording from the SAME [wav] bytes the
+  /// mix is built from, producing the segments [CallRecord] prefers over the
+  /// live-chunk transcript.
+  ///
+  /// Non-fatal by contract: a missing capability (feature off, or languages
+  /// not wired), an STT failure, or an empty result all yield an empty list,
+  /// and the caller then keeps the live-chunk transcript. It therefore never
+  /// throws and never blocks or fails the audio half.
+  ///
+  /// Uses the provider's word list directly, exactly as the live chunk path
+  /// asks for it ([includeWordTimings], LINEAR16, the speaker's own two
+  /// languages captured at t0): [buildRecordingSegments] places each utterance
+  /// by its own word timing on [startedAtMs] -- the recording's device-clock
+  /// start, the same clock the live path's `atMs` uses -- so the reader's
+  /// per-half clock correction and ordering apply unchanged.
+  Future<List<TranscriptSegment>> _recordingSegmentsFrom(
+    Uint8List wav,
+    int startedAtMs,
+    int sampleRate,
+    int durationMs,
+  ) async {
+    final transcribe = this.transcribe;
+    final l1 = userL1;
+    final l2 = userL2;
+    // All three are wired together or not at all; a partial wiring is not a
+    // configuration this runs against.
+    if (transcribe == null || l1 == null || l2 == null) return const [];
+    try {
+      final response = await transcribe(
+        SpeechToTextRequestModel(
+          audioContent: wav,
+          includeWordTimings: true,
+          config: SpeechToTextAudioConfigModel(
+            encoding: AudioEncodingEnum.linear16,
+            sampleRateHertz: sampleRate,
+            userL1: l1,
+            userL2: l2,
+          ),
+        ),
+      );
+      return buildRecordingSegments(response, startedAtMs, durationMs);
+    } catch (e, s) {
+      Logs().w(
+        'Recording-based call transcription failed; the live transcript stands',
+        e,
+        s,
+      );
+      return const [];
     }
   }
 }

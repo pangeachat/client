@@ -275,6 +275,17 @@ class Environment {
         (dotenv.env["LIVE_STREAMING_STT_ENABLED"]?.toLowerCase() == 'true');
   }
 
+  /// Feature flag for the recording-based call transcript. Defaults to `false`
+  /// so it ships dark and is trivially revertible: when OFF, a call's transcript
+  /// half is the live 45-second chunk path byte-for-byte. When ON, each device
+  /// transcribes its OWN uploaded call recording -- the same audio the merged
+  /// playback is built from -- at hangup and publishes THOSE segments as its
+  /// half. Per-half fault tolerance is preserved: a device whose recording or
+  /// transcription is missing falls back to its live-chunk half unchanged, so a
+  /// call can carry one recording-based half and one live half.
+  static bool get callRecordingTranscript =>
+      dotenv.env["CALL_RECORDING_TRANSCRIPT"]?.toLowerCase() == 'true';
+
   static String get pushGatewayUrl => isStagingEnvironment
       ? 'https://sygnal.staging.pangea.chat/_matrix/push/v1/notify'
       : 'https://sygnal.pangea.chat/_matrix/push/v1/notify';
