@@ -190,6 +190,7 @@ extension AnalyticsClientExtension on Client {
 
       if (roomsNotAdded.isEmpty) continue;
 
+      bool spaceRefused = false;
       for (final analyticsRoom in roomsNotAdded) {
         if (userID == null) return;
         try {
@@ -204,8 +205,21 @@ extension AnalyticsClientExtension on Client {
               "userID": userID,
             },
           );
+          // A refusal is about the space, not the room being added: the
+          // server no longer counts us in it, or our power level there is not
+          // what local state says. Every remaining room would be refused for
+          // the same reason, and was — about 30 errors per space on every
+          // launch (#9181).
+          if (e is MatrixException && e.error == MatrixError.M_FORBIDDEN) {
+            spaceRefused = true;
+            break;
+          }
         }
       }
+
+      // Nothing was written to a refused space, so there is no batch to rest
+      // after.
+      if (spaceRefused) continue;
 
       // add a delay before checking the next space to prevent overloading the server
       final delay = random.nextInt(10);
