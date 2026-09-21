@@ -182,6 +182,7 @@ extension AnalyticsClientExtension on Client {
         .toList();
 
     final Random random = Random();
+    spaces:
     for (final space in spaces) {
       if (userID == null || !space.canSendEvent(EventTypes.SpaceChild)) return;
       final List<Room> roomsNotAdded = allMyAnalyticsRooms.where((room) {
@@ -204,6 +205,15 @@ extension AnalyticsClientExtension on Client {
               "userID": userID,
             },
           );
+          // A refusal is about the space, not the room being added: the
+          // server no longer counts us in it, or our power level there is not
+          // what local state says. Every remaining room would be refused for
+          // the same reason, and was — about 30 errors per space on every
+          // launch (#9181). Nothing was written, so there is no batch to rest
+          // after either.
+          if (e is MatrixException && e.error == MatrixError.M_FORBIDDEN) {
+            continue spaces;
+          }
         }
       }
 
