@@ -2407,3 +2407,28 @@ until the design is Codex-green.
   buildSegments = proven original (no client change). Client doc section-3 correction still pending owner
   wording approval (over-promises the reverted client sub-cut; but now moot-ish since fix is choreo -- revisit
   wording to reflect C).
+
+### 2026-09-21 (cont) — choreo reconcile COLD-GATE GREEN (round 5); stack up for E2E
+- After 4 gate rounds (all real edge cases, fixed STRUCTURALLY not spot-patched): R1 punct-absorb +
+  inverted-span; R2 single-word-fill non-monotonic + spurious far-apart merge; R3 inverted-interval-bypass
+  + endpoint-completeness + short-gap-turn-cross + jitter-amplify; R4 final-span inversion via backward
+  jitter. Structural closure: single word = endpoints verbatim (no fabrication); MERGE only when every part
+  is present + valid (start<=end) + ordered + tightly contiguous (gap in [-50,+100]ms; real compound gaps
+  are 0ms) + the final span is non-inverted; else return raw (client blocks). Round 5 = VERDICT: CORRECT /
+  GATE-SOFTENING: NONE (38,416 endpoint combos + 30,000 randomized cases). Accepted documented residual:
+  choreo has no other-speaker turn timing, so a <=100ms-gap real compound spanning a hypothetical sub-100ms
+  other-speaker word can't be proven impossible in-choreo -- physically negligible, within-half only.
+- STATE: choreo fix committed a8ef0628 on branch satvik/stt-word-timings-transcript-align (worktree
+  2-step-choreographer/.claude/worktrees/stt-align). 17 reconcile tests + regressions (include_word_timings
+  20, word_info 12, golden 10) green; lint clean; real-data replay aligns (20/20, 11/11). Branch is on LOCAL
+  main (27 behind origin/main) -- REBASE onto origin/main before the PR.
+- E2E STACK UP (for owner's phone test): choreo-with-fix running from the worktree on 0.0.0.0:8012
+  (LAN 192.168.1.156:8012, stable 200); Synapse focus + lk-jwt LIVEKIT_URL LAN; phone APK already points at
+  the local stack (its prior call's STT captures are in this local choreo's .generations). Client UNCHANGED
+  (no rebuild). NOTE: choreo-from-worktree via background uvicorn raced on the port across restarts -- kill
+  ALL + wait 8s + start ONE; a stable instance is up now. Owner making a test call with compound words;
+  verify via local Synapse DB (pull newest call_transcript, interleave by orderKeyMs).
+- NEXT: owner E2E confirms ordering -> rebase choreo branch on origin/main -> choreo PR (word_timings<->
+  transcript reconcile) + client PR2 (recording/merge/player/UI, no transcript-code change) -> both on owner
+  go. Client doc section-3 wording still needs owner approval (now describes the client fix that was
+  reverted; should point to C instead) -- revisit at PR time.
