@@ -8,8 +8,12 @@ import 'package:matrix/matrix.dart' show Logs;
 
 import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_recorder.dart';
+import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart'
+    show ChunkTranscriber;
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 import '../sentry_capture_harness.dart';
+import 'call_transcript_sink_test.dart' show spokenWord;
 
 const _callKey = '\$membership:example.com';
 const _sender = '@alice:example.com';
@@ -176,6 +180,12 @@ void main() {
     Duration retryDelay = Duration.zero,
     CallAudioUploadStateStore? uploadStateStore,
     int maxPendingFrames = 64,
+    // The recording-based-transcript wiring. Left null in every existing test
+    // (feature off), so the recorder never transcribes and those tests are
+    // unchanged; the transcription group below wires a stub.
+    ChunkTranscriber? transcribe,
+    String? userL1,
+    String? userL2,
     // The SOLE clock chokepoint. Defaulting to a NON-ADVANCING fake is what
     // keeps every existing frame-driven test (the size cap, the fan-out bound,
     // the drain race, the unhurried-capture duration) green with no per-test
@@ -209,6 +219,9 @@ void main() {
     maxPendingFrames: maxPendingFrames,
     reanchorInterval: reanchorInterval,
     periodicTimerFactory: periodicTimerFactory,
+    transcribe: transcribe,
+    userL1: userL1,
+    userL2: userL2,
     upload: (bytes, {required filename, required contentType}) async {
       uploads.add((bytes: bytes, filename: filename, contentType: contentType));
       if (uploadFailuresLeft > 0) {
@@ -1763,5 +1776,108 @@ void main() {
       );
       expect(dataLen, 2644, reason: '2646 floored to the 4-byte stereo frame');
     });
+  });
+
+  group('recording-based transcription', () {
+    // A recording driven end to end, so `finish` has real WAV bytes to hand to
+    // the stubbed transcriber.
+    void recordOneRun(CallAudioRecorder r) {
+      r.onRunStarted(1000, 16000, 1);
+      r.onFrame(_tone(160));
+      r.onRunEnded();
+    }
+
+    test(
+      'finish transcribes the recording and fills recordingSegments',
+      () async {
+        var called = false;
+        var reqBytes = 0;
+        var reqTimings = false;
+        String? reqL1;
+        String? reqL2;
+        final r = recorder(
+          transcribe: (req) async {
+            called = true;
+            reqBytes = req.audioContent.length;
+            reqTimings = req.includeWordTimings;
+            reqL1 = req.config.userL1;
+            reqL2 = req.config.userL2;
+            return spokenWord('hola', timed: true);
+          },
+          userL1: 'en',
+          userL2: 'es',
+        );
+        recordOneRun(r);
+        await r.finish(wasCarrier: true, callKey: _callKey);
+
+        // The whole recording became one utterance from the provider word list,
+        // populated before finish() returned.
+        expect(r.recordingSegments.map((s) => s.text).toList(), ['hola']);
+        // Fed the recording's OWN bytes, asking for timings + the speaker's own
+        // languages -- the same request the live chunk path makes.
+        expect(called, isTrue);
+        expect(reqBytes, greaterThan(0));
+        expect(reqTimings, isTrue);
+        expect(reqL1, 'en');
+        expect(reqL2, 'es');
+        // The audio half still uploaded and sent -- transcription is additive.
+        expect(uploads, hasLength(1));
+        expect(sent, hasLength(1));
+      },
+    );
+
+    test(
+      'a transcription failure leaves recordingSegments empty and the audio half intact',
+      () async {
+        final r = recorder(
+          transcribe: (_) async => throw StateError('stt down'),
+          userL1: 'en',
+          userL2: 'es',
+        );
+        recordOneRun(r);
+        // Non-fatal: finish() completes normally despite the STT failure.
+        await r.finish(wasCarrier: true, callKey: _callKey);
+
+        // The live transcript half stands, and the recording still uploaded/sent.
+        expect(r.recordingSegments, isEmpty);
+        expect(uploads, hasLength(1));
+        expect(sent, hasLength(1));
+      },
+    );
+
+    test('with the feature off the recording is not transcribed', () async {
+      // transcribe left null == feature off.
+      final r = recorder();
+      recordOneRun(r);
+      await r.finish(wasCarrier: true, callKey: _callKey);
+
+      // No recording-based half; the audio was still uploaded and sent.
+      expect(r.recordingSegments, isEmpty);
+      expect(uploads, hasLength(1));
+      expect(sent, hasLength(1));
+    });
+
+    test(
+      'a device that never carried the recording never transcribes',
+      () async {
+        var called = false;
+        final r = recorder(
+          transcribe: (_) async {
+            called = true;
+            return spokenWord('hola', timed: true);
+          },
+          userL1: 'en',
+          userL2: 'es',
+        );
+        // Recorded, but a sibling was carrying at the end: finish returns before
+        // building the WAV, so transcription is never kicked off.
+        recordOneRun(r);
+        await r.finish(wasCarrier: false, callKey: _callKey);
+
+        expect(called, isFalse);
+        expect(r.recordingSegments, isEmpty);
+        expect(uploads, isEmpty);
+      },
+    );
   });
 }
