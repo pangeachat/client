@@ -27,20 +27,17 @@ class StyleExampleMessage extends StatelessWidget {
         children: [
           SizedBox(width: double.infinity),
           // The bot wears the learner's chosen colour, so the swatch they are
-          // about to tap changes it. It leads, on the other side and with its
-          // avatar, because that is where they meet it in a chat, and because
-          // the word card below can cover what follows it but must not cover
-          // the bot.
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Padding(
-              // The column pads only its right, every other child being
-              // right-aligned, so the bot's row supplies its own left inset.
-              padding: EdgeInsets.only(left: 12),
-              child: _StyleExampleBotMessage(),
-            ),
+          // about to tap changes it. It sits over the card's top-left rather
+          // than in a row of its own: the preview has a fixed height, and a
+          // row for the bot pushed the rest of the conversation out of it.
+          // Positioned, so it adds nothing to the stack's size, and drawn
+          // last so the card cannot hide the one thing it is here to show.
+          Stack(
+            children: [
+              _StyleExampleWordCard(),
+              Positioned(left: 12, top: 0, child: _StyleExampleBotMessage()),
+            ],
           ),
-          _StyleExampleWordCard(),
           _StyleExampleMessage(),
           _StyleExampleToolbarButtons(),
         ],
