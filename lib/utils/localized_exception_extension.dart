@@ -9,6 +9,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/authentication/delete_account_exception.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/network/rate_limit_pause.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_repo.dart';
 import 'package:fluffychat/routes/chat/recording_view_model.dart';
@@ -66,6 +67,11 @@ extension LocalizedExceptionExtension on Object {
       }
     }
     // Pangea#
+    // A choreo throttle (429) or a locally suppressed read: waiting is the
+    // remedy, so "oops, something went wrong" would misdirect (#8705).
+    if (RateLimitPause.isRateLimited(this)) {
+      return L10n.of(context).errorRateLimited;
+    }
     if (this is FileTooBigMatrixException) {
       final exception = this as FileTooBigMatrixException;
       return L10n.of(

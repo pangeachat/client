@@ -94,8 +94,14 @@ class PAuthGaurd {
   /// lives because it is the one place every login transport passes through —
   /// an in-session password login navigates back here, while a web SSO login
   /// returns via a full page reload and a restored session boots straight to
-  /// `/`, so a login-state listener never fires for them (the bug this
-  /// fixes). The guard never clears the cache — only the join page's
+  /// `/`, so a login-state listener cannot be relied on for them (the bug this
+  /// fixes). Not that it never fires for a restored session — measurement says
+  /// it does, on roughly one cold start in ten, whenever the restore finishes
+  /// after the app has mounted. It simply cannot be depended on, which is why
+  /// consumption lives here, and why that listener no longer navigates away
+  /// from a location the user chose ([loggedInLanding]).
+  ///
+  /// The guard never clears the cache — only the join page's
   /// auto-submit does, at the moment it actually fires
   /// (CourseCodePage._autoSubmit). Anything earlier proved lossy: boot-time
   /// navigations (post-login listeners go() to the world route) preempted
@@ -151,6 +157,65 @@ class PAuthGaurd {
     }
     return '/home';
   }
+
+  /// Where a client that has just announced [LoginState.loggedIn] belongs, or
+  /// null to LEAVE THE URL ALONE.
+  ///
+  /// The listener that calls this (matrix.dart) exists for a login the user
+  /// just performed: the sign-in screen cannot navigate away from itself, so
+  /// something has to move them into the app. But the SDK announces the same
+  /// state when it merely RESTORES a session at startup, and that announcement
+  /// arrives whenever the restore happens to finish — which on a cold start is
+  /// after the app has mounted and already resolved the URL the user opened.
+  /// Sending them to the world map then DESTROYS that URL.
+  ///
+  /// It is a race, so it looked like anything but one. Measured on the local
+  /// stack, one cold load in ten lost `?left=chats,room:...`: the router
+  /// accepted the deep link, and 164ms later the restored session pushed `/`
+  /// over the top of it. The slower the restore — a big local database, a
+  /// device catching up after a call — the likelier the loss, which is why
+  /// "the link stopped working after a call" was a fair description of a bug
+  /// that has nothing to do with calls.
+  ///
+  /// So: move them only from a place a finished account cannot stay — an ENTRY
+  /// location ([isEntryLocation]). Everywhere else the location on screen is
+  /// the one they asked for, and the router's own guards ([roomsRedirect])
+  /// already vet it.
+  ///
+  /// [current] is the location the app is on; [isL2Set] whether the account
+  /// has chosen a language to learn — until it has, registration outranks
+  /// everything, exactly as [roomsRedirect] enforces on every landing.
+  static String? loggedInLanding({
+    required Uri current,
+    required bool isL2Set,
+  }) {
+    if (!isL2Set) return '/registration';
+    return isEntryLocation(current) ? PRoutes.world : null;
+  }
+
+  /// Whether [uri] is a route that exists only to get an account STARTED: the
+  /// `/home` family (sign in, sign up, and the email variant of each), plus the
+  /// onboarding and registration hops.
+  ///
+  /// None of the three is somewhere an account that has finished starting can
+  /// stay, and none is a place a person deep-links to, so moving off them costs
+  /// nothing. The `/home` screens cannot navigate away from themselves once a
+  /// login succeeds — that is the whole reason the listener exists. Onboarding
+  /// and registration are here because a completed account reloading on one of
+  /// them was carried to the map before this function existed, and their own
+  /// route guard does not do it: [onboardingRedirect] admits any logged-in
+  /// user, L2 set or not.
+  ///
+  /// A prefix test on whole segments, so `/homework` is not `/home`.
+  static bool isEntryLocation(Uri uri) => _entryRoots.any(
+    (root) => uri.path == root || uri.path.startsWith('$root/'),
+  );
+
+  static const List<String> _entryRoots = [
+    '/home',
+    '/onboarding',
+    '/registration',
+  ];
 
   /// Redirect for onboarding routes
   static FutureOr<String?> onboardingRedirect(

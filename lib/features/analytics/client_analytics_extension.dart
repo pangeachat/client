@@ -84,7 +84,9 @@ extension AnalyticsClientExtension on Client {
       debugger(when: kDebugMode);
       analyticsRoom.join().onError(
         (error, stackTrace) => ErrorHandler.logError(
-          e: error,
+          // `onError` hands back a nullable error here; [logError] now requires
+          // one, so name the failure rather than reporting a bare null.
+          e: error ?? Exception('Failed to join analytics room'),
           s: stackTrace,
           data: {"langCode": lang.langCodeShort, "userID": userID},
         ),
@@ -259,6 +261,11 @@ extension AnalyticsClientExtension on Client {
         );
         return null;
       }
+
+      // Uses can anchor to non-message events — call speech anchors to the
+      // pangea.call card (or, on the answering side, the ring notification) —
+      // and those carry no message content to display.
+      if (event.type != EventTypes.Message) return null;
 
       if (event.relationshipType == RelationshipTypes.edit) {
         final parentId = event.relationshipEventId;

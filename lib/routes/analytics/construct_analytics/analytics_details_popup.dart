@@ -116,7 +116,6 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView>
     if (l2 == null) {
       ErrorHandler.logError(
         e: "No L2 language set for user",
-        m: "Cannot set analytics data",
         data: {"view": widget.view, "construct": widget.construct},
         level: SentryLevel.warning,
       );

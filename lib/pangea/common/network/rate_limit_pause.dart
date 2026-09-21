@@ -63,6 +63,15 @@ class RateLimitPause {
     return false;
   }
 
+  /// Whether [error] means the backend throttled us — a 429, or a read a
+  /// pause suppressed. The one test display surfaces use to pick the
+  /// "wait a moment and try again" copy over their own failure copy, which
+  /// would otherwise misdirect (a throttle is not a connection problem, and
+  /// retrying later than a minute is not needed) (#8705).
+  static bool isRateLimited(Object? error) =>
+      error is RateLimitedException ||
+      PangeaHttpException.statusCodeOf(error) == 429;
+
   /// Starts the pause when [error] is the backend asking us to stop (429).
   /// Any other failure says something about the request, not about our rate:
   /// pausing on those would let one bad row take down every read on the

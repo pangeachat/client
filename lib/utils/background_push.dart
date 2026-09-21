@@ -440,7 +440,20 @@ class BackgroundPush {
     });
   }
 
+  /// Whether a failed push setup is worth telling the user about.
+  ///
+  /// Only when the build actually HAS Firebase compiled in: a build without
+  /// the GOOGLE_SERVICES lines cannot get a token by construction, and that
+  /// is a build fact, not an error -- the popup it used to raise told every
+  /// user of such a build that something went wrong when nothing did.
+  static bool shouldWarnNoPush({required bool firebaseEnabled}) =>
+      firebaseEnabled;
+
   Future<void> _noFcmWarning() async {
+    if (!shouldWarnNoPush(firebaseEnabled: firebaseEnabled)) {
+      Logs().i('Push is not compiled into this build; no warning shown');
+      return;
+    }
     if (matrix == null) {
       return;
     }

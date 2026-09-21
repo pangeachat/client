@@ -87,9 +87,16 @@ class _UnlockPill extends StatelessWidget {
     return PressableButton(
       borderRadius: _borderRadius,
       color: gold,
+      // The current URI comes from the router, NOT from `GoRouterState.of`:
+      // several of these gates render inside an `OverlayEntry` — the word card
+      // over a vocab chip or a message, the chat toolbar's mode gates. An entry
+      // sits BESIDE the route's page in the Navigator's overlay rather than
+      // under it, so `GoRouterState.of` finds no `ModalRoute` and throws. The
+      // throw landed in an async tap handler, so the button did nothing at all
+      // (#8622).
       onPressed: () => context.go(
         WorkspaceNav.openSettings(
-          GoRouterState.of(context).uri,
+          GoRouter.of(context).routeInformationProvider.value.uri,
           page: 'subscription',
         ),
       ),

@@ -112,6 +112,9 @@ class _StartIGCButtonState extends State<StartIGCButton>
   @override
   void dispose() {
     widget.choreographer.removeListener(_handleStateChange);
+    widget.choreographer.igcController.activeMatch.removeListener(
+      _updateSegments,
+    );
     _spinController.dispose();
     _segmentController.dispose();
     _segmentsSubscription.cancel();

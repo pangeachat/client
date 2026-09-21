@@ -109,6 +109,16 @@ abstract class BaseRepo<
   @visibleForTesting
   static SentryLevel errorLevel(Object e) => PangeaHttpException.severityOf(e);
 
+  /// Key for reporting this failure once per app session
+  /// ([ErrorHandler.logErrorOnce]), or null — the default — to report every
+  /// occurrence. Subclasses override for failures that recur identically with
+  /// no new signal, e.g. a 404 on an activity id that every surface
+  /// referencing it re-reads (CLIENT-EB0, same rationale as #8083's
+  /// once-per-course reporting).
+  @protected
+  @visibleForTesting
+  String? reportOnceKey(TRequest request, Object error) => null;
+
   Future<Result<TResponse>> _fetch(TRequest request) async {
     try {
       final Requests req = createRequests();
@@ -125,12 +135,23 @@ abstract class BaseRepo<
     } catch (e, s) {
       Logs().w("Error: $e\n$s");
       if (e is! UnsubscribedException) {
-        ErrorHandler.logError(
-          e: e,
-          s: s,
-          data: request.toJson(),
-          level: errorLevel(e),
-        );
+        final onceKey = reportOnceKey(request, e);
+        if (onceKey != null) {
+          ErrorHandler.logErrorOnce(
+            key: onceKey,
+            e: e,
+            s: s,
+            data: request.toJson(),
+            level: errorLevel(e),
+          );
+        } else {
+          ErrorHandler.logError(
+            e: e,
+            s: s,
+            data: request.toJson(),
+            level: errorLevel(e),
+          );
+        }
       }
       return Result.error(e);
     }

@@ -56,7 +56,6 @@ class PSettingsSwitchListTileState
               } catch (err, s) {
                 ErrorHandler.logError(
                   e: err,
-                  m: "Failed to updates user setting",
                   s: s,
                   data: {"newValue": newValue, "currentValue": currentValue},
                 );

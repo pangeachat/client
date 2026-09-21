@@ -117,7 +117,6 @@ class LevelAnalyticsDetailsContent extends StatelessWidget {
                           final use = uses[index];
                           String lemmaCopy = use.lemma;
                           if (use.constructType == ConstructTypeEnum.morph) {
-                            debugPrint("Use info: ${use.toJson()}");
                             lemmaCopy =
                                 GrammarConstructsProvider.getTagTitle(
                                   feature: use.category,

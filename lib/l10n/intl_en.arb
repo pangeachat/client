@@ -3685,6 +3685,122 @@
     "nan": "Not applicable",
     "instructions": "Instructions",
     "constructUsePvmDesc": "Produced in voice message",
+    "constructUsePvcDesc": "Produced in a call",
+    "startCall": "Call",
+    "startVideoCall": "Video call",
+    "callConnecting": "Connecting",
+    "callFailed": "Could not connect the call",
+    "callEnded": "Call ended",
+    "callHangUp": "Hang up",
+    "callMute": "Mute",
+    "callOngoingChannel": "Ongoing call",
+    "callUnmute": "Unmute",
+    "callCameraOn": "Turn camera on",
+    "callCameraOff": "Turn camera off",
+    "callTranscriptSharedNotice": "This call is transcribed and saved. You and the other person can read it afterwards.",
+    "callNoMicrophone": "They cannot hear you: your microphone did not start",
+    "callIncoming": "Incoming call",
+    "callAnswer": "Answer",
+    "callDecline": "Decline",
+    "callDeclinedByPeer": "Call declined",
+    "callRinging": "Ringing...",
+    "callMinimize": "Minimize call",
+    "callFullscreen": "Full screen",
+    "callExitFullscreen": "Exit full screen",
+    "callReconnecting": "Reconnecting...",
+    "callReturn": "Return",
+    "callPeerMuted": "Muted",
+    "callPeerBusy": "{name} is on another call",
+    "@callPeerBusy": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "callReturnOffer": "You were in a call before the app reloaded",
+    "callPeerReconnecting": "{name} reconnecting...",
+    "@callPeerReconnecting": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "callFailedBusy": "You are already in a call",
+    "callFailedService": "The calling service refused the connection",
+    "callFailedNoFocus": "Calling is not available on this server",
+    "callIncomingVoice": "Incoming voice call",
+    "callIncomingVideo": "Incoming video call",
+    "callQuickReply": "Message",
+    "callQuickReplyTitle": "Quick reply",
+    "callReplyCantTalk": "Can't talk right now. What's up?",
+    "callReplyCallRightBack": "I'll call you right back",
+    "callReplyOnMyWay": "On my way",
+    "callReplyCallLater": "Can I call you later?",
+    "callHistoryVoiceCall": "Voice call",
+    "callHistoryVideoCall": "Video call",
+    "callHistoryMissedCall": "Missed call",
+    "callHistoryMissedVideoCall": "Missed video call",
+    "callHistoryNoAnswer": "No answer",
+    "callHistoryDeclined": "Call declined",
+    "callHistoryYouDeclined": "You declined this call",
+    "callTranscriptTitle": "Call transcript",
+    "callTranscriptLoadFailed": "Could not load the transcript",
+    "callTranscriptRetry": "Try again",
+    "callTranscriptStoppedEarly": "This call had too much to read in one go, so some of it is not shown.",
+    "callTranscriptNone": "No transcript from {name}",
+    "@callTranscriptNone": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "callTranscriptSaidNothing": "{name} did not say anything",
+    "@callTranscriptSaidNothing": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "callTranscriptNothingRead": "Nothing could be read from what {name} said",
+    "@callTranscriptNothingRead": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "callTranscriptNoSpeechDetected": "Nothing recorded from {name} was sent to be transcribed: this app found no speech in it and can be wrong about that, so what was said is not known.",
+    "@callTranscriptNoSpeechDetected": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "callTranscriptPartial": "Part of what {name} said may be missing",
+    "@callTranscriptPartial": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "callTranscriptByTime": "by {time}",
+    "@callTranscriptByTime": {
+        "placeholders": {
+            "time": {
+                "type": "String"
+            }
+        }
+    },
+    "callTranscriptApproximateTimes": "A turn marked \"by\" a time was said at or before it. Those turns are shown at that moment, so they may have been said earlier.",
+    "callTranscriptUnstatedTimes": "Some turns show no time. The device that recorded them did not say how exact its times are, so where they sit in this conversation may be wrong.",
+    "callTranscriptUnreconciledClocks": "These turns were recorded on two devices whose clocks could not be compared, so no times are shown and the order they appear in may be wrong.",
+    "callTranscriptOpen": "Read the transcript",
     "leaveSpaceDescription": "By leaving the course, you will leave all of the chats within it. Other users will see that you have left the course.",
     "constructUseCorMmDesc": "Correct message meaning",
     "constructUseIncMmDesc": "Incorrect message meaning",
@@ -3818,6 +3934,12 @@
     "announcements": "Announcements",
     "activities": "Activities",
     "stars": "Stars",
+    "starsEarnedInLanguage": "Stars earned in {language}",
+    "@starsEarnedInLanguage": {
+        "placeholders": {
+            "language": {}
+        }
+    },
     "access": "Access",
     "howSpaceCanBeFound": "How this course can be found",
     "private": "Private",
@@ -4679,6 +4801,7 @@
     "selectModeTutorialAudio": "Click here to listen to the message",
     "selectModeTutorialExit": "Click the background to go back to chatting",
     "errorTryAgainLater": "Oops, something went wrong… We're looking into it! Please try again later.",
+    "errorRateLimited": "We're loading a lot right now. Please wait a moment and try again.",
     "acceptAll": "Accept all",
     "removeAdminDescription": "Lowering this user's permission level will remove admin privileges.",
     "emojiToolbarInstruction": "This mode allows you to set emojis to words! Select a word to associate an emoji with it!",
@@ -4864,6 +4987,10 @@
     "filteredActivitiesLabel": "Filtered activity list",
     "mapZoomLabel": "Map zoom controls",
     "activityMapLabel": "Activity map",
+    "mapPinsKeyboardHint": "Use the arrow keys to move between activities on the map, and press Enter to open one.",
+    "@mapPinsKeyboardHint": {},
+    "selectMessageLabel": "Select message",
+    "@selectMessageLabel": {},
     "writingAssistanceTutorialInputBar": "You can write in any language! We'll help you correct mistakes.",
     "abDisplayName": "Abkhazian",
     "elDisplayName": "Greek",
@@ -5062,6 +5189,15 @@
             }
         }
     },
+    "readAloudNoVoiceNote": "No high-quality {language} voice is available on this device, so these settings are unavailable. You can still play audio from the message toolbar.",
+    "@readAloudNoVoiceNote": {
+        "type": "String",
+        "placeholders": {
+            "language": {
+                "type": "String"
+            }
+        }
+    },
     "readAloudNoVoiceDesktopWeb": "This browser doesn't offer a high-quality {language} voice, so messages can't be read aloud well here. Chrome and Edge usually include high-quality voices.",
     "@readAloudNoVoiceDesktopWeb": {
         "type": "String",
@@ -5186,5 +5322,36 @@
                 "type": "String"
             }
         }
-    }
+    },
+    "teachOptionSelected": "Teach selected",
+    "learnOptionSelected": "Learn selected",
+    "selectedTargetLanguage": "Selected {lang} as target language",
+    "@selectedTargetLanguage": {
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "selectedBaseLanguage": "Selected {lang} as base language",
+    "@selectedBaseLanguage": {
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "resetTargetLanguage": "Reset target language",
+    "resetBaseLanguage": "Reset base language",
+    "selectedLanguageLevel": "Selected {level} as language level",
+    "@selectedLanguageLevel": {
+        "placeholders": {
+            "level": {
+                "type": "String"
+            }
+        }
+    },
+    "resetLanguageLevel": "Reset language level",
+    "noPermissionToInviteUsers": "You don't have permission to invite members here.",
+    "@noPermissionToInviteUsers": {}
 }

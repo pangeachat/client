@@ -46,10 +46,11 @@ class _StubUserController extends UserController {
   }
 }
 
-/// #8117 / #8264 / #8326 / #8334 — the Audio section of learning settings: the
-/// per-surface audio toggles (Words, Choices, On new message, On message
-/// click), the known-good-voice gate on the two message toggles, and keeping
-/// all of them current with profile changes made off this page.
+/// #8117 / #8264 / #8326 / #8334 / #8664 — the Audio section of learning
+/// settings: the per-surface audio toggles (Words, Choices, On new message, On
+/// message click), the known-good-voice gate on the two message toggles — which
+/// renders them disabled under an explanatory note when it fails — and
+/// keeping all of them current with profile changes made off this page.
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -159,8 +160,10 @@ void main() {
     expect(find.text('On message click'), findsOneWidget);
     expect(find.byType(SwitchListTile), findsNWidgets(4));
 
-    // The retired single message-audio toggle is gone (#8264).
+    // The retired single message-audio toggle is gone (#8264), and the
+    // no-voice note only renders when the gate fails (#8664).
     expect(find.text('Incoming messages'), findsNothing);
+    expect(find.textContaining('message toolbar'), findsNothing);
   });
 
   testWidgets('turning off the message toggles updates the view model', (
@@ -195,44 +198,101 @@ void main() {
     expect(viewModel.getToolSetting(ToolSetting.audioOnMessageClick), isFalse);
   });
 
-  testWidgets('enabling a message toggle without a known-good voice is '
-      'blocked by the gate', (tester) async {
-    deviceVoices = [
-      {'name': 'Mónica', 'locale': 'es-ES', 'quality': 'default'},
-    ];
-    final viewModel = makeViewModel(
-      toolSettings: const UserToolSettings(
-        audioOnNewMessage: false,
-        audioOnMessageClick: false,
-      ),
-    );
-    await pumpSection(tester, viewModel);
-
-    await tester.tap(find.text('On new message'));
-    await tester.pumpAndSettle();
-
-    expect(viewModel.getToolSetting(ToolSetting.audioOnNewMessage), isFalse);
-    expect(find.byType(ReadAloudVoiceDialog), findsOneWidget);
-  });
-
-  testWidgets('a toggle stored on reads on once a qualifying voice is '
-      'downloaded', (tester) async {
+  testWidgets('without a known-good voice the message toggles are disabled, '
+      'with one explanatory note above them (#8664)', (tester) async {
     deviceVoices = [
       {'name': 'Mónica', 'locale': 'es-ES', 'quality': 'default'},
     ];
     final viewModel = makeViewModel();
     await pumpSection(tester, viewModel);
-    expect(viewModel.getToolSetting(ToolSetting.audioOnMessageClick), isFalse);
 
-    // The learner follows the dialog to system settings and comes back.
+    for (final title in ['On new message', 'On message click']) {
+      final tile = tester.widget<SwitchListTile>(
+        find.ancestor(
+          of: find.text(title),
+          matching: find.byType(SwitchListTile),
+        ),
+      );
+      expect(tile.onChanged, isNull);
+      expect(tile.value, isFalse);
+    }
+    // One shared note above the two tiles, which keep their own descriptions.
+    expect(
+      find.textContaining('No high-quality Spanish voice'),
+      findsOneWidget,
+    );
+    expect(
+      find.textContaining('play audio from the message toolbar'),
+      findsOneWidget,
+    );
+    expect(
+      find.textContaining('Automatically read new received messages'),
+      findsOneWidget,
+    );
+
+    // A tap on a disabled toggle changes nothing and opens nothing.
+    await tester.tap(find.text('On new message'));
+    await tester.pumpAndSettle();
+    expect(find.byType(ReadAloudVoiceDialog), findsNothing);
+
+    // The word and choice toggles answer a different gate and stay live.
+    for (final title in ['Words', 'Choices']) {
+      final tile = tester.widget<SwitchListTile>(
+        find.ancestor(
+          of: find.text(title),
+          matching: find.byType(SwitchListTile),
+        ),
+      );
+      expect(tile.onChanged, isNotNull);
+    }
+  });
+
+  testWidgets('a toggle stored on reads enabled and on when a later visit '
+      'finds a qualifying voice', (tester) async {
+    deviceVoices = [
+      {'name': 'Mónica', 'locale': 'es-ES', 'quality': 'default'},
+    ];
+    await pumpSection(tester, makeViewModel());
+    expect(toggleValue(tester, 'On message click'), isFalse);
+
+    // The learner downloads an Enhanced voice and reopens the page — a
+    // disabled toggle takes no taps, so re-entry is what re-runs the gate.
     deviceVoices = [
       {'name': 'Mónica (Enhanced)', 'locale': 'es-ES', 'quality': 'enhanced'},
     ];
-    await tester.tap(find.text('On message click'));
+    final viewModel = makeViewModel();
+    await pumpSection(tester, viewModel);
+    await viewModel.refreshKnownGoodVoice();
     await tester.pumpAndSettle();
 
     expect(viewModel.getToolSetting(ToolSetting.audioOnMessageClick), isTrue);
-    expect(find.byType(ReadAloudVoiceDialog), findsNothing);
+    expect(toggleValue(tester, 'On message click'), isTrue);
+  });
+
+  testWidgets('an enabled toggle whose tap-time re-check fails shows the '
+      'voice dialog and the toggles fall back to disabled', (tester) async {
+    // A qualifying voice at page open, gone by the time the learner taps —
+    // the stale-answer case the tap-time re-check exists for (#8282).
+    final viewModel = makeViewModel(
+      toolSettings: const UserToolSettings(audioOnNewMessage: false),
+    );
+    await pumpSection(tester, viewModel);
+
+    deviceVoices = [
+      {'name': 'Mónica', 'locale': 'es-ES', 'quality': 'default'},
+    ];
+    await tester.tap(find.text('On new message'));
+    await tester.pumpAndSettle();
+
+    expect(viewModel.getToolSetting(ToolSetting.audioOnNewMessage), isFalse);
+    expect(find.byType(ReadAloudVoiceDialog), findsOneWidget);
+    final tile = tester.widget<SwitchListTile>(
+      find.ancestor(
+        of: find.text('On new message'),
+        matching: find.byType(SwitchListTile),
+      ),
+    );
+    expect(tile.onChanged, isNull);
   });
 
   testWidgets('a toggle turned on elsewhere reads on here (#8334)', (

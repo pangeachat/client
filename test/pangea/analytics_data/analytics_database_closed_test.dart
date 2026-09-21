@@ -34,7 +34,7 @@ void main() {
         await db.delete();
 
         await expectLater(
-          db.clearLocalConstructData(testLang),
+          db.clearLocalConstructData(testLang, batchKeys: const []),
           throwsA(isA<AnalyticsDatabaseClosedException>()),
         );
       },
@@ -51,7 +51,7 @@ void main() {
       await db.database?.close();
 
       await expectLater(
-        db.clearLocalConstructData(testLang),
+        db.clearLocalConstructData(testLang, batchKeys: const []),
         throwsA(isA<AnalyticsDatabaseClosedException>()),
       );
     });
@@ -62,7 +62,7 @@ void main() {
         await db.database?.close();
 
         await expectLater(
-          db.clearLocalConstructData(testLang),
+          db.clearLocalConstructData(testLang, batchKeys: const []),
           throwsA(isA<AnalyticsDatabaseClosedException>()),
         );
 
@@ -71,7 +71,7 @@ void main() {
         expect(db.isClosed, isTrue);
 
         await expectLater(
-          db.clearLocalConstructData(testLang),
+          db.clearLocalConstructData(testLang, batchKeys: const []),
           throwsA(isA<AnalyticsDatabaseClosedException>()),
         );
       },

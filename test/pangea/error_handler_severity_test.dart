@@ -97,9 +97,11 @@ void main() {
       );
     });
 
-    test('a message-only report with no exception stays an error', () async {
+    test('a non-HTTP exception stays an error', () async {
       expect(
-        await levelOf(() => ErrorHandler.logError(m: 'no exception', data: {})),
+        await levelOf(
+          () => ErrorHandler.logError(e: Exception('no exception'), data: {}),
+        ),
         SentryLevel.error,
       );
     });

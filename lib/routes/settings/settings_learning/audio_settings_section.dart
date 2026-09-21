@@ -15,9 +15,10 @@ class AudioSettingsSection extends StatelessWidget {
   const AudioSettingsSection({super.key, required this.viewModel});
 
   /// Message read-aloud only enables when the device offers a known-good voice
-  /// for the selected target language; otherwise the toggle stays off and the
-  /// dialog points to where a qualifying voice can be found. See
-  /// message-read-aloud.instructions.md.
+  /// for the selected target language. The gate is re-run at tap time because
+  /// the page-open answer can be stale (#8282); when it now fails, the dialog
+  /// points to where a qualifying voice can be found and the toggles fall back
+  /// to their disabled state. See message-read-aloud.instructions.md.
   Future<bool> _onEnableReadAloud(BuildContext context) async {
     final language = viewModel.selectedTargetLanguage;
     if (language == null) return false;
@@ -37,6 +38,12 @@ class AudioSettingsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    // Without a known-good voice the message-audio settings cannot do
+    // anything, so those toggles render disabled and a single note above them
+    // carries the explanation plus the toolbar alternative (#8664). See
+    // message-read-aloud.instructions.md.
+    final hasVoice = viewModel.hasKnownGoodVoice;
+    final language = viewModel.selectedTargetLanguage?.displayName;
     return Column(
       children: [
         ListTile(
@@ -58,6 +65,10 @@ class AudioSettingsSection extends StatelessWidget {
                 onChange: (v) => viewModel.updateToolSetting(setting, v),
               ),
             ),
+        if (!hasVoice && language != null)
+          ListTile(
+            subtitle: Text(L10n.of(context).readAloudNoVoiceNote(language)),
+          ),
         ...ToolSetting.audioSettings
             .where((setting) => setting.isMessageAudioSetting)
             .map(
@@ -66,13 +77,15 @@ class AudioSettingsSection extends StatelessWidget {
                 title: Text(setting.toolName(context)),
                 subtitle: Text(setting.toolDescription(context)),
                 activeThumbColor: AppConfig.activeToggleColor,
-                onChanged: (v) async {
-                  if (v) {
-                    final enabled = await _onEnableReadAloud(context);
-                    if (!enabled) return;
-                  }
-                  viewModel.updateToolSetting(setting, v);
-                },
+                onChanged: !hasVoice
+                    ? null
+                    : (v) async {
+                        if (v) {
+                          final enabled = await _onEnableReadAloud(context);
+                          if (!enabled) return;
+                        }
+                        viewModel.updateToolSetting(setting, v);
+                      },
               ),
             ),
       ],

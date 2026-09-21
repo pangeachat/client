@@ -220,7 +220,7 @@ class SubscriptionController {
       // generic tile so the paying user still sees management + the
       // account-delete warning, rather than a broken/empty tile.
       ErrorHandler.logError(
-        m: "v2 paid entitlement missing a catalog planId",
+        e: Exception("v2 paid entitlement missing a catalog planId"),
         s: StackTrace.current,
         data: {},
       );

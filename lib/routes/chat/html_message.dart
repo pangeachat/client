@@ -1224,7 +1224,12 @@ class MatrixPill extends StatelessWidget {
       context: outerContext,
       profile: profile,
       noProfileWarning: noProfileWarning,
-      uri: GoRouterState.of(outerContext).uri,
+      // From the router, NOT `GoRouterState.of` — the message toolbar renders
+      // its own copy of the message in an `OverlayEntry`, so a pill in a
+      // selected message has no `ModalRoute` above it and this read threw.
+      // The throw landed after the `await` above, so the pill did nothing at
+      // all rather than reporting an error (#8622).
+      uri: GoRouter.of(outerContext).routeInformationProvider.value.uri,
     );
   }
 

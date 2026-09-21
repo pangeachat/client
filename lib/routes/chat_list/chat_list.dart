@@ -714,12 +714,7 @@ class ChatListController extends State<ChatList>
           final handler = JoinRoomAnalyticsConsentHandler(joinResp, room);
           await handler.handle(context);
         } catch (err, s) {
-          ErrorHandler.logError(
-            m: "Failed to join analytics room",
-            e: err,
-            s: s,
-            data: {"roomId": room.id},
-          );
+          ErrorHandler.logError(e: err, s: s, data: {"roomId": room.id});
         }
         continue;
       }

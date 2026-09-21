@@ -125,7 +125,6 @@ extension InitWithRestoreExtension on Client {
                   (Object e, StackTrace s) => ErrorHandler.logError(
                     e: e,
                     s: s,
-                    m: 'Failed to store session backup',
                     data: {'client_name': clientName},
                     level: SentryLevel.warning,
                   ),

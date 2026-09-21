@@ -1,0 +1,839 @@
+import 'package:flutter/foundation.dart';
+
+import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
+
+/// One readable stretch of a speaker's speech, and when it was said.
+///
+/// This class used to carry a written promise that it held text ONLY — that
+/// word timings were used to cut segments and then dropped, because
+/// per-speaker sections order by position so offsets bought nothing to read
+/// them back. That premise has expired rather than been forgotten: an offset is
+/// now what puts a turn in the conversation, which is exactly what the
+/// turn-by-turn transcript changed.
+///
+/// The consequence the old promise named still stands, and the owner has
+/// accepted it. Per-segment positions are coarser than word timings, but they
+/// still disclose when each turn happened and, by subtraction, how long the
+/// gaps were. The ruling was that seeing the pause is fine, and that somebody
+/// working one out by subtracting two times is fine, but that we do not
+/// deliberately show it — hence per-turn times on screen and no gap or pause
+/// element anywhere.
+///
+/// What is still not persisted is the per-word detail. ONE offset per segment
+/// is stored, and it is the number the segment boundary was already chosen on.
+class TranscriptSegment {
+  final String text;
+
+  /// Our best estimate of when this stretch of speech began, in absolute Unix
+  /// milliseconds.
+  ///
+  /// THREE resolutions produce it and this field does not distinguish them:
+  ///
+  /// 1. The moment its first word was spoken, when the timings were trusted
+  ///    word for word. Only this one is a MOMENT.
+  /// 2. The moment speech began anywhere in the chunk, when the word list was
+  ///    refused. Refusal judges which WORDS the timings name; when sound
+  ///    started is a separate claim and survives it.
+  /// 3. The chunk's own start, only when the provider offered no usable start
+  ///    at all.
+  ///
+  /// [spanMs] is what tells the two apart, and it is there because 2 and 3 are
+  /// ESTIMATES rather than bounds. Case 2 minimises over word starts AND word
+  /// ends, so a word whose start the provider omitted contributes its end and
+  /// the true first speech is somewhere before that; case 3 is the chunk's
+  /// start, and a chunk can open with silence. Neither may be read as the
+  /// moment somebody spoke.
+  ///
+  /// [buildSegments] never produces null. It remains nullable for segments read
+  /// off the wire that carried no position, including events written before
+  /// this field existed. A null costs the SHAPE of the screen — the call falls
+  /// back to the per-speaker view — and never a word of what was said. See
+  /// [fromJson] for what is accepted off the wire.
+  final int? atMs;
+
+  /// How much later than [atMs] this speech could have begun, or null when
+  /// [atMs] is the moment itself.
+  ///
+  /// PRESENCE is the marker, not a positive value. A chunk whose audio window
+  /// has collapsed to an instant, and an estimate that happens to land on its
+  /// own chunk's end, both carry a span of zero and neither can support the
+  /// claim that its first word was spoken exactly then. Reading `spanMs > 0`
+  /// as "approximate" would hand those two an exactness they do not have.
+  ///
+  /// Written as a DELTA rather than the window's absolute end: five digits
+  /// against thirteen, on a wire whose packer drops speech off the tail of a
+  /// half that will not fit. Being a delta also makes it invariant under the
+  /// per-half clock correction, which shifts [atMs] and nothing else.
+  ///
+  /// The upper end is PROVEN, unlike [atMs]. It is the end of the chunk's own
+  /// audio, and no word in a chunk began after its audio stopped.
+  final int? spanMs;
+
+  const TranscriptSegment(this.text, {this.atMs, this.spanMs})
+    : assert(
+        atMs != null || spanMs == null,
+        'a span bounds a position, and there is no position to bound',
+      );
+
+  /// The moment this segment is PLACED at: the latest it could have begun.
+  ///
+  /// This, not [atMs], is what orders one speaker's turns against the other's.
+  /// Placing an approximate turn at its estimate is what lets it render a whole
+  /// chunk earlier than it happened and jump ahead of the other speaker's
+  /// correctly timed turn -- an answer before its question. Placing it at the
+  /// end of the audio it came from cannot: no turn is then shown earlier on the
+  /// clock than it was spoken.
+  int? get orderKeyMs {
+    final at = atMs;
+    return at == null ? null : at + (spanMs ?? 0);
+  }
+
+  /// Whether this segment knows only which CHUNK it was said in.
+  bool get positionIsApproximate => atMs != null && spanMs != null;
+
+  Map<String, dynamic> toJson() => {
+    'text': text,
+    if (atMs != null) 'at_ms': atMs,
+    if (atMs != null && spanMs != null) 'at_span_ms': spanMs,
+  };
+
+  /// One past the largest position that survives a JSON round trip.
+  ///
+  /// JSON numbers are doubles, and the largest integer a double holds exactly
+  /// is 2^53 - 1. Anything at or beyond this is not a time this writer produced.
+  static const atMsCeiling = 9007199254740992;
+
+  /// What one raw entry says about how tightly its position is known.
+  ///
+  /// One implementation, two callers: this segment's own parse, and
+  /// `CallTranscriptContent.fromJson`, which has to know that an entry declared
+  /// a span it could not use so the HALF can stop claiming it marks its
+  /// positions. Two readers of one key would drift.
+  ///
+  /// A declared-but-unusable span does NOT cost the segment its `at_ms`. That
+  /// rule cannot be right here: whether a span is honoured is a question about
+  /// the segment, while what an unusable one means is a question about the
+  /// half's claim, and destroying a sound position over the second would drop
+  /// the whole call to the per-speaker view for one corrupt byte. It voids the
+  /// CLAIM instead, which is the shape `HalfAccounting.declared` already uses.
+  ///
+  /// A span beside an unusable `at_ms` is neither honoured nor held against the
+  /// half: there is no position for it to bound, and the segment is unplaceable
+  /// on its own account.
+  static ({int? spanMs, bool declaredButUnusable}) spanOf(
+    Object? raw,
+    int? atMs,
+  ) {
+    const none = (spanMs: null, declaredButUnusable: false);
+    if (raw is! Map || atMs == null) return none;
+    if (!raw.containsKey('at_span_ms')) return none;
+    final span = raw['at_span_ms'];
+    if (span is int && span >= 0 && atMs + span < atMsCeiling) {
+      return (spanMs: span, declaredButUnusable: false);
+    }
+    return (spanMs: null, declaredButUnusable: true);
+  }
+
+  static TranscriptSegment? fromJson(Object? raw) {
+    if (raw is! Map) return null;
+    final text = raw['text'];
+    if (text is! String) return null;
+    final trimmed = text.trim();
+    if (trimmed.isEmpty) return null;
+
+    // A bad position costs a position, never words. `text` alone decides
+    // whether this segment exists, so a malformed, negative, out-of-range or
+    // absent `at_ms` leaves it present, readable and simply unplaced.
+    //
+    // Both halves of that matter. Rejecting the segment instead would drop
+    // speech and mark the half shortened, which is a reader-side lie about what
+    // the writer sent; and accepting loose numbers would let hostile content
+    // satisfy the render gate with fabricated positions.
+    final at = raw['at_ms'];
+    final atMs = at is int && at >= 0 && at < atMsCeiling ? at : null;
+    return TranscriptSegment(
+      trimmed,
+      atMs: atMs,
+      spanMs: spanOf(raw, atMs).spanMs,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) =>
+      other is TranscriptSegment &&
+      other.text == text &&
+      other.atMs == atMs &&
+      other.spanMs == spanMs;
+
+  @override
+  int get hashCode => Object.hash(text, atMs, spanMs);
+
+  @override
+  String toString() => atMs == null
+      ? 'TranscriptSegment($text)'
+      : spanMs == null
+      ? 'TranscriptSegment($text @$atMs)'
+      : 'TranscriptSegment($text @$atMs+$spanMs)';
+}
+
+/// One chunk's frozen transcription, together with where its audio sat.
+///
+/// The two travel in one object rather than as two lists, because they are only
+/// ever correct together. The sink holds both halves keyed by chunk index and
+/// pairs them BY KEY; a chunk whose transcription failed has a position and no
+/// response, so lists zipped by position would slide every later chunk's start
+/// time onto the wrong words.
+class TranscribedChunk {
+  final SpeechToTextResponseModel result;
+
+  /// When this chunk's audio began, in absolute Unix milliseconds.
+  final int startedAtMs;
+
+  /// How long this chunk's audio runs.
+  ///
+  /// The ceiling the positioning rule measures word timings against. A timing
+  /// past the end of the audio it claims to describe is not a position, it is a
+  /// number.
+  final int durationMs;
+
+  const TranscribedChunk({
+    required this.result,
+    required this.startedAtMs,
+    required this.durationMs,
+  });
+}
+
+/// How long a gap between two words has to be before they are read as separate
+/// utterances.
+///
+/// A conversational pause, not a breath. Too small and every hesitation starts
+/// a new line; too large and a 45-second chunk stays one wall of text, which is
+/// the thing this exists to prevent.
+const kUtterancePause = Duration(milliseconds: 900);
+
+final _whitespace = RegExp(r'\s+');
+
+/// A chunk's text, normalised for comparison ONLY by case and whitespace.
+String _words(String text) =>
+    text.toLowerCase().trim().split(_whitespace).join(' ');
+
+/// The marks a transcript uses to punctuate a SENTENCE, as a closed set.
+///
+/// Deliberately a list and not a Unicode category. Three rounds of review found
+/// the same defect three times -- "he'll" accepted as "hell", then "C++" as
+/// "C", then "C#" as "C" -- because each rule was written as `\p{P}` or
+/// `\p{P}\p{S}`, and those categories are drawn for Unicode's purposes rather
+/// than ours. They contain `#`, `%`, `&`, `*`, `/`, `@` and `_`, every one of
+/// which belongs to the WORD rather than to the sentence around it. A category
+/// will keep surprising us; an explicit set cannot.
+///
+/// Membership answers one question only: would a transcript add this character
+/// around a word it is enclosing in a sentence? A comma would. A `#` would not.
+///
+/// The apostrophes are in the set on purpose. At a word's EDGE an apostrophe is
+/// elision, possession or a quote -- "'em" is "em", "dogs'" is "dogs" -- so
+/// forgiving it aligns the same word rather than substituting a different one.
+/// X' and X are always the same lexeme, which is exactly what cannot be said of
+/// "C#" against "C". Inside a word the same character does form a different
+/// one, and `_core` trims only at the edges, so "he'll" is still refused
+/// against "hell".
+const _sentenceMarks = {
+  '.',
+  ',',
+  '!',
+  '?',
+  ';',
+  ':',
+  '…',
+  '"',
+  "'",
+  '“',
+  '”',
+  '‘',
+  '’',
+  '«',
+  '»',
+  '(',
+  ')',
+  '[',
+  ']',
+  '{',
+  '}',
+  '¿',
+  '¡',
+  '—',
+  '–',
+  '。',
+  '、',
+  '！',
+  '？',
+  '；',
+  '：',
+  '「',
+  '」',
+  '『',
+  '』',
+  '،',
+  '؛',
+  '؟',
+  '।',
+};
+
+/// A word with its sentence decoration removed, for COMPARISON only. What is
+/// DISPLAYED is always the transcript's own spelling, never this.
+///
+/// Trims only at the edges. A mark inside a word is part of it: "he'll" is not
+/// "hell", and forgiving that accepted a timestamp for a word the transcript
+/// never contained.
+String _core(String word) {
+  final s = word.trim();
+  var start = 0;
+  var end = s.length;
+  while (start < end && _sentenceMarks.contains(s[start])) {
+    start++;
+  }
+  while (end > start && _sentenceMarks.contains(s[end - 1])) {
+    end--;
+  }
+  return s.substring(start, end).toLowerCase();
+}
+
+/// The transcript's own words, in order.
+List<String> _transcriptWords(String text) =>
+    text.trim().split(_whitespace).where((w) => w.isNotEmpty).toList();
+
+/// Lines the provider's timings up against the transcript's own words, ONE TO
+/// ONE, and hands back the transcript's spelling of each.
+///
+/// Providers return a punctuation-free word list beside a punctuated
+/// transcript: Deepgram is asked for `smart_format` + `punctuate` and its
+/// transcript comes back "Hello, मैं ... अभी." while its word list is
+/// [hello, मैं, ..., अभी]. Reconstructing the display text from that word list
+/// therefore never matched the transcript, which left every real call
+/// unpositioned. Measured on the captures on disk: 14/14.
+///
+/// So the display text comes from the TRANSCRIPT and the timings supply only
+/// the WHEN. That also means the punctuation survives into what the learner
+/// reads, which assembling from the word list could never do.
+///
+/// Alignment is deliberately unclever: the counts must match exactly, and each
+/// pair must agree once sentence marks and case are set aside. Returns null on
+/// any disagreement, which drops the chunk to its whole-chunk fallback: the
+/// transcript's own text, placed at the chunk's start. Coarser, never absent,
+/// and never a word the speaker did not say.
+///
+/// KNOWN LIMITATION: pairing is against the transcript's WHITESPACE-separated
+/// words, so scripts that do not space their words -- Chinese, Japanese -- give
+/// one token against many provider words and never align. Those calls always
+/// fall back to the per-speaker view. Splitting them on sentence marks instead
+/// would be a different design; guessing at word boundaries to fill the gap
+/// would put words in a learner's mouth, which is the one thing this file never
+/// does.
+///
+/// What the count requirement buys: a provider that re-cuts word boundaries
+/// ("therapist" against [the, rapist], "nowhere" against [now, here]) does not
+/// line up and is refused, which is the case that could genuinely misattribute
+/// speech. What edge-only sentence marks buy: "Hello," lines up with `hello`,
+/// while "he'll" against "hell", "C++" against "C" and "C#" against "C" still
+/// do not -- each differs by something that belongs to the word, so they are
+/// refused and the chunk falls back to its own text at the chunk's start, as
+/// the old exact rule intended, minus the cost of hiding the rest of the
+/// call.
+List<String>? _alignedToTranscript(List<WordTiming> timings, String text) {
+  final spoken = <int>[];
+  for (var i = 0; i < timings.length; i++) {
+    if (timings[i].word.trim().isNotEmpty) spoken.add(i);
+  }
+  final words = _transcriptWords(text);
+  if (spoken.isEmpty || spoken.length != words.length) return null;
+
+  final aligned = List<String>.filled(timings.length, '');
+  for (var k = 0; k < spoken.length; k++) {
+    if (_core(timings[spoken[k]].word) != _core(words[k])) return null;
+    aligned[spoken[k]] = words[k];
+  }
+  return aligned;
+}
+
+/// Cuts one call's frozen responses into readable segments.
+///
+/// [ordered] must already be in the order the speaker said them —
+/// `CallTranscriptSink` keys responses by `PcmChunk.index` and reads them back
+/// sorted, precisely because transcription is async and a later chunk can come
+/// back first, so callers pass that order through rather than re-deriving it.
+///
+/// Word timings are used where the provider supplied them and IGNORED where it
+/// did not: they are documented as nullable and never fabricated, so a response
+/// without them yields one segment for the whole chunk rather than no segment
+/// at all. Losing the finer cut is a readability cost; dropping the words would
+/// be a correctness one.
+///
+/// Every segment carries a position, and every segment SAYS how tightly that
+/// position is known. Only a segment cut by timings this file trusted word for
+/// word is stamped at its own first word; every other route is bounded to the
+/// chunk's audio and carries [TranscriptSegment.spanMs] to say so — see
+/// [_isWellFormedSequence] for what "trusted" means and [_add] for what the
+/// bound is.
+///
+/// Two earlier versions each got one half of that. One gave the fallbacks an
+/// offset of zero and called it exact, which is the CHUNK's position passed off
+/// as the SPEECH's; the next left them unpositioned, which dropped a whole call
+/// to the per-speaker view for one garbled chunk. Positioned AND bounded is
+/// both halves: no turn is hidden, and none claims a moment it cannot support.
+List<TranscriptSegment> buildSegments(
+  List<TranscribedChunk> ordered, {
+  Duration pause = kUtterancePause,
+}) {
+  final segments = <TranscriptSegment>[];
+
+  for (final chunk in ordered) {
+    final result = chunk.result;
+    if (!result.hasUsableTranscript) continue;
+    final transcript = result.transcript;
+    final timings = transcript.wordTimings;
+
+    if (timings == null || timings.isEmpty) {
+      _add(segments, transcript.text, chunk, null, exact: false);
+      continue;
+    }
+
+    // The transcript's own words, one per timing, or null when the two do not
+    // line up. Null means this chunk is not cut at all: the timings describe
+    // something other than the text being shown, so neither the words nor the
+    // positions taken from them can be trusted.
+    final aligned = _alignedToTranscript(timings, transcript.text);
+    if (aligned == null) {
+      // Refused for its WORDS, so the text is the transcript's whole. Estimated
+      // by when speech began, and bounded by the chunk it came from: refusing a
+      // word list says nothing about when the audio stopped.
+      _add(
+        segments,
+        transcript.text,
+        chunk,
+        _speechBeganAt(timings, chunk.durationMs),
+        exact: false,
+      );
+      continue;
+    }
+
+    // Decided ONCE per chunk, before anything is cut. The cut runs either way:
+    // a chunk that cannot be positioned still gets whatever finer segmentation
+    // its timings buy, it simply does not claim to know when any of it
+    // happened.
+    final placeable = _isWellFormedSequence(timings, chunk.durationMs);
+
+    // When the sequence is not well formed we do not trust it word by word,
+    // but its earliest start is still the best evidence of when this chunk's
+    // speech began. Without this every such segment sat at the chunk's start,
+    // up to 45 seconds early.
+    //
+    // Every segment cut from such a chunk shares this one offset, and that is
+    // a deliberate floor rather than an oversight. Per-segment starts read out
+    // of a sequence we just called malformed can run BACKWARDS -- the "words
+    // out of order" case is exactly that -- and a decreasing position fails
+    // `segmentsArePlaceable`, which would drop the whole call to the
+    // per-speaker view for one bad chunk. So each segment claims the earliest
+    // moment this chunk has any EVIDENCE of speech, bounded to the chunk's own
+    // length.
+    //
+    // That is an ESTIMATE and not a proven floor, which is the whole reason
+    // every segment built from it also carries a span: a word whose start the
+    // provider omitted leaves only its end, and the real start is somewhere
+    // before that. What the estimate does hold to is monotonic and inside the
+    // chunk, so it stays a useful ordering hint for anything reading `atMs`
+    // alone; what the SCREEN shows is the span's end, which is proven.
+    //
+    // The residual cost is one the span makes visible rather than hides: two
+    // segments of one malformed chunk are placed at the same moment, so the
+    // other speaker's turn falling between them renders after both. Rare:
+    // well-formed sequences were 334 of 336 on the real provider captures.
+    final fallbackOffset = placeable
+        ? null
+        : _speechBeganAt(timings, chunk.durationMs);
+
+    // A word whose start the chunk cannot account for -- omitted, or a moment
+    // outside the audio -- cannot open a gap, so it joins whatever is being
+    // built rather than being dropped or guessed at.
+    final words = <String>[];
+
+    // When speech last stopped: the LATEST end among the DISPLAYED words seen
+    // since the last unmeasurable one, never the end of the previous timing.
+    //
+    // A blank entry between two words otherwise absorbs the gap between them.
+    // `hello` at 0-100, a blank at 100-3000 and `world` at 3000-3100 is a
+    // perfectly ordered partition of the chunk, and `world`'s gap then measures
+    // 3000 - 3000 = 0: no cut, one segment stamped at 0 holding a word spoken
+    // three seconds in — and the other speaker's reply at 2.5s renders after
+    // it. The timings there are sound; the CUT was wrong. The pause that
+    // matters is the one between two words a reader can SEE, which is what this
+    // was always trying to measure, and blank entries then affect nothing at
+    // all.
+    int? previousEnd;
+
+    // Where the segment being built starts, taken when its first word enters
+    // the buffer. At the cut the value in hand belongs to the segment being
+    // OPENED, not to the one being emitted. Left null for a chunk that cannot
+    // be placed precisely, which is what leaves its segments at the chunk's
+    // own start rather than at a word's.
+    int? openedAt;
+
+    final countBefore = segments.length;
+
+    for (var i = 0; i < timings.length; i++) {
+      final timing = timings[i];
+      // BOTH sides of the subtraction below have to be moments this chunk can
+      // account for, and only the end was. A start outside the audio is not a
+      // moment speech happened, so it cannot measure a gap from one that was:
+      // `yes` at 0-100 and `no` at 500000 in a chunk one second long opened a
+      // gap of 499900 and cut one utterance into two turns, on nothing but a
+      // timestamp the chunk cannot support.
+      //
+      // `openedAt` below reads this same bounded value and is UNCHANGED by it,
+      // rather than being swept along for symmetry: it is only ever assigned
+      // under `placeable`, and a well-formed sequence has already had every one
+      // of its starts through this same rule, so the bounded value and the raw
+      // one are equal wherever `openedAt` can be reached at all. Reading the
+      // bounded one leaves nothing here that could take an out-of-chunk moment
+      // if that guarantee were ever loosened.
+      final start = momentWithinChunk(timing.startTimeMs, chunk.durationMs);
+      final gapOpens =
+          start != null &&
+          previousEnd != null &&
+          start - previousEnd >= pause.inMilliseconds;
+
+      if (gapOpens && words.isNotEmpty) {
+        _add(
+          segments,
+          words.join(' '),
+          chunk,
+          openedAt ?? fallbackOffset,
+          // Its own first word, or the chunk it sat in. `openedAt` is only
+          // ever taken from a well-formed sequence, so asking for it here is
+          // the same question as asking whether this segment was cut by
+          // timings we trusted word for word.
+          exact: openedAt != null,
+        );
+        words.clear();
+        openedAt = null;
+      }
+
+      // The TRANSCRIPT's spelling, not the provider's word list -- that is what
+      // carries the punctuation and the casing a learner reads.
+      final word = aligned[i];
+      if (word.isEmpty) continue;
+      if (words.isEmpty && placeable) openedAt = start;
+      words.add(word);
+      // The RUNNING MAXIMUM, which is the same shape `_isWellFormedSequence`
+      // keeps and for the same reason: a tolerated overlap means a word may end
+      // BEFORE the word before it did, so recording the LAST end rather than
+      // the LATEST walks "when speech last stopped" backwards, and the next gap
+      // is then measured from a moment speech had not yet reached. `a` at
+      // 1000-1010, `b` at 970-980 (accepted, 970 >= 1010 - 50), `c` at 1880:
+      // from `b`'s end the gap is exactly 900 and the phrase splits on a pause
+      // that never happened, when the real gap from 1010 is 870. The walk is
+      // bounded by `_boundaryJitter` -- `end >= start >= previousEnd - 50` for
+      // an accepted word -- so it only ever moves a cut that sat within 50ms of
+      // the threshold, and it only ever moves it towards splitting.
+      //
+      // An end this chunk cannot account for makes the NEXT gap unmeasurable,
+      // exactly as an absent one does -- [momentWithinChunk] is where the two
+      // become one answer, and it is the same question `_speechBeganAt` and
+      // `_isWellFormedSequence` ask. Measuring the next gap from the wrong place
+      // is what split an utterance that had no pause in it.
+      //
+      // Only a MALFORMED chunk reaches the out-of-chunk case -- a well-formed
+      // sequence lies inside its chunk by definition -- but the cut runs on
+      // those too, so both bounds earn their keep here. Without the upper one,
+      // an end hours away becomes a maximum nothing can exceed and silences
+      // every remaining cut in the chunk. Without the lower one, an end BEFORE
+      // the chunk began pulls the maximum backwards: `yes` 0..-100 then `no` at
+      // 800 opens a gap of 900 against -100 and splits two words that had no
+      // pause between them at all.
+      final end = momentWithinChunk(timing.endTimeMs, chunk.durationMs);
+      final stoppedAt = previousEnd;
+      previousEnd = end == null
+          ? null
+          : (stoppedAt == null || end > stoppedAt ? end : stoppedAt);
+    }
+
+    if (words.isNotEmpty) {
+      _add(
+        segments,
+        words.join(' '),
+        chunk,
+        openedAt ?? fallbackOffset,
+        exact: openedAt != null,
+      );
+    }
+
+    // A backstop on THIS loop, not on the provider.
+    //
+    // Provider disagreement is already refused by `_alignedToTranscript`
+    // above, so by the time the cut runs, the words being joined are the
+    // transcript's own. What remains is the cut itself losing some: `_add`
+    // drops anything that trims to empty, and a mis-sliced buffer would
+    // silently shorten a segment. "hello world" emerging as "hello" is a
+    // readability bug in this function; putting words a learner never said in
+    // front of them would be far worse, and that is what the alignment
+    // prevents. Kept because it is nearly free and it fails closed.
+    final rebuilt = segments
+        .skip(countBefore)
+        .map((segment) => segment.text)
+        .join(' ');
+    if (_words(rebuilt) != _words(transcript.text)) {
+      segments.removeRange(countBefore, segments.length);
+      // Back to the whole chunk, even when the timings were a flawless
+      // sequence: a position taken from a cut that lost text would describe the
+      // surviving part, not the text being shown. The chunk describes all of
+      // it, and says so by carrying a span.
+      _add(
+        segments,
+        transcript.text,
+        chunk,
+        _speechBeganAt(timings, chunk.durationMs),
+        exact: false,
+      );
+      continue;
+    }
+
+    // Every timing was empty or whitespace, which would silently lose a chunk
+    // the provider did read. The chunk's own text is the fallback.
+    //
+    // Judged PER CHUNK. Asking whether `segments` is empty overall meant a
+    // later chunk with all-blank timings was dropped whenever an earlier chunk
+    // had produced anything -- silently losing speech, and only in calls long
+    // enough to have a second chunk.
+    if (segments.length == countBefore) {
+      _add(segments, transcript.text, chunk, null, exact: false);
+    }
+  }
+
+  return List.unmodifiable(segments);
+}
+
+/// Whether a chunk's timings are a WELL-FORMED SEQUENCE, which is the only
+/// thing that lets its segments be positioned:
+///
+/// > Every timing carries both a start and an end, and
+/// > `0 <= start0 <= end0 <= start1 <= end1 <= ... <= duration`.
+///
+/// No exemptions. Not the last word's end, not blank words, not "the ones the
+/// cut actually uses".
+///
+/// Six review rounds in a row found the same thing: another shape of malformed
+/// provider timing the rule of the day did not cover. Words out of order. A
+/// valid blank that erased a pause. A word whose start was fine and whose end
+/// was hours away. An interior word with no start at all, whose only timing
+/// said it ended before the word before it began. Each round described one more
+/// property "usable" timings must have, and each round there was another.
+///
+/// The mistake was trying to CHARACTERISE usable timings. This does not: it
+/// requires them to be a valid ordered partition of the chunk's own time, which
+/// is what the cut reads them as anyway. Everything downstream then follows
+/// without a case analysis — a segment's first word start is necessarily the
+/// earliest speech in it, every gap is measured from a real end, and nothing
+/// lies outside the chunk.
+///
+/// Sub-threshold overlap between neighbouring words is tolerated; see
+/// [_boundaryJitter] for why, and for what is still refused.
+///
+/// The cost is real and is accepted: one absent end anywhere in a chunk makes
+/// that chunk placed at its own start rather than word by word. It no longer
+/// costs the rest of the call: every segment carries a position, so a chunk the
+/// provider mangled loses resolution and nothing else. Three earlier versions
+/// carved out exemptions inside this rule to avoid the old all-or-nothing cost,
+/// and all three carve-outs were where the next hole was found. The rule stayed
+/// strict and the COST moved instead, which is where it belonged.
+/// How far a word may start BEFORE the previous one ended and still be read as
+/// the same ordered sequence.
+///
+/// Word boundaries out of an ASR are estimates, and neighbouring estimates
+/// disagree by a few milliseconds routinely. Requiring a strict partition
+/// therefore failed on jitter rather than on disorder: a real call rejected a
+/// 44-word chunk over ONE overlap of 20ms, and because a rejected chunk places
+/// every segment at one shared moment, three of that speaker's sentences
+/// collapsed onto a single timestamp and the conversation read out of order.
+///
+/// This is deliberately a TOLERANCE and not a removal of the rule. Overlaps
+/// beyond it still reject the chunk, so a genuinely disordered list -- the
+/// "words out of order" case, where a later word claims an earlier moment --
+/// is refused exactly as before.
+///
+/// Measured, not guessed, though the sample is thin and worth saying so: across
+/// every real provider capture on hand -- 48 responses, 1221 timed words --
+/// there is exactly ONE overlap and it is 20ms. So jitter is RARE and small,
+/// while the cost of treating it as disorder is total: the chunk loses word
+/// timing entirely and every segment in it collapses onto one moment. 50ms
+/// leaves better than twice the margin over the only case observed, and sits
+/// far below any gap that could reorder two speakers against each other.
+const _boundaryJitter = 50;
+
+/// [at] when the chunk's own audio can account for it, and null when it cannot.
+///
+/// ONE definition, because three sites ask this question and each one used to
+/// answer it in its own words: the sequence check, the earliest-speech estimate,
+/// and the cut's record of when speech last stopped. Three rounds of review
+/// found the same class of defect in that arrangement -- an in-chunk bound
+/// written out longhand, one clause of it missing at one site, and the miss
+/// invisible unless that site happened to carry a behavioural test aimed at
+/// exactly that clause. The negative bound was missing from the cut for exactly
+/// that reason, and nothing failed.
+///
+/// A chunk holds a stretch of recorded audio and nothing else. A timestamp
+/// before it began or after it ended describes audio that does not exist, so it
+/// is not evidence of anything: not of the sequence being sound, not of when
+/// speech began, not of when it last stopped. ABSENT says the same thing --
+/// nothing is known -- which is why null belongs inside this answer rather than
+/// in a separate check at each site, and why the answer is the moment itself
+/// rather than a yes or no. A caller that has to re-test for null to use the
+/// value is a caller holding a second copy of half this rule.
+///
+/// Both bounds are inclusive. Zero is the chunk's first moment and [durationMs]
+/// its last, and a word may legitimately sit on either.
+@visibleForTesting
+int? momentWithinChunk(int? at, int durationMs) =>
+    at != null && at >= 0 && at <= durationMs ? at : null;
+
+bool _isWellFormedSequence(List<WordTiming> timings, int durationMs) {
+  // Starts at zero, which is also what rejects a negative first start.
+  var previousEnd = 0;
+  for (final timing in timings) {
+    final start = timing.startTimeMs;
+    final end = timing.endTimeMs;
+    if (start == null || end == null) return false;
+    // Absolute bounds first, WITHOUT the tolerance. `previousEnd` begins at
+    // zero, so folding the jitter allowance into that comparison quietly
+    // admitted a negative first start -- the tolerance is for disagreement
+    // between two neighbouring estimates, never for a word claiming a moment
+    // before the chunk began.
+    //
+    // The ORDERING clause stays here rather than moving into the shared rule:
+    // "this word ends after it starts" is a different rule from "this moment is
+    // one the chunk can account for", and only the second is shared.
+    //
+    // Two of the four bounds this asks for cannot decide anything HERE, and
+    // both are kept anyway. A start past the chunk drags its end past it too
+    // (`end >= start`), and an end before the chunk sits before a start the
+    // line already requires to be non-negative -- so the ordering clause
+    // reaches each of those first. They are kept because they are not this
+    // function's clauses to drop: they belong to the shared rule, and every
+    // previous hole in this file came from a site deciding which parts of a
+    // rule it needed. A site that asks the whole question cannot be the site
+    // that misses half of it.
+    if (momentWithinChunk(start, durationMs) == null ||
+        momentWithinChunk(end, durationMs) == null) {
+      return false;
+    }
+    if (end < start) return false;
+    if (start < previousEnd - _boundaryJitter) return false;
+    // There is deliberately NO separate check on STARTS going backwards, and
+    // it is worth saying why, because two rounds of review each asked for one.
+    //
+    // `previousEnd` is the running maximum of ends, and every word has already
+    // been required to satisfy `end >= start`, so `previousEnd >= previousStart`
+    // always. Any start far enough behind the previous START to be disorder is
+    // therefore already behind the previous END by at least as much, and the
+    // line above has rejected it. A start-based check cannot fire.
+    //
+    // Both attempts to add one made things worse rather than nothing. Forbidding
+    // backward starts outright cost the chunk its precision over five
+    // milliseconds of ordinary recogniser jitter -- and an imprecise chunk is
+    // placed at the END of its audio (see [orderKeyMs]), so a phrase that
+    // finished at 1.08s sorted at 45s and let the other speaker jump in front
+    // of it. Bounding it by the same jitter made it unreachable instead.
+    // Read forward from the LATER of the two, so a tolerated overlap cannot
+    // accumulate: ten words each 40ms early must not walk the sequence back
+    // half a second.
+    previousEnd = end > previousEnd ? end : previousEnd;
+  }
+  return true;
+}
+
+/// When speech began inside a chunk, from the earliest start the provider gave.
+///
+/// Usable even when the word list was REFUSED. Refusal is a judgement about
+/// which WORDS the timings name, not about when sound happened, and those are
+/// independent claims: a provider can mangle "therapist" into "the rapist" and
+/// still be right that someone started speaking 32 seconds in.
+///
+/// This matters because a chunk runs to 45 seconds by default and 90 at the
+/// ceiling, and a chunk holds silence as well as speech. Placing a refused
+/// chunk at its START could therefore claim a turn up to a chunk earlier than
+/// it happened, and sort it ahead of the other speaker's correctly placed
+/// turns. Ordering is the one thing the timeline exists to show, so buying it
+/// back with a number we already have is worth the few lines.
+int? _speechBeganAt(List<WordTiming> timings, int durationMs) {
+  int? earliest;
+
+  // Both ends of every word count as evidence, and nothing outside the chunk
+  // counts at all.
+  //
+  // Taking only STARTS read a word whose start the provider omitted as no
+  // evidence, so [hola null-300, que 350-600] answered 350 -- after `hola` had
+  // already FINISHED. An end is a moment sound existed just as much as a start
+  // is. And a time outside the chunk describes audio that does not exist;
+  // `_isWellFormedSequence` rejects those through the same [momentWithinChunk],
+  // so adopting one here would place the turn outside the chunk it belongs to.
+  void consider(int? raw) {
+    final at = momentWithinChunk(raw, durationMs);
+    if (at == null) return;
+    if (earliest == null || at < earliest!) earliest = at;
+  }
+
+  for (final timing in timings) {
+    if (timing.word.trim().isEmpty) continue;
+    consider(timing.startTimeMs);
+    consider(timing.endTimeMs);
+  }
+  return earliest;
+}
+
+/// Adds one segment, positioned at the best resolution available and SAYING
+/// which resolution that was.
+///
+/// A position is never null. An offset INTO the chunk is the finest answer and
+/// comes from the provider's word timings; without one, the chunk's own start
+/// is still a true statement -- this was said during this stretch of the call
+/// -- and it is known from when we captured the audio, not from any timing we
+/// just decided not to trust.
+///
+/// That rule is what stops one bad chunk hiding a whole call. Providers return
+/// a garbled chunk routinely: a corrupted character, a stray word in the wrong
+/// language, a word list that does not match its own transcript. Refusing to
+/// place such a chunk USED to leave it null, and one null anywhere dropped
+/// every other turn out of the timeline. A real call showed five of six
+/// segments perfectly placed and no timeline at all.
+///
+/// [exact] is the half of that which was missing. Degrading a chunk's
+/// resolution is the honest cost of keeping the call readable; presenting the
+/// degraded position as if it were a word's is not, and it is how a turn spoken
+/// forty seconds into a chunk came to render at the chunk's start, ahead of the
+/// other speaker's question. So a segment that is not [exact] carries the
+/// window it was cut from: `startedAtMs + durationMs` is the end of the audio
+/// that produced these words, and no word in a chunk began after its audio
+/// stopped.
+void _add(
+  List<TranscriptSegment> into,
+  String text,
+  TranscribedChunk chunk,
+  int? offsetInChunk, {
+  required bool exact,
+}) {
+  final trimmed = text.trim();
+  if (trimmed.isEmpty) return;
+  final atMs = chunk.startedAtMs + (offsetInChunk ?? 0);
+  // Clamped rather than trusted. Every caller's offset is already bounded to
+  // the chunk -- `_speechBeganAt` refuses anything past `durationMs`, and a
+  // well-formed sequence lies inside it by definition -- so this cannot fire
+  // today. It is here because a negative span is not a window, and a future
+  // caller that got the bound wrong should lose resolution rather than emit
+  // one.
+  final end = chunk.startedAtMs + chunk.durationMs;
+  into.add(
+    TranscriptSegment(
+      trimmed,
+      atMs: atMs,
+      spanMs: exact ? null : (end > atMs ? end - atMs : 0),
+    ),
+  );
+}

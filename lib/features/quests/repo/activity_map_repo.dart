@@ -18,9 +18,12 @@ import 'package:fluffychat/widgets/matrix.dart';
 /// over the returned set in v1. See world-map.instructions.md.
 class ActivityMapRepo {
   /// Thin pins whose coordinates fall within [bounds], optionally scoped to a
-  /// target language [l2]. Card text is canonical-only — thin lists never
-  /// translate (choreo #2736); large-card titles localize via plan hydration.
-  /// Returns up to [limit] placed activities.
+  /// target language [l2]. With [l1] (the resolved display language), each
+  /// card's title/description/learning objective comes back localized from
+  /// persisted translation rows, falling back to canonical per card where no
+  /// row exists yet — so search matches what the learner sees (#8398, choreo
+  /// #3037). Omitting [l1] returns canonical text. Returns up to [limit]
+  /// placed activities.
   ///
   /// **Never throws.** Every failure comes back as [Result.error], captured to
   /// Sentry here exactly once (repos-and-error-handling.instructions.md). This
@@ -49,6 +52,7 @@ class ActivityMapRepo {
   static Future<Result<List<QuestActivityCard>>> bboxPins({
     required LatLngBounds bounds,
     String? l2,
+    String? l1,
     int limit = 200,
   }) async {
     if (QuestRepo.activityReadPause.isPaused) {
@@ -58,6 +62,7 @@ class ActivityMapRepo {
         'max_lat': bounds.north,
         'max_lng': bounds.east,
         if (l2 != null && l2.isNotEmpty) 'l2': l2,
+        if (l1 != null && l1.isNotEmpty) 'l1': l1,
       });
       return Result.error(RateLimitedException());
     }
@@ -67,6 +72,7 @@ class ActivityMapRepo {
       'max_lat': '${bounds.north}',
       'max_lng': '${bounds.east}',
       if (l2 != null && l2.isNotEmpty) 'l2': l2,
+      if (l1 != null && l1.isNotEmpty) 'l1': l1,
       'limit': '$limit',
     };
 
