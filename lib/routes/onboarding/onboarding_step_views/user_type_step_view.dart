@@ -73,7 +73,7 @@ class UserTypeStepViewState extends State<UserTypeStepView> {
                   ExcludeSemantics(
                     child: BotFace(
                       expression: BotExpression.idle,
-                      useRive: true,
+                      animate: true,
                       width: 140.0,
                     ),
                   ),

@@ -26,7 +26,7 @@ class Avatar extends StatelessWidget {
   final Color? backgroundColor;
   final Color? textColor;
   // #Pangea
-  final bool useRive;
+  final bool animate;
   final bool showPresence;
   final String? userId;
 
@@ -56,7 +56,7 @@ class Avatar extends StatelessWidget {
     this.backgroundColor,
     this.textColor,
     // #Pangea
-    this.useRive = false,
+    this.animate = false,
     this.showPresence = true,
     this.userId,
     this.presenceSize,
@@ -101,7 +101,7 @@ class Avatar extends StatelessWidget {
                 ? BotFace(
                     width: size,
                     expression: BotExpression.idle,
-                    useRive: useRive,
+                    animate: animate,
                   )
                 // #Pangea
                 : noPic

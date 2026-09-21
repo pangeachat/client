@@ -1,12 +1,12 @@
 import 'dart:async';
+import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:rive/rive.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
 enum BotExpression { gold, nonGold, addled, idle, surprised }
@@ -30,6 +30,118 @@ extension BotExpressionTrigger on BotExpression {
   }
 }
 
+/// The decoded asset and its rendered resting poses, shared by every bot face.
+///
+/// A bot face used to decode the asset for itself, at ~3.5ms a time, and any
+/// surface that did not want an animation fetched a PNG over the network
+/// instead. Both are per-widget costs on a screen that can show a dozen bots,
+/// and the PNG was a second, separately authored picture of the same character
+/// that could drift from the animation. So the asset is decoded once here, and
+/// a still is drawn from that same asset for the surfaces that only need a
+/// picture.
+class _BotFaceAssets {
+  _BotFaceAssets._();
+
+  static const assetPath = 'assets/pangea/bot_faces/pangea_bot_databound.riv';
+  static const stateMachineName = 'BotIconStateMachine';
+  static const viewModelName = 'BotIconViewModel';
+
+  /// Rendered wide enough to stay crisp on the largest bot face at the highest
+  /// device pixel ratio; every use scales down from here.
+  static const _stillSize = 256;
+
+  static Future<File?>? _file;
+  static final Map<int, Future<ui.Image?>> _stills = {};
+
+  /// Never disposed: one file backs every bot face for the life of the app,
+  /// and disposing it would invalidate artboards still on screen.
+  static Future<File?> file() {
+    return _file ??= () async {
+      await RiveNative.init();
+      final file = await File.asset(assetPath, riveFactory: Factory.flutter);
+      if (file == null) {
+        ErrorHandler.logError(
+          e: Exception('Failed to decode bot face Rive asset'),
+          data: {'asset': assetPath},
+          level: SentryLevel.warning,
+        );
+      }
+      return file;
+    }();
+  }
+
+  /// The resting pose for [colour] and [expression], drawn from the asset.
+  ///
+  /// Cached per colour and expression, which is a handful of images for the
+  /// life of the app. They are deliberately not disposed: they outlive any one
+  /// widget and are cheaper to keep than to redraw.
+  static Future<ui.Image?> still(Color colour, BotExpression expression) {
+    final key = Object.hash(colour.toARGB32(), expression.index);
+    return _stills[key] ??= _drawStill(colour, expression);
+  }
+
+  static Future<ui.Image?> _drawStill(
+    Color colour,
+    BotExpression expression,
+  ) async {
+    final file = await BotFaceAssetsAccess.file();
+    if (file == null) return null;
+    final artboard = file.defaultArtboard();
+    if (artboard == null) return null;
+    final machine = artboard.stateMachine(stateMachineName);
+    if (machine == null) {
+      artboard.dispose();
+      return null;
+    }
+
+    final viewModel = file
+        .viewModelByName(viewModelName)
+        ?.createDefaultInstance();
+    if (viewModel != null) {
+      machine.bindViewModelInstance(viewModel);
+      viewModel.color('botColor')?.value = colour;
+    }
+
+    // Past the entrance, then far enough into the expression for it to have
+    // reached the pose it holds.
+    BotFaceState.skipEnter(machine);
+    viewModel?.trigger(expression.trigger)?.trigger();
+    for (var i = 0; i < 90; i++) {
+      machine.advanceAndApply(1 / 60);
+    }
+
+    final recorder = ui.PictureRecorder();
+    final canvas = Canvas(
+      recorder,
+      const Rect.fromLTWH(0, 0, _stillSize * 1.0, _stillSize * 1.0),
+    );
+    final renderer = Renderer.make(canvas);
+    renderer.save();
+    renderer.align(
+      Fit.cover,
+      Alignment.center,
+      AABB.fromValues(0, 0, _stillSize * 1.0, _stillSize * 1.0),
+      artboard.bounds,
+      1.0,
+    );
+    artboard.draw(renderer);
+    renderer.restore();
+    final image = await recorder.endRecording().toImage(_stillSize, _stillSize);
+
+    machine.dispose();
+    artboard.dispose();
+    return image;
+  }
+}
+
+/// Test seam for the shared file, so a test can assert one decode is shared.
+@visibleForTesting
+class BotFaceAssetsAccess {
+  static Future<File?> file() => _BotFaceAssets.file();
+  static Future<ui.Image?> still(Color colour, BotExpression expression) =>
+      _BotFaceAssets.still(colour, expression);
+}
+
 class BotFace extends StatefulWidget {
   final double width;
 
@@ -38,17 +150,19 @@ class BotFace extends StatefulWidget {
   final Color? forceColor;
   final BotExpression expression;
 
-  /// When false, render the static fallback image instead of the animation.
-  /// [Avatar] uses this for list rows, where a live animation per row is not
-  /// worth the cost.
-  final bool useRive;
+  /// When false, draw the resting pose as a still instead of running the
+  /// animation. The picture comes from the same asset, so an unanimated bot
+  /// is the same bot. [Avatar] leaves this off for list rows, where a live
+  /// state machine per row costs a frame budget for motion nobody is
+  /// watching.
+  final bool animate;
 
   const BotFace({
     super.key,
     required this.width,
     required this.expression,
     this.forceColor,
-    this.useRive = true,
+    this.animate = true,
   });
 
   @override
@@ -56,10 +170,6 @@ class BotFace extends StatefulWidget {
 }
 
 class BotFaceState extends State<BotFace> {
-  static const _assetPath = 'assets/pangea/bot_faces/pangea_bot_databound.riv';
-  static const _stateMachineName = 'BotIconStateMachine';
-  static const _viewModelName = 'BotIconViewModel';
-
   /// The artboard plays a one-second Enter animation on load (the bot drops
   /// in), and any trigger fired during it is swallowed rather than queued.
   /// Measured against the asset: a trigger is lost at 60 frames and lands from
@@ -69,7 +179,6 @@ class BotFaceState extends State<BotFace> {
   static const _enterSettle = Duration(milliseconds: 1250);
   static const _frameSeconds = 1 / 60;
 
-  File? _file;
   RiveWidgetController? _controller;
   ViewModelInstance? _viewModel;
   Timer? _settleTimer;
@@ -81,39 +190,31 @@ class BotFaceState extends State<BotFace> {
   @override
   void initState() {
     super.initState();
-    if (widget.useRive) _load();
+    if (widget.animate) _load();
   }
 
   @override
   void didUpdateWidget(BotFace oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.useRive != widget.useRive) {
+    if (oldWidget.animate != widget.animate) {
       // Avatar flips this per row, so the widget has to be able to drop the
       // animation and pick it back up rather than assuming the first value
       // holds for its lifetime.
-      widget.useRive ? _load() : _unload();
+      widget.animate ? _load() : _unload();
       return;
     }
-    if (!widget.useRive) return;
+    if (!widget.animate) return;
     if (oldWidget.expression != widget.expression) _playExpression();
     if (oldWidget.forceColor != widget.forceColor) _applyColour();
   }
 
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    _applyColour();
-  }
-
-  /// Drop the animation and fall back to the static image.
+  /// Drop the animation and fall back to the still.
   void _unload() {
     _settleTimer?.cancel();
     _settleTimer = null;
     setState(() {
       _controller?.dispose();
-      _file?.dispose();
       _controller = null;
-      _file = null;
       _viewModel = null;
     });
   }
@@ -122,7 +223,6 @@ class BotFaceState extends State<BotFace> {
   void dispose() {
     _settleTimer?.cancel();
     _controller?.dispose();
-    _file?.dispose();
     super.dispose();
   }
 
@@ -136,50 +236,46 @@ class BotFaceState extends State<BotFace> {
   }
 
   Future<void> _loadAsset() async {
-    await RiveNative.init();
-    final file = await File.asset(_assetPath, riveFactory: Factory.flutter);
-    if (file == null) {
-      ErrorHandler.logError(
-        e: Exception('Failed to decode bot face Rive asset'),
-        data: {'asset': _assetPath},
-        level: SentryLevel.warning,
-      );
-      return;
-    }
+    final file = await BotFaceAssetsAccess.file();
+    // The shared loader reports a failed decode once; a face that cannot draw
+    // itself falls through to the still, which fails the same way.
+    if (file == null) return;
 
     final controller = RiveWidgetController(
       file,
-      stateMachineSelector: const StateMachineNamed(_stateMachineName),
+      stateMachineSelector: const StateMachineNamed(
+        _BotFaceAssets.stateMachineName,
+      ),
     );
 
     final viewModel = file
-        .viewModelByName(_viewModelName)
+        .viewModelByName(_BotFaceAssets.viewModelName)
         ?.createDefaultInstance();
     if (viewModel == null) {
       // The asset is renderable but not steerable: it will animate on its own
       // and ignore colour and expression. Worth knowing about rather than
       // shipping a bot that silently stops reacting.
       ErrorHandler.logError(
-        e: Exception('Bot face Rive asset has no $_viewModelName view model'),
-        data: {'asset': _assetPath},
+        e: Exception(
+          'Bot face Rive asset has no '
+          '${_BotFaceAssets.viewModelName} view model',
+        ),
+        data: {'asset': _BotFaceAssets.assetPath},
         level: SentryLevel.warning,
       );
     } else {
       controller.stateMachine.bindViewModelInstance(viewModel);
     }
 
-    // `useRive` can have been turned off while the asset was decoding, so a
+    // `animate` can have been turned off while the asset was decoding, so a
     // late load must not install a controller the widget no longer wants.
-    if (!mounted || !widget.useRive) {
+    if (!mounted || !widget.animate) {
       controller.dispose();
-      file.dispose();
       return;
     }
 
     setState(() {
       _controller?.dispose();
-      _file?.dispose();
-      _file = file;
       _controller = controller;
       _viewModel = viewModel;
     });
@@ -214,14 +310,18 @@ class BotFaceState extends State<BotFace> {
     }
   }
 
+  /// The bot keeps the brand purple whatever theme the app is wearing, so it
+  /// reads [PangeaColors.botFill] rather than a scheme role that follows the
+  /// learner's seed. Both the animation and the still resolve the colour
+  /// here, so the two cannot disagree.
+  Color _colour(BuildContext context) =>
+      widget.forceColor ?? Theme.of(context).pangea.botFill;
+
   void _applyColour() {
     final viewModel = _viewModel;
     if (viewModel == null) return;
-    // The brand fill, from the theme: the seed purple in light and the
-    // scheme's lighter cut of it in dark. Re-applied when the theme changes
-    // (didChangeDependencies), since the Rive view model holds a value.
-    viewModel.color('botColor')?.value =
-        widget.forceColor ?? Theme.of(context).colorScheme.primaryContainer;
+    // Set rather than read: the Rive view model holds the value.
+    viewModel.color('botColor')?.value = _colour(context);
   }
 
   void _playExpression() {
@@ -230,22 +330,39 @@ class BotFaceState extends State<BotFace> {
 
   @override
   Widget build(BuildContext context) {
-    final controller = _controller;
     return SizedBox(
       width: widget.width,
       height: widget.width,
-      child: controller != null
-          ? RiveWidget(controller: controller, fit: Fit.cover)
-          // The fallback image is the resting face. A bot about to open on an
-          // emote waits out the decode empty rather than flash the wrong face.
-          : _loading && widget.expression != BotExpression.idle
-          ? null
-          : CachedNetworkImage(
-              imageUrl: '${AppConfig.assetsBaseURL}/bot_face_neutral.png',
-              placeholder: (context, url) =>
-                  const CircularProgressIndicator.adaptive(),
-              errorWidget: (context, url, error) => const Icon(Icons.error),
-            ),
+      child: widget.animate ? _animated(context) : _still(context),
+    );
+  }
+
+  Widget _animated(BuildContext context) {
+    final controller = _controller;
+    if (controller != null) {
+      return RiveWidget(controller: controller, fit: Fit.cover);
+    }
+    // A face about to open on an emote waits out the decode empty rather than
+    // flash the resting face and swap a moment later.
+    if (_loading && widget.expression != BotExpression.idle) {
+      return const SizedBox.shrink();
+    }
+    return _still(context);
+  }
+
+  Widget _still(BuildContext context) {
+    return FutureBuilder<ui.Image?>(
+      future: BotFaceAssetsAccess.still(_colour(context), widget.expression),
+      builder: (context, snapshot) {
+        final image = snapshot.data;
+        if (image == null) return const SizedBox.shrink();
+        return RawImage(
+          image: image,
+          width: widget.width,
+          height: widget.width,
+          fit: BoxFit.cover,
+        );
+      },
     );
   }
 }
