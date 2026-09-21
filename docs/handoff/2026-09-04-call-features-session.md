@@ -2774,3 +2774,14 @@ until the design is Codex-green.
   Flag CALL_RECORDING_TRANSCRIPT default OFF. Server backstop (P4-P5) still the deferred follow-up.
 - NEXT: E2E for the showcase -- flip the flag on, rebuild phone APK + web (P1+P2+P3), stack up, real
   call, verify recording-based transcript + no lost half + live update.
+
+### 2026-09-21 (cont) — codex unblocked via gpt-5.5 medium; cross-model gates re-running; E2E rebuild
+- OWNER: run codex with `-m gpt-5.5 -c model_reasoning_effort=medium` (the default premium model was
+  usage-limited; gpt-5.5 medium is available). PONG-verified. This is the cross-model gate config to
+  use while the limit stands.
+- Cross-model gates RE-RUNNING on the FINAL commits (gate-p2-final bzjuoancu, gate-p3-final bmqqn28yo)
+  with gpt-5.5 medium -> closes the "no cross-model gate on final commits" gap.
+- E2E rebuild for showcase: flag flipped ON in worktree .env + build/web/.env; web rebuilding
+  (bg8b6mk9z, P1+P2+P3); pubspec .env uncommented for the APK build (RE-COMMENT after). Phone
+  DISCONNECTED -> APK build+install + the call wait on the owner reconnecting it. Stack all up
+  (Synapse/lk-jwt/LiveKit/choreo/web 200).
