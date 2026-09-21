@@ -2247,3 +2247,41 @@ until the design is Codex-green.
   not persisted client-side). Decoupled from the client fix.
 - STATE now: branch satvik/call-features-combined, tree clean after 2 commits (1da70e7bd5 handoff,
   87980cdd4b doc). analyze still 0. No code touched. Recording+merge+player+UI remain done+green.
+
+### 2026-09-21 (cont) — CODE STARTED under 8% budget: buildSegments trustTimings DONE (092e037449)
+- Weekly quota barely moves per code step (local flutter runs draw NO model quota; only my reasoning does) --
+  so kept it at ~92% used through this work. Self-monitoring via get_usage at each checkpoint; no cron (a
+  cron agent would itself burn the quota we're protecting).
+- LANDED (092e037449, tested + analyze-clean): buildSegments in transcript_segments.dart gained
+  `bool trustTimings = false`. On a trusted source (the recording pass), when `_alignedToTranscript` returns
+  null (word list won't reconstruct the punctuated transcript 1:1) BUT the timings are a well-formed sequence,
+  it now cuts by the word list directly (`aligned = fromTranscript ?? [for t in timings: t.word.trim()]`) and
+  positions each utterance exactly, showing the provider's OWN words -- instead of collapsing to one whole-
+  chunk blob ordered at chunk-END (the exact drag that put the phone's opening at 26.6s). The rebuild-integrity
+  check is gated on `alignedFromTranscript` (a word-list cut is its own text, cannot match the transcript).
+  Default false => LIVE path byte-identical. Malformed sequences refused on both paths. Tests added
+  (transcript_segments_test.dart): trusted cuts a misaligned chunk into ['helo thair','frend'] at exact
+  positions while live stays one approximate blob (fails without the change); trusted still refuses malformed.
+  80/80 green.
+- CONFIRMED request pattern for the driver (call_transcript_sink.dart:263-275): SpeechToTextRequestModel(
+  audioContent, includeWordTimings: TRUE (call transcript needs timings AND stt_tokens; skipTokenize would
+  zero speaking XP), config: SpeechToTextAudioConfigModel(encoding, sampleRateHertz, userL1, userL2)).
+  ChunkTranscriber = Future<SpeechToTextResponseModel> Function(SpeechToTextRequestModel).
+- REMAINING (do as ONE coherent pass WITH build+E2E, so the recording format is validated, not guessed):
+  1. Driver `transcribeRecording({audioContent, mimeType, startedAtMs, durationMs, userL1, userL2, transcribe})`
+     -> build request (encoding = mimeTypeToAudioEncoding(mimeType) -- NOT linear16; the uploaded recording is
+     COMPRESSED, unlike the live WAV chunks -- sampleRateHertz = the recording's real rate), transcribe,
+     buildSegments([TranscribedChunk(result, startedAtMs, durationMs)], trustTimings: true). startedAtMs must
+     be on the DEVICE clock (= device_joined_at_ms + recording_started_offset_from_device_join_ms) so the
+     reader's existing offset correction still lands it on the shared SFU clock.
+     OPEN: confirm the uploaded recording's real mimeType + sampleRate by tracing call_audio_recorder / the
+     merge (MP3 vs OGG was a known iOS/macOS wrinkle) -- this is WHY it needs E2E validation, not just a mock.
+  2. rec-1 wiring at call-end: prefer the full-recording pass (from the LOCAL recording, upload is orthogonal
+     = playback only); if no local full recording at drain, STT the buffered chunks (today's live path). ONE
+     transcript event per half + a `source: recording|live` marker (call_transcript_event.dart parse +
+     transcript_writer.dart write; old events w/o source read as today). Reader needs no preference (source
+     chosen at write).
+  3. A: pcm_chunker targetDuration/maxDuration smaller (fallback-only now).
+  4. Consolidated cold Codex gate (buildSegments diff is small + ideal to gate; then the driver/wiring) ->
+     fresh APK+web -> owner phone E2E -> final cross-model gate -> PR2 on owner go.
+- C (choreo, separate PR): always return word timestamps + punctuation; investigate web-vs-phone variance.
