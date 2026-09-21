@@ -10,15 +10,16 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_writer.dart';
-import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart'
-    show ChunkTranscriber;
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/audio_encoding_enum.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_request_model.dart';
+import 'package:fluffychat/routes/chat/events/streaming_stt/wav_writer.dart';
+
+import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart'
+    show ChunkTranscriber;
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart'
     show SpeechToTextResponseModel, WordTiming;
-import 'package:fluffychat/routes/chat/events/streaming_stt/wav_writer.dart';
 
 /// Uploads bytes to this homeserver's media repository, returning the `mxc://`
 /// URI they land at. Injected so the recorder is testable without a
