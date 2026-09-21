@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter_test/flutter_test.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 /// Captures the single [SentryEvent] a report produces, without letting it
@@ -39,6 +40,49 @@ class SentryCaptureHarness {
     report();
     return completer.future.timeout(const Duration(seconds: 5));
   }
+
+  /// Asserts [work] reported NOTHING, without the race that `expect(events,
+  /// isEmpty)` carries.
+  ///
+  /// `ErrorHandler.logError` calls `Sentry.captureException` and does not await
+  /// it, so [beforeSend] runs several turns after the code that reported. A bare
+  /// `expect(events, isEmpty)` therefore passes in two different situations —
+  /// nothing was reported, and something was reported but has not arrived yet.
+  /// The second is a false green, the direction that hides a regression:
+  /// client#8742 merged with CI green while carrying the bug those assertions
+  /// existed to catch (pangeachat/.github#460).
+  ///
+  /// Ordering is what makes this sound, not a delay. After [work] runs, this
+  /// reports a sentinel of its own and waits for the sentinel to reach
+  /// [beforeSend]. Any event [work] enqueued was enqueued first, so once the
+  /// sentinel has arrived, anything real has arrived too — and the queue is
+  /// pure async here, because the harness's [beforeSend] drops every event
+  /// before transport and no I/O reorders the chain. A fixed `Future.delayed`
+  /// would only move the flake, not remove it.
+  Future<void> expectNoReport(FutureOr<void> Function() work) async {
+    final before = events.length;
+    await work();
+    final sentinel = _NoReportSentinel();
+    await capture(() => Sentry.captureException(sentinel));
+    final unexpected = events
+        .skip(before)
+        .where((e) => e.throwable is! _NoReportSentinel)
+        .toList();
+    if (unexpected.isNotEmpty) {
+      fail(
+        'expected nothing to be reported to Sentry, but '
+        '${unexpected.length} event(s) were: '
+        '${unexpected.map((e) => e.throwable ?? e.exceptions).join(', ')}',
+      );
+    }
+  }
+}
+
+/// Reported by [SentryCaptureHarness.expectNoReport] to mark the end of the
+/// queue. Never produced by app code.
+class _NoReportSentinel implements Exception {
+  @override
+  String toString() => 'SentryCaptureHarness.expectNoReport sentinel';
 }
 
 /// Counts the Sentry events a stretch of work produces, without letting any
