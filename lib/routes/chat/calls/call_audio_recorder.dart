@@ -1138,14 +1138,21 @@ class CallAudioRecorder implements CallAudioRecordingSink {
       // `finally` below so [recordingSegments] is set on every exit path before
       // [finish] returns. Reads only local values and writes only
       // [recordingSegments] (consumed after this returns), so it shares no
-      // mutable state with the loop. A null [transcribe] (feature off) makes it
-      // an immediate empty, leaving today's audio path byte-for-byte unchanged.
-      final pendingRecordingSegments = _recordingSegmentsFrom(
-        wav,
-        gen.runStartedAtMs,
-        gen.sampleRate,
-        durationMs,
-      );
+      // mutable state with the loop.
+      //
+      // NULL when the feature is off ([transcribe] unwired): nothing is created
+      // and nothing is awaited below, so `finish`'s control flow is exactly
+      // today's -- no extra async continuation, [recordingSegments] stays the
+      // initial empty, and the live transcript half stands.
+      final Future<List<TranscriptSegment>>? pendingRecordingSegments =
+          transcribe == null
+          ? null
+          : _recordingSegmentsFrom(
+              wav,
+              gen.runStartedAtMs,
+              gen.sampleRate,
+              durationMs,
+            );
 
       final cancelSignal = _cancelSignal = Completer<void>();
       try {
@@ -1392,8 +1399,11 @@ class CallAudioRecorder implements CallAudioRecordingSink {
         // [CallRecord] reads it immediately after. The work was kicked off
         // before the loop, so this reflects only the time it had not already
         // overlapped with the upload; [_recordingSegmentsFrom] never throws, so
-        // it cannot mask an error leaving the try above.
-        recordingSegments = await pendingRecordingSegments;
+        // it cannot mask an error leaving the try above. Skipped entirely when
+        // the feature is off (null), so that path adds no await at all.
+        if (pendingRecordingSegments != null) {
+          recordingSegments = await pendingRecordingSegments;
+        }
       }
     } finally {
       // The single enforcement point: whichever of the exits above this
