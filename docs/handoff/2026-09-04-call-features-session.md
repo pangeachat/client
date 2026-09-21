@@ -2200,3 +2200,50 @@ until the design is Codex-green.
 - NEXT (this session): draft the doc delta for owner review -> on OK, implement client recording-based path
   (rec-1) + A, cold-gate each chunk, unit tests proved-to-fail-without-fix -> fresh APK+web -> owner phone
   e2e -> final cross-model gate -> PR2 on owner go. C = parallel choreo track, fast-follow PR.
+
+### 2026-09-21 (cont) — doc delta COMMITTED (87980cdd4b); rework DEFERRED to quota reset; BUILD PLAN below
+- Owner approved the exact wording; committed the 4-section doc delta (87980cdd4b). Design is now LOCKED + durable.
+- BUDGET: weekly quota 92% used (~8% left), resets 2026-09-21 ~14:00Z (~7.75h). 5-hour + context fine. Owner
+  said do NOT fan out, be careful, no work lost. DECISION: do not start the multi-file lift on 8% (it touches
+  the most-reviewed positioning code and needs a cold gate; half-done = stranded). Execute in ONE clean gated
+  pass after reset. This plan is the durable artifact so that pass needs no re-derivation.
+- FEASIBILITY CONFIRMED: the recording pass REUSES existing STT plumbing. `SpeechToTextRequestModel`
+  (lib/routes/chat/events/speech_to_text/speech_to_text_request_model.dart) takes `Uint8List audioContent` +
+  `mimeType` + languages via `buildSpeechToTextRequest(...)`, and `ChunkTranscriber` (call_transcript_sink.dart:19)
+  = `Future<SpeechToTextResponseModel> Function(SpeechToTextRequestModel)` -> `SpeechToTextRepo`. So a full
+  recording = the same call fed the whole file's bytes; response.transcript.wordTimings is what buildSegments
+  already uses. NOTE the helper hardcodes sampleRateHertz 22050 + derives encoding from mimeType -- pass the
+  recording's real mime/rate.
+
+  BUILD PLAN (file-level, execute post-reset, cold-gate EACH):
+  1. transcript_segments.dart buildSegments -- add a trusted-source mode (param e.g. `bool fromRecording`).
+     Today (line ~404-417) `_alignedToTranscript==null` emits ONE whole-chunk blob at chunk-END (orderKeyMs =
+     atMs+span). In trusted mode: DROP the 1:1 transcript-match gate and cut by the timed word list directly
+     (reuse the existing pause-cut loop from ~482), positioning each utterance at its own word time; display
+     text stays the transcript's own (never assembled from the word list -> no word put in a mouth). LIVE
+     fallback path keeps the strict rule (fromRecording=false) unchanged. Unit-test: a chunk whose word list
+     fails 1:1 but has good timings -> multiple positioned segments, NOT one chunk-end blob (prove it fails
+     without the change). This is the crown-jewel change -> its own cold gate.
+  2. Recording-transcription driver (new, small). At drain, read the LOCAL full recording file (we recorded
+     it; upload is orthogonal), build the request in the SPEAKER's t0 language snapshot (same as live), call
+     `transcribe`, buildSegments(fromRecording:true) -> the half. Gated by the SAME subscriber/on-demand
+     condition as today.
+  3. rec-1 source selection at call-end: prefer the full-recording pass; if no full local recording is
+     available at drain (device died pre-drain, etc.), STT the buffered chunks (today's live path) instead.
+     ONE transcript event per half, carrying a `source: recording|live` marker -> reader needs NO new
+     preference (source chosen at write time). OPEN REFINEMENT for the executor: the committed doc says
+     "a half whose recording never UPLOADED falls back to live" -- the cleaner trigger is "no local recording
+     at drain" (upload = playback only, orthogonal to transcript). Confirm w/ owner; may need a 1-line doc
+     tweak. Do NOT lock unilaterally.
+  4. A -- shrink the live-FALLBACK chunk target (pcm_chunker.dart targetDuration 45s / maxDuration 90s). Only
+     affects the fallback now, so smaller is cheap; pick a value + fix any default-dependent tests. Owner
+     pre-approved "if needed".
+  5. call_transcript_event.dart / transcript_writer.dart: add + parse the `source` field; keep old events
+     (no source) reading exactly as today.
+  6. Tests: buildSegments trusted-mode (unit), source-selection at drain, plus the E2E harness
+     (test/e2e/transcript.js) + real-phone pass. Then final cross-model cold gate -> PR2 on owner go.
+- C (choreo, separate PR): ensure STT ALWAYS returns word-level timestamps (correctness for the recording
+  pass) + punctuation (readability). Investigate the web-vs-phone output variance IN choreo (STT responses
+  not persisted client-side). Decoupled from the client fix.
+- STATE now: branch satvik/call-features-combined, tree clean after 2 commits (1da70e7bd5 handoff,
+  87980cdd4b doc). analyze still 0. No code touched. Recording+merge+player+UI remain done+green.
