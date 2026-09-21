@@ -1498,9 +1498,14 @@ class CallAudioRecorder implements CallAudioRecordingSink {
       }
 
       // Cap each piece so its WAV's base64 body stays under the choreographer's
-      // 10 MB limit; a piece must not split a frame (channels*2 bytes).
+      // 10 MB limit; a piece must not split a frame (channels*2 bytes), and must
+      // be at least one frame so the piece arithmetic below can never divide by
+      // zero (a cap smaller than a frame is only reachable via a test override).
       final frame = channels * 2;
-      final maxPieceBytes = maxSttPieceBytes - (maxSttPieceBytes % frame);
+      final maxPieceBytes = max(
+        frame,
+        maxSttPieceBytes - (maxSttPieceBytes % frame),
+      );
       final pieceCount = (sttPcm.length + maxPieceBytes - 1) ~/ maxPieceBytes;
 
       // The common case -- a call short enough for one request -- takes the
@@ -1528,6 +1533,7 @@ class CallAudioRecorder implements CallAudioRecordingSink {
             ? offset + maxPieceBytes
             : sttPcm.length;
         final pieceStartMs = (offset * msPerByte).round();
+        final pieceDurationMs = ((end - offset) * msPerByte).round();
         final response = await transcribePiece(
           Uint8List.sublistView(sttPcm, offset, end),
         );
@@ -1537,17 +1543,22 @@ class CallAudioRecorder implements CallAudioRecordingSink {
         final transcript = response.transcript;
         final timings = transcript.wordTimings;
         if (timings == null || timings.isEmpty) return const [];
+        // A timing is kept only when it lies within THIS piece's own
+        // [0, pieceDurationMs], mirroring how the single-response path bounds to
+        // the whole recording. An out-of-piece value (a negative or overlong
+        // provider timestamp) becomes null so its word is floor-placed, never a
+        // spurious in-range absolute time that the offset would otherwise sneak
+        // past the whole-recording bound.
+        int? shift(int? at) => (at == null || at < 0 || at > pieceDurationMs)
+            ? null
+            : at + pieceStartMs;
         for (final w in timings) {
           merged.add(
             WordTiming(
               word: w.word,
               confidence: w.confidence,
-              startTimeMs: w.startTimeMs == null
-                  ? null
-                  : w.startTimeMs! + pieceStartMs,
-              endTimeMs: w.endTimeMs == null
-                  ? null
-                  : w.endTimeMs! + pieceStartMs,
+              startTimeMs: shift(w.startTimeMs),
+              endTimeMs: shift(w.endTimeMs),
             ),
           );
         }

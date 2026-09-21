@@ -13,7 +13,36 @@ import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart'
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 import '../sentry_capture_harness.dart';
+import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart'
+    show SpeechToTextResponseModel;
 import 'call_transcript_sink_test.dart' show silent, spokenWord;
+
+/// A one-word STT response whose word carries the given (possibly out-of-piece)
+/// timing -- to exercise the piece-relative bounds in the chunked path.
+SpeechToTextResponseModel _wordAt(String word, int startMs, int endMs) =>
+    SpeechToTextResponseModel.fromJson({
+      'results': [
+        {
+          'transcripts': [
+            {
+              'transcript': word,
+              'confidence': 100,
+              'lang_code': 'en-US',
+              'words_per_hr': 9391,
+              'word_timings': [
+                {
+                  'word': word,
+                  'start_time_ms': startMs,
+                  'end_time_ms': endMs,
+                  'confidence': 100,
+                },
+              ],
+              'stt_tokens': const [],
+            },
+          ],
+        },
+      ],
+    });
 
 const _callKey = '\$membership:example.com';
 const _sender = '@alice:example.com';
@@ -2000,6 +2029,37 @@ void main() {
         expect(r.recordingSegments, isEmpty);
         // The audio half is unaffected.
         expect(uploads, hasLength(1));
+      },
+    );
+
+    test(
+      'an out-of-piece word timing is not shifted into a spurious late slot',
+      () async {
+        var calls = 0;
+        final r = recorder(
+          sttPieceBytes: 48000,
+          transcribe: (_) async {
+            final n = calls++;
+            // Piece 0: an ordinary word. Piece 1: a word whose provider start is
+            // NEGATIVE (invalid piece-local). If it were shifted by the piece
+            // start (1500ms) it would land at ~1450ms and be cut into its own
+            // late utterance; bounded to the piece first, it is floor-placed
+            // into the running utterance instead.
+            return n == 0
+                ? spokenWord('a', timed: true)
+                : _wordAt('b', -50, 100);
+          },
+          userL1: 'en',
+          userL2: 'es',
+        );
+        r.onRunStarted(1000, 16000, 1);
+        r.onFrame(_tone(48000));
+        r.onRunEnded();
+        await r.finish(wasCarrier: true, callKey: _callKey);
+
+        // One utterance -- 'b' floor-placed with 'a', not a bogus 2450ms segment.
+        expect(r.recordingSegments.map((s) => s.text).toList(), ['a b']);
+        expect(r.recordingSegments.single.atMs, 1000);
       },
     );
   });
