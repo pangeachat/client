@@ -383,6 +383,7 @@ List<String>? _alignedToTranscript(List<WordTiming> timings, String text) {
 List<TranscriptSegment> buildSegments(
   List<TranscribedChunk> ordered, {
   Duration pause = kUtterancePause,
+  bool trustTimings = false,
 }) {
   final segments = <TranscriptSegment>[];
 
@@ -403,16 +404,33 @@ List<TranscriptSegment> buildSegments(
     // positions taken from them can be trusted.
     final aligned = _alignedToTranscript(timings, transcript.text);
     if (aligned == null) {
-      // Refused for its WORDS, so the text is the transcript's whole. Estimated
-      // by when speech began, and bounded by the chunk it came from: refusing a
-      // word list says nothing about when the audio stopped.
-      _add(
-        segments,
-        transcript.text,
-        chunk,
-        _speechBeganAt(timings, chunk.durationMs),
-        exact: false,
-      );
+      // The word list will not reconstruct the punctuated transcript word for
+      // word. The TEXT is never taken from the word list -- it can drop or
+      // substitute words -- so the transcript's own text always stands. A
+      // TRUSTED source (the recording pass) still keeps ORDER: with a well-formed
+      // sequence, the transcript's text is spread across the utterances the
+      // timings cut at their pauses, each placed at its own first-word moment, so
+      // a misaligned chunk is never dragged to its end (only which words fall
+      // either side of a pause can be a little off). The live fallback, and a
+      // malformed sequence, keep the whole text as one chunk-bounded block --
+      // estimated by when speech began, and bounded by the chunk it came from.
+      if (trustTimings && _isWellFormedSequence(timings, chunk.durationMs)) {
+        _distributeAcrossUtterances(
+          segments,
+          timings,
+          transcript.text,
+          chunk,
+          pause,
+        );
+      } else {
+        _add(
+          segments,
+          transcript.text,
+          chunk,
+          _speechBeganAt(timings, chunk.durationMs),
+          exact: false,
+        );
+      }
       continue;
     }
 
@@ -609,6 +627,101 @@ List<TranscriptSegment> buildSegments(
   }
 
   return List.unmodifiable(segments);
+}
+
+/// Spreads a chunk's punctuated transcript across the utterances its timings cut
+/// at their pauses, for a TRUSTED source whose word list will not reconstruct
+/// that transcript word for word but whose timings ARE a well-formed sequence.
+///
+/// ORDER over word-level precision, and never at the text's expense. The word
+/// list decides only WHERE this speaker paused and WHEN each stretch began; the
+/// words shown are always the transcript's own, so nothing a speaker said is
+/// dropped and nothing they did not say is shown. Each utterance is placed
+/// EXACTLY at its first word's moment -- and because a cut sits on a pause, which
+/// is where the other speaker could have taken the floor, placing it at its start
+/// cannot render it ahead of a turn that truly preceded it. The only imprecision
+/// is which words land either side of a boundary, because the transcript's word
+/// count and the timings' need not match: the transcript's words are handed out
+/// in order, proportionally to each utterance's share of the timed words, and the
+/// last utterance takes whatever remains so rounding loses none.
+///
+/// The same cut rule as the aligned loop -- [kUtterancePause], blanks skipped,
+/// the running MAXIMUM end so a tolerated overlap cannot walk a pause backwards.
+/// A partition that comes out empty (all-blank word list) keeps the whole text as
+/// one block, exactly as the untrusted path would.
+void _distributeAcrossUtterances(
+  List<TranscriptSegment> into,
+  List<WordTiming> timings,
+  String text,
+  TranscribedChunk chunk,
+  Duration pause,
+) {
+  final starts = <int>[];
+  final counts = <int>[];
+  int? openStart;
+  var count = 0;
+  int? previousEnd;
+  void closeUtterance() {
+    if (count > 0) {
+      starts.add(openStart ?? 0);
+      counts.add(count);
+    }
+    count = 0;
+    openStart = null;
+  }
+
+  for (final timing in timings) {
+    if (timing.word.trim().isEmpty) continue;
+    final start = momentWithinChunk(timing.startTimeMs, chunk.durationMs);
+    final gapOpens =
+        start != null &&
+        previousEnd != null &&
+        start - previousEnd >= pause.inMilliseconds;
+    if (gapOpens && count > 0) closeUtterance();
+    if (count == 0) openStart = start;
+    count++;
+    final end = momentWithinChunk(timing.endTimeMs, chunk.durationMs);
+    if (end != null) {
+      previousEnd = (previousEnd == null || end > previousEnd)
+          ? end
+          : previousEnd;
+    }
+  }
+  closeUtterance();
+
+  final totalTimed = counts.fold<int>(0, (sum, c) => sum + c);
+  final words = _transcriptWords(text);
+  if (starts.isEmpty || totalTimed == 0 || words.isEmpty) {
+    _add(
+      into,
+      text,
+      chunk,
+      _speechBeganAt(timings, chunk.durationMs),
+      exact: false,
+    );
+    return;
+  }
+
+  var consumed = 0;
+  var timedSoFar = 0;
+  for (var k = 0; k < starts.length; k++) {
+    timedSoFar += counts[k];
+    final boundary = k == starts.length - 1
+        ? words.length
+        : (words.length * timedSoFar / totalTimed).round().clamp(
+            consumed,
+            words.length,
+          );
+    if (boundary <= consumed) continue;
+    _add(
+      into,
+      words.sublist(consumed, boundary).join(' '),
+      chunk,
+      starts[k],
+      exact: true,
+    );
+    consumed = boundary;
+  }
 }
 
 /// Whether a chunk's timings are a WELL-FORMED SEQUENCE, which is the only
