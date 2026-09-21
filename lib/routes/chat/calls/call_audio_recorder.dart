@@ -16,6 +16,8 @@ import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/audio_encoding_enum.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_request_model.dart';
+import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart'
+    show SpeechToTextResponseModel, WordTiming;
 import 'package:fluffychat/routes/chat/events/streaming_stt/wav_writer.dart';
 
 /// Uploads bytes to this homeserver's media repository, returning the `mxc://`
@@ -486,6 +488,11 @@ class CallAudioRecorder implements CallAudioRecordingSink {
   /// live-chunk transcript is published unchanged.
   List<TranscriptSegment> recordingSegments = const [];
 
+  /// The STT piece cap ([_maxSttPieceBytes]); injectable so a test can force the
+  /// multi-piece chunking path without a minutes-long recording.
+  @visibleForTesting
+  final int maxSttPieceBytes;
+
   CallAudioRecorder({
     required this.senderId,
     required this.deviceId,
@@ -496,6 +503,7 @@ class CallAudioRecorder implements CallAudioRecordingSink {
     this.transcribe,
     this.userL1,
     this.userL2,
+    this.maxSttPieceBytes = _maxSttPieceBytes,
     this.maxBytes = _defaultMaxBytes,
     this.maxDuration = _defaultMaxDuration,
     this.deliveryAttempts = _defaultDeliveryAttempts,
@@ -1469,35 +1477,88 @@ class CallAudioRecorder implements CallAudioRecordingSink {
         sttPcm = _downsamplePcm16Mono(pcm, sampleRate, _sttSampleRate);
         sttRate = _sttSampleRate;
       }
-      final sttWav = pcm16ToWav(
-        sttPcm,
-        sampleRate: sttRate,
-        channels: channels,
-      );
-      // Would 422 on the choreographer's 10 MB base64 cap even downsampled
-      // (base64 inflates ~4/3): leave it to the live half rather than spend a
-      // request to be rejected.
-      if (sttWav.length > _maxSttWavBytes) {
-        Logs().w(
-          'Call recording too long for a single STT request even at '
-          '${_sttSampleRate}Hz (${sttWav.length} bytes); the live transcript '
-          'stands',
-        );
-        return const [];
-      }
-      final response = await transcribe(
-        SpeechToTextRequestModel(
-          audioContent: sttWav,
-          includeWordTimings: true,
-          config: SpeechToTextAudioConfigModel(
-            encoding: AudioEncodingEnum.linear16,
-            sampleRateHertz: sttRate,
-            userL1: l1,
-            userL2: l2,
+
+      Future<SpeechToTextResponseModel> transcribePiece(Uint8List piecePcm) {
+        return transcribe(
+          SpeechToTextRequestModel(
+            audioContent: pcm16ToWav(
+              piecePcm,
+              sampleRate: sttRate,
+              channels: channels,
+            ),
+            includeWordTimings: true,
+            config: SpeechToTextAudioConfigModel(
+              encoding: AudioEncodingEnum.linear16,
+              sampleRateHertz: sttRate,
+              userL1: l1,
+              userL2: l2,
+            ),
           ),
-        ),
+        );
+      }
+
+      // Cap each piece so its WAV's base64 body stays under the choreographer's
+      // 10 MB limit; a piece must not split a frame (channels*2 bytes).
+      final frame = channels * 2;
+      final maxPieceBytes = maxSttPieceBytes - (maxSttPieceBytes % frame);
+      final pieceCount = (sttPcm.length + maxPieceBytes - 1) ~/ maxPieceBytes;
+
+      // The common case -- a call short enough for one request -- takes the
+      // single-response path unchanged, including its no-word-timings fallback.
+      if (pieceCount <= 1) {
+        return buildRecordingSegments(
+          await transcribePiece(sttPcm),
+          startedAtMs,
+          durationMs,
+        );
+      }
+
+      // A long call: transcribe it in cap-sized pieces and merge their word
+      // timings onto ONE recording timeline. Deterministic over the complete
+      // recording -- every piece is present, so nothing is dropped the way a
+      // live 45 s chunk can be. A piece with a usable transcript but no timings
+      // cannot be placed, so it abandons the whole recording-based attempt (the
+      // live half, or the server backstop, then stands) rather than emit a
+      // partial half.
+      final merged = <WordTiming>[];
+      final texts = <String>[];
+      final msPerByte = 1000 / (sttRate * frame);
+      for (var offset = 0; offset < sttPcm.length; offset += maxPieceBytes) {
+        final end = offset + maxPieceBytes < sttPcm.length
+            ? offset + maxPieceBytes
+            : sttPcm.length;
+        final pieceStartMs = (offset * msPerByte).round();
+        final response = await transcribePiece(
+          Uint8List.sublistView(sttPcm, offset, end),
+        );
+        // A piece the provider read as silence contributes no words -- a real
+        // quiet stretch, not a loss.
+        if (!response.hasUsableTranscript) continue;
+        final transcript = response.transcript;
+        final timings = transcript.wordTimings;
+        if (timings == null || timings.isEmpty) return const [];
+        for (final w in timings) {
+          merged.add(
+            WordTiming(
+              word: w.word,
+              confidence: w.confidence,
+              startTimeMs: w.startTimeMs == null
+                  ? null
+                  : w.startTimeMs! + pieceStartMs,
+              endTimeMs: w.endTimeMs == null
+                  ? null
+                  : w.endTimeMs! + pieceStartMs,
+            ),
+          );
+        }
+        texts.add(transcript.text);
+      }
+      return buildRecordingSegmentsFromTimings(
+        merged,
+        texts.join(' '),
+        startedAtMs,
+        durationMs,
       );
-      return buildRecordingSegments(response, startedAtMs, durationMs);
     } catch (e, s) {
       Logs().w(
         'Recording-based call transcription failed; the live transcript stands',
@@ -1513,11 +1574,13 @@ class CallAudioRecorder implements CallAudioRecordingSink {
   /// call_capture.dart) and keeps the request under the choreographer's cap.
   static const _sttSampleRate = 16000;
 
-  /// The most a downsampled STT WAV may be before its base64 body would exceed
-  /// the choreographer's 10 MB (10485760 byte) audio_content cap. base64
-  /// inflates by 4/3, so the raw ceiling is ~7.86 MB; this leaves margin for
-  /// the WAV header and rounding. ~7.5 MB at 16 kHz mono is ~245 s of audio.
-  static const _maxSttWavBytes = 7500000;
+  /// The most PCM one STT piece may carry. Its WAV (this + a 44-byte header)
+  /// must base64-encode under the choreographer's 10 MB (10485760 byte)
+  /// audio_content cap; base64 inflates by 4/3, so the raw ceiling is ~7.86 MB
+  /// and this leaves margin for the header and rounding. A call longer than one
+  /// piece (~3.6 min at 16 kHz mono) is transcribed in several and merged, so
+  /// there is no whole-call length limit. Frame alignment is applied at use.
+  static const _maxSttPieceBytes = 7000000;
 
   /// Downsamples mono PCM16 [pcm] from [fromRate] to [toRate] by averaging each
   /// output sample's span of input samples -- a box-filter decimation that

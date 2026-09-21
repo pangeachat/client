@@ -13,7 +13,7 @@ import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart'
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 import '../sentry_capture_harness.dart';
-import 'call_transcript_sink_test.dart' show spokenWord;
+import 'call_transcript_sink_test.dart' show silent, spokenWord;
 
 const _callKey = '\$membership:example.com';
 const _sender = '@alice:example.com';
@@ -186,6 +186,9 @@ void main() {
     ChunkTranscriber? transcribe,
     String? userL1,
     String? userL2,
+    // The STT piece cap. Defaults to production (7MB); the multi-piece tests
+    // shrink it so a short recording splits into several STT requests.
+    int sttPieceBytes = 7000000,
     // The SOLE clock chokepoint. Defaulting to a NON-ADVANCING fake is what
     // keeps every existing frame-driven test (the size cap, the fan-out bound,
     // the drain race, the unhurried-capture duration) green with no per-test
@@ -222,6 +225,7 @@ void main() {
     transcribe: transcribe,
     userL1: userL1,
     userL2: userL2,
+    maxSttPieceBytes: sttPieceBytes,
     upload: (bytes, {required filename, required contentType}) async {
       uploads.add((bytes: bytes, filename: filename, contentType: contentType));
       if (uploadFailuresLeft > 0) {
@@ -1913,6 +1917,89 @@ void main() {
         expect(called, isFalse);
         expect(r.recordingSegments, isEmpty);
         expect(uploads, isEmpty);
+      },
+    );
+
+    test(
+      'a long recording is transcribed in pieces and merged onto one timeline',
+      () async {
+        var calls = 0;
+        final r = recorder(
+          // 16kHz mono = 32 bytes/ms; a 48000-byte piece is 1500ms.
+          sttPieceBytes: 48000,
+          transcribe: (_) async => spokenWord('word${calls++}', timed: true),
+          userL1: 'en',
+          userL2: 'es',
+        );
+        // 96000 bytes at 16kHz mono = 3s -> two 1500ms pieces.
+        r.onRunStarted(1000, 16000, 1);
+        r.onFrame(_tone(48000));
+        r.onRunEnded();
+        await r.finish(wasCarrier: true, callKey: _callKey);
+
+        // Two pieces, each its own STT request.
+        expect(calls, 2);
+        // Both pieces' words present, in order; the second placed 1500ms later
+        // (its word timing offset by the piece's start), so a >900ms gap cuts
+        // it into its own utterance -- proof the offset was applied.
+        expect(r.recordingSegments.map((s) => s.text).toList(), [
+          'word0',
+          'word1',
+        ]);
+        expect(r.recordingSegments.map((s) => s.atMs).toList(), [1000, 2500]);
+      },
+    );
+
+    test('a silent piece in the middle contributes no words', () async {
+      var calls = 0;
+      final r = recorder(
+        sttPieceBytes: 48000,
+        transcribe: (_) async {
+          final n = calls++;
+          return n == 1 ? silent : spokenWord('word$n', timed: true);
+        },
+        userL1: 'en',
+        userL2: 'es',
+      );
+      // 144000 bytes = 4.5s -> three 1500ms pieces; the middle is silence.
+      r.onRunStarted(1000, 16000, 1);
+      r.onFrame(_tone(72000));
+      r.onRunEnded();
+      await r.finish(wasCarrier: true, callKey: _callKey);
+
+      expect(calls, 3);
+      // Pieces 0 and 2 only; the silent middle is a real quiet stretch, not a
+      // loss, and its absence does not shift the others (absolute placement).
+      expect(r.recordingSegments.map((s) => s.text).toList(), [
+        'word0',
+        'word2',
+      ]);
+      expect(r.recordingSegments.map((s) => s.atMs).toList(), [1000, 4000]);
+    });
+
+    test(
+      'a piece with a transcript but no timings abandons the whole attempt',
+      () async {
+        var calls = 0;
+        final r = recorder(
+          sttPieceBytes: 48000,
+          transcribe: (_) async {
+            final n = calls++;
+            // The second piece has text but no word timings -> unplaceable.
+            return spokenWord('word$n', timed: n == 0);
+          },
+          userL1: 'en',
+          userL2: 'es',
+        );
+        r.onRunStarted(1000, 16000, 1);
+        r.onFrame(_tone(48000));
+        r.onRunEnded();
+        await r.finish(wasCarrier: true, callKey: _callKey);
+
+        // No partial half: the live transcript (or the server backstop) stands.
+        expect(r.recordingSegments, isEmpty);
+        // The audio half is unaffected.
+        expect(uploads, hasLength(1));
       },
     );
   });

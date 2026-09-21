@@ -639,11 +639,36 @@ List<TranscriptSegment> buildRecordingSegments(
 }) {
   if (!result.hasUsableTranscript) return const [];
   final transcript = result.transcript;
-  final timings = transcript.wordTimings;
+  return buildRecordingSegmentsFromTimings(
+    transcript.wordTimings,
+    transcript.text,
+    startedAtMs,
+    durationMs,
+    pause: pause,
+  );
+}
+
+/// The shared core of [buildRecordingSegments]: builds recording-based segments
+/// from a word-timing list and its text on the recording's [startedAtMs] /
+/// [durationMs] timeline.
+///
+/// The recorder calls this DIRECTLY with the timings of a CHUNKED transcription
+/// -- each cap-sized piece's timings offset onto one recording timeline and
+/// concatenated -- so a call of ANY length is transcribed in pieces that each
+/// fit the choreographer's request cap, without changing how utterances are cut
+/// or placed. [timings] must already be on the recording's own timeline
+/// (0..[durationMs]); this function does not know piece boundaries.
+List<TranscriptSegment> buildRecordingSegmentsFromTimings(
+  List<WordTiming>? timings,
+  String text,
+  int startedAtMs,
+  int durationMs, {
+  Duration pause = kUtterancePause,
+}) {
   if (timings == null || timings.isEmpty) {
     // No per-word timing at all: keep the whole recording's text as one
     // utterance at its start rather than lose what was said.
-    final whole = transcript.text.trim();
+    final whole = text.trim();
     return whole.isEmpty
         ? const []
         : [TranscriptSegment(whole, atMs: startedAtMs)];
