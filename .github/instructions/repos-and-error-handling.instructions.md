@@ -64,6 +64,12 @@ Severity is a property of the failure, not of the author's judgment at the call 
 
 This table leans on what each status actually asserts — 404 meaning the resource is gone, 5xx meaning the lookup itself failed. Those meanings are a contract every Pangea service holds to, not a client-local reading, and they live in [error-handling.instructions.md](../../../.github/.github/instructions/error-handling.instructions.md).
 
+## Errors no caller handled
+
+An error no caller catches, typically from a request that was started and never awaited, still goes through `ErrorHandler`. It gets the same severity and grouping as an error a repo reports. `ErrorHandler.onUncaughtError` is that single sink on every platform. A failed request caught this way is still a no-response failure: a warning, reported once per session, per the table above.
+
+On web this needs a guarded zone around app startup (`ErrorHandler.runGuarded`), because Flutter web never calls the platform error hook the other platforms use ([flutter/flutter#100277](https://github.com/flutter/flutter/issues/100277)). Without the zone, these errors reached Sentry's browser handler with no user and no grouping key. Every unrelated failed request then collapsed into one catch-all issue (CLIENT-B01, #9190). Errors raised outside Dart, such as those from browser extensions or injected scripts, still arrive through the browser handler.
+
 ## Adoption
 
 Binding for new repos and for any repo already being modified. Existing repos migrate opportunistically, not in a sweep — a repo touched for other work comes along with the change.
