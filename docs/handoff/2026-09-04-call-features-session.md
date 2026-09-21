@@ -2699,3 +2699,18 @@ until the design is Codex-green.
   transcribed in cap-sized pieces and merged onto one recording timeline. Client path only so far.
 - REMAINING: P2 client reliability (keep-alive), P3 reader live-update, P4-P5 choreo server backstop
   (P5 needs owner decision on Matrix event authoring), P6 E2E. Flag default OFF until E2E-proven.
+
+### 2026-09-21 (cont) — P2 + P3 dispatched to parallel worktree-isolated agents (owner-directed)
+- OWNER: build P2+P3 via agents that self-Codex-gate; I cold-gate their commits; high standards.
+- DISPATCHED (isolation: worktree, off HEAD c78e04a504 = combined + P1), both self-gating to GREEN:
+  - P2 (opus, agent ad70f4c567c19324e): make the recording-based transcript survive app
+    backgrounding/kill at hangup. Explore finish() lifecycle; prefer a DURABLE pending-half store
+    (mirror SharedPreferencesCallAudioUploadStateStore) republished on next foreground, over
+    foreground-service surgery. Flag-gated, client-only, RED->GREEN + mutation-proven, self cold-gate.
+  - P3 (sonnet, agent a8edab5a812f67948): make the open transcript_view live-update when the late
+    pangea.call_transcript half arrives (no manual refresh). transcript_view.dart / transcript_repo.dart.
+- Disjoint surfaces (P2 recorder/lifecycle vs P3 view/reader) -> clean integration expected. On
+  completion: cold-gate each in the combined worktree, cherry-pick/merge onto satvik/call-features-
+  combined, re-run test/pangea/calls, then E2E.
+- NOTE for next session if interrupted: agents are worktree-isolated; their commits live on their
+  own worktrees until integrated. agent_ids above; outputs under tasks/<id>.output (do NOT cat).
