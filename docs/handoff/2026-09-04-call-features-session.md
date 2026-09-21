@@ -2566,3 +2566,30 @@ until the design is Codex-green.
   (STANDARD choreo -- raw word_timings), make a call, I verify the recording-based half in the local
   Synapse DB. Web harness (transcript.js, fake audio) can verify the MECHANISM without the phone but
   not real-voice quality.
+
+### 2026-09-21 (cont) — E2E environment STOOD UP for owner's real-voice phone test
+- STACK (all LAN-cutover, verified): Synapse :8008 (focus -> LAN lk-jwt), lk-jwt :7980 (LIVEKIT_URL
+  ws://192.168.1.156:7880), LiveKit :7880, choreo :8012 (STANDARD main checkout, raw word_timings,
+  STT+CMS working). LAN IP 192.168.1.156.
+- PHONE: com.talktolearn.chat rebuilt with CALL_RECORDING_TRANSCRIPT=true and installed (arm64-only
+  debug, 347MB; built via `--target-platform android-arm64` because `--split-per-abi` conflicts with
+  the project's ndk abiFilters). Phone was 100% full (801MB free) -> `adb shell pm trim-caches` freed
+  to 1.4GB, install succeeded WITHOUT uninstall (login preserved). App connects as @calltester:
+  pangea.localhost. Non-fatal local 500 /subscription/status + 404 /cms media in logs (pre-existing).
+- LAPTOP WEB endpoint: `flutter build web --release` (new code + flag), .env copied into build/web,
+  served by local-dev/spa_server.py on :8090 (localhost + LAN). Onboarding renders, homeserver
+  resolves to http://192.168.1.156:8008 (no double-scheme bug), login reachable. Console shows CMS
+  languages CORS + media 404 (local-web quirks, not login/call-blocking). Both endpoints flag-ON ->
+  both halves will be recording-based.
+- BUILD HYGIENE: pubspec `- .env` asset was uncommented only during APK builds and RE-COMMENTED after
+  (committed state clean; test/pangea/build/pubspec_env_asset_test asserts committed=commented).
+  CALL_RECORDING_TRANSCRIPT lives only in the gitignored client .env (worktree), never committed.
+- VERIFY TOOLING: scratchpad/verify_call_transcript.py -> `docker exec -i pangea-synapse-local
+  python3 - N < verify_call_transcript.py` prints newest pangea.call_transcript halves (sender,
+  device, segments text+at_ms, accounting). PROVEN on existing data. BASELINE CONFIRMED: newest
+  @calltester half from the OLD build has chunks_captured=2/chunks_transcribed=1 with the post-unmute
+  chunk MISSING -- exactly the reported bug. After the new-build call, calltester's SEGMENTS should be
+  complete (whole-recording) even though live accounting may still show the loss.
+- WAITING ON OWNER: owner + friend place a 1:1 call (phone @calltester <-> laptop web @learner),
+  speak real voice (repro mute/unmute), hang up. Then pull both halves and confirm recording-based +
+  complete. PR2 only on explicit owner go afterward.
