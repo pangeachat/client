@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-09-17 15:10:06.725713",
+    "@@last_modified": "2026-09-21 09:53:38.011114",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2344,5 +2344,7 @@
     "noOpenSessions": "ಈಗ ಯಾವುದೇ ತೆರೆದ ಸೆಷನ್‌ಗಳಿಲ್ಲ",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 ಶಬ್ದಕೋಶ ಐಟಂ ಬಳಸಲಾಗಿದೆ} other{{count} ಶಬ್ದಕೋಶ ಐಟಂಗಳನ್ನು ಬಳಸಲಾಗಿದೆ}}",
-    "grammarItemsUsed": "{count, plural, =1{1 ವ್ಯಾಕರಣ ಐಟಂ ಬಳಸಲಾಗಿದೆ} other{{count} ವ್ಯಾಕರಣ ಐಟಂಗಳನ್ನು ಬಳಸಲಾಗಿದೆ}}"
+    "grammarItemsUsed": "{count, plural, =1{1 ವ್ಯಾಕರಣ ಐಟಂ ಬಳಸಲಾಗಿದೆ} other{{count} ವ್ಯಾಕರಣ ಐಟಂಗಳನ್ನು ಬಳಸಲಾಗಿದೆ}}",
+    "playVideo": "ವೀಡಿಯೊ ಪ್ಲೇ ಮಾಡಿ",
+    "videoPlayer": "ವೀಡಿಯೊ ಪ್ಲೇಯರ್"
 }

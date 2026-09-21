@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-09-17 15:10:08.582830",
+    "@@last_modified": "2026-09-21 09:53:39.025271",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2344,5 +2344,7 @@
     "noOpenSessions": "ယခုဖွင့်ထားသော စကားဝိုင်းများ မရှိပါ",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{ဝေါဟာရ ၁ ခု အသုံးပြုပြီး} other{ဝေါဟာရ {count} ခု အသုံးပြုပြီး}}",
-    "grammarItemsUsed": "{count, plural, =1{သဒ္ဒါ ၁ ခု အသုံးပြုပြီး} other{သဒ္ဒါ {count} ခု အသုံးပြုပြီး}}"
+    "grammarItemsUsed": "{count, plural, =1{သဒ္ဒါ ၁ ခု အသုံးပြုပြီး} other{သဒ္ဒါ {count} ခု အသုံးပြုပြီး}}",
+    "playVideo": "ဗီဒီယိုဖွင့်ရန်",
+    "videoPlayer": "ဗီဒီယိုဖွင့်စက်"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-09-17 15:10:05.560386",
+    "@@last_modified": "2026-09-21 09:53:37.123825",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10376,5 +10376,7 @@
     "noOpenSessions": "Trenutno nema otvorenih sesija",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 korištena stavka rječnika} other{{count} korištenih stavki rječnika}}",
-    "grammarItemsUsed": "{count, plural, =1{1 korištena gramatička stavka} other{{count} korištenih gramatičkih stavki}}"
+    "grammarItemsUsed": "{count, plural, =1{1 korištena gramatička stavka} other{{count} korištenih gramatičkih stavki}}",
+    "playVideo": "Reproduciraj videozapis",
+    "videoPlayer": "Video player"
 }

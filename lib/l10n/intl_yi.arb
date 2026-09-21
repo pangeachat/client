@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-09-17 15:10:12.067691",
+    "@@last_modified": "2026-09-21 09:53:41.569310",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2344,5 +2344,7 @@
     "noOpenSessions": "קיין אָפֿענע סעסיעס איצט נישט",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 וואָקאַב נומער געניצט} other{{count} וואָקאַב נומערן געניצט}}",
-    "grammarItemsUsed": "{count, plural, =1{1 גראַמאַטיק נומער געניצט} other{{count} גראַמאַטיק נומערן געניצט}}"
+    "grammarItemsUsed": "{count, plural, =1{1 גראַמאַטיק נומער געניצט} other{{count} גראַמאַטיק נומערן געניצט}}",
+    "playVideo": "שפּיל ווידעא",
+    "videoPlayer": "ווידעא שפּילער"
 }

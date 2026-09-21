@@ -2967,7 +2967,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-09-17 15:10:07.557966",
+    "@@last_modified": "2026-09-21 09:53:38.561152",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10721,5 +10721,7 @@
     "noOpenSessions": "Šiuo metu nėra atvirų sesijų",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 žodyno elementas panaudotas} other{{count} žodyno elementų panaudota}}",
-    "grammarItemsUsed": "{count, plural, =1{1 gramatikos elementas panaudotas} other{{count} gramatikos elementų panaudota}}"
+    "grammarItemsUsed": "{count, plural, =1{1 gramatikos elementas panaudotas} other{{count} gramatikos elementų panaudota}}",
+    "playVideo": "Paleisti vaizdo įrašą",
+    "videoPlayer": "Vaizdo grotuvas"
 }

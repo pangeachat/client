@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-09-17 15:10:09.323535",
+    "@@last_modified": "2026-09-21 09:53:39.582248",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10025,5 +10025,7 @@
     "noOpenSessions": "Brak otwartych sesji",
     "xpAmount": "{count} PD",
     "vocabItemsUsed": "{count, plural, =1{1 słowo użyte} other{{count} słów użytych}}",
-    "grammarItemsUsed": "{count, plural, =1{1 zagadnienie gramatyczne użyte} other{{count} zagadnień gramatycznych użytych}}"
+    "grammarItemsUsed": "{count, plural, =1{1 zagadnienie gramatyczne użyte} other{{count} zagadnień gramatycznych użytych}}",
+    "playVideo": "Odtwórz wideo",
+    "videoPlayer": "Odtwarzacz wideo"
 }

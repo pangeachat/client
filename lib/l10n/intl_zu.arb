@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-09-17 15:10:13.277702",
+    "@@last_modified": "2026-09-21 09:53:41.855480",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2344,5 +2344,7 @@
     "noOpenSessions": "Azikho izikhathi ezivulekile okwamanje",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 into yohlelo lolimi esetshenzisiwe} other{{count} izinto zohlelo lolimi ezisetshenzisiwe}}",
-    "grammarItemsUsed": "{count, plural, =1{1 into yohlelo lolimi esetshenzisiwe} other{{count} izinto zohlelo lolimi ezisetshenzisiwe}}"
+    "grammarItemsUsed": "{count, plural, =1{1 into yohlelo lolimi esetshenzisiwe} other{{count} izinto zohlelo lolimi ezisetshenzisiwe}}",
+    "playVideo": "Dlala ividiyo",
+    "videoPlayer": "Isidlali sevidiyo"
 }

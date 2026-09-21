@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-09-17 15:10:08.242206",
+    "@@last_modified": "2026-09-21 09:53:39.062685",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2344,5 +2344,7 @@
     "noOpenSessions": "Houjikta session amata pangkhide",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 ৱোকেব আইটেম শীজিন্নখি} other{{count} ৱোকেব আইটেম শীজিন্নখি}}",
-    "grammarItemsUsed": "{count, plural, =1{1 গ্রামার আইটেম শীজিন্নখি} other{{count} গ্রামার আইটেম শীজিন্নখি}}"
+    "grammarItemsUsed": "{count, plural, =1{1 গ্রামার আইটেম শীজিন্নখি} other{{count} গ্রামার আইটেম শীজিন্নখি}}",
+    "playVideo": "ভিডিও প্লে তৌ",
+    "videoPlayer": "ভিডিও প্লেয়ার"
 }

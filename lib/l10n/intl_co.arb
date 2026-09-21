@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-09-17 15:10:03.256391",
+    "@@last_modified": "2026-09-21 09:53:35.877946",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2344,5 +2344,7 @@
     "noOpenSessions": "Nisuna sessione aperta avà",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 elementu di vucabulariu usatu} other{{count} elementi di vucabulariu usati}}",
-    "grammarItemsUsed": "{count, plural, =1{1 elementu di grammatica usatu} other{{count} elementi di grammatica usati}}"
+    "grammarItemsUsed": "{count, plural, =1{1 elementu di grammatica usatu} other{{count} elementi di grammatica usati}}",
+    "playVideo": "Ghjucà u video",
+    "videoPlayer": "Lettore video"
 }

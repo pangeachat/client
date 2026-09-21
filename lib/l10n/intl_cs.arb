@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-09-17 15:10:03.366039",
+    "@@last_modified": "2026-09-21 09:53:35.789559",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10434,5 +10434,7 @@
     "noOpenSessions": "Momentálně nejsou otevřené žádné relace",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 použitá položka slovní zásoby} other{{count} použité položky slovní zásoby}}",
-    "grammarItemsUsed": "{count, plural, =1{1 použitá položka gramatiky} other{{count} použité položky gramatiky}}"
+    "grammarItemsUsed": "{count, plural, =1{1 použitá položka gramatiky} other{{count} použité položky gramatiky}}",
+    "playVideo": "Přehrát video",
+    "videoPlayer": "Přehrávač videa"
 }

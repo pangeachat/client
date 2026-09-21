@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-09-17 15:10:09.376812",
+    "@@last_modified": "2026-09-21 09:53:39.535153",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2344,5 +2344,7 @@
     "noOpenSessions": "اوسمهال خلاصې ناستې نشته",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 د لغتونو توکی کارول شوی} other{{count} د لغتونو توکي کارول شوي}}",
-    "grammarItemsUsed": "{count, plural, =1{1 د ګرامر توکی کارول شوی} other{{count} د ګرامر توکي کارول شوي}}"
+    "grammarItemsUsed": "{count, plural, =1{1 د ګرامر توکی کارول شوی} other{{count} د ګرامر توکي کارول شوي}}",
+    "playVideo": "ویډیو پلی کړئ",
+    "videoPlayer": "ویډیو پلیر"
 }

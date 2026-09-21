@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-09-17 15:10:03.665267",
+    "@@last_modified": "2026-09-21 09:53:35.728304",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2344,5 +2344,7 @@
     "noOpenSessions": "Dim sesiynau ar agor ar hyn o bryd",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 eitem geirfa wedi'i defnyddio} other{{count} eitemau geirfa wedi'u defnyddio}}",
-    "grammarItemsUsed": "{count, plural, =1{1 eitem ramadeg wedi'i defnyddio} other{{count} eitemau gramadeg wedi'u defnyddio}}"
+    "grammarItemsUsed": "{count, plural, =1{1 eitem ramadeg wedi'i defnyddio} other{{count} eitemau gramadeg wedi'u defnyddio}}",
+    "playVideo": "Chwarae fideo",
+    "videoPlayer": "Chwaraewr fideo"
 }

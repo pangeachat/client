@@ -3093,7 +3093,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-09-17 15:10:11.216956",
+    "@@last_modified": "2026-09-21 09:53:41.138562",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10572,5 +10572,7 @@
     "noOpenSessions": "ขณะนี้ไม่มีเซสชันที่เปิดอยู่",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{ใช้คำศัพท์ 1 รายการ} other{ใช้คำศัพท์ {count} รายการ}}",
-    "grammarItemsUsed": "{count, plural, =1{ใช้ไวยากรณ์ 1 รายการ} other{ใช้ไวยากรณ์ {count} รายการ}}"
+    "grammarItemsUsed": "{count, plural, =1{ใช้ไวยากรณ์ 1 รายการ} other{ใช้ไวยากรณ์ {count} รายการ}}",
+    "playVideo": "เล่นวิดีโอ",
+    "videoPlayer": "เครื่องเล่นวิดีโอ"
 }

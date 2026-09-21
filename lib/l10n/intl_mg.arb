@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-09-17 15:10:07.792511",
+    "@@last_modified": "2026-09-21 09:53:38.592596",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2344,5 +2344,7 @@
     "noOpenSessions": "Tsy misy fotoam-pianarana misokatra amin'izao fotoana izao",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 teny nampiasaina} other{{count} teny nampiasaina}}",
-    "grammarItemsUsed": "{count, plural, =1{1 fitsipika nampiasaina} other{{count} fitsipika nampiasaina}}"
+    "grammarItemsUsed": "{count, plural, =1{1 fitsipika nampiasaina} other{{count} fitsipika nampiasaina}}",
+    "playVideo": "Alefaso ny horonan-tsary",
+    "videoPlayer": "Mpilalao horonan-tsary"
 }

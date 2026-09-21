@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-09-17 15:10:03.374290",
+    "@@last_modified": "2026-09-21 09:53:35.821120",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9927,5 +9927,7 @@
     "noOpenSessions": "Momentan keine offenen Sitzungen",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 Vokabel verwendet} other{{count} Vokabeln verwendet}}",
-    "grammarItemsUsed": "{count, plural, =1{1 Grammatik-Element verwendet} other{{count} Grammatik-Elemente verwendet}}"
+    "grammarItemsUsed": "{count, plural, =1{1 Grammatik-Element verwendet} other{{count} Grammatik-Elemente verwendet}}",
+    "playVideo": "Video abspielen",
+    "videoPlayer": "Videoplayer"
 }

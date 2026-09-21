@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-17 15:10:03.542016",
+    "@@last_modified": "2026-09-21 09:53:36.163730",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10885,5 +10885,7 @@
     "noOpenSessions": "Neniuj malfermitaj sesioj nun",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 vortfaradaĵo uzita} other{{count} vortfaradaĵoj uzitaj}}",
-    "grammarItemsUsed": "{count, plural, =1{1 gramatikaĵo uzita} other{{count} gramatikaĵoj uzitaj}}"
+    "grammarItemsUsed": "{count, plural, =1{1 gramatikaĵo uzita} other{{count} gramatikaĵoj uzitaj}}",
+    "playVideo": "Ludi videon",
+    "videoPlayer": "Videoludilo"
 }

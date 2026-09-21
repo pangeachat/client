@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-09-17 15:10:12.017509",
+    "@@last_modified": "2026-09-21 09:53:41.774222",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9940,5 +9940,7 @@
     "noOpenSessions": "当前没有开放会话",
     "xpAmount": "{count} 经验值",
     "vocabItemsUsed": "{count, plural, =1{已使用1个词汇项目} other{已使用{count}个词汇项目}}",
-    "grammarItemsUsed": "{count, plural, =1{已使用1个语法项目} other{已使用{count}个语法项目}}"
+    "grammarItemsUsed": "{count, plural, =1{已使用1个语法项目} other{已使用{count}个语法项目}}",
+    "playVideo": "播放视频",
+    "videoPlayer": "视频播放器"
 }

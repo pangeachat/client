@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-09-17 15:10:02.651492",
+    "@@last_modified": "2026-09-21 09:53:35.291544",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2344,5 +2344,7 @@
     "noOpenSessions": "В момента няма отворени сесии",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 използван елемент от речника} other{{count} използвани елементи от речника}}",
-    "grammarItemsUsed": "{count, plural, =1{1 използван граматичен елемент} other{{count} използвани граматични елементи}}"
+    "grammarItemsUsed": "{count, plural, =1{1 използван граматичен елемент} other{{count} използвани граматични елементи}}",
+    "playVideo": "Пусни видео",
+    "videoPlayer": "Видео плейър"
 }

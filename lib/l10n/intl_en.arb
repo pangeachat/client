@@ -5602,5 +5602,13 @@
                 "type": "int"
             }
         }
+    },
+    "playVideo": "Play video",
+    "@playVideo": {
+        "description": "Accessible name of the thumbnail button that starts an activity's video in place."
+    },
+    "videoPlayer": "Video player",
+    "@videoPlayer": {
+        "description": "Accessible name of a playing activity video, which is one keyboard stop."
     }
 }

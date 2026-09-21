@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-09-17 15:10:11.840503",
+    "@@last_modified": "2026-09-21 09:53:41.273949",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2344,5 +2344,7 @@
     "noOpenSessions": "فی الحال کوئی سیشن کھلا نہیں ہے",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 ذخیرہ الفاظ کا آئٹم استعمال ہوا} other{{count} ذخیرہ الفاظ کے آئٹمز استعمال ہوئے}}",
-    "grammarItemsUsed": "{count, plural, =1{1 گرامر کا آئٹم استعمال ہوا} other{{count} گرامر کے آئٹمز استعمال ہوئے}}"
+    "grammarItemsUsed": "{count, plural, =1{1 گرامر کا آئٹم استعمال ہوا} other{{count} گرامر کے آئٹمز استعمال ہوئے}}",
+    "playVideo": "ویڈیو چلائیں",
+    "videoPlayer": "ویڈیو پلیئر"
 }

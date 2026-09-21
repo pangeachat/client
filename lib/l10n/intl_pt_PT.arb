@@ -2559,7 +2559,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-09-17 15:10:09.259108",
+    "@@last_modified": "2026-09-21 09:53:39.809730",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10857,5 +10857,7 @@
     "noOpenSessions": "Nenhuma sessão aberta neste momento",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 item de vocabulário usado} other{{count} itens de vocabulário usados}}",
-    "grammarItemsUsed": "{count, plural, =1{1 item de gramática usado} other{{count} itens de gramática usados}}"
+    "grammarItemsUsed": "{count, plural, =1{1 item de gramática usado} other{{count} itens de gramática usados}}",
+    "playVideo": "Reproduzir vídeo",
+    "videoPlayer": "Leitor de vídeo"
 }

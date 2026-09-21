@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-09-17 15:10:10.019746",
+    "@@last_modified": "2026-09-21 09:53:39.993859",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2344,5 +2344,7 @@
     "noOpenSessions": "هن وقت ڪو به کليل سيشن ناهي",
     "xpAmount": "{count} ايڪس پي",
     "vocabItemsUsed": "{count, plural, =1{1 لفظ استعمال ٿيو} other{{count} لفظ استعمال ٿيا}}",
-    "grammarItemsUsed": "{count, plural, =1{1 گرامر جو آئٽم استعمال ٿيو} other{{count} گرامر جا آئٽم استعمال ٿيا}}"
+    "grammarItemsUsed": "{count, plural, =1{1 گرامر جو آئٽم استعمال ٿيو} other{{count} گرامر جا آئٽم استعمال ٿيا}}",
+    "playVideo": "وڊيو هلايو",
+    "videoPlayer": "وڊيو پليئر"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-09-17 15:10:08.208267",
+    "@@last_modified": "2026-09-21 09:53:38.977636",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2344,5 +2344,7 @@
     "noOpenSessions": "Одоогоор нээлттэй хичээл байхгүй байна",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 үгийн сангийн зүйл ашигласан} other{{count} үгийн сангийн зүйл ашигласан}}",
-    "grammarItemsUsed": "{count, plural, =1{1 дүрмийн зүйл ашигласан} other{{count} дүрмийн зүйл ашигласан}}"
+    "grammarItemsUsed": "{count, plural, =1{1 дүрмийн зүйл ашигласан} other{{count} дүрмийн зүйл ашигласан}}",
+    "playVideo": "Видео тоглуулах",
+    "videoPlayer": "Видео тоглуулагч"
 }

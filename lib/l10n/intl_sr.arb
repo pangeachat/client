@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-17 15:10:10.511085",
+    "@@last_modified": "2026-09-21 09:53:40.850444",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10889,5 +10889,7 @@
     "noOpenSessions": "Trenutno nema otvorenih sesija",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 upotrebljena stavka rečnika} other{{count} upotrebljenih stavki rečnika}}",
-    "grammarItemsUsed": "{count, plural, =1{1 upotrebljena stavka gramatike} other{{count} upotrebljenih stavki gramatike}}"
+    "grammarItemsUsed": "{count, plural, =1{1 upotrebljena stavka gramatike} other{{count} upotrebljenih stavki gramatike}}",
+    "playVideo": "Reprodukuj video",
+    "videoPlayer": "Video plejer"
 }

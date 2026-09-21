@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-17 15:10:04.016059",
+    "@@last_modified": "2026-09-21 09:53:36.328983",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10028,5 +10028,7 @@
     "noOpenSessions": "در حال حاضر هیچ جلسه بازی باز نیست",
     "xpAmount": "{count} امتیاز تجربه",
     "vocabItemsUsed": "{count, plural, =1{۱ لغت استفاده شد} other{{count} لغت استفاده شد}}",
-    "grammarItemsUsed": "{count, plural, =1{۱ مورد گرامر استفاده شد} other{{count} مورد گرامر استفاده شد}}"
+    "grammarItemsUsed": "{count, plural, =1{۱ مورد گرامر استفاده شد} other{{count} مورد گرامر استفاده شد}}",
+    "playVideo": "پخش ویدیو",
+    "videoPlayer": "پخش‌کننده ویدیو"
 }

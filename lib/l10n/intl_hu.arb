@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-09-17 15:10:05.673541",
+    "@@last_modified": "2026-09-21 09:53:37.309659",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10043,5 +10043,7 @@
     "noOpenSessions": "Jelenleg nincsenek nyitott munkamenetek",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 szókincs elem felhasználva} other{{count} szókincs elem felhasználva}}",
-    "grammarItemsUsed": "{count, plural, =1{1 nyelvtani elem felhasználva} other{{count} nyelvtani elem felhasználva}}"
+    "grammarItemsUsed": "{count, plural, =1{1 nyelvtani elem felhasználva} other{{count} nyelvtani elem felhasználva}}",
+    "playVideo": "Videó lejátszása",
+    "videoPlayer": "Videólejátszó"
 }

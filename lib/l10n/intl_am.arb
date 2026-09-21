@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-09-17 15:10:02.691456",
+    "@@last_modified": "2026-09-21 09:53:35.345435",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2344,5 +2344,7 @@
     "noOpenSessions": "በአሁኑ ጊዜ ክፍት ክፍለ ጊዜዎች የሉም",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 የቃላት ንጥል ጥቅም ላይ ውሏል} other{{count} የቃላት ንጥሎች ጥቅም ላይ ውለዋል}}",
-    "grammarItemsUsed": "{count, plural, =1{1 ሰዋሰው ንጥል ጥቅም ላይ ውሏል} other{{count} ሰዋሰው ንጥሎች ጥቅም ላይ ውለዋል}}"
+    "grammarItemsUsed": "{count, plural, =1{1 ሰዋሰው ንጥል ጥቅም ላይ ውሏል} other{{count} ሰዋሰው ንጥሎች ጥቅም ላይ ውለዋል}}",
+    "playVideo": "ቪዲዮ አጫውት",
+    "videoPlayer": "የቪዲዮ ማጫወቻ"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-09-17 15:10:06.771230",
+    "@@last_modified": "2026-09-21 09:53:37.955827",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2344,5 +2344,7 @@
     "noOpenSessions": "បច្ចុប្បន្ន​គ្មាន​វគ្គ​បើក​ទេ",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{ប្រើពាក្យវាក្យសព្ទ ១} other{ប្រើពាក្យវាក្យសព្ទ {count}}}",
-    "grammarItemsUsed": "{count, plural, =1{ប្រើវេយ្យាករណ៍ ១} other{ប្រើវេយ្យាករណ៍ {count}}}"
+    "grammarItemsUsed": "{count, plural, =1{ប្រើវេយ្យាករណ៍ ១} other{ប្រើវេយ្យាករណ៍ {count}}}",
+    "playVideo": "ចាក់វីដេអូ",
+    "videoPlayer": "កម្មវិធីចាក់វីដេអូ"
 }

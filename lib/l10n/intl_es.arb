@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-09-17 15:10:03.719857",
+    "@@last_modified": "2026-09-21 09:53:35.961550",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8159,5 +8159,7 @@
     "noOpenSessions": "No hay sesiones abiertas en este momento",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 elemento de vocabulario usado} other{{count} elementos de vocabulario usados}}",
-    "grammarItemsUsed": "{count, plural, =1{1 elemento de gramática usado} other{{count} elementos de gramática usados}}"
+    "grammarItemsUsed": "{count, plural, =1{1 elemento de gramática usado} other{{count} elementos de gramática usados}}",
+    "playVideo": "Reproducir vídeo",
+    "videoPlayer": "Reproductor de vídeo"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-09-17 15:10:10.220125",
+    "@@last_modified": "2026-09-21 09:53:40.420038",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2344,5 +2344,7 @@
     "noOpenSessions": "Hapana zvikamu zvakavhurika parizvino",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 izwi rakashandiswa} other{{count} mazwi akashandiswa}}",
-    "grammarItemsUsed": "{count, plural, =1{1 girama yakashandiswa} other{{count} girama dzakashandiswa}}"
+    "grammarItemsUsed": "{count, plural, =1{1 girama yakashandiswa} other{{count} girama dzakashandiswa}}",
+    "playVideo": "Ridza vhidhiyo",
+    "videoPlayer": "Mutambi wevhidhiyo"
 }

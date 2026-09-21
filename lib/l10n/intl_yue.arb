@@ -1263,7 +1263,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-09-17 15:10:12.166464",
+    "@@last_modified": "2026-09-21 09:53:41.681638",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10897,5 +10897,7 @@
     "noOpenSessions": "目前沒有開放嘅會話",
     "xpAmount": "{count} 經驗值",
     "vocabItemsUsed": "{count, plural, =1{已用1個詞彙項目} other{已用{count}個詞彙項目}}",
-    "grammarItemsUsed": "{count, plural, =1{已用1個文法項目} other{已用{count}個文法項目}}"
+    "grammarItemsUsed": "{count, plural, =1{已用1個文法項目} other{已用{count}個文法項目}}",
+    "playVideo": "播放影片",
+    "videoPlayer": "影片播放器"
 }

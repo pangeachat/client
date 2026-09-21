@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-09-17 15:10:11.355751",
+    "@@last_modified": "2026-09-21 09:53:40.702386",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2344,5 +2344,7 @@
     "noOpenSessions": "Hakuna vipindi vilivyo wazi kwa sasa",
     "xpAmount": "XP {count}",
     "vocabItemsUsed": "{count, plural, =1{kipengee 1 cha msamiati kimetumika} other{vipengee {count} vya msamiati vimetumika}}",
-    "grammarItemsUsed": "{count, plural, =1{kipengee 1 cha sarufi kimetumika} other{vipengee {count} vya sarufi vimetumika}}"
+    "grammarItemsUsed": "{count, plural, =1{kipengee 1 cha sarufi kimetumika} other{vipengee {count} vya sarufi vimetumika}}",
+    "playVideo": "Cheza video",
+    "videoPlayer": "Kicheza video"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-09-17 15:10:09.664266",
+    "@@last_modified": "2026-09-21 09:53:40.167791",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2344,5 +2344,7 @@
     "noOpenSessions": "ବର୍ତ୍ତମାନ କୌଣସି ଖୋଲା ଅଧିବେଶନ ନାହିଁ",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 ଶବ୍ଦକୋଷ ବସ୍ତୁ ବ୍ୟବହୃତ ହୋଇଛି} other{{count} ଶବ୍ଦକୋଷ ବସ୍ତୁ ବ୍ୟବହୃତ ହୋଇଛି}}",
-    "grammarItemsUsed": "{count, plural, =1{1 ବ୍ୟାକରଣ ବସ୍ତୁ ବ୍ୟବହୃତ ହୋଇଛି} other{{count} ବ୍ୟାକରଣ ବସ୍ତୁ ବ୍ୟବହୃତ ହୋଇଛି}}"
+    "grammarItemsUsed": "{count, plural, =1{1 ବ୍ୟାକରଣ ବସ୍ତୁ ବ୍ୟବହୃତ ହୋଇଛି} other{{count} ବ୍ୟାକରଣ ବସ୍ତୁ ବ୍ୟବହୃତ ହୋଇଛି}}",
+    "playVideo": "ଭିଡିଓ ଚଲାନ୍ତୁ",
+    "videoPlayer": "ଭିଡିଓ ପ୍ଲେୟାର"
 }

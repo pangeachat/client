@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-17 15:10:12.128861",
+    "@@last_modified": "2026-09-21 09:53:42.047763",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10046,5 +10046,7 @@
     "noOpenSessions": "目前沒有開放的會話",
     "xpAmount": "{count} 經驗值",
     "vocabItemsUsed": "{count, plural, =1{已使用 1 個詞彙項目} other{已使用 {count} 個詞彙項目}}",
-    "grammarItemsUsed": "{count, plural, =1{已使用 1 個文法項目} other{已使用 {count} 個文法項目}}"
+    "grammarItemsUsed": "{count, plural, =1{已使用 1 個文法項目} other{已使用 {count} 個文法項目}}",
+    "playVideo": "播放影片",
+    "videoPlayer": "影片播放器"
 }

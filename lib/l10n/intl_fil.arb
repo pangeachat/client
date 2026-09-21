@@ -2080,7 +2080,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-09-17 15:10:04.213727",
+    "@@last_modified": "2026-09-21 09:53:36.378071",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10800,5 +10800,7 @@
     "noOpenSessions": "Walang bukas na session sa ngayon",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 item ng bokabularyo ang ginamit} other{{count} item ng bokabularyo ang ginamit}}",
-    "grammarItemsUsed": "{count, plural, =1{1 item ng gramatika ang ginamit} other{{count} item ng gramatika ang ginamit}}"
+    "grammarItemsUsed": "{count, plural, =1{1 item ng gramatika ang ginamit} other{{count} item ng gramatika ang ginamit}}",
+    "playVideo": "I-play ang video",
+    "videoPlayer": "Video player"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-09-17 15:10:09.924145",
+    "@@last_modified": "2026-09-21 09:53:40.058244",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10912,5 +10912,7 @@
     "noOpenSessions": "Сейчас нет открытых сессий",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{использовано 1 словарное слово} other{использовано {count} словарных слов}}",
-    "grammarItemsUsed": "{count, plural, =1{использовано 1 грамматическое правило} other{использовано {count} грамматических правил}}"
+    "grammarItemsUsed": "{count, plural, =1{использовано 1 грамматическое правило} other{использовано {count} грамматических правил}}",
+    "playVideo": "Воспроизвести видео",
+    "videoPlayer": "Видеоплеер"
 }

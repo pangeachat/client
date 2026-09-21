@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-09-17 15:10:11.321659",
+    "@@last_modified": "2026-09-21 09:53:41.040974",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2344,5 +2344,7 @@
     "noOpenSessions": "Ҳоло ягон сессияи кушода нест",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 калимаи луғат истифода шуд} other{{count} калимаҳои луғат истифода шуданд}}",
-    "grammarItemsUsed": "{count, plural, =1{1 қоидаи грамматикӣ истифода шуд} other{{count} қоидаҳои грамматикӣ истифода шуданд}}"
+    "grammarItemsUsed": "{count, plural, =1{1 қоидаи грамматикӣ истифода шуд} other{{count} қоидаҳои грамматикӣ истифода шуданд}}",
+    "playVideo": "Наворро бозӣ кунед",
+    "videoPlayer": "Наворбоз"
 }

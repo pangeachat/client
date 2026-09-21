@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-09-17 15:10:04.905817",
+    "@@last_modified": "2026-09-21 09:53:36.608581",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2344,5 +2344,7 @@
     "noOpenSessions": "Chan eil seiseanan fosgailte ann an-dràsta",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 nì faclair air a chleachdadh} other{{count} nithean faclair air an cleachdadh}}",
-    "grammarItemsUsed": "{count, plural, =1{1 nì gràmair air a chleachdadh} other{{count} nithean gràmair air an cleachdadh}}"
+    "grammarItemsUsed": "{count, plural, =1{1 nì gràmair air a chleachdadh} other{{count} nithean gràmair air an cleachdadh}}",
+    "playVideo": "Cluich bhidio",
+    "videoPlayer": "Cluicheadair bhidio"
 }

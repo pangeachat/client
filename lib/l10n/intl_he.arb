@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-17 15:10:04.984647",
+    "@@last_modified": "2026-09-21 09:53:36.916926",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10854,5 +10854,7 @@
     "noOpenSessions": "אין שיעורים פתוחים כרגע",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{פריט אוצר מילים אחד בשימוש} other{{count} פריטי אוצר מילים בשימוש}}",
-    "grammarItemsUsed": "{count, plural, =1{פריט דקדוק אחד בשימוש} other{{count} פריטי דקדוק בשימוש}}"
+    "grammarItemsUsed": "{count, plural, =1{פריט דקדוק אחד בשימוש} other{{count} פריטי דקדוק בשימוש}}",
+    "playVideo": "נגן סרטון",
+    "videoPlayer": "נגן וידאו"
 }

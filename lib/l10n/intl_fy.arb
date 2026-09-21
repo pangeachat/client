@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-09-17 15:10:04.203348",
+    "@@last_modified": "2026-09-21 09:53:36.591788",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2344,5 +2344,7 @@
     "noOpenSessions": "Gjin iepen sesjes op it stuit",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 wurdskatitem brûkt} other{{count} wurdskatitems brûkt}}",
-    "grammarItemsUsed": "{count, plural, =1{1 grammatika-item brûkt} other{{count} grammatika-items brûkt}}"
+    "grammarItemsUsed": "{count, plural, =1{1 grammatika-item brûkt} other{{count} grammatika-items brûkt}}",
+    "playVideo": "Fideo ôfspylje",
+    "videoPlayer": "Fideospiler"
 }

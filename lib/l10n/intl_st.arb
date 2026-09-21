@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-09-17 15:10:11.281357",
+    "@@last_modified": "2026-09-21 09:53:40.552441",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2344,5 +2344,7 @@
     "noOpenSessions": "Ha ho lithuto tse bulehileng hajoale",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{Ntho e le 'ngoe ea mantsoe e sebelisitsoe} other{Lintho tse {count} tsa mantsoe li sebelisitsoe}}",
-    "grammarItemsUsed": "{count, plural, =1{Ntho e le 'ngoe ea sebōpeho-puo e sebelisitsoe} other{Lintho tse {count} tsa sebōpeho-puo li sebelisitsoe}}"
+    "grammarItemsUsed": "{count, plural, =1{Ntho e le 'ngoe ea sebōpeho-puo e sebelisitsoe} other{Lintho tse {count} tsa sebōpeho-puo li sebelisitsoe}}",
+    "playVideo": "Bapala video",
+    "videoPlayer": "Sebapala-video"
 }
