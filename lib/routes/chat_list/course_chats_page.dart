@@ -16,9 +16,9 @@ import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/routes/chat/events/constants/pangea_room_types.dart';
 import 'package:fluffychat/routes/chat_list/chat_list.dart';
 import 'package:fluffychat/routes/chat_list/course_chats_view.dart';
+import 'package:fluffychat/routes/chat_list/course_hierarchy_extension.dart';
 import 'package:fluffychat/routes/chat_list/extended_space_rooms_chunk.dart';
 import 'package:fluffychat/routes/chat_list/hierarchy_sync_update_extension.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
@@ -113,11 +113,7 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
 
   List<SpaceRoomsChunk$2> get discoveredGroupChats =>
       (_discoveredChildren ?? [])
-          .where(
-            (chunk) =>
-                chunk.roomType == null ||
-                !chunk.roomType!.startsWith(PangeaRoomTypes.activitySession),
-          )
+          .where((chunk) => !chunk.isActivitySession)
           .toList();
 
   Map<String, List<ExtendedSpaceRoomsChunk>> get discoveredActivities {
@@ -328,42 +324,16 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
   ) {
     final List<SpaceRoomsChunk$2> filteredChildren = [];
     for (final child in hierarchyResponse) {
-      if (child.roomId == widget.roomId) {
-        continue;
-      }
-
-      final room = space.client.getRoomById(child.roomId);
-      if (room != null && room.membership != Membership.leave) {
-        // If the room is already joined or invited, skip it
-        continue;
-      }
+      if (!space.isJoinableChild(child)) continue;
 
       final isDuplicate = filteredChildren.any(
         (filtered) => filtered.roomId == child.roomId,
       );
       if (isDuplicate) continue;
 
-      if (_includeSpaceChild(space, child)) {
-        filteredChildren.add(child);
-      }
+      filteredChildren.add(child);
     }
     return filteredChildren;
-  }
-
-  bool _includeSpaceChild(Room space, SpaceRoomsChunk$2 hierarchyMember) {
-    if (!mounted) return false;
-    final bool isAnalyticsRoom =
-        hierarchyMember.roomType == PangeaRoomTypes.analytics;
-
-    final bool isMember = [
-      Membership.join,
-      Membership.invite,
-    ].contains(widget.client.getRoomById(hierarchyMember.roomId)?.membership);
-
-    final bool isSuggested =
-        space.spaceChildSuggestionStatus[hierarchyMember.roomId] ?? true;
-
-    return !isAnalyticsRoom && (isMember || isSuggested);
   }
 
   int _sortSpaceChildren(SpaceRoomsChunk$2 a, SpaceRoomsChunk$2 b) {
