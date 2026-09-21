@@ -2593,3 +2593,26 @@ until the design is Codex-green.
 - WAITING ON OWNER: owner + friend place a 1:1 call (phone @calltester <-> laptop web @learner),
   speak real voice (repro mute/unmute), hang up. Then pull both halves and confirm recording-based +
   complete. PR2 only on explicit owner go afterward.
+
+### 2026-09-21 (cont) — E2E round 1: phone half fell back to live; ROOT-CAUSED + FIXED (48kHz > STT cap)
+- OWNER E2E (2-min call, @calltester phone <-> @learner laptop web): BOTH halves published +
+  complete, BUT calltester's was the LIVE path (punctuated) while learner's was RECORDING-BASED
+  (unpunctuated, raw word list). Screenshot "No transcript from You" was a TIMING artifact --
+  learner's half landed ~28s after calltester's (recording transcription runs at hangup).
+- ROOT CAUSE (from choreo log + call_audio events): the recording-based path sent the WHOLE
+  recording as ONE POST /choreo/speech_to_text. calltester records at 48000Hz (phone OS default);
+  its 2-min WAV = 11,728,364 B -> ~14.9MB base64 -> over choreo's cap (audio_content <= 10485760 B /
+  10MB base64) -> ONE 422 in the log -> transcribe() threw -> recordingSegments [] -> live fallback.
+  learner records at 16000Hz -> 3.9MB -> ~5MB base64 -> under cap -> recording-based worked. So the
+  FEATURE IS CORRECT (web proved it); only the phone's native 48kHz overflowed.
+- FIX (commit 5404deee28, client-only): downsample the STT COPY to 16kHz mono in
+  _recordingSegmentsFrom (box-average decimator `_downsamplePcm16Mono`; only when channels==1 &&
+  rate>16000). _finish takes `pcm = gen.takeBytes()` ONCE, wraps it native-rate for the upload, and
+  passes the same pcm+rate+channels to the helper. Cap guard: if the 16kHz WAV still >
+  _maxSttWavBytes (7.5MB, base64 stays <10MB) -> return [] (live fallback), never a request that
+  422s. The uploaded recording + mix stay native 48kHz. Speech STT gains nothing >16kHz (it is
+  captureSampleRate's intent, and what the web half already sends). recorder 51/51 green (+1
+  downsample test: 48kHz->STT 16kHz + ~1/3 bytes, upload unchanged). analyze+format clean.
+- IN FLIGHT: cold-gate on the fix (gate-downsample); phone APK rebuilt with the fix + reinstalling.
+  Next: gate GREEN -> owner re-calls -> expect BOTH halves recording-based (both unpunctuated), the
+  phone half complete incl. any mute/unmute gap.
