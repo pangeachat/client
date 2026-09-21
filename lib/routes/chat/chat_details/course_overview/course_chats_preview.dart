@@ -50,6 +50,10 @@ class CourseChatsPreview extends StatefulWidget {
 
   static const int maxChats = 2;
 
+  /// The most often a burst of course updates (a class launching sessions,
+  /// each one a new course child) reloads the hierarchy.
+  static const Duration hierarchyReloadInterval = Duration(seconds: 5);
+
   const CourseChatsPreview({
     required this.room,
     required this.onShowAll,
@@ -99,7 +103,8 @@ class _CourseChatsPreviewState extends State<CourseChatsPreview> {
       _course.spaceChildren.map((c) => c.roomId).whereType<String>().toSet();
 
   /// Loads now, then again whenever a chat is added to the course or the user
-  /// joins or leaves one — the same updates the subpage reloads on.
+  /// joins, leaves or is invited to one — the same updates the subpage
+  /// reloads on, rate-limited to [CourseChatsPreview.hierarchyReloadInterval].
   void _watchHierarchy() {
     _hierarchySubscription?.cancel();
     _hierarchySubscription = _course.client.onSync.stream
@@ -110,17 +115,29 @@ class _CourseChatsPreviewState extends State<CourseChatsPreview> {
             childrenIds: _childIds,
           ),
         )
+        .rateLimit(CourseChatsPreview.hierarchyReloadInterval)
         .listen((_) => _loadJoinableGroupChat());
     _loadJoinableGroupChat();
   }
 
   Future<void> _loadJoinableGroupChat() async {
     final load = ++_hierarchyLoad;
+    // The rooms the client already has offer "See all" on their own, so the
+    // hierarchy can't change the answer. Every change that could take that
+    // away (leaving a chat, answering an invite) is a hierarchy update, which
+    // loads again.
+    if (_offersMoreLocally(_courseChats)) return;
+
     bool hasJoinable;
     try {
       hasJoinable = await _course.hasJoinableGroupChat();
     } catch (e, s) {
-      ErrorHandler.logError(e: e, s: s, data: {'courseId': _course.id});
+      ErrorHandler.logErrorOnce(
+        key: 'course-chats-hierarchy:${_course.id}',
+        e: e,
+        s: s,
+        data: {'courseId': _course.id},
+      );
       // Offer the subpage, which shows its own load error, rather than hide
       // a chat the user may be able to join.
       hasJoinable = true;
@@ -140,6 +157,17 @@ class _CourseChatsPreviewState extends State<CourseChatsPreview> {
         .toList();
   }
 
+  static List<Room> _joined(List<Room> chats) =>
+      chats.where((r) => r.membership == Membership.join).toList();
+
+  /// Whether [chats] alone give the subpage more than the section shows: more
+  /// joined chats than fit, or an invite or knock.
+  static bool _offersMoreLocally(List<Room> chats) {
+    final joined = _joined(chats);
+    return joined.length > CourseChatsPreview.maxChats ||
+        joined.length < chats.length;
+  }
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
@@ -148,13 +176,9 @@ class _CourseChatsPreviewState extends State<CourseChatsPreview> {
           .rateLimit(const Duration(seconds: 1)),
       builder: (context, _) {
         final chats = _courseChats;
-        final joined = chats
-            .where((r) => r.membership == Membership.join)
-            .toList();
+        final joined = _joined(chats);
         final showAll =
-            joined.length > CourseChatsPreview.maxChats ||
-            joined.length < chats.length ||
-            (_hasJoinableGroupChat ?? false);
+            _offersMoreLocally(chats) || (_hasJoinableGroupChat ?? false);
         if (joined.isEmpty && !showAll && !_course.isRoomAdmin) {
           return const SizedBox.shrink();
         }

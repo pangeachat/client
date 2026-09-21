@@ -16,6 +16,8 @@ extension CourseHierarchyExtension on Room {
   /// and every member's analytics room is one).
   static const int maxHierarchyPages = 5;
 
+  static const int hierarchyPageSize = 100;
+
   /// This course's direct hierarchy children, fetched a page at a time as
   /// they are read, so a caller that stops early stops the paging too.
   Stream<SpaceRoomsChunk$2> hierarchyChildren() async* {
@@ -25,7 +27,7 @@ extension CourseHierarchyExtension on Room {
         id,
         maxDepth: 1,
         from: from,
-        limit: 100,
+        limit: hierarchyPageSize,
       );
       yield* Stream.fromIterable(response.rooms);
       from = response.nextBatch;

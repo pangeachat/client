@@ -267,7 +267,7 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
     // so many invisible rooms (analytics rooms) that it might look like
     // pressing the 'load more' button does nothing (Because the only rooms
     // coming through from those calls are analytics rooms).
-    while (callsToServer < 5) {
+    while (callsToServer < CourseHierarchyExtension.maxHierarchyPages) {
       // if this space has been loaded and there are no more rooms to load, break
       if (currentHierarchy != null && currentNextBatch == null) {
         break;
@@ -284,7 +284,7 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
         widget.roomId,
         maxDepth: 1,
         from: currentNextBatch,
-        limit: 100,
+        limit: CourseHierarchyExtension.hierarchyPageSize,
       );
 
       if (widget.roomId != requestSpaceId) {
