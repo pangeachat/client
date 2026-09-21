@@ -26,6 +26,7 @@ class SelectedSubscriptionView extends StatelessWidget {
       children: [
         Container(
           decoration: BoxDecoration(
+            color: theme.colorScheme.surface,
             border: Border.all(color: theme.colorScheme.primaryContainer),
             borderRadius: BorderRadius.circular(12),
           ),

@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
+import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
@@ -9,6 +10,7 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_room_extens
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_catch_up.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_chats_preview.dart';
@@ -192,10 +194,6 @@ class _CourseOverviewState extends State<CourseOverview> {
                 key: _sectionKeys[SpaceSettingsTabs.course],
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  CourseSectionHeader(
-                    title: SpaceSettingsTabs.course.title(context),
-                  ),
-                  const SizedBox(height: 8.0),
                   ListenableBuilder(
                     listenable: Listenable.merge([
                       widget.controller.objectivesProvider.questLoader,
@@ -216,23 +214,39 @@ class _CourseOverviewState extends State<CourseOverview> {
                         AsyncLoading() => true,
                         AsyncError() || AsyncIdle() => false,
                       };
-                      // The Up-next highlight can't show a card pinged in
-                      // another Mission, so the link carries the ping badge
-                      // to lead the learner into the full plan (#8454), where
-                      // the card badge / floating ping-bar take over.
-                      final pingLeadsToFullPlan = coursePingLeadsToFullPlan(
-                        ping: CoursePingBadgeCache.instance.value,
-                        courseId: room.id,
-                        planGroups: provider.filteredObjectiveGroups,
-                        upNextGroup: provider.upNextGroup,
-                      );
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
+                          // The header names the section, not the shortlist
+                          // it happens to show — "Suggested" is implicit in a
+                          // ranked row and only added words (#8744). The
+                          // plan the row is drawn from keeps its own name on
+                          // the subpage this section links to.
+                          CourseSectionHeader(
+                            title: l10n.activities,
+                            // Already this app's glyph for a course's
+                            // syllabus (the More section's "Change course
+                            // plan"), which is where these activities come
+                            // from.
+                            icon: Icons.assignment_outlined,
+                            trailing: hasPlan
+                                ? CourseSectionButton(
+                                    section: l10n.activities,
+                                    onPressed: () =>
+                                        _openSubpage(SpaceSettingsTabs.course),
+                                  )
+                                : null,
+                          ),
+                          const SizedBox(height: 8.0),
+                          // The shortlist draws from every Mission and ranks a
+                          // pinged activity near the front, so it carries the
+                          // ping badge on the card itself — the header's link
+                          // needs none (it did while this was one Mission's
+                          // row, #8454).
                           CourseObjectivesList(
                             room: room,
                             shrinkWrap: true,
-                            upNextOnly: true,
+                            suggestedOnly: true,
                             hasCompletedActivity: (activityId) => widget
                                 .controller
                                 .roomSummariesModel
@@ -243,15 +257,6 @@ class _CourseOverviewState extends State<CourseOverview> {
                             objectivesProvider:
                                 widget.controller.objectivesProvider,
                           ),
-                          if (hasPlan)
-                            CourseSectionButton(
-                              label: l10n.seeFullCoursePlan,
-                              onPressed: () =>
-                                  _openSubpage(SpaceSettingsTabs.course),
-                              trailing: pingLeadsToFullPlan
-                                  ? const CoursePingBadge()
-                                  : null,
-                            ),
                         ],
                       );
                     },
@@ -268,6 +273,30 @@ class _CourseOverviewState extends State<CourseOverview> {
                   padding: SpaceDetailsContent.sectionPadding,
                   child: CourseSectionHeader(
                     title: SpaceSettingsTabs.chat.title(context),
+                    icon: Icons.forum_outlined,
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        // Creating a course chat is buried in the More
+                        // section's settings list; teachers asked for it
+                        // where the chats are (#8744). Same permission gate
+                        // as that row — the shortcut can't do what the
+                        // setting wouldn't.
+                        if (room.isRoomAdmin &&
+                            room.canChangeStateEvent(EventTypes.SpaceChild))
+                          IconButton(
+                            icon: const Icon(Symbols.chat_add_on),
+                            iconSize: 20.0,
+                            visualDensity: VisualDensity.compact,
+                            tooltip: l10n.createGroupChat,
+                            onPressed: widget.controller.addGroupChat,
+                          ),
+                        CourseSectionButton(
+                          section: SpaceSettingsTabs.chat.title(context),
+                          onPressed: () => _openSubpage(SpaceSettingsTabs.chat),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 // The chat rows carry their own 8px wrapper (ChatListItem /
@@ -280,13 +309,6 @@ class _CourseOverviewState extends State<CourseOverview> {
                       const EdgeInsets.symmetric(horizontal: 8.0),
                   child: CourseChatsPreview(room: room),
                 ),
-                Padding(
-                  padding: SpaceDetailsContent.sectionPadding,
-                  child: CourseSectionButton(
-                    label: l10n.allChats,
-                    onPressed: () => _openSubpage(SpaceSettingsTabs.chat),
-                  ),
-                ),
               ],
             ),
             const Divider(),
@@ -296,32 +318,15 @@ class _CourseOverviewState extends State<CourseOverview> {
                 key: _sectionKeys[SpaceSettingsTabs.participants],
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  CourseSectionHeader(
-                    title: SpaceSettingsTabs.participants.title(context),
-                    trailing: room.canInvite
-                        ? FilledButton.tonalIcon(
-                            onPressed: widget.onInvite,
-                            icon: const Icon(
-                              Icons.person_add_outlined,
-                              size: 16,
-                            ),
-                            label: Text(
-                              l10n.invite,
-                              style: Theme.of(context).textTheme.bodyMedium,
-                            ),
-                            style: FilledButton.styleFrom(
-                              visualDensity: VisualDensity.compact,
-                            ),
-                          )
-                        : null,
-                  ),
-                  // The preview owns the "All participants" button: only it
-                  // knows how many cards fit, and the button shows only when
-                  // members were truncated (#8578).
+                  // The preview owns this section's header: which of the two
+                  // actions the header offers — "All participants" or Invite
+                  // — turns on whether the cards were truncated, and only the
+                  // preview knows how many fit (#8578, #8744).
                   CourseParticipantsPreview(
                     room: room,
                     onShowAll: () =>
                         _openSubpage(SpaceSettingsTabs.participants),
+                    onInvite: widget.onInvite,
                   ),
                 ],
               ),
@@ -333,24 +338,29 @@ class _CourseOverviewState extends State<CourseOverview> {
                 key: _sectionKeys[SpaceSettingsTabs.more],
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
+                  // The link shows only when grayed-out rows exist
+                  // (non-admins) — for admins the inline list IS the full
+                  // list, so the subpage adds nothing (#8578).
                   CourseSectionHeader(
                     title: SpaceSettingsTabs.more.title(context),
+                    icon: Icons.settings_outlined,
+                    trailing:
+                        widget.moreButtons.any((b) => b.visible && !b.enabled)
+                        ? CourseSectionButton(
+                            section: SpaceSettingsTabs.more.title(context),
+                            onPressed: () =>
+                                _openSubpage(SpaceSettingsTabs.more),
+                          )
+                        : null,
                   ),
                   // Only the settings this user can act on show inline; the
                   // full list, grayed-out rows included, lives on the All
-                  // settings subpage. The button shows only when grayed-out
-                  // rows exist (non-admins) — for admins the inline list IS
-                  // the full list, so the subpage adds nothing (#8578).
+                  // settings subpage.
                   CourseSettingsButtonList(
                     buttons: widget.moreButtons
                         .where((b) => b.enabled)
                         .toList(),
                   ),
-                  if (widget.moreButtons.any((b) => b.visible && !b.enabled))
-                    CourseSectionButton(
-                      label: l10n.allSettings,
-                      onPressed: () => _openSubpage(SpaceSettingsTabs.more),
-                    ),
                 ],
               ),
             ),

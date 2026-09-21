@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/semantics.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/world_map_filter.dart';
@@ -22,12 +23,17 @@ class WorldMapEmptyViewCard extends StatelessWidget {
   final VoidCallback onWidenSearch;
   final VoidCallback onZoomOut;
 
+  /// Browse-order key for the card's semantic group — set only where the card
+  /// is a top-level workspace sibling (the course-scoped map slot, #8755).
+  final SemanticsSortKey? sortKey;
+
   const WorldMapEmptyViewCard({
     super.key,
     required this.verdict,
     required this.canZoomOut,
     required this.onWidenSearch,
     required this.onZoomOut,
+    this.sortKey,
   });
 
   @override
@@ -57,44 +63,52 @@ class WorldMapEmptyViewCard extends StatelessWidget {
     final zoomRunnable =
         canZoomOut || verdict == MapEmptyVerdict.matchesOffscreen;
 
-    return Material(
-      elevation: 4,
-      borderRadius: BorderRadius.circular(12),
-      color: theme.colorScheme.surface,
-      child: Padding(
-        padding: const EdgeInsets.all(12),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Semantics(
-              container: true,
-              child: Text(message, style: theme.textTheme.bodyMedium),
-            ),
-            if (offersZoom || offersWiden) ...[
-              const SizedBox(height: 8),
-              Wrap(
-                spacing: 8,
-                runSpacing: 8,
-                children: [
-                  if (offersZoom)
-                    FilledButton.tonalIcon(
-                      icon: const Icon(Icons.zoom_out, size: 16),
-                      label: Text(l10n.zoomOut),
-                      // Greyed rather than hidden when it can't run: the
-                      // card's advice stays visible either way.
-                      onPressed: zoomRunnable ? onZoomOut : null,
-                    ),
-                  if (offersWiden)
-                    FilledButton.tonalIcon(
-                      icon: const Icon(Icons.filter_alt_off, size: 16),
-                      label: Text(l10n.widenSearch),
-                      onPressed: onWidenSearch,
-                    ),
-                ],
+    // One named group (labeled with the message) rather than loose text +
+    // button nodes, so the card is a single, keyable sibling wherever it
+    // mounts (#8755).
+    return Semantics(
+      label: message,
+      sortKey: sortKey,
+      container: true,
+      explicitChildNodes: true,
+      child: Material(
+        elevation: 4,
+        borderRadius: BorderRadius.circular(12),
+        color: theme.colorScheme.surface,
+        child: Padding(
+          padding: const EdgeInsets.all(12),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ExcludeSemantics(
+                child: Text(message, style: theme.textTheme.bodyMedium),
               ),
+              if (offersZoom || offersWiden) ...[
+                const SizedBox(height: 8),
+                Wrap(
+                  spacing: 8,
+                  runSpacing: 8,
+                  children: [
+                    if (offersZoom)
+                      FilledButton.tonalIcon(
+                        icon: const Icon(Icons.zoom_out, size: 16),
+                        label: Text(l10n.zoomOut),
+                        // Greyed rather than hidden when it can't run: the
+                        // card's advice stays visible either way.
+                        onPressed: zoomRunnable ? onZoomOut : null,
+                      ),
+                    if (offersWiden)
+                      FilledButton.tonalIcon(
+                        icon: const Icon(Icons.filter_alt_off, size: 16),
+                        label: Text(l10n.widenSearch),
+                        onPressed: onWidenSearch,
+                      ),
+                  ],
+                ),
+              ],
             ],
-          ],
+          ),
         ),
       ),
     );

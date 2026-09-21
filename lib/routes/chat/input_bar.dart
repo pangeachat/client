@@ -18,6 +18,7 @@ import 'package:fluffychat/routes/chat/choreographer/text_editing/pangea_text_co
 import 'package:fluffychat/routes/chat/composer_keyboard_context.dart';
 import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
 import 'package:fluffychat/utils/markdown_context_builder.dart';
+import 'package:fluffychat/utils/text_editing_value_caret_extension.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
 import '../../widgets/avatar.dart';
 import '../../widgets/matrix.dart';
@@ -69,11 +70,10 @@ class InputBar extends StatelessWidget {
   });
 
   List<Map<String, String?>> getSuggestions(TextEditingValue text) {
-    if (text.selection.baseOffset != text.selection.extentOffset ||
-        text.selection.baseOffset < 0) {
-      return []; // no entries if there is selected text
+    if (!text.canSplitAtCaret) {
+      return []; // no word to match against without a single caret
     }
-    final searchText = text.text.substring(0, text.selection.baseOffset);
+    final searchText = text.textBeforeCaret;
     final ret = <Map<String, String?>>[];
     const maxResults = 30;
 
@@ -342,14 +342,15 @@ class InputBar extends StatelessWidget {
   }
 
   String insertSuggestion(Map<String, String?> suggestion) {
-    final replaceText = controller!.text.substring(
-      0,
-      controller!.selection.baseOffset,
-    );
+    final value = controller!.value;
+    if (!value.canSplitAtCaret) {
+      // RawAutocomplete asks for an option's display string whether or not
+      // getSuggestions found any, so this runs with no caret to insert at.
+      return value.text;
+    }
+    final replaceText = value.textBeforeCaret;
     var startText = '';
-    final afterText = replaceText == controller!.text
-        ? ''
-        : controller!.text.substring(controller!.selection.baseOffset + 1);
+    final afterText = value.textAfterCaret;
     var insertText = '';
     if (suggestion['type'] == 'command') {
       insertText = '${suggestion['name']!} ';

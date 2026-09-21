@@ -807,4 +807,65 @@ void main() {
       expect(sink.langCode, 'es');
     });
   });
+
+  group('a chunk the recorder set aside for another device', () {
+    test('is counted, and counted as CAPTURED', () async {
+      // It was captured, exactly as a suppressed chunk was. Leaving it out of
+      // the denominator is how `chunks_captured` -- the one number that says
+      // "this much audio existed" -- came to forget the audio nobody saw.
+      final s = sink();
+      s.discarded(chunk(0));
+
+      expect(s.chunksDiscarded, 1);
+      expect(s.chunksCaptured, 1);
+    });
+
+    test('is not a loss, and not a suppression', () async {
+      // A correct discard loses nothing: the words are in the sibling's half.
+      // Calling it lost would mark a transcript incomplete over speech that is
+      // present one event away; calling it suppressed would report our own
+      // speech detector's verdict on audio it never looked at.
+      final s = sink();
+      s.discarded(chunk(0));
+
+      expect(s.chunksLost, 0);
+      expect(s.chunksSuppressed, 0);
+      expect(s.chunksTranscribed, 0);
+      expect(s.segments, isEmpty);
+    });
+
+    test('does not reach the provider', () async {
+      final s = sink();
+      s.discarded(chunk(0));
+
+      expect(sent, isEmpty);
+    });
+
+    test('counts once however often it is reported', () async {
+      // By index, like every other set here, so a redelivery of the news
+      // cannot inflate what a half claims to have captured.
+      final s = sink();
+      s.discarded(chunk(0));
+      s.discarded(chunk(0));
+
+      expect(s.chunksDiscarded, 1);
+      expect(s.chunksCaptured, 1);
+    });
+
+    test(
+      'sits beside the chunks that were sent, not instead of them',
+      () async {
+        // The shape a real handover makes: this device sent what it had and
+        // deferred the tail. Both have to show, or the accounting says one
+        // number about two different things.
+        final s = sink(respond: (_) => spoken);
+        await s.deliver(chunk(0));
+        s.discarded(chunk(1));
+
+        expect(s.chunksCaptured, 2);
+        expect(s.chunksTranscribed, 1);
+        expect(s.chunksDiscarded, 1);
+      },
+    );
+  });
 }

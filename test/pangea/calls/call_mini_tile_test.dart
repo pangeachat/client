@@ -40,13 +40,26 @@ class _StubMedia extends CallMedia {
 }
 
 class _NullSink implements CallAudioSink {
+  /// Chunks the recorder set aside because a sibling device was recording the
+  /// same stretch. Kept rather than dropped, because dropping them is the very
+  /// loss [CallAudioSink.discarded] exists to close: a sink that forgets a
+  /// discard leaves the chunk in no count at all, and nothing downstream can
+  /// then tell a correct discard from a wrong one. A fake that answered `{}`
+  /// would be modelling the bug rather than the sink.
+  final List<PcmChunk> discardedChunks = [];
+
   @override
   Future<void> deliver(PcmChunk chunk, {Duration? within}) async {}
+
+  @override
+  void discarded(PcmChunk chunk) => discardedChunks.add(chunk);
 
   @override
   // True: a sink holding nothing has nothing outstanding, so everything it was
   // given did settle. Returning false here would tell the one caller that
   // publishes a transcript that this half is knowingly short of what was said.
+  // Discards do not change that: they were set aside on purpose, so they are
+  // not outstanding work.
   Future<bool> close() async => true;
 }
 
@@ -170,6 +183,53 @@ void main() {
       ui.SemanticsHitTestBehavior.opaque,
       reason: 'without this the call screen can be clicked through on web',
     );
+    handle.dispose();
+  });
+
+  // Fullscreen puts the panel ABOVE the router: the global call tile renders
+  // it from MaterialApp's builder, where nothing has an Overlay ancestor. A
+  // Tooltip is an OverlayPortal, so `IconButton(tooltip:)` up there threw on
+  // every rebuild and the minimize / exit-fullscreen buttons rendered as error
+  // boxes (#8779). Every earlier test pumped the panel under a Scaffold, which
+  // has an Overlay, and never saw it.
+  testWidgets('the expanded panel renders above the router with no Overlay', (
+    tester,
+  ) async {
+    final handle = tester.ensureSemantics();
+    await tester.pumpWidget(
+      MaterialApp(
+        locale: const Locale('en'),
+        localizationsDelegates: L10n.localizationsDelegates,
+        supportedLocales: L10n.supportedLocales,
+        builder: (context, child) => Stack(
+          children: [
+            child ?? const SizedBox.shrink(),
+            Positioned.fill(child: CallPanel(session: session)),
+          ],
+        ),
+        home: const Scaffold(body: SizedBox.shrink()),
+      ),
+    );
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 50));
+
+    expect(
+      tester.takeException(),
+      isNull,
+      reason: 'anything that needs an Overlay takes the panel controls down',
+    );
+    expect(
+      find.descendant(
+        of: find.byType(CallPanel),
+        matching: find.byType(Tooltip),
+      ),
+      findsNothing,
+      reason: 'a Tooltip has no Overlay to render into up here',
+    );
+    // Dropping the Tooltip must not drop the name a screen reader hears.
+    final l10n = L10n.of(tester.element(find.byType(CallPanel)));
+    expect(find.bySemanticsLabel(l10n.callMinimize), findsOneWidget);
+    expect(find.bySemanticsLabel(l10n.callFullscreen), findsOneWidget);
     handle.dispose();
   });
 }

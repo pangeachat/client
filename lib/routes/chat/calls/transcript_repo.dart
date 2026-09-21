@@ -131,6 +131,10 @@ Future<CallTranscript> fetchCallTranscript({
       candidates.add(
         TranscriptCandidate(
           senderId: event.senderId,
+          // The event's SENDER is the account and the content's device id is
+          // the recorder, and assembly needs both: two of one learner's devices
+          // in one call send two events with the same sender.
+          deviceId: content.deviceId,
           originServerTs: event.originServerTs.millisecondsSinceEpoch,
           segments: content.segments,
           accounting: content.accounting,
@@ -141,6 +145,11 @@ Future<CallTranscript> fetchCallTranscript({
           // the writing device's own measurement against the SFU.
           clockAnchor: content.clockAnchor,
           positionsMarked: content.positionsMarked,
+          // What this device says it holds, and what it says it handed over.
+          // Carried through untouched, like the anchor above: assembly is the
+          // only place that can compare one device's statement with another's.
+          keptSpans: content.keptSpans,
+          discardedSpans: content.discardedSpans,
         ),
       );
     }
@@ -162,9 +171,14 @@ Future<CallTranscript> fetchCallTranscript({
     candidates: candidates,
     expectedSenders: expectedSenders,
     participantsKnown: participantsKnown,
-    // An encrypted room is never an exhausted read, whatever the server said
-    // about paging: we reached the end of a list we could not read.
-    exhausted: exhausted && !encrypted,
+    // An encrypted room is never a read this reader may conclude from,
+    // whatever the server said about paging: we reached the end of a list we
+    // could not read. It travels as ITSELF and is no longer folded into
+    // `exhausted`, which is what made it indistinguishable downstream from our
+    // own page ceiling -- so the screen offered "too much to read in one go"
+    // for a room it simply could not decrypt.
+    exhausted: exhausted,
+    encrypted: encrypted,
     unreadableSenders: unreadable,
   );
 
@@ -207,7 +221,19 @@ Future<CallTranscript> fetchCallTranscript({
       // needs to know how many of them were only bounded to a chunk, and
       // whether the writer said which were not.
       'positionsMarked ${half.positionsMarked}, '
-      'approximate ${half.approximatePositions})',
+      'approximate ${half.approximatePositions}, '
+      // Unconditional, for the same reason as the two above and one more
+      // besides. `issue` reports ONE cause and this one deliberately sits below
+      // every writer failure, so any of those would hide it -- and this is the
+      // count that makes duplicate credit countable at all. Two devices that
+      // both recorded and both wrote are two devices that both claimed the same
+      // speech; nothing in the client stops that being credited twice, and a
+      // number here is what turns "it might be happening" into a figure.
+      //
+      // A COUNT and never the device ids. Every log in this feature keeps
+      // participant identity out, and the call key already distinguishes the
+      // halves of one call, which is all the diagnosis needs.
+      'devices ${half.deviceCount})',
     );
   }
 

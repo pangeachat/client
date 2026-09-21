@@ -69,8 +69,12 @@ class PangeaCallCapturePlugin :
    * between the first batch and the sink arriving. The opening of the call
    * lands here instead of being dropped, and [onListen] hands it over in
    * order. Main-thread only, like everything else that touches [events].
+   *
+   * The third value is the audio dropped immediately before that batch, which
+   * has to travel WITH it: it says where the gap was, not merely that one
+   * happened, and the batch is the only thing that carries a position.
    */
-  private val pendingForListener = ArrayDeque<Pair<ByteArray, Int>>()
+  private val pendingForListener = ArrayDeque<Triple<ByteArray, Int, Int>>()
 
   private val handler = Handler(Looper.getMainLooper())
   private val frames = PostEchoCancellationFrames(::deliver)
@@ -203,8 +207,10 @@ class PangeaCallCapturePlugin :
     events = sink
     if (sink == null) return
     while (pendingForListener.isNotEmpty()) {
-      val (pcm, rate) = pendingForListener.removeFirst()
-      sink.success(mapOf("pcm" to pcm, "sampleRate" to rate))
+      val (pcm, rate, droppedMs) = pendingForListener.removeFirst()
+      sink.success(
+        mapOf("pcm" to pcm, "sampleRate" to rate, "droppedMs" to droppedMs),
+      )
       frames.handedOn(pcm)
     }
   }
@@ -313,17 +319,23 @@ class PangeaCallCapturePlugin :
    * intermediate thread would need its own wakeup — a lock by another name.
    * It happens once per batch, ten times a second, not per frame.
    */
-  private fun deliver(pcm: ByteArray, sampleRateHz: Int) {
+  private fun deliver(pcm: ByteArray, sampleRateHz: Int, droppedMs: Int) {
     handler.post {
       val sink = events
       if (sink == null) {
         // Held for the listener that is on its way, not dropped: the buffer is
         // NOT handed back while it waits, so the spare set's own bound caps
         // how much can ever sit here.
-        pendingForListener.addLast(pcm to sampleRateHz)
+        pendingForListener.addLast(Triple(pcm, sampleRateHz, droppedMs))
         return@post
       }
-      sink.success(mapOf("pcm" to pcm, "sampleRate" to sampleRateHz))
+      sink.success(
+        mapOf(
+          "pcm" to pcm,
+          "sampleRate" to sampleRateHz,
+          "droppedMs" to droppedMs,
+        ),
+      )
       // Returned only once it has actually gone. The channel copies the bytes as
       // it sends them, so the buffer is free to be filled again from here.
       frames.handedOn(pcm)
@@ -339,7 +351,7 @@ class PangeaCallCapturePlugin :
  * order, ten milliseconds at a time.
  */
 internal class PostEchoCancellationFrames(
-  private val emit: (ByteArray, Int) -> Unit,
+  private val emit: (ByteArray, Int, Int) -> Unit,
 ) : AudioProcessingAdapter.ExternalAudioFrameProcessing {
 
   private companion object {
@@ -389,6 +401,26 @@ internal class PostEchoCancellationFrames(
   private var filled: Int = 0
   private var batchRateHz: Int = 0
   private var dropped: Long = 0
+
+  /**
+   * Audio dropped since the last batch actually handed on, in milliseconds.
+   *
+   * Carried out WITH the next batch rather than counted only here, because the
+   * count alone says how much went and not when. Every position downstream is
+   * derived from a running frame count, so a gap that arrives without a place
+   * in the stream cannot be told from one at the other end of the call — and a
+   * gap in the wrong place moves the words after it rather than marking them.
+   *
+   * Reset at each hand-off, so what travels is the run of drops immediately
+   * before that batch. A drop that is never followed by a hand-off — the tap
+   * detaching inside the ten milliseconds between a full batch going out and
+   * the next sample arriving — is not reported at all; every other one is
+   * carried by the tail [finish] hands over.
+   *
+   * Capture thread only, like [dropped] and [filled]: written in [flush] and
+   * read by the same call that hands a batch on.
+   */
+  private var droppedMs: Int = 0
 
   /**
    * Spare buffers to fill while earlier ones are on their way out.
@@ -521,6 +553,13 @@ internal class PostEchoCancellationFrames(
         // Nothing free means everything handed over is still in flight. Keep
         // filling the buffer we have rather than queue without limit.
         dropped++
+        // Exactly what [out] holds, measured at the rate it was captured at:
+        // this branch is only reached for a FULL batch, so its length is the
+        // whole of what is being let go. Accumulated rather than logged alone,
+        // because the Dart side derives every later position from a frame
+        // count — and a frame count that skipped frames stops measuring time
+        // unless it is told how much it skipped.
+        droppedMs += out.size / 2 * 1000 / batchRateHz
         if (dropped % 10 == 1L) {
           Log.w(TAG, "Dropped a stretch of call audio; $dropped so far")
         }
@@ -528,7 +567,8 @@ internal class PostEchoCancellationFrames(
       }
       batch = spare
     }
-    emit(out, batchRateHz)
+    emit(out, batchRateHz, droppedMs)
+    droppedMs = 0
   }
 
   /** Called once a batch has been delivered, returning it to be filled again. */
@@ -552,9 +592,10 @@ internal class PostEchoCancellationFrames(
     // to carry on filling and drops the audio when there is none; nothing
     // carries on from here, so the end of a call is never the part that is lost.
     if (filled > 0 && batchRateHz > 0) {
-      emit(batch.copyOf(filled), batchRateHz)
+      emit(batch.copyOf(filled), batchRateHz, droppedMs)
     }
     filled = 0
+    droppedMs = 0
     batchRateHz = 0
     sampleRateHz = 0
     batchBytes = 0

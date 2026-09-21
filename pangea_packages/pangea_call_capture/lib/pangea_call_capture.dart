@@ -12,7 +12,30 @@ class CallAudioFrame {
   final Uint8List pcm16;
   final int sampleRate;
 
-  const CallAudioFrame({required this.pcm16, required this.sampleRate});
+  /// How much audio the platform discarded in the run of dropped batches
+  /// immediately before this frame, in milliseconds.
+  ///
+  /// The platform holds a bounded set of spare buffers and drops a batch
+  /// rather than queue without limit when every one of them is still in
+  /// flight. That audio never arrives, so nothing downstream can see it by
+  /// looking at what did — and everything downstream measures position by
+  /// counting the frames it received, which is a measure of TIME only while no
+  /// frame is missing.
+  ///
+  /// It travels ON the frame rather than as a total, because where the gap is
+  /// matters as much as how long it was: it sits between the previous frame
+  /// and this one.
+  ///
+  /// Zero when the platform does not report it, which is what an older
+  /// platform side of this package does. That is the reading this class made
+  /// before the field existed, so nothing is claimed on a platform's behalf.
+  final int droppedMs;
+
+  const CallAudioFrame({
+    required this.pcm16,
+    required this.sampleRate,
+    this.droppedMs = 0,
+  });
 }
 
 /// Reads this device's own outbound call audio after echo cancellation.
@@ -84,6 +107,10 @@ class PangeaCallCapture {
               CallAudioFrame(
                 pcm16: map['pcm'] as Uint8List,
                 sampleRate: map['sampleRate'] as int,
+                // Read tolerantly, unlike the two above: those are the frame
+                // itself and a frame we cannot interpret is not a frame, while
+                // this is an additional statement a platform may not make.
+                droppedMs: map['droppedMs'] is int ? map['droppedMs'] as int : 0,
               ),
             );
           },

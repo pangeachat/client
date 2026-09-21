@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/routes/world/world_map_filter.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
@@ -194,7 +195,15 @@ class _FilterMenuEntry {
 /// fills the pill light-purple with a leading check; otherwise it is a plain
 /// white "All …" pill. [icon] is an optional category glyph shown on the pill
 /// when active (the party-size people icon).
-class _FilterDropdownPill extends StatelessWidget {
+///
+/// Built on [MenuAnchor] + [MenuItemButton] rather than PopupMenuButton
+/// (#8724 review): the popup-menu route opened without moving focus into the
+/// menu, leaving a keyboard or VoiceOver user no visible way to reach its
+/// items or close it. Here the first item takes focus the moment the menu
+/// opens, arrows rove the items, Enter selects, and Escape closes with focus
+/// returned to the pill. The pill itself is a [FocusRingTapTarget], which
+/// also gives it the gold focus ring PopupMenuButton's opaque child swallowed.
+class _FilterDropdownPill extends StatefulWidget {
   final String label;
   final Widget? icon;
   final bool active;
@@ -208,71 +217,111 @@ class _FilterDropdownPill extends StatelessWidget {
   });
 
   @override
+  State<_FilterDropdownPill> createState() => _FilterDropdownPillState();
+}
+
+class _FilterDropdownPillState extends State<_FilterDropdownPill> {
+  final MenuController _menuController = MenuController();
+
+  /// The pill's focus node, handed to [MenuAnchor.childFocusNode] so closing
+  /// the menu (Escape, or selecting an item) returns focus to the pill.
+  final FocusNode _buttonFocusNode = FocusNode(debugLabel: 'FilterPill');
+
+  @override
+  void dispose() {
+    _buttonFocusNode.dispose();
+    super.dispose();
+  }
+
+  void _toggleMenu() {
+    if (_menuController.isOpen) {
+      _menuController.close();
+    } else {
+      _menuController.open();
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final scheme = theme.colorScheme;
-    final bg = active ? scheme.primaryContainer : scheme.surface;
-    final fg = active ? scheme.onPrimaryContainer : scheme.onSurfaceVariant;
+    final bg = widget.active ? scheme.primaryContainer : scheme.surface;
+    final fg = widget.active
+        ? scheme.onPrimaryContainer
+        : scheme.onSurfaceVariant;
 
-    return PopupMenuButton<_FilterMenuEntry>(
-      position: PopupMenuPosition.under,
-      onSelected: (e) => e.onSelected(),
-      itemBuilder: (context) => [
-        for (final e in entries)
-          PopupMenuItem<_FilterMenuEntry>(
-            value: e,
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 22,
-                  child: e.selected
-                      ? Icon(Icons.check, size: 18, color: scheme.primary)
-                      : null,
-                ),
-                if (e.icon != null) ...[
-                  Icon(e.icon, size: 18, color: scheme.onSurfaceVariant),
-                  const SizedBox(width: 8),
+    return MenuAnchor(
+      controller: _menuController,
+      childFocusNode: _buttonFocusNode,
+      menuChildren: [
+        for (final e in widget.entries)
+          MenuItemButton(
+            // Focus lands on the first item as the menu opens, so a keyboard
+            // or screen-reader user is IN the menu immediately — arrows move,
+            // Enter selects, Escape closes (#8724 review).
+            autofocus: e == widget.entries.first,
+            onPressed: e.onSelected,
+            child: ConstrainedBox(
+              // Bound the row so a label longer than the old popup-menu's max
+              // width (the ACTFL level titles, long translations) wraps
+              // instead of stretching the menu.
+              constraints: const BoxConstraints(maxWidth: 260),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SizedBox(
+                    width: 22,
+                    child: e.selected
+                        ? Icon(Icons.check, size: 18, color: scheme.primary)
+                        : null,
+                  ),
+                  if (e.icon != null) ...[
+                    Icon(e.icon, size: 18, color: scheme.onSurfaceVariant),
+                    const SizedBox(width: 8),
+                  ],
+                  Flexible(child: Text(e.label)),
                 ],
-                // Flexible so a label longer than the menu's max width (the
-                // ACTFL level titles, long translations) wraps instead of
-                // overflowing the row.
-                Flexible(child: Text(e.label)),
-              ],
+              ),
             ),
           ),
       ],
-      child: Container(
-        decoration: BoxDecoration(
-          color: bg,
-          borderRadius: BorderRadius.circular(99),
-          border: Border.all(
-            color: active ? Colors.transparent : scheme.outlineVariant,
-          ),
-        ),
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            if (active) ...[
-              Icon(Icons.check, size: 16, color: fg),
-              const SizedBox(width: 4),
-            ],
-            if (icon != null) ...[
-              IconTheme.merge(
-                data: IconThemeData(size: 16, color: fg),
-                child: icon!,
-              ),
-              const SizedBox(width: 4),
-            ],
-            Text(
-              label,
-              style: theme.textTheme.labelLarge?.copyWith(
-                color: fg,
-                fontWeight: FontWeight.w600,
-              ),
+      builder: (context, controller, child) => FocusRingTapTarget(
+        onTap: _toggleMenu,
+        focusNode: _buttonFocusNode,
+        shape: const StadiumBorder(),
+        child: Container(
+          decoration: BoxDecoration(
+            color: bg,
+            borderRadius: BorderRadius.circular(99),
+            border: Border.all(
+              color: widget.active ? Colors.transparent : scheme.outlineVariant,
             ),
-            Icon(Icons.arrow_drop_down, size: 18, color: fg),
-          ],
+          ),
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (widget.active) ...[
+                Icon(Icons.check, size: 16, color: fg),
+                const SizedBox(width: 4),
+              ],
+              if (widget.icon != null) ...[
+                IconTheme.merge(
+                  data: IconThemeData(size: 16, color: fg),
+                  child: widget.icon!,
+                ),
+                const SizedBox(width: 4),
+              ],
+              Text(
+                widget.label,
+                style: theme.textTheme.labelLarge?.copyWith(
+                  color: fg,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              Icon(Icons.arrow_drop_down, size: 18, color: fg),
+            ],
+          ),
         ),
       ),
     );

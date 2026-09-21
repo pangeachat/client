@@ -13,7 +13,9 @@ import 'package:fluffychat/routes/chat/calls/call_timeline_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_event.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_repo.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_view.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_writer.dart';
 import 'package:fluffychat/routes/chat/calls/turn_timeline.dart';
 import '../get_test_client.dart';
 
@@ -129,6 +131,10 @@ void main() {
     /// Chunks the writing device's own speech detector held back. Zero in every
     /// fixture that is not about them, which is the ordinary case.
     int suppressed = 0,
+
+    /// Chunks handed to another of this account's devices. Zero in every
+    /// fixture that is not about a handover, which is the ordinary case.
+    int discarded = 0,
     bool drainComplete = true,
     bool declared = true,
 
@@ -171,9 +177,25 @@ void main() {
     /// bug -- they were fixtures that had silently become foreign clients, and
     /// a foreign client's times are deliberately not printed.
     bool positionsMarked = true,
+
+    /// The writing device never opened a microphone. False in every fixture
+    /// that is not about it, which is the ordinary case.
+    bool captureRefused = false,
+
+    /// Which of the sender's devices wrote this half. Null in every fixture
+    /// that is not about two devices, which is both the ordinary case and the
+    /// shape of every half written before the field existed.
+    String? deviceId,
+
+    /// The stretches this device says it kept, and the ones it says it handed
+    /// to a sibling. Empty in every fixture that is not about a handover, which
+    /// is both the ordinary case and the shape of every half written before the
+    /// fields existed.
+    List<CaptureSpan> keptSpans = const [],
+    List<CaptureSpan> discardedSpans = const [],
   }) => MatrixEvent(
     type: CallTranscriptContent.relType,
-    eventId: '\$half-$sender',
+    eventId: '\$half-$sender-${deviceId ?? ''}',
     senderId: sender,
     originServerTs: DateTime.fromMillisecondsSinceEpoch(1000),
     content: {
@@ -186,7 +208,12 @@ void main() {
             if (spanMs?[i] != null) 'at_span_ms': spanMs![i],
           },
       ],
+      'device_id': ?deviceId,
       if (positionsMarked) 'positions_marked': true,
+      if (keptSpans.isNotEmpty)
+        'kept_spans': [for (final span in keptSpans) span.toJson()],
+      if (discardedSpans.isNotEmpty)
+        'discarded_spans': [for (final span in discardedSpans) span.toJson()],
       // From the writer's own serialiser, so a fixture cannot drift out of the
       // declaration contract when a field is added to it.
       if (declared)
@@ -195,12 +222,60 @@ void main() {
           chunksTranscribed: transcribed,
           chunksLost: lost,
           chunksSuppressed: suppressed,
-          captureRefused: false,
+          chunksDiscarded: discarded,
+          captureRefused: captureRefused,
           drainComplete: drainComplete,
         ).toJson(),
       ...?anchor?.toJson(),
     },
   );
+
+  /// A half OUR OWN writer packed down to nothing.
+  ///
+  /// Written by the real writer rather than hand-rolled, because the shape only
+  /// exists when one segment's text alone will not fit the budget: the binary
+  /// search then converges on zero, and the half ships marked truncated, with
+  /// every segment omitted and no words. A hand-written accounting could assert
+  /// that combination whether or not the packer can ever reach it.
+  Future<MatrixEvent> packedToNothing(String sender) async {
+    Map<String, dynamic>? written;
+    final wrote = await writeCallTranscript(
+      send: (content, _) async {
+        written = content;
+      },
+      callKey: _callKey,
+      senderId: sender,
+      // No device, so the event this builds is byte-for-byte the shape every
+      // other fixture here uses and the packing assertion turns on nothing
+      // else.
+      deviceId: null,
+      segments: [TranscriptSegment('a' * 2000)],
+      chunksCaptured: 1,
+      chunksTranscribed: 1,
+      chunksLost: 0,
+      chunksSuppressed: 0,
+      chunksDiscarded: 0,
+      keptSpans: const [],
+      discardedSpans: const [],
+      captureDroppedMs: 0,
+      captureRefused: false,
+      drainComplete: true,
+      maxBytes: 600,
+    );
+
+    expect(
+      wrote,
+      isTrue,
+      reason: 'the envelope alone fits, so the empty half IS sent',
+    );
+    return MatrixEvent(
+      type: CallTranscriptContent.relType,
+      eventId: '\$packed-$sender',
+      senderId: sender,
+      originServerTs: DateTime.fromMillisecondsSinceEpoch(1000),
+      content: written!,
+    );
+  }
 
   /// A fetcher serving one page and then saying it is exhausted.
   RelationsFetcher serving(List<MatrixEvent> events) =>
@@ -709,9 +784,18 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(
-        find.textContaining('not shown'),
+        find.textContaining('not known who else was on this call'),
         findsOneWidget,
-        reason: 'the screen admits it could not read all of this call',
+        reason:
+            'the screen admits it could not read all of this call, and says '
+            'which of the three reasons it was',
+      );
+      expect(
+        find.textContaining('too much to read'),
+        findsNothing,
+        reason:
+            'the peer is unknown, not the call too long -- a specific wrong '
+            'cause is worse than no cause at all',
       );
       expect(find.textContaining('No transcript from'), findsNothing);
       expect(find.textContaining('did not say anything'), findsNothing);
@@ -740,6 +824,19 @@ void main() {
       expect(find.textContaining('No transcript from'), findsNothing);
       expect(find.textContaining('did not say anything'), findsNothing);
       expect(find.textContaining('Nothing could be read'), findsWidgets);
+      expect(
+        find.textContaining('could not be unlocked'),
+        findsOneWidget,
+        reason: 'the caveat names encryption, which is the actual cause',
+      );
+      expect(
+        find.textContaining('too much to read'),
+        findsNothing,
+        reason:
+            'this call was not too long; every event came back sealed, and '
+            'saying otherwise sends the reader after a length problem that '
+            'does not exist',
+      );
     });
 
     testWidgets('a speaker who wrote NO half is not reported as silent', (
@@ -800,6 +897,214 @@ void main() {
       // And the cause it does name is ours, not a half we failed to read.
       expect(find.textContaining('sent to be transcribed'), findsOneWidget);
       expect(find.textContaining('Nothing could be read'), findsNothing);
+    });
+
+    testWidgets('a microphone that never opened is not a read failure', (
+      tester,
+    ) async {
+      // The writing device refused capture, so there was never any audio. That
+      // is a fact about THEIR device, and until this branch existed it read as
+      // "nothing could be read", which points whoever chases it at the reader.
+      await pump(
+        tester,
+        serving([
+          half(
+            _me,
+            texts: const [],
+            captured: 0,
+            transcribed: 0,
+            captureRefused: true,
+          ),
+          half(_peer, texts: const ['muy bien']),
+        ]),
+      );
+
+      expect(find.textContaining('never opened a microphone'), findsOneWidget);
+      expect(find.textContaining('Nothing could be read'), findsNothing);
+      expect(find.textContaining('did not say anything'), findsNothing);
+    });
+
+    testWidgets('audio captured and then lost is not a read failure', (
+      tester,
+    ) async {
+      // Recorded, then lost before a transcriber saw it. Ours again, and a
+      // different sentence from the microphone case because a different device
+      // problem is worth chasing.
+      await pump(
+        tester,
+        serving([
+          half(_me, texts: const [], captured: 3, transcribed: 0, lost: 3),
+          half(_peer, texts: const ['muy bien']),
+        ]),
+      );
+
+      expect(find.textContaining('lost before it could be'), findsOneWidget);
+      expect(find.textContaining('Nothing could be read'), findsNothing);
+      expect(find.textContaining('did not say anything'), findsNothing);
+    });
+
+    testWidgets('a half OUR packer emptied is not blamed on reading', (
+      tester,
+    ) async {
+      // One segment whose text alone will not fit, so the packer drops every
+      // segment and the half goes out empty and marked truncated. The words
+      // existed and were packed out on the WRITING device; the read that
+      // followed worked perfectly. Saying nothing could be read from them
+      // blames the reader and sends anyone chasing it to the wrong device.
+      await pump(tester, serving([await packedToNothing(_me), half(_peer)]));
+
+      expect(find.textContaining('too long to save'), findsOneWidget);
+      expect(find.textContaining('Nothing could be read'), findsNothing);
+      expect(find.textContaining('did not say anything'), findsNothing);
+      expect(find.textContaining('No transcript from'), findsNothing);
+    });
+
+    testWidgets('the same half is not blamed on reading UNDER the timeline '
+        'either', (tester) async {
+      // The other shape of this screen, which asked the same question through
+      // its own copy of the ladder. A copy is a place a cause gets added to one
+      // site and not the other, which is exactly how this one survived.
+      await pump(
+        tester,
+        serving([
+          await packedToNothing(_me),
+          half(_peer, texts: ['muy bien'], atMs: [_callStart]),
+        ]),
+      );
+
+      expect(find.byType(TurnTimeline), findsOneWidget);
+      expect(find.textContaining('too long to save'), findsOneWidget);
+      expect(find.textContaining('Nothing could be read'), findsNothing);
+    });
+
+    testWidgets('an empty half OUR reader shortened is still a reading '
+        'failure', (tester) async {
+      // The half is empty and its accounting is marked truncated -- by US,
+      // because a second event from the same sender would not parse. Reading
+      // `truncated` off the accounting would call that "too long to save" and
+      // hand the writer the blame for our own trim. The cause is asked of
+      // `issue`, which ranks our failures ahead of the writer's admissions.
+      await pump(
+        tester,
+        serving([
+          half(_me, texts: const [], captured: 0, transcribed: 0),
+          MatrixEvent(
+            type: 'm.room.message',
+            eventId: r'$not-a-transcript',
+            senderId: _me,
+            originServerTs: DateTime.fromMillisecondsSinceEpoch(2000),
+            content: const {'body': 'no soy una transcripcion'},
+          ),
+          half(_peer),
+        ]),
+      );
+
+      expect(find.textContaining('Nothing could be read'), findsOneWidget);
+      expect(find.textContaining('too long to save'), findsNothing);
+    });
+
+    testWidgets('a handover whose sibling never wrote SAYS it is short', (
+      tester,
+    ) async {
+      // The scenario end to end, on the screen. One device transcribed its
+      // early chunks and discarded its stop-tail believing a sibling held that
+      // stretch; the sibling crashed and published nothing. The words that did
+      // arrive are shown -- and until this, so was nothing else: the half read
+      // as a clean, complete record, with no note at all, over a stretch that
+      // exists in no transcript anywhere.
+      await pump(
+        tester,
+        serving([
+          half(
+            _me,
+            texts: const ['hola que tal'],
+            captured: 3,
+            transcribed: 2,
+            discarded: 1,
+            deviceId: 'PHONE',
+          ),
+          half(_peer, texts: const ['muy bien']),
+        ]),
+      );
+
+      expect(find.textContaining('hola que tal'), findsOneWidget);
+      expect(find.textContaining('may be missing'), findsOneWidget);
+    });
+
+    testWidgets('and a handover whose sibling HELD the stretch says nothing of '
+        'the kind', (tester) async {
+      // The other wrong answer. Two devices, one defers its tail to the other,
+      // and the transcript is whole -- telling a learner part of it may be
+      // missing on every ordinary two-device call would make the note mean
+      // nothing by the time it mattered.
+      await pump(
+        tester,
+        serving([
+          half(
+            _me,
+            texts: const ['hola que tal'],
+            captured: 3,
+            transcribed: 2,
+            discarded: 1,
+            deviceId: 'PHONE',
+            discardedSpans: const [
+              CaptureSpan(fromMs: _callStart, toMs: _callStart + 4000),
+            ],
+          ),
+          half(
+            _me,
+            texts: const ['y despues'],
+            // Placed INSIDE the handed-over stretch: coverage now needs a
+            // transcribed segment there, not just a kept span, since a kept
+            // span the sibling's detector suppressed holds no words.
+            atMs: const [_callStart + 2000],
+            deviceId: 'LAPTOP',
+            keptSpans: const [
+              CaptureSpan(fromMs: _callStart - 1000, toMs: _callStart + 20000),
+            ],
+          ),
+          half(_peer, texts: const ['muy bien']),
+        ]),
+      );
+
+      expect(find.textContaining('may be missing'), findsNothing);
+    });
+
+    testWidgets('but a sibling that wrote WITHOUT holding it still says so', (
+      tester,
+    ) async {
+      // The finding, on the screen. The same two devices, and the second one's
+      // half is impeccable -- it just recorded a different part of the call. A
+      // head-count of devices cleared the discard here and the learner was
+      // shown a clean transcript over a stretch nothing holds.
+      await pump(
+        tester,
+        serving([
+          half(
+            _me,
+            texts: const ['hola que tal'],
+            captured: 3,
+            transcribed: 2,
+            discarded: 1,
+            deviceId: 'PHONE',
+            discardedSpans: const [
+              CaptureSpan(fromMs: _callStart, toMs: _callStart + 4000),
+            ],
+          ),
+          half(
+            _me,
+            texts: const ['y despues'],
+            deviceId: 'LAPTOP',
+            keptSpans: const [
+              CaptureSpan(fromMs: _callStart + 30000, toMs: _callStart + 60000),
+            ],
+          ),
+          half(_peer, texts: const ['muy bien']),
+        ]),
+      );
+
+      expect(find.textContaining('hola que tal'), findsOneWidget);
+      expect(find.textContaining('may be missing'), findsOneWidget);
     });
 
     testWidgets('a silent speaker whose audio we DID send still reads as '
@@ -915,7 +1220,12 @@ void main() {
       ];
       await pump(tester, serving(events));
 
-      expect(find.textContaining('not shown'), findsOneWidget);
+      // The one case where the length sentence is the TRUE one: this room is
+      // not encrypted and its peer is known, so our own ceiling is the only
+      // reason anything is missing.
+      expect(find.textContaining('too much to read'), findsOneWidget);
+      expect(find.textContaining('could not be unlocked'), findsNothing);
+      expect(find.textContaining('not known who else'), findsNothing);
       expect(find.textContaining('No transcript from'), findsNothing);
     });
   });
@@ -963,6 +1273,91 @@ void main() {
       // twenty-five the two clocks' disagreement made of it.
       expect(find.text('0:00'), findsOneWidget);
       expect(find.text('0:05'), findsOneWidget);
+    });
+
+    testWidgets('a learner two devices read as ONE side of the conversation', (
+      tester,
+    ) async {
+      // The whole change, end to end and on screen. The learner answered on a
+      // phone and a laptop, both recorded, and each wrote its own half. Keyed
+      // by the account alone one of those two halves was discarded here and
+      // the survivor was drawn as the whole of what they said.
+      //
+      // The two devices' clocks disagree by forty seconds between them, so the
+      // raw stamps put the last thing said first. What orders these three
+      // turns is the anchor each device wrote at join -- the same correction
+      // that already spans two SPEAKERS, applied between one speaker's own
+      // devices.
+      await pump(
+        tester,
+        serving([
+          half(
+            _me,
+            texts: ['hola'],
+            atMs: [_callStart + 30000],
+            anchor: skewed(30000),
+            deviceId: 'PHONE',
+          ),
+          half(
+            _peer,
+            texts: ['muy bien'],
+            atMs: [_callStart + 5000],
+            anchor: skewed(0),
+          ),
+          half(
+            _me,
+            texts: ['adios'],
+            atMs: [_callStart],
+            anchor: skewed(-10000),
+            deviceId: 'LAPTOP',
+          ),
+        ]),
+      );
+
+      expect(find.byType(TurnTimeline), findsOneWidget);
+      // Neither half was dropped: both of the learner's devices are on screen.
+      expect(find.text('hola'), findsOneWidget);
+      expect(find.text('adios'), findsOneWidget);
+      // In the order they were spoken, across all three devices.
+      expect(top(tester, 'hola'), lessThan(top(tester, 'muy bien')));
+      expect(top(tester, 'muy bien'), lessThan(top(tester, 'adios')));
+      // And on the real clock: 0s, 5s, 10s. The raw stamps say 30s, 5s and 0s.
+      expect(find.text('0:00'), findsOneWidget);
+      expect(find.text('0:05'), findsOneWidget);
+      expect(find.text('0:10'), findsOneWidget);
+    });
+
+    testWidgets('the same two devices, unanchored, keep every word', (
+      tester,
+    ) async {
+      // What is lost when the clocks cannot be reconciled, kept as a fixture
+      // beside the case above. The words are all still here -- no half is
+      // discarded, which is the part that matters -- and what is withheld is
+      // the ordering claim: no time is printed, because nothing here can say
+      // which device's stamp came first.
+      await pump(
+        tester,
+        serving([
+          half(
+            _me,
+            texts: ['hola'],
+            atMs: [_callStart + 30000],
+            anchor: null,
+            deviceId: 'PHONE',
+          ),
+          half(
+            _me,
+            texts: ['adios'],
+            atMs: [_callStart],
+            anchor: null,
+            deviceId: 'LAPTOP',
+          ),
+        ]),
+      );
+
+      expect(find.text('hola'), findsOneWidget);
+      expect(find.text('adios'), findsOneWidget);
+      expect(find.text('0:00'), findsNothing);
     });
 
     testWidgets('the same halves without anchors still read in device order', (
@@ -1101,20 +1496,51 @@ void main() {
 
   group('callParticipants', () {
     test('is derived locally and cannot be influenced by room content', () {
-      expect(callParticipants(me: _me, peerId: _peer), [_peer, _me]);
+      expect(callParticipants(me: _me, peerId: _peer).ids, [_peer, _me]);
     });
 
     test('with no peer known, no claim is made about a second person', () {
       // Honest degradation: showing only our own half says nothing false
       // about anyone. Filling the gap from the card is what let a stranger in.
-      expect(callParticipants(me: _me, peerId: null), [_me]);
+      expect(callParticipants(me: _me, peerId: null).ids, [_me]);
     });
 
     test('is stable across reads, so sections do not reorder', () {
       expect(
-        callParticipants(me: _me, peerId: _peer),
-        callParticipants(me: _me, peerId: _peer),
+        callParticipants(me: _me, peerId: _peer).ids,
+        callParticipants(me: _me, peerId: _peer).ids,
       );
+    });
+
+    test('a known peer is not an answer while our own id is missing', () {
+      // The shape the guard asserted but never checked. It asked only whether
+      // the PEER was known, over a list built from the peer AND this account,
+      // so this combination reported a one-id list as authoritative -- and an
+      // authoritative list with no id of ours in it is one assembly may drop
+      // OUR OWN half against, with no section, on a read it calls complete.
+      final participants = callParticipants(me: null, peerId: _peer);
+
+      expect(participants.ids, [_peer]);
+      expect(participants.known, isFalse);
+    });
+
+    test('the list and the claim about it cannot disagree', () {
+      // Asserted mechanically over every combination rather than at the one
+      // case that was wrong. A hand-picked case is what left the other three
+      // unchecked, and this list needs BOTH ids whichever one goes missing.
+      for (final me in [_me, null]) {
+        for (final peer in [_peer, null]) {
+          final participants = callParticipants(me: me, peerId: peer);
+
+          expect(
+            participants.known,
+            participants.ids.length == 2,
+            reason:
+                'me=$me peer=$peer: the list is an answer only when both '
+                'sides of the call are in it',
+          );
+        }
+      }
     });
   });
 
@@ -1176,6 +1602,145 @@ void main() {
           roomWith({_me: 'join', _peer: 'join', '@third:example.com': 'join'}),
         ),
         isNull,
+      );
+    });
+  });
+
+  group('what an empty half is told to the learner as', () {
+    // MECHANICAL over [MissingAudio], because the defect it replaces is one
+    // of coverage rather than of logic: `audioDroppedAtCapture` and
+    // `audioHeldByAnotherDevice` were both added to [HalfIssue], both ranked in
+    // [TranscriptHalf.issue], and neither ever reached a sentence -- so a
+    // learner whose device dropped the audio at capture, or handed it to a
+    // sibling, was told their words could not be READ. Nothing had read them;
+    // nothing had been sent.
+    //
+    // Written against the enum so that a cause added to it is asserted here
+    // without anybody remembering to. The compiler already refuses a
+    // non-exhaustive [emptyHalfNote]; this is the other half of the same
+    // guarantee, that the branch somebody is forced to write is not just
+    // another way of spelling the generic answer.
+
+    late L10n l10n;
+
+    setUpAll(() async {
+      l10n = await L10n.delegate.load(const Locale('en'));
+    });
+
+    /// The half a device writes when [cause] alone emptied it.
+    TranscriptHalf emptiedBy(MissingAudio cause) {
+      final accounting = HalfAccounting(
+        chunksCaptured: 4,
+        chunksLost: cause == MissingAudio.lost ? 1 : 0,
+        captureDroppedMs: cause == MissingAudio.droppedAtCapture ? 250 : 0,
+        chunksDiscarded: cause == MissingAudio.heldForASibling ? 1 : 0,
+        chunksSuppressed: cause == MissingAudio.suppressedByUs ? 1 : 0,
+        declared: true,
+      );
+      return assembleTranscript(
+        candidates: [
+          TranscriptCandidate(
+            senderId: _peer,
+            originServerTs: 1000,
+            segments: const [],
+            accounting: accounting,
+          ),
+        ],
+        expectedSenders: [_peer],
+      ).halves.single;
+    }
+
+    test('every cause gets a sentence of its own', () {
+      final said = <MissingAudio, String>{
+        for (final cause in MissingAudio.values)
+          cause: emptyHalfNote(emptiedBy(cause), 'Ana', l10n),
+      };
+
+      for (final entry in said.entries) {
+        expect(
+          entry.value,
+          isNot(l10n.callTranscriptNothingRead('Ana')),
+          reason:
+              'a half ${entry.key} emptied never reached a reader, so telling '
+              'the learner it could not be read blames the wrong device',
+        );
+        expect(
+          entry.value,
+          isNot(l10n.callTranscriptSaidNothing('Ana')),
+          reason: '${entry.key} is our doing, never the speaker being silent',
+        );
+      }
+
+      expect(
+        said.values.toSet(),
+        hasLength(MissingAudio.values.length),
+        reason:
+            'two causes sharing a sentence sends whoever chases it to one '
+            'device for two different problems',
+      );
+    });
+
+    test('a stretch left to a device that never wrote gets its own', () {
+      // The one shape in which this cause reaches an empty half at all: the
+      // chunks that WERE sent came back with no words, so the emptiness is not
+      // what the discard explains -- and a stretch still went to a device whose
+      // half never arrived. Every other empty half that deferred anything is
+      // answered by `audioHeldByAnotherDevice` above it.
+      final half = assembleTranscript(
+        candidates: const [
+          TranscriptCandidate(
+            senderId: _peer,
+            originServerTs: 1000,
+            segments: [],
+            accounting: HalfAccounting(
+              chunksCaptured: 4,
+              chunksTranscribed: 2,
+              chunksDiscarded: 1,
+              declared: true,
+            ),
+            deviceId: 'PHONE',
+          ),
+        ],
+        expectedSenders: [_peer],
+      ).halves.single;
+
+      expect(half.issue, HalfIssue.audioLeftToADeviceThatDidNotHoldIt);
+      expect(
+        emptyHalfNote(half, 'Ana', l10n),
+        l10n.callTranscriptDeviceNeverWrote('Ana'),
+      );
+      expect(
+        emptyHalfNote(half, 'Ana', l10n),
+        isNot(l10n.callTranscriptNothingRead('Ana')),
+        reason: 'nothing reached a reader to fail at',
+      );
+      expect(
+        l10n.callTranscriptDeviceNeverWrote('Ana'),
+        isNot(l10n.callTranscriptHeldByOtherDevice('Ana')),
+        reason:
+            'a sibling that never wrote and a sibling holding the words are '
+            'different things to go and do something about',
+      );
+    });
+
+    test('a speaker we really did record and hear nothing from is silent', () {
+      // The answer none of the above may take away. Every chunk went to a
+      // provider and came back with no words.
+      final silent = assembleTranscript(
+        candidates: const [
+          TranscriptCandidate(
+            senderId: _peer,
+            originServerTs: 1000,
+            segments: [],
+            accounting: HalfAccounting(chunksCaptured: 3, declared: true),
+          ),
+        ],
+        expectedSenders: [_peer],
+      ).halves.single;
+
+      expect(
+        emptyHalfNote(silent, 'Ana', l10n),
+        l10n.callTranscriptSaidNothing('Ana'),
       );
     });
   });

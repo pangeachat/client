@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-09-01 15:39:50.274645",
+    "@@last_modified": "2026-09-02 11:48:50.457863",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9839,6 +9839,26 @@
     "callTranscriptOpen": "Irakurri transkripzioa",
     "errorRateLimited": "Une honetan asko kargatzen ari gara. Mesedez, itxaron une bat eta saiatu berriro.",
     "noPermissionToInviteUsers": "Ez duzu baimenik kideak hona gonbidatzeko.",
+    "callTranscriptRoomEncrypted": "Txat hau enkriptatuta dago eta transkripzioa ezin izan da hemen desblokeatu, beraz, esandakoa ez da erakusten.",
+    "callTranscriptParticipantsUnknown": "Ez da ezagutzen nor gehiago egon zen dei honetan, beraz, hitz egin zuen norbait falta izan daiteke transkripzio honetan.",
+    "callTranscriptTooLongToSend": "{name}k esandakoa luzeegia zen dei honekin gordetzeko, beraz, ez da ezer erakusten.",
+    "callTranscriptMicrophoneRefused": "{name} gailuak ez zuen mikrofonoa ireki dei honetarako, beraz, ez zen ezer grabatu eta ez da ezagutzen zer esan zen.",
+    "callTranscriptAudioLost": "{name}k esandakoa grabatu zen, baina galdu egin zen transkribatu aurretik, beraz, ez da ezagutzen zer esan zen.",
     "mapPinsKeyboardHint": "Erabili gezi-teklak mapako jardueren artean mugitzeko, eta sakatu Sartu bat irekitzeko.",
-    "selectMessageLabel": "Mezua hautatu"
+    "selectMessageLabel": "Mezua hautatu",
+    "callTranscriptAudioDropped": "{name} erabiltzailearen gailuak esandakoa galdu egin du grabatu aurretik; beraz, ez da jakin zer esan duen.",
+    "callTranscriptHeldByOtherDevice": "{name} erabiltzaileak esandakoa bere beste gailu batek grabatu du; beraz, gailu honek ez du ezer bidali eta ez da jakin zer esan duen.",
+    "callTranscriptDeviceNeverWrote": "{name}-(e)k esandakoaren zati bat bere beste gailu batean grabatu behar zen, eta gailu horrek ez zuen grabatu; beraz, zati hori ez da ezagutzen.",
+    "archivedChat": "Artxibatutako txata",
+    "activityReview": "Jardueraren berrikuspena",
+    "activityPanel": "Jarduera",
+    "coursePage": "Ikastaroaren orria",
+    "constructLevelSeeds": "Haziak, hitz berriak",
+    "constructLevelGreens": "Landareak, hazten ari diren hitzak",
+    "constructLevelFlowers": "Loreak, menderatutako hitzak",
+    "filterAndSearch": "Iragazi eta bilatu",
+    "participantsOfTotal": "{total} jokalarietatik {filled}",
+    "mapAttributionLabel": "OpenStreetMap-eko kolaboratzaileak, copyright eta lizentzia",
+    "seeAll": "Ikusi guztiak",
+    "seeAllSection": "Ikusi {section} guztiak"
 }

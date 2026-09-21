@@ -1406,7 +1406,7 @@ void main() {
       () async {
         final (service, _, room) = await joinedService();
         expect(
-          service.membershipEventIdIn(room),
+          service.membershipEventIdIn(service.joinAttempt),
           isNull,
           reason: 'precondition: nothing of ours is left in the room',
         );
@@ -2690,6 +2690,637 @@ void main() {
       expect(service.answeredOnAnotherDevice(room, ringAt), isFalse);
     });
   });
+
+  /// The identity every writer in a call agrees on is this device's membership
+  /// event id -- the caller holds it as its own echo, the callee reads it off
+  /// the ring it answered. Two calls that derive the SAME one are two calls of
+  /// which only the first is ever written: the transcript's transaction id is
+  /// built from that key, a homeserver collapses a repeated transaction id from
+  /// the same device, and the second call's speech is absorbed as a duplicate
+  /// of a call that had already ended -- reaching the room as nothing at all,
+  /// with success returned to every writer. The card lands under the shared key
+  /// too, and the reader keeps the first, so the second call is drawn with the
+  /// first one's duration.
+  ///
+  /// Room state cannot answer which membership belongs to which call. The group
+  /// call id IS the room id, so every membership of ours in this room matches
+  /// the current call; a membership stands for minutes; and a leave leaves
+  /// state only when its echo arrives. A call that reads state before its own
+  /// membership has echoed therefore reads the PREVIOUS call's — and nothing
+  /// the membership carries tells the two apart, since only `expires_ts` moves
+  /// between two writes and it is the device wall clock, which can step
+  /// backwards.
+  ///
+  /// So the anchor is not derived from state at all: `enter()` returns the
+  /// event id the server assigned to the membership THAT join published, and
+  /// that is what a call keys on. What these pin is that the id comes from the
+  /// publish and from nowhere else — no state, no clock, and no enter belonging
+  /// to a call that is over.
+  group('the membership that identifies a call', () {
+    const me = '@test:fakeServer.notExisting';
+    var seq = 0;
+
+    /// Puts one membership of ours into [roomId]'s state under [eventId].
+    ///
+    /// There is ONE state event per account and device, so a later membership
+    /// REPLACES this one and takes a fresh event id. That is what lets the id
+    /// identify a call at all, and it is exactly what a read taken before the
+    /// replacement has echoed throws away.
+    /// [stampedAt] is when the DEVICE wrote it. The SDK stamps every membership
+    /// it publishes with `now + expireTsBumpDuration` off this device's own
+    /// clock, so the stamp is the only field that moves between two writes --
+    /// and it moves with a clock that can step backwards, which is why nothing
+    /// here is allowed to decide anything by it.
+    Future<void> publishMembership(
+      Client client,
+      String roomId,
+      String eventId, {
+      DateTime? stampedAt,
+    }) => client.handleSync(
+      SyncUpdate(
+        nextBatch: 'batch-$eventId',
+        rooms: RoomsUpdate(
+          join: {
+            roomId: JoinedRoomUpdate(
+              state: [
+                MatrixEvent(
+                  type: EventTypes.GroupCallMember,
+                  content: {
+                    'memberships': [
+                      {
+                        'call_id': 'call-id',
+                        'application': 'm.call',
+                        'scope': 'm.room',
+                        'foci_active': [
+                          {
+                            'type': 'livekit',
+                            'livekit_alias': 'alias',
+                            'livekit_service_url': 'http://sfu:7980',
+                          },
+                        ],
+                        'device_id': 'GHTYAJCE',
+                        'expires_ts': (stampedAt ?? DateTime.now())
+                            .add(CallTimeouts().expireTsBumpDuration)
+                            .millisecondsSinceEpoch,
+                        'membershipID': 'ours',
+                      },
+                    ],
+                  },
+                  senderId: me,
+                  eventId: eventId,
+                  originServerTs: DateTime.now(),
+                  stateKey: me,
+                ),
+              ],
+            ),
+          },
+        ),
+      ),
+    );
+
+    /// When the CALL BEFORE this one stamped its writes: a moment ago, so its
+    /// membership is nowhere near expiring and is refused on what it says about
+    /// itself rather than on age.
+    DateTime beforeThisCall() =>
+        DateTime.now().subtract(const Duration(seconds: 5));
+
+    /// The same call's writes as this device would stamp them AFTER its clock
+    /// has stepped backward: the previous call's membership carrying a stamp
+    /// no write this call makes can reach, so it looks newer than the call that
+    /// replaced it.
+    DateTime afterThisCall() => DateTime.now().add(const Duration(seconds: 5));
+
+    /// A service about to place a call into a room where the PREVIOUS call's
+    /// membership is still standing -- a redial whose hangup has been written
+    /// but whose echo has not come back.
+    Future<(_JoinSteps, Room)> redialing() async {
+      final roomId = '!anchor${seq++}:fakeServer.notExisting';
+      final client = await bareClient();
+      await client.login(
+        LoginType.mLoginPassword,
+        token: 'abcd',
+        identifier: AuthenticationUserIdentifier(user: me),
+        deviceId: 'GHTYAJCE',
+      );
+      await publishMembership(
+        client,
+        roomId,
+        r'$earlier-call',
+        stampedAt: beforeThisCall(),
+      );
+      return (
+        _JoinSteps(client, focusDiscovery: _FixedFocus()),
+        client.getRoomById(roomId)!,
+      );
+    }
+
+    /// A session for [room] that publishes nothing of its own, so what
+    /// `announce` is looking at is only ever what the test put in state.
+    _LeavingSession sessionFor(_JoinSteps calls, Room room) => _LeavingSession(
+      client: calls.client,
+      room: room,
+      voip: calls.voip,
+      backend: LiveKitBackend(
+        livekitServiceUrl: 'http://sfu:7980',
+        livekitAlias: 'alias',
+        e2eeEnabled: false,
+      ),
+      groupCallId: 'call-id',
+      application: 'm.call',
+      scope: 'm.room',
+    );
+
+    test('is never the one an earlier call left standing', () async {
+      final (calls, room) = await redialing();
+      await calls.join(room);
+      expect(
+        calls.membershipEventIdIn(calls.joinAttempt),
+        isNull,
+        reason:
+            'this call has published nothing yet, so it has no identity yet. '
+            'Answering with the earlier call\'s membership hands the redial '
+            'the very key that call already wrote its transcript under',
+      );
+    });
+
+    test('is the one this call published, with no echo to wait for', () async {
+      final (calls, room) = await redialing();
+      calls.adoptSessionForTest(sessionFor(calls, room));
+
+      expect(await calls.announce(), r'$this-call');
+      expect(
+        calls.membershipEventIdIn(calls.joinAttempt),
+        r'$this-call',
+        reason:
+            'refusing what this call did not publish must not amount to '
+            'refusing everything: a call with no anchor never rings and is '
+            'never written. This is the read a device that merely JOINED '
+            "takes, not announce's own return -- and it answers straight "
+            'away, because the id came back with the write rather than with '
+            'its echo',
+      );
+    });
+
+    // A membership state event is ONE slot per account and device: every write
+    // replaces the last and takes a new event id. So the call before this one
+    // can still have a write in flight -- its refresh, issued before the hangup
+    // cancelled the timer -- and that write echoes back AFTER this call has
+    // begun, carrying an event id this call has never seen. Anything that
+    // decides by "was this here when I started" accepts it; anything that reads
+    // state at all is still deciding by what happens to be standing there.
+    test('is never a late write from the call before it', () async {
+      final (calls, room) = await redialing();
+      calls.adoptSessionForTest(sessionFor(calls, room));
+
+      expect(await calls.announce(), r'$this-call', reason: 'precondition');
+
+      // The previous call's refresh, in flight when the hangup ran, echoing
+      // back only now -- and taking the room's one membership slot, so state no
+      // longer mentions this call's membership at all.
+      await publishMembership(
+        calls.client,
+        room.id,
+        r'$earlier-call-refreshed',
+        stampedAt: beforeThisCall(),
+      );
+
+      expect(
+        calls.membershipEventIdIn(calls.joinAttempt),
+        r'$this-call',
+        reason:
+            'the anchor is what this call published, and a write from the '
+            "call before it cannot move that however late it lands. Adopting "
+            "it keys this call's transcript and card to the call before it -- "
+            'the very collision this refuses, reached by a later road',
+      );
+    });
+
+    test('is never a late write that lands while the join is running', () async {
+      final (calls, room) = await redialing();
+      final session = sessionFor(calls, room);
+      // The join held open, so the late write really does land INSIDE it
+      // rather than before it or after it.
+      session.enterGate = Completer<void>();
+      calls.adoptSessionForTest(session);
+
+      final announcing = calls.announce();
+      await pumpEventQueue();
+      // The previous call's refresh, arriving while this call's own publish is
+      // still on the wire.
+      await publishMembership(
+        calls.client,
+        room.id,
+        r'$earlier-call-refreshed',
+        stampedAt: beforeThisCall(),
+      );
+      await pumpEventQueue();
+      session.enterGate!.complete();
+
+      expect(
+        await announcing,
+        r'$this-call',
+        reason:
+            'announce returns the id every writer in this call keys on, and '
+            'that id came back from this call\'s own write. The refresh that '
+            'landed inside the join belongs to the call before it',
+      );
+    });
+
+    // And the line is drawn at the PUBLISH, not at the start of the call. The
+    // two are not the same instant: announce parks until every leave the
+    // previous call is still issuing has finished, and that call's refresh
+    // timer can put another write out inside that wait.
+    test(
+      'is never a write the call before it made while this one waited',
+      () async {
+        final (calls, room) = await redialing();
+        calls.adoptSessionForTest(sessionFor(calls, room));
+        // The previous call's leave, still running: announce holds here.
+        final lastCallsLeave = Completer<void>();
+        calls.setPendingLeaveForTest(lastCallsLeave.future);
+
+        final announcing = calls.announce();
+        await pumpEventQueue();
+        // Its refresh, issued NOW -- after this call began, and still before
+        // this call has published anything of its own.
+        await publishMembership(
+          calls.client,
+          room.id,
+          r'$earlier-call-refreshed',
+        );
+        await Future.delayed(const Duration(milliseconds: 50));
+
+        lastCallsLeave.complete();
+        await pumpEventQueue();
+
+        expect(
+          await announcing,
+          r'$this-call',
+          reason:
+              'the question is what THIS call published, and it had published '
+              'nothing while it was still waiting for the last one to let go',
+        );
+      },
+    );
+
+    test('is what the join returned, not what is already there', () async {
+      final (calls, room) = await redialing();
+      final session = sessionFor(calls, room);
+      calls.adoptSessionForTest(session);
+
+      // The enter writes nothing into room state here, which is the honest
+      // model: a real one publishes the membership and state learns of it only
+      // when the write echoes back, long after the id itself came home.
+      final announced = await calls.announce();
+
+      expect(
+        session.enters,
+        1,
+        reason:
+            'precondition: this call really did publish a membership of its '
+            'own, so the id below is a publish that answered rather than a '
+            'question that was never asked',
+      );
+      expect(
+        announced,
+        r'$this-call',
+        reason:
+            'announce returns the id every writer in this call will key on; '
+            'returning the one already in state gives the redial the previous '
+            "call's key and silently destroys this call's transcript",
+      );
+    });
+
+    // The device wall clock is not monotonic. A backward step BETWEEN the
+    // previous call's write and this call's publish leaves that older
+    // membership stamped LATER than anything this call can stamp -- unexpired,
+    // same call id, and ahead of any floor a comparison of stamps could draw.
+    // That is what defeated the stamp floor this replaces, and it is why the
+    // anchor no longer comes from a stamp, or from state, at all.
+    test('is never the previous membership after the clock steps back', () async {
+      final (calls, room) = await redialing();
+      calls.adoptSessionForTest(sessionFor(calls, room));
+      // The clock steps backward: the call before this one wrote its membership
+      // with a stamp this call cannot reach.
+      await publishMembership(
+        calls.client,
+        room.id,
+        r'$earlier-call',
+        stampedAt: afterThisCall(),
+      );
+
+      expect(
+        await calls.announce(),
+        isNot(r'$earlier-call'),
+        reason:
+            'a membership stamped ahead of this call is still the call before '
+            "it. Adopting it hands the redial the key that call's transcript "
+            'was already written under',
+      );
+      expect(
+        calls.membershipEventIdIn(calls.joinAttempt),
+        r'$this-call',
+        reason: 'and what it has instead is the id its own publish was given',
+      );
+    });
+
+    // F2. An enter OUTLIVES its call: retract waits [_settleEnterWithin] for one
+    // and then leaves anyway, so a redial can begin while the previous call's
+    // enter is still settling. The redial must publish its OWN membership. The
+    // earlier structure waited on that in-flight enter and returned its result,
+    // so the redial got either the previous call's id or -- once the owner guard
+    // refused it -- no anchor at all, its whole transcript lost with no alarm.
+    test('is its own even when an earlier call\'s enter is still in flight', () async {
+      final (calls, room) = await redialing();
+      // Call A's enter never settles on its own, so it is still in flight -- and
+      // still in the service's entering slot -- when the redial begins.
+      final sessionA = sessionFor(calls, room)
+        ..publishes = r'$a-call'
+        ..enterGate = Completer<void>();
+      calls.adoptSessionForTest(sessionA);
+      final aAnnouncing = calls.announce();
+      await pumpEventQueue();
+      expect(
+        sessionA.enters,
+        1,
+        reason: 'precondition: A\'s enter is in flight',
+      );
+
+      // The redial. A fresh session, as one is once A's leave has removed A's
+      // from the registry. It begins on top while A's enter is still out.
+      final sessionB = sessionFor(calls, room)..publishes = r'$b-call';
+      calls.adoptSessionForTest(sessionB);
+      final bAttempt = calls.joinAttempt;
+
+      // B announces while A's enter is still the one in the service's slot. With
+      // the fix B ignores it and publishes its own membership at once, so B's
+      // answer does not depend on A's gate; A's enter is released here only so
+      // that, were the slot NOT owner-scoped, B's wait on it would unblock and
+      // reveal the null it was handed rather than hanging the test.
+      final bAnnouncing = calls.announce();
+      sessionA.enterGate!.complete();
+      expect(
+        await bAnnouncing,
+        r'$b-call',
+        reason:
+            'B published its own membership and anchored on the id THAT write '
+            'returned. Waiting on A\'s in-flight enter instead would give B '
+            'A\'s id, or -- once the owner guard refuses it -- no anchor at '
+            'all, and B\'s whole transcript would be lost with nothing logged',
+      );
+      expect(sessionB.enters, 1, reason: 'B entered its OWN session');
+      expect(calls.membershipEventIdIn(bAttempt), r'$b-call');
+
+      // F2. A's own announce, resuming after B superseded it, keeps the id A's
+      // OWN enter published -- not null (its write succeeded), and not the
+      // redial's. A single shared slot could only hold one of the two ids;
+      // returning what each call's own enter published is what lets both keep
+      // theirs. A's late write does not overwrite the live call's shared mirror.
+      expect(
+        await aAnnouncing,
+        r'$a-call',
+        reason:
+            'a superseded call keeps the membership its own enter published; '
+            'discarding it loses the transcript of a call that really happened',
+      );
+      expect(calls.membershipEventIdIn(bAttempt), r'$b-call');
+    });
+
+    // F1. A redial can be handed a session an EARLIER call left `entered` -- its
+    // leave failed part-way (backend dispose threw before the registry removal),
+    // so it stayed in the SDK registry with `_leaving` set, and fetchSession by
+    // room returns it. This call can publish no membership on it (entering an
+    // entered session throws, and the stuck session refuses writes), so it has
+    // no anchor. announce FAILS LOUDLY rather than proceed keyless: a keyless
+    // call reaches recording and drops its whole transcript in silence.
+    test(
+      'fails loudly when handed a session an earlier call left entered',
+      () async {
+        final (calls, room) = await redialing();
+        final stuck = sessionFor(calls, room)
+          // What a leave that threw after its own write leaves behind: the session
+          // still entered, never removed from the registry.
+          ..state = GroupCallState.entered;
+        calls.adoptSessionForTest(stuck);
+        final attempt = calls.joinAttempt;
+
+        await expectLater(
+          calls.announce(),
+          throwsA(isA<StateError>()),
+          reason:
+              'a call that cannot publish its own membership must fail loudly, '
+              'not return a keyless null the transcript writer silently swallows',
+        );
+        expect(
+          stuck.enters,
+          0,
+          reason: 'it never tried to enter an already-entered session',
+        );
+        expect(
+          calls.membershipEventIdIn(attempt),
+          isNull,
+          reason: 'and it has no anchor of its own to hand out',
+        );
+      },
+    );
+
+    test('is never the one the call before it published', () async {
+      final (calls, room) = await redialing();
+      calls.adoptSessionForTest(
+        sessionFor(calls, room)..publishes = r'$a-call',
+      );
+      final aAttempt = calls.joinAttempt;
+      expect(await calls.announce(), r'$a-call', reason: 'precondition');
+
+      // The next call in this room begins. It has published nothing of its own
+      // yet, and the id the call before it was given is not available to it --
+      // not to its own attempt, and not to the earlier call's either.
+      calls.adoptSessionForTest(sessionFor(calls, room));
+      final bAttempt = calls.joinAttempt;
+
+      expect(
+        calls.membershipEventIdIn(bAttempt),
+        isNull,
+        reason:
+            'an anchor is a fact about ONE call. Carrying it into the next one '
+            'is the redial collision itself: two calls deriving the same key, '
+            'of which only the first is ever written',
+      );
+      expect(
+        calls.membershipEventIdIn(aAttempt),
+        isNull,
+        reason: 'and the call before it is gone; its attempt gets null too',
+      );
+    });
+
+    // F1. A stale ActiveCall reads at teardown for an anchor it never captured.
+    // If a redial has taken its place in the same room by then, a room-keyed
+    // read hands it the redial's id -- two calls keyed on one membership, the
+    // collision reached through the READ. Addressing the read to the attempt
+    // that owns the call is what refuses it.
+    test('is not answered to the call a redial has replaced', () async {
+      final (calls, room) = await redialing();
+      calls.adoptSessionForTest(
+        sessionFor(calls, room)..publishes = r'$a-call',
+      );
+      final aAttempt = calls.joinAttempt;
+      expect(
+        await calls.announce(),
+        r'$a-call',
+        reason: 'precondition: A live',
+      );
+
+      // Redial B in the SAME room, publishing its own id.
+      calls.adoptSessionForTest(
+        sessionFor(calls, room)..publishes = r'$b-call',
+      );
+      final bAttempt = calls.joinAttempt;
+      expect(
+        await calls.announce(),
+        r'$b-call',
+        reason: 'precondition: B live',
+      );
+
+      expect(
+        calls.membershipEventIdIn(aAttempt),
+        isNull,
+        reason:
+            'A reads with its OWN attempt at teardown; the service holds B now, '
+            'and answering with B\'s id keys A\'s late transcript and card on '
+            'B\'s membership -- the collision, reached through the read',
+      );
+      expect(
+        calls.membershipEventIdIn(bAttempt),
+        r'$b-call',
+        reason: 'while B, the live call, still gets its own',
+      );
+    });
+
+    // The poll this replaced re-checked disposal on every attempt, so a logout
+    // landing inside the wait stopped the announce rather than answering after
+    // it. There is no poll left to make that check, and the wait is still there.
+    test('is not answered for an account that has logged out', () async {
+      final (calls, room) = await redialing();
+      final session = sessionFor(calls, room);
+      // The join held open, so the logout lands INSIDE the wait rather than
+      // before it.
+      session.enterGate = Completer<void>();
+      calls.adoptSessionForTest(session);
+
+      final announcing = calls.announce();
+      await pumpEventQueue();
+      final disposing = calls.dispose();
+      session.enterGate!.complete();
+
+      await expectLater(
+        announcing,
+        throwsStateError,
+        reason:
+            'answering here hands a call identity to a service the account '
+            'has already been torn out of, and every read it reaches for goes '
+            'through a VoIP instance that disposal has dropped',
+      );
+      await disposing;
+    });
+
+    // F1 (round 5). enter() returns null when it wrote no membership at all --
+    // a leave already in flight on a reused session suppresses the write. The
+    // call has no key for its transcript or card. It must FAIL LOUDLY, the same
+    // way the already-entered branch does, rather than return a keyless null the
+    // call goes on to record under: no call reaches recording without an anchor.
+    test('fails loudly when its own enter publishes no membership', () async {
+      final (calls, room) = await redialing();
+      final session = sessionFor(calls, room);
+      // What the SDK returns when it wrote nothing.
+      session.publishes = null;
+      calls.adoptSessionForTest(session);
+
+      await expectLater(
+        calls.announce(),
+        throwsA(isA<StateError>()),
+        reason:
+            'a call that published no membership has no key; logging and '
+            'returning null let it record keyless and lose its transcript. It '
+            'must throw so the call unwinds through teardown instead',
+      );
+      expect(calls.membershipEventIdIn(calls.joinAttempt), isNull);
+    });
+
+    // F3 (round 5). Synapse dedups a state write whose content matches the
+    // current state, returning the EXISTING event id -- so two calls' enters
+    // could, in the astronomically rare case argued unreachable elsewhere, come
+    // back with the same id. A write-time alarm turns that silent collision
+    // loud: a SECOND call keying on an id a DIFFERENT call already claimed is
+    // refused. It never changes which id a call uses; it only refuses a shared
+    // one. Keyed by call identity, so a call's OWN resend collapses.
+    test(
+      'refuses a second call that dedups onto a live one\'s membership',
+      () async {
+        final (calls, room) = await redialing();
+        // Two calls whose enters come back with the SAME event id: distinct
+        // sessions, distinct owners, one membership id.
+        final first = sessionFor(calls, room)..publishes = r'$shared';
+        calls.adoptSessionForTest(first);
+        expect(
+          await calls.announce(),
+          r'$shared',
+          reason: 'the first call claims it',
+        );
+
+        // A RESEND of the same call collapses: re-claiming the same id under the
+        // same owner is a no-op, never a false alarm.
+        expect(
+          await calls.announce(),
+          r'$shared',
+          reason:
+              'the same call re-claiming its own id must not trip the alarm',
+        );
+
+        // A DIFFERENT call deduped onto the same id is refused loudly rather than
+        // silently keying its card and transcript on a membership already in use.
+        final second = sessionFor(calls, room)..publishes = r'$shared';
+        calls.adoptSessionForTest(second);
+        await expectLater(
+          calls.announce(),
+          throwsA(isA<StateError>()),
+          reason:
+              'two calls sharing one membership event id is the collision this '
+              "exists to make loud; overwriting silently loses the first's "
+              'transcript',
+        );
+      },
+    );
+
+    // The SDK writes the membership FIRST and only then runs the rest of
+    // entering, so a throw from any of those later steps leaves a membership
+    // that may well be live -- under an id the caller never learns.
+    test(
+      'is unknown, not absent, when the join throws after writing',
+      () async {
+        final (calls, room) = await redialing();
+        final session = sessionFor(calls, room);
+        session.enterThrows = StateError('the delegate refused the call');
+        calls.adoptSessionForTest(session);
+
+        await expectLater(calls.announce(), throwsA(isA<StateError>()));
+        expect(
+          calls.membershipEventIdIn(calls.joinAttempt),
+          isNull,
+          reason: 'the key is unknown, and a guessed one is worse than none',
+        );
+
+        await expectLater(calls.retract(), completion(isTrue));
+        expect(
+          session.leaves,
+          1,
+          reason:
+              'and the membership is taken back, because a join that failed '
+              'after its write is not the same thing as a call that never '
+              'published anything',
+        );
+      },
+    );
+  });
 }
 
 /// A room that accepts any send and remembers the transaction ids used.
@@ -2772,8 +3403,29 @@ class _LeavingSession extends GroupCallSession {
     if (leaveThrowsInOrder.isNotEmpty) throw leaveThrowsInOrder.removeAt(0);
   }
 
+  /// What a real `enter()` hands back: the event id the server assigned to the
+  /// membership THIS join published. Null models the SDK's own null, a join
+  /// that wrote no membership at all.
+  String? publishes = r'$this-call';
+
+  /// Holds an enter open, so what the service does WHILE one is still in flight
+  /// is observable — a second call joining it, a state write landing inside it.
+  Completer<void>? enterGate;
+
+  /// Thrown by the enter once the gate has opened. The SDK writes the
+  /// membership FIRST and only then does the work that can throw, so this
+  /// models the case that matters: a membership that may well be live, under an
+  /// id the caller never learns.
+  Object? enterThrows;
+
   @override
-  Future<void> enter({WrappedMediaStream? stream}) async => enters++;
+  Future<String?> enter({WrappedMediaStream? stream}) async {
+    enters++;
+    await enterGate?.future;
+    final failure = enterThrows;
+    if (failure != null) throw failure;
+    return publishes;
+  }
 }
 
 /// A token failure that has nothing to do with the join being abandoned, so the

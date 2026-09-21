@@ -2560,7 +2560,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-09-01 15:39:53.328450",
+    "@@last_modified": "2026-09-02 11:49:11.050419",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10756,6 +10756,26 @@
     "callTranscriptOpen": "Ler a transcrição",
     "errorRateLimited": "Estamos a carregar muito neste momento. Por favor, aguarde um momento e tente novamente.",
     "noPermissionToInviteUsers": "Não tem permissão para convidar membros aqui.",
+    "callTranscriptRoomEncrypted": "Esta conversa está encriptada e a transcrição não pôde ser desbloqueada aqui, por isso o que foi dito não é mostrado.",
+    "callTranscriptParticipantsUnknown": "Não se sabe quem mais esteve nesta chamada, por isso alguém que falou pode estar completamente ausente desta transcrição.",
+    "callTranscriptTooLongToSend": "O que {name} disse era demasiado longo para guardar com esta chamada, por isso nada é mostrado.",
+    "callTranscriptMicrophoneRefused": "O dispositivo de {name} nunca abriu um microfone para esta chamada, por isso nada do que disseram foi gravado e o que foi dito não é conhecido.",
+    "callTranscriptAudioLost": "O que {name} disse foi gravado, mas perdeu-se antes de poder ser transcrito, por isso o que foi dito não é conhecido.",
     "mapPinsKeyboardHint": "Use as teclas de seta para se mover entre as atividades no mapa e prima Enter para abrir uma.",
-    "selectMessageLabel": "Selecionar mensagem"
+    "selectMessageLabel": "Selecionar mensagem",
+    "callTranscriptAudioDropped": "O que {name} disse foi perdido pelo seu dispositivo antes de poder ser gravado, pelo que não se sabe o que foi dito.",
+    "callTranscriptHeldByOtherDevice": "O que {name} disse foi deixado para outro dos seus dispositivos gravar, pelo que nada foi enviado a partir deste e não se sabe aqui o que foi dito.",
+    "callTranscriptDeviceNeverWrote": "Parte do que {name} disse foi deixado para outro dos seus dispositivos gravar, e esse dispositivo não o gravou, pelo que essa parte não é conhecida.",
+    "archivedChat": "Conversa arquivada",
+    "activityReview": "Revisão da atividade",
+    "activityPanel": "Atividade",
+    "coursePage": "Página do curso",
+    "constructLevelSeeds": "Sementes, novas palavras",
+    "constructLevelGreens": "Verdes, palavras em crescimento",
+    "constructLevelFlowers": "Flores, palavras dominadas",
+    "filterAndSearch": "Filtrar e pesquisar",
+    "participantsOfTotal": "{filled} de {total} jogadores",
+    "mapAttributionLabel": "Contribuidores do OpenStreetMap, direitos de autor e licença",
+    "seeAll": "Ver tudo",
+    "seeAllSection": "Ver tudo em {section}"
 }

@@ -29,7 +29,7 @@ Future<void> showCallTranscript(
   ),
 );
 
-/// Who could have written a half of THIS CALL.
+/// Who could have written a half of THIS CALL, and whether that is an answer.
 ///
 /// A 1:1 call has exactly two sides, and both are known locally: this account,
 /// and the room's direct-chat peer. Nothing here comes from room content.
@@ -52,12 +52,32 @@ Future<void> showCallTranscript(
 /// asserted: assembly reports a named participant who wrote nothing as ABSENT
 /// rather than omitting them, and DROPS a half from anyone not named -- which
 /// is what stops a stranger writing themselves a section.
+///
+/// The list and whether it is an ANSWER come back together, because they are
+/// one fact read two ways and splitting them is how the second came to
+/// contradict the first. The caller built the list from the peer AND this
+/// account, then asked only whether the PEER was known -- so a null `userID`
+/// produced a one-id list that reported itself authoritative, and an
+/// authoritative list missing our own id is one assembly may DROP our own half
+/// against: no section, on a read it calls complete. That is the failure
+/// `assembleTranscript` exists to prevent, reached through the guard meant to
+/// prevent it. Not provokable while a signed-in client renders a Room, which is
+/// exactly how a guard that asserts more than it checks survives review.
 @visibleForTesting
-List<String> callParticipants({required String? me, required String? peerId}) {
+({List<String> ids, bool known}) callParticipants({
+  required String? me,
+  required String? peerId,
+}) {
   final ids = <String>{?me, ?peerId};
 
-  // Sorted, so the sections do not reorder between two reads of the same call.
-  return ids.toList()..sort();
+  return (
+    // Sorted, so the sections do not reorder between two reads of the same
+    // call.
+    ids: ids.toList()..sort(),
+    // Every id this list is BUILT from, not only the one that is usually
+    // missing. A list is an answer when nothing that goes into it was absent.
+    known: me != null && peerId != null,
+  );
 }
 
 class CallTranscriptView extends StatefulWidget {
@@ -91,18 +111,21 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     // Worked out ONCE and both facts carried together: who we think took part,
     // and whether that is an answer or a guess. Read separately, the second
     // one is what gets forgotten -- and a guess presented as an answer is how
-    // a real half comes to be discarded in silence.
-    final peer = callPeerOf(widget.room);
+    // a real half comes to be discarded in silence. It was read separately
+    // here, and the guess it presented as an answer was a list with no id of
+    // our own in it.
+    final me = widget.room.client.userID;
+    final participants = callParticipants(
+      me: me,
+      peerId: callPeerOf(widget.room),
+    );
     return fetchCallTranscript(
       fetch: widget.fetcher ?? relationsFetcherFor(widget.room.client),
       roomId: widget.room.id,
       callKey: widget.callKey,
-      selfId: widget.room.client.userID,
-      expectedSenders: callParticipants(
-        me: widget.room.client.userID,
-        peerId: peer,
-      ),
-      participantsKnown: peer != null,
+      selfId: me,
+      expectedSenders: participants.ids,
+      participantsKnown: participants.known,
       encrypted: widget.room.encrypted,
     );
   }
@@ -200,7 +223,33 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
           return ListView(
             padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
             children: [
-              if (transcript.readerStoppedEarly)
+              // One caveat per REASON the read could not conclude, and every
+              // reason that applies. They used to share a single line -- the
+              // one about a call being too long -- so a room we could not
+              // decrypt and a peer we could not name were both explained away
+              // as length. That is the failure this whole feature is built
+              // against, reached from the only direction still open: not a
+              // claim about what somebody said, but a confident, specific,
+              // wrong account of why we cannot say.
+              //
+              // Not one winner. Unlike the clock caveats below, none of these
+              // makes another WRONG -- they are independent facts about one
+              // read, and suppressing a true one to keep the list short is the
+              // same collapse in miniature. Ordered by how much of the screen
+              // each explains: encryption accounts for the whole of it, an
+              // unnamed participant for a person missing from it, our own
+              // ceiling for words missing from a section that is there.
+              if (transcript.readLimits.contains(
+                TranscriptReadLimit.roomEncrypted,
+              ))
+                _Caveat(text: l10n.callTranscriptRoomEncrypted),
+              if (transcript.readLimits.contains(
+                TranscriptReadLimit.participantsUnknown,
+              ))
+                _Caveat(text: l10n.callTranscriptParticipantsUnknown),
+              if (transcript.readLimits.contains(
+                TranscriptReadLimit.readerCeiling,
+              ))
                 _Caveat(text: l10n.callTranscriptStoppedEarly),
               if (clocksUnreconciled)
                 _Caveat(text: l10n.callTranscriptUnreconciledClocks),
@@ -403,14 +452,7 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
   String? _noteFor(TranscriptHalf half, L10n l10n) {
     final name = _nameFor(half.senderId, l10n);
     if (half.state == HalfState.absent) return l10n.callTranscriptNone(name);
-    if (half.saidNothing) return l10n.callTranscriptSaidNothing(name);
-    // Ahead of the general empty-half line, which says nothing could be READ
-    // from what they said -- true of a corrupt or unreadable half, and wrong
-    // here: there was nothing to read because we never sent any of it.
-    if (half.audioSuppressedLocally) {
-      return l10n.callTranscriptNoSpeechDetected(name);
-    }
-    if (half.segments.isEmpty) return l10n.callTranscriptNothingRead(name);
+    if (half.segments.isEmpty) return emptyHalfNote(half, name, l10n);
     if (half.state == HalfState.incomplete) {
       return l10n.callTranscriptPartial(name);
     }
@@ -432,6 +474,111 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
 
   Uri? _avatarOf(String userId) =>
       widget.room.unsafeGetUserFromMemoryOrFallback(userId).avatarUrl;
+}
+
+/// What to say about a half that carries no words.
+///
+/// ONE function for both shapes of this screen. The per-speaker sections and
+/// the notes under the timeline ask exactly this question and each carried its
+/// own copy of the ladder, which is a second place for a cause to be added to
+/// only one of them.
+///
+/// **A `switch` over [HalfIssue] with no default, deliberately.** As a chain of
+/// `if`s with a fallthrough this was a second inventory of the causes, kept by
+/// hand beside the enum -- so a cause could be added to [HalfIssue], ranked in
+/// [TranscriptHalf.issue], and never reach a sentence: `audioDroppedAtCapture`
+/// and `audioHeldByAnotherDevice` both landed that way and both told the
+/// learner their words could not be READ, about audio no reader ever saw. A
+/// non-exhaustive switch does not compile, so the next cause added to the enum
+/// cannot be silently absent from this screen: somebody has to decide what it
+/// says.
+///
+/// Every branch below the first asks [TranscriptHalf.issue] rather than
+/// re-deriving anything, so the sentence a person reads and the line a bug
+/// report is diagnosed from can never name different reasons for the same half.
+///
+/// Public only so a test can hold it against every [HalfIssue] at once; nothing
+/// outside this file calls it.
+@visibleForTesting
+String emptyHalfNote(TranscriptHalf half, String name, L10n l10n) {
+  // Asked of the half rather than of [TranscriptHalf.issue], and ahead of it.
+  // "They said nothing" is a definite claim about a person, the only thing
+  // separating it from "we could not find out" is which STATE an empty half is
+  // in, and that distinction is too easy to invert at each site that needs it.
+  // A silent half is a clean record, so its issue is `none` -- or a fact about
+  // the read, like an unknown participant list, which does not stop it having
+  // been silence.
+  if (half.saidNothing) return l10n.callTranscriptSaidNothing(name);
+
+  return switch (half.issue) {
+    // An empty half whose audio our own detector held back was never read by
+    // anything, so neither silence nor a failure to read names its cause.
+    HalfIssue.audioSuppressedLocally => l10n.callTranscriptNoSpeechDetected(
+      name,
+    ),
+
+    // The writer had words and dropped every one of them to fit the event under
+    // the server's size limit. Nothing about that is a reading failure: the
+    // words existed, we read what arrived exactly as it was sent, and "nothing
+    // could be read from what they said" points whoever chases it at the wrong
+    // device. Taken from `issue` rather than from `accounting.truncated`,
+    // because OUR own trim sets that flag too -- and that is `tooLongToRead`, a
+    // different device and a different answer.
+    HalfIssue.tooLongToSend => l10n.callTranscriptTooLongToSend(name),
+
+    // Four failures of the WRITING device, each named as its own. All four
+    // otherwise fall through to "nothing could be read", which points whoever
+    // chases it at the reader -- and for the last two that is not merely vague
+    // but wrong, because nothing ever reached a reader to fail at.
+    HalfIssue.microphoneRefused => l10n.callTranscriptMicrophoneRefused(name),
+    HalfIssue.audioLost => l10n.callTranscriptAudioLost(name),
+    HalfIssue.audioDroppedAtCapture => l10n.callTranscriptAudioDropped(name),
+    HalfIssue.audioHeldByAnotherDevice => l10n.callTranscriptHeldByOtherDevice(
+      name,
+    ),
+
+    // Reachable here only in one narrow shape -- an empty half whose chunks
+    // WERE transcribed and came back with no words, and which also deferred a
+    // stretch no sibling's half holds. `audioHeldByAnotherDevice` above answers
+    // every other empty half that deferred anything. Its ordinary home is a
+    // half that still carries words, where the note under the timeline says
+    // part of it may be missing; this is the sentence for the case where there
+    // is nothing left to say that about.
+    //
+    // KNOWN COPY DRIFT, recorded rather than papered over. This sentence says
+    // "nothing from that device arrived", which was the whole of the condition
+    // while a sibling WRITING excused a discard. The condition is now
+    // containment -- no half of theirs states it held that stretch -- and a
+    // sibling that wrote a half of some other stretch reaches this branch with
+    // its half very much here. The conclusion the sentence draws is still true
+    // and it is the part a learner acts on; the middle clause is narrower than
+    // what it now describes. Re-wording it is a translation across every locale
+    // and is the owner's call, so it is flagged rather than made here.
+    HalfIssue.audioLeftToADeviceThatDidNotHoldIt =>
+      l10n.callTranscriptDeviceNeverWrote(name),
+
+    // Everything else, and only here a true statement: something of theirs was
+    // there and WE are the ones who could not make a record of it. Listed one
+    // by one rather than under a wildcard, because a wildcard is exactly the
+    // fallthrough this switch replaced -- it would swallow the next cause added
+    // to the enum in silence.
+    //
+    // `neverWritten` is unreachable from both callers, which check for an
+    // absent half first; it is answered rather than excepted because a reader
+    // of this function should not have to prove that to know what it returns.
+    HalfIssue.none ||
+    HalfIssue.neverWritten ||
+    HalfIssue.tooLongToRead ||
+    HalfIssue.participantsUnknown ||
+    HalfIssue.contentUnreadable ||
+    HalfIssue.drainAbandoned ||
+    HalfIssue.writerSaidNothing ||
+    HalfIssue.accountingImpossible ||
+    HalfIssue.timesApproximate ||
+    HalfIssue.timesUnstated ||
+    HalfIssue.assembledFromSeveralDevices ||
+    HalfIssue.couldNotRead => l10n.callTranscriptNothingRead(name),
+  };
 }
 
 /// One speaker's side of the call.
@@ -484,24 +631,12 @@ class _HalfSection extends StatelessWidget {
       return [_Muted(text: l10n.callTranscriptNone(name))];
     }
 
+    // Shared with the notes drawn under the timeline, because it is the same
+    // question. Two copies of this ladder is how the writer-side packing loss
+    // came to read as a reading failure in the first place -- there is one
+    // ladder now, and adding a cause to it reaches both shapes of the screen.
     if (half.segments.isEmpty) {
-      return [
-        _Muted(
-          // Asked of the half rather than re-derived here. "They said nothing"
-          // is a definite claim about a person, and the only thing separating
-          // it from "we could not find out" is which state an empty half is
-          // in -- a distinction too easy to invert at each site that needs it.
-          //
-          // Three answers, not two: an empty half whose audio our own detector
-          // held back was never read by anything, and saying either that they
-          // were silent or that we could not read them names the wrong cause.
-          text: half.saidNothing
-              ? l10n.callTranscriptSaidNothing(name)
-              : half.audioSuppressedLocally
-              ? l10n.callTranscriptNoSpeechDetected(name)
-              : l10n.callTranscriptNothingRead(name),
-        ),
-      ];
+      return [_Muted(text: emptyHalfNote(half, name, l10n))];
     }
 
     return [

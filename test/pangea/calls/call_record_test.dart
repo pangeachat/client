@@ -1,13 +1,16 @@
 import 'dart:async';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/calls/call_record.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart';
 import 'package:fluffychat/routes/chat/calls/call_upload_gate.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
+import '../sentry_capture_harness.dart';
 import 'call_transcript_sink_test.dart' show chunk, silent, spokenWord;
 
 const kDur = Duration(seconds: 30);
@@ -1083,6 +1086,242 @@ void main() {
         CallRecord.durationOf({'duration_ms': '1500'}),
         const Duration(milliseconds: 1500),
       );
+    });
+  });
+
+  /// Two losses that leave nothing behind.
+  ///
+  /// A half that does not publish makes its speaker read as `absent`, which is
+  /// the SAME reading as a device that never ran the feature -- so nothing
+  /// anywhere knows how many calls should have produced two halves and produced
+  /// one. Speech that is never credited is likewise indistinguishable from a
+  /// call in which nobody spoke. Both sentences were already being logged,
+  /// correctly, to a log nobody reads.
+  group('losses that reach somewhere they can be counted', () {
+    setUp(ErrorHandler.resetReportedOnceKeysForTest);
+    tearDown(ErrorHandler.resetReportedOnceKeysForTest);
+
+    /// Whether [key] is still unspent. [ErrorHandler.logErrorOnce] spends its
+    /// key synchronously and answers false once spent, which is the seam that
+    /// observes a fire-and-forget report.
+    Future<bool> unspent(String key) => ErrorHandler.logErrorOnce(
+      key: key,
+      e: Exception('probe'),
+      data: const {},
+    );
+
+    String halfKey(String callKey) =>
+        '${CallRecord.transcriptNotPublishedKey}:$callKey';
+
+    test('a half that never published is reported', () async {
+      final r = record(
+        await sinkWith(() => spokenWord('hola')),
+        withPublisher: true,
+        publishError: StateError('the homeserver said no'),
+      );
+      await r.finish(duration: kDur, video: false, callKey: '\$anchor');
+
+      expect(publishAttempts, hasLength(3), reason: 'it really did give up');
+      expect(await unspent(halfKey('\$anchor')), isFalse);
+    });
+
+    test('a half that published reports nothing', () async {
+      final r = record(
+        await sinkWith(() => spokenWord('hola')),
+        withPublisher: true,
+      );
+      await r.finish(duration: kDur, video: false, callKey: '\$anchor');
+
+      expect(published, hasLength(1));
+      expect(await unspent(halfKey('\$anchor')), isTrue);
+    });
+
+    test('a half that succeeded on a retry reports nothing', () async {
+      // The inclusion rule, stated as a test. A warning inside a retry loop
+      // that then succeeds is noise; only the last attempt failing is signal.
+      final r = record(
+        await sinkWith(() => spokenWord('hola')),
+        withPublisher: true,
+        publishFailures: 2,
+      );
+      await r.finish(duration: kDur, video: false, callKey: '\$anchor');
+
+      expect(publishAttempts, hasLength(3), reason: 'two of them failed');
+      expect(published, hasLength(1), reason: 'and the third one landed');
+      expect(await unspent(halfKey('\$anchor')), isTrue);
+    });
+
+    test('each call that lost its half is owed its own report', () async {
+      // Keyed per CALL rather than per session, because the COUNT is what is
+      // being asked for: how many calls should have produced two halves and
+      // produced one. A session key would collapse a learner's whole day into
+      // one event.
+      for (final key in ['\$one', '\$two']) {
+        final r = record(
+          await sinkWith(() => spokenWord('hola')),
+          withPublisher: true,
+          publishError: StateError('the homeserver said no'),
+        );
+        await r.finish(duration: kDur, video: false, callKey: key);
+      }
+
+      expect(await unspent(halfKey('\$one')), isFalse);
+      expect(await unspent(halfKey('\$two')), isFalse);
+    });
+
+    test('speech that was never credited is reported', () async {
+      // A store that refuses puts the record back in play, so this is the one
+      // failure that really is retried three times and really does end with
+      // nothing credited.
+      final r = record(
+        await sinkWith(() => spokenWord('hola')),
+        analyticsError: const CallAnalyticsNotStored('the store was closed'),
+      );
+      await r.finish(duration: kDur, video: false, callKey: '\$anchor');
+
+      expect(recorded, isEmpty);
+      expect(await unspent('${CallRecord.analyticsLostKey}:\$anchor'), isFalse);
+    });
+
+    test('and so is a call that never found anything to anchor to', () async {
+      // The branch that reaches the loss with NO exception to name: the card
+      // was never written and there was no ring to anchor to, so an
+      // unanchored use cannot be traced back to the call that earned it. The
+      // report has to carry a diagnosable title without a cause.
+      final r = record(await sinkWith(() => spokenWord('hola')), eventId: null);
+      await r.finish(duration: kDur, video: false, callKey: '\$anchor');
+
+      expect(recorded, isEmpty);
+      expect(await unspent('${CallRecord.analyticsLostKey}:\$anchor'), isFalse);
+    });
+
+    test('a call that credited reports nothing', () async {
+      final r = record(await sinkWith(() => spokenWord('hola')));
+      await r.finish(duration: kDur, video: false, callKey: '\$anchor');
+
+      expect(recorded, hasLength(1));
+      expect(await unspent('${CallRecord.analyticsLostKey}:\$anchor'), isTrue);
+    });
+
+    group('how much of it reaches Sentry', () {
+      final counter = SentryEventCounter();
+      setUp(counter.init);
+      tearDown(counter.close);
+
+      test('three failed attempts are ONE event, not three', () async {
+        // The noisy direction is the one that matters. A report per attempt
+        // triples every loss, and a team that gets that learns to ignore
+        // Sentry -- which is worse than never having wired it up.
+        final r = record(
+          await sinkWith(() => spokenWord('hola')),
+          withPublisher: true,
+          publishError: StateError('the homeserver said no'),
+        );
+        await r.finish(duration: kDur, video: false, callKey: '\$anchor');
+        await pumpEventQueue();
+
+        expect(publishAttempts, hasLength(3));
+        expect(counter.events, 1);
+      });
+
+      test('and a later finish that fails again is still one', () async {
+        // Giving up deliberately does not latch, so a second finish tries and
+        // fails again. That is the same loss, and the key is what collapses it.
+        final r = record(
+          await sinkWith(() => spokenWord('hola')),
+          withPublisher: true,
+          publishError: StateError('the homeserver said no'),
+        );
+        await r.finish(duration: kDur, video: false, callKey: '\$anchor');
+        await r.finish(duration: kDur, video: false, callKey: '\$anchor');
+        await pumpEventQueue();
+
+        expect(
+          publishAttempts,
+          hasLength(6),
+          reason: 'it really did try again',
+        );
+        expect(counter.events, 1);
+      });
+    });
+
+    group('what the report carries', () {
+      final harness = SentryCaptureHarness();
+      setUp(harness.init);
+      tearDown(harness.close);
+
+      test('how much was lost, and not a word of what it was', () async {
+        // Counts and sizes tell a dropped connection at hangup from a half
+        // that was empty anyway. What was said is the learner's, and Sentry is
+        // not where it belongs.
+        final r = record(
+          await sinkWith(() => spokenWord('hippopotamus')),
+          withPublisher: true,
+          publishError: StateError('the homeserver said no'),
+        );
+
+        final event = await harness.capture(
+          () => r.finish(duration: kDur, video: false, callKey: '\$anchor'),
+        );
+        final data = event.breadcrumbs?.last.data;
+
+        // Severity decided at the one sink, from the failure itself. Silent
+        // data loss is not a warning, and nothing here overrides the table.
+        expect(event.level, SentryLevel.error);
+        expect(data?['segments'], 1);
+        expect(data?['bytes'], 'hippopotamus'.length);
+        expect(data?['chunksCaptured'], 1);
+        expect(
+          data.toString(),
+          isNot(contains('hippopotamus')),
+          reason: 'the size of the loss travels; its content does not',
+        );
+      });
+
+      test('the caught cause, so its type reaches the tables', () async {
+        // #8660 removed these sentences rather than folding them into `e`
+        // precisely because wrapping changes the runtime type that the
+        // severity table and the fingerprint both read. Where something threw,
+        // that object has to arrive untouched.
+        final failure = StateError('the homeserver said no');
+        final r = record(
+          await sinkWith(() => spokenWord('hola')),
+          withPublisher: true,
+          publishError: failure,
+        );
+
+        final event = await harness.capture(
+          () => r.finish(duration: kDur, video: false, callKey: '\$anchor'),
+        );
+
+        expect(event.throwable, same(failure));
+      });
+
+      test('and the sentence, on the loss that has nothing to throw', () async {
+        // The uncredited-speech branch, which reaches its report with no
+        // exception in every way it can be reached: the card was never
+        // written, or the store refused and `_finish` swallowed it. So the
+        // sentence is what titles this event in practice, and it has to BE
+        // the exception to get there — handed to the reporter any other way
+        // it reaches `debugPrint` and nowhere else (#8660), and a learner's
+        // whole conversation goes uncredited under a title no one searches.
+        final r = record(
+          await sinkWith(() => spokenWord('hola')),
+          eventId: null,
+        );
+
+        final event = await harness.capture(
+          () => r.finish(duration: kDur, video: false, callKey: '\$anchor'),
+        );
+
+        expect(
+          event.throwable.toString(),
+          contains("This call's speech was never credited to the learner"),
+        );
+        // The half that tells this branch from the store refusing: both
+        // arrive with no exception, and only one of them wrote a card.
+        expect(event.breadcrumbs?.last.data?['anchored'], isFalse);
+      });
     });
   });
 }
