@@ -535,6 +535,62 @@ void main() {
         isEmpty,
       );
     });
+
+    test('out-of-order provider timestamps never place a later turn earlier', () {
+      // A provider that lists a word out of chronological order must not produce
+      // a segment before an earlier one -- the reader requires non-decreasing
+      // positions, and one backward step drops the whole half.
+      final segments = buildRecordingSegments(
+        _response(
+          'a b c',
+          timings: [('a', 0, 100), ('b', 5000, null), ('c', 2000, 2100)],
+        ),
+        _chunkStart,
+        90000,
+      );
+
+      for (var i = 1; i < segments.length; i++) {
+        expect(
+          segments[i].atMs! >= segments[i - 1].atMs!,
+          isTrue,
+          reason: 'positions must be non-decreasing',
+        );
+      }
+      // No word is lost, whatever the ordering.
+      expect(segments.map((s) => s.text).join(' '), 'a b c');
+    });
+
+    test('a small overlap between words does not spuriously split', () {
+      // Jitter: b starts before a ends. The gap to c is measured from the
+      // running-max end (1040), not b's earlier end (1020), so 1920-1040=880ms
+      // stays one utterance rather than splitting on a pause that never happened.
+      final segments = buildRecordingSegments(
+        _response(
+          'a b c',
+          timings: [('a', 1000, 1040), ('b', 1010, 1020), ('c', 1920, 1940)],
+        ),
+        _chunkStart,
+        90000,
+      );
+
+      expect(segments.map((s) => s.text), ['a b c']);
+    });
+
+    test('a long gap splits even when the provider omits end times', () {
+      // The mute/unmute case with end-less timings: the gap is measured from the
+      // previous word's start, so the returning speech is still placed late.
+      final segments = buildRecordingSegments(
+        _response(
+          'earlier later',
+          timings: [('earlier', 0, null), ('later', 45000, null)],
+        ),
+        _chunkStart,
+        90000,
+      );
+
+      expect(segments.map((s) => s.text), ['earlier', 'later']);
+      expect(segments[1].atMs, _chunkStart + 45000);
+    });
   });
 
   group('where a segment sits', () {

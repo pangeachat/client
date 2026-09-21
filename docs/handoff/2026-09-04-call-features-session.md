@@ -2432,3 +2432,43 @@ until the design is Codex-green.
   transcript reconcile) + client PR2 (recording/merge/player/UI, no transcript-code change) -> both on owner
   go. Client doc section-3 wording still needs owner approval (now describes the client fix that was
   reverted; should point to C instead) -- revisit at PR time.
+
+### 2026-09-21 (cont) — PIVOT to RECORDING-BASED transcript (owner-directed, simpler); builder DONE
+- OWNER TEST (call $WB-eev6OvJfmxz2...): a chunk of the phone's dialogue (post-unmute, ~0:47-1:04) is
+  MISSING from the transcript though it's in the recording. DB shows calltester chunks_captured=2 /
+  chunks_transcribed=1 -> the LIVE 45s path dropped the 2nd chunk (mute->unmute gap / incomplete
+  transcription). Proves the live-chunk path is unreliable; the uploaded recording is complete.
+- OWNER DECISION (final, keep it SIMPLE): transcript comes from each device's OWN uploaded recording (the
+  same continuous audio the mix uses); when a user's recording is missing, fall back to that half's live
+  45s transcript. Use the STT word_timings DIRECTLY -- do NOT align to a punctuated transcript, do NOT drop
+  for noise/extra words, showing word-list spelling ("uh huh") is fine. The choreo reconcile (branch
+  satvik/stt-word-timings-transcript-align, gate-GREEN) is NOT needed for this path and is set aside (the
+  recording pass uses word_timings directly, no alignment).
+- DONE: buildRecordingSegments(result, startedAtMs, durationMs, {pause}) in transcript_segments.dart
+  (client, PR2 branch satvik/call-features-combined, combined worktree) -- commit 531dc53cc4. Cuts
+  word_timings by pauses, text = word-list words joined, atMs = startedAtMs + first-word bounded start
+  (device clock, exact/spanMs null), momentWithinChunk-bounded, complete (nothing dropped incl. the
+  mute/unmute gap). 5 tests + 83/83 green, analyze+format clean. Cold gate RUNNING (gate-recording-segments).
+- WIRING PLAN (next; the substantial part):
+  1. CallAudioRecorder (call_audio_recorder.dart): at finish, after building `wav` (~line 1103), if given a
+     transcribe fn + langs, call transcribe(SpeechToTextRequestModel(audioContent: wav, mimeType audio/wav,
+     encoding linear16, sampleRateHertz gen.sampleRate, userL1/userL2, includeWordTimings: true)) ->
+     buildRecordingSegments(resp, gen.runStartedAtMs, gen.duration.inMilliseconds) -> store as a public
+     `recordingSegments` getter (+ maybe recordingLang). Guard: only if wav non-empty + transcribe provided.
+     Non-fatal on STT failure (leave recordingSegments null -> live fallback).
+  2. call_session.dart: build the recorder with transcribe + userL1/userL2 (already in scope). Pass a
+     `recordingSegments: () => audioRecorder.recordingSegments` (+ source) closure into CallRecord.
+  3. CallRecord (call_record.dart _publishTranscript ~496): prefer recordingSegments when non-empty, else
+     transcripts.segments (live). Add a `source: recording|live` field to the published content + the
+     accounting should reflect the chosen source (recording pass has no chunk counts -> set sensibly).
+     CallRecord runs AFTER capture close (which awaits recorder finish), so recordingSegments is ready.
+  4. call_transcript_event.dart: add + parse optional `source`; old events w/o it read as today. Reader
+     (transcript_assembly/transcript_view) interleaves segments by orderKeyMs on the SFU clock UNCHANGED --
+     recording segments are on the device clock like live, corrected by the same anchor. NO reader change.
+  5. TDD each; cold-gate the recorder+record wiring; then E2E on owner phone (local stack up:
+     choreo-with-fix 192.168.1.156:8012, web :8090, Synapse/lk-jwt LAN; APK points at local).
+  6. COST note: this leaves live transcription running during the call (fallback) AND transcribes the
+     recording at drain = ~2x STT on the happy path. Acceptable per owner (tiny at MAU); a later
+     optimization is to defer live STT unless the recording is unavailable.
+- NOTE: choreo-from-worktree background uvicorn races on the port across restarts -- kill ALL + wait 8s +
+  start ONE. Stack currently up (choreo-with-fix stable). E2E stack ready.

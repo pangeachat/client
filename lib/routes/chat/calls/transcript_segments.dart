@@ -652,13 +652,26 @@ List<TranscriptSegment> buildRecordingSegments(
   final segments = <TranscriptSegment>[];
   final words = <String>[];
   int? openedAt;
-  int? previousEnd;
+  // Where the NEXT gap is measured from: the previous word's END when known,
+  // otherwise its START -- so a long silence is still detected when the provider
+  // omits end times (without it, speech returning after a mute merges into the
+  // utterance before it instead of being placed late).
+  int? reference;
+  // A monotonic floor on emitted offsets. Word timings SHOULD be chronological;
+  // a provider that lists one out of order would otherwise place a later
+  // utterance before an earlier one, and the reader requires non-decreasing
+  // positions -- one backward step drops the whole half to the per-speaker view.
+  // Clamping keeps the half readable; ordered timings never trip it.
+  var lastOffset = 0;
 
   void flush() {
     if (words.isEmpty) return;
+    final offset = openedAt ?? lastOffset;
+    final placed = offset < lastOffset ? lastOffset : offset;
     segments.add(
-      TranscriptSegment(words.join(' '), atMs: startedAtMs + (openedAt ?? 0)),
+      TranscriptSegment(words.join(' '), atMs: startedAtMs + placed),
     );
+    lastOffset = placed;
     words.clear();
     openedAt = null;
   }
@@ -669,16 +682,18 @@ List<TranscriptSegment> buildRecordingSegments(
     final start = momentWithinChunk(timing.startTimeMs, durationMs);
     final gapOpens =
         start != null &&
-        previousEnd != null &&
-        start - previousEnd >= pause.inMilliseconds;
+        reference != null &&
+        start - reference >= pause.inMilliseconds;
     if (gapOpens) flush();
     if (words.isEmpty) openedAt = start;
     words.add(word);
-    final end = momentWithinChunk(timing.endTimeMs, durationMs);
-    if (end != null) {
-      previousEnd = (previousEnd == null || end > previousEnd)
-          ? end
-          : previousEnd;
+    // Advance the gap reference to the RUNNING MAXIMUM of the words' ends (or
+    // their starts, when an end is absent). A running max, not the latest value:
+    // a small overlap -- b starting a few ms before a ends -- must not walk the
+    // reference backwards and fake a pause before the next word.
+    final candidate = momentWithinChunk(timing.endTimeMs, durationMs) ?? start;
+    if (candidate != null && (reference == null || candidate > reference)) {
+      reference = candidate;
     }
   }
   flush();
