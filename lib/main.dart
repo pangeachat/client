@@ -33,7 +33,9 @@ import 'package:fluffychat/pangea/common/utils/show_menu_long_press_bridge_stub.
 
 ReceivePort? mainIsolateReceivePort;
 
-void main() async {
+void main() => ErrorHandler.runGuarded(_main);
+
+Future<void> _main() async {
   // Our background push shared isolate accesses flutter-internal things very early in the startup proccess
   // To make sure that the parts of flutter needed are started up already, we need to ensure that the
   // widget bindings are initialized already.

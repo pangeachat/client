@@ -39,10 +39,38 @@ class ErrorHandler {
     FlutterError.onError = onFlutterError;
 
     PlatformDispatcher.instance.onError = (exception, stack) {
-      logError(e: exception, s: stack, data: {});
+      onUncaughtError(exception, stack);
       return true;
     };
   }
+
+  /// Runs the app's startup, [body], so that an error no caller handled
+  /// reaches [onUncaughtError] on web too.
+  ///
+  /// Flutter web stores [PlatformDispatcher.onError] but never calls it
+  /// (flutter/flutter#100277), so on web the sink [initialize] installs is
+  /// dead. An unawaited future's error escaped to the browser instead, where
+  /// Sentry's JavaScript handler reported it with one runtime frame, no user
+  /// and no grouping key — every unrelated `ClientException: Failed to fetch`
+  /// landed in one catch-all issue (CLIENT-B01, #9190). A guarded zone keeps
+  /// those errors in Dart. Off web [body] runs as is: [PlatformDispatcher]
+  /// already covers it there.
+  ///
+  /// [body] must initialize the binding and call `runApp` itself — Flutter
+  /// requires the two to share a zone.
+  static void runGuarded(void Function() body) {
+    if (PlatformInfos.isWeb) {
+      runZonedGuarded(body, onUncaughtError);
+    } else {
+      body();
+    }
+  }
+
+  /// The sink for an error no caller handled: [PlatformDispatcher.onError]
+  /// off web, the zone [runGuarded] opens on web.
+  @visibleForTesting
+  static void onUncaughtError(Object e, StackTrace s) =>
+      logError(e: e, s: s, data: {});
 
   /// The [FlutterError.onError] sink. Overriding the default sink must not
   /// drop [FlutterError.presentError]: without it a debug build discards
