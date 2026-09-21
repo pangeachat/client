@@ -2382,3 +2382,28 @@ until the design is Codex-green.
   owner wording approval). PLAN: choreo branch -> TDD reconcile (real uh-huh + 2026 + clean cases) -> wire
   into include_word_timings -> lint.sh + unit -> cold gate -> full local stack + phone E2E ($HbAqRPluNz-style
   call orders correctly) -> choreo PR + client PR2 on owner go.
+
+### 2026-09-21 (cont) — C IMPLEMENTED + unit-green + real-data-proven; re-gating
+- choreo branch satvik/stt-word-timings-transcript-align in worktree
+  2-step-choreographer/.claude/worktrees/stt-align (main checkout restored to main; model lid.176.bin +
+  copied in as it's gitignored). Commit ea2ad2b9 (amended): reconcile_word_timings_to_transcript in
+  word_info_to_stt.py, wired ONLY on include_word_timings (skip_tokenize/streaming user_stt contract frozen),
+  + test_reconcile_word_timings.py (12 tests), registered in unit_tests.txt. lint clean.
+- MECHANISM: walk transcript whitespace words; for each, consume provider timings until their \W-stripped
+  lowercased concat == the \W-stripped word; emit ONE WordTiming (transcript word, edge-punct stripped;
+  merged span from EVERY present endpoint; min confidence). Unreconstructable (spelled-out number 2026 vs
+  twenty twenty six) -> return raw -> client blocks chunk (never misattributes).
+- PROOF on REAL data (deterministic, the exact failing call $HbAqRPluNz captures at
+  2-step-choreographer/app/handlers/speech_to_text/.generations/*): both failing chunks now pass the client's
+  1:1 count gate -- "hello yeah yeah..." 21->20 (merged "60-70"), "uh-huh almost okay..." 12->11 (merged
+  "uh-huh"). Regressions green: test_include_word_timings 20, test_word_info_to_stt 12, stt_golden 10.
+- COLD GATE round 1 found 2 real edge cases (codex ran real probes): (1) punctuation-only provider entry
+  absorbed -> inflates neighbor start; (2) complementary missing endpoints -> inverted merged span. FIXED:
+  (1) drop empty-norm entries via `matchable` before matching; (2) merge span from all present endpoints
+  (min/max) so never inverted. +2 hardening tests (12 total). Benign homograph case (re-sign/resign greedy)
+  preserves order -> accepted. RE-GATING now (gate-choreo-reconcile2).
+- REMAINING: re-gate green -> phone E2E (stand up local choreo WITH this fix + phone via lan-cutover, real
+  call orders correctly; client APK UNCHANGED so no rebuild) -> choreo PR + client PR2 on owner go. Client
+  buildSegments = proven original (no client change). Client doc section-3 correction still pending owner
+  wording approval (over-promises the reverted client sub-cut; but now moot-ish since fix is choreo -- revisit
+  wording to reflect C).
