@@ -611,6 +611,80 @@ List<TranscriptSegment> buildSegments(
   return List.unmodifiable(segments);
 }
 
+/// Segments for the WHOLE-recording pass: the post-call transcription of a
+/// device's OWN uploaded recording -- the same continuous audio the mix is built
+/// from -- cut into utterances by pauses and placed by the provider's own word
+/// timestamps.
+///
+/// Unlike [buildSegments] this does NOT align the provider's word list to a
+/// separate punctuated transcript. The recording is one uninterrupted capture,
+/// so the word list IS the text and the timing: nothing is dropped for a
+/// tokenisation mismatch, no chunk is lost to a live-capture gap, and because
+/// every utterance is placed at its own word time on one clock, the two
+/// speakers' halves interleave in the order they were spoken by construction.
+///
+/// [startedAtMs] is when the recording began on the writing device's wall clock
+/// and [durationMs] is its length. Each utterance is placed at [startedAtMs] plus
+/// its first word's in-recording offset -- the same clock [TranscriptSegment.atMs]
+/// uses -- so the reader's per-half clock correction carries it onto the shared
+/// clock exactly as it does a live half. A word time outside the recording is
+/// ignored for placement rather than trusted, mirroring [momentWithinChunk]
+/// everywhere else. Positions are exact ([spanMs] null): a word timestamp is a
+/// moment, not a chunk-bounded estimate.
+List<TranscriptSegment> buildRecordingSegments(
+  SpeechToTextResponseModel result,
+  int startedAtMs,
+  int durationMs, {
+  Duration pause = kUtterancePause,
+}) {
+  if (!result.hasUsableTranscript) return const [];
+  final transcript = result.transcript;
+  final timings = transcript.wordTimings;
+  if (timings == null || timings.isEmpty) {
+    // No per-word timing at all: keep the whole recording's text as one
+    // utterance at its start rather than lose what was said.
+    final whole = transcript.text.trim();
+    return whole.isEmpty
+        ? const []
+        : [TranscriptSegment(whole, atMs: startedAtMs)];
+  }
+
+  final segments = <TranscriptSegment>[];
+  final words = <String>[];
+  int? openedAt;
+  int? previousEnd;
+
+  void flush() {
+    if (words.isEmpty) return;
+    segments.add(
+      TranscriptSegment(words.join(' '), atMs: startedAtMs + (openedAt ?? 0)),
+    );
+    words.clear();
+    openedAt = null;
+  }
+
+  for (final timing in timings) {
+    final word = timing.word.trim();
+    if (word.isEmpty) continue;
+    final start = momentWithinChunk(timing.startTimeMs, durationMs);
+    final gapOpens =
+        start != null &&
+        previousEnd != null &&
+        start - previousEnd >= pause.inMilliseconds;
+    if (gapOpens) flush();
+    if (words.isEmpty) openedAt = start;
+    words.add(word);
+    final end = momentWithinChunk(timing.endTimeMs, durationMs);
+    if (end != null) {
+      previousEnd = (previousEnd == null || end > previousEnd)
+          ? end
+          : previousEnd;
+    }
+  }
+  flush();
+  return List.unmodifiable(segments);
+}
+
 /// Whether a chunk's timings are a WELL-FORMED SEQUENCE, which is the only
 /// thing that lets its segments be positioned:
 ///

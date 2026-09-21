@@ -451,6 +451,92 @@ void main() {
     });
   });
 
+  group('buildRecordingSegments (whole-recording pass)', () {
+    test(
+      'cuts the recording into utterances at pauses, placed by word time',
+      () {
+        final segments = buildRecordingSegments(
+          _response(
+            'hello world how are you',
+            timings: [
+              ('hello', 0, 300),
+              ('world', 350, 600),
+              // 2s pause -> a second utterance.
+              ('how', 2600, 2800),
+              ('are', 2850, 3000),
+              ('you', 3050, 3200),
+            ],
+          ),
+          _chunkStart,
+          90000,
+        );
+
+        expect(segments.map((s) => s.text), ['hello world', 'how are you']);
+        expect(segments[0].atMs, _chunkStart);
+        expect(segments[1].atMs, _chunkStart + 2600);
+        // Word timestamps are moments, so the positions are exact.
+        expect(segments.every((s) => !s.positionIsApproximate), isTrue);
+      },
+    );
+
+    test('keeps speech after a long silence (the mute/unmute case)', () {
+      // The exact failure from the phone test: the speaker goes quiet while the
+      // other talks, then returns ~44s later. The live path dropped that return;
+      // the recording has every word, so it must survive here.
+      final segments = buildRecordingSegments(
+        _response(
+          'earlier bit later bit',
+          timings: [
+            ('earlier', 0, 400),
+            ('bit', 450, 800),
+            // 44s muted stretch.
+            ('later', 45000, 45400),
+            ('bit', 45450, 45800),
+          ],
+        ),
+        _chunkStart,
+        90000,
+      );
+
+      expect(segments.map((s) => s.text), ['earlier bit', 'later bit']);
+      expect(segments[1].atMs, _chunkStart + 45000);
+    });
+
+    test('no word timings keeps the whole recording as one utterance', () {
+      final segments = buildRecordingSegments(
+        _response('hola que tal'),
+        _chunkStart,
+        90000,
+      );
+
+      expect(segments.map((s) => s.text), ['hola que tal']);
+      expect(segments.single.atMs, _chunkStart);
+    });
+
+    test('a word time outside the recording is ignored for placement', () {
+      // 'two' claims a time past the recording's length: it must not open a gap
+      // or place a turn outside the chunk, and no word is lost.
+      final segments = buildRecordingSegments(
+        _response(
+          'one two',
+          timings: [('one', 0, 100), ('two', 999999, 999999)],
+        ),
+        _chunkStart,
+        5000,
+      );
+
+      expect(segments.map((s) => s.text), ['one two']);
+      expect(segments.single.atMs, _chunkStart);
+    });
+
+    test('an empty response yields no segments', () {
+      expect(
+        buildRecordingSegments(_emptyChunk.result, _chunkStart, 90000),
+        isEmpty,
+      );
+    });
+  });
+
   group('where a segment sits', () {
     test(
       'a segment is positioned at its FIRST word, not the one that closed it',
