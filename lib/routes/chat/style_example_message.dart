@@ -26,16 +26,23 @@ class StyleExampleMessage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           SizedBox(width: double.infinity),
+          // The bot wears the learner's chosen colour, so the swatch they are
+          // about to tap changes it. It leads, on the other side and with its
+          // avatar, because that is where they meet it in a chat, and because
+          // the word card below can cover what follows it but must not cover
+          // the bot.
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Padding(
+              // The column pads only its right, every other child being
+              // right-aligned, so the bot's row supplies its own left inset.
+              padding: EdgeInsets.only(left: 12),
+              child: _StyleExampleBotMessage(),
+            ),
+          ),
           _StyleExampleWordCard(),
           _StyleExampleMessage(),
           _StyleExampleToolbarButtons(),
-          // The bot wears the learner's chosen colour, so the swatch they are
-          // about to tap changes it. Shown as a reply on the other side, with
-          // its avatar, because that is where they meet it in a chat.
-          Align(
-            alignment: Alignment.centerLeft,
-            child: _StyleExampleBotMessage(),
-          ),
         ],
       ),
     );

@@ -329,8 +329,17 @@ class BotFaceState extends State<BotFace> {
   /// Reading the setting rather than the theme is deliberate and narrow: this
   /// is the one surface that has to be the chosen colour exactly. Anything
   /// needing a colour that behaves against the surfaces takes a role.
-  Color _colour(BuildContext context) =>
-      widget.forceColor ?? Color(AppSettings.colorSchemeSeedInt.value);
+  Color _colour(BuildContext context) {
+    final forced = widget.forceColor;
+    if (forced != null) return forced;
+    // Depend on the theme before reading the seed. The seed is the value we
+    // want, the swatch the learner tapped rather than a role tone-shifted
+    // away from it, but a setting is not an inherited widget: without this
+    // dependency nothing marks the bot dirty when the theme changes and it
+    // keeps the colour it first drew.
+    Theme.of(context);
+    return Color(AppSettings.colorSchemeSeedInt.value);
+  }
 
   void _applyColour() {
     final viewModel = _viewModel;
