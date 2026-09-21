@@ -2511,3 +2511,30 @@ until the design is Codex-green.
   (2) re-raise local stack (choreo :8012 LAN, web :8090, phone APK) with CALL_RECORDING_TRANSCRIPT=true and
   E2E on the owner phone -- make a call, verify the recording-based half in the local Synapse DB; (3) PR2
   only on explicit owner go. choreo reconcile branch remains set aside (not needed for this path).
+
+### 2026-09-21 (cont) — wiring cold-gated GREEN (behavior + tests); flag-off purity fix
+- COLD GATES (both GREEN, GATE-SOFTENING: NONE):
+  - BEHAVIOR (4 source files, 333-line diff): all 7 correctness Qs pass -- recordingSegments
+    populated on every finish() exit path; failures caught + await can't mask a try-body error;
+    no data race (takeBytes copies PCM, inputs final); reorder keeps both publishes ahead of
+    _credited + retry/dedup/orphan intact; source read once before the retry loop; gen.runStartedAtMs
+    is the correct device-clock anchor. ONE note (not a defect): flag-off still added one async
+    continuation via the finally await.
+  - TESTS (146-line diff): the 4 tests each fail on their specific reversion; exact-list order
+    asserts; no skip/xfail/loosened matcher; harness faithfully separates null (off) from const []
+    (on, empty). Note: #3 proves invocation order, not delayed-completion order (harness prepopulates).
+- PURITY FIX (commit 2e896f2e64): made flag-off a TRUE no-op -- pendingRecordingSegments is null when
+  transcribe is unwired, and the finally await is guarded `if (pending != null)`. So flag-off creates
+  no future and awaits nothing; finish()'s control flow is exactly today's. recorder 46/46 green,
+  analyze+format clean. Re-gate RUNNING (gate-wiring-flagoff, 48-line diff).
+- STATE: satvik/call-features-combined has 3 new commits this session: 12c4395af7 (wiring+tests),
+  3fea9acf0c (handoff), 2e896f2e64 (flag-off no-op). buildRecordingSegments (round-3 GREEN) already
+  committed earlier (531dc53cc4/6eafa6e8a3). No push yet (owner go required).
+- E2E BLOCKER: phone is DISCONNECTED (adb devices empty). Local stack partial: Synapse :8008 UP,
+  lk-jwt :7980 UP, choreo :8012 DOWN. Phone E2E (owner's real-audio quality check) needs the owner to
+  reconnect the phone + a fresh APK built with CALL_RECORDING_TRANSCRIPT=true. The web E2E harness
+  (transcript.js, two Chromes fake audio) can verify the MECHANISM without the phone, against the
+  local stack -- needs choreo up + flag on in client .env + web rebuild.
+- NEXT: confirm flag-off re-gate GREEN; bring choreo up (:8012, STANDARD choreo -- NOT the reconcile
+  worktree, this path uses raw word_timings); web-harness E2E + inspect the published half in Synapse
+  DB; report + give owner the phone-test steps. PR2 only on explicit owner go.
