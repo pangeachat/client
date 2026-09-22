@@ -14,6 +14,7 @@ import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_model.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/routes/world/world_map_pins_manager.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
@@ -271,6 +272,22 @@ void main() {
         isNull,
       );
       expect(cache.bestOpenSummary('act-1'), isNotNull, reason: 'unscoped');
+    });
+
+    test('a course id that names a non-space room reads as an empty listing, '
+        'not a throw (#9026)', () {
+      final chat = Room(
+        id: '!chat:x',
+        client: client,
+        membership: Membership.join,
+      );
+      DiscoveredSessionsCache.instance.replaceAll(fullThinRefSession());
+
+      expect(chat.spaceChildIds, isEmpty);
+      expect(
+        DiscoveredSessionsCache.instance.forActivity('act-1', course: chat),
+        isEmpty,
+      );
     });
   });
 }

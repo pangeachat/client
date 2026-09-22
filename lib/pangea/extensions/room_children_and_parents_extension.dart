@@ -22,9 +22,11 @@ extension ChildrenAndParentsRoomExtension on Room {
 
   /// The ids of this space's direct `m.space.child` rooms, joined or not. A
   /// child removed from the space carries no `via` and is already dropped by
-  /// [spaceChildren].
-  Set<String> get spaceChildIds =>
-      spaceChildren.map((child) => child.roomId).whereType<String>().toSet();
+  /// [spaceChildren]. Empty for a room that is not a space (a stale or crafted
+  /// course id), where [spaceChildren] would throw.
+  Set<String> get spaceChildIds => !isSpace
+      ? const {}
+      : spaceChildren.map((child) => child.roomId).whereType<String>().toSet();
 
   /// The newest event in this space or in any child chat or activity session
   /// the user has joined. A course space's own timeline is mostly setup state,

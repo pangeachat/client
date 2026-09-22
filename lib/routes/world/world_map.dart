@@ -457,14 +457,18 @@ class WorldMapController extends State<WorldMap>
 
   bool get isWorld => MapContextController.notifier.value is! CourseMapContext;
 
-  /// The joined course space a course-scoped map is showing — the one whose
-  /// course plan the context names — or null on the world map and under a
-  /// course the learner has not joined (a preview).
+  /// The joined course space a course-scoped map is showing, or null on the
+  /// world map and under a course the learner has not joined (a preview). The
+  /// space the scope came from names it outright — two joined courses can
+  /// share a plan (#9026); a scope with no space falls back to the plan.
   Room? get courseRoom {
     final mapContext = MapContextController.notifier.value;
     if (mapContext is! CourseMapContext) return null;
+    final spaceId = mapContext.spaceId;
     return _client?.joinedCourseRooms.firstWhereOrNull(
-      (r) => r.coursePlan?.uuid == mapContext.coursePlanId,
+      (r) => spaceId != null
+          ? r.id == spaceId
+          : r.coursePlan?.uuid == mapContext.coursePlanId,
     );
   }
 
@@ -678,8 +682,9 @@ class WorldMapController extends State<WorldMap>
   /// A ping leaves no persistent room state, so this proxy is intentionally
   /// approximate — its efficacy is worth watching (world-map.instructions.md).
   Future<void> _recomputePinged(Client client) async {
-    await _pinsManager.recomputePinged(client, course: courseRoom);
-    if (mounted) setState(() {});
+    // Derived here, after the scan's awaits, so the signals read the scope
+    // current NOW rather than the one the scan started under (#9026).
+    if (await _pinsManager.recomputePinged(client)) _recomputeProgress();
   }
 
   /// Refill the member lists the map's seat math and participant rows read —

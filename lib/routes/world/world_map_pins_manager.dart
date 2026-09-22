@@ -316,8 +316,11 @@ class WorldMapPinsManager {
   /// next clean one. The room list moving is correct SDK behaviour the map
   /// can't block, so the scan reads a snapshot and picks up a course that
   /// joined mid-pass on the next sync tick (which that join itself produces).
-  /// [course] scopes the discovered facts as in [recomputeProgress].
-  Future<void> recomputePinged(Client client, {Room? course}) async {
+  /// Returns whether the pinged set changed. It derives no signals itself: the
+  /// scan awaits a timeline per course, and the map may have re-scoped
+  /// meanwhile, so the caller re-derives against the scope current then
+  /// ([recomputeProgress], #9026).
+  Future<bool> recomputePinged(Client client) async {
     final pinged = <String>{};
     final cutoff = DateTime.now().subtract(const Duration(hours: 24));
 
@@ -339,13 +342,10 @@ class WorldMapPinsManager {
 
     if (pinged.length == _pingedActivityIds.length &&
         pinged.containsAll(_pingedActivityIds)) {
-      return;
+      return false;
     }
     _pingedActivityIds = pinged;
-    _signals = client.deriveActivitySignals(
-      pingedActivityIds: pinged,
-      extraFacts: _discoveredSessionFacts(client, course),
-    );
+    return true;
   }
 
   /// Whether [room] earns a member refill this sweep — the Matrix-reading shell
