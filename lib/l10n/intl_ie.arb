@@ -10574,5 +10574,5 @@
     "grammarItemsUsed": "{count, plural, =1{1 gramadach-eirisch úsáidte} other{{count} gramadach-eirisch úsáidte}}",
     "playVideo": "Seinn an físeán",
     "videoPlayer": "Seinnteoir físeáin",
-    "customCourseTextbookHint": "Inis dúinn cén téacsleabhar a úsáideann tú, nó déan cur síos ar do churaclam"
+    "customCourseTextbookHint": "Di nos quel manuale vu usa, o descri vor curriculum"
 }
