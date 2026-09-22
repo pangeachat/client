@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "Bontsha feela dithuto tseo o ithutang ho tsona",
     "searchCoursesHint": "Batla dithuto",
     "noCoursesMatchSearch": "Ha ho dithuto tse tsamaellanang le patlisiso ya hao.",
-    "searchVocabByWordOrMeaningHint": "Batla ka lentswe kapa moelelo"
+    "searchVocabByWordOrMeaningHint": "Batla ka lentswe kapa moelelo",
+    "practiceTapABlank": "Tlanya sebaka se se nang letho ho se tlatsa",
+    "practiceListeningPrompt": "Ke sefe se reng ‘{word}’?",
+    "practiceMeaningPrompt": "‘{word}’ e bolela eng?",
+    "practiceEmojiPrompt": "Kgetha emoji bakeng sa ‘{word}’",
+    "practiceStepProgress": "{done} ho {total}"
 }

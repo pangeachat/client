@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "Tus kaliya koorsooyinka aad baraneyso",
     "searchCoursesHint": "Raadi koorsooyin",
     "noCoursesMatchSearch": "Ma jiraan koorsooyin u dhigma raadintaada.",
-    "searchVocabByWordOrMeaningHint": "Ku raadi eray ama macne"
+    "searchVocabByWordOrMeaningHint": "Ku raadi eray ama macne",
+    "practiceTapABlank": "Taabo meel bannaan si aad u buuxiso",
+    "practiceListeningPrompt": "Keebaa leh ‘{word}’?",
+    "practiceMeaningPrompt": "Maxay ka dhigan tahay ‘{word}’?",
+    "practiceEmojiPrompt": "Dooro emoji u dhigma ‘{word}’",
+    "practiceStepProgress": "{done} ka mid ah {total}"
 }

@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "Qhia tsuas yog cov kev kawm koj tab tom kawm",
     "searchCoursesHint": "Nrhiav kev kawm",
     "noCoursesMatchSearch": "Tsis muaj kev kawm phim koj qhov kev tshawb nrhiav.",
-    "searchVocabByWordOrMeaningHint": "Nrhiav los ntawm lo lus lossis lub ntsiab lus"
+    "searchVocabByWordOrMeaningHint": "Nrhiav los ntawm lo lus lossis lub ntsiab lus",
+    "practiceTapABlank": "Coj tus khoob kom sau",
+    "practiceListeningPrompt": "Tus twg hais tias ‘{word}’?",
+    "practiceMeaningPrompt": "‘{word}’ txhais li cas?",
+    "practiceEmojiPrompt": "Xaiv ib lub emoji rau ‘{word}’",
+    "practiceStepProgress": "{done} ntawm {total}"
 }

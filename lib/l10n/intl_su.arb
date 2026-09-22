@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "Témbongkeun ngan kursus nu diajar ku anjeun",
     "searchCoursesHint": "Téang kursus",
     "noCoursesMatchSearch": "Teu aya kursus nu cocog sareng pamilarian anjeun.",
-    "searchVocabByWordOrMeaningHint": "Pilari dumasar kecap atanapi hartos"
+    "searchVocabByWordOrMeaningHint": "Pilari dumasar kecap atanapi hartos",
+    "practiceTapABlank": "Toél nu kosong pikeun ngeusianana",
+    "practiceListeningPrompt": "Nu mana nu nyebutkeun ‘{word}’?",
+    "practiceMeaningPrompt": "Naon hartina ‘{word}’?",
+    "practiceEmojiPrompt": "Pilih hiji emoji pikeun ‘{word}’",
+    "practiceStepProgress": "{done} tina {total}"
 }

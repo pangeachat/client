@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "നിങ്ങൾ പഠിക്കുന്ന കോഴ്‌സുകൾ മാത്രം കാണിക്കുക",
     "searchCoursesHint": "കോഴ്‌സുകൾ തിരയുക",
     "noCoursesMatchSearch": "നിങ്ങളുടെ തിരയലുമായി പൊരുത്തപ്പെടുന്ന കോഴ്‌സുകളൊന്നുമില്ല.",
-    "searchVocabByWordOrMeaningHint": "വാക്കുകൊണ്ടോ അർത്ഥംകൊണ്ടോ തിരയുക"
+    "searchVocabByWordOrMeaningHint": "വാക്കുകൊണ്ടോ അർത്ഥംകൊണ്ടോ തിരയുക",
+    "practiceTapABlank": "പൂരിപ്പിക്കാൻ ഒരു വിടവിൽ ടാപ്പ് ചെയ്യുക",
+    "practiceListeningPrompt": "‘{word}’ എന്ന് പറയുന്നത് ഏതാണ്?",
+    "practiceMeaningPrompt": "‘{word}’ എന്നതിൻ്റെ അർത്ഥം എന്താണ്?",
+    "practiceEmojiPrompt": "‘{word}’ എന്നതിനായി ഒരു ഇമോജി തിരഞ്ഞെടുക്കുക",
+    "practiceStepProgress": "{total} എണ്ണത്തിൽ {done}"
 }

@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "আপুনি শিকি থকা পাঠ্যক্ৰমসমূহহে দেখুৱাওক",
     "searchCoursesHint": "পাঠ্যক্ৰমসমূহ বিচাৰক",
     "noCoursesMatchSearch": "আপোনাৰ সন্ধানৰ সৈতে কোনো পাঠ্যক্ৰম মিল খোৱা নাই।",
-    "searchVocabByWordOrMeaningHint": "শব্দ বা অৰ্থৰে সন্ধান কৰক"
+    "searchVocabByWordOrMeaningHint": "শব্দ বা অৰ্থৰে সন্ধান কৰক",
+    "practiceTapABlank": "পূৰণ কৰিবলৈ এটা খালী ঠাইত টিপক",
+    "practiceListeningPrompt": "কোনটোৱে ‘{word}’ বুলি কয়?",
+    "practiceMeaningPrompt": "‘{word}’ মানে কি?",
+    "practiceEmojiPrompt": "‘{word}’ ৰ বাবে এটা ইমোজি বাছক",
+    "practiceStepProgress": "{total} ৰ ভিতৰত {done}"
 }

@@ -5,6 +5,10 @@ class AnalyticsPracticeConstants {
   static const int maxHints = 5;
   static const Duration recentPracticeCooldown = Duration(hours: 24);
 
+  /// How long a right answer stays on screen before practice moves on. Message
+  /// practice holds its answers for the same beat, so the two feel alike.
+  static const Duration correctAnswerHold = Duration(milliseconds: 1000);
+
   /// How long a live session may sit without user interaction before it is
   /// auto-ended. See practice-exercises.instructions.md § Session Persistence
   /// & Lifecycle.

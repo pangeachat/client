@@ -10248,5 +10248,10 @@
     "learningCoursesFilterTooltip": "Sadece öğrendiğiniz kursları göster",
     "searchCoursesHint": "Kurs ara",
     "noCoursesMatchSearch": "Aramanızla eşleşen kurs bulunamadı.",
-    "searchVocabByWordOrMeaningHint": "Kelimeye veya anlamına göre ara"
+    "searchVocabByWordOrMeaningHint": "Kelimeye veya anlamına göre ara",
+    "practiceTapABlank": "Doldurmak için boşluğa dokunun",
+    "practiceListeningPrompt": "Hangisi ‘{word}’ diyor?",
+    "practiceMeaningPrompt": "‘{word}’ ne anlama geliyor?",
+    "practiceEmojiPrompt": "‘{word}’ için bir emoji seçin",
+    "practiceStepProgress": "{total} üzerinden {done}"
 }

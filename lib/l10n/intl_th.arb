@@ -10579,5 +10579,10 @@
     "learningCoursesFilterTooltip": "แสดงเฉพาะคอร์สที่คุณกำลังเรียน",
     "searchCoursesHint": "ค้นหาคอร์ส",
     "noCoursesMatchSearch": "ไม่มีคอร์สที่ตรงกับการค้นหาของคุณ",
-    "searchVocabByWordOrMeaningHint": "ค้นหาด้วยคำศัพท์หรือความหมาย"
+    "searchVocabByWordOrMeaningHint": "ค้นหาด้วยคำศัพท์หรือความหมาย",
+    "practiceTapABlank": "แตะช่องว่างเพื่อเติมคำ",
+    "practiceListeningPrompt": "คำไหนอ่านว่า '{word}'?",
+    "practiceMeaningPrompt": "'{word}' หมายความว่าอะไร?",
+    "practiceEmojiPrompt": "เลือกอิโมจิสำหรับ '{word}'",
+    "practiceStepProgress": "{done} จาก {total}"
 }

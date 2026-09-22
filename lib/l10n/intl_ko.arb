@@ -10140,5 +10140,10 @@
     "learningCoursesFilterTooltip": "내가 배우는 코스만 표시",
     "searchCoursesHint": "코스 검색",
     "noCoursesMatchSearch": "검색과 일치하는 코스가 없습니다.",
-    "searchVocabByWordOrMeaningHint": "단어 또는 의미로 검색"
+    "searchVocabByWordOrMeaningHint": "단어 또는 의미로 검색",
+    "practiceTapABlank": "빈칸을 탭하여 채우세요",
+    "practiceListeningPrompt": "‘{word}’라고 말하는 것은 어느 것인가요?",
+    "practiceMeaningPrompt": "‘{word}’는 무슨 뜻인가요?",
+    "practiceEmojiPrompt": "‘{word}’에 맞는 이모티콘을 선택하세요",
+    "practiceStepProgress": "{done}/{total}"
 }

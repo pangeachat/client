@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "Montre sèlman kou w ap aprann yo",
     "searchCoursesHint": "Chèche kou",
     "noCoursesMatchSearch": "Pa gen okenn kou ki koresponn ak rechèch ou an.",
-    "searchVocabByWordOrMeaningHint": "Chèche pa mo oswa siyifikasyon"
+    "searchVocabByWordOrMeaningHint": "Chèche pa mo oswa siyifikasyon",
+    "practiceTapABlank": "Tape yon espas vid pou ranpli li",
+    "practiceListeningPrompt": "Kilès ki di ‘{word}’?",
+    "practiceMeaningPrompt": "Kisa ‘{word}’ vle di?",
+    "practiceEmojiPrompt": "Chwazi yon emoji pou ‘{word}’",
+    "practiceStepProgress": "{done} sou {total}"
 }

@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "تەنها ئەو خولانە نیشان بدە کە تێیدا فێردەبیت",
     "searchCoursesHint": "گەڕان بەدوای خولەکاندا",
     "noCoursesMatchSearch": "هیچ خولێک لەگەڵ گەڕانەکەتدا ناگونجێت.",
-    "searchVocabByWordOrMeaningHint": "بە وشە یان واتاکەی بگەڕێ"
+    "searchVocabByWordOrMeaningHint": "بە وشە یان واتاکەی بگەڕێ",
+    "practiceTapABlank": "بۆ پڕکردنەوەی، دەست لە بۆشایییەک بدە",
+    "practiceListeningPrompt": "کامیان دەڵێت '‎{word}‎'؟",
+    "practiceMeaningPrompt": "وشەی '‎{word}‎' چی دەگەیەنێت؟",
+    "practiceEmojiPrompt": "ئیمۆجییەک بۆ '‎{word}‎' هەڵبژێرە",
+    "practiceStepProgress": "{done} لە {total}"
 }

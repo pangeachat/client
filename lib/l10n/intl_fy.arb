@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "Lit allinnich kursussen sjen dêr't jo yn leare",
     "searchCoursesHint": "Sykje kursussen",
     "noCoursesMatchSearch": "Gjin kursussen komme oerien mei jo sykopdracht.",
-    "searchVocabByWordOrMeaningHint": "Sykje op wurd of betsjutting"
+    "searchVocabByWordOrMeaningHint": "Sykje op wurd of betsjutting",
+    "practiceTapABlank": "Tik op in leech fjild om it yn te foljen",
+    "practiceListeningPrompt": "Hokker seit ‘{word}’?",
+    "practiceMeaningPrompt": "Wat betsjut ‘{word}’?",
+    "practiceEmojiPrompt": "Kies in emoji foar ‘{word}’",
+    "practiceStepProgress": "{done} fan {total}"
 }

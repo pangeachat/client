@@ -9944,5 +9944,10 @@
     "learningCoursesFilterTooltip": "Näita ainult kursuseid, mida õpid",
     "searchCoursesHint": "Otsi kursuseid",
     "noCoursesMatchSearch": "Sinu otsingule vastavaid kursuseid ei leitud.",
-    "searchVocabByWordOrMeaningHint": "Otsi sõna või tähenduse järgi"
+    "searchVocabByWordOrMeaningHint": "Otsi sõna või tähenduse järgi",
+    "practiceTapABlank": "Täitmiseks puuduta tühja kohta",
+    "practiceListeningPrompt": "Milline neist ütleb „{word}“?",
+    "practiceMeaningPrompt": "Mida tähendab „{word}“?",
+    "practiceEmojiPrompt": "Vali emotikon sõnale „{word}“",
+    "practiceStepProgress": "{done} / {total}"
 }

@@ -171,6 +171,10 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
               AsyncLoaded() => switch (state.value) {
                 MultipleChoicePracticeExerciseModel() =>
                   MessageMorphInputBarContent(
+                    // A fresh state per question: the picked tag lives in the
+                    // widget's state, and a memoized next question resolves
+                    // before a loading frame would have cleared it.
+                    key: ValueKey(state.value.practiceTarget),
                     controller: widget.controller,
                     activity: state.value as MorphPracticeExerciseModel,
                     selectedToken: widget.selectedToken,

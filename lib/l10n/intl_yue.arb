@@ -10904,5 +10904,10 @@
     "learningCoursesFilterTooltip": "只顯示你正在學習的課程",
     "searchCoursesHint": "搜尋課程",
     "noCoursesMatchSearch": "沒有課程符合你的搜尋。",
-    "searchVocabByWordOrMeaningHint": "按詞語或意思搜尋"
+    "searchVocabByWordOrMeaningHint": "按詞語或意思搜尋",
+    "practiceTapABlank": "點擊空格填寫",
+    "practiceListeningPrompt": "邊個讀音係「{word}」？",
+    "practiceMeaningPrompt": "「{word}」係咩意思？",
+    "practiceEmojiPrompt": "為「{word}」揀個表情符號",
+    "practiceStepProgress": "{done} / {total}"
 }

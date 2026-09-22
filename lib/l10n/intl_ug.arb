@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "سىز ئۆگىنىۋاتقان كۇرسلارنىلا كۆرسەت",
     "searchCoursesHint": "كۇرس ئىزدە",
     "noCoursesMatchSearch": "ئىزدەش نەتىجىڭىزگە ماس كېلىدىغان كۇرس يوق.",
-    "searchVocabByWordOrMeaningHint": "سۆز ياكى مەنىسى بويىچە ئىزدەش"
+    "searchVocabByWordOrMeaningHint": "سۆز ياكى مەنىسى بويىچە ئىزدەش",
+    "practiceTapABlank": "بوش ئورۇننى بېسىپ تولدۇرۇڭ",
+    "practiceListeningPrompt": "قايسىسى «{word}» دەيدۇ؟",
+    "practiceMeaningPrompt": "«{word}» نىڭ مەنىسى نېمە؟",
+    "practiceEmojiPrompt": "«{word}» ئۈچۈن بىر ئىموجى تاللاڭ",
+    "practiceStepProgress": "{total} دىن {done}"
 }

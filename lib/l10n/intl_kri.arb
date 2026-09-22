@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "Sho kɔses we yu de lan nɔmɔ",
     "searchCoursesHint": "Luk fɔ kɔses",
     "noCoursesMatchSearch": "No kɔs nɔ match yu saych.",
-    "searchVocabByWordOrMeaningHint": "Luk fɔ wɔd ɔ mining"
+    "searchVocabByWordOrMeaningHint": "Luk fɔ wɔd ɔ mining",
+    "practiceTapABlank": "Tap wan blank fɔ fil am",
+    "practiceListeningPrompt": "Us wan se ‘{word}’?",
+    "practiceMeaningPrompt": "Wetin ‘{word}’ min?",
+    "practiceEmojiPrompt": "Pik wan emoji fɔ ‘{word}’",
+    "practiceStepProgress": "{done} pan {total}"
 }

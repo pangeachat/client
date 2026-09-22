@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "Tunjukkan hanya kursus yang anda pelajari",
     "searchCoursesHint": "Cari kursus",
     "noCoursesMatchSearch": "Tiada kursus sepadan dengan carian anda.",
-    "searchVocabByWordOrMeaningHint": "Cari mengikut perkataan atau maksud"
+    "searchVocabByWordOrMeaningHint": "Cari mengikut perkataan atau maksud",
+    "practiceTapABlank": "Ketik tempat kosong untuk mengisinya",
+    "practiceListeningPrompt": "Yang mana satu menyebut ‘{word}’?",
+    "practiceMeaningPrompt": "Apakah maksud ‘{word}’?",
+    "practiceEmojiPrompt": "Pilih emoji untuk ‘{word}’",
+    "practiceStepProgress": "{done} daripada {total}"
 }

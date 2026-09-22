@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "یوازې هغه کورسونه وښایاست چې تاسو یې زده کوئ",
     "searchCoursesHint": "کورسونه وپلټئ",
     "noCoursesMatchSearch": "ستاسو د لټون سره سم هیڅ کورس شتون نلري.",
-    "searchVocabByWordOrMeaningHint": "د کلمې یا معنی له مخې لټون وکړئ"
+    "searchVocabByWordOrMeaningHint": "د کلمې یا معنی له مخې لټون وکړئ",
+    "practiceTapABlank": "د ډکولو لپاره په خالي ځای ټایپ کړئ",
+    "practiceListeningPrompt": "کوم یو وایي ‘{word}’؟",
+    "practiceMeaningPrompt": "‘{word}’ څه معنی لري؟",
+    "practiceEmojiPrompt": "د ‘{word}’ لپاره یو ایموجي وټاکئ",
+    "practiceStepProgress": "{done} د {total}"
 }

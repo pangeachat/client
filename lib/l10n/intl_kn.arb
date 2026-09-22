@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "ನೀವು ಕಲಿಯುತ್ತಿರುವ ಕೋರ್ಸ್‌ಗಳನ್ನು ಮಾತ್ರ ತೋರಿಸಿ",
     "searchCoursesHint": "ಕೋರ್ಸ್‌ಗಳನ್ನು ಹುಡುಕಿ",
     "noCoursesMatchSearch": "ನಿಮ್ಮ ಹುಡುಕಾಟಕ್ಕೆ ಯಾವುದೇ ಕೋರ್ಸ್‌ಗಳು ಹೊಂದಿಕೆಯಾಗುವುದಿಲ್ಲ.",
-    "searchVocabByWordOrMeaningHint": "ಪದ ಅಥವಾ ಅರ್ಥದ ಮೂಲಕ ಹುಡುಕಿ"
+    "searchVocabByWordOrMeaningHint": "ಪದ ಅಥವಾ ಅರ್ಥದ ಮೂಲಕ ಹುಡುಕಿ",
+    "practiceTapABlank": "ಭರ್ತಿ ಮಾಡಲು ಖಾಲಿ ಜಾಗವನ್ನು ಟ್ಯಾಪ್ ಮಾಡಿ",
+    "practiceListeningPrompt": "‘{word}’ ಎಂದು ಯಾವುದು ಹೇಳುತ್ತದೆ?",
+    "practiceMeaningPrompt": "‘{word}’ ಎಂದರೆ ಏನು?",
+    "practiceEmojiPrompt": "‘{word}’ ಗಾಗಿ ಎಮೋಜಿಯನ್ನು ಆರಿಸಿ",
+    "practiceStepProgress": "{total} ರಲ್ಲಿ {done}"
 }

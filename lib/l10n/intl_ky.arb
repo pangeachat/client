@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "Сиз үйрөнүп жаткан курстарды гана көрсөтүү",
     "searchCoursesHint": "Курстарды издөө",
     "noCoursesMatchSearch": "Издөөңүзгө эч кандай курс дал келген жок.",
-    "searchVocabByWordOrMeaningHint": "Сөз же мааниси боюнча издөө"
+    "searchVocabByWordOrMeaningHint": "Сөз же мааниси боюнча издөө",
+    "practiceTapABlank": "Бош орунду толтуруу үчүн таптаңыз",
+    "practiceListeningPrompt": "Кайсынысы «{word}» дейт?",
+    "practiceMeaningPrompt": "«{word}» эмнени билдирет?",
+    "practiceEmojiPrompt": "«{word}» үчүн эмодзи тандаңыз",
+    "practiceStepProgress": "{total} ичинен {done}"
 }

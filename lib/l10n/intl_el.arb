@@ -10822,5 +10822,10 @@
     "learningCoursesFilterTooltip": "Εμφάνιση μόνο των μαθημάτων που μαθαίνετε",
     "searchCoursesHint": "Αναζήτηση μαθημάτων",
     "noCoursesMatchSearch": "Κανένα μάθημα δεν ταιριάζει με την αναζήτησή σας.",
-    "searchVocabByWordOrMeaningHint": "Αναζήτηση με λέξη ή έννοια"
+    "searchVocabByWordOrMeaningHint": "Αναζήτηση με λέξη ή έννοια",
+    "practiceTapABlank": "Πατήστε ένα κενό για να το συμπληρώσετε",
+    "practiceListeningPrompt": "Ποιο λέει «{word}»;",
+    "practiceMeaningPrompt": "Τι σημαίνει «{word}»;",
+    "practiceEmojiPrompt": "Διαλέξτε ένα emoji για το «{word}»",
+    "practiceStepProgress": "{done} από {total}"
 }

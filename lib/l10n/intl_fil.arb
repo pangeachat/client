@@ -10807,5 +10807,10 @@
     "learningCoursesFilterTooltip": "Ipakita lang ang mga kursong pinag-aaralan mo",
     "searchCoursesHint": "Maghanap ng mga kurso",
     "noCoursesMatchSearch": "Walang kursong tumutugma sa iyong hinahanap.",
-    "searchVocabByWordOrMeaningHint": "Maghanap ayon sa salita o kahulugan"
+    "searchVocabByWordOrMeaningHint": "Maghanap ayon sa salita o kahulugan",
+    "practiceTapABlank": "I-tap ang patlang para punan",
+    "practiceListeningPrompt": "Alin ang nagsasabing ‘{word}’?",
+    "practiceMeaningPrompt": "Ano ang ibig sabihin ng ‘{word}’?",
+    "practiceEmojiPrompt": "Pumili ng emoji para sa ‘{word}’",
+    "practiceStepProgress": "{done} sa {total}"
 }

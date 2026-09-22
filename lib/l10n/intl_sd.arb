@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "صرف اهي ڪورس ڏيکاريو جن ۾ توهان سکي رهيا آهيو",
     "searchCoursesHint": "ڪورس ڳوليو",
     "noCoursesMatchSearch": "توهان جي ڳولا سان ڪو به ڪورس نٿو ملي.",
-    "searchVocabByWordOrMeaningHint": "لفظ يا معنيٰ سان ڳوليو"
+    "searchVocabByWordOrMeaningHint": "لفظ يا معنيٰ سان ڳوليو",
+    "practiceTapABlank": "خالي جاءِ ڀرڻ لاءِ ان تي ٽيپ ڪريو",
+    "practiceListeningPrompt": "ڪهڙو چوي ٿو ‘{word}’؟",
+    "practiceMeaningPrompt": "‘{word}’ جو ڇا مطلب آهي؟",
+    "practiceEmojiPrompt": "‘{word}’ لاءِ هڪ ايموجي چونڊيو",
+    "practiceStepProgress": "{total} مان {done}"
 }

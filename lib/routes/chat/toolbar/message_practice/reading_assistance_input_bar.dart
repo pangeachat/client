@@ -9,8 +9,6 @@ import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/message_practice_mode_enum.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/practice_activity_card.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/practice_controller.dart';
-import 'package:fluffychat/routes/chat/toolbar/message_practice/toolbar_button.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 
 const double minContentHeight = 120;
 
@@ -18,11 +16,13 @@ class ReadingAssistanceInputBar extends StatefulWidget {
   final PracticeController controller;
   final PangeaToken? selectedToken;
   final double maxWidth;
+  final VoidCallback onClose;
 
   const ReadingAssistanceInputBar(
     this.controller, {
     required this.maxWidth,
     required this.selectedToken,
+    required this.onClose,
     super.key,
   });
 
@@ -53,28 +53,6 @@ class ReadingAssistanceInputBarState extends State<ReadingAssistanceInputBar> {
         return Column(
           spacing: 4.0,
           children: [
-            Row(
-              spacing: 4.0,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ...MessagePracticeMode.practiceModes.map((m) {
-                  final complete = widget.controller.isPracticeSessionDone(
-                    m.associatedActivityType!,
-                  );
-
-                  final practiceMode = widget.controller.practiceMode;
-                  return ToolbarButton(
-                    mode: m,
-                    setMode: () => widget.controller.updateToolbarMode(m),
-                    isComplete: complete,
-                    isSelected: practiceMode == m,
-                    shimmer:
-                        practiceMode == MessagePracticeMode.noneSelected &&
-                        !complete,
-                  );
-                }),
-              ],
-            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Material(
@@ -100,6 +78,7 @@ class ReadingAssistanceInputBarState extends State<ReadingAssistanceInputBar> {
                               selectedToken: widget.selectedToken,
                               maxWidth: widget.maxWidth,
                               flagAction: _flagAction,
+                              onClose: widget.onClose,
                             ),
                           ),
                         ),
@@ -142,12 +121,14 @@ class _ReadingAssistanceBarContent extends StatelessWidget {
   final PangeaToken? selectedToken;
   final double maxWidth;
   final ValueNotifier<VoidCallback?> flagAction;
+  final VoidCallback onClose;
 
   const _ReadingAssistanceBarContent({
     required this.controller,
     required this.selectedToken,
     required this.maxWidth,
     required this.flagAction,
+    required this.onClose,
   });
 
   @override
@@ -163,14 +144,14 @@ class _ReadingAssistanceBarContent extends StatelessWidget {
     switch (mode) {
       case MessagePracticeMode.noneSelected:
         return controller.isTotallyDone
-            ? const _AllDoneWidget()
+            ? _AllDoneWidget(onClose: onClose)
             : const Icon(Symbols.fitness_center, size: 60.0);
 
       case MessagePracticeMode.wordEmoji:
       case MessagePracticeMode.wordMeaning:
       case MessagePracticeMode.listening:
         if (controller.isTotallyDone) {
-          return const _AllDoneWidget();
+          return _AllDoneWidget(onClose: onClose);
         }
 
         if (target == null || activityCompleted) {
@@ -190,7 +171,7 @@ class _ReadingAssistanceBarContent extends StatelessWidget {
         );
       case MessagePracticeMode.wordMorph:
         if (controller.isTotallyDone) {
-          return const _AllDoneWidget();
+          return _AllDoneWidget(onClose: onClose);
         }
         if (activityCompleted) {
           return Icon(
@@ -216,7 +197,9 @@ class _ReadingAssistanceBarContent extends StatelessWidget {
 }
 
 class _AllDoneWidget extends StatelessWidget {
-  const _AllDoneWidget();
+  final VoidCallback onClose;
+
+  const _AllDoneWidget({required this.onClose});
 
   @override
   Widget build(BuildContext context) {
@@ -232,10 +215,8 @@ class _AllDoneWidget extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
         ElevatedButton(
+          onPressed: onClose,
           child: Text(L10n.of(context).continueText),
-          onPressed: () {
-            MatrixState.pAnyState.closeOverlay();
-          },
         ),
       ],
     );

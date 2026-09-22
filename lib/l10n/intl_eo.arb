@@ -10892,5 +10892,10 @@
     "learningCoursesFilterTooltip": "Montri nur kursojn, en kiuj vi lernas",
     "searchCoursesHint": "Serĉi kursojn",
     "noCoursesMatchSearch": "Neniuj kursoj kongruas kun via serĉo.",
-    "searchVocabByWordOrMeaningHint": "Serĉi laŭ vorto aŭ signifo"
+    "searchVocabByWordOrMeaningHint": "Serĉi laŭ vorto aŭ signifo",
+    "practiceTapABlank": "Frapu malplenaĵon por plenigi ĝin",
+    "practiceListeningPrompt": "Kiu diras ‘{word}’?",
+    "practiceMeaningPrompt": "Kion signifas ‘{word}’?",
+    "practiceEmojiPrompt": "Elektu emoji-on por ‘{word}’",
+    "practiceStepProgress": "{done} el {total}"
 }

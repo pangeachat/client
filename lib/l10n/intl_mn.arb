@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "Таны сурч буй хичээлүүдийг л харуулах",
     "searchCoursesHint": "Хичээл хайх",
     "noCoursesMatchSearch": "Таны хайлтад тохирох хичээл байхгүй байна.",
-    "searchVocabByWordOrMeaningHint": "Үг эсвэл утгаар хайх"
+    "searchVocabByWordOrMeaningHint": "Үг эсвэл утгаар хайх",
+    "practiceTapABlank": "Хоосон зайг бөглөхийн тулд товшино уу",
+    "practiceListeningPrompt": "Алийг нь ‘{word}’ гэж хэлдэг вэ?",
+    "practiceMeaningPrompt": "‘{word}’ гэдэг нь юу гэсэн үг вэ?",
+    "practiceEmojiPrompt": "‘{word}’ үгэнд тохирох эможиг сонгоно уу",
+    "practiceStepProgress": "{total}-аас {done}"
 }

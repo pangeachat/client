@@ -10716,5 +10716,10 @@
     "learningCoursesFilterTooltip": "学習中のコースのみを表示",
     "searchCoursesHint": "コースを検索",
     "noCoursesMatchSearch": "検索条件に一致するコースはありません。",
-    "searchVocabByWordOrMeaningHint": "単語または意味で検索"
+    "searchVocabByWordOrMeaningHint": "単語または意味で検索",
+    "practiceTapABlank": "空欄をタップして埋めましょう",
+    "practiceListeningPrompt": "「{word}」と言っているのはどれ？",
+    "practiceMeaningPrompt": "「{word}」の意味は？",
+    "practiceEmojiPrompt": "「{word}」に合う絵文字を選んでください",
+    "practiceStepProgress": "{done}/{total}"
 }

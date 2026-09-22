@@ -10039,5 +10039,10 @@
     "learningCoursesFilterTooltip": "நீங்கள் கற்கும் பாடநெறிகளை மட்டும் காட்டு",
     "searchCoursesHint": "பாடநெறிகளைத் தேடு",
     "noCoursesMatchSearch": "உங்கள் தேடலுடன் எந்தப் பாடநெறிகளும் பொருந்தவில்லை.",
-    "searchVocabByWordOrMeaningHint": "வார்த்தை அல்லது பொருள் மூலம் தேடவும்"
+    "searchVocabByWordOrMeaningHint": "வார்த்தை அல்லது பொருள் மூலம் தேடவும்",
+    "practiceTapABlank": "நிரப்ப ஒரு காலியிடத்தைத் தட்டவும்",
+    "practiceListeningPrompt": "‘{word}’ என்று சொல்வது எது?",
+    "practiceMeaningPrompt": "‘{word}’ என்றால் என்ன அர்த்தம்?",
+    "practiceEmojiPrompt": "‘{word}’ என்பதற்கு ஒரு ஈமோஜியைத் தேர்ந்தெடுக்கவும்",
+    "practiceStepProgress": "{total} இல் {done}"
 }

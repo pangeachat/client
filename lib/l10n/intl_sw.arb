@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "Onyesha kozi unazojifunza pekee",
     "searchCoursesHint": "Tafuta kozi",
     "noCoursesMatchSearch": "Hakuna kozi zinazolingana na utafutaji wako.",
-    "searchVocabByWordOrMeaningHint": "Tafuta kwa neno au maana"
+    "searchVocabByWordOrMeaningHint": "Tafuta kwa neno au maana",
+    "practiceTapABlank": "Gonga nafasi iliyo wazi ili ujaze",
+    "practiceListeningPrompt": "Kipi kinasema ‘{word}’?",
+    "practiceMeaningPrompt": "‘{word}’ inamaanisha nini?",
+    "practiceEmojiPrompt": "Chagua emoji ya ‘{word}’",
+    "practiceStepProgress": "{done} kati ya {total}"
 }

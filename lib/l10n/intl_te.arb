@@ -10897,5 +10897,10 @@
     "learningCoursesFilterTooltip": "మీరు నేర్చుకుంటున్న కోర్సులను మాత్రమే చూపించు",
     "searchCoursesHint": "కోర్సులను శోధించండి",
     "noCoursesMatchSearch": "మీ శోధనకు సరిపోలే కోర్సులు లేవు.",
-    "searchVocabByWordOrMeaningHint": "పదం లేదా అర్థం ద్వారా శోధించండి"
+    "searchVocabByWordOrMeaningHint": "పదం లేదా అర్థం ద్వారా శోధించండి",
+    "practiceTapABlank": "పూరించడానికి ఖాళీని నొక్కండి",
+    "practiceListeningPrompt": "‘{word}’ అని ఏది చెబుతుంది?",
+    "practiceMeaningPrompt": "‘{word}’ అంటే ఏమిటి?",
+    "practiceEmojiPrompt": "‘{word}’ కోసం ఒక ఎమోజీని ఎంచుకోండి",
+    "practiceStepProgress": "{total}లో {done}"
 }

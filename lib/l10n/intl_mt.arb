@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "Uri biss il-korsijiet li qed titgħallem fihom",
     "searchCoursesHint": "Fittex korsijiet",
     "noCoursesMatchSearch": "L-ebda kors ma jaqbel mat-tfittxija tiegħek.",
-    "searchVocabByWordOrMeaningHint": "Fittex bil-kelma jew bit-tifsira"
+    "searchVocabByWordOrMeaningHint": "Fittex bil-kelma jew bit-tifsira",
+    "practiceTapABlank": "Tektek vojt biex timlieh",
+    "practiceListeningPrompt": "Liema waħda tgħid ‘{word}’?",
+    "practiceMeaningPrompt": "Xi tfisser ‘{word}’?",
+    "practiceEmojiPrompt": "Agħżel emoji għal ‘{word}’",
+    "practiceStepProgress": "{done} minn {total}"
 }

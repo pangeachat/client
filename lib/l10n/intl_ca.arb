@@ -10074,5 +10074,10 @@
     "learningCoursesFilterTooltip": "Mostra només els cursos en què estàs aprenent",
     "searchCoursesHint": "Cerca cursos",
     "noCoursesMatchSearch": "No hi ha cursos que coincideixin amb la cerca.",
-    "searchVocabByWordOrMeaningHint": "Cerca per paraula o significat"
+    "searchVocabByWordOrMeaningHint": "Cerca per paraula o significat",
+    "practiceTapABlank": "Toca un espai en blanc per omplir-lo",
+    "practiceListeningPrompt": "Quin diu «{word}»?",
+    "practiceMeaningPrompt": "Què significa «{word}»?",
+    "practiceEmojiPrompt": "Tria un emoji per a «{word}»",
+    "practiceStepProgress": "{done} de {total}"
 }

@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "Shfaq vetëm kurset ku po mësoni",
     "searchCoursesHint": "Kërko kurse",
     "noCoursesMatchSearch": "Asnjë kurs nuk përputhet me kërkimin tuaj.",
-    "searchVocabByWordOrMeaningHint": "Kërko sipas fjalës ose kuptimit"
+    "searchVocabByWordOrMeaningHint": "Kërko sipas fjalës ose kuptimit",
+    "practiceTapABlank": "Trokit një vend bosh për ta plotësuar",
+    "practiceListeningPrompt": "Cila thotë ‘{word}’?",
+    "practiceMeaningPrompt": "Çfarë do të thotë ‘{word}’?",
+    "practiceEmojiPrompt": "Zgjidh një emoji për ‘{word}’",
+    "practiceStepProgress": "{done} nga {total}"
 }

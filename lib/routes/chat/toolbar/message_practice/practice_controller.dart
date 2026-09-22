@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 
 import 'package:async/async.dart';
@@ -13,6 +15,7 @@ import 'package:fluffychat/pangea/common/models/llm_feedback_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_constants.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
@@ -21,6 +24,7 @@ import 'package:fluffychat/routes/chat/toolbar/message_practice/message_practice
 import 'package:fluffychat/routes/chat/toolbar/message_practice/morph_selection.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/practice_exercise_memo.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/practice_record_controller.dart';
+import 'package:fluffychat/routes/chat/toolbar/message_practice/practice_slot_order.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/message_practice_exercise_request.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_choice.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_model.dart';
@@ -59,11 +63,23 @@ class PracticeController with ChangeNotifier {
   MorphSelection? _selectedMorph;
   PracticeExerciseChoice? _selectedChoice;
 
+  /// The blank the learner is filling. Every mode starts on the message: a
+  /// token is chosen first, and only then does the tray offer its answers.
+  /// Grammar keeps its own [_selectedMorph], which names a feature as well as
+  /// a token.
+  PangeaToken? _selectedSlotToken;
+
+  /// Moves the learner on once a right answer has been held up. Cancelled by
+  /// anything that changes the selection first, and on dispose.
+  Timer? _advanceTimer;
+  bool _disposed = false;
+
   PracticeSelection? practiceSelection;
 
   MessagePracticeMode get practiceMode => _practiceMode;
   MorphSelection? get selectedMorph => _selectedMorph;
   PracticeExerciseChoice? get selectedChoice => _selectedChoice;
+  PangeaToken? get selectedSlotToken => _selectedSlotToken;
 
   PracticeTarget? get currentTarget {
     final activityType = _practiceMode.associatedActivityType;
@@ -85,10 +101,52 @@ class PracticeController with ChangeNotifier {
           !PracticeRecordController.hasAnyResponse(_activity!.practiceTarget);
     }
 
-    return _selectedChoice == null &&
+    return _selectedSlotToken != null &&
         !PracticeRecordController.hasAnyCorrectChoices(
           _activity!.practiceTarget,
         );
+  }
+
+  /// The blanks pull for attention until one is chosen, so the first move is
+  /// always visible on the message. Grammar's puzzle pieces run their own
+  /// shimmer off [selectedMorph].
+  bool get showSlotShimmer {
+    final target = currentTarget;
+    if (target == null) return false;
+    return _selectedSlotToken == null &&
+        !PracticeRecordController.hasAnyCorrectChoices(target);
+  }
+
+  /// Steps answered in the current mode, and how many there are, for the
+  /// practice header. A match target carries one step per token; grammar
+  /// carries one target per step.
+  int get completedSteps {
+    final activityType = _practiceMode.associatedActivityType;
+    if (activityType == null) return 0;
+    if (activityType == PracticeExerciseTypeEnum.morphId) {
+      return practiceSelection
+              ?.activities(activityType)
+              .where(PracticeRecordController.isCompleteByTarget)
+              .length ??
+          0;
+    }
+
+    final target = practiceSelection?.getTarget(activityType);
+    if (target == null) return 0;
+    return target.tokens
+        .where(
+          (token) => PracticeRecordController.isCompleteByToken(target, token),
+        )
+        .length;
+  }
+
+  int get totalSteps {
+    final activityType = _practiceMode.associatedActivityType;
+    if (activityType == null) return 0;
+    if (activityType == PracticeExerciseTypeEnum.morphId) {
+      return practiceSelection?.activities(activityType).length ?? 0;
+    }
+    return practiceSelection?.getTarget(activityType)?.tokens.length ?? 0;
   }
 
   bool get isTotallyDone =>
@@ -103,12 +161,43 @@ class PracticeController with ChangeNotifier {
     return isPracticeSessionDone(activityType);
   }
 
+  /// How [choice] fared on the blank the learner is filling. Null until it has
+  /// been tried on that blank, so a choice carries no verdict from a word it
+  /// was tried on earlier.
   bool? wasCorrectMatch(PracticeExerciseChoice choice) {
-    if (_activity == null) return false;
+    final activity = _activity;
+    final token = _selectedSlotToken;
+    if (activity == null || token == null) return null;
     return PracticeRecordController.wasCorrectMatch(
-      _activity!.practiceTarget,
+      activity.practiceTarget,
+      token,
       choice,
     );
+  }
+
+  /// Whether [choice] is offered in the tray for the selected blank.
+  bool isChoiceShown(PracticeExerciseChoice choice) {
+    final activity = _activity;
+    final token = _selectedSlotToken;
+    if (activity == null || token == null) return false;
+    return PracticeRecordController.isChoiceShown(
+      activity.practiceTarget,
+      token,
+      choice,
+    );
+  }
+
+  /// Whether the selected blank has been answered correctly. The tray then
+  /// holds the answer up and stops taking picks until practice moves on.
+  ///
+  /// Per word, not per target: a match target holds every word in the mode,
+  /// so [isActivityCompleteByToken] would stay false until all were answered.
+  bool get isSelectedSlotAnswered {
+    final token = _selectedSlotToken;
+    if (token == null) return false;
+    final target = practiceTargetForToken(token);
+    return target != null &&
+        PracticeRecordController.isCompleteByToken(target, token);
   }
 
   bool? wasCorrectChoice(String choice) {
@@ -155,17 +244,89 @@ class PracticeController with ChangeNotifier {
   }
 
   void updateToolbarMode(MessagePracticeMode mode) {
+    _advanceTimer?.cancel();
     _selectedChoice = null;
+    _selectedSlotToken = null;
+    _selectedMorph = null;
     _practiceMode = mode;
-    if (_practiceMode != MessagePracticeMode.wordMorph) {
-      _selectedMorph = null;
-    }
+    _selectFirstOpenSlot();
     notifyListeners();
   }
 
   void updatePracticeMorph(MorphSelection newMorph) {
+    _advanceTimer?.cancel();
     _practiceMode = MessagePracticeMode.wordMorph;
     _selectedMorph = newMorph;
+    _selectedSlotToken = null;
+    notifyListeners();
+  }
+
+  /// Opens a mode on its first unanswered blank, so the tray starts on a
+  /// question rather than on "tap a blank".
+  void _selectFirstOpenSlot() {
+    if (_practiceMode == MessagePracticeMode.wordMorph) {
+      _selectMorphTarget(_nextOpenMorphTarget());
+    } else {
+      _selectedSlotToken = _nextOpenSlotToken();
+    }
+  }
+
+  PangeaToken? _nextOpenSlotToken({PangeaToken? after}) {
+    final activityType = _practiceMode.associatedActivityType;
+    if (activityType == null) return null;
+    final target = practiceSelection?.getTarget(activityType);
+    if (target == null) return null;
+    return PracticeSlotOrder.nextOpen(
+      PracticeSlotOrder.tokensInReadingOrder(target),
+      (token) => PracticeRecordController.isCompleteByToken(target, token),
+      after: after,
+    );
+  }
+
+  PracticeTarget? _nextOpenMorphTarget({PracticeTarget? after}) {
+    final targets = practiceSelection?.activities(
+      PracticeExerciseTypeEnum.morphId,
+    );
+    if (targets == null) return null;
+    return PracticeSlotOrder.nextOpen(
+      PracticeSlotOrder.targetsInReadingOrder(targets),
+      PracticeRecordController.isCompleteByTarget,
+      after: after,
+    );
+  }
+
+  /// A grammar target always names its feature — [PracticeTarget] refuses to
+  /// build one without it — so a missing one is a broken target, not an empty
+  /// selection.
+  void _selectMorphTarget(PracticeTarget? target) {
+    _selectedMorph = target == null
+        ? null
+        : MorphSelection(target.tokens.first, target.morphFeature!);
+  }
+
+  /// Holds a right answer on screen for the same beat as the practice
+  /// sessions, then moves on to the next unanswered blank by itself.
+  void _scheduleAdvance() {
+    _advanceTimer?.cancel();
+    _advanceTimer = Timer(AnalyticsPracticeConstants.correctAnswerHold, () {
+      if (_disposed) return;
+      _selectedChoice = null;
+      if (_practiceMode == MessagePracticeMode.wordMorph) {
+        _selectMorphTarget(_nextOpenMorphTarget(after: currentTarget));
+      } else {
+        _selectedSlotToken = _nextOpenSlotToken(after: _selectedSlotToken);
+      }
+      notifyListeners();
+    });
+  }
+
+  /// Choosing the blank is the first half of every match exercise. Tapping the
+  /// chosen one again clears it, so a learner can change their mind without
+  /// answering.
+  void onSlotSelect(PangeaToken token) {
+    _advanceTimer?.cancel();
+    _selectedSlotToken = _selectedSlotToken == token ? null : token;
+    _selectedChoice = null;
     notifyListeners();
   }
 
@@ -287,6 +448,12 @@ class PracticeController with ChangeNotifier {
       );
     }
 
+    // A right answer is held up in the tray for a beat, then practice moves on
+    // by itself. A wrong one leaves the blank open, so the next pick lands on
+    // the same word.
+    _selectedChoice = null;
+    if (isCorrect) _scheduleAdvance();
+
     notifyListeners();
   }
 
@@ -297,6 +464,19 @@ class PracticeController with ChangeNotifier {
       pangeaMessageEvent.messageDisplayLangCode,
       pangeaMessageEvent.messageDisplayRepresentation!.tokens!,
     );
+    // A mode picked while the selection was still loading had no blanks to
+    // land on; put it on its first one now.
+    if (_disposed || _practiceMode == MessagePracticeMode.noneSelected) return;
+    if (_selectedSlotToken != null || _selectedMorph != null) return;
+    _selectFirstOpenSlot();
+    notifyListeners();
+  }
+
+  @override
+  void dispose() {
+    _disposed = true;
+    _advanceTimer?.cancel();
+    super.dispose();
   }
 
   MessagePracticeExerciseRequest _buildExerciseRequest(PracticeTarget target) =>

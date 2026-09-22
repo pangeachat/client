@@ -10465,5 +10465,10 @@
     "learningCoursesFilterTooltip": "Visa endast kurser du lär dig i",
     "searchCoursesHint": "Sök kurser",
     "noCoursesMatchSearch": "Inga kurser matchar din sökning.",
-    "searchVocabByWordOrMeaningHint": "Sök efter ord eller betydelse"
+    "searchVocabByWordOrMeaningHint": "Sök efter ord eller betydelse",
+    "practiceTapABlank": "Tryck på en tom lucka för att fylla i den",
+    "practiceListeningPrompt": "Vilken säger ”{word}”?",
+    "practiceMeaningPrompt": "Vad betyder ”{word}”?",
+    "practiceEmojiPrompt": "Välj en emoji för ”{word}”",
+    "practiceStepProgress": "{done} av {total}"
 }

@@ -9958,5 +9958,10 @@
     "learningCoursesFilterTooltip": "Taispeáin na cúrsaí a bhfuil tú ag foghlaim iontu amháin",
     "searchCoursesHint": "Cuardaigh cúrsaí",
     "noCoursesMatchSearch": "Níor aimsíodh aon chúrsaí a mheaitseálann do chuardach.",
-    "searchVocabByWordOrMeaningHint": "Cuardaigh de réir focal nó brí"
+    "searchVocabByWordOrMeaningHint": "Cuardaigh de réir focal nó brí",
+    "practiceTapABlank": "Beartaigh ar spás bán chun é a líonadh",
+    "practiceListeningPrompt": "Cé acu a deir ‘{word}’?",
+    "practiceMeaningPrompt": "Cad a chiallaíonn ‘{word}’?",
+    "practiceEmojiPrompt": "Roghnaigh emoji do ‘{word}’",
+    "practiceStepProgress": "{done} as {total}"
 }

@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "Tampilake mung kursus sing lagi sampeyan sinau",
     "searchCoursesHint": "Telusuri kursus",
     "noCoursesMatchSearch": "Ora ana kursus sing cocog karo telusuran sampeyan.",
-    "searchVocabByWordOrMeaningHint": "Goleki miturut tembung utawa tegese"
+    "searchVocabByWordOrMeaningHint": "Goleki miturut tembung utawa tegese",
+    "practiceTapABlank": "Tutul sing kosong kanggo ngisi",
+    "practiceListeningPrompt": "Sing endi sing ngucapake ‘{word}’?",
+    "practiceMeaningPrompt": "Apa tegese ‘{word}’?",
+    "practiceEmojiPrompt": "Pilih emoji kanggo ‘{word}’",
+    "practiceStepProgress": "{done} saka {total}"
 }

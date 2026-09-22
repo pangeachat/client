@@ -9947,5 +9947,10 @@
     "learningCoursesFilterTooltip": "Rādīt tikai kursus, kuros mācāties",
     "searchCoursesHint": "Meklēt kursus",
     "noCoursesMatchSearch": "Jūsu meklēšanai nav atrasts neviens kurss.",
-    "searchVocabByWordOrMeaningHint": "Meklēt pēc vārda vai nozīmes"
+    "searchVocabByWordOrMeaningHint": "Meklēt pēc vārda vai nozīmes",
+    "practiceTapABlank": "Pieskarieties tukšajai vietai, lai to aizpildītu",
+    "practiceListeningPrompt": "Kurš saka „{word}”?",
+    "practiceMeaningPrompt": "Ko nozīmē „{word}”?",
+    "practiceEmojiPrompt": "Izvēlieties emocijzīmi vārdam „{word}”",
+    "practiceStepProgress": "{done} no {total}"
 }

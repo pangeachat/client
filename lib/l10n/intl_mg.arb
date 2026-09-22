@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "Asehoy ireo fianarana ianaranao ihany",
     "searchCoursesHint": "Tadiavo ny fianarana",
     "noCoursesMatchSearch": "Tsy misy fianarana mifanaraka amin'ny fikarohanao.",
-    "searchVocabByWordOrMeaningHint": "Tadiavo amin'ny teny na ny dikany"
+    "searchVocabByWordOrMeaningHint": "Tadiavo amin'ny teny na ny dikany",
+    "practiceTapABlank": "Tsindrio ny banga hamenoana azy",
+    "practiceListeningPrompt": "Iza no milaza hoe ‘{word}’?",
+    "practiceMeaningPrompt": "Inona no dikan'ny ‘{word}’?",
+    "practiceEmojiPrompt": "Mifidiana emoji ho an'ny ‘{word}’",
+    "practiceStepProgress": "{done} amin'ny {total}"
 }

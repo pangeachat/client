@@ -10864,5 +10864,10 @@
     "learningCoursesFilterTooltip": "Mostrar apenas os cursos em que está a aprender",
     "searchCoursesHint": "Procurar cursos",
     "noCoursesMatchSearch": "Nenhum curso corresponde à sua pesquisa.",
-    "searchVocabByWordOrMeaningHint": "Pesquisar por palavra ou significado"
+    "searchVocabByWordOrMeaningHint": "Pesquisar por palavra ou significado",
+    "practiceTapABlank": "Toca num espaço em branco para o preencheres",
+    "practiceListeningPrompt": "Qual deles diz ‘{word}’?",
+    "practiceMeaningPrompt": "O que significa ‘{word}’?",
+    "practiceEmojiPrompt": "Escolhe um emoji para ‘{word}’",
+    "practiceStepProgress": "{done} de {total}"
 }

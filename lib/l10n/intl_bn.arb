@@ -10575,5 +10575,10 @@
     "learningCoursesFilterTooltip": "শুধুমাত্র আপনি যে কোর্সগুলি শিখছেন তা দেখান",
     "searchCoursesHint": "কোর্স খুঁজুন",
     "noCoursesMatchSearch": "আপনার অনুসন্ধানের সাথে কোনো কোর্স মেলে না।",
-    "searchVocabByWordOrMeaningHint": "শব্দ বা অর্থ দিয়ে খুঁজুন"
+    "searchVocabByWordOrMeaningHint": "শব্দ বা অর্থ দিয়ে খুঁজুন",
+    "practiceTapABlank": "পূরণের জন্য একটি ফাঁকা জায়গায় ট্যাপ করুন",
+    "practiceListeningPrompt": "কোনটি ‘{word}’ বলে?",
+    "practiceMeaningPrompt": "‘{word}’ এর অর্থ কী?",
+    "practiceEmojiPrompt": "‘{word}’ এর জন্য একটি ইমোজি বেছে নিন",
+    "practiceStepProgress": "{total} এর মধ্যে {done}"
 }

@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "Hōʻike wale i nā papa āu e aʻo nei",
     "searchCoursesHint": "Huli papa",
     "noCoursesMatchSearch": "ʻAʻohe papa e like me kāu hulina.",
-    "searchVocabByWordOrMeaningHint": "Huli ma ka huaʻōlelo a i ʻole ke ʻano"
+    "searchVocabByWordOrMeaningHint": "Huli ma ka huaʻōlelo a i ʻole ke ʻano",
+    "practiceTapABlank": "Kaomi i kahi hakahaka e hoʻopiha ai",
+    "practiceListeningPrompt": "ʻO wai ka mea e ʻōlelo ana ‘{word}’?",
+    "practiceMeaningPrompt": "He aha ke ʻano o ‘{word}’?",
+    "practiceEmojiPrompt": "E koho i kahi emoji no ‘{word}’",
+    "practiceStepProgress": "{done} o {total}"
 }

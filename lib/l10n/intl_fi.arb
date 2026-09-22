@@ -9984,5 +9984,10 @@
     "learningCoursesFilterTooltip": "Näytä vain kurssit, joilla opiskelet",
     "searchCoursesHint": "Hae kursseja",
     "noCoursesMatchSearch": "Hakua vastaavia kursseja ei löytynyt.",
-    "searchVocabByWordOrMeaningHint": "Hae sanalla tai merkityksellä"
+    "searchVocabByWordOrMeaningHint": "Hae sanalla tai merkityksellä",
+    "practiceTapABlank": "Täytä tyhjä kohta napauttamalla",
+    "practiceListeningPrompt": "Kumpi sanoo ”{word}”?",
+    "practiceMeaningPrompt": "Mitä ”{word}” tarkoittaa?",
+    "practiceEmojiPrompt": "Valitse emoji sanalle ”{word}”",
+    "practiceStepProgress": "{done}/{total}"
 }

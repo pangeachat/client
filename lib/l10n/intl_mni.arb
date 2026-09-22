@@ -2351,5 +2351,10 @@
     "learningCoursesFilterTooltip": "মহাক্না তম্লিবা কোর্সশিং খক্তা উৎনবা",
     "searchCoursesHint": "কোর্সশিং শিংনবা",
     "noCoursesMatchSearch": "মহাক্না শিংলিবা কোর্স অমত্তা ফংদে।",
-    "searchVocabByWordOrMeaningHint": "ৱাহৈ নꯠত্ৰগা অর্থনা থিজেল"
+    "searchVocabByWordOrMeaningHint": "ৱাহৈ নꯠত্ৰগা অর্থনা থিজেল",
+    "practiceTapABlank": "খালি থাওবা ফংবা ফংহনবীয়ু",
+    "practiceListeningPrompt": "‘{word}’ হায়বদু করিনো?",
+    "practiceMeaningPrompt": "‘{word}’ হায়বসিগী অર્થ করিগুম্বা?",
+    "practiceEmojiPrompt": "‘{word}’ হায়বসিগী ইমোজি অমা খল্লু",
+    "practiceStepProgress": "{total} গী মনুংদা {done}"
 }

@@ -10579,5 +10579,10 @@
     "learningCoursesFilterTooltip": "केवल वे कोर्स दिखाएँ जिनमें आप सीख रहे हैं",
     "searchCoursesHint": "कोर्स खोजें",
     "noCoursesMatchSearch": "आपकी खोज से कोई कोर्स मेल नहीं खाता।",
-    "searchVocabByWordOrMeaningHint": "शब्द या अर्थ से खोजें"
+    "searchVocabByWordOrMeaningHint": "शब्द या अर्थ से खोजें",
+    "practiceTapABlank": "इसे भरने के लिए एक खाली जगह पर टैप करें",
+    "practiceListeningPrompt": "‘{word}’ कौन सा कहता है?",
+    "practiceMeaningPrompt": "‘{word}’ का क्या मतलब है?",
+    "practiceEmojiPrompt": "‘{word}’ के लिए एक इमोजी चुनें",
+    "practiceStepProgress": "{total} में से {done}"
 }
