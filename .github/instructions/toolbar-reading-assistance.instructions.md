@@ -145,6 +145,7 @@ This is especially important for mixed-language and polysemous inputs where the 
 
 - **Overlay, not navigation.** The toolbar never pushes a route. It's a composited overlay that lives on top of a page containing message bubbles. Dismissal returns to the exact same page state.
 - **Lazy loading.** Translation, TTS, and transcription are fetched only when the user activates the corresponding mode. Nothing is prefetched on message tap.
+- **L1 output honors the learner's script.** Translate and Speech Translation request and cache by the learner's full L1 code, so a Traditional Chinese learner never gets Simplified text. A regional variant that writes like its base language (English (US)) shares cached translations with it.
 - **Token-centric.** All assistance features require the message to have a tokenized representation. If tokens aren't available (message still loading, unsupported language), the toolbar shows limited functionality.
 - **First-click-only analytics.** Tapping the same word repeatedly doesn't keep earning XP. Only the first interaction with a word per session counts, preventing XP gaming.
 - **Deferred setState.** Because the overlay lives in the compositing layer alongside the chat, setState calls must be phase-aware to avoid "setState during build" errors. All state updates check the scheduler phase and defer if necessary.
