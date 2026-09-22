@@ -30,19 +30,10 @@ class PLanguageStore {
   /// they don't belong in native-language selection and the app UI is
   /// translated by language + script, not by region.
   List<LanguageModel> get baseOptions {
-    // Collapse near-identical scripts so a variant isn't kept for a trivial
-    // difference (generic Han `Hani` vs Simplified `Hans`; Arabic `Arab` vs
-    // Nastaliq `Aran`).
-    String scriptClass(String s) {
-      if (s == 'Hans' || s == 'Hani') return 'Hans';
-      if (s == 'Arab' || s == 'Aran') return 'Arab';
-      return s;
-    }
-
     final baseScript = <String, String>{};
     for (final lang in _langList) {
       if (lang.langCode == lang.langCodeShort) {
-        baseScript[lang.langCodeShort] = scriptClass(lang.script);
+        baseScript[lang.langCodeShort] = _scriptClass(lang.script);
       }
     }
 
@@ -50,8 +41,27 @@ class PLanguageStore {
       if (lang.langCode == lang.langCodeShort) return true; // base language
       final base = baseScript[lang.langCodeShort];
       if (base == null) return true; // no base row — don't drop the language
-      return scriptClass(lang.script) != base; // keep only a distinct script
+      return _scriptClass(lang.script) != base; // keep only a distinct script
     }).toList();
+  }
+
+  // Collapse near-identical scripts so a variant isn't kept for a trivial
+  // difference (generic Han `Hani` vs Simplified `Hans`; Arabic `Arab` vs
+  // Nastaliq `Aran`).
+  static String _scriptClass(String s) {
+    if (s == 'Hans' || s == 'Hani') return 'Hans';
+    if (s == 'Arab' || s == 'Aran') return 'Arab';
+    return s;
+  }
+
+  /// Whether text in language [a] reads as text in language [b]: the same base
+  /// language in the same script, by the rule [baseOptions] uses. `en` matches
+  /// `en-US` and `zh` matches `zh-CN`, but `zh` does not match `zh-TW`.
+  static bool sameWrittenLanguage(String a, String b) {
+    if (a == b) return true;
+    if (a.split('-').first != b.split('-').first) return false;
+    return _scriptClass(byLangCode(a)?.script ?? '') ==
+        _scriptClass(byLangCode(b)?.script ?? '');
   }
 
   List<LanguageModel> get unlocalizedTargetOptions {

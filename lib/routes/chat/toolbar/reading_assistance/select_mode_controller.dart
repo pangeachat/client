@@ -56,7 +56,7 @@ class _STTTranslationLoader extends AsyncLoader<String> {
 
   @override
   Future<String> fetch() => messageEvent.requestSttTranslation(
-    langCode: MatrixState.pangeaController.userController.userL1!.langCodeShort,
+    langCode: MatrixState.pangeaController.userController.userL1!.langCode,
     l1Code: MatrixState.pangeaController.userController.userL1!.langCodeShort,
     l2Code: MatrixState.pangeaController.userController.userL2!.langCodeShort,
   );
