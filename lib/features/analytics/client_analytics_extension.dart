@@ -201,7 +201,10 @@ extension AnalyticsClientExtension on Client {
     // user, not per space.
     var sinceRest = 0;
     for (final space in spaces) {
-      if (userID == null || !space.canSendEvent(EventTypes.SpaceChild)) return;
+      if (userID == null) return;
+      // A space the learner cannot write to is skipped, not a reason to stop:
+      // the other spaces still get their rooms.
+      if (!space.canSendEvent(EventTypes.SpaceChild)) continue;
       final List<Room> roomsNotAdded = allMyAnalyticsRooms.where((room) {
         return !space.spaceChildren.any((child) => child.roomId == room.id);
       }).toList();

@@ -23,7 +23,8 @@ import 'sentry_capture_harness.dart';
 /// The writes share the learner's per-user event budget on the homeserver, so
 /// the pass rests after each batch of rooms, and a write the server
 /// rate-limits anyway (`M_LIMIT_EXCEEDED`) is a warning followed by a rest,
-/// not an error followed by the next write (#9203).
+/// not an error followed by the next write. A space the learner cannot write
+/// to is skipped, and the pass goes on to the others (#9203).
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -67,6 +68,21 @@ void main() {
     room: room,
   );
 
+  void setPowerLevel(Room room, int level) {
+    room.setState(
+      stateEvent(
+        room,
+        type: EventTypes.RoomPowerLevels,
+        content: {
+          'users': {userId: level},
+          // The SDK's canSendEvent reads the per-event level or
+          // events_default, not state_default.
+          'events': {EventTypes.SpaceChild: 50},
+        },
+      ),
+    );
+  }
+
   /// A joined room the learner created, of [roomType], registered on the
   /// client. Creating it is what lets them send `m.space.child` into it.
   void joinedRoom(String roomId, String roomType) {
@@ -78,34 +94,32 @@ void main() {
         content: {'type': roomType},
       ),
     );
-    room.setState(
-      stateEvent(
-        room,
-        type: EventTypes.RoomPowerLevels,
-        content: {
-          'users': {userId: 100},
-        },
-      ),
-    );
+    setPowerLevel(room, 100);
     client.rooms.add(room);
   }
 
   /// Answers the nth space-child write to [spaceId] with [response], counting
   /// and timing them. The matching parent write on the analytics room, which
   /// the SDK makes after a child write succeeds, is always accepted.
+  ///
+  /// The counters are captured here: a pass is never awaited and may still be
+  /// resting when its test ends, and its late writes must land in that test's
+  /// counts, not the next one's.
   void stubSpace(
     String spaceId,
     Map<String, dynamic> Function(int nth) response,
   ) {
+    final counts = writes;
+    final times = writeTimes;
     for (final childId in analyticsRoomIds) {
       api.api['PUT']![stateAction(
         spaceId,
         EventTypes.SpaceChild,
         childId,
       )] = (_) {
-        final nth = writes[spaceId] ?? 0;
-        writes[spaceId] = nth + 1;
-        (writeTimes[spaceId] ??= []).add(DateTime.now());
+        final nth = counts[spaceId] ?? 0;
+        counts[spaceId] = nth + 1;
+        (times[spaceId] ??= []).add(DateTime.now());
         return response(nth);
       };
       api.api['PUT']![stateAction(childId, EventTypes.SpaceParent, spaceId)] =
@@ -217,6 +231,22 @@ void main() {
       expect(times[1].difference(times[0]), greaterThanOrEqualTo(rest));
       expect(counter.events, 1);
       expect(counter.levels, [SentryLevel.warning]);
+    },
+  );
+
+  test(
+    'a space the learner cannot write to is skipped, not the pass',
+    () async {
+      setPowerLevel(client.getRoomById(firstSpaceId)!, 0);
+      stubSpace(firstSpaceId, accepted);
+      stubSpace(secondSpaceId, accepted);
+
+      unawaited(client.addAnalyticsRoomsToSpaces());
+      await untilWrites(secondSpaceId, analyticsRoomIds.length);
+
+      expect(writes[firstSpaceId], isNull);
+      expect(writes[secondSpaceId], analyticsRoomIds.length);
+      expect(counter.events, 0);
     },
   );
 }
