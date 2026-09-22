@@ -9811,7 +9811,6 @@
     "unlockWritingAssistance": "Odblokuj pomoc w pisaniu",
     "courseSectionTeaching": "Nauczanie",
     "courseSectionLearning": "Nauka",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kurs} other{{count} kursów}}",
     "showMore": "Pokaż więcej",
     "showLess": "Pokaż mniej",
     "countNewMessages": "{count, plural, =1{1 nowa wiadomość} other{{count} nowych wiadomości}}",
@@ -10027,5 +10026,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 zagadnienie gramatyczne użyte} other{{count} zagadnień gramatycznych użytych}}",
     "playVideo": "Odtwórz wideo",
     "videoPlayer": "Odtwarzacz wideo",
-    "customCourseTextbookHint": "Powiedz nam, z jakiego podręcznika korzystasz lub opisz swój program nauczania"
+    "customCourseTextbookHint": "Powiedz nam, z jakiego podręcznika korzystasz lub opisz swój program nauczania",
+    "courseListFiltersLabel": "Filtry kursów",
+    "allCoursesFilterTooltip": "Pokaż wszystkie kursy",
+    "teachingCoursesFilterTooltip": "Pokaż tylko kursy, których uczysz",
+    "learningCoursesFilterTooltip": "Pokaż tylko kursy, w których się uczysz",
+    "searchCoursesHint": "Szukaj kursów",
+    "noCoursesMatchSearch": "Brak kursów pasujących do wyszukiwania."
 }

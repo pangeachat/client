@@ -10458,7 +10458,6 @@
     "unlockWritingAssistance": "Deblocați asistența la scriere",
     "courseSectionTeaching": "Predare",
     "courseSectionLearning": "Învățare",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 curs} other{{count} cursuri}}",
     "showMore": "Afișează mai mult",
     "showLess": "Afișează mai puțin",
     "countNewMessages": "{count, plural, =1{1 mesaj nou} other{{count} mesaje noi}}",
@@ -10674,5 +10673,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 element de gramatică utilizat} other{{count} elemente de gramatică utilizate}}",
     "playVideo": "Redați videoclipul",
     "videoPlayer": "Player video",
-    "customCourseTextbookHint": "Spune-ne ce manual folosești sau descrie-ți programa"
+    "customCourseTextbookHint": "Spune-ne ce manual folosești sau descrie-ți programa",
+    "courseListFiltersLabel": "Filtre cursuri",
+    "allCoursesFilterTooltip": "Afișează toate cursurile",
+    "teachingCoursesFilterTooltip": "Afișează doar cursurile pe care le predai",
+    "learningCoursesFilterTooltip": "Afișează doar cursurile la care înveți",
+    "searchCoursesHint": "Căutare cursuri",
+    "noCoursesMatchSearch": "Niciun curs nu corespunde căutării tale."
 }

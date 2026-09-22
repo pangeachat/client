@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "Mepee enyemaka ide ihe",
     "courseSectionTeaching": "Nkuzi",
     "courseSectionLearning": "Mmụta",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 nkuzi} other{{count} nkuzi}}",
     "showMore": "Gosi ihe ndị ọzọ",
     "showLess": "Gosi ihe na-erughị",
     "countNewMessages": "{count, plural, =1{1 ozi ọhụrụ} other{{count} ozi ọhụrụ}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{eji otu ụtọasụsụ} other{{count} eji ụtọasụsụ}}",
     "playVideo": "Kpọọ vidiyo",
     "videoPlayer": "Onye na-egwu vidiyo",
-    "customCourseTextbookHint": "Gwa anyị akwụkwọ ọgụgụ ị na-eji, ma ọ bụ kọwaa usoro ọmụmụ gị"
+    "customCourseTextbookHint": "Gwa anyị akwụkwọ ọgụgụ ị na-eji, ma ọ bụ kọwaa usoro ọmụmụ gị",
+    "courseListFiltersLabel": "Nyochaa ọmụmụ ihe",
+    "allCoursesFilterTooltip": "Gosi ọmụmụ ihe niile",
+    "teachingCoursesFilterTooltip": "Gosi naanị ọmụmụ ihe ị na-akụzi",
+    "learningCoursesFilterTooltip": "Gosi naanị ọmụmụ ihe ị na-amụta",
+    "searchCoursesHint": "Chọọ ọmụmụ ihe",
+    "noCoursesMatchSearch": "Ọ nweghị ọmụmụ ihe dabara na ọchụchọ gị."
 }

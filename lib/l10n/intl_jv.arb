@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "Mbukak kunci bantuan nulis",
     "courseSectionTeaching": "Piwulang",
     "courseSectionLearning": "Sinau",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kursus} other{{count} kursus}}",
     "showMore": "Tampilake luwih akeh",
     "showLess": "Tampilake luwih sithik",
     "countNewMessages": "{count, plural, =1{1 pesen anyar} other{{count} pesen anyar}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 item tata basa digunakake} other{{count} item tata basa digunakake}}",
     "playVideo": "Putar video",
     "videoPlayer": "Pamutar video",
-    "customCourseTextbookHint": "Kandhani buku teks apa sing kokenggo, utawa jlentrehna kurikulummu"
+    "customCourseTextbookHint": "Kandhani buku teks apa sing kokenggo, utawa jlentrehna kurikulummu",
+    "courseListFiltersLabel": "Filter kursus",
+    "allCoursesFilterTooltip": "Tampilake kabeh kursus",
+    "teachingCoursesFilterTooltip": "Tampilake mung kursus sing sampeyan ajar",
+    "learningCoursesFilterTooltip": "Tampilake mung kursus sing lagi sampeyan sinau",
+    "searchCoursesHint": "Telusuri kursus",
+    "noCoursesMatchSearch": "Ora ana kursus sing cocog karo telusuran sampeyan."
 }

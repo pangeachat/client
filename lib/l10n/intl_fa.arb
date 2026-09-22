@@ -9814,7 +9814,6 @@
     "unlockWritingAssistance": "باز کردن کمک نوشتاری",
     "courseSectionTeaching": "آموزش",
     "courseSectionLearning": "یادگیری",
-    "courseSectionLabel": "{title}, {count, plural, =1{۱ دوره} other{{count} دوره}}",
     "showMore": "نمایش بیشتر",
     "showLess": "نمایش کمتر",
     "countNewMessages": "{count, plural, =1{۱ پیام جدید} other{{count} پیام جدید}}",
@@ -10030,5 +10029,11 @@
     "grammarItemsUsed": "{count, plural, =1{۱ مورد گرامر استفاده شد} other{{count} مورد گرامر استفاده شد}}",
     "playVideo": "پخش ویدیو",
     "videoPlayer": "پخش‌کننده ویدیو",
-    "customCourseTextbookHint": "به ما بگویید از چه کتاب درسی استفاده می‌کنید، یا برنامه درسی خود را توضیح دهید"
+    "customCourseTextbookHint": "به ما بگویید از چه کتاب درسی استفاده می‌کنید، یا برنامه درسی خود را توضیح دهید",
+    "courseListFiltersLabel": "فیلترهای دوره",
+    "allCoursesFilterTooltip": "نمایش همه دوره‌ها",
+    "teachingCoursesFilterTooltip": "فقط دوره‌هایی که تدریس می‌کنید را نمایش دهید",
+    "learningCoursesFilterTooltip": "فقط دوره‌هایی که در حال یادگیری هستید را نمایش دهید",
+    "searchCoursesHint": "جستجوی دوره‌ها",
+    "noCoursesMatchSearch": "هیچ دوره‌ای با جستجوی شما مطابقت ندارد."
 }

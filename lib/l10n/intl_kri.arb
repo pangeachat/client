@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "Open di raytin ɛlp",
     "courseSectionTeaching": "Tichin",
     "courseSectionLearning": "Lɛnin",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kos} other{{count} kos dɛn}}",
     "showMore": "Sho mo",
     "showLess": "Sho men",
     "countNewMessages": "{count, plural, =1{1 nyu messej} other{{count} nyu messej dɛn}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 grammar item dɛn dɔn yuz} other{{count} grammar item dɛn dɔn yuz}}",
     "playVideo": "Ple video",
     "videoPlayer": "Video pleya",
-    "customCourseTextbookHint": "Tɛl wi wetin buk yu de yuz, ɔ wetin yu de lɔn"
+    "customCourseTextbookHint": "Tɛl wi wetin buk yu de yuz, ɔ wetin yu de lɔn",
+    "courseListFiltersLabel": "Kɔs filtɛs",
+    "allCoursesFilterTooltip": "Sho ɔl di kɔses",
+    "teachingCoursesFilterTooltip": "Sho kɔses we yu de tich nɔmɔ",
+    "learningCoursesFilterTooltip": "Sho kɔses we yu de lan nɔmɔ",
+    "searchCoursesHint": "Luk fɔ kɔses",
+    "noCoursesMatchSearch": "No kɔs nɔ match yu saych."
 }

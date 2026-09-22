@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "Жазуға көмектесудің құлпын ашу",
     "courseSectionTeaching": "Оқыту",
     "courseSectionLearning": "Оқу",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 курс} other{{count} курс}}",
     "showMore": "Көбірек көрсету",
     "showLess": "Азырақ көрсету",
     "countNewMessages": "{count, plural, =1{1 жаңа хабар} other{{count} жаңа хабарлар}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 грамматикалық элемент қолданылды} other{{count} грамматикалық элементтер қолданылды}}",
     "playVideo": "Бейнені ойнату",
     "videoPlayer": "Бейне ойнатқыш",
-    "customCourseTextbookHint": "Қандай оқулықты қолданатыныңызды айтыңыз немесе оқу бағдарламаңызды сипаттаңыз"
+    "customCourseTextbookHint": "Қандай оқулықты қолданатыныңызды айтыңыз немесе оқу бағдарламаңызды сипаттаңыз",
+    "courseListFiltersLabel": "Курс сүзгілері",
+    "allCoursesFilterTooltip": "Барлық курстарды көрсету",
+    "teachingCoursesFilterTooltip": "Сіз оқытатын курстарды ғана көрсету",
+    "learningCoursesFilterTooltip": "Сіз оқып жатқан курстарды ғана көрсету",
+    "searchCoursesHint": "Курстарды іздеу",
+    "noCoursesMatchSearch": "Іздеуіңізге сәйкес келетін курстар жоқ."
 }

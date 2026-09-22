@@ -10640,7 +10640,6 @@
     "unlockWritingAssistance": "פתיחת סיוע בכתיבה",
     "courseSectionTeaching": "מלמד",
     "courseSectionLearning": "לומד",
-    "courseSectionLabel": "{title}, {count, plural, =1{קורס אחד} other{{count} קורסים}}",
     "showMore": "הצג עוד",
     "showLess": "הצג פחות",
     "countNewMessages": "{count, plural, =1{הודעה חדשה אחת} other{{count} הודעות חדשות}}",
@@ -10856,5 +10855,11 @@
     "grammarItemsUsed": "{count, plural, =1{פריט דקדוק אחד בשימוש} other{{count} פריטי דקדוק בשימוש}}",
     "playVideo": "נגן סרטון",
     "videoPlayer": "נגן וידאו",
-    "customCourseTextbookHint": "ספר/י לנו באיזה ספר לימוד אתם משתמשים, או תארו את תוכנית הלימודים שלכם"
+    "customCourseTextbookHint": "ספר/י לנו באיזה ספר לימוד אתם משתמשים, או תארו את תוכנית הלימודים שלכם",
+    "courseListFiltersLabel": "מסנני קורסים",
+    "allCoursesFilterTooltip": "הצג את כל הקורסים",
+    "teachingCoursesFilterTooltip": "הצג רק קורסים שאתה מלמד",
+    "learningCoursesFilterTooltip": "הצג רק קורסים שאתה לומד בהם",
+    "searchCoursesHint": "חפש קורסים",
+    "noCoursesMatchSearch": "לא נמצאו קורסים התואמים לחיפוש שלך."
 }

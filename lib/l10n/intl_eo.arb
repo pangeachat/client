@@ -10671,7 +10671,6 @@
     "unlockWritingAssistance": "Malŝlosi skriban helpon",
     "courseSectionTeaching": "Instruado",
     "courseSectionLearning": "Lernado",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kurso} other{{count} kursoj}}",
     "showMore": "Montri pli",
     "showLess": "Montri malpli",
     "countNewMessages": "{count, plural, =1{1 nova mesaĝo} other{{count} novaj mesaĝoj}}",
@@ -10887,5 +10886,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 gramatikaĵo uzita} other{{count} gramatikaĵoj uzitaj}}",
     "playVideo": "Ludi videon",
     "videoPlayer": "Videoludilo",
-    "customCourseTextbookHint": "Diru al ni, kiun lernolibron vi uzas, aŭ priskribu vian instruplanon"
+    "customCourseTextbookHint": "Diru al ni, kiun lernolibron vi uzas, aŭ priskribu vian instruplanon",
+    "courseListFiltersLabel": "Kursfiltriloj",
+    "allCoursesFilterTooltip": "Montri ĉiujn kursojn",
+    "teachingCoursesFilterTooltip": "Montri nur kursojn, kiujn vi instruas",
+    "learningCoursesFilterTooltip": "Montri nur kursojn, en kiuj vi lernas",
+    "searchCoursesHint": "Serĉi kursojn",
+    "noCoursesMatchSearch": "Neniuj kursoj kongruas kun via serĉo."
 }

@@ -9737,7 +9737,6 @@
     "unlockWritingAssistance": "Díghlasáil cúnamh scríbhneoireachta",
     "courseSectionTeaching": "Teagasc",
     "courseSectionLearning": "Foghlaim",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 chúrsa} other{{count} cúrsa}}",
     "showMore": "Taispeáin níos mó",
     "showLess": "Taispeáin níos lú",
     "countNewMessages": "{count, plural, =1{1 theachtaireacht nua} other{{count} theachtaireacht nua}}",
@@ -9953,5 +9952,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 mhír ghramadaí in úsáid} other{{count} mír ghramadaí in úsáid}}",
     "playVideo": "Seinn an físeán",
     "videoPlayer": "Seinnteoir físeáin",
-    "customCourseTextbookHint": "Inis dúinn cén téacsleabhar a úsáideann tú, nó déan cur síos ar do churaclam"
+    "customCourseTextbookHint": "Inis dúinn cén téacsleabhar a úsáideann tú, nó déan cur síos ar do churaclam",
+    "courseListFiltersLabel": "Scagairí cúrsaí",
+    "allCoursesFilterTooltip": "Taispeáin gach cúrsa",
+    "teachingCoursesFilterTooltip": "Taispeáin na cúrsaí a mhúineann tú amháin",
+    "learningCoursesFilterTooltip": "Taispeáin na cúrsaí a bhfuil tú ag foghlaim iontu amháin",
+    "searchCoursesHint": "Cuardaigh cúrsaí",
+    "noCoursesMatchSearch": "Níor aimsíodh aon chúrsaí a mheaitseálann do chuardach."
 }

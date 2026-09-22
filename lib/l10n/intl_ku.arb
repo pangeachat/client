@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "یارمەتی نووسین بکەرەوە",
     "courseSectionTeaching": "وانەوتنەوە",
     "courseSectionLearning": "فێربوون",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 خول} other{{count} خول}}",
     "showMore": "زیاتر نیشان بدە",
     "showLess": "کەمتر نیشان بدە",
     "countNewMessages": "{count, plural, =1{١ پەیامی نوێ} other{{count} پەیامی نوێ}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 بابەتی ڕێزمان بەکارهات} other{{count} بابەتی ڕێزمان بەکارهاتن}}",
     "playVideo": "ڤیدیۆ لێبدە",
     "videoPlayer": "یاریزانی ڤیدیۆ",
-    "customCourseTextbookHint": "پێمان بڵێ چ کتێبێکی خوێندن بەکاردەهێنیت، یان پرۆگرامی خوێندنەکەت وەسف بکە"
+    "customCourseTextbookHint": "پێمان بڵێ چ کتێبێکی خوێندن بەکاردەهێنیت، یان پرۆگرامی خوێندنەکەت وەسف بکە",
+    "courseListFiltersLabel": "فلتەرەکانی خول",
+    "allCoursesFilterTooltip": "هەموو خولەکان نیشان بدە",
+    "teachingCoursesFilterTooltip": "تەنها ئەو خولانە نیشان بدە کە وانەی تێدا دەڵێیتەوە",
+    "learningCoursesFilterTooltip": "تەنها ئەو خولانە نیشان بدە کە تێیدا فێردەبیت",
+    "searchCoursesHint": "گەڕان بەدوای خولەکاندا",
+    "noCoursesMatchSearch": "هیچ خولێک لەگەڵ گەڕانەکەتدا ناگونجێت."
 }

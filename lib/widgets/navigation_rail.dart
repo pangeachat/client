@@ -89,8 +89,7 @@ class SpacesNavigationRail extends StatelessWidget {
                   .where((s) => s.hasRoomUpdate)
                   .rateLimit(const Duration(seconds: 1)),
               builder: (context, _) {
-                final groups = client.coursesByRole(L10n.of(context));
-                final sections = groups.sections;
+                final courses = client.sortedCourses(L10n.of(context));
                 return AnimatedContainer(
                   width: naviRailWidth,
                   duration: FluffyThemes.animationDuration,
@@ -213,40 +212,29 @@ class SpacesNavigationRail extends StatelessWidget {
                             Semantics(
                               label: L10n.of(context).joinedCourseListLabel,
                               child: RovingFocusGroup(
-                                ids: [
-                                  for (final group in sections)
-                                    for (final space in group.rooms) space.id,
-                                ],
+                                ids: [for (final space in courses) space.id],
                                 selectedId:
                                     section == AppSection.courses && !hubOpen
                                     ? activeSpaceId
                                     : null,
                                 child: Column(
                                   children: [
-                                    // 4. The course spaces you're in — in the
-                                    // Courses hub's order (invited · teaching ·
-                                    // learning), with a hairline between groups
-                                    // when the hub shows sections, so the rail
-                                    // mirrors the list (#8425).
-                                    for (final group in sections) ...[
-                                      if (groups.isGrouped &&
-                                          group != sections.first)
-                                        const _RailGroupDivider(),
-                                      for (final space in group.rooms)
-                                        _SpaceItem(
-                                          space: space,
-                                          iconWidth: largeIconWidth,
-                                          naviRailWidth: naviRailWidth,
-                                          // Highlight the course avatar only while the course
-                                          // IS the open section — not merely because `?c=`
-                                          // persists under a chat/room or under the Courses
-                                          // hub (routing decision 5, #8605).
-                                          selected:
-                                              section == AppSection.courses &&
-                                              !hubOpen &&
-                                              activeSpaceId == space.id,
-                                        ),
-                                    ],
+                                    // 4. The course spaces you're in, in the
+                                    // Courses hub's order (#9207).
+                                    for (final space in courses)
+                                      _SpaceItem(
+                                        space: space,
+                                        iconWidth: largeIconWidth,
+                                        naviRailWidth: naviRailWidth,
+                                        // Highlight the course avatar only while the course
+                                        // IS the open section — not merely because `?c=`
+                                        // persists under a chat/room or under the Courses
+                                        // hub (routing decision 5, #8605).
+                                        selected:
+                                            section == AppSection.courses &&
+                                            !hubOpen &&
+                                            activeSpaceId == space.id,
+                                      ),
                                   ],
                                 ),
                               ),
@@ -352,28 +340,6 @@ class _SpaceItem extends StatelessWidget {
           hasKnockingUsers: knockingUsers.isNotEmpty,
         ),
         naviRailWidth: naviRailWidth,
-      ),
-    );
-  }
-}
-
-/// The hairline between the rail's course groups (invited · teaching ·
-/// learning) — the rail's mirror of the Courses hub's section headers, shown
-/// only when the hub shows sections (#8425). Purely visual: the groups have no
-/// label here, so it is excluded from semantics.
-class _RailGroupDivider extends StatelessWidget {
-  const _RailGroupDivider();
-
-  @override
-  Widget build(BuildContext context) {
-    return ExcludeSemantics(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 24.0),
-        child: Divider(
-          height: 1.0,
-          thickness: 1.0,
-          color: Theme.of(context).colorScheme.outlineVariant,
-        ),
       ),
     );
   }

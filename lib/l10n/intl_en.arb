@@ -5461,17 +5461,12 @@
     },
     "courseSectionTeaching": "Teaching",
     "courseSectionLearning": "Learning",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 course} other{{count} courses}}",
-    "@courseSectionLabel": {
-        "placeholders": {
-            "title": {
-                "type": "String"
-            },
-            "count": {
-                "type": "int"
-            }
-        }
-    },
+    "courseListFiltersLabel": "Course filters",
+    "allCoursesFilterTooltip": "Show all courses",
+    "teachingCoursesFilterTooltip": "Show only courses you teach",
+    "learningCoursesFilterTooltip": "Show only courses you're learning in",
+    "searchCoursesHint": "Search courses",
+    "noCoursesMatchSearch": "No courses match your search.",
     "courseNameHint": "Course name",
     "typeCourseCodeToConfirm": "To confirm, type the course code {code} below.",
     "@typeCourseCodeToConfirm": {

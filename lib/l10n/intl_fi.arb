@@ -9763,7 +9763,6 @@
     "unlockWritingAssistance": "Avaa kirjoitusapu",
     "courseSectionTeaching": "Opetus",
     "courseSectionLearning": "Oppiminen",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kurssi} other{{count} kurssia}}",
     "showMore": "Näytä lisää",
     "showLess": "Näytä vähemmän",
     "countNewMessages": "{count, plural, =1{1 uusi viesti} other{{count} uutta viestiä}}",
@@ -9979,5 +9978,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 kielioppiesine käytetty} other{{count} kielioppiesinettä käytetty}}",
     "playVideo": "Toista video",
     "videoPlayer": "Videon toisto",
-    "customCourseTextbookHint": "Kerro meille, mitä oppikirjaa käytät, tai kuvaile opetussuunnitelmaasi"
+    "customCourseTextbookHint": "Kerro meille, mitä oppikirjaa käytät, tai kuvaile opetussuunnitelmaasi",
+    "courseListFiltersLabel": "Kurssisuodattimet",
+    "allCoursesFilterTooltip": "Näytä kaikki kurssit",
+    "teachingCoursesFilterTooltip": "Näytä vain kurssit, joita opetat",
+    "learningCoursesFilterTooltip": "Näytä vain kurssit, joilla opiskelet",
+    "searchCoursesHint": "Hae kursseja",
+    "noCoursesMatchSearch": "Hakua vastaavia kursseja ei löytynyt."
 }

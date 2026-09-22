@@ -10698,7 +10698,6 @@
     "unlockWritingAssistance": "Разблокировать помощь в написании",
     "courseSectionTeaching": "Преподавание",
     "courseSectionLearning": "Изучение",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 курс} other{{count} курсов}}",
     "showMore": "Показать больше",
     "showLess": "Показать меньше",
     "countNewMessages": "{count, plural, =1{1 новое сообщение} other{{count} новых сообщений}}",
@@ -10914,5 +10913,11 @@
     "grammarItemsUsed": "{count, plural, =1{использовано 1 грамматическое правило} other{использовано {count} грамматических правил}}",
     "playVideo": "Воспроизвести видео",
     "videoPlayer": "Видеоплеер",
-    "customCourseTextbookHint": "Расскажите, какой учебник вы используете, или опишите свою программу"
+    "customCourseTextbookHint": "Расскажите, какой учебник вы используете, или опишите свою программу",
+    "courseListFiltersLabel": "Фильтры курсов",
+    "allCoursesFilterTooltip": "Показать все курсы",
+    "teachingCoursesFilterTooltip": "Показать только курсы, которые вы преподаете",
+    "learningCoursesFilterTooltip": "Показать только курсы, которые вы изучаете",
+    "searchCoursesHint": "Поиск курсов",
+    "noCoursesMatchSearch": "По вашему запросу курсы не найдены."
 }

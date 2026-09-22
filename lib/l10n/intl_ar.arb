@@ -10032,7 +10032,6 @@
     "unlockWritingAssistance": "افتح مساعدة الكتابة",
     "courseSectionTeaching": "تدريس",
     "courseSectionLearning": "تعلم",
-    "courseSectionLabel": "{title}, {count, plural, =1{دورة واحدة} other{{count} دورات}}",
     "showMore": "عرض المزيد",
     "showLess": "عرض أقل",
     "countNewMessages": "{count, plural, =1{رسالة جديدة واحدة} other{{count} رسائل جديدة}}",
@@ -10248,5 +10247,11 @@
     "grammarItemsUsed": "{count, plural, =1{تم استخدام عنصر قواعد واحد} other{تم استخدام {count} من عناصر القواعد}}",
     "playVideo": "تشغيل الفيديو",
     "videoPlayer": "مشغل الفيديو",
-    "customCourseTextbookHint": "أخبرنا ما هو الكتاب المدرسي الذي تستخدمه، أو صف منهجك الدراسي"
+    "customCourseTextbookHint": "أخبرنا ما هو الكتاب المدرسي الذي تستخدمه، أو صف منهجك الدراسي",
+    "courseListFiltersLabel": "فلاتر الدورات",
+    "allCoursesFilterTooltip": "عرض جميع الدورات",
+    "teachingCoursesFilterTooltip": "عرض الدورات التي تدرّسها فقط",
+    "learningCoursesFilterTooltip": "عرض الدورات التي تتعلم فيها فقط",
+    "searchCoursesHint": "البحث عن الدورات",
+    "noCoursesMatchSearch": "لا توجد دورات مطابقة لبحثك."
 }

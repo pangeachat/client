@@ -9726,7 +9726,6 @@
     "unlockWritingAssistance": "Atbloķēt rakstīšanas palīdzību",
     "courseSectionTeaching": "Mācīšana",
     "courseSectionLearning": "Mācīšanās",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kurss} other{{count} kursi}}",
     "showMore": "Rādīt vairāk",
     "showLess": "Rādīt mazāk",
     "countNewMessages": "{count, plural, =1{1 jauna ziņa} other{{count} jaunas ziņas}}",
@@ -9942,5 +9941,11 @@
     "grammarItemsUsed": "{count, plural, =1{Izmantots 1 gramatikas vienums} other{Izmantoti {count} gramatikas vienumi}}",
     "playVideo": "Atskaņot video",
     "videoPlayer": "Video atskaņotājs",
-    "customCourseTextbookHint": "Pastāstiet, kuru mācību grāmatu izmantojat, vai aprakstiet savu mācību programmu"
+    "customCourseTextbookHint": "Pastāstiet, kuru mācību grāmatu izmantojat, vai aprakstiet savu mācību programmu",
+    "courseListFiltersLabel": "Kursu filtri",
+    "allCoursesFilterTooltip": "Rādīt visus kursus",
+    "teachingCoursesFilterTooltip": "Rādīt tikai kursus, ko pasniedzat",
+    "learningCoursesFilterTooltip": "Rādīt tikai kursus, kuros mācāties",
+    "searchCoursesHint": "Meklēt kursus",
+    "noCoursesMatchSearch": "Jūsu meklēšanai nav atrasts neviens kurss."
 }

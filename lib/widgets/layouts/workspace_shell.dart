@@ -27,11 +27,13 @@ import 'package:fluffychat/pangea/common/widgets/invited_course_badge.dart';
 import 'package:fluffychat/pangea/extensions/friend_dm_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
+import 'package:fluffychat/pangea/spaces/course_role_filter.dart';
 import 'package:fluffychat/pangea/spaces/knocking_users_badge.dart';
 import 'package:fluffychat/pangea/spaces/knocking_users_builder.dart';
 import 'package:fluffychat/routes/chat_list/dm_list_tile.dart';
 import 'package:fluffychat/routes/chat_list/friend_dm_prompt.dart';
 import 'package:fluffychat/routes/world/course_context_bar.dart';
+import 'package:fluffychat/routes/world/left_panel/left_panel_courses_list_view.dart';
 import 'package:fluffychat/routes/world/left_panel/workspace_left_panel.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/mobile_search_bar.dart';
@@ -679,9 +681,10 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
   static const double _coursesSheetRowEstimate = 84.0;
   static const double _coursesSheetAddOptionsAllowance = 236.0;
 
-  /// One Invited / Teaching / Learning section header row, when the hub
-  /// groups by role (#8425): the row's text + 4px padding + the 8px separator.
-  static const double _coursesSheetSectionHeaderEstimate = 36.0;
+  /// The hub's search bar and role filter pill rows, each with its 8px gap
+  /// below, when the hub shows them (#9207).
+  static const double _coursesSheetSearchBarEstimate = 64.0;
+  static const double _coursesSheetFilterPillsEstimate = 56.0;
 
   /// The activity plan's minimized rest height: the cavity handle + the start
   /// page's app bar, info row, and CTA row, with no media/description. This is
@@ -860,13 +863,18 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
       // reads as "no courses" until the learner drags the sheet up (#7542).
       // They open at FULL height instead (`defaultCavityToFull`, #8659): their
       // content has nothing to do with the map behind them, so the sheet leads.
-      final groups = client.coursesByRole(l10n);
+      final courses = client.sortedCourses(l10n);
       preferredCavityHeight =
           _chatsSheetHeaderAllowance +
-          (groups.courseCount == 0
+          (courses.isEmpty
               ? _coursesSheetAddOptionsAllowance
-              : groups.courseCount * _coursesSheetRowEstimate +
-                    groups.sectionCount * _coursesSheetSectionHeaderEstimate);
+              : courses.length * _coursesSheetRowEstimate +
+                    (LeftPanelCoursesListView.showsSearchBar(courses)
+                        ? _coursesSheetSearchBarEstimate
+                        : 0) +
+                    (CourseRoleFilter.appliesTo(courses)
+                        ? _coursesSheetFilterPillsEstimate
+                        : 0));
     }
 
     String? cavityKey;

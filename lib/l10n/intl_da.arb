@@ -10646,7 +10646,6 @@
     "unlockWritingAssistance": "Lås op for skrivehjælp",
     "courseSectionTeaching": "Undervisning",
     "courseSectionLearning": "Læring",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kursus} other{{count} kurser}}",
     "showMore": "Vis mere",
     "showLess": "Vis mindre",
     "countNewMessages": "{count, plural, =1{1 ny besked} other{{count} nye beskeder}}",
@@ -10862,5 +10861,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 grammatikelement brugt} other{{count} grammatikelementer brugt}}",
     "playVideo": "Afspil video",
     "videoPlayer": "Videoafspiller",
-    "customCourseTextbookHint": "Fortæl os hvilken lærebog du bruger, eller beskriv din studieplan"
+    "customCourseTextbookHint": "Fortæl os hvilken lærebog du bruger, eller beskriv din studieplan",
+    "courseListFiltersLabel": "Kursusfiltre",
+    "allCoursesFilterTooltip": "Vis alle kurser",
+    "teachingCoursesFilterTooltip": "Vis kun kurser, du underviser i",
+    "learningCoursesFilterTooltip": "Vis kun kurser, du lærer i",
+    "searchCoursesHint": "Søg kurser",
+    "noCoursesMatchSearch": "Ingen kurser matcher din søgning."
 }

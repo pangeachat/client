@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "लेखन सहायता अनलक गर्नुहोस्",
     "courseSectionTeaching": "सिकाउने",
     "courseSectionLearning": "सिक्ने",
-    "courseSectionLabel": "{title}, {count, plural, =1{१ कोर्स} other{{count} कोर्सहरू}}",
     "showMore": "थप देखाउनुहोस्",
     "showLess": "कम देखाउनुहोस्",
     "countNewMessages": "{count, plural, =1{१ नयाँ सन्देश} other{{count} नयाँ सन्देशहरू}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{१ व्याकरण वस्तु प्रयोग गरियो} other{{count} व्याकरण वस्तुहरू प्रयोग गरियो}}",
     "playVideo": "भिडियो प्ले गर्नुहोस्",
     "videoPlayer": "भिडियो प्लेयर",
-    "customCourseTextbookHint": "तपाईंले प्रयोग गर्ने पाठ्यपुस्तक बताउनुहोस्, वा आफ्नो पाठ्यक्रमको वर्णन गर्नुहोस्"
+    "customCourseTextbookHint": "तपाईंले प्रयोग गर्ने पाठ्यपुस्तक बताउनुहोस्, वा आफ्नो पाठ्यक्रमको वर्णन गर्नुहोस्",
+    "courseListFiltersLabel": "पाठ्यक्रम फिल्टरहरू",
+    "allCoursesFilterTooltip": "सबै पाठ्यक्रमहरू देखाउनुहोस्",
+    "teachingCoursesFilterTooltip": "तपाईंले सिकाउने पाठ्यक्रमहरू मात्र देखाउनुहोस्",
+    "learningCoursesFilterTooltip": "तपाईंले सिकिरहेका पाठ्यक्रमहरू मात्र देखाउनुहोस्",
+    "searchCoursesHint": "पाठ्यक्रमहरू खोज्नुहोस्",
+    "noCoursesMatchSearch": "तपाईंको खोजसँग मिल्ने कुनै पाठ्यक्रमहरू छैनन्।"
 }

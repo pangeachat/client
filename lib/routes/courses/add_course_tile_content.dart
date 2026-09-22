@@ -3,6 +3,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/spaces/course_role_filter.dart';
 import 'package:fluffychat/pangea/spaces/public_course_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_extension.dart';
 
@@ -29,6 +30,10 @@ abstract class AddCourseTileContent {
 
   bool? get invited => null;
 
+  /// The viewer administers this joined course — its tile carries the Admin
+  /// label (#9207).
+  bool get isAdmin => false;
+
   Future<Event?>? get unreadCoursePingEvent => null;
 
   Set<String?>? get courseChildrenIds => null;
@@ -52,6 +57,9 @@ class RoomAddCourseTileContent extends AddCourseTileContent {
 
   @override
   bool get invited => space.membership == Membership.invite;
+
+  @override
+  bool get isAdmin => CourseRoleFilter.teaching.includes(space);
 
   @override
   Future<Event?>? get unreadCoursePingEvent => space.unreadCoursePingEvent;

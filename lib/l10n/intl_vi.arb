@@ -7022,7 +7022,6 @@
     "unlockWritingAssistance": "Mở khóa hỗ trợ viết",
     "courseSectionTeaching": "Dạy",
     "courseSectionLearning": "Học",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 khóa học} other{{count} khóa học}}",
     "showMore": "Hiển thị thêm",
     "showLess": "Hiển thị bớt",
     "countNewMessages": "{count, plural, =1{1 tin nhắn mới} other{{count} tin nhắn mới}}",
@@ -7234,5 +7233,11 @@
     "grammarItemsUsed": "{count, plural, =1{Đã dùng 1 mục ngữ pháp} other{Đã dùng {count} mục ngữ pháp}}",
     "playVideo": "Phát video",
     "videoPlayer": "Trình phát video",
-    "customCourseTextbookHint": "Hãy cho chúng tôi biết bạn dùng sách giáo khoa nào, hoặc mô tả chương trình học của bạn"
+    "customCourseTextbookHint": "Hãy cho chúng tôi biết bạn dùng sách giáo khoa nào, hoặc mô tả chương trình học của bạn",
+    "courseListFiltersLabel": "Bộ lọc khóa học",
+    "allCoursesFilterTooltip": "Hiển thị tất cả khóa học",
+    "teachingCoursesFilterTooltip": "Chỉ hiển thị các khóa học bạn dạy",
+    "learningCoursesFilterTooltip": "Chỉ hiển thị các khóa học bạn đang học",
+    "searchCoursesHint": "Tìm kiếm khóa học",
+    "noCoursesMatchSearch": "Không có khóa học nào khớp với tìm kiếm của bạn."
 }

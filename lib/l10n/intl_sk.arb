@@ -10671,7 +10671,6 @@
     "unlockWritingAssistance": "Odomknúť pomoc pri písaní",
     "courseSectionTeaching": "Výučba",
     "courseSectionLearning": "Učenie",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kurz} other{{count} kurzov}}",
     "showMore": "Zobraziť viac",
     "showLess": "Zobraziť menej",
     "countNewMessages": "{count, plural, =1{1 nová správa} other{{count} nových správ}}",
@@ -10887,5 +10886,11 @@
     "grammarItemsUsed": "{count, plural, =1{použitá 1 gramatická položka} other{použitých {count} gramatických položiek}}",
     "playVideo": "Prehrať video",
     "videoPlayer": "Prehrávač videa",
-    "customCourseTextbookHint": "Povedzte nám, akú učebnicu používate, alebo opíšte svoje osnovy"
+    "customCourseTextbookHint": "Povedzte nám, akú učebnicu používate, alebo opíšte svoje osnovy",
+    "courseListFiltersLabel": "Filtre kurzov",
+    "allCoursesFilterTooltip": "Zobraziť všetky kurzy",
+    "teachingCoursesFilterTooltip": "Zobraziť len kurzy, ktoré učíte",
+    "learningCoursesFilterTooltip": "Zobraziť len kurzy, v ktorých sa učíte",
+    "searchCoursesHint": "Hľadať kurzy",
+    "noCoursesMatchSearch": "Žiadne kurzy nezodpovedajú vášmu vyhľadávaniu."
 }

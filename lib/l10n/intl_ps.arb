@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "د لیکلو مرسته خلاص کړئ",
     "courseSectionTeaching": "تدریس",
     "courseSectionLearning": "زده کړه",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 کورس} other{{count} کورسونه}}",
     "showMore": "نور وښایاست",
     "showLess": "لږ وښایاست",
     "countNewMessages": "{count, plural, =1{۱ نوې پيغام} other{{count} نوې پيغامونه}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 د ګرامر توکی کارول شوی} other{{count} د ګرامر توکي کارول شوي}}",
     "playVideo": "ویډیو پلی کړئ",
     "videoPlayer": "ویډیو پلیر",
-    "customCourseTextbookHint": "راته ووایاست چې کوم درسي کتاب کاروئ، یا خپل نصاب تشریح کړئ"
+    "customCourseTextbookHint": "راته ووایاست چې کوم درسي کتاب کاروئ، یا خپل نصاب تشریح کړئ",
+    "courseListFiltersLabel": "د کورسونو فلټرونه",
+    "allCoursesFilterTooltip": "ټول کورسونه وښایاست",
+    "teachingCoursesFilterTooltip": "یوازې هغه کورسونه وښایاست چې تاسو یې تدریس کوئ",
+    "learningCoursesFilterTooltip": "یوازې هغه کورسونه وښایاست چې تاسو یې زده کوئ",
+    "searchCoursesHint": "کورسونه وپلټئ",
+    "noCoursesMatchSearch": "ستاسو د لټون سره سم هیڅ کورس شتون نلري."
 }

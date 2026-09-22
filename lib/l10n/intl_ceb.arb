@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "I-unlock ang tabang sa pagsulat",
     "courseSectionTeaching": "Pagtudlo",
     "courseSectionLearning": "Pagkat-on",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kurso} other{{count} ka kurso}}",
     "showMore": "Ipakita pa",
     "showLess": "Ipakita gamay",
     "countNewMessages": "{count, plural, =1{1 ka bag-ong mensahe} other{{count} ka bag-ong mensahe}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 ka butang sa gramatika ang gigamit} other{{count} ka butang sa gramatika ang gigamit}}",
     "playVideo": "I-play ang video",
     "videoPlayer": "Video player",
-    "customCourseTextbookHint": "Sultihi mi unsang textbook ang imong gigamit, o ihulagway ang imong kurikulum"
+    "customCourseTextbookHint": "Sultihi mi unsang textbook ang imong gigamit, o ihulagway ang imong kurikulum",
+    "courseListFiltersLabel": "Mga filter sa kurso",
+    "allCoursesFilterTooltip": "Ipakita ang tanang kurso",
+    "teachingCoursesFilterTooltip": "Ipakita lang ang mga kurso nga imong gitudlo",
+    "learningCoursesFilterTooltip": "Ipakita lang ang mga kurso nga imong gitun-an",
+    "searchCoursesHint": "Pangita og mga kurso",
+    "noCoursesMatchSearch": "Walay kurso nga mohaum sa imong gipangita."
 }

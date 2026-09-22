@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "Wewete i te āwhina tuhi",
     "courseSectionTeaching": "Whakaako",
     "courseSectionLearning": "Ako",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 akoranga} other{{count} akoranga}}",
     "showMore": "Whakaatu anō",
     "showLess": "Whakaatu iti iho",
     "countNewMessages": "{count, plural, =1{1 karere hou} other{{count} karere hou}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 tūemi wetereo i whakamahia} other{{count} tūemi wetereo i whakamahia}}",
     "playVideo": "Whakatangihia te ataata",
     "videoPlayer": "Pūwhakatangi ataata",
-    "customCourseTextbookHint": "Kōrerohia mai te pukapuka e whakamahia ana e koe, me te whakaahua rānei i tō marautanga"
+    "customCourseTextbookHint": "Kōrerohia mai te pukapuka e whakamahia ana e koe, me te whakaahua rānei i tō marautanga",
+    "courseListFiltersLabel": "Tātari akoranga",
+    "allCoursesFilterTooltip": "Whakaatu akoranga katoa",
+    "teachingCoursesFilterTooltip": "Whakaatu akoranga e whakaako ana koe anake",
+    "learningCoursesFilterTooltip": "Whakaatu akoranga e ako ana koe anake",
+    "searchCoursesHint": "Rapu akoranga",
+    "noCoursesMatchSearch": "Kāore he akoranga e ōrite ana ki tāu rapunga."
 }

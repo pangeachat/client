@@ -10676,7 +10676,6 @@
     "unlockWritingAssistance": "రాత సహాయాన్ని అన్‌లాక్ చేయండి",
     "courseSectionTeaching": "బోధన",
     "courseSectionLearning": "నేర్చుకోవడం",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 కోర్సు} other{{count} కోర్సులు}}",
     "showMore": "మరింత చూపించు",
     "showLess": "తక్కువ చూపించు",
     "countNewMessages": "{count, plural, =1{1 కొత్త సందేశం} other{{count} కొత్త సందేశాలు}}",
@@ -10892,5 +10891,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 వ్యాకరణ అంశం ఉపయోగించబడింది} other{{count} వ్యాకరణ అంశాలు ఉపయోగించబడ్డాయి}}",
     "playVideo": "వీడియో ప్లే చేయండి",
     "videoPlayer": "వీడియో ప్లేయర్",
-    "customCourseTextbookHint": "మీరు ఏ పాఠ్యపుస్తకం ఉపయోగిస్తున్నారో మాకు చెప్పండి లేదా మీ పాఠ్యప్రణాళికను వివరించండి"
+    "customCourseTextbookHint": "మీరు ఏ పాఠ్యపుస్తకం ఉపయోగిస్తున్నారో మాకు చెప్పండి లేదా మీ పాఠ్యప్రణాళికను వివరించండి",
+    "courseListFiltersLabel": "కోర్సు ఫిల్టర్‌లు",
+    "allCoursesFilterTooltip": "అన్ని కోర్సులను చూపించు",
+    "teachingCoursesFilterTooltip": "మీరు బోధించే కోర్సులను మాత్రమే చూపించు",
+    "learningCoursesFilterTooltip": "మీరు నేర్చుకుంటున్న కోర్సులను మాత్రమే చూపించు",
+    "searchCoursesHint": "కోర్సులను శోధించండి",
+    "noCoursesMatchSearch": "మీ శోధనకు సరిపోలే కోర్సులు లేవు."
 }

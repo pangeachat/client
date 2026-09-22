@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "ಬರವಣಿಗೆ ಸಹಾಯವನ್ನು ಅನ್‌ಲಾಕ್ ಮಾಡಿ",
     "courseSectionTeaching": "ಬೋಧನೆ",
     "courseSectionLearning": "ಕಲಿಕೆ",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 ಕೋರ್ಸ್} other{{count} ಕೋರ್ಸ್‌ಗಳು}}",
     "showMore": "ಇನ್ನಷ್ಟು ತೋರಿಸು",
     "showLess": "ಕಡಿಮೆ ತೋರಿಸು",
     "countNewMessages": "{count, plural, =1{1 ಹೊಸ ಸಂದೇಶ} other{{count} ಹೊಸ ಸಂದೇಶಗಳು}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 ವ್ಯಾಕರಣ ಐಟಂ ಬಳಸಲಾಗಿದೆ} other{{count} ವ್ಯಾಕರಣ ಐಟಂಗಳನ್ನು ಬಳಸಲಾಗಿದೆ}}",
     "playVideo": "ವೀಡಿಯೊ ಪ್ಲೇ ಮಾಡಿ",
     "videoPlayer": "ವೀಡಿಯೊ ಪ್ಲೇಯರ್",
-    "customCourseTextbookHint": "ನೀವು ಯಾವ ಪಠ್ಯಪುಸ್ತಕವನ್ನು ಬಳಸುತ್ತೀರಿ ಎಂದು ನಮಗೆ ತಿಳಿಸಿ, ಅಥವಾ ನಿಮ್ಮ ಪಠ್ಯಕ್ರಮವನ್ನು ವಿವರಿಸಿ"
+    "customCourseTextbookHint": "ನೀವು ಯಾವ ಪಠ್ಯಪುಸ್ತಕವನ್ನು ಬಳಸುತ್ತೀರಿ ಎಂದು ನಮಗೆ ತಿಳಿಸಿ, ಅಥವಾ ನಿಮ್ಮ ಪಠ್ಯಕ್ರಮವನ್ನು ವಿವರಿಸಿ",
+    "courseListFiltersLabel": "ಕೋರ್ಸ್ ಫಿಲ್ಟರ್‌ಗಳು",
+    "allCoursesFilterTooltip": "ಎಲ್ಲಾ ಕೋರ್ಸ್‌ಗಳನ್ನು ತೋರಿಸಿ",
+    "teachingCoursesFilterTooltip": "ನೀವು ಕಲಿಸುವ ಕೋರ್ಸ್‌ಗಳನ್ನು ಮಾತ್ರ ತೋರಿಸಿ",
+    "learningCoursesFilterTooltip": "ನೀವು ಕಲಿಯುತ್ತಿರುವ ಕೋರ್ಸ್‌ಗಳನ್ನು ಮಾತ್ರ ತೋರಿಸಿ",
+    "searchCoursesHint": "ಕೋರ್ಸ್‌ಗಳನ್ನು ಹುಡುಕಿ",
+    "noCoursesMatchSearch": "ನಿಮ್ಮ ಹುಡುಕಾಟಕ್ಕೆ ಯಾವುದೇ ಕೋರ್ಸ್‌ಗಳು ಹೊಂದಿಕೆಯಾಗುವುದಿಲ್ಲ."
 }

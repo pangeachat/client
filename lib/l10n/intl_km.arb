@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "ដោះសោជំនួយការសរសេរ",
     "courseSectionTeaching": "ការបង្រៀន",
     "courseSectionLearning": "ការរៀន",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 វគ្គសិក្សា} other{{count} វគ្គសិក្សា}}",
     "showMore": "បង្ហាញបន្ថែម",
     "showLess": "បង្ហាញតិច",
     "countNewMessages": "{count, plural, =1{សារថ្មី ១} other{សារថ្មី {count}}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{ប្រើវេយ្យាករណ៍ ១} other{ប្រើវេយ្យាករណ៍ {count}}}",
     "playVideo": "ចាក់វីដេអូ",
     "videoPlayer": "កម្មវិធីចាក់វីដេអូ",
-    "customCourseTextbookHint": "ប្រាប់យើងពីសៀវភៅសិក្សាដែលអ្នកប្រើ ឬពិពណ៌នាអំពីកម្មវិធីសិក្សារបស់អ្នក"
+    "customCourseTextbookHint": "ប្រាប់យើងពីសៀវភៅសិក្សាដែលអ្នកប្រើ ឬពិពណ៌នាអំពីកម្មវិធីសិក្សារបស់អ្នក",
+    "courseListFiltersLabel": "តម្រងវគ្គសិក្សា",
+    "allCoursesFilterTooltip": "បង្ហាញវគ្គសិក្សាទាំងអស់",
+    "teachingCoursesFilterTooltip": "បង្ហាញតែវគ្គសិក្សាដែលអ្នកបង្រៀន",
+    "learningCoursesFilterTooltip": "បង្ហាញតែវគ្គសិក្សាដែលអ្នកកំពុងរៀន",
+    "searchCoursesHint": "ស្វែងរកវគ្គសិក្សា",
+    "noCoursesMatchSearch": "គ្មានវគ្គសិក្សាណាមួយត្រូវនឹងការស្វែងរករបស់អ្នកទេ។"
 }

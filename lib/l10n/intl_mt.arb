@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "Nisfruttaw l-għajnuna fil-kitba",
     "courseSectionTeaching": "Tagħlim",
     "courseSectionLearning": "Tgħallim",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kors} other{{count} korsijiet}}",
     "showMore": "Uri aktar",
     "showLess": "Uri inqas",
     "countNewMessages": "{count, plural, =1{1 messaġġ ġdid} other{{count} messaġġi ġodda}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 oġġett tal-grammatika użat} other{{count} oġġetti tal-grammatika użati}}",
     "playVideo": "Daqq il-filmat",
     "videoPlayer": "Plejer tal-vidjo",
-    "customCourseTextbookHint": "Għidilna liema ktieb tuża, jew iddeskrivi l-kurrikulu tiegħek"
+    "customCourseTextbookHint": "Għidilna liema ktieb tuża, jew iddeskrivi l-kurrikulu tiegħek",
+    "courseListFiltersLabel": "Filtri tal-korsijiet",
+    "allCoursesFilterTooltip": "Uri l-korsijiet kollha",
+    "teachingCoursesFilterTooltip": "Uri biss il-korsijiet li tgħallem",
+    "learningCoursesFilterTooltip": "Uri biss il-korsijiet li qed titgħallem fihom",
+    "searchCoursesHint": "Fittex korsijiet",
+    "noCoursesMatchSearch": "L-ebda kors ma jaqbel mat-tfittxija tiegħek."
 }

@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "Sbloccà l'assistenza à a scrittura",
     "courseSectionTeaching": "Insignamentu",
     "courseSectionLearning": "Amparera",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 corsu} other{{count} corsi}}",
     "showMore": "Mostra di più",
     "showLess": "Mostra di menu",
     "countNewMessages": "{count, plural, =1{1 novu messagiu} other{{count} novi messaghji}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 elementu di grammatica usatu} other{{count} elementi di grammatica usati}}",
     "playVideo": "Ghjucà u video",
     "videoPlayer": "Lettore video",
-    "customCourseTextbookHint": "Diteci chì libru di testu aduprate, o discrivite u vostru prugramma"
+    "customCourseTextbookHint": "Diteci chì libru di testu aduprate, o discrivite u vostru prugramma",
+    "courseListFiltersLabel": "Filtri di i corsi",
+    "allCoursesFilterTooltip": "Mostra tutti i corsi",
+    "teachingCoursesFilterTooltip": "Mostra solu i corsi ch'è tù insegni",
+    "learningCoursesFilterTooltip": "Mostra solu i corsi ch'è tù amparate",
+    "searchCoursesHint": "Cerca corsi",
+    "noCoursesMatchSearch": "Nisun corsu ùn currisponde à a vostra ricerca."
 }

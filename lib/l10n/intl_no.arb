@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "Lås opp skrivehjelp",
     "courseSectionTeaching": "Undervisning",
     "courseSectionLearning": "Læring",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kurs} other{{count} kurs}}",
     "showMore": "Vis mer",
     "showLess": "Vis mindre",
     "countNewMessages": "{count, plural, =1{1 ny melding} other{{count} nye meldinger}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 grammatikk-element brukt} other{{count} grammatikk-elementer brukt}}",
     "playVideo": "Spill av video",
     "videoPlayer": "Videospiller",
-    "customCourseTextbookHint": "Fortell oss hvilken lærebok du bruker, eller beskriv pensumet ditt"
+    "customCourseTextbookHint": "Fortell oss hvilken lærebok du bruker, eller beskriv pensumet ditt",
+    "courseListFiltersLabel": "Kursfiltre",
+    "allCoursesFilterTooltip": "Vis alle kurs",
+    "teachingCoursesFilterTooltip": "Vis kun kurs du underviser i",
+    "learningCoursesFilterTooltip": "Vis kun kurs du lærer i",
+    "searchCoursesHint": "Søk i kurs",
+    "noCoursesMatchSearch": "Ingen kurs samsvarer med søket ditt."
 }

@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "စာရေးအကူအညီကို လော့ခ်ဖွင့်ပါ",
     "courseSectionTeaching": "သင်ကြားပို့ချမှု",
     "courseSectionLearning": "သင်ယူမှု",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 သင်တန်း} other{{count} သင်တန်းများ}}",
     "showMore": "ပိုပြရန်",
     "showLess": "လျှော့ပြရန်",
     "countNewMessages": "{count, plural, =1{စာအသစ် ၁ စောင်} other{စာအသစ် {count} စောင်}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{သဒ္ဒါ ၁ ခု အသုံးပြုပြီး} other{သဒ္ဒါ {count} ခု အသုံးပြုပြီး}}",
     "playVideo": "ဗီဒီယိုဖွင့်ရန်",
     "videoPlayer": "ဗီဒီယိုဖွင့်စက်",
-    "customCourseTextbookHint": "သင်အသုံးပြုသည့် သင်ရိုးညွှန်းတမ်းစာအုပ် သို့မဟုတ် သင်ရိုးညွှန်းတမ်းအကြောင်း ဖော်ပြပါ"
+    "customCourseTextbookHint": "သင်အသုံးပြုသည့် သင်ရိုးညွှန်းတမ်းစာအုပ် သို့မဟုတ် သင်ရိုးညွှန်းတမ်းအကြောင်း ဖော်ပြပါ",
+    "courseListFiltersLabel": "သင်တန်းစစ်ထုတ်မှုများ",
+    "allCoursesFilterTooltip": "သင်တန်းအားလုံးကို ပြသပါ",
+    "teachingCoursesFilterTooltip": "သင်ကြားနေသော သင်တန်းများကိုသာ ပြသပါ",
+    "learningCoursesFilterTooltip": "သင်ယူနေသော သင်တန်းများကိုသာ ပြသပါ",
+    "searchCoursesHint": "သင်တန်းများ ရှာဖွေပါ",
+    "noCoursesMatchSearch": "သင်၏ရှာဖွေမှုနှင့် ကိုက်ညီသော သင်တန်းများ မရှိပါ။"
 }

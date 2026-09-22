@@ -1,14 +1,12 @@
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-
-import 'package:diacritic/diacritic.dart';
 
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/search_text.dart';
+import 'package:fluffychat/pangea/common/utils/web_search_focus_keeper.dart';
 import 'package:fluffychat/routes/courses/add_course_tile_content.dart';
 
 typedef CoursesLoader<T> = ValueNotifier<AsyncState<List<T>>>;
@@ -27,6 +25,10 @@ abstract class CourseSearchController<T> {
   final TextEditingController _searchController = TextEditingController();
   final ValueNotifier<bool> _searchingNotifier = ValueNotifier(false);
   final FocusNode _focusNode = FocusNode();
+  late final WebSearchFocusKeeper _focusKeeper = WebSearchFocusKeeper(
+    focusNode: _focusNode,
+    isSearchOpen: () => !_disposed && _searchingNotifier.value,
+  );
   Timer? _debounce;
 
   final ValueNotifier<bool> _loadingMore = ValueNotifier(false);
@@ -44,7 +46,7 @@ abstract class CourseSearchController<T> {
 
   void disposeCourseSearch() {
     _disposed = true;
-    _disarmAutoRefocus();
+    _focusKeeper.disarm();
     _filteredCoursesLoader.dispose();
     _searchController.removeListener(_onSearch);
     _scrollController.dispose();
@@ -75,17 +77,17 @@ abstract class CourseSearchController<T> {
   bool get disposed => _disposed;
 
   List<T> get filteredCourses {
-    final query = removeDiacritics(_searchController.text.trim().toLowerCase());
+    final query = SearchTextUtil.normalize(_searchController.text.trim());
     if (query.isEmpty) return [..._loadedCourses];
 
     final filtered = _loadedCourses.where((c) {
-      final normalizedTitle = removeDiacritics(getCourseName(c).toLowerCase());
+      final normalizedTitle = SearchTextUtil.normalize(getCourseName(c));
       return normalizedTitle.contains(query);
     }).toList();
 
     filtered.sort((a, b) {
-      final normalizedA = removeDiacritics(getCourseName(a).toLowerCase());
-      final normalizedB = removeDiacritics(getCourseName(b).toLowerCase());
+      final normalizedA = SearchTextUtil.normalize(getCourseName(a));
+      final normalizedB = SearchTextUtil.normalize(getCourseName(b));
       final aStarts = normalizedA.startsWith(query);
       final bStarts = normalizedB.startsWith(query);
       if (aStarts && !bStarts) return -1;
@@ -113,7 +115,7 @@ abstract class CourseSearchController<T> {
   }
 
   void stopSearching() {
-    _disarmAutoRefocus();
+    _focusKeeper.disarm();
     _searchingNotifier.value = false;
     _focusNode.unfocus();
     _searchController.clear();
@@ -127,55 +129,10 @@ abstract class CourseSearchController<T> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (_disposed) return;
       _focusNode.requestFocus();
-      _armAutoRefocus();
+      _focusKeeper.arm();
     });
     _searchController.clear();
     setFilteredCourses(AsyncLoaded(_loadedCourses));
-  }
-
-  // On web with the semantics tree on (staging stamps it on for everyone;
-  // assistive tech enables it anywhere), Blink drops the field's DOM focus
-  // whenever the engine moves its semantic DOM node — which any semantics
-  // change around it causes (course tiles loading in, map pins animating
-  // behind the panel) — closing the text-input connection and unfocusing the
-  // field at an arbitrary later moment. No widget structure prevents this
-  // (measured in #8581), so while search is open re-request focus when it
-  // drops without user intent: any pointer-down disarms, and focus landing on
-  // a real widget (keyboard traversal) is left alone. Web-only: native has no
-  // semantic DOM, and refocusing there would fight system keyboard dismissal.
-  bool _autoRefocusArmed = false;
-
-  void _armAutoRefocus() {
-    if (!kIsWeb || _autoRefocusArmed) return;
-    _autoRefocusArmed = true;
-    _focusNode.addListener(_onFocusChange);
-    GestureBinding.instance.pointerRouter.addGlobalRoute(_onGlobalPointer);
-  }
-
-  void _disarmAutoRefocus() {
-    if (!_autoRefocusArmed) return;
-    _autoRefocusArmed = false;
-    _focusNode.removeListener(_onFocusChange);
-    GestureBinding.instance.pointerRouter.removeGlobalRoute(_onGlobalPointer);
-  }
-
-  void _onGlobalPointer(PointerEvent event) {
-    if (event is PointerDownEvent) _disarmAutoRefocus();
-  }
-
-  void _onFocusChange() {
-    if (!_autoRefocusArmed || _focusNode.hasFocus) return;
-    final primary = FocusManager.instance.primaryFocus;
-    if (primary != null && primary is! FocusScopeNode) return;
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (!_disposed &&
-          _autoRefocusArmed &&
-          _searchingNotifier.value &&
-          !_focusNode.hasFocus) {
-        _focusNode.requestFocus();
-      }
-    });
-    WidgetsBinding.instance.ensureVisualUpdate();
   }
 
   void _onSearch() {

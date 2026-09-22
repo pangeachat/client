@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "Fur caawinta qorista",
     "courseSectionTeaching": "Barid",
     "courseSectionLearning": "Barasho",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 koorso} other{{count} koorso}}",
     "showMore": "Muuji wax badan",
     "showLess": "Muuji wax yar",
     "countNewMessages": "{count, plural, =1{1 fariin cusub} other{{count} fariimo cusub}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 qaanuun naxwe ah la isticmaalay} other{{count} qaanuuno naxwe ah la isticmaalay}}",
     "playVideo": "Daaro muuqaalka",
     "videoPlayer": "Ciyaaryahanka fiidyaha",
-    "customCourseTextbookHint": "Noo sheeg buugga aad isticmaasho, ama sharax manhajkaaga"
+    "customCourseTextbookHint": "Noo sheeg buugga aad isticmaasho, ama sharax manhajkaaga",
+    "courseListFiltersLabel": "Shaandhooyinka koorsada",
+    "allCoursesFilterTooltip": "Tus dhammaan koorsooyinka",
+    "teachingCoursesFilterTooltip": "Tus kaliya koorsooyinka aad dhigto",
+    "learningCoursesFilterTooltip": "Tus kaliya koorsooyinka aad baraneyso",
+    "searchCoursesHint": "Raadi koorsooyin",
+    "noCoursesMatchSearch": "Ma jiraan koorsooyin u dhigma raadintaada."
 }

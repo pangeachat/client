@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "Reserare scripturae auxilium",
     "courseSectionTeaching": "Docens",
     "courseSectionLearning": "Discens",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 cursus} other{{count} cursus}}",
     "showMore": "Plura ostende",
     "showLess": "Pauciora ostende",
     "countNewMessages": "{count, plural, =1{1 nuntius novus} other{{count} nuntii novi}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 grammaticae res adhibita} other{{count} grammaticae res adhibitae}}",
     "playVideo": "Ludere video",
     "videoPlayer": "Lector video",
-    "customCourseTextbookHint": "Dic nobis quem librum adhibeas, vel curriculum tuum descrībē"
+    "customCourseTextbookHint": "Dic nobis quem librum adhibeas, vel curriculum tuum descrībē",
+    "courseListFiltersLabel": "Filtra cursus",
+    "allCoursesFilterTooltip": "Monstra omnes cursus",
+    "teachingCoursesFilterTooltip": "Monstra tantum cursus quos doces",
+    "learningCoursesFilterTooltip": "Monstra tantum cursus quos disces",
+    "searchCoursesHint": "Quaere cursus",
+    "noCoursesMatchSearch": "Nulli cursus quaestioni tuae respondent."
 }

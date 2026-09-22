@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "ලිවීමේ සහාය අගුළු හරින්න",
     "courseSectionTeaching": "ඉගැන්වීම",
     "courseSectionLearning": "ඉගෙනීම",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 පාඨමාලාව} other{{count} පාඨමාලා}}",
     "showMore": "තවත් පෙන්වන්න",
     "showLess": "අඩු පෙන්වන්න",
     "countNewMessages": "{count, plural, =1{නව පණිවිඩ 1ක්} other{නව පණිවිඩ {count}ක්}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 ව්‍යාකරණ අයිතමයක් භාවිතා කරන ලදී} other{{count} ව්‍යාකරණ අයිතම භාවිතා කරන ලදී}}",
     "playVideo": "වීඩියෝ වාදනය කරන්න",
     "videoPlayer": "වීඩියෝ වාදකය",
-    "customCourseTextbookHint": "ඔබ භාවිතා කරන පෙළපොත අපට කියන්න, නැතහොත් ඔබේ විෂය නිර්දේශය විස්තර කරන්න"
+    "customCourseTextbookHint": "ඔබ භාවිතා කරන පෙළපොත අපට කියන්න, නැතහොත් ඔබේ විෂය නිර්දේශය විස්තර කරන්න",
+    "courseListFiltersLabel": "පාඨමාලා පෙරහන්",
+    "allCoursesFilterTooltip": "සියලුම පාඨමාලා පෙන්වන්න",
+    "teachingCoursesFilterTooltip": "ඔබ උගන්වන පාඨමාලා පමණක් පෙන්වන්න",
+    "learningCoursesFilterTooltip": "ඔබ ඉගෙන ගන්නා පාඨමාලා පමණක් පෙන්වන්න",
+    "searchCoursesHint": "පාඨමාලා සොයන්න",
+    "noCoursesMatchSearch": "ඔබේ සෙවුමට ගැලපෙන පාඨමාලා නොමැත."
 }

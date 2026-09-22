@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "Բացել գրելու աջակցությունը",
     "courseSectionTeaching": "Դասավանդում",
     "courseSectionLearning": "Ուսուցում",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 դասընթաց} other{{count} դասընթաց}}",
     "showMore": "Տեսնել ավելին",
     "showLess": "Տեսնել ավելի քիչ",
     "countNewMessages": "{count, plural, =1{1 նոր հաղորդագրություն} other{{count} նոր հաղորդագրություն}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{Օգտագործվել է 1 քերականական միավոր} other{Օգտագործվել է {count} քերականական միավոր}}",
     "playVideo": "Նվագարկել տեսանյութը",
     "videoPlayer": "Տեսանյութի նվագարկիչ",
-    "customCourseTextbookHint": "Ասեք մեզ, թե որ դասագիրքն եք օգտագործում, կամ նկարագրեք Ձեր ուսումնական ծրագիրը"
+    "customCourseTextbookHint": "Ասեք մեզ, թե որ դասագիրքն եք օգտագործում, կամ նկարագրեք Ձեր ուսումնական ծրագիրը",
+    "courseListFiltersLabel": "Դասընթացի զտիչներ",
+    "allCoursesFilterTooltip": "Ցուցադրել բոլոր դասընթացները",
+    "teachingCoursesFilterTooltip": "Ցուցադրել միայն այն դասընթացները, որոնք դուք եք դասավանդում",
+    "learningCoursesFilterTooltip": "Ցուցադրել միայն այն դասընթացները, որոնք դուք եք սովորում",
+    "searchCoursesHint": "Որոնել դասընթացներ",
+    "noCoursesMatchSearch": "Ձեր որոնմանը համապատասխան դասընթացներ չկան։"
 }

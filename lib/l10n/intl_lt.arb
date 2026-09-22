@@ -10507,7 +10507,6 @@
     "unlockWritingAssistance": "Atrakinti rašymo pagalbą",
     "courseSectionTeaching": "Mokymas",
     "courseSectionLearning": "Mokymasis",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kursas} other{{count} kursai}}",
     "showMore": "Rodyti daugiau",
     "showLess": "Rodyti mažiau",
     "countNewMessages": "{count, plural, =1{1 nauja žinutė} other{{count} naujos žinutės}}",
@@ -10723,5 +10722,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 gramatikos elementas panaudotas} other{{count} gramatikos elementų panaudota}}",
     "playVideo": "Paleisti vaizdo įrašą",
     "videoPlayer": "Vaizdo grotuvas",
-    "customCourseTextbookHint": "Pasakykite mums, kokį vadovėlį naudojate, arba apibūdinkite savo mokymo programą"
+    "customCourseTextbookHint": "Pasakykite mums, kokį vadovėlį naudojate, arba apibūdinkite savo mokymo programą",
+    "courseListFiltersLabel": "Kursų filtrai",
+    "allCoursesFilterTooltip": "Rodyti visus kursus",
+    "teachingCoursesFilterTooltip": "Rodyti tik kursus, kuriuos dėstote",
+    "learningCoursesFilterTooltip": "Rodyti tik kursus, kuriuos mokotės",
+    "searchCoursesHint": "Ieškoti kursų",
+    "noCoursesMatchSearch": "Nėra kursų, atitinkančių jūsų paiešką."
 }

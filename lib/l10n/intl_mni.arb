@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "রাইটিং এসিস্টেন্স অনলক তৌবীয়ু",
     "courseSectionTeaching": "খুরুমজরি",
     "courseSectionLearning": "তম্বিরি",
-    "courseSectionLabel": "{title}, {count, plural, =1{১ কোর্স} other{{count} কোর্স}}",
     "showMore": "ಹೆಚ್ಚು ತಾನು",
     "showLess": "ಕಮ್ಮಿ ತಾನು",
     "countNewMessages": "{count, plural, =1{1 অহোংবা পাও} other{{count} অহোংবা পাও}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 গ্রামার আইটেম শীজিন্নখি} other{{count} গ্রামার আইটেম শীজিন্নখি}}",
     "playVideo": "ভিডিও প্লে তৌ",
     "videoPlayer": "ভিডিও প্লেয়ার",
-    "customCourseTextbookHint": "ꯑꯩꯈꯣꯌꯗ ꯅꯍꯥꯛꯅ ꯁꯤꯖꯤꯟꯅꯔꯤꯕ ꯇꯦꯛꯁꯠꯕꯨꯛ ꯑꯗꯨ ꯍꯦꯟꯅ ꯐꯣꯡꯗꯣꯛꯎ, ꯅꯠꯠꯔꯒꯥ ꯅꯍꯥꯛꯀꯤ ꯀꯔꯤꯀꯨꯂꯝ ꯑꯗꯨ ꯊꯤꯡꯖꯤꯟꯕꯤꯌꯨ"
+    "customCourseTextbookHint": "ꯑꯩꯈꯣꯌꯗ ꯅꯍꯥꯛꯅ ꯁꯤꯖꯤꯟꯅꯔꯤꯕ ꯇꯦꯛꯁꯠꯕꯨꯛ ꯑꯗꯨ ꯍꯦꯟꯅ ꯐꯣꯡꯗꯣꯛꯎ, ꯅꯠꯠꯔꯒꯥ ꯅꯍꯥꯛꯀꯤ ꯀꯔꯤꯀꯨꯂꯝ ꯑꯗꯨ ꯊꯤꯡꯖꯤꯟꯕꯤꯌꯨ",
+    "courseListFiltersLabel": "কোর্স ফিল্টারশিং",
+    "allCoursesFilterTooltip": "কোর্স পুম্নমক উৎনবা",
+    "teachingCoursesFilterTooltip": "মহাক্না তম্লিবা কোর্সশিং খক্তা উৎনবা",
+    "learningCoursesFilterTooltip": "মহাক্না তম্লিবা কোর্সশিং খক্তা উৎনবা",
+    "searchCoursesHint": "কোর্সশিং শিংনবা",
+    "noCoursesMatchSearch": "মহাক্না শিংলিবা কোর্স অমত্তা ফংদে।"
 }

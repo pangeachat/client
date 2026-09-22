@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "लेखन सहाय्य अनलॉक करा",
     "courseSectionTeaching": "शिकवणे",
     "courseSectionLearning": "शिकणे",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 कोर्स} other{{count} कोर्सेस}}",
     "showMore": "आणखी दाखवा",
     "showLess": "कमी दाखवा",
     "countNewMessages": "{count, plural, =1{1 नवीन संदेश} other{{count} नवीन संदेश}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 व्याकरण आयटम वापरला} other{{count} व्याकरण आयटम वापरले}}",
     "playVideo": "व्हिडिओ प्ले करा",
     "videoPlayer": "व्हिडिओ प्लेयर",
-    "customCourseTextbookHint": "तुम्ही कोणते पाठ्यपुस्तक वापरता ते आम्हाला सांगा किंवा तुमच्या अभ्यासक्रमाचे वर्णन करा"
+    "customCourseTextbookHint": "तुम्ही कोणते पाठ्यपुस्तक वापरता ते आम्हाला सांगा किंवा तुमच्या अभ्यासक्रमाचे वर्णन करा",
+    "courseListFiltersLabel": "अभ्यासक्रम फिल्टर",
+    "allCoursesFilterTooltip": "सर्व अभ्यासक्रम दाखवा",
+    "teachingCoursesFilterTooltip": "तुम्ही शिकवत असलेले अभ्यासक्रमच दाखवा",
+    "learningCoursesFilterTooltip": "तुम्ही शिकत असलेले अभ्यासक्रमच दाखवा",
+    "searchCoursesHint": "अभ्यासक्रम शोधा",
+    "noCoursesMatchSearch": "तुमच्या शोधण्याशी जुळणारे कोणतेही अभ्यासक्रम नाहीत."
 }

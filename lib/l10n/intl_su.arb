@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "Buka konci bantuan nulis",
     "courseSectionTeaching": "Ngajar",
     "courseSectionLearning": "Diajar",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kursus} other{{count} kursus}}",
     "showMore": "Témbongkeun deui",
     "showLess": "Témbongkeun saeutik",
     "countNewMessages": "{count, plural, =1{1 talatah anyar} other{{count} talatah anyar}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 item tata basa dipaké} other{{count} item tata basa dipaké}}",
     "playVideo": "Putar vidéo",
     "videoPlayer": "Pamuter vidéo",
-    "customCourseTextbookHint": "Caritakeun buku pangajaran naon nu ku anjeun dipaké, atawa jelaskeun kurikulum anjeun"
+    "customCourseTextbookHint": "Caritakeun buku pangajaran naon nu ku anjeun dipaké, atawa jelaskeun kurikulum anjeun",
+    "courseListFiltersLabel": "Saringan kursus",
+    "allCoursesFilterTooltip": "Témbongkeun sadaya kursus",
+    "teachingCoursesFilterTooltip": "Témbongkeun ngan kursus nu diajarkeun ku anjeun",
+    "learningCoursesFilterTooltip": "Témbongkeun ngan kursus nu diajar ku anjeun",
+    "searchCoursesHint": "Téang kursus",
+    "noCoursesMatchSearch": "Teu aya kursus nu cocog sareng pamilarian anjeun."
 }

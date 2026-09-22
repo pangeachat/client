@@ -10027,7 +10027,6 @@
     "unlockWritingAssistance": "Yazma yardımının kilidini aç",
     "courseSectionTeaching": "Öğretim",
     "courseSectionLearning": "Öğrenim",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kurs} other{{count} kurs}}",
     "showMore": "Daha fazla göster",
     "showLess": "Daha az göster",
     "countNewMessages": "{count, plural, =1{1 yeni mesaj} other{{count} yeni mesaj}}",
@@ -10243,5 +10242,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 dil bilgisi öğesi kullanıldı} other{{count} dil bilgisi öğesi kullanıldı}}",
     "playVideo": "Videoyu oynat",
     "videoPlayer": "Video oynatıcı",
-    "customCourseTextbookHint": "Kullandığınız ders kitabını bize bildirin veya müfredatınızı açıklayın"
+    "customCourseTextbookHint": "Kullandığınız ders kitabını bize bildirin veya müfredatınızı açıklayın",
+    "courseListFiltersLabel": "Kurs filtreleri",
+    "allCoursesFilterTooltip": "Tüm kursları göster",
+    "teachingCoursesFilterTooltip": "Sadece öğrettiğiniz kursları göster",
+    "learningCoursesFilterTooltip": "Sadece öğrendiğiniz kursları göster",
+    "searchCoursesHint": "Kurs ara",
+    "noCoursesMatchSearch": "Aramanızla eşleşen kurs bulunamadı."
 }

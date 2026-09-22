@@ -9740,7 +9740,6 @@
     "unlockWritingAssistance": "Разблакіраваць дапамогу ў напісанні",
     "courseSectionTeaching": "Выкладанне",
     "courseSectionLearning": "Вывучэнне",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 курс} other{{count} курсаў}}",
     "showMore": "Паказаць больш",
     "showLess": "Паказаць менш",
     "countNewMessages": "{count, plural, =1{1 новае паведамленне} other{{count} новых паведамленняў}}",
@@ -9956,5 +9955,11 @@
     "grammarItemsUsed": "{count, plural, =1{выкарыстаны 1 граматычны элемент} other{выкарыстана {count} граматычных элементаў}}",
     "playVideo": "Прайграць відэа",
     "videoPlayer": "Відэапрайгравальнік",
-    "customCourseTextbookHint": "Раскажыце, які падручнік вы выкарыстоўваеце, або апішыце сваю навучальную праграму"
+    "customCourseTextbookHint": "Раскажыце, які падручнік вы выкарыстоўваеце, або апішыце сваю навучальную праграму",
+    "courseListFiltersLabel": "Фільтры курсаў",
+    "allCoursesFilterTooltip": "Паказаць усе курсы",
+    "teachingCoursesFilterTooltip": "Паказаць толькі курсы, якія вы выкладаеце",
+    "learningCoursesFilterTooltip": "Паказаць толькі курсы, якія вы вывучаеце",
+    "searchCoursesHint": "Пошук курсаў",
+    "noCoursesMatchSearch": "Няма курсаў, якія адпавядаюць вашаму пошуку."
 }

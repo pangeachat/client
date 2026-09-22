@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "Ṣí ìrànlọ́wọ́ kíkọ sílẹ̀",
     "courseSectionTeaching": "Kíkọ́ni",
     "courseSectionLearning": "Kíkọ́",
-    "courseSectionLabel": "{title}, {count, plural, =1{ìkẹ́kọ̀ọ́ 1} other{ìkẹ́kọ̀ọ́ {count}}}",
     "showMore": "Fi siwaju si han",
     "showLess": "Fi kere si han",
     "countNewMessages": "{count, plural, =1{ìhìn tuntun 1} other{ìhìn tuntun {count}}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{ohun èlò ìkẹ́kọ̀ọ́ gírámà kan lò} other{{count} ohun èlò ìkẹ́kọ̀ọ́ gírámà lò}}",
     "playVideo": "Ṣi fidio",
     "videoPlayer": "Ẹrọ orin fidio",
-    "customCourseTextbookHint": "Sọ fún wa ìwé tí o ń lò, tàbí ṣàlàyé ètò ẹ̀kọ́ rẹ"
+    "customCourseTextbookHint": "Sọ fún wa ìwé tí o ń lò, tàbí ṣàlàyé ètò ẹ̀kọ́ rẹ",
+    "courseListFiltersLabel": "Àwọn àlẹ̀mọ́ ìkẹ́kọ̀ọ́",
+    "allCoursesFilterTooltip": "Fi gbogbo àwọn ìkẹ́kọ̀ọ́ hàn",
+    "teachingCoursesFilterTooltip": "Fi àwọn ìkẹ́kọ̀ọ́ tí o ń kọ́ nìkan hàn",
+    "learningCoursesFilterTooltip": "Fi àwọn ìkẹ́kọ̀ọ́ tí o ń kọ́ nínú nìkan hàn",
+    "searchCoursesHint": "Wá àwọn ìkẹ́kọ̀ọ́",
+    "noCoursesMatchSearch": "Kò sí àwọn ìkẹ́kọ̀ọ́ tó bá ìwádìí rẹ mu."
 }

@@ -9818,7 +9818,6 @@
     "unlockWritingAssistance": "எழுத்து உதவியைத் திறக்கவும்",
     "courseSectionTeaching": "கற்பித்தல்",
     "courseSectionLearning": "கற்றல்",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 பாடம்} other{{count} பாடங்கள்}}",
     "showMore": "மேலும் காட்டு",
     "showLess": "குறைவாக காட்டு",
     "countNewMessages": "{count, plural, =1{1 புதிய செய்தி} other{{count} புதிய செய்திகள்}}",
@@ -10034,5 +10033,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 இலக்கண உருப்படி பயன்படுத்தப்பட்டது} other{{count} இலக்கண உருப்படிகள் பயன்படுத்தப்பட்டன}}",
     "playVideo": "வீடியோவை இயக்கு",
     "videoPlayer": "வீடியோ பிளேயர்",
-    "customCourseTextbookHint": "நீங்கள் பயன்படுத்தும் பாடப்புத்தகத்தை எங்களிடம் கூறுங்கள் அல்லது உங்கள் பாடத்திட்டத்தை விவரியுங்கள்"
+    "customCourseTextbookHint": "நீங்கள் பயன்படுத்தும் பாடப்புத்தகத்தை எங்களிடம் கூறுங்கள் அல்லது உங்கள் பாடத்திட்டத்தை விவரியுங்கள்",
+    "courseListFiltersLabel": "பாடநெறி வடிப்பான்கள்",
+    "allCoursesFilterTooltip": "அனைத்து பாடநெறிகளையும் காட்டு",
+    "teachingCoursesFilterTooltip": "நீங்கள் கற்பிக்கும் பாடநெறிகளை மட்டும் காட்டு",
+    "learningCoursesFilterTooltip": "நீங்கள் கற்கும் பாடநெறிகளை மட்டும் காட்டு",
+    "searchCoursesHint": "பாடநெறிகளைத் தேடு",
+    "noCoursesMatchSearch": "உங்கள் தேடலுடன் எந்தப் பாடநெறிகளும் பொருந்தவில்லை."
 }

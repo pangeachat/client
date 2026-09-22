@@ -10244,7 +10244,6 @@
     "unlockWritingAssistance": "Lås upp skrivhjälp",
     "courseSectionTeaching": "Undervisning",
     "courseSectionLearning": "Inlärning",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kurs} other{{count} kurser}}",
     "showMore": "Visa mer",
     "showLess": "Visa mindre",
     "countNewMessages": "{count, plural, =1{1 nytt meddelande} other{{count} nya meddelanden}}",
@@ -10460,5 +10459,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 grammatikobjekt använt} other{{count} grammatikobjekt använda}}",
     "playVideo": "Spela video",
     "videoPlayer": "Videospelare",
-    "customCourseTextbookHint": "Berätta vilken lärobok du använder, eller beskriv din läroplan"
+    "customCourseTextbookHint": "Berätta vilken lärobok du använder, eller beskriv din läroplan",
+    "courseListFiltersLabel": "Kursfilter",
+    "allCoursesFilterTooltip": "Visa alla kurser",
+    "teachingCoursesFilterTooltip": "Visa endast kurser du undervisar i",
+    "learningCoursesFilterTooltip": "Visa endast kurser du lär dig i",
+    "searchCoursesHint": "Sök kurser",
+    "noCoursesMatchSearch": "Inga kurser matchar din sökning."
 }

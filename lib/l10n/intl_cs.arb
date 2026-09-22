@@ -10220,7 +10220,6 @@
     "unlockWritingAssistance": "Odemknout asistenci při psaní",
     "courseSectionTeaching": "Výuka",
     "courseSectionLearning": "Učení",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kurz} other{{count} kurzů}}",
     "showMore": "Zobrazit více",
     "showLess": "Zobrazit méně",
     "countNewMessages": "{count, plural, =1{1 nová zpráva} other{{count} nových zpráv}}",
@@ -10436,5 +10435,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 použitá položka gramatiky} other{{count} použité položky gramatiky}}",
     "playVideo": "Přehrát video",
     "videoPlayer": "Přehrávač videa",
-    "customCourseTextbookHint": "Řekněte nám, jakou učebnici používáte, nebo popište své osnovy"
+    "customCourseTextbookHint": "Řekněte nám, jakou učebnici používáte, nebo popište své osnovy",
+    "courseListFiltersLabel": "Filtry kurzů",
+    "allCoursesFilterTooltip": "Zobrazit všechny kurzy",
+    "teachingCoursesFilterTooltip": "Zobrazit pouze kurzy, které učíte",
+    "learningCoursesFilterTooltip": "Zobrazit pouze kurzy, ve kterých se učíte",
+    "searchCoursesHint": "Hledat kurzy",
+    "noCoursesMatchSearch": "Žádné kurzy neodpovídají vašemu hledání."
 }

@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "Ontsluit skryfhulp",
     "courseSectionTeaching": "Onderrig",
     "courseSectionLearning": "Leer",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kursus} other{{count} kursusse}}",
     "showMore": "Wys meer",
     "showLess": "Wys minder",
     "countNewMessages": "{count, plural, =1{1 nuwe boodskap} other{{count} nuwe boodskappe}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 grammatika-item gebruik} other{{count} grammatika-items gebruik}}",
     "playVideo": "Speel video",
     "videoPlayer": "Videospeler",
-    "customCourseTextbookHint": "Vertel ons watter handboek jy gebruik, of beskryf jou kurrikulum"
+    "customCourseTextbookHint": "Vertel ons watter handboek jy gebruik, of beskryf jou kurrikulum",
+    "courseListFiltersLabel": "Kursusfilters",
+    "allCoursesFilterTooltip": "Wys alle kursusse",
+    "teachingCoursesFilterTooltip": "Wys slegs kursusse wat jy aanbied",
+    "learningCoursesFilterTooltip": "Wys slegs kursusse waarin jy leer",
+    "searchCoursesHint": "Soek kursusse",
+    "noCoursesMatchSearch": "Geen kursusse stem ooreen met jou soektog nie."
 }

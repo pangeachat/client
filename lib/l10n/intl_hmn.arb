@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "Qhib kev pab sau ntawv",
     "courseSectionTeaching": "Qhia",
     "courseSectionLearning": "Kawm",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 chav kawm} other{{count} chav kawm}}",
     "showMore": "Qhia ntxiv",
     "showLess": "Qhia tsawg dua",
     "countNewMessages": "{count, plural, =1{1 tsab lus tshiab} other{{count} tsab lus tshiab}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 kab lus siv} other{{count} kab lus siv}}",
     "playVideo": "Ua yeeb yaj kiab",
     "videoPlayer": "Tshuab ua yeeb yaj kiab",
-    "customCourseTextbookHint": "Qhia peb tias koj siv phau ntawv twg, lossis piav qhia txog koj cov kev kawm"
+    "customCourseTextbookHint": "Qhia peb tias koj siv phau ntawv twg, lossis piav qhia txog koj cov kev kawm",
+    "courseListFiltersLabel": "Cov kev kawm lim",
+    "allCoursesFilterTooltip": "Qhia tag nrho cov kev kawm",
+    "teachingCoursesFilterTooltip": "Qhia tsuas yog cov kev kawm koj qhia",
+    "learningCoursesFilterTooltip": "Qhia tsuas yog cov kev kawm koj tab tom kawm",
+    "searchCoursesHint": "Nrhiav kev kawm",
+    "noCoursesMatchSearch": "Tsis muaj kev kawm phim koj qhov kev tshawb nrhiav."
 }
