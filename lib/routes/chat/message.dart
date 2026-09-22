@@ -552,6 +552,11 @@ class Message extends StatelessWidget {
                                             name: user.localizedDisplayname(
                                               L10n.of(context),
                                             ),
+                                            // The bot sends messages too, and
+                                            // without an id this renders its
+                                            // Matrix avatar rather than the
+                                            // face the theme drives.
+                                            userId: user.id,
                                             onTap: () =>
                                                 controller.showActionsPopup(
                                                   user: user,
