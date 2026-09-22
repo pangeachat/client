@@ -41,7 +41,11 @@ class ChoiceAnimationWidgetState extends State<ChoiceAnimationWidget>
     super.didUpdateWidget(oldWidget);
     if ((widget.isSelected && widget.isSelected != oldWidget.isSelected) ||
         widget.isCorrect != oldWidget.isCorrect) {
-      _controller.forward().then((_) => _controller.reset());
+      // Restart from the beginning each time rather than rewinding once the
+      // animation ends. Both sequences end where they start, and the deferred
+      // rewind ran against a disposed controller when the choice was removed
+      // in the same frame its animation finished (CLIENT-ETE, #9202).
+      _controller.forward(from: 0);
     }
   }
 
