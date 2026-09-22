@@ -141,8 +141,13 @@ class _NoReportSentinel implements Exception {
 class SentryEventCounter {
   int events = 0;
 
+  /// The level of each event, in order: how a report was classed, not only
+  /// that it fired.
+  final levels = <SentryLevel?>[];
+
   Future<void> init() {
     events = 0;
+    levels.clear();
     return Sentry.init((options) {
       options.dsn = 'https://public@sentry.invalid/1';
       // OFF, so this counts what the CODE emits rather than what the SDK
@@ -155,6 +160,7 @@ class SentryEventCounter {
       options.enableDeduplication = false;
       options.beforeSend = (event, hint) {
         events++;
+        levels.add(event.level);
         // Dropped: nothing should leave the test.
         return null;
       };
