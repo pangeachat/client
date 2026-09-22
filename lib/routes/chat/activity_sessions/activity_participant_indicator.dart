@@ -97,7 +97,11 @@ class ActivityParticipantIndicator extends StatelessWidget {
             builder: (context, hovered) => Opacity(
               opacity: opacity,
               child: ShimmerBackground(
-                enabled: shimmer && !hovered,
+                // Hover deliberately doesn't gate this. Flipping `enabled`
+                // off ends the run and refunds it, so un-hovering started a
+                // fresh two pulses while the card beside it had already spent
+                // its own — one card left flashing alone (#9220).
+                enabled: shimmer,
                 borderRadius: borderRadius,
                 child: Container(
                   alignment: Alignment.center,
