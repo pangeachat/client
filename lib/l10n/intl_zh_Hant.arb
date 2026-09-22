@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 12:37:08.230497",
+    "@@last_modified": "2026-09-22 15:19:41.410723",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -7664,11 +7664,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "這是這門課程中的所有人。點擊任何用戶的頭像並選擇「開始對話」以發送私信。",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "女性",
     "man": "男性",
     "otherGender": "其他",
@@ -10058,5 +10053,8 @@
     "practiceListeningPrompt": "哪一個是「{word}」？",
     "practiceMeaningPrompt": "「{word}」是什麼意思？",
     "practiceEmojiPrompt": "為「{word}」選擇一個表情符號",
-    "practiceStepProgress": "{done}/{total}"
+    "practiceStepProgress": "{done}/{total}",
+    "leaderboard": "排行榜",
+    "leaderboardRank": "排名 {rank}",
+    "courseLeaderboardTooltip": "本課程的所有成員，依據他們在該語言中獲得的星星數進行排名。點擊成員並選擇「開始對話」即可向他們發送私訊。"
 }

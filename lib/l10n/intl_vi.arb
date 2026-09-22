@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 12:37:07.387546",
+    "@@last_modified": "2026-09-22 15:19:40.637653",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -4859,11 +4859,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "Đây là tất cả mọi người trong khóa học này. Nhấp vào avatar của bất kỳ người dùng nào và \"bắt đầu cuộc trò chuyện\" để gửi tin nhắn trực tiếp.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Phụ nữ",
     "man": "Nam",
     "otherGender": "Khác",
@@ -7244,5 +7239,8 @@
     "practiceListeningPrompt": "Cái nào nói ‘{word}’?",
     "practiceMeaningPrompt": "‘{word}’ nghĩa là gì?",
     "practiceEmojiPrompt": "Chọn một biểu tượng cảm xúc cho ‘{word}’",
-    "practiceStepProgress": "{done} trên {total}"
+    "practiceStepProgress": "{done} trên {total}",
+    "leaderboard": "Bảng xếp hạng",
+    "leaderboardRank": "Hạng {rank}",
+    "courseLeaderboardTooltip": "Tất cả mọi người trong khóa học này, được xếp hạng theo số sao của họ trong ngôn ngữ đó. Nhấn vào một thành viên và chọn “Bắt đầu cuộc trò chuyện” để gửi tin nhắn trực tiếp cho họ."
 }

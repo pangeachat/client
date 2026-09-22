@@ -3563,7 +3563,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-09-22 12:36:58.948170",
+    "@@last_modified": "2026-09-22 15:19:31.027145",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -7750,11 +7750,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "Is é seo gach duine sa chúrsa seo. Cliceáil ar avatar aon úsáideora agus \"tús a chur le comhrá\" chun DM a sheoladh.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Bean",
     "man": "Duine",
     "otherGender": "Duine eile",
@@ -9963,5 +9958,8 @@
     "practiceListeningPrompt": "Cé acu a deir ‘{word}’?",
     "practiceMeaningPrompt": "Cad a chiallaíonn ‘{word}’?",
     "practiceEmojiPrompt": "Roghnaigh emoji do ‘{word}’",
-    "practiceStepProgress": "{done} as {total}"
+    "practiceStepProgress": "{done} as {total}",
+    "leaderboard": "Clár Ceannródaithe",
+    "leaderboardRank": "Céim {rank}",
+    "courseLeaderboardTooltip": "Gach duine sa chúrsa seo, rangaithe de réir a gcuid réaltaí sa teanga. Beartaigh ar bhall agus roghnaigh “Tosaigh comhrá” chun teachtaireacht dhíreach a sheoladh chucu."
 }

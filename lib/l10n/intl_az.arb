@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-09-22 12:36:57.457041",
+    "@@last_modified": "2026-09-22 15:19:28.830990",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -1662,7 +1662,6 @@
     "otherGender": "Digər",
     "unselectedGender": "Cins seçimi edin",
     "modeDisabled": "Öyrənmə vasitələri hədəf dilinizdə olmayan mesajlar üçün deaktiv edilib.",
-    "courseParticipantTooltip": "Bunlar bu kursdakı hər kəsdir. İstənilən istifadəçinin avatarına klikləyin və şəxsi mesaj göndərmək üçün “söhbətə başla” seçin.",
     "chatParticipantTooltip": "Bunlar bu söhbətdəki hər kəsdir. İstənilən istifadəçinin avatarına klikləyin və şəxsi mesaj göndərmək üçün “söhbətə başla” seçin.",
     "inOngoingActivity": "Davam edən bir fəaliyyətiniz var!",
     "requestRegeneration": "Yenidən yaradılmasını tələb et",
@@ -2356,5 +2355,8 @@
     "practiceListeningPrompt": "Hansı ‘{word}’ deyir?",
     "practiceMeaningPrompt": "‘{word}’ nə deməkdir?",
     "practiceEmojiPrompt": "‘{word}’ üçün bir emoji seçin",
-    "practiceStepProgress": "{done} / {total}"
+    "practiceStepProgress": "{done} / {total}",
+    "leaderboard": "Liderlər lövhəsi",
+    "leaderboardRank": "Sıra {rank}",
+    "courseLeaderboardTooltip": "Bu kursdakı hər kəs, dilindəki ulduzlarına görə sıralanır. Bir üzvə toxunun və onlara birbaşa mesaj göndərmək üçün “Söhbətə başla” seçin."
 }

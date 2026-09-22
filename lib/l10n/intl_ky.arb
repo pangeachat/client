@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-09-22 12:37:01.190202",
+    "@@last_modified": "2026-09-22 15:19:34.358312",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -1662,7 +1662,6 @@
     "otherGender": "Башка",
     "unselectedGender": "Жынысты тандоо",
     "modeDisabled": "Окуу куралдары сиздин максаттуу тилиңизде болбогон билдирүүлөр үчүн өчүрүлгөн.",
-    "courseParticipantTooltip": "Бул курстагы бардык катышуучулар. Каалаган колдонуучунун аватарын басып, жеке билдирүү жөнөтүү үчүн “маекти баштоо” баскычын басыңыз.",
     "chatParticipantTooltip": "Бул чаттагы бардык катышуучулар. Каалаган колдонуучунун аватарын басып, жеке билдирүү жөнөтүү үчүн “маекти баштоо” баскычын басыңыз.",
     "inOngoingActivity": "Сизде уланып жаткан иш-аракет бар!",
     "requestRegeneration": "Кайра жаратууну сурануу",
@@ -2356,5 +2355,8 @@
     "practiceListeningPrompt": "Кайсынысы «{word}» дейт?",
     "practiceMeaningPrompt": "«{word}» эмнени билдирет?",
     "practiceEmojiPrompt": "«{word}» үчүн эмодзи тандаңыз",
-    "practiceStepProgress": "{total} ичинен {done}"
+    "practiceStepProgress": "{total} ичинен {done}",
+    "leaderboard": "Лидер тактасы",
+    "leaderboardRank": "Даража {rank}",
+    "courseLeaderboardTooltip": "Бул курстагы ар бир адам, алардын тилдеги жылдыздары боюнча орун алган. Аларга DM жөнөтүү үчүн мүчөнү таптап, “Маекти баштоо” дегенди тандаңыз."
 }

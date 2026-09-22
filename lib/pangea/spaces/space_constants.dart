@@ -2,6 +2,7 @@ import 'package:fluffychat/config/app_config.dart';
 
 class SpaceConstants {
   static const powerLevelOfAdmin = 100;
+  static const powerLevelOfModerator = 50;
   static const String classCode = 'classcode';
   static const String introductionChatAlias = 'introductionChat';
   static const String announcementsChatAlias = 'announcementsChat';

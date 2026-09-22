@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-09-22 12:37:06.733591",
+    "@@last_modified": "2026-09-22 15:19:39.906563",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -1662,7 +1662,6 @@
     "otherGender": "Lianna",
     "unselectedGender": "Pilih pilihan gender",
     "modeDisabled": "Alat diajar dipareuman pikeun pesen anu sanés dina basa target anjeun.",
-    "courseParticipantTooltip": "Ieu sadayana anu aya dina kursus ieu. Pencét kana avatar pangguna mana waé teras \"mimitian paguneman\" pikeun ngirim DM.",
     "chatParticipantTooltip": "Ieu sadayana anu aya dina obrolan ieu. Pencét kana avatar pangguna mana waé teras \"mimitian paguneman\" pikeun ngirim DM.",
     "inOngoingActivity": "Anjeun gaduh kagiatan anu nuju lumangsung!",
     "requestRegeneration": "Pénta regenerasi",
@@ -2356,5 +2355,8 @@
     "practiceListeningPrompt": "Nu mana nu nyebutkeun ‘{word}’?",
     "practiceMeaningPrompt": "Naon hartina ‘{word}’?",
     "practiceEmojiPrompt": "Pilih hiji emoji pikeun ‘{word}’",
-    "practiceStepProgress": "{done} tina {total}"
+    "practiceStepProgress": "{done} tina {total}",
+    "leaderboard": "Papan Peringkat",
+    "leaderboardRank": "Peringkat {rank}",
+    "courseLeaderboardTooltip": "Sadayana dina kursus ieu, diurutkeun dumasar béntangna dina basa éta. Ketok anggota teras pilih \"Mimitian paguneman\" pikeun ngirim DM ka aranjeunna."
 }

@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/user/analytics_profile_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/spaces/course_leaderboard.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class LoadParticipantsBuilder extends StatefulWidget {
@@ -152,30 +152,18 @@ class LoadParticipantsBuilderState extends State<LoadParticipantsBuilder> {
     return _levelsCache[userId];
   }
 
+  /// The course page's ranking over the loaded members and profiles.
+  /// Meaningful once [loading] is false — before that the profiles are not in
+  /// yet and everyone ranks as nothing earned.
+  CourseLeaderboard leaderboard({required String? langCode}) =>
+      CourseLeaderboard.rank(
+        participants,
+        langCode: langCode,
+        profileOf: getAnalyticsProfile,
+      );
+
   @override
   Widget build(BuildContext context) {
     return widget.builder(context, this);
-  }
-}
-
-extension LeaderboardGradient on int {
-  /// The medal ring for this leaderboard position: the theme's bright gold,
-  /// then silver and bronze, each shot through with white.
-  LinearGradient? leaderboardGradient(BuildContext context) {
-    final Color? color = this == 0
-        ? Theme.of(context).pangea.goldFixedDim
-        : this == 1
-        ? Colors.grey[400]!
-        : this == 2
-        ? Colors.brown[400]!
-        : null;
-
-    if (color == null) return null;
-
-    return LinearGradient(
-      colors: [color, Colors.white, color],
-      begin: Alignment.topLeft,
-      end: Alignment.bottomRight,
-    );
   }
 }

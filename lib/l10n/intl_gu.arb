@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-09-22 12:36:59.073786",
+    "@@last_modified": "2026-09-22 15:19:31.431287",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -1662,7 +1662,6 @@
     "otherGender": "અન્ય",
     "unselectedGender": "લિંગનો વિકલ્પ પસંદ કરો",
     "modeDisabled": "જે સંદેશા તમારી લક્ષ્ય ભાષામાં નથી તેમના માટે શીખવાના સાધનો નિષ્ક્રિય છે.",
-    "courseParticipantTooltip": "આ કોર્સમાં દરેક વ્યક્તિ છે. કોઈપણ વપરાશકર્તાના અવતાર પર ક્લિક કરો અને DM મોકલવા માટે \"વાતચીત શરૂ કરો\" પર ક્લિક કરો.",
     "chatParticipantTooltip": "આ ચેટમાં દરેક વ્યક્તિ છે. કોઈપણ વપરાશકર્તાના અવતાર પર ક્લિક કરો અને DM મોકલવા માટે \"વાતચીત શરૂ કરો\" પર ક્લિક કરો.",
     "inOngoingActivity": "તમારી એક પ્રવૃત્તિ ચાલુ છે!",
     "requestRegeneration": "ફરીથી જનરેટ કરવાની વિનંતી કરો",
@@ -2356,5 +2355,8 @@
     "practiceListeningPrompt": "‘{word}’ કયું બોલે છે?",
     "practiceMeaningPrompt": "‘{word}’ નો અર્થ શું થાય છે?",
     "practiceEmojiPrompt": "‘{word}’ માટે એક ઇમોજી પસંદ કરો",
-    "practiceStepProgress": "{total} માંથી {done}"
+    "practiceStepProgress": "{total} માંથી {done}",
+    "leaderboard": "લીડરબોર્ડ",
+    "leaderboardRank": "ક્રમ {rank}",
+    "courseLeaderboardTooltip": "આ કોર્સમાં દરેક વ્યક્તિ, તેમની ભાષામાં તેમના સ્ટાર્સ દ્વારા ક્રમાંકિત. તેમને DM મોકલવા માટે સભ્ય પર ટેપ કરો અને “વાર્તાલાપ શરૂ કરો” પસંદ કરો."
 }

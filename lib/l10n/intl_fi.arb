@@ -3536,7 +3536,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-09-22 12:36:58.564144",
+    "@@last_modified": "2026-09-22 15:19:30.468926",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -7731,11 +7731,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "Tässä ovat kaikki tämän kurssin osallistujat. Napsauta kenen tahansa käyttäjän avataria ja valitse \"aloita keskustelu\" lähettääksesi yksityisviestin.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Nainen",
     "man": "Mies",
     "otherGender": "Muu",
@@ -9989,5 +9984,8 @@
     "practiceListeningPrompt": "Kumpi sanoo ”{word}”?",
     "practiceMeaningPrompt": "Mitä ”{word}” tarkoittaa?",
     "practiceEmojiPrompt": "Valitse emoji sanalle ”{word}”",
-    "practiceStepProgress": "{done}/{total}"
+    "practiceStepProgress": "{done}/{total}",
+    "leaderboard": "Tulostaulu",
+    "leaderboardRank": "Sija {rank}",
+    "courseLeaderboardTooltip": "Kaikki tällä kurssilla, järjestettynä heidän kielensä tähtien mukaan. Napauta jäsentä ja valitse ”Aloita keskustelu” lähettääksesi hänelle yksityisviestin."
 }

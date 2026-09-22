@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-09-22 12:37:06.180498",
+    "@@last_modified": "2026-09-22 15:19:38.697249",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -1662,7 +1662,6 @@
     "otherGender": "Isi",
     "unselectedGender": "Filifili se filifiliga o le itupa",
     "modeDisabled": "Ua faʻagata meafaigaluega aʻoaʻoga mo feʻau e le o i lau gagana e aʻoaʻoina.",
-    "courseParticipantTooltip": "O tagata uma ia o loʻo i lenei kosi. Kiliki i luga o le ata o soʻo se tagata faʻaoga ma “amata talanoaga” e lafo ai se DM.",
     "chatParticipantTooltip": "O tagata uma ia o loʻo i lenei talanoaga. Kiliki i luga o le ata o soʻo se tagata faʻaoga ma “amata talanoaga” e lafo ai se DM.",
     "inOngoingActivity": "E iai sau gaoioiga o loʻo faʻagasolo!",
     "requestRegeneration": "Talosaga toe faʻafouina",
@@ -2356,5 +2355,8 @@
     "practiceListeningPrompt": "O fea e fai mai ‘{word}’?",
     "practiceMeaningPrompt": "O le a le uiga o le ‘{word}’?",
     "practiceEmojiPrompt": "Filifili se emoji mo le ‘{word}’",
-    "practiceStepProgress": "{done} mai le {total}"
+    "practiceStepProgress": "{done} mai le {total}",
+    "leaderboard": "Lisi o Ta'ita'i",
+    "leaderboardRank": "Tulaga {rank}",
+    "courseLeaderboardTooltip": "Tagata uma i lenei kosi, fa'atulagaina e a latou fetu i lana gagana. Pa'i i se sui ma filifili le “Amata talanoaga” e lafo ai se fe'au tuusa'o ia i latou."
 }

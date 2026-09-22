@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 12:37:05.709127",
+    "@@last_modified": "2026-09-22 15:19:38.959512",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -8512,11 +8512,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "Ovo su svi u ovom kursu. Kliknite na avatar bilo kog korisnika i “počnite razgovor” da pošaljete DM.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Žena",
     "man": "Muškarac",
     "otherGender": "Drugo",
@@ -10901,5 +10896,8 @@
     "practiceListeningPrompt": "Koja reč kaže „{word}“?",
     "practiceMeaningPrompt": "Šta znači „{word}“?",
     "practiceEmojiPrompt": "Izaberite emodži za „{word}“",
-    "practiceStepProgress": "{done} od {total}"
+    "practiceStepProgress": "{done} od {total}",
+    "leaderboard": "Tabela rezultata",
+    "leaderboardRank": "Rang {rank}",
+    "courseLeaderboardTooltip": "Svi na ovom kursu, rangirani po broju zvezdica u jeziku kursa. Dodirnite člana i odaberite „Započni razgovor“ da biste mu poslali direktnu poruku."
 }

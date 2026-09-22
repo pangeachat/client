@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-09-22 12:37:03.653721",
+    "@@last_modified": "2026-09-22 15:19:37.375041",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -1662,7 +1662,6 @@
     "otherGender": "ଅନ୍ୟାନ୍ୟ",
     "unselectedGender": "ଏକ ଲିଙ୍ଗ ବିକଳ୍ପ ବାଛନ୍ତୁ",
     "modeDisabled": "ଆପଣଙ୍କ ଲକ୍ଷ୍ୟ ଭାଷାରେ ନ ଥିବା ବାର୍ତ୍ତାଗୁଡ଼ିକ ପାଇଁ ଶିକ୍ଷଣ ଉପକରଣଗୁଡ଼ିକ ଅକ୍ଷମ କରାଯାଇଛି।",
-    "courseParticipantTooltip": "ଏହି ପାଠ୍ୟକ୍ରମରେ ଏମାନେ ସମସ୍ତେ ଅଛନ୍ତି। କୌଣସି ଉପଭୋକ୍ତାଙ୍କ ଆଭାଟାର ଉପରେ କ୍ଲିକ୍ କରନ୍ତୁ ଏବଂ DM ପଠାଇବାକୁ “ବାର୍ତ୍ତାଳାପ ଆରମ୍ଭ କରନ୍ତୁ” ଉପରେ କ୍ଲିକ୍ କରନ୍ତୁ।",
     "chatParticipantTooltip": "ଏହି ଚାଟ୍‌ରେ ଏମାନେ ସମସ୍ତେ ଅଛନ୍ତି। କୌଣସି ଉପଭୋକ୍ତାଙ୍କ ଆଭାଟାର ଉପରେ କ୍ଲିକ୍ କରନ୍ତୁ ଏବଂ DM ପଠାଇବାକୁ “ବାର୍ତ୍ତାଳାପ ଆରମ୍ଭ କରନ୍ତୁ” ଉପରେ କ୍ଲିକ୍ କରନ୍ତୁ।",
     "inOngoingActivity": "ଆପଣଙ୍କର ଏକ ଚାଲୁଥିବା କାର୍ଯ୍ୟକଳାପ ଅଛି!",
     "requestRegeneration": "ପୁନଃ ସୃଷ୍ଟି ପାଇଁ ଅନୁରୋଧ କରନ୍ତୁ",
@@ -2356,5 +2355,8 @@
     "practiceListeningPrompt": "କେଉଁଟି ‘{word}’ କହୁଛି?",
     "practiceMeaningPrompt": "‘{word}’ ର ଅର୍ଥ କଣ?",
     "practiceEmojiPrompt": "‘{word}’ ପାଇଁ ଏକ ଇମୋଜି ବାଛନ୍ତୁ",
-    "practiceStepProgress": "{total} ରୁ {done}"
+    "practiceStepProgress": "{total} ରୁ {done}",
+    "leaderboard": "ଲିଡରବୋର୍ଡ",
+    "leaderboardRank": "ର‍୍ୟାଙ୍କ୍ {rank}",
+    "courseLeaderboardTooltip": "ଏହି କୋର୍ସରେ ଥିବା ସମସ୍ତେ, ସେମାନଙ୍କ ଭାଷାରେ ଥିବା ଷ୍ଟାର୍ ଅନୁଯାୟୀ ର‍୍ୟାଙ୍କ୍ ହୋଇଛନ୍ତି। ସେମାନଙ୍କୁ DM ପଠାଇବା ପାଇଁ ଜଣେ ସଦସ୍ୟଙ୍କ ଉପରେ ଟ୍ୟାପ୍ କରନ୍ତୁ ଏବଂ “କଥାବାର୍ତ୍ତା ଆରମ୍ଭ କରନ୍ତୁ” ବାଛନ୍ତୁ।"
 }

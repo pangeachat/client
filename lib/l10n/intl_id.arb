@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 12:36:59.689294",
+    "@@last_modified": "2026-09-22 15:19:32.204322",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -7666,11 +7666,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "Ini adalah semua orang di kursus ini. Klik pada avatar pengguna mana pun dan \"mulai percakapan\" untuk mengirim DM.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Wanita",
     "man": "Pria",
     "otherGender": "Lainnya",
@@ -10025,5 +10020,8 @@
     "practiceListeningPrompt": "Yang mana yang mengatakan '{word}'?",
     "practiceMeaningPrompt": "Apa arti '{word}'?",
     "practiceEmojiPrompt": "Pilih emoji untuk '{word}'",
-    "practiceStepProgress": "{done} dari {total}"
+    "practiceStepProgress": "{done} dari {total}",
+    "leaderboard": "Papan Peringkat",
+    "leaderboardRank": "Peringkat {rank}",
+    "courseLeaderboardTooltip": "Semua orang di kursus ini, diberi peringkat berdasarkan bintang mereka dalam bahasa tersebut. Ketuk anggota dan pilih “Mulai percakapan” untuk mengirimi mereka DM."
 }

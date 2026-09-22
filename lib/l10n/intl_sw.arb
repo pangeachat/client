@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-09-22 12:37:08.833807",
+    "@@last_modified": "2026-09-22 15:19:39.829210",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -1662,7 +1662,6 @@
     "otherGender": "Jinsia nyingine",
     "unselectedGender": "Chagua chaguo la jinsia",
     "modeDisabled": "Zana za kujifunzia zimezimwa kwa jumbe ambazo haziko katika lugha unayolenga.",
-    "courseParticipantTooltip": "Hawa ndio kila mtu katika kozi hii. Bofya kwenye avatar ya mtumiaji yeyote na “anza mazungumzo” kutuma DM.",
     "chatParticipantTooltip": "Hawa ndio kila mtu katika gumzo hili. Bofya kwenye avatar ya mtumiaji yeyote na “anza mazungumzo” kutuma DM.",
     "inOngoingActivity": "Una shughuli inayoendelea!",
     "requestRegeneration": "Omba kuzalishwa upya",
@@ -2356,5 +2355,8 @@
     "practiceListeningPrompt": "Kipi kinasema ‘{word}’?",
     "practiceMeaningPrompt": "‘{word}’ inamaanisha nini?",
     "practiceEmojiPrompt": "Chagua emoji ya ‘{word}’",
-    "practiceStepProgress": "{done} kati ya {total}"
+    "practiceStepProgress": "{done} kati ya {total}",
+    "leaderboard": "Ubao wa Wanaoongoza",
+    "leaderboardRank": "Nafasi {rank}",
+    "courseLeaderboardTooltip": "Kila mmoja katika kozi hii, amepangwa kwa nyota zao katika lugha yake. Gonga mwanachama na uchague “Anzisha mazungumzo” ili kumtumia DM."
 }

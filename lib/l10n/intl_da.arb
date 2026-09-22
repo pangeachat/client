@@ -1334,7 +1334,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-09-22 12:36:57.952758",
+    "@@last_modified": "2026-09-22 15:19:29.404844",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -8483,11 +8483,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "Dette er alle i dette kursus. Klik på enhver brugers avatar og \"start samtale\" for at sende en DM.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Kvinde",
     "man": "Mand",
     "otherGender": "Andet",
@@ -10872,5 +10867,8 @@
     "practiceListeningPrompt": "Hvilken siger '{word}'?",
     "practiceMeaningPrompt": "Hvad betyder '{word}'?",
     "practiceEmojiPrompt": "Vælg en emoji for '{word}'",
-    "practiceStepProgress": "{done} af {total}"
+    "practiceStepProgress": "{done} af {total}",
+    "leaderboard": "Rangliste",
+    "leaderboardRank": "Rang {rank}",
+    "courseLeaderboardTooltip": "Alle på dette kursus, rangeret efter deres stjerner i sproget. Tryk på et medlem og vælg \"Start samtale\" for at sende dem en direkte besked."
 }

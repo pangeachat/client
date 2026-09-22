@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 12:37:04.343579",
+    "@@last_modified": "2026-09-22 15:19:36.201827",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -7743,11 +7743,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "Dit zijn alle deelnemers aan deze cursus. Klik op het avatar van een gebruiker en \"start gesprek\" om een DM te sturen.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Vrouw",
     "man": "Man",
     "otherGender": "Anders",
@@ -9952,5 +9947,8 @@
     "practiceListeningPrompt": "Welke zegt ‘{word}’?",
     "practiceMeaningPrompt": "Wat betekent ‘{word}’?",
     "practiceEmojiPrompt": "Kies een emoji voor ‘{word}’",
-    "practiceStepProgress": "{done} van {total}"
+    "practiceStepProgress": "{done} van {total}",
+    "leaderboard": "Scorebord",
+    "leaderboardRank": "Rang {rank}",
+    "courseLeaderboardTooltip": "Iedereen in deze cursus, gerangschikt op hun sterren in de betreffende taal. Tik op een lid en kies “Start gesprek” om ze een DM te sturen."
 }

@@ -3400,7 +3400,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-09-22 12:36:58.137459",
+    "@@last_modified": "2026-09-22 15:19:29.920855",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -8438,11 +8438,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "Αυτοί είναι όλοι σε αυτό το μάθημα. Κάντε κλικ στο avatar οποιουδήποτε χρήστη και \"ξεκινήστε συνομιλία\" για να στείλετε ένα DM.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Γυναίκα",
     "man": "Άνδρας",
     "otherGender": "Άλλο",
@@ -10827,5 +10822,8 @@
     "practiceListeningPrompt": "Ποιο λέει «{word}»;",
     "practiceMeaningPrompt": "Τι σημαίνει «{word}»;",
     "practiceEmojiPrompt": "Διαλέξτε ένα emoji για το «{word}»",
-    "practiceStepProgress": "{done} από {total}"
+    "practiceStepProgress": "{done} από {total}",
+    "leaderboard": "Πίνακας κατάταξης",
+    "leaderboardRank": "Κατάταξη {rank}",
+    "courseLeaderboardTooltip": "Όλοι σε αυτό το μάθημα, καταταγμένοι με βάση τα αστέρια τους στη γλώσσα του. Πατήστε ένα μέλος και επιλέξτε «Έναρξη συνομιλίας» για να του στείλετε ένα προσωπικό μήνυμα."
 }

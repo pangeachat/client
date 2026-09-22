@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-09-22 12:36:58.432279",
+    "@@last_modified": "2026-09-22 15:19:28.593488",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -7873,11 +7873,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "هؤلاء هم جميع المشاركين في هذه الدورة. انقر على صورة أي مستخدم و\"ابدأ محادثة\" لإرسال رسالة مباشرة.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "امرأة",
     "man": "رجل",
     "otherGender": "آخر",
@@ -10258,5 +10253,8 @@
     "practiceListeningPrompt": "أيٌّ منها يقول '{word}'؟",
     "practiceMeaningPrompt": "ماذا تعني '{word}'؟",
     "practiceEmojiPrompt": "اختر رمزًا تعبيريًا لـ '{word}'",
-    "practiceStepProgress": "{done} من {total}"
+    "practiceStepProgress": "{done} من {total}",
+    "leaderboard": "لوحة الصدارة",
+    "leaderboardRank": "الترتيب {rank}",
+    "courseLeaderboardTooltip": "جميع المشاركين في هذه الدورة، مرتبين حسب نجومهم في لغتها. اضغط على عضو واختر \"بدء محادثة\" لإرسال رسالة مباشرة إليه."
 }

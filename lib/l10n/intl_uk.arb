@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-09-22 12:37:07.289725",
+    "@@last_modified": "2026-09-22 15:19:40.541379",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -7743,11 +7743,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "Це всі учасники цього курсу. Натисніть на аватар будь-якого користувача та виберіть \"почати розмову\", щоб надіслати особисте повідомлення.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Жінка",
     "man": "Чоловік",
     "otherGender": "Інше",
@@ -9952,5 +9947,8 @@
     "practiceListeningPrompt": "Що означає «{word}»?",
     "practiceMeaningPrompt": "Що означає «{word}»?",
     "practiceEmojiPrompt": "Виберіть емодзі для «{word}»",
-    "practiceStepProgress": "{done} з {total}"
+    "practiceStepProgress": "{done} з {total}",
+    "leaderboard": "Таблиця лідерів",
+    "leaderboardRank": "Ранг {rank}",
+    "courseLeaderboardTooltip": "Усі учасники цього курсу, відсортовані за кількістю зірок, отриманих у цій мові. Натисніть на учасника та виберіть «Розпочати розмову», щоб надіслати йому особисте повідомлення."
 }

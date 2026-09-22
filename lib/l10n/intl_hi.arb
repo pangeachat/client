@@ -3093,7 +3093,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-09-22 12:36:59.402060",
+    "@@last_modified": "2026-09-22 15:19:31.400664",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8195,11 +8195,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "यह इस पाठ्यक्रम में सभी लोग हैं। किसी भी उपयोगकर्ता के अवतार पर क्लिक करें और \"वार्तालाप शुरू करें\" पर क्लिक करें ताकि एक डीएम भेज सकें।",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "महिला",
     "man": "पुरुष",
     "otherGender": "अन्य",
@@ -10584,5 +10579,8 @@
     "practiceListeningPrompt": "‘{word}’ कौन सा कहता है?",
     "practiceMeaningPrompt": "‘{word}’ का क्या मतलब है?",
     "practiceEmojiPrompt": "‘{word}’ के लिए एक इमोजी चुनें",
-    "practiceStepProgress": "{total} में से {done}"
+    "practiceStepProgress": "{total} में से {done}",
+    "leaderboard": "लीडरबोर्ड",
+    "leaderboardRank": "रैंक {rank}",
+    "courseLeaderboardTooltip": "इस कोर्स में सभी सदस्य, अपनी भाषा में अपने सितारों के आधार पर रैंक किए गए हैं। किसी सदस्य पर टैप करें और उन्हें एक DM भेजने के लिए “बातचीत शुरू करें” चुनें।"
 }

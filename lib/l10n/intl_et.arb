@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-09-22 12:36:58.548091",
+    "@@last_modified": "2026-09-22 15:19:30.240946",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -7754,11 +7754,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "See on kõik, kes on selles kursuses. Klõpsake mis tahes kasutaja avatari ja valige \"alusta vestlust\", et saata DM.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Naine",
     "man": "Mees",
     "otherGender": "Muu",
@@ -9949,5 +9944,8 @@
     "practiceListeningPrompt": "Milline neist ütleb „{word}“?",
     "practiceMeaningPrompt": "Mida tähendab „{word}“?",
     "practiceEmojiPrompt": "Vali emotikon sõnale „{word}“",
-    "practiceStepProgress": "{done} / {total}"
+    "practiceStepProgress": "{done} / {total}",
+    "leaderboard": "Edetabel",
+    "leaderboardRank": "Koht {rank}",
+    "courseLeaderboardTooltip": "Kõik selle kursuse liikmed, järjestatud nende keele tähtede järgi. Puuduta liiget ja vali „Alusta vestlust”, et saata talle otsevestlus."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 12:37:06.793549",
+    "@@last_modified": "2026-09-22 15:19:39.577527",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -8081,11 +8081,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "Detta är alla i den här kursen. Klicka på vilken användares avatar som helst och \"starta konversation\" för att skicka ett DM.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Kvinna",
     "man": "Man",
     "otherGender": "Annat",
@@ -10470,5 +10465,8 @@
     "practiceListeningPrompt": "Vilken säger ”{word}”?",
     "practiceMeaningPrompt": "Vad betyder ”{word}”?",
     "practiceEmojiPrompt": "Välj en emoji för ”{word}”",
-    "practiceStepProgress": "{done} av {total}"
+    "practiceStepProgress": "{done} av {total}",
+    "leaderboard": "Topplista",
+    "leaderboardRank": "Rank {rank}",
+    "courseLeaderboardTooltip": "Alla i den här kursen, rankade efter deras stjärnor i språket. Tryck på en medlem och välj ”Starta konversation” för att skicka ett DM."
 }

@@ -2919,7 +2919,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-09-22 12:36:57.480358",
+    "@@last_modified": "2026-09-22 15:19:29.673614",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6906,11 +6906,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "Ita ne boma in this course. Click on any user’s avatar and “start conversation” to send a DM.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Baba",
     "man": "Baba",
     "otherGender": "Bola",
@@ -9563,5 +9558,8 @@
     "practiceListeningPrompt": "གང་གིས་ ‘{word}’ ཟེར་གྱི་འདུག",
     "practiceMeaningPrompt": "‘{word}’ ལ་དོན་ཅི་ཞིག་ཡོད།",
     "practiceEmojiPrompt": "‘{word}’ ལ་ཨི་མོ་ཇི་ཞིག་འདེམས་རོགས།",
-    "practiceStepProgress": "{total} ནང་ནས་ {done}"
+    "practiceStepProgress": "{total} ནང་ནས་ {done}",
+    "leaderboard": "ལེགས་གྲུབ་བྱུང་བའི་ཐོ་གཞུང་།",
+    "leaderboardRank": "གོ་རིམ་ {rank}",
+    "courseLeaderboardTooltip": "སློབ་ཚན་འདིའི་ནང་གི་མི་ཚང་མ་སྐར་མ་བརྒྱབ་ནས་གོ་རིམ་བསྒྲིགས་ཡོད། ཁྱེད་ཀྱིས་ཚོགས་མི་ཞིག་ལ་རེག་ནས་“སྐད་ཆ་ཤོད་པ་འགོ་འཛུགས་”ཞེས་པ་བདམས་ཏེ་དེ་ཚོར་ཐད་ཀར་འཕྲིན་ཡིག་གཏོང་ཆོག"
 }

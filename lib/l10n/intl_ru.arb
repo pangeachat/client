@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-09-22 12:37:04.643687",
+    "@@last_modified": "2026-09-22 15:19:38.218475",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -8663,11 +8663,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "Это все участники этого курса. Нажмите на аватар любого пользователя и выберите «начать разговор», чтобы отправить личное сообщение.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Женщина",
     "man": "Мужчина",
     "otherGender": "Другое",
@@ -10924,5 +10919,8 @@
     "practiceListeningPrompt": "Что означает «{word}»?",
     "practiceMeaningPrompt": "Что означает «{word}»?",
     "practiceEmojiPrompt": "Выберите эмодзи для «{word}»",
-    "practiceStepProgress": "{done} из {total}"
+    "practiceStepProgress": "{done} из {total}",
+    "leaderboard": "Таблица лидеров",
+    "leaderboardRank": "Место {rank}",
+    "courseLeaderboardTooltip": "Все участники этого курса, отсортированные по количеству звёзд в изучаемом языке. Нажмите на участника и выберите «Начать беседу», чтобы отправить ему личное сообщение."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 12:37:06.690059",
+    "@@last_modified": "2026-09-22 15:19:39.656519",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -7665,11 +7665,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "இந்த பாடத்தில் உள்ள அனைவரும் இதுவே. எந்த பயனரின் அவதாரில் கிளிக் செய்து \"சரசரி உரையாடலை தொடங்கு\" என்பதன் மூலம் ஒரு நேரடி செய்தி அனுப்பவும்.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "பெண்",
     "man": "ஆண்",
     "otherGender": "மற்றவை",
@@ -10044,5 +10039,8 @@
     "practiceListeningPrompt": "‘{word}’ என்று சொல்வது எது?",
     "practiceMeaningPrompt": "‘{word}’ என்றால் என்ன அர்த்தம்?",
     "practiceEmojiPrompt": "‘{word}’ என்பதற்கு ஒரு ஈமோஜியைத் தேர்ந்தெடுக்கவும்",
-    "practiceStepProgress": "{total} இல் {done}"
+    "practiceStepProgress": "{total} இல் {done}",
+    "leaderboard": "லீடர்போர்டு",
+    "leaderboardRank": "தரம் {rank}",
+    "courseLeaderboardTooltip": "இந்தக் கோர்ஸில் உள்ள அனைவரும், அந்த மொழியில் அவர்கள் பெற்ற நட்சத்திரங்களின் அடிப்படையில் தரவரிசைப்படுத்தப்பட்டுள்ளனர். ஒரு உறுப்பினரைத் தட்டி, அவர்களுக்கு DM அனுப்ப “உரையாடலைத் தொடங்கு” என்பதைத் தேர்வுசெய்யவும்."
 }

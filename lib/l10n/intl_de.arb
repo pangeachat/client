@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-09-22 12:36:58.140537",
+    "@@last_modified": "2026-09-22 15:19:29.633774",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -7764,11 +7764,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "Das sind alle in diesem Kurs. Klicken Sie auf das Avatar eines Benutzers und \"Gespräch starten\", um eine DM zu senden.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Frau",
     "man": "Mann",
     "otherGender": "Sonstiges",
@@ -9939,5 +9934,8 @@
     "practiceListeningPrompt": "Welches sagt „{word}“?",
     "practiceMeaningPrompt": "Was bedeutet „{word}“?",
     "practiceEmojiPrompt": "Wähle ein Emoji für „{word}“",
-    "practiceStepProgress": "{done} von {total}"
+    "practiceStepProgress": "{done} von {total}",
+    "leaderboard": "Bestenliste",
+    "leaderboardRank": "Rang {rank}",
+    "courseLeaderboardTooltip": "Alle Teilnehmenden dieses Kurses, nach Sternen in der jeweiligen Sprache geordnet. Tippe auf ein Mitglied und wähle „Unterhaltung starten“, um eine Direktnachricht zu senden."
 }

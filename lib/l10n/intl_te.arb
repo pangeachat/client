@@ -1324,7 +1324,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-09-22 12:37:06.629414",
+    "@@last_modified": "2026-09-22 15:19:39.783198",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -8513,11 +8513,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "ఈ కోర్సులో ఉన్న అందరూ ఇక్కడ ఉన్నారు. ఏ వినియోగదారుడి అవతారంపై క్లిక్ చేసి \"సంభాషణ ప్రారంభించండి\" అని నేరుగా సందేశం పంపండి.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "మహిళ",
     "man": "పురుషుడు",
     "otherGender": "ఇతర",
@@ -10902,5 +10897,8 @@
     "practiceListeningPrompt": "‘{word}’ అని ఏది చెబుతుంది?",
     "practiceMeaningPrompt": "‘{word}’ అంటే ఏమిటి?",
     "practiceEmojiPrompt": "‘{word}’ కోసం ఒక ఎమోజీని ఎంచుకోండి",
-    "practiceStepProgress": "{total}లో {done}"
+    "practiceStepProgress": "{total}లో {done}",
+    "leaderboard": "లీడర్‌బోర్డ్",
+    "leaderboardRank": "ర్యాంక్ {rank}",
+    "courseLeaderboardTooltip": "ఈ కోర్సులోని ప్రతి ఒక్కరూ, వారి భాషలోని నక్షత్రాల ఆధారంగా ర్యాంక్ చేయబడ్డారు. వారికి DM పంపడానికి సభ్యుడిని నొక్కి, “సంభాషణను ప్రారంభించు” ఎంచుకోండి."
 }

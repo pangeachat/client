@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-09-22 12:37:06.993291",
+    "@@last_modified": "2026-09-22 15:19:38.322689",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -8508,11 +8508,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "Toto sú všetci účastníci tohto kurzu. Kliknite na avatar akéhokoľvek používateľa a „začať konverzáciu“, aby ste poslali súkromnú správu.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Žena",
     "man": "Muž",
     "otherGender": "Iné",
@@ -10897,5 +10892,8 @@
     "practiceListeningPrompt": "Ktoré hovorí „{word}“?",
     "practiceMeaningPrompt": "Čo znamená „{word}“?",
     "practiceEmojiPrompt": "Vyberte emoji pre „{word}“",
-    "practiceStepProgress": "{done} z {total}"
+    "practiceStepProgress": "{done} z {total}",
+    "leaderboard": "Rebríček",
+    "leaderboardRank": "Umiestnenie {rank}",
+    "courseLeaderboardTooltip": "Všetci v tomto kurze, zoradení podľa ich hviezdičiek v danom jazyku. Klepnite na člena a vyberte „Začať konverzáciu“, aby ste mu poslali správu."
 }

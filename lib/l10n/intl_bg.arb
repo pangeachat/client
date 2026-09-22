@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-09-22 12:36:57.462931",
+    "@@last_modified": "2026-09-22 15:19:28.617833",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -1662,7 +1662,6 @@
     "otherGender": "Друг",
     "unselectedGender": "Изберете опция за пол",
     "modeDisabled": "Инструментите за обучение са деактивирани за съобщения, които не са на целевия ви език.",
-    "courseParticipantTooltip": "Това са всички участници в този курс. Кликнете върху аватара на всеки потребител и „започнете разговор“, за да изпратите лично съобщение.",
     "chatParticipantTooltip": "Това са всички участници в този чат. Кликнете върху аватара на всеки потребител и „започнете разговор“, за да изпратите лично съобщение.",
     "inOngoingActivity": "Имате текуща дейност!",
     "requestRegeneration": "Заявка за прегенериране",
@@ -2356,5 +2355,8 @@
     "practiceListeningPrompt": "Кой казва „{word}“?",
     "practiceMeaningPrompt": "Какво означава „{word}“?",
     "practiceEmojiPrompt": "Изберете емоджи за „{word}“",
-    "practiceStepProgress": "{done} от {total}"
+    "practiceStepProgress": "{done} от {total}",
+    "leaderboard": "Класация",
+    "leaderboardRank": "Ранг {rank}",
+    "courseLeaderboardTooltip": "Всички в този курс, класирани по техните звезди в езика му. Докоснете член и изберете „Започни разговор“, за да му изпратите лично съобщение."
 }

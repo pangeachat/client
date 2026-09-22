@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-09-22 12:36:59.700063",
+    "@@last_modified": "2026-09-22 15:19:32.139464",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -7666,11 +7666,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "Ez mindenki, aki ebben a kurzusban részt vesz. Kattints bármelyik felhasználó avatarjára, és válaszd a „beszélgetés indítása” lehetőséget, hogy közvetlen üzenetet küldj.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Nő",
     "man": "Férfi",
     "otherGender": "Egyéb",
@@ -10055,5 +10050,8 @@
     "practiceListeningPrompt": "Melyik mondja azt, hogy „{word}”?",
     "practiceMeaningPrompt": "Mit jelent az, hogy „{word}”?",
     "practiceEmojiPrompt": "Válassz egy emojit a „{word}” szóhoz",
-    "practiceStepProgress": "{done}/{total}"
+    "practiceStepProgress": "{done}/{total}",
+    "leaderboard": "Ranglista",
+    "leaderboardRank": "{rank}. helyezés",
+    "courseLeaderboardTooltip": "A kurzus összes résztvevője, a nyelvi csillagaik alapján rangsorolva. Koppints egy tagra, és válaszd a „Beszélgetés indítása” lehetőséget, hogy közvetlen üzenetet küldj neki."
 }

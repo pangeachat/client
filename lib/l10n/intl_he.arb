@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 12:36:59.157518",
+    "@@last_modified": "2026-09-22 15:19:31.564286",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -8477,11 +8477,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "אלה כולם בקורס הזה. לחץ על התמונה של כל משתמש ו\"התחל שיחה\" כדי לשלוח הודעה פרטית.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "אישה",
     "man": "גבר",
     "otherGender": "אחר",
@@ -10866,5 +10861,8 @@
     "practiceListeningPrompt": "איזה מהם אומר '{word}'?",
     "practiceMeaningPrompt": "מה פירוש '{word}'?",
     "practiceEmojiPrompt": "בחר אימוג'י עבור '{word}'",
-    "practiceStepProgress": "{done} מתוך {total}"
+    "practiceStepProgress": "{done} מתוך {total}",
+    "leaderboard": "טבלת הישגים",
+    "leaderboardRank": "דירוג {rank}",
+    "courseLeaderboardTooltip": "כל המשתתפים בקורס זה, מדורגים לפי כוכביהם בשפה. הקש על משתמש ובחר ״התחל שיחה״ כדי לשלוח לו הודעה פרטית."
 }
