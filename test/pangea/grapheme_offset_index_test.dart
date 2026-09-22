@@ -198,6 +198,22 @@ void main() {
     });
   });
 
+  group('GraphemeOffsetIndex.codepointStartOfGrapheme', () {
+    test('Hindi: each cluster starts after all the marks before it', () {
+      // "मैंने" = [मैं (3 cp), ने (2 cp)]
+      final index = GraphemeOffsetIndex.fromText('मैंने');
+      expect(index.codepointStartOfGrapheme(0), 0);
+      expect(index.codepointStartOfGrapheme(1), 3);
+      expect(index.codepointStartOfGrapheme(2), 5);
+    });
+
+    test('clamps below zero and past the last cluster', () {
+      final index = GraphemeOffsetIndex.fromText('मैंने');
+      expect(index.codepointStartOfGrapheme(-1), 0);
+      expect(index.codepointStartOfGrapheme(9), 5);
+    });
+  });
+
   group('GraphemeOffsetIndex — invariants over every position', () {
     // Running the same structural properties across every script keeps us
     // honest if the underlying `characters` package ever changes.
@@ -257,8 +273,13 @@ void main() {
           final endCp = cursor + chars[gi].runes.length;
           expect(index.graphemeStartOfCodepoint(startCp), gi);
           expect(index.graphemeEndOfCodepoint(endCp), gi + 1);
+          expect(index.codepointStartOfGrapheme(gi), startCp);
           cursor = endCp;
         }
+        expect(
+          index.codepointStartOfGrapheme(index.graphemeCount),
+          index.codepointCount,
+        );
       });
     }
   });
