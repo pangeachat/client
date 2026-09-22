@@ -32,6 +32,18 @@ void main() {
       );
     });
 
+    test('two joined courses on one plan are distinct scopes (#9026)', () {
+      const a = CourseMapContext('plan-uuid', spaceId: '!a:x');
+      const b = CourseMapContext('plan-uuid', spaceId: '!b:x');
+      expect(a, isNot(b));
+      expect(a, const CourseMapContext('plan-uuid', spaceId: '!a:x'));
+      expect(a, isNot(const CourseMapContext('plan-uuid')));
+      // Switching between the two courses must reach the map.
+      MapContextController.set(a);
+      MapContextController.set(b);
+      expect(MapContextController.notifier.value, b);
+    });
+
     test('re-scoping the same plan from joined to preview notifies', () {
       MapContextController.set(const CourseMapContext('plan-uuid'));
       MapContextController.set(const CoursePreviewMapContext('plan-uuid'));

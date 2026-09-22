@@ -1614,7 +1614,7 @@ class _ShellLayout {
         ? CoursePreviewMapContext(previewPlanId)
         : coursePlanId == null
         ? const WorldMapContext()
-        : CourseMapContext(coursePlanId);
+        : CourseMapContext(coursePlanId, spaceId: activeSpaceId);
     // A full-screen surface on a narrow screen (a focused panel or a
     // center-detail page) covers the map, so dismiss any lingering map-pin
     // preview — otherwise its [MapPinController] flag would keep the nav

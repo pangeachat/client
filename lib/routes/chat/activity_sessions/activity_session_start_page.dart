@@ -104,12 +104,19 @@ class ActivitySessionStartPage extends StatefulWidget {
   final String? parentId;
   final bool launch;
 
+  /// Whether the join list offers only the sessions [parentId] lists (#9026).
+  /// True when the page was opened from that course; false for a bare map pin,
+  /// whose [parentId] is only a resolved guess to attribute a new session to,
+  /// while its green came from every joined course.
+  final bool scopeSessionsToCourse;
+
   const ActivitySessionStartPage({
     super.key,
     required this.activityId,
     required this.parentId,
     this.roomId,
     this.launch = false,
+    this.scopeSessionsToCourse = false,
   });
 
   @override
@@ -184,10 +191,12 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
   /// shows a spinner until [_loadSummary] lands. Either way [_loadSummary] still
   /// fetches: the cache can hold a session whose members have since left, which
   /// nothing in B's sync will ever correct (#8150), so a seeded render is a
-  /// stale-while-revalidate, not a fetch skip.
+  /// stale-while-revalidate, not a fetch skip. Opened from a course, only the
+  /// sessions that course lists are offered ([_sessionScope], #9026).
   void _initSummariesFromCache() {
     final cached = DiscoveredSessionsCache.instance.forActivity(
       widget.activityId,
+      course: _sessionScope,
     );
     _roomSummariesModel = ActivitySessionSummariesModel(
       cached ?? {},
@@ -206,6 +215,7 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
   void _onDiscoveredSessionsChanged() {
     final cached = DiscoveredSessionsCache.instance.forActivity(
       widget.activityId,
+      course: _sessionScope,
     );
     if (!mounted || cached == null) return;
     setState(
@@ -257,6 +267,11 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
   Room? get courseParent => widget.parentId != null
       ? Matrix.of(context).client.getRoomById(widget.parentId!)
       : null;
+
+  /// The course whose listing filters the sessions this page offers, or null
+  /// for every joined course's — so a pin the map showed joinable always finds
+  /// its session here, never a green pin that dead-ends at Start (#9026).
+  Room? get _sessionScope => widget.scopeSessionsToCourse ? courseParent : null;
 
   Map<String, ActivityRoleModel> get assignedRoles {
     final roomId = widget.roomId;
@@ -321,7 +336,9 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
 
     // This activity's session rooms across ALL the learner's joined courses —
     // not just a course in scope, since a bare map pin carries no course
-    // context. Discovered server-side by the space-scoped
+    // context, and the read also refreshes the shared cache the map and the
+    // course page render from; what THIS page offers is scoped below (#9026).
+    // Discovered server-side by the space-scoped
     // activity_session_previews module: one batched read of the joined course
     // spaces returns previews for only this activity's session rooms, complete
     // regardless of how many rooms a course holds (#7982). See
@@ -370,23 +387,36 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
             'loadRoomSummaries: activity start page',
           );
       if (!mounted) return;
-      setState(() {
-        _roomSummariesModel = ActivitySessionSummariesModel({
-          ...results[0],
-          ...results[1],
-        }, activityId: widget.activityId);
-        _summariesLoading = false;
-      });
       // Write the fresh space-scoped previews back so views rendering off the
       // cache (the course card's Open state) correct themselves now instead of
       // on the map's next discovery pass (#8150). Only results[0]: the per-room
       // extras (deep-linked / invited rooms) are outside what discovery caches.
+      // Written first, so the join list below is that same read scoped to the
+      // course in context (#9026).
       if (courseSpaceIds.isNotEmpty) {
         DiscoveredSessionsCache.instance.updateActivity(
           widget.activityId,
           results[0],
         );
       }
+      // Opened from a course, the join list offers only the sessions that
+      // course lists ([_sessionScope]); a bare pin or link offers every joined
+      // course's. The extras — the linked room, invited rooms — are never
+      // scoped out.
+      final courseSessions = courseSpaceIds.isEmpty
+          ? const <String, RoomSummaryResponse>{}
+          : DiscoveredSessionsCache.instance.forActivity(
+                  widget.activityId,
+                  course: _sessionScope,
+                ) ??
+                const <String, RoomSummaryResponse>{};
+      setState(() {
+        _roomSummariesModel = ActivitySessionSummariesModel({
+          ...courseSessions,
+          ...results[1],
+        }, activityId: widget.activityId);
+        _summariesLoading = false;
+      });
       // The summaries decide what the join list shows — their arrival is a
       // tutorial re-ask.
       _maybeStartStartPageTutorials();
