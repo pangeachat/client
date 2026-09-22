@@ -100,7 +100,7 @@ Every custom control authors its own keyboard focus ring. The ring shows only wh
 1. **Every control says what it does.** If it has no visible text, it needs a `tooltip:` / label. "Send message", not "tap here".
 2. **Every image is described or silenced.** A `semanticLabel:` if it carries meaning, `excludeFromSemantics: true` if it's decoration. No image is left to announce its filename.
 3. **Never rely on color alone.** Pair color with text, an icon, or a shape (pin state, grammar tags, error states).
-4. **Mouse work must be keyboard work.** Reachable with Tab, triggerable with Enter/Space, with a visible focus ring; nothing traps focus. A list of like controls is one Tab stop with the arrow keys moving inside it — see [One Tab stop per list](#one-tab-stop-per-list). A long-press menu also opens without a long press — see [Long-press menus](#long-press-menus).
+4. **Mouse work must be keyboard work.** Reachable with Tab, triggerable with Enter/Space, with a visible focus ring; nothing traps focus. A modal overlay is not a trap when Tab cycles inside it and Escape leaves it — the message toolbar and the tutorial card both do this through `OverlayKeyboardModal`. A list of like controls is one Tab stop with the arrow keys moving inside it — see [One Tab stop per list](#one-tab-stop-per-list). A long-press menu also opens without a long press — see [Long-press menus](#long-press-menus).
 5. **Visible label = accessible name.** What a sighted user reads and what a screen reader speaks should match.
 6. **Group and label inputs.** Each field has a label; errors are stated in text, not just a red border.
 7. **Announce what changes.** Loading, success, and error states reach assistive tech (live regions), not just a visual flash.
