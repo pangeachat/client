@@ -172,9 +172,24 @@ extension AnalyticsClientExtension on Client {
     }
   }
 
+  /// Synapse counts every state event against the learner's `rc_message`
+  /// bucket, 0.5 events/s with a burst of 30 in production (the ansible
+  /// default), and [Room.setSpaceChild] writes two. Five rooms is ten events,
+  /// which twenty seconds refills, so a pass never holds more than a third of
+  /// the bucket the learner's own messages draw from (#9203).
+  static const int spaceChildBatchRooms = 5;
+  static const Duration spaceChildBatchRest = Duration(seconds: 20);
+
   /// Space admins join analytics rooms in spaces via the space hierarchy,
   /// so other members of the space need to add their analytics rooms to the space.
-  Future<void> addAnalyticsRoomsToSpaces() async {
+  ///
+  /// The writes are paced to stay inside the homeserver's per-user event
+  /// budget: [batchRooms] rooms, then [batchRest]. A write the server
+  /// rate-limits anyway is left for the next pass, after that rest.
+  Future<void> addAnalyticsRoomsToSpaces({
+    int batchRooms = spaceChildBatchRooms,
+    Duration batchRest = spaceChildBatchRest,
+  }) async {
     if (prevBatch == null) await onSync.stream.first;
     if (userID == null || userID == BotName.byEnvironment) return;
     final spaces = rooms
@@ -182,6 +197,9 @@ extension AnalyticsClientExtension on Client {
         .toList();
 
     final Random random = Random();
+    // Rooms written since the last rest, across spaces: the budget is per
+    // user, not per space.
+    var sinceRest = 0;
     for (final space in spaces) {
       if (userID == null || !space.canSendEvent(EventTypes.SpaceChild)) return;
       final List<Room> roomsNotAdded = allMyAnalyticsRooms.where((room) {
@@ -193,12 +211,22 @@ extension AnalyticsClientExtension on Client {
       bool spaceRefused = false;
       for (final analyticsRoom in roomsNotAdded) {
         if (userID == null) return;
+        if (sinceRest >= batchRooms) {
+          await Future.delayed(batchRest);
+          sinceRest = 0;
+        }
+        sinceRest++;
         try {
           await space.setSpaceChild(analyticsRoom.id);
         } catch (e, s) {
+          final rateLimited =
+              e is MatrixException && e.error == MatrixError.M_LIMIT_EXCEEDED;
           ErrorHandler.logError(
             e: e,
             s: s,
+            // A 429 is the server pacing us, not a bug: warning, per the
+            // severity table in repos-and-error-handling.instructions.md.
+            level: rateLimited ? SentryLevel.warning : null,
             data: {
               "spaceID": space.id,
               "analyticsRoomID": analyticsRoom.id,
@@ -213,6 +241,16 @@ extension AnalyticsClientExtension on Client {
           if (e is MatrixException && e.error == MatrixError.M_FORBIDDEN) {
             spaceRefused = true;
             break;
+          }
+          // The bucket is empty despite the pacing. Rest a full batch, or as
+          // long as the server asked if that is longer, and leave this room
+          // to the next pass rather than draining the bucket further.
+          if (e is MatrixException && e.error == MatrixError.M_LIMIT_EXCEEDED) {
+            final retryAfter = Duration(milliseconds: e.retryAfterMs ?? 0);
+            await Future.delayed(
+              retryAfter > batchRest ? retryAfter : batchRest,
+            );
+            sinceRest = 0;
           }
         }
       }
