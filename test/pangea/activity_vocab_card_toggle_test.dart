@@ -17,11 +17,15 @@ import 'package:fluffychat/widgets/matrix.dart';
 import 'get_test_client.dart';
 import 'word_card_test_matrix.dart';
 
-/// #8620 — a pointer never gets a second tap on a vocab chip whose card is
-/// open: the tap lands on the card's backdrop and dismisses it. A screen
-/// reader does, activating the chip straight through the semantics tree, and
+/// #8620 — a pointer never got a second tap on a vocab chip whose card was
+/// open: the tap landed on the card's backdrop and dismissed it. A screen
+/// reader did, activating the chip straight through the semantics tree, and
 /// re-opening an already-open overlay key is a no-op — so the card had no way
 /// to close. Selecting the open chip again must close its card.
+///
+/// #9122 — a pointer now reaches a chip through the open card's backdrop too,
+/// via a tap target laid over each chip inside the overlay, so one tap moves
+/// the card from chip to chip. The last test drives that path by position.
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -219,4 +223,72 @@ void main() {
       });
     },
   );
+
+  /// A pointer's path (#9122), placed at the chip's position rather than on
+  /// the chip widget: with a card open the chip sits under the overlay, and
+  /// what the tap lands on is the point — the chip's tap target above the
+  /// card's backdrop, not the backdrop. The hit test here is Flutter's; a
+  /// widget test cannot see the web semantics DOM, so that half of the fix is
+  /// verified on the preview build.
+  Future<void> tapAtChip(WidgetTester tester, Vocab v) async {
+    await tester.tapAt(
+      tester.getCenter(
+        find.descendant(
+          of: find.byType(ActivityVocabWidget),
+          matching: find.ancestor(
+            of: find.text(v.lemma, findRichText: true),
+            matching: find.byType(InkWell),
+          ),
+        ),
+      ),
+    );
+    await tester.pump();
+    await tester.pump();
+  }
+
+  testWidgets('one tap moves the card from one chip to another', (
+    tester,
+  ) async {
+    await pumpVocab(tester);
+
+    await tapAtChip(tester, vocab.first);
+    expect(cardIsOpen(vocab.first), isTrue, reason: 'a tap opens the card');
+
+    await tapAtChip(tester, vocab.last);
+    expect(
+      cardIsOpen(vocab.first),
+      isFalse,
+      reason: 'the tap reached the other chip and closed this card',
+    );
+    expect(
+      cardIsOpen(vocab.last),
+      isTrue,
+      reason: "and opened the other chip's card from that one tap",
+    );
+
+    await tapAtChip(tester, vocab.last);
+    expect(
+      cardIsOpen(vocab.last),
+      isFalse,
+      reason: 'a tap on the open chip closes its card',
+    );
+    expect(cardIsOpen(vocab.first), isFalse, reason: 'and nothing reopens');
+
+    await tapAtChip(tester, vocab.first);
+    expect(cardIsOpen(vocab.first), isTrue);
+    // Off the row entirely: the backdrop, and only the backdrop.
+    await tester.tapAt(
+      tester.getBottomRight(find.byType(Scaffold)) - const Offset(5, 5),
+    );
+    await tester.pump();
+    await tester.pump();
+    expect(
+      cardIsOpen(vocab.first),
+      isFalse,
+      reason: 'a tap away from the chips still dismisses',
+    );
+
+    // See withVocab: let the repos' storage timer fire before the test ends.
+    await tester.pump(const Duration(seconds: 1));
+  });
 }

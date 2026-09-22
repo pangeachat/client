@@ -81,6 +81,10 @@ class OverlayUtil {
                     ignoresPointer: displayDetails.ignorePointer,
                   ),
                 ),
+              // Above the backdrop, below the content — see
+              // OverlayDisplayDetails.aboveBackdrop.
+              if (displayDetails.aboveBackdrop != null)
+                displayDetails.aboveBackdrop!,
               switch (displayDetails) {
                 TransformOverlayDisplayDetails(
                   transformTargetId: final targetId,
