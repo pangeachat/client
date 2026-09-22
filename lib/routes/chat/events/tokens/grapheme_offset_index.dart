@@ -55,6 +55,16 @@ class GraphemeOffsetIndex {
     return lo;
   }
 
+  /// Returns the code-point position at which grapheme cluster [grapheme]
+  /// begins — the inverse of [graphemeStartOfCodepoint] on cluster boundaries.
+  /// Values `<= 0` clamp to `0`; values `>= graphemeCount` clamp to
+  /// `codepointCount`.
+  int codepointStartOfGrapheme(int grapheme) {
+    if (grapheme <= 0) return 0;
+    if (grapheme >= _starts.length) return _codepointCount;
+    return _starts[grapheme];
+  }
+
   /// Returns the exclusive grapheme-cluster end for a code-point range that
   /// ends at [codepoint]. An end that falls inside a grapheme rounds up to
   /// include that grapheme — so partial graphemes are never silently

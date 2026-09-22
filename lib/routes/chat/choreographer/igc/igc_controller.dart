@@ -53,10 +53,6 @@ class IgcController {
 
   bool get hasOpenMatches => openMatches.isNotEmpty;
 
-  List<PangeaMatchState> get closedNormalizationCorrections => _matches
-      .where((m) => m.updatedMatch.status == PangeaMatchStatusEnum.automatic)
-      .toList();
-
   List<PangeaMatchState> get openNormalizationMatches => _matches
       .where(
         (match) =>
@@ -130,9 +126,49 @@ class IgcController {
     _activeMatch.value = match;
   }
 
-  PangeaMatchState? getMatchByOffset(int offset) => matches.firstWhereOrNull(
-    (match) => match.updatedMatch.match.isOffsetInMatchSpan(offset),
-  );
+  /// The match under a tap on the input field, where [fieldOffset] is the
+  /// caret position the field reports.
+  PangeaMatchState? getMatchAtFieldOffset(int fieldOffset) {
+    final text = _currentText;
+    if (text == null) return null;
+    final offset = graphemeIndexOfFieldOffset(
+      text: text,
+      autocorrected: sortedMatches
+          .where(
+            (m) => m.updatedMatch.status == PangeaMatchStatusEnum.automatic,
+          )
+          .map((m) => m.updatedMatch.match),
+      fieldOffset: fieldOffset,
+    );
+    return matches.firstWhereOrNull(
+      (match) => match.updatedMatch.match.isOffsetInMatchSpan(offset),
+    );
+  }
+
+  /// Converts a caret position in the input field to a grapheme index into
+  /// [text]. The field counts UTF-16 units of the text as drawn, and
+  /// `PangeaTextController` draws each auto-applied correction as a widget
+  /// that counts as a single unit, so every [autocorrected] span (sorted by
+  /// offset) before the caret shifts it.
+  @visibleForTesting
+  static int graphemeIndexOfFieldOffset({
+    required String text,
+    required Iterable<SpanData> autocorrected,
+    required int fieldOffset,
+  }) {
+    final chars = text.characters;
+    int textOffset = fieldOffset;
+    for (final span in autocorrected) {
+      if (span.length == 0) continue;
+      if (chars.take(span.offset).toString().length >= textOffset) break;
+      textOffset +=
+          chars.skip(span.offset).take(span.length).toString().length - 1;
+    }
+    final prefixEnd = textOffset.clamp(0, text.length);
+    return text.substring(0, prefixEnd).characters.length +
+        textOffset -
+        prefixEnd;
+  }
 
   void setSpanData(PangeaMatchState matchState, SpanData spanData) {
     final openMatch = openMatches.firstWhereOrNull(
@@ -356,9 +392,16 @@ class IgcController {
 
     if (!_isFetching) return false;
 
-    _lastResponse = res.result!;
-    _currentText = res.result!.originalInput;
-    for (final match in res.result!.matches) {
+    loadResponse(res.result!);
+    _isFetching = false;
+    return true;
+  }
+
+  @visibleForTesting
+  void loadResponse(IGCResponseModel response) {
+    _lastResponse = response;
+    _currentText = response.originalInput;
+    for (final match in response.matches) {
       final matchState = PangeaMatchState(
         match: match.match,
         status: PangeaMatchStatusEnum.open,
@@ -366,7 +409,5 @@ class IgcController {
       );
       _matches.add(matchState);
     }
-    _isFetching = false;
-    return true;
   }
 }

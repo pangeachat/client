@@ -291,6 +291,15 @@ Choreographer (ChangeNotifier)
 6. User sends when ready — no gate on unresolved matches
 7. On send: tokenize final text, save `ChoreoRecordModel` with match history
 
+### Where a match sits in the text
+
+Each match marks its place in the message with a start position and a length. The server and the client count those positions in different units, so the client converts them in exactly one place.
+
+- **The server counts Unicode code points, and owns that contract** ([`compute_edit_spans.py`](https://github.com/pangeachat/2-step-choreographer/blob/main/app/handlers/wa/compute_edit_spans.py)).
+- **The client counts grapheme clusters**, the characters a reader sees. The two counts differ in scripts that build one character from several code points: the Hindi syllable "मैं" is one grapheme cluster but three code points, so in a long Hindi message the positions drift far apart.
+- **[`IGCResponseModel`](../../lib/routes/chat/choreographer/igc/igc_response_model.dart) converts code points to grapheme clusters once, when the response arrives.** Everything after that counts grapheme clusters: the highlight, applying and undoing a correction, the saved `ChoreoRecordModel`, and the analytics that read the saved record. The saved record keeps grapheme clusters because its readers already count in them.
+- **Two places convert again.** A feedback rerun sends the previous response back to the server, so it converts the positions back to code points. A tap on the input field reports its position in UTF-16 units, the unit Flutter's text field uses, so the tap lookup converts that position to grapheme clusters before it looks for a match.
+
 ### API Endpoints
 
 | Endpoint                        | Status                                   |
