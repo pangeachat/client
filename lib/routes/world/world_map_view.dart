@@ -815,7 +815,10 @@ class _WorldMapViewState extends State<WorldMapView>
         final joinableActivity = widget.controller.client
             ?.bestJoinableActivityInstance(activityId);
         final discoveredSummary = joinableActivity == null
-            ? DiscoveredSessionsCache.instance.bestOpenSummary(activityId)
+            ? DiscoveredSessionsCache.instance.bestOpenSummary(
+                activityId,
+                course: widget.controller.courseRoom,
+              )
             : null;
         return (
           participants:

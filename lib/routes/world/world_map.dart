@@ -457,6 +457,17 @@ class WorldMapController extends State<WorldMap>
 
   bool get isWorld => MapContextController.notifier.value is! CourseMapContext;
 
+  /// The joined course space a course-scoped map is showing — the one whose
+  /// course plan the context names — or null on the world map and under a
+  /// course the learner has not joined (a preview).
+  Room? get courseRoom {
+    final mapContext = MapContextController.notifier.value;
+    if (mapContext is! CourseMapContext) return null;
+    return _client?.joinedCourseRooms.firstWhereOrNull(
+      (r) => r.coursePlan?.uuid == mapContext.coursePlanId,
+    );
+  }
+
   /// The id of the activity the detail panel is focused on, or null. Focus is
   /// the persistent "I'm working with this one" state (its panel is open and the
   /// camera settled on it); it drives a distinct focus marker on the pin at
@@ -628,7 +639,7 @@ class WorldMapController extends State<WorldMap>
   void _recomputeProgress() {
     final client = _client;
     if (client == null) return;
-    _pinsManager.recomputeProgress(client);
+    _pinsManager.recomputeProgress(client, course: courseRoom);
     if (mounted) setState(() {});
   }
 
@@ -639,12 +650,7 @@ class WorldMapController extends State<WorldMap>
   Future<void> _refreshCourseAvailableParticipants() async {
     final client = _client;
     if (client == null) return;
-    final mapContext = MapContextController.notifier.value;
-    final courseRoom = mapContext is CourseMapContext
-        ? client.joinedCourseRooms.firstWhereOrNull(
-            (r) => r.coursePlan?.uuid == mapContext.coursePlanId,
-          )
-        : null;
+    final courseRoom = this.courseRoom;
     final before = _pinsManager.courseAvailableParticipants;
     if (courseRoom == null) {
       _pinsManager.clearCourseAvailableParticipants();
@@ -672,7 +678,7 @@ class WorldMapController extends State<WorldMap>
   /// A ping leaves no persistent room state, so this proxy is intentionally
   /// approximate — its efficacy is worth watching (world-map.instructions.md).
   Future<void> _recomputePinged(Client client) async {
-    await _pinsManager.recomputePinged(client);
+    await _pinsManager.recomputePinged(client, course: courseRoom);
     if (mounted) setState(() {});
   }
 
@@ -702,6 +708,10 @@ class WorldMapController extends State<WorldMap>
     if (mounted) {
       WorldMapPinsManager.set(false);
     }
+    // The scope decides which discovered sessions may colour a pin (#9026), so
+    // re-derive the signals now rather than on the next sync tick — entering a
+    // course must not flash another course's session as joinable first.
+    _recomputeProgress();
     _loadForContext(debounceFit: true);
   }
 
@@ -719,10 +729,7 @@ class WorldMapController extends State<WorldMap>
           // The joined course's per-Mission activity pin scopes this view's
           // markers (org quests doc, client#7748); not joined / unset → null →
           // unrestricted.
-          final courseRoom = Matrix.of(context).client.joinedCourseRooms
-              .firstWhereOrNull(
-                (r) => r.coursePlan?.uuid == mapContext.coursePlanId,
-              );
+          final courseRoom = this.courseRoom;
           await _pinsManager.loadCourseScopedPins(
             mapContext.coursePlanId,
             pinnedActivitiesByObjective:

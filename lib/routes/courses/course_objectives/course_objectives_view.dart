@@ -481,9 +481,10 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   ///    ([Room.largeCardParticipantIds] + remaining seats) so the card can draw
   ///    the same participant row the map's pending pin does.
   ///  * Otherwise, open sessions others started that the learner can join —
-  ///    counted from the map's shared [DiscoveredSessionsCache] (best-effort; the
-  ///    persistent map behind this panel keeps it fresh), the same source the
-  ///    activity start page seeds its join list from.
+  ///    counted from the map's shared [DiscoveredSessionsCache], scoped to the
+  ///    sessions this course lists (#9026) (best-effort; the persistent map
+  ///    behind this panel keeps it fresh), the same source the activity start
+  ///    page seeds its join list from.
   /// A preview (no joined [room]) has no live sessions, so cards stay plain.
   ({
     ActivityPinState? state,
@@ -516,7 +517,10 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
       );
     }
 
-    final cached = DiscoveredSessionsCache.instance.forActivity(activityId);
+    final cached = DiscoveredSessionsCache.instance.forActivity(
+      activityId,
+      course: room,
+    );
     final open = cached == null
         ? 0
         : ActivitySessionSummariesModel(

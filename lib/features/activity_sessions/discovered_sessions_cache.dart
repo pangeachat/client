@@ -1,8 +1,10 @@
 import 'package:flutter/foundation.dart';
 
 import 'package:collection/collection.dart';
+import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 
 /// Process-wide cache of the `room_preview` data the world map's session
 /// discovery already fetched, keyed by activity id (and, within each, by room
@@ -58,18 +60,35 @@ class DiscoveredSessionsCache extends ChangeNotifier {
       UnmodifiableMapView(_byActivityId);
 
   /// The previewed sessions for [activityId] (roomId → summary), or null on a
-  /// miss — in which case the caller should fetch.
-  Map<String, RoomSummaryResponse>? forActivity(String activityId) =>
-      _byActivityId[activityId];
+  /// miss — in which case the caller should fetch. Inside a course, [course]
+  /// keeps only the sessions that course space lists as its own `m.space.child`
+  /// rooms — the listing the launch fan-out writes. The cache holds every
+  /// joined course's sessions, and a session of the same activity started in
+  /// another course is not this course's (#9026). Null [course] is the world
+  /// map: every joined course. An empty result under a course is a known
+  /// "none here", not a miss.
+  Map<String, RoomSummaryResponse>? forActivity(
+    String activityId, {
+    Room? course,
+  }) {
+    final rooms = _byActivityId[activityId];
+    if (rooms == null || course == null) return rooms;
+    final listed = course.spaceChildIds;
+    return {
+      for (final e in rooms.entries)
+        if (listed.contains(e.key)) e.key: e.value,
+    };
+  }
 
   /// The first still-open previewed session for [activityId] — the accurate
   /// participant/seat source for a joinable pin whose session the learner has
   /// not joined (discovered or invited), where local room state is absent or
-  /// stripped (#7488).
-  RoomSummaryResponse? bestOpenSummary(String activityId) =>
-      _byActivityId[activityId]?.values.firstWhereOrNull(
-        (s) => s.isActivityOpenToJoin,
-      );
+  /// stripped (#7488). [course] scopes it as [forActivity] does.
+  RoomSummaryResponse? bestOpenSummary(String activityId, {Room? course}) =>
+      forActivity(
+        activityId,
+        course: course,
+      )?.values.firstWhereOrNull((s) => s.isActivityOpenToJoin);
 
   void clear() {
     if (_byActivityId.isEmpty) return;

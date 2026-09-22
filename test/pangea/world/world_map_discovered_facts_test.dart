@@ -149,6 +149,21 @@ void main() {
     test('a room the learner has joined is left to its local facts', () {
       expect(facts(fullThinRefSession(), joined: true), isEmpty);
     });
+
+    test('under a course scope, only a session that course lists yields a '
+        'fact — one from another course stays off its pins (#9026)', () {
+      List<ActivitySessionFacts> scoped(Set<String>? listedRoomIds) =>
+          discoveredSessionFacts(
+            fullThinRefSession(),
+            isJoined: (_) => false,
+            nowMs: nowMs,
+            listedRoomIds: listedRoomIds,
+          );
+
+      expect(scoped({roomId}), hasLength(1));
+      expect(scoped({'!elsewhere:pangea.chat'}), isEmpty);
+      expect(scoped(null), hasLength(1), reason: 'the world map is unscoped');
+    });
   });
 
   group('WorldMapPinsManager.recomputeProgress — the production shell', () {
@@ -193,5 +208,69 @@ void main() {
         );
       },
     );
+
+    /// A joined course space whose only `m.space.child` is [childId] — the
+    /// listing a course-scoped surface reads its sessions from (#9026).
+    Room courseListing(String childId) {
+      final space = Room(
+        id: '!course-$childId',
+        client: client,
+        membership: Membership.join,
+      );
+      Event state(String type, String stateKey, Map<String, dynamic> content) =>
+          Event(
+            type: type,
+            content: content,
+            stateKey: stateKey,
+            senderId: ana,
+            eventId: '\$$type-$stateKey',
+            originServerTs: DateTime.utc(2026, 1, 1),
+            room: space,
+          );
+      space.setState(
+        state(EventTypes.RoomCreate, '', {'type': RoomCreationTypes.mSpace}),
+      );
+      space.setState(
+        state(EventTypes.SpaceChild, childId, {
+          'via': ['pangea.chat'],
+        }),
+      );
+      return space;
+    }
+
+    test('a course-scoped map colours a pin from a discovered session only '
+        'where that course lists it (#9026)', () {
+      final manager = WorldMapPinsManager();
+      DiscoveredSessionsCache.instance.replaceAll(fullThinRefSession());
+
+      manager.recomputeProgress(client, course: courseListing(roomId));
+      expect(manager.signals['act-1']?.state, ActivityPinState.joinable);
+
+      manager.recomputeProgress(
+        client,
+        course: courseListing('!elsewhere:pangea.chat'),
+      );
+      expect(manager.signals['act-1']?.state, isNot(ActivityPinState.joinable));
+    });
+
+    test('DiscoveredSessionsCache reads scoped to a course keep only what it '
+        'lists; an empty scoped read is a known none, not a miss (#9026)', () {
+      final cache = DiscoveredSessionsCache.instance;
+      cache.replaceAll(fullThinRefSession());
+
+      expect(cache.forActivity('act-1', course: courseListing(roomId))?.keys, [
+        roomId,
+      ]);
+      expect(
+        cache.forActivity('act-1', course: courseListing('!elsewhere:x')),
+        isEmpty,
+      );
+      expect(cache.forActivity('nope', course: courseListing(roomId)), isNull);
+      expect(
+        cache.bestOpenSummary('act-1', course: courseListing('!elsewhere:x')),
+        isNull,
+      );
+      expect(cache.bestOpenSummary('act-1'), isNotNull, reason: 'unscoped');
+    });
   });
 }

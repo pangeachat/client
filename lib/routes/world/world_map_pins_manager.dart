@@ -21,6 +21,7 @@ import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/pangea/common/network/rate_limit_pause.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/trailing_throttle.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/world/joined_objective_cache.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
@@ -84,16 +85,22 @@ bool shouldRebuildObjectiveCacheNow({
 /// showed no seats and no Join. Rooms the learner [isJoined] carry their own
 /// local facts, so they are skipped. One fact per open session, all stamped
 /// [nowMs] — the recompute that derived it; a discovered session carries no
-/// recency of its own.
+/// recency of its own. Under a course scope, [listedRoomIds] — the sessions
+/// that course lists as its own `m.space.child` rooms — keeps a session from
+/// another course off this course's pins (#9026); null is the world map. See
+/// [DiscoveredSessionsCache.forActivity].
 @visibleForTesting
 List<ActivitySessionFacts> discoveredSessionFacts(
   Map<String, Map<String, RoomSummaryResponse>> previewsByActivity, {
   required bool Function(String roomId) isJoined,
   required int nowMs,
+  Set<String>? listedRoomIds,
 }) => [
   for (final activity in previewsByActivity.entries)
     for (final room in activity.value.entries)
-      if (!isJoined(room.key) && room.value.isActivityOpenToJoin)
+      if (!isJoined(room.key) &&
+          (listedRoomIds?.contains(room.key) ?? true) &&
+          room.value.isActivityOpenToJoin)
         ActivitySessionFacts(
           activityId: activity.key,
           holdsRole: false,
@@ -309,7 +316,8 @@ class WorldMapPinsManager {
   /// next clean one. The room list moving is correct SDK behaviour the map
   /// can't block, so the scan reads a snapshot and picks up a course that
   /// joined mid-pass on the next sync tick (which that join itself produces).
-  Future<void> recomputePinged(Client client) async {
+  /// [course] scopes the discovered facts as in [recomputeProgress].
+  Future<void> recomputePinged(Client client, {Room? course}) async {
     final pinged = <String>{};
     final cutoff = DateTime.now().subtract(const Duration(hours: 24));
 
@@ -336,7 +344,7 @@ class WorldMapPinsManager {
     _pingedActivityIds = pinged;
     _signals = client.deriveActivitySignals(
       pingedActivityIds: pinged,
-      extraFacts: _discoveredSessionFacts(client),
+      extraFacts: _discoveredSessionFacts(client, course),
     );
   }
 
@@ -520,18 +528,24 @@ class WorldMapPinsManager {
   /// The Matrix-reading shell over [discoveredSessionFacts]: re-gates the
   /// cached previews on every signal derivation, so a plan hydrating (or the
   /// start page rewriting the previews) re-colours their pins (#8895).
-  List<ActivitySessionFacts> _discoveredSessionFacts(Client client) =>
-      discoveredSessionFacts(
-        DiscoveredSessionsCache.instance.byActivityId,
-        isJoined: (roomId) =>
-            client.getRoomById(roomId)?.membership == Membership.join,
-        nowMs: DateTime.now().millisecondsSinceEpoch,
-      );
+  List<ActivitySessionFacts> _discoveredSessionFacts(
+    Client client,
+    Room? course,
+  ) => discoveredSessionFacts(
+    DiscoveredSessionsCache.instance.byActivityId,
+    isJoined: (roomId) =>
+        client.getRoomById(roomId)?.membership == Membership.join,
+    nowMs: DateTime.now().millisecondsSinceEpoch,
+    listedRoomIds: course?.spaceChildIds,
+  );
 
-  void recomputeProgress(Client client) {
+  /// [course] is the joined course space a course-scoped map is showing, so a
+  /// discovered session colours a pin only where that course lists it (#9026);
+  /// null on the world map.
+  void recomputeProgress(Client client, {Room? course}) {
     final signals = client.deriveActivitySignals(
       pingedActivityIds: _pingedActivityIds,
-      extraFacts: _discoveredSessionFacts(client),
+      extraFacts: _discoveredSessionFacts(client, course),
     );
     final userStars = client.userStarsByActivity;
 
