@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-09-22 11:00:52.554962",
+    "@@last_modified": "2026-09-22 12:37:01.082457",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "Mutare formulam tesserae",
     "searchLanguagesHint": "Quaere linguas",
     "searchCountriesHint": "Quaere civitates",
-    "searchVocabHint": "Quaere vocabula",
     "searchUsersHint": "Quaere usores",
     "searchMessagesHint": "Quaere nuntios",
     "searchChatsHint": "Quaere sermones",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "Monstra tantum cursus quos doces",
     "learningCoursesFilterTooltip": "Monstra tantum cursus quos disces",
     "searchCoursesHint": "Quaere cursus",
-    "noCoursesMatchSearch": "Nulli cursus quaestioni tuae respondent."
+    "noCoursesMatchSearch": "Nulli cursus quaestioni tuae respondent.",
+    "searchVocabByWordOrMeaningHint": "Quaere per verbum vel significationem"
 }

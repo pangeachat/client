@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-09-22 11:00:52.810155",
+    "@@last_modified": "2026-09-22 12:37:01.213513",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "ແບບຟອມປ່ຽນລະຫັດຜ່ານ",
     "searchLanguagesHint": "ຊອກຫາພາສາ",
     "searchCountriesHint": "ຊອກຫາປະເທດ",
-    "searchVocabHint": "ຊອກຫາຄຳສັບ",
     "searchUsersHint": "ຊອກຫາຜູ້ໃຊ້",
     "searchMessagesHint": "ຊອກຫາຂໍ້ຄວາມ",
     "searchChatsHint": "ຊອກຫາການສົນທະນາ",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "ສະແດງສະເພາະຫຼັກສູດທີ່ທ່ານສອນ",
     "learningCoursesFilterTooltip": "ສະແດງສະເພາະຫຼັກສູດທີ່ທ່ານກຳລັງຮຽນ",
     "searchCoursesHint": "ຊອກຫາຫຼັກສູດ",
-    "noCoursesMatchSearch": "ບໍ່ມີຫຼັກສູດກົງກັບການຊອກຫາຂອງທ່ານ."
+    "noCoursesMatchSearch": "ບໍ່ມີຫຼັກສູດກົງກັບການຊອກຫາຂອງທ່ານ.",
+    "searchVocabByWordOrMeaningHint": "ຊອກຫາຕາມຄຳສັບ ຫຼື ຄວາມໝາຍ"
 }

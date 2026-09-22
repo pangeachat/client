@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-09-22 11:00:54.853688",
+    "@@last_modified": "2026-09-22 12:37:05.034174",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "পাসৱার্ড ফম চেঞ্জ তৌনবা",
     "searchLanguagesHint": "লৌনশিং শিন",
     "searchCountriesHint": "লৈবাকশিং শিন",
-    "searchVocabHint": "ৱাহৈশিং শিন",
     "searchUsersHint": "শিনজাকশিং শিন",
     "searchMessagesHint": "খবরশিং শিন",
     "searchChatsHint": "চ্যাটশিং শিন",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "মহাক্না তম্লিবা কোর্সশিং খক্তা উৎনবা",
     "learningCoursesFilterTooltip": "মহাক্না তম্লিবা কোর্সশিং খক্তা উৎনবা",
     "searchCoursesHint": "কোর্সশিং শিংনবা",
-    "noCoursesMatchSearch": "মহাক্না শিংলিবা কোর্স অমত্তা ফংদে।"
+    "noCoursesMatchSearch": "মহাক্না শিংলিবা কোর্স অমত্তা ফংদে।",
+    "searchVocabByWordOrMeaningHint": "ৱাহৈ নꯠত্ৰগা অর্থনা থিজেল"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-09-22 11:00:51.800247",
+    "@@last_modified": "2026-09-22 12:37:00.757894",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "ಪಾಸ್‌ವರ್ಡ್ ಬದಲಾಯಿಸಿ ಫಾರ್ಮ್",
     "searchLanguagesHint": "ಭಾಷೆಗಳನ್ನು ಹುಡುಕಿ",
     "searchCountriesHint": "ದೇಶಗಳನ್ನು ಹುಡುಕಿ",
-    "searchVocabHint": "ಪದಗಳನ್ನು ಹುಡುಕಿ",
     "searchUsersHint": "ಬಳಕೆದಾರರನ್ನು ಹುಡುಕಿ",
     "searchMessagesHint": "ಸಂದೇಶಗಳನ್ನು ಹುಡುಕಿ",
     "searchChatsHint": "ಚಾಟ್‌ಗಳನ್ನು ಹುಡುಕಿ",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "ನೀವು ಕಲಿಸುವ ಕೋರ್ಸ್‌ಗಳನ್ನು ಮಾತ್ರ ತೋರಿಸಿ",
     "learningCoursesFilterTooltip": "ನೀವು ಕಲಿಯುತ್ತಿರುವ ಕೋರ್ಸ್‌ಗಳನ್ನು ಮಾತ್ರ ತೋರಿಸಿ",
     "searchCoursesHint": "ಕೋರ್ಸ್‌ಗಳನ್ನು ಹುಡುಕಿ",
-    "noCoursesMatchSearch": "ನಿಮ್ಮ ಹುಡುಕಾಟಕ್ಕೆ ಯಾವುದೇ ಕೋರ್ಸ್‌ಗಳು ಹೊಂದಿಕೆಯಾಗುವುದಿಲ್ಲ."
+    "noCoursesMatchSearch": "ನಿಮ್ಮ ಹುಡುಕಾಟಕ್ಕೆ ಯಾವುದೇ ಕೋರ್ಸ್‌ಗಳು ಹೊಂದಿಕೆಯಾಗುವುದಿಲ್ಲ.",
+    "searchVocabByWordOrMeaningHint": "ಪದ ಅಥವಾ ಅರ್ಥದ ಮೂಲಕ ಹುಡುಕಿ"
 }

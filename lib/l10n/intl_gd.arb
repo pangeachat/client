@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-09-22 11:00:50.228593",
+    "@@last_modified": "2026-09-22 12:36:59.502392",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "Foirm atharrachadh facal-faire",
     "searchLanguagesHint": "Lorg cànanan",
     "searchCountriesHint": "Lorg dùthchannan",
-    "searchVocabHint": "Lorg briathrachas",
     "searchUsersHint": "Lorg luchd-cleachdaidh",
     "searchMessagesHint": "Lorg teachdaireachdan",
     "searchChatsHint": "Lorg còmhraidhean",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "Seall dìreach cùrsaichean a tha thu a’ teagasg",
     "learningCoursesFilterTooltip": "Seall dìreach cùrsaichean a tha thu ag ionnsachadh annta",
     "searchCoursesHint": "Lorg cùrsaichean",
-    "noCoursesMatchSearch": "Chan eil cùrsaichean a rèir an rannsachaidh agad."
+    "noCoursesMatchSearch": "Chan eil cùrsaichean a rèir an rannsachaidh agad.",
+    "searchVocabByWordOrMeaningHint": "Rannsaich a rèir facail no brìgh"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-09-22 11:01:00.214129",
+    "@@last_modified": "2026-09-22 12:37:08.129461",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "Ifomu lokushintsha iphasiwedi",
     "searchLanguagesHint": "Sesha izilimi",
     "searchCountriesHint": "Sesha amazwe",
-    "searchVocabHint": "Sesha amagama",
     "searchUsersHint": "Sesha abasebenzisi",
     "searchMessagesHint": "Sesha imilayezo",
     "searchChatsHint": "Sesha izingxoxo",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "Bonisa kuphela izifundo ozifundisayo",
     "learningCoursesFilterTooltip": "Bonisa kuphela izifundo ofunda kuzo",
     "searchCoursesHint": "Sesha izifundo",
-    "noCoursesMatchSearch": "Azikho izifundo ezifana nosesho lwakho."
+    "noCoursesMatchSearch": "Azikho izifundo ezifana nosesho lwakho.",
+    "searchVocabByWordOrMeaningHint": "Sesha ngegama noma incazelo"
 }

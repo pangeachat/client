@@ -1937,7 +1937,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-09-22 11:00:51.885538",
+    "@@last_modified": "2026-09-22 12:37:00.318445",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10468,7 +10468,6 @@
     "passwordFormLabel": "პაროლის შეცვლის ფორმა",
     "searchLanguagesHint": "ენების ძიება",
     "searchCountriesHint": "ქვეყნების ძიება",
-    "searchVocabHint": "ლექსიკის ძიება",
     "searchUsersHint": "მომხმარებლების ძიება",
     "searchMessagesHint": "შეტყობინებების ძიება",
     "searchChatsHint": "ჩეთების ძიება",
@@ -10847,5 +10846,6 @@
     "teachingCoursesFilterTooltip": "მხოლოდ იმ კურსების ჩვენება, რომლებსაც ასწავლით",
     "learningCoursesFilterTooltip": "მხოლოდ იმ კურსების ჩვენება, რომლებსაც სწავლობთ",
     "searchCoursesHint": "კურსების ძიება",
-    "noCoursesMatchSearch": "თქვენს ძიებას არცერთი კურსი არ ემთხვევა."
+    "noCoursesMatchSearch": "თქვენს ძიებას არცერთი კურსი არ ემთხვევა.",
+    "searchVocabByWordOrMeaningHint": "მოძებნე სიტყვით ან მნიშვნელობით"
 }

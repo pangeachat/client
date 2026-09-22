@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-09-22 11:00:48.511058",
+    "@@last_modified": "2026-09-22 12:36:57.401135",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "Verander wagwoordvorm",
     "searchLanguagesHint": "Soek tale",
     "searchCountriesHint": "Soek lande",
-    "searchVocabHint": "Soek woordeskat",
     "searchUsersHint": "Soek gebruikers",
     "searchMessagesHint": "Soek boodskappe",
     "searchChatsHint": "Soek geselsies",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "Wys slegs kursusse wat jy aanbied",
     "learningCoursesFilterTooltip": "Wys slegs kursusse waarin jy leer",
     "searchCoursesHint": "Soek kursusse",
-    "noCoursesMatchSearch": "Geen kursusse stem ooreen met jou soektog nie."
+    "noCoursesMatchSearch": "Geen kursusse stem ooreen met jou soektog nie.",
+    "searchVocabByWordOrMeaningHint": "Soek volgens woord of betekenis"
 }

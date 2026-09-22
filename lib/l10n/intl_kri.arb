@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-09-22 11:00:55.334233",
+    "@@last_modified": "2026-09-22 12:37:03.740199",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "Chenj paswɔd fɔm",
     "searchLanguagesHint": "Luk fɔ langwej dɛn",
     "searchCountriesHint": "Luk fɔ kɔntri dɛn",
-    "searchVocabHint": "Luk fɔ wɔd dɛn",
     "searchUsersHint": "Luk fɔ pipul dɛn",
     "searchMessagesHint": "Luk fɔ mɛsej dɛn",
     "searchChatsHint": "Luk fɔ chat dɛn",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "Sho kɔses we yu de tich nɔmɔ",
     "learningCoursesFilterTooltip": "Sho kɔses we yu de lan nɔmɔ",
     "searchCoursesHint": "Luk fɔ kɔses",
-    "noCoursesMatchSearch": "No kɔs nɔ match yu saych."
+    "noCoursesMatchSearch": "No kɔs nɔ match yu saych.",
+    "searchVocabByWordOrMeaningHint": "Luk fɔ wɔd ɔ mining"
 }

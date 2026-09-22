@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-09-22 11:00:55.737293",
+    "@@last_modified": "2026-09-22 12:37:03.867975",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9653,7 +9653,6 @@
     "passwordFormLabel": "Formularz zmiany hasła",
     "searchLanguagesHint": "Szukaj języków",
     "searchCountriesHint": "Szukaj krajów",
-    "searchVocabHint": "Szukaj słownictwa",
     "searchUsersHint": "Szukaj użytkowników",
     "searchMessagesHint": "Szukaj wiadomości",
     "searchChatsHint": "Szukaj czatów",
@@ -10032,5 +10031,6 @@
     "teachingCoursesFilterTooltip": "Pokaż tylko kursy, których uczysz",
     "learningCoursesFilterTooltip": "Pokaż tylko kursy, w których się uczysz",
     "searchCoursesHint": "Szukaj kursów",
-    "noCoursesMatchSearch": "Brak kursów pasujących do wyszukiwania."
+    "noCoursesMatchSearch": "Brak kursów pasujących do wyszukiwania.",
+    "searchVocabByWordOrMeaningHint": "Szukaj według słowa lub znaczenia"
 }

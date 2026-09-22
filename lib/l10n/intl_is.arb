@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-09-22 11:00:51.257417",
+    "@@last_modified": "2026-09-22 12:37:00.027166",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "Breyta lykilorði",
     "searchLanguagesHint": "Leita tungumála",
     "searchCountriesHint": "Leita landa",
-    "searchVocabHint": "Leita orðaforða",
     "searchUsersHint": "Leita notenda",
     "searchMessagesHint": "Leita skilaboða",
     "searchChatsHint": "Leita spjalla",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "Sýna aðeins námskeið sem þú kennir",
     "learningCoursesFilterTooltip": "Sýna aðeins námskeið sem þú ert að læra í",
     "searchCoursesHint": "Leita að námskeiðum",
-    "noCoursesMatchSearch": "Engin námskeið passa við leitina þína."
+    "noCoursesMatchSearch": "Engin námskeið passa við leitina þína.",
+    "searchVocabByWordOrMeaningHint": "Leita eftir orði eða merkingu"
 }

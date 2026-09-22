@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 11:00:57.900861",
+    "@@last_modified": "2026-09-22 12:37:06.793549",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10086,7 +10086,6 @@
     "passwordFormLabel": "Formulär för lösenordsbyte",
     "searchLanguagesHint": "Sök språk",
     "searchCountriesHint": "Sök länder",
-    "searchVocabHint": "Sök ord",
     "searchUsersHint": "Sök användare",
     "searchMessagesHint": "Sök meddelanden",
     "searchChatsHint": "Sök chattar",
@@ -10465,5 +10464,6 @@
     "teachingCoursesFilterTooltip": "Visa endast kurser du undervisar i",
     "learningCoursesFilterTooltip": "Visa endast kurser du lär dig i",
     "searchCoursesHint": "Sök kurser",
-    "noCoursesMatchSearch": "Inga kurser matchar din sökning."
+    "noCoursesMatchSearch": "Inga kurser matchar din sökning.",
+    "searchVocabByWordOrMeaningHint": "Sök efter ord eller betydelse"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 11:00:49.262323",
+    "@@last_modified": "2026-09-22 12:36:58.003333",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10513,7 +10513,6 @@
     "passwordFormLabel": "Formularo por ŝanĝi pasvorton",
     "searchLanguagesHint": "Serĉi lingvojn",
     "searchCountriesHint": "Serĉi landojn",
-    "searchVocabHint": "Serĉi vortprovizon",
     "searchUsersHint": "Serĉi uzantojn",
     "searchMessagesHint": "Serĉi mesaĝojn",
     "searchChatsHint": "Serĉi babilejojn",
@@ -10892,5 +10891,6 @@
     "teachingCoursesFilterTooltip": "Montri nur kursojn, kiujn vi instruas",
     "learningCoursesFilterTooltip": "Montri nur kursojn, en kiuj vi lernas",
     "searchCoursesHint": "Serĉi kursojn",
-    "noCoursesMatchSearch": "Neniuj kursoj kongruas kun via serĉo."
+    "noCoursesMatchSearch": "Neniuj kursoj kongruas kun via serĉo.",
+    "searchVocabByWordOrMeaningHint": "Serĉi laŭ vorto aŭ signifo"
 }

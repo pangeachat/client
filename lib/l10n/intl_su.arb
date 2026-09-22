@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-09-22 11:00:57.970754",
+    "@@last_modified": "2026-09-22 12:37:06.733591",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "Formulir ganti sandi",
     "searchLanguagesHint": "Téang basa",
     "searchCountriesHint": "Téang nagara",
-    "searchVocabHint": "Téang kosakata",
     "searchUsersHint": "Téang pangguna",
     "searchMessagesHint": "Téang talatah",
     "searchChatsHint": "Téang obrolan",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "Témbongkeun ngan kursus nu diajarkeun ku anjeun",
     "learningCoursesFilterTooltip": "Témbongkeun ngan kursus nu diajar ku anjeun",
     "searchCoursesHint": "Téang kursus",
-    "noCoursesMatchSearch": "Teu aya kursus nu cocog sareng pamilarian anjeun."
+    "noCoursesMatchSearch": "Teu aya kursus nu cocog sareng pamilarian anjeun.",
+    "searchVocabByWordOrMeaningHint": "Pilari dumasar kecap atanapi hartos"
 }

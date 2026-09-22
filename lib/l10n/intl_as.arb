@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-09-22 11:00:48.652092",
+    "@@last_modified": "2026-09-22 12:36:57.381949",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "পাছৱৰ্ড সলনি কৰক ফৰ্ম",
     "searchLanguagesHint": "ভাষা বিচাৰক",
     "searchCountriesHint": "দেশ বিচাৰক",
-    "searchVocabHint": "শব্দভাণ্ডাৰ বিচাৰক",
     "searchUsersHint": "ব্যৱহাৰকাৰী বিচাৰক",
     "searchMessagesHint": "বাৰ্তা বিচাৰক",
     "searchChatsHint": "আলাপ বিচাৰক",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "আপুনি শিকোৱা পাঠ্যক্ৰমসমূহহে দেখুৱাওক",
     "learningCoursesFilterTooltip": "আপুনি শিকি থকা পাঠ্যক্ৰমসমূহহে দেখুৱাওক",
     "searchCoursesHint": "পাঠ্যক্ৰমসমূহ বিচাৰক",
-    "noCoursesMatchSearch": "আপোনাৰ সন্ধানৰ সৈতে কোনো পাঠ্যক্ৰম মিল খোৱা নাই।"
+    "noCoursesMatchSearch": "আপোনাৰ সন্ধানৰ সৈতে কোনো পাঠ্যক্ৰম মিল খোৱা নাই।",
+    "searchVocabByWordOrMeaningHint": "শব্দ বা অৰ্থৰে সন্ধান কৰক"
 }

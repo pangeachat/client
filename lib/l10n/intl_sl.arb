@@ -1802,7 +1802,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-09-22 11:00:58.525949",
+    "@@last_modified": "2026-09-22 12:37:05.062876",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10513,7 +10513,6 @@
     "passwordFormLabel": "Obrazec za spremembo gesla",
     "searchLanguagesHint": "Iskanje jezikov",
     "searchCountriesHint": "Iskanje držav",
-    "searchVocabHint": "Iskanje besedišča",
     "searchUsersHint": "Iskanje uporabnikov",
     "searchMessagesHint": "Iskanje sporočil",
     "searchChatsHint": "Iskanje klepetov",
@@ -10892,5 +10891,6 @@
     "teachingCoursesFilterTooltip": "Prikaži samo tečaje, ki jih poučuješ",
     "learningCoursesFilterTooltip": "Prikaži samo tečaje, ki se jih učiš",
     "searchCoursesHint": "Iskanje tečajev",
-    "noCoursesMatchSearch": "Noben tečaj ne ustreza iskanju."
+    "noCoursesMatchSearch": "Noben tečaj ne ustreza iskanju.",
+    "searchVocabByWordOrMeaningHint": "Išči po besedi ali pomenu"
 }

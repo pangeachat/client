@@ -2559,7 +2559,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-09-22 11:00:56.447938",
+    "@@last_modified": "2026-09-22 12:37:04.341875",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10485,7 +10485,6 @@
     "passwordFormLabel": "Formulário de alteração de palavra-passe",
     "searchLanguagesHint": "Pesquisar idiomas",
     "searchCountriesHint": "Pesquisar países",
-    "searchVocabHint": "Pesquisar vocabulário",
     "searchUsersHint": "Pesquisar utilizadores",
     "searchMessagesHint": "Pesquisar mensagens",
     "searchChatsHint": "Pesquisar conversas",
@@ -10864,5 +10863,6 @@
     "teachingCoursesFilterTooltip": "Mostrar apenas os cursos que ensina",
     "learningCoursesFilterTooltip": "Mostrar apenas os cursos em que está a aprender",
     "searchCoursesHint": "Procurar cursos",
-    "noCoursesMatchSearch": "Nenhum curso corresponde à sua pesquisa."
+    "noCoursesMatchSearch": "Nenhum curso corresponde à sua pesquisa.",
+    "searchVocabByWordOrMeaningHint": "Pesquisar por palavra ou significado"
 }

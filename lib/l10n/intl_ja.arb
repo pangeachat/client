@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-09-22 11:00:51.190041",
+    "@@last_modified": "2026-09-22 12:37:02.069756",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10337,7 +10337,6 @@
     "passwordFormLabel": "パスワード変更フォーム",
     "searchLanguagesHint": "言語を検索",
     "searchCountriesHint": "国を検索",
-    "searchVocabHint": "語彙を検索",
     "searchUsersHint": "ユーザーを検索",
     "searchMessagesHint": "メッセージを検索",
     "searchChatsHint": "チャットを検索",
@@ -10716,5 +10715,6 @@
     "teachingCoursesFilterTooltip": "教えているコースのみを表示",
     "learningCoursesFilterTooltip": "学習中のコースのみを表示",
     "searchCoursesHint": "コースを検索",
-    "noCoursesMatchSearch": "検索条件に一致するコースはありません。"
+    "noCoursesMatchSearch": "検索条件に一致するコースはありません。",
+    "searchVocabByWordOrMeaningHint": "単語または意味で検索"
 }

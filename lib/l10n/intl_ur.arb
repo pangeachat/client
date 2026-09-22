@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-09-22 11:00:59.408889",
+    "@@last_modified": "2026-09-22 12:37:07.313100",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "پاس ورڈ تبدیل کرنے کا فارم",
     "searchLanguagesHint": "زبانیں تلاش کریں",
     "searchCountriesHint": "ممالک تلاش کریں",
-    "searchVocabHint": "الفاظ تلاش کریں",
     "searchUsersHint": "صارفین تلاش کریں",
     "searchMessagesHint": "پیغامات تلاش کریں",
     "searchChatsHint": "چیٹس تلاش کریں",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "صرف وہ کورسز دکھائیں جو آپ پڑھاتے ہیں",
     "learningCoursesFilterTooltip": "صرف وہ کورسز دکھائیں جن میں آپ سیکھ رہے ہیں",
     "searchCoursesHint": "کورسز تلاش کریں",
-    "noCoursesMatchSearch": "آپ کی تلاش سے کوئی کورس مماثل نہیں ہے۔"
+    "noCoursesMatchSearch": "آپ کی تلاش سے کوئی کورس مماثل نہیں ہے۔",
+    "searchVocabByWordOrMeaningHint": "لفظ یا معنی کے لحاظ سے تلاش کریں"
 }

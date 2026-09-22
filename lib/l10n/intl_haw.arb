@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-09-22 11:00:50.523706",
+    "@@last_modified": "2026-09-22 12:36:59.475027",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "Palapala hoʻololi ʻōlelo huna",
     "searchLanguagesHint": "Huli ʻōlelo",
     "searchCountriesHint": "Huli ʻāina",
-    "searchVocabHint": "Huli huaʻōlelo",
     "searchUsersHint": "Huli mea hoʻohana",
     "searchMessagesHint": "Huli leka",
     "searchChatsHint": "Huli kamaʻilio",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "Hōʻike wale i nā papa āu e aʻo ai",
     "learningCoursesFilterTooltip": "Hōʻike wale i nā papa āu e aʻo nei",
     "searchCoursesHint": "Huli papa",
-    "noCoursesMatchSearch": "ʻAʻohe papa e like me kāu hulina."
+    "noCoursesMatchSearch": "ʻAʻohe papa e like me kāu hulina.",
+    "searchVocabByWordOrMeaningHint": "Huli ma ka huaʻōlelo a i ʻole ke ʻano"
 }

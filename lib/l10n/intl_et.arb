@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-09-22 11:00:49.629570",
+    "@@last_modified": "2026-09-22 12:36:58.548091",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9565,7 +9565,6 @@
     "passwordFormLabel": "Muuda parooli vorm",
     "searchLanguagesHint": "Otsi keeli",
     "searchCountriesHint": "Otsi riike",
-    "searchVocabHint": "Otsi sõnavara",
     "searchUsersHint": "Otsi kasutajaid",
     "searchMessagesHint": "Otsi sõnumeid",
     "searchChatsHint": "Otsi vestlusi",
@@ -9944,5 +9943,6 @@
     "teachingCoursesFilterTooltip": "Näita ainult kursuseid, mida õpetad",
     "learningCoursesFilterTooltip": "Näita ainult kursuseid, mida õpid",
     "searchCoursesHint": "Otsi kursuseid",
-    "noCoursesMatchSearch": "Sinu otsingule vastavaid kursuseid ei leitud."
+    "noCoursesMatchSearch": "Sinu otsingule vastavaid kursuseid ei leitud.",
+    "searchVocabByWordOrMeaningHint": "Otsi sõna või tähenduse järgi"
 }

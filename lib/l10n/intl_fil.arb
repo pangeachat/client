@@ -2080,7 +2080,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-09-22 11:00:49.874708",
+    "@@last_modified": "2026-09-22 12:36:58.633997",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10428,7 +10428,6 @@
     "passwordFormLabel": "Form sa pagpapalit ng password",
     "searchLanguagesHint": "Maghanap ng mga wika",
     "searchCountriesHint": "Maghanap ng mga bansa",
-    "searchVocabHint": "Maghanap ng bokabularyo",
     "searchUsersHint": "Maghanap ng mga user",
     "searchMessagesHint": "Maghanap ng mga mensahe",
     "searchChatsHint": "Maghanap ng mga chat",
@@ -10807,5 +10806,6 @@
     "teachingCoursesFilterTooltip": "Ipakita lang ang mga kursong itinuturo mo",
     "learningCoursesFilterTooltip": "Ipakita lang ang mga kursong pinag-aaralan mo",
     "searchCoursesHint": "Maghanap ng mga kurso",
-    "noCoursesMatchSearch": "Walang kursong tumutugma sa iyong hinahanap."
+    "noCoursesMatchSearch": "Walang kursong tumutugma sa iyong hinahanap.",
+    "searchVocabByWordOrMeaningHint": "Maghanap ayon sa salita o kahulugan"
 }

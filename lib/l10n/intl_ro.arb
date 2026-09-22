@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 11:00:58.238407",
+    "@@last_modified": "2026-09-22 12:37:05.578683",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10300,7 +10300,6 @@
     "passwordFormLabel": "Formular de schimbare a parolei",
     "searchLanguagesHint": "Căutați limbi",
     "searchCountriesHint": "Căutați țări",
-    "searchVocabHint": "Căutați vocabular",
     "searchUsersHint": "Căutați utilizatori",
     "searchMessagesHint": "Căutați mesaje",
     "searchChatsHint": "Căutați conversații",
@@ -10679,5 +10678,6 @@
     "teachingCoursesFilterTooltip": "Afișează doar cursurile pe care le predai",
     "learningCoursesFilterTooltip": "Afișează doar cursurile la care înveți",
     "searchCoursesHint": "Căutare cursuri",
-    "noCoursesMatchSearch": "Niciun curs nu corespunde căutării tale."
+    "noCoursesMatchSearch": "Niciun curs nu corespunde căutării tale.",
+    "searchVocabByWordOrMeaningHint": "Căutați după cuvânt sau sens"
 }

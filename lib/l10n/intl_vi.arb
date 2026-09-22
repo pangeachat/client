@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 11:00:59.444122",
+    "@@last_modified": "2026-09-22 12:37:07.387546",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6864,7 +6864,6 @@
     "passwordFormLabel": "Mẫu đổi mật khẩu",
     "searchLanguagesHint": "Tìm kiếm ngôn ngữ",
     "searchCountriesHint": "Tìm kiếm quốc gia",
-    "searchVocabHint": "Tìm kiếm từ vựng",
     "searchUsersHint": "Tìm kiếm người dùng",
     "searchMessagesHint": "Tìm kiếm tin nhắn",
     "searchChatsHint": "Tìm kiếm cuộc trò chuyện",
@@ -7239,5 +7238,6 @@
     "teachingCoursesFilterTooltip": "Chỉ hiển thị các khóa học bạn dạy",
     "learningCoursesFilterTooltip": "Chỉ hiển thị các khóa học bạn đang học",
     "searchCoursesHint": "Tìm kiếm khóa học",
-    "noCoursesMatchSearch": "Không có khóa học nào khớp với tìm kiếm của bạn."
+    "noCoursesMatchSearch": "Không có khóa học nào khớp với tìm kiếm của bạn.",
+    "searchVocabByWordOrMeaningHint": "Tìm kiếm theo từ hoặc nghĩa"
 }

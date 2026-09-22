@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-09-22 11:00:59.310260",
+    "@@last_modified": "2026-09-22 12:37:09.612070",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "مۇناسىۋەتلىك پارولنى ئۆزگەرتىش جەدۋىلى",
     "searchLanguagesHint": "تىللارنى ئىزدەش",
     "searchCountriesHint": "دۆلەتلەرنى ئىزدەش",
-    "searchVocabHint": "سۆزلۈكنى ئىزدەش",
     "searchUsersHint": "ئىشلەتكۈچىلەرنى ئىزدەش",
     "searchMessagesHint": "ئۇچۇرلارنى ئىزدەش",
     "searchChatsHint": "پارىڭلارنى ئىزدەش",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "سىز ئۆگىتىۋاتقان كۇرسلارنىلا كۆرسەت",
     "learningCoursesFilterTooltip": "سىز ئۆگىنىۋاتقان كۇرسلارنىلا كۆرسەت",
     "searchCoursesHint": "كۇرس ئىزدە",
-    "noCoursesMatchSearch": "ئىزدەش نەتىجىڭىزگە ماس كېلىدىغان كۇرس يوق."
+    "noCoursesMatchSearch": "ئىزدەش نەتىجىڭىزگە ماس كېلىدىغان كۇرس يوق.",
+    "searchVocabByWordOrMeaningHint": "سۆز ياكى مەنىسى بويىچە ئىزدەش"
 }

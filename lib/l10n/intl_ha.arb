@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-09-22 11:00:50.473983",
+    "@@last_modified": "2026-09-22 12:36:59.211362",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "Canza fom ɗin kalmar sirri",
     "searchLanguagesHint": "Neman harsuna",
     "searchCountriesHint": "Neman ƙasashe",
-    "searchVocabHint": "Neman kalmomi",
     "searchUsersHint": "Neman masu amfani",
     "searchMessagesHint": "Neman saƙonni",
     "searchChatsHint": "Neman taɗi",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "Nuna darussan da kake koyarwa kawai",
     "learningCoursesFilterTooltip": "Nuna darussan da kake koya kawai",
     "searchCoursesHint": "Bincika darussa",
-    "noCoursesMatchSearch": "Babu darussan da suka dace da bincikenka."
+    "noCoursesMatchSearch": "Babu darussan da suka dace da bincikenka.",
+    "searchVocabByWordOrMeaningHint": "Bincika ta kalma ko ma'ana"
 }

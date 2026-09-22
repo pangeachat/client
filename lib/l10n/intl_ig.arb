@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-09-22 11:00:51.285376",
+    "@@last_modified": "2026-09-22 12:37:00.090548",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "Ụdị mgbanwe okwuntụghe",
     "searchLanguagesHint": "Chọọ asụsụ",
     "searchCountriesHint": "Chọọ obodo",
-    "searchVocabHint": "Chọọ okwu",
     "searchUsersHint": "Chọọ ndị ọrụ",
     "searchMessagesHint": "Chọọ ozi",
     "searchChatsHint": "Chọọ nkata",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "Gosi naanị ọmụmụ ihe ị na-akụzi",
     "learningCoursesFilterTooltip": "Gosi naanị ọmụmụ ihe ị na-amụta",
     "searchCoursesHint": "Chọọ ọmụmụ ihe",
-    "noCoursesMatchSearch": "Ọ nweghị ọmụmụ ihe dabara na ọchụchọ gị."
+    "noCoursesMatchSearch": "Ọ nweghị ọmụmụ ihe dabara na ọchụchọ gị.",
+    "searchVocabByWordOrMeaningHint": "Chọọ site na okwu ma ọ bụ ihe ọ pụtara"
 }

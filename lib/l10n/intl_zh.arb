@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-09-22 11:01:00.091077",
+    "@@last_modified": "2026-09-22 12:37:08.294945",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9568,7 +9568,6 @@
     "passwordFormLabel": "更改密码表单",
     "searchLanguagesHint": "搜索语言",
     "searchCountriesHint": "搜索国家",
-    "searchVocabHint": "搜索词汇",
     "searchUsersHint": "搜索用户",
     "searchMessagesHint": "搜索消息",
     "searchChatsHint": "搜索聊天",
@@ -9947,5 +9946,6 @@
     "teachingCoursesFilterTooltip": "仅显示您教授的课程",
     "learningCoursesFilterTooltip": "仅显示您正在学习的课程",
     "searchCoursesHint": "搜索课程",
-    "noCoursesMatchSearch": "没有课程与您的搜索匹配。"
+    "noCoursesMatchSearch": "没有课程与您的搜索匹配。",
+    "searchVocabByWordOrMeaningHint": "按单词或含义搜索"
 }

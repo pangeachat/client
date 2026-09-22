@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-09-22 11:00:56.891287",
+    "@@last_modified": "2026-09-22 12:37:06.180498",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "Suia le pepa faʻatumu o le upu faʻalilolilo",
     "searchLanguagesHint": "Su'e gagana",
     "searchCountriesHint": "Su'e atunu'u",
-    "searchVocabHint": "Su'e upu",
     "searchUsersHint": "Su'e tagata fa'aoga",
     "searchMessagesHint": "Su'e fe'au",
     "searchChatsHint": "Su'e talanoaga",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "Fa'aali na'o kosi o lo'o e a'oa'oina",
     "learningCoursesFilterTooltip": "Fa'aali na'o kosi o lo'o e a'oa'oina ai",
     "searchCoursesHint": "Su'e kosi",
-    "noCoursesMatchSearch": "Leai ni kosi e fetaui ma lau su'esu'ega."
+    "noCoursesMatchSearch": "Leai ni kosi e fetaui ma lau su'esu'ega.",
+    "searchVocabByWordOrMeaningHint": "Su'e i le upu po'o le uiga"
 }

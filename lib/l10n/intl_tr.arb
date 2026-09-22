@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-09-22 11:00:58.537379",
+    "@@last_modified": "2026-09-22 12:37:06.848695",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -9869,7 +9869,6 @@
     "passwordFormLabel": "Şifre değiştirme formu",
     "searchLanguagesHint": "Dilleri ara",
     "searchCountriesHint": "Ülkeleri ara",
-    "searchVocabHint": "Kelime ara",
     "searchUsersHint": "Kullanıcıları ara",
     "searchMessagesHint": "Mesajları ara",
     "searchChatsHint": "Sohbetleri ara",
@@ -10248,5 +10247,6 @@
     "teachingCoursesFilterTooltip": "Sadece öğrettiğiniz kursları göster",
     "learningCoursesFilterTooltip": "Sadece öğrendiğiniz kursları göster",
     "searchCoursesHint": "Kurs ara",
-    "noCoursesMatchSearch": "Aramanızla eşleşen kurs bulunamadı."
+    "noCoursesMatchSearch": "Aramanızla eşleşen kurs bulunamadı.",
+    "searchVocabByWordOrMeaningHint": "Kelimeye veya anlamına göre ara"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 11:00:54.721327",
+    "@@last_modified": "2026-09-22 12:37:02.594247",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9625,7 +9625,6 @@
     "passwordFormLabel": "Skjema for passordendring",
     "searchLanguagesHint": "Søk språk",
     "searchCountriesHint": "Søk land",
-    "searchVocabHint": "Søk vokabular",
     "searchUsersHint": "Søk brukere",
     "searchMessagesHint": "Søk meldinger",
     "searchChatsHint": "Søk chatter",
@@ -10004,5 +10003,6 @@
     "teachingCoursesFilterTooltip": "Vis kun kurs du underviser i",
     "learningCoursesFilterTooltip": "Vis kun kurs du lærer i",
     "searchCoursesHint": "Søk i kurs",
-    "noCoursesMatchSearch": "Ingen kurs samsvarer med søket ditt."
+    "noCoursesMatchSearch": "Ingen kurs samsvarer med søket ditt.",
+    "searchVocabByWordOrMeaningHint": "Søk etter ord eller betydning"
 }

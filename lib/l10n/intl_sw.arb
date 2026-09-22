@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-09-22 11:00:58.091467",
+    "@@last_modified": "2026-09-22 12:37:08.833807",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "Fomu ya kubadilisha nenosiri",
     "searchLanguagesHint": "Tafuta lugha",
     "searchCountriesHint": "Tafuta nchi",
-    "searchVocabHint": "Tafuta msamiati",
     "searchUsersHint": "Tafuta watumiaji",
     "searchMessagesHint": "Tafuta jumbe",
     "searchChatsHint": "Tafuta soga",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "Onyesha kozi unazofundisha pekee",
     "learningCoursesFilterTooltip": "Onyesha kozi unazojifunza pekee",
     "searchCoursesHint": "Tafuta kozi",
-    "noCoursesMatchSearch": "Hakuna kozi zinazolingana na utafutaji wako."
+    "noCoursesMatchSearch": "Hakuna kozi zinazolingana na utafutaji wako.",
+    "searchVocabByWordOrMeaningHint": "Tafuta kwa neno au maana"
 }

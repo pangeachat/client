@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-09-22 11:00:49.822411",
+    "@@last_modified": "2026-09-22 12:36:58.769646",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9568,7 +9568,6 @@
     "passwordFormLabel": "Pasahitza aldatzeko inprimakia",
     "searchLanguagesHint": "Bilatu hizkuntzak",
     "searchCountriesHint": "Bilatu herrialdeak",
-    "searchVocabHint": "Bilatu hiztegia",
     "searchUsersHint": "Bilatu erabiltzaileak",
     "searchMessagesHint": "Bilatu mezuak",
     "searchChatsHint": "Bilatu txatak",
@@ -9947,5 +9946,6 @@
     "teachingCoursesFilterTooltip": "Irakasten dituzun ikastaroak soilik erakutsi",
     "learningCoursesFilterTooltip": "Ikasten ari zaren ikastaroak soilik erakutsi",
     "searchCoursesHint": "Bilatu ikastaroak",
-    "noCoursesMatchSearch": "Ez dago bilaketarekin bat datorren ikastarorik."
+    "noCoursesMatchSearch": "Ez dago bilaketarekin bat datorren ikastarorik.",
+    "searchVocabByWordOrMeaningHint": "Bilatu hitzaren edo esanahiaren arabera"
 }

@@ -2919,7 +2919,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-09-22 11:00:48.857005",
+    "@@last_modified": "2026-09-22 12:36:57.480358",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9179,7 +9179,6 @@
     "passwordFormLabel": "གསང་གྲངས་བསྒྱུར་བའི་རེའུ་མིག",
     "searchLanguagesHint": "སྐད་ཡིག་འཚོལ།",
     "searchCountriesHint": "རྒྱལ་ཁབ་འཚོལ།",
-    "searchVocabHint": "ཚིག་མཛོད་འཚོལ།",
     "searchUsersHint": "བེད་སྤྱོད་པ་འཚོལ།",
     "searchMessagesHint": "འཕྲིན་ཡིག་འཚོལ།",
     "searchChatsHint": "ཁ་བརྡ་འཚོལ།",
@@ -9558,5 +9557,6 @@
     "teachingCoursesFilterTooltip": "ཁྱེད་ཀྱིས་སློབ་ཁྲིད་བྱེད་པའི་སློབ་ཚན་ཁོ་ན་སྟོན།",
     "learningCoursesFilterTooltip": "ཁྱེད་ཀྱིས་སློབ་སྦྱོང་བྱེད་བཞིན་པའི་སློབ་ཚན་ཁོ་ན་སྟོན།",
     "searchCoursesHint": "སློབ་ཚན་འཚོལ།",
-    "noCoursesMatchSearch": "ཁྱེད་ཀྱི་འཚོལ་བཤེར་དང་མཐུན་པའི་སློབ་ཚན་མི་འདུག"
+    "noCoursesMatchSearch": "ཁྱེད་ཀྱི་འཚོལ་བཤེར་དང་མཐུན་པའི་སློབ་ཚན་མི་འདུག",
+    "searchVocabByWordOrMeaningHint": "ཚིག་གམ་དོན་གྱིས་འཚོལ་བ།"
 }

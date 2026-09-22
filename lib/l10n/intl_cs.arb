@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-09-22 11:00:49.090734",
+    "@@last_modified": "2026-09-22 12:36:58.005162",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10062,7 +10062,6 @@
     "passwordFormLabel": "Formulář pro změnu hesla",
     "searchLanguagesHint": "Hledat jazyky",
     "searchCountriesHint": "Hledat země",
-    "searchVocabHint": "Hledat slovíčka",
     "searchUsersHint": "Hledat uživatele",
     "searchMessagesHint": "Hledat zprávy",
     "searchChatsHint": "Hledat chaty",
@@ -10441,5 +10440,6 @@
     "teachingCoursesFilterTooltip": "Zobrazit pouze kurzy, které učíte",
     "learningCoursesFilterTooltip": "Zobrazit pouze kurzy, ve kterých se učíte",
     "searchCoursesHint": "Hledat kurzy",
-    "noCoursesMatchSearch": "Žádné kurzy neodpovídají vašemu hledání."
+    "noCoursesMatchSearch": "Žádné kurzy neodpovídají vašemu hledání.",
+    "searchVocabByWordOrMeaningHint": "Hledat podle slova nebo významu"
 }

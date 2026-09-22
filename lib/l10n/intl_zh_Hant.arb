@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 11:00:59.898063",
+    "@@last_modified": "2026-09-22 12:37:08.230497",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9674,7 +9674,6 @@
     "passwordFormLabel": "更改密碼表單",
     "searchLanguagesHint": "搜尋語言",
     "searchCountriesHint": "搜尋國家",
-    "searchVocabHint": "搜尋詞彙",
     "searchUsersHint": "搜尋使用者",
     "searchMessagesHint": "搜尋訊息",
     "searchChatsHint": "搜尋聊天",
@@ -10053,5 +10052,6 @@
     "teachingCoursesFilterTooltip": "僅顯示您教授的課程",
     "learningCoursesFilterTooltip": "僅顯示您正在學習的課程",
     "searchCoursesHint": "搜尋課程",
-    "noCoursesMatchSearch": "沒有課程符合您的搜尋。"
+    "noCoursesMatchSearch": "沒有課程符合您的搜尋。",
+    "searchVocabByWordOrMeaningHint": "按單字或意思搜尋"
 }

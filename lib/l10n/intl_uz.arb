@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-09-22 11:00:59.367960",
+    "@@last_modified": "2026-09-22 12:37:07.321552",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9572,7 +9572,6 @@
     "passwordFormLabel": "Parolni oʻzgartirish shakli",
     "searchLanguagesHint": "Tillar boʻyicha qidirish",
     "searchCountriesHint": "Davlatlar boʻyicha qidirish",
-    "searchVocabHint": "Lugʻat boʻyicha qidirish",
     "searchUsersHint": "Foydalanuvchilar boʻyicha qidirish",
     "searchMessagesHint": "Xabarlar boʻyicha qidirish",
     "searchChatsHint": "Chatlar boʻyicha qidirish",
@@ -9951,5 +9950,6 @@
     "teachingCoursesFilterTooltip": "Faqat siz o‘qitayotgan kurslarni ko‘rsatish",
     "learningCoursesFilterTooltip": "Faqat siz o‘rganayotgan kurslarni ko‘rsatish",
     "searchCoursesHint": "Kurslarni qidirish",
-    "noCoursesMatchSearch": "Qidiruvingizga mos kurslar topilmadi."
+    "noCoursesMatchSearch": "Qidiruvingizga mos kurslar topilmadi.",
+    "searchVocabByWordOrMeaningHint": "Soʻz yoki maʼnosi boʻyicha qidirish"
 }

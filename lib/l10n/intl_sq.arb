@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-09-22 11:00:57.276447",
+    "@@last_modified": "2026-09-22 12:37:05.880565",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "Formulari për ndryshimin e fjalëkalimit",
     "searchLanguagesHint": "Kërko gjuhë",
     "searchCountriesHint": "Kërko vende",
-    "searchVocabHint": "Kërko fjalor",
     "searchUsersHint": "Kërko përdorues",
     "searchMessagesHint": "Kërko mesazhe",
     "searchChatsHint": "Kërko biseda",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "Shfaq vetëm kurset që jepni mësim",
     "learningCoursesFilterTooltip": "Shfaq vetëm kurset ku po mësoni",
     "searchCoursesHint": "Kërko kurse",
-    "noCoursesMatchSearch": "Asnjë kurs nuk përputhet me kërkimin tuaj."
+    "noCoursesMatchSearch": "Asnjë kurs nuk përputhet me kërkimin tuaj.",
+    "searchVocabByWordOrMeaningHint": "Kërko sipas fjalës ose kuptimit"
 }

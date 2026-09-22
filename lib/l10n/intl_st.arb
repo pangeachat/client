@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-09-22 11:00:57.725864",
+    "@@last_modified": "2026-09-22 12:37:05.826446",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "Foromo ea ho fetola phasewete",
     "searchLanguagesHint": "Batla lipuo",
     "searchCountriesHint": "Batla linaha",
-    "searchVocabHint": "Batla mantsoe",
     "searchUsersHint": "Batla basebelisi",
     "searchMessagesHint": "Batla melaetsa",
     "searchChatsHint": "Batla lipuisano",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "Bontsha feela dithuto tseo o di rutang",
     "learningCoursesFilterTooltip": "Bontsha feela dithuto tseo o ithutang ho tsona",
     "searchCoursesHint": "Batla dithuto",
-    "noCoursesMatchSearch": "Ha ho dithuto tse tsamaellanang le patlisiso ya hao."
+    "noCoursesMatchSearch": "Ha ho dithuto tse tsamaellanang le patlisiso ya hao.",
+    "searchVocabByWordOrMeaningHint": "Batla ka lentswe kapa moelelo"
 }

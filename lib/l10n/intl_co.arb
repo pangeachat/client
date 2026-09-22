@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-09-22 11:00:49.031100",
+    "@@last_modified": "2026-09-22 12:36:57.902573",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "Formulariu di cambiamentu di password",
     "searchLanguagesHint": "Circà lingue",
     "searchCountriesHint": "Circà paesi",
-    "searchVocabHint": "Circà vucabulariu",
     "searchUsersHint": "Circà utilizatori",
     "searchMessagesHint": "Circà messagi",
     "searchChatsHint": "Circà cunversazioni",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "Mostra solu i corsi ch'è tù insegni",
     "learningCoursesFilterTooltip": "Mostra solu i corsi ch'è tù amparate",
     "searchCoursesHint": "Cerca corsi",
-    "noCoursesMatchSearch": "Nisun corsu ùn currisponde à a vostra ricerca."
+    "noCoursesMatchSearch": "Nisun corsu ùn currisponde à a vostra ricerca.",
+    "searchVocabByWordOrMeaningHint": "Cerca per parolla o significatu"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 11:00:57.128883",
+    "@@last_modified": "2026-09-22 12:37:05.709127",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10517,7 +10517,6 @@
     "passwordFormLabel": "Obrazac za promjenu lozinke",
     "searchLanguagesHint": "Pretražite jezike",
     "searchCountriesHint": "Pretražite zemlje",
-    "searchVocabHint": "Pretražite rečnik",
     "searchUsersHint": "Pretražite korisnike",
     "searchMessagesHint": "Pretražite poruke",
     "searchChatsHint": "Pretražite ćaskanja",
@@ -10896,5 +10895,6 @@
     "teachingCoursesFilterTooltip": "Prikaži samo kurseve koje predaješ",
     "learningCoursesFilterTooltip": "Prikaži samo kurseve koje učiš",
     "searchCoursesHint": "Pretraži kurseve",
-    "noCoursesMatchSearch": "Nijedan kurs ne odgovara tvojoj pretrazi."
+    "noCoursesMatchSearch": "Nijedan kurs ne odgovara tvojoj pretrazi.",
+    "searchVocabByWordOrMeaningHint": "Pretražite po reči ili značenju"
 }

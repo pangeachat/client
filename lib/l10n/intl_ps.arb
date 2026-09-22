@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-09-22 11:00:55.853651",
+    "@@last_modified": "2026-09-22 12:37:04.788081",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "د پټنوم بدلولو فورمه",
     "searchLanguagesHint": "ژبې وپلټئ",
     "searchCountriesHint": "هېوادونه وپلټئ",
-    "searchVocabHint": "لغتونه وپلټئ",
     "searchUsersHint": "کاروونکي وپلټئ",
     "searchMessagesHint": "پیغامونه وپلټئ",
     "searchChatsHint": "چټونه وپلټئ",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "یوازې هغه کورسونه وښایاست چې تاسو یې تدریس کوئ",
     "learningCoursesFilterTooltip": "یوازې هغه کورسونه وښایاست چې تاسو یې زده کوئ",
     "searchCoursesHint": "کورسونه وپلټئ",
-    "noCoursesMatchSearch": "ستاسو د لټون سره سم هیڅ کورس شتون نلري."
+    "noCoursesMatchSearch": "ستاسو د لټون سره سم هیڅ کورس شتون نلري.",
+    "searchVocabByWordOrMeaningHint": "د کلمې یا معنی له مخې لټون وکړئ"
 }

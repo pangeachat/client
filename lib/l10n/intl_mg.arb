@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-09-22 11:00:53.429377",
+    "@@last_modified": "2026-09-22 12:37:02.058548",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "Fandrafetana fanovana tenimiafina",
     "searchLanguagesHint": "Tadiavo ny fiteny",
     "searchCountriesHint": "Tadiavo ny firenena",
-    "searchVocabHint": "Tadiavo ny voambolana",
     "searchUsersHint": "Tadiavo ny mpampiasa",
     "searchMessagesHint": "Tadiavo ny hafatra",
     "searchChatsHint": "Tadiavo ny resaka",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "Asehoy ireo fianarana ampianarinao ihany",
     "learningCoursesFilterTooltip": "Asehoy ireo fianarana ianaranao ihany",
     "searchCoursesHint": "Tadiavo ny fianarana",
-    "noCoursesMatchSearch": "Tsy misy fianarana mifanaraka amin'ny fikarohanao."
+    "noCoursesMatchSearch": "Tsy misy fianarana mifanaraka amin'ny fikarohanao.",
+    "searchVocabByWordOrMeaningHint": "Tadiavo amin'ny teny na ny dikany"
 }

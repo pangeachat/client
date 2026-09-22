@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 11:00:50.504409",
+    "@@last_modified": "2026-09-22 12:36:59.157518",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10482,7 +10482,6 @@
     "passwordFormLabel": "טופס שינוי סיסמה",
     "searchLanguagesHint": "חיפוש שפות",
     "searchCountriesHint": "חיפוש מדינות",
-    "searchVocabHint": "חיפוש אוצר מילים",
     "searchUsersHint": "חיפוש משתמשים",
     "searchMessagesHint": "חיפוש הודעות",
     "searchChatsHint": "חיפוש צ'אטים",
@@ -10861,5 +10860,6 @@
     "teachingCoursesFilterTooltip": "הצג רק קורסים שאתה מלמד",
     "learningCoursesFilterTooltip": "הצג רק קורסים שאתה לומד בהם",
     "searchCoursesHint": "חפש קורסים",
-    "noCoursesMatchSearch": "לא נמצאו קורסים התואמים לחיפוש שלך."
+    "noCoursesMatchSearch": "לא נמצאו קורסים התואמים לחיפוש שלך.",
+    "searchVocabByWordOrMeaningHint": "חפש לפי מילה או משמעות"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-09-22 11:00:49.881809",
+    "@@last_modified": "2026-09-22 12:36:58.738626",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "Wachtwurd wizigje formulier",
     "searchLanguagesHint": "Sykje talen",
     "searchCountriesHint": "Sykje lannen",
-    "searchVocabHint": "Sykje wurdskat",
     "searchUsersHint": "Sykje brûkers",
     "searchMessagesHint": "Sykje berjochten",
     "searchChatsHint": "Sykje petearen",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "Lit allinnich kursussen sjen dy't jo jouwe",
     "learningCoursesFilterTooltip": "Lit allinnich kursussen sjen dêr't jo yn leare",
     "searchCoursesHint": "Sykje kursussen",
-    "noCoursesMatchSearch": "Gjin kursussen komme oerien mei jo sykopdracht."
+    "noCoursesMatchSearch": "Gjin kursussen komme oerien mei jo sykopdracht.",
+    "searchVocabByWordOrMeaningHint": "Sykje op wurd of betsjutting"
 }

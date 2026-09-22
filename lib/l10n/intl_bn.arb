@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 11:00:48.325781",
+    "@@last_modified": "2026-09-22 12:36:57.402045",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10196,7 +10196,6 @@
     "passwordFormLabel": "পাসওয়ার্ড পরিবর্তন ফর্ম",
     "searchLanguagesHint": "ভাষা খুঁজুন",
     "searchCountriesHint": "দেশ খুঁজুন",
-    "searchVocabHint": "শব্দভান্ডার খুঁজুন",
     "searchUsersHint": "ব্যবহারকারীদের খুঁজুন",
     "searchMessagesHint": "বার্তা খুঁজুন",
     "searchChatsHint": "চ্যাট খুঁজুন",
@@ -10575,5 +10574,6 @@
     "teachingCoursesFilterTooltip": "শুধুমাত্র আপনার শেখানো কোর্সগুলি দেখান",
     "learningCoursesFilterTooltip": "শুধুমাত্র আপনি যে কোর্সগুলি শিখছেন তা দেখান",
     "searchCoursesHint": "কোর্স খুঁজুন",
-    "noCoursesMatchSearch": "আপনার অনুসন্ধানের সাথে কোনো কোর্স মেলে না।"
+    "noCoursesMatchSearch": "আপনার অনুসন্ধানের সাথে কোনো কোর্স মেলে না।",
+    "searchVocabByWordOrMeaningHint": "শব্দ বা অর্থ দিয়ে খুঁজুন"
 }
