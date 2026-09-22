@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-09-21 09:53:35.270985",
+    "@@last_modified": "2026-09-22 11:00:48.511058",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "Vul hierdie vorm in om 'n pasgemaakte kursus te kry",
     "courseCodeStepErrorMessage": "Gaan asseblief jou kode na en probeer weer",
     "institution": "Instelling",
-    "courseGoals": "Kursusdoelwitte",
     "missingLanguageException": "Kies asseblief geldige basis- en teikentale",
     "selectChats": "Kies Kletse",
     "plainTextFile": "Teks",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 woordeskatitem gebruik} other{{count} woordeskatitems gebruik}}",
     "grammarItemsUsed": "{count, plural, =1{1 grammatika-item gebruik} other{{count} grammatika-items gebruik}}",
     "playVideo": "Speel video",
-    "videoPlayer": "Videospeler"
+    "videoPlayer": "Videospeler",
+    "customCourseTextbookHint": "Vertel ons watter handboek jy gebruik, of beskryf jou kurrikulum"
 }

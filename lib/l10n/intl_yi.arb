@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-09-21 09:53:41.569310",
+    "@@last_modified": "2026-09-22 11:00:59.429102",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "פילט אויס דעם פאָרעם צו באַקומען אַן אייגענעם קורס",
     "courseCodeStepErrorMessage": "ביטע קאָנטראָלירט אייער קאָד און פּרוּווט ווידער",
     "institution": "אינסטיטוציע",
-    "courseGoals": "קורס צילן",
     "missingLanguageException": "ביטע קלויבט גילטיקע באַזע און ציל שפּראַכן",
     "selectChats": "קלויבט טשאַץ",
     "plainTextFile": "טעקסט",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 וואָקאַב נומער געניצט} other{{count} וואָקאַב נומערן געניצט}}",
     "grammarItemsUsed": "{count, plural, =1{1 גראַמאַטיק נומער געניצט} other{{count} גראַמאַטיק נומערן געניצט}}",
     "playVideo": "שפּיל ווידעא",
-    "videoPlayer": "ווידעא שפּילער"
+    "videoPlayer": "ווידעא שפּילער",
+    "customCourseTextbookHint": "זאָג אונדז וועלכע לערנבוך דו ניצט, אָדער באַשרײַב דיין לערנפּלאַן"
 }

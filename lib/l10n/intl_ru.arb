@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-09-21 09:53:40.058244",
+    "@@last_modified": "2026-09-22 11:00:56.319791",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -9770,7 +9770,6 @@
     "customCourseStepTitle": "Заполните эту форму, чтобы получить индивидуальный курс",
     "courseCodeStepErrorMessage": "Пожалуйста, проверьте ваш код и попробуйте снова",
     "institution": "Учебное заведение",
-    "courseGoals": "Цели курса",
     "selectChats": "Выберите чаты",
     "plainTextFile": "Текст",
     "@userTypeTitle": {
@@ -10914,5 +10913,6 @@
     "vocabItemsUsed": "{count, plural, =1{использовано 1 словарное слово} other{использовано {count} словарных слов}}",
     "grammarItemsUsed": "{count, plural, =1{использовано 1 грамматическое правило} other{использовано {count} грамматических правил}}",
     "playVideo": "Воспроизвести видео",
-    "videoPlayer": "Видеоплеер"
+    "videoPlayer": "Видеоплеер",
+    "customCourseTextbookHint": "Расскажите, какой учебник вы используете, или опишите свою программу"
 }

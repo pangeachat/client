@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-09-21 09:53:40.552441",
+    "@@last_modified": "2026-09-22 11:00:57.725864",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "Tlatsa foromo ena ho fumana thupelo e ikgethileng",
     "courseCodeStepErrorMessage": "Ka kopo hlahloba khoutu ya hao mme o leke hape",
     "institution": "Setsi",
-    "courseGoals": "Dipheo tsa Thupelo",
     "missingLanguageException": "Ka kopo kgetha dipuo tse nepahetseng tsa motheo le tsa sepheo",
     "selectChats": "Kgetha Dipuisano",
     "plainTextFile": "Mongolo",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{Ntho e le 'ngoe ea mantsoe e sebelisitsoe} other{Lintho tse {count} tsa mantsoe li sebelisitsoe}}",
     "grammarItemsUsed": "{count, plural, =1{Ntho e le 'ngoe ea sebōpeho-puo e sebelisitsoe} other{Lintho tse {count} tsa sebōpeho-puo li sebelisitsoe}}",
     "playVideo": "Bapala video",
-    "videoPlayer": "Sebapala-video"
+    "videoPlayer": "Sebapala-video",
+    "customCourseTextbookHint": "Re bolelle hore na o sebelisa buka efe, kapa o hlalose thuto ea hau"
 }

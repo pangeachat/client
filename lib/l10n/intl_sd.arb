@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-09-21 09:53:39.993859",
+    "@@last_modified": "2026-09-22 11:00:56.539493",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "ڪسٽم ڪورس حاصل ڪرڻ لاءِ هي فارم ڀريو",
     "courseCodeStepErrorMessage": "مهرباني ڪري پنهنجو ڪوڊ چيڪ ڪريو ۽ ٻيهر ڪوشش ڪريو",
     "institution": "ادارو",
-    "courseGoals": "ڪورس جا مقصد",
     "missingLanguageException": "مهرباني ڪري صحيح بنيادي ۽ ٽارگيٽ ٻوليون چونڊيو",
     "selectChats": "چيٽس چونڊيو",
     "plainTextFile": "ٽيڪسٽ",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 لفظ استعمال ٿيو} other{{count} لفظ استعمال ٿيا}}",
     "grammarItemsUsed": "{count, plural, =1{1 گرامر جو آئٽم استعمال ٿيو} other{{count} گرامر جا آئٽم استعمال ٿيا}}",
     "playVideo": "وڊيو هلايو",
-    "videoPlayer": "وڊيو پليئر"
+    "videoPlayer": "وڊيو پليئر",
+    "customCourseTextbookHint": "اسان کي ٻڌايو ته توهان ڪهڙي درسي ڪتاب استعمال ڪندا آهيو، يا پنهنجي نصاب جي وضاحت ڪريو"
 }

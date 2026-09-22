@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-09-21 09:53:41.778444",
+    "@@last_modified": "2026-09-22 11:00:59.452186",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "Fọ́ọ̀mù yìí láti gba ẹ̀kọ́ àṣàṣe kan",
     "courseCodeStepErrorMessage": "Jọ̀wọ́ ṣàyẹ̀wò koodu rẹ kí o sì tún gbìyànjú",
     "institution": "Ilé-ẹ̀kọ́",
-    "courseGoals": "Àwọn Àfojúsùn Ẹ̀kọ́",
     "missingLanguageException": "Jọ̀wọ́ yan èdè ìpìlẹ̀ àti èdè àfojúsùn tó tọ́",
     "selectChats": "Yan Àwọn Ìjíròrò",
     "plainTextFile": "Ọ̀rọ̀",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{ohun èlò fún ìkẹ́kọ̀ọ́ ọ̀rọ̀ kan lò} other{{count} ohun èlò fún ìkẹ́kọ̀ọ́ ọ̀rọ̀ lò}}",
     "grammarItemsUsed": "{count, plural, =1{ohun èlò ìkẹ́kọ̀ọ́ gírámà kan lò} other{{count} ohun èlò ìkẹ́kọ̀ọ́ gírámà lò}}",
     "playVideo": "Ṣi fidio",
-    "videoPlayer": "Ẹrọ orin fidio"
+    "videoPlayer": "Ẹrọ orin fidio",
+    "customCourseTextbookHint": "Sọ fún wa ìwé tí o ń lò, tàbí ṣàlàyé ètò ẹ̀kọ́ rẹ"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-09-21 09:53:39.192214",
+    "@@last_modified": "2026-09-22 11:00:54.608329",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "Imla din il-formola biex tikseb kors personalizzat",
     "courseCodeStepErrorMessage": "Jekk jogħġbok iċċekkja l-kodiċi tiegħek u erġa' pprova",
     "institution": "Istituzzjoni",
-    "courseGoals": "Għanijiet tal-Kors",
     "missingLanguageException": "Jekk jogħġbok agħżel lingwi bażi u mira validi",
     "selectChats": "Agħżel Chats",
     "plainTextFile": "Test",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 oġġett tal-vokabularju użat} other{{count} oġġetti tal-vokabularju użati}}",
     "grammarItemsUsed": "{count, plural, =1{1 oġġett tal-grammatika użat} other{{count} oġġetti tal-grammatika użati}}",
     "playVideo": "Daqq il-filmat",
-    "videoPlayer": "Plejer tal-vidjo"
+    "videoPlayer": "Plejer tal-vidjo",
+    "customCourseTextbookHint": "Għidilna liema ktieb tuża, jew iddeskrivi l-kurrikulu tiegħek"
 }

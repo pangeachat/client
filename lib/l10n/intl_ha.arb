@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-09-21 09:53:37.059379",
+    "@@last_modified": "2026-09-22 11:00:50.473983",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "Cika wannan fom don samun kwas na musamman",
     "courseCodeStepErrorMessage": "Da fatan za a duba lambarka kuma a sake gwadawa",
     "institution": "Cibiya",
-    "courseGoals": "Manufofin Kwas",
     "missingLanguageException": "Da fatan za a zaɓi ingantattun harsunan tushe da na manufa",
     "selectChats": "Zaɓi Hirarraki",
     "plainTextFile": "Rubutu",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{An yi amfani da kalma 1} other{An yi amfani da kalmomi {count}}}",
     "grammarItemsUsed": "{count, plural, =1{An yi amfani da nahawu 1} other{An yi amfani da nahawu {count}}}",
     "playVideo": "Kunna bidiyo",
-    "videoPlayer": "Mai kunna bidiyo"
+    "videoPlayer": "Mai kunna bidiyo",
+    "customCourseTextbookHint": "Faɗa mana littafin da kuke amfani da shi, ko kuma bayyana tsarin karatun ku"
 }

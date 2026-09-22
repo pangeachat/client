@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-09-21 09:53:37.309659",
+    "@@last_modified": "2026-09-22 11:00:50.846596",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -8901,7 +8901,6 @@
     "customCourseStepTitle": "Töltsd ki ezt a űrlapot, hogy egyedi kurzust kapj",
     "courseCodeStepErrorMessage": "Kérjük, ellenőrizd a kódodat, és próbáld újra",
     "institution": "Intézmény",
-    "courseGoals": "Tanfolyami célok",
     "selectChats": "Csevegések kiválasztása",
     "plainTextFile": "Szöveg",
     "@userTypeTitle": {
@@ -10045,5 +10044,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 szókincs elem felhasználva} other{{count} szókincs elem felhasználva}}",
     "grammarItemsUsed": "{count, plural, =1{1 nyelvtani elem felhasználva} other{{count} nyelvtani elem felhasználva}}",
     "playVideo": "Videó lejátszása",
-    "videoPlayer": "Videólejátszó"
+    "videoPlayer": "Videólejátszó",
+    "customCourseTextbookHint": "Mondd el, milyen tankönyvet használsz, vagy írd le a tantervedet"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-21 09:53:40.844580",
+    "@@last_modified": "2026-09-22 11:00:58.175318",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -8890,7 +8890,6 @@
     "customCourseStepTitle": "ஒரு தனிப்பயன் பாடத்திற்கான இந்த படிவத்தை நிரப்பவும்",
     "courseCodeStepErrorMessage": "தயவுசெய்து உங்கள் குறியீட்டை சரிபார்க்கவும் மற்றும் மீண்டும் முயற்சிக்கவும்",
     "institution": "நிறுவனம்",
-    "courseGoals": "பாடத்திட்ட இலக்குகள்",
     "selectChats": "சாட்களை தேர்ந்தெடுக்கவும்",
     "plainTextFile": "உரை",
     "@userTypeTitle": {
@@ -10034,5 +10033,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 சொல்லகராதி உருப்படி பயன்படுத்தப்பட்டது} other{{count} சொல்லகராதி உருப்படிகள் பயன்படுத்தப்பட்டன}}",
     "grammarItemsUsed": "{count, plural, =1{1 இலக்கண உருப்படி பயன்படுத்தப்பட்டது} other{{count} இலக்கண உருப்படிகள் பயன்படுத்தப்பட்டன}}",
     "playVideo": "வீடியோவை இயக்கு",
-    "videoPlayer": "வீடியோ பிளேயர்"
+    "videoPlayer": "வீடியோ பிளேயர்",
+    "customCourseTextbookHint": "நீங்கள் பயன்படுத்தும் பாடப்புத்தகத்தை எங்களிடம் கூறுங்கள் அல்லது உங்கள் பாடத்திட்டத்தை விவரியுங்கள்"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-09-21 09:53:39.255388",
+    "@@last_modified": "2026-09-22 11:00:55.460433",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "Fyll ut dette skjemaet for å få et tilpasset kurs",
     "courseCodeStepErrorMessage": "Vennligst sjekk koden din og prøv igjen",
     "institution": "Institusjon",
-    "courseGoals": "Kursmål",
     "missingLanguageException": "Vennligst velg gyldige basis- og målspråk",
     "selectChats": "Velg chatter",
     "plainTextFile": "Tekst",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 vokabular-element brukt} other{{count} vokabular-elementer brukt}}",
     "grammarItemsUsed": "{count, plural, =1{1 grammatikk-element brukt} other{{count} grammatikk-elementer brukt}}",
     "playVideo": "Spill av video",
-    "videoPlayer": "Videospiller"
+    "videoPlayer": "Videospiller",
+    "customCourseTextbookHint": "Fortell oss hvilken lærebok du bruker, eller beskriv pensumet ditt"
 }

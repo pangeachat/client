@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-09-21 09:53:38.977636",
+    "@@last_modified": "2026-09-22 11:00:54.994122",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "Өөрчлөн тохируулсан хичээл авахын тулд энэ маягтыг бөглөнө үү",
     "courseCodeStepErrorMessage": "Кодоо шалгаад дахин оролдоно уу",
     "institution": "Байгууллага",
-    "courseGoals": "Хичээлийн зорилго",
     "missingLanguageException": "Хүчинтэй үндсэн болон зорилтот хэлийг сонгоно уу",
     "selectChats": "Чат сонгох",
     "plainTextFile": "Текст",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 үгийн сангийн зүйл ашигласан} other{{count} үгийн сангийн зүйл ашигласан}}",
     "grammarItemsUsed": "{count, plural, =1{1 дүрмийн зүйл ашигласан} other{{count} дүрмийн зүйл ашигласан}}",
     "playVideo": "Видео тоглуулах",
-    "videoPlayer": "Видео тоглуулагч"
+    "videoPlayer": "Видео тоглуулагч",
+    "customCourseTextbookHint": "Та ямар сурах бичиг ашигладаг эсвэл сургалтын хөтөлбөрөө тайлбарлана уу"
 }

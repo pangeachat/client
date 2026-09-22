@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-09-21 09:53:39.762576",
+    "@@last_modified": "2026-09-22 11:00:55.816656",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "Dzazani fomu iyi kuti mupeze maphunziro anu",
     "courseCodeStepErrorMessage": "Chonde onani code yanu ndikuyesanso",
     "institution": "Bungwe",
-    "courseGoals": "Zolinga za Maphunziro",
     "missingLanguageException": "Chonde sankhani zilankhulo zoyenera",
     "selectChats": "Sankhani Macheza",
     "plainTextFile": "Mawu",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{Chinthu chimodzi chogwiritsidwa ntchito} other{Zinthu {count} zogwiritsidwa ntchito}}",
     "grammarItemsUsed": "{count, plural, =1{Chinthu chimodzi cha galamala chogwiritsidwa ntchito} other{Zinthu {count} za galamala zogwiritsidwa ntchito}}",
     "playVideo": "Sewerani vidiyo",
-    "videoPlayer": "Wosewerera vidiyo"
+    "videoPlayer": "Wosewerera vidiyo",
+    "customCourseTextbookHint": "Tiuzeni buku lomwe mumagwiritsa ntchito, kapena fotokozani maphunziro anu"
 }

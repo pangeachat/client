@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-21 09:53:40.471629",
+    "@@last_modified": "2026-09-22 11:00:58.238407",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -9530,7 +9530,6 @@
     "customCourseStepTitle": "Completează acest formular pentru a obține un curs personalizat",
     "courseCodeStepErrorMessage": "Te rugăm să verifici codul tău și să încerci din nou",
     "institution": "Instituție",
-    "courseGoals": "Obiectivele cursului",
     "selectChats": "Selectează conversațiile",
     "plainTextFile": "Text",
     "@userTypeTitle": {
@@ -10674,5 +10673,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 element de vocabular utilizat} other{{count} elemente de vocabular utilizate}}",
     "grammarItemsUsed": "{count, plural, =1{1 element de gramatică utilizat} other{{count} elemente de gramatică utilizate}}",
     "playVideo": "Redați videoclipul",
-    "videoPlayer": "Player video"
+    "videoPlayer": "Player video",
+    "customCourseTextbookHint": "Spune-ne ce manual folosești sau descrie-ți programa"
 }

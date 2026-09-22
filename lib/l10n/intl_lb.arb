@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-09-21 09:53:38.229327",
+    "@@last_modified": "2026-09-22 11:00:52.862711",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "Fëllt dëse Formulaire aus fir e personaliséierte Cours ze kréien",
     "courseCodeStepErrorMessage": "Kuckt w.e.g. Äre Code a probéiert et nach eng Kéier",
     "institution": "Institutioun",
-    "courseGoals": "Cours-Ziler",
     "missingLanguageException": "Wielt w.e.g. valabel Basis- an Zilssproochen",
     "selectChats": "Chats auswielen",
     "plainTextFile": "Text",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 Vokabel benotzt} other{{count} Vokabelen benotzt}}",
     "grammarItemsUsed": "{count, plural, =1{1 Grammairelement benotzt} other{{count} Grammairelementer benotzt}}",
     "playVideo": "Video ofspillen",
-    "videoPlayer": "Video Player"
+    "videoPlayer": "Video Player",
+    "customCourseTextbookHint": "Sot eis, wéi ee Léierbuch Dir benotzt, oder beschreift Äre Léierplang"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-21 09:53:36.916926",
+    "@@last_modified": "2026-09-22 11:00:50.504409",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -9712,7 +9712,6 @@
     "customCourseStepTitle": "מלא את הטופס הזה כדי לקבל קורס מותאם אישית",
     "courseCodeStepErrorMessage": "אנא בדוק את הקוד שלך ונסה שוב",
     "institution": "מוסד",
-    "courseGoals": "מטרות הקורס",
     "selectChats": "בחר שיחות",
     "plainTextFile": "טקסט",
     "@userTypeTitle": {
@@ -10856,5 +10855,6 @@
     "vocabItemsUsed": "{count, plural, =1{פריט אוצר מילים אחד בשימוש} other{{count} פריטי אוצר מילים בשימוש}}",
     "grammarItemsUsed": "{count, plural, =1{פריט דקדוק אחד בשימוש} other{{count} פריטי דקדוק בשימוש}}",
     "playVideo": "נגן סרטון",
-    "videoPlayer": "נגן וידאו"
+    "videoPlayer": "נגן וידאו",
+    "customCourseTextbookHint": "ספר/י לנו באיזה ספר לימוד אתם משתמשים, או תארו את תוכנית הלימודים שלכם"
 }

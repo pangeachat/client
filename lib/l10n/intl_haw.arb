@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-09-21 09:53:36.901021",
+    "@@last_modified": "2026-09-22 11:00:50.523706",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "E hoʻopiha i kēia palapala no ka loaʻa ʻana o kekahi papa maʻamau",
     "courseCodeStepErrorMessage": "E ʻoluʻolu e nānā i kāu code a e hoʻāʻo hou",
     "institution": "Ke Kula",
-    "courseGoals": "Nā Pahuhopu Papa",
     "missingLanguageException": "E ʻoluʻolu e koho i nā ʻōlelo kumu a me nā ʻōlelo pae kūpono",
     "selectChats": "Koho i nā Kamaʻilio",
     "plainTextFile": "Kikokikona",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 mea huaʻōlelo i hoʻohana ʻia} other{{count} mau mea huaʻōlelo i hoʻohana ʻia}}",
     "grammarItemsUsed": "{count, plural, =1{1 mea paukū i hoʻohana ʻia} other{{count} mau mea paukū i hoʻohana ʻia}}",
     "playVideo": "Pāʻani wikiō",
-    "videoPlayer": "Mea pāʻani wikiō"
+    "videoPlayer": "Mea pāʻani wikiō",
+    "customCourseTextbookHint": "E haʻi mai iā mākou i ka puke aʻo āu e hoʻohana ai, a i ʻole e wehewehe i kāu papa hana aʻo"
 }

@@ -3093,7 +3093,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-09-21 09:53:37.507988",
+    "@@last_modified": "2026-09-22 11:00:51.277422",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9430,7 +9430,6 @@
     "customCourseStepTitle": "Líon an foirm seo chun cúrsa saincheaptha a fháil",
     "courseCodeStepErrorMessage": "Seiceáil do chód agus déan iarracht arís",
     "institution": "Institiúid",
-    "courseGoals": "Cuspóirí an chúrsa",
     "selectChats": "Roghnaigh comhoibrithe",
     "plainTextFile": "Téacs",
     "@userTypeTitle": {
@@ -10574,5 +10573,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 focal-eirisch úsáidte} other{{count} focal-eirisch úsáidte}}",
     "grammarItemsUsed": "{count, plural, =1{1 gramadach-eirisch úsáidte} other{{count} gramadach-eirisch úsáidte}}",
     "playVideo": "Seinn an físeán",
-    "videoPlayer": "Seinnteoir físeáin"
+    "videoPlayer": "Seinnteoir físeáin",
+    "customCourseTextbookHint": "Inis dúinn cén téacsleabhar a úsáideann tú, nó déan cur síos ar do churaclam"
 }

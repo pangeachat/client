@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-09-21 09:53:35.125274",
+    "@@last_modified": "2026-09-22 11:00:48.438286",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -9108,7 +9108,6 @@
     "customCourseStepTitle": "املأ هذا النموذج للحصول على دورة مخصصة",
     "courseCodeStepErrorMessage": "يرجى التحقق من الرمز الخاص بك والمحاولة مرة أخرى",
     "institution": "المؤسسة",
-    "courseGoals": "أهداف الدورة",
     "selectChats": "اختر الدردشات",
     "plainTextFile": "نص",
     "@userTypeTitle": {
@@ -10248,5 +10247,6 @@
     "vocabItemsUsed": "{count, plural, =1{تم استخدام عنصر مفردات واحد} other{تم استخدام {count} من عناصر المفردات}}",
     "grammarItemsUsed": "{count, plural, =1{تم استخدام عنصر قواعد واحد} other{تم استخدام {count} من عناصر القواعد}}",
     "playVideo": "تشغيل الفيديو",
-    "videoPlayer": "مشغل الفيديو"
+    "videoPlayer": "مشغل الفيديو",
+    "customCourseTextbookHint": "أخبرنا ما هو الكتاب المدرسي الذي تستخدمه، أو صف منهجك الدراسي"
 }

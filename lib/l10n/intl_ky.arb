@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-09-21 09:53:38.194690",
+    "@@last_modified": "2026-09-22 11:00:52.515663",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "Ыңгайлаштырылган курс алуу үчүн бул форманы толтуруңуз",
     "courseCodeStepErrorMessage": "Сураныч, кодуңузду текшерип, кайра аракет кылыңыз",
     "institution": "Мекеме",
-    "courseGoals": "Курстун максаттары",
     "missingLanguageException": "Сураныч, жарактуу базалык жана максаттуу тилдерди тандаңыз",
     "selectChats": "Чаттарды тандоо",
     "plainTextFile": "Текст",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 лексикалык бирдик колдонулду} other{{count} лексикалык бирдик колдонулду}}",
     "grammarItemsUsed": "{count, plural, =1{1 грамматикалык бирдик колдонулду} other{{count} грамматикалык бирдик колдонулду}}",
     "playVideo": "Видеону ойнотуу",
-    "videoPlayer": "Видеоплеер"
+    "videoPlayer": "Видеоплеер",
+    "customCourseTextbookHint": "Кайсы окуу китебин колдонгонуңузду айтыңыз же окуу программаңызды сүрөттөп бериңиз"
 }

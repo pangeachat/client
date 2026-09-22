@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-21 09:53:42.047763",
+    "@@last_modified": "2026-09-22 11:00:59.898063",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -8904,7 +8904,6 @@
     "customCourseStepTitle": "填寫此表單以獲得自訂課程",
     "courseCodeStepErrorMessage": "請檢查您的代碼並重試",
     "institution": "機構",
-    "courseGoals": "課程目標",
     "selectChats": "選擇聊天",
     "plainTextFile": "文本",
     "@userTypeTitle": {
@@ -10048,5 +10047,6 @@
     "vocabItemsUsed": "{count, plural, =1{已使用 1 個詞彙項目} other{已使用 {count} 個詞彙項目}}",
     "grammarItemsUsed": "{count, plural, =1{已使用 1 個文法項目} other{已使用 {count} 個文法項目}}",
     "playVideo": "播放影片",
-    "videoPlayer": "影片播放器"
+    "videoPlayer": "影片播放器",
+    "customCourseTextbookHint": "告訴我們您使用的教科書，或描述您的課程"
 }

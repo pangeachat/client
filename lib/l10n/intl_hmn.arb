@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-09-21 09:53:36.864761",
+    "@@last_modified": "2026-09-22 11:01:05.285461",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "Sau daim ntawv no kom tau txais chav kawm tshwj xeeb",
     "courseCodeStepErrorMessage": "Thov tshuaj xyuas koj tus lej thiab sim dua",
     "institution": "Lub Tsev Kawm Ntawv",
-    "courseGoals": "Lub Hom Phiaj Kawm",
     "missingLanguageException": "Thov xaiv cov lus pib thiab cov lus tsom uas siv tau",
     "selectChats": "Xaiv Kev Sib Tham",
     "plainTextFile": "Ntawv",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 lo lus siv} other{{count} lo lus siv}}",
     "grammarItemsUsed": "{count, plural, =1{1 kab lus siv} other{{count} kab lus siv}}",
     "playVideo": "Ua yeeb yaj kiab",
-    "videoPlayer": "Tshuab ua yeeb yaj kiab"
+    "videoPlayer": "Tshuab ua yeeb yaj kiab",
+    "customCourseTextbookHint": "Qhia peb tias koj siv phau ntawv twg, lossis piav qhia txog koj cov kev kawm"
 }

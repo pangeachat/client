@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-09-21 09:53:35.381872",
+    "@@last_modified": "2026-09-22 11:00:48.583196",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "Fərdi kurs əldə etmək üçün bu formanı doldurun",
     "courseCodeStepErrorMessage": "Zəhmət olmasa, kodunuzu yoxlayıb yenidən cəhd edin",
     "institution": "Təhsil müəssisəsi",
-    "courseGoals": "Kursun Məqsədləri",
     "missingLanguageException": "Zəhmət olmasa, etibarlı baza və hədəf dilləri seçin",
     "selectChats": "Söhbətləri seçin",
     "plainTextFile": "Mətn",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 lüğət elementi istifadə edildi} other{{count} lüğət elementi istifadə edildi}}",
     "grammarItemsUsed": "{count, plural, =1{1 qrammatika elementi istifadə edildi} other{{count} qrammatika elementi istifadə edildi}}",
     "playVideo": "Videonu oynat",
-    "videoPlayer": "Video pleyer"
+    "videoPlayer": "Video pleyer",
+    "customCourseTextbookHint": "Bizə hansı dərsliyi istifadə etdiyinizi deyin və ya tədris planınızı təsvir edin"
 }

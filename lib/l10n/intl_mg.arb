@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-09-21 09:53:38.592596",
+    "@@last_modified": "2026-09-22 11:00:53.429377",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "Fenoy ity taratasy ity hahazoana fianarana manokana",
     "courseCodeStepErrorMessage": "Jereo azafady ny kaodyo ary andramo indray",
     "institution": "Andrim-panjakana",
-    "courseGoals": "Tanjon'ny Fianarana",
     "missingLanguageException": "Mifidiana azafady fiteny fototra sy kendrena manan-kery",
     "selectChats": "Safidio ny Resaka",
     "plainTextFile": "Lahatsoratra",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 teny nampiasaina} other{{count} teny nampiasaina}}",
     "grammarItemsUsed": "{count, plural, =1{1 fitsipika nampiasaina} other{{count} fitsipika nampiasaina}}",
     "playVideo": "Alefaso ny horonan-tsary",
-    "videoPlayer": "Mpilalao horonan-tsary"
+    "videoPlayer": "Mpilalao horonan-tsary",
+    "customCourseTextbookHint": "Lazao anay hoe boky fianarana inona no ampiasainao, na farito ny fandaharam-pianaranao"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-09-21 09:53:39.025271",
+    "@@last_modified": "2026-09-22 11:00:54.934825",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "စိတ်ကြိုက်သင်တန်းရရှိရန် ဤဖောင်ကို ဖြည့်ပါ။",
     "courseCodeStepErrorMessage": "သင့်ကုဒ်ကို စစ်ဆေးပြီး ထပ်ကြိုးစားပါ။",
     "institution": "အဖွဲ့အစည်း",
-    "courseGoals": "သင်တန်းရည်မှန်းချက်များ",
     "missingLanguageException": "မှန်ကန်သော အခြေခံနှင့် ပစ်မှတ်ဘာသာစကားများကို ရွေးချယ်ပါ။",
     "selectChats": "ချတ်များကို ရွေးချယ်ပါ",
     "plainTextFile": "စာသား",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{ဝေါဟာရ ၁ ခု အသုံးပြုပြီး} other{ဝေါဟာရ {count} ခု အသုံးပြုပြီး}}",
     "grammarItemsUsed": "{count, plural, =1{သဒ္ဒါ ၁ ခု အသုံးပြုပြီး} other{သဒ္ဒါ {count} ခု အသုံးပြုပြီး}}",
     "playVideo": "ဗီဒီယိုဖွင့်ရန်",
-    "videoPlayer": "ဗီဒီယိုဖွင့်စက်"
+    "videoPlayer": "ဗီဒီယိုဖွင့်စက်",
+    "customCourseTextbookHint": "သင်အသုံးပြုသည့် သင်ရိုးညွှန်းတမ်းစာအုပ် သို့မဟုတ် သင်ရိုးညွှန်းတမ်းအကြောင်း ဖော်ပြပါ"
 }

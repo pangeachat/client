@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-09-21 09:53:38.312144",
+    "@@last_modified": "2026-09-22 11:00:52.554962",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "Hanc formulam imple ut cursum proprium accipias",
     "courseCodeStepErrorMessage": "Quaeso, codicem tuum verifica et iterum conare",
     "institution": "Institutio",
-    "courseGoals": "Proposita Cursus",
     "missingLanguageException": "Quaeso, elige linguas fundamentales et terminales validas",
     "selectChats": "Colloquia selige",
     "plainTextFile": "Textus",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 vocabuli res adhibita} other{{count} vocabuli res adhibitae}}",
     "grammarItemsUsed": "{count, plural, =1{1 grammaticae res adhibita} other{{count} grammaticae res adhibitae}}",
     "playVideo": "Ludere video",
-    "videoPlayer": "Lector video"
+    "videoPlayer": "Lector video",
+    "customCourseTextbookHint": "Dic nobis quem librum adhibeas, vel curriculum tuum descrībē"
 }

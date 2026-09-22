@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-09-21 09:53:37.950952",
+    "@@last_modified": "2026-09-22 11:00:51.190041",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -9567,7 +9567,6 @@
     "customCourseStepTitle": "カスタムコースを取得するためにこのフォームに記入してください",
     "courseCodeStepErrorMessage": "コードを確認して再試行してください",
     "institution": "機関",
-    "courseGoals": "コースの目標",
     "selectChats": "チャットを選択",
     "plainTextFile": "テキスト",
     "@userTypeTitle": {
@@ -10711,5 +10710,6 @@
     "vocabItemsUsed": "{count, plural, =1{1語彙項目を使用} other{{count}語彙項目を使用}}",
     "grammarItemsUsed": "{count, plural, =1{1文法項目を使用} other{{count}文法項目を使用}}",
     "playVideo": "動画を再生",
-    "videoPlayer": "動画プレーヤー"
+    "videoPlayer": "動画プレーヤー",
+    "customCourseTextbookHint": "使用している教科書やカリキュラムについて教えてください"
 }

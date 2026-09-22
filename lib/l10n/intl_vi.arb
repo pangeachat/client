@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-21 09:53:41.655663",
+    "@@last_modified": "2026-09-22 11:00:59.444122",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6094,7 +6094,6 @@
     "customCourseStepTitle": "Điền vào mẫu này để có một khóa học tùy chỉnh",
     "courseCodeStepErrorMessage": "Vui lòng kiểm tra mã của bạn và thử lại",
     "institution": "Tổ chức",
-    "courseGoals": "Mục tiêu khóa học",
     "selectChats": "Chọn trò chuyện",
     "plainTextFile": "Văn bản",
     "@userTypeTitle": {
@@ -7234,5 +7233,6 @@
     "vocabItemsUsed": "{count, plural, =1{Đã dùng 1 mục từ vựng} other{Đã dùng {count} mục từ vựng}}",
     "grammarItemsUsed": "{count, plural, =1{Đã dùng 1 mục ngữ pháp} other{Đã dùng {count} mục ngữ pháp}}",
     "playVideo": "Phát video",
-    "videoPlayer": "Trình phát video"
+    "videoPlayer": "Trình phát video",
+    "customCourseTextbookHint": "Hãy cho chúng tôi biết bạn dùng sách giáo khoa nào, hoặc mô tả chương trình học của bạn"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-09-21 09:53:41.040974",
+    "@@last_modified": "2026-09-22 11:00:58.563278",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "Ин формаро пур кунед, то курси фармоишӣ гиред",
     "courseCodeStepErrorMessage": "Лутфан рамзи худро тафтиш кунед ва дубора кӯшиш кунед",
     "institution": "Муассиса",
-    "courseGoals": "Ҳадафҳои курс",
     "missingLanguageException": "Лутфан забонҳои асосӣ ва ҳадафро дуруст интихоб кунед",
     "selectChats": "Чатҳоро интихоб кунед",
     "plainTextFile": "Матн",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 калимаи луғат истифода шуд} other{{count} калимаҳои луғат истифода шуданд}}",
     "grammarItemsUsed": "{count, plural, =1{1 қоидаи грамматикӣ истифода шуд} other{{count} қоидаҳои грамматикӣ истифода шуданд}}",
     "playVideo": "Наворро бозӣ кунед",
-    "videoPlayer": "Наворбоз"
+    "videoPlayer": "Наворбоз",
+    "customCourseTextbookHint": "Ба мо бигӯед, ки аз кадом китоби дарсӣ истифода мебаред, ё барномаи таълимии худро тавсиф кунед"
 }

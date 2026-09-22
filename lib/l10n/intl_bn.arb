@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-21 09:53:35.102205",
+    "@@last_modified": "2026-09-22 11:00:48.325781",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -9426,7 +9426,6 @@
     "customCourseStepTitle": "একটি কাস্টম কোর্স পেতে এই ফর্মটি পূরণ করুন",
     "courseCodeStepErrorMessage": "দয়া করে আপনার কোডটি পরীক্ষা করুন এবং আবার চেষ্টা করুন",
     "institution": "প্রতিষ্ঠান",
-    "courseGoals": "কোর্সের লক্ষ্য",
     "selectChats": "চ্যাট নির্বাচন করুন",
     "plainTextFile": "টেক্সট",
     "@userTypeTitle": {
@@ -10570,5 +10569,6 @@
     "vocabItemsUsed": "{count, plural, =1{১টি শব্দ ব্যবহার করা হয়েছে} other{{count}টি শব্দ ব্যবহার করা হয়েছে}}",
     "grammarItemsUsed": "{count, plural, =1{১টি ব্যাকরণ আইটেম ব্যবহার করা হয়েছে} other{{count}টি ব্যাকরণ আইটেম ব্যবহার করা হয়েছে}}",
     "playVideo": "ভিডিও চালান",
-    "videoPlayer": "ভিডিও প্লেয়ার"
+    "videoPlayer": "ভিডিও প্লেয়ার",
+    "customCourseTextbookHint": "আপনি কোন পাঠ্যপুস্তক ব্যবহার করেন তা আমাদের বলুন, অথবা আপনার পাঠ্যক্রম বর্ণনা করুন"
 }

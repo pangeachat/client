@@ -2080,7 +2080,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-09-21 09:53:36.378071",
+    "@@last_modified": "2026-09-22 11:00:49.874708",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -9658,7 +9658,6 @@
     "customCourseStepTitle": "Punan ang form na ito upang makakuha ng pasadyang kurso",
     "courseCodeStepErrorMessage": "Pakisuri ang iyong code at subukan muli",
     "institution": "Institusyon",
-    "courseGoals": "Mga Layunin ng Kurso",
     "selectChats": "Pumili ng mga Chat",
     "plainTextFile": "Teksto",
     "@userTypeTitle": {
@@ -10802,5 +10801,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 item ng bokabularyo ang ginamit} other{{count} item ng bokabularyo ang ginamit}}",
     "grammarItemsUsed": "{count, plural, =1{1 item ng gramatika ang ginamit} other{{count} item ng gramatika ang ginamit}}",
     "playVideo": "I-play ang video",
-    "videoPlayer": "Video player"
+    "videoPlayer": "Video player",
+    "customCourseTextbookHint": "Sabihin sa amin kung anong aklat-aralin ang ginagamit mo, o ilarawan ang iyong kurikulum"
 }

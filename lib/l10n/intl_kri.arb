@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-09-21 09:53:38.225328",
+    "@@last_modified": "2026-09-22 11:00:55.334233",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "Fil dis fɔm fɔ gɛt kɔstɔm kɔs",
     "courseCodeStepErrorMessage": "Duya chɛk yu kold ɛn tray bak",
     "institution": "Institushɔn",
-    "courseGoals": "Kɔs Gol dɛn",
     "missingLanguageException": "Duya pik valid bɛs ɛn target langwej dɛn",
     "selectChats": "Pik Chat dɛn",
     "plainTextFile": "Tɛkst",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 vocab item dɛn dɔn yuz} other{{count} vocab item dɛn dɔn yuz}}",
     "grammarItemsUsed": "{count, plural, =1{1 grammar item dɛn dɔn yuz} other{{count} grammar item dɛn dɔn yuz}}",
     "playVideo": "Ple video",
-    "videoPlayer": "Video pleya"
+    "videoPlayer": "Video pleya",
+    "customCourseTextbookHint": "Tɛl wi wetin buk yu de yuz, ɔ wetin yu de lɔn"
 }

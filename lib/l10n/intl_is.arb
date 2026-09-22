@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-09-21 09:53:37.582139",
+    "@@last_modified": "2026-09-22 11:00:51.257417",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "Fylltu út þetta eyðublað til að fá sérsniðið námskeið",
     "courseCodeStepErrorMessage": "Vinsamlegast athugaðu kóðann þinn og reyndu aftur",
     "institution": "Stofnun",
-    "courseGoals": "Markmið námskeiðs",
     "missingLanguageException": "Vinsamlegast veldu gild grunn- og markmál",
     "selectChats": "Velja spjall",
     "plainTextFile": "Texti",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 orðaforðahlutur notaður} other{{count} orðaforðahlutir notaðir}}",
     "grammarItemsUsed": "{count, plural, =1{1 málfræðihlutur notaður} other{{count} málfræðihlutir notaðir}}",
     "playVideo": "Spila myndband",
-    "videoPlayer": "Myndbandsspilari"
+    "videoPlayer": "Myndbandsspilari",
+    "customCourseTextbookHint": "Segðu okkur hvaða kennslubók þú notar eða lýstu námskránni þinni"
 }

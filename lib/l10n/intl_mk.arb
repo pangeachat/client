@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-09-21 09:53:38.649146",
+    "@@last_modified": "2026-09-22 11:00:53.723615",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "Пополнете го овој формулар за да добиете прилагоден курс",
     "courseCodeStepErrorMessage": "Ве молиме проверете го вашиот код и обидете се повторно",
     "institution": "Институција",
-    "courseGoals": "Цели на курсот",
     "missingLanguageException": "Ве молиме изберете валидни основни и целни јазици",
     "selectChats": "Изберете разговори",
     "plainTextFile": "Текст",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 искористен збор} other{{count} искористени зборови}}",
     "grammarItemsUsed": "{count, plural, =1{1 искористена граматичка ставка} other{{count} искористени граматички ставки}}",
     "playVideo": "Пушти видео",
-    "videoPlayer": "Видео плеер"
+    "videoPlayer": "Видео плеер",
+    "customCourseTextbookHint": "Кажете ни кој учебник го користите или опишете ја вашата наставна програма"
 }

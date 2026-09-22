@@ -1334,7 +1334,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-09-21 09:53:35.855724",
+    "@@last_modified": "2026-09-22 11:00:49.210514",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -9718,7 +9718,6 @@
     "customCourseStepTitle": "Udfyld denne formular for at få et tilpasset kursus",
     "courseCodeStepErrorMessage": "Kontroller venligst din kode og prøv igen",
     "institution": "Institution",
-    "courseGoals": "Kursusmål",
     "selectChats": "Vælg chats",
     "plainTextFile": "Tekst",
     "@userTypeTitle": {
@@ -10862,5 +10861,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 ordforrådselement brugt} other{{count} ordforrådselementer brugt}}",
     "grammarItemsUsed": "{count, plural, =1{1 grammatikelement brugt} other{{count} grammatikelementer brugt}}",
     "playVideo": "Afspil video",
-    "videoPlayer": "Videoafspiller"
+    "videoPlayer": "Videoafspiller",
+    "customCourseTextbookHint": "Fortæl os hvilken lærebog du bruger, eller beskriv din studieplan"
 }

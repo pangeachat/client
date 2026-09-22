@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-21 09:53:39.517043",
+    "@@last_modified": "2026-09-22 11:00:54.721327",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -8855,7 +8855,6 @@
     "customCourseStepTitle": "Fyll ut dette skjemaet for å få et tilpasset kurs",
     "courseCodeStepErrorMessage": "Vennligst sjekk koden din og prøv igjen",
     "institution": "Institusjon",
-    "courseGoals": "Kursmål",
     "selectChats": "Velg chatter",
     "plainTextFile": "Tekst",
     "@userTypeTitle": {
@@ -9999,5 +9998,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 vokabulargjenstand brukt} other{{count} vokabulargjenstander brukt}}",
     "grammarItemsUsed": "{count, plural, =1{1 grammatikkgjenstand brukt} other{{count} grammatikkgjenstander brukt}}",
     "playVideo": "Spill av video",
-    "videoPlayer": "Videospiller"
+    "videoPlayer": "Videospiller",
+    "customCourseTextbookHint": "Fortell oss hvilken lærebok du bruker, eller beskriv pensumet ditt"
 }

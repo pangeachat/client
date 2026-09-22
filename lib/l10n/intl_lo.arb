@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-09-21 09:53:38.579216",
+    "@@last_modified": "2026-09-22 11:00:52.810155",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "ຕື່ມແບບຟອມນີ້ເພື່ອຮັບຫຼັກສູດທີ່ກຳນົດເອງ",
     "courseCodeStepErrorMessage": "ກະລຸນາກວດສອບລະຫັດຂອງທ່ານ ແລະ ລອງໃໝ່ອີກຄັ້ງ",
     "institution": "ສະຖາບັນ",
-    "courseGoals": "ເປົ້າໝາຍຫຼັກສູດ",
     "missingLanguageException": "ກະລຸນາເລືອກພາສາພື້ນຖານ ແລະ ພາສາເປົ້າໝາຍທີ່ຖືກຕ້ອງ",
     "selectChats": "ເລືອກການສົນທະນາ",
     "plainTextFile": "ຂໍ້ຄວາມ",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{ໃຊ້ຄຳສັບ 1 ຄຳ} other{ໃຊ້ຄຳສັບ {count} ຄຳແລ້ວ}}",
     "grammarItemsUsed": "{count, plural, =1{ໃຊ້ໄວຍາກອນ 1 ອັນ} other{ໃຊ້ໄວຍາກອນ {count} ອັນແລ້ວ}}",
     "playVideo": "ຫຼິ້ນວິດີໂອ",
-    "videoPlayer": "ເຄື່ອງຫຼິ້ນວິດີໂອ"
+    "videoPlayer": "ເຄື່ອງຫຼິ້ນວິດີໂອ",
+    "customCourseTextbookHint": "ບອກພວກເຮົາວ່າທ່ານໃຊ້ປຶ້ມແບບຮຽນຫຍັງ, ຫຼືອະທິບາຍຫຼັກສູດຂອງທ່ານ"
 }

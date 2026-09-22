@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-09-21 09:53:40.578797",
+    "@@last_modified": "2026-09-22 11:00:57.278200",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "Buuxi foomkan si aad u hesho koorso gaar ah",
     "courseCodeStepErrorMessage": "Fadlan hubi koodkaaga oo isku day mar kale",
     "institution": "Machad",
-    "courseGoals": "Hadafyada Koorsada",
     "missingLanguageException": "Fadlan dooro luqado saldhig iyo bartilmaameed oo sax ah",
     "selectChats": "Dooro Sheekeysiyo",
     "plainTextFile": "Qoraal",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 erey la isticmaalay} other{{count} ereyo la isticmaalay}}",
     "grammarItemsUsed": "{count, plural, =1{1 qaanuun naxwe ah la isticmaalay} other{{count} qaanuuno naxwe ah la isticmaalay}}",
     "playVideo": "Daaro muuqaalka",
-    "videoPlayer": "Ciyaaryahanka fiidyaha"
+    "videoPlayer": "Ciyaaryahanka fiidyaha",
+    "customCourseTextbookHint": "Noo sheeg buugga aad isticmaasho, ama sharax manhajkaaga"
 }

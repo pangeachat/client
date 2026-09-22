@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-09-21 09:53:35.569380",
+    "@@last_modified": "2026-09-22 11:00:48.652092",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "এটা কাষ্টম পাঠ্যক্ৰম পাবলৈ এই ফৰ্মখন পূৰণ কৰক",
     "courseCodeStepErrorMessage": "অনুগ্ৰহ কৰি আপোনাৰ কোডটো পৰীক্ষা কৰক আৰু পুনৰ চেষ্টা কৰক",
     "institution": "প্ৰতিষ্ঠান",
-    "courseGoals": "পাঠ্যক্ৰমৰ লক্ষ্য",
     "missingLanguageException": "অনুগ্ৰহ কৰি বৈধ ভিত্তি আৰু লক্ষ্য ভাষা বাছনি কৰক",
     "selectChats": "চ্যাট বাছনি কৰক",
     "plainTextFile": "পাঠ্য",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{১টা শব্দভাণ্ডাৰৰ বস্তু ব্যৱহৃত হৈছে} other{{count}টা শব্দভাণ্ডাৰৰ বস্তু ব্যৱহৃত হৈছে}}",
     "grammarItemsUsed": "{count, plural, =1{১টা ব্যাকৰণৰ বস্তু ব্যৱহৃত হৈছে} other{{count}টা ব্যাকৰণৰ বস্তু ব্যৱহৃত হৈছে}}",
     "playVideo": "ভিডিঅ' চলাওক",
-    "videoPlayer": "ভিডিঅ' প্লেয়াৰ"
+    "videoPlayer": "ভিডিঅ' প্লেয়াৰ",
+    "customCourseTextbookHint": "আপুনি কি পাঠ্যপুথি ব্যৱহাৰ কৰে, সেই বিষয়ে কওক বা আপোনাৰ পাঠ্যক্ৰম বৰ্ণনা কৰক"
 }

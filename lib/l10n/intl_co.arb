@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-09-21 09:53:35.877946",
+    "@@last_modified": "2026-09-22 11:00:49.031100",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "Riempite stu furmulariu per ottene un corsu persunalizatu",
     "courseCodeStepErrorMessage": "Verificate u vostru codice è pruvate torna",
     "institution": "Istituzione",
-    "courseGoals": "Ugettivi di u Corsu",
     "missingLanguageException": "Sceglite lingue di basa è di destinazione valide",
     "selectChats": "Selezziunà e Discussioni",
     "plainTextFile": "Testu",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 elementu di vucabulariu usatu} other{{count} elementi di vucabulariu usati}}",
     "grammarItemsUsed": "{count, plural, =1{1 elementu di grammatica usatu} other{{count} elementi di grammatica usati}}",
     "playVideo": "Ghjucà u video",
-    "videoPlayer": "Lettore video"
+    "videoPlayer": "Lettore video",
+    "customCourseTextbookHint": "Diteci chì libru di testu aduprate, o discrivite u vostru prugramma"
 }

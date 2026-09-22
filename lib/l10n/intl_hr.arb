@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-09-21 09:53:37.123825",
+    "@@last_modified": "2026-09-22 11:00:50.389742",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -9234,7 +9234,6 @@
     "customCourseStepTitle": "Ispunite ovaj obrazac za prilagođeni tečaj",
     "courseCodeStepErrorMessage": "Molimo provjerite svoj kod i pokušajte ponovo",
     "institution": "Institucija",
-    "courseGoals": "Ciljevi tečaja",
     "selectChats": "Odaberite razgovore",
     "plainTextFile": "Tekst",
     "@userTypeTitle": {
@@ -10378,5 +10377,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 korištena stavka rječnika} other{{count} korištenih stavki rječnika}}",
     "grammarItemsUsed": "{count, plural, =1{1 korištena gramatička stavka} other{{count} korištenih gramatičkih stavki}}",
     "playVideo": "Reproduciraj videozapis",
-    "videoPlayer": "Video player"
+    "videoPlayer": "Video player",
+    "customCourseTextbookHint": "Recite nam koji udžbenik koristite ili opišite svoj kurikulum"
 }

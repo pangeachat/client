@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-09-21 09:53:39.582248",
+    "@@last_modified": "2026-09-22 11:00:55.737293",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -8883,7 +8883,6 @@
     "customCourseStepTitle": "Wypełnij ten formularz, aby uzyskać spersonalizowany kurs",
     "courseCodeStepErrorMessage": "Sprawdź swój kod i spróbuj ponownie",
     "institution": "Instytucja",
-    "courseGoals": "Cele kursu",
     "selectChats": "Wybierz czaty",
     "plainTextFile": "Tekst",
     "@userTypeTitle": {
@@ -10027,5 +10026,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 słowo użyte} other{{count} słów użytych}}",
     "grammarItemsUsed": "{count, plural, =1{1 zagadnienie gramatyczne użyte} other{{count} zagadnień gramatycznych użytych}}",
     "playVideo": "Odtwórz wideo",
-    "videoPlayer": "Odtwarzacz wideo"
+    "videoPlayer": "Odtwarzacz wideo",
+    "customCourseTextbookHint": "Powiedz nam, z jakiego podręcznika korzystasz lub opisz swój program nauczania"
 }

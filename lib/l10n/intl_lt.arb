@@ -2967,7 +2967,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-09-21 09:53:38.561152",
+    "@@last_modified": "2026-09-22 11:00:52.932452",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9579,7 +9579,6 @@
     "customCourseStepTitle": "Užpildykite šią formą, kad gautumėte individualų kursą",
     "courseCodeStepErrorMessage": "Prašome patikrinti savo kodą ir bandyti dar kartą",
     "institution": "Institucija",
-    "courseGoals": "Kurso tikslai",
     "selectChats": "Pasirinkite pokalbius",
     "plainTextFile": "Tekstas",
     "@userTypeTitle": {
@@ -10723,5 +10722,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 žodyno elementas panaudotas} other{{count} žodyno elementų panaudota}}",
     "grammarItemsUsed": "{count, plural, =1{1 gramatikos elementas panaudotas} other{{count} gramatikos elementų panaudota}}",
     "playVideo": "Paleisti vaizdo įrašą",
-    "videoPlayer": "Vaizdo grotuvas"
+    "videoPlayer": "Vaizdo grotuvas",
+    "customCourseTextbookHint": "Pasakykite mums, kokį vadovėlį naudojate, arba apibūdinkite savo mokymo programą"
 }

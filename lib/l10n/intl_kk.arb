@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-09-21 09:53:37.963868",
+    "@@last_modified": "2026-09-22 11:00:51.920877",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "Реттелетін курс алу үшін осы форманы толтырыңыз",
     "courseCodeStepErrorMessage": "Кодыңызды тексеріп, қайталап көріңіз",
     "institution": "Мекеме",
-    "courseGoals": "Курс мақсаттары",
     "missingLanguageException": "Жарамды негізгі және мақсатты тілдерді таңдаңыз",
     "selectChats": "Чаттарды таңдау",
     "plainTextFile": "Мәтін",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 сөздік элементі қолданылды} other{{count} сөздік элементтері қолданылды}}",
     "grammarItemsUsed": "{count, plural, =1{1 грамматикалық элемент қолданылды} other{{count} грамматикалық элементтер қолданылды}}",
     "playVideo": "Бейнені ойнату",
-    "videoPlayer": "Бейне ойнатқыш"
+    "videoPlayer": "Бейне ойнатқыш",
+    "customCourseTextbookHint": "Қандай оқулықты қолданатыныңызды айтыңыз немесе оқу бағдарламаңызды сипаттаңыз"
 }

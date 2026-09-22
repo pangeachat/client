@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-09-21 09:53:39.062685",
+    "@@last_modified": "2026-09-22 11:00:54.853688",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "Custom course amakhak fangnanaba form asi thijinbiyu",
     "courseCodeStepErrorMessage": "Nanggi code adu yengbiyu aduga amuk hanna hotnabiyu",
     "institution": "Institution",
-    "courseGoals": "Course-ki lakshya-sing",
     "missingLanguageException": "Valid base amadi target language-sing khetokpiyu",
     "selectChats": "Chat-sing select tou",
     "plainTextFile": "Text",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 ৱোকেব আইটেম শীজিন্নখি} other{{count} ৱোকেব আইটেম শীজিন্নখি}}",
     "grammarItemsUsed": "{count, plural, =1{1 গ্রামার আইটেম শীজিন্নখি} other{{count} গ্রামার আইটেম শীজিন্নখি}}",
     "playVideo": "ভিডিও প্লে তৌ",
-    "videoPlayer": "ভিডিও প্লেয়ার"
+    "videoPlayer": "ভিডিও প্লেয়ার",
+    "customCourseTextbookHint": "ꯑꯩꯈꯣꯌꯗ ꯅꯍꯥꯛꯅ ꯁꯤꯖꯤꯟꯅꯔꯤꯕ ꯇꯦꯛꯁꯠꯕꯨꯛ ꯑꯗꯨ ꯍꯦꯟꯅ ꯐꯣꯡꯗꯣꯛꯎ, ꯅꯠꯠꯔꯒꯥ ꯅꯍꯥꯛꯀꯤ ꯀꯔꯤꯀꯨꯂꯝ ꯑꯗꯨ ꯊꯤꯡꯖꯤꯟꯕꯤꯌꯨ"
 }

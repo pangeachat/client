@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-09-21 09:53:41.273949",
+    "@@last_modified": "2026-09-22 11:00:59.408889",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "ایک حسب ضرورت کورس حاصل کرنے کے لیے یہ فارم پُر کریں",
     "courseCodeStepErrorMessage": "براہ کرم اپنا کوڈ چیک کریں اور دوبارہ کوشش کریں",
     "institution": "ادارہ",
-    "courseGoals": "کورس کے اہداف",
     "missingLanguageException": "براہ کرم درست بنیادی اور ہدف کی زبانیں منتخب کریں",
     "selectChats": "چیٹس منتخب کریں",
     "plainTextFile": "متن",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 ذخیرہ الفاظ کا آئٹم استعمال ہوا} other{{count} ذخیرہ الفاظ کے آئٹمز استعمال ہوئے}}",
     "grammarItemsUsed": "{count, plural, =1{1 گرامر کا آئٹم استعمال ہوا} other{{count} گرامر کے آئٹمز استعمال ہوئے}}",
     "playVideo": "ویڈیو چلائیں",
-    "videoPlayer": "ویڈیو پلیئر"
+    "videoPlayer": "ویڈیو پلیئر",
+    "customCourseTextbookHint": "ہمیں بتائیں کہ آپ کون سی درسی کتاب استعمال کرتے ہیں، یا اپنے نصاب کی وضاحت کریں"
 }

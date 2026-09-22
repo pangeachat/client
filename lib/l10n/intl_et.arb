@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-09-21 09:53:36.140384",
+    "@@last_modified": "2026-09-22 11:00:49.629570",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -8795,7 +8795,6 @@
     "customCourseStepTitle": "Täida see vorm, et saada kohandatud kursus",
     "courseCodeStepErrorMessage": "Palun kontrollige oma koodi ja proovige uuesti",
     "institution": "Asutus",
-    "courseGoals": "Kursuse eesmärgid",
     "selectChats": "Valige vestlused",
     "plainTextFile": "Tekst",
     "@userTypeTitle": {
@@ -9939,5 +9938,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 sõnavaraüksus kasutatud} other{{count} sõnavaraüksust kasutatud}}",
     "grammarItemsUsed": "{count, plural, =1{1 grammatikaüksus kasutatud} other{{count} grammatikaüksust kasutatud}}",
     "playVideo": "Esita video",
-    "videoPlayer": "Videopleier"
+    "videoPlayer": "Videopleier",
+    "customCourseTextbookHint": "Ütle meile, millist õpikut sa kasutad, või kirjelda oma õppekava"
 }

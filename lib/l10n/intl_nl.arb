@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-21 09:53:39.227873",
+    "@@last_modified": "2026-09-22 11:00:54.896950",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -8798,7 +8798,6 @@
     "customCourseStepTitle": "Vul dit formulier in om een aangepaste cursus te krijgen",
     "courseCodeStepErrorMessage": "Controleer je code en probeer het opnieuw",
     "institution": "Instelling",
-    "courseGoals": "Cursusdoelen",
     "selectChats": "Selecteer Chats",
     "plainTextFile": "Tekst",
     "@userTypeTitle": {
@@ -9942,5 +9941,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 vocabulaire-item gebruikt} other{{count} vocabulaire-items gebruikt}}",
     "grammarItemsUsed": "{count, plural, =1{1 grammatica-item gebruikt} other{{count} grammatica-items gebruikt}}",
     "playVideo": "Video afspelen",
-    "videoPlayer": "Videospeler"
+    "videoPlayer": "Videospeler",
+    "customCourseTextbookHint": "Vertel ons welk leerboek je gebruikt, of beschrijf je lesprogramma"
 }

@@ -1324,7 +1324,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-09-21 09:53:40.976801",
+    "@@last_modified": "2026-09-22 11:00:58.252673",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -9748,7 +9748,6 @@
     "customCourseStepTitle": "కస్టమ్ కోర్సు పొందడానికి ఈ ఫారమ్‌ను నింపండి",
     "courseCodeStepErrorMessage": "దయచేసి మీ కోడ్‌ను తనిఖీ చేసి మళ్లీ ప్రయత్నించండి",
     "institution": "సంస్థ",
-    "courseGoals": "కోర్సు లక్ష్యాలు",
     "selectChats": "చాట్లను ఎంచుకోండి",
     "plainTextFile": "పాఠ్యం",
     "@userTypeTitle": {
@@ -10892,5 +10891,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 పదజాల అంశం ఉపయోగించబడింది} other{{count} పదజాల అంశాలు ఉపయోగించబడ్డాయి}}",
     "grammarItemsUsed": "{count, plural, =1{1 వ్యాకరణ అంశం ఉపయోగించబడింది} other{{count} వ్యాకరణ అంశాలు ఉపయోగించబడ్డాయి}}",
     "playVideo": "వీడియో ప్లే చేయండి",
-    "videoPlayer": "వీడియో ప్లేయర్"
+    "videoPlayer": "వీడియో ప్లేయర్",
+    "customCourseTextbookHint": "మీరు ఏ పాఠ్యపుస్తకం ఉపయోగిస్తున్నారో మాకు చెప్పండి లేదా మీ పాఠ్యప్రణాళికను వివరించండి"
 }

@@ -2559,7 +2559,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-09-21 09:53:39.809730",
+    "@@last_modified": "2026-09-22 11:00:56.447938",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9715,7 +9715,6 @@
     "customCourseStepTitle": "Preencha este formulário para obter um curso personalizado",
     "courseCodeStepErrorMessage": "Por favor, verifique seu código e tente novamente",
     "institution": "Instituição",
-    "courseGoals": "Objetivos do Curso",
     "selectChats": "Selecionar Chats",
     "plainTextFile": "Texto",
     "@userTypeTitle": {
@@ -10859,5 +10858,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 item de vocabulário usado} other{{count} itens de vocabulário usados}}",
     "grammarItemsUsed": "{count, plural, =1{1 item de gramática usado} other{{count} itens de gramática usados}}",
     "playVideo": "Reproduzir vídeo",
-    "videoPlayer": "Leitor de vídeo"
+    "videoPlayer": "Leitor de vídeo",
+    "customCourseTextbookHint": "Diga-nos qual manual usa ou descreva o seu currículo"
 }

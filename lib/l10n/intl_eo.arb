@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-21 09:53:36.163730",
+    "@@last_modified": "2026-09-22 11:00:49.262323",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -9743,7 +9743,6 @@
     "customCourseStepTitle": "Plenigu ĉi tiun formularon por ricevi personigitan kurson",
     "courseCodeStepErrorMessage": "Bonvolu kontroli vian kodon kaj provi denove",
     "institution": "Institucio",
-    "courseGoals": "Kursaj Celoj",
     "selectChats": "Elektu Ĉatojn",
     "plainTextFile": "Teksto",
     "@userTypeTitle": {
@@ -10887,5 +10886,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 vortfaradaĵo uzita} other{{count} vortfaradaĵoj uzitaj}}",
     "grammarItemsUsed": "{count, plural, =1{1 gramatikaĵo uzita} other{{count} gramatikaĵoj uzitaj}}",
     "playVideo": "Ludi videon",
-    "videoPlayer": "Videoludilo"
+    "videoPlayer": "Videoludilo",
+    "customCourseTextbookHint": "Diru al ni, kiun lernolibron vi uzas, aŭ priskribu vian instruplanon"
 }

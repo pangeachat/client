@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-09-21 09:53:38.766091",
+    "@@last_modified": "2026-09-22 11:00:53.647176",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "ഒരു ഇഷ്‌ടാനുസൃത കോഴ്സ് ലഭിക്കാൻ ഈ ഫോം പൂരിപ്പിക്കുക",
     "courseCodeStepErrorMessage": "ദയവായി നിങ്ങളുടെ കോഡ് പരിശോധിച്ച് വീണ്ടും ശ്രമിക്കുക",
     "institution": "സ്ഥാപനം",
-    "courseGoals": "കോഴ്സ് ലക്ഷ്യങ്ങൾ",
     "missingLanguageException": "ദയവായി സാധുവായ അടിസ്ഥാന, ലക്ഷ്യ ഭാഷകൾ തിരഞ്ഞെടുക്കുക",
     "selectChats": "ചാറ്റുകൾ തിരഞ്ഞെടുക്കുക",
     "plainTextFile": "ടെക്സ്റ്റ്",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{ഒരു പദാവലി ഇനം ഉപയോഗിച്ചു} other{{count} പദാവലി ഇനങ്ങൾ ഉപയോഗിച്ചു}}",
     "grammarItemsUsed": "{count, plural, =1{ഒരു വ്യാകരണ ഇനം ഉപയോഗിച്ചു} other{{count} വ്യാകരണ ഇനങ്ങൾ ഉപയോഗിച്ചു}}",
     "playVideo": "വീഡിയോ പ്ലേ ചെയ്യുക",
-    "videoPlayer": "വീഡിയോ പ്ലെയർ"
+    "videoPlayer": "വീഡിയോ പ്ലെയർ",
+    "customCourseTextbookHint": "നിങ്ങൾ ഉപയോഗിക്കുന്ന പാഠപുസ്തകം ഏതാണെന്ന് ഞങ്ങളോട് പറയുക, അല്ലെങ്കിൽ നിങ്ങളുടെ പാഠ്യപദ്ധതി വിവരിക്കുക"
 }

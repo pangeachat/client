@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-09-21 09:53:36.608581",
+    "@@last_modified": "2026-09-22 11:00:50.228593",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "Lìon am foirm seo gus cùrsa àbhaisteach fhaighinn",
     "courseCodeStepErrorMessage": "Feuch an dèan thu sgrùdadh air a' chòd agad is feuch a-rithist",
     "institution": "Institiud",
-    "courseGoals": "Amasan Cùrsa",
     "missingLanguageException": "Feuch an tagh thu cànanan bunaiteach is targaid dligheach",
     "selectChats": "Tagh Còmhraidhean",
     "plainTextFile": "Teacsa",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 nì faclair air a chleachdadh} other{{count} nithean faclair air an cleachdadh}}",
     "grammarItemsUsed": "{count, plural, =1{1 nì gràmair air a chleachdadh} other{{count} nithean gràmair air an cleachdadh}}",
     "playVideo": "Cluich bhidio",
-    "videoPlayer": "Cluicheadair bhidio"
+    "videoPlayer": "Cluicheadair bhidio",
+    "customCourseTextbookHint": "Innis dhuinn dè an leabhar-teacsa a chleachdas tu, no thoir cunntas air a’ churraicealam agad"
 }
