@@ -99,6 +99,66 @@ void main() {
     );
   });
 
+  group('isChoiceShown', () {
+    test('a word\'s own answer stays in its tray after it is placed', () {
+      // Grammar holds the right answer up until the learner moves on; the
+      // match modes do the same (#6259).
+      answer(perro, 'dog', correct: true);
+      expect(
+        PracticeRecordController.isChoiceShown(
+          target,
+          perro,
+          choice('dog', perro),
+        ),
+        isTrue,
+      );
+    });
+
+    test('an answer placed on another word has left this tray', () {
+      answer(perro, 'dog', correct: true);
+      expect(
+        PracticeRecordController.isChoiceShown(
+          target,
+          gato,
+          choice('dog', perro),
+        ),
+        isFalse,
+      );
+    });
+
+    test('a choice tried wrongly here is still offered here', () {
+      answer(gato, 'dog', correct: false);
+      expect(
+        PracticeRecordController.isChoiceShown(
+          target,
+          gato,
+          choice('dog', perro),
+        ),
+        isTrue,
+      );
+    });
+
+    test('an untried choice is offered', () {
+      expect(
+        PracticeRecordController.isChoiceShown(
+          target,
+          gato,
+          choice('cat', gato),
+        ),
+        isTrue,
+      );
+    });
+  });
+
+  test('one answered word completes that word, not the whole target', () {
+    // A match target holds every word in the mode. The selected blank counts
+    // as answered per word; checking the target would keep its tray live until
+    // every word was done.
+    answer(perro, 'dog', correct: true);
+    expect(PracticeRecordController.isCompleteByToken(target, perro), isTrue);
+    expect(PracticeRecordController.isCompleteByTarget(target), isFalse);
+  });
+
   group('isChoicePlaced', () {
     test('is true once the choice has been answered correctly', () {
       answer(perro, 'dog', correct: true);

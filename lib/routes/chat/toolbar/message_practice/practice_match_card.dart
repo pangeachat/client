@@ -96,10 +96,10 @@ class MatchActivityCard extends StatelessWidget {
             alignment: WrapAlignment.center,
             spacing: 4.0,
             runSpacing: 4.0,
-            // A choice that has been placed correctly belongs to its word and
-            // cannot answer another blank, so it leaves the tray (#6259).
+            // A choice placed on another word has left the tray; the selected
+            // word's own answer stays until the learner moves on (#6259).
             children: currentActivity.matchContent.choices
-                .where((cf) => !controller.isChoicePlaced(cf))
+                .where(controller.isChoiceShown)
                 .map((PracticeExerciseChoice cf) {
                   final bool? wasCorrect = controller.wasCorrectMatch(cf);
                   return ChoiceAnimationWidget(
@@ -123,6 +123,7 @@ class MatchActivityCard extends StatelessWidget {
                           : null,
                       controller: controller,
                       shimmer: controller.showChoiceShimmer,
+                      enabled: !controller.isSelectedSlotAnswered,
                       playbackSpeedController: playbackSpeedController,
                     ),
                   );

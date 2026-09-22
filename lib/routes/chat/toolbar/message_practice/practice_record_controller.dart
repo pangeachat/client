@@ -50,6 +50,18 @@ class PracticeRecordController {
     (response) => response.text == choice.choiceContent && response.isCorrect,
   );
 
+  /// Whether [choice] belongs in the tray while [selectedToken] is the blank
+  /// being filled. A choice placed on another word has left the tray; the one
+  /// placed on the selected word stays, marked correct, for as long as
+  /// practice holds it on screen before moving on.
+  static bool isChoiceShown(
+    PracticeTarget target,
+    PangeaToken selectedToken,
+    PracticeExerciseChoice choice,
+  ) =>
+      !isChoicePlaced(target, choice) ||
+      wasCorrectMatch(target, selectedToken, choice) == true;
+
   /// How [choice] fared on [token], or null if it hasn't been tried there.
   ///
   /// Scoped to the word. This used to match on the choice's text alone, so a

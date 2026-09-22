@@ -29,6 +29,10 @@ class PracticeMatchItem extends StatefulWidget {
   final bool? isCorrect;
   final bool isSelected;
   final bool shimmer;
+
+  /// False while a right answer is held on screen: the choices stay on show
+  /// beside it but take no more picks, as in grammar.
+  final bool enabled;
   final AudioPlaybackSpeedController playbackSpeedController;
 
   const PracticeMatchItem({
@@ -41,6 +45,7 @@ class PracticeMatchItem extends StatefulWidget {
     this.audioContent,
     required this.controller,
     this.shimmer = false,
+    this.enabled = true,
     required this.playbackSpeedController,
   });
 
@@ -204,7 +209,7 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
     );
 
     // Disable feedback and dragging when the answer is correct to prevent unnecessary interactions
-    if (isCorrect == true) {
+    if (isCorrect == true || !widget.enabled) {
       return content;
     }
 
