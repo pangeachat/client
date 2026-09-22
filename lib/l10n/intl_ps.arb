@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-09-21 09:53:39.535153",
+    "@@last_modified": "2026-09-22 11:00:55.853651",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "د دودیز کورس ترلاسه کولو لپاره دا فورمه ډکه کړئ",
     "courseCodeStepErrorMessage": "مهرباني وکړئ خپل کوډ وګورئ او بیا هڅه وکړئ",
     "institution": "مؤسسه",
-    "courseGoals": "د کورس اهداف",
     "missingLanguageException": "مهرباني وکړئ د اساس او هدف ژبې وټاکئ",
     "selectChats": "چیټونه وټاکئ",
     "plainTextFile": "متن",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 د لغتونو توکی کارول شوی} other{{count} د لغتونو توکي کارول شوي}}",
     "grammarItemsUsed": "{count, plural, =1{1 د ګرامر توکی کارول شوی} other{{count} د ګرامر توکي کارول شوي}}",
     "playVideo": "ویډیو پلی کړئ",
-    "videoPlayer": "ویډیو پلیر"
+    "videoPlayer": "ویډیو پلیر",
+    "customCourseTextbookHint": "راته ووایاست چې کوم درسي کتاب کاروئ، یا خپل نصاب تشریح کړئ"
 }

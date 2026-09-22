@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-09-21 09:53:39.257705",
+    "@@last_modified": "2026-09-22 11:00:54.731326",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "अनुकूलन पाठ्यक्रम प्राप्त गर्न यो फारम भर्नुहोस्",
     "courseCodeStepErrorMessage": "कृपया आफ्नो कोड जाँच गर्नुहोस् र फेरि प्रयास गर्नुहोस्",
     "institution": "संस्था",
-    "courseGoals": "पाठ्यक्रमका लक्ष्यहरू",
     "missingLanguageException": "कृपया मान्य आधार र लक्ष्य भाषाहरू छान्नुहोस्",
     "selectChats": "च्याटहरू चयन गर्नुहोस्",
     "plainTextFile": "पाठ",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{१ शब्दावली वस्तु प्रयोग गरियो} other{{count} शब्दावली वस्तुहरू प्रयोग गरियो}}",
     "grammarItemsUsed": "{count, plural, =1{१ व्याकरण वस्तु प्रयोग गरियो} other{{count} व्याकरण वस्तुहरू प्रयोग गरियो}}",
     "playVideo": "भिडियो प्ले गर्नुहोस्",
-    "videoPlayer": "भिडियो प्लेयर"
+    "videoPlayer": "भिडियो प्लेयर",
+    "customCourseTextbookHint": "तपाईंले प्रयोग गर्ने पाठ्यपुस्तक बताउनुहोस्, वा आफ्नो पाठ्यक्रमको वर्णन गर्नुहोस्"
 }

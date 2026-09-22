@@ -2919,7 +2919,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-09-21 09:53:35.439836",
+    "@@last_modified": "2026-09-22 11:00:48.857005",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8409,7 +8409,6 @@
     "customCourseStepTitle": "Plenigu ĉi tiun formularon por ricevi personigitan kurson",
     "courseCodeStepErrorMessage": "Proszę sprawdzić swój kod i spróbować ponownie",
     "institution": "Instytucja",
-    "courseGoals": "Ciljevi kursa",
     "selectChats": "Odaberite razgovore",
     "plainTextFile": "Tekst",
     "@userTypeTitle": {
@@ -9553,5 +9552,6 @@
     "vocabItemsUsed": "{count, plural, =1{ཚིག་མཛོད་ཅིག་བེད་སྤྱོད་བྱས་སོང་།} other{ཚིག་མཛོད་ {count} བེད་སྤྱོད་བྱས་སོང་།}}",
     "grammarItemsUsed": "{count, plural, =1{བརྡ་སྤྲོད་ཅིག་བེད་སྤྱོད་བྱས་སོང་།} other{བརྡ་སྤྲོད་ {count} བེད་སྤྱོད་བྱས་སོང་།}}",
     "playVideo": "བརྙན་འཕྲིན་གཏོང་བ།",
-    "videoPlayer": "བརྙན་འཕྲིན་གཏོང་ཆས།"
+    "videoPlayer": "བརྙན་འཕྲིན་གཏོང་ཆས།",
+    "customCourseTextbookHint": "ཁྱེད་ཀྱིས་བེད་སྤྱོད་པའི་སློབ་དེབ་གང་ཡིན་ང་ལ་བཤད་རོགས། ཡང་ན་ཁྱེད་ཀྱི་སློབ་ཚན་གྱི་འགྲོ་ལུགས་བཤད་རོགས།"
 }

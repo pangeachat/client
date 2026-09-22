@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-09-21 09:53:41.210702",
+    "@@last_modified": "2026-09-22 11:00:58.787954",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -8798,7 +8798,6 @@
     "customCourseStepTitle": "Заповніть цю форму, щоб отримати індивідуальний курс",
     "courseCodeStepErrorMessage": "Будь ласка, перевірте свій код і спробуйте ще раз",
     "institution": "Установа",
-    "courseGoals": "Цілі курсу",
     "selectChats": "Виберіть чати",
     "plainTextFile": "Текст",
     "@userTypeTitle": {
@@ -9942,5 +9941,6 @@
     "vocabItemsUsed": "{count, plural, =1{використано 1 лексичний елемент} other{використано {count} лексичних елементів}}",
     "grammarItemsUsed": "{count, plural, =1{використано 1 граматичний елемент} other{використано {count} граматичних елементів}}",
     "playVideo": "Відтворити відео",
-    "videoPlayer": "Відеоплеєр"
+    "videoPlayer": "Відеоплеєр",
+    "customCourseTextbookHint": "Розкажіть нам, який підручник ви використовуєте, або опишіть свою навчальну програму"
 }

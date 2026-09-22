@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-09-21 09:53:41.774222",
+    "@@last_modified": "2026-09-22 11:01:00.091077",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -8798,7 +8798,6 @@
     "customCourseStepTitle": "填写此表单以获取自定义课程",
     "courseCodeStepErrorMessage": "请检查您的代码并重试",
     "institution": "机构",
-    "courseGoals": "课程目标",
     "selectChats": "选择聊天",
     "plainTextFile": "文本",
     "@userTypeTitle": {
@@ -9942,5 +9941,6 @@
     "vocabItemsUsed": "{count, plural, =1{已使用1个词汇项目} other{已使用{count}个词汇项目}}",
     "grammarItemsUsed": "{count, plural, =1{已使用1个语法项目} other{已使用{count}个语法项目}}",
     "playVideo": "播放视频",
-    "videoPlayer": "视频播放器"
+    "videoPlayer": "视频播放器",
+    "customCourseTextbookHint": "告诉我们您使用的教材，或描述您的课程大纲"
 }

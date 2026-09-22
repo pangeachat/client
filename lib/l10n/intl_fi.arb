@@ -3536,7 +3536,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-09-21 09:53:36.219703",
+    "@@last_modified": "2026-09-22 11:00:49.755594",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -8835,7 +8835,6 @@
     "customCourseStepTitle": "Täytä tämä lomake saadaksesi räätälöidyn kurssin",
     "courseCodeStepErrorMessage": "Tarkista koodisi ja yritä uudelleen",
     "institution": "Oppilaitos",
-    "courseGoals": "Kurssin tavoitteet",
     "selectChats": "Valitse keskustelut",
     "plainTextFile": "Teksti",
     "@userTypeTitle": {
@@ -9979,5 +9978,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 sanastoesine käytetty} other{{count} sanastoesinettä käytetty}}",
     "grammarItemsUsed": "{count, plural, =1{1 kielioppiesine käytetty} other{{count} kielioppiesinettä käytetty}}",
     "playVideo": "Toista video",
-    "videoPlayer": "Videon toisto"
+    "videoPlayer": "Videon toisto",
+    "customCourseTextbookHint": "Kerro meille, mitä oppikirjaa käytät, tai kuvaile opetussuunnitelmaasi"
 }

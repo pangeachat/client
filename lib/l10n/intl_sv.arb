@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-21 09:53:40.717124",
+    "@@last_modified": "2026-09-22 11:00:57.900861",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9316,7 +9316,6 @@
     "customCourseStepTitle": "Fyll i detta formulär för att få en anpassad kurs",
     "courseCodeStepErrorMessage": "Vänligen kontrollera din kod och försök igen",
     "institution": "Institution",
-    "courseGoals": "Kursmål",
     "selectChats": "Välj chattar",
     "plainTextFile": "Text",
     "@userTypeTitle": {
@@ -10460,5 +10459,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 ordförrådsobjekt använt} other{{count} ordförrådsobjekt använda}}",
     "grammarItemsUsed": "{count, plural, =1{1 grammatikobjekt använt} other{{count} grammatikobjekt använda}}",
     "playVideo": "Spela video",
-    "videoPlayer": "Videospelare"
+    "videoPlayer": "Videospelare",
+    "customCourseTextbookHint": "Berätta vilken lärobok du använder, eller beskriv din läroplan"
 }

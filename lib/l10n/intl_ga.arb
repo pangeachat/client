@@ -3563,7 +3563,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-09-21 09:53:37.001508",
+    "@@last_modified": "2026-09-22 11:00:50.197049",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -8809,7 +8809,6 @@
     "customCourseStepTitle": "Líon an foirm seo chun cúrsa saincheaptha a fháil",
     "courseCodeStepErrorMessage": "Le do thoil, seiceáil do chód agus déan iarracht arís",
     "institution": "Institiúid",
-    "courseGoals": "Cuspóirí an chúrsa",
     "selectChats": "Roghnaigh comhoibrithe",
     "plainTextFile": "Téacs",
     "@userTypeTitle": {
@@ -9953,5 +9952,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 mhír foclóra in úsáid} other{{count} mír foclóra in úsáid}}",
     "grammarItemsUsed": "{count, plural, =1{1 mhír ghramadaí in úsáid} other{{count} mír ghramadaí in úsáid}}",
     "playVideo": "Seinn an físeán",
-    "videoPlayer": "Seinnteoir físeáin"
+    "videoPlayer": "Seinnteoir físeáin",
+    "customCourseTextbookHint": "Inis dúinn cén téacsleabhar a úsáideann tú, nó déan cur síos ar do churaclam"
 }

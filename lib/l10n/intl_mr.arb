@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-09-21 09:53:39.003467",
+    "@@last_modified": "2026-09-22 11:00:54.200716",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "सानुकूल अभ्यासक्रम मिळवण्यासाठी हा फॉर्म भरा",
     "courseCodeStepErrorMessage": "कृपया तुमचा कोड तपासा आणि पुन्हा प्रयत्न करा",
     "institution": "संस्था",
-    "courseGoals": "अभ्यासक्रमाची उद्दिष्टे",
     "missingLanguageException": "कृपया वैध मूळ आणि लक्ष्य भाषा निवडा",
     "selectChats": "चॅट्स निवडा",
     "plainTextFile": "मजकूर",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 शब्दसंग्रह आयटम वापरला} other{{count} शब्दसंग्रह आयटम वापरले}}",
     "grammarItemsUsed": "{count, plural, =1{1 व्याकरण आयटम वापरला} other{{count} व्याकरण आयटम वापरले}}",
     "playVideo": "व्हिडिओ प्ले करा",
-    "videoPlayer": "व्हिडिओ प्लेयर"
+    "videoPlayer": "व्हिडिओ प्लेयर",
+    "customCourseTextbookHint": "तुम्ही कोणते पाठ्यपुस्तक वापरता ते आम्हाला सांगा किंवा तुमच्या अभ्यासक्रमाचे वर्णन करा"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-09-21 09:53:35.472892",
+    "@@last_modified": "2026-09-22 11:00:48.366037",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "Ispunite ovaj obrazac da biste dobili prilagođeni kurs",
     "courseCodeStepErrorMessage": "Molimo provjerite svoj kôd i pokušajte ponovo",
     "institution": "Institucija",
-    "courseGoals": "Ciljevi kursa",
     "missingLanguageException": "Molimo odaberite važeći osnovni i ciljni jezik",
     "selectChats": "Odaberi chatove",
     "plainTextFile": "Tekst",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 korištena stavka rječnika} other{{count} korištenih stavki rječnika}}",
     "grammarItemsUsed": "{count, plural, =1{1 korištena stavka gramatike} other{{count} korištenih stavki gramatike}}",
     "playVideo": "Reproduciraj video",
-    "videoPlayer": "Video plejer"
+    "videoPlayer": "Video plejer",
+    "customCourseTextbookHint": "Recite nam koji udžbenik koristite ili opišite svoj kurikulum"
 }

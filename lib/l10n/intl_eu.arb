@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-09-21 09:53:36.389202",
+    "@@last_modified": "2026-09-22 11:00:49.822411",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -8798,7 +8798,6 @@
     "customCourseStepTitle": "Betetze formulario hau ikastaro pertsonalizatu bat lortzeko",
     "courseCodeStepErrorMessage": "Mesedez, egiaztatu zure kodea eta saiatu berriro",
     "institution": "Erakundea",
-    "courseGoals": "Ikastaro Helburuak",
     "selectChats": "Hautatu Txatak",
     "plainTextFile": "Testua",
     "@userTypeTitle": {
@@ -9942,5 +9941,6 @@
     "vocabItemsUsed": "{count, plural, =1{hiztegi-elementu 1 erabili da} other{{count} hiztegi-elementu erabili dira}}",
     "grammarItemsUsed": "{count, plural, =1{gramatika-elementu 1 erabili da} other{{count} gramatika-elementu erabili dira}}",
     "playVideo": "Erreproduzitu bideoa",
-    "videoPlayer": "Bideo-erreproduzitzailea"
+    "videoPlayer": "Bideo-erreproduzitzailea",
+    "customCourseTextbookHint": "Esaguzu zer testuliburu erabiltzen duzun, edo deskribatu zure curriculuma"
 }

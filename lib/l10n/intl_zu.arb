@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-09-21 09:53:41.855480",
+    "@@last_modified": "2026-09-22 11:01:00.214129",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "Gcwalisa leli fomu ukuze uthole isifundo sangokwezifiso",
     "courseCodeStepErrorMessage": "Sicela uhlole ikhodi yakho bese uzama futhi",
     "institution": "Isikhungo",
-    "courseGoals": "Izinhloso Zesifundo",
     "missingLanguageException": "Sicela ukhethe izilimi eziyisisekelo neziqondiwe ezivumelekile",
     "selectChats": "Khetha Izingxoxo",
     "plainTextFile": "Umbhalo",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 into yohlelo lolimi esetshenzisiwe} other{{count} izinto zohlelo lolimi ezisetshenzisiwe}}",
     "grammarItemsUsed": "{count, plural, =1{1 into yohlelo lolimi esetshenzisiwe} other{{count} izinto zohlelo lolimi ezisetshenzisiwe}}",
     "playVideo": "Dlala ividiyo",
-    "videoPlayer": "Isidlali sevidiyo"
+    "videoPlayer": "Isidlali sevidiyo",
+    "customCourseTextbookHint": "Sitshele ukuthi isiphi incwadi yokufunda oyisebenzisayo, noma uchaze ikharikhulamu yakho"
 }

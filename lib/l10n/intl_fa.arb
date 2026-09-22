@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-21 09:53:36.328983",
+    "@@last_modified": "2026-09-22 11:00:49.774275",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -8886,7 +8886,6 @@
     "customCourseStepTitle": "این فرم را پر کنید تا یک دوره سفارشی دریافت کنید",
     "courseCodeStepErrorMessage": "لطفاً کد خود را بررسی کرده و دوباره تلاش کنید",
     "institution": "موسسه",
-    "courseGoals": "اهداف دوره",
     "selectChats": "چت‌ها را انتخاب کنید",
     "plainTextFile": "متن",
     "@userTypeTitle": {
@@ -10030,5 +10029,6 @@
     "vocabItemsUsed": "{count, plural, =1{۱ لغت استفاده شد} other{{count} لغت استفاده شد}}",
     "grammarItemsUsed": "{count, plural, =1{۱ مورد گرامر استفاده شد} other{{count} مورد گرامر استفاده شد}}",
     "playVideo": "پخش ویدیو",
-    "videoPlayer": "پخش‌کننده ویدیو"
+    "videoPlayer": "پخش‌کننده ویدیو",
+    "customCourseTextbookHint": "به ما بگویید از چه کتاب درسی استفاده می‌کنید، یا برنامه درسی خود را توضیح دهید"
 }

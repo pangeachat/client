@@ -1937,7 +1937,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-09-21 09:53:37.785499",
+    "@@last_modified": "2026-09-22 11:00:51.885538",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9698,7 +9698,6 @@
     "customCourseStepTitle": "შეავსეთ ეს ფორმა რომ მიიღოთ პერსონალური კურსი",
     "courseCodeStepErrorMessage": "გთხოვთ გადაამოწმოთ თქვენი კოდი და სცადოთ კიდევ ერთხელ",
     "institution": "ინსტიტუტი",
-    "courseGoals": "კურსის მიზნები",
     "selectChats": "ჩატების არჩევა",
     "plainTextFile": "ტექსტი",
     "@userTypeTitle": {
@@ -10842,5 +10841,6 @@
     "vocabItemsUsed": "{count, plural, =1{გამოყენებულია 1 ლექსიკის ერთეული} other{გამოყენებულია {count} ლექსიკის ერთეული}}",
     "grammarItemsUsed": "{count, plural, =1{გამოყენებულია 1 გრამატიკის ერთეული} other{გამოყენებულია {count} გრამატიკის ერთეული}}",
     "playVideo": "ვიდეოს დაკვრა",
-    "videoPlayer": "ვიდეო პლეერი"
+    "videoPlayer": "ვიდეო პლეერი",
+    "customCourseTextbookHint": "გვითხარით, რომელ სახელმძღვანელოს იყენებთ, ან აღწერეთ თქვენი სასწავლო გეგმა"
 }

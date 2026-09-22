@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-09-21 09:53:37.411150",
+    "@@last_modified": "2026-09-22 11:00:51.012289",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "Լրացրեք այս ձևաթուղթը՝ անհատական դասընթաց ստանալու համար",
     "courseCodeStepErrorMessage": "Խնդրում ենք ստուգել ձեր կոդը և նորից փորձել",
     "institution": "Հաստատություն",
-    "courseGoals": "Դասընթացի նպատակներ",
     "missingLanguageException": "Խնդրում ենք ընտրել վավեր հիմնական և թիրախային լեզուներ",
     "selectChats": "Ընտրել զրույցներ",
     "plainTextFile": "Տեքստ",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{Օգտագործվել է 1 բառապաշարային միավոր} other{Օգտագործվել է {count} բառապաշարային միավոր}}",
     "grammarItemsUsed": "{count, plural, =1{Օգտագործվել է 1 քերականական միավոր} other{Օգտագործվել է {count} քերականական միավոր}}",
     "playVideo": "Նվագարկել տեսանյութը",
-    "videoPlayer": "Տեսանյութի նվագարկիչ"
+    "videoPlayer": "Տեսանյութի նվագարկիչ",
+    "customCourseTextbookHint": "Ասեք մեզ, թե որ դասագիրքն եք օգտագործում, կամ նկարագրեք Ձեր ուսումնական ծրագիրը"
 }

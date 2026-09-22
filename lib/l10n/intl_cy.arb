@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-09-21 09:53:35.728304",
+    "@@last_modified": "2026-09-22 11:00:49.347548",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "Llenwch y ffurflen hon i gael cwrs personol",
     "courseCodeStepErrorMessage": "Gwiriwch eich cod a rhowch gynnig arall arni",
     "institution": "Sefydliad",
-    "courseGoals": "Nodau'r Cwrs",
     "missingLanguageException": "Dewiswch ieithoedd sylfaen a tharged dilys",
     "selectChats": "Dewis Sgyrsiau",
     "plainTextFile": "Testun",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 eitem geirfa wedi'i defnyddio} other{{count} eitemau geirfa wedi'u defnyddio}}",
     "grammarItemsUsed": "{count, plural, =1{1 eitem ramadeg wedi'i defnyddio} other{{count} eitemau gramadeg wedi'u defnyddio}}",
     "playVideo": "Chwarae fideo",
-    "videoPlayer": "Chwaraewr fideo"
+    "videoPlayer": "Chwaraewr fideo",
+    "customCourseTextbookHint": "Dywedwch wrthym pa werslyfr rydych chi'n ei ddefnyddio, neu disgrifiwch eich cwricwlwm"
 }

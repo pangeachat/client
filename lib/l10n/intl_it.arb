@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-21 09:53:37.638421",
+    "@@last_modified": "2026-09-22 11:00:51.240861",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -8871,7 +8871,6 @@
     "customCourseStepTitle": "Compila questo modulo per ottenere un corso personalizzato",
     "courseCodeStepErrorMessage": "Controlla il tuo codice e riprova",
     "institution": "Istituzione",
-    "courseGoals": "Obiettivi del corso",
     "selectChats": "Seleziona chat",
     "plainTextFile": "Testo",
     "@userTypeTitle": {
@@ -10015,5 +10014,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 elemento di vocabolario usato} other{{count} elementi di vocabolario usati}}",
     "grammarItemsUsed": "{count, plural, =1{1 elemento grammaticale usato} other{{count} elementi grammaticali usati}}",
     "playVideo": "Riproduci video",
-    "videoPlayer": "Lettore video"
+    "videoPlayer": "Lettore video",
+    "customCourseTextbookHint": "Dicci quale libro di testo usi o descrivi il tuo programma di studi"
 }

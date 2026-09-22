@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-09-21 09:53:40.380789",
+    "@@last_modified": "2026-09-22 11:00:56.891287",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "Faʻatumu lenei fomu e maua ai se kosi masani",
     "courseCodeStepErrorMessage": "Faʻamolemole siaki lau code ma toe taumafai",
     "institution": "Faʻalapotopotoga",
-    "courseGoals": "Sini o le Kosi",
     "missingLanguageException": "Faʻamolemole filifili gagana faavae ma gagana faʻatatau talafeagai",
     "selectChats": "Filifili Talanoaga",
     "plainTextFile": "Tusitusiga",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 upu faʻaaoga} other{{count} upu faʻaaoga}}",
     "grammarItemsUsed": "{count, plural, =1{1 kalama faʻaaoga} other{{count} kalama faʻaaoga}}",
     "playVideo": "Tā le vitiō",
-    "videoPlayer": "Tagata taalo vitiō"
+    "videoPlayer": "Tagata taalo vitiō",
+    "customCourseTextbookHint": "Taʻu mai le tusi aʻoga e te faʻaaogaina, pe faʻamatala lau aʻoaʻoga"
 }

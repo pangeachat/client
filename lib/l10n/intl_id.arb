@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-21 09:53:37.369475",
+    "@@last_modified": "2026-09-22 11:00:51.378037",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -8871,7 +8871,6 @@
     "customCourseStepTitle": "Isi formulir ini untuk mendapatkan kursus kustom",
     "courseCodeStepErrorMessage": "Silakan periksa kode Anda dan coba lagi",
     "institution": "Institusi",
-    "courseGoals": "Tujuan Kursus",
     "selectChats": "Pilih Obrolan",
     "plainTextFile": "Teks",
     "@userTypeTitle": {
@@ -10015,5 +10014,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 item kosakata digunakan} other{{count} item kosakata digunakan}}",
     "grammarItemsUsed": "{count, plural, =1{1 item tata bahasa digunakan} other{{count} item tata bahasa digunakan}}",
     "playVideo": "Putar video",
-    "videoPlayer": "Pemutar video"
+    "videoPlayer": "Pemutar video",
+    "customCourseTextbookHint": "Beri tahu kami buku teks apa yang Anda gunakan, atau jelaskan kurikulum Anda"
 }

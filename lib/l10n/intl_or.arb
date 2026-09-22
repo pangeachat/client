@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-09-21 09:53:40.167791",
+    "@@last_modified": "2026-09-22 11:00:55.836979",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "ଏକ କଷ୍ଟମ୍ ପାଠ୍ୟକ୍ରମ ପାଇବାକୁ ଏହି ଫର୍ମ ପୂରଣ କରନ୍ତୁ",
     "courseCodeStepErrorMessage": "ଦୟାକରି ଆପଣଙ୍କ କୋଡ୍ ଯାଞ୍ଚ କରନ୍ତୁ ଏବଂ ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ",
     "institution": "ଅନୁଷ୍ଠାନ",
-    "courseGoals": "ପାଠ୍ୟକ୍ରମ ଲକ୍ଷ୍ୟ",
     "missingLanguageException": "ଦୟାକରି ବୈଧ ମୂଳ ଏବଂ ଲକ୍ଷ୍ୟ ଭାଷା ବାଛନ୍ତୁ",
     "selectChats": "ଚାଟ୍ ଚୟନ କରନ୍ତୁ",
     "plainTextFile": "ପାଠ୍ୟ",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 ଶବ୍ଦକୋଷ ବସ୍ତୁ ବ୍ୟବହୃତ ହୋଇଛି} other{{count} ଶବ୍ଦକୋଷ ବସ୍ତୁ ବ୍ୟବହୃତ ହୋଇଛି}}",
     "grammarItemsUsed": "{count, plural, =1{1 ବ୍ୟାକରଣ ବସ୍ତୁ ବ୍ୟବହୃତ ହୋଇଛି} other{{count} ବ୍ୟାକରଣ ବସ୍ତୁ ବ୍ୟବହୃତ ହୋଇଛି}}",
     "playVideo": "ଭିଡିଓ ଚଲାନ୍ତୁ",
-    "videoPlayer": "ଭିଡିଓ ପ୍ଲେୟାର"
+    "videoPlayer": "ଭିଡିଓ ପ୍ଲେୟାର",
+    "customCourseTextbookHint": "ଆପଣ କେଉଁ ପାଠ୍ୟପୁସ୍ତକ ବ୍ୟବହାର କରନ୍ତି, ତାହା ଆମକୁ କୁହନ୍ତୁ, କିମ୍ବା ଆପଣଙ୍କ ପାଠ୍ୟକ୍ରମ ବିଷୟରେ ବର୍ଣ୍ଣନା କରନ୍ତୁ"
 }

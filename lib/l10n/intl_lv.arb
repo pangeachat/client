@@ -3535,7 +3535,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-09-21 09:53:38.415888",
+    "@@last_modified": "2026-09-22 11:00:53.017781",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -8798,7 +8798,6 @@
     "customCourseStepTitle": "Aizpildiet šo veidlapu, lai iegūtu pielāgotu kursu",
     "courseCodeStepErrorMessage": "Lūdzu, pārbaudiet savu kodu un mēģiniet vēlreiz",
     "institution": "Iestāde",
-    "courseGoals": "Kursa mērķi",
     "selectChats": "Izvēlieties sarunas",
     "plainTextFile": "Teksts",
     "@userTypeTitle": {
@@ -9942,5 +9941,6 @@
     "vocabItemsUsed": "{count, plural, =1{Izmantots 1 vārdu krājuma vienums} other{Izmantoti {count} vārdu krājuma vienumi}}",
     "grammarItemsUsed": "{count, plural, =1{Izmantots 1 gramatikas vienums} other{Izmantoti {count} gramatikas vienumi}}",
     "playVideo": "Atskaņot video",
-    "videoPlayer": "Video atskaņotājs"
+    "videoPlayer": "Video atskaņotājs",
+    "customCourseTextbookHint": "Pastāstiet, kuru mācību grāmatu izmantojat, vai aprakstiet savu mācību programmu"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-09-21 09:53:37.692186",
+    "@@last_modified": "2026-09-22 11:00:53.923564",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "Isi formulir iki kanggo entuk kursus khusus",
     "courseCodeStepErrorMessage": "Mangga priksa kode sampeyan lan coba maneh",
     "institution": "Institusi",
-    "courseGoals": "Tujuan Kursus",
     "missingLanguageException": "Mangga pilih basa dhasar lan target sing bener",
     "selectChats": "Pilih Obrolan",
     "plainTextFile": "Teks",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 item kosakata digunakake} other{{count} item kosakata digunakake}}",
     "grammarItemsUsed": "{count, plural, =1{1 item tata basa digunakake} other{{count} item tata basa digunakake}}",
     "playVideo": "Putar video",
-    "videoPlayer": "Pamutar video"
+    "videoPlayer": "Pamutar video",
+    "customCourseTextbookHint": "Kandhani buku teks apa sing kokenggo, utawa jlentrehna kurikulummu"
 }

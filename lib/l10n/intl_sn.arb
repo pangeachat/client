@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-09-21 09:53:40.420038",
+    "@@last_modified": "2026-09-22 11:00:57.574015",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "Zadza fomu iri kuti uwane kosi yetsika",
     "courseCodeStepErrorMessage": "Ndapota tarisa kodhi yako woedza zvakare",
     "institution": "Sangano",
-    "courseGoals": "Zvinangwa zveKosi",
     "missingLanguageException": "Ndapota sarudza mitauro yakakodzera yekutanga neyekunanga",
     "selectChats": "Sarudza Chats",
     "plainTextFile": "Mavara",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 izwi rakashandiswa} other{{count} mazwi akashandiswa}}",
     "grammarItemsUsed": "{count, plural, =1{1 girama yakashandiswa} other{{count} girama dzakashandiswa}}",
     "playVideo": "Ridza vhidhiyo",
-    "videoPlayer": "Mutambi wevhidhiyo"
+    "videoPlayer": "Mutambi wevhidhiyo",
+    "customCourseTextbookHint": "Tiudze kuti ndeipi bhuku raunoshandisa, kana kuti tsanangura chirongwa chako chekudzidza"
 }

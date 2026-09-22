@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-21 09:53:40.850444",
+    "@@last_modified": "2026-09-22 11:00:57.128883",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -9747,7 +9747,6 @@
     "customCourseStepTitle": "Ispunite ovaj obrazac da dobijete prilagođeni kurs",
     "courseCodeStepErrorMessage": "Proverite svoj kod i pokušajte ponovo",
     "institution": "Institucija",
-    "courseGoals": "Ciljevi kursa",
     "selectChats": "Izaberite čete",
     "plainTextFile": "Tekst",
     "@userTypeTitle": {
@@ -10891,5 +10890,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 upotrebljena stavka rečnika} other{{count} upotrebljenih stavki rečnika}}",
     "grammarItemsUsed": "{count, plural, =1{1 upotrebljena stavka gramatike} other{{count} upotrebljenih stavki gramatike}}",
     "playVideo": "Reprodukuj video",
-    "videoPlayer": "Video plejer"
+    "videoPlayer": "Video plejer",
+    "customCourseTextbookHint": "Recite nam koji udžbenik koristite ili opišite svoj nastavni plan i program"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-09-21 09:53:41.061542",
+    "@@last_modified": "2026-09-22 11:00:58.537379",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -9099,7 +9099,6 @@
     "customCourseStepTitle": "Özel bir kurs almak için bu formu doldurun",
     "courseCodeStepErrorMessage": "Lütfen kodunuzu kontrol edin ve tekrar deneyin",
     "institution": "Kurum",
-    "courseGoals": "Kurs Hedefleri",
     "selectChats": "Sohbetleri Seçin",
     "plainTextFile": "Metin",
     "@userTypeTitle": {
@@ -10243,5 +10242,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 kelime öğesi kullanıldı} other{{count} kelime öğesi kullanıldı}}",
     "grammarItemsUsed": "{count, plural, =1{1 dil bilgisi öğesi kullanıldı} other{{count} dil bilgisi öğesi kullanıldı}}",
     "playVideo": "Videoyu oynat",
-    "videoPlayer": "Video oynatıcı"
+    "videoPlayer": "Video oynatıcı",
+    "customCourseTextbookHint": "Kullandığınız ders kitabını bize bildirin veya müfredatınızı açıklayın"
 }

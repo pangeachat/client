@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-09-21 09:53:38.101048",
+    "@@last_modified": "2026-09-22 11:00:52.347686",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "ئەم فۆرمە پڕ بکەرەوە بۆ بەدەستهێنانی خوولێکی تایبەت",
     "courseCodeStepErrorMessage": "تکایە کۆدەکەت بپشکنە و دووبارە هەوڵ بدەوە",
     "institution": "دامەزراوە",
-    "courseGoals": "ئامانجەکانی خوول",
     "missingLanguageException": "تکایە زمانەکانی بنەڕەت و ئامانج بە دروستی هەڵبژێرە",
     "selectChats": "چاتەکان هەڵبژێرە",
     "plainTextFile": "دەق",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 وشەی فێربوون بەکارهات} other{{count} وشەی فێربوون بەکارهاتن}}",
     "grammarItemsUsed": "{count, plural, =1{1 بابەتی ڕێزمان بەکارهات} other{{count} بابەتی ڕێزمان بەکارهاتن}}",
     "playVideo": "ڤیدیۆ لێبدە",
-    "videoPlayer": "یاریزانی ڤیدیۆ"
+    "videoPlayer": "یاریزانی ڤیدیۆ",
+    "customCourseTextbookHint": "پێمان بڵێ چ کتێبێکی خوێندن بەکاردەهێنیت، یان پرۆگرامی خوێندنەکەت وەسف بکە"
 }

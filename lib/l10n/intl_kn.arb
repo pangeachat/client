@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-09-21 09:53:38.011114",
+    "@@last_modified": "2026-09-22 11:00:51.800247",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "ಕಸ್ಟಮ್ ಕೋರ್ಸ್ ಪಡೆಯಲು ಈ ಫಾರ್ಮ್ ಅನ್ನು ಭರ್ತಿ ಮಾಡಿ",
     "courseCodeStepErrorMessage": "ದಯವಿಟ್ಟು ನಿಮ್ಮ ಕೋಡ್ ಅನ್ನು ಪರಿಶೀಲಿಸಿ ಮತ್ತು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ",
     "institution": "ಸಂಸ್ಥೆ",
-    "courseGoals": "ಕೋರ್ಸ್ ಗುರಿಗಳು",
     "missingLanguageException": "ದಯವಿಟ್ಟು ಮಾನ್ಯವಾದ ಮೂಲ ಮತ್ತು ಗುರಿ ಭಾಷೆಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ",
     "selectChats": "ಚಾಟ್‌ಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ",
     "plainTextFile": "ಪಠ್ಯ",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 ಶಬ್ದಕೋಶ ಐಟಂ ಬಳಸಲಾಗಿದೆ} other{{count} ಶಬ್ದಕೋಶ ಐಟಂಗಳನ್ನು ಬಳಸಲಾಗಿದೆ}}",
     "grammarItemsUsed": "{count, plural, =1{1 ವ್ಯಾಕರಣ ಐಟಂ ಬಳಸಲಾಗಿದೆ} other{{count} ವ್ಯಾಕರಣ ಐಟಂಗಳನ್ನು ಬಳಸಲಾಗಿದೆ}}",
     "playVideo": "ವೀಡಿಯೊ ಪ್ಲೇ ಮಾಡಿ",
-    "videoPlayer": "ವೀಡಿಯೊ ಪ್ಲೇಯರ್"
+    "videoPlayer": "ವೀಡಿಯೊ ಪ್ಲೇಯರ್",
+    "customCourseTextbookHint": "ನೀವು ಯಾವ ಪಠ್ಯಪುಸ್ತಕವನ್ನು ಬಳಸುತ್ತೀರಿ ಎಂದು ನಮಗೆ ತಿಳಿಸಿ, ಅಥವಾ ನಿಮ್ಮ ಪಠ್ಯಕ್ರಮವನ್ನು ವಿವರಿಸಿ"
 }

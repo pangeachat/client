@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-09-21 09:53:38.906875",
+    "@@last_modified": "2026-09-22 11:00:54.061780",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "Isi borang ini untuk mendapatkan kursus tersuai",
     "courseCodeStepErrorMessage": "Sila semak kod anda dan cuba lagi",
     "institution": "Institusi",
-    "courseGoals": "Matlamat Kursus",
     "missingLanguageException": "Sila pilih bahasa asas dan sasaran yang sah",
     "selectChats": "Pilih Sembang",
     "plainTextFile": "Teks",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 item kosa kata digunakan} other{{count} item kosa kata digunakan}}",
     "grammarItemsUsed": "{count, plural, =1{1 item tatabahasa digunakan} other{{count} item tatabahasa digunakan}}",
     "playVideo": "Mainkan video",
-    "videoPlayer": "Pemain video"
+    "videoPlayer": "Pemain video",
+    "customCourseTextbookHint": "Beritahu kami buku teks yang anda gunakan, atau terangkan kurikulum anda"
 }

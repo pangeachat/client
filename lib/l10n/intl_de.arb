@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-09-21 09:53:35.821120",
+    "@@last_modified": "2026-09-22 11:00:49.165019",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -8785,7 +8785,6 @@
     "customCourseStepTitle": "Fülle dieses Formular aus, um einen individuellen Kurs zu erhalten",
     "courseCodeStepErrorMessage": "Bitte überprüfe deinen Code und versuche es erneut",
     "institution": "Institution",
-    "courseGoals": "Kursziele",
     "selectChats": "Chats auswählen",
     "plainTextFile": "Text",
     "@userTypeTitle": {
@@ -9929,5 +9928,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 Vokabel verwendet} other{{count} Vokabeln verwendet}}",
     "grammarItemsUsed": "{count, plural, =1{1 Grammatik-Element verwendet} other{{count} Grammatik-Elemente verwendet}}",
     "playVideo": "Video abspielen",
-    "videoPlayer": "Videoplayer"
+    "videoPlayer": "Videoplayer",
+    "customCourseTextbookHint": "Nennen Sie uns Ihr Lehrbuch oder beschreiben Sie Ihren Lehrplan"
 }

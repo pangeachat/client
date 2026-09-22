@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-09-21 09:53:39.505067",
+    "@@last_modified": "2026-09-22 11:00:55.720830",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "ਇੱਕ ਕਸਟਮ ਕੋਰਸ ਪ੍ਰਾਪਤ ਕਰਨ ਲਈ ਇਹ ਫਾਰਮ ਭਰੋ",
     "courseCodeStepErrorMessage": "ਕਿਰਪਾ ਕਰਕੇ ਆਪਣਾ ਕੋਡ ਚੈੱਕ ਕਰੋ ਅਤੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ",
     "institution": "ਸੰਸਥਾ",
-    "courseGoals": "ਕੋਰਸ ਦੇ ਟੀਚੇ",
     "missingLanguageException": "ਕਿਰਪਾ ਕਰਕੇ ਵੈਧ ਮੂਲ ਅਤੇ ਨਿਸ਼ਾਨਾ ਭਾਸ਼ਾਵਾਂ ਚੁਣੋ",
     "selectChats": "ਚੈਟਾਂ ਚੁਣੋ",
     "plainTextFile": "ਟੈਕਸਟ",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 ਸ਼ਬਦਾਵਲੀ ਆਈਟਮ ਵਰਤੀ ਗਈ} other{{count} ਸ਼ਬਦਾਵਲੀ ਆਈਟਮਾਂ ਵਰਤੀਆਂ ਗਈਆਂ}}",
     "grammarItemsUsed": "{count, plural, =1{1 ਵਿਆਕਰਨ ਆਈਟਮ ਵਰਤੀ ਗਈ} other{{count} ਵਿਆਕਰਨ ਆਈਟਮਾਂ ਵਰਤੀਆਂ ਗਈਆਂ}}",
     "playVideo": "ਵੀਡੀਓ ਚਲਾਓ",
-    "videoPlayer": "ਵੀਡੀਓ ਪਲੇਅਰ"
+    "videoPlayer": "ਵੀਡੀਓ ਪਲੇਅਰ",
+    "customCourseTextbookHint": "ਸਾਨੂੰ ਦੱਸੋ ਕਿ ਤੁਸੀਂ ਕਿਹੜੀ ਪਾਠ-ਪੁਸਤਕ ਵਰਤਦੇ ਹੋ, ਜਾਂ ਆਪਣੇ ਪਾਠਕ੍ਰਮ ਦਾ ਵਰਣਨ ਕਰੋ"
 }

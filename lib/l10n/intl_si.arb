@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-09-21 09:53:40.205456",
+    "@@last_modified": "2026-09-22 11:00:56.493796",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "අභිරුචි පාඨමාලාවක් ලබා ගැනීමට මෙම පෝරමය පුරවන්න",
     "courseCodeStepErrorMessage": "කරුණාකර ඔබේ කේතය පරීක්ෂා කර නැවත උත්සාහ කරන්න",
     "institution": "ආයතනය",
-    "courseGoals": "පාඨමාලා ඉලක්ක",
     "missingLanguageException": "කරුණාකර වලංගු මූලික සහ ඉලක්ක භාෂා තෝරන්න",
     "selectChats": "කතාබස් තෝරන්න",
     "plainTextFile": "පෙළ",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 වචන මාලා අයිතමයක් භාවිතා කරන ලදී} other{{count} වචන මාලා අයිතම භාවිතා කරන ලදී}}",
     "grammarItemsUsed": "{count, plural, =1{1 ව්‍යාකරණ අයිතමයක් භාවිතා කරන ලදී} other{{count} ව්‍යාකරණ අයිතම භාවිතා කරන ලදී}}",
     "playVideo": "වීඩියෝ වාදනය කරන්න",
-    "videoPlayer": "වීඩියෝ වාදකය"
+    "videoPlayer": "වීඩියෝ වාදකය",
+    "customCourseTextbookHint": "ඔබ භාවිතා කරන පෙළපොත අපට කියන්න, නැතහොත් ඔබේ විෂය නිර්දේශය විස්තර කරන්න"
 }

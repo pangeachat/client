@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-09-21 09:53:36.591788",
+    "@@last_modified": "2026-09-22 11:00:49.881809",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "Folje dit formulier yn foar in oanpaste kursus",
     "courseCodeStepErrorMessage": "Kontrolearje dyn koade en besykje it nochris",
     "institution": "Ynstelling",
-    "courseGoals": "Kursusdoelen",
     "missingLanguageException": "Kies asjebleaft jildige basis- en doeltalen",
     "selectChats": "Selektearje petearen",
     "plainTextFile": "Tekst",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 wurdskatitem brûkt} other{{count} wurdskatitems brûkt}}",
     "grammarItemsUsed": "{count, plural, =1{1 grammatika-item brûkt} other{{count} grammatika-items brûkt}}",
     "playVideo": "Fideo ôfspylje",
-    "videoPlayer": "Fideospiler"
+    "videoPlayer": "Fideospiler",
+    "customCourseTextbookHint": "Fertel ús hokker learboek jo brûke, of beskriuw jo kurrikulum"
 }

@@ -4978,7 +4978,7 @@
     "customCourseStepTitle": "Fill this form to get a custom course",
     "courseCodeStepErrorMessage": "Please check your code and try again",
     "institution": "Institution",
-    "courseGoals": "Course Goals",
+    "customCourseTextbookHint": "Tell us what textbook you use, or describe your curriculum",
     "missingLanguageException": "Please choose valid base and target languages",
     "selectChats": "Select Chats",
     "plainTextFile": "Text",

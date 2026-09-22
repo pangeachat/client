@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-09-21 09:53:36.383896",
+    "@@last_modified": "2026-09-22 11:00:49.830544",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -9153,7 +9153,6 @@
     "customCourseStepTitle": "Remplissez ce formulaire pour obtenir un cours personnalisé",
     "courseCodeStepErrorMessage": "Veuillez vérifier votre code et réessayer",
     "institution": "Institution",
-    "courseGoals": "Objectifs du cours",
     "selectChats": "Sélectionner les discussions",
     "plainTextFile": "Texte",
     "@userTypeTitle": {
@@ -10297,5 +10296,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 élément de vocabulaire utilisé} other{{count} éléments de vocabulaire utilisés}}",
     "grammarItemsUsed": "{count, plural, =1{1 élément de grammaire utilisé} other{{count} éléments de grammaire utilisés}}",
     "playVideo": "Lire la vidéo",
-    "videoPlayer": "Lecteur vidéo"
+    "videoPlayer": "Lecteur vidéo",
+    "customCourseTextbookHint": "Dites-nous quel manuel vous utilisez ou décrivez votre programme"
 }

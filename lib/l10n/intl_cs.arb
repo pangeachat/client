@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-09-21 09:53:35.789559",
+    "@@last_modified": "2026-09-22 11:00:49.090734",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -9292,7 +9292,6 @@
     "customCourseStepTitle": "Vyplňte tento formulář pro získání vlastního kurzu",
     "courseCodeStepErrorMessage": "Zkontrolujte svůj kód a zkuste to znovu",
     "institution": "Instituce",
-    "courseGoals": "Cíle kurzu",
     "selectChats": "Vyberte chaty",
     "plainTextFile": "Text",
     "@userTypeTitle": {
@@ -10436,5 +10435,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 použitá položka slovní zásoby} other{{count} použité položky slovní zásoby}}",
     "grammarItemsUsed": "{count, plural, =1{1 použitá položka gramatiky} other{{count} použité položky gramatiky}}",
     "playVideo": "Přehrát video",
-    "videoPlayer": "Přehrávač videa"
+    "videoPlayer": "Přehrávač videa",
+    "customCourseTextbookHint": "Řekněte nám, jakou učebnici používáte, nebo popište své osnovy"
 }

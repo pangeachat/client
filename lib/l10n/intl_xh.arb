@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-09-21 09:53:41.409252",
+    "@@last_modified": "2026-09-22 11:00:59.594635",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "Gcwalisa le fomu ukuze ufumane ikhosi yesiko",
     "courseCodeStepErrorMessage": "Nceda ujonge ikhowudi yakho kwaye uzame kwakhona",
     "institution": "Iziko",
-    "courseGoals": "Iinjongo zeKhosi",
     "missingLanguageException": "Nceda ukhethe ulwimi olusisiseko nolujoliswe kulo olusebenzayo",
     "selectChats": "Khetha iiNcoko",
     "plainTextFile": "Umbhalo",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{IsiXhosa esinye esisetyenzisiweyo} other{{count} izinto zesigama ezisetyenzisiweyo}}",
     "grammarItemsUsed": "{count, plural, =1{1 into yegrama esetyenzisiweyo} other{{count} izinto zegrama ezisetyenzisiweyo}}",
     "playVideo": "Dlala ividiyo",
-    "videoPlayer": "Umdlali wevidiyo"
+    "videoPlayer": "Umdlali wevidiyo",
+    "customCourseTextbookHint": "Sixelele ukuba yeyiphi incwadi oyisebenzisayo, okanye uchaze ikharityhulam yakho"
 }

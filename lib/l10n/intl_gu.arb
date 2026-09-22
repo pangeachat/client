@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-09-21 09:53:36.788580",
+    "@@last_modified": "2026-09-22 11:00:50.264900",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "કસ્ટમ કોર્સ મેળવવા માટે આ ફોર્મ ભરો",
     "courseCodeStepErrorMessage": "કૃપા કરીને તમારો કોડ તપાસો અને ફરી પ્રયાસ કરો",
     "institution": "સંસ્થા",
-    "courseGoals": "કોર્સના લક્ષ્યો",
     "missingLanguageException": "કૃપા કરીને માન્ય મૂળ અને લક્ષ્ય ભાષાઓ પસંદ કરો",
     "selectChats": "ચેટ્સ પસંદ કરો",
     "plainTextFile": "ટેક્સ્ટ",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 શબ્દભંડોળ આઇટમ વપરાઈ} other{{count} શબ્દભંડોળ આઇટમ્સ વપરાઈ}}",
     "grammarItemsUsed": "{count, plural, =1{1 વ્યાકરણ આઇટમ વપરાઈ} other{{count} વ્યાકરણ આઇટમ્સ વપરાઈ}}",
     "playVideo": "વિડિઓ ચલાવો",
-    "videoPlayer": "વિડિઓ પ્લેયર"
+    "videoPlayer": "વિડિઓ પ્લેયર",
+    "customCourseTextbookHint": "તમે કઈ પાઠ્યપુસ્તકનો ઉપયોગ કરો છો તે અમને જણાવો અથવા તમારા અભ્યાસક્રમનું વર્ણન કરો"
 }

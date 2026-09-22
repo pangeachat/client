@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-09-21 09:53:35.345435",
+    "@@last_modified": "2026-09-22 11:00:48.618740",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "ብጁ ኮርስ ለማግኘት ይህንን ቅጽ ይሙሉ",
     "courseCodeStepErrorMessage": "እባክዎ ኮድዎን ያረጋግጡ እና እንደገና ይሞክሩ",
     "institution": "ተቋም",
-    "courseGoals": "የኮርሱ ግቦች",
     "missingLanguageException": "እባክዎ ትክክለኛ የመነሻ እና የዒላማ ቋንቋዎችን ይምረጡ",
     "selectChats": "ውይይቶችን ይምረጡ",
     "plainTextFile": "ጽሑፍ",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 የቃላት ንጥል ጥቅም ላይ ውሏል} other{{count} የቃላት ንጥሎች ጥቅም ላይ ውለዋል}}",
     "grammarItemsUsed": "{count, plural, =1{1 ሰዋሰው ንጥል ጥቅም ላይ ውሏል} other{{count} ሰዋሰው ንጥሎች ጥቅም ላይ ውለዋል}}",
     "playVideo": "ቪዲዮ አጫውት",
-    "videoPlayer": "የቪዲዮ ማጫወቻ"
+    "videoPlayer": "የቪዲዮ ማጫወቻ",
+    "customCourseTextbookHint": "የምትጠቀመውን የመማሪያ መጽሐፍ ንገረን ወይም የትምህርት እቅድህን ግለጽ"
 }

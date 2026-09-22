@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-09-21 09:53:38.673698",
+    "@@last_modified": "2026-09-22 11:00:53.448947",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "Whakakīa tēnei puka kia whiwhi ai i tētahi akoranga ritenga",
     "courseCodeStepErrorMessage": "Tēnā tirohia tō waehere ka whakamātauria anō",
     "institution": "Whare Wānanga",
-    "courseGoals": "Ngā Whāinga Akoranga",
     "missingLanguageException": "Tēnā kōwhiria he reo taketake me te reo whāinga tika",
     "selectChats": "Kōwhiria Ngā Kōrerorero",
     "plainTextFile": "Kuputuhi",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 tūemi kupu hou i whakamahia} other{{count} tūemi kupu hou i whakamahia}}",
     "grammarItemsUsed": "{count, plural, =1{1 tūemi wetereo i whakamahia} other{{count} tūemi wetereo i whakamahia}}",
     "playVideo": "Whakatangihia te ataata",
-    "videoPlayer": "Pūwhakatangi ataata"
+    "videoPlayer": "Pūwhakatangi ataata",
+    "customCourseTextbookHint": "Kōrerohia mai te pukapuka e whakamahia ana e koe, me te whakaahua rānei i tō marautanga"
 }

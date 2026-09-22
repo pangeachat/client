@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-09-21 09:53:37.513719",
+    "@@last_modified": "2026-09-22 11:00:51.285376",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "Dejupụta ụdị a ka ị nweta ọmụmụ ihe omenala",
     "courseCodeStepErrorMessage": "Biko lelee koodu gị wee gbalịa ọzọ",
     "institution": "Ụlọ ọrụ",
-    "courseGoals": "Ebumnuche ọmụmụ ihe",
     "missingLanguageException": "Biko họrọ asụsụ isi na asụsụ ebumnuche ziri ezi",
     "selectChats": "Họrọ nkata",
     "plainTextFile": "Ederede",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{eji otu okwu} other{{count} eji okwu}}",
     "grammarItemsUsed": "{count, plural, =1{eji otu ụtọasụsụ} other{{count} eji ụtọasụsụ}}",
     "playVideo": "Kpọọ vidiyo",
-    "videoPlayer": "Onye na-egwu vidiyo"
+    "videoPlayer": "Onye na-egwu vidiyo",
+    "customCourseTextbookHint": "Gwa anyị akwụkwọ ọgụgụ ị na-eji, ma ọ bụ kọwaa usoro ọmụmụ gị"
 }

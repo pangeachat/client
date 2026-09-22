@@ -1802,7 +1802,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-09-21 09:53:40.003855",
+    "@@last_modified": "2026-09-22 11:00:58.525949",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9743,7 +9743,6 @@
     "customCourseStepTitle": "Izpolnite ta obrazec za prilagojen tečaj",
     "courseCodeStepErrorMessage": "Prosimo, preverite svojo kodo in poskusite znova",
     "institution": "Ustanova",
-    "courseGoals": "Cilji tečaja",
     "selectChats": "Izberite klepete",
     "plainTextFile": "Besedilo",
     "@userTypeTitle": {
@@ -10887,5 +10886,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 uporabljena beseda} other{{count} uporabljene besede}}",
     "grammarItemsUsed": "{count, plural, =1{1 uporabljena slovnična postavka} other{{count} uporabljene slovnične postavke}}",
     "playVideo": "Predvajaj video",
-    "videoPlayer": "Video predvajalnik"
+    "videoPlayer": "Video predvajalnik",
+    "customCourseTextbookHint": "Povejte nam, kateri učbenik uporabljate, ali opišite svoj učni načrt"
 }

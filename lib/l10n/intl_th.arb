@@ -3093,7 +3093,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-09-21 09:53:41.138562",
+    "@@last_modified": "2026-09-22 11:00:58.659898",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9430,7 +9430,6 @@
     "customCourseStepTitle": "กรอกแบบฟอร์มนี้เพื่อรับคอร์สที่กำหนดเอง",
     "courseCodeStepErrorMessage": "กรุณาตรวจสอบรหัสของคุณและลองอีกครั้ง",
     "institution": "สถาบัน",
-    "courseGoals": "เป้าหมายของหลักสูตร",
     "selectChats": "เลือกการสนทนา",
     "plainTextFile": "ข้อความ",
     "@userTypeTitle": {
@@ -10574,5 +10573,6 @@
     "vocabItemsUsed": "{count, plural, =1{ใช้คำศัพท์ 1 รายการ} other{ใช้คำศัพท์ {count} รายการ}}",
     "grammarItemsUsed": "{count, plural, =1{ใช้ไวยากรณ์ 1 รายการ} other{ใช้ไวยากรณ์ {count} รายการ}}",
     "playVideo": "เล่นวิดีโอ",
-    "videoPlayer": "เครื่องเล่นวิดีโอ"
+    "videoPlayer": "เครื่องเล่นวิดีโอ",
+    "customCourseTextbookHint": "บอกเราว่าคุณใช้หนังสือเรียนเล่มไหน หรืออธิบายหลักสูตรของคุณ"
 }

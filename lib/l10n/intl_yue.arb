@@ -1263,7 +1263,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-09-21 09:53:41.681638",
+    "@@last_modified": "2026-09-22 11:00:59.732248",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -9755,7 +9755,6 @@
     "customCourseStepTitle": "填寫此表格以獲取自定義課程",
     "courseCodeStepErrorMessage": "請檢查你的代碼並重試",
     "institution": "機構",
-    "courseGoals": "課程目標",
     "selectChats": "選擇聊天",
     "plainTextFile": "文本",
     "@userTypeTitle": {
@@ -10899,5 +10898,6 @@
     "vocabItemsUsed": "{count, plural, =1{已用1個詞彙項目} other{已用{count}個詞彙項目}}",
     "grammarItemsUsed": "{count, plural, =1{已用1個文法項目} other{已用{count}個文法項目}}",
     "playVideo": "播放影片",
-    "videoPlayer": "影片播放器"
+    "videoPlayer": "影片播放器",
+    "customCourseTextbookHint": "話我哋知你用緊邊本教科書，或者描述下你嘅課程"
 }

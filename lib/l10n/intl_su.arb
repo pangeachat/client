@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-09-21 09:53:40.663034",
+    "@@last_modified": "2026-09-22 11:00:57.970754",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "Eusian formulir ieu pikeun kéngingkeun kursus khusus",
     "courseCodeStepErrorMessage": "Punten pariksa kode anjeun teras cobi deui",
     "institution": "Institusi",
-    "courseGoals": "Tujuan Kursus",
     "missingLanguageException": "Punten pilih basa dasar sareng target anu valid",
     "selectChats": "Pilih Paguneman",
     "plainTextFile": "Téks",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 item kosakata dipaké} other{{count} item kosakata dipaké}}",
     "grammarItemsUsed": "{count, plural, =1{1 item tata basa dipaké} other{{count} item tata basa dipaké}}",
     "playVideo": "Putar vidéo",
-    "videoPlayer": "Pamuter vidéo"
+    "videoPlayer": "Pamuter vidéo",
+    "customCourseTextbookHint": "Caritakeun buku pangajaran naon nu ku anjeun dipaké, atawa jelaskeun kurikulum anjeun"
 }

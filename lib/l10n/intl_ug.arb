@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-09-21 09:53:42.290520",
+    "@@last_modified": "2026-09-22 11:00:59.310260",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "خاس كۇرسقا ئېرىشىش ئۈچۈن بۇ جەدۋەلنى تولدۇرۇڭ",
     "courseCodeStepErrorMessage": "كودىڭىزنى تەكشۈرۈپ قايتا سىناڭ",
     "institution": "تەربىيەلەش ئورنى",
-    "courseGoals": "كۇرس نىشانلىرى",
     "missingLanguageException": "ئىناۋەتلىك ئاساسىي ۋە نىشان تىللارنى تاللاڭ",
     "selectChats": "پاراڭلارنى تاللاڭ",
     "plainTextFile": "تېكىست",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 سۆزلۈك تۈرى ئىشلىتىلدى} other{{count} سۆزلۈك تۈرلىرى ئىشلىتىلدى}}",
     "grammarItemsUsed": "{count, plural, =1{1 گرامماتىكا تۈرى ئىشلىتىلدى} other{{count} گرامماتىكا تۈرلىرى ئىشلىتىلدى}}",
     "playVideo": "سىن قويۇش",
-    "videoPlayer": "سىن قويغۇچ"
+    "videoPlayer": "سىن قويغۇچ",
+    "customCourseTextbookHint": "قايسى دەرسلىك كىتابنى ئىشلىتىدىغانلىقىڭىزنى ياكى ئوقۇتۇش پىلانىڭىزنى تەسۋىرلەپ بېرىڭ"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-09-21 09:53:37.192321",
+    "@@last_modified": "2026-09-22 11:00:50.590787",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "Ranpli fòm sa a pou jwenn yon kou koutim",
     "courseCodeStepErrorMessage": "Tanpri tcheke kòd ou a epi eseye ankò",
     "institution": "Enstitisyon",
-    "courseGoals": "Objektif Kou",
     "missingLanguageException": "Tanpri chwazi lang baz ak lang sib valab",
     "selectChats": "Chwazi Chat",
     "plainTextFile": "Tèks",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{1 atik vokabilè itilize} other{{count} atik vokabilè itilize}}",
     "grammarItemsUsed": "{count, plural, =1{1 atik gramè itilize} other{{count} atik gramè itilize}}",
     "playVideo": "Gade videyo",
-    "videoPlayer": "Lektè videyo"
+    "videoPlayer": "Lektè videyo",
+    "customCourseTextbookHint": "Di nou ki liv ou itilize, oswa dekri kourikoulòm ou"
 }

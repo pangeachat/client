@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-09-21 09:53:40.702386",
+    "@@last_modified": "2026-09-22 11:00:58.091467",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -1870,7 +1870,6 @@
     "customCourseStepTitle": "Jaza fomu hii ili kupata kozi maalum",
     "courseCodeStepErrorMessage": "Tafadhali angalia msimbo wako na ujaribu tena",
     "institution": "Taasisi",
-    "courseGoals": "Malengo ya Kozi",
     "missingLanguageException": "Tafadhali chagua lugha msingi na lengwa halali",
     "selectChats": "Chagua Soga",
     "plainTextFile": "Maandishi",
@@ -2346,5 +2345,6 @@
     "vocabItemsUsed": "{count, plural, =1{kipengee 1 cha msamiati kimetumika} other{vipengee {count} vya msamiati vimetumika}}",
     "grammarItemsUsed": "{count, plural, =1{kipengee 1 cha sarufi kimetumika} other{vipengee {count} vya sarufi vimetumika}}",
     "playVideo": "Cheza video",
-    "videoPlayer": "Kicheza video"
+    "videoPlayer": "Kicheza video",
+    "customCourseTextbookHint": "Tuambie ni kitabu gani unachotumia, au eleza mtaala wako"
 }
