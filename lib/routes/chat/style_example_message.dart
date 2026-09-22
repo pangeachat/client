@@ -20,37 +20,42 @@ class StyleExampleMessage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(right: 12, bottom: 12, top: 12),
-      // A chat, with the word card opening over it the way it does on a real
-      // message. The conversation lays the preview out; the card floats on
-      // top and is allowed to cover the learner's turn and its toolbar. It
-      // starts below the bot's row, because the bot is the one thing here
-      // that the colour swatches visibly change.
-      child: Stack(
+      // A chat with the word card opened over it. The bot's turn is a row of
+      // its own so it reads as a message rather than something pinned to the
+      // card, and the card then overlays the learner's turn and its toolbar,
+      // which is what an opened card covers. The card sizes that lower block,
+      // so nothing is clipped and the learner's styles still show through at
+      // the corner.
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Column(
-            spacing: 4.0,
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.end,
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Padding(
+              // The column pads only its right, the conversation below being
+              // right-aligned.
+              padding: const EdgeInsets.only(left: 12, bottom: 4),
+              child: const _StyleExampleBotMessage(),
+            ),
+          ),
+          Stack(
             children: [
-              const SizedBox(width: double.infinity),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                  // The column pads only its right, the rest of the
-                  // conversation being right-aligned.
-                  padding: const EdgeInsets.only(left: 12),
-                  child: const _StyleExampleBotMessage(),
+              const _StyleExampleWordCard(),
+              Positioned(
+                bottom: 0,
+                right: 0,
+                child: Column(
+                  spacing: 4.0,
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: const [
+                    _StyleExampleMessage(),
+                    _StyleExampleToolbarButtons(),
+                  ],
                 ),
               ),
-              const _StyleExampleMessage(),
-              const _StyleExampleToolbarButtons(),
             ],
-          ),
-          const Positioned(
-            top: Avatar.defaultSize + 4,
-            left: 0,
-            right: 0,
-            child: _StyleExampleWordCard(),
           ),
         ],
       ),
