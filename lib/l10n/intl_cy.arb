@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "Datgloi cymorth ysgrifennu",
     "courseSectionTeaching": "Addysgu",
     "courseSectionLearning": "Dysgu",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 cwrs} other{{count} cwrs}}",
     "showMore": "Dangos mwy",
     "showLess": "Dangos llai",
     "countNewMessages": "{count, plural, =1{1 neges newydd} other{{count} neges newydd}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 eitem ramadeg wedi'i defnyddio} other{{count} eitemau gramadeg wedi'u defnyddio}}",
     "playVideo": "Chwarae fideo",
     "videoPlayer": "Chwaraewr fideo",
-    "customCourseTextbookHint": "Dywedwch wrthym pa werslyfr rydych chi'n ei ddefnyddio, neu disgrifiwch eich cwricwlwm"
+    "customCourseTextbookHint": "Dywedwch wrthym pa werslyfr rydych chi'n ei ddefnyddio, neu disgrifiwch eich cwricwlwm",
+    "courseListFiltersLabel": "Hidlau cwrs",
+    "allCoursesFilterTooltip": "Dangos pob cwrs",
+    "teachingCoursesFilterTooltip": "Dangos dim ond cyrsiau rydych chi'n eu haddysgu",
+    "learningCoursesFilterTooltip": "Dangos dim ond cyrsiau rydych chi'n dysgu ynddynt",
+    "searchCoursesHint": "Chwilio cyrsiau",
+    "noCoursesMatchSearch": "Nid oes unrhyw gyrsiau'n cyd-fynd â'ch chwiliad."
 }

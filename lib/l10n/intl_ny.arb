@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "Tsegulani thandizo lolemba",
     "courseSectionTeaching": "Kuphunzitsa",
     "courseSectionLearning": "Kuphunzira",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kosi} other{{count} makosi}}",
     "showMore": "Onjezani zambiri",
     "showLess": "Chepetsani",
     "countNewMessages": "{count, plural, =1{uthenga umodzi watsopano} other{mameseji {count} atsopano}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{Chinthu chimodzi cha galamala chogwiritsidwa ntchito} other{Zinthu {count} za galamala zogwiritsidwa ntchito}}",
     "playVideo": "Sewerani vidiyo",
     "videoPlayer": "Wosewerera vidiyo",
-    "customCourseTextbookHint": "Tiuzeni buku lomwe mumagwiritsa ntchito, kapena fotokozani maphunziro anu"
+    "customCourseTextbookHint": "Tiuzeni buku lomwe mumagwiritsa ntchito, kapena fotokozani maphunziro anu",
+    "courseListFiltersLabel": "Zosefera maphunziro",
+    "allCoursesFilterTooltip": "Onetsani maphunziro onse",
+    "teachingCoursesFilterTooltip": "Onetsani maphunziro omwe mukuphunzitsa okha",
+    "learningCoursesFilterTooltip": "Onetsani maphunziro omwe mukuphunzira okha",
+    "searchCoursesHint": "Sakani maphunziro",
+    "noCoursesMatchSearch": "Palibe maphunziro ogwirizana ndi zomwe mwasaka."
 }

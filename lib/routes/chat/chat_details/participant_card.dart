@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
+import 'package:fluffychat/pangea/common/widgets/role_badge.dart';
 import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
@@ -97,28 +96,12 @@ class ParticipantCard extends StatelessWidget {
 
     final courseLanguage = room.coursePlan?.l2;
 
-    final badge = switch (user.membership) {
-      Membership.invite => _ParticipantBadge(
-        label: L10n.of(context).invited,
-        color: theme.colorScheme.secondaryContainer,
-        onColor: theme.colorScheme.onSecondaryContainer,
-      ),
-      Membership.knock => _ParticipantBadge(
-        label: L10n.of(context).knocking,
-        color: theme.colorScheme.secondaryContainer,
-        onColor: theme.colorScheme.onSecondaryContainer,
-      ),
+    final badgeType = switch (user.membership) {
+      Membership.invite => RoleBadgeType.invited,
+      Membership.knock => RoleBadgeType.knocking,
       _ when user.powerLevel >= SpaceConstants.powerLevelOfAdmin =>
-        _ParticipantBadge(
-          label: L10n.of(context).admin,
-          color: theme.pangea.goldFixedDim,
-          onColor: theme.pangea.onGoldFixed,
-        ),
-      _ when user.powerLevel >= 50 => _ParticipantBadge(
-        label: L10n.of(context).moderator,
-        color: theme.pangea.goldContainer,
-        onColor: theme.pangea.onGoldContainer,
-      ),
+        RoleBadgeType.admin,
+      _ when user.powerLevel >= 50 => RoleBadgeType.moderator,
       _ => null,
     };
 
@@ -189,14 +172,16 @@ class ParticipantCard extends StatelessWidget {
                     // card's top padding instead of reserving a row below the
                     // stats that most cards leave empty. Taps fall through to
                     // the avatar beneath.
-                    if (badge != null)
+                    if (badgeType != null)
                       Positioned(
                         top: 0,
                         left: 0,
                         right: 0,
                         child: FractionalTranslation(
                           translation: const Offset(0, -0.5),
-                          child: Center(child: IgnorePointer(child: badge)),
+                          child: Center(
+                            child: IgnorePointer(child: RoleBadge(badgeType)),
+                          ),
                         ),
                       ),
                   ],
@@ -228,40 +213,6 @@ class ParticipantCard extends StatelessWidget {
             ),
           ),
         ),
-      ),
-    );
-  }
-}
-
-/// A permission or membership label on a [ParticipantCard]. Ringed in the
-/// surface color, like the avatar's presence dot, so it separates from the
-/// avatar image or leaderboard ring it overlaps.
-class _ParticipantBadge extends StatelessWidget {
-  final String label;
-  final Color color;
-  final Color onColor;
-
-  const _ParticipantBadge({
-    required this.label,
-    required this.color,
-    required this.onColor,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 2),
-      decoration: BoxDecoration(
-        color: color,
-        border: Border.all(color: theme.colorScheme.surface, width: 2),
-        borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-      ),
-      child: Text(
-        label,
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-        style: theme.textTheme.labelSmall?.copyWith(color: onColor),
       ),
     );
   }

@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "Buɗe taimakon rubutu",
     "courseSectionTeaching": "Koyarwa",
     "courseSectionLearning": "Koyo",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 darasi} other{{count} darussa}}",
     "showMore": "Nuna ƙari",
     "showLess": "Nuna kaɗan",
     "countNewMessages": "{count, plural, =1{saƙo 1 sabo} other{saƙonni {count} sababbi}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{An yi amfani da nahawu 1} other{An yi amfani da nahawu {count}}}",
     "playVideo": "Kunna bidiyo",
     "videoPlayer": "Mai kunna bidiyo",
-    "customCourseTextbookHint": "Faɗa mana littafin da kuke amfani da shi, ko kuma bayyana tsarin karatun ku"
+    "customCourseTextbookHint": "Faɗa mana littafin da kuke amfani da shi, ko kuma bayyana tsarin karatun ku",
+    "courseListFiltersLabel": "Tacewa darussa",
+    "allCoursesFilterTooltip": "Nuna dukkan darussa",
+    "teachingCoursesFilterTooltip": "Nuna darussan da kake koyarwa kawai",
+    "learningCoursesFilterTooltip": "Nuna darussan da kake koya kawai",
+    "searchCoursesHint": "Bincika darussa",
+    "noCoursesMatchSearch": "Babu darussan da suka dace da bincikenka."
 }

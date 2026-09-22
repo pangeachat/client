@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "Taic sgrìobhaidh fhuasgladh",
     "courseSectionTeaching": "Teagasg",
     "courseSectionLearning": "Ionnsachadh",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 chùrsa} other{{count} cùrsaichean}}",
     "showMore": "Seall barrachd",
     "showLess": "Seall nas lugha",
     "countNewMessages": "{count, plural, =1{1 teachdaireachd ùr} other{{count} teachdaireachdan ùra}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 nì gràmair air a chleachdadh} other{{count} nithean gràmair air an cleachdadh}}",
     "playVideo": "Cluich bhidio",
     "videoPlayer": "Cluicheadair bhidio",
-    "customCourseTextbookHint": "Innis dhuinn dè an leabhar-teacsa a chleachdas tu, no thoir cunntas air a’ churraicealam agad"
+    "customCourseTextbookHint": "Innis dhuinn dè an leabhar-teacsa a chleachdas tu, no thoir cunntas air a’ churraicealam agad",
+    "courseListFiltersLabel": "Criathraichidhean cùrsa",
+    "allCoursesFilterTooltip": "Seall a h-uile cùrsa",
+    "teachingCoursesFilterTooltip": "Seall dìreach cùrsaichean a tha thu a’ teagasg",
+    "learningCoursesFilterTooltip": "Seall dìreach cùrsaichean a tha thu ag ionnsachadh annta",
+    "searchCoursesHint": "Lorg cùrsaichean",
+    "noCoursesMatchSearch": "Chan eil cùrsaichean a rèir an rannsachaidh agad."
 }

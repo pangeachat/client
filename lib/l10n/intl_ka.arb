@@ -10626,7 +10626,6 @@
     "unlockWritingAssistance": "წერის დახმარების განბლოკვა",
     "courseSectionTeaching": "ასწავლის",
     "courseSectionLearning": "სწავლობს",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 კურსი} other{{count} კურსი}}",
     "showMore": "მეტი",
     "showLess": "ნაკლები",
     "countNewMessages": "{count, plural, =1{1 ახალი შეტყობინება} other{{count} ახალი შეტყობინება}}",
@@ -10842,5 +10841,11 @@
     "grammarItemsUsed": "{count, plural, =1{გამოყენებულია 1 გრამატიკის ერთეული} other{გამოყენებულია {count} გრამატიკის ერთეული}}",
     "playVideo": "ვიდეოს დაკვრა",
     "videoPlayer": "ვიდეო პლეერი",
-    "customCourseTextbookHint": "გვითხარით, რომელ სახელმძღვანელოს იყენებთ, ან აღწერეთ თქვენი სასწავლო გეგმა"
+    "customCourseTextbookHint": "გვითხარით, რომელ სახელმძღვანელოს იყენებთ, ან აღწერეთ თქვენი სასწავლო გეგმა",
+    "courseListFiltersLabel": "კურსის ფილტრები",
+    "allCoursesFilterTooltip": "ყველა კურსის ჩვენება",
+    "teachingCoursesFilterTooltip": "მხოლოდ იმ კურსების ჩვენება, რომლებსაც ასწავლით",
+    "learningCoursesFilterTooltip": "მხოლოდ იმ კურსების ჩვენება, რომლებსაც სწავლობთ",
+    "searchCoursesHint": "კურსების ძიება",
+    "noCoursesMatchSearch": "თქვენს ძიებას არცერთი კურსი არ ემთხვევა."
 }

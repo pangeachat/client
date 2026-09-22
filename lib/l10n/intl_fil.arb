@@ -10586,7 +10586,6 @@
     "unlockWritingAssistance": "I-unlock ang tulong sa pagsusulat",
     "courseSectionTeaching": "Pagtuturo",
     "courseSectionLearning": "Pag-aaral",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kurso} other{{count} kurso}}",
     "showMore": "Ipakita pa",
     "showLess": "Ipakita nang kaunti",
     "countNewMessages": "{count, plural, =1{1 bagong mensahe} other{{count} bagong mensahe}}",
@@ -10802,5 +10801,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 item ng gramatika ang ginamit} other{{count} item ng gramatika ang ginamit}}",
     "playVideo": "I-play ang video",
     "videoPlayer": "Video player",
-    "customCourseTextbookHint": "Sabihin sa amin kung anong aklat-aralin ang ginagamit mo, o ilarawan ang iyong kurikulum"
+    "customCourseTextbookHint": "Sabihin sa amin kung anong aklat-aralin ang ginagamit mo, o ilarawan ang iyong kurikulum",
+    "courseListFiltersLabel": "Mga filter ng kurso",
+    "allCoursesFilterTooltip": "Ipakita ang lahat ng kurso",
+    "teachingCoursesFilterTooltip": "Ipakita lang ang mga kursong itinuturo mo",
+    "learningCoursesFilterTooltip": "Ipakita lang ang mga kursong pinag-aaralan mo",
+    "searchCoursesHint": "Maghanap ng mga kurso",
+    "noCoursesMatchSearch": "Walang kursong tumutugma sa iyong hinahanap."
 }

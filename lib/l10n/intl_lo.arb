@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "ປົດລັອກຕົວຊ່ວຍຂຽນ",
     "courseSectionTeaching": "ການສອນ",
     "courseSectionLearning": "ການຮຽນຮູ້",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 ຫຼັກສູດ} other{{count} ຫຼັກສູດ}}",
     "showMore": "ສະແດງເພີ່ມເຕີມ",
     "showLess": "ສະແດງໜ້ອຍລົງ",
     "countNewMessages": "{count, plural, =1{1 ຂໍ້ຄວາມໃໝ່} other{{count} ຂໍ້ຄວາມໃໝ່}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{ໃຊ້ໄວຍາກອນ 1 ອັນ} other{ໃຊ້ໄວຍາກອນ {count} ອັນແລ້ວ}}",
     "playVideo": "ຫຼິ້ນວິດີໂອ",
     "videoPlayer": "ເຄື່ອງຫຼິ້ນວິດີໂອ",
-    "customCourseTextbookHint": "ບອກພວກເຮົາວ່າທ່ານໃຊ້ປຶ້ມແບບຮຽນຫຍັງ, ຫຼືອະທິບາຍຫຼັກສູດຂອງທ່ານ"
+    "customCourseTextbookHint": "ບອກພວກເຮົາວ່າທ່ານໃຊ້ປຶ້ມແບບຮຽນຫຍັງ, ຫຼືອະທິບາຍຫຼັກສູດຂອງທ່ານ",
+    "courseListFiltersLabel": "ຕົວກອງຫຼັກສູດ",
+    "allCoursesFilterTooltip": "ສະແດງທຸກຫຼັກສູດ",
+    "teachingCoursesFilterTooltip": "ສະແດງສະເພາະຫຼັກສູດທີ່ທ່ານສອນ",
+    "learningCoursesFilterTooltip": "ສະແດງສະເພາະຫຼັກສູດທີ່ທ່ານກຳລັງຮຽນ",
+    "searchCoursesHint": "ຊອກຫາຫຼັກສູດ",
+    "noCoursesMatchSearch": "ບໍ່ມີຫຼັກສູດກົງກັບການຊອກຫາຂອງທ່ານ."
 }

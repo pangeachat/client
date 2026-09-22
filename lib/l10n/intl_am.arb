@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "የጽሑፍ ድጋፍ ይክፈቱ",
     "courseSectionTeaching": "ማስተማር",
     "courseSectionLearning": "መማር",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 ኮርስ} other{{count} ኮርሶች}}",
     "showMore": "ተጨማሪ አሳይ",
     "showLess": "ጥቂት አሳይ",
     "countNewMessages": "{count, plural, =1{1 አዲስ መልእክት} other{{count} አዲስ መልእክቶች}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 ሰዋሰው ንጥል ጥቅም ላይ ውሏል} other{{count} ሰዋሰው ንጥሎች ጥቅም ላይ ውለዋል}}",
     "playVideo": "ቪዲዮ አጫውት",
     "videoPlayer": "የቪዲዮ ማጫወቻ",
-    "customCourseTextbookHint": "የምትጠቀመውን የመማሪያ መጽሐፍ ንገረን ወይም የትምህርት እቅድህን ግለጽ"
+    "customCourseTextbookHint": "የምትጠቀመውን የመማሪያ መጽሐፍ ንገረን ወይም የትምህርት እቅድህን ግለጽ",
+    "courseListFiltersLabel": "የኮርስ ማጣሪያዎች",
+    "allCoursesFilterTooltip": "ሁሉንም ኮርሶች አሳይ",
+    "teachingCoursesFilterTooltip": "የምታስተምራቸውን ኮርሶች ብቻ አሳይ",
+    "learningCoursesFilterTooltip": "የምትማርባቸውን ኮርሶች ብቻ አሳይ",
+    "searchCoursesHint": "ኮርሶችን ፈልግ",
+    "noCoursesMatchSearch": "ፍለጋዎን የሚዛመድ ኮርስ የለም።"
 }

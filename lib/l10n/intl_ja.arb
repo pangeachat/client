@@ -10495,7 +10495,6 @@
     "unlockWritingAssistance": "ライティングアシスタンスをアンロック",
     "courseSectionTeaching": "教える",
     "courseSectionLearning": "学ぶ",
-    "courseSectionLabel": "{title}、{count, plural, =1{1コース} other{{count}コース}}",
     "showMore": "もっと見る",
     "showLess": "一部を表示",
     "countNewMessages": "{count, plural, =1{新着メッセージ1件} other{新着メッセージ{count}件}}",
@@ -10711,5 +10710,11 @@
     "grammarItemsUsed": "{count, plural, =1{1文法項目を使用} other{{count}文法項目を使用}}",
     "playVideo": "動画を再生",
     "videoPlayer": "動画プレーヤー",
-    "customCourseTextbookHint": "使用している教科書やカリキュラムについて教えてください"
+    "customCourseTextbookHint": "使用している教科書やカリキュラムについて教えてください",
+    "courseListFiltersLabel": "コースフィルター",
+    "allCoursesFilterTooltip": "すべてのコースを表示",
+    "teachingCoursesFilterTooltip": "教えているコースのみを表示",
+    "learningCoursesFilterTooltip": "学習中のコースのみを表示",
+    "searchCoursesHint": "コースを検索",
+    "noCoursesMatchSearch": "検索条件に一致するコースはありません。"
 }

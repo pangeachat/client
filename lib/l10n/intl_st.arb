@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "Notlolla thuso ea ho ngola",
     "courseSectionTeaching": "Ho ruta",
     "courseSectionLearning": "Ho ithuta",
-    "courseSectionLabel": "{title}, {count, plural, =1{thuto e le 1} other{lithuto tse {count}}}",
     "showMore": "Bontsha ho feta",
     "showLess": "Bontsha hanyane",
     "countNewMessages": "{count, plural, =1{1 molaetsa o motjha} other{melaetsa e metjha e {count}}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{Ntho e le 'ngoe ea sebōpeho-puo e sebelisitsoe} other{Lintho tse {count} tsa sebōpeho-puo li sebelisitsoe}}",
     "playVideo": "Bapala video",
     "videoPlayer": "Sebapala-video",
-    "customCourseTextbookHint": "Re bolelle hore na o sebelisa buka efe, kapa o hlalose thuto ea hau"
+    "customCourseTextbookHint": "Re bolelle hore na o sebelisa buka efe, kapa o hlalose thuto ea hau",
+    "courseListFiltersLabel": "Lisefa tsa dithuto",
+    "allCoursesFilterTooltip": "Bontsha dithuto kaofela",
+    "teachingCoursesFilterTooltip": "Bontsha feela dithuto tseo o di rutang",
+    "learningCoursesFilterTooltip": "Bontsha feela dithuto tseo o ithutang ho tsona",
+    "searchCoursesHint": "Batla dithuto",
+    "noCoursesMatchSearch": "Ha ho dithuto tse tsamaellanang le patlisiso ya hao."
 }

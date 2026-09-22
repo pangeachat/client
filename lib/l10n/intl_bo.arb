@@ -9337,7 +9337,6 @@
     "unlockWritingAssistance": "ཡིག་གཟུགས་རོགས་རམ་གྱི་གསང་བའི་ལམ་ཁ་འབྱེད་པ།",
     "courseSectionTeaching": "སློབ་ཁྲིད།",
     "courseSectionLearning": "སློབ་སྦྱོང་།",
-    "courseSectionLabel": "{title}, {count, plural, =1{སློབ་ཚན་ ༡} other{སློབ་ཚན་ {count}}}",
     "showMore": "མང་ཙམ་བསྟན་",
     "showLess": "ཉུང་ཙམ་བསྟན་",
     "countNewMessages": "{count, plural, =1{សារགསར་པ་ ༡} other{សារགསར་པ་ {count}}}",
@@ -9553,5 +9552,11 @@
     "grammarItemsUsed": "{count, plural, =1{བརྡ་སྤྲོད་ཅིག་བེད་སྤྱོད་བྱས་སོང་།} other{བརྡ་སྤྲོད་ {count} བེད་སྤྱོད་བྱས་སོང་།}}",
     "playVideo": "བརྙན་འཕྲིན་གཏོང་བ།",
     "videoPlayer": "བརྙན་འཕྲིན་གཏོང་ཆས།",
-    "customCourseTextbookHint": "ཁྱེད་ཀྱིས་བེད་སྤྱོད་པའི་སློབ་དེབ་གང་ཡིན་ང་ལ་བཤད་རོགས། ཡང་ན་ཁྱེད་ཀྱི་སློབ་ཚན་གྱི་འགྲོ་ལུགས་བཤད་རོགས།"
+    "customCourseTextbookHint": "ཁྱེད་ཀྱིས་བེད་སྤྱོད་པའི་སློབ་དེབ་གང་ཡིན་ང་ལ་བཤད་རོགས། ཡང་ན་ཁྱེད་ཀྱི་སློབ་ཚན་གྱི་འགྲོ་ལུགས་བཤད་རོགས།",
+    "courseListFiltersLabel": "སློབ་ཚན་གྱི་འཚག་བྱེད།",
+    "allCoursesFilterTooltip": "སློབ་ཚན་ཚང་མ་སྟོན།",
+    "teachingCoursesFilterTooltip": "ཁྱེད་ཀྱིས་སློབ་ཁྲིད་བྱེད་པའི་སློབ་ཚན་ཁོ་ན་སྟོན།",
+    "learningCoursesFilterTooltip": "ཁྱེད་ཀྱིས་སློབ་སྦྱོང་བྱེད་བཞིན་པའི་སློབ་ཚན་ཁོ་ན་སྟོན།",
+    "searchCoursesHint": "སློབ་ཚན་འཚོལ།",
+    "noCoursesMatchSearch": "ཁྱེད་ཀྱི་འཚོལ་བཤེར་དང་མཐུན་པའི་སློབ་ཚན་མི་འདུག"
 }

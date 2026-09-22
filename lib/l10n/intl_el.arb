@@ -10601,7 +10601,6 @@
     "unlockWritingAssistance": "Ξεκλείδωμα βοήθειας γραφής",
     "courseSectionTeaching": "Διδασκαλία",
     "courseSectionLearning": "Μάθηση",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 μάθημα} other{{count} μαθήματα}}",
     "showMore": "Εμφάνιση περισσότερων",
     "showLess": "Εμφάνιση λιγότερων",
     "countNewMessages": "{count, plural, =1{1 νέο μήνυμα} other{{count} νέα μηνύματα}}",
@@ -10817,5 +10816,11 @@
     "grammarItemsUsed": "{count, plural, =1{Χρησιμοποιήθηκε 1 στοιχείο γραμματικής} other{Χρησιμοποιήθηκαν {count} στοιχεία γραμματικής}}",
     "playVideo": "Αναπαραγωγή βίντεο",
     "videoPlayer": "Πρόγραμμα αναπαραγωγής βίντεο",
-    "customCourseTextbookHint": "Πείτε μας ποιο εγχειρίδιο χρησιμοποιείτε ή περιγράψτε το πρόγραμμα σπουδών σας"
+    "customCourseTextbookHint": "Πείτε μας ποιο εγχειρίδιο χρησιμοποιείτε ή περιγράψτε το πρόγραμμα σπουδών σας",
+    "courseListFiltersLabel": "Φίλτρα μαθημάτων",
+    "allCoursesFilterTooltip": "Εμφάνιση όλων των μαθημάτων",
+    "teachingCoursesFilterTooltip": "Εμφάνιση μόνο των μαθημάτων που διδάσκετε",
+    "learningCoursesFilterTooltip": "Εμφάνιση μόνο των μαθημάτων που μαθαίνετε",
+    "searchCoursesHint": "Αναζήτηση μαθημάτων",
+    "noCoursesMatchSearch": "Κανένα μάθημα δεν ταιριάζει με την αναζήτησή σας."
 }

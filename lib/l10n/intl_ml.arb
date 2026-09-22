@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "എഴുത്ത് സഹായം അൺലോക്ക് ചെയ്യുക",
     "courseSectionTeaching": "പഠിപ്പിക്കുന്നു",
     "courseSectionLearning": "പഠിക്കുന്നു",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 കോഴ്സ്} other{{count} കോഴ്സുകൾ}}",
     "showMore": "കൂടുതൽ കാണിക്കുക",
     "showLess": "കുറവ് കാണിക്കുക",
     "countNewMessages": "{count, plural, =1{പുതിയ ഒരു സന്ദേശം} other{പുതിയ {count} സന്ദേശങ്ങൾ}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{ഒരു വ്യാകരണ ഇനം ഉപയോഗിച്ചു} other{{count} വ്യാകരണ ഇനങ്ങൾ ഉപയോഗിച്ചു}}",
     "playVideo": "വീഡിയോ പ്ലേ ചെയ്യുക",
     "videoPlayer": "വീഡിയോ പ്ലെയർ",
-    "customCourseTextbookHint": "നിങ്ങൾ ഉപയോഗിക്കുന്ന പാഠപുസ്തകം ഏതാണെന്ന് ഞങ്ങളോട് പറയുക, അല്ലെങ്കിൽ നിങ്ങളുടെ പാഠ്യപദ്ധതി വിവരിക്കുക"
+    "customCourseTextbookHint": "നിങ്ങൾ ഉപയോഗിക്കുന്ന പാഠപുസ്തകം ഏതാണെന്ന് ഞങ്ങളോട് പറയുക, അല്ലെങ്കിൽ നിങ്ങളുടെ പാഠ്യപദ്ധതി വിവരിക്കുക",
+    "courseListFiltersLabel": "കോഴ്‌സ് ഫിൽട്ടറുകൾ",
+    "allCoursesFilterTooltip": "എല്ലാ കോഴ്‌സുകളും കാണിക്കുക",
+    "teachingCoursesFilterTooltip": "നിങ്ങൾ പഠിപ്പിക്കുന്ന കോഴ്‌സുകൾ മാത്രം കാണിക്കുക",
+    "learningCoursesFilterTooltip": "നിങ്ങൾ പഠിക്കുന്ന കോഴ്‌സുകൾ മാത്രം കാണിക്കുക",
+    "searchCoursesHint": "കോഴ്‌സുകൾ തിരയുക",
+    "noCoursesMatchSearch": "നിങ്ങളുടെ തിരയലുമായി പൊരുത്തപ്പെടുന്ന കോഴ്‌സുകളൊന്നുമില്ല."
 }

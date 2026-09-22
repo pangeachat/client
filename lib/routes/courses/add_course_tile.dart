@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/course_avatar.dart';
 import 'package:fluffychat/pangea/common/widgets/invited_chip.dart';
+import 'package:fluffychat/pangea/common/widgets/role_badge.dart';
 import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/routes/courses/add_course_tile_content.dart';
 import 'package:fluffychat/routes/courses/course_info_chip_widget.dart';
@@ -56,12 +57,28 @@ class AddCourseTile extends StatelessWidget {
         ? '$title, ${L10n.of(context).countParticipants(members)}'
         : title;
 
-    // The knock badge is a bare icon nested inside the tile's own labeled
-    // button node, so the state rides the tile label as well — the same way
+    // The Admin label and the knock badge sit inside the tile's own labeled
+    // button node, so their state rides the tile label as well — the same way
     // `invited` does — rather than relying on the nested node being announced.
-    final label = hasKnockingUsers
-        ? '$courseLabel, ${L10n.of(context).aUserIsKnocking}'
-        : courseLabel;
+    final label = [
+      courseLabel,
+      if (content.isAdmin) L10n.of(context).admin,
+      if (hasKnockingUsers) L10n.of(context).aUserIsKnocking,
+    ].join(', ');
+
+    final Widget? chips = invited
+        ? ExcludeSemantics(child: InvitedChip())
+        : courseId != null
+        ? CourseInfoChips(
+            courseId,
+            courseRoomId: content.courseRoomId,
+            members: members,
+            fontSize: 12.0,
+            iconSize: 12.0,
+          )
+        : members != null
+        ? CourseMembersChip(members, fontSize: 12.0, iconSize: 12.0)
+        : null;
 
     return Material(
       type: MaterialType.transparency,
@@ -127,22 +144,21 @@ class AddCourseTile extends StatelessWidget {
                                 ),
                             ],
                           ),
-                          if (invited)
-                            ExcludeSemantics(child: InvitedChip())
-                          else if (courseId != null)
-                            CourseInfoChips(
-                              courseId,
-                              courseRoomId: content.courseRoomId,
-                              members: members,
-                              fontSize: 12.0,
-                              iconSize: 12.0,
+                          // The Admin label holds the tile's bottom-right
+                          // corner; the chips wrap beside it, never under it.
+                          if (content.isAdmin)
+                            Row(
+                              spacing: 8.0,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Expanded(child: chips ?? const SizedBox()),
+                                const ExcludeSemantics(
+                                  child: RoleBadge(RoleBadgeType.admin),
+                                ),
+                              ],
                             )
-                          else if (members != null)
-                            CourseMembersChip(
-                              members,
-                              fontSize: 12.0,
-                              iconSize: 12.0,
-                            ),
+                          else
+                            ?chips,
                         ],
                       ),
                     ),

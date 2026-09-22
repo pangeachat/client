@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "Otključajte pomoć pri pisanju",
     "courseSectionTeaching": "Predavanje",
     "courseSectionLearning": "Učenje",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kurs} other{{count} kurseva}}",
     "showMore": "Prikaži više",
     "showLess": "Prikaži manje",
     "countNewMessages": "{count, plural, =1{1 nova poruka} other{{count} novih poruka}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 korištena stavka gramatike} other{{count} korištenih stavki gramatike}}",
     "playVideo": "Reproduciraj video",
     "videoPlayer": "Video plejer",
-    "customCourseTextbookHint": "Recite nam koji udžbenik koristite ili opišite svoj kurikulum"
+    "customCourseTextbookHint": "Recite nam koji udžbenik koristite ili opišite svoj kurikulum",
+    "courseListFiltersLabel": "Filteri kursa",
+    "allCoursesFilterTooltip": "Prikaži sve kurseve",
+    "teachingCoursesFilterTooltip": "Prikaži samo kurseve koje predaješ",
+    "learningCoursesFilterTooltip": "Prikaži samo kurseve koje učiš",
+    "searchCoursesHint": "Pretraži kurseve",
+    "noCoursesMatchSearch": "Nijedan kurs ne odgovara vašoj pretrazi."
 }

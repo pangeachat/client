@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "Отклучи помош при пишување",
     "courseSectionTeaching": "Предавање",
     "courseSectionLearning": "Учење",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 курс} other{{count} курсеви}}",
     "showMore": "Прикажи повеќе",
     "showLess": "Прикажи помалку",
     "countNewMessages": "{count, plural, =1{1 нова порака} other{{count} нови пораки}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 искористена граматичка ставка} other{{count} искористени граматички ставки}}",
     "playVideo": "Пушти видео",
     "videoPlayer": "Видео плеер",
-    "customCourseTextbookHint": "Кажете ни кој учебник го користите или опишете ја вашата наставна програма"
+    "customCourseTextbookHint": "Кажете ни кој учебник го користите или опишете ја вашата наставна програма",
+    "courseListFiltersLabel": "Филтри за курсеви",
+    "allCoursesFilterTooltip": "Прикажи ги сите курсеви",
+    "teachingCoursesFilterTooltip": "Прикажи ги само курсевите што ги предаваш",
+    "learningCoursesFilterTooltip": "Прикажи ги само курсевите што ги учиш",
+    "searchCoursesHint": "Пребарај курсеви",
+    "noCoursesMatchSearch": "Нема курсеви што одговараат на вашето пребарување."
 }

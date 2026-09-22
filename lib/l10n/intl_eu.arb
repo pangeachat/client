@@ -9726,7 +9726,6 @@
     "unlockWritingAssistance": "Desblokeatu idazketa-laguntza",
     "courseSectionTeaching": "Irakaskuntza",
     "courseSectionLearning": "Ikaskuntza",
-    "courseSectionLabel": "{title}, {count, plural, =1{ikastaro 1} other{{count} ikastaro}}",
     "showMore": "Gehiago erakutsi",
     "showLess": "Gutxiago erakutsi",
     "countNewMessages": "{count, plural, =1{mezu berri 1} other{{count} mezu berri}}",
@@ -9942,5 +9941,11 @@
     "grammarItemsUsed": "{count, plural, =1{gramatika-elementu 1 erabili da} other{{count} gramatika-elementu erabili dira}}",
     "playVideo": "Erreproduzitu bideoa",
     "videoPlayer": "Bideo-erreproduzitzailea",
-    "customCourseTextbookHint": "Esaguzu zer testuliburu erabiltzen duzun, edo deskribatu zure curriculuma"
+    "customCourseTextbookHint": "Esaguzu zer testuliburu erabiltzen duzun, edo deskribatu zure curriculuma",
+    "courseListFiltersLabel": "Ikastaro-iragazkiak",
+    "allCoursesFilterTooltip": "Ikastaro guztiak erakutsi",
+    "teachingCoursesFilterTooltip": "Irakasten dituzun ikastaroak soilik erakutsi",
+    "learningCoursesFilterTooltip": "Ikasten ari zaren ikastaroak soilik erakutsi",
+    "searchCoursesHint": "Bilatu ikastaroak",
+    "noCoursesMatchSearch": "Ez dago bilaketarekin bat datorren ikastarorik."
 }

@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "Wehe i ke kōkua kākau",
     "courseSectionTeaching": "Ke Aʻo ʻana",
     "courseSectionLearning": "Ke Aʻo ʻana",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 papa aʻo} other{{count} papa aʻo}}",
     "showMore": "Hōʻike hou aku",
     "showLess": "Hōʻike liʻiliʻi",
     "countNewMessages": "{count, plural, =1{1 leka hou} other{{count} mau leka hou}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 mea paukū i hoʻohana ʻia} other{{count} mau mea paukū i hoʻohana ʻia}}",
     "playVideo": "Pāʻani wikiō",
     "videoPlayer": "Mea pāʻani wikiō",
-    "customCourseTextbookHint": "E haʻi mai iā mākou i ka puke aʻo āu e hoʻohana ai, a i ʻole e wehewehe i kāu papa hana aʻo"
+    "customCourseTextbookHint": "E haʻi mai iā mākou i ka puke aʻo āu e hoʻohana ai, a i ʻole e wehewehe i kāu papa hana aʻo",
+    "courseListFiltersLabel": "Kānana papa",
+    "allCoursesFilterTooltip": "Hōʻike i nā papa āpau",
+    "teachingCoursesFilterTooltip": "Hōʻike wale i nā papa āu e aʻo ai",
+    "learningCoursesFilterTooltip": "Hōʻike wale i nā papa āu e aʻo nei",
+    "searchCoursesHint": "Huli papa",
+    "noCoursesMatchSearch": "ʻAʻohe papa e like me kāu hulina."
 }

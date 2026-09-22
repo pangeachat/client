@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "Untskoattelje skriuwassistinsje",
     "courseSectionTeaching": "Lesjaan",
     "courseSectionLearning": "Leare",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kursus} other{{count} kursussen}}",
     "showMore": "Mear sjen litte",
     "showLess": "Minder sjen litte",
     "countNewMessages": "{count, plural, =1{1 nij berjocht} other{{count} nije berjochten}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 grammatika-item brûkt} other{{count} grammatika-items brûkt}}",
     "playVideo": "Fideo ôfspylje",
     "videoPlayer": "Fideospiler",
-    "customCourseTextbookHint": "Fertel ús hokker learboek jo brûke, of beskriuw jo kurrikulum"
+    "customCourseTextbookHint": "Fertel ús hokker learboek jo brûke, of beskriuw jo kurrikulum",
+    "courseListFiltersLabel": "Kursusfilters",
+    "allCoursesFilterTooltip": "Lit alle kursussen sjen",
+    "teachingCoursesFilterTooltip": "Lit allinnich kursussen sjen dy't jo jouwe",
+    "learningCoursesFilterTooltip": "Lit allinnich kursussen sjen dêr't jo yn leare",
+    "searchCoursesHint": "Sykje kursussen",
+    "noCoursesMatchSearch": "Gjin kursussen komme oerien mei jo sykopdracht."
 }

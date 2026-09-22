@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "Zhblo asistencën e shkrimit",
     "courseSectionTeaching": "Mësimdhënie",
     "courseSectionLearning": "Të nxënit",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kurs} other{{count} kurse}}",
     "showMore": "Shfaq më shumë",
     "showLess": "Shfaq më pak",
     "countNewMessages": "{count, plural, =1{1 mesazh i ri} other{{count} mesazhe të reja}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 element gramatikor i përdorur} other{{count} elemente gramatikore të përdorura}}",
     "playVideo": "Luaj videon",
     "videoPlayer": "Luajtës videoje",
-    "customCourseTextbookHint": "Na tregoni çfarë libri përdorni, ose përshkruani planprogramin tuaj"
+    "customCourseTextbookHint": "Na tregoni çfarë libri përdorni, ose përshkruani planprogramin tuaj",
+    "courseListFiltersLabel": "Filtra kursesh",
+    "allCoursesFilterTooltip": "Shfaq të gjitha kurset",
+    "teachingCoursesFilterTooltip": "Shfaq vetëm kurset që jepni mësim",
+    "learningCoursesFilterTooltip": "Shfaq vetëm kurset ku po mësoni",
+    "searchCoursesHint": "Kërko kurse",
+    "noCoursesMatchSearch": "Asnjë kurs nuk përputhet me kërkimin tuaj."
 }

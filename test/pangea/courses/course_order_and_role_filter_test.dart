@@ -6,17 +6,17 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/constants/default_power_level.dart';
 import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
-import 'package:fluffychat/pangea/spaces/course_role_groups.dart';
+import 'package:fluffychat/pangea/spaces/course_role_filter.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_room_types.dart';
+import 'package:fluffychat/routes/world/left_panel/left_panel_courses_list_view.dart';
 import '../get_test_client.dart';
 
-/// Coverage for #8425: the Courses hub and the nav rail split the learner's
-/// courses by role — invited, teaching (course admin), learning — but only
-/// when the learner actually holds both roles; otherwise the list is flat with
-/// invites first. And for #9004: within that order, joined courses sort by
-/// recent activity across the space and its joined children, with ties and
-/// invites ordered by name.
+/// Coverage for the Courses hub's and the nav rail's one course order (#9004,
+/// #9207): invites first, then every joined course by recent activity across
+/// the space and its joined children, whatever the learner's role in it, with
+/// ties and invites ordered by name. And for the hub's role filter pills
+/// (#9207): which courses each pill keeps, and when the pills show at all.
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -138,112 +138,56 @@ void main() {
       .map((r) => r.getState(EventTypes.RoomName)!.content['name'] as String)
       .toList();
 
-  test('splits by role, by name within each group when activity ties', () {
-    course('Korean Basics');
-    course('Deutsch A1', ownPowerLevel: SpaceConstants.powerLevelOfAdmin);
-    course('Português', invited: true);
-    course('Español 2', ownPowerLevel: SpaceConstants.powerLevelOfAdmin);
-    course('Arabic Alphabet');
-
-    final groups = client.coursesByRole(l10n);
-
-    expect(names(groups.invited), ['Português']);
-    expect(names(groups.teaching), ['Deutsch A1', 'Español 2']);
-    expect(names(groups.learning), ['Arabic Alphabet', 'Korean Basics']);
-    expect(groups.isGrouped, isTrue);
-    expect(groups.courseCount, 5);
-    expect(groups.sectionCount, 3, reason: 'invited + teaching + learning');
-    expect(groups.sections.map((s) => s.group), [
-      CourseRoleGroup.invited,
-      CourseRoleGroup.teaching,
-      CourseRoleGroup.learning,
-    ]);
-    expect(
-      names(groups.ordered),
-      [
-        'Português',
-        'Deutsch A1',
-        'Español 2',
-        'Arabic Alphabet',
-        'Korean Basics',
-      ],
-      reason: 'display order is invited · teaching · learning',
-    );
-  });
-
-  test('a pure learner is not grouped and keeps the old order', () {
-    course('Korean Basics');
-    course('Português', invited: true);
-    course('Arabic Alphabet');
-
-    final groups = client.coursesByRole(l10n);
-
-    expect(groups.isGrouped, isFalse);
-    expect(groups.sectionCount, 0, reason: 'no headers for a single role');
-    expect(
-      names(groups.ordered),
-      names(client.sortedCourses(l10n)),
-      reason: 'the flat list is the same invites-first order',
-    );
-  });
-
-  test('a pure teacher is not grouped either', () {
-    course('Deutsch A1', ownPowerLevel: SpaceConstants.powerLevelOfAdmin);
-    course('Español 2', ownPowerLevel: SpaceConstants.powerLevelOfAdmin);
-
-    final groups = client.coursesByRole(l10n);
-
-    expect(groups.isGrouped, isFalse);
-    expect(groups.sectionCount, 0);
-    expect(names(groups.ordered), ['Deutsch A1', 'Español 2']);
-  });
-
-  test('an invite is never counted as teaching, even at admin power', () {
-    // Power levels are not part of stripped invite state in practice, but if
-    // one is present the invite still belongs to the invited group: its role
-    // is unknown until join.
-    course(
-      'Português',
-      invited: true,
+  test('sorts joined courses by activity across roles, invites first', () {
+    final korean = course('Korean Basics');
+    final deutsch = course(
+      'Deutsch A1',
       ownPowerLevel: SpaceConstants.powerLevelOfAdmin,
     );
-    course('Korean Basics');
-    course('Deutsch A1', ownPowerLevel: SpaceConstants.powerLevelOfAdmin);
+    course('Português', invited: true);
+    course('Español 2', ownPowerLevel: SpaceConstants.powerLevelOfAdmin);
+    course('Arabic Alphabet');
+    childChat(korean, 'Korean chat', lastActivity: DateTime(2026, 3, 2));
+    childChat(deutsch, 'Deutsch chat', lastActivity: DateTime(2026, 3, 1));
 
-    final groups = client.coursesByRole(l10n);
-
-    expect(names(groups.invited), ['Português']);
-    expect(names(groups.teaching), ['Deutsch A1']);
-    expect(names(groups.learning), ['Korean Basics']);
-    expect(groups.sectionCount, 3);
+    expect(
+      names(client.sortedCourses(l10n)),
+      [
+        'Português',
+        'Korean Basics',
+        'Deutsch A1',
+        'Arabic Alphabet',
+        'Español 2',
+      ],
+      reason: 'a learning course and a teaching course interleave by activity',
+    );
   });
 
-  test('a newer event in a child chat moves its course up its group', () {
+  test('a newer event in a child chat moves its course to the top', () {
     final arabic = course('Arabic Alphabet');
     final korean = course('Korean Basics');
     final deutsch = course(
       'Deutsch A1',
       ownPowerLevel: SpaceConstants.powerLevelOfAdmin,
     );
-    course('Español 2', ownPowerLevel: SpaceConstants.powerLevelOfAdmin);
     childChat(arabic, 'Arabic chat', lastActivity: DateTime(2026, 3, 1));
     childChat(korean, 'Korean chat', lastActivity: DateTime(2026, 3, 2));
-    childChat(deutsch, 'Deutsch chat', lastActivity: DateTime(2026, 2, 1));
+    childChat(deutsch, 'Deutsch chat', lastActivity: DateTime(2026, 3, 3));
 
-    var groups = client.coursesByRole(l10n);
-
-    expect(names(groups.learning), ['Korean Basics', 'Arabic Alphabet']);
-    expect(
-      names(groups.teaching),
-      ['Deutsch A1', 'Español 2'],
-      reason: 'grouping is kept: a teaching course never jumps into learning',
-    );
+    expect(names(client.sortedCourses(l10n)), [
+      'Deutsch A1',
+      'Korean Basics',
+      'Arabic Alphabet',
+    ]);
 
     // Activity arrives in the bottom course: the order re-sorts live.
-    childChat(arabic, 'Arabic session', lastActivity: DateTime(2026, 3, 3));
-    groups = client.coursesByRole(l10n);
+    childChat(arabic, 'Arabic session', lastActivity: DateTime(2026, 3, 4));
 
-    expect(names(groups.learning), ['Arabic Alphabet', 'Korean Basics']);
+    expect(names(client.sortedCourses(l10n)), [
+      'Arabic Alphabet',
+      'Deutsch A1',
+      'Korean Basics',
+    ]);
   });
 
   test("the space's own newest event counts as activity", () {
@@ -303,9 +247,87 @@ void main() {
     ]);
   });
 
-  test('section titles resolve through l10n', () {
-    expect(CourseRoleGroup.invited.title(l10n), l10n.invited);
-    expect(CourseRoleGroup.teaching.title(l10n), l10n.courseSectionTeaching);
-    expect(CourseRoleGroup.learning.title(l10n), l10n.courseSectionLearning);
+  group('CourseRoleFilter', () {
+    test('teaching keeps joined admin courses, learning the rest', () {
+      course('Korean Basics');
+      course('Deutsch A1', ownPowerLevel: SpaceConstants.powerLevelOfAdmin);
+      course('Español 2', ownPowerLevel: 50);
+      final courses = client.sortedCourses(l10n);
+
+      expect(
+        names(courses.where(CourseRoleFilter.teaching.includes).toList()),
+        ['Deutsch A1'],
+      );
+      expect(
+        names(courses.where(CourseRoleFilter.learning.includes).toList()),
+        ['Español 2', 'Korean Basics'],
+        reason: 'a moderator is not an admin, so it is a learning course',
+      );
+      expect(
+        names(courses.where(CourseRoleFilter.all.includes).toList()),
+        names(courses),
+      );
+    });
+
+    test('an invite shows under All only, even at admin power', () {
+      // Power levels are not part of stripped invite state in practice, but
+      // if one is present the invite's role is still unknown until join.
+      course(
+        'Português',
+        invited: true,
+        ownPowerLevel: SpaceConstants.powerLevelOfAdmin,
+      );
+      final courses = client.sortedCourses(l10n);
+
+      expect(courses.where(CourseRoleFilter.all.includes), hasLength(1));
+      expect(courses.where(CourseRoleFilter.teaching.includes), isEmpty);
+      expect(courses.where(CourseRoleFilter.learning.includes), isEmpty);
+    });
+
+    test('the pills show only when the learner holds both roles', () {
+      course('Korean Basics');
+      course('Português', invited: true);
+      expect(
+        CourseRoleFilter.appliesTo(client.sortedCourses(l10n)),
+        isFalse,
+        reason: 'a pure learner has nothing to filter',
+      );
+
+      course('Deutsch A1', ownPowerLevel: SpaceConstants.powerLevelOfAdmin);
+      expect(CourseRoleFilter.appliesTo(client.sortedCourses(l10n)), isTrue);
+    });
+
+    test('a pure teacher sees no pills either', () {
+      course('Deutsch A1', ownPowerLevel: SpaceConstants.powerLevelOfAdmin);
+      course('Español 2', ownPowerLevel: SpaceConstants.powerLevelOfAdmin);
+
+      expect(CourseRoleFilter.appliesTo(client.sortedCourses(l10n)), isFalse);
+    });
+
+    test('labels reuse the Teaching / Learning strings', () {
+      expect(CourseRoleFilter.all.label(l10n), l10n.all);
+      expect(CourseRoleFilter.teaching.label(l10n), l10n.courseSectionTeaching);
+      expect(CourseRoleFilter.learning.label(l10n), l10n.courseSectionLearning);
+    });
+  });
+
+  group('LeftPanelCoursesListView.showsSearchBar', () {
+    test('counts joined courses only, and needs more than four', () {
+      for (final name in ['A', 'B', 'C', 'D']) {
+        course(name);
+      }
+      course('Invited', invited: true);
+      expect(
+        LeftPanelCoursesListView.showsSearchBar(client.sortedCourses(l10n)),
+        isFalse,
+        reason: 'four joined courses plus an invite is not more than four',
+      );
+
+      course('E', ownPowerLevel: SpaceConstants.powerLevelOfAdmin);
+      expect(
+        LeftPanelCoursesListView.showsSearchBar(client.sortedCourses(l10n)),
+        isTrue,
+      );
+    });
   });
 }

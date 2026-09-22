@@ -9799,7 +9799,6 @@
     "unlockWritingAssistance": "Buka bantuan menulis",
     "courseSectionTeaching": "Mengajar",
     "courseSectionLearning": "Belajar",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kursus} other{{count} kursus}}",
     "showMore": "Tampilkan lebih banyak",
     "showLess": "Tampilkan lebih sedikit",
     "countNewMessages": "{count, plural, =1{1 pesan baru} other{{count} pesan baru}}",
@@ -10015,5 +10014,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 item tata bahasa digunakan} other{{count} item tata bahasa digunakan}}",
     "playVideo": "Putar video",
     "videoPlayer": "Pemutar video",
-    "customCourseTextbookHint": "Beri tahu kami buku teks apa yang Anda gunakan, atau jelaskan kurikulum Anda"
+    "customCourseTextbookHint": "Beri tahu kami buku teks apa yang Anda gunakan, atau jelaskan kurikulum Anda",
+    "courseListFiltersLabel": "Filter kursus",
+    "allCoursesFilterTooltip": "Tampilkan semua kursus",
+    "teachingCoursesFilterTooltip": "Tampilkan hanya kursus yang Anda ajarkan",
+    "learningCoursesFilterTooltip": "Tampilkan hanya kursus yang sedang Anda pelajari",
+    "searchCoursesHint": "Cari kursus",
+    "noCoursesMatchSearch": "Tidak ada kursus yang cocok dengan pencarian Anda."
 }

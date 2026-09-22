@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "ਲਿਖਣ ਸਹਾਇਤਾ ਅਨਲੌਕ ਕਰੋ",
     "courseSectionTeaching": "ਸਿਖਾਉਣਾ",
     "courseSectionLearning": "ਸਿੱਖਣਾ",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 ਕੋਰਸ} other{{count} ਕੋਰਸ}}",
     "showMore": "ਹੋਰ ਦਿਖਾਓ",
     "showLess": "ਘੱਟ ਦਿਖਾਓ",
     "countNewMessages": "{count, plural, =1{1 ਨਵਾਂ ਸੁਨੇਹਾ} other{{count} ਨਵੇਂ ਸੁਨੇਹੇ}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 ਵਿਆਕਰਨ ਆਈਟਮ ਵਰਤੀ ਗਈ} other{{count} ਵਿਆਕਰਨ ਆਈਟਮਾਂ ਵਰਤੀਆਂ ਗਈਆਂ}}",
     "playVideo": "ਵੀਡੀਓ ਚਲਾਓ",
     "videoPlayer": "ਵੀਡੀਓ ਪਲੇਅਰ",
-    "customCourseTextbookHint": "ਸਾਨੂੰ ਦੱਸੋ ਕਿ ਤੁਸੀਂ ਕਿਹੜੀ ਪਾਠ-ਪੁਸਤਕ ਵਰਤਦੇ ਹੋ, ਜਾਂ ਆਪਣੇ ਪਾਠਕ੍ਰਮ ਦਾ ਵਰਣਨ ਕਰੋ"
+    "customCourseTextbookHint": "ਸਾਨੂੰ ਦੱਸੋ ਕਿ ਤੁਸੀਂ ਕਿਹੜੀ ਪਾਠ-ਪੁਸਤਕ ਵਰਤਦੇ ਹੋ, ਜਾਂ ਆਪਣੇ ਪਾਠਕ੍ਰਮ ਦਾ ਵਰਣਨ ਕਰੋ",
+    "courseListFiltersLabel": "ਕੋਰਸ ਫਿਲਟਰ",
+    "allCoursesFilterTooltip": "ਸਾਰੇ ਕੋਰਸ ਦਿਖਾਓ",
+    "teachingCoursesFilterTooltip": "ਸਿਰਫ਼ ਉਹ ਕੋਰਸ ਦਿਖਾਓ ਜੋ ਤੁਸੀਂ ਪੜ੍ਹਾਉਂਦੇ ਹੋ",
+    "learningCoursesFilterTooltip": "ਸਿਰਫ਼ ਉਹ ਕੋਰਸ ਦਿਖਾਓ ਜਿਨ੍ਹਾਂ ਵਿੱਚ ਤੁਸੀਂ ਸਿੱਖ ਰਹੇ ਹੋ",
+    "searchCoursesHint": "ਕੋਰਸ ਖੋਜੋ",
+    "noCoursesMatchSearch": "ਤੁਹਾਡੀ ਖੋਜ ਨਾਲ ਕੋਈ ਕੋਰਸ ਮੇਲ ਨਹੀਂ ਖਾਂਦਾ।"
 }

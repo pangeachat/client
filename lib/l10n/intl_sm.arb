@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "Tatala le fesoasoani tusitusi",
     "courseSectionTeaching": "Aʻoaʻoina",
     "courseSectionLearning": "Aʻoaʻo",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kosi} other{{count} kosi}}",
     "showMore": "Fa'aali atili",
     "showLess": "Fa'aali itiiti",
     "countNewMessages": "{count, plural, =1{1 feʻau fou} other{{count} feʻau fou}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 kalama faʻaaoga} other{{count} kalama faʻaaoga}}",
     "playVideo": "Tā le vitiō",
     "videoPlayer": "Tagata taalo vitiō",
-    "customCourseTextbookHint": "Taʻu mai le tusi aʻoga e te faʻaaogaina, pe faʻamatala lau aʻoaʻoga"
+    "customCourseTextbookHint": "Taʻu mai le tusi aʻoga e te faʻaaogaina, pe faʻamatala lau aʻoaʻoga",
+    "courseListFiltersLabel": "Faamama o kosi",
+    "allCoursesFilterTooltip": "Fa'aali kosi uma",
+    "teachingCoursesFilterTooltip": "Fa'aali na'o kosi o lo'o e a'oa'oina",
+    "learningCoursesFilterTooltip": "Fa'aali na'o kosi o lo'o e a'oa'oina ai",
+    "searchCoursesHint": "Su'e kosi",
+    "noCoursesMatchSearch": "Leai ni kosi e fetaui ma lau su'esu'ega."
 }

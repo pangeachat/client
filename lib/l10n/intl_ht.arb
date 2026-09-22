@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "Debloke asistans pou ekri",
     "courseSectionTeaching": "Anseye",
     "courseSectionLearning": "Aprann",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kou} other{{count} kou}}",
     "showMore": "Montre plis",
     "showLess": "Montre mwens",
     "countNewMessages": "{count, plural, =1{1 nouvo mesaj} other{{count} nouvo mesaj}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 atik gramè itilize} other{{count} atik gramè itilize}}",
     "playVideo": "Gade videyo",
     "videoPlayer": "Lektè videyo",
-    "customCourseTextbookHint": "Di nou ki liv ou itilize, oswa dekri kourikoulòm ou"
+    "customCourseTextbookHint": "Di nou ki liv ou itilize, oswa dekri kourikoulòm ou",
+    "courseListFiltersLabel": "Filtè kou",
+    "allCoursesFilterTooltip": "Montre tout kou",
+    "teachingCoursesFilterTooltip": "Montre sèlman kou ou anseye yo",
+    "learningCoursesFilterTooltip": "Montre sèlman kou w ap aprann yo",
+    "searchCoursesHint": "Chèche kou",
+    "noCoursesMatchSearch": "Pa gen okenn kou ki koresponn ak rechèch ou an."
 }

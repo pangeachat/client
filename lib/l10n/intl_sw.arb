@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "Fungua usaidizi wa kuandika",
     "courseSectionTeaching": "Kufundisha",
     "courseSectionLearning": "Kujifunza",
-    "courseSectionLabel": "{title}, {count, plural, =1{kozi 1} other{kozi {count}}}",
     "showMore": "Onyesha zaidi",
     "showLess": "Onyesha kidogo",
     "countNewMessages": "{count, plural, =1{ujumbe 1 mpya} other{jumbe {count} mpya}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{kipengee 1 cha sarufi kimetumika} other{vipengee {count} vya sarufi vimetumika}}",
     "playVideo": "Cheza video",
     "videoPlayer": "Kicheza video",
-    "customCourseTextbookHint": "Tuambie ni kitabu gani unachotumia, au eleza mtaala wako"
+    "customCourseTextbookHint": "Tuambie ni kitabu gani unachotumia, au eleza mtaala wako",
+    "courseListFiltersLabel": "Vichujio vya kozi",
+    "allCoursesFilterTooltip": "Onyesha kozi zote",
+    "teachingCoursesFilterTooltip": "Onyesha kozi unazofundisha pekee",
+    "learningCoursesFilterTooltip": "Onyesha kozi unazojifunza pekee",
+    "searchCoursesHint": "Tafuta kozi",
+    "noCoursesMatchSearch": "Hakuna kozi zinazolingana na utafutaji wako."
 }

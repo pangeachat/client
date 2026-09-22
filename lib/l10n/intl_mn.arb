@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "Бичихэд туслахыг нээх",
     "courseSectionTeaching": "Заах",
     "courseSectionLearning": "Сурах",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 хичээл} other{{count} хичээл}}",
     "showMore": "Илүү ихийг харах",
     "showLess": "Бага харах",
     "countNewMessages": "{count, plural, =1{1 шинэ мессеж} other{{count} шинэ мессеж}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 дүрмийн зүйл ашигласан} other{{count} дүрмийн зүйл ашигласан}}",
     "playVideo": "Видео тоглуулах",
     "videoPlayer": "Видео тоглуулагч",
-    "customCourseTextbookHint": "Та ямар сурах бичиг ашигладаг эсвэл сургалтын хөтөлбөрөө тайлбарлана уу"
+    "customCourseTextbookHint": "Та ямар сурах бичиг ашигладаг эсвэл сургалтын хөтөлбөрөө тайлбарлана уу",
+    "courseListFiltersLabel": "Хичээлийн шүүлтүүр",
+    "allCoursesFilterTooltip": "Бүх хичээлийг харуулах",
+    "teachingCoursesFilterTooltip": "Таны заадаг хичээлүүдийг л харуулах",
+    "learningCoursesFilterTooltip": "Таны сурч буй хичээлүүдийг л харуулах",
+    "searchCoursesHint": "Хичээл хайх",
+    "noCoursesMatchSearch": "Таны хайлтад тохирох хичээл байхгүй байна."
 }

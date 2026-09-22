@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "Vhura rubatsiro rwekunyora",
     "courseSectionTeaching": "Kudzidzisa",
     "courseSectionLearning": "Kudzidza",
-    "courseSectionLabel": "{title}, {count, plural, =1{kosi 1} other{makosi {count}}}",
     "showMore": "Ratidza zvimwe",
     "showLess": "Ratidza zvishoma",
     "countNewMessages": "{count, plural, =1{1 meseji itsva} other{{count} meseji itsva}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 girama yakashandiswa} other{{count} girama dzakashandiswa}}",
     "playVideo": "Ridza vhidhiyo",
     "videoPlayer": "Mutambi wevhidhiyo",
-    "customCourseTextbookHint": "Tiudze kuti ndeipi bhuku raunoshandisa, kana kuti tsanangura chirongwa chako chekudzidza"
+    "customCourseTextbookHint": "Tiudze kuti ndeipi bhuku raunoshandisa, kana kuti tsanangura chirongwa chako chekudzidza",
+    "courseListFiltersLabel": "Sefa dzeKosi",
+    "allCoursesFilterTooltip": "Ratidza makosi ese",
+    "teachingCoursesFilterTooltip": "Ratidza makosi aunodzidzisa chete",
+    "learningCoursesFilterTooltip": "Ratidza makosi aunodzidza chete",
+    "searchCoursesHint": "Tsvaga makosi",
+    "noCoursesMatchSearch": "Hapana makosi anoenderana nekutsvaga kwako."
 }

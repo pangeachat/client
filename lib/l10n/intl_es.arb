@@ -7949,7 +7949,6 @@
     "unlockWritingAssistance": "Desbloquear asistencia de escritura",
     "courseSectionTeaching": "Enseñanza",
     "courseSectionLearning": "Aprendizaje",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 curso} other{{count} cursos}}",
     "showMore": "Mostrar más",
     "showLess": "Mostrar menos",
     "countNewMessages": "{count, plural, =1{1 mensaje nuevo} other{{count} mensajes nuevos}}",
@@ -8161,5 +8160,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 elemento de gramática usado} other{{count} elementos de gramática usados}}",
     "playVideo": "Reproducir vídeo",
     "videoPlayer": "Reproductor de vídeo",
-    "customCourseTextbookHint": "Dinos qué libro de texto usas o describe tu plan de estudios"
+    "customCourseTextbookHint": "Dinos qué libro de texto usas o describe tu plan de estudios",
+    "courseListFiltersLabel": "Filtros de cursos",
+    "allCoursesFilterTooltip": "Mostrar todos los cursos",
+    "teachingCoursesFilterTooltip": "Mostrar solo los cursos que enseñas",
+    "learningCoursesFilterTooltip": "Mostrar solo los cursos en los que estás aprendiendo",
+    "searchCoursesHint": "Buscar cursos",
+    "noCoursesMatchSearch": "No hay cursos que coincidan con tu búsqueda."
 }

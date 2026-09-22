@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "لکڻ جي مدد کوليو",
     "courseSectionTeaching": "سيکارڻ",
     "courseSectionLearning": "سکڻ",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 ڪورس} other{{count} ڪورس}}",
     "showMore": "وڌيڪ ڏيکاريو",
     "showLess": "گهٽ ڏيکاريو",
     "countNewMessages": "{count, plural, =1{1 نئون پيغام} other{{count} نوان پيغام}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 گرامر جو آئٽم استعمال ٿيو} other{{count} گرامر جا آئٽم استعمال ٿيا}}",
     "playVideo": "وڊيو هلايو",
     "videoPlayer": "وڊيو پليئر",
-    "customCourseTextbookHint": "اسان کي ٻڌايو ته توهان ڪهڙي درسي ڪتاب استعمال ڪندا آهيو، يا پنهنجي نصاب جي وضاحت ڪريو"
+    "customCourseTextbookHint": "اسان کي ٻڌايو ته توهان ڪهڙي درسي ڪتاب استعمال ڪندا آهيو، يا پنهنجي نصاب جي وضاحت ڪريو",
+    "courseListFiltersLabel": "ڪورس فلٽر",
+    "allCoursesFilterTooltip": "سڀئي ڪورس ڏيکاريو",
+    "teachingCoursesFilterTooltip": "صرف اهي ڪورس ڏيکاريو جيڪي توهان سيکاريو ٿا",
+    "learningCoursesFilterTooltip": "صرف اهي ڪورس ڏيکاريو جن ۾ توهان سکي رهيا آهيو",
+    "searchCoursesHint": "ڪورس ڳوليو",
+    "noCoursesMatchSearch": "توهان جي ڳولا سان ڪو به ڪورس نٿو ملي."
 }

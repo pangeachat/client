@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "אַנשליסן שרייבן הילף",
     "courseSectionTeaching": "לערנען",
     "courseSectionLearning": "לערנונג",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 קורס} other{{count} קורסן}}",
     "showMore": "ווייַזן מער",
     "showLess": "ווייַזן ווייניקער",
     "countNewMessages": "{count, plural, =1{1 נייַע אָנזאָג} other{{count} נייַע אַרטיקלען}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 גראַמאַטיק נומער געניצט} other{{count} גראַמאַטיק נומערן געניצט}}",
     "playVideo": "שפּיל ווידעא",
     "videoPlayer": "ווידעא שפּילער",
-    "customCourseTextbookHint": "זאָג אונדז וועלכע לערנבוך דו ניצט, אָדער באַשרײַב דיין לערנפּלאַן"
+    "customCourseTextbookHint": "זאָג אונדז וועלכע לערנבוך דו ניצט, אָדער באַשרײַב דיין לערנפּלאַן",
+    "courseListFiltersLabel": "קורס פֿילטערס",
+    "allCoursesFilterTooltip": "ווײַזן אַלע קורסן",
+    "teachingCoursesFilterTooltip": "ווײַזן נאָר קורסן וואָס איר לערנט",
+    "learningCoursesFilterTooltip": "ווײַזן נאָר קורסן וואָס איר לערנט זיך אין",
+    "searchCoursesHint": "זוכן קורסן",
+    "noCoursesMatchSearch": "קיין קורסן שטימען נישט מיט אײַער זוך."
 }

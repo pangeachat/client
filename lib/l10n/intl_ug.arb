@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "يېزىش ياردىمىنى ئېچىڭ",
     "courseSectionTeaching": "ئۆگىتىش",
     "courseSectionLearning": "ئۆگىنىش",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 دەرسلىك} other{{count} دەرسلىك}}",
     "showMore": "تېخىمۇ كۆپ كۆرسەت",
     "showLess": "ئازراق كۆرسەت",
     "countNewMessages": "{count, plural, =1{1 يېڭى ئۇچۇر} other{{count} يېڭى ئۇچۇر}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 گرامماتىكا تۈرى ئىشلىتىلدى} other{{count} گرامماتىكا تۈرلىرى ئىشلىتىلدى}}",
     "playVideo": "سىن قويۇش",
     "videoPlayer": "سىن قويغۇچ",
-    "customCourseTextbookHint": "قايسى دەرسلىك كىتابنى ئىشلىتىدىغانلىقىڭىزنى ياكى ئوقۇتۇش پىلانىڭىزنى تەسۋىرلەپ بېرىڭ"
+    "customCourseTextbookHint": "قايسى دەرسلىك كىتابنى ئىشلىتىدىغانلىقىڭىزنى ياكى ئوقۇتۇش پىلانىڭىزنى تەسۋىرلەپ بېرىڭ",
+    "courseListFiltersLabel": "كۇرس سۈزگۈچلىرى",
+    "allCoursesFilterTooltip": "بارلىق كۇرسلارنى كۆرسەت",
+    "teachingCoursesFilterTooltip": "سىز ئۆگىتىۋاتقان كۇرسلارنىلا كۆرسەت",
+    "learningCoursesFilterTooltip": "سىز ئۆگىنىۋاتقان كۇرسلارنىلا كۆرسەت",
+    "searchCoursesHint": "كۇرس ئىزدە",
+    "noCoursesMatchSearch": "ئىزدەش نەتىجىڭىزگە ماس كېلىدىغان كۇرس يوق."
 }

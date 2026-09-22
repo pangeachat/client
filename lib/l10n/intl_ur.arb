@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "تحریری معاونت اَن لاک کریں",
     "courseSectionTeaching": "تدریس",
     "courseSectionLearning": "سیکھنا",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 کورس} other{{count} کورسز}}",
     "showMore": "مزید دکھائیں",
     "showLess": "کم دکھائیں",
     "countNewMessages": "{count, plural, =1{1 نیا پیغام} other{{count} نئے پیغامات}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 گرامر کا آئٹم استعمال ہوا} other{{count} گرامر کے آئٹمز استعمال ہوئے}}",
     "playVideo": "ویڈیو چلائیں",
     "videoPlayer": "ویڈیو پلیئر",
-    "customCourseTextbookHint": "ہمیں بتائیں کہ آپ کون سی درسی کتاب استعمال کرتے ہیں، یا اپنے نصاب کی وضاحت کریں"
+    "customCourseTextbookHint": "ہمیں بتائیں کہ آپ کون سی درسی کتاب استعمال کرتے ہیں، یا اپنے نصاب کی وضاحت کریں",
+    "courseListFiltersLabel": "کورس فلٹرز",
+    "allCoursesFilterTooltip": "تمام کورسز دکھائیں",
+    "teachingCoursesFilterTooltip": "صرف وہ کورسز دکھائیں جو آپ پڑھاتے ہیں",
+    "learningCoursesFilterTooltip": "صرف وہ کورسز دکھائیں جن میں آپ سیکھ رہے ہیں",
+    "searchCoursesHint": "کورسز تلاش کریں",
+    "noCoursesMatchSearch": "آپ کی تلاش سے کوئی کورس مماثل نہیں ہے۔"
 }

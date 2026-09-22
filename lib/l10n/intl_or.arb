@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "ଲେଖିବା ସହାୟତା ଅନଲକ୍ କରନ୍ତୁ",
     "courseSectionTeaching": "ଶିକ୍ଷାଦାନ",
     "courseSectionLearning": "ଶିକ୍ଷାଲାଭ",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 କୋର୍ସ} other{{count} କୋର୍ସ}}",
     "showMore": "ଅଧିକ ଦେଖାନ୍ତୁ",
     "showLess": "କମ୍ ଦେଖାନ୍ତୁ",
     "countNewMessages": "{count, plural, =1{ଗୋଟିଏ ନୂଆ ବାର୍ତ୍ତା} other{{count} ନୂଆ ବାର୍ତ୍ତା}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 ବ୍ୟାକରଣ ବସ୍ତୁ ବ୍ୟବହୃତ ହୋଇଛି} other{{count} ବ୍ୟାକରଣ ବସ୍ତୁ ବ୍ୟବହୃତ ହୋଇଛି}}",
     "playVideo": "ଭିଡିଓ ଚଲାନ୍ତୁ",
     "videoPlayer": "ଭିଡିଓ ପ୍ଲେୟାର",
-    "customCourseTextbookHint": "ଆପଣ କେଉଁ ପାଠ୍ୟପୁସ୍ତକ ବ୍ୟବହାର କରନ୍ତି, ତାହା ଆମକୁ କୁହନ୍ତୁ, କିମ୍ବା ଆପଣଙ୍କ ପାଠ୍ୟକ୍ରମ ବିଷୟରେ ବର୍ଣ୍ଣନା କରନ୍ତୁ"
+    "customCourseTextbookHint": "ଆପଣ କେଉଁ ପାଠ୍ୟପୁସ୍ତକ ବ୍ୟବହାର କରନ୍ତି, ତାହା ଆମକୁ କୁହନ୍ତୁ, କିମ୍ବା ଆପଣଙ୍କ ପାଠ୍ୟକ୍ରମ ବିଷୟରେ ବର୍ଣ୍ଣନା କରନ୍ତୁ",
+    "courseListFiltersLabel": "କୋର୍ସ ଫିଲ୍ଟର୍‌ଗୁଡ଼ିକ",
+    "allCoursesFilterTooltip": "ସମସ୍ତ କୋର୍ସ ଦେଖାନ୍ତୁ",
+    "teachingCoursesFilterTooltip": "କେବଳ ଆପଣ ଶିକ୍ଷା ଦେଉଥିବା କୋର୍ସଗୁଡ଼ିକୁ ଦେଖାନ୍ତୁ",
+    "learningCoursesFilterTooltip": "କେବଳ ଆପଣ ଶିକ୍ଷା ଗ୍ରହଣ କରୁଥିବା କୋର୍ସଗୁଡ଼ିକୁ ଦେଖାନ୍ତୁ",
+    "searchCoursesHint": "କୋର୍ସଗୁଡ଼ିକୁ ଖୋଜନ୍ତୁ",
+    "noCoursesMatchSearch": "ଆପଣଙ୍କ ସନ୍ଧାନ ସହିତ କୌଣସି କୋର୍ସ ମେଳ ଖାଉନାହିଁ।"
 }

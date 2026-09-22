@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "Vula usizo lokubhala",
     "courseSectionTeaching": "Ukufundisa",
     "courseSectionLearning": "Ukufunda",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 ikhosi} other{{count} amakhosi}}",
     "showMore": "Bonisa okwengeziwe",
     "showLess": "Bonisa okuncane",
     "countNewMessages": "{count, plural, =1{Umlayezo ongu-1 omusha} other{Imilayezo emisha engu-{count}}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 into yohlelo lolimi esetshenzisiwe} other{{count} izinto zohlelo lolimi ezisetshenzisiwe}}",
     "playVideo": "Dlala ividiyo",
     "videoPlayer": "Isidlali sevidiyo",
-    "customCourseTextbookHint": "Sitshele ukuthi isiphi incwadi yokufunda oyisebenzisayo, noma uchaze ikharikhulamu yakho"
+    "customCourseTextbookHint": "Sitshele ukuthi isiphi incwadi yokufunda oyisebenzisayo, noma uchaze ikharikhulamu yakho",
+    "courseListFiltersLabel": "Izihlungi zezifundo",
+    "allCoursesFilterTooltip": "Bonisa zonke izifundo",
+    "teachingCoursesFilterTooltip": "Bonisa kuphela izifundo ozifundisayo",
+    "learningCoursesFilterTooltip": "Bonisa kuphela izifundo ofunda kuzo",
+    "searchCoursesHint": "Sesha izifundo",
+    "noCoursesMatchSearch": "Azikho izifundo ezifana nosesho lwakho."
 }

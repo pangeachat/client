@@ -10662,7 +10662,6 @@
     "unlockWritingAssistance": "Diserara assistentia de scriptura",
     "courseSectionTeaching": "Inseniamento",
     "courseSectionLearning": "Apprendimento",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 curso} other{{count} cursos}}",
     "showMore": "Monstrar plus",
     "showLess": "Monstrar minus",
     "countNewMessages": "{count, plural, =1{1 nove message} other{{count} nove messages}}",
@@ -10878,5 +10877,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 articulo de grammatica usate} other{{count} articulos de grammatica usate}}",
     "playVideo": "Reproducer video",
     "videoPlayer": "Reproductor de video",
-    "customCourseTextbookHint": "Dice nos qual manual tu usa, o describe tu programma de studio"
+    "customCourseTextbookHint": "Dice nos qual manual tu usa, o describe tu programma de studio",
+    "courseListFiltersLabel": "Filtros de cursos",
+    "allCoursesFilterTooltip": "Monstrar tote le cursos",
+    "teachingCoursesFilterTooltip": "Monstrar solmente le cursos que tu insenia",
+    "learningCoursesFilterTooltip": "Monstrar solmente le cursos in le quales tu apprende",
+    "searchCoursesHint": "Cercar cursos",
+    "noCoursesMatchSearch": "Nulle cursos corresponde a tu cerca."
 }

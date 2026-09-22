@@ -9730,7 +9730,6 @@
     "unlockWritingAssistance": "Yozish yordamini ochish",
     "courseSectionTeaching": "Oʻqitish",
     "courseSectionLearning": "Oʻrganish",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kurs} other{{count} kurs}}",
     "showMore": "Koʻproq koʻrsatish",
     "showLess": "Kamroq koʻrsatish",
     "countNewMessages": "{count, plural, =1{1 ta yangi xabar} other{{count} ta yangi xabar}}",
@@ -9946,5 +9945,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 ta grammatika elementi ishlatildi} other{{count} ta grammatika elementi ishlatildi}}",
     "playVideo": "Videoni ijro etish",
     "videoPlayer": "Video pleer",
-    "customCourseTextbookHint": "Qaysi darslikdan foydalanishingizni ayting yoki o‘quv dasturingizni tasvirlab bering"
+    "customCourseTextbookHint": "Qaysi darslikdan foydalanishingizni ayting yoki o‘quv dasturingizni tasvirlab bering",
+    "courseListFiltersLabel": "Kurs filtrlari",
+    "allCoursesFilterTooltip": "Barcha kurslarni ko‘rsatish",
+    "teachingCoursesFilterTooltip": "Faqat siz o‘qitayotgan kurslarni ko‘rsatish",
+    "learningCoursesFilterTooltip": "Faqat siz o‘rganayotgan kurslarni ko‘rsatish",
+    "searchCoursesHint": "Kurslarni qidirish",
+    "noCoursesMatchSearch": "Qidiruvingizga mos kurslar topilmadi."
 }

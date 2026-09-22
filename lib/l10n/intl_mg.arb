@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "Sokafy ny fanampiana amin'ny fanoratana",
     "courseSectionTeaching": "Fampianarana",
     "courseSectionLearning": "Fianarana",
-    "courseSectionLabel": "{title}, {count, plural, =1{fianarana 1} other{fianarana {count}}}",
     "showMore": "Asehoy misimisy kokoa",
     "showLess": "Asehoy kely kokoa",
     "countNewMessages": "{count, plural, =1{1 hafatra vaovao} other{{count} hafatra vaovao}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 fitsipika nampiasaina} other{{count} fitsipika nampiasaina}}",
     "playVideo": "Alefaso ny horonan-tsary",
     "videoPlayer": "Mpilalao horonan-tsary",
-    "customCourseTextbookHint": "Lazao anay hoe boky fianarana inona no ampiasainao, na farito ny fandaharam-pianaranao"
+    "customCourseTextbookHint": "Lazao anay hoe boky fianarana inona no ampiasainao, na farito ny fandaharam-pianaranao",
+    "courseListFiltersLabel": "Sivana fianarana",
+    "allCoursesFilterTooltip": "Asehoy ny fianarana rehetra",
+    "teachingCoursesFilterTooltip": "Asehoy ireo fianarana ampianarinao ihany",
+    "learningCoursesFilterTooltip": "Asehoy ireo fianarana ianaranao ihany",
+    "searchCoursesHint": "Tadiavo ny fianarana",
+    "noCoursesMatchSearch": "Tsy misy fianarana mifanaraka amin'ny fikarohanao."
 }

@@ -10358,7 +10358,6 @@
     "unlockWritingAssistance": "ปลดล็อกตัวช่วยการเขียน",
     "courseSectionTeaching": "การสอน",
     "courseSectionLearning": "การเรียนรู้",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 คอร์ส} other{{count} คอร์ส}}",
     "showMore": "แสดงเพิ่มเติม",
     "showLess": "แสดงน้อยลง",
     "countNewMessages": "{count, plural, =1{1 ข้อความใหม่} other{{count} ข้อความใหม่}}",
@@ -10574,5 +10573,11 @@
     "grammarItemsUsed": "{count, plural, =1{ใช้ไวยากรณ์ 1 รายการ} other{ใช้ไวยากรณ์ {count} รายการ}}",
     "playVideo": "เล่นวิดีโอ",
     "videoPlayer": "เครื่องเล่นวิดีโอ",
-    "customCourseTextbookHint": "บอกเราว่าคุณใช้หนังสือเรียนเล่มไหน หรืออธิบายหลักสูตรของคุณ"
+    "customCourseTextbookHint": "บอกเราว่าคุณใช้หนังสือเรียนเล่มไหน หรืออธิบายหลักสูตรของคุณ",
+    "courseListFiltersLabel": "ตัวกรองคอร์ส",
+    "allCoursesFilterTooltip": "แสดงคอร์สทั้งหมด",
+    "teachingCoursesFilterTooltip": "แสดงเฉพาะคอร์สที่คุณสอน",
+    "learningCoursesFilterTooltip": "แสดงเฉพาะคอร์สที่คุณกำลังเรียน",
+    "searchCoursesHint": "ค้นหาคอร์ส",
+    "noCoursesMatchSearch": "ไม่มีคอร์สที่ตรงกับการค้นหาของคุณ"
 }

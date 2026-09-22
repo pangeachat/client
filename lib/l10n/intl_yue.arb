@@ -10683,7 +10683,6 @@
     "unlockWritingAssistance": "解鎖寫作輔助",
     "courseSectionTeaching": "教學",
     "courseSectionLearning": "學習",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 課程} other{{count} 課程}}",
     "showMore": "顯示更多",
     "showLess": "顯示較少",
     "countNewMessages": "{count, plural, =1{1 個新訊息} other{{count} 個新訊息}}",
@@ -10899,5 +10898,11 @@
     "grammarItemsUsed": "{count, plural, =1{已用1個文法項目} other{已用{count}個文法項目}}",
     "playVideo": "播放影片",
     "videoPlayer": "影片播放器",
-    "customCourseTextbookHint": "話我哋知你用緊邊本教科書，或者描述下你嘅課程"
+    "customCourseTextbookHint": "話我哋知你用緊邊本教科書，或者描述下你嘅課程",
+    "courseListFiltersLabel": "課程篩選",
+    "allCoursesFilterTooltip": "顯示所有課程",
+    "teachingCoursesFilterTooltip": "只顯示你教授的課程",
+    "learningCoursesFilterTooltip": "只顯示你正在學習的課程",
+    "searchCoursesHint": "搜尋課程",
+    "noCoursesMatchSearch": "沒有課程符合你的搜尋。"
 }

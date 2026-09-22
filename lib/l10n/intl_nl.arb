@@ -9726,7 +9726,6 @@
     "unlockWritingAssistance": "Ontgrendel schrijfhulp",
     "courseSectionTeaching": "Lesgeven",
     "courseSectionLearning": "Leren",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 cursus} other{{count} cursussen}}",
     "showMore": "Meer weergeven",
     "showLess": "Minder weergeven",
     "countNewMessages": "{count, plural, =1{1 nieuw bericht} other{{count} nieuwe berichten}}",
@@ -9942,5 +9941,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 grammatica-item gebruikt} other{{count} grammatica-items gebruikt}}",
     "playVideo": "Video afspelen",
     "videoPlayer": "Videospeler",
-    "customCourseTextbookHint": "Vertel ons welk leerboek je gebruikt, of beschrijf je lesprogramma"
+    "customCourseTextbookHint": "Vertel ons welk leerboek je gebruikt, of beschrijf je lesprogramma",
+    "courseListFiltersLabel": "Cursusfilters",
+    "allCoursesFilterTooltip": "Toon alle cursussen",
+    "teachingCoursesFilterTooltip": "Toon alleen cursussen die je geeft",
+    "learningCoursesFilterTooltip": "Toon alleen cursussen die je volgt",
+    "searchCoursesHint": "Zoek cursussen",
+    "noCoursesMatchSearch": "Geen cursussen komen overeen met je zoekopdracht."
 }

@@ -10354,7 +10354,6 @@
     "unlockWritingAssistance": "রাইটিং অ্যাসিস্টেন্স আনলক করুন",
     "courseSectionTeaching": "শিক্ষাদান",
     "courseSectionLearning": "শিক্ষাগ্রহন",
-    "courseSectionLabel": "{title}, {count, plural, =1{1টি কোর্স} other{{count}টি কোর্স}}",
     "showMore": "আরও দেখান",
     "showLess": "কম দেখান",
     "countNewMessages": "{count, plural, =1{১টি নতুন বার্তা} other{{count}টি নতুন বার্তা}}",
@@ -10570,5 +10569,11 @@
     "grammarItemsUsed": "{count, plural, =1{১টি ব্যাকরণ আইটেম ব্যবহার করা হয়েছে} other{{count}টি ব্যাকরণ আইটেম ব্যবহার করা হয়েছে}}",
     "playVideo": "ভিডিও চালান",
     "videoPlayer": "ভিডিও প্লেয়ার",
-    "customCourseTextbookHint": "আপনি কোন পাঠ্যপুস্তক ব্যবহার করেন তা আমাদের বলুন, অথবা আপনার পাঠ্যক্রম বর্ণনা করুন"
+    "customCourseTextbookHint": "আপনি কোন পাঠ্যপুস্তক ব্যবহার করেন তা আমাদের বলুন, অথবা আপনার পাঠ্যক্রম বর্ণনা করুন",
+    "courseListFiltersLabel": "কোর্স ফিল্টার",
+    "allCoursesFilterTooltip": "সব কোর্স দেখান",
+    "teachingCoursesFilterTooltip": "শুধুমাত্র আপনার শেখানো কোর্সগুলি দেখান",
+    "learningCoursesFilterTooltip": "শুধুমাত্র আপনি যে কোর্সগুলি শিখছেন তা দেখান",
+    "searchCoursesHint": "কোর্স খুঁজুন",
+    "noCoursesMatchSearch": "আপনার অনুসন্ধানের সাথে কোনো কোর্স মেলে না।"
 }

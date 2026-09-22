@@ -9829,7 +9829,6 @@
     "unlockWritingAssistance": "Írássegéd feloldása",
     "courseSectionTeaching": "Tanítás",
     "courseSectionLearning": "Tanulás",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kurzus} other{{count} kurzus}}",
     "showMore": "Több megjelenítése",
     "showLess": "Kevesebb megjelenítése",
     "countNewMessages": "{count, plural, =1{1 új üzenet} other{{count} új üzenet}}",
@@ -10045,5 +10044,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 nyelvtani elem felhasználva} other{{count} nyelvtani elem felhasználva}}",
     "playVideo": "Videó lejátszása",
     "videoPlayer": "Videólejátszó",
-    "customCourseTextbookHint": "Mondd el, milyen tankönyvet használsz, vagy írd le a tantervedet"
+    "customCourseTextbookHint": "Mondd el, milyen tankönyvet használsz, vagy írd le a tantervedet",
+    "courseListFiltersLabel": "Tanfolyam szűrők",
+    "allCoursesFilterTooltip": "Összes tanfolyam megjelenítése",
+    "teachingCoursesFilterTooltip": "Csak az oktatott tanfolyamok megjelenítése",
+    "learningCoursesFilterTooltip": "Csak a tanult tanfolyamok megjelenítése",
+    "searchCoursesHint": "Tanfolyamok keresése",
+    "noCoursesMatchSearch": "Nincs a keresésnek megfelelő tanfolyam."
 }

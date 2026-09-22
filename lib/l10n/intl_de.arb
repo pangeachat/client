@@ -9713,7 +9713,6 @@
     "unlockWritingAssistance": "Schreibassistenz freischalten",
     "courseSectionTeaching": "Unterricht",
     "courseSectionLearning": "Lernen",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 Kurs} other{{count} Kurse}}",
     "showMore": "Mehr anzeigen",
     "showLess": "Weniger anzeigen",
     "countNewMessages": "{count, plural, =1{1 neue Nachricht} other{{count} neue Nachrichten}}",
@@ -9929,5 +9928,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 Grammatik-Element verwendet} other{{count} Grammatik-Elemente verwendet}}",
     "playVideo": "Video abspielen",
     "videoPlayer": "Videoplayer",
-    "customCourseTextbookHint": "Nennen Sie uns Ihr Lehrbuch oder beschreiben Sie Ihren Lehrplan"
+    "customCourseTextbookHint": "Nennen Sie uns Ihr Lehrbuch oder beschreiben Sie Ihren Lehrplan",
+    "courseListFiltersLabel": "Kursfilter",
+    "allCoursesFilterTooltip": "Alle Kurse anzeigen",
+    "teachingCoursesFilterTooltip": "Nur Kurse anzeigen, die Sie unterrichten",
+    "learningCoursesFilterTooltip": "Nur Kurse anzeigen, in denen Sie lernen",
+    "searchCoursesHint": "Kurse suchen",
+    "noCoursesMatchSearch": "Keine Kurse entsprechen Ihrer Suche."
 }

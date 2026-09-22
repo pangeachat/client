@@ -2134,7 +2134,6 @@
     "unlockWritingAssistance": "Кӯмаки хаттиро кушоед",
     "courseSectionTeaching": "Омӯзиш",
     "courseSectionLearning": "Таълим",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 курс} other{{count} курс}}",
     "showMore": "Бештар нишон додан",
     "showLess": "Камтар нишон додан",
     "countNewMessages": "{count, plural, =1{1 паёми нав} other{{count} паёмҳои нав}}",
@@ -2346,5 +2345,11 @@
     "grammarItemsUsed": "{count, plural, =1{1 қоидаи грамматикӣ истифода шуд} other{{count} қоидаҳои грамматикӣ истифода шуданд}}",
     "playVideo": "Наворро бозӣ кунед",
     "videoPlayer": "Наворбоз",
-    "customCourseTextbookHint": "Ба мо бигӯед, ки аз кадом китоби дарсӣ истифода мебаред, ё барномаи таълимии худро тавсиф кунед"
+    "customCourseTextbookHint": "Ба мо бигӯед, ки аз кадом китоби дарсӣ истифода мебаред, ё барномаи таълимии худро тавсиф кунед",
+    "courseListFiltersLabel": "Филтрҳои курс",
+    "allCoursesFilterTooltip": "Ҳамаи курсҳоро нишон диҳед",
+    "teachingCoursesFilterTooltip": "Танҳо курсҳоеро нишон диҳед, ки шумо дарс медиҳед",
+    "learningCoursesFilterTooltip": "Танҳо курсҳоеро нишон диҳед, ки шумо меомӯзед",
+    "searchCoursesHint": "Ҷустуҷӯи курсҳо",
+    "noCoursesMatchSearch": "Ҳеҷ курсе ба ҷустуҷӯи шумо мувофиқат намекунад."
 }
