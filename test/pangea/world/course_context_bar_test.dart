@@ -13,6 +13,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
+import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_header_actions.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_progress_bar.dart';
@@ -111,7 +113,11 @@ void main() {
   /// The bar as the map mounts it: a course-scoped workspace (`?c=`) with no
   /// course panel in `?left=` — the state it exists for — on a wide screen,
   /// the only form factor that has a bar.
-  Future<void> pumpBar(WidgetTester tester, {bool showActions = true}) async {
+  Future<void> pumpBar(
+    WidgetTester tester, {
+    bool showActions = true,
+    bool settle = true,
+  }) async {
     tester.view.physicalSize = const Size(1280, 800);
     tester.view.devicePixelRatio = 1.0;
     addTearDown(tester.view.resetPhysicalSize);
@@ -151,7 +157,7 @@ void main() {
     // The L10n delegate resolves asynchronously — a single pumped frame leaves
     // the Localizations subtree empty, which would pass the negative case here
     // for the wrong reason.
-    await tester.pumpAndSettle();
+    if (settle) await tester.pumpAndSettle();
   }
 
   testWidgets('names the selected course and shows its progress', (
@@ -161,6 +167,49 @@ void main() {
 
     expect(find.text(courseName), findsOneWidget);
     expect(find.byType(CourseProgressBar), findsOneWidget);
+  });
+
+  /// #8938 (reopened) — collapsing the card mounts this bar, and the bar loads
+  /// its outline post-frame (it loads from `build`). The loader learned which
+  /// course it was showing only inside that load, so for its first frames the
+  /// bar read no course at all and drew the empty track, although the card had
+  /// already resolved this course's progress into the shared resolution. The
+  /// first fix was checked against a loader that loads synchronously, which
+  /// the bar never does — so this one goes through the bar itself.
+  testWidgets('its first frame shows the progress the card already resolved', (
+    tester,
+  ) async {
+    final card = QuestObjectivesLoader(client: client);
+    addTearDown(() {
+      card.progression.value = ProgressionResolution.empty;
+      card.dispose();
+    });
+    card.progression.value = const ProgressionResolution(
+      quests: [
+        QuestProgress(
+          courseId: spaceId,
+          questId: 'quest-1',
+          orderedMissionIds: ['lo-1'],
+          anchorMissionId: 'lo-1',
+          indexByMission: {'lo-1': 0},
+          rollup: {'lo-1': MissionProgress(stars: 2, threshold: 3)},
+        ),
+      ],
+    );
+
+    await pumpBar(tester, settle: false);
+    // The L10n delegate resolves asynchronously, so the bar's first frame is
+    // a pump or two in. Stop ON it: settling would let a late rebuild pass.
+    final track = find.byType(ProgressBarRow);
+    for (var i = 0; i < 10 && track.evaluate().isEmpty; i++) {
+      await tester.pump(const Duration(milliseconds: 16));
+    }
+
+    expect(
+      tester.widget<ProgressBarRow>(track).summary?.earned,
+      2,
+      reason: 'the incoming bar must not draw the empty track',
+    );
   });
 
   testWidgets('tapping it reopens the course card over the same context', (
