@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -419,39 +420,48 @@ class _TutorialScrim extends StatelessWidget {
       opacity: visible ? 1.0 : 0.0,
       duration: duration,
       child: ExcludeSemantics(
-        child: ColorFiltered(
-          colorFilter: const ColorFilter.mode(Colors.black, BlendMode.srcOut),
-          child: Stack(
-            children: [
-              // The srcOut filter above INVERTS this layer's alpha: what the
-              // learner sees is black at `1 - alpha`, and the opaque holes
-              // below punch straight through to nothing. Written as the
-              // inverse so the constant here is the darkness it produces.
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.black.withValues(
-                    alpha: 1 - Theme.of(context).scrimOpacity,
-                  ),
-                ),
-              ),
-
-              /// One "hole" per lit target.
+        child: CustomPaint(
+          size: Size.infinite,
+          painter: _ScrimPainter(
+            color: Colors.black.withValues(
+              alpha: Theme.of(context).scrimOpacity,
+            ),
+            holes: [
               for (final rect in spotlightRects)
-                Positioned.fromRect(
-                  rect: rect,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(borderRadius),
-                    ),
-                  ),
-                ),
+                RRect.fromRectAndRadius(rect, Radius.circular(borderRadius)),
             ],
           ),
         ),
       ),
     );
   }
+}
+
+/// Paints the scrim and clears one hole per lit target. Not a
+/// `ColorFiltered(srcOut)` over white holes: on web, once the scene holds a
+/// platform view (the goal header's embed shield is one), CanvasKit applied
+/// that filter to transparent pixels too and painted the app black.
+class _ScrimPainter extends CustomPainter {
+  _ScrimPainter({required this.color, required this.holes});
+
+  final Color color;
+  final List<RRect> holes;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final bounds = Offset.zero & size;
+    canvas.saveLayer(bounds, Paint());
+    canvas.drawRect(bounds, Paint()..color = color);
+    final clear = Paint()..blendMode = BlendMode.clear;
+    for (final hole in holes) {
+      canvas.drawRRect(hole, clear);
+    }
+    canvas.restore();
+  }
+
+  @override
+  bool shouldRepaint(_ScrimPainter old) =>
+      old.color != color || !listEquals(old.holes, holes);
 }
 
 /// The armed step's pointer barrier. Claims every pointer except those inside
