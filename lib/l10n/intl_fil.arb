@@ -2080,7 +2080,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-09-22 12:36:58.633997",
+    "@@last_modified": "2026-09-22 15:19:30.685926",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -8418,11 +8418,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "Ito ang lahat ng tao sa kursong ito. I-click ang avatar ng sinumang user at \"magsimula ng pag-uusap\" upang magpadala ng DM.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Babae",
     "man": "Lalaki",
     "otherGender": "Iba",
@@ -10812,5 +10807,8 @@
     "practiceListeningPrompt": "Alin ang nagsasabing ‘{word}’?",
     "practiceMeaningPrompt": "Ano ang ibig sabihin ng ‘{word}’?",
     "practiceEmojiPrompt": "Pumili ng emoji para sa ‘{word}’",
-    "practiceStepProgress": "{done} sa {total}"
+    "practiceStepProgress": "{done} sa {total}",
+    "leaderboard": "Leaderboard",
+    "leaderboardRank": "Ranggo {rank}",
+    "courseLeaderboardTooltip": "Lahat ng nasa kursong ito, niraranggo ayon sa kanilang mga bituin sa wika nito. I-tap ang isang miyembro at piliin ang “Simulan ang pag-uusap” para magpadala sa kanila ng DM."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-09-22 12:37:01.848313",
+    "@@last_modified": "2026-09-22 15:19:35.588130",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -1662,7 +1662,6 @@
     "otherGender": "Бусад",
     "unselectedGender": "Хүйс сонгоно уу",
     "modeDisabled": "Таны сурах хэлээр биш мессежүүдэд сургалтын хэрэгслүүд идэвхгүй байна.",
-    "courseParticipantTooltip": "Энэ бол энэ сургалтад хамрагдаж буй хүн бүр юм. Аливаа хэрэглэгчийн аватар дээр дарж, \"харилцан яриа эхлүүлэх\"-ийг сонгосноор DM илгээнэ үү.",
     "chatParticipantTooltip": "Энэ бол энэ чатад байгаа хүн бүр юм. Аливаа хэрэглэгчийн аватар дээр дарж, \"харилцан яриа эхлүүлэх\"-ийг сонгосноор DM илгээнэ үү.",
     "inOngoingActivity": "Таны дасгал үргэлжилж байна!",
     "requestRegeneration": "Дахин үүсгэхийг хүсэх",
@@ -2356,5 +2355,8 @@
     "practiceListeningPrompt": "Алийг нь ‘{word}’ гэж хэлдэг вэ?",
     "practiceMeaningPrompt": "‘{word}’ гэдэг нь юу гэсэн үг вэ?",
     "practiceEmojiPrompt": "‘{word}’ үгэнд тохирох эможиг сонгоно уу",
-    "practiceStepProgress": "{total}-аас {done}"
+    "practiceStepProgress": "{total}-аас {done}",
+    "leaderboard": "Тэргүүлэгчдийн самбар",
+    "leaderboardRank": "Эрэмбэ {rank}",
+    "courseLeaderboardTooltip": "Энэ хичээлийн бүх хүмүүс тухайн хэлний оддын тоогоор эрэмбэлэгдсэн байна. Гишүүн дээр дарж, \"Харилцаа эхлүүлэх\"-ийг сонгосноор тэдэнд DM илгээнэ үү."
 }

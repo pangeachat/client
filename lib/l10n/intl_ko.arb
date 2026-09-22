@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 12:37:00.695957",
+    "@@last_modified": "2026-09-22 15:19:33.727841",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -7756,11 +7756,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "이것은 이 과정의 모든 사람입니다. 사용자의 아바타를 클릭하고 \"대화 시작\"을 클릭하여 DM을 보내세요.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "여성",
     "man": "남성",
     "otherGender": "기타",
@@ -10145,5 +10140,8 @@
     "practiceListeningPrompt": "‘{word}’라고 말하는 것은 어느 것인가요?",
     "practiceMeaningPrompt": "‘{word}’는 무슨 뜻인가요?",
     "practiceEmojiPrompt": "‘{word}’에 맞는 이모티콘을 선택하세요",
-    "practiceStepProgress": "{done}/{total}"
+    "practiceStepProgress": "{done}/{total}",
+    "leaderboard": "리더보드",
+    "leaderboardRank": "순위 {rank}",
+    "courseLeaderboardTooltip": "이 코스에 있는 모든 사람을 해당 언어의 별 개수로 순위를 매겼습니다. 멤버를 탭하고 “대화 시작”을 선택하여 DM을 보내세요."
 }

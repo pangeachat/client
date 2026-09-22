@@ -1937,7 +1937,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-09-22 12:37:00.318445",
+    "@@last_modified": "2026-09-22 15:19:33.422412",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8463,11 +8463,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "ეს არის ყველა ადამიანი ამ კურსში. დააწკაპუნეთ ნებისმიერი მომხმარებლის ავატარზე და „დაიწყეთ საუბარი“, რომ მოიგზავნოთ პირადი შეტყობინება.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "ქალი",
     "man": "კაცი",
     "otherGender": "სხვა",
@@ -10852,5 +10847,8 @@
     "practiceListeningPrompt": "რომელი ამბობს „{word}“?",
     "practiceMeaningPrompt": "რას ნიშნავს „{word}“?",
     "practiceEmojiPrompt": "აირჩიეთ ემოჯი „{word}“-ისთვის",
-    "practiceStepProgress": "{done} / {total}"
+    "practiceStepProgress": "{done} / {total}",
+    "leaderboard": "ლიდერბორდი",
+    "leaderboardRank": "ადგილი {rank}",
+    "courseLeaderboardTooltip": "ამ კურსის ყველა წევრი, რანჟირებული მათი ვარსკვლავების მიხედვით ამ ენაში. შეეხეთ წევრს და აირჩიეთ „საუბრის დაწყება“, რათა გაუგზავნოთ პირადი შეტყობინება."
 }

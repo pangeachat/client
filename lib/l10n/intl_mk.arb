@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-09-22 12:37:02.126510",
+    "@@last_modified": "2026-09-22 15:19:35.004193",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -1662,7 +1662,6 @@
     "otherGender": "Друго",
     "unselectedGender": "Изберете опција за пол",
     "modeDisabled": "Алатките за учење се оневозможени за пораки кои не се на вашиот целен јазик.",
-    "courseParticipantTooltip": "Ова се сите во овој курс. Кликнете на аватарот на кој било корисник и „започнете разговор“ за да испратите директна порака.",
     "chatParticipantTooltip": "Ова се сите во овој разговор. Кликнете на аватарот на кој било корисник и „започнете разговор“ за да испратите директна порака.",
     "inOngoingActivity": "Имате активност во тек!",
     "requestRegeneration": "Побарај повторно генерирање",
@@ -2356,5 +2355,8 @@
     "practiceListeningPrompt": "Кое вели „{word}“?",
     "practiceMeaningPrompt": "Што значи „{word}“?",
     "practiceEmojiPrompt": "Изберете емоџи за „{word}“",
-    "practiceStepProgress": "{done} од {total}"
+    "practiceStepProgress": "{done} од {total}",
+    "leaderboard": "Табла на водачи",
+    "leaderboardRank": "Ранг {rank}",
+    "courseLeaderboardTooltip": "Сите во овој курс, рангирани според нивните ѕвезди на јазикот. Допрете член и изберете „Започни разговор“ за да му испратите директна порака."
 }

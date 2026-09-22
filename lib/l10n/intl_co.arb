@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-09-22 12:36:57.902573",
+    "@@last_modified": "2026-09-22 15:19:29.553032",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -1662,7 +1662,6 @@
     "otherGender": "Altru",
     "unselectedGender": "Sceglite un'opzione di generu",
     "modeDisabled": "L'arnesi d'amparera sò disattivati per i messaghji chì ùn sò micca in a vostra lingua scelta.",
-    "courseParticipantTooltip": "Eccu tutti i participanti à stu corsu. Cliccate nant'à l'avatar d'un utilizatore è « principià a cunversazione » per mandà un messaghju direttu.",
     "chatParticipantTooltip": "Eccu tutti i participanti à sta discussione. Cliccate nant'à l'avatar d'un utilizatore è « principià a cunversazione » per mandà un messaghju direttu.",
     "inOngoingActivity": "Avete un'attività in corsu!",
     "requestRegeneration": "Dumandà una righjenerazione",
@@ -2356,5 +2355,8 @@
     "practiceListeningPrompt": "Quale dice « {word} »?",
     "practiceMeaningPrompt": "Chì significheghja « {word} »?",
     "practiceEmojiPrompt": "Sceglite un emoji per « {word} »",
-    "practiceStepProgress": "{done} di {total}"
+    "practiceStepProgress": "{done} di {total}",
+    "leaderboard": "Classifica",
+    "leaderboardRank": "Classifica {rank}",
+    "courseLeaderboardTooltip": "Tutti i membri di stu corsu, classificati secondu e so stelle in a lingua. Toccate un membru è sceglite «Principià a cunversazione» per mandà li un missaghju direttu."
 }

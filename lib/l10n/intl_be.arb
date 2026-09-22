@@ -3548,7 +3548,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-09-22 12:36:57.379538",
+    "@@last_modified": "2026-09-22 15:19:28.716517",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -7743,11 +7743,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "Гэта ўсе ўдзельнікі гэтага курса. Націсніце на аватар любога карыстальніка і выберыце «пачаць размову», каб адправіць асабістае паведамленне.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Жанчына",
     "man": "Мужчына",
     "otherGender": "Іншае",
@@ -9966,5 +9961,8 @@
     "practiceListeningPrompt": "Што азначае «{word}»?",
     "practiceMeaningPrompt": "Што азначае «{word}»?",
     "practiceEmojiPrompt": "Выберыце эмодзі для «{word}»",
-    "practiceStepProgress": "{done} з {total}"
+    "practiceStepProgress": "{done} з {total}",
+    "leaderboard": "Табліца лідараў",
+    "leaderboardRank": "Месца {rank}",
+    "courseLeaderboardTooltip": "Усе ўдзельнікі гэтага курса, ранжыраваныя па колькасці зорак у вывучаемай мове. Націсніце на ўдзельніка і выберыце «Пачаць размову», каб адправіць яму асабістае паведамленне."
 }

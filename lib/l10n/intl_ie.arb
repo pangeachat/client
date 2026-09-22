@@ -3093,7 +3093,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-09-22 12:36:59.867613",
+    "@@last_modified": "2026-09-22 15:19:32.696163",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8195,11 +8195,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "Isto é todo mundo neste curso. Clique no avatar de qualquer usuário e \"iniciar conversa\" para enviar uma DM.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Wāhine",
     "man": "Tāne",
     "otherGender": "Ētahi atu",
@@ -10584,5 +10579,8 @@
     "practiceListeningPrompt": "Cé acu a deir ‘{word}’?",
     "practiceMeaningPrompt": "Cad a chiallaíonn ‘{word}’?",
     "practiceEmojiPrompt": "Roghnaigh emoji do ‘{word}’",
-    "practiceStepProgress": "{done} de {total}"
+    "practiceStepProgress": "{done} de {total}",
+    "leaderboard": "Clár Ceannairí",
+    "leaderboardRank": "Céim {rank}",
+    "courseLeaderboardTooltip": "Gach duine sa chúrsa seo, rangaithe de réir a gcuid réaltaí sa teanga. Beartaigh ar bhall agus roghnaigh “Tosaigh comhrá” chun teachtaireacht dhíreach a sheoladh chucu."
 }

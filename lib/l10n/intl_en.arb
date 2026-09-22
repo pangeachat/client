@@ -182,6 +182,25 @@
             }
         }
     },
+    "leaderboard": "Leaderboard",
+    "@leaderboard": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "leaderboardRank": "Rank {rank}",
+    "@leaderboardRank": {
+        "type": "String",
+        "placeholders": {
+            "rank": {
+                "type": "int"
+            }
+        }
+    },
+    "courseLeaderboardTooltip": "Everybody in this course, ranked by their stars in its language. Tap a member and choose “Start conversation” to send them a DM.",
+    "@courseLeaderboardTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
     "commandHint_roomupgrade": "Upgrade this room to the given room version",
     "@commandHint_roomupgrade": {},
     "commandHint_googly": "Send some googly eyes",
@@ -4341,7 +4360,7 @@
     "grammarFeedbackSubmittedDesc": "Thanks! The explanation has been updated based on your feedback.",
     "practiceTapABlank": "Tap a blank to fill it",
     "@practiceTapABlank": {},
-    "practiceListeningPrompt": "Which one says \u2018{word}\u2019?",
+    "practiceListeningPrompt": "Which one says ‘{word}’?",
     "@practiceListeningPrompt": {
         "placeholders": {
             "word": {
@@ -4349,7 +4368,7 @@
             }
         }
     },
-    "practiceMeaningPrompt": "What does \u2018{word}\u2019 mean?",
+    "practiceMeaningPrompt": "What does ‘{word}’ mean?",
     "@practiceMeaningPrompt": {
         "placeholders": {
             "word": {
@@ -4357,7 +4376,7 @@
             }
         }
     },
-    "practiceEmojiPrompt": "Pick an emoji for \u2018{word}\u2019",
+    "practiceEmojiPrompt": "Pick an emoji for ‘{word}’",
     "@practiceEmojiPrompt": {
         "placeholders": {
             "word": {
@@ -4678,7 +4697,6 @@
     "otherGender": "Other",
     "unselectedGender": "Select a gender option",
     "modeDisabled": "Learning tools are disabled for messages that aren't in your target language.",
-    "courseParticipantTooltip": "This is everybody in this course. Click on any user’s avatar and “start conversation” to send a DM.",
     "chatParticipantTooltip": "This is everybody in this chat. Click on any user’s avatar and “start conversation” to send a DM.",
     "inOngoingActivity": "You have an ongoing activity!",
     "requestRegeneration": "Request regeneration",
@@ -5588,9 +5606,9 @@
     "tutorialAppTourOffer": "Great job finishing your first activity! Would you like me to show you around the app?",
     "tutorialAppTourAccept": "Give me a tour",
     "tutorialAppTourDecline": "Skip",
-    "tutorialAppTourChats": "This is your chat list \u2014 find friends to chat with, or talk to me any time.",
+    "tutorialAppTourChats": "This is your chat list — find friends to chat with, or talk to me any time.",
     "tutorialAppTourCoursesSome": "Your courses live here. Looks like you've joined one already!",
-    "tutorialAppTourCoursesNone": "Courses live here \u2014 you can join one with a code, or make your own.",
+    "tutorialAppTourCoursesNone": "Courses live here — you can join one with a code, or make your own.",
     "tutorialAppTourAnalytics": "This is your progress: every word and grammar form you've used.",
     "tutorialAppTourPractice": "You'll find personalized practice lessons here, as long as you've unlocked at least 10 vocab words",
     "tutorialAppTourWorld": "And this brings you back to the world map any time. Happy learning!",

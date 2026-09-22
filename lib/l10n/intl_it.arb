@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 12:37:00.062695",
+    "@@last_modified": "2026-09-22 15:19:32.688098",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -7666,11 +7666,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "Questa è tutta la gente in questo corso. Clicca sull'avatar di qualsiasi utente e \"inizia conversazione\" per inviare un DM.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Donna",
     "man": "Uomo",
     "otherGender": "Altro",
@@ -10025,5 +10020,8 @@
     "practiceListeningPrompt": "Quale dice '{word}'?",
     "practiceMeaningPrompt": "Cosa significa '{word}'?",
     "practiceEmojiPrompt": "Scegli un'emoji per '{word}'",
-    "practiceStepProgress": "{done} di {total}"
+    "practiceStepProgress": "{done} di {total}",
+    "leaderboard": "Classifica",
+    "leaderboardRank": "Posizione {rank}",
+    "courseLeaderboardTooltip": "Tutti i partecipanti a questo corso, classificati in base alle stelle ottenute nella lingua del corso. Tocca un membro e scegli \"Avvia conversazione\" per inviargli un messaggio diretto."
 }

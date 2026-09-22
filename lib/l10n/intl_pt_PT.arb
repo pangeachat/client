@@ -2559,7 +2559,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-09-22 12:37:04.341875",
+    "@@last_modified": "2026-09-22 15:19:37.173658",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8475,11 +8475,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "Estes são todos os participantes deste curso. Clique no avatar de qualquer usuário e \"iniciar conversa\" para enviar uma DM.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Mulher",
     "man": "Homem",
     "otherGender": "Outro",
@@ -10869,5 +10864,8 @@
     "practiceListeningPrompt": "Qual deles diz ‘{word}’?",
     "practiceMeaningPrompt": "O que significa ‘{word}’?",
     "practiceEmojiPrompt": "Escolhe um emoji para ‘{word}’",
-    "practiceStepProgress": "{done} de {total}"
+    "practiceStepProgress": "{done} de {total}",
+    "leaderboard": "Classificação",
+    "leaderboardRank": "Classificação {rank}",
+    "courseLeaderboardTooltip": "Todos neste curso, classificados pelas suas estrelas no idioma. Toque num membro e escolha “Iniciar conversa” para enviar uma mensagem direta."
 }

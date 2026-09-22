@@ -1362,7 +1362,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-09-22 12:36:59.738581",
+    "@@last_modified": "2026-09-22 15:19:32.401130",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8499,11 +8499,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "Ita est omnes in hoc cursu. Clicca in cuiuslibet usoris avatar et \"initium colloquii\" ad mittendum DM.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Femin",
     "man": "Mascul",
     "otherGender": "Altre",
@@ -10888,5 +10883,8 @@
     "practiceListeningPrompt": "Qual dice ‘{word}’?",
     "practiceMeaningPrompt": "Que significa ‘{word}’?",
     "practiceEmojiPrompt": "Selige un emoji pro ‘{word}’",
-    "practiceStepProgress": "{done} de {total}"
+    "practiceStepProgress": "{done} de {total}",
+    "leaderboard": "Tabella de classification",
+    "leaderboardRank": "Rango {rank}",
+    "courseLeaderboardTooltip": "Totes in iste curso, classificate per lor stellas in su lingua. Tappa un membro e selige “Comenciar conversation” pro inviar les un DM."
 }

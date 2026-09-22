@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-09-22 12:37:07.321552",
+    "@@last_modified": "2026-09-22 15:19:40.879746",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -3829,7 +3829,6 @@
     "otherGender": "Boshqa",
     "unselectedGender": "Gender variantini tanlang",
     "modeDisabled": "O'qitish vositalari sizning maqsad tilingizda bo'lmagan xabarlar uchun o'chirilgan.",
-    "courseParticipantTooltip": "Bu kursdagi hamma. Har qanday foydalanuvchining avatariga bosing va «muloqotni boshlash» ni tanlang, shunda DM yuborasiz.",
     "chatParticipantTooltip": "Bu chatdagi hamma. Har qanday foydalanuvchining avatariga bosing va «muloqotni boshlash» ni tanlang, shunda DM yuborasiz.",
     "inOngoingActivity": "Sizda davom etayotgan faoliyat bor!",
     "requestRegeneration": "Qayta yaratishni so'rash",
@@ -7874,10 +7873,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@chatParticipantTooltip": {
         "type": "String",
         "placeholders": {}
@@ -9956,5 +9951,8 @@
     "practiceListeningPrompt": "Qaysi biri „{word}“ deydi?",
     "practiceMeaningPrompt": "„{word}“ nimani anglatadi?",
     "practiceEmojiPrompt": "„{word}“ uchun emojini tanlang",
-    "practiceStepProgress": "{done} / {total}"
+    "practiceStepProgress": "{done} / {total}",
+    "leaderboard": "Yetakchilar jadvali",
+    "leaderboardRank": "Daraja {rank}",
+    "courseLeaderboardTooltip": "Ushbu kursdagi barcha ishtirokchilar til boʻyicha yulduzlari asosida tartiblangan. Aʼzoga xabar yuborish uchun uni bosing va “Suhbatni boshlash”ni tanlang."
 }

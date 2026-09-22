@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-09-22 12:36:59.502392",
+    "@@last_modified": "2026-09-22 15:19:31.717153",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -1662,7 +1662,6 @@
     "otherGender": "Eile",
     "unselectedGender": "Tagh roghainn gnè",
     "modeDisabled": "Tha innealan ionnsachaidh ciorramach airson teachdaireachdan nach eil sa chànan targaid agad.",
-    "courseParticipantTooltip": "Seo a h-uile duine sa chùrsa seo. Cliog air avatar neach-cleachdaidh sam bith agus “tòisich còmhradh” gus teachdaireachd dhìreach a chuir.",
     "chatParticipantTooltip": "Seo a h-uile duine sa chòmhradh seo. Cliog air avatar neach-cleachdaidh sam bith agus “tòisich còmhradh” gus teachdaireachd dhìreach a chuir.",
     "inOngoingActivity": "Tha gnìomh a’ dol agad!",
     "requestRegeneration": "Iarr ath-ghinealachd",
@@ -2356,5 +2355,8 @@
     "practiceListeningPrompt": "Cò am fear a chanas ‘{word}’?",
     "practiceMeaningPrompt": "Dè tha ‘{word}’ a’ ciallachadh?",
     "practiceEmojiPrompt": "Tagh emoji airson ‘{word}’",
-    "practiceStepProgress": "{done} de {total}"
+    "practiceStepProgress": "{done} de {total}",
+    "leaderboard": "Clàr-stiùiridh",
+    "leaderboardRank": "Rang {rank}",
+    "courseLeaderboardTooltip": "A h-uile duine sa chùrsa seo, air an rangachadh a rèir nan rionnagan aca sa chànan aige. Tap air ball agus tagh “Tòisich còmhradh” gus DM a chuir thuca."
 }

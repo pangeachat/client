@@ -1802,7 +1802,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-09-22 12:37:05.062876",
+    "@@last_modified": "2026-09-22 15:19:38.448475",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8508,11 +8508,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "To so vsi v tem tečaju. Kliknite na avatar katerega koli uporabnika in \"začnite pogovor\", da pošljete DM.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Ženska",
     "man": "Moški",
     "otherGender": "Drugo",
@@ -10897,5 +10892,8 @@
     "practiceListeningPrompt": "Kateri pravi »{word}«?",
     "practiceMeaningPrompt": "Kaj pomeni »{word}«?",
     "practiceEmojiPrompt": "Izberite emoji za »{word}«",
-    "practiceStepProgress": "{done} od {total}"
+    "practiceStepProgress": "{done} od {total}",
+    "leaderboard": "Lestvica najboljših",
+    "leaderboardRank": "Uvrstitev {rank}",
+    "courseLeaderboardTooltip": "Vsi v tem tečaju, razvrščeni po številu zvezdic v jeziku tečaja. Dotaknite se člana in izberite »Začni pogovor«, da mu pošljete zasebno sporočilo."
 }

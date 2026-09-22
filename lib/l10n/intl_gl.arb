@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-09-22 12:36:59.204092",
+    "@@last_modified": "2026-09-22 15:19:31.310294",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7743,11 +7743,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "Isto é todo o mundo neste curso. Fai clic na avatar de calquera usuario e \"comeza a conversa\" para enviar un DM.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Muller",
     "man": "Home",
     "otherGender": "Outro",
@@ -9952,5 +9947,8 @@
     "practiceListeningPrompt": "Cal di «{word}»?",
     "practiceMeaningPrompt": "Que significa «{word}»?",
     "practiceEmojiPrompt": "Escolle un emoji para «{word}»",
-    "practiceStepProgress": "{done} de {total}"
+    "practiceStepProgress": "{done} de {total}",
+    "leaderboard": "Clasificación",
+    "leaderboardRank": "Posto {rank}",
+    "courseLeaderboardTooltip": "Todos os participantes neste curso, clasificados polas súas estrelas no idioma. Toca un membro e escolle \"Iniciar conversa\" para enviarlle unha mensaxe directa."
 }

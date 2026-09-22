@@ -3093,7 +3093,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-09-22 12:37:06.712586",
+    "@@last_modified": "2026-09-22 15:19:39.678651",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8195,11 +8195,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "นี่คือทุกคนในหลักสูตรนี้ คลิกที่อวาตาร์ของผู้ใช้ใด ๆ และ \"เริ่มการสนทนา\" เพื่อส่งข้อความส่วนตัว",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "ผู้หญิง",
     "man": "ผู้ชาย",
     "otherGender": "อื่นๆ",
@@ -10584,5 +10579,8 @@
     "practiceListeningPrompt": "คำไหนอ่านว่า '{word}'?",
     "practiceMeaningPrompt": "'{word}' หมายความว่าอะไร?",
     "practiceEmojiPrompt": "เลือกอิโมจิสำหรับ '{word}'",
-    "practiceStepProgress": "{done} จาก {total}"
+    "practiceStepProgress": "{done} จาก {total}",
+    "leaderboard": "กระดานผู้นำ",
+    "leaderboardRank": "อันดับที่ {rank}",
+    "courseLeaderboardTooltip": "ทุกคนในคอร์สนี้ จัดอันดับตามจำนวนดาวที่ได้ในภาษานั้นๆ แตะที่สมาชิกแล้วเลือก “เริ่มการสนทนา” เพื่อส่งข้อความส่วนตัวถึงพวกเขา"
 }

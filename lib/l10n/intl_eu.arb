@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-09-22 12:36:58.769646",
+    "@@last_modified": "2026-09-22 15:19:30.677122",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -7743,11 +7743,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "Hau ikastaro honetan dauden guztiak dira. Egin klik edozein erabiltzaileen irudian eta \"hasieratu elkarrizketa\" DM bat bidaltzeko.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Emakumea",
     "man": "Gizona",
     "otherGender": "Bestea",
@@ -9952,5 +9947,8 @@
     "practiceListeningPrompt": "Zeinek dio ‘{word}’?",
     "practiceMeaningPrompt": "Zer esan nahi du ‘{word}’ hitzak?",
     "practiceEmojiPrompt": "Aukeratu emoji bat ‘{word}’ hitzarentzat",
-    "practiceStepProgress": "{done}/{total}"
+    "practiceStepProgress": "{done}/{total}",
+    "leaderboard": "Sailkapena",
+    "leaderboardRank": "{rank}. postua",
+    "courseLeaderboardTooltip": "Ikastaro honetako guztiak, hizkuntza horretan lortutako izarren arabera sailkatuta. Sakatu kide bat eta aukeratu \"Hasi elkarrizketa\" mezu zuzen bat bidaltzeko."
 }

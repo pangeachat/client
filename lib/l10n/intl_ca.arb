@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 12:36:57.955025",
+    "@@last_modified": "2026-09-22 15:19:29.333233",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -7690,11 +7690,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "Això és tothom en aquest curs. Feu clic a l'avatar de qualsevol usuari i \"comenceu la conversa\" per enviar un DM.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Dona",
     "man": "Home",
     "otherGender": "Altre",
@@ -10079,5 +10074,8 @@
     "practiceListeningPrompt": "Quin diu «{word}»?",
     "practiceMeaningPrompt": "Què significa «{word}»?",
     "practiceEmojiPrompt": "Tria un emoji per a «{word}»",
-    "practiceStepProgress": "{done} de {total}"
+    "practiceStepProgress": "{done} de {total}",
+    "leaderboard": "Classificació",
+    "leaderboardRank": "Posició {rank}",
+    "courseLeaderboardTooltip": "Tots els participants d'aquest curs, classificats per les estrelles que tenen en el seu idioma. Toca un membre i tria \"Inicia una conversa\" per enviar-li un missatge directe."
 }

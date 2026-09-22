@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-09-22 12:37:02.069756",
+    "@@last_modified": "2026-09-22 15:19:33.120197",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -8332,11 +8332,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "これはこのコースの全員です。任意のユーザーのアバターをクリックし、「会話を開始」を選択してDMを送信します。",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "女性",
     "man": "男性",
     "otherGender": "その他",
@@ -10721,5 +10716,8 @@
     "practiceListeningPrompt": "「{word}」と言っているのはどれ？",
     "practiceMeaningPrompt": "「{word}」の意味は？",
     "practiceEmojiPrompt": "「{word}」に合う絵文字を選んでください",
-    "practiceStepProgress": "{done}/{total}"
+    "practiceStepProgress": "{done}/{total}",
+    "leaderboard": "ランキング",
+    "leaderboardRank": "{rank}位",
+    "courseLeaderboardTooltip": "このコースの全員が、その言語でのスター数でランク付けされています。メンバーをタップして「会話を開始」を選択すると、DMを送信できます。"
 }

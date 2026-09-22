@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 12:37:05.578683",
+    "@@last_modified": "2026-09-22 15:19:37.513184",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -8295,11 +8295,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "Aceasta este toată lumea din acest curs. Faceți clic pe avatarul oricărui utilizator și „începeți conversația” pentru a trimite un mesaj direct.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Femeie",
     "man": "Bărbat",
     "otherGender": "Altul",
@@ -10684,5 +10679,8 @@
     "practiceListeningPrompt": "Care dintre ele spune „{word}”?",
     "practiceMeaningPrompt": "Ce înseamnă „{word}”?",
     "practiceEmojiPrompt": "Alegeți un emoji pentru „{word}”",
-    "practiceStepProgress": "{done} din {total}"
+    "practiceStepProgress": "{done} din {total}",
+    "leaderboard": "Clasament",
+    "leaderboardRank": "Locul {rank}",
+    "courseLeaderboardTooltip": "Toți participanții la acest curs, clasificați după numărul de stele obținute la limba respectivă. Atingeți un membru și alegeți „Începeți conversația” pentru a-i trimite un mesaj direct."
 }

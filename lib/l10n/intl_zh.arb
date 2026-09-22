@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-09-22 12:37:08.294945",
+    "@@last_modified": "2026-09-22 15:19:41.155885",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -7743,11 +7743,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "这是本课程中的所有人。点击任何用户的头像并选择“开始对话”以发送私信。",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "女性",
     "man": "男性",
     "otherGender": "其他",
@@ -9952,5 +9947,8 @@
     "practiceListeningPrompt": "哪个是“{word}”？",
     "practiceMeaningPrompt": "“{word}”是什么意思？",
     "practiceEmojiPrompt": "为“{word}”选择一个表情符号",
-    "practiceStepProgress": "{done}/{total}"
+    "practiceStepProgress": "{done}/{total}",
+    "leaderboard": "排行榜",
+    "leaderboardRank": "排名 {rank}",
+    "courseLeaderboardTooltip": "本课程中所有成员按其在该语言中获得的星星数进行排名。点击成员并选择“开始对话”即可向他们发送私信。"
 }

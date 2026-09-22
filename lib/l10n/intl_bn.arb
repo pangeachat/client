@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 12:36:57.402045",
+    "@@last_modified": "2026-09-22 15:19:28.723924",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -8191,11 +8191,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "এটি এই কোর্সের সকল সদস্য। যে কোনো ব্যবহারকারীর অবতার ক্লিক করুন এবং \"আলাপ শুরু করুন\" এ ডিএম পাঠাতে।",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "মহিলা",
     "man": "পুরুষ",
     "otherGender": "অন্যান্য",
@@ -10580,5 +10575,8 @@
     "practiceListeningPrompt": "কোনটি ‘{word}’ বলে?",
     "practiceMeaningPrompt": "‘{word}’ এর অর্থ কী?",
     "practiceEmojiPrompt": "‘{word}’ এর জন্য একটি ইমোজি বেছে নিন",
-    "practiceStepProgress": "{total} এর মধ্যে {done}"
+    "practiceStepProgress": "{total} এর মধ্যে {done}",
+    "leaderboard": "লিডারবোর্ড",
+    "leaderboardRank": "র‍্যাঙ্ক {rank}",
+    "courseLeaderboardTooltip": "এই কোর্সের সবাই, তাদের ভাষার তারকাদের দ্বারা র‍্যাঙ্ক করা হয়েছে। একজন সদস্যকে ট্যাপ করুন এবং তাদের একটি DM পাঠাতে “কথোপকথন শুরু করুন” নির্বাচন করুন।"
 }

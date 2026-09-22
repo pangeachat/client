@@ -2967,7 +2967,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-09-22 12:37:01.463203",
+    "@@last_modified": "2026-09-22 15:19:34.446873",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8344,11 +8344,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "Tai yra visi šio kurso dalyviai. Spustelėkite bet kurio vartotojo avatarą ir „pradėti pokalbį“, kad siųstumėte DM.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Moteris",
     "man": "Vyras",
     "otherGender": "Kitas",
@@ -10733,5 +10728,8 @@
     "practiceListeningPrompt": "Kuris sako „{word}“?",
     "practiceMeaningPrompt": "Ką reiškia „{word}“?",
     "practiceEmojiPrompt": "Pasirinkite jaustuką žodžiui „{word}“",
-    "practiceStepProgress": "{done} iš {total}"
+    "practiceStepProgress": "{done} iš {total}",
+    "leaderboard": "Lyderių lentelė",
+    "leaderboardRank": "Vieta {rank}",
+    "courseLeaderboardTooltip": "Visi šio kurso dalyviai, suskirstyti pagal jų žvaigždutes šia kalba. Bakstelėkite narį ir pasirinkite „Pradėti pokalbį“, kad išsiųstumėte jam tiesioginę žinutę."
 }

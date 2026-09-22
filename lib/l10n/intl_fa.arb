@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 12:36:58.586247",
+    "@@last_modified": "2026-09-22 15:19:30.503454",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -7656,11 +7656,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "این همه افرادی هستند که در این دوره حضور دارند. بر روی آواتار هر کاربر کلیک کنید و \"شروع گفتگو\" را بزنید تا یک پیام مستقیم ارسال کنید.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "زن",
     "man": "مرد",
     "otherGender": "سایر",
@@ -10040,5 +10035,8 @@
     "practiceListeningPrompt": "کدام یک می‌گوید «{word}»؟",
     "practiceMeaningPrompt": "«{word}» به چه معناست؟",
     "practiceEmojiPrompt": "یک ایموجی برای «{word}» انتخاب کنید",
-    "practiceStepProgress": "{done} از {total}"
+    "practiceStepProgress": "{done} از {total}",
+    "leaderboard": "جدول امتیازات",
+    "leaderboardRank": "رتبه {rank}",
+    "courseLeaderboardTooltip": "همه افراد در این دوره، بر اساس ستاره‌هایشان در زبان مربوطه رتبه‌بندی شده‌اند. برای ارسال پیام مستقیم به یک عضو، روی او ضربه بزنید و «شروع مکالمه» را انتخاب کنید."
 }

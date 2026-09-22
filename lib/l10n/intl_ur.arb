@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-09-22 12:37:07.313100",
+    "@@last_modified": "2026-09-22 15:19:40.440974",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -1662,7 +1662,6 @@
     "otherGender": "دیگر",
     "unselectedGender": "جنس کا اختیار منتخب کریں",
     "modeDisabled": "سیکھنے کے ٹولز ان پیغامات کے لیے غیر فعال ہیں جو آپ کی ہدف زبان میں نہیں ہیں۔",
-    "courseParticipantTooltip": "یہ اس کورس میں ہر کوئی ہے۔ کسی بھی صارف کے اوتار پر کلک کریں اور DM بھیجنے کے لیے \"گفتگو شروع کریں\"۔",
     "chatParticipantTooltip": "یہ اس چیٹ میں ہر کوئی ہے۔ کسی بھی صارف کے اوتار پر کلک کریں اور DM بھیجنے کے لیے \"گفتگو شروع کریں\"۔",
     "inOngoingActivity": "آپ کی ایک جاری سرگرمی ہے!",
     "requestRegeneration": "دوبارہ تخلیق کی درخواست کریں",
@@ -2356,5 +2355,8 @@
     "practiceListeningPrompt": "کون سا ‘{word}’ کہتا ہے؟",
     "practiceMeaningPrompt": "‘{word}’ کا کیا مطلب ہے؟",
     "practiceEmojiPrompt": "‘{word}’ کے لیے ایک ایموجی منتخب کریں",
-    "practiceStepProgress": "{total} میں سے {done}"
+    "practiceStepProgress": "{total} میں سے {done}",
+    "leaderboard": "لیڈر بورڈ",
+    "leaderboardRank": "رینک {rank}",
+    "courseLeaderboardTooltip": "اس کورس میں ہر کوئی، اس کی زبان میں ان کے ستاروں کے لحاظ سے درجہ بندی کی گئی ہے۔ کسی ممبر پر ٹیپ کریں اور انہیں DM بھیجنے کے لیے \"بات چیت شروع کریں\" کو منتخب کریں۔"
 }

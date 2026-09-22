@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 12:36:58.003333",
+    "@@last_modified": "2026-09-22 15:19:30.090294",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -8508,11 +8508,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "Ĉi tio estas ĉiuj en ĉi tiu kurso. Klaku sur la avatareto de iu ajn uzanto kaj \"komencu konversacion\" por sendi DM.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Virino",
     "man": "Viro",
     "otherGender": "Alia",
@@ -10897,5 +10892,8 @@
     "practiceListeningPrompt": "Kiu diras ‘{word}’?",
     "practiceMeaningPrompt": "Kion signifas ‘{word}’?",
     "practiceEmojiPrompt": "Elektu emoji-on por ‘{word}’",
-    "practiceStepProgress": "{done} el {total}"
+    "practiceStepProgress": "{done} el {total}",
+    "leaderboard": "Poenttabulo",
+    "leaderboardRank": "Rango {rank}",
+    "courseLeaderboardTooltip": "Ĉiuj en ĉi tiu kurso, rangigitaj laŭ iliaj steloj en ĝia lingvo. Frapu membron kaj elektu “Komenci konversacion” por sendi al ili rektan mesaĝon."
 }

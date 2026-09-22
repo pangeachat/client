@@ -3535,7 +3535,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-09-22 12:37:01.346815",
+    "@@last_modified": "2026-09-22 15:19:35.180014",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -7743,11 +7743,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "Šeit ir visi šī kursa dalībnieki. Noklikšķiniet uz jebkura lietotāja avatāra un izvēlieties \"sākt sarunu\", lai nosūtītu DM.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Sieviete",
     "man": "Vīrietis",
     "otherGender": "Cits",
@@ -9952,5 +9947,8 @@
     "practiceListeningPrompt": "Kurš saka „{word}”?",
     "practiceMeaningPrompt": "Ko nozīmē „{word}”?",
     "practiceEmojiPrompt": "Izvēlieties emocijzīmi vārdam „{word}”",
-    "practiceStepProgress": "{done} no {total}"
+    "practiceStepProgress": "{done} no {total}",
+    "leaderboard": "Līderu saraksts",
+    "leaderboardRank": "Vieta {rank}",
+    "courseLeaderboardTooltip": "Visi šī kursa dalībnieki, sarindoti pēc zvaigznītēm attiecīgajā valodā. Pieskarieties dalībniekam un izvēlieties “Sākt sarunu”, lai nosūtītu viņam tiešu ziņojumu."
 }

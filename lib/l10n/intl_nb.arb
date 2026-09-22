@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 12:37:02.594247",
+    "@@last_modified": "2026-09-22 15:19:36.222748",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -7799,11 +7799,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "Dette er alle i dette kurset. Klikk på hvilken som helst brukers avatar og \"start samtale\" for å sende en DM.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Kvinne",
     "man": "Mann",
     "otherGender": "Annet",
@@ -10009,5 +10004,8 @@
     "practiceListeningPrompt": "Hvilken sier «{word}»?",
     "practiceMeaningPrompt": "Hva betyr «{word}»?",
     "practiceEmojiPrompt": "Velg en emoji for «{word}»",
-    "practiceStepProgress": "{done} av {total}"
+    "practiceStepProgress": "{done} av {total}",
+    "leaderboard": "Poengtavle",
+    "leaderboardRank": "Rangering {rank}",
+    "courseLeaderboardTooltip": "Alle i dette kurset, rangert etter stjerner i språket. Trykk på et medlem og velg «Start samtale» for å sende dem en direktemelding."
 }

@@ -9,25 +9,35 @@ import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 import 'package:fluffychat/pangea/common/widgets/role_badge.dart';
 import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
-import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
-import 'package:fluffychat/pangea/spaces/space_constants.dart';
+import 'package:fluffychat/pangea/spaces/course_leaderboard.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/users/course_member_stats.dart';
 import 'package:fluffychat/widgets/users/level_display_name.dart';
 import 'package:fluffychat/widgets/users/member_actions_popup_menu_button.dart';
 
 /// One participant's member card: avatar (with the top-3 leaderboard ring),
-/// the permission/membership badge across the avatar's top edge, name, and the
-/// member's stars and level in the course's language. A space with no course
-/// language recorded — anything created before it was written to room state —
-/// falls back to the learner chip ([LevelDisplayName]), which shows their own
-/// language pair. Tapping the avatar opens the member actions menu. Shared by the full participant list
-/// (RoomParticipantsSection) and the course page's Participants preview.
+/// the permission/membership badge across the avatar's top edge, name, and —
+/// unless [showStats] is off — the member's stars and level in the course's
+/// language. A space with no course language recorded — anything created
+/// before it was written to room state — falls back to the learner chip
+/// ([LevelDisplayName]), which shows their own language pair. Tapping the
+/// avatar opens the member actions menu. Shared by a chat's full participant
+/// list (RoomParticipantsSection) and the course Leaderboard's admin line and
+/// pending members (course-leaderboard.instructions.md), where the stats are
+/// off: an admin's stats sit on their ranked row, and a pending member has
+/// none to show.
 class ParticipantCard extends StatelessWidget {
-  static const double width = 100.0;
+  /// A chat's member card.
+  static const double defaultWidth = 100.0;
+
+  /// The leaderboard's admin line and pending members: smaller than a chat's
+  /// card so the podium below stays the section's largest thing.
+  static const double compactWidth = 80.0;
 
   final User user;
   final Room room;
+
+  final double width;
 
   /// The top-3 leaderboard ring, resolved by the surrounding list via
   /// [leaderboardGradientFor].
@@ -39,11 +49,15 @@ class ParticipantCard extends StatelessWidget {
   /// outside a group.
   final String? rovingId;
 
+  final bool showStats;
+
   const ParticipantCard({
     required this.user,
     required this.room,
     this.gradient,
     this.rovingId,
+    this.showStats = true,
+    this.width = defaultWidth,
     super.key,
   });
 
@@ -87,7 +101,7 @@ class ParticipantCard extends StatelessWidget {
     final leaderIndex = leaders.indexOf(user);
     if (leaderIndex == -1) return null;
     if (user.id == BotName.byEnvironment || !hasLevel) return null;
-    return leaderIndex.leaderboardGradient(context);
+    return LeaderboardMedal.forRank(leaderIndex + 1)?.ring(Theme.of(context));
   }
 
   @override
@@ -96,14 +110,7 @@ class ParticipantCard extends StatelessWidget {
 
     final courseLanguage = room.coursePlan?.l2;
 
-    final badgeType = switch (user.membership) {
-      Membership.invite => RoleBadgeType.invited,
-      Membership.knock => RoleBadgeType.knocking,
-      _ when user.powerLevel >= SpaceConstants.powerLevelOfAdmin =>
-        RoleBadgeType.admin,
-      _ when user.powerLevel >= 50 => RoleBadgeType.moderator,
-      _ => null,
-    };
+    final badgeType = RoleBadgeType.forMember(user);
 
     final rovingId = this.rovingId;
     // One node for the card: its name, badge and stats, with the avatar's
@@ -137,7 +144,7 @@ class ParticipantCard extends StatelessWidget {
                         ),
                       )
                     else
-                      const SizedBox(height: width, width: width),
+                      SizedBox(height: width, width: width),
                     Builder(
                       builder: (context) {
                         // Focusable and Enter/Space-activatable, where a bare
@@ -194,21 +201,22 @@ class ParticipantCard extends StatelessWidget {
                   ),
                   overflow: TextOverflow.ellipsis,
                 ),
-                Container(
-                  height: 20.0,
-                  alignment: Alignment.center,
-                  child: courseLanguage != null
-                      ? CourseMemberStats(
-                          userId: user.id,
-                          langCode: courseLanguage,
-                          textStyle: theme.textTheme.labelSmall,
-                        )
-                      : LevelDisplayName(
-                          userId: user.id,
-                          textStyle: theme.textTheme.labelSmall,
-                          showFlags: false,
-                        ),
-                ),
+                if (showStats)
+                  Container(
+                    height: 20.0,
+                    alignment: Alignment.center,
+                    child: courseLanguage != null
+                        ? CourseMemberStats(
+                            userId: user.id,
+                            langCode: courseLanguage,
+                            textStyle: theme.textTheme.labelSmall,
+                          )
+                        : LevelDisplayName(
+                            userId: user.id,
+                            textStyle: theme.textTheme.labelSmall,
+                            showFlags: false,
+                          ),
+                  ),
               ],
             ),
           ),

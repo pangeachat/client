@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-09-22 12:37:06.848695",
+    "@@last_modified": "2026-09-22 15:19:39.809264",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -7864,11 +7864,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "Bu kurstaki herkes. Herhangi bir kullanıcının avatarına tıklayın ve \"sohbet başlat\" seçeneğini seçerek bir DM gönderin.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Kadın",
     "man": "Erkek",
     "otherGender": "Diğer",
@@ -10253,5 +10248,8 @@
     "practiceListeningPrompt": "Hangisi ‘{word}’ diyor?",
     "practiceMeaningPrompt": "‘{word}’ ne anlama geliyor?",
     "practiceEmojiPrompt": "‘{word}’ için bir emoji seçin",
-    "practiceStepProgress": "{total} üzerinden {done}"
+    "practiceStepProgress": "{total} üzerinden {done}",
+    "leaderboard": "Liderlik Tablosu",
+    "leaderboardRank": "Sıra {rank}",
+    "courseLeaderboardTooltip": "Bu kurstaki herkes, dillerindeki yıldızlarına göre sıralanmıştır. Bir üyeye dokunarak onlara DM göndermek için \"Sohbet başlat\"ı seçin."
 }

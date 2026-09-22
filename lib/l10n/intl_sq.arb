@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-09-22 12:37:05.880565",
+    "@@last_modified": "2026-09-22 15:19:38.875063",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -1662,7 +1662,6 @@
     "otherGender": "Tjetër",
     "unselectedGender": "Zgjidh një opsion gjinie",
     "modeDisabled": "Mjetet e të mësuarit janë çaktivizuar për mesazhet që nuk janë në gjuhën tuaj të synuar.",
-    "courseParticipantTooltip": "Këta janë të gjithë në këtë kurs. Kliko mbi avatarin e çdo përdoruesi dhe “fillo bisedën” për të dërguar një mesazh privat.",
     "chatParticipantTooltip": "Këta janë të gjithë në këtë bisedë. Kliko mbi avatarin e çdo përdoruesi dhe “fillo bisedën” për të dërguar një mesazh privat.",
     "inOngoingActivity": "Ke një aktivitet në vazhdim!",
     "requestRegeneration": "Kërko rigjenerim",
@@ -2356,5 +2355,8 @@
     "practiceListeningPrompt": "Cila thotë ‘{word}’?",
     "practiceMeaningPrompt": "Çfarë do të thotë ‘{word}’?",
     "practiceEmojiPrompt": "Zgjidh një emoji për ‘{word}’",
-    "practiceStepProgress": "{done} nga {total}"
+    "practiceStepProgress": "{done} nga {total}",
+    "leaderboard": "Tabela e Renditjes",
+    "leaderboardRank": "Renditja {rank}",
+    "courseLeaderboardTooltip": "Të gjithë në këtë kurs, të renditur sipas yjeve të tyre në gjuhën e tij. Prekni një anëtar dhe zgjidhni \"Fillo bisedën\" për t'i dërguar një mesazh privat."
 }

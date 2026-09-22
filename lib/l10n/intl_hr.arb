@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-09-22 12:36:59.309594",
+    "@@last_modified": "2026-09-22 15:19:31.601953",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -7999,11 +7999,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "Ovo su svi u ovom tečaju. Kliknite na avatar bilo kojeg korisnika i \"započni razgovor\" da pošaljete DM.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Žena",
     "man": "Muškarac",
     "otherGender": "Ostalo",
@@ -10388,5 +10383,8 @@
     "practiceListeningPrompt": "Koja kaže „{word}“?",
     "practiceMeaningPrompt": "Što znači „{word}“?",
     "practiceEmojiPrompt": "Odaberite emoji za „{word}“",
-    "practiceStepProgress": "{done} od {total}"
+    "practiceStepProgress": "{done} od {total}",
+    "leaderboard": "Ljestvica",
+    "leaderboardRank": "Rang {rank}",
+    "courseLeaderboardTooltip": "Svi na ovom tečaju, rangirani prema broju zvjezdica u jeziku tečaja. Dodirnite člana i odaberite „Započni razgovor” kako biste mu poslali izravnu poruku."
 }

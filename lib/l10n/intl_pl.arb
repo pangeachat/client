@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-09-22 12:37:03.867975",
+    "@@last_modified": "2026-09-22 15:19:37.164747",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -7657,11 +7657,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "To są wszyscy uczestnicy tego kursu. Kliknij na avatar dowolnego użytkownika i wybierz „rozpocznij rozmowę”, aby wysłać wiadomość prywatną.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Kobieta",
     "man": "Mężczyzna",
     "otherGender": "Inna",
@@ -10037,5 +10032,8 @@
     "practiceListeningPrompt": "Które oznacza „{word}”?",
     "practiceMeaningPrompt": "Co oznacza „{word}”?",
     "practiceEmojiPrompt": "Wybierz emoji dla „{word}”",
-    "practiceStepProgress": "{done} z {total}"
+    "practiceStepProgress": "{done} z {total}",
+    "leaderboard": "Tablica wyników",
+    "leaderboardRank": "Ranga {rank}",
+    "courseLeaderboardTooltip": "Wszyscy uczestnicy tego kursu, uszeregowani według liczby gwiazdek zdobytych w danym języku. Stuknij członka i wybierz „Rozpocznij rozmowę”, aby wysłać mu wiadomość prywatną."
 }

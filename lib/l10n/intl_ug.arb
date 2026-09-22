@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-09-22 12:37:09.612070",
+    "@@last_modified": "2026-09-22 15:19:41.029970",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -1662,7 +1662,6 @@
     "otherGender": "باشقا",
     "unselectedGender": "جىنىس تاللاڭ",
     "modeDisabled": "نىشان تىلىڭىزدا بولمىغان ئۇچۇرلار ئۈچۈن ئۆگىنىش قوراللىرى چەكلەنگەن.",
-    "courseParticipantTooltip": "بۇ دەرسكە قاتناشقانلارنىڭ ھەممىسى. خالىغان ئىشلەتكۈچىنىڭ ئاۋاتارىنى چېكىپ، «سۆھبەت باشلاش» ئارقىلىق بىۋاسىتە ئۇچۇر ئەۋەتەلەيسىز.",
     "chatParticipantTooltip": "بۇ پاراڭغا قاتناشقانلارنىڭ ھەممىسى. خالىغان ئىشلەتكۈچىنىڭ ئاۋاتارىنى چېكىپ، «سۆھبەت باشلاش» ئارقىلىق بىۋاسىتە ئۇچۇر ئەۋەتەلەيسىز.",
     "inOngoingActivity": "سىزنىڭ داۋام قىلىۋاتقان پائالىيىتىڭىز بار!",
     "requestRegeneration": "قايتا ھاسىللاشنى تەلەپ قىلىش",
@@ -2356,5 +2355,8 @@
     "practiceListeningPrompt": "قايسىسى «{word}» دەيدۇ؟",
     "practiceMeaningPrompt": "«{word}» نىڭ مەنىسى نېمە؟",
     "practiceEmojiPrompt": "«{word}» ئۈچۈن بىر ئىموجى تاللاڭ",
-    "practiceStepProgress": "{total} دىن {done}"
+    "practiceStepProgress": "{total} دىن {done}",
+    "leaderboard": "رەت تەرتىپى",
+    "leaderboardRank": "{rank}-ئورۇن",
+    "courseLeaderboardTooltip": "بۇ دەرسلىكتىكى ھەممە ئادەم تىللاردىكى چولپانلىرى بويىچە رەتكە تىزىلغان. ئەزانى چېكىپ، ئۇلارغا بىۋاسىتە ئۇچۇر يوللاش ئۈچۈن «سۆھبەت باشلاش»نى تاللاڭ."
 }
