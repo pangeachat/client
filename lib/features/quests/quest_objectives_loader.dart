@@ -119,6 +119,16 @@ class QuestObjectivesLoader {
     _disposed = true;
   }
 
+  /// Scope the progress reads to [courseId] ahead of [loadOutline], for a
+  /// surface that cannot load before its first frame — the context bar loads
+  /// from `build`, so post-frame. [loadOutline] was the only place the scope
+  /// was set, so such a surface read no course at all until its load ran and
+  /// then re-published: the bar drew the empty track for its first frames
+  /// although the shared [progression] already held this course (#8938).
+  ///
+  /// Pure state — it notifies nothing, so it is safe to call mid-build.
+  void scopeToCourse(String courseId) => _courseId = courseId;
+
   QuestLoader get questLoader => _questLoader;
   ValueNotifier<ProgressionResolution> get progression => _progression;
 
