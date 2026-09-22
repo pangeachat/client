@@ -2358,5 +2358,13 @@
     "practiceStepProgress": "{done} na {total}",
     "leaderboard": "Teburin Masu Kula",
     "leaderboardRank": "Matsayi {rank}",
-    "courseLeaderboardTooltip": "Kowa a cikin wannan kwas, an jera su ta taurarinsu a cikin harshen. Danna wani memba kuma zaɓi “Fara tattaunawa” don aiko musu da DM."
+    "courseLeaderboardTooltip": "Kowa a cikin wannan kwas, an jera su ta taurarinsu a cikin harshen. Danna wani memba kuma zaɓi “Fara tattaunawa” don aiko musu da DM.",
+    "goalReportTitle": "Bayar da rahoton wannan tauraron",
+    "goalReportOverAwardPrompt": "Idan bai kamata ka sami wannan tauraron ba, don Allah ka bayyana dalili.",
+    "goalReportUnderAwardPrompt": "Idan kana ganin ya kamata ka sami wannan tauraron, me ya sa?",
+    "goalReportPickMessage": "Wane saƙo ne daga cikin saƙonninka ya kamata ya cancanci hakan?",
+    "goalReportNoMessages": "Ba ka aika saƙo ba a wannan zaman tukuna, don haka babu abin da za a nuna.",
+    "goalReportThanks": "An bayar da rahoto. Na gode!",
+    "goalReportErrorUnreportable": "Babu wani juyin mai tsarawa da ya dace da wannan tauraron, don haka babu abin da za a yi rikodin rahoton a kansa.",
+    "goalReportErrorRetry": "Binciken juyin bai ƙare ba. Gwada kuma."
 }

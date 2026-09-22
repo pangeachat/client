@@ -9950,5 +9950,13 @@
     "practiceStepProgress": "{done}/{total}",
     "leaderboard": "Sailkapena",
     "leaderboardRank": "{rank}. postua",
-    "courseLeaderboardTooltip": "Ikastaro honetako guztiak, hizkuntza horretan lortutako izarren arabera sailkatuta. Sakatu kide bat eta aukeratu \"Hasi elkarrizketa\" mezu zuzen bat bidaltzeko."
+    "courseLeaderboardTooltip": "Ikastaro honetako guztiak, hizkuntza horretan lortutako izarren arabera sailkatuta. Sakatu kide bat eta aukeratu \"Hasi elkarrizketa\" mezu zuzen bat bidaltzeko.",
+    "goalReportTitle": "Izartxo honen berri eman",
+    "goalReportOverAwardPrompt": "Izartxo hau jaso behar ez bazenuen, azaldu zergatik.",
+    "goalReportUnderAwardPrompt": "Izartxo hau jaso behar zenuela uste baduzu, zergatik?",
+    "goalReportPickMessage": "Zure mezuetatik zeinek irabazi beharko zukeen?",
+    "goalReportNoMessages": "Oraindik ez duzu mezurik bidali saio honetan, beraz ez dago ezer seinalatzeko.",
+    "goalReportThanks": "Jakinarazita. Eskerrik asko!",
+    "goalReportErrorUnreportable": "Ez dago orkestratzaile-txandarik izartxo honekin bat datorrenik, beraz ez dago txostena erregistratzeko ezer.",
+    "goalReportErrorRetry": "Txanda bilaketa ez da amaitu. Saiatu berriro."
 }

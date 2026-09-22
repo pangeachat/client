@@ -10899,5 +10899,13 @@
     "practiceStepProgress": "{done} od {total}",
     "leaderboard": "Tabela rezultata",
     "leaderboardRank": "Rang {rank}",
-    "courseLeaderboardTooltip": "Svi na ovom kursu, rangirani po broju zvezdica u jeziku kursa. Dodirnite člana i odaberite „Započni razgovor“ da biste mu poslali direktnu poruku."
+    "courseLeaderboardTooltip": "Svi na ovom kursu, rangirani po broju zvezdica u jeziku kursa. Dodirnite člana i odaberite „Započni razgovor“ da biste mu poslali direktnu poruku.",
+    "goalReportTitle": "Prijavi ovu zvezdicu",
+    "goalReportOverAwardPrompt": "Ako nisi trebalo da dobiješ ovu zvezdicu, molimo te objasni zašto.",
+    "goalReportUnderAwardPrompt": "Ako misliš da je trebalo da dobiješ ovu zvezdicu, zašto?",
+    "goalReportPickMessage": "Koja tvoja poruka je trebalo da je zasluži?",
+    "goalReportNoMessages": "Još uvek nisi poslao/la poruku u ovoj sesiji, tako da nema šta da se pokaže.",
+    "goalReportThanks": "Prijavljeno. Hvala!",
+    "goalReportErrorUnreportable": "Nijedan potez orkestratora ne odgovara ovoj zvezdici, tako da nema ništa za beleženje prijave.",
+    "goalReportErrorRetry": "Pretraga poteza nije završena. Pokušaj ponovo."
 }

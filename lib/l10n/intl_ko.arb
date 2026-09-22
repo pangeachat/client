@@ -10143,5 +10143,13 @@
     "practiceStepProgress": "{done}/{total}",
     "leaderboard": "리더보드",
     "leaderboardRank": "순위 {rank}",
-    "courseLeaderboardTooltip": "이 코스에 있는 모든 사람을 해당 언어의 별 개수로 순위를 매겼습니다. 멤버를 탭하고 “대화 시작”을 선택하여 DM을 보내세요."
+    "courseLeaderboardTooltip": "이 코스에 있는 모든 사람을 해당 언어의 별 개수로 순위를 매겼습니다. 멤버를 탭하고 “대화 시작”을 선택하여 DM을 보내세요.",
+    "goalReportTitle": "이 별 신고하기",
+    "goalReportOverAwardPrompt": "이 별을 받지 말았어야 했다면, 이유를 설명해주세요.",
+    "goalReportUnderAwardPrompt": "이 별을 받았어야 했다고 생각한다면, 그 이유는 무엇인가요?",
+    "goalReportPickMessage": "어떤 메시지로 이 별을 받았어야 했나요?",
+    "goalReportNoMessages": "이번 세션에서는 아직 메시지를 보내지 않으셨으므로, 지적할 내용이 없습니다.",
+    "goalReportThanks": "신고되었습니다. 감사합니다!",
+    "goalReportErrorUnreportable": "이 별과 일치하는 오케스트레이터 턴이 없으므로, 신고를 기록할 수 없습니다.",
+    "goalReportErrorRetry": "턴 검색이 완료되지 않았습니다. 다시 시도해주세요."
 }

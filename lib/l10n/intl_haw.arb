@@ -2358,5 +2358,13 @@
     "practiceStepProgress": "{done} o {total}",
     "leaderboard": "Papa Alakaʻi",
     "leaderboardRank": "Kūlana {rank}",
-    "courseLeaderboardTooltip": "ʻO nā haumāna a pau o kēia papa, i hoʻonohonoho ʻia e ko lākou mau hōkū ma kāna ʻōlelo. E kaomi i kekahi lālā a koho i ka “Hoʻomaka kamaʻilio” e hoʻouna i leka pololei iā lākou."
+    "courseLeaderboardTooltip": "ʻO nā haumāna a pau o kēia papa, i hoʻonohonoho ʻia e ko lākou mau hōkū ma kāna ʻōlelo. E kaomi i kekahi lālā a koho i ka “Hoʻomaka kamaʻilio” e hoʻouna i leka pololei iā lākou.",
+    "goalReportTitle": "Hōʻike i kēia hōkū",
+    "goalReportOverAwardPrompt": "Inā ʻaʻole ʻoe i manaʻo e loaʻa kēia hōkū, e ʻoluʻolu e wehewehe i ke kumu.",
+    "goalReportUnderAwardPrompt": "Inā manaʻo ʻoe e loaʻa iā ʻoe kēia hōkū, no ke aha?",
+    "goalReportPickMessage": "ʻO wai o kāu mau leka i pono ke loaʻa?",
+    "goalReportNoMessages": "ʻAʻole ʻoe i hoʻouna i kahi leka ma kēia kau aʻo, no laila ʻaʻohe mea e kuhikuhi ai.",
+    "goalReportThanks": "Ua hōʻike ʻia. Mahalo!",
+    "goalReportErrorUnreportable": "ʻAʻohe huli orchestrator e kūlike me kēia hōkū, no laila ʻaʻohe mea e hoʻopaʻa i ka hōʻike.",
+    "goalReportErrorRetry": "ʻAʻole i pau ka ʻimi ʻana i ka huli. E hoʻāʻo hou."
 }

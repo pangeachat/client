@@ -2358,5 +2358,13 @@
     "practiceStepProgress": "Kua oti {done} o te {total}",
     "leaderboard": "Papa Pūkenga",
     "leaderboardRank": "Tūranga {rank}",
-    "courseLeaderboardTooltip": "Ko ngā tāngata katoa o tēnei akoranga, kua whakaraupapahia i runga i ō rātou whetū i roto i tōna reo. Pāwhiritia tētahi mema ka kōwhiri i te “Tīmata kōrerorero” ki te tuku karere tūmataiti ki a rātou."
+    "courseLeaderboardTooltip": "Ko ngā tāngata katoa o tēnei akoranga, kua whakaraupapahia i runga i ō rātou whetū i roto i tōna reo. Pāwhiritia tētahi mema ka kōwhiri i te “Tīmata kōrerorero” ki te tuku karere tūmataiti ki a rātou.",
+    "goalReportTitle": "Ripoatahia tēnei whetū",
+    "goalReportOverAwardPrompt": "Ki te kore koe e tika kia whiwhi i tēnei whetū, tēnā whakamāramatia te take.",
+    "goalReportUnderAwardPrompt": "Ki te whakaaro koe i tika koe kia whiwhi i tēnei whetū, he aha ai?",
+    "goalReportPickMessage": "Ko tēhea o ō karere i tika kia whiwhi ai?",
+    "goalReportNoMessages": "Kāore anō koe kia tuku karere i tēnei wāhanga, nō reira kāore he mea hei tohu.",
+    "goalReportThanks": "Kua rīpoatatia. Ngā mihi!",
+    "goalReportErrorUnreportable": "Kāore he huringa kaiwhakahaere e ōrite ana ki tēnei whetū, nō reira kāore he mea hei tuhi i te rīpoata.",
+    "goalReportErrorRetry": "Kāore i oti te rapu mō te huringa. Whakamātauria anō."
 }

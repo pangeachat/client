@@ -2358,5 +2358,13 @@
     "practiceStepProgress": "{done} pan {total}",
     "leaderboard": "Lida Bod",
     "leaderboardRank": "Rank {rank}",
-    "courseLeaderboardTooltip": "Ɛnibɔdi insay dis kos, dɛn rank dɛn bay dɛn sta insay di langwej. Tap wan mɛmba ɛn pik “Stat kɔnvɛseshɔn” fɔ sɛn dɛn wan DM."
+    "courseLeaderboardTooltip": "Ɛnibɔdi insay dis kos, dɛn rank dɛn bay dɛn sta insay di langwej. Tap wan mɛmba ɛn pik “Stat kɔnvɛseshɔn” fɔ sɛn dɛn wan DM.",
+    "goalReportTitle": "Ripɔt dis sta",
+    "goalReportOverAwardPrompt": "If yu nɔ fɔ gɛt dis sta, pliz ɛksplen wetin mek.",
+    "goalReportUnderAwardPrompt": "If yu tink se yu fɔ gɛt dis sta, wetin mek?",
+    "goalReportPickMessage": "Us fɔ yu mɛsej dɛn fɔ dɔn mek yu gɛt am?",
+    "goalReportNoMessages": "Yu nɔto dɔn sɛn ɛni mɛsej insay dis seshɔn yet, so nɔtin nɔ de fɔ sho.",
+    "goalReportThanks": "Dɔn ripɔt. Tɛnki!",
+    "goalReportErrorUnreportable": "Nɔ ɔkɛstrɛta tɔn nɔ match dis sta, so nɔtin nɔ de fɔ rikɔd di ripɔt agɛns.",
+    "goalReportErrorRetry": "Di fɛn fɔ di tɔn nɔ dɔn. Tray bak."
 }

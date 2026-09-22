@@ -9950,5 +9950,13 @@
     "practiceStepProgress": "{done} de {total}",
     "leaderboard": "Clasificación",
     "leaderboardRank": "Posto {rank}",
-    "courseLeaderboardTooltip": "Todos os participantes neste curso, clasificados polas súas estrelas no idioma. Toca un membro e escolle \"Iniciar conversa\" para enviarlle unha mensaxe directa."
+    "courseLeaderboardTooltip": "Todos os participantes neste curso, clasificados polas súas estrelas no idioma. Toca un membro e escolle \"Iniciar conversa\" para enviarlle unha mensaxe directa.",
+    "goalReportTitle": "Informar desta estrela",
+    "goalReportOverAwardPrompt": "Se non deberías ter conseguido esta estrela, explica por que.",
+    "goalReportUnderAwardPrompt": "Se cres que deberías ter conseguido esta estrela, por que?",
+    "goalReportPickMessage": "Cal das túas mensaxes debería tela gañado?",
+    "goalReportNoMessages": "Aínda non enviaches ningunha mensaxe nesta sesión, así que non hai nada que sinalar.",
+    "goalReportThanks": "Informado. Grazas!",
+    "goalReportErrorUnreportable": "Ningunha quenda do orquestrador coincide con esta estrela, polo que non hai nada contra o que rexistrar o informe.",
+    "goalReportErrorRetry": "A busca da quenda non rematou. Téntao de novo."
 }

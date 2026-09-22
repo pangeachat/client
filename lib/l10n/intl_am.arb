@@ -2358,5 +2358,13 @@
     "practiceStepProgress": "{total} ከ {done}",
     "leaderboard": "የደረጃ ሰንጠረዥ",
     "leaderboardRank": "ደረጃ {rank}",
-    "courseLeaderboardTooltip": "በዚህ ኮርስ ውስጥ ያሉ ሁሉም ሰው፣ በቋንቋው ባላቸው ኮከቦች ደረጃ የተሰጣቸው። ለአንድ አባል DM ለመላክ እሱን መታ ያድርጉና “ውይይት ጀምር” የሚለውን ይምረጡ።"
+    "courseLeaderboardTooltip": "በዚህ ኮርስ ውስጥ ያሉ ሁሉም ሰው፣ በቋንቋው ባላቸው ኮከቦች ደረጃ የተሰጣቸው። ለአንድ አባል DM ለመላክ እሱን መታ ያድርጉና “ውይይት ጀምር” የሚለውን ይምረጡ።",
+    "goalReportTitle": "ይህን ኮከብ ሪፖርት አድርግ",
+    "goalReportOverAwardPrompt": "ይህን ኮከብ ማግኘት ባይገባህ ኖሮ፣ ለምን እንደሆነ አስረዳ።",
+    "goalReportUnderAwardPrompt": "ይህን ኮከብ ማግኘት ይገባኛል ብለህ ካሰብክ፣ ለምን?",
+    "goalReportPickMessage": "የትኛው መልዕክትህ ሊያስገኝልህ ይገባ ነበር?",
+    "goalReportNoMessages": "በዚህ ክፍለ ጊዜ እስካሁን መልዕክት አልላክክም፣ ስለዚህ የሚያመለክት ነገር የለም።",
+    "goalReportThanks": "ሪፖርት ተደርጓል። እናመሰግናለን!",
+    "goalReportErrorUnreportable": "ምንም ኦርኬስትራተር ተራ ከዚህ ኮከብ ጋር አይዛመድም፣ ስለዚህ ሪፖርቱን የሚመዘግብበት ነገር የለም።",
+    "goalReportErrorRetry": "የተራው ፍለጋ አልተጠናቀቀም። እንደገና ይሞክሩ።"
 }

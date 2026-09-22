@@ -2358,5 +2358,13 @@
     "practiceStepProgress": "{done} kati ya {total}",
     "leaderboard": "Ubao wa Wanaoongoza",
     "leaderboardRank": "Nafasi {rank}",
-    "courseLeaderboardTooltip": "Kila mmoja katika kozi hii, amepangwa kwa nyota zao katika lugha yake. Gonga mwanachama na uchague “Anzisha mazungumzo” ili kumtumia DM."
+    "courseLeaderboardTooltip": "Kila mmoja katika kozi hii, amepangwa kwa nyota zao katika lugha yake. Gonga mwanachama na uchague “Anzisha mazungumzo” ili kumtumia DM.",
+    "goalReportTitle": "Ripoti nyota hii",
+    "goalReportOverAwardPrompt": "Ikiwa haukupaswa kupata nyota hii, tafadhali eleza kwa nini.",
+    "goalReportUnderAwardPrompt": "Ikiwa unafikiri ulipaswa kupata nyota hii, kwa nini?",
+    "goalReportPickMessage": "Ni ujumbe gani kati ya ujumbe wako ulipaswa kuipata?",
+    "goalReportNoMessages": "Bado hujatuma ujumbe katika kipindi hiki, kwa hivyo hakuna cha kuelekeza.",
+    "goalReportThanks": "Imetolewa ripoti. Asante!",
+    "goalReportErrorUnreportable": "Hakuna zamu ya mratibu inayolingana na nyota hii, kwa hivyo hakuna cha kurekodi ripoti dhidi yake.",
+    "goalReportErrorRetry": "Utafutaji wa zamu haukukamilika. Jaribu tena."
 }

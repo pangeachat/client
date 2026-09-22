@@ -2358,5 +2358,13 @@
     "practiceStepProgress": "{done} ka mid ah {total}",
     "leaderboard": "Hogaamiye",
     "leaderboardRank": "Darajada {rank}",
-    "courseLeaderboardTooltip": "Qof kasta oo koorsadan ku jira, oo lagu kala saaray xiddigahooda luqadda. Taabo xubin oo dooro “Bilow wada sheekaysiga” si aad fariin toos ah ugu dirto."
+    "courseLeaderboardTooltip": "Qof kasta oo koorsadan ku jira, oo lagu kala saaray xiddigahooda luqadda. Taabo xubin oo dooro “Bilow wada sheekaysiga” si aad fariin toos ah ugu dirto.",
+    "goalReportTitle": "Warbixi xiddigtan",
+    "goalReportOverAwardPrompt": "Haddii aanad ahayn inaad hesho xiddigtan, fadlan sharax sababta.",
+    "goalReportUnderAwardPrompt": "Haddii aad u malaynayso inaad ahayd inaad hesho xiddigtan, maxay tahay sababtu?",
+    "goalReportPickMessage": "Fariimahaaga keebaa ahayd inuu kasbado?",
+    "goalReportNoMessages": "Weli ma aadan dirin farriin fadhigan, sidaa darteed ma jirto wax la tilmaamo.",
+    "goalReportThanks": "Waa la soo sheegay. Mahadsanid!",
+    "goalReportErrorUnreportable": "Ma jirto isku-dubbaride u dhiganta xiddigtan, sidaa darteed ma jirto wax lagu diiwaan geliyo warbixinta.",
+    "goalReportErrorRetry": "Raadinta wareegga ma dhammaan. Isku day mar kale."
 }

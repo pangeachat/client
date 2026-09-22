@@ -10864,5 +10864,13 @@
     "practiceStepProgress": "{done} מתוך {total}",
     "leaderboard": "טבלת הישגים",
     "leaderboardRank": "דירוג {rank}",
-    "courseLeaderboardTooltip": "כל המשתתפים בקורס זה, מדורגים לפי כוכביהם בשפה. הקש על משתמש ובחר ״התחל שיחה״ כדי לשלוח לו הודעה פרטית."
+    "courseLeaderboardTooltip": "כל המשתתפים בקורס זה, מדורגים לפי כוכביהם בשפה. הקש על משתמש ובחר ״התחל שיחה״ כדי לשלוח לו הודעה פרטית.",
+    "goalReportTitle": "דווח על כוכב זה",
+    "goalReportOverAwardPrompt": "אם לא היית אמור לקבל את הכוכב הזה, אנא הסבר מדוע.",
+    "goalReportUnderAwardPrompt": "אם לדעתך היית אמור לקבל את הכוכב הזה, מדוע?",
+    "goalReportPickMessage": "איזו מההודעות שלך הייתה אמורה לזכות אותך בו?",
+    "goalReportNoMessages": "עדיין לא שלחת הודעה בסשן זה, כך שאין על מה להצביע.",
+    "goalReportThanks": "דווח. תודה!",
+    "goalReportErrorUnreportable": "אין תור של מתזמן שתואם לכוכב הזה, כך שאין על מה לתעד את הדיווח.",
+    "goalReportErrorRetry": "החיפוש אחר התור לא הסתיים. נסה שוב."
 }

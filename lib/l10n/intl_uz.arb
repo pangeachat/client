@@ -9954,5 +9954,13 @@
     "practiceStepProgress": "{done} / {total}",
     "leaderboard": "Yetakchilar jadvali",
     "leaderboardRank": "Daraja {rank}",
-    "courseLeaderboardTooltip": "Ushbu kursdagi barcha ishtirokchilar til boʻyicha yulduzlari asosida tartiblangan. Aʼzoga xabar yuborish uchun uni bosing va “Suhbatni boshlash”ni tanlang."
+    "courseLeaderboardTooltip": "Ushbu kursdagi barcha ishtirokchilar til boʻyicha yulduzlari asosida tartiblangan. Aʼzoga xabar yuborish uchun uni bosing va “Suhbatni boshlash”ni tanlang.",
+    "goalReportTitle": "Ushbu yulduz haqida xabar berish",
+    "goalReportOverAwardPrompt": "Agar siz bu yulduzni olmasligingiz kerak bo'lsa, iltimos, sababini tushuntiring.",
+    "goalReportUnderAwardPrompt": "Agar siz bu yulduzni olishingiz kerak deb hisoblasangiz, nima uchun?",
+    "goalReportPickMessage": "Qaysi xabaringiz uni olishi kerak edi?",
+    "goalReportNoMessages": "Siz bu sessiyada hali xabar yubormadingiz, shuning uchun ko'rsatadigan hech narsa yo'q.",
+    "goalReportThanks": "Xabar berildi. Rahmat!",
+    "goalReportErrorUnreportable": "Hech qanday orkestrator navbati bu yulduzga mos kelmaydi, shuning uchun hisobotni yozib olish uchun hech narsa yo'q.",
+    "goalReportErrorRetry": "Navbatni qidirish tugallanmadi. Qayta urinib ko'ring."
 }

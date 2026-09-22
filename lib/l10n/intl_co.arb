@@ -2358,5 +2358,13 @@
     "practiceStepProgress": "{done} di {total}",
     "leaderboard": "Classifica",
     "leaderboardRank": "Classifica {rank}",
-    "courseLeaderboardTooltip": "Tutti i membri di stu corsu, classificati secondu e so stelle in a lingua. Toccate un membru è sceglite «Principià a cunversazione» per mandà li un missaghju direttu."
+    "courseLeaderboardTooltip": "Tutti i membri di stu corsu, classificati secondu e so stelle in a lingua. Toccate un membru è sceglite «Principià a cunversazione» per mandà li un missaghju direttu.",
+    "goalReportTitle": "Signalà sta stella",
+    "goalReportOverAwardPrompt": "S'è vo ùn duvite micca avè sta stella, spiegate per piacè perchè.",
+    "goalReportUnderAwardPrompt": "S'è vo pensate chì duvite avè sta stella, perchè?",
+    "goalReportPickMessage": "Quale di i vostri messagi duveria avè guadagnatu?",
+    "goalReportNoMessages": "Ùn avete ancu mandatu un messagiu in sta sessione, dunque ùn ci hè nunda da indicà.",
+    "goalReportThanks": "Signalatu. Grazie!",
+    "goalReportErrorUnreportable": "Nisuna volta di l'orchestratore currisponde à sta stella, dunque ùn ci hè nunda per registrà u rapportu contru.",
+    "goalReportErrorRetry": "A ricerca di a volta ùn hè micca finita. Pruvate di novu."
 }

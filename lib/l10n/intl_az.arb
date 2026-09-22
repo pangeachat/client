@@ -2358,5 +2358,13 @@
     "practiceStepProgress": "{done} / {total}",
     "leaderboard": "Liderlər lövhəsi",
     "leaderboardRank": "Sıra {rank}",
-    "courseLeaderboardTooltip": "Bu kursdakı hər kəs, dilindəki ulduzlarına görə sıralanır. Bir üzvə toxunun və onlara birbaşa mesaj göndərmək üçün “Söhbətə başla” seçin."
+    "courseLeaderboardTooltip": "Bu kursdakı hər kəs, dilindəki ulduzlarına görə sıralanır. Bir üzvə toxunun və onlara birbaşa mesaj göndərmək üçün “Söhbətə başla” seçin.",
+    "goalReportTitle": "Bu ulduzu bildirin",
+    "goalReportOverAwardPrompt": "Əgər bu ulduzu almamalı idinizsə, lütfən, səbəbini izah edin.",
+    "goalReportUnderAwardPrompt": "Əgər bu ulduzu almalı olduğunuzu düşünürsünüzsə, niyə?",
+    "goalReportPickMessage": "Hansı mesajınız buna layiq olmalı idi?",
+    "goalReportNoMessages": "Bu sessiyada hələ mesaj göndərməmisiniz, ona görə də göstəriləcək heç nə yoxdur.",
+    "goalReportThanks": "Bildirildi. Təşəkkürlər!",
+    "goalReportErrorUnreportable": "Bu ulduza uyğun orkestrator növbəsi yoxdur, ona görə də hesabatı qeyd etmək üçün heç nə yoxdur.",
+    "goalReportErrorRetry": "Növbənin axtarışı başa çatmadı. Yenidən cəhd edin."
 }

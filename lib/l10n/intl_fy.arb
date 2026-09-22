@@ -2358,5 +2358,13 @@
     "practiceStepProgress": "{done} fan {total}",
     "leaderboard": "Ranglist",
     "leaderboardRank": "Rang {rank}",
-    "courseLeaderboardTooltip": "Elkenien yn dizze kursus, rangearre op harren stjerren yn de taal. Tik op in lid en kies “Petear begjinne” om harren in DM te stjoeren."
+    "courseLeaderboardTooltip": "Elkenien yn dizze kursus, rangearre op harren stjerren yn de taal. Tik op in lid en kies “Petear begjinne” om harren in DM te stjoeren.",
+    "goalReportTitle": "Rapportearje dizze stjer",
+    "goalReportOverAwardPrompt": "As jo dizze stjer net krije moatten hiene, ferklearje dan wêrom.",
+    "goalReportUnderAwardPrompt": "As jo tinke dat jo dizze stjer krije moatten hiene, wêrom dan?",
+    "goalReportPickMessage": "Hokker fan jo berjochten hie it fertsjinje moatten?",
+    "goalReportNoMessages": "Jo hawwe noch gjin berjocht ferstjoerd yn dizze sesje, dus der is neat om oan te wizen.",
+    "goalReportThanks": "Rapporteare. Tank!",
+    "goalReportErrorUnreportable": "Gjin orkestratorbeurt komt oerien mei dizze stjer, dus der is neat om it rapport tsjin op te nimmen.",
+    "goalReportErrorRetry": "It sykjen nei de beurt is net foltôge. Besykje it opnij."
 }

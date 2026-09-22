@@ -2358,5 +2358,13 @@
     "practiceStepProgress": "{done} de {total}",
     "leaderboard": "Tabula Ducum",
     "leaderboardRank": "Ordo {rank}",
-    "courseLeaderboardTooltip": "Omnes in hoc cursu, secundum stellas in lingua sua ordinati. Tange membrum et elige \"Incipe sermonem\" ut nuntium privatum mittas."
+    "courseLeaderboardTooltip": "Omnes in hoc cursu, secundum stellas in lingua sua ordinati. Tange membrum et elige \"Incipe sermonem\" ut nuntium privatum mittas.",
+    "goalReportTitle": "Hanc stellam renuntia",
+    "goalReportOverAwardPrompt": "Si hanc stellam accipere non debuisti, quaeso explica cur.",
+    "goalReportUnderAwardPrompt": "Si hanc stellam accipere debuisse putas, cur?",
+    "goalReportPickMessage": "Quod nuntiorum tuorum eam meruisse debuit?",
+    "goalReportNoMessages": "Nondum nuntium in hac sessione misisti, ergo nihil est quod demonstrare possis.",
+    "goalReportThanks": "Renuntiatum est. Gratias!",
+    "goalReportErrorUnreportable": "Nulla orchestratoris vices huic stellae congruit, ergo nihil est contra quod renuntiatio notetur.",
+    "goalReportErrorRetry": "Quaesitio vicis non perfecta est. Iterum conare."
 }

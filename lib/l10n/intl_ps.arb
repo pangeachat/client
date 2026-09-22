@@ -2358,5 +2358,13 @@
     "practiceStepProgress": "{done} د {total}",
     "leaderboard": "مشرتابلو",
     "leaderboardRank": "درجه {rank}",
-    "courseLeaderboardTooltip": "په دې کورس کې هرڅوک، د دوی د ژبې ستورو له مخې درجه بندي شوي. یو غړی ټایپ کړئ او د DM لیږلو لپاره \"خبرې اترې پیل کړئ\" غوره کړئ."
+    "courseLeaderboardTooltip": "په دې کورس کې هرڅوک، د دوی د ژبې ستورو له مخې درجه بندي شوي. یو غړی ټایپ کړئ او د DM لیږلو لپاره \"خبرې اترې پیل کړئ\" غوره کړئ.",
+    "goalReportTitle": "دې ستوري راپور ورکړئ",
+    "goalReportOverAwardPrompt": "که تاسو باید دا ستوری نه وای ترلاسه کړی، مهرباني وکړئ تشریح کړئ چې ولې.",
+    "goalReportUnderAwardPrompt": "که تاسو فکر کوئ چې تاسو باید دا ستوری ترلاسه کړی وای، ولې؟",
+    "goalReportPickMessage": "ستاسو کوم پیغام باید دا ګټلی وای؟",
+    "goalReportNoMessages": "تاسو په دې سیشن کې تر اوسه کوم پیغام نه دی لیږلی، نو د اشاره کولو لپاره هیڅ شی نشته.",
+    "goalReportThanks": "راپور ورکړل شو. مننه!",
+    "goalReportErrorUnreportable": "دې ستوري سره د آرکیسټراټر هیڅ وار نه سمون خوري، نو د راپور ثبتولو لپاره هیڅ شی نشته.",
+    "goalReportErrorRetry": "د وار لټون پای ته ونه رسید. بیا هڅه وکړئ."
 }

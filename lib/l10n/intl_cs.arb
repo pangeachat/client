@@ -10444,5 +10444,13 @@
     "practiceStepProgress": "{done} z {total}",
     "leaderboard": "Žebříček",
     "leaderboardRank": "Pořadí {rank}",
-    "courseLeaderboardTooltip": "Všichni v tomto kurzu seřazení podle hvězdiček v daném jazyce. Klepnutím na člena a výběrem možnosti „Zahájit konverzaci“ mu pošlete přímou zprávu."
+    "courseLeaderboardTooltip": "Všichni v tomto kurzu seřazení podle hvězdiček v daném jazyce. Klepnutím na člena a výběrem možnosti „Zahájit konverzaci“ mu pošlete přímou zprávu.",
+    "goalReportTitle": "Nahlásit tuto hvězdu",
+    "goalReportOverAwardPrompt": "Pokud jste tuto hvězdu neměli získat, vysvětlete prosím proč.",
+    "goalReportUnderAwardPrompt": "Pokud si myslíte, že jste tuto hvězdu měli získat, proč?",
+    "goalReportPickMessage": "Která z vašich zpráv ji měla získat?",
+    "goalReportNoMessages": "V této relaci jste ještě neposlali žádnou zprávu, takže není na co ukázat.",
+    "goalReportThanks": "Nahlášeno. Děkujeme!",
+    "goalReportErrorUnreportable": "Žádný tah orchestrátora neodpovídá této hvězdě, takže není nic, proti čemu by se zpráva zaznamenala.",
+    "goalReportErrorRetry": "Hledání tahu nebylo dokončeno. Zkuste to znovu."
 }

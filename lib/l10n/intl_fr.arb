@@ -10305,5 +10305,13 @@
     "practiceStepProgress": "{done} sur {total}",
     "leaderboard": "Classement",
     "leaderboardRank": "Rang {rank}",
-    "courseLeaderboardTooltip": "Tous les membres de ce cours, classés selon leurs étoiles dans cette langue. Touchez un membre et choisissez « Démarrer une conversation » pour lui envoyer un message direct."
+    "courseLeaderboardTooltip": "Tous les membres de ce cours, classés selon leurs étoiles dans cette langue. Touchez un membre et choisissez « Démarrer une conversation » pour lui envoyer un message direct.",
+    "goalReportTitle": "Signaler cette étoile",
+    "goalReportOverAwardPrompt": "Si vous n'auriez pas dû recevoir cette étoile, veuillez expliquer pourquoi.",
+    "goalReportUnderAwardPrompt": "Si vous pensez que vous auriez dû recevoir cette étoile, pourquoi ?",
+    "goalReportPickMessage": "Lequel de vos messages aurait dû la mériter ?",
+    "goalReportNoMessages": "Vous n'avez pas encore envoyé de message dans cette session, il n'y a donc rien à signaler.",
+    "goalReportThanks": "Signalé. Merci !",
+    "goalReportErrorUnreportable": "Aucun tour d'orchestrateur ne correspond à cette étoile, il n'y a donc rien contre quoi enregistrer le rapport.",
+    "goalReportErrorRetry": "La recherche du tour n'est pas terminée. Réessayez."
 }

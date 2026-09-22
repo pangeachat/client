@@ -2358,5 +2358,13 @@
     "practiceStepProgress": "{done} vun {total}",
     "leaderboard": "Leaderboard",
     "leaderboardRank": "Rang {rank}",
-    "courseLeaderboardTooltip": "Jiddereen an dësem Cours, no hire Stären an hirer Sprooch klasséiert. Tippt op e Member a wielt „Gespréich ufänken“ fir hinnen eng DM ze schécken."
+    "courseLeaderboardTooltip": "Jiddereen an dësem Cours, no hire Stären an hirer Sprooch klasséiert. Tippt op e Member a wielt „Gespréich ufänken“ fir hinnen eng DM ze schécken.",
+    "goalReportTitle": "Dëse Stär mellen",
+    "goalReportOverAwardPrompt": "Wann Dir dëse Stär net sollt kréien, erkläert w.e.g. firwat.",
+    "goalReportUnderAwardPrompt": "Wann Dir mengt, Dir hätt dëse Stär solle kréien, firwat?",
+    "goalReportPickMessage": "Wéi eng vun Äre Messagen hätt et solle verdéngen?",
+    "goalReportNoMessages": "Dir hutt nach keng Noriicht an dëser Sessioun geschéckt, also gëtt et näischt, op wat ee ka weisen.",
+    "goalReportThanks": "Gemellt. Merci!",
+    "goalReportErrorUnreportable": "Keng Orchestrator-Tour passt zu dësem Stär, also gëtt et näischt, géint wat de Rapport opgeholl ka ginn.",
+    "goalReportErrorRetry": "D'Sich no der Tour ass net fäerdeg ginn. Probéiert et nach eng Kéier."
 }

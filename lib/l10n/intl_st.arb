@@ -2358,5 +2358,13 @@
     "practiceStepProgress": "{done} ho {total}",
     "leaderboard": "Leaderboard",
     "leaderboardRank": "Boemo ba {rank}",
-    "courseLeaderboardTooltip": "E mong le e mong thupelong ena, a behiloe ka lipalo tsa hae puong ea eona. Tlanya setho ebe u khetha “Qala moqoqo” ho ba romella molaetsa."
+    "courseLeaderboardTooltip": "E mong le e mong thupelong ena, a behiloe ka lipalo tsa hae puong ea eona. Tlanya setho ebe u khetha “Qala moqoqo” ho ba romella molaetsa.",
+    "goalReportTitle": "Tlaleha naledi ena",
+    "goalReportOverAwardPrompt": "Haeba o ne o sa lokela ho fumana naledi ena, ka kopo hlalosa hore na hobaneng.",
+    "goalReportUnderAwardPrompt": "Haeba o nahana hore o ne o lokela ho fumana naledi ena, hobaneng?",
+    "goalReportPickMessage": "Ke melaetsa efe ya hao e neng e lokela ho e fumana?",
+    "goalReportNoMessages": "Ha o so romele molaetsa sebokeng sena, kahoo ha ho letho leo o ka le supang.",
+    "goalReportThanks": "E tlalehilwe. Ke a leboha!",
+    "goalReportErrorUnreportable": "Ha ho na letho le tsamaisanang le naledi ena, kahoo ha ho letho leo o ka le tlalehang.",
+    "goalReportErrorRetry": "Patlisiso ya naledi ha e a fela. Leka hape."
 }

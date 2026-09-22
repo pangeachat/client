@@ -10895,5 +10895,13 @@
     "practiceStepProgress": "{done} z {total}",
     "leaderboard": "Rebríček",
     "leaderboardRank": "Umiestnenie {rank}",
-    "courseLeaderboardTooltip": "Všetci v tomto kurze, zoradení podľa ich hviezdičiek v danom jazyku. Klepnite na člena a vyberte „Začať konverzáciu“, aby ste mu poslali správu."
+    "courseLeaderboardTooltip": "Všetci v tomto kurze, zoradení podľa ich hviezdičiek v danom jazyku. Klepnite na člena a vyberte „Začať konverzáciu“, aby ste mu poslali správu.",
+    "goalReportTitle": "Nahlásiť túto hviezdu",
+    "goalReportOverAwardPrompt": "Ak ste nemali dostať túto hviezdu, vysvetlite prečo.",
+    "goalReportUnderAwardPrompt": "Ak si myslíte, že ste mali dostať túto hviezdu, prečo?",
+    "goalReportPickMessage": "Ktorá z vašich správ ju mala získať?",
+    "goalReportNoMessages": "V tejto relácii ste zatiaľ neposlali žiadnu správu, takže nie je na čo poukázať.",
+    "goalReportThanks": "Nahlásené. Ďakujeme!",
+    "goalReportErrorUnreportable": "Žiadny ťah orchestrátora sa nezhoduje s touto hviezdou, takže nie je nič, voči čomu by sa správa zaznamenala.",
+    "goalReportErrorRetry": "Vyhľadávanie ťahu sa nedokončilo. Skúste to znova."
 }

@@ -2358,5 +2358,13 @@
     "practiceStepProgress": "{done} tina {total}",
     "leaderboard": "Papan Peringkat",
     "leaderboardRank": "Peringkat {rank}",
-    "courseLeaderboardTooltip": "Sadayana dina kursus ieu, diurutkeun dumasar béntangna dina basa éta. Ketok anggota teras pilih \"Mimitian paguneman\" pikeun ngirim DM ka aranjeunna."
+    "courseLeaderboardTooltip": "Sadayana dina kursus ieu, diurutkeun dumasar béntangna dina basa éta. Ketok anggota teras pilih \"Mimitian paguneman\" pikeun ngirim DM ka aranjeunna.",
+    "goalReportTitle": "Laporkeun béntang ieu",
+    "goalReportOverAwardPrompt": "Upami anjeun henteu kedah nampi béntang ieu, punten jelaskeun kunaon.",
+    "goalReportUnderAwardPrompt": "Upami anjeun nyangka anjeun kedah nampi béntang ieu, kunaon?",
+    "goalReportPickMessage": "Pesen anjeun anu mana anu kedah nampi éta?",
+    "goalReportNoMessages": "Anjeun teu acan ngirim pesen dina sési ieu, janten teu aya anu tiasa ditunjuk.",
+    "goalReportThanks": "Dilaporkeun. Hatur nuhun!",
+    "goalReportErrorUnreportable": "Teu aya giliran orkestrator anu cocog sareng béntang ieu, janten teu aya anu tiasa ngarékam laporan.",
+    "goalReportErrorRetry": "Milarian giliran henteu réngsé. Cobi deui."
 }

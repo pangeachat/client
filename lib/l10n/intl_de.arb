@@ -9937,5 +9937,13 @@
     "practiceStepProgress": "{done} von {total}",
     "leaderboard": "Bestenliste",
     "leaderboardRank": "Rang {rank}",
-    "courseLeaderboardTooltip": "Alle Teilnehmenden dieses Kurses, nach Sternen in der jeweiligen Sprache geordnet. Tippe auf ein Mitglied und wähle „Unterhaltung starten“, um eine Direktnachricht zu senden."
+    "courseLeaderboardTooltip": "Alle Teilnehmenden dieses Kurses, nach Sternen in der jeweiligen Sprache geordnet. Tippe auf ein Mitglied und wähle „Unterhaltung starten“, um eine Direktnachricht zu senden.",
+    "goalReportTitle": "Diesen Stern melden",
+    "goalReportOverAwardPrompt": "Wenn du diesen Stern nicht hättest bekommen sollen, erkläre bitte, warum.",
+    "goalReportUnderAwardPrompt": "Wenn du denkst, du hättest diesen Stern bekommen sollen, warum?",
+    "goalReportPickMessage": "Welche deiner Nachrichten hätte ihn verdienen sollen?",
+    "goalReportNoMessages": "Du hast in dieser Sitzung noch keine Nachricht gesendet, daher gibt es nichts, worauf du zeigen könntest.",
+    "goalReportThanks": "Gemeldet. Danke!",
+    "goalReportErrorUnreportable": "Keine Orchestrator-Runde passt zu diesem Stern, daher gibt es nichts, worauf der Bericht aufgezeichnet werden könnte.",
+    "goalReportErrorRetry": "Die Suche nach der Runde wurde nicht abgeschlossen. Versuche es erneut."
 }

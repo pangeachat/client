@@ -10870,5 +10870,13 @@
     "practiceStepProgress": "{done} af {total}",
     "leaderboard": "Rangliste",
     "leaderboardRank": "Rang {rank}",
-    "courseLeaderboardTooltip": "Alle på dette kursus, rangeret efter deres stjerner i sproget. Tryk på et medlem og vælg \"Start samtale\" for at sende dem en direkte besked."
+    "courseLeaderboardTooltip": "Alle på dette kursus, rangeret efter deres stjerner i sproget. Tryk på et medlem og vælg \"Start samtale\" for at sende dem en direkte besked.",
+    "goalReportTitle": "Rapportér denne stjerne",
+    "goalReportOverAwardPrompt": "Hvis du ikke skulle have haft denne stjerne, forklar venligst hvorfor.",
+    "goalReportUnderAwardPrompt": "Hvis du mener, du skulle have haft denne stjerne, hvorfor?",
+    "goalReportPickMessage": "Hvilken af dine beskeder skulle have givet den?",
+    "goalReportNoMessages": "Du har ikke sendt en besked i denne session endnu, så der er intet at pege på.",
+    "goalReportThanks": "Rapporteret. Tak!",
+    "goalReportErrorUnreportable": "Ingen orkestrator-tur matcher denne stjerne, så der er intet at registrere rapporten imod.",
+    "goalReportErrorRetry": "Søgningen efter turen blev ikke afsluttet. Prøv igen."
 }

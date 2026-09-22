@@ -2358,5 +2358,13 @@
     "practiceStepProgress": "{done} mai le {total}",
     "leaderboard": "Lisi o Ta'ita'i",
     "leaderboardRank": "Tulaga {rank}",
-    "courseLeaderboardTooltip": "Tagata uma i lenei kosi, fa'atulagaina e a latou fetu i lana gagana. Pa'i i se sui ma filifili le “Amata talanoaga” e lafo ai se fe'au tuusa'o ia i latou."
+    "courseLeaderboardTooltip": "Tagata uma i lenei kosi, fa'atulagaina e a latou fetu i lana gagana. Pa'i i se sui ma filifili le “Amata talanoaga” e lafo ai se fe'au tuusa'o ia i latou.",
+    "goalReportTitle": "Lipoti lenei fetu",
+    "goalReportOverAwardPrompt": "Afai e le tatau ona e mauaina lenei fetu, faʻamolemole faʻamatala pe aisea.",
+    "goalReportUnderAwardPrompt": "Afai e te manatu e tatau ona e mauaina lenei fetu, aisea?",
+    "goalReportPickMessage": "O le fea o au feʻau e tatau ona maua ai?",
+    "goalReportNoMessages": "E te leʻi lafoina se feʻau i lenei sauniga, o lea e leai se mea e faʻasino i ai.",
+    "goalReportThanks": "Ua lipotia. Faafetai!",
+    "goalReportErrorUnreportable": "E leai se taʻamilosaga a le faʻatonu e fetaui ma lenei fetu, o lea e leai se mea e faʻamaumau ai le lipoti.",
+    "goalReportErrorRetry": "E leʻi maeʻa le suʻesuʻega mo le taʻamilosaga. Toe taumafai."
 }

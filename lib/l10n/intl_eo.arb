@@ -10895,5 +10895,13 @@
     "practiceStepProgress": "{done} el {total}",
     "leaderboard": "Poenttabulo",
     "leaderboardRank": "Rango {rank}",
-    "courseLeaderboardTooltip": "Ĉiuj en ĉi tiu kurso, rangigitaj laŭ iliaj steloj en ĝia lingvo. Frapu membron kaj elektu “Komenci konversacion” por sendi al ili rektan mesaĝon."
+    "courseLeaderboardTooltip": "Ĉiuj en ĉi tiu kurso, rangigitaj laŭ iliaj steloj en ĝia lingvo. Frapu membron kaj elektu “Komenci konversacion” por sendi al ili rektan mesaĝon.",
+    "goalReportTitle": "Raporti ĉi tiun stelon",
+    "goalReportOverAwardPrompt": "Se vi ne supozis ricevi ĉi tiun stelon, bonvolu klarigi kial.",
+    "goalReportUnderAwardPrompt": "Se vi pensas, ke vi supozis ricevi ĉi tiun stelon, kial?",
+    "goalReportPickMessage": "Kiu el viaj mesaĝoj devus esti gajninta ĝin?",
+    "goalReportNoMessages": "Vi ankoraŭ ne sendis mesaĝon en ĉi tiu sesio, do ne estas io por montri.",
+    "goalReportThanks": "Raportite. Dankon!",
+    "goalReportErrorUnreportable": "Neniu orkestrestra vico kongruas kun ĉi tiu stelo, do ne estas io por registri la raporton kontraŭe.",
+    "goalReportErrorRetry": "La serĉo de la vico ne finiĝis. Provu denove."
 }

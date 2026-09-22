@@ -2358,5 +2358,13 @@
     "practiceStepProgress": "{done} sa {total}",
     "leaderboard": "Leaderboard",
     "leaderboardRank": "Ranggo {rank}",
-    "courseLeaderboardTooltip": "Ang tanan sa kini nga kurso, gi-ranggo pinaagi sa ilang mga bituon sa pinulongan niini. I-tap ang usa ka miyembro ug pilia ang “Sugdi ang panag-istoryahanay” aron ipadala sila og DM."
+    "courseLeaderboardTooltip": "Ang tanan sa kini nga kurso, gi-ranggo pinaagi sa ilang mga bituon sa pinulongan niini. I-tap ang usa ka miyembro ug pilia ang “Sugdi ang panag-istoryahanay” aron ipadala sila og DM.",
+    "goalReportTitle": "I-report kini nga bituon",
+    "goalReportOverAwardPrompt": "Kung dili ka unta makakuha niini nga bituon, palihug ipasabot kung ngano.",
+    "goalReportUnderAwardPrompt": "Kung sa imong hunahuna kinahanglan ka makakuha niini nga bituon, ngano man?",
+    "goalReportPickMessage": "Hain sa imong mga mensahe ang unta makakuha niini?",
+    "goalReportNoMessages": "Wala ka pa nakapadala og mensahe niini nga sesyon, busa wala'y ikatumbok.",
+    "goalReportThanks": "Nai-report na. Salamat!",
+    "goalReportErrorUnreportable": "Walay orchestrator turn nga mohaum niini nga bituon, busa walay marekord nga report batok niini.",
+    "goalReportErrorRetry": "Wala nahuman ang pagpangita sa turn. Sulayi pag-usab."
 }

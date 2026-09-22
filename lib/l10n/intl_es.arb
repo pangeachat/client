@@ -8169,5 +8169,13 @@
     "practiceStepProgress": "{done} de {total}",
     "leaderboard": "Clasificación",
     "leaderboardRank": "Puesto {rank}",
-    "courseLeaderboardTooltip": "Todos los participantes de este curso, clasificados por sus estrellas en el idioma. Toca un miembro y elige «Iniciar conversación» para enviarle un mensaje directo."
+    "courseLeaderboardTooltip": "Todos los participantes de este curso, clasificados por sus estrellas en el idioma. Toca un miembro y elige «Iniciar conversación» para enviarle un mensaje directo.",
+    "goalReportTitle": "Reportar esta estrella",
+    "goalReportOverAwardPrompt": "Si no se suponía que debías obtener esta estrella, explica por qué.",
+    "goalReportUnderAwardPrompt": "Si crees que debías obtener esta estrella, ¿por qué?",
+    "goalReportPickMessage": "¿Cuál de tus mensajes debería haberla ganado?",
+    "goalReportNoMessages": "Aún no has enviado ningún mensaje en esta sesión, así que no hay nada que señalar.",
+    "goalReportThanks": "Reportado. ¡Gracias!",
+    "goalReportErrorUnreportable": "Ningún turno del orquestador coincide con esta estrella, así que no hay nada contra lo que registrar el informe.",
+    "goalReportErrorRetry": "La búsqueda del turno no finalizó. Inténtalo de nuevo."
 }

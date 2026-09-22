@@ -7242,5 +7242,13 @@
     "practiceStepProgress": "{done} trên {total}",
     "leaderboard": "Bảng xếp hạng",
     "leaderboardRank": "Hạng {rank}",
-    "courseLeaderboardTooltip": "Tất cả mọi người trong khóa học này, được xếp hạng theo số sao của họ trong ngôn ngữ đó. Nhấn vào một thành viên và chọn “Bắt đầu cuộc trò chuyện” để gửi tin nhắn trực tiếp cho họ."
+    "courseLeaderboardTooltip": "Tất cả mọi người trong khóa học này, được xếp hạng theo số sao của họ trong ngôn ngữ đó. Nhấn vào một thành viên và chọn “Bắt đầu cuộc trò chuyện” để gửi tin nhắn trực tiếp cho họ.",
+    "goalReportTitle": "Báo cáo sao này",
+    "goalReportOverAwardPrompt": "Nếu bạn không đáng nhận sao này, vui lòng giải thích lý do.",
+    "goalReportUnderAwardPrompt": "Nếu bạn nghĩ mình đáng nhận sao này, tại sao?",
+    "goalReportPickMessage": "Tin nhắn nào của bạn đáng lẽ phải nhận được nó?",
+    "goalReportNoMessages": "Bạn chưa gửi tin nhắn nào trong phiên này, nên không có gì để chỉ ra.",
+    "goalReportThanks": "Đã báo cáo. Cảm ơn!",
+    "goalReportErrorUnreportable": "Không có lượt điều phối viên nào khớp với sao này, nên không có gì để ghi lại báo cáo.",
+    "goalReportErrorRetry": "Việc tìm kiếm lượt chưa hoàn tất. Vui lòng thử lại."
 }
