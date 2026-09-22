@@ -4,6 +4,7 @@ import 'package:flutter/rendering.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/overlay/overlay_keyboard_modal.dart';
 import 'package:fluffychat/features/tutorials/tutorial_copy.dart';
 import 'package:fluffychat/features/tutorials/tutorial_overlay_state_machine.dart';
 import 'package:fluffychat/features/tutorials/tutorial_sequences.dart';
@@ -221,7 +222,8 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
   }
 
   Future<bool> _executeStepCallback(TutorialStep step) async {
-    if (widget.model.isStepTransitioning) return false;
+    // Not while the card is away: mid-transition, or before its first frame.
+    if (!_visible || widget.model.isStepTransitioning) return false;
     try {
       _setVisible(false);
       widget.setTutorialTransitioning(true);
@@ -268,7 +270,8 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
     final model = widget.model;
     final tutorial = model.activeTutorial;
     final stepIndex = model.stepIndex;
-    final step = tutorial?.step(stepIndex, L10n.of(context));
+    final l10n = L10n.of(context);
+    final step = tutorial?.step(stepIndex, l10n);
     final data = _stepData;
 
     if (step == null || data == null) return const SizedBox.shrink();
@@ -292,36 +295,86 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
       borderRadius: step.style.borderRadius ?? 16,
     );
 
-    final card = showsCard
-        ? _TutorialStepCard(
-            step: step,
-            anchor: _anchorRect,
-            sequenceKind: widget.sequenceKind,
-            completedSteps: widget.completedSteps,
-            totalSteps: widget.totalSteps,
-            wordBubble: data.wordBubble?.call(),
-            onAdvance: () => _next(step),
-            onSkipSequence: widget.skipSequence,
-            onCardTap: data.isArmed ? _completeArmedStep : null,
-          )
-        : null;
+    final showsSkip = TutorialOverlayWidget.showsSkip(
+      sequenceKind: widget.sequenceKind,
+      style: step.style,
+      totalSteps: widget.totalSteps,
+    );
 
-    // An armed step hands back the lit target — and only the lit target. The
-    // learner has to reach the thing the step is pointing at themselves, so a
-    // pointer inside the spotlight falls through to the app (and completes the
-    // step on the way — see [_completeArmedStep]). Everywhere else the overlay
-    // behaves like an overlay: nothing under the scrim can be hovered or
-    // clicked, and a tap dismisses. It does not block assistive tech (no
-    // [BlockSemantics]) — telling someone to tap a role while hiding that role
-    // from their screen reader is the trap this avoids — and the barrier is
-    // excluded from semantics so AT never lands on an unlabeled tap surface.
-    if (data.isArmed) {
-      return Stack(
-        children: [
-          if (step.style.dimsBackground) IgnorePointer(child: scrim),
-          if (showsCard)
-            Positioned.fill(
-              child: ExcludeSemantics(
+    // What a tap anywhere does — on the scrim and on the card alike. An armed
+    // step completes on it (a tap inside the spotlight ALSO falls through to
+    // the lit target, see the barrier below). A branch step is asking a
+    // question, so a tap anywhere but its buttons does nothing — otherwise a
+    // tap aimed at a button that just misses would advance past the question.
+    // Everything else advances. Not gated on the card being visible: the
+    // handlers refuse a hidden card themselves, and gating here flipped the
+    // message's button role off and on at every step, which a screen reader
+    // hears as the control changing under it.
+    final VoidCallback? onTapAnywhere = data.isArmed
+        ? _completeArmedStep
+        : step.style.isBranch
+        ? null
+        : () => _next(step);
+
+    final card = _TutorialStepCard(
+      // Keyed so the card keeps its element — and the focus it holds — while
+      // the barrier beside it in the stack comes and goes.
+      key: const ValueKey('tutorial-step-card'),
+      step: step,
+      anchor: _anchorRect,
+      sequenceKind: widget.sequenceKind,
+      showsSkip: showsSkip,
+      completedSteps: widget.completedSteps,
+      totalSteps: widget.totalSteps,
+      wordBubble: data.wordBubble?.call(),
+      visible: showsCard,
+      onAdvance: () => _next(step),
+      onSkipSequence: widget.skipSequence,
+      onCardTap: onTapAnywhere,
+      activateHint: data.isArmed ? l10n.dismiss : l10n.continueText,
+    );
+
+    // Modal to the keyboard and to assistive tech, but never to the learner's
+    // pointer on an armed step. The scope keeps Tab inside the card and maps
+    // Escape to the card's way out — Skip where it shows one, the declining
+    // choice on a branch, nothing on a card without one. A tap step hides the
+    // app under it from assistive tech; an armed step does not — telling
+    // someone to tap a role while hiding that role from their screen reader
+    // is the trap this avoids. See tutorials.instructions.md § Accessibility.
+    return OverlayKeyboardModal(
+      onDismiss: showsSkip || step.style.isBranch ? widget.skipSequence : null,
+      child: BlockSemantics(
+        blocking: !data.isArmed,
+        child: Stack(
+          children: [
+            if (step.style.dimsBackground) IgnorePointer(child: scrim),
+            // The pointer layer. Neither surface has a semantics node: the
+            // screen reader's tap-anywhere is the card's message
+            // ([TutorialTooltipWidget.onActivate]), so assistive tech never
+            // lands on an unlabeled tap surface here.
+            if (!data.isArmed)
+              Positioned.fill(
+                child: MouseRegion(
+                  cursor: onTapAnywhere != null
+                      ? SystemMouseCursors.click
+                      : SystemMouseCursors.basic,
+                  child: GestureDetector(
+                    behavior: HitTestBehavior.opaque,
+                    excludeFromSemantics: true,
+                    onTap: onTapAnywhere,
+                    child: const SizedBox.expand(),
+                  ),
+                ),
+              )
+            // An armed step hands back the lit target — and only the lit
+            // target. The learner has to reach the thing the step is pointing
+            // at themselves, so a pointer inside the spotlight falls through
+            // to the app (and completes the step on the way — see
+            // [_completeArmedStep]). Everywhere else the overlay behaves like
+            // an overlay: nothing under the scrim can be hovered or clicked,
+            // and a tap dismisses.
+            else if (showsCard)
+              Positioned.fill(
                 child: _SpotlightPassthrough(
                   holes: spotlights,
                   onHolePointerDown: _completeArmedStep,
@@ -330,31 +383,14 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
                   // hatch rather than a call to action.
                   child: GestureDetector(
                     behavior: HitTestBehavior.opaque,
+                    excludeFromSemantics: true,
                     onTap: _completeArmedStep,
                     child: const SizedBox.expand(),
                   ),
                 ),
               ),
-            ),
-          ?card,
-        ],
-      );
-    }
-
-    // A branch step is asking a question, so a tap anywhere but its buttons
-    // does nothing — otherwise a tap aimed at a button that just misses would
-    // advance past the question.
-    final tapAdvances = _visible && !step.style.isBranch;
-
-    return BlockSemantics(
-      child: MouseRegion(
-        cursor: tapAdvances
-            ? SystemMouseCursors.click
-            : SystemMouseCursors.basic,
-        child: GestureDetector(
-          behavior: HitTestBehavior.opaque,
-          onTap: tapAdvances ? () => _next(step) : null,
-          child: Stack(children: [if (step.style.dimsBackground) scrim, ?card]),
+            card,
+          ],
         ),
       ),
     );
@@ -535,35 +571,39 @@ class _TutorialTooltipPlacement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screen = MediaQuery.sizeOf(context);
+    final size = tooltipSize;
     final anchor = this.anchor;
+    // Always a Positioned: the card is one element for the whole run (it
+    // holds keyboard and screen-reader focus), so a change of placement has
+    // to move it, never rebuild it.
     if (anchor == null ||
         placement == _TooltipPlacement.centered ||
         placement == _TooltipPlacement.screenBottom) {
-      return Align(
-        alignment: placement == _TooltipPlacement.screenBottom
-            ? Alignment.bottomCenter
-            : Alignment.center,
-        child: Padding(padding: EdgeInsets.all(padding * 2), child: child),
+      return Positioned(
+        left: (screen.width - size.width) / 2,
+        top: placement == _TooltipPlacement.screenBottom
+            ? screen.height - size.height - padding * 2
+            : (screen.height - size.height) / 2,
+        child: child,
       );
     }
 
     if (placement == _TooltipPlacement.anchorBottom) {
-      final screenHeight = MediaQuery.sizeOf(context).height;
       // Clamped, so a target running past the bottom of the screen (or taller
       // than it) still leaves the whole card visible.
-      final top = (anchor.bottom - tooltipSize.height - padding * 2).clamp(
+      final top = (anchor.bottom - size.height - padding * 2).clamp(
         padding,
-        (screenHeight - tooltipSize.height - padding).clamp(0.0, screenHeight),
+        (screen.height - size.height - padding).clamp(0.0, screen.height),
       );
       return Positioned(left: left, top: top, child: child);
     }
 
     return Positioned(
       left: left,
-      top: showAbove ? null : anchor.bottom + padding,
-      bottom: showAbove
-          ? MediaQuery.sizeOf(context).height - anchor.top + padding
-          : null,
+      top: showAbove
+          ? anchor.top - padding - size.height
+          : anchor.bottom + padding,
       child: child,
     );
   }
@@ -576,12 +616,16 @@ class _TutorialStepCard extends StatelessWidget {
     required this.step,
     required this.anchor,
     required this.sequenceKind,
+    required this.showsSkip,
     required this.completedSteps,
     required this.totalSteps,
     required this.wordBubble,
+    required this.visible,
     required this.onAdvance,
     required this.onSkipSequence,
     required this.onCardTap,
+    required this.activateHint,
+    super.key,
   });
 
   final TutorialStep step;
@@ -590,23 +634,36 @@ class _TutorialStepCard extends StatelessWidget {
   final Rect? anchor;
 
   final TutorialSequenceKind? sequenceKind;
+
+  /// See [TutorialOverlayWidget.showsSkip].
+  final bool showsSkip;
+
   final int completedSteps;
   final int totalSteps;
 
   /// See [TutorialStepData.wordBubble].
   final TutorialGreeting? wordBubble;
 
+  /// False while the step is being measured or is mid-transition. The card is
+  /// still built — hidden and inert — so it keeps its element and the focus
+  /// it holds; unmounting it dropped keyboard and screen-reader focus on the
+  /// floor at every step (#9050).
+  final bool visible;
+
   /// Advances past this step — a branch's advance choice.
   final VoidCallback onAdvance;
 
   final VoidCallback onSkipSequence;
 
-  /// Makes the card's body a tap surface of its own. An armed step passes it
-  /// so a tap on the card dismisses like a tap on the scrim, instead of
-  /// falling through the card onto whatever the pointer barrier decides is
-  /// underneath. Null on every other step: the tap bubbles to the overlay's
-  /// own tap-anywhere handler.
+  /// What a tap on the card does — the overlay's tap-anywhere, so a tap on
+  /// the card body does what a tap on the scrim does instead of falling
+  /// through the card onto the pointer layer beneath. Null on a branch step.
+  /// Also what activating the message with a keyboard or a screen reader
+  /// does ([TutorialTooltipWidget.onActivate]).
   final VoidCallback? onCardTap;
+
+  /// See [TutorialTooltipWidget.activateHint].
+  final String activateHint;
 
   static const double _tooltipPadding = 8.0;
 
@@ -672,22 +729,15 @@ class _TutorialStepCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final anchor = this.anchor;
     final style = step.style;
+    final onCardTap = this.onCardTap;
     final card = TutorialTooltipContainerWidget(
       width: style.tooltipSize.width,
       height: style.tooltipSize.height,
       padding: _tooltipPadding,
       sequenceKind: sequenceKind,
-      // See [TutorialOverlayWidget.showsSkip] for which cards carry it. On an
-      // armed card it is a real click target like everywhere else: the card
-      // sits above the armed step's pointer barrier.
-      onSkip:
-          TutorialOverlayWidget.showsSkip(
-            sequenceKind: sequenceKind,
-            style: style,
-            totalSteps: totalSteps,
-          )
-          ? onSkipSequence
-          : null,
+      // On an armed card it is a real click target like everywhere else: the
+      // card sits above the armed step's pointer barrier.
+      onSkip: showsSkip ? onSkipSequence : null,
       currentStep: completedSteps,
       totalSteps: totalSteps,
       text: style.tooltip,
@@ -697,6 +747,8 @@ class _TutorialStepCard extends StatelessWidget {
         TutorialChoiceOutcome.advance => onAdvance(),
         TutorialChoiceOutcome.decline => onSkipSequence(),
       },
+      onActivate: onCardTap,
+      activateHint: activateHint,
     );
 
     return _TutorialTooltipPlacement(
@@ -706,13 +758,28 @@ class _TutorialStepCard extends StatelessWidget {
       left: anchor == null ? null : _left(context, anchor),
       padding: _tooltipPadding,
       tooltipSize: _paddedSize,
-      child: onCardTap == null
-          ? card
-          : GestureDetector(
+      // Hidden, not gone: see [visible]. Ignoring pointers also strips the
+      // hidden card's semantic actions, so nothing can be activated unseen;
+      // its node stays, so focus does.
+      child: IgnorePointer(
+        ignoring: !visible,
+        child: Opacity(
+          opacity: visible ? 1.0 : 0.0,
+          alwaysIncludeSemantics: true,
+          child: MouseRegion(
+            cursor: onCardTap != null
+                ? SystemMouseCursors.click
+                : SystemMouseCursors.basic,
+            // Pointer only: the card's accessible tap is the message's.
+            child: GestureDetector(
               behavior: HitTestBehavior.opaque,
+              excludeFromSemantics: true,
               onTap: onCardTap,
               child: card,
             ),
+          ),
+        ),
+      ),
     );
   }
 }

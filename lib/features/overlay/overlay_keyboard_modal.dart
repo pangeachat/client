@@ -8,7 +8,12 @@ import 'package:flutter/material.dart';
 /// Escape ([DismissIntent]) to [onDismiss]; and on close hands focus back to
 /// the node that held it when the entry opened.
 class OverlayKeyboardModal extends StatefulWidget {
-  final VoidCallback onDismiss;
+  /// What Escape does. Null means nothing: the key is still consumed here, so
+  /// it never reaches whatever the page behind the overlay would do with it.
+  /// A tutorial card with no way out (the greeting, a one-step run) passes
+  /// null rather than skipping a sequence the learner has not been offered
+  /// a way out of.
+  final VoidCallback? onDismiss;
   final Widget child;
 
   const OverlayKeyboardModal({
@@ -55,8 +60,10 @@ class _OverlayKeyboardModalState extends State<OverlayKeyboardModal> {
   /// overlay. A frame later, the web engine has already parked focus on the
   /// page's first control, and a screen reader follows it there.
   void _dismiss() {
+    final onDismiss = widget.onDismiss;
+    if (onDismiss == null) return;
     _handFocusBack();
-    widget.onDismiss();
+    onDismiss();
   }
 
   @override
@@ -79,6 +86,17 @@ class _OverlayKeyboardModalState extends State<OverlayKeyboardModal> {
       actions: {
         DismissIntent: CallbackAction<DismissIntent>(
           onInvoke: (_) => _dismiss(),
+        ),
+        // Tab and Shift+Tab are always consumed here. The default focus
+        // actions report the key unhandled when there is nowhere to move —
+        // a card with one control — and on web an unhandled Tab falls
+        // through to the browser, whose native Tab parks focus on the host
+        // element outside the scope (#9050).
+        NextFocusIntent: CallbackAction<NextFocusIntent>(
+          onInvoke: (_) => FocusManager.instance.primaryFocus?.nextFocus(),
+        ),
+        PreviousFocusIntent: CallbackAction<PreviousFocusIntent>(
+          onInvoke: (_) => FocusManager.instance.primaryFocus?.previousFocus(),
         ),
       },
       child: FocusScope(node: _scopeNode, child: widget.child),

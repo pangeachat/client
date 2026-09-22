@@ -7,8 +7,9 @@ import 'package:fluffychat/features/tutorials/tutorial_copy.dart';
 import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_word_bubble.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 
-class TutorialTooltipWidget extends StatelessWidget {
+class TutorialTooltipWidget extends StatefulWidget {
   final String text;
   final int currentStep;
   final int totalSteps;
@@ -29,6 +30,17 @@ class TutorialTooltipWidget extends StatelessWidget {
   /// The L2 greeting, shown as a tappable vocabulary word above [text].
   final TutorialGreeting? wordBubble;
 
+  /// What activating the message does — the keyboard's and the screen
+  /// reader's tap-anywhere: advancing a tap step, dismissing an armed one. The
+  /// message is then one named button whose name is the step's copy. Null on a
+  /// branch step, whose choices are the answers; the message is a named group
+  /// there. See tutorials.instructions.md § Accessibility.
+  final VoidCallback? onActivate;
+
+  /// Spoken after the message as what activating it does ("Continue",
+  /// "Dismiss"). Ignored without [onActivate].
+  final String? activateHint;
+
   const TutorialTooltipWidget({
     required this.text,
     required this.currentStep,
@@ -38,6 +50,8 @@ class TutorialTooltipWidget extends StatelessWidget {
     this.choices = const [],
     this.onChoice,
     this.wordBubble,
+    this.onActivate,
+    this.activateHint,
     super.key,
   });
 
@@ -46,14 +60,115 @@ class TutorialTooltipWidget extends StatelessWidget {
   static const double _botFaceSize = 44.0;
 
   @override
+  State<TutorialTooltipWidget> createState() => _TutorialTooltipWidgetState();
+}
+
+class _TutorialTooltipWidgetState extends State<TutorialTooltipWidget> {
+  /// The message's focus node. It outlives every step — the card is one
+  /// element for the whole run — so focus lands here once, when the run
+  /// opens, and never has to be moved again: a live region announces each
+  /// new step in place.
+  final FocusNode _focusNode = FocusNode(debugLabel: 'tutorial message');
+  bool _focused = false;
+
+  @override
+  void initState() {
+    super.initState();
+    FocusManager.instance.addHighlightModeListener(_onHighlightModeChanged);
+    // Post-frame, not autofocus: the overlay's own scope takes focus in the
+    // same frame (OverlayKeyboardModal), and autofocus yields to that.
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) _focusNode.requestFocus();
+    });
+  }
+
+  @override
+  void dispose() {
+    FocusManager.instance.removeHighlightModeListener(_onHighlightModeChanged);
+    _focusNode.dispose();
+    super.dispose();
+  }
+
+  void _onHighlightModeChanged(FocusHighlightMode _) {
+    if (mounted) setState(() {});
+  }
+
+  @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
     final style = theme.textTheme.bodyMedium;
 
-    final progress = totalSteps > 0 ? currentStep / totalSteps : 0.0;
+    final progress = widget.totalSteps > 0
+        ? widget.currentStep / widget.totalSteps
+        : 0.0;
 
-    return Container(
+    final onActivate = widget.onActivate;
+    final wordBubble = widget.wordBubble;
+    final choices = widget.choices;
+
+    // One node — name, role, focus, action — so a screen reader hears the
+    // message and can act on it in place, and the keyboard's Enter or Space
+    // does the same. Actions rather than a shortcuts wrapper: a key event
+    // bubbles up from the focused node, so a wrapper here would answer Enter
+    // before the Skip button could; an intent resolves from the focused node
+    // outward, so the button wins while it has focus. A live region, so a new
+    // step's copy is read without moving focus. The row inside is excluded
+    // (the face is decoration, the text IS the label).
+    final message = Semantics(
+      key: const ValueKey('tutorial-message'),
+      container: true,
+      liveRegion: true,
+      button: onActivate != null,
+      label: widget.text,
+      hint: onActivate == null ? null : widget.activateHint,
+      onTap: onActivate,
+      child: Actions(
+        actions: <Type, Action<Intent>>{
+          if (onActivate != null) ...{
+            ActivateIntent: CallbackAction<ActivateIntent>(
+              onInvoke: (_) {
+                onActivate();
+                return null;
+              },
+            ),
+            ButtonActivateIntent: CallbackAction<ButtonActivateIntent>(
+              onInvoke: (_) {
+                onActivate();
+                return null;
+              },
+            ),
+          },
+        },
+        child: Focus(
+          focusNode: _focusNode,
+          onFocusChange: (focused) => setState(() => _focused = focused),
+          child: ExcludeSemantics(
+            child: Row(
+              spacing: 8.0,
+              // Top-aligned like a chat message: the avatar sits at the head
+              // of the text, not floating beside its middle.
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const BotFace(
+                  width: TutorialTooltipWidget._botFaceSize,
+                  expression: BotExpression.gold,
+                ),
+                Expanded(
+                  child: Text(
+                    widget.text,
+                    style: style,
+                    textAlign: TextAlign.start,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+
+    final card = Container(
       // Tighter on top than elsewhere: the message block centers itself in the
       // card's slack, so top padding stacks onto that slack. Sides and bottom
       // match, so the bottom row (buttons, skip/title) sits at the same
@@ -89,28 +204,10 @@ class TutorialTooltipWidget extends StatelessWidget {
                         // the row centered the greeting on the text column
                         // instead of the card, reading as offset to the right.
                         if (wordBubble != null) ...[
-                          _TutorialGreeting(greeting: wordBubble!),
+                          _TutorialGreeting(greeting: wordBubble),
                           const SizedBox(height: 8.0),
                         ],
-                        Row(
-                          spacing: 8.0,
-                          // Top-aligned like a chat message: the avatar sits at
-                          // the head of the text, not floating beside its middle.
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const BotFace(
-                              width: _botFaceSize,
-                              expression: BotExpression.gold,
-                            ),
-                            Expanded(
-                              child: Text(
-                                text,
-                                style: style,
-                                textAlign: TextAlign.start,
-                              ),
-                            ),
-                          ],
-                        ),
+                        message,
                       ],
                     ),
                   ),
@@ -123,20 +220,26 @@ class TutorialTooltipWidget extends StatelessWidget {
             child: Row(
               children: [
                 Text(
-                  "$currentStep / $totalSteps",
+                  "${widget.currentStep} / ${widget.totalSteps}",
                   style: theme.textTheme.labelSmall,
                 ),
                 const SizedBox(width: 8.0),
                 Expanded(
-                  child: LinearProgressIndicator(
-                    value: progress,
-                    minHeight: 8.0,
-                    borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-                    // Green from the first step: the bar reports progress made,
-                    // and a color that only arrives at the end read as the
-                    // earlier steps not counting. The mark tone, so the fill
-                    // clears 3:1 on the card in both themes.
-                    color: theme.pangea.successGraphic,
+                  // Silent: the text beside it says what the bar shows, and a
+                  // progress role merging into the card would misname it.
+                  child: ExcludeSemantics(
+                    child: LinearProgressIndicator(
+                      value: progress,
+                      minHeight: 8.0,
+                      borderRadius: BorderRadius.circular(
+                        AppConfig.borderRadius,
+                      ),
+                      // Green from the first step: the bar reports progress
+                      // made, and a color that only arrives at the end read as
+                      // the earlier steps not counting. The mark tone, so the
+                      // fill clears 3:1 on the card in both themes.
+                      color: theme.pangea.successGraphic,
+                    ),
                   ),
                 ),
               ],
@@ -145,8 +248,12 @@ class TutorialTooltipWidget extends StatelessWidget {
           // Under the progress bar, the card's bottom line. A branch step
           // carries no title row — it is already a question with two answers,
           // and a label wedged against them read as part of neither.
-          if (choices.isEmpty && (sequenceTitle != null || onSkip != null))
-            _TutorialSequenceRow(title: sequenceTitle, onSkip: onSkip),
+          if (choices.isEmpty &&
+              (widget.sequenceTitle != null || widget.onSkip != null))
+            _TutorialSequenceRow(
+              title: widget.sequenceTitle,
+              onSkip: widget.onSkip,
+            ),
           if (choices.isNotEmpty)
             Padding(
               padding: const EdgeInsets.only(top: 4.0),
@@ -172,7 +279,7 @@ class TutorialTooltipWidget extends StatelessWidget {
                         // tonal secondaryContainer button, as in the CTA row.
                         secondary:
                             choice.outcome != TutorialChoiceOutcome.advance,
-                        onPressed: () => onChoice?.call(choice.outcome),
+                        onPressed: () => widget.onChoice?.call(choice.outcome),
                       ),
                     ),
                 ],
@@ -180,6 +287,16 @@ class TutorialTooltipWidget extends StatelessWidget {
             ),
         ],
       ),
+    );
+
+    // The ring frames the whole card, because the whole card is what a tap
+    // lands on, even though the focus sits on the message.
+    return FocusRing(
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(AppConfig.borderRadius)),
+      ),
+      show: _focused && FocusRingTapTarget.highlightsEnabled,
+      child: card,
     );
   }
 }
