@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-09-22 11:00:49.165019",
+    "@@last_modified": "2026-09-22 12:36:58.140537",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9555,7 +9555,6 @@
     "passwordFormLabel": "Passwort ändern Formular",
     "searchLanguagesHint": "Sprachen suchen",
     "searchCountriesHint": "Länder suchen",
-    "searchVocabHint": "Vokabeln suchen",
     "searchUsersHint": "Benutzer suchen",
     "searchMessagesHint": "Nachrichten suchen",
     "searchChatsHint": "Chats suchen",
@@ -9934,5 +9933,6 @@
     "teachingCoursesFilterTooltip": "Nur Kurse anzeigen, die Sie unterrichten",
     "learningCoursesFilterTooltip": "Nur Kurse anzeigen, in denen Sie lernen",
     "searchCoursesHint": "Kurse suchen",
-    "noCoursesMatchSearch": "Keine Kurse entsprechen Ihrer Suche."
+    "noCoursesMatchSearch": "Keine Kurse entsprechen Ihrer Suche.",
+    "searchVocabByWordOrMeaningHint": "Nach Wort oder Bedeutung suchen"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-09-22 11:00:59.594635",
+    "@@last_modified": "2026-09-22 12:37:07.542749",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "Fomu yokutshintsha iphasiwedi",
     "searchLanguagesHint": "Funa iilwimi",
     "searchCountriesHint": "Funa amazwe",
-    "searchVocabHint": "Funa isigama",
     "searchUsersHint": "Funa abasebenzisi",
     "searchMessagesHint": "Funa imiyalezo",
     "searchChatsHint": "Funa iingxoxo",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "Bonisa kuphela iikhosi ozifundisayo",
     "learningCoursesFilterTooltip": "Bonisa kuphela iikhosi ofunda kuzo",
     "searchCoursesHint": "Khangela iikhosi",
-    "noCoursesMatchSearch": "Azikho iikhosi ezihambelana nokukhangela kwakho."
+    "noCoursesMatchSearch": "Azikho iikhosi ezihambelana nokukhangela kwakho.",
+    "searchVocabByWordOrMeaningHint": "Khangela ngegama okanye intsingiselo"
 }

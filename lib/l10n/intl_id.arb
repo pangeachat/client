@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 11:00:51.378037",
+    "@@last_modified": "2026-09-22 12:36:59.689294",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9641,7 +9641,6 @@
     "passwordFormLabel": "Formulir ganti kata sandi",
     "searchLanguagesHint": "Cari bahasa",
     "searchCountriesHint": "Cari negara",
-    "searchVocabHint": "Cari kosakata",
     "searchUsersHint": "Cari pengguna",
     "searchMessagesHint": "Cari pesan",
     "searchChatsHint": "Cari obrolan",
@@ -10020,5 +10019,6 @@
     "teachingCoursesFilterTooltip": "Tampilkan hanya kursus yang Anda ajarkan",
     "learningCoursesFilterTooltip": "Tampilkan hanya kursus yang sedang Anda pelajari",
     "searchCoursesHint": "Cari kursus",
-    "noCoursesMatchSearch": "Tidak ada kursus yang cocok dengan pencarian Anda."
+    "noCoursesMatchSearch": "Tidak ada kursus yang cocok dengan pencarian Anda.",
+    "searchVocabByWordOrMeaningHint": "Cari berdasarkan kata atau arti"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-09-22 11:00:57.078004",
+    "@@last_modified": "2026-09-22 12:37:06.993291",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10513,7 +10513,6 @@
     "passwordFormLabel": "Formulár na zmenu hesla",
     "searchLanguagesHint": "Hľadať jazyky",
     "searchCountriesHint": "Hľadať krajiny",
-    "searchVocabHint": "Hľadať slovnú zásobu",
     "searchUsersHint": "Hľadať používateľov",
     "searchMessagesHint": "Hľadať správy",
     "searchChatsHint": "Hľadať chaty",
@@ -10892,5 +10891,6 @@
     "teachingCoursesFilterTooltip": "Zobraziť len kurzy, ktoré učíte",
     "learningCoursesFilterTooltip": "Zobraziť len kurzy, v ktorých sa učíte",
     "searchCoursesHint": "Hľadať kurzy",
-    "noCoursesMatchSearch": "Žiadne kurzy nezodpovedajú vášmu vyhľadávaniu."
+    "noCoursesMatchSearch": "Žiadne kurzy nezodpovedajú vášmu vyhľadávaniu.",
+    "searchVocabByWordOrMeaningHint": "Hľadať podľa slova alebo významu"
 }

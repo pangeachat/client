@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-09-22 11:00:50.590787",
+    "@@last_modified": "2026-09-22 12:37:00.528822",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "Fòm pou chanje modpas",
     "searchLanguagesHint": "Chèche lang",
     "searchCountriesHint": "Chèche peyi",
-    "searchVocabHint": "Chèche vokabilè",
     "searchUsersHint": "Chèche itilizatè",
     "searchMessagesHint": "Chèche mesaj",
     "searchChatsHint": "Chèche konvèsasyon",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "Montre sèlman kou ou anseye yo",
     "learningCoursesFilterTooltip": "Montre sèlman kou w ap aprann yo",
     "searchCoursesHint": "Chèche kou",
-    "noCoursesMatchSearch": "Pa gen okenn kou ki koresponn ak rechèch ou an."
+    "noCoursesMatchSearch": "Pa gen okenn kou ki koresponn ak rechèch ou an.",
+    "searchVocabByWordOrMeaningHint": "Chèche pa mo oswa siyifikasyon"
 }

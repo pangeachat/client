@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-09-22 11:00:52.017201",
+    "@@last_modified": "2026-09-22 12:37:00.939380",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "ទម្រង់ផ្លាស់ប្ដូរពាក្យសម្ងាត់",
     "searchLanguagesHint": "ស្វែងរកភាសា",
     "searchCountriesHint": "ស្វែងរកប្រទេស",
-    "searchVocabHint": "ស្វែងរកវាក្យសព្ទ",
     "searchUsersHint": "ស្វែងរកអ្នកប្រើប្រាស់",
     "searchMessagesHint": "ស្វែងរកសារ",
     "searchChatsHint": "ស្វែងរកការជជែក",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "បង្ហាញតែវគ្គសិក្សាដែលអ្នកបង្រៀន",
     "learningCoursesFilterTooltip": "បង្ហាញតែវគ្គសិក្សាដែលអ្នកកំពុងរៀន",
     "searchCoursesHint": "ស្វែងរកវគ្គសិក្សា",
-    "noCoursesMatchSearch": "គ្មានវគ្គសិក្សាណាមួយត្រូវនឹងការស្វែងរករបស់អ្នកទេ។"
+    "noCoursesMatchSearch": "គ្មានវគ្គសិក្សាណាមួយត្រូវនឹងការស្វែងរករបស់អ្នកទេ។",
+    "searchVocabByWordOrMeaningHint": "ស្វែងរកតាមពាក្យ ឬអត្ថន័យ"
 }

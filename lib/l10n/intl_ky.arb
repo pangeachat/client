@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-09-22 11:00:52.515663",
+    "@@last_modified": "2026-09-22 12:37:01.190202",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "Сырсөздү өзгөртүү формасы",
     "searchLanguagesHint": "Тилдерди издөө",
     "searchCountriesHint": "Өлкөлөрдү издөө",
-    "searchVocabHint": "Сөздөрдү издөө",
     "searchUsersHint": "Колдонуучуларды издөө",
     "searchMessagesHint": "Билдирүүлөрдү издөө",
     "searchChatsHint": "Чаттарды издөө",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "Сиз окуткан курстарды гана көрсөтүү",
     "learningCoursesFilterTooltip": "Сиз үйрөнүп жаткан курстарды гана көрсөтүү",
     "searchCoursesHint": "Курстарды издөө",
-    "noCoursesMatchSearch": "Издөөңүзгө эч кандай курс дал келген жок."
+    "noCoursesMatchSearch": "Издөөңүзгө эч кандай курс дал келген жок.",
+    "searchVocabByWordOrMeaningHint": "Сөз же мааниси боюнча издөө"
 }

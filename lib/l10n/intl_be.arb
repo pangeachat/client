@@ -3548,7 +3548,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-09-22 11:00:48.449650",
+    "@@last_modified": "2026-09-22 12:36:57.379538",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9582,7 +9582,6 @@
     "passwordFormLabel": "Форма змены пароля",
     "searchLanguagesHint": "Пошук моў",
     "searchCountriesHint": "Пошук краін",
-    "searchVocabHint": "Пошук слоўніка",
     "searchUsersHint": "Пошук карыстальнікаў",
     "searchMessagesHint": "Пошук паведамленняў",
     "searchChatsHint": "Пошук чатаў",
@@ -9961,5 +9960,6 @@
     "teachingCoursesFilterTooltip": "Паказаць толькі курсы, якія вы выкладаеце",
     "learningCoursesFilterTooltip": "Паказаць толькі курсы, якія вы вывучаеце",
     "searchCoursesHint": "Пошук курсаў",
-    "noCoursesMatchSearch": "Няма курсаў, якія адпавядаюць вашаму пошуку."
+    "noCoursesMatchSearch": "Няма курсаў, якія адпавядаюць вашаму пошуку.",
+    "searchVocabByWordOrMeaningHint": "Пошук па слове ці значэнні"
 }

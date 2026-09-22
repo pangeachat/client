@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-09-22 11:00:50.389742",
+    "@@last_modified": "2026-09-22 12:36:59.309594",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10004,7 +10004,6 @@
     "passwordFormLabel": "Obrazac za promjenu lozinke",
     "searchLanguagesHint": "Pretraži jezike",
     "searchCountriesHint": "Pretraži zemlje",
-    "searchVocabHint": "Pretraži rječnik",
     "searchUsersHint": "Pretraži korisnike",
     "searchMessagesHint": "Pretraži poruke",
     "searchChatsHint": "Pretraži razgovore",
@@ -10383,5 +10382,6 @@
     "teachingCoursesFilterTooltip": "Prikaži samo tečajeve koje predaješ",
     "learningCoursesFilterTooltip": "Prikaži samo tečajeve koje učiš",
     "searchCoursesHint": "Pretraži tečajeve",
-    "noCoursesMatchSearch": "Nema tečajeva koji odgovaraju vašoj pretrazi."
+    "noCoursesMatchSearch": "Nema tečajeva koji odgovaraju vašoj pretrazi.",
+    "searchVocabByWordOrMeaningHint": "Pretražite po riječi ili značenju"
 }

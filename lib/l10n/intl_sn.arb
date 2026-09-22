@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-09-22 11:00:57.574015",
+    "@@last_modified": "2026-09-22 12:37:06.039989",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "Fomu rekuchinja password",
     "searchLanguagesHint": "Tsvaga mitauro",
     "searchCountriesHint": "Tsvaga nyika",
-    "searchVocabHint": "Tsvaga mazwi",
     "searchUsersHint": "Tsvaga vashandisi",
     "searchMessagesHint": "Tsvaga mameseji",
     "searchChatsHint": "Tsvaga chats",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "Ratidza makosi aunodzidzisa chete",
     "learningCoursesFilterTooltip": "Ratidza makosi aunodzidza chete",
     "searchCoursesHint": "Tsvaga makosi",
-    "noCoursesMatchSearch": "Hapana makosi anoenderana nekutsvaga kwako."
+    "noCoursesMatchSearch": "Hapana makosi anoenderana nekutsvaga kwako.",
+    "searchVocabByWordOrMeaningHint": "Tsvaga neshoko kana zvarinoreva"
 }

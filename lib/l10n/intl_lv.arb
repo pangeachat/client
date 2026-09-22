@@ -3535,7 +3535,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-09-22 11:00:53.017781",
+    "@@last_modified": "2026-09-22 12:37:01.346815",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -9568,7 +9568,6 @@
     "passwordFormLabel": "Mainīt paroles veidlapu",
     "searchLanguagesHint": "Meklēt valodas",
     "searchCountriesHint": "Meklēt valstis",
-    "searchVocabHint": "Meklēt vārdu krājumu",
     "searchUsersHint": "Meklēt lietotājus",
     "searchMessagesHint": "Meklēt ziņas",
     "searchChatsHint": "Meklēt tērzēšanas sarunas",
@@ -9947,5 +9946,6 @@
     "teachingCoursesFilterTooltip": "Rādīt tikai kursus, ko pasniedzat",
     "learningCoursesFilterTooltip": "Rādīt tikai kursus, kuros mācāties",
     "searchCoursesHint": "Meklēt kursus",
-    "noCoursesMatchSearch": "Jūsu meklēšanai nav atrasts neviens kurss."
+    "noCoursesMatchSearch": "Jūsu meklēšanai nav atrasts neviens kurss.",
+    "searchVocabByWordOrMeaningHint": "Meklēt pēc vārda vai nozīmes"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-09-22 11:00:48.366037",
+    "@@last_modified": "2026-09-22 12:36:57.489522",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "Obrazac za promjenu lozinke",
     "searchLanguagesHint": "Pretražite jezike",
     "searchCountriesHint": "Pretražite zemlje",
-    "searchVocabHint": "Pretražite rječnik",
     "searchUsersHint": "Pretražite korisnike",
     "searchMessagesHint": "Pretražite poruke",
     "searchChatsHint": "Pretražite razgovore",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "Prikaži samo kurseve koje predaješ",
     "learningCoursesFilterTooltip": "Prikaži samo kurseve koje učiš",
     "searchCoursesHint": "Pretraži kurseve",
-    "noCoursesMatchSearch": "Nijedan kurs ne odgovara vašoj pretrazi."
+    "noCoursesMatchSearch": "Nijedan kurs ne odgovara vašoj pretrazi.",
+    "searchVocabByWordOrMeaningHint": "Pretražite po riječi ili značenju"
 }

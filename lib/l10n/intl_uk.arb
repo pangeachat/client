@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-09-22 11:00:58.787954",
+    "@@last_modified": "2026-09-22 12:37:07.289725",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9568,7 +9568,6 @@
     "passwordFormLabel": "Форма зміни пароля",
     "searchLanguagesHint": "Пошук мов",
     "searchCountriesHint": "Пошук країн",
-    "searchVocabHint": "Пошук слів",
     "searchUsersHint": "Пошук користувачів",
     "searchMessagesHint": "Пошук повідомлень",
     "searchChatsHint": "Пошук чатів",
@@ -9947,5 +9946,6 @@
     "teachingCoursesFilterTooltip": "Показати лише курси, які ви викладаєте",
     "learningCoursesFilterTooltip": "Показати лише курси, які ви вивчаєте",
     "searchCoursesHint": "Пошук курсів",
-    "noCoursesMatchSearch": "Немає курсів, що відповідають вашому запиту."
+    "noCoursesMatchSearch": "Немає курсів, що відповідають вашому запиту.",
+    "searchVocabByWordOrMeaningHint": "Пошук за словом або значенням"
 }

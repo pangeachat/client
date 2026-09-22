@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-09-22 11:00:53.448947",
+    "@@last_modified": "2026-09-22 12:37:01.891737",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "Puka huri kupuhipa",
     "searchLanguagesHint": "Rapu reo",
     "searchCountriesHint": "Rapu whenua",
-    "searchVocabHint": "Rapu kupu",
     "searchUsersHint": "Rapu kaiwhakamahi",
     "searchMessagesHint": "Rapu karere",
     "searchChatsHint": "Rapu kōrerorero",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "Whakaatu akoranga e whakaako ana koe anake",
     "learningCoursesFilterTooltip": "Whakaatu akoranga e ako ana koe anake",
     "searchCoursesHint": "Rapu akoranga",
-    "noCoursesMatchSearch": "Kāore he akoranga e ōrite ana ki tāu rapunga."
+    "noCoursesMatchSearch": "Kāore he akoranga e ōrite ana ki tāu rapunga.",
+    "searchVocabByWordOrMeaningHint": "Rapua mā te kupu, mā te tikanga rānei"
 }

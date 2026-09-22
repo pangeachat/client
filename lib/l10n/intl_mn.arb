@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-09-22 11:00:54.994122",
+    "@@last_modified": "2026-09-22 12:37:01.848313",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "Нууц үг солих маягт",
     "searchLanguagesHint": "Хэл хайх",
     "searchCountriesHint": "Улс хайх",
-    "searchVocabHint": "Үгийн сан хайх",
     "searchUsersHint": "Хэрэглэгч хайх",
     "searchMessagesHint": "Зурвас хайх",
     "searchChatsHint": "Чат хайх",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "Таны заадаг хичээлүүдийг л харуулах",
     "learningCoursesFilterTooltip": "Таны сурч буй хичээлүүдийг л харуулах",
     "searchCoursesHint": "Хичээл хайх",
-    "noCoursesMatchSearch": "Таны хайлтад тохирох хичээл байхгүй байна."
+    "noCoursesMatchSearch": "Таны хайлтад тохирох хичээл байхгүй байна.",
+    "searchVocabByWordOrMeaningHint": "Үг эсвэл утгаар хайх"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-09-22 11:00:57.278200",
+    "@@last_modified": "2026-09-22 12:37:05.683743",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "Foomka beddelka erayga sirta ah",
     "searchLanguagesHint": "Raadi luqadaha",
     "searchCountriesHint": "Raadi wadamada",
-    "searchVocabHint": "Raadi ereyada",
     "searchUsersHint": "Raadi isticmaalayaasha",
     "searchMessagesHint": "Raadi fariimaha",
     "searchChatsHint": "Raadi sheekeysiga",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "Tus kaliya koorsooyinka aad dhigto",
     "learningCoursesFilterTooltip": "Tus kaliya koorsooyinka aad baraneyso",
     "searchCoursesHint": "Raadi koorsooyin",
-    "noCoursesMatchSearch": "Ma jiraan koorsooyin u dhigma raadintaada."
+    "noCoursesMatchSearch": "Ma jiraan koorsooyin u dhigma raadintaada.",
+    "searchVocabByWordOrMeaningHint": "Ku raadi eray ama macne"
 }

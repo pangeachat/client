@@ -43,6 +43,10 @@ abstract class BaseRepo<
 
   late final Future<void> _cacheInit = cache.init();
 
+  /// Completes once [getCached] can see what is on disk. A persistent cache
+  /// loads asynchronously, and a read before then misses.
+  Future<void> get cacheReady => _cacheInit;
+
   BaseRepo({
     required this.cache,
     required this.responseFromJson,

@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-09-22 11:00:55.836979",
+    "@@last_modified": "2026-09-22 12:37:03.653721",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "ପାସୱାର୍ଡ ପରିବର୍ତ୍ତନ ଫର୍ମ",
     "searchLanguagesHint": "ଭାଷାଗୁଡ଼ିକୁ ଖୋଜନ୍ତୁ",
     "searchCountriesHint": "ଦେଶଗୁଡ଼ିକୁ ଖୋଜନ୍ତୁ",
-    "searchVocabHint": "ଶବ୍ଦଗୁଡ଼ିକୁ ଖୋଜନ୍ତୁ",
     "searchUsersHint": "ଉପଯୋଗକର୍ତ୍ତାମାନଙ୍କୁ ଖୋଜନ୍ତୁ",
     "searchMessagesHint": "ବାର୍ତ୍ତାଗୁଡ଼ିକୁ ଖୋଜନ୍ତୁ",
     "searchChatsHint": "ଚାଟ୍‌ଗୁଡ଼ିକୁ ଖୋଜନ୍ତୁ",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "କେବଳ ଆପଣ ଶିକ୍ଷା ଦେଉଥିବା କୋର୍ସଗୁଡ଼ିକୁ ଦେଖାନ୍ତୁ",
     "learningCoursesFilterTooltip": "କେବଳ ଆପଣ ଶିକ୍ଷା ଗ୍ରହଣ କରୁଥିବା କୋର୍ସଗୁଡ଼ିକୁ ଦେଖାନ୍ତୁ",
     "searchCoursesHint": "କୋର୍ସଗୁଡ଼ିକୁ ଖୋଜନ୍ତୁ",
-    "noCoursesMatchSearch": "ଆପଣଙ୍କ ସନ୍ଧାନ ସହିତ କୌଣସି କୋର୍ସ ମେଳ ଖାଉନାହିଁ।"
+    "noCoursesMatchSearch": "ଆପଣଙ୍କ ସନ୍ଧାନ ସହିତ କୌଣସି କୋର୍ସ ମେଳ ଖାଉନାହିଁ।",
+    "searchVocabByWordOrMeaningHint": "ଶବ୍ଦ କିମ୍ବା ଅର୍ଥ ଦ୍ୱାରା ଖୋଜନ୍ତୁ"
 }

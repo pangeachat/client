@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 11:00:51.240861",
+    "@@last_modified": "2026-09-22 12:37:00.062695",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9641,7 +9641,6 @@
     "passwordFormLabel": "Modulo cambio password",
     "searchLanguagesHint": "Cerca lingue",
     "searchCountriesHint": "Cerca paesi",
-    "searchVocabHint": "Cerca vocaboli",
     "searchUsersHint": "Cerca utenti",
     "searchMessagesHint": "Cerca messaggi",
     "searchChatsHint": "Cerca chat",
@@ -10020,5 +10019,6 @@
     "teachingCoursesFilterTooltip": "Mostra solo i corsi che insegni",
     "learningCoursesFilterTooltip": "Mostra solo i corsi che stai imparando",
     "searchCoursesHint": "Cerca corsi",
-    "noCoursesMatchSearch": "Nessun corso corrisponde alla tua ricerca."
+    "noCoursesMatchSearch": "Nessun corso corrisponde alla tua ricerca.",
+    "searchVocabByWordOrMeaningHint": "Cerca per parola o significato"
 }

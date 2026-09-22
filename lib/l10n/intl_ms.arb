@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-09-22 11:00:54.061780",
+    "@@last_modified": "2026-09-22 12:37:02.818856",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "Borang tukar kata laluan",
     "searchLanguagesHint": "Cari bahasa",
     "searchCountriesHint": "Cari negara",
-    "searchVocabHint": "Cari kosa kata",
     "searchUsersHint": "Cari pengguna",
     "searchMessagesHint": "Cari mesej",
     "searchChatsHint": "Cari sembang",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "Tunjukkan hanya kursus yang anda ajar",
     "learningCoursesFilterTooltip": "Tunjukkan hanya kursus yang anda pelajari",
     "searchCoursesHint": "Cari kursus",
-    "noCoursesMatchSearch": "Tiada kursus sepadan dengan carian anda."
+    "noCoursesMatchSearch": "Tiada kursus sepadan dengan carian anda.",
+    "searchVocabByWordOrMeaningHint": "Cari mengikut perkataan atau maksud"
 }

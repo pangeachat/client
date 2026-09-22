@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-09-22 11:00:51.920877",
+    "@@last_modified": "2026-09-22 12:37:00.330623",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "Құпия сөзді өзгерту формасы",
     "searchLanguagesHint": "Тілдерді іздеу",
     "searchCountriesHint": "Елдерді іздеу",
-    "searchVocabHint": "Сөздік қорды іздеу",
     "searchUsersHint": "Пайдаланушыларды іздеу",
     "searchMessagesHint": "Хабарламаларды іздеу",
     "searchChatsHint": "Чаттарды іздеу",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "Сіз оқытатын курстарды ғана көрсету",
     "learningCoursesFilterTooltip": "Сіз оқып жатқан курстарды ғана көрсету",
     "searchCoursesHint": "Курстарды іздеу",
-    "noCoursesMatchSearch": "Іздеуіңізге сәйкес келетін курстар жоқ."
+    "noCoursesMatchSearch": "Іздеуіңізге сәйкес келетін курстар жоқ.",
+    "searchVocabByWordOrMeaningHint": "Сөз немесе мағынасы бойынша іздеу"
 }

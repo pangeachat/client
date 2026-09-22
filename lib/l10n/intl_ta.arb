@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 11:00:58.175318",
+    "@@last_modified": "2026-09-22 12:37:06.690059",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9660,7 +9660,6 @@
     "passwordFormLabel": "கடவுச்சொல் மாற்றப் படிவம்",
     "searchLanguagesHint": "மொழிகளைத் தேடு",
     "searchCountriesHint": "நாடுகளைத் தேடு",
-    "searchVocabHint": "சொற்களஞ்சியத்தைத் தேடு",
     "searchUsersHint": "பயனர்களைத் தேடு",
     "searchMessagesHint": "செய்திகளைத் தேடு",
     "searchChatsHint": "அரட்டைகளைத் தேடு",
@@ -10039,5 +10038,6 @@
     "teachingCoursesFilterTooltip": "நீங்கள் கற்பிக்கும் பாடநெறிகளை மட்டும் காட்டு",
     "learningCoursesFilterTooltip": "நீங்கள் கற்கும் பாடநெறிகளை மட்டும் காட்டு",
     "searchCoursesHint": "பாடநெறிகளைத் தேடு",
-    "noCoursesMatchSearch": "உங்கள் தேடலுடன் எந்தப் பாடநெறிகளும் பொருந்தவில்லை."
+    "noCoursesMatchSearch": "உங்கள் தேடலுடன் எந்தப் பாடநெறிகளும் பொருந்தவில்லை.",
+    "searchVocabByWordOrMeaningHint": "வார்த்தை அல்லது பொருள் மூலம் தேடவும்"
 }

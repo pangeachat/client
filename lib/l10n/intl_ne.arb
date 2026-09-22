@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-09-22 11:00:54.731326",
+    "@@last_modified": "2026-09-22 12:37:02.580982",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "पासवर्ड परिवर्तन फारम",
     "searchLanguagesHint": "भाषाहरू खोज्नुहोस्",
     "searchCountriesHint": "देशहरू खोज्नुहोस्",
-    "searchVocabHint": "शब्दावली खोज्नुहोस्",
     "searchUsersHint": "प्रयोगकर्ताहरू खोज्नुहोस्",
     "searchMessagesHint": "सन्देशहरू खोज्नुहोस्",
     "searchChatsHint": "च्याटहरू खोज्नुहोस्",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "तपाईंले सिकाउने पाठ्यक्रमहरू मात्र देखाउनुहोस्",
     "learningCoursesFilterTooltip": "तपाईंले सिकिरहेका पाठ्यक्रमहरू मात्र देखाउनुहोस्",
     "searchCoursesHint": "पाठ्यक्रमहरू खोज्नुहोस्",
-    "noCoursesMatchSearch": "तपाईंको खोजसँग मिल्ने कुनै पाठ्यक्रमहरू छैनन्।"
+    "noCoursesMatchSearch": "तपाईंको खोजसँग मिल्ने कुनै पाठ्यक्रमहरू छैनन्।",
+    "searchVocabByWordOrMeaningHint": "शब्द वा अर्थ अनुसार खोज्नुहोस्"
 }

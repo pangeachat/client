@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-09-22 11:00:52.347686",
+    "@@last_modified": "2026-09-22 12:37:05.172386",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "فۆڕمی گۆڕینی وشەی نهێنی",
     "searchLanguagesHint": "گەڕان بەدوای زمانەکان",
     "searchCountriesHint": "گەڕان بەدوای وڵاتان",
-    "searchVocabHint": "گەڕان بەدوای وشەکان",
     "searchUsersHint": "گەڕان بەدوای بەکارهێنەران",
     "searchMessagesHint": "گەڕان بەدوای نامەکان",
     "searchChatsHint": "گەڕان بەدوای وتووێژەکان",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "تەنها ئەو خولانە نیشان بدە کە وانەی تێدا دەڵێیتەوە",
     "learningCoursesFilterTooltip": "تەنها ئەو خولانە نیشان بدە کە تێیدا فێردەبیت",
     "searchCoursesHint": "گەڕان بەدوای خولەکاندا",
-    "noCoursesMatchSearch": "هیچ خولێک لەگەڵ گەڕانەکەتدا ناگونجێت."
+    "noCoursesMatchSearch": "هیچ خولێک لەگەڵ گەڕانەکەتدا ناگونجێت.",
+    "searchVocabByWordOrMeaningHint": "بە وشە یان واتاکەی بگەڕێ"
 }

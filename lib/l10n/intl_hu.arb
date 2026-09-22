@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-09-22 11:00:50.846596",
+    "@@last_modified": "2026-09-22 12:36:59.700063",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9671,7 +9671,6 @@
     "passwordFormLabel": "Jelszó módosítása űrlap",
     "searchLanguagesHint": "Nyelvek keresése",
     "searchCountriesHint": "Országok keresése",
-    "searchVocabHint": "Szavak keresése",
     "searchUsersHint": "Felhasználók keresése",
     "searchMessagesHint": "Üzenetek keresése",
     "searchChatsHint": "Csevegések keresése",
@@ -10050,5 +10049,6 @@
     "teachingCoursesFilterTooltip": "Csak az oktatott tanfolyamok megjelenítése",
     "learningCoursesFilterTooltip": "Csak a tanult tanfolyamok megjelenítése",
     "searchCoursesHint": "Tanfolyamok keresése",
-    "noCoursesMatchSearch": "Nincs a keresésnek megfelelő tanfolyam."
+    "noCoursesMatchSearch": "Nincs a keresésnek megfelelő tanfolyam.",
+    "searchVocabByWordOrMeaningHint": "Keresés szó vagy jelentés alapján"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-09-22 11:00:49.347548",
+    "@@last_modified": "2026-09-22 12:36:58.054844",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "Ffurflen newid cyfrinair",
     "searchLanguagesHint": "Chwilio ieithoedd",
     "searchCountriesHint": "Chwilio gwledydd",
-    "searchVocabHint": "Chwilio geirfa",
     "searchUsersHint": "Chwilio defnyddwyr",
     "searchMessagesHint": "Chwilio negeseuon",
     "searchChatsHint": "Chwilio sgyrsiau",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "Dangos dim ond cyrsiau rydych chi'n eu haddysgu",
     "learningCoursesFilterTooltip": "Dangos dim ond cyrsiau rydych chi'n dysgu ynddynt",
     "searchCoursesHint": "Chwilio cyrsiau",
-    "noCoursesMatchSearch": "Nid oes unrhyw gyrsiau'n cyd-fynd â'ch chwiliad."
+    "noCoursesMatchSearch": "Nid oes unrhyw gyrsiau'n cyd-fynd â'ch chwiliad.",
+    "searchVocabByWordOrMeaningHint": "Chwilio yn ôl gair neu ystyr"
 }

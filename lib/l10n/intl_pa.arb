@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-09-22 11:00:55.720830",
+    "@@last_modified": "2026-09-22 12:37:04.035824",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "ਪਾਸਵਰਡ ਬਦਲਣ ਦਾ ਫਾਰਮ",
     "searchLanguagesHint": "ਭਾਸ਼ਾਵਾਂ ਖੋਜੋ",
     "searchCountriesHint": "ਦੇਸ਼ ਖੋਜੋ",
-    "searchVocabHint": "ਸ਼ਬਦਾਵਲੀ ਖੋਜੋ",
     "searchUsersHint": "ਉਪਭੋਗਤਾ ਖੋਜੋ",
     "searchMessagesHint": "ਸੁਨੇਹੇ ਖੋਜੋ",
     "searchChatsHint": "ਚੈਟਾਂ ਖੋਜੋ",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "ਸਿਰਫ਼ ਉਹ ਕੋਰਸ ਦਿਖਾਓ ਜੋ ਤੁਸੀਂ ਪੜ੍ਹਾਉਂਦੇ ਹੋ",
     "learningCoursesFilterTooltip": "ਸਿਰਫ਼ ਉਹ ਕੋਰਸ ਦਿਖਾਓ ਜਿਨ੍ਹਾਂ ਵਿੱਚ ਤੁਸੀਂ ਸਿੱਖ ਰਹੇ ਹੋ",
     "searchCoursesHint": "ਕੋਰਸ ਖੋਜੋ",
-    "noCoursesMatchSearch": "ਤੁਹਾਡੀ ਖੋਜ ਨਾਲ ਕੋਈ ਕੋਰਸ ਮੇਲ ਨਹੀਂ ਖਾਂਦਾ।"
+    "noCoursesMatchSearch": "ਤੁਹਾਡੀ ਖੋਜ ਨਾਲ ਕੋਈ ਕੋਰਸ ਮੇਲ ਨਹੀਂ ਖਾਂਦਾ।",
+    "searchVocabByWordOrMeaningHint": "ਸ਼ਬਦ ਜਾਂ ਅਰਥ ਦੁਆਰਾ ਖੋਜੋ"
 }

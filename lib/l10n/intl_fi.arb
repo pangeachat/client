@@ -3536,7 +3536,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-09-22 11:00:49.755594",
+    "@@last_modified": "2026-09-22 12:36:58.564144",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9605,7 +9605,6 @@
     "passwordFormLabel": "Vaihda salasana -lomake",
     "searchLanguagesHint": "Hae kieliä",
     "searchCountriesHint": "Hae maita",
-    "searchVocabHint": "Hae sanastoa",
     "searchUsersHint": "Hae käyttäjiä",
     "searchMessagesHint": "Hae viestejä",
     "searchChatsHint": "Hae keskusteluja",
@@ -9984,5 +9983,6 @@
     "teachingCoursesFilterTooltip": "Näytä vain kurssit, joita opetat",
     "learningCoursesFilterTooltip": "Näytä vain kurssit, joilla opiskelet",
     "searchCoursesHint": "Hae kursseja",
-    "noCoursesMatchSearch": "Hakua vastaavia kursseja ei löytynyt."
+    "noCoursesMatchSearch": "Hakua vastaavia kursseja ei löytynyt.",
+    "searchVocabByWordOrMeaningHint": "Hae sanalla tai merkityksellä"
 }

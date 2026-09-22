@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-09-22 11:00:56.493796",
+    "@@last_modified": "2026-09-22 12:37:05.617144",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "මුරපද වෙනස් කිරීමේ පෝරමය",
     "searchLanguagesHint": "භාෂා සොයන්න",
     "searchCountriesHint": "රටවල් සොයන්න",
-    "searchVocabHint": "වචන සොයන්න",
     "searchUsersHint": "පරිශීලකයන් සොයන්න",
     "searchMessagesHint": "පණිවිඩ සොයන්න",
     "searchChatsHint": "චැට් සොයන්න",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "ඔබ උගන්වන පාඨමාලා පමණක් පෙන්වන්න",
     "learningCoursesFilterTooltip": "ඔබ ඉගෙන ගන්නා පාඨමාලා පමණක් පෙන්වන්න",
     "searchCoursesHint": "පාඨමාලා සොයන්න",
-    "noCoursesMatchSearch": "ඔබේ සෙවුමට ගැලපෙන පාඨමාලා නොමැත."
+    "noCoursesMatchSearch": "ඔබේ සෙවුමට ගැලපෙන පාඨමාලා නොමැත.",
+    "searchVocabByWordOrMeaningHint": "වචනයෙන් හෝ අර්ථයෙන් සොයන්න"
 }

@@ -3563,7 +3563,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-09-22 11:00:50.197049",
+    "@@last_modified": "2026-09-22 12:36:58.948170",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9579,7 +9579,6 @@
     "passwordFormLabel": "Foirm athraithe pasfhocail",
     "searchLanguagesHint": "Cuardaigh teangacha",
     "searchCountriesHint": "Cuardaigh tíortha",
-    "searchVocabHint": "Cuardaigh foclóir",
     "searchUsersHint": "Cuardaigh úsáideoirí",
     "searchMessagesHint": "Cuardaigh teachtaireachtaí",
     "searchChatsHint": "Cuardaigh comhráite",
@@ -9958,5 +9957,6 @@
     "teachingCoursesFilterTooltip": "Taispeáin na cúrsaí a mhúineann tú amháin",
     "learningCoursesFilterTooltip": "Taispeáin na cúrsaí a bhfuil tú ag foghlaim iontu amháin",
     "searchCoursesHint": "Cuardaigh cúrsaí",
-    "noCoursesMatchSearch": "Níor aimsíodh aon chúrsaí a mheaitseálann do chuardach."
+    "noCoursesMatchSearch": "Níor aimsíodh aon chúrsaí a mheaitseálann do chuardach.",
+    "searchVocabByWordOrMeaningHint": "Cuardaigh de réir focal nó brí"
 }

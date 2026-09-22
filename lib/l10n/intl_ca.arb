@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 11:00:48.897912",
+    "@@last_modified": "2026-09-22 12:36:57.955025",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9695,7 +9695,6 @@
     "passwordFormLabel": "Formulari de canvi de contrasenya",
     "searchLanguagesHint": "Cercar idiomes",
     "searchCountriesHint": "Cercar països",
-    "searchVocabHint": "Cercar vocabulari",
     "searchUsersHint": "Cercar usuaris",
     "searchMessagesHint": "Cercar missatges",
     "searchChatsHint": "Cercar xats",
@@ -10074,5 +10073,6 @@
     "teachingCoursesFilterTooltip": "Mostra només els cursos que imparteixes",
     "learningCoursesFilterTooltip": "Mostra només els cursos en què estàs aprenent",
     "searchCoursesHint": "Cerca cursos",
-    "noCoursesMatchSearch": "No hi ha cursos que coincideixin amb la cerca."
+    "noCoursesMatchSearch": "No hi ha cursos que coincideixin amb la cerca.",
+    "searchVocabByWordOrMeaningHint": "Cerca per paraula o significat"
 }

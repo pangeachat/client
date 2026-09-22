@@ -3093,7 +3093,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-09-22 11:00:51.277422",
+    "@@last_modified": "2026-09-22 12:36:59.867613",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10200,7 +10200,6 @@
     "passwordFormLabel": "Formularie por change de pass-parol",
     "searchLanguagesHint": "Cuardaigh teangacha",
     "searchCountriesHint": "Cuardaigh tíortha",
-    "searchVocabHint": "Cuardaigh stór focal",
     "searchUsersHint": "Cuardaigh úsáideoirí",
     "searchMessagesHint": "Cuardaigh teachtaireachtaí",
     "searchChatsHint": "Cuardaigh comhráite",
@@ -10579,5 +10578,6 @@
     "teachingCoursesFilterTooltip": "Taispeáin na cúrsaí a mhúineann tú amháin",
     "learningCoursesFilterTooltip": "Taispeáin na cúrsaí a bhfuil tú ag foghlaim iontu amháin",
     "searchCoursesHint": "Cuardaigh cúrsaí",
-    "noCoursesMatchSearch": "Níl aon chúrsaí ag teacht le d’chuardach."
+    "noCoursesMatchSearch": "Níl aon chúrsaí ag teacht le d’chuardach.",
+    "searchVocabByWordOrMeaningHint": "Cuardaigh de réir focal nó brí"
 }

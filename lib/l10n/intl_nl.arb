@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 11:00:54.896950",
+    "@@last_modified": "2026-09-22 12:37:04.343579",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9568,7 +9568,6 @@
     "passwordFormLabel": "Wachtwoord wijzigen formulier",
     "searchLanguagesHint": "Talen zoeken",
     "searchCountriesHint": "Landen zoeken",
-    "searchVocabHint": "Woordenschat zoeken",
     "searchUsersHint": "Gebruikers zoeken",
     "searchMessagesHint": "Berichten zoeken",
     "searchChatsHint": "Chats zoeken",
@@ -9947,5 +9946,6 @@
     "teachingCoursesFilterTooltip": "Toon alleen cursussen die je geeft",
     "learningCoursesFilterTooltip": "Toon alleen cursussen die je volgt",
     "searchCoursesHint": "Zoek cursussen",
-    "noCoursesMatchSearch": "Geen cursussen komen overeen met je zoekopdracht."
+    "noCoursesMatchSearch": "Geen cursussen komen overeen met je zoekopdracht.",
+    "searchVocabByWordOrMeaningHint": "Zoeken op woord of betekenis"
 }

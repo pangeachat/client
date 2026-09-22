@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-09-22 11:00:56.539493",
+    "@@last_modified": "2026-09-22 12:37:05.064556",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "پاسورڊ تبديل ڪرڻ جو فارم",
     "searchLanguagesHint": "ٻولين جي ڳولا ڪريو",
     "searchCountriesHint": "ملڪن جي ڳولا ڪريو",
-    "searchVocabHint": "لفظن جي ڳولا ڪريو",
     "searchUsersHint": "استعمال ڪندڙن جي ڳولا ڪريو",
     "searchMessagesHint": "پيغامن جي ڳولا ڪريو",
     "searchChatsHint": "چيٽس جي ڳولا ڪريو",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "صرف اهي ڪورس ڏيکاريو جيڪي توهان سيکاريو ٿا",
     "learningCoursesFilterTooltip": "صرف اهي ڪورس ڏيکاريو جن ۾ توهان سکي رهيا آهيو",
     "searchCoursesHint": "ڪورس ڳوليو",
-    "noCoursesMatchSearch": "توهان جي ڳولا سان ڪو به ڪورس نٿو ملي."
+    "noCoursesMatchSearch": "توهان جي ڳولا سان ڪو به ڪورس نٿو ملي.",
+    "searchVocabByWordOrMeaningHint": "لفظ يا معنيٰ سان ڳوليو"
 }

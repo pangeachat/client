@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-09-22 11:00:48.618740",
+    "@@last_modified": "2026-09-22 12:36:57.450306",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "የይለፍ ቃል መቀየሪያ ቅጽ",
     "searchLanguagesHint": "ቋንቋዎችን ፈልግ",
     "searchCountriesHint": "አገሮችን ፈልግ",
-    "searchVocabHint": "ቃላትን ፈልግ",
     "searchUsersHint": "ተጠቃሚዎችን ፈልግ",
     "searchMessagesHint": "መልዕክቶችን ፈልግ",
     "searchChatsHint": "ውይይቶችን ፈልግ",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "የምታስተምራቸውን ኮርሶች ብቻ አሳይ",
     "learningCoursesFilterTooltip": "የምትማርባቸውን ኮርሶች ብቻ አሳይ",
     "searchCoursesHint": "ኮርሶችን ፈልግ",
-    "noCoursesMatchSearch": "ፍለጋዎን የሚዛመድ ኮርስ የለም።"
+    "noCoursesMatchSearch": "ፍለጋዎን የሚዛመድ ኮርስ የለም።",
+    "searchVocabByWordOrMeaningHint": "በቃል ወይም ትርጉም ይፈልጉ"
 }

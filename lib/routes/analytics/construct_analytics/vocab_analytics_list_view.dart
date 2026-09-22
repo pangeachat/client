@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:diacritic/diacritic.dart';
+import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/themes.dart';
@@ -17,6 +17,8 @@ import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/routes/analytics/analytics_navigation_util.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/analytics_details_popup.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/vocab_analytics_list_tile.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/vocab_search_match.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/vocab_search_query.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_use_case.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
@@ -33,15 +35,23 @@ class VocabAnalyticsListView extends StatelessWidget {
   List<ConstructUses> _filterByLevel(List<ConstructUses> vocab) =>
       vocab.where(_levelFilter).toList();
 
-  List<ConstructUses> _filterBySearch(List<ConstructUses> vocab) =>
-      vocab.where(_searchFilter).toList();
+  /// The words matching the search box, best match first. A word's meanings
+  /// are read only when its own text misses. The stable sort keeps the
+  /// alphabetical order among equal matches.
+  List<ConstructUses> _searchResults(List<ConstructUses> vocab) {
+    final query = VocabSearchQuery(controller.searchController.text);
+    if (!controller.isSearching || query.isEmpty) return vocab;
 
-  List<ConstructUses> _sortBySearch(List<ConstructUses> vocab) {
-    if (controller.isSearching &&
-        controller.searchController.text.trim().isNotEmpty) {
-      vocab.sort(_searchTermSort);
+    final matches = <ConstructUses, VocabSearchMatch>{};
+    for (final use in vocab) {
+      final match =
+          query.matchLemma(use.lemma) ??
+          query.matchMeanings(use.id.knownMeanings);
+      if (match != null) matches[use] = match;
     }
-    return vocab.toList();
+    final results = matches.keys.toList();
+    mergeSort(results, compare: (a, b) => matches[a]!.compareTo(matches[b]!));
+    return results;
   }
 
   bool _levelFilter(ConstructUses use) {
@@ -49,52 +59,6 @@ class VocabAnalyticsListView extends StatelessWidget {
       return true;
     }
     return use.lemmaCategory == controller.selectedConstructLevel;
-  }
-
-  bool _searchFilter(ConstructUses use) {
-    if (!controller.isSearching ||
-        controller.searchController.text.trim().isEmpty) {
-      return true;
-    }
-
-    final normalizedLemma = removeDiacritics(use.lemma).toLowerCase();
-    final normalizedSearch = removeDiacritics(
-      controller.searchController.text,
-    ).toLowerCase();
-
-    return normalizedLemma.contains(normalizedSearch);
-  }
-
-  int _searchTermSort(ConstructUses a, ConstructUses b) {
-    final normalizedSearch = removeDiacritics(
-      controller.searchController.text,
-    ).toLowerCase();
-
-    final normalizedLemmaA = removeDiacritics(a.lemma).toLowerCase();
-    final normalizedLemmaB = removeDiacritics(b.lemma).toLowerCase();
-
-    // Sort matches that start with the search term first, then by closest match
-    final startsWithA = normalizedLemmaA.startsWith(normalizedSearch);
-    final startsWithB = normalizedLemmaB.startsWith(normalizedSearch);
-
-    if (startsWithA && !startsWithB) {
-      return -1; // A comes first
-    } else if (!startsWithA && startsWithB) {
-      return 1; // B comes first
-    } else {
-      // If both start with the search term or neither does, sort by closest match
-      final indexA = normalizedLemmaA.indexOf(normalizedSearch);
-      final indexB = normalizedLemmaB.indexOf(normalizedSearch);
-      if (indexA == -1 && indexB == -1) {
-        return 0; // Neither contains the search term
-      } else if (indexA == -1) {
-        return 1; // B comes first
-      } else if (indexB == -1) {
-        return -1; // A comes first
-      } else {
-        return indexA.compareTo(indexB); // Closer match comes first
-      }
-    }
   }
 
   @override
@@ -157,9 +121,7 @@ class VocabAnalyticsListView extends StatelessWidget {
       GoRouterState.of(context).uri,
     );
 
-    final filteredByLevel = _filterByLevel(vocab);
-    final filteredBySearch = _filterBySearch(filteredByLevel);
-    final sortedFilteredVocab = _sortBySearch(filteredBySearch);
+    final sortedFilteredVocab = _searchResults(_filterByLevel(vocab));
     final showSearch = vocab.length > 15;
 
     filters.add(
@@ -224,7 +186,9 @@ class VocabAnalyticsListView extends StatelessWidget {
                           Expanded(
                             child: PangeaSearchBar(
                               controller: controller.searchController,
-                              labelText: L10n.of(context).searchVocabHint,
+                              labelText: L10n.of(
+                                context,
+                              ).searchVocabByWordOrMeaningHint,
                               autofocus: true,
                               focusNode: controller.searchFocusNode,
                               suffixIcon: IconButton(

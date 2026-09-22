@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-09-22 11:00:48.438286",
+    "@@last_modified": "2026-09-22 12:36:58.432279",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -9874,7 +9874,6 @@
     "passwordFormLabel": "نموذج تغيير كلمة المرور",
     "searchLanguagesHint": "البحث عن اللغات",
     "searchCountriesHint": "البحث عن البلدان",
-    "searchVocabHint": "البحث عن المفردات",
     "searchUsersHint": "البحث عن المستخدمين",
     "searchMessagesHint": "البحث عن الرسائل",
     "searchChatsHint": "البحث عن الدردشات",
@@ -10253,5 +10252,6 @@
     "teachingCoursesFilterTooltip": "عرض الدورات التي تدرّسها فقط",
     "learningCoursesFilterTooltip": "عرض الدورات التي تتعلم فيها فقط",
     "searchCoursesHint": "البحث عن الدورات",
-    "noCoursesMatchSearch": "لا توجد دورات مطابقة لبحثك."
+    "noCoursesMatchSearch": "لا توجد دورات مطابقة لبحثك.",
+    "searchVocabByWordOrMeaningHint": "البحث بالكلمة أو المعنى"
 }

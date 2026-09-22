@@ -3093,7 +3093,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-09-22 11:00:58.659898",
+    "@@last_modified": "2026-09-22 12:37:06.712586",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10200,7 +10200,6 @@
     "passwordFormLabel": "แบบฟอร์มเปลี่ยนรหัสผ่าน",
     "searchLanguagesHint": "ค้นหาภาษา",
     "searchCountriesHint": "ค้นหาประเทศ",
-    "searchVocabHint": "ค้นหาคำศัพท์",
     "searchUsersHint": "ค้นหาผู้ใช้",
     "searchMessagesHint": "ค้นหาข้อความ",
     "searchChatsHint": "ค้นหาแชท",
@@ -10579,5 +10578,6 @@
     "teachingCoursesFilterTooltip": "แสดงเฉพาะคอร์สที่คุณสอน",
     "learningCoursesFilterTooltip": "แสดงเฉพาะคอร์สที่คุณกำลังเรียน",
     "searchCoursesHint": "ค้นหาคอร์ส",
-    "noCoursesMatchSearch": "ไม่มีคอร์สที่ตรงกับการค้นหาของคุณ"
+    "noCoursesMatchSearch": "ไม่มีคอร์สที่ตรงกับการค้นหาของคุณ",
+    "searchVocabByWordOrMeaningHint": "ค้นหาด้วยคำศัพท์หรือความหมาย"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-09-22 11:00:49.101432",
+    "@@last_modified": "2026-09-22 12:36:58.113913",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "Form sa pag-ilis sa password",
     "searchLanguagesHint": "Pangitaa ang mga pinulongan",
     "searchCountriesHint": "Pangitaa ang mga nasud",
-    "searchVocabHint": "Pangitaa ang bokabularyo",
     "searchUsersHint": "Pangitaa ang mga user",
     "searchMessagesHint": "Pangitaa ang mga mensahe",
     "searchChatsHint": "Pangitaa ang mga chat",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "Ipakita lang ang mga kurso nga imong gitudlo",
     "learningCoursesFilterTooltip": "Ipakita lang ang mga kurso nga imong gitun-an",
     "searchCoursesHint": "Pangita og mga kurso",
-    "noCoursesMatchSearch": "Walay kurso nga mohaum sa imong gipangita."
+    "noCoursesMatchSearch": "Walay kurso nga mohaum sa imong gipangita.",
+    "searchVocabByWordOrMeaningHint": "Pangitaa pinaagi sa pulong o kahulogan"
 }

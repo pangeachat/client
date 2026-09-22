@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 11:00:51.963978",
+    "@@last_modified": "2026-09-22 12:37:00.695957",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9761,7 +9761,6 @@
     "passwordFormLabel": "비밀번호 변경 양식",
     "searchLanguagesHint": "언어 검색",
     "searchCountriesHint": "국가 검색",
-    "searchVocabHint": "어휘 검색",
     "searchUsersHint": "사용자 검색",
     "searchMessagesHint": "메시지 검색",
     "searchChatsHint": "채팅 검색",
@@ -10140,5 +10139,6 @@
     "teachingCoursesFilterTooltip": "내가 가르치는 코스만 표시",
     "learningCoursesFilterTooltip": "내가 배우는 코스만 표시",
     "searchCoursesHint": "코스 검색",
-    "noCoursesMatchSearch": "검색과 일치하는 코스가 없습니다."
+    "noCoursesMatchSearch": "검색과 일치하는 코스가 없습니다.",
+    "searchVocabByWordOrMeaningHint": "단어 또는 의미로 검색"
 }

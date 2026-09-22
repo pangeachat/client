@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-09-22 11:00:55.460433",
+    "@@last_modified": "2026-09-22 12:37:03.244681",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "Skjema for passordendring",
     "searchLanguagesHint": "Søk språk",
     "searchCountriesHint": "Søk land",
-    "searchVocabHint": "Søk vokabular",
     "searchUsersHint": "Søk brukere",
     "searchMessagesHint": "Søk meldinger",
     "searchChatsHint": "Søk chatter",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "Vis kun kurs du underviser i",
     "learningCoursesFilterTooltip": "Vis kun kurs du lærer i",
     "searchCoursesHint": "Søk i kurs",
-    "noCoursesMatchSearch": "Ingen kurs samsvarer med søket ditt."
+    "noCoursesMatchSearch": "Ingen kurs samsvarer med søket ditt.",
+    "searchVocabByWordOrMeaningHint": "Søk etter ord eller betydning"
 }

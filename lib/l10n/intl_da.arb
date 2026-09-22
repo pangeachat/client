@@ -1334,7 +1334,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-09-22 11:00:49.210514",
+    "@@last_modified": "2026-09-22 12:36:57.952758",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10488,7 +10488,6 @@
     "passwordFormLabel": "Formular til ændring af adgangskode",
     "searchLanguagesHint": "Søg sprog",
     "searchCountriesHint": "Søg lande",
-    "searchVocabHint": "Søg ordforråd",
     "searchUsersHint": "Søg brugere",
     "searchMessagesHint": "Søg beskeder",
     "searchChatsHint": "Søg chats",
@@ -10867,5 +10866,6 @@
     "teachingCoursesFilterTooltip": "Vis kun kurser, du underviser i",
     "learningCoursesFilterTooltip": "Vis kun kurser, du lærer i",
     "searchCoursesHint": "Søg kurser",
-    "noCoursesMatchSearch": "Ingen kurser matcher din søgning."
+    "noCoursesMatchSearch": "Ingen kurser matcher din søgning.",
+    "searchVocabByWordOrMeaningHint": "Søg efter ord eller betydning"
 }

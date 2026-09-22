@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-09-22 11:00:54.200716",
+    "@@last_modified": "2026-09-22 12:37:02.710385",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "पासवर्ड बदला फॉर्म",
     "searchLanguagesHint": "भाषा शोधा",
     "searchCountriesHint": "देश शोधा",
-    "searchVocabHint": "शब्दसंग्रह शोधा",
     "searchUsersHint": "वापरकर्ते शोधा",
     "searchMessagesHint": "संदेश शोधा",
     "searchChatsHint": "चॅट शोधा",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "तुम्ही शिकवत असलेले अभ्यासक्रमच दाखवा",
     "learningCoursesFilterTooltip": "तुम्ही शिकत असलेले अभ्यासक्रमच दाखवा",
     "searchCoursesHint": "अभ्यासक्रम शोधा",
-    "noCoursesMatchSearch": "तुमच्या शोधण्याशी जुळणारे कोणतेही अभ्यासक्रम नाहीत."
+    "noCoursesMatchSearch": "तुमच्या शोधण्याशी जुळणारे कोणतेही अभ्यासक्रम नाहीत.",
+    "searchVocabByWordOrMeaningHint": "शब्द किंवा अर्थानुसार शोधा"
 }

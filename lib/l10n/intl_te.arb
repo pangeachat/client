@@ -1324,7 +1324,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-09-22 11:00:58.252673",
+    "@@last_modified": "2026-09-22 12:37:06.629414",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10518,7 +10518,6 @@
     "passwordFormLabel": "పాస్‌వర్డ్ మార్చు ఫారం",
     "searchLanguagesHint": "భాషలను వెతకండి",
     "searchCountriesHint": "దేశాలను వెతకండి",
-    "searchVocabHint": "పదజాలాన్ని వెతకండి",
     "searchUsersHint": "వినియోగదారులను వెతకండి",
     "searchMessagesHint": "సందేశాలను వెతకండి",
     "searchChatsHint": "చాట్‌లను వెతకండి",
@@ -10897,5 +10896,6 @@
     "teachingCoursesFilterTooltip": "మీరు బోధించే కోర్సులను మాత్రమే చూపించు",
     "learningCoursesFilterTooltip": "మీరు నేర్చుకుంటున్న కోర్సులను మాత్రమే చూపించు",
     "searchCoursesHint": "కోర్సులను శోధించండి",
-    "noCoursesMatchSearch": "మీ శోధనకు సరిపోలే కోర్సులు లేవు."
+    "noCoursesMatchSearch": "మీ శోధనకు సరిపోలే కోర్సులు లేవు.",
+    "searchVocabByWordOrMeaningHint": "పదం లేదా అర్థం ద్వారా శోధించండి"
 }

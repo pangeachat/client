@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-09-22 11:00:54.608329",
+    "@@last_modified": "2026-09-22 12:37:03.140901",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "Formola għall-bidla tal-password",
     "searchLanguagesHint": "Fittex lingwi",
     "searchCountriesHint": "Fittex pajjiżi",
-    "searchVocabHint": "Fittex vokabularju",
     "searchUsersHint": "Fittex utenti",
     "searchMessagesHint": "Fittex messaġġi",
     "searchChatsHint": "Fittex chats",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "Uri biss il-korsijiet li tgħallem",
     "learningCoursesFilterTooltip": "Uri biss il-korsijiet li qed titgħallem fihom",
     "searchCoursesHint": "Fittex korsijiet",
-    "noCoursesMatchSearch": "L-ebda kors ma jaqbel mat-tfittxija tiegħek."
+    "noCoursesMatchSearch": "L-ebda kors ma jaqbel mat-tfittxija tiegħek.",
+    "searchVocabByWordOrMeaningHint": "Fittex bil-kelma jew bit-tifsira"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-09-22 11:00:48.583196",
+    "@@last_modified": "2026-09-22 12:36:57.457041",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "Şifrəni dəyişdirmə forması",
     "searchLanguagesHint": "Dilləri axtar",
     "searchCountriesHint": "Ölkələri axtar",
-    "searchVocabHint": "Lüğəti axtar",
     "searchUsersHint": "İstifadəçiləri axtar",
     "searchMessagesHint": "Mesajları axtar",
     "searchChatsHint": "Söhbətləri axtar",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "Yalnız tədris etdiyiniz kursları göstərin",
     "learningCoursesFilterTooltip": "Yalnız öyrəndiyiniz kursları göstərin",
     "searchCoursesHint": "Kurslarda axtarış edin",
-    "noCoursesMatchSearch": "Axtarışınıza uyğun kurs tapılmadı."
+    "noCoursesMatchSearch": "Axtarışınıza uyğun kurs tapılmadı.",
+    "searchVocabByWordOrMeaningHint": "Sözə və ya mənaya görə axtar"
 }

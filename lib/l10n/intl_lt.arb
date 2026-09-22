@@ -2967,7 +2967,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-09-22 11:00:52.932452",
+    "@@last_modified": "2026-09-22 12:37:01.463203",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10349,7 +10349,6 @@
     "passwordFormLabel": "Slaptažodžio keitimo forma",
     "searchLanguagesHint": "Ieškoti kalbų",
     "searchCountriesHint": "Ieškoti šalių",
-    "searchVocabHint": "Ieškoti žodyno",
     "searchUsersHint": "Ieškoti vartotojų",
     "searchMessagesHint": "Ieškoti pranešimų",
     "searchChatsHint": "Ieškoti pokalbių",
@@ -10728,5 +10727,6 @@
     "teachingCoursesFilterTooltip": "Rodyti tik kursus, kuriuos dėstote",
     "learningCoursesFilterTooltip": "Rodyti tik kursus, kuriuos mokotės",
     "searchCoursesHint": "Ieškoti kursų",
-    "noCoursesMatchSearch": "Nėra kursų, atitinkančių jūsų paiešką."
+    "noCoursesMatchSearch": "Nėra kursų, atitinkančių jūsų paiešką.",
+    "searchVocabByWordOrMeaningHint": "Ieškoti pagal žodį ar reikšmę"
 }

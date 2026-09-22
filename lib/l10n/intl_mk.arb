@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-09-22 11:00:53.723615",
+    "@@last_modified": "2026-09-22 12:37:02.126510",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "Формулар за промена на лозинка",
     "searchLanguagesHint": "Пребарај јазици",
     "searchCountriesHint": "Пребарај земји",
-    "searchVocabHint": "Пребарај речник",
     "searchUsersHint": "Пребарај корисници",
     "searchMessagesHint": "Пребарај пораки",
     "searchChatsHint": "Пребарај разговори",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "Прикажи ги само курсевите што ги предаваш",
     "learningCoursesFilterTooltip": "Прикажи ги само курсевите што ги учиш",
     "searchCoursesHint": "Пребарај курсеви",
-    "noCoursesMatchSearch": "Нема курсеви што одговараат на вашето пребарување."
+    "noCoursesMatchSearch": "Нема курсеви што одговараат на вашето пребарување.",
+    "searchVocabByWordOrMeaningHint": "Пребарај по збор или значење"
 }

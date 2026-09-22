@@ -1263,7 +1263,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-09-22 11:00:59.732248",
+    "@@last_modified": "2026-09-22 12:37:07.495503",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10525,7 +10525,6 @@
     "passwordFormLabel": "更改密碼表格",
     "searchLanguagesHint": "搜尋語言",
     "searchCountriesHint": "搜尋國家",
-    "searchVocabHint": "搜尋詞彙",
     "searchUsersHint": "搜尋用戶",
     "searchMessagesHint": "搜尋訊息",
     "searchChatsHint": "搜尋聊天",
@@ -10904,5 +10903,6 @@
     "teachingCoursesFilterTooltip": "只顯示你教授的課程",
     "learningCoursesFilterTooltip": "只顯示你正在學習的課程",
     "searchCoursesHint": "搜尋課程",
-    "noCoursesMatchSearch": "沒有課程符合你的搜尋。"
+    "noCoursesMatchSearch": "沒有課程符合你的搜尋。",
+    "searchVocabByWordOrMeaningHint": "按詞語或意思搜尋"
 }

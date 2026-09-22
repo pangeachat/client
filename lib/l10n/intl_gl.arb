@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-09-22 11:00:49.978598",
+    "@@last_modified": "2026-09-22 12:36:59.204092",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9568,7 +9568,6 @@
     "passwordFormLabel": "Formulario para cambiar o contrasinal",
     "searchLanguagesHint": "Buscar idiomas",
     "searchCountriesHint": "Buscar países",
-    "searchVocabHint": "Buscar vocabulario",
     "searchUsersHint": "Buscar usuarios",
     "searchMessagesHint": "Buscar mensaxes",
     "searchChatsHint": "Buscar conversas",
@@ -9947,5 +9946,6 @@
     "teachingCoursesFilterTooltip": "Mostrar só os cursos que impartes",
     "learningCoursesFilterTooltip": "Mostrar só os cursos nos que estás a aprender",
     "searchCoursesHint": "Buscar cursos",
-    "noCoursesMatchSearch": "Non se atoparon cursos que coincidan coa túa busca."
+    "noCoursesMatchSearch": "Non se atoparon cursos que coincidan coa túa busca.",
+    "searchVocabByWordOrMeaningHint": "Buscar por palabra ou significado"
 }

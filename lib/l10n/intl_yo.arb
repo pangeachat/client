@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-09-22 11:00:59.452186",
+    "@@last_modified": "2026-09-22 12:37:08.130257",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "Fọ́ọ̀mù ìyípadà ọ̀rọ̀ìpamọ́",
     "searchLanguagesHint": "Wa àwọn èdè",
     "searchCountriesHint": "Wa àwọn orílẹ̀-èdè",
-    "searchVocabHint": "Wa àwọn ọ̀rọ̀",
     "searchUsersHint": "Wa àwọn olùmúlò",
     "searchMessagesHint": "Wa àwọn ìfọ̀rọ̀ránṣẹ́",
     "searchChatsHint": "Wa àwọn ìjíròrò",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "Fi àwọn ìkẹ́kọ̀ọ́ tí o ń kọ́ nìkan hàn",
     "learningCoursesFilterTooltip": "Fi àwọn ìkẹ́kọ̀ọ́ tí o ń kọ́ nínú nìkan hàn",
     "searchCoursesHint": "Wá àwọn ìkẹ́kọ̀ọ́",
-    "noCoursesMatchSearch": "Kò sí àwọn ìkẹ́kọ̀ọ́ tó bá ìwádìí rẹ mu."
+    "noCoursesMatchSearch": "Kò sí àwọn ìkẹ́kọ̀ọ́ tó bá ìwádìí rẹ mu.",
+    "searchVocabByWordOrMeaningHint": "Ṣawari nipasẹ ọrọ tabi itumọ"
 }

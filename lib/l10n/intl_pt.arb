@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 11:00:55.671777",
+    "@@last_modified": "2026-09-22 12:37:04.102358",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10512,7 +10512,6 @@
     "passwordFormLabel": "Formulário de alteração de palavra-passe",
     "searchLanguagesHint": "Pesquisar idiomas",
     "searchCountriesHint": "Pesquisar países",
-    "searchVocabHint": "Pesquisar vocabulário",
     "searchUsersHint": "Pesquisar usuários",
     "searchMessagesHint": "Pesquisar mensagens",
     "searchChatsHint": "Pesquisar conversas",
@@ -10891,5 +10890,6 @@
     "teachingCoursesFilterTooltip": "Mostrar apenas os cursos que você ensina",
     "learningCoursesFilterTooltip": "Mostrar apenas os cursos em que você está aprendendo",
     "searchCoursesHint": "Pesquisar cursos",
-    "noCoursesMatchSearch": "Nenhum curso corresponde à sua pesquisa."
+    "noCoursesMatchSearch": "Nenhum curso corresponde à sua pesquisa.",
+    "searchVocabByWordOrMeaningHint": "Pesquisar por palavra ou significado"
 }

@@ -5285,7 +5285,7 @@
     },
     "passwordFormLabel": "Change password form",
     "searchCountriesHint": "Search countries",
-    "searchVocabHint": "Search vocab",
+    "searchVocabByWordOrMeaningHint": "Search by word or meaning",
     "searchUsersHint": "Search users",
     "searchMessagesHint": "Search messages",
     "searchChatsHint": "Search chats",

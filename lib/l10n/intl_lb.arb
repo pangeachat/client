@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-09-22 11:00:52.862711",
+    "@@last_modified": "2026-09-22 12:37:01.181865",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "Passwuert änneren Formulaire",
     "searchLanguagesHint": "Sproochen sichen",
     "searchCountriesHint": "Länner sichen",
-    "searchVocabHint": "Vokabulär sichen",
     "searchUsersHint": "Benotzer sichen",
     "searchMessagesHint": "Messagen sichen",
     "searchChatsHint": "Chatte sichen",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "Nëmmen d'Coursen uweisen, déi Dir gitt",
     "learningCoursesFilterTooltip": "Nëmmen d'Coursen uweisen, an deenen Dir léiert",
     "searchCoursesHint": "Coursen sichen",
-    "noCoursesMatchSearch": "Keng Coursen entspriechen Ärer Sich."
+    "noCoursesMatchSearch": "Keng Coursen entspriechen Ärer Sich.",
+    "searchVocabByWordOrMeaningHint": "No Wuert oder Bedeitung sichen"
 }

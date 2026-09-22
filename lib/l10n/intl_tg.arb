@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-09-22 11:00:58.563278",
+    "@@last_modified": "2026-09-22 12:37:06.725746",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "Шакли тағир додани парол",
     "searchLanguagesHint": "Ҷустуҷӯи забонҳо",
     "searchCountriesHint": "Ҷустуҷӯи кишварҳо",
-    "searchVocabHint": "Ҷустуҷӯи луғат",
     "searchUsersHint": "Ҷустуҷӯи корбарон",
     "searchMessagesHint": "Ҷустуҷӯи паёмҳо",
     "searchChatsHint": "Ҷустуҷӯи чатҳо",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "Танҳо курсҳоеро нишон диҳед, ки шумо дарс медиҳед",
     "learningCoursesFilterTooltip": "Танҳо курсҳоеро нишон диҳед, ки шумо меомӯзед",
     "searchCoursesHint": "Ҷустуҷӯи курсҳо",
-    "noCoursesMatchSearch": "Ҳеҷ курсе ба ҷустуҷӯи шумо мувофиқат намекунад."
+    "noCoursesMatchSearch": "Ҳеҷ курсе ба ҷустуҷӯи шумо мувофиқат намекунад.",
+    "searchVocabByWordOrMeaningHint": "Ҷустуҷӯ аз рӯи калима ё маъно"
 }

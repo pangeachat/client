@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-09-22 11:00:55.816656",
+    "@@last_modified": "2026-09-22 12:37:06.809990",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "Sinthani fomu yachinsinsi",
     "searchLanguagesHint": "Sakani zilankhulo",
     "searchCountriesHint": "Sakani mayiko",
-    "searchVocabHint": "Sakani mawu",
     "searchUsersHint": "Sakani ogwiritsa ntchito",
     "searchMessagesHint": "Sakani mauthenga",
     "searchChatsHint": "Sakani macheza",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "Onetsani maphunziro omwe mukuphunzitsa okha",
     "learningCoursesFilterTooltip": "Onetsani maphunziro omwe mukuphunzira okha",
     "searchCoursesHint": "Sakani maphunziro",
-    "noCoursesMatchSearch": "Palibe maphunziro ogwirizana ndi zomwe mwasaka."
+    "noCoursesMatchSearch": "Palibe maphunziro ogwirizana ndi zomwe mwasaka.",
+    "searchVocabByWordOrMeaningHint": "Sakani ndi mawu kapena tanthauzo"
 }

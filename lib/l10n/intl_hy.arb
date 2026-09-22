@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-09-22 11:00:51.012289",
+    "@@last_modified": "2026-09-22 12:36:59.787473",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "Գաղտնաբառի փոփոխման ձև",
     "searchLanguagesHint": "Որոնել լեզուներ",
     "searchCountriesHint": "Որոնել երկրներ",
-    "searchVocabHint": "Որոնել բառապաշար",
     "searchUsersHint": "Որոնել օգտատերեր",
     "searchMessagesHint": "Որոնել հաղորդագրություններ",
     "searchChatsHint": "Որոնել զրույցներ",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "Ցուցադրել միայն այն դասընթացները, որոնք դուք եք դասավանդում",
     "learningCoursesFilterTooltip": "Ցուցադրել միայն այն դասընթացները, որոնք դուք եք սովորում",
     "searchCoursesHint": "Որոնել դասընթացներ",
-    "noCoursesMatchSearch": "Ձեր որոնմանը համապատասխան դասընթացներ չկան։"
+    "noCoursesMatchSearch": "Ձեր որոնմանը համապատասխան դասընթացներ չկան։",
+    "searchVocabByWordOrMeaningHint": "Որոնել ըստ բառի կամ իմաստի"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 11:00:49.774275",
+    "@@last_modified": "2026-09-22 12:36:58.586247",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9656,7 +9656,6 @@
     "passwordFormLabel": "فرم تغییر رمز عبور",
     "searchLanguagesHint": "جستجوی زبان‌ها",
     "searchCountriesHint": "جستجوی کشورها",
-    "searchVocabHint": "جستجوی واژگان",
     "searchUsersHint": "جستجوی کاربران",
     "searchMessagesHint": "جستجوی پیام‌ها",
     "searchChatsHint": "جستجوی چت‌ها",
@@ -10035,5 +10034,6 @@
     "teachingCoursesFilterTooltip": "فقط دوره‌هایی که تدریس می‌کنید را نمایش دهید",
     "learningCoursesFilterTooltip": "فقط دوره‌هایی که در حال یادگیری هستید را نمایش دهید",
     "searchCoursesHint": "جستجوی دوره‌ها",
-    "noCoursesMatchSearch": "هیچ دوره‌ای با جستجوی شما مطابقت ندارد."
+    "noCoursesMatchSearch": "هیچ دوره‌ای با جستجوی شما مطابقت ندارد.",
+    "searchVocabByWordOrMeaningHint": "جستجو بر اساس کلمه یا معنی"
 }

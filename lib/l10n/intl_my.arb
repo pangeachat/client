@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-09-22 11:00:54.934825",
+    "@@last_modified": "2026-09-22 12:37:02.943692",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "စကားဝှက်ပြောင်းလဲရန် ဖောင်",
     "searchLanguagesHint": "ဘာသာစကားများ ရှာဖွေပါ",
     "searchCountriesHint": "နိုင်ငံများ ရှာဖွေပါ",
-    "searchVocabHint": "ဝေါဟာရများ ရှာဖွေပါ",
     "searchUsersHint": "အသုံးပြုသူများ ရှာဖွေပါ",
     "searchMessagesHint": "မက်ဆေ့ချ်များ ရှာဖွေပါ",
     "searchChatsHint": "ချက်တင်များ ရှာဖွေပါ",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "သင်ကြားနေသော သင်တန်းများကိုသာ ပြသပါ",
     "learningCoursesFilterTooltip": "သင်ယူနေသော သင်တန်းများကိုသာ ပြသပါ",
     "searchCoursesHint": "သင်တန်းများ ရှာဖွေပါ",
-    "noCoursesMatchSearch": "သင်၏ရှာဖွေမှုနှင့် ကိုက်ညီသော သင်တန်းများ မရှိပါ။"
+    "noCoursesMatchSearch": "သင်၏ရှာဖွေမှုနှင့် ကိုက်ညီသော သင်တန်းများ မရှိပါ။",
+    "searchVocabByWordOrMeaningHint": "စကားလုံး သို့မဟုတ် အဓိပ္ပာယ်ဖြင့် ရှာဖွေပါ"
 }

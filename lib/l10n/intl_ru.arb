@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-09-22 11:00:56.319791",
+    "@@last_modified": "2026-09-22 12:37:04.643687",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10540,7 +10540,6 @@
     "passwordFormLabel": "Форма смены пароля",
     "searchLanguagesHint": "Поиск языков",
     "searchCountriesHint": "Поиск стран",
-    "searchVocabHint": "Поиск слов",
     "searchUsersHint": "Поиск пользователей",
     "searchMessagesHint": "Поиск сообщений",
     "searchChatsHint": "Поиск чатов",
@@ -10919,5 +10918,6 @@
     "teachingCoursesFilterTooltip": "Показать только курсы, которые вы преподаете",
     "learningCoursesFilterTooltip": "Показать только курсы, которые вы изучаете",
     "searchCoursesHint": "Поиск курсов",
-    "noCoursesMatchSearch": "По вашему запросу курсы не найдены."
+    "noCoursesMatchSearch": "По вашему запросу курсы не найдены.",
+    "searchVocabByWordOrMeaningHint": "Поиск по слову или значению"
 }

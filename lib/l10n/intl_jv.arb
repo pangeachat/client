@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-09-22 11:00:53.923564",
+    "@@last_modified": "2026-09-22 12:37:00.351889",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -1978,7 +1978,6 @@
     "passwordFormLabel": "Formulir ganti sandhi",
     "searchLanguagesHint": "Golèk basa",
     "searchCountriesHint": "Golèk negara",
-    "searchVocabHint": "Golèk kosakata",
     "searchUsersHint": "Golèk pangguna",
     "searchMessagesHint": "Golèk pesen",
     "searchChatsHint": "Golèk obrolan",
@@ -2351,5 +2350,6 @@
     "teachingCoursesFilterTooltip": "Tampilake mung kursus sing sampeyan ajar",
     "learningCoursesFilterTooltip": "Tampilake mung kursus sing lagi sampeyan sinau",
     "searchCoursesHint": "Telusuri kursus",
-    "noCoursesMatchSearch": "Ora ana kursus sing cocog karo telusuran sampeyan."
+    "noCoursesMatchSearch": "Ora ana kursus sing cocog karo telusuran sampeyan.",
+    "searchVocabByWordOrMeaningHint": "Goleki miturut tembung utawa tegese"
 }
