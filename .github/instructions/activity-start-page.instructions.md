@@ -1,6 +1,6 @@
 ---
 applyTo: "lib/routes/chat/activity_sessions/**,lib/routes/world/**,lib/widgets/layouts/mobile_nav_widget.dart,lib/widgets/layouts/workspace_shell.dart"
-description: "The activity start page's layout and interaction: the mobile grow-before-scroll sheet, the header + info row, the CTA row, and how the page owns its container over the nav rail and analytics bar."
+description: "The activity start page's layout and interaction: the mobile grow-before-scroll sheet, the header + info row, the CTA row, the suggested-vocab word cards, and how the page owns its container over the nav rail and analytics bar."
 ---
 
 # Activity Start Page
@@ -25,6 +25,8 @@ The top of the page is two rows, present at every size (they, with the CTA, are 
 - **Info row** — creator **avatar** and **name**, the activity **L2**, **level**, **participant count**, and the **rating**. The creator is the activity's **owner** (`res.plan.user_id`), resolved for display from that owner's Matrix profile, so a teacher controls their own credit by editing their profile and we store no second name. No usable profile — no account behind the MXID, or no display name on it — falls back to the stored MXID with a placeholder contact icon. **The PangeaChat avatar and name are reserved for `@system`-owned rows**, which are most of the catalog: crediting a person's hand-built work to Pangea is the failure this ordering prevents, so an ugly credit is preferred to a wrong one. The rating reuses [`ActivityRatingMeter`](../../lib/routes/chat/activity_sessions/activity_rating_meter.dart) — the NEW pill / tinted meter — and this stays the only surface that shows it (per [activities.instructions.md](activities.instructions.md#rating-an-activity)). This row is new: those fields exist on the model but were never gathered into a header, so a map explorer sees the essentials without expanding the sheet. The L2 chip doubles as the control for switching to that language when it is not what the learner is learning — [Switching from context](profile.instructions.md#switching-from-context) owns that behavior.
 
 Below the info row the middle content (media carousel, description, suggested vocab, role cards) is unchanged, as are the later steps of the flow (the role picker and the waiting-room actions — invite / ping / play with the bot).
+
+**Suggested vocab.** Tapping a word opens its word card over the page. While a card is open, tapping another word switches to that word's card in one tap, tapping the open word closes it, and a tap anywhere else only closes the card. Only the vocab words stay reachable behind an open card, so a dismissing tap can never land on the X, a role card or a CTA. The same [`ActivityVocabWidget`](../../lib/routes/chat/activity_sessions/activity_vocab_widget.dart) renders the vocab in the in-chat activity summary, which behaves the same way.
 
 ## The CTA row
 
