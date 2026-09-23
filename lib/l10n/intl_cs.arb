@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-09-22 15:19:29.541395",
+    "@@last_modified": "2026-09-23 14:55:57.977988",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10452,5 +10452,7 @@
     "goalReportNoMessages": "V této relaci jste ještě neposlali žádnou zprávu, takže není na co ukázat.",
     "goalReportThanks": "Nahlášeno. Děkujeme!",
     "goalReportErrorUnreportable": "Žádný tah orchestrátora neodpovídá této hvězdě, takže není nic, proti čemu by se zpráva zaznamenala.",
-    "goalReportErrorRetry": "Hledání tahu nebylo dokončeno. Zkuste to znovu."
+    "goalReportErrorRetry": "Hledání tahu nebylo dokončeno. Zkuste to znovu.",
+    "summaryFeedbackReceived": "Díky! Vaše zpětná vazba byla přijata.",
+    "summaryFeedbackFailed": "Nepodařilo se odeslat vaši zpětnou vazbu. Zkuste to prosím znovu."
 }

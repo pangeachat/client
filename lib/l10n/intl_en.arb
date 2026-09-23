@@ -4352,6 +4352,8 @@
     "feedbackRespDesc": "Check back tomorrow for activity updates.",
     "feedbackHint": "Your feedback",
     "feedbackButton": "Submit feedback",
+    "summaryFeedbackReceived": "Thanks! We received your feedback.",
+    "summaryFeedbackFailed": "Couldn't send your feedback. Please try again.",
     "directMessageBotDesc": "Talking to humans is more fun but... AI is always ready!",
     "inviteYourFriends": "Invite your friends",
     "playWithAI": "Play with AI for now",

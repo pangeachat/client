@@ -1263,7 +1263,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-09-22 15:19:41.185916",
+    "@@last_modified": "2026-09-23 14:56:05.691233",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10915,5 +10915,7 @@
     "goalReportNoMessages": "你在此會話中尚未發送任何訊息，因此沒有可指向的內容。",
     "goalReportThanks": "已舉報。謝謝！",
     "goalReportErrorUnreportable": "沒有協調器回合與此星章匹配，因此無法記錄舉報。",
-    "goalReportErrorRetry": "回合搜尋未完成。請重試。"
+    "goalReportErrorRetry": "回合搜尋未完成。請重試。",
+    "summaryFeedbackReceived": "多謝！我哋已經收到你嘅意見。",
+    "summaryFeedbackFailed": "未能發送你嘅意見。請再試一次。"
 }

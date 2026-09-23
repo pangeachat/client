@@ -3563,7 +3563,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-09-22 15:19:31.027145",
+    "@@last_modified": "2026-09-23 14:55:58.952724",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9969,5 +9969,7 @@
     "goalReportNoMessages": "Níl teachtaireacht seolta agat sa seisiún seo fós, mar sin níl aon rud le cur in iúl.",
     "goalReportThanks": "Tuairiscithe. Go raibh maith agat!",
     "goalReportErrorUnreportable": "Níl aon chasadh ceolfhoirneora ag teacht leis an réalta seo, mar sin níl aon rud ann chun an tuairisc a thaifeadadh ina choinne.",
-    "goalReportErrorRetry": "Níor chríochnaigh an cuardach don chasadh. Bain triail eile as."
+    "goalReportErrorRetry": "Níor chríochnaigh an cuardach don chasadh. Bain triail eile as.",
+    "summaryFeedbackReceived": "Go raibh maith agat! Fuaireamar d'aiseolas.",
+    "summaryFeedbackFailed": "Níorbh fhéidir d'aiseolas a sheoladh. Bain triail eile as, le do thoil."
 }

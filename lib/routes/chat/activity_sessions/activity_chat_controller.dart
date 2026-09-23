@@ -21,6 +21,7 @@ import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class ActivityChatController {
@@ -119,11 +120,13 @@ class ActivityChatController {
   }
 
   /// All summary fetches route through here so the local failure flag tracks
-  /// the outcome — see [summaryFetchFailed].
-  Future<void> fetchSummaries({String? feedback}) async {
+  /// the outcome — see [summaryFetchFailed]. Returns whether the fetch
+  /// succeeded.
+  Future<bool> fetchSummaries({String? feedback}) async {
     if (!_disposed) summaryFetchFailed.value = false;
     final ok = await room.fetchSummariesByL1(feedback: feedback);
     if (!_disposed) summaryFetchFailed.value = !ok && !hasSummary;
+    return ok;
   }
 
   void _setAnalyticsSubscription() {
@@ -318,11 +321,35 @@ class ActivityChatController {
         onSubmit: (feedback) => Navigator.of(context).pop(feedback),
       ),
     );
-    if (resp == null || resp.isEmpty) {
+    if (resp == null || resp.isEmpty || !context.mounted) {
       return;
     }
 
-    await fetchSummaries(feedback: resp);
+    await regenerateSummaryWithFeedback(context, resp);
+  }
+
+  /// Regenerates the summary with [feedback] and tells the learner whether it
+  /// went through.
+  @visibleForTesting
+  Future<void> regenerateSummaryWithFeedback(
+    BuildContext context,
+    String feedback,
+  ) async {
+    // The summary card swaps to its loading placeholder while the summary
+    // regenerates, unmounting [context], so capture what the result needs now.
+    final messenger = ScaffoldMessenger.of(context);
+    final l10n = L10n.of(context);
+    final ok = await fetchSummaries(feedback: feedback);
+    if (!messenger.mounted) return;
+    messenger.showSnackBarAnnounced(
+      SnackBar(
+        content: Text(
+          ok ? l10n.summaryFeedbackReceived : l10n.summaryFeedbackFailed,
+        ),
+        showCloseIcon: true,
+      ),
+      assertive: !ok,
+    );
   }
 
   Future<void> _onLeaveActivitySession() async {

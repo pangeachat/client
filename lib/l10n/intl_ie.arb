@@ -3093,7 +3093,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-09-22 15:19:32.696163",
+    "@@last_modified": "2026-09-23 14:56:00.418441",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10590,5 +10590,7 @@
     "goalReportNoMessages": "Níl aon teachtaireacht seolta agat sa seisiún seo go fóill, mar sin níl aon rud le cur in iúl.",
     "goalReportThanks": "Tuairiscithe. Go raibh maith agat!",
     "goalReportErrorUnreportable": "Níl aon chasadh orcastóra ag teacht leis an réalt seo, mar sin níl aon rud ann chun an tuairisc a thaifeadadh ina choinne.",
-    "goalReportErrorRetry": "Níor chríochnaigh an cuardach don chasadh. Bain triail eile as."
+    "goalReportErrorRetry": "Níor chríochnaigh an cuardach don chasadh. Bain triail eile as.",
+    "summaryFeedbackReceived": "Go raibh maith agat! Fuaireamar d'aiseolas.",
+    "summaryFeedbackFailed": "Níorbh fhéidir d'aiseolas a sheoladh. Bain triail eile as, le do thoil."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-09-22 15:19:38.675282",
+    "@@last_modified": "2026-09-23 14:56:04.172808",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2366,5 +2366,7 @@
     "goalReportNoMessages": "ඔබ තවමත් මෙම සැසියේදී පණිවිඩයක් යවා නැත, එබැවින් පෙන්වා දීමට කිසිවක් නැත.",
     "goalReportThanks": "වාර්තා කරන ලදී. ස්තූතියි!",
     "goalReportErrorUnreportable": "මෙම තාරකාවට ගැලපෙන වාදක වාරයක් නොමැත, එබැවින් වාර්තාව සටහන් කිරීමට කිසිවක් නැත.",
-    "goalReportErrorRetry": "වාරය සෙවීම අවසන් වූයේ නැත. නැවත උත්සාහ කරන්න."
+    "goalReportErrorRetry": "වාරය සෙවීම අවසන් වූයේ නැත. නැවත උත්සාහ කරන්න.",
+    "summaryFeedbackReceived": "ස්තූතියි! ඔබගේ ප්‍රතිපෝෂණය අපට ලැබුණි.",
+    "summaryFeedbackFailed": "ඔබගේ ප්‍රතිපෝෂණය යැවිය නොහැකි විය. කරුණාකර නැවත උත්සාහ කරන්න."
 }

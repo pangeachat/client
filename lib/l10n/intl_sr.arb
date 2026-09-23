@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 15:19:38.959512",
+    "@@last_modified": "2026-09-23 14:56:04.407151",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10907,5 +10907,7 @@
     "goalReportNoMessages": "Još uvek nisi poslao/la poruku u ovoj sesiji, tako da nema šta da se pokaže.",
     "goalReportThanks": "Prijavljeno. Hvala!",
     "goalReportErrorUnreportable": "Nijedan potez orkestratora ne odgovara ovoj zvezdici, tako da nema ništa za beleženje prijave.",
-    "goalReportErrorRetry": "Pretraga poteza nije završena. Pokušaj ponovo."
+    "goalReportErrorRetry": "Pretraga poteza nije završena. Pokušaj ponovo.",
+    "summaryFeedbackReceived": "Hvala! Primili smo vaše povratne informacije.",
+    "summaryFeedbackFailed": "Nismo mogli da pošaljemo vaše povratne informacije. Pokušajte ponovo."
 }

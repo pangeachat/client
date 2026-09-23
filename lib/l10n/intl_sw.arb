@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-09-22 15:19:39.829210",
+    "@@last_modified": "2026-09-23 14:56:04.692453",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2366,5 +2366,7 @@
     "goalReportNoMessages": "Bado hujatuma ujumbe katika kipindi hiki, kwa hivyo hakuna cha kuelekeza.",
     "goalReportThanks": "Imetolewa ripoti. Asante!",
     "goalReportErrorUnreportable": "Hakuna zamu ya mratibu inayolingana na nyota hii, kwa hivyo hakuna cha kurekodi ripoti dhidi yake.",
-    "goalReportErrorRetry": "Utafutaji wa zamu haukukamilika. Jaribu tena."
+    "goalReportErrorRetry": "Utafutaji wa zamu haukukamilika. Jaribu tena.",
+    "summaryFeedbackReceived": "Asante! Tumepokea maoni yako.",
+    "summaryFeedbackFailed": "Imeshindwa kutuma maoni yako. Tafadhali jaribu tena."
 }

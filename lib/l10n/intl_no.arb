@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-09-22 15:19:36.374354",
+    "@@last_modified": "2026-09-23 14:56:02.626200",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2366,5 +2366,7 @@
     "goalReportNoMessages": "Du har ikke sendt en melding i denne økten ennå, så det er ingenting å peke på.",
     "goalReportThanks": "Rapportert. Takk!",
     "goalReportErrorUnreportable": "Ingen orkestrator-tur samsvarer med denne stjernen, så det er ingenting å registrere rapporten mot.",
-    "goalReportErrorRetry": "Søket etter turen ble ikke fullført. Prøv igjen."
+    "goalReportErrorRetry": "Søket etter turen ble ikke fullført. Prøv igjen.",
+    "summaryFeedbackReceived": "Takk! Vi har mottatt tilbakemeldingen din.",
+    "summaryFeedbackFailed": "Kunne ikke sende tilbakemeldingen din. Vennligst prøv igjen."
 }

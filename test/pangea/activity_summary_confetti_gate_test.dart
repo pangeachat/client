@@ -11,15 +11,10 @@ import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_response_model.dart';
-import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
-import 'package:fluffychat/features/analytics_data/analytics_update_dispatcher.dart';
-import 'package:fluffychat/features/subscription/controllers/subscription_controller.dart';
-import 'package:fluffychat/features/user/user_controller.dart';
-import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_chat_controller.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'fake_pangea_controller.dart';
+import 'fake_activity_chat_pangea_controller.dart';
 import 'get_test_client.dart';
 
 /// The star rain celebrates the activity summary landing on screen. An
@@ -97,7 +92,7 @@ void main() {
   }
 
   Future<bool> confettiFires({required bool subscribed}) async {
-    MatrixState.pangeaController = _ConfettiTestController(
+    MatrixState.pangeaController = ActivityChatTestPangeaController(
       subscribed: subscribed,
     );
     final controller = ActivityChatController(
@@ -128,62 +123,4 @@ void main() {
       expect(await confettiFires(subscribed: false), isFalse);
     },
   );
-}
-
-/// [FakePangeaController] plus what the activity chat controller reads back
-/// through the static: the subscription gate, and the analytics dispatcher it
-/// subscribes to on construction.
-class _ConfettiTestController implements PangeaController {
-  _ConfettiTestController({required bool subscribed})
-    : subscriptionController = _FakeSubscriptionController(subscribed);
-
-  final PangeaController _delegate = FakePangeaController(userL1Code: 'en');
-
-  @override
-  UserController get userController => _delegate.userController;
-
-  @override
-  final SubscriptionController subscriptionController;
-
-  @override
-  final MatrixState matrixState = _FakeMatrixState();
-
-  @override
-  dynamic noSuchMethod(Invocation invocation) => null;
-}
-
-class _FakeSubscriptionController implements SubscriptionController {
-  _FakeSubscriptionController(this.showSubscriptionGatedContent);
-
-  @override
-  final bool showSubscriptionGatedContent;
-
-  @override
-  dynamic noSuchMethod(Invocation invocation) => null;
-}
-
-class _FakeMatrixState implements MatrixState {
-  @override
-  final AnalyticsDataService analyticsDataService = _FakeAnalyticsDataService();
-
-  // `State` mixes in Diagnosticable, whose toString takes a named argument
-  // that `Object.toString` lacks — the one member noSuchMethod can't cover.
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) =>
-      '_FakeMatrixState';
-
-  @override
-  dynamic noSuchMethod(Invocation invocation) => null;
-}
-
-class _FakeAnalyticsDataService implements AnalyticsDataService {
-  @override
-  late final AnalyticsUpdateDispatcher updateDispatcher =
-      AnalyticsUpdateDispatcher(this);
-
-  @override
-  bool get isInitializing => true;
-
-  @override
-  dynamic noSuchMethod(Invocation invocation) => null;
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-09-22 15:19:32.910100",
+    "@@last_modified": "2026-09-23 14:56:00.417027",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2366,5 +2366,7 @@
     "goalReportNoMessages": "Þú hefur ekki sent skilaboð í þessari lotu ennþá, svo það er ekkert til að benda á.",
     "goalReportThanks": "Tilkynnt. Takk!",
     "goalReportErrorUnreportable": "Engin hljómsveitarstjórnarsnúningur passar við þessa stjörnu, svo það er ekkert til að skrá skýrsluna gegn.",
-    "goalReportErrorRetry": "Leitin að snúningnum kláraðist ekki. Reyndu aftur."
+    "goalReportErrorRetry": "Leitin að snúningnum kláraðist ekki. Reyndu aftur.",
+    "summaryFeedbackReceived": "Takk! Við höfum móttekið ábendingar þínar.",
+    "summaryFeedbackFailed": "Gat ekki sent ábendingar þínar. Vinsamlegast reyndu aftur."
 }

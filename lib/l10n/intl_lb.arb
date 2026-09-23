@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-09-22 15:19:34.159296",
+    "@@last_modified": "2026-09-23 14:56:01.607010",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2366,5 +2366,7 @@
     "goalReportNoMessages": "Dir hutt nach keng Noriicht an dëser Sessioun geschéckt, also gëtt et näischt, op wat ee ka weisen.",
     "goalReportThanks": "Gemellt. Merci!",
     "goalReportErrorUnreportable": "Keng Orchestrator-Tour passt zu dësem Stär, also gëtt et näischt, géint wat de Rapport opgeholl ka ginn.",
-    "goalReportErrorRetry": "D'Sich no der Tour ass net fäerdeg ginn. Probéiert et nach eng Kéier."
+    "goalReportErrorRetry": "D'Sich no der Tour ass net fäerdeg ginn. Probéiert et nach eng Kéier.",
+    "summaryFeedbackReceived": "Merci! Mir huet äre Feedback kritt.",
+    "summaryFeedbackFailed": "Konnt äre Feedback net schécken. Probéiert w.e.g. nach eng Kéier."
 }
