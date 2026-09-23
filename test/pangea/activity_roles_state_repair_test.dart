@@ -19,8 +19,8 @@ void main() {
 
   late Client client;
   late ActivityRolesStateRepair repair;
-  late Completer<MatrixEvent> serverRead;
-  var serverReads = 0;
+  // One pending server read per check, completed (or failed) by the test.
+  late List<Completer<MatrixEvent>> reads;
   // Distinct room ids per test: sqflite's ':memory:' database is shared
   // process-wide, so rooms outlive a client.
   var roomCounter = 0;
@@ -48,22 +48,26 @@ void main() {
 
   final finished = '2026-09-23T13:55:30.569Z';
 
+  // Wrapped in a transaction like the SDK's sync loop, which holds the database
+  // lock while it applies a sync.
   Future<void> serverSync(
     String nextBatch, {
     List<MatrixEvent>? state,
     List<MatrixEvent>? timeline,
-  }) => client.handleSync(
-    SyncUpdate(
-      nextBatch: nextBatch,
-      rooms: RoomsUpdate(
-        join: {
-          roomId: JoinedRoomUpdate(
-            state: state,
-            timeline: timeline == null
-                ? null
-                : TimelineUpdate(events: timeline, limited: false),
-          ),
-        },
+  }) => client.database.transaction(
+    () => client.handleSync(
+      SyncUpdate(
+        nextBatch: nextBatch,
+        rooms: RoomsUpdate(
+          join: {
+            roomId: JoinedRoomUpdate(
+              state: state,
+              timeline: timeline == null
+                  ? null
+                  : TimelineUpdate(events: timeline, limited: false),
+            ),
+          },
+        ),
       ),
     ),
   );
@@ -85,13 +89,13 @@ void main() {
     // partial room never holds the event in memory.
     client.importantStateEvents.add(PangeaEventTypes.activityRole);
     roomId = '!session${roomCounter++}:fakeServer.notExisting';
-    serverReads = 0;
-    serverRead = Completer();
+    reads = [];
     repair = ActivityRolesStateRepair(
       client: client,
       fetchCurrentRoles: (_) {
-        serverReads++;
-        return serverRead.future;
+        final read = Completer<MatrixEvent>();
+        reads.add(read);
+        return read.future;
       },
     );
     // The room exists, with the learner's finished role, before the repair
@@ -114,20 +118,20 @@ void main() {
     expect(heldId(), r'$old', reason: 'the SDK applied the replayed copy');
     expect(client.getRoomById(roomId)!.hasCompletedRole, isFalse);
 
-    serverRead.complete(rolesEvent(r'$new', finishedAt: finished));
+    reads.single.complete(rolesEvent(r'$new', finishedAt: finished));
     await settle();
 
-    expect(serverReads, 1);
+    expect(reads.length, 1);
     expect(heldId(), r'$new');
     expect(client.getRoomById(roomId)!.hasCompletedRole, isTrue);
   });
 
   test('a state block that matches the server changes nothing', () async {
     await serverSync('b1', state: [rolesEvent(r'$new', finishedAt: finished)]);
-    serverRead.complete(rolesEvent(r'$new', finishedAt: finished));
+    reads.single.complete(rolesEvent(r'$new', finishedAt: finished));
     await settle();
 
-    expect(serverReads, 1);
+    expect(reads.length, 1);
     expect(heldId(), r'$new');
   });
 
@@ -135,7 +139,7 @@ void main() {
     await serverSync('b1', timeline: [rolesEvent(r'$newer', ts: 1)]);
     await settle();
 
-    expect(serverReads, 0);
+    expect(reads.length, 0);
   });
 
   test(
@@ -144,7 +148,7 @@ void main() {
       await serverSync('', state: [rolesEvent(r'$old')]);
       await settle();
 
-      expect(serverReads, 0);
+      expect(reads.length, 0);
     },
   );
 
@@ -152,10 +156,52 @@ void main() {
     await serverSync('b1', state: [rolesEvent(r'$old')]);
     await serverSync('b2', timeline: [rolesEvent(r'$newest', ts: 2)]);
 
-    serverRead.complete(rolesEvent(r'$new', finishedAt: finished));
+    reads.single.complete(rolesEvent(r'$new', finishedAt: finished));
     await settle();
 
     expect(heldId(), r'$newest');
+  });
+
+  test('a newer role event a sync is applying when the read returns is not '
+      'overwritten by the server copy', () async {
+    await serverSync('b1', state: [rolesEvent(r'$old')]);
+    // The read returns while the next sync is still applying a newer event.
+    reads.single.complete(rolesEvent(r'$new', finishedAt: finished));
+    await serverSync('b2', timeline: [rolesEvent(r'$newest', ts: 2)]);
+    await settle();
+
+    expect(heldId(), r'$newest');
+  });
+
+  test(
+    'a second stale state block during a check gets its own check',
+    () async {
+      await serverSync('b1', state: [rolesEvent(r'$old')]);
+      await serverSync('b2', state: [rolesEvent(r'$older')]);
+
+      reads.first.complete(rolesEvent(r'$new', finishedAt: finished));
+      await settle();
+      expect(reads.length, 2, reason: 'the second block queued another check');
+      reads.last.complete(rolesEvent(r'$new', finishedAt: finished));
+      await settle();
+
+      expect(heldId(), r'$new');
+    },
+  );
+
+  test('a failed read is retried on the next server sync', () async {
+    await serverSync('b1', state: [rolesEvent(r'$old')]);
+    reads.single.completeError(Exception('network down'));
+    await settle();
+    expect(heldId(), r'$old');
+
+    await serverSync('b2');
+    await settle();
+    expect(reads.length, 2);
+    reads.last.complete(rolesEvent(r'$new', finishedAt: finished));
+    await settle();
+
+    expect(heldId(), r'$new');
   });
 
   group('archiveEchoPending', () {
