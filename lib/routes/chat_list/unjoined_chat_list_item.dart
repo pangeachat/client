@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 
+import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:fluffychat/widgets/public_room_bottom_sheet.dart';
 
 class UnjoinedChatListItem extends StatelessWidget {
   final SpaceRoomsChunk$2 chunk;
   final VoidCallback onTap;
+  final double? titleFontSize;
+  final double? subtitleFontSize;
 
   /// This row's id in the enclosing [RovingFocusGroup]. Null outside a group.
   final String? rovingId;
@@ -20,7 +25,31 @@ class UnjoinedChatListItem extends StatelessWidget {
     required this.chunk,
     required this.onTap,
     this.rovingId,
+    this.titleFontSize,
+    this.subtitleFontSize,
   });
+
+  /// Offers to join [chunk], a child of [course], and returns the joined
+  /// room's id, or null if the user backed out.
+  static Future<String?> join(
+    BuildContext context,
+    Room course,
+    SpaceRoomsChunk$2 chunk,
+  ) async {
+    final joinResp = await PublicRoomBottomSheet.show(
+      context: context,
+      chunk: chunk,
+      via: course.spaceChildren
+          .firstWhereOrNull((child) => child.roomId == chunk.roomId)
+          ?.via,
+    );
+    if (joinResp == null || !context.mounted) return null;
+
+    final room = course.client.getRoomById(joinResp.roomId);
+    if (room == null) return null;
+
+    return JoinRoomAnalyticsConsentHandler(joinResp, room).handle(context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +82,7 @@ class UnjoinedChatListItem extends StatelessWidget {
               Expanded(
                 child: Text(
                   displayname,
+                  style: TextStyle(fontSize: titleFontSize),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -71,6 +101,7 @@ class UnjoinedChatListItem extends StatelessWidget {
           subtitle: Text(
             chunk.topic ??
                 L10n.of(context).countParticipants(chunk.numJoinedMembers),
+            style: TextStyle(fontSize: subtitleFontSize),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),

@@ -7,6 +7,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:matrix/matrix.dart';
+import 'package:provider/provider.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/constants/default_power_level.dart';
@@ -14,17 +15,28 @@ import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_chats_preview.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_room_types.dart';
 import 'package:fluffychat/routes/chat_list/chat_list_item.dart';
+import 'package:fluffychat/routes/chat_list/unjoined_chat_list_item.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../fake_pangea_controller.dart';
 import '../get_test_client.dart';
 
-/// Coverage for #9183: the course page's Chats section shows only when it
-/// has something in it, and its "See all" only when the All chats subpage
-/// holds a chat the section does not — more joined chats than fit, an
-/// invite, or a group chat the user can join. An admin keeps the section,
-/// since it is where they create the course's chats. Which hierarchy
+/// Coverage for #9183 and #9239: the course page's Chats section shows only
+/// when it has something in it, fills the rows joined chats leave open with
+/// group chats the user can join, and shows "See all" only when the All chats
+/// subpage holds a chat the section does not — more joined or joinable chats
+/// than fit, or an invite. An admin keeps the section, since it is where they
+/// create the course's chats. Which hierarchy
 /// children count as joinable is covered in
 /// course_hierarchy_extension_test.dart.
+class _FakeMatrixState extends MatrixState {
+  _FakeMatrixState(this._client);
+
+  final Client _client;
+
+  @override
+  Client get client => _client;
+}
+
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -76,6 +88,7 @@ void main() {
 
   Map<String, Object?> hierarchyChild(String roomId, {String? roomType}) => {
     'room_id': roomId,
+    'name': roomId,
     'room_type': ?roomType,
     'num_joined_members': 1,
     'world_readable': false,
@@ -156,13 +169,16 @@ void main() {
     localizationsDelegates: L10n.localizationsDelegates,
     supportedLocales: L10n.supportedLocales,
     home: Scaffold(
-      body: SingleChildScrollView(
-        child: SizedBox(
-          width: 380,
-          child: CourseChatsPreview(
-            room: room,
-            onShowAll: () {},
-            onCreateChat: () {},
+      body: Provider<MatrixState>.value(
+        value: _FakeMatrixState(client),
+        child: SingleChildScrollView(
+          child: SizedBox(
+            width: 380,
+            child: CourseChatsPreview(
+              room: room,
+              onShowAll: () {},
+              onCreateChat: () {},
+            ),
           ),
         ),
       ),
@@ -233,9 +249,7 @@ void main() {
     expect(hierarchyRequests, isEmpty);
   });
 
-  testWidgets('an invite adds See all without asking the server', (
-    tester,
-  ) async {
+  testWidgets('an invite adds See all', (tester) async {
     const invited = '!invited:fakeServer.notExisting';
     courseChat(invited, membership: Membership.invite);
     stubHierarchy([]);
@@ -244,17 +258,23 @@ void main() {
     // Only joined chats are rows; the invite is answered on the subpage.
     expect(find.byType(ChatListItem), findsNothing);
     expect(seeAll(), findsOneWidget);
-    expect(hierarchyRequests, isEmpty);
+    // Open rows still ask the server for joinable chats to fill them.
+    expect(hierarchyRequests, [courseId]);
   });
 
-  testWidgets('a group chat the learner can join adds See all', (tester) async {
+  testWidgets('a joinable group chat fills a row joined chats leave open', (
+    tester,
+  ) async {
     final joined = chatIds(1);
     joined.forEach(courseChat);
     stubHierarchy([hierarchyChild(joined.single), hierarchyChild(teacherChat)]);
     await pumpPreview(tester, courseRoom(childIds: [...joined, teacherChat]));
 
     expect(find.byType(ChatListItem), findsOneWidget);
-    expect(seeAll(), findsOneWidget);
+    expect(find.byType(UnjoinedChatListItem), findsOneWidget);
+    expect(find.text(teacherChat), findsOneWidget);
+    // Every chat is already on screen; the subpage would repeat them.
+    expect(seeAll(), findsNothing);
   });
 
   testWidgets('a joinable chat shows the section with no joined chat', (
@@ -264,6 +284,38 @@ void main() {
     await pumpPreview(tester, courseRoom(childIds: [teacherChat]));
 
     expect(sectionHeader(), findsOneWidget);
+    expect(find.byType(UnjoinedChatListItem), findsOneWidget);
+    expect(seeAll(), findsNothing);
+  });
+
+  testWidgets('more joinable chats than fit add See all', (tester) async {
+    final ids = chatIds(CourseChatsPreview.maxChats + 1);
+    stubHierarchy([for (final id in ids) hierarchyChild(id)]);
+    await pumpPreview(tester, courseRoom(childIds: ids));
+
+    expect(
+      find.byType(UnjoinedChatListItem),
+      findsNWidgets(CourseChatsPreview.maxChats),
+    );
+    expect(seeAll(), findsOneWidget);
+  });
+
+  testWidgets('a full section lists a joinable chat only behind See all', (
+    tester,
+  ) async {
+    final joined = chatIds(CourseChatsPreview.maxChats);
+    joined.forEach(courseChat);
+    stubHierarchy([
+      for (final id in joined) hierarchyChild(id),
+      hierarchyChild(teacherChat),
+    ]);
+    await pumpPreview(tester, courseRoom(childIds: [...joined, teacherChat]));
+
+    expect(
+      find.byType(ChatListItem),
+      findsNWidgets(CourseChatsPreview.maxChats),
+    );
+    expect(find.byType(UnjoinedChatListItem), findsNothing);
     expect(seeAll(), findsOneWidget);
   });
 
@@ -316,7 +368,7 @@ void main() {
     stubHierarchy([hierarchyChild(teacherChat)]);
     stubHierarchy([], roomId: otherCourseId);
     await pumpPreview(tester, courseRoom(childIds: [teacherChat]));
-    expect(seeAll(), findsOneWidget);
+    expect(find.byType(UnjoinedChatListItem), findsOneWidget);
 
     await tester.pumpWidget(
       preview(courseRoom(childIds: [], id: otherCourseId)),
