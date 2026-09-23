@@ -16,6 +16,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/course_avatar.dart';
 import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/extensions/unread_rooms_client_extension.dart';
 import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
 import 'package:fluffychat/pangea/spaces/knocking_users_builder.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_extension.dart';
@@ -90,6 +91,7 @@ class SpacesNavigationRail extends StatelessWidget {
                   .rateLimit(const Duration(seconds: 1)),
               builder: (context, _) {
                 final courses = client.sortedCourses(L10n.of(context));
+                final unreadRooms = client.unreadRooms;
                 return AnimatedContainer(
                   width: naviRailWidth,
                   duration: FluffyThemes.animationDuration,
@@ -169,8 +171,11 @@ class SpacesNavigationRail extends StatelessWidget {
                               },
                               toolTip: L10n.of(context).allChats,
                               tutorialTargetId: TutorialTargetIds.navChats,
-                              unreadBadgeFilter: (room) =>
-                                  room.firstSpaceParent == null,
+                              unreadRooms: unreadRooms
+                                  .where(
+                                    (room) => room.firstSpaceParent == null,
+                                  )
+                                  .toList(),
                               naviRailWidth: naviRailWidth,
                             ),
                             // 3. Courses — opens the Courses panel (the courses
@@ -224,6 +229,7 @@ class SpacesNavigationRail extends StatelessWidget {
                                     for (final space in courses)
                                       _SpaceItem(
                                         space: space,
+                                        unreadRooms: unreadRooms,
                                         iconWidth: largeIconWidth,
                                         naviRailWidth: naviRailWidth,
                                         // Highlight the course avatar only while the course
@@ -256,12 +262,16 @@ class SpacesNavigationRail extends StatelessWidget {
 
 class _SpaceItem extends StatelessWidget {
   final Room space;
+
+  /// The client-wide unread rooms, narrowed here to this course's children.
+  final List<Room> unreadRooms;
   final double iconWidth;
   final double naviRailWidth;
   final bool selected;
 
   const _SpaceItem({
     required this.space,
+    required this.unreadRooms,
     required this.iconWidth,
     required this.naviRailWidth,
     required this.selected,
@@ -312,7 +322,6 @@ class _SpaceItem extends StatelessWidget {
     final displayname = space.getLocalizedDisplayname(
       MatrixLocals(L10n.of(context)),
     );
-    final courseChildrenIds = space.spaceChildren.map((c) => c.roomId).toSet();
     // The builder loads the member list (admins only) and rebuilds on member
     // changes, so the knock badge appears when someone knocks and clears the
     // moment the admin accepts/denies (#8139).
@@ -335,7 +344,7 @@ class _SpaceItem extends StatelessWidget {
           displayname: displayname,
           size: iconWidth,
           unreadCoursePingEvent: space.unreadCoursePingEvent,
-          courseChildrenIds: courseChildrenIds,
+          unreadRooms: space.spaceChildrenAmong(unreadRooms),
           invite: space.membership == .invite,
           hasKnockingUsers: knockingUsers.isNotEmpty,
         ),

@@ -16,12 +16,12 @@ class CourseAvatar extends StatelessWidget {
   final String displayname;
   final double size;
 
-  /// The unread course-ping future and the course's child-room ids drive the
-  /// notification badge. They are only available for real course rooms (nav
+  /// The unread course-ping future and the course's unread child rooms drive
+  /// the notification badge. They are only available for real course rooms (nav
   /// rail, joined-courses list); for add-course previews and course-plan
   /// suggestions there is no room yet, so both are null and no badge shows.
   final Future<Event?>? unreadCoursePingEvent;
-  final Set<String?>? courseChildrenIds;
+  final List<Room>? unreadRooms;
   final bool invite;
 
   /// Someone is knocking on this course and the viewer is an admin who can
@@ -38,7 +38,7 @@ class CourseAvatar extends StatelessWidget {
     required this.displayname,
     required this.size,
     this.unreadCoursePingEvent,
-    this.courseChildrenIds,
+    this.unreadRooms,
     this.invite = false,
     this.hasKnockingUsers = false,
     this.child,
@@ -71,21 +71,21 @@ class CourseAvatar extends StatelessWidget {
     // No underlying room (add-course preview or course-plan suggestion): show
     // the plain avatar without the unread-notification badge.
     final unreadCoursePingEvent = this.unreadCoursePingEvent;
-    final courseChildrenIds = this.courseChildrenIds;
-    if (unreadCoursePingEvent == null || courseChildrenIds == null) {
+    final unreadRooms = this.unreadRooms;
+    if (unreadCoursePingEvent == null || unreadRooms == null) {
       return child;
     }
 
     if (hasKnockingUsers) {
       return UnreadRoomsBadge(
-        filter: (room) => courseChildrenIds.contains(room.id),
+        rooms: unreadRooms,
         badgePosition: position,
         child: KnockingUsersBadge(position: position, child: child),
       );
     }
 
     return UnreadRoomsBadge(
-      filter: (room) => courseChildrenIds.contains(room.id),
+      rooms: unreadRooms,
       badgePosition: position,
       child: FutureBuilder(
         future: unreadCoursePingEvent,

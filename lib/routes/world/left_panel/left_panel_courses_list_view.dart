@@ -11,6 +11,7 @@ import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/web_search_focus_keeper.dart';
 import 'package:fluffychat/pangea/common/widgets/filter_pill_row.dart';
+import 'package:fluffychat/pangea/extensions/unread_rooms_client_extension.dart';
 import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
 import 'package:fluffychat/pangea/spaces/course_role_filter.dart';
 import 'package:fluffychat/pangea/spaces/course_search.dart';
@@ -51,6 +52,7 @@ class CoursesHubPanel extends StatelessWidget {
           .rateLimit(const Duration(seconds: 1)),
       builder: (context, _) {
         final courses = client.sortedCourses(l10n);
+        final unreadRooms = client.unreadRooms;
         return Column(
           children: [
             PanelHeader(
@@ -61,7 +63,12 @@ class CoursesHubPanel extends StatelessWidget {
               // buttons in the body below (the empty state).
               trailing: courses.isEmpty ? null : const AddCourseHeaderActions(),
             ),
-            Expanded(child: LeftPanelCoursesListView(courses: courses)),
+            Expanded(
+              child: LeftPanelCoursesListView(
+                courses: courses,
+                unreadRooms: unreadRooms,
+              ),
+            ),
           ],
         );
       },
@@ -82,8 +89,13 @@ class LeftPanelCoursesListView extends StatefulWidget {
   static const int maxJoinedCoursesWithoutSearch = 4;
 
   final List<Room> courses;
+  final List<Room> unreadRooms;
 
-  const LeftPanelCoursesListView({super.key, required this.courses});
+  const LeftPanelCoursesListView({
+    super.key,
+    required this.courses,
+    required this.unreadRooms,
+  });
 
   static bool showsSearchBar(Iterable<Room> courses) =>
       courses.where((c) => c.membership == Membership.join).length >
@@ -303,7 +315,10 @@ class _LeftPanelCoursesListViewState extends State<LeftPanelCoursesListView> {
                   container: true,
                   child: AddCourseTileList(
                     content: courses
-                        .map((c) => RoomAddCourseTileContent(c))
+                        .map(
+                          (c) =>
+                              RoomAddCourseTileContent(c, widget.unreadRooms),
+                        )
                         .toList(),
                     onTap: (index) => onTapCourse(context, courses[index]),
                     extraContent: allCourses.isEmpty

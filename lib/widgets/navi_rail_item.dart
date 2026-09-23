@@ -17,7 +17,7 @@ class NaviRailItem extends StatelessWidget {
   final void Function() onTap;
   final Widget icon;
   final Widget? selectedIcon;
-  final bool Function(Room)? unreadBadgeFilter;
+  final List<Room> unreadRooms;
   final Color backgroundColor;
   final BorderRadius? borderRadius;
   final double naviRailWidth;
@@ -46,7 +46,7 @@ class NaviRailItem extends StatelessWidget {
     required this.onTap,
     required this.icon,
     this.selectedIcon,
-    this.unreadBadgeFilter,
+    this.unreadRooms = const [],
     required this.naviRailWidth,
     this.backgroundColor = Colors.transparent,
     this.borderRadius,
@@ -119,7 +119,7 @@ class NaviRailItem extends StatelessWidget {
                           child: Semantics(
                             selected: isSelected,
                             child: UnreadRoomsBadge(
-                              filter: unreadBadgeFilter ?? (_) => false,
+                              rooms: unreadRooms,
                               badgePosition: BadgePosition.topEnd(
                                 top: 1,
                                 end: isColumnMode ? 8 : 4,

@@ -26,6 +26,7 @@ import 'package:fluffychat/pangea/common/widgets/course_avatar.dart';
 import 'package:fluffychat/pangea/common/widgets/invited_course_badge.dart';
 import 'package:fluffychat/pangea/extensions/friend_dm_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/extensions/unread_rooms_client_extension.dart';
 import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
 import 'package:fluffychat/pangea/spaces/course_role_filter.dart';
 import 'package:fluffychat/pangea/spaces/knocking_users_badge.dart';
@@ -1023,7 +1024,9 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
                   .where((s) => s.hasRoomUpdate)
                   .rateLimit(const Duration(seconds: 1)),
               builder: (context, _) => UnreadRoomsBadge(
-                filter: (room) => room.firstSpaceParent == null,
+                rooms: client.unreadRooms
+                    .where((room) => room.firstSpaceParent == null)
+                    .toList(),
                 // Sits at the icon's corner with the web rail's proportions: the
                 // rail badge covers ~30% of its 41px icon, so over this 24px icon
                 // the badge must ride further up-and-out — at (4,4) it covered
