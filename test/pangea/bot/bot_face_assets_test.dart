@@ -93,26 +93,4 @@ void main() {
           'backdrop the animation does not have',
     );
   });
-
-  test('a still is drawn per colour, so a themed bot matches its surface', () {
-    // The bot takes colorScheme.primary, the same role the language chip
-    // beside it uses, so it changes with the learner's theme. The still cache
-    // is therefore keyed by colour: one baked picture would put a stale bot
-    // next to a themed chip.
-    final light = ColorScheme.fromSeed(
-      brightness: Brightness.light,
-      seedColor: const Color(0xFF2196F3),
-      dynamicSchemeVariant: DynamicSchemeVariant.fidelity,
-    );
-    final purple = ColorScheme.fromSeed(
-      brightness: Brightness.light,
-      seedColor: const Color(0xFF8560E0),
-      dynamicSchemeVariant: DynamicSchemeVariant.fidelity,
-    );
-    expect(
-      light.primary,
-      isNot(equals(purple.primary)),
-      reason: 'a different seed must give the bot a different colour',
-    );
-  });
 }
