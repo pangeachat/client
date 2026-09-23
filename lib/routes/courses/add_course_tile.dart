@@ -45,7 +45,7 @@ class AddCourseTile extends StatelessWidget {
     final members = content.members;
     final invited = content.invited ?? false;
     final unreadCoursePingEvent = content.unreadCoursePingEvent;
-    final courseChildrenIds = content.courseChildrenIds;
+    final unreadRooms = content.unreadRooms;
     final title = content.title(L10n.of(context));
     final expandedContent = content.expandedContent;
 
@@ -111,7 +111,7 @@ class AddCourseTile extends StatelessWidget {
                       displayname: title,
                       size: 48.0,
                       unreadCoursePingEvent: unreadCoursePingEvent,
-                      courseChildrenIds: courseChildrenIds,
+                      unreadRooms: unreadRooms,
                       invite: invited,
                       hasKnockingUsers: hasKnockingUsers,
                     ),
