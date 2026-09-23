@@ -183,18 +183,24 @@ void main() {
         MaterialApp(
           localizationsDelegates: L10n.localizationsDelegates,
           supportedLocales: L10n.supportedLocales,
-          home: Builder(
-            builder: (context) => Scaffold(
-              body: TextButton(
-                onPressed: () => showGoalReportDialog(
-                  context: context,
-                  room: Room(id: roomId, client: client),
-                  roleId: 'customer',
-                  goal: goal,
-                  direction: direction,
-                  ownMessagesOverride: () async => ownMessages,
+          // Mirrors the app: the workspace shell wraps its Scaffold in a
+          // ScaffoldMessenger of its own, so the Scaffolds a snackbar can
+          // render in belong to THAT messenger, not the MaterialApp's root one
+          // (workspace_shell.dart).
+          home: ScaffoldMessenger(
+            child: Builder(
+              builder: (context) => Scaffold(
+                body: TextButton(
+                  onPressed: () => showGoalReportDialog(
+                    context: context,
+                    room: Room(id: roomId, client: client),
+                    roleId: 'customer',
+                    goal: goal,
+                    direction: direction,
+                    ownMessagesOverride: () async => ownMessages,
+                  ),
+                  child: const Text('open'),
                 ),
-                child: const Text('open'),
               ),
             ),
           ),
@@ -271,6 +277,30 @@ void main() {
       await tester.tap(find.text('un café por favor'));
       await tester.pumpAndSettle();
       expect(sendAction(tester), isNotNull);
+    });
+
+    testWidgets('a sent report thanks the reporter and closes the prompt', (
+      tester,
+    ) async {
+      await runWithClient(
+        () async {
+          await open(tester, direction: GoalReportDirection.overAward);
+          await tester.enterText(
+            find.byType(TextField),
+            'the bot ordered, not me',
+          );
+          await tester.pump();
+          await tester.tap(find.widgetWithText(TextButton, 'Send'));
+          await tester.pumpAndSettle();
+        },
+        () => MockClient((_) async => Response('{"report_id": "rep-1"}', 200)),
+      );
+
+      // The confirmation is shown by the messenger above the popped dialog, so
+      // it must not be looked up through the dialog's own dead context.
+      expect(tester.takeException(), isNull);
+      expect(find.text('Reported. Thanks!'), findsOneWidget);
+      expect(find.text('Order a drink'), findsNothing);
     });
 
     testWidgets('an under-award with nothing said says so', (tester) async {

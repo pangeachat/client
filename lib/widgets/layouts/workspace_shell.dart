@@ -318,6 +318,14 @@ class WorkspaceShell extends StatelessWidget {
       // keyed nodes.
       container: true,
       explicitChildNodes: true,
+      // A Scaffold registers with the NEAREST ScaffoldMessenger, so this one
+      // owns every Scaffold in the workspace and the MaterialApp's own
+      // messenger ends up with none. Anything pushed on the root navigator — a
+      // `showDialog`, an overlay — therefore resolves `ScaffoldMessenger.of` to
+      // that empty root messenger, and a snackbar sent to it asserts ("no
+      // descendant Scaffolds to present to") rather than showing. Such a
+      // surface captures its messenger from the context that OPENED it, below
+      // this point (see `showGoalReportDialog`).
       child: ScaffoldMessenger(
         child: FocusTraversalGroup(
           // Tab order on the workspace: the [WorkspaceOrder] rank on each

@@ -4,6 +4,7 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_feedback_repo.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_role_goal_completion.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 
 /// Internal reviewer feedback on an orchestrator turn (staging only).
 ///
@@ -26,6 +27,10 @@ Future<void> showOrchestratorFeedbackDialog({
     ownRoleId: ownRoleId,
     goalCompletion: goalCompletion,
     activityPlan: activityPlan,
+    // From the opening context, not the dialog's — see the same capture in
+    // [showGoalReportDialog] for why the dialog's own resolves to a messenger
+    // with no Scaffold to present in.
+    messenger: ScaffoldMessenger.of(context),
   ),
 );
 
@@ -46,11 +51,16 @@ class _OrchestratorFeedbackDialog extends StatefulWidget {
   final List<OrchestratorRoleGoalCompletion> goalCompletion;
   final ActivityPlanModel? activityPlan;
 
+  /// The messenger that shows the confirmation, resolved from the context that
+  /// opened the dialog rather than from the dialog's own.
+  final ScaffoldMessengerState messenger;
+
   const _OrchestratorFeedbackDialog({
     required this.roomId,
     required this.basedOnEventId,
     required this.ownRoleId,
     required this.goalCompletion,
+    required this.messenger,
     this.activityPlan,
   });
 
@@ -123,10 +133,9 @@ class _OrchestratorFeedbackDialogState
       return;
     }
 
+    final thanks = L10n.of(context).orchestratorFeedbackThanks;
     Navigator.of(context).pop();
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(L10n.of(context).orchestratorFeedbackThanks)),
-    );
+    widget.messenger.showSnackBarAnnounced(SnackBar(content: Text(thanks)));
   }
 
   @override

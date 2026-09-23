@@ -8,6 +8,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/goal_report_repo.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 
 /// The prompt behind a goal star (staging only, for the team).
 ///
@@ -32,6 +33,14 @@ Future<void> showGoalReportDialog({
     roleId: roleId,
     goal: goal,
     direction: direction,
+    // Captured HERE, from the context that opens the prompt, because the
+    // prompt's own context resolves to the wrong messenger: the dialog route
+    // lives on the root navigator, so `ScaffoldMessenger.of` inside it finds
+    // the MaterialApp's messenger, which has no Scaffold registered to it —
+    // every Scaffold belongs to the workspace shell's nested messenger
+    // (`workspace_shell.dart`). A confirmation sent there asserts instead of
+    // showing.
+    messenger: ScaffoldMessenger.of(context),
     ownMessagesOverride: ownMessagesOverride,
   ),
 );
@@ -42,6 +51,10 @@ class _GoalReportDialog extends StatefulWidget {
   final ActivityRoleGoal goal;
   final GoalReportDirection direction;
 
+  /// The messenger that shows the confirmation, resolved from the context that
+  /// opened the prompt rather than from the prompt's own.
+  final ScaffoldMessengerState messenger;
+
   /// Test seam: the reporter's own messages, without a Matrix client behind
   /// them. Null in the app, where they come from the room's timeline.
   final Future<List<Event>> Function()? ownMessagesOverride;
@@ -51,6 +64,7 @@ class _GoalReportDialog extends StatefulWidget {
     required this.roleId,
     required this.goal,
     required this.direction,
+    required this.messenger,
     this.ownMessagesOverride,
   });
 
@@ -148,10 +162,9 @@ class _GoalReportDialogState extends State<_GoalReportDialog> {
       return;
     }
 
+    final thanks = L10n.of(context).goalReportThanks;
     Navigator.of(context).pop();
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(SnackBar(content: Text(L10n.of(context).goalReportThanks)));
+    widget.messenger.showSnackBarAnnounced(SnackBar(content: Text(thanks)));
   }
 
   /// 404 and 503 get their own line because neither is something the reporter
