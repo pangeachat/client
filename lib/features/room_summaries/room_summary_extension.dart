@@ -269,19 +269,19 @@ class RoomSummaryResponse {
     // The same slots, in the same order, as ActivitySummaryRoomExtension:
     // the bot's summary, else one an older client wrote.
     final summaryEntries = json[PangeaEventTypes.activitySummary];
-    Map<String, dynamic>? summaryContent(String? stateKey, {String? sender}) {
-      final entry = summaryEntries?[stateKey];
+    Map<String, dynamic>? summaryContent(
+      String? stateKey, {
+      bool fromBot = false,
+    }) {
+      final entry = summaryEntries is Map ? summaryEntries[stateKey] : null;
       if (entry is! Map<String, dynamic>) return null;
-      if (sender != null && entry['sender'] != sender) return null;
+      if (fromBot && entry['sender'] != BotName.byEnvironment) return null;
       final content = entry['content'];
       return content is Map<String, dynamic> ? content : null;
     }
 
     final summaryJson =
-        summaryContent(
-          ActivitySummaryStateKeys.canonical,
-          sender: BotName.byEnvironment,
-        ) ??
+        summaryContent(ActivitySummaryStateKeys.canonical, fromBot: true) ??
         summaryContent(l1Code) ??
         summaryContent(ActivitySummaryStateKeys.legacyPreview);
     final summary = summaryJson == null
