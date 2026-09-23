@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "Wiwa fun iyipada naa ko pari. Gbiyanju lẹẹkansi.",
     "summaryFeedbackReceived": "O ṣeun! A ti gba esi rẹ.",
     "summaryFeedbackFailed": "Ko le fi esi rẹ ranṣẹ. Jọwọ gbiyanju lẹẹkansi.",
-    "summaryFeedbackProcessing": "Nfi esi rẹ ranṣẹ ati mimu akopọ naa dojuiwọn…"
+    "summaryFeedbackProcessing": "Nfi esi rẹ ranṣẹ ati mimu akopọ naa dojuiwọn…",
+    "activitySummaryUpdateFailed": "Kò lè ṣe àtúnṣe àkópọ̀ yìí."
 }

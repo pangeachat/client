@@ -10034,5 +10034,6 @@
     "goalReportErrorRetry": "Pencarian giliran belum selesai. Coba lagi.",
     "summaryFeedbackReceived": "Terima kasih! Kami telah menerima masukan Anda.",
     "summaryFeedbackFailed": "Tidak dapat mengirim masukan Anda. Silakan coba lagi.",
-    "summaryFeedbackProcessing": "Mengirim masukan Anda dan memperbarui ringkasan…"
+    "summaryFeedbackProcessing": "Mengirim masukan Anda dan memperbarui ringkasan…",
+    "activitySummaryUpdateFailed": "Ringkasan ini tidak dapat diperbarui."
 }

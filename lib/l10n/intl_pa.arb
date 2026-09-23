@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "ਮੋੜ ਦੀ ਖੋਜ ਪੂਰੀ ਨਹੀਂ ਹੋਈ। ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।",
     "summaryFeedbackReceived": "ਧੰਨਵਾਦ! ਸਾਨੂੰ ਤੁਹਾਡਾ ਫੀਡਬੈਕ ਮਿਲ ਗਿਆ ਹੈ।",
     "summaryFeedbackFailed": "ਤੁਹਾਡਾ ਫੀਡਬੈਕ ਭੇਜਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ। ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।",
-    "summaryFeedbackProcessing": "ਤੁਹਾਡਾ ਫੀਡਬੈਕ ਭੇਜਿਆ ਜਾ ਰਿਹਾ ਹੈ ਅਤੇ ਸਾਰ ਅੱਪਡੇਟ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ…"
+    "summaryFeedbackProcessing": "ਤੁਹਾਡਾ ਫੀਡਬੈਕ ਭੇਜਿਆ ਜਾ ਰਿਹਾ ਹੈ ਅਤੇ ਸਾਰ ਅੱਪਡੇਟ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ…",
+    "activitySummaryUpdateFailed": "ਇਹ ਸਾਰਾਂਸ਼ ਅੱਪਡੇਟ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ।"
 }

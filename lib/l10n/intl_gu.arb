@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "ટર્ન માટેની શોધ પૂર્ણ થઈ નથી. ફરી પ્રયાસ કરો.",
     "summaryFeedbackReceived": "આભાર! અમને તમારો પ્રતિભાવ મળ્યો.",
     "summaryFeedbackFailed": "તમારો પ્રતિભાવ મોકલી શકાયો નથી. કૃપા કરીને ફરી પ્રયાસ કરો.",
-    "summaryFeedbackProcessing": "તમારા પ્રતિભાવ મોકલી રહ્યા છીએ અને સારાંશ અપડેટ કરી રહ્યા છીએ…"
+    "summaryFeedbackProcessing": "તમારા પ્રતિભાવ મોકલી રહ્યા છીએ અને સારાંશ અપડેટ કરી રહ્યા છીએ…",
+    "activitySummaryUpdateFailed": "આ સારાંશ અપડેટ કરી શકાયો નથી."
 }

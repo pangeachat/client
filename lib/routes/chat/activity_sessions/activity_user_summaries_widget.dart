@@ -55,27 +55,46 @@ class ActivityUserSummaries extends StatelessWidget {
           : const SizedBox.shrink();
     }
 
-    final summaryModel = room.visibleActivitySummaryByL1;
-    if (summaryModel == null || summaryModel.hasError) {
-      return const SizedBox();
-    }
+    return ValueListenableBuilder(
+      valueListenable: controller.activityController.summaryView,
+      builder: (context, view, _) {
+        // Generation runs in the chat, in the same semi-transparent box the
+        // summary will fill, so the finished-status bar doesn't grow and
+        // shove the rating card around while we wait (#8018).
+        if (view.isLoading) return const _SummaryLoading();
+        final summary = view.summary;
+        if (summary == null) return const SizedBox();
+        return _SummaryCard(
+          summary: summary,
+          updateFailed: view.updateFailed,
+          canRequest: view.canRequest,
+          controller: controller,
+        );
+      },
+    );
+  }
+}
 
-    final summary = summaryModel.summary;
-    if (summary == null) {
-      // Generation runs in the chat, in the same semi-transparent box the
-      // summary will fill, so the finished-status bar doesn't grow and shove
-      // the rating card around while we wait (#8018). A locally-recorded
-      // failure overrides room state, which can't say "error" when the
-      // network is down (#8362).
-      return ValueListenableBuilder(
-        valueListenable: controller.activityController.summaryFetchFailed,
-        builder: (context, fetchFailed, _) =>
-            summaryModel.isLoading && !fetchFailed
-            ? const _SummaryLoading()
-            : const SizedBox(),
-      );
-    }
+class _SummaryCard extends StatelessWidget {
+  final ActivitySummaryResponseModel summary;
 
+  /// A regeneration failed, so this is the summary the learner already had.
+  final bool updateFailed;
+
+  /// Feedback asks the bot to regenerate, so it shows only while the bot is
+  /// still in the room to answer.
+  final bool canRequest;
+  final ChatController controller;
+
+  const _SummaryCard({
+    required this.summary,
+    required this.updateFailed,
+    required this.canRequest,
+    required this.controller,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     return Center(
       child: Stack(
         children: [
@@ -102,6 +121,12 @@ class ActivityUserSummaries extends StatelessWidget {
                     children: [
                       Text(L10n.of(context).activityFinishedMessage),
                       Text(summary.summary, textAlign: TextAlign.center),
+                      if (updateFailed)
+                        Text(
+                          L10n.of(context).activitySummaryUpdateFailed,
+                          style: const TextStyle(fontStyle: FontStyle.italic),
+                          textAlign: TextAlign.center,
+                        ),
                     ],
                   ),
                 ),
@@ -112,16 +137,17 @@ class ActivityUserSummaries extends StatelessWidget {
               ],
             ),
           ),
-          Positioned(
-            right: 18.0,
-            top: 18.0,
-            child: IconButton(
-              tooltip: L10n.of(context).feedbackButton,
-              icon: const Icon(Icons.flag_outlined),
-              onPressed: () =>
-                  controller.activityController.submitSummaryFeedback(context),
+          if (canRequest)
+            Positioned(
+              right: 18.0,
+              top: 18.0,
+              child: IconButton(
+                tooltip: L10n.of(context).feedbackButton,
+                icon: const Icon(Icons.flag_outlined),
+                onPressed: () => controller.activityController
+                    .submitSummaryFeedback(context),
+              ),
             ),
-          ),
         ],
       ),
     );
@@ -364,8 +390,7 @@ class _ParticipantSummaryCard extends StatelessWidget {
         user?.localizedDisplayname(L10n.of(context)) ??
         participant.participantId.localpart ??
         participant.participantId;
-    final superlatives = room.activitySummaryByL1?.analytics
-        ?.generateSuperlatives();
+    final superlatives = room.activitySummaryAnalytics?.generateSuperlatives();
 
     return Container(
       width: double.infinity,

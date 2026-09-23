@@ -10906,5 +10906,6 @@
     "goalReportErrorRetry": "Vyhľadávanie ťahu sa nedokončilo. Skúste to znova.",
     "summaryFeedbackReceived": "Ďakujeme! Prijali sme vašu spätnú väzbu.",
     "summaryFeedbackFailed": "Spätnú väzbu sa nepodarilo odoslať. Skúste to znova.",
-    "summaryFeedbackProcessing": "Odosielanie spätnej väzby a aktualizácia zhrnutia…"
+    "summaryFeedbackProcessing": "Odosielanie spätnej väzby a aktualizácia zhrnutia…",
+    "activitySummaryUpdateFailed": "Tento súhrn nebolo možné aktualizovať."
 }

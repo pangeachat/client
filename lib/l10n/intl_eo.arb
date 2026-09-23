@@ -10906,5 +10906,6 @@
     "goalReportErrorRetry": "La serĉo de la vico ne finiĝis. Provu denove.",
     "summaryFeedbackReceived": "Dankon! Ni ricevis vian retrokuplon.",
     "summaryFeedbackFailed": "Ne eblis sendi vian retrokuplon. Bonvolu reprovi.",
-    "summaryFeedbackProcessing": "Sendante vian retrosciigon kaj ĝisdatigante la resumon…"
+    "summaryFeedbackProcessing": "Sendante vian retrosciigon kaj ĝisdatigante la resumon…",
+    "activitySummaryUpdateFailed": "Ĉi tiu resumo ne povis esti ĝisdatigita."
 }

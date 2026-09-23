@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "Raadinta wareegga ma dhammaan. Isku day mar kale.",
     "summaryFeedbackReceived": "Waad ku mahadsan tahay! Waxaan helnay jawaab celintaada.",
     "summaryFeedbackFailed": "Lama soo diri karin jawaab celintaada. Fadlan mar kale isku day.",
-    "summaryFeedbackProcessing": "Waxaan diraynaa jawaab celintaada oo waxaan cusboonaysiinaynaa soo koobidda…"
+    "summaryFeedbackProcessing": "Waxaan diraynaa jawaab celintaada oo waxaan cusboonaysiinaynaa soo koobidda…",
+    "activitySummaryUpdateFailed": "Soo koobiddaan lama cusboonaysiin karin."
 }

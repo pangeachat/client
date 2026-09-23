@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "موڙ جي ڳولا مڪمل نه ٿي. ٻيهر ڪوشش ڪريو.",
     "summaryFeedbackReceived": "مهرباني! اسان توهان جو رايو وصول ڪيو آهي.",
     "summaryFeedbackFailed": "توهان جو رايو موڪلي نه سگهيو. مهرباني ڪري ٻيهر ڪوشش ڪريو.",
-    "summaryFeedbackProcessing": "توهان جي راءِ موڪلي پئي وڃي ۽ خلاصو اپڊيٽ ڪيو پيو وڃي…"
+    "summaryFeedbackProcessing": "توهان جي راءِ موڪلي پئي وڃي ۽ خلاصو اپڊيٽ ڪيو پيو وڃي…",
+    "activitySummaryUpdateFailed": "هي خلاصو اپڊيٽ نه ٿي سگهيو."
 }

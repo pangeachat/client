@@ -10593,5 +10593,6 @@
     "goalReportErrorRetry": "Níor chríochnaigh an cuardach don chasadh. Bain triail eile as.",
     "summaryFeedbackReceived": "Go raibh maith agat! Fuaireamar d'aiseolas.",
     "summaryFeedbackFailed": "Níorbh fhéidir d'aiseolas a sheoladh. Bain triail eile as, le do thoil.",
-    "summaryFeedbackProcessing": "Ag cur do chuid aiseolais agus ag nuashonrú an achoimre…"
+    "summaryFeedbackProcessing": "Ag cur do chuid aiseolais agus ag nuashonrú an achoimre…",
+    "activitySummaryUpdateFailed": "Níorbh fhéidir an achoimre seo a nuashonrú."
 }

@@ -10262,5 +10262,6 @@
     "goalReportErrorRetry": "Dönüş araması tamamlanmadı. Tekrar deneyin.",
     "summaryFeedbackReceived": "Teşekkürler! Geri bildiriminiz alındı.",
     "summaryFeedbackFailed": "Geri bildiriminiz gönderilemedi. Lütfen tekrar deneyin.",
-    "summaryFeedbackProcessing": "Geri bildiriminiz gönderiliyor ve özet güncelleniyor…"
+    "summaryFeedbackProcessing": "Geri bildiriminiz gönderiliyor ve özet güncelleniyor…",
+    "activitySummaryUpdateFailed": "Bu özet güncellenemedi."
 }

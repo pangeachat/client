@@ -10875,5 +10875,6 @@
     "goalReportErrorRetry": "החיפוש אחר התור לא הסתיים. נסה שוב.",
     "summaryFeedbackReceived": "תודה! קיבלנו את המשוב שלך.",
     "summaryFeedbackFailed": "לא ניתן היה לשלוח את המשוב שלך. אנא נסה שוב.",
-    "summaryFeedbackProcessing": "שולח את המשוב שלך ומעדכן את הסיכום…"
+    "summaryFeedbackProcessing": "שולח את המשוב שלך ומעדכן את הסיכום…",
+    "activitySummaryUpdateFailed": "לא ניתן היה לעדכן את הסיכום הזה."
 }

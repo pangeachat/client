@@ -160,8 +160,7 @@ class AnalyticsActivityItem extends StatelessWidget {
     final goals = room.ownRole?.allGoals;
 
     final userId = room.client.userID;
-    final summaryModel = room.activitySummaryByL1;
-    final summary = summaryModel?.summary;
+    final summary = room.activitySummary?.summary;
     final cefrLevel = summary?.participants
         .firstWhereOrNull((p) => p.participantId == userId)
         ?.cefrLevel;
@@ -169,7 +168,7 @@ class AnalyticsActivityItem extends StatelessWidget {
     // The level and the stats come and go together: a session with no
     // generated summary keeps its title and stars and shows neither, rather
     // than a half-filled row (activities.instructions.md, "The Stars list").
-    final analytics = summaryModel?.analytics;
+    final analytics = room.activitySummaryAnalytics;
     final stats = summary == null || analytics == null || userId == null
         ? null
         : _ActivitySessionStats(

@@ -10018,5 +10018,6 @@
     "goalReportErrorRetry": "Søket etter turen ble ikke fullført. Prøv igjen.",
     "summaryFeedbackReceived": "Takk! Vi har mottatt tilbakemeldingen din.",
     "summaryFeedbackFailed": "Kunne ikke sende tilbakemeldingen din. Vennligst prøv igjen.",
-    "summaryFeedbackProcessing": "Sender tilbakemeldingen din og oppdaterer sammendraget ..."
+    "summaryFeedbackProcessing": "Sender tilbakemeldingen din og oppdaterer sammendraget ...",
+    "activitySummaryUpdateFailed": "Denne oppsummeringen kunne ikke oppdateres."
 }

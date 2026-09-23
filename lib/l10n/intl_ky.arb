@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "Кезекти издөө аяктаган жок. Кайра аракет кылыңыз.",
     "summaryFeedbackReceived": "Рахмат! Пикириңизди алдык.",
     "summaryFeedbackFailed": "Пикириңизди жөнөтүү мүмкүн болгон жок. Кайра аракет кылып көрүңүз.",
-    "summaryFeedbackProcessing": "Пикириңизди жөнөтүү жана корутундуну жаңыртуу…"
+    "summaryFeedbackProcessing": "Пикириңизди жөнөтүү жана корутундуну жаңыртуу…",
+    "activitySummaryUpdateFailed": "Бул корутунду жаңыртылган жок."
 }

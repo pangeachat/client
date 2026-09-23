@@ -10397,5 +10397,6 @@
     "goalReportErrorRetry": "Pretraga poteza nije završena. Pokušajte ponovno.",
     "summaryFeedbackReceived": "Hvala! Primili smo vaše povratne informacije.",
     "summaryFeedbackFailed": "Slanje povratnih informacija nije uspjelo. Pokušajte ponovno.",
-    "summaryFeedbackProcessing": "Šaljem vaše povratne informacije i ažuriram sažetak…"
+    "summaryFeedbackProcessing": "Šaljem vaše povratne informacije i ažuriram sažetak…",
+    "activitySummaryUpdateFailed": "Ovaj sažetak nije bilo moguće ažurirati."
 }

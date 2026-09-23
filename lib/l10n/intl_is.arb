@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "Leitin að snúningnum kláraðist ekki. Reyndu aftur.",
     "summaryFeedbackReceived": "Takk! Við höfum móttekið ábendingar þínar.",
     "summaryFeedbackFailed": "Gat ekki sent ábendingar þínar. Vinsamlegast reyndu aftur.",
-    "summaryFeedbackProcessing": "Sendir endurgjöf þína og uppfærir samantektina…"
+    "summaryFeedbackProcessing": "Sendir endurgjöf þína og uppfærir samantektina…",
+    "activitySummaryUpdateFailed": "Ekki tókst að uppfæra þessa samantekt."
 }

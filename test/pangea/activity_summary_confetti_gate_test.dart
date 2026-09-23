@@ -9,8 +9,11 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_model.dart';
+import 'package:fluffychat/features/activity_sessions/activity_summary_analytics_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_response_model.dart';
+import 'package:fluffychat/features/activity_sessions/activity_summary_room_extension.dart';
+import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_chat_controller.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -80,11 +83,22 @@ void main() {
             summary: 'Well played.',
           ),
         ).toJson(),
-        senderId: userId,
+        senderId: BotName.byEnvironment,
         eventId: '\$summary',
         originServerTs: DateTime.utc(2026, 1, 1, 14),
-        // Summaries are keyed by the viewer's L1; the fake controller's is 'en'.
-        stateKey: 'en',
+        stateKey: ActivitySummaryStateKeys.canonical,
+        room: room,
+      ),
+    );
+    // Already written, so the controller has no analytics to compute.
+    room.setState(
+      Event(
+        type: PangeaEventTypes.activitySummary,
+        content: ActivitySummaryAnalyticsModel().toJson(),
+        senderId: userId,
+        eventId: '\$analytics',
+        originServerTs: DateTime.utc(2026, 1, 1, 14),
+        stateKey: ActivitySummaryStateKeys.analytics,
         room: room,
       ),
     );

@@ -10878,5 +10878,6 @@
     "goalReportErrorRetry": "A pesquisa pela vez não terminou. Tente novamente.",
     "summaryFeedbackReceived": "Obrigado! Recebemos o seu feedback.",
     "summaryFeedbackFailed": "Não foi possível enviar o seu feedback. Por favor, tente novamente.",
-    "summaryFeedbackProcessing": "A enviar o seu feedback e a atualizar o resumo…"
+    "summaryFeedbackProcessing": "A enviar o seu feedback e a atualizar o resumo…",
+    "activitySummaryUpdateFailed": "Não foi possível atualizar este resumo."
 }

@@ -9948,5 +9948,6 @@
     "goalReportErrorRetry": "Die Suche nach der Runde wurde nicht abgeschlossen. Versuche es erneut.",
     "summaryFeedbackReceived": "Danke! Wir haben Ihr Feedback erhalten.",
     "summaryFeedbackFailed": "Ihr Feedback konnte nicht gesendet werden. Bitte versuchen Sie es erneut.",
-    "summaryFeedbackProcessing": "Ihr Feedback wird gesendet und die Zusammenfassung aktualisiert…"
+    "summaryFeedbackProcessing": "Ihr Feedback wird gesendet und die Zusammenfassung aktualisiert…",
+    "activitySummaryUpdateFailed": "Diese Zusammenfassung konnte nicht aktualisiert werden."
 }

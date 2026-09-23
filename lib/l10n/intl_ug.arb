@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "نۆۋەتنى ئىزدەش ئاخىرلاشمىدى. قايتا سىناڭ.",
     "summaryFeedbackReceived": "رەھمەت! تەكلىپىڭىزنى تاپشۇرۇۋالدۇق.",
     "summaryFeedbackFailed": "تەكلىپىڭىزنى ئەۋەتكىلى بولمىدى. قايتا سىناپ بېقىڭ.",
-    "summaryFeedbackProcessing": "پىكىر-تەكلىپىڭىزنى يوللاۋاتىمىز ۋە خۇلاسىنى يېڭىلاۋاتىمىز…"
+    "summaryFeedbackProcessing": "پىكىر-تەكلىپىڭىزنى يوللاۋاتىمىز ۋە خۇلاسىنى يېڭىلاۋاتىمىز…",
+    "activitySummaryUpdateFailed": "بۇ خۇلاسىنى يېڭىلاش مۇمكىن بولمىدى."
 }

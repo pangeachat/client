@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "Tsy nahavita ny fikarohana ny fihodinana. Andramo indray.",
     "summaryFeedbackReceived": "Misaotra! Voaray ny hevitrao.",
     "summaryFeedbackFailed": "Tsy afaka nandefa ny hevitrao. Andramo indray azafady.",
-    "summaryFeedbackProcessing": "Mandefa ny hevitrao sy manavao ny famintinana…"
+    "summaryFeedbackProcessing": "Mandefa ny hevitrao sy manavao ny famintinana…",
+    "activitySummaryUpdateFailed": "Tsy afaka navaozina ity famintinana ity."
 }

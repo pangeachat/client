@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "Milarian giliran henteu réngsé. Cobi deui.",
     "summaryFeedbackReceived": "Hatur nuhun! Tanggapan anjeun parantos katampi.",
     "summaryFeedbackFailed": "Tanggapan anjeun teu tiasa dikirim. Punten cobian deui.",
-    "summaryFeedbackProcessing": "Ngirim tanggapan anjeun sareng ngapdet ringkesanana…"
+    "summaryFeedbackProcessing": "Ngirim tanggapan anjeun sareng ngapdet ringkesanana…",
+    "activitySummaryUpdateFailed": "Ringkesan ieu teu tiasa diropéa."
 }

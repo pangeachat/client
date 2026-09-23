@@ -9958,5 +9958,6 @@
     "goalReportErrorRetry": "Käigu otsing ei lõppenud. Proovige uuesti.",
     "summaryFeedbackReceived": "Aitäh! Saime teie tagasiside kätte.",
     "summaryFeedbackFailed": "Tagasisidet ei saanud saata. Palun proovige uuesti.",
-    "summaryFeedbackProcessing": "Teie tagasiside saatmine ja kokkuvõtte värskendamine…"
+    "summaryFeedbackProcessing": "Teie tagasiside saatmine ja kokkuvõtte värskendamine…",
+    "activitySummaryUpdateFailed": "Seda kokkuvõtet ei saanud värskendada."
 }

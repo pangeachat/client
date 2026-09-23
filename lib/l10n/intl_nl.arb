@@ -9961,5 +9961,6 @@
     "goalReportErrorRetry": "Het zoeken naar de beurt is niet voltooid. Probeer het opnieuw.",
     "summaryFeedbackReceived": "Bedankt! We hebben je feedback ontvangen.",
     "summaryFeedbackFailed": "Feedback kon niet worden verzonden. Probeer het opnieuw.",
-    "summaryFeedbackProcessing": "Je feedback wordt verzonden en de samenvatting wordt bijgewerkt…"
+    "summaryFeedbackProcessing": "Je feedback wordt verzonden en de samenvatting wordt bijgewerkt…",
+    "activitySummaryUpdateFailed": "Deze samenvatting kon niet worden bijgewerkt."
 }

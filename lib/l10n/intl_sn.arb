@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "Kutsvaga turn hakuna kupera. Edza zvakare.",
     "summaryFeedbackReceived": "Ndatenda! Tawana mhinduro yenyu.",
     "summaryFeedbackFailed": "Hatina kukwanisa kutumira mhinduro yenyu. Ndapota edzai zvakare.",
-    "summaryFeedbackProcessing": "Tichitumira mhinduro yako uye tichigadzirisa pfupiso…"
+    "summaryFeedbackProcessing": "Tichitumira mhinduro yako uye tichigadzirisa pfupiso…",
+    "activitySummaryUpdateFailed": "Chidimbu ichi hachina kukwanisa kugadziriswa."
 }

@@ -10046,5 +10046,6 @@
     "goalReportErrorRetry": "Wyszukiwanie tury nie zostało zakończone. Spróbuj ponownie.",
     "summaryFeedbackReceived": "Dziękujemy! Otrzymaliśmy Twoją opinię.",
     "summaryFeedbackFailed": "Nie udało się wysłać Twojej opinii. Spróbuj ponownie.",
-    "summaryFeedbackProcessing": "Wysyłanie opinii i aktualizowanie podsumowania…"
+    "summaryFeedbackProcessing": "Wysyłanie opinii i aktualizowanie podsumowania…",
+    "activitySummaryUpdateFailed": "Nie udało się zaktualizować podsumowania."
 }

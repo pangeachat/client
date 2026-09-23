@@ -10064,5 +10064,6 @@
     "goalReportErrorRetry": "A forduló keresése nem fejeződött be. Próbáld újra.",
     "summaryFeedbackReceived": "Köszönjük! Megkaptuk visszajelzését.",
     "summaryFeedbackFailed": "Nem sikerült elküldeni visszajelzését. Kérjük, próbálja újra.",
-    "summaryFeedbackProcessing": "Visszajelzés küldése és az összefoglaló frissítése…"
+    "summaryFeedbackProcessing": "Visszajelzés küldése és az összefoglaló frissítése…",
+    "activitySummaryUpdateFailed": "Ezt az összefoglalót nem sikerült frissíteni."
 }

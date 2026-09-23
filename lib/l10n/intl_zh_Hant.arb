@@ -10067,5 +10067,6 @@
     "goalReportErrorRetry": "回合搜尋未完成。請再試一次。",
     "summaryFeedbackReceived": "感謝！我們已收到您的意見回饋。",
     "summaryFeedbackFailed": "無法傳送您的意見回饋。請再試一次。",
-    "summaryFeedbackProcessing": "正在傳送您的意見回饋並更新摘要…"
+    "summaryFeedbackProcessing": "正在傳送您的意見回饋並更新摘要…",
+    "activitySummaryUpdateFailed": "無法更新此摘要。"
 }

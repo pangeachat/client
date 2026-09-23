@@ -10455,5 +10455,6 @@
     "goalReportErrorRetry": "Hledání tahu nebylo dokončeno. Zkuste to znovu.",
     "summaryFeedbackReceived": "Díky! Vaše zpětná vazba byla přijata.",
     "summaryFeedbackFailed": "Nepodařilo se odeslat vaši zpětnou vazbu. Zkuste to prosím znovu.",
-    "summaryFeedbackProcessing": "Odesílání vaší zpětné vazby a aktualizace souhrnu…"
+    "summaryFeedbackProcessing": "Odesílání vaší zpětné vazby a aktualizace souhrnu…",
+    "activitySummaryUpdateFailed": "Tento souhrn nelze aktualizovat."
 }

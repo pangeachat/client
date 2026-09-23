@@ -10906,5 +10906,6 @@
     "goalReportErrorRetry": "Iskanje obrata ni bilo dokončano. Poskusite znova.",
     "summaryFeedbackReceived": "Hvala! Prejeli smo vaše povratne informacije.",
     "summaryFeedbackFailed": "Povratnih informacij ni bilo mogoče poslati. Poskusite znova.",
-    "summaryFeedbackProcessing": "Pošiljanje vaših povratnih informacij in posodabljanje povzetka …"
+    "summaryFeedbackProcessing": "Pošiljanje vaših povratnih informacij in posodabljanje povzetka …",
+    "activitySummaryUpdateFailed": "Tega povzetka ni bilo mogoče posodobiti."
 }

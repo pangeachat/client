@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "ʻAʻole i pau ka ʻimi ʻana i ka huli. E hoʻāʻo hou.",
     "summaryFeedbackReceived": "Mahalo! Ua loaʻa iā mākou kou manaʻo.",
     "summaryFeedbackFailed": "ʻAʻole hiki ke hoʻouna i kou manaʻo. E ʻoluʻolu e hoʻāʻo hou.",
-    "summaryFeedbackProcessing": "Ke hoʻouna nei i kāu manaʻo a ke hōʻano hou nei i ka hōʻuluʻulu manaʻo…"
+    "summaryFeedbackProcessing": "Ke hoʻouna nei i kāu manaʻo a ke hōʻano hou nei i ka hōʻuluʻulu manaʻo…",
+    "activitySummaryUpdateFailed": "ʻAʻole hiki ke hoʻopou hou i kēia hōʻuluʻulu."
 }

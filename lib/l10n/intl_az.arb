@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "Növbənin axtarışı başa çatmadı. Yenidən cəhd edin.",
     "summaryFeedbackReceived": "Təşəkkürlər! Rəyinizi aldıq.",
     "summaryFeedbackFailed": "Rəyinizi göndərmək mümkün olmadı. Zəhmət olmasa, yenidən cəhd edin.",
-    "summaryFeedbackProcessing": "Rəyinizi göndəririk və xülasəni yeniləyirik…"
+    "summaryFeedbackProcessing": "Rəyinizi göndəririk və xülasəni yeniləyirik…",
+    "activitySummaryUpdateFailed": "Bu xülasə yenilənə bilmədi."
 }

@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "Ukusesha uhlelo aluzange luqede. Zama futhi.",
     "summaryFeedbackReceived": "Siyabonga! Sitholile impendulo yakho.",
     "summaryFeedbackFailed": "Ayikwazanga ukuthumela impendulo yakho. Sicela uzame futhi.",
-    "summaryFeedbackProcessing": "Sithumela impendulo yakho futhi sibuyekeza isifinyezo…"
+    "summaryFeedbackProcessing": "Sithumela impendulo yakho futhi sibuyekeza isifinyezo…",
+    "activitySummaryUpdateFailed": "Lesi sifingqo asikwazanga ukubuyekezwa."
 }

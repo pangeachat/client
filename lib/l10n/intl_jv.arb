@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "Pencarian giliran durung rampung. Coba maneh.",
     "summaryFeedbackReceived": "Matur nuwun! Tanggapan panjenengan sampun katampi.",
     "summaryFeedbackFailed": "Mboten saged ngirim tanggapan panjenengan. Mangga dicobi malih.",
-    "summaryFeedbackProcessing": "Nirim tanggapan sampeyan lan nganyari ringkesan…"
+    "summaryFeedbackProcessing": "Nirim tanggapan sampeyan lan nganyari ringkesan…",
+    "activitySummaryUpdateFailed": "Ringkesan iki ora bisa dianyari."
 }

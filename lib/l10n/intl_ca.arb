@@ -10088,5 +10088,6 @@
     "goalReportErrorRetry": "La cerca del torn no ha finalitzat. Torna-ho a provar.",
     "summaryFeedbackReceived": "Gràcies! Hem rebut els teus comentaris.",
     "summaryFeedbackFailed": "No s'han pogut enviar els teus comentaris. Torna-ho a provar.",
-    "summaryFeedbackProcessing": "S'està enviant el teu feedback i actualitzant el resum…"
+    "summaryFeedbackProcessing": "S'està enviant el teu feedback i actualitzant el resum…",
+    "activitySummaryUpdateFailed": "Aquest resum no s'ha pogut actualitzar."
 }

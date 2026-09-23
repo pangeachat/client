@@ -9961,5 +9961,6 @@
     "goalReportErrorRetry": "A busca da quenda non rematou. Téntao de novo.",
     "summaryFeedbackReceived": "Grazas! Recibimos os teus comentarios.",
     "summaryFeedbackFailed": "Non se puideron enviar os teus comentarios. Téntao de novo.",
-    "summaryFeedbackProcessing": "Enviando os teus comentarios e actualizando o resumo…"
+    "summaryFeedbackProcessing": "Enviando os teus comentarios e actualizando o resumo…",
+    "activitySummaryUpdateFailed": "Non foi posíbel actualizar este resumo."
 }

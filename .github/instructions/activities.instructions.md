@@ -23,7 +23,7 @@ On the write side, starting a session shares it into **every joined course the a
 
 The activity's start page doesn't store its own state; it reads it from the room — whether a room exists yet, whether the learner is in it, whether they've taken a role, whether every role is filled. From those facts it moves through a short sequence (not started → picking a role → in with a role → session full) and shows the right thing at each step: the waiting room (ping the course, play with the bot, or invite a friend — pinging is limited to once a minute so it can't be spammed), the role picker, or the live activity.
 
-When a session counts as "ended" is the org doc's call. The client's part is firing the summary once that happens, and keeping a short-lived local cache of the room's analytics so the page doesn't re-fetch on every visit.
+When a session counts as ended, and how the bot makes its summary, are the org doc's call ([activity-summary.instructions.md](../../../.github/.github/instructions/activity-summary.instructions.md)). The client shows the summary from the room state the bot writes. It writes the room's analytics when no client has yet, and it sends a learner's retry or feedback as a request the bot serves. It also keeps a short-lived local cache of the room's analytics, so the page doesn't re-fetch on every visit.
 
 The page's **layout and gestures** — the mobile grow-before-scroll sheet, the header and info row, the CTA row, and how it owns its container over the nav rail and analytics bar — are their own concern: [activity-start-page.instructions.md](activity-start-page.instructions.md).
 
@@ -43,7 +43,7 @@ The header's left slot, opposite the chevron, carries the session's language chi
 
 A header with no goals to show falls back to a plain **"Activity actions"** title in the same spot — no stars, but it still opens to the same end-activity buttons. This covers the admin or teacher who joins a session without taking a role (no goals of their own, but they still need "End for all") and any case where a role's goals can't be resolved — a legacy plan, or a failure loading or generating them — so a learner is never stranded without a way to end the activity.
 
-Once the summary lands the header goes away and the summary carries the goals — under the participant picker, not above it. The stars there follow the pick: selecting a coursemate swaps their feedback card *and* their goal list, so the two always describe the same person. With no pick the viewer sees their own goals, and an observer who never took a role sees the first participant's ([#8672](https://github.com/pangeachat/client/issues/8672)).
+Once the summary lands the header goes away and the summary carries the goals — under the participant picker, not above it. The stars there follow the pick: selecting a coursemate swaps their feedback card *and* their goal list, so the two always describe the same person. With no pick the viewer sees their own goals, and an observer who never took a role sees the first participant's ([#8672](https://github.com/pangeachat/client/issues/8672)). If a learner's feedback leads to a regeneration that fails, the summary they already had stays on screen, with a short note that it could not be updated.
 
 ### Reporting a wrong star (staging only)
 
@@ -65,11 +65,11 @@ The profile star counter ([`totalStarsEarned`](../../lib/routes/chat/choreograph
 
 ## The Stars list
 
-A saved session's row ([`AnalyticsActivityItem`](../../lib/routes/analytics/activities/activity_archive.dart)) is the learner's record of that session: the activity's title (the room's name once the plan is gone), their stars, their level, the XP they earned, and how many different vocabulary and grammar items they used. Every number comes from the summary saved with the session, so the row and the end-of-activity card can never disagree. Tapping a row opens the session.
+A saved session's row ([`AnalyticsActivityItem`](../../lib/routes/analytics/activities/activity_archive.dart)) is the learner's record of that session: the activity's title (the room's name once the plan is gone), their stars, their level, the XP they earned, and how many different vocabulary and grammar items they used. Every number comes from the summary and analytics saved with the session, so the row and the end-of-activity card can never disagree. Tapping a row opens the session.
 
 The stats sit under the stars as one compact line — XP first, in the gold that marks XP everywhere else, then a vocabulary count and a grammar count behind the same two icons the analytics bar uses for words and grammar. The counts are of distinct items used in that session, not of items new to the learner: the saved summary does not record which were new, and the row never shows a number the summary cannot back. A count of zero shows as zero rather than dropping the stat, so the rows stay aligned down the list.
 
-A session with no saved summary — an older one, or one whose generation failed — keeps its title and stars and shows nothing else: no level, no stats, and no gap where they would be. A summary is saved per display language, so a learner who has since changed their first language sees that same reduced row.
+A session with no saved summary — an older one, or one whose generation failed — keeps its title and stars and shows nothing else: no level, no stats, and no gap where they would be. Sessions summarized before the bot made the summary saved one per display language, so a learner who has since changed their first language sees that same reduced row for those sessions.
 
 The open row carries the selected fill, and XP gives up the gold there so it stays readable against it.
 

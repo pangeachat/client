@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "Հերթի որոնումը չավարտվեց։ Փորձեք նորից։",
     "summaryFeedbackReceived": "Շնորհակալություն։ Մենք ստացանք Ձեր կարծիքը։",
     "summaryFeedbackFailed": "Չհաջողվեց ուղարկել Ձեր կարծիքը։ Խնդրում ենք նորից փորձել։",
-    "summaryFeedbackProcessing": "Ուղարկվում է ձեր կարծիքը և թարմացվում է ամփոփումը…"
+    "summaryFeedbackProcessing": "Ուղարկվում է ձեր կարծիքը և թարմացվում է ամփոփումը…",
+    "activitySummaryUpdateFailed": "Այս ամփոփագիրը հնարավոր չէ թարմացնել։"
 }

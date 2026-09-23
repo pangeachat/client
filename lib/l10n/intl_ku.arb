@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "گەڕان بەدوای نۆرەکەدا تەواو نەبوو. دووبارە هەوڵبدەوە.",
     "summaryFeedbackReceived": "سوپاس! فیدباکەکەت وەرگیرا.",
     "summaryFeedbackFailed": "نەتوانرا فیدباکەکەت بنێردرێت. تکایە دووبارە هەوڵبدەرەوە.",
-    "summaryFeedbackProcessing": "ناردنی فیدباکەکەت و نوێکردنەوەی پوختەکە…"
+    "summaryFeedbackProcessing": "ناردنی فیدباکەکەت و نوێکردنەوەی پوختەکە…",
+    "activitySummaryUpdateFailed": "ئەم پوختەیە نوێ نه‌کرایه‌وه‌."
 }

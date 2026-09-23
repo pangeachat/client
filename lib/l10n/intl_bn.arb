@@ -10589,5 +10589,6 @@
     "goalReportErrorRetry": "টার্নের জন্য অনুসন্ধান শেষ হয়নি। আবার চেষ্টা করুন।",
     "summaryFeedbackReceived": "ধন্যবাদ! আমরা আপনার মতামত পেয়েছি।",
     "summaryFeedbackFailed": "আপনার মতামত পাঠানো যায়নি। অনুগ্রহ করে আবার চেষ্টা করুন।",
-    "summaryFeedbackProcessing": "আপনার প্রতিক্রিয়া পাঠানো হচ্ছে এবং সারসংক্ষেপ আপডেট করা হচ্ছে…"
+    "summaryFeedbackProcessing": "আপনার প্রতিক্রিয়া পাঠানো হচ্ছে এবং সারসংক্ষেপ আপডেট করা হচ্ছে…",
+    "activitySummaryUpdateFailed": "এই সারাংশ আপডেট করা যায়নি।"
 }

@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "It-tfittxija għad-dawra ma spiċċatx. Erġa' pprova.",
     "summaryFeedbackReceived": "Grazzi! Irċevejna l-feedback tiegħek.",
     "summaryFeedbackFailed": "Ma setax jintbagħat il-feedback tiegħek. Jekk jogħġbok erġa' pprova.",
-    "summaryFeedbackProcessing": "Qed nibagħtu l-feedback tiegħek u naġġornaw is-sommarju…"
+    "summaryFeedbackProcessing": "Qed nibagħtu l-feedback tiegħek u naġġornaw is-sommarju…",
+    "activitySummaryUpdateFailed": "Dan is-sommarju ma setax jiġi aġġornat."
 }

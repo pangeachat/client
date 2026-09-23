@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "ଟର୍ନ ପାଇଁ ସନ୍ଧାନ ଶେଷ ହେଲା ନାହିଁ। ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ।",
     "summaryFeedbackReceived": "ଧନ୍ୟବାଦ! ଆମେ ଆପଣଙ୍କ ମତାମତ ଗ୍ରହଣ କରିଛୁ।",
     "summaryFeedbackFailed": "ଆପଣଙ୍କ ମତାମତ ପଠାଯାଇପାରିଲା ନାହିଁ। ଦୟାକରି ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ।",
-    "summaryFeedbackProcessing": "ଆପଣଙ୍କ ମତାମତ ପଠାଯାଉଛି ଏବଂ ସାରାଂଶ ଅପଡେଟ୍ କରାଯାଉଛି…"
+    "summaryFeedbackProcessing": "ଆପଣଙ୍କ ମତାମତ ପଠାଯାଉଛି ଏବଂ ସାରାଂଶ ଅପଡେଟ୍ କରାଯାଉଛି…",
+    "activitySummaryUpdateFailed": "ଏହି ସାରାଂଶ ଅପଡେଟ୍ ହୋଇପାରିଲା ନାହିଁ।"
 }

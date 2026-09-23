@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "Ukukhangela okujikayo akugqitywanga. Zama kwakhona.",
     "summaryFeedbackReceived": "Enkosi! Siyifumene impendulo yakho.",
     "summaryFeedbackFailed": "Ayikwazanga ukuthumela impendulo yakho. Nceda zama kwakhona.",
-    "summaryFeedbackProcessing": "Sithumela ingxelo yakho kwaye sihlaziya isishwankathelo…"
+    "summaryFeedbackProcessing": "Sithumela ingxelo yakho kwaye sihlaziya isishwankathelo…",
+    "activitySummaryUpdateFailed": "Esi sishwankathelo asikwazanga ukuhlaziywa."
 }

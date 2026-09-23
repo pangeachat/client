@@ -10479,5 +10479,6 @@
     "goalReportErrorRetry": "Sökningen efter svängen slutfördes inte. Försök igen.",
     "summaryFeedbackReceived": "Tack! Vi har mottagit din feedback.",
     "summaryFeedbackFailed": "Kunde inte skicka din feedback. Försök igen.",
-    "summaryFeedbackProcessing": "Skickar din feedback och uppdaterar sammanfattningen…"
+    "summaryFeedbackProcessing": "Skickar din feedback och uppdaterar sammanfattningen…",
+    "activitySummaryUpdateFailed": "Denna sammanfattning kunde inte uppdateras."
 }

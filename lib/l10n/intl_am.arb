@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "የተራው ፍለጋ አልተጠናቀቀም። እንደገና ይሞክሩ።",
     "summaryFeedbackReceived": "እናመሰግናለን! አስተያየትዎን ተቀብለናል።",
     "summaryFeedbackFailed": "አስተያየትዎን መላክ አልተቻለም። እባክዎ እንደገና ይሞክሩ።",
-    "summaryFeedbackProcessing": "አስተያየትዎን በመላክ ላይ እና ማጠቃለያውን በማዘመን ላይ…"
+    "summaryFeedbackProcessing": "አስተያየትዎን በመላክ ላይ እና ማጠቃለያውን በማዘመን ላይ…",
+    "activitySummaryUpdateFailed": "ይህ ማጠቃለያ ሊዘመን አልቻለም።"
 }

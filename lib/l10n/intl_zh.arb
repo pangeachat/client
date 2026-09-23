@@ -9961,5 +9961,6 @@
     "goalReportErrorRetry": "回合搜索未完成。请重试。",
     "summaryFeedbackReceived": "感谢！我们已收到您的反馈。",
     "summaryFeedbackFailed": "无法发送您的反馈。请再试一次。",
-    "summaryFeedbackProcessing": "正在发送您的反馈并更新摘要…"
+    "summaryFeedbackProcessing": "正在发送您的反馈并更新摘要…",
+    "activitySummaryUpdateFailed": "此摘要未能更新。"
 }

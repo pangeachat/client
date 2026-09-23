@@ -10316,5 +10316,6 @@
     "goalReportErrorRetry": "La recherche du tour n'est pas terminée. Réessayez.",
     "summaryFeedbackReceived": "Merci ! Nous avons bien reçu vos commentaires.",
     "summaryFeedbackFailed": "Impossible d'envoyer vos commentaires. Veuillez réessayer.",
-    "summaryFeedbackProcessing": "Envoi de vos commentaires et mise à jour du résumé…"
+    "summaryFeedbackProcessing": "Envoi de vos commentaires et mise à jour du résumé…",
+    "activitySummaryUpdateFailed": "Ce résumé n'a pas pu être mis à jour."
 }

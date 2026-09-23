@@ -10742,5 +10742,6 @@
     "goalReportErrorRetry": "Posūkio paieška nebaigta. Bandykite dar kartą.",
     "summaryFeedbackReceived": "Ačiū! Gavome jūsų atsiliepimą.",
     "summaryFeedbackFailed": "Nepavyko išsiųsti jūsų atsiliepimo. Bandykite dar kartą.",
-    "summaryFeedbackProcessing": "Siunčiamas jūsų atsiliepimas ir atnaujinama santrauka…"
+    "summaryFeedbackProcessing": "Siunčiamas jūsų atsiliepimas ir atnaujinama santrauka…",
+    "activitySummaryUpdateFailed": "Šio suvestinės nepavyko atnaujinti."
 }

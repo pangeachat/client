@@ -10821,5 +10821,6 @@
     "goalReportErrorRetry": "Hindi natapos ang paghahanap para sa turn. Subukang muli.",
     "summaryFeedbackReceived": "Salamat! Natanggap namin ang iyong feedback.",
     "summaryFeedbackFailed": "Hindi maipadala ang iyong feedback. Pakisubukang muli.",
-    "summaryFeedbackProcessing": "Ipinapadala ang iyong feedback at ina-update ang buod…"
+    "summaryFeedbackProcessing": "Ipinapadala ang iyong feedback at ina-update ang buod…",
+    "activitySummaryUpdateFailed": "Hindi ma-update ang buod na ito."
 }

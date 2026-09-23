@@ -10730,5 +10730,6 @@
     "goalReportErrorRetry": "ターンの検索が完了しませんでした。もう一度お試しください。",
     "summaryFeedbackReceived": "ありがとうございます！フィードバックを送信しました。",
     "summaryFeedbackFailed": "フィードバックを送信できませんでした。もう一度お試しください。",
-    "summaryFeedbackProcessing": "フィードバックを送信して要約を更新しています…"
+    "summaryFeedbackProcessing": "フィードバックを送信して要約を更新しています…",
+    "activitySummaryUpdateFailed": "この要約を更新できませんでした。"
 }

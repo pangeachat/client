@@ -10693,5 +10693,6 @@
     "goalReportErrorRetry": "Căutarea replicii nu s-a finalizat. Încearcă din nou.",
     "summaryFeedbackReceived": "Mulțumim! Am primit feedback-ul tău.",
     "summaryFeedbackFailed": "Nu s-a putut trimite feedback-ul tău. Te rugăm să încerci din nou.",
-    "summaryFeedbackProcessing": "Se trimite feedbackul și se actualizează rezumatul…"
+    "summaryFeedbackProcessing": "Se trimite feedbackul și se actualizează rezumatul…",
+    "activitySummaryUpdateFailed": "Acest rezumat nu a putut fi actualizat."
 }

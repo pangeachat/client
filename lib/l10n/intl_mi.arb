@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "Kāore i oti te rapu mō te huringa. Whakamātauria anō.",
     "summaryFeedbackReceived": "Ngā mihi! Kua tae mai ō urupare.",
     "summaryFeedbackFailed": "Kāore i taea te tuku i ō urupare. Whakamātauria anō.",
-    "summaryFeedbackProcessing": "E tuku ana i ō urupare me te whakahou i te whakarāpopototanga…"
+    "summaryFeedbackProcessing": "E tuku ana i ō urupare me te whakahou i te whakarāpopototanga…",
+    "activitySummaryUpdateFailed": "Kāore i taea te whakahou i tēnei whakarāpopototanga."
 }

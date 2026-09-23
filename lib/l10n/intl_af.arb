@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "Die soektog na die beurt het nie voltooi nie. Probeer weer.",
     "summaryFeedbackReceived": "Dankie! Ons het jou terugvoer ontvang.",
     "summaryFeedbackFailed": "Kon nie jou terugvoer stuur nie. Probeer asseblief weer.",
-    "summaryFeedbackProcessing": "Stuur jou terugvoer en werk die opsomming by …"
+    "summaryFeedbackProcessing": "Stuur jou terugvoer en werk die opsomming by …",
+    "activitySummaryUpdateFailed": "Hierdie opsomming kon nie bygewerk word nie."
 }

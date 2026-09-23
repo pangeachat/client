@@ -10154,5 +10154,6 @@
     "goalReportErrorRetry": "턴 검색이 완료되지 않았습니다. 다시 시도해주세요.",
     "summaryFeedbackReceived": "감사합니다! 피드백이 접수되었습니다.",
     "summaryFeedbackFailed": "피드백을 보낼 수 없습니다. 다시 시도해 주세요.",
-    "summaryFeedbackProcessing": "피드백을 보내고 요약을 업데이트하는 중…"
+    "summaryFeedbackProcessing": "피드백을 보내고 요약을 업데이트하는 중…",
+    "activitySummaryUpdateFailed": "이 요약을 업데이트할 수 없었습니다."
 }
