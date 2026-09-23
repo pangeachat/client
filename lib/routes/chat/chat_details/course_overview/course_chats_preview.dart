@@ -19,25 +19,28 @@ import 'package:fluffychat/routes/chat_list/course_default_chats_enum.dart';
 import 'package:fluffychat/routes/chat_list/course_hierarchy_extension.dart';
 import 'package:fluffychat/routes/chat_list/default_chat_creation_tile.dart';
 import 'package:fluffychat/routes/chat_list/hierarchy_sync_update_extension.dart';
+import 'package:fluffychat/routes/chat_list/unjoined_chat_list_item.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 
 /// The course page's Chats section: its header and, below, the admin's
 /// default-chat creation suggestions, then the most recently active joined
 /// chats in the course — group chats and activity sessions alike — capped at
-/// [maxChats]. Discovery (unjoined chats, invites, open sessions) stays on the
-/// section's "All chats" subpage, [CourseChats].
+/// [maxChats]. When fewer joined chats than that exist, group chats the user
+/// can join fill the open rows, so a learner new to a course sees where its
+/// conversations are (#9239). Invites and open sessions stay on the section's
+/// "All chats" subpage, [CourseChats].
 ///
 /// This widget owns the whole section, trailing divider included, because
 /// whether the section shows at all and whether its header offers "See all"
 /// turn on the same counts (#9183):
 ///
 /// - "See all" shows only when the subpage holds a chat this section does
-///   not: more joined chats than fit, an invite or knock, or a group chat the
-///   user can join. A subpage repeating the same rows, or an empty one, is not
-///   worth offering. A coursemate's open activity session is not counted — the
-///   Activities row and the map already offer it.
-/// - The section shows only when it has something in it: a joined chat, a
-///   "See all", or — for an admin — the create shortcut and suggestions, since
+///   not: more joined or joinable chats than fit, or an invite or knock. A
+///   subpage repeating the same rows, or an empty one, is not worth offering.
+///   A coursemate's open activity session is not counted — the Activities row
+///   and the map already offer it.
+/// - The section shows only when it has something in it: a joined or
+///   joinable chat, a "See all", or — for an admin — the create shortcut and suggestions, since
 ///   this is where an admin makes the course's chats.
 class CourseChatsPreview extends StatefulWidget {
   final Room room;
@@ -66,9 +69,13 @@ class CourseChatsPreview extends StatefulWidget {
 }
 
 class _CourseChatsPreviewState extends State<CourseChatsPreview> {
-  /// Whether the course has a group chat this user can join but has not;
-  /// null until the course hierarchy answers.
-  bool? _hasJoinableGroupChat;
+  /// The course's group chats this user can join but has not — at most one
+  /// more than fits, so the section knows whether "See all" holds more. Null
+  /// until the course hierarchy answers.
+  List<SpaceRoomsChunk$2>? _joinableGroupChats;
+
+  /// Whether the last hierarchy load failed.
+  bool _hierarchyFailed = false;
 
   /// Tags each hierarchy load, so an answer that a newer load (or a switch
   /// to another course) has overtaken is dropped.
@@ -88,7 +95,8 @@ class _CourseChatsPreviewState extends State<CourseChatsPreview> {
   void didUpdateWidget(covariant CourseChatsPreview oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.room.id != widget.room.id) {
-      _hasJoinableGroupChat = null;
+      _joinableGroupChats = null;
+      _hierarchyFailed = false;
       _watchHierarchy();
     }
   }
@@ -116,21 +124,27 @@ class _CourseChatsPreviewState extends State<CourseChatsPreview> {
           ),
         )
         .rateLimit(CourseChatsPreview.hierarchyReloadInterval)
-        .listen((_) => _loadJoinableGroupChat());
-    _loadJoinableGroupChat();
+        .listen((_) => _loadJoinableGroupChats());
+    _loadJoinableGroupChats();
   }
 
-  Future<void> _loadJoinableGroupChat() async {
+  Future<void> _loadJoinableGroupChats() async {
     final load = ++_hierarchyLoad;
-    // The rooms the client already has offer "See all" on their own, so the
-    // hierarchy can't change the answer. Every change that could take that
-    // away (leaving a chat, answering an invite) is a hierarchy update, which
-    // loads again.
-    if (_offersMoreLocally(_courseChats)) return;
+    // When the joined chats fill the section and the rooms the client already
+    // has offer "See all" on their own, the hierarchy can't change what shows.
+    // Every change that could take that away (leaving a chat, answering an
+    // invite) is a hierarchy update, which loads again.
+    final chats = _courseChats;
+    if (_joined(chats).length >= CourseChatsPreview.maxChats &&
+        _offersMoreLocally(chats)) {
+      return;
+    }
 
-    bool hasJoinable;
+    List<SpaceRoomsChunk$2>? joinable;
     try {
-      hasJoinable = await _course.hasJoinableGroupChat();
+      joinable = await _course.joinableGroupChats(
+        limit: CourseChatsPreview.maxChats + 1,
+      );
     } catch (e, s) {
       ErrorHandler.logErrorOnce(
         key: 'course-chats-hierarchy:${_course.id}',
@@ -140,10 +154,24 @@ class _CourseChatsPreviewState extends State<CourseChatsPreview> {
       );
       // Offer the subpage, which shows its own load error, rather than hide
       // a chat the user may be able to join.
-      hasJoinable = true;
     }
     if (!mounted || load != _hierarchyLoad) return;
-    setState(() => _hasJoinableGroupChat = hasJoinable);
+    setState(() {
+      _joinableGroupChats = joinable;
+      _hierarchyFailed = joinable == null;
+    });
+  }
+
+  Future<void> _joinChat(SpaceRoomsChunk$2 chunk) async {
+    final joinedRoomId = await UnjoinedChatListItem.join(
+      context,
+      _course,
+      chunk,
+    );
+    if (!mounted || joinedRoomId == null) return;
+    context.go(
+      WorkspaceNav.openRoomById(GoRouterState.of(context).uri, joinedRoomId),
+    );
   }
 
   /// Visible, non-space children of the course in `client.rooms` — joined,
@@ -177,9 +205,22 @@ class _CourseChatsPreviewState extends State<CourseChatsPreview> {
       builder: (context, _) {
         final chats = _courseChats;
         final joined = _joined(chats);
+        final shownJoined = joined.take(CourseChatsPreview.maxChats).toList();
+        // A chat joined since the hierarchy loaded is a joined row now.
+        final joinable = (_joinableGroupChats ?? [])
+            .where(_course.isJoinableChild)
+            .toList();
+        final shownJoinable = joinable
+            .take(CourseChatsPreview.maxChats - shownJoined.length)
+            .toList();
         final showAll =
-            _offersMoreLocally(chats) || (_hasJoinableGroupChat ?? false);
-        if (joined.isEmpty && !showAll && !_course.isRoomAdmin) {
+            _offersMoreLocally(chats) ||
+            _hierarchyFailed ||
+            joinable.length > shownJoinable.length;
+        if (shownJoined.isEmpty &&
+            shownJoinable.isEmpty &&
+            !showAll &&
+            !_course.isRoomAdmin) {
           return const SizedBox.shrink();
         }
 
@@ -238,7 +279,7 @@ class _CourseChatsPreviewState extends State<CourseChatsPreview> {
                       titleFontSize: titleFontSize,
                       subtitleFontSize: subtitleFontSize,
                     ),
-                  for (final chat in joined.take(CourseChatsPreview.maxChats))
+                  for (final chat in shownJoined)
                     ChatListItem(
                       chat,
                       titleFontSize: titleFontSize,
@@ -249,6 +290,13 @@ class _CourseChatsPreviewState extends State<CourseChatsPreview> {
                           chat.id,
                         ),
                       ),
+                    ),
+                  for (final chunk in shownJoinable)
+                    UnjoinedChatListItem(
+                      chunk: chunk,
+                      titleFontSize: titleFontSize,
+                      subtitleFontSize: subtitleFontSize,
+                      onTap: () => _joinChat(chunk),
                     ),
                 ],
               ),
