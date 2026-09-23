@@ -57,16 +57,30 @@ class _BotFaceAssets {
   /// and disposing it would invalidate artboards still on screen.
   static Future<File?> file() {
     return _file ??= () async {
-      await RiveNative.init();
-      final file = await File.asset(assetPath, riveFactory: Factory.flutter);
-      if (file == null) {
+      try {
+        await RiveNative.init();
+        final file = await File.asset(assetPath, riveFactory: Factory.flutter);
+        if (file == null) {
+          ErrorHandler.logError(
+            e: Exception('Failed to decode bot face Rive asset'),
+            data: {'asset': assetPath},
+            level: SentryLevel.warning,
+          );
+        }
+        return file;
+      } catch (e, s) {
+        // The 0.14 loader throws rather than returning null on some failures,
+        // and an uncaught one here leaves every bot face awaiting a rejected
+        // future: they would render empty and the failure would surface as an
+        // unhandled error rather than the warning a missing bot face is.
         ErrorHandler.logError(
-          e: Exception('Failed to decode bot face Rive asset'),
+          e: e,
+          s: s,
           data: {'asset': assetPath},
           level: SentryLevel.warning,
         );
+        return null;
       }
-      return file;
     }();
   }
 
