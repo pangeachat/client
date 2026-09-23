@@ -10077,5 +10077,13 @@
     "practiceStepProgress": "{done} de {total}",
     "leaderboard": "Classificació",
     "leaderboardRank": "Posició {rank}",
-    "courseLeaderboardTooltip": "Tots els participants d'aquest curs, classificats per les estrelles que tenen en el seu idioma. Toca un membre i tria \"Inicia una conversa\" per enviar-li un missatge directe."
+    "courseLeaderboardTooltip": "Tots els participants d'aquest curs, classificats per les estrelles que tenen en el seu idioma. Toca un membre i tria \"Inicia una conversa\" per enviar-li un missatge directe.",
+    "goalReportTitle": "Informar d'aquesta estrella",
+    "goalReportOverAwardPrompt": "Si se suposava que no havies de rebre aquesta estrella, explica per què.",
+    "goalReportUnderAwardPrompt": "Si creus que hauries d'haver rebut aquesta estrella, per què?",
+    "goalReportPickMessage": "Quin dels teus missatges l'hauria d'haver guanyat?",
+    "goalReportNoMessages": "Encara no has enviat cap missatge en aquesta sessió, així que no hi ha res a assenyalar.",
+    "goalReportThanks": "Informat. Gràcies!",
+    "goalReportErrorUnreportable": "Cap torn de l'orquestrador coincideix amb aquesta estrella, així que no hi ha res contra el qual registrar l'informe.",
+    "goalReportErrorRetry": "La cerca del torn no ha finalitzat. Torna-ho a provar."
 }

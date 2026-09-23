@@ -9950,5 +9950,13 @@
     "practiceStepProgress": "{done} van {total}",
     "leaderboard": "Scorebord",
     "leaderboardRank": "Rang {rank}",
-    "courseLeaderboardTooltip": "Iedereen in deze cursus, gerangschikt op hun sterren in de betreffende taal. Tik op een lid en kies “Start gesprek” om ze een DM te sturen."
+    "courseLeaderboardTooltip": "Iedereen in deze cursus, gerangschikt op hun sterren in de betreffende taal. Tik op een lid en kies “Start gesprek” om ze een DM te sturen.",
+    "goalReportTitle": "Meld deze ster",
+    "goalReportOverAwardPrompt": "Als je deze ster niet had moeten krijgen, leg dan uit waarom.",
+    "goalReportUnderAwardPrompt": "Als je denkt dat je deze ster wel had moeten krijgen, waarom?",
+    "goalReportPickMessage": "Welk van je berichten had deze moeten verdienen?",
+    "goalReportNoMessages": "Je hebt nog geen bericht verzonden in deze sessie, dus er is niets om aan te wijzen.",
+    "goalReportThanks": "Gemeld. Bedankt!",
+    "goalReportErrorUnreportable": "Geen enkele orchestrator-beurt komt overeen met deze ster, dus er is niets om het rapport tegen te registreren.",
+    "goalReportErrorRetry": "Het zoeken naar de beurt is niet voltooid. Probeer het opnieuw."
 }

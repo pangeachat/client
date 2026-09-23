@@ -9987,5 +9987,13 @@
     "practiceStepProgress": "{done}/{total}",
     "leaderboard": "Tulostaulu",
     "leaderboardRank": "Sija {rank}",
-    "courseLeaderboardTooltip": "Kaikki tällä kurssilla, järjestettynä heidän kielensä tähtien mukaan. Napauta jäsentä ja valitse ”Aloita keskustelu” lähettääksesi hänelle yksityisviestin."
+    "courseLeaderboardTooltip": "Kaikki tällä kurssilla, järjestettynä heidän kielensä tähtien mukaan. Napauta jäsentä ja valitse ”Aloita keskustelu” lähettääksesi hänelle yksityisviestin.",
+    "goalReportTitle": "Ilmoita tästä tähdestä",
+    "goalReportOverAwardPrompt": "Jos sinun ei pitänyt saada tätä tähteä, selitä miksi.",
+    "goalReportUnderAwardPrompt": "Jos mielestäsi sinun olisi pitänyt saada tämä tähti, miksi?",
+    "goalReportPickMessage": "Mikä viesteistäsi olisi ansainnut sen?",
+    "goalReportNoMessages": "Et ole vielä lähettänyt viestiä tässä istunnossa, joten mitään ei voi osoittaa.",
+    "goalReportThanks": "Ilmoitettu. Kiitos!",
+    "goalReportErrorUnreportable": "Mikään orkestraattorin vuoro ei vastaa tätä tähteä, joten ilmoitusta ei voi tallentaa.",
+    "goalReportErrorRetry": "Vuoron haku ei valmistunut. Yritä uudelleen."
 }

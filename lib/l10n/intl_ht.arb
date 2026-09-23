@@ -2358,5 +2358,13 @@
     "practiceStepProgress": "{done} sou {total}",
     "leaderboard": "Klasman",
     "leaderboardRank": "Pozisyon {rank}",
-    "courseLeaderboardTooltip": "Tout moun nan kou sa a, klase selon kantite zetwal yo genyen nan lang lan. Tape sou yon manm epi chwazi “Kòmanse konvèsasyon” pou voye yon mesaj dirèk ba yo."
+    "courseLeaderboardTooltip": "Tout moun nan kou sa a, klase selon kantite zetwal yo genyen nan lang lan. Tape sou yon manm epi chwazi “Kòmanse konvèsasyon” pou voye yon mesaj dirèk ba yo.",
+    "goalReportTitle": "Rapòte zetwal sa a",
+    "goalReportOverAwardPrompt": "Si ou pa t sipoze jwenn zetwal sa a, tanpri eksplike poukisa.",
+    "goalReportUnderAwardPrompt": "Si ou panse ou te sipoze jwenn zetwal sa a, poukisa?",
+    "goalReportPickMessage": "Ki nan mesaj ou yo ki ta dwe touche li?",
+    "goalReportNoMessages": "Ou poko voye yon mesaj nan sesyon sa a, kidonk pa gen anyen pou montre.",
+    "goalReportThanks": "Rapòte. Mèsi!",
+    "goalReportErrorUnreportable": "Pa gen okenn vire òkestratè ki matche ak zetwal sa a, kidonk pa gen anyen pou anrejistre rapò a kont li.",
+    "goalReportErrorRetry": "Rechèch pou vire a pa t fini. Eseye ankò."
 }

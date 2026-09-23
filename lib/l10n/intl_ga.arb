@@ -9961,5 +9961,13 @@
     "practiceStepProgress": "{done} as {total}",
     "leaderboard": "Clár Ceannródaithe",
     "leaderboardRank": "Céim {rank}",
-    "courseLeaderboardTooltip": "Gach duine sa chúrsa seo, rangaithe de réir a gcuid réaltaí sa teanga. Beartaigh ar bhall agus roghnaigh “Tosaigh comhrá” chun teachtaireacht dhíreach a sheoladh chucu."
+    "courseLeaderboardTooltip": "Gach duine sa chúrsa seo, rangaithe de réir a gcuid réaltaí sa teanga. Beartaigh ar bhall agus roghnaigh “Tosaigh comhrá” chun teachtaireacht dhíreach a sheoladh chucu.",
+    "goalReportTitle": "Tuairiscigh an réalta seo",
+    "goalReportOverAwardPrompt": "Mura raibh tú ceaptha an réalta seo a fháil, mínigh cén fáth.",
+    "goalReportUnderAwardPrompt": "Má cheapann tú gur cheart duit an réalta seo a fháil, cén fáth?",
+    "goalReportPickMessage": "Cén teachtaireacht uaitse ar cheart di é a thuilleamh?",
+    "goalReportNoMessages": "Níl teachtaireacht seolta agat sa seisiún seo fós, mar sin níl aon rud le cur in iúl.",
+    "goalReportThanks": "Tuairiscithe. Go raibh maith agat!",
+    "goalReportErrorUnreportable": "Níl aon chasadh ceolfhoirneora ag teacht leis an réalta seo, mar sin níl aon rud ann chun an tuairisc a thaifeadadh ina choinne.",
+    "goalReportErrorRetry": "Níor chríochnaigh an cuardach don chasadh. Bain triail eile as."
 }

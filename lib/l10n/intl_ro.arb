@@ -10682,5 +10682,13 @@
     "practiceStepProgress": "{done} din {total}",
     "leaderboard": "Clasament",
     "leaderboardRank": "Locul {rank}",
-    "courseLeaderboardTooltip": "Toți participanții la acest curs, clasificați după numărul de stele obținute la limba respectivă. Atingeți un membru și alegeți „Începeți conversația” pentru a-i trimite un mesaj direct."
+    "courseLeaderboardTooltip": "Toți participanții la acest curs, clasificați după numărul de stele obținute la limba respectivă. Atingeți un membru și alegeți „Începeți conversația” pentru a-i trimite un mesaj direct.",
+    "goalReportTitle": "Raportează această stea",
+    "goalReportOverAwardPrompt": "Dacă nu trebuia să primești această stea, te rugăm să explici de ce.",
+    "goalReportUnderAwardPrompt": "Dacă crezi că trebuia să primești această stea, de ce?",
+    "goalReportPickMessage": "Care dintre mesajele tale ar fi trebuit să o câștige?",
+    "goalReportNoMessages": "Nu ai trimis încă niciun mesaj în această sesiune, deci nu există nimic de indicat.",
+    "goalReportThanks": "Raportat. Mulțumim!",
+    "goalReportErrorUnreportable": "Nicio replică a orchestratorului nu se potrivește cu această stea, deci nu există nimic împotriva căruia să înregistrezi raportul.",
+    "goalReportErrorRetry": "Căutarea replicii nu s-a finalizat. Încearcă din nou."
 }

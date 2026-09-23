@@ -10468,5 +10468,13 @@
     "practiceStepProgress": "{done} av {total}",
     "leaderboard": "Topplista",
     "leaderboardRank": "Rank {rank}",
-    "courseLeaderboardTooltip": "Alla i den här kursen, rankade efter deras stjärnor i språket. Tryck på en medlem och välj ”Starta konversation” för att skicka ett DM."
+    "courseLeaderboardTooltip": "Alla i den här kursen, rankade efter deras stjärnor i språket. Tryck på en medlem och välj ”Starta konversation” för att skicka ett DM.",
+    "goalReportTitle": "Rapportera denna stjärna",
+    "goalReportOverAwardPrompt": "Om du inte skulle ha fått denna stjärna, förklara varför.",
+    "goalReportUnderAwardPrompt": "Om du tycker att du skulle ha fått denna stjärna, varför?",
+    "goalReportPickMessage": "Vilket av dina meddelanden borde ha förtjänat den?",
+    "goalReportNoMessages": "Du har inte skickat något meddelande i denna session än, så det finns inget att peka på.",
+    "goalReportThanks": "Rapporterat. Tack!",
+    "goalReportErrorUnreportable": "Ingen orkestratörsväng matchar denna stjärna, så det finns inget att registrera rapporten mot.",
+    "goalReportErrorRetry": "Sökningen efter svängen slutfördes inte. Försök igen."
 }

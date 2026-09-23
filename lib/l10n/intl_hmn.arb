@@ -2358,5 +2358,13 @@
     "practiceStepProgress": "{done} ntawm {total}",
     "leaderboard": "Cov Neeg Ua Tau Zoo Tshaj Plaws",
     "leaderboardRank": "Qib {rank}",
-    "courseLeaderboardTooltip": "Txhua tus hauv chav kawm no, raws li lawv cov hnub qub hauv nws hom lus. Coj tus tswv cuab thiab xaiv “Pib sib tham” kom xa lawv ib tsab ntawv."
+    "courseLeaderboardTooltip": "Txhua tus hauv chav kawm no, raws li lawv cov hnub qub hauv nws hom lus. Coj tus tswv cuab thiab xaiv “Pib sib tham” kom xa lawv ib tsab ntawv.",
+    "goalReportTitle": "Qhia txog lub hnub qub no",
+    "goalReportOverAwardPrompt": "Yog tias koj tsis tsim nyog tau lub hnub qub no, thov piav qhia vim li cas.",
+    "goalReportUnderAwardPrompt": "Yog tias koj xav tias koj tsim nyog tau lub hnub qub no, vim li cas?",
+    "goalReportPickMessage": "Koj cov lus twg yuav tsum tau txais nws?",
+    "goalReportNoMessages": "Koj tseem tsis tau xa lus hauv qhov kev sib tham no, yog li tsis muaj dab tsi los qhia.",
+    "goalReportThanks": "Tau qhia lawm. Ua tsaug!",
+    "goalReportErrorUnreportable": "Tsis muaj tus tswj hwm hloov pauv sib phim lub hnub qub no, yog li tsis muaj dab tsi los sau qhov kev qhia ntawd.",
+    "goalReportErrorRetry": "Kev tshawb nrhiav qhov hloov pauv tsis tiav. Sim dua."
 }

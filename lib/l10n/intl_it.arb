@@ -10023,5 +10023,13 @@
     "practiceStepProgress": "{done} di {total}",
     "leaderboard": "Classifica",
     "leaderboardRank": "Posizione {rank}",
-    "courseLeaderboardTooltip": "Tutti i partecipanti a questo corso, classificati in base alle stelle ottenute nella lingua del corso. Tocca un membro e scegli \"Avvia conversazione\" per inviargli un messaggio diretto."
+    "courseLeaderboardTooltip": "Tutti i partecipanti a questo corso, classificati in base alle stelle ottenute nella lingua del corso. Tocca un membro e scegli \"Avvia conversazione\" per inviargli un messaggio diretto.",
+    "goalReportTitle": "Segnala questa stella",
+    "goalReportOverAwardPrompt": "Se non avresti dovuto ricevere questa stella, spiega perché.",
+    "goalReportUnderAwardPrompt": "Se pensi che avresti dovuto ricevere questa stella, perché?",
+    "goalReportPickMessage": "Quale dei tuoi messaggi avrebbe dovuto farti guadagnare la stella?",
+    "goalReportNoMessages": "Non hai ancora inviato un messaggio in questa sessione, quindi non c'è nulla da indicare.",
+    "goalReportThanks": "Segnalato. Grazie!",
+    "goalReportErrorUnreportable": "Nessun turno dell'orchestratore corrisponde a questa stella, quindi non c'è nulla su cui registrare la segnalazione.",
+    "goalReportErrorRetry": "La ricerca del turno non è terminata. Riprova."
 }

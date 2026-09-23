@@ -10056,5 +10056,13 @@
     "practiceStepProgress": "{done}/{total}",
     "leaderboard": "排行榜",
     "leaderboardRank": "排名 {rank}",
-    "courseLeaderboardTooltip": "本課程的所有成員，依據他們在該語言中獲得的星星數進行排名。點擊成員並選擇「開始對話」即可向他們發送私訊。"
+    "courseLeaderboardTooltip": "本課程的所有成員，依據他們在該語言中獲得的星星數進行排名。點擊成員並選擇「開始對話」即可向他們發送私訊。",
+    "goalReportTitle": "舉報此星",
+    "goalReportOverAwardPrompt": "如果您不應該獲得此星，請解釋原因。",
+    "goalReportUnderAwardPrompt": "如果您認為您應該獲得此星，請說明原因。",
+    "goalReportPickMessage": "您的哪條訊息應該獲得此星？",
+    "goalReportNoMessages": "您在此會話中尚未發送任何訊息，因此沒有可指向的內容。",
+    "goalReportThanks": "已舉報。謝謝！",
+    "goalReportErrorUnreportable": "沒有協調者回合符合此星，因此無法記錄舉報。",
+    "goalReportErrorRetry": "回合搜尋未完成。請再試一次。"
 }

@@ -10810,5 +10810,13 @@
     "practiceStepProgress": "{done} sa {total}",
     "leaderboard": "Leaderboard",
     "leaderboardRank": "Ranggo {rank}",
-    "courseLeaderboardTooltip": "Lahat ng nasa kursong ito, niraranggo ayon sa kanilang mga bituin sa wika nito. I-tap ang isang miyembro at piliin ang “Simulan ang pag-uusap” para magpadala sa kanila ng DM."
+    "courseLeaderboardTooltip": "Lahat ng nasa kursong ito, niraranggo ayon sa kanilang mga bituin sa wika nito. I-tap ang isang miyembro at piliin ang “Simulan ang pag-uusap” para magpadala sa kanila ng DM.",
+    "goalReportTitle": "Iulat ang bituing ito",
+    "goalReportOverAwardPrompt": "Kung hindi mo dapat nakuha ang bituing ito, mangyaring ipaliwanag kung bakit.",
+    "goalReportUnderAwardPrompt": "Kung sa tingin mo ay dapat mong nakuha ang bituing ito, bakit?",
+    "goalReportPickMessage": "Alin sa iyong mga mensahe ang dapat na nakakuha nito?",
+    "goalReportNoMessages": "Wala ka pang naipapadalang mensahe sa session na ito, kaya walang maituturo.",
+    "goalReportThanks": "Naiulat. Salamat!",
+    "goalReportErrorUnreportable": "Walang tugma ang orchestrator turn sa bituing ito, kaya walang maiitala na ulat.",
+    "goalReportErrorRetry": "Hindi natapos ang paghahanap para sa turn. Subukang muli."
 }

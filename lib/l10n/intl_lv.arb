@@ -9950,5 +9950,13 @@
     "practiceStepProgress": "{done} no {total}",
     "leaderboard": "Līderu saraksts",
     "leaderboardRank": "Vieta {rank}",
-    "courseLeaderboardTooltip": "Visi šī kursa dalībnieki, sarindoti pēc zvaigznītēm attiecīgajā valodā. Pieskarieties dalībniekam un izvēlieties “Sākt sarunu”, lai nosūtītu viņam tiešu ziņojumu."
+    "courseLeaderboardTooltip": "Visi šī kursa dalībnieki, sarindoti pēc zvaigznītēm attiecīgajā valodā. Pieskarieties dalībniekam un izvēlieties “Sākt sarunu”, lai nosūtītu viņam tiešu ziņojumu.",
+    "goalReportTitle": "Ziņot par šo zvaigzni",
+    "goalReportOverAwardPrompt": "Ja jums nevajadzēja saņemt šo zvaigzni, lūdzu, paskaidrojiet, kāpēc.",
+    "goalReportUnderAwardPrompt": "Ja uzskatāt, ka jums vajadzēja saņemt šo zvaigzni, kāpēc?",
+    "goalReportPickMessage": "Kuram no jūsu ziņojumiem vajadzēja to nopelnīt?",
+    "goalReportNoMessages": "Jūs vēl neesat nosūtījis ziņojumu šajā sesijā, tāpēc nav uz ko norādīt.",
+    "goalReportThanks": "Ziņots. Paldies!",
+    "goalReportErrorUnreportable": "Neviena orķestratora kārta neatbilst šai zvaigznei, tāpēc nav pret ko reģistrēt ziņojumu.",
+    "goalReportErrorRetry": "Kārtas meklēšana netika pabeigta. Mēģiniet vēlreiz."
 }

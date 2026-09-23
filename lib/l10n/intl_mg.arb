@@ -2358,5 +2358,13 @@
     "practiceStepProgress": "{done} amin'ny {total}",
     "leaderboard": "Leaderboard",
     "leaderboardRank": "Lah. {rank}",
-    "courseLeaderboardTooltip": "Ireo rehetra ao amin'ity taranja ity, voalahatra araka ny kintan'izy ireo amin'ny fiteniny. Tsindrio ny mpikambana iray dia safidio ny “Atomboka ny resaka” handefasana hafatra mivantana ho azy ireo."
+    "courseLeaderboardTooltip": "Ireo rehetra ao amin'ity taranja ity, voalahatra araka ny kintan'izy ireo amin'ny fiteniny. Tsindrio ny mpikambana iray dia safidio ny “Atomboka ny resaka” handefasana hafatra mivantana ho azy ireo.",
+    "goalReportTitle": "Tatero ity kintana ity",
+    "goalReportOverAwardPrompt": "Raha toa ka tsy tokony ho nahazo ity kintana ity ianao, azafady hazavao ny antony.",
+    "goalReportUnderAwardPrompt": "Raha toa ka tokony ho nahazo ity kintana ity ianao, nahoana?",
+    "goalReportPickMessage": "Iza amin'ireo hafatrao no tokony ho nahazo izany?",
+    "goalReportNoMessages": "Mbola tsy nandefa hafatra ianao tamin'ity fotoana ity, ka tsy misy azo tondroina.",
+    "goalReportThanks": "Voatantara. Misaotra!",
+    "goalReportErrorUnreportable": "Tsy misy fihodinana mpandrindra mifanaraka amin'ity kintana ity, ka tsy misy azo anoratana ny tatitra.",
+    "goalReportErrorRetry": "Tsy nahavita ny fikarohana ny fihodinana. Andramo indray."
 }

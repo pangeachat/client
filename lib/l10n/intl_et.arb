@@ -9947,5 +9947,13 @@
     "practiceStepProgress": "{done} / {total}",
     "leaderboard": "Edetabel",
     "leaderboardRank": "Koht {rank}",
-    "courseLeaderboardTooltip": "Kõik selle kursuse liikmed, järjestatud nende keele tähtede järgi. Puuduta liiget ja vali „Alusta vestlust”, et saata talle otsevestlus."
+    "courseLeaderboardTooltip": "Kõik selle kursuse liikmed, järjestatud nende keele tähtede järgi. Puuduta liiget ja vali „Alusta vestlust”, et saata talle otsevestlus.",
+    "goalReportTitle": "Teata sellest tähest",
+    "goalReportOverAwardPrompt": "Kui te ei oleks pidanud seda tähte saama, selgitage palun, miks.",
+    "goalReportUnderAwardPrompt": "Kui arvate, et oleksite pidanud selle tähe saama, siis miks?",
+    "goalReportPickMessage": "Milline teie sõnumitest oleks pidanud selle teenima?",
+    "goalReportNoMessages": "Te pole selles seansis veel ühtegi sõnumit saatnud, seega pole midagi, millele viidata.",
+    "goalReportThanks": "Teatatud. Aitäh!",
+    "goalReportErrorUnreportable": "Selle tähega ei kattu ükski orkestraatori käik, seega pole midagi, mille vastu aruannet salvestada.",
+    "goalReportErrorRetry": "Käigu otsing ei lõppenud. Proovige uuesti."
 }

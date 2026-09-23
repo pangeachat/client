@@ -2358,5 +2358,13 @@
     "practiceStepProgress": "{done} minn {total}",
     "leaderboard": "Leaderboard",
     "leaderboardRank": "Grad {rank}",
-    "courseLeaderboardTooltip": "Kulħadd f'dan il-kors, ikklassifikat skont l-istilel tagħhom fil-lingwa tiegħu. Taptap membru u agħżel “Ibda konverżazzjoni” biex tibgħatlu DM."
+    "courseLeaderboardTooltip": "Kulħadd f'dan il-kors, ikklassifikat skont l-istilel tagħhom fil-lingwa tiegħu. Taptap membru u agħżel “Ibda konverżazzjoni” biex tibgħatlu DM.",
+    "goalReportTitle": "Irrapporta din l-istilla",
+    "goalReportOverAwardPrompt": "Jekk suppost ma kellekx tirċievi din l-istilla, jekk jogħġbok spjega għaliex.",
+    "goalReportUnderAwardPrompt": "Jekk taħseb li suppost kellek tirċievi din l-istilla, għaliex?",
+    "goalReportPickMessage": "Liema mill-messaġġi tiegħek suppost qalgħulha?",
+    "goalReportNoMessages": "Għadek ma bgħatt l-ebda messaġġ f'din is-sessjoni, allura m'hemm xejn x'tindika.",
+    "goalReportThanks": "Irrapportat. Grazzi!",
+    "goalReportErrorUnreportable": "L-ebda dawra tal-orkestratur ma taqbel ma' din l-istilla, allura m'hemm xejn biex tirreġistra r-rapport kontrih.",
+    "goalReportErrorRetry": "It-tfittxija għad-dawra ma spiċċatx. Erġa' pprova."
 }

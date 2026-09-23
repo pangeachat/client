@@ -9950,5 +9950,13 @@
     "practiceStepProgress": "{done} de {total}",
     "leaderboard": "Classificação",
     "leaderboardRank": "Classificação {rank}",
-    "courseLeaderboardTooltip": "Todos neste curso, classificados pelas estrelas que ganharam no idioma. Toque em um membro e escolha “Iniciar conversa” para enviar uma mensagem direta."
+    "courseLeaderboardTooltip": "Todos neste curso, classificados pelas estrelas que ganharam no idioma. Toque em um membro e escolha “Iniciar conversa” para enviar uma mensagem direta.",
+    "goalReportTitle": "Reportar esta estrela",
+    "goalReportOverAwardPrompt": "Se você não deveria ter ganhado esta estrela, por favor, explique o porquê.",
+    "goalReportUnderAwardPrompt": "Se você acha que deveria ter ganhado esta estrela, por quê?",
+    "goalReportPickMessage": "Qual das suas mensagens deveria ter ganhado?",
+    "goalReportNoMessages": "Você ainda não enviou uma mensagem nesta sessão, então não há nada para apontar.",
+    "goalReportThanks": "Reportado. Obrigado!",
+    "goalReportErrorUnreportable": "Nenhuma vez do orquestrador corresponde a esta estrela, então não há nada para registrar o relatório.",
+    "goalReportErrorRetry": "A busca pela vez não terminou. Tente novamente."
 }

@@ -2358,5 +2358,13 @@
     "practiceStepProgress": "{done} n'ime {total}",
     "leaderboard": "Ndepụta ndị kacha",
     "leaderboardRank": "Ọkwa {rank}",
-    "courseLeaderboardTooltip": "Onye ọ bụla nọ na nkuzi a, ahaziri site na kpakpando ha nwetara n'asụsụ ya. Pịa onye otu wee họrọ “Bido mkparịta ụka” iji zitere ha ozi."
+    "courseLeaderboardTooltip": "Onye ọ bụla nọ na nkuzi a, ahaziri site na kpakpando ha nwetara n'asụsụ ya. Pịa onye otu wee họrọ “Bido mkparịta ụka” iji zitere ha ozi.",
+    "goalReportTitle": "Kọọ kpakpando a",
+    "goalReportOverAwardPrompt": "Ọ bụrụ na i kwesịghị inweta kpakpando a, biko kọwaa ihe kpatara ya.",
+    "goalReportUnderAwardPrompt": "Ọ bụrụ na i chere na i kwesịrị inweta kpakpando a, gịnị kpatara ya?",
+    "goalReportPickMessage": "Olee ozi gị kwesịrị inweta ya?",
+    "goalReportNoMessages": "I zitebeghị ozi na nnọkọ a, yabụ na enweghị ihe a ga-atụ aka na ya.",
+    "goalReportThanks": "Akọọla ya. Daalụ!",
+    "goalReportErrorUnreportable": "Enweghị ntụgharị onye nhazi dabara na kpakpando a, yabụ na enweghị ihe a ga-edekọ akụkọ ahụ megide.",
+    "goalReportErrorRetry": "Nchọta maka ntụgharị ahụ emechaala. Gbalịa ọzọ."
 }

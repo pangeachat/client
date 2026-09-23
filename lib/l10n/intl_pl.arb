@@ -10035,5 +10035,13 @@
     "practiceStepProgress": "{done} z {total}",
     "leaderboard": "Tablica wyników",
     "leaderboardRank": "Ranga {rank}",
-    "courseLeaderboardTooltip": "Wszyscy uczestnicy tego kursu, uszeregowani według liczby gwiazdek zdobytych w danym języku. Stuknij członka i wybierz „Rozpocznij rozmowę”, aby wysłać mu wiadomość prywatną."
+    "courseLeaderboardTooltip": "Wszyscy uczestnicy tego kursu, uszeregowani według liczby gwiazdek zdobytych w danym języku. Stuknij członka i wybierz „Rozpocznij rozmowę”, aby wysłać mu wiadomość prywatną.",
+    "goalReportTitle": "Zgłoś tę gwiazdkę",
+    "goalReportOverAwardPrompt": "Jeśli nie powinieneś/powinnaś otrzymać tej gwiazdki, wyjaśnij dlaczego.",
+    "goalReportUnderAwardPrompt": "Jeśli uważasz, że powinieneś/powinnaś otrzymać tę gwiazdkę, dlaczego?",
+    "goalReportPickMessage": "Która z Twoich wiadomości powinna była na nią zasłużyć?",
+    "goalReportNoMessages": "Nie wysłałeś/wysłałaś jeszcze żadnej wiadomości w tej sesji, więc nie ma nic do wskazania.",
+    "goalReportThanks": "Zgłoszono. Dziękujemy!",
+    "goalReportErrorUnreportable": "Żadna tura orkiestratora nie pasuje do tej gwiazdki, więc nie ma nic, do czego można by przypisać zgłoszenie.",
+    "goalReportErrorRetry": "Wyszukiwanie tury nie zostało zakończone. Spróbuj ponownie."
 }

@@ -10895,5 +10895,13 @@
     "practiceStepProgress": "{done} od {total}",
     "leaderboard": "Lestvica najboljših",
     "leaderboardRank": "Uvrstitev {rank}",
-    "courseLeaderboardTooltip": "Vsi v tem tečaju, razvrščeni po številu zvezdic v jeziku tečaja. Dotaknite se člana in izberite »Začni pogovor«, da mu pošljete zasebno sporočilo."
+    "courseLeaderboardTooltip": "Vsi v tem tečaju, razvrščeni po številu zvezdic v jeziku tečaja. Dotaknite se člana in izberite »Začni pogovor«, da mu pošljete zasebno sporočilo.",
+    "goalReportTitle": "Prijavi to zvezdico",
+    "goalReportOverAwardPrompt": "Če te zvezdice ne bi smeli dobiti, prosimo, pojasnite zakaj.",
+    "goalReportUnderAwardPrompt": "Če menite, da bi morali dobiti to zvezdico, zakaj?",
+    "goalReportPickMessage": "Katero od vaših sporočil bi jo moralo prislužiti?",
+    "goalReportNoMessages": "V tej seji še niste poslali sporočila, zato ni ničesar za pokazati.",
+    "goalReportThanks": "Prijavljeno. Hvala!",
+    "goalReportErrorUnreportable": "Noben orkestratorjev obrat se ne ujema s to zvezdico, zato ni ničesar, proti čemur bi zabeležili poročilo.",
+    "goalReportErrorRetry": "Iskanje obrata ni bilo dokončano. Poskusite znova."
 }

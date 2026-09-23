@@ -2358,5 +2358,13 @@
     "practiceStepProgress": "{done} mwa {total}",
     "leaderboard": "Mndandanda wa Atsogoleri",
     "leaderboardRank": "Udindo {rank}",
-    "courseLeaderboardTooltip": "Aliyense mu kosi iyi, oikidwa ndi nyenyezi zawo mu chilankhulo chake. Dinani pa membala ndikusankha “Yambani kukambirana” kuti muwatumizire DM."
+    "courseLeaderboardTooltip": "Aliyense mu kosi iyi, oikidwa ndi nyenyezi zawo mu chilankhulo chake. Dinani pa membala ndikusankha “Yambani kukambirana” kuti muwatumizire DM.",
+    "goalReportTitle": "Nenani nyenyezi iyi",
+    "goalReportOverAwardPrompt": "Ngati simuyenera kulandira nyenyezi iyi, chonde fotokozani chifukwa chake.",
+    "goalReportUnderAwardPrompt": "Ngati mukuganiza kuti muyenera kulandira nyenyezi iyi, chifukwa chiyani?",
+    "goalReportPickMessage": "Ndi uthenga uti mwa mauthenga anu umene uyenera kuti unayipeza?",
+    "goalReportNoMessages": "Simunatumize uthenga uliwonse mu gawo ili, choncho palibe choti mulozere.",
+    "goalReportThanks": "Zaneneka. Zikomo!",
+    "goalReportErrorUnreportable": "Palibe nthawi ya orchestrator yofanana ndi nyenyezi iyi, choncho palibe choti mulembe lipoti motsutsana nacho.",
+    "goalReportErrorRetry": "Kufufuza kwa nthawiyo sikunamalizidwe. Yesaninso."
 }

@@ -10719,5 +10719,13 @@
     "practiceStepProgress": "{done}/{total}",
     "leaderboard": "ランキング",
     "leaderboardRank": "{rank}位",
-    "courseLeaderboardTooltip": "このコースの全員が、その言語でのスター数でランク付けされています。メンバーをタップして「会話を開始」を選択すると、DMを送信できます。"
+    "courseLeaderboardTooltip": "このコースの全員が、その言語でのスター数でランク付けされています。メンバーをタップして「会話を開始」を選択すると、DMを送信できます。",
+    "goalReportTitle": "このスターを報告",
+    "goalReportOverAwardPrompt": "このスターを獲得するべきでなかった場合、その理由を説明してください。",
+    "goalReportUnderAwardPrompt": "このスターを獲得するべきだったと思う場合、その理由を教えてください。",
+    "goalReportPickMessage": "どのメッセージで獲得するべきでしたか？",
+    "goalReportNoMessages": "このセッションではまだメッセージを送信していないため、指摘できるものはありません。",
+    "goalReportThanks": "報告されました。ありがとうございます！",
+    "goalReportErrorUnreportable": "このスターに一致するオーケストレーターのターンがないため、報告を記録できません。",
+    "goalReportErrorRetry": "ターンの検索が完了しませんでした。もう一度お試しください。"
 }

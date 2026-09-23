@@ -9950,5 +9950,13 @@
     "practiceStepProgress": "{done}/{total}",
     "leaderboard": "排行榜",
     "leaderboardRank": "排名 {rank}",
-    "courseLeaderboardTooltip": "本课程中所有成员按其在该语言中获得的星星数进行排名。点击成员并选择“开始对话”即可向他们发送私信。"
+    "courseLeaderboardTooltip": "本课程中所有成员按其在该语言中获得的星星数进行排名。点击成员并选择“开始对话”即可向他们发送私信。",
+    "goalReportTitle": "举报此星",
+    "goalReportOverAwardPrompt": "如果您不应该获得此星，请说明原因。",
+    "goalReportUnderAwardPrompt": "如果您认为您应该获得此星，请说明原因。",
+    "goalReportPickMessage": "您的哪条消息应该获得此星？",
+    "goalReportNoMessages": "您在此会话中尚未发送任何消息，因此无法指出。",
+    "goalReportThanks": "已举报。谢谢！",
+    "goalReportErrorUnreportable": "没有与此星匹配的协调器回合，因此无法记录举报。",
+    "goalReportErrorRetry": "回合搜索未完成。请重试。"
 }

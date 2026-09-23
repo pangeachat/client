@@ -2358,5 +2358,13 @@
     "practiceStepProgress": "{done} av {total}",
     "leaderboard": "Poengtavle",
     "leaderboardRank": "Rangering {rank}",
-    "courseLeaderboardTooltip": "Alle i dette kurset, rangert etter stjerner i språket. Trykk på et medlem og velg «Start samtale» for å sende dem en direktemelding."
+    "courseLeaderboardTooltip": "Alle i dette kurset, rangert etter stjerner i språket. Trykk på et medlem og velg «Start samtale» for å sende dem en direktemelding.",
+    "goalReportTitle": "Rapporter denne stjernen",
+    "goalReportOverAwardPrompt": "Hvis du ikke skulle ha fått denne stjernen, forklar hvorfor.",
+    "goalReportUnderAwardPrompt": "Hvis du mener du skulle ha fått denne stjernen, hvorfor?",
+    "goalReportPickMessage": "Hvilken av meldingene dine skulle ha gitt deg den?",
+    "goalReportNoMessages": "Du har ikke sendt en melding i denne økten ennå, så det er ingenting å peke på.",
+    "goalReportThanks": "Rapportert. Takk!",
+    "goalReportErrorUnreportable": "Ingen orkestrator-tur samsvarer med denne stjernen, så det er ingenting å registrere rapporten mot.",
+    "goalReportErrorRetry": "Søket etter turen ble ikke fullført. Prøv igjen."
 }

@@ -2358,5 +2358,13 @@
     "practiceStepProgress": "{done} o {total}",
     "leaderboard": "Bwrdd Arweinwyr",
     "leaderboardRank": "Safle {rank}",
-    "courseLeaderboardTooltip": "Pawb yn y cwrs hwn, wedi'u rhestru yn ôl eu sêr yn yr iaith honno. Tapiwch aelod a dewiswch “Dechrau sgwrs” i anfon neges uniongyrchol atynt."
+    "courseLeaderboardTooltip": "Pawb yn y cwrs hwn, wedi'u rhestru yn ôl eu sêr yn yr iaith honno. Tapiwch aelod a dewiswch “Dechrau sgwrs” i anfon neges uniongyrchol atynt.",
+    "goalReportTitle": "Adrodd am y seren hon",
+    "goalReportOverAwardPrompt": "Os na ddylech chi fod wedi cael y seren hon, esboniwch pam.",
+    "goalReportUnderAwardPrompt": "Os ydych chi'n meddwl y dylech chi fod wedi cael y seren hon, pam?",
+    "goalReportPickMessage": "Pa un o'ch negeseuon ddylai fod wedi'i hennill?",
+    "goalReportNoMessages": "Nid ydych wedi anfon neges yn y sesiwn hon eto, felly does dim byd i gyfeirio ato.",
+    "goalReportThanks": "Wedi'i adrodd. Diolch!",
+    "goalReportErrorUnreportable": "Nid oes tro cerddor yn cyd-fynd â'r seren hon, felly does dim byd i gofnodi'r adroddiad yn ei erbyn.",
+    "goalReportErrorRetry": "Ni orffennodd y chwiliad am y tro. Rhowch gynnig arall arni."
 }

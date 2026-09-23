@@ -2358,5 +2358,13 @@
     "practiceStepProgress": "{done} saka {total}",
     "leaderboard": "Papan Peringkat",
     "leaderboardRank": "Peringkat {rank}",
-    "courseLeaderboardTooltip": "Saben uwong ing kursus iki, diurutake miturut lintange ing basa kasebut. Tutul anggota lan pilih “Mulai obrolan” kanggo ngirim DM."
+    "courseLeaderboardTooltip": "Saben uwong ing kursus iki, diurutake miturut lintange ing basa kasebut. Tutul anggota lan pilih “Mulai obrolan” kanggo ngirim DM.",
+    "goalReportTitle": "Laporake lintang iki",
+    "goalReportOverAwardPrompt": "Menawa sampeyan ora kudune entuk lintang iki, tulung jlentrehake alasane.",
+    "goalReportUnderAwardPrompt": "Menawa sampeyan rumangsa kudune entuk lintang iki, apa sebabe?",
+    "goalReportPickMessage": "Pesen sampeyan sing endi sing kudune entuk?",
+    "goalReportNoMessages": "Sampeyan durung ngirim pesen ing sesi iki, dadi ora ana sing bisa ditunjuk.",
+    "goalReportThanks": "Wis dilaporake. Matur nuwun!",
+    "goalReportErrorUnreportable": "Ora ana giliran orkestrator sing cocog karo lintang iki, dadi ora ana sing bisa direkam laporan kasebut.",
+    "goalReportErrorRetry": "Pencarian giliran durung rampung. Coba maneh."
 }

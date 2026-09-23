@@ -2358,5 +2358,13 @@
     "practiceStepProgress": "{done} koku-{total}",
     "leaderboard": "Ibhodi yabaphambili",
     "leaderboardRank": "Izinga {rank}",
-    "courseLeaderboardTooltip": "Wonke umuntu kulesi sifundo, uhlelwe ngezinkanyezi zakhe ngolimi lwaso. Thepha ilungu bese ukhetha okuthi “Qala ingxoxo” ukuze ubalethele i-DM."
+    "courseLeaderboardTooltip": "Wonke umuntu kulesi sifundo, uhlelwe ngezinkanyezi zakhe ngolimi lwaso. Thepha ilungu bese ukhetha okuthi “Qala ingxoxo” ukuze ubalethele i-DM.",
+    "goalReportTitle": "Bika le nkanyezi",
+    "goalReportOverAwardPrompt": "Uma ubungafanele ukuthola le nkanyezi, sicela uchaze ukuthi kungani.",
+    "goalReportUnderAwardPrompt": "Uma ucabanga ukuthi ubufanele ukuthola le nkanyezi, kungani?",
+    "goalReportPickMessage": "Iyiphi yemilayezo yakho obekufanele ikwenzele yona?",
+    "goalReportNoMessages": "Awukathumeli umlayezo kulesi sigaba okwamanje, ngakho-ke akukho ongakukhomba.",
+    "goalReportThanks": "Kubikiwe. Ngiyabonga!",
+    "goalReportErrorUnreportable": "Alukho uhlelo olufana nale nkanyezi, ngakho-ke akukho okungarekhoda umbiko.",
+    "goalReportErrorRetry": "Ukusesha uhlelo aluzange luqede. Zama futhi."
 }

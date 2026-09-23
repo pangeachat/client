@@ -2358,5 +2358,13 @@
     "practiceStepProgress": "{done} af {total}",
     "leaderboard": "Stigatöfla",
     "leaderboardRank": "Sæti {rank}",
-    "courseLeaderboardTooltip": "Allir í þessu námskeiði, raðað eftir stjörnum í tungumálinu. Bankaðu á meðlim og veldu „Hefja samtal“ til að senda þeim bein skilaboð."
+    "courseLeaderboardTooltip": "Allir í þessu námskeiði, raðað eftir stjörnum í tungumálinu. Bankaðu á meðlim og veldu „Hefja samtal“ til að senda þeim bein skilaboð.",
+    "goalReportTitle": "Tilkynna þessa stjörnu",
+    "goalReportOverAwardPrompt": "Ef þú áttir ekki að fá þessa stjörnu, vinsamlegast útskýrðu hvers vegna.",
+    "goalReportUnderAwardPrompt": "Ef þú telur að þú hafir átt að fá þessa stjörnu, hvers vegna?",
+    "goalReportPickMessage": "Hvaða skilaboð frá þér hefðu átt að vinna hana?",
+    "goalReportNoMessages": "Þú hefur ekki sent skilaboð í þessari lotu ennþá, svo það er ekkert til að benda á.",
+    "goalReportThanks": "Tilkynnt. Takk!",
+    "goalReportErrorUnreportable": "Engin hljómsveitarstjórnarsnúningur passar við þessa stjörnu, svo það er ekkert til að skrá skýrsluna gegn.",
+    "goalReportErrorRetry": "Leitin að snúningnum kláraðist ekki. Reyndu aftur."
 }

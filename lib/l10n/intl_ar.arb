@@ -10256,5 +10256,13 @@
     "practiceStepProgress": "{done} من {total}",
     "leaderboard": "لوحة الصدارة",
     "leaderboardRank": "الترتيب {rank}",
-    "courseLeaderboardTooltip": "جميع المشاركين في هذه الدورة، مرتبين حسب نجومهم في لغتها. اضغط على عضو واختر \"بدء محادثة\" لإرسال رسالة مباشرة إليه."
+    "courseLeaderboardTooltip": "جميع المشاركين في هذه الدورة، مرتبين حسب نجومهم في لغتها. اضغط على عضو واختر \"بدء محادثة\" لإرسال رسالة مباشرة إليه.",
+    "goalReportTitle": "الإبلاغ عن هذه النجمة",
+    "goalReportOverAwardPrompt": "إذا لم يكن من المفترض أن تحصل على هذه النجمة، فيرجى توضيح السبب.",
+    "goalReportUnderAwardPrompt": "إذا كنت تعتقد أنه كان من المفترض أن تحصل على هذه النجمة، فلماذا؟",
+    "goalReportPickMessage": "أي من رسائلك كان يجب أن تكسبها؟",
+    "goalReportNoMessages": "لم ترسل أي رسالة في هذه الجلسة بعد، لذا لا يوجد شيء للإشارة إليه.",
+    "goalReportThanks": "تم الإبلاغ. شكرًا لك!",
+    "goalReportErrorUnreportable": "لا توجد دورة منسق مطابقة لهذه النجمة، لذا لا يوجد شيء لتسجيل التقرير ضده.",
+    "goalReportErrorRetry": "لم يكتمل البحث عن الدورة. حاول مرة أخرى."
 }

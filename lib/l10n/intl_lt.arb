@@ -10731,5 +10731,13 @@
     "practiceStepProgress": "{done} iš {total}",
     "leaderboard": "Lyderių lentelė",
     "leaderboardRank": "Vieta {rank}",
-    "courseLeaderboardTooltip": "Visi šio kurso dalyviai, suskirstyti pagal jų žvaigždutes šia kalba. Bakstelėkite narį ir pasirinkite „Pradėti pokalbį“, kad išsiųstumėte jam tiesioginę žinutę."
+    "courseLeaderboardTooltip": "Visi šio kurso dalyviai, suskirstyti pagal jų žvaigždutes šia kalba. Bakstelėkite narį ir pasirinkite „Pradėti pokalbį“, kad išsiųstumėte jam tiesioginę žinutę.",
+    "goalReportTitle": "Pranešti apie šią žvaigždutę",
+    "goalReportOverAwardPrompt": "Jei neturėjote gauti šios žvaigždutės, paaiškinkite kodėl.",
+    "goalReportUnderAwardPrompt": "Jei manote, kad turėjote gauti šią žvaigždutę, kodėl?",
+    "goalReportPickMessage": "Kuris iš jūsų pranešimų turėjo ją uždirbti?",
+    "goalReportNoMessages": "Šioje sesijoje dar neišsiuntėte pranešimo, todėl nėra į ką nurodyti.",
+    "goalReportThanks": "Pranešta. Ačiū!",
+    "goalReportErrorUnreportable": "Nėra orkestratoriaus posūkio, atitinkančio šią žvaigždutę, todėl nėra nieko, su kuo būtų galima susieti ataskaitą.",
+    "goalReportErrorRetry": "Posūkio paieška nebaigta. Bandykite dar kartą."
 }

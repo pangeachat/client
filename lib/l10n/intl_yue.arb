@@ -10907,5 +10907,13 @@
     "practiceStepProgress": "{done} / {total}",
     "leaderboard": "排行榜",
     "leaderboardRank": "排名 {rank}",
-    "courseLeaderboardTooltip": "此課程中的所有成員，按其語言星數排名。點擊成員並選擇「開始對話」即可向他們發送私訊。"
+    "courseLeaderboardTooltip": "此課程中的所有成員，按其語言星數排名。點擊成員並選擇「開始對話」即可向他們發送私訊。",
+    "goalReportTitle": "舉報此星章",
+    "goalReportOverAwardPrompt": "如果你不應該獲得此星章，請解釋原因。",
+    "goalReportUnderAwardPrompt": "如果你認為你應該獲得此星章，請解釋原因。",
+    "goalReportPickMessage": "你的哪條訊息應該獲得此星章？",
+    "goalReportNoMessages": "你在此會話中尚未發送任何訊息，因此沒有可指向的內容。",
+    "goalReportThanks": "已舉報。謝謝！",
+    "goalReportErrorUnreportable": "沒有協調器回合與此星章匹配，因此無法記錄舉報。",
+    "goalReportErrorRetry": "回合搜尋未完成。請重試。"
 }

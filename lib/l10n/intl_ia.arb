@@ -10886,5 +10886,13 @@
     "practiceStepProgress": "{done} de {total}",
     "leaderboard": "Tabella de classification",
     "leaderboardRank": "Rango {rank}",
-    "courseLeaderboardTooltip": "Totes in iste curso, classificate per lor stellas in su lingua. Tappa un membro e selige “Comenciar conversation” pro inviar les un DM."
+    "courseLeaderboardTooltip": "Totes in iste curso, classificate per lor stellas in su lingua. Tappa un membro e selige “Comenciar conversation” pro inviar les un DM.",
+    "goalReportTitle": "Reportar iste stella",
+    "goalReportOverAwardPrompt": "Si tu non debeva reciper iste stella, per favor explica proque.",
+    "goalReportUnderAwardPrompt": "Si tu pensa que tu debeva reciper iste stella, proque?",
+    "goalReportPickMessage": "Qual de tu messages haberea debite ganiar lo?",
+    "goalReportNoMessages": "Tu non ha inviate un message in iste session ancora, dunque il ha nihil a indicar.",
+    "goalReportThanks": "Reportate. Gratias!",
+    "goalReportErrorUnreportable": "Nulle turno de orchestrator corresponde a iste stella, dunque il ha nihil contra lo registrar le reporto.",
+    "goalReportErrorRetry": "Le cerca pro le turno non ha finite. Essaya de nove."
 }

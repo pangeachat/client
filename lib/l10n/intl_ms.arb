@@ -2358,5 +2358,13 @@
     "practiceStepProgress": "{done} daripada {total}",
     "leaderboard": "Papan Pendahulu",
     "leaderboardRank": "Kedudukan {rank}",
-    "courseLeaderboardTooltip": "Semua orang dalam kursus ini, disenaraikan mengikut bintang mereka dalam bahasa tersebut. Ketik ahli dan pilih “Mula perbualan” untuk menghantar DM kepada mereka."
+    "courseLeaderboardTooltip": "Semua orang dalam kursus ini, disenaraikan mengikut bintang mereka dalam bahasa tersebut. Ketik ahli dan pilih “Mula perbualan” untuk menghantar DM kepada mereka.",
+    "goalReportTitle": "Laporkan bintang ini",
+    "goalReportOverAwardPrompt": "Jika anda tidak sepatutnya mendapat bintang ini, sila terangkan sebabnya.",
+    "goalReportUnderAwardPrompt": "Jika anda rasa anda sepatutnya mendapat bintang ini, mengapa?",
+    "goalReportPickMessage": "Mesej anda yang manakah sepatutnya mendapatkannya?",
+    "goalReportNoMessages": "Anda belum menghantar mesej dalam sesi ini, jadi tiada apa-apa untuk ditunjukkan.",
+    "goalReportThanks": "Dilaporkan. Terima kasih!",
+    "goalReportErrorUnreportable": "Tiada giliran orkestrator yang sepadan dengan bintang ini, jadi tiada apa-apa untuk merekodkan laporan tersebut.",
+    "goalReportErrorRetry": "Pencarian giliran tidak selesai. Cuba lagi."
 }

@@ -2358,5 +2358,13 @@
     "practiceStepProgress": "{done} pa {total}",
     "leaderboard": "Chikwata chepamusoro",
     "leaderboardRank": "Chinzvimbo {rank}",
-    "courseLeaderboardTooltip": "Wese ari muchikamu chino, akaiswa pachinzvimbo zvichienderana nenyeredzi dzake mumutauro wacho. Dzvanya panhengo wosarudza “Tanga hurukuro” kuti umutumire DM."
+    "courseLeaderboardTooltip": "Wese ari muchikamu chino, akaiswa pachinzvimbo zvichienderana nenyeredzi dzake mumutauro wacho. Dzvanya panhengo wosarudza “Tanga hurukuro” kuti umutumire DM.",
+    "goalReportTitle": "Shuma nyenyedzi iyi",
+    "goalReportOverAwardPrompt": "Kana wanga usingafaniri kuwana nyenyedzi iyi, tsanangura kuti sei.",
+    "goalReportUnderAwardPrompt": "Kana uchifunga kuti waifanira kuwana nyenyedzi iyi, sei?",
+    "goalReportPickMessage": "Ndeupi wemameseji ako waifanira kuwana nyenyedzi iyi?",
+    "goalReportNoMessages": "Hauna kutumira meseji muchikamu chino, saka hapana chekunongedza.",
+    "goalReportThanks": "Zvashumwa. Ndatenda!",
+    "goalReportErrorUnreportable": "Hapana orchestrator turn inoenderana nenyenyedzi iyi, saka hapana chekunyora mushumo pamusoro pacho.",
+    "goalReportErrorRetry": "Kutsvaga turn hakuna kupera. Edza zvakare."
 }

@@ -10053,5 +10053,13 @@
     "practiceStepProgress": "{done}/{total}",
     "leaderboard": "Ranglista",
     "leaderboardRank": "{rank}. helyezés",
-    "courseLeaderboardTooltip": "A kurzus összes résztvevője, a nyelvi csillagaik alapján rangsorolva. Koppints egy tagra, és válaszd a „Beszélgetés indítása” lehetőséget, hogy közvetlen üzenetet küldj neki."
+    "courseLeaderboardTooltip": "A kurzus összes résztvevője, a nyelvi csillagaik alapján rangsorolva. Koppints egy tagra, és válaszd a „Beszélgetés indítása” lehetőséget, hogy közvetlen üzenetet küldj neki.",
+    "goalReportTitle": "Jelentés erről a csillagról",
+    "goalReportOverAwardPrompt": "Ha nem kellett volna megkapnod ezt a csillagot, kérjük, magyarázd el, miért.",
+    "goalReportUnderAwardPrompt": "Ha úgy gondolod, meg kellett volna kapnod ezt a csillagot, miért?",
+    "goalReportPickMessage": "Melyik üzenetednek kellett volna kiérdemelnie?",
+    "goalReportNoMessages": "Még nem küldtél üzenetet ebben a munkamenetben, így nincs mire mutatni.",
+    "goalReportThanks": "Jelentve. Köszönjük!",
+    "goalReportErrorUnreportable": "Egyetlen vezénylő forduló sem egyezik ezzel a csillaggal, így nincs mi ellen rögzíteni a jelentést.",
+    "goalReportErrorRetry": "A forduló keresése nem fejeződött be. Próbáld újra."
 }

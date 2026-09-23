@@ -2358,5 +2358,13 @@
     "practiceStepProgress": "{done} nga {total}",
     "leaderboard": "Tabela e Renditjes",
     "leaderboardRank": "Renditja {rank}",
-    "courseLeaderboardTooltip": "Të gjithë në këtë kurs, të renditur sipas yjeve të tyre në gjuhën e tij. Prekni një anëtar dhe zgjidhni \"Fillo bisedën\" për t'i dërguar një mesazh privat."
+    "courseLeaderboardTooltip": "Të gjithë në këtë kurs, të renditur sipas yjeve të tyre në gjuhën e tij. Prekni një anëtar dhe zgjidhni \"Fillo bisedën\" për t'i dërguar një mesazh privat.",
+    "goalReportTitle": "Raporto këtë yll",
+    "goalReportOverAwardPrompt": "Nëse nuk duhej ta merrje këtë yll, shpjego pse.",
+    "goalReportUnderAwardPrompt": "Nëse mendon se duhej ta merrje këtë yll, pse?",
+    "goalReportPickMessage": "Cili prej mesazheve tuaja duhet ta kishte fituar atë?",
+    "goalReportNoMessages": "Nuk keni dërguar ende asnjë mesazh në këtë sesion, kështu që nuk ka asgjë për të treguar.",
+    "goalReportThanks": "U raportua. Faleminderit!",
+    "goalReportErrorUnreportable": "Asnjë kthesë orkestruese nuk përputhet me këtë yll, kështu që nuk ka asgjë kundër së cilës të regjistrohet raporti.",
+    "goalReportErrorRetry": "Kërkimi për kthesën nuk përfundoi. Provo përsëri."
 }

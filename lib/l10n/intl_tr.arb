@@ -10251,5 +10251,13 @@
     "practiceStepProgress": "{total} üzerinden {done}",
     "leaderboard": "Liderlik Tablosu",
     "leaderboardRank": "Sıra {rank}",
-    "courseLeaderboardTooltip": "Bu kurstaki herkes, dillerindeki yıldızlarına göre sıralanmıştır. Bir üyeye dokunarak onlara DM göndermek için \"Sohbet başlat\"ı seçin."
+    "courseLeaderboardTooltip": "Bu kurstaki herkes, dillerindeki yıldızlarına göre sıralanmıştır. Bir üyeye dokunarak onlara DM göndermek için \"Sohbet başlat\"ı seçin.",
+    "goalReportTitle": "Bu yıldızı bildir",
+    "goalReportOverAwardPrompt": "Bu yıldızı almanız gerekmiyorsa, lütfen nedenini açıklayın.",
+    "goalReportUnderAwardPrompt": "Bu yıldızı almanız gerektiğini düşünüyorsanız, neden?",
+    "goalReportPickMessage": "Hangi mesajınızla kazanmış olmalıydınız?",
+    "goalReportNoMessages": "Bu oturumda henüz bir mesaj göndermediniz, bu yüzden gösterecek bir şey yok.",
+    "goalReportThanks": "Bildirildi. Teşekkürler!",
+    "goalReportErrorUnreportable": "Bu yıldızla eşleşen bir orkestratör dönüşü yok, bu yüzden raporu kaydedecek bir şey yok.",
+    "goalReportErrorRetry": "Dönüş araması tamamlanmadı. Tekrar deneyin."
 }

@@ -2358,5 +2358,13 @@
     "practiceStepProgress": "{done} kweziyi-{total}",
     "leaderboard": "Ibhodi yabaphambili",
     "leaderboardRank": "Inqanaba {rank}",
-    "courseLeaderboardTooltip": "Wonke umntu okule khosi, uhlelwe ngokweenkwenkwezi zakhe kulwimi lwayo. Cofa ilungu kwaye ukhethe “Qala incoko” ukuze ulithumelele i-DM."
+    "courseLeaderboardTooltip": "Wonke umntu okule khosi, uhlelwe ngokweenkwenkwezi zakhe kulwimi lwayo. Cofa ilungu kwaye ukhethe “Qala incoko” ukuze ulithumelele i-DM.",
+    "goalReportTitle": "Bika le nkwenkwezi",
+    "goalReportOverAwardPrompt": "Ukuba ubungafanelanga ukuyifumana le nkwenkwezi, nceda ucacise isizathu.",
+    "goalReportUnderAwardPrompt": "Ukuba ucinga ukuba ubufanele ukuyifumana le nkwenkwezi, kutheni?",
+    "goalReportPickMessage": "Yeyiphi imiyalezo yakho ekufanele ukuba iyifumene?",
+    "goalReportNoMessages": "Akukho myalezo uwuthumileyo kwesi seshoni okwangoku, ngoko akukho nto unokuyikhomba.",
+    "goalReportThanks": "Kubikiwe. Enkosi!",
+    "goalReportErrorUnreportable": "Akukho nto ilungelelanisiweyo ehambelana nale nkwenkwezi, ngoko akukho nto ingarekhodwa ngayo ingxelo.",
+    "goalReportErrorRetry": "Ukukhangela okujikayo akugqitywanga. Zama kwakhona."
 }

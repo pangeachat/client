@@ -2358,5 +2358,13 @@
     "practiceStepProgress": "{done} de {total}",
     "leaderboard": "Clàr-stiùiridh",
     "leaderboardRank": "Rang {rank}",
-    "courseLeaderboardTooltip": "A h-uile duine sa chùrsa seo, air an rangachadh a rèir nan rionnagan aca sa chànan aige. Tap air ball agus tagh “Tòisich còmhradh” gus DM a chuir thuca."
+    "courseLeaderboardTooltip": "A h-uile duine sa chùrsa seo, air an rangachadh a rèir nan rionnagan aca sa chànan aige. Tap air ball agus tagh “Tòisich còmhradh” gus DM a chuir thuca.",
+    "goalReportTitle": "Dèan aithris air an rionnag seo",
+    "goalReportOverAwardPrompt": "Mura bu chòir dhut an rionnag seo fhaighinn, mìnich carson.",
+    "goalReportUnderAwardPrompt": "Ma tha thu a’ smaoineachadh gum bu chòir dhut an rionnag seo fhaighinn, carson?",
+    "goalReportPickMessage": "Dè de na teachdaireachdan agad a bu chòir a bhith air a chosnadh?",
+    "goalReportNoMessages": "Cha do chuir thu teachdaireachd sam bith san t-seisean seo fhathast, mar sin chan eil dad ri chomharrachadh.",
+    "goalReportThanks": "Air aithris. Tapadh leat!",
+    "goalReportErrorUnreportable": "Chan eil tionndadh orcastradair a’ freagairt ris an rionnag seo, mar sin chan eil dad ann airson an aithisg a chlàradh na aghaidh.",
+    "goalReportErrorRetry": "Cha do chrìochnaich an rannsachadh airson an tionndaidh. Feuch ris a-rithist."
 }

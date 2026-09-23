@@ -2358,5 +2358,13 @@
     "practiceStepProgress": "{done} van {total}",
     "leaderboard": "Ranglys",
     "leaderboardRank": "Rang {rank}",
-    "courseLeaderboardTooltip": "Almal in hierdie kursus, gerangskik volgens hul sterre in die taal. Tik op 'n lid en kies “Begin gesprek” om vir hulle 'n DM te stuur."
+    "courseLeaderboardTooltip": "Almal in hierdie kursus, gerangskik volgens hul sterre in die taal. Tik op 'n lid en kies “Begin gesprek” om vir hulle 'n DM te stuur.",
+    "goalReportTitle": "Rapporteer hierdie ster",
+    "goalReportOverAwardPrompt": "As jy nie hierdie ster moes kry nie, verduidelik asseblief hoekom.",
+    "goalReportUnderAwardPrompt": "As jy dink jy moes hierdie ster kry, hoekom?",
+    "goalReportPickMessage": "Watter van jou boodskappe moes dit verdien het?",
+    "goalReportNoMessages": "Jy het nog nie 'n boodskap in hierdie sessie gestuur nie, so daar is niks om na te wys nie.",
+    "goalReportThanks": "Gerapporteer. Dankie!",
+    "goalReportErrorUnreportable": "Geen orkestrator-beurt stem ooreen met hierdie ster nie, so daar is niks om die verslag teen aan te teken nie.",
+    "goalReportErrorRetry": "Die soektog na die beurt het nie voltooi nie. Probeer weer."
 }

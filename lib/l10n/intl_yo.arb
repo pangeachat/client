@@ -2358,5 +2358,13 @@
     "practiceStepProgress": "{done} nínú {total}",
     "leaderboard": "Leaderboard",
     "leaderboardRank": "Ipò {rank}",
-    "courseLeaderboardTooltip": "Gbogbo ènìyàn nínú kọ́ọ̀sì yìí, tí a tò nípa àwọn ìràwọ̀ wọn nínú èdè rẹ̀. Fọwọ́ kan ọmọ ẹgbẹ́ kan kí o sì yan “Bẹ̀rẹ̀ ìjíròrò” láti fi DM ránṣẹ́ sí wọn."
+    "courseLeaderboardTooltip": "Gbogbo ènìyàn nínú kọ́ọ̀sì yìí, tí a tò nípa àwọn ìràwọ̀ wọn nínú èdè rẹ̀. Fọwọ́ kan ọmọ ẹgbẹ́ kan kí o sì yan “Bẹ̀rẹ̀ ìjíròrò” láti fi DM ránṣẹ́ sí wọn.",
+    "goalReportTitle": "Jabo irawọ yii",
+    "goalReportOverAwardPrompt": "Ti o ko ba yẹ lati gba irawọ yii, jọwọ ṣalaye idi.",
+    "goalReportUnderAwardPrompt": "Ti o ba ro pe o yẹ lati gba irawọ yii, kilode?",
+    "goalReportPickMessage": "Ewo ninu awọn ifiranṣẹ rẹ ni o yẹ ki o ti gba a?",
+    "goalReportNoMessages": "O ko tii fi ifiranṣẹ ranṣẹ ninu igba yii sibẹsibẹ, nitorinaa ko si ohunkan lati tọka si.",
+    "goalReportThanks": "Ti jabo. O ṣeun!",
+    "goalReportErrorUnreportable": "Ko si iyipada oluṣakoso ti o baamu irawọ yii, nitorinaa ko si ohunkan lati gba ijabọ naa si.",
+    "goalReportErrorRetry": "Wiwa fun iyipada naa ko pari. Gbiyanju lẹẹkansi."
 }
