@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-09-23 14:56:04.393163",
+    "@@last_modified": "2026-09-23 15:42:48.815092",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2368,5 +2368,6 @@
     "goalReportErrorUnreportable": "Asnjë kthesë orkestruese nuk përputhet me këtë yll, kështu që nuk ka asgjë kundër së cilës të regjistrohet raporti.",
     "goalReportErrorRetry": "Kërkimi për kthesën nuk përfundoi. Provo përsëri.",
     "summaryFeedbackReceived": "Faleminderit! E morëm reagimin tuaj.",
-    "summaryFeedbackFailed": "Nuk u dërgua dot reagimi juaj. Ju lutemi provoni sërish."
+    "summaryFeedbackFailed": "Nuk u dërgua dot reagimi juaj. Ju lutemi provoni sërish.",
+    "summaryFeedbackProcessing": "Po dërgohet komenti juaj dhe po përditësohet përmbledhja…"
 }

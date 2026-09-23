@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-09-23 14:56:04.014041",
+    "@@last_modified": "2026-09-23 15:42:48.950435",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2368,5 +2368,6 @@
     "goalReportErrorUnreportable": "Hapana orchestrator turn inoenderana nenyenyedzi iyi, saka hapana chekunyora mushumo pamusoro pacho.",
     "goalReportErrorRetry": "Kutsvaga turn hakuna kupera. Edza zvakare.",
     "summaryFeedbackReceived": "Ndatenda! Tawana mhinduro yenyu.",
-    "summaryFeedbackFailed": "Hatina kukwanisa kutumira mhinduro yenyu. Ndapota edzai zvakare."
+    "summaryFeedbackFailed": "Hatina kukwanisa kutumira mhinduro yenyu. Ndapota edzai zvakare.",
+    "summaryFeedbackProcessing": "Tichitumira mhinduro yako uye tichigadzirisa pfupiso…"
 }

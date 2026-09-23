@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-09-23 14:55:58.927181",
+    "@@last_modified": "2026-09-23 15:42:44.564514",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9960,5 +9960,6 @@
     "goalReportErrorUnreportable": "Ningunha quenda do orquestrador coincide con esta estrela, polo que non hai nada contra o que rexistrar o informe.",
     "goalReportErrorRetry": "A busca da quenda non rematou. Téntao de novo.",
     "summaryFeedbackReceived": "Grazas! Recibimos os teus comentarios.",
-    "summaryFeedbackFailed": "Non se puideron enviar os teus comentarios. Téntao de novo."
+    "summaryFeedbackFailed": "Non se puideron enviar os teus comentarios. Téntao de novo.",
+    "summaryFeedbackProcessing": "Enviando os teus comentarios e actualizando o resumo…"
 }

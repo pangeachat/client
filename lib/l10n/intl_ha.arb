@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-09-23 14:55:59.492288",
+    "@@last_modified": "2026-09-23 15:42:44.755290",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2368,5 +2368,6 @@
     "goalReportErrorUnreportable": "Babu wani juyin mai tsarawa da ya dace da wannan tauraron, don haka babu abin da za a yi rikodin rahoton a kansa.",
     "goalReportErrorRetry": "Binciken juyin bai ƙare ba. Gwada kuma.",
     "summaryFeedbackReceived": "Na gode! Mun karɓi ra'ayinka.",
-    "summaryFeedbackFailed": "An kasa aika ra'ayinka. Da fatan za a sake gwadawa."
+    "summaryFeedbackFailed": "An kasa aika ra'ayinka. Da fatan za a sake gwadawa.",
+    "summaryFeedbackProcessing": "Ana aikawa da ra'ayinka kuma ana sabunta taƙaitawa…"
 }

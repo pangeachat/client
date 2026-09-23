@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-09-23 14:55:57.198755",
+    "@@last_modified": "2026-09-23 15:42:42.881760",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2368,5 +2368,6 @@
     "goalReportErrorUnreportable": "Geen orkestrator-beurt stem ooreen met hierdie ster nie, so daar is niks om die verslag teen aan te teken nie.",
     "goalReportErrorRetry": "Die soektog na die beurt het nie voltooi nie. Probeer weer.",
     "summaryFeedbackReceived": "Dankie! Ons het jou terugvoer ontvang.",
-    "summaryFeedbackFailed": "Kon nie jou terugvoer stuur nie. Probeer asseblief weer."
+    "summaryFeedbackFailed": "Kon nie jou terugvoer stuur nie. Probeer asseblief weer.",
+    "summaryFeedbackProcessing": "Stuur jou terugvoer en werk die opsomming by …"
 }

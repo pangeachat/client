@@ -1362,7 +1362,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-09-23 14:56:00.173001",
+    "@@last_modified": "2026-09-23 15:42:45.387103",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10896,5 +10896,6 @@
     "goalReportErrorUnreportable": "Nulle turno de orchestrator corresponde a iste stella, dunque il ha nihil contra lo registrar le reporto.",
     "goalReportErrorRetry": "Le cerca pro le turno non ha finite. Essaya de nove.",
     "summaryFeedbackReceived": "Gratias! Nos ha recipite tu feedback.",
-    "summaryFeedbackFailed": "Non poteva inviar tu feedback. Per favor reprova."
+    "summaryFeedbackFailed": "Non poteva inviar tu feedback. Per favor reprova.",
+    "summaryFeedbackProcessing": "Inviante vostre commentos e actualisante le summario…"
 }

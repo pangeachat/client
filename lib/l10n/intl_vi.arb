@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-23 14:56:05.285887",
+    "@@last_modified": "2026-09-23 15:42:49.934415",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7252,5 +7252,6 @@
     "goalReportErrorUnreportable": "Không có lượt điều phối viên nào khớp với sao này, nên không có gì để ghi lại báo cáo.",
     "goalReportErrorRetry": "Việc tìm kiếm lượt chưa hoàn tất. Vui lòng thử lại.",
     "summaryFeedbackReceived": "Cảm ơn! Chúng tôi đã nhận được phản hồi của bạn.",
-    "summaryFeedbackFailed": "Không thể gửi phản hồi của bạn. Vui lòng thử lại."
+    "summaryFeedbackFailed": "Không thể gửi phản hồi của bạn. Vui lòng thử lại.",
+    "summaryFeedbackProcessing": "Đang gửi phản hồi của bạn và cập nhật tóm tắt…"
 }

@@ -3536,7 +3536,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-09-23 14:55:58.723457",
+    "@@last_modified": "2026-09-23 15:42:44.053313",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9997,5 +9997,6 @@
     "goalReportErrorUnreportable": "Mikään orkestraattorin vuoro ei vastaa tätä tähteä, joten ilmoitusta ei voi tallentaa.",
     "goalReportErrorRetry": "Vuoron haku ei valmistunut. Yritä uudelleen.",
     "summaryFeedbackReceived": "Kiitos! Palautteesi on vastaanotettu.",
-    "summaryFeedbackFailed": "Palautteen lähettäminen epäonnistui. Yritä uudelleen."
+    "summaryFeedbackFailed": "Palautteen lähettäminen epäonnistui. Yritä uudelleen.",
+    "summaryFeedbackProcessing": "Lähetetään palautettasi ja päivitetään yhteenvetoa…"
 }

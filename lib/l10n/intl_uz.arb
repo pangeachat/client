@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-09-23 14:56:05.467145",
+    "@@last_modified": "2026-09-23 15:42:49.873139",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9964,5 +9964,6 @@
     "goalReportErrorUnreportable": "Hech qanday orkestrator navbati bu yulduzga mos kelmaydi, shuning uchun hisobotni yozib olish uchun hech narsa yo'q.",
     "goalReportErrorRetry": "Navbatni qidirish tugallanmadi. Qayta urinib ko'ring.",
     "summaryFeedbackReceived": "Rahmat! Fikringiz qabul qilindi.",
-    "summaryFeedbackFailed": "Fikringizni yuborib bo‘lmadi. Iltimos, qayta urinib ko‘ring."
+    "summaryFeedbackFailed": "Fikringizni yuborib bo‘lmadi. Iltimos, qayta urinib ko‘ring.",
+    "summaryFeedbackProcessing": "Fikringizni yuborish va xulosani yangilash…"
 }

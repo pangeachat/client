@@ -15,8 +15,8 @@ import 'get_test_client.dart';
 
 /// Submitting feedback on the activity summary regenerated it with no
 /// acknowledgment, so the learner could not tell whether it went through
-/// (#9243). The outcome now shows as a snackbar, and a failure must not read
-/// like a success.
+/// (#9243). A snackbar now says the feedback is being processed, then gives
+/// the outcome, and a failure must not read like a success.
 ///
 /// `FakeMatrixApi` has no handlers for this room, so the regeneration fails —
 /// the failure path. The feedback dialog itself is skipped: its bot face is a
@@ -45,13 +45,20 @@ void main() {
 
   tearDown(() => client.dispose());
 
-  testWidgets('a failed feedback regeneration reports failure', (tester) async {
+  /// Submits feedback from a bare screen and returns the strings to look for.
+  /// When [dismissWhileProcessing], the learner closes the "processing"
+  /// snackbar before the regeneration finishes.
+  Future<L10n> submitFeedback(
+    WidgetTester tester, {
+    bool dismissWhileProcessing = false,
+  }) async {
     MatrixState.pangeaController = ActivityChatTestPangeaController();
     final controller = ActivityChatController(
       userID: userId,
       room: Room(id: roomId, client: client, membership: Membership.join),
       inputFocus: FocusNode(),
     );
+    addTearDown(() => tester.runAsync(controller.dispose));
 
     await tester.pumpWidget(
       MaterialApp(
@@ -75,21 +82,55 @@ void main() {
     final l10n = L10n.of(tester.element(find.byType(IconButton)));
 
     await tester.tap(find.byType(IconButton));
+    await tester.pump();
 
-    // The regeneration runs against the fake API on real async.
-    for (var i = 0; i < 20; i++) {
+    // The wait is acknowledged before the regeneration finishes.
+    expect(find.text(l10n.summaryFeedbackProcessing), findsOneWidget);
+
+    if (dismissWhileProcessing) {
+      // Let it finish sliding in, or the tap lands below the screen.
+      await tester.pump(const Duration(seconds: 1));
+      await tester.tap(
+        find.descendant(
+          of: find.byType(SnackBar),
+          matching: find.byIcon(Icons.close),
+        ),
+      );
+      await tester.pump();
+      await tester.pump(const Duration(seconds: 1));
+      expect(find.text(l10n.summaryFeedbackProcessing), findsNothing);
+    }
+
+    // The regeneration runs against the fake API on real async; the fake
+    // clock advances between rounds so the snackbar swap can animate.
+    final failed = find.text(l10n.summaryFeedbackFailed);
+    for (var i = 0; i < 20 && failed.evaluate().isEmpty; i++) {
       await tester.runAsync(
         () => Future.delayed(const Duration(milliseconds: 50)),
       );
-      await tester.pump();
-      if (find.byType(SnackBar).evaluate().isNotEmpty) break;
+      await tester.pump(const Duration(milliseconds: 300));
     }
+    return l10n;
+  }
+
+  testWidgets('a failed feedback regeneration reports failure', (tester) async {
+    final l10n = await submitFeedback(tester);
 
     expect(find.text(l10n.summaryFeedbackFailed), findsOneWidget);
+    expect(find.text(l10n.summaryFeedbackProcessing), findsNothing);
     expect(find.text(l10n.summaryFeedbackReceived), findsNothing);
 
-    await tester.runAsync(controller.dispose);
     // Let the snackbar's auto-dismiss timer run out.
+    await tester.pumpAndSettle(const Duration(seconds: 1));
+  });
+
+  testWidgets('dismissing the processing snackbar still shows the outcome', (
+    tester,
+  ) async {
+    final l10n = await submitFeedback(tester, dismissWhileProcessing: true);
+
+    expect(find.text(l10n.summaryFeedbackFailed), findsOneWidget);
+
     await tester.pumpAndSettle(const Duration(seconds: 1));
   });
 }

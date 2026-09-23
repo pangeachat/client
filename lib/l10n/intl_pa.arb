@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-09-23 14:56:03.197785",
+    "@@last_modified": "2026-09-23 15:42:48.030411",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2368,5 +2368,6 @@
     "goalReportErrorUnreportable": "ਕੋਈ ਵੀ ਆਰਕੈਸਟ੍ਰੇਟਰ ਮੋੜ ਇਸ ਸਟਾਰ ਨਾਲ ਮੇਲ ਨਹੀਂ ਖਾਂਦਾ, ਇਸ ਲਈ ਰਿਪੋਰਟ ਨੂੰ ਰਿਕਾਰਡ ਕਰਨ ਲਈ ਕੁਝ ਵੀ ਨਹੀਂ ਹੈ।",
     "goalReportErrorRetry": "ਮੋੜ ਦੀ ਖੋਜ ਪੂਰੀ ਨਹੀਂ ਹੋਈ। ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।",
     "summaryFeedbackReceived": "ਧੰਨਵਾਦ! ਸਾਨੂੰ ਤੁਹਾਡਾ ਫੀਡਬੈਕ ਮਿਲ ਗਿਆ ਹੈ।",
-    "summaryFeedbackFailed": "ਤੁਹਾਡਾ ਫੀਡਬੈਕ ਭੇਜਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ। ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।"
+    "summaryFeedbackFailed": "ਤੁਹਾਡਾ ਫੀਡਬੈਕ ਭੇਜਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ। ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।",
+    "summaryFeedbackProcessing": "ਤੁਹਾਡਾ ਫੀਡਬੈਕ ਭੇਜਿਆ ਜਾ ਰਿਹਾ ਹੈ ਅਤੇ ਸਾਰ ਅੱਪਡੇਟ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ…"
 }

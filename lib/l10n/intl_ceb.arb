@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-09-23 14:55:57.974345",
+    "@@last_modified": "2026-09-23 15:42:43.412271",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2368,5 +2368,6 @@
     "goalReportErrorUnreportable": "Walay orchestrator turn nga mohaum niini nga bituon, busa walay marekord nga report batok niini.",
     "goalReportErrorRetry": "Wala nahuman ang pagpangita sa turn. Sulayi pag-usab.",
     "summaryFeedbackReceived": "Salamat! Nadawat namo ang imong feedback.",
-    "summaryFeedbackFailed": "Dili makapadala sa imong feedback. Palihug sulayi pag-usab."
+    "summaryFeedbackFailed": "Dili makapadala sa imong feedback. Palihug sulayi pag-usab.",
+    "summaryFeedbackProcessing": "Gipadala ang imong feedback ug gi-update ang summary…"
 }

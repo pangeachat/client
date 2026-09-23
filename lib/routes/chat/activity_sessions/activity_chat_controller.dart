@@ -328,8 +328,8 @@ class ActivityChatController {
     await regenerateSummaryWithFeedback(context, resp);
   }
 
-  /// Regenerates the summary with [feedback] and tells the learner whether it
-  /// went through.
+  /// Regenerates the summary with [feedback], telling the learner it is under
+  /// way and then whether it went through.
   @visibleForTesting
   Future<void> regenerateSummaryWithFeedback(
     BuildContext context,
@@ -339,8 +339,38 @@ class ActivityChatController {
     // regenerates, unmounting [context], so capture what the result needs now.
     final messenger = ScaffoldMessenger.of(context);
     final l10n = L10n.of(context);
+    final spinnerColor = Theme.of(context).colorScheme.onInverseSurface;
+
+    // Regeneration takes a while, so say it has started. Clearing the current
+    // snackbar first keeps this one at the front of the queue, which closing
+    // it through its controller requires.
+    messenger.hideCurrentSnackBar();
+    final processing = messenger.showSnackBarAnnounced(
+      SnackBar(
+        content: Row(
+          spacing: 12.0,
+          children: [
+            SizedBox.square(
+              dimension: 16.0,
+              child: CircularProgressIndicator(
+                strokeWidth: 2.0,
+                color: spinnerColor,
+              ),
+            ),
+            Expanded(child: Text(l10n.summaryFeedbackProcessing)),
+          ],
+        ),
+        persist: true,
+        showCloseIcon: true,
+      ),
+      announcement: l10n.summaryFeedbackProcessing,
+    );
+    var processingShown = true;
+    unawaited(processing.closed.then((_) => processingShown = false));
+
     final ok = await fetchSummaries(feedback: feedback);
     if (!messenger.mounted) return;
+    if (processingShown) processing.close();
     messenger.showSnackBarAnnounced(
       SnackBar(
         content: Text(

@@ -2559,7 +2559,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-09-23 14:56:03.253235",
+    "@@last_modified": "2026-09-23 15:42:48.046012",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10877,5 +10877,6 @@
     "goalReportErrorUnreportable": "Nenhuma vez do orquestrador corresponde a esta estrela, por isso não há nada contra o qual registar o relatório.",
     "goalReportErrorRetry": "A pesquisa pela vez não terminou. Tente novamente.",
     "summaryFeedbackReceived": "Obrigado! Recebemos o seu feedback.",
-    "summaryFeedbackFailed": "Não foi possível enviar o seu feedback. Por favor, tente novamente."
+    "summaryFeedbackFailed": "Não foi possível enviar o seu feedback. Por favor, tente novamente.",
+    "summaryFeedbackProcessing": "A enviar o seu feedback e a atualizar o resumo…"
 }

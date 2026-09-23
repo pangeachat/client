@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-09-23 14:56:00.086327",
+    "@@last_modified": "2026-09-23 15:42:45.138729",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10063,5 +10063,6 @@
     "goalReportErrorUnreportable": "Egyetlen vezénylő forduló sem egyezik ezzel a csillaggal, így nincs mi ellen rögzíteni a jelentést.",
     "goalReportErrorRetry": "A forduló keresése nem fejeződött be. Próbáld újra.",
     "summaryFeedbackReceived": "Köszönjük! Megkaptuk visszajelzését.",
-    "summaryFeedbackFailed": "Nem sikerült elküldeni visszajelzését. Kérjük, próbálja újra."
+    "summaryFeedbackFailed": "Nem sikerült elküldeni visszajelzését. Kérjük, próbálja újra.",
+    "summaryFeedbackProcessing": "Visszajelzés küldése és az összefoglaló frissítése…"
 }

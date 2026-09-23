@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-09-23 14:56:01.968114",
+    "@@last_modified": "2026-09-23 15:42:46.880731",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2368,5 +2368,6 @@
     "goalReportErrorUnreportable": "Tsy misy fihodinana mpandrindra mifanaraka amin'ity kintana ity, ka tsy misy azo anoratana ny tatitra.",
     "goalReportErrorRetry": "Tsy nahavita ny fikarohana ny fihodinana. Andramo indray.",
     "summaryFeedbackReceived": "Misaotra! Voaray ny hevitrao.",
-    "summaryFeedbackFailed": "Tsy afaka nandefa ny hevitrao. Andramo indray azafady."
+    "summaryFeedbackFailed": "Tsy afaka nandefa ny hevitrao. Andramo indray azafady.",
+    "summaryFeedbackProcessing": "Mandefa ny hevitrao sy manavao ny famintinana…"
 }

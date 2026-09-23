@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-09-23 14:55:59.798493",
+    "@@last_modified": "2026-09-23 15:42:45.194362",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2368,5 +2368,6 @@
     "goalReportErrorUnreportable": "Pa gen okenn vire òkestratè ki matche ak zetwal sa a, kidonk pa gen anyen pou anrejistre rapò a kont li.",
     "goalReportErrorRetry": "Rechèch pou vire a pa t fini. Eseye ankò.",
     "summaryFeedbackReceived": "Mèsi! Nou resevwa kòmantè ou.",
-    "summaryFeedbackFailed": "Nou pa t' kapab voye kòmantè ou. Tanpri eseye ankò."
+    "summaryFeedbackFailed": "Nou pa t' kapab voye kòmantè ou. Tanpri eseye ankò.",
+    "summaryFeedbackProcessing": "N ap voye fidbak ou epi n ap mete rezime a ajou…"
 }

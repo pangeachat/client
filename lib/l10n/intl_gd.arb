@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-09-23 14:55:59.217343",
+    "@@last_modified": "2026-09-23 15:42:44.921766",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2368,5 +2368,6 @@
     "goalReportErrorUnreportable": "Chan eil tionndadh orcastradair a’ freagairt ris an rionnag seo, mar sin chan eil dad ann airson an aithisg a chlàradh na aghaidh.",
     "goalReportErrorRetry": "Cha do chrìochnaich an rannsachadh airson an tionndaidh. Feuch ris a-rithist.",
     "summaryFeedbackReceived": "Tapadh leat! Fhuair sinn d' fhios air ais.",
-    "summaryFeedbackFailed": "Cha b' urrainn dhuinn d' fhios air ais a chur. Feuch ris a-rithist."
+    "summaryFeedbackFailed": "Cha b' urrainn dhuinn d' fhios air ais a chur. Feuch ris a-rithist.",
+    "summaryFeedbackProcessing": "A’ cur do fhios air ais agus ag ùrachadh an ath-ghoirid…"
 }

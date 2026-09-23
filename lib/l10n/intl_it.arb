@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-23 14:56:00.423689",
+    "@@last_modified": "2026-09-23 15:42:45.458344",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -10033,5 +10033,6 @@
     "goalReportErrorUnreportable": "Nessun turno dell'orchestratore corrisponde a questa stella, quindi non c'è nulla su cui registrare la segnalazione.",
     "goalReportErrorRetry": "La ricerca del turno non è terminata. Riprova.",
     "summaryFeedbackReceived": "Grazie! Abbiamo ricevuto il tuo feedback.",
-    "summaryFeedbackFailed": "Impossibile inviare il tuo feedback. Riprova."
+    "summaryFeedbackFailed": "Impossibile inviare il tuo feedback. Riprova.",
+    "summaryFeedbackProcessing": "Invio del feedback e aggiornamento del riepilogo…"
 }

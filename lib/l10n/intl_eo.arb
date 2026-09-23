@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-23 14:55:58.163182",
+    "@@last_modified": "2026-09-23 15:42:43.862099",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10905,5 +10905,6 @@
     "goalReportErrorUnreportable": "Neniu orkestrestra vico kongruas kun ĉi tiu stelo, do ne estas io por registri la raporton kontraŭe.",
     "goalReportErrorRetry": "La serĉo de la vico ne finiĝis. Provu denove.",
     "summaryFeedbackReceived": "Dankon! Ni ricevis vian retrokuplon.",
-    "summaryFeedbackFailed": "Ne eblis sendi vian retrokuplon. Bonvolu reprovi."
+    "summaryFeedbackFailed": "Ne eblis sendi vian retrokuplon. Bonvolu reprovi.",
+    "summaryFeedbackProcessing": "Sendante vian retrosciigon kaj ĝisdatigante la resumon…"
 }

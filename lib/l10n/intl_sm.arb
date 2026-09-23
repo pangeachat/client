@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-09-23 14:56:04.154197",
+    "@@last_modified": "2026-09-23 15:42:48.891656",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2368,5 +2368,6 @@
     "goalReportErrorUnreportable": "E leai se taʻamilosaga a le faʻatonu e fetaui ma lenei fetu, o lea e leai se mea e faʻamaumau ai le lipoti.",
     "goalReportErrorRetry": "E leʻi maeʻa le suʻesuʻega mo le taʻamilosaga. Toe taumafai.",
     "summaryFeedbackReceived": "Fa'afetai! Ua matou mauaina lau fa'amatalaga.",
-    "summaryFeedbackFailed": "E le'i mafai ona lafo lau fa'amatalaga. Fa'amolemole toe taumafai."
+    "summaryFeedbackFailed": "E le'i mafai ona lafo lau fa'amatalaga. Fa'amolemole toe taumafai.",
+    "summaryFeedbackProcessing": "Lafoina au manatu faaalia ma faafouina le aotelega…"
 }

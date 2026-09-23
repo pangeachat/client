@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-09-23 14:56:00.524726",
+    "@@last_modified": "2026-09-23 15:42:45.783594",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10729,5 +10729,6 @@
     "goalReportErrorUnreportable": "このスターに一致するオーケストレーターのターンがないため、報告を記録できません。",
     "goalReportErrorRetry": "ターンの検索が完了しませんでした。もう一度お試しください。",
     "summaryFeedbackReceived": "ありがとうございます！フィードバックを送信しました。",
-    "summaryFeedbackFailed": "フィードバックを送信できませんでした。もう一度お試しください。"
+    "summaryFeedbackFailed": "フィードバックを送信できませんでした。もう一度お試しください。",
+    "summaryFeedbackProcessing": "フィードバックを送信して要約を更新しています…"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-09-23 14:56:05.543041",
+    "@@last_modified": "2026-09-23 15:42:50.197399",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2368,5 +2368,6 @@
     "goalReportErrorUnreportable": "Akukho nto ilungelelanisiweyo ehambelana nale nkwenkwezi, ngoko akukho nto ingarekhodwa ngayo ingxelo.",
     "goalReportErrorRetry": "Ukukhangela okujikayo akugqitywanga. Zama kwakhona.",
     "summaryFeedbackReceived": "Enkosi! Siyifumene impendulo yakho.",
-    "summaryFeedbackFailed": "Ayikwazanga ukuthumela impendulo yakho. Nceda zama kwakhona."
+    "summaryFeedbackFailed": "Ayikwazanga ukuthumela impendulo yakho. Nceda zama kwakhona.",
+    "summaryFeedbackProcessing": "Sithumela ingxelo yakho kwaye sihlaziya isishwankathelo…"
 }

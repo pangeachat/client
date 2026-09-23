@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-09-23 14:55:57.965441",
+    "@@last_modified": "2026-09-23 15:42:43.580978",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9947,5 +9947,6 @@
     "goalReportErrorUnreportable": "Keine Orchestrator-Runde passt zu diesem Stern, daher gibt es nichts, worauf der Bericht aufgezeichnet werden könnte.",
     "goalReportErrorRetry": "Die Suche nach der Runde wurde nicht abgeschlossen. Versuche es erneut.",
     "summaryFeedbackReceived": "Danke! Wir haben Ihr Feedback erhalten.",
-    "summaryFeedbackFailed": "Ihr Feedback konnte nicht gesendet werden. Bitte versuchen Sie es erneut."
+    "summaryFeedbackFailed": "Ihr Feedback konnte nicht gesendet werden. Bitte versuchen Sie es erneut.",
+    "summaryFeedbackProcessing": "Ihr Feedback wird gesendet und die Zusammenfassung aktualisiert…"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-09-23 14:56:04.090825",
+    "@@last_modified": "2026-09-23 15:42:48.683309",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10905,5 +10905,6 @@
     "goalReportErrorUnreportable": "Žiadny ťah orchestrátora sa nezhoduje s touto hviezdou, takže nie je nič, voči čomu by sa správa zaznamenala.",
     "goalReportErrorRetry": "Vyhľadávanie ťahu sa nedokončilo. Skúste to znova.",
     "summaryFeedbackReceived": "Ďakujeme! Prijali sme vašu spätnú väzbu.",
-    "summaryFeedbackFailed": "Spätnú väzbu sa nepodarilo odoslať. Skúste to znova."
+    "summaryFeedbackFailed": "Spätnú väzbu sa nepodarilo odoslať. Skúste to znova.",
+    "summaryFeedbackProcessing": "Odosielanie spätnej väzby a aktualizácia zhrnutia…"
 }

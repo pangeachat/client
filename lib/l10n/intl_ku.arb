@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-09-23 14:56:01.347134",
+    "@@last_modified": "2026-09-23 15:42:46.146093",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2368,5 +2368,6 @@
     "goalReportErrorUnreportable": "هیچ نۆرەیەکی ڕێکخەر لەگەڵ ئەم ئەستێرەیەدا ناگونجێت، بۆیە هیچ شتێک نییە ڕاپۆرتەکەی لەسەر تۆمار بکرێت.",
     "goalReportErrorRetry": "گەڕان بەدوای نۆرەکەدا تەواو نەبوو. دووبارە هەوڵبدەوە.",
     "summaryFeedbackReceived": "سوپاس! فیدباکەکەت وەرگیرا.",
-    "summaryFeedbackFailed": "نەتوانرا فیدباکەکەت بنێردرێت. تکایە دووبارە هەوڵبدەرەوە."
+    "summaryFeedbackFailed": "نەتوانرا فیدباکەکەت بنێردرێت. تکایە دووبارە هەوڵبدەرەوە.",
+    "summaryFeedbackProcessing": "ناردنی فیدباکەکەت و نوێکردنەوەی پوختەکە…"
 }

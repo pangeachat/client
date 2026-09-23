@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-09-23 14:55:58.657384",
+    "@@last_modified": "2026-09-23 15:42:44.814758",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9960,5 +9960,6 @@
     "goalReportErrorUnreportable": "Ez dago orkestratzaile-txandarik izartxo honekin bat datorrenik, beraz ez dago txostena erregistratzeko ezer.",
     "goalReportErrorRetry": "Txanda bilaketa ez da amaitu. Saiatu berriro.",
     "summaryFeedbackReceived": "Eskerrik asko! Zure iritzia jaso dugu.",
-    "summaryFeedbackFailed": "Ezin izan da zure iritzia bidali. Saiatu berriro, mesedez."
+    "summaryFeedbackFailed": "Ezin izan da zure iritzia bidali. Saiatu berriro, mesedez.",
+    "summaryFeedbackProcessing": "Zure iritzia bidaltzen eta laburpena eguneratzen…"
 }

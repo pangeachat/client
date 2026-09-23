@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-23 14:56:02.643524",
+    "@@last_modified": "2026-09-23 15:42:47.496376",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9960,5 +9960,6 @@
     "goalReportErrorUnreportable": "Geen enkele orchestrator-beurt komt overeen met deze ster, dus er is niets om het rapport tegen te registreren.",
     "goalReportErrorRetry": "Het zoeken naar de beurt is niet voltooid. Probeer het opnieuw.",
     "summaryFeedbackReceived": "Bedankt! We hebben je feedback ontvangen.",
-    "summaryFeedbackFailed": "Feedback kon niet worden verzonden. Probeer het opnieuw."
+    "summaryFeedbackFailed": "Feedback kon niet worden verzonden. Probeer het opnieuw.",
+    "summaryFeedbackProcessing": "Je feedback wordt verzonden en de samenvatting wordt bijgewerkt…"
 }

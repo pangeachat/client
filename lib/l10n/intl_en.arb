@@ -4352,6 +4352,7 @@
     "feedbackRespDesc": "Check back tomorrow for activity updates.",
     "feedbackHint": "Your feedback",
     "feedbackButton": "Submit feedback",
+    "summaryFeedbackProcessing": "Sending your feedback and updating the summary…",
     "summaryFeedbackReceived": "Thanks! We received your feedback.",
     "summaryFeedbackFailed": "Couldn't send your feedback. Please try again.",
     "directMessageBotDesc": "Talking to humans is more fun but... AI is always ready!",

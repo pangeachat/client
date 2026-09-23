@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-09-23 14:56:05.984347",
+    "@@last_modified": "2026-09-23 15:42:50.579975",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2368,5 +2368,6 @@
     "goalReportErrorUnreportable": "Ko si iyipada oluṣakoso ti o baamu irawọ yii, nitorinaa ko si ohunkan lati gba ijabọ naa si.",
     "goalReportErrorRetry": "Wiwa fun iyipada naa ko pari. Gbiyanju lẹẹkansi.",
     "summaryFeedbackReceived": "O ṣeun! A ti gba esi rẹ.",
-    "summaryFeedbackFailed": "Ko le fi esi rẹ ranṣẹ. Jọwọ gbiyanju lẹẹkansi."
+    "summaryFeedbackFailed": "Ko le fi esi rẹ ranṣẹ. Jọwọ gbiyanju lẹẹkansi.",
+    "summaryFeedbackProcessing": "Nfi esi rẹ ranṣẹ ati mimu akopọ naa dojuiwọn…"
 }

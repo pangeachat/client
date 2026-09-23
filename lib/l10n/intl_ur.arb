@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-09-23 14:56:05.494255",
+    "@@last_modified": "2026-09-23 15:42:50.014376",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2368,5 +2368,6 @@
     "goalReportErrorUnreportable": "اس ستارے سے کوئی آرکیسٹریٹر ٹرن مماثل نہیں ہے، لہذا رپورٹ کو ریکارڈ کرنے کے لیے کچھ نہیں ہے۔",
     "goalReportErrorRetry": "ٹرن کی تلاش مکمل نہیں ہوئی۔ دوبارہ کوشش کریں۔",
     "summaryFeedbackReceived": "شکریہ! ہمیں آپ کی رائے موصول ہو گئی ہے۔",
-    "summaryFeedbackFailed": "آپ کی رائے بھیجی نہیں جا سکی۔ براہ کرم دوبارہ کوشش کریں۔"
+    "summaryFeedbackFailed": "آپ کی رائے بھیجی نہیں جا سکی۔ براہ کرم دوبارہ کوشش کریں۔",
+    "summaryFeedbackProcessing": "آپ کے تاثرات بھیجے جا رہے ہیں اور خلاصہ اپ ڈیٹ کیا جا رہا ہے…"
 }

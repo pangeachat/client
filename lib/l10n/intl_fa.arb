@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-23 14:55:58.739077",
+    "@@last_modified": "2026-09-23 15:42:44.036225",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10048,5 +10048,6 @@
     "goalReportErrorUnreportable": "هیچ نوبت ارکستراتوری با این ستاره مطابقت ندارد، بنابراین چیزی برای ثبت گزارش وجود ندارد.",
     "goalReportErrorRetry": "جستجو برای نوبت به پایان نرسید. دوباره تلاش کنید.",
     "summaryFeedbackReceived": "متشکریم! بازخورد شما دریافت شد.",
-    "summaryFeedbackFailed": "ارسال بازخورد شما ممکن نشد. لطفاً دوباره تلاش کنید."
+    "summaryFeedbackFailed": "ارسال بازخورد شما ممکن نشد. لطفاً دوباره تلاش کنید.",
+    "summaryFeedbackProcessing": "در حال ارسال بازخورد شما و به‌روزرسانی خلاصه..."
 }
