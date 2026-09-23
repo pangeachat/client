@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-09-22 15:19:28.830990",
+    "@@last_modified": "2026-09-23 15:42:43.349129",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2366,5 +2366,8 @@
     "goalReportNoMessages": "Bu sessiyada hələ mesaj göndərməmisiniz, ona görə də göstəriləcək heç nə yoxdur.",
     "goalReportThanks": "Bildirildi. Təşəkkürlər!",
     "goalReportErrorUnreportable": "Bu ulduza uyğun orkestrator növbəsi yoxdur, ona görə də hesabatı qeyd etmək üçün heç nə yoxdur.",
-    "goalReportErrorRetry": "Növbənin axtarışı başa çatmadı. Yenidən cəhd edin."
+    "goalReportErrorRetry": "Növbənin axtarışı başa çatmadı. Yenidən cəhd edin.",
+    "summaryFeedbackReceived": "Təşəkkürlər! Rəyinizi aldıq.",
+    "summaryFeedbackFailed": "Rəyinizi göndərmək mümkün olmadı. Zəhmət olmasa, yenidən cəhd edin.",
+    "summaryFeedbackProcessing": "Rəyinizi göndəririk və xülasəni yeniləyirik…"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-09-22 15:19:28.593488",
+    "@@last_modified": "2026-09-23 15:42:42.936500",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10264,5 +10264,8 @@
     "goalReportNoMessages": "لم ترسل أي رسالة في هذه الجلسة بعد، لذا لا يوجد شيء للإشارة إليه.",
     "goalReportThanks": "تم الإبلاغ. شكرًا لك!",
     "goalReportErrorUnreportable": "لا توجد دورة منسق مطابقة لهذه النجمة، لذا لا يوجد شيء لتسجيل التقرير ضده.",
-    "goalReportErrorRetry": "لم يكتمل البحث عن الدورة. حاول مرة أخرى."
+    "goalReportErrorRetry": "لم يكتمل البحث عن الدورة. حاول مرة أخرى.",
+    "summaryFeedbackReceived": "شكرًا! لقد تلقينا ملاحظاتك.",
+    "summaryFeedbackFailed": "تعذر إرسال ملاحظاتك. يرجى المحاولة مرة أخرى.",
+    "summaryFeedbackProcessing": "جارٍ إرسال ملاحظاتك وتحديث الملخص…"
 }

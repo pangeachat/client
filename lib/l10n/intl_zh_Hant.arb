@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 15:19:41.410723",
+    "@@last_modified": "2026-09-23 15:42:50.833940",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10064,5 +10064,8 @@
     "goalReportNoMessages": "您在此會話中尚未發送任何訊息，因此沒有可指向的內容。",
     "goalReportThanks": "已舉報。謝謝！",
     "goalReportErrorUnreportable": "沒有協調者回合符合此星，因此無法記錄舉報。",
-    "goalReportErrorRetry": "回合搜尋未完成。請再試一次。"
+    "goalReportErrorRetry": "回合搜尋未完成。請再試一次。",
+    "summaryFeedbackReceived": "感謝！我們已收到您的意見回饋。",
+    "summaryFeedbackFailed": "無法傳送您的意見回饋。請再試一次。",
+    "summaryFeedbackProcessing": "正在傳送您的意見回饋並更新摘要…"
 }

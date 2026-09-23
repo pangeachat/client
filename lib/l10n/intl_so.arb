@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-09-22 15:19:38.791636",
+    "@@last_modified": "2026-09-23 15:42:49.200067",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2366,5 +2366,8 @@
     "goalReportNoMessages": "Weli ma aadan dirin farriin fadhigan, sidaa darteed ma jirto wax la tilmaamo.",
     "goalReportThanks": "Waa la soo sheegay. Mahadsanid!",
     "goalReportErrorUnreportable": "Ma jirto isku-dubbaride u dhiganta xiddigtan, sidaa darteed ma jirto wax lagu diiwaan geliyo warbixinta.",
-    "goalReportErrorRetry": "Raadinta wareegga ma dhammaan. Isku day mar kale."
+    "goalReportErrorRetry": "Raadinta wareegga ma dhammaan. Isku day mar kale.",
+    "summaryFeedbackReceived": "Waad ku mahadsan tahay! Waxaan helnay jawaab celintaada.",
+    "summaryFeedbackFailed": "Lama soo diri karin jawaab celintaada. Fadlan mar kale isku day.",
+    "summaryFeedbackProcessing": "Waxaan diraynaa jawaab celintaada oo waxaan cusboonaysiinaynaa soo koobidda…"
 }

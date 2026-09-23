@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-09-22 15:19:35.955551",
+    "@@last_modified": "2026-09-23 15:42:47.493611",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2366,5 +2366,8 @@
     "goalReportNoMessages": "Għadek ma bgħatt l-ebda messaġġ f'din is-sessjoni, allura m'hemm xejn x'tindika.",
     "goalReportThanks": "Irrapportat. Grazzi!",
     "goalReportErrorUnreportable": "L-ebda dawra tal-orkestratur ma taqbel ma' din l-istilla, allura m'hemm xejn biex tirreġistra r-rapport kontrih.",
-    "goalReportErrorRetry": "It-tfittxija għad-dawra ma spiċċatx. Erġa' pprova."
+    "goalReportErrorRetry": "It-tfittxija għad-dawra ma spiċċatx. Erġa' pprova.",
+    "summaryFeedbackReceived": "Grazzi! Irċevejna l-feedback tiegħek.",
+    "summaryFeedbackFailed": "Ma setax jintbagħat il-feedback tiegħek. Jekk jogħġbok erġa' pprova.",
+    "summaryFeedbackProcessing": "Qed nibagħtu l-feedback tiegħek u naġġornaw is-sommarju…"
 }

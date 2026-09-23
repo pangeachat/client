@@ -3093,7 +3093,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-09-22 15:19:39.678651",
+    "@@last_modified": "2026-09-23 15:42:49.639554",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10590,5 +10590,8 @@
     "goalReportNoMessages": "คุณยังไม่ได้ส่งข้อความในเซสชันนี้ ดังนั้นจึงไม่มีอะไรให้ชี้ไปที่",
     "goalReportThanks": "รายงานแล้ว ขอบคุณ!",
     "goalReportErrorUnreportable": "ไม่มีการตอบกลับจากผู้ดูแลที่ตรงกับดาวดวงนี้ ดังนั้นจึงไม่มีอะไรให้บันทึกรายงาน",
-    "goalReportErrorRetry": "การค้นหาการตอบกลับไม่เสร็จสมบูรณ์ โปรดลองอีกครั้ง"
+    "goalReportErrorRetry": "การค้นหาการตอบกลับไม่เสร็จสมบูรณ์ โปรดลองอีกครั้ง",
+    "summaryFeedbackReceived": "ขอบคุณ! เราได้รับความคิดเห็นของคุณแล้ว",
+    "summaryFeedbackFailed": "ไม่สามารถส่งความคิดเห็นของคุณได้ โปรดลองอีกครั้ง",
+    "summaryFeedbackProcessing": "กำลังส่งคำติชมและอัปเดตสรุปของคุณ…"
 }

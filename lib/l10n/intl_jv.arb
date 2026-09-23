@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-09-22 15:19:33.409767",
+    "@@last_modified": "2026-09-23 15:42:45.928955",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2366,5 +2366,8 @@
     "goalReportNoMessages": "Sampeyan durung ngirim pesen ing sesi iki, dadi ora ana sing bisa ditunjuk.",
     "goalReportThanks": "Wis dilaporake. Matur nuwun!",
     "goalReportErrorUnreportable": "Ora ana giliran orkestrator sing cocog karo lintang iki, dadi ora ana sing bisa direkam laporan kasebut.",
-    "goalReportErrorRetry": "Pencarian giliran durung rampung. Coba maneh."
+    "goalReportErrorRetry": "Pencarian giliran durung rampung. Coba maneh.",
+    "summaryFeedbackReceived": "Matur nuwun! Tanggapan panjenengan sampun katampi.",
+    "summaryFeedbackFailed": "Mboten saged ngirim tanggapan panjenengan. Mangga dicobi malih.",
+    "summaryFeedbackProcessing": "Nirim tanggapan sampeyan lan nganyari ringkesan…"
 }

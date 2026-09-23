@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-09-22 15:19:30.240946",
+    "@@last_modified": "2026-09-23 15:42:44.108180",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9955,5 +9955,8 @@
     "goalReportNoMessages": "Te pole selles seansis veel ühtegi sõnumit saatnud, seega pole midagi, millele viidata.",
     "goalReportThanks": "Teatatud. Aitäh!",
     "goalReportErrorUnreportable": "Selle tähega ei kattu ükski orkestraatori käik, seega pole midagi, mille vastu aruannet salvestada.",
-    "goalReportErrorRetry": "Käigu otsing ei lõppenud. Proovige uuesti."
+    "goalReportErrorRetry": "Käigu otsing ei lõppenud. Proovige uuesti.",
+    "summaryFeedbackReceived": "Aitäh! Saime teie tagasiside kätte.",
+    "summaryFeedbackFailed": "Tagasisidet ei saanud saata. Palun proovige uuesti.",
+    "summaryFeedbackProcessing": "Teie tagasiside saatmine ja kokkuvõtte värskendamine…"
 }

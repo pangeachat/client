@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-09-22 15:19:30.576791",
+    "@@last_modified": "2026-09-23 15:42:44.097828",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10313,5 +10313,8 @@
     "goalReportNoMessages": "Vous n'avez pas encore envoyé de message dans cette session, il n'y a donc rien à signaler.",
     "goalReportThanks": "Signalé. Merci !",
     "goalReportErrorUnreportable": "Aucun tour d'orchestrateur ne correspond à cette étoile, il n'y a donc rien contre quoi enregistrer le rapport.",
-    "goalReportErrorRetry": "La recherche du tour n'est pas terminée. Réessayez."
+    "goalReportErrorRetry": "La recherche du tour n'est pas terminée. Réessayez.",
+    "summaryFeedbackReceived": "Merci ! Nous avons bien reçu vos commentaires.",
+    "summaryFeedbackFailed": "Impossible d'envoyer vos commentaires. Veuillez réessayer.",
+    "summaryFeedbackProcessing": "Envoi de vos commentaires et mise à jour du résumé…"
 }

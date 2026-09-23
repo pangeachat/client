@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-09-22 15:19:31.978280",
+    "@@last_modified": "2026-09-23 15:42:44.958959",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2366,5 +2366,8 @@
     "goalReportNoMessages": "Koj tseem tsis tau xa lus hauv qhov kev sib tham no, yog li tsis muaj dab tsi los qhia.",
     "goalReportThanks": "Tau qhia lawm. Ua tsaug!",
     "goalReportErrorUnreportable": "Tsis muaj tus tswj hwm hloov pauv sib phim lub hnub qub no, yog li tsis muaj dab tsi los sau qhov kev qhia ntawd.",
-    "goalReportErrorRetry": "Kev tshawb nrhiav qhov hloov pauv tsis tiav. Sim dua."
+    "goalReportErrorRetry": "Kev tshawb nrhiav qhov hloov pauv tsis tiav. Sim dua.",
+    "summaryFeedbackReceived": "Ua tsaug! Peb tau txais koj cov lus qhia.",
+    "summaryFeedbackFailed": "Tsis tuaj yeem xa koj cov lus qhia. Thov sim dua.",
+    "summaryFeedbackProcessing": "Xa koj cov lus qhia thiab hloov kho cov ntsiab lus…"
 }

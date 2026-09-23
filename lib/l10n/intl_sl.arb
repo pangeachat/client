@@ -1802,7 +1802,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-09-22 15:19:38.448475",
+    "@@last_modified": "2026-09-23 15:42:48.641345",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10903,5 +10903,8 @@
     "goalReportNoMessages": "V tej seji še niste poslali sporočila, zato ni ničesar za pokazati.",
     "goalReportThanks": "Prijavljeno. Hvala!",
     "goalReportErrorUnreportable": "Noben orkestratorjev obrat se ne ujema s to zvezdico, zato ni ničesar, proti čemur bi zabeležili poročilo.",
-    "goalReportErrorRetry": "Iskanje obrata ni bilo dokončano. Poskusite znova."
+    "goalReportErrorRetry": "Iskanje obrata ni bilo dokončano. Poskusite znova.",
+    "summaryFeedbackReceived": "Hvala! Prejeli smo vaše povratne informacije.",
+    "summaryFeedbackFailed": "Povratnih informacij ni bilo mogoče poslati. Poskusite znova.",
+    "summaryFeedbackProcessing": "Pošiljanje vaših povratnih informacij in posodabljanje povzetka …"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 15:19:39.577527",
+    "@@last_modified": "2026-09-23 15:42:49.201200",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10476,5 +10476,8 @@
     "goalReportNoMessages": "Du har inte skickat något meddelande i denna session än, så det finns inget att peka på.",
     "goalReportThanks": "Rapporterat. Tack!",
     "goalReportErrorUnreportable": "Ingen orkestratörsväng matchar denna stjärna, så det finns inget att registrera rapporten mot.",
-    "goalReportErrorRetry": "Sökningen efter svängen slutfördes inte. Försök igen."
+    "goalReportErrorRetry": "Sökningen efter svängen slutfördes inte. Försök igen.",
+    "summaryFeedbackReceived": "Tack! Vi har mottagit din feedback.",
+    "summaryFeedbackFailed": "Kunde inte skicka din feedback. Försök igen.",
+    "summaryFeedbackProcessing": "Skickar din feedback och uppdaterar sammanfattningen…"
 }

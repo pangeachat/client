@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-09-22 15:20:20.322385",
+    "@@last_modified": "2026-09-23 15:42:45.651604",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2366,5 +2366,8 @@
     "goalReportNoMessages": "I zitebeghị ozi na nnọkọ a, yabụ na enweghị ihe a ga-atụ aka na ya.",
     "goalReportThanks": "Akọọla ya. Daalụ!",
     "goalReportErrorUnreportable": "Enweghị ntụgharị onye nhazi dabara na kpakpando a, yabụ na enweghị ihe a ga-edekọ akụkọ ahụ megide.",
-    "goalReportErrorRetry": "Nchọta maka ntụgharị ahụ emechaala. Gbalịa ọzọ."
+    "goalReportErrorRetry": "Nchọta maka ntụgharị ahụ emechaala. Gbalịa ọzọ.",
+    "summaryFeedbackReceived": "Daalụ! Anyị nwetara nzaghachi gị.",
+    "summaryFeedbackFailed": "Enweghị ike izipu nzaghachi gị. Biko nwaa ọzọ.",
+    "summaryFeedbackProcessing": "Na-eziga nzaghachi gị ma na-emelite nchịkọta…"
 }

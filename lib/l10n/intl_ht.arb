@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-09-22 15:19:32.101443",
+    "@@last_modified": "2026-09-23 15:42:45.194362",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2366,5 +2366,8 @@
     "goalReportNoMessages": "Ou poko voye yon mesaj nan sesyon sa a, kidonk pa gen anyen pou montre.",
     "goalReportThanks": "Rapòte. Mèsi!",
     "goalReportErrorUnreportable": "Pa gen okenn vire òkestratè ki matche ak zetwal sa a, kidonk pa gen anyen pou anrejistre rapò a kont li.",
-    "goalReportErrorRetry": "Rechèch pou vire a pa t fini. Eseye ankò."
+    "goalReportErrorRetry": "Rechèch pou vire a pa t fini. Eseye ankò.",
+    "summaryFeedbackReceived": "Mèsi! Nou resevwa kòmantè ou.",
+    "summaryFeedbackFailed": "Nou pa t' kapab voye kòmantè ou. Tanpri eseye ankò.",
+    "summaryFeedbackProcessing": "N ap voye fidbak ou epi n ap mete rezime a ajou…"
 }

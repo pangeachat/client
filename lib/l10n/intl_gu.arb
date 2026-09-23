@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-09-22 15:19:31.431287",
+    "@@last_modified": "2026-09-23 15:42:44.494487",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2366,5 +2366,8 @@
     "goalReportNoMessages": "તમે આ સેશનમાં હજુ સુધી કોઈ મેસેજ મોકલ્યો નથી, તેથી નિર્દેશ કરવા માટે કંઈ નથી.",
     "goalReportThanks": "જાણ કરી. આભાર!",
     "goalReportErrorUnreportable": "આ સ્ટાર સાથે કોઈ ઓર્કેસ્ટ્રેટર ટર્ન મેચ થતો નથી, તેથી રિપોર્ટ રેકોર્ડ કરવા માટે કંઈ નથી.",
-    "goalReportErrorRetry": "ટર્ન માટેની શોધ પૂર્ણ થઈ નથી. ફરી પ્રયાસ કરો."
+    "goalReportErrorRetry": "ટર્ન માટેની શોધ પૂર્ણ થઈ નથી. ફરી પ્રયાસ કરો.",
+    "summaryFeedbackReceived": "આભાર! અમને તમારો પ્રતિભાવ મળ્યો.",
+    "summaryFeedbackFailed": "તમારો પ્રતિભાવ મોકલી શકાયો નથી. કૃપા કરીને ફરી પ્રયાસ કરો.",
+    "summaryFeedbackProcessing": "તમારા પ્રતિભાવ મોકલી રહ્યા છીએ અને સારાંશ અપડેટ કરી રહ્યા છીએ…"
 }

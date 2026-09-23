@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-09-22 15:19:33.551627",
+    "@@last_modified": "2026-09-23 15:42:45.882124",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2366,5 +2366,8 @@
     "goalReportNoMessages": "Сіз бұл сессияда әлі хабарлама жібермедіңіз, сондықтан көрсететін ештеңе жоқ.",
     "goalReportThanks": "Хабарланды. Рахмет!",
     "goalReportErrorUnreportable": "Бұл жұлдызға сәйкес келетін оркестратор кезегі жоқ, сондықтан есепті жазуға ештеңе жоқ.",
-    "goalReportErrorRetry": "Кезек іздеу аяқталмады. Қайталап көріңіз."
+    "goalReportErrorRetry": "Кезек іздеу аяқталмады. Қайталап көріңіз.",
+    "summaryFeedbackReceived": "Рахмет! Пікіріңізді алдық.",
+    "summaryFeedbackFailed": "Пікіріңізді жіберу мүмкін болмады. Қайталап көріңіз.",
+    "summaryFeedbackProcessing": "Пікіріңізді жіберіп, қорытындыны жаңартудамыз…"
 }

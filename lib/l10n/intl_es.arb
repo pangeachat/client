@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-09-22 15:19:30.102308",
+    "@@last_modified": "2026-09-23 15:42:44.013834",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8177,5 +8177,8 @@
     "goalReportNoMessages": "Aún no has enviado ningún mensaje en esta sesión, así que no hay nada que señalar.",
     "goalReportThanks": "Reportado. ¡Gracias!",
     "goalReportErrorUnreportable": "Ningún turno del orquestador coincide con esta estrella, así que no hay nada contra lo que registrar el informe.",
-    "goalReportErrorRetry": "La búsqueda del turno no finalizó. Inténtalo de nuevo."
+    "goalReportErrorRetry": "La búsqueda del turno no finalizó. Inténtalo de nuevo.",
+    "summaryFeedbackReceived": "¡Gracias! Recibimos tus comentarios.",
+    "summaryFeedbackFailed": "No se pudieron enviar tus comentarios. Inténtalo de nuevo.",
+    "summaryFeedbackProcessing": "Enviando tus comentarios y actualizando el resumen…"
 }

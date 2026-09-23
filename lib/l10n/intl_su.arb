@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-09-22 15:19:39.906563",
+    "@@last_modified": "2026-09-23 15:42:49.278373",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2366,5 +2366,8 @@
     "goalReportNoMessages": "Anjeun teu acan ngirim pesen dina sési ieu, janten teu aya anu tiasa ditunjuk.",
     "goalReportThanks": "Dilaporkeun. Hatur nuhun!",
     "goalReportErrorUnreportable": "Teu aya giliran orkestrator anu cocog sareng béntang ieu, janten teu aya anu tiasa ngarékam laporan.",
-    "goalReportErrorRetry": "Milarian giliran henteu réngsé. Cobi deui."
+    "goalReportErrorRetry": "Milarian giliran henteu réngsé. Cobi deui.",
+    "summaryFeedbackReceived": "Hatur nuhun! Tanggapan anjeun parantos katampi.",
+    "summaryFeedbackFailed": "Tanggapan anjeun teu tiasa dikirim. Punten cobian deui.",
+    "summaryFeedbackProcessing": "Ngirim tanggapan anjeun sareng ngapdet ringkesanana…"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-09-22 15:19:28.708833",
+    "@@last_modified": "2026-09-23 15:42:42.994957",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2366,5 +2366,8 @@
     "goalReportNoMessages": "Još niste poslali poruku u ovoj sesiji, tako da nema ništa za pokazati.",
     "goalReportThanks": "Prijavljeno. Hvala!",
     "goalReportErrorUnreportable": "Nijedan potez orkestratora ne odgovara ovoj zvjezdici, tako da nema ništa protiv čega bi se prijava zabilježila.",
-    "goalReportErrorRetry": "Pretraga poteza nije završena. Pokušajte ponovo."
+    "goalReportErrorRetry": "Pretraga poteza nije završena. Pokušajte ponovo.",
+    "summaryFeedbackReceived": "Hvala! Primili smo vaše povratne informacije.",
+    "summaryFeedbackFailed": "Nismo mogli poslati vaše povratne informacije. Pokušajte ponovo.",
+    "summaryFeedbackProcessing": "Slanje povratnih informacija i ažuriranje sažetka…"
 }

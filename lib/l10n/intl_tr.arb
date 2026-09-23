@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-09-22 15:19:39.809264",
+    "@@last_modified": "2026-09-23 15:42:49.738754",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10259,5 +10259,8 @@
     "goalReportNoMessages": "Bu oturumda henüz bir mesaj göndermediniz, bu yüzden gösterecek bir şey yok.",
     "goalReportThanks": "Bildirildi. Teşekkürler!",
     "goalReportErrorUnreportable": "Bu yıldızla eşleşen bir orkestratör dönüşü yok, bu yüzden raporu kaydedecek bir şey yok.",
-    "goalReportErrorRetry": "Dönüş araması tamamlanmadı. Tekrar deneyin."
+    "goalReportErrorRetry": "Dönüş araması tamamlanmadı. Tekrar deneyin.",
+    "summaryFeedbackReceived": "Teşekkürler! Geri bildiriminiz alındı.",
+    "summaryFeedbackFailed": "Geri bildiriminiz gönderilemedi. Lütfen tekrar deneyin.",
+    "summaryFeedbackProcessing": "Geri bildiriminiz gönderiliyor ve özet güncelleniyor…"
 }
