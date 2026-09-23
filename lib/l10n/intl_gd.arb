@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "Cha b' urrainn an clàradh a chaidh a shàbhaladh bho {name} a luchdachadh a-nuas, is mar sin cha b' urrainn a thionnsgrìobhadh.",
     "callTranscriptChooseLanguage": "Dè an cànan a bhathar a' bruidhinn?",
     "callTranscriptSubscribeForTranscription": "Fo-sgrìobh airson tionnsgrìobhadh",
-    "unlockCallTranscript": "Fuadaich tionnsgrìobhadh a' ghairm"
+    "unlockCallTranscript": "Fuadaich tionnsgrìobhadh a' ghairm",
+    "activitySummaryUpdateFailed": "Cha b' urrainn an geàrr-chunntas seo ùrachadh."
 }

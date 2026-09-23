@@ -10017,5 +10017,6 @@
     "callTranscriptAudioUnavailable": "Tallennetun äänitteen lataaminen käyttäjältä {name} epäonnistui, joten sitä ei voitu litteroida.",
     "callTranscriptChooseLanguage": "Mitä kieltä puhuttiin?",
     "callTranscriptSubscribeForTranscription": "Tilaa litterointi",
-    "unlockCallTranscript": "Avaa puhelun litterointi"
+    "unlockCallTranscript": "Avaa puhelun litterointi",
+    "activitySummaryUpdateFailed": "Yhteenvedon päivittäminen epäonnistui."
 }

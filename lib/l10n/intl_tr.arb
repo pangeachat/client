@@ -10281,5 +10281,6 @@
     "callTranscriptAudioUnavailable": "{name} adlı kaydın indirilmesi mümkün olmadığından metne çevrilemedi.",
     "callTranscriptChooseLanguage": "Hangi dil konuşuldu?",
     "callTranscriptSubscribeForTranscription": "Metne çevirme için abone ol",
-    "unlockCallTranscript": "Çağrı dökümünü aç"
+    "unlockCallTranscript": "Çağrı dökümünü aç",
+    "activitySummaryUpdateFailed": "Bu özet güncellenemedi."
 }

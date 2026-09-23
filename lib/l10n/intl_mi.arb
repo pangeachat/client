@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "Kāore i taea te tikiake i te rekoata i tiakina mai i a {name}, nō reira kāore i taea te tuhi.",
     "callTranscriptChooseLanguage": "He aha te reo i kōrerohia?",
     "callTranscriptSubscribeForTranscription": "Ohauru mō te tuhinga",
-    "unlockCallTranscript": "Wewete i te tuhinga waea"
+    "unlockCallTranscript": "Wewete i te tuhinga waea",
+    "activitySummaryUpdateFailed": "Kāore i taea te whakahou i tēnei whakarāpopototanga."
 }

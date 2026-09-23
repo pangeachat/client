@@ -10880,5 +10880,6 @@
     "callTranscriptAudioUnavailable": "{name}-ის შენახული ჩანაწერი ვერ ჩამოიტვირთა, ამიტომ მისი ტრანსკრიფცია ვერ მოხერხდა.",
     "callTranscriptChooseLanguage": "რა ენაზე საუბრობდით?",
     "callTranscriptSubscribeForTranscription": "გამოიწერეთ ტრანსკრიფციისთვის",
-    "unlockCallTranscript": "ზარის ტრანსკრიფციის განბლოკვა"
+    "unlockCallTranscript": "ზარის ტრანსკრიფციის განბლოკვა",
+    "activitySummaryUpdateFailed": "ამ შეჯამების განახლება ვერ მოხერხდა."
 }

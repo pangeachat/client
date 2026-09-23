@@ -10925,5 +10925,6 @@
     "callTranscriptAudioUnavailable": "Shranjene posnetke od {name} ni bilo mogoče prenesti, zato jih ni bilo mogoče prepisati.",
     "callTranscriptChooseLanguage": "Kateri jezik je bil govorjen?",
     "callTranscriptSubscribeForTranscription": "Naročite se na prepisovanje",
-    "unlockCallTranscript": "Odkleni prepis klica"
+    "unlockCallTranscript": "Odkleni prepis klica",
+    "activitySummaryUpdateFailed": "Tega povzetka ni bilo mogoče posodobiti."
 }

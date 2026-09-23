@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "{name} എന്നതിൽ നിന്നുള്ള സംരക്ഷിച്ച റെക്കോർഡിംഗ് ഡൗൺലോഡ് ചെയ്യാൻ കഴിഞ്ഞില്ല, അതിനാൽ അത് പകർത്തി എഴുതാൻ കഴിഞ്ഞില്ല.",
     "callTranscriptChooseLanguage": "ഏത് ഭാഷയാണ് സംസാരിച്ചത്?",
     "callTranscriptSubscribeForTranscription": "പകർത്തി എഴുതുന്നതിനായി സബ്സ്ക്രൈബ് ചെയ്യുക",
-    "unlockCallTranscript": "കോൾ ട്രാൻസ്ക്രിപ്റ്റ് അൺലോക്ക് ചെയ്യുക"
+    "unlockCallTranscript": "കോൾ ട്രാൻസ്ക്രിപ്റ്റ് അൺലോക്ക് ചെയ്യുക",
+    "activitySummaryUpdateFailed": "ഈ സംഗ്രഹം അപ്ഡേറ്റ് ചെയ്യാനായില്ല."
 }

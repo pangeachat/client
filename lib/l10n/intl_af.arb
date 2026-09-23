@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "Die gestoorde opname van {name} kon nie afgelaai word nie, en kon dus nie getranskribeer word nie.",
     "callTranscriptChooseLanguage": "Watter taal is gepraat?",
     "callTranscriptSubscribeForTranscription": "Teken in vir transkripsie",
-    "unlockCallTranscript": "Ontsluit oproep-transkripsie"
+    "unlockCallTranscript": "Ontsluit oproep-transkripsie",
+    "activitySummaryUpdateFailed": "Hierdie opsomming kon nie bygewerk word nie."
 }

@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "Ba a iya sauke rikodin da aka ajiye daga {name} ba, don haka ba a iya fassara shi ba.",
     "callTranscriptChooseLanguage": "Wane yare aka yi magana da shi?",
     "callTranscriptSubscribeForTranscription": "Biyan kuɗi don fassara",
-    "unlockCallTranscript": "Buɗe rubutun kiran"
+    "unlockCallTranscript": "Buɗe rubutun kiran",
+    "activitySummaryUpdateFailed": "Ba a iya sabunta wannan taƙaitaccen bayanin ba."
 }

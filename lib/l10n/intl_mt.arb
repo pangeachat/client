@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "Ir-reġistrazzjoni ssejvjata minn {name} ma setgħetx titniżżel, u għalhekk ma setgħetx tiġi traskritta.",
     "callTranscriptChooseLanguage": "X’lingwa nstema’?",
     "callTranscriptSubscribeForTranscription": "Abbona għat-traskrizzjoni",
-    "unlockCallTranscript": "Nisfrutta t-traskrizzjoni tas-sejħa"
+    "unlockCallTranscript": "Nisfrutta t-traskrizzjoni tas-sejħa",
+    "activitySummaryUpdateFailed": "Dan is-sommarju ma setax jiġi aġġornat."
 }

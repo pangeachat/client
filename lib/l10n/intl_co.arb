@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "A registrazione salvata da {name} ùn hà pussutu esse scaricata, dunque ùn hà pussutu esse trascritta.",
     "callTranscriptChooseLanguage": "Chì lingua hè stata parlata?",
     "callTranscriptSubscribeForTranscription": "Abbunà si per a trascrizzione",
-    "unlockCallTranscript": "Sbloccà a trascrizzione di a chjama"
+    "unlockCallTranscript": "Sbloccà a trascrizzione di a chjama",
+    "activitySummaryUpdateFailed": "Stu riassuntu ùn hà pussutu esse aghjurnatu."
 }

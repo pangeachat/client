@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "Kujambula kosungidwa kuchokera kwa {name} sikunathe kutsitsidwa, choncho sikunathe kulembedwa.",
     "callTranscriptChooseLanguage": "Ndi chilankhulo chiti chomwe chinalankhulidwa?",
     "callTranscriptSubscribeForTranscription": "Lembetsani kuti mulembedwe",
-    "unlockCallTranscript": "Tsegulani zolembedwa za kuyimba"
+    "unlockCallTranscript": "Tsegulani zolembedwa za kuyimba",
+    "activitySummaryUpdateFailed": "Chidulechi sichinathe kusinthidwa."
 }

@@ -9977,5 +9977,6 @@
     "callTranscriptAudioUnavailable": "Salvestatud heli {name} kasutajalt ei saanud alla laadida, seega ei saanud seda transkribeerida.",
     "callTranscriptChooseLanguage": "Mis keeles räägiti?",
     "callTranscriptSubscribeForTranscription": "Telli transkriptsioon",
-    "unlockCallTranscript": "Ava kõne transkriptsioon"
+    "unlockCallTranscript": "Ava kõne transkriptsioon",
+    "activitySummaryUpdateFailed": "Seda kokkuvõtet ei saanud värskendada."
 }

@@ -10068,5 +10068,6 @@
     "callTranscriptAudioUnavailable": "ضبط ذخیره‌شده از {name} قابل دانلود نبود، بنابراین رونویسی نشد.",
     "callTranscriptChooseLanguage": "به چه زبانی صحبت شد؟",
     "callTranscriptSubscribeForTranscription": "برای رونویسی مشترک شوید",
-    "unlockCallTranscript": "باز کردن قفل رونویسی تماس"
+    "unlockCallTranscript": "باز کردن قفل رونویسی تماس",
+    "activitySummaryUpdateFailed": "این خلاصه به‌روز نشد."
 }

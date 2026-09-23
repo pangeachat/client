@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "Sačuvani snimak od {name} nije bilo moguće preuzeti, pa ga nije bilo moguće prepisati.",
     "callTranscriptChooseLanguage": "Koji jezik je govoren?",
     "callTranscriptSubscribeForTranscription": "Pretplatite se za transkripciju",
-    "unlockCallTranscript": "Otključaj transkript poziva"
+    "unlockCallTranscript": "Otključaj transkript poziva",
+    "activitySummaryUpdateFailed": "Ovaj sažetak nije moguće ažurirati."
 }

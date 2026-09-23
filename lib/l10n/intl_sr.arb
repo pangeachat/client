@@ -10929,5 +10929,6 @@
     "callTranscriptAudioUnavailable": "Sačuvani snimak od {name} nije mogao da se preuzme, tako da nije mogao da bude prepisan.",
     "callTranscriptChooseLanguage": "Koji jezik je bio u upotrebi?",
     "callTranscriptSubscribeForTranscription": "Pretplatite se za transkripciju",
-    "unlockCallTranscript": "Otključaj transkript poziva"
+    "unlockCallTranscript": "Otključaj transkript poziva",
+    "activitySummaryUpdateFailed": "Ovaj rezime nije mogao da se ažurira."
 }

@@ -10916,5 +10916,6 @@
     "callTranscriptAudioUnavailable": "Le registration salvate de {name} non poteva esser discargate, ergo illo non poteva esser transcribite.",
     "callTranscriptChooseLanguage": "Qual lingua esseva parlate?",
     "callTranscriptSubscribeForTranscription": "Subscriber pro transcription",
-    "unlockCallTranscript": "Disblocar transcripto de appellation"
+    "unlockCallTranscript": "Disblocar transcripto de appellation",
+    "activitySummaryUpdateFailed": "Iste summario non poteva esser actualisate."
 }

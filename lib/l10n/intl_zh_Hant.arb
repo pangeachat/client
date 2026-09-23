@@ -10086,5 +10086,6 @@
     "callTranscriptAudioUnavailable": "無法下載來自 {name} 的已儲存錄音，因此無法轉錄。",
     "callTranscriptChooseLanguage": "說的是什麼語言？",
     "callTranscriptSubscribeForTranscription": "訂閱以取得轉錄",
-    "unlockCallTranscript": "解鎖通話記錄"
+    "unlockCallTranscript": "解鎖通話記錄",
+    "activitySummaryUpdateFailed": "無法更新此摘要。"
 }

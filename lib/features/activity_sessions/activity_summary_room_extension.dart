@@ -1,248 +1,270 @@
+import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
-import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
-import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
-import 'package:fluffychat/features/activity_sessions/activity_session_constants.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_analytics_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_model.dart';
-import 'package:fluffychat/features/activity_sessions/activity_summary_repo.dart';
-import 'package:fluffychat/features/activity_sessions/activity_summary_request_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_response_model.dart';
+import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
-import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
-import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-extension ActivitySummaryRoomExtension on Room {
-  ActivitySummaryModel? _activitySummary(String langCode) {
-    final stateEvent = getState(PangeaEventTypes.activitySummary, langCode);
-    if (stateEvent == null) return null;
+/// State keys of `pangea.activity_summary`. Each slot has one writer (org doc
+/// activity-summary.instructions.md, "Coordination model").
+abstract final class ActivitySummaryStateKeys {
+  /// The bot's loading marker, error marker, or summary.
+  static const canonical = 'canonical';
 
+  /// The room's vocabulary and grammar use, written by the first client that
+  /// finds it missing.
+  static const analytics = 'analytics';
+
+  /// A learner's retry or feedback, which the bot serves.
+  static const request = 'request';
+
+  /// Where clients wrote the summary before the bot made it (the preview
+  /// endpoint reports it as `default`).
+  static const legacy = '';
+  static const legacyPreview = 'default';
+}
+
+/// How long the bot keeps serving requests after it writes a summary. It
+/// leaves the room after that, so nothing would answer.
+const Duration activitySummaryServiceWindow = Duration(hours: 24);
+
+/// What a finished activity shows where its summary goes.
+class ActivitySummaryView {
+  final ActivitySummaryResponseModel? summary;
+  final bool isLoading;
+
+  /// Nothing to show and nothing coming: the error, with a retry when
+  /// [canRequest].
+  final bool hasFailed;
+
+  /// A regeneration failed; [summary] is the one the learner already had.
+  final bool updateFailed;
+
+  /// The bot is still serving this room, so a retry or feedback is answered.
+  final bool canRequest;
+
+  /// When [isLoading] ends if nothing lands first. Nothing rebuilds on its
+  /// own at that moment, so the owner schedules a recompute.
+  final DateTime? loadingDeadline;
+
+  const ActivitySummaryView({
+    required this.summary,
+    required this.isLoading,
+    required this.hasFailed,
+    required this.updateFailed,
+    required this.canRequest,
+    required this.loadingDeadline,
+  });
+
+  static const empty = ActivitySummaryView(
+    summary: null,
+    isLoading: false,
+    hasFailed: false,
+    updateFailed: false,
+    canRequest: false,
+    loadingDeadline: null,
+  );
+}
+
+extension ActivitySummaryRoomExtension on Room {
+  /// The bot's `canonical` slot. Any learner can write this event type, so a
+  /// write by anyone but the bot is ignored.
+  Event? get _canonicalSummaryEvent {
+    final event = getState(
+      PangeaEventTypes.activitySummary,
+      ActivitySummaryStateKeys.canonical,
+    );
+    // An invited room holds stripped state only, with no timestamps.
+    if (event is! Event) return null;
+    if (event.senderId != BotName.byEnvironment) {
+      ErrorHandler.logErrorOnce(
+        key: 'activity_summary_foreign_canonical:$id',
+        e: 'Canonical activity summary written by a non-bot sender',
+        data: {'roomID': id, 'sender': event.senderId},
+      );
+      return null;
+    }
+    return event;
+  }
+
+  ActivitySummaryModel? _parseSummary(StrippedStateEvent? event) {
+    if (event == null) return null;
     try {
-      return ActivitySummaryModel.fromJson(stateEvent.content);
+      return ActivitySummaryModel.fromJson(event.content);
     } catch (e, s) {
-      ErrorHandler.logError(
+      ErrorHandler.logErrorOnce(
+        key: 'activity_summary_parse:$id:${event.stateKey}',
         e: e,
         s: s,
-        data: {"roomID": id, "stateEvent": stateEvent.content},
+        data: {'roomID': id, 'stateKey': event.stateKey},
       );
       return null;
     }
   }
 
-  ActivitySummaryModel? get activitySummaryByL1 {
+  /// The bot's summary, else one an older client wrote under the viewer's L1
+  /// or the unkeyed slot.
+  ActivitySummaryModel? get activitySummary {
+    final canonical = _parseSummary(_canonicalSummaryEvent);
+    if (canonical != null) return canonical;
+
     final l1 = MatrixState.pangeaController.userController.userL1Code;
-    if (l1 == null) return null;
-    return _activitySummary(l1);
+    return _parseSummary(
+          l1 == null ? null : getState(PangeaEventTypes.activitySummary, l1),
+        ) ??
+        _parseSummary(
+          getState(
+            PangeaEventTypes.activitySummary,
+            ActivitySummaryStateKeys.legacy,
+          ),
+        );
   }
 
-  ActivitySummaryModel? get visibleActivitySummaryByL1 {
+  ActivitySummaryModel? get visibleActivitySummary {
     // account for edge case of activity summary in non-finished activity
     if (!isActivityFinished) return null;
-
-    final l1 = MatrixState.pangeaController.userController.userL1Code;
-    if (l1 == null) return null;
-    return _activitySummary(l1);
+    return activitySummary;
   }
 
   /// True once a generated summary is on screen. The summary carries the
   /// learner's goals from then on, so the goal header steps aside (#8289).
   bool get hasGeneratedActivitySummary =>
-      visibleActivitySummaryByL1?.summary != null;
+      visibleActivitySummary?.summary != null;
 
-  Future<void> _setActivitySummary(
-    ActivitySummaryModel summary,
-    String langCode,
-  ) async {
-    // Every writer routes through here, and a summary request can outlive the
-    // session that started it: sign out while it generates and the SDK's
-    // `bearerToken!` is null by the time the result is written (CLIENT-EQW,
-    // #9099). A signed-out account has nothing to record — skip, don't throw.
+  /// The room's vocabulary and grammar use, from its own slot or, for a
+  /// session summarized before that slot existed, from the old summary.
+  ActivitySummaryAnalyticsModel? get activitySummaryAnalytics {
+    final event = getState(
+      PangeaEventTypes.activitySummary,
+      ActivitySummaryStateKeys.analytics,
+    );
+    if (event != null) {
+      try {
+        return ActivitySummaryAnalyticsModel.fromJson(event.content);
+      } catch (e, s) {
+        ErrorHandler.logErrorOnce(
+          key: 'activity_summary_parse:$id:${event.stateKey}',
+          e: e,
+          s: s,
+          data: {'roomID': id, 'stateKey': event.stateKey},
+        );
+      }
+    }
+    return activitySummary?.analytics;
+  }
+
+  /// Computes the room's analytics from its messages and writes them, when
+  /// the activity is finished and no client has yet.
+  Future<void> ensureActivitySummaryAnalytics() async {
+    if (!isActivityFinished || activitySummaryAnalytics != null) return;
+    // A signed-out account has nothing to record (CLIENT-EQW, #9099).
+    if (!client.isLogged()) return;
+
+    final events = await getAllEvents();
+    final timeline = this.timeline ?? await getTimeline();
+    final messageEvents = getPangeaMessageEvents(
+      events,
+      timeline,
+      msgtypes: [MessageTypes.Text, MessageTypes.Audio],
+    );
+    final analytics = ActivitySummaryAnalyticsModel();
+    for (final messageEvent in messageEvents) {
+      analytics.addMessageConstructs(messageEvent);
+    }
+    await client.setRoomStateWithKey(
+      id,
+      PangeaEventTypes.activitySummary,
+      ActivitySummaryStateKeys.analytics,
+      analytics.toJson(),
+    );
+  }
+
+  /// Asks the bot to retry, or to regenerate with [feedback]. The timestamp
+  /// keeps a repeat request from matching the current state, which the
+  /// homeserver would drop as a no-op.
+  Future<void> requestActivitySummary({String? feedback}) async {
     if (!client.isLogged()) return;
     await client.setRoomStateWithKey(
       id,
       PangeaEventTypes.activitySummary,
-      langCode,
-      summary.toJson(),
+      ActivitySummaryStateKeys.request,
+      {
+        'feedback': ?feedback,
+        'requested_at': DateTime.now().toUtc().toIso8601String(),
+      },
     );
   }
 
-  ActivitySummaryRequestModel _constructSummaryRequest(
-    List<PangeaMessageEvent> messageEvents,
-    String langCode, {
-    required ActivityPlanModel activity,
-    String? feedback,
-  }) {
-    final List<ActivitySummaryResultsMessage> messages = [];
-    for (final messageEvent in messageEvents) {
-      ActivitySummaryResultsMessage activityMessage;
-      if (messageEvent.isAudioMessage) {
-        // A voice message without a transcript still counts as participation —
-        // dropping it silently made voice-heavy sessions look empty to the
-        // summary (#7660). The placeholder is a choreographer contract; the
-        // prompt counts it as participation without inventing its content.
-        final transcript =
-            messageEvent.getSpeechToTextLocal()?.transcript.text.trim() ??
-            ActivitySessionConstants.sttUnavailablePlaceholder;
+  bool get _botIsJoined =>
+      getParticipants()
+          .firstWhereOrNull((u) => u.id == BotName.byEnvironment)
+          ?.membership ==
+      Membership.join;
 
-        activityMessage = ActivitySummaryResultsMessage(
-          userId: messageEvent.senderId,
-          sent: transcript,
-          written: transcript,
-          time: messageEvent.originServerTs,
-          tool: [],
-        );
-      } else {
-        activityMessage = ActivitySummaryResultsMessage(
-          userId: messageEvent.senderId,
-          sent: messageEvent.originalSent?.text ?? messageEvent.body,
-          written: messageEvent.originalWrittenContent,
-          time: messageEvent.originServerTs,
-          tool: [
-            if (messageEvent.originalSent?.choreo?.includedIT == true) "it",
-            if (messageEvent.originalSent?.choreo?.includedIGC == true) "igc",
-          ],
-        );
-      }
-
-      messages.add(activityMessage);
-    }
-
-    final List<ContentFeedbackModel> contentFeedback = [];
-    if (feedback != null) {
-      final prevSummary = _activitySummary(langCode);
-      if (prevSummary?.summary != null) {
-        contentFeedback.add(
-          ContentFeedbackModel(
-            feedback: feedback,
-            content: prevSummary!.summary!,
-          ),
-        );
-      }
-    }
-
-    return ActivitySummaryRequestModel(
-      activity: activity,
-      activityResults: messages,
-      contentFeedback: contentFeedback,
-      roleState: activityRoles,
-      langCode: langCode,
+  /// A request the bot has not started serving yet, by the rule the bot uses:
+  /// newer than the start of the call behind the canonical slot.
+  Event? _pendingSummaryRequest(Event? canonicalEvent) {
+    final request = getState(
+      PangeaEventTypes.activitySummary,
+      ActivitySummaryStateKeys.request,
     );
+    if (request is! Event) return null;
+    final handledUntil =
+        _parseSummary(canonicalEvent)?.callStartedTs ??
+        canonicalEvent?.originServerTs.millisecondsSinceEpoch;
+    if (handledUntil != null &&
+        request.originServerTs.millisecondsSinceEpoch <= handledUntil) {
+      return null;
+    }
+    return request;
   }
 
-  ActivitySummaryAnalyticsModel _constrctSummaryAnalyticsModel(
-    List<PangeaMessageEvent> messageEvents,
-    String langCode,
-  ) {
-    final ActivitySummaryAnalyticsModel analytics =
-        _activitySummary(langCode)?.analytics ??
-        ActivitySummaryAnalyticsModel();
-    for (final messageEvent in messageEvents) {
-      analytics.addMessageConstructs(messageEvent);
-    }
-    return analytics;
-  }
+  /// [waitingSince] is when this client first saw the activity finished with
+  /// no summary slot; the bot gets [ActivitySummaryModel.requestTimeout] from
+  /// then to write one. Every loading state ends at a deadline, so a bot or
+  /// network that never answers ends in the error, not an endless spinner
+  /// (#8362).
+  ActivitySummaryView activitySummaryView({required DateTime? waitingSince}) {
+    if (!isActivityFinished) return ActivitySummaryView.empty;
 
-  Future<void> _startRequestingActivitySummary(String langCode) =>
-      _setActivitySummary(
-        ActivitySummaryModel(requestedAt: DateTime.now()),
-        langCode,
-      );
+    final now = DateTime.now();
+    final canonicalEvent = _canonicalSummaryEvent;
+    final model = activitySummary;
 
-  Future<void> _stopRequestActivitySummaryOnSuccess(
-    ActivitySummaryResponseModel resp,
-    ActivitySummaryAnalyticsModel? analytics,
-    String langCode,
-  ) => _setActivitySummary(
-    ActivitySummaryModel(summary: resp, analytics: analytics),
-    langCode,
-  );
+    final pendingRequest = _pendingSummaryRequest(canonicalEvent);
+    final loadingDeadline = [
+      if (model != null && model.isLoading) model.loadingDeadline,
+      pendingRequest?.originServerTs.add(ActivitySummaryModel.requestTimeout),
+      if (model == null && waitingSince != null)
+        waitingSince.add(ActivitySummaryModel.requestTimeout),
+    ].nonNulls.where((deadline) => deadline.isAfter(now)).maxOrNull;
+    final isLoading = loadingDeadline != null;
 
-  Future<void> _stopRequestingActivitySummaryOnError(
-    ActivitySummaryAnalyticsModel? analytics,
-    String langCode,
-  ) => _setActivitySummary(
-    ActivitySummaryModel(errorAt: DateTime.now(), analytics: analytics),
-    langCode,
-  );
+    final summary = isLoading ? null : model?.summary;
+    // Once the bot has written its slot, its service window says whether it
+    // is still here. Before that, only its membership can, and members load
+    // lazily, so it decides nothing else. A summary an older client wrote
+    // gets no feedback: the bot has none of its own to regenerate.
+    final canRequest = canonicalEvent != null
+        ? model?.summary == null ||
+              canonicalEvent.originServerTs
+                  .add(activitySummaryServiceWindow)
+                  .isAfter(now)
+        : model?.summary == null && _botIsJoined;
 
-  /// Returns whether the flow succeeded. Room state carries the loading/error
-  /// status for every viewer, but its writes need the network — so when the
-  /// network itself is what failed, the initiating client's only failure
-  /// signal is this return value (#8362). ActivityChatController turns it
-  /// into local error UI.
-  Future<bool> fetchSummaries(String langCode, {String? feedback}) async {
-    if (_activitySummary(langCode)?.summary != null && feedback == null) {
-      return true;
-    }
-
-    try {
-      await _startRequestingActivitySummary(langCode);
-      final events = await getAllEvents();
-      final timeline = this.timeline ?? await getTimeline();
-      final messageEvents = getPangeaMessageEvents(
-        events,
-        timeline,
-        msgtypes: [MessageTypes.Text, MessageTypes.Audio],
-      );
-
-      // The plan body is canonical in CMS (reference-only room state); resolve
-      // it before building the request rather than assuming it is hydrated.
-      final activity =
-          activityPlan ??
-          await ActivityPlanRepo.instance.getPlan(activityId ?? '');
-      if (activity == null) {
-        await _stopRequestingActivitySummaryOnError(null, langCode);
-        return false;
-      }
-      final req = _constructSummaryRequest(
-        messageEvents,
-        langCode,
-        activity: activity,
-        feedback: feedback,
-      );
-      final analytics = _constrctSummaryAnalyticsModel(messageEvents, langCode);
-
-      final result = await ActivitySummaryRepo.get(id, req);
-      var ok = false;
-      if (result.isError) {
-        if (_activitySummary(langCode)?.summary == null) {
-          await _stopRequestingActivitySummaryOnError(analytics, langCode);
-        }
-      } else {
-        await _stopRequestActivitySummaryOnSuccess(
-          result.result!,
-          analytics,
-          langCode,
-        );
-        ok = true;
-      }
-
-      ActivitySummaryRepo.delete(id, req);
-      return ok;
-    } catch (e, s) {
-      // ActivitySummaryRepo.get returns a Result and never throws, so a throw
-      // here is a Matrix call dying — a state write or the event/timeline
-      // fetch — typically the network going down mid-flow (#8362).
-      ErrorHandler.logError(e: e, s: s, data: {"roomID": id});
-      try {
-        await _stopRequestingActivitySummaryOnError(null, langCode);
-      } catch (_) {
-        // Offline the error state can't be recorded either; the return value
-        // is the initiating client's only remaining failure signal.
-      }
-      return false;
-    }
-  }
-
-  Future<bool> fetchSummariesByL1({String? feedback}) async {
-    final l1 = MatrixState.pangeaController.userController.userL1Code;
-    // No L1 means nothing to fetch — not a failure a retry could fix.
-    if (l1 == null) return true;
-    return fetchSummaries(l1, feedback: feedback);
+    return ActivitySummaryView(
+      summary: summary,
+      isLoading: isLoading,
+      hasFailed: !isLoading && summary == null,
+      updateFailed: summary != null && model!.hasError,
+      canRequest: canRequest,
+      loadingDeadline: isLoading ? loadingDeadline : null,
+    );
   }
 }

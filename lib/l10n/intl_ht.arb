@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "Anrejistreman ki te sove a soti nan {name} pa t ka telechaje, kidonk li pa t ka transkri.",
     "callTranscriptChooseLanguage": "Ki lang yo te pale?",
     "callTranscriptSubscribeForTranscription": "Abòne pou transkripsyon",
-    "unlockCallTranscript": "Debloke transkripsyon apèl la"
+    "unlockCallTranscript": "Debloke transkripsyon apèl la",
+    "activitySummaryUpdateFailed": "Rezime sa a pa t' kapab mete ajou."
 }

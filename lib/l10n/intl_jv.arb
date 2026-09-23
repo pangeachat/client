@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "Rekaman sing disimpen saka {name} ora bisa diundhuh, mula ora bisa ditranskripsi.",
     "callTranscriptChooseLanguage": "Basa apa sing diucapake?",
     "callTranscriptSubscribeForTranscription": "Langganan kanggo transkripsi",
-    "unlockCallTranscript": "Bukak kunci transkrip telpon"
+    "unlockCallTranscript": "Bukak kunci transkrip telpon",
+    "activitySummaryUpdateFailed": "Ringkesan iki ora bisa dianyari."
 }

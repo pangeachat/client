@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "ʻAʻole hiki ke hoʻoiho ʻia ka hoʻopaʻa leo i mālama ʻia mai {name}, no laila ʻaʻole hiki ke kākau ʻia.",
     "callTranscriptChooseLanguage": "He aha ka ʻōlelo i ʻōlelo ʻia?",
     "callTranscriptSubscribeForTranscription": "Kakau inoa no ke kākau ʻana",
-    "unlockCallTranscript": "Wehe i ke kākau ʻana o ke kelepona"
+    "unlockCallTranscript": "Wehe i ke kākau ʻana o ke kelepona",
+    "activitySummaryUpdateFailed": "ʻAʻole hiki ke hoʻopou hou i kēia hōʻuluʻulu."
 }

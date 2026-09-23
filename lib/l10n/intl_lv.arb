@@ -9980,5 +9980,6 @@
     "callTranscriptAudioUnavailable": "Saglabāto ierakstu no {name} nevarēja lejupielādēt, tāpēc to nevarēja transkribēt.",
     "callTranscriptChooseLanguage": "Kādā valodā runājāt?",
     "callTranscriptSubscribeForTranscription": "Abonēt transkripciju",
-    "unlockCallTranscript": "Atbloķēt zvanu transkriptu"
+    "unlockCallTranscript": "Atbloķēt zvanu transkriptu",
+    "activitySummaryUpdateFailed": "Šo kopsavilkumu nevarēja atjaunināt."
 }

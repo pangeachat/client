@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "די געראַטעוועטע אויפֿנאַמע פֿון {name} האָט זיך נישט געקענט אַראָפּלאָדן, דערפֿאַר האָט מען זי נישט געקענט טראַנסקריבירן.",
     "callTranscriptChooseLanguage": "וועלכע שפּראַך איז גערעדט געוואָרן?",
     "callTranscriptSubscribeForTranscription": "סובסקריבירן פֿאַר טראַנסקריפּציע",
-    "unlockCallTranscript": "אַנשליסן רוף טראַנסקריפּט"
+    "unlockCallTranscript": "אַנשליסן רוף טראַנסקריפּט",
+    "activitySummaryUpdateFailed": "די סומאַריע קען נישט דערהייַנטיקט ווערן."
 }

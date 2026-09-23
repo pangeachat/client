@@ -10608,5 +10608,6 @@
     "callTranscriptAudioUnavailable": "{name} থেকে সংরক্ষিত রেকর্ডিং ডাউনলোড করা যায়নি, তাই এটি ট্রান্সক্রাইব করা যায়নি।",
     "callTranscriptChooseLanguage": "কোন ভাষায় কথা বলা হয়েছিল?",
     "callTranscriptSubscribeForTranscription": "ট্রান্সক্রিপশনের জন্য সাবস্ক্রাইব করুন",
-    "unlockCallTranscript": "কল ট্রান্সক্রিপ্ট আনলক করুন"
+    "unlockCallTranscript": "কল ট্রান্সক্রিপ্ট আনলক করুন",
+    "activitySummaryUpdateFailed": "এই সারাংশ আপডেট করা যায়নি।"
 }

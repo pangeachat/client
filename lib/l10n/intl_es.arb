@@ -8199,5 +8199,6 @@
     "callTranscriptAudioUnavailable": "La grabación guardada de {name} no se pudo descargar, por lo que no se pudo transcribir.",
     "callTranscriptChooseLanguage": "¿Qué idioma se habló?",
     "callTranscriptSubscribeForTranscription": "Suscribirse para transcribir",
-    "unlockCallTranscript": "Desbloquear transcripción de llamada"
+    "unlockCallTranscript": "Desbloquear transcripción de llamada",
+    "activitySummaryUpdateFailed": "No se pudo actualizar este resumen."
 }

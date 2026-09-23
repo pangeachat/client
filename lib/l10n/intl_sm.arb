@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "E le'i mafai ona la'u mai le pu'eina na sefe mai ia {name}, o lea e le'i mafai ai ona fa'aliliu.",
     "callTranscriptChooseLanguage": "O le a le gagana na tautalagia?",
     "callTranscriptSubscribeForTranscription": "Lesitala mo le fa'aliliuga",
-    "unlockCallTranscript": "Tatala le fa'aliliuga o le vala'au"
+    "unlockCallTranscript": "Tatala le fa'aliliuga o le vala'au",
+    "activitySummaryUpdateFailed": "E leʻi mafai ona faʻafouina lenei aotelega."
 }

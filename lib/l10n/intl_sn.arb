@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "Kurekodha kwakachengetwa kubva kuna {name} hakuna kukwanisa kutorwa, saka hakuna kukwanisa kunyorwa.",
     "callTranscriptChooseLanguage": "Mutauro upi wakataurwa?",
     "callTranscriptSubscribeForTranscription": "Nyorera kuti unyorerwe",
-    "unlockCallTranscript": "Vhura zvinyorwa zvekufona"
+    "unlockCallTranscript": "Vhura zvinyorwa zvekufona",
+    "activitySummaryUpdateFailed": "Chidimbu ichi hachina kukwanisa kugadziriswa."
 }

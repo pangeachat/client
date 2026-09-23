@@ -9591,5 +9591,6 @@
     "callTranscriptAudioUnavailable": "{name} ནས་ཉར་ཚགས་བྱས་པའི་སྒྲ་ཕབ་ཕབ་ལེན་བྱེད་མ་ཐུབ་པས་དེ་ལ་ཡིག་སྒྱུར་བྱེད་མ་ཐུབ།",
     "callTranscriptChooseLanguage": "སྐད་ཡིག་གང་ཞིག་བཤད་པ་ཡིན་ནམ།",
     "callTranscriptSubscribeForTranscription": "ཡིག་སྒྱུར་བྱེད་པར་ཐོ་འགོད་བྱེད་དགོས།",
-    "unlockCallTranscript": "ཁ་པར་གྱི་ཡིག་སྒྱུར་འབྱེད་པ།"
+    "unlockCallTranscript": "ཁ་པར་གྱི་ཡིག་སྒྱུར་འབྱེད་པ།",
+    "activitySummaryUpdateFailed": "སྙན་ཐོ་འདི་གསར་སྒྱུར་བྱེད་མ་ཐུབ།"
 }

@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "De bewarre opname fan {name} koe net downloade wurde, dus it koe net transkribearre wurde.",
     "callTranscriptChooseLanguage": "Hokker taal waard sprutsen?",
     "callTranscriptSubscribeForTranscription": "Abonnearje foar transkripsje",
-    "unlockCallTranscript": "Untskoattelje oproptranskripsje"
+    "unlockCallTranscript": "Untskoattelje oproptranskripsje",
+    "activitySummaryUpdateFailed": "Dizze gearfetting koe net bywurke wurde."
 }

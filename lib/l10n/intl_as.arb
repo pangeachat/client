@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "{name} ৰ সংৰক্ষিত ৰেকৰ্ডিং ডাউনলোড কৰিব পৰা নগ'ল, সেয়েহে ইয়াক লিখিত ৰূপলৈ ৰূপান্তৰ কৰিব পৰা নগ'ল।",
     "callTranscriptChooseLanguage": "কোন ভাষা কোৱা হৈছিল?",
     "callTranscriptSubscribeForTranscription": "লিখিত ৰূপলৈ ৰূপান্তৰ কৰিবলৈ সদস্যতা লওক",
-    "unlockCallTranscript": "কল ট্ৰান্সক্ৰিপ্ট আনলক কৰক"
+    "unlockCallTranscript": "কল ট্ৰান্সক্ৰিপ্ট আনলক কৰক",
+    "activitySummaryUpdateFailed": "এই সাৰাংশটো আপডেইট কৰিব পৰা নগ’ল।"
 }

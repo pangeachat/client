@@ -10894,5 +10894,6 @@
     "callTranscriptAudioUnavailable": "ההקלטה השמורה מ{name} לא ניתנת להורדה, ולכן לא ניתן לתמלל אותה.",
     "callTranscriptChooseLanguage": "באיזו שפה דיברתם?",
     "callTranscriptSubscribeForTranscription": "הירשם לתימלול",
-    "unlockCallTranscript": "פתח את תמלול השיחה"
+    "unlockCallTranscript": "פתח את תמלול השיחה",
+    "activitySummaryUpdateFailed": "לא ניתן היה לעדכן את הסיכום הזה."
 }

@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "تۆماری پاشەکەوتکراوی {name} ناتوانرێت دابگیرێت، بۆیە ناتوانرێت بگۆڕدرێت بۆ نووسین.",
     "callTranscriptChooseLanguage": "بە چ زمانێک قسە کرا؟",
     "callTranscriptSubscribeForTranscription": "بەشداری بکە بۆ گۆڕین بۆ نووسین",
-    "unlockCallTranscript": "کردنەوەی گۆڕینی پەیوەندی بۆ نووسین"
+    "unlockCallTranscript": "کردنەوەی گۆڕینی پەیوەندی بۆ نووسین",
+    "activitySummaryUpdateFailed": "ئەم پوختەیە نوێ نه‌کرایه‌وه‌."
 }

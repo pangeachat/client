@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "{name} دىن ساقلانغان خاتىرە چۈشۈرۈلمىدى، شۇڭا ئۇنى تەرجىمە قىلغىلى بولمىدى.",
     "callTranscriptChooseLanguage": "قايسى تىلدا سۆزلەنگەن؟",
     "callTranscriptSubscribeForTranscription": "تەرجىمە قىلىش ئۈچۈن مۇشتەرى بولۇڭ",
-    "unlockCallTranscript": "تېلېفون خاتىرىسىنى ئېچىش"
+    "unlockCallTranscript": "تېلېفون خاتىرىسىنى ئېچىش",
+    "activitySummaryUpdateFailed": "بۇ خۇلاسىنى يېڭىلاش مۇمكىن بولمىدى."
 }

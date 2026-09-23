@@ -10072,5 +10072,6 @@
     "callTranscriptAudioUnavailable": "{name} இலிருந்து சேமிக்கப்பட்ட பதிவு பதிவிறக்க முடியவில்லை, எனவே அதை படியெடுக்க முடியவில்லை.",
     "callTranscriptChooseLanguage": "எந்த மொழி பேசப்பட்டது?",
     "callTranscriptSubscribeForTranscription": "படியெடுத்தலுக்கு குழுசேரவும்",
-    "unlockCallTranscript": "அழைப்புப் படியெடுத்தலைத் திறக்கவும்"
+    "unlockCallTranscript": "அழைப்புப் படியெடுத்தலைத் திறக்கவும்",
+    "activitySummaryUpdateFailed": "இந்தச் சுருக்கத்தைப் புதுப்பிக்க முடியவில்லை."
 }

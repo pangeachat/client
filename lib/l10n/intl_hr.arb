@@ -10416,5 +10416,6 @@
     "callTranscriptAudioUnavailable": "Spremljena snimka od {name} nije se mogla preuzeti, stoga se nije mogla ni prepisati.",
     "callTranscriptChooseLanguage": "Koji je jezik bio govoren?",
     "callTranscriptSubscribeForTranscription": "Pretplatite se za prijepis",
-    "unlockCallTranscript": "Otključaj prijepis poziva"
+    "unlockCallTranscript": "Otključaj prijepis poziva",
+    "activitySummaryUpdateFailed": "Ovaj sažetak nije bilo moguće ažurirati."
 }

@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "{name} માંથી સાચવેલી રેકોર્ડિંગ ડાઉનલોડ કરી શકાઈ નથી, તેથી તેને ટ્રાન્સક્રાઇબ કરી શકાઈ નથી.",
     "callTranscriptChooseLanguage": "કઈ ભાષા બોલવામાં આવી હતી?",
     "callTranscriptSubscribeForTranscription": "ટ્રાન્સક્રિપ્શન માટે સબ્સ્ક્રાઇબ કરો",
-    "unlockCallTranscript": "કૉલ ટ્રાન્સક્રિપ્ટ અનલૉક કરો"
+    "unlockCallTranscript": "કૉલ ટ્રાન્સક્રિપ્ટ અનલૉક કરો",
+    "activitySummaryUpdateFailed": "આ સારાંશ અપડેટ કરી શકાયો નથી."
 }

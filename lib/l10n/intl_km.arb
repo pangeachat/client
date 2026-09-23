@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "មិនអាចទាញយកការថតដែលបានរក្សាទុកពី {name} បានទេ ដូច្នេះវាមិនអាចបំប្លែងបានទេ។",
     "callTranscriptChooseLanguage": "តើនិយាយភាសាអ្វី?",
     "callTranscriptSubscribeForTranscription": "ជាវសម្រាប់ការបំប្លែង",
-    "unlockCallTranscript": "ដោះសោប្រតិចារិកការហៅទូរសព្ទ"
+    "unlockCallTranscript": "ដោះសោប្រតិចារិកការហៅទូរសព្ទ",
+    "activitySummaryUpdateFailed": "សេចក្ដីសង្ខេបនេះមិនអាចអាប់ដេតបានទេ។"
 }
