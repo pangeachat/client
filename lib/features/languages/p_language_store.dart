@@ -85,38 +85,65 @@ class PLanguageStore {
     return normalized;
   }
 
-  static Future<void> initialize({bool forceRefresh = false}) async {
-    _langList = await _getCachedLanguages();
-    final isOutdated = await _shouldFetch;
-    final shouldFetch =
-        forceRefresh ||
-        isOutdated ||
-        _langList.isEmpty ||
-        _langList.every((lang) => !lang.l2);
+  /// The fetch in flight, if any. Concurrent callers join it instead of
+  /// starting their own, and a second [initialize] does not reload the cache
+  /// over the list the fetch is about to deliver.
+  static Future<void>? _refreshing;
 
-    if (shouldFetch) {
-      final result = await LanguageRepo.get();
-      _langList = result.isValue
+  /// Loads the cached language list. With no usable cache, as on a first
+  /// launch, this waits for the CMS list. Otherwise it returns at once and a
+  /// stale cache refreshes in the background, so startup never waits on the
+  /// daily refresh (#9238). [forceRefresh] always waits for the fetch.
+  static Future<void> initialize({bool forceRefresh = false}) async {
+    final inFlight = _refreshing;
+    if (inFlight != null) return inFlight;
+
+    _setList(await _getCachedLanguages());
+    final hasUsableCache = _langList.any((lang) => lang.l2);
+    if (forceRefresh || !hasUsableCache) {
+      return _refresh(keepCacheOnFailure: hasUsableCache);
+    }
+    if (await _shouldFetch) unawaited(_refresh(keepCacheOnFailure: true));
+  }
+
+  /// A failed fetch falls back to [LanguageConstants.languageList] only when
+  /// there is no usable cache to keep (language-list.instructions.md).
+  static Future<void> _refresh({required bool keepCacheOnFailure}) =>
+      _refreshing ??= _fetchAndCache(
+        keepCacheOnFailure,
+      ).whenComplete(() => _refreshing = null);
+
+  static Future<void> _fetchAndCache(bool keepCacheOnFailure) async {
+    final result = await LanguageRepo.get();
+    // LanguageRepo has reported the failure; the cached list stays, and the
+    // next launch tries again.
+    if (result.isError && keepCacheOnFailure) return;
+
+    _setList(
+      result.isValue
           ? result.asValue!.value
           : LanguageConstants.languageList
                 .map((e) => LanguageModel.fromJson(e))
-                .toList();
-
-      await _MyShared.saveJson(PrefKey.languagesKey, {
-        PrefKey.languagesKey: _langList.map((e) => e.toJson()).toList(),
-      });
-
-      await _MyShared.saveString(
-        PrefKey.lastFetched,
-        DateTime.now().toIso8601String(),
-      );
-    }
-
-    _langList.removeWhere(
-      (element) => element.langCode == LanguageKeys.unknownLanguage,
+                .toList(),
     );
-    _langList = _langList.toSet().toList();
-    _langList.sort((a, b) => a.displayName.compareTo(b.displayName));
+
+    await _MyShared.saveJson(PrefKey.languagesKey, {
+      PrefKey.languagesKey: _langList.map((e) => e.toJson()).toList(),
+    });
+
+    await _MyShared.saveString(
+      PrefKey.lastFetched,
+      DateTime.now().toIso8601String(),
+    );
+  }
+
+  static void _setList(List<LanguageModel> languages) {
+    _langList =
+        languages
+            .where((lang) => lang.langCode != LanguageKeys.unknownLanguage)
+            .toSet()
+            .toList()
+          ..sort((a, b) => a.displayName.compareTo(b.displayName));
   }
 
   static Future<bool> get _shouldFetch async {
