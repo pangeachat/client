@@ -225,6 +225,20 @@ void main() {
     expect(large.width / normal.width, closeTo(2.0, 0.05));
   });
 
+  testWidgets('a fenced code block renders its text in the code box', (
+    tester,
+  ) async {
+    // Code blocks render their text as sent, in one colour: the syntax
+    // highlighter and its 190 grammars left the bundle (#9228).
+    final message = _BenchmarkMessage._(
+      '<pre><code class="language-python">print("hola")</code></pre>',
+      const <PangeaToken>[],
+    );
+    await tester.pumpWidget(host(message, messageEvent(message)));
+
+    expect(find.text('print("hola")'), findsOneWidget);
+  });
+
   testWidgets('rebuild benchmark: 60-word message, 40 timeline-style '
       'rebuilds', (tester) async {
     final message = _BenchmarkMessage.ofLength(60);

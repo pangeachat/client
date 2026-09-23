@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:go_router/go_router.dart';
-import 'package:highlight/highlight.dart' show highlight;
 import 'package:html/dom.dart' as dom;
 import 'package:html/parser.dart' as parser;
 import 'package:matrix/matrix.dart';
@@ -418,20 +417,6 @@ class HtmlMessage extends StatelessWidget {
         ],
       ],
     ];
-  }
-
-  InlineSpan _renderCodeBlockNode(dom.Node node) {
-    if (node is! dom.Element) {
-      return TextSpan(text: node.text);
-    }
-    final style =
-        atomOneDarkTheme[node.className.split('-').last] ??
-        atomOneDarkTheme['root'];
-
-    return TextSpan(
-      children: node.nodes.map(_renderCodeBlockNode).toList(),
-      style: style,
-    );
   }
 
   /// Transforms a Node to an InlineSpan.
@@ -864,23 +849,6 @@ class HtmlMessage extends StatelessWidget {
         );
       case 'code':
         final isInline = node.parent?.localName != 'pre';
-        final lang =
-            node.className
-                .split(' ')
-                .singleWhereOrNull(
-                  (className) => className.startsWith('language-'),
-                )
-                ?.split('language-')
-                .last ??
-            'md';
-        final highlightedHtml = highlight
-            .parse(node.text, language: lang)
-            .toHtml();
-        final element = parser.parse(highlightedHtml).body;
-        if (element == null) {
-          return const TextSpan(text: 'Unable to render code block!');
-        }
-
         return WidgetSpan(
           child: Material(
             color: atomOneBackgroundColor,
@@ -894,7 +862,10 @@ class HtmlMessage extends StatelessWidget {
                   : const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
               child: Text.rich(
                 textScaler: TextScaler.noScaling,
-                TextSpan(children: [_renderCodeBlockNode(element)]),
+                TextSpan(
+                  text: node.text,
+                  style: const TextStyle(color: hightlightTextColor),
+                ),
                 selectionColor: hightlightTextColor.withAlpha(128),
               ),
             ),
