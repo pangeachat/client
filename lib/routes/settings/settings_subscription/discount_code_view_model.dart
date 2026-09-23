@@ -59,13 +59,20 @@ class DiscountCodeViewModel {
     }
   }
 
+  String get _code => _controller.text.trim();
+
+  /// A blank code has nothing to validate; sending it reaches Stripe as an
+  /// empty `code` and comes back as a 400 (CLIENT-ETQ).
+  bool get canValidate => _code.isNotEmpty;
+
   Future<void> validatePromoCode() async {
+    if (!canValidate) return;
     _generation++;
     final generation = _generation;
     _setLoaderValue(generation, AsyncLoading());
 
     final result = await ValidatePromoCodeRepo.instance.get(
-      ValidatePromoCodeRequest(userID: _userID, code: _controller.text.trim()),
+      ValidatePromoCodeRequest(userID: _userID, code: _code),
     );
     final response = result.result;
     _setLoaderValue(
