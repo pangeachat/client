@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
@@ -188,50 +189,56 @@ class _GoalReportDialogState extends State<_GoalReportDialog> {
     final theme = Theme.of(context);
     return AlertDialog(
       title: Text(l10n.goalReportTitle),
-      content: SingleChildScrollView(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            // Which star this is about. The prompt alone does not say, and the
-            // dialog covers the list the star was tapped in.
-            Text(widget.goal.description, style: theme.textTheme.titleSmall),
-            const SizedBox(height: 12.0),
-            Text(
-              _needsEvidence
-                  ? l10n.goalReportUnderAwardPrompt
-                  : l10n.goalReportOverAwardPrompt,
-            ),
-            const SizedBox(height: 16.0),
-            TextField(
-              controller: _comment,
-              autofocus: true,
-              minLines: 2,
-              maxLines: 5,
-              maxLength: GoalReportRepo.maxCommentLength,
-              enabled: !_submitting,
-              decoration: InputDecoration(
-                hintText: l10n.orchestratorFeedbackCommentHint,
-                helperText: l10n.orchestratorFeedbackCommentRequired,
-                errorText: _error,
-              ),
-              onChanged: (_) => setState(() {}),
-            ),
-            if (_needsEvidence) ...[
-              const SizedBox(height: 8.0),
+      // A fixed width, not the content's: AlertDialog sizes to its content's
+      // intrinsic width, and a multiline TextField reports that as its text on
+      // one line, so every typed character would widen the dialog.
+      content: SizedBox(
+        width: FluffyThemes.columnWidth,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              // Which star this is about. The prompt alone does not say, and the
+              // dialog covers the list the star was tapped in.
+              Text(widget.goal.description, style: theme.textTheme.titleSmall),
+              const SizedBox(height: 12.0),
               Text(
-                l10n.goalReportPickMessage,
-                style: theme.textTheme.bodySmall,
+                _needsEvidence
+                    ? l10n.goalReportUnderAwardPrompt
+                    : l10n.goalReportOverAwardPrompt,
               ),
-              const SizedBox(height: 8.0),
-              _EvidencePicker(
-                messages: _ownMessages,
-                selected: _evidence,
+              const SizedBox(height: 16.0),
+              TextField(
+                controller: _comment,
+                autofocus: true,
+                minLines: 2,
+                maxLines: 5,
+                maxLength: GoalReportRepo.maxCommentLength,
                 enabled: !_submitting,
-                onSelected: (e) => setState(() => _evidence = e),
+                decoration: InputDecoration(
+                  hintText: l10n.orchestratorFeedbackCommentHint,
+                  helperText: l10n.orchestratorFeedbackCommentRequired,
+                  errorText: _error,
+                ),
+                onChanged: (_) => setState(() {}),
               ),
+              if (_needsEvidence) ...[
+                const SizedBox(height: 8.0),
+                Text(
+                  l10n.goalReportPickMessage,
+                  style: theme.textTheme.bodySmall,
+                ),
+                const SizedBox(height: 8.0),
+                _EvidencePicker(
+                  messages: _ownMessages,
+                  selected: _evidence,
+                  enabled: !_submitting,
+                  onSelected: (e) => setState(() => _evidence = e),
+                ),
+              ],
             ],
-          ],
+          ),
         ),
       ),
       actions: [

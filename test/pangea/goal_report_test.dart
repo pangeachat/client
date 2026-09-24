@@ -303,6 +303,26 @@ void main() {
       expect(find.text('Order a drink'), findsNothing);
     });
 
+    testWidgets('a long comment wraps instead of widening the prompt', (
+      tester,
+    ) async {
+      // A screen wide enough that filling it cannot pass for a normal width.
+      tester.view.physicalSize = const Size(1600, 1200);
+      tester.view.devicePixelRatio = 1.0;
+      addTearDown(tester.view.reset);
+      await open(tester, direction: GoalReportDirection.overAward);
+      final field = find.byType(TextField);
+      final openWidth = tester.getSize(field).width;
+
+      await tester.enterText(field, 'la cuenta ' * 40);
+      await tester.pump();
+
+      // Wrapped at the dialog's width, not stretched toward the screen's.
+      expect(tester.getSize(field).width, openWidth);
+      expect(openWidth, lessThan(800));
+      expect(tester.takeException(), isNull);
+    });
+
     testWidgets('an under-award with nothing said says so', (tester) async {
       await open(tester, direction: GoalReportDirection.underAward);
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_feedback_repo.dart';
@@ -143,75 +144,80 @@ class _OrchestratorFeedbackDialogState
     final l10n = L10n.of(context);
     return AlertDialog(
       title: Text(l10n.orchestratorFeedbackTitle),
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          SegmentedButton<OrchestratorFeedbackPart>(
-            segments: [
-              ButtonSegment(
-                value: OrchestratorFeedbackPart.suggestion,
-                label: Text(l10n.orchestratorFeedbackPartSuggestion),
-              ),
-              ButtonSegment(
-                value: OrchestratorFeedbackPart.goalCompletion,
-                label: Text(l10n.orchestratorFeedbackPartGoals),
-              ),
-            ],
-            selected: {_part},
-            onSelectionChanged: _submitting
-                ? null
-                : (s) => setState(() {
-                    _part = s.first;
-                    _award = null;
-                  }),
-          ),
-          if (_needsAward) ...[
-            const SizedBox(height: 16.0),
-            if (_awards.isEmpty)
-              Text(
-                l10n.orchestratorFeedbackNoAwards,
-                style: Theme.of(context).textTheme.bodySmall,
-              )
-            else
-              DropdownButtonFormField<_Award>(
-                initialValue: _award,
-                isExpanded: true,
-                decoration: InputDecoration(
-                  labelText: l10n.orchestratorFeedbackPickAward,
-                  helperText: l10n.orchestratorFeedbackPickAwardRequired,
+      // Fixed for the same reason as the goal report prompt: sized to its
+      // content, the dialog would widen with every character of the comment.
+      content: SizedBox(
+        width: FluffyThemes.columnWidth,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            SegmentedButton<OrchestratorFeedbackPart>(
+              segments: [
+                ButtonSegment(
+                  value: OrchestratorFeedbackPart.suggestion,
+                  label: Text(l10n.orchestratorFeedbackPartSuggestion),
                 ),
-                items: _awards
-                    .map(
-                      (a) => DropdownMenuItem(
-                        value: a,
-                        child: Text(
-                          '${a.roleId} — ${a.description}',
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                    )
-                    .toList(),
-                onChanged: _submitting
-                    ? null
-                    : (a) => setState(() => _award = a),
-              ),
-          ],
-          const SizedBox(height: 16.0),
-          TextField(
-            controller: _comment,
-            autofocus: true,
-            minLines: 2,
-            maxLines: 5,
-            enabled: !_submitting,
-            decoration: InputDecoration(
-              hintText: l10n.orchestratorFeedbackCommentHint,
-              helperText: l10n.orchestratorFeedbackCommentRequired,
-              errorText: _error,
+                ButtonSegment(
+                  value: OrchestratorFeedbackPart.goalCompletion,
+                  label: Text(l10n.orchestratorFeedbackPartGoals),
+                ),
+              ],
+              selected: {_part},
+              onSelectionChanged: _submitting
+                  ? null
+                  : (s) => setState(() {
+                      _part = s.first;
+                      _award = null;
+                    }),
             ),
-            onChanged: (_) => setState(() {}),
-          ),
-        ],
+            if (_needsAward) ...[
+              const SizedBox(height: 16.0),
+              if (_awards.isEmpty)
+                Text(
+                  l10n.orchestratorFeedbackNoAwards,
+                  style: Theme.of(context).textTheme.bodySmall,
+                )
+              else
+                DropdownButtonFormField<_Award>(
+                  initialValue: _award,
+                  isExpanded: true,
+                  decoration: InputDecoration(
+                    labelText: l10n.orchestratorFeedbackPickAward,
+                    helperText: l10n.orchestratorFeedbackPickAwardRequired,
+                  ),
+                  items: _awards
+                      .map(
+                        (a) => DropdownMenuItem(
+                          value: a,
+                          child: Text(
+                            '${a.roleId} — ${a.description}',
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      )
+                      .toList(),
+                  onChanged: _submitting
+                      ? null
+                      : (a) => setState(() => _award = a),
+                ),
+            ],
+            const SizedBox(height: 16.0),
+            TextField(
+              controller: _comment,
+              autofocus: true,
+              minLines: 2,
+              maxLines: 5,
+              enabled: !_submitting,
+              decoration: InputDecoration(
+                hintText: l10n.orchestratorFeedbackCommentHint,
+                helperText: l10n.orchestratorFeedbackCommentRequired,
+                errorText: _error,
+              ),
+              onChanged: (_) => setState(() {}),
+            ),
+          ],
+        ),
       ),
       actions: [
         TextButton(
