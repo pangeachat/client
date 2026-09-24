@@ -5,6 +5,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/features/analytics_access/access_notice_extension.dart';
 import 'package:fluffychat/features/analytics_access/analytics_access_notice_dialog.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_access_extension.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 
 class JoinRoomAnalyticsConsentHandler {
@@ -22,6 +23,10 @@ class JoinRoomAnalyticsConsentHandler {
   Future<String?> handle(BuildContext context) async {
     final roomId = room.id;
     final client = room.client;
+
+    // A teacher claiming their course is not joining as a learner. Do not
+    // record learner consent or grant access to their personal analytics.
+    if (room.isRoomAdmin) return roomId;
 
     _currentRoomId = roomId;
 
