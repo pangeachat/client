@@ -1,7 +1,9 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/embed_click_to_engage.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_video_keyboard_control.dart';
 
@@ -14,12 +16,13 @@ import 'package:fluffychat/routes/chat/activity_sessions/activity_video_keyboard
 /// gesture. Only the carousel's active page should mount one — it owns an
 /// iframe/webview that must be torn down with [YoutubePlayerController.close].
 ///
-/// Captions are the learner's to turn on, not ours to impose: we set only the
-/// preferred track language ([captionLanguage] — the activity's target
-/// language, so an L2 video captions in the L2) and leave `cc_load_policy` off,
-/// so the learner's own YouTube caption setting decides whether they show. The
-/// package's defaults do the opposite — they force captions on and hardcode a
-/// preference of English (#8828).
+/// Captions follow YouTube's default, which is on, and we name the track:
+/// [captionLanguage], the activity's target language, so an L2 video captions
+/// in the L2. We don't force them on (`cc_load_policy` stays off), but that is
+/// a no-op: the embed can't see the learner's YouTube setting and shows
+/// captions anyway. The package's defaults would also hardcode English. On
+/// native we clear YouTube's remembered caption language before each video so
+/// the activity's language wins; see [_forgetStickyCaptionLanguage] (#8828).
 ///
 /// The embed only takes the mouse once the learner clicks it, so the page
 /// around it keeps scrolling while they are just passing over ([
@@ -92,14 +95,11 @@ class _ActivityYoutubePlayerState extends State<ActivityYoutubePlayer> {
         mute: widget.muted,
         showControls: true,
         playsInline: true,
-        // Captions off by default and preferred in the activity's language —
-        // see the class doc (#8828). The preference still applies with
-        // `cc_load_policy` unset: YouTube's parameter reference says captions
-        // "will display in the specified language if the user opts to turn
-        // captions on" (the package's own comment, claiming the preference is
-        // ignored here, contradicts that). Empty leaves it unset, which is what
-        // an unknown activity language should do — the package's default would
-        // instead name English.
+        // Not forced on, and preferred in the activity's language — see the
+        // class doc (#8828). The preference applies with `cc_load_policy`
+        // unset, whatever the package's own comment claims. Empty leaves it
+        // unset, which is what an unknown activity language should do — the
+        // package's default would instead name English.
         enableCaption: false,
         captionLanguage:
             ActivityYoutubePlayer.captionLanguageCode(widget.captionLanguage) ??
@@ -111,10 +111,31 @@ class _ActivityYoutubePlayerState extends State<ActivityYoutubePlayer> {
       ),
     );
     final id = YoutubePlayerController.convertUrlToId(widget.url);
-    if (id != null) {
-      // loadVideoById autoplays (allowed because we start muted, or because the
-      // mount followed a user tap).
-      _controller.loadVideoById(videoId: id);
+    if (id != null) _loadVideo(id);
+  }
+
+  Future<void> _loadVideo(String id) async {
+    if (!kIsWeb) await _forgetStickyCaptionLanguage();
+    if (!mounted) return;
+    // loadVideoById autoplays (allowed because we start muted, or because the
+    // mount followed a user tap).
+    await _controller.loadVideoById(videoId: id);
+  }
+
+  /// Removes the caption language YouTube remembers from the last time the
+  /// learner turned captions on, which would otherwise outrank `cc_lang_pref`
+  /// for 30 days on every video (#8828). Native only: there the player page
+  /// runs under the embed's own origin and so shares its localStorage; on web
+  /// the embed's storage belongs to a cross-origin frame we can't reach.
+  Future<void> _forgetStickyCaptionLanguage() async {
+    try {
+      // Any player query waits for the player page to be ready.
+      await _controller.playerState;
+      await _controller.webViewController.runJavaScript(
+        "localStorage.removeItem('yt-player-caption-sticky-language')",
+      );
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {'url': widget.url});
     }
   }
 
