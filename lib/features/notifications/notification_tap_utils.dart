@@ -4,9 +4,12 @@ import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/bot/bot_room_extension.dart';
 import 'package:fluffychat/features/bot/bot_target_event_name_enum.dart';
+import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
@@ -216,6 +219,24 @@ class NotificationTapUtil {
         parentCourseId != null
             ? WorkspaceNav.openCourse(uri, parentCourseId)
             : PRoutes.world,
+      );
+      return;
+    }
+
+    // An invite to an activity session opens its activity page with the
+    // session bound, not the room: the chat view joins an invited room as it
+    // builds, and the start page's role picker is where the invitee accepts.
+    // No course context is forced open (joining-courses.instructions.md).
+    final invitedActivityId = room.membership == Membership.invite
+        ? room.activityId
+        : null;
+    if (invitedActivityId != null) {
+      router.go(
+        WorkspaceNav.setLeft(uri, [
+          ActivityPanelToken(
+            ActivityTokenParam(activityId: invitedActivityId, roomId: roomId),
+          ),
+        ]),
       );
       return;
     }
