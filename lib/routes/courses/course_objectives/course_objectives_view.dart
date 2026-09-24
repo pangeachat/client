@@ -122,6 +122,17 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
 
   bool get _pingedSectionSeen => _seenPingedActivityId == _pingedActivityId;
 
+  /// Missions the learner folded, by id. Held here rather than in each
+  /// [ObjectiveSection] because the list builds lazily and disposes sections
+  /// scrolled out of view (#9248).
+  final Set<String> _collapsedMissionIds = {};
+
+  void _toggleMissionCollapsed(String missionId) => setState(() {
+    if (!_collapsedMissionIds.remove(missionId)) {
+      _collapsedMissionIds.add(missionId);
+    }
+  });
+
   @override
   void initState() {
     super.initState();
@@ -676,7 +687,12 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                         pingedActivityId: i == pingedGroupIndex
                             ? pingedActivityId
                             : null,
-                        collapsible: widget.collapsibleMissions,
+                        collapsed: _collapsedMissionIds.contains(
+                          group.objective.id,
+                        ),
+                        onToggleCollapsed: widget.collapsibleMissions
+                            ? () => _toggleMissionCollapsed(group.objective.id)
+                            : null,
                         isUpNext: group.objective.id == anchorId,
                         group: group,
                         hasCompletedActivity: widget.hasCompletedActivity,
