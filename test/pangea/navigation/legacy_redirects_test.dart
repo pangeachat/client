@@ -3,10 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:fluffychat/features/navigation/legacy_redirects.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 
-/// The inbound URL rewrites (routing.instructions.md): the shareable
-/// standalone activity link and the course join link. Every other legacy
-/// shape is deleted, not redirected — the client is the only producer of its
-/// URLs.
+/// Activity and course-join inbound rewrites. Synapse email links are covered
+/// by notification_email_link_test.dart; retired internal routes stay retired.
 void main() {
   String? resolve(String location) =>
       LegacyRedirects.resolve(Uri.parse(location));

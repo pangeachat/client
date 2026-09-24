@@ -17,6 +17,14 @@ import 'package:fluffychat/widgets/layouts/workspace_shell.dart';
 import 'package:fluffychat/widgets/log_view.dart';
 
 abstract class AppRoutes {
+  /// Recover through the normal world route so its shell and auth guard run.
+  /// An error-page builder would bypass both and leave the invalid URL active.
+  static void onException(
+    BuildContext context,
+    GoRouterState state,
+    GoRouter router,
+  ) => router.go(PRoutes.world);
+
   static FutureOr<String?> loggedInRedirect(
     BuildContext context,
     GoRouterState state,
