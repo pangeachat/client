@@ -1202,15 +1202,8 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     if (uri.fragment.isNotEmpty) {
       return uri.fragment.startsWith('/') ? uri.fragment : '/${uri.fragment}';
     }
-    final query = uri.queryParameters;
-    final queryString = query.entries
-        .map((e) => '${e.key}=${e.value}')
-        .join('&');
-    var path = '/${uri.pathSegments.join('/')}';
-    if (queryString.isNotEmpty) {
-      path = '$path?$queryString';
-    }
-    return path;
+    final path = uri.path.isEmpty ? '/' : uri.path;
+    return uri.hasQuery ? '$path?${uri.query}' : path;
   }
 
   /// Whether an `app_links` emission should be navigated to.

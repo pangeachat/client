@@ -42,6 +42,21 @@ void main() {
       expect(folded, contains(uuid));
     });
 
+    test('encoded paths and repeated query values survive unchanged', () {
+      const location =
+          '/invite_user/%40name%3Aexample.org'
+          '?value=a%26b%3Dc%20d&value=second&literal=%2526';
+      final path = MatrixState.incomingUriToPath(
+        Uri.parse('https://app.pangea.chat$location'),
+      );
+      expect(path, location);
+      expect(Uri.parse(path).queryParametersAll['value'], [
+        'a&b=c d',
+        'second',
+      ]);
+      expect(Uri.parse(path).queryParameters['literal'], '%26');
+    });
+
     test('a root link maps to the world', () {
       expect(
         MatrixState.incomingUriToPath(Uri.parse('https://app.pangea.chat/')),

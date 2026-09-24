@@ -98,26 +98,7 @@ The rules that keep the grammar legible:
   id in `?c=`; an activity's id (and, when resuming, its bound session room) ride
   in the activity token's own param.
 
-**Compatibility.** The parser normalizes a registry master/detail pair to
-master-first whatever order a link carries (the
-[panel registry](../../lib/features/navigation/panel_registry.dart) knows which
-type is whose master) and keeps the given order for pairs the registry does not
-relate. That is the whole compatibility story: **the client is the only
-producer of its URLs, so retired shapes and spellings are simply deleted, not
-redirected** — old bookmarks and stale tabs from earlier releases are not
-maintained (a deliberate call at current scale, #7467). Three inbound URL
-contracts arrive from outside the client. Two are bare single-segment links —
-the shareable standalone activity link (`/<uuid>`) and the course join link
-(`/<code>`, a seven-character join code) — which
-[`LegacyRedirects`](../../lib/features/navigation/legacy_redirects.dart) folds
-into their `activity` / `addcourse:private/<code>` tokens before render. The
-third, the DM invite link (`/invite_user/<id>`), resolves through its own route
-rather than a fold — a redirect-only route that lands on the world map with
-the chat list open, from where the shell opens the DM and lands the user in it
-(#8436) — see
-[Ids in URLs](#ids-in-urls). All are just app URLs the
-SPA serves directly; the older `/join_with_link` and `/join` join-link
-spellings are retired.
+**Compatibility.** The parser normalizes a registry master/detail pair to master-first whatever order a link carries (the [panel registry](../../lib/features/navigation/panel_registry.dart) knows which type is whose master) and keeps the given order for pairs the registry does not relate. That is the whole compatibility story: **the client is the only producer of its URLs, so retired shapes and spellings are simply deleted, not redirected** — old bookmarks and stale tabs from earlier releases are not maintained (a deliberate call at current scale, #7467). Four inbound URL contracts arrive from outside the client. Two are bare single-segment links — the shareable standalone activity link (`/<uuid>`) and the course join link (`/<code>`, a seven-character join code) — which [`LegacyRedirects`](../../lib/features/navigation/legacy_redirects.dart) folds into their `activity` / `addcourse:private/<code>` tokens before render. The third, the DM invite link (`/invite_user/<id>`), resolves through its own route rather than a fold — a redirect-only route that lands on the world map with the chat list open, from where the shell opens the DM and lands the user in it (#8436) — see [Ids in URLs](#ids-in-urls). The fourth is Synapse's notification/invite email link (`/room/<roomId>/<eventId>`, also `/#/room/…`), folded by `LegacyRedirects` into a room token with its jump-to-message event. Root fragments are handled at the router on web and unwrapped by `incomingUriToPath` on native. Unmatched routes recover through the world route so its auth guard and shell still run. These are app URLs the SPA serves directly; the older `/join_with_link` and `/join` join-link spellings are retired.
 
 ## Ids in URLs
 
