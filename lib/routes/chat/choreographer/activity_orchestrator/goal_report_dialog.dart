@@ -7,6 +7,7 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/goal_report_repo.dart';
+import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
 import 'package:fluffychat/widgets/announcing_snackbar.dart';
 
@@ -25,7 +26,7 @@ Future<void> showGoalReportDialog({
   required String roleId,
   required ActivityRoleGoal goal,
   required GoalReportDirection direction,
-  Future<List<Event>> Function()? ownMessagesOverride,
+  Future<List<PangeaMessageEvent>> Function()? ownMessagesOverride,
 }) => showDialog<void>(
   context: context,
   builder: (_) => _GoalReportDialog(
@@ -57,7 +58,7 @@ class _GoalReportDialog extends StatefulWidget {
 
   /// Test seam: the reporter's own messages, without a Matrix client behind
   /// them. Null in the app, where they come from the room's timeline.
-  final Future<List<Event>> Function()? ownMessagesOverride;
+  final Future<List<PangeaMessageEvent>> Function()? ownMessagesOverride;
 
   const _GoalReportDialog({
     required this.room,
@@ -79,7 +80,7 @@ class _GoalReportDialogState extends State<_GoalReportDialog> {
   String? _error;
 
   /// Null until the load finishes; empty when the reporter has sent nothing.
-  List<Event>? _ownMessages;
+  List<_EvidenceOption>? _ownMessages;
 
   bool get _needsEvidence => widget.direction == GoalReportDirection.underAward;
 
@@ -104,14 +105,14 @@ class _GoalReportDialogState extends State<_GoalReportDialog> {
   /// at are already sent, so the list has nothing to follow.
   Future<void> _loadOwnMessages() async {
     final override = widget.ownMessagesOverride;
-    final events = override != null
+    final messages = override != null
         ? await override()
         : await _ownMessagesFromTimeline();
     if (!mounted) return;
-    setState(() => _ownMessages = events);
+    setState(() => _ownMessages = messages.map(_EvidenceOption.new).toList());
   }
 
-  Future<List<Event>> _ownMessagesFromTimeline() async {
+  Future<List<PangeaMessageEvent>> _ownMessagesFromTimeline() async {
     final userId = widget.room.client.userID;
     final timeline = await widget.room.getTimeline();
     try {
@@ -124,6 +125,13 @@ class _GoalReportDialogState extends State<_GoalReportDialog> {
                 // An edit carries its own event id and would read as a second
                 // copy of the message it replaces.
                 e.relationshipType != RelationshipTypes.edit,
+          )
+          .map(
+            (e) => PangeaMessageEvent(
+              event: e,
+              timeline: timeline,
+              ownMessage: true,
+            ),
           )
           .toList();
     } finally {
@@ -248,10 +256,30 @@ class _GoalReportDialogState extends State<_GoalReportDialog> {
   }
 }
 
+/// One of the reporter's messages as the picker lists it.
+class _EvidenceOption {
+  /// The original event, never its latest edit: its id and timestamp are what
+  /// the server resolves the nominated turn from.
+  final Event event;
+
+  /// What the reporter recognises the message by: the latest edit's text, or
+  /// for a voice message the transcript already stored on it. Null for a voice
+  /// message with no stored transcript — the picker reads only what is stored
+  /// and never requests one, so opening a report cannot fan out a
+  /// speech-to-text call per message.
+  final String? text;
+
+  _EvidenceOption(PangeaMessageEvent message)
+    : event = message.event,
+      text = message.isAudioMessage
+          ? message.getSpeechToTextLocal()?.transcript.text.trim()
+          : message.body;
+}
+
 /// The reporter's own messages, newest first, one of which is the evidence.
 class _EvidencePicker extends StatelessWidget {
   /// Null while loading, empty when the reporter has sent nothing yet.
-  final List<Event>? messages;
+  final List<_EvidenceOption>? messages;
   final Event? selected;
   final bool enabled;
   final ValueChanged<Event> onSelected;
@@ -287,23 +315,27 @@ class _EvidencePicker extends StatelessWidget {
     return RadioGroup<String>(
       groupValue: selected?.eventId,
       onChanged: (eventId) {
-        final picked = messages.firstWhereOrNull((e) => e.eventId == eventId);
-        if (picked != null) onSelected(picked);
+        final picked = messages.firstWhereOrNull(
+          (m) => m.event.eventId == eventId,
+        );
+        if (picked != null) onSelected(picked.event);
       },
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          for (final event in messages)
+          for (final message in messages)
             RadioListTile<String>(
-              value: event.eventId,
+              value: message.event.eventId,
               enabled: enabled,
               dense: true,
               title: Text(
-                event.body,
+                message.text ?? L10n.of(context).voiceMessage,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               ),
-              subtitle: Text(event.originServerTs.localizedTime(context)),
+              subtitle: Text(
+                message.event.originServerTs.localizedTime(context),
+              ),
             ),
         ],
       ),

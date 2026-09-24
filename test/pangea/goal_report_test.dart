@@ -17,6 +17,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/goal_report_dialog.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/goal_report_repo.dart';
+import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'fake_pangea_controller.dart';
 import 'get_test_client.dart';
@@ -161,23 +162,64 @@ void main() {
 
   group('the report prompt', () {
     late Client client;
+    late Room room;
+    late Timeline timeline;
 
-    setUp(() async => client = await getTestClient());
-    tearDown(() async => client.dispose());
+    setUp(() async {
+      client = await getTestClient();
+      room = Room(id: roomId, client: client);
+      timeline = await room.getTimeline();
+    });
+    tearDown(() async {
+      timeline.cancelSubscriptions();
+      await client.dispose();
+    });
 
-    Event message(String body, int seq) => Event(
-      type: EventTypes.Message,
-      content: {'msgtype': 'm.text', 'body': body},
-      senderId: senderId,
-      eventId: '\$msg$seq',
-      originServerTs: DateTime.utc(2026, 9, 22, 12, seq),
-      room: Room(id: roomId, client: client),
-    );
+    PangeaMessageEvent messageWith(Map<String, dynamic> content, int seq) =>
+        PangeaMessageEvent(
+          event: Event(
+            type: EventTypes.Message,
+            content: content,
+            senderId: senderId,
+            eventId: '\$msg$seq',
+            originServerTs: DateTime.utc(2026, 9, 22, 12, seq),
+            room: room,
+          ),
+          timeline: timeline,
+          ownMessage: true,
+        );
+
+    PangeaMessageEvent message(String body, int seq) =>
+        messageWith({'msgtype': 'm.text', 'body': body}, seq);
+
+    /// A voice message. Its body is what the SDK falls back to, which for a
+    /// voice message says nothing the reporter recognises.
+    PangeaMessageEvent voiceMessage(int seq, {String? transcript}) =>
+        messageWith({
+          'msgtype': 'm.audio',
+          'body': '\$msg$seq',
+          if (transcript != null)
+            'user_stt': {
+              'results': [
+                {
+                  'transcripts': [
+                    {
+                      'confidence': 90,
+                      'lang_code': 'es',
+                      'transcript': transcript,
+                      'words_per_hr': 100,
+                      'stt_tokens': <Map<String, dynamic>>[],
+                    },
+                  ],
+                },
+              ],
+            },
+        }, seq);
 
     Future<void> open(
       WidgetTester tester, {
       required GoalReportDirection direction,
-      List<Event> ownMessages = const [],
+      List<PangeaMessageEvent> ownMessages = const [],
     }) async {
       await tester.pumpWidget(
         MaterialApp(
@@ -193,7 +235,7 @@ void main() {
                 body: TextButton(
                   onPressed: () => showGoalReportDialog(
                     context: context,
-                    room: Room(id: roomId, client: client),
+                    room: room,
                     roleId: 'customer',
                     goal: goal,
                     direction: direction,
@@ -275,6 +317,32 @@ void main() {
       expect(sendAction(tester), isNull);
 
       await tester.tap(find.text('un café por favor'));
+      await tester.pumpAndSettle();
+      expect(sendAction(tester), isNotNull);
+    });
+
+    testWidgets('a voice message is listed by its stored transcript', (
+      tester,
+    ) async {
+      await open(
+        tester,
+        direction: GoalReportDirection.underAward,
+        ownMessages: [
+          voiceMessage(1, transcript: 'quiero un café'),
+          voiceMessage(2),
+        ],
+      );
+
+      // #9259: the transcript, never the body the SDK falls back to.
+      expect(find.text('quiero un café'), findsOneWidget);
+      expect(find.text(r'$msg1'), findsNothing);
+      // Nothing stored and nothing requested: named as a voice message, told
+      // apart from the others by its time.
+      expect(find.text('Voice message'), findsOneWidget);
+      expect(find.text(r'$msg2'), findsNothing);
+
+      await tester.enterText(find.byType(TextField), 'I ordered out loud');
+      await tester.tap(find.text('quiero un café'));
       await tester.pumpAndSettle();
       expect(sendAction(tester), isNotNull);
     });
