@@ -101,9 +101,9 @@ void main() {
 
     setUp(() => dotenv.testLoad(mergeWith: {'CHOREO_API': choreoApi}));
 
-    testWidgets('a sent flag thanks the reviewer and closes the dialog', (
-      tester,
-    ) async {
+    /// Pumps a host page with a button that opens the dialog; tapping it is
+    /// left to the caller, which may need to do so inside [runWithClient].
+    Future<void> pumpHost(WidgetTester tester) async {
       await tester.pumpWidget(
         MaterialApp(
           localizationsDelegates: L10n.localizationsDelegates,
@@ -131,6 +131,12 @@ void main() {
         ),
       );
       await tester.pumpAndSettle();
+    }
+
+    testWidgets('a sent flag thanks the reviewer and closes the dialog', (
+      tester,
+    ) async {
+      await pumpHost(tester);
 
       await runWithClient(() async {
         await tester.tap(find.text('open'));
@@ -144,6 +150,28 @@ void main() {
       expect(tester.takeException(), isNull);
       expect(find.text('Flagged. Thanks!'), findsOneWidget);
       expect(find.text("What's wrong here?"), findsNothing);
+    });
+
+    testWidgets('a long comment wraps instead of widening the dialog', (
+      tester,
+    ) async {
+      // A screen wide enough that filling it cannot pass for a normal width.
+      tester.view.physicalSize = const Size(1600, 1200);
+      tester.view.devicePixelRatio = 1.0;
+      addTearDown(tester.view.reset);
+      await pumpHost(tester);
+      await tester.tap(find.text('open'));
+      await tester.pumpAndSettle();
+      final field = find.byType(TextField);
+      final openWidth = tester.getSize(field).width;
+
+      await tester.enterText(field, 'wrong tense ' * 40);
+      await tester.pump();
+
+      // Wrapped at the dialog's width, not stretched toward the screen's.
+      expect(tester.getSize(field).width, openWidth);
+      expect(openWidth, lessThan(800));
+      expect(tester.takeException(), isNull);
     });
   });
 }
