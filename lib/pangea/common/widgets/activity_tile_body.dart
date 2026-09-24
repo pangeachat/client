@@ -93,6 +93,10 @@ class ActivityTileBody extends StatelessWidget {
                   mxContent: sender?.avatarUrl,
                   name: sender?.localizedDisplayname(L10n.of(context)),
                   size: avatarSize,
+                  // Without an id, Avatar cannot tell this is the bot and
+                  // falls back to its Matrix avatar, a purple picture on the
+                  // homeserver that no theme reaches.
+                  userId: sender?.id,
                 ),
                 const SizedBox(width: 8),
                 Expanded(child: previewChild),
