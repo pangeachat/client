@@ -304,42 +304,50 @@ void main() {
       LemmaInfoResponse.fromJson(json);
     });
 
-    test("Activity summary endpoint test", () async {
-      // Send mock request
-      final Map<String, dynamic> request = ActivitySummaryRequestModel(
-        activity: ActivityPlanModel(
-          req: ActivityPlanRequest(
-            topic: '',
-            mode: '',
-            objective: '',
-            media: MediaEnum.nan,
-            cefrLevel: LanguageLevelTypeEnum.a2,
-            languageOfInstructions: 'en',
-            targetLanguage: 'es',
-            numberOfParticipants: 2,
+    test(
+      "Activity summary translation endpoint test",
+      skip:
+          // Staging choreo does not yet translate a row named by id. Unskip with
+          // the choreo change agreed on pangeachat/client#9199, before the
+          // client that relies on it merges.
+          'Waits for choreo to accept source_request_hash',
+      () async {
+        // Send mock request
+        final Map<String, dynamic> request = ActivitySummaryRequestModel(
+          activity: ActivityPlanModel(
+            req: ActivityPlanRequest(
+              topic: '',
+              mode: '',
+              objective: '',
+              media: MediaEnum.nan,
+              cefrLevel: LanguageLevelTypeEnum.a2,
+              languageOfInstructions: 'en',
+              targetLanguage: 'es',
+              numberOfParticipants: 2,
+            ),
+            title: '',
+            learningObjective: '',
+            instructions: '',
+            vocab: [],
+            activityId: '',
           ),
-          title: '',
-          learningObjective: '',
-          instructions: '',
-          vocab: [],
-          activityId: '',
-        ),
-        activityResults: [],
-        contentFeedback: [],
-        mock: true,
-      ).toJson();
+          sourceRequestHash: 'endpoint-test-row',
+          viewerL1: 'es',
+          mock: true,
+        ).toJson();
 
-      final Requests req = Requests(accessToken: authToken);
-      final Response res = await req.post(
-        url: "$choreoApi/activity_summary",
-        body: request,
-      );
+        final Requests req = Requests(accessToken: authToken);
+        final Response res = await req.post(
+          url: "$choreoApi/activity_summary",
+          body: request,
+        );
 
-      // Ensure mock response is valid and compatible with response model
-      assert(res.statusCode == 200);
-      final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
-      ActivitySummaryResponseModel.fromJson(json);
-    });
+        // Ensure mock response is valid and compatible with response model
+        assert(res.statusCode == 200);
+        final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
+        ActivitySummaryResponseModel.fromJson(json);
+      },
+    );
 
     test("Activity feedback endpoint test", () async {
       // This endpoint fetches the activity from CMS before the LLM call, so it
