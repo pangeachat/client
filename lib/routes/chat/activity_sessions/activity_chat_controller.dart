@@ -2,14 +2,20 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'package:matrix/matrix.dart';
+import 'package:async/async.dart' show Result;
+import 'package:matrix/matrix.dart' hide Result;
+import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_analytics_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_preview_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_analytics_model.dart';
+import 'package:fluffychat/features/activity_sessions/activity_summary_repo.dart';
+import 'package:fluffychat/features/activity_sessions/activity_summary_request_model.dart';
+import 'package:fluffychat/features/activity_sessions/activity_summary_response_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_room_extension.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
@@ -57,6 +63,15 @@ class ActivityChatController {
   DateTime? _summaryWaitingSince;
 
   Timer? _summaryLoadingTimer;
+
+  /// The translation of the bot's summary into the viewer's L1: which row and
+  /// language it is for, and its result once fetched (null while in flight).
+  String? _translationKey;
+  Result<ActivitySummaryResponseModel>? _translationResult;
+
+  /// A summary slot changed while this controller was up, so the next summary
+  /// on screen is a new one to celebrate, not one the learner reopened.
+  bool _summaryMayHaveLanded = false;
 
   late final StreamSubscription _analyticsSubscription;
   late final StreamSubscription _rolesSubscription;
@@ -109,9 +124,13 @@ class ActivityChatController {
               event.roomId == room.id &&
               event.state.type == PangeaEventTypes.activitySummary,
         )
-        .listen((_) {
+        .listen((update) {
+          final stateKey = update.state.stateKey;
+          if (stateKey != ActivitySummaryStateKeys.analytics &&
+              stateKey != ActivitySummaryStateKeys.request) {
+            _summaryMayHaveLanded = true;
+          }
           _onActivitySummaryInputsChanged();
-          showConfetti();
         });
   }
 
@@ -125,8 +144,14 @@ class ActivityChatController {
     if (room.isActivityFinished && room.activitySummary == null) {
       _summaryWaitingSince ??= DateTime.now();
     }
-    final view = room.activitySummaryView(waitingSince: _summaryWaitingSince);
+    final view = _withTranslation(
+      room.activitySummaryView(waitingSince: _summaryWaitingSince),
+    );
     summaryView.value = view;
+    if (_summaryMayHaveLanded && view.summary != null) {
+      _summaryMayHaveLanded = false;
+      showConfetti();
+    }
 
     _summaryLoadingTimer?.cancel();
     final deadline = view.loadingDeadline;
@@ -136,6 +161,64 @@ class ActivityChatController {
         _refreshSummaryView,
       );
     }
+  }
+
+  /// [view] as this viewer sees it: the bot's summary translated into their
+  /// L1 when it is written in another language. The loading state stays up
+  /// while the translation is fetched, and a failed translation leaves the
+  /// summary as written.
+  ActivitySummaryView _withTranslation(ActivitySummaryView view) {
+    final viewerL1 = MatrixState.pangeaController.userController.userL1Code;
+    if (viewerL1 == null || !view.needsTranslation(viewerL1)) return view;
+
+    final sourceRequestHash = view.summaryRequestHash;
+    if (sourceRequestHash == null) {
+      // Choreo returns the row id, and the bot stores it with every summary.
+      ErrorHandler.logErrorOnce(
+        key: 'activity_summary_no_request_hash',
+        e: 'Bot activity summary has no request_hash to translate from',
+        data: {'roomID': room.id},
+        level: SentryLevel.warning,
+      );
+      return view;
+    }
+
+    final key = '$sourceRequestHash:$viewerL1';
+    if (_translationKey != key) {
+      _translationKey = key;
+      _translationResult = null;
+      _fetchTranslation(sourceRequestHash, viewerL1, key);
+    }
+    final result = _translationResult;
+    if (result == null) return view.translatedTo(null);
+    return result.isValue ? view.translatedTo(result.asValue!.value) : view;
+  }
+
+  Future<void> _fetchTranslation(
+    String sourceRequestHash,
+    String viewerL1,
+    String key,
+  ) async {
+    // The plan body is canonical in CMS (reference-only room state); resolve
+    // it rather than assuming it is hydrated. The repo reports a failed fetch.
+    final activity =
+        room.activityPlan ??
+        await ActivityPlanRepo.instance.getPlan(room.activityId ?? '');
+    final result = activity == null
+        ? Result<ActivitySummaryResponseModel>.error(
+            'No activity plan to translate the summary against',
+          )
+        : await ActivitySummaryRepo.get(
+            room.id,
+            ActivitySummaryRequestModel(
+              activity: activity,
+              sourceRequestHash: sourceRequestHash,
+              viewerL1: viewerL1,
+            ),
+          );
+    if (_disposed || _translationKey != key) return;
+    _translationResult = result;
+    _refreshSummaryView();
   }
 
   Future<void> _ensureSummaryAnalytics() async {

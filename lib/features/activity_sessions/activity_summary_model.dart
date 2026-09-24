@@ -15,6 +15,10 @@ class ActivitySummaryModel {
   /// The language [summary] is written in. Set by the bot only.
   final String? langCode;
 
+  /// Choreo's id for the stored row behind [summary], which a viewer whose L1
+  /// differs sends back to have it translated. Set by the bot only.
+  final String? requestHash;
+
   /// Server timestamp (ms) of the loading marker that started the bot's call
   /// behind this summary or error. A learner request no newer than this has
   /// been handled.
@@ -26,6 +30,7 @@ class ActivitySummaryModel {
     this.errorAt,
     this.analytics,
     this.langCode,
+    this.requestHash,
     this.callStartedTs,
   });
 
@@ -36,6 +41,7 @@ class ActivitySummaryModel {
       "error_at": errorAt?.toIso8601String(),
       "analytics": analytics?.toJson(),
       "lang_code": langCode,
+      "request_hash": requestHash,
       "call_started_ts": callStartedTs,
     };
   }
@@ -55,6 +61,7 @@ class ActivitySummaryModel {
           ? ActivitySummaryAnalyticsModel.fromJson(json['analytics'])
           : null,
       langCode: json['lang_code'] as String?,
+      requestHash: json['request_hash'] as String?,
       callStartedTs: json['call_started_ts'] as int?,
     );
   }

@@ -6,6 +6,7 @@ import 'package:fluffychat/features/activity_sessions/activity_summary_analytics
 import 'package:fluffychat/features/activity_sessions/activity_summary_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_response_model.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
+import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
@@ -53,6 +54,11 @@ class ActivitySummaryView {
   /// own at that moment, so the owner schedules a recompute.
   final DateTime? loadingDeadline;
 
+  /// The language [summary] is written in, and choreo's id for its stored row.
+  /// Only the bot's summary carries them.
+  final String? summaryLangCode;
+  final String? summaryRequestHash;
+
   const ActivitySummaryView({
     required this.summary,
     required this.isLoading,
@@ -60,6 +66,8 @@ class ActivitySummaryView {
     required this.updateFailed,
     required this.canRequest,
     required this.loadingDeadline,
+    this.summaryLangCode,
+    this.summaryRequestHash,
   });
 
   static const empty = ActivitySummaryView(
@@ -70,6 +78,26 @@ class ActivitySummaryView {
     canRequest: false,
     loadingDeadline: null,
   );
+
+  /// Whether a viewer whose first language is [viewerL1] gets [summary]
+  /// translated rather than as written.
+  bool needsTranslation(String? viewerL1) =>
+      summary != null &&
+      summaryLangCode != null &&
+      viewerL1 != null &&
+      !PLanguageStore.sameWrittenLanguage(summaryLangCode!, viewerL1);
+
+  /// This view with [summary] shown in [translation], or loading while the
+  /// translation is fetched.
+  ActivitySummaryView translatedTo(ActivitySummaryResponseModel? translation) =>
+      ActivitySummaryView(
+        summary: translation,
+        isLoading: translation == null,
+        hasFailed: false,
+        updateFailed: updateFailed,
+        canRequest: canRequest,
+        loadingDeadline: null,
+      );
 }
 
 extension ActivitySummaryRoomExtension on Room {
@@ -265,6 +293,8 @@ extension ActivitySummaryRoomExtension on Room {
       updateFailed: summary != null && model!.hasError,
       canRequest: canRequest,
       loadingDeadline: isLoading ? loadingDeadline : null,
+      summaryLangCode: model?.langCode,
+      summaryRequestHash: model?.requestHash,
     );
   }
 }
