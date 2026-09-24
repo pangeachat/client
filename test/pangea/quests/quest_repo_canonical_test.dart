@@ -1,8 +1,14 @@
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_media_enum.dart';
+import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
+import 'package:fluffychat/features/activity_sessions/activity_plan_request.dart';
+import 'package:fluffychat/features/quests/models/learning_objective_model.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
+import 'package:fluffychat/features/quests/models/quest_plan_model.dart';
 import 'package:fluffychat/features/quests/repo/activity_v2_mapper.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
+import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 
 void main() {
   // The choreo `GET /choreo/quests/{id}/activities` entry shape. Canonical-only
@@ -102,6 +108,85 @@ void main() {
     test('passes unique rows through unchanged', () {
       final rows = [(id: 'a'), (id: 'b')];
       expect(QuestRepo.dedupeByActivityId(rows, (r) => r.id), rows);
+    });
+  });
+
+  group('QuestRepo.groupActivitiesByLo', () {
+    // #3045: an activity satisfying several of the quest's Missions is
+    // many-to-many by design, but must render once, not once per Mission.
+    ActivityPlanModel plan(String id) => ActivityPlanModel(
+      req: ActivityPlanRequest(
+        topic: '',
+        mode: '',
+        objective: '',
+        media: MediaEnum.nan,
+        cefrLevel: LanguageLevelTypeEnum.a2,
+        languageOfInstructions: 'en',
+        targetLanguage: 'es',
+        numberOfParticipants: 2,
+      ),
+      title: '',
+      learningObjective: '',
+      instructions: '',
+      vocab: const [],
+      activityId: id,
+      roles: const {},
+    );
+
+    QuestActivity activity(String id) =>
+        QuestActivity(activityId: id, plan: plan(id));
+
+    QuestObjectiveStep step(String loId) => QuestObjectiveStep(
+      objective: LearningObjective(id: loId, objective: loId),
+      wasMinted: false,
+    );
+
+    test(
+      'keeps a shared activity only under the first Mission it satisfies',
+      () {
+        final shared = activity('act-shared');
+        final groups = QuestRepo.groupActivitiesByLo(
+          sequence: [step('lo-1'), step('lo-2')],
+          learningObjectives: const {},
+          byLo: {
+            'lo-1': [shared],
+            'lo-2': [shared, activity('act-2-only')],
+          },
+        );
+
+        expect(groups[0].activities.map((a) => a.activityId), ['act-shared']);
+        expect(groups[1].activities.map((a) => a.activityId), ['act-2-only']);
+      },
+    );
+
+    test('a Mission whose only activity was claimed earlier is left empty', () {
+      final shared = activity('act-shared');
+      final groups = QuestRepo.groupActivitiesByLo(
+        sequence: [step('lo-1'), step('lo-2')],
+        learningObjectives: const {},
+        byLo: {
+          'lo-1': [shared],
+          'lo-2': [shared],
+        },
+      );
+
+      expect(groups[1].activities, isEmpty);
+    });
+
+    test('leaves unrelated Missions and single-Mission activities alone', () {
+      final a1 = activity('a1');
+      final b1 = activity('b1');
+      final groups = QuestRepo.groupActivitiesByLo(
+        sequence: [step('lo-1'), step('lo-2')],
+        learningObjectives: const {},
+        byLo: {
+          'lo-1': [a1],
+          'lo-2': [b1],
+        },
+      );
+
+      expect(groups[0].activities.map((a) => a.activityId), ['a1']);
+      expect(groups[1].activities.map((a) => a.activityId), ['b1']);
     });
   });
 }

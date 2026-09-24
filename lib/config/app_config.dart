@@ -127,6 +127,10 @@ abstract class AppConfig {
     // (no auth, no platform-view needed).
     "img.youtube.com",
     "i.ytimg.com",
+    // Local dev: CMS/media served from the local stack's CDN stand-in
+    // (local-stack.instructions.md). Without this, activity/course/topic
+    // images synced into a local CMS render as a placeholder.
+    "localhost",
   };
 
   static bool isAllowedImage(Uri imageUrl) =>

@@ -353,6 +353,35 @@ class QuestRepo {
     ];
   }
 
+  /// One [QuestObjectiveGroup] per Mission in [sequence], in order — the
+  /// per-Mission activity carousels the course plan renders.
+  ///
+  /// An activity satisfying several of the quest's Missions is many-to-many
+  /// by design (an activity can genuinely practice more than one can-do
+  /// skill at once), so [byLo] legitimately lists it under every Mission it
+  /// satisfies. Rendered as-is that duplicates the card once per Mission
+  /// (#3045) — including its live joined/open/ongoing badge on each copy.
+  /// [seenActivityIds] keeps it only in the first Mission (quest sequence
+  /// order) it appears under, dropping it from every later one.
+  @visibleForTesting
+  static List<QuestObjectiveGroup> groupActivitiesByLo({
+    required List<QuestObjectiveStep> sequence,
+    required Map<String, LearningObjective> learningObjectives,
+    required Map<String, List<QuestActivity>> byLo,
+  }) {
+    final seenActivityIds = <String>{};
+    return sequence
+        .map(
+          (step) => QuestObjectiveGroup(
+            objective: learningObjectives[step.objective.id] ?? step.objective,
+            activities: (byLo[step.objective.id] ?? const [])
+                .where((a) => seenActivityIds.add(a.activityId))
+                .toList(),
+          ),
+        )
+        .toList();
+  }
+
   static PayloadClient _client() => PayloadClient(
     baseUrl: Environment.cmsApi,
     accessToken: MatrixState.pangeaController.userController.accessToken,
@@ -719,15 +748,11 @@ class QuestRepo {
         }
       }
 
-      final groups = quest.sequence
-          .map(
-            (step) => QuestObjectiveGroup(
-              objective:
-                  learningObjectives[step.objective.id] ?? step.objective,
-              activities: byLo[step.objective.id] ?? const [],
-            ),
-          )
-          .toList();
+      final groups = groupActivitiesByLo(
+        sequence: quest.sequence,
+        learningObjectives: learningObjectives,
+        byLo: byLo,
+      );
 
       return Result.value(QuestOutline(quest: quest, groups: groups));
     } catch (e, s) {
