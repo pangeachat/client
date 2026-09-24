@@ -16,6 +16,8 @@
 
 const { chromium } = require('@playwright/test');
 const { spawn, execSync } = require('child_process');
+const crypto = require('crypto');
+const net = require('net');
 const fs = require('fs');
 const path = require('path');
 const readline = require('readline');
@@ -35,8 +37,23 @@ if (!DIR || !fs.existsSync(path.join(DIR, 'index.html'))) {
   process.exit(2);
 }
 
+const portInUse = () =>
+  new Promise((resolve) => {
+    const socket = net.connect(PORT, '127.0.0.1');
+    socket.once('connect', () => socket.end(() => resolve(true)));
+    socket.once('error', () => resolve(false));
+  });
+const sha = (buf) => crypto.createHash('sha256').update(buf).digest('hex').slice(0, 12);
+
 (async () => {
+  // Another server on this port would serve a different build under the same
+  // origin, and the run would measure the wrong code without any error.
+  if (await portInUse()) {
+    console.error(`Port ${PORT} is already in use; stop whatever is serving there first.`);
+    process.exit(2);
+  }
   const server = spawn('python3', ['-m', 'http.server', String(PORT), '--bind', '127.0.0.1', '--directory', DIR], { stdio: 'ignore' });
+  const serverExited = new Promise((r) => server.once('exit', r));
   await new Promise((r) => setTimeout(r, 1000));
   const context = await chromium.launchPersistentContext(PROFILE_DIR, {
     channel: 'chrome',
@@ -47,6 +64,7 @@ if (!DIR || !fs.existsSync(path.join(DIR, 'index.html'))) {
   const done = async (code) => {
     await context.close();
     server.kill();
+    await serverExited;
     process.exit(code);
   };
   const page = context.pages()[0] || (await context.newPage());
@@ -96,6 +114,26 @@ if (!DIR || !fs.existsSync(path.join(DIR, 'index.html'))) {
   );
   console.log(`display: ${refreshRate} Hz (measured ${measuredRate})`);
 
+  // The saved profile keeps the sign-in in IndexedDB; its HTTP cache would
+  // also keep the previous build's code under the same URLs. Turn it off, then
+  // confirm the page receives the bundle in --dir.
+  const cdp = await context.newCDPSession(page);
+  await cdp.send('Network.enable');
+  await cdp.send('Network.clearBrowserCache');
+  await cdp.send('Network.setCacheDisabled', { cacheDisabled: true });
+  const bundle = sha(fs.readFileSync(path.join(DIR, 'main.dart.js')));
+  await page.goto(`http://localhost:${PORT}/manifest.json`);
+  const served = await page.evaluate(async () => {
+    const buf = await (await fetch('/main.dart.js', { cache: 'no-store' })).arrayBuffer();
+    const digest = new Uint8Array(await crypto.subtle.digest('SHA-256', buf));
+    return Array.from(digest, (b) => b.toString(16).padStart(2, '0')).join('').slice(0, 12);
+  });
+  if (served !== bundle) {
+    console.error(`The page was served a different main.dart.js than ${DIR} holds; refusing to measure.`);
+    return done(2);
+  }
+  console.log(`bundle: ${bundle}`);
+
   const outcome = new Promise((resolve) => {
     page.on('console', (msg) => {
       const text = msg.text();
@@ -116,6 +154,7 @@ if (!DIR || !fs.existsSync(path.join(DIR, 'index.html'))) {
   result.commit = execSync('git rev-parse --short HEAD').toString().trim() + (dirty ? '-dirty' : '');
   result.recordedAt = new Date().toISOString();
   result.renderer = renderer;
+  result.bundle = bundle;
   const stamp = result.recordedAt.replace(/[:.]/g, '-');
   fs.mkdirSync('build/perf', { recursive: true });
   const file = `build/perf/${result.scenario}_web_${stamp}.json`;

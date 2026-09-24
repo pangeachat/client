@@ -90,19 +90,24 @@ Future<void> _run(
   final refreshRate = urlRefreshRate ?? tester.view.display.refreshRate;
   final budgetMs = 1000 / refreshRate;
   final passes = <Map<String, Object?>>[];
-  for (var pass = 0; pass < 3; pass++) {
+  // Five passes: compare.js drops the first (one-time costs) and needs the
+  // rest to tell a real change from run-to-run spread.
+  for (var pass = 0; pass < 5; pass++) {
     passes.add(
       await _measure(tester, budgetMs, () async {
         // Net scroll never returns to the top, so on phones the drag stays
         // in the list instead of collapsing the bottom sheet it sits in.
-        for (var i = 0; i < 8; i++) {
+        // Fast, long drags bring several new rows into view per frame, so a
+        // slower row build shows up in the frame times instead of hiding in
+        // the frames that only move rows already built.
+        for (var i = 0; i < 16; i++) {
           final down = i < 2 || i.isOdd;
           await tester.timedDrag(
             list,
-            Offset(0, down ? -400 : 400),
-            const Duration(milliseconds: 300),
+            Offset(0, down ? -800 : 800),
+            const Duration(milliseconds: 200),
           );
-          await _pause(tester, const Duration(milliseconds: 300));
+          await _pause(tester, const Duration(milliseconds: 150));
         }
       }),
     );
