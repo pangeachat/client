@@ -1,10 +1,13 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/analytics_access/course_settings_model.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_access_extension.dart';
+import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_event.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
@@ -39,11 +42,24 @@ void main() {
     await client.dispose();
   });
 
-  Room courseRoom() {
+  Room courseRoom({int powerLevel = 0}) {
     final room = Room(
       id: courseRoomId,
       client: client,
       membership: Membership.join,
+    );
+    room.setState(
+      Event(
+        type: EventTypes.RoomPowerLevels,
+        content: {
+          'users': {userId: powerLevel},
+        },
+        senderId: userId,
+        eventId: '\$powerLevels',
+        originServerTs: DateTime.utc(2026, 1, 1),
+        stateKey: '',
+        room: room,
+      ),
     );
     room.setState(
       Event(
@@ -107,6 +123,48 @@ void main() {
       .toList();
 
   group('grantInstructorsAnalyticsAccess', () {
+    testWidgets('admin claim ignores a stale learner notice response', (
+      tester,
+    ) async {
+      final room = courseRoom(powerLevel: 100);
+      client.rooms = [room];
+      late BuildContext context;
+      await tester.pumpWidget(
+        Builder(
+          builder: (value) {
+            context = value;
+            return const SizedBox();
+          },
+        ),
+      );
+      final before = FakeMatrixApi.calledEndpoints.toString();
+      final result = await JoinRoomAnalyticsConsentHandler(
+        const JoinResponse(roomId: courseRoomId, shouldShowNotice: true),
+        room,
+      ).handle(context);
+
+      expect(result, courseRoomId);
+      expect(FakeMatrixApi.calledEndpoints.toString(), before);
+      expect(grants, isEmpty);
+      expect(JoinRoomAnalyticsConsentHandler.currentRoomId, isNull);
+    });
+
+    test('course admin skips the learner notice and analytics grant', () async {
+      profileWithAnalyticsRoom(analyticsRoomId);
+      final room = courseRoom(powerLevel: 100);
+      client.rooms = [room];
+
+      expect(room.shouldShowAnalyticsAccessNotice, false);
+      await client.grantInstructorsAnalyticsAccess(courseRoomId);
+      await client.grantAnalyticsAccessByAnalyticsRoom(analyticsRoomId, 'de');
+
+      expect(grants, isEmpty);
+    });
+
+    test('ordinary learner still sees the required analytics notice', () {
+      expect(courseRoom().shouldShowAnalyticsAccessNotice, true);
+    });
+
     test(
       'grants using profile analytics_room_id without a local analytics room',
       () async {
