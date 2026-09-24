@@ -148,6 +148,28 @@ class BackgroundPush {
         onDidReceiveBackgroundNotificationResponse: notificationTapBackground,
       );
 
+      // A tap that launched the app arrives only here, never through
+      // onDidReceiveNotificationResponse. It is read at startup, beside
+      // getInitialMessage above, because on Android every closed-app
+      // notification is a local one the app drew itself (#9110), so
+      // getInitialMessage finds nothing. It used to be read in setupPush,
+      // which only the chat list calls, so a cold start on the map never
+      // opened the tapped room (#9251).
+      _flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails().then((
+        details,
+      ) async {
+        final response = details?.notificationResponse;
+        if (details?.didNotificationLaunchApp != true || response == null) {
+          return;
+        }
+        await notificationTap(
+          response,
+          client: client,
+          router: FluffyChatApp.router,
+          l10n: l10n,
+        );
+      });
+
       // #Pangea
       // Handle notifications when app is in foreground
       // Pass additionalData to preserve activity session info for local notifications
@@ -404,8 +426,6 @@ class BackgroundPush {
       ? 'ios'
       : null;
 
-  static bool _wentToRoomOnStartup = false;
-
   Future<void> setupPush() async {
     Logs().d("SetupPush");
     if (client.onLoginStateChanged.value != LoginState.loggedIn ||
@@ -424,27 +444,6 @@ class BackgroundPush {
     } else {
       await setupFirebase();
     }
-
-    // ignore: unawaited_futures
-    _flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails().then((
-      details,
-    ) {
-      if (details == null ||
-          !details.didNotificationLaunchApp ||
-          _wentToRoomOnStartup) {
-        return;
-      }
-      _wentToRoomOnStartup = true;
-      final response = details.notificationResponse;
-      if (response != null) {
-        notificationTap(
-          response,
-          client: client,
-          router: FluffyChatApp.router,
-          l10n: l10n,
-        );
-      }
-    });
   }
 
   /// Whether a failed push setup is worth telling the user about.
