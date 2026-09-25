@@ -5,47 +5,19 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/common/widgets/language_semantics.dart';
-import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/routes/chat/events/constants/message_constants.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/routes/chat/events/models/language_detection_model.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/events/models/tokens_event_content_model.dart';
-import 'package:fluffychat/routes/chat/events/token_info_feedback/token_info_feedback_request.dart';
 import 'package:fluffychat/routes/chat/message_content.dart';
-import 'package:fluffychat/routes/chat/toolbar/message_toolbar_host.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'fake_pangea_controller.dart';
+import 'fake_message_toolbar_host.dart';
 import 'get_test_client.dart';
 
 /// #9266 — text not in the UI language carries its own language, so a screen
 /// reader reads it in that language's voice (WCAG 3.1.2).
-
-class _FakeToolbarHost implements MessageToolbarHost {
-  _FakeToolbarHost(this.room);
-
-  @override
-  final Room room;
-
-  @override
-  Timeline? get timeline => null;
-
-  @override
-  ChatController? get chatController => null;
-
-  @override
-  void setSelectedEvent(Event event) {}
-
-  @override
-  void clearSelectedEvents() {}
-
-  @override
-  Future<void> showTokenFeedbackDialog(
-    TokenInfoFeedbackRequestData requestData,
-    String langCode,
-    PangeaMessageEvent event,
-  ) async {}
-}
 
 /// Every node in the tree as (label, locale).
 List<(String, Locale?)> _nodes(WidgetTester tester) {
@@ -221,7 +193,7 @@ void main() {
             timeline: timeline,
             selected: false,
             pangeaMessageEvent: event,
-            controller: _FakeToolbarHost(room),
+            controller: FakeMessageToolbarHost(room),
             onTokenClick: (_) {},
             markLanguage: markLanguage,
           ),
