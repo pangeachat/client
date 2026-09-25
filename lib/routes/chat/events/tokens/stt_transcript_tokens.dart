@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/pangea/common/widgets/language_semantics.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
@@ -70,103 +71,111 @@ class SttTranscriptTokens extends StatelessWidget {
         newTokensOverride ??
         TokensUtil.instance.getNewTokens(eventId, tokens, model.langCode);
 
-    return RichText(
-      textScaler: MediaQuery.textScalerOf(context),
-      text: TextSpan(
-        style: style ?? DefaultTextStyle.of(context).style,
-        children: TokensUtil.instance
-            .getGlobalTokenPositions(tokens, transcript: model.transcript.text)
-            .map((tokenPosition) {
-              final text = messageCharacters
-                  .skip(tokenPosition.startIndex)
-                  .take(tokenPosition.endIndex - tokenPosition.startIndex)
-                  .toString();
+    return WholeTextSemantics(
+      text: model.transcript.text,
+      wordButtons: onClick != null,
+      child: RichText(
+        textScaler: MediaQuery.textScalerOf(context),
+        text: TextSpan(
+          style: style ?? DefaultTextStyle.of(context).style,
+          children: TokensUtil.instance
+              .getGlobalTokenPositions(
+                tokens,
+                transcript: model.transcript.text,
+              )
+              .map((tokenPosition) {
+                final text = messageCharacters
+                    .skip(tokenPosition.startIndex)
+                    .take(tokenPosition.endIndex - tokenPosition.startIndex)
+                    .toString();
 
-              if (tokenPosition.token == null) {
-                return TextSpan(
-                  text: text,
-                  style: style ?? DefaultTextStyle.of(context).style,
+                if (tokenPosition.token == null) {
+                  return TextSpan(
+                    text: text,
+                    style: style ?? DefaultTextStyle.of(context).style,
+                  );
+                }
+
+                final token = tokenPosition.token!;
+                final selected = isSelected?.call(token) ?? false;
+                final isNew = newTokens.any((t) => t == token.text);
+                final presentation = presentationForToken?.call(
+                  token,
+                  tokenPosition.startIndex,
+                  tokenPosition.endIndex,
                 );
-              }
+                final isVocabHighlight = TokenRenderingUtil.isVocabHighlight(
+                  token.lemma.text,
+                  vocabLemmas,
+                );
 
-              final token = tokenPosition.token!;
-              final selected = isSelected?.call(token) ?? false;
-              final isNew = newTokens.any((t) => t == token.text);
-              final presentation = presentationForToken?.call(
-                token,
-                tokenPosition.startIndex,
-                tokenPosition.endIndex,
-              );
-              final isVocabHighlight = TokenRenderingUtil.isVocabHighlight(
-                token.lemma.text,
-                vocabLemmas,
-              );
-
-              return WidgetSpan(
-                // A WidgetSpan child is already scaled by the placeholder it
-                // sits in; scaling its text here too squares the device text
-                // size (#7719).
-                child: MediaQuery.withNoTextScaling(
-                  child: HoverBuilder(
-                    builder: (context, hovered) => MouseRegion(
-                      cursor: SystemMouseCursors.click,
-                      child: GestureDetector(
-                        behavior: HitTestBehavior.translucent,
-                        onTap: onClick != null
-                            ? () => onClick?.call(token)
-                            : null,
-                        child: Builder(
-                          builder: (context) {
-                            final interactionUnderline =
-                                TokenRenderingUtil.underlineColor(
-                                  context,
-                                  Theme.of(
+                return WidgetSpan(
+                  // A WidgetSpan child is already scaled by the placeholder it
+                  // sits in; scaling its text here too squares the device text
+                  // size (#7719).
+                  child: MediaQuery.withNoTextScaling(
+                    child: HoverBuilder(
+                      builder: (context, hovered) => MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        child: GestureDetector(
+                          behavior: HitTestBehavior.translucent,
+                          onTap: onClick != null
+                              ? () => onClick?.call(token)
+                              : null,
+                          child: Builder(
+                            builder: (context) {
+                              final interactionUnderline =
+                                  TokenRenderingUtil.underlineColor(
                                     context,
-                                  ).colorScheme.primary.withAlpha(200),
-                                  selected: selected,
-                                  hovered: hovered,
-                                  isNew: isNew,
-                                );
-                            final idle =
-                                presentation != null && !selected && !hovered;
-                            final underline = idle
-                                ? presentation.idleUnderlineColor
-                                : interactionUnderline;
-                            final primary = UnderlineText(
-                              text: text,
-                              style:
-                                  style ?? DefaultTextStyle.of(context).style,
-                              underlineColor: underline,
-                              dashed: idle && presentation.idleUnderlineDashed,
-                            );
-                            final secondaryText = presentation?.secondaryText;
-                            final content = secondaryText == null
-                                ? primary
-                                : Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      primary,
-                                      Text(
-                                        secondaryText,
-                                        style: presentation?.secondaryStyle,
-                                      ),
-                                    ],
+                                    Theme.of(
+                                      context,
+                                    ).colorScheme.primary.withAlpha(200),
+                                    selected: selected,
+                                    hovered: hovered,
+                                    isNew: isNew,
                                   );
-                            return TokenRenderingUtil.vocabHighlight(
-                              highlight: isVocabHighlight,
-                              child: content,
-                            );
-                          },
+                              final idle =
+                                  presentation != null && !selected && !hovered;
+                              final underline = idle
+                                  ? presentation.idleUnderlineColor
+                                  : interactionUnderline;
+                              final primary = UnderlineText(
+                                text: text,
+                                style:
+                                    style ?? DefaultTextStyle.of(context).style,
+                                underlineColor: underline,
+                                dashed:
+                                    idle && presentation.idleUnderlineDashed,
+                              );
+                              final secondaryText = presentation?.secondaryText;
+                              final content = secondaryText == null
+                                  ? primary
+                                  : Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        primary,
+                                        Text(
+                                          secondaryText,
+                                          style: presentation?.secondaryStyle,
+                                        ),
+                                      ],
+                                    );
+                              return TokenRenderingUtil.vocabHighlight(
+                                highlight: isVocabHighlight,
+                                child: content,
+                              );
+                            },
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              );
-            })
-            .toList(),
+                );
+              })
+              .toList(),
+        ),
       ),
     );
   }
