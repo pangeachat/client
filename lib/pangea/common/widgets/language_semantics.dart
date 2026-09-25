@@ -76,8 +76,8 @@ class LanguageSemantics extends StatelessWidget {
 /// through them.
 ///
 /// The words make [child] a node with children, which the web engine names
-/// with an `aria-label`, and VoiceOver reads an `aria-label` in the UI voice
-/// whatever its language. A text-only node is written into the page and read
+/// with an `aria-label`, and VoiceOver reads an `aria-label` in its own default
+/// voice whatever the language. A text-only node is written into the page and read
 /// in its own language, so this is how a message or transcript is heard in its
 /// own voice on web (#9266). When the text is already such a node, nothing is
 /// added.
