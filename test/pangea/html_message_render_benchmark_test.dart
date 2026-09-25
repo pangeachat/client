@@ -11,8 +11,8 @@ import 'package:fluffychat/routes/chat/events/models/tokens_event_content_model.
 import 'package:fluffychat/routes/chat/events/tokens/underline_text_widget.dart';
 import 'package:fluffychat/routes/chat/html_message.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'fake_pangea_controller.dart';
 import 'fake_message_toolbar_host.dart';
+import 'fake_pangea_controller.dart';
 import 'get_test_client.dart';
 
 /// Render coverage + benchmark for the token-heavy [HtmlMessage] path

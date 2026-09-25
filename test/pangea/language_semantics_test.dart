@@ -12,8 +12,8 @@ import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/events/models/tokens_event_content_model.dart';
 import 'package:fluffychat/routes/chat/message_content.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'fake_pangea_controller.dart';
 import 'fake_message_toolbar_host.dart';
+import 'fake_pangea_controller.dart';
 import 'get_test_client.dart';
 
 /// #9266 — text not in the UI language carries its own language, so a screen
