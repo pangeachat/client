@@ -5,6 +5,7 @@ import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 
 class InstructionsInlineTooltip extends StatelessWidget {
   final InstructionsEnum instructionsEnum;
@@ -203,10 +204,22 @@ class InlineTooltipState extends State<InlineTooltip>
                       ),
                     ),
                   ),
+                  const SizedBox(width: 4.0),
                   IconButton(
                     tooltip: L10n.of(context).closeHint,
-                    padding: const EdgeInsets.only(left: 6.0),
+                    // Even padding, so the focus ring circles the X instead
+                    // of hugging it off-centre.
+                    padding: const EdgeInsets.all(2.0),
                     constraints: const BoxConstraints(),
+                    // Material's focus wash all but vanishes on the gold fill
+                    // (#9278), so the X wears the shared ring in the fill's
+                    // own ink.
+                    style: ButtonStyle(
+                      side: FocusRingTapTarget.ringSideProperty(
+                        context,
+                        color: Theme.of(context).pangea.onGoldFixed,
+                      ),
+                    ),
                     icon: Icon(
                       Icons.close_outlined,
                       size: 20,

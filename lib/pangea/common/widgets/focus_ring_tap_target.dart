@@ -26,8 +26,13 @@ class FocusRingTapTarget extends StatefulWidget {
   /// still unmissable while tabbing.
   static const double ringWidth = 2.0;
 
-  static BorderSide ringSide(BuildContext context) =>
-      BorderSide(color: Theme.of(context).pangea.goldGraphic, width: ringWidth);
+  /// Gold by default; [color] for a control that sits on gold itself, where a
+  /// gold ring cannot clear 3:1 (the inline tooltip's close button, #9278).
+  static BorderSide ringSide(BuildContext context, {Color? color}) =>
+      BorderSide(
+        color: color ?? Theme.of(context).pangea.goldGraphic,
+        width: ringWidth,
+      );
 
   /// The two-tone ring's pair, light on the mark's side and dark beyond it —
   /// also the map pins' ring (PinSemanticsLayer). Deliberately not theme
@@ -43,10 +48,11 @@ class FocusRingTapTarget extends StatefulWidget {
   /// [highlightsEnabled] here too, because [WidgetState.focused] is set
   /// whether or not Material would show a focus highlight.
   static WidgetStateProperty<BorderSide> ringSideProperty(
-    BuildContext context,
-  ) => WidgetStateProperty.resolveWith(
+    BuildContext context, {
+    Color? color,
+  }) => WidgetStateProperty.resolveWith(
     (states) => states.contains(WidgetState.focused) && highlightsEnabled
-        ? ringSide(context)
+        ? ringSide(context, color: color)
         : BorderSide.none,
   );
 
