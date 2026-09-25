@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 import 'package:fluffychat/features/activity_sessions/activity_media_repo.dart';
 import 'package:fluffychat/features/course_plans/courses/course_filter.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
@@ -5,6 +7,7 @@ import 'package:fluffychat/features/course_plans/payload_client/payload_client.d
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -43,6 +46,70 @@ class QuestPlansRepo {
     baseUrl: Environment.cmsApi,
     accessToken: MatrixState.pangeaController.userController.accessToken,
   );
+
+  /// Each quest's cover image, by quest id: a URL, or null for a quest known to
+  /// have none (no `image`, a media miss, or a removed quest). A missing key
+  /// means not yet known. Filled by [cover] and by every quest-plans read that
+  /// resolved its image; a failed read leaves the key missing, so the next
+  /// [cover] retries it. Process-scoped, like [ActivityMediaRepo]'s cache.
+  static final Map<String, Uri?> _covers = {};
+  static final Map<String, Future<Uri?>> _coverRequests = {};
+
+  /// The cover [cover] already knows for [questId], or null. Lets a widget
+  /// paint a known cover on its first frame instead of after a future.
+  static Uri? cachedCover(String questId) => _covers[questId];
+
+  @visibleForTesting
+  static void resetCoverCacheForTest() {
+    _covers.clear();
+    _coverRequests.clear();
+  }
+
+  /// The quest's cover image, the fallback a course room with no
+  /// `m.room.avatar` shows (course-plans.instructions.md § Course avatar).
+  /// Null means the quest has no cover, or the read failed; a failure is
+  /// reported here and not cached. Concurrent calls share one read.
+  static Future<Uri?> cover(String questId) {
+    if (_covers.containsKey(questId)) return Future.value(_covers[questId]);
+    // Block body on purpose: `remove` returns this very future, and a
+    // whenComplete callback that returns a future is awaited — a self-wait.
+    return _coverRequests[questId] ??= _fetchCover(questId).whenComplete(() {
+      _coverRequests.remove(questId);
+    });
+  }
+
+  static Future<Uri?> _fetchCover(String questId) async {
+    if (await QuestRepo.removedQuests.contains(questId)) {
+      return _covers[questId] = null;
+    }
+    try {
+      final json = await _client().findById<Map<String, dynamic>>(
+        _collection,
+        questId,
+        (json) => json,
+      );
+      final uploadId = _imageUploadId(json);
+      final url = uploadId == null
+          ? null
+          : (await _resolveUploadIds([uploadId]))[uploadId];
+      return _covers[questId] = url;
+    } catch (e, s) {
+      if (PangeaHttpException.statusCodeOf(e) == 404) {
+        // A removed quest has no cover: the letter avatar is the right
+        // result, and QuestRepo.quest owns the one report of the removal.
+        QuestRepo.removedQuests.mark(questId);
+        return _covers[questId] = null;
+      }
+      ErrorHandler.logErrorOnce(
+        key: 'quest-cover:$questId',
+        e: e,
+        s: s,
+        data: {'quest_id': questId},
+        level: PangeaHttpException.severityOf(e),
+      );
+      return null;
+    }
+  }
 
   /// Translate a v1-style [CourseFilter] into a v3 quest-plans `where` clause.
   /// Field names differ (v1: top-level ``l1``/``l2``/``cefrLevel``; v3: nested
@@ -172,36 +239,54 @@ class QuestPlansRepo {
     return result;
   }
 
-  /// Batch-resolves each rows `image.upload_id` via [ActivityMediaRepo.resolve]
-  /// A row with no image, or a lookup miss,
-  /// is simply absent from the result; callers treat `imageUrls[id] == null`
-  /// the same as no image (letter avatar fallback), not as an error.
-  static Future<Map<String, Uri>> _resolveImageUrls(
+  /// The row's `image.upload_id`: a top-level field, a sibling of req/res.
+  static String? _imageUploadId(Map<String, dynamic> json) =>
+      (json['image'] as Map?)?['upload_id'] as String?;
+
+  /// Resolves media [uploadIds] to their display URLs (the thumbnail where one
+  /// exists). An id with no media row is absent from the result.
+  static Future<Map<String, Uri>> _resolveUploadIds(
+    List<String> uploadIds,
+  ) async {
+    final resolved = await ActivityMediaRepo.resolve(uploadIds);
+    final urls = <String, Uri>{};
+    for (final entry in resolved.entries) {
+      // Already an absolute URL — ActivityMediaRepo.resolve() normalizes
+      // a relative CMS path itself, for every caller, not just this one.
+      final raw = entry.value.thumbnailUrl ?? entry.value.url;
+      final uri = Uri.tryParse(raw);
+      if (uri != null) urls[entry.key] = uri;
+    }
+    return urls;
+  }
+
+  /// Batch-resolves each row's `image.upload_id` via [_resolveUploadIds].
+  /// A row with no image, or a lookup miss, is simply absent from the result;
+  /// callers treat `imageUrls[id] == null` the same as no image (letter avatar
+  /// fallback), not as an error. Null when the lookup itself failed.
+  static Future<Map<String, Uri>?> _resolveImageUrls(
     List<Map<String, dynamic>> rawDocs,
   ) async {
     final uploadIds = rawDocs
-        .map((json) => json['image'] as Map?)
-        .map((image) => image?['upload_id'] as String?)
+        .map(_imageUploadId)
         .whereType<String>()
         .toSet()
         .toList();
     if (uploadIds.isEmpty) return const {};
 
     try {
-      final resolved = await ActivityMediaRepo.resolve(uploadIds);
-      final urls = <String, Uri>{};
-      for (final entry in resolved.entries) {
-        // Already an absolute URL — ActivityMediaRepo.resolve() normalizes
-        // a relative CMS path itself, for every caller, not just this one.
-        final raw = entry.value.thumbnailUrl ?? entry.value.url;
-        final uri = Uri.tryParse(raw);
-        if (uri != null) urls[entry.key] = uri;
-      }
-      return urls;
-    } catch (_) {
+      return await _resolveUploadIds(uploadIds);
+    } catch (e, s) {
       // A media lookup failure must not sink the whole quest list — it
-      // degrades to the same letter-avatar fallback as a quest with no image.
-      return const {};
+      // degrades to the same letter-avatar fallback as a quest with no image,
+      // and is reported once per session rather than per page.
+      ErrorHandler.logErrorOnce(
+        key: 'quest-plan-image-resolve:${e.runtimeType}',
+        e: e,
+        s: s,
+        data: {'upload_ids': uploadIds},
+      );
+      return null;
     }
   }
 
@@ -252,8 +337,10 @@ class QuestPlansRepo {
       (i) => 'quest:$id:mission:$i',
     );
 
-    // Top-level field, a sibling of req/res, not nested inside either.
-    final imageUploadId = (json['image'] as Map?)?['upload_id'] as String?;
+    final imageUploadId = _imageUploadId(json);
+    // Remember the cover for [cover] — unless the media lookup failed
+    // (imageUrls null), which says nothing about whether one exists.
+    if (imageUrls != null) _covers[id] = imageUrls[imageUploadId];
 
     return CoursePlanModel(
       uuid: id,
