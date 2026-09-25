@@ -44,6 +44,18 @@ explicitly and say why; an unmarked fixed size is indistinguishable from an over
 
 **Fixed-size boxes around text must grow with the text inside them.** A glyph in a hard-coded `SizedBox` is clipped at 2×: let the box size itself, or scale it by the factor the device scaler applies at the font size of the text it holds (`TextScaler.factorAt`). Scaling it by its own dimension is wrong — `TextScaler.scale` takes a font size, and Android 14+ answers from a curve where small text grows more than large, so a 250px word card is answered as if it were 250pt type: it grows by the factor huge text gets rather than the factor its 16pt contents get, and still clips. Anything that takes a plain scale multiplier needs the same factor.
 
+## Language of text
+
+A screen reader chooses its voice from the language the text is marked with. The app's own copy is declared once for the whole app in the learner's UI language, so it needs nothing per widget. Text in any other language, above all the learner's target language (L2), must be marked with its own language. Otherwise it is read in the UI voice, and a Spanish message is pronounced as English. In a language-learning app that is most of the content (WCAG 3.1.2).
+
+- **Mark the text, not what surrounds it.** Text in another language goes in its own semantics container that states the language (`localeForSubtree`). The container keeps the language on that text, so it does not spread to the sender name, timestamp or buttons beside it. Everything inside inherits the language, so a message's per-word buttons need nothing of their own.
+- **Use the language we already display with.** A chat message is marked with `messageDisplayLangCode`, the same value that sets its text direction. The other L2 surfaces use the language their content is recorded in: the word card's lemma, vocab tiles, practice choices, activity text, transcripts and grammar examples.
+- **An unknown language stays unmarked** and is read in the UI voice. Never guess that it is the L2.
+- **A message gets one language.** A message that mixes languages is marked with the language it was detected as, because tokens don't carry a language of their own.
+- **App copy counts too.** The tutorial greeting shows one word from the L2's copy. The "Show the app in the language I'm learning" setting stays in the base language after the rest of the app switches to the L2. Each is marked with its own language.
+
+Whether the voice actually switches also depends on the listener's device. NVDA and JAWS switch only when that language's voice is installed and automatic language switching is on. A missing voice is not a defect in the app.
+
 ## Automated auditing proves only part
 
 We run axe-core (WCAG 2.1 AA) against the semantics overlay. Two decisions shape coverage:
@@ -104,6 +116,7 @@ Every custom control authors its own keyboard focus ring. The ring shows only wh
 5. **Visible label = accessible name.** What a sighted user reads and what a screen reader speaks should match.
 6. **Group and label inputs.** Each field has a label; errors are stated in text, not just a red border.
 7. **Announce what changes.** Loading, success, and error states reach assistive tech (live regions), not just a visual flash.
+8. **Mark text that isn't in the UI language.** L2 text carries its own language, or a screen reader reads it in the wrong voice. See [Language of text](#language-of-text).
 
 ## Responsibility
 
