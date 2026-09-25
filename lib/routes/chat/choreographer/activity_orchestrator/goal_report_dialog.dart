@@ -28,7 +28,7 @@ Future<void> showGoalReportDialog({
   required String roleId,
   required ActivityRoleGoal goal,
   required GoalReportDirection direction,
-  Future<List<PangeaMessageEvent>> Function()? ownMessagesOverride,
+  Future<Timeline> Function()? timelineOverride,
 }) => showDialog<void>(
   context: context,
   builder: (_) => _GoalReportDialog(
@@ -44,7 +44,7 @@ Future<void> showGoalReportDialog({
     // (`workspace_shell.dart`). A confirmation sent there asserts instead of
     // showing.
     messenger: ScaffoldMessenger.of(context),
-    ownMessagesOverride: ownMessagesOverride,
+    timelineOverride: timelineOverride,
   ),
 );
 
@@ -58,9 +58,9 @@ class _GoalReportDialog extends StatefulWidget {
   /// opened the prompt rather than from the prompt's own.
   final ScaffoldMessengerState messenger;
 
-  /// Test seam: the reporter's own messages, without a Matrix client behind
-  /// them. Null in the app, where they come from the room's timeline.
-  final Future<List<PangeaMessageEvent>> Function()? ownMessagesOverride;
+  /// Test seam: the timeline the reporter's messages are read from, without a
+  /// Matrix client behind it. Null in the app, where it is the room's own.
+  final Future<Timeline> Function()? timelineOverride;
 
   const _GoalReportDialog({
     required this.room,
@@ -68,7 +68,7 @@ class _GoalReportDialog extends StatefulWidget {
     required this.goal,
     required this.direction,
     required this.messenger,
-    this.ownMessagesOverride,
+    this.timelineOverride,
   });
 
   @override
@@ -106,19 +106,30 @@ class _GoalReportDialogState extends State<_GoalReportDialog> {
   /// A one-shot snapshot, not a live timeline: the messages a report can point
   /// at are already sent, so the list has nothing to follow.
   Future<void> _loadOwnMessages() async {
-    final override = widget.ownMessagesOverride;
-    final messages = override != null
-        ? await override()
-        : await _ownMessagesFromTimeline();
+    final messages = await _ownMessagesFromTimeline();
     if (!mounted) return;
     setState(() => _ownMessages = messages.map(_EvidenceOption.new).toList());
   }
 
+  /// The reporter's own messages, exactly as the chat shows them. The chat's
+  /// own filter is what keeps out the audio a read-aloud leaves behind (an
+  /// audio event carrying another message's transcription, sent under the
+  /// listener's name) and each edit's separate event, so the picker never
+  /// offers a message the chat does not.
   Future<List<PangeaMessageEvent>> _ownMessagesFromTimeline() async {
-    final timeline = await widget.room.getTimeline();
+    final userId = widget.room.client.userID;
+    final timeline =
+        await widget.timelineOverride?.call() ??
+        await widget.room.getTimeline();
     try {
       return timeline.events
-          .goalReportEvidence(widget.room.client.userID)
+          .filterByVisibleInGui()
+          .where(
+            (e) =>
+                e.type == EventTypes.Message &&
+                e.senderId == userId &&
+                !e.redacted,
+          )
           .map(
             (e) => PangeaMessageEvent(
               event: e,
@@ -253,20 +264,6 @@ class _GoalReportDialogState extends State<_GoalReportDialog> {
       ],
     );
   }
-}
-
-/// The messages a reporter can name as evidence: their own, exactly as the chat
-/// shows them. The chat's own filter is what keeps out the audio a read-aloud
-/// leaves behind (an audio event carrying another message's transcription,
-/// sent under the listener's name) and each edit's separate event, so the
-/// picker can never offer a message the chat does not.
-extension GoalReportEvidenceExtension on List<Event> {
-  List<Event> goalReportEvidence(String? userId) => filterByVisibleInGui()
-      .where(
-        (e) =>
-            e.type == EventTypes.Message && e.senderId == userId && !e.redacted,
-      )
-      .toList();
 }
 
 /// One of the reporter's messages as the picker lists it.

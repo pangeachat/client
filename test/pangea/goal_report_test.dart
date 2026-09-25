@@ -19,7 +19,6 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/goal_report_dialog.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/goal_report_repo.dart';
-import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'fake_pangea_controller.dart';
 import 'get_test_client.dart';
@@ -181,23 +180,6 @@ void main() {
       await client.dispose();
     });
 
-    PangeaMessageEvent messageWith(Map<String, dynamic> content, int seq) =>
-        PangeaMessageEvent(
-          event: Event(
-            type: EventTypes.Message,
-            content: content,
-            senderId: senderId,
-            eventId: '\$msg$seq',
-            originServerTs: DateTime.utc(2026, 9, 22, 12, seq),
-            room: room,
-          ),
-          timeline: timeline,
-          ownMessage: true,
-        );
-
-    PangeaMessageEvent message(String body, int seq) =>
-        messageWith({'msgtype': 'm.text', 'body': body}, seq);
-
     Event rawEvent(
       String eventId,
       Map<String, dynamic> content, {
@@ -214,87 +196,40 @@ void main() {
       room: room,
     );
 
-    test('lists only the messages the chat shows as the reporter\'s', () {
-      final own = rawEvent(r'$own', {'msgtype': 'm.text', 'body': 'hola'});
-      final ownVoice = rawEvent(r'$voice', {
-        'msgtype': 'm.audio',
-        'body': 'voice-message.ogg',
-      });
-      final events = [
-        own,
-        ownVoice,
-        // #9267: playing another message aloud leaves an audio event under
-        // the LISTENER's name carrying that message's words. The chat hides
-        // it; the picker used to offer it as the listener's own voice message.
-        rawEvent(r'$readAloud', {
-          'msgtype': 'm.audio',
-          'body': r'audio_for_$bot1_es.mp3',
-          'transcription': {'text': 'Qué día tan bonito'},
-          'm.relates_to': {
-            'rel_type': 'pangea.text_to_speech',
-            'event_id': r'$bot1',
-          },
-        }),
-        // An edit is its own event but not a second message.
-        rawEvent(r'$edit', {
-          'msgtype': 'm.text',
-          'body': '* hola!',
-          'm.new_content': {'msgtype': 'm.text', 'body': 'hola!'},
-          'm.relates_to': {'rel_type': 'm.replace', 'event_id': r'$own'},
-        }),
-        rawEvent(r'$other', {
-          'msgtype': 'm.text',
-          'body': 'buenas',
-        }, sender: '@bot:fakeServer.notExisting'),
-        rawEvent(
-          r'$gone',
-          {},
-          unsigned: {
-            'redacted_because': {
-              'type': EventTypes.Redaction,
-              'sender': senderId,
-              'event_id': r'$redaction',
-              'content': <String, dynamic>{},
-            },
-          },
-        ),
-      ];
-
-      expect(events.goalReportEvidence(senderId).map((e) => e.eventId), [
-        r'$own',
-        r'$voice',
-      ]);
-    });
+    Event message(String body, int seq) =>
+        rawEvent('\$msg$seq', {'msgtype': 'm.text', 'body': body}, minute: seq);
 
     /// A voice message. Its body is what the SDK falls back to, which for a
     /// voice message says nothing the reporter recognises.
-    PangeaMessageEvent voiceMessage(int seq, {String? transcript}) =>
-        messageWith({
-          'msgtype': 'm.audio',
-          'body': '\$msg$seq',
-          if (transcript != null)
-            'user_stt': {
-              'results': [
+    Event voiceMessage(int seq, {String? transcript}) => rawEvent('\$msg$seq', {
+      'msgtype': 'm.audio',
+      'body': '\$msg$seq',
+      if (transcript != null)
+        'user_stt': {
+          'results': [
+            {
+              'transcripts': [
                 {
-                  'transcripts': [
-                    {
-                      'confidence': 90,
-                      'lang_code': 'es',
-                      'transcript': transcript,
-                      'words_per_hr': 100,
-                      'stt_tokens': <Map<String, dynamic>>[],
-                    },
-                  ],
+                  'confidence': 90,
+                  'lang_code': 'es',
+                  'transcript': transcript,
+                  'words_per_hr': 100,
+                  'stt_tokens': <Map<String, dynamic>>[],
                 },
               ],
             },
-        }, seq);
+          ],
+        },
+    }, minute: seq);
 
     Future<void> open(
       WidgetTester tester, {
       required GoalReportDirection direction,
-      List<PangeaMessageEvent> ownMessages = const [],
+      List<Event> timelineEvents = const [],
     }) async {
+      timeline.events
+        ..clear()
+        ..addAll(timelineEvents);
       await tester.pumpWidget(
         MaterialApp(
           localizationsDelegates: L10n.localizationsDelegates,
@@ -313,7 +248,7 @@ void main() {
                     roleId: 'customer',
                     goal: goal,
                     direction: direction,
-                    ownMessagesOverride: () async => ownMessages,
+                    timelineOverride: () async => timeline,
                   ),
                   child: const Text('open'),
                 ),
@@ -372,7 +307,10 @@ void main() {
       await open(
         tester,
         direction: GoalReportDirection.underAward,
-        ownMessages: [message('un café por favor', 1), message('gracias', 2)],
+        timelineEvents: [
+          message('un café por favor', 1),
+          message('gracias', 2),
+        ],
       );
 
       expect(
@@ -395,13 +333,66 @@ void main() {
       expect(sendAction(tester), isNotNull);
     });
 
+    testWidgets('lists only the messages the chat shows as the reporter\'s', (
+      tester,
+    ) async {
+      await open(
+        tester,
+        direction: GoalReportDirection.underAward,
+        timelineEvents: [
+          message('hola', 1),
+          voiceMessage(2, transcript: 'quiero un café'),
+          // #9267: playing another message aloud leaves an audio event under
+          // the LISTENER's name carrying that message's words. The chat hides
+          // it; the picker used to offer it as the listener's own voice
+          // message.
+          rawEvent(r'$readAloud', {
+            'msgtype': 'm.audio',
+            'body': r'audio_for_$bot1_es.mp3',
+            'transcription': {'text': 'Qué día tan bonito'},
+            'm.relates_to': {
+              'rel_type': 'pangea.text_to_speech',
+              'event_id': r'$bot1',
+            },
+          }),
+          // An edit is its own event but not a second message.
+          rawEvent(r'$edit', {
+            'msgtype': 'm.text',
+            'body': '* hola!',
+            'm.new_content': {'msgtype': 'm.text', 'body': 'hola!'},
+            'm.relates_to': {'rel_type': 'm.replace', 'event_id': r'$msg1'},
+          }),
+          rawEvent(r'$other', {
+            'msgtype': 'm.text',
+            'body': 'buenas',
+          }, sender: '@bot:fakeServer.notExisting'),
+          rawEvent(
+            r'$gone',
+            {},
+            unsigned: {
+              'redacted_because': {
+                'type': EventTypes.Redaction,
+                'sender': senderId,
+                'event_id': r'$redaction',
+                'content': <String, dynamic>{},
+              },
+            },
+          ),
+        ],
+      );
+
+      expect(find.byType(RadioListTile<String>), findsNWidgets(2));
+      expect(find.text('hola'), findsOneWidget);
+      expect(find.text('quiero un café'), findsOneWidget);
+    });
+
     testWidgets('a voice message is listed by its stored transcript', (
       tester,
     ) async {
       await open(
         tester,
         direction: GoalReportDirection.underAward,
-        ownMessages: [
+        timelineEvents: [
           voiceMessage(1, transcript: 'quiero un café'),
           voiceMessage(2),
         ],
@@ -438,7 +429,7 @@ void main() {
           await open(
             tester,
             direction: GoalReportDirection.underAward,
-            ownMessages: [original],
+            timelineEvents: [original],
           );
           // Listed by what the chat shows now, at the time it was first sent.
           await tester.tap(find.text('un café, por favor'));
