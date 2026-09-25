@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "Utafutaji wa zamu haukukamilika. Jaribu tena.",
     "summaryFeedbackReceived": "Asante! Tumepokea maoni yako.",
     "summaryFeedbackFailed": "Imeshindwa kutuma maoni yako. Tafadhali jaribu tena.",
-    "summaryFeedbackProcessing": "Tunatuma maoni yako na kusasisha muhtasari…"
+    "summaryFeedbackProcessing": "Tunatuma maoni yako na kusasisha muhtasari…",
+    "activitySummaryUpdateFailed": "Muhtasari huu haukuweza kusasishwa."
 }

@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "د وار لټون پای ته ونه رسید. بیا هڅه وکړئ.",
     "summaryFeedbackReceived": "مننه! موږ ستاسو نظر ترلاسه کړ.",
     "summaryFeedbackFailed": "ستاسو نظر نشو لیږلی. مهرباني وکړئ بیا هڅه وکړئ.",
-    "summaryFeedbackProcessing": "ستاسو نظر استول کیږي او لنډیز تازه کیږي…"
+    "summaryFeedbackProcessing": "ستاسو نظر استول کیږي او لنډیز تازه کیږي…",
+    "activitySummaryUpdateFailed": "دا لنډیز تازه نشو."
 }

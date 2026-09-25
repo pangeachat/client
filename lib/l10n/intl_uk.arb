@@ -9961,5 +9961,6 @@
     "goalReportErrorRetry": "Пошук ходу не завершився. Спробуйте ще раз.",
     "summaryFeedbackReceived": "Дякуємо! Ми отримали ваш відгук.",
     "summaryFeedbackFailed": "Не вдалося надіслати ваш відгук. Будь ласка, спробуйте ще раз.",
-    "summaryFeedbackProcessing": "Надсилаємо ваш відгук та оновлюємо підсумок…"
+    "summaryFeedbackProcessing": "Надсилаємо ваш відгук та оновлюємо підсумок…",
+    "activitySummaryUpdateFailed": "Не вдалося оновити зведення."
 }

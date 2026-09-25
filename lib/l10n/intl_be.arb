@@ -9975,5 +9975,6 @@
     "goalReportErrorRetry": "Пошук ходу не скончыўся. Паспрабуйце яшчэ раз.",
     "summaryFeedbackReceived": "Дзякуй! Мы атрымалі ваш водгук.",
     "summaryFeedbackFailed": "Не атрымалася адправіць ваш водгук. Калі ласка, паспрабуйце яшчэ раз.",
-    "summaryFeedbackProcessing": "Адпраўка вашага водгуку і абнаўленне зводкі…"
+    "summaryFeedbackProcessing": "Адпраўка вашага водгуку і абнаўленне зводкі…",
+    "activitySummaryUpdateFailed": "Гэтае зводка не можа быць абноўлена."
 }

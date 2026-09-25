@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "টাৰ্ণৰ সন্ধান শেষ হোৱা নাই। পুনৰ চেষ্টা কৰক।",
     "summaryFeedbackReceived": "ধন্যবাদ! আমি আপোনাৰ মতামত পালোঁ।",
     "summaryFeedbackFailed": "আপোনাৰ মতামত পঠিয়াব পৰা নগ'ল। অনুগ্ৰহ কৰি পুনৰ চেষ্টা কৰক।",
-    "summaryFeedbackProcessing": "আপোনাৰ মতামত পঠোৱা হৈছে আৰু সাৰাংশ আপডেইট কৰা হৈছে…"
+    "summaryFeedbackProcessing": "আপোনাৰ মতামত পঠোৱা হৈছে আৰু সাৰাংশ আপডেইট কৰা হৈছে…",
+    "activitySummaryUpdateFailed": "এই সাৰাংশটো আপডেইট কৰিব পৰা নগ’ল।"
 }

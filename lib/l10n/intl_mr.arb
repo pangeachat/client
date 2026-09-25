@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "टर्नचा शोध पूर्ण झाला नाही. पुन्हा प्रयत्न करा.",
     "summaryFeedbackReceived": "धन्यवाद! आम्हाला तुमचा अभिप्राय मिळाला आहे.",
     "summaryFeedbackFailed": "तुमचा अभिप्राय पाठवता आला नाही. कृपया पुन्हा प्रयत्न करा.",
-    "summaryFeedbackProcessing": "तुमचा अभिप्राय पाठवत आहे आणि सारांश अपडेट करत आहे…"
+    "summaryFeedbackProcessing": "तुमचा अभिप्राय पाठवत आहे आणि सारांश अपडेट करत आहे…",
+    "activitySummaryUpdateFailed": "हा सारांश अद्यतनित केला जाऊ शकला नाही."
 }

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
-import 'package:fluffychat/features/activity_sessions/activity_summary_room_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -25,8 +24,6 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
 
     final theme = Theme.of(context);
 
-    final l1 = MatrixState.pangeaController.userController.userL1Code;
-
     final finished = controller.room.isActivityFinished;
 
     final showsSummaries = MatrixState
@@ -35,29 +32,18 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
         .showSubscriptionGatedContent;
 
     return ValueListenableBuilder(
-      valueListenable: controller.activityController.summaryFetchFailed,
-      builder: (context, fetchFailed, _) {
-        final summary = controller.room.visibleActivitySummaryByL1;
-
+      valueListenable: controller.activityController.summaryView,
+      builder: (context, view, _) {
         // A summary still generating renders in the chat instead, so the bar
         // stays collapsed and the rating card above it doesn't get pushed
-        // around (#8018). A locally-recorded failure overrides room state,
-        // which can't say "error" when the network is down (#8362).
-        // An unsubscribed learner gets no summary section at all: the gate
-        // moved to the chat, where the summary would have been (#8860), and
-        // the error/retry branch below would otherwise offer them a fetch
-        // they cannot make.
-        final summarySection =
-            showsSummaries &&
-                finished &&
-                (fetchFailed ||
-                    (summary != null &&
-                        summary.summary == null &&
-                        !summary.isLoading))
+        // around (#8018). An unsubscribed learner gets no summary section at
+        // all: the gate moved to the chat, where the summary would have been
+        // (#8860), and the error/retry branch below would otherwise offer
+        // them a request they cannot use.
+        final summarySection = showsSummaries && finished && view.hasFailed
             ? _SummarySection(
-                hasError: fetchFailed || (summary?.hasError ?? false),
-                fetchSummaries: l1 != null
-                    ? controller.activityController.fetchSummaries
+                requestSummary: view.canRequest
+                    ? controller.activityController.requestSummary
                     : null,
               )
             : null;
@@ -100,40 +86,38 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
   }
 }
 
+/// The summary failed. The retry asks the bot, so it shows only while the
+/// bot is still in the room to answer.
 class _SummarySection extends StatelessWidget {
-  final bool hasError;
-  final Future<void> Function()? fetchSummaries;
+  final Future<void> Function()? requestSummary;
 
-  const _SummarySection({required this.hasError, required this.fetchSummaries});
+  const _SummarySection({required this.requestSummary});
 
   @override
   Widget build(BuildContext context) {
-    if (hasError) {
-      return Column(
-        spacing: 8,
-        children: [
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Icon(Icons.school_outlined, size: 24),
-              const SizedBox(width: 8),
-              Flexible(
-                child: Text(
-                  L10n.of(context).activitySummaryError,
-                  textAlign: TextAlign.center,
-                ),
+    return Column(
+      spacing: 8,
+      children: [
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Icon(Icons.school_outlined, size: 24),
+            const SizedBox(width: 8),
+            Flexible(
+              child: Text(
+                L10n.of(context).activitySummaryError,
+                textAlign: TextAlign.center,
               ),
-            ],
-          ),
+            ),
+          ],
+        ),
+        if (requestSummary != null)
           TextButton(
-            onPressed: fetchSummaries,
+            onPressed: requestSummary,
             child: Text(L10n.of(context).requestSummaries),
           ),
-        ],
-      );
-    }
-
-    return const SizedBox.shrink();
+      ],
+    );
   }
 }
 

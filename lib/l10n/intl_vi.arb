@@ -7253,5 +7253,6 @@
     "goalReportErrorRetry": "Việc tìm kiếm lượt chưa hoàn tất. Vui lòng thử lại.",
     "summaryFeedbackReceived": "Cảm ơn! Chúng tôi đã nhận được phản hồi của bạn.",
     "summaryFeedbackFailed": "Không thể gửi phản hồi của bạn. Vui lòng thử lại.",
-    "summaryFeedbackProcessing": "Đang gửi phản hồi của bạn và cập nhật tóm tắt…"
+    "summaryFeedbackProcessing": "Đang gửi phản hồi của bạn và cập nhật tóm tắt…",
+    "activitySummaryUpdateFailed": "Không thể cập nhật bản tóm tắt này."
 }

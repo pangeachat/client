@@ -10267,5 +10267,6 @@
     "goalReportErrorRetry": "لم يكتمل البحث عن الدورة. حاول مرة أخرى.",
     "summaryFeedbackReceived": "شكرًا! لقد تلقينا ملاحظاتك.",
     "summaryFeedbackFailed": "تعذر إرسال ملاحظاتك. يرجى المحاولة مرة أخرى.",
-    "summaryFeedbackProcessing": "جارٍ إرسال ملاحظاتك وتحديث الملخص…"
+    "summaryFeedbackProcessing": "جارٍ إرسال ملاحظاتك وتحديث الملخص…",
+    "activitySummaryUpdateFailed": "تعذر تحديث هذا الملخص."
 }

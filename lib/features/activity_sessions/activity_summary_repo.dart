@@ -4,7 +4,6 @@ import 'dart:convert';
 import 'package:async/async.dart';
 import 'package:http/http.dart';
 
-import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_request_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_response_model.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
@@ -28,20 +27,18 @@ class _ActivitySummaryCacheItem {
 class ActivitySummaryRepo {
   static final Map<String, _ActivitySummaryCacheItem> _cache = {};
 
-  /// Local cache key. Includes `langCode` so two L1-different viewers in
-  /// the same room do not collide on cache — the choreographer returns
-  /// different responses per viewer (group summary in viewer's L1).
+  /// One translation per source row and target language: a regenerated
+  /// summary is a new row, so it is translated afresh.
   static String _storageKey(
     String roomId,
-    ActivityPlanModel activity,
-    String? langCode,
-  ) => '${roomId}_${activity.activityId}_${langCode ?? "default"}';
+    ActivitySummaryRequestModel request,
+  ) => '${roomId}_${request.sourceRequestHash}_${request.viewerL1}';
 
   static Future<Result<ActivitySummaryResponseModel>> get(
     String roomId,
     ActivitySummaryRequestModel request,
   ) async {
-    final storageKey = _storageKey(roomId, request.activity, request.langCode);
+    final storageKey = _storageKey(roomId, request);
     final cached = _getCached(storageKey);
     if (cached != null) return cached;
 
@@ -97,10 +94,5 @@ class ActivitySummaryRepo {
       }
       return Result.error(e);
     }
-  }
-
-  static void delete(String roomId, ActivitySummaryRequestModel request) {
-    final key = _storageKey(roomId, request.activity, request.langCode);
-    _cache.remove(key);
   }
 }

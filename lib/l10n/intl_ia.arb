@@ -10897,5 +10897,6 @@
     "goalReportErrorRetry": "Le cerca pro le turno non ha finite. Essaya de nove.",
     "summaryFeedbackReceived": "Gratias! Nos ha recipite tu feedback.",
     "summaryFeedbackFailed": "Non poteva inviar tu feedback. Per favor reprova.",
-    "summaryFeedbackProcessing": "Inviante vostre commentos e actualisante le summario…"
+    "summaryFeedbackProcessing": "Inviante vostre commentos e actualisante le summario…",
+    "activitySummaryUpdateFailed": "Iste summario non poteva esser actualisate."
 }

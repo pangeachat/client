@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "Patlisiso ya naledi ha e a fela. Leka hape.",
     "summaryFeedbackReceived": "Kea leboha! Re amohetse maikutlo a hau.",
     "summaryFeedbackFailed": "Ha rea khona ho romela maikutlo a hau. Ka kopo leka hape.",
-    "summaryFeedbackProcessing": "Re romela maikutlo a hao le ho ntlafatsa kakaretso…"
+    "summaryFeedbackProcessing": "Re romela maikutlo a hao le ho ntlafatsa kakaretso…",
+    "activitySummaryUpdateFailed": "Kakaretso ena e sitilwe ho ntjhafatswa."
 }

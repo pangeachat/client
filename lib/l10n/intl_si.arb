@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "වාරය සෙවීම අවසන් වූයේ නැත. නැවත උත්සාහ කරන්න.",
     "summaryFeedbackReceived": "ස්තූතියි! ඔබගේ ප්‍රතිපෝෂණය අපට ලැබුණි.",
     "summaryFeedbackFailed": "ඔබගේ ප්‍රතිපෝෂණය යැවිය නොහැකි විය. කරුණාකර නැවත උත්සාහ කරන්න.",
-    "summaryFeedbackProcessing": "ඔබගේ ප්‍රතිපෝෂණය යවමින් සහ සාරාංශය යාවත්කාලීන කරමින්..."
+    "summaryFeedbackProcessing": "ඔබගේ ප්‍රතිපෝෂණය යවමින් සහ සාරාංශය යාවත්කාලීන කරමින්...",
+    "activitySummaryUpdateFailed": "මෙම සාරාංශය යාවත්කාලීන කිරීමට නොහැකි විය."
 }

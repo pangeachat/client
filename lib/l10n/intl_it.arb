@@ -10034,5 +10034,6 @@
     "goalReportErrorRetry": "La ricerca del turno non è terminata. Riprova.",
     "summaryFeedbackReceived": "Grazie! Abbiamo ricevuto il tuo feedback.",
     "summaryFeedbackFailed": "Impossibile inviare il tuo feedback. Riprova.",
-    "summaryFeedbackProcessing": "Invio del feedback e aggiornamento del riepilogo…"
+    "summaryFeedbackProcessing": "Invio del feedback e aggiornamento del riepilogo…",
+    "activitySummaryUpdateFailed": "Impossibile aggiornare questo riepilogo."
 }

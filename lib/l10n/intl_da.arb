@@ -10881,5 +10881,6 @@
     "goalReportErrorRetry": "Søgningen efter turen blev ikke afsluttet. Prøv igen.",
     "summaryFeedbackReceived": "Tak! Vi har modtaget din feedback.",
     "summaryFeedbackFailed": "Kunne ikke sende din feedback. Prøv venligst igen.",
-    "summaryFeedbackProcessing": "Sender din feedback og opdaterer opsummeringen…"
+    "summaryFeedbackProcessing": "Sender din feedback og opdaterer opsummeringen…",
+    "activitySummaryUpdateFailed": "Denne oversigt kunne ikke opdateres."
 }

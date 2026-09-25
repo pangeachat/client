@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "Ni orffennodd y chwiliad am y tro. Rhowch gynnig arall arni.",
     "summaryFeedbackReceived": "Diolch! Rydym wedi derbyn eich adborth.",
     "summaryFeedbackFailed": "Doedd dim modd anfon eich adborth. Ceisiwch eto, os gwelwch yn dda.",
-    "summaryFeedbackProcessing": "Yn anfon eich adborth ac yn diweddaru'r crynodeb…"
+    "summaryFeedbackProcessing": "Yn anfon eich adborth ac yn diweddaru'r crynodeb…",
+    "activitySummaryUpdateFailed": "Ni ellid diweddaru’r crynodeb hwn."
 }

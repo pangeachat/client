@@ -8180,5 +8180,6 @@
     "goalReportErrorRetry": "La búsqueda del turno no finalizó. Inténtalo de nuevo.",
     "summaryFeedbackReceived": "¡Gracias! Recibimos tus comentarios.",
     "summaryFeedbackFailed": "No se pudieron enviar tus comentarios. Inténtalo de nuevo.",
-    "summaryFeedbackProcessing": "Enviando tus comentarios y actualizando el resumen…"
+    "summaryFeedbackProcessing": "Enviando tus comentarios y actualizando el resumen…",
+    "activitySummaryUpdateFailed": "No se pudo actualizar este resumen."
 }

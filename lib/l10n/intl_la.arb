@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "Quaesitio vicis non perfecta est. Iterum conare.",
     "summaryFeedbackReceived": "Gratias! Accepimus sententiam tuam.",
     "summaryFeedbackFailed": "Sententiam tuam mittere non potuimus. Quaeso iterum conare.",
-    "summaryFeedbackProcessing": "Sententiam tuam mittimus et summam renovamus…"
+    "summaryFeedbackProcessing": "Sententiam tuam mittimus et summam renovamus…",
+    "activitySummaryUpdateFailed": "Haec summa renovari non potuit."
 }

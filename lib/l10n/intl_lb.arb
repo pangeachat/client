@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "D'Sich no der Tour ass net fäerdeg ginn. Probéiert et nach eng Kéier.",
     "summaryFeedbackReceived": "Merci! Mir huet äre Feedback kritt.",
     "summaryFeedbackFailed": "Konnt äre Feedback net schécken. Probéiert w.e.g. nach eng Kéier.",
-    "summaryFeedbackProcessing": "Äre Feedback gëtt geschéckt an d'Resümmee gëtt aktualiséiert…"
+    "summaryFeedbackProcessing": "Äre Feedback gëtt geschéckt an d'Resümmee gëtt aktualiséiert…",
+    "activitySummaryUpdateFailed": "Dës Zesummefaassung konnt net aktualiséiert ginn."
 }

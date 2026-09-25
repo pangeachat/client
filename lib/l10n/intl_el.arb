@@ -10836,5 +10836,6 @@
     "goalReportErrorRetry": "Η αναζήτηση για τη σειρά δεν ολοκληρώθηκε. Δοκιμάστε ξανά.",
     "summaryFeedbackReceived": "Ευχαριστούμε! Λάβαμε τα σχόλιά σας.",
     "summaryFeedbackFailed": "Δεν ήταν δυνατή η αποστολή των σχολίων σας. Παρακαλώ δοκιμάστε ξανά.",
-    "summaryFeedbackProcessing": "Αποστολή των σχολίων σας και ενημέρωση της σύνοψης…"
+    "summaryFeedbackProcessing": "Αποστολή των σχολίων σας και ενημέρωση της σύνοψης…",
+    "activitySummaryUpdateFailed": "Αυτή η σύνοψη δεν ήταν δυνατό να ενημερωθεί."
 }

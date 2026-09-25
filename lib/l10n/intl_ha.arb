@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "Binciken juyin bai ƙare ba. Gwada kuma.",
     "summaryFeedbackReceived": "Na gode! Mun karɓi ra'ayinka.",
     "summaryFeedbackFailed": "An kasa aika ra'ayinka. Da fatan za a sake gwadawa.",
-    "summaryFeedbackProcessing": "Ana aikawa da ra'ayinka kuma ana sabunta taƙaitawa…"
+    "summaryFeedbackProcessing": "Ana aikawa da ra'ayinka kuma ana sabunta taƙaitawa…",
+    "activitySummaryUpdateFailed": "Ba a iya sabunta wannan taƙaitaccen bayanin ba."
 }

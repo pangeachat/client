@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "Kev tshawb nrhiav qhov hloov pauv tsis tiav. Sim dua.",
     "summaryFeedbackReceived": "Ua tsaug! Peb tau txais koj cov lus qhia.",
     "summaryFeedbackFailed": "Tsis tuaj yeem xa koj cov lus qhia. Thov sim dua.",
-    "summaryFeedbackProcessing": "Xa koj cov lus qhia thiab hloov kho cov ntsiab lus…"
+    "summaryFeedbackProcessing": "Xa koj cov lus qhia thiab hloov kho cov ntsiab lus…",
+    "activitySummaryUpdateFailed": "Qhov ntsiab lus no hloov tsis tau."
 }

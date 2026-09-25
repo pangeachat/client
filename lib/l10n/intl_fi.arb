@@ -9998,5 +9998,6 @@
     "goalReportErrorRetry": "Vuoron haku ei valmistunut. Yritä uudelleen.",
     "summaryFeedbackReceived": "Kiitos! Palautteesi on vastaanotettu.",
     "summaryFeedbackFailed": "Palautteen lähettäminen epäonnistui. Yritä uudelleen.",
-    "summaryFeedbackProcessing": "Lähetetään palautettasi ja päivitetään yhteenvetoa…"
+    "summaryFeedbackProcessing": "Lähetetään palautettasi ja päivitetään yhteenvetoa…",
+    "activitySummaryUpdateFailed": "Yhteenvedon päivittäminen epäonnistui."
 }

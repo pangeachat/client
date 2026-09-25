@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "Търсенето на хода не приключи. Опитайте отново.",
     "summaryFeedbackReceived": "Благодарим Ви! Получихме обратната Ви връзка.",
     "summaryFeedbackFailed": "Неуспешно изпращане на обратна връзка. Моля, опитайте отново.",
-    "summaryFeedbackProcessing": "Изпращане на обратна връзка и актуализиране на резюмето…"
+    "summaryFeedbackProcessing": "Изпращане на обратна връзка и актуализиране на резюмето…",
+    "activitySummaryUpdateFailed": "Това резюме не можа да бъде актуализирано."
 }

@@ -9961,5 +9961,6 @@
     "goalReportErrorRetry": "Kārtas meklēšana netika pabeigta. Mēģiniet vēlreiz.",
     "summaryFeedbackReceived": "Paldies! Mēs saņēmām jūsu atsauksmes.",
     "summaryFeedbackFailed": "Neizdevās nosūtīt jūsu atsauksmes. Lūdzu, mēģiniet vēlreiz.",
-    "summaryFeedbackProcessing": "Sūta jūsu atsauksmes un atjaunina kopsavilkumu…"
+    "summaryFeedbackProcessing": "Sūta jūsu atsauksmes un atjaunina kopsavilkumu…",
+    "activitySummaryUpdateFailed": "Šo kopsavilkumu nevarēja atjaunināt."
 }

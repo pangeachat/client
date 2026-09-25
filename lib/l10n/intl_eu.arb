@@ -9961,5 +9961,6 @@
     "goalReportErrorRetry": "Txanda bilaketa ez da amaitu. Saiatu berriro.",
     "summaryFeedbackReceived": "Eskerrik asko! Zure iritzia jaso dugu.",
     "summaryFeedbackFailed": "Ezin izan da zure iritzia bidali. Saiatu berriro, mesedez.",
-    "summaryFeedbackProcessing": "Zure iritzia bidaltzen eta laburpena eguneratzen…"
+    "summaryFeedbackProcessing": "Zure iritzia bidaltzen eta laburpena eguneratzen…",
+    "activitySummaryUpdateFailed": "Laburpen hau ezin izan da eguneratu."
 }

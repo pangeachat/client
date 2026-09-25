@@ -197,7 +197,7 @@ class _ActivitySessionDetailsTile extends StatelessWidget {
     final activityRoles = roomSummary.activityRoles;
     final activitySummary = roomSummary.activitySummary;
     final textSummary = activitySummary?.summary?.summary;
-    final analytics = activitySummary?.analytics;
+    final analytics = roomSummary.activitySummaryAnalytics;
     final participants = roomSummary.membershipSummary.keys;
     final theme = Theme.of(context);
 

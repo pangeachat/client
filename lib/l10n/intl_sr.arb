@@ -10910,5 +10910,6 @@
     "goalReportErrorRetry": "Pretraga poteza nije završena. Pokušaj ponovo.",
     "summaryFeedbackReceived": "Hvala! Primili smo vaše povratne informacije.",
     "summaryFeedbackFailed": "Nismo mogli da pošaljemo vaše povratne informacije. Pokušajte ponovo.",
-    "summaryFeedbackProcessing": "Šaljemo vaše povratne informacije i ažuriramo rezime…"
+    "summaryFeedbackProcessing": "Šaljemo vaše povratne informacije i ažuriramo rezime…",
+    "activitySummaryUpdateFailed": "Ovaj rezime nije mogao da se ažurira."
 }

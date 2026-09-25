@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "It sykjen nei de beurt is net foltôge. Besykje it opnij.",
     "summaryFeedbackReceived": "Tankewol! Wy hawwe jo feedback ûntfongen.",
     "summaryFeedbackFailed": "Koe jo feedback net ferstjoere. Besykje it opnij.",
-    "summaryFeedbackProcessing": "Jo feedback ferstjoere en de gearfetting bywurkje…"
+    "summaryFeedbackProcessing": "Jo feedback ferstjoere en de gearfetting bywurkje…",
+    "activitySummaryUpdateFailed": "Dizze gearfetting koe net bywurke wurde."
 }

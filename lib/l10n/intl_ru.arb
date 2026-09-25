@@ -10933,5 +10933,6 @@
     "goalReportErrorRetry": "Поиск хода не завершился. Попробуйте еще раз.",
     "summaryFeedbackReceived": "Спасибо! Мы получили ваш отзыв.",
     "summaryFeedbackFailed": "Не удалось отправить ваш отзыв. Пожалуйста, попробуйте еще раз.",
-    "summaryFeedbackProcessing": "Отправляем ваш отзыв и обновляем сводку…"
+    "summaryFeedbackProcessing": "Отправляем ваш отзыв и обновляем сводку…",
+    "activitySummaryUpdateFailed": "Не удалось обновить сводку."
 }

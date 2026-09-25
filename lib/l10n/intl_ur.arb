@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "ٹرن کی تلاش مکمل نہیں ہوئی۔ دوبارہ کوشش کریں۔",
     "summaryFeedbackReceived": "شکریہ! ہمیں آپ کی رائے موصول ہو گئی ہے۔",
     "summaryFeedbackFailed": "آپ کی رائے بھیجی نہیں جا سکی۔ براہ کرم دوبارہ کوشش کریں۔",
-    "summaryFeedbackProcessing": "آپ کے تاثرات بھیجے جا رہے ہیں اور خلاصہ اپ ڈیٹ کیا جا رہا ہے…"
+    "summaryFeedbackProcessing": "آپ کے تاثرات بھیجے جا رہے ہیں اور خلاصہ اپ ڈیٹ کیا جا رہا ہے…",
+    "activitySummaryUpdateFailed": "اس خلاصے کو اپ ڈیٹ نہیں کیا جا سکا ہے۔"
 }

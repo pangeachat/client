@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "Wala nahuman ang pagpangita sa turn. Sulayi pag-usab.",
     "summaryFeedbackReceived": "Salamat! Nadawat namo ang imong feedback.",
     "summaryFeedbackFailed": "Dili makapadala sa imong feedback. Palihug sulayi pag-usab.",
-    "summaryFeedbackProcessing": "Gipadala ang imong feedback ug gi-update ang summary…"
+    "summaryFeedbackProcessing": "Gipadala ang imong feedback ug gi-update ang summary…",
+    "activitySummaryUpdateFailed": "Dili ma-update kining summary."
 }

@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "Кезек іздеу аяқталмады. Қайталап көріңіз.",
     "summaryFeedbackReceived": "Рахмет! Пікіріңізді алдық.",
     "summaryFeedbackFailed": "Пікіріңізді жіберу мүмкін болмады. Қайталап көріңіз.",
-    "summaryFeedbackProcessing": "Пікіріңізді жіберіп, қорытындыны жаңартудамыз…"
+    "summaryFeedbackProcessing": "Пікіріңізді жіберіп, қорытындыны жаңартудамыз…",
+    "activitySummaryUpdateFailed": "Бұл қорытындыны жаңарту мүмкін болмады."
 }

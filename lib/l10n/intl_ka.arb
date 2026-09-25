@@ -10861,5 +10861,6 @@
     "goalReportErrorRetry": "სვლის ძებნა არ დასრულებულა. სცადეთ ხელახლა.",
     "summaryFeedbackReceived": "გმადლობთ! თქვენი გამოხმაურება მიღებულია.",
     "summaryFeedbackFailed": "თქვენი გამოხმაურების გაგზავნა ვერ მოხერხდა. გთხოვთ, სცადოთ ხელახლა.",
-    "summaryFeedbackProcessing": "თქვენი გამოხმაურების გაგზავნა და შეჯამების განახლება…"
+    "summaryFeedbackProcessing": "თქვენი გამოხმაურების გაგზავნა და შეჯამების განახლება…",
+    "activitySummaryUpdateFailed": "ამ შეჯამების განახლება ვერ მოხერხდა."
 }

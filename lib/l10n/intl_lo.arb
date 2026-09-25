@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "ການຄົ້ນຫາການຫັນປ່ຽນຍັງບໍ່ສຳເລັດ. ລອງໃໝ່ອີກຄັ້ງ.",
     "summaryFeedbackReceived": "ຂອບໃຈ! ພວກເຮົາໄດ້ຮັບຄຳຕິຊົມຂອງທ່ານແລ້ວ.",
     "summaryFeedbackFailed": "ບໍ່ສາມາດສົ່ງຄຳຕິຊົມຂອງທ່ານໄດ້. ກະລຸນາລອງໃໝ່ອີກຄັ້ງ.",
-    "summaryFeedbackProcessing": "ກຳລັງສົ່ງຄຳຕິຊົມຂອງທ່ານ ແລະ ອັບເດດບົດສະຫຼຸບ..."
+    "summaryFeedbackProcessing": "ກຳລັງສົ່ງຄຳຕິຊົມຂອງທ່ານ ແລະ ອັບເດດບົດສະຫຼຸບ...",
+    "activitySummaryUpdateFailed": "ບໍ່ສາມາດອັບເດດສະຫຼຸບນີ້ໄດ້."
 }

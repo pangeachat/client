@@ -2,15 +2,19 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'package:matrix/matrix.dart';
+import 'package:async/async.dart' show Result;
+import 'package:matrix/matrix.dart' hide Result;
+import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_analytics_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_preview_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_analytics_model.dart';
-import 'package:fluffychat/features/activity_sessions/activity_summary_model.dart';
+import 'package:fluffychat/features/activity_sessions/activity_summary_repo.dart';
+import 'package:fluffychat/features/activity_sessions/activity_summary_request_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_response_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_room_extension.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
@@ -41,7 +45,7 @@ class ActivityChatController {
   }
 
   bool _disposed = false;
-  bool _loadingSummary = false;
+  bool _ensuringSummaryAnalytics = false;
 
   final ValueNotifier<Set<String>> usedVocab = ValueNotifier({});
   final ValueNotifier<ActivityRoleModel?> highlightedRole = ValueNotifier(null);
@@ -49,12 +53,25 @@ class ActivityChatController {
   final ValueNotifier<bool> showActivityDropdown = ValueNotifier(false);
   final ValueNotifier<bool> confettiNotifier = ValueNotifier(false);
 
-  /// A summary fetch this client initiated failed and no summary exists. The
-  /// loading/error status normally travels through room state, but those
-  /// writes need the network — when the network itself is down nothing lands
-  /// and nothing rebuilds, leaving the spinner up forever (#8362). This local
-  /// flag is what the spinner and the error/retry bar fall back on.
-  final ValueNotifier<bool> summaryFetchFailed = ValueNotifier(false);
+  /// What the finished activity shows where its summary goes. Recomputed on
+  /// every room-state change that feeds it, and when a loading state expires.
+  final ValueNotifier<ActivitySummaryView> summaryView = ValueNotifier(
+    ActivitySummaryView.empty,
+  );
+
+  /// When this client first saw the activity finished with no summary slot.
+  DateTime? _summaryWaitingSince;
+
+  Timer? _summaryLoadingTimer;
+
+  /// The translation of the bot's summary into the viewer's L1: which row and
+  /// language it is for, and its result once fetched (null while in flight).
+  String? _translationKey;
+  Result<ActivitySummaryResponseModel>? _translationResult;
+
+  /// A summary slot changed while this controller was up, so the next summary
+  /// on screen is a new one to celebrate, not one the learner reopened.
+  bool _summaryMayHaveLanded = false;
 
   late final StreamSubscription _analyticsSubscription;
   late final StreamSubscription _rolesSubscription;
@@ -65,10 +82,7 @@ class ActivityChatController {
     _setRolesSubscription();
     _setSummarySubscription();
     _setAnalyticsSubscription();
-
-    if (room.isActivityFinished && _summary == null) {
-      _loadActivitySummary();
-    }
+    _onActivitySummaryInputsChanged();
   }
 
   Future<void> dispose() async {
@@ -79,29 +93,28 @@ class ActivityChatController {
     showInstructions.dispose();
     showActivityDropdown.dispose();
     confettiNotifier.dispose();
-    summaryFetchFailed.dispose();
+    _summaryLoadingTimer?.cancel();
+    summaryView.dispose();
     _rolesSubscription.cancel();
     _summarySubscription.cancel();
     await _onLeaveActivitySession();
   }
 
-  ActivitySummaryModel? get _summaryEvent => room.visibleActivitySummaryByL1;
-  ActivitySummaryResponseModel? get _summary => _summaryEvent?.summary;
-
-  bool get hasSummary => _summary != null;
+  bool get hasSummary => summaryView.value.summary != null;
 
   void _setRolesSubscription() {
+    // A seat finishing, or a learner or the bot leaving, can finish the
+    // activity or change who can answer a request.
     _rolesSubscription = room.client.onRoomState.stream
         .where(
           (event) =>
               event.roomId == room.id &&
-              event.state.type == PangeaEventTypes.activityRole,
+              {
+                PangeaEventTypes.activityRole,
+                EventTypes.RoomMember,
+              }.contains(event.state.type),
         )
-        .listen((e) {
-          if (room.isActivityFinished) {
-            _loadActivitySummary();
-          }
-        });
+        .listen((_) => _onActivitySummaryInputsChanged());
   }
 
   void _setSummarySubscription() {
@@ -111,22 +124,126 @@ class ActivityChatController {
               event.roomId == room.id &&
               event.state.type == PangeaEventTypes.activitySummary,
         )
-        .listen((e) {
-          // A summary arriving (e.g. generated by another participant) clears
-          // any locally-recorded failure.
-          if (hasSummary && !_disposed) summaryFetchFailed.value = false;
-          showConfetti();
+        .listen((update) {
+          final stateKey = update.state.stateKey;
+          if (stateKey != ActivitySummaryStateKeys.analytics &&
+              stateKey != ActivitySummaryStateKeys.request) {
+            _summaryMayHaveLanded = true;
+          }
+          _onActivitySummaryInputsChanged();
         });
   }
 
-  /// All summary fetches route through here so the local failure flag tracks
-  /// the outcome — see [summaryFetchFailed]. Returns whether the fetch
-  /// succeeded.
-  Future<bool> fetchSummaries({String? feedback}) async {
-    if (!_disposed) summaryFetchFailed.value = false;
-    final ok = await room.fetchSummariesByL1(feedback: feedback);
-    if (!_disposed) summaryFetchFailed.value = !ok && !hasSummary;
-    return ok;
+  void _onActivitySummaryInputsChanged() {
+    _refreshSummaryView();
+    _ensureSummaryAnalytics();
+  }
+
+  void _refreshSummaryView() {
+    if (_disposed) return;
+    if (room.isActivityFinished && room.activitySummary == null) {
+      _summaryWaitingSince ??= DateTime.now();
+    }
+    final view = _withTranslation(
+      room.activitySummaryView(waitingSince: _summaryWaitingSince),
+    );
+    summaryView.value = view;
+    if (_summaryMayHaveLanded && view.summary != null) {
+      _summaryMayHaveLanded = false;
+      showConfetti();
+    }
+
+    _summaryLoadingTimer?.cancel();
+    final deadline = view.loadingDeadline;
+    if (deadline != null) {
+      _summaryLoadingTimer = Timer(
+        deadline.difference(DateTime.now()),
+        _refreshSummaryView,
+      );
+    }
+  }
+
+  /// [view] as this viewer sees it: the bot's summary translated into their
+  /// L1 when it is written in another language. The loading state stays up
+  /// while the translation is fetched, and a failed translation leaves the
+  /// summary as written.
+  ActivitySummaryView _withTranslation(ActivitySummaryView view) {
+    final viewerL1 = MatrixState.pangeaController.userController.userL1Code;
+    if (viewerL1 == null || !view.needsTranslation(viewerL1)) return view;
+
+    final sourceRequestHash = view.summaryRequestHash;
+    if (sourceRequestHash == null) {
+      // Choreo returns the row id, and the bot stores it with every summary.
+      ErrorHandler.logErrorOnce(
+        key: 'activity_summary_no_request_hash',
+        e: 'Bot activity summary has no request_hash to translate from',
+        data: {'roomID': room.id},
+        level: SentryLevel.warning,
+      );
+      return view;
+    }
+
+    final key = '$sourceRequestHash:$viewerL1';
+    if (_translationKey != key) {
+      _translationKey = key;
+      _translationResult = null;
+      _fetchTranslation(sourceRequestHash, viewerL1, key);
+    }
+    final result = _translationResult;
+    if (result == null) return view.translatedTo(null);
+    return result.isValue ? view.translatedTo(result.asValue!.value) : view;
+  }
+
+  Future<void> _fetchTranslation(
+    String sourceRequestHash,
+    String viewerL1,
+    String key,
+  ) async {
+    // The plan body is canonical in CMS (reference-only room state); resolve
+    // it rather than assuming it is hydrated. The repo reports a failed fetch.
+    final activity =
+        room.activityPlan ??
+        await ActivityPlanRepo.instance.getPlan(room.activityId ?? '');
+    final result = activity == null
+        ? Result<ActivitySummaryResponseModel>.error(
+            'No activity plan to translate the summary against',
+          )
+        : await ActivitySummaryRepo.get(
+            room.id,
+            ActivitySummaryRequestModel(
+              activity: activity,
+              sourceRequestHash: sourceRequestHash,
+              viewerL1: viewerL1,
+            ),
+          );
+    if (_disposed || _translationKey != key) return;
+    _translationResult = result;
+    _refreshSummaryView();
+  }
+
+  Future<void> _ensureSummaryAnalytics() async {
+    if (_ensuringSummaryAnalytics) return;
+    _ensuringSummaryAnalytics = true;
+    try {
+      await room.ensureActivitySummaryAnalytics();
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {'roomID': room.id});
+    } finally {
+      _ensuringSummaryAnalytics = false;
+    }
+  }
+
+  /// Asks the bot to retry the summary, or to regenerate it with [feedback].
+  /// Returns whether the request reached the server; the summary view follows
+  /// from room state either way.
+  Future<bool> requestSummary({String? feedback}) async {
+    try {
+      await room.requestActivitySummary(feedback: feedback);
+      return true;
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {'roomID': room.id});
+      return false;
+    }
   }
 
   void _setAnalyticsSubscription() {
@@ -274,45 +391,6 @@ class ActivityChatController {
     return analytics;
   }
 
-  Future<void> _loadActivitySummary() async {
-    if (_loadingSummary) return;
-    _loadingSummary = true;
-
-    try {
-      if (_summary != null) return;
-
-      // The summary state event is null
-      if (_summaryEvent == null) {
-        await fetchSummaries();
-        return;
-      }
-
-      // The summary state event is waiting (<= 10 seconds since request)
-      // Wait for 10 seconds (or time remaining until not waiting). If summary still not there, run request.
-      if (_summaryEvent!.isLoading) {
-        final remainingTime = DateTime.now()
-            .difference(_summaryEvent!.requestedAt!)
-            .inSeconds;
-
-        await Future.delayed(
-          Duration(seconds: remainingTime < 10 ? 10 - remainingTime : 0),
-          () async {
-            if (_summary == null) await fetchSummaries();
-          },
-        );
-        return;
-      }
-
-      if (_summaryEvent!.errorAt == null) {
-        await fetchSummaries();
-      }
-    } catch (e, s) {
-      ErrorHandler.logError(e: e, s: s, data: {});
-    } finally {
-      _loadingSummary = false;
-    }
-  }
-
   Future<void> submitSummaryFeedback(BuildContext context) async {
     final resp = await showDialog(
       context: context,
@@ -328,8 +406,8 @@ class ActivityChatController {
     await regenerateSummaryWithFeedback(context, resp);
   }
 
-  /// Regenerates the summary with [feedback], telling the learner it is under
-  /// way and then whether it went through.
+  /// Asks the bot to regenerate the summary with [feedback], telling the
+  /// learner it is under way and then whether the request went through.
   @visibleForTesting
   Future<void> regenerateSummaryWithFeedback(
     BuildContext context,
@@ -368,7 +446,7 @@ class ActivityChatController {
     var processingShown = true;
     unawaited(processing.closed.then((_) => processingShown = false));
 
-    final ok = await fetchSummaries(feedback: feedback);
+    final ok = await requestSummary(feedback: feedback);
     if (!messenger.mounted) return;
     if (processingShown) processing.close();
     messenger.showSnackBarAnnounced(

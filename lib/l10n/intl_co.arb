@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "A ricerca di a volta ùn hè micca finita. Pruvate di novu.",
     "summaryFeedbackReceived": "Grazie! Avemu ricevutu u vostru cummentariu.",
     "summaryFeedbackFailed": "Ùn pudemu micca mandà u vostru cummentariu. Per piacè, riprovate.",
-    "summaryFeedbackProcessing": "Mandendu u vostru cummentu è aghjurnendu u riassuntu…"
+    "summaryFeedbackProcessing": "Mandendu u vostru cummentu è aghjurnendu u riassuntu…",
+    "activitySummaryUpdateFailed": "Stu riassuntu ùn hà pussutu esse aghjurnatu."
 }

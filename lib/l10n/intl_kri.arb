@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "Di fɛn fɔ di tɔn nɔ dɔn. Tray bak.",
     "summaryFeedbackReceived": "Tenki! Wi don gɛt yu fidbak.",
     "summaryFeedbackFailed": "Wi nɔ ebul sɛn yu fidbak. Duya tray bak.",
-    "summaryFeedbackProcessing": "Deh de sen yu fidak ɛn apdet di sɔmari…"
+    "summaryFeedbackProcessing": "Deh de sen yu fidak ɛn apdet di sɔmari…",
+    "activitySummaryUpdateFailed": "Dis samari nɔ kɔn fɔ chenj."
 }

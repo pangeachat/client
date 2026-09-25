@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "Kërkimi për kthesën nuk përfundoi. Provo përsëri.",
     "summaryFeedbackReceived": "Faleminderit! E morëm reagimin tuaj.",
     "summaryFeedbackFailed": "Nuk u dërgua dot reagimi juaj. Ju lutemi provoni sërish.",
-    "summaryFeedbackProcessing": "Po dërgohet komenti juaj dhe po përditësohet përmbledhja…"
+    "summaryFeedbackProcessing": "Po dërgohet komenti juaj dhe po përditësohet përmbledhja…",
+    "activitySummaryUpdateFailed": "Ky përmbledhje nuk mund të përditësohej."
 }

@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "टर्न अदुगी थाईबा लोइखिदे। अमूक् हन्ना होत्नाबीयू।",
     "summaryFeedbackReceived": "थागत्चरी! ईना नहাক্কী ফিডবেক ফংলে.",
     "summaryFeedbackFailed": "नहাক্কी ফিডবেক থাজিনবা ঙমদ্রে. कृपया अमूक् हन्ना खन्जबीयू.",
-    "summaryFeedbackProcessing": "নহাক্কী ফিডবেক থাজিল্লি অমসুং সার্মরী অাপডেট তৌরি…"
+    "summaryFeedbackProcessing": "নহাক্কী ফিডবেক থাজিল্লি অমসুং সার্মরী অাপডেট তৌরি…",
+    "activitySummaryUpdateFailed": "असिमरी असी अपडेट तौबा ङम्लोई।"
 }

@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "Kufufuza kwa nthawiyo sikunamalizidwe. Yesaninso.",
     "summaryFeedbackReceived": "Zikomo! Talandira ndemanga yanu.",
     "summaryFeedbackFailed": "Zalephera kutumiza ndemanga yanu. Chonde yesaninso.",
-    "summaryFeedbackProcessing": "Kutumiza ndemanga yanu ndikusintha chidule…"
+    "summaryFeedbackProcessing": "Kutumiza ndemanga yanu ndikusintha chidule…",
+    "activitySummaryUpdateFailed": "Chidulechi sichinathe kusinthidwa."
 }

@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "E leʻi maeʻa le suʻesuʻega mo le taʻamilosaga. Toe taumafai.",
     "summaryFeedbackReceived": "Fa'afetai! Ua matou mauaina lau fa'amatalaga.",
     "summaryFeedbackFailed": "E le'i mafai ona lafo lau fa'amatalaga. Fa'amolemole toe taumafai.",
-    "summaryFeedbackProcessing": "Lafoina au manatu faaalia ma faafouina le aotelega…"
+    "summaryFeedbackProcessing": "Lafoina au manatu faaalia ma faafouina le aotelega…",
+    "activitySummaryUpdateFailed": "E leʻi mafai ona faʻafouina lenei aotelega."
 }

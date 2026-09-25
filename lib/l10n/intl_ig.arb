@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "Nchọta maka ntụgharị ahụ emechaala. Gbalịa ọzọ.",
     "summaryFeedbackReceived": "Daalụ! Anyị nwetara nzaghachi gị.",
     "summaryFeedbackFailed": "Enweghị ike izipu nzaghachi gị. Biko nwaa ọzọ.",
-    "summaryFeedbackProcessing": "Na-eziga nzaghachi gị ma na-emelite nchịkọta…"
+    "summaryFeedbackProcessing": "Na-eziga nzaghachi gị ma na-emelite nchịkọta…",
+    "activitySummaryUpdateFailed": "Enweghị ike imelite nchịkọta a."
 }

@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "Rechèch pou vire a pa t fini. Eseye ankò.",
     "summaryFeedbackReceived": "Mèsi! Nou resevwa kòmantè ou.",
     "summaryFeedbackFailed": "Nou pa t' kapab voye kòmantè ou. Tanpri eseye ankò.",
-    "summaryFeedbackProcessing": "N ap voye fidbak ou epi n ap mete rezime a ajou…"
+    "summaryFeedbackProcessing": "N ap voye fidbak ou epi n ap mete rezime a ajou…",
+    "activitySummaryUpdateFailed": "Rezime sa a pa t' kapab mete ajou."
 }

@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "पालोको खोजी समाप्त भएन। फेरि प्रयास गर्नुहोस्।",
     "summaryFeedbackReceived": "धन्यवाद! हामीले तपाईंको प्रतिक्रिया प्राप्त गर्यौं।",
     "summaryFeedbackFailed": "तपाईंको प्रतिक्रिया पठाउन सकिएन। कृपया फेरि प्रयास गर्नुहोस्।",
-    "summaryFeedbackProcessing": "तपाईंको प्रतिक्रिया पठाउँदै र सारांश अपडेट गर्दै..."
+    "summaryFeedbackProcessing": "तपाईंको प्रतिक्रिया पठाउँदै र सारांश अपडेट गर्दै...",
+    "activitySummaryUpdateFailed": "यो सारांश अद्यावधिक गर्न सकिएन।"
 }

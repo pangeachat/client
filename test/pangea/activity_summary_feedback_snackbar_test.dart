@@ -18,8 +18,8 @@ import 'get_test_client.dart';
 /// (#9243). A snackbar now says the feedback is being processed, then gives
 /// the outcome, and a failure must not read like a success.
 ///
-/// `FakeMatrixApi` has no handlers for this room, so the regeneration fails —
-/// the failure path. The feedback dialog itself is skipped: its bot face is a
+/// `FakeMatrixApi` has no handlers for this room, so writing the request for
+/// the bot fails — the failure path. The feedback dialog itself is skipped: its bot face is a
 /// Rive animation, which needs native code a widget test does not load.
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();

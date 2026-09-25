@@ -10593,5 +10593,6 @@
     "goalReportErrorRetry": "การค้นหาการตอบกลับไม่เสร็จสมบูรณ์ โปรดลองอีกครั้ง",
     "summaryFeedbackReceived": "ขอบคุณ! เราได้รับความคิดเห็นของคุณแล้ว",
     "summaryFeedbackFailed": "ไม่สามารถส่งความคิดเห็นของคุณได้ โปรดลองอีกครั้ง",
-    "summaryFeedbackProcessing": "กำลังส่งคำติชมและอัปเดตสรุปของคุณ…"
+    "summaryFeedbackProcessing": "กำลังส่งคำติชมและอัปเดตสรุปของคุณ…",
+    "activitySummaryUpdateFailed": "ไม่สามารถอัปเดตสรุปนี้ได้"
 }
