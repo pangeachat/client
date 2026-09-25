@@ -8,7 +8,9 @@ import 'package:fluffychat/features/languages/language_constants.dart';
 ///
 /// A semantics container, so the language stays on this text and does not
 /// reach the labels merged around it (a sender name, a timestamp). A missing
-/// or unknown [langCode] leaves [child] unmarked, read in the UI voice.
+/// or unknown [langCode] leaves [child] unmarked, read in the UI voice, but
+/// still its own node: the text keeps the same place in the reading order
+/// whether or not its language is known.
 class LanguageSemantics extends StatelessWidget {
   final String? langCode;
   final Widget child;
@@ -61,13 +63,7 @@ class LanguageSemantics extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final locale = localeOf(langCode);
-    // Always a Semantics, even when unmarked, so a language arriving later
-    // (detection finishing) doesn't remount the text under it.
-    return Semantics(
-      container: locale != null,
-      localeForSubtree: locale,
-      child: child,
-    );
+    return Semantics(container: true, localeForSubtree: locale, child: child);
   }
 }
 

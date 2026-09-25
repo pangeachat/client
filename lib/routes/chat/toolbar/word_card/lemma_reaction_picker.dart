@@ -155,14 +155,20 @@ class LemmaReactionPickerState extends State<LemmaReactionPicker>
 
   void _showLemmaEmojiSnackbar() {
     messenger ??= ScaffoldMessenger.of(context);
-    showLemmaEmojiSnackbar(messenger!, context, widget.constructId, () {
-      if (!mounted) return;
-      AnalyticsNavigationUtil.navigateToAnalytics(
-        context: context,
-        view: widget.constructId.type.indicator,
-        construct: widget.constructId,
-      );
-    });
+    showLemmaEmojiSnackbar(
+      messenger!,
+      context,
+      widget.constructId,
+      widget.langCode,
+      () {
+        if (!mounted) return;
+        AnalyticsNavigationUtil.navigateToAnalytics(
+          context: context,
+          view: widget.constructId.type.indicator,
+          construct: widget.constructId,
+        );
+      },
+    );
   }
 
   Future<void> _sendOrRedactReaction(String emoji) async {

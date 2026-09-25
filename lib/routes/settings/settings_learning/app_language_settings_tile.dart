@@ -27,6 +27,10 @@ class _AppLanguageSettingsTileState extends State<AppLanguageSettingsTile> {
   /// deferred, so on web it's a fetch) and whenever there's no translation to
   /// load — both fall back to the copy the rest of the app is in.
   L10n? _baseLanguageL10n;
+
+  /// The language [_baseLanguageL10n] is in, set with it, so the copy is never
+  /// marked with a language whose translation is still loading.
+  String? _baseLanguageCode;
   String? _requestedLangCode;
 
   @override
@@ -55,7 +59,10 @@ class _AppLanguageSettingsTileState extends State<AppLanguageSettingsTile> {
 
     // The learner can pick another base language while this load is in flight.
     if (!mounted || langCode != _requestedLangCode) return;
-    setState(() => _baseLanguageL10n = l10n);
+    setState(() {
+      _baseLanguageL10n = l10n;
+      _baseLanguageCode = l10n == null ? null : langCode;
+    });
   }
 
   @override
@@ -65,7 +72,7 @@ class _AppLanguageSettingsTileState extends State<AppLanguageSettingsTile> {
     // In the base language, which differs from the UI's once the app is shown
     // in the target language (#9266).
     return LanguageSemantics(
-      langCode: _baseLanguageL10n == null ? null : _requestedLangCode,
+      langCode: _baseLanguageCode,
       child: SwitchListTile.adaptive(
         value: isOn,
         title: Text(l10n.appInTargetLanguageTitle),

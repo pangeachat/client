@@ -89,6 +89,7 @@ mixin LemmaEmojiSetter {
     ScaffoldMessengerState messenger,
     BuildContext context,
     ConstructIdentifier constructId,
+    String langCode,
     VoidCallback onTap,
   ) async {
     if (InstructionsEnum.setLemmaEmoji.isToggledOff) return;
@@ -106,7 +107,7 @@ mixin LemmaEmojiSetter {
           children: [
             VocabAnalyticsListTile(
               constructId: constructId,
-              langCode: MatrixState.pangeaController.userController.userL2Code,
+              langCode: langCode,
               textColor: theme.colorScheme.surface,
               listen: false,
               onTap: () {

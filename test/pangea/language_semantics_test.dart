@@ -10,6 +10,7 @@ import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_even
 import 'package:fluffychat/routes/chat/events/models/language_detection_model.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/events/models/tokens_event_content_model.dart';
+import 'package:fluffychat/routes/chat/html_message.dart';
 import 'package:fluffychat/routes/chat/message_content.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'fake_message_toolbar_host.dart';
@@ -82,9 +83,11 @@ void main() {
           reason: '"$langCode" must not be guessed',
         );
         expect(
-          _nodes(tester).any((n) => n.$1 == 'Anna\nhola'),
-          isTrue,
-          reason: 'unmarked text stays in the node it merged into',
+          _localeOf(tester, 'hola'),
+          isNull,
+          reason:
+              'unmarked text is still its own node, apart from the label '
+              'beside it',
         );
       }
       semantics.dispose();
@@ -245,6 +248,53 @@ void main() {
       ).where((n) => n.$1.contains('buenos') && n.$1.contains('días'));
       expect(text, hasLength(1), reason: 'no second copy of the message');
       expect(text.single.$2, const Locale('es'));
+      semantics.dispose();
+    });
+
+    testWidgets('a reply reads its text, not the quote in its body', (
+      tester,
+    ) async {
+      final semantics = tester.ensureSemantics();
+      final event = messageEvent('es');
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: HtmlMessage(
+              html:
+                  '<mx-reply><blockquote>quoted earlier</blockquote></mx-reply>'
+                  'buenos días',
+              room: room,
+              fontSize: 16,
+              linkStyle: const TextStyle(),
+              onOpen: (_) {},
+              event: Event(
+                type: EventTypes.Message,
+                eventId: r'$reply:fakeServer.notExisting',
+                senderId: '@lang:fakeServer.notExisting',
+                originServerTs: DateTime.now(),
+                content: {
+                  ...event.event.content,
+                  'body':
+                      '> <@a:fakeServer.notExisting> quoted earlier\n\n'
+                      'buenos días',
+                },
+                room: room,
+              ),
+              pangeaMessageEvent: event,
+              controller: FakeMessageToolbarHost(room),
+              onClick: (_) {},
+            ),
+          ),
+        ),
+      );
+
+      final whole = tester.getSemantics(find.bySemanticsLabel('buenos días'));
+      expect(whole.childrenCount, 0);
+      expect(
+        _nodes(tester).where((n) => n.$1.contains('quoted')),
+        isEmpty,
+        reason: 'the quote is not displayed, so it is not read',
+      );
       semantics.dispose();
     });
 

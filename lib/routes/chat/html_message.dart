@@ -1100,6 +1100,21 @@ class HtmlMessage extends StatelessWidget {
     }
   }
 
+  /// The text [node] displays, for screen readers: the parsed HTML's text
+  /// without what the renderer leaves out ([ignoredHtmlTags], the `mx-reply`
+  /// quote a reply carries in its body), with a line break where it breaks a
+  /// line so words either side of it stay apart.
+  String _displayedText(dom.Node node) {
+    if (node is! dom.Element) return node.text ?? '';
+    final tag = node.localName?.toLowerCase();
+    if (ignoredHtmlTags.contains(tag)) return '';
+    if (tag == 'br') return '\n';
+    final text = node.nodes.map(_displayedText).join();
+    return blockHtmlTags.contains(tag) || fullLineHtmlTag.contains(tag)
+        ? '\n$text'
+        : text;
+  }
+
   @override
   Widget build(BuildContext context) {
     // #Pangea
@@ -1119,7 +1134,7 @@ class HtmlMessage extends StatelessWidget {
       parse: () => parser.parse(_addTokenTags()).body ?? dom.Element.html(''),
     );
     return WholeTextSemantics(
-      text: event.text,
+      text: _displayedText(parsed).trim(),
       textInButtons:
           (tokens?.isNotEmpty ?? false) &&
           (onClick != null || overlayController != null),
