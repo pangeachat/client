@@ -73,7 +73,7 @@ class SttTranscriptTokens extends StatelessWidget {
 
     return WholeTextSemantics(
       text: model.transcript.text,
-      wordButtons: onClick != null,
+      textInButtons: onClick != null,
       child: RichText(
         textScaler: MediaQuery.textScalerOf(context),
         text: TextSpan(

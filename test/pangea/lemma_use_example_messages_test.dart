@@ -1,4 +1,7 @@
+import 'dart:ui' show Tristate;
+
 import 'package:flutter/material.dart';
+import 'package:flutter/semantics.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart';
@@ -20,7 +23,6 @@ import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/message_content.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'get_test_client.dart';
-import 'one_node_control.dart';
 
 /// #8081 — the vocab details example-message walk: one example per source
 /// message (dedup by event id, capped at 5), every used form recorded on its
@@ -317,10 +319,10 @@ void main() {
     expect(find.textContaining('mucho', findRichText: true), findsNWidgets(2));
   });
 
-  // #9266 — the chip is one button named by its message, in the message's
-  // language, with no nodes inside it. A child would make web name it with an
-  // `aria-label`, which VoiceOver reads in the UI voice.
-  testWidgets('the chip is one button named by its message, in Spanish', (
+  // #9266 — the chip reads its message first as text, then as one button
+  // named by it, both in the message's language. On web VoiceOver reads text
+  // in its own language but doesn't reliably do so for a button.
+  testWidgets('the chip reads its message as text, then as one button', (
     tester,
   ) async {
     final semantics = tester.ensureSemantics();
@@ -346,10 +348,22 @@ void main() {
     );
     await tester.pumpAndSettle();
 
-    expectOneNodeControl(tester, text);
-    final chip = tester.getSemantics(find.bySemanticsLabel(text));
-    expect(chip.getSemanticsData().locale, const Locale('es'));
+    final named = tester.semantics
+        .simulatedAccessibilityTraversal()
+        .where((n) => n.getSemanticsData().label == text)
+        .toList();
+    expect(named, hasLength(2), reason: 'the message as text, then the chip');
+    final (textNode, chip) = (named.first, named.last);
+
+    expect(textNode.flagsCollection.isButton, isFalse);
+    expect(textNode.childrenCount, 0);
+    expect(textNode.getSemanticsData().locale, const Locale('es'));
+
+    expect(chip.flagsCollection.isButton, isTrue);
+    expect(chip.flagsCollection.isFocused, isNot(Tristate.none));
+    expect(chip.getSemanticsData().hasAction(SemanticsAction.tap), isTrue);
     expect(chip.childrenCount, 0, reason: 'no word nodes inside the chip');
+    expect(chip.getSemanticsData().locale, const Locale('es'));
     semantics.dispose();
   });
 }

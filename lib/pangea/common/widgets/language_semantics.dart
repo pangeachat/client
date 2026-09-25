@@ -71,31 +71,32 @@ class LanguageSemantics extends StatelessWidget {
   }
 }
 
-/// Reads [text] as one text-only node before [child] when [child]'s words are
-/// their own buttons.
+/// Reads [text] as one text-only node before [child] when [textInButtons]:
+/// [child]'s text reaches screen readers only through buttons, either its
+/// words each a button or [child] one button named by [text].
 ///
 /// A node with children is named by an `aria-label` on web, which VoiceOver
-/// reads in the UI voice whatever its language, and it reads a button the
-/// same way. A text-only node is written into the page and read in its own
-/// language, so this is how a message or transcript is heard in its own voice
-/// on web (#9266). Without word buttons the text is already one such node and
-/// nothing is added.
+/// reads in the UI voice whatever its language, and it does not reliably
+/// switch voice for a button. A text-only node is written into the page and
+/// read in its own language, so this is how a message, a transcript or an
+/// example message is heard in its own voice on web (#9266). When the text is
+/// already such a node, nothing is added.
 class WholeTextSemantics extends StatelessWidget {
   final String text;
-  final bool wordButtons;
+  final bool textInButtons;
   final Widget child;
 
   const WholeTextSemantics({
     super.key,
     required this.text,
-    required this.wordButtons,
+    required this.textInButtons,
     required this.child,
   });
 
   @override
   Widget build(BuildContext context) => Stack(
     children: [
-      if (wordButtons)
+      if (textInButtons)
         Positioned.fill(
           child: Semantics(
             container: true,
@@ -105,8 +106,8 @@ class WholeTextSemantics extends StatelessWidget {
           ),
         ),
       Semantics(
-        container: wordButtons,
-        sortKey: wordButtons ? const OrdinalSortKey(1) : null,
+        container: textInButtons,
+        sortKey: textInButtons ? const OrdinalSortKey(1) : null,
         child: child,
       ),
     ],

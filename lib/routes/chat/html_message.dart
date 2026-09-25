@@ -1120,7 +1120,7 @@ class HtmlMessage extends StatelessWidget {
     );
     return WholeTextSemantics(
       text: event.text,
-      wordButtons:
+      textInButtons:
           (tokens?.isNotEmpty ?? false) &&
           (onClick != null || overlayController != null),
       child: GestureDetector(
