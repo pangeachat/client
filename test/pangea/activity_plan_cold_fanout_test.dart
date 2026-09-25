@@ -122,6 +122,36 @@ void main() {
       );
     });
 
+    test('reads past the per-minute budget wait for it to refill', () async {
+      // CLIENT-ER6 (#9275): the in-flight cap bounds reads at once, not per
+      // minute, so a cold start over hundreds of session rooms kept cycling
+      // past the backend's allowance and lost a whole minute to the 429.
+      var key = 0;
+      for (var frame = 0; frame < 3; frame++) {
+        for (var i = 0; i < 100; i++) {
+          repo.ensure('budget-${key++}', l1: 'en');
+        }
+        await settle();
+      }
+
+      expect(
+        repo.queuedCount,
+        greaterThan(0),
+        reason:
+            '300 cold keys inside one minute are more than the budget; the '
+            'excess must wait rather than go out and be refused',
+      );
+      expect(repo.inFlightCount, 0);
+
+      // The window rolls over, and the held backlog goes out.
+      clock = clock.add(const Duration(seconds: 61));
+      repo.ensure('budget-${key++}', l1: 'en');
+      await settle();
+
+      expect(repo.queuedCount, 0);
+      repo.resetBackoff();
+    });
+
     test('the same activity under two version pins is two keys', () {
       // Why the 17:58:08 and 17:58:20 waves shared ids (0fe94762, 60538810)
       // despite a 60s per-key cooldown set by the first wave: storageKey is
