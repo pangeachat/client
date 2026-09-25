@@ -6,7 +6,15 @@ import 'package:integration_test/integration_test_driver.dart';
 /// with the commit and time, to `build/perf/` for later comparison.
 Future<void> main() => integrationDriver(
   responseDataCallback: (data) async {
-    if (data == null) return;
+    // Every benchmark reports a result. A run that passed without one did not
+    // measure anything, so it must not look like a pass.
+    if (data == null || data['passes'] is! List) {
+      stderr.writeln(
+        'The run passed but reported no benchmark result, so nothing was '
+        'measured.',
+      );
+      exit(1);
+    }
     // A run with uncommitted changes did not measure the commit it names.
     final dirty = Process.runSync('git', [
       'status',
