@@ -159,47 +159,44 @@ class LemmaUseExampleMessagesState extends State<LemmaUseExampleMessages> {
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
-      // One button named by its message, in the message's language, with the
-      // message's own nodes left out. On web VoiceOver doesn't reliably read a
-      // button in its language, so the message is also text, read first
-      // (#9266). Tapping the chip opens the toolbar, where the words are.
+      // One button named by its message, in the message's language. The
+      // message's own nodes are left out, so the chip has nothing inside it and
+      // its name is written into the page, which VoiceOver on web reads in the
+      // message's voice (#9266). Tapping the chip opens the toolbar, where the
+      // words are.
       child: LanguageSemantics(
         langCode: messageEvent.messageDisplayLangCode,
-        child: WholeTextSemantics(
-          text: displayEvent.text,
-          textInButtons: true,
-          child: Semantics(
-            button: true,
-            label: displayEvent.text,
-            child: Material(
-              key: MatrixState.pAnyState.layerLinkAndKey(targetId).key,
-              color: color,
-              borderRadius: borderRadius,
-              clipBehavior: Clip.antiAlias,
-              child: InkWell(
-                onTap: () => openToolbar(example.firstUsedToken),
-                child: Container(
-                  constraints: const BoxConstraints(
-                    maxWidth: FluffyThemes.columnWidth * 1.5,
-                  ),
-                  child: ExcludeSemantics(
-                    child: MessageContent(
-                      displayEvent,
-                      textColor: textColor,
-                      linkColor: linkColor,
-                      borderRadius: borderRadius,
-                      timeline: messageEvent.timeline,
-                      selected: false,
-                      pangeaMessageEvent: messageEvent,
-                      controller: host,
-                      vocabLemmas: highlightLemmas,
-                      onTokenClick: openToolbar,
-                      // These chips render real chat messages. Without their own
-                      // token target-key namespace they collide with the same event
-                      // in the open chat timeline (#6803).
-                      isAnalyticsExample: true,
-                      useTokenKeys: true,
-                    ),
+        child: Semantics(
+          button: true,
+          label: displayEvent.text,
+          child: Material(
+            key: MatrixState.pAnyState.layerLinkAndKey(targetId).key,
+            color: color,
+            borderRadius: borderRadius,
+            clipBehavior: Clip.antiAlias,
+            child: InkWell(
+              onTap: () => openToolbar(example.firstUsedToken),
+              child: Container(
+                constraints: const BoxConstraints(
+                  maxWidth: FluffyThemes.columnWidth * 1.5,
+                ),
+                child: ExcludeSemantics(
+                  child: MessageContent(
+                    displayEvent,
+                    textColor: textColor,
+                    linkColor: linkColor,
+                    borderRadius: borderRadius,
+                    timeline: messageEvent.timeline,
+                    selected: false,
+                    pangeaMessageEvent: messageEvent,
+                    controller: host,
+                    vocabLemmas: highlightLemmas,
+                    onTokenClick: openToolbar,
+                    // These chips render real chat messages. Without their own
+                    // token target-key namespace they collide with the same event
+                    // in the open chat timeline (#6803).
+                    isAnalyticsExample: true,
+                    useTokenKeys: true,
                   ),
                 ),
               ),

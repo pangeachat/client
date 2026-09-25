@@ -72,15 +72,15 @@ class LanguageSemantics extends StatelessWidget {
 }
 
 /// Reads [text] as one text-only node before [child] when [textInButtons]:
-/// [child]'s text reaches screen readers only through buttons, either its
-/// words each a button or [child] one button named by [text].
+/// [child]'s words are each a button, so its text reaches screen readers only
+/// through them.
 ///
-/// A node with children is named by an `aria-label` on web, which VoiceOver
-/// reads in the UI voice whatever its language, and it does not reliably
-/// switch voice for a button. A text-only node is written into the page and
-/// read in its own language, so this is how a message, a transcript or an
-/// example message is heard in its own voice on web (#9266). When the text is
-/// already such a node, nothing is added.
+/// The words make [child] a node with children, which the web engine names
+/// with an `aria-label`, and VoiceOver reads an `aria-label` in the UI voice
+/// whatever its language. A text-only node is written into the page and read
+/// in its own language, so this is how a message or transcript is heard in its
+/// own voice on web (#9266). When the text is already such a node, nothing is
+/// added.
 class WholeTextSemantics extends StatelessWidget {
   final String text;
   final bool textInButtons;
