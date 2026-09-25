@@ -9,6 +9,7 @@ import 'package:fluffychat/routes/chat/activity_sessions/activity_media_play_bad
 import 'package:fluffychat/routes/chat/activity_sessions/activity_participant_list.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_controller.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/activity_video_close_button.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_video_player.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_video_screen.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_youtube_player.dart';
@@ -261,11 +262,7 @@ class _ActivityStartHeroState extends State<ActivityStartHero> {
             // composited over a platform view doesn't receive DOM clicks).
             Align(
               alignment: AlignmentDirectional.centerEnd,
-              child: IconButton(
-                tooltip: L10n.of(context).close,
-                icon: const Icon(Icons.close, color: Colors.white),
-                onPressed: _stop,
-              ),
+              child: ActivityVideoCloseButton(onPressed: _stop),
             ),
             Expanded(
               child: Center(
