@@ -140,7 +140,10 @@ void main() {
       await client.dispose();
     });
 
-    PangeaMessageEvent messageEvent(String langCode) {
+    PangeaMessageEvent messageEvent(
+      String langCode, {
+      bool activityMessage = false,
+    }) {
       const words = ['buenos', 'días'];
       final tokens = <PangeaToken>[];
       var offset = 0;
@@ -164,6 +167,10 @@ void main() {
           content: {
             'msgtype': 'm.text',
             'body': words.join(' '),
+            // An activity message's words are not buttons.
+            if (activityMessage)
+              MessageConstants.messageTags:
+                  MessageConstants.messageTagActivityPlan,
             MessageConstants.tokensSent: PangeaMessageTokens(
               tokens: tokens,
               detections: [
@@ -178,57 +185,72 @@ void main() {
       );
     }
 
-    Future<void> pump(
-      WidgetTester tester,
-      PangeaMessageEvent event, {
-      bool markLanguage = true,
-    }) => tester.pumpWidget(
-      MaterialApp(
-        home: Scaffold(
-          body: MessageContent(
-            event.event,
-            textColor: Colors.black,
-            linkColor: Colors.blue,
-            borderRadius: BorderRadius.zero,
-            timeline: timeline,
-            selected: false,
-            pangeaMessageEvent: event,
-            controller: FakeMessageToolbarHost(room),
-            onTokenClick: (_) {},
-            markLanguage: markLanguage,
+    Future<void> pump(WidgetTester tester, PangeaMessageEvent event) =>
+        tester.pumpWidget(
+          MaterialApp(
+            home: Scaffold(
+              body: MessageContent(
+                event.event,
+                textColor: Colors.black,
+                linkColor: Colors.blue,
+                borderRadius: BorderRadius.zero,
+                timeline: timeline,
+                selected: false,
+                pangeaMessageEvent: event,
+                controller: FakeMessageToolbarHost(room),
+                onTokenClick: (_) {},
+              ),
+            ),
           ),
-        ),
-      ),
-    );
+        );
 
-    testWidgets('the text and each of its words carry its language', (
+    testWidgets('the whole message is one text node, read before its words', (
       tester,
     ) async {
       final semantics = tester.ensureSemantics();
       await pump(tester, messageEvent('es'));
 
-      final nodes = _nodes(tester);
-      final text = nodes.where((n) => n.$1.startsWith('buenos días'));
-      expect(text, isNotEmpty, reason: 'the message text is read');
-      expect(text.map((n) => n.$2), everyElement(const Locale('es')));
+      final message = tester.getSemantics(find.bySemanticsLabel('buenos días'));
+      expect(message.getSemanticsData().locale, const Locale('es'));
+      expect(
+        message.childrenCount,
+        0,
+        reason:
+            'a node with children is named by aria-label on web, which '
+            'VoiceOver reads in the UI voice',
+      );
       expect(_localeOf(tester, 'buenos'), const Locale('es'));
       expect(_localeOf(tester, 'días'), const Locale('es'));
+
+      final order = tester.semantics
+          .simulatedAccessibilityTraversal()
+          .map((n) => n.getSemanticsData().label)
+          .toList();
+      expect(
+        order.indexOf('buenos días'),
+        lessThan(order.indexOf('buenos')),
+        reason: 'the message is read before its words',
+      );
+      semantics.dispose();
+    });
+
+    testWidgets('without word buttons the text is the only node', (
+      tester,
+    ) async {
+      final semantics = tester.ensureSemantics();
+      await pump(tester, messageEvent('es', activityMessage: true));
+
+      final text = _nodes(
+        tester,
+      ).where((n) => n.$1.contains('buenos') && n.$1.contains('días'));
+      expect(text, hasLength(1), reason: 'no second copy of the message');
+      expect(text.single.$2, const Locale('es'));
       semantics.dispose();
     });
 
     testWidgets('an unknown language is not guessed', (tester) async {
       final semantics = tester.ensureSemantics();
       await pump(tester, messageEvent('unk'));
-
-      expect(_nodes(tester).where((n) => n.$2 != null), isEmpty);
-      semantics.dispose();
-    });
-
-    testWidgets('a host that marks the language itself gets no inner node', (
-      tester,
-    ) async {
-      final semantics = tester.ensureSemantics();
-      await pump(tester, messageEvent('es'), markLanguage: false);
 
       expect(_nodes(tester).where((n) => n.$2 != null), isEmpty);
       semantics.dispose();

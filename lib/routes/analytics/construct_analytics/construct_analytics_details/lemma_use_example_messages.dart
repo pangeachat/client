@@ -159,12 +159,15 @@ class LemmaUseExampleMessagesState extends State<LemmaUseExampleMessages> {
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
-      // The chip is one button named by its message, so the language goes on
-      // the chip rather than on a text node inside it.
+      // One button named by its message, in the message's language. The
+      // message's own nodes are left out: a button with children is named by
+      // an `aria-label` on web, which VoiceOver reads in the UI voice (#9266).
+      // Tapping the chip opens the toolbar, where the words are.
       child: LanguageSemantics(
         langCode: messageEvent.messageDisplayLangCode,
         child: Semantics(
           button: true,
+          label: displayEvent.text,
           child: Material(
             key: MatrixState.pAnyState.layerLinkAndKey(targetId).key,
             color: color,
@@ -176,23 +179,24 @@ class LemmaUseExampleMessagesState extends State<LemmaUseExampleMessages> {
                 constraints: const BoxConstraints(
                   maxWidth: FluffyThemes.columnWidth * 1.5,
                 ),
-                child: MessageContent(
-                  displayEvent,
-                  textColor: textColor,
-                  linkColor: linkColor,
-                  borderRadius: borderRadius,
-                  timeline: messageEvent.timeline,
-                  selected: false,
-                  pangeaMessageEvent: messageEvent,
-                  controller: host,
-                  vocabLemmas: highlightLemmas,
-                  onTokenClick: openToolbar,
-                  // These chips render real chat messages. Without their own
-                  // token target-key namespace they collide with the same event
-                  // in the open chat timeline (#6803).
-                  isAnalyticsExample: true,
-                  useTokenKeys: true,
-                  markLanguage: false,
+                child: ExcludeSemantics(
+                  child: MessageContent(
+                    displayEvent,
+                    textColor: textColor,
+                    linkColor: linkColor,
+                    borderRadius: borderRadius,
+                    timeline: messageEvent.timeline,
+                    selected: false,
+                    pangeaMessageEvent: messageEvent,
+                    controller: host,
+                    vocabLemmas: highlightLemmas,
+                    onTokenClick: openToolbar,
+                    // These chips render real chat messages. Without their own
+                    // token target-key namespace they collide with the same event
+                    // in the open chat timeline (#6803).
+                    isAnalyticsExample: true,
+                    useTokenKeys: true,
+                  ),
                 ),
               ),
             ),

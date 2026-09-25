@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/semantics.dart' show OrdinalSortKey;
 
 import 'package:collection/collection.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
@@ -1117,34 +1118,60 @@ class HtmlMessage extends StatelessWidget {
       textDirection: pangeaMessageEvent?.textDirection,
       parse: () => parser.parse(_addTokenTags()).body ?? dom.Element.html(''),
     );
-    return GestureDetector(
-      // Null (instead of a no-op) when there is neither a toolbar to open nor
-      // an open overlay to shield, so the tap falls through to the host's own
-      // tap handler (the analytics example-message chips wrap this in an
-      // InkWell that opens the toolbar overlay themselves).
-      onTap: overlayController != null || controller.chatController != null
-          ? () {
-              if (overlayController == null) {
-                controller.chatController?.showToolbar(
-                  pangeaMessageEvent?.event ?? event,
-                  pangeaMessageEvent: pangeaMessageEvent,
-                  nextEvent: nextEvent,
-                  prevEvent: prevEvent,
-                );
-              }
-            }
-          : null,
-      child: Text.rich(
-        _renderHtml(
-          parsed,
-          context,
-          TextStyle(fontSize: fontSize, color: textColor),
+    // Words that are their own buttons make the text a node with children,
+    // and the web engine names such a node with an `aria-label`, which
+    // VoiceOver reads in the UI voice whatever its language (#9266). So the
+    // whole message is also a text-only node, read first; without word
+    // buttons the text is already one.
+    final wordButtons =
+        (tokens?.isNotEmpty ?? false) &&
+        (onClick != null || overlayController != null);
+    return Stack(
+      children: [
+        if (wordButtons)
+          Positioned.fill(
+            child: Semantics(
+              container: true,
+              sortKey: const OrdinalSortKey(0),
+              label: event.text,
+              child: const SizedBox.expand(),
+            ),
+          ),
+        Semantics(
+          container: wordButtons,
+          sortKey: wordButtons ? const OrdinalSortKey(1) : null,
+          child: GestureDetector(
+            // Null (instead of a no-op) when there is neither a toolbar to open nor
+            // an open overlay to shield, so the tap falls through to the host's own
+            // tap handler (the analytics example-message chips wrap this in an
+            // InkWell that opens the toolbar overlay themselves).
+            onTap:
+                overlayController != null || controller.chatController != null
+                ? () {
+                    if (overlayController == null) {
+                      controller.chatController?.showToolbar(
+                        pangeaMessageEvent?.event ?? event,
+                        pangeaMessageEvent: pangeaMessageEvent,
+                        nextEvent: nextEvent,
+                        prevEvent: prevEvent,
+                      );
+                    }
+                  }
+                : null,
+            child: Text.rich(
+              _renderHtml(
+                parsed,
+                context,
+                TextStyle(fontSize: fontSize, color: textColor),
+              ),
+              style: TextStyle(fontSize: fontSize, color: textColor),
+              maxLines: limitHeight ? 64 : null,
+              overflow: TextOverflow.clip,
+              selectionColor: textColor.withAlpha(128),
+            ),
+          ),
         ),
-        style: TextStyle(fontSize: fontSize, color: textColor),
-        maxLines: limitHeight ? 64 : null,
-        overflow: TextOverflow.clip,
-        selectionColor: textColor.withAlpha(128),
-      ),
+      ],
     );
   }
 }
