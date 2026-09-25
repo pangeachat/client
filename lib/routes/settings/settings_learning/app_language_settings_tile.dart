@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/languages/locale_provider.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/language_semantics.dart';
 import 'package:fluffychat/routes/settings/settings_learning/learning_settings_view_model.dart';
 
 /// The immersion toggle — "show the app in the language I'm learning".
@@ -61,19 +62,24 @@ class _AppLanguageSettingsTileState extends State<AppLanguageSettingsTile> {
   Widget build(BuildContext context) {
     final l10n = _baseLanguageL10n ?? L10n.of(context);
     final isOn = widget.viewModel.appLanguageIsTarget;
-    return SwitchListTile.adaptive(
-      value: isOn,
-      title: Text(l10n.appInTargetLanguageTitle),
-      subtitle: Text(
-        // Once immersion is on, this tile is the odd one out on the page —
-        // say why, rather than leaving it looking untranslated.
-        isOn
-            ? '${l10n.appInTargetLanguageDesc} '
-                  '${l10n.appInTargetLanguageStaysInBaseLanguage}'
-            : l10n.appInTargetLanguageDesc,
+    // In the base language, which differs from the UI's once the app is shown
+    // in the target language (#9266).
+    return LanguageSemantics(
+      langCode: _baseLanguageL10n == null ? null : _requestedLangCode,
+      child: SwitchListTile.adaptive(
+        value: isOn,
+        title: Text(l10n.appInTargetLanguageTitle),
+        subtitle: Text(
+          // Once immersion is on, this tile is the odd one out on the page —
+          // say why, rather than leaving it looking untranslated.
+          isOn
+              ? '${l10n.appInTargetLanguageDesc} '
+                    '${l10n.appInTargetLanguageStaysInBaseLanguage}'
+              : l10n.appInTargetLanguageDesc,
+        ),
+        activeThumbColor: Theme.of(context).pangea.successFixedDim,
+        onChanged: widget.viewModel.setAppLanguageIsTarget,
       ),
-      activeThumbColor: Theme.of(context).pangea.successFixedDim,
-      onChanged: widget.viewModel.setAppLanguageIsTarget,
     );
   }
 }

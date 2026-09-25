@@ -106,6 +106,7 @@ mixin LemmaEmojiSetter {
           children: [
             VocabAnalyticsListTile(
               constructId: constructId,
+              langCode: MatrixState.pangeaController.userController.userL2Code,
               textColor: theme.colorScheme.surface,
               listen: false,
               onTap: () {

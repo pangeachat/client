@@ -8,6 +8,7 @@ import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/features/analytics/listening_exposure_declaration.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/language_semantics.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/routes/chat/events/extensions/pangea_event_extension.dart';
@@ -67,6 +68,11 @@ class MessageContent extends StatelessWidget {
   final bool isAnalyticsExample;
   // Pangea#
 
+  /// Whether the text is its own node, marked with the message's language
+  /// (#9266). False when the host is itself one control named by this message
+  /// and marks the language itself: a node of our own would take its name.
+  final bool markLanguage;
+
   const MessageContent(
     this.event, {
     this.onInfoTab,
@@ -89,6 +95,7 @@ class MessageContent extends StatelessWidget {
     this.vocabLemmas,
     this.isAnalyticsExample = false,
     // Pangea#
+    this.markLanguage = true,
   });
 
   // #Pangea
@@ -375,47 +382,52 @@ class MessageContent extends StatelessWidget {
                 event.numberEmotes <= 3;
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              child: Semantics(
-                label: event.text,
-                child: HtmlMessage(
-                  html: html,
-                  textColor: textColor,
-                  room: event.room,
-                  fontSize: AppConfig.messageFontSize * (bigEmotes ? 5 : 1),
-                  limitHeight: !selected,
-                  linkStyle: TextStyle(
-                    color: linkColor,
-                    fontSize: AppConfig.messageFontSize,
-                    decoration: TextDecoration.underline,
-                    decorationColor: linkColor,
+              child: LanguageSemantics(
+                langCode: markLanguage
+                    ? pangeaMessageEvent?.messageDisplayLangCode
+                    : null,
+                child: Semantics(
+                  label: event.text,
+                  child: HtmlMessage(
+                    html: html,
+                    textColor: textColor,
+                    room: event.room,
+                    fontSize: AppConfig.messageFontSize * (bigEmotes ? 5 : 1),
+                    limitHeight: !selected,
+                    linkStyle: TextStyle(
+                      color: linkColor,
+                      fontSize: AppConfig.messageFontSize,
+                      decoration: TextDecoration.underline,
+                      decorationColor: linkColor,
+                    ),
+                    onOpen: (url) => UrlLauncher(context, url.url).launchUrl(),
+                    eventId: event.eventId,
+                    checkboxCheckedEvents: event.aggregatedEvents(
+                      timeline,
+                      EventCheckboxRoomExtension.relationshipType,
+                    ),
+                    // #Pangea
+                    event: event,
+                    overlayController: overlayController,
+                    controller: controller,
+                    pangeaMessageEvent: pangeaMessageEvent,
+                    nextEvent: nextEvent,
+                    prevEvent: prevEvent,
+                    onClick:
+                        event.isActivityMessage ||
+                            readingAssistanceMode ==
+                                ReadingAssistanceMode.practiceMode
+                        ? null
+                        : (onTokenClick ?? onClick),
+                    vocabLemmas: vocabLemmas,
+                    isTransitionAnimation: isTransitionAnimation,
+                    isPracticeMode:
+                        readingAssistanceMode ==
+                        ReadingAssistanceMode.practiceMode,
+                    isAnalyticsExample: isAnalyticsExample,
+                    useTokenKeys: useTokenKeys,
+                    // Pangea#
                   ),
-                  onOpen: (url) => UrlLauncher(context, url.url).launchUrl(),
-                  eventId: event.eventId,
-                  checkboxCheckedEvents: event.aggregatedEvents(
-                    timeline,
-                    EventCheckboxRoomExtension.relationshipType,
-                  ),
-                  // #Pangea
-                  event: event,
-                  overlayController: overlayController,
-                  controller: controller,
-                  pangeaMessageEvent: pangeaMessageEvent,
-                  nextEvent: nextEvent,
-                  prevEvent: prevEvent,
-                  onClick:
-                      event.isActivityMessage ||
-                          readingAssistanceMode ==
-                              ReadingAssistanceMode.practiceMode
-                      ? null
-                      : (onTokenClick ?? onClick),
-                  vocabLemmas: vocabLemmas,
-                  isTransitionAnimation: isTransitionAnimation,
-                  isPracticeMode:
-                      readingAssistanceMode ==
-                      ReadingAssistanceMode.practiceMode,
-                  isAnalyticsExample: isAnalyticsExample,
-                  useTokenKeys: useTokenKeys,
-                  // Pangea#
                 ),
               ),
             );
