@@ -7,6 +7,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/show_menu_long_press.dart';
+import 'package:fluffychat/pangea/common/widgets/course_image_builder.dart';
 import 'package:fluffychat/pangea/common/widgets/invited_chip.dart';
 import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -158,21 +159,25 @@ class ChatListItem extends StatelessWidget {
                       Positioned(
                         top: 0,
                         left: 0,
-                        child: Avatar(
-                          border: BorderSide(
-                            width: 2,
-                            color: backgroundColor ?? theme.colorScheme.surface,
+                        child: CourseImageBuilder.room(
+                          room: space,
+                          builder: (context, image) => Avatar(
+                            border: BorderSide(
+                              width: 2,
+                              color:
+                                  backgroundColor ?? theme.colorScheme.surface,
+                            ),
+                            borderRadius: BorderRadius.circular(
+                              AppConfig.borderRadius / 4,
+                            ),
+                            mxContent: image,
+                            size: Avatar.defaultSize * 0.75,
+                            name: space.getLocalizedDisplayname(),
+                            // #Pangea
+                            userId: space.directChatMatrixID,
+                            useRive: true,
+                            // Pangea#
                           ),
-                          borderRadius: BorderRadius.circular(
-                            AppConfig.borderRadius / 4,
-                          ),
-                          mxContent: space.avatar,
-                          size: Avatar.defaultSize * 0.75,
-                          name: space.getLocalizedDisplayname(),
-                          // #Pangea
-                          userId: space.directChatMatrixID,
-                          useRive: true,
-                          // Pangea#
                         ),
                       ),
                     Positioned(

@@ -5,6 +5,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/course_plans/map_clipper.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/course_image_builder.dart';
 import 'package:fluffychat/pangea/common/widgets/invited_course_badge.dart';
 import 'package:fluffychat/pangea/spaces/knocking_users_badge.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
@@ -13,6 +14,11 @@ import 'package:fluffychat/widgets/unread_rooms_badge.dart';
 
 class CourseAvatar extends StatelessWidget {
   final Uri? avatar;
+
+  /// The course's quest-plan id, whose cover shows when [avatar] is null. See
+  /// [CourseImageBuilder].
+  final String? courseId;
+
   final String displayname;
   final double size;
 
@@ -35,6 +41,7 @@ class CourseAvatar extends StatelessWidget {
   const CourseAvatar({
     super.key,
     this.avatar,
+    this.courseId,
     required this.displayname,
     required this.size,
     this.unreadCoursePingEvent,
@@ -50,12 +57,16 @@ class CourseAvatar extends StatelessWidget {
     final child = ClipPath(
       clipper: MapClipper(),
       child: ExcludeSemantics(
-        child: Avatar(
-          mxContent: avatar,
-          name: displayname,
-          border: BorderSide(width: 1, color: Theme.of(context).dividerColor),
-          borderRadius: BorderRadius.circular(0),
-          size: size,
+        child: CourseImageBuilder(
+          avatar: avatar,
+          courseId: courseId,
+          builder: (context, image) => Avatar(
+            mxContent: image,
+            name: displayname,
+            border: BorderSide(width: 1, color: Theme.of(context).dividerColor),
+            borderRadius: BorderRadius.circular(0),
+            size: size,
+          ),
         ),
       ),
     );

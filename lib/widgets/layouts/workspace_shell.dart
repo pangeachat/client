@@ -969,6 +969,7 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
                     builder: (context, knockingUsers) {
                       final avatar = CourseAvatar(
                         avatar: shortcutCourse.avatar,
+                        courseId: shortcutCourse.coursePlan?.uuid,
                         displayname: shortcutCourse.getLocalizedDisplayname(
                           MatrixLocals(l10n),
                         ),
