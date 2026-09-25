@@ -9,7 +9,10 @@
 //   ./scripts/build-web-versioned-canvaskit.sh --pwa-strategy=none --profile && mv build/web build/app-web
 // copy .env into each, then:
 //   node integration_test/perf/web_runner.js --dir build/app-web --login   (once: sign in, press Enter)
-//   node integration_test/perf/web_runner.js --dir build/perf-web
+//   node integration_test/perf/web_runner.js --dir build/perf-web [--param name=value ...]
+//
+// --param passes a scenario input in the page URL, such as the chat scenario's
+// --param 'chat=!roomid:server'.
 //
 // Both builds are served on the same origin with the same saved Chrome
 // profile, which is what carries the sign-in from the app into the benchmark.
@@ -28,6 +31,10 @@ const opt = (name) => {
   return i === -1 ? null : args[i + 1];
 };
 const DIR = opt('dir');
+const PARAMS = args.flatMap((a, i) => (a === '--param' ? [args[i + 1]] : [])).map((p) => {
+  const eq = p.indexOf('=');
+  return `&${encodeURIComponent(p.slice(0, eq))}=${encodeURIComponent(p.slice(eq + 1))}`;
+}).join('');
 const PORT = 8097;
 const PROFILE_DIR = path.resolve('build/perf/.chrome-profile');
 const TIMEOUT_MS = 5 * 60 * 1000;
@@ -143,7 +150,7 @@ const sha = (buf) => crypto.createHash('sha256').update(buf).digest('hex').slice
     });
     setTimeout(() => resolve({ failure: `No result within ${TIMEOUT_MS / 60000} minutes.` }), TIMEOUT_MS);
   });
-  await page.goto(`http://localhost:${PORT}/?refreshRate=${refreshRate}`);
+  await page.goto(`http://localhost:${PORT}/?refreshRate=${refreshRate}${PARAMS}`);
   const { result, failure } = await outcome;
   if (failure) {
     console.error(failure);

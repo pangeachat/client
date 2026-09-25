@@ -19,7 +19,15 @@ class PerfRun {
   /// The display's frame budget: a frame that takes longer missed it.
   final double budgetMs;
 
-  const PerfRun(this.tester, this.budgetMs);
+  /// The page's URL parameters, read before the app started (its router
+  /// rewrites the URL). On web this is how a scenario receives its inputs.
+  final Map<String, String> urlParameters;
+
+  /// What the scenario measured when that varies by run, such as which chat.
+  /// compare.js refuses to compare results with different targets.
+  String? target;
+
+  PerfRun(this.tester, this.budgetMs, this.urlParameters);
 }
 
 /// Runs one benchmark scenario and reports its result.
@@ -47,14 +55,17 @@ void benchmark(
     // browser's real frame rate and passes it in the URL. Read it before the
     // app starts: its router rewrites the URL and drops it. Phones report
     // their own.
+    final urlParameters = Map.of(Uri.base.queryParameters);
     final refreshRate =
-        double.tryParse(Uri.base.queryParameters['refreshRate'] ?? '') ??
+        double.tryParse(urlParameters['refreshRate'] ?? '') ??
         tester.view.display.refreshRate;
     final budgetMs = 1000 / refreshRate;
     try {
-      final passes = await body(PerfRun(tester, budgetMs));
+      final run = PerfRun(tester, budgetMs, urlParameters);
+      final passes = await body(run);
       binding.reportData = {
         'scenario': scenario,
+        if (run.target != null) 'target': run.target,
         'platform': kIsWeb ? 'web' : defaultTargetPlatform.name,
         'refreshRate': refreshRate,
         'budgetMs': budgetMs,

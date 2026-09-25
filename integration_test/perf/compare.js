@@ -45,7 +45,7 @@ const METRICS = {
 const load = (files) => files.map((f) => JSON.parse(fs.readFileSync(f, 'utf8')));
 const base = load(baseFiles);
 const next = load(newFiles);
-const keys = new Set([...base, ...next].map((r) => `${r.scenario} / ${r.platform} / ${r.refreshRate} Hz`));
+const keys = new Set([...base, ...next].map((r) => `${r.scenario}${r.target ? ` (${r.target})` : ''} / ${r.platform} / ${r.refreshRate} Hz`));
 if (keys.size !== 1) {
   console.error(`Results are not comparable: ${[...keys].join(' vs ')}`);
   process.exit(2);
