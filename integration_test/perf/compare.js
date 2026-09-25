@@ -6,8 +6,9 @@
 // Run the two versions alternately (A, B, A, B...) and list each side's files
 // in run order, so the Nth baseline file and the Nth new file come from the
 // same round. Each run is reduced to one value per metric: the median of its
-// passes, leaving out the first, which carries one-time costs (image decode,
-// first layout). Each round then gives one difference per metric, and a metric
+// passes, leaving out its warm-up passes (a scroll run's first pass carries
+// one-time costs such as image decode; a launch run has no warm-up, since its
+// one pass is the launch). Each round then gives one difference per metric, and a metric
 // counts as changed when it moved the same way in every round by more than 5%
 // of the baseline. A slowdown that hits the whole device for a while lands on
 // both runs of its round and cancels out.
@@ -36,6 +37,9 @@ const METRICS = {
   'raster p90 (ms)': (p) => p.rasterMs.p90,
   'missed build budget': (p) => p.missedBuildBudget,
   'missed raster budget': (p) => p.missedRasterBudget,
+  'first frame build (ms)': (p) => p.firstFrameBuildMs,
+  'first frame raster (ms)': (p) => p.firstFrameRasterMs,
+  'total build (ms)': (p) => p.totalBuildMs,
 };
 
 const load = (files) => files.map((f) => JSON.parse(fs.readFileSync(f, 'utf8')));
@@ -46,7 +50,7 @@ if (keys.size !== 1) {
   console.error(`Results are not comparable: ${[...keys].join(' vs ')}`);
   process.exit(2);
 }
-console.log(`${[...keys][0]}: ${base.length} rounds, first pass of each run left out`);
+console.log(`${[...keys][0]}: ${base.length} rounds`);
 
 const round = (v) => Math.round(v * 10) / 10;
 const median = (values) => {
@@ -54,10 +58,12 @@ const median = (values) => {
   const mid = Math.floor(sorted.length / 2);
   return sorted.length % 2 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
 };
-const runValues = (runs, pick) => runs.map((r) => median(r.passes.slice(1).map(pick)));
+const runValues = (runs, pick) => runs.map((r) => median(r.passes.slice(r.warmupPasses ?? 1).map(pick)));
+// Scenario-specific metrics (the launch ones) appear only where every run has them.
+const present = (pick) => [...base, ...next].every((r) => r.passes.slice(r.warmupPasses ?? 1).every((p) => typeof pick(p) === 'number'));
 
 let changed = 0;
-const rows = Object.entries(METRICS).map(([name, pick]) => {
+const rows = Object.entries(METRICS).filter(([, pick]) => present(pick)).map(([name, pick]) => {
   const b = runValues(base, pick);
   const deltas = runValues(next, pick).map((v, i) => v - b[i]);
   const floor = 0.05 * Math.abs(median(b));
