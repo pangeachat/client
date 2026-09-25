@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
@@ -69,10 +70,19 @@ class BotFaceState extends State<BotFace> {
   static const _enterSettle = Duration(milliseconds: 1250);
   static const _frameSeconds = 1 / 60;
 
+  /// On web, how long a face animates after it loads or changes expression
+  /// before it holds its current frame. Rive's web renderer leaks CanvasKit
+  /// memory on every animated frame, so a face left animating filled the
+  /// 2 GiB heap in under an hour and aborted the tab (#9286, CLIENT-EWG).
+  /// Long enough for Enter, the idle re-fire at [_enterSettle], and the
+  /// emote to land.
+  static const _webAnimateFor = Duration(seconds: 3);
+
   File? _file;
   RiveWidgetController? _controller;
   ViewModelInstance? _viewModel;
   Timer? _settleTimer;
+  Timer? _holdTimer;
 
   /// True while the asset decodes. Both callers of [_load] are followed by a
   /// build, so it is set without a setState.
@@ -95,7 +105,10 @@ class BotFaceState extends State<BotFace> {
       return;
     }
     if (!widget.useRive) return;
-    if (oldWidget.expression != widget.expression) _playExpression();
+    if (oldWidget.expression != widget.expression) {
+      _animateBriefly();
+      _playExpression();
+    }
     if (oldWidget.forceColor != widget.forceColor) _applyColour();
   }
 
@@ -109,6 +122,8 @@ class BotFaceState extends State<BotFace> {
   void _unload() {
     _settleTimer?.cancel();
     _settleTimer = null;
+    _holdTimer?.cancel();
+    _holdTimer = null;
     setState(() {
       _controller?.dispose();
       _file?.dispose();
@@ -121,6 +136,7 @@ class BotFaceState extends State<BotFace> {
   @override
   void dispose() {
     _settleTimer?.cancel();
+    _holdTimer?.cancel();
     _controller?.dispose();
     _file?.dispose();
     super.dispose();
@@ -185,6 +201,7 @@ class BotFaceState extends State<BotFace> {
     });
 
     _applyColour();
+    _animateBriefly();
     _settleTimer?.cancel();
     if (widget.expression == BotExpression.idle) {
       // Enter ends in idle on its own. The re-fire is for an expression that
@@ -226,6 +243,19 @@ class BotFaceState extends State<BotFace> {
 
   void _playExpression() {
     _viewModel?.trigger(widget.expression.trigger)?.trigger();
+  }
+
+  /// On web, lets the face animate for [_webAnimateFor], then holds its
+  /// current frame. An inactive controller stops its ticker but still paints,
+  /// so the face stays drawn; colour changes land on the next repaint.
+  void _animateBriefly() {
+    final controller = _controller;
+    if (!kIsWeb || controller == null) return;
+    controller.active = true;
+    _holdTimer?.cancel();
+    _holdTimer = Timer(_webAnimateFor, () {
+      if (mounted) _controller?.active = false;
+    });
   }
 
   @override
