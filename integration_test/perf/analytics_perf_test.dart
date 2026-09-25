@@ -7,6 +7,7 @@ import 'package:fluffychat/routes/analytics/activities/activity_archive.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/morph_analytics_list_view.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/vocab_analytics_list_view.dart';
 import 'package:fluffychat/widgets/fluffy_chat_app.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 import 'perf_harness.dart';
 import 'perf_output_io.dart'
@@ -53,6 +54,19 @@ void main() => benchmark(
       failure: notSignedIn,
     );
     perfOutput('PERF signed in');
+    // Open the panel only once the analytics store is ready, as it is by the
+    // time a learner reaches it. Opened sooner, the panel's first load throws
+    // (the store's client is still null), which on the slower Android phone
+    // happened right after sign-in.
+    final analytics = tester
+        .state<MatrixState>(find.byType(Matrix))
+        .analyticsDataService;
+    await waitFor(
+      tester,
+      () => !analytics.isInitializing,
+      timeout: const Duration(seconds: 60),
+      failure: 'The analytics store did not finish initializing.',
+    );
 
     FluffyChatApp.router.go('/?right=analytics:$panel');
     final view = find.byType(panelType);

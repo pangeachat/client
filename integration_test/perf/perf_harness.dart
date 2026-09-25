@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
@@ -60,6 +61,27 @@ void benchmark(
         double.tryParse(urlParameters['refreshRate'] ?? '') ??
         tester.view.display.refreshRate;
     final budgetMs = 1000 / refreshRate;
+    // Flutter's test binding reports an error that escapes into the test's
+    // zone through FlutterError.onError and then ends the test. The app
+    // replaces that handler at startup, so the report never marks the test
+    // failed and the test ends as a pass that measured nothing. Print every
+    // error the handler receives, whoever installed it, so the run shows why
+    // it stopped (and perf_driver.dart fails it for reporting no result).
+    FlutterExceptionHandler? passOn;
+    void printThenPassOn(FlutterErrorDetails details) {
+      perfOutput(
+        'PERF error: ${details.exceptionAsString()}\n'
+        '${details.stack.toString().split('\n').take(12).join('\n')}',
+      );
+      passOn?.call(details);
+    }
+
+    final errorWatch = Timer.periodic(const Duration(milliseconds: 50), (_) {
+      if (FlutterError.onError != printThenPassOn) {
+        passOn = FlutterError.onError;
+        FlutterError.onError = printThenPassOn;
+      }
+    });
     try {
       final run = PerfRun(tester, budgetMs, urlParameters);
       final passes = await body(run);
@@ -80,6 +102,7 @@ void benchmark(
       perfOutput('PERF FAILED: $e\n$s');
       rethrow;
     } finally {
+      errorWatch.cancel();
       // The app installs its own error sink at startup. Restoring the test's
       // before anything propagates is what lets a failure here fail the run;
       // left in place, the app's sink reports it and the run looks green.
