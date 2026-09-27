@@ -106,6 +106,8 @@ Three rules decide what can share a request, and each exists because ignoring it
 
 Batching changes the number of requests, never their standing: each activity in a request costs the learner's allowance exactly what it would have cost alone, and one activity's failure never decides another's. What the backend guarantees in return is in the [org activities doc](../../../.github/.github/instructions/activities.instructions.md).
 
+Reads stay under the learner's allowance rather than finding its edge. The repo spends its own per-minute budget of activity reads, set below the backend's so the map and quest reads that share it still fit, and a read the budget cannot cover waits for it to refill instead of being sent. Tripping the backend's limit costs a full minute with nothing loading, so a screen larger than the budget is better filled in over a few seconds than blanked for sixty.
+
 ## When the activity can't be fetched
 
 Some session rooms reference an activity that no longer exists on the backend. The fallback ladder and the view-only contract are the org doc's ([Removed or unresolvable activities](../../../.github/.github/instructions/activities.instructions.md#editing-semantics)); what the client shows on each rung:

@@ -8,6 +8,7 @@ import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/features/analytics/listening_exposure_declaration.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/language_semantics.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/routes/chat/events/extensions/pangea_event_extension.dart';
@@ -375,8 +376,8 @@ class MessageContent extends StatelessWidget {
                 event.numberEmotes <= 3;
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              child: Semantics(
-                label: event.text,
+              child: LanguageSemantics(
+                langCode: pangeaMessageEvent?.messageDisplayLangCode,
                 child: HtmlMessage(
                   html: html,
                   textColor: textColor,

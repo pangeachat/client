@@ -14,6 +14,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/network/rate_limit_pause.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
+import 'package:fluffychat/pangea/common/widgets/language_semantics.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_meaning_builder.dart';
 import 'package:fluffychat/routes/analytics/analytics_navigation_util.dart';
@@ -130,6 +131,7 @@ class WordZoomWidget extends StatelessWidget {
                   children: [
                     _WordCardHeader(
                       token: token,
+                      langCode: langCode,
                       construct: construct,
                       event: event,
                       onClose: onClose,
@@ -248,6 +250,7 @@ class WordZoomWidget extends StatelessWidget {
 /// state rather than in this widget.
 class _WordCardHeader extends StatefulWidget {
   final PangeaTokenText token;
+  final String langCode;
   final ConstructIdentifier construct;
   final Event? event;
   final VoidCallback? onClose;
@@ -259,6 +262,7 @@ class _WordCardHeader extends StatefulWidget {
 
   const _WordCardHeader({
     required this.token,
+    required this.langCode,
     required this.construct,
     required this.event,
     required this.onClose,
@@ -331,27 +335,30 @@ class _WordCardHeaderState extends State<_WordCardHeader>
           Flexible(
             child: Opacity(
               opacity: _blocked ? 0.5 : 1.0,
-              child: InkWell(
-                onTap: widget.enableAnalyticsNavigation
-                    ? () => AnalyticsNavigationUtil.navigateToAnalytics(
-                        context: context,
-                        view: ProgressIndicatorEnum.wordsUsed,
-                        construct: widget.construct,
-                      )
-                    : null,
-                borderRadius: BorderRadius.circular(8.0),
-                child: Container(
-                  constraints: const BoxConstraints(minHeight: 40.0),
-                  alignment: Alignment.center,
-                  child: Text(
-                    widget.token.content,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 28.0,
-                      fontWeight: FontWeight.w600,
-                      height: 1.2,
-                      color: Theme.of(context).colorScheme.primary,
-                      overflow: TextOverflow.ellipsis,
+              child: LanguageSemantics(
+                langCode: widget.langCode,
+                child: InkWell(
+                  onTap: widget.enableAnalyticsNavigation
+                      ? () => AnalyticsNavigationUtil.navigateToAnalytics(
+                          context: context,
+                          view: ProgressIndicatorEnum.wordsUsed,
+                          construct: widget.construct,
+                        )
+                      : null,
+                  borderRadius: BorderRadius.circular(8.0),
+                  child: Container(
+                    constraints: const BoxConstraints(minHeight: 40.0),
+                    alignment: Alignment.center,
+                    child: Text(
+                      widget.token.content,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 28.0,
+                        fontWeight: FontWeight.w600,
+                        height: 1.2,
+                        color: Theme.of(context).colorScheme.primary,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
                   ),
                 ),

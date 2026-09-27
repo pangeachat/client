@@ -158,6 +158,16 @@ This means even for unlocked topics, only a subset of activity cards are visible
 
 ---
 
+## 9. Course Avatar
+
+A course room shows its own `m.room.avatar` when it has one. When it has none, it shows the cover image of the quest named in its `pangea.course_plan` event. Only a missing avatar falls back: an avatar an admin set always wins, and a course whose quest has no cover keeps the letter avatar.
+
+- **Why the client falls back.** The room avatar is copied from the quest cover once, when the course is created, and nothing reads the quest again. Courses made before quests had covers therefore have no avatar. Backfilling those rooms from the server would need an account with admin power in every course room, so the client reads the cover instead (#9264).
+- **One rule for every surface.** Every place that shows a course's image resolves it through [`CourseImageBuilder`](../../lib/pangea/common/widgets/course_image_builder.dart): the nav rail, the mobile course shortcut, the course lists and public browse, the course badge on chat-list rows, the "go to course" menu item, and the edit-course page. They cannot disagree about which image a course has.
+- **Loading.** [`QuestPlansRepo.cover`](../../lib/features/quests/repo/quest_plans_repo.dart) reads the cover once per quest per session, and any quest-plans read that already resolved the image fills the same cache. The letter shows while the cover loads. A failed read is reported and retried the next time the avatar appears.
+
+---
+
 ## Future Work
 
 _(No linked issues yet.)_

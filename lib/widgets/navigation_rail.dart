@@ -5,6 +5,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
+import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/course_plans/map_border.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
 import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
@@ -341,6 +342,7 @@ class _SpaceItem extends StatelessWidget {
         onTap: () => _onTapSpace(context),
         icon: CourseAvatar(
           avatar: space.avatar,
+          courseId: space.coursePlan?.uuid,
           displayname: displayname,
           size: iconWidth,
           unreadCoursePingEvent: space.unreadCoursePingEvent,

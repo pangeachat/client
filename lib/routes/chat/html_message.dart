@@ -12,6 +12,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/language_semantics.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
@@ -1099,6 +1100,21 @@ class HtmlMessage extends StatelessWidget {
     }
   }
 
+  /// The text [node] displays, for screen readers: the parsed HTML's text
+  /// without what the renderer leaves out ([ignoredHtmlTags], the `mx-reply`
+  /// quote a reply carries in its body), with a line break where it breaks a
+  /// line so words either side of it stay apart.
+  String _displayedText(dom.Node node) {
+    if (node is! dom.Element) return node.text ?? '';
+    final tag = node.localName?.toLowerCase();
+    if (ignoredHtmlTags.contains(tag)) return '';
+    if (tag == 'br') return '\n';
+    final text = node.nodes.map(_displayedText).join();
+    return blockHtmlTags.contains(tag) || fullLineHtmlTag.contains(tag)
+        ? '\n$text'
+        : text;
+  }
+
   @override
   Widget build(BuildContext context) {
     // #Pangea
@@ -1117,33 +1133,39 @@ class HtmlMessage extends StatelessWidget {
       textDirection: pangeaMessageEvent?.textDirection,
       parse: () => parser.parse(_addTokenTags()).body ?? dom.Element.html(''),
     );
-    return GestureDetector(
-      // Null (instead of a no-op) when there is neither a toolbar to open nor
-      // an open overlay to shield, so the tap falls through to the host's own
-      // tap handler (the analytics example-message chips wrap this in an
-      // InkWell that opens the toolbar overlay themselves).
-      onTap: overlayController != null || controller.chatController != null
-          ? () {
-              if (overlayController == null) {
-                controller.chatController?.showToolbar(
-                  pangeaMessageEvent?.event ?? event,
-                  pangeaMessageEvent: pangeaMessageEvent,
-                  nextEvent: nextEvent,
-                  prevEvent: prevEvent,
-                );
+    return WholeTextSemantics(
+      text: _displayedText(parsed).trim(),
+      textInButtons:
+          (tokens?.isNotEmpty ?? false) &&
+          (onClick != null || overlayController != null),
+      child: GestureDetector(
+        // Null (instead of a no-op) when there is neither a toolbar to open nor
+        // an open overlay to shield, so the tap falls through to the host's own
+        // tap handler (the analytics example-message chips wrap this in an
+        // InkWell that opens the toolbar overlay themselves).
+        onTap: overlayController != null || controller.chatController != null
+            ? () {
+                if (overlayController == null) {
+                  controller.chatController?.showToolbar(
+                    pangeaMessageEvent?.event ?? event,
+                    pangeaMessageEvent: pangeaMessageEvent,
+                    nextEvent: nextEvent,
+                    prevEvent: prevEvent,
+                  );
+                }
               }
-            }
-          : null,
-      child: Text.rich(
-        _renderHtml(
-          parsed,
-          context,
-          TextStyle(fontSize: fontSize, color: textColor),
+            : null,
+        child: Text.rich(
+          _renderHtml(
+            parsed,
+            context,
+            TextStyle(fontSize: fontSize, color: textColor),
+          ),
+          style: TextStyle(fontSize: fontSize, color: textColor),
+          maxLines: limitHeight ? 64 : null,
+          overflow: TextOverflow.clip,
+          selectionColor: textColor.withAlpha(128),
         ),
-        style: TextStyle(fontSize: fontSize, color: textColor),
-        maxLines: limitHeight ? 64 : null,
-        overflow: TextOverflow.clip,
-        selectionColor: textColor.withAlpha(128),
       ),
     );
   }
