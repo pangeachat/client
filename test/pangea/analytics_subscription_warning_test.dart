@@ -17,11 +17,7 @@ void main() {
   late L10n l10n;
 
   SubscriptionStatusResponse status(SubscriptionAccessLevel level) =>
-      SubscriptionStatusResponse(
-        accessLevel: level,
-        entitlementSource: 'test',
-        entitlements: const [],
-      );
+      SubscriptionStatusResponse(accessLevel: level, entitlements: const []);
 
   final inactive = SubscriptionInactive(status(SubscriptionAccessLevel.none));
   final active = SubscriptionActive(status(SubscriptionAccessLevel.full));

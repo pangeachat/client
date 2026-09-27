@@ -4,18 +4,14 @@ import 'package:fluffychat/features/subscription/enums/subscription_access_level
 import 'package:fluffychat/features/subscription/enums/subscription_type_enum.dart';
 import 'package:fluffychat/features/subscription/repo_v2/subscription_status_response.dart';
 
-// isV2PaidType is defined in subscription_status_v2.dart (imported above).
-
 void main() {
   SubscriptionStatusResponse status({
     SubscriptionAccessLevel accessLevel = SubscriptionAccessLevel.none,
-    String entitlementSource = "cms",
     bool trialEligible = false,
     bool trialClaimed = false,
     SubscriptionWinning? winning,
   }) => SubscriptionStatusResponse(
     accessLevel: accessLevel,
-    entitlementSource: entitlementSource,
     trialEligible: trialEligible,
     trialClaimed: trialClaimed,
     winning: winning,
@@ -42,23 +38,6 @@ void main() {
   });
 
   group('isPaidWithoutPlan (finding #4 — paid access without planId)', () {
-    // #8842: the legacy RevenueCat phase is store-managed and never carries a
-    // catalog plan, so a missing planId there is the normal shape, not a defect.
-    test('legacy RevenueCat status (source rc) + null planId -> false', () {
-      expect(
-        status(
-          accessLevel: SubscriptionAccessLevel.full,
-          entitlementSource: "rc",
-          winning: const SubscriptionWinning(
-            type: SubscriptionType.paid,
-            status: "active",
-            cancelAtPeriodEnd: false,
-            provider: "apple",
-          ),
-        ).isPaidWithoutPlan,
-        isFalse,
-      );
-    });
     test('paid + full + null planId -> true (anomaly)', () {
       expect(
         status(
@@ -130,18 +109,18 @@ void main() {
         isFalse,
       );
     });
-    test('individual (RC-era paid) + null planId -> true (billable)', () {
+    test('unknown winning type + null planId -> false', () {
+      // A type the client doesn't know (e.g. the retired RevenueCat-era
+      // `individual` label) parses to null and is not treated as billable.
       expect(
         status(
           accessLevel: SubscriptionAccessLevel.full,
-          winning: const SubscriptionWinning(
-            type: SubscriptionType.individual,
-            status: "active",
-            provider: "cms",
-            cancelAtPeriodEnd: false,
-          ),
+          winning: SubscriptionWinning.fromJson(const {
+            "type": "individual",
+            "status": "active",
+          }),
         ).isPaidWithoutPlan,
-        isTrue,
+        isFalse,
       );
     });
 
@@ -153,14 +132,10 @@ void main() {
     });
   });
 
-  group('isV2PaidType (finding #1 — individual is billable)', () {
+  group('isBillable (finding #1 — only paid is billable)', () {
     test(
       'paid -> billable',
       () => expect(SubscriptionType.paid.isBillable, isTrue),
-    );
-    test(
-      'individual -> billable',
-      () => expect(SubscriptionType.individual.isBillable, isTrue),
     );
     test(
       'seat -> not billable',

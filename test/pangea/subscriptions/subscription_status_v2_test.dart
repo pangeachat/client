@@ -8,12 +8,11 @@ import 'package:fluffychat/features/subscription/repo_v2/subscription_status_res
 /// Real-shaped `/subscription/status` fixtures matching choreo
 /// `SubscriptionStatusResponseResponse` (status_v2_schema.py). JSON keys mirror the
 /// Pydantic field names verbatim: snake_case for `access_level`,
-/// `entitlement_source`, `ends_at`, `cancel_at_period_end`, `manage_action`,
+/// `ends_at`, `cancel_at_period_end`, `manage_action`,
 /// `trial_*`; camelCase for `entitlementRef`, `sourceSubscriptionId`, `planId`.
 void main() {
   Map<String, dynamic> fullActivePaid() => {
     "access_level": "full",
-    "entitlement_source": "cms",
     "winning": {
       "type": "paid",
       "status": "active",
@@ -48,7 +47,6 @@ void main() {
     test('full active paid with planId', () {
       final status = SubscriptionStatusResponse.fromJson(fullActivePaid());
       expect(status.accessLevel, SubscriptionAccessLevel.full);
-      expect(status.entitlementSource, "cms");
       expect(status.manageEligible, true);
 
       final winning = status.winning!;
@@ -72,7 +70,6 @@ void main() {
     test('none (no access, trial-eligible)', () {
       final status = SubscriptionStatusResponse.fromJson({
         "access_level": "none",
-        "entitlement_source": "cms",
         "winning": null,
         "billing_issue": null,
         "entitlements": <dynamic>[],
@@ -113,7 +110,6 @@ void main() {
     test('comp (promotional, not cancelable)', () {
       final status = SubscriptionStatusResponse.fromJson({
         "access_level": "full",
-        "entitlement_source": "cms",
         "winning": {
           "type": "comp",
           "status": "active",
@@ -143,7 +139,6 @@ void main() {
     test('seat (group-managed, not cancelable)', () {
       final status = SubscriptionStatusResponse.fromJson({
         "access_level": "full",
-        "entitlement_source": "cms",
         "winning": {
           "type": "seat",
           "status": "active",
@@ -169,7 +164,6 @@ void main() {
     test('trial active', () {
       final status = SubscriptionStatusResponse.fromJson({
         "access_level": "full",
-        "entitlement_source": "cms",
         "winning": {
           "type": "trial",
           "status": "active",
@@ -193,7 +187,6 @@ void main() {
     test('tolerates missing optional keys and bad dates', () {
       final status = SubscriptionStatusResponse.fromJson({
         "access_level": "full",
-        "entitlement_source": "cms",
         "winning": {
           "type": "paid",
           "status": "active",
@@ -206,10 +199,21 @@ void main() {
       expect(status.manageEligible, false);
     });
 
+    test('ignores a legacy entitlement_source field during rollout', () {
+      // The choreographer dropped the RevenueCat-era `entitlement_source`
+      // discriminator; an older server may still send it, so it must parse.
+      final status = SubscriptionStatusResponse.fromJson({
+        ...fullActivePaid(),
+        "entitlement_source": "cms",
+      });
+      expect(status.accessLevel, SubscriptionAccessLevel.full);
+      expect(status.winning!.planId, "month");
+      expect(status.toJson().containsKey('entitlement_source'), isFalse);
+    });
+
     test('reads plan_id fallback when backend uses snake_case', () {
       final status = SubscriptionStatusResponse.fromJson({
         "access_level": "full",
-        "entitlement_source": "cms",
         "winning": {"type": "paid", "status": "active", "plan_id": "year"},
       });
       expect(status.winning!.planId, "year");
@@ -220,7 +224,6 @@ void main() {
       () {
         final camel = SubscriptionStatusResponse.fromJson({
           "access_level": "full",
-          "entitlement_source": "cms",
           "winning": {
             "type": "paid",
             "status": "active",
@@ -231,7 +234,6 @@ void main() {
 
         final snake = SubscriptionStatusResponse.fromJson({
           "access_level": "full",
-          "entitlement_source": "cms",
           "winning": {
             "type": "paid",
             "status": "active",

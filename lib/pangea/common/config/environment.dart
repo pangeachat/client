@@ -290,24 +290,6 @@ class Environment {
         dotenv.env["GOOGLE_ANALYTICS_FIREBASE_OPTIONS_BASE64"];
   }
 
-  static String get rcGoogleKey {
-    return appConfigOverride?.rcGoogleKey ??
-        dotenv.env["RC_GOOGLE_KEY"] ??
-        'goog_paQMrzFKGzuWZvcMTPkkvIsifJe';
-  }
-
-  static String get rcIosKey {
-    return appConfigOverride?.rcIosKey ??
-        dotenv.env["RC_IOS_KEY"] ??
-        'appl_DUPqnxuLjkBLzhBPTWeDjqNENuv';
-  }
-
-  static String get rcOfferingName {
-    return appConfigOverride?.rcOfferingName ??
-        dotenv.env["RC_OFFERING_NAME"] ??
-        'default';
-  }
-
   static String get stripeManagementUrl {
     return appConfigOverride?.stripeManagementUrl ??
         dotenv.env["STRIPE_MANAGEMENT_LINK"] ??
@@ -396,9 +378,6 @@ class AppConfigOverride {
   final bool? liveStreamingSttEnabled;
   final String? sentryDsn;
   final String? googleAnalyticsFirebaseOptionsBase64;
-  final String? rcGoogleKey;
-  final String? rcIosKey;
-  final String? rcOfferingName;
   final String? stripeManagementUrl;
   final String? botName;
 
@@ -416,9 +395,6 @@ class AppConfigOverride {
     this.liveStreamingSttEnabled,
     this.sentryDsn,
     this.googleAnalyticsFirebaseOptionsBase64,
-    this.rcGoogleKey,
-    this.rcIosKey,
-    this.rcOfferingName,
     this.stripeManagementUrl,
     this.botName,
   });
@@ -440,9 +416,6 @@ class AppConfigOverride {
       sentryDsn: json['sentryDsn'] as String?,
       googleAnalyticsFirebaseOptionsBase64:
           json['googleAnalyticsFirebaseOptionsBase64'] as String?,
-      rcGoogleKey: json['rcGoogleKey'] as String?,
-      rcIosKey: json['rcIosKey'] as String?,
-      rcOfferingName: json['rcOfferingName'] as String?,
       stripeManagementUrl: json['stripeManagementUrl'] as String?,
       botName: json['botName'] as String?,
     );
@@ -464,9 +437,6 @@ class AppConfigOverride {
       'sentryDsn': sentryDsn,
       'googleAnalyticsFirebaseOptionsBase64':
           googleAnalyticsFirebaseOptionsBase64,
-      'rcGoogleKey': rcGoogleKey,
-      'rcIosKey': rcIosKey,
-      'rcOfferingName': rcOfferingName,
       'stripeManagementUrl': stripeManagementUrl,
       'botName': botName,
     };
@@ -487,9 +457,6 @@ class AppConfigOverride {
         liveStreamingSttEnabled.hashCode ^
         sentryDsn.hashCode ^
         googleAnalyticsFirebaseOptionsBase64.hashCode ^
-        rcGoogleKey.hashCode ^
-        rcIosKey.hashCode ^
-        rcOfferingName.hashCode ^
         stripeManagementUrl.hashCode ^
         botName.hashCode;
   }
@@ -513,9 +480,6 @@ class AppConfigOverride {
         sentryDsn == other.sentryDsn &&
         googleAnalyticsFirebaseOptionsBase64 ==
             other.googleAnalyticsFirebaseOptionsBase64 &&
-        rcGoogleKey == other.rcGoogleKey &&
-        rcIosKey == other.rcIosKey &&
-        rcOfferingName == other.rcOfferingName &&
         stripeManagementUrl == other.stripeManagementUrl &&
         botName == other.botName;
   }
