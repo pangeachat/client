@@ -200,8 +200,8 @@ void main() {
     });
 
     test('ignores a legacy entitlement_source field during rollout', () {
-      // The choreographer dropped the RevenueCat-era `entitlement_source`
-      // discriminator; an older server may still send it, so it must parse.
+      // The client no longer reads the retired `entitlement_source` field; the
+      // server still sends it (always "cms"), so it must still parse.
       final status = SubscriptionStatusResponse.fromJson({
         ...fullActivePaid(),
         "entitlement_source": "cms",

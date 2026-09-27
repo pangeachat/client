@@ -110,8 +110,8 @@ void main() {
       );
     });
     test('unknown winning type + null planId -> false', () {
-      // A type the client doesn't know (e.g. the retired RevenueCat-era
-      // `individual` label) parses to null and is not treated as billable.
+      // A type the client doesn't know (e.g. the retired `individual` label)
+      // parses to null and is not treated as billable.
       expect(
         status(
           accessLevel: SubscriptionAccessLevel.full,
