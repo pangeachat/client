@@ -80,7 +80,8 @@ abstract class PRoutes {
   /// The join-with-code flow carrying an inbound course code — the add-course
   /// panel's `private/<code>` leaf over the world map, which prefills the
   /// join-with-code page and submits the join. The `LegacyRedirects` join-link
-  /// rewrite target, also re-entered after the login bounce (matrix.dart).
+  /// rewrite target, re-entered after the login bounce as the cached
+  /// destination (PAuthGaurd).
   static String joinWithCode(String code) =>
       '$world?left=${AddCoursePagePanelToken(AddCoursePageTokenParam(subpage: AddCourseSubpageEnum.private, privateCourseJoinCode: code)).encode()}';
 

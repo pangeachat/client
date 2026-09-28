@@ -605,17 +605,18 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
                 final isL2Set =
                     await pangeaController.userController.isUserL2Set;
                 if (!isL2Set) {
-                  // A new user's onboarding joins with any code cached across
-                  // the login bounce and clears it at completion
-                  // (user_type_onboarding_step.dart).
+                  // A new user's onboarding joins with any join code in the
+                  // destination cached across the login bounce and clears it
+                  // at completion (user_type_onboarding_step.dart); any other
+                  // destination waits for onboarding to end on `/`.
                   FluffyChatApp.router.go('/registration');
                 } else {
-                  // A join code cached across the login bounce is consumed by
-                  // the world route's auth guard on this landing
-                  // (PAuthGaurd._consumeCachedJoinCode) — the one consumption
-                  // point shared with logins that never pass through this
-                  // listener (web SSO's full-reload return, a restored
-                  // session).
+                  // The destination cached across the login bounce is
+                  // consumed by the world route's auth guard on this landing
+                  // (PAuthGaurd.consumeCachedDestination) — the one
+                  // consumption point shared with logins that never pass
+                  // through this listener (a restored session, a new account
+                  // leaving onboarding).
                   FluffyChatApp.router.go(PRoutes.world);
                 }
                 // Pangea#

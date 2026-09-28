@@ -121,9 +121,6 @@ class SpaceCodeController {
         : NavigationUtil.goToSpaceRoute(target.roomId, const [], context);
   }
 
-  static Future<void> cacheRoomCodeToJoin(String code) =>
-      SpaceCodeRepo.setSpaceCode(code);
-
   /// Whether a failed join means the CODE was wrong: the server's 404
   /// `ORG.PANGEA.CODE_NOT_FOUND`, its 400 for text that is not a code at all,
   /// or the client-side empty result. Everything else — the server's 500
