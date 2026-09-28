@@ -101,7 +101,8 @@ comment above `PRIMARY_OK` in the script).
 
 ### Clap fallback
 
-If either half is missing one of the three stamps above, or has
+If either half is missing either of the two required stamps above
+(`recording_started_offset_from_device_join_ms`, `sfu_joined_at_ms`), or has
 `"low_precision": true`, the tool refuses to guess with the primary method —
 per-process alignment WARNs at run time and names exactly which stamp(s) are
 missing for which half. Instead, pass `--clap-ms label=ms,label2=ms`: the ms

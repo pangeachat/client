@@ -1157,8 +1157,20 @@ class CallAudioRecorder implements CallAudioRecordingSink {
       // and nothing is awaited below, so `finish`'s control flow is exactly
       // today's -- no extra async continuation, [recordingSegments] stays the
       // initial empty, and the live transcript half stands.
+      //
+      // ALSO null when the recording was CAPPED. [_capBytes] bounds the kept
+      // bytes, and for the native-rate PCM a phone captures that bound binds on
+      // SIZE well before the 30-minute duration -- around 11 minutes at 48 kHz
+      // mono. Past it, `append`/`padSilenceFrames` drop audio and set
+      // [_AudioGeneration.cappedLogged]. Transcribing only the kept bytes would
+      // publish a recording-based half missing every word after the cap, and
+      // [CallRecord] prefers a non-empty recording half over the live one -- so
+      // a long call would lose its tail. The live-chunk half covers the WHOLE
+      // call, so when the recording was truncated we skip the recording-based
+      // pass and let the complete live half stand. (The half's accounting
+      // already reports `truncated: gen.cappedLogged`.)
       final Future<List<TranscriptSegment>>? pendingRecordingSegments =
-          transcribe == null
+          transcribe == null || gen.cappedLogged
           ? null
           : _recordingSegmentsFrom(
               pcm,

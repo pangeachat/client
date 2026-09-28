@@ -1470,4 +1470,41 @@ void main() {
       );
     });
   });
+
+  group('buildRecordingSegmentsFromTimings (fallbacks)', () {
+    test('falls back to text when every timing word is blank', () {
+      // Timings present but each word trims to empty: the utterance loop adds
+      // nothing, so flush() alone would return []. CallRecord reads an empty
+      // list as "no recording half" and silently drops it, losing speech the
+      // provider actually returned -- so fall back to the whole text.
+      final segments = buildRecordingSegmentsFromTimings(
+        [
+          WordTiming(
+            word: '   ',
+            confidence: 90,
+            startTimeMs: 0,
+            endTimeMs: 80,
+          ),
+          WordTiming(word: '', confidence: 90, startTimeMs: 90, endTimeMs: 120),
+        ],
+        'hola que tal',
+        1000,
+        5000,
+      );
+      expect(segments.map((s) => s.text).toList(), ['hola que tal']);
+      expect(segments.single.atMs, 1000);
+    });
+
+    test('returns nothing when both the timings and the text are empty', () {
+      // The boundary: no usable words AND no text is a genuinely empty half,
+      // not a dropped one, so there is nothing to fall back to.
+      final segments = buildRecordingSegmentsFromTimings(
+        [WordTiming(word: '  ', confidence: 90, startTimeMs: 0, endTimeMs: 80)],
+        '   ',
+        1000,
+        5000,
+      );
+      expect(segments, isEmpty);
+    });
+  });
 }

@@ -2182,6 +2182,24 @@ void main() {
       expect(sink.delivered.single.pcm.lengthInBytes ~/ 2, 1600);
     });
 
+    test('a failed open ENDS the audio run, not just the chunk run', () async {
+      // The frames a tap hands over before its open throws start an audio run
+      // (they set _audioRunFormat). Without ending that run here too, onRunEnded
+      // never fires and the next same-format start pours into the stale
+      // generation -- wrong runStartedAtMs, a silence gap. So it must end.
+      final audio = RecordingAudioSink();
+      final tap = _FramesThenFailsTap();
+      final s = service(withTap: tap, withAudioRecording: audio);
+      final starting = s.start(track);
+      await pumpEventQueue();
+      tap.finishOpening();
+      await expectLater(starting, throwsStateError);
+      await pumpEventQueue();
+
+      expect(audio.runsStarted, hasLength(1));
+      expect(audio.runsEnded, 1);
+    });
+
     test('does not cut the run that replaced it', () async {
       // A stop that lands first ends the run first, and a start after it owns
       // whatever chunker exists now. An open failing at that point must be a

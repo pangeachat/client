@@ -751,6 +751,12 @@ class CallCaptureService {
       if (_session == session) {
         _running = false;
         _endRun();
+        // End the AUDIO run too, not just the chunk run. A tap can deliver
+        // frames before its open throws, which sets [_audioRunFormat]; without
+        // this, `onRunEnded` never fires and the next same-format start pours
+        // into the stale generation (wrong runStartedAtMs, a silence gap).
+        // Idempotent when no frames arrived.
+        _endAudioRun();
       }
       rethrow;
     }
@@ -791,6 +797,10 @@ class CallCaptureService {
       // [CallAudioTap] does not state, and if frames CAN arrive before a throw
       // then nothing says they cannot arrive before a null return.
       _endRun();
+      // ...and the AUDIO run, for the same reason as the catch branch above:
+      // frames delivered before a null return would otherwise leave
+      // [_audioRunFormat] set and the generation open for the next start.
+      _endAudioRun();
     }
   }
 

@@ -722,6 +722,17 @@ List<TranscriptSegment> buildRecordingSegmentsFromTimings(
     }
   }
   flush();
+  // Timings were present but every one trimmed to empty, so the loop added
+  // nothing. Fall back to the whole text rather than return an empty half:
+  // CallRecord reads an empty list as "no recording half" and silently falls
+  // back to the live path, dropping speech the provider actually returned.
+  // Mirrors the no-timings branch above.
+  if (segments.isEmpty) {
+    final whole = text.trim();
+    if (whole.isNotEmpty) {
+      segments.add(TranscriptSegment(whole, atMs: startedAtMs));
+    }
+  }
   return List.unmodifiable(segments);
 }
 

@@ -95,6 +95,13 @@ FFMPEG_OVERRIDE=""
 FFPROBE_OVERRIDE=""
 
 while [ $# -gt 0 ]; do
+  # A value option given as the LAST argument would otherwise `shift 2` with
+  # only one arg left, and `set -e` would exit 1 with no message. Report it as
+  # the usage error (exit 2) the header contract promises.
+  case "$1" in
+    --manifest|--out|--clap-ms|--sample-rate|--ffmpeg|--ffprobe)
+      [ $# -ge 2 ] || die "$1 requires a value (see --help)" ;;
+  esac
   case "$1" in
     --manifest) MANIFEST="${2:-}"; shift 2 ;;
     --out) OUT_DIR="${2:-}"; shift 2 ;;

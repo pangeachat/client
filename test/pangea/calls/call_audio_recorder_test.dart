@@ -1914,6 +1914,42 @@ void main() {
       },
     );
 
+    test(
+      'a ceiling-cut recording skips the recording-based half so the complete '
+      'live half stands',
+      () async {
+        // The byte cap can bind mid-call (on a phone, ~11 minutes at 48kHz),
+        // dropping every later frame and latching cappedLogged. Transcribing
+        // only the kept bytes would publish a recording half missing the tail,
+        // which CallRecord prefers over the COMPLETE live half. So when the
+        // recording was truncated we skip the recording-based pass entirely.
+        var transcribeCalled = false;
+        final r = recorder(
+          maxBytes: 32000, // one second's worth at 16kHz mono
+          maxDuration: const Duration(minutes: 30),
+          transcribe: (req) async {
+            transcribeCalled = true;
+            return spokenWord('hola', timed: true);
+          },
+          userL1: 'en',
+          userL2: 'es',
+        );
+        r.onRunStarted(0, 16000, 1);
+        r.onFrame(_tone(16000));
+        r.onFrame(_tone(16000)); // dropped by the cap -> cappedLogged latches
+        r.onRunEnded();
+        await r.finish(wasCarrier: true, callKey: _callKey);
+
+        // Recording-based transcription was skipped: nothing went to STT,
+        // recordingSegments stays empty (so the live half is used), and the
+        // audio half still uploaded/sent.
+        expect(transcribeCalled, isFalse);
+        expect(r.recordingSegments, isEmpty);
+        expect(uploads, hasLength(1));
+        expect(sent, hasLength(1));
+      },
+    );
+
     test('with the feature off the recording is not transcribed', () async {
       // transcribe left null == feature off.
       final r = recorder();
