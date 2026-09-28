@@ -595,6 +595,7 @@ void main() {
         chunksCaptured: 1,
         chunksTranscribed: 1,
         chunksLost: 0,
+        chunksRefusedUnsubscribed: 0,
         chunksSuppressed: 0,
         captureRefused: false,
         drainComplete: true,

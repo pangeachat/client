@@ -17,6 +17,7 @@ void main() {
     List<String>? ordered,
     String? focusedId,
     Rect safeArea = viewport,
+    List<Rect> obstacleRects = const [],
     int largeBudget = 3,
     Set<String> dismissedIds = const {},
     // Defaults to "everyone eligible" so the fit/overlap/focus/dismissal tests
@@ -29,6 +30,7 @@ void main() {
     screenOffsetOf: (id) => offsets[id],
     cardSize: card,
     safeArea: safeArea,
+    obstacleRects: obstacleRects,
     largeBudget: largeBudget,
     dismissedIds: dismissedIds,
     largeEligibleIds: largeEligibleIds ?? offsets.keys.toSet(),
@@ -104,6 +106,29 @@ void main() {
         safeArea: const Rect.fromLTRB(300, 0, 800, 600),
       );
       expect(r.largeIds, isEmpty);
+    });
+
+    // The collapsed course panel covers only its context bar's band, not the
+    // column's full height (#9291): x[0,300] y[0,100] here.
+    const courseBar = Rect.fromLTWH(0, 0, 300, 100);
+
+    test('a card overlapping the course context bar yields', () {
+      // a's footprint x[70,330] y[16,200] reaches up into the bar.
+      final r = place(
+        offsets: {'a': const Offset(200, 200)},
+        obstacleRects: [courseBar],
+      );
+      expect(r.largeIds, isEmpty);
+    });
+
+    test('a card in the strip below the course context bar places', () {
+      // a's footprint x[70,330] y[216,400] sits below the bar, in the column
+      // strip an open panel would cover.
+      final r = place(
+        offsets: {'a': const Offset(200, 400)},
+        obstacleRects: [courseBar],
+      );
+      expect(r.largeIds, ['a']);
     });
 
     test('an unprojectable candidate is skipped', () {

@@ -57,7 +57,7 @@ Severity is a property of the failure, not of the author's judgment at the call 
 | 404, 410                   | warning | The resource is gone — a normal state, e.g. a stale room reference        |
 | 429                        | warning | Expected under load                                                       |
 | No response — the request never reached a server (offline, DNS, CORS, a blocked request; a `ClientException`) | warning | Nothing in code to fix. Reported once per session: a dead connection fails every surface at once, so the first report carries the signal and every repeat is volume |
-| Rejected input — Matrix `M_THREEPID_NOT_FOUND`, `M_INVALID_USERNAME`, `M_USER_IN_USE`, `M_THREEPID_IN_USE`; a join code that resolves to nothing | info | The learner typed something the server refused — expected, and only the learner can act on it |
+| Rejected input — Matrix `M_THREEPID_NOT_FOUND`, `M_INVALID_USERNAME`, `M_USER_IN_USE`, `M_THREEPID_IN_USE`; a join code the server refused: one that matches nothing (`ORG.PANGEA.CODE_NOT_FOUND`) or text that isn't a code (`M_INVALID_PARAM`) | info | The learner typed something the server refused — expected, and only the learner can act on it |
 | A user's profile resolves empty — no display name and no avatar | info | Data, not code: a stored user ID with no account on this homeserver, or an account that never set a name. Nothing in the client to fix, but the ID is worth seeing |
 | 403                        | error   | We asked for something we should not have — a code bug                    |
 | Other 4xx (400, 405, 422)  | error   | We sent something malformed — a code bug                                  |

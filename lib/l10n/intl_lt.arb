@@ -2967,7 +2967,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-09-23 15:42:47.012208",
+    "@@last_modified": "2026-09-28 13:21:20.348193",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10742,5 +10742,6 @@
     "goalReportErrorRetry": "Posūkio paieška nebaigta. Bandykite dar kartą.",
     "summaryFeedbackReceived": "Ačiū! Gavome jūsų atsiliepimą.",
     "summaryFeedbackFailed": "Nepavyko išsiųsti jūsų atsiliepimo. Bandykite dar kartą.",
-    "summaryFeedbackProcessing": "Siunčiamas jūsų atsiliepimas ir atnaujinama santrauka…"
+    "summaryFeedbackProcessing": "Siunčiamas jūsų atsiliepimas ir atnaujinama santrauka…",
+    "callTranscriptNotSubscribed": "{name} neturėjo prenumeratos šio skambučio metu, todėl tai, kas buvo pasakyta, nebuvo transkribuota."
 }

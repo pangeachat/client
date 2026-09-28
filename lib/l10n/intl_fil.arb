@@ -2080,7 +2080,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-09-23 15:42:44.064183",
+    "@@last_modified": "2026-09-28 13:21:17.914328",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10821,5 +10821,6 @@
     "goalReportErrorRetry": "Hindi natapos ang paghahanap para sa turn. Subukang muli.",
     "summaryFeedbackReceived": "Salamat! Natanggap namin ang iyong feedback.",
     "summaryFeedbackFailed": "Hindi maipadala ang iyong feedback. Pakisubukang muli.",
-    "summaryFeedbackProcessing": "Ipinapadala ang iyong feedback at ina-update ang buod…"
+    "summaryFeedbackProcessing": "Ipinapadala ang iyong feedback at ina-update ang buod…",
+    "callTranscriptNotSubscribed": "Walang subscription si {name} noong tawag na ito, kaya hindi na-transcribe ang sinabi."
 }

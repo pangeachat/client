@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-09-23 15:42:42.881760",
+    "@@last_modified": "2026-09-28 13:21:16.539041",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "Die soektog na die beurt het nie voltooi nie. Probeer weer.",
     "summaryFeedbackReceived": "Dankie! Ons het jou terugvoer ontvang.",
     "summaryFeedbackFailed": "Kon nie jou terugvoer stuur nie. Probeer asseblief weer.",
-    "summaryFeedbackProcessing": "Stuur jou terugvoer en werk die opsomming by …"
+    "summaryFeedbackProcessing": "Stuur jou terugvoer en werk die opsomming by …",
+    "callTranscriptNotSubscribed": "{name} het nie 'n intekening gehad tydens hierdie oproep nie, so wat gesê is, is nie getranskribeer nie."
 }

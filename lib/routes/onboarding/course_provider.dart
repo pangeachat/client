@@ -4,6 +4,7 @@ import 'package:matrix/matrix.dart' hide Result;
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/features/join_codes/space_code_controller.dart';
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
+import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/quests/repo/quest_plans_repo.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/onboarding/custom_course_repo.dart';
@@ -14,11 +15,17 @@ import 'package:fluffychat/routes/settings/settings_learning/language_level_type
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 abstract class CourseProvider {
+  /// The course join code riding the login-bounce destination — the folded
+  /// join link a brand-new user opened before signing up — or null when the
+  /// destination is not a join link (routing.instructions.md § A signed-out
+  /// visitor's destination).
   String? getCachedJoinCode();
 
-  /// Drop the cached inbound join code once onboarding is finished with it
-  /// (joined on success, handed off to manual entry on failure). A leftover
-  /// would surprise-join a later login (#7524).
+  /// Drop the ferried destination once onboarding is finished with its join
+  /// code (joined on success, handed off to manual entry on failure) —
+  /// onboarding lands on the joined course itself, so nothing is left for
+  /// the guard to re-enter. A leftover would surprise-join a later login
+  /// (#7524).
   Future<void> clearCachedJoinCode();
 
   Future<String> joinSpaceWithCode(String code);
@@ -39,10 +46,13 @@ class ClientCourseProvider implements CourseProvider {
   const ClientCourseProvider({required this.client});
 
   @override
-  String? getCachedJoinCode() => SpaceCodeRepo.spaceCode;
+  String? getCachedJoinCode() {
+    final destination = SpaceCodeRepo.destination;
+    return destination == null ? null : joinCodeFor(Uri.parse(destination));
+  }
 
   @override
-  Future<void> clearCachedJoinCode() => SpaceCodeRepo.clearSpaceCode();
+  Future<void> clearCachedJoinCode() => SpaceCodeRepo.clearDestination();
 
   @override
   Future<String> joinSpaceWithCode(String code) async {

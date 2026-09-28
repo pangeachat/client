@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-09-23 15:42:48.119045",
+    "@@last_modified": "2026-09-28 13:21:21.874743",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "د وار لټون پای ته ونه رسید. بیا هڅه وکړئ.",
     "summaryFeedbackReceived": "مننه! موږ ستاسو نظر ترلاسه کړ.",
     "summaryFeedbackFailed": "ستاسو نظر نشو لیږلی. مهرباني وکړئ بیا هڅه وکړئ.",
-    "summaryFeedbackProcessing": "ستاسو نظر استول کیږي او لنډیز تازه کیږي…"
+    "summaryFeedbackProcessing": "ستاسو نظر استول کیږي او لنډیز تازه کیږي…",
+    "callTranscriptNotSubscribed": "{name} د دې زنګ پر مهال ګډون نه درلود، نو هغه څه چې ویل شوي وو نه دي لیکل شوي."
 }
