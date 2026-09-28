@@ -1674,8 +1674,20 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     // that absence is concluded only from an exhausted read
     // (voice-video-calls.instructions.md): the read is not exhausted while the
     // transcript is one event behind its own recording.
+    //
+    // ONLY our OWN half. Our client always publishes a transcript event just
+    // after its audio -- even an empty one for silence or failure -- so our own
+    // absent-with-recording half is guaranteed transient and WILL resolve
+    // (the outbox even replays it across a kill). A REMOTE half we cannot vouch
+    // for: a foreign or older client can write audio and never a transcript, and
+    // promising "still transcribing" for a transcript that never arrives would
+    // be a permanent loading state hiding a real absence -- the three-states lie
+    // this feature exists to prevent. So a remote absent-with-recording keeps
+    // the honest "No transcript" note.
+    final me = widget.room.client.userID;
     bool transcribing(TranscriptHalf half) =>
         half.state == HalfState.absent &&
+        half.senderId == me &&
         recordingSenders.contains(half.senderId);
 
     // Worked out here, where the recording set is in scope, so a half still

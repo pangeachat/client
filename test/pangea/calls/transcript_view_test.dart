@@ -2276,16 +2276,41 @@ void main() {
     );
 
     testWidgets(
-      'a half still being transcribed reads as loading, not as missing',
+      'our OWN half still being transcribed reads as loading, not as missing',
       (tester) async {
-        // #8808: right after a call the peer's recording is in the room but its
+        // #8808: right after a call our own recording is in the room but its
         // transcript is one event behind (a device publishes its transcript
-        // just after its audio -- see call_record.dart). It must read as
-        // loading, not as "No transcript": absence is concluded only from an
-        // exhausted read (voice-video-calls.instructions.md), and the read is
-        // not exhausted while the transcript is still on its way. Lives here,
-        // not with the absent/silent tests above, because a recording renders
-        // an AudioPlayerWidget that needs this group's MatrixState provider.
+        // just after its audio -- see call_record.dart). Our own half must read
+        // as loading, not "No transcript": our client always posts the
+        // transcript, so the read is not exhausted while it is on its way
+        // (voice-video-calls.instructions.md). Here our audio is present, our
+        // transcript half is not, and the peer's transcript is present. Lives
+        // here, not with the absent/silent tests above, because a recording
+        // renders an AudioPlayerWidget that needs this group's MatrixState.
+        await pumpWithRecordings(
+          tester,
+          room(),
+          servingByType([
+            audioEvent(_me),
+            half(_peer, texts: const ['hola']),
+          ]),
+        );
+
+        expect(find.textContaining('Still transcribing'), findsOneWidget);
+        expect(find.textContaining('No transcript from'), findsNothing);
+      },
+    );
+
+    testWidgets(
+      'a peer recording without a transcript stays "No transcript", not loading',
+      (tester) async {
+        // The bound the loading state is deliberately given: only OUR OWN half
+        // is shown as loading. Our client always posts a transcript after its
+        // audio, but a REMOTE could be a foreign/older client that writes audio
+        // and never a transcript -- promising "still transcribing" for one that
+        // never arrives would be a permanent loading state hiding a real
+        // absence. So a peer with a recording but no transcript keeps the honest
+        // "No transcript", and no loading row appears.
         await pumpWithRecordings(
           tester,
           room(),
@@ -2295,29 +2320,10 @@ void main() {
           ]),
         );
 
-        expect(find.textContaining('Still transcribing'), findsOneWidget);
-        expect(find.textContaining('No transcript from'), findsNothing);
+        expect(find.textContaining('No transcript from'), findsOneWidget);
+        expect(find.textContaining('Still transcribing'), findsNothing);
       },
     );
-
-    testWidgets('an absent half with NO recording still reads as missing', (
-      tester,
-    ) async {
-      // The boundary of the loading state: it shows only while a recording
-      // says the transcript is still coming. With neither a half nor a
-      // recording the peer is genuinely not represented, and still reads as
-      // "No transcript" -- never a shimmer that would wait forever for nothing.
-      await pumpWithRecordings(
-        tester,
-        room(),
-        servingByType([
-          half(_me, texts: const ['hola']),
-        ]),
-      );
-
-      expect(find.textContaining('No transcript from'), findsOneWidget);
-      expect(find.textContaining('Still transcribing'), findsNothing);
-    });
 
     testWidgets('N recordings render N players, each labelled by its speaker', (
       tester,
