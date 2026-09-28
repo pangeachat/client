@@ -15,6 +15,11 @@ Future<void> main() => integrationDriver(
       );
       exit(1);
     }
+    final stale = _staleBuild(data['platform'] as String?);
+    if (stale != null) {
+      stderr.writeln(stale);
+      exit(1);
+    }
     // A run with uncommitted changes did not measure the commit it names.
     final dirty = Process.runSync('git', [
       'status',
@@ -38,3 +43,49 @@ Future<void> main() => integrationDriver(
     );
   },
 );
+
+/// Why the app this run measured is older than the code it should contain, or
+/// null. When its build fails (a compile error, a locked iPhone), `flutter
+/// drive` still launches the app already on the device, and the run measures
+/// that older code without any error.
+String? _staleBuild(String? platform) {
+  // A prebuilt app (--use-application-binary, as comparisons use) is the
+  // tester's explicit choice and is older than the code by design.
+  final parent = Process.runSync('ps', [
+    '-o',
+    'ppid=',
+    '-p',
+    '$pid',
+  ]).stdout.toString().trim();
+  final drive = Process.runSync('ps', [
+    '-o',
+    'command=',
+    '-p',
+    parent,
+  ]).stdout.toString();
+  if (drive.isEmpty) return 'Could not read the flutter drive command.';
+  if (drive.contains('--use-application-binary')) return null;
+
+  final binary = switch (platform) {
+    'android' => File('build/app/outputs/flutter-apk/app-profile.apk'),
+    'iOS' => File('build/ios/iphoneos/Runner.app/Frameworks/App.framework/App'),
+    _ => null,
+  };
+  if (binary == null) return 'No build check for platform $platform.';
+  if (!binary.existsSync()) return 'No app build at ${binary.path}.';
+  final built = binary.lastModifiedSync();
+
+  final sources = [
+    File('pubspec.yaml'),
+    File('pubspec.lock'),
+    for (final dir in ['lib', 'integration_test'])
+      ...Directory(dir).listSync(recursive: true).whereType<File>(),
+  ];
+  final newest = sources.reduce(
+    (a, b) => a.lastModifiedSync().isAfter(b.lastModifiedSync()) ? a : b,
+  );
+  if (!newest.lastModifiedSync().isAfter(built)) return null;
+  return 'The app on the device was built at $built, before ${newest.path} '
+      'last changed, so this run measured older code. The build probably '
+      'failed; check the output above and run again.';
+}
