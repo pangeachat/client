@@ -174,6 +174,20 @@ void main() {
       );
     });
 
+    test('text that is not a code is a 400 M_INVALID_PARAM', () async {
+      await expectLater(
+        clientB.knockWithCode('contract-no-such-code'),
+        throwsA(
+          isA<PangeaHttpException>()
+              .having((e) => e.statusCode, 'status', 400)
+              .having((e) => e.detail, 'errcode', 'M_INVALID_PARAM'),
+        ),
+        reason:
+            'the errcode is what lets the join flow report a learner typing '
+            'a course name at info rather than as a client bug (#9292)',
+      );
+    });
+
     test('a user banned from every matched room gets the typed 403', () async {
       final (roomId, code) = await makeCourse(suffix: 'ban');
       final room = clientA.getRoomById(roomId)!;
