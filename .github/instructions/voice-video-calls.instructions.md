@@ -213,6 +213,12 @@ call card is not that anchor: only one side writes it, and a call both people
 reloaded out of leaves none, which would strand the other half in exactly the
 case a transcript is most wanted.
 
+The recording-based pass is gated behind `CALL_RECORDING_TRANSCRIPT`, which
+currently defaults off: until it is enabled, each half is the live one
+transcribed during the call (see [Failure is not all-or-nothing]), and the
+recording pass this section describes — with the per-turn `m:ss` timing it makes
+possible — is the opt-in path being rolled out.
+
 A half is one event or it is missing, never a series of parts. Parts need a
 sequence that survives process death across a rejoin, and leave no answer for
 what "absent" means while more may still arrive.
@@ -296,17 +302,19 @@ separated by it.
 
 ### The words are the transcript's; the timings only say when
 
-Segment text comes from the provider's transcript, and its word list supplies
-nothing but the when. Providers return a punctuation-free word list beside a
-punctuated transcript, so text assembled from the words loses the punctuation the
-learner reads and matches the transcript on almost no chunk. The recording pass trusts those
-timings to place a turn even when the punctuation-free word list does not
-reconstruct the punctuated transcript one-for-one: the words on screen are still
-the transcript's own, so no word a speaker did not say can reach the screen, and
-only the boundary between two turns can fall a little off. The live fallback,
-which cannot re-transcribe the audio it cut, keeps the stricter rule and bounds
-the whole chunk on any disagreement. Both depend on the provider returning
-word-level timings alongside the transcript.
+Segment text today comes from the provider's punctuation-free WORD LIST, not the
+punctuated transcript: each turn's words are joined from the word list and the
+timings place the turn, while the punctuated `text` is read only when the
+provider returns no word-level timings at all. So the recording-based half loses
+the punctuation the learner reads. Showing the punctuated transcript instead —
+using the timings only to place turn boundaries — is the intended target, tracked
+in pangeachat/client#9303; it needs a word-list-to-transcript alignment step,
+because the two do not reconstruct one-for-one. Either way the words are the
+provider's own, so no word a speaker did not say reaches the screen, and only the
+boundary between two turns can fall a little off. The live fallback, which cannot
+re-transcribe the audio it cut, keeps the stricter rule and bounds the whole
+chunk on any disagreement. Both depend on the provider returning word-level
+timings alongside the transcript.
 
 ### Reading it back
 
