@@ -178,6 +178,12 @@ class CallTranscriptView extends StatefulWidget {
   final Future<MatrixFile> Function(CallAudioMergedRecording row)?
   mergedFileLoader;
 
+  /// The wall clock the "still transcribing" recency window is measured
+  /// against. Injected only by tests (to place a recording just inside or well
+  /// past the window deterministically); production reads `DateTime.now`.
+  @visibleForTesting
+  final DateTime Function()? now;
+
   const CallTranscriptView({
     required this.room,
     required this.callKey,
@@ -185,6 +191,7 @@ class CallTranscriptView extends StatefulWidget {
     this.recordingsLoadController,
     this.audioPlayerFactory,
     this.mergedFileLoader,
+    this.now,
     super.key,
   });
 
@@ -1495,9 +1502,21 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
               // that absence is concluded only from an exhausted read
               // (voice-video-calls.instructions.md): the read is not exhausted
               // while the transcript is one event behind its own recording.
-              final recordingSenders = <String>{
-                for (final recording in recordings) recording.senderId,
-              };
+              //
+              // Keyed by the most recent recording's SERVER time per sender, so
+              // the loading state can be BOUNDED: our own half reads as loading
+              // only while its recording is recent (see `transcribing`). With
+              // CALL_RECORDING_TRANSCRIPT off the transcript publishes BEFORE
+              // the audio and nothing replays a failed send, so an OLD own
+              // recording with no transcript is a publish that never landed --
+              // it must settle to absent, not show "transcribing" forever.
+              final recordingTimes = <String, DateTime>{};
+              for (final recording in recordings) {
+                final prev = recordingTimes[recording.senderId];
+                if (prev == null || recording.originServerTs.isAfter(prev)) {
+                  recordingTimes[recording.senderId] = recording.originServerTs;
+                }
+              }
               return FutureBuilder<List<CallAudioMergedRecording>>(
                 future: _merged,
                 builder: (context, mergedSnapshot) {
@@ -1606,7 +1625,7 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
                               child: _bodySection(
                                 transcript: transcript,
                                 displayTurns: displayTurns,
-                                recordingSenders: recordingSenders,
+                                recordingTimes: recordingTimes,
                                 clocksUnreconciled: clocksUnreconciled,
                                 approximate: approximate,
                                 unstated: unstated,
@@ -1660,7 +1679,7 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
   Widget _bodySection({
     required CallTranscript transcript,
     required List<CallTurn> displayTurns,
-    required Set<String> recordingSenders,
+    required Map<String, DateTime> recordingTimes,
     required bool clocksUnreconciled,
     required bool approximate,
     required bool unstated,
@@ -1675,20 +1694,28 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     // (voice-video-calls.instructions.md): the read is not exhausted while the
     // transcript is one event behind its own recording.
     //
-    // ONLY our OWN half. Our client always publishes a transcript event just
-    // after its audio -- even an empty one for silence or failure -- so our own
-    // absent-with-recording half is guaranteed transient and WILL resolve
-    // (the outbox even replays it across a kill). A REMOTE half we cannot vouch
-    // for: a foreign or older client can write audio and never a transcript, and
-    // promising "still transcribing" for a transcript that never arrives would
-    // be a permanent loading state hiding a real absence -- the three-states lie
-    // this feature exists to prevent. So a remote absent-with-recording keeps
-    // the honest "No transcript" note.
+    // ONLY our OWN half, and ONLY while its recording is RECENT. Two bounds,
+    // because either alone still leaves a permanent loading state:
+    //  - own only: a REMOTE (foreign or older client) can write audio and never
+    //    a transcript, so "still transcribing" for it would hide a real absence
+    //    forever.
+    //  - recent only: with CALL_RECORDING_TRANSCRIPT off, `finish` publishes the
+    //    transcript BEFORE the audio and nothing replays a failed send, so our
+    //    OWN half can be absent-with-recording permanently when the publish
+    //    failed all its attempts. Bounding to a recent recording lets that
+    //    settle to the honest "No transcript" once the transcript has had time
+    //    to arrive and did not.
+    // The window is generous -- the transcript normally lands seconds after its
+    // audio -- so a real in-flight half is never cut short.
+    const transcribingWindow = Duration(minutes: 5);
     final me = widget.room.client.userID;
-    bool transcribing(TranscriptHalf half) =>
-        half.state == HalfState.absent &&
-        half.senderId == me &&
-        recordingSenders.contains(half.senderId);
+    final now = (widget.now ?? DateTime.now)();
+    bool transcribing(TranscriptHalf half) {
+      if (half.state != HalfState.absent || half.senderId != me) return false;
+      final recordedAt = recordingTimes[half.senderId];
+      return recordedAt != null &&
+          now.difference(recordedAt) < transcribingWindow;
+    }
 
     // Worked out here, where the recording set is in scope, so a half still
     // being transcribed drops out of the notes and shows as loading instead.

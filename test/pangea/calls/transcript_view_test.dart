@@ -2236,6 +2236,9 @@ void main() {
       AudioPlayer Function()? audioPlayerFactory,
       Future<MatrixFile> Function(CallAudioMergedRecording row)?
       mergedFileLoader,
+      // Injected only by the loading-state tests, to place a recording inside or
+      // past the "still transcribing" recency window deterministically.
+      DateTime Function()? now,
     }) async {
       await tester.pumpWidget(
         _TestMatrix(
@@ -2270,6 +2273,7 @@ void main() {
               recordingsLoadController: loadController,
               audioPlayerFactory: audioPlayerFactory,
               mergedFileLoader: mergedFileLoader,
+              now: now,
             ),
           ),
         ),
@@ -2305,17 +2309,17 @@ void main() {
     );
 
     testWidgets(
-      'our OWN half still being transcribed reads as loading, not as missing',
+      'our OWN RECENT recording without a transcript reads as loading',
       (tester) async {
         // #8808: right after a call our own recording is in the room but its
-        // transcript is one event behind (a device publishes its transcript
-        // just after its audio -- see call_record.dart). Our own half must read
-        // as loading, not "No transcript": our client always posts the
-        // transcript, so the read is not exhausted while it is on its way
-        // (voice-video-calls.instructions.md). Here our audio is present, our
-        // transcript half is not, and the peer's transcript is present. Lives
-        // here, not with the absent/silent tests above, because a recording
-        // renders an AudioPlayerWidget that needs this group's MatrixState.
+        // transcript is one event behind. While the recording is RECENT our own
+        // half reads as loading, not "No transcript" -- the read is not
+        // exhausted while the transcript is still on its way
+        // (voice-video-calls.instructions.md). Our audio is present, our
+        // transcript half is not, the peer's transcript is present, and `now` is
+        // just after the recording's server time. Lives here, not with the
+        // absent/silent tests above, because a recording renders an
+        // AudioPlayerWidget that needs this group's MatrixState.
         await pumpWithRecordings(
           tester,
           room(),
@@ -2323,10 +2327,39 @@ void main() {
             audioEvent(_me),
             half(_peer, texts: const ['hola']),
           ]),
+          // audioEvent's server time is epoch 1000ms; place now one minute
+          // later, well inside the recency window.
+          now: () => DateTime.fromMillisecondsSinceEpoch(1000 + 60 * 1000),
         );
 
         expect(find.textContaining('Still transcribing'), findsOneWidget);
         expect(find.textContaining('No transcript from'), findsNothing);
+      },
+    );
+
+    testWidgets(
+      'our OWN OLD recording without a transcript settles to "No transcript"',
+      (tester) async {
+        // The recency bound: with CALL_RECORDING_TRANSCRIPT off the transcript
+        // publishes BEFORE the audio and a failed send is never replayed, so an
+        // OLD own-recording with no transcript is a publish that never landed.
+        // Past the window it must read as the honest "No transcript", never a
+        // "still transcribing" that waits forever. Same fixture as above, but
+        // `now` is well past the window.
+        await pumpWithRecordings(
+          tester,
+          room(),
+          servingByType([
+            audioEvent(_me),
+            half(_peer, texts: const ['hola']),
+          ]),
+          // Six minutes after the recording's epoch-1000ms server time -- past
+          // the five-minute window.
+          now: () => DateTime.fromMillisecondsSinceEpoch(1000 + 6 * 60 * 1000),
+        );
+
+        expect(find.textContaining('No transcript from'), findsOneWidget);
+        expect(find.textContaining('Still transcribing'), findsNothing);
       },
     );
 
