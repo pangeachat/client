@@ -94,6 +94,12 @@ GlobalKey _roomKeyFor(String roomId) => _leftRoomKeys.putIfAbsent(
 /// [_ShellLayout.resolve]. See `routing.instructions.md`.
 final List<String> _paneRecency = <String>[];
 
+/// The course panel's slot height at its floor: the context bar inside its
+/// [PanelCard] margins. The slot is drawn at exactly this height, and the map
+/// treats exactly this band as covered (#9291).
+final double _courseFloorSlotHeight =
+    CourseContextBar.height + PanelCard.margin.vertical;
+
 /// Whether the previous shell build showed the wide course context bar — a
 /// `?c=` course with no course card drawn. A course card appearing right
 /// after it grows out of the bar ([CourseCardReveal], #8866); one appearing
@@ -356,6 +362,7 @@ class WorkspaceShell extends StatelessWidget {
                     leftOverlayWidth: l.mapLeftOverlay,
                     rightOverlayWidth: l.allocation.mapRightOverlay,
                     bottomOverlayHeight: l.mapBottomOverlay,
+                    courseBarRect: l.mapCourseBarRect,
                     availableVisibleMapWidth: l.availableVisibleMapWidth,
                     // The map's top-left slot carries the search overlay on the
                     // world map, and nothing at all under a `?c=` scope: the
@@ -506,8 +513,7 @@ class WorkspaceShell extends StatelessWidget {
                                 // map's pins (#8903's failure mode). (#9037)
                                 bottom: l.courseAtFloor && i == 0 ? null : 0,
                                 height: l.courseAtFloor && i == 0
-                                    ? CourseContextBar.height +
-                                          PanelCard.margin.vertical
+                                    ? _courseFloorSlotHeight
                                     : null,
                                 left: l.allocation.left[i].left,
                                 width: l.allocation.left[i].width,
@@ -1344,6 +1350,12 @@ class _ShellLayout {
   /// Map camera left padding (the left inset plus any center detail width).
   final double mapLeftOverlay;
 
+  /// The course context bar's footprint over the full-bleed map, while the
+  /// course panel rests at its floor; null otherwise. The collapsed panel is
+  /// not seated, so it is not part of [mapLeftOverlay] — only this band is
+  /// covered (#9291).
+  final Rect? mapCourseBarRect;
+
   /// Map camera bottom padding: the vertical band the narrow activity-plan
   /// sheet occupies at its half-rest state, so a focused pin centers in the
   /// exposed map above the sheet (#7640). 0 everywhere else.
@@ -1381,6 +1393,7 @@ class _ShellLayout {
     required this.isColumnMode,
     required this.leftInset,
     required this.mapLeftOverlay,
+    required this.mapCourseBarRect,
     required this.mapBottomOverlay,
     required this.courseAtFloor,
     required this.revealCoursePanel,
@@ -1578,7 +1591,24 @@ class _ShellLayout {
         ? 0.0
         : (hasLeftTokens ? layout.mapLeftOverlay : columnWidth);
 
-    final mapLeftOverlay = leftInset;
+    // A course panel at its floor is not seated (world-map.instructions.md →
+    // The course context bar): its one-line bar covers only its own band, not
+    // the column's full height. So the map keeps the rail as its left overlay —
+    // for the pin budget, card placement and the camera alike — and gets the
+    // bar's footprint on its own (#9291). The canvas keeps [leftInset].
+    final courseBarSlot = courseAtFloor && layout.left[0].vis != PanelVis.hidden
+        ? layout.left[0]
+        : null;
+    final mapLeftOverlay = courseBarSlot != null ? columnWidth : leftInset;
+    final safeAreaPadding = MediaQuery.paddingOf(context);
+    final mapCourseBarRect = courseBarSlot == null
+        ? null
+        : Rect.fromLTWH(
+            safeAreaPadding.left + courseBarSlot.left,
+            safeAreaPadding.top,
+            courseBarSlot.width,
+            _courseFloorSlotHeight,
+          );
 
     // The narrow activity-plan sheet covers the bottom of the full-width map —
     // the band the left/right overlays don't model. Pad the camera's bottom by
@@ -1655,6 +1685,7 @@ class _ShellLayout {
       isColumnMode: isColumnMode,
       leftInset: leftInset,
       mapLeftOverlay: mapLeftOverlay,
+      mapCourseBarRect: mapCourseBarRect,
       mapBottomOverlay: mapBottomOverlay,
       courseAtFloor: courseAtFloor,
       revealCoursePanel: revealCoursePanel,

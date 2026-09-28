@@ -137,6 +137,13 @@ class WorldMap extends StatefulWidget {
   /// behind it (#7640). 0 when nothing covers the bottom.
   final double bottomOverlayHeight;
 
+  /// The course context bar's footprint, in map coordinates, while the course
+  /// panel rests at its floor on wide; null otherwise. A collapsed course panel
+  /// is not seated, so [leftOverlayWidth] leaves it out and only this band is
+  /// covered: large cards are not placed under it, and the course-scope
+  /// empty-view card sits below it (#9291).
+  final Rect? courseBarRect;
+
   /// Logical-pixel width of the map actually visible between the open side panels
   /// (viewport − left overlay − right overlay). Drives the pin-density budget
   /// ([budgetForWidth]) — how many pins show and how many are large cards — so as
@@ -166,6 +173,7 @@ class WorldMap extends StatefulWidget {
     this.leftOverlayWidth = 0.0,
     this.rightOverlayWidth = 0.0,
     this.bottomOverlayHeight = 0.0,
+    this.courseBarRect,
     this.availableVisibleMapWidth = 0.0,
     this.courseScopeSpaceId,
     this.focus,
