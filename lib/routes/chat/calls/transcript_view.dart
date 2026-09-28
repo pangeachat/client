@@ -1446,13 +1446,6 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
               ? _turnsOf(transcript, l10n)
               : const <CallTurn>[];
 
-          // Worked out here rather than inline, so the list itself stays
-          // readable and so this is a value a test can reason about.
-          final notes = transcript.halves
-              .map((half) => _noteFor(half, l10n))
-              .nonNulls
-              .toList();
-
           // Said once, at the top, and only about what is actually DRAWN.
           // The per-speaker view prints no times at all, so no caveat here has
           // anything to explain there -- and a caveat that fires when nothing
@@ -1494,6 +1487,17 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
             builder: (context, recordingsSnapshot) {
               final recordings =
                   recordingsSnapshot.data ?? const <CallAudioRecording>[];
+              // The senders whose `pangea.call_audio` half is already in the
+              // room. A transcript half absent for one of them is still being
+              // produced -- a device publishes its transcript just after its
+              // audio (see `call_record.dart`) -- not missing. Such a half reads
+              // as loading rather than as "No transcript", which keeps the rule
+              // that absence is concluded only from an exhausted read
+              // (voice-video-calls.instructions.md): the read is not exhausted
+              // while the transcript is one event behind its own recording.
+              final recordingSenders = <String>{
+                for (final recording in recordings) recording.senderId,
+              };
               return FutureBuilder<List<CallAudioMergedRecording>>(
                 future: _merged,
                 builder: (context, mergedSnapshot) {
@@ -1602,7 +1606,7 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
                               child: _bodySection(
                                 transcript: transcript,
                                 displayTurns: displayTurns,
-                                notes: notes,
+                                recordingSenders: recordingSenders,
                                 clocksUnreconciled: clocksUnreconciled,
                                 approximate: approximate,
                                 unstated: unstated,
@@ -1656,13 +1660,31 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
   Widget _bodySection({
     required CallTranscript transcript,
     required List<CallTurn> displayTurns,
-    required List<String> notes,
+    required Set<String> recordingSenders,
     required bool clocksUnreconciled,
     required bool approximate,
     required bool unstated,
     required ThemeData theme,
     required L10n l10n,
   }) {
+    // A half with no transcript event of its own but WITH a saved recording is
+    // not absent: its audio uploaded and the transcript of it is still being
+    // produced (a device publishes its transcript just after its audio -- see
+    // `call_record.dart`). Reporting "No transcript" here would break the rule
+    // that absence is concluded only from an exhausted read
+    // (voice-video-calls.instructions.md): the read is not exhausted while the
+    // transcript is one event behind its own recording.
+    bool transcribing(TranscriptHalf half) =>
+        half.state == HalfState.absent &&
+        recordingSenders.contains(half.senderId);
+
+    // Worked out here, where the recording set is in scope, so a half still
+    // being transcribed drops out of the notes and shows as loading instead.
+    final notes = transcript.halves
+        .map((half) => _noteFor(half, l10n, transcribing: transcribing(half)))
+        .nonNulls
+        .toList();
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -1709,6 +1731,7 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
             _HalfSection(
               half: half,
               name: _nameFor(half.senderId, l10n),
+              transcribing: transcribing(half),
               theme: theme,
               l10n: l10n,
             ),
@@ -1718,8 +1741,20 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
         // at; a place in the timeline would invent one, at an instant nobody
         // spoke. The per-speaker view says these itself, so they are added out
         // here only when the timeline is what is drawn.
-        if (displayTurns.isNotEmpty)
+        if (displayTurns.isNotEmpty) ...[
           for (final note in notes) _Muted(text: note),
+          // A half still being transcribed is loading, not missing. The
+          // per-speaker view says this in the half's own section; the timeline
+          // says it here, below the conversation, beside the absent/silent
+          // notes. See `transcribing` above.
+          for (final half in transcript.halves)
+            if (transcribing(half))
+              _Loading(
+                text: l10n.callTranscriptTranscribing(
+                  _nameFor(half.senderId, l10n),
+                ),
+              ),
+        ],
       ],
     );
   }
@@ -2274,8 +2309,15 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
 
   /// What still needs saying about a half once its words are in the timeline,
   /// or null when the half is a clean record and needs nothing.
-  String? _noteFor(TranscriptHalf half, L10n l10n) {
+  String? _noteFor(
+    TranscriptHalf half,
+    L10n l10n, {
+    required bool transcribing,
+  }) {
     final name = _nameFor(half.senderId, l10n);
+    // Still being transcribed -> shown as a loading row (see [_bodySection]),
+    // never as a missing half.
+    if (transcribing) return null;
     if (half.state == HalfState.absent) return l10n.callTranscriptNone(name);
     if (half.segments.isEmpty) return emptyHalfNote(half, name, l10n);
     if (half.state == HalfState.incomplete) {
@@ -2495,12 +2537,19 @@ String emptyHalfNote(TranscriptHalf half, String name, L10n l10n) {
 class _HalfSection extends StatelessWidget {
   final TranscriptHalf half;
   final String name;
+
+  /// Whether this half is still being transcribed -- its recording is in the
+  /// room but its transcript is one event behind (see the `transcribing`
+  /// predicate in [_CallTranscriptViewState._bodySection]). Shown as loading,
+  /// never as an absent half.
+  final bool transcribing;
   final ThemeData theme;
   final L10n l10n;
 
   const _HalfSection({
     required this.half,
     required this.name,
+    required this.transcribing,
     required this.theme,
     required this.l10n,
   });
@@ -2526,6 +2575,13 @@ class _HalfSection extends StatelessWidget {
   }
 
   List<Widget> _body() {
+    // Still being transcribed: this device's recording is in the room and its
+    // transcript is one event behind. Not absent -- the read is not exhausted
+    // while the transcript is still coming, so it must not read as missing.
+    if (transcribing) {
+      return [_Loading(text: l10n.callTranscriptTranscribing(name))];
+    }
+
     // ABSENT is a statement about a half that was never written, and it is
     // only reachable from a read that reached the end. It is NOT "they were
     // silent": a silent speaker still writes an empty half, and that case is
@@ -2576,6 +2632,51 @@ class _Muted extends StatelessWidget {
       style: theme.textTheme.bodyMedium?.copyWith(
         color: theme.colorScheme.onSurfaceVariant,
         fontStyle: FontStyle.italic,
+      ),
+    );
+  }
+}
+
+/// A half still being transcribed: a shimmering skeleton line above a muted
+/// caption, shown where an absent half's "No transcript" note would otherwise
+/// go. It says the transcript is on its way rather than missing -- the
+/// recording is already in the room and its transcript publishes just behind
+/// it.
+///
+/// Uses [ShimmerBox] -- the same loading face the "Full call" slot shows (see
+/// [_FullCallCardState._shimmer]) -- deliberately, not a
+/// [CircularProgressIndicator]. ShimmerBox's `Shimmer.fromColors` runs
+/// `loop: 1`, so the animation ENDS and a test's `pumpAndSettle` settles; a
+/// never-ending spinner would leave a live ticker after the widget tree is
+/// torn down and fail the test at teardown.
+class _Loading extends StatelessWidget {
+  final String text;
+
+  const _Loading({required this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 12),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          ShimmerBox(
+            baseColor: theme.colorScheme.surfaceContainerHigh,
+            highlightColor: theme.colorScheme.surfaceContainerHighest,
+            width: double.infinity,
+            height: 16,
+            borderRadius: BorderRadius.circular(6),
+          ),
+          const SizedBox(height: 6),
+          Text(
+            text,
+            style: theme.textTheme.bodySmall?.copyWith(
+              color: theme.colorScheme.onSurfaceVariant,
+            ),
+          ),
+        ],
       ),
     );
   }

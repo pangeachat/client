@@ -3793,6 +3793,14 @@
             }
         }
     },
+    "callTranscriptTranscribing": "Still transcribing the recording from {name}…",
+    "@callTranscriptTranscribing": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
     "callTranscriptSaidNothing": "{name} did not say anything",
     "@callTranscriptSaidNothing": {
         "placeholders": {
