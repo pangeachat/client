@@ -68,7 +68,7 @@ dependencies:
       # Pinned deliberately. The MatrixRTC/LiveKit call work depends on SDK VoIP
       # internals (LiveKitBackend, GroupCallSession, WebRTCDelegate); without a ref
       # this resolves to HEAD and can change under us on any `pub upgrade`.
-      ref: c77fe893a58f65cb17688545bb275397a8e5164a
+      ref: bc206b23b5d9d42e4a57d6339bb140bd791e0632
   # Pangea#
   mime: ^2.0.0
   opus_caf_converter_dart: ^1.0.1
