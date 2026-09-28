@@ -2,7 +2,6 @@
 library;
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:http/http.dart' show StreamedResponse;
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/analytics_access/join_room_analytics_access_extension.dart';
@@ -10,6 +9,7 @@ import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/features/join_codes/knock_with_code_extension.dart';
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/features/join_codes/request_room_code_extension.dart';
+import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/pangea/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/leave_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -154,21 +154,38 @@ void main() {
       expect(again.roomIds, isNot(contains(roomId)));
     });
 
-    test('an unknown code is a raw 400, not a silent empty 200', () async {
-      Object? thrown;
-      try {
-        await clientB.knockWithCode('contract-no-such-code');
-      } catch (e) {
-        thrown = e;
-      }
-      expect(
-        thrown,
-        isA<StreamedResponse>().having((r) => r.statusCode, 'status', 400),
+    test('text that is not a code is a 400 M_INVALID_PARAM', () async {
+      await expectLater(
+        clientB.knockWithCode('contract-no-such-code'),
+        throwsA(
+          isA<PangeaHttpException>()
+              .having((e) => e.statusCode, 'status', 400)
+              .having((e) => e.detail, 'errcode', 'M_INVALID_PARAM'),
+        ),
         reason:
-            'the join flow treats a non-200 as "code not found"; pin the '
-            'shape so a change breaks loudly',
+            'the errcode is what lets the join flow report a learner typing '
+            'a course name at info rather than as a client bug (#9292)',
       );
     });
+
+    test(
+      'a well-formed code matching nothing is a 404 CODE_NOT_FOUND',
+      () async {
+        await expectLater(
+          clientB.knockWithCode('zzz9zzz'),
+          throwsA(
+            isA<PangeaHttpException>()
+                .having((e) => e.statusCode, 'status', 404)
+                .having(
+                  (e) => e.detail,
+                  'errcode',
+                  'ORG.PANGEA.CODE_NOT_FOUND',
+                ),
+          ),
+          reason: 'the join flow reads this as "check the code" (#8693)',
+        );
+      },
+    );
 
     test('a user banned from every matched room gets the typed 403', () async {
       final (roomId, code) = await makeCourse(suffix: 'ban');
