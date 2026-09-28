@@ -2372,5 +2372,6 @@
     "summaryFeedbackProcessing": "Na-eziga nzaghachi gị ma na-emelite nchịkọta…",
     "ssoNetworkBlockedTitle": "Ebe nbanye anaghị eru",
     "ssoNetworkBlockedDesc": "Netwọkụ a anaghị ekwe ka anyị ruo {provider} iji banye gị. Wi-Fi ụlọ akwụkwọ na ụlọ ọrụ na-egbochikarị ya. Ị nwere ike iji email debanye aha kama, ma ọ bụ gbanwee gaa na netwọkụ ọzọ wee nwaa ọzọ.",
-    "ssoTryAnyway": "Nwaa agbanyeghị"
+    "ssoTryAnyway": "Nwaa agbanyeghị",
+    "callTranscriptNotSubscribed": "{name} enweghị ndenye aha n'oge oku a, yabụ na edeghị ihe e kwuru."
 }

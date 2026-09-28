@@ -9968,5 +9968,6 @@
     "summaryFeedbackProcessing": "Fikringizni yuborish va xulosani yangilash…",
     "ssoNetworkBlockedTitle": "Kirish sayti mavjud emas",
     "ssoNetworkBlockedDesc": "Bu tarmoq sizni tizimga kiritish uchun {provider} ga ulanishimizga ruxsat bermayapti. Maktab va ofis Wi-Fi ko'pincha uni bloklaydi. Buning o'rniga elektron pochta orqali ro'yxatdan o'tishingiz yoki boshqa tarmoqqa o'tib, qayta urinishingiz mumkin.",
-    "ssoTryAnyway": "Baribir urinib ko'ring"
+    "ssoTryAnyway": "Baribir urinib ko'ring",
+    "callTranscriptNotSubscribed": "{name} ushbu qo‘ng‘iroq paytida obunaga ega bo‘lmagan, shuning uchun aytilganlar transkripsiya qilinmadi."
 }

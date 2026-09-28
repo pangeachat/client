@@ -9964,5 +9964,6 @@
     "summaryFeedbackProcessing": "Sūta jūsu atsauksmes un atjaunina kopsavilkumu…",
     "ssoNetworkBlockedTitle": "Pieteikšanās vietne nav sasniedzama",
     "ssoNetworkBlockedDesc": "Šis tīkls neļauj mums sasniegt {provider}, lai jūs pieteiktu. Skolas un biroja Wi-Fi bieži to bloķē. Jūs varat reģistrēties ar e-pastu vai pārslēgties uz citu tīklu un mēģināt vēlreiz.",
-    "ssoTryAnyway": "Tomēr mēģināt"
+    "ssoTryAnyway": "Tomēr mēģināt",
+    "callTranscriptNotSubscribed": "{name} nebija abonementa šī zvana laikā, tāpēc teiktais netika pārrakstīts."
 }

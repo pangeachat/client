@@ -10878,5 +10878,6 @@
     "summaryFeedbackProcessing": "שולח את המשוב שלך ומעדכן את הסיכום…",
     "ssoNetworkBlockedTitle": "אתר ההתחברות אינו זמין",
     "ssoNetworkBlockedDesc": "רשת זו אינה מאפשרת לנו להגיע אל {provider} כדי לחבר אותך. רשתות Wi-Fi בבתי ספר ובמשרדים חוסמות זאת לעיתים קרובות. באפשרותך להירשם באמצעות דוא\"ל במקום זאת, או לעבור לרשת אחרת ולנסות שוב.",
-    "ssoTryAnyway": "נסה בכל זאת"
+    "ssoTryAnyway": "נסה בכל זאת",
+    "callTranscriptNotSubscribed": "{name} לא היה מנוי במהלך השיחה הזו, ולכן מה שנאמר לא תומלל."
 }

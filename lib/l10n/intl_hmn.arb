@@ -2372,5 +2372,6 @@
     "summaryFeedbackProcessing": "Xa koj cov lus qhia thiab hloov kho cov ntsiab lus…",
     "ssoNetworkBlockedTitle": "Qhov chaw nkag tsis tuaj yeem mus txog",
     "ssoNetworkBlockedDesc": "Lub network no tsis tso cai rau peb mus txog {provider} los pab koj nkag. Feem ntau, tsev kawm ntawv thiab chaw ua haujlwm Wi-Fi thaiv nws. Koj tuaj yeem sau npe nrog email es tsis txhob, los yog hloov mus rau lwm lub network thiab sim dua.",
-    "ssoTryAnyway": "Sim txawm li cas los xij"
+    "ssoTryAnyway": "Sim txawm li cas los xij",
+    "callTranscriptNotSubscribed": "{name} tsis muaj npe yuav khoom thaum hu xov tooj no, yog li tsis tau sau tseg tias hais dab tsi."
 }

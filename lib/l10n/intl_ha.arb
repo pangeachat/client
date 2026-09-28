@@ -2372,5 +2372,6 @@
     "summaryFeedbackProcessing": "Ana aikawa da ra'ayinka kuma ana sabunta taƙaitawa…",
     "ssoNetworkBlockedTitle": "Shafin shiga ba ya samuwa",
     "ssoNetworkBlockedDesc": "Wannan hanyar sadarwa ba ta barin mu mu kai ga {provider} don shigar da kai. Wi-Fi na makaranta da ofis sukan toshe shi. Zaka iya yin rajista da imel a maimakon haka, ko canza zuwa wata hanyar sadarwa kuma ka sake gwadawa.",
-    "ssoTryAnyway": "Gwada ko yaya"
+    "ssoTryAnyway": "Gwada ko yaya",
+    "callTranscriptNotSubscribed": "{name} ba shi da biyan kuɗi a lokacin wannan kiran, don haka ba a rubuta abin da aka faɗa ba."
 }

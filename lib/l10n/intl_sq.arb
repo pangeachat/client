@@ -2372,5 +2372,6 @@
     "summaryFeedbackProcessing": "Po dërgohet komenti juaj dhe po përditësohet përmbledhja…",
     "ssoNetworkBlockedTitle": "Sajti i hyrjes i paarritshëm",
     "ssoNetworkBlockedDesc": "Ky rrjet nuk na lejon të arrijmë te {provider} për t'u kyçur. Wi-Fi i shkollës dhe zyrës shpesh e bllokojnë atë. Mund të regjistroheni me email, ose të kaloni në një rrjet tjetër dhe të provoni përsëri.",
-    "ssoTryAnyway": "Provo gjithsesi"
+    "ssoTryAnyway": "Provo gjithsesi",
+    "callTranscriptNotSubscribed": "{name} nuk kishte një abonim gjatë kësaj thirrjeje, kështu që ajo që u tha nuk u transkriptua."
 }

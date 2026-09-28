@@ -2372,5 +2372,6 @@
     "summaryFeedbackProcessing": "Nirim tanggapan sampeyan lan nganyari ringkesan…",
     "ssoNetworkBlockedTitle": "Situs mlebu ora bisa diakses",
     "ssoNetworkBlockedDesc": "Jaringan iki ora ngidini kita ngakses {provider} kanggo mlebu. Wi-Fi sekolah lan kantor asring mblokir. Sampeyan bisa ndhaptar nganggo email, utawa ngganti jaringan liyane banjur coba maneh.",
-    "ssoTryAnyway": "Coba wae"
+    "ssoTryAnyway": "Coba wae",
+    "callTranscriptNotSubscribed": "{name} ora duwe langganan nalika telpon iki, mula sing diucapake ora ditranskripsi."
 }

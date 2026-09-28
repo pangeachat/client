@@ -10909,5 +10909,6 @@
     "summaryFeedbackProcessing": "Odosielanie spätnej väzby a aktualizácia zhrnutia…",
     "ssoNetworkBlockedTitle": "Prihlasovacia stránka je nedostupná",
     "ssoNetworkBlockedDesc": "Táto sieť nám neumožňuje pripojiť sa k {provider} a prihlásiť vás. Často to blokujú školské a kancelárske Wi-Fi siete. Namiesto toho sa môžete zaregistrovať e-mailom alebo prejsť na inú sieť a skúsiť to znova.",
-    "ssoTryAnyway": "Aj tak skúsiť"
+    "ssoTryAnyway": "Aj tak skúsiť",
+    "callTranscriptNotSubscribed": "{name} nemal počas tohto hovoru predplatné, takže to, čo bolo povedané, nebolo prepísané."
 }

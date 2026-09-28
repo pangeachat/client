@@ -9951,5 +9951,6 @@
     "summaryFeedbackProcessing": "Ihr Feedback wird gesendet und die Zusammenfassung aktualisiert…",
     "ssoNetworkBlockedTitle": "Anmeldeseite nicht erreichbar",
     "ssoNetworkBlockedDesc": "Dieses Netzwerk lässt uns nicht zu {provider} durch, um dich anzumelden. Schul- und Büro-WLAN blockieren dies oft. Du kannst dich stattdessen mit E-Mail anmelden oder zu einem anderen Netzwerk wechseln und es erneut versuchen.",
-    "ssoTryAnyway": "Trotzdem versuchen"
+    "ssoTryAnyway": "Trotzdem versuchen",
+    "callTranscriptNotSubscribed": "{name} hatte während dieses Anrufs kein Abonnement, daher wurde das Gesagte nicht transkribiert."
 }

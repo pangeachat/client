@@ -9964,5 +9964,6 @@
     "summaryFeedbackProcessing": "正在发送您的反馈并更新摘要…",
     "ssoNetworkBlockedTitle": "无法访问登录网站",
     "ssoNetworkBlockedDesc": "此网络不允许我们访问 {provider} 来登录。学校和办公室的 Wi-Fi 通常会阻止它。您可以改为使用电子邮件注册，或切换到其他网络再试一次。",
-    "ssoTryAnyway": "仍然尝试"
+    "ssoTryAnyway": "仍然尝试",
+    "callTranscriptNotSubscribed": "{name} 在通话期间没有订阅，因此通话内容未被转录。"
 }

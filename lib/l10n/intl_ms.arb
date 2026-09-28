@@ -2372,5 +2372,6 @@
     "summaryFeedbackProcessing": "Menghantar maklum balas anda dan mengemas kini ringkasan…",
     "ssoNetworkBlockedTitle": "Laman web log masuk tidak dapat dicapai",
     "ssoNetworkBlockedDesc": "Rangkaian ini tidak membenarkan kami mencapai {provider} untuk log masuk anda. Wi-Fi sekolah dan pejabat sering menyekatnya. Anda boleh mendaftar dengan e-mel sebagai ganti, atau beralih ke rangkaian lain dan cuba lagi.",
-    "ssoTryAnyway": "Cuba juga"
+    "ssoTryAnyway": "Cuba juga",
+    "callTranscriptNotSubscribed": "{name} tidak mempunyai langganan semasa panggilan ini, jadi apa yang dikatakan tidak ditranskripsi."
 }

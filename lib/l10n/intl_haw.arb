@@ -2372,5 +2372,6 @@
     "summaryFeedbackProcessing": "Ke hoʻouna nei i kāu manaʻo a ke hōʻano hou nei i ka hōʻuluʻulu manaʻo…",
     "ssoNetworkBlockedTitle": "ʻAʻole hiki ke kiʻi i ka pūnaewele ʻeʻe",
     "ssoNetworkBlockedDesc": "ʻAʻole ʻae kēia pūnaewele iā mākou e kiʻi iā {provider} no ka hoʻopaʻa inoa ʻana iā ʻoe. Hoʻopaʻa pinepine ka Wi-Fi kula a me ke keʻena iā ia. Hiki iā ʻoe ke kau inoa me ka leka uila, a i ʻole e hoʻololi i kahi pūnaewele ʻē aʻe a hoʻāʻo hou.",
-    "ssoTryAnyway": "E hoʻāʻo nō"
+    "ssoTryAnyway": "E hoʻāʻo nō",
+    "callTranscriptNotSubscribed": "ʻAʻohe kau inoa o {name} i ka wā o kēia kelepona ʻana, no laila, ʻaʻole i kākau ʻia ka mea i ʻōlelo ʻia."
 }

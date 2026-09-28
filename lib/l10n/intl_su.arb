@@ -2372,5 +2372,6 @@
     "summaryFeedbackProcessing": "Ngirim tanggapan anjeun sareng ngapdet ringkesanana…",
     "ssoNetworkBlockedTitle": "Situs asup teu tiasa diaksés",
     "ssoNetworkBlockedDesc": "Jaringan ieu ngahalangan kami ngahubungi {provider} pikeun ngasupkeun anjeun. Wi-Fi sakola sareng kantor sering ngahalanganana. Anjeun tiasa ngadaptar nganggo email, atanapi gentos ka jaringan sanés teras cobian deui.",
-    "ssoTryAnyway": "Cobi waé"
+    "ssoTryAnyway": "Cobi waé",
+    "callTranscriptNotSubscribed": "{name} teu gaduh langganan nalika nelepon ieu, janten naon anu diucapkeun henteu ditranskripsi."
 }

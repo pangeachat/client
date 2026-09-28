@@ -2372,5 +2372,6 @@
     "summaryFeedbackProcessing": "አስተያየትዎን በመላክ ላይ እና ማጠቃለያውን በማዘመን ላይ…",
     "ssoNetworkBlockedTitle": "የመግቢያ ጣቢያው አይደረስበትም",
     "ssoNetworkBlockedDesc": "ይህ አውታረ መረብ እርስዎን ለማስገባት ወደ {provider} እንዳንደርስ እየከለከለን ነው። የትምህርት ቤት እና የቢሮ ዋይፋይ ብዙ ጊዜ ያግዱታል። በምትኩ በኢሜል መመዝገብ ወይም ወደ ሌላ አውታረ መረብ ቀይረው እንደገና መሞከር ይችላሉ።",
-    "ssoTryAnyway": "ለማንኛውም ይሞክሩ"
+    "ssoTryAnyway": "ለማንኛውም ይሞክሩ",
+    "callTranscriptNotSubscribed": "{name} ይህ ጥሪ በሚደረግበት ጊዜ የደንበኝነት ምዝገባ ስላልነበረው የተነገረው ነገር አልተመዘገበም።"
 }

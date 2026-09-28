@@ -2372,5 +2372,6 @@
     "summaryFeedbackProcessing": "Rəyinizi göndəririk və xülasəni yeniləyirik…",
     "ssoNetworkBlockedTitle": "Giriş saytı əlçatan deyil",
     "ssoNetworkBlockedDesc": "Bu şəbəkə sizin daxil olmağınız üçün {provider} ilə əlaqə saxlamağımıza icazə vermir. Məktəb və ofis Wi-Fi-ları bunu tez-tez bloklayır. Bunun əvəzinə e-poçtla qeydiyyatdan keçə bilərsiniz və ya başqa şəbəkəyə keçib yenidən cəhd edə bilərsiniz.",
-    "ssoTryAnyway": "Yenə də cəhd edin"
+    "ssoTryAnyway": "Yenə də cəhd edin",
+    "callTranscriptNotSubscribed": "{name} bu zəng zamanı abunəçi olmadığı üçün deyilənlər transkripsiya edilmədi."
 }

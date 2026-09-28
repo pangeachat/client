@@ -10001,5 +10001,6 @@
     "summaryFeedbackProcessing": "Lähetetään palautettasi ja päivitetään yhteenvetoa…",
     "ssoNetworkBlockedTitle": "Kirjautumissivusto ei tavoitettavissa",
     "ssoNetworkBlockedDesc": "Tämä verkko estää meitä tavoittamasta palvelua {provider} kirjautuaksesi sisään. Koulun ja toimiston Wi-Fi-verkot estävät sen usein. Voit kirjautua sisään sähköpostilla tai vaihtaa toiseen verkkoon ja yrittää uudelleen.",
-    "ssoTryAnyway": "Yritä silti"
+    "ssoTryAnyway": "Yritä silti",
+    "callTranscriptNotSubscribed": "{name} ei ollut tilannut palvelua tämän puhelun aikana, joten puhetta ei litteroitu."
 }

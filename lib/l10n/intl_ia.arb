@@ -10900,5 +10900,6 @@
     "summaryFeedbackProcessing": "Inviante vostre commentos e actualisante le summario…",
     "ssoNetworkBlockedTitle": "Sito de authentification inaccessibile",
     "ssoNetworkBlockedDesc": "Iste rete non nos permitte attinger {provider} pro authentificar vos. Le Wi-Fi de scholas e officios sovente lo bloca. Vos pote registrar vos con e-mail in loco, o cambiar a un altere rete e reprovar.",
-    "ssoTryAnyway": "Provar de tote modos"
+    "ssoTryAnyway": "Provar de tote modos",
+    "callTranscriptNotSubscribed": "{name} non habeva un subscription durante iste appello, ergo lo que esseva dicite non esseva transcribite."
 }

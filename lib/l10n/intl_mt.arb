@@ -2372,5 +2372,6 @@
     "summaryFeedbackProcessing": "Qed nibagħtu l-feedback tiegħek u naġġornaw is-sommarju…",
     "ssoNetworkBlockedTitle": "Sit ta' reġistrazzjoni ma jistax jintlaħaq",
     "ssoNetworkBlockedDesc": "Din in-netwerk mhux qed tħallina nilħqu lil {provider} biex nirreġistrawk. Il-Wi-Fi tal-iskola u l-uffiċċju spiss jimblokkawha. Tista' tirreġistra bl-email minflok, jew taqleb għal netwerk ieħor u terġa' tipprova.",
-    "ssoTryAnyway": "Erġa' pprova xorta"
+    "ssoTryAnyway": "Erġa' pprova xorta",
+    "callTranscriptNotSubscribed": "{name} ma kellux abbonament waqt din is-sejħa, għalhekk dak li ntqal ma ġiex traskritt."
 }

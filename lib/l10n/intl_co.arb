@@ -2372,5 +2372,6 @@
     "summaryFeedbackProcessing": "Mandendu u vostru cummentu è aghjurnendu u riassuntu…",
     "ssoNetworkBlockedTitle": "Situ di cunnessione inaccessibile",
     "ssoNetworkBlockedDesc": "Sta rete ùn ci permette micca di ghjunghje à {provider} per cunnettavvi. U Wi-Fi di a scola è di l'uffiziu u bluccanu spessu. Pudete iscrivevi cù l'email invece, o passà à un'altra rete è riprovà.",
-    "ssoTryAnyway": "Pruvate quantunque"
+    "ssoTryAnyway": "Pruvate quantunque",
+    "callTranscriptNotSubscribed": "{name} ùn avia micca un abbunamentu durante sta chjama, cusì ciò chì hè statu dettu ùn hè statu trascrittu."
 }

@@ -10824,5 +10824,6 @@
     "summaryFeedbackProcessing": "Ipinapadala ang iyong feedback at ina-update ang buod…",
     "ssoNetworkBlockedTitle": "Hindi maabot ang site ng pag-sign in",
     "ssoNetworkBlockedDesc": "Hindi kami pinapayagan ng network na ito na maabot ang {provider} para i-sign in ka. Madalas itong hinaharangan ng Wi-Fi ng paaralan at opisina. Maaari kang mag-sign up gamit ang email sa halip, o lumipat sa ibang network at subukang muli.",
-    "ssoTryAnyway": "Subukan pa rin"
+    "ssoTryAnyway": "Subukan pa rin",
+    "callTranscriptNotSubscribed": "Walang subscription si {name} noong tawag na ito, kaya hindi na-transcribe ang sinabi."
 }
