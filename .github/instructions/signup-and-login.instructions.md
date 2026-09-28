@@ -1,6 +1,6 @@
 ---
 applyTo: "lib/routes/home/**,lib/utils/uia_request_manager.dart"
-description: "Design for the pre-authentication experience — the intro carousel, its per-layout backdrops, responsive layout and type, the slide assets, and the choice between signup and login."
+description: "Design for the pre-authentication experience — the intro carousel, its per-layout backdrops, responsive layout and type, the slide assets, the choice between signup and login, and the notice for a visitor who arrives with a class code."
 ---
 
 # Signup and Login
@@ -187,3 +187,12 @@ Signup and login are separate destinations offering the same three methods: Appl
 [`SignupPageView`](../../lib/routes/home/signup/signup_view.dart) carries the terms-of-service indicator; [`LoginOptionsView`](../../lib/routes/home/login/login_options_view.dart) does not, because agreement is collected once at account creation.
 
 When a previous method is known, both screens name it. Login dims the other two options to guide without removing them; signup goes further and links across to login, since someone who already has an account has usually landed on the wrong screen. Neither screen removes an option, because the stored hint can be wrong and a person may intend a different method.
+
+## Arriving with a class code
+
+A visitor who opens a class link while signed out is sent to this screen, and the code is kept in the stored destination ([joining-courses.instructions.md § Route 1 — Class link](joining-courses.instructions.md#route-1--class-link), Pre-login). They should know the code was kept and that signing in is the only step left, so they don't look for a code field or give up on the pitch.
+
+- **On arrival**, the landing screen opens a dialog ([`ClassCodeDialog`](../../lib/routes/home/class_code_dialog.dart)): "Join your course", a line saying we will use the class code to add them once they log in or sign up, the code itself, and "Got it!". It opens once per arrival at the landing; coming back from the signup or login page does not reopen it.
+- **On the signup and login pages**, a card ([`ClassCodeNotice`](../../lib/routes/home/class_code_notice.dart)) above the method buttons names the saved code and repeats that they will be added after signing in. The dialog is gone by then, and moving between the two pages is where a visitor wonders whether the code survived.
+- **Nothing here uses up the code.** Dismissing the dialog, or moving between signup and login, leaves the stored destination as it is; the join itself runs after sign-in as joining-courses describes. When the stored destination expires (`SpaceCodeRepo.cacheTTL`) or holds no class code (an activity link, for example), neither the dialog nor the card appears.
+- **The course is named only by its code.** Looking a code up needs a signed-in user, so the course's name is unknown before login.

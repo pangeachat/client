@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-09-28 13:21:24.442856",
+    "@@last_modified": "2026-09-28 15:16:06.742614",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2370,5 +2370,10 @@
     "summaryFeedbackReceived": "Fa'afetai! Ua matou mauaina lau fa'amatalaga.",
     "summaryFeedbackFailed": "E le'i mafai ona lafo lau fa'amatalaga. Fa'amolemole toe taumafai.",
     "summaryFeedbackProcessing": "Lafoina au manatu faaalia ma faafouina le aotelega…",
-    "callTranscriptNotSubscribed": "E le'i lesitala {name} i le taimi o lenei valaau, o lea e le'i tusia ai mea na fai mai."
+    "callTranscriptNotSubscribed": "E le'i lesitala {name} i le taimi o lenei valaau, o lea e le'i tusia ai mea na fai mai.",
+    "joinYourCourse": "Auai i lau kosi",
+    "courseCodeJoinExplanation": "Saini i totonu pe saini i luga, ma o le a matou fa'aogaina lau code kosi e fa'aopoopo otometi ai oe i lau kosi.",
+    "courseCodeLabel": "Code kosi",
+    "courseCodeSaved": "Code kosi {code} ua sefe",
+    "courseCodeSavedExplanation": "Saini i luga pe saini i totonu ma o le a matou fa'aopoopoina oe i lau kosi."
 }

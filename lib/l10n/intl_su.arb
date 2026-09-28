@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-09-28 13:21:23.201678",
+    "@@last_modified": "2026-09-28 15:16:07.409656",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2370,5 +2370,10 @@
     "summaryFeedbackReceived": "Hatur nuhun! Tanggapan anjeun parantos katampi.",
     "summaryFeedbackFailed": "Tanggapan anjeun teu tiasa dikirim. Punten cobian deui.",
     "summaryFeedbackProcessing": "Ngirim tanggapan anjeun sareng ngapdet ringkesanana…",
-    "callTranscriptNotSubscribed": "{name} teu gaduh langganan nalika nelepon ieu, janten naon anu diucapkeun henteu ditranskripsi."
+    "callTranscriptNotSubscribed": "{name} teu gaduh langganan nalika nelepon ieu, janten naon anu diucapkeun henteu ditranskripsi.",
+    "joinYourCourse": "Gabung kana kursus anjeun",
+    "courseCodeJoinExplanation": "Asup atawa daptar, sarta kami baris ngagunakeun kode kursus anjeun pikeun nambahkeun anjeun kana kursus anjeun sacara otomatis.",
+    "courseCodeLabel": "Kode kursus",
+    "courseCodeSaved": "Kode kursus {code} disimpen",
+    "courseCodeSavedExplanation": "Daptar atawa asup sarta kami baris nambahkeun anjeun kana kursus anjeun."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-09-28 13:21:22.071106",
+    "@@last_modified": "2026-09-28 15:16:05.218386",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2370,5 +2370,10 @@
     "summaryFeedbackReceived": "ਧੰਨਵਾਦ! ਸਾਨੂੰ ਤੁਹਾਡਾ ਫੀਡਬੈਕ ਮਿਲ ਗਿਆ ਹੈ।",
     "summaryFeedbackFailed": "ਤੁਹਾਡਾ ਫੀਡਬੈਕ ਭੇਜਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ। ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।",
     "summaryFeedbackProcessing": "ਤੁਹਾਡਾ ਫੀਡਬੈਕ ਭੇਜਿਆ ਜਾ ਰਿਹਾ ਹੈ ਅਤੇ ਸਾਰ ਅੱਪਡੇਟ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ…",
-    "callTranscriptNotSubscribed": "ਇਸ ਕਾਲ ਦੌਰਾਨ {name} ਕੋਲ ਕੋਈ ਗਾਹਕੀ ਨਹੀਂ ਸੀ, ਇਸ ਲਈ ਜੋ ਕਿਹਾ ਗਿਆ ਸੀ ਉਸਨੂੰ ਟ੍ਰਾਂਸਕ੍ਰਾਈਬ ਨਹੀਂ ਕੀਤਾ ਗਿਆ।"
+    "callTranscriptNotSubscribed": "ਇਸ ਕਾਲ ਦੌਰਾਨ {name} ਕੋਲ ਕੋਈ ਗਾਹਕੀ ਨਹੀਂ ਸੀ, ਇਸ ਲਈ ਜੋ ਕਿਹਾ ਗਿਆ ਸੀ ਉਸਨੂੰ ਟ੍ਰਾਂਸਕ੍ਰਾਈਬ ਨਹੀਂ ਕੀਤਾ ਗਿਆ।",
+    "joinYourCourse": "ਆਪਣੇ ਕੋਰਸ ਵਿੱਚ ਸ਼ਾਮਲ ਹੋਵੋ",
+    "courseCodeJoinExplanation": "ਲੌਗ ਇਨ ਕਰੋ ਜਾਂ ਸਾਈਨ ਅੱਪ ਕਰੋ, ਅਤੇ ਅਸੀਂ ਤੁਹਾਨੂੰ ਤੁਹਾਡੇ ਕੋਰਸ ਵਿੱਚ ਆਪਣੇ ਆਪ ਸ਼ਾਮਲ ਕਰਨ ਲਈ ਤੁਹਾਡੇ ਕੋਰਸ ਕੋਡ ਦੀ ਵਰਤੋਂ ਕਰਾਂਗੇ।",
+    "courseCodeLabel": "ਕੋਰਸ ਕੋਡ",
+    "courseCodeSaved": "ਕੋਰਸ ਕੋਡ {code} ਸੁਰੱਖਿਅਤ ਕੀਤਾ ਗਿਆ",
+    "courseCodeSavedExplanation": "ਸਾਈਨ ਅੱਪ ਕਰੋ ਜਾਂ ਲੌਗ ਇਨ ਕਰੋ ਅਤੇ ਅਸੀਂ ਤੁਹਾਨੂੰ ਤੁਹਾਡੇ ਕੋਰਸ ਵਿੱਚ ਸ਼ਾਮਲ ਕਰਾਂਗੇ।"
 }

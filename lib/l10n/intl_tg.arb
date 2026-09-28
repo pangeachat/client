@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-09-28 13:21:24.308999",
+    "@@last_modified": "2026-09-28 15:16:07.933403",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2370,5 +2370,10 @@
     "summaryFeedbackReceived": "Ташаккур! Мо фикру мулоҳизаи шуморо гирифтем.",
     "summaryFeedbackFailed": "Фикру мулоҳизаи шуморо фиристода натавонистем. Лутфан, бори дигар кӯшиш кунед.",
     "summaryFeedbackProcessing": "Фикру мулоҳизаи шуморо мефиристад ва хулосаро навсозӣ мекунад…",
-    "callTranscriptNotSubscribed": "{name} ҳангоми ин занг обуна набуд, аз ин рӯ гуфтаҳо сабт нашуданд."
+    "callTranscriptNotSubscribed": "{name} ҳангоми ин занг обуна набуд, аз ин рӯ гуфтаҳо сабт нашуданд.",
+    "joinYourCourse": "Ба курси худ ҳамроҳ шавед",
+    "courseCodeJoinExplanation": "Ворид шавед ё сабти ном кунед, ва мо рамзи курси шуморо барои ба таври худкор ба курси шумо илова кардан истифода мебарем.",
+    "courseCodeLabel": "Рамзи курс",
+    "courseCodeSaved": "Рамзи курс {code} захира шуд",
+    "courseCodeSavedExplanation": "Сабти ном кунед ё ворид шавед ва мо шуморо ба курси шумо илова мекунем."
 }

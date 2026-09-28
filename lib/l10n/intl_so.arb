@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-09-28 13:21:23.006211",
+    "@@last_modified": "2026-09-28 15:16:07.099397",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2370,5 +2370,10 @@
     "summaryFeedbackReceived": "Waad ku mahadsan tahay! Waxaan helnay jawaab celintaada.",
     "summaryFeedbackFailed": "Lama soo diri karin jawaab celintaada. Fadlan mar kale isku day.",
     "summaryFeedbackProcessing": "Waxaan diraynaa jawaab celintaada oo waxaan cusboonaysiinaynaa soo koobidda…",
-    "callTranscriptNotSubscribed": "{name} ma lahayn rukumo intii uu socday wicitaankan, sidaa darteed waxa la yidhi lama qorin."
+    "callTranscriptNotSubscribed": "{name} ma lahayn rukumo intii uu socday wicitaankan, sidaa darteed waxa la yidhi lama qorin.",
+    "joinYourCourse": "Ku biir koorsadaada",
+    "courseCodeJoinExplanation": "Soo gal ama isdiiwaangeli, waxaanan isticmaali doonaa koodhka koorsadaada si aan si toos ah kuugu darno koorsadaada.",
+    "courseCodeLabel": "Koodhka koorsada",
+    "courseCodeSaved": "Koodhka koorsada {code} waa la keydiyay",
+    "courseCodeSavedExplanation": "Isdiiwaangeli ama soo gal waxaanan kugu dari doonaa koorsadaada."
 }

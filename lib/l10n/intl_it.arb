@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-28 13:21:19.199347",
+    "@@last_modified": "2026-09-28 15:16:01.212978",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -10035,5 +10035,10 @@
     "summaryFeedbackReceived": "Grazie! Abbiamo ricevuto il tuo feedback.",
     "summaryFeedbackFailed": "Impossibile inviare il tuo feedback. Riprova.",
     "summaryFeedbackProcessing": "Invio del feedback e aggiornamento del riepilogo…",
-    "callTranscriptNotSubscribed": "{name} non aveva un abbonamento durante questa chiamata, quindi ciò che è stato detto non è stato trascritto."
+    "callTranscriptNotSubscribed": "{name} non aveva un abbonamento durante questa chiamata, quindi ciò che è stato detto non è stato trascritto.",
+    "joinYourCourse": "Unisciti al tuo corso",
+    "courseCodeJoinExplanation": "Accedi o iscriviti, e useremo il tuo codice corso per aggiungerti automaticamente al tuo corso.",
+    "courseCodeLabel": "Codice corso",
+    "courseCodeSaved": "Codice corso {code} salvato",
+    "courseCodeSavedExplanation": "Iscriviti o accedi e ti aggiungeremo al tuo corso."
 }

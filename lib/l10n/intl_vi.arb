@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-28 13:21:24.550367",
+    "@@last_modified": "2026-09-28 15:16:09.215305",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7254,5 +7254,10 @@
     "summaryFeedbackReceived": "Cảm ơn! Chúng tôi đã nhận được phản hồi của bạn.",
     "summaryFeedbackFailed": "Không thể gửi phản hồi của bạn. Vui lòng thử lại.",
     "summaryFeedbackProcessing": "Đang gửi phản hồi của bạn và cập nhật tóm tắt…",
-    "callTranscriptNotSubscribed": "{name} không có gói đăng ký trong cuộc gọi này, vì vậy những gì đã nói không được phiên âm."
+    "callTranscriptNotSubscribed": "{name} không có gói đăng ký trong cuộc gọi này, vì vậy những gì đã nói không được phiên âm.",
+    "joinYourCourse": "Tham gia khóa học của bạn",
+    "courseCodeJoinExplanation": "Đăng nhập hoặc đăng ký, chúng tôi sẽ sử dụng mã khóa học của bạn để tự động thêm bạn vào khóa học.",
+    "courseCodeLabel": "Mã khóa học",
+    "courseCodeSaved": "Đã lưu mã khóa học {code}",
+    "courseCodeSavedExplanation": "Đăng ký hoặc đăng nhập và chúng tôi sẽ thêm bạn vào khóa học."
 }

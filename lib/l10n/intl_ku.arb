@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-09-28 13:21:20.121418",
+    "@@last_modified": "2026-09-28 15:16:02.962366",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2370,5 +2370,10 @@
     "summaryFeedbackReceived": "سوپاس! فیدباکەکەت وەرگیرا.",
     "summaryFeedbackFailed": "نەتوانرا فیدباکەکەت بنێردرێت. تکایە دووبارە هەوڵبدەرەوە.",
     "summaryFeedbackProcessing": "ناردنی فیدباکەکەت و نوێکردنەوەی پوختەکە…",
-    "callTranscriptNotSubscribed": "{name} لە کاتی ئەم پەیوەندییەدا بەشداری نەکردبوو، بۆیە ئەوەی وترا نەنووسرایەوە."
+    "callTranscriptNotSubscribed": "{name} لە کاتی ئەم پەیوەندییەدا بەشداری نەکردبوو، بۆیە ئەوەی وترا نەنووسرایەوە.",
+    "joinYourCourse": "بەشداری خولەکەت بکە",
+    "courseCodeJoinExplanation": "بچۆ ژوورەوە یان خۆت تۆمار بکە، و ئێمە کۆدی خولەکەت بەکاردەهێنین بۆ ئەوەی بە شێوەیەکی خۆکارانە زیادتبکەین بۆ خولەکەت.",
+    "courseCodeLabel": "کۆدی خول",
+    "courseCodeSaved": "کۆدی خول {code} پاشەکەوت کرا",
+    "courseCodeSavedExplanation": "خۆت تۆمار بکە یان بچۆ ژوورەوە و ئێمە زیادتبکەین بۆ خولەکەت."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-09-28 13:21:18.299452",
+    "@@last_modified": "2026-09-28 15:15:59.654244",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9962,5 +9962,10 @@
     "summaryFeedbackReceived": "Grazas! Recibimos os teus comentarios.",
     "summaryFeedbackFailed": "Non se puideron enviar os teus comentarios. Téntao de novo.",
     "summaryFeedbackProcessing": "Enviando os teus comentarios e actualizando o resumo…",
-    "callTranscriptNotSubscribed": "{name} non tiña unha subscrición durante esta chamada, polo que o que se dixo non foi transcrito."
+    "callTranscriptNotSubscribed": "{name} non tiña unha subscrición durante esta chamada, polo que o que se dixo non foi transcrito.",
+    "joinYourCourse": "Únete ao teu curso",
+    "courseCodeJoinExplanation": "Inicia sesión ou rexístrate, e usaremos o teu código de curso para engadirte ao teu curso automaticamente.",
+    "courseCodeLabel": "Código do curso",
+    "courseCodeSaved": "Código do curso {code} gardado",
+    "courseCodeSavedExplanation": "Rexístrate ou inicia sesión e engadirémoste ao teu curso."
 }

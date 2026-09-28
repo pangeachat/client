@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-09-28 13:21:22.885739",
+    "@@last_modified": "2026-09-28 15:16:06.831257",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2370,5 +2370,10 @@
     "summaryFeedbackReceived": "Faleminderit! E morëm reagimin tuaj.",
     "summaryFeedbackFailed": "Nuk u dërgua dot reagimi juaj. Ju lutemi provoni sërish.",
     "summaryFeedbackProcessing": "Po dërgohet komenti juaj dhe po përditësohet përmbledhja…",
-    "callTranscriptNotSubscribed": "{name} nuk kishte një abonim gjatë kësaj thirrjeje, kështu që ajo që u tha nuk u transkriptua."
+    "callTranscriptNotSubscribed": "{name} nuk kishte një abonim gjatë kësaj thirrjeje, kështu që ajo që u tha nuk u transkriptua.",
+    "joinYourCourse": "Bashkohuni kursit tuaj",
+    "courseCodeJoinExplanation": "Identifikohuni ose regjistrohuni, dhe ne do të përdorim kodin tuaj të kursit për t'ju shtuar automatikisht në kursin tuaj.",
+    "courseCodeLabel": "Kodi i kursit",
+    "courseCodeSaved": "Kodi i kursit {code} u ruajt",
+    "courseCodeSavedExplanation": "Regjistrohuni ose identifikohuni dhe ne do t'ju shtojmë në kursin tuaj."
 }

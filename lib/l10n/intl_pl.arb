@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-09-28 13:21:21.759508",
+    "@@last_modified": "2026-09-28 15:16:05.131972",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10047,5 +10047,10 @@
     "summaryFeedbackReceived": "Dziękujemy! Otrzymaliśmy Twoją opinię.",
     "summaryFeedbackFailed": "Nie udało się wysłać Twojej opinii. Spróbuj ponownie.",
     "summaryFeedbackProcessing": "Wysyłanie opinii i aktualizowanie podsumowania…",
-    "callTranscriptNotSubscribed": "Użytkownik {name} nie miał subskrypcji podczas tej rozmowy, więc to, co zostało powiedziane, nie zostało przepisane."
+    "callTranscriptNotSubscribed": "Użytkownik {name} nie miał subskrypcji podczas tej rozmowy, więc to, co zostało powiedziane, nie zostało przepisane.",
+    "joinYourCourse": "Dołącz do kursu",
+    "courseCodeJoinExplanation": "Zaloguj się lub zarejestruj, a my użyjemy Twojego kodu kursu, aby automatycznie dodać Cię do kursu.",
+    "courseCodeLabel": "Kod kursu",
+    "courseCodeSaved": "Kod kursu {code} zapisany",
+    "courseCodeSavedExplanation": "Zarejestruj się lub zaloguj, a my dodamy Cię do kursu."
 }

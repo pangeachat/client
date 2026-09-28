@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-09-28 13:21:17.764894",
+    "@@last_modified": "2026-09-28 15:15:58.145548",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9949,5 +9949,10 @@
     "summaryFeedbackReceived": "Danke! Wir haben Ihr Feedback erhalten.",
     "summaryFeedbackFailed": "Ihr Feedback konnte nicht gesendet werden. Bitte versuchen Sie es erneut.",
     "summaryFeedbackProcessing": "Ihr Feedback wird gesendet und die Zusammenfassung aktualisiert…",
-    "callTranscriptNotSubscribed": "{name} hatte während dieses Anrufs kein Abonnement, daher wurde das Gesagte nicht transkribiert."
+    "callTranscriptNotSubscribed": "{name} hatte während dieses Anrufs kein Abonnement, daher wurde das Gesagte nicht transkribiert.",
+    "joinYourCourse": "Treten Sie Ihrem Kurs bei",
+    "courseCodeJoinExplanation": "Melden Sie sich an oder registrieren Sie sich, und wir verwenden Ihren Kurscode, um Sie automatisch zu Ihrem Kurs hinzuzufügen.",
+    "courseCodeLabel": "Kurscode",
+    "courseCodeSaved": "Kurscode {code} gespeichert",
+    "courseCodeSavedExplanation": "Registrieren Sie sich oder melden Sie sich an, und wir fügen Sie Ihrem Kurs hinzu."
 }

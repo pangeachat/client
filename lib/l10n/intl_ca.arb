@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-28 13:21:17.452768",
+    "@@last_modified": "2026-09-28 15:15:57.767583",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10089,5 +10089,10 @@
     "summaryFeedbackReceived": "Gràcies! Hem rebut els teus comentaris.",
     "summaryFeedbackFailed": "No s'han pogut enviar els teus comentaris. Torna-ho a provar.",
     "summaryFeedbackProcessing": "S'està enviant el teu feedback i actualitzant el resum…",
-    "callTranscriptNotSubscribed": "{name} no tenia una subscripció durant aquesta trucada, així que el que es va dir no es va transcriure."
+    "callTranscriptNotSubscribed": "{name} no tenia una subscripció durant aquesta trucada, així que el que es va dir no es va transcriure.",
+    "joinYourCourse": "Uneix-te al teu curs",
+    "courseCodeJoinExplanation": "Inicia sessió o registra't, i utilitzarem el teu codi de curs per afegir-te al teu curs automàticament.",
+    "courseCodeLabel": "Codi de curs",
+    "courseCodeSaved": "Codi de curs {code} desat",
+    "courseCodeSavedExplanation": "Registra't o inicia sessió i t'afegirem al teu curs."
 }

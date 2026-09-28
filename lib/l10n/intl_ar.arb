@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-09-28 13:21:16.497258",
+    "@@last_modified": "2026-09-28 15:15:57.139192",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10268,5 +10268,10 @@
     "summaryFeedbackReceived": "شكرًا! لقد تلقينا ملاحظاتك.",
     "summaryFeedbackFailed": "تعذر إرسال ملاحظاتك. يرجى المحاولة مرة أخرى.",
     "summaryFeedbackProcessing": "جارٍ إرسال ملاحظاتك وتحديث الملخص…",
-    "callTranscriptNotSubscribed": "لم يكن لدى {name} اشتراك خلال هذه المكالمة، لذلك لم يتم نسخ ما قيل."
+    "callTranscriptNotSubscribed": "لم يكن لدى {name} اشتراك خلال هذه المكالمة، لذلك لم يتم نسخ ما قيل.",
+    "joinYourCourse": "انضم إلى دورتك التدريبية",
+    "courseCodeJoinExplanation": "سجّل الدخول أو أنشئ حسابًا، وسنستخدم رمز دورتك التدريبية لإضافتك إلى دورتك تلقائيًا.",
+    "courseCodeLabel": "رمز الدورة التدريبية",
+    "courseCodeSaved": "تم حفظ رمز الدورة التدريبية {code}",
+    "courseCodeSavedExplanation": "سجّل أو سجّل الدخول وسنضيفك إلى دورتك التدريبية."
 }

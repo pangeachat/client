@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-09-28 13:21:19.651518",
+    "@@last_modified": "2026-09-28 15:16:02.018959",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2370,5 +2370,10 @@
     "summaryFeedbackReceived": "Рахмет! Пікіріңізді алдық.",
     "summaryFeedbackFailed": "Пікіріңізді жіберу мүмкін болмады. Қайталап көріңіз.",
     "summaryFeedbackProcessing": "Пікіріңізді жіберіп, қорытындыны жаңартудамыз…",
-    "callTranscriptNotSubscribed": "{name} осы қоңырау кезінде жазылымда болмағандықтан, айтылған сөздер транскрипцияланбады."
+    "callTranscriptNotSubscribed": "{name} осы қоңырау кезінде жазылымда болмағандықтан, айтылған сөздер транскрипцияланбады.",
+    "joinYourCourse": "Курсыңызға қосылыңыз",
+    "courseCodeJoinExplanation": "Жүйеге кіріңіз немесе тіркеліңіз, сонда біз сіздің курс кодыңызды пайдаланып, сізді курсқа автоматты түрде қосамыз.",
+    "courseCodeLabel": "Курс коды",
+    "courseCodeSaved": "{code} курс коды сақталды",
+    "courseCodeSavedExplanation": "Тіркеліңіз немесе жүйеге кіріңіз, сонда біз сізді курсқа қосамыз."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-28 13:21:22.904771",
+    "@@last_modified": "2026-09-28 15:16:06.893210",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10911,5 +10911,10 @@
     "summaryFeedbackReceived": "Hvala! Primili smo vaše povratne informacije.",
     "summaryFeedbackFailed": "Nismo mogli da pošaljemo vaše povratne informacije. Pokušajte ponovo.",
     "summaryFeedbackProcessing": "Šaljemo vaše povratne informacije i ažuriramo rezime…",
-    "callTranscriptNotSubscribed": "{name} nije imao pretplatu tokom ovog poziva, tako da izgovoreno nije transkribovano."
+    "callTranscriptNotSubscribed": "{name} nije imao pretplatu tokom ovog poziva, tako da izgovoreno nije transkribovano.",
+    "joinYourCourse": "Pridružite se svom kursu",
+    "courseCodeJoinExplanation": "Prijavite se ili se registrujte, a mi ćemo koristiti vaš kod kursa da vas automatski dodamo na vaš kurs.",
+    "courseCodeLabel": "Kod kursa",
+    "courseCodeSaved": "Kod kursa {code} sačuvan",
+    "courseCodeSavedExplanation": "Registrujte se ili se prijavite i mi ćemo vas dodati na vaš kurs."
 }

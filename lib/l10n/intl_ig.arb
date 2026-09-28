@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-09-28 13:21:19.260179",
+    "@@last_modified": "2026-09-28 15:16:01.521933",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2370,5 +2370,10 @@
     "summaryFeedbackReceived": "Daalụ! Anyị nwetara nzaghachi gị.",
     "summaryFeedbackFailed": "Enweghị ike izipu nzaghachi gị. Biko nwaa ọzọ.",
     "summaryFeedbackProcessing": "Na-eziga nzaghachi gị ma na-emelite nchịkọta…",
-    "callTranscriptNotSubscribed": "{name} enweghị ndenye aha n'oge oku a, yabụ na edeghị ihe e kwuru."
+    "callTranscriptNotSubscribed": "{name} enweghị ndenye aha n'oge oku a, yabụ na edeghị ihe e kwuru.",
+    "joinYourCourse": "Soro nkuzi gị",
+    "courseCodeJoinExplanation": "Banye ma ọ bụ debanye aha, anyị ga-eji koodu nkuzi gị tinye gị na nkuzi gị na-akpaghị aka.",
+    "courseCodeLabel": "Koodu nkuzi",
+    "courseCodeSaved": "Echekwara koodu nkuzi {code}",
+    "courseCodeSavedExplanation": "Debanye aha ma ọ bụ banye ma anyị ga-etinye gị na nkuzi gị."
 }

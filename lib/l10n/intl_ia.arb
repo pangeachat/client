@@ -1362,7 +1362,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-09-28 13:21:19.102199",
+    "@@last_modified": "2026-09-28 15:16:00.857363",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10898,5 +10898,10 @@
     "summaryFeedbackReceived": "Gratias! Nos ha recipite tu feedback.",
     "summaryFeedbackFailed": "Non poteva inviar tu feedback. Per favor reprova.",
     "summaryFeedbackProcessing": "Inviante vostre commentos e actualisante le summario…",
-    "callTranscriptNotSubscribed": "{name} non habeva un subscription durante iste appello, ergo lo que esseva dicite non esseva transcribite."
+    "callTranscriptNotSubscribed": "{name} non habeva un subscription durante iste appello, ergo lo que esseva dicite non esseva transcribite.",
+    "joinYourCourse": "Junger a tu curso",
+    "courseCodeJoinExplanation": "Aperir session o registrar se, e nos usara tu codice de curso pro adder te a tu curso automaticamente.",
+    "courseCodeLabel": "Codice de curso",
+    "courseCodeSaved": "Codice de curso {code} salvate",
+    "courseCodeSavedExplanation": "Registra te o aperi session e nos te addera a tu curso."
 }

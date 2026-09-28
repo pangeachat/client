@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-09-28 13:21:17.881071",
+    "@@last_modified": "2026-09-28 15:15:58.767777",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9959,5 +9959,10 @@
     "summaryFeedbackReceived": "Aitäh! Saime teie tagasiside kätte.",
     "summaryFeedbackFailed": "Tagasisidet ei saanud saata. Palun proovige uuesti.",
     "summaryFeedbackProcessing": "Teie tagasiside saatmine ja kokkuvõtte värskendamine…",
-    "callTranscriptNotSubscribed": "{name} ei olnud selle kõne ajal tellimust, seega öeldut ei transkribeeritud."
+    "callTranscriptNotSubscribed": "{name} ei olnud selle kõne ajal tellimust, seega öeldut ei transkribeeritud.",
+    "joinYourCourse": "Liitu oma kursusega",
+    "courseCodeJoinExplanation": "Logi sisse või registreeru ja me kasutame sinu kursuse koodi, et sind automaatselt kursusele lisada.",
+    "courseCodeLabel": "Kursuse kood",
+    "courseCodeSaved": "Kursuse kood {code} salvestatud",
+    "courseCodeSavedExplanation": "Registreeru või logi sisse ja me lisame sind kursusele."
 }

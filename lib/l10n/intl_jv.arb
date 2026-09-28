@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-09-28 13:21:19.524650",
+    "@@last_modified": "2026-09-28 15:16:01.614449",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2370,5 +2370,10 @@
     "summaryFeedbackReceived": "Matur nuwun! Tanggapan panjenengan sampun katampi.",
     "summaryFeedbackFailed": "Mboten saged ngirim tanggapan panjenengan. Mangga dicobi malih.",
     "summaryFeedbackProcessing": "Nirim tanggapan sampeyan lan nganyari ringkesan…",
-    "callTranscriptNotSubscribed": "{name} ora duwe langganan nalika telpon iki, mula sing diucapake ora ditranskripsi."
+    "callTranscriptNotSubscribed": "{name} ora duwe langganan nalika telpon iki, mula sing diucapake ora ditranskripsi.",
+    "joinYourCourse": "Gabung kursusmu",
+    "courseCodeJoinExplanation": "Mlebu utawa ndaftar, lan kita bakal nggunakake kode kursusmu kanggo nambahake sampeyan menyang kursus kanthi otomatis.",
+    "courseCodeLabel": "Kode kursus",
+    "courseCodeSaved": "Kode kursus {code} wis disimpen",
+    "courseCodeSavedExplanation": "Ndaftar utawa mlebu lan kita bakal nambahake sampeyan menyang kursus."
 }

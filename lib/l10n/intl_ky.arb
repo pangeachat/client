@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-09-28 13:21:20.221638",
+    "@@last_modified": "2026-09-28 15:16:02.652530",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2370,5 +2370,10 @@
     "summaryFeedbackReceived": "Рахмат! Пикириңизди алдык.",
     "summaryFeedbackFailed": "Пикириңизди жөнөтүү мүмкүн болгон жок. Кайра аракет кылып көрүңүз.",
     "summaryFeedbackProcessing": "Пикириңизди жөнөтүү жана корутундуну жаңыртуу…",
-    "callTranscriptNotSubscribed": "{name} бул чалуу учурунда жазылуусу жок болгондуктан, айтылгандар транскрипцияланган жок."
+    "callTranscriptNotSubscribed": "{name} бул чалуу учурунда жазылуусу жок болгондуктан, айтылгандар транскрипцияланган жок.",
+    "joinYourCourse": "Курсуңузга кошулуңуз",
+    "courseCodeJoinExplanation": "Кириңиз же катталыңыз, биз сиздин курс кодуңузду колдонуп, сизди курсуңузга автоматтык түрдө кошо алабыз.",
+    "courseCodeLabel": "Курс коду",
+    "courseCodeSaved": "{code} курс коду сакталды",
+    "courseCodeSavedExplanation": "Катталыңыз же кириңиз, биз сизди курсуңузга кошо алабыз."
 }
