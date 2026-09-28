@@ -1,12 +1,16 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 
 import 'package:collection/collection.dart';
 import 'package:flutter_vodozemac/flutter_vodozemac.dart' as vod;
 import 'package:matrix/encryption/utils/key_verification.dart';
 import 'package:matrix/matrix.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fluffychat/config/setting_keys.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/calls/call_timeline_event.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/extensions/pangea_event_extension.dart';
@@ -58,6 +62,7 @@ abstract class ClientManager {
                   // Pangea#
                 },
               )
+              .then((_) => renewExpiredToken(client))
               .catchError(
                 (e, s) => Logs().e('Unable to initialize client', e, s),
               ),
@@ -76,6 +81,40 @@ abstract class ClientManager {
       await store.setStringList(clientNamespace, clientNames.toList());
     }
     return clients;
+  }
+
+  /// How long startup waits for an expired access token to be renewed before
+  /// carrying on without it (session-lifetime.instructions.md).
+  static const Duration tokenRenewalWait = Duration(seconds: 10);
+
+  /// Renews [client]'s access token when it has expired or is about to, so
+  /// the app's first requests don't go out with a token the server refuses.
+  /// Tokens last 24 hours, so a learner who opens the app less than daily
+  /// restores an expired one; the SDK otherwise renews it only from its sync
+  /// loop, racing every startup request (#9304). Offline the renewal cannot
+  /// finish: after [wait] startup carries on and the SDK retries it on the
+  /// next sync.
+  @visibleForTesting
+  static Future<void> renewExpiredToken(
+    Client client, {
+    Duration wait = tokenRenewalWait,
+  }) async {
+    if (!client.isLogged()) return;
+    try {
+      await client.ensureNotSoftLoggedOut().timeout(wait);
+    } on TimeoutException {
+      // silent-ok: offline or slow network; the SDK retries on the next sync.
+      Logs().w('Token renewal took over ${wait.inSeconds}s; starting without');
+    } on MatrixException catch (e, s) {
+      // The homeserver rejected the session and the SDK has signed out, so
+      // the app starts on the signed-out screen.
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {'client_name': client.clientName},
+        level: SentryLevel.warning,
+      );
+    }
   }
 
   /// The signed-out clients [getClients] forgets — never all of them. A
