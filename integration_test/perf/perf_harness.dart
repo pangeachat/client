@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/widgets.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
@@ -179,6 +180,31 @@ Future<void> waitFor(
     await pause(tester, const Duration(milliseconds: 250));
   }
 }
+
+/// The main list of [view]: the vertical scroll view with the most content,
+/// inside it or around it. Fails when there is none.
+ScrollableState mainScrollable(Finder view, String name) {
+  final candidates =
+      [
+            ...find
+                .descendant(of: view, matching: find.byType(Scrollable))
+                .evaluate(),
+            ...find
+                .ancestor(of: view, matching: find.byType(Scrollable))
+                .evaluate(),
+          ]
+          .map((e) => (e as StatefulElement).state as ScrollableState)
+          .where((s) => s.position.axis == Axis.vertical);
+  if (candidates.isEmpty) fail('The $name has no vertical list.');
+  return candidates.reduce(
+    (a, b) => a.position.maxScrollExtent >= b.position.maxScrollExtent ? a : b,
+  );
+}
+
+/// Finds [scrollable] by its state, which survives a rebuild of its widget.
+Finder findScrollable(ScrollableState scrollable) => find.byElementPredicate(
+  (e) => e is StatefulElement && e.state == scrollable,
+);
 
 /// Collects every frame's timing between [start] and [stop].
 class FrameRecorder {

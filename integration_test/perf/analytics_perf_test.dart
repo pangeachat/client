@@ -1,5 +1,3 @@
-import 'package:flutter/widgets.dart';
-
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/main.dart' as app;
@@ -79,25 +77,8 @@ void main() => benchmark(
     // Let the analytics load and the list settle before measuring.
     await pause(tester, const Duration(seconds: 8));
 
-    // The panel's main list: the vertical scroll view with the most content,
-    // inside the panel or around it.
-    final candidates =
-        [
-              ...find
-                  .descendant(of: view, matching: find.byType(Scrollable))
-                  .evaluate(),
-              ...find
-                  .ancestor(of: view, matching: find.byType(Scrollable))
-                  .evaluate(),
-            ]
-            .map((e) => (e as StatefulElement).state as ScrollableState)
-            .where((s) => s.position.axis == Axis.vertical);
-    if (candidates.isEmpty) fail('The $panel panel has no vertical list.');
-    final scrollable = candidates.reduce(
-      (a, b) =>
-          a.position.maxScrollExtent >= b.position.maxScrollExtent ? a : b,
-    );
-    final list = find.byWidget(scrollable.widget);
+    final scrollable = mainScrollable(view, '$panel panel');
+    final list = findScrollable(scrollable);
     // The drags reach 800 px down; a shorter panel would measure a list
     // hitting its end.
     final content = scrollable.position.maxScrollExtent;
