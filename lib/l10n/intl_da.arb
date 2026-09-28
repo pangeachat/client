@@ -1334,7 +1334,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-09-23 15:42:43.514136",
+    "@@last_modified": "2026-09-28 13:21:17.214195",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10881,5 +10881,6 @@
     "goalReportErrorRetry": "Søgningen efter turen blev ikke afsluttet. Prøv igen.",
     "summaryFeedbackReceived": "Tak! Vi har modtaget din feedback.",
     "summaryFeedbackFailed": "Kunne ikke sende din feedback. Prøv venligst igen.",
-    "summaryFeedbackProcessing": "Sender din feedback og opdaterer opsummeringen…"
+    "summaryFeedbackProcessing": "Sender din feedback og opdaterer opsummeringen…",
+    "callTranscriptNotSubscribed": "{name} havde ikke et abonnement under dette opkald, så det, der blev sagt, blev ikke transskriberet."
 }

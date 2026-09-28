@@ -51,6 +51,7 @@ typedef TranscriptPublisher =
       required int chunksCaptured,
       required int chunksTranscribed,
       required int chunksLost,
+      required int chunksRefusedUnsubscribed,
       required int chunksSuppressed,
       required bool captureRefused,
       required bool drainComplete,
@@ -471,6 +472,7 @@ class CallRecord {
     final chunksCaptured = transcripts.chunksCaptured;
     final chunksTranscribed = transcripts.chunksTranscribed;
     final chunksLost = transcripts.chunksLost;
+    final chunksRefusedUnsubscribed = transcripts.chunksRefusedUnsubscribed;
     final chunksSuppressed = transcripts.chunksSuppressed;
     // Meaningful only once the sink has closed, which the capture service does
     // before this runs. Read earlier it would be the optimistic default and a
@@ -497,6 +499,7 @@ class CallRecord {
           chunksCaptured: chunksCaptured,
           chunksTranscribed: chunksTranscribed,
           chunksLost: chunksLost,
+          chunksRefusedUnsubscribed: chunksRefusedUnsubscribed,
           chunksSuppressed: chunksSuppressed,
           captureRefused: captureRefused,
           drainComplete: drainComplete,
@@ -560,6 +563,7 @@ class CallRecord {
         'chunksCaptured': chunksCaptured,
         'chunksTranscribed': chunksTranscribed,
         'chunksLost': chunksLost,
+        'chunksRefusedUnsubscribed': chunksRefusedUnsubscribed,
         'chunksSuppressed': chunksSuppressed,
         'captureRefused': captureRefused,
         'drainComplete': drainComplete,

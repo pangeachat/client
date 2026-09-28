@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-23 15:42:49.934415",
+    "@@last_modified": "2026-09-28 13:21:24.550367",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7253,5 +7253,6 @@
     "goalReportErrorRetry": "Việc tìm kiếm lượt chưa hoàn tất. Vui lòng thử lại.",
     "summaryFeedbackReceived": "Cảm ơn! Chúng tôi đã nhận được phản hồi của bạn.",
     "summaryFeedbackFailed": "Không thể gửi phản hồi của bạn. Vui lòng thử lại.",
-    "summaryFeedbackProcessing": "Đang gửi phản hồi của bạn và cập nhật tóm tắt…"
+    "summaryFeedbackProcessing": "Đang gửi phản hồi của bạn và cập nhật tóm tắt…",
+    "callTranscriptNotSubscribed": "{name} không có gói đăng ký trong cuộc gọi này, vì vậy những gì đã nói không được phiên âm."
 }

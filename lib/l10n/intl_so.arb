@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-09-23 15:42:49.200067",
+    "@@last_modified": "2026-09-28 13:21:23.006211",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "Raadinta wareegga ma dhammaan. Isku day mar kale.",
     "summaryFeedbackReceived": "Waad ku mahadsan tahay! Waxaan helnay jawaab celintaada.",
     "summaryFeedbackFailed": "Lama soo diri karin jawaab celintaada. Fadlan mar kale isku day.",
-    "summaryFeedbackProcessing": "Waxaan diraynaa jawaab celintaada oo waxaan cusboonaysiinaynaa soo koobidda…"
+    "summaryFeedbackProcessing": "Waxaan diraynaa jawaab celintaada oo waxaan cusboonaysiinaynaa soo koobidda…",
+    "callTranscriptNotSubscribed": "{name} ma lahayn rukumo intii uu socday wicitaankan, sidaa darteed waxa la yidhi lama qorin."
 }
