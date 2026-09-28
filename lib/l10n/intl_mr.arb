@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-09-23 15:42:47.391337",
+    "@@last_modified": "2026-09-28 16:36:16.259656",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2369,5 +2369,11 @@
     "goalReportErrorRetry": "टर्नचा शोध पूर्ण झाला नाही. पुन्हा प्रयत्न करा.",
     "summaryFeedbackReceived": "धन्यवाद! आम्हाला तुमचा अभिप्राय मिळाला आहे.",
     "summaryFeedbackFailed": "तुमचा अभिप्राय पाठवता आला नाही. कृपया पुन्हा प्रयत्न करा.",
-    "summaryFeedbackProcessing": "तुमचा अभिप्राय पाठवत आहे आणि सारांश अपडेट करत आहे…"
+    "summaryFeedbackProcessing": "तुमचा अभिप्राय पाठवत आहे आणि सारांश अपडेट करत आहे…",
+    "callTranscriptTranscribing": "{name} कडून रेकॉर्डिंगचे लिप्यंतरण अजूनही सुरू आहे…",
+    "callTranscriptSeekTo": "{time} पासून प्ले करा",
+    "callTranscriptRecordings": "रेकॉर्डिंग्ज",
+    "callTranscriptFullCall": "पूर्ण कॉल",
+    "callTranscriptPreparingRecording": "पूर्ण रेकॉर्डिंग तयार करत आहे…",
+    "callTranscriptNoRecording": "पूर्ण कॉलचे कोणतेही रेकॉर्डिंग नाही."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-23 15:42:46.132155",
+    "@@last_modified": "2026-09-28 16:36:14.396020",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10154,5 +10154,11 @@
     "goalReportErrorRetry": "턴 검색이 완료되지 않았습니다. 다시 시도해주세요.",
     "summaryFeedbackReceived": "감사합니다! 피드백이 접수되었습니다.",
     "summaryFeedbackFailed": "피드백을 보낼 수 없습니다. 다시 시도해 주세요.",
-    "summaryFeedbackProcessing": "피드백을 보내고 요약을 업데이트하는 중…"
+    "summaryFeedbackProcessing": "피드백을 보내고 요약을 업데이트하는 중…",
+    "callTranscriptTranscribing": "{name}님의 녹음을 여전히 전사 중입니다…",
+    "callTranscriptSeekTo": "{time}부터 재생",
+    "callTranscriptRecordings": "녹음",
+    "callTranscriptFullCall": "전체 통화",
+    "callTranscriptPreparingRecording": "전체 녹음 준비 중…",
+    "callTranscriptNoRecording": "전체 통화 녹음이 없습니다."
 }

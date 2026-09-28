@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-23 15:42:43.478561",
+    "@@last_modified": "2026-09-28 16:36:10.307201",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10088,5 +10088,11 @@
     "goalReportErrorRetry": "La cerca del torn no ha finalitzat. Torna-ho a provar.",
     "summaryFeedbackReceived": "Gràcies! Hem rebut els teus comentaris.",
     "summaryFeedbackFailed": "No s'han pogut enviar els teus comentaris. Torna-ho a provar.",
-    "summaryFeedbackProcessing": "S'està enviant el teu feedback i actualitzant el resum…"
+    "summaryFeedbackProcessing": "S'està enviant el teu feedback i actualitzant el resum…",
+    "callTranscriptTranscribing": "Encara s'està transcrivint l'enregistrament de {name}…",
+    "callTranscriptSeekTo": "Reproduir des de les {time}",
+    "callTranscriptRecordings": "Enregistraments",
+    "callTranscriptFullCall": "Trucada completa",
+    "callTranscriptPreparingRecording": "S'està preparant l'enregistrament complet…",
+    "callTranscriptNoRecording": "No hi ha enregistrament de la trucada completa."
 }

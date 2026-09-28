@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-23 15:42:49.934415",
+    "@@last_modified": "2026-09-28 16:36:20.454921",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7253,5 +7253,11 @@
     "goalReportErrorRetry": "Việc tìm kiếm lượt chưa hoàn tất. Vui lòng thử lại.",
     "summaryFeedbackReceived": "Cảm ơn! Chúng tôi đã nhận được phản hồi của bạn.",
     "summaryFeedbackFailed": "Không thể gửi phản hồi của bạn. Vui lòng thử lại.",
-    "summaryFeedbackProcessing": "Đang gửi phản hồi của bạn và cập nhật tóm tắt…"
+    "summaryFeedbackProcessing": "Đang gửi phản hồi của bạn và cập nhật tóm tắt…",
+    "callTranscriptTranscribing": "Đang chép lại bản ghi âm từ {name}…",
+    "callTranscriptSeekTo": "Phát từ {time}",
+    "callTranscriptRecordings": "Bản ghi âm",
+    "callTranscriptFullCall": "Toàn bộ cuộc gọi",
+    "callTranscriptPreparingRecording": "Đang chuẩn bị bản ghi âm đầy đủ…",
+    "callTranscriptNoRecording": "Không có bản ghi âm toàn bộ cuộc gọi."
 }

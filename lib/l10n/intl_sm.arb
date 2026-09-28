@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-09-23 15:42:48.891656",
+    "@@last_modified": "2026-09-28 16:36:19.153827",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2369,5 +2369,11 @@
     "goalReportErrorRetry": "E leʻi maeʻa le suʻesuʻega mo le taʻamilosaga. Toe taumafai.",
     "summaryFeedbackReceived": "Fa'afetai! Ua matou mauaina lau fa'amatalaga.",
     "summaryFeedbackFailed": "E le'i mafai ona lafo lau fa'amatalaga. Fa'amolemole toe taumafai.",
-    "summaryFeedbackProcessing": "Lafoina au manatu faaalia ma faafouina le aotelega…"
+    "summaryFeedbackProcessing": "Lafoina au manatu faaalia ma faafouina le aotelega…",
+    "callTranscriptTranscribing": "O loʻo faʻaliliuina pea le puʻeina mai ia {name}…",
+    "callTranscriptSeekTo": "Tā mai le {time}",
+    "callTranscriptRecordings": "Puʻeina",
+    "callTranscriptFullCall": "Valaʻau atoa",
+    "callTranscriptPreparingRecording": "O loʻo saunia le puʻeina atoa…",
+    "callTranscriptNoRecording": "Leai se puʻeina o le valaʻau atoa."
 }

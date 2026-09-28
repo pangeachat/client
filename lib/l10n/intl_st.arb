@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-09-23 15:42:49.287634",
+    "@@last_modified": "2026-09-28 16:36:19.440335",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2369,5 +2369,11 @@
     "goalReportErrorRetry": "Patlisiso ya naledi ha e a fela. Leka hape.",
     "summaryFeedbackReceived": "Kea leboha! Re amohetse maikutlo a hau.",
     "summaryFeedbackFailed": "Ha rea khona ho romela maikutlo a hau. Ka kopo leka hape.",
-    "summaryFeedbackProcessing": "Re romela maikutlo a hao le ho ntlafatsa kakaretso…"
+    "summaryFeedbackProcessing": "Re romela maikutlo a hao le ho ntlafatsa kakaretso…",
+    "callTranscriptTranscribing": "Ke ntse ke ngola seo ho builoeng ka sona ho {name}…",
+    "callTranscriptSeekTo": "Bapala ho tloha ka {time}",
+    "callTranscriptRecordings": "Direkoto",
+    "callTranscriptFullCall": "Puisano e felletseng",
+    "callTranscriptPreparingRecording": "Ho lokisoa rekoto e felletseng…",
+    "callTranscriptNoRecording": "Ha ho rekoto ea puisano e felletseng."
 }

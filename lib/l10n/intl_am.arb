@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-09-23 15:42:42.985649",
+    "@@last_modified": "2026-09-28 16:36:09.624920",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2369,5 +2369,11 @@
     "goalReportErrorRetry": "የተራው ፍለጋ አልተጠናቀቀም። እንደገና ይሞክሩ።",
     "summaryFeedbackReceived": "እናመሰግናለን! አስተያየትዎን ተቀብለናል።",
     "summaryFeedbackFailed": "አስተያየትዎን መላክ አልተቻለም። እባክዎ እንደገና ይሞክሩ።",
-    "summaryFeedbackProcessing": "አስተያየትዎን በመላክ ላይ እና ማጠቃለያውን በማዘመን ላይ…"
+    "summaryFeedbackProcessing": "አስተያየትዎን በመላክ ላይ እና ማጠቃለያውን በማዘመን ላይ…",
+    "callTranscriptTranscribing": "ከ{name} የመጣውን ቅጂ አሁንም እየገለበጥን ነው…",
+    "callTranscriptSeekTo": "ከ{time} አጫውት",
+    "callTranscriptRecordings": "ቅጂዎች",
+    "callTranscriptFullCall": "ሙሉ ጥሪ",
+    "callTranscriptPreparingRecording": "ሙሉ ቅጂውን በማዘጋጀት ላይ…",
+    "callTranscriptNoRecording": "የሙሉ ጥሪው ቅጂ የለም።"
 }

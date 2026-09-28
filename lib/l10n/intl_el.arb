@@ -3400,7 +3400,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-09-23 15:42:43.790705",
+    "@@last_modified": "2026-09-28 16:36:10.701418",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10836,5 +10836,11 @@
     "goalReportErrorRetry": "Η αναζήτηση για τη σειρά δεν ολοκληρώθηκε. Δοκιμάστε ξανά.",
     "summaryFeedbackReceived": "Ευχαριστούμε! Λάβαμε τα σχόλιά σας.",
     "summaryFeedbackFailed": "Δεν ήταν δυνατή η αποστολή των σχολίων σας. Παρακαλώ δοκιμάστε ξανά.",
-    "summaryFeedbackProcessing": "Αποστολή των σχολίων σας και ενημέρωση της σύνοψης…"
+    "summaryFeedbackProcessing": "Αποστολή των σχολίων σας και ενημέρωση της σύνοψης…",
+    "callTranscriptTranscribing": "Ακόμα μεταγράφεται η ηχογράφηση από τον/την {name}…",
+    "callTranscriptSeekTo": "Αναπαραγωγή από {time}",
+    "callTranscriptRecordings": "Ηχογραφήσεις",
+    "callTranscriptFullCall": "Πλήρης κλήση",
+    "callTranscriptPreparingRecording": "Προετοιμασία της πλήρους ηχογράφησης…",
+    "callTranscriptNoRecording": "Δεν υπάρχει ηχογράφηση της πλήρους κλήσης."
 }

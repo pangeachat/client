@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-09-23 15:42:44.494487",
+    "@@last_modified": "2026-09-28 16:36:12.058014",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2369,5 +2369,11 @@
     "goalReportErrorRetry": "ટર્ન માટેની શોધ પૂર્ણ થઈ નથી. ફરી પ્રયાસ કરો.",
     "summaryFeedbackReceived": "આભાર! અમને તમારો પ્રતિભાવ મળ્યો.",
     "summaryFeedbackFailed": "તમારો પ્રતિભાવ મોકલી શકાયો નથી. કૃપા કરીને ફરી પ્રયાસ કરો.",
-    "summaryFeedbackProcessing": "તમારા પ્રતિભાવ મોકલી રહ્યા છીએ અને સારાંશ અપડેટ કરી રહ્યા છીએ…"
+    "summaryFeedbackProcessing": "તમારા પ્રતિભાવ મોકલી રહ્યા છીએ અને સારાંશ અપડેટ કરી રહ્યા છીએ…",
+    "callTranscriptTranscribing": "{name} ના રેકોર્ડિંગનું હજી ટ્રાન્સક્રિપ્શન ચાલુ છે…",
+    "callTranscriptSeekTo": "{time} થી ચલાવો",
+    "callTranscriptRecordings": "રેકોર્ડિંગ્સ",
+    "callTranscriptFullCall": "સંપૂર્ણ કૉલ",
+    "callTranscriptPreparingRecording": "સંપૂર્ણ રેકોર્ડિંગ તૈયાર થઈ રહ્યું છે…",
+    "callTranscriptNoRecording": "સંપૂર્ણ કૉલનું કોઈ રેકોર્ડિંગ નથી."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-09-23 15:42:47.991881",
+    "@@last_modified": "2026-09-28 16:36:17.508181",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2369,5 +2369,11 @@
     "goalReportErrorRetry": "Kufufuza kwa nthawiyo sikunamalizidwe. Yesaninso.",
     "summaryFeedbackReceived": "Zikomo! Talandira ndemanga yanu.",
     "summaryFeedbackFailed": "Zalephera kutumiza ndemanga yanu. Chonde yesaninso.",
-    "summaryFeedbackProcessing": "Kutumiza ndemanga yanu ndikusintha chidule…"
+    "summaryFeedbackProcessing": "Kutumiza ndemanga yanu ndikusintha chidule…",
+    "callTranscriptTranscribing": "Tikulemba mawu ochokera kwa {name}…",
+    "callTranscriptSeekTo": "Sewerani kuyambira {time}",
+    "callTranscriptRecordings": "Zojambulidwa",
+    "callTranscriptFullCall": "Kuyimba konse",
+    "callTranscriptPreparingRecording": "Tikukonza zojambulidwa zonse…",
+    "callTranscriptNoRecording": "Palibe chojambulidwa cha kuyimba konse."
 }

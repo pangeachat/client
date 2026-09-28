@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-23 15:42:45.267885",
+    "@@last_modified": "2026-09-28 16:36:13.387104",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10034,5 +10034,11 @@
     "goalReportErrorRetry": "Pencarian giliran belum selesai. Coba lagi.",
     "summaryFeedbackReceived": "Terima kasih! Kami telah menerima masukan Anda.",
     "summaryFeedbackFailed": "Tidak dapat mengirim masukan Anda. Silakan coba lagi.",
-    "summaryFeedbackProcessing": "Mengirim masukan Anda dan memperbarui ringkasan…"
+    "summaryFeedbackProcessing": "Mengirim masukan Anda dan memperbarui ringkasan…",
+    "callTranscriptTranscribing": "Masih menyalin rekaman dari {name}...",
+    "callTranscriptSeekTo": "Putar dari {time}",
+    "callTranscriptRecordings": "Rekaman",
+    "callTranscriptFullCall": "Panggilan lengkap",
+    "callTranscriptPreparingRecording": "Mempersiapkan rekaman lengkap...",
+    "callTranscriptNoRecording": "Tidak ada rekaman panggilan lengkap."
 }

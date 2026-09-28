@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-09-23 15:42:47.493611",
+    "@@last_modified": "2026-09-28 16:36:16.809466",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2369,5 +2369,11 @@
     "goalReportErrorRetry": "It-tfittxija għad-dawra ma spiċċatx. Erġa' pprova.",
     "summaryFeedbackReceived": "Grazzi! Irċevejna l-feedback tiegħek.",
     "summaryFeedbackFailed": "Ma setax jintbagħat il-feedback tiegħek. Jekk jogħġbok erġa' pprova.",
-    "summaryFeedbackProcessing": "Qed nibagħtu l-feedback tiegħek u naġġornaw is-sommarju…"
+    "summaryFeedbackProcessing": "Qed nibagħtu l-feedback tiegħek u naġġornaw is-sommarju…",
+    "callTranscriptTranscribing": "Għaddejja traskrizzjoni tar-reġistrazzjoni minn {name}…",
+    "callTranscriptSeekTo": "Ilgħab minn {time}",
+    "callTranscriptRecordings": "Reġistrazzjonijiet",
+    "callTranscriptFullCall": "Sejħa sħiħa",
+    "callTranscriptPreparingRecording": "Qed titħejja r-reġistrazzjoni sħiħa…",
+    "callTranscriptNoRecording": "L-ebda reġistrazzjoni tas-sejħa sħiħa."
 }

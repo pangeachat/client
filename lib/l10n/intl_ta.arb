@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-23 15:42:49.377243",
+    "@@last_modified": "2026-09-28 16:36:19.942809",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -10053,5 +10053,11 @@
     "goalReportErrorRetry": "திருப்பத்திற்கான தேடல் முடிவடையவில்லை. மீண்டும் முயற்சிக்கவும்.",
     "summaryFeedbackReceived": "நன்றி! உங்கள் கருத்து எங்களுக்குக் கிடைத்தது.",
     "summaryFeedbackFailed": "உங்கள் கருத்தை அனுப்ப முடியவில்லை. மீண்டும் முயற்சிக்கவும்.",
-    "summaryFeedbackProcessing": "உங்கள் கருத்தை அனுப்பி, சுருக்கத்தைப் புதுப்பிக்கிறது…"
+    "summaryFeedbackProcessing": "உங்கள் கருத்தை அனுப்பி, சுருக்கத்தைப் புதுப்பிக்கிறது…",
+    "callTranscriptTranscribing": "{name} இலிருந்து பதிவை இன்னும் படியெடுத்துக்கொண்டிருக்கிறது…",
+    "callTranscriptSeekTo": "{time} இலிருந்து இயக்கு",
+    "callTranscriptRecordings": "பதிவுகள்",
+    "callTranscriptFullCall": "முழு அழைப்பு",
+    "callTranscriptPreparingRecording": "முழு பதிவும் தயாராகிறது…",
+    "callTranscriptNoRecording": "முழு அழைப்பிலும் பதிவு இல்லை."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-09-23 15:42:50.199272",
+    "@@last_modified": "2026-09-28 16:36:20.395705",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2369,5 +2369,11 @@
     "goalReportErrorRetry": "نۆۋەتنى ئىزدەش ئاخىرلاشمىدى. قايتا سىناڭ.",
     "summaryFeedbackReceived": "رەھمەت! تەكلىپىڭىزنى تاپشۇرۇۋالدۇق.",
     "summaryFeedbackFailed": "تەكلىپىڭىزنى ئەۋەتكىلى بولمىدى. قايتا سىناپ بېقىڭ.",
-    "summaryFeedbackProcessing": "پىكىر-تەكلىپىڭىزنى يوللاۋاتىمىز ۋە خۇلاسىنى يېڭىلاۋاتىمىز…"
+    "summaryFeedbackProcessing": "پىكىر-تەكلىپىڭىزنى يوللاۋاتىمىز ۋە خۇلاسىنى يېڭىلاۋاتىمىز…",
+    "callTranscriptTranscribing": "{name} دىن كەلگەن خاتىرىنى يەنىلا تەرجىمە قىلىۋاتىدۇ…",
+    "callTranscriptSeekTo": "{time} دىن باشلاپ قويۇش",
+    "callTranscriptRecordings": "خاتىرىلەر",
+    "callTranscriptFullCall": "تولۇق تېلېفون",
+    "callTranscriptPreparingRecording": "تولۇق خاتىرىنى تەييارلاۋاتىدۇ…",
+    "callTranscriptNoRecording": "تولۇق تېلېفوننىڭ خاتىرىسى يوق."
 }

@@ -2080,7 +2080,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-09-23 15:42:44.064183",
+    "@@last_modified": "2026-09-28 16:36:12.747331",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10821,5 +10821,11 @@
     "goalReportErrorRetry": "Hindi natapos ang paghahanap para sa turn. Subukang muli.",
     "summaryFeedbackReceived": "Salamat! Natanggap namin ang iyong feedback.",
     "summaryFeedbackFailed": "Hindi maipadala ang iyong feedback. Pakisubukang muli.",
-    "summaryFeedbackProcessing": "Ipinapadala ang iyong feedback at ina-update ang buod…"
+    "summaryFeedbackProcessing": "Ipinapadala ang iyong feedback at ina-update ang buod…",
+    "callTranscriptTranscribing": "Isinasalin pa rin ang recording mula kay {name}...",
+    "callTranscriptSeekTo": "I-play mula {time}",
+    "callTranscriptRecordings": "Mga Recording",
+    "callTranscriptFullCall": "Buong tawag",
+    "callTranscriptPreparingRecording": "Inihahanda ang buong recording...",
+    "callTranscriptNoRecording": "Walang recording ng buong tawag."
 }

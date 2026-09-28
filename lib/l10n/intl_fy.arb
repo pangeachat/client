@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-09-23 15:42:44.310605",
+    "@@last_modified": "2026-09-28 16:36:11.545087",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2369,5 +2369,11 @@
     "goalReportErrorRetry": "It sykjen nei de beurt is net foltôge. Besykje it opnij.",
     "summaryFeedbackReceived": "Tankewol! Wy hawwe jo feedback ûntfongen.",
     "summaryFeedbackFailed": "Koe jo feedback net ferstjoere. Besykje it opnij.",
-    "summaryFeedbackProcessing": "Jo feedback ferstjoere en de gearfetting bywurkje…"
+    "summaryFeedbackProcessing": "Jo feedback ferstjoere en de gearfetting bywurkje…",
+    "callTranscriptTranscribing": "De opname fan {name} wurdt noch transkribearre…",
+    "callTranscriptSeekTo": "Ofspylje fan {time}",
+    "callTranscriptRecordings": "Opnamen",
+    "callTranscriptFullCall": "Folsleine oprop",
+    "callTranscriptPreparingRecording": "De folsleine opname wurdt taret…",
+    "callTranscriptNoRecording": "Gjin opname fan de folsleine oprop."
 }

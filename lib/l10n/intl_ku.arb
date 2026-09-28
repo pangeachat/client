@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-09-23 15:42:46.146093",
+    "@@last_modified": "2026-09-28 16:36:15.389708",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2369,5 +2369,11 @@
     "goalReportErrorRetry": "گەڕان بەدوای نۆرەکەدا تەواو نەبوو. دووبارە هەوڵبدەوە.",
     "summaryFeedbackReceived": "سوپاس! فیدباکەکەت وەرگیرا.",
     "summaryFeedbackFailed": "نەتوانرا فیدباکەکەت بنێردرێت. تکایە دووبارە هەوڵبدەرەوە.",
-    "summaryFeedbackProcessing": "ناردنی فیدباکەکەت و نوێکردنەوەی پوختەکە…"
+    "summaryFeedbackProcessing": "ناردنی فیدباکەکەت و نوێکردنەوەی پوختەکە…",
+    "callTranscriptTranscribing": "هێشتا تۆمارکردنەکە لە {name}ەوە دەگۆڕدرێت بۆ نووسین…",
+    "callTranscriptSeekTo": "لەوەتەی {time} لێبدە",
+    "callTranscriptRecordings": "تۆمارەکان",
+    "callTranscriptFullCall": "پەیوەندی تەواو",
+    "callTranscriptPreparingRecording": "ئامادەکردنی تۆمارکردنی تەواو…",
+    "callTranscriptNoRecording": "هیچ تۆمارێک لە پەیوەندی تەواودا نییە."
 }

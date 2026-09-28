@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-09-23 15:42:48.119045",
+    "@@last_modified": "2026-09-28 16:36:18.045075",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2369,5 +2369,11 @@
     "goalReportErrorRetry": "د وار لټون پای ته ونه رسید. بیا هڅه وکړئ.",
     "summaryFeedbackReceived": "مننه! موږ ستاسو نظر ترلاسه کړ.",
     "summaryFeedbackFailed": "ستاسو نظر نشو لیږلی. مهرباني وکړئ بیا هڅه وکړئ.",
-    "summaryFeedbackProcessing": "ستاسو نظر استول کیږي او لنډیز تازه کیږي…"
+    "summaryFeedbackProcessing": "ستاسو نظر استول کیږي او لنډیز تازه کیږي…",
+    "callTranscriptTranscribing": "لا تر اوسه د {name} څخه ثبت شوې خبرې لیکل کیږي…",
+    "callTranscriptSeekTo": "له {time} څخه پلی کړئ",
+    "callTranscriptRecordings": "ریکارډونه",
+    "callTranscriptFullCall": "بشپړ زنګ",
+    "callTranscriptPreparingRecording": "د بشپړ ریکارډ چمتو کول…",
+    "callTranscriptNoRecording": "د بشپړ زنګ هیڅ ریکارډ نشته."
 }

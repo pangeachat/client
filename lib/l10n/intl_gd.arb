@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-09-23 15:42:44.921766",
+    "@@last_modified": "2026-09-28 16:36:12.278011",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2369,5 +2369,11 @@
     "goalReportErrorRetry": "Cha do chrìochnaich an rannsachadh airson an tionndaidh. Feuch ris a-rithist.",
     "summaryFeedbackReceived": "Tapadh leat! Fhuair sinn d' fhios air ais.",
     "summaryFeedbackFailed": "Cha b' urrainn dhuinn d' fhios air ais a chur. Feuch ris a-rithist.",
-    "summaryFeedbackProcessing": "A’ cur do fhios air ais agus ag ùrachadh an ath-ghoirid…"
+    "summaryFeedbackProcessing": "A’ cur do fhios air ais agus ag ùrachadh an ath-ghoirid…",
+    "callTranscriptTranscribing": "Fhathast a’ tar-sgrìobhadh an clàraidh bho {name}…",
+    "callTranscriptSeekTo": "Cluich bho {time}",
+    "callTranscriptRecordings": "Clàraidhean",
+    "callTranscriptFullCall": "Gairm slàn",
+    "callTranscriptPreparingRecording": "Ag ullachadh a’ chlàraidh slàin…",
+    "callTranscriptNoRecording": "Chan eil clàradh den ghairm slàn ann."
 }

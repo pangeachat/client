@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-23 15:42:48.170120",
+    "@@last_modified": "2026-09-28 16:36:17.842830",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9961,5 +9961,11 @@
     "goalReportErrorRetry": "A busca pela vez não terminou. Tente novamente.",
     "summaryFeedbackReceived": "Obrigado! Recebemos seu feedback.",
     "summaryFeedbackFailed": "Não foi possível enviar seu feedback. Por favor, tente novamente.",
-    "summaryFeedbackProcessing": "Enviando seu feedback e atualizando o resumo…"
+    "summaryFeedbackProcessing": "Enviando seu feedback e atualizando o resumo…",
+    "callTranscriptTranscribing": "Ainda transcrevendo a gravação de {name}…",
+    "callTranscriptSeekTo": "Reproduzir de {time}",
+    "callTranscriptRecordings": "Gravações",
+    "callTranscriptFullCall": "Chamada completa",
+    "callTranscriptPreparingRecording": "Preparando a gravação completa…",
+    "callTranscriptNoRecording": "Nenhuma gravação da chamada completa."
 }

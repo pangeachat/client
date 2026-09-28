@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-09-23 15:42:43.192708",
+    "@@last_modified": "2026-09-28 16:36:09.931817",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2369,5 +2369,11 @@
     "goalReportErrorRetry": "টাৰ্ণৰ সন্ধান শেষ হোৱা নাই। পুনৰ চেষ্টা কৰক।",
     "summaryFeedbackReceived": "ধন্যবাদ! আমি আপোনাৰ মতামত পালোঁ।",
     "summaryFeedbackFailed": "আপোনাৰ মতামত পঠিয়াব পৰা নগ'ল। অনুগ্ৰহ কৰি পুনৰ চেষ্টা কৰক।",
-    "summaryFeedbackProcessing": "আপোনাৰ মতামত পঠোৱা হৈছে আৰু সাৰাংশ আপডেইট কৰা হৈছে…"
+    "summaryFeedbackProcessing": "আপোনাৰ মতামত পঠোৱা হৈছে আৰু সাৰাংশ আপডেইট কৰা হৈছে…",
+    "callTranscriptTranscribing": "{name}ৰ পৰা ৰেকৰ্ডিংটো এতিয়াও ট্ৰান্সক্ৰাইব কৰি থকা হৈছে…",
+    "callTranscriptSeekTo": "{time}ৰ পৰা চলাওক",
+    "callTranscriptRecordings": "ৰেকৰ্ডিংসমূহ",
+    "callTranscriptFullCall": "সম্পূৰ্ণ কল",
+    "callTranscriptPreparingRecording": "সম্পূৰ্ণ ৰেকৰ্ডিং প্ৰস্তুত কৰা হৈছে…",
+    "callTranscriptNoRecording": "সম্পূৰ্ণ কলৰ কোনো ৰেকৰ্ডিং নাই।"
 }

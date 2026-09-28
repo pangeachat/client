@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-09-23 15:42:48.815092",
+    "@@last_modified": "2026-09-28 16:36:18.889329",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2369,5 +2369,11 @@
     "goalReportErrorRetry": "Kërkimi për kthesën nuk përfundoi. Provo përsëri.",
     "summaryFeedbackReceived": "Faleminderit! E morëm reagimin tuaj.",
     "summaryFeedbackFailed": "Nuk u dërgua dot reagimi juaj. Ju lutemi provoni sërish.",
-    "summaryFeedbackProcessing": "Po dërgohet komenti juaj dhe po përditësohet përmbledhja…"
+    "summaryFeedbackProcessing": "Po dërgohet komenti juaj dhe po përditësohet përmbledhja…",
+    "callTranscriptTranscribing": "Po transkriptohet ende regjistrimi nga {name}…",
+    "callTranscriptSeekTo": "Luaj nga {time}",
+    "callTranscriptRecordings": "Regjistrimet",
+    "callTranscriptFullCall": "Telefonata e plotë",
+    "callTranscriptPreparingRecording": "Po përgatitet regjistrimi i plotë…",
+    "callTranscriptNoRecording": "Nuk ka regjistrim të telefonatës së plotë."
 }

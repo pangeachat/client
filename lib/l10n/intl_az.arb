@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-09-23 15:42:43.349129",
+    "@@last_modified": "2026-09-28 16:36:09.749578",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2369,5 +2369,11 @@
     "goalReportErrorRetry": "Növbənin axtarışı başa çatmadı. Yenidən cəhd edin.",
     "summaryFeedbackReceived": "Təşəkkürlər! Rəyinizi aldıq.",
     "summaryFeedbackFailed": "Rəyinizi göndərmək mümkün olmadı. Zəhmət olmasa, yenidən cəhd edin.",
-    "summaryFeedbackProcessing": "Rəyinizi göndəririk və xülasəni yeniləyirik…"
+    "summaryFeedbackProcessing": "Rəyinizi göndəririk və xülasəni yeniləyirik…",
+    "callTranscriptTranscribing": "{name} adlı istifadəçidən gələn səsyazma hələ də transkripsiya edilir…",
+    "callTranscriptSeekTo": "{time} vaxtından səsləndir",
+    "callTranscriptRecordings": "Səsyazmalar",
+    "callTranscriptFullCall": "Bütün zəng",
+    "callTranscriptPreparingRecording": "Tam səsyazma hazırlanır…",
+    "callTranscriptNoRecording": "Tam zəngin səsyazması yoxdur."
 }

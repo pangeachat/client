@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-09-23 15:42:47.918487",
+    "@@last_modified": "2026-09-28 16:36:17.639134",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10046,5 +10046,11 @@
     "goalReportErrorRetry": "Wyszukiwanie tury nie zostało zakończone. Spróbuj ponownie.",
     "summaryFeedbackReceived": "Dziękujemy! Otrzymaliśmy Twoją opinię.",
     "summaryFeedbackFailed": "Nie udało się wysłać Twojej opinii. Spróbuj ponownie.",
-    "summaryFeedbackProcessing": "Wysyłanie opinii i aktualizowanie podsumowania…"
+    "summaryFeedbackProcessing": "Wysyłanie opinii i aktualizowanie podsumowania…",
+    "callTranscriptTranscribing": "Nadal transkrybuję nagranie od {name}…",
+    "callTranscriptSeekTo": "Odtwórz od {time}",
+    "callTranscriptRecordings": "Nagrania",
+    "callTranscriptFullCall": "Cała rozmowa",
+    "callTranscriptPreparingRecording": "Przygotowuję pełne nagranie…",
+    "callTranscriptNoRecording": "Brak nagrania całej rozmowy."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-09-23 15:42:46.880731",
+    "@@last_modified": "2026-09-28 16:36:15.751020",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2369,5 +2369,11 @@
     "goalReportErrorRetry": "Tsy nahavita ny fikarohana ny fihodinana. Andramo indray.",
     "summaryFeedbackReceived": "Misaotra! Voaray ny hevitrao.",
     "summaryFeedbackFailed": "Tsy afaka nandefa ny hevitrao. Andramo indray azafady.",
-    "summaryFeedbackProcessing": "Mandefa ny hevitrao sy manavao ny famintinana…"
+    "summaryFeedbackProcessing": "Mandefa ny hevitrao sy manavao ny famintinana…",
+    "callTranscriptTranscribing": "Mbola mandika ny firaketana avy amin'i {name}…",
+    "callTranscriptSeekTo": "Alefaso manomboka amin'ny {time}",
+    "callTranscriptRecordings": "Firaketana",
+    "callTranscriptFullCall": "Antso feno",
+    "callTranscriptPreparingRecording": "Manomana ny firaketana feno…",
+    "callTranscriptNoRecording": "Tsy misy firaketana ny antso feno."
 }

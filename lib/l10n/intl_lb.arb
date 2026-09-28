@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-09-23 15:42:46.380082",
+    "@@last_modified": "2026-09-28 16:36:15.388512",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2369,5 +2369,11 @@
     "goalReportErrorRetry": "D'Sich no der Tour ass net fäerdeg ginn. Probéiert et nach eng Kéier.",
     "summaryFeedbackReceived": "Merci! Mir huet äre Feedback kritt.",
     "summaryFeedbackFailed": "Konnt äre Feedback net schécken. Probéiert w.e.g. nach eng Kéier.",
-    "summaryFeedbackProcessing": "Äre Feedback gëtt geschéckt an d'Resümmee gëtt aktualiséiert…"
+    "summaryFeedbackProcessing": "Äre Feedback gëtt geschéckt an d'Resümmee gëtt aktualiséiert…",
+    "callTranscriptTranscribing": "D'Opnam vum {name} gëtt nach transkribéiert …",
+    "callTranscriptSeekTo": "Vun {time} spillen",
+    "callTranscriptRecordings": "Opnamen",
+    "callTranscriptFullCall": "Ganzt Gespréich",
+    "callTranscriptPreparingRecording": "Déi ganz Opnam gëtt virbereet …",
+    "callTranscriptNoRecording": "Keng Opnam vum ganze Gespréich."
 }

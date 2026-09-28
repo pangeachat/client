@@ -3093,7 +3093,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-09-23 15:42:45.479039",
+    "@@last_modified": "2026-09-28 16:36:13.505297",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10593,5 +10593,11 @@
     "goalReportErrorRetry": "Níor chríochnaigh an cuardach don chasadh. Bain triail eile as.",
     "summaryFeedbackReceived": "Go raibh maith agat! Fuaireamar d'aiseolas.",
     "summaryFeedbackFailed": "Níorbh fhéidir d'aiseolas a sheoladh. Bain triail eile as, le do thoil.",
-    "summaryFeedbackProcessing": "Ag cur do chuid aiseolais agus ag nuashonrú an achoimre…"
+    "summaryFeedbackProcessing": "Ag cur do chuid aiseolais agus ag nuashonrú an achoimre…",
+    "callTranscriptTranscribing": "Fós ag tras-scríobh an taifeadta ó {name}…",
+    "callTranscriptSeekTo": "Seinn ó {time}",
+    "callTranscriptRecordings": "Taifeadtaí",
+    "callTranscriptFullCall": "Glao iomlán",
+    "callTranscriptPreparingRecording": "Ag ullmhú an taifeadta iomláin…",
+    "callTranscriptNoRecording": "Níl aon taifeadadh den ghlao iomlán."
 }

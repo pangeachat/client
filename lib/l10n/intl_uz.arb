@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-09-23 15:42:49.873139",
+    "@@last_modified": "2026-09-28 16:36:20.700221",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9965,5 +9965,11 @@
     "goalReportErrorRetry": "Navbatni qidirish tugallanmadi. Qayta urinib ko'ring.",
     "summaryFeedbackReceived": "Rahmat! Fikringiz qabul qilindi.",
     "summaryFeedbackFailed": "Fikringizni yuborib bo‘lmadi. Iltimos, qayta urinib ko‘ring.",
-    "summaryFeedbackProcessing": "Fikringizni yuborish va xulosani yangilash…"
+    "summaryFeedbackProcessing": "Fikringizni yuborish va xulosani yangilash…",
+    "callTranscriptTranscribing": "{name}dan yozib olingan ovozli xabar hali ham transkripsiya qilinmoqda...",
+    "callTranscriptSeekTo": "{time}dan boshlab ijro etish",
+    "callTranscriptRecordings": "Yozuvlar",
+    "callTranscriptFullCall": "Toʻliq qoʻngʻiroq",
+    "callTranscriptPreparingRecording": "Toʻliq yozuv tayyorlanmoqda...",
+    "callTranscriptNoRecording": "Toʻliq qoʻngʻiroq yozuvi yoʻq."
 }
