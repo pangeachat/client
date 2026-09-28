@@ -27,6 +27,10 @@ extension LaunchActivitySession on Client {
   /// [primarySpace] (the space the user launched from, if any) is always
   /// included. With no matching spaces the session is created private
   /// with a plain knock join rule.
+  ///
+  /// Returns once the server has created the room. The room may not be in
+  /// the local store yet, and course sharing and the bot invite are still
+  /// running.
   Future<String> launchActivitySession(
     ActivityPlanModel activity,
     ActivityRole? role, {
@@ -134,9 +138,31 @@ extension LaunchActivitySession on Client {
           botUserId: BotName.byEnvironment,
         ),
       ),
+      waitForSync: false,
     );
 
-    for (final space in spaces.values) {
+    // The caller navigates as soon as the server has the room (#9297); the
+    // sync wait, course sharing and bot invite are all best-effort, so they
+    // finish behind the chat instead of behind the loading dialog.
+    unawaited(_finishActivitySessionSetup(roomID, spaces.values.toList()));
+
+    return roomID;
+  }
+
+  Future<void> _finishActivitySessionSetup(
+    String roomID,
+    List<Room> spaces,
+  ) async {
+    try {
+      // Sharing needs the room in the local store (addSpaceChildKeepingParents
+      // skips a room it cannot resolve).
+      await waitForCreatedRoom(roomID);
+    } catch (_) {
+      // silent-ok: waitForCreatedRoom already logged it; sharing and the
+      // invite below are still worth attempting.
+    }
+
+    for (final space in spaces) {
       try {
         await space.addSpaceChildKeepingParents(roomID);
       } catch (e, s) {
@@ -172,7 +198,5 @@ extension LaunchActivitySession on Client {
         level: SentryLevel.warning,
       );
     }
-
-    return roomID;
   }
 }

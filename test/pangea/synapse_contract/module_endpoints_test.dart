@@ -258,6 +258,17 @@ void main() {
         null,
         primarySpace: space,
       );
+      // Sharing into the course runs in the background after launch returns
+      // (#9297).
+      await ContractHarness.waitUntil(
+        clientA,
+        () =>
+            clientA
+                .getRoomById(courseId)
+                ?.spaceChildren
+                .any((c) => c.roomId == sessionId) ??
+            false,
+      );
 
       final resp = await clientA.getActivitySessionPreviews([
         courseId,
