@@ -77,8 +77,21 @@ void main() {
               as Event)
           .eventId;
 
+  // For asserting that nothing happens: a fixed number of turns in which a
+  // check that should not run would show up.
   Future<void> settle() async {
     for (var i = 0; i < 20; i++) {
+      await Future<void>.delayed(Duration.zero);
+    }
+  }
+
+  // For asserting that something happens. Each repair step awaits a database
+  // transaction, whose commit round-trips to sqflite-ffi's worker isolate, so
+  // the number of event-loop turns a step takes depends on thread scheduling
+  // (on a loaded CI runner, well past 20). Wait for the outcome itself.
+  Future<void> settleUntil(bool Function() done) async {
+    final deadline = DateTime.now().add(const Duration(seconds: 15));
+    while (!done() && DateTime.now().isBefore(deadline)) {
       await Future<void>.delayed(Duration.zero);
     }
   }
@@ -119,6 +132,7 @@ void main() {
     expect(client.getRoomById(roomId)!.hasCompletedRole, isFalse);
 
     reads.single.complete(rolesEvent(r'$new', finishedAt: finished));
+    await settleUntil(() => heldId() == r'$new');
     await settle();
 
     expect(reads.length, 1);
@@ -180,10 +194,10 @@ void main() {
       await serverSync('b2', state: [rolesEvent(r'$older')]);
 
       reads.first.complete(rolesEvent(r'$new', finishedAt: finished));
-      await settle();
+      await settleUntil(() => reads.length == 2);
       expect(reads.length, 2, reason: 'the second block queued another check');
       reads.last.complete(rolesEvent(r'$new', finishedAt: finished));
-      await settle();
+      await settleUntil(() => heldId() == r'$new');
 
       expect(heldId(), r'$new');
     },
@@ -196,10 +210,10 @@ void main() {
     expect(heldId(), r'$old');
 
     await serverSync('b2');
-    await settle();
+    await settleUntil(() => reads.length == 2);
     expect(reads.length, 2);
     reads.last.complete(rolesEvent(r'$new', finishedAt: finished));
-    await settle();
+    await settleUntil(() => heldId() == r'$new');
 
     expect(heldId(), r'$new');
   });
