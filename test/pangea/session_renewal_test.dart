@@ -46,14 +46,27 @@ void main() {
     return client;
   }
 
-  test('an expired token is renewed before startup carries on', () async {
-    final client = await restoredWithExpiredToken(
-      (client) => client.refreshAccessToken(),
-    );
+  test('startup waits for the renewal to land before carrying on', () async {
+    // Hold the renewal until the test releases it: returning before then is
+    // exactly the race this guards against (the SDK's own sync loop renews
+    // too, so checking only the final token would pass without the wait).
+    final release = Completer<void>();
+    final client = await restoredWithExpiredToken((client) async {
+      await release.future;
+      await client.refreshAccessToken();
+    });
     addTearDown(client.dispose);
 
-    await ClientManager.renewExpiredToken(client);
+    var returned = false;
+    final renewal = ClientManager.renewExpiredToken(
+      client,
+    ).then((_) => returned = true);
+    await Future<void>.delayed(const Duration(milliseconds: 100));
+    expect(returned, isFalse);
 
+    release.complete();
+    await renewal;
+    expect(returned, isTrue);
     expect(client.accessToken, 'a_new_token');
     expect(client.isLogged(), true);
   });

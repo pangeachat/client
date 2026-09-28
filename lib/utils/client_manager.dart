@@ -260,3 +260,27 @@ abstract class ClientManager {
     return client;
   }
 }
+
+/// Tells an access-token renewal apart from a real login change, for one
+/// client's `onLoginStateChanged`. The SDK announces `softLoggedOut` while it
+/// renews (again on every retry while the server is unreachable) and
+/// `loggedIn` when the renewal lands. The session never ended, so the login
+/// listener neither tears the account down, rebuilds it nor navigates for
+/// either (#9304, session-lifetime.instructions.md).
+class TokenRenewalFilter {
+  TokenRenewalFilter(LoginState? initial) : _previous = initial;
+
+  /// The state before the one being judged. Seeded with the client's state
+  /// when the listener subscribes, so a renewal already under way then is
+  /// still recognised when it lands.
+  LoginState? _previous;
+
+  /// Records [state] and returns whether it is part of a renewal.
+  bool isRenewal(LoginState state) {
+    final renewal =
+        state == LoginState.softLoggedOut ||
+        (state == LoginState.loggedIn && _previous == LoginState.softLoggedOut);
+    _previous = state;
+    return renewal;
+  }
+}

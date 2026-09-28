@@ -145,28 +145,11 @@ class PangeaController {
     Provider.of<LocaleProvider>(context, listen: false).setLocale(null);
   }
 
-  /// The last login state seen per account, so a renewal's closing
-  /// `loggedIn` can be told apart from a real login.
-  final Map<String?, LoginState> _lastLoginStates = {};
-
-  /// Whether [state] is an access-token renewal rather than a login change.
-  /// The SDK announces `softLoggedOut` while it renews and `loggedIn` when the
-  /// renewal lands; the session never ended, so the account is neither torn
-  /// down nor rebuilt (#9304, session-lifetime.instructions.md).
-  @visibleForTesting
-  static bool isTokenRenewal(LoginState? previous, LoginState state) =>
-      state == LoginState.softLoggedOut ||
-      (state == LoginState.loggedIn && previous == LoginState.softLoggedOut);
-
   Future<void> handleLoginStateChange(
     LoginState state,
     String? userID,
     BuildContext context,
   ) async {
-    final previous = _lastLoginStates[userID];
-    _lastLoginStates[userID] = state;
-    if (isTokenRenewal(previous, state)) return;
-
     switch (state) {
       case LoginState.loggedOut:
       case LoginState.softLoggedOut:
