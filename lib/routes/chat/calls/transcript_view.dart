@@ -3249,7 +3249,8 @@ class _MergedFullCallControlState extends State<_MergedFullCallControl> {
         // frame; the retry is already suppressed for this build via showRetry.
         if (_loadFailed) {
           WidgetsBinding.instance.addPostFrameCallback((_) {
-            if (mounted && _loadFailed) setState(() => _loadFailed = false);
+            if (!mounted) return;
+            if (_loadFailed) setState(() => _loadFailed = false);
           });
         }
         return StreamBuilder<Object>(
