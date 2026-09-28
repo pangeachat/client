@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-17 15:10:05.637776",
+    "@@last_modified": "2026-09-23 15:42:45.267885",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -7666,11 +7666,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "Ini adalah semua orang di kursus ini. Klik pada avatar pengguna mana pun dan \"mulai percakapan\" untuk mengirim DM.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Wanita",
     "man": "Pria",
     "otherGender": "Lainnya",
@@ -8871,7 +8866,6 @@
     "customCourseStepTitle": "Isi formulir ini untuk mendapatkan kursus kustom",
     "courseCodeStepErrorMessage": "Silakan periksa kode Anda dan coba lagi",
     "institution": "Institusi",
-    "courseGoals": "Tujuan Kursus",
     "selectChats": "Pilih Obrolan",
     "plainTextFile": "Teks",
     "@userTypeTitle": {
@@ -9642,7 +9636,6 @@
     "passwordFormLabel": "Formulir ganti kata sandi",
     "searchLanguagesHint": "Cari bahasa",
     "searchCountriesHint": "Cari negara",
-    "searchVocabHint": "Cari kosakata",
     "searchUsersHint": "Cari pengguna",
     "searchMessagesHint": "Cari pesan",
     "searchChatsHint": "Cari obrolan",
@@ -9800,7 +9793,6 @@
     "unlockWritingAssistance": "Buka bantuan menulis",
     "courseSectionTeaching": "Mengajar",
     "courseSectionLearning": "Belajar",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kursus} other{{count} kursus}}",
     "showMore": "Tampilkan lebih banyak",
     "showLess": "Tampilkan lebih sedikit",
     "countNewMessages": "{count, plural, =1{1 pesan baru} other{{count} pesan baru}}",
@@ -10013,5 +10005,34 @@
     "noOpenSessions": "Tidak ada sesi terbuka saat ini",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 item kosakata digunakan} other{{count} item kosakata digunakan}}",
-    "grammarItemsUsed": "{count, plural, =1{1 item tata bahasa digunakan} other{{count} item tata bahasa digunakan}}"
+    "grammarItemsUsed": "{count, plural, =1{1 item tata bahasa digunakan} other{{count} item tata bahasa digunakan}}",
+    "playVideo": "Putar video",
+    "videoPlayer": "Pemutar video",
+    "customCourseTextbookHint": "Beri tahu kami buku teks apa yang Anda gunakan, atau jelaskan kurikulum Anda",
+    "courseListFiltersLabel": "Filter kursus",
+    "allCoursesFilterTooltip": "Tampilkan semua kursus",
+    "teachingCoursesFilterTooltip": "Tampilkan hanya kursus yang Anda ajarkan",
+    "learningCoursesFilterTooltip": "Tampilkan hanya kursus yang sedang Anda pelajari",
+    "searchCoursesHint": "Cari kursus",
+    "noCoursesMatchSearch": "Tidak ada kursus yang cocok dengan pencarian Anda.",
+    "searchVocabByWordOrMeaningHint": "Cari berdasarkan kata atau arti",
+    "practiceTapABlank": "Ketuk bagian kosong untuk mengisinya",
+    "practiceListeningPrompt": "Yang mana yang mengatakan '{word}'?",
+    "practiceMeaningPrompt": "Apa arti '{word}'?",
+    "practiceEmojiPrompt": "Pilih emoji untuk '{word}'",
+    "practiceStepProgress": "{done} dari {total}",
+    "leaderboard": "Papan Peringkat",
+    "leaderboardRank": "Peringkat {rank}",
+    "courseLeaderboardTooltip": "Semua orang di kursus ini, diberi peringkat berdasarkan bintang mereka dalam bahasa tersebut. Ketuk anggota dan pilih “Mulai percakapan” untuk mengirimi mereka DM.",
+    "goalReportTitle": "Laporkan bintang ini",
+    "goalReportOverAwardPrompt": "Jika Anda tidak seharusnya mendapatkan bintang ini, mohon jelaskan alasannya.",
+    "goalReportUnderAwardPrompt": "Jika menurut Anda seharusnya mendapatkan bintang ini, mengapa?",
+    "goalReportPickMessage": "Pesan Anda yang mana yang seharusnya mendapatkan ini?",
+    "goalReportNoMessages": "Anda belum mengirim pesan di sesi ini, jadi tidak ada yang bisa ditunjuk.",
+    "goalReportThanks": "Dilaporkan. Terima kasih!",
+    "goalReportErrorUnreportable": "Tidak ada giliran orkestrator yang cocok dengan bintang ini, jadi tidak ada yang bisa dicatat untuk laporan tersebut.",
+    "goalReportErrorRetry": "Pencarian giliran belum selesai. Coba lagi.",
+    "summaryFeedbackReceived": "Terima kasih! Kami telah menerima masukan Anda.",
+    "summaryFeedbackFailed": "Tidak dapat mengirim masukan Anda. Silakan coba lagi.",
+    "summaryFeedbackProcessing": "Mengirim masukan Anda dan memperbarui ringkasan…"
 }

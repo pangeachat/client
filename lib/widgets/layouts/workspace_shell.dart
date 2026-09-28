@@ -26,12 +26,15 @@ import 'package:fluffychat/pangea/common/widgets/course_avatar.dart';
 import 'package:fluffychat/pangea/common/widgets/invited_course_badge.dart';
 import 'package:fluffychat/pangea/extensions/friend_dm_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/extensions/unread_rooms_client_extension.dart';
 import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
+import 'package:fluffychat/pangea/spaces/course_role_filter.dart';
 import 'package:fluffychat/pangea/spaces/knocking_users_badge.dart';
 import 'package:fluffychat/pangea/spaces/knocking_users_builder.dart';
 import 'package:fluffychat/routes/chat_list/dm_list_tile.dart';
 import 'package:fluffychat/routes/chat_list/friend_dm_prompt.dart';
 import 'package:fluffychat/routes/world/course_context_bar.dart';
+import 'package:fluffychat/routes/world/left_panel/left_panel_courses_list_view.dart';
 import 'package:fluffychat/routes/world/left_panel/workspace_left_panel.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/mobile_search_bar.dart';
@@ -90,6 +93,12 @@ GlobalKey _roomKeyFor(String roomId) => _leftRoomKeys.putIfAbsent(
 /// history. Module-level so it survives shell rebuilds. Synced once per build by
 /// [_ShellLayout.resolve]. See `routing.instructions.md`.
 final List<String> _paneRecency = <String>[];
+
+/// The course panel's slot height at its floor: the context bar inside its
+/// [PanelCard] margins. The slot is drawn at exactly this height, and the map
+/// treats exactly this band as covered (#9291).
+final double _courseFloorSlotHeight =
+    CourseContextBar.height + PanelCard.margin.vertical;
 
 /// Whether the previous shell build showed the wide course context bar — a
 /// `?c=` course with no course card drawn. A course card appearing right
@@ -316,6 +325,14 @@ class WorkspaceShell extends StatelessWidget {
       // keyed nodes.
       container: true,
       explicitChildNodes: true,
+      // A Scaffold registers with the NEAREST ScaffoldMessenger, so this one
+      // owns every Scaffold in the workspace and the MaterialApp's own
+      // messenger ends up with none. Anything pushed on the root navigator — a
+      // `showDialog`, an overlay — therefore resolves `ScaffoldMessenger.of` to
+      // that empty root messenger, and a snackbar sent to it asserts ("no
+      // descendant Scaffolds to present to") rather than showing. Such a
+      // surface captures its messenger from the context that OPENED it, below
+      // this point (see `showGoalReportDialog`).
       child: ScaffoldMessenger(
         child: FocusTraversalGroup(
           // Tab order on the workspace: the [WorkspaceOrder] rank on each
@@ -345,6 +362,7 @@ class WorkspaceShell extends StatelessWidget {
                     leftOverlayWidth: l.mapLeftOverlay,
                     rightOverlayWidth: l.allocation.mapRightOverlay,
                     bottomOverlayHeight: l.mapBottomOverlay,
+                    courseBarRect: l.mapCourseBarRect,
                     availableVisibleMapWidth: l.availableVisibleMapWidth,
                     // The map's top-left slot carries the search overlay on the
                     // world map, and nothing at all under a `?c=` scope: the
@@ -495,8 +513,7 @@ class WorkspaceShell extends StatelessWidget {
                                 // map's pins (#8903's failure mode). (#9037)
                                 bottom: l.courseAtFloor && i == 0 ? null : 0,
                                 height: l.courseAtFloor && i == 0
-                                    ? CourseContextBar.height +
-                                          PanelCard.margin.vertical
+                                    ? _courseFloorSlotHeight
                                     : null,
                                 left: l.allocation.left[i].left,
                                 width: l.allocation.left[i].width,
@@ -679,9 +696,10 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
   static const double _coursesSheetRowEstimate = 84.0;
   static const double _coursesSheetAddOptionsAllowance = 236.0;
 
-  /// One Invited / Teaching / Learning section header row, when the hub
-  /// groups by role (#8425): the row's text + 4px padding + the 8px separator.
-  static const double _coursesSheetSectionHeaderEstimate = 36.0;
+  /// The hub's search bar and role filter pill rows, each with its 8px gap
+  /// below, when the hub shows them (#9207).
+  static const double _coursesSheetSearchBarEstimate = 64.0;
+  static const double _coursesSheetFilterPillsEstimate = 56.0;
 
   /// The activity plan's minimized rest height: the cavity handle + the start
   /// page's app bar, info row, and CTA row, with no media/description. This is
@@ -860,13 +878,18 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
       // reads as "no courses" until the learner drags the sheet up (#7542).
       // They open at FULL height instead (`defaultCavityToFull`, #8659): their
       // content has nothing to do with the map behind them, so the sheet leads.
-      final groups = client.coursesByRole(l10n);
+      final courses = client.sortedCourses(l10n);
       preferredCavityHeight =
           _chatsSheetHeaderAllowance +
-          (groups.courseCount == 0
+          (courses.isEmpty
               ? _coursesSheetAddOptionsAllowance
-              : groups.courseCount * _coursesSheetRowEstimate +
-                    groups.sectionCount * _coursesSheetSectionHeaderEstimate);
+              : courses.length * _coursesSheetRowEstimate +
+                    (LeftPanelCoursesListView.showsSearchBar(courses)
+                        ? _coursesSheetSearchBarEstimate
+                        : 0) +
+                    (CourseRoleFilter.appliesTo(courses)
+                        ? _coursesSheetFilterPillsEstimate
+                        : 0));
     }
 
     String? cavityKey;
@@ -952,6 +975,7 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
                     builder: (context, knockingUsers) {
                       final avatar = CourseAvatar(
                         avatar: shortcutCourse.avatar,
+                        courseId: shortcutCourse.coursePlan?.uuid,
                         displayname: shortcutCourse.getLocalizedDisplayname(
                           MatrixLocals(l10n),
                         ),
@@ -1007,7 +1031,9 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
                   .where((s) => s.hasRoomUpdate)
                   .rateLimit(const Duration(seconds: 1)),
               builder: (context, _) => UnreadRoomsBadge(
-                filter: (room) => room.firstSpaceParent == null,
+                rooms: client.unreadRooms
+                    .where((room) => room.firstSpaceParent == null)
+                    .toList(),
                 // Sits at the icon's corner with the web rail's proportions: the
                 // rail badge covers ~30% of its 41px icon, so over this 24px icon
                 // the badge must ride further up-and-out — at (4,4) it covered
@@ -1324,6 +1350,12 @@ class _ShellLayout {
   /// Map camera left padding (the left inset plus any center detail width).
   final double mapLeftOverlay;
 
+  /// The course context bar's footprint over the full-bleed map, while the
+  /// course panel rests at its floor; null otherwise. The collapsed panel is
+  /// not seated, so it is not part of [mapLeftOverlay] — only this band is
+  /// covered (#9291).
+  final Rect? mapCourseBarRect;
+
   /// Map camera bottom padding: the vertical band the narrow activity-plan
   /// sheet occupies at its half-rest state, so a focused pin centers in the
   /// exposed map above the sheet (#7640). 0 everywhere else.
@@ -1361,6 +1393,7 @@ class _ShellLayout {
     required this.isColumnMode,
     required this.leftInset,
     required this.mapLeftOverlay,
+    required this.mapCourseBarRect,
     required this.mapBottomOverlay,
     required this.courseAtFloor,
     required this.revealCoursePanel,
@@ -1558,7 +1591,25 @@ class _ShellLayout {
         ? 0.0
         : (hasLeftTokens ? layout.mapLeftOverlay : columnWidth);
 
-    final mapLeftOverlay = leftInset;
+    // A course panel at its floor is not an open side panel for the map
+    // (world-map.instructions.md → Priority matrix): its one-line bar covers
+    // only its own band, not the column's full height. So the map keeps the
+    // rail as its left overlay and gets the bar's footprint on its own, which
+    // card placement and camera fits keep clear of (#9291). The canvas keeps
+    // [leftInset].
+    final courseBarSlot = courseAtFloor && layout.left[0].vis != PanelVis.hidden
+        ? layout.left[0]
+        : null;
+    final mapLeftOverlay = courseBarSlot != null ? columnWidth : leftInset;
+    final safeAreaPadding = MediaQuery.paddingOf(context);
+    final mapCourseBarRect = courseBarSlot == null
+        ? null
+        : Rect.fromLTWH(
+            safeAreaPadding.left + courseBarSlot.left,
+            safeAreaPadding.top,
+            courseBarSlot.width,
+            _courseFloorSlotHeight,
+          );
 
     // The narrow activity-plan sheet covers the bottom of the full-width map —
     // the band the left/right overlays don't model. Pad the camera's bottom by
@@ -1606,7 +1657,7 @@ class _ShellLayout {
         ? CoursePreviewMapContext(previewPlanId)
         : coursePlanId == null
         ? const WorldMapContext()
-        : CourseMapContext(coursePlanId);
+        : CourseMapContext(coursePlanId, spaceId: activeSpaceId);
     // A full-screen surface on a narrow screen (a focused panel or a
     // center-detail page) covers the map, so dismiss any lingering map-pin
     // preview — otherwise its [MapPinController] flag would keep the nav
@@ -1635,6 +1686,7 @@ class _ShellLayout {
       isColumnMode: isColumnMode,
       leftInset: leftInset,
       mapLeftOverlay: mapLeftOverlay,
+      mapCourseBarRect: mapCourseBarRect,
       mapBottomOverlay: mapBottomOverlay,
       courseAtFloor: courseAtFloor,
       revealCoursePanel: revealCoursePanel,

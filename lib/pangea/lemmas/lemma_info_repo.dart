@@ -8,14 +8,15 @@ import 'package:fluffychat/pangea/lemmas/lemma_info_request.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 
 /// Disk-cached lemma dictionary info (`POST /lemma_dictionary`).
-/// `persist: true` — lemma meanings are stable and worth keeping across
-/// restarts.
+/// Kept for 30 days: lemma meanings are stable, and vocab search matches the
+/// cached ones without fetching (#9042). Feedback corrections overwrite the
+/// same entry, so the long window never pins a meaning the learner flagged.
 class LemmaInfoRepo extends BaseRepo<LemmaInfoRequest, LemmaInfoResponse> {
   LemmaInfoRepo._internal()
     : super(
         cache: PersistentRepoCache<LemmaInfoResponse>('lemma_storage'),
         responseFromJson: LemmaInfoResponse.fromJson,
-        cacheDuration: const Duration(minutes: 10),
+        cacheDuration: const Duration(days: 30),
       );
 
   static final LemmaInfoRepo _instance = LemmaInfoRepo._internal();

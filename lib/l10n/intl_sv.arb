@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-17 15:10:11.327326",
+    "@@last_modified": "2026-09-23 15:42:49.201200",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -8081,11 +8081,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "Detta är alla i den här kursen. Klicka på vilken användares avatar som helst och \"starta konversation\" för att skicka ett DM.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Kvinna",
     "man": "Man",
     "otherGender": "Annat",
@@ -9316,7 +9311,6 @@
     "customCourseStepTitle": "Fyll i detta formulär för att få en anpassad kurs",
     "courseCodeStepErrorMessage": "Vänligen kontrollera din kod och försök igen",
     "institution": "Institution",
-    "courseGoals": "Kursmål",
     "selectChats": "Välj chattar",
     "plainTextFile": "Text",
     "@userTypeTitle": {
@@ -10087,7 +10081,6 @@
     "passwordFormLabel": "Formulär för lösenordsbyte",
     "searchLanguagesHint": "Sök språk",
     "searchCountriesHint": "Sök länder",
-    "searchVocabHint": "Sök ord",
     "searchUsersHint": "Sök användare",
     "searchMessagesHint": "Sök meddelanden",
     "searchChatsHint": "Sök chattar",
@@ -10245,7 +10238,6 @@
     "unlockWritingAssistance": "Lås upp skrivhjälp",
     "courseSectionTeaching": "Undervisning",
     "courseSectionLearning": "Inlärning",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kurs} other{{count} kurser}}",
     "showMore": "Visa mer",
     "showLess": "Visa mindre",
     "countNewMessages": "{count, plural, =1{1 nytt meddelande} other{{count} nya meddelanden}}",
@@ -10458,5 +10450,34 @@
     "noOpenSessions": "Inga öppna sessioner just nu",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 ordförrådsobjekt använt} other{{count} ordförrådsobjekt använda}}",
-    "grammarItemsUsed": "{count, plural, =1{1 grammatikobjekt använt} other{{count} grammatikobjekt använda}}"
+    "grammarItemsUsed": "{count, plural, =1{1 grammatikobjekt använt} other{{count} grammatikobjekt använda}}",
+    "playVideo": "Spela video",
+    "videoPlayer": "Videospelare",
+    "customCourseTextbookHint": "Berätta vilken lärobok du använder, eller beskriv din läroplan",
+    "courseListFiltersLabel": "Kursfilter",
+    "allCoursesFilterTooltip": "Visa alla kurser",
+    "teachingCoursesFilterTooltip": "Visa endast kurser du undervisar i",
+    "learningCoursesFilterTooltip": "Visa endast kurser du lär dig i",
+    "searchCoursesHint": "Sök kurser",
+    "noCoursesMatchSearch": "Inga kurser matchar din sökning.",
+    "searchVocabByWordOrMeaningHint": "Sök efter ord eller betydelse",
+    "practiceTapABlank": "Tryck på en tom lucka för att fylla i den",
+    "practiceListeningPrompt": "Vilken säger ”{word}”?",
+    "practiceMeaningPrompt": "Vad betyder ”{word}”?",
+    "practiceEmojiPrompt": "Välj en emoji för ”{word}”",
+    "practiceStepProgress": "{done} av {total}",
+    "leaderboard": "Topplista",
+    "leaderboardRank": "Rank {rank}",
+    "courseLeaderboardTooltip": "Alla i den här kursen, rankade efter deras stjärnor i språket. Tryck på en medlem och välj ”Starta konversation” för att skicka ett DM.",
+    "goalReportTitle": "Rapportera denna stjärna",
+    "goalReportOverAwardPrompt": "Om du inte skulle ha fått denna stjärna, förklara varför.",
+    "goalReportUnderAwardPrompt": "Om du tycker att du skulle ha fått denna stjärna, varför?",
+    "goalReportPickMessage": "Vilket av dina meddelanden borde ha förtjänat den?",
+    "goalReportNoMessages": "Du har inte skickat något meddelande i denna session än, så det finns inget att peka på.",
+    "goalReportThanks": "Rapporterat. Tack!",
+    "goalReportErrorUnreportable": "Ingen orkestratörsväng matchar denna stjärna, så det finns inget att registrera rapporten mot.",
+    "goalReportErrorRetry": "Sökningen efter svängen slutfördes inte. Försök igen.",
+    "summaryFeedbackReceived": "Tack! Vi har mottagit din feedback.",
+    "summaryFeedbackFailed": "Kunde inte skicka din feedback. Försök igen.",
+    "summaryFeedbackProcessing": "Skickar din feedback och uppdaterar sammanfattningen…"
 }

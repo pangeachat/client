@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-17 15:10:11.863062",
+    "@@last_modified": "2026-09-23 15:42:49.934415",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -4859,11 +4859,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "Đây là tất cả mọi người trong khóa học này. Nhấp vào avatar của bất kỳ người dùng nào và \"bắt đầu cuộc trò chuyện\" để gửi tin nhắn trực tiếp.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Phụ nữ",
     "man": "Nam",
     "otherGender": "Khác",
@@ -6094,7 +6089,6 @@
     "customCourseStepTitle": "Điền vào mẫu này để có một khóa học tùy chỉnh",
     "courseCodeStepErrorMessage": "Vui lòng kiểm tra mã của bạn và thử lại",
     "institution": "Tổ chức",
-    "courseGoals": "Mục tiêu khóa học",
     "selectChats": "Chọn trò chuyện",
     "plainTextFile": "Văn bản",
     "@userTypeTitle": {
@@ -6865,7 +6859,6 @@
     "passwordFormLabel": "Mẫu đổi mật khẩu",
     "searchLanguagesHint": "Tìm kiếm ngôn ngữ",
     "searchCountriesHint": "Tìm kiếm quốc gia",
-    "searchVocabHint": "Tìm kiếm từ vựng",
     "searchUsersHint": "Tìm kiếm người dùng",
     "searchMessagesHint": "Tìm kiếm tin nhắn",
     "searchChatsHint": "Tìm kiếm cuộc trò chuyện",
@@ -7023,7 +7016,6 @@
     "unlockWritingAssistance": "Mở khóa hỗ trợ viết",
     "courseSectionTeaching": "Dạy",
     "courseSectionLearning": "Học",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 khóa học} other{{count} khóa học}}",
     "showMore": "Hiển thị thêm",
     "showLess": "Hiển thị bớt",
     "countNewMessages": "{count, plural, =1{1 tin nhắn mới} other{{count} tin nhắn mới}}",
@@ -7232,5 +7224,34 @@
     "noOpenSessions": "Hiện không có phiên nào đang mở",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{Đã dùng 1 mục từ vựng} other{Đã dùng {count} mục từ vựng}}",
-    "grammarItemsUsed": "{count, plural, =1{Đã dùng 1 mục ngữ pháp} other{Đã dùng {count} mục ngữ pháp}}"
+    "grammarItemsUsed": "{count, plural, =1{Đã dùng 1 mục ngữ pháp} other{Đã dùng {count} mục ngữ pháp}}",
+    "playVideo": "Phát video",
+    "videoPlayer": "Trình phát video",
+    "customCourseTextbookHint": "Hãy cho chúng tôi biết bạn dùng sách giáo khoa nào, hoặc mô tả chương trình học của bạn",
+    "courseListFiltersLabel": "Bộ lọc khóa học",
+    "allCoursesFilterTooltip": "Hiển thị tất cả khóa học",
+    "teachingCoursesFilterTooltip": "Chỉ hiển thị các khóa học bạn dạy",
+    "learningCoursesFilterTooltip": "Chỉ hiển thị các khóa học bạn đang học",
+    "searchCoursesHint": "Tìm kiếm khóa học",
+    "noCoursesMatchSearch": "Không có khóa học nào khớp với tìm kiếm của bạn.",
+    "searchVocabByWordOrMeaningHint": "Tìm kiếm theo từ hoặc nghĩa",
+    "practiceTapABlank": "Chạm vào chỗ trống để điền",
+    "practiceListeningPrompt": "Cái nào nói ‘{word}’?",
+    "practiceMeaningPrompt": "‘{word}’ nghĩa là gì?",
+    "practiceEmojiPrompt": "Chọn một biểu tượng cảm xúc cho ‘{word}’",
+    "practiceStepProgress": "{done} trên {total}",
+    "leaderboard": "Bảng xếp hạng",
+    "leaderboardRank": "Hạng {rank}",
+    "courseLeaderboardTooltip": "Tất cả mọi người trong khóa học này, được xếp hạng theo số sao của họ trong ngôn ngữ đó. Nhấn vào một thành viên và chọn “Bắt đầu cuộc trò chuyện” để gửi tin nhắn trực tiếp cho họ.",
+    "goalReportTitle": "Báo cáo sao này",
+    "goalReportOverAwardPrompt": "Nếu bạn không đáng nhận sao này, vui lòng giải thích lý do.",
+    "goalReportUnderAwardPrompt": "Nếu bạn nghĩ mình đáng nhận sao này, tại sao?",
+    "goalReportPickMessage": "Tin nhắn nào của bạn đáng lẽ phải nhận được nó?",
+    "goalReportNoMessages": "Bạn chưa gửi tin nhắn nào trong phiên này, nên không có gì để chỉ ra.",
+    "goalReportThanks": "Đã báo cáo. Cảm ơn!",
+    "goalReportErrorUnreportable": "Không có lượt điều phối viên nào khớp với sao này, nên không có gì để ghi lại báo cáo.",
+    "goalReportErrorRetry": "Việc tìm kiếm lượt chưa hoàn tất. Vui lòng thử lại.",
+    "summaryFeedbackReceived": "Cảm ơn! Chúng tôi đã nhận được phản hồi của bạn.",
+    "summaryFeedbackFailed": "Không thể gửi phản hồi của bạn. Vui lòng thử lại.",
+    "summaryFeedbackProcessing": "Đang gửi phản hồi của bạn và cập nhật tóm tắt…"
 }

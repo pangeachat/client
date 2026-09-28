@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_media_block.dart';
+import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_media_play_badge.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_video_player.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_video_screen.dart';
@@ -60,6 +62,11 @@ class _ActivityMediaCarouselState extends State<ActivityMediaCarousel> {
   /// True while the active play is the deep-link autostart (muted); cleared the
   /// moment the user taps a thumbnail, so tapped videos play with sound.
   bool _mutedAutostart = false;
+
+  /// Whether the mounting player should claim focus: true when its thumbnail
+  /// was pressed from the keyboard, since that press removes the thumbnail and
+  /// would otherwise drop the focus it held (#9128).
+  bool _playerAutofocus = false;
 
   @override
   void initState() {
@@ -161,11 +168,13 @@ class _ActivityMediaCarouselState extends State<ActivityMediaCarousel> {
               url: block.url ?? '',
               muted: muted,
               captionLanguage: widget.captionLanguage,
+              autofocus: _playerAutofocus,
             )
           : ActivityVideoPlayer(
               url: block.resolvedUrl ?? '',
               autoPlay: true,
               muted: muted,
+              autofocus: _playerAutofocus,
             );
       return Center(
         child: AspectRatio(aspectRatio: 16 / 9, child: player),
@@ -174,7 +183,11 @@ class _ActivityMediaCarouselState extends State<ActivityMediaCarousel> {
 
     // thumbnail + play badge — tap to play (with sound)
     final thumb = block.displayUrl(size);
-    return GestureDetector(
+    return FocusRingTapTarget(
+      label: L10n.of(context).playVideo,
+      shape: const RoundedRectangleBorder(),
+      // The ring crosses the thumbnail, where no single colour holds 3:1.
+      twoToneRing: true,
       onTap: () {
         // Native mobile can't mount a webview inside this scrolling surface
         // (#7672/#7673), so play on a dedicated screen; inline elsewhere.
@@ -186,7 +199,11 @@ class _ActivityMediaCarouselState extends State<ActivityMediaCarousel> {
           );
           return;
         }
+        final focus = FocusManager.instance.primaryFocus?.context;
         setState(() {
+          _playerAutofocus =
+              focus?.findAncestorStateOfType<_ActivityMediaCarouselState>() ==
+              this;
           _playingIndex = index;
           _mutedAutostart = false;
         });

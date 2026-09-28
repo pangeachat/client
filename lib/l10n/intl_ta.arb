@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-17 15:10:11.139942",
+    "@@last_modified": "2026-09-23 15:42:49.377243",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -7665,11 +7665,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "இந்த பாடத்தில் உள்ள அனைவரும் இதுவே. எந்த பயனரின் அவதாரில் கிளிக் செய்து \"சரசரி உரையாடலை தொடங்கு\" என்பதன் மூலம் ஒரு நேரடி செய்தி அனுப்பவும்.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "பெண்",
     "man": "ஆண்",
     "otherGender": "மற்றவை",
@@ -8890,7 +8885,6 @@
     "customCourseStepTitle": "ஒரு தனிப்பயன் பாடத்திற்கான இந்த படிவத்தை நிரப்பவும்",
     "courseCodeStepErrorMessage": "தயவுசெய்து உங்கள் குறியீட்டை சரிபார்க்கவும் மற்றும் மீண்டும் முயற்சிக்கவும்",
     "institution": "நிறுவனம்",
-    "courseGoals": "பாடத்திட்ட இலக்குகள்",
     "selectChats": "சாட்களை தேர்ந்தெடுக்கவும்",
     "plainTextFile": "உரை",
     "@userTypeTitle": {
@@ -9661,7 +9655,6 @@
     "passwordFormLabel": "கடவுச்சொல் மாற்றப் படிவம்",
     "searchLanguagesHint": "மொழிகளைத் தேடு",
     "searchCountriesHint": "நாடுகளைத் தேடு",
-    "searchVocabHint": "சொற்களஞ்சியத்தைத் தேடு",
     "searchUsersHint": "பயனர்களைத் தேடு",
     "searchMessagesHint": "செய்திகளைத் தேடு",
     "searchChatsHint": "அரட்டைகளைத் தேடு",
@@ -9819,7 +9812,6 @@
     "unlockWritingAssistance": "எழுத்து உதவியைத் திறக்கவும்",
     "courseSectionTeaching": "கற்பித்தல்",
     "courseSectionLearning": "கற்றல்",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 பாடம்} other{{count} பாடங்கள்}}",
     "showMore": "மேலும் காட்டு",
     "showLess": "குறைவாக காட்டு",
     "countNewMessages": "{count, plural, =1{1 புதிய செய்தி} other{{count} புதிய செய்திகள்}}",
@@ -10032,5 +10024,34 @@
     "noOpenSessions": "தற்போது திறந்த அமர்வுகள் இல்லை",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 சொல்லகராதி உருப்படி பயன்படுத்தப்பட்டது} other{{count} சொல்லகராதி உருப்படிகள் பயன்படுத்தப்பட்டன}}",
-    "grammarItemsUsed": "{count, plural, =1{1 இலக்கண உருப்படி பயன்படுத்தப்பட்டது} other{{count} இலக்கண உருப்படிகள் பயன்படுத்தப்பட்டன}}"
+    "grammarItemsUsed": "{count, plural, =1{1 இலக்கண உருப்படி பயன்படுத்தப்பட்டது} other{{count} இலக்கண உருப்படிகள் பயன்படுத்தப்பட்டன}}",
+    "playVideo": "வீடியோவை இயக்கு",
+    "videoPlayer": "வீடியோ பிளேயர்",
+    "customCourseTextbookHint": "நீங்கள் பயன்படுத்தும் பாடப்புத்தகத்தை எங்களிடம் கூறுங்கள் அல்லது உங்கள் பாடத்திட்டத்தை விவரியுங்கள்",
+    "courseListFiltersLabel": "பாடநெறி வடிப்பான்கள்",
+    "allCoursesFilterTooltip": "அனைத்து பாடநெறிகளையும் காட்டு",
+    "teachingCoursesFilterTooltip": "நீங்கள் கற்பிக்கும் பாடநெறிகளை மட்டும் காட்டு",
+    "learningCoursesFilterTooltip": "நீங்கள் கற்கும் பாடநெறிகளை மட்டும் காட்டு",
+    "searchCoursesHint": "பாடநெறிகளைத் தேடு",
+    "noCoursesMatchSearch": "உங்கள் தேடலுடன் எந்தப் பாடநெறிகளும் பொருந்தவில்லை.",
+    "searchVocabByWordOrMeaningHint": "வார்த்தை அல்லது பொருள் மூலம் தேடவும்",
+    "practiceTapABlank": "நிரப்ப ஒரு காலியிடத்தைத் தட்டவும்",
+    "practiceListeningPrompt": "‘{word}’ என்று சொல்வது எது?",
+    "practiceMeaningPrompt": "‘{word}’ என்றால் என்ன அர்த்தம்?",
+    "practiceEmojiPrompt": "‘{word}’ என்பதற்கு ஒரு ஈமோஜியைத் தேர்ந்தெடுக்கவும்",
+    "practiceStepProgress": "{total} இல் {done}",
+    "leaderboard": "லீடர்போர்டு",
+    "leaderboardRank": "தரம் {rank}",
+    "courseLeaderboardTooltip": "இந்தக் கோர்ஸில் உள்ள அனைவரும், அந்த மொழியில் அவர்கள் பெற்ற நட்சத்திரங்களின் அடிப்படையில் தரவரிசைப்படுத்தப்பட்டுள்ளனர். ஒரு உறுப்பினரைத் தட்டி, அவர்களுக்கு DM அனுப்ப “உரையாடலைத் தொடங்கு” என்பதைத் தேர்வுசெய்யவும்.",
+    "goalReportTitle": "இந்த நட்சத்திரத்தைப் புகாரளி",
+    "goalReportOverAwardPrompt": "இந்த நட்சத்திரம் உங்களுக்குக் கிடைக்கக் கூடாது என்றால், ஏன் என்று விளக்குங்கள்.",
+    "goalReportUnderAwardPrompt": "இந்த நட்சத்திரம் உங்களுக்குக் கிடைத்திருக்க வேண்டும் என்று நீங்கள் நினைத்தால், ஏன்?",
+    "goalReportPickMessage": "உங்கள் செய்திகளில் எது அதைப் பெற்றிருக்க வேண்டும்?",
+    "goalReportNoMessages": "இந்த அமர்வில் நீங்கள் இன்னும் எந்த செய்தியையும் அனுப்பவில்லை, எனவே சுட்டிக்காட்ட எதுவும் இல்லை.",
+    "goalReportThanks": "புகாரளிக்கப்பட்டது. நன்றி!",
+    "goalReportErrorUnreportable": "இந்த நட்சத்திரத்துடன் எந்த ஒருங்கிணைப்பாளர் திருப்பமும் பொருந்தவில்லை, எனவே புகாரைப் பதிவு செய்ய எதுவும் இல்லை.",
+    "goalReportErrorRetry": "திருப்பத்திற்கான தேடல் முடிவடையவில்லை. மீண்டும் முயற்சிக்கவும்.",
+    "summaryFeedbackReceived": "நன்றி! உங்கள் கருத்து எங்களுக்குக் கிடைத்தது.",
+    "summaryFeedbackFailed": "உங்கள் கருத்தை அனுப்ப முடியவில்லை. மீண்டும் முயற்சிக்கவும்.",
+    "summaryFeedbackProcessing": "உங்கள் கருத்தை அனுப்பி, சுருக்கத்தைப் புதுப்பிக்கிறது…"
 }

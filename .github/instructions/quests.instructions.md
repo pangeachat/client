@@ -48,15 +48,15 @@ A course **preview** (not joined) shows no star display — there is no learner 
 Stars are displayed in two different senses, and both appear on the course page.
 
 - **Course progress** — the panel displays above: how far this learner is through *this course*, capped per Mission, scoped to the course's own activities. It answers "how much of this course is done".
-- **A member's star total** — on the participant cards in the course page's Participants section: how many stars that person has banked in the course's language across everything they have played, uncapped and not course-scoped. It answers "how much has this person done". It is read from their public profile, since a viewer cannot see the session rooms another member earned stars in ([profile.instructions.md](profile.instructions.md)); the course page is where classmates become visible to each other, which is why it is shown there.
+- **A member's star total** — on the course page's Leaderboard ([course-leaderboard.instructions.md](course-leaderboard.instructions.md)), which also ranks by it: how many stars that person has banked in the course's language across everything they have played, uncapped and not course-scoped. It answers "how much has this person done". It is read from their public profile, since a viewer cannot see the session rooms another member earned stars in ([profile.instructions.md](profile.instructions.md)); the course page is where classmates become visible to each other, which is why it is shown there.
 
-The participant card is roughly one avatar wide and has no room for a label, so the two are distinguished by **form**: course progress always displays as a fraction over a bar, a member's total always as a bare count with no denominator. The full sense — how many stars, in which language — is carried in the card's accessible name and its hover tooltip, which cost no space. A denominator added to the participant card would collapse the distinction and should not be — that is the confusion this rule exists to prevent.
+A leaderboard row carries no label for its count, so the two are distinguished by **form**: course progress always displays as a fraction over a bar, a member's total always as a bare count with no denominator. The full sense — how many stars, in which language — is carried in the row's accessible name and its hover tooltip, which cost no space. A denominator added to a leaderboard row would collapse the distinction and should not be — that is the confusion this rule exists to prevent.
 
-The participant card shows the member's total for **the course's language** beside their level, which is already a per-language number, so both values on the card share one scope.
+The leaderboard shows the member's total for **the course's language** beside their level, which is already a per-language number, so both values on a row share one scope.
 
 ## Who made the course
 
-The course page credits its quest's **owner** — whoever built the course plan. That is a different fact from who administers the room, and the room has its own surface for that (the Participants section): a teacher who starts a class from a catalog quest administers a course Pangea wrote, and the credit says so.
+The course page credits its quest's **owner** — whoever built the course plan. That is a different fact from who administers the room, and the room has its own surface for that (the Leaderboard's admin line): a teacher who starts a class from a catalog quest administers a course Pangea wrote, and the credit says so.
 
 The owner is stored on the quest row as `owner_mxid`, a plain-text Matrix id the client reads verbatim. Nothing resolves it on the client's behalf. The `owner` field beside it is a per-environment `matrix-users` row id, and that collection is service- and admin-read only, so a learner's token can read the quest and never resolve the person behind it — which is why the Matrix id is stored where the consumer reads it rather than joined on by a service at read time. Name and avatar then come from that owner's own Matrix profile, so a teacher controls their own credit by editing their profile and we keep no second copy of their name.
 
@@ -93,7 +93,7 @@ The course plan panel lists the course's activities as cards, in rows. Each card
 **Card states** — so a learner can scan a course listing and tell what each activity is doing right now ([Figma mockup](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13765-270419&t=pnytLg8wuPthDfDt-11)):
 
 1. **Normal (not started)** — 🔘 light gray card: image, name, star row, activity type + role count.
-2. **Joinable/Open** — 🟢 green card with an overlay tag "Open (N)" on the top right in white text, where N is the number of open sessions to choose from. The tag states the meaning in text (screen-reader friendly rather than color-only); the green matches the joinable map pin (V6).
+2. **Joinable/Open** — 🟢 green card with an overlay tag "Open (N)" on the top right in white text, where N is the number of open sessions to choose from — the sessions this course lists, not every joined course's ([world-map.instructions.md](world-map.instructions.md), Discovering joinable sessions). The tag states the meaning in text (screen-reader friendly rather than color-only); the green matches the joinable map pin (V6).
 3. **Ongoing** — 🟣 purple card with an "Ongoing" overlay tag on the top right in white text; same text-not-color-only rationale; the purple matches the ongoing map pin (V6).
 4. **Needs more participants to start** — 🔘 light gray card at 30% opacity: still clickable but de-emphasized. Tapping it explains why ("Uh oh, you need to invite N people…").
 

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-17 15:10:03.542016",
+    "@@last_modified": "2026-09-23 15:42:43.862099",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -8508,11 +8508,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "Ĉi tio estas ĉiuj en ĉi tiu kurso. Klaku sur la avatareto de iu ajn uzanto kaj \"komencu konversacion\" por sendi DM.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Virino",
     "man": "Viro",
     "otherGender": "Alia",
@@ -9743,7 +9738,6 @@
     "customCourseStepTitle": "Plenigu ĉi tiun formularon por ricevi personigitan kurson",
     "courseCodeStepErrorMessage": "Bonvolu kontroli vian kodon kaj provi denove",
     "institution": "Institucio",
-    "courseGoals": "Kursaj Celoj",
     "selectChats": "Elektu Ĉatojn",
     "plainTextFile": "Teksto",
     "@userTypeTitle": {
@@ -10514,7 +10508,6 @@
     "passwordFormLabel": "Formularo por ŝanĝi pasvorton",
     "searchLanguagesHint": "Serĉi lingvojn",
     "searchCountriesHint": "Serĉi landojn",
-    "searchVocabHint": "Serĉi vortprovizon",
     "searchUsersHint": "Serĉi uzantojn",
     "searchMessagesHint": "Serĉi mesaĝojn",
     "searchChatsHint": "Serĉi babilejojn",
@@ -10672,7 +10665,6 @@
     "unlockWritingAssistance": "Malŝlosi skriban helpon",
     "courseSectionTeaching": "Instruado",
     "courseSectionLearning": "Lernado",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kurso} other{{count} kursoj}}",
     "showMore": "Montri pli",
     "showLess": "Montri malpli",
     "countNewMessages": "{count, plural, =1{1 nova mesaĝo} other{{count} novaj mesaĝoj}}",
@@ -10885,5 +10877,34 @@
     "noOpenSessions": "Neniuj malfermitaj sesioj nun",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 vortfaradaĵo uzita} other{{count} vortfaradaĵoj uzitaj}}",
-    "grammarItemsUsed": "{count, plural, =1{1 gramatikaĵo uzita} other{{count} gramatikaĵoj uzitaj}}"
+    "grammarItemsUsed": "{count, plural, =1{1 gramatikaĵo uzita} other{{count} gramatikaĵoj uzitaj}}",
+    "playVideo": "Ludi videon",
+    "videoPlayer": "Videoludilo",
+    "customCourseTextbookHint": "Diru al ni, kiun lernolibron vi uzas, aŭ priskribu vian instruplanon",
+    "courseListFiltersLabel": "Kursfiltriloj",
+    "allCoursesFilterTooltip": "Montri ĉiujn kursojn",
+    "teachingCoursesFilterTooltip": "Montri nur kursojn, kiujn vi instruas",
+    "learningCoursesFilterTooltip": "Montri nur kursojn, en kiuj vi lernas",
+    "searchCoursesHint": "Serĉi kursojn",
+    "noCoursesMatchSearch": "Neniuj kursoj kongruas kun via serĉo.",
+    "searchVocabByWordOrMeaningHint": "Serĉi laŭ vorto aŭ signifo",
+    "practiceTapABlank": "Frapu malplenaĵon por plenigi ĝin",
+    "practiceListeningPrompt": "Kiu diras ‘{word}’?",
+    "practiceMeaningPrompt": "Kion signifas ‘{word}’?",
+    "practiceEmojiPrompt": "Elektu emoji-on por ‘{word}’",
+    "practiceStepProgress": "{done} el {total}",
+    "leaderboard": "Poenttabulo",
+    "leaderboardRank": "Rango {rank}",
+    "courseLeaderboardTooltip": "Ĉiuj en ĉi tiu kurso, rangigitaj laŭ iliaj steloj en ĝia lingvo. Frapu membron kaj elektu “Komenci konversacion” por sendi al ili rektan mesaĝon.",
+    "goalReportTitle": "Raporti ĉi tiun stelon",
+    "goalReportOverAwardPrompt": "Se vi ne supozis ricevi ĉi tiun stelon, bonvolu klarigi kial.",
+    "goalReportUnderAwardPrompt": "Se vi pensas, ke vi supozis ricevi ĉi tiun stelon, kial?",
+    "goalReportPickMessage": "Kiu el viaj mesaĝoj devus esti gajninta ĝin?",
+    "goalReportNoMessages": "Vi ankoraŭ ne sendis mesaĝon en ĉi tiu sesio, do ne estas io por montri.",
+    "goalReportThanks": "Raportite. Dankon!",
+    "goalReportErrorUnreportable": "Neniu orkestrestra vico kongruas kun ĉi tiu stelo, do ne estas io por registri la raporton kontraŭe.",
+    "goalReportErrorRetry": "La serĉo de la vico ne finiĝis. Provu denove.",
+    "summaryFeedbackReceived": "Dankon! Ni ricevis vian retrokuplon.",
+    "summaryFeedbackFailed": "Ne eblis sendi vian retrokuplon. Bonvolu reprovi.",
+    "summaryFeedbackProcessing": "Sendante vian retrosciigon kaj ĝisdatigante la resumon…"
 }

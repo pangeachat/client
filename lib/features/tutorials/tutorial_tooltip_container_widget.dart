@@ -33,6 +33,11 @@ class TutorialTooltipContainerWidget extends StatelessWidget {
   /// See [TutorialStepData.wordBubble].
   final TutorialGreeting? wordBubble;
 
+  /// See [TutorialTooltipWidget.onActivate] and
+  /// [TutorialTooltipWidget.activateHint].
+  final VoidCallback? onActivate;
+  final String? activateHint;
+
   const TutorialTooltipContainerWidget({
     super.key,
     required this.width,
@@ -46,6 +51,8 @@ class TutorialTooltipContainerWidget extends StatelessWidget {
     this.choices = const [],
     required this.onChoice,
     this.wordBubble,
+    this.onActivate,
+    this.activateHint,
   });
 
   @override
@@ -70,6 +77,8 @@ class TutorialTooltipContainerWidget extends StatelessWidget {
               choices: choices,
               onChoice: onChoice,
               wordBubble: wordBubble,
+              onActivate: onActivate,
+              activateHint: activateHint,
             ),
           ),
         ),

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-17 15:10:02.511137",
+    "@@last_modified": "2026-09-23 15:42:42.755753",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -8191,11 +8191,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "এটি এই কোর্সের সকল সদস্য। যে কোনো ব্যবহারকারীর অবতার ক্লিক করুন এবং \"আলাপ শুরু করুন\" এ ডিএম পাঠাতে।",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "মহিলা",
     "man": "পুরুষ",
     "otherGender": "অন্যান্য",
@@ -9426,7 +9421,6 @@
     "customCourseStepTitle": "একটি কাস্টম কোর্স পেতে এই ফর্মটি পূরণ করুন",
     "courseCodeStepErrorMessage": "দয়া করে আপনার কোডটি পরীক্ষা করুন এবং আবার চেষ্টা করুন",
     "institution": "প্রতিষ্ঠান",
-    "courseGoals": "কোর্সের লক্ষ্য",
     "selectChats": "চ্যাট নির্বাচন করুন",
     "plainTextFile": "টেক্সট",
     "@userTypeTitle": {
@@ -10197,7 +10191,6 @@
     "passwordFormLabel": "পাসওয়ার্ড পরিবর্তন ফর্ম",
     "searchLanguagesHint": "ভাষা খুঁজুন",
     "searchCountriesHint": "দেশ খুঁজুন",
-    "searchVocabHint": "শব্দভান্ডার খুঁজুন",
     "searchUsersHint": "ব্যবহারকারীদের খুঁজুন",
     "searchMessagesHint": "বার্তা খুঁজুন",
     "searchChatsHint": "চ্যাট খুঁজুন",
@@ -10355,7 +10348,6 @@
     "unlockWritingAssistance": "রাইটিং অ্যাসিস্টেন্স আনলক করুন",
     "courseSectionTeaching": "শিক্ষাদান",
     "courseSectionLearning": "শিক্ষাগ্রহন",
-    "courseSectionLabel": "{title}, {count, plural, =1{1টি কোর্স} other{{count}টি কোর্স}}",
     "showMore": "আরও দেখান",
     "showLess": "কম দেখান",
     "countNewMessages": "{count, plural, =1{১টি নতুন বার্তা} other{{count}টি নতুন বার্তা}}",
@@ -10568,5 +10560,34 @@
     "noOpenSessions": "এখন কোনো সেশন খোলা নেই",
     "xpAmount": "{count} এক্সপি",
     "vocabItemsUsed": "{count, plural, =1{১টি শব্দ ব্যবহার করা হয়েছে} other{{count}টি শব্দ ব্যবহার করা হয়েছে}}",
-    "grammarItemsUsed": "{count, plural, =1{১টি ব্যাকরণ আইটেম ব্যবহার করা হয়েছে} other{{count}টি ব্যাকরণ আইটেম ব্যবহার করা হয়েছে}}"
+    "grammarItemsUsed": "{count, plural, =1{১টি ব্যাকরণ আইটেম ব্যবহার করা হয়েছে} other{{count}টি ব্যাকরণ আইটেম ব্যবহার করা হয়েছে}}",
+    "playVideo": "ভিডিও চালান",
+    "videoPlayer": "ভিডিও প্লেয়ার",
+    "customCourseTextbookHint": "আপনি কোন পাঠ্যপুস্তক ব্যবহার করেন তা আমাদের বলুন, অথবা আপনার পাঠ্যক্রম বর্ণনা করুন",
+    "courseListFiltersLabel": "কোর্স ফিল্টার",
+    "allCoursesFilterTooltip": "সব কোর্স দেখান",
+    "teachingCoursesFilterTooltip": "শুধুমাত্র আপনার শেখানো কোর্সগুলি দেখান",
+    "learningCoursesFilterTooltip": "শুধুমাত্র আপনি যে কোর্সগুলি শিখছেন তা দেখান",
+    "searchCoursesHint": "কোর্স খুঁজুন",
+    "noCoursesMatchSearch": "আপনার অনুসন্ধানের সাথে কোনো কোর্স মেলে না।",
+    "searchVocabByWordOrMeaningHint": "শব্দ বা অর্থ দিয়ে খুঁজুন",
+    "practiceTapABlank": "পূরণের জন্য একটি ফাঁকা জায়গায় ট্যাপ করুন",
+    "practiceListeningPrompt": "কোনটি ‘{word}’ বলে?",
+    "practiceMeaningPrompt": "‘{word}’ এর অর্থ কী?",
+    "practiceEmojiPrompt": "‘{word}’ এর জন্য একটি ইমোজি বেছে নিন",
+    "practiceStepProgress": "{total} এর মধ্যে {done}",
+    "leaderboard": "লিডারবোর্ড",
+    "leaderboardRank": "র‍্যাঙ্ক {rank}",
+    "courseLeaderboardTooltip": "এই কোর্সের সবাই, তাদের ভাষার তারকাদের দ্বারা র‍্যাঙ্ক করা হয়েছে। একজন সদস্যকে ট্যাপ করুন এবং তাদের একটি DM পাঠাতে “কথোপকথন শুরু করুন” নির্বাচন করুন।",
+    "goalReportTitle": "এই তারকাটি রিপোর্ট করুন",
+    "goalReportOverAwardPrompt": "যদি আপনার এই তারকাটি পাওয়ার কথা না থাকে, তাহলে অনুগ্রহ করে কারণ ব্যাখ্যা করুন।",
+    "goalReportUnderAwardPrompt": "যদি আপনি মনে করেন যে আপনার এই তারকাটি পাওয়ার কথা ছিল, তাহলে কেন?",
+    "goalReportPickMessage": "আপনার কোন বার্তাটি এটি অর্জন করা উচিত ছিল?",
+    "goalReportNoMessages": "আপনি এই সেশনে এখনও কোনো বার্তা পাঠাননি, তাই দেখানোর মতো কিছু নেই।",
+    "goalReportThanks": "রিপোর্ট করা হয়েছে। ধন্যবাদ!",
+    "goalReportErrorUnreportable": "এই তারকার সাথে কোনো অর্কেস্ট্রেটর টার্ন মেলে না, তাই রিপোর্টের বিরুদ্ধে রেকর্ড করার কিছু নেই।",
+    "goalReportErrorRetry": "টার্নের জন্য অনুসন্ধান শেষ হয়নি। আবার চেষ্টা করুন।",
+    "summaryFeedbackReceived": "ধন্যবাদ! আমরা আপনার মতামত পেয়েছি।",
+    "summaryFeedbackFailed": "আপনার মতামত পাঠানো যায়নি। অনুগ্রহ করে আবার চেষ্টা করুন।",
+    "summaryFeedbackProcessing": "আপনার প্রতিক্রিয়া পাঠানো হচ্ছে এবং সারসংক্ষেপ আপডেট করা হচ্ছে…"
 }

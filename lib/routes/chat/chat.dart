@@ -3041,6 +3041,7 @@ class ChatController extends State<ChatPageWithRoom>
         overlayKey: "message_toolbar_overlay",
         bypassBlockingOverlays: bypassBlockingOverlays,
         blockSemantics: true,
+        keyboardModal: true,
       ),
     );
 

@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
@@ -12,6 +13,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
+import 'package:fluffychat/pangea/common/widgets/language_semantics.dart';
 import 'package:fluffychat/routes/chat/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/events/streaming_stt/stt_provenance.dart';
@@ -522,46 +524,55 @@ class _MessageBubbleTranscription extends StatelessWidget {
                 );
               case AsyncLoaded(value: final transcription):
                 return SingleChildScrollView(
-                  child: Column(
-                    spacing: 8.0,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      if (diffPair != null)
-                        DefaultTextStyle.merge(
-                          style: style.copyWith(fontStyle: FontStyle.italic),
-                          child: TranscriptDiffView(
-                            originalAsrText: diffPair!.originalAsr,
-                            transcription: transcription,
+                  child: LanguageSemantics(
+                    // An exhausted-fallback response has no results.
+                    langCode: transcription
+                        .results
+                        .firstOrNull
+                        ?.transcripts
+                        .firstOrNull
+                        ?.langCode,
+                    child: Column(
+                      spacing: 8.0,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        if (diffPair != null)
+                          DefaultTextStyle.merge(
+                            style: style.copyWith(fontStyle: FontStyle.italic),
+                            child: TranscriptDiffView(
+                              originalAsrText: diffPair!.originalAsr,
+                              transcription: transcription,
+                              eventId: eventId,
+                              onTokenSelected: onTokenSelected,
+                              isTokenSelected: isTokenSelected,
+                              vocabLemmas: vocabLemmas,
+                            ),
+                          )
+                        else
+                          SttTranscriptTokens(
                             eventId: eventId,
-                            onTokenSelected: onTokenSelected,
-                            isTokenSelected: isTokenSelected,
+                            model: transcription,
+                            style: style.copyWith(fontStyle: FontStyle.italic),
+                            onClick: onTokenSelected,
+                            isSelected: isTokenSelected,
                             vocabLemmas: vocabLemmas,
                           ),
-                        )
-                      else
-                        SttTranscriptTokens(
-                          eventId: eventId,
-                          model: transcription,
-                          style: style.copyWith(fontStyle: FontStyle.italic),
-                          onClick: onTokenSelected,
-                          isSelected: isTokenSelected,
-                          vocabLemmas: vocabLemmas,
-                        ),
-                      // if (MatrixState
-                      //     .pangeaController.userController.showTranscription)
-                      //   PhoneticTranscriptionWidget(
-                      //     text: transcription.transcript.text,
-                      //     textLanguage: PLanguageStore.byLangCode(
-                      //           transcription.langCode,
-                      //         ) ??
-                      //         LanguageModel.unknown,
-                      //     style: style,
-                      //     iconColor: style.color,
-                      //     onTranscriptionFetched: () =>
-                      //         controller.contentChangedStream.add(true),
-                      //   ),
-                    ],
+                        // if (MatrixState
+                        //     .pangeaController.userController.showTranscription)
+                        //   PhoneticTranscriptionWidget(
+                        //     text: transcription.transcript.text,
+                        //     textLanguage: PLanguageStore.byLangCode(
+                        //           transcription.langCode,
+                        //         ) ??
+                        //         LanguageModel.unknown,
+                        //     style: style,
+                        //     iconColor: style.color,
+                        //     onTranscriptionFetched: () =>
+                        //         controller.contentChangedStream.add(true),
+                        //   ),
+                      ],
+                    ),
                   ),
                 );
               default:

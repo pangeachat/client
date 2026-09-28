@@ -46,35 +46,37 @@ void main() {
     imageURL: 'https://images.test.invalid/a-0.png',
   );
 
-  Widget wrap({required bool isUpNext, MissionProgress? progress}) =>
-      MaterialApp(
-        localizationsDelegates: L10n.localizationsDelegates,
-        supportedLocales: L10n.supportedLocales,
-        home: Scaffold(
-          body: ObjectiveSection(
-            group: QuestObjectiveGroup(
-              objective: LearningObjective(
-                id: 'lo-1',
-                objective: objectiveText,
-              ),
-              activities: [QuestActivity(activityId: 'a-0', plan: plan())],
-            ),
-            onTap: (_) {},
-            userStarsByActivity: (_) => 0,
-            hasCompletedActivity: (_) => false,
-            liveStateByActivity: (_) => (
-              state: null,
-              openSessions: 0,
-              participants: const <String>[],
-              openSlots: 0,
-            ),
-            availableParticipants: 10,
-            progress: progress,
-            collapsible: true,
-            isUpNext: isUpNext,
-          ),
+  Widget wrap({
+    required bool isUpNext,
+    MissionProgress? progress,
+    bool collapsed = false,
+    VoidCallback? onToggleCollapsed,
+  }) => MaterialApp(
+    localizationsDelegates: L10n.localizationsDelegates,
+    supportedLocales: L10n.supportedLocales,
+    home: Scaffold(
+      body: ObjectiveSection(
+        group: QuestObjectiveGroup(
+          objective: LearningObjective(id: 'lo-1', objective: objectiveText),
+          activities: [QuestActivity(activityId: 'a-0', plan: plan())],
         ),
-      );
+        onTap: (_) {},
+        userStarsByActivity: (_) => 0,
+        hasCompletedActivity: (_) => false,
+        liveStateByActivity: (_) => (
+          state: null,
+          openSessions: 0,
+          participants: const <String>[],
+          openSlots: 0,
+        ),
+        availableParticipants: 10,
+        progress: progress,
+        collapsed: collapsed,
+        onToggleCollapsed: onToggleCollapsed ?? () {},
+        isUpNext: isUpNext,
+      ),
+    ),
+  );
 
   /// A column-mode (wide) or phone (narrow) viewport; the header lays out
   /// differently in each, and the label has to survive both.
@@ -180,6 +182,38 @@ void main() {
         tester.widget<Icon>(headerIcon(tester, '1/4', Icons.star)).color,
         Theme.of(tester.element(find.text(objectiveText))).pangea.goldGraphic,
       );
+    });
+  });
+
+  // The section holds no collapse state of its own: the course plan's list
+  // builds lazily and disposes sections scrolled out of view, so a local flag
+  // would reopen on scroll-back (#9248). The parent owns it; the section only
+  // renders it and reports taps.
+  group('Mission collapse', () {
+    testWidgets('a header tap reports the toggle without folding on its own', (
+      tester,
+    ) async {
+      var toggles = 0;
+      await tester.pumpWidget(
+        wrap(isUpNext: false, onToggleCollapsed: () => toggles++),
+      );
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.text(objectiveText));
+      await tester.pumpAndSettle();
+
+      expect(toggles, 1);
+      expect(find.text('Old Town Directions'), findsOneWidget);
+    });
+
+    testWidgets('a collapsed Mission shows its header but not its activities', (
+      tester,
+    ) async {
+      await tester.pumpWidget(wrap(isUpNext: false, collapsed: true));
+      await tester.pumpAndSettle();
+
+      expect(find.text(objectiveText), findsOneWidget);
+      expect(find.text('Old Town Directions'), findsNothing);
     });
   });
 }

@@ -9,7 +9,7 @@ For the cross-service language list architecture, L1/L2 definitions, and CMS sch
 ## Data Flow
 
 1. [`LanguageRepo._fetch()`](../../lib/features/languages/language_repo.dart) fetches all languages from CMS REST API (`/api/languages?limit=500&sort=language_name`) — public, no auth
-2. [`PLanguageStore`](../../lib/features/languages/p_language_store.dart) caches the list in `SharedPreferences` and re-fetches roughly daily
+2. [`PLanguageStore`](../../lib/features/languages/p_language_store.dart) caches the list in `SharedPreferences` and re-fetches roughly daily. The refresh never delays startup: with a usable cache the app starts from it and refreshes in the background, keeping the cache if the fetch fails. Only a first launch, with no usable cache, waits for the fetch.
 3. Hardcoded fallback in [`LanguageConstants.languageList`](../../lib/features/languages/language_constants.dart) if CMS is unreachable and cache is empty
 
 ## L1/L2 Filtering

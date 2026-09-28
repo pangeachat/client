@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-17 15:10:12.128861",
+    "@@last_modified": "2026-09-23 15:42:50.833940",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -7664,11 +7664,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "這是這門課程中的所有人。點擊任何用戶的頭像並選擇「開始對話」以發送私信。",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "女性",
     "man": "男性",
     "otherGender": "其他",
@@ -8904,7 +8899,6 @@
     "customCourseStepTitle": "填寫此表單以獲得自訂課程",
     "courseCodeStepErrorMessage": "請檢查您的代碼並重試",
     "institution": "機構",
-    "courseGoals": "課程目標",
     "selectChats": "選擇聊天",
     "plainTextFile": "文本",
     "@userTypeTitle": {
@@ -9675,7 +9669,6 @@
     "passwordFormLabel": "更改密碼表單",
     "searchLanguagesHint": "搜尋語言",
     "searchCountriesHint": "搜尋國家",
-    "searchVocabHint": "搜尋詞彙",
     "searchUsersHint": "搜尋使用者",
     "searchMessagesHint": "搜尋訊息",
     "searchChatsHint": "搜尋聊天",
@@ -9833,7 +9826,6 @@
     "unlockWritingAssistance": "解鎖寫作輔助",
     "courseSectionTeaching": "教學",
     "courseSectionLearning": "學習",
-    "courseSectionLabel": "{title}，{count, plural, =1{1 門課程} other{{count} 門課程}}",
     "showMore": "顯示更多",
     "showLess": "顯示較少",
     "countNewMessages": "{count, plural, =1{1 條新訊息} other{{count} 條新訊息}}",
@@ -10046,5 +10038,34 @@
     "noOpenSessions": "目前沒有開放的會話",
     "xpAmount": "{count} 經驗值",
     "vocabItemsUsed": "{count, plural, =1{已使用 1 個詞彙項目} other{已使用 {count} 個詞彙項目}}",
-    "grammarItemsUsed": "{count, plural, =1{已使用 1 個文法項目} other{已使用 {count} 個文法項目}}"
+    "grammarItemsUsed": "{count, plural, =1{已使用 1 個文法項目} other{已使用 {count} 個文法項目}}",
+    "playVideo": "播放影片",
+    "videoPlayer": "影片播放器",
+    "customCourseTextbookHint": "告訴我們您使用的教科書，或描述您的課程",
+    "courseListFiltersLabel": "課程篩選條件",
+    "allCoursesFilterTooltip": "顯示所有課程",
+    "teachingCoursesFilterTooltip": "僅顯示您教授的課程",
+    "learningCoursesFilterTooltip": "僅顯示您正在學習的課程",
+    "searchCoursesHint": "搜尋課程",
+    "noCoursesMatchSearch": "沒有課程符合您的搜尋。",
+    "searchVocabByWordOrMeaningHint": "按單字或意思搜尋",
+    "practiceTapABlank": "點擊空格填寫",
+    "practiceListeningPrompt": "哪一個是「{word}」？",
+    "practiceMeaningPrompt": "「{word}」是什麼意思？",
+    "practiceEmojiPrompt": "為「{word}」選擇一個表情符號",
+    "practiceStepProgress": "{done}/{total}",
+    "leaderboard": "排行榜",
+    "leaderboardRank": "排名 {rank}",
+    "courseLeaderboardTooltip": "本課程的所有成員，依據他們在該語言中獲得的星星數進行排名。點擊成員並選擇「開始對話」即可向他們發送私訊。",
+    "goalReportTitle": "舉報此星",
+    "goalReportOverAwardPrompt": "如果您不應該獲得此星，請解釋原因。",
+    "goalReportUnderAwardPrompt": "如果您認為您應該獲得此星，請說明原因。",
+    "goalReportPickMessage": "您的哪條訊息應該獲得此星？",
+    "goalReportNoMessages": "您在此會話中尚未發送任何訊息，因此沒有可指向的內容。",
+    "goalReportThanks": "已舉報。謝謝！",
+    "goalReportErrorUnreportable": "沒有協調者回合符合此星，因此無法記錄舉報。",
+    "goalReportErrorRetry": "回合搜尋未完成。請再試一次。",
+    "summaryFeedbackReceived": "感謝！我們已收到您的意見回饋。",
+    "summaryFeedbackFailed": "無法傳送您的意見回饋。請再試一次。",
+    "summaryFeedbackProcessing": "正在傳送您的意見回饋並更新摘要…"
 }

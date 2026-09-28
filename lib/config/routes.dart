@@ -17,6 +17,14 @@ import 'package:fluffychat/widgets/layouts/workspace_shell.dart';
 import 'package:fluffychat/widgets/log_view.dart';
 
 abstract class AppRoutes {
+  /// Recover through the normal world route so its shell and auth guard run.
+  /// An error-page builder would bypass both and leave the invalid URL active.
+  static void onException(
+    BuildContext context,
+    GoRouterState state,
+    GoRouter router,
+  ) => router.go(PRoutes.world);
+
   static FutureOr<String?> loggedInRedirect(
     BuildContext context,
     GoRouterState state,
@@ -101,11 +109,12 @@ abstract class AppRoutes {
     // path by native app links); it is NOT a render route. `LegacyRedirects`
     // folds `/<code>` into the `left=addcourse:private/<code>` token before
     // anything renders, so the join-with-code page performs the join. Logged
-    // out, the code is cached across the login bounce (PAuthGaurd.roomsRedirect).
+    // out, the folded location is cached across the login bounce like any
+    // workspace URL (PAuthGaurd.roomsRedirect).
     //
     // The DM invite link (`/invite_user/<id>`, the "Share invite link" URL)
     // resolves through its own route, but that route never renders: its
-    // redirect caches the invited user in the login-bounce ferry and lands on
+    // redirect caches the invited user in its own ferry entry and lands on
     // the world map with the chat list open (or bounces to login), and the
     // shell opens the DM from there — DmInviteFerryConsumer (#8436).
     GoRoute(

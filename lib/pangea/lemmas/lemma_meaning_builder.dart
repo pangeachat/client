@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
-import 'package:fluffychat/features/languages/language_constants.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_request.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 
 class LemmaMeaningBuilder extends StatefulWidget {
   final String langCode;
@@ -69,14 +67,9 @@ class LemmaMeaningBuilderState extends State<LemmaMeaningBuilder> {
   LemmaInfoResponse? get lemmaInfo =>
       isLoaded ? (_loader.value as AsyncLoaded<LemmaInfoResponse>).value : null;
 
-  LemmaInfoRequest get _request => LemmaInfoRequest(
-    lemma: widget.constructId.lemma,
-    partOfSpeech: widget.constructId.category,
-    lemmaLang: widget.langCode,
-    userL1:
-        MatrixState.pangeaController.userController.userL1?.langCode ??
-        LanguageKeys.defaultLanguage,
-    messageInfo: widget.messageInfo,
+  LemmaInfoRequest get _request => widget.constructId.wordCardLemmaInfoRequest(
+    widget.langCode,
+    widget.messageInfo,
   );
 
   Future<void> _load() async {

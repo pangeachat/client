@@ -11,12 +11,13 @@ The autocorrect setting itself, and how the learner's choice syncs across device
 
 ## Pointing the keyboard at the target language
 
-Neither platform lets an app choose the keyboard language outright, so each gets the closest thing it offers.
+No platform lets an app choose the keyboard language outright, so each native platform gets the closest thing it offers.
 
 - **Android** — the composer tells the keyboard which language the learner is writing in, and the keyboard switches and corrects in it automatically. Gboard goes further: a learner who lacks the language gets it enabled by Gboard itself, a moment after the keyboard opens. Nothing is asked of the learner.
 - **iOS** — no equivalent exists, so we use memory instead of instruction. iOS restores the keyboard language a learner last chose for a text field it recognises, and the composer is given an identity it recognises, keyed per target language and persisting across chats and app launches. The learner switches keyboards once, by hand; every later visit to the composer comes back in that language. Switching target language starts a fresh memory rather than inheriting the previous language's keyboard.
+- **Web** — a browser offers neither. A page cannot tell the keyboard which language is being typed, and a browser keeps no keyboard memory for a field, so the keyboard stays in whatever language the learner last left it. This holds in a phone or tablet browser too, even though it drives the same device keyboard the app does.
 
-That identity is scoped to the composer alone, so search, display name, and password fields keep the device default. It is also fragile in one specific way: iOS discards the memory for any field whose input mode the app sets directly, so the composer's input mode is **read, never assigned**.
+The iOS identity is scoped to the composer alone, so search, display name, and password fields keep the device default. It is also fragile in one specific way: iOS discards the memory for any field whose input mode the app sets directly, so the composer's input mode is **read, never assigned**.
 
 The consequence that shapes everything below: on Android a learner with the right language pack is done automatically, while on iOS they must make one manual switch before the memory has anything to remember.
 
@@ -26,9 +27,9 @@ The consequence that shapes everything below: on Android a learner with the righ
 | --- | --- | --- | --- |
 | **Android** | Yes — each enabled keyboard and the language packs within it, so we can tell a learner has Gboard but not its Spanish pack. | Not needed; the composer redirects the keyboard itself. | Yes — a public system intent opens keyboard settings, and a second opens the language list for one keyboard. |
 | **iOS** | Yes — every keyboard the learner has enabled, each tagged with a language. | Yes — the keyboard attached to the focused composer, and a system signal when the learner switches with the globe key. | No. Apple offers no public link into keyboard settings, and the private one risks App Store rejection. We open the Settings app and print the path, matching the [read-aloud voice popup](message-read-aloud.instructions.md). |
-| **Web** | Not applicable — autocorrect never runs on web. | — | — |
+| **Web** | No. A browser reports nothing about the device's keyboards. | No. | No. |
 
-Detection is **advisory**. It exists to suppress a prompt the learner doesn't need, never to gate typing. Where a platform reports nothing usable, treat the learner as already equipped and stay silent — a missed prompt costs one learner some autocorrect, while a wrong prompt nags every learner on every device we misread.
+Detection is **advisory**. It exists to suppress a prompt the learner doesn't need, never to gate typing. Where a platform reports nothing usable, treat the learner as already equipped and stay silent — a missed prompt costs one learner some autocorrect, while a wrong prompt nags every learner on every device we misread. Every browser is such a platform, so the ladder below never runs on web.
 
 A learner with a Latin-American Spanish keyboard and a target language of Spanish is equipped, so matching compares only the **primary language subtag** and ignores region and script. Emoji and dictation entries are reported alongside real keyboards and are filtered out first. The answer changes while the app is backgrounded — that is the point, since we send the learner to Settings and they come back — so the check re-runs on resume rather than being cached for the session.
 
@@ -59,3 +60,5 @@ On Android, autocorrect is safe by default: even with no language pack, the comp
 So iOS autocorrect stays off until we have **observed the composer running a target-language keyboard**, and turns on then. Where that observation is unavailable, it stays off and the ladder still runs — the learner can switch it on themselves once they are equipped.
 
 Changing target language clears the stored choice rather than carrying it over, returning the setting to its platform default so the ladder is free to run again. A learner equipped for Spanish is not necessarily equipped for Japanese, and a choice made about one language says nothing about the next.
+
+On web autocorrect is off unless the learner turns it on. A phone or tablet browser passes the setting to the same device keyboard the app uses, so the toggle works there, but the keyboard corrects in whatever language it is in. That suits a learner who already switches to their target-language keyboard by hand. The dialog shown on turning it on says a target-language keyboard is needed, without the shortcut into settings that a browser cannot offer. Desktop web has no device keyboard to drive, so autocorrect stays off there whatever the learner chose on another device, and the setting is locked.

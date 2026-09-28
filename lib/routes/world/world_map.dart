@@ -137,6 +137,13 @@ class WorldMap extends StatefulWidget {
   /// behind it (#7640). 0 when nothing covers the bottom.
   final double bottomOverlayHeight;
 
+  /// The course context bar's footprint, in map coordinates, while the course
+  /// panel rests at its floor on wide; null otherwise. A collapsed course panel
+  /// is not seated, so [leftOverlayWidth] leaves it out and only this band is
+  /// covered: large cards are not placed under it, camera fits keep clear of
+  /// it, and the course-scope empty-view card sits below it (#9291).
+  final Rect? courseBarRect;
+
   /// Logical-pixel width of the map actually visible between the open side panels
   /// (viewport − left overlay − right overlay). Drives the pin-density budget
   /// ([budgetForWidth]) — how many pins show and how many are large cards — so as
@@ -166,6 +173,7 @@ class WorldMap extends StatefulWidget {
     this.leftOverlayWidth = 0.0,
     this.rightOverlayWidth = 0.0,
     this.bottomOverlayHeight = 0.0,
+    this.courseBarRect,
     this.availableVisibleMapWidth = 0.0,
     this.courseScopeSpaceId,
     this.focus,
@@ -457,6 +465,21 @@ class WorldMapController extends State<WorldMap>
 
   bool get isWorld => MapContextController.notifier.value is! CourseMapContext;
 
+  /// The joined course space a course-scoped map is showing, or null on the
+  /// world map and under a course the learner has not joined (a preview). The
+  /// space the scope came from names it outright — two joined courses can
+  /// share a plan (#9026); a scope with no space falls back to the plan.
+  Room? get courseRoom {
+    final mapContext = MapContextController.notifier.value;
+    if (mapContext is! CourseMapContext) return null;
+    final spaceId = mapContext.spaceId;
+    return _client?.joinedCourseRooms.firstWhereOrNull(
+      (r) => spaceId != null
+          ? r.id == spaceId
+          : r.coursePlan?.uuid == mapContext.coursePlanId,
+    );
+  }
+
   /// The id of the activity the detail panel is focused on, or null. Focus is
   /// the persistent "I'm working with this one" state (its panel is open and the
   /// camera settled on it); it drives a distinct focus marker on the pin at
@@ -628,7 +651,7 @@ class WorldMapController extends State<WorldMap>
   void _recomputeProgress() {
     final client = _client;
     if (client == null) return;
-    _pinsManager.recomputeProgress(client);
+    _pinsManager.recomputeProgress(client, course: courseRoom);
     if (mounted) setState(() {});
   }
 
@@ -639,12 +662,7 @@ class WorldMapController extends State<WorldMap>
   Future<void> _refreshCourseAvailableParticipants() async {
     final client = _client;
     if (client == null) return;
-    final mapContext = MapContextController.notifier.value;
-    final courseRoom = mapContext is CourseMapContext
-        ? client.joinedCourseRooms.firstWhereOrNull(
-            (r) => r.coursePlan?.uuid == mapContext.coursePlanId,
-          )
-        : null;
+    final courseRoom = this.courseRoom;
     final before = _pinsManager.courseAvailableParticipants;
     if (courseRoom == null) {
       _pinsManager.clearCourseAvailableParticipants();
@@ -672,8 +690,9 @@ class WorldMapController extends State<WorldMap>
   /// A ping leaves no persistent room state, so this proxy is intentionally
   /// approximate — its efficacy is worth watching (world-map.instructions.md).
   Future<void> _recomputePinged(Client client) async {
-    await _pinsManager.recomputePinged(client);
-    if (mounted) setState(() {});
+    // Derived here, after the scan's awaits, so the signals read the scope
+    // current NOW rather than the one the scan started under (#9026).
+    if (await _pinsManager.recomputePinged(client)) _recomputeProgress();
   }
 
   /// Refill the member lists the map's seat math and participant rows read —
@@ -702,6 +721,10 @@ class WorldMapController extends State<WorldMap>
     if (mounted) {
       WorldMapPinsManager.set(false);
     }
+    // The scope decides which discovered sessions may colour a pin (#9026), so
+    // re-derive the signals now rather than on the next sync tick — entering a
+    // course must not flash another course's session as joinable first.
+    _recomputeProgress();
     _loadForContext(debounceFit: true);
   }
 
@@ -719,10 +742,7 @@ class WorldMapController extends State<WorldMap>
           // The joined course's per-Mission activity pin scopes this view's
           // markers (org quests doc, client#7748); not joined / unset → null →
           // unrestricted.
-          final courseRoom = Matrix.of(context).client.joinedCourseRooms
-              .firstWhereOrNull(
-                (r) => r.coursePlan?.uuid == mapContext.coursePlanId,
-              );
+          final courseRoom = this.courseRoom;
           await _pinsManager.loadCourseScopedPins(
             mapContext.coursePlanId,
             pinnedActivitiesByObjective:
@@ -1072,10 +1092,13 @@ class WorldMapController extends State<WorldMap>
   }
 
   /// Inset the left/right edges by the overlays so camera targets land in the
-  /// uncovered map area beside the column/panel, not behind it.
+  /// uncovered map area beside the column/panel, not behind it. The collapsed
+  /// course's context bar is not part of the left overlay (#9291), so the top
+  /// edge clears it instead: a course fit from the bar's own focus button
+  /// would otherwise put the northernmost activities under the bar.
   EdgeInsets get _exposedCanvasPadding => EdgeInsets.fromLTRB(
     widget.leftOverlayWidth + 64.0,
-    64.0,
+    (widget.courseBarRect?.bottom ?? 0.0) + 64.0,
     widget.rightOverlayWidth + 64.0,
     widget.bottomOverlayHeight + 64.0,
   );

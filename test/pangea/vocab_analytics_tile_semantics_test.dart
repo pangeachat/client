@@ -26,6 +26,7 @@ void main() {
     WidgetTester tester, {
     ConstructLevelEnum level = ConstructLevelEnum.seeds,
     bool blocked = false,
+    String? langCode,
   }) async {
     await tester.pumpWidget(
       MaterialApp(
@@ -38,6 +39,7 @@ void main() {
             textColor: Colors.black,
             listen: false,
             blocked: blocked,
+            langCode: langCode,
             onTap: () {},
             onLongPress: () {},
           ),
@@ -79,6 +81,26 @@ void main() {
       find.bySemanticsLabel(l10n.deletedWordLabel('bien')),
       findsOneWidget,
     );
+    semantics.dispose();
+  });
+
+  testWidgets('marks the word, not the stage, with its language (#9266)', (
+    tester,
+  ) async {
+    final semantics = tester.ensureSemantics();
+    await pumpTile(tester, level: ConstructLevelEnum.greens, langCode: 'es');
+
+    final l10n = L10n.of(tester.element(find.byType(VocabAnalyticsListTile)));
+    final data = tester
+        .getSemantics(
+          find.bySemanticsLabel('bien, ${l10n.constructLevelGreens}'),
+        )
+        .getSemanticsData();
+    final attribute =
+        data.attributedLabel.attributes.single as LocaleStringAttribute;
+    expect(attribute.range, const TextRange(start: 0, end: 4));
+    expect(attribute.locale, const Locale('es'));
+    expect(data.locale, isNull, reason: 'the stage name stays in the UI voice');
     semantics.dispose();
   });
 

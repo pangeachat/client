@@ -20,6 +20,21 @@ extension ChildrenAndParentsRoomExtension on Room {
     return client.rooms.where((r) => childIds.contains(r.id)).toList();
   }
 
+  /// The rooms among [rooms] that this space lists as children — a
+  /// [pangeaSpaceChildren] narrowed to a list the caller already filtered.
+  List<Room> spaceChildrenAmong(Iterable<Room> rooms) {
+    final childIds = spaceChildIds;
+    return rooms.where((r) => childIds.contains(r.id)).toList();
+  }
+
+  /// The ids of this space's direct `m.space.child` rooms, joined or not. A
+  /// child removed from the space carries no `via` and is already dropped by
+  /// [spaceChildren]. Empty for a room that is not a space (a stale or crafted
+  /// course id), where [spaceChildren] would throw.
+  Set<String> get spaceChildIds => !isSpace
+      ? const {}
+      : spaceChildren.map((child) => child.roomId).whereType<String>().toSet();
+
   /// The newest event in this space or in any child chat or activity session
   /// the user has joined. A course space's own timeline is mostly setup state,
   /// so its real activity lives in its children (#9004). Analytics rooms are

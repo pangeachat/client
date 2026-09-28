@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-17 15:10:03.277323",
+    "@@last_modified": "2026-09-23 15:42:43.478561",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -7690,11 +7690,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "Això és tothom en aquest curs. Feu clic a l'avatar de qualsevol usuari i \"comenceu la conversa\" per enviar un DM.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Dona",
     "man": "Home",
     "otherGender": "Altre",
@@ -8925,7 +8920,6 @@
     "customCourseStepTitle": "Omple aquest formulari per obtenir un curs personalitzat",
     "courseCodeStepErrorMessage": "Si us plau, comprova el teu codi i torna-ho a intentar",
     "institution": "Institut",
-    "courseGoals": "Objectius del curs",
     "selectChats": "Selecciona xats",
     "plainTextFile": "Text",
     "@userTypeTitle": {
@@ -9696,7 +9690,6 @@
     "passwordFormLabel": "Formulari de canvi de contrasenya",
     "searchLanguagesHint": "Cercar idiomes",
     "searchCountriesHint": "Cercar països",
-    "searchVocabHint": "Cercar vocabulari",
     "searchUsersHint": "Cercar usuaris",
     "searchMessagesHint": "Cercar missatges",
     "searchChatsHint": "Cercar xats",
@@ -9854,7 +9847,6 @@
     "unlockWritingAssistance": "Desbloqueja l'assistència d'escriptura",
     "courseSectionTeaching": "Ensenyament",
     "courseSectionLearning": "Aprenentatge",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 curs} other{{count} cursos}}",
     "showMore": "Mostra més",
     "showLess": "Mostra menys",
     "countNewMessages": "{count, plural, =1{1 missatge nou} other{{count} missatges nous}}",
@@ -10067,5 +10059,34 @@
     "noOpenSessions": "No hi ha sessions obertes ara mateix",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 element de vocabulari utilitzat} other{{count} elements de vocabulari utilitzats}}",
-    "grammarItemsUsed": "{count, plural, =1{1 element de gramàtica utilitzat} other{{count} elements de gramàtica utilitzats}}"
+    "grammarItemsUsed": "{count, plural, =1{1 element de gramàtica utilitzat} other{{count} elements de gramàtica utilitzats}}",
+    "playVideo": "Reproduir vídeo",
+    "videoPlayer": "Reproductor de vídeo",
+    "customCourseTextbookHint": "Digues-nos quin llibre de text utilitzes o descriu el teu pla d'estudis",
+    "courseListFiltersLabel": "Filtres de cursos",
+    "allCoursesFilterTooltip": "Mostra tots els cursos",
+    "teachingCoursesFilterTooltip": "Mostra només els cursos que imparteixes",
+    "learningCoursesFilterTooltip": "Mostra només els cursos en què estàs aprenent",
+    "searchCoursesHint": "Cerca cursos",
+    "noCoursesMatchSearch": "No hi ha cursos que coincideixin amb la cerca.",
+    "searchVocabByWordOrMeaningHint": "Cerca per paraula o significat",
+    "practiceTapABlank": "Toca un espai en blanc per omplir-lo",
+    "practiceListeningPrompt": "Quin diu «{word}»?",
+    "practiceMeaningPrompt": "Què significa «{word}»?",
+    "practiceEmojiPrompt": "Tria un emoji per a «{word}»",
+    "practiceStepProgress": "{done} de {total}",
+    "leaderboard": "Classificació",
+    "leaderboardRank": "Posició {rank}",
+    "courseLeaderboardTooltip": "Tots els participants d'aquest curs, classificats per les estrelles que tenen en el seu idioma. Toca un membre i tria \"Inicia una conversa\" per enviar-li un missatge directe.",
+    "goalReportTitle": "Informar d'aquesta estrella",
+    "goalReportOverAwardPrompt": "Si se suposava que no havies de rebre aquesta estrella, explica per què.",
+    "goalReportUnderAwardPrompt": "Si creus que hauries d'haver rebut aquesta estrella, per què?",
+    "goalReportPickMessage": "Quin dels teus missatges l'hauria d'haver guanyat?",
+    "goalReportNoMessages": "Encara no has enviat cap missatge en aquesta sessió, així que no hi ha res a assenyalar.",
+    "goalReportThanks": "Informat. Gràcies!",
+    "goalReportErrorUnreportable": "Cap torn de l'orquestrador coincideix amb aquesta estrella, així que no hi ha res contra el qual registrar l'informe.",
+    "goalReportErrorRetry": "La cerca del torn no ha finalitzat. Torna-ho a provar.",
+    "summaryFeedbackReceived": "Gràcies! Hem rebut els teus comentaris.",
+    "summaryFeedbackFailed": "No s'han pogut enviar els teus comentaris. Torna-ho a provar.",
+    "summaryFeedbackProcessing": "S'està enviant el teu feedback i actualitzant el resum…"
 }

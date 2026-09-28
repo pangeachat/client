@@ -24,14 +24,14 @@ void main() {
   group('AddCourseTile (#8001)', () {
     // "Start My Own" and "Browse Public Courses" tiles are backed by content
     // types (CoursePlan / Preview) with no underlying room, so their
-    // unreadCoursePingEvent and courseChildrenIds are null. #7972 force-
+    // unreadCoursePingEvent and unreadRooms are null. #7972 force-
     // unwrapped both, throwing a null-check error that rendered as a grey box.
     testWidgets('renders content with no room without throwing', (
       tester,
     ) async {
       final content = CombinedAddCourseTileContent(title: 'Intro Spanish');
       expect(content.unreadCoursePingEvent, isNull);
-      expect(content.courseChildrenIds, isNull);
+      expect(content.unreadRooms, isNull);
 
       await tester.pumpWidget(wrap(AddCourseTile(content: content)));
       await tester.pumpAndSettle();

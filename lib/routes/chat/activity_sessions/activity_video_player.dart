@@ -4,6 +4,7 @@ import 'package:chewie/chewie.dart';
 import 'package:video_player/video_player.dart';
 
 import 'package:fluffychat/pangea/common/widgets/embed_click_to_engage.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/activity_video_keyboard_control.dart';
 
 /// Plays an uploaded (non-Matrix) video from a resolved CDN URL, sized to its
 /// carousel cell. The timeline's [EventVideoPlayer] is bound to a Matrix event
@@ -17,17 +18,25 @@ import 'package:fluffychat/pangea/common/widgets/embed_click_to_engage.dart';
 /// On web the `<video>` is a DOM element that takes the mouse from the page
 /// around it, so it only gets the pointer once the learner clicks it
 /// ([EmbedClickToEngage], #9063); that click plays or pauses.
+///
+/// From the keyboard it answers the same keys as the YouTube player
+/// ([ActivityVideoKeyboardControl], #9128), minus captions, which an uploaded
+/// video does not carry.
 class ActivityVideoPlayer extends StatefulWidget {
   final String url;
   final double? aspectRatio;
   final bool autoPlay;
   final bool muted;
 
+  /// See [ActivityVideoKeyboardControl.autofocus].
+  final bool autofocus;
+
   const ActivityVideoPlayer({
     required this.url,
     this.aspectRatio,
     this.autoPlay = true,
     this.muted = false,
+    this.autofocus = false,
     super.key,
   });
 
@@ -88,6 +97,12 @@ class _ActivityVideoPlayerState extends State<ActivityVideoPlayer> {
     }
   }
 
+  void _toggleMute() {
+    final controller = _videoController;
+    if (controller == null || !controller.value.isInitialized) return;
+    controller.setVolume(controller.value.volume == 0 ? 1 : 0);
+  }
+
   @override
   Widget build(BuildContext context) {
     if (_failed) {
@@ -97,9 +112,14 @@ class _ActivityVideoPlayerState extends State<ActivityVideoPlayer> {
     if (chewie == null) {
       return const Center(child: CircularProgressIndicator.adaptive());
     }
-    return EmbedClickToEngage(
-      onEngage: _togglePlayback,
-      child: Chewie(controller: chewie),
+    return ActivityVideoKeyboardControl(
+      autofocus: widget.autofocus,
+      onTogglePlayback: _togglePlayback,
+      onToggleMute: _toggleMute,
+      child: EmbedClickToEngage(
+        onEngage: _togglePlayback,
+        child: Chewie(controller: chewie),
+      ),
     );
   }
 }

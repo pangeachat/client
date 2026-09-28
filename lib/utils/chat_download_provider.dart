@@ -6,6 +6,7 @@ import 'package:fluffychat/features/download/download_dialog.dart';
 import 'package:fluffychat/features/download/download_room_extension.dart';
 import 'package:fluffychat/features/download/download_type_enum.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Opens the transcript-export dialog for [roomId], or does nothing when the
@@ -49,7 +50,8 @@ class ChatDownloadDialogState extends State<ChatDownloadDialog> {
       await widget.room.download(_downloadType, context);
     } on EmptyChatException {
       _error = L10n.of(context).emptyChatDownloadWarning;
-    } catch (e) {
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {'downloadType': _downloadType});
       _error = L10n.of(context).errorPleaseRefresh;
     } finally {
       setState(() {

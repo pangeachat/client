@@ -1,22 +1,23 @@
 import 'package:get_storage/get_storage.dart';
 
+import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/pangea/common/constants/local.key.dart';
 
-/// The join-code box, which doubles as the **login-bounce ferry**: an inbound
-/// link's payload is cached here when a logged-out visitor is bounced to
-/// login, and re-entered by the `/` auth guard on the next logged-in landing
-/// (PAuthGaurd). Three payloads ride it — a course join code, a shared
-/// activity id, and a DM invite user id — each a TTL-stamped entry with the
-/// same landing-retries-until-consumed contract; who consumes each is noted
-/// on its getter.
+/// The join-code box, which doubles as the **login-bounce ferry**: the
+/// workspace location a logged-out visitor opened is cached here when they
+/// are bounced to login, and re-entered by the `/` auth guard on the next
+/// logged-in landing (PAuthGaurd; routing.instructions.md § A signed-out
+/// visitor's destination). Two TTL-stamped entries ride it — the
+/// [destination] itself, and the DM invite link's pending user id
+/// ([dmInviteUserId]), which has its own consumer because it must act when
+/// tapped logged in too.
 class SpaceCodeRepo {
   static final GetStorage _spaceStorage = GetStorage('class_storage');
 
-  /// How long a cached join code stays actionable. An inbound join link's
-  /// code is ferried through this cache across the login bounce (#7524); a
-  /// code cached long ago must not surprise-join a later login, possibly by
-  /// a different account on a shared browser, so stale entries are ignored
-  /// and cleared on read.
+  /// How long a ferry entry stays actionable. A destination cached long ago
+  /// must not carry a later login — possibly a different account on a shared
+  /// browser — somewhere it never asked to go (#7524), so stale entries are
+  /// ignored and cleared on read.
   static const Duration cacheTTL = Duration(hours: 1);
 
   /// Whether a cache entry stamped [writtenAtMillis] is still actionable at
@@ -73,47 +74,51 @@ class SpaceCodeRepo {
     ]);
   }
 
-  /// The course join code ferried across the login bounce; consumed by the
-  /// join page's actually-firing submit (CourseCodePage) or, for a brand-new
-  /// user, by onboarding.
-  static String? get spaceCode => _readFresh(
-    PLocalKey.cachedSpaceCodeToJoin,
-    PLocalKey.cachedSpaceCodeToJoinAt,
+  /// The workspace location ferried across the login bounce, exactly as the
+  /// router resolved it (`/?<query>`), or null. Written by the bounce and
+  /// consumed — read and cleared in one step — by the same guard's logged-in
+  /// landing (PAuthGaurd); a brand-new user's onboarding reads a join code
+  /// out of it first (ClientCourseProvider). A stored value that is not a
+  /// valid destination ([isValidDestination]) reads as absent and is cleared:
+  /// the bounce may never send anyone off the app.
+  static String? get destination {
+    final location = _readFresh(
+      PLocalKey.cachedDestination,
+      PLocalKey.cachedDestinationAt,
+    );
+    if (location == null) return null;
+    if (isValidDestination(location)) return location;
+    _clearStamped(PLocalKey.cachedDestination, PLocalKey.cachedDestinationAt);
+    return null;
+  }
+
+  static Future<void> setDestination(String location) => _writeStamped(
+    PLocalKey.cachedDestination,
+    PLocalKey.cachedDestinationAt,
+    location,
   );
 
-  static Future<void> setSpaceCode(String code) => _writeStamped(
-    PLocalKey.cachedSpaceCodeToJoin,
-    PLocalKey.cachedSpaceCodeToJoinAt,
-    code,
-  );
+  static Future<void> clearDestination() =>
+      _clearStamped(PLocalKey.cachedDestination, PLocalKey.cachedDestinationAt);
 
-  static Future<void> clearSpaceCode() => _clearStamped(
-    PLocalKey.cachedSpaceCodeToJoin,
-    PLocalKey.cachedSpaceCodeToJoinAt,
-  );
+  /// Whether [location] is somewhere the ferry may carry a login: a workspace
+  /// URL — the world root with a non-empty query — and nothing else. The bare
+  /// root is the default landing, so there is nothing to keep (and caching it
+  /// would let a plain app open, or the native SSO callback, overwrite a real
+  /// destination); any other path, and any absolute URL, is refused so the
+  /// post-login redirect can only ever land inside the app. Pure —
+  /// unit-tested (login_bounce_destination_test.dart).
+  static bool isValidDestination(String location) {
+    final uri = Uri.tryParse(location);
+    if (uri == null) return false;
+    return !uri.hasScheme &&
+        !uri.hasAuthority &&
+        uri.path == PRoutes.world &&
+        uri.query.isNotEmpty;
+  }
 
-  /// The activity id of a shared `/<uuid>` link ferried across the login
-  /// bounce — same box, same TTL, same landing-retries-until-consumed
-  /// contract as the join code above; consumed when the activity panel
-  /// actually opens (LeftPanelActivityDetailsSubpage).
-  static String? get activityId => _readFresh(
-    PLocalKey.cachedActivityToOpen,
-    PLocalKey.cachedActivityToOpenAt,
-  );
-
-  static Future<void> setActivityId(String id) => _writeStamped(
-    PLocalKey.cachedActivityToOpen,
-    PLocalKey.cachedActivityToOpenAt,
-    id,
-  );
-
-  static Future<void> clearActivityId() => _clearStamped(
-    PLocalKey.cachedActivityToOpen,
-    PLocalKey.cachedActivityToOpenAt,
-  );
-
-  /// The user id of a DM invite link (`/invite_user/<id>`) — same box, same
-  /// TTL, same contract; cached by the invite route's redirect on every
+  /// The user id of a DM invite link (`/invite_user/<id>`) — its own entry,
+  /// same box, same TTL; cached by the invite route's redirect on every
   /// landing (not only the login bounce, #8436) and consumed from inside the
   /// shell once the DM has actually opened (or definitively failed to),
   /// DmInviteController.consumePending.

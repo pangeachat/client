@@ -8,7 +8,6 @@ import 'package:matrix/matrix.dart' as sdk;
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
-import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_builder.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
@@ -16,11 +15,12 @@ import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/routes/chat/events/constants/pangea_room_types.dart';
 import 'package:fluffychat/routes/chat_list/chat_list.dart';
 import 'package:fluffychat/routes/chat_list/course_chats_view.dart';
+import 'package:fluffychat/routes/chat_list/course_hierarchy_extension.dart';
 import 'package:fluffychat/routes/chat_list/extended_space_rooms_chunk.dart';
 import 'package:fluffychat/routes/chat_list/hierarchy_sync_update_extension.dart';
+import 'package:fluffychat/routes/chat_list/unjoined_chat_list_item.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
@@ -28,7 +28,6 @@ import 'package:fluffychat/widgets/adaptive_dialogs/invite_dialog.dart';
 import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:fluffychat/widgets/public_room_bottom_sheet.dart';
 
 class CourseChats extends StatefulWidget {
   final Client client;
@@ -113,11 +112,7 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
 
   List<SpaceRoomsChunk$2> get discoveredGroupChats =>
       (_discoveredChildren ?? [])
-          .where(
-            (chunk) =>
-                chunk.roomType == null ||
-                !chunk.roomType!.startsWith(PangeaRoomTypes.activitySession),
-          )
+          .where((chunk) => !chunk.isActivitySession)
           .toList();
 
   Map<String, List<ExtendedSpaceRoomsChunk>> get discoveredActivities {
@@ -271,7 +266,7 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
     // so many invisible rooms (analytics rooms) that it might look like
     // pressing the 'load more' button does nothing (Because the only rooms
     // coming through from those calls are analytics rooms).
-    while (callsToServer < 5) {
+    while (callsToServer < CourseHierarchyExtension.maxHierarchyPages) {
       // if this space has been loaded and there are no more rooms to load, break
       if (currentHierarchy != null && currentNextBatch == null) {
         break;
@@ -288,7 +283,7 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
         widget.roomId,
         maxDepth: 1,
         from: currentNextBatch,
-        limit: 100,
+        limit: CourseHierarchyExtension.hierarchyPageSize,
       );
 
       if (widget.roomId != requestSpaceId) {
@@ -328,42 +323,16 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
   ) {
     final List<SpaceRoomsChunk$2> filteredChildren = [];
     for (final child in hierarchyResponse) {
-      if (child.roomId == widget.roomId) {
-        continue;
-      }
-
-      final room = space.client.getRoomById(child.roomId);
-      if (room != null && room.membership != Membership.leave) {
-        // If the room is already joined or invited, skip it
-        continue;
-      }
+      if (!space.isJoinableChild(child)) continue;
 
       final isDuplicate = filteredChildren.any(
         (filtered) => filtered.roomId == child.roomId,
       );
       if (isDuplicate) continue;
 
-      if (_includeSpaceChild(space, child)) {
-        filteredChildren.add(child);
-      }
+      filteredChildren.add(child);
     }
     return filteredChildren;
-  }
-
-  bool _includeSpaceChild(Room space, SpaceRoomsChunk$2 hierarchyMember) {
-    if (!mounted) return false;
-    final bool isAnalyticsRoom =
-        hierarchyMember.roomType == PangeaRoomTypes.analytics;
-
-    final bool isMember = [
-      Membership.join,
-      Membership.invite,
-    ].contains(widget.client.getRoomById(hierarchyMember.roomId)?.membership);
-
-    final bool isSuggested =
-        space.spaceChildSuggestionStatus[hierarchyMember.roomId] ?? true;
-
-    return !isAnalyticsRoom && (isMember || isSuggested);
   }
 
   int _sortSpaceChildren(SpaceRoomsChunk$2 a, SpaceRoomsChunk$2 b) {
@@ -497,20 +466,8 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
 
   Future<void> joinChildRoom(SpaceRoomsChunk$2 item) async {
     final space = this.space;
-    final joinResp = await PublicRoomBottomSheet.show(
-      context: context,
-      chunk: item,
-      via: space?.spaceChildren
-          .firstWhereOrNull((child) => child.roomId == item.roomId)
-          ?.via,
-    );
-    if (joinResp == null) return;
-
-    final room = widget.client.getRoomById(joinResp.roomId);
-    if (room == null) return;
-
-    final handler = JoinRoomAnalyticsConsentHandler(joinResp, room);
-    final joinedRoomId = await handler.handle(context);
+    if (space == null) return;
+    final joinedRoomId = await UnjoinedChatListItem.join(context, space, item);
     if (mounted && joinedRoomId != null) {
       setState(() {
         _discoveredChildren?.remove(item);

@@ -7,7 +7,7 @@ import 'package:fluffychat/routes/world/world_map_ranking.dart';
 /// #7194/#7993 designs: a NEW pill while the activity has fewer than
 /// [kNewRatingThreshold] ratings, then a pill carrying a thumbs-up icon and the
 /// up-percentage, tinted between the scheme's error container (all thumbs down)
-/// and its primary container (all thumbs up) — light red to light purple under
+/// and its secondary container (all thumbs up) — light red to light purple under
 /// the default seed. The thumb — not a ring or dial — is what reads as "share of
 /// thumbs up" (#8088): a ring at 0% looked like an empty progress meter rather
 /// than an all-negative rating. This is the ONLY surface that shows the
@@ -47,17 +47,19 @@ class ActivityRatingMeter extends StatelessWidget {
     final clamped = (average ?? 0.0).clamp(0.0, 1.0);
     final percent = (clamped * 100).round();
 
-    // The tint runs across a matched pair of scheme roles, so the pill and its
-    // contents stay contrasting at both ends and under either brightness.
+    // Both ends need fills of similar tone and inks of the same polarity, or
+    // the lerp crosses fill and ink mid-range. Under the fidelity variant
+    // primaryContainer is a vivid mid-tone whose ink has the opposite polarity
+    // to errorContainer's, and a 50% rating measured 1.3:1 (#9174).
     final colors = theme.colorScheme;
     final background = Color.lerp(
       colors.errorContainer,
-      colors.primaryContainer,
+      colors.secondaryContainer,
       clamped,
     )!;
     final foreground = Color.lerp(
       colors.onErrorContainer,
-      colors.onPrimaryContainer,
+      colors.onSecondaryContainer,
       clamped,
     )!;
 

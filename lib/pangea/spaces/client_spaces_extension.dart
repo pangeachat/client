@@ -5,7 +5,6 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/constants/default_power_level.dart';
 import 'package:fluffychat/pangea/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/spaces/course_role_groups.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 
 extension SpacesClientExtension on Client {
@@ -35,8 +34,8 @@ extension SpacesClientExtension on Client {
     ),
   );
 
-  /// In the nav rail and courses tab: invited courses first, then joined
-  /// courses by recent activity ([ChildrenAndParentsRoomExtension.spaceActivityTime]).
+  /// The Courses hub's and the nav rail's one order: invited courses first,
+  /// then joined courses by recent activity ([ChildrenAndParentsRoomExtension.spaceActivityTime]).
   /// Invites carry no activity, so they — and activity ties — sort by title.
   List<Room> sortedCourses(L10n l10n) {
     final courses = rooms
@@ -71,28 +70,5 @@ extension SpacesClientExtension on Client {
       }
       return titles[a.id]!.compareTo(titles[b.id]!);
     });
-  }
-
-  /// [sortedCourses] split by the learner's role in each course — the model
-  /// the Courses hub, the nav rail and the mobile sheet's height estimate all
-  /// read (#8425). Partitioning the sorted list keeps each group in that order.
-  CourseRoleGroups coursesByRole(L10n l10n) {
-    final invited = <Room>[];
-    final teaching = <Room>[];
-    final learning = <Room>[];
-    for (final course in sortedCourses(l10n)) {
-      if (course.membership == Membership.invite) {
-        invited.add(course);
-      } else if (course.isRoomAdmin) {
-        teaching.add(course);
-      } else {
-        learning.add(course);
-      }
-    }
-    return CourseRoleGroups(
-      invited: invited,
-      teaching: teaching,
-      learning: learning,
-    );
   }
 }

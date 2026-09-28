@@ -264,6 +264,13 @@ class UserToolSettings {
   bool get enableAutocorrect =>
       enableAutocorrectChoice ?? enableAutocorrectPlatformDefault;
 
+  /// Autocorrect runs on the device keyboard, which a phone or tablet browser
+  /// drives just as the app does. Only desktop web has none (#9178).
+  static bool deviceAutocorrectAvailable({bool isWeb = kIsWeb}) =>
+      !isWeb ||
+      defaultTargetPlatform == TargetPlatform.android ||
+      defaultTargetPlatform == TargetPlatform.iOS;
+
   factory UserToolSettings.fromJson(
     Map<String, dynamic> json,
   ) => UserToolSettings(
@@ -527,14 +534,16 @@ class Profile {
   /// is already unconditionally true on Android (the composer redirects the
   /// keyboard itself) and unconditionally false on iOS; here, an iOS device
   /// that has been observed typing with a matching keyboard also resolves
-  /// true. See target-language-keyboard.instructions.md, "When autocorrect
-  /// turns on".
+  /// true. Desktop web is always off, whatever was chosen on another device.
+  /// See target-language-keyboard.instructions.md, "When autocorrect turns
+  /// on".
   bool get effectiveAutocorrect =>
-      toolSettings.enableAutocorrectChoice ??
-      (UserToolSettings.enableAutocorrectPlatformDefault ||
-          ObservedKeyboardStore.hasObservedKeyboard(
-            userSettings.targetLanguage,
-          ));
+      UserToolSettings.deviceAutocorrectAvailable() &&
+      (toolSettings.enableAutocorrectChoice ??
+          (UserToolSettings.enableAutocorrectPlatformDefault ||
+              ObservedKeyboardStore.hasObservedKeyboard(
+                userSettings.targetLanguage,
+              )));
 
   /// Clears [updated]'s autocorrect choice when its target language differs
   /// from [previous]'s — a choice made for one target language says nothing

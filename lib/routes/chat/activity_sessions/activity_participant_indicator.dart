@@ -1,3 +1,5 @@
+import 'dart:ui' as ui show SemanticsHitTestBehavior;
+
 import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
@@ -85,89 +87,102 @@ class ActivityParticipantIndicator extends StatelessWidget {
               )
             : null);
 
-    return MouseRegion(
-      cursor: onTap != null
-          ? SystemMouseCursors.click
-          : SystemMouseCursors.basic,
-      child: GestureDetector(
-        onTap: onTap,
-        child: AbsorbPointer(
-          absorbing: !selectable,
-          child: HoverBuilder(
-            builder: (context, hovered) => Opacity(
-              opacity: opacity,
-              child: ShimmerBackground(
-                enabled: shimmer && !hovered,
-                borderRadius: borderRadius,
-                child: Container(
-                  alignment: Alignment.center,
-                  padding:
-                      padding ??
-                      const EdgeInsets.symmetric(
-                        vertical: 4.0,
-                        horizontal: 8.0,
-                      ),
-                  decoration: BoxDecoration(
-                    borderRadius: borderRadius,
-                    color: (hovered || selected) && selectable
-                        ? theme.colorScheme.surfaceContainerHighest
-                        : theme.colorScheme.surfaceContainerLow,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withAlpha(25),
-                        blurRadius: 4.0,
-                        offset: const Offset(0, 2),
-                      ),
-                    ],
-                  ),
-                  height: 125.0,
-                  child: goals != null
-                      ? Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              name,
-                              style: const TextStyle(fontSize: 12.0),
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              textAlign: TextAlign.center,
-                            ),
-                            avatar,
-                            ActivityStarRow(
-                              total: goals!.length,
-                              earned: goals!
-                                  .where(
-                                    (g) =>
-                                        completedGoalIds?.contains(g.id) ??
-                                        false,
-                                  )
-                                  .length,
-                              iconSize: 22.0,
-                            ),
-                          ],
-                        )
-                      : Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              name,
-                              style: const TextStyle(fontSize: 12.0),
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              textAlign: TextAlign.center,
-                            ),
-                            avatar,
-                            UserProfileName(
-                              userId: userId,
-                              fallback: L10n.of(context).openRoleLabel,
-                              style: const TextStyle(fontSize: 12.0),
-                              colorize: true,
-                              textAlign: TextAlign.center,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ],
+    // The card is solid, so a click anywhere on it stays on it. On web with
+    // the semantics tree on, clicks go to the semantics DOM, where a card with
+    // no tap action (an open seat once a role is chosen) publishes nothing
+    // clickable — the click fell through to the hero's play-video poster
+    // beneath (#9287).
+    return Semantics(
+      container: true,
+      hitTestBehavior: ui.SemanticsHitTestBehavior.opaque,
+      child: MouseRegion(
+        cursor: onTap != null
+            ? SystemMouseCursors.click
+            : SystemMouseCursors.basic,
+        child: GestureDetector(
+          onTap: onTap,
+          child: AbsorbPointer(
+            absorbing: !selectable,
+            child: HoverBuilder(
+              builder: (context, hovered) => Opacity(
+                opacity: opacity,
+                child: ShimmerBackground(
+                  // Hover deliberately doesn't gate this. Flipping `enabled`
+                  // off ends the run and refunds it, so un-hovering started a
+                  // fresh two pulses while the card beside it had already spent
+                  // its own — one card left flashing alone (#9220).
+                  enabled: shimmer,
+                  borderRadius: borderRadius,
+                  child: Container(
+                    alignment: Alignment.center,
+                    padding:
+                        padding ??
+                        const EdgeInsets.symmetric(
+                          vertical: 4.0,
+                          horizontal: 8.0,
                         ),
+                    decoration: BoxDecoration(
+                      borderRadius: borderRadius,
+                      color: (hovered || selected) && selectable
+                          ? theme.colorScheme.surfaceContainerHighest
+                          : theme.colorScheme.surfaceContainerLow,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withAlpha(25),
+                          blurRadius: 4.0,
+                          offset: const Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    height: 125.0,
+                    child: goals != null
+                        ? Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                name,
+                                style: const TextStyle(fontSize: 12.0),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                textAlign: TextAlign.center,
+                              ),
+                              avatar,
+                              ActivityStarRow(
+                                total: goals!.length,
+                                earned: goals!
+                                    .where(
+                                      (g) =>
+                                          completedGoalIds?.contains(g.id) ??
+                                          false,
+                                    )
+                                    .length,
+                                iconSize: 22.0,
+                              ),
+                            ],
+                          )
+                        : Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                name,
+                                style: const TextStyle(fontSize: 12.0),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                textAlign: TextAlign.center,
+                              ),
+                              avatar,
+                              UserProfileName(
+                                userId: userId,
+                                fallback: L10n.of(context).openRoleLabel,
+                                style: const TextStyle(fontSize: 12.0),
+                                colorize: true,
+                                textAlign: TextAlign.center,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ],
+                          ),
+                  ),
                 ),
               ),
             ),

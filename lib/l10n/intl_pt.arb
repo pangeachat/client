@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-17 15:10:09.271260",
+    "@@last_modified": "2026-09-23 15:42:47.985109",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -8507,11 +8507,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "Este é todo mundo neste curso. Clique no avatar de qualquer usuário e \"iniciar conversa\" para enviar uma DM.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Mulher",
     "man": "Homem",
     "otherGender": "Outro",
@@ -9742,7 +9737,6 @@
     "customCourseStepTitle": "Preencha este formulário para obter um curso personalizado",
     "courseCodeStepErrorMessage": "Por favor, verifique seu código e tente novamente",
     "institution": "Instituição",
-    "courseGoals": "Objetivos do Curso",
     "selectChats": "Selecionar Chats",
     "plainTextFile": "Texto",
     "@userTypeTitle": {
@@ -10513,7 +10507,6 @@
     "passwordFormLabel": "Formulário de alteração de palavra-passe",
     "searchLanguagesHint": "Pesquisar idiomas",
     "searchCountriesHint": "Pesquisar países",
-    "searchVocabHint": "Pesquisar vocabulário",
     "searchUsersHint": "Pesquisar usuários",
     "searchMessagesHint": "Pesquisar mensagens",
     "searchChatsHint": "Pesquisar conversas",
@@ -10671,7 +10664,6 @@
     "unlockWritingAssistance": "Desbloquear assistência de escrita",
     "courseSectionTeaching": "Ensino",
     "courseSectionLearning": "Aprendizagem",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 curso} other{{count} cursos}}",
     "showMore": "Mostrar mais",
     "showLess": "Mostrar menos",
     "countNewMessages": "{count, plural, =1{1 nova mensagem} other{{count} novas mensagens}}",
@@ -10884,5 +10876,34 @@
     "noOpenSessions": "Nenhuma sessão aberta no momento",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 item de vocabulário usado} other{{count} itens de vocabulário usados}}",
-    "grammarItemsUsed": "{count, plural, =1{1 item de gramática usado} other{{count} itens de gramática usados}}"
+    "grammarItemsUsed": "{count, plural, =1{1 item de gramática usado} other{{count} itens de gramática usados}}",
+    "playVideo": "Reproduzir vídeo",
+    "videoPlayer": "Reprodutor de vídeo",
+    "customCourseTextbookHint": "Diga-nos qual livro didático você usa ou descreva seu currículo",
+    "courseListFiltersLabel": "Filtros de curso",
+    "allCoursesFilterTooltip": "Mostrar todos os cursos",
+    "teachingCoursesFilterTooltip": "Mostrar apenas os cursos que você ensina",
+    "learningCoursesFilterTooltip": "Mostrar apenas os cursos em que você está aprendendo",
+    "searchCoursesHint": "Pesquisar cursos",
+    "noCoursesMatchSearch": "Nenhum curso corresponde à sua pesquisa.",
+    "searchVocabByWordOrMeaningHint": "Pesquisar por palavra ou significado",
+    "practiceTapABlank": "Toque no espaço em branco para preencher",
+    "practiceListeningPrompt": "Qual deles diz ‘{word}’?",
+    "practiceMeaningPrompt": "O que ‘{word}’ significa?",
+    "practiceEmojiPrompt": "Escolha um emoji para ‘{word}’",
+    "practiceStepProgress": "{done} de {total}",
+    "leaderboard": "Classificação",
+    "leaderboardRank": "Classificação {rank}",
+    "courseLeaderboardTooltip": "Todos neste curso, classificados pelas estrelas que ganharam no idioma. Toque em um membro e escolha “Iniciar conversa” para enviar uma mensagem direta.",
+    "goalReportTitle": "Reportar esta estrela",
+    "goalReportOverAwardPrompt": "Se você não deveria ter recebido esta estrela, por favor, explique o porquê.",
+    "goalReportUnderAwardPrompt": "Se você acha que deveria ter recebido esta estrela, por quê?",
+    "goalReportPickMessage": "Qual das suas mensagens deveria ter ganhado?",
+    "goalReportNoMessages": "Você ainda não enviou uma mensagem nesta sessão, então não há nada para apontar.",
+    "goalReportThanks": "Reportado. Obrigado!",
+    "goalReportErrorUnreportable": "Nenhuma vez do orquestrador corresponde a esta estrela, então não há nada contra o que registrar o relatório.",
+    "goalReportErrorRetry": "A busca pela vez não terminou. Tente novamente.",
+    "summaryFeedbackReceived": "Obrigado! Recebemos seu feedback.",
+    "summaryFeedbackFailed": "Não foi possível enviar seu feedback. Tente novamente.",
+    "summaryFeedbackProcessing": "Enviando seu feedback e atualizando o resumo…"
 }

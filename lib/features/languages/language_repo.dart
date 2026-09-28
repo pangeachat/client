@@ -7,6 +7,7 @@ import 'package:async/async.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:fluffychat/features/languages/language_model.dart';
+import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
@@ -15,7 +16,13 @@ class LanguageRepo {
     try {
       final languages = await _fetch();
       return Result.value(languages);
-    } catch (e) {
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {},
+        level: PangeaHttpException.severityOf(e),
+      );
       return Result.error(e);
     }
   }

@@ -3,17 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/routes/chat/events/constants/message_constants.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/routes/chat/events/models/language_detection_model.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/events/models/tokens_event_content_model.dart';
-import 'package:fluffychat/routes/chat/events/token_info_feedback/token_info_feedback_request.dart';
 import 'package:fluffychat/routes/chat/events/tokens/underline_text_widget.dart';
 import 'package:fluffychat/routes/chat/html_message.dart';
-import 'package:fluffychat/routes/chat/toolbar/message_toolbar_host.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'fake_message_toolbar_host.dart';
 import 'fake_pangea_controller.dart';
 import 'get_test_client.dart';
 
@@ -72,32 +70,6 @@ class _BenchmarkMessage {
   }
 }
 
-class _FakeToolbarHost implements MessageToolbarHost {
-  _FakeToolbarHost(this.room);
-
-  @override
-  final Room room;
-
-  @override
-  Timeline? get timeline => null;
-
-  @override
-  ChatController? get chatController => null;
-
-  @override
-  void setSelectedEvent(Event event) {}
-
-  @override
-  void clearSelectedEvents() {}
-
-  @override
-  Future<void> showTokenFeedbackDialog(
-    TokenInfoFeedbackRequestData requestData,
-    String langCode,
-    PangeaMessageEvent event,
-  ) async {}
-}
-
 void main() {
   late Client client;
   late Room room;
@@ -135,7 +107,7 @@ void main() {
           onOpen: (_) {},
           event: event.event,
           pangeaMessageEvent: event,
-          controller: _FakeToolbarHost(room),
+          controller: FakeMessageToolbarHost(room),
         ),
       ),
     ),
@@ -223,6 +195,20 @@ void main() {
           'child must not scale text the placeholder already scales',
     );
     expect(large.width / normal.width, closeTo(2.0, 0.05));
+  });
+
+  testWidgets('a fenced code block renders its text in the code box', (
+    tester,
+  ) async {
+    // Code blocks render their text as sent, in one colour: the syntax
+    // highlighter and its 190 grammars left the bundle (#9228).
+    final message = _BenchmarkMessage._(
+      '<pre><code class="language-python">print("hola")</code></pre>',
+      const <PangeaToken>[],
+    );
+    await tester.pumpWidget(host(message, messageEvent(message)));
+
+    expect(find.text('print("hola")'), findsOneWidget);
   });
 
   testWidgets('rebuild benchmark: 60-word message, 40 timeline-style '

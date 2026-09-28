@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-17 15:10:06.512616",
+    "@@last_modified": "2026-09-23 15:42:45.458344",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -7666,11 +7666,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "Questa è tutta la gente in questo corso. Clicca sull'avatar di qualsiasi utente e \"inizia conversazione\" per inviare un DM.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Donna",
     "man": "Uomo",
     "otherGender": "Altro",
@@ -8871,7 +8866,6 @@
     "customCourseStepTitle": "Compila questo modulo per ottenere un corso personalizzato",
     "courseCodeStepErrorMessage": "Controlla il tuo codice e riprova",
     "institution": "Istituzione",
-    "courseGoals": "Obiettivi del corso",
     "selectChats": "Seleziona chat",
     "plainTextFile": "Testo",
     "@userTypeTitle": {
@@ -9642,7 +9636,6 @@
     "passwordFormLabel": "Modulo cambio password",
     "searchLanguagesHint": "Cerca lingue",
     "searchCountriesHint": "Cerca paesi",
-    "searchVocabHint": "Cerca vocaboli",
     "searchUsersHint": "Cerca utenti",
     "searchMessagesHint": "Cerca messaggi",
     "searchChatsHint": "Cerca chat",
@@ -9800,7 +9793,6 @@
     "unlockWritingAssistance": "Sblocca l'assistenza alla scrittura",
     "courseSectionTeaching": "Insegnamento",
     "courseSectionLearning": "Apprendimento",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 corso} other{{count} corsi}}",
     "showMore": "Mostra altro",
     "showLess": "Mostra meno",
     "countNewMessages": "{count, plural, =1{1 nuovo messaggio} other{{count} nuovi messaggi}}",
@@ -10013,5 +10005,34 @@
     "noOpenSessions": "Nessuna sessione aperta al momento",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 elemento di vocabolario usato} other{{count} elementi di vocabolario usati}}",
-    "grammarItemsUsed": "{count, plural, =1{1 elemento grammaticale usato} other{{count} elementi grammaticali usati}}"
+    "grammarItemsUsed": "{count, plural, =1{1 elemento grammaticale usato} other{{count} elementi grammaticali usati}}",
+    "playVideo": "Riproduci video",
+    "videoPlayer": "Lettore video",
+    "customCourseTextbookHint": "Dicci quale libro di testo usi o descrivi il tuo programma di studi",
+    "courseListFiltersLabel": "Filtri del corso",
+    "allCoursesFilterTooltip": "Mostra tutti i corsi",
+    "teachingCoursesFilterTooltip": "Mostra solo i corsi che insegni",
+    "learningCoursesFilterTooltip": "Mostra solo i corsi che stai imparando",
+    "searchCoursesHint": "Cerca corsi",
+    "noCoursesMatchSearch": "Nessun corso corrisponde alla tua ricerca.",
+    "searchVocabByWordOrMeaningHint": "Cerca per parola o significato",
+    "practiceTapABlank": "Tocca uno spazio vuoto per riempirlo",
+    "practiceListeningPrompt": "Quale dice '{word}'?",
+    "practiceMeaningPrompt": "Cosa significa '{word}'?",
+    "practiceEmojiPrompt": "Scegli un'emoji per '{word}'",
+    "practiceStepProgress": "{done} di {total}",
+    "leaderboard": "Classifica",
+    "leaderboardRank": "Posizione {rank}",
+    "courseLeaderboardTooltip": "Tutti i partecipanti a questo corso, classificati in base alle stelle ottenute nella lingua del corso. Tocca un membro e scegli \"Avvia conversazione\" per inviargli un messaggio diretto.",
+    "goalReportTitle": "Segnala questa stella",
+    "goalReportOverAwardPrompt": "Se non avresti dovuto ricevere questa stella, spiega perché.",
+    "goalReportUnderAwardPrompt": "Se pensi che avresti dovuto ricevere questa stella, perché?",
+    "goalReportPickMessage": "Quale dei tuoi messaggi avrebbe dovuto farti guadagnare la stella?",
+    "goalReportNoMessages": "Non hai ancora inviato un messaggio in questa sessione, quindi non c'è nulla da indicare.",
+    "goalReportThanks": "Segnalato. Grazie!",
+    "goalReportErrorUnreportable": "Nessun turno dell'orchestratore corrisponde a questa stella, quindi non c'è nulla su cui registrare la segnalazione.",
+    "goalReportErrorRetry": "La ricerca del turno non è terminata. Riprova.",
+    "summaryFeedbackReceived": "Grazie! Abbiamo ricevuto il tuo feedback.",
+    "summaryFeedbackFailed": "Impossibile inviare il tuo feedback. Riprova.",
+    "summaryFeedbackProcessing": "Invio del feedback e aggiornamento del riepilogo…"
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:csv/csv.dart';
-import 'package:excel/excel.dart';
 import 'package:intl/intl.dart';
 import 'package:matrix/matrix.dart';
 
@@ -13,6 +12,7 @@ import 'package:fluffychat/features/analytics/constructs_model.dart';
 import 'package:fluffychat/features/download/download_dialog.dart';
 import 'package:fluffychat/features/download/download_file_util.dart';
 import 'package:fluffychat/features/download/download_type_enum.dart';
+import 'package:fluffychat/features/download/xlsx.dart' deferred as xlsx;
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
@@ -97,7 +97,7 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
 
         await Future.wait(futures);
       } else {
-        final content = _getExcelFileContent({
+        final content = await _getExcelFileContent({
           ConstructTypeEnum.vocab: vocabSummary,
           ConstructTypeEnum.morph: morphSummary,
         });
@@ -291,51 +291,22 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
     return examples.map((m) => m.messageDisplayText).toSet().toList();
   }
 
-  List<int> _getExcelFileContent(
+  /// The vocabulary sheet comes first, so the workbook opens on it.
+  Future<List<int>> _getExcelFileContent(
     Map<ConstructTypeEnum, List<AnalyticsSummaryModel>> summaries,
-  ) {
-    final excel = Excel.createExcel();
-
+  ) async {
+    final sheets = <String, List<List<Object?>>>{};
     for (final entry in summaries.entries) {
-      final sheet = excel[entry.key.sheetname(context)];
       final values = entry.key == ConstructTypeEnum.vocab
           ? AnalyticsSummaryEnum.vocabValues
           : AnalyticsSummaryEnum.morphValues;
-
-      for (final key in values) {
-        sheet
-            .cell(
-              CellIndex.indexByColumnRow(
-                rowIndex: 0,
-                columnIndex: values.indexOf(key),
-              ),
-            )
-            .value = TextCellValue(
-          key.header(context),
-        );
-      }
-
-      final rows = entry.value
-          .map((summary) => _formatExcelRow(summary, entry.key))
-          .toList();
-
-      for (int i = 0; i < rows.length; i++) {
-        final row = rows[i];
-        for (int j = 0; j < row.length; j++) {
-          final cell = row[j];
-          sheet
-                  .cell(
-                    CellIndex.indexByColumnRow(rowIndex: i + 2, columnIndex: j),
-                  )
-                  .value =
-              cell;
-        }
-      }
+      sheets[entry.key.sheetname(context)] = [
+        [for (final key in values) key.header(context)],
+        ...entry.value.map((summary) => _formatExcelRow(summary, entry.key)),
+      ];
     }
-
-    excel.setDefaultSheet(ConstructTypeEnum.vocab.sheetname(context));
-    excel.delete('Sheet1');
-    return excel.encode() ?? [];
+    await xlsx.loadLibrary();
+    return xlsx.encodeXlsx(sheets);
   }
 
   String _getCSVFileContent(
@@ -369,11 +340,11 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
     return fileString;
   }
 
-  List<CellValue> _formatExcelRow(
+  List<Object> _formatExcelRow(
     AnalyticsSummaryModel summary,
     ConstructTypeEnum type,
   ) {
-    final List<CellValue> row = [];
+    final List<Object> row = [];
     final values = type == ConstructTypeEnum.vocab
         ? AnalyticsSummaryEnum.vocabValues
         : AnalyticsSummaryEnum.morphValues;
@@ -381,12 +352,10 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
     for (int i = 0; i < values.length; i++) {
       final key = values[i];
       final value = summary.getValue(key);
-      if (value is int) {
-        row.add(IntCellValue(value));
-      } else if (value is String) {
-        row.add(TextCellValue(value));
+      if (value is int || value is String) {
+        row.add(value);
       } else if (value is List<String>) {
-        row.add(TextCellValue(value.map((v) => "\"$v\"").join(", ")));
+        row.add(value.map((v) => "\"$v\"").join(", "));
       }
     }
     return row;

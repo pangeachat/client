@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-17 15:10:04.984647",
+    "@@last_modified": "2026-09-23 15:42:44.764112",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -8477,11 +8477,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "אלה כולם בקורס הזה. לחץ על התמונה של כל משתמש ו\"התחל שיחה\" כדי לשלוח הודעה פרטית.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "אישה",
     "man": "גבר",
     "otherGender": "אחר",
@@ -9712,7 +9707,6 @@
     "customCourseStepTitle": "מלא את הטופס הזה כדי לקבל קורס מותאם אישית",
     "courseCodeStepErrorMessage": "אנא בדוק את הקוד שלך ונסה שוב",
     "institution": "מוסד",
-    "courseGoals": "מטרות הקורס",
     "selectChats": "בחר שיחות",
     "plainTextFile": "טקסט",
     "@userTypeTitle": {
@@ -10483,7 +10477,6 @@
     "passwordFormLabel": "טופס שינוי סיסמה",
     "searchLanguagesHint": "חיפוש שפות",
     "searchCountriesHint": "חיפוש מדינות",
-    "searchVocabHint": "חיפוש אוצר מילים",
     "searchUsersHint": "חיפוש משתמשים",
     "searchMessagesHint": "חיפוש הודעות",
     "searchChatsHint": "חיפוש צ'אטים",
@@ -10641,7 +10634,6 @@
     "unlockWritingAssistance": "פתיחת סיוע בכתיבה",
     "courseSectionTeaching": "מלמד",
     "courseSectionLearning": "לומד",
-    "courseSectionLabel": "{title}, {count, plural, =1{קורס אחד} other{{count} קורסים}}",
     "showMore": "הצג עוד",
     "showLess": "הצג פחות",
     "countNewMessages": "{count, plural, =1{הודעה חדשה אחת} other{{count} הודעות חדשות}}",
@@ -10854,5 +10846,34 @@
     "noOpenSessions": "אין שיעורים פתוחים כרגע",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{פריט אוצר מילים אחד בשימוש} other{{count} פריטי אוצר מילים בשימוש}}",
-    "grammarItemsUsed": "{count, plural, =1{פריט דקדוק אחד בשימוש} other{{count} פריטי דקדוק בשימוש}}"
+    "grammarItemsUsed": "{count, plural, =1{פריט דקדוק אחד בשימוש} other{{count} פריטי דקדוק בשימוש}}",
+    "playVideo": "נגן סרטון",
+    "videoPlayer": "נגן וידאו",
+    "customCourseTextbookHint": "ספר/י לנו באיזה ספר לימוד אתם משתמשים, או תארו את תוכנית הלימודים שלכם",
+    "courseListFiltersLabel": "מסנני קורסים",
+    "allCoursesFilterTooltip": "הצג את כל הקורסים",
+    "teachingCoursesFilterTooltip": "הצג רק קורסים שאתה מלמד",
+    "learningCoursesFilterTooltip": "הצג רק קורסים שאתה לומד בהם",
+    "searchCoursesHint": "חפש קורסים",
+    "noCoursesMatchSearch": "לא נמצאו קורסים התואמים לחיפוש שלך.",
+    "searchVocabByWordOrMeaningHint": "חפש לפי מילה או משמעות",
+    "practiceTapABlank": "הקש על רווח כדי למלא אותו",
+    "practiceListeningPrompt": "איזה מהם אומר '{word}'?",
+    "practiceMeaningPrompt": "מה פירוש '{word}'?",
+    "practiceEmojiPrompt": "בחר אימוג'י עבור '{word}'",
+    "practiceStepProgress": "{done} מתוך {total}",
+    "leaderboard": "טבלת הישגים",
+    "leaderboardRank": "דירוג {rank}",
+    "courseLeaderboardTooltip": "כל המשתתפים בקורס זה, מדורגים לפי כוכביהם בשפה. הקש על משתמש ובחר ״התחל שיחה״ כדי לשלוח לו הודעה פרטית.",
+    "goalReportTitle": "דווח על כוכב זה",
+    "goalReportOverAwardPrompt": "אם לא היית אמור לקבל את הכוכב הזה, אנא הסבר מדוע.",
+    "goalReportUnderAwardPrompt": "אם לדעתך היית אמור לקבל את הכוכב הזה, מדוע?",
+    "goalReportPickMessage": "איזו מההודעות שלך הייתה אמורה לזכות אותך בו?",
+    "goalReportNoMessages": "עדיין לא שלחת הודעה בסשן זה, כך שאין על מה להצביע.",
+    "goalReportThanks": "דווח. תודה!",
+    "goalReportErrorUnreportable": "אין תור של מתזמן שתואם לכוכב הזה, כך שאין על מה לתעד את הדיווח.",
+    "goalReportErrorRetry": "החיפוש אחר התור לא הסתיים. נסה שוב.",
+    "summaryFeedbackReceived": "תודה! קיבלנו את המשוב שלך.",
+    "summaryFeedbackFailed": "לא ניתן היה לשלוח את המשוב שלך. אנא נסה שוב.",
+    "summaryFeedbackProcessing": "שולח את המשוב שלך ומעדכן את הסיכום…"
 }

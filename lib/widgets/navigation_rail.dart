@@ -5,6 +5,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
+import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/course_plans/map_border.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
 import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
@@ -16,6 +17,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/course_avatar.dart';
 import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/extensions/unread_rooms_client_extension.dart';
 import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
 import 'package:fluffychat/pangea/spaces/knocking_users_builder.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_extension.dart';
@@ -89,8 +91,8 @@ class SpacesNavigationRail extends StatelessWidget {
                   .where((s) => s.hasRoomUpdate)
                   .rateLimit(const Duration(seconds: 1)),
               builder: (context, _) {
-                final groups = client.coursesByRole(L10n.of(context));
-                final sections = groups.sections;
+                final courses = client.sortedCourses(L10n.of(context));
+                final unreadRooms = client.unreadRooms;
                 return AnimatedContainer(
                   width: naviRailWidth,
                   duration: FluffyThemes.animationDuration,
@@ -170,8 +172,11 @@ class SpacesNavigationRail extends StatelessWidget {
                               },
                               toolTip: L10n.of(context).allChats,
                               tutorialTargetId: TutorialTargetIds.navChats,
-                              unreadBadgeFilter: (room) =>
-                                  room.firstSpaceParent == null,
+                              unreadRooms: unreadRooms
+                                  .where(
+                                    (room) => room.firstSpaceParent == null,
+                                  )
+                                  .toList(),
                               naviRailWidth: naviRailWidth,
                             ),
                             // 3. Courses — opens the Courses panel (the courses
@@ -213,40 +218,30 @@ class SpacesNavigationRail extends StatelessWidget {
                             Semantics(
                               label: L10n.of(context).joinedCourseListLabel,
                               child: RovingFocusGroup(
-                                ids: [
-                                  for (final group in sections)
-                                    for (final space in group.rooms) space.id,
-                                ],
+                                ids: [for (final space in courses) space.id],
                                 selectedId:
                                     section == AppSection.courses && !hubOpen
                                     ? activeSpaceId
                                     : null,
                                 child: Column(
                                   children: [
-                                    // 4. The course spaces you're in — in the
-                                    // Courses hub's order (invited · teaching ·
-                                    // learning), with a hairline between groups
-                                    // when the hub shows sections, so the rail
-                                    // mirrors the list (#8425).
-                                    for (final group in sections) ...[
-                                      if (groups.isGrouped &&
-                                          group != sections.first)
-                                        const _RailGroupDivider(),
-                                      for (final space in group.rooms)
-                                        _SpaceItem(
-                                          space: space,
-                                          iconWidth: largeIconWidth,
-                                          naviRailWidth: naviRailWidth,
-                                          // Highlight the course avatar only while the course
-                                          // IS the open section — not merely because `?c=`
-                                          // persists under a chat/room or under the Courses
-                                          // hub (routing decision 5, #8605).
-                                          selected:
-                                              section == AppSection.courses &&
-                                              !hubOpen &&
-                                              activeSpaceId == space.id,
-                                        ),
-                                    ],
+                                    // 4. The course spaces you're in, in the
+                                    // Courses hub's order (#9207).
+                                    for (final space in courses)
+                                      _SpaceItem(
+                                        space: space,
+                                        unreadRooms: unreadRooms,
+                                        iconWidth: largeIconWidth,
+                                        naviRailWidth: naviRailWidth,
+                                        // Highlight the course avatar only while the course
+                                        // IS the open section — not merely because `?c=`
+                                        // persists under a chat/room or under the Courses
+                                        // hub (routing decision 5, #8605).
+                                        selected:
+                                            section == AppSection.courses &&
+                                            !hubOpen &&
+                                            activeSpaceId == space.id,
+                                      ),
                                   ],
                                 ),
                               ),
@@ -268,12 +263,16 @@ class SpacesNavigationRail extends StatelessWidget {
 
 class _SpaceItem extends StatelessWidget {
   final Room space;
+
+  /// The client-wide unread rooms, narrowed here to this course's children.
+  final List<Room> unreadRooms;
   final double iconWidth;
   final double naviRailWidth;
   final bool selected;
 
   const _SpaceItem({
     required this.space,
+    required this.unreadRooms,
     required this.iconWidth,
     required this.naviRailWidth,
     required this.selected,
@@ -324,7 +323,6 @@ class _SpaceItem extends StatelessWidget {
     final displayname = space.getLocalizedDisplayname(
       MatrixLocals(L10n.of(context)),
     );
-    final courseChildrenIds = space.spaceChildren.map((c) => c.roomId).toSet();
     // The builder loads the member list (admins only) and rebuilds on member
     // changes, so the knock badge appears when someone knocks and clears the
     // moment the admin accepts/denies (#8139).
@@ -344,36 +342,15 @@ class _SpaceItem extends StatelessWidget {
         onTap: () => _onTapSpace(context),
         icon: CourseAvatar(
           avatar: space.avatar,
+          courseId: space.coursePlan?.uuid,
           displayname: displayname,
           size: iconWidth,
           unreadCoursePingEvent: space.unreadCoursePingEvent,
-          courseChildrenIds: courseChildrenIds,
+          unreadRooms: space.spaceChildrenAmong(unreadRooms),
           invite: space.membership == .invite,
           hasKnockingUsers: knockingUsers.isNotEmpty,
         ),
         naviRailWidth: naviRailWidth,
-      ),
-    );
-  }
-}
-
-/// The hairline between the rail's course groups (invited · teaching ·
-/// learning) — the rail's mirror of the Courses hub's section headers, shown
-/// only when the hub shows sections (#8425). Purely visual: the groups have no
-/// label here, so it is excluded from semantics.
-class _RailGroupDivider extends StatelessWidget {
-  const _RailGroupDivider();
-
-  @override
-  Widget build(BuildContext context) {
-    return ExcludeSemantics(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 24.0),
-        child: Divider(
-          height: 1.0,
-          thickness: 1.0,
-          color: Theme.of(context).colorScheme.outlineVariant,
-        ),
       ),
     );
   }

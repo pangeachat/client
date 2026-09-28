@@ -8,6 +8,7 @@ import 'package:fluffychat/features/analytics/construct_use_model.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
 import 'package:fluffychat/features/analytics_data/widgets/analytics_future_builder.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/language_semantics.dart';
 import 'package:fluffychat/pangea/lemmas/lemma.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/analytics_details_popup.dart';
@@ -135,6 +136,10 @@ class VocabDetailsView extends StatelessWidget with ConstructRestorer {
                               lemma: constructId.lemma,
                               forms: forms,
                               textColor: textColor,
+                              langCode: MatrixState
+                                  .pangeaController
+                                  .userController
+                                  .userL2Code,
                             ),
                           ),
                         ),
@@ -182,10 +187,14 @@ class _VocabForms extends StatelessWidget {
   final List<String> forms;
   final Color textColor;
 
+  /// The forms' language, so each is read in its own voice (#9266).
+  final String? langCode;
+
   const _VocabForms({
     required this.lemma,
     required this.forms,
     required this.textColor,
+    required this.langCode,
   });
 
   @override
@@ -210,12 +219,15 @@ class _VocabForms extends StatelessWidget {
               children: [
                 ConstrainedBox(
                   constraints: const BoxConstraints(maxWidth: 180),
-                  child: Text(
-                    form,
-                    style: Theme.of(
-                      context,
-                    ).textTheme.bodyLarge?.copyWith(color: textColor),
-                    overflow: TextOverflow.ellipsis,
+                  child: LanguageSemantics(
+                    langCode: langCode,
+                    child: Text(
+                      form,
+                      style: Theme.of(
+                        context,
+                      ).textTheme.bodyLarge?.copyWith(color: textColor),
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
                 ),
                 if (i != forms.length - 1) const Text(",  "),

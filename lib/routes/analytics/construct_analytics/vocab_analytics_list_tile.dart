@@ -4,6 +4,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_level_enum.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/language_semantics.dart';
 import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/pangea/common/widgets/shrinkable_text.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
@@ -32,6 +33,10 @@ class VocabAnalyticsListTile extends StatelessWidget {
   /// tile's accessible name since dimming alone doesn't reach a screen reader.
   final bool blocked;
 
+  /// The word's language, marked on the word's range of the tile's name so a
+  /// screen reader voices it in that language (#9266). Null leaves it unmarked.
+  final String? langCode;
+
   const VocabAnalyticsListTile({
     super.key,
     required this.constructId,
@@ -43,6 +48,7 @@ class VocabAnalyticsListTile extends StatelessWidget {
     this.listen = true,
     this.blocked = false,
     this.rovingId,
+    this.langCode,
   });
 
   final double maxWidth = 100;
@@ -146,9 +152,17 @@ class VocabAnalyticsListTile extends StatelessWidget {
         // (#8872): excluding from outside left a named button that was not
         // focusable, so Tab walked the tiles invisibly to assistive tech.
         return Semantics(
-          label: blocked
-              ? l10n.deletedWordLabel(constructId.lemma)
-              : [constructId.lemma, ?emoji, level.displayName(l10n)].join(', '),
+          attributedLabel: LanguageSemantics.labelWithPart(
+            blocked
+                ? l10n.deletedWordLabel(constructId.lemma)
+                : [
+                    constructId.lemma,
+                    ?emoji,
+                    level.displayName(l10n),
+                  ].join(', '),
+            part: constructId.lemma,
+            langCode: langCode,
+          ),
           button: true,
           container: true,
           child: blocked ? Opacity(opacity: 0.5, child: tile) : tile,

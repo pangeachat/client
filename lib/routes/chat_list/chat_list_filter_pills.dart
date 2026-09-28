@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/filter_pill_row.dart';
 import 'package:fluffychat/routes/chat_list/chat_list.dart';
 
 /// The filter pill row under the chat list's search bar. "All" is always the
@@ -36,27 +37,13 @@ class ChatListFilterPills extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Semantics(
-      label: L10n.of(context).chatListFiltersLabel,
-      container: true,
-      child: Align(
-        alignment: Alignment.centerLeft,
-        child: SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          padding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 4.0),
-          child: Row(
-            spacing: 8.0,
-            children: _filters.map((filter) {
-              return FilterChip(
-                selected: filter == controller.activeFilter,
-                onSelected: (_) => controller.setActiveFilter(filter),
-                label: Text(filter.toLocalizedString(context)),
-                tooltip: _tooltip(context, filter),
-              );
-            }).toList(),
-          ),
-        ),
-      ),
+    return FilterPillRow<ActiveFilter>(
+      semanticsLabel: L10n.of(context).chatListFiltersLabel,
+      filters: _filters,
+      selected: controller.activeFilter,
+      onSelected: controller.setActiveFilter,
+      labelOf: (filter) => filter.toLocalizedString(context),
+      tooltipOf: (filter) => _tooltip(context, filter),
     );
   }
 }

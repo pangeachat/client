@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-17 15:10:09.489095",
+    "@@last_modified": "2026-09-23 15:42:48.248750",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -8295,11 +8295,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "Aceasta este toată lumea din acest curs. Faceți clic pe avatarul oricărui utilizator și „începeți conversația” pentru a trimite un mesaj direct.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Femeie",
     "man": "Bărbat",
     "otherGender": "Altul",
@@ -9530,7 +9525,6 @@
     "customCourseStepTitle": "Completează acest formular pentru a obține un curs personalizat",
     "courseCodeStepErrorMessage": "Te rugăm să verifici codul tău și să încerci din nou",
     "institution": "Instituție",
-    "courseGoals": "Obiectivele cursului",
     "selectChats": "Selectează conversațiile",
     "plainTextFile": "Text",
     "@userTypeTitle": {
@@ -10301,7 +10295,6 @@
     "passwordFormLabel": "Formular de schimbare a parolei",
     "searchLanguagesHint": "Căutați limbi",
     "searchCountriesHint": "Căutați țări",
-    "searchVocabHint": "Căutați vocabular",
     "searchUsersHint": "Căutați utilizatori",
     "searchMessagesHint": "Căutați mesaje",
     "searchChatsHint": "Căutați conversații",
@@ -10459,7 +10452,6 @@
     "unlockWritingAssistance": "Deblocați asistența la scriere",
     "courseSectionTeaching": "Predare",
     "courseSectionLearning": "Învățare",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 curs} other{{count} cursuri}}",
     "showMore": "Afișează mai mult",
     "showLess": "Afișează mai puțin",
     "countNewMessages": "{count, plural, =1{1 mesaj nou} other{{count} mesaje noi}}",
@@ -10672,5 +10664,34 @@
     "noOpenSessions": "Nicio sesiune deschisă în acest moment",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 element de vocabular utilizat} other{{count} elemente de vocabular utilizate}}",
-    "grammarItemsUsed": "{count, plural, =1{1 element de gramatică utilizat} other{{count} elemente de gramatică utilizate}}"
+    "grammarItemsUsed": "{count, plural, =1{1 element de gramatică utilizat} other{{count} elemente de gramatică utilizate}}",
+    "playVideo": "Redați videoclipul",
+    "videoPlayer": "Player video",
+    "customCourseTextbookHint": "Spune-ne ce manual folosești sau descrie-ți programa",
+    "courseListFiltersLabel": "Filtre cursuri",
+    "allCoursesFilterTooltip": "Afișează toate cursurile",
+    "teachingCoursesFilterTooltip": "Afișează doar cursurile pe care le predai",
+    "learningCoursesFilterTooltip": "Afișează doar cursurile la care înveți",
+    "searchCoursesHint": "Căutare cursuri",
+    "noCoursesMatchSearch": "Niciun curs nu corespunde căutării tale.",
+    "searchVocabByWordOrMeaningHint": "Căutați după cuvânt sau sens",
+    "practiceTapABlank": "Atingeți un spațiu gol pentru a-l completa",
+    "practiceListeningPrompt": "Care dintre ele spune „{word}”?",
+    "practiceMeaningPrompt": "Ce înseamnă „{word}”?",
+    "practiceEmojiPrompt": "Alegeți un emoji pentru „{word}”",
+    "practiceStepProgress": "{done} din {total}",
+    "leaderboard": "Clasament",
+    "leaderboardRank": "Locul {rank}",
+    "courseLeaderboardTooltip": "Toți participanții la acest curs, clasificați după numărul de stele obținute la limba respectivă. Atingeți un membru și alegeți „Începeți conversația” pentru a-i trimite un mesaj direct.",
+    "goalReportTitle": "Raportează această stea",
+    "goalReportOverAwardPrompt": "Dacă nu trebuia să primești această stea, te rugăm să explici de ce.",
+    "goalReportUnderAwardPrompt": "Dacă crezi că trebuia să primești această stea, de ce?",
+    "goalReportPickMessage": "Care dintre mesajele tale ar fi trebuit să o câștige?",
+    "goalReportNoMessages": "Nu ai trimis încă niciun mesaj în această sesiune, deci nu există nimic de indicat.",
+    "goalReportThanks": "Raportat. Mulțumim!",
+    "goalReportErrorUnreportable": "Nicio replică a orchestratorului nu se potrivește cu această stea, deci nu există nimic împotriva căruia să înregistrezi raportul.",
+    "goalReportErrorRetry": "Căutarea replicii nu s-a finalizat. Încearcă din nou.",
+    "summaryFeedbackReceived": "Mulțumim! Am primit feedback-ul tău.",
+    "summaryFeedbackFailed": "Nu s-a putut trimite feedback-ul tău. Te rugăm să încerci din nou.",
+    "summaryFeedbackProcessing": "Se trimite feedbackul și se actualizează rezumatul…"
 }

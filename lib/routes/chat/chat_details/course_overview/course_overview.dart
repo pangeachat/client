@@ -2,7 +2,6 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
-import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
@@ -12,16 +11,14 @@ import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
-import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_catch_up.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_chats_preview.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_creator_row.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_knock_requests.dart';
-import 'package:fluffychat/routes/chat/chat_details/course_overview/course_participants_preview.dart';
+import 'package:fluffychat/routes/chat/chat_details/course_overview/course_leaderboard_preview.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_section_button.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_section_header.dart';
-import 'package:fluffychat/routes/chat/chat_details/course_overview/course_section_shortcut.dart';
 import 'package:fluffychat/routes/chat/chat_details/room_details_buttons.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
@@ -31,7 +28,7 @@ import 'package:fluffychat/routes/courses/course_objectives/course_progress_bar.
 import 'package:fluffychat/widgets/expandable_text.dart';
 
 /// The single scrollable course page (#8357, replacing the tab row): Course
-/// plan / Chats / Participants / More as divider-separated sections, each with
+/// plan / Chats / Leaderboard / More as divider-separated sections, each with
 /// its highlight inline and a link to its full subpage. The Catch up card
 /// (knocks, analytics-access requests, unread rollups) rides at the top and
 /// self-hides when empty. A section in the course token's param scrolls the
@@ -44,7 +41,7 @@ class CourseOverview extends StatefulWidget {
   /// enabled rows inline; the All settings subpage shows them all (#8578).
   final List<ButtonDetails> moreButtons;
 
-  /// Opens the invite flow — the Participants section header's action.
+  /// Opens the invite flow — the Leaderboard section header's action.
   final VoidCallback onInvite;
 
   /// The section from the course token to scroll to, or null for the page top.
@@ -280,59 +277,26 @@ class _CourseOverviewState extends State<CourseOverview> {
               ),
             ),
             const Divider(),
-            Column(
+            // The preview owns this section, its header and trailing divider
+            // included: whether it shows at all, and whether it offers "See
+            // all", turns on counts only the preview has (#9183).
+            CourseChatsPreview(
               key: _sectionKeys[SpaceSettingsTabs.chat],
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Padding(
-                  padding: SpaceDetailsContent.sectionPadding,
-                  child: CourseSectionHeader(
-                    title: SpaceSettingsTabs.chat.title(context),
-                    icon: Icons.forum_outlined,
-                    actions: [
-                      // Creating a course chat is buried in the More
-                      // section's settings list; teachers asked for it
-                      // where the chats are (#8744). Same permission gate
-                      // as that row — the shortcut can't do what the
-                      // setting wouldn't.
-                      if (room.isRoomAdmin &&
-                          room.canChangeStateEvent(EventTypes.SpaceChild))
-                        CourseSectionShortcut(
-                          icon: Symbols.chat_add_on,
-                          tooltip: l10n.createGroupChat,
-                          onPressed: widget.controller.addGroupChat,
-                        ),
-                      CourseSectionButton(
-                        section: SpaceSettingsTabs.chat.title(context),
-                        onPressed: () => _openSubpage(SpaceSettingsTabs.chat),
-                      ),
-                    ],
-                  ),
-                ),
-                // The chat rows carry their own 8px wrapper (ChatListItem /
-                // DefaultChatCreationTile), so the section pads them by the
-                // difference — their content then sits at the same inset as
-                // every other section.
-                Padding(
-                  padding:
-                      SpaceDetailsContent.sectionPadding -
-                      const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: CourseChatsPreview(room: room),
-                ),
-              ],
+              room: room,
+              onShowAll: () => _openSubpage(SpaceSettingsTabs.chat),
+              onCreateChat: widget.controller.addGroupChat,
             ),
-            const Divider(),
             Padding(
               padding: SpaceDetailsContent.sectionPadding,
               child: Column(
                 key: _sectionKeys[SpaceSettingsTabs.participants],
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  // The preview owns this section's header: which of the two
-                  // actions the header offers — "All participants" or Invite
-                  // — turns on whether the cards were truncated, and only the
-                  // preview knows how many fit (#8578, #8744).
-                  CourseParticipantsPreview(
+                  // The preview owns this section's header: whether it
+                  // offers "See all" turns on what the full page holds beyond
+                  // the preview, which only the preview knows (#8578, #8744,
+                  // #9212).
+                  CourseLeaderboardPreview(
                     room: room,
                     onShowAll: () =>
                         _openSubpage(SpaceSettingsTabs.participants),

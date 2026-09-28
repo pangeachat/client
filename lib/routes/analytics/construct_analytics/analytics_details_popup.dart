@@ -23,6 +23,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_response_dialog.dart';
+import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_and_tags.dart';
@@ -230,6 +231,13 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView>
       selectedConstructLevel = null;
       searchController.clear();
     });
+
+    // Search matches cached meanings, which load from disk on first use.
+    if (isSearching) {
+      LemmaInfoRepo.instance.cacheReady.then((_) {
+        if (mounted) setState(() {});
+      });
+    }
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (isSearching) {

@@ -79,6 +79,8 @@ A step that needs UI state prepared — a panel open, a toolbar shown, a message
 
 **A step that opens a panel navigates through the workspace URL**, exactly as the learner would, then checks that it opened. The URL is the single source of truth for which panels are open ([routing](routing.instructions.md)); a step must never reach past it into panel state.
 
+**A target inside a scroll view is brought into view before its step measures it.** Nothing can scroll once the tutorial is up — a tap step absorbs every pointer, and an armed step's spotlight passes taps but not scrolls — so a list that starts below the fold would stay there for the whole run, lit straight through the controls beneath it ([#9029](https://github.com/pangeachat/client/issues/9029)). The launcher scrolls the target fully on screen first, its top edge winning when it is taller than the viewport, and the spotlight is cut to the slice the viewport shows, so a long list lights what the learner can see and nothing under it.
+
 **A step whose target is not on screen is skipped, not stalled.** Two cases, one rule. The wide nav rail and the narrow bottom nav are different widget trees for the same destinations, so a step names the destination and whichever tree is mounted answers it. And a step can be skipped by the learner's path rather than their screen size — joining an already-open session goes straight to the chat, so the waiting-screen step of the activity tutorial has no target and the tutorial simply starts at its next step.
 
 ## Who is offered a tutorial
@@ -215,4 +217,13 @@ Every forward advance emits the tutorial's name and step index ([product analyti
 
 ## Accessibility
 
-The overlay hides everything under it from assistive tech, so anything it adds has to stand on its own: branch choices are real labelled buttons, and a multi-target step names the group it lit rather than leaving a screen-reader user with an unexplained scrim. A tutorial that traps a screen-reader user is a launch blocker ([accessibility](accessibility.instructions.md)).
+A tap step hides everything under it from assistive tech, so the card has to stand on its own — and it does for a screen-reader or keyboard user exactly what a tap does for a sighted one ([#9050](https://github.com/pangeachat/client/issues/9050)):
+
+- **The card takes focus when the run opens and hands it back when the run ends.** Focus lands on the message, not on Skip, so the first thing heard is what the bot said.
+- **The message is the advance control.** It is one named button whose name is the step's copy and whose hint is *Continue*: activating it is the tap-anywhere gesture. On an armed step the same node dismisses the card, as a tap on it does. A branch step's message is not a button — its choices are the answers, and they stay real labelled buttons. Nothing visible is added: a Next button on every card would be a second name for the gesture the learner is about to make, the same reason a one-step run carries no Skip.
+- **Each step is announced as it arrives.** The message node is a live region, so a new step's copy is read without moving focus.
+- **The keyboard is modal to the card.** Tab cycles the card's controls — the message, the greeting word where there is one, Skip — and Enter or Space activates whatever has focus: on the message it advances, on Skip it skips. Escape is the card's way out: Skip where the card shows it, the declining choice on a branch, and nothing on a card without one (the greeting, a one-step run). While the message has keyboard focus the app's focus ring frames the whole card, because the whole card is what a tap lands on.
+- **An armed step blocks nothing.** The lit target stays reachable to assistive tech and the pointer barrier has no node, so nobody is told to tap a role their screen reader cannot find.
+- **Decoration is silent.** The bot face and the progress bar carry no node; the `n / total` text says what the bar shows.
+
+A tutorial that traps a screen-reader user is a launch blocker ([accessibility](accessibility.instructions.md)).

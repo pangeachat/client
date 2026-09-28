@@ -182,6 +182,25 @@
             }
         }
     },
+    "leaderboard": "Leaderboard",
+    "@leaderboard": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "leaderboardRank": "Rank {rank}",
+    "@leaderboardRank": {
+        "type": "String",
+        "placeholders": {
+            "rank": {
+                "type": "int"
+            }
+        }
+    },
+    "courseLeaderboardTooltip": "Everybody in this course, ranked by their stars in its language. Tap a member and choose “Start conversation” to send them a DM.",
+    "@courseLeaderboardTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
     "commandHint_roomupgrade": "Upgrade this room to the given room version",
     "@commandHint_roomupgrade": {},
     "commandHint_googly": "Send some googly eyes",
@@ -4248,6 +4267,14 @@
     "orchestratorFeedbackCommentRequired": "Add a comment so we know what to fix",
     "orchestratorFeedbackSubmit": "Send",
     "orchestratorFeedbackThanks": "Flagged. Thanks!",
+    "goalReportTitle": "Report this star",
+    "goalReportOverAwardPrompt": "If you were not supposed to get this star, please explain why.",
+    "goalReportUnderAwardPrompt": "If you think you were supposed to get this star, why?",
+    "goalReportPickMessage": "Which of your messages should have earned it?",
+    "goalReportNoMessages": "You haven't sent a message in this session yet, so there's nothing to point at.",
+    "goalReportThanks": "Reported. Thanks!",
+    "goalReportErrorUnreportable": "No orchestrator turn matches this star, so there's nothing to record the report against.",
+    "goalReportErrorRetry": "The search for the turn didn't finish. Try again.",
     "activityRatingMeterLabel": "{percent}% positive ({count, plural, =1{1 rating} other{{count} ratings}})",
     "@activityRatingMeterLabel": {
         "type": "String",
@@ -4345,6 +4372,9 @@
     "feedbackRespDesc": "Check back tomorrow for activity updates.",
     "feedbackHint": "Your feedback",
     "feedbackButton": "Submit feedback",
+    "summaryFeedbackProcessing": "Sending your feedback and updating the summary…",
+    "summaryFeedbackReceived": "Thanks! We received your feedback.",
+    "summaryFeedbackFailed": "Couldn't send your feedback. Please try again.",
     "directMessageBotDesc": "Talking to humans is more fun but... AI is always ready!",
     "inviteYourFriends": "Invite your friends",
     "playWithAI": "Play with AI for now",
@@ -4359,6 +4389,43 @@
     "reportGrammarIssueTooltip": "Report grammar information issue",
     "grammarFeedbackDialogTitle": "Grammar Information Feedback",
     "grammarFeedbackSubmittedDesc": "Thanks! The explanation has been updated based on your feedback.",
+    "practiceTapABlank": "Tap a blank to fill it",
+    "@practiceTapABlank": {},
+    "practiceListeningPrompt": "Which one says ‘{word}’?",
+    "@practiceListeningPrompt": {
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "practiceMeaningPrompt": "What does ‘{word}’ mean?",
+    "@practiceMeaningPrompt": {
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "practiceEmojiPrompt": "Pick an emoji for ‘{word}’",
+    "@practiceEmojiPrompt": {
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "practiceStepProgress": "{done} of {total}",
+    "@practiceStepProgress": {
+        "placeholders": {
+            "done": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
     "practiceFeedbackButtonTooltip": "Report a problem with this exercise",
     "practiceFeedbackDialogTitle": "Practice Exercise Feedback",
     "practiceFeedbackSelectPair": "Which pair looks wrong?",
@@ -4661,7 +4728,6 @@
     "otherGender": "Other",
     "unselectedGender": "Select a gender option",
     "modeDisabled": "Learning tools are disabled for messages that aren't in your target language.",
-    "courseParticipantTooltip": "This is everybody in this course. Click on any user’s avatar and “start conversation” to send a DM.",
     "chatParticipantTooltip": "This is everybody in this chat. Click on any user’s avatar and “start conversation” to send a DM.",
     "inOngoingActivity": "You have an ongoing activity!",
     "requestRegeneration": "Request regeneration",
@@ -4998,7 +5064,7 @@
     "customCourseStepTitle": "Fill this form to get a custom course",
     "courseCodeStepErrorMessage": "Please check your code and try again",
     "institution": "Institution",
-    "courseGoals": "Course Goals",
+    "customCourseTextbookHint": "Tell us what textbook you use, or describe your curriculum",
     "missingLanguageException": "Please choose valid base and target languages",
     "selectChats": "Select Chats",
     "plainTextFile": "Text",
@@ -5305,7 +5371,7 @@
     },
     "passwordFormLabel": "Change password form",
     "searchCountriesHint": "Search countries",
-    "searchVocabHint": "Search vocab",
+    "searchVocabByWordOrMeaningHint": "Search by word or meaning",
     "searchUsersHint": "Search users",
     "searchMessagesHint": "Search messages",
     "searchChatsHint": "Search chats",
@@ -5481,17 +5547,12 @@
     },
     "courseSectionTeaching": "Teaching",
     "courseSectionLearning": "Learning",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 course} other{{count} courses}}",
-    "@courseSectionLabel": {
-        "placeholders": {
-            "title": {
-                "type": "String"
-            },
-            "count": {
-                "type": "int"
-            }
-        }
-    },
+    "courseListFiltersLabel": "Course filters",
+    "allCoursesFilterTooltip": "Show all courses",
+    "teachingCoursesFilterTooltip": "Show only courses you teach",
+    "learningCoursesFilterTooltip": "Show only courses you're learning in",
+    "searchCoursesHint": "Search courses",
+    "noCoursesMatchSearch": "No courses match your search.",
     "courseNameHint": "Course name",
     "typeCourseCodeToConfirm": "To confirm, type the course code {code} below.",
     "@typeCourseCodeToConfirm": {
@@ -5576,9 +5637,9 @@
     "tutorialAppTourOffer": "Great job finishing your first activity! Would you like me to show you around the app?",
     "tutorialAppTourAccept": "Give me a tour",
     "tutorialAppTourDecline": "Skip",
-    "tutorialAppTourChats": "This is your chat list \u2014 find friends to chat with, or talk to me any time.",
+    "tutorialAppTourChats": "This is your chat list — find friends to chat with, or talk to me any time.",
     "tutorialAppTourCoursesSome": "Your courses live here. Looks like you've joined one already!",
-    "tutorialAppTourCoursesNone": "Courses live here \u2014 you can join one with a code, or make your own.",
+    "tutorialAppTourCoursesNone": "Courses live here — you can join one with a code, or make your own.",
     "tutorialAppTourAnalytics": "This is your progress: every word and grammar form you've used.",
     "tutorialAppTourPractice": "You'll find personalized practice lessons here, as long as you've unlocked at least 10 vocab words",
     "tutorialAppTourWorld": "And this brings you back to the world map any time. Happy learning!",
@@ -5622,5 +5683,13 @@
                 "type": "int"
             }
         }
+    },
+    "playVideo": "Play video",
+    "@playVideo": {
+        "description": "Accessible name of the thumbnail button that starts an activity's video in place."
+    },
+    "videoPlayer": "Video player",
+    "@videoPlayer": {
+        "description": "Accessible name of a playing activity video, which is one keyboard stop."
     }
 }

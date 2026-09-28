@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-17 15:10:10.511085",
+    "@@last_modified": "2026-09-23 15:42:49.064997",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -8512,11 +8512,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseParticipantTooltip": "Ovo su svi u ovom kursu. Kliknite na avatar bilo kog korisnika i “počnite razgovor” da pošaljete DM.",
-    "@courseParticipantTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "woman": "Žena",
     "man": "Muškarac",
     "otherGender": "Drugo",
@@ -9747,7 +9742,6 @@
     "customCourseStepTitle": "Ispunite ovaj obrazac da dobijete prilagođeni kurs",
     "courseCodeStepErrorMessage": "Proverite svoj kod i pokušajte ponovo",
     "institution": "Institucija",
-    "courseGoals": "Ciljevi kursa",
     "selectChats": "Izaberite čete",
     "plainTextFile": "Tekst",
     "@userTypeTitle": {
@@ -10518,7 +10512,6 @@
     "passwordFormLabel": "Obrazac za promjenu lozinke",
     "searchLanguagesHint": "Pretražite jezike",
     "searchCountriesHint": "Pretražite zemlje",
-    "searchVocabHint": "Pretražite rečnik",
     "searchUsersHint": "Pretražite korisnike",
     "searchMessagesHint": "Pretražite poruke",
     "searchChatsHint": "Pretražite ćaskanja",
@@ -10676,7 +10669,6 @@
     "unlockWritingAssistance": "Otključajte pomoć pri pisanju",
     "courseSectionTeaching": "Predavanje",
     "courseSectionLearning": "Učenje",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kurs} other{{count} kursa}}",
     "showMore": "Prikaži više",
     "showLess": "Prikaži manje",
     "countNewMessages": "{count, plural, =1{1 nova poruka} other{{count} novih poruka}}",
@@ -10889,5 +10881,34 @@
     "noOpenSessions": "Trenutno nema otvorenih sesija",
     "xpAmount": "{count} XP",
     "vocabItemsUsed": "{count, plural, =1{1 upotrebljena stavka rečnika} other{{count} upotrebljenih stavki rečnika}}",
-    "grammarItemsUsed": "{count, plural, =1{1 upotrebljena stavka gramatike} other{{count} upotrebljenih stavki gramatike}}"
+    "grammarItemsUsed": "{count, plural, =1{1 upotrebljena stavka gramatike} other{{count} upotrebljenih stavki gramatike}}",
+    "playVideo": "Reprodukuj video",
+    "videoPlayer": "Video plejer",
+    "customCourseTextbookHint": "Recite nam koji udžbenik koristite ili opišite svoj nastavni plan i program",
+    "courseListFiltersLabel": "Filteri kursa",
+    "allCoursesFilterTooltip": "Prikaži sve kurseve",
+    "teachingCoursesFilterTooltip": "Prikaži samo kurseve koje predaješ",
+    "learningCoursesFilterTooltip": "Prikaži samo kurseve koje učiš",
+    "searchCoursesHint": "Pretraži kurseve",
+    "noCoursesMatchSearch": "Nijedan kurs ne odgovara tvojoj pretrazi.",
+    "searchVocabByWordOrMeaningHint": "Pretražite po reči ili značenju",
+    "practiceTapABlank": "Dodirnite prazno polje da ga popunite",
+    "practiceListeningPrompt": "Koja reč kaže „{word}“?",
+    "practiceMeaningPrompt": "Šta znači „{word}“?",
+    "practiceEmojiPrompt": "Izaberite emodži za „{word}“",
+    "practiceStepProgress": "{done} od {total}",
+    "leaderboard": "Tabela rezultata",
+    "leaderboardRank": "Rang {rank}",
+    "courseLeaderboardTooltip": "Svi na ovom kursu, rangirani po broju zvezdica u jeziku kursa. Dodirnite člana i odaberite „Započni razgovor“ da biste mu poslali direktnu poruku.",
+    "goalReportTitle": "Prijavi ovu zvezdicu",
+    "goalReportOverAwardPrompt": "Ako nisi trebalo da dobiješ ovu zvezdicu, molimo te objasni zašto.",
+    "goalReportUnderAwardPrompt": "Ako misliš da je trebalo da dobiješ ovu zvezdicu, zašto?",
+    "goalReportPickMessage": "Koja tvoja poruka je trebalo da je zasluži?",
+    "goalReportNoMessages": "Još uvek nisi poslao/la poruku u ovoj sesiji, tako da nema šta da se pokaže.",
+    "goalReportThanks": "Prijavljeno. Hvala!",
+    "goalReportErrorUnreportable": "Nijedan potez orkestratora ne odgovara ovoj zvezdici, tako da nema ništa za beleženje prijave.",
+    "goalReportErrorRetry": "Pretraga poteza nije završena. Pokušaj ponovo.",
+    "summaryFeedbackReceived": "Hvala! Primili smo vaše povratne informacije.",
+    "summaryFeedbackFailed": "Nismo mogli da pošaljemo vaše povratne informacije. Pokušajte ponovo.",
+    "summaryFeedbackProcessing": "Šaljemo vaše povratne informacije i ažuriramo rezime…"
 }

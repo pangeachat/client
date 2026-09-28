@@ -98,26 +98,7 @@ The rules that keep the grammar legible:
   id in `?c=`; an activity's id (and, when resuming, its bound session room) ride
   in the activity token's own param.
 
-**Compatibility.** The parser normalizes a registry master/detail pair to
-master-first whatever order a link carries (the
-[panel registry](../../lib/features/navigation/panel_registry.dart) knows which
-type is whose master) and keeps the given order for pairs the registry does not
-relate. That is the whole compatibility story: **the client is the only
-producer of its URLs, so retired shapes and spellings are simply deleted, not
-redirected** — old bookmarks and stale tabs from earlier releases are not
-maintained (a deliberate call at current scale, #7467). Three inbound URL
-contracts arrive from outside the client. Two are bare single-segment links —
-the shareable standalone activity link (`/<uuid>`) and the course join link
-(`/<code>`, a seven-character join code) — which
-[`LegacyRedirects`](../../lib/features/navigation/legacy_redirects.dart) folds
-into their `activity` / `addcourse:private/<code>` tokens before render. The
-third, the DM invite link (`/invite_user/<id>`), resolves through its own route
-rather than a fold — a redirect-only route that lands on the world map with
-the chat list open, from where the shell opens the DM and lands the user in it
-(#8436) — see
-[Ids in URLs](#ids-in-urls). All are just app URLs the
-SPA serves directly; the older `/join_with_link` and `/join` join-link
-spellings are retired.
+**Compatibility.** The parser normalizes a registry master/detail pair to master-first whatever order a link carries (the [panel registry](../../lib/features/navigation/panel_registry.dart) knows which type is whose master) and keeps the given order for pairs the registry does not relate. That is the whole compatibility story: **the client is the only producer of its URLs, so retired shapes and spellings are simply deleted, not redirected** — old bookmarks and stale tabs from earlier releases are not maintained (a deliberate call at current scale, #7467). Four inbound URL contracts arrive from outside the client. Two are bare single-segment links — the shareable standalone activity link (`/<uuid>`) and the course join link (`/<code>`, a seven-character join code) — which [`LegacyRedirects`](../../lib/features/navigation/legacy_redirects.dart) folds into their `activity` / `addcourse:private/<code>` tokens before render. The third, the DM invite link (`/invite_user/<id>`), resolves through its own route rather than a fold — a redirect-only route that lands on the world map with the chat list open, from where the shell opens the DM and lands the user in it (#8436) — see [Ids in URLs](#ids-in-urls). The fourth is Synapse's notification/invite email link (`/room/<roomId>/<eventId>`, also `/#/room/…`), folded by `LegacyRedirects` into a room token with its jump-to-message event. Root fragments are handled at the router on web and unwrapped by `incomingUriToPath` on native. Unmatched routes recover through the world route so its auth guard and shell still run. These are app URLs the SPA serves directly; the older `/join_with_link` and `/join` join-link spellings are retired.
 
 ## Ids in URLs
 
@@ -636,20 +617,11 @@ browse public) ride the panel header as compact right-justified icons, so the
 joined-course list keeps the vertical space; when the learner is in no courses
 yet they drop to full-width buttons in the body as the empty state.
 
-**Courses are ordered by recent activity.** A course's activity is the newest event in the course space itself or in any of its chats and activity sessions the learner has joined. This is the same timestamp the chat list sorts by. The course space's own timeline holds little beyond setup, so the space alone is not enough. The most recently active course comes first, and the order updates live as activity arrives: sending a message in one of a course's chats moves that course to the top of its group. Pending invites have no activity yet, so they are ordered by name. Courses with tied activity are also ordered by name (#9004).
+**Courses are ordered by recent activity.** A course's activity is the newest event in the course space itself or in any of its chats and activity sessions the learner has joined. This is the same timestamp the chat list sorts by. The course space's own timeline holds little beyond setup, so the space alone is not enough. The most recently active course comes first, and the order updates live as activity arrives: sending a message in one of a course's chats moves that course above every other joined course. Pending invites have no activity yet, so they lead the list, ordered by name. Courses with tied activity are also ordered by name (#9004).
 
-**The Courses hub groups by role — only when the learner holds both.** A
-learner who both administers courses and takes courses sees the list split
-into **Teaching** (courses where they hold admin power, ≥ 100 — the same signal
-as the knock badge; there is no separate teacher role) and **Learning** (every
-other joined course), each in activity order, with pending invites in their own
-**Invited** group ahead of both (an invite's role is unknown until join, so it
-is never sorted as teaching). Section headers carry the count and collapse on
-tap; collapsed state is device-local view state, never in the URL, and resets
-with the app. **A learner who holds only one role sees no headers at all** —
-the flat invited-first list, in activity order — so the split appears only where it
-helps (#8425). Applies on web and narrow alike; content-fit counts the header
-rows. The mobile course shortcut is a single avatar and does not carry role.
+**The Courses hub filters by role — only when the learner holds both.** A learner who both administers courses and takes courses sees a row of filter pills under the header: **All**, **Teaching** (courses where they hold admin power, ≥ 100 — the same signal as the knock badge; there is no separate teacher role) and **Learning** (every other joined course). The pills look and behave like the chat list's pills: one is selected at a time, and the hub opens on All. Pending invites show under All only, because an invite's role is unknown until join. A learner who holds only one role sees no pills. A filter never regroups the list: the courses it selects show in the one activity order above (#9207, replacing #8425's section headers). The tile of every course the learner administers carries an **Admin** label in its bottom-right corner, the same label the course page's Leaderboard puts on an admin.
+
+**The Courses hub has a search bar once the learner has joined more than four courses.** It sits under the header, above the pills. The query matches each course's title, its description, and its CEFR level as the tile shows it in the app language (for example "Novice Mid (A1)"), ignoring capitalization and diacritics. Title matches come first, then description matches, then level matches, each group in activity order. Search and the role filter combine. Applies on web and narrow alike; content-fit counts the search and pill rows.
 
 **The chats sheet header carries its actions**: an expanding **search
 toggle** (an icon; tapping it reveals the filter field, autofocused — the
@@ -846,7 +818,7 @@ behaves the same on mobile and desktop.
 | A settings page (learning, style, security, …) | a settings-menu row | right | open panel (detail) beside the menu, folding only under width pressure — same fit test as a course management page |
 | Learning settings (shortcut) | the cluster's **language flag** | right | opens the learning-settings page directly — the flag doubles as a shortcut to it |
 | A settings leaf (password, blocked users, emotes, …) | within its settings page | the settings panel | push |
-| Courses (your courses + add a course) | the **Courses** rail icon | left | open panel (master) — joined-course tiles plus the add-course options (start-my-own / browse / enter-code); tiles sit under Invited / Teaching / Learning headers when the learner holds both roles ([grouping rule](#single-column-bottom-nav)) |
+| Courses (your courses + add a course) | the **Courses** rail icon | left | open panel (master) — joined-course tiles plus the add-course options (start-my-own / browse / enter-code); Teaching / Learning filter pills when the learner holds both roles, and a search bar past four joined courses ([rules](#single-column-bottom-nav)) |
 | Activity plan | a course's activity list, a map pin (tap) | map content | a left-column `activity:<id>` panel over the map (the nav widget's cavity at half height on narrow, pin visible above), camera on its pin. It claims the single **live view** (a `liveView` sibling of `room`/`session`), so opening it drops any open chat and starting the session drops the plan; it sizes by the registry like a `room` (#7385). When the learner already holds an unfinished session, the bound session room rides in the token param so the plan offers resume instead of a fresh instance (#7257). Its close follows the [affordance rule](#closing-a-panel-x-or-back-arrow): with `?c=` set (opened from the course's activity list, or from a pin on the course-scoped map) a back arrow returns to the course card; with no context (a world-map pin, a standalone shared link) an X reveals the map. **Start** launches the session, which runs as a chat room (one live view) |
 
 ### A chat's header actions
@@ -919,15 +891,7 @@ versa; a live chat on the left is independent and stays open.
 
 ### The navigation rail
 
-Pinned to the top-left of the map on web. Top to bottom: **World** (home),
-**Chats**, **Courses**, then one avatar per joined course in the Courses hub's
-order — invited, then teaching, then learning — with a hairline between the
-groups whenever the hub shows its section headers (the [grouping
-rule](#single-column-bottom-nav)), so the rail mirrors the list. Selecting a section
-from it *replaces* the open left-column panels (see
-[Panels are independent](#panels-are-independent)). On a narrow screen the rail
-is replaced by the
-[single-column bottom nav](#single-column-bottom-nav) widget.
+Pinned to the top-left of the map on web. Top to bottom: **World** (home), **Chats**, **Courses**, then one avatar per course in the Courses hub's order — pending invites, then joined courses by recent activity — so the rail mirrors the list. The hub's pills and search narrow only the hub; the rail always shows every course. Selecting a section from it *replaces* the open left-column panels (see [Panels are independent](#panels-are-independent)). On a narrow screen the rail is replaced by the [single-column bottom nav](#single-column-bottom-nav) widget.
 
 **The selection highlight shows what you are looking at** — on the web rail and
 the mobile widget's rail alike. Open left panels win: the highlight is the
@@ -985,6 +949,16 @@ triggers all *replace* the current history entry rather than adding one.
 Product analytics mirrors these same steps — screen names derive from the token
 lists and only history-adding navigations emit — see
 [google-analytics.instructions.md](google-analytics.instructions.md).
+
+### A signed-out visitor's destination
+
+A signed-out visitor who opens any workspace location is sent to the sign-in screen, and the location they opened is kept for them: the `/` route's auth guard ([`PAuthGaurd`](../../lib/pangea/common/utils/p_vguard.dart)) stores the resolved workspace URL (`SpaceCodeRepo.destination`, the **login-bounce ferry**) before it bounces, and the same guard sends the next signed-in landing there. It is the guard and not a login-state listener because the guard is the one place every signed-in arrival passes through, whatever the transport: an in-session password or SSO login, a session restored at startup, and a new account leaving onboarding all land on `/`. Living outside the URL is what lets the destination survive everything in between (switching between sign-up and sign-in, a cancelled or failed attempt, the SSO round trip, the registration and onboarding hops), none of which read or write it. A signed-in user opening the same link never touches it: the URL simply renders.
+
+- **One destination, the last one.** There is no per-link cache. The course join link, the shareable activity link, a course room and a settings page are all workspace URLs by the time the guard runs, so they ride the same entry, and a visitor who opens several links before signing in gets the last. The DM invite link is the one exception: it resolves through its own route and keeps its own pending entry, because it has to act when tapped signed in too ([joining-courses.instructions.md](joining-courses.instructions.md#route-1--class-link)).
+- **Only a workspace location is kept**: the world root with a query. The bare root is never stored, so a plain app open or the native SSO callback cannot overwrite a real destination, and an absolute URL or any other path is refused on read, so the bounce can never send anyone off the app.
+- **Consumed on redirect.** The guard clears the entry in the same step that redirects to it, so a later sign-in never replays it and the shell may rewrite the landing URL (a width fold) without re-triggering it. The join code's earlier retry-until-consumed contract went with the boot-time navigation that required it: the login listener now leaves any non-entry location alone (`loggedInLanding`). Entries also expire (`SpaceCodeRepo.cacheTTL`), so a visitor who never signs in cannot leave a destination for a later account on a shared browser.
+- **Normal rules apply on arrival.** The destination renders like any other URL: unknown tokens degrade to a valid subset, an unmatched path recovers to the world map, and a surface the account cannot access shows that surface's own empty state. The destination is never logged or reported.
+- **A new account's onboarding reads it too.** A join code in the destination is joined from inside onboarding, which clears the entry ([joining-courses.instructions.md](joining-courses.instructions.md#onboarding-with-a-link-joined-course)); any other destination waits for onboarding to end on `/`.
 
 ### Adding a panel
 
