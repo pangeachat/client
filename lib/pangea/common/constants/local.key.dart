@@ -1,8 +1,6 @@
 class PLocalKey {
-  static const String cachedSpaceCodeToJoin = "cachedclasscodetojoin";
-  static const String cachedSpaceCodeToJoinAt = "cachedclasscodetojoinat";
-  static const String cachedActivityToOpen = "cachedactivitytoopen";
-  static const String cachedActivityToOpenAt = "cachedactivitytoopenat";
+  static const String cachedDestination = "cacheddestination";
+  static const String cachedDestinationAt = "cacheddestinationat";
   static const String cachedDmInviteUserId = "cacheddminviteuserid";
   static const String cachedDmInviteUserIdAt = "cacheddminviteuseridat";
   static const String beganPayment = "beganWebPayment";
