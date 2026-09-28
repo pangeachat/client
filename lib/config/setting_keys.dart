@@ -55,7 +55,6 @@ enum AppSettings<T> {
     'chat.fluffy.no_encryption_warning_shown',
     false,
   ),
-  displayChatDetailsColumn('chat.fluffy.display_chat_details_column', false),
   // AppConfig-mirrored settings
   // #Pangea
   // applicationName<String>('chat.fluffy.application_name', 'FluffyChat'),

@@ -70,7 +70,6 @@ import 'package:fluffychat/pangea/morphs/morph_icon.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_chat_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_chat_extension.dart';
-import 'package:fluffychat/routes/chat/chat_details/chat_details.dart';
 import 'package:fluffychat/routes/chat/chat_view.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/goal_star_animation.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
@@ -626,9 +625,6 @@ class ChatController extends State<ChatPageWithRoom>
     // Pangea#
     WidgetsBinding.instance.addPostFrameCallback(_shareItems);
     super.initState();
-    _displayChatDetailsColumn = ValueNotifier(
-      AppSettings.displayChatDetailsColumn.value,
-    );
 
     sendingClient = Matrix.of(context).client;
     final lastEventThreadId =
@@ -1387,7 +1383,6 @@ class ChatController extends State<ChatPageWithRoom>
     pangeaMessageEvents.clear();
     WidgetsBinding.instance.removeObserver(this);
     _storeInputTimeoutTimer?.cancel();
-    _displayChatDetailsColumn.dispose();
     timelineUpdateNotifier.dispose();
     typingCoolDown?.cancel();
     typingTimeout?.cancel();
@@ -3061,15 +3056,6 @@ class ChatController extends State<ChatPageWithRoom>
     GoogleAnalytics.openMessageToolbar();
   }
 
-  bool get displayChatDetailsColumn {
-    try {
-      return _displayChatDetailsColumn.value;
-    } catch (e) {
-      // if not set, default to false
-      return false;
-    }
-  }
-
   void _sendMessageAnalytics(
     String? eventId, {
     PangeaRepresentation? originalSent,
@@ -3531,15 +3517,6 @@ class ChatController extends State<ChatPageWithRoom>
   }
   // Pangea#
 
-  late final ValueNotifier<bool> _displayChatDetailsColumn;
-
-  void toggleDisplayChatDetailsColumn() async {
-    await AppSettings.displayChatDetailsColumn.setItem(
-      !_displayChatDetailsColumn.value,
-    );
-    _displayChatDetailsColumn.value = !_displayChatDetailsColumn.value;
-  }
-
   void showActionsPopup({
     required User user,
     required Event event,
@@ -3566,39 +3543,7 @@ class ChatController extends State<ChatPageWithRoom>
           );
         }
         // Pangea#
-        final theme = Theme.of(context);
-        return Row(
-          children: [
-            Expanded(child: ChatView(this)),
-            ValueListenableBuilder(
-              valueListenable: _displayChatDetailsColumn,
-              builder: (context, displayChatDetailsColumn, _) =>
-                  !FluffyThemes.isThreeColumnMode(context) ||
-                      room.membership != Membership.join ||
-                      !displayChatDetailsColumn
-                  ? const SizedBox(height: double.infinity, width: 0)
-                  : Container(
-                      width: FluffyThemes.columnWidth,
-                      clipBehavior: Clip.hardEdge,
-                      decoration: BoxDecoration(
-                        border: Border(
-                          left: BorderSide(width: 1, color: theme.dividerColor),
-                        ),
-                      ),
-                      child: ChatDetails(
-                        roomId: roomId,
-                        embeddedCloseButton: IconButton(
-                          // #Pangea
-                          tooltip: L10n.of(context).close,
-                          // Pangea#
-                          icon: const Icon(Icons.close),
-                          onPressed: toggleDisplayChatDetailsColumn,
-                        ),
-                      ),
-                    ),
-            ),
-          ],
-        );
+        return ChatView(this);
       },
     );
   }
