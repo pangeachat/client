@@ -1263,7 +1263,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-09-23 15:42:50.176897",
+    "@@last_modified": "2026-09-28 13:21:24.898475",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10918,5 +10918,6 @@
     "goalReportErrorRetry": "回合搜尋未完成。請重試。",
     "summaryFeedbackReceived": "多謝！我哋已經收到你嘅意見。",
     "summaryFeedbackFailed": "未能發送你嘅意見。請再試一次。",
-    "summaryFeedbackProcessing": "正在傳送你的意見並更新摘要…"
+    "summaryFeedbackProcessing": "正在傳送你的意見並更新摘要…",
+    "callTranscriptNotSubscribed": "{name} 喺呢次通話期間冇訂閱，所以冇轉錄到對話內容。"
 }

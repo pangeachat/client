@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-23 15:42:49.201200",
+    "@@last_modified": "2026-09-28 13:21:23.455058",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10479,5 +10479,6 @@
     "goalReportErrorRetry": "Sökningen efter svängen slutfördes inte. Försök igen.",
     "summaryFeedbackReceived": "Tack! Vi har mottagit din feedback.",
     "summaryFeedbackFailed": "Kunde inte skicka din feedback. Försök igen.",
-    "summaryFeedbackProcessing": "Skickar din feedback och uppdaterar sammanfattningen…"
+    "summaryFeedbackProcessing": "Skickar din feedback och uppdaterar sammanfattningen…",
+    "callTranscriptNotSubscribed": "{name} hade ingen prenumeration under det här samtalet, så det som sades transkriberades inte."
 }

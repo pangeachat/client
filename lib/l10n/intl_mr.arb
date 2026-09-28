@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-09-23 15:42:47.391337",
+    "@@last_modified": "2026-09-28 13:21:20.891583",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "टर्नचा शोध पूर्ण झाला नाही. पुन्हा प्रयत्न करा.",
     "summaryFeedbackReceived": "धन्यवाद! आम्हाला तुमचा अभिप्राय मिळाला आहे.",
     "summaryFeedbackFailed": "तुमचा अभिप्राय पाठवता आला नाही. कृपया पुन्हा प्रयत्न करा.",
-    "summaryFeedbackProcessing": "तुमचा अभिप्राय पाठवत आहे आणि सारांश अपडेट करत आहे…"
+    "summaryFeedbackProcessing": "तुमचा अभिप्राय पाठवत आहे आणि सारांश अपडेट करत आहे…",
+    "callTranscriptNotSubscribed": "{name} कडे या कॉलदरम्यान सदस्यता नसल्यामुळे, जे बोलले गेले ते प्रतिलेखीत केले गेले नाही."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-09-23 15:42:48.132996",
+    "@@last_modified": "2026-09-28 13:21:21.838442",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "ଟର୍ନ ପାଇଁ ସନ୍ଧାନ ଶେଷ ହେଲା ନାହିଁ। ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ।",
     "summaryFeedbackReceived": "ଧନ୍ୟବାଦ! ଆମେ ଆପଣଙ୍କ ମତାମତ ଗ୍ରହଣ କରିଛୁ।",
     "summaryFeedbackFailed": "ଆପଣଙ୍କ ମତାମତ ପଠାଯାଇପାରିଲା ନାହିଁ। ଦୟାକରି ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ।",
-    "summaryFeedbackProcessing": "ଆପଣଙ୍କ ମତାମତ ପଠାଯାଉଛି ଏବଂ ସାରାଂଶ ଅପଡେଟ୍ କରାଯାଉଛି…"
+    "summaryFeedbackProcessing": "ଆପଣଙ୍କ ମତାମତ ପଠାଯାଉଛି ଏବଂ ସାରାଂଶ ଅପଡେଟ୍ କରାଯାଉଛି…",
+    "callTranscriptNotSubscribed": "ଏହି କଲ୍ ସମୟରେ {name}ଙ୍କର ସବସ୍କ୍ରିପସନ୍ ନଥିଲା, ତେଣୁ କଥାବାର୍ତ୍ତା ଟ୍ରାନ୍ସକ୍ରାଇବ୍ ହୋଇନାହିଁ।"
 }

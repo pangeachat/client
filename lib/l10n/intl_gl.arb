@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-09-23 15:42:44.564514",
+    "@@last_modified": "2026-09-28 13:21:18.299452",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9961,5 +9961,6 @@
     "goalReportErrorRetry": "A busca da quenda non rematou. Téntao de novo.",
     "summaryFeedbackReceived": "Grazas! Recibimos os teus comentarios.",
     "summaryFeedbackFailed": "Non se puideron enviar os teus comentarios. Téntao de novo.",
-    "summaryFeedbackProcessing": "Enviando os teus comentarios e actualizando o resumo…"
+    "summaryFeedbackProcessing": "Enviando os teus comentarios e actualizando o resumo…",
+    "callTranscriptNotSubscribed": "{name} non tiña unha subscrición durante esta chamada, polo que o que se dixo non foi transcrito."
 }
