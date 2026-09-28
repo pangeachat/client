@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "Recordiadau",
     "callTranscriptFullCall": "Galwad lawn",
     "callTranscriptPreparingRecording": "Yn paratoi'r recordiad llawn…",
-    "callTranscriptNoRecording": "Dim recordiad o'r alwad lawn."
+    "callTranscriptNoRecording": "Dim recordiad o'r alwad lawn.",
+    "callTranscriptNotSubscribed": "Nid oedd gan {name} danysgrifiad yn ystod yr alwad hon, felly ni thrawsgrifiwyd yr hyn a ddywedwyd.",
+    "joinYourCourse": "Ymunwch â'ch cwrs",
+    "courseCodeJoinExplanation": "Mewngofnodwch neu gofrestrwch, a byddwn yn defnyddio'ch cod cwrs i'ch ychwanegu at eich cwrs yn awtomatig.",
+    "courseCodeLabel": "Cod cwrs",
+    "courseCodeSaved": "Cod cwrs {code} wedi'i gadw",
+    "courseCodeSavedExplanation": "Cofrestrwch neu mewngofnodwch a byddwn yn eich ychwanegu at eich cwrs."
 }

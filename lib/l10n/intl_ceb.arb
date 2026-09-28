@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "Mga recording",
     "callTranscriptFullCall": "Tibuok tawag",
     "callTranscriptPreparingRecording": "Giandam ang tibuok recording…",
-    "callTranscriptNoRecording": "Walay recording sa tibuok tawag."
+    "callTranscriptNoRecording": "Walay recording sa tibuok tawag.",
+    "callTranscriptNotSubscribed": "Walay subscription si {name} atol niini nga tawag, mao nga wala gi-transcribe ang gisulti.",
+    "joinYourCourse": "Apil sa imong kurso",
+    "courseCodeJoinExplanation": "Pag-log in o pag-sign up, ug gamiton namo ang imong course code aron awtomatikong idugang ka sa imong kurso.",
+    "courseCodeLabel": "Course code",
+    "courseCodeSaved": "Na-save ang course code nga {code}",
+    "courseCodeSavedExplanation": "Pag-sign up o pag-log in ug idugang ka namo sa imong kurso."
 }

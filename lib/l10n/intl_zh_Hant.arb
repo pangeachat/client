@@ -10073,5 +10073,11 @@
     "callTranscriptRecordings": "錄音",
     "callTranscriptFullCall": "完整通話",
     "callTranscriptPreparingRecording": "正在準備完整錄音…",
-    "callTranscriptNoRecording": "沒有完整通話的錄音。"
+    "callTranscriptNoRecording": "沒有完整通話的錄音。",
+    "callTranscriptNotSubscribed": "{name} 在通話期間沒有訂閱，因此通話內容沒有轉錄。",
+    "joinYourCourse": "加入您的課程",
+    "courseCodeJoinExplanation": "登入或註冊，我們將使用您的課程代碼自動將您加入課程。",
+    "courseCodeLabel": "課程代碼",
+    "courseCodeSaved": "課程代碼 {code} 已儲存",
+    "courseCodeSavedExplanation": "註冊或登入，我們將把您加入課程。"
 }

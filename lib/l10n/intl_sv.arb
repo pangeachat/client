@@ -10485,5 +10485,11 @@
     "callTranscriptRecordings": "Inspelningar",
     "callTranscriptFullCall": "Hela samtalet",
     "callTranscriptPreparingRecording": "Förbereder hela inspelningen…",
-    "callTranscriptNoRecording": "Ingen inspelning av hela samtalet."
+    "callTranscriptNoRecording": "Ingen inspelning av hela samtalet.",
+    "callTranscriptNotSubscribed": "{name} hade ingen prenumeration under det här samtalet, så det som sades transkriberades inte.",
+    "joinYourCourse": "Gå med i din kurs",
+    "courseCodeJoinExplanation": "Logga in eller registrera dig, så använder vi din kurskod för att automatiskt lägga till dig i din kurs.",
+    "courseCodeLabel": "Kurskod",
+    "courseCodeSaved": "Kurskod {code} sparad",
+    "courseCodeSavedExplanation": "Registrera dig eller logga in så lägger vi till dig i din kurs."
 }

@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "Reġistrazzjonijiet",
     "callTranscriptFullCall": "Sejħa sħiħa",
     "callTranscriptPreparingRecording": "Qed titħejja r-reġistrazzjoni sħiħa…",
-    "callTranscriptNoRecording": "L-ebda reġistrazzjoni tas-sejħa sħiħa."
+    "callTranscriptNoRecording": "L-ebda reġistrazzjoni tas-sejħa sħiħa.",
+    "callTranscriptNotSubscribed": "{name} ma kellux abbonament waqt din is-sejħa, għalhekk dak li ntqal ma ġiex traskritt.",
+    "joinYourCourse": "Ingħaqad mal-kors tiegħek",
+    "courseCodeJoinExplanation": "Idħol jew irreġistra, u aħna nużaw il-kodiċi tal-kors tiegħek biex inżiduk mal-kors tiegħek awtomatikament.",
+    "courseCodeLabel": "Kodiċi tal-kors",
+    "courseCodeSaved": "Kodiċi tal-kors {code} salvat",
+    "courseCodeSavedExplanation": "Irreġistra jew idħol u aħna nżiduk mal-kors tiegħek."
 }

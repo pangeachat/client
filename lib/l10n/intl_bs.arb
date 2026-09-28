@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "Snimci",
     "callTranscriptFullCall": "Cijeli poziv",
     "callTranscriptPreparingRecording": "Pripremam cijeli snimak…",
-    "callTranscriptNoRecording": "Nema snimka cijelog poziva."
+    "callTranscriptNoRecording": "Nema snimka cijelog poziva.",
+    "callTranscriptNotSubscribed": "{name} nije imao pretplatu tokom ovog poziva, tako da izgovoreno nije transkribovano.",
+    "joinYourCourse": "Pridružite se svom kursu",
+    "courseCodeJoinExplanation": "Prijavite se ili registrujte, a mi ćemo koristiti vaš kod kursa da vas automatski dodamo na vaš kurs.",
+    "courseCodeLabel": "Kod kursa",
+    "courseCodeSaved": "Kod kursa {code} sačuvan",
+    "courseCodeSavedExplanation": "Registrujte se ili prijavite i mi ćemo vas dodati na vaš kurs."
 }

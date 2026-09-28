@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "Ihe ndekọ",
     "callTranscriptFullCall": "Oku zuru ezu",
     "callTranscriptPreparingRecording": "Na-akwadebe ndekọ zuru ezu…",
-    "callTranscriptNoRecording": "Enweghị ndekọ nke oku zuru ezu."
+    "callTranscriptNoRecording": "Enweghị ndekọ nke oku zuru ezu.",
+    "callTranscriptNotSubscribed": "{name} enweghị ndenye aha n'oge oku a, yabụ na edeghị ihe e kwuru.",
+    "joinYourCourse": "Soro nkuzi gị",
+    "courseCodeJoinExplanation": "Banye ma ọ bụ debanye aha, anyị ga-eji koodu nkuzi gị tinye gị na nkuzi gị na-akpaghị aka.",
+    "courseCodeLabel": "Koodu nkuzi",
+    "courseCodeSaved": "Echekwara koodu nkuzi {code}",
+    "courseCodeSavedExplanation": "Debanye aha ma ọ bụ banye ma anyị ga-etinye gị na nkuzi gị."
 }

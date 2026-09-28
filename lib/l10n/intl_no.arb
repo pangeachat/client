@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "Opptak",
     "callTranscriptFullCall": "Hele samtalen",
     "callTranscriptPreparingRecording": "Forbereder hele opptaket…",
-    "callTranscriptNoRecording": "Ingen opptak av hele samtalen."
+    "callTranscriptNoRecording": "Ingen opptak av hele samtalen.",
+    "callTranscriptNotSubscribed": "{name} hadde ikke et abonnement under denne samtalen, så det som ble sagt ble ikke transkribert.",
+    "joinYourCourse": "Bli med på kurset ditt",
+    "courseCodeJoinExplanation": "Logg inn eller registrer deg, så bruker vi kurskoden din til å legge deg til kurset ditt automatisk.",
+    "courseCodeLabel": "Kurskode",
+    "courseCodeSaved": "Kurskode {code} lagret",
+    "courseCodeSavedExplanation": "Registrer deg eller logg inn, så legger vi deg til kurset ditt."
 }

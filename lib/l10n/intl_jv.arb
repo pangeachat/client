@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "Rekaman",
     "callTranscriptFullCall": "Telpon lengkap",
     "callTranscriptPreparingRecording": "Nyiapake rekaman lengkap…",
-    "callTranscriptNoRecording": "Ora ana rekaman telpon lengkap."
+    "callTranscriptNoRecording": "Ora ana rekaman telpon lengkap.",
+    "callTranscriptNotSubscribed": "{name} ora duwe langganan nalika telpon iki, mula sing diucapake ora ditranskripsi.",
+    "joinYourCourse": "Gabung kursusmu",
+    "courseCodeJoinExplanation": "Mlebu utawa ndaftar, lan kita bakal nggunakake kode kursusmu kanggo nambahake sampeyan menyang kursus kanthi otomatis.",
+    "courseCodeLabel": "Kode kursus",
+    "courseCodeSaved": "Kode kursus {code} wis disimpen",
+    "courseCodeSavedExplanation": "Ndaftar utawa mlebu lan kita bakal nambahake sampeyan menyang kursus."
 }

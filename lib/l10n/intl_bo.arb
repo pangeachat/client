@@ -9578,5 +9578,11 @@
     "callTranscriptRecordings": "སྐད་སྒྲ་བླངས་པ།",
     "callTranscriptFullCall": "བསྐྱར་ཟློས་ཆ་ཚང་།",
     "callTranscriptPreparingRecording": "བསྐྱར་ཟློས་ཆ་ཚང་གྲ་སྒྲིག་བྱེད་བཞིན་པ།",
-    "callTranscriptNoRecording": "བསྐྱར་ཟློས་ཆ་ཚང་མེད།"
+    "callTranscriptNoRecording": "བསྐྱར་ཟློས་ཆ་ཚང་མེད།",
+    "callTranscriptNotSubscribed": "འདི་ཉིད་སྐད་ཆ་ཤོད་རེས་བྱེད་སྐབས་ {name} ལ་ཐོ་འགོད་བྱས་མེད་པས། བཤད་པའི་སྐད་ཆ་དེ་དག་ཡིག་ཐོག་ཏུ་ཕབ་མེད།",
+    "joinYourCourse": "သင်တန်းသို့ဝင်ရောက်ပါ",
+    "courseCodeJoinExplanation": "အကောင့်ဝင်ပါ သို့မဟုတ် စာရင်းသွင်းပါ၊ သင်၏သင်တန်းကုဒ်ကို အသုံးပြု၍ သင့်ကို သင်တန်းသို့ အလိုအလျောက်ထည့်သွင်းပေးပါမည်။",
+    "courseCodeLabel": "သင်တန်းကုဒ်",
+    "courseCodeSaved": "သင်တန်းကုဒ် {code} သိမ်းဆည်းပြီးပါပြီ",
+    "courseCodeSavedExplanation": "စာရင်းသွင်းပါ သို့မဟုတ် အကောင့်ဝင်ပါ၊ သင့်ကို သင်တန်းသို့ ထည့်သွင်းပေးပါမည်။"
 }

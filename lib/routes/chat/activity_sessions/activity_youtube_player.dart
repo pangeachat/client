@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -87,6 +90,12 @@ class _ActivityYoutubePlayerState extends State<ActivityYoutubePlayer> {
   // who also clicks YouTube's own CC button makes the next C press a no-op.
   bool _captionsOn = true;
 
+  final _openedFor = Stopwatch()..start();
+  bool _everPlayed = false;
+  bool _stallChecked = false;
+  StreamSubscription<YoutubePlayerValue>? _stateSub;
+  Timer? _stallTimer;
+
   @override
   void initState() {
     super.initState();
@@ -112,6 +121,37 @@ class _ActivityYoutubePlayerState extends State<ActivityYoutubePlayer> {
     );
     final id = YoutubePlayerController.convertUrlToId(widget.url);
     if (id != null) _loadVideo(id);
+
+    // Native only: every native player opens from the learner's tap and should
+    // start at once. On web a browser that blocks sound autoplay leaves it
+    // paused by design, so not starting there is no failure.
+    if (!kIsWeb) {
+      _stateSub = _controller.stream.listen((value) {
+        if (value.playerState == PlayerState.playing) _everPlayed = true;
+      });
+      _stallTimer = Timer(const Duration(seconds: 10), _reportIfNeverPlayed);
+    }
+  }
+
+  /// Reports a video that never started, which otherwise leaves a blank
+  /// player and no trace — e.g. YouTube refusing playback with its "confirm
+  /// you're not a bot" check (#9244). Checked 10 s after opening, or when the
+  /// learner gives up and closes it after at least 5 s.
+  void _reportIfNeverPlayed() {
+    if (_stallChecked || _everPlayed) return;
+    if (_openedFor.elapsed < const Duration(seconds: 5)) return;
+    _stallChecked = true;
+    ErrorHandler.logErrorOnce(
+      key: 'activity-youtube-never-played',
+      e: Exception('Activity YouTube video never started playing'),
+      level: SentryLevel.warning,
+      data: {
+        'url': widget.url,
+        'secondsOpen': _openedFor.elapsed.inSeconds,
+        'playerState': _controller.value.playerState.name,
+        'playerError': _controller.value.error.name,
+      },
+    );
   }
 
   Future<void> _loadVideo(String id) async {
@@ -141,6 +181,9 @@ class _ActivityYoutubePlayerState extends State<ActivityYoutubePlayer> {
 
   @override
   void dispose() {
+    _stallTimer?.cancel();
+    _stateSub?.cancel();
+    if (!kIsWeb) _reportIfNeverPlayed();
     _controller.close();
     super.dispose();
   }

@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "ৰেকৰ্ডিংসমূহ",
     "callTranscriptFullCall": "সম্পূৰ্ণ কল",
     "callTranscriptPreparingRecording": "সম্পূৰ্ণ ৰেকৰ্ডিং প্ৰস্তুত কৰা হৈছে…",
-    "callTranscriptNoRecording": "সম্পূৰ্ণ কলৰ কোনো ৰেকৰ্ডিং নাই।"
+    "callTranscriptNoRecording": "সম্পূৰ্ণ কলৰ কোনো ৰেকৰ্ডিং নাই।",
+    "callTranscriptNotSubscribed": "{name}ৰ এই কলটোৰ সময়ত কোনো ছাবস্ক্ৰিপশ্বন নাছিল, সেয়েহে কি কোৱা হৈছিল সেয়া লিপিবদ্ধ কৰা হোৱা নাছিল।",
+    "joinYourCourse": "আপোনাৰ পাঠ্যক্ৰমত যোগদান কৰক",
+    "courseCodeJoinExplanation": "লগ ইন কৰক বা ছাইন আপ কৰক, আৰু আমি আপোনাক আপোনাৰ পাঠ্যক্ৰমত স্বয়ংক্ৰিয়ভাৱে যোগ দিবলৈ আপোনাৰ পাঠ্যক্ৰম ক'ড ব্যৱহাৰ কৰিম।",
+    "courseCodeLabel": "পাঠ্যক্ৰম ক'ড",
+    "courseCodeSaved": "পাঠ্যক্ৰম ক'ড {code} সংৰক্ষণ কৰা হৈছে",
+    "courseCodeSavedExplanation": "ছাইন আপ কৰক বা লগ ইন কৰক আৰু আমি আপোনাক আপোনাৰ পাঠ্যক্ৰমত যোগ দিম।"
 }

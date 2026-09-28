@@ -10268,5 +10268,11 @@
     "callTranscriptRecordings": "Kayıtlar",
     "callTranscriptFullCall": "Tüm arama",
     "callTranscriptPreparingRecording": "Tüm kayıt hazırlanıyor…",
-    "callTranscriptNoRecording": "Tüm aramanın kaydı yok."
+    "callTranscriptNoRecording": "Tüm aramanın kaydı yok.",
+    "callTranscriptNotSubscribed": "{name} bu arama sırasında bir aboneliğe sahip değildi, bu nedenle konuşulanlar yazıya dökülmedi.",
+    "joinYourCourse": "Kursunuza katılın",
+    "courseCodeJoinExplanation": "Giriş yapın veya kaydolun, kurs kodunuzu kullanarak sizi otomatik olarak kursunuza ekleyeceğiz.",
+    "courseCodeLabel": "Kurs kodu",
+    "courseCodeSaved": "{code} kurs kodu kaydedildi",
+    "courseCodeSavedExplanation": "Kaydolun veya giriş yapın, sizi kursunuza ekleyeceğiz."
 }

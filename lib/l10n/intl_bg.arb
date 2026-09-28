@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "Записи",
     "callTranscriptFullCall": "Цялото обаждане",
     "callTranscriptPreparingRecording": "Подготвям пълния запис…",
-    "callTranscriptNoRecording": "Няма запис на цялото обаждане."
+    "callTranscriptNoRecording": "Няма запис на цялото обаждане.",
+    "callTranscriptNotSubscribed": "{name} не е имал абонамент по време на този разговор, така че казаното не е транскрибирано.",
+    "joinYourCourse": "Присъединете се към курса си",
+    "courseCodeJoinExplanation": "Влезте или се регистрирайте и ние автоматично ще ви добавим към курса ви, използвайки кода на курса.",
+    "courseCodeLabel": "Код на курса",
+    "courseCodeSaved": "Кодът на курса {code} е запазен",
+    "courseCodeSavedExplanation": "Регистрирайте се или влезте и ние ще ви добавим към курса ви."
 }

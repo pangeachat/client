@@ -10599,5 +10599,11 @@
     "callTranscriptRecordings": "Taifeadtaí",
     "callTranscriptFullCall": "Glao iomlán",
     "callTranscriptPreparingRecording": "Ag ullmhú an taifeadta iomláin…",
-    "callTranscriptNoRecording": "Níl aon taifeadadh den ghlao iomlán."
+    "callTranscriptNoRecording": "Níl aon taifeadadh den ghlao iomlán.",
+    "callTranscriptNotSubscribed": "Ní raibh síntiús ag {name} le linn an ghlao seo, mar sin níor tras-scríobhadh an méid a dúradh.",
+    "joinYourCourse": "Glac páirt i do chúrsa",
+    "courseCodeJoinExplanation": "Logáil isteach nó cláraigh, agus úsáidfimid do chód cúrsa chun tú a chur le do chúrsa go huathoibríoch.",
+    "courseCodeLabel": "Cód cúrsa",
+    "courseCodeSaved": "Cód cúrsa {code} sábháilte",
+    "courseCodeSavedExplanation": "Cláraigh nó logáil isteach agus cuirfimid le do chúrsa thú."
 }

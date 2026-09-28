@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "Raykod dɛn",
     "callTranscriptFullCall": "Ful kɔl",
     "callTranscriptPreparingRecording": "De pripia di ful raykod…",
-    "callTranscriptNoRecording": "No raykod fɔ di ful kɔl."
+    "callTranscriptNoRecording": "No raykod fɔ di ful kɔl.",
+    "callTranscriptNotSubscribed": "{name} nɔ bin gɛt sɔbskripshɔn dɛn dis kɔl, so wetin dɛn tɔk nɔ bin rayt dɔŋ.",
+    "joinYourCourse": "Jɔyn yu kɔs",
+    "courseCodeJoinExplanation": "Lɔg in ɔ sayn ap, ɛn wi go yuz yu kɔs kod fɔ ad yu to yu kɔs ɔtɔmatikali.",
+    "courseCodeLabel": "Kɔs kod",
+    "courseCodeSaved": "Kɔs kod {code} dɔn sev",
+    "courseCodeSavedExplanation": "Sayn ap ɔ lɔg in ɛn wi go ad yu to yu kɔs."
 }

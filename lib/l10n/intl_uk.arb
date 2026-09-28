@@ -9967,5 +9967,11 @@
     "callTranscriptRecordings": "Записи",
     "callTranscriptFullCall": "Повний дзвінок",
     "callTranscriptPreparingRecording": "Підготовка повного запису…",
-    "callTranscriptNoRecording": "Немає запису повного дзвінка."
+    "callTranscriptNoRecording": "Немає запису повного дзвінка.",
+    "callTranscriptNotSubscribed": "Під час цього дзвінка {name} не мав підписки, тому розмова не була розшифрована.",
+    "joinYourCourse": "Приєднатися до курсу",
+    "courseCodeJoinExplanation": "Увійдіть або зареєструйтеся, і ми використаємо ваш код курсу, щоб автоматично додати вас до нього.",
+    "courseCodeLabel": "Код курсу",
+    "courseCodeSaved": "Код курсу {code} збережено",
+    "courseCodeSavedExplanation": "Зареєструйтеся або увійдіть, і ми додамо вас до вашого курсу."
 }

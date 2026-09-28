@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "Бичлэгүүд",
     "callTranscriptFullCall": "Бүтэн дуудлага",
     "callTranscriptPreparingRecording": "Бүтэн бичлэгийг бэлдэж байна…",
-    "callTranscriptNoRecording": "Бүтэн дуудлагын бичлэг байхгүй."
+    "callTranscriptNoRecording": "Бүтэн дуудлагын бичлэг байхгүй.",
+    "callTranscriptNotSubscribed": "Энэ дуудлагын үеэр {name} захиалгагүй байсан тул яригдсан зүйлсийг хуулбарлаагүй болно.",
+    "joinYourCourse": "Хичээлдээ нэгдэх",
+    "courseCodeJoinExplanation": "Нэвтрэх эсвэл бүртгүүлэх үед таны хичээлийн кодыг ашиглан таныг автоматаар хичээлд нэгтгэх болно.",
+    "courseCodeLabel": "Хичээлийн код",
+    "courseCodeSaved": "Хичээлийн код {code} хадгалагдсан",
+    "courseCodeSavedExplanation": "Бүртгүүлэх эсвэл нэвтрэх үед таныг хичээлд нэгтгэх болно."
 }

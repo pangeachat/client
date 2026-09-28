@@ -9967,5 +9967,11 @@
     "callTranscriptRecordings": "录音",
     "callTranscriptFullCall": "完整通话",
     "callTranscriptPreparingRecording": "正在准备完整录音…",
-    "callTranscriptNoRecording": "没有完整通话的录音。"
+    "callTranscriptNoRecording": "没有完整通话的录音。",
+    "callTranscriptNotSubscribed": "{name} 在通话期间没有订阅，因此通话内容未被转录。",
+    "joinYourCourse": "加入您的课程",
+    "courseCodeJoinExplanation": "登录或注册后，我们将使用您的课程代码自动将您添加到课程中。",
+    "courseCodeLabel": "课程代码",
+    "courseCodeSaved": "课程代码 {code} 已保存",
+    "courseCodeSavedExplanation": "注册或登录后，我们会将您添加到您的课程中。"
 }

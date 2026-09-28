@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "تۆمارەکان",
     "callTranscriptFullCall": "پەیوەندی تەواو",
     "callTranscriptPreparingRecording": "ئامادەکردنی تۆمارکردنی تەواو…",
-    "callTranscriptNoRecording": "هیچ تۆمارێک لە پەیوەندی تەواودا نییە."
+    "callTranscriptNoRecording": "هیچ تۆمارێک لە پەیوەندی تەواودا نییە.",
+    "callTranscriptNotSubscribed": "{name} لە کاتی ئەم پەیوەندییەدا بەشداری نەکردبوو، بۆیە ئەوەی وترا نەنووسرایەوە.",
+    "joinYourCourse": "بەشداری خولەکەت بکە",
+    "courseCodeJoinExplanation": "بچۆ ژوورەوە یان خۆت تۆمار بکە، و ئێمە کۆدی خولەکەت بەکاردەهێنین بۆ ئەوەی بە شێوەیەکی خۆکارانە زیادتبکەین بۆ خولەکەت.",
+    "courseCodeLabel": "کۆدی خول",
+    "courseCodeSaved": "کۆدی خول {code} پاشەکەوت کرا",
+    "courseCodeSavedExplanation": "خۆت تۆمار بکە یان بچۆ ژوورەوە و ئێمە زیادتبکەین بۆ خولەکەت."
 }

@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "Àwọn ohùn tí a kọ sílẹ̀",
     "callTranscriptFullCall": "Ìpè pátápátá",
     "callTranscriptPreparingRecording": "Ń múra ohùn pátápátá sílẹ̀…",
-    "callTranscriptNoRecording": "Kò sí ohùn tí a kọ sílẹ̀ fún ìpè pátápátá."
+    "callTranscriptNoRecording": "Kò sí ohùn tí a kọ sílẹ̀ fún ìpè pátápátá.",
+    "callTranscriptNotSubscribed": "{name} kò ní àbáwọlé nígbà ìpè yìí, nítorí náà ohun tí a sọ kò sí ní àkọsílẹ̀.",
+    "joinYourCourse": "Darapọ mọ ikẹkọọ rẹ",
+    "courseCodeJoinExplanation": "Wọlé tàbí forúkọ sílẹ̀, a ó sì lo koodu ikẹkọọ rẹ láti fi kún ọ sí ikẹkọọ rẹ lára-ẹni.",
+    "courseCodeLabel": "Koodu ikẹkọọ",
+    "courseCodeSaved": "Koodu ikẹkọọ {code} ti wà ní ìpamọ́",
+    "courseCodeSavedExplanation": "Forúkọ sílẹ̀ tàbí wọlé, a ó sì fi kún ọ sí ikẹkọọ rẹ."
 }

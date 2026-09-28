@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "Rekodi",
     "callTranscriptFullCall": "Simu nzima",
     "callTranscriptPreparingRecording": "Tunatayarisha rekodi kamili…",
-    "callTranscriptNoRecording": "Hakuna rekodi ya simu nzima."
+    "callTranscriptNoRecording": "Hakuna rekodi ya simu nzima.",
+    "callTranscriptNotSubscribed": "{name} hakuwa na usajili wakati wa simu hii, kwa hivyo yaliyosemwa hayakuandikwa.",
+    "joinYourCourse": "Jiunge na kozi yako",
+    "courseCodeJoinExplanation": "Ingia au jisajili, na tutatumia msimbo wako wa kozi kukuongeza kwenye kozi yako kiotomatiki.",
+    "courseCodeLabel": "Msimbo wa kozi",
+    "courseCodeSaved": "Msimbo wa kozi {code} umefanikiwa kuhifadhiwa",
+    "courseCodeSavedExplanation": "Jisajili au ingia na tutakuongeza kwenye kozi yako."
 }

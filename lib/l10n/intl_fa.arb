@@ -10055,5 +10055,11 @@
     "callTranscriptRecordings": "ضبط‌ها",
     "callTranscriptFullCall": "مکالمه کامل",
     "callTranscriptPreparingRecording": "در حال آماده‌سازی ضبط کامل...",
-    "callTranscriptNoRecording": "هیچ ضبطی از مکالمه کامل وجود ندارد."
+    "callTranscriptNoRecording": "هیچ ضبطی از مکالمه کامل وجود ندارد.",
+    "callTranscriptNotSubscribed": "{name} در طول این تماس اشتراک نداشت، بنابراین آنچه گفته شد رونویسی نشد.",
+    "joinYourCourse": "به دوره خود بپیوندید",
+    "courseCodeJoinExplanation": "وارد شوید یا ثبت‌نام کنید، و ما از کد دوره شما برای افزودن خودکار شما به دوره استفاده خواهیم کرد.",
+    "courseCodeLabel": "کد دوره",
+    "courseCodeSaved": "کد دوره {code} ذخیره شد",
+    "courseCodeSavedExplanation": "ثبت‌نام کنید یا وارد شوید و ما شما را به دوره شما اضافه خواهیم کرد."
 }

@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "Жазбалар",
     "callTranscriptFullCall": "Толық қоңырау",
     "callTranscriptPreparingRecording": "Толық жазба дайындалуда…",
-    "callTranscriptNoRecording": "Толық қоңырау жазбасы жоқ."
+    "callTranscriptNoRecording": "Толық қоңырау жазбасы жоқ.",
+    "callTranscriptNotSubscribed": "{name} осы қоңырау кезінде жазылымда болмағандықтан, айтылған сөздер транскрипцияланбады.",
+    "joinYourCourse": "Курсыңызға қосылыңыз",
+    "courseCodeJoinExplanation": "Жүйеге кіріңіз немесе тіркеліңіз, сонда біз сіздің курс кодыңызды пайдаланып, сізді курсқа автоматты түрде қосамыз.",
+    "courseCodeLabel": "Курс коды",
+    "courseCodeSaved": "{code} курс коды сақталды",
+    "courseCodeSavedExplanation": "Тіркеліңіз немесе жүйеге кіріңіз, сонда біз сізді курсқа қосамыз."
 }

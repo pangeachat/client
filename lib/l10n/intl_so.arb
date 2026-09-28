@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "Duubista",
     "callTranscriptFullCall": "Wicitaan buuxa",
     "callTranscriptPreparingRecording": "Waxaan diyaarinaynaa duubista oo dhan…",
-    "callTranscriptNoRecording": "Ma jirto duubis wicitaanka oo dhan."
+    "callTranscriptNoRecording": "Ma jirto duubis wicitaanka oo dhan.",
+    "callTranscriptNotSubscribed": "{name} ma lahayn rukumo intii uu socday wicitaankan, sidaa darteed waxa la yidhi lama qorin.",
+    "joinYourCourse": "Ku biir koorsadaada",
+    "courseCodeJoinExplanation": "Soo gal ama isdiiwaangeli, waxaanan isticmaali doonaa koodhka koorsadaada si aan si toos ah kuugu darno koorsadaada.",
+    "courseCodeLabel": "Koodhka koorsada",
+    "courseCodeSaved": "Koodhka koorsada {code} waa la keydiyay",
+    "courseCodeSavedExplanation": "Isdiiwaangeli ama soo gal waxaanan kugu dari doonaa koorsadaada."
 }

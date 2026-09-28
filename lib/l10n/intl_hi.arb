@@ -10599,5 +10599,11 @@
     "callTranscriptRecordings": "रिकॉर्डिंग",
     "callTranscriptFullCall": "पूरी कॉल",
     "callTranscriptPreparingRecording": "पूरी रिकॉर्डिंग तैयार की जा रही है…",
-    "callTranscriptNoRecording": "पूरी कॉल की कोई रिकॉर्डिंग नहीं है।"
+    "callTranscriptNoRecording": "पूरी कॉल की कोई रिकॉर्डिंग नहीं है।",
+    "callTranscriptNotSubscribed": "{name} के पास इस कॉल के दौरान सदस्यता नहीं थी, इसलिए जो कहा गया उसे ट्रांसक्रिप्ट नहीं किया गया।",
+    "joinYourCourse": "अपने कोर्स में शामिल हों",
+    "courseCodeJoinExplanation": "लॉग इन करें या साइन अप करें, और हम आपको आपके कोर्स में स्वचालित रूप से जोड़ने के लिए आपके कोर्स कोड का उपयोग करेंगे।",
+    "courseCodeLabel": "कोर्स कोड",
+    "courseCodeSaved": "कोर्स कोड {code} सहेजा गया",
+    "courseCodeSavedExplanation": "साइन अप करें या लॉग इन करें और हम आपको आपके कोर्स में जोड़ देंगे।"
 }

@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "Opnamen",
     "callTranscriptFullCall": "Ganzt Gespréich",
     "callTranscriptPreparingRecording": "Déi ganz Opnam gëtt virbereet …",
-    "callTranscriptNoRecording": "Keng Opnam vum ganze Gespréich."
+    "callTranscriptNoRecording": "Keng Opnam vum ganze Gespréich.",
+    "callTranscriptNotSubscribed": "{name} hat während dësem Uruff keen Abonnement, dofir gouf dat Gesotent net transkribéiert.",
+    "joinYourCourse": "Maach bei dengem Cours mat",
+    "courseCodeJoinExplanation": "Mell dech un oder registréier dech, a mir benotzen däi Cours-Code fir dech automatesch zu dengem Cours dobäizesetzen.",
+    "courseCodeLabel": "Cours-Code",
+    "courseCodeSaved": "Cours-Code {code} gespäichert",
+    "courseCodeSavedExplanation": "Mell dech un oder registréier dech a mir setzen dech zu dengem Cours dobäi."
 }

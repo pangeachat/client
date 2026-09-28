@@ -9971,5 +9971,11 @@
     "callTranscriptRecordings": "Yozuvlar",
     "callTranscriptFullCall": "Toʻliq qoʻngʻiroq",
     "callTranscriptPreparingRecording": "Toʻliq yozuv tayyorlanmoqda...",
-    "callTranscriptNoRecording": "Toʻliq qoʻngʻiroq yozuvi yoʻq."
+    "callTranscriptNoRecording": "Toʻliq qoʻngʻiroq yozuvi yoʻq.",
+    "callTranscriptNotSubscribed": "{name} ushbu qo‘ng‘iroq paytida obunaga ega bo‘lmagan, shuning uchun aytilganlar transkripsiya qilinmadi.",
+    "joinYourCourse": "Kursga qoʻshiling",
+    "courseCodeJoinExplanation": "Tizimga kiring yoki roʻyxatdan oʻting, biz sizning kurs kodingizdan avtomatik ravishda kursingizga qoʻshish uchun foydalanamiz.",
+    "courseCodeLabel": "Kurs kodi",
+    "courseCodeSaved": "Kurs kodi {code} saqlandi",
+    "courseCodeSavedExplanation": "Roʻyxatdan oʻting yoki tizimga kiring va biz sizni kursingizga qoʻshamiz."
 }

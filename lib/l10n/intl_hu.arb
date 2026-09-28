@@ -10070,5 +10070,11 @@
     "callTranscriptRecordings": "Felvételek",
     "callTranscriptFullCall": "Teljes hívás",
     "callTranscriptPreparingRecording": "A teljes felvétel előkészítése…",
-    "callTranscriptNoRecording": "Nincs felvétel a teljes hívásról."
+    "callTranscriptNoRecording": "Nincs felvétel a teljes hívásról.",
+    "callTranscriptNotSubscribed": "{name} nem rendelkezett előfizetéssel a hívás során, így a beszélgetés nem került átírásra.",
+    "joinYourCourse": "Csatlakozás a kurzushoz",
+    "courseCodeJoinExplanation": "Jelentkezz be vagy regisztrálj, és a kurzuskódod segítségével automatikusan hozzáadunk a kurzushoz.",
+    "courseCodeLabel": "Kurzuskód",
+    "courseCodeSaved": "A(z) {code} kurzuskód elmentve",
+    "courseCodeSavedExplanation": "Regisztrálj vagy jelentkezz be, és hozzáadunk a kurzusodhoz."
 }

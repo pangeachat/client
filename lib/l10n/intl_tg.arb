@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "Сабтҳо",
     "callTranscriptFullCall": "Занги пурра",
     "callTranscriptPreparingRecording": "Сабти пурра омода карда мешавад…",
-    "callTranscriptNoRecording": "Сабти занги пурра мавҷуд нест."
+    "callTranscriptNoRecording": "Сабти занги пурра мавҷуд нест.",
+    "callTranscriptNotSubscribed": "{name} ҳангоми ин занг обуна набуд, аз ин рӯ гуфтаҳо сабт нашуданд.",
+    "joinYourCourse": "Ба курси худ ҳамроҳ шавед",
+    "courseCodeJoinExplanation": "Ворид шавед ё сабти ном кунед, ва мо рамзи курси шуморо барои ба таври худкор ба курси шумо илова кардан истифода мебарем.",
+    "courseCodeLabel": "Рамзи курс",
+    "courseCodeSaved": "Рамзи курс {code} захира шуд",
+    "courseCodeSavedExplanation": "Сабти ном кунед ё ворид шавед ва мо шуморо ба курси шумо илова мекунем."
 }

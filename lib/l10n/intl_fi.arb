@@ -10004,5 +10004,11 @@
     "callTranscriptRecordings": "Tallenteet",
     "callTranscriptFullCall": "Koko puhelu",
     "callTranscriptPreparingRecording": "Valmistelen koko tallennetta…",
-    "callTranscriptNoRecording": "Koko puhelusta ei ole tallennetta."
+    "callTranscriptNoRecording": "Koko puhelusta ei ole tallennetta.",
+    "callTranscriptNotSubscribed": "{name} ei ollut tilannut palvelua tämän puhelun aikana, joten puhetta ei litteroitu.",
+    "joinYourCourse": "Liity kurssillesi",
+    "courseCodeJoinExplanation": "Kirjaudu sisään tai rekisteröidy, niin lisäämme sinut kurssillesi automaattisesti kurssikoodisi avulla.",
+    "courseCodeLabel": "Kurssikoodi",
+    "courseCodeSaved": "Kurssikoodi {code} tallennettu",
+    "courseCodeSavedExplanation": "Rekisteröidy tai kirjaudu sisään, niin lisäämme sinut kurssillesi."
 }

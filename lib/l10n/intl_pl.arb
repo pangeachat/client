@@ -10052,5 +10052,11 @@
     "callTranscriptRecordings": "Nagrania",
     "callTranscriptFullCall": "Cała rozmowa",
     "callTranscriptPreparingRecording": "Przygotowuję pełne nagranie…",
-    "callTranscriptNoRecording": "Brak nagrania całej rozmowy."
+    "callTranscriptNoRecording": "Brak nagrania całej rozmowy.",
+    "callTranscriptNotSubscribed": "Użytkownik {name} nie miał subskrypcji podczas tej rozmowy, więc to, co zostało powiedziane, nie zostało przepisane.",
+    "joinYourCourse": "Dołącz do kursu",
+    "courseCodeJoinExplanation": "Zaloguj się lub zarejestruj, a my użyjemy Twojego kodu kursu, aby automatycznie dodać Cię do kursu.",
+    "courseCodeLabel": "Kod kursu",
+    "courseCodeSaved": "Kod kursu {code} zapisany",
+    "courseCodeSavedExplanation": "Zarejestruj się lub zaloguj, a my dodamy Cię do kursu."
 }

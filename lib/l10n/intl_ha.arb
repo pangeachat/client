@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "Rikododi",
     "callTranscriptFullCall": "Cikakken kira",
     "callTranscriptPreparingRecording": "Ana shirya cikakken rikodin…",
-    "callTranscriptNoRecording": "Babu rikodin cikakken kiran."
+    "callTranscriptNoRecording": "Babu rikodin cikakken kiran.",
+    "callTranscriptNotSubscribed": "{name} ba shi da biyan kuɗi a lokacin wannan kiran, don haka ba a rubuta abin da aka faɗa ba.",
+    "joinYourCourse": "Shiga ajinka",
+    "courseCodeJoinExplanation": "Shiga ko yi rajista, kuma za mu yi amfani da lambar ajinka don ƙara ka a ajinka kai tsaye.",
+    "courseCodeLabel": "Lambar aji",
+    "courseCodeSaved": "An adana lambar aji {code}",
+    "courseCodeSavedExplanation": "Yi rajista ko shiga kuma za mu ƙara ka a ajinka."
 }

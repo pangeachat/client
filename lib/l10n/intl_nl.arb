@@ -9967,5 +9967,11 @@
     "callTranscriptRecordings": "Opnames",
     "callTranscriptFullCall": "Volledig gesprek",
     "callTranscriptPreparingRecording": "De volledige opname wordt voorbereid…",
-    "callTranscriptNoRecording": "Geen opname van het volledige gesprek."
+    "callTranscriptNoRecording": "Geen opname van het volledige gesprek.",
+    "callTranscriptNotSubscribed": "{name} had geen abonnement tijdens dit gesprek, dus wat er werd gezegd, is niet getranscribeerd.",
+    "joinYourCourse": "Deelnemen aan je cursus",
+    "courseCodeJoinExplanation": "Log in of meld je aan, en we gebruiken je cursuscode om je automatisch aan je cursus toe te voegen.",
+    "courseCodeLabel": "Cursuscode",
+    "courseCodeSaved": "Cursuscode {code} opgeslagen",
+    "courseCodeSavedExplanation": "Meld je aan of log in en we voegen je toe aan je cursus."
 }

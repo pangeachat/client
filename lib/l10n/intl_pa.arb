@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "ਰਿਕਾਰਡਿੰਗਾਂ",
     "callTranscriptFullCall": "ਪੂਰੀ ਕਾਲ",
     "callTranscriptPreparingRecording": "ਪੂਰੀ ਰਿਕਾਰਡਿੰਗ ਤਿਆਰ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ…",
-    "callTranscriptNoRecording": "ਪੂਰੀ ਕਾਲ ਦੀ ਕੋਈ ਰਿਕਾਰਡਿੰਗ ਨਹੀਂ।"
+    "callTranscriptNoRecording": "ਪੂਰੀ ਕਾਲ ਦੀ ਕੋਈ ਰਿਕਾਰਡਿੰਗ ਨਹੀਂ।",
+    "callTranscriptNotSubscribed": "ਇਸ ਕਾਲ ਦੌਰਾਨ {name} ਕੋਲ ਕੋਈ ਗਾਹਕੀ ਨਹੀਂ ਸੀ, ਇਸ ਲਈ ਜੋ ਕਿਹਾ ਗਿਆ ਸੀ ਉਸਨੂੰ ਟ੍ਰਾਂਸਕ੍ਰਾਈਬ ਨਹੀਂ ਕੀਤਾ ਗਿਆ।",
+    "joinYourCourse": "ਆਪਣੇ ਕੋਰਸ ਵਿੱਚ ਸ਼ਾਮਲ ਹੋਵੋ",
+    "courseCodeJoinExplanation": "ਲੌਗ ਇਨ ਕਰੋ ਜਾਂ ਸਾਈਨ ਅੱਪ ਕਰੋ, ਅਤੇ ਅਸੀਂ ਤੁਹਾਨੂੰ ਤੁਹਾਡੇ ਕੋਰਸ ਵਿੱਚ ਆਪਣੇ ਆਪ ਸ਼ਾਮਲ ਕਰਨ ਲਈ ਤੁਹਾਡੇ ਕੋਰਸ ਕੋਡ ਦੀ ਵਰਤੋਂ ਕਰਾਂਗੇ।",
+    "courseCodeLabel": "ਕੋਰਸ ਕੋਡ",
+    "courseCodeSaved": "ਕੋਰਸ ਕੋਡ {code} ਸੁਰੱਖਿਅਤ ਕੀਤਾ ਗਿਆ",
+    "courseCodeSavedExplanation": "ਸਾਈਨ ਅੱਪ ਕਰੋ ਜਾਂ ਲੌਗ ਇਨ ਕਰੋ ਅਤੇ ਅਸੀਂ ਤੁਹਾਨੂੰ ਤੁਹਾਡੇ ਕੋਰਸ ਵਿੱਚ ਸ਼ਾਮਲ ਕਰਾਂਗੇ।"
 }

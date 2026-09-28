@@ -10403,5 +10403,11 @@
     "callTranscriptRecordings": "Snimke",
     "callTranscriptFullCall": "Cijeli poziv",
     "callTranscriptPreparingRecording": "Priprema se cijela snimka…",
-    "callTranscriptNoRecording": "Nema snimke cijelog poziva."
+    "callTranscriptNoRecording": "Nema snimke cijelog poziva.",
+    "callTranscriptNotSubscribed": "{name} nije imao pretplatu tijekom ovog poziva, tako da izgovoreno nije transkribirano.",
+    "joinYourCourse": "Pridružite se svom tečaju",
+    "courseCodeJoinExplanation": "Prijavite se ili registrirajte, a mi ćemo upotrijebiti vaš kod tečaja kako bismo vas automatski dodali na vaš tečaj.",
+    "courseCodeLabel": "Kod tečaja",
+    "courseCodeSaved": "Kod tečaja {code} spremljen",
+    "courseCodeSavedExplanation": "Registrirajte se ili prijavite i dodat ćemo vas na vaš tečaj."
 }

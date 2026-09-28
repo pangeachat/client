@@ -9967,5 +9967,11 @@
     "callTranscriptRecordings": "Grabazioak",
     "callTranscriptFullCall": "Dei osoa",
     "callTranscriptPreparingRecording": "Grabazio osoa prestatzen…",
-    "callTranscriptNoRecording": "Dei osoaren grabaziorik ez."
+    "callTranscriptNoRecording": "Dei osoaren grabaziorik ez.",
+    "callTranscriptNotSubscribed": "{name} erabiltzaileak ez zuen harpidetzarik dei honetan, beraz, esandakoa ez zen transkribatu.",
+    "joinYourCourse": "Sartu zure ikastaroan",
+    "courseCodeJoinExplanation": "Hasi saioa edo eman izena, eta zure ikastaro-kodea erabiliko dugu automatikoki zure ikastarora gehitzeko.",
+    "courseCodeLabel": "Ikastaro-kodea",
+    "courseCodeSaved": "{code} ikastaro-kodea gordeta",
+    "courseCodeSavedExplanation": "Eman izena edo hasi saioa eta zure ikastarora gehituko zaitugu."
 }

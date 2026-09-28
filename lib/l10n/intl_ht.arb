@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "Anrejistreman",
     "callTranscriptFullCall": "Apèl konplè",
     "callTranscriptPreparingRecording": "Ap prepare anrejistreman konplè a…",
-    "callTranscriptNoRecording": "Pa gen anrejistreman apèl konplè a."
+    "callTranscriptNoRecording": "Pa gen anrejistreman apèl konplè a.",
+    "callTranscriptNotSubscribed": "{name} pa t gen yon abònman pandan apèl sa a, kidonk sa ki te di a pa t transkri.",
+    "joinYourCourse": "Antre nan kou ou",
+    "courseCodeJoinExplanation": "Konekte oswa enskri, epi n ap itilize kòd kou ou a pou ajoute ou nan kou ou otomatikman.",
+    "courseCodeLabel": "Kòd kou",
+    "courseCodeSaved": "Kòd kou {code} anrejistre",
+    "courseCodeSavedExplanation": "Enskri oswa konekte epi n ap ajoute ou nan kou ou."
 }

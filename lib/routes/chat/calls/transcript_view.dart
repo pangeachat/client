@@ -2489,6 +2489,10 @@ String emptyHalfNote(TranscriptHalf half, String name, L10n l10n) {
     // but wrong, because nothing ever reached a reader to fail at.
     HalfIssue.microphoneRefused => l10n.callTranscriptMicrophoneRefused(name),
     HalfIssue.audioLost => l10n.callTranscriptAudioLost(name),
+
+    // Not a failure at all, so it must not read as one: transcription is paid,
+    // and the transcriber refused every chunk this speaker's device sent.
+    HalfIssue.notSubscribed => l10n.callTranscriptNotSubscribed(name),
     HalfIssue.audioDroppedAtCapture => l10n.callTranscriptAudioDropped(name),
     HalfIssue.audioHeldByAnotherDevice => l10n.callTranscriptHeldByOtherDevice(
       name,

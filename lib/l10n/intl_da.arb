@@ -10887,5 +10887,11 @@
     "callTranscriptRecordings": "Optagelser",
     "callTranscriptFullCall": "Hele opkaldet",
     "callTranscriptPreparingRecording": "Forbereder hele optagelsen…",
-    "callTranscriptNoRecording": "Ingen optagelse af hele opkaldet."
+    "callTranscriptNoRecording": "Ingen optagelse af hele opkaldet.",
+    "callTranscriptNotSubscribed": "{name} havde ikke et abonnement under dette opkald, så det, der blev sagt, blev ikke transskriberet.",
+    "joinYourCourse": "Tilmeld dig dit kursus",
+    "courseCodeJoinExplanation": "Log ind eller tilmeld dig, så bruger vi din kursuskode til automatisk at tilføje dig til dit kursus.",
+    "courseCodeLabel": "Kursuskode",
+    "courseCodeSaved": "Kursuskode {code} gemt",
+    "courseCodeSavedExplanation": "Tilmeld dig eller log ind, så tilføjer vi dig til dit kursus."
 }

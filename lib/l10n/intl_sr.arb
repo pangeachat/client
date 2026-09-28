@@ -10916,5 +10916,11 @@
     "callTranscriptRecordings": "Snimci",
     "callTranscriptFullCall": "Ceo poziv",
     "callTranscriptPreparingRecording": "Pripremam ceo snimak…",
-    "callTranscriptNoRecording": "Nema snimka celog poziva."
+    "callTranscriptNoRecording": "Nema snimka celog poziva.",
+    "callTranscriptNotSubscribed": "{name} nije imao pretplatu tokom ovog poziva, tako da izgovoreno nije transkribovano.",
+    "joinYourCourse": "Pridružite se svom kursu",
+    "courseCodeJoinExplanation": "Prijavite se ili se registrujte, a mi ćemo koristiti vaš kod kursa da vas automatski dodamo na vaš kurs.",
+    "courseCodeLabel": "Kod kursa",
+    "courseCodeSaved": "Kod kursa {code} sačuvan",
+    "courseCodeSavedExplanation": "Registrujte se ili se prijavite i mi ćemo vas dodati na vaš kurs."
 }

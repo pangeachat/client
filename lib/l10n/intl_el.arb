@@ -10842,5 +10842,11 @@
     "callTranscriptRecordings": "Ηχογραφήσεις",
     "callTranscriptFullCall": "Πλήρης κλήση",
     "callTranscriptPreparingRecording": "Προετοιμασία της πλήρους ηχογράφησης…",
-    "callTranscriptNoRecording": "Δεν υπάρχει ηχογράφηση της πλήρους κλήσης."
+    "callTranscriptNoRecording": "Δεν υπάρχει ηχογράφηση της πλήρους κλήσης.",
+    "callTranscriptNotSubscribed": "Ο/Η {name} δεν είχε συνδρομή κατά τη διάρκεια αυτής της κλήσης, οπότε όσα ειπώθηκαν δεν μεταγράφηκαν.",
+    "joinYourCourse": "Συμμετοχή στο μάθημά σας",
+    "courseCodeJoinExplanation": "Συνδεθείτε ή εγγραφείτε και θα χρησιμοποιήσουμε τον κωδικό μαθήματός σας για να σας προσθέσουμε αυτόματα στο μάθημά σας.",
+    "courseCodeLabel": "Κωδικός μαθήματος",
+    "courseCodeSaved": "Ο κωδικός μαθήματος {code} αποθηκεύτηκε",
+    "courseCodeSavedExplanation": "Εγγραφείτε ή συνδεθείτε και θα σας προσθέσουμε στο μάθημά σας."
 }

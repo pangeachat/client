@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "පටිගත කිරීම්",
     "callTranscriptFullCall": "සම්පූර්ණ ඇමතුම",
     "callTranscriptPreparingRecording": "සම්පූර්ණ පටිගත කිරීම සූදානම් කරමින්...",
-    "callTranscriptNoRecording": "සම්පූර්ණ ඇමතුමේ පටිගත කිරීමක් නොමැත."
+    "callTranscriptNoRecording": "සම්පූර්ණ ඇමතුමේ පටිගත කිරීමක් නොමැත.",
+    "callTranscriptNotSubscribed": "මෙම ඇමතුම අතරතුර {name} හට දායකත්වයක් නොතිබූ බැවින්, කතා කළ දේ පිටපත් කර නොමැත.",
+    "joinYourCourse": "ඔබේ පාඨමාලාවට සම්බන්ධ වන්න",
+    "courseCodeJoinExplanation": "ලොග් වන්න හෝ ලියාපදිංචි වන්න, එවිට ඔබගේ පාඨමාලා කේතය භාවිතයෙන් ඔබව ස්වයංක්‍රීයව පාඨමාලාවට එකතු කරනු ඇත.",
+    "courseCodeLabel": "පාඨමාලා කේතය",
+    "courseCodeSaved": "පාඨමාලා කේතය {code} සුරැකිණි",
+    "courseCodeSavedExplanation": "ලියාපදිංචි වන්න හෝ ලොග් වන්න, එවිට අපි ඔබව ඔබේ පාඨමාලාවට එකතු කරන්නෙමු."
 }

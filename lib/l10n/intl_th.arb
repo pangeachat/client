@@ -10599,5 +10599,11 @@
     "callTranscriptRecordings": "การบันทึก",
     "callTranscriptFullCall": "การโทรทั้งหมด",
     "callTranscriptPreparingRecording": "กำลังเตรียมการบันทึกทั้งหมด…",
-    "callTranscriptNoRecording": "ไม่มีการบันทึกการโทรทั้งหมด"
+    "callTranscriptNoRecording": "ไม่มีการบันทึกการโทรทั้งหมด",
+    "callTranscriptNotSubscribed": "{name} ไม่มีสิทธิ์การเป็นสมาชิกในระหว่างการโทรนี้ ดังนั้นสิ่งที่พูดจึงไม่ถูกถอดเสียง",
+    "joinYourCourse": "เข้าร่วมคอร์สของคุณ",
+    "courseCodeJoinExplanation": "เข้าสู่ระบบหรือลงทะเบียน แล้วเราจะใช้รหัสคอร์สของคุณเพื่อเพิ่มคุณเข้าสู่คอร์สโดยอัตโนมัติ",
+    "courseCodeLabel": "รหัสคอร์ส",
+    "courseCodeSaved": "บันทึกรหัสคอร์ส {code} แล้ว",
+    "courseCodeSavedExplanation": "ลงทะเบียนหรือเข้าสู่ระบบ แล้วเราจะเพิ่มคุณเข้าสู่คอร์ส"
 }

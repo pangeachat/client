@@ -10939,5 +10939,11 @@
     "callTranscriptRecordings": "Записи",
     "callTranscriptFullCall": "Весь звонок",
     "callTranscriptPreparingRecording": "Подготовка полной записи…",
-    "callTranscriptNoRecording": "Нет записи всего звонка."
+    "callTranscriptNoRecording": "Нет записи всего звонка.",
+    "callTranscriptNotSubscribed": "У {name} не было подписки во время этого звонка, поэтому сказанное не было расшифровано.",
+    "joinYourCourse": "Присоединиться к курсу",
+    "courseCodeJoinExplanation": "Войдите или зарегистрируйтесь, и мы автоматически добавим вас к вашему курсу, используя ваш код курса.",
+    "courseCodeLabel": "Код курса",
+    "courseCodeSaved": "Код курса {code} сохранен",
+    "courseCodeSavedExplanation": "Зарегистрируйтесь или войдите, и мы добавим вас к вашему курсу."
 }

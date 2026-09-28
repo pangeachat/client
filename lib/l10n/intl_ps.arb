@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "ریکارډونه",
     "callTranscriptFullCall": "بشپړ زنګ",
     "callTranscriptPreparingRecording": "د بشپړ ریکارډ چمتو کول…",
-    "callTranscriptNoRecording": "د بشپړ زنګ هیڅ ریکارډ نشته."
+    "callTranscriptNoRecording": "د بشپړ زنګ هیڅ ریکارډ نشته.",
+    "callTranscriptNotSubscribed": "{name} د دې زنګ پر مهال ګډون نه درلود، نو هغه څه چې ویل شوي وو نه دي لیکل شوي.",
+    "joinYourCourse": "خپل کورس سره یوځای شئ",
+    "courseCodeJoinExplanation": "ننوتل یا نوم لیکنه وکړئ، او موږ به ستاسو د کورس کوډ وکاروو ترڅو تاسو په اتوماتيک ډول ستاسو کورس ته اضافه کړو.",
+    "courseCodeLabel": "د کورس کوډ",
+    "courseCodeSaved": "د کورس کوډ {code} خوندي شو",
+    "courseCodeSavedExplanation": "نوم لیکنه وکړئ یا ننوتل او موږ به تاسو خپل کورس ته اضافه کړو."
 }

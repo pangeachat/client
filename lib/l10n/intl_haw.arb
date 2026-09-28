@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "Nā hoʻopaʻa leo ʻana",
     "callTranscriptFullCall": "Kāhea piha",
     "callTranscriptPreparingRecording": "Ke hoʻomākaukau ʻia nei ka hoʻopaʻa leo piha…",
-    "callTranscriptNoRecording": "ʻAʻohe hoʻopaʻa leo o ke kāhea piha."
+    "callTranscriptNoRecording": "ʻAʻohe hoʻopaʻa leo o ke kāhea piha.",
+    "callTranscriptNotSubscribed": "ʻAʻohe kau inoa o {name} i ka wā o kēia kelepona ʻana, no laila, ʻaʻole i kākau ʻia ka mea i ʻōlelo ʻia.",
+    "joinYourCourse": "E hui pū me kāu papa",
+    "courseCodeJoinExplanation": "E ʻeʻe a i ʻole e kau inoa, a e hoʻohana mākou i kāu code papa e hoʻohui aunoa iā ʻoe i kāu papa.",
+    "courseCodeLabel": "Code papa",
+    "courseCodeSaved": "Ua mālama ʻia ke code papa {code}",
+    "courseCodeSavedExplanation": "E kau inoa a i ʻole e ʻeʻe a e hoʻohui mākou iā ʻoe i kāu papa."
 }

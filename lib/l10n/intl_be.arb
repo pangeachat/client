@@ -9981,5 +9981,11 @@
     "callTranscriptRecordings": "Запісы",
     "callTranscriptFullCall": "Поўны званок",
     "callTranscriptPreparingRecording": "Падрыхтоўка поўнага запісу…",
-    "callTranscriptNoRecording": "Няма запісу поўнага званка."
+    "callTranscriptNoRecording": "Няма запісу поўнага званка.",
+    "callTranscriptNotSubscribed": "У {name} не было падпіскі падчас гэтага званка, таму сказанае не было расшыфравана.",
+    "joinYourCourse": "Далучайцеся да свайго курса",
+    "courseCodeJoinExplanation": "Увайдзіце або зарэгіструйцеся, і мы выкарыстаем ваш код курса, каб аўтаматычна дадаць вас да яго.",
+    "courseCodeLabel": "Код курса",
+    "courseCodeSaved": "Код курса {code} захаваны",
+    "courseCodeSavedExplanation": "Зарэгіструйцеся або ўвайдзіце, і мы дададзім вас да вашага курса."
 }

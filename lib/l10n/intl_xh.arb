@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "Okurekhodiweyo",
     "callTranscriptFullCall": "Umfowunelwano opheleleyo",
     "callTranscriptPreparingRecording": "Kulungiselelwa okurekhodiweyo okupheleleyo…",
-    "callTranscriptNoRecording": "Akukho kurekhodwa komfowunelwano opheleleyo."
+    "callTranscriptNoRecording": "Akukho kurekhodwa komfowunelwano opheleleyo.",
+    "callTranscriptNotSubscribed": "U-{name} ebengekafaki isicelo ngexesha lale fowuni, ngoko ke oko kuthethweyo akubhalwanga.",
+    "joinYourCourse": "Joyina ikhosi yakho",
+    "courseCodeJoinExplanation": "Ngena okanye ubhalise, kwaye siza kusebenzisa ikhowudi yekhosi yakho ukukongeza kwikhosi yakho ngokuzenzekelayo.",
+    "courseCodeLabel": "Ikhowudi yekhosi",
+    "courseCodeSaved": "Ikhowudi yekhosi {code} igciniwe",
+    "courseCodeSavedExplanation": "Bhalisa okanye ungene kwaye siza kukongeza kwikhosi yakho."
 }

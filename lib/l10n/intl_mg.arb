@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "Firaketana",
     "callTranscriptFullCall": "Antso feno",
     "callTranscriptPreparingRecording": "Manomana ny firaketana feno…",
-    "callTranscriptNoRecording": "Tsy misy firaketana ny antso feno."
+    "callTranscriptNoRecording": "Tsy misy firaketana ny antso feno.",
+    "callTranscriptNotSubscribed": "Tsy nanana famandrihana i {name} nandritra ity antso ity, ka tsy voasoratra izay voalaza.",
+    "joinYourCourse": "Midira ao amin'ny taranjao",
+    "courseCodeJoinExplanation": "Midira na misoratra anarana, ary hampiasainay ny kaody taranjao mba hanampiana anao ho azy ao amin'ny taranjao.",
+    "courseCodeLabel": "Kaody taranja",
+    "courseCodeSaved": "Kaody taranja {code} voatahiry",
+    "courseCodeSavedExplanation": "Misoratra anarana na midira ary hanampy anao amin'ny taranjao izahay."
 }

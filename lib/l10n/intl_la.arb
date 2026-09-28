@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "Memoriae",
     "callTranscriptFullCall": "Totum colloquium",
     "callTranscriptPreparingRecording": "Paratur tota memoria…",
-    "callTranscriptNoRecording": "Nulla memoria totius colloquii."
+    "callTranscriptNoRecording": "Nulla memoria totius colloquii.",
+    "callTranscriptNotSubscribed": "{name} non habuit subscriptionem per hunc sermonem, ergo quod dictum est non est transcriptum.",
+    "joinYourCourse": "Coniunge cursum tuum",
+    "courseCodeJoinExplanation": "Coniunge te vel subsigna, et codice tuo utemur ut te ad cursum tuum sponte addamus.",
+    "courseCodeLabel": "Codex cursus",
+    "courseCodeSaved": "Codex cursus {code} servatus",
+    "courseCodeSavedExplanation": "Subsigna vel coniunge te et te ad cursum tuum addemus."
 }

@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "Ngā rekoata",
     "callTranscriptFullCall": "Waea katoa",
     "callTranscriptPreparingRecording": "Kei te whakarite i te rekoata katoa…",
-    "callTranscriptNoRecording": "Kāore he rekoata o te waea katoa."
+    "callTranscriptNoRecording": "Kāore he rekoata o te waea katoa.",
+    "callTranscriptNotSubscribed": "Kāore he ohaurunga a {name} i tēnei waea, nō reira kāore i tuhia ngā kōrero.",
+    "joinYourCourse": "Hono atu ki tō akoranga",
+    "courseCodeJoinExplanation": "Takiuru, rēhita rānei, ā, mā tō waehere akoranga koe e tāpiri aunoa ki tō akoranga.",
+    "courseCodeLabel": "Waehere akoranga",
+    "courseCodeSaved": "Kua tiakina te waehere akoranga {code}",
+    "courseCodeSavedExplanation": "Rēhita, takiuru rānei, ā, mā mātou koe e tāpiri ki tō akoranga."
 }

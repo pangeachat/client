@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "Direkoto",
     "callTranscriptFullCall": "Puisano e felletseng",
     "callTranscriptPreparingRecording": "Ho lokisoa rekoto e felletseng…",
-    "callTranscriptNoRecording": "Ha ho rekoto ea puisano e felletseng."
+    "callTranscriptNoRecording": "Ha ho rekoto ea puisano e felletseng.",
+    "callTranscriptNotSubscribed": "{name} o ne a se na peeletso nakong ya mohala ona, kahoo se ileng sa buuwa ha sea ka sa ngolwa.",
+    "joinYourCourse": "Kena thupelong ea hau",
+    "courseCodeJoinExplanation": "Kena kapa ingolise, 'me re tla sebelisa khoutu ea thupelo ea hau ho u kenya thupelong ea hau ka bo eona.",
+    "courseCodeLabel": "Khoutu ea thupelo",
+    "courseCodeSaved": "Khoutu ea thupelo {code} e bolokiloe",
+    "courseCodeSavedExplanation": "Ingolise kapa u kene 'me re tla u kenya thupelong ea hau."
 }

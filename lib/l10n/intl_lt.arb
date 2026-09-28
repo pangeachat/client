@@ -10748,5 +10748,11 @@
     "callTranscriptRecordings": "Įrašai",
     "callTranscriptFullCall": "Visas pokalbis",
     "callTranscriptPreparingRecording": "Ruošiamas visas įrašas…",
-    "callTranscriptNoRecording": "Nėra viso pokalbio įrašo."
+    "callTranscriptNoRecording": "Nėra viso pokalbio įrašo.",
+    "callTranscriptNotSubscribed": "{name} neturėjo prenumeratos šio skambučio metu, todėl tai, kas buvo pasakyta, nebuvo transkribuota.",
+    "joinYourCourse": "Prisijunkite prie savo kurso",
+    "courseCodeJoinExplanation": "Prisijunkite arba užsiregistruokite, ir mes naudosime jūsų kurso kodą, kad automatiškai jus pridėtume prie jūsų kurso.",
+    "courseCodeLabel": "Kurso kodas",
+    "courseCodeSaved": "Kurso kodas {code} išsaugotas",
+    "courseCodeSavedExplanation": "Užsiregistruokite arba prisijunkite ir mes jus pridėsime prie jūsų kurso."
 }

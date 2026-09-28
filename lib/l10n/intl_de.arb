@@ -9954,5 +9954,11 @@
     "callTranscriptRecordings": "Aufnahmen",
     "callTranscriptFullCall": "Ganzer Anruf",
     "callTranscriptPreparingRecording": "Die vollständige Aufnahme wird vorbereitet…",
-    "callTranscriptNoRecording": "Keine Aufnahme des gesamten Anrufs vorhanden."
+    "callTranscriptNoRecording": "Keine Aufnahme des gesamten Anrufs vorhanden.",
+    "callTranscriptNotSubscribed": "{name} hatte während dieses Anrufs kein Abonnement, daher wurde das Gesagte nicht transkribiert.",
+    "joinYourCourse": "Treten Sie Ihrem Kurs bei",
+    "courseCodeJoinExplanation": "Melden Sie sich an oder registrieren Sie sich, und wir verwenden Ihren Kurscode, um Sie automatisch zu Ihrem Kurs hinzuzufügen.",
+    "courseCodeLabel": "Kurscode",
+    "courseCodeSaved": "Kurscode {code} gespeichert",
+    "courseCodeSavedExplanation": "Registrieren Sie sich oder melden Sie sich an, und wir fügen Sie Ihrem Kurs hinzu."
 }

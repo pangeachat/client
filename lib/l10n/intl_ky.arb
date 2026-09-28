@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "Жазуулар",
     "callTranscriptFullCall": "Толук чалуу",
     "callTranscriptPreparingRecording": "Толук жазуу даярдалууда…",
-    "callTranscriptNoRecording": "Толук чалуунун жазуусу жок."
+    "callTranscriptNoRecording": "Толук чалуунун жазуусу жок.",
+    "callTranscriptNotSubscribed": "{name} бул чалуу учурунда жазылуусу жок болгондуктан, айтылгандар транскрипцияланган жок.",
+    "joinYourCourse": "Курсуңузга кошулуңуз",
+    "courseCodeJoinExplanation": "Кириңиз же катталыңыз, биз сиздин курс кодуңузду колдонуп, сизди курсуңузга автоматтык түрдө кошо алабыз.",
+    "courseCodeLabel": "Курс коду",
+    "courseCodeSaved": "{code} курс коду сакталды",
+    "courseCodeSavedExplanation": "Катталыңыз же кириңиз, биз сизди курсуңузга кошо алабыз."
 }

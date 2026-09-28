@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "Rékaman",
     "callTranscriptFullCall": "Telepon lengkep",
     "callTranscriptPreparingRecording": "Nyiapkeun rékaman lengkep…",
-    "callTranscriptNoRecording": "Teu aya rékaman telepon lengkep."
+    "callTranscriptNoRecording": "Teu aya rékaman telepon lengkep.",
+    "callTranscriptNotSubscribed": "{name} teu gaduh langganan nalika nelepon ieu, janten naon anu diucapkeun henteu ditranskripsi.",
+    "joinYourCourse": "Gabung kana kursus anjeun",
+    "courseCodeJoinExplanation": "Asup atawa daptar, sarta kami baris ngagunakeun kode kursus anjeun pikeun nambahkeun anjeun kana kursus anjeun sacara otomatis.",
+    "courseCodeLabel": "Kode kursus",
+    "courseCodeSaved": "Kode kursus {code} disimpen",
+    "courseCodeSavedExplanation": "Daptar atawa asup sarta kami baris nambahkeun anjeun kana kursus anjeun."
 }

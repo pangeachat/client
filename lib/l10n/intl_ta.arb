@@ -10059,5 +10059,11 @@
     "callTranscriptRecordings": "பதிவுகள்",
     "callTranscriptFullCall": "முழு அழைப்பு",
     "callTranscriptPreparingRecording": "முழு பதிவும் தயாராகிறது…",
-    "callTranscriptNoRecording": "முழு அழைப்பிலும் பதிவு இல்லை."
+    "callTranscriptNoRecording": "முழு அழைப்பிலும் பதிவு இல்லை.",
+    "callTranscriptNotSubscribed": "{name} இந்த அழைப்பின் போது சந்தா வைத்திருக்கவில்லை, எனவே பேசியது படியெடுக்கப்படவில்லை.",
+    "joinYourCourse": "உங்கள் பாடத்திட்டத்தில் சேரவும்",
+    "courseCodeJoinExplanation": "உள்நுழையவும் அல்லது பதிவு செய்யவும், உங்கள் பாடத்திட்டக் குறியீட்டைப் பயன்படுத்தி உங்களை தானாகவே உங்கள் பாடத்திட்டத்தில் சேர்ப்போம்.",
+    "courseCodeLabel": "பாடத்திட்டக் குறியீடு",
+    "courseCodeSaved": "பாடத்திட்டக் குறியீடு {code} சேமிக்கப்பட்டது",
+    "courseCodeSavedExplanation": "பதிவு செய்யவும் அல்லது உள்நுழையவும், உங்களை உங்கள் பாடத்திட்டத்தில் சேர்ப்போம்."
 }

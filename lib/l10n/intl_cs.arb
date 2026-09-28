@@ -10461,5 +10461,11 @@
     "callTranscriptRecordings": "Nahrávky",
     "callTranscriptFullCall": "Celý hovor",
     "callTranscriptPreparingRecording": "Připravuji celou nahrávku…",
-    "callTranscriptNoRecording": "Žádná nahrávka celého hovoru."
+    "callTranscriptNoRecording": "Žádná nahrávka celého hovoru.",
+    "callTranscriptNotSubscribed": "{name} neměl/a během tohoto hovoru předplatné, takže to, co bylo řečeno, nebylo přepsáno.",
+    "joinYourCourse": "Připojte se ke svému kurzu",
+    "courseCodeJoinExplanation": "Přihlaste se nebo se zaregistrujte a my použijeme váš kód kurzu k automatickému přidání do kurzu.",
+    "courseCodeLabel": "Kód kurzu",
+    "courseCodeSaved": "Kód kurzu {code} uložen",
+    "courseCodeSavedExplanation": "Zaregistrujte se nebo se přihlaste a my vás přidáme do vašeho kurzu."
 }

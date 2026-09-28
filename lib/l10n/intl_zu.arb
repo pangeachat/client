@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "Okurekhodiwe",
     "callTranscriptFullCall": "Ucingo lonke",
     "callTranscriptPreparingRecording": "Kulungiselelwa okurekhodiwe okuphelele…",
-    "callTranscriptNoRecording": "Akukho okurekhodiwe kocingo lonke."
+    "callTranscriptNoRecording": "Akukho okurekhodiwe kocingo lonke.",
+    "callTranscriptNotSubscribed": "{name} ubengabhalisile ngesikhathi socingo, ngakho-ke lokho okwashiwo akuzange kubhalwe.",
+    "joinYourCourse": "Joyina ikhosi lakho",
+    "courseCodeJoinExplanation": "Ngena noma bhalisa, futhi sizosebenzisa ikhodi yekhosi lakho ukukufaka ngokuzenzakalelayo ekosini lakho.",
+    "courseCodeLabel": "Ikhodi yekhosi",
+    "courseCodeSaved": "Ikhodi yekhosi {code} ilondoloziwe",
+    "courseCodeSavedExplanation": "Bhalisa noma ungene futhi sizokufaka ekosini lakho."
 }

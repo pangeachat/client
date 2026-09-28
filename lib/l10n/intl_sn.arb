@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "Zvinyorwa",
     "callTranscriptFullCall": "Kufona kwese",
     "callTranscriptPreparingRecording": "Kugadzirira kunyora kwese…",
-    "callTranscriptNoRecording": "Hapana chinyorwa chekufona kwese."
+    "callTranscriptNoRecording": "Hapana chinyorwa chekufona kwese.",
+    "callTranscriptNotSubscribed": "{name} anga asina kunyoresa panguva yekufona uku, saka zvakataurwa hazvina kunyorwa.",
+    "joinYourCourse": "Joinha kosi yako",
+    "courseCodeJoinExplanation": "Pinda kana kusaina, uye tichashandisa kodhi yekosi yako kuti tikuwedzere kukosi yako otomatiki.",
+    "courseCodeLabel": "Kodhi yekosi",
+    "courseCodeSaved": "Kodhi yekosi {code} yachengetwa",
+    "courseCodeSavedExplanation": "Saina kana kupinda uye tichakuwedzera kukosi yako."
 }

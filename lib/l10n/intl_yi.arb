@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "רעקאָרדירונגען",
     "callTranscriptFullCall": "גאַנצער רוף",
     "callTranscriptPreparingRecording": "גרייט צו די גאַנצע רעקאָרדירונג…",
-    "callTranscriptNoRecording": "קיין רעקאָרדירונג פֿונעם גאַנצן רוף נישט פֿאַראַן."
+    "callTranscriptNoRecording": "קיין רעקאָרדירונג פֿונעם גאַנצן רוף נישט פֿאַראַן.",
+    "callTranscriptNotSubscribed": "{name} האט נישט געהאט קיין סובסקריפּציע בעת דעם רוף, אַזוי וואָס איז געזאָגט געוואָרן איז נישט טראַנסקריבירט געוואָרן.",
+    "joinYourCourse": "באַהעפֿט זיך צו דיין קורס",
+    "courseCodeJoinExplanation": "לייגט זיך איין אָדער שרייבט זיך איין, און מיר וועלן ניצן אייער קורס קאָד צו אייך אויטאָמאַטיש צולייגן צו אייער קורס.",
+    "courseCodeLabel": "קורס קאָד",
+    "courseCodeSaved": "קורס קאָד {code} איז געהיט געוואָרן",
+    "courseCodeSavedExplanation": "שרייבט זיך איין אָדער לייגט זיך איין און מיר וועלן אייך צולייגן צו אייער קורס."
 }

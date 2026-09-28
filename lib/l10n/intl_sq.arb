@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "Regjistrimet",
     "callTranscriptFullCall": "Telefonata e plotë",
     "callTranscriptPreparingRecording": "Po përgatitet regjistrimi i plotë…",
-    "callTranscriptNoRecording": "Nuk ka regjistrim të telefonatës së plotë."
+    "callTranscriptNoRecording": "Nuk ka regjistrim të telefonatës së plotë.",
+    "callTranscriptNotSubscribed": "{name} nuk kishte një abonim gjatë kësaj thirrjeje, kështu që ajo që u tha nuk u transkriptua.",
+    "joinYourCourse": "Bashkohuni kursit tuaj",
+    "courseCodeJoinExplanation": "Identifikohuni ose regjistrohuni, dhe ne do të përdorim kodin tuaj të kursit për t'ju shtuar automatikisht në kursin tuaj.",
+    "courseCodeLabel": "Kodi i kursit",
+    "courseCodeSaved": "Kodi i kursit {code} u ruajt",
+    "courseCodeSavedExplanation": "Regjistrohuni ose identifikohuni dhe ne do t'ju shtojmë në kursin tuaj."
 }

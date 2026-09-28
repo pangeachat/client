@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "ການບັນທຶກສຽງ",
     "callTranscriptFullCall": "ການໂທເຕັມຮູບແບບ",
     "callTranscriptPreparingRecording": "ກຳລັງກະກຽມການບັນທຶກສຽງເຕັມຮູບແບບ…",
-    "callTranscriptNoRecording": "ບໍ່ມີການບັນທຶກສຽງການໂທເຕັມຮູບແບບ."
+    "callTranscriptNoRecording": "ບໍ່ມີການບັນທຶກສຽງການໂທເຕັມຮູບແບບ.",
+    "callTranscriptNotSubscribed": "{name} ບໍ່ໄດ້ສະໝັກໃຊ້ບໍລິການໃນລະຫວ່າງການໂທນີ້, ສະນັ້ນສິ່ງທີ່ເວົ້າຈຶ່ງບໍ່ໄດ້ຖືກຖອດຂໍ້ຄວາມ.",
+    "joinYourCourse": "ເຂົ້າຮ່ວມຫຼັກສູດຂອງທ່ານ",
+    "courseCodeJoinExplanation": "ເຂົ້າສູ່ລະບົບ ຫຼື ລົງທະບຽນ, ແລະພວກເຮົາຈະໃຊ້ລະຫັດຫຼັກສູດຂອງທ່ານເພື່ອເພີ່ມທ່ານເຂົ້າໃນຫຼັກສູດຂອງທ່ານໂດຍອັດຕະໂນມັດ.",
+    "courseCodeLabel": "ລະຫັດຫຼັກສູດ",
+    "courseCodeSaved": "ລະຫັດຫຼັກສູດ {code} ຖືກບັນທຶກແລ້ວ",
+    "courseCodeSavedExplanation": "ລົງທະບຽນ ຫຼື ເຂົ້າສູ່ລະບົບ ແລະພວກເຮົາຈະເພີ່ມທ່ານເຂົ້າໃນຫຼັກສູດຂອງທ່ານ."
 }

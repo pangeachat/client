@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "خاتىرىلەر",
     "callTranscriptFullCall": "تولۇق تېلېفون",
     "callTranscriptPreparingRecording": "تولۇق خاتىرىنى تەييارلاۋاتىدۇ…",
-    "callTranscriptNoRecording": "تولۇق تېلېفوننىڭ خاتىرىسى يوق."
+    "callTranscriptNoRecording": "تولۇق تېلېفوننىڭ خاتىرىسى يوق.",
+    "callTranscriptNotSubscribed": "{name}نىڭ بۇ تېلېفون سۆھبىتى جەريانىدا مۇشتەرىلىكى يوق ئىدى، شۇڭا سۆزلەنگەنلەر خاتىرىلەنمىدى.",
+    "joinYourCourse": "كۇرسىڭىزغا قاتناشقان",
+    "courseCodeJoinExplanation": "كىرىڭ ياكى تىزىملىتىڭ، بىز سىزنىڭ كۇرس كودىڭىزنى ئىشلىتىپ سىزنى ئاپتوماتىك ھالدا كۇرسىڭىزغا قوشىمىز.",
+    "courseCodeLabel": "كۇرس كودى",
+    "courseCodeSaved": "كۇرس كودى {code} ساقلاندى",
+    "courseCodeSavedExplanation": "تىزىملىتىڭ ياكى كىرىڭ، بىز سىزنى كۇرسىڭىزغا قوشىمىز."
 }

@@ -10094,5 +10094,11 @@
     "callTranscriptRecordings": "Enregistraments",
     "callTranscriptFullCall": "Trucada completa",
     "callTranscriptPreparingRecording": "S'està preparant l'enregistrament complet…",
-    "callTranscriptNoRecording": "No hi ha enregistrament de la trucada completa."
+    "callTranscriptNoRecording": "No hi ha enregistrament de la trucada completa.",
+    "callTranscriptNotSubscribed": "{name} no tenia una subscripció durant aquesta trucada, així que el que es va dir no es va transcriure.",
+    "joinYourCourse": "Uneix-te al teu curs",
+    "courseCodeJoinExplanation": "Inicia sessió o registra't, i utilitzarem el teu codi de curs per afegir-te al teu curs automàticament.",
+    "courseCodeLabel": "Codi de curs",
+    "courseCodeSaved": "Codi de curs {code} desat",
+    "courseCodeSavedExplanation": "Registra't o inicia sessió i t'afegirem al teu curs."
 }

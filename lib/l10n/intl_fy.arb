@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "Opnamen",
     "callTranscriptFullCall": "Folsleine oprop",
     "callTranscriptPreparingRecording": "De folsleine opname wurdt taret…",
-    "callTranscriptNoRecording": "Gjin opname fan de folsleine oprop."
+    "callTranscriptNoRecording": "Gjin opname fan de folsleine oprop.",
+    "callTranscriptNotSubscribed": "{name} hie gjin abonnemint tidens dit petear, dus wat sein waard is net transkribearre.",
+    "joinYourCourse": "Doch mei oan dyn kursus",
+    "courseCodeJoinExplanation": "Meld dy oan of registrearje dy, en wy sille dyn kursuskoade brûke om dy automatysk oan dyn kursus ta te foegjen.",
+    "courseCodeLabel": "Kursuskoade",
+    "courseCodeSaved": "Kursuskoade {code} bewarre",
+    "courseCodeSavedExplanation": "Meld dy oan of registrearje dy en wy sille dy tafoegje oan dyn kursus."
 }

@@ -10917,5 +10917,11 @@
     "callTranscriptRecordings": "రికార్డింగ్‌లు",
     "callTranscriptFullCall": "పూర్తి కాల్",
     "callTranscriptPreparingRecording": "పూర్తి రికార్డింగ్‌ను సిద్ధం చేస్తున్నారు…",
-    "callTranscriptNoRecording": "పూర్తి కాల్ రికార్డింగ్ లేదు."
+    "callTranscriptNoRecording": "పూర్తి కాల్ రికార్డింగ్ లేదు.",
+    "callTranscriptNotSubscribed": "ఈ కాల్ సమయంలో {name}కు సభ్యత్వం లేనందున, చెప్పినవి ట్రాన్స్‌క్రైబ్ చేయబడలేదు.",
+    "joinYourCourse": "మీ కోర్సులో చేరండి",
+    "courseCodeJoinExplanation": "లాగిన్ అవ్వండి లేదా సైన్ అప్ చేయండి, మరియు మీ కోర్సు కోడ్‌ని ఉపయోగించి మిమ్మల్ని మీ కోర్సులో ఆటోమేటిక్‌గా చేరుస్తాము.",
+    "courseCodeLabel": "కోర్సు కోడ్",
+    "courseCodeSaved": "కోర్సు కోడ్ {code} సేవ్ చేయబడింది",
+    "courseCodeSavedExplanation": "సైన్ అప్ చేయండి లేదా లాగిన్ అవ్వండి మరియు మిమ్మల్ని మీ కోర్సులో చేరుస్తాము."
 }

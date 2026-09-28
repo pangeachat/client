@@ -10736,5 +10736,11 @@
     "callTranscriptRecordings": "録音",
     "callTranscriptFullCall": "通話全体",
     "callTranscriptPreparingRecording": "通話全体の録音を準備中です…",
-    "callTranscriptNoRecording": "通話全体の録音はありません。"
+    "callTranscriptNoRecording": "通話全体の録音はありません。",
+    "callTranscriptNotSubscribed": "{name}は通話中にサブスクリプションに登録していなかったため、会話は書き起こされませんでした。",
+    "joinYourCourse": "コースに参加",
+    "courseCodeJoinExplanation": "ログインまたはサインアップすると、コースコードを使用してコースに自動的に追加されます。",
+    "courseCodeLabel": "コースコード",
+    "courseCodeSaved": "コースコード {code} が保存されました",
+    "courseCodeSavedExplanation": "サインアップまたはログインすると、コースに追加されます。"
 }

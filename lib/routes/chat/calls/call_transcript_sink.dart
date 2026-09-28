@@ -4,6 +4,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/analytics/construct_use_type_enum.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
+import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
 import 'package:fluffychat/routes/chat/calls/call_upload_gate.dart';
 import 'package:fluffychat/routes/chat/calls/pcm_chunker.dart';
@@ -180,6 +181,7 @@ class CallTranscriptSink implements CallAudioSink {
     if (!_transcribed.add(chunk.index)) return Future.value();
     // A retry of a previously failed chunk is no longer a loss.
     _failed.remove(chunk.index);
+    _refusedUnsubscribed.remove(chunk.index);
 
     // A block, not an arrow. Removing from the map RETURNS the future being
     // removed, and whenComplete waits for a future its callback returns — so
@@ -315,6 +317,7 @@ class CallTranscriptSink implements CallAudioSink {
       // is speech this device captured and lost, and the half it belongs to has
       // to say so rather than present the rest as the whole.
       _failed.add(chunk.index);
+      if (e is UnsubscribedException) _refusedUnsubscribed.add(chunk.index);
       Logs().w('Could not transcribe call chunk ${chunk.index}', e, s);
       rethrow;
     }
@@ -408,6 +411,15 @@ class CallTranscriptSink implements CallAudioSink {
 
   /// Chunks whose transcription failed outright and was never retried.
   final Set<int> _failed = {};
+
+  /// The share of [chunksLost] the transcriber refused because this account
+  /// has no subscription.
+  ///
+  /// Counted INSIDE [chunksLost], never beside it: a reader older than this
+  /// count still has to see a gap, and a chunk counted as neither lost nor
+  /// transcribed reads to it as silence.
+  int get chunksRefusedUnsubscribed => _refusedUnsubscribed.length;
+  final Set<int> _refusedUnsubscribed = {};
 
   /// Chunks this device captured, examined, and found to hold no speech.
   ///

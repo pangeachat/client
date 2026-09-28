@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "Zojambulidwa",
     "callTranscriptFullCall": "Kuyimba konse",
     "callTranscriptPreparingRecording": "Tikukonza zojambulidwa zonse…",
-    "callTranscriptNoRecording": "Palibe chojambulidwa cha kuyimba konse."
+    "callTranscriptNoRecording": "Palibe chojambulidwa cha kuyimba konse.",
+    "callTranscriptNotSubscribed": "{name} analibe chiphaso panthawi yoyimbira iyi, choncho zomwe zinanenedwa sizinajambulidwe.",
+    "joinYourCourse": "Lowani mu kosi yanu",
+    "courseCodeJoinExplanation": "Lowani kapena lembetsani, ndipo tidzagwiritsa ntchito nambala yanu ya kosi kuti tikulowetseni mu kosi yanu zokha.",
+    "courseCodeLabel": "Nambala ya kosi",
+    "courseCodeSaved": "Nambala ya kosi {code} yasungidwa",
+    "courseCodeSavedExplanation": "Lembetsani kapena lowani ndipo tidzakulowetsani mu kosi yanu."
 }

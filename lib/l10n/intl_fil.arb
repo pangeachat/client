@@ -10827,5 +10827,11 @@
     "callTranscriptRecordings": "Mga Recording",
     "callTranscriptFullCall": "Buong tawag",
     "callTranscriptPreparingRecording": "Inihahanda ang buong recording...",
-    "callTranscriptNoRecording": "Walang recording ng buong tawag."
+    "callTranscriptNoRecording": "Walang recording ng buong tawag.",
+    "callTranscriptNotSubscribed": "Walang subscription si {name} noong tawag na ito, kaya hindi na-transcribe ang sinabi.",
+    "joinYourCourse": "Sumali sa iyong kurso",
+    "courseCodeJoinExplanation": "Mag-log in o mag-sign up, at gagamitin namin ang iyong course code para awtomatiko kang maidagdag sa iyong kurso.",
+    "courseCodeLabel": "Course code",
+    "courseCodeSaved": "Na-save ang course code na {code}",
+    "courseCodeSavedExplanation": "Mag-sign up o mag-log in at idadagdag ka namin sa iyong kurso."
 }

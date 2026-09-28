@@ -10867,5 +10867,11 @@
     "callTranscriptRecordings": "ჩანაწერები",
     "callTranscriptFullCall": "მთლიანი ზარი",
     "callTranscriptPreparingRecording": "მთლიანი ჩანაწერის მომზადება…",
-    "callTranscriptNoRecording": "მთლიანი ზარის ჩანაწერი არ არის."
+    "callTranscriptNoRecording": "მთლიანი ზარის ჩანაწერი არ არის.",
+    "callTranscriptNotSubscribed": "{name}-ს ამ ზარის განმავლობაში არ ჰქონდა გამოწერა, ამიტომ ნათქვამი არ ჩაიწერა.",
+    "joinYourCourse": "შეუერთდი შენს კურსს",
+    "courseCodeJoinExplanation": "შედი ან დარეგისტრირდი და ჩვენ გამოვიყენებთ შენს კურსის კოდს, რათა ავტომატურად დაგამატოთ კურსზე.",
+    "courseCodeLabel": "კურსის კოდი",
+    "courseCodeSaved": "კურსის კოდი {code} შენახულია",
+    "courseCodeSavedExplanation": "დარეგისტრირდი ან შედით სისტემაში და ჩვენ დაგამატებთ თქვენს კურსზე."
 }

@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "Səsyazmalar",
     "callTranscriptFullCall": "Bütün zəng",
     "callTranscriptPreparingRecording": "Tam səsyazma hazırlanır…",
-    "callTranscriptNoRecording": "Tam zəngin səsyazması yoxdur."
+    "callTranscriptNoRecording": "Tam zəngin səsyazması yoxdur.",
+    "callTranscriptNotSubscribed": "{name} bu zəng zamanı abunəçi olmadığı üçün deyilənlər transkripsiya edilmədi.",
+    "joinYourCourse": "Kursunuza qoşulun",
+    "courseCodeJoinExplanation": "Daxil olun və ya qeydiyyatdan keçin, biz sizi kurs kodunuzdan istifadə edərək avtomatik olaraq kursunuza əlavə edəcəyik.",
+    "courseCodeLabel": "Kurs kodu",
+    "courseCodeSaved": "{code} kurs kodu yadda saxlanıldı",
+    "courseCodeSavedExplanation": "Qeydiyyatdan keçin və ya daxil olun, biz sizi kursunuza əlavə edəcəyik."
 }

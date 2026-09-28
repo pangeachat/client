@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "Ձայնագրություններ",
     "callTranscriptFullCall": "Ամբողջական զանգ",
     "callTranscriptPreparingRecording": "Պատրաստվում է ամբողջական ձայնագրությունը…",
-    "callTranscriptNoRecording": "Ամբողջական զանգի ձայնագրություն չկա։"
+    "callTranscriptNoRecording": "Ամբողջական զանգի ձայնագրություն չկա։",
+    "callTranscriptNotSubscribed": "{name}-ը բաժանորդագրություն չուներ այս զանգի ընթացքում, ուստի ասվածը չի արտագրվել:",
+    "joinYourCourse": "Միացեք Ձեր դասընթացին",
+    "courseCodeJoinExplanation": "Մուտք գործեք կամ գրանցվեք, և մենք կօգտագործենք Ձեր դասընթացի կոդը՝ Ձեզ ավտոմատ կերպով Ձեր դասընթացին ավելացնելու համար։",
+    "courseCodeLabel": "Դասընթացի կոդ",
+    "courseCodeSaved": "Դասընթացի կոդը՝ {code} պահպանված է",
+    "courseCodeSavedExplanation": "Գրանցվեք կամ մուտք գործեք, և մենք Ձեզ կավելացնենք Ձեր դասընթացին։"
 }

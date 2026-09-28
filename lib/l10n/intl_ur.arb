@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "ریکارڈنگز",
     "callTranscriptFullCall": "مکمل کال",
     "callTranscriptPreparingRecording": "مکمل ریکارڈنگ تیار کی جا رہی ہے…",
-    "callTranscriptNoRecording": "مکمل کال کی کوئی ریکارڈنگ نہیں ہے۔"
+    "callTranscriptNoRecording": "مکمل کال کی کوئی ریکارڈنگ نہیں ہے۔",
+    "callTranscriptNotSubscribed": "{name} کے پاس اس کال کے دوران کوئی سبسکرپشن نہیں تھی، لہذا جو کچھ کہا گیا اسے نقل نہیں کیا گیا۔",
+    "joinYourCourse": "اپنے کورس میں شامل ہوں",
+    "courseCodeJoinExplanation": "لاگ ان کریں یا سائن اپ کریں، اور ہم آپ کو آپ کے کورس کوڈ کا استعمال کرتے ہوئے خود بخود آپ کے کورس میں شامل کر دیں گے۔",
+    "courseCodeLabel": "کورس کوڈ",
+    "courseCodeSaved": "کورس کوڈ {code} محفوظ ہو گیا",
+    "courseCodeSavedExplanation": "سائن اپ کریں یا لاگ ان کریں اور ہم آپ کو آپ کے کورس میں شامل کر دیں گے۔"
 }

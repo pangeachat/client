@@ -1265,6 +1265,103 @@ void main() {
       expect(issueOf(admits), HalfIssue.audioLost);
       expect(issueOf(admits, exhausted: false), HalfIssue.couldNotRead);
     });
+
+    test('every lost chunk refused for no subscription says so', () {
+      expect(
+        issueOf(
+          const HalfAccounting(
+            chunksCaptured: 3,
+            chunksLost: 3,
+            chunksRefusedUnsubscribed: 3,
+            declared: true,
+          ),
+        ),
+        HalfIssue.notSubscribed,
+      );
+    });
+
+    test('a half that also lost audio another way reports the loss', () {
+      expect(
+        issueOf(
+          const HalfAccounting(
+            chunksCaptured: 3,
+            chunksLost: 3,
+            chunksRefusedUnsubscribed: 2,
+            declared: true,
+          ),
+        ),
+        HalfIssue.audioLost,
+      );
+    });
+  });
+
+  group('chunks refused for no subscription', () {
+    const written = HalfAccounting(
+      chunksCaptured: 4,
+      chunksTranscribed: 1,
+      chunksLost: 3,
+      chunksRefusedUnsubscribed: 3,
+      declared: true,
+    );
+
+    test('the count survives the wire', () {
+      final read = HalfAccounting.fromJson(written.toJson());
+      expect(read, written);
+      // The field name is the wire contract.
+      expect(written.toJson()['chunks_refused_unsubscribed'], 3);
+    });
+
+    test('a half from a client that predates the count still asserts', () {
+      final json = written.toJson()..remove('chunks_refused_unsubscribed');
+      final old = HalfAccounting.fromJson(json);
+
+      expect(old.declared, isTrue);
+      expect(old.chunksRefusedUnsubscribed, 0);
+    });
+
+    test('a malformed count voids the declaration', () {
+      final json = written.toJson()..['chunks_refused_unsubscribed'] = '3';
+      expect(HalfAccounting.fromJson(json).declared, isFalse);
+    });
+
+    test('more refused than lost is an impossible accounting', () {
+      final json = written.toJson()..['chunks_refused_unsubscribed'] = 4;
+      expect(HalfAccounting.fromJson(json).incoherent, isTrue);
+    });
+
+    test('the count is summed across devices', () {
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(
+            alice,
+            segments: const [],
+            accounting: const HalfAccounting(
+              chunksCaptured: 2,
+              chunksLost: 2,
+              chunksRefusedUnsubscribed: 2,
+              declared: true,
+            ),
+            deviceId: 'ONE',
+          ),
+          _candidate(
+            alice,
+            segments: const [],
+            accounting: const HalfAccounting(
+              chunksCaptured: 1,
+              chunksLost: 1,
+              chunksRefusedUnsubscribed: 1,
+              declared: true,
+            ),
+            deviceId: 'TWO',
+          ),
+        ],
+        expectedSenders: [alice],
+      );
+
+      final half = _halfFor(transcript, alice);
+      expect(half.accounting.chunksRefusedUnsubscribed, 3);
+      expect(half.issue, HalfIssue.notSubscribed);
+    });
   });
 
   group('chunks the writer held back', () {

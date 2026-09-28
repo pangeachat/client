@@ -10699,5 +10699,11 @@
     "callTranscriptRecordings": "Înregistrări",
     "callTranscriptFullCall": "Apel complet",
     "callTranscriptPreparingRecording": "Se pregătește înregistrarea completă…",
-    "callTranscriptNoRecording": "Nu există nicio înregistrare a apelului complet."
+    "callTranscriptNoRecording": "Nu există nicio înregistrare a apelului complet.",
+    "callTranscriptNotSubscribed": "{name} nu a avut un abonament în timpul acestui apel, așa că ceea ce s-a spus nu a fost transcris.",
+    "joinYourCourse": "Alătură-te cursului tău",
+    "courseCodeJoinExplanation": "Conectează-te sau înregistrează-te, iar noi vom folosi codul tău de curs pentru a te adăuga automat la cursul tău.",
+    "courseCodeLabel": "Codul cursului",
+    "courseCodeSaved": "Codul cursului {code} a fost salvat",
+    "courseCodeSavedExplanation": "Înregistrează-te sau conectează-te și te vom adăuga la cursul tău."
 }

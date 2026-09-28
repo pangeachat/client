@@ -7259,5 +7259,11 @@
     "callTranscriptRecordings": "Bản ghi âm",
     "callTranscriptFullCall": "Toàn bộ cuộc gọi",
     "callTranscriptPreparingRecording": "Đang chuẩn bị bản ghi âm đầy đủ…",
-    "callTranscriptNoRecording": "Không có bản ghi âm toàn bộ cuộc gọi."
+    "callTranscriptNoRecording": "Không có bản ghi âm toàn bộ cuộc gọi.",
+    "callTranscriptNotSubscribed": "{name} không có gói đăng ký trong cuộc gọi này, vì vậy những gì đã nói không được phiên âm.",
+    "joinYourCourse": "Tham gia khóa học của bạn",
+    "courseCodeJoinExplanation": "Đăng nhập hoặc đăng ký, chúng tôi sẽ sử dụng mã khóa học của bạn để tự động thêm bạn vào khóa học.",
+    "courseCodeLabel": "Mã khóa học",
+    "courseCodeSaved": "Đã lưu mã khóa học {code}",
+    "courseCodeSavedExplanation": "Đăng ký hoặc đăng nhập và chúng tôi sẽ thêm bạn vào khóa học."
 }

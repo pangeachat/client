@@ -9964,5 +9964,11 @@
     "callTranscriptRecordings": "Salvestised",
     "callTranscriptFullCall": "Kogu kõne",
     "callTranscriptPreparingRecording": "Kogu salvestise ettevalmistamine…",
-    "callTranscriptNoRecording": "Kogu kõnest puudub salvestis."
+    "callTranscriptNoRecording": "Kogu kõnest puudub salvestis.",
+    "callTranscriptNotSubscribed": "{name} ei olnud selle kõne ajal tellimust, seega öeldut ei transkribeeritud.",
+    "joinYourCourse": "Liitu oma kursusega",
+    "courseCodeJoinExplanation": "Logi sisse või registreeru ja me kasutame sinu kursuse koodi, et sind automaatselt kursusele lisada.",
+    "courseCodeLabel": "Kursuse kood",
+    "courseCodeSaved": "Kursuse kood {code} salvestatud",
+    "courseCodeSavedExplanation": "Registreeru või logi sisse ja me lisame sind kursusele."
 }

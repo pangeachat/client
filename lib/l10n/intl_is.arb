@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "Upptökur",
     "callTranscriptFullCall": "Allt símtalið",
     "callTranscriptPreparingRecording": "Undirbý alla upptökuna…",
-    "callTranscriptNoRecording": "Engin upptaka af öllu símtalinu."
+    "callTranscriptNoRecording": "Engin upptaka af öllu símtalinu.",
+    "callTranscriptNotSubscribed": "{name} var ekki með áskrift í þessu símtali, svo það sem sagt var var ekki umritað.",
+    "joinYourCourse": "Skráðu þig í námskeiðið þitt",
+    "courseCodeJoinExplanation": "Skráðu þig inn eða stofnaðu aðgang og við munum nota námskeiðskóðann þinn til að bæta þér sjálfkrafa við námskeiðið þitt.",
+    "courseCodeLabel": "Námskeiðskóði",
+    "courseCodeSaved": "Námskeiðskóði {code} vistaður",
+    "courseCodeSavedExplanation": "Skráðu þig eða skráðu þig inn og við munum bæta þér við námskeiðið þitt."
 }

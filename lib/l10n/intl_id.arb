@@ -10040,5 +10040,11 @@
     "callTranscriptRecordings": "Rekaman",
     "callTranscriptFullCall": "Panggilan lengkap",
     "callTranscriptPreparingRecording": "Mempersiapkan rekaman lengkap...",
-    "callTranscriptNoRecording": "Tidak ada rekaman panggilan lengkap."
+    "callTranscriptNoRecording": "Tidak ada rekaman panggilan lengkap.",
+    "callTranscriptNotSubscribed": "{name} tidak memiliki langganan selama panggilan ini, jadi apa yang dikatakan tidak ditranskripsikan.",
+    "joinYourCourse": "Gabung kursus Anda",
+    "courseCodeJoinExplanation": "Masuk atau daftar, dan kami akan menggunakan kode kursus Anda untuk menambahkan Anda ke kursus secara otomatis.",
+    "courseCodeLabel": "Kode kursus",
+    "courseCodeSaved": "Kode kursus {code} tersimpan",
+    "courseCodeSavedExplanation": "Daftar atau masuk dan kami akan menambahkan Anda ke kursus Anda."
 }

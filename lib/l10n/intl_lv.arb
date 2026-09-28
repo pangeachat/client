@@ -9967,5 +9967,11 @@
     "callTranscriptRecordings": "Ieraksti",
     "callTranscriptFullCall": "Pilns zvans",
     "callTranscriptPreparingRecording": "Tiek sagatavots pilns ieraksts…",
-    "callTranscriptNoRecording": "Nav pilna zvana ieraksta."
+    "callTranscriptNoRecording": "Nav pilna zvana ieraksta.",
+    "callTranscriptNotSubscribed": "{name} nebija abonementa šī zvana laikā, tāpēc teiktais netika pārrakstīts.",
+    "joinYourCourse": "Pievienojies savam kursam",
+    "courseCodeJoinExplanation": "Piesakies vai reģistrējies, un mēs izmantosim tavu kursa kodu, lai automātiski tevi pievienotu kursam.",
+    "courseCodeLabel": "Kursa kods",
+    "courseCodeSaved": "Kursa kods {code} saglabāts",
+    "courseCodeSavedExplanation": "Reģistrējies vai piesakies, un mēs tevi pievienosim tavam kursam."
 }

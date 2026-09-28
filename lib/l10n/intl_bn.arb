@@ -10595,5 +10595,11 @@
     "callTranscriptRecordings": "রেকর্ডিংগুলি",
     "callTranscriptFullCall": "সম্পূর্ণ কল",
     "callTranscriptPreparingRecording": "সম্পূর্ণ রেকর্ডিং প্রস্তুত করা হচ্ছে…",
-    "callTranscriptNoRecording": "সম্পূর্ণ কলের কোনো রেকর্ডিং নেই।"
+    "callTranscriptNoRecording": "সম্পূর্ণ কলের কোনো রেকর্ডিং নেই।",
+    "callTranscriptNotSubscribed": "{name} এর এই কলে কোনো সাবস্ক্রিপশন ছিল না, তাই যা বলা হয়েছে তা প্রতিলিপি করা হয়নি।",
+    "joinYourCourse": "আপনার কোর্সে যোগ দিন",
+    "courseCodeJoinExplanation": "লগ ইন করুন অথবা সাইন আপ করুন, এবং আমরা আপনার কোর্স কোড ব্যবহার করে আপনাকে স্বয়ংক্রিয়ভাবে আপনার কোর্সে যোগ করব।",
+    "courseCodeLabel": "কোর্স কোড",
+    "courseCodeSaved": "কোর্স কোড {code} সংরক্ষণ করা হয়েছে",
+    "courseCodeSavedExplanation": "সাইন আপ করুন অথবা লগ ইন করুন এবং আমরা আপনাকে আপনার কোর্সে যোগ করব।"
 }

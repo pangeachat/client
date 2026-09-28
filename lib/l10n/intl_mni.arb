@@ -2375,5 +2375,11 @@
     "callTranscriptRecordings": "Recordings",
     "callTranscriptFullCall": "Pumba call",
     "callTranscriptPreparingRecording": "Pumba recording adu sem-sari...",
-    "callTranscriptNoRecording": "Pumba call adugi recording leite."
+    "callTranscriptNoRecording": "Pumba call adugi recording leite.",
+    "callTranscriptNotSubscribed": "{name} ना खলগী মতমদা subscription লৈরম্বদগী, ৱা ঙাংলিবশিং অদু transcribe তৌদ্রি।",
+    "joinYourCourse": "ನಾಲೈ-ನಾಲೈ কোর্সತಾ য়াও",
+    "courseCodeJoinExplanation": "ಲಾಗಿನ್ ತೌ ಅಥವ ಸೈನ್ ಅಪ್ ತೌ, ಅದুগಾ ನಾಲೈ-ನಾಲೈ কোর্স কোড শিজিন্নদুনা নঙবু নಾಲೈ-ನಾಲೈ কোর্সತಾ অটোমেটিক ওইনা য়াওহনগನಿ.",
+    "courseCodeLabel": "ಕোর্স ಕೋಡ್",
+    "courseCodeSaved": "ಕোর্স ಕೋಡ್ {code} ಸೇভ ತೌರೆ",
+    "courseCodeSavedExplanation": "ಸೈನ್ ಅಪ್ ಅಥವ ಲಾಗಿನ್ ತೌ ಅದুগಾ ನঙಬು ನಾಲೈ-ನಾಲೈ কোর্সತಾ য়াওহনগনি."
 }

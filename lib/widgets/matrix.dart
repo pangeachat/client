@@ -853,9 +853,13 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
                 context,
           );
         });
+    final renewalFilter = TokenRenewalFilter(c.onLoginStateChanged.value);
     onLoginStateChanged[name] ??= c.onLoginStateChanged.stream.listen((
       state,
     ) async {
+      // A token renewal is not a login change: nothing to tear down, rebuild
+      // or navigate for (#9304, session-lifetime.instructions.md).
+      if (renewalFilter.isRenewal(state)) return;
       // #Pangea
       // Mark BEFORE the handleLoginStateChange await below, which can take a
       // while (e.g. the analytics update) — getLoginClient must refuse to

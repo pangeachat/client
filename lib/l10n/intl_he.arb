@@ -10881,5 +10881,11 @@
     "callTranscriptRecordings": "הקלטות",
     "callTranscriptFullCall": "שיחה מלאה",
     "callTranscriptPreparingRecording": "מכין את ההקלטה המלאה…",
-    "callTranscriptNoRecording": "אין הקלטה של השיחה המלאה."
+    "callTranscriptNoRecording": "אין הקלטה של השיחה המלאה.",
+    "callTranscriptNotSubscribed": "{name} לא היה מנוי במהלך השיחה הזו, ולכן מה שנאמר לא תומלל.",
+    "joinYourCourse": "הצטרף לקורס שלך",
+    "courseCodeJoinExplanation": "התחבר או הירשם, ואנו נשתמש בקוד הקורס שלך כדי להוסיף אותך לקורס באופן אוטומטי.",
+    "courseCodeLabel": "קוד קורס",
+    "courseCodeSaved": "קוד קורס {code} נשמר",
+    "courseCodeSavedExplanation": "הירשם או התחבר ואנו נוסיף אותך לקורס שלך."
 }

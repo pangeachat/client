@@ -615,6 +615,12 @@ class HalfAccounting {
   /// Silence is captured-but-not-transcribed and is NOT a gap; see the sink.
   final int chunksLost;
 
+  /// The share of [chunksLost] the transcriber refused because the writer's
+  /// account had no subscription. A subset, never a separate count, so a
+  /// reader that predates it still sees the gap; more than [chunksLost] is an
+  /// impossible accounting.
+  final int chunksRefusedUnsubscribed;
+
   /// Chunks the WRITER'S DEVICE examined and chose not to send, having found no
   /// speech in them.
   ///
@@ -684,6 +690,7 @@ class HalfAccounting {
     this.chunksCaptured = 0,
     this.chunksTranscribed = 0,
     this.chunksLost = 0,
+    this.chunksRefusedUnsubscribed = 0,
     this.chunksSuppressed = 0,
     this.chunksDiscarded = 0,
     this.captureDroppedMs = 0,
@@ -762,6 +769,7 @@ class HalfAccounting {
     // round-trip of one never reads back as undeclared.
     'chunks_transcribed': chunksTranscribed,
     'chunks_lost': chunksLost,
+    'chunks_refused_unsubscribed': chunksRefusedUnsubscribed,
     'chunks_suppressed': chunksSuppressed,
     'chunks_discarded': chunksDiscarded,
     'capture_dropped_ms': captureDroppedMs,
@@ -776,6 +784,7 @@ class HalfAccounting {
     chunksCaptured: chunksCaptured,
     chunksTranscribed: chunksTranscribed,
     chunksLost: chunksLost,
+    chunksRefusedUnsubscribed: chunksRefusedUnsubscribed,
     chunksSuppressed: chunksSuppressed,
     chunksDiscarded: chunksDiscarded,
     captureDroppedMs: captureDroppedMs,
@@ -797,6 +806,7 @@ class HalfAccounting {
     chunksCaptured: chunksCaptured,
     chunksTranscribed: chunksTranscribed,
     chunksLost: chunksLost,
+    chunksRefusedUnsubscribed: chunksRefusedUnsubscribed,
     chunksSuppressed: chunksSuppressed,
     chunksDiscarded: chunksDiscarded,
     captureDroppedMs: captureDroppedMs,
@@ -814,6 +824,7 @@ class HalfAccounting {
     chunksCaptured: chunksCaptured,
     chunksTranscribed: chunksTranscribed,
     chunksLost: chunksLost,
+    chunksRefusedUnsubscribed: chunksRefusedUnsubscribed,
     chunksSuppressed: chunksSuppressed,
     chunksDiscarded: chunksDiscarded,
     captureDroppedMs: captureDroppedMs,
@@ -877,11 +888,14 @@ class HalfAccounting {
         (!raw.containsKey('chunks_discarded') ||
             nonNegativeInt(raw['chunks_discarded'])) &&
         (!raw.containsKey('capture_dropped_ms') ||
-            nonNegativeInt(raw['capture_dropped_ms']));
+            nonNegativeInt(raw['capture_dropped_ms'])) &&
+        (!raw.containsKey('chunks_refused_unsubscribed') ||
+            nonNegativeInt(raw['chunks_refused_unsubscribed']));
 
     final captured = intOr('chunks_captured', 0);
     final rawTranscribed = intOr('chunks_transcribed', 0);
     final rawLost = intOr('chunks_lost', 0);
+    final rawRefusedUnsubscribed = intOr('chunks_refused_unsubscribed', 0);
     final rawSuppressed = intOr('chunks_suppressed', 0);
     final rawDiscarded = intOr('chunks_discarded', 0);
     return HalfAccounting(
@@ -894,14 +908,19 @@ class HalfAccounting {
       // here are chunks and the fifth is milliseconds of audio that never
       // became one, so it is not a share of the same total and adding it would
       // compare two different things.
+      //
+      // The refused count is a share of the lost one, so it is checked against
+      // that rather than added to the sum.
       incoherent:
-          rawTranscribed + rawLost + rawSuppressed + rawDiscarded > captured,
+          rawTranscribed + rawLost + rawSuppressed + rawDiscarded > captured ||
+          rawRefusedUnsubscribed > rawLost,
       chunksCaptured: captured,
       // Clamped: a half claiming more transcribed than captured is malformed,
       // and letting it through would make `writerAdmitsGaps` read false for a
       // half that is nonsense.
       chunksTranscribed: rawTranscribed.clamp(0, captured),
       chunksLost: rawLost,
+      chunksRefusedUnsubscribed: rawRefusedUnsubscribed,
       chunksSuppressed: rawSuppressed,
       chunksDiscarded: rawDiscarded,
       captureDroppedMs: intOr('capture_dropped_ms', 0),
@@ -932,6 +951,7 @@ class HalfAccounting {
       other.chunksCaptured == chunksCaptured &&
       other.chunksTranscribed == chunksTranscribed &&
       other.chunksLost == chunksLost &&
+      other.chunksRefusedUnsubscribed == chunksRefusedUnsubscribed &&
       other.chunksSuppressed == chunksSuppressed &&
       other.chunksDiscarded == chunksDiscarded &&
       other.captureDroppedMs == captureDroppedMs &&
@@ -949,6 +969,7 @@ class HalfAccounting {
     chunksCaptured,
     chunksTranscribed,
     chunksLost,
+    chunksRefusedUnsubscribed,
     chunksSuppressed,
     chunksDiscarded,
     captureDroppedMs,
@@ -1002,6 +1023,10 @@ enum HalfIssue {
 
   /// Audio was captured and then lost before it could be transcribed.
   audioLost,
+
+  /// Every lost chunk was refused by the transcriber because the writer's
+  /// account had no subscription. A fact about their account, not a failure.
+  notSubscribed,
 
   /// The writer's capture path threw audio away before it could become a
   /// chunk, so a stretch of the recording is missing with no chunk to name it.
@@ -1282,7 +1307,14 @@ class TranscriptHalf {
     // holding your speech", above the branch that would have said it was gone.
     if (audioHeldByAnotherDevice) return HalfIssue.audioHeldByAnotherDevice;
     if (!accounting.declared) return HalfIssue.writerSaidNothing;
-    if (accounting.chunksLost > 0) return HalfIssue.audioLost;
+    if (accounting.chunksLost > 0) {
+      // Only when EVERY lost chunk was refused for no subscription. A half that
+      // also lost audio some other way reports the loss, which is the one
+      // somebody can act on.
+      return accounting.chunksRefusedUnsubscribed == accounting.chunksLost
+          ? HalfIssue.notSubscribed
+          : HalfIssue.audioLost;
+    }
     // Immediately after the chunks that were lost, because it is the same
     // failure one layer down: audio this device captured and could not keep.
     // Without its own name it reached the unexplained-gap branch at the bottom
@@ -1821,6 +1853,7 @@ HalfAccounting _mergeAccounting(
   var captured = 0;
   var transcribed = 0;
   var lost = 0;
+  var refusedUnsubscribed = 0;
   var suppressed = 0;
   var discarded = 0;
   var droppedMs = 0;
@@ -1846,6 +1879,10 @@ HalfAccounting _mergeAccounting(
     captured = _saturatingSum(captured, part.chunksCaptured);
     transcribed = _saturatingSum(transcribed, part.chunksTranscribed);
     lost = _saturatingSum(lost, part.chunksLost);
+    refusedUnsubscribed = _saturatingSum(
+      refusedUnsubscribed,
+      part.chunksRefusedUnsubscribed,
+    );
     suppressed = _saturatingSum(suppressed, part.chunksSuppressed);
     discarded = _saturatingSum(discarded, part.chunksDiscarded);
     droppedMs = _saturatingSum(droppedMs, part.captureDroppedMs);
@@ -1863,6 +1900,7 @@ HalfAccounting _mergeAccounting(
     chunksCaptured: captured,
     chunksTranscribed: transcribed,
     chunksLost: lost,
+    chunksRefusedUnsubscribed: refusedUnsubscribed,
     chunksSuppressed: suppressed,
     chunksDiscarded: discarded,
     captureDroppedMs: droppedMs,
