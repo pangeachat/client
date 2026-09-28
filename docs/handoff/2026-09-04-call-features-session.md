@@ -2817,3 +2817,35 @@ until the design is Codex-green.
 - STATE: full stack call-ready over LAN. ONLY remaining for the showcase = phone: reconnect (adb
   sees nothing now) + rebuild/install APK from this branch (LAN .env + flag on) — the installed one
   is a week old. Then the two-human phone<->laptop call, then verify both halves. PR2 on owner go.
+
+### 2026-09-28 (cont) — showcase call PASSED; loading-state fix (#8808) landed
+- E2E showcase call worked: ordering PERFECT. Owner clarified they did NOT do a mid-call device
+  SWITCH/handover — they spoke while moving around (two devices), so #9173 (device-switch transcript)
+  is NOT validated and STAYS OPEN; the >2-half audio merge is still v2 (issue client#8878).
+- APK build gotcha: the all-ABI debug APK (~347MB) will not INSTALL on a near-full phone even with
+  1.1GB free (INSTALL_FAILED_INSUFFICIENT_STORAGE — 4 ABIs of native libs expand past free space);
+  `--split-per-abi` is blocked by a hardcoded `ndk abiFilters` (all 4) in android/app/build.gradle.kts;
+  `--target-platform android-arm64` does NOT slim it. Fix used: TEMP-edit abiFilters to arm64-only,
+  build (~313MB, installs), REVERT the edit. See android-apk-... memory; consider a slim-debug lane.
+- Only remaining feature polish (owner): post-call transcript showed "No transcript from <me>" while
+  still loading. FIX (client#8808): a half that is `absent` but whose sender has an uploaded
+  `pangea.call_audio` recording is STILL TRANSCRIBING (transcript publishes just after audio), shown
+  as a shimmer + "Still transcribing... from <name>" (ShimmerBox loop:1 -> settles under
+  pumpAndSettle, unlike a spinner's endless ticker) instead of the absent note, in BOTH timeline and
+  per-speaker views. Honors "absence only from an exhausted read" (voice-video-calls). Commit
+  efaaa607dc.
+- Tests: transcript_view_test 117 green incl. 2 new (loading + boundary), MUTATION-PROVEN (fix
+  disabled -> test #1 RED). Added `servingByType` test fetcher (filters by relType like the real
+  /relations endpoint) — needed because plain `serving` leaks an audio event into the transcript read
+  and mislabels an audio-only sender `couldNotRead` instead of `absent`. Gates: dart format +
+  import_sorter(0) + analyze(0) all green. l10n key `callTranscriptTranscribing` added to intl_en.arb
+  (other-locale .arb backfill still owed for the l10n-sync gate; l10n .dart is gitignored/regenerated).
+- Issue map (agents + owner correction): CLOSES client#8808 (loading indicator); PARTIAL client#8792
+  (owner's core issue — recording-based transcription delivered; subscribe-gating UX / lazy
+  transcribe-on-request NOT in branch); #9173/#8878/#8791/#8797/#9168/#9166/#8885 related-but-separate.
+- Merge onto origin/main: agent verified CLEAN (merge-tree exit 0), behind 67 / ahead 216; only
+  matrix.dart touched both sides (distinct regions); pubspec/pubspec.lock/intl_en.arb clean-but-run
+  `pub get` + gen-l10n after. Merge preferred over rebase.
+- Codex behaviour gate (gpt-5.5 medium) RUNNING on efaaa607dc lib diff.
+- NEXT: read Codex verdict -> merge origin/main -> pub get + gen-l10n + backfill l10n translations ->
+  re-gate -> push branch + open PR (owner authorized the PR path; merge-to-main = separate deploy auth).
