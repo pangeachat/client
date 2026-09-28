@@ -27,12 +27,7 @@ class ChatAppBarTitle extends StatelessWidget {
             controller.room.hasArchivedActivity
         // Pangea#
         ? null
-        : () => FluffyThemes.isThreeColumnMode(context)
-              ? controller.toggleDisplayChatDetailsColumn()
-              // #Pangea
-              // : context.go('/rooms/${room.id}/details'),
-              : NavigationUtil.goToSpaceRoute(room.id, ['details'], context);
-    // Pangea#
+        : () => NavigationUtil.goToSpaceRoute(room.id, ['details'], context);
     // The title is an InkWell with no role of its own: name it by its visible
     // text (room name and presence) and say what the tap does (#8849).
     return Semantics(
