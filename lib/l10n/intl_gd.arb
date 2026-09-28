@@ -2372,5 +2372,6 @@
     "summaryFeedbackProcessing": "A’ cur do fhios air ais agus ag ùrachadh an ath-ghoirid…",
     "ssoNetworkBlockedTitle": "Làrach-lìn logadh a-steach do-ruigsinneach",
     "ssoNetworkBlockedDesc": "Chan eil an lìonra seo a' leigeil leinn {provider} a ruighinn gus do logadh a-steach. Bidh Wi-Fi sgoile is oifise gu tric ga bhacadh. Faodaidh tu clàradh le post-d na àite, no atharrachadh gu lìonra eile agus feuchainn a-rithist.",
-    "ssoTryAnyway": "Feuch co-dhiù"
+    "ssoTryAnyway": "Feuch co-dhiù",
+    "callTranscriptNotSubscribed": "Cha robh fo-sgrìobhadh aig {name} aig àm a’ ghairm seo, agus mar sin cha deach na chaidh a ràdh a thar-sgrìobhadh."
 }

@@ -2372,5 +2372,6 @@
     "summaryFeedbackProcessing": "Kutumiza ndemanga yanu ndikusintha chidule…",
     "ssoNetworkBlockedTitle": "Malo olowera safikika",
     "ssoNetworkBlockedDesc": "Intaneti iyi ikutiletsa kufika ku {provider} kuti tikulowetseni. Ma Wi-Fi a kusukulu ndi ku ofesi nthawi zambiri amalepheretsa. Mutha kulembetsa ndi imelo m'malo mwake, kapena kusinthira ku intaneti ina ndikuyesanso.",
-    "ssoTryAnyway": "Yesani komabe"
+    "ssoTryAnyway": "Yesani komabe",
+    "callTranscriptNotSubscribed": "{name} analibe chiphaso panthawi yoyimbira iyi, choncho zomwe zinanenedwa sizinajambulidwe."
 }

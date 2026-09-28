@@ -2372,5 +2372,6 @@
     "summaryFeedbackProcessing": "N ap voye fidbak ou epi n ap mete rezime a ajou…",
     "ssoNetworkBlockedTitle": "Sit koneksyon an pa aksesib",
     "ssoNetworkBlockedDesc": "Rezo sa a pa pèmèt nou jwenn aksè nan {provider} pou konekte ou. Wi-Fi lekòl ak biwo souvan bloke li. Ou ka enskri ak imèl pito, oswa chanje nan yon lòt rezo epi eseye ankò.",
-    "ssoTryAnyway": "Eseye kanmenm"
+    "ssoTryAnyway": "Eseye kanmenm",
+    "callTranscriptNotSubscribed": "{name} pa t gen yon abònman pandan apèl sa a, kidonk sa ki te di a pa t transkri."
 }

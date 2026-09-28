@@ -2372,5 +2372,6 @@
     "summaryFeedbackProcessing": "Sententiam tuam mittimus et summam renovamus…",
     "ssoNetworkBlockedTitle": "Situs initii inaccessibilis",
     "ssoNetworkBlockedDesc": "Haec retis nos prohibet ad {provider} pervenire ut te inigas. Wi-Fi scholae et officii saepe id impediunt. Potes proinde per electronicam subscribere, aut ad aliam retem mutare et iterum conari.",
-    "ssoTryAnyway": "Nihilominus conare"
+    "ssoTryAnyway": "Nihilominus conare",
+    "callTranscriptNotSubscribed": "{name} non habuit subscriptionem per hunc sermonem, ergo quod dictum est non est transcriptum."
 }

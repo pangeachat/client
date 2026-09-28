@@ -2372,5 +2372,6 @@
     "summaryFeedbackProcessing": "Lafoina au manatu faaalia ma faafouina le aotelega…",
     "ssoNetworkBlockedTitle": "E le mafai ona maua le nofoaga e saini ai",
     "ssoNetworkBlockedDesc": "E le mafai e lenei fesoʻotaʻiga ona matou maua {provider} e saini ai oe. E masani ona poloka e le Wi-Fi a le aʻoga ma le ofisa. E mafai ona e lesitala i le imeli, pe sui i se isi fesoʻotaʻiga ma toe taumafai.",
-    "ssoTryAnyway": "Taumafai lava"
+    "ssoTryAnyway": "Taumafai lava",
+    "callTranscriptNotSubscribed": "E le'i lesitala {name} i le taimi o lenei valaau, o lea e le'i tusia ai mea na fai mai."
 }

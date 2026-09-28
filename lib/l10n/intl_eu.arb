@@ -9964,5 +9964,6 @@
     "summaryFeedbackProcessing": "Zure iritzia bidaltzen eta laburpena eguneratzen…",
     "ssoNetworkBlockedTitle": "Saioa hasteko gunea eskuraezina",
     "ssoNetworkBlockedDesc": "Sare honek ez digu uzten {provider} atzitzen saioa hasteko. Eskolako eta bulegoko Wi-Fi sareek askotan blokeatzen dute. Horren ordez, posta elektronikoarekin erregistra zaitezke, edo beste sare batera aldatu eta berriro saiatu.",
-    "ssoTryAnyway": "Dena den, saiatu"
+    "ssoTryAnyway": "Dena den, saiatu",
+    "callTranscriptNotSubscribed": "{name} erabiltzaileak ez zuen harpidetzarik dei honetan, beraz, esandakoa ez zen transkribatu."
 }

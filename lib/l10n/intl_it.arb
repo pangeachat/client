@@ -10037,5 +10037,6 @@
     "summaryFeedbackProcessing": "Invio del feedback e aggiornamento del riepilogo…",
     "ssoNetworkBlockedTitle": "Sito di accesso irraggiungibile",
     "ssoNetworkBlockedDesc": "Questa rete non ci permette di raggiungere {provider} per effettuare l'accesso. Le reti Wi-Fi di scuole e uffici spesso lo bloccano. Puoi registrarti con l'email, oppure passare a un'altra rete e riprovare.",
-    "ssoTryAnyway": "Riprova comunque"
+    "ssoTryAnyway": "Riprova comunque",
+    "callTranscriptNotSubscribed": "{name} non aveva un abbonamento durante questa chiamata, quindi ciò che è stato detto non è stato trascritto."
 }

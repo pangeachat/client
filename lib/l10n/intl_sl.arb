@@ -10909,5 +10909,6 @@
     "summaryFeedbackProcessing": "Pošiljanje vaših povratnih informacij in posodabljanje povzetka …",
     "ssoNetworkBlockedTitle": "Mesto za prijavo ni dosegljivo",
     "ssoNetworkBlockedDesc": "To omrežje nam ne dovoljuje, da dosežemo {provider} za vašo prijavo. Šolski in pisarniški Wi-Fi to pogosto blokirata. Namesto tega se lahko prijavite z e-pošto ali preklopite na drugo omrežje in poskusite znova.",
-    "ssoTryAnyway": "Vseeno poskusi"
+    "ssoTryAnyway": "Vseeno poskusi",
+    "callTranscriptNotSubscribed": "{name} med tem klicem ni imel naročnine, zato izgovorjeno ni bilo prepisano."
 }

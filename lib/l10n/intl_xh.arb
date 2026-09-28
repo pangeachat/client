@@ -2372,5 +2372,6 @@
     "summaryFeedbackProcessing": "Sithumela ingxelo yakho kwaye sihlaziya isishwankathelo…",
     "ssoNetworkBlockedTitle": "Indawo yokungena ayifikeleleki",
     "ssoNetworkBlockedDesc": "Le nethiwekhi ayisivumeli ukuba sifikelele ku-{provider} ukuze sikungenise. IWi-Fi yesikolo neyeofisi isoloko iyivala. Ungabhalisa nge-imeyile endaweni yoko, okanye utshintshele kwenye inethiwekhi uze uzame kwakhona.",
-    "ssoTryAnyway": "Zama nangona kunjalo"
+    "ssoTryAnyway": "Zama nangona kunjalo",
+    "callTranscriptNotSubscribed": "U-{name} ebengekafaki isicelo ngexesha lale fowuni, ngoko ke oko kuthethweyo akubhalwanga."
 }

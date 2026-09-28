@@ -3852,6 +3852,14 @@
             }
         }
     },
+    "callTranscriptNotSubscribed": "{name} did not have a subscription during this call, so what was said was not transcribed.",
+    "@callTranscriptNotSubscribed": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
     "callTranscriptAudioDropped": "What {name} said was lost by their device before it could even be recorded, so what was said is not known.",
     "@callTranscriptAudioDropped": {
         "placeholders": {

@@ -2372,5 +2372,6 @@
     "summaryFeedbackProcessing": "Äre Feedback gëtt geschéckt an d'Resümmee gëtt aktualiséiert…",
     "ssoNetworkBlockedTitle": "Umeldungssäit net erreechbar",
     "ssoNetworkBlockedDesc": "Dëst Netzwierk erlaabt eis net, {provider} z'erreechen fir Iech unzemellen. Schoul- an Büro-Wi-Fi blockéieren dacks esou eppes. Dir kënnt Iech amplaz mat E-Mail umellen, oder op en anert Netzwierk wiesselen an et nach eng Kéier probéieren.",
-    "ssoTryAnyway": "Trotzdeem probéieren"
+    "ssoTryAnyway": "Trotzdeem probéieren",
+    "callTranscriptNotSubscribed": "{name} hat während dësem Uruff keen Abonnement, dofir gouf dat Gesotent net transkribéiert."
 }

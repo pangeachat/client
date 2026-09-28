@@ -2372,5 +2372,6 @@
     "summaryFeedbackProcessing": "Tunatuma maoni yako na kusasisha muhtasari…",
     "ssoNetworkBlockedTitle": "Tovuti ya kuingia haipatikani",
     "ssoNetworkBlockedDesc": "Mtandao huu hauturuhusu kufikia {provider} ili kukuunganisha. Wi-Fi za shule na ofisi mara nyingi huizuia. Unaweza kujiandikisha kwa barua pepe badala yake, au ubadili mtandao mwingine na ujaribu tena.",
-    "ssoTryAnyway": "Jaribu hata hivyo"
+    "ssoTryAnyway": "Jaribu hata hivyo",
+    "callTranscriptNotSubscribed": "{name} hakuwa na usajili wakati wa simu hii, kwa hivyo yaliyosemwa hayakuandikwa."
 }

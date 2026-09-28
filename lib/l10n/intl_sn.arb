@@ -2372,5 +2372,6 @@
     "summaryFeedbackProcessing": "Tichitumira mhinduro yako uye tichigadzirisa pfupiso…",
     "ssoNetworkBlockedTitle": "Saiti yekupinda haisvikike",
     "ssoNetworkBlockedDesc": "Network iyi haitibvumire kusvika ku {provider} kuti tikupinze. Wi-Fi yechikoro neyehofisi inowanzoivharira. Unogona kusaina neemail panzvimbo, kana kuchinja kune imwe network woedza zvakare.",
-    "ssoTryAnyway": "Edza zvakadaro"
+    "ssoTryAnyway": "Edza zvakadaro",
+    "callTranscriptNotSubscribed": "{name} anga asina kunyoresa panguva yekufona uku, saka zvakataurwa hazvina kunyorwa."
 }

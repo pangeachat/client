@@ -10067,5 +10067,6 @@
     "summaryFeedbackProcessing": "Visszajelzés küldése és az összefoglaló frissítése…",
     "ssoNetworkBlockedTitle": "Bejelentkezési oldal nem elérhető",
     "ssoNetworkBlockedDesc": "Ez a hálózat nem engedi, hogy elérjük a(z) {provider} szolgáltatót a bejelentkezéshez. Az iskolai és irodai Wi-Fi gyakran blokkolja. E-mail címmel is regisztrálhat, vagy válthat másik hálózatra, és újra megpróbálhatja.",
-    "ssoTryAnyway": "Mégis megpróbálom"
+    "ssoTryAnyway": "Mégis megpróbálom",
+    "callTranscriptNotSubscribed": "{name} nem rendelkezett előfizetéssel a hívás során, így a beszélgetés nem került átírásra."
 }

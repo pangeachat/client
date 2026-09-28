@@ -10596,5 +10596,6 @@
     "summaryFeedbackProcessing": "Ag cur do chuid aiseolais agus ag nuashonrú an achoimre…",
     "ssoNetworkBlockedTitle": "Ní féidir suíomh sínithe isteach a bhaint amach",
     "ssoNetworkBlockedDesc": "Níl an líonra seo ag ligean dúinn {provider} a bhaint amach chun tú a shíniú isteach. Is minic a chuireann Wi-Fi scoile agus oifige bac air. Is féidir leat clárú le ríomhphost ina ionad, nó aistrigh go líonra eile agus bain triail eile as.",
-    "ssoTryAnyway": "Bain triail as ar aon nós"
+    "ssoTryAnyway": "Bain triail as ar aon nós",
+    "callTranscriptNotSubscribed": "Ní raibh síntiús ag {name} le linn an ghlao seo, mar sin níor tras-scríobhadh an méid a dúradh."
 }

@@ -4,6 +4,7 @@ import 'dart:typed_data';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/features/analytics/construct_use_type_enum.dart';
+import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart';
 import 'package:fluffychat/routes/chat/calls/call_upload_gate.dart';
 import 'package:fluffychat/routes/chat/calls/pcm_chunker.dart';
@@ -90,6 +91,7 @@ void main() {
   CallTranscriptSink sink({
     SpeechToTextResponseModel Function(int call)? respond,
     Set<int> failOn = const {},
+    Set<int> unsubscribedOn = const {},
     Set<int> hangOn = const {},
   }) {
     sent = [];
@@ -100,6 +102,7 @@ void main() {
         final index = sent.length;
         sent.add(request);
         if (failOn.contains(index)) throw StateError('provider refused');
+        if (unsubscribedOn.contains(index)) throw UnsubscribedException();
         // Never answers, and is never cancelled — a request that has gone quiet
         // rather than one that failed.
         if (hangOn.contains(index)) await Completer<void>().future;
@@ -201,6 +204,52 @@ void main() {
       expect(sent, hasLength(2), reason: 'the second attempt really ran');
       expect(s.chunkCount, 1, reason: 'and it landed');
     });
+
+    test('a chunk refused for no subscription is lost, and says why', () async {
+      final s = sink(unsubscribedOn: {0}, failOn: {1});
+
+      await expectLater(
+        s.deliver(chunk(0)),
+        throwsA(isA<UnsubscribedException>()),
+      );
+      await expectLater(s.deliver(chunk(1)), throwsA(isA<StateError>()));
+
+      expect(s.chunksLost, 2, reason: 'both are gaps to an older reader');
+      expect(
+        s.chunksRefusedUnsubscribed,
+        1,
+        reason: 'only the refused one is put down to the subscription',
+      );
+    });
+
+    test('a refused chunk that lands on retry is no longer refused', () async {
+      final s = sink(unsubscribedOn: {0});
+
+      await expectLater(
+        s.deliver(chunk(0)),
+        throwsA(isA<UnsubscribedException>()),
+      );
+      await s.deliver(chunk(0));
+
+      expect(s.chunksLost, 0);
+      expect(s.chunksRefusedUnsubscribed, 0);
+    });
+
+    test(
+      'a refused chunk that fails another way on retry is plain lost',
+      () async {
+        final s = sink(unsubscribedOn: {0}, failOn: {1});
+
+        await expectLater(
+          s.deliver(chunk(0)),
+          throwsA(isA<UnsubscribedException>()),
+        );
+        await expectLater(s.deliver(chunk(0)), throwsA(isA<StateError>()));
+
+        expect(s.chunksLost, 1);
+        expect(s.chunksRefusedUnsubscribed, 0);
+      },
+    );
 
     test(
       'a response with an empty nested transcript is not a transcript',

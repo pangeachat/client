@@ -9961,5 +9961,6 @@
     "summaryFeedbackProcessing": "Teie tagasiside saatmine ja kokkuvõtte värskendamine…",
     "ssoNetworkBlockedTitle": "Sisselogimisleht pole kättesaadav",
     "ssoNetworkBlockedDesc": "See võrk ei lase meil teid sisse logimiseks {provider} lehele suunata. Kooli ja kontori Wi-Fi blokeerivad seda sageli. Saate selle asemel registreeruda e-posti teel või minna üle teisele võrgule ja uuesti proovida.",
-    "ssoTryAnyway": "Proovi ikkagi"
+    "ssoTryAnyway": "Proovi ikkagi",
+    "callTranscriptNotSubscribed": "{name} ei olnud selle kõne ajal tellimust, seega öeldut ei transkribeeritud."
 }

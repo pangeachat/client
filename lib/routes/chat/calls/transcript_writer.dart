@@ -59,6 +59,7 @@ Future<bool> writeCallTranscript({
   required int chunksCaptured,
   required int chunksTranscribed,
   required int chunksLost,
+  required int chunksRefusedUnsubscribed,
   required int chunksSuppressed,
   required int chunksDiscarded,
 
@@ -110,6 +111,7 @@ Future<bool> writeCallTranscript({
           chunksCaptured: chunksCaptured,
           chunksTranscribed: chunksTranscribed,
           chunksLost: chunksLost,
+          chunksRefusedUnsubscribed: chunksRefusedUnsubscribed,
           chunksSuppressed: chunksSuppressed,
           chunksDiscarded: chunksDiscarded,
           captureDroppedMs: captureDroppedMs,
