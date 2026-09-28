@@ -7,8 +7,9 @@ import 'package:http/http.dart' as http;
 ///
 /// On web the root `.env` is not part of the asset bundle; it is served at
 /// the web root (`/.env`) — by the Flutter dev server in local dev and by
-/// the deploy pipeline, which writes `build/web/.env`. On native platforms
-/// the root `.env` is a bundled asset (pubspec lines uncommented by
+/// the deploy pipeline, which writes `build/web/.env` — and nowhere else, so
+/// a failed fetch is a failed load. On native platforms the root `.env` is a
+/// bundled asset (pubspec lines uncommented by
 /// `scripts/enable_mobile_env.patch` in CI).
 class EnvLoader {
   /// Distinguishes real env content from an SPA index-fallback response:
@@ -43,9 +44,10 @@ class EnvLoader {
   }
 
   static Future<void> load() async {
-    if (kIsWeb && await tryLoadFromWebRoot()) return;
-    // Native asset load; also the web fallback for older deployed artifacts
-    // that still bundle assets/.env.
+    if (kIsWeb) {
+      if (await tryLoadFromWebRoot()) return;
+      throw Exception('Failed to load /.env from the web root');
+    }
     await dotenv.load(fileName: '.env');
   }
 }
