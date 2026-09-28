@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-09-23 15:42:44.494487",
+    "@@last_modified": "2026-09-28 13:21:18.409417",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "ટર્ન માટેની શોધ પૂર્ણ થઈ નથી. ફરી પ્રયાસ કરો.",
     "summaryFeedbackReceived": "આભાર! અમને તમારો પ્રતિભાવ મળ્યો.",
     "summaryFeedbackFailed": "તમારો પ્રતિભાવ મોકલી શકાયો નથી. કૃપા કરીને ફરી પ્રયાસ કરો.",
-    "summaryFeedbackProcessing": "તમારા પ્રતિભાવ મોકલી રહ્યા છીએ અને સારાંશ અપડેટ કરી રહ્યા છીએ…"
+    "summaryFeedbackProcessing": "તમારા પ્રતિભાવ મોકલી રહ્યા છીએ અને સારાંશ અપડેટ કરી રહ્યા છીએ…",
+    "callTranscriptNotSubscribed": "{name} પાસે આ કૉલ દરમિયાન સબ્સ્ક્રિપ્શન નહોતું, તેથી જે કહેવામાં આવ્યું તે ટ્રાન્સક્રાઇબ કરવામાં આવ્યું નથી."
 }

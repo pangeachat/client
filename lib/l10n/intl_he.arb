@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-23 15:42:44.764112",
+    "@@last_modified": "2026-09-28 13:21:18.502337",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10875,5 +10875,6 @@
     "goalReportErrorRetry": "החיפוש אחר התור לא הסתיים. נסה שוב.",
     "summaryFeedbackReceived": "תודה! קיבלנו את המשוב שלך.",
     "summaryFeedbackFailed": "לא ניתן היה לשלוח את המשוב שלך. אנא נסה שוב.",
-    "summaryFeedbackProcessing": "שולח את המשוב שלך ומעדכן את הסיכום…"
+    "summaryFeedbackProcessing": "שולח את המשוב שלך ומעדכן את הסיכום…",
+    "callTranscriptNotSubscribed": "{name} לא היה מנוי במהלך השיחה הזו, ולכן מה שנאמר לא תומלל."
 }

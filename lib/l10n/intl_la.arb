@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-09-23 15:42:46.265440",
+    "@@last_modified": "2026-09-28 13:21:20.099866",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "Quaesitio vicis non perfecta est. Iterum conare.",
     "summaryFeedbackReceived": "Gratias! Accepimus sententiam tuam.",
     "summaryFeedbackFailed": "Sententiam tuam mittere non potuimus. Quaeso iterum conare.",
-    "summaryFeedbackProcessing": "Sententiam tuam mittimus et summam renovamus…"
+    "summaryFeedbackProcessing": "Sententiam tuam mittimus et summam renovamus…",
+    "callTranscriptNotSubscribed": "{name} non habuit subscriptionem per hunc sermonem, ergo quod dictum est non est transcriptum."
 }

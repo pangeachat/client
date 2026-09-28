@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-09-23 15:42:50.927660",
+    "@@last_modified": "2026-09-28 13:21:25.245136",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "Ukusesha uhlelo aluzange luqede. Zama futhi.",
     "summaryFeedbackReceived": "Siyabonga! Sitholile impendulo yakho.",
     "summaryFeedbackFailed": "Ayikwazanga ukuthumela impendulo yakho. Sicela uzame futhi.",
-    "summaryFeedbackProcessing": "Sithumela impendulo yakho futhi sibuyekeza isifinyezo…"
+    "summaryFeedbackProcessing": "Sithumela impendulo yakho futhi sibuyekeza isifinyezo…",
+    "callTranscriptNotSubscribed": "{name} ubengabhalisile ngesikhathi socingo, ngakho-ke lokho okwashiwo akuzange kubhalwe."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-09-23 15:42:42.936500",
+    "@@last_modified": "2026-09-28 13:21:16.497258",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10267,5 +10267,6 @@
     "goalReportErrorRetry": "لم يكتمل البحث عن الدورة. حاول مرة أخرى.",
     "summaryFeedbackReceived": "شكرًا! لقد تلقينا ملاحظاتك.",
     "summaryFeedbackFailed": "تعذر إرسال ملاحظاتك. يرجى المحاولة مرة أخرى.",
-    "summaryFeedbackProcessing": "جارٍ إرسال ملاحظاتك وتحديث الملخص…"
+    "summaryFeedbackProcessing": "جارٍ إرسال ملاحظاتك وتحديث الملخص…",
+    "callTranscriptNotSubscribed": "لم يكن لدى {name} اشتراك خلال هذه المكالمة، لذلك لم يتم نسخ ما قيل."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-09-23 15:42:44.097828",
+    "@@last_modified": "2026-09-28 13:21:18.102170",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10316,5 +10316,6 @@
     "goalReportErrorRetry": "La recherche du tour n'est pas terminée. Réessayez.",
     "summaryFeedbackReceived": "Merci ! Nous avons bien reçu vos commentaires.",
     "summaryFeedbackFailed": "Impossible d'envoyer vos commentaires. Veuillez réessayer.",
-    "summaryFeedbackProcessing": "Envoi de vos commentaires et mise à jour du résumé…"
+    "summaryFeedbackProcessing": "Envoi de vos commentaires et mise à jour du résumé…",
+    "callTranscriptNotSubscribed": "{name} n'avait pas d'abonnement pendant cet appel, donc ce qui a été dit n'a pas été transcrit."
 }

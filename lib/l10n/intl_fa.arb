@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-23 15:42:44.036225",
+    "@@last_modified": "2026-09-28 13:21:17.779475",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10049,5 +10049,6 @@
     "goalReportErrorRetry": "جستجو برای نوبت به پایان نرسید. دوباره تلاش کنید.",
     "summaryFeedbackReceived": "متشکریم! بازخورد شما دریافت شد.",
     "summaryFeedbackFailed": "ارسال بازخورد شما ممکن نشد. لطفاً دوباره تلاش کنید.",
-    "summaryFeedbackProcessing": "در حال ارسال بازخورد شما و به‌روزرسانی خلاصه..."
+    "summaryFeedbackProcessing": "در حال ارسال بازخورد شما و به‌روزرسانی خلاصه...",
+    "callTranscriptNotSubscribed": "{name} در طول این تماس اشتراک نداشت، بنابراین آنچه گفته شد رونویسی نشد."
 }

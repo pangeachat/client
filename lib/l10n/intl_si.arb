@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-09-23 15:42:48.646962",
+    "@@last_modified": "2026-09-28 13:21:22.511185",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "වාරය සෙවීම අවසන් වූයේ නැත. නැවත උත්සාහ කරන්න.",
     "summaryFeedbackReceived": "ස්තූතියි! ඔබගේ ප්‍රතිපෝෂණය අපට ලැබුණි.",
     "summaryFeedbackFailed": "ඔබගේ ප්‍රතිපෝෂණය යැවිය නොහැකි විය. කරුණාකර නැවත උත්සාහ කරන්න.",
-    "summaryFeedbackProcessing": "ඔබගේ ප්‍රතිපෝෂණය යවමින් සහ සාරාංශය යාවත්කාලීන කරමින්..."
+    "summaryFeedbackProcessing": "ඔබගේ ප්‍රතිපෝෂණය යවමින් සහ සාරාංශය යාවත්කාලීන කරමින්...",
+    "callTranscriptNotSubscribed": "මෙම ඇමතුම අතරතුර {name} හට දායකත්වයක් නොතිබූ බැවින්, කතා කළ දේ පිටපත් කර නොමැත."
 }

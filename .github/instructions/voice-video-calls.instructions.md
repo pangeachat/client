@@ -235,6 +235,8 @@ Two rules keep that honest:
   entry we could not parse — each is named, and named as ours. "It said I said
   nothing" is unanswerable if all we kept was the state.
 
+**A missing subscription is named too.** Transcription is a paid feature, so a speaker without a subscription still has their audio captured, and the transcriber refuses every chunk of it. Their half says so, instead of calling the audio lost. Those chunks are still counted as lost as well, so an older app that cannot read the new reason says "lost" rather than wrongly concluding the speaker said nothing. A half that kept some words shows the usual note that part of it may be missing.
+
 Who was on the call is derived locally from the direct chat, and only those two
 get a section. The card names a caller, but anybody can write a card, and a
 section for a name that was never on the call lends a forgery the standing of a

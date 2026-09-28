@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-09-23 15:42:47.102581",
+    "@@last_modified": "2026-09-28 13:21:22.343524",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "Эргэлтийг хайх ажил дуусаагүй байна. Дахин оролдоно уу.",
     "summaryFeedbackReceived": "Баярлалаа! Таны санал хүсэлтийг хүлээн авлаа.",
     "summaryFeedbackFailed": "Таны санал хүсэлтийг илгээж чадсангүй. Дахин оролдоно уу.",
-    "summaryFeedbackProcessing": "Таны санал хүсэлтийг илгээж, хураангуйг шинэчилж байна…"
+    "summaryFeedbackProcessing": "Таны санал хүсэлтийг илгээж, хураангуйг шинэчилж байна…",
+    "callTranscriptNotSubscribed": "Энэ дуудлагын үеэр {name} захиалгагүй байсан тул яригдсан зүйлсийг хуулбарлаагүй болно."
 }

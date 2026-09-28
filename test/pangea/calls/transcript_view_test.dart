@@ -253,6 +253,7 @@ void main() {
       chunksCaptured: 1,
       chunksTranscribed: 1,
       chunksLost: 0,
+      chunksRefusedUnsubscribed: 0,
       chunksSuppressed: 0,
       chunksDiscarded: 0,
       keptSpans: const [],
@@ -1720,6 +1721,34 @@ void main() {
         reason:
             'a sibling that never wrote and a sibling holding the words are '
             'different things to go and do something about',
+      );
+    });
+
+    test('a speaker with no subscription is told so, not that it was lost', () {
+      final half = assembleTranscript(
+        candidates: const [
+          TranscriptCandidate(
+            senderId: _peer,
+            originServerTs: 1000,
+            segments: [],
+            accounting: HalfAccounting(
+              chunksCaptured: 3,
+              chunksLost: 3,
+              chunksRefusedUnsubscribed: 3,
+              declared: true,
+            ),
+          ),
+        ],
+        expectedSenders: [_peer],
+      ).halves.single;
+
+      expect(
+        emptyHalfNote(half, 'Ana', l10n),
+        l10n.callTranscriptNotSubscribed('Ana'),
+      );
+      expect(
+        emptyHalfNote(half, 'Ana', l10n),
+        isNot(l10n.callTranscriptAudioLost('Ana')),
       );
     });
 

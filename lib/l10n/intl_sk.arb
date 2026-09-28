@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-09-23 15:42:48.683309",
+    "@@last_modified": "2026-09-28 13:21:22.440829",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10906,5 +10906,6 @@
     "goalReportErrorRetry": "Vyhľadávanie ťahu sa nedokončilo. Skúste to znova.",
     "summaryFeedbackReceived": "Ďakujeme! Prijali sme vašu spätnú väzbu.",
     "summaryFeedbackFailed": "Spätnú väzbu sa nepodarilo odoslať. Skúste to znova.",
-    "summaryFeedbackProcessing": "Odosielanie spätnej väzby a aktualizácia zhrnutia…"
+    "summaryFeedbackProcessing": "Odosielanie spätnej väzby a aktualizácia zhrnutia…",
+    "callTranscriptNotSubscribed": "{name} nemal počas tohto hovoru predplatné, takže to, čo bolo povedané, nebolo prepísané."
 }

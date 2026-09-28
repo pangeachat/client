@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-09-23 15:42:46.636970",
+    "@@last_modified": "2026-09-28 13:21:20.357573",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2369,5 +2369,6 @@
     "goalReportErrorRetry": "ການຄົ້ນຫາການຫັນປ່ຽນຍັງບໍ່ສຳເລັດ. ລອງໃໝ່ອີກຄັ້ງ.",
     "summaryFeedbackReceived": "ຂອບໃຈ! ພວກເຮົາໄດ້ຮັບຄຳຕິຊົມຂອງທ່ານແລ້ວ.",
     "summaryFeedbackFailed": "ບໍ່ສາມາດສົ່ງຄຳຕິຊົມຂອງທ່ານໄດ້. ກະລຸນາລອງໃໝ່ອີກຄັ້ງ.",
-    "summaryFeedbackProcessing": "ກຳລັງສົ່ງຄຳຕິຊົມຂອງທ່ານ ແລະ ອັບເດດບົດສະຫຼຸບ..."
+    "summaryFeedbackProcessing": "ກຳລັງສົ່ງຄຳຕິຊົມຂອງທ່ານ ແລະ ອັບເດດບົດສະຫຼຸບ...",
+    "callTranscriptNotSubscribed": "{name} ບໍ່ໄດ້ສະໝັກໃຊ້ບໍລິການໃນລະຫວ່າງການໂທນີ້, ສະນັ້ນສິ່ງທີ່ເວົ້າຈຶ່ງບໍ່ໄດ້ຖືກຖອດຂໍ້ຄວາມ."
 }
