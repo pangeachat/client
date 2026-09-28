@@ -110,13 +110,13 @@ void main() {
       );
     });
     test('unknown winning type + null planId -> false', () {
-      // A type the client doesn't know (e.g. the retired `individual` label)
-      // parses to null and is not treated as billable.
+      // A type the client doesn't know parses to null and is not treated as
+      // billable.
       expect(
         status(
           accessLevel: SubscriptionAccessLevel.full,
           winning: SubscriptionWinning.fromJson(const {
-            "type": "individual",
+            "type": "some_future_type",
             "status": "active",
           }),
         ).isPaidWithoutPlan,
