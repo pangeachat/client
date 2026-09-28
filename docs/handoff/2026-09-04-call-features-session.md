@@ -2797,3 +2797,23 @@ until the design is Codex-green.
 - REMAINING for showcase: phone APK build+install (P1+P2+P3, flag on) + the real call. Phone
   DISCONNECTED -> waiting on owner to reconnect. pubspec .env still uncommented for the pending APK
   build (RE-COMMENT after). Server backstop (P4-P5) remains the deferred follow-up; PR2 on owner go.
+
+### 2026-09-28 — session resumed; local stack was DOWN (orphaned); FULLY restored + LAN-ready
+- On resume the prior session's bg servers were orphaned/stopped. Confirmed: only Synapse +
+  fedtls containers alive; LiveKit, lk-jwt, choreo, web all down. Working tree clean; pubspec
+  `- .env` already re-commented (no dirty state). Code unchanged since Sep 21 (HEAD c421c47e7d is
+  a handoff commit; last code commit 69cad6f9cf) -> the Sep-21 gates + 437 tests still stand.
+- RESTORED (laptop-side, all localhost 200 AND LAN 192.168.1.156 reachable):
+  - LiveKit :7880 + lk-jwt :7980 via `docker compose up -d livekit lk-jwt-service`.
+  - choreo :8012 bound 0.0.0.0 from the repo-root `.choreo-venv` (uvicorn app.main:app); STT route
+    live (`GET /choreo/speech_to_text` -> 405). choreo .env has google/cms/speech creds; S3 disabled
+    (image-gen/TTS only, irrelevant to STT).
+  - web :8090 serving THIS worktree's build/web (Sep-21 feature bundle) via local-dev/spa_server.py;
+    served /.env has CALL_RECORDING_TRANSCRIPT=true + SYNAPSE_URL/CHOREO_API on LAN.
+- LAN focus fixed: Synapse advertises rtc_foci livekit_service_url=http://192.168.1.156:7980
+  (persists in container homeserver.yaml). lk-jwt was recreated by the compose `up` -> LIVEKIT_URL
+  reset to the ws://livekit.localhost:7880 trap; re-recreated with a scratchpad compose overlay
+  (base file untouched) so LIVEKIT_URL=ws://192.168.1.156:7880. Verified via docker inspect + healthz.
+- STATE: full stack call-ready over LAN. ONLY remaining for the showcase = phone: reconnect (adb
+  sees nothing now) + rebuild/install APK from this branch (LAN .env + flag on) — the installed one
+  is a week old. Then the two-human phone<->laptop call, then verify both halves. PR2 on owner go.
