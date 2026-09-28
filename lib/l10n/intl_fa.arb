@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-28 13:21:17.779475",
+    "@@last_modified": "2026-09-28 15:15:58.988748",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10050,5 +10050,10 @@
     "summaryFeedbackReceived": "متشکریم! بازخورد شما دریافت شد.",
     "summaryFeedbackFailed": "ارسال بازخورد شما ممکن نشد. لطفاً دوباره تلاش کنید.",
     "summaryFeedbackProcessing": "در حال ارسال بازخورد شما و به‌روزرسانی خلاصه...",
-    "callTranscriptNotSubscribed": "{name} در طول این تماس اشتراک نداشت، بنابراین آنچه گفته شد رونویسی نشد."
+    "callTranscriptNotSubscribed": "{name} در طول این تماس اشتراک نداشت، بنابراین آنچه گفته شد رونویسی نشد.",
+    "joinYourCourse": "به دوره خود بپیوندید",
+    "courseCodeJoinExplanation": "وارد شوید یا ثبت‌نام کنید، و ما از کد دوره شما برای افزودن خودکار شما به دوره استفاده خواهیم کرد.",
+    "courseCodeLabel": "کد دوره",
+    "courseCodeSaved": "کد دوره {code} ذخیره شد",
+    "courseCodeSavedExplanation": "ثبت‌نام کنید یا وارد شوید و ما شما را به دوره شما اضافه خواهیم کرد."
 }

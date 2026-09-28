@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-09-28 13:21:16.673321",
+    "@@last_modified": "2026-09-28 15:15:57.495103",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2370,5 +2370,10 @@
     "summaryFeedbackReceived": "እናመሰግናለን! አስተያየትዎን ተቀብለናል።",
     "summaryFeedbackFailed": "አስተያየትዎን መላክ አልተቻለም። እባክዎ እንደገና ይሞክሩ።",
     "summaryFeedbackProcessing": "አስተያየትዎን በመላክ ላይ እና ማጠቃለያውን በማዘመን ላይ…",
-    "callTranscriptNotSubscribed": "{name} ይህ ጥሪ በሚደረግበት ጊዜ የደንበኝነት ምዝገባ ስላልነበረው የተነገረው ነገር አልተመዘገበም።"
+    "callTranscriptNotSubscribed": "{name} ይህ ጥሪ በሚደረግበት ጊዜ የደንበኝነት ምዝገባ ስላልነበረው የተነገረው ነገር አልተመዘገበም።",
+    "joinYourCourse": "ኮርስዎን ይቀላቀሉ",
+    "courseCodeJoinExplanation": "ይግቡ ወይም ይመዝገቡ፣ እና ኮርስ ኮድዎን ተጠቅመን በራስ-ሰር ወደ ኮርስዎ እናስገባዎታለን።",
+    "courseCodeLabel": "የኮርስ ኮድ",
+    "courseCodeSaved": "የኮርስ ኮድ {code} ተቀምጧል",
+    "courseCodeSavedExplanation": "ይመዝገቡ ወይም ይግቡ እና ወደ ኮርስዎ እናስገባዎታለን።"
 }

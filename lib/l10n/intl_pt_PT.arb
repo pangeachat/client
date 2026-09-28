@@ -2559,7 +2559,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-09-28 13:21:21.950379",
+    "@@last_modified": "2026-09-28 15:16:05.731342",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10879,5 +10879,10 @@
     "summaryFeedbackReceived": "Obrigado! Recebemos o seu feedback.",
     "summaryFeedbackFailed": "Não foi possível enviar o seu feedback. Por favor, tente novamente.",
     "summaryFeedbackProcessing": "A enviar o seu feedback e a atualizar o resumo…",
-    "callTranscriptNotSubscribed": "{name} não tinha uma subscrição durante esta chamada, por isso o que foi dito não foi transcrito."
+    "callTranscriptNotSubscribed": "{name} não tinha uma subscrição durante esta chamada, por isso o que foi dito não foi transcrito.",
+    "joinYourCourse": "Aceder ao seu curso",
+    "courseCodeJoinExplanation": "Inicie sessão ou registe-se, e usaremos o seu código de curso para adicioná-lo automaticamente ao seu curso.",
+    "courseCodeLabel": "Código do curso",
+    "courseCodeSaved": "Código do curso {code} guardado",
+    "courseCodeSavedExplanation": "Registe-se ou inicie sessão e adicioná-lo-emos ao seu curso."
 }

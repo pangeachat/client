@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-09-28 13:21:21.667878",
+    "@@last_modified": "2026-09-28 15:16:04.969552",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2370,5 +2370,10 @@
     "summaryFeedbackReceived": "Zikomo! Talandira ndemanga yanu.",
     "summaryFeedbackFailed": "Zalephera kutumiza ndemanga yanu. Chonde yesaninso.",
     "summaryFeedbackProcessing": "Kutumiza ndemanga yanu ndikusintha chidule…",
-    "callTranscriptNotSubscribed": "{name} analibe chiphaso panthawi yoyimbira iyi, choncho zomwe zinanenedwa sizinajambulidwe."
+    "callTranscriptNotSubscribed": "{name} analibe chiphaso panthawi yoyimbira iyi, choncho zomwe zinanenedwa sizinajambulidwe.",
+    "joinYourCourse": "Lowani mu kosi yanu",
+    "courseCodeJoinExplanation": "Lowani kapena lembetsani, ndipo tidzagwiritsa ntchito nambala yanu ya kosi kuti tikulowetseni mu kosi yanu zokha.",
+    "courseCodeLabel": "Nambala ya kosi",
+    "courseCodeSaved": "Nambala ya kosi {code} yasungidwa",
+    "courseCodeSavedExplanation": "Lembetsani kapena lowani ndipo tidzakulowetsani mu kosi yanu."
 }

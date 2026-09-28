@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-09-28 13:21:19.282694",
+    "@@last_modified": "2026-09-28 15:16:01.640531",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2370,5 +2370,10 @@
     "summaryFeedbackReceived": "Takk! Við höfum móttekið ábendingar þínar.",
     "summaryFeedbackFailed": "Gat ekki sent ábendingar þínar. Vinsamlegast reyndu aftur.",
     "summaryFeedbackProcessing": "Sendir endurgjöf þína og uppfærir samantektina…",
-    "callTranscriptNotSubscribed": "{name} var ekki með áskrift í þessu símtali, svo það sem sagt var var ekki umritað."
+    "callTranscriptNotSubscribed": "{name} var ekki með áskrift í þessu símtali, svo það sem sagt var var ekki umritað.",
+    "joinYourCourse": "Skráðu þig í námskeiðið þitt",
+    "courseCodeJoinExplanation": "Skráðu þig inn eða stofnaðu aðgang og við munum nota námskeiðskóðann þinn til að bæta þér sjálfkrafa við námskeiðið þitt.",
+    "courseCodeLabel": "Námskeiðskóði",
+    "courseCodeSaved": "Námskeiðskóði {code} vistaður",
+    "courseCodeSavedExplanation": "Skráðu þig eða skráðu þig inn og við munum bæta þér við námskeiðið þitt."
 }

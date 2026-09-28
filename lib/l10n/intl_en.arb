@@ -5679,5 +5679,30 @@
     "videoPlayer": "Video player",
     "@videoPlayer": {
         "description": "Accessible name of a playing activity video, which is one keyboard stop."
+    },
+    "joinYourCourse": "Join your course",
+    "@joinYourCourse": {
+        "description": "Title of the dialog a signed-out visitor sees on the welcome screen after opening a course join link."
+    },
+    "courseCodeJoinExplanation": "Log in or sign up, and we'll use your course code to add you to your course automatically.",
+    "@courseCodeJoinExplanation": {
+        "description": "Body of the dialog a signed-out visitor sees after opening a course join link, telling them the saved code will join them once they sign in."
+    },
+    "courseCodeLabel": "Course code",
+    "@courseCodeLabel": {
+        "description": "Label shown before the course join code itself (a short code like k7m2qa9) in the welcome dialog."
+    },
+    "courseCodeSaved": "Course code {code} saved",
+    "@courseCodeSaved": {
+        "description": "Heading of the card on the sign-up and login pages telling a signed-out visitor their course join code was kept.",
+        "placeholders": {
+            "code": {
+                "type": "String"
+            }
+        }
+    },
+    "courseCodeSavedExplanation": "Sign up or log in and we'll add you to your course.",
+    "@courseCodeSavedExplanation": {
+        "description": "Line under the saved-course-code card on the sign-up and login pages."
     }
 }

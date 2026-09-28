@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-09-28 13:21:27.700953",
+    "@@last_modified": "2026-09-28 15:16:09.278900",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2370,5 +2370,10 @@
     "summaryFeedbackReceived": "Enkosi! Siyifumene impendulo yakho.",
     "summaryFeedbackFailed": "Ayikwazanga ukuthumela impendulo yakho. Nceda zama kwakhona.",
     "summaryFeedbackProcessing": "Sithumela ingxelo yakho kwaye sihlaziya isishwankathelo…",
-    "callTranscriptNotSubscribed": "U-{name} ebengekafaki isicelo ngexesha lale fowuni, ngoko ke oko kuthethweyo akubhalwanga."
+    "callTranscriptNotSubscribed": "U-{name} ebengekafaki isicelo ngexesha lale fowuni, ngoko ke oko kuthethweyo akubhalwanga.",
+    "joinYourCourse": "Joyina ikhosi yakho",
+    "courseCodeJoinExplanation": "Ngena okanye ubhalise, kwaye siza kusebenzisa ikhowudi yekhosi yakho ukukongeza kwikhosi yakho ngokuzenzekelayo.",
+    "courseCodeLabel": "Ikhowudi yekhosi",
+    "courseCodeSaved": "Ikhowudi yekhosi {code} igciniwe",
+    "courseCodeSavedExplanation": "Bhalisa okanye ungene kwaye siza kukongeza kwikhosi yakho."
 }

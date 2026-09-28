@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-09-28 13:21:22.440829",
+    "@@last_modified": "2026-09-28 15:16:06.277826",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10907,5 +10907,10 @@
     "summaryFeedbackReceived": "Ďakujeme! Prijali sme vašu spätnú väzbu.",
     "summaryFeedbackFailed": "Spätnú väzbu sa nepodarilo odoslať. Skúste to znova.",
     "summaryFeedbackProcessing": "Odosielanie spätnej väzby a aktualizácia zhrnutia…",
-    "callTranscriptNotSubscribed": "{name} nemal počas tohto hovoru predplatné, takže to, čo bolo povedané, nebolo prepísané."
+    "callTranscriptNotSubscribed": "{name} nemal počas tohto hovoru predplatné, takže to, čo bolo povedané, nebolo prepísané.",
+    "joinYourCourse": "Pripojte sa k svojmu kurzu",
+    "courseCodeJoinExplanation": "Prihláste sa alebo sa zaregistrujte a my použijeme váš kód kurzu na automatické pridanie do kurzu.",
+    "courseCodeLabel": "Kód kurzu",
+    "courseCodeSaved": "Kód kurzu {code} uložený",
+    "courseCodeSavedExplanation": "Zaregistrujte sa alebo sa prihláste a my vás pridáme do vášho kurzu."
 }

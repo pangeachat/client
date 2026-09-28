@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-09-28 13:21:24.046710",
+    "@@last_modified": "2026-09-28 15:16:08.001466",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10263,5 +10263,10 @@
     "summaryFeedbackReceived": "Teşekkürler! Geri bildiriminiz alındı.",
     "summaryFeedbackFailed": "Geri bildiriminiz gönderilemedi. Lütfen tekrar deneyin.",
     "summaryFeedbackProcessing": "Geri bildiriminiz gönderiliyor ve özet güncelleniyor…",
-    "callTranscriptNotSubscribed": "{name} bu arama sırasında bir aboneliğe sahip değildi, bu nedenle konuşulanlar yazıya dökülmedi."
+    "callTranscriptNotSubscribed": "{name} bu arama sırasında bir aboneliğe sahip değildi, bu nedenle konuşulanlar yazıya dökülmedi.",
+    "joinYourCourse": "Kursunuza katılın",
+    "courseCodeJoinExplanation": "Giriş yapın veya kaydolun, kurs kodunuzu kullanarak sizi otomatik olarak kursunuza ekleyeceğiz.",
+    "courseCodeLabel": "Kurs kodu",
+    "courseCodeSaved": "{code} kurs kodu kaydedildi",
+    "courseCodeSavedExplanation": "Kaydolun veya giriş yapın, sizi kursunuza ekleyeceğiz."
 }

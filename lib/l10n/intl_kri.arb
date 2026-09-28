@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-09-28 13:21:19.907751",
+    "@@last_modified": "2026-09-28 15:16:02.447123",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2370,5 +2370,10 @@
     "summaryFeedbackReceived": "Tenki! Wi don gɛt yu fidbak.",
     "summaryFeedbackFailed": "Wi nɔ ebul sɛn yu fidbak. Duya tray bak.",
     "summaryFeedbackProcessing": "Deh de sen yu fidak ɛn apdet di sɔmari…",
-    "callTranscriptNotSubscribed": "{name} nɔ bin gɛt sɔbskripshɔn dɛn dis kɔl, so wetin dɛn tɔk nɔ bin rayt dɔŋ."
+    "callTranscriptNotSubscribed": "{name} nɔ bin gɛt sɔbskripshɔn dɛn dis kɔl, so wetin dɛn tɔk nɔ bin rayt dɔŋ.",
+    "joinYourCourse": "Jɔyn yu kɔs",
+    "courseCodeJoinExplanation": "Lɔg in ɔ sayn ap, ɛn wi go yuz yu kɔs kod fɔ ad yu to yu kɔs ɔtɔmatikali.",
+    "courseCodeLabel": "Kɔs kod",
+    "courseCodeSaved": "Kɔs kod {code} dɔn sev",
+    "courseCodeSavedExplanation": "Sayn ap ɔ lɔg in ɛn wi go ad yu to yu kɔs."
 }

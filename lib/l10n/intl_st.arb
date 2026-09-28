@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-09-28 13:21:24.923393",
+    "@@last_modified": "2026-09-28 15:16:07.055129",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2370,5 +2370,10 @@
     "summaryFeedbackReceived": "Kea leboha! Re amohetse maikutlo a hau.",
     "summaryFeedbackFailed": "Ha rea khona ho romela maikutlo a hau. Ka kopo leka hape.",
     "summaryFeedbackProcessing": "Re romela maikutlo a hao le ho ntlafatsa kakaretso…",
-    "callTranscriptNotSubscribed": "{name} o ne a se na peeletso nakong ya mohala ona, kahoo se ileng sa buuwa ha sea ka sa ngolwa."
+    "callTranscriptNotSubscribed": "{name} o ne a se na peeletso nakong ya mohala ona, kahoo se ileng sa buuwa ha sea ka sa ngolwa.",
+    "joinYourCourse": "Kena thupelong ea hau",
+    "courseCodeJoinExplanation": "Kena kapa ingolise, 'me re tla sebelisa khoutu ea thupelo ea hau ho u kenya thupelong ea hau ka bo eona.",
+    "courseCodeLabel": "Khoutu ea thupelo",
+    "courseCodeSaved": "Khoutu ea thupelo {code} e bolokiloe",
+    "courseCodeSavedExplanation": "Ingolise kapa u kene 'me re tla u kenya thupelong ea hau."
 }

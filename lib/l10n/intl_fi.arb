@@ -3536,7 +3536,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-09-28 13:21:17.950415",
+    "@@last_modified": "2026-09-28 15:15:59.123243",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9999,5 +9999,10 @@
     "summaryFeedbackReceived": "Kiitos! Palautteesi on vastaanotettu.",
     "summaryFeedbackFailed": "Palautteen lähettäminen epäonnistui. Yritä uudelleen.",
     "summaryFeedbackProcessing": "Lähetetään palautettasi ja päivitetään yhteenvetoa…",
-    "callTranscriptNotSubscribed": "{name} ei ollut tilannut palvelua tämän puhelun aikana, joten puhetta ei litteroitu."
+    "callTranscriptNotSubscribed": "{name} ei ollut tilannut palvelua tämän puhelun aikana, joten puhetta ei litteroitu.",
+    "joinYourCourse": "Liity kurssillesi",
+    "courseCodeJoinExplanation": "Kirjaudu sisään tai rekisteröidy, niin lisäämme sinut kurssillesi automaattisesti kurssikoodisi avulla.",
+    "courseCodeLabel": "Kurssikoodi",
+    "courseCodeSaved": "Kurssikoodi {code} tallennettu",
+    "courseCodeSavedExplanation": "Rekisteröidy tai kirjaudu sisään, niin lisäämme sinut kurssillesi."
 }

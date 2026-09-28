@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-09-28 13:21:16.590810",
+    "@@last_modified": "2026-09-28 15:15:56.943939",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2370,5 +2370,10 @@
     "summaryFeedbackReceived": "Благодарим Ви! Получихме обратната Ви връзка.",
     "summaryFeedbackFailed": "Неуспешно изпращане на обратна връзка. Моля, опитайте отново.",
     "summaryFeedbackProcessing": "Изпращане на обратна връзка и актуализиране на резюмето…",
-    "callTranscriptNotSubscribed": "{name} не е имал абонамент по време на този разговор, така че казаното не е транскрибирано."
+    "callTranscriptNotSubscribed": "{name} не е имал абонамент по време на този разговор, така че казаното не е транскрибирано.",
+    "joinYourCourse": "Присъединете се към курса си",
+    "courseCodeJoinExplanation": "Влезте или се регистрирайте и ние автоматично ще ви добавим към курса ви, използвайки кода на курса.",
+    "courseCodeLabel": "Код на курса",
+    "courseCodeSaved": "Кодът на курса {code} е запазен",
+    "courseCodeSavedExplanation": "Регистрирайте се или влезте и ние ще ви добавим към курса ви."
 }

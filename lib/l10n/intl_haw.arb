@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-09-28 13:21:18.645531",
+    "@@last_modified": "2026-09-28 15:16:00.214527",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2370,5 +2370,10 @@
     "summaryFeedbackReceived": "Mahalo! Ua loaʻa iā mākou kou manaʻo.",
     "summaryFeedbackFailed": "ʻAʻole hiki ke hoʻouna i kou manaʻo. E ʻoluʻolu e hoʻāʻo hou.",
     "summaryFeedbackProcessing": "Ke hoʻouna nei i kāu manaʻo a ke hōʻano hou nei i ka hōʻuluʻulu manaʻo…",
-    "callTranscriptNotSubscribed": "ʻAʻohe kau inoa o {name} i ka wā o kēia kelepona ʻana, no laila, ʻaʻole i kākau ʻia ka mea i ʻōlelo ʻia."
+    "callTranscriptNotSubscribed": "ʻAʻohe kau inoa o {name} i ka wā o kēia kelepona ʻana, no laila, ʻaʻole i kākau ʻia ka mea i ʻōlelo ʻia.",
+    "joinYourCourse": "E hui pū me kāu papa",
+    "courseCodeJoinExplanation": "E ʻeʻe a i ʻole e kau inoa, a e hoʻohana mākou i kāu code papa e hoʻohui aunoa iā ʻoe i kāu papa.",
+    "courseCodeLabel": "Code papa",
+    "courseCodeSaved": "Ua mālama ʻia ke code papa {code}",
+    "courseCodeSavedExplanation": "E kau inoa a i ʻole e ʻeʻe a e hoʻohui mākou iā ʻoe i kāu papa."
 }

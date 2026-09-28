@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-09-28 13:21:16.683943",
+    "@@last_modified": "2026-09-28 15:15:57.207969",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2370,5 +2370,10 @@
     "summaryFeedbackReceived": "Təşəkkürlər! Rəyinizi aldıq.",
     "summaryFeedbackFailed": "Rəyinizi göndərmək mümkün olmadı. Zəhmət olmasa, yenidən cəhd edin.",
     "summaryFeedbackProcessing": "Rəyinizi göndəririk və xülasəni yeniləyirik…",
-    "callTranscriptNotSubscribed": "{name} bu zəng zamanı abunəçi olmadığı üçün deyilənlər transkripsiya edilmədi."
+    "callTranscriptNotSubscribed": "{name} bu zəng zamanı abunəçi olmadığı üçün deyilənlər transkripsiya edilmədi.",
+    "joinYourCourse": "Kursunuza qoşulun",
+    "courseCodeJoinExplanation": "Daxil olun və ya qeydiyyatdan keçin, biz sizi kurs kodunuzdan istifadə edərək avtomatik olaraq kursunuza əlavə edəcəyik.",
+    "courseCodeLabel": "Kurs kodu",
+    "courseCodeSaved": "{code} kurs kodu yadda saxlanıldı",
+    "courseCodeSavedExplanation": "Qeydiyyatdan keçin və ya daxil olun, biz sizi kursunuza əlavə edəcəyik."
 }

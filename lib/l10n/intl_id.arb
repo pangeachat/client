@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-28 13:21:19.160388",
+    "@@last_modified": "2026-09-28 15:16:00.782338",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10035,5 +10035,10 @@
     "summaryFeedbackReceived": "Terima kasih! Kami telah menerima masukan Anda.",
     "summaryFeedbackFailed": "Tidak dapat mengirim masukan Anda. Silakan coba lagi.",
     "summaryFeedbackProcessing": "Mengirim masukan Anda dan memperbarui ringkasan…",
-    "callTranscriptNotSubscribed": "{name} tidak memiliki langganan selama panggilan ini, jadi apa yang dikatakan tidak ditranskripsikan."
+    "callTranscriptNotSubscribed": "{name} tidak memiliki langganan selama panggilan ini, jadi apa yang dikatakan tidak ditranskripsikan.",
+    "joinYourCourse": "Gabung kursus Anda",
+    "courseCodeJoinExplanation": "Masuk atau daftar, dan kami akan menggunakan kode kursus Anda untuk menambahkan Anda ke kursus secara otomatis.",
+    "courseCodeLabel": "Kode kursus",
+    "courseCodeSaved": "Kode kursus {code} tersimpan",
+    "courseCodeSavedExplanation": "Daftar atau masuk dan kami akan menambahkan Anda ke kursus Anda."
 }

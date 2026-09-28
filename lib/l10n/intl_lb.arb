@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-09-28 13:21:20.183171",
+    "@@last_modified": "2026-09-28 15:16:02.993935",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2370,5 +2370,10 @@
     "summaryFeedbackReceived": "Merci! Mir huet äre Feedback kritt.",
     "summaryFeedbackFailed": "Konnt äre Feedback net schécken. Probéiert w.e.g. nach eng Kéier.",
     "summaryFeedbackProcessing": "Äre Feedback gëtt geschéckt an d'Resümmee gëtt aktualiséiert…",
-    "callTranscriptNotSubscribed": "{name} hat während dësem Uruff keen Abonnement, dofir gouf dat Gesotent net transkribéiert."
+    "callTranscriptNotSubscribed": "{name} hat während dësem Uruff keen Abonnement, dofir gouf dat Gesotent net transkribéiert.",
+    "joinYourCourse": "Maach bei dengem Cours mat",
+    "courseCodeJoinExplanation": "Mell dech un oder registréier dech, a mir benotzen däi Cours-Code fir dech automatesch zu dengem Cours dobäizesetzen.",
+    "courseCodeLabel": "Cours-Code",
+    "courseCodeSaved": "Cours-Code {code} gespäichert",
+    "courseCodeSavedExplanation": "Mell dech un oder registréier dech a mir setzen dech zu dengem Cours dobäi."
 }

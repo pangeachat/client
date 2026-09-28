@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-09-28 13:21:21.402078",
+    "@@last_modified": "2026-09-28 15:16:04.800760",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2370,5 +2370,10 @@
     "summaryFeedbackReceived": "Takk! Vi har mottatt tilbakemeldingen din.",
     "summaryFeedbackFailed": "Kunne ikke sende tilbakemeldingen din. Vennligst prøv igjen.",
     "summaryFeedbackProcessing": "Sender tilbakemeldingen din og oppdaterer sammendraget …",
-    "callTranscriptNotSubscribed": "{name} hadde ikke et abonnement under denne samtalen, så det som ble sagt ble ikke transkribert."
+    "callTranscriptNotSubscribed": "{name} hadde ikke et abonnement under denne samtalen, så det som ble sagt ble ikke transkribert.",
+    "joinYourCourse": "Bli med på kurset ditt",
+    "courseCodeJoinExplanation": "Logg inn eller registrer deg, så bruker vi kurskoden din til å legge deg til kurset ditt automatisk.",
+    "courseCodeLabel": "Kurskode",
+    "courseCodeSaved": "Kurskode {code} lagret",
+    "courseCodeSavedExplanation": "Registrer deg eller logg inn, så legger vi deg til kurset ditt."
 }

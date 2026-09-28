@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-09-28 13:21:20.831176",
+    "@@last_modified": "2026-09-28 15:16:03.847928",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2370,5 +2370,10 @@
     "summaryFeedbackReceived": "Terima kasih! Kami telah menerima maklum balas anda.",
     "summaryFeedbackFailed": "Tidak dapat menghantar maklum balas anda. Sila cuba lagi.",
     "summaryFeedbackProcessing": "Menghantar maklum balas anda dan mengemas kini ringkasan…",
-    "callTranscriptNotSubscribed": "{name} tidak mempunyai langganan semasa panggilan ini, jadi apa yang dikatakan tidak ditranskripsi."
+    "callTranscriptNotSubscribed": "{name} tidak mempunyai langganan semasa panggilan ini, jadi apa yang dikatakan tidak ditranskripsi.",
+    "joinYourCourse": "Sertai kursus anda",
+    "courseCodeJoinExplanation": "Log masuk atau daftar, dan kami akan menggunakan kod kursus anda untuk menambahkan anda ke kursus anda secara automatik.",
+    "courseCodeLabel": "Kod kursus",
+    "courseCodeSaved": "Kod kursus {code} disimpan",
+    "courseCodeSavedExplanation": "Daftar atau log masuk dan kami akan menambahkan anda ke kursus anda."
 }

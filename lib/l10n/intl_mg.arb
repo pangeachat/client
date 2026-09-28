@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-09-28 13:21:20.623346",
+    "@@last_modified": "2026-09-28 15:16:03.358345",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2370,5 +2370,10 @@
     "summaryFeedbackReceived": "Misaotra! Voaray ny hevitrao.",
     "summaryFeedbackFailed": "Tsy afaka nandefa ny hevitrao. Andramo indray azafady.",
     "summaryFeedbackProcessing": "Mandefa ny hevitrao sy manavao ny famintinana…",
-    "callTranscriptNotSubscribed": "Tsy nanana famandrihana i {name} nandritra ity antso ity, ka tsy voasoratra izay voalaza."
+    "callTranscriptNotSubscribed": "Tsy nanana famandrihana i {name} nandritra ity antso ity, ka tsy voasoratra izay voalaza.",
+    "joinYourCourse": "Midira ao amin'ny taranjao",
+    "courseCodeJoinExplanation": "Midira na misoratra anarana, ary hampiasainay ny kaody taranjao mba hanampiana anao ho azy ao amin'ny taranjao.",
+    "courseCodeLabel": "Kaody taranja",
+    "courseCodeSaved": "Kaody taranja {code} voatahiry",
+    "courseCodeSavedExplanation": "Misoratra anarana na midira ary hanampy anao amin'ny taranjao izahay."
 }

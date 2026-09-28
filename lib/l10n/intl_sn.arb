@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-09-28 13:21:22.734691",
+    "@@last_modified": "2026-09-28 15:16:06.881846",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2370,5 +2370,10 @@
     "summaryFeedbackReceived": "Ndatenda! Tawana mhinduro yenyu.",
     "summaryFeedbackFailed": "Hatina kukwanisa kutumira mhinduro yenyu. Ndapota edzai zvakare.",
     "summaryFeedbackProcessing": "Tichitumira mhinduro yako uye tichigadzirisa pfupiso…",
-    "callTranscriptNotSubscribed": "{name} anga asina kunyoresa panguva yekufona uku, saka zvakataurwa hazvina kunyorwa."
+    "callTranscriptNotSubscribed": "{name} anga asina kunyoresa panguva yekufona uku, saka zvakataurwa hazvina kunyorwa.",
+    "joinYourCourse": "Joinha kosi yako",
+    "courseCodeJoinExplanation": "Pinda kana kusaina, uye tichashandisa kodhi yekosi yako kuti tikuwedzere kukosi yako otomatiki.",
+    "courseCodeLabel": "Kodhi yekosi",
+    "courseCodeSaved": "Kodhi yekosi {code} yachengetwa",
+    "courseCodeSavedExplanation": "Saina kana kupinda uye tichakuwedzera kukosi yako."
 }

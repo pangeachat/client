@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-09-28 13:21:21.022912",
+    "@@last_modified": "2026-09-28 15:16:04.401040",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2370,5 +2370,10 @@
     "summaryFeedbackReceived": "Grazzi! Irċevejna l-feedback tiegħek.",
     "summaryFeedbackFailed": "Ma setax jintbagħat il-feedback tiegħek. Jekk jogħġbok erġa' pprova.",
     "summaryFeedbackProcessing": "Qed nibagħtu l-feedback tiegħek u naġġornaw is-sommarju…",
-    "callTranscriptNotSubscribed": "{name} ma kellux abbonament waqt din is-sejħa, għalhekk dak li ntqal ma ġiex traskritt."
+    "callTranscriptNotSubscribed": "{name} ma kellux abbonament waqt din is-sejħa, għalhekk dak li ntqal ma ġiex traskritt.",
+    "joinYourCourse": "Ingħaqad mal-kors tiegħek",
+    "courseCodeJoinExplanation": "Idħol jew irreġistra, u aħna nużaw il-kodiċi tal-kors tiegħek biex inżiduk mal-kors tiegħek awtomatikament.",
+    "courseCodeLabel": "Kodiċi tal-kors",
+    "courseCodeSaved": "Kodiċi tal-kors {code} salvat",
+    "courseCodeSavedExplanation": "Irreġistra jew idħol u aħna nżiduk mal-kors tiegħek."
 }
