@@ -140,8 +140,8 @@ class WorldMap extends StatefulWidget {
   /// The course context bar's footprint, in map coordinates, while the course
   /// panel rests at its floor on wide; null otherwise. A collapsed course panel
   /// is not seated, so [leftOverlayWidth] leaves it out and only this band is
-  /// covered: large cards are not placed under it, and the course-scope
-  /// empty-view card sits below it (#9291).
+  /// covered: large cards are not placed under it, camera fits keep clear of
+  /// it, and the course-scope empty-view card sits below it (#9291).
   final Rect? courseBarRect;
 
   /// Logical-pixel width of the map actually visible between the open side panels
@@ -1092,10 +1092,13 @@ class WorldMapController extends State<WorldMap>
   }
 
   /// Inset the left/right edges by the overlays so camera targets land in the
-  /// uncovered map area beside the column/panel, not behind it.
+  /// uncovered map area beside the column/panel, not behind it. The collapsed
+  /// course's context bar is not part of the left overlay (#9291), so the top
+  /// edge clears it instead: a course fit from the bar's own focus button
+  /// would otherwise put the northernmost activities under the bar.
   EdgeInsets get _exposedCanvasPadding => EdgeInsets.fromLTRB(
     widget.leftOverlayWidth + 64.0,
-    64.0,
+    (widget.courseBarRect?.bottom ?? 0.0) + 64.0,
     widget.rightOverlayWidth + 64.0,
     widget.bottomOverlayHeight + 64.0,
   );

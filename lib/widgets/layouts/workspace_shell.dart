@@ -1591,11 +1591,12 @@ class _ShellLayout {
         ? 0.0
         : (hasLeftTokens ? layout.mapLeftOverlay : columnWidth);
 
-    // A course panel at its floor is not seated (world-map.instructions.md →
-    // The course context bar): its one-line bar covers only its own band, not
-    // the column's full height. So the map keeps the rail as its left overlay —
-    // for the pin budget, card placement and the camera alike — and gets the
-    // bar's footprint on its own (#9291). The canvas keeps [leftInset].
+    // A course panel at its floor is not an open side panel for the map
+    // (world-map.instructions.md → Priority matrix): its one-line bar covers
+    // only its own band, not the column's full height. So the map keeps the
+    // rail as its left overlay and gets the bar's footprint on its own, which
+    // card placement and camera fits keep clear of (#9291). The canvas keeps
+    // [leftInset].
     final courseBarSlot = courseAtFloor && layout.left[0].vis != PanelVis.hidden
         ? layout.left[0]
         : null;
