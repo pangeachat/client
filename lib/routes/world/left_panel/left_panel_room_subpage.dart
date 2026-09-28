@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
@@ -64,23 +66,42 @@ class _LeftPanelRoomSubpageState extends State<LeftPanelRoomSubpage> {
   String? _awaitedRoomId;
   bool _awaitingRoom = false;
 
+  /// Cancelled when the wait ends for any reason. A plain
+  /// `waitForRoomInSync(...).timeout(...)` would leave its sync listener
+  /// attached forever for an id that never syncs.
+  StreamSubscription<SyncUpdate>? _roomArrival;
+  Timer? _roomArrivalTimeout;
+
   void _awaitRoom(Client client, String roomId) {
+    _cancelRoomWait();
     _awaitedRoomId = roomId;
     _awaitingRoom = true;
-    client
-        .waitForRoomInSync(roomId)
-        .timeout(_roomArrivalBound)
-        .then<void>(
-          (_) {},
-          // silent-ok: an id that never syncs is unknown or hand-edited; the
-          // unavailable state is the answer, not a fault. A just-created
-          // room's sync timeout is logged by waitForCreatedRoom.
-          onError: (_) {},
-        )
-        .whenComplete(() {
-          if (!mounted || _awaitedRoomId != roomId) return;
-          setState(() => _awaitingRoom = false);
-        });
+    // onSync fires after the sync has been applied to the room store.
+    _roomArrival = client.onSync.stream
+        .where((_) => client.getRoomById(roomId) != null)
+        .listen((_) => _endRoomWait());
+    // An id that never syncs is unknown or hand-edited: the unavailable state
+    // is the answer, not a fault. A just-created room's sync timeout is logged
+    // by waitForCreatedRoom.
+    _roomArrivalTimeout = Timer(_roomArrivalBound, _endRoomWait);
+  }
+
+  void _endRoomWait() {
+    _cancelRoomWait();
+    if (mounted) setState(() => _awaitingRoom = false);
+  }
+
+  void _cancelRoomWait() {
+    _roomArrival?.cancel();
+    _roomArrival = null;
+    _roomArrivalTimeout?.cancel();
+    _roomArrivalTimeout = null;
+  }
+
+  @override
+  void dispose() {
+    _cancelRoomWait();
+    super.dispose();
   }
 
   @override

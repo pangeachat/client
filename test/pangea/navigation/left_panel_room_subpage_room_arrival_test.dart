@@ -111,10 +111,6 @@ void main() {
         ),
       );
     });
-    // waitForRoomInSync subscribes to the sync status only once it has seen
-    // the room, so the "finished" status has to follow that step.
-    await tester.pump();
-    client.onSyncStatus.add(SyncStatusUpdate(SyncStatus.finished));
     await tester.pump();
     await tester.pump();
 
