@@ -208,10 +208,28 @@ Future<CallTranscript> fetchCallTranscript({
   // is every legacy and flag-off read. With no resolver but a peer claim
   // present, the map is empty and assembly holds that claim out as pending --
   // never its writer's -- which is the safe direction.
-  final provenance =
-      resolveProvenance != null && candidates.any((c) => c.spokenBy != null)
-      ? await resolveProvenance(candidates)
-      : const <String, ProvenanceState>{};
+  //
+  // A THROW falls back to that same safe direction. The production resolver
+  // reaches the network (the audio manifest fetch and a per-event fetch), and
+  // only its per-event fetches catch their own failure -- the manifest relations
+  // fetch can still throw. Letting that propagate would fail the WHOLE read and
+  // hide the AUTHENTIC halves too, telling both speakers the other said nothing
+  // off a read that merely could not check provenance. So it is caught here and
+  // treated as no verdict: every peer claim held pending, every authentic half
+  // rendered.
+  var provenance = const <String, ProvenanceState>{};
+  if (resolveProvenance != null && candidates.any((c) => c.spokenBy != null)) {
+    try {
+      provenance = await resolveProvenance(candidates);
+    } catch (e, s) {
+      Logs().w(
+        'Call transcript provenance could not be resolved on $callKey; '
+        'holding every peer claim pending and rendering the authentic halves',
+        e,
+        s,
+      );
+    }
+  }
 
   final transcript = assembleTranscript(
     candidates: candidates,

@@ -282,7 +282,7 @@ void main() {
         callKey: _callKey,
         speakerId: _peer,
       );
-      expect(onDemand, isFalse);
+      expect(onDemand, OnDemandTranscriptionResult.disabled);
     });
 
     test(
@@ -400,6 +400,33 @@ void main() {
         // peer's device clock (deviceMs + offset).
         expect(posted.clockAnchor, anchor);
         expect(h.transcribeStarts.single, 100050 + 250);
+      },
+    );
+
+    test(
+      'an UNANCHORED peer recording starts on the wall clock, not epoch',
+      () async {
+        // No clockAnchor and no offset, so the peer's device clock is unknown.
+        // The start must fall back to the recording event's WALL clock (its
+        // server-receive time less its duration), not 0/epoch -- otherwise
+        // every unanchored peer turn is stamped at ~1970 and sorts before all
+        // of the invoker's own turns.
+        // Mutation proof: restoring `return 0` makes the start 0 here -> RED.
+        final h = _Harness();
+        h.discover = (_) async => WholeCallManifest(
+          resolved: true,
+          recordings: [
+            CallAudioRecording(
+              eventId: _peerAudioId,
+              senderId: _peer,
+              // 100_000ms since epoch, a 5_000ms recording -> began at 95_000.
+              originServerTs: DateTime.fromMillisecondsSinceEpoch(100000),
+              content: _content(durationMs: 5000),
+            ),
+          ],
+        );
+        await h.build().transcribeAtCallEnd(_callKey);
+        expect(h.transcribeStarts.single, 95000);
       },
     );
   });
@@ -545,7 +572,7 @@ void main() {
         callKey: _callKey,
         speakerId: _peer,
       );
-      expect(produced, isTrue);
+      expect(produced, OnDemandTranscriptionResult.produced);
       expect(h.waits, isEmpty); // no grace on the on-demand path
       expect(h.posts, hasLength(1));
     });
@@ -560,7 +587,7 @@ void main() {
           speakerId: _peer,
           language: 'es',
         );
-        expect(produced, isTrue);
+        expect(produced, OnDemandTranscriptionResult.produced);
         expect(h.posts.single.langCode, 'es');
       },
     );
@@ -573,8 +600,97 @@ void main() {
         callKey: _callKey,
         speakerId: _peer,
       );
-      expect(produced, isFalse);
+      expect(produced, OnDemandTranscriptionResult.noRecording);
       expect(h.posts, isEmpty);
+    });
+  });
+
+  group('on-demand result mapping (#8792 task 3)', () {
+    // Each outcome is a DISTINCT reason a request did not post a half; the view
+    // marks a half "audio unavailable" only for `audioUnavailable` and leaves
+    // the rest retryable. Group mutation proof: collapsing the typed result
+    // back to a bool (every non-produced reason -> one value) makes the
+    // disabled / manifestPending / noRecording / alreadyPresent expectations
+    // below indistinguishable from audioUnavailable -> RED.
+    test('disabled when the run-time gate is not satisfied', () async {
+      final h = _Harness()..enabled = false;
+      final result = await h.build().transcribeHalfOnDemand(
+        callKey: _callKey,
+        speakerId: _peer,
+      );
+      expect(result, OnDemandTranscriptionResult.disabled);
+      expect(h.posts, isEmpty);
+    });
+
+    test('manifestPending when no manifest is visible yet', () async {
+      final h = _Harness()..discover = (_) async => WholeCallManifest.absent;
+      final result = await h.build().transcribeHalfOnDemand(
+        callKey: _callKey,
+        speakerId: _peer,
+      );
+      expect(result, OnDemandTranscriptionResult.manifestPending);
+      expect(h.posts, isEmpty);
+    });
+
+    test('noRecording when the manifest names none for the speaker', () async {
+      final h = _Harness()
+        ..discover = (_) async =>
+            const WholeCallManifest(resolved: true, recordings: []);
+      final result = await h.build().transcribeHalfOnDemand(
+        callKey: _callKey,
+        speakerId: _peer,
+      );
+      expect(result, OnDemandTranscriptionResult.noRecording);
+      expect(h.posts, isEmpty);
+    });
+
+    test('alreadyPresent when a half for the speaker already exists', () async {
+      final h = _Harness()
+        ..readTranscript = (_) async => _transcript(peerAuthentic: true);
+      final result = await h.build().transcribeHalfOnDemand(
+        callKey: _callKey,
+        speakerId: _peer,
+      );
+      expect(result, OnDemandTranscriptionResult.alreadyPresent);
+      expect(h.posts, isEmpty);
+    });
+
+    test('audioUnavailable when the downloaded bytes are empty', () async {
+      final h = _Harness()..download = (_) async => Uint8List(0);
+      final result = await h.build().transcribeHalfOnDemand(
+        callKey: _callKey,
+        speakerId: _peer,
+      );
+      expect(result, OnDemandTranscriptionResult.audioUnavailable);
+      expect(h.posts, isEmpty);
+    });
+
+    test('audioUnavailable when speech-to-text yields nothing', () async {
+      final h = _Harness()
+        ..transcribe =
+            (
+              bytes, {
+              required String l1,
+              required String l2,
+              required int startedAtMs,
+              required int durationMs,
+            }) async => const <TranscriptSegment>[];
+      final result = await h.build().transcribeHalfOnDemand(
+        callKey: _callKey,
+        speakerId: _peer,
+      );
+      expect(result, OnDemandTranscriptionResult.audioUnavailable);
+      expect(h.posts, isEmpty);
+    });
+
+    test('produced when a half is transcribed and posted', () async {
+      final h = _Harness();
+      final result = await h.build().transcribeHalfOnDemand(
+        callKey: _callKey,
+        speakerId: _peer,
+      );
+      expect(result, OnDemandTranscriptionResult.produced);
+      expect(h.posts, hasLength(1));
     });
   });
 

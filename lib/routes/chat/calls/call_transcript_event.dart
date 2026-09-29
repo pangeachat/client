@@ -579,7 +579,27 @@ class CallTranscriptContent {
   /// which is the same key every such writer uses. That costs nothing it was
   /// not already paying: a client that does not know its device id cannot tell
   /// its halves apart on the read side either, and it is one device.
-  static String txnId(String callKey, String senderId, String? deviceId) =>
-      'pangea.call_transcript:$callKey:$senderId:'
-      '${usableDeviceId(deviceId) ?? ''}';
+  ///
+  /// [discriminator] is set ONLY for a PEER-produced half (#8792), to the
+  /// language it was transcribed in. Re-transcribing the SAME peer unit in a
+  /// DIFFERENT language must be a distinct event, not a dedup'd resend of the
+  /// wrong-language one -- the writer, sender and device are all identical
+  /// across the two attempts, so without the language the second would collapse
+  /// into the first server-side and the picker's new-language choice would be
+  /// lost. An identical-language retry keeps the same id, so it stays
+  /// idempotent. An authentic half passes no discriminator and keeps its
+  /// transaction id exactly as before.
+  static String txnId(
+    String callKey,
+    String senderId,
+    String? deviceId, {
+    String? discriminator,
+  }) {
+    final base =
+        'pangea.call_transcript:$callKey:$senderId:'
+        '${usableDeviceId(deviceId) ?? ''}';
+    return (discriminator == null || discriminator.isEmpty)
+        ? base
+        : '$base:$discriminator';
+  }
 }

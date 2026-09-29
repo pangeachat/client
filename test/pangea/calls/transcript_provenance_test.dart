@@ -1,10 +1,13 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_merged_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_repo.dart';
+import 'package:fluffychat/routes/chat/calls/call_transcript_event.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_provenance.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_repo.dart';
 
 const _room = '!room:example.com';
 const _callKey = '\$membership:example.com';
@@ -768,6 +771,92 @@ void main() {
         resolve: audioResolverFor(fetcher.fetch, _room),
       );
       expect(selection.uncertain, isTrue);
+    });
+  });
+
+  group('fetchCallTranscript provenance-failure fallback', () {
+    // The production resolver reaches the network (the audio manifest fetch and
+    // a per-event fetch), and only its per-event fetches catch their own
+    // failure -- the manifest relations fetch can still throw. A throw there
+    // must NOT take the whole read down and hide the AUTHENTIC halves too; it
+    // falls back to an empty verdict map, so every peer claim is held pending
+    // and every authentic half still renders (the documented safe direction).
+
+    // One authentic half from alice and one peer claim (alice writing bob's
+    // speech), served on a single exhausted page. The peer claim makes the
+    // resolver fire.
+    MatrixEvent transcriptEvent(
+      String sender, {
+      required List<String> texts,
+      String? spokenBy,
+      String? sourceAudioEventId,
+    }) => MatrixEvent(
+      type: CallTranscriptContent.relType,
+      eventId: '\$ev-$sender-${spokenBy ?? 'own'}',
+      senderId: sender,
+      originServerTs: DateTime.fromMillisecondsSinceEpoch(1000),
+      content: {
+        'call_key': _callKey,
+        'segments': [
+          for (final t in texts) {'text': t},
+        ],
+        'spoken_by': ?spokenBy,
+        'source_audio_event_id': ?sourceAudioEventId,
+        ...const HalfAccounting(
+          chunksCaptured: 1,
+          chunksTranscribed: 1,
+          declared: true,
+        ).toJson(),
+      },
+    );
+
+    RelationsFetcher onePage(List<MatrixEvent> chunk) =>
+        ({
+          required String roomId,
+          required String eventId,
+          required String relType,
+          String? from,
+        }) async => (chunk: chunk, nextBatch: null);
+
+    test('a THROWING resolver renders the authentic halves and holds the peer '
+        'claim pending, rather than failing the whole read', () async {
+      // Mutation proof: removing the try/catch around resolveProvenance lets
+      // this throw propagate, so `fetchCallTranscript` throws and the read
+      // (with alice's authentic half) is lost -> RED.
+      final transcript = await fetchCallTranscript(
+        fetch: onePage([
+          transcriptEvent(alice, texts: const ['hola alice']),
+          transcriptEvent(
+            alice,
+            texts: const ['words for bob'],
+            spokenBy: bob,
+            sourceAudioEventId: '\$audioBob',
+          ),
+        ]),
+        roomId: _room,
+        callKey: _callKey,
+        expectedSenders: const [alice, bob],
+        resolveProvenance: (_) async =>
+            throw Exception('manifest fetch failed'),
+      );
+
+      // The authentic half survived the resolver failure.
+      final aliceHalf = transcript.halves.firstWhere(
+        (h) => h.senderId == alice,
+      );
+      expect(aliceHalf.state, HalfState.present);
+      expect(aliceHalf.segments.map((s) => s.text), contains('hola alice'));
+
+      // The peer claim was held pending -- never collapsed to its writer and
+      // never attributed to bob, so its words render nowhere.
+      expect(
+        transcript.halves.firstWhere((h) => h.senderId == bob).state,
+        isNot(HalfState.present),
+      );
+      expect(
+        transcript.halves.expand((h) => h.segments).map((s) => s.text),
+        isNot(contains('words for bob')),
+      );
     });
   });
 }

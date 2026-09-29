@@ -5634,35 +5634,41 @@ void main() {
         Future<({String? l1, String? l2})> Function(String)?
         resolvePeerLanguages,
         Future<Uint8List> Function(Uri)? download,
+        ManifestDiscoverer? discover,
+        TranscriptReader? readTranscript,
         required PeerHalfPoster post,
       }) => WholeCallTranscriber(
         selfUserId: _me,
         participants: const {_me, _peer},
         isEnabled: () => true,
-        discover: (callKey) async => WholeCallManifest(
-          resolved: true,
-          recordings: [
-            CallAudioRecording(
-              eventId: r'$audio-peer-',
-              senderId: _peer,
-              originServerTs: DateTime.fromMillisecondsSinceEpoch(1000),
-              content: CallAudioContent(
-                callKey: _callKey,
-                url: 'mxc://fakeServer.notExisting/AUDIO',
-                mimetype: 'audio/wav',
-                codec: kCallAudioCodec,
-                size: 1000,
-                durationMs: 4000,
-                sampleRate: 16000,
-                channels: 1,
-              ),
+        discover:
+            discover ??
+            (callKey) async => WholeCallManifest(
+              resolved: true,
+              recordings: [
+                CallAudioRecording(
+                  eventId: r'$audio-peer-',
+                  senderId: _peer,
+                  originServerTs: DateTime.fromMillisecondsSinceEpoch(1000),
+                  content: CallAudioContent(
+                    callKey: _callKey,
+                    url: 'mxc://fakeServer.notExisting/AUDIO',
+                    mimetype: 'audio/wav',
+                    codec: kCallAudioCodec,
+                    size: 1000,
+                    durationMs: 4000,
+                    sampleRate: 16000,
+                    channels: 1,
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
-        readTranscript: (callKey) async => assembleTranscript(
-          candidates: const [],
-          expectedSenders: const [_me, _peer],
-        ),
+        readTranscript:
+            readTranscript ??
+            (callKey) async => assembleTranscript(
+              candidates: const [],
+              expectedSenders: const [_me, _peer],
+            ),
         download:
             download ?? (uri) async => Uint8List.fromList(const [1, 2, 3, 4]),
         transcribe:
@@ -5871,6 +5877,106 @@ void main() {
 
           expect(postedLangCode, 'fr');
           expect(find.textContaining('bonjour'), findsOneWidget);
+        },
+      );
+
+      testWidgets(
+        'a not-yet-visible manifest leaves the button retryable, never '
+        'marked unavailable',
+        (tester) async {
+          // discover comes back UNRESOLVED -- the peer's merge is still in
+          // flight, a transient miss, NOT the saved audio being unusable.
+          // Mutation: collapsing the typed result to a bool marks EVERY
+          // non-produce unavailable, so this transient would wrongly drop the
+          // button and show the terminal note -> RED.
+          MatrixState.pangeaController = FakePangeaController(subscribed: true);
+          final fake = buildFakeTranscriber(
+            discover: (_) async => WholeCallManifest.absent,
+            post:
+                ({
+                  required callKey,
+                  required spokenBy,
+                  required sourceAudioEventId,
+                  required deviceId,
+                  required langCode,
+                  required clockAnchor,
+                  required segments,
+                }) async => fail('must not post when no manifest is visible'),
+          );
+
+          await pumpWithRecordings(
+            tester,
+            room(),
+            servingByType([
+              half(_me, texts: const ['hola']),
+              audioEvent(_peer),
+            ]),
+            transcriber: fake,
+          );
+
+          await tester.tap(find.text('Transcribe'));
+          await tester.pumpAndSettle();
+
+          expect(find.text('Transcribe'), findsOneWidget);
+          expect(find.textContaining('could not be downloaded'), findsNothing);
+        },
+      );
+
+      testWidgets(
+        'a half that already landed refreshes into view, never marked '
+        'unavailable',
+        (tester) async {
+          // The peer's own half lands between render and the skip check: the
+          // check sees it (alreadyPresent, no produce), and it is now among the
+          // served events so the refresh shows it.
+          // Mutation: collapsing the typed result to a bool marks this
+          // alreadyPresent unavailable instead of refreshing -> "ya estaba" is
+          // never shown and the terminal note appears -> RED.
+          MatrixState.pangeaController = FakePangeaController(subscribed: true);
+          final events = [
+            half(_me, texts: const ['hola']),
+            audioEvent(_peer),
+          ];
+          final fake = buildFakeTranscriber(
+            readTranscript: (_) async {
+              events.add(half(_peer, texts: const ['ya estaba']));
+              return assembleTranscript(
+                candidates: [
+                  TranscriptCandidate(
+                    senderId: _peer,
+                    eventId: r'$peer-authentic',
+                    originServerTs: 2000,
+                    segments: [TranscriptSegment('ya estaba', atMs: 2000)],
+                    accounting: const HalfAccounting(),
+                  ),
+                ],
+                expectedSenders: const [_me, _peer],
+              );
+            },
+            post:
+                ({
+                  required callKey,
+                  required spokenBy,
+                  required sourceAudioEventId,
+                  required deviceId,
+                  required langCode,
+                  required clockAnchor,
+                  required segments,
+                }) async => fail('must not post when a half already exists'),
+          );
+
+          await pumpWithRecordings(
+            tester,
+            room(),
+            servingByType(events),
+            transcriber: fake,
+          );
+
+          await tester.tap(find.text('Transcribe'));
+          await tester.pumpAndSettle();
+
+          expect(find.textContaining('ya estaba'), findsOneWidget);
+          expect(find.textContaining('could not be downloaded'), findsNothing);
         },
       );
     });

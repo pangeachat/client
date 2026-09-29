@@ -147,6 +147,46 @@ typedef PeerHalfPoster =
       required List<TranscriptSegment> segments,
     });
 
+/// The outcome of an on-demand peer-half transcription
+/// ([WholeCallTranscriber.transcribeHalfOnDemand]).
+///
+/// A plain bool conflated the several distinct reasons a request did not post a
+/// half, and the reader UI read EVERY false as "the saved audio is unusable" --
+/// a terminal note over conditions that were often transient (no manifest yet)
+/// or unrelated (a half already present, the gate not satisfied). Each outcome
+/// here names what actually happened, so the view marks a half unavailable ONLY
+/// when the audio itself is the problem and leaves the button retryable
+/// otherwise.
+enum OnDemandTranscriptionResult {
+  /// A half was transcribed and posted. The view re-reads to show it.
+  produced,
+
+  /// A half for this speaker is already present -- an authentic half, or a valid
+  /// peer-produced one that landed before or during this attempt -- so none was
+  /// produced. The view re-reads to show the half that is already there.
+  alreadyPresent,
+
+  /// No audio manifest is visible yet (the peer's merge may still be in flight).
+  /// TRANSIENT: the view leaves the button retryable.
+  manifestPending,
+
+  /// The resolved manifest names no recording for this speaker. The view leaves
+  /// the button retryable rather than marking the half unavailable.
+  noRecording,
+
+  /// A recording was found but its audio is unusable -- the bytes could not be
+  /// downloaded, or speech-to-text produced nothing. TERMINAL for this screen:
+  /// the view marks the half "audio unavailable" and does not offer the button
+  /// again.
+  audioUnavailable,
+
+  /// The feature is not enabled for this run -- the flag is off, the invoker's
+  /// subscription lapsed, or the 1:1 identity is not established. The view
+  /// leaves the button retryable: a later entry with the gate satisfied can
+  /// still work.
+  disabled,
+}
+
 /// Produces the whole-call transcript for the INVOKING user: transcribes the
 /// OTHER participant's saved recording so a paying user reads BOTH halves (#8792).
 ///
@@ -405,18 +445,25 @@ class WholeCallTranscriber {
   /// language picker). Same skip and re-check rules as the auto path, with no
   /// grace: the user asked for it now. [language] overrides the resolved target
   /// language for the picker path, when the peer's own languages did not resolve.
-  /// Returns whether a half was produced.
-  Future<bool> transcribeHalfOnDemand({
+  /// Returns an [OnDemandTranscriptionResult] naming the outcome, so the view
+  /// marks a half "audio unavailable" only for [OnDemandTranscriptionResult
+  /// .audioUnavailable] and leaves the button retryable for the transient and
+  /// not-yet-possible outcomes.
+  Future<OnDemandTranscriptionResult> transcribeHalfOnDemand({
     required String callKey,
     required String speakerId,
     String? language,
   }) async {
-    if (!isEnabled() || !_identityKnown) return false;
+    if (!isEnabled() || !_identityKnown) {
+      return OnDemandTranscriptionResult.disabled;
+    }
     final manifest = await discover(callKey);
-    if (!manifest.resolved) return false;
+    if (!manifest.resolved) return OnDemandTranscriptionResult.manifestPending;
     final recording = _recordingForSpeaker(manifest.recordings, speakerId);
-    if (recording == null) return false;
-    if (_skip(await readTranscript(callKey), speakerId)) return false;
+    if (recording == null) return OnDemandTranscriptionResult.noRecording;
+    if (_skip(await readTranscript(callKey), speakerId)) {
+      return OnDemandTranscriptionResult.alreadyPresent;
+    }
     return _produceOnePeer(callKey, recording, chosenLanguage: language);
   }
 
@@ -440,23 +487,33 @@ class WholeCallTranscriber {
     }
   }
 
-  /// Produces one peer half, or returns false when a skip/guard/language/bytes
-  /// condition means it should not. Acquires the in-flight lock synchronously
-  /// (no await between the check and the add), then re-checks the skip predicate
-  /// against a FRESH read before speech-to-text and again before send.
-  Future<bool> _produceOnePeer(
+  /// Produces one peer half, returning an [OnDemandTranscriptionResult] that
+  /// names why when it did not (the auto path ignores it; the on-demand path
+  /// maps it to a UI state). Acquires the in-flight lock synchronously (no await
+  /// between the check and the add), then re-checks the skip predicate against a
+  /// FRESH read before speech-to-text and again before send.
+  Future<OnDemandTranscriptionResult> _produceOnePeer(
     String callKey,
     CallAudioRecording recording, {
     String? chosenLanguage,
   }) async {
     final speaker = recording.senderId;
-    if (speaker == selfUserId) return false;
-    if (!participants.contains(speaker)) return false;
+    // Defensive: both callers already exclude self and non-participants, so this
+    // is unreached in practice -- reported as no-recording so the view never
+    // marks such a half unavailable off a guard that cannot fire.
+    if (speaker == selfUserId) return OnDemandTranscriptionResult.noRecording;
+    if (!participants.contains(speaker)) {
+      return OnDemandTranscriptionResult.noRecording;
+    }
 
     final device = recording.content.deviceId ?? '';
     // Check-and-add is atomic: there is no await between them, so two concurrent
-    // runs for one device cannot both pass.
-    if (_inFlight.contains(device)) return false;
+    // runs for one device cannot both pass. A concurrent pass holding the lock
+    // means a half for this exact unit is already being written, so this reads
+    // as already-present: the view re-reads rather than marking it unavailable.
+    if (_inFlight.contains(device)) {
+      return OnDemandTranscriptionResult.alreadyPresent;
+    }
     _inFlight.add(device);
     try {
       final resolved = await resolvePeerLanguages(speaker);
@@ -467,16 +524,22 @@ class WholeCallTranscriber {
       // so the request has a pair at all when the peer's profile did not resolve.
       final l1 = resolved.l1 ?? chosenLanguage;
       // Unresolved with no picker choice: NO auto-produce and no silent fallback
-      // -- the on-demand language picker (task 3) is the recovery.
-      if (l1 == null || l2 == null) return false;
+      // -- the on-demand language picker (task 3) is the recovery, so this stays
+      // retryable rather than terminal. (Unreached on the on-demand path, which
+      // resolves the language before calling; the auto path discards the result.)
+      if (l1 == null || l2 == null) return OnDemandTranscriptionResult.disabled;
 
       // Re-read before spending speech-to-text: the transcript that gated this
       // in [_backfillPeers] may be stale, and a peer authentic half or another
       // subscriber's valid half may have landed since.
-      if (_skip(await readTranscript(callKey), speaker)) return false;
+      if (_skip(await readTranscript(callKey), speaker)) {
+        return OnDemandTranscriptionResult.alreadyPresent;
+      }
 
       final bytes = await _download(recording);
-      if (bytes == null || bytes.isEmpty) return false;
+      if (bytes == null || bytes.isEmpty) {
+        return OnDemandTranscriptionResult.audioUnavailable;
+      }
 
       final segments = await transcribe(
         bytes,
@@ -487,12 +550,15 @@ class WholeCallTranscriber {
       );
       // An empty transcription is NOT posted as "the peer said nothing": a
       // subscriber's speech-to-text miss must not put that claim in the peer's
-      // mouth. The unit stays absent, and the on-demand button remains.
-      if (segments.isEmpty) return false;
+      // mouth. The unit stays absent, and the on-demand button remains. The
+      // audio was there but yielded nothing usable, so this reads as unavailable.
+      if (segments.isEmpty) return OnDemandTranscriptionResult.audioUnavailable;
 
       // Re-check once more before sending: STT is the slow step, and a half may
       // have landed while it ran.
-      if (_skip(await readTranscript(callKey), speaker)) return false;
+      if (_skip(await readTranscript(callKey), speaker)) {
+        return OnDemandTranscriptionResult.alreadyPresent;
+      }
 
       await post(
         callKey: callKey,
@@ -503,7 +569,7 @@ class WholeCallTranscriber {
         clockAnchor: recording.content.clockAnchor,
         segments: segments,
       );
-      return true;
+      return OnDemandTranscriptionResult.produced;
     } finally {
       _inFlight.remove(device);
     }
@@ -540,13 +606,22 @@ class WholeCallTranscriber {
   /// Where the peer's recording began on the PEER's own device clock, so the
   /// produced half's utterances land on the peer's clock exactly as if the peer
   /// had transcribed it -- the reader's per-half clock correction then carries
-  /// them onto the shared clock. Zero (uncorrected) when the peer's recording
-  /// carried no anchor/offset, which the reader tolerates.
+  /// them onto the shared clock.
+  ///
+  /// When the recording carried no anchor/offset the device clock is unknown,
+  /// so this approximates the start from the recording event's WALL clock -- its
+  /// server-receive time less its duration -- rather than epoch (0). Zero would
+  /// stamp every unanchored peer turn at ~1970, and the reader orders by `atMs`
+  /// even where it withholds printed times, so all peer turns would sort before
+  /// all of the invoker's own turns. Clamped at 0 so a duration longer than the
+  /// elapsed wall time never yields a negative start.
   int _peerStartMs(CallAudioRecording recording) {
     final anchor = recording.content.clockAnchor;
     final offset = recording.content.recordingStartedOffsetFromDeviceJoinMs;
     if (anchor != null && offset != null) return anchor.deviceMs + offset;
-    return 0;
+    final end = recording.originServerTs.millisecondsSinceEpoch;
+    final start = end - recording.content.durationMs;
+    return start < 0 ? 0 : start;
   }
 
   Future<Uint8List?> _download(CallAudioRecording recording) async {

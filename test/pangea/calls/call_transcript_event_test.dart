@@ -438,6 +438,75 @@ void main() {
         CallTranscriptContent.txnId(_callKey, _alice, 'PHONE'),
       );
     });
+
+    test('a PEER half is discriminated by language: different languages get '
+        'different ids', () {
+      // A picker re-transcribe of the SAME peer unit in a DIFFERENT language
+      // must be a distinct event (#8792), not a dedup'd resend of the
+      // wrong-language one -- the writer, sender and device are all identical
+      // across the two attempts.
+      // Mutation proof: ignoring the discriminator makes these equal -> RED.
+      expect(
+        CallTranscriptContent.txnId(
+          _callKey,
+          _alice,
+          'PHONE',
+          discriminator: 'es',
+        ),
+        isNot(
+          CallTranscriptContent.txnId(
+            _callKey,
+            _alice,
+            'PHONE',
+            discriminator: 'fr',
+          ),
+        ),
+      );
+    });
+
+    test('a PEER half of the SAME language keeps one id (idempotent)', () {
+      // An identical-language network retry is still a resend and must collapse,
+      // exactly as an authentic half's retry does.
+      expect(
+        CallTranscriptContent.txnId(
+          _callKey,
+          _alice,
+          'PHONE',
+          discriminator: 'es',
+        ),
+        CallTranscriptContent.txnId(
+          _callKey,
+          _alice,
+          'PHONE',
+          discriminator: 'es',
+        ),
+      );
+    });
+
+    test('an AUTHENTIC half (no discriminator) keeps its id unchanged', () {
+      // Authentic halves pass no discriminator, so their transaction id is
+      // exactly what it was before the peer-language change; an empty
+      // discriminator is treated as none, never a distinct third id.
+      final authentic = CallTranscriptContent.txnId(_callKey, _alice, 'PHONE');
+      expect(
+        authentic,
+        CallTranscriptContent.txnId(
+          _callKey,
+          _alice,
+          'PHONE',
+          discriminator: null,
+        ),
+      );
+      expect(
+        authentic,
+        CallTranscriptContent.txnId(
+          _callKey,
+          _alice,
+          'PHONE',
+          discriminator: '',
+        ),
+      );
+    });
   });
 
   group('device_id on the wire', () {

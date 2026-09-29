@@ -201,7 +201,20 @@ Future<bool> writeCallTranscript({
 
   await send(
     content.toJson(),
-    CallTranscriptContent.txnId(callKey, senderId, deviceId),
+    // A PEER half -- one whose `spoken_by` is set AND survives the wire guard --
+    // is discriminated by its language, so re-transcribing the same unit in a
+    // different language is a distinct event rather than a dedup'd resend of the
+    // wrong-language one. Gated on the SAME `usableSpokenBy` the content uses, so
+    // a malformed claim that reads back as authentic also keeps the authentic
+    // (undiscriminated) id. An authentic half passes null and is unchanged.
+    CallTranscriptContent.txnId(
+      callKey,
+      senderId,
+      deviceId,
+      discriminator: CallTranscriptContent.usableSpokenBy(spokenBy) != null
+          ? langCode
+          : null,
+    ),
   );
   return true;
 }

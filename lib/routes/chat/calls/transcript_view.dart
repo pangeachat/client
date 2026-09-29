@@ -432,15 +432,16 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
   /// a second tap on the same half's button while the first is still running.
   final Set<String> _onDemandInFlight = {};
 
-  /// Speakers whose most recent on-demand attempt came back false after a
-  /// known recording and a resolved language were already in hand. The one
-  /// explanation the design names for THAT combination is the saved audio
-  /// itself being unusable (UNAVAILABLE-TERMINAL, spec section 4) --
-  /// [WholeCallTranscriber.transcribeHalfOnDemand] answers with a plain bool,
-  /// so this is read by having already ruled out the other false outcomes (no
-  /// recording, unresolved language) before calling it. Terminal for this
-  /// screen instance, matching the design's own "not a button that cannot
-  /// work" -- a download that just failed is not retried by tapping again.
+  /// Speakers whose most recent on-demand attempt reported the saved audio
+  /// itself unusable (UNAVAILABLE-TERMINAL, spec section 4) -- the bytes would
+  /// not download, or speech-to-text produced nothing.
+  /// [WholeCallTranscriber.transcribeHalfOnDemand] now answers with a typed
+  /// [OnDemandTranscriptionResult], so this is added ONLY for
+  /// [OnDemandTranscriptionResult.audioUnavailable] and never for a transient
+  /// (no manifest yet) or not-yet-possible (no recording, gate unsatisfied)
+  /// outcome, which stay retryable. Terminal for this screen instance, matching
+  /// the design's own "not a button that cannot work" -- a download that just
+  /// failed is not retried by tapping again.
   final Set<String> _onDemandUnavailable = {};
 
   WholeCallTranscriber _buildTranscriber() => WholeCallTranscriber.forCall(
@@ -1013,21 +1014,33 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
         // UNAVAILABLE-TERMINAL case, so the plain button stays offered.
         if (language == null) return;
       }
-      final produced = await _transcriber.transcribeHalfOnDemand(
+      final result = await _transcriber.transcribeHalfOnDemand(
         callKey: widget.callKey,
         speakerId: speakerId,
         language: language,
       );
       if (!mounted) return;
-      if (produced) {
-        final fetch = widget.fetcher ?? relationsFetcherFor(widget.room.client);
-        await _refreshTranscript(fetch);
-      } else {
-        // Recording known, language known (resolved or chosen) -- the one
-        // explanation the design names for a false result under those two
-        // facts is the saved audio being unusable. See
-        // [_onDemandUnavailable]'s own doc.
-        setState(() => _onDemandUnavailable.add(speakerId));
+      switch (result) {
+        // A half was produced, or one was already present: re-read so it shows.
+        case OnDemandTranscriptionResult.produced:
+        case OnDemandTranscriptionResult.alreadyPresent:
+          final fetch =
+              widget.fetcher ?? relationsFetcherFor(widget.room.client);
+          await _refreshTranscript(fetch);
+        // The saved audio itself is unusable (the bytes would not download, or
+        // speech-to-text produced nothing). The ONLY outcome terminal for this
+        // screen: the half is marked "audio unavailable" and the button is not
+        // offered again. See [_onDemandUnavailable]'s own doc.
+        case OnDemandTranscriptionResult.audioUnavailable:
+          setState(() => _onDemandUnavailable.add(speakerId));
+        // Transient or not-yet-possible -- no manifest has arrived, no recording
+        // names this speaker, or the gate was not satisfied on this entry. Left
+        // RETRYABLE: the ordinary button reappears rather than locking into a
+        // terminal note over what a later tap may resolve.
+        case OnDemandTranscriptionResult.manifestPending:
+        case OnDemandTranscriptionResult.noRecording:
+        case OnDemandTranscriptionResult.disabled:
+          break;
       }
     } catch (e, s) {
       // A network hiccup resolving the peer's languages or posting the half --
