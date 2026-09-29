@@ -2373,5 +2373,11 @@
     "ssoNetworkBlockedTitle": "පිවිසුම් අඩවියට ළඟා විය නොහැක",
     "ssoNetworkBlockedDesc": "ඔබව පුරනය කිරීමට {provider} වෙත ළඟා වීමට මෙම ජාලය අපට ඉඩ නොදේ. පාසල් සහ කාර්යාල Wi-Fi බොහෝ විට එය අවහිර කරයි. ඔබට ඒ වෙනුවට විද්‍යුත් තැපෑලෙන් ලියාපදිංචි විය හැක, නැතහොත් වෙනත් ජාලයකට මාරු වී නැවත උත්සාහ කරන්න.",
     "ssoTryAnyway": "කෙසේ හෝ උත්සාහ කරන්න",
-    "callTranscriptNotSubscribed": "මෙම ඇමතුම අතරතුර {name} හට දායකත්වයක් නොතිබූ බැවින්, කතා කළ දේ පිටපත් කර නොමැත."
+    "callTranscriptNotSubscribed": "මෙම ඇමතුම අතරතුර {name} හට දායකත්වයක් නොතිබූ බැවින්, කතා කළ දේ පිටපත් කර නොමැත.",
+    "callTranscriptTranscribing": "{name} වෙතින් පටිගත කිරීම තවමත් පිටපත් කරමින් පවතී...",
+    "callTranscriptSeekTo": "{time} සිට වාදනය කරන්න",
+    "callTranscriptRecordings": "පටිගත කිරීම්",
+    "callTranscriptFullCall": "සම්පූර්ණ ඇමතුම",
+    "callTranscriptPreparingRecording": "සම්පූර්ණ පටිගත කිරීම සූදානම් කරමින්...",
+    "callTranscriptNoRecording": "සම්පූර්ණ ඇමතුමේ පටිගත කිරීමක් නොමැත."
 }

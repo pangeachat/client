@@ -10734,5 +10734,11 @@
     "ssoNetworkBlockedTitle": "サインインサイトに接続できません",
     "ssoNetworkBlockedDesc": "このネットワークでは、サインインのために{provider}に接続できません。学校や職場のWi-Fiではよくブロックされます。代わりにメールで登録するか、別のネットワークに切り替えて再試行してください。",
     "ssoTryAnyway": "とにかく試す",
-    "callTranscriptNotSubscribed": "{name}は通話中にサブスクリプションに登録していなかったため、会話は書き起こされませんでした。"
+    "callTranscriptNotSubscribed": "{name}は通話中にサブスクリプションに登録していなかったため、会話は書き起こされませんでした。",
+    "callTranscriptTranscribing": "{name}さんとの通話の録音を文字起こし中です…",
+    "callTranscriptSeekTo": "{time}から再生",
+    "callTranscriptRecordings": "録音",
+    "callTranscriptFullCall": "通話全体",
+    "callTranscriptPreparingRecording": "通話全体の録音を準備中です…",
+    "callTranscriptNoRecording": "通話全体の録音はありません。"
 }

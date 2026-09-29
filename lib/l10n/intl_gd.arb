@@ -2373,5 +2373,11 @@
     "ssoNetworkBlockedTitle": "Làrach-lìn logadh a-steach do-ruigsinneach",
     "ssoNetworkBlockedDesc": "Chan eil an lìonra seo a' leigeil leinn {provider} a ruighinn gus do logadh a-steach. Bidh Wi-Fi sgoile is oifise gu tric ga bhacadh. Faodaidh tu clàradh le post-d na àite, no atharrachadh gu lìonra eile agus feuchainn a-rithist.",
     "ssoTryAnyway": "Feuch co-dhiù",
-    "callTranscriptNotSubscribed": "Cha robh fo-sgrìobhadh aig {name} aig àm a’ ghairm seo, agus mar sin cha deach na chaidh a ràdh a thar-sgrìobhadh."
+    "callTranscriptNotSubscribed": "Cha robh fo-sgrìobhadh aig {name} aig àm a’ ghairm seo, agus mar sin cha deach na chaidh a ràdh a thar-sgrìobhadh.",
+    "callTranscriptTranscribing": "Fhathast a’ tar-sgrìobhadh an clàraidh bho {name}…",
+    "callTranscriptSeekTo": "Cluich bho {time}",
+    "callTranscriptRecordings": "Clàraidhean",
+    "callTranscriptFullCall": "Gairm slàn",
+    "callTranscriptPreparingRecording": "Ag ullachadh a’ chlàraidh slàin…",
+    "callTranscriptNoRecording": "Chan eil clàradh den ghairm slàn ann."
 }

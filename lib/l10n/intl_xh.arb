@@ -2373,5 +2373,11 @@
     "ssoNetworkBlockedTitle": "Indawo yokungena ayifikeleleki",
     "ssoNetworkBlockedDesc": "Le nethiwekhi ayisivumeli ukuba sifikelele ku-{provider} ukuze sikungenise. IWi-Fi yesikolo neyeofisi isoloko iyivala. Ungabhalisa nge-imeyile endaweni yoko, okanye utshintshele kwenye inethiwekhi uze uzame kwakhona.",
     "ssoTryAnyway": "Zama nangona kunjalo",
-    "callTranscriptNotSubscribed": "U-{name} ebengekafaki isicelo ngexesha lale fowuni, ngoko ke oko kuthethweyo akubhalwanga."
+    "callTranscriptNotSubscribed": "U-{name} ebengekafaki isicelo ngexesha lale fowuni, ngoko ke oko kuthethweyo akubhalwanga.",
+    "callTranscriptTranscribing": "Ndisabhala phantsi okurekhodiweyo okuvela ku-{name}…",
+    "callTranscriptSeekTo": "Dlala ukusuka ku-{time}",
+    "callTranscriptRecordings": "Okurekhodiweyo",
+    "callTranscriptFullCall": "Umfowunelwano opheleleyo",
+    "callTranscriptPreparingRecording": "Kulungiselelwa okurekhodiweyo okupheleleyo…",
+    "callTranscriptNoRecording": "Akukho kurekhodwa komfowunelwano opheleleyo."
 }

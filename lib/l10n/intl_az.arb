@@ -2373,5 +2373,11 @@
     "ssoNetworkBlockedTitle": "Giriş saytı əlçatan deyil",
     "ssoNetworkBlockedDesc": "Bu şəbəkə sizin daxil olmağınız üçün {provider} ilə əlaqə saxlamağımıza icazə vermir. Məktəb və ofis Wi-Fi-ları bunu tez-tez bloklayır. Bunun əvəzinə e-poçtla qeydiyyatdan keçə bilərsiniz və ya başqa şəbəkəyə keçib yenidən cəhd edə bilərsiniz.",
     "ssoTryAnyway": "Yenə də cəhd edin",
-    "callTranscriptNotSubscribed": "{name} bu zəng zamanı abunəçi olmadığı üçün deyilənlər transkripsiya edilmədi."
+    "callTranscriptNotSubscribed": "{name} bu zəng zamanı abunəçi olmadığı üçün deyilənlər transkripsiya edilmədi.",
+    "callTranscriptTranscribing": "{name} adlı istifadəçidən gələn səsyazma hələ də transkripsiya edilir…",
+    "callTranscriptSeekTo": "{time} vaxtından səsləndir",
+    "callTranscriptRecordings": "Səsyazmalar",
+    "callTranscriptFullCall": "Bütün zəng",
+    "callTranscriptPreparingRecording": "Tam səsyazma hazırlanır…",
+    "callTranscriptNoRecording": "Tam zəngin səsyazması yoxdur."
 }

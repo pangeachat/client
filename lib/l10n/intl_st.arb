@@ -2373,5 +2373,11 @@
     "ssoNetworkBlockedTitle": "Sebaka sa ho kena ha se fihlellehe",
     "ssoNetworkBlockedDesc": "Marang-rang ana ha a re lumelle ho fihlella {provider} ho u kenya. Wi-Fi ea sekolo le ofisi hangata e a e thibela. U ka ingolisa ka imeile ho e-na le hoo, kapa ua fetohela marang-rang a mang 'me ua leka hape.",
     "ssoTryAnyway": "Leka leha ho le joalo",
-    "callTranscriptNotSubscribed": "{name} o ne a se na peeletso nakong ya mohala ona, kahoo se ileng sa buuwa ha sea ka sa ngolwa."
+    "callTranscriptNotSubscribed": "{name} o ne a se na peeletso nakong ya mohala ona, kahoo se ileng sa buuwa ha sea ka sa ngolwa.",
+    "callTranscriptTranscribing": "Ke ntse ke ngola seo ho builoeng ka sona ho {name}…",
+    "callTranscriptSeekTo": "Bapala ho tloha ka {time}",
+    "callTranscriptRecordings": "Direkoto",
+    "callTranscriptFullCall": "Puisano e felletseng",
+    "callTranscriptPreparingRecording": "Ho lokisoa rekoto e felletseng…",
+    "callTranscriptNoRecording": "Ha ho rekoto ea puisano e felletseng."
 }

@@ -9965,5 +9965,11 @@
     "ssoNetworkBlockedTitle": "无法访问登录网站",
     "ssoNetworkBlockedDesc": "此网络不允许我们访问 {provider} 来登录。学校和办公室的 Wi-Fi 通常会阻止它。您可以改为使用电子邮件注册，或切换到其他网络再试一次。",
     "ssoTryAnyway": "仍然尝试",
-    "callTranscriptNotSubscribed": "{name} 在通话期间没有订阅，因此通话内容未被转录。"
+    "callTranscriptNotSubscribed": "{name} 在通话期间没有订阅，因此通话内容未被转录。",
+    "callTranscriptTranscribing": "正在转录 {name} 的录音…",
+    "callTranscriptSeekTo": "从 {time} 开始播放",
+    "callTranscriptRecordings": "录音",
+    "callTranscriptFullCall": "完整通话",
+    "callTranscriptPreparingRecording": "正在准备完整录音…",
+    "callTranscriptNoRecording": "没有完整通话的录音。"
 }

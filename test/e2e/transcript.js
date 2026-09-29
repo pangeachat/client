@@ -77,6 +77,7 @@ const { room: ROOM, roomId: ROOM_ID, shot } = h.cfg;
 
 /// The transcript relation, as the writer sends it.
 const TRANSCRIPT = 'pangea.call_transcript';
+const CALL_AUDIO = 'pangea.call_audio';
 
 /// The transcript halves written SINCE a mark.
 ///
@@ -93,6 +94,17 @@ const TRANSCRIPT = 'pangea.call_transcript';
 async function halvesSince(token, mark) {
   const events = await h.since(token, ROOM_ID, mark);
   return events.filter((e) => e.type === TRANSCRIPT);
+}
+
+/// The call-audio RECORDING halves written since a mark, read the same way as
+/// the transcript halves. A web call used to write ZERO of these -- the recorder
+/// died on its first frame with a dart2js RangeError (`nextInt(1 << 32)` ==
+/// `nextInt(0)`) -- while the transcript above still passed. Read on the same
+/// COMPILED web build, so it exercises the dart2js integer semantics that a VM
+/// unit test cannot.
+async function audioSince(token, mark) {
+  const events = await h.since(token, ROOM_ID, mark);
+  return events.filter((e) => e.type === CALL_AUDIO);
 }
 
 /// The words in a half, flattened.
@@ -323,6 +335,44 @@ async function main() {
           `(${shared.slice(0, 8).join(' ')}) -- one source recorded twice`);
   }
 
+  console.log('[4b] the call-audio RECORDING half (the dart2js-overflow regression)');
+  // Written at finish like the transcript half. On web the recorder used to die
+  // on its first frame (RangeError from `nextInt(1 << 32)` == `nextInt(0)`), so
+  // ZERO of these landed while the transcript above still passed -- the exact
+  // gap this closes. Runs the COMPILED web build, so it exercises dart2js integer
+  // semantics a VM unit test cannot see.
+  let audio = [];
+  let audioSenders = new Set();
+  // Waits for BOTH sides, not just one. A 1:1 call must record two halves, and
+  // the bug this gates against dropped exactly one of them -- the side whose
+  // PEER hung up kept recording only on the side that pressed end, so a naive
+  // "at least one landed" passed while a whole half was silently lost.
+  for (let i = 0; i < 20; i++) {
+    audio = await audioSince(A.token, mA);
+    audioSenders = new Set(audio.map((e) => e.sender));
+    if (audioSenders.size >= 2) break;
+    await wait(3000);
+  }
+  // Kept as its own check so a TOTAL failure (the dart2js-overflow regression,
+  // where zero halves land) still reads as "the web capture is dead" rather
+  // than being folded into the two-sender message below.
+  h.check(s, 'a call_audio recording was written', audio.length >= 1,
+    `${audio.length} pangea.call_audio event(s) after a real web call -- ` +
+      'zero means the recorder never produced a half (the web capture is dead)');
+  // The honest 1:1 gate: a call between two people records two sides. Counted
+  // by SENDER, like the transcript-half check above -- two events from one
+  // device is a different failure and must not read as success.
+  h.check(s, 'both sides wrote a call_audio recording', audioSenders.size >= 2,
+    `${audio.length} pangea.call_audio event(s) from ${audioSenders.size} ` +
+      `sender(s) [${[...audioSenders].join(', ')}] after a real 1:1 web call -- ` +
+      'fewer than two senders means one device dropped its half (only the ' +
+      'side that hung up published, the peer-drop-pause bug)');
+  h.check(s, 'the recording carries an uploaded audio blob',
+    audio.some((e) => e.content && typeof e.content.url === 'string'
+      && e.content.url.startsWith('mxc://')),
+    `no call_audio event carried an mxc upload: ` +
+      JSON.stringify(audio.map((e) => e.content && { url: e.content.url, size: e.content.size })));
+
   // The turn-by-turn positions, on the wire. Without them the reader falls
   // back to the per-speaker view by design, so their absence is silent on
   // screen and this is the only place it can be caught.
@@ -410,10 +460,16 @@ async function main() {
     // what a person reads instead, the way the phone scenarios already work.
   }
 
-  console.log('[6] neither side logged an unhandled error');
+  console.log('[6] neither side logged an unhandled error or a recorder failure');
   for (const p of [A, B]) {
     h.check(s, `${p.name} had no unhandled errors`, p.errors.length === 0,
       JSON.stringify(p.errors.slice(0, 3)));
+    // A run-open or per-frame recorder failure is logged (not thrown) and was
+    // swallowed so it never disturbed the transcript. Red here, so a recorder
+    // that dies behind a passing transcript can no longer go green.
+    h.check(s, `${p.name}'s recorder logged no capture failure`,
+      (p.recorderWarnings || []).length === 0,
+      JSON.stringify((p.recorderWarnings || []).slice(0, 3)));
   }
 
   // The exit code is the result. `h.report()` returns every result that is not

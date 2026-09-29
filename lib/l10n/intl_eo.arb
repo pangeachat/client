@@ -10910,5 +10910,11 @@
     "ssoNetworkBlockedTitle": "Ensaluta retejo neatingebla",
     "ssoNetworkBlockedDesc": "Ĉi tiu reto ne permesas al ni atingi {provider} por ensaluti vin. Lerneja kaj oficeja retkonekto ofte blokas ĝin. Vi povas registriĝi per retpoŝto anstataŭe, aŭ ŝanĝi al alia reto kaj reprovi.",
     "ssoTryAnyway": "Provu ĉiukaze",
-    "callTranscriptNotSubscribed": "{name} ne havis abonon dum ĉi tiu voko, do tio, kio estis dirita, ne estis transskribita."
+    "callTranscriptNotSubscribed": "{name} ne havis abonon dum ĉi tiu voko, do tio, kio estis dirita, ne estis transskribita.",
+    "callTranscriptTranscribing": "Ankoraŭ transskribante la registraĵon de {name}…",
+    "callTranscriptSeekTo": "Ludi ekde {time}",
+    "callTranscriptRecordings": "Registraĵoj",
+    "callTranscriptFullCall": "Plena voko",
+    "callTranscriptPreparingRecording": "Preparas la plenan registraĵon…",
+    "callTranscriptNoRecording": "Neniu registraĵo de la plena voko."
 }

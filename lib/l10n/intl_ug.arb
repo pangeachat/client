@@ -2373,5 +2373,11 @@
     "ssoNetworkBlockedTitle": "كىرىش تور بېكىتىگە يېتىپ بولغىلى بولمىدى",
     "ssoNetworkBlockedDesc": "بۇ تور سىزنى كىرگۈزۈش ئۈچۈن بىزنىڭ {provider} غا يېتىشىمىزگە يول قويمىدى. مەكتەپ ۋە ئىشخانا Wi-Fi دائىم ئۇنى چەكلەيدۇ. ئەكسىچە ئېلخەت ئارقىلىق تىزىملاتسىڭىز ياكى باشقا تورغا ئالماشتۇرۇپ قايتا سىناپ باقسىڭىز بولىدۇ.",
     "ssoTryAnyway": "قانداقلا بولمىسۇن سىناپ بېقىڭ",
-    "callTranscriptNotSubscribed": "{name}نىڭ بۇ تېلېفون سۆھبىتى جەريانىدا مۇشتەرىلىكى يوق ئىدى، شۇڭا سۆزلەنگەنلەر خاتىرىلەنمىدى."
+    "callTranscriptNotSubscribed": "{name}نىڭ بۇ تېلېفون سۆھبىتى جەريانىدا مۇشتەرىلىكى يوق ئىدى، شۇڭا سۆزلەنگەنلەر خاتىرىلەنمىدى.",
+    "callTranscriptTranscribing": "{name} دىن كەلگەن خاتىرىنى يەنىلا تەرجىمە قىلىۋاتىدۇ…",
+    "callTranscriptSeekTo": "{time} دىن باشلاپ قويۇش",
+    "callTranscriptRecordings": "خاتىرىلەر",
+    "callTranscriptFullCall": "تولۇق تېلېفون",
+    "callTranscriptPreparingRecording": "تولۇق خاتىرىنى تەييارلاۋاتىدۇ…",
+    "callTranscriptNoRecording": "تولۇق تېلېفوننىڭ خاتىرىسى يوق."
 }

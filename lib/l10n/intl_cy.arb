@@ -2373,5 +2373,11 @@
     "ssoNetworkBlockedTitle": "Safle mewngofnodi’n anghyraeddadwy",
     "ssoNetworkBlockedDesc": "Nid yw’r rhwydwaith hwn yn gadael inni gyrraedd {provider} i’ch mewngofnodi. Mae Wi-Fi ysgol a swyddfa’n aml yn ei rwystro. Gallwch gofrestru gydag e-bost yn lle hynny, neu newid i rwydwaith arall a rhoi cynnig arall arni.",
     "ssoTryAnyway": "Rhowch gynnig arni beth bynnag",
-    "callTranscriptNotSubscribed": "Nid oedd gan {name} danysgrifiad yn ystod yr alwad hon, felly ni thrawsgrifiwyd yr hyn a ddywedwyd."
+    "callTranscriptNotSubscribed": "Nid oedd gan {name} danysgrifiad yn ystod yr alwad hon, felly ni thrawsgrifiwyd yr hyn a ddywedwyd.",
+    "callTranscriptTranscribing": "Yn dal i drawsgrifio'r recordiad gan {name}…",
+    "callTranscriptSeekTo": "Chwarae o {time}",
+    "callTranscriptRecordings": "Recordiadau",
+    "callTranscriptFullCall": "Galwad lawn",
+    "callTranscriptPreparingRecording": "Yn paratoi'r recordiad llawn…",
+    "callTranscriptNoRecording": "Dim recordiad o'r alwad lawn."
 }

@@ -201,13 +201,23 @@ for what the detector decides on and which of its numbers are still unvalidated.
 
 ## What the transcript says
 
-A transcript is ASSEMBLED, not recorded. Each device transcribes the audio it
-captured — its own microphone, per the tap above — and writes one event, its
-half; a reader merges the two. Both halves hang off the caller's membership
+A transcript is ASSEMBLED, not recorded, and it is drawn from the same audio the
+call already saved. Each device uploads its own captured half; after the call
+that recording is transcribed in one pass and becomes that speaker's half. A
+device whose recording never uploaded falls back to the audio it transcribed live
+during the call — see [Failure is not all-or-nothing]. Either way a device speaks
+only for its own microphone, per the tap above, writes one event, and a reader
+merges the two. Both halves hang off the caller's membership
 event, which is the one id both sides know from the moment the call starts. The
 call card is not that anchor: only one side writes it, and a call both people
 reloaded out of leaves none, which would strand the other half in exactly the
 case a transcript is most wanted.
+
+The recording-based pass is gated behind `CALL_RECORDING_TRANSCRIPT`, which
+currently defaults off: until it is enabled, each half is the live one
+transcribed during the call (see [Failure is not all-or-nothing]), and the
+recording pass this section describes — with the per-turn `m:ss` timing it makes
+possible — is the opt-in path being rolled out.
 
 A half is one event or it is missing, never a series of parts. Parts need a
 sequence that survives process death across a rejoin, and leave no answer for
@@ -252,10 +262,14 @@ A position is known to one of three resolutions, and the screen says which:
 | by `m:ss` | only the chunk of audio bounds it |
 | no time | it never said which of those two this is |
 
-A bounded turn is placed at the LATEST moment it could have been spoken, not at
-its estimate: an estimate can render a turn a whole chunk early and put an
-answer before its question, while the end of the audio it came from cannot place
-any turn earlier than it was said. A position whose writer never characterised
+The recording pass times each turn's first word, so `m:ss` is the ordinary
+resolution; `by m:ss` belongs to the fallback, whose live capture can bound a
+turn only to the chunk of audio it was cut from. A bounded turn is placed at the
+LATEST moment it could have been spoken, not at its estimate: an estimate can put
+an answer before its question, while the end of the audio it came from cannot
+place any turn earlier than it was said. The fallback's chunks are kept short so
+that end stays near when the turn was spoken — a long chunk placed at its end is a
+turn dragged far past its moment. A position whose writer never characterised
 it keeps its place in the order — there is nothing else to order it by — and
 gets no time printed, because printing one puts this app's confidence behind
 another device's silence.
@@ -290,15 +304,19 @@ separated by it.
 
 ### The words are the transcript's; the timings only say when
 
-Segment text comes from the provider's transcript, and its word list supplies
-nothing but the when. Providers return a punctuation-free word list beside a
-punctuated transcript, so text assembled from the words loses the punctuation the
-learner reads and matches the transcript on almost no chunk. Timings are used
-only where they line up with that text word for word, which is what refuses a
-provider that re-cut the boundaries — the one failure that could genuinely put a
-word in a speaker's mouth. On any disagreement the transcript's own text still
-stands and only the precision of the time is lost, so no word a speaker did not
-say can reach the screen.
+Segment text today comes from the provider's punctuation-free WORD LIST, not the
+punctuated transcript: each turn's words are joined from the word list and the
+timings place the turn, while the punctuated `text` is read only when the
+provider returns no word-level timings at all. So the recording-based half loses
+the punctuation the learner reads. Showing the punctuated transcript instead —
+using the timings only to place turn boundaries — is the intended target, tracked
+in pangeachat/client#9303; it needs a word-list-to-transcript alignment step,
+because the two do not reconstruct one-for-one. Either way the words are the
+provider's own, so no word a speaker did not say reaches the screen, and only the
+boundary between two turns can fall a little off. The live fallback, which cannot
+re-transcribe the audio it cut, keeps the stricter rule and bounds the whole
+chunk on any disagreement. Both depend on the provider returning word-level
+timings alongside the transcript.
 
 ### Reading it back
 
@@ -357,8 +375,11 @@ Everything else degrades rather than fails:
 - A camera that will not open is a degraded call, not a failed one.
 - A local participant that never materialises is reported on screen as the other
   person not being able to hear, rather than dropping the call.
-- Losing the recording costs analytics and leaves the conversation untouched, which
-  is the right way round.
+- A half whose recording never uploaded is transcribed from the audio the device read
+  live during the call; the two halves are decided independently, so one side failing to
+  upload still leaves a whole, correctly ordered transcript. Losing a recording costs that
+  half its playback audio and its finer positioning — not its transcript, nor the analytics
+  drawn from it.
 
 ## Platform gates
 

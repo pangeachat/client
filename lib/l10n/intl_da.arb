@@ -10885,5 +10885,11 @@
     "ssoNetworkBlockedTitle": "Loginside utilgængelig",
     "ssoNetworkBlockedDesc": "Dette netværk tillader os ikke at nå {provider} for at logge dig ind. Skole- og kontor-Wi-Fi blokerer det ofte. Du kan i stedet tilmelde dig med e-mail eller skifte til et andet netværk og prøve igen.",
     "ssoTryAnyway": "Prøv alligevel",
-    "callTranscriptNotSubscribed": "{name} havde ikke et abonnement under dette opkald, så det, der blev sagt, blev ikke transskriberet."
+    "callTranscriptNotSubscribed": "{name} havde ikke et abonnement under dette opkald, så det, der blev sagt, blev ikke transskriberet.",
+    "callTranscriptTranscribing": "Transskriberer stadig optagelsen fra {name}…",
+    "callTranscriptSeekTo": "Afspil fra {time}",
+    "callTranscriptRecordings": "Optagelser",
+    "callTranscriptFullCall": "Hele opkaldet",
+    "callTranscriptPreparingRecording": "Forbereder hele optagelsen…",
+    "callTranscriptNoRecording": "Ingen optagelse af hele opkaldet."
 }

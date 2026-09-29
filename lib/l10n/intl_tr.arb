@@ -10266,5 +10266,11 @@
     "ssoNetworkBlockedTitle": "Giriş sitesine ulaşılamıyor",
     "ssoNetworkBlockedDesc": "Bu ağ, giriş yapmanız için {provider} adresine ulaşmamızı engelliyor. Okul ve ofis Wi-Fi'ları genellikle bunu engeller. Bunun yerine e-posta ile kaydolabilir veya başka bir ağa geçip tekrar deneyebilirsiniz.",
     "ssoTryAnyway": "Yine de dene",
-    "callTranscriptNotSubscribed": "{name} bu arama sırasında bir aboneliğe sahip değildi, bu nedenle konuşulanlar yazıya dökülmedi."
+    "callTranscriptNotSubscribed": "{name} bu arama sırasında bir aboneliğe sahip değildi, bu nedenle konuşulanlar yazıya dökülmedi.",
+    "callTranscriptTranscribing": "{name} adlı kullanıcının kaydı hala yazıya dökülüyor…",
+    "callTranscriptSeekTo": "{time} konumundan oynat",
+    "callTranscriptRecordings": "Kayıtlar",
+    "callTranscriptFullCall": "Tüm arama",
+    "callTranscriptPreparingRecording": "Tüm kayıt hazırlanıyor…",
+    "callTranscriptNoRecording": "Tüm aramanın kaydı yok."
 }

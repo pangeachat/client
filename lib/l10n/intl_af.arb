@@ -2373,5 +2373,11 @@
     "ssoNetworkBlockedTitle": "Aanmeldingswerf onbereikbaar",
     "ssoNetworkBlockedDesc": "Hierdie netwerk laat ons nie toe om {provider} te bereik om jou aan te meld nie. Skool- en kantoor-Wi-Fi blokkeer dit dikwels. Jy kan eerder met e-pos aanmeld, of na 'n ander netwerk oorskakel en weer probeer.",
     "ssoTryAnyway": "Probeer in elk geval",
-    "callTranscriptNotSubscribed": "{name} het nie 'n intekening gehad tydens hierdie oproep nie, so wat gesê is, is nie getranskribeer nie."
+    "callTranscriptNotSubscribed": "{name} het nie 'n intekening gehad tydens hierdie oproep nie, so wat gesê is, is nie getranskribeer nie.",
+    "callTranscriptTranscribing": "Besig om die opname van {name} te transkribeer…",
+    "callTranscriptSeekTo": "Speel vanaf {time}",
+    "callTranscriptRecordings": "Opnames",
+    "callTranscriptFullCall": "Volledige oproep",
+    "callTranscriptPreparingRecording": "Besig om die volledige opname voor te berei…",
+    "callTranscriptNoRecording": "Geen opname van die volledige oproep nie."
 }

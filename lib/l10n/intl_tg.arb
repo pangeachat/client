@@ -2373,5 +2373,11 @@
     "ssoNetworkBlockedTitle": "Сайти воридшавӣ дастнорас аст",
     "ssoNetworkBlockedDesc": "Ин шабака ба мо имкон намедиҳад, ки барои ворид шудан ба {provider} дастрасӣ пайдо кунем. Wi-Fi-и мактаб ва офис аксар вақт онро маҳкам мекунанд. Шумо метавонед ба ҷои ин бо почтаи электронӣ сабти ном кунед ё ба шабакаи дигар гузаред ва дубора кӯшиш кунед.",
     "ssoTryAnyway": "Ба ҳар ҳол кӯшиш кунед",
-    "callTranscriptNotSubscribed": "{name} ҳангоми ин занг обуна набуд, аз ин рӯ гуфтаҳо сабт нашуданд."
+    "callTranscriptNotSubscribed": "{name} ҳангоми ин занг обуна набуд, аз ин рӯ гуфтаҳо сабт нашуданд.",
+    "callTranscriptTranscribing": "Сабти {name} ҳоло ҳам транскрипт карда мешавад…",
+    "callTranscriptSeekTo": "Аз {time} навохтан",
+    "callTranscriptRecordings": "Сабтҳо",
+    "callTranscriptFullCall": "Занги пурра",
+    "callTranscriptPreparingRecording": "Сабти пурра омода карда мешавад…",
+    "callTranscriptNoRecording": "Сабти занги пурра мавҷуд нест."
 }

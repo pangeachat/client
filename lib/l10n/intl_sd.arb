@@ -2373,5 +2373,11 @@
     "ssoNetworkBlockedTitle": "سائن ان سائيٽ پهچ کان ٻاهر آهي",
     "ssoNetworkBlockedDesc": "هي نيٽ ورڪ اسان کي {provider} تائين پهچڻ نه ٿو ڏئي ته جيئن توهان کي سائن ان ڪري سگهجي. اسڪول ۽ آفيس جو وائي فائي اڪثر ان کي بلاڪ ڪندو آهي. توهان ان جي بدران اي ميل سان سائن اپ ڪري سگهو ٿا، يا ڪنهن ٻئي نيٽ ورڪ تي سوئچ ڪري ٻيهر ڪوشش ڪري سگهو ٿا.",
     "ssoTryAnyway": "بهرحال ڪوشش ڪريو",
-    "callTranscriptNotSubscribed": "{name} وٽ هن ڪال دوران رڪنيت نه هئي، تنهنڪري جيڪو ڪجهه چيو ويو اهو لکيو نه ويو."
+    "callTranscriptNotSubscribed": "{name} وٽ هن ڪال دوران رڪنيت نه هئي، تنهنڪري جيڪو ڪجهه چيو ويو اهو لکيو نه ويو.",
+    "callTranscriptTranscribing": "{name} جي رڪارڊنگ اڃا تائين ٽرانسڪرائب ٿي رهي آهي…",
+    "callTranscriptSeekTo": "{time} کان وڄايو",
+    "callTranscriptRecordings": "رڪارڊنگون",
+    "callTranscriptFullCall": "پوري ڪال",
+    "callTranscriptPreparingRecording": "پوري رڪارڊنگ تيار ڪئي پئي وڃي…",
+    "callTranscriptNoRecording": "پوري ڪال جي ڪا به رڪارڊنگ موجود ناهي."
 }

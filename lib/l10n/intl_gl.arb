@@ -9965,5 +9965,11 @@
     "ssoNetworkBlockedTitle": "Sitio de inicio de sesión inaccesible",
     "ssoNetworkBlockedDesc": "Esta rede non nos permite acceder a {provider} para iniciar a túa sesión. As redes Wi-Fi de escolas e oficinas adoitan bloquealo. Podes rexistrarte con correo electrónico ou cambiar a outra rede e tentalo de novo.",
     "ssoTryAnyway": "Tentar de todos os xeitos",
-    "callTranscriptNotSubscribed": "{name} non tiña unha subscrición durante esta chamada, polo que o que se dixo non foi transcrito."
+    "callTranscriptNotSubscribed": "{name} non tiña unha subscrición durante esta chamada, polo que o que se dixo non foi transcrito.",
+    "callTranscriptTranscribing": "Aínda transcribindo a gravación de {name}…",
+    "callTranscriptSeekTo": "Reproducir desde as {time}",
+    "callTranscriptRecordings": "Gravacións",
+    "callTranscriptFullCall": "Chamada completa",
+    "callTranscriptPreparingRecording": "Preparando a gravación completa…",
+    "callTranscriptNoRecording": "Non hai gravación da chamada completa."
 }

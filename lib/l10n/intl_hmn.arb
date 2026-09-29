@@ -2373,5 +2373,11 @@
     "ssoNetworkBlockedTitle": "Qhov chaw nkag tsis tuaj yeem mus txog",
     "ssoNetworkBlockedDesc": "Lub network no tsis tso cai rau peb mus txog {provider} los pab koj nkag. Feem ntau, tsev kawm ntawv thiab chaw ua haujlwm Wi-Fi thaiv nws. Koj tuaj yeem sau npe nrog email es tsis txhob, los yog hloov mus rau lwm lub network thiab sim dua.",
     "ssoTryAnyway": "Sim txawm li cas los xij",
-    "callTranscriptNotSubscribed": "{name} tsis muaj npe yuav khoom thaum hu xov tooj no, yog li tsis tau sau tseg tias hais dab tsi."
+    "callTranscriptNotSubscribed": "{name} tsis muaj npe yuav khoom thaum hu xov tooj no, yog li tsis tau sau tseg tias hais dab tsi.",
+    "callTranscriptTranscribing": "Tseem tab tom sau cov lus hais los ntawm {name}…",
+    "callTranscriptSeekTo": "Ua si txij {time}",
+    "callTranscriptRecordings": "Cov ntaubntawv kaw tseg",
+    "callTranscriptFullCall": "Hu tag nrho",
+    "callTranscriptPreparingRecording": "Npaj cov ntaubntawv kaw tseg tag nrho…",
+    "callTranscriptNoRecording": "Tsis muaj ntaubntawv kaw tseg rau kev hu tag nrho."
 }

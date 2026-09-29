@@ -9979,5 +9979,11 @@
     "ssoNetworkBlockedTitle": "Сайт для ўваходу недаступны",
     "ssoNetworkBlockedDesc": "Гэтая сетка не дазваляе нам звязацца з {provider} для вашага ўваходу. Школьны і офісны Wi-Fi часта блакуюць яго. Вы можаце зарэгістравацца з дапамогай электроннай пошты або пераключыцца на іншую сетку і паспрабаваць яшчэ раз.",
     "ssoTryAnyway": "Усё роўна паспрабаваць",
-    "callTranscriptNotSubscribed": "У {name} не было падпіскі падчас гэтага званка, таму сказанае не было расшыфравана."
+    "callTranscriptNotSubscribed": "У {name} не было падпіскі падчас гэтага званка, таму сказанае не было расшыфравана.",
+    "callTranscriptTranscribing": "Запіс ад {name} усё яшчэ расшыфроўваецца…",
+    "callTranscriptSeekTo": "Прайграць з {time}",
+    "callTranscriptRecordings": "Запісы",
+    "callTranscriptFullCall": "Поўны званок",
+    "callTranscriptPreparingRecording": "Падрыхтоўка поўнага запісу…",
+    "callTranscriptNoRecording": "Няма запісу поўнага званка."
 }

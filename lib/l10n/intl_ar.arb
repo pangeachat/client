@@ -10271,5 +10271,11 @@
     "ssoNetworkBlockedTitle": "موقع تسجيل الدخول غير متاح",
     "ssoNetworkBlockedDesc": "لا تسمح لنا هذه الشبكة بالوصول إلى {provider} لتسجيل دخولك. غالبًا ما تحظر شبكات Wi-Fi المدرسية والمكتبية ذلك. يمكنك التسجيل باستخدام البريد الإلكتروني بدلاً من ذلك، أو التبديل إلى شبكة أخرى والمحاولة مرة أخرى.",
     "ssoTryAnyway": "المحاولة على أي حال",
-    "callTranscriptNotSubscribed": "لم يكن لدى {name} اشتراك خلال هذه المكالمة، لذلك لم يتم نسخ ما قيل."
+    "callTranscriptNotSubscribed": "لم يكن لدى {name} اشتراك خلال هذه المكالمة، لذلك لم يتم نسخ ما قيل.",
+    "callTranscriptTranscribing": "ما زلنا نُفرّغ التسجيل من {name}...",
+    "callTranscriptSeekTo": "تشغيل من {time}",
+    "callTranscriptRecordings": "التسجيلات",
+    "callTranscriptFullCall": "المكالمة كاملة",
+    "callTranscriptPreparingRecording": "جارٍ إعداد التسجيل الكامل...",
+    "callTranscriptNoRecording": "لا يوجد تسجيل للمكالمة كاملة."
 }

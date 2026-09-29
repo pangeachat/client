@@ -2373,5 +2373,11 @@
     "ssoNetworkBlockedTitle": "સાઇન-ઇન સાઇટ પહોંચી શકાય તેવી નથી",
     "ssoNetworkBlockedDesc": "આ નેટવર્ક તમને સાઇન ઇન કરવા માટે {provider} સુધી પહોંચવા દેતું નથી. શાળા અને ઑફિસનું Wi-Fi ઘણીવાર તેને બ્લૉક કરે છે. તમે તેના બદલે ઇમેઇલ વડે સાઇન અપ કરી શકો છો અથવા બીજા નેટવર્ક પર સ્વિચ કરીને ફરી પ્રયાસ કરી શકો છો.",
     "ssoTryAnyway": "તો પણ પ્રયાસ કરો",
-    "callTranscriptNotSubscribed": "{name} પાસે આ કૉલ દરમિયાન સબ્સ્ક્રિપ્શન નહોતું, તેથી જે કહેવામાં આવ્યું તે ટ્રાન્સક્રાઇબ કરવામાં આવ્યું નથી."
+    "callTranscriptNotSubscribed": "{name} પાસે આ કૉલ દરમિયાન સબ્સ્ક્રિપ્શન નહોતું, તેથી જે કહેવામાં આવ્યું તે ટ્રાન્સક્રાઇબ કરવામાં આવ્યું નથી.",
+    "callTranscriptTranscribing": "{name} ના રેકોર્ડિંગનું હજી ટ્રાન્સક્રિપ્શન ચાલુ છે…",
+    "callTranscriptSeekTo": "{time} થી ચલાવો",
+    "callTranscriptRecordings": "રેકોર્ડિંગ્સ",
+    "callTranscriptFullCall": "સંપૂર્ણ કૉલ",
+    "callTranscriptPreparingRecording": "સંપૂર્ણ રેકોર્ડિંગ તૈયાર થઈ રહ્યું છે…",
+    "callTranscriptNoRecording": "સંપૂર્ણ કૉલનું કોઈ રેકોર્ડિંગ નથી."
 }

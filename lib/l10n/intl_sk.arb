@@ -10910,5 +10910,11 @@
     "ssoNetworkBlockedTitle": "Prihlasovacia stránka je nedostupná",
     "ssoNetworkBlockedDesc": "Táto sieť nám neumožňuje pripojiť sa k {provider} a prihlásiť vás. Často to blokujú školské a kancelárske Wi-Fi siete. Namiesto toho sa môžete zaregistrovať e-mailom alebo prejsť na inú sieť a skúsiť to znova.",
     "ssoTryAnyway": "Aj tak skúsiť",
-    "callTranscriptNotSubscribed": "{name} nemal počas tohto hovoru predplatné, takže to, čo bolo povedané, nebolo prepísané."
+    "callTranscriptNotSubscribed": "{name} nemal počas tohto hovoru predplatné, takže to, čo bolo povedané, nebolo prepísané.",
+    "callTranscriptTranscribing": "Stále prepisujem nahrávku od {name}…",
+    "callTranscriptSeekTo": "Prehrať od {time}",
+    "callTranscriptRecordings": "Nahrávky",
+    "callTranscriptFullCall": "Celý hovor",
+    "callTranscriptPreparingRecording": "Pripravujem celú nahrávku…",
+    "callTranscriptNoRecording": "Žiadna nahrávka celého hovoru."
 }

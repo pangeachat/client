@@ -10002,5 +10002,11 @@
     "ssoNetworkBlockedTitle": "Kirjautumissivusto ei tavoitettavissa",
     "ssoNetworkBlockedDesc": "Tämä verkko estää meitä tavoittamasta palvelua {provider} kirjautuaksesi sisään. Koulun ja toimiston Wi-Fi-verkot estävät sen usein. Voit kirjautua sisään sähköpostilla tai vaihtaa toiseen verkkoon ja yrittää uudelleen.",
     "ssoTryAnyway": "Yritä silti",
-    "callTranscriptNotSubscribed": "{name} ei ollut tilannut palvelua tämän puhelun aikana, joten puhetta ei litteroitu."
+    "callTranscriptNotSubscribed": "{name} ei ollut tilannut palvelua tämän puhelun aikana, joten puhetta ei litteroitu.",
+    "callTranscriptTranscribing": "Käsittelen edelleen tallennetta käyttäjältä {name}…",
+    "callTranscriptSeekTo": "Toista alkaen {time}",
+    "callTranscriptRecordings": "Tallenteet",
+    "callTranscriptFullCall": "Koko puhelu",
+    "callTranscriptPreparingRecording": "Valmistelen koko tallennetta…",
+    "callTranscriptNoRecording": "Koko puhelusta ei ole tallennetta."
 }

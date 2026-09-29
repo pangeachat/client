@@ -9965,5 +9965,11 @@
     "ssoNetworkBlockedTitle": "Aanmeldingssite onbereikbaar",
     "ssoNetworkBlockedDesc": "Dit netwerk laat ons {provider} niet bereiken om je aan te melden. School- en kantoor-wifi blokkeren dit vaak. Je kunt je in plaats daarvan aanmelden met e-mail, of overschakelen naar een ander netwerk en het opnieuw proberen.",
     "ssoTryAnyway": "Toch proberen",
-    "callTranscriptNotSubscribed": "{name} had geen abonnement tijdens dit gesprek, dus wat er werd gezegd, is niet getranscribeerd."
+    "callTranscriptNotSubscribed": "{name} had geen abonnement tijdens dit gesprek, dus wat er werd gezegd, is niet getranscribeerd.",
+    "callTranscriptTranscribing": "Opname van {name} wordt nog getranscribeerd…",
+    "callTranscriptSeekTo": "Afspelen vanaf {time}",
+    "callTranscriptRecordings": "Opnames",
+    "callTranscriptFullCall": "Volledig gesprek",
+    "callTranscriptPreparingRecording": "De volledige opname wordt voorbereid…",
+    "callTranscriptNoRecording": "Geen opname van het volledige gesprek."
 }

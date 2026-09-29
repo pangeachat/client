@@ -2373,5 +2373,11 @@
     "ssoNetworkBlockedTitle": "គេហទំព័រចូលប្រើមិនបាន",
     "ssoNetworkBlockedDesc": "បណ្ដាញនេះមិនអនុញ្ញាតឱ្យយើងចូលប្រើ {provider} ដើម្បីចុះឈ្មោះអ្នកទេ។ Wi-Fi របស់សាលារៀន និងការិយាល័យតែងតែទប់ស្កាត់វា។ អ្នកអាចចុះឈ្មោះដោយប្រើអ៊ីមែលជំនួសវិញ ឬប្ដូរទៅបណ្ដាញផ្សេងទៀត ហើយព្យាយាមម្ដងទៀត។",
     "ssoTryAnyway": "ព្យាយាមម្ដងទៀត",
-    "callTranscriptNotSubscribed": "{name} មិនមានការជាវក្នុងអំឡុងពេលការហៅនេះទេ ដូច្នេះអ្វីដែលបាននិយាយមិនត្រូវបានចម្លងទេ។"
+    "callTranscriptNotSubscribed": "{name} មិនមានការជាវក្នុងអំឡុងពេលការហៅនេះទេ ដូច្នេះអ្វីដែលបាននិយាយមិនត្រូវបានចម្លងទេ។",
+    "callTranscriptTranscribing": "កំពុងចម្លងសំឡេងពី {name}…",
+    "callTranscriptSeekTo": "ចាក់ពី {time}",
+    "callTranscriptRecordings": "ការថតសំឡេង",
+    "callTranscriptFullCall": "ការហៅពេញលេញ",
+    "callTranscriptPreparingRecording": "កំពុងរៀបចំការថតសំឡេងពេញលេញ…",
+    "callTranscriptNoRecording": "គ្មានការថតសំឡេងនៃការហៅពេញលេញទេ។"
 }

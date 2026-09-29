@@ -2373,5 +2373,11 @@
     "ssoNetworkBlockedTitle": "Dili maabot ang site sa pag-sign-in",
     "ssoNetworkBlockedDesc": "Kini nga network wala nagtugot kanamo nga maabot ang {provider} aron ma-sign in ka. Ang Wi-Fi sa eskwelahan ug opisina kasagaran nagbabag niini. Mahimo kang mag-sign up gamit ang email, o mobalhin sa laing network ug mosulay pag-usab.",
     "ssoTryAnyway": "Sulayi gihapon",
-    "callTranscriptNotSubscribed": "Walay subscription si {name} atol niini nga tawag, mao nga wala gi-transcribe ang gisulti."
+    "callTranscriptNotSubscribed": "Walay subscription si {name} atol niini nga tawag, mao nga wala gi-transcribe ang gisulti.",
+    "callTranscriptTranscribing": "Gisulat pa ang recording gikan kang {name}…",
+    "callTranscriptSeekTo": "I-play gikan sa {time}",
+    "callTranscriptRecordings": "Mga recording",
+    "callTranscriptFullCall": "Tibuok tawag",
+    "callTranscriptPreparingRecording": "Giandam ang tibuok recording…",
+    "callTranscriptNoRecording": "Walay recording sa tibuok tawag."
 }

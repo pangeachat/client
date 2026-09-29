@@ -2373,5 +2373,11 @@
     "ssoNetworkBlockedTitle": "ບໍ່ສາມາດເຂົ້າເຖິງເວັບໄຊທ໌ເຂົ້າສູ່ລະບົບໄດ້",
     "ssoNetworkBlockedDesc": "ເຄືອຂ່າຍນີ້ບໍ່ອະນຸຍາດໃຫ້ພວກເຮົາເຂົ້າເຖິງ {provider} ເພື່ອເຂົ້າສູ່ລະບົບໃຫ້ທ່ານ. Wi-Fi ຂອງໂຮງຮຽນ ແລະ ຫ້ອງການມັກຈະບລັອກມັນ. ທ່ານສາມາດລົງທະບຽນດ້ວຍອີເມວແທນ, ຫຼືປ່ຽນໄປໃຊ້ເຄືອຂ່າຍອື່ນແລ້ວລອງໃໝ່ອີກຄັ້ງ.",
     "ssoTryAnyway": "ລອງອີກຄັ້ງ",
-    "callTranscriptNotSubscribed": "{name} ບໍ່ໄດ້ສະໝັກໃຊ້ບໍລິການໃນລະຫວ່າງການໂທນີ້, ສະນັ້ນສິ່ງທີ່ເວົ້າຈຶ່ງບໍ່ໄດ້ຖືກຖອດຂໍ້ຄວາມ."
+    "callTranscriptNotSubscribed": "{name} ບໍ່ໄດ້ສະໝັກໃຊ້ບໍລິການໃນລະຫວ່າງການໂທນີ້, ສະນັ້ນສິ່ງທີ່ເວົ້າຈຶ່ງບໍ່ໄດ້ຖືກຖອດຂໍ້ຄວາມ.",
+    "callTranscriptTranscribing": "ກຳລັງຖອດຂໍ້ຄວາມຈາກການບັນທຶກສຽງຂອງ {name}…",
+    "callTranscriptSeekTo": "ຫຼິ້ນຈາກ {time}",
+    "callTranscriptRecordings": "ການບັນທຶກສຽງ",
+    "callTranscriptFullCall": "ການໂທເຕັມຮູບແບບ",
+    "callTranscriptPreparingRecording": "ກຳລັງກະກຽມການບັນທຶກສຽງເຕັມຮູບແບບ…",
+    "callTranscriptNoRecording": "ບໍ່ມີການບັນທຶກສຽງການໂທເຕັມຮູບແບບ."
 }

@@ -2373,5 +2373,11 @@
     "ssoNetworkBlockedTitle": "Situs asup teu tiasa diaksés",
     "ssoNetworkBlockedDesc": "Jaringan ieu ngahalangan kami ngahubungi {provider} pikeun ngasupkeun anjeun. Wi-Fi sakola sareng kantor sering ngahalanganana. Anjeun tiasa ngadaptar nganggo email, atanapi gentos ka jaringan sanés teras cobian deui.",
     "ssoTryAnyway": "Cobi waé",
-    "callTranscriptNotSubscribed": "{name} teu gaduh langganan nalika nelepon ieu, janten naon anu diucapkeun henteu ditranskripsi."
+    "callTranscriptNotSubscribed": "{name} teu gaduh langganan nalika nelepon ieu, janten naon anu diucapkeun henteu ditranskripsi.",
+    "callTranscriptTranscribing": "Nuju nyalin rékaman ti {name}…",
+    "callTranscriptSeekTo": "Puter ti {time}",
+    "callTranscriptRecordings": "Rékaman",
+    "callTranscriptFullCall": "Telepon lengkep",
+    "callTranscriptPreparingRecording": "Nyiapkeun rékaman lengkep…",
+    "callTranscriptNoRecording": "Teu aya rékaman telepon lengkep."
 }

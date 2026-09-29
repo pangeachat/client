@@ -495,6 +495,12 @@ class FakeCapture extends CallCaptureService {
   /// the LAST one cannot tell teardown's choice from finish's.
   final List<bool> stopSettledDeliveries = [];
 
+  /// Whether each stop was told to preserve this device's carrier status -- a
+  /// peer-drop PAUSE (true) rather than a sibling handover (false). Parallel to
+  /// [stopSettledDeliveries], and the only place a test can see that
+  /// [ActiveCall] correctly told the recorder a peer-drop is not a handover.
+  final List<bool> stopPreserveCarrier = [];
+
   /// The stop in flight, so a second caller JOINS the first rather than
   /// returning while it is still unwinding -- which is what the real service
   /// does (`_stopped ??= _stop()`). Without modelling that here, a fake stop
@@ -503,8 +509,12 @@ class FakeCapture extends CallCaptureService {
   Future<void>? _stopping;
 
   @override
-  Future<void> stop({bool settleDeliveries = true}) async {
+  Future<void> stop({
+    bool settleDeliveries = true,
+    bool preserveCarrier = false,
+  }) async {
     stopSettledDeliveries.add(settleDeliveries);
+    stopPreserveCarrier.add(preserveCarrier);
     await (_stopping ??= _stop().whenComplete(() => _stopping = null));
   }
 
@@ -1231,6 +1241,145 @@ void main() {
         isFalse,
         reason: 'a retraction is a departure, whoever saw what first',
       );
+      expect(call.stage, CallStage.ended);
+    });
+  });
+
+  group('a peer that drops without retracting', () {
+    // THE NON-INITIATOR BUG, end to end through the election. In a 1:1 call the
+    // answerer's peer leaves; the SFU reports them gone before their membership
+    // retraction syncs, so the first "peer gone" tick takes the GRACE path, not
+    // the deliberate-hangup path. That grace pause stops recording -- but it is
+    // NOT a sibling handover (no other device of this account is here), so the
+    // recorder must be told to KEEP this device's carrier status for the hangup
+    // that follows when the grace lapses. Told wrong, the half is silently
+    // dropped and a 1:1 call records only ONE side.
+    test(
+      'pauses recording as a CARRIER PAUSE, not a handover, so its half survives',
+      () async {
+        final (call, calls, _, capture) = await build();
+        calls.remotePresent = true;
+        await call.start(roomStub(calls.client), video: false, answering: true);
+        expect(call.isRecording, isTrue);
+
+        // The peer VANISHES: gone from the SFU, but their membership is NOT
+        // retracted -- a drop, not a deliberate hangup -- so this device holds
+        // their place through the grace window rather than ending at once.
+        calls.remotePresent = false; // peerMembershipPresent stays true
+        await calls.participantsBecome([calls.client.deviceID!]);
+        await call.tickReelectionForTest();
+
+        expect(
+          call.peerReconnecting,
+          isTrue,
+          reason: 'a vanish without a retraction opens the grace window',
+        );
+        expect(
+          call.isRecording,
+          isFalse,
+          reason: 'recording pauses while nobody is there to hear it',
+        );
+        expect(
+          capture.stopPreserveCarrier,
+          contains(true),
+          reason:
+              'the grace pause is a carrier pause, not a sibling handover -- '
+              'the recorder must keep this device\'s half for the hangup, or a '
+              '1:1 call records only the side that hung up',
+        );
+
+        // The grace lapses with nobody back, so the call ends. The carrier fact
+        // set on the pause above is what lets the half publish at finish.
+        await call.peerGraceLapseForTest();
+        expect(call.stage, CallStage.ended);
+      },
+    );
+
+    test('a sibling successor appearing DURING the retract makes the stop a '
+        'handover, not a stale carrier pause', () async {
+      // THE STALE-REASON RACE. The reconcile that stops on a peer-drop pause
+      // decides `preserveCarrier` at the moment its stop LATCHES, not when it
+      // was queued. Its retract awaits a signal round trip, and an election
+      // runs UNSERIALISED inside that await -- so if a sibling that out-ranks
+      // this device joins there, the pause has BECOME a sibling handover
+      // while `wanted` stayed false, which `_decisionHolds` alone cannot
+      // tell apart from a still-genuine pause. A carrier reason snapshotted
+      // before the await would then latch this device's half for a stretch
+      // the sibling now publishes -- the account credited twice for one
+      // stretch, the duplicate the design forbids. The LIVE reason must win.
+      final (call, calls, _, capture) = await build();
+      calls.remotePresent = true;
+      // A sibling this device OUT-RANKS (a higher device id) is present from
+      // the start, so this device records AND `hasSiblings` is true. The
+      // second half matters: a lone device's retract skips the round trip
+      // entirely, and the race needs that await to stand in.
+      calls.devicesInCall = ['ZZZZZZZZZZ', calls.client.deviceID!];
+      await call.start(roomStub(calls.client), video: false, answering: true);
+      expect(call.isRecording, isTrue);
+      // Let this device's "recording:1" run announcement actually LAND before
+      // the drop, so the later retraction to "no" is a real change the
+      // announcer must write -- which is the round trip the held retract
+      // parks on. Without it the device still advertises "no" and the retract
+      // is a no-op that never waits, closing the race window this test needs.
+      await pumpEventQueue();
+
+      // Freeze the retraction announce in flight, so the peer-drop reconcile
+      // parks on its retract await with the stop still ahead of it -- the one
+      // window in which an election can change the reason out from under it.
+      final retract = Completer<void>();
+      calls.roster!.holdAnnounce = retract;
+
+      // The peer VANISHES without retracting: a drop, so the grace opens and
+      // recording pauses. This queues the stop, whose reconcile parks on the
+      // held retraction.
+      calls.remotePresent = false; // peerMembershipPresent stays true
+      await calls.participantsBecome(['ZZZZZZZZZZ', calls.client.deviceID!]);
+      expect(
+        call.peerReconnecting,
+        isTrue,
+        reason: 'a vanish without a retraction opens the grace window',
+      );
+      expect(
+        capture.stopPreserveCarrier,
+        isEmpty,
+        reason:
+            'the stop must still be PARKED on the held retract here -- the '
+            'whole race is that the reason can change before it latches',
+      );
+
+      // WHILE the stop is parked, a sibling that OUT-RANKS this device (a
+      // lower device id) joins. The next election makes it the recording
+      // successor, so this is no longer a peer-drop pause but a sibling
+      // handover -- yet `wanted` is still false, so the decision is unchanged
+      // by every measure except the reason itself.
+      await calls.participantsBecome([
+        'AAAAAAAAAA',
+        'ZZZZZZZZZZ',
+        calls.client.deviceID!,
+      ]);
+
+      // Let the retraction land; the parked reconcile resumes and stops.
+      retract.complete();
+      await pumpEventQueue();
+
+      expect(
+        capture.stopPreserveCarrier,
+        isNotEmpty,
+        reason: 'the peer-drop pause must still have stopped the recorder',
+      );
+      expect(
+        capture.stopPreserveCarrier,
+        isNot(contains(true)),
+        reason:
+            'a sibling successor appeared during the retract, so the stop is '
+            'a HANDOVER -- this device must NOT claim carrier, or both it and '
+            'the sibling publish the same stretch (a duplicate). A carrier '
+            'reason snapshotted before the await would wrongly latch true; '
+            'the live election verdict, read at the stop, is false.',
+      );
+
+      // Cleaned up so the grace timer does not outlive the test.
+      await call.peerGraceLapseForTest();
       expect(call.stage, CallStage.ended);
     });
   });

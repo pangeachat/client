@@ -2373,5 +2373,11 @@
     "ssoNetworkBlockedTitle": "Saiti yekupinda haisvikike",
     "ssoNetworkBlockedDesc": "Network iyi haitibvumire kusvika ku {provider} kuti tikupinze. Wi-Fi yechikoro neyehofisi inowanzoivharira. Unogona kusaina neemail panzvimbo, kana kuchinja kune imwe network woedza zvakare.",
     "ssoTryAnyway": "Edza zvakadaro",
-    "callTranscriptNotSubscribed": "{name} anga asina kunyoresa panguva yekufona uku, saka zvakataurwa hazvina kunyorwa."
+    "callTranscriptNotSubscribed": "{name} anga asina kunyoresa panguva yekufona uku, saka zvakataurwa hazvina kunyorwa.",
+    "callTranscriptTranscribing": "Ichiri kunyora pasi zvakataurwa kubva kuna {name}…",
+    "callTranscriptSeekTo": "Ridza kubva pa {time}",
+    "callTranscriptRecordings": "Zvinyorwa",
+    "callTranscriptFullCall": "Kufona kwese",
+    "callTranscriptPreparingRecording": "Kugadzirira kunyora kwese…",
+    "callTranscriptNoRecording": "Hapana chinyorwa chekufona kwese."
 }

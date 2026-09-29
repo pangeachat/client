@@ -2373,5 +2373,11 @@
     "ssoNetworkBlockedTitle": "Oanmeldside net berikber",
     "ssoNetworkBlockedDesc": "Dit netwurk lit ús {provider} net berikke om jo oan te melden. Wi-Fi op skoalle en kantoar blokkearret dit faak. Jo kinne ynstee oanmelde mei e-mail, of oerskeakelje nei in oar netwurk en it opnij besykje.",
     "ssoTryAnyway": "Dochs besykje",
-    "callTranscriptNotSubscribed": "{name} hie gjin abonnemint tidens dit petear, dus wat sein waard is net transkribearre."
+    "callTranscriptNotSubscribed": "{name} hie gjin abonnemint tidens dit petear, dus wat sein waard is net transkribearre.",
+    "callTranscriptTranscribing": "De opname fan {name} wurdt noch transkribearre…",
+    "callTranscriptSeekTo": "Ofspylje fan {time}",
+    "callTranscriptRecordings": "Opnamen",
+    "callTranscriptFullCall": "Folsleine oprop",
+    "callTranscriptPreparingRecording": "De folsleine opname wurdt taret…",
+    "callTranscriptNoRecording": "Gjin opname fan de folsleine oprop."
 }

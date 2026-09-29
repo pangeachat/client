@@ -10053,5 +10053,11 @@
     "ssoNetworkBlockedTitle": "سایت ورود به سیستم در دسترس نیست",
     "ssoNetworkBlockedDesc": "این شبکه به ما اجازه نمی‌دهد برای ورود شما به {provider} دسترسی پیدا کنیم. وای‌فای مدرسه و اداره اغلب آن را مسدود می‌کنند. می‌توانید به جای آن با ایمیل ثبت‌نام کنید، یا به شبکه دیگری متصل شوید و دوباره امتحان کنید.",
     "ssoTryAnyway": "به هر حال امتحان کن",
-    "callTranscriptNotSubscribed": "{name} در طول این تماس اشتراک نداشت، بنابراین آنچه گفته شد رونویسی نشد."
+    "callTranscriptNotSubscribed": "{name} در طول این تماس اشتراک نداشت، بنابراین آنچه گفته شد رونویسی نشد.",
+    "callTranscriptTranscribing": "در حال رونویسی از ضبط {name}...",
+    "callTranscriptSeekTo": "پخش از {time}",
+    "callTranscriptRecordings": "ضبط‌ها",
+    "callTranscriptFullCall": "مکالمه کامل",
+    "callTranscriptPreparingRecording": "در حال آماده‌سازی ضبط کامل...",
+    "callTranscriptNoRecording": "هیچ ضبطی از مکالمه کامل وجود ندارد."
 }

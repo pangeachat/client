@@ -2373,5 +2373,11 @@
     "ssoNetworkBlockedTitle": "Sayn-in sayt nɔ de rich",
     "ssoNetworkBlockedDesc": "Dis netwɔk nɔ de mek wi rich {provider} fɔ sayn yu in. Skul ɛn ɔfis Wi-Fi kin blɔk am. Yu go ebul sayn-ɔp wit imel instɛd, ɔ chenj to ɔda netwɔk ɛn tray igen.",
     "ssoTryAnyway": "Tray ɛnitin",
-    "callTranscriptNotSubscribed": "{name} nɔ bin gɛt sɔbskripshɔn dɛn dis kɔl, so wetin dɛn tɔk nɔ bin rayt dɔŋ."
+    "callTranscriptNotSubscribed": "{name} nɔ bin gɛt sɔbskripshɔn dɛn dis kɔl, so wetin dɛn tɔk nɔ bin rayt dɔŋ.",
+    "callTranscriptTranscribing": "De stil de raykod fɔ {name}…",
+    "callTranscriptSeekTo": "Ple frɔm {time}",
+    "callTranscriptRecordings": "Raykod dɛn",
+    "callTranscriptFullCall": "Ful kɔl",
+    "callTranscriptPreparingRecording": "De pripia di ful raykod…",
+    "callTranscriptNoRecording": "No raykod fɔ di ful kɔl."
 }
