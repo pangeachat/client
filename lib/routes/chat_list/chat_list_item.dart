@@ -5,6 +5,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
+import 'package:fluffychat/features/user/direct_chat_contacts_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/show_menu_long_press.dart';
 import 'package:fluffychat/pangea/common/widgets/course_image_builder.dart';
@@ -89,7 +90,8 @@ class ChatListItem extends StatelessWidget {
       MatrixLocals(L10n.of(context)),
     );
     final filter = this.filter;
-    if (filter != null && !displayname.toLowerCase().contains(filter)) {
+    if (filter != null &&
+        !room.matchesChatSearch(filter, MatrixLocals(L10n.of(context)))) {
       return const SizedBox.shrink();
     }
 
