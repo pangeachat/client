@@ -174,11 +174,17 @@ enum OnDemandTranscriptionResult {
   /// the button retryable rather than marking the half unavailable.
   noRecording,
 
-  /// A recording was found but its audio is unusable -- the bytes could not be
-  /// downloaded, or speech-to-text produced nothing. TERMINAL for this screen:
-  /// the view marks the half "audio unavailable" and does not offer the button
-  /// again.
+  /// A recording was found but its audio is unusable for good -- a malformed
+  /// url, empty bytes, or speech-to-text that produced nothing. TERMINAL for
+  /// this screen: the view marks the half "audio unavailable" and does not offer
+  /// the button again. A TRANSIENT download failure is [downloadFailed], not
+  /// this.
   audioUnavailable,
+
+  /// The recording download failed transiently -- a network or homeserver error,
+  /// not a malformed url or empty audio. TRANSIENT: the view leaves the button
+  /// retryable, because the bytes may be there on the next attempt.
+  downloadFailed,
 
   /// The feature is not enabled for this run -- the flag is off, the invoker's
   /// subscription lapsed, or the 1:1 identity is not established. The view
@@ -536,7 +542,14 @@ class WholeCallTranscriber {
         return OnDemandTranscriptionResult.alreadyPresent;
       }
 
-      final bytes = await _download(recording);
+      final Uint8List? bytes;
+      try {
+        bytes = await _download(recording);
+      } catch (_) {
+        // A transient download failure (_download rethrows those; a malformed
+        // url comes back null below). Retryable, not terminal.
+        return OnDemandTranscriptionResult.downloadFailed;
+      }
       if (bytes == null || bytes.isEmpty) {
         return OnDemandTranscriptionResult.audioUnavailable;
       }
@@ -648,15 +661,26 @@ class WholeCallTranscriber {
     }
     try {
       return await download(uri);
-    } catch (e, s) {
-      // Terminal for this pass, not a fallback to the writer: the bytes are the
-      // ground truth, and without them there is nothing honest to transcribe.
+    } on ArgumentError catch (e, s) {
+      // A malformed mxc:// url (mxcServerAndMediaId rejects it) can never
+      // download -- terminal, like the unparseable url above. Null here maps to
+      // audioUnavailable.
       Logs().w(
-        'A peer call recording could not be downloaded; not transcribed',
+        'A peer call recording url could not be used; not transcribed',
         e,
         s,
       );
       return null;
+    } catch (e, s) {
+      // A transient failure (network or homeserver). RETHROWN so the caller can
+      // keep the retry offered instead of marking the half permanently
+      // unavailable -- the bytes may be there on the next attempt.
+      Logs().w(
+        'A peer call recording download failed; it can be retried',
+        e,
+        s,
+      );
+      rethrow;
     }
   }
 

@@ -1033,10 +1033,12 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
         // offered again. See [_onDemandUnavailable]'s own doc.
         case OnDemandTranscriptionResult.audioUnavailable:
           setState(() => _onDemandUnavailable.add(speakerId));
-        // Transient or not-yet-possible -- no manifest has arrived, no recording
-        // names this speaker, or the gate was not satisfied on this entry. Left
-        // RETRYABLE: the ordinary button reappears rather than locking into a
-        // terminal note over what a later tap may resolve.
+        // Transient or not-yet-possible -- a download that failed on a network
+        // or homeserver blip, no manifest arrived yet, no recording names this
+        // speaker, or the gate was not satisfied on this entry. Left RETRYABLE:
+        // the ordinary button reappears rather than locking into a terminal note
+        // over what a later tap may resolve.
+        case OnDemandTranscriptionResult.downloadFailed:
         case OnDemandTranscriptionResult.manifestPending:
         case OnDemandTranscriptionResult.noRecording:
         case OnDemandTranscriptionResult.disabled:

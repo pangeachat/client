@@ -711,6 +711,38 @@ void main() {
       expect(h.posts, isEmpty);
     });
 
+    test('downloadFailed on a TRANSIENT download error (retryable)', () async {
+      // A network/homeserver blip is not the audio being unusable -- the bytes
+      // may be there next time, so the button must stay retryable.
+      // Mutation proof: swallowing the download throw to null (or dropping the
+      // `_produceOnePeer` catch) makes this audioUnavailable (terminal) -> RED.
+      final h = _Harness()..download = (_) async => throw Exception('network');
+      final result = await h.build().transcribeHalfOnDemand(
+        callKey: _callKey,
+        speakerId: _peer,
+      );
+      expect(result, OnDemandTranscriptionResult.downloadFailed);
+      expect(h.posts, isEmpty);
+    });
+
+    test(
+      'audioUnavailable on a MALFORMED url (ArgumentError, terminal)',
+      () async {
+        // mxcServerAndMediaId throws ArgumentError for a url that can never
+        // download -- terminal, so this stays audioUnavailable, not downloadFailed.
+        // Mutation proof: rethrowing ArgumentError too (dropping the `on
+        // ArgumentError` catch in _download) makes this downloadFailed -> RED.
+        final h = _Harness()
+          ..download = (_) async => throw ArgumentError('malformed mxc');
+        final result = await h.build().transcribeHalfOnDemand(
+          callKey: _callKey,
+          speakerId: _peer,
+        );
+        expect(result, OnDemandTranscriptionResult.audioUnavailable);
+        expect(h.posts, isEmpty);
+      },
+    );
+
     test('produced when a half is transcribed and posted', () async {
       final h = _Harness();
       final result = await h.build().transcribeHalfOnDemand(

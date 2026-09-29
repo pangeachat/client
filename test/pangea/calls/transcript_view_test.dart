@@ -5780,12 +5780,15 @@ void main() {
       );
 
       testWidgets(
-        'a download failure surfaces as "audio unavailable", never a stuck '
-        'button',
+        'a MALFORMED recording url surfaces as "audio unavailable", never a '
+        'stuck button',
         (tester) async {
+          // A url that can never download (mxcServerAndMediaId throws
+          // ArgumentError) is TERMINAL, so the half is marked unavailable and
+          // the button is withdrawn.
           MatrixState.pangeaController = FakePangeaController(subscribed: true);
           final fake = buildFakeTranscriber(
-            download: (uri) async => throw Exception('network gone'),
+            download: (uri) async => throw ArgumentError('malformed mxc url'),
             post:
                 ({
                   required callKey,
@@ -5823,6 +5826,52 @@ void main() {
             find.textContaining('could not be downloaded'),
             findsOneWidget,
           );
+        },
+      );
+
+      testWidgets(
+        'a TRANSIENT download failure leaves the button retryable, never '
+        'marked unavailable',
+        (tester) async {
+          // A network/homeserver blip (a non-ArgumentError throw) is not the
+          // audio being unusable -- the bytes may be there next time, so the
+          // button must stay.
+          // Mutation: mapping downloadFailed to the audioUnavailable case would
+          // withdraw the button and show the terminal note here -> RED.
+          MatrixState.pangeaController = FakePangeaController(subscribed: true);
+          final fake = buildFakeTranscriber(
+            download: (uri) async => throw Exception('network gone'),
+            post:
+                ({
+                  required callKey,
+                  required spokenBy,
+                  required sourceAudioEventId,
+                  required deviceId,
+                  required langCode,
+                  required clockAnchor,
+                  required segments,
+                }) async {
+                  fail(
+                    'must not post a half over a download that never landed',
+                  );
+                },
+          );
+
+          await pumpWithRecordings(
+            tester,
+            room(),
+            servingByType([
+              half(_me, texts: const ['hola']),
+              audioEvent(_peer),
+            ]),
+            transcriber: fake,
+          );
+
+          await tester.tap(find.text('Transcribe'));
+          await tester.pumpAndSettle();
+
+          expect(find.text('Transcribe'), findsOneWidget);
+          expect(find.textContaining('could not be downloaded'), findsNothing);
         },
       );
 
