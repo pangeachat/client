@@ -9,9 +9,11 @@
 // passes, leaving out its warm-up passes (a scroll run's first pass carries
 // one-time costs such as image decode; a launch run has no warm-up, since its
 // one pass is the launch). Each round then gives one difference per metric, and a metric
-// counts as changed when it moved the same way in every round by more than 5%
-// of the baseline. A slowdown that hits the whole device for a while lands on
-// both runs of its round and cancels out.
+// counts as changed when it moved the same way in every round: by more than 5%
+// of the baseline for a time, and by more than a quarter of the baseline and at
+// least 3 frames for a count of frames over budget. Counts swing much more than
+// times between identical runs. A slowdown that hits the whole device for a
+// while lands on both runs of its round and cancels out.
 
 const fs = require('fs');
 
@@ -66,8 +68,11 @@ let changed = 0;
 const rows = Object.entries(METRICS).filter(([, pick]) => present(pick)).map(([name, pick]) => {
   const b = runValues(base, pick);
   const deltas = runValues(next, pick).map((v, i) => v - b[i]);
-  const floor = 0.05 * Math.abs(median(b));
-  const verdict = deltas.every((d) => d > floor) ? 'WORSE' : deltas.every((d) => d < -floor) ? 'better' : 'no change';
+  const baseline = Math.abs(median(b));
+  const isCount = name.startsWith('missed');
+  const floor = isCount ? Math.max(0.25 * baseline, 3) : 0.05 * baseline;
+  const beyond = (d) => (isCount ? d > 0.25 * baseline && d >= 3 : d > floor);
+  const verdict = deltas.every(beyond) ? 'WORSE' : deltas.every((d) => beyond(-d)) ? 'better' : 'no change';
   if (verdict !== 'no change') changed++;
   return {
     metric: name,
