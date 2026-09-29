@@ -2373,5 +2373,11 @@
     "ssoNetworkBlockedTitle": "Sit koneksyon an pa aksesib",
     "ssoNetworkBlockedDesc": "Rezo sa a pa pèmèt nou jwenn aksè nan {provider} pou konekte ou. Wi-Fi lekòl ak biwo souvan bloke li. Ou ka enskri ak imèl pito, oswa chanje nan yon lòt rezo epi eseye ankò.",
     "ssoTryAnyway": "Eseye kanmenm",
-    "callTranscriptNotSubscribed": "{name} pa t gen yon abònman pandan apèl sa a, kidonk sa ki te di a pa t transkri."
+    "callTranscriptNotSubscribed": "{name} pa t gen yon abònman pandan apèl sa a, kidonk sa ki te di a pa t transkri.",
+    "callTranscriptTranscribing": "Toujou ap transkri anrejistreman an soti nan {name}…",
+    "callTranscriptSeekTo": "Jwe depi {time}",
+    "callTranscriptRecordings": "Anrejistreman",
+    "callTranscriptFullCall": "Apèl konplè",
+    "callTranscriptPreparingRecording": "Ap prepare anrejistreman konplè a…",
+    "callTranscriptNoRecording": "Pa gen anrejistreman apèl konplè a."
 }

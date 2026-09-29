@@ -10022,5 +10022,11 @@
     "ssoNetworkBlockedTitle": "Påloggingsside utilgjengelig",
     "ssoNetworkBlockedDesc": "Dette nettverket hindrer oss i å nå {provider} for å logge deg på. Skole- og kontor-Wi-Fi blokkerer ofte dette. Du kan registrere deg med e-post i stedet, eller bytte til et annet nettverk og prøve igjen.",
     "ssoTryAnyway": "Prøv likevel",
-    "callTranscriptNotSubscribed": "{name} hadde ikke et abonnement under denne samtalen, så det som ble sagt ble ikke transkribert."
+    "callTranscriptNotSubscribed": "{name} hadde ikke et abonnement under denne samtalen, så det som ble sagt ble ikke transkribert.",
+    "callTranscriptTranscribing": "Transkriberer fortsatt opptaket fra {name}…",
+    "callTranscriptSeekTo": "Spill av fra {time}",
+    "callTranscriptRecordings": "Opptak",
+    "callTranscriptFullCall": "Hele samtalen",
+    "callTranscriptPreparingRecording": "Forbereder hele opptaket…",
+    "callTranscriptNoRecording": "Ingen opptak av hele samtalen."
 }

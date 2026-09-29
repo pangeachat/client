@@ -10922,5 +10922,11 @@
     "ssoNetworkBlockedTitle": "無法連線到登入網站",
     "ssoNetworkBlockedDesc": "此網絡無法連線到 {provider} 以登入。學校和辦公室的 Wi-Fi 通常會封鎖此連線。你可以改用電郵註冊，或切換到其他網絡再試一次。",
     "ssoTryAnyway": "仍然嘗試",
-    "callTranscriptNotSubscribed": "{name} 喺呢次通話期間冇訂閱，所以冇轉錄到對話內容。"
+    "callTranscriptNotSubscribed": "{name} 喺呢次通話期間冇訂閱，所以冇轉錄到對話內容。",
+    "callTranscriptTranscribing": "仍在轉錄{name}的錄音…",
+    "callTranscriptSeekTo": "從{time}開始播放",
+    "callTranscriptRecordings": "錄音",
+    "callTranscriptFullCall": "完整通話",
+    "callTranscriptPreparingRecording": "正在準備完整錄音…",
+    "callTranscriptNoRecording": "沒有完整通話錄音。"
 }

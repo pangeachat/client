@@ -2373,5 +2373,11 @@
     "ssoNetworkBlockedTitle": "साइन-इन साइटवर पोहोचता येत नाही",
     "ssoNetworkBlockedDesc": "हे नेटवर्क तुम्हाला साइन इन करण्यासाठी {provider} पर्यंत पोहोचू देत नाहीये. शाळा आणि ऑफिसमधील वाय-फाय अनेकदा ते ब्लॉक करतात. त्याऐवजी तुम्ही ईमेलने साइन अप करू शकता किंवा दुसऱ्या नेटवर्कवर स्विच करून पुन्हा प्रयत्न करू शकता.",
     "ssoTryAnyway": "तरीही प्रयत्न करा",
-    "callTranscriptNotSubscribed": "{name} कडे या कॉलदरम्यान सदस्यता नसल्यामुळे, जे बोलले गेले ते प्रतिलेखीत केले गेले नाही."
+    "callTranscriptNotSubscribed": "{name} कडे या कॉलदरम्यान सदस्यता नसल्यामुळे, जे बोलले गेले ते प्रतिलेखीत केले गेले नाही.",
+    "callTranscriptTranscribing": "{name} कडून रेकॉर्डिंगचे लिप्यंतरण अजूनही सुरू आहे…",
+    "callTranscriptSeekTo": "{time} पासून प्ले करा",
+    "callTranscriptRecordings": "रेकॉर्डिंग्ज",
+    "callTranscriptFullCall": "पूर्ण कॉल",
+    "callTranscriptPreparingRecording": "पूर्ण रेकॉर्डिंग तयार करत आहे…",
+    "callTranscriptNoRecording": "पूर्ण कॉलचे कोणतेही रेकॉर्डिंग नाही."
 }

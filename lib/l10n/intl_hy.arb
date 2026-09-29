@@ -2373,5 +2373,11 @@
     "ssoNetworkBlockedTitle": "Մուտքի կայքն անհասանելի է",
     "ssoNetworkBlockedDesc": "Այս ցանցը թույլ չի տալիս մեզ հասնել {provider}՝ ձեզ մուտք գործելու համար։ Դպրոցական և գրասենյակային Wi-Fi-ը հաճախ արգելափակում է այն։ Դուք կարող եք փոխարենը գրանցվել էլփոստով կամ անցնել այլ ցանցի և նորից փորձել։",
     "ssoTryAnyway": "Միևնույն է՝ փորձել",
-    "callTranscriptNotSubscribed": "{name}-ը բաժանորդագրություն չուներ այս զանգի ընթացքում, ուստի ասվածը չի արտագրվել:"
+    "callTranscriptNotSubscribed": "{name}-ը բաժանորդագրություն չուներ այս զանգի ընթացքում, ուստի ասվածը չի արտագրվել:",
+    "callTranscriptTranscribing": "{name}-ի ձայնագրությունը դեռևս տառադարձվում է…",
+    "callTranscriptSeekTo": "Նվագարկել {time}-ից",
+    "callTranscriptRecordings": "Ձայնագրություններ",
+    "callTranscriptFullCall": "Ամբողջական զանգ",
+    "callTranscriptPreparingRecording": "Պատրաստվում է ամբողջական ձայնագրությունը…",
+    "callTranscriptNoRecording": "Ամբողջական զանգի ձայնագրություն չկա։"
 }

@@ -2373,5 +2373,11 @@
     "ssoNetworkBlockedTitle": "Кирүү сайты жеткиликсиз",
     "ssoNetworkBlockedDesc": "Бул тармак сизди киргизүү үчүн {provider} жетүүгө мүмкүнчүлүк бербей жатат. Мектеп жана кеңсе Wi-Fi тармактары аны көп учурда бөгөттөйт. Анын ордуна электрондук почта аркылуу катталсаңыз болот, же башка тармакка которулуп кайра аракет кылыңыз.",
     "ssoTryAnyway": "Баары бир аракет кылуу",
-    "callTranscriptNotSubscribed": "{name} бул чалуу учурунда жазылуусу жок болгондуктан, айтылгандар транскрипцияланган жок."
+    "callTranscriptNotSubscribed": "{name} бул чалуу учурунда жазылуусу жок болгондуктан, айтылгандар транскрипцияланган жок.",
+    "callTranscriptTranscribing": "{name} жаздыруусун транскрипциялоо уланууда…",
+    "callTranscriptSeekTo": "{time} убакыттан баштап ойнотуу",
+    "callTranscriptRecordings": "Жазуулар",
+    "callTranscriptFullCall": "Толук чалуу",
+    "callTranscriptPreparingRecording": "Толук жазуу даярдалууда…",
+    "callTranscriptNoRecording": "Толук чалуунун жазуусу жок."
 }

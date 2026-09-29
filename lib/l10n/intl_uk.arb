@@ -9965,5 +9965,11 @@
     "ssoNetworkBlockedTitle": "Сайт входу недоступний",
     "ssoNetworkBlockedDesc": "Ця мережа не дозволяє нам зв’язатися з {provider} для входу. Шкільний та офісний Wi-Fi часто блокують його. Ви можете зареєструватися за допомогою електронної пошти або переключитися на іншу мережу та спробувати ще раз.",
     "ssoTryAnyway": "Все одно спробувати",
-    "callTranscriptNotSubscribed": "Під час цього дзвінка {name} не мав підписки, тому розмова не була розшифрована."
+    "callTranscriptNotSubscribed": "Під час цього дзвінка {name} не мав підписки, тому розмова не була розшифрована.",
+    "callTranscriptTranscribing": "Все ще розшифровую запис від {name}…",
+    "callTranscriptSeekTo": "Відтворити з {time}",
+    "callTranscriptRecordings": "Записи",
+    "callTranscriptFullCall": "Повний дзвінок",
+    "callTranscriptPreparingRecording": "Підготовка повного запису…",
+    "callTranscriptNoRecording": "Немає запису повного дзвінка."
 }

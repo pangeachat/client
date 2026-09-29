@@ -2373,5 +2373,11 @@
     "ssoNetworkBlockedTitle": "Ekki hægt að ná í innskráningarsíðu",
     "ssoNetworkBlockedDesc": "Þetta net leyfir okkur ekki að ná í {provider} til að skrá þig inn. Wi-Fi á skólum og skrifstofum hindrar þetta oft. Þú getur skráð þig með tölvupósti í staðinn, eða skipt um net og reynt aftur.",
     "ssoTryAnyway": "Reyna samt",
-    "callTranscriptNotSubscribed": "{name} var ekki með áskrift í þessu símtali, svo það sem sagt var var ekki umritað."
+    "callTranscriptNotSubscribed": "{name} var ekki með áskrift í þessu símtali, svo það sem sagt var var ekki umritað.",
+    "callTranscriptTranscribing": "Er enn að umrita upptökuna frá {name}…",
+    "callTranscriptSeekTo": "Spila frá {time}",
+    "callTranscriptRecordings": "Upptökur",
+    "callTranscriptFullCall": "Allt símtalið",
+    "callTranscriptPreparingRecording": "Undirbý alla upptökuna…",
+    "callTranscriptNoRecording": "Engin upptaka af öllu símtalinu."
 }

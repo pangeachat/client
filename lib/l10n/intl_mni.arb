@@ -2373,5 +2373,11 @@
     "ssoNetworkBlockedTitle": "সাইন-ইন সাইট য়ৌদ্রে",
     "ssoNetworkBlockedDesc": "অসি নেটৱার্ক অসিনা নখোঙবু সাইন ইন তৌনবা {provider} য়ৌহনদে। স্কুল অমসুং ওফিসকী ৱাই-ফাইনা মদু থিংজবা য়াই। নখোঙনা ইমেলগা লোইননা সাইন আপ তৌবা য়াই, নত্ত্রগা অতোপ্পা নেটৱার্ক অমা শীজিন্নদুনা অমুক হন্না ট্রাই তৌবা য়াই।",
     "ssoTryAnyway": "ট্রাই তৌবা",
-    "callTranscriptNotSubscribed": "{name} ना खলগী মতমদা subscription লৈরম্বদগী, ৱা ঙাংলিবশিং অদু transcribe তৌদ্রি।"
+    "callTranscriptNotSubscribed": "{name} ना खলগী মতমদা subscription লৈরম্বদগী, ৱা ঙাংলিবশিং অদু transcribe তৌদ্রি।",
+    "callTranscriptTranscribing": "{name} gi recording adubu fatharakpa ngaihak ngaihouri...",
+    "callTranscriptSeekTo": "{time} dagi play tou",
+    "callTranscriptRecordings": "Recordings",
+    "callTranscriptFullCall": "Pumba call",
+    "callTranscriptPreparingRecording": "Pumba recording adu sem-sari...",
+    "callTranscriptNoRecording": "Pumba call adugi recording leite."
 }

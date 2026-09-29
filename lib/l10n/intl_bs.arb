@@ -2373,5 +2373,11 @@
     "ssoNetworkBlockedTitle": "Stranica za prijavu nedostupna",
     "ssoNetworkBlockedDesc": "Ova mreža nam ne dozvoljava da pristupimo {provider} za vašu prijavu. Školske i kancelarijske Wi-Fi mreže često blokiraju pristup. Umjesto toga, možete se prijaviti putem e-pošte ili se prebaciti na drugu mrežu i pokušati ponovo.",
     "ssoTryAnyway": "Pokušaj svejedno",
-    "callTranscriptNotSubscribed": "{name} nije imao pretplatu tokom ovog poziva, tako da izgovoreno nije transkribovano."
+    "callTranscriptNotSubscribed": "{name} nije imao pretplatu tokom ovog poziva, tako da izgovoreno nije transkribovano.",
+    "callTranscriptTranscribing": "I dalje transkribujem snimak od {name}…",
+    "callTranscriptSeekTo": "Reprodukuj od {time}",
+    "callTranscriptRecordings": "Snimci",
+    "callTranscriptFullCall": "Cijeli poziv",
+    "callTranscriptPreparingRecording": "Pripremam cijeli snimak…",
+    "callTranscriptNoRecording": "Nema snimka cijelog poziva."
 }

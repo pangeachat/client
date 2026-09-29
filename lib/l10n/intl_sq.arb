@@ -2373,5 +2373,11 @@
     "ssoNetworkBlockedTitle": "Sajti i hyrjes i paarritshëm",
     "ssoNetworkBlockedDesc": "Ky rrjet nuk na lejon të arrijmë te {provider} për t'u kyçur. Wi-Fi i shkollës dhe zyrës shpesh e bllokojnë atë. Mund të regjistroheni me email, ose të kaloni në një rrjet tjetër dhe të provoni përsëri.",
     "ssoTryAnyway": "Provo gjithsesi",
-    "callTranscriptNotSubscribed": "{name} nuk kishte një abonim gjatë kësaj thirrjeje, kështu që ajo që u tha nuk u transkriptua."
+    "callTranscriptNotSubscribed": "{name} nuk kishte një abonim gjatë kësaj thirrjeje, kështu që ajo që u tha nuk u transkriptua.",
+    "callTranscriptTranscribing": "Po transkriptohet ende regjistrimi nga {name}…",
+    "callTranscriptSeekTo": "Luaj nga {time}",
+    "callTranscriptRecordings": "Regjistrimet",
+    "callTranscriptFullCall": "Telefonata e plotë",
+    "callTranscriptPreparingRecording": "Po përgatitet regjistrimi i plotë…",
+    "callTranscriptNoRecording": "Nuk ka regjistrim të telefonatës së plotë."
 }

@@ -2373,5 +2373,11 @@
     "ssoNetworkBlockedTitle": "ಸೈನ್-ಇನ್ ಸೈಟ್ ತಲುಪಲಾಗುತ್ತಿಲ್ಲ",
     "ssoNetworkBlockedDesc": "ನಿಮ್ಮನ್ನು ಸೈನ್ ಇನ್ ಮಾಡಲು {provider} ಅನ್ನು ತಲುಪಲು ಈ ನೆಟ್‌ವರ್ಕ್ ನಮಗೆ ಅನುಮತಿಸುತ್ತಿಲ್ಲ. ಶಾಲೆ ಮತ್ತು ಕಚೇರಿ ವೈ-ಫೈ ಸಾಮಾನ್ಯವಾಗಿ ಇದನ್ನು ನಿರ್ಬಂಧಿಸುತ್ತದೆ. ನೀವು ಬದಲಿಗೆ ಇಮೇಲ್ ಮೂಲಕ ಸೈನ್ ಅಪ್ ಮಾಡಬಹುದು, ಅಥವಾ ಇನ್ನೊಂದು ನೆಟ್‌ವರ್ಕ್‌ಗೆ ಬದಲಾಯಿಸಿ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಬಹುದು.",
     "ssoTryAnyway": "ಹೇಗಾದರೂ ಪ್ರಯತ್ನಿಸಿ",
-    "callTranscriptNotSubscribed": "{name} ಈ ಕರೆಯ ಸಮಯದಲ್ಲಿ ಚಂದಾದಾರಿಕೆಯನ್ನು ಹೊಂದಿರಲಿಲ್ಲ, ಆದ್ದರಿಂದ ಹೇಳಿದ್ದನ್ನು ಲಿಪ್ಯಂತರ ಮಾಡಲಾಗಿಲ್ಲ."
+    "callTranscriptNotSubscribed": "{name} ಈ ಕರೆಯ ಸಮಯದಲ್ಲಿ ಚಂದಾದಾರಿಕೆಯನ್ನು ಹೊಂದಿರಲಿಲ್ಲ, ಆದ್ದರಿಂದ ಹೇಳಿದ್ದನ್ನು ಲಿಪ್ಯಂತರ ಮಾಡಲಾಗಿಲ್ಲ.",
+    "callTranscriptTranscribing": "{name} ನಿಂದ ರೆಕಾರ್ಡಿಂಗ್ ಇನ್ನೂ ಲಿಪ್ಯಂತರವಾಗುತ್ತಿದೆ…",
+    "callTranscriptSeekTo": "{time} ನಿಂದ ಪ್ಲೇ ಮಾಡಿ",
+    "callTranscriptRecordings": "ರೆಕಾರ್ಡಿಂಗ್‌ಗಳು",
+    "callTranscriptFullCall": "ಪೂರ್ಣ ಕರೆ",
+    "callTranscriptPreparingRecording": "ಪೂರ್ಣ ರೆಕಾರ್ಡಿಂಗ್ ಸಿದ್ಧಪಡಿಸಲಾಗುತ್ತಿದೆ…",
+    "callTranscriptNoRecording": "ಪೂರ್ಣ ಕರೆಯ ಯಾವುದೇ ರೆಕಾರ್ಡಿಂಗ್ ಇಲ್ಲ."
 }

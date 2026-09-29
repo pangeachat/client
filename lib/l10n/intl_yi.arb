@@ -2373,5 +2373,11 @@
     "ssoNetworkBlockedTitle": "די אַרייַנגאַנג־פּלאַץ איז נישט צוטריטלעך",
     "ssoNetworkBlockedDesc": "די נעץ לאָזט אונדז נישט דערגרייכן {provider} כּדי אײַך אַרײַנצוגעבן. שולע און אָפיס ווי־פי בלאקירן דאָס אָפֿט. איר קענט זיך אַנשטאָט דעם רעגיסטרירן מיט אימעיל, אָדער בייטן צו אַן אַנדער נעץ און פּרוּוון ווידער.",
     "ssoTryAnyway": "פּרוּווט סײַ ווי",
-    "callTranscriptNotSubscribed": "{name} האט נישט געהאט קיין סובסקריפּציע בעת דעם רוף, אַזוי וואָס איז געזאָגט געוואָרן איז נישט טראַנסקריבירט געוואָרן."
+    "callTranscriptNotSubscribed": "{name} האט נישט געהאט קיין סובסקריפּציע בעת דעם רוף, אַזוי וואָס איז געזאָגט געוואָרן איז נישט טראַנסקריבירט געוואָרן.",
+    "callTranscriptTranscribing": "איז נאָך טראַנסקריבירן די רעקאָרדירונג פֿון {name}…",
+    "callTranscriptSeekTo": "שפּיל פֿון {time}",
+    "callTranscriptRecordings": "רעקאָרדירונגען",
+    "callTranscriptFullCall": "גאַנצער רוף",
+    "callTranscriptPreparingRecording": "גרייט צו די גאַנצע רעקאָרדירונג…",
+    "callTranscriptNoRecording": "קיין רעקאָרדירונג פֿונעם גאַנצן רוף נישט פֿאַראַן."
 }

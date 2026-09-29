@@ -2373,5 +2373,11 @@
     "ssoNetworkBlockedTitle": "ସାଇନ୍-ଇନ୍ ସାଇଟ୍ ଅପହଞ୍ଚ",
     "ssoNetworkBlockedDesc": "ଆପଣଙ୍କୁ ସାଇନ୍ ଇନ୍ କରିବା ପାଇଁ ଏହି ନେଟୱର୍କ ଆମକୁ {provider} ପାଖରେ ପହଞ୍ଚିବାକୁ ଦେଉନାହିଁ। ସ୍କୁଲ୍ ଏବଂ ଅଫିସ୍ Wi-Fi ପ୍ରାୟତଃ ଏହାକୁ ବ୍ଲକ୍ କରିଥାଏ। ଆପଣ ଏହା ବଦଳରେ ଇମେଲ୍ ସହିତ ସାଇନ୍ ଅପ୍ କରିପାରିବେ, କିମ୍ବା ଅନ୍ୟ ଏକ ନେଟୱର୍କକୁ ସୁଇଚ୍ କରି ପୁଣି ଚେଷ୍ଟା କରିପାରିବେ।",
     "ssoTryAnyway": "ଯେକୌଣସି ପ୍ରକାରେ ଚେଷ୍ଟା କରନ୍ତୁ",
-    "callTranscriptNotSubscribed": "ଏହି କଲ୍ ସମୟରେ {name}ଙ୍କର ସବସ୍କ୍ରିପସନ୍ ନଥିଲା, ତେଣୁ କଥାବାର୍ତ୍ତା ଟ୍ରାନ୍ସକ୍ରାଇବ୍ ହୋଇନାହିଁ।"
+    "callTranscriptNotSubscribed": "ଏହି କଲ୍ ସମୟରେ {name}ଙ୍କର ସବସ୍କ୍ରିପସନ୍ ନଥିଲା, ତେଣୁ କଥାବାର୍ତ୍ତା ଟ୍ରାନ୍ସକ୍ରାଇବ୍ ହୋଇନାହିଁ।",
+    "callTranscriptTranscribing": "{name} ଙ୍କ ରେକର୍ଡିଂର ପ୍ରତିଲେଖନ ଚାଲିଛି...",
+    "callTranscriptSeekTo": "{time} ରୁ ଚଲାନ୍ତୁ",
+    "callTranscriptRecordings": "ରେକର୍ଡିଂଗୁଡ଼ିକ",
+    "callTranscriptFullCall": "ସମ୍ପୂର୍ଣ୍ଣ କଲ୍",
+    "callTranscriptPreparingRecording": "ସମ୍ପୂର୍ଣ୍ଣ ରେକର୍ଡିଂ ପ୍ରସ୍ତୁତ କରାଯାଉଛି...",
+    "callTranscriptNoRecording": "ସମ୍ପୂର୍ଣ୍ଣ କଲ୍‌ର କୌଣସି ରେକର୍ଡିଂ ନାହିଁ।"
 }

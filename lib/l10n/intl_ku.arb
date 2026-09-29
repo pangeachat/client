@@ -2373,5 +2373,11 @@
     "ssoNetworkBlockedTitle": "ماڵپەڕی چوونەژوورەوە بەردەست نییە",
     "ssoNetworkBlockedDesc": "ئەم تۆڕە ڕێگەمان نادات بگەینە {provider} بۆ ئەوەی بچیتە ژوورەوە. وایفای قوتابخانە و ئۆفیس زۆرجار ڕێگری لێدەکەن. دەتوانیت لەبری ئەوە بە ئیمەیڵ ناونووسی بکەیت، یان بگۆڕیت بۆ تۆڕێکی تر و دووبارە هەوڵبدەیتەوە.",
     "ssoTryAnyway": "هەر هەوڵبدە",
-    "callTranscriptNotSubscribed": "{name} لە کاتی ئەم پەیوەندییەدا بەشداری نەکردبوو، بۆیە ئەوەی وترا نەنووسرایەوە."
+    "callTranscriptNotSubscribed": "{name} لە کاتی ئەم پەیوەندییەدا بەشداری نەکردبوو، بۆیە ئەوەی وترا نەنووسرایەوە.",
+    "callTranscriptTranscribing": "هێشتا تۆمارکردنەکە لە {name}ەوە دەگۆڕدرێت بۆ نووسین…",
+    "callTranscriptSeekTo": "لەوەتەی {time} لێبدە",
+    "callTranscriptRecordings": "تۆمارەکان",
+    "callTranscriptFullCall": "پەیوەندی تەواو",
+    "callTranscriptPreparingRecording": "ئامادەکردنی تۆمارکردنی تەواو…",
+    "callTranscriptNoRecording": "هیچ تۆمارێک لە پەیوەندی تەواودا نییە."
 }

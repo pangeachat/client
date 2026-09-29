@@ -10840,5 +10840,11 @@
     "ssoNetworkBlockedTitle": "Ο ιστότοπος σύνδεσης δεν είναι προσβάσιμος",
     "ssoNetworkBlockedDesc": "Αυτό το δίκτυο δεν μας επιτρέπει να επικοινωνήσουμε με το {provider} για να συνδεθείτε. Τα δίκτυα Wi-Fi σχολείων και γραφείων συχνά το μπλοκάρουν. Μπορείτε να εγγραφείτε με email αντ' αυτού, ή να συνδεθείτε σε άλλο δίκτυο και να δοκιμάσετε ξανά.",
     "ssoTryAnyway": "Δοκιμάστε ούτως ή άλλως",
-    "callTranscriptNotSubscribed": "Ο/Η {name} δεν είχε συνδρομή κατά τη διάρκεια αυτής της κλήσης, οπότε όσα ειπώθηκαν δεν μεταγράφηκαν."
+    "callTranscriptNotSubscribed": "Ο/Η {name} δεν είχε συνδρομή κατά τη διάρκεια αυτής της κλήσης, οπότε όσα ειπώθηκαν δεν μεταγράφηκαν.",
+    "callTranscriptTranscribing": "Ακόμα μεταγράφεται η ηχογράφηση από τον/την {name}…",
+    "callTranscriptSeekTo": "Αναπαραγωγή από {time}",
+    "callTranscriptRecordings": "Ηχογραφήσεις",
+    "callTranscriptFullCall": "Πλήρης κλήση",
+    "callTranscriptPreparingRecording": "Προετοιμασία της πλήρους ηχογράφησης…",
+    "callTranscriptNoRecording": "Δεν υπάρχει ηχογράφηση της πλήρους κλήσης."
 }

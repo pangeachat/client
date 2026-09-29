@@ -10937,5 +10937,11 @@
     "ssoNetworkBlockedTitle": "Сайт входа недоступен",
     "ssoNetworkBlockedDesc": "Эта сеть не позволяет нам связаться с {provider} для входа. Школьный и офисный Wi-Fi часто блокируют его. Вы можете зарегистрироваться по электронной почте или переключиться на другую сеть и попробовать снова.",
     "ssoTryAnyway": "Всё равно попробовать",
-    "callTranscriptNotSubscribed": "У {name} не было подписки во время этого звонка, поэтому сказанное не было расшифровано."
+    "callTranscriptNotSubscribed": "У {name} не было подписки во время этого звонка, поэтому сказанное не было расшифровано.",
+    "callTranscriptTranscribing": "Все еще расшифровывается запись от {name}…",
+    "callTranscriptSeekTo": "Воспроизвести с {time}",
+    "callTranscriptRecordings": "Записи",
+    "callTranscriptFullCall": "Весь звонок",
+    "callTranscriptPreparingRecording": "Подготовка полной записи…",
+    "callTranscriptNoRecording": "Нет записи всего звонка."
 }

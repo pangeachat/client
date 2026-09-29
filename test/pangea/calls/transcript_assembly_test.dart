@@ -19,6 +19,7 @@ TranscriptCandidate _candidate(
   ClockAnchor? anchor,
   bool positionsMarked = false,
   String? deviceId,
+  String? langCode,
   List<CaptureSpan> keptSpans = const [],
   List<CaptureSpan> discardedSpans = const [],
 }) => TranscriptCandidate(
@@ -29,6 +30,7 @@ TranscriptCandidate _candidate(
   clockAnchor: anchor,
   positionsMarked: positionsMarked,
   deviceId: deviceId,
+  langCode: langCode,
   keptSpans: keptSpans,
   discardedSpans: discardedSpans,
 );
@@ -1683,6 +1685,127 @@ void main() {
       expect(
         ClockAnchor.fromJson(const {'sfu_joined_at_ms': _sfuJoin}),
         isNull,
+      );
+    });
+  });
+
+  group('the transcript language', () {
+    test('the language travels from the candidate onto the half', () {
+      // The view tokenizes the words for their word cards (#8797), so the
+      // language has to reach the HALF -- one that stopped at the candidate is
+      // one the view never sees, exactly like the clock anchor beside it.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(alice, langCode: 'es'),
+          _candidate(bob, langCode: 'fr'),
+        ],
+        expectedSenders: [alice, bob],
+      );
+
+      expect(_halfFor(transcript, alice).langCode, 'es');
+      expect(_halfFor(transcript, bob).langCode, 'fr');
+    });
+
+    test('a half whose candidate named no language carries none', () {
+      // Null is honest: the view then lets the tokenizer DETECT the language,
+      // rather than tokenizing in one nobody recorded.
+      final transcript = assembleTranscript(
+        candidates: [_candidate(alice)],
+        expectedSenders: [alice],
+      );
+
+      expect(_halfFor(transcript, alice).langCode, isNull);
+    });
+
+    test('a merged half keeps a language when only one device named it', () {
+      // Two of one account's devices, one recording before the field existed.
+      // Their words are one language; the read must not lose it to the silent
+      // device.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(
+            alice,
+            deviceId: 'PHONE',
+            langCode: 'es',
+            segments: [_placed('hola', _sfuJoin)],
+            anchor: _skewed(0),
+          ),
+          _candidate(
+            alice,
+            deviceId: 'LAPTOP',
+            segments: [_placed('y despues', _sfuJoin + 6000)],
+            anchor: _skewed(0),
+          ),
+        ],
+        expectedSenders: [alice],
+      );
+
+      final half = _halfFor(transcript, alice);
+      expect(half.deviceCount, 2);
+      expect(half.langCode, 'es');
+    });
+
+    test('a late turn from a device that reset does not sort to the front', () {
+      // THE BUG: "my bye came as the first message". The learner's two devices
+      // each write a half, and the merge interleaves their turns by absolute SFU
+      // time. If one device's run anchor regressed after a capture reset -- a
+      // muted, slept start -- its late "bye" is stamped near the call's start
+      // and sorts ahead of the other device's earlier "hello". The anchor itself
+      // is fixed upstream (see the sleep-recovery test in call_capture_test);
+      // this pins the invariant the merge relies on: it orders each turn by its
+      // TRUE absolute interval and floors a segment to no epoch but its own, so a
+      // turn spoken late stays late.
+      final trueTimes = assembleTranscript(
+        candidates: [
+          _candidate(
+            alice,
+            deviceId: 'PHONE',
+            segments: [_placed('hello', _sfuJoin + 1000)],
+            anchor: _skewed(0),
+          ),
+          _candidate(
+            alice,
+            deviceId: 'LAPTOP',
+            segments: [_placed('bye', _sfuJoin + 30000)],
+            anchor: _skewed(0),
+          ),
+        ],
+        expectedSenders: [alice],
+      );
+
+      expect(
+        _halfFor(trueTimes, alice).segments.map((s) => s.text),
+        ['hello', 'bye'],
+        reason: 'the late turn keeps its true position and sorts last',
+      );
+
+      // The control, and the mutation that proves the assertion above turns on
+      // the segment's own interval and nothing else the merge does: had the
+      // "bye" device's anchor regressed and stamped the turn back at the start --
+      // the bug -- the SAME merge sorts it first. Only the "bye" interval differs
+      // between the two reads, and the order flips.
+      final staleAnchor = assembleTranscript(
+        candidates: [
+          _candidate(
+            alice,
+            deviceId: 'PHONE',
+            segments: [_placed('hello', _sfuJoin + 1000)],
+            anchor: _skewed(0),
+          ),
+          _candidate(
+            alice,
+            deviceId: 'LAPTOP',
+            segments: [_placed('bye', _sfuJoin)],
+            anchor: _skewed(0),
+          ),
+        ],
+        expectedSenders: [alice],
+      );
+
+      expect(
+        _halfFor(staleAnchor, alice).segments.map((s) => s.text),
+        ['bye', 'hello'],
+        reason: 'a turn stamped at a stale-early anchor is what sorted first',
       );
     });
   });

@@ -10597,5 +10597,11 @@
     "ssoNetworkBlockedTitle": "เข้าสู่ระบบไม่ได้",
     "ssoNetworkBlockedDesc": "เครือข่ายนี้ไม่อนุญาตให้เราเข้าถึง {provider} เพื่อลงชื่อเข้าใช้คุณ Wi-Fi ของโรงเรียนและที่ทำงานมักจะบล็อกไว้ คุณสามารถลงทะเบียนด้วยอีเมลแทน หรือเปลี่ยนไปใช้เครือข่ายอื่นแล้วลองอีกครั้ง",
     "ssoTryAnyway": "ลองอีกครั้ง",
-    "callTranscriptNotSubscribed": "{name} ไม่มีสิทธิ์การเป็นสมาชิกในระหว่างการโทรนี้ ดังนั้นสิ่งที่พูดจึงไม่ถูกถอดเสียง"
+    "callTranscriptNotSubscribed": "{name} ไม่มีสิทธิ์การเป็นสมาชิกในระหว่างการโทรนี้ ดังนั้นสิ่งที่พูดจึงไม่ถูกถอดเสียง",
+    "callTranscriptTranscribing": "กำลังถอดเสียงบันทึกจาก {name}…",
+    "callTranscriptSeekTo": "เล่นจาก {time}",
+    "callTranscriptRecordings": "การบันทึก",
+    "callTranscriptFullCall": "การโทรทั้งหมด",
+    "callTranscriptPreparingRecording": "กำลังเตรียมการบันทึกทั้งหมด…",
+    "callTranscriptNoRecording": "ไม่มีการบันทึกการโทรทั้งหมด"
 }

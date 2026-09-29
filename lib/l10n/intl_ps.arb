@@ -2373,5 +2373,11 @@
     "ssoNetworkBlockedTitle": "د ننوتلو سایټ د لاسرسي وړ نه دی",
     "ssoNetworkBlockedDesc": "دا شبکه موږ ته اجازه نه راکوي چې تاسو ته د ننوتلو لپاره {provider} ته ورسیږو. د ښوونځي او دفتر وای فای اکثرا دا بندوي. تاسو کولی شئ د بریښنالیک له لارې نوم لیکنه وکړئ، یا بلې شبکې ته لاړ شئ او بیا هڅه وکړئ.",
     "ssoTryAnyway": "بیا هم هڅه وکړئ",
-    "callTranscriptNotSubscribed": "{name} د دې زنګ پر مهال ګډون نه درلود، نو هغه څه چې ویل شوي وو نه دي لیکل شوي."
+    "callTranscriptNotSubscribed": "{name} د دې زنګ پر مهال ګډون نه درلود، نو هغه څه چې ویل شوي وو نه دي لیکل شوي.",
+    "callTranscriptTranscribing": "لا تر اوسه د {name} څخه ثبت شوې خبرې لیکل کیږي…",
+    "callTranscriptSeekTo": "له {time} څخه پلی کړئ",
+    "callTranscriptRecordings": "ریکارډونه",
+    "callTranscriptFullCall": "بشپړ زنګ",
+    "callTranscriptPreparingRecording": "د بشپړ ریکارډ چمتو کول…",
+    "callTranscriptNoRecording": "د بشپړ زنګ هیڅ ریکارډ نشته."
 }

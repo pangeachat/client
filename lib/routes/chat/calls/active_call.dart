@@ -139,6 +139,23 @@ class ActiveCall extends ChangeNotifier {
   /// What the election last decided. Read by [_reconcile] when it runs.
   bool _wanted = false;
 
+  /// Whether this device is still the account's chosen recorder but is being
+  /// held silent for a reason OTHER than a sibling taking over -- the peer has
+  /// gone, or this device's own connection dropped. The stop that follows is a
+  /// PAUSE, not a handover: this device remains the sole carrier of its own
+  /// recorded half and must publish it at hangup, so the stop preserves its
+  /// carrier status (see [CallCaptureService.wasCarryingBeforeLastStop]).
+  ///
+  /// Rewritten by [_electRecorder] on EVERY election as `elected && !_wanted`,
+  /// and read LIVE by [_reconcile]'s stop at the instant it latches -- NOT
+  /// snapshotted when the reconcile begins. The distinction is load-bearing: an
+  /// election that runs during the reconcile's retract await can turn a
+  /// peer-drop pause into a sibling handover while [_wanted] stays false (a
+  /// sibling successor appears, so `elected` goes false and this flips to
+  /// false), and reading it at the stop rather than at reconcile entry is what
+  /// keeps this device from latching carrier for a stretch the sibling now owns.
+  bool _recorderPausedForPeer = false;
+
   /// The two-devices-one-call arbiter (call-device-ownership.instructions.md),
   /// driven on every roster recompute and every presence tick.
   final CallOwnership _ownership = CallOwnership();
@@ -841,6 +858,15 @@ class ActiveCall extends ChangeNotifier {
         // is audio nobody heard.
         _peerGrace == null &&
         (roster?.isConnected ?? false);
+    // True exactly when this device WOULD record but for the peer or the
+    // connection being gone: it won the election (there is no sibling successor
+    // to hand the stretch to) yet [_wanted] came out false. Every term that can
+    // drop [_wanted] below `elected` is a peer/connection absence, so `elected
+    // && !_wanted` is precisely a carrier PAUSE. [_reconcile]'s stop reads this
+    // LIVE, at the instant it latches, so a later election that hands the
+    // stretch to a sibling (elected -> false) flips it to false BEFORE the stop
+    // and this device does not double-publish a half the sibling now owns.
+    _recorderPausedForPeer = elected && !_wanted;
     // The second half of what this device tells its siblings, and the one they
     // are allowed to destroy audio on. Published HERE, below [_wanted], rather
     // than beside the capability announcement above: a device that has just
@@ -929,7 +955,31 @@ class ActiveCall extends ChangeNotifier {
         // RE-ESTABLISHED, because the line above waits for a signal round trip
         // and an election can reverse this one inside it. See [_decisionHolds].
         if (!_decisionHolds(wanted)) return;
-        await capture.stop();
+        // REASON-ATOMIC with the stop, and deliberately the LIVE election
+        // verdict rather than a value snapshotted before the await above.
+        // [_decisionHolds] re-validates only that this device still does not
+        // WANT to record; it cannot tell the two reasons a `wanted == false`
+        // stop fires for apart -- a peer-drop PAUSE, where this device is still
+        // the account's sole carrier and must publish its own half, versus a
+        // sibling HANDOVER, where a successor now holds the stretch and
+        // publishes it. An election can flip the reason from the former to the
+        // latter DURING the retract await while `wanted` stays false (a sibling
+        // successor appears), and a snapshot taken before the await would then
+        // tell the recorder to latch this device's carrier for a stretch the
+        // sibling now owns -- crediting the account twice for one stretch, the
+        // duplicate the design forbids. [_electRecorder] rewrites
+        // [_recorderPausedForPeer] on every election as `elected && !_wanted`,
+        // and `elected` is false exactly when a sibling successor exists, so
+        // reading it HERE -- with no await between this read and the stop --
+        // pairs the carrier decision with the roster as it actually is at the
+        // instant the stop latches: true only while this device is STILL the
+        // sole carrier with no successor.
+        final pausedForPeer = _recorderPausedForPeer;
+        // [preserveCarrier] tells the recorder this is a peer-drop PAUSE, not a
+        // handover, so it keeps this device's carrier status for the eventual
+        // hangup rather than losing the half. False here is a genuine sibling
+        // handover -- a successor holds the stretch and publishes it.
+        await capture.stop(preserveCarrier: pausedForPeer);
         _capturing = false;
         // Only the two reasons that can actually reach here. Reaching this arm
         // at all means [_capturing] was true, which means a stretch started,

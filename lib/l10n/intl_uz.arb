@@ -9969,5 +9969,11 @@
     "ssoNetworkBlockedTitle": "Kirish sayti mavjud emas",
     "ssoNetworkBlockedDesc": "Bu tarmoq sizni tizimga kiritish uchun {provider} ga ulanishimizga ruxsat bermayapti. Maktab va ofis Wi-Fi ko'pincha uni bloklaydi. Buning o'rniga elektron pochta orqali ro'yxatdan o'tishingiz yoki boshqa tarmoqqa o'tib, qayta urinishingiz mumkin.",
     "ssoTryAnyway": "Baribir urinib ko'ring",
-    "callTranscriptNotSubscribed": "{name} ushbu qo‘ng‘iroq paytida obunaga ega bo‘lmagan, shuning uchun aytilganlar transkripsiya qilinmadi."
+    "callTranscriptNotSubscribed": "{name} ushbu qo‘ng‘iroq paytida obunaga ega bo‘lmagan, shuning uchun aytilganlar transkripsiya qilinmadi.",
+    "callTranscriptTranscribing": "{name}dan yozib olingan ovozli xabar hali ham transkripsiya qilinmoqda...",
+    "callTranscriptSeekTo": "{time}dan boshlab ijro etish",
+    "callTranscriptRecordings": "Yozuvlar",
+    "callTranscriptFullCall": "Toʻliq qoʻngʻiroq",
+    "callTranscriptPreparingRecording": "Toʻliq yozuv tayyorlanmoqda...",
+    "callTranscriptNoRecording": "Toʻliq qoʻngʻiroq yozuvi yoʻq."
 }

@@ -10597,5 +10597,11 @@
     "ssoNetworkBlockedTitle": "साइन-इन साइट तक नहीं पहुँचा जा सकता",
     "ssoNetworkBlockedDesc": "यह नेटवर्क आपको साइन इन करने के लिए {provider} तक पहुँचने नहीं दे रहा है। स्कूल और ऑफिस का वाई-फाई अक्सर इसे ब्लॉक कर देता है। आप इसके बजाय ईमेल से साइन अप कर सकते हैं, या किसी दूसरे नेटवर्क पर स्विच करके फिर से कोशिश कर सकते हैं।",
     "ssoTryAnyway": "फिर भी कोशिश करें",
-    "callTranscriptNotSubscribed": "{name} के पास इस कॉल के दौरान सदस्यता नहीं थी, इसलिए जो कहा गया उसे ट्रांसक्रिप्ट नहीं किया गया।"
+    "callTranscriptNotSubscribed": "{name} के पास इस कॉल के दौरान सदस्यता नहीं थी, इसलिए जो कहा गया उसे ट्रांसक्रिप्ट नहीं किया गया।",
+    "callTranscriptTranscribing": "{name} से रिकॉर्डिंग अभी भी ट्रांसक्राइब की जा रही है…",
+    "callTranscriptSeekTo": "{time} से चलाएँ",
+    "callTranscriptRecordings": "रिकॉर्डिंग",
+    "callTranscriptFullCall": "पूरी कॉल",
+    "callTranscriptPreparingRecording": "पूरी रिकॉर्डिंग तैयार की जा रही है…",
+    "callTranscriptNoRecording": "पूरी कॉल की कोई रिकॉर्डिंग नहीं है।"
 }

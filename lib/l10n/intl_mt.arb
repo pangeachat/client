@@ -2373,5 +2373,11 @@
     "ssoNetworkBlockedTitle": "Sit ta' reġistrazzjoni ma jistax jintlaħaq",
     "ssoNetworkBlockedDesc": "Din in-netwerk mhux qed tħallina nilħqu lil {provider} biex nirreġistrawk. Il-Wi-Fi tal-iskola u l-uffiċċju spiss jimblokkawha. Tista' tirreġistra bl-email minflok, jew taqleb għal netwerk ieħor u terġa' tipprova.",
     "ssoTryAnyway": "Erġa' pprova xorta",
-    "callTranscriptNotSubscribed": "{name} ma kellux abbonament waqt din is-sejħa, għalhekk dak li ntqal ma ġiex traskritt."
+    "callTranscriptNotSubscribed": "{name} ma kellux abbonament waqt din is-sejħa, għalhekk dak li ntqal ma ġiex traskritt.",
+    "callTranscriptTranscribing": "Għaddejja traskrizzjoni tar-reġistrazzjoni minn {name}…",
+    "callTranscriptSeekTo": "Ilgħab minn {time}",
+    "callTranscriptRecordings": "Reġistrazzjonijiet",
+    "callTranscriptFullCall": "Sejħa sħiħa",
+    "callTranscriptPreparingRecording": "Qed titħejja r-reġistrazzjoni sħiħa…",
+    "callTranscriptNoRecording": "L-ebda reġistrazzjoni tas-sejħa sħiħa."
 }

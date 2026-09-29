@@ -2373,5 +2373,11 @@
     "ssoNetworkBlockedTitle": "Ebe nbanye anaghị eru",
     "ssoNetworkBlockedDesc": "Netwọkụ a anaghị ekwe ka anyị ruo {provider} iji banye gị. Wi-Fi ụlọ akwụkwọ na ụlọ ọrụ na-egbochikarị ya. Ị nwere ike iji email debanye aha kama, ma ọ bụ gbanwee gaa na netwọkụ ọzọ wee nwaa ọzọ.",
     "ssoTryAnyway": "Nwaa agbanyeghị",
-    "callTranscriptNotSubscribed": "{name} enweghị ndenye aha n'oge oku a, yabụ na edeghị ihe e kwuru."
+    "callTranscriptNotSubscribed": "{name} enweghị ndenye aha n'oge oku a, yabụ na edeghị ihe e kwuru.",
+    "callTranscriptTranscribing": "Ka na-ede ihe ndekọ ahụ site na {name}…",
+    "callTranscriptSeekTo": "Kpọọ site na {time}",
+    "callTranscriptRecordings": "Ihe ndekọ",
+    "callTranscriptFullCall": "Oku zuru ezu",
+    "callTranscriptPreparingRecording": "Na-akwadebe ndekọ zuru ezu…",
+    "callTranscriptNoRecording": "Enweghị ndekọ nke oku zuru ezu."
 }

@@ -2373,5 +2373,11 @@
     "ssoNetworkBlockedTitle": "Сайтът за вход е недостъпен",
     "ssoNetworkBlockedDesc": "Тази мрежа не ни позволява да достигнем до {provider}, за да ви впишем. Училищните и офис Wi-Fi мрежи често го блокират. Можете да се регистрирате с имейл вместо това или да превключите към друга мрежа и да опитате отново.",
     "ssoTryAnyway": "Все пак опитай",
-    "callTranscriptNotSubscribed": "{name} не е имал абонамент по време на този разговор, така че казаното не е транскрибирано."
+    "callTranscriptNotSubscribed": "{name} не е имал абонамент по време на този разговор, така че казаното не е транскрибирано.",
+    "callTranscriptTranscribing": "Все още транскрибирам записа от {name}…",
+    "callTranscriptSeekTo": "Пусни от {time}",
+    "callTranscriptRecordings": "Записи",
+    "callTranscriptFullCall": "Цялото обаждане",
+    "callTranscriptPreparingRecording": "Подготвям пълния запис…",
+    "callTranscriptNoRecording": "Няма запис на цялото обаждане."
 }

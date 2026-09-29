@@ -2373,5 +2373,11 @@
     "ssoNetworkBlockedTitle": "Кіру сайты қолжетімсіз",
     "ssoNetworkBlockedDesc": "Бұл желі сізге кіру үшін {provider} қызметіне жетуімізге мүмкіндік бермейді. Мектеп және кеңсе Wi-Fi желілері оны жиі бұғаттайды. Оның орнына электрондық пошта арқылы тіркелуге немесе басқа желіге ауысып, қайта әрекет етуге болады.",
     "ssoTryAnyway": "Бәрібір әрекет ету",
-    "callTranscriptNotSubscribed": "{name} осы қоңырау кезінде жазылымда болмағандықтан, айтылған сөздер транскрипцияланбады."
+    "callTranscriptNotSubscribed": "{name} осы қоңырау кезінде жазылымда болмағандықтан, айтылған сөздер транскрипцияланбады.",
+    "callTranscriptTranscribing": "{name} жазбасы әлі де транскрипциялануда…",
+    "callTranscriptSeekTo": "{time} уақытынан бастап ойнату",
+    "callTranscriptRecordings": "Жазбалар",
+    "callTranscriptFullCall": "Толық қоңырау",
+    "callTranscriptPreparingRecording": "Толық жазба дайындалуда…",
+    "callTranscriptNoRecording": "Толық қоңырау жазбасы жоқ."
 }

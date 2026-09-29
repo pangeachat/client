@@ -10746,5 +10746,11 @@
     "ssoNetworkBlockedTitle": "Prisijungimo svetainė nepasiekiama",
     "ssoNetworkBlockedDesc": "Šis tinklas neleidžia mums pasiekti {provider}, kad galėtumėte prisijungti. Mokyklos ir biuro „Wi-Fi“ dažnai blokuoja prieigą. Galite prisiregistruoti el. paštu arba prisijungti prie kito tinklo ir bandyti dar kartą.",
     "ssoTryAnyway": "Vis tiek bandyti",
-    "callTranscriptNotSubscribed": "{name} neturėjo prenumeratos šio skambučio metu, todėl tai, kas buvo pasakyta, nebuvo transkribuota."
+    "callTranscriptNotSubscribed": "{name} neturėjo prenumeratos šio skambučio metu, todėl tai, kas buvo pasakyta, nebuvo transkribuota.",
+    "callTranscriptTranscribing": "Vis dar transkribuojamas įrašas iš {name}…",
+    "callTranscriptSeekTo": "Leisti nuo {time}",
+    "callTranscriptRecordings": "Įrašai",
+    "callTranscriptFullCall": "Visas pokalbis",
+    "callTranscriptPreparingRecording": "Ruošiamas visas įrašas…",
+    "callTranscriptNoRecording": "Nėra viso pokalbio įrašo."
 }

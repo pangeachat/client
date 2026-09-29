@@ -13,6 +13,7 @@ import 'package:fluffychat/routes/chat/calls/call_notification.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/call_timeouts.dart';
 import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
+import 'package:fluffychat/routes/chat/calls/call_transcript_outbox.dart';
 import 'package:fluffychat/routes/chat/calls/rtc_focus.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 
@@ -3321,6 +3322,87 @@ void main() {
       },
     );
   });
+
+  group('replaying a transcript half whose publish did not land', () {
+    test('does nothing when the recording-based feature is off', () async {
+      final store = _CountingPendingCallTranscriptStore();
+      // Seeded, so a flush that ran would have something to read and resend.
+      await store.write('txn-1', {
+        'room_id': '!r:server',
+        'txn_id': 'txn-1',
+        'content': {'a': 1},
+      });
+      store.reads = 0;
+      final service = CallService(
+        await bareClient(),
+        transcriptOutbox: CallTranscriptOutbox(store: store),
+      );
+
+      await service.flushPendingCallTranscripts();
+
+      expect(
+        store.reads,
+        0,
+        reason: 'the default build must not touch the store here',
+      );
+    });
+
+    test(
+      'resends through the account, keeping a half for a room it no longer knows',
+      () async {
+        final store = _CountingPendingCallTranscriptStore();
+        await store.write('txn-1', {
+          'room_id': '!unknown:server',
+          'txn_id': 'txn-1',
+          'content': {'a': 1},
+        });
+        final service = CallService(
+          await bareClient(),
+          transcriptOutbox: CallTranscriptOutbox(store: store),
+          recordingTranscriptEnabled: true,
+        );
+
+        await service.flushPendingCallTranscripts();
+
+        expect(store.reads, 1, reason: 'the enabled service reads the outbox');
+        final remaining = await store.readAll();
+        expect(
+          remaining.map((r) => r['txn_id']),
+          ['txn-1'],
+          reason:
+              'a room the account no longer knows sends nothing, so the half '
+              'is kept for the next launch rather than dropped',
+        );
+      },
+    );
+
+    test(
+      'replays once on the first sync after launch, not on every sync',
+      () async {
+        final store = _CountingPendingCallTranscriptStore();
+        final client = await bareClient();
+        CallService(
+          client,
+          transcriptOutbox: CallTranscriptOutbox(store: store),
+          recordingTranscriptEnabled: true,
+        );
+
+        // Spaced so the first sync's fire-and-forget replay fully completes
+        // (its re-entrancy guard released) before the second arrives -- so this
+        // pins the once-latch, not merely that guard.
+        await client.handleSync(SyncUpdate(nextBatch: 'one'));
+        await Future.delayed(const Duration(milliseconds: 10));
+        await client.handleSync(SyncUpdate(nextBatch: 'two'));
+        await Future.delayed(const Duration(milliseconds: 10));
+
+        expect(
+          store.reads,
+          1,
+          reason: 'the startup replay is latched to the first sync',
+        );
+      },
+    );
+  });
 }
 
 /// A room that accepts any send and remembers the transaction ids used.
@@ -3496,5 +3578,29 @@ class _HeldDiscovery extends RtcFocusDiscovery {
   Future<RtcFocus?> discover(Uri homeserver) async {
     await gate.future;
     return const RtcFocus(serviceUrl: 'http://sfu:7980');
+  }
+}
+
+/// An in-memory pending-transcript store that counts how many times it is read,
+/// so a test can tell a flush that ran from one the flag gated away.
+class _CountingPendingCallTranscriptStore
+    implements PendingCallTranscriptStore {
+  final Map<String, Map<String, dynamic>> _byTxnId = {};
+  int reads = 0;
+
+  @override
+  Future<List<Map<String, dynamic>>> readAll() async {
+    reads++;
+    return _byTxnId.values.map(Map<String, dynamic>.of).toList();
+  }
+
+  @override
+  Future<void> write(String txnId, Map<String, dynamic> record) async {
+    _byTxnId[txnId] = Map.of(record);
+  }
+
+  @override
+  Future<void> remove(String txnId) async {
+    _byTxnId.remove(txnId);
   }
 }

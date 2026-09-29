@@ -10320,5 +10320,11 @@
     "ssoNetworkBlockedTitle": "Site de connexion inaccessible",
     "ssoNetworkBlockedDesc": "Ce réseau ne nous permet pas d'atteindre {provider} pour vous connecter. Les réseaux Wi-Fi scolaires et professionnels le bloquent souvent. Vous pouvez vous inscrire par e-mail à la place, ou passer à un autre réseau et réessayer.",
     "ssoTryAnyway": "Essayer quand même",
-    "callTranscriptNotSubscribed": "{name} n'avait pas d'abonnement pendant cet appel, donc ce qui a été dit n'a pas été transcrit."
+    "callTranscriptNotSubscribed": "{name} n'avait pas d'abonnement pendant cet appel, donc ce qui a été dit n'a pas été transcrit.",
+    "callTranscriptTranscribing": "Transcription de l'enregistrement de {name} en cours…",
+    "callTranscriptSeekTo": "Écouter à partir de {time}",
+    "callTranscriptRecordings": "Enregistrements",
+    "callTranscriptFullCall": "Appel complet",
+    "callTranscriptPreparingRecording": "Préparation de l'enregistrement complet…",
+    "callTranscriptNoRecording": "Aucun enregistrement de l'appel complet."
 }

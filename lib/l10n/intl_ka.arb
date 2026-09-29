@@ -10865,5 +10865,11 @@
     "ssoNetworkBlockedTitle": "შესვლის საიტი მიუწვდომელია",
     "ssoNetworkBlockedDesc": "ეს ქსელი ხელს გვიშლის {provider}-თან დაკავშირებაში თქვენი შესასვლელად. სკოლისა და ოფისის Wi-Fi ხშირად ბლოკავს მას. შეგიძლიათ დარეგისტრირდეთ ელფოსტით, ან გადახვიდეთ სხვა ქსელზე და სცადოთ ხელახლა.",
     "ssoTryAnyway": "მაინც სცადე",
-    "callTranscriptNotSubscribed": "{name}-ს ამ ზარის განმავლობაში არ ჰქონდა გამოწერა, ამიტომ ნათქვამი არ ჩაიწერა."
+    "callTranscriptNotSubscribed": "{name}-ს ამ ზარის განმავლობაში არ ჰქონდა გამოწერა, ამიტომ ნათქვამი არ ჩაიწერა.",
+    "callTranscriptTranscribing": "ჩანაწერი {name}-დან ჯერ კიდევ ტრანსკრიბირდება…",
+    "callTranscriptSeekTo": "დაკვრა {time}-დან",
+    "callTranscriptRecordings": "ჩანაწერები",
+    "callTranscriptFullCall": "მთლიანი ზარი",
+    "callTranscriptPreparingRecording": "მთლიანი ჩანაწერის მომზადება…",
+    "callTranscriptNoRecording": "მთლიანი ზარის ჩანაწერი არ არის."
 }
