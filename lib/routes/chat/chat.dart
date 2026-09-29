@@ -1170,7 +1170,12 @@ class ChatController extends State<ChatPageWithRoom>
 
       if (!mounted) return;
     } catch (e, s) {
-      ErrorReporter(context, 'Unable to load timeline').onErrorCallback(e, s);
+      // The learner may have left the chat while it loaded, and a disposed
+      // State has no context: reading it here threw and hid [e] (CLIENT-ETX).
+      ErrorReporter(
+        mounted ? context : null,
+        'Unable to load timeline',
+      ).onErrorCallback(e, s);
       rethrow;
     }
   }
