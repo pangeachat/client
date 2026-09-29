@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-09-28 15:16:04.800760",
+    "@@last_modified": "2026-09-29 10:03:19.536522",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2375,5 +2375,7 @@
     "courseCodeJoinExplanation": "Logg inn eller registrer deg, så bruker vi kurskoden din til å legge deg til kurset ditt automatisk.",
     "courseCodeLabel": "Kurskode",
     "courseCodeSaved": "Kurskode {code} lagret",
-    "courseCodeSavedExplanation": "Registrer deg eller logg inn, så legger vi deg til kurset ditt."
+    "courseCodeSavedExplanation": "Registrer deg eller logg inn, så legger vi deg til kurset ditt.",
+    "moderationRefusedContactDetails": "Meldingen din ble ikke sendt. Et automatisk filter fant kontaktdetaljer, for eksempel et telefonnummer. Fjern dem og prøv igjen. Hvis du tror dette er en feil, gi beskjed til læreren din.",
+    "moderationRefusedProfanity": "Meldingen din ble ikke sendt. Et automatisk filter fant et ord vi ikke tillater i chatten. Vennligst endre det og prøv igjen. Hvis du tror dette er en feil, gi beskjed til læreren din."
 }

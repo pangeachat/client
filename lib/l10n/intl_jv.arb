@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-09-28 15:16:01.614449",
+    "@@last_modified": "2026-09-29 10:03:15.264931",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2375,5 +2375,7 @@
     "courseCodeJoinExplanation": "Mlebu utawa ndaftar, lan kita bakal nggunakake kode kursusmu kanggo nambahake sampeyan menyang kursus kanthi otomatis.",
     "courseCodeLabel": "Kode kursus",
     "courseCodeSaved": "Kode kursus {code} wis disimpen",
-    "courseCodeSavedExplanation": "Ndaftar utawa mlebu lan kita bakal nambahake sampeyan menyang kursus."
+    "courseCodeSavedExplanation": "Ndaftar utawa mlebu lan kita bakal nambahake sampeyan menyang kursus.",
+    "moderationRefusedContactDetails": "Pesen sampeyan ora dikirim. Filter otomatis nemokake rincian kontak, kayata nomer telpon. Mangga dibusak banjur coba maneh. Yen sampeyan ngira iki salah, kandhani guru sampeyan.",
+    "moderationRefusedProfanity": "Pesen sampeyan ora dikirim. Filter otomatis nemokake tembung sing ora diidini ing obrolan. Mangga diganti banjur coba maneh. Yen sampeyan ngira iki salah, kandhani guru sampeyan."
 }

@@ -3,8 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
 
-class EventTooLargeDialog extends StatelessWidget {
-  const EventTooLargeDialog({super.key});
+/// Says why a message could not be sent: too large for the server, or refused
+/// by moderation.
+class SendRefusedDialog extends StatelessWidget {
+  final String message;
+
+  const SendRefusedDialog({super.key, required this.message});
 
   @override
   Widget build(BuildContext context) {
@@ -16,18 +20,7 @@ class EventTooLargeDialog extends StatelessWidget {
       ),
       content: ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 256),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Expanded(
-              child: Text(
-                L10n.of(context).tooLargeToSend,
-                maxLines: 4,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ),
-          ],
-        ),
+        child: Text(message),
       ),
       actions: [
         AdaptiveDialogAction(

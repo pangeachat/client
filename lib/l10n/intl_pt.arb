@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-28 15:16:05.583598",
+    "@@last_modified": "2026-09-29 10:03:20.411283",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10911,5 +10911,7 @@
     "courseCodeJoinExplanation": "Faça login ou cadastre-se, e usaremos seu código de curso para adicioná-lo ao seu curso automaticamente.",
     "courseCodeLabel": "Código do curso",
     "courseCodeSaved": "Código do curso {code} salvo",
-    "courseCodeSavedExplanation": "Cadastre-se ou faça login e nós o adicionaremos ao seu curso."
+    "courseCodeSavedExplanation": "Cadastre-se ou faça login e nós o adicionaremos ao seu curso.",
+    "moderationRefusedContactDetails": "Sua mensagem não foi enviada. Um filtro automático encontrou detalhes de contato, como um número de telefone. Remova-os e tente novamente. Se você acha que isso é um erro, avise seu professor.",
+    "moderationRefusedProfanity": "Sua mensagem não foi enviada. Um filtro automático encontrou uma palavra que não permitimos no chat. Por favor, altere-a e tente novamente. Se você acha que isso é um erro, avise seu professor."
 }

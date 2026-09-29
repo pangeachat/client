@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-09-28 15:15:58.767777",
+    "@@last_modified": "2026-09-29 10:03:11.785391",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9964,5 +9964,7 @@
     "courseCodeJoinExplanation": "Logi sisse või registreeru ja me kasutame sinu kursuse koodi, et sind automaatselt kursusele lisada.",
     "courseCodeLabel": "Kursuse kood",
     "courseCodeSaved": "Kursuse kood {code} salvestatud",
-    "courseCodeSavedExplanation": "Registreeru või logi sisse ja me lisame sind kursusele."
+    "courseCodeSavedExplanation": "Registreeru või logi sisse ja me lisame sind kursusele.",
+    "moderationRefusedContactDetails": "Sinu sõnumit ei saadetud. Automaatne filter leidis kontaktandmeid, näiteks telefoninumbri. Palun eemalda need ja proovi uuesti. Kui arvad, et tegemist on veaga, teata sellest oma õpetajale.",
+    "moderationRefusedProfanity": "Sinu sõnumit ei saadetud. Automaatne filter leidis sõna, mida me vestluses ei luba. Palun muuda seda ja proovi uuesti. Kui arvad, et tegemist on veaga, teata sellest oma õpetajale."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-09-28 15:16:06.277826",
+    "@@last_modified": "2026-09-29 10:03:21.913819",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10912,5 +10912,7 @@
     "courseCodeJoinExplanation": "Prihláste sa alebo sa zaregistrujte a my použijeme váš kód kurzu na automatické pridanie do kurzu.",
     "courseCodeLabel": "Kód kurzu",
     "courseCodeSaved": "Kód kurzu {code} uložený",
-    "courseCodeSavedExplanation": "Zaregistrujte sa alebo sa prihláste a my vás pridáme do vášho kurzu."
+    "courseCodeSavedExplanation": "Zaregistrujte sa alebo sa prihláste a my vás pridáme do vášho kurzu.",
+    "moderationRefusedContactDetails": "Vaša správa nebola odoslaná. Automatický filter našiel kontaktné údaje, napríklad telefónne číslo. Odstráňte ich a skúste to znova. Ak si myslíte, že ide o chybu, povedzte to svojmu učiteľovi.",
+    "moderationRefusedProfanity": "Vaša správa nebola odoslaná. Automatický filter našiel slovo, ktoré v chate nepovoľujeme. Zmeňte ho a skúste to znova. Ak si myslíte, že ide o chybu, povedzte to svojmu učiteľovi."
 }

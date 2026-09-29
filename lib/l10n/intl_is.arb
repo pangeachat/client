@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-09-28 15:16:01.640531",
+    "@@last_modified": "2026-09-29 10:03:15.119867",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2375,5 +2375,7 @@
     "courseCodeJoinExplanation": "Skráðu þig inn eða stofnaðu aðgang og við munum nota námskeiðskóðann þinn til að bæta þér sjálfkrafa við námskeiðið þitt.",
     "courseCodeLabel": "Námskeiðskóði",
     "courseCodeSaved": "Námskeiðskóði {code} vistaður",
-    "courseCodeSavedExplanation": "Skráðu þig eða skráðu þig inn og við munum bæta þér við námskeiðið þitt."
+    "courseCodeSavedExplanation": "Skráðu þig eða skráðu þig inn og við munum bæta þér við námskeiðið þitt.",
+    "moderationRefusedContactDetails": "Skilaboðin þín voru ekki send. Sjálfvirk sía fann samskiptaupplýsingar, eins og símanúmer. Vinsamlegast fjarlægðu þær og reyndu aftur. Ef þú telur þetta vera mistök, segðu kennaranum þínum frá því.",
+    "moderationRefusedProfanity": "Skilaboðin þín voru ekki send. Sjálfvirk sía fann orð sem við leyfum ekki í spjalli. Vinsamlegast breyttu því og reyndu aftur. Ef þú telur þetta vera mistök, segðu kennaranum þínum frá því."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-09-28 15:16:03.847928",
+    "@@last_modified": "2026-09-29 10:03:18.525942",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2375,5 +2375,7 @@
     "courseCodeJoinExplanation": "Log masuk atau daftar, dan kami akan menggunakan kod kursus anda untuk menambahkan anda ke kursus anda secara automatik.",
     "courseCodeLabel": "Kod kursus",
     "courseCodeSaved": "Kod kursus {code} disimpan",
-    "courseCodeSavedExplanation": "Daftar atau log masuk dan kami akan menambahkan anda ke kursus anda."
+    "courseCodeSavedExplanation": "Daftar atau log masuk dan kami akan menambahkan anda ke kursus anda.",
+    "moderationRefusedContactDetails": "Mesej anda tidak dihantar. Penapis automatik menemui butiran hubungan, seperti nombor telefon. Sila alih keluar dan cuba lagi. Jika anda rasa ini adalah kesilapan, beritahu guru anda.",
+    "moderationRefusedProfanity": "Mesej anda tidak dihantar. Penapis automatik menemui perkataan yang tidak dibenarkan dalam sembang. Sila ubah dan cuba lagi. Jika anda rasa ini adalah kesilapan, beritahu guru anda."
 }

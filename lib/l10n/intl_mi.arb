@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-09-28 15:16:03.833723",
+    "@@last_modified": "2026-09-29 10:03:18.287497",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2375,5 +2375,7 @@
     "courseCodeJoinExplanation": "Takiuru, rēhita rānei, ā, mā tō waehere akoranga koe e tāpiri aunoa ki tō akoranga.",
     "courseCodeLabel": "Waehere akoranga",
     "courseCodeSaved": "Kua tiakina te waehere akoranga {code}",
-    "courseCodeSavedExplanation": "Rēhita, takiuru rānei, ā, mā mātou koe e tāpiri ki tō akoranga."
+    "courseCodeSavedExplanation": "Rēhita, takiuru rānei, ā, mā mātou koe e tāpiri ki tō akoranga.",
+    "moderationRefusedContactDetails": "Kāore i tukuna tō karere. I kitea e tētahi tātari aunoa ngā taipitopito whakapā, pērā i te tau waea. Tangohia mai, ka ngana anō. Ki te whakaaro koe he hapa tēnei, kōrero ki tō kaiako.",
+    "moderationRefusedProfanity": "Kāore i tukuna tō karere. I kitea e tētahi tātari aunoa tētahi kupu kāore mātou e whakaae ana ki te kōrerorero. Whakarerekētia, ka ngana anō. Ki te whakaaro koe he hapa tēnei, kōrero ki tō kaiako."
 }

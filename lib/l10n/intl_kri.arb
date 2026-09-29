@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-09-28 15:16:02.447123",
+    "@@last_modified": "2026-09-29 10:03:16.254403",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2375,5 +2375,7 @@
     "courseCodeJoinExplanation": "Lɔg in ɔ sayn ap, ɛn wi go yuz yu kɔs kod fɔ ad yu to yu kɔs ɔtɔmatikali.",
     "courseCodeLabel": "Kɔs kod",
     "courseCodeSaved": "Kɔs kod {code} dɔn sev",
-    "courseCodeSavedExplanation": "Sayn ap ɔ lɔg in ɛn wi go ad yu to yu kɔs."
+    "courseCodeSavedExplanation": "Sayn ap ɔ lɔg in ɛn wi go ad yu to yu kɔs.",
+    "moderationRefusedContactDetails": "Yu messej nɔ sen. Wan ɔtɔmatik filta fɛn kɔntakt ditel dɛn, lɛk fon nɔmba. Duya pul dɛn ɛn tray bak. If yu tink se dis na mistek, tɛl yu ticha.",
+    "moderationRefusedProfanity": "Yu messej nɔ sen. Wan ɔtɔmatik filta fɛn wan wɔd we wi nɔ alaw insay chat. Duya chenj am ɛn tray bak. If yu tink se dis na mistek, tɛl yu ticha."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-09-28 15:16:03.358345",
+    "@@last_modified": "2026-09-29 10:03:18.267006",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2375,5 +2375,7 @@
     "courseCodeJoinExplanation": "Midira na misoratra anarana, ary hampiasainay ny kaody taranjao mba hanampiana anao ho azy ao amin'ny taranjao.",
     "courseCodeLabel": "Kaody taranja",
     "courseCodeSaved": "Kaody taranja {code} voatahiry",
-    "courseCodeSavedExplanation": "Misoratra anarana na midira ary hanampy anao amin'ny taranjao izahay."
+    "courseCodeSavedExplanation": "Misoratra anarana na midira ary hanampy anao amin'ny taranjao izahay.",
+    "moderationRefusedContactDetails": "Tsy voatateraka ny hafatrao. Nahita antsipiriany momba ny fifandraisana, toy ny nomeraon-telefaona, ny sivana mandeha ho azy. Esory azafady izany ary andramo indray. Raha heverinao fa fahadisoana ity, lazao amin'ny mpampianatra anao.",
+    "moderationRefusedProfanity": "Tsy voatateraka ny hafatrao. Nahita teny tsy avelanay ao amin'ny chat ny sivana mandeha ho azy. Ovay azafady izany ary andramo indray. Raha heverinao fa fahadisoana ity, lazao amin'ny mpampianatra anao."
 }

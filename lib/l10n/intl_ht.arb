@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-09-28 15:16:00.641736",
+    "@@last_modified": "2026-09-29 10:03:14.015050",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2375,5 +2375,7 @@
     "courseCodeJoinExplanation": "Konekte oswa enskri, epi n ap itilize kòd kou ou a pou ajoute ou nan kou ou otomatikman.",
     "courseCodeLabel": "Kòd kou",
     "courseCodeSaved": "Kòd kou {code} anrejistre",
-    "courseCodeSavedExplanation": "Enskri oswa konekte epi n ap ajoute ou nan kou ou."
+    "courseCodeSavedExplanation": "Enskri oswa konekte epi n ap ajoute ou nan kou ou.",
+    "moderationRefusedContactDetails": "Mesaj ou a pa t voye. Yon filtè otomatik te jwenn enfòmasyon kontak, tankou yon nimewo telefòn. Tanpri retire yo epi eseye ankò. Si ou panse sa a se yon erè, di pwofesè ou.",
+    "moderationRefusedProfanity": "Mesaj ou a pa t voye. Yon filtè otomatik te jwenn yon mo nou pa pèmèt nan chat la. Tanpri chanje li epi eseye ankò. Si ou panse sa a se yon erè, di pwofesè ou."
 }

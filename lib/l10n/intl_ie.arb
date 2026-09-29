@@ -3093,7 +3093,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-09-28 15:16:00.995257",
+    "@@last_modified": "2026-09-29 10:03:15.224326",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10599,5 +10599,7 @@
     "courseCodeJoinExplanation": "Logáil isteach nó cláraigh, agus úsáidfimid do chód cúrsa chun tú a chur le do chúrsa go huathoibríoch.",
     "courseCodeLabel": "Cód cúrsa",
     "courseCodeSaved": "Cód cúrsa {code} sábháilte",
-    "courseCodeSavedExplanation": "Cláraigh nó logáil isteach agus cuirfimid le do chúrsa thú."
+    "courseCodeSavedExplanation": "Cláraigh nó logáil isteach agus cuirfimid le do chúrsa thú.",
+    "moderationRefusedContactDetails": "Níor seoladh do theachtaireacht. Fuair scagaire uathoibríoch sonraí teagmhála, cosúil le huimhir theileafóin. Bain iad le do thoil agus bain triail eile as. Má cheapann tú gur botún é seo, inis do do mhúinteoir.",
+    "moderationRefusedProfanity": "Níor seoladh do theachtaireacht. Fuair scagaire uathoibríoch focal nach gceadaímid sa chomhrá. Athraigh é le do thoil agus bain triail eile as. Má cheapann tú gur botún é seo, inis do do mhúinteoir."
 }

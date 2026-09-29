@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-09-28 15:15:57.495103",
+    "@@last_modified": "2026-09-29 10:03:10.065069",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2375,5 +2375,7 @@
     "courseCodeJoinExplanation": "ይግቡ ወይም ይመዝገቡ፣ እና ኮርስ ኮድዎን ተጠቅመን በራስ-ሰር ወደ ኮርስዎ እናስገባዎታለን።",
     "courseCodeLabel": "የኮርስ ኮድ",
     "courseCodeSaved": "የኮርስ ኮድ {code} ተቀምጧል",
-    "courseCodeSavedExplanation": "ይመዝገቡ ወይም ይግቡ እና ወደ ኮርስዎ እናስገባዎታለን።"
+    "courseCodeSavedExplanation": "ይመዝገቡ ወይም ይግቡ እና ወደ ኮርስዎ እናስገባዎታለን።",
+    "moderationRefusedContactDetails": "መልዕክትዎ አልተላከም። አውቶማቲክ ማጣሪያ እንደ ስልክ ቁጥር ያሉ የእውቂያ ዝርዝሮችን አግኝቷል። እባክዎ ያስወግዱዋቸው እና እንደገና ይሞክሩ። ይህ ስህተት ነው ብለው ካሰቡ፣ ለመምህርዎ ይንገሩ።",
+    "moderationRefusedProfanity": "መልዕክትዎ አልተላከም። አውቶማቲክ ማጣሪያ በውይይት ውስጥ የማንፈቅደውን ቃል አግኝቷል። እባክዎ ይቀይሩት እና እንደገና ይሞክሩ። ይህ ስህተት ነው ብለው ካሰቡ፣ ለመምህርዎ ይንገሩ።"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-09-28 15:16:07.605950",
+    "@@last_modified": "2026-09-29 10:03:23.700890",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2375,5 +2375,7 @@
     "courseCodeJoinExplanation": "Ingia au jisajili, na tutatumia msimbo wako wa kozi kukuongeza kwenye kozi yako kiotomatiki.",
     "courseCodeLabel": "Msimbo wa kozi",
     "courseCodeSaved": "Msimbo wa kozi {code} umefanikiwa kuhifadhiwa",
-    "courseCodeSavedExplanation": "Jisajili au ingia na tutakuongeza kwenye kozi yako."
+    "courseCodeSavedExplanation": "Jisajili au ingia na tutakuongeza kwenye kozi yako.",
+    "moderationRefusedContactDetails": "Ujumbe wako haukutumwa. Kichujio otomatiki kimepata maelezo ya mawasiliano, kama nambari ya simu. Tafadhali yatoe na ujaribu tena. Ikiwa unafikiri huu ni makosa, mwambie mwalimu wako.",
+    "moderationRefusedProfanity": "Ujumbe wako haukutumwa. Kichujio otomatiki kimepata neno tusiloruhusu kwenye gumzo. Tafadhali libadilishe na ujaribu tena. Ikiwa unafikiri huu ni makosa, mwambie mwalimu wako."
 }

@@ -39,6 +39,7 @@ import 'package:fluffychat/features/languages/language_constants.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/languages/language_service.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
+import 'package:fluffychat/features/moderation/moderation_refusal.dart';
 import 'package:fluffychat/features/navigation/panel_focus.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_close_location.dart';
@@ -87,7 +88,6 @@ import 'package:fluffychat/routes/chat/choreographer/text_editing/edit_type_enum
 import 'package:fluffychat/routes/chat/choreographer/text_editing/pangea_text_controller.dart';
 import 'package:fluffychat/routes/chat/choreographer/writing_assistance_room_extension.dart';
 import 'package:fluffychat/routes/chat/event_info_dialog.dart';
-import 'package:fluffychat/routes/chat/event_too_large_dialog.dart';
 import 'package:fluffychat/routes/chat/events/constants/message_constants.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
@@ -109,6 +109,7 @@ import 'package:fluffychat/routes/chat/events/tokens/tokens_util.dart';
 import 'package:fluffychat/routes/chat/growth_animation.dart';
 import 'package:fluffychat/routes/chat/message_analytics_feedback.dart';
 import 'package:fluffychat/routes/chat/recording_view_model.dart';
+import 'package:fluffychat/routes/chat/send_refused_dialog.dart';
 import 'package:fluffychat/routes/chat/start_poll_bottom_sheet.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/message_practice_mode_enum.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_selection_overlay.dart';
@@ -1627,6 +1628,14 @@ class ChatController extends State<ChatPageWithRoom>
       hideEmojiPicker();
     }
 
+    // The length, never the text: learner content stays out of Sentry.
+    final sendFailureData = {
+      'roomId': roomId,
+      'textLength': message.length,
+      'inReplyTo': reply?.eventId,
+      'editEventId': edit?.eventId,
+    };
+
     room
         .pangeaSendTextEvent(
           message,
@@ -1688,12 +1697,7 @@ class ChatController extends State<ChatPageWithRoom>
             ErrorHandler.logError(
               e: Exception('msgEventId is null'),
               s: StackTrace.current,
-              data: {
-                'roomId': roomId,
-                'text': message,
-                'inReplyTo': reply?.eventId,
-                'editEventId': edit?.eventId,
-              },
+              data: sendFailureData,
             );
             return;
           }
@@ -1703,21 +1707,30 @@ class ChatController extends State<ChatPageWithRoom>
             if (mounted) {
               showAdaptiveDialog(
                 context: context,
-                builder: (context) => const EventTooLargeDialog(),
+                builder: (context) =>
+                    SendRefusedDialog(message: L10n.of(context).tooLargeToSend),
               );
             }
             return;
           }
+          final refusal = ModerationRefusal.fromError(err);
           ErrorHandler.logError(
             e: err,
             s: s,
-            data: {
-              'roomId': roomId,
-              'text': message,
-              'inReplyTo': reply?.eventId,
-              'editEventId': edit?.eventId,
-            },
+            data: sendFailureData,
+            level: refusal != null ? SentryLevel.info : null,
           );
+          if (refusal != null) {
+            unawaited(
+              _returnRefusedMessage(
+                refusal,
+                txid: tempEventId,
+                message: message,
+                reply: reply,
+                edit: edit,
+              ),
+            );
+          }
         });
     // sendController.value = TextEditingValue(
     //   text: pendingText,
@@ -1732,6 +1745,35 @@ class ChatController extends State<ChatPageWithRoom>
     //   pendingText = '';
     // });
     // Pangea#
+  }
+
+  /// Moderation refused [message]: drop its failed bubble, give the text back
+  /// to the composer (unless the learner has started another message) and say
+  /// why, so they can edit it. Sending it unchanged would be refused again.
+  Future<void> _returnRefusedMessage(
+    ModerationRefusal refusal, {
+    required String? txid,
+    required String message,
+    required Event? reply,
+    required Event? edit,
+  }) async {
+    if (txid != null) {
+      final failedEcho = await room.client.database.getEventById(txid, room);
+      await failedEcho?.cancelSend();
+    }
+    if (!mounted) return;
+    if (sendController.text.isEmpty &&
+        replyEvent.value == null &&
+        editEvent.value == null) {
+      replyEvent.value = reply;
+      editEvent.value = edit;
+      sendController.setSystemText(message, EditTypeEnum.other);
+    }
+    await showAdaptiveDialog(
+      context: context,
+      builder: (context) =>
+          SendRefusedDialog(message: refusal.message(L10n.of(context))),
+    );
   }
 
   void sendFileAction({FileType type = FileType.any}) async {

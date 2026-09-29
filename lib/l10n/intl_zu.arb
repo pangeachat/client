@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-09-28 15:16:09.428313",
+    "@@last_modified": "2026-09-29 10:03:26.593856",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2375,5 +2375,7 @@
     "courseCodeJoinExplanation": "Ngena noma bhalisa, futhi sizosebenzisa ikhodi yekhosi lakho ukukufaka ngokuzenzakalelayo ekosini lakho.",
     "courseCodeLabel": "Ikhodi yekhosi",
     "courseCodeSaved": "Ikhodi yekhosi {code} ilondoloziwe",
-    "courseCodeSavedExplanation": "Bhalisa noma ungene futhi sizokufaka ekosini lakho."
+    "courseCodeSavedExplanation": "Bhalisa noma ungene futhi sizokufaka ekosini lakho.",
+    "moderationRefusedContactDetails": "Umlayezo wakho awuthunyelwanga. Isihlungi esizenzakalelayo sithole imininingwane yokuxhumana, njengenombolo yocingo. Sicela uyisuse bese uzama futhi. Uma ucabanga ukuthi lokhu kuyiphutha, tshela uthisha wakho.",
+    "moderationRefusedProfanity": "Umlayezo wakho awuthunyelwanga. Isihlungi esizenzakalelayo sithole igama esingalivumi engxoxweni. Sicela ulishintshe bese uzama futhi. Uma ucabanga ukuthi lokhu kuyiphutha, tshela uthisha wakho."
 }

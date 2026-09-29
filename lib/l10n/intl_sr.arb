@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-28 15:16:06.893210",
+    "@@last_modified": "2026-09-29 10:03:23.215838",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10916,5 +10916,7 @@
     "courseCodeJoinExplanation": "Prijavite se ili se registrujte, a mi ćemo koristiti vaš kod kursa da vas automatski dodamo na vaš kurs.",
     "courseCodeLabel": "Kod kursa",
     "courseCodeSaved": "Kod kursa {code} sačuvan",
-    "courseCodeSavedExplanation": "Registrujte se ili se prijavite i mi ćemo vas dodati na vaš kurs."
+    "courseCodeSavedExplanation": "Registrujte se ili se prijavite i mi ćemo vas dodati na vaš kurs.",
+    "moderationRefusedContactDetails": "Vaša poruka nije poslata. Automatski filter je pronašao detalje za kontakt, kao što je broj telefona. Uklonite ih i pokušajte ponovo. Ako mislite da je ovo greška, recite svom nastavniku.",
+    "moderationRefusedProfanity": "Vaša poruka nije poslata. Automatski filter je pronašao reč koju ne dozvoljavamo u ćaskanju. Promenite je i pokušajte ponovo. Ako mislite da je ovo greška, recite svom nastavniku."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-09-28 15:15:59.654244",
+    "@@last_modified": "2026-09-29 10:03:12.816329",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9967,5 +9967,7 @@
     "courseCodeJoinExplanation": "Inicia sesión ou rexístrate, e usaremos o teu código de curso para engadirte ao teu curso automaticamente.",
     "courseCodeLabel": "Código do curso",
     "courseCodeSaved": "Código do curso {code} gardado",
-    "courseCodeSavedExplanation": "Rexístrate ou inicia sesión e engadirémoste ao teu curso."
+    "courseCodeSavedExplanation": "Rexístrate ou inicia sesión e engadirémoste ao teu curso.",
+    "moderationRefusedContactDetails": "A túa mensaxe non foi enviada. Un filtro automático detectou datos de contacto, como un número de teléfono. Elimínaos e téntao de novo. Se cres que é un erro, avísalle ao teu profesor.",
+    "moderationRefusedProfanity": "A túa mensaxe non foi enviada. Un filtro automático detectou unha palabra que non permitimos no chat. Cámbiaa e téntao de novo. Se cres que é un erro, avísalle ao teu profesor."
 }

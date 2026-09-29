@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-28 15:16:00.782338",
+    "@@last_modified": "2026-09-29 10:03:14.397844",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10040,5 +10040,7 @@
     "courseCodeJoinExplanation": "Masuk atau daftar, dan kami akan menggunakan kode kursus Anda untuk menambahkan Anda ke kursus secara otomatis.",
     "courseCodeLabel": "Kode kursus",
     "courseCodeSaved": "Kode kursus {code} tersimpan",
-    "courseCodeSavedExplanation": "Daftar atau masuk dan kami akan menambahkan Anda ke kursus Anda."
+    "courseCodeSavedExplanation": "Daftar atau masuk dan kami akan menambahkan Anda ke kursus Anda.",
+    "moderationRefusedContactDetails": "Pesan Anda tidak terkirim. Filter otomatis menemukan detail kontak, seperti nomor telepon. Harap hapus dan coba lagi. Jika menurut Anda ini adalah kesalahan, beritahu guru Anda.",
+    "moderationRefusedProfanity": "Pesan Anda tidak terkirim. Filter otomatis menemukan kata yang tidak kami izinkan dalam obrolan. Harap ubah dan coba lagi. Jika menurut Anda ini adalah kesalahan, beritahu guru Anda."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-09-28 15:16:02.993935",
+    "@@last_modified": "2026-09-29 10:03:17.263340",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2375,5 +2375,7 @@
     "courseCodeJoinExplanation": "Mell dech un oder registréier dech, a mir benotzen däi Cours-Code fir dech automatesch zu dengem Cours dobäizesetzen.",
     "courseCodeLabel": "Cours-Code",
     "courseCodeSaved": "Cours-Code {code} gespäichert",
-    "courseCodeSavedExplanation": "Mell dech un oder registréier dech a mir setzen dech zu dengem Cours dobäi."
+    "courseCodeSavedExplanation": "Mell dech un oder registréier dech a mir setzen dech zu dengem Cours dobäi.",
+    "moderationRefusedContactDetails": "Är Noriicht gouf net geschéckt. En automatesche Filter huet Kontaktdetailer, wéi eng Telefonsnummer, fonnt. Huelt se weg ewech a probéiert et nach eng Kéier. Wann Dir mengt, dat wier e Feeler, sot et Ärem Enseignant.",
+    "moderationRefusedProfanity": "Är Noriicht gouf net geschéckt. En automatesche Filter huet e Wuert fonnt, dat mir am Chat net erlaben. Ännert et weg a probéiert et nach eng Kéier. Wann Dir mengt, dat wier e Feeler, sot et Ärem Enseignant."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-09-28 15:16:00.245861",
+    "@@last_modified": "2026-09-29 10:03:13.921420",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10403,5 +10403,7 @@
     "courseCodeJoinExplanation": "Prijavite se ili registrirajte, a mi ćemo upotrijebiti vaš kod tečaja kako bismo vas automatski dodali na vaš tečaj.",
     "courseCodeLabel": "Kod tečaja",
     "courseCodeSaved": "Kod tečaja {code} spremljen",
-    "courseCodeSavedExplanation": "Registrirajte se ili prijavite i dodat ćemo vas na vaš tečaj."
+    "courseCodeSavedExplanation": "Registrirajte se ili prijavite i dodat ćemo vas na vaš tečaj.",
+    "moderationRefusedContactDetails": "Vaša poruka nije poslana. Automatski filtar pronašao je podatke za kontakt, poput telefonskog broja. Uklonite ih i pokušajte ponovno. Ako mislite da je ovo pogreška, recite svom učitelju.",
+    "moderationRefusedProfanity": "Vaša poruka nije poslana. Automatski filtar pronašao je riječ koju ne dopuštamo u chatu. Promijenite je i pokušajte ponovno. Ako mislite da je ovo pogreška, recite svom učitelju."
 }

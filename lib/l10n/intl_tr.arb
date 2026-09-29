@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-09-28 15:16:08.001466",
+    "@@last_modified": "2026-09-29 10:03:24.251200",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10268,5 +10268,7 @@
     "courseCodeJoinExplanation": "Giriş yapın veya kaydolun, kurs kodunuzu kullanarak sizi otomatik olarak kursunuza ekleyeceğiz.",
     "courseCodeLabel": "Kurs kodu",
     "courseCodeSaved": "{code} kurs kodu kaydedildi",
-    "courseCodeSavedExplanation": "Kaydolun veya giriş yapın, sizi kursunuza ekleyeceğiz."
+    "courseCodeSavedExplanation": "Kaydolun veya giriş yapın, sizi kursunuza ekleyeceğiz.",
+    "moderationRefusedContactDetails": "Mesajınız gönderilemedi. Otomatik bir filtre telefon numarası gibi iletişim bilgileri buldu. Lütfen bunları kaldırın ve tekrar deneyin. Bunun bir hata olduğunu düşünüyorsanız öğretmeninize bildirin.",
+    "moderationRefusedProfanity": "Mesajınız gönderilemedi. Otomatik bir filtre sohbette izin vermediğimiz bir kelime buldu. Lütfen bunu değiştirin ve tekrar deneyin. Bunun bir hata olduğunu düşünüyorsanız öğretmeninize bildirin."
 }

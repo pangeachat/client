@@ -3536,7 +3536,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-09-28 15:15:59.123243",
+    "@@last_modified": "2026-09-29 10:03:12.210757",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -10004,5 +10004,7 @@
     "courseCodeJoinExplanation": "Kirjaudu sisään tai rekisteröidy, niin lisäämme sinut kurssillesi automaattisesti kurssikoodisi avulla.",
     "courseCodeLabel": "Kurssikoodi",
     "courseCodeSaved": "Kurssikoodi {code} tallennettu",
-    "courseCodeSavedExplanation": "Rekisteröidy tai kirjaudu sisään, niin lisäämme sinut kurssillesi."
+    "courseCodeSavedExplanation": "Rekisteröidy tai kirjaudu sisään, niin lisäämme sinut kurssillesi.",
+    "moderationRefusedContactDetails": "Viestisi ei lähetetty. Automaattinen suodatin löysi yhteystietoja, kuten puhelinnumeron. Poista ne ja yritä uudelleen. Jos uskot tämän olevan virhe, kerro opettajallesi.",
+    "moderationRefusedProfanity": "Viestisi ei lähetetty. Automaattinen suodatin löysi sanan, jota emme salli chatissa. Muuta sitä ja yritä uudelleen. Jos uskot tämän olevan virhe, kerro opettajallesi."
 }

@@ -1334,7 +1334,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-09-28 15:15:58.120512",
+    "@@last_modified": "2026-09-29 10:03:10.851160",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10887,5 +10887,7 @@
     "courseCodeJoinExplanation": "Log ind eller tilmeld dig, så bruger vi din kursuskode til automatisk at tilføje dig til dit kursus.",
     "courseCodeLabel": "Kursuskode",
     "courseCodeSaved": "Kursuskode {code} gemt",
-    "courseCodeSavedExplanation": "Tilmeld dig eller log ind, så tilføjer vi dig til dit kursus."
+    "courseCodeSavedExplanation": "Tilmeld dig eller log ind, så tilføjer vi dig til dit kursus.",
+    "moderationRefusedContactDetails": "Din besked blev ikke sendt. Et automatisk filter fandt kontaktoplysninger, f.eks. et telefonnummer. Fjern dem, og prøv igen. Hvis du mener, at dette er en fejl, skal du fortælle det til din lærer.",
+    "moderationRefusedProfanity": "Din besked blev ikke sendt. Et automatisk filter fandt et ord, vi ikke tillader i chatten. Ret det, og prøv igen. Hvis du mener, at dette er en fejl, skal du fortælle det til din lærer."
 }

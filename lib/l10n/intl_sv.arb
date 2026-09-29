@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-28 15:16:07.148708",
+    "@@last_modified": "2026-09-29 10:03:23.197485",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10485,5 +10485,7 @@
     "courseCodeJoinExplanation": "Logga in eller registrera dig, så använder vi din kurskod för att automatiskt lägga till dig i din kurs.",
     "courseCodeLabel": "Kurskod",
     "courseCodeSaved": "Kurskod {code} sparad",
-    "courseCodeSavedExplanation": "Registrera dig eller logga in så lägger vi till dig i din kurs."
+    "courseCodeSavedExplanation": "Registrera dig eller logga in så lägger vi till dig i din kurs.",
+    "moderationRefusedContactDetails": "Ditt meddelande skickades inte. Ett automatiskt filter hittade kontaktuppgifter, som ett telefonnummer. Ta bort dem och försök igen. Om du tror att detta är ett misstag, berätta det för din lärare.",
+    "moderationRefusedProfanity": "Ditt meddelande skickades inte. Ett automatiskt filter hittade ett ord som vi inte tillåter i chatten. Ändra det och försök igen. Om du tror att detta är ett misstag, berätta det för din lärare."
 }

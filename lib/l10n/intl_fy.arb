@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-09-28 15:15:59.340139",
+    "@@last_modified": "2026-09-29 10:03:12.820813",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2375,5 +2375,7 @@
     "courseCodeJoinExplanation": "Meld dy oan of registrearje dy, en wy sille dyn kursuskoade brûke om dy automatysk oan dyn kursus ta te foegjen.",
     "courseCodeLabel": "Kursuskoade",
     "courseCodeSaved": "Kursuskoade {code} bewarre",
-    "courseCodeSavedExplanation": "Meld dy oan of registrearje dy en wy sille dy tafoegje oan dyn kursus."
+    "courseCodeSavedExplanation": "Meld dy oan of registrearje dy en wy sille dy tafoegje oan dyn kursus.",
+    "moderationRefusedContactDetails": "Jo berjocht is net ferstjoerd. In automatysk filter hat kontaktynformaasje fûn, lykas in telefoannûmer. Ferwiderje dizze en besykje it opnij. As jo tinke dat dit in flater is, fertel it dan jo learaar.",
+    "moderationRefusedProfanity": "Jo berjocht is net ferstjoerd. In automatysk filter hat in wurd fûn dat wy net tastean yn de chat. Feroarje it en besykje it opnij. As jo tinke dat dit in flater is, fertel it dan jo learaar."
 }

@@ -3952,6 +3952,8 @@
     "audioSettingDisabledEnable": "Enable",
     "noSpaceDescriptionYet": "No course description created yet.",
     "tooLargeToSend": "This message is too large to send",
+    "moderationRefusedContactDetails": "Your message was not sent. An automatic filter found contact details, like a phone number. Please remove them and try again. If you think this is a mistake, tell your teacher.",
+    "moderationRefusedProfanity": "Your message was not sent. An automatic filter found a word we do not allow in chat. Please change it and try again. If you think this is a mistake, tell your teacher.",
     "addKeyboardDialogTitle": "Add your target language keyboard",
     "enableAutocorrectPopupPathIntro": "To add one, go to:",
     "enableAutocorrectPopupSteps": "  • Settings\n  • General\n  • Keyboard\n  • Keyboards\n  • Add New Keyboard",

@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-09-28 15:16:00.214527",
+    "@@last_modified": "2026-09-29 10:03:13.654205",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2375,5 +2375,7 @@
     "courseCodeJoinExplanation": "E ʻeʻe a i ʻole e kau inoa, a e hoʻohana mākou i kāu code papa e hoʻohui aunoa iā ʻoe i kāu papa.",
     "courseCodeLabel": "Code papa",
     "courseCodeSaved": "Ua mālama ʻia ke code papa {code}",
-    "courseCodeSavedExplanation": "E kau inoa a i ʻole e ʻeʻe a e hoʻohui mākou iā ʻoe i kāu papa."
+    "courseCodeSavedExplanation": "E kau inoa a i ʻole e ʻeʻe a e hoʻohui mākou iā ʻoe i kāu papa.",
+    "moderationRefusedContactDetails": "ʻAʻole i hoʻouna ʻia kāu leka. Ua loaʻa i kahi kānana ʻakomi nā kikoʻī pili, e like me ka helu kelepona. E ʻoluʻolu e wehe iā lākou a hoʻāʻo hou. Inā manaʻo ʻoe he hewa kēia, e haʻi i kāu kumu.",
+    "moderationRefusedProfanity": "ʻAʻole i hoʻouna ʻia kāu leka. Ua loaʻa i kahi kānana ʻakomi kahi huaʻōlelo a mākou e ʻae ʻole ai ma ke kamaʻilio. E ʻoluʻolu e hoʻololi a hoʻāʻo hou. Inā manaʻo ʻoe he hewa kēia, e haʻi i kāu kumu."
 }

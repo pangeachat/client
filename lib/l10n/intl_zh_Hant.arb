@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-28 15:16:08.699549",
+    "@@last_modified": "2026-09-29 10:03:25.736056",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10073,5 +10073,7 @@
     "courseCodeJoinExplanation": "登入或註冊，我們將使用您的課程代碼自動將您加入課程。",
     "courseCodeLabel": "課程代碼",
     "courseCodeSaved": "課程代碼 {code} 已儲存",
-    "courseCodeSavedExplanation": "註冊或登入，我們將把您加入課程。"
+    "courseCodeSavedExplanation": "註冊或登入，我們將把您加入課程。",
+    "moderationRefusedContactDetails": "您的訊息沒有送出。自動篩選器偵測到聯絡方式，例如電話號碼。請移除後再試一次。如果您認為這是錯誤，請告知您的老師。",
+    "moderationRefusedProfanity": "您的訊息沒有送出。自動篩選器偵測到我們不允許在聊天中使用的字詞。請修改後再試一次。如果您認為這是錯誤，請告知您的老師。"
 }

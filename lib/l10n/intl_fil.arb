@@ -2080,7 +2080,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-09-28 15:15:59.140388",
+    "@@last_modified": "2026-09-29 10:03:12.360253",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10827,5 +10827,7 @@
     "courseCodeJoinExplanation": "Mag-log in o mag-sign up, at gagamitin namin ang iyong course code para awtomatiko kang maidagdag sa iyong kurso.",
     "courseCodeLabel": "Course code",
     "courseCodeSaved": "Na-save ang course code na {code}",
-    "courseCodeSavedExplanation": "Mag-sign up o mag-log in at idadagdag ka namin sa iyong kurso."
+    "courseCodeSavedExplanation": "Mag-sign up o mag-log in at idadagdag ka namin sa iyong kurso.",
+    "moderationRefusedContactDetails": "Hindi naipadala ang iyong mensahe. Nakakita ang awtomatikong filter ng mga detalye sa pakikipag-ugnayan, tulad ng numero ng telepono. Pakitanggal ang mga ito at subukang muli. Kung sa tingin mo ay isa itong pagkakamali, sabihin sa iyong guro.",
+    "moderationRefusedProfanity": "Hindi naipadala ang iyong mensahe. Nakakita ang awtomatikong filter ng salitang hindi namin pinapayagan sa chat. Pakipalitan ito at subukang muli. Kung sa tingin mo ay isa itong pagkakamali, sabihin sa iyong guro."
 }

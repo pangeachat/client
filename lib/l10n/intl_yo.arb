@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-09-28 15:16:09.517438",
+    "@@last_modified": "2026-09-29 10:03:26.531511",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2375,5 +2375,7 @@
     "courseCodeJoinExplanation": "Wọlé tàbí forúkọ sílẹ̀, a ó sì lo koodu ikẹkọọ rẹ láti fi kún ọ sí ikẹkọọ rẹ lára-ẹni.",
     "courseCodeLabel": "Koodu ikẹkọọ",
     "courseCodeSaved": "Koodu ikẹkọọ {code} ti wà ní ìpamọ́",
-    "courseCodeSavedExplanation": "Forúkọ sílẹ̀ tàbí wọlé, a ó sì fi kún ọ sí ikẹkọọ rẹ."
+    "courseCodeSavedExplanation": "Forúkọ sílẹ̀ tàbí wọlé, a ó sì fi kún ọ sí ikẹkọọ rẹ.",
+    "moderationRefusedContactDetails": "A kò fi ifiranṣẹ rẹ ranṣẹ. Àlàyé aládàáṣe rí àwọn àlàyé ìbánisọ̀rọ̀, bíi nọmba tẹlifoonu. Jọ̀wọ́ yọ wọ́n kúrò kí o sì tún gbìyànjú. Bí o bá rò pé àṣìṣe ni èyí, sọ fún olùkọ́ rẹ.",
+    "moderationRefusedProfanity": "A kò fi ifiranṣẹ rẹ ranṣẹ. Àlàyé aládàáṣe rí ọ̀rọ̀ kan tí a kò gbà láàyè nínú ìjíròrò. Jọ̀wọ́ yí i padà kí o sì tún gbìyànjú. Bí o bá rò pé àṣìṣe ni èyí, sọ fún olùkọ́ rẹ."
 }

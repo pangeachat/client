@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-09-28 15:15:59.759399",
+    "@@last_modified": "2026-09-29 10:03:13.598295",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2375,5 +2375,7 @@
     "courseCodeJoinExplanation": "Log a-steach no clàraich, agus cleachdaidh sinn an còd cùrsa agad gus do chur ris a’ chùrsa agad gu fèin-obrachail.",
     "courseCodeLabel": "Còd cùrsa",
     "courseCodeSaved": "Còd cùrsa {code} air a shàbhaladh",
-    "courseCodeSavedExplanation": "Clàraich no log a-steach agus cuiridh sinn ris a’ chùrsa agad thu."
+    "courseCodeSavedExplanation": "Clàraich no log a-steach agus cuiridh sinn ris a’ chùrsa agad thu.",
+    "moderationRefusedContactDetails": "Cha deach do theachdaireachd a chur. Lorg sìoltachan fèin-obrachail fiosrachadh conaltraidh, leithid àireamh fòn. Feuch an cuir thu às dhaibh agus feuch ris a-rithist. Ma tha thu a’ smaoineachadh gur e mearachd a tha seo, innis don tidsear agad.",
+    "moderationRefusedProfanity": "Cha deach do theachdaireachd a chur. Lorg sìoltachan fèin-obrachail facal nach eil sinn a’ ceadachadh sa chat. Feuch an atharraich thu e agus feuch ris a-rithist. Ma tha thu a’ smaoineachadh gur e mearachd a tha seo, innis don tidsear agad."
 }

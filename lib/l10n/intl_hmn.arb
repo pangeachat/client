@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-09-28 15:16:00.601710",
+    "@@last_modified": "2026-09-29 10:03:13.916341",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2375,5 +2375,7 @@
     "courseCodeJoinExplanation": "Sau npe nkag los yog tsim tus account tshiab, peb mam siv koj tus lej kawm los ntxiv koj rau koj chav kawm.",
     "courseCodeLabel": "Tus lej kawm",
     "courseCodeSaved": "Tus lej kawm {code} tau raug cawm",
-    "courseCodeSavedExplanation": "Sau npe nkag los yog tsim tus account tshiab thiab peb mam ntxiv koj rau koj chav kawm."
+    "courseCodeSavedExplanation": "Sau npe nkag los yog tsim tus account tshiab thiab peb mam ntxiv koj rau koj chav kawm.",
+    "moderationRefusedContactDetails": "Koj cov lus tsis raug xa. Ib qho kev lim dej tsis siv neeg pom cov ntaub ntawv tiv tauj, xws li tus xov tooj. Thov tshem tawm lawv thiab sim dua. Yog tias koj xav tias qhov no yog qhov yuam kev, qhia rau koj tus xibfwb.",
+    "moderationRefusedProfanity": "Koj cov lus tsis raug xa. Ib qho kev lim dej tsis siv neeg pom ib lo lus peb tsis tso cai hauv kev sib tham. Thov hloov nws thiab sim dua. Yog tias koj xav tias qhov no yog qhov yuam kev, qhia rau koj tus xibfwb."
 }

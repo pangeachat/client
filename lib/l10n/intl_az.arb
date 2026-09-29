@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-09-28 15:15:57.207969",
+    "@@last_modified": "2026-09-29 10:03:10.001519",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2375,5 +2375,7 @@
     "courseCodeJoinExplanation": "Daxil olun və ya qeydiyyatdan keçin, biz sizi kurs kodunuzdan istifadə edərək avtomatik olaraq kursunuza əlavə edəcəyik.",
     "courseCodeLabel": "Kurs kodu",
     "courseCodeSaved": "{code} kurs kodu yadda saxlanıldı",
-    "courseCodeSavedExplanation": "Qeydiyyatdan keçin və ya daxil olun, biz sizi kursunuza əlavə edəcəyik."
+    "courseCodeSavedExplanation": "Qeydiyyatdan keçin və ya daxil olun, biz sizi kursunuza əlavə edəcəyik.",
+    "moderationRefusedContactDetails": "Mesajınız göndərilmədi. Avtomatik filtr telefon nömrəsi kimi əlaqə məlumatları aşkar etdi. Zəhmət olmasa, onları silin və yenidən cəhd edin. Əgər bunun səhv olduğunu düşünürsünüzsə, müəlliminizə bildirin.",
+    "moderationRefusedProfanity": "Mesajınız göndərilmədi. Avtomatik filtr çatda icazə verilməyən bir söz aşkar etdi. Zəhmət olmasa, onu dəyişdirin və yenidən cəhd edin. Əgər bunun səhv olduğunu düşünürsünüzsə, müəlliminizə bildirin."
 }
