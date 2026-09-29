@@ -1,0 +1,437 @@
+#!/bin/bash
+# merge_call_audio -- merge two per-device pangea.call_audio halves into one
+# recording, aligned on the SFU timeline, so a human can judge how natural
+# the merged call sounds.
+#
+# Input contract: two already-local, already-plain (Pangea rooms are
+# unencrypted, so these are bare mxc downloads -- no decryption step) audio
+# files plus a JSON manifest describing each half. See README.md for the
+# full manifest schema and alignment math.
+#
+# Usage:
+#   ./merge_call_audio --manifest halves.json --out ./out
+#   ./merge_call_audio --manifest halves.json --out ./out \
+#       --clap-ms you=1200,friend=1350
+#
+# Exit codes: 0 ok; 2 usage/validation error; 3 ffmpeg failure.
+
+set -euo pipefail
+
+SELF="merge_call_audio"
+SAMPLE_RATE=48000
+DRIFT_ABS_FLOOR_S=2.0
+DRIFT_REL_FRACTION=0.10
+OUTPUT_CHECK_TOLERANCE_S=0.25
+
+die()  { printf 'ERROR: %s\n' "$*" >&2; exit 2; }
+warn() { printf 'WARN: %s\n' "$*"; }
+info() { printf '%s\n' "$*"; }
+
+usage() {
+  cat <<'EOF'
+merge_call_audio --manifest <halves.json> --out <dir> [options]
+
+Required:
+  --manifest PATH   JSON array of exactly 2 half-objects (see README.md)
+  --out DIR         output directory (created if missing)
+
+Options:
+  --clap-ms LIST    comma-separated label=ms offsets of a shared audible
+                     transient (e.g. a clap) within each raw file, used as
+                     a fallback alignment method when a half's SFU/join
+                     timestamps are missing or marked low_precision.
+                     Example: --clap-ms you=1200,friend=1350
+  --sample-rate HZ  internal processing sample rate (default: 48000)
+  --ffmpeg PATH     ffmpeg binary to use (default: PATH, else
+                     /opt/homebrew/bin/ffmpeg)
+  --ffprobe PATH    ffprobe binary to use (default: PATH, else
+                     /opt/homebrew/bin/ffprobe)
+  -h, --help        show this help
+
+Outputs (written to --out):
+  merged_stereo.wav   half[0] hard-left, half[1] hard-right
+  merged_mono.wav     amix of both halves, normalized to avoid clipping
+EOF
+}
+
+need_bin() {
+  # $1=logical name  $2=explicit override (may be empty)  $3=fallback path
+  local name="$1" override="$2" fallback="$3"
+  if [ -n "$override" ]; then
+    [ -x "$override" ] || die "$name override not executable: $override"
+    printf '%s' "$override"
+    return 0
+  fi
+  if command -v "$name" >/dev/null 2>&1; then
+    command -v "$name"
+    return 0
+  fi
+  if [ -x "$fallback" ]; then
+    printf '%s' "$fallback"
+    return 0
+  fi
+  die "$name not found on PATH and not at $fallback. Install ffmpeg (e.g. 'brew install ffmpeg')."
+}
+
+# Canonical non-negative integer text only: digits, and no leading zero
+# unless the value is exactly "0" (so "0050" is rejected; "50" and "0" are
+# not). CLI numeral text (--clap-ms, --sample-rate) is never silently
+# base-10-coerced from something like "0050" -- it is rejected outright.
+is_uint() {
+  case "$1" in
+    ''|*[!0-9]*) return 1 ;;
+    0) return 0 ;;
+    0*) return 1 ;;
+    *) return 0 ;;
+  esac
+}
+
+# ---- argument parsing -------------------------------------------------
+
+MANIFEST=""
+OUT_DIR=""
+CLAP_ARG=""
+FFMPEG_OVERRIDE=""
+FFPROBE_OVERRIDE=""
+
+while [ $# -gt 0 ]; do
+  # A value option given as the LAST argument would otherwise `shift 2` with
+  # only one arg left, and `set -e` would exit 1 with no message. Report it as
+  # the usage error (exit 2) the header contract promises.
+  case "$1" in
+    --manifest|--out|--clap-ms|--sample-rate|--ffmpeg|--ffprobe)
+      [ $# -ge 2 ] || die "$1 requires a value (see --help)" ;;
+  esac
+  case "$1" in
+    --manifest) MANIFEST="${2:-}"; shift 2 ;;
+    --out) OUT_DIR="${2:-}"; shift 2 ;;
+    --clap-ms) CLAP_ARG="${2:-}"; shift 2 ;;
+    --sample-rate) SAMPLE_RATE="${2:-}"; shift 2 ;;
+    --ffmpeg) FFMPEG_OVERRIDE="${2:-}"; shift 2 ;;
+    --ffprobe) FFPROBE_OVERRIDE="${2:-}"; shift 2 ;;
+    -h|--help) usage; exit 0 ;;
+    *) die "unknown argument: $1 (see --help)" ;;
+  esac
+done
+
+[ -n "$MANIFEST" ] || die "--manifest is required (see --help)"
+[ -n "$OUT_DIR" ] || die "--out is required (see --help)"
+[ -f "$MANIFEST" ] || die "manifest not found: $MANIFEST"
+is_uint "$SAMPLE_RATE" || die "--sample-rate must be a positive integer with no leading zeros, got: $SAMPLE_RATE"
+
+FFMPEG_BIN="$(need_bin ffmpeg "$FFMPEG_OVERRIDE" /opt/homebrew/bin/ffmpeg)"
+FFPROBE_BIN="$(need_bin ffprobe "$FFPROBE_OVERRIDE" /opt/homebrew/bin/ffprobe)"
+command -v jq >/dev/null 2>&1 || die "jq is required (e.g. 'brew install jq') but was not found on PATH."
+
+mkdir -p "$OUT_DIR" || die "could not create output directory: $OUT_DIR"
+OUT_DIR="$(cd "$OUT_DIR" && pwd)"
+OUT_STEREO="$OUT_DIR/merged_stereo.wav"
+OUT_MONO="$OUT_DIR/merged_mono.wav"
+
+# ---- manifest validation -----------------------------------------------
+
+jq -e 'type == "array"' "$MANIFEST" >/dev/null 2>&1 \
+  || die "manifest is not valid JSON, or its top level is not an array: $MANIFEST"
+
+COUNT="$(jq 'length' "$MANIFEST")"
+[ "$COUNT" = "2" ] || die "manifest must contain exactly 2 halves (found $COUNT): $MANIFEST"
+
+MANIFEST_DIR="$(cd "$(dirname "$MANIFEST")" && pwd)"
+
+resolve_path() {
+  case "$1" in
+    /*) printf '%s' "$1" ;;
+    *) printf '%s/%s' "$MANIFEST_DIR" "$1" ;;
+  esac
+}
+
+# jstr IDX FIELD DEFAULT -> string value, or DEFAULT if missing/null/non-string
+jstr() {
+  local v
+  v="$(jq -r ".[$1].$2 | select(type == \"string\")" "$MANIFEST" 2>/dev/null || true)"
+  if [ -z "$v" ]; then printf '%s' "$3"; else printf '%s' "$v"; fi
+}
+
+# jbool IDX FIELD -> "true" or "false"
+jbool() {
+  jq -r ".[$1].$2 // false" "$MANIFEST" 2>/dev/null || printf 'false'
+}
+
+# jraw IDX FIELD -> the field's raw jq -r text, or empty if absent/null.
+# Pure: never dies. Safe to call inside $(...).
+jraw() {
+  jq -r ".[$1].$2 // empty" "$MANIFEST" 2>/dev/null || true
+}
+
+# jis IDX FIELD JQ_BOOL_EXPR -> "true" or "false". Pure: never dies. Safe
+# to call inside $(...). JQ_BOOL_EXPR is always a literal we write in this
+# file, never manifest/CLI content, so interpolating it into the jq
+# program is safe.
+jis() {
+  jq -r ".[$1].$2 | ($3)" "$MANIFEST" 2>/dev/null || printf 'false'
+}
+
+# check_ms_field IDX FIELD -- if the field is present AND is a JSON
+# number, requires it to be a non-negative integer (whole milliseconds);
+# dies with a specific message naming the half/field/value otherwise. A
+# field that is absent/null, or present but not a number at all, is left
+# alone -- that is the caller's missing-field / fallback-method concern,
+# not a validation error here.
+#
+# Must be called as a plain statement, e.g. `check_ms_field 0 foo`, NEVER
+# wrapped as `$(check_ms_field ...)`: command substitution forks a
+# subshell, and die()'s `exit` inside a subshell only kills the subshell
+# -- the bad value would silently come back as empty output instead of
+# stopping the script, which is exactly the silent-misalignment failure
+# mode this function exists to prevent.
+check_ms_field() {
+  local idx="$1" field="$2" lbl present is_num raw is_int is_neg
+  present="$(jis "$idx" "$field" '. != null')"
+  [ "$present" = "true" ] || return 0
+  is_num="$(jis "$idx" "$field" 'type == "number"')"
+  [ "$is_num" = "true" ] || return 0
+  eval "lbl=\$LABEL_$idx"
+  raw="$(jraw "$idx" "$field")"
+  is_int="$(jis "$idx" "$field" '(floor == .)')"
+  if [ "$is_int" != "true" ]; then
+    die "half '$lbl' field '$field' must be a whole number of milliseconds (no fractional part), got: $raw"
+  fi
+  is_neg="$(jis "$idx" "$field" '. < 0')"
+  if [ "$is_neg" = "true" ]; then
+    die "half '$lbl' field '$field' must be a non-negative integer, got: $raw"
+  fi
+}
+
+# jnum IDX FIELD -> integer ms value as plain text, or empty if the field
+# is absent/null/not-a-number. Caller MUST have already called
+# check_ms_field for the same IDX/FIELD in the current (non-subshell)
+# shell, so a fractional/negative value never silently reaches here --
+# this function itself does no validation, only extraction.
+jnum() {
+  local v
+  v="$(jraw "$1" "$2")"
+  [ -n "$v" ] || { printf ''; return 0; }
+  [ "$(jis "$1" "$2" 'type == "number"')" = "true" ] || { printf ''; return 0; }
+  printf '%s' "$v"
+}
+
+for i in 0 1; do
+  eval "LABEL_$i=\"\$(jstr $i label '')\""
+  eval "SENDER_$i=\"\$(jstr $i sender 'unknown')\""
+  eval "FILE_$i=\"\$(jstr $i file '')\""
+  eval "LOWP_$i=\"\$(jbool $i low_precision)\""
+done
+
+[ -n "$LABEL_0" ] || die "half[0] is missing required field 'label'"
+[ -n "$LABEL_1" ] || die "half[1] is missing required field 'label'"
+[ "$LABEL_0" != "$LABEL_1" ] || die "both halves have label '$LABEL_0'; labels must be unique"
+[ -n "$FILE_0" ] || die "half[0] ('$LABEL_0') is missing required field 'file'"
+[ -n "$FILE_1" ] || die "half[1] ('$LABEL_1') is missing required field 'file'"
+
+FILE_0="$(resolve_path "$FILE_0")"
+FILE_1="$(resolve_path "$FILE_1")"
+[ -f "$FILE_0" ] || die "half[0] ('$LABEL_0') audio file not found: $FILE_0"
+[ -f "$FILE_1" ] || die "half[1] ('$LABEL_1') audio file not found: $FILE_1"
+
+# Validate the three timestamp/offset fields BEFORE extracting them: a
+# fractional or negative value is a hard manifest error, never silently
+# truncated/coerced. device_joined_at_ms is optional (see PRIMARY_OK
+# below, which does not require it) but is still validated if present.
+for i in 0 1; do
+  check_ms_field "$i" recording_started_offset_from_device_join_ms
+  check_ms_field "$i" device_joined_at_ms
+  check_ms_field "$i" sfu_joined_at_ms
+  eval "OFF_$i=\"\$(jnum $i recording_started_offset_from_device_join_ms)\""
+  eval "DJM_$i=\"\$(jnum $i device_joined_at_ms)\""
+  eval "SJM_$i=\"\$(jnum $i sfu_joined_at_ms)\""
+done
+
+# ---- clap-ms fallback input ---------------------------------------------
+
+parse_clap() {
+  local pair key val
+  local IFS=','
+  for pair in $1; do
+    [ -n "$pair" ] || continue
+    key="${pair%%=*}"
+    val="${pair#*=}"
+    is_uint "$val" || die "--clap-ms value for '$key' must be a non-negative integer (milliseconds) with no leading zeros (e.g. '50', not '050'), got: '$val'"
+    case "$key" in
+      "$LABEL_0") CLAP_0="$val" ;;
+      "$LABEL_1") CLAP_1="$val" ;;
+      *) die "--clap-ms label '$key' does not match either manifest label ('$LABEL_0', '$LABEL_1')" ;;
+    esac
+  done
+}
+parse_clap "$CLAP_ARG"
+
+# ---- decide alignment method --------------------------------------------
+#
+# Primary method: file_start_sfu_ms(half) = sfu_joined_at_ms + recording_started_offset_from_device_join_ms
+# is the absolute SFU-clock instant at which that half's *file* begins.
+# device_joined_at_ms is accepted and validated if present but is NOT part
+# of this formula, so it is not required for the primary method.
+# Fallback method: a shared audible transient (a clap) appears at a known
+# local offset in each raw file; the file where it appears LATER started
+# recording SOONER (more lead-in before the clap), so -clap_ms plays the
+# same role as file_start_sfu_ms: an "absolute start" proxy, unique up to
+# a shared additive constant.
+#
+# Either way we reduce to one shared rule: whichever half's "absolute
+# start" metric is SMALLEST (earliest) gets delay 0; the other gets
+# delayed by (max - min) so a real-world-simultaneous sound lands at the
+# same output sample in both tracks. (Delaying the earlier-starting half
+# instead would double the misalignment rather than fix it -- verified
+# numerically in this tool's PR discussion; do not "simplify" this.)
+
+PRIMARY_OK=1
+for i in 0 1; do
+  eval "off=\$OFF_$i"; eval "sjm=\$SJM_$i"; eval "lowp=\$LOWP_$i"
+  if [ -z "$off" ] || [ -z "$sjm" ] || [ "$lowp" = "true" ]; then
+    PRIMARY_OK=0
+  fi
+done
+
+if [ "$PRIMARY_OK" = "1" ]; then
+  METHOD="timestamp"
+  if [ -n "${CLAP_0:-}${CLAP_1:-}" ]; then
+    info "NOTE: --clap-ms was supplied but both halves have usable timestamps; ignoring --clap-ms."
+  fi
+  # 10#-prefix forces base-10 (JSON numbers can't have leading zeros, but
+  # this is cheap insurance against bash arithmetic's octal interpretation).
+  START_0=$(( 10#$SJM_0 + 10#$OFF_0 ))
+  START_1=$(( 10#$SJM_1 + 10#$OFF_1 ))
+else
+  METHOD="clap"
+  warn "primary alignment stamps are missing/low-precision:"
+  for i in 0 1; do
+    eval "off=\$OFF_$i"; eval "sjm=\$SJM_$i"; eval "lowp=\$LOWP_$i"; eval "lbl=\$LABEL_$i"
+    missing=""
+    [ -z "$off" ] && missing="$missing recording_started_offset_from_device_join_ms"
+    [ -z "$sjm" ] && missing="$missing sfu_joined_at_ms"
+    [ "$lowp" = "true" ] && missing="$missing low_precision=true"
+    [ -n "$missing" ] && warn "  half '$lbl':$missing"
+  done
+  if [ -z "${CLAP_0:-}" ] || [ -z "${CLAP_1:-}" ]; then
+    die "cannot align: primary timestamps are unusable and --clap-ms does not cover both labels. Pass e.g. --clap-ms ${LABEL_0}=1200,${LABEL_1}=1350 (ms offset of a shared audible transient within each raw file). Refusing to guess and silently produce a misaligned file."
+  fi
+  warn "falling back to --clap-ms alignment (labels: $LABEL_0=$CLAP_0 $LABEL_1=$CLAP_1)"
+  # 10#-prefix: a --clap-ms value with a leading zero (e.g. "0050") would
+  # otherwise be parsed as octal by bash arithmetic and silently corrupted.
+  START_0=$(( 0 - 10#$CLAP_0 ))
+  START_1=$(( 0 - 10#$CLAP_1 ))
+fi
+
+if [ "$START_0" -le "$START_1" ]; then MIN_START=$START_0; else MIN_START=$START_1; fi
+DELAY_0=$(( START_0 - MIN_START ))
+DELAY_1=$(( START_1 - MIN_START ))
+
+# Equal starts (both delays 0) is CORRECT, not an error: it means the two
+# halves are already simultaneous on the reference timeline. Flag it as
+# unusual (two independent devices rarely compute the exact same start to
+# the millisecond) but still proceed and produce output.
+if [ "$START_0" -eq "$START_1" ]; then
+  warn "both halves report the same computed start ($START_0) -- unusual, but not an error; proceeding with zero delay on both."
+fi
+
+# ---- durations + wild-drift hint ----------------------------------------
+
+ffprobe_duration_s() {
+  local d
+  d="$("$FFPROBE_BIN" -v error -show_entries format=duration -of default=nk=1:nw=1 "$1" 2>/dev/null || true)"
+  case "$d" in
+    ''|N/A) printf '' ;;
+    *) printf '%s' "$d" ;;
+  esac
+}
+
+DUR_0="$(ffprobe_duration_s "$FILE_0")"
+DUR_1="$(ffprobe_duration_s "$FILE_1")"
+[ -n "$DUR_0" ] || die "ffprobe could not read a duration for half[0] ('$LABEL_0'): $FILE_0"
+[ -n "$DUR_1" ] || die "ffprobe could not read a duration for half[1] ('$LABEL_1'): $FILE_1"
+
+DRIFT_STATUS="$(awk -v a="$DUR_0" -v b="$DUR_1" -v floor="$DRIFT_ABS_FLOOR_S" -v frac="$DRIFT_REL_FRACTION" 'BEGIN{
+  d = (a>b) ? a-b : b-a;
+  m = (a<b) ? a : b;
+  thresh = (floor > frac*m) ? floor : frac*m;
+  print (d > thresh) ? "WILD" : "OK";
+}')"
+
+# ---- run ffmpeg ----------------------------------------------------------
+#
+# NB: amerge has no "duration=longest" knob (unlike amix) -- verified via
+# `ffmpeg -h filter=amerge` and empirically by this tool's own self-test: it
+# truncates to whichever delayed input ends soonest, silently dropping the
+# tail of the other track. So both delayed streams are explicitly apad'd up
+# to the shared target length BEFORE either amerge or amix sees them.
+
+TARGET_DUR="$(awk -v d0="$DUR_0" -v dl0="$DELAY_0" -v d1="$DUR_1" -v dl1="$DELAY_1" 'BEGIN{
+  e0 = d0 + dl0/1000.0;
+  e1 = d1 + dl1/1000.0;
+  printf "%.3f", (e0>e1)?e0:e1;
+}')"
+
+FILTER="[0:a]aformat=sample_fmts=fltp:sample_rates=${SAMPLE_RATE}:channel_layouts=mono,adelay=delays=${DELAY_0}:all=1,apad=whole_dur=${TARGET_DUR},asplit=2[dA1][dA2];[1:a]aformat=sample_fmts=fltp:sample_rates=${SAMPLE_RATE}:channel_layouts=mono,adelay=delays=${DELAY_1}:all=1,apad=whole_dur=${TARGET_DUR},asplit=2[dB1][dB2];[dA1][dB1]amerge=inputs=2[stereo];[dA2][dB2]amix=inputs=2:duration=longest:normalize=1[mono]"
+
+TMP_ERR="$(mktemp "${TMPDIR:-/tmp}/merge_call_audio.XXXXXX")"
+trap 'rm -f "$TMP_ERR"' EXIT
+
+if ! "$FFMPEG_BIN" -nostdin -y -loglevel error \
+      -i "$FILE_0" -i "$FILE_1" \
+      -filter_complex "$FILTER" \
+      -map "[stereo]" -ac 2 -c:a pcm_s16le "$OUT_STEREO" \
+      -map "[mono]" -ac 1 -c:a pcm_s16le "$OUT_MONO" \
+      2>"$TMP_ERR"; then
+  printf 'ERROR: ffmpeg failed while merging audio. ffmpeg stderr:\n' >&2
+  cat "$TMP_ERR" >&2
+  exit 3
+fi
+
+[ -s "$OUT_STEREO" ] || die "ffmpeg reported success but stereo output is missing/empty: $OUT_STEREO"
+[ -s "$OUT_MONO" ] || die "ffmpeg reported success but mono output is missing/empty: $OUT_MONO"
+
+ACTUAL_STEREO_DUR="$(ffprobe_duration_s "$OUT_STEREO")"
+ACTUAL_MONO_DUR="$(ffprobe_duration_s "$OUT_MONO")"
+
+EXPECTED_DUR="$TARGET_DUR"
+
+OUTPUT_CHECK="ok"
+for actual in "$ACTUAL_STEREO_DUR" "$ACTUAL_MONO_DUR"; do
+  ok="$(awk -v e="$EXPECTED_DUR" -v a="$actual" -v tol="$OUTPUT_CHECK_TOLERANCE_S" 'BEGIN{
+    d = (e>a) ? e-a : a-e;
+    print (d <= tol) ? "1" : "0";
+  }')"
+  [ "$ok" = "1" ] || OUTPUT_CHECK="WARN"
+done
+
+# ---- report ---------------------------------------------------------------
+
+info "=== $SELF ==="
+info "manifest: $MANIFEST"
+info "METHOD=$METHOD"
+for i in 0 1; do
+  eval "lbl=\$LABEL_$i"; eval "snd=\$SENDER_$i"; eval "file=\$FILE_$i"
+  eval "start=\$START_$i"; eval "delay=\$DELAY_$i"; eval "dur=\$DUR_$i"
+  if [ "$METHOD" = "timestamp" ]; then
+    info "HALF label=$lbl sender=$snd file=$file file_start_sfu_ms=$start delay_ms=$delay duration_s=$dur"
+  else
+    eval "clap=\$CLAP_$i"
+    info "HALF label=$lbl sender=$snd file=$file clap_ms=$clap delay_ms=$delay duration_s=$dur"
+  fi
+done
+
+if [ "$DRIFT_STATUS" = "WILD" ]; then
+  warn "source durations differ a lot (half[0]=${DUR_0}s half[1]=${DUR_1}s) -- possible drift, a dropped/rejoined recorder, or mismatched files."
+else
+  info "duration_check: ok (half[0]=${DUR_0}s half[1]=${DUR_1}s)"
+fi
+
+if [ "$OUTPUT_CHECK" = "WARN" ]; then
+  warn "output duration (stereo=${ACTUAL_STEREO_DUR}s mono=${ACTUAL_MONO_DUR}s) differs from the expected ${EXPECTED_DUR}s by more than ${OUTPUT_CHECK_TOLERANCE_S}s -- inspect the ffmpeg graph before trusting this merge."
+else
+  info "output_check: ok (expected=${EXPECTED_DUR}s stereo=${ACTUAL_STEREO_DUR}s mono=${ACTUAL_MONO_DUR}s)"
+fi
+
+info "STEREO_OUT=$OUT_STEREO (L=$LABEL_0 R=$LABEL_1)"
+info "MONO_OUT=$OUT_MONO"
+info "DONE"

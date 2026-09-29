@@ -2080,7 +2080,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-09-28 15:15:59.140388",
+    "@@last_modified": "2026-09-28 16:36:12.747331",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10822,6 +10822,12 @@
     "summaryFeedbackReceived": "Salamat! Natanggap namin ang iyong feedback.",
     "summaryFeedbackFailed": "Hindi maipadala ang iyong feedback. Pakisubukang muli.",
     "summaryFeedbackProcessing": "Ipinapadala ang iyong feedback at ina-update ang buod…",
+    "callTranscriptTranscribing": "Isinasalin pa rin ang recording mula kay {name}...",
+    "callTranscriptSeekTo": "I-play mula {time}",
+    "callTranscriptRecordings": "Mga Recording",
+    "callTranscriptFullCall": "Buong tawag",
+    "callTranscriptPreparingRecording": "Inihahanda ang buong recording...",
+    "callTranscriptNoRecording": "Walang recording ng buong tawag.",
     "callTranscriptNotSubscribed": "Walang subscription si {name} noong tawag na ito, kaya hindi na-transcribe ang sinabi.",
     "joinYourCourse": "Sumali sa iyong kurso",
     "courseCodeJoinExplanation": "Mag-log in o mag-sign up, at gagamitin namin ang iyong course code para awtomatiko kang maidagdag sa iyong kurso.",

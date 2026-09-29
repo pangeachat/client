@@ -58,6 +58,31 @@ typedef TranscriptPublisher =
       String? langCode,
     });
 
+/// Publishes this device's call-audio half, if it recorded one. See
+/// `call_audio_recorder.dart`'s `CallAudioRecorder.finish`, which is what a
+/// real caller wires this to.
+///
+/// Unlike [TranscriptPublisher], this carries no recording of its own to
+/// hand over -- [callKey] is the only fact [CallRecord] itself has that the
+/// recorder could not already have latched. Whether anything is actually
+/// uploaded or sent is entirely the wired closure's decision: [CallRecord]
+/// calls this UNCONDITIONALLY, on the same terms it calls
+/// [publishTranscript], and trusts the closure to gate on the carrier fact
+/// (`CallAudioRecorder.finish`'s `wasCarrier`) itself. See [_publishCallAudio]
+/// for why the gate cannot live here instead.
+typedef CallAudioPublisher = Future<void> Function({required String? callKey});
+
+/// Supplies this device's whole-recording transcript segments when the
+/// recording-based transcript feature is wired up. See
+/// `CallAudioRecorder.recordingSegments`, which a real caller wires this to;
+/// the wiring is gated on `Environment.callRecordingTranscript`, so a null
+/// source here IS the feature being off. Read after [CallAudioPublisher] has
+/// run (publishing the audio half is what fills the recorder's field) and
+/// preferred over the live-chunk segments only when it returns a NON-EMPTY
+/// list -- an empty list means this device has no usable recording-based half,
+/// and its live one stands.
+typedef RecordingTranscriptSource = List<TranscriptSegment> Function();
+
 class CallRecord {
   final CallEventSender sendEvent;
 
@@ -67,6 +92,19 @@ class CallRecord {
   /// unchanged, and so a deployment can leave transcripts unpublished without
   /// touching this class.
   final TranscriptPublisher? publishTranscript;
+
+  /// Publishes this device's call-audio half, if the feature is wired up.
+  /// Optional for the same reason [publishTranscript] is: every existing
+  /// construction of a record keeps working unchanged, and a deployment can
+  /// leave the recording unpublished without touching this class.
+  final CallAudioPublisher? publishCallAudio;
+
+  /// Supplies this device's recording-based transcript segments when that
+  /// feature is wired up; null when it is off. See [RecordingTranscriptSource].
+  /// Optional for the same reason [publishTranscript] is: every existing
+  /// construction of a record keeps working unchanged, and with it null the
+  /// class behaves exactly as it did before the feature existed.
+  final RecordingTranscriptSource? recordingSegments;
   final CallAnalyticsSink analytics;
   final CallTranscriptSink transcripts;
   final String roomId;
@@ -102,6 +140,8 @@ class CallRecord {
     required this.transcripts,
     required this.roomId,
     this.publishTranscript,
+    this.publishCallAudio,
+    this.recordingSegments,
   });
 
   /// Writes the call and records what was said.
@@ -253,16 +293,34 @@ class CallRecord {
     // Nothing at all, then: not the half below, not the credit, not the card
     // the retry path would otherwise write.
     if (!mattered) return;
-    // Ahead of every guard below, because none of them are about the
-    // transcript. Publishing lives outside the credit's control flow entirely:
-    // it needs only the anchor, and it is a separate promise to the learner.
+    // Both publishes sit ahead of every guard below, because none of them are
+    // about the transcript or the recording. Publishing lives outside the
+    // credit's control flow entirely: it needs only the anchor, and it is a
+    // separate promise to the learner.
     //
-    // Both couplings were real. Inside _finish it sat after the card's event id
-    // was resolved, so a card that failed to write ALSO cost the transcript --
-    // though publishing never needed the card. And behind the _credited check
-    // it was unreachable whenever an earlier finish had credited without a
-    // call key, which is exactly the sequence the ordinary lifecycle produces.
-    await _publishTranscript(callKey, captureRefused);
+    // Both couplings were real. Inside _finish the transcript sat after the
+    // card's event id was resolved, so a card that failed to write ALSO cost
+    // the transcript -- though publishing never needed the card. And behind the
+    // _credited check it was unreachable whenever an earlier finish had
+    // credited without a call key, which is exactly the sequence the ordinary
+    // lifecycle produces. The audio half runs on the same unconditional terms:
+    // whether or not this device ever carried the recording, and whether or not
+    // the call even connected. See [_publishCallAudio] for why the gate belongs
+    // in the wired closure and not here.
+    //
+    // Order between the two turns ONLY on the recording-based transcript. When
+    // it is wired, the audio half publishes FIRST: doing so runs
+    // `CallAudioRecorder.finish`, which is what fills [recordingSegments], so
+    // `_publishTranscript` can then read and prefer it. When it is off
+    // ([recordingSegments] null) the original transcript-first order stands and
+    // today's behavior is byte-for-byte unchanged.
+    if (recordingSegments != null) {
+      await _publishCallAudio(callKey);
+      await _publishTranscript(callKey, captureRefused);
+    } else {
+      await _publishTranscript(callKey, captureRefused);
+      await _publishCallAudio(callKey);
+    }
 
     if (_credited) return;
     // Concurrent callers join the in-flight attempt rather than being dropped.
@@ -468,7 +526,15 @@ class CallRecord {
     // retry must resend the same half rather than whatever the sink reports
     // later -- the deterministic transaction id only collapses a resend if the
     // resend is actually the same event.
-    final segments = transcripts.segments;
+    //
+    // The recording-based segments when this device produced them, else the
+    // live 45-second chunks. An empty source -- feature off, no recording, or a
+    // failed transcription -- means this device has no recording-based half and
+    // its live one stands, which is the per-half fault tolerance the design
+    // rests on. Only the SEGMENTS switch source; the capture accounting below
+    // still reports the live chunk path's health, unchanged.
+    final recorded = recordingSegments?.call() ?? const <TranscriptSegment>[];
+    final segments = recorded.isNotEmpty ? recorded : transcripts.segments;
     final chunksCaptured = transcripts.chunksCaptured;
     final chunksTranscribed = transcripts.chunksTranscribed;
     final chunksLost = transcripts.chunksLost;
@@ -577,6 +643,35 @@ class CallRecord {
       'call_record.transcript_not_published';
 
   bool _published = false;
+
+  /// Calls [publishCallAudio], swallowing any failure.
+  ///
+  /// Unconditional, on the same terms [_publishTranscript] is called
+  /// unconditionally above it: this runs on EVERY device's `finish()`,
+  /// including one that never carried the recording at all, and including
+  /// one for a call that never connected. `finish()` is reached this way
+  /// from `CallSession`'s teardown regardless -- see
+  /// `CallCaptureService.wasCarryingBeforeLastStop`'s own docs for why that
+  /// is unavoidable rather than a bug this class could fix by checking
+  /// something first.
+  ///
+  /// The gate belongs in the wired closure, never here, because ONLY the
+  /// closure -- `CallAudioRecorder.finish` -- can answer "was this device
+  /// carrying" at the one moment that answer is trustworthy, and can go on
+  /// re-checking it through an upload still in flight. A gate written here
+  /// instead would have to trust a snapshot taken earlier and handed in,
+  /// which is exactly the gap the recording feature's own design docs warn
+  /// against inheriting from this method's identical-looking transcript
+  /// sibling.
+  Future<void> _publishCallAudio(String? callKey) async {
+    final publish = publishCallAudio;
+    if (publish == null) return;
+    try {
+      await publish(callKey: callKey);
+    } catch (e, s) {
+      Logs().w('Publishing the call audio half failed', e, s);
+    }
+  }
 
   /// How long a call in the timeline lasted, read from its content.
   ///

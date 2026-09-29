@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-09-28 15:15:58.767777",
+    "@@last_modified": "2026-09-28 16:36:11.172133",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9959,6 +9959,12 @@
     "summaryFeedbackReceived": "Aitäh! Saime teie tagasiside kätte.",
     "summaryFeedbackFailed": "Tagasisidet ei saanud saata. Palun proovige uuesti.",
     "summaryFeedbackProcessing": "Teie tagasiside saatmine ja kokkuvõtte värskendamine…",
+    "callTranscriptTranscribing": "Salvestise transkribeerimine kasutajalt {name} veel käib…",
+    "callTranscriptSeekTo": "Mängi alates {time}",
+    "callTranscriptRecordings": "Salvestised",
+    "callTranscriptFullCall": "Kogu kõne",
+    "callTranscriptPreparingRecording": "Kogu salvestise ettevalmistamine…",
+    "callTranscriptNoRecording": "Kogu kõnest puudub salvestis.",
     "callTranscriptNotSubscribed": "{name} ei olnud selle kõne ajal tellimust, seega öeldut ei transkribeeritud.",
     "joinYourCourse": "Liitu oma kursusega",
     "courseCodeJoinExplanation": "Logi sisse või registreeru ja me kasutame sinu kursuse koodi, et sind automaatselt kursusele lisada.",

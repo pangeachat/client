@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-09-28 15:16:08.825288",
+    "@@last_modified": "2026-09-28 16:36:20.820185",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9962,6 +9962,12 @@
     "summaryFeedbackReceived": "感谢！我们已收到您的反馈。",
     "summaryFeedbackFailed": "无法发送您的反馈。请再试一次。",
     "summaryFeedbackProcessing": "正在发送您的反馈并更新摘要…",
+    "callTranscriptTranscribing": "正在转录 {name} 的录音…",
+    "callTranscriptSeekTo": "从 {time} 开始播放",
+    "callTranscriptRecordings": "录音",
+    "callTranscriptFullCall": "完整通话",
+    "callTranscriptPreparingRecording": "正在准备完整录音…",
+    "callTranscriptNoRecording": "没有完整通话的录音。",
     "callTranscriptNotSubscribed": "{name} 在通话期间没有订阅，因此通话内容未被转录。",
     "joinYourCourse": "加入您的课程",
     "courseCodeJoinExplanation": "登录或注册后，我们将使用您的课程代码自动将您添加到课程中。",

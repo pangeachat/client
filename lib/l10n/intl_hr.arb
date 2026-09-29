@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-09-28 15:16:00.245861",
+    "@@last_modified": "2026-09-28 16:36:12.753743",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10398,6 +10398,12 @@
     "summaryFeedbackReceived": "Hvala! Primili smo vaše povratne informacije.",
     "summaryFeedbackFailed": "Slanje povratnih informacija nije uspjelo. Pokušajte ponovno.",
     "summaryFeedbackProcessing": "Šaljem vaše povratne informacije i ažuriram sažetak…",
+    "callTranscriptTranscribing": "Snimka od {name} se još uvijek transkribira…",
+    "callTranscriptSeekTo": "Reproduciraj od {time}",
+    "callTranscriptRecordings": "Snimke",
+    "callTranscriptFullCall": "Cijeli poziv",
+    "callTranscriptPreparingRecording": "Priprema se cijela snimka…",
+    "callTranscriptNoRecording": "Nema snimke cijelog poziva.",
     "callTranscriptNotSubscribed": "{name} nije imao pretplatu tijekom ovog poziva, tako da izgovoreno nije transkribirano.",
     "joinYourCourse": "Pridružite se svom tečaju",
     "courseCodeJoinExplanation": "Prijavite se ili registrirajte, a mi ćemo upotrijebiti vaš kod tečaja kako bismo vas automatski dodali na vaš tečaj.",

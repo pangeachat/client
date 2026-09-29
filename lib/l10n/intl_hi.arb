@@ -3093,7 +3093,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-09-28 15:15:59.929835",
+    "@@last_modified": "2026-09-28 16:36:12.315374",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10594,6 +10594,12 @@
     "summaryFeedbackReceived": "धन्यवाद! हमें आपकी प्रतिक्रिया मिल गई है।",
     "summaryFeedbackFailed": "आपकी प्रतिक्रिया नहीं भेजी जा सकी। कृपया फिर से प्रयास करें।",
     "summaryFeedbackProcessing": "आपकी प्रतिक्रिया भेजी जा रही है और सारांश अपडेट किया जा रहा है…",
+    "callTranscriptTranscribing": "{name} से रिकॉर्डिंग अभी भी ट्रांसक्राइब की जा रही है…",
+    "callTranscriptSeekTo": "{time} से चलाएँ",
+    "callTranscriptRecordings": "रिकॉर्डिंग",
+    "callTranscriptFullCall": "पूरी कॉल",
+    "callTranscriptPreparingRecording": "पूरी रिकॉर्डिंग तैयार की जा रही है…",
+    "callTranscriptNoRecording": "पूरी कॉल की कोई रिकॉर्डिंग नहीं है।",
     "callTranscriptNotSubscribed": "{name} के पास इस कॉल के दौरान सदस्यता नहीं थी, इसलिए जो कहा गया उसे ट्रांसक्रिप्ट नहीं किया गया।",
     "joinYourCourse": "अपने कोर्स में शामिल हों",
     "courseCodeJoinExplanation": "लॉग इन करें या साइन अप करें, और हम आपको आपके कोर्स में स्वचालित रूप से जोड़ने के लिए आपके कोर्स कोड का उपयोग करेंगे।",

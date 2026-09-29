@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-09-28 15:16:05.869429",
+    "@@last_modified": "2026-09-28 16:36:18.139801",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10934,6 +10934,12 @@
     "summaryFeedbackReceived": "Спасибо! Мы получили ваш отзыв.",
     "summaryFeedbackFailed": "Не удалось отправить ваш отзыв. Пожалуйста, попробуйте еще раз.",
     "summaryFeedbackProcessing": "Отправляем ваш отзыв и обновляем сводку…",
+    "callTranscriptTranscribing": "Все еще расшифровывается запись от {name}…",
+    "callTranscriptSeekTo": "Воспроизвести с {time}",
+    "callTranscriptRecordings": "Записи",
+    "callTranscriptFullCall": "Весь звонок",
+    "callTranscriptPreparingRecording": "Подготовка полной записи…",
+    "callTranscriptNoRecording": "Нет записи всего звонка.",
     "callTranscriptNotSubscribed": "У {name} не было подписки во время этого звонка, поэтому сказанное не было расшифровано.",
     "joinYourCourse": "Присоединиться к курсу",
     "courseCodeJoinExplanation": "Войдите или зарегистрируйтесь, и мы автоматически добавим вас к вашему курсу, используя ваш код курса.",

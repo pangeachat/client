@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-28 15:16:05.914016",
+    "@@last_modified": "2026-09-28 16:36:19.117798",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10694,6 +10694,12 @@
     "summaryFeedbackReceived": "Mulțumim! Am primit feedback-ul tău.",
     "summaryFeedbackFailed": "Nu s-a putut trimite feedback-ul tău. Te rugăm să încerci din nou.",
     "summaryFeedbackProcessing": "Se trimite feedbackul și se actualizează rezumatul…",
+    "callTranscriptTranscribing": "Încă se transcrie înregistrarea de la {name}…",
+    "callTranscriptSeekTo": "Redă de la {time}",
+    "callTranscriptRecordings": "Înregistrări",
+    "callTranscriptFullCall": "Apel complet",
+    "callTranscriptPreparingRecording": "Se pregătește înregistrarea completă…",
+    "callTranscriptNoRecording": "Nu există nicio înregistrare a apelului complet.",
     "callTranscriptNotSubscribed": "{name} nu a avut un abonament în timpul acestui apel, așa că ceea ce s-a spus nu a fost transcris.",
     "joinYourCourse": "Alătură-te cursului tău",
     "courseCodeJoinExplanation": "Conectează-te sau înregistrează-te, iar noi vom folosi codul tău de curs pentru a te adăuga automat la cursul tău.",

@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-09-28 15:16:05.131972",
+    "@@last_modified": "2026-09-28 16:36:17.639134",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10047,6 +10047,12 @@
     "summaryFeedbackReceived": "Dziękujemy! Otrzymaliśmy Twoją opinię.",
     "summaryFeedbackFailed": "Nie udało się wysłać Twojej opinii. Spróbuj ponownie.",
     "summaryFeedbackProcessing": "Wysyłanie opinii i aktualizowanie podsumowania…",
+    "callTranscriptTranscribing": "Nadal transkrybuję nagranie od {name}…",
+    "callTranscriptSeekTo": "Odtwórz od {time}",
+    "callTranscriptRecordings": "Nagrania",
+    "callTranscriptFullCall": "Cała rozmowa",
+    "callTranscriptPreparingRecording": "Przygotowuję pełne nagranie…",
+    "callTranscriptNoRecording": "Brak nagrania całej rozmowy.",
     "callTranscriptNotSubscribed": "Użytkownik {name} nie miał subskrypcji podczas tej rozmowy, więc to, co zostało powiedziane, nie zostało przepisane.",
     "joinYourCourse": "Dołącz do kursu",
     "courseCodeJoinExplanation": "Zaloguj się lub zarejestruj, a my użyjemy Twojego kodu kursu, aby automatycznie dodać Cię do kursu.",

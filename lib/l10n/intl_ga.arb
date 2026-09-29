@@ -3563,7 +3563,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-09-28 15:15:59.717496",
+    "@@last_modified": "2026-09-28 16:36:11.721690",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9973,6 +9973,12 @@
     "summaryFeedbackReceived": "Go raibh maith agat! Fuaireamar d'aiseolas.",
     "summaryFeedbackFailed": "Níorbh fhéidir d'aiseolas a sheoladh. Bain triail eile as, le do thoil.",
     "summaryFeedbackProcessing": "Ag seoladh d’aiseolais agus ag nuashonrú an achoimre…",
+    "callTranscriptTranscribing": "Fós ag trascríobh an taifeadta ó {name}…",
+    "callTranscriptSeekTo": "Seinn ó {time}",
+    "callTranscriptRecordings": "Taifeadtaí",
+    "callTranscriptFullCall": "Glao iomlán",
+    "callTranscriptPreparingRecording": "Ag ullmhú an taifeadta iomláin…",
+    "callTranscriptNoRecording": "Níl aon taifeadadh den ghlao iomlán.",
     "callTranscriptNotSubscribed": "Ní raibh síntiús ag {name} le linn an ghlao seo, mar sin níor tras-scríobhadh an méid a dúradh.",
     "joinYourCourse": "Bí páirteach i do chúrsa",
     "courseCodeJoinExplanation": "Logáil isteach nó cláraigh, agus úsáidfimid do chód cúrsa chun tú a chur le do chúrsa go huathoibríoch.",

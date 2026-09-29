@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-09-28 15:15:58.145548",
+    "@@last_modified": "2026-09-28 16:36:10.486636",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9949,6 +9949,12 @@
     "summaryFeedbackReceived": "Danke! Wir haben Ihr Feedback erhalten.",
     "summaryFeedbackFailed": "Ihr Feedback konnte nicht gesendet werden. Bitte versuchen Sie es erneut.",
     "summaryFeedbackProcessing": "Ihr Feedback wird gesendet und die Zusammenfassung aktualisiert…",
+    "callTranscriptTranscribing": "Die Aufnahme von {name} wird noch transkribiert…",
+    "callTranscriptSeekTo": "Ab {time} abspielen",
+    "callTranscriptRecordings": "Aufnahmen",
+    "callTranscriptFullCall": "Ganzer Anruf",
+    "callTranscriptPreparingRecording": "Die vollständige Aufnahme wird vorbereitet…",
+    "callTranscriptNoRecording": "Keine Aufnahme des gesamten Anrufs vorhanden.",
     "callTranscriptNotSubscribed": "{name} hatte während dieses Anrufs kein Abonnement, daher wurde das Gesagte nicht transkribiert.",
     "joinYourCourse": "Treten Sie Ihrem Kurs bei",
     "courseCodeJoinExplanation": "Melden Sie sich an oder registrieren Sie sich, und wir verwenden Ihren Kurscode, um Sie automatisch zu Ihrem Kurs hinzuzufügen.",

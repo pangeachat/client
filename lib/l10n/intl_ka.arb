@@ -1937,7 +1937,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-09-28 15:16:02.314450",
+    "@@last_modified": "2026-09-28 16:36:14.373602",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10862,6 +10862,12 @@
     "summaryFeedbackReceived": "გმადლობთ! თქვენი გამოხმაურება მიღებულია.",
     "summaryFeedbackFailed": "თქვენი გამოხმაურების გაგზავნა ვერ მოხერხდა. გთხოვთ, სცადოთ ხელახლა.",
     "summaryFeedbackProcessing": "თქვენი გამოხმაურების გაგზავნა და შეჯამების განახლება…",
+    "callTranscriptTranscribing": "ჩანაწერი {name}-დან ჯერ კიდევ ტრანსკრიბირდება…",
+    "callTranscriptSeekTo": "დაკვრა {time}-დან",
+    "callTranscriptRecordings": "ჩანაწერები",
+    "callTranscriptFullCall": "მთლიანი ზარი",
+    "callTranscriptPreparingRecording": "მთლიანი ჩანაწერის მომზადება…",
+    "callTranscriptNoRecording": "მთლიანი ზარის ჩანაწერი არ არის.",
     "callTranscriptNotSubscribed": "{name}-ს ამ ზარის განმავლობაში არ ჰქონდა გამოწერა, ამიტომ ნათქვამი არ ჩაიწერა.",
     "joinYourCourse": "შეუერთდი შენს კურსს",
     "courseCodeJoinExplanation": "შედი ან დარეგისტრირდი და ჩვენ გამოვიყენებთ შენს კურსის კოდს, რათა ავტომატურად დაგამატოთ კურსზე.",

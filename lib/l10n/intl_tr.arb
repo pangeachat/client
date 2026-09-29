@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-09-28 15:16:08.001466",
+    "@@last_modified": "2026-09-28 16:36:21.589110",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10263,6 +10263,12 @@
     "summaryFeedbackReceived": "Teşekkürler! Geri bildiriminiz alındı.",
     "summaryFeedbackFailed": "Geri bildiriminiz gönderilemedi. Lütfen tekrar deneyin.",
     "summaryFeedbackProcessing": "Geri bildiriminiz gönderiliyor ve özet güncelleniyor…",
+    "callTranscriptTranscribing": "{name} adlı kullanıcının kaydı hala yazıya dökülüyor…",
+    "callTranscriptSeekTo": "{time} konumundan oynat",
+    "callTranscriptRecordings": "Kayıtlar",
+    "callTranscriptFullCall": "Tüm arama",
+    "callTranscriptPreparingRecording": "Tüm kayıt hazırlanıyor…",
+    "callTranscriptNoRecording": "Tüm aramanın kaydı yok.",
     "callTranscriptNotSubscribed": "{name} bu arama sırasında bir aboneliğe sahip değildi, bu nedenle konuşulanlar yazıya dökülmedi.",
     "joinYourCourse": "Kursunuza katılın",
     "courseCodeJoinExplanation": "Giriş yapın veya kaydolun, kurs kodunuzu kullanarak sizi otomatik olarak kursunuza ekleyeceğiz.",

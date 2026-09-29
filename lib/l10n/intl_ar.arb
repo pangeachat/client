@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-09-28 15:15:57.139192",
+    "@@last_modified": "2026-09-28 16:36:09.558081",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10268,6 +10268,12 @@
     "summaryFeedbackReceived": "شكرًا! لقد تلقينا ملاحظاتك.",
     "summaryFeedbackFailed": "تعذر إرسال ملاحظاتك. يرجى المحاولة مرة أخرى.",
     "summaryFeedbackProcessing": "جارٍ إرسال ملاحظاتك وتحديث الملخص…",
+    "callTranscriptTranscribing": "ما زلنا نُفرّغ التسجيل من {name}...",
+    "callTranscriptSeekTo": "تشغيل من {time}",
+    "callTranscriptRecordings": "التسجيلات",
+    "callTranscriptFullCall": "المكالمة كاملة",
+    "callTranscriptPreparingRecording": "جارٍ إعداد التسجيل الكامل...",
+    "callTranscriptNoRecording": "لا يوجد تسجيل للمكالمة كاملة.",
     "callTranscriptNotSubscribed": "لم يكن لدى {name} اشتراك خلال هذه المكالمة، لذلك لم يتم نسخ ما قيل.",
     "joinYourCourse": "انضم إلى دورتك التدريبية",
     "courseCodeJoinExplanation": "سجّل الدخول أو أنشئ حسابًا، وسنستخدم رمز دورتك التدريبية لإضافتك إلى دورتك تلقائيًا.",

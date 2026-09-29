@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-09-28 15:15:59.234740",
+    "@@last_modified": "2026-09-28 16:36:11.553944",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9962,6 +9962,12 @@
     "summaryFeedbackReceived": "Eskerrik asko! Zure iritzia jaso dugu.",
     "summaryFeedbackFailed": "Ezin izan da zure iritzia bidali. Saiatu berriro, mesedez.",
     "summaryFeedbackProcessing": "Zure iritzia bidaltzen eta laburpena eguneratzen…",
+    "callTranscriptTranscribing": "{name} grabazioa transkribatzen ari da oraindik…",
+    "callTranscriptSeekTo": "Erreproduzitu {time}tik aurrera",
+    "callTranscriptRecordings": "Grabazioak",
+    "callTranscriptFullCall": "Dei osoa",
+    "callTranscriptPreparingRecording": "Grabazio osoa prestatzen…",
+    "callTranscriptNoRecording": "Dei osoaren grabaziorik ez.",
     "callTranscriptNotSubscribed": "{name} erabiltzaileak ez zuen harpidetzarik dei honetan, beraz, esandakoa ez zen transkribatu.",
     "joinYourCourse": "Sartu zure ikastaroan",
     "courseCodeJoinExplanation": "Hasi saioa edo eman izena, eta zure ikastaro-kodea erabiliko dugu automatikoki zure ikastarora gehitzeko.",

@@ -144,6 +144,9 @@ Future<CallTranscript> fetchCallTranscript({
           // two halves' timestamps come from two homeservers. The anchor is
           // the writing device's own measurement against the SFU.
           clockAnchor: content.clockAnchor,
+          // Carried like the anchor above, so the view can tokenize the words
+          // in the language this half was transcribed in.
+          langCode: content.langCode,
           positionsMarked: content.positionsMarked,
           // What this device says it holds, and what it says it handed over.
           // Carried through untouched, like the anchor above: assembly is the
