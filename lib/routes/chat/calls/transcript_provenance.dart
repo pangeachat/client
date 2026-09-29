@@ -43,10 +43,19 @@ class FetchedAudioEvent {
   /// (a different type, or redacted so its content is gone).
   final CallAudioContent? content;
 
+  /// When the event landed on the server. The reader does not use it (it only
+  /// checks who uploaded what); it is here so the whole-call transcriber's
+  /// discovery can build a [CallAudioRecording] from the SAME resolution it
+  /// validated a source with, rather than fetching the event a second time.
+  /// Optional and null when a caller did not supply it — a real fetch always
+  /// does (see [audioEventFetcherFor]).
+  final DateTime? originServerTs;
+
   const FetchedAudioEvent({
     required this.senderId,
     this.redacted = false,
     this.content,
+    this.originServerTs,
   });
 }
 
@@ -96,6 +105,7 @@ AudioEventFetcher audioEventFetcherFor(Room room) =>
         senderId: event.senderId,
         redacted: redacted,
         content: content,
+        originServerTs: event.originServerTs,
       );
     };
 
@@ -130,18 +140,33 @@ class AudioResolution {
   /// The parsed content, when [kind] is [AudioResolutionKind.resolved].
   final CallAudioContent? content;
 
-  const AudioResolution._(this.kind, {this.senderId, this.content});
+  /// When the resolved source event landed, when [kind] is
+  /// [AudioResolutionKind.resolved] and the fetch supplied it. Carried so the
+  /// producer's discovery can build a [CallAudioRecording] from THIS resolution
+  /// rather than a second fetch; the reader ignores it.
+  final DateTime? originServerTs;
+
+  const AudioResolution._(
+    this.kind, {
+    this.senderId,
+    this.content,
+    this.originServerTs,
+  });
 
   const AudioResolution.pending() : this._(AudioResolutionKind.pending);
   const AudioResolution.gone() : this._(AudioResolutionKind.gone);
   const AudioResolution.notCallAudio()
     : this._(AudioResolutionKind.notCallAudio);
-  AudioResolution.resolved(String senderId, CallAudioContent content)
-    : this._(
-        AudioResolutionKind.resolved,
-        senderId: senderId,
-        content: content,
-      );
+  AudioResolution.resolved(
+    String senderId,
+    CallAudioContent content, [
+    DateTime? originServerTs,
+  ]) : this._(
+         AudioResolutionKind.resolved,
+         senderId: senderId,
+         content: content,
+         originServerTs: originServerTs,
+       );
 
   /// Whether this resolution is a real per-device recording by a participant
   /// for this call — the unit a manifest's VALIDATED coverage is counted in.
@@ -187,7 +212,11 @@ Future<AudioResolution> _resolveOnce(
     if (event == null || event.redacted) return const AudioResolution.gone();
     final content = event.content;
     if (content == null) return const AudioResolution.notCallAudio();
-    return AudioResolution.resolved(event.senderId, content);
+    return AudioResolution.resolved(
+      event.senderId,
+      content,
+      event.originServerTs,
+    );
   } catch (_) {
     // The fetch itself failed. TRANSIENT: held pending, resolves on a later
     // rebuild, and -- the point of catching rather than rethrowing -- never

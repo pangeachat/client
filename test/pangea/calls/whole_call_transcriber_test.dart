@@ -582,7 +582,14 @@ void main() {
   // uses (proven at the unit level in transcript_provenance_test.dart); these
   // cover the producer's use of it and its transient handling.
   group('discoverWholeCallManifest', () {
-    CallAudioContent contentFor(String device) => _content(deviceId: device);
+    // A validated resolution carries senderId + content + originServerTs, so a
+    // recording is built from it directly -- no second fetch.
+    AudioResolution validated(String device, [int ts = 1000]) =>
+        AudioResolution.resolved(
+          _peer,
+          _content(deviceId: device),
+          DateTime.fromMillisecondsSinceEpoch(ts),
+        );
 
     test(
       'selects the reader-order winner on a coverage tie, not list order',
@@ -605,17 +612,39 @@ void main() {
           participants: const {_self, _peer},
           callKey: _callKey,
           resolve: _fakeResolver({
-            '\$srcLate': AudioResolution.resolved(_peer, contentFor('devLate')),
-            '\$srcEarly': AudioResolution.resolved(
-              _peer,
-              contentFor('devEarly'),
-            ),
+            '\$srcLate': validated('devLate'),
+            '\$srcEarly': validated('devEarly'),
           }),
-          recordingFor: (id) async =>
-              _rec(eventId: id, content: contentFor('dev_$id')),
         );
         expect(manifest.resolved, isTrue);
         expect(manifest.recordings.single.eventId, '\$srcEarly');
+      },
+    );
+
+    test(
+      'every source the selection validated is present in the recordings',
+      () async {
+        // Recordings are built from the SAME memoized resolutions that validated
+        // the sources, so a manifest whose two sources both validate yields BOTH.
+        // Mutation proof: building via a second, separately-failing fetch (the
+        // old design) could return null for a validated source and drop it here
+        // while `resolved` stayed true -- this asserts both are present.
+        final manifest = await discoverWholeCallManifest(
+          mergedRecordings: [
+            _manifest(eventId: '\$m1', sourceEventIds: ['\$srcA', '\$srcB']),
+          ],
+          participants: const {_self, _peer},
+          callKey: _callKey,
+          resolve: _fakeResolver({
+            '\$srcA': validated('devA'),
+            '\$srcB': validated('devB'),
+          }),
+        );
+        expect(manifest.resolved, isTrue);
+        expect(manifest.recordings.map((r) => r.eventId).toSet(), {
+          '\$srcA',
+          '\$srcB',
+        });
       },
     );
 
@@ -634,11 +663,9 @@ void main() {
           participants: const {_self, _peer},
           callKey: _callKey,
           resolve: _fakeResolver(
-            {'\$srcOk': AudioResolution.resolved(_peer, contentFor('devOk'))},
+            {'\$srcOk': validated('devOk')},
             pending: {'\$srcPending'},
           ),
-          recordingFor: (id) async =>
-              _rec(eventId: id, content: contentFor('d')),
         );
         expect(manifest.resolved, isFalse);
         expect(manifest.recordings, isEmpty);

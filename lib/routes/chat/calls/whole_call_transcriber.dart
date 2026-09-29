@@ -5,7 +5,6 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_download.dart';
-import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_repo.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_event.dart';
 import 'package:fluffychat/routes/chat/calls/recording_transcription.dart';
@@ -51,16 +50,19 @@ class WholeCallManifest {
 /// only when it is a validated unit — a participant's own recording for this call
 /// with a device.
 ///
-/// [resolve] validates coverage (memoized, bounded by distinct source ids);
-/// [recordingFor] builds the recording for a chosen source (a direct fetch, so it
-/// carries the event's real fields). Both are injected, so this is unit-tested
-/// with fakes and no homeserver.
+/// The recordings are built from the SAME memoized [resolve] result the
+/// selection validated each source with — ONE fetch per source, and no second,
+/// separately-failing fetch that could return null for a source that already
+/// validated and thereby drop a real half while `resolved` stayed true. Because
+/// selection reports `uncertain` on ANY transient during validation (returning
+/// absent here, so the retry re-runs), there is no post-selection fetch left
+/// that can transiently drop a validated source. [resolve] is injected, so this
+/// is unit-tested with a fake and no homeserver.
 Future<WholeCallManifest> discoverWholeCallManifest({
   required List<CallAudioMergedRecording> mergedRecordings,
   required Set<String> participants,
   required String callKey,
   required AudioResolver resolve,
-  required Future<CallAudioRecording?> Function(String eventId) recordingFor,
 }) async {
   final selection = await selectCallAudioManifest(
     mergedRecordings: mergedRecordings,
@@ -73,12 +75,23 @@ Future<WholeCallManifest> discoverWholeCallManifest({
 
   final recordings = <CallAudioRecording>[];
   for (final id in manifest.content.sourceEventIds.toSet()) {
-    final recording = await recordingFor(id);
-    if (recording != null &&
-        participants.contains(recording.senderId) &&
-        recording.content.callKey == callKey &&
-        recording.content.deviceId != null) {
-      recordings.add(recording);
+    final resolution = await resolve(
+      id,
+    ); // memoized: a cache hit after selection
+    // Only a validated unit becomes a backfill target -- a participant's own
+    // recording for this call with a device -- the same rule the selection
+    // counted coverage by. `isValidatedUnitFor` guarantees kind == resolved, so
+    // senderId/content are present; a resolution from the real fetcher (or the
+    // test fake) always carries originServerTs.
+    if (resolution.isValidatedUnitFor(participants, callKey)) {
+      recordings.add(
+        CallAudioRecording(
+          eventId: id,
+          senderId: resolution.senderId!,
+          originServerTs: resolution.originServerTs!,
+          content: resolution.content!,
+        ),
+      );
     }
   }
   return WholeCallManifest(resolved: true, recordings: recordings);
@@ -259,35 +272,16 @@ class WholeCallTranscriber {
         roomId: room.id,
         callKey: callKey,
       );
-      // Select the manifest through the SAME shared function the reader uses,
-      // and build recordings by direct id (real event, cap-independent). A
-      // transient throw while fetching a source becomes a null recording for
-      // that source -- skipped this pass, retried later -- never a terminal drop.
+      // Select the manifest AND build its recordings through the SAME shared
+      // function the reader's provenance uses, from ONE memoized resolver -- so
+      // there is no second fetch to double-count or to transiently drop a
+      // validated source (a transient during validation makes the selection
+      // uncertain -> absent -> the merge-arrival retry re-runs).
       return discoverWholeCallManifest(
         mergedRecordings: merged,
         participants: participants,
         callKey: callKey,
         resolve: audioResolverFor(audioFetch, room.id),
-        recordingFor: (id) async {
-          try {
-            final event = await room.getEventById(id);
-            if (event == null ||
-                event.redacted ||
-                event.type != CallAudioContent.relType) {
-              return null;
-            }
-            final content = CallAudioContent.fromJson(event.content);
-            if (content == null) return null;
-            return CallAudioRecording(
-              eventId: event.eventId,
-              senderId: event.senderId,
-              originServerTs: event.originServerTs,
-              content: content,
-            );
-          } catch (_) {
-            return null;
-          }
-        },
       );
     }
 
