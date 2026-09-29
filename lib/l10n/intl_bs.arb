@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-09-28 16:36:09.611343",
+    "@@last_modified": "2026-09-29 11:11:23.054152",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2381,5 +2381,7 @@
     "courseCodeJoinExplanation": "Prijavite se ili registrujte, a mi ćemo koristiti vaš kod kursa da vas automatski dodamo na vaš kurs.",
     "courseCodeLabel": "Kod kursa",
     "courseCodeSaved": "Kod kursa {code} sačuvan",
-    "courseCodeSavedExplanation": "Registrujte se ili prijavite i mi ćemo vas dodati na vaš kurs."
+    "courseCodeSavedExplanation": "Registrujte se ili prijavite i mi ćemo vas dodati na vaš kurs.",
+    "moderationRefusedContactDetails": "Vaša poruka nije poslana. Automatski filter je pronašao detalje za kontakt, poput broja telefona. Uklonite ih i pokušajte ponovo.",
+    "moderationRefusedProfanity": "Vaša poruka nije poslana. Automatski filter je pronašao riječ koju ne dozvoljavamo u chatu. Promijenite je i pokušajte ponovo."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-09-28 16:36:20.820185",
+    "@@last_modified": "2026-09-29 11:11:35.725858",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9973,5 +9973,7 @@
     "courseCodeJoinExplanation": "登录或注册后，我们将使用您的课程代码自动将您添加到课程中。",
     "courseCodeLabel": "课程代码",
     "courseCodeSaved": "课程代码 {code} 已保存",
-    "courseCodeSavedExplanation": "注册或登录后，我们会将您添加到您的课程中。"
+    "courseCodeSavedExplanation": "注册或登录后，我们会将您添加到您的课程中。",
+    "moderationRefusedContactDetails": "您的消息未能发送。自动过滤器检测到联系方式，例如电话号码。请删除后重试。",
+    "moderationRefusedProfanity": "您的消息未能发送。自动过滤器检测到聊天中不允许使用的词语。请修改后重试。"
 }

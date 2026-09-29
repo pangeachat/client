@@ -1802,7 +1802,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-09-28 16:36:18.446157",
+    "@@last_modified": "2026-09-29 11:11:33.221172",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10918,5 +10918,7 @@
     "courseCodeJoinExplanation": "Prijavite se ali se registrirajte in s kodo tečaja vas bomo samodejno dodali v tečaj.",
     "courseCodeLabel": "Koda tečaja",
     "courseCodeSaved": "Koda tečaja {code} je shranjena",
-    "courseCodeSavedExplanation": "Prijavite se ali se registrirajte in dodali vas bomo v tečaj."
+    "courseCodeSavedExplanation": "Prijavite se ali se registrirajte in dodali vas bomo v tečaj.",
+    "moderationRefusedContactDetails": "Vaše sporočilo ni bilo poslano. Samodejni filter je zaznal podatke za stik, kot je telefonska številka. Odstranite jih in poskusite znova.",
+    "moderationRefusedProfanity": "Vaše sporočilo ni bilo poslano. Samodejni filter je zaznal besedo, ki je v klepetu ne dovoljujemo. Prosimo, spremenite jo in poskusite znova."
 }

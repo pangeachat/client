@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-09-28 16:36:19.153827",
+    "@@last_modified": "2026-09-29 11:11:34.040511",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2381,5 +2381,7 @@
     "courseCodeJoinExplanation": "Saini i totonu pe saini i luga, ma o le a matou fa'aogaina lau code kosi e fa'aopoopo otometi ai oe i lau kosi.",
     "courseCodeLabel": "Code kosi",
     "courseCodeSaved": "Code kosi {code} ua sefe",
-    "courseCodeSavedExplanation": "Saini i luga pe saini i totonu ma o le a matou fa'aopoopoina oe i lau kosi."
+    "courseCodeSavedExplanation": "Saini i luga pe saini i totonu ma o le a matou fa'aopoopoina oe i lau kosi.",
+    "moderationRefusedContactDetails": "E leʻi lafoina lau feʻau. Na maua e se faamama otometi faʻamatalaga faʻafesoʻotaʻi, e pei o se numera telefoni. Faʻamolemole aveese ma toe taumafai.",
+    "moderationRefusedProfanity": "E leʻi lafoina lau feʻau. Na maua e se faamama otometi se upu matou te le faʻatagaina i talanoaga. Faʻamolemole sui ma toe taumafai."
 }

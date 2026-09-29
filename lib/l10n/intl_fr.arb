@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-09-28 16:36:11.390131",
+    "@@last_modified": "2026-09-29 11:11:25.067809",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10328,5 +10328,7 @@
     "courseCodeJoinExplanation": "Connectez-vous ou inscrivez-vous, et nous utiliserons votre code de cours pour vous ajouter automatiquement à votre cours.",
     "courseCodeLabel": "Code de cours",
     "courseCodeSaved": "Code de cours {code} enregistré",
-    "courseCodeSavedExplanation": "Inscrivez-vous ou connectez-vous et nous vous ajouterons à votre cours."
+    "courseCodeSavedExplanation": "Inscrivez-vous ou connectez-vous et nous vous ajouterons à votre cours.",
+    "moderationRefusedContactDetails": "Votre message n'a pas été envoyé. Un filtre automatique a détecté des coordonnées, comme un numéro de téléphone. Veuillez les supprimer et réessayer.",
+    "moderationRefusedProfanity": "Votre message n'a pas été envoyé. Un filtre automatique a détecté un mot que nous n'autorisons pas dans le chat. Veuillez le modifier et réessayer."
 }

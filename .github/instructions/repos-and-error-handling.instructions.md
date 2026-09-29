@@ -15,6 +15,7 @@ The split exists because the alternative was tried and did not hold. Reporting s
 - **The repo reports; the caller does not.** A repo captures each failure to Sentry exactly once, then returns `Result.error`. Callers do not call `ErrorHandler.logError` on an error a repo already returned — that double-reports and re-severitizes.
 - **Callers may escalate, not re-report.** When a caller has context the repo lacks — a failure that is routine on a background refresh but user-visible on a tap — it may raise the level on the error it received. It does not create a second event.
 - **Repos never return an error the user cannot be told about.** If a failure is expected and non-actionable, the repo returns a successful empty value and documents why; it does not return an error that every caller then swallows.
+- **A report never carries what the learner wrote.** A failed send is reported with the message's length, not its text. The text is learner content, and a message the moderation refused is refused because of what it contains, such as a phone number.
 
 Prefer `BaseRepo` for anything cached or request-shaped — it implements this contract. A repo that bypasses it re-implements timeout, cache, and severity by hand, and historically gets severity wrong.
 
@@ -57,7 +58,7 @@ Severity is a property of the failure, not of the author's judgment at the call 
 | 404, 410                   | warning | The resource is gone — a normal state, e.g. a stale room reference        |
 | 429                        | warning | Expected under load                                                       |
 | No response — the request never reached a server (offline, DNS, CORS, a blocked request; a `ClientException`) | warning | Nothing in code to fix. Reported once per session: a dead connection fails every surface at once, so the first report carries the signal and every repeat is volume |
-| Rejected input — Matrix `M_THREEPID_NOT_FOUND`, `M_INVALID_USERNAME`, `M_USER_IN_USE`, `M_THREEPID_IN_USE`; a join code the server refused: one that matches nothing (`ORG.PANGEA.CODE_NOT_FOUND`) or text that isn't a code (`M_INVALID_PARAM`) | info | The learner typed something the server refused — expected, and only the learner can act on it |
+| Rejected input — Matrix `M_THREEPID_NOT_FOUND`, `M_INVALID_USERNAME`, `M_USER_IN_USE`, `M_THREEPID_IN_USE`; a join code the server refused: one that matches nothing (`ORG.PANGEA.CODE_NOT_FOUND`) or text that isn't a code (`M_INVALID_PARAM`); a chat message the server's moderation refused (`M_FORBIDDEN` carrying `chat.pangea.moderation.rule`) | info | The learner typed something the server refused — expected, and only the learner can act on it |
 | A user's profile resolves empty — no display name and no avatar | info | Data, not code: a stored user ID with no account on this homeserver, or an account that never set a name. Nothing in the client to fix, but the ID is worth seeing |
 | 403                        | error   | We asked for something we should not have — a code bug                    |
 | Other 4xx (400, 405, 422)  | error   | We sent something malformed — a code bug                                  |
