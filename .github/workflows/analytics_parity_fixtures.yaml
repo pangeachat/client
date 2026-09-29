@@ -1,16 +1,16 @@
-name: Analytics parity goldens
+name: Analytics parity fixtures
 
-# Regenerates the analytics parity goldens from the app's own formulas and
+# Regenerates the analytics parity fixtures from the app's own formulas and
 # publishes them for admin-dash-api, whose teacher dashboard ports those
 # formulas and checks itself against this file.
 #
-# Enforcement does NOT live here. goldens_check_test.dart runs in the required
+# Enforcement does NOT live here. expected_results_check_test.dart runs in the required
 # `code_tests` shards on every PR, so a formula change that is not followed by
-# a regenerated goldens.json is red there. This workflow is path-filtered, so
+# a regenerated expected_results.json is red there. This workflow is path-filtered, so
 # it must never be made a required check (a path-filtered required check sits
 # pending forever on PRs that do not touch these paths; see
 # ci.instructions.md). Its jobs are: an early, focused signal on analytics PRs,
-# the goldens.json artifact, and on main the notification to admin-dash-api.
+# the expected_results.json artifact, and on main the notification to admin-dash-api.
 
 on:
   pull_request:
@@ -21,7 +21,7 @@ on:
       - "lib/pangea/morphs/morph_features_enum.dart"
       - "lib/routes/chat/chat_details/space_analytics/**"
       - "test/pangea/analytics_parity/**"
-      - ".github/workflows/analytics_goldens.yaml"
+      - ".github/workflows/analytics_parity_fixtures.yaml"
       - ".github/workflows/versions.env"
   push:
     branches:
@@ -32,7 +32,7 @@ on:
       - "lib/pangea/morphs/morph_features_enum.dart"
       - "lib/routes/chat/chat_details/space_analytics/**"
       - "test/pangea/analytics_parity/**"
-      - ".github/workflows/analytics_goldens.yaml"
+      - ".github/workflows/analytics_parity_fixtures.yaml"
       - ".github/workflows/versions.env"
   workflow_dispatch:
 
@@ -49,7 +49,7 @@ jobs:
     outputs:
       artifact_id: ${{ steps.upload.outputs.artifact-id }}
       artifact_url: ${{ steps.upload.outputs.artifact-url }}
-      goldens_sha256: ${{ steps.hash.outputs.sha256 }}
+      expected_results_sha256: ${{ steps.hash.outputs.sha256 }}
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
       - run: cat .github/workflows/versions.env >> $GITHUB_ENV
@@ -59,26 +59,26 @@ jobs:
           cache: true
       - run: flutter pub get
       - run: flutter gen-l10n
-      - name: Regenerate goldens from the app formulas
-        run: flutter test --dart-define=UPDATE_ANALYTICS_GOLDENS=true test/pangea/analytics_parity/generate_goldens_test.dart
-      - name: Committed goldens must match the regenerated ones
+      - name: Regenerate expected results from the app formulas
+        run: flutter test --dart-define=UPDATE_ANALYTICS_PARITY_FIXTURES=true test/pangea/analytics_parity/generate_expected_results_test.dart
+      - name: Committed expected results must match the regenerated ones
         run: |
-          if ! git diff --exit-code -- test/pangea/analytics_parity/goldens.json; then
-            echo "::error::test/pangea/analytics_parity/goldens.json is stale. A formula in lib/ changed without regenerating it. Run: flutter test --dart-define=UPDATE_ANALYTICS_GOLDENS=true test/pangea/analytics_parity/generate_goldens_test.dart and commit the result."
+          if ! git diff --exit-code -- test/pangea/analytics_parity/expected_results.json; then
+            echo "::error::test/pangea/analytics_parity/expected_results.json is stale. A formula in lib/ changed without regenerating it. Run: flutter test --dart-define=UPDATE_ANALYTICS_PARITY_FIXTURES=true test/pangea/analytics_parity/generate_expected_results_test.dart and commit the result."
             exit 1
           fi
       - id: hash
-        run: echo "sha256=$(sha256sum test/pangea/analytics_parity/goldens.json | cut -d' ' -f1)" >> "$GITHUB_OUTPUT"
+        run: echo "sha256=$(sha256sum test/pangea/analytics_parity/expected_results.json | cut -d' ' -f1)" >> "$GITHUB_OUTPUT"
       - id: upload
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         with:
-          name: analytics-goldens
-          path: test/pangea/analytics_parity/goldens.json
+          name: analytics-parity-fixtures
+          path: test/pangea/analytics_parity/expected_results.json
           if-no-files-found: error
           retention-days: 90
 
-  # Tells admin-dash-api that main has new goldens. The payload names the
-  # commit, so admin-dash-api reads goldens.json from the repo at that SHA
+  # Tells admin-dash-api that main has new expected results. The payload names the
+  # commit, so admin-dash-api reads expected_results.json from the repo at that SHA
   # (durable) rather than from the artifact (expires after retention-days);
   # the artifact is carried along for humans and for a consumer that prefers it.
   #
@@ -99,10 +99,10 @@ jobs:
           RUN_ID: ${{ github.run_id }}
           ARTIFACT_ID: ${{ needs.generate.outputs.artifact_id }}
           ARTIFACT_URL: ${{ needs.generate.outputs.artifact_url }}
-          GOLDENS_SHA256: ${{ needs.generate.outputs.goldens_sha256 }}
+          EXPECTED_RESULTS_SHA256: ${{ needs.generate.outputs.expected_results_sha256 }}
         run: |
           if [ -z "$GH_TOKEN" ]; then
-            echo "::error::ADMIN_DASH_API_DISPATCH_TOKEN is not set; admin-dash-api was not notified of new analytics goldens."
+            echo "::error::ADMIN_DASH_API_DISPATCH_TOKEN is not set; admin-dash-api was not notified of new analytics parity expected results."
             exit 1
           fi
           jq -n \
@@ -110,11 +110,11 @@ jobs:
             --arg run_id "$RUN_ID" \
             --arg artifact_id "$ARTIFACT_ID" \
             --arg artifact_url "$ARTIFACT_URL" \
-            --arg sha256 "$GOLDENS_SHA256" \
-            '{event_type: "client-analytics-goldens", client_payload: {
+            --arg sha256 "$EXPECTED_RESULTS_SHA256" \
+            '{event_type: "client-analytics-parity-fixtures", client_payload: {
                 client_sha: $sha,
-                goldens_path: "test/pangea/analytics_parity/goldens.json",
-                goldens_sha256: $sha256,
+                expected_results_path: "test/pangea/analytics_parity/expected_results.json",
+                expected_results_sha256: $sha256,
                 run_id: $run_id,
                 artifact_id: $artifact_id,
                 artifact_url: $artifact_url}}' \

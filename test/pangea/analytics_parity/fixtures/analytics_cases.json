@@ -1,5 +1,5 @@
 {
-  "about": "Inputs for the analytics parity goldens. Each case is the raw content of a learner's analytics room: construct events (content exactly as stored in Matrix), the blocked constructs from the analytics-settings state event, the activity room ids state event, and the language's published xp_offset. A use with no timeStamp gets one assigned by the generator (see analytics_goldens.dart); `_repeat` expands a use N times. goldens.json records every case fully expanded, so consumers never need these conventions.",
+  "about": "Inputs for the analytics parity fixtures. Each case is the raw content of a learner's analytics room: construct events (content exactly as stored in Matrix), the blocked constructs from the analytics-settings state event, the activity room ids state event, and the language's published xp_offset. A use with no timeStamp gets one assigned by the generator (see analytics_parity_fixtures.dart); `_repeat` expands a use N times. expected_results.json records every case fully expanded, so consumers never need these conventions.",
   "cases": [
     {
       "name": "other_category_and_strict_identity",
