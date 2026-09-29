@@ -17,6 +17,14 @@ enum CourseInviteAction { accept, decline }
 
 class RoomInviteDialog {
   static Future<void> show(BuildContext context, Room room) async {
+    // Joining rebuilds the course lists, so the row that opened this dialog is
+    // likely unmounted by the time the join lands (CLIENT-EX3). Read the route
+    // now, and run everything after the join off the router's own navigator.
+    final router = GoRouter.of(context);
+    final uri = router.routeInformationProvider.value.uri;
+    final appContext =
+        router.routerDelegate.navigatorKey.currentContext ?? context;
+
     final resp = await showInviteDialog<CourseInviteAction>(
       context,
       title: L10n.of(context).youreInvited,
@@ -39,7 +47,7 @@ class RoomInviteDialog {
     switch (resp) {
       case CourseInviteAction.accept:
         final result = await showFutureLoadingDialog(
-          context: context,
+          context: appContext,
           future: room.joinKnockedRoom,
           exceptionContext: ExceptionContext.joinRoom,
         );
@@ -48,16 +56,11 @@ class RoomInviteDialog {
         if (joinResp == null) return;
 
         final handler = JoinRoomAnalyticsConsentHandler(joinResp, room);
-        final joinedRoomId = await handler.handle(context);
+        final joinedRoomId = await handler.handle(appContext);
         if (joinedRoomId == null) return;
 
         room.isSpace
-            ? context.go(
-                WorkspaceNav.openCourse(
-                  GoRouterState.of(context).uri,
-                  joinedRoomId,
-                ),
-              )
+            ? router.go(WorkspaceNav.openCourse(uri, joinedRoomId))
             : NavigationUtil.goToSpaceRoute(joinedRoomId, const [], context);
         return;
       case CourseInviteAction.decline:

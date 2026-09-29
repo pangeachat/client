@@ -280,6 +280,9 @@ class _SpaceItem extends StatelessWidget {
 
   Future<void> _onTapSpace(BuildContext context) async {
     final uri = GoRouterState.of(context).uri;
+    // Joining rebuilds the rail, so [context] is likely unmounted once the
+    // join lands (CLIENT-EX3): what follows it runs off the router instead.
+    final router = GoRouter.of(context);
     final client = Matrix.of(context).client;
     final membership = space.membership;
 
@@ -308,11 +311,13 @@ class _SpaceItem extends StatelessWidget {
     if (joinedRoom == null) return;
 
     final handler = JoinRoomAnalyticsConsentHandler(joinResp, joinedRoom);
-    final joinedRoomId = await handler.handle(context);
+    final joinedRoomId = await handler.handle(
+      router.routerDelegate.navigatorKey.currentContext ?? context,
+    );
     if (joinedRoomId == null) return;
 
     PanelEntryIntent.instance.arm();
-    context.go(
+    router.go(
       WorkspaceNav.openCourseSection(uri, joinedRoomId, keepRoom: false),
     );
     return;
