@@ -1,0 +1,516 @@
+import 'dart:async';
+import 'dart:typed_data';
+
+import 'package:flutter_test/flutter_test.dart';
+
+import 'package:fluffychat/routes/chat/calls/call_audio_download.dart';
+import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
+import 'package:fluffychat/routes/chat/calls/call_audio_repo.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
+import 'package:fluffychat/routes/chat/calls/whole_call_transcriber.dart';
+
+// The two members of the 1:1 DM, the call anchor, and the peer's one recording.
+const _self = '@self:server';
+const _peer = '@peer:server';
+const _callKey = '\$call:server';
+const _peerDevice = 'PEERDEVICE';
+const _peerAudioId = '\$audio_peer:server';
+
+TranscriptSegment _seg(String text, [int atMs = 1000]) =>
+    TranscriptSegment(text, atMs: atMs);
+
+CallAudioContent _content({
+  String? deviceId = _peerDevice,
+  String url = 'mxc://server/peeraudio',
+  int durationMs = 5000,
+  int sampleRate = 16000,
+  int channels = 1,
+  ClockAnchor? clockAnchor,
+  int? offset,
+}) => CallAudioContent(
+  callKey: _callKey,
+  deviceId: deviceId,
+  url: url,
+  mimetype: 'audio/wav',
+  size: 1000,
+  durationMs: durationMs,
+  sampleRate: sampleRate,
+  channels: channels,
+  codec: 'pcm16',
+  clockAnchor: clockAnchor,
+  recordingStartedOffsetFromDeviceJoinMs: offset,
+);
+
+CallAudioRecording _rec({
+  String eventId = _peerAudioId,
+  String senderId = _peer,
+  CallAudioContent? content,
+}) => CallAudioRecording(
+  eventId: eventId,
+  senderId: senderId,
+  originServerTs: DateTime.fromMillisecondsSinceEpoch(1000),
+  content: content ?? _content(),
+);
+
+/// A real assembled transcript for the skip check. [peerAuthentic] adds the
+/// peer's own half (no `spokenBy`); [peerValidBackfill] adds a VALID peer half
+/// written by [_self]; otherwise the peer is absent (a half should be produced).
+CallTranscript _transcript({
+  bool peerAuthentic = false,
+  bool peerValidBackfill = false,
+}) {
+  final candidates = <TranscriptCandidate>[];
+  final provenance = <String, ProvenanceState>{};
+  if (peerAuthentic) {
+    candidates.add(
+      TranscriptCandidate(
+        senderId: _peer,
+        eventId: '\$t_peer_auth',
+        deviceId: _peerDevice,
+        originServerTs: 2000,
+        segments: [_seg('peer said this')],
+        accounting: const HalfAccounting(),
+      ),
+    );
+  }
+  if (peerValidBackfill) {
+    candidates.add(
+      TranscriptCandidate(
+        senderId: _self,
+        eventId: '\$t_peer_backfill',
+        deviceId: _peerDevice,
+        spokenBy: _peer,
+        sourceAudioEventId: _peerAudioId,
+        originServerTs: 3000,
+        segments: [_seg('backfilled peer speech')],
+        accounting: const HalfAccounting(),
+      ),
+    );
+    provenance['\$t_peer_backfill'] = ProvenanceState.valid;
+  }
+  return assembleTranscript(
+    candidates: candidates,
+    expectedSenders: const [_self, _peer],
+    provenance: provenance,
+  );
+}
+
+/// One posted peer half, captured for assertions.
+class _Posted {
+  final String callKey;
+  final String spokenBy;
+  final String sourceAudioEventId;
+  final String? deviceId;
+  final String? langCode;
+  final ClockAnchor? clockAnchor;
+  final List<TranscriptSegment> segments;
+  _Posted(
+    this.callKey,
+    this.spokenBy,
+    this.sourceAudioEventId,
+    this.deviceId,
+    this.langCode,
+    this.clockAnchor,
+    this.segments,
+  );
+}
+
+/// A configurable harness: every seam defaults to the common "one subscribed
+/// invoker, peer absent, everything resolves" case and records its calls.
+class _Harness {
+  final List<String> log = [];
+  final List<Duration> waits = [];
+  final List<_Posted> posts = [];
+  int transcribeCalls = 0;
+  int discoverCalls = 0;
+  int readCalls = 0;
+  final List<({String? l1, String? l2})> transcribeLangs = [];
+  final List<int> transcribeStarts = [];
+
+  bool enabled = true;
+
+  ManifestDiscoverer? discover;
+  TranscriptReader? readTranscript;
+  CallAudioDownloader? download;
+  RecordingTranscriber? transcribe;
+  PeerLanguageResolver? resolvePeerLanguages;
+  Future<void> Function(Duration)? wait;
+  int maxManifestRetries = 4;
+
+  WholeCallTranscriber build() => WholeCallTranscriber(
+    selfUserId: _self,
+    participants: const {_self, _peer},
+    isEnabled: () => enabled,
+    discover:
+        discover ??
+        (_) async {
+          discoverCalls++;
+          log.add('discover');
+          return WholeCallManifest(resolved: true, recordings: [_rec()]);
+        },
+    readTranscript:
+        readTranscript ??
+        (_) async {
+          readCalls++;
+          log.add('read');
+          return _transcript();
+        },
+    download:
+        download ??
+        (_) async {
+          log.add('download');
+          return Uint8List.fromList(const [1, 2, 3, 4]);
+        },
+    transcribe:
+        transcribe ??
+        (
+          bytes, {
+          required String l1,
+          required String l2,
+          required int startedAtMs,
+          required int durationMs,
+        }) async {
+          transcribeCalls++;
+          transcribeLangs.add((l1: l1, l2: l2));
+          transcribeStarts.add(startedAtMs);
+          log.add('transcribe');
+          return [_seg('hola', startedAtMs)];
+        },
+    resolvePeerLanguages:
+        resolvePeerLanguages ?? (_) async => (l1: 'en', l2: 'es'),
+    post:
+        ({
+          required String callKey,
+          required String spokenBy,
+          required String sourceAudioEventId,
+          required String? deviceId,
+          required String? langCode,
+          required ClockAnchor? clockAnchor,
+          required List<TranscriptSegment> segments,
+        }) async {
+          log.add('post');
+          posts.add(
+            _Posted(
+              callKey,
+              spokenBy,
+              sourceAudioEventId,
+              deviceId,
+              langCode,
+              clockAnchor,
+              segments,
+            ),
+          );
+        },
+    wait:
+        wait ??
+        (d) async {
+          waits.add(d);
+          log.add('wait');
+        },
+    jitter: () => 0.0,
+    maxManifestRetries: maxManifestRetries,
+  );
+}
+
+void main() {
+  group('gating', () {
+    test('disabled (flag off or unsubscribed) produces nothing', () async {
+      // Mutation proof: dropping the run-time gate makes a disabled call wait the
+      // grace and discover -- so the wait/discover assertions redden.
+      final h = _Harness()..enabled = false;
+      await h.build().transcribeAtCallEnd(_callKey);
+      expect(h.waits, isEmpty); // not even the grace is waited when disabled
+      expect(h.discoverCalls, 0);
+      expect(h.transcribeCalls, 0);
+      expect(h.posts, isEmpty);
+    });
+
+    test('enabled backfills the absent peer half', () async {
+      final h = _Harness();
+      await h.build().transcribeAtCallEnd(_callKey);
+      expect(h.posts, hasLength(1));
+    });
+  });
+
+  group('skip predicates', () {
+    test('an AUTHENTIC peer half already present is not re-produced', () async {
+      // Mutation proof: dropping the `_skip` guard produces a duplicate half.
+      final h = _Harness()
+        ..readTranscript = (_) async => _transcript(peerAuthentic: true);
+      await h.build().transcribeAtCallEnd(_callKey);
+      expect(h.transcribeCalls, 0);
+      expect(h.posts, isEmpty);
+    });
+
+    test(
+      'a VALID peer-produced half already present is not re-produced',
+      () async {
+        // Mutation proof: dropping the `_skip` guard re-transcribes and re-posts.
+        final h = _Harness()
+          ..readTranscript = (_) async => _transcript(peerValidBackfill: true);
+        await h.build().transcribeAtCallEnd(_callKey);
+        expect(h.transcribeCalls, 0);
+        expect(h.posts, isEmpty);
+      },
+    );
+  });
+
+  group('call-end sequencing', () {
+    test(
+      'own-first (precondition) -> grace -> re-read -> backfill, in order',
+      () async {
+        // Mutation proof: removing the leading `await wait(grace)` drops the first
+        // 'wait' and the order no longer starts grace-before-discover.
+        final h = _Harness();
+        await h.build().transcribeAtCallEnd(_callKey);
+        // grace -> discover -> backfill-gate read -> pre-STT re-check read ->
+        // download -> transcribe -> pre-send re-check read -> post.
+        expect(h.log, [
+          'wait',
+          'discover',
+          'read',
+          'read',
+          'download',
+          'transcribe',
+          'read',
+          'post',
+        ]);
+        // The grace was waited before any discovery.
+        expect(h.waits.first, const Duration(seconds: 3));
+      },
+    );
+
+    test(
+      'both subscribed: peer authentic on re-read -> no cross-transcription',
+      () async {
+        // Each side posts its OWN half; this invoker re-reads, sees the peer's
+        // authentic half, and does NOT transcribe the peer's audio. Zero duplicate
+        // speech-to-text. Mutation proof: dropping `_skip` transcribes the peer.
+        final h = _Harness()
+          ..readTranscript = (_) async => _transcript(peerAuthentic: true);
+        await h.build().transcribeAtCallEnd(_callKey);
+        expect(h.transcribeCalls, 0);
+        expect(h.posts, isEmpty);
+      },
+    );
+  });
+
+  group('mixed case (the acceptance path)', () {
+    test(
+      'subscriber backfills the peer half in the SPEAKER\'s language',
+      () async {
+        final h = _Harness()
+          ..resolvePeerLanguages = (id) async {
+            expect(id, _peer);
+            return (l1: 'fr', l2: 'de'); // the PEER's pair, not the invoker's
+          };
+        await h.build().transcribeAtCallEnd(_callKey);
+        expect(h.transcribeCalls, 1);
+        // Transcribed in the speaker's own pair.
+        expect(h.transcribeLangs.single, (l1: 'fr', l2: 'de'));
+        expect(h.posts, hasLength(1));
+      },
+    );
+
+    test(
+      'posted half carries spokenBy / sourceAudioEventId / deviceId / langCode',
+      () async {
+        const anchor = ClockAnchor(sfuMs: 100000, deviceMs: 100050);
+        final h = _Harness();
+        h.discover = (_) async => WholeCallManifest(
+          resolved: true,
+          recordings: [
+            _rec(content: _content(clockAnchor: anchor, offset: 250)),
+          ],
+        );
+        h.resolvePeerLanguages = (_) async => (l1: 'en', l2: 'es');
+        await h.build().transcribeAtCallEnd(_callKey);
+        final posted = h.posts.single;
+        expect(posted.spokenBy, _peer);
+        expect(posted.sourceAudioEventId, _peerAudioId);
+        expect(posted.deviceId, _peerDevice);
+        expect(posted.langCode, 'es'); // the target language used
+        expect(posted.callKey, _callKey);
+        // The peer's own anchor is carried, and the segments are placed on the
+        // peer's device clock (deviceMs + offset).
+        expect(posted.clockAnchor, anchor);
+        expect(h.transcribeStarts.single, 100050 + 250);
+      },
+    );
+  });
+
+  group('language gate', () {
+    test('an unresolved peer language does NOT auto-produce', () async {
+      // Mutation proof: a silent fallback (e.g. l2 ??= 'es') would post a half.
+      final h = _Harness()
+        ..resolvePeerLanguages = (_) async => (l1: null, l2: null);
+      await h.build().transcribeAtCallEnd(_callKey);
+      expect(h.transcribeCalls, 0);
+      expect(h.posts, isEmpty);
+    });
+
+    test('a resolved base but missing target does NOT auto-produce', () async {
+      final h = _Harness()
+        ..resolvePeerLanguages = (_) async => (l1: 'en', l2: null);
+      await h.build().transcribeAtCallEnd(_callKey);
+      expect(h.posts, isEmpty);
+    });
+  });
+
+  group('merge-arrival retry', () {
+    test(
+      'produces the peer half when the manifest arrives on a later attempt',
+      () async {
+        // Mutation proof: removing the retry loop leaves the first (unresolved)
+        // discovery final, and the peer half is never produced.
+        var attempt = 0;
+        final h = _Harness();
+        h.discover = (_) async {
+          attempt++;
+          if (attempt < 3) return WholeCallManifest.absent; // merge not visible
+          return WholeCallManifest(resolved: true, recordings: [_rec()]);
+        };
+        await h.build().transcribeAtCallEnd(_callKey);
+        expect(attempt, 3);
+        expect(h.posts, hasLength(1));
+      },
+    );
+
+    test(
+      'gives up after the bounded retries when no manifest ever arrives',
+      () async {
+        var discoveries = 0;
+        final h = _Harness();
+        h.maxManifestRetries = 2;
+        h.discover = (_) async {
+          discoveries++;
+          return WholeCallManifest.absent;
+        };
+        await h.build().transcribeAtCallEnd(_callKey);
+        // Initial attempt + 2 retries = 3 discoveries, then it stops.
+        expect(discoveries, 3);
+        expect(h.posts, isEmpty);
+      },
+    );
+  });
+
+  group('in-flight guard and re-checks', () {
+    test('concurrent runs transcribe one device only once', () async {
+      // A gated transcribe lets both runs reach the STT step; the in-flight lock
+      // keyed by the recording device admits only one. Mutation proof: removing
+      // the `_inFlight` guard transcribes and posts twice.
+      final gate = Completer<void>();
+      final h = _Harness();
+      h.transcribe =
+          (
+            bytes, {
+            required String l1,
+            required String l2,
+            required int startedAtMs,
+            required int durationMs,
+          }) async {
+            h.transcribeCalls++;
+            await gate.future;
+            return [_seg('hola', startedAtMs)];
+          };
+      final t = h.build();
+      final a = t.transcribeAtCallEnd(_callKey);
+      final b = t.transcribeAtCallEnd(_callKey);
+      await Future<void>.delayed(Duration.zero);
+      gate.complete();
+      await Future.wait([a, b]);
+      expect(h.transcribeCalls, 1);
+      expect(h.posts, hasLength(1));
+    });
+
+    test(
+      'a half that lands during STT is not doubled (re-check before send)',
+      () async {
+        // The first read (backfill gate) sees the peer absent; by the send re-check
+        // the peer's authentic half has landed, so nothing is posted. Mutation
+        // proof: removing the pre-send re-check posts a duplicate.
+        var reads = 0;
+        final h = _Harness()
+          ..readTranscript = (_) async {
+            reads++;
+            // Absent for the first two reads (backfill gate + pre-STT re-check),
+            // present by the pre-send re-check.
+            return _transcript(peerAuthentic: reads >= 3);
+          };
+        await h.build().transcribeAtCallEnd(_callKey);
+        expect(h.transcribeCalls, 1); // STT ran (pre-STT read still absent)
+        expect(h.posts, isEmpty); // but the send was withheld
+      },
+    );
+  });
+
+  group('bytes and empty results', () {
+    test('a recording whose bytes cannot be downloaded is skipped', () async {
+      final h = _Harness()..download = (_) async => throw StateError('gone');
+      await h.build().transcribeAtCallEnd(_callKey);
+      expect(h.posts, isEmpty);
+    });
+
+    test(
+      'an empty transcription is not posted as "the peer said nothing"',
+      () async {
+        final h = _Harness();
+        h.transcribe =
+            (
+              bytes, {
+              required String l1,
+              required String l2,
+              required int startedAtMs,
+              required int durationMs,
+            }) async {
+              h.transcribeCalls++;
+              return const [];
+            };
+        await h.build().transcribeAtCallEnd(_callKey);
+        expect(h.transcribeCalls, 1);
+        expect(h.posts, isEmpty);
+      },
+    );
+  });
+
+  group('on-demand entry', () {
+    test('transcribes one named half now, with no grace', () async {
+      final h = _Harness();
+      final produced = await h.build().transcribeHalfOnDemand(
+        callKey: _callKey,
+        speakerId: _peer,
+      );
+      expect(produced, isTrue);
+      expect(h.waits, isEmpty); // no grace on the on-demand path
+      expect(h.posts, hasLength(1));
+    });
+
+    test(
+      'uses the picker language when the peer language did not resolve',
+      () async {
+        final h = _Harness()
+          ..resolvePeerLanguages = (_) async => (l1: null, l2: null);
+        final produced = await h.build().transcribeHalfOnDemand(
+          callKey: _callKey,
+          speakerId: _peer,
+          language: 'es',
+        );
+        expect(produced, isTrue);
+        expect(h.posts.single.langCode, 'es');
+      },
+    );
+
+    test('produces nothing for a speaker with no manifest recording', () async {
+      final h = _Harness()
+        ..discover = (_) async =>
+            const WholeCallManifest(resolved: true, recordings: []);
+      final produced = await h.build().transcribeHalfOnDemand(
+        callKey: _callKey,
+        speakerId: _peer,
+      );
+      expect(produced, isFalse);
+      expect(h.posts, isEmpty);
+    });
+  });
+}
