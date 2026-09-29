@@ -429,6 +429,34 @@ void main() {
         expect(h.transcribeStarts.single, 95000);
       },
     );
+
+    test('an unanchored recording with a non-positive duration starts at the '
+        'receive time, never in the future', () async {
+      // A missing/zero or negative duration cannot bound the start, so the
+      // fallback uses the receive time itself rather than adding a negative
+      // (which would place the start AFTER the recording was received).
+      // Mutation proof: reverting to `end - durationMs` makes the -5000 case
+      // return 105000 (a future start) -> RED.
+      Future<void> runWith(int durationMs) async {
+        final h = _Harness();
+        h.discover = (_) async => WholeCallManifest(
+          resolved: true,
+          recordings: [
+            CallAudioRecording(
+              eventId: _peerAudioId,
+              senderId: _peer,
+              originServerTs: DateTime.fromMillisecondsSinceEpoch(100000),
+              content: _content(durationMs: durationMs),
+            ),
+          ],
+        );
+        await h.build().transcribeAtCallEnd(_callKey);
+        expect(h.transcribeStarts.single, 100000);
+      }
+
+      await runWith(0);
+      await runWith(-5000);
+    });
   });
 
   group('language gate', () {

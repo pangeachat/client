@@ -615,12 +615,22 @@ class WholeCallTranscriber {
   /// even where it withholds printed times, so all peer turns would sort before
   /// all of the invoker's own turns. Clamped at 0 so a duration longer than the
   /// elapsed wall time never yields a negative start.
+  ///
+  /// This estimate assumes the recording was uploaded promptly: a long upload
+  /// delay between the real start and the server-receive time pushes it late.
+  /// The anchored path above is the accurate one; this is only the fallback the
+  /// reader already tolerated, so an approximate placement is acceptable here.
   int _peerStartMs(CallAudioRecording recording) {
     final anchor = recording.content.clockAnchor;
     final offset = recording.content.recordingStartedOffsetFromDeviceJoinMs;
     if (anchor != null && offset != null) return anchor.deviceMs + offset;
     final end = recording.originServerTs.millisecondsSinceEpoch;
-    final start = end - recording.content.durationMs;
+    // A non-positive or missing duration cannot bound the start, so fall back to
+    // the receive time itself rather than adding a negative (which would place
+    // the start in the future). A positive duration is subtracted and the result
+    // is clamped so it is never negative.
+    final durationMs = recording.content.durationMs;
+    final start = durationMs > 0 ? end - durationMs : end;
     return start < 0 ? 0 : start;
   }
 

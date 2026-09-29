@@ -589,17 +589,37 @@ class CallTranscriptContent {
   /// lost. An identical-language retry keeps the same id, so it stays
   /// idempotent. An authentic half passes no discriminator and keeps its
   /// transaction id exactly as before.
+  ///
+  /// A txnId is an INJECTIVE function of `(callKey, senderId, deviceId,
+  /// discriminator?)`, and two mechanisms keep it so once a discriminator is in
+  /// play. A peer id lives in a DISTINCT NAMESPACE (`pangea.call_transcript
+  /// .spoken` vs the authentic `pangea.call_transcript`), so it can never equal
+  /// an authentic id whatever the device id holds -- [usableDeviceId] accepts
+  /// colons, so an authentic device like `D:en` would otherwise collide with a
+  /// peer `(device D, language en)`. And the device segment is
+  /// LENGTH-DELIMITED, so a device id containing the separator cannot
+  /// reconstruct a different `(device, discriminator)` pair (`A:B` + `en` stays
+  /// distinct from `A` + `B:en`).
   static String txnId(
     String callKey,
     String senderId,
     String? deviceId, {
     String? discriminator,
   }) {
-    final base =
-        'pangea.call_transcript:$callKey:$senderId:'
-        '${usableDeviceId(deviceId) ?? ''}';
-    return (discriminator == null || discriminator.isEmpty)
-        ? base
-        : '$base:$discriminator';
+    final device = usableDeviceId(deviceId) ?? '';
+    // Authentic half: byte-identical to the pre-#8792 id.
+    if (discriminator == null || discriminator.isEmpty) {
+      return 'pangea.call_transcript:$callKey:$senderId:$device';
+    }
+    // Peer-produced half (#8792). A DISTINCT namespace: the character after
+    // `pangea.call_transcript` is `:` for an authentic id and `.` here, so a
+    // peer id can never equal an authentic one whatever the device id holds.
+    // The device is LENGTH-DELIMITED so a device id containing the separator
+    // cannot reconstruct a different (device, language) pair -- the id stays
+    // injective without assuming device ids or language codes are colon-free.
+    // Keyed by language so a re-transcribe in another language is a distinct
+    // event; an identical-language retry keeps the same id and stays idempotent.
+    return 'pangea.call_transcript.spoken:$callKey:$senderId:'
+        '${device.length}:$device:$discriminator';
   }
 }

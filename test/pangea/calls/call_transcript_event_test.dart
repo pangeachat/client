@@ -439,72 +439,90 @@ void main() {
       );
     });
 
-    test('a PEER half is discriminated by language: different languages get '
-        'different ids', () {
-      // A picker re-transcribe of the SAME peer unit in a DIFFERENT language
-      // must be a distinct event (#8792), not a dedup'd resend of the
-      // wrong-language one -- the writer, sender and device are all identical
-      // across the two attempts.
-      // Mutation proof: ignoring the discriminator makes these equal -> RED.
+    test('an AUTHENTIC half id is byte-identical to the pre-#8792 form', () {
+      // The authentic id must not change: passing no discriminator (or an empty
+      // one) yields exactly the legacy string.
       expect(
-        CallTranscriptContent.txnId(
-          _callKey,
-          _alice,
-          'PHONE',
-          discriminator: 'es',
-        ),
-        isNot(
-          CallTranscriptContent.txnId(
-            _callKey,
-            _alice,
-            'PHONE',
-            discriminator: 'fr',
+        CallTranscriptContent.txnId('c', '@w:h', 'D'),
+        'pangea.call_transcript:c:@w:h:D',
+      );
+      expect(
+        CallTranscriptContent.txnId('c', '@w:h', 'D', discriminator: ''),
+        'pangea.call_transcript:c:@w:h:D',
+      );
+    });
+
+    test(
+      'a PEER half never collides with an authentic half (reviewer input)',
+      () {
+        // usableDeviceId accepts colons, so authentic device "D:en" and peer
+        // (device "D", language "en") would collapse under the old
+        // append-after-device scheme.
+        // Mutation proof: reverting the peer id to the pre-fix form
+        // 'pangea.call_transcript:$callKey:$senderId:$device:$discriminator' (no
+        // namespace, no length prefix) makes these equal -> RED.
+        expect(
+          CallTranscriptContent.txnId('c', '@w:h', 'D:en'),
+          isNot(
+            CallTranscriptContent.txnId('c', '@w:h', 'D', discriminator: 'en'),
           ),
+        );
+      },
+    );
+
+    test('the peer namespace alone separates a device that mimics the body', () {
+      // Authentic device "1:D:en" reconstructs the peer body AFTER its length
+      // prefix, so here ONLY the distinct `.spoken` namespace keeps the two ids
+      // apart.
+      // Mutation proof: dropping the `.spoken` namespace makes these equal -> RED.
+      expect(
+        CallTranscriptContent.txnId('c', '@w:h', '1:D:en'),
+        isNot(
+          CallTranscriptContent.txnId('c', '@w:h', 'D', discriminator: 'en'),
         ),
       );
     });
 
-    test('a PEER half of the SAME language keeps one id (idempotent)', () {
+    test(
+      'a device id with the separator stays injective (length-delimited)',
+      () {
+        // (device "A:B", language "en") and (device "A", language "B:en") share
+        // one colon-joined body; the length prefix disambiguates them.
+        // Mutation proof: removing the `${device.length}:` prefix makes both
+        // "...:A:B:en" -> equal -> RED.
+        expect(
+          CallTranscriptContent.txnId('c', '@w:h', 'A:B', discriminator: 'en'),
+          isNot(
+            CallTranscriptContent.txnId(
+              'c',
+              '@w:h',
+              'A',
+              discriminator: 'B:en',
+            ),
+          ),
+        );
+      },
+    );
+
+    test('a PEER half in a DIFFERENT language gets a different id', () {
+      // A picker re-transcribe of the same unit in another language must be a
+      // distinct event, not a dedup'd resend of the wrong-language one.
+      // Mutation proof: dropping the language from the peer id makes these
+      // equal -> RED.
+      expect(
+        CallTranscriptContent.txnId('c', '@w:h', 'D', discriminator: 'en'),
+        isNot(
+          CallTranscriptContent.txnId('c', '@w:h', 'D', discriminator: 'es'),
+        ),
+      );
+    });
+
+    test('a PEER half in the SAME language keeps one id (idempotent)', () {
       // An identical-language network retry is still a resend and must collapse,
       // exactly as an authentic half's retry does.
       expect(
-        CallTranscriptContent.txnId(
-          _callKey,
-          _alice,
-          'PHONE',
-          discriminator: 'es',
-        ),
-        CallTranscriptContent.txnId(
-          _callKey,
-          _alice,
-          'PHONE',
-          discriminator: 'es',
-        ),
-      );
-    });
-
-    test('an AUTHENTIC half (no discriminator) keeps its id unchanged', () {
-      // Authentic halves pass no discriminator, so their transaction id is
-      // exactly what it was before the peer-language change; an empty
-      // discriminator is treated as none, never a distinct third id.
-      final authentic = CallTranscriptContent.txnId(_callKey, _alice, 'PHONE');
-      expect(
-        authentic,
-        CallTranscriptContent.txnId(
-          _callKey,
-          _alice,
-          'PHONE',
-          discriminator: null,
-        ),
-      );
-      expect(
-        authentic,
-        CallTranscriptContent.txnId(
-          _callKey,
-          _alice,
-          'PHONE',
-          discriminator: '',
-        ),
+        CallTranscriptContent.txnId('c', '@w:h', 'D', discriminator: 'en'),
+        CallTranscriptContent.txnId('c', '@w:h', 'D', discriminator: 'en'),
       );
     });
   });
