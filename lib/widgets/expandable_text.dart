@@ -12,8 +12,15 @@ class ExpandableText extends StatefulWidget {
   final String text;
   final TextStyle? style;
   final int maxLines;
+  final TextAlign textAlign;
 
-  const ExpandableText(this.text, {this.style, this.maxLines = 2, super.key});
+  const ExpandableText(
+    this.text, {
+    this.style,
+    this.maxLines = 2,
+    this.textAlign = TextAlign.start,
+    super.key,
+  });
 
   @override
   State<ExpandableText> createState() => ExpandableTextState();
@@ -31,7 +38,11 @@ class ExpandableTextState extends State<ExpandableText> {
 
   @override
   Widget build(BuildContext context) {
-    final style = widget.style ?? DefaultTextStyle.of(context).style;
+    // Resolved the way Text resolves it: the inline control's Text inherits
+    // whatever a partial [widget.style] leaves unset (letter spacing, above
+    // all), and measuring without it pushes the "Show more" tail onto a line
+    // past the cap.
+    final style = DefaultTextStyle.of(context).style.merge(widget.style);
     final linkStyle = style.copyWith(
       color: Theme.of(context).colorScheme.primary,
     );
@@ -68,6 +79,7 @@ class ExpandableTextState extends State<ExpandableText> {
         final fullPainter = TextPainter(
           text: TextSpan(text: widget.text, style: style),
           maxLines: widget.maxLines,
+          textAlign: widget.textAlign,
           textDirection: textDirection,
           textScaler: textScaler,
         )..layout(maxWidth: maxWidth);
@@ -75,7 +87,7 @@ class ExpandableTextState extends State<ExpandableText> {
         fullPainter.dispose();
 
         if (!overflows) {
-          return Text(widget.text, style: style);
+          return Text(widget.text, style: style, textAlign: widget.textAlign);
         }
 
         final l10n = L10n.of(context);
@@ -88,6 +100,7 @@ class ExpandableTextState extends State<ExpandableText> {
                 toggle(l10n.showLess),
               ],
             ),
+            textAlign: widget.textAlign,
           );
         }
 
@@ -103,20 +116,28 @@ class ExpandableTextState extends State<ExpandableText> {
         final collapsedPainter = TextPainter(
           text: TextSpan(text: widget.text, style: style),
           maxLines: widget.maxLines,
+          textAlign: widget.textAlign,
           textDirection: textDirection,
           textScaler: textScaler,
         )..layout(maxWidth: maxWidth);
-        final cutoff = collapsedPainter.getPositionForOffset(
-          Offset(
-            math.max(maxWidth - tailPainter.width, 0),
-            collapsedPainter.height - 1,
-          ),
-        );
+        final cutX = math.max(maxWidth - tailPainter.width, 0.0);
+        var cutoff = collapsedPainter
+            .getPositionForOffset(Offset(cutX, collapsedPainter.height - 1))
+            .offset;
+        // The position snaps to the nearest caret, which can sit just past
+        // [cutX] and push the tail onto a line of its own; step back one
+        // character when it does.
+        if (collapsedPainter
+                .getOffsetForCaret(TextPosition(offset: cutoff), Rect.zero)
+                .dx >
+            cutX) {
+          cutoff = collapsedPainter.getOffsetBefore(cutoff) ?? 0;
+        }
         tailPainter.dispose();
         collapsedPainter.dispose();
 
         final visible = widget.text
-            .substring(0, math.max(cutoff.offset, 0))
+            .substring(0, math.max(cutoff, 0))
             .trimRight();
         return Text.rich(
           TextSpan(
@@ -127,6 +148,7 @@ class ExpandableTextState extends State<ExpandableText> {
               toggle(l10n.showMore),
             ],
           ),
+          textAlign: widget.textAlign,
         );
       },
     );

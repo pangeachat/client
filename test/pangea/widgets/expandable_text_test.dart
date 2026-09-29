@@ -63,6 +63,43 @@ void main() {
     expect(find.textContaining(longText), findsNothing);
   });
 
+  // A partial style (the goal header's, #9318) leaves letter spacing to the
+  // ambient text style, which the inline control inherits; the cut must
+  // still fit the "… Show more" tail within the cap, at either alignment.
+  for (final align in [TextAlign.start, TextAlign.center]) {
+    testWidgets('a partial style stays within the cap ($align)', (
+      tester,
+    ) async {
+      const style = TextStyle(fontSize: 15.0, height: 1.2);
+      await tester.pumpWidget(
+        MaterialApp(
+          locale: const Locale('en'),
+          localizationsDelegates: L10n.localizationsDelegates,
+          supportedLocales: L10n.supportedLocales,
+          home: Scaffold(
+            body: Align(
+              alignment: Alignment.topLeft,
+              child: SizedBox(
+                width: 320,
+                child: ExpandableText(longText, style: style, textAlign: align),
+              ),
+            ),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      final l10n = L10n.of(tester.element(find.byType(ExpandableText)));
+      expect(find.textContaining(l10n.showMore), findsOneWidget);
+      final lineHeight = style.fontSize! * style.height!;
+      expect(
+        tester.getSize(find.byType(ExpandableText)).height,
+        lessThan(3 * lineHeight),
+        reason: 'the tail wrapped onto a third line',
+      );
+    });
+  }
+
   // The toggle is a button in the Tab order, not a tap recognizer on the
   // span (#9154), and it keeps focus across the swap so a second Enter
   // collapses what the first expanded.
