@@ -694,4 +694,80 @@ void main() {
       });
     });
   });
+
+  // The manifest selection shared by the reader (above) and the whole-call
+  // transcriber's discovery, so the two cannot diverge.
+  group('selectCallAudioManifest', () {
+    test(
+      'breaks a validated-coverage tie by the total order, not list order',
+      () async {
+        // Two participant-authored manifests, EACH validating exactly one source
+        // (equal coverage). List order puts the LATER-ts one first; the total
+        // order must still pick the EARLIER-ts one. Mutation: dropping
+        // `_manifestOutranks`'s tie-break (returning only `count > bestCount`)
+        // keeps the first-in-list manifest -> RED.
+        final fetcher = _Fetcher(
+          serve: {
+            '\$srcLate': FetchedAudioEvent(
+              senderId: alice,
+              content: _audio(deviceId: 'devLate'),
+            ),
+            '\$srcEarly': FetchedAudioEvent(
+              senderId: bob,
+              content: _audio(deviceId: 'devEarly'),
+            ),
+          },
+        );
+        final selection = await selectCallAudioManifest(
+          mergedRecordings: [
+            _manifest(
+              eventId: '\$mLate',
+              sender: bob,
+              sourceEventIds: ['\$srcLate'],
+              ts: 2000,
+            ),
+            _manifest(
+              eventId: '\$mEarly',
+              sender: bob,
+              sourceEventIds: ['\$srcEarly'],
+              ts: 1000,
+            ),
+          ],
+          participants: const {alice, bob},
+          callKey: _callKey,
+          resolve: audioResolverFor(fetcher.fetch, _room),
+        );
+        expect(selection.manifest?.eventId, '\$mEarly');
+        expect(selection.uncertain, isFalse);
+      },
+    );
+
+    test('reports uncertain when a validation fetch is transient', () async {
+      // The pending source undercounts its manifest, so the selection may be
+      // wrong; the flag is what lets both callers refuse to commit to it.
+      final fetcher = _Fetcher(
+        serve: {
+          '\$srcOk': FetchedAudioEvent(
+            senderId: alice,
+            content: _audio(deviceId: 'devOk'),
+          ),
+        },
+        throwing: {'\$srcPending'},
+      );
+      final selection = await selectCallAudioManifest(
+        mergedRecordings: [
+          _manifest(eventId: '\$mOk', sender: bob, sourceEventIds: ['\$srcOk']),
+          _manifest(
+            eventId: '\$mPending',
+            sender: bob,
+            sourceEventIds: ['\$srcPending'],
+          ),
+        ],
+        participants: const {alice, bob},
+        callKey: _callKey,
+        resolve: audioResolverFor(fetcher.fetch, _room),
+      );
+      expect(selection.uncertain, isTrue);
+    });
+  });
 }

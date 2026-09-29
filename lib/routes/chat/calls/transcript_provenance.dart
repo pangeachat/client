@@ -101,7 +101,7 @@ AudioEventFetcher audioEventFetcherFor(Room room) =>
 
 /// What one direct fetch of a source audio event came to, before it is checked
 /// against a particular claim.
-enum _AudioResolutionKind {
+enum AudioResolutionKind {
   /// The fetch failed transiently and may yet succeed.
   pending,
 
@@ -117,24 +117,28 @@ enum _AudioResolutionKind {
 
 /// One fetch's outcome, memoized so a source id is fetched at most once whether
 /// it is reached through manifest validation or through a peer claim.
-class _AudioResolution {
-  final _AudioResolutionKind kind;
+///
+/// Public so the whole-call transcriber's discovery can validate a manifest's
+/// sources by the SAME rule the reader's provenance does (via
+/// [selectCallAudioManifest]) rather than a divergent copy.
+class AudioResolution {
+  final AudioResolutionKind kind;
 
-  /// Who uploaded the audio, when [kind] is [_AudioResolutionKind.resolved].
+  /// Who uploaded the audio, when [kind] is [AudioResolutionKind.resolved].
   final String? senderId;
 
-  /// The parsed content, when [kind] is [_AudioResolutionKind.resolved].
+  /// The parsed content, when [kind] is [AudioResolutionKind.resolved].
   final CallAudioContent? content;
 
-  const _AudioResolution._(this.kind, {this.senderId, this.content});
+  const AudioResolution._(this.kind, {this.senderId, this.content});
 
-  const _AudioResolution.pending() : this._(_AudioResolutionKind.pending);
-  const _AudioResolution.gone() : this._(_AudioResolutionKind.gone);
-  const _AudioResolution.notCallAudio()
-    : this._(_AudioResolutionKind.notCallAudio);
-  _AudioResolution.resolved(String senderId, CallAudioContent content)
+  const AudioResolution.pending() : this._(AudioResolutionKind.pending);
+  const AudioResolution.gone() : this._(AudioResolutionKind.gone);
+  const AudioResolution.notCallAudio()
+    : this._(AudioResolutionKind.notCallAudio);
+  AudioResolution.resolved(String senderId, CallAudioContent content)
     : this._(
-        _AudioResolutionKind.resolved,
+        AudioResolutionKind.resolved,
         senderId: senderId,
         content: content,
       );
@@ -147,13 +151,29 @@ class _AudioResolution {
   /// `(call, speaker, device)` half, so it must not lend a manifest coverage it
   /// then cannot back.
   bool isValidatedUnitFor(Set<String> participants, String callKey) =>
-      kind == _AudioResolutionKind.resolved &&
+      kind == AudioResolutionKind.resolved &&
       participants.contains(senderId) &&
       content!.callKey == callKey &&
       content!.deviceId != null;
 }
 
-Future<_AudioResolution> _resolveOnce(
+/// Resolves one source audio event by id to an [AudioResolution]. A memoized
+/// instance is what bounds fetches by manifest size rather than by claim count.
+typedef AudioResolver = Future<AudioResolution> Function(String eventId);
+
+/// A memoized [AudioResolver] over [fetch] for [roomId]: each source id is
+/// fetched at most once, whether it is reached through manifest validation, a
+/// peer claim, or the whole-call transcriber's discovery. Both the reader
+/// ([resolveTranscriptProvenance]) and the producer share ONE of these per
+/// invocation so their manifest selection cannot diverge and their fetches stay
+/// bounded by the number of distinct source ids.
+AudioResolver audioResolverFor(AudioEventFetcher fetch, String roomId) {
+  final cache = <String, Future<AudioResolution>>{};
+  return (eventId) =>
+      cache.putIfAbsent(eventId, () => _resolveOnce(fetch, roomId, eventId));
+}
+
+Future<AudioResolution> _resolveOnce(
   AudioEventFetcher fetch,
   String roomId,
   String eventId,
@@ -164,15 +184,15 @@ Future<_AudioResolution> _resolveOnce(
     // Terminal, and distinct from a transient failure below -- a redaction is
     // not a network blip, and reporting it as retryable would leave the half
     // pending forever.
-    if (event == null || event.redacted) return const _AudioResolution.gone();
+    if (event == null || event.redacted) return const AudioResolution.gone();
     final content = event.content;
-    if (content == null) return const _AudioResolution.notCallAudio();
-    return _AudioResolution.resolved(event.senderId, content);
+    if (content == null) return const AudioResolution.notCallAudio();
+    return AudioResolution.resolved(event.senderId, content);
   } catch (_) {
     // The fetch itself failed. TRANSIENT: held pending, resolves on a later
     // rebuild, and -- the point of catching rather than rethrowing -- never
     // conflated with "the audio is gone".
-    return const _AudioResolution.pending();
+    return const AudioResolution.pending();
   }
 }
 
@@ -225,6 +245,62 @@ CallAudioMergedRecording? _selectManifest(
   return best;
 }
 
+/// Selects the ONE manifest to trust for a call, and reports whether that
+/// selection was made under uncertainty.
+///
+/// This is the single manifest-selection the reader and the whole-call
+/// transcriber's discovery BOTH call, so a produced peer half's
+/// `sourceAudioEventId` is in the manifest the reader will select — never an
+/// alternate the producer chose by list order or on a transient miss.
+///
+/// The rule (unchanged, lifted out of [resolveTranscriptProvenance]): among the
+/// participant-authored merges of THIS call, count each one's VALIDATED source
+/// coverage through [resolve] and pick the greatest by [_selectManifest]'s total
+/// order (validated count, then earliest ts, then sender id, then merged event
+/// id). [uncertain] is true when any validation fetch came back
+/// [AudioResolutionKind.pending]: the true manifest may have been undercounted,
+/// so a caller must NOT commit to the selection — the reader holds affected
+/// claims pending, and the producer treats it as "no manifest yet" and retries.
+///
+/// FETCHES ARE BOUNDED BY THE NUMBER OF DISTINCT SOURCE IDS, never by claim
+/// count, because [resolve] is memoized: a source referenced by many claims, or
+/// by both validation and a claim, costs one fetch.
+Future<({CallAudioMergedRecording? manifest, bool uncertain})>
+selectCallAudioManifest({
+  required List<CallAudioMergedRecording> mergedRecordings,
+  required Set<String> participants,
+  required String callKey,
+  required AudioResolver resolve,
+}) async {
+  // Participant-authored merges of THIS call. `fetchCallAudioMerged` already
+  // refuses a foreign call key; the checks here are cheap and defensive.
+  final manifests = [
+    for (final merged in mergedRecordings)
+      if (participants.contains(merged.senderId) &&
+          merged.content.callKey == callKey)
+        merged,
+  ];
+
+  final validatedCounts = <String, int>{};
+  var uncertain = false;
+  for (final manifest in manifests) {
+    var validated = 0;
+    // De-duplicated defensively -- `fromJson` already canonicalises, but the
+    // count must not depend on that continuing to hold.
+    for (final id in manifest.content.sourceEventIds.toSet()) {
+      final resolution = await resolve(id);
+      if (resolution.kind == AudioResolutionKind.pending) uncertain = true;
+      if (resolution.isValidatedUnitFor(participants, callKey)) validated++;
+    }
+    validatedCounts[manifest.eventId] = validated;
+  }
+
+  return (
+    manifest: _selectManifest(manifests, validatedCounts),
+    uncertain: uncertain,
+  );
+}
+
 /// Resolves the provenance of every peer-produced half among [candidates].
 ///
 /// Returns a [ProvenanceState] per PEER candidate, keyed by its transcript event
@@ -260,52 +336,34 @@ Future<Map<String, ProvenanceState>> resolveTranscriptProvenance({
   ];
   if (peers.isEmpty) return const {};
 
-  // One fetch per source id, reused across manifest validation and per-claim
-  // resolution. This is what bounds fetches by manifest size rather than by the
-  // number of claims: the second reference to an id is a cache hit.
-  final cache = <String, Future<_AudioResolution>>{};
-  Future<_AudioResolution> resolve(String id) =>
-      cache.putIfAbsent(id, () => _resolveOnce(fetch, roomId, id));
+  // One memoized resolver, shared with the manifest selection below AND reused
+  // for per-claim resolution -- this is what bounds fetches by the number of
+  // distinct source ids rather than by claim count: the second reference to an
+  // id is a cache hit.
+  final resolve = audioResolverFor(fetch, roomId);
 
-  // Participant-authored merges of THIS call. `fetchCallAudioMerged` already
-  // refuses a foreign call key; the checks here are cheap and defensive.
-  final manifests = [
-    for (final merged in mergedRecordings)
-      if (participants.contains(merged.senderId) &&
-          merged.content.callKey == callKey)
-        merged,
-  ];
-
-  // Validated coverage per manifest, counted over its own source ids
-  // (de-duplicated defensively -- `fromJson` already canonicalises, but the
-  // count must not depend on that continuing to hold).
+  // The one manifest to trust, selected the SAME way the whole-call
+  // transcriber's discovery selects it (both call [selectCallAudioManifest]), so
+  // a produced peer half's source is in the manifest this reader will select.
   //
-  // A TRANSIENT fetch during validation makes the SELECTION uncertain: a source
+  // A TRANSIENT fetch during validation makes the selection UNCERTAIN: a source
   // that would have validated the true manifest resolves pending, so that
   // manifest is undercounted and a different one may be selected. That must not
   // TERMINALLY reject a real peer half whose source is only in the true
   // manifest -- the miss was transient, and a rebuild re-fetches. So it is
-  // tracked and threaded into per-claim resolution below.
-  final validatedCounts = <String, int>{};
-  var selectionUncertain = false;
-  for (final manifest in manifests) {
-    var validated = 0;
-    for (final id in manifest.content.sourceEventIds.toSet()) {
-      final resolution = await resolve(id);
-      if (resolution.kind == _AudioResolutionKind.pending) {
-        selectionUncertain = true;
-      }
-      if (resolution.isValidatedUnitFor(participants, callKey)) validated++;
-    }
-    validatedCounts[manifest.eventId] = validated;
-  }
-
-  final selected = _selectManifest(manifests, validatedCounts);
+  // threaded into per-claim resolution below.
+  final selection = await selectCallAudioManifest(
+    mergedRecordings: mergedRecordings,
+    participants: participants,
+    callKey: callKey,
+    resolve: resolve,
+  );
+  final selectionUncertain = selection.uncertain;
   // The membership set is the SELECTED manifest's own source ids -- the FULL
   // set, not the validated subset. A source that is listed but has since been
   // redacted must resolve to "audio unavailable" (it IS in the manifest), not
   // to "not in the manifest".
-  final manifestIds = selected?.content.sourceEventIds.toSet();
+  final manifestIds = selection.manifest?.content.sourceEventIds.toSet();
 
   final result = <String, ProvenanceState>{};
   for (final candidate in peers) {
@@ -327,7 +385,7 @@ Future<ProvenanceState> _resolvePeerClaim({
   required String callKey,
   required Set<String>? manifestIds,
   required bool selectionUncertain,
-  required Future<_AudioResolution> Function(String id) resolve,
+  required AudioResolver resolve,
 }) async {
   final spokenBy = candidate.spokenBy!;
   final sourceId = candidate.sourceAudioEventId;
@@ -363,15 +421,15 @@ Future<ProvenanceState> _resolvePeerClaim({
 
   final resolution = await resolve(sourceId);
   switch (resolution.kind) {
-    case _AudioResolutionKind.pending:
+    case AudioResolutionKind.pending:
       return ProvenanceState.pendingTransient;
-    case _AudioResolutionKind.gone:
+    case AudioResolutionKind.gone:
       // In the manifest but its media is gone: "audio unavailable", not words,
       // and not a fallback to the writer.
       return ProvenanceState.unavailableTerminal;
-    case _AudioResolutionKind.notCallAudio:
+    case AudioResolutionKind.notCallAudio:
       return ProvenanceState.invalidTerminal;
-    case _AudioResolutionKind.resolved:
+    case AudioResolutionKind.resolved:
       // The whole of the honoured claim: the source is the NAMED speaker's own
       // recording, for THIS call, from the SAME device the half is keyed by. A
       // failure of any one of these is the writer's own (legacy) half, never the

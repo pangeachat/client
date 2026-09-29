@@ -37,6 +37,53 @@ class WholeCallManifest {
   static const absent = WholeCallManifest(resolved: false);
 }
 
+/// Discovers a call's recordings from its audio manifest, selecting the manifest
+/// the SAME way the reader's provenance does — via [selectCallAudioManifest], so
+/// a produced peer half's `sourceAudioEventId` is in the manifest the reader
+/// will select, never an alternate chosen by list order or on a transient miss.
+///
+/// Returns [WholeCallManifest.absent] (NOT resolved) when no participant manifest
+/// validates anything yet OR when the selection was UNCERTAIN (a validation fetch
+/// came back transient): committing to an alternate on a transient is exactly the
+/// divergence that would make the reader mark the produced half invalid, so the
+/// merge-arrival retry handles it instead. When a manifest is chosen, each of its
+/// source ids is turned into a [CallAudioRecording] by [recordingFor] and kept
+/// only when it is a validated unit — a participant's own recording for this call
+/// with a device.
+///
+/// [resolve] validates coverage (memoized, bounded by distinct source ids);
+/// [recordingFor] builds the recording for a chosen source (a direct fetch, so it
+/// carries the event's real fields). Both are injected, so this is unit-tested
+/// with fakes and no homeserver.
+Future<WholeCallManifest> discoverWholeCallManifest({
+  required List<CallAudioMergedRecording> mergedRecordings,
+  required Set<String> participants,
+  required String callKey,
+  required AudioResolver resolve,
+  required Future<CallAudioRecording?> Function(String eventId) recordingFor,
+}) async {
+  final selection = await selectCallAudioManifest(
+    mergedRecordings: mergedRecordings,
+    participants: participants,
+    callKey: callKey,
+    resolve: resolve,
+  );
+  final manifest = selection.manifest;
+  if (manifest == null || selection.uncertain) return WholeCallManifest.absent;
+
+  final recordings = <CallAudioRecording>[];
+  for (final id in manifest.content.sourceEventIds.toSet()) {
+    final recording = await recordingFor(id);
+    if (recording != null &&
+        participants.contains(recording.senderId) &&
+        recording.content.callKey == callKey &&
+        recording.content.deviceId != null) {
+      recordings.add(recording);
+    }
+  }
+  return WholeCallManifest(resolved: true, recordings: recordings);
+}
+
 /// Discovers the call's recordings from its audio manifest. See
 /// [WholeCallManifest]. Injected so discovery -- manifest selection and the
 /// per-source fetches behind it -- is exercised in the coordinator's tests with
@@ -212,70 +259,36 @@ class WholeCallTranscriber {
         roomId: room.id,
         callKey: callKey,
       );
-      final manifests = [
-        for (final m in merged)
-          if (participants.contains(m.senderId) && m.content.callKey == callKey)
-            m,
-      ];
-      if (manifests.isEmpty) return WholeCallManifest.absent;
-
-      // One direct fetch per source id, memoized across validation and the
-      // final resolve, so a source is fetched at most once whatever how many
-      // manifests reference it.
-      final cache = <String, CallAudioRecording?>{};
-      Future<CallAudioRecording?> resolve(String id) async {
-        if (cache.containsKey(id)) return cache[id];
-        CallAudioRecording? recording;
-        try {
-          final event = await room.getEventById(id);
-          if (event != null &&
-              !event.redacted &&
-              event.type == CallAudioContent.relType) {
-            final content = CallAudioContent.fromJson(event.content);
-            // A validated unit: a participant's own recording for THIS call,
-            // with a device -- the unit a half keys by. Anything else lends the
-            // manifest no coverage and yields no recording.
-            if (content != null &&
-                content.callKey == callKey &&
-                content.deviceId != null &&
-                participants.contains(event.senderId)) {
-              recording = CallAudioRecording(
-                eventId: event.eventId,
-                senderId: event.senderId,
-                originServerTs: event.originServerTs,
-                content: content,
-              );
+      // Select the manifest through the SAME shared function the reader uses,
+      // and build recordings by direct id (real event, cap-independent). A
+      // transient throw while fetching a source becomes a null recording for
+      // that source -- skipped this pass, retried later -- never a terminal drop.
+      return discoverWholeCallManifest(
+        mergedRecordings: merged,
+        participants: participants,
+        callKey: callKey,
+        resolve: audioResolverFor(audioFetch, room.id),
+        recordingFor: (id) async {
+          try {
+            final event = await room.getEventById(id);
+            if (event == null ||
+                event.redacted ||
+                event.type != CallAudioContent.relType) {
+              return null;
             }
+            final content = CallAudioContent.fromJson(event.content);
+            if (content == null) return null;
+            return CallAudioRecording(
+              eventId: event.eventId,
+              senderId: event.senderId,
+              originServerTs: event.originServerTs,
+              content: content,
+            );
+          } catch (_) {
+            return null;
           }
-        } catch (_) {
-          // Transient/gone this pass -- not validated; a retry re-fetches.
-          recording = null;
-        }
-        cache[id] = recording;
-        return recording;
-      }
-
-      CallAudioMergedRecording? best;
-      var bestCount = 0;
-      for (final manifest in manifests) {
-        var count = 0;
-        for (final id in manifest.content.sourceEventIds.toSet()) {
-          if (await resolve(id) != null) count++;
-        }
-        if (count > bestCount) {
-          best = manifest;
-          bestCount = count;
-        }
-      }
-      // No manifest validates anything yet -- the merge may still be in flight.
-      if (best == null || bestCount == 0) return WholeCallManifest.absent;
-
-      final recordings = <CallAudioRecording>[];
-      for (final id in best.content.sourceEventIds.toSet()) {
-        final recording = await resolve(id);
-        if (recording != null) recordings.add(recording);
-      }
-      return WholeCallManifest(resolved: true, recordings: recordings);
+        },
+      );
     }
 
     Future<CallTranscript> readTranscript(String callKey) =>
@@ -380,7 +393,7 @@ class WholeCallTranscriber {
   /// visible yet. A no-op the moment [isEnabled] is false, checked again before
   /// every retry so a mid-flight downgrade stops it.
   Future<void> transcribeAtCallEnd(String callKey) async {
-    if (!isEnabled()) return;
+    if (!isEnabled() || !_identityKnown) return;
     await wait(_jittered(grace));
     for (var attempt = 0; ; attempt++) {
       if (!isEnabled()) return;
@@ -404,7 +417,7 @@ class WholeCallTranscriber {
     required String speakerId,
     String? language,
   }) async {
-    if (!isEnabled()) return false;
+    if (!isEnabled() || !_identityKnown) return false;
     final manifest = await discover(callKey);
     if (!manifest.resolved) return false;
     final recording = _recordingForSpeaker(manifest.recordings, speakerId);
@@ -512,6 +525,13 @@ class WholeCallTranscriber {
       transcript.halves.any(
         (half) => half.senderId == speaker && half.state != HalfState.absent,
       );
+
+  /// Both participants of the 1:1 DM are known. A half is signed by [selfUserId]
+  /// (the writer) and keyed by a unit that needs exactly two members; an empty
+  /// self, or a participant set that is not exactly two, means the identity is
+  /// not established, so nothing is produced -- the writer and the txn lane must
+  /// never be empty, and a `spokenBy` must be a real participant.
+  bool get _identityKnown => selfUserId.isNotEmpty && participants.length == 2;
 
   CallAudioRecording? _recordingForSpeaker(
     List<CallAudioRecording> recordings,

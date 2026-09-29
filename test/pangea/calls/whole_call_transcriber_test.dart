@@ -5,8 +5,10 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/routes/chat/calls/call_audio_download.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
+import 'package:fluffychat/routes/chat/calls/call_audio_merged_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_repo.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_provenance.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 import 'package:fluffychat/routes/chat/calls/whole_call_transcriber.dart';
 
@@ -52,6 +54,38 @@ CallAudioRecording _rec({
   originServerTs: DateTime.fromMillisecondsSinceEpoch(1000),
   content: content ?? _content(),
 );
+
+CallAudioMergedRecording _manifest({
+  required String eventId,
+  required List<String> sourceEventIds,
+  String sender = _peer,
+  int ts = 1000,
+}) => CallAudioMergedRecording(
+  eventId: eventId,
+  senderId: sender,
+  originServerTs: DateTime.fromMillisecondsSinceEpoch(ts),
+  content: CallAudioMergedContent(
+    callKey: _callKey,
+    url: 'mxc://server/merged',
+    mimetype: 'audio/wav',
+    size: 2000,
+    durationMs: 8000,
+    sampleRate: 16000,
+    channels: 1,
+    codec: 'pcm16',
+    sourceEventIds: sourceEventIds,
+  ),
+);
+
+/// A memoized-free fake resolver over a fixed table: a served id validates, an
+/// id in [pending] throws-equivalent (transient), any other id is gone.
+AudioResolver _fakeResolver(
+  Map<String, AudioResolution> serve, {
+  Set<String> pending = const {},
+}) => (id) async {
+  if (pending.contains(id)) return const AudioResolution.pending();
+  return serve[id] ?? const AudioResolution.gone();
+};
 
 /// A real assembled transcript for the skip check. [peerAuthentic] adds the
 /// peer's own half (no `spokenBy`); [peerValidBackfill] adds a VALID peer half
@@ -129,6 +163,8 @@ class _Harness {
   final List<int> transcribeStarts = [];
 
   bool enabled = true;
+  String selfUserId = _self;
+  Set<String> participants = const {_self, _peer};
 
   ManifestDiscoverer? discover;
   TranscriptReader? readTranscript;
@@ -139,8 +175,8 @@ class _Harness {
   int maxManifestRetries = 4;
 
   WholeCallTranscriber build() => WholeCallTranscriber(
-    selfUserId: _self,
-    participants: const {_self, _peer},
+    selfUserId: selfUserId,
+    participants: participants,
     isEnabled: () => enabled,
     discover:
         discover ??
@@ -231,6 +267,34 @@ void main() {
       await h.build().transcribeAtCallEnd(_callKey);
       expect(h.posts, hasLength(1));
     });
+
+    test('an unknown self (empty user id) produces nothing', () async {
+      // A half is signed by the writer and keyed by a txn lane that must never
+      // be empty. Mutation proof: dropping the `_identityKnown` guard runs
+      // discovery and posts a half with an empty writer.
+      final h = _Harness()
+        ..selfUserId = ''
+        ..participants = const {'', _peer};
+      await h.build().transcribeAtCallEnd(_callKey);
+      expect(h.discoverCalls, 0);
+      expect(h.posts, isEmpty);
+      final onDemand = await h.build().transcribeHalfOnDemand(
+        callKey: _callKey,
+        speakerId: _peer,
+      );
+      expect(onDemand, isFalse);
+    });
+
+    test(
+      'a participant set that is not exactly two produces nothing',
+      () async {
+        // Not a resolvable 1:1 DM (peer unknown), so no unit and no spokenBy.
+        final h = _Harness()..participants = const {_self};
+        await h.build().transcribeAtCallEnd(_callKey);
+        expect(h.discoverCalls, 0);
+        expect(h.posts, isEmpty);
+      },
+    );
   });
 
   group('skip predicates', () {
@@ -512,5 +576,73 @@ void main() {
       expect(produced, isFalse);
       expect(h.posts, isEmpty);
     });
+  });
+
+  // Discovery selects the manifest through the SAME shared function the reader
+  // uses (proven at the unit level in transcript_provenance_test.dart); these
+  // cover the producer's use of it and its transient handling.
+  group('discoverWholeCallManifest', () {
+    CallAudioContent contentFor(String device) => _content(deviceId: device);
+
+    test(
+      'selects the reader-order winner on a coverage tie, not list order',
+      () async {
+        // Two equal-coverage manifests; the earlier-ts one wins the shared total
+        // order, so the recording returned is ITS source, not the first in list.
+        final manifest = await discoverWholeCallManifest(
+          mergedRecordings: [
+            _manifest(
+              eventId: '\$mLate',
+              sourceEventIds: ['\$srcLate'],
+              ts: 2000,
+            ),
+            _manifest(
+              eventId: '\$mEarly',
+              sourceEventIds: ['\$srcEarly'],
+              ts: 1000,
+            ),
+          ],
+          participants: const {_self, _peer},
+          callKey: _callKey,
+          resolve: _fakeResolver({
+            '\$srcLate': AudioResolution.resolved(_peer, contentFor('devLate')),
+            '\$srcEarly': AudioResolution.resolved(
+              _peer,
+              contentFor('devEarly'),
+            ),
+          }),
+          recordingFor: (id) async =>
+              _rec(eventId: id, content: contentFor('dev_$id')),
+        );
+        expect(manifest.resolved, isTrue);
+        expect(manifest.recordings.single.eventId, '\$srcEarly');
+      },
+    );
+
+    test(
+      'returns not-resolved on an uncertain (transient) selection',
+      () async {
+        // A validation fetch is transient, so the selection is uncertain and an
+        // alternate may have been chosen -- return absent so the retry re-runs.
+        // Mutation proof: dropping the `|| selection.uncertain` guard returns
+        // RESOLVED with the alternate manifest here.
+        final manifest = await discoverWholeCallManifest(
+          mergedRecordings: [
+            _manifest(eventId: '\$mOk', sourceEventIds: ['\$srcOk']),
+            _manifest(eventId: '\$mPending', sourceEventIds: ['\$srcPending']),
+          ],
+          participants: const {_self, _peer},
+          callKey: _callKey,
+          resolve: _fakeResolver(
+            {'\$srcOk': AudioResolution.resolved(_peer, contentFor('devOk'))},
+            pending: {'\$srcPending'},
+          ),
+          recordingFor: (id) async =>
+              _rec(eventId: id, content: contentFor('d')),
+        );
+        expect(manifest.resolved, isFalse);
+        expect(manifest.recordings, isEmpty);
+      },
+    );
   });
 }
