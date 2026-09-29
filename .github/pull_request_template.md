@@ -17,4 +17,8 @@
 ### Accessibility
 
 - [ ] New or changed controls have an accessible name (`tooltip:` / `semanticLabel:`), and decorative images use `excludeFromSemantics: true`. See [accessibility.instructions.md](.github/instructions/accessibility.instructions.md). (The source-level gate enforces this; manual a11y review is owned by whoever changes the UI.)
+
+### Responsiveness
+
+- [ ] Anything a learner taps or waits on meets the response targets in [interaction-latency.instructions.md](.github/instructions/interaction-latency.instructions.md), checked in a profile build on a throttled network, or this PR changes no such interaction.
 <!-- Pangea# -->
