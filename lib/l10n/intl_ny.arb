@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-09-28 16:36:17.508181",
+    "@@last_modified": "2026-09-29 11:11:32.067335",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2382,6 +2382,6 @@
     "courseCodeLabel": "Nambala ya kosi",
     "courseCodeSaved": "Nambala ya kosi {code} yasungidwa",
     "courseCodeSavedExplanation": "Lembetsani kapena lowani ndipo tidzakulowetsani mu kosi yanu.",
-    "moderationRefusedContactDetails": "Uthenga wanu sunatumizidwe. Chosefera chokha chapeza zambiri zokhudzana ndi kulumikizana, monga nambala yafoni. Chonde zichotseni ndikuyesanso. Ngati mukuganiza kuti ichi ndi cholakwika, uzani mphunzitsi wanu.",
-    "moderationRefusedProfanity": "Uthenga wanu sunatumizidwe. Chosefera chokha chapeza mawu omwe sitilola mu macheza. Chonde sinthani ndikuyesanso. Ngati mukuganiza kuti ichi ndi cholakwika, uzani mphunzitsi wanu."
+    "moderationRefusedContactDetails": "Uthenga wanu sunatumizidwe. Chosefera chazokha chapeza zambiri zokhudzana ndi inu, monga nambala yafoni. Chonde zichotseni ndikuyesanso.",
+    "moderationRefusedProfanity": "Uthenga wanu sunatumizidwe. Chosefera chazokha chapeza mawu omwe sitilola macheza. Chonde sinthani ndikuyesanso."
 }

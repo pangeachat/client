@@ -1263,7 +1263,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-09-28 16:36:20.904924",
+    "@@last_modified": "2026-09-29 11:11:35.924357",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10931,6 +10931,6 @@
     "courseCodeLabel": "課程代碼",
     "courseCodeSaved": "課程代碼 {code} 已儲存",
     "courseCodeSavedExplanation": "註冊或登入，我們會將你加入課程。",
-    "moderationRefusedContactDetails": "你的訊息未能送出。自動篩選器偵測到聯絡資料，例如電話號碼。請移除後再試。如果你認為這是錯誤，請告知你的老師。",
-    "moderationRefusedProfanity": "你的訊息未能送出。自動篩選器偵測到聊天中不允許的字詞。請更改後再試。如果你認為這是錯誤，請告知你的老師。"
+    "moderationRefusedContactDetails": "訊息未能送出。自動篩選器偵測到聯絡資料，例如電話號碼。請移除後再試一次。",
+    "moderationRefusedProfanity": "訊息未能送出。自動篩選器偵測到聊天室不允許使用的字詞。請更改後再試一次。"
 }

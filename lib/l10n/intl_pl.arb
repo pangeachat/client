@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-09-28 16:36:17.639134",
+    "@@last_modified": "2026-09-29 11:11:31.976300",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10059,6 +10059,6 @@
     "courseCodeLabel": "Kod kursu",
     "courseCodeSaved": "Kod kursu {code} zapisany",
     "courseCodeSavedExplanation": "Zarejestruj się lub zaloguj, a my dodamy Cię do kursu.",
-    "moderationRefusedContactDetails": "Twoja wiadomość nie została wysłana. Automatyczny filtr wykrył dane kontaktowe, takie jak numer telefonu. Usuń je i spróbuj ponownie. Jeśli uważasz, że to pomyłka, powiadom swojego nauczyciela.",
-    "moderationRefusedProfanity": "Twoja wiadomość nie została wysłana. Automatyczny filtr wykrył słowo, którego nie zezwalamy używać na czacie. Zmień je i spróbuj ponownie. Jeśli uważasz, że to pomyłka, powiadom swojego nauczyciela."
+    "moderationRefusedContactDetails": "Twoja wiadomość nie została wysłana. Automatyczny filtr wykrył dane kontaktowe, takie jak numer telefonu. Usuń je i spróbuj ponownie.",
+    "moderationRefusedProfanity": "Twoja wiadomość nie została wysłana. Automatyczny filtr wykrył słowo, którego nie zezwalamy używać na czacie. Zmień je i spróbuj ponownie."
 }

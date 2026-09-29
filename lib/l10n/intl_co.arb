@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-09-28 16:36:10.526911",
+    "@@last_modified": "2026-09-29 11:11:24.082908",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2382,6 +2382,6 @@
     "courseCodeLabel": "Codice di corsu",
     "courseCodeSaved": "Codice di corsu {code} salvatu",
     "courseCodeSavedExplanation": "Iscrivetevi o cunnettatevi è vi aghjunghjeremu à u vostru corsu.",
-    "moderationRefusedContactDetails": "U vostru messagiu ùn hè statu mandatu. Un filtru automaticu hà trovu dati di cuntattu, cum'è un numeru di telefunu. Per piacè, cacciateli è riprovate. S'è vo pensate chì hè un sbagliu, dite à u vostru prufessore.",
-    "moderationRefusedProfanity": "U vostru messagiu ùn hè statu mandatu. Un filtru automaticu hà trovu una parolla chì ùn auturizemu micca in chat. Per piacè, cambiatela è riprovate. S'è vo pensate chì hè un sbagliu, dite à u vostru prufessore."
+    "moderationRefusedContactDetails": "U vostru messagiu ùn hè statu mandatu. Un filtru automaticu hà trovu dati di cuntattu, cum'è un numeru di telefunu. Per piacè, cacciateli è riprovate.",
+    "moderationRefusedProfanity": "U vostru messagiu ùn hè statu mandatu. Un filtru automaticu hà trovu una parolla chì ùn permettemu micca in chat. Per piacè, cambiatela è riprovate."
 }

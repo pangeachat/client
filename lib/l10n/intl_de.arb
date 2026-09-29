@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-09-28 16:36:10.486636",
+    "@@last_modified": "2026-09-29 11:11:24.173947",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9961,6 +9961,6 @@
     "courseCodeLabel": "Kurscode",
     "courseCodeSaved": "Kurscode {code} gespeichert",
     "courseCodeSavedExplanation": "Registrieren Sie sich oder melden Sie sich an, und wir fügen Sie Ihrem Kurs hinzu.",
-    "moderationRefusedContactDetails": "Ihre Nachricht wurde nicht gesendet. Ein automatischer Filter hat Kontaktdaten wie eine Telefonnummer gefunden. Bitte entfernen Sie diese und versuchen Sie es erneut. Wenn Sie glauben, dass dies ein Fehler ist, informieren Sie Ihren Lehrer.",
-    "moderationRefusedProfanity": "Ihre Nachricht wurde nicht gesendet. Ein automatischer Filter hat ein Wort gefunden, das wir im Chat nicht erlauben. Bitte ändern Sie es und versuchen Sie es erneut. Wenn Sie glauben, dass dies ein Fehler ist, informieren Sie Ihren Lehrer."
+    "moderationRefusedContactDetails": "Ihre Nachricht wurde nicht gesendet. Ein automatischer Filter hat Kontaktdaten wie eine Telefonnummer gefunden. Bitte entfernen Sie diese und versuchen Sie es erneut.",
+    "moderationRefusedProfanity": "Ihre Nachricht wurde nicht gesendet. Ein automatischer Filter hat ein Wort gefunden, das wir im Chat nicht erlauben. Bitte ändern Sie es und versuchen Sie es erneut."
 }

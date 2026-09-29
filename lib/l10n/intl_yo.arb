@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-09-28 16:36:24.525741",
+    "@@last_modified": "2026-09-29 11:11:36.939570",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2382,6 +2382,6 @@
     "courseCodeLabel": "Koodu ikẹkọọ",
     "courseCodeSaved": "Koodu ikẹkọọ {code} ti wà ní ìpamọ́",
     "courseCodeSavedExplanation": "Forúkọ sílẹ̀ tàbí wọlé, a ó sì fi kún ọ sí ikẹkọọ rẹ.",
-    "moderationRefusedContactDetails": "A kò fi ifiranṣẹ rẹ ranṣẹ. Àlàyé aládàáṣe rí àwọn àlàyé ìbánisọ̀rọ̀, bíi nọmba tẹlifoonu. Jọ̀wọ́ yọ wọ́n kúrò kí o sì tún gbìyànjú. Bí o bá rò pé àṣìṣe ni èyí, sọ fún olùkọ́ rẹ.",
-    "moderationRefusedProfanity": "A kò fi ifiranṣẹ rẹ ranṣẹ. Àlàyé aládàáṣe rí ọ̀rọ̀ kan tí a kò gbà láàyè nínú ìjíròrò. Jọ̀wọ́ yí i padà kí o sì tún gbìyànjú. Bí o bá rò pé àṣìṣe ni èyí, sọ fún olùkọ́ rẹ."
+    "moderationRefusedContactDetails": "A kò fi ifiranṣẹ rẹ ranṣẹ. Àlàyé aládàáṣe rí àwọn àlàyé ìbánisọ̀rọ̀, bíi nọ́ńbà tẹlifóònù. Jọ̀wọ́ yọ wọ́n kúrò kí o sì tún gbìyànjú.",
+    "moderationRefusedProfanity": "A kò fi ifiranṣẹ rẹ ranṣẹ. Àlàyé aládàáṣe rí ọ̀rọ̀ kan tí a kò gbà láàyè nínú ìjíròrò. Jọ̀wọ́ yí i padà kí o sì tún gbìyànjú."
 }

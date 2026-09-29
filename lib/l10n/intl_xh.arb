@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-09-28 16:36:20.888254",
+    "@@last_modified": "2026-09-29 11:11:36.030969",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2382,6 +2382,6 @@
     "courseCodeLabel": "Ikhowudi yekhosi",
     "courseCodeSaved": "Ikhowudi yekhosi {code} igciniwe",
     "courseCodeSavedExplanation": "Bhalisa okanye ungene kwaye siza kukongeza kwikhosi yakho.",
-    "moderationRefusedContactDetails": "Umyalezo wakho awuthunyelwanga. Isihluzi esizenzekelayo sifumene iinkcukacha zoqhagamshelwano, njengenombolo yefowuni. Nceda uzisuse uze uzame kwakhona. Ukuba ucinga ukuba oku kukuphazama, xelela utitshala wakho.",
-    "moderationRefusedProfanity": "Umyalezo wakho awuthunyelwanga. Isihluzi esizenzekelayo sifumene igama esingalivumeli encokolaneni. Nceda uliguqule uze uzame kwakhona. Ukuba ucinga ukuba oku kukuphazama, xelela utitshala wakho."
+    "moderationRefusedContactDetails": "Umyalezo wakho awuthunyelwanga. Isihluzi esizenzekelayo sifumene iinkcukacha zoqhagamshelwano, njengenombolo yefowuni. Nceda uzisuse uze uphinde uzame.",
+    "moderationRefusedProfanity": "Umyalezo wakho awuthunyelwanga. Isihluzi esizenzekelayo sifumene igama esingalivumeli kwincoko. Nceda ulitshintshe uze uphinde uzame."
 }

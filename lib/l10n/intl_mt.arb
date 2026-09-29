@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-09-28 16:36:16.809466",
+    "@@last_modified": "2026-09-29 11:11:30.920933",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2382,6 +2382,6 @@
     "courseCodeLabel": "Kodiċi tal-kors",
     "courseCodeSaved": "Kodiċi tal-kors {code} salvat",
     "courseCodeSavedExplanation": "Irreġistra jew idħol u aħna nżiduk mal-kors tiegħek.",
-    "moderationRefusedContactDetails": "Il-messaġġ tiegħek ma ntbagħatx. Filtru awtomatiku sab dettalji ta' kuntatt, bħal numru tat-telefon. Neħħihom u erġa' pprova. Jekk taħseb li dan huwa żball, għid lill-għalliem tiegħek.",
-    "moderationRefusedProfanity": "Il-messaġġ tiegħek ma ntbagħatx. Filtru awtomatiku sab kelma li ma nippermettux fiċ-chat. Jekk jogħġbok ibdelha u erġa' pprova. Jekk taħseb li dan huwa żball, għid lill-għalliem tiegħek."
+    "moderationRefusedContactDetails": "Il-messaġġ tiegħek ma ntbagħatx. Filtru awtomatiku sab dettalji ta' kuntatt, bħal numru tat-telefon. Neħħihom u erġa' pprova.",
+    "moderationRefusedProfanity": "Il-messaġġ tiegħek ma ntbagħatx. Filtru awtomatiku sab kelma li ma nippermettux fiċ-chat. Ibdelha u erġa' pprova."
 }

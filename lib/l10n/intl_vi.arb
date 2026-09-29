@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-28 16:36:20.454921",
+    "@@last_modified": "2026-09-29 11:11:35.373113",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7266,6 +7266,6 @@
     "courseCodeLabel": "Mã khóa học",
     "courseCodeSaved": "Đã lưu mã khóa học {code}",
     "courseCodeSavedExplanation": "Đăng ký hoặc đăng nhập và chúng tôi sẽ thêm bạn vào khóa học.",
-    "moderationRefusedContactDetails": "Tin nhắn của bạn không được gửi. Bộ lọc tự động đã phát hiện thông tin liên hệ, như số điện thoại. Vui lòng xóa chúng và thử lại. Nếu bạn cho rằng đây là lỗi, hãy báo cho giáo viên của bạn.",
-    "moderationRefusedProfanity": "Tin nhắn của bạn không được gửi. Bộ lọc tự động đã phát hiện một từ mà chúng tôi không cho phép trong cuộc trò chuyện. Vui lòng thay đổi từ đó và thử lại. Nếu bạn cho rằng đây là lỗi, hãy báo cho giáo viên của bạn."
+    "moderationRefusedContactDetails": "Tin nhắn của bạn chưa được gửi. Bộ lọc tự động đã phát hiện thông tin liên hệ, như số điện thoại. Vui lòng xóa và thử lại.",
+    "moderationRefusedProfanity": "Tin nhắn của bạn chưa được gửi. Bộ lọc tự động đã phát hiện một từ mà chúng tôi không cho phép trong cuộc trò chuyện. Vui lòng thay đổi và thử lại."
 }

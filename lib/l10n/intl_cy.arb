@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-09-28 16:36:10.519785",
+    "@@last_modified": "2026-09-29 11:11:25.415197",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2382,6 +2382,6 @@
     "courseCodeLabel": "Cod cwrs",
     "courseCodeSaved": "Cod cwrs {code} wedi'i gadw",
     "courseCodeSavedExplanation": "Cofrestrwch neu mewngofnodwch a byddwn yn eich ychwanegu at eich cwrs.",
-    "moderationRefusedContactDetails": "Ni chafodd eich neges ei hanfon. Canfu hidlydd awtomatig fanylion cyswllt, fel rhif ffôn. Tynnwch nhw a cheisiwch eto. Os ydych chi'n meddwl bod hwn yn gamgymeriad, dywedwch wrth eich athro.",
-    "moderationRefusedProfanity": "Ni chafodd eich neges ei hanfon. Canfu hidlydd awtomatig air na chaniateir gennym yn y sgwrs. Newidiwch ef a cheisiwch eto. Os ydych chi'n meddwl bod hwn yn gamgymeriad, dywedwch wrth eich athro."
+    "moderationRefusedContactDetails": "Ni chafodd eich neges ei hanfon. Canfu hidlydd awtomatig fanylion cyswllt, fel rhif ffôn. Tynnwch nhw a cheisiwch eto.",
+    "moderationRefusedProfanity": "Ni chafodd eich neges ei hanfon. Canfu hidlydd awtomatig air nad ydym yn ei ganiatáu mewn sgwrs. Newidiwch ef a cheisiwch eto."
 }

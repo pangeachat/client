@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-09-28 16:36:11.172133",
+    "@@last_modified": "2026-09-29 11:11:25.033104",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9971,6 +9971,6 @@
     "courseCodeLabel": "Kursuse kood",
     "courseCodeSaved": "Kursuse kood {code} salvestatud",
     "courseCodeSavedExplanation": "Registreeru või logi sisse ja me lisame sind kursusele.",
-    "moderationRefusedContactDetails": "Sinu sõnumit ei saadetud. Automaatne filter leidis kontaktandmeid, näiteks telefoninumbri. Palun eemalda need ja proovi uuesti. Kui arvad, et tegemist on veaga, teata sellest oma õpetajale.",
-    "moderationRefusedProfanity": "Sinu sõnumit ei saadetud. Automaatne filter leidis sõna, mida me vestluses ei luba. Palun muuda seda ja proovi uuesti. Kui arvad, et tegemist on veaga, teata sellest oma õpetajale."
+    "moderationRefusedContactDetails": "Sinu sõnumit ei saadetud. Automaatne filter tuvastas kontaktandmed, näiteks telefoninumbri. Palun eemalda need ja proovi uuesti.",
+    "moderationRefusedProfanity": "Sinu sõnumit ei saadetud. Automaatne filter tuvastas sõna, mida me vestluses ei luba. Palun muuda seda ja proovi uuesti."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-09-28 16:36:13.191469",
+    "@@last_modified": "2026-09-29 11:11:26.978335",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10077,6 +10077,6 @@
     "courseCodeLabel": "Kurzuskód",
     "courseCodeSaved": "A(z) {code} kurzuskód elmentve",
     "courseCodeSavedExplanation": "Regisztrálj vagy jelentkezz be, és hozzáadunk a kurzusodhoz.",
-    "moderationRefusedContactDetails": "Az üzenet nem került elküldésre. Az automatikus szűrő elérhetőségi adatokat, például telefonszámot talált. Kérjük, távolítsa el ezeket, és próbálja újra. Ha úgy gondolja, hogy ez hiba, jelezze tanárának.",
-    "moderationRefusedProfanity": "Az üzenet nem került elküldésre. Az automatikus szűrő olyan szót talált, amelyet nem engedélyezünk a csevegésben. Kérjük, módosítsa, és próbálja újra. Ha úgy gondolja, hogy ez hiba, jelezze tanárának."
+    "moderationRefusedContactDetails": "Az üzenet nem került elküldésre. Az automatikus szűrő elérhetőségi adatokat, például telefonszámot talált. Kérjük, távolítsa el ezeket, és próbálja újra.",
+    "moderationRefusedProfanity": "Az üzenet nem került elküldésre. Az automatikus szűrő olyan szót talált, amelyet nem engedélyezünk a csevegésben. Kérjük, módosítsa, és próbálja újra."
 }

@@ -1362,7 +1362,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-09-28 16:36:13.354818",
+    "@@last_modified": "2026-09-29 11:11:27.440661",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10910,6 +10910,6 @@
     "courseCodeLabel": "Codice de curso",
     "courseCodeSaved": "Codice de curso {code} salvate",
     "courseCodeSavedExplanation": "Registra te o aperi session e nos te addera a tu curso.",
-    "moderationRefusedContactDetails": "Tu message non esseva inviate. Un filtro automatic trovava datos de contacto, como un numero de telephono. Per favor remove los e reprova. Si tu pensa que isto es un error, dice a tu instructor.",
-    "moderationRefusedProfanity": "Tu message non esseva inviate. Un filtro automatic trovava un parola que nos non permitte in le chat. Per favor cambia lo e reprova. Si tu pensa que isto es un error, dice a tu instructor."
+    "moderationRefusedContactDetails": "Tu message non esseva inviate. Un filtro automatic trovava datos de contacto, como un numero de telephono. Per favor, remove los e reprova.",
+    "moderationRefusedProfanity": "Tu message non esseva inviate. Un filtro automatic trovava un parola que nos non permitte in le chat. Per favor, cambia lo e reprova."
 }

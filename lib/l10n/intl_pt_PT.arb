@@ -2559,7 +2559,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-09-28 16:36:17.879157",
+    "@@last_modified": "2026-09-29 11:11:32.369326",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10891,6 +10891,6 @@
     "courseCodeLabel": "Código do curso",
     "courseCodeSaved": "Código do curso {code} guardado",
     "courseCodeSavedExplanation": "Registe-se ou inicie sessão e adicioná-lo-emos ao seu curso.",
-    "moderationRefusedContactDetails": "A sua mensagem não foi enviada. Um filtro automático detetou detalhes de contacto, como um número de telefone. Por favor, remova-os e tente novamente. Se pensa que isto é um erro, diga ao seu professor.",
-    "moderationRefusedProfanity": "A sua mensagem não foi enviada. Um filtro automático detetou uma palavra que não permitimos no chat. Por favor, altere-a e tente novamente. Se pensa que isto é um erro, diga ao seu professor."
+    "moderationRefusedContactDetails": "A sua mensagem não foi enviada. Um filtro automático detetou detalhes de contacto, como um número de telefone. Por favor, remova-os e tente novamente.",
+    "moderationRefusedProfanity": "A sua mensagem não foi enviada. Um filtro automático detetou uma palavra que não permitimos no chat. Por favor, altere-a e tente novamente."
 }

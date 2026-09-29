@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-09-28 16:36:12.520136",
+    "@@last_modified": "2026-09-29 11:11:24.762170",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8193,6 +8193,6 @@
     "courseCodeLabel": "Código de curso",
     "courseCodeSaved": "Código de curso {code} guardado",
     "courseCodeSavedExplanation": "Regístrate o inicia sesión y te añadiremos a tu curso.",
-    "moderationRefusedContactDetails": "Tu mensaje no fue enviado. Un filtro automático encontró datos de contacto, como un número de teléfono. Por favor, elimínalos e inténtalo de nuevo. Si crees que es un error, díselo a tu profesor.",
-    "moderationRefusedProfanity": "Tu mensaje no fue enviado. Un filtro automático encontró una palabra que no permitimos en el chat. Por favor, cámbiala e inténtalo de nuevo. Si crees que es un error, díselo a tu profesor."
+    "moderationRefusedContactDetails": "Tu mensaje no fue enviado. Un filtro automático encontró datos de contacto, como un número de teléfono. Por favor, elimínalos e inténtalo de nuevo.",
+    "moderationRefusedProfanity": "Tu mensaje no fue enviado. Un filtro automático encontró una palabra que no permitimos en el chat. Por favor, cámbiala e inténtalo de nuevo."
 }

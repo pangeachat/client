@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-28 16:36:10.307201",
+    "@@last_modified": "2026-09-29 11:11:24.033124",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10101,6 +10101,6 @@
     "courseCodeLabel": "Codi de curs",
     "courseCodeSaved": "Codi de curs {code} desat",
     "courseCodeSavedExplanation": "Registra't o inicia sessió i t'afegirem al teu curs.",
-    "moderationRefusedContactDetails": "El teu missatge no s'ha enviat. Un filtre automàtic ha detectat dades de contacte, com ara un número de telèfon. Si us plau, elimina-les i torna-ho a provar. Si creus que és un error, informa el teu professor.",
-    "moderationRefusedProfanity": "El teu missatge no s'ha enviat. Un filtre automàtic ha detectat una paraula que no permetem al xat. Si us plau, canvia-la i torna-ho a provar. Si creus que és un error, informa el teu professor."
+    "moderationRefusedContactDetails": "El teu missatge no s'ha enviat. Un filtre automàtic ha detectat dades de contacte, com ara un número de telèfon. Si us plau, elimina-les i torna-ho a provar.",
+    "moderationRefusedProfanity": "El teu missatge no s'ha enviat. Un filtre automàtic ha detectat una paraula que no permetem al xat. Si us plau, canvia-la i torna-ho a provar."
 }

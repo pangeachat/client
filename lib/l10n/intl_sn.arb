@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-09-28 16:36:18.995496",
+    "@@last_modified": "2026-09-29 11:11:33.680521",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2382,6 +2382,6 @@
     "courseCodeLabel": "Kodhi yekosi",
     "courseCodeSaved": "Kodhi yekosi {code} yachengetwa",
     "courseCodeSavedExplanation": "Saina kana kupinda uye tichakuwedzera kukosi yako.",
-    "moderationRefusedContactDetails": "Meseji yako haina kutumirwa. Sisitimu yedu yakawana ruzivo rwekuonana, senge nhamba dzenhare. Ndokumbira ubvise izvi woedza zvakare. Kana uchifunga kuti ikukanganisa, taura nemudzidzisi wako.",
-    "moderationRefusedProfanity": "Meseji yako haina kutumirwa. Sisitimu yedu yakawana izwi ratisingabvumidze muchat. Ndokumbira urichinje woedza zvakare. Kana uchifunga kuti ikukanganisa, taura nemudzidzisi wako."
+    "moderationRefusedContactDetails": "Meseji yako haina kutumirwa. Sisitimu yedu yakawana ruzivo rwekuonana, senge nhamba dzerunhare. Ndokumbira ubvise izvi woedza zvakare.",
+    "moderationRefusedProfanity": "Meseji yako haina kutumirwa. Sisitimu yedu yakawana izwi ratisingabvumidze muchat. Ndokumbira urichinje woedza zvakare."
 }

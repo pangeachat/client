@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-09-28 16:36:12.325545",
+    "@@last_modified": "2026-09-29 11:11:26.544155",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2382,6 +2382,6 @@
     "courseCodeLabel": "Lambar aji",
     "courseCodeSaved": "An adana lambar aji {code}",
     "courseCodeSavedExplanation": "Yi rajista ko shiga kuma za mu ƙara ka a ajinka.",
-    "moderationRefusedContactDetails": "Ba a aika saƙonka ba. Wani tace-tace ta atomatik ya gano bayanan tuntuɓa, kamar lambar waya. Da fatan za ka cire su kuma ka sake gwadawa. Idan kana ganin wannan kuskure ne, gaya wa malamin ka.",
-    "moderationRefusedProfanity": "Ba a aika saƙonka ba. Wani tace-tace ta atomatik ya gano kalmar da ba mu yarda da ita a cikin taɗi ba. Da fatan za ka canza ta kuma ka sake gwadawa. Idan kana ganin wannan kuskure ne, gaya wa malamin ka."
+    "moderationRefusedContactDetails": "Ba a aika saƙonka ba. Wani tace-saƙo ta atomatik ya gano bayanan tuntuɓa, kamar lambar waya. Da fatan za a cire su sannan a sake gwadawa.",
+    "moderationRefusedProfanity": "Ba a aika saƙonka ba. Wani tace-saƙo ta atomatik ya gano wata kalma da ba mu yarda da ita a cikin taɗi ba. Da fatan za a canza ta sannan a sake gwadawa."
 }

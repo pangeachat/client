@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-09-28 16:36:18.889329",
+    "@@last_modified": "2026-09-29 11:11:33.682039",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2382,6 +2382,6 @@
     "courseCodeLabel": "Kodi i kursit",
     "courseCodeSaved": "Kodi i kursit {code} u ruajt",
     "courseCodeSavedExplanation": "Regjistrohuni ose identifikohuni dhe ne do t'ju shtojmë në kursin tuaj.",
-    "moderationRefusedContactDetails": "Mesazhi juaj nuk u dërgua. Një filtër automatik gjeti detaje kontakti, si një numër telefoni. Ju lutemi hiqini ato dhe provoni përsëri. Nëse mendoni se ky është një gabim, njoftoni mësuesin tuaj.",
-    "moderationRefusedProfanity": "Mesazhi juaj nuk u dërgua. Një filtër automatik gjeti një fjalë që ne nuk e lejojmë në bisedë. Ju lutemi ndryshojeni dhe provoni përsëri. Nëse mendoni se ky është një gabim, njoftoni mësuesin tuaj."
+    "moderationRefusedContactDetails": "Mesazhi juaj nuk u dërgua. Një filtër automatik gjeti detaje kontakti, si numër telefoni. Ju lutemi, hiqini ato dhe provoni sërish.",
+    "moderationRefusedProfanity": "Mesazhi juaj nuk u dërgua. Një filtër automatik gjeti një fjalë që ne nuk e lejojmë në bisedë. Ju lutemi, ndryshojeni dhe provoni sërish."
 }

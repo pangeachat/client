@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-09-28 16:36:11.553944",
+    "@@last_modified": "2026-09-29 11:11:25.345123",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9974,6 +9974,6 @@
     "courseCodeLabel": "Ikastaro-kodea",
     "courseCodeSaved": "{code} ikastaro-kodea gordeta",
     "courseCodeSavedExplanation": "Eman izena edo hasi saioa eta zure ikastarora gehituko zaitugu.",
-    "moderationRefusedContactDetails": "Zure mezua ez da bidali. Iragazki automatiko batek harremanetarako datuak aurkitu ditu, telefono-zenbaki bat adibidez. Mesedez, kendu itzazu eta saiatu berriro. Akats bat dela uste baduzu, esan zure irakasleari.",
-    "moderationRefusedProfanity": "Zure mezua ez da bidali. Iragazki automatiko batek txatean onartzen ez dugun hitz bat aurkitu du. Mesedez, aldatu eta saiatu berriro. Akats bat dela uste baduzu, esan zure irakasleari."
+    "moderationRefusedContactDetails": "Zure mezua ez da bidali. Iragazki automatiko batek harremanetarako datuak aurkitu ditu, hala nola telefono-zenbaki bat. Mesedez, kendu itzazu eta saiatu berriro.",
+    "moderationRefusedProfanity": "Zure mezua ez da bidali. Iragazki automatiko batek txatean onartzen ez dugun hitz bat aurkitu du. Mesedez, aldatu eta saiatu berriro."
 }

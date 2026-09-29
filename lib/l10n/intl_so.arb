@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-09-28 16:36:18.931720",
+    "@@last_modified": "2026-09-29 11:11:34.116162",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2382,6 +2382,6 @@
     "courseCodeLabel": "Koodhka koorsada",
     "courseCodeSaved": "Koodhka koorsada {code} waa la keydiyay",
     "courseCodeSavedExplanation": "Isdiiwaangeli ama soo gal waxaanan kugu dari doonaa koorsadaada.",
-    "moderationRefusedContactDetails": "Fariintaada lama dirin. Shaandheeye otomaatig ah ayaa helay faahfaahinta xiriirka, sida nambarka taleefanka. Fadlan ka saar oo isku day mar kale. Haddii aad u malaynayso in tani ay tahay qalad, u sheeg macallinkaaga.",
-    "moderationRefusedProfanity": "Fariintaada lama dirin. Shaandheeye otomaatig ah ayaa helay erey aanan u oggolaanayn sheekaysiga. Fadlan beddel oo isku day mar kale. Haddii aad u malaynayso in tani ay tahay qalad, u sheeg macallinkaaga."
+    "moderationRefusedContactDetails": "Fariintaada lama dirin. Shaandheeye otomaatig ah ayaa helay faahfaahin xiriir, sida nambar taleefan. Fadlan ka saar oo mar kale isku day.",
+    "moderationRefusedProfanity": "Fariintaada lama dirin. Shaandheeye otomaatig ah ayaa helay eray aanan u oggolaanayn sheekaysiga. Fadlan beddel oo mar kale isku day."
 }
