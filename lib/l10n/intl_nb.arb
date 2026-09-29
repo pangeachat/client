@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-29 10:03:19.006058",
+    "@@last_modified": "2026-09-28 16:36:16.886606",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10019,6 +10019,12 @@
     "summaryFeedbackReceived": "Takk! Vi har mottatt tilbakemeldingen din.",
     "summaryFeedbackFailed": "Kunne ikke sende tilbakemeldingen din. Vennligst prøv igjen.",
     "summaryFeedbackProcessing": "Sender tilbakemeldingen din og oppdaterer sammendraget ...",
+    "callTranscriptTranscribing": "Transkriberer fortsatt opptaket fra {name}…",
+    "callTranscriptSeekTo": "Spill av fra {time}",
+    "callTranscriptRecordings": "Opptak",
+    "callTranscriptFullCall": "Hele samtalen",
+    "callTranscriptPreparingRecording": "Forbereder hele opptaket…",
+    "callTranscriptNoRecording": "Ingen opptak av hele samtalen.",
     "callTranscriptNotSubscribed": "{name} hadde ikke et abonnement under denne samtalen, så det som ble sagt ble ikke transkribert.",
     "joinYourCourse": "Bli med på kurset ditt",
     "courseCodeJoinExplanation": "Logg inn eller registrer deg, så bruker vi kurskoden din til å legge deg til kurset automatisk.",

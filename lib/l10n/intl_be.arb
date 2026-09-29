@@ -3548,7 +3548,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-09-29 10:03:09.731021",
+    "@@last_modified": "2026-09-28 16:36:09.731272",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9976,6 +9976,12 @@
     "summaryFeedbackReceived": "Дзякуй! Мы атрымалі ваш водгук.",
     "summaryFeedbackFailed": "Не атрымалася адправіць ваш водгук. Калі ласка, паспрабуйце яшчэ раз.",
     "summaryFeedbackProcessing": "Адпраўка вашага водгуку і абнаўленне зводкі…",
+    "callTranscriptTranscribing": "Запіс ад {name} усё яшчэ расшыфроўваецца…",
+    "callTranscriptSeekTo": "Прайграць з {time}",
+    "callTranscriptRecordings": "Запісы",
+    "callTranscriptFullCall": "Поўны званок",
+    "callTranscriptPreparingRecording": "Падрыхтоўка поўнага запісу…",
+    "callTranscriptNoRecording": "Няма запісу поўнага званка.",
     "callTranscriptNotSubscribed": "У {name} не было падпіскі падчас гэтага званка, таму сказанае не было расшыфравана.",
     "joinYourCourse": "Далучайцеся да свайго курса",
     "courseCodeJoinExplanation": "Увайдзіце або зарэгіструйцеся, і мы выкарыстаем ваш код курса, каб аўтаматычна дадаць вас да яго.",

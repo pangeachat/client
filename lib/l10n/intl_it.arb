@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-29 10:03:15.048586",
+    "@@last_modified": "2026-09-28 16:36:15.078968",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -10035,6 +10035,12 @@
     "summaryFeedbackReceived": "Grazie! Abbiamo ricevuto il tuo feedback.",
     "summaryFeedbackFailed": "Impossibile inviare il tuo feedback. Riprova.",
     "summaryFeedbackProcessing": "Invio del feedback e aggiornamento del riepilogo…",
+    "callTranscriptTranscribing": "Trascrizione della registrazione di {name} ancora in corso…",
+    "callTranscriptSeekTo": "Riproduci da {time}",
+    "callTranscriptRecordings": "Registrazioni",
+    "callTranscriptFullCall": "Chiamata completa",
+    "callTranscriptPreparingRecording": "Preparazione della registrazione completa…",
+    "callTranscriptNoRecording": "Nessuna registrazione della chiamata completa.",
     "callTranscriptNotSubscribed": "{name} non aveva un abbonamento durante questa chiamata, quindi ciò che è stato detto non è stato trascritto.",
     "joinYourCourse": "Unisciti al tuo corso",
     "courseCodeJoinExplanation": "Accedi o iscriviti, e useremo il tuo codice corso per aggiungerti automaticamente al tuo corso.",

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-29 10:03:20.406698",
+    "@@last_modified": "2026-09-28 16:36:17.842830",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9962,6 +9962,12 @@
     "summaryFeedbackReceived": "Obrigado! Recebemos seu feedback.",
     "summaryFeedbackFailed": "Não foi possível enviar seu feedback. Por favor, tente novamente.",
     "summaryFeedbackProcessing": "Enviando seu feedback e atualizando o resumo…",
+    "callTranscriptTranscribing": "Ainda transcrevendo a gravação de {name}…",
+    "callTranscriptSeekTo": "Reproduzir de {time}",
+    "callTranscriptRecordings": "Gravações",
+    "callTranscriptFullCall": "Chamada completa",
+    "callTranscriptPreparingRecording": "Preparando a gravação completa…",
+    "callTranscriptNoRecording": "Nenhuma gravação da chamada completa.",
     "callTranscriptNotSubscribed": "{name} não tinha uma assinatura durante esta chamada, então o que foi dito não foi transcrito.",
     "joinYourCourse": "Entrar no seu curso",
     "courseCodeJoinExplanation": "Faça login ou cadastre-se, e usaremos seu código do curso para adicioná-lo automaticamente ao seu curso.",

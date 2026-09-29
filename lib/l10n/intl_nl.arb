@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-29 10:03:19.459713",
+    "@@last_modified": "2026-09-28 16:36:17.318494",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9962,6 +9962,12 @@
     "summaryFeedbackReceived": "Bedankt! We hebben je feedback ontvangen.",
     "summaryFeedbackFailed": "Feedback kon niet worden verzonden. Probeer het opnieuw.",
     "summaryFeedbackProcessing": "Je feedback wordt verzonden en de samenvatting wordt bijgewerkt…",
+    "callTranscriptTranscribing": "Opname van {name} wordt nog getranscribeerd…",
+    "callTranscriptSeekTo": "Afspelen vanaf {time}",
+    "callTranscriptRecordings": "Opnames",
+    "callTranscriptFullCall": "Volledig gesprek",
+    "callTranscriptPreparingRecording": "De volledige opname wordt voorbereid…",
+    "callTranscriptNoRecording": "Geen opname van het volledige gesprek.",
     "callTranscriptNotSubscribed": "{name} had geen abonnement tijdens dit gesprek, dus wat er werd gezegd, is niet getranscribeerd.",
     "joinYourCourse": "Deelnemen aan je cursus",
     "courseCodeJoinExplanation": "Log in of meld je aan, en we gebruiken je cursuscode om je automatisch aan je cursus toe te voegen.",

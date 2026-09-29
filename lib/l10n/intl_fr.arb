@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-09-29 10:03:12.076571",
+    "@@last_modified": "2026-09-28 16:36:11.390131",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10317,6 +10317,12 @@
     "summaryFeedbackReceived": "Merci ! Nous avons bien reçu vos commentaires.",
     "summaryFeedbackFailed": "Impossible d'envoyer vos commentaires. Veuillez réessayer.",
     "summaryFeedbackProcessing": "Envoi de vos commentaires et mise à jour du résumé…",
+    "callTranscriptTranscribing": "Transcription de l'enregistrement de {name} en cours…",
+    "callTranscriptSeekTo": "Écouter à partir de {time}",
+    "callTranscriptRecordings": "Enregistrements",
+    "callTranscriptFullCall": "Appel complet",
+    "callTranscriptPreparingRecording": "Préparation de l'enregistrement complet…",
+    "callTranscriptNoRecording": "Aucun enregistrement de l'appel complet.",
     "callTranscriptNotSubscribed": "{name} n'avait pas d'abonnement pendant cet appel, donc ce qui a été dit n'a pas été transcrit.",
     "joinYourCourse": "Rejoignez votre cours",
     "courseCodeJoinExplanation": "Connectez-vous ou inscrivez-vous, et nous utiliserons votre code de cours pour vous ajouter automatiquement à votre cours.",

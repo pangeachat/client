@@ -1802,7 +1802,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-09-29 10:03:22.411428",
+    "@@last_modified": "2026-09-28 16:36:18.446157",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10907,6 +10907,12 @@
     "summaryFeedbackReceived": "Hvala! Prejeli smo vaše povratne informacije.",
     "summaryFeedbackFailed": "Povratnih informacij ni bilo mogoče poslati. Poskusite znova.",
     "summaryFeedbackProcessing": "Pošiljanje vaših povratnih informacij in posodabljanje povzetka …",
+    "callTranscriptTranscribing": "Še vedno prepisujem posnetek od {name}…",
+    "callTranscriptSeekTo": "Predvajaj od {time}",
+    "callTranscriptRecordings": "Posnetki",
+    "callTranscriptFullCall": "Celoten klic",
+    "callTranscriptPreparingRecording": "Pripravljam celoten posnetek…",
+    "callTranscriptNoRecording": "Ni posnetka celotnega klica.",
     "callTranscriptNotSubscribed": "{name} med tem klicem ni imel naročnine, zato izgovorjeno ni bilo prepisano.",
     "joinYourCourse": "Pridružite se svojemu tečaju",
     "courseCodeJoinExplanation": "Prijavite se ali se registrirajte in s kodo tečaja vas bomo samodejno dodali v tečaj.",

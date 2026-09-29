@@ -3093,7 +3093,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-09-29 10:03:24.482874",
+    "@@last_modified": "2026-09-28 16:36:19.784254",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10594,6 +10594,12 @@
     "summaryFeedbackReceived": "ขอบคุณ! เราได้รับความคิดเห็นของคุณแล้ว",
     "summaryFeedbackFailed": "ไม่สามารถส่งความคิดเห็นของคุณได้ โปรดลองอีกครั้ง",
     "summaryFeedbackProcessing": "กำลังส่งคำติชมและอัปเดตสรุปของคุณ…",
+    "callTranscriptTranscribing": "กำลังถอดเสียงบันทึกจาก {name}…",
+    "callTranscriptSeekTo": "เล่นจาก {time}",
+    "callTranscriptRecordings": "การบันทึก",
+    "callTranscriptFullCall": "การโทรทั้งหมด",
+    "callTranscriptPreparingRecording": "กำลังเตรียมการบันทึกทั้งหมด…",
+    "callTranscriptNoRecording": "ไม่มีการบันทึกการโทรทั้งหมด",
     "callTranscriptNotSubscribed": "{name} ไม่มีสิทธิ์การเป็นสมาชิกในระหว่างการโทรนี้ ดังนั้นสิ่งที่พูดจึงไม่ถูกถอดเสียง",
     "joinYourCourse": "เข้าร่วมคอร์สของคุณ",
     "courseCodeJoinExplanation": "เข้าสู่ระบบหรือลงทะเบียน แล้วเราจะใช้รหัสคอร์สของคุณเพื่อเพิ่มคุณเข้าสู่คอร์สโดยอัตโนมัติ",

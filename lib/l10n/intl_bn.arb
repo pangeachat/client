@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-29 10:03:09.277925",
+    "@@last_modified": "2026-09-28 16:36:09.532619",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10590,6 +10590,12 @@
     "summaryFeedbackReceived": "ধন্যবাদ! আমরা আপনার মতামত পেয়েছি।",
     "summaryFeedbackFailed": "আপনার মতামত পাঠানো যায়নি। অনুগ্রহ করে আবার চেষ্টা করুন।",
     "summaryFeedbackProcessing": "আপনার প্রতিক্রিয়া পাঠানো হচ্ছে এবং সারসংক্ষেপ আপডেট করা হচ্ছে…",
+    "callTranscriptTranscribing": "{name} থেকে রেকর্ডিং প্রতিলিপি করা হচ্ছে…",
+    "callTranscriptSeekTo": "{time} থেকে চালান",
+    "callTranscriptRecordings": "রেকর্ডিংগুলি",
+    "callTranscriptFullCall": "সম্পূর্ণ কল",
+    "callTranscriptPreparingRecording": "সম্পূর্ণ রেকর্ডিং প্রস্তুত করা হচ্ছে…",
+    "callTranscriptNoRecording": "সম্পূর্ণ কলের কোনো রেকর্ডিং নেই।",
     "callTranscriptNotSubscribed": "{name} এর এই কলে কোনো সাবস্ক্রিপশন ছিল না, তাই যা বলা হয়েছে তা প্রতিলিপি করা হয়নি।",
     "joinYourCourse": "আপনার কোর্সে যোগ দিন",
     "courseCodeJoinExplanation": "লগ ইন করুন অথবা সাইন আপ করুন, এবং আমরা আপনার কোর্স কোড ব্যবহার করে আপনাকে স্বয়ংক্রিয়ভাবে আপনার কোর্সে যোগ করব।",

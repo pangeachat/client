@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-29 10:03:23.215838",
+    "@@last_modified": "2026-09-28 16:36:18.787867",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10911,6 +10911,12 @@
     "summaryFeedbackReceived": "Hvala! Primili smo vaše povratne informacije.",
     "summaryFeedbackFailed": "Nismo mogli da pošaljemo vaše povratne informacije. Pokušajte ponovo.",
     "summaryFeedbackProcessing": "Šaljemo vaše povratne informacije i ažuriramo rezime…",
+    "callTranscriptTranscribing": "I dalje transkribujem snimak od {name}…",
+    "callTranscriptSeekTo": "Reprodukuj od {time}",
+    "callTranscriptRecordings": "Snimci",
+    "callTranscriptFullCall": "Ceo poziv",
+    "callTranscriptPreparingRecording": "Pripremam ceo snimak…",
+    "callTranscriptNoRecording": "Nema snimka celog poziva.",
     "callTranscriptNotSubscribed": "{name} nije imao pretplatu tokom ovog poziva, tako da izgovoreno nije transkribovano.",
     "joinYourCourse": "Pridružite se svom kursu",
     "courseCodeJoinExplanation": "Prijavite se ili se registrujte, a mi ćemo koristiti vaš kod kursa da vas automatski dodamo na vaš kurs.",

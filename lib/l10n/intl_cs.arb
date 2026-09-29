@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-09-29 10:03:10.990965",
+    "@@last_modified": "2026-09-28 16:36:10.530757",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10456,6 +10456,12 @@
     "summaryFeedbackReceived": "Díky! Vaše zpětná vazba byla přijata.",
     "summaryFeedbackFailed": "Nepodařilo se odeslat vaši zpětnou vazbu. Zkuste to prosím znovu.",
     "summaryFeedbackProcessing": "Odesílání vaší zpětné vazby a aktualizace souhrnu…",
+    "callTranscriptTranscribing": "Stále přepisuji nahrávku od {name}…",
+    "callTranscriptSeekTo": "Přehrát od {time}",
+    "callTranscriptRecordings": "Nahrávky",
+    "callTranscriptFullCall": "Celý hovor",
+    "callTranscriptPreparingRecording": "Připravuji celou nahrávku…",
+    "callTranscriptNoRecording": "Žádná nahrávka celého hovoru.",
     "callTranscriptNotSubscribed": "{name} neměl/a během tohoto hovoru předplatné, takže to, co bylo řečeno, nebylo přepsáno.",
     "joinYourCourse": "Připojte se ke svému kurzu",
     "courseCodeJoinExplanation": "Přihlaste se nebo se zaregistrujte a my použijeme váš kód kurzu k automatickému přidání do kurzu.",

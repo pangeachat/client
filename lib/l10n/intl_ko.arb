@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-29 10:03:16.176452",
+    "@@last_modified": "2026-09-28 16:36:14.396020",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10155,6 +10155,12 @@
     "summaryFeedbackReceived": "감사합니다! 피드백이 접수되었습니다.",
     "summaryFeedbackFailed": "피드백을 보낼 수 없습니다. 다시 시도해 주세요.",
     "summaryFeedbackProcessing": "피드백을 보내고 요약을 업데이트하는 중…",
+    "callTranscriptTranscribing": "{name}님의 녹음을 여전히 전사 중입니다…",
+    "callTranscriptSeekTo": "{time}부터 재생",
+    "callTranscriptRecordings": "녹음",
+    "callTranscriptFullCall": "전체 통화",
+    "callTranscriptPreparingRecording": "전체 녹음 준비 중…",
+    "callTranscriptNoRecording": "전체 통화 녹음이 없습니다.",
     "callTranscriptNotSubscribed": "{name}님은 이 통화 중에 구독하지 않으셨으므로, 대화 내용이 기록되지 않았습니다.",
     "joinYourCourse": "코스 참여하기",
     "courseCodeJoinExplanation": "로그인 또는 가입하시면 코스 코드를 사용하여 자동으로 코스에 추가해 드립니다.",
