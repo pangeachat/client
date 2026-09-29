@@ -594,12 +594,14 @@ class CallTranscriptContent {
   /// discriminator?)`, and two mechanisms keep it so once a discriminator is in
   /// play. A peer id lives in a DISTINCT NAMESPACE (`pangea.call_transcript
   /// .spoken` vs the authentic `pangea.call_transcript`), so it can never equal
-  /// an authentic id whatever the device id holds -- [usableDeviceId] accepts
+  /// an authentic id whatever any field holds -- [usableDeviceId] accepts
   /// colons, so an authentic device like `D:en` would otherwise collide with a
-  /// peer `(device D, language en)`. And the device segment is
-  /// LENGTH-DELIMITED, so a device id containing the separator cannot
-  /// reconstruct a different `(device, discriminator)` pair (`A:B` + `en` stays
-  /// distinct from `A` + `B:en`).
+  /// peer `(device D, language en)`. And EVERY interior variable-length field --
+  /// callKey, senderId AND device -- is LENGTH-DELIMITED, so no field containing
+  /// the separator can reconstruct a different tuple (`A:B` + `en` stays distinct
+  /// from `A` + `B:en`, and `('a:b', 'c')` stays distinct from `('a', 'b:c')`).
+  /// A Matrix id or event id can hold colons, so the id is injective over the
+  /// whole tuple without assuming any field is colon-free.
   static String txnId(
     String callKey,
     String senderId,
@@ -611,15 +613,18 @@ class CallTranscriptContent {
     if (discriminator == null || discriminator.isEmpty) {
       return 'pangea.call_transcript:$callKey:$senderId:$device';
     }
-    // Peer-produced half (#8792). A DISTINCT namespace: the character after
-    // `pangea.call_transcript` is `:` for an authentic id and `.` here, so a
-    // peer id can never equal an authentic one whatever the device id holds.
-    // The device is LENGTH-DELIMITED so a device id containing the separator
-    // cannot reconstruct a different (device, language) pair -- the id stays
-    // injective without assuming device ids or language codes are colon-free.
-    // Keyed by language so a re-transcribe in another language is a distinct
-    // event; an identical-language retry keeps the same id and stays idempotent.
-    return 'pangea.call_transcript.spoken:$callKey:$senderId:'
+    // Peer-produced half (#8792). A DISTINCT namespace (the char after
+    // `pangea.call_transcript` is `.` here vs `:` for an authentic id) makes a
+    // peer id disjoint from every authentic id. EVERY interior variable-length
+    // field is LENGTH-DELIMITED -- callKey, senderId and device -- so the id is
+    // injective over the whole (callKey, senderId, device, discriminator) tuple
+    // no matter what any field contains (a Matrix id or event id can hold
+    // colons). The trailing discriminator needs no length: it is the final
+    // field. Keyed by language so a re-transcribe in another language is a
+    // distinct event; an identical-language retry keeps the same id (idempotent).
+    return 'pangea.call_transcript.spoken:'
+        '${callKey.length}:$callKey:'
+        '${senderId.length}:$senderId:'
         '${device.length}:$device:$discriminator';
   }
 }

@@ -470,16 +470,17 @@ void main() {
       },
     );
 
-    test('the peer namespace alone separates a device that mimics the body', () {
-      // Authentic device "1:D:en" reconstructs the peer body AFTER its length
-      // prefix, so here ONLY the distinct `.spoken` namespace keeps the two ids
-      // apart.
+    test('the peer namespace keeps a peer id disjoint from a reconstructed '
+        'authentic id', () {
+      // With every interior field length-framed, a peer body is still a plain
+      // string an authentic device id could spell out verbatim: an authentic
+      // (callKey "1", sender "k", device "1:s:1:d:x") reproduces the peer body
+      // for (callKey "k", sender "s", device "d", language "x") exactly. ONLY
+      // the distinct `.spoken` namespace keeps the two apart.
       // Mutation proof: dropping the `.spoken` namespace makes these equal -> RED.
       expect(
-        CallTranscriptContent.txnId('c', '@w:h', '1:D:en'),
-        isNot(
-          CallTranscriptContent.txnId('c', '@w:h', 'D', discriminator: 'en'),
-        ),
+        CallTranscriptContent.txnId('1', 'k', '1:s:1:d:x'),
+        isNot(CallTranscriptContent.txnId('k', 's', 'd', discriminator: 'x')),
       );
     });
 
@@ -487,9 +488,9 @@ void main() {
       'a device id with the separator stays injective (length-delimited)',
       () {
         // (device "A:B", language "en") and (device "A", language "B:en") share
-        // one colon-joined body; the length prefix disambiguates them.
-        // Mutation proof: removing the `${device.length}:` prefix makes both
-        // "...:A:B:en" -> equal -> RED.
+        // one colon-joined body; the device length prefix disambiguates them.
+        // Mutation proof: removing the device `${device.length}:` prefix makes
+        // both "...:@w:h:A:B:en" -> equal -> RED.
         expect(
           CallTranscriptContent.txnId('c', '@w:h', 'A:B', discriminator: 'en'),
           isNot(
@@ -503,6 +504,22 @@ void main() {
         );
       },
     );
+
+    test('the callKey/senderId boundary is injective', () {
+      // callKey and senderId are variable-length too, so framing only the device
+      // still lets the boundary between them slide: (callKey "a:b", sender "c")
+      // and (callKey "a", sender "b:c") share the body "a:b:c". Framing all three
+      // interior fields keeps them distinct.
+      // Mutation proof: framing only the device (reverting the callKey/senderId
+      // length prefixes) makes both
+      // "pangea.call_transcript.spoken:a:b:c:1:D:en" -> equal -> RED.
+      expect(
+        CallTranscriptContent.txnId('a:b', 'c', 'D', discriminator: 'en'),
+        isNot(
+          CallTranscriptContent.txnId('a', 'b:c', 'D', discriminator: 'en'),
+        ),
+      );
+    });
 
     test('a PEER half in a DIFFERENT language gets a different id', () {
       // A picker re-transcribe of the same unit in another language must be a
