@@ -55,6 +55,54 @@ class CallTranscriptContent {
   /// already exist.
   final String? deviceId;
 
+  /// Whose speech this half is, WHEN THE WRITER IS NOT THE SPEAKER.
+  ///
+  /// OPTIONAL on the wire, in both directions, and the whole reason it exists
+  /// is the whole-call transcript (#8792): a subscribed participant may
+  /// transcribe the OTHER participant's saved audio and post the result. Such a
+  /// half is authored (`senderId`) by the subscriber but is the peer's speech,
+  /// so it names the peer here.
+  ///
+  /// ABSENT MEANS "THE WRITER IS THE SPEAKER" — the legacy shape every half has
+  /// carried until now, and the one every half written before this field
+  /// existed still carries. It is never "we do not know who spoke": a half with
+  /// no `spokenBy` is its own sender's, full stop. That is what keeps every
+  /// existing room reading exactly as it did.
+  ///
+  /// A NAME, NOT A PROOF, and honoured only against the call's audio manifest.
+  /// A 1:1 DM has exactly two members, so a `spokenBy` that is not one of the
+  /// two is refused outright, and a `spokenBy` that IS a participant is honoured
+  /// only when [sourceAudioEventId] resolves to that participant's own audio for
+  /// this call and device — a name never on the call cannot be forged. The
+  /// resolution and its states live in the provenance state machine (see
+  /// `transcript_provenance.dart`); this field is only the claim.
+  ///
+  /// Bounded and shape-checked exactly as [deviceId] is, and for the same
+  /// reason: it is held in a map while a transcript is assembled, and room
+  /// content is untrusted. A value this reader would refuse — not a well-formed
+  /// Matrix user id, or past [maxUserIdChars] — is ABSENT, which reads as the
+  /// legacy "the writer is the speaker" rather than as a reason to reject the
+  /// half. See [usableSpokenBy].
+  final String? spokenBy;
+
+  /// The `pangea.call_audio` event this half was transcribed FROM, when the
+  /// writer is not the speaker.
+  ///
+  /// OPTIONAL on the wire, in both directions. ABSENT for the speaker's OWN
+  /// half — a person transcribing their own live audio references no separate
+  /// recording — and present only on a peer-produced half beside [spokenBy],
+  /// where it is the provenance anchor: the reader honours the [spokenBy] claim
+  /// only when this id is in the call's selected audio manifest AND resolves to
+  /// a `pangea.call_audio` whose sender is [spokenBy], for this call and device.
+  /// See `transcript_provenance.dart` for the resolution.
+  ///
+  /// Bounded like [deviceId] and for the same reason — it is untrusted room
+  /// content compared as a map key against the manifest — refused past
+  /// [maxEventIdChars] or when empty, which reads as ABSENT. A peer half whose
+  /// anchor is absent can never resolve, so it falls to the writer's own
+  /// identity (the legacy shape), never to a forged one. See [usableEventId].
+  final String? sourceAudioEventId;
+
   /// Where this device's wall clock sat relative to the SFU's, read at join.
   ///
   /// OPTIONAL on the wire, in both directions. Events written before this
@@ -107,6 +155,8 @@ class CallTranscriptContent {
     required this.accounting,
     this.langCode,
     this.deviceId,
+    this.spokenBy,
+    this.sourceAudioEventId,
     this.clockAnchor,
     this.positionsMarked = false,
     this.keptSpans = const [],
@@ -155,6 +205,61 @@ class CallTranscriptContent {
   /// case wearing a name.
   static String? usableDeviceId(Object? raw) =>
       raw is String && raw.isNotEmpty && raw.length <= maxDeviceIdChars
+      ? raw
+      : null;
+
+  /// The longest [spokenBy] this reader will key a half by.
+  ///
+  /// A grouping key held in a map while a transcript is assembled, exactly like
+  /// [maxDeviceIdChars] — the ceiling is here for the same reason, a bound on
+  /// what one hostile event can make the reader hold. A real Matrix user id is
+  /// short; the Matrix spec caps a user id at 255 bytes, and this is that cap.
+  static const maxUserIdChars = 255;
+
+  /// The longest [sourceAudioEventId] this reader will hold and compare.
+  ///
+  /// Untrusted room content compared as a map key against the audio manifest,
+  /// so bounded for the same reason [maxDeviceIdChars] is. Matches
+  /// `CallAudioMergedContent`'s own per-source-id ceiling (a `$` plus a short
+  /// opaque token is far under it), so a value one event carries here and the
+  /// other carries in its manifest are held to the same length.
+  static const maxEventIdChars = 512;
+
+  /// [raw] when it is a `spokenBy` this reader will act on, and null otherwise.
+  ///
+  /// ONE rule guarding the wire in both directions, exactly as [usableDeviceId]
+  /// does: [fromJson] reads through it and [toJson] writes through it, so a
+  /// value this reader would refuse is never written and never read.
+  ///
+  /// WELL-FORMED, not merely non-empty. A `spokenBy` names a Matrix user, and a
+  /// string that is not one cannot be a call participant — so it can never be
+  /// honoured, and carrying it would only invite the assembler to key a half by
+  /// a name it will always reject. A user id is `@localpart:domain`: an `@` at
+  /// the front, then a non-empty localpart, then a `:`, then a non-empty
+  /// domain. Anything else, or anything past [maxUserIdChars], is ABSENT — which
+  /// reads as the legacy "the writer is the speaker", never as a rejected half.
+  static String? usableSpokenBy(Object? raw) {
+    if (raw is! String || raw.length > maxUserIdChars) return null;
+    if (!raw.startsWith('@')) return null;
+    final colon = raw.indexOf(':');
+    // `colon > 1` keeps the localpart non-empty (`@` is index 0, so the first
+    // localpart character is index 1); `colon < length - 1` keeps the domain
+    // non-empty. A value failing either is not a user id, so it is absent.
+    return colon > 1 && colon < raw.length - 1 ? raw : null;
+  }
+
+  /// [raw] when it is a `sourceAudioEventId` this reader will act on, and null
+  /// otherwise.
+  ///
+  /// ONE rule guarding the wire in both directions, like [usableDeviceId] and
+  /// [usableSpokenBy]. Non-empty and within [maxEventIdChars]; empty is not an
+  /// id, exactly as an empty device id is not a device. Its SHAPE beyond that
+  /// is left to the manifest: a value this reader keeps is only ever honoured by
+  /// being FOUND in the call's selected audio manifest, whose ids are already
+  /// canonicalised, so an id that is malformed in some way the length check does
+  /// not catch simply fails that membership and falls to the legacy shape.
+  static String? usableEventId(Object? raw) =>
+      raw is String && raw.isNotEmpty && raw.length <= maxEventIdChars
       ? raw
       : null;
 
@@ -231,6 +336,12 @@ class CallTranscriptContent {
     ...accounting.toJson(),
     if (langCode != null) 'lang_code': langCode,
     'device_id': ?usableDeviceId(deviceId),
+    // Written through the same guard [fromJson] reads through, so a malformed
+    // claim is never emitted. Omitted entirely when absent — a legacy half and
+    // a peer half are distinguished by the PRESENCE of these keys, so an empty
+    // value on the wire would be a third, meaningless state.
+    'spoken_by': ?usableSpokenBy(spokenBy),
+    'source_audio_event_id': ?usableEventId(sourceAudioEventId),
     if (positionsMarked) 'positions_marked': true,
     'kept_spans': ?_wireSpans(keptSpans),
     'discarded_spans': ?_wireSpans(discardedSpans),
@@ -427,6 +538,15 @@ class CallTranscriptContent {
       // grouping. What it costs instead is stated where [deviceId] is declared
       // -- such a half keys alike with every other half that did not say.
       deviceId: usableDeviceId(content['device_id']),
+      // A malformed `spokenBy` is ABSENT, on the same terms as a malformed
+      // device id: it reads as the legacy "the writer is the speaker", which
+      // costs nothing but the peer-attribution the value could never have
+      // earned anyway (a name this reader will not key by can never resolve).
+      spokenBy: usableSpokenBy(content['spoken_by']),
+      // A malformed audio anchor is ABSENT for the same reason. A peer half
+      // that names a speaker but no usable source can never resolve, so it
+      // falls to the writer's own identity — never to a forged one.
+      sourceAudioEventId: usableEventId(content['source_audio_event_id']),
       positionsMarked: positionsMarked,
       // A malformed coverage statement is ABSENT, on the same terms as the two
       // above: it decides whether a sibling's discard is excused, and refusing

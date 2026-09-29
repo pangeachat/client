@@ -1003,4 +1003,118 @@ void main() {
       );
     });
   });
+
+  group('spokenBy and the source audio anchor on the wire', () {
+    const bob = '@bob:example.com';
+
+    test('a peer-produced half round-trips both fields', () {
+      final parsed = CallTranscriptContent.fromJson(
+        CallTranscriptContent(
+          callKey: _callKey,
+          segments: [TranscriptSegment('hola')],
+          accounting: const HalfAccounting(
+            chunksCaptured: 1,
+            chunksTranscribed: 1,
+          ),
+          spokenBy: _alice,
+          sourceAudioEventId: '\$audio:example.com',
+        ).toJson(),
+      );
+      expect(parsed, isNotNull);
+      expect(parsed!.spokenBy, _alice);
+      expect(parsed.sourceAudioEventId, '\$audio:example.com');
+    });
+
+    test('an authentic half writes NEITHER key', () {
+      // Absence, not an empty value, is what distinguishes a legacy/authentic
+      // half from a peer-produced one. Writing an empty value would be a third,
+      // meaningless state on the wire.
+      final json = _content().toJson();
+      expect(json.containsKey('spoken_by'), isFalse);
+      expect(json.containsKey('source_audio_event_id'), isFalse);
+    });
+
+    test('a spokenBy that is not a well-formed user id reads as ABSENT', () {
+      // A value that cannot be a Matrix user can never be a call participant,
+      // so it can never be honoured -- it reads as the legacy "the writer is
+      // the speaker", never as a rejected half.
+      for (final bad in ['alice', '@', '@:example.com', '@alice', '']) {
+        final parsed = CallTranscriptContent.fromJson({
+          'call_key': _callKey,
+          'segments': [
+            {'text': 'hola'},
+          ],
+          'spoken_by': bad,
+          'source_audio_event_id': '\$audio:example.com',
+        });
+        expect(parsed?.spokenBy, isNull, reason: 'refused: "$bad"');
+      }
+    });
+
+    test('a spokenBy this reader would refuse is never written', () {
+      // The one guard governs BOTH directions: a value refused on read is never
+      // emitted on write either.
+      final json = CallTranscriptContent(
+        callKey: _callKey,
+        segments: [TranscriptSegment('hola')],
+        accounting: const HalfAccounting(
+          chunksCaptured: 1,
+          chunksTranscribed: 1,
+        ),
+        spokenBy: 'not-a-user-id',
+        sourceAudioEventId: '\$audio:example.com',
+      ).toJson();
+      expect(json.containsKey('spoken_by'), isFalse);
+    });
+
+    test('an over-length spokenBy or source id reads as ABSENT', () {
+      final longUser = '@${'a' * CallTranscriptContent.maxUserIdChars}:x.com';
+      final longId = '\$${'e' * CallTranscriptContent.maxEventIdChars}';
+      final parsed = CallTranscriptContent.fromJson({
+        'call_key': _callKey,
+        'segments': [
+          {'text': 'hola'},
+        ],
+        'spoken_by': longUser,
+        'source_audio_event_id': longId,
+      });
+      expect(parsed?.spokenBy, isNull);
+      expect(parsed?.sourceAudioEventId, isNull);
+    });
+
+    test('an empty source audio id reads as ABSENT', () {
+      final parsed = CallTranscriptContent.fromJson({
+        'call_key': _callKey,
+        'segments': [
+          {'text': 'hola'},
+        ],
+        'spoken_by': bob,
+        'source_audio_event_id': '',
+      });
+      expect(parsed?.sourceAudioEventId, isNull);
+    });
+
+    test('the new fields do not disturb the existing ones', () {
+      // A peer half still round-trips everything a legacy reader depended on.
+      final parsed = CallTranscriptContent.fromJson(
+        CallTranscriptContent(
+          callKey: _callKey,
+          segments: [TranscriptSegment('hola'), TranscriptSegment('que tal')],
+          accounting: const HalfAccounting(
+            chunksCaptured: 2,
+            chunksTranscribed: 2,
+          ),
+          langCode: 'es',
+          deviceId: 'devA',
+          spokenBy: _alice,
+          sourceAudioEventId: '\$audio:example.com',
+        ).toJson(),
+      );
+      expect(parsed!.segments.map((s) => s.text), ['hola', 'que tal']);
+      expect(parsed.langCode, 'es');
+      expect(parsed.deviceId, 'devA');
+      expect(parsed.spokenBy, _alice);
+      expect(parsed.sourceAudioEventId, '\$audio:example.com');
+    });
+  });
 }

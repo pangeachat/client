@@ -1447,9 +1447,63 @@ class TranscriptHalf {
   bool get carriesPositions => segments.any((segment) => segment.atMs != null);
 }
 
+/// What resolving a peer-produced half's provenance claim came to.
+///
+/// A half is "peer-produced" when it names a [TranscriptCandidate.spokenBy]
+/// other than its own writer — a subscriber transcribing the OTHER
+/// participant's saved audio (#8792). Its `spokenBy` claim is a NAME, and this
+/// enum is the verdict on it, produced by `transcript_provenance.dart` against
+/// the call's audio manifest and consumed by [assembleTranscript] as a STATE.
+///
+/// The state is consumed, NEVER a `?? senderId` collapse. That collapse is the
+/// one thing this whole design exists to prevent: a claim that has not resolved
+/// is not the writer's own speech, and showing it as such would either forge a
+/// half onto a name (if honoured blindly) or bury a genuine one (if a transient
+/// failure read as "the writer said this"). Each peer half resolves to exactly
+/// one of these, and only [valid] and [invalidTerminal] put words on screen.
+///
+/// An AUTHENTIC half — no `spokenBy` — never reaches this machine. It is its
+/// own sender's by construction, always rendered, and needs no fetch.
+enum ProvenanceState {
+  /// The claim resolved and every check held: the source audio is in the
+  /// selected manifest and is the named speaker's own recording for this call
+  /// and device. Attribute the half to `spokenBy`.
+  valid,
+
+  /// The claim resolved to something that fails a check — not a participant,
+  /// not in the manifest, the wrong sender/call/device, malformed, or a source
+  /// that is not a `pangea.call_audio` at all. TERMINAL: no retry can rescue
+  /// it. Attribute the half to its WRITER (the legacy shape), which confines a
+  /// bad or hostile claim to the one account that made it.
+  invalidTerminal,
+
+  /// The source audio event resolved but its media is gone — redacted, or no
+  /// longer on the server. TERMINAL. The half is NOT rendered as words and does
+  /// NOT block the real half; the reader UI surfaces it as "audio unavailable"
+  /// (a later task), never as the writer's own speech and never as a button
+  /// that cannot work.
+  unavailableTerminal,
+
+  /// The resolution is genuinely in flight or retryable, or no manifest has
+  /// arrived yet. TRANSIENT: it resolves on a later rebuild. HELD OUT of the
+  /// rendered words — never collapsed to the writer, because "we have not
+  /// finished checking" is not "the writer said this."
+  pendingTransient,
+}
+
 /// A parsed `pangea.call_transcript` event, before assembly picks between
 /// duplicates.
 class TranscriptCandidate {
+  /// The transcript event's OWN id.
+  ///
+  /// Carried so the cross-writer dedup total order has a deterministic final
+  /// tie-break (see [assembleTranscript]'s peer ordering), and so a resolved
+  /// provenance verdict can be keyed back to the exact event it was computed
+  /// for. Defaults to the empty string for the legacy/authentic path, which
+  /// never reaches the peer tie-break — a real event always carries its id, and
+  /// `fetchCallTranscript` always sets it.
+  final String eventId;
+
   final String senderId;
 
   /// Which of the sender's devices wrote this event, or null when it did not
@@ -1508,17 +1562,33 @@ class TranscriptCandidate {
   /// cannot have that discard excused -- there is no stretch to test.
   final List<CaptureSpan> discardedSpans;
 
+  /// Whose speech this half claims to be, when the writer is not the speaker.
+  /// See [CallTranscriptContent.spokenBy]: absent means the writer IS the
+  /// speaker (the authentic, legacy shape), and a present value is only a claim
+  /// until the provenance state machine resolves it. Assembly reads this
+  /// together with the resolved [ProvenanceState] to decide the effective
+  /// speaker; it is never collapsed to the sender on its own.
+  final String? spokenBy;
+
+  /// The `pangea.call_audio` this half was transcribed from, when peer-produced.
+  /// See [CallTranscriptContent.sourceAudioEventId]. Carried so the provenance
+  /// resolver can anchor a [spokenBy] claim to the speaker's own recording.
+  final String? sourceAudioEventId;
+
   const TranscriptCandidate({
     required this.senderId,
     required this.originServerTs,
     required this.segments,
     required this.accounting,
+    this.eventId = '',
     this.deviceId,
     this.clockAnchor,
     this.langCode,
     this.positionsMarked = false,
     this.keptSpans = const [],
     this.discardedSpans = const [],
+    this.spokenBy,
+    this.sourceAudioEventId,
   });
 
   /// Distinct content, so padding a half by repeating itself wins nothing:
@@ -2235,14 +2305,44 @@ CallTranscript assembleTranscript({
   /// difference between "they wrote nothing" and "they wrote something we
   /// could not read".
   Set<String> unreadableSenders = const {},
+
+  /// The resolved [ProvenanceState] of each PEER-PRODUCED candidate, keyed by
+  /// its [TranscriptCandidate.eventId].
+  ///
+  /// Computed by `transcript_provenance.dart` before assembly, because the
+  /// verdict needs to fetch the call's audio manifest and this function is
+  /// synchronous. It is consulted ONLY for a candidate that names a
+  /// [TranscriptCandidate.spokenBy]: an authentic half (no `spokenBy`) is its
+  /// own sender's by construction and never appears here.
+  ///
+  /// EMPTY BY DEFAULT, which is the whole of the backward-compatibility story.
+  /// Legacy and flag-off reads carry no `spokenBy` on any candidate, so this map
+  /// is never consulted and assembly groups by sender exactly as it always has.
+  /// A peer candidate MISSING from a non-empty map has not been resolved, which
+  /// is [ProvenanceState.pendingTransient] — excluded from words, never
+  /// collapsed to its writer. That default is deliberate: a caller that wires
+  /// the resolver but drops an entry fails safe, toward showing nothing rather
+  /// than toward forging a half.
+  Map<String, ProvenanceState> provenance = const {},
 }) {
-  // BY SENDER AND BY DEVICE, because a sender is not a recorder.
+  // BY EFFECTIVE SPEAKER AND BY DEVICE, because a sender is not a recorder and,
+  // now, not always the speaker either.
   //
   // Keyed by sender alone, two of one learner's devices in one call wrote two
   // halves that were indistinguishable here: the second was discarded and the
   // first was presented, with its own accounting, as the whole of what that
   // person said. That is the loss this grouping exists to stop, and it is worse
   // than a refused send because nothing about it is visible.
+  //
+  // The OUTER key is the EFFECTIVE speaker, not the writer. For an authentic
+  // half (no `spokenBy`) the two are the same and nothing below behaves
+  // differently, which is what keeps every existing room reading exactly as it
+  // did. For a peer-produced half the effective speaker comes from the resolved
+  // [ProvenanceState] (see [_effectiveSpeakerOf]): a VALID claim groups under
+  // the person who spoke, an INVALID one falls back to its writer (the legacy
+  // shape), and a half held out by an UNAVAILABLE or PENDING state is not words
+  // at all and never enters a group. The state is consumed as a state; there is
+  // no `?? senderId` anywhere on this path.
   //
   // The inner key is the device or the empty string, and the empty string is
   // ONE key shared by every half that did not name a device -- events written
@@ -2251,17 +2351,24 @@ CallTranscript assembleTranscript({
   // the rooms that already exist reading exactly as they did: two halves from
   // two old builds still key alike, so one is still kept, and this change
   // reaches them only once one of the two devices is updated.
-  final bySender = <String, Map<String, TranscriptCandidate>>{};
+  final bySpeaker = <String, Map<String, TranscriptCandidate>>{};
 
   for (final candidate in candidates) {
-    final byDevice = bySender.putIfAbsent(candidate.senderId, () => {});
+    final speaker = _effectiveSpeakerOf(candidate, provenance);
+    // Null means the half is not words: an UNAVAILABLE or PENDING peer claim.
+    // It never enters a group, so it can neither be shown nor block the real
+    // half -- and, held out rather than attributed, it is never its writer's.
+    if (speaker == null) continue;
+    final byDevice = bySpeaker.putIfAbsent(speaker, () => {});
     final key = candidate.deviceId ?? '';
     final held = byDevice[key];
-    // Still one half per DEVICE, chosen exactly as before. A resend, or a buggy
-    // writer's empty half landing before the real one, is a duplicate from one
-    // recorder and the choice between them is unchanged; what is no longer
-    // treated as a duplicate is a second DEVICE's half of the same call.
-    if (held == null || _beats(candidate, held)) {
+    // ONE half per (effective speaker, device) unit, chosen by the total order
+    // in [_winsUnit]: an authentic half beats any peer-produced one, two
+    // authentic copies are chosen between exactly as before (a resend or a
+    // buggy empty-first half), and two peer-produced halves are ordered by a
+    // stable writer lane so one writer cannot churn over another's by posting
+    // later. What is no longer treated as a duplicate is a second DEVICE's half.
+    if (held == null || _winsUnit(candidate, held, speaker: speaker)) {
       byDevice[key] = candidate;
     }
   }
@@ -2321,7 +2428,11 @@ CallTranscript assembleTranscript({
 
   final halves = <TranscriptHalf>[];
   for (final senderId in senders) {
-    final byDevice = bySender[senderId];
+    // Keyed by the effective speaker, which for an authentic half is its sender
+    // and for a VALID peer half is `spokenBy` -- both are participants, so both
+    // are found here under an expected sender. A section is thus the SPEAKER's,
+    // whoever wrote the words in it.
+    final byDevice = bySpeaker[senderId];
 
     // In device order, so a call assembles the same way every time it is read.
     // The empty key sorts first, which is only a convention -- what matters is
@@ -2470,6 +2581,117 @@ CallTranscript assembleTranscript({
     // decrypt that the call had been too long.
     readLimits: Set.unmodifiable(readLimits),
   );
+}
+
+/// Under whom to render [candidate], or null when it is not words at all.
+///
+/// The single place a [ProvenanceState] becomes an attribution, and the single
+/// place the design's cardinal rule is enforced: a state is CONSUMED here, never
+/// collapsed to the sender by a `??`.
+///
+/// * An AUTHENTIC half — no `spokenBy` — is its own sender's, always. It never
+///   consults [provenance], needs no fetch, and is the entire legacy and
+///   flag-off path.
+/// * A VALID peer claim is the person it names. `spokenBy` is non-null here by
+///   construction (only a peer half reaches the map), so the speaker is it.
+/// * An INVALID-TERMINAL peer claim falls back to its WRITER — the legacy shape,
+///   which is what confines a bad or hostile claim to the account that made it.
+/// * An UNAVAILABLE-TERMINAL or PENDING-TRANSIENT peer claim is NOT words:
+///   returned as null so it never enters a group. It is neither shown nor
+///   attributed to anyone, which is what "held out, never collapsed to the
+///   writer" means at the one site it could otherwise happen.
+///
+/// A peer candidate ABSENT from a non-empty map is [ProvenanceState.pendingTransient]
+/// by default — the fail-safe direction, toward showing nothing rather than
+/// toward forging a half onto a name a resolver never actually cleared.
+String? _effectiveSpeakerOf(
+  TranscriptCandidate candidate,
+  Map<String, ProvenanceState> provenance,
+) {
+  if (candidate.spokenBy == null) return candidate.senderId;
+  final state =
+      provenance[candidate.eventId] ?? ProvenanceState.pendingTransient;
+  return switch (state) {
+    ProvenanceState.valid => candidate.spokenBy,
+    ProvenanceState.invalidTerminal => candidate.senderId,
+    ProvenanceState.unavailableTerminal => null,
+    ProvenanceState.pendingTransient => null,
+  };
+}
+
+/// Which of two halves the same (effective speaker, device) unit keeps.
+///
+/// The LANE-BASED TOTAL ORDER of the design's §2, layered over [_beats] so the
+/// legacy authentic-vs-authentic choice is exactly what it always was:
+///
+/// 1. AUTHENTIC beats peer-produced. "Authentic" is `sender == speaker` — a half
+///    the person themselves wrote (or an INVALID claim fallen back to its
+///    writer), as opposed to a VALID peer transcription of them. A speaker's own
+///    record of their words always wins over someone else's transcription of
+///    them, so a peer half can never override the real one.
+/// 2. Two AUTHENTIC halves are chosen between by [_beats] — a resend, or a
+///    buggy empty-first half against the real one — unchanged from before this
+///    feature, which is what makes every existing room read identically.
+/// 3. Two PEER-PRODUCED halves are ordered by [_peerBeats]: a stable WRITER LANE
+///    first, latest attempt within a lane. See there for why the lane, not the
+///    clock, is primary.
+///
+/// Used as a running-max predicate: "does [candidate] rank strictly above
+/// [held]". Each tier is a total order and tier 1 is checked first, so the whole
+/// is a total order and the winner is independent of the order events arrived.
+bool _winsUnit(
+  TranscriptCandidate candidate,
+  TranscriptCandidate held, {
+  required String speaker,
+}) {
+  final candidateAuthentic = candidate.senderId == speaker;
+  final heldAuthentic = held.senderId == speaker;
+  if (candidateAuthentic != heldAuthentic) return candidateAuthentic;
+  return candidateAuthentic
+      ? _beats(candidate, held)
+      : _peerBeats(candidate, held);
+}
+
+/// Which of two PEER-PRODUCED halves of one (speaker, device) unit to keep.
+///
+/// A TOTAL ORDER whose primary key is the WRITER, not time:
+///
+/// * lowest WRITER id ([TranscriptCandidate.senderId]) wins. A stable identity,
+///   so the winner does not depend on when anyone posted — a DIFFERENT writer
+///   cannot churn over another's half by transcribing the same audio later.
+///   This is the half of §2 that a global latest-timestamp rule got wrong.
+/// * then the LATEST `originServerTs`: a writer's own picker re-run supersedes
+///   its own earlier attempt, which is the other half of §2 an earliest rule
+///   got wrong.
+/// * then the transcript EVENT ID, deterministically, so two events stamped at
+///   one instant still resolve to one winner rather than to whichever the sort
+///   saw first.
+///
+/// §2 lists a "writer device id" tier between writer id and timestamp, and it is
+/// deliberately not one here: a peer half's [TranscriptCandidate.deviceId] is
+/// the SPEAKER'S recording device — the unit's own key (see the producer's
+/// `deviceId=recording.content.deviceId`) — so it is identical across every
+/// candidate this ever compares and could not distinguish two of one writer's
+/// devices anyway. The writer's own device is not carried on a peer half, so
+/// two devices of one writer transcribing one recording share this lane and are
+/// resolved by the latest-timestamp step — which preserves exactly the two
+/// properties the lane exists for (a writer supersedes its own earlier attempt;
+/// no writer churns over another's). The device comparison is kept only so the
+/// comparator is a well-defined total order over any two peer candidates, not
+/// merely the same-unit pairs it is called on; within a unit it never decides.
+bool _peerBeats(TranscriptCandidate candidate, TranscriptCandidate held) {
+  if (candidate.senderId != held.senderId) {
+    return candidate.senderId.compareTo(held.senderId) < 0;
+  }
+  final candidateDevice = candidate.deviceId ?? '';
+  final heldDevice = held.deviceId ?? '';
+  if (candidateDevice != heldDevice) {
+    return candidateDevice.compareTo(heldDevice) < 0;
+  }
+  if (candidate.originServerTs != held.originServerTs) {
+    return candidate.originServerTs > held.originServerTs;
+  }
+  return candidate.eventId.compareTo(held.eventId) < 0;
 }
 
 /// Which of two events from the SAME sender AND THE SAME DEVICE to believe.
