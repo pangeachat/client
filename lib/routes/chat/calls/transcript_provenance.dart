@@ -276,13 +276,25 @@ Future<Map<String, ProvenanceState>> resolveTranscriptProvenance({
         merged,
   ];
 
-  // Validated coverage per manifest, counted over its own (already bounded,
-  // already de-duplicated) source ids.
+  // Validated coverage per manifest, counted over its own source ids
+  // (de-duplicated defensively -- `fromJson` already canonicalises, but the
+  // count must not depend on that continuing to hold).
+  //
+  // A TRANSIENT fetch during validation makes the SELECTION uncertain: a source
+  // that would have validated the true manifest resolves pending, so that
+  // manifest is undercounted and a different one may be selected. That must not
+  // TERMINALLY reject a real peer half whose source is only in the true
+  // manifest -- the miss was transient, and a rebuild re-fetches. So it is
+  // tracked and threaded into per-claim resolution below.
   final validatedCounts = <String, int>{};
+  var selectionUncertain = false;
   for (final manifest in manifests) {
     var validated = 0;
-    for (final id in manifest.content.sourceEventIds) {
+    for (final id in manifest.content.sourceEventIds.toSet()) {
       final resolution = await resolve(id);
+      if (resolution.kind == _AudioResolutionKind.pending) {
+        selectionUncertain = true;
+      }
       if (resolution.isValidatedUnitFor(participants, callKey)) validated++;
     }
     validatedCounts[manifest.eventId] = validated;
@@ -302,6 +314,7 @@ Future<Map<String, ProvenanceState>> resolveTranscriptProvenance({
       participants: participants,
       callKey: callKey,
       manifestIds: manifestIds,
+      selectionUncertain: selectionUncertain,
       resolve: resolve,
     );
   }
@@ -313,6 +326,7 @@ Future<ProvenanceState> _resolvePeerClaim({
   required Set<String> participants,
   required String callKey,
   required Set<String>? manifestIds,
+  required bool selectionUncertain,
   required Future<_AudioResolution> Function(String id) resolve,
 }) async {
   final spokenBy = candidate.spokenBy!;
@@ -322,6 +336,8 @@ Future<ProvenanceState> _resolvePeerClaim({
   // source to anchor it, or naming a speaker who is not one of the two people
   // on the call, can NEVER become valid -- so it falls to its writer (the
   // legacy shape) now rather than waiting on a manifest that cannot rescue it.
+  // These stay terminal even when selection is uncertain: no manifest, present
+  // or future, makes a device-less anchor or a stranger's name valid.
   if (sourceId == null) return ProvenanceState.invalidTerminal;
   if (!participants.contains(spokenBy)) return ProvenanceState.invalidTerminal;
 
@@ -329,10 +345,21 @@ Future<ProvenanceState> _resolvePeerClaim({
   // attributed: "we cannot check this yet" is not "the writer said it".
   if (manifestIds == null) return ProvenanceState.pendingTransient;
 
-  // Not in the manifest -- rejected by cheap set membership, before any fetch.
-  // This is what a flood of transcript halves referencing bogus audio ids costs:
-  // nothing, and no forged attribution.
-  if (!manifestIds.contains(sourceId)) return ProvenanceState.invalidTerminal;
+  // Not in the SELECTED manifest. Ordinarily a terminal reject by cheap set
+  // membership, before any fetch -- which is what a flood of transcript halves
+  // referencing bogus audio ids costs: nothing, and no forged attribution.
+  //
+  // BUT when selection was uncertain (a validation fetch was transient), the
+  // wrong manifest may have been selected and THIS source may belong to the
+  // true one. Rejecting it terminally would bury a real half on a transient
+  // miss, so it is held PENDING -- a rebuild re-fetches, the true manifest is
+  // selected, and it resolves correctly. A genuinely bogus id stays out either
+  // way; the cost is only that it is retried rather than rejected at once.
+  if (!manifestIds.contains(sourceId)) {
+    return selectionUncertain
+        ? ProvenanceState.pendingTransient
+        : ProvenanceState.invalidTerminal;
+  }
 
   final resolution = await resolve(sourceId);
   switch (resolution.kind) {
@@ -349,9 +376,17 @@ Future<ProvenanceState> _resolvePeerClaim({
       // recording, for THIS call, from the SAME device the half is keyed by. A
       // failure of any one of these is the writer's own (legacy) half, never the
       // speaker's -- so a name is bound to audio it cannot forge.
+      //
+      // BOTH device ids must be present, not merely equal. Two absent device
+      // ids are `null == null` -- true -- which would bind a device-less half to
+      // a device-less recording on no shared identity at all. A unit is
+      // (call, speaker, device), and there is no unit without a device, so a
+      // device-less half is never VALID however the audio resolves.
       final valid =
           resolution.senderId == spokenBy &&
           resolution.content!.callKey == callKey &&
+          candidate.deviceId != null &&
+          resolution.content!.deviceId != null &&
           resolution.content!.deviceId == candidate.deviceId;
       return valid ? ProvenanceState.valid : ProvenanceState.invalidTerminal;
   }

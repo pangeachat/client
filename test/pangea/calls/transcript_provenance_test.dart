@@ -479,6 +479,92 @@ void main() {
       },
     );
 
+    test('a device-LESS half with a device-less source is INVALID', () async {
+      // The source resolves to the named speaker's own audio for this call, and
+      // BOTH the half and the source carry no device. `null == null` would bind
+      // them on no shared identity at all; a unit needs a device.
+      final fetcher = _Fetcher(
+        serve: {
+          '\$audioReal': FetchedAudioEvent(
+            senderId: alice,
+            content: _audio(deviceId: 'devReal'),
+          ),
+          '\$audioNull': FetchedAudioEvent(
+            senderId: alice,
+            content: _audio(deviceId: null),
+          ),
+        },
+      );
+      final states = await _resolve(
+        candidates: [
+          _peer(
+            writer: bob,
+            spokenBy: alice,
+            eventId: '\$t1',
+            sourceAudioEventId: '\$audioNull',
+            device: null,
+          ),
+        ],
+        mergedRecordings: [
+          // The real source validates the manifest so it IS selected; the
+          // device-less source is in it (membership is the full id set) but is
+          // not a validated unit.
+          _manifest(
+            eventId: '\$m1',
+            sender: bob,
+            sourceEventIds: ['\$audioReal', '\$audioNull'],
+          ),
+        ],
+        fetcher: fetcher,
+      );
+      expect(states['\$t1'], ProvenanceState.invalidTerminal);
+    });
+
+    test(
+      'a transient validation miss holds a real half PENDING, not INVALID',
+      () async {
+        // Two participant-authored manifests. The FAKE one validates (its source
+        // resolves); the REAL one's only source fetch THROWS, so it is
+        // undercounted and the fake one is selected. A peer half whose source is
+        // only in the real manifest must not be terminally rejected on that
+        // transient miss -- a rebuild re-fetches and selects the real manifest.
+        final fetcher = _Fetcher(
+          serve: {
+            '\$audioFake': FetchedAudioEvent(
+              senderId: alice,
+              content: _audio(deviceId: 'devFake'),
+            ),
+          },
+          throwing: {'\$audioRealPending'},
+        );
+        final states = await _resolve(
+          candidates: [
+            _peer(
+              writer: bob,
+              spokenBy: alice,
+              eventId: '\$t1',
+              sourceAudioEventId: '\$audioRealPending',
+              device: 'devA',
+            ),
+          ],
+          mergedRecordings: [
+            _manifest(
+              eventId: '\$mFake',
+              sender: bob,
+              sourceEventIds: ['\$audioFake'],
+            ),
+            _manifest(
+              eventId: '\$mReal',
+              sender: bob,
+              sourceEventIds: ['\$audioRealPending'],
+            ),
+          ],
+          fetcher: fetcher,
+        );
+        expect(states['\$t1'], ProvenanceState.pendingTransient);
+      },
+    );
+
     group('manifest selection', () {
       test(
         'a 64-bogus-id manifest does not outrank a real 2-source one',
