@@ -101,6 +101,13 @@ class CallSession extends ChangeNotifier {
   bool _usedVideo = false;
   bool _reachedCall = false;
   bool _minimized = false;
+
+  /// Whether the call was minimized before the ownership prompt forced it full
+  /// screen, or null when the prompt forced nothing or the learner has changed
+  /// the view since. Only this needs keeping: the prompt forces the call only
+  /// when it was not already full screen.
+  bool? _minimizedBeforePrompt;
+  bool _hadOwnershipPrompt = false;
   bool _over = false;
   bool _recordingFinished = false;
 
@@ -481,6 +488,7 @@ class CallSession extends ChangeNotifier {
   bool _fullscreen;
 
   void toggleFullscreen() {
+    _minimizedBeforePrompt = null;
     _fullscreen = !_fullscreen;
     if (_fullscreen) _minimized = false;
     _notify();
@@ -496,6 +504,7 @@ class CallSession extends ChangeNotifier {
   /// mute. A toggle is the wrong verb for "show me this call".
   void showFullscreen() {
     if (_fullscreen && !_minimized) return;
+    _minimizedBeforePrompt = null;
     _fullscreen = true;
     _minimized = false;
     _notify();
@@ -590,6 +599,7 @@ class CallSession extends ChangeNotifier {
 
   void minimize() {
     if (_minimized && !_fullscreen) return;
+    _minimizedBeforePrompt = null;
     _minimized = true;
     // Minimizing IS leaving fullscreen; the tile takes over either way.
     _fullscreen = false;
@@ -598,6 +608,7 @@ class CallSession extends ChangeNotifier {
 
   void expand() {
     if (!_minimized) return;
+    _minimizedBeforePrompt = null;
     _minimized = false;
     _notify();
   }
@@ -785,6 +796,37 @@ class CallSession extends ChangeNotifier {
     if (any) _usedVideo = true;
   }
 
+  /// Opens the call full screen when the ownership prompt appears where it
+  /// cannot be seen, and puts the view back once this device carries on
+  /// (call-device-ownership.instructions.md, "The prompt comes to the front").
+  ///
+  /// Acts on the prompt's EDGES only, so a learner who minimizes the call while
+  /// the prompt is up is not overruled on the next tick.
+  void _bringOwnershipPromptToFront() {
+    final hasPrompt = call.ownershipPrompt != null;
+    if (hasPrompt == _hadOwnershipPrompt) return;
+    _hadOwnershipPrompt = hasPrompt;
+
+    if (hasPrompt) {
+      // The prompt is drawn only by the full panel: full screen, or expanded
+      // inside a chat that is showing. Anywhere else the call is a mini tile.
+      final promptVisible = _fullscreen || (!_minimized && _presenters > 0);
+      if (promptVisible) return;
+      _minimizedBeforePrompt = _minimized;
+      _fullscreen = true;
+      _minimized = false;
+      return;
+    }
+
+    final minimizedBefore = _minimizedBeforePrompt;
+    _minimizedBeforePrompt = null;
+    // A device that is leaving keeps the full panel: it is about to say the
+    // call continues on the other device.
+    if (minimizedBefore == null || !call.carriedOn) return;
+    _fullscreen = false;
+    _minimized = minimizedBefore;
+  }
+
   void _onCallChanged() {
     _latchVideo();
     // The button reflects the camera the user HAS, not the one they asked
@@ -803,6 +845,7 @@ class CallSession extends ChangeNotifier {
       unawaited(media.setCameraEnabled(_camera));
     }
     _wasMediaHeld = call.mediaHeld;
+    _bringOwnershipPromptToFront();
     // The outcome is latched the instant the call's fate is decided, seconds
     // before the stage catches up — this is what makes hanging up feel
     // immediate on both sides.

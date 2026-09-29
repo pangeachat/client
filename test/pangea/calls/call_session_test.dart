@@ -10,6 +10,7 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:fluffychat/routes/chat/calls/active_call.dart';
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
+import 'package:fluffychat/routes/chat/calls/call_ownership.dart';
 import 'package:fluffychat/routes/chat/calls/call_record.dart';
 import 'package:fluffychat/routes/chat/calls/call_roster.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
@@ -2313,6 +2314,131 @@ void main() {
         media.cameraOpened,
         isTrue,
         reason: 'the survivor restores the learner camera intent',
+      );
+    });
+  });
+
+  group('two devices -- the prompt comes to the front (#9168)', () {
+    // The prompt waits one presence tick of REAL time, and is only re-read on
+    // the call's own presence clock: the arbiter reads DateTime.now(), which no
+    // fake clock reaches, and a recompute with nothing changed notifies nobody.
+    Future<void> waitForPrompt(CallSession session) async {
+      final deadline = DateTime.now().add(kPromptTick * 4);
+      while (session.ownershipPrompt == null &&
+          DateTime.now().isBefore(deadline)) {
+        await Future<void>.delayed(const Duration(milliseconds: 100));
+      }
+    }
+
+    Future<(_FakeMedia, CallSession)> upWithSibling({
+      required bool minimized,
+      bool chatShowing = false,
+    }) async {
+      final client = await _bareClient();
+      final room = _RecordingRoom(id: '!r:server', client: client);
+      final media = _FakeMedia();
+      final session = CallSession.start(
+        room: room,
+        video: false,
+        callService: _FakeCalls(client),
+        transcribe: (request) async =>
+            SpeechToTextResponseModel(results: const []),
+        userL1: 'en',
+        userL2: 'es',
+        analytics: (eventId, uses, language) async {},
+        onReleased: (_) {},
+        callerMembershipEventId: r'$caller-membership',
+        mediaOverride: media,
+        captureOverride: CallCaptureService(sink: _NullSink()),
+      );
+      await pumpEventQueue();
+      if (chatShowing) session.attachPresenter();
+      if (minimized) session.minimize();
+
+      // A participating sibling: the ordinary choice prompt.
+      final roster = media.fakeRoster!;
+      final sib = '${roster.myUserId}:SIBLINGDEV';
+      roster.identities = {sib};
+      roster.attributes = {
+        sib: {CallRoster.chosenAttribute: 'no'},
+      };
+      roster.recompute();
+      await pumpEventQueue();
+      await waitForPrompt(session);
+      expect(session.ownershipPrompt, isNotNull);
+      return (media, session);
+    }
+
+    void siblingLeaves(_FakeMedia media) {
+      media.fakeRoster!
+        ..identities = {}
+        ..recompute();
+    }
+
+    test('a minimized call opens full screen, then goes back', () async {
+      final (media, session) = await upWithSibling(minimized: true);
+      expect(session.fullscreen, isTrue, reason: 'the mini tile has no prompt');
+      expect(session.minimized, isFalse);
+
+      siblingLeaves(media);
+      await pumpEventQueue();
+      expect(session.ownershipPrompt, isNull);
+      expect(session.call.carriedOn, isTrue);
+      expect(session.fullscreen, isFalse);
+      expect(session.minimized, isTrue, reason: 'back to how it was');
+    });
+
+    test('a call whose chat is closed opens full screen too', () async {
+      final (media, session) = await upWithSibling(minimized: false);
+      expect(
+        session.fullscreen,
+        isTrue,
+        reason: 'no chat is presenting it, so it was the floating tile',
+      );
+
+      siblingLeaves(media);
+      await pumpEventQueue();
+      expect(session.fullscreen, isFalse);
+      expect(session.minimized, isFalse);
+    });
+
+    test('a call already showing its panel is left where it is', () async {
+      final (_, session) = await upWithSibling(
+        minimized: false,
+        chatShowing: true,
+      );
+      expect(session.fullscreen, isFalse);
+      expect(session.minimized, isFalse);
+    });
+
+    test('a view the learner changed while prompted is theirs', () async {
+      final (media, session) = await upWithSibling(minimized: true);
+      session.toggleFullscreen();
+      expect(session.fullscreen, isFalse);
+
+      siblingLeaves(media);
+      await pumpEventQueue();
+      expect(
+        session.minimized,
+        isFalse,
+        reason: 'the learner left it expanded; nothing puts it back',
+      );
+    });
+
+    test('a device chosen against keeps the full panel', () async {
+      final (media, session) = await upWithSibling(minimized: true);
+      final roster = media.fakeRoster!;
+      roster.attributes = {
+        '${roster.myUserId}:SIBLINGDEV': {CallRoster.chosenAttribute: 'yes'},
+      };
+      roster.recompute();
+      await pumpEventQueue();
+
+      expect(session.call.outcome, CallOutcome.movedToOtherDevice);
+      expect(
+        session.fullscreen,
+        isTrue,
+        reason: 'it is about to say the call continues on the other device',
       );
     });
   });
