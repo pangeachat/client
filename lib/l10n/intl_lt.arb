@@ -2967,7 +2967,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-09-28 13:21:20.348193",
+    "@@last_modified": "2026-09-28 15:16:02.966123",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10743,5 +10743,10 @@
     "summaryFeedbackReceived": "Ačiū! Gavome jūsų atsiliepimą.",
     "summaryFeedbackFailed": "Nepavyko išsiųsti jūsų atsiliepimo. Bandykite dar kartą.",
     "summaryFeedbackProcessing": "Siunčiamas jūsų atsiliepimas ir atnaujinama santrauka…",
-    "callTranscriptNotSubscribed": "{name} neturėjo prenumeratos šio skambučio metu, todėl tai, kas buvo pasakyta, nebuvo transkribuota."
+    "callTranscriptNotSubscribed": "{name} neturėjo prenumeratos šio skambučio metu, todėl tai, kas buvo pasakyta, nebuvo transkribuota.",
+    "joinYourCourse": "Prisijunkite prie savo kurso",
+    "courseCodeJoinExplanation": "Prisijunkite arba užsiregistruokite, ir mes naudosime jūsų kurso kodą, kad automatiškai jus pridėtume prie jūsų kurso.",
+    "courseCodeLabel": "Kurso kodas",
+    "courseCodeSaved": "Kurso kodas {code} išsaugotas",
+    "courseCodeSavedExplanation": "Užsiregistruokite arba prisijunkite ir mes jus pridėsime prie jūsų kurso."
 }

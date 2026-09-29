@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-09-28 13:21:16.610381",
+    "@@last_modified": "2026-09-28 15:15:56.926619",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2370,5 +2370,10 @@
     "summaryFeedbackReceived": "Hvala! Primili smo vaše povratne informacije.",
     "summaryFeedbackFailed": "Nismo mogli poslati vaše povratne informacije. Pokušajte ponovo.",
     "summaryFeedbackProcessing": "Slanje povratnih informacija i ažuriranje sažetka…",
-    "callTranscriptNotSubscribed": "{name} nije imao pretplatu tokom ovog poziva, tako da izgovoreno nije transkribovano."
+    "callTranscriptNotSubscribed": "{name} nije imao pretplatu tokom ovog poziva, tako da izgovoreno nije transkribovano.",
+    "joinYourCourse": "Pridružite se svom kursu",
+    "courseCodeJoinExplanation": "Prijavite se ili registrujte, a mi ćemo koristiti vaš kod kursa da vas automatski dodamo na vaš kurs.",
+    "courseCodeLabel": "Kod kursa",
+    "courseCodeSaved": "Kod kursa {code} sačuvan",
+    "courseCodeSavedExplanation": "Registrujte se ili prijavite i mi ćemo vas dodati na vaš kurs."
 }

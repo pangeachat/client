@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-09-28 13:21:24.221701",
+    "@@last_modified": "2026-09-28 15:16:07.956235",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9962,5 +9962,10 @@
     "summaryFeedbackReceived": "Дякуємо! Ми отримали ваш відгук.",
     "summaryFeedbackFailed": "Не вдалося надіслати ваш відгук. Будь ласка, спробуйте ще раз.",
     "summaryFeedbackProcessing": "Надсилаємо ваш відгук та оновлюємо підсумок…",
-    "callTranscriptNotSubscribed": "Під час цього дзвінка {name} не мав підписки, тому розмова не була розшифрована."
+    "callTranscriptNotSubscribed": "Під час цього дзвінка {name} не мав підписки, тому розмова не була розшифрована.",
+    "joinYourCourse": "Приєднатися до курсу",
+    "courseCodeJoinExplanation": "Увійдіть або зареєструйтеся, і ми використаємо ваш код курсу, щоб автоматично додати вас до нього.",
+    "courseCodeLabel": "Код курсу",
+    "courseCodeSaved": "Код курсу {code} збережено",
+    "courseCodeSavedExplanation": "Зареєструйтеся або увійдіть, і ми додамо вас до вашого курсу."
 }

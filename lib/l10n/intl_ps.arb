@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-09-28 13:21:21.874743",
+    "@@last_modified": "2026-09-28 15:16:05.722870",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2370,5 +2370,10 @@
     "summaryFeedbackReceived": "مننه! موږ ستاسو نظر ترلاسه کړ.",
     "summaryFeedbackFailed": "ستاسو نظر نشو لیږلی. مهرباني وکړئ بیا هڅه وکړئ.",
     "summaryFeedbackProcessing": "ستاسو نظر استول کیږي او لنډیز تازه کیږي…",
-    "callTranscriptNotSubscribed": "{name} د دې زنګ پر مهال ګډون نه درلود، نو هغه څه چې ویل شوي وو نه دي لیکل شوي."
+    "callTranscriptNotSubscribed": "{name} د دې زنګ پر مهال ګډون نه درلود، نو هغه څه چې ویل شوي وو نه دي لیکل شوي.",
+    "joinYourCourse": "خپل کورس سره یوځای شئ",
+    "courseCodeJoinExplanation": "ننوتل یا نوم لیکنه وکړئ، او موږ به ستاسو د کورس کوډ وکاروو ترڅو تاسو په اتوماتيک ډول ستاسو کورس ته اضافه کړو.",
+    "courseCodeLabel": "د کورس کوډ",
+    "courseCodeSaved": "د کورس کوډ {code} خوندي شو",
+    "courseCodeSavedExplanation": "نوم لیکنه وکړئ یا ننوتل او موږ به تاسو خپل کورس ته اضافه کړو."
 }

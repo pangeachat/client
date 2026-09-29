@@ -1334,7 +1334,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-09-28 13:21:17.214195",
+    "@@last_modified": "2026-09-28 15:15:58.120512",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10882,5 +10882,10 @@
     "summaryFeedbackReceived": "Tak! Vi har modtaget din feedback.",
     "summaryFeedbackFailed": "Kunne ikke sende din feedback. Prøv venligst igen.",
     "summaryFeedbackProcessing": "Sender din feedback og opdaterer opsummeringen…",
-    "callTranscriptNotSubscribed": "{name} havde ikke et abonnement under dette opkald, så det, der blev sagt, blev ikke transskriberet."
+    "callTranscriptNotSubscribed": "{name} havde ikke et abonnement under dette opkald, så det, der blev sagt, blev ikke transskriberet.",
+    "joinYourCourse": "Tilmeld dig dit kursus",
+    "courseCodeJoinExplanation": "Log ind eller tilmeld dig, så bruger vi din kursuskode til automatisk at tilføje dig til dit kursus.",
+    "courseCodeLabel": "Kursuskode",
+    "courseCodeSaved": "Kursuskode {code} gemt",
+    "courseCodeSavedExplanation": "Tilmeld dig eller log ind, så tilføjer vi dig til dit kursus."
 }

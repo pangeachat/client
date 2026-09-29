@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-09-28 13:21:20.891583",
+    "@@last_modified": "2026-09-28 15:16:03.931871",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2370,5 +2370,10 @@
     "summaryFeedbackReceived": "धन्यवाद! आम्हाला तुमचा अभिप्राय मिळाला आहे.",
     "summaryFeedbackFailed": "तुमचा अभिप्राय पाठवता आला नाही. कृपया पुन्हा प्रयत्न करा.",
     "summaryFeedbackProcessing": "तुमचा अभिप्राय पाठवत आहे आणि सारांश अपडेट करत आहे…",
-    "callTranscriptNotSubscribed": "{name} कडे या कॉलदरम्यान सदस्यता नसल्यामुळे, जे बोलले गेले ते प्रतिलेखीत केले गेले नाही."
+    "callTranscriptNotSubscribed": "{name} कडे या कॉलदरम्यान सदस्यता नसल्यामुळे, जे बोलले गेले ते प्रतिलेखीत केले गेले नाही.",
+    "joinYourCourse": "तुमच्या कोर्समध्ये सामील व्हा",
+    "courseCodeJoinExplanation": "लॉग इन करा किंवा साइन अप करा आणि आम्ही तुम्हाला तुमच्या कोर्समध्ये आपोआप जोडण्यासाठी तुमचा कोर्स कोड वापरू.",
+    "courseCodeLabel": "कोर्स कोड",
+    "courseCodeSaved": "कोर्स कोड {code} सेव्ह केला",
+    "courseCodeSavedExplanation": "साइन अप करा किंवा लॉग इन करा आणि आम्ही तुम्हाला तुमच्या कोर्समध्ये जोडू."
 }

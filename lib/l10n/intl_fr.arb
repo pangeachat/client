@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-09-28 13:21:18.102170",
+    "@@last_modified": "2026-09-28 15:15:59.127394",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10317,5 +10317,10 @@
     "summaryFeedbackReceived": "Merci ! Nous avons bien reçu vos commentaires.",
     "summaryFeedbackFailed": "Impossible d'envoyer vos commentaires. Veuillez réessayer.",
     "summaryFeedbackProcessing": "Envoi de vos commentaires et mise à jour du résumé…",
-    "callTranscriptNotSubscribed": "{name} n'avait pas d'abonnement pendant cet appel, donc ce qui a été dit n'a pas été transcrit."
+    "callTranscriptNotSubscribed": "{name} n'avait pas d'abonnement pendant cet appel, donc ce qui a été dit n'a pas été transcrit.",
+    "joinYourCourse": "Rejoignez votre cours",
+    "courseCodeJoinExplanation": "Connectez-vous ou inscrivez-vous, et nous utiliserons votre code de cours pour vous ajouter automatiquement à votre cours.",
+    "courseCodeLabel": "Code de cours",
+    "courseCodeSaved": "Code de cours {code} enregistré",
+    "courseCodeSavedExplanation": "Inscrivez-vous ou connectez-vous et nous vous ajouterons à votre cours."
 }

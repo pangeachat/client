@@ -4,7 +4,6 @@ import 'package:matrix/matrix.dart' hide Result;
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/features/join_codes/space_code_controller.dart';
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
-import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/quests/repo/quest_plans_repo.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/onboarding/custom_course_repo.dart';
@@ -46,10 +45,7 @@ class ClientCourseProvider implements CourseProvider {
   const ClientCourseProvider({required this.client});
 
   @override
-  String? getCachedJoinCode() {
-    final destination = SpaceCodeRepo.destination;
-    return destination == null ? null : joinCodeFor(Uri.parse(destination));
-  }
+  String? getCachedJoinCode() => SpaceCodeRepo.pendingJoinCode;
 
   @override
   Future<void> clearCachedJoinCode() => SpaceCodeRepo.clearDestination();

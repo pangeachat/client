@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-09-28 13:21:18.329628",
+    "@@last_modified": "2026-09-28 15:15:59.759399",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2370,5 +2370,10 @@
     "summaryFeedbackReceived": "Tapadh leat! Fhuair sinn d' fhios air ais.",
     "summaryFeedbackFailed": "Cha b' urrainn dhuinn d' fhios air ais a chur. Feuch ris a-rithist.",
     "summaryFeedbackProcessing": "A’ cur do fhios air ais agus ag ùrachadh an ath-ghoirid…",
-    "callTranscriptNotSubscribed": "Cha robh fo-sgrìobhadh aig {name} aig àm a’ ghairm seo, agus mar sin cha deach na chaidh a ràdh a thar-sgrìobhadh."
+    "callTranscriptNotSubscribed": "Cha robh fo-sgrìobhadh aig {name} aig àm a’ ghairm seo, agus mar sin cha deach na chaidh a ràdh a thar-sgrìobhadh.",
+    "joinYourCourse": "Thig a-steach don chùrsa agad",
+    "courseCodeJoinExplanation": "Log a-steach no clàraich, agus cleachdaidh sinn an còd cùrsa agad gus do chur ris a’ chùrsa agad gu fèin-obrachail.",
+    "courseCodeLabel": "Còd cùrsa",
+    "courseCodeSaved": "Còd cùrsa {code} air a shàbhaladh",
+    "courseCodeSavedExplanation": "Clàraich no log a-steach agus cuiridh sinn ris a’ chùrsa agad thu."
 }

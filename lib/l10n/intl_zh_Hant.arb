@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-28 13:21:24.981419",
+    "@@last_modified": "2026-09-28 15:16:08.699549",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10068,5 +10068,10 @@
     "summaryFeedbackReceived": "感謝！我們已收到您的意見回饋。",
     "summaryFeedbackFailed": "無法傳送您的意見回饋。請再試一次。",
     "summaryFeedbackProcessing": "正在傳送您的意見回饋並更新摘要…",
-    "callTranscriptNotSubscribed": "{name} 在通話期間沒有訂閱，因此通話內容沒有轉錄。"
+    "callTranscriptNotSubscribed": "{name} 在通話期間沒有訂閱，因此通話內容沒有轉錄。",
+    "joinYourCourse": "加入您的課程",
+    "courseCodeJoinExplanation": "登入或註冊，我們將使用您的課程代碼自動將您加入課程。",
+    "courseCodeLabel": "課程代碼",
+    "courseCodeSaved": "課程代碼 {code} 已儲存",
+    "courseCodeSavedExplanation": "註冊或登入，我們將把您加入課程。"
 }

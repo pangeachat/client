@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-28 13:21:23.455058",
+    "@@last_modified": "2026-09-28 15:16:07.148708",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10480,5 +10480,10 @@
     "summaryFeedbackReceived": "Tack! Vi har mottagit din feedback.",
     "summaryFeedbackFailed": "Kunde inte skicka din feedback. Försök igen.",
     "summaryFeedbackProcessing": "Skickar din feedback och uppdaterar sammanfattningen…",
-    "callTranscriptNotSubscribed": "{name} hade ingen prenumeration under det här samtalet, så det som sades transkriberades inte."
+    "callTranscriptNotSubscribed": "{name} hade ingen prenumeration under det här samtalet, så det som sades transkriberades inte.",
+    "joinYourCourse": "Gå med i din kurs",
+    "courseCodeJoinExplanation": "Logga in eller registrera dig, så använder vi din kurskod för att automatiskt lägga till dig i din kurs.",
+    "courseCodeLabel": "Kurskod",
+    "courseCodeSaved": "Kurskod {code} sparad",
+    "courseCodeSavedExplanation": "Registrera dig eller logga in så lägger vi till dig i din kurs."
 }

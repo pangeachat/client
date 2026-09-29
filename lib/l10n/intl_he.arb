@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-28 13:21:18.502337",
+    "@@last_modified": "2026-09-28 15:16:00.298797",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10876,5 +10876,10 @@
     "summaryFeedbackReceived": "תודה! קיבלנו את המשוב שלך.",
     "summaryFeedbackFailed": "לא ניתן היה לשלוח את המשוב שלך. אנא נסה שוב.",
     "summaryFeedbackProcessing": "שולח את המשוב שלך ומעדכן את הסיכום…",
-    "callTranscriptNotSubscribed": "{name} לא היה מנוי במהלך השיחה הזו, ולכן מה שנאמר לא תומלל."
+    "callTranscriptNotSubscribed": "{name} לא היה מנוי במהלך השיחה הזו, ולכן מה שנאמר לא תומלל.",
+    "joinYourCourse": "הצטרף לקורס שלך",
+    "courseCodeJoinExplanation": "התחבר או הירשם, ואנו נשתמש בקוד הקורס שלך כדי להוסיף אותך לקורס באופן אוטומטי.",
+    "courseCodeLabel": "קוד קורס",
+    "courseCodeSaved": "קוד קורס {code} נשמר",
+    "courseCodeSavedExplanation": "הירשם או התחבר ואנו נוסיף אותך לקורס שלך."
 }

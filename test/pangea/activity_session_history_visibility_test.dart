@@ -30,7 +30,9 @@ import 'package:fluffychat/features/activity_sessions/activity_media_enum.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_request.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/launch_activity_session.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
+import 'activity_session_launch_wait_test.dart' show seedActivityPlanState;
 import 'get_test_client.dart';
 
 void main() {
@@ -96,7 +98,12 @@ void main() {
         );
     await GetStorage.init('env_override');
     dotenv.testLoad(mergeWith: {'BOT_NAME': 'pangeabot'});
-    client = await getTestClient();
+    client = await getTestClient(
+      importantStateEvents: {PangeaEventTypes.activityPlan},
+    );
+    // launchActivitySession waits for the new room's activity reference to
+    // sync; FakeMatrixApi's createRoom always answers this id.
+    await seedActivityPlanState(client, '!1234:fakeServer.notExisting');
     FakeMatrixApi.calledEndpoints.clear();
   });
 

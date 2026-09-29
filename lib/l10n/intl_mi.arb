@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-09-28 13:21:20.627158",
+    "@@last_modified": "2026-09-28 15:16:03.833723",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2370,5 +2370,10 @@
     "summaryFeedbackReceived": "Ngā mihi! Kua tae mai ō urupare.",
     "summaryFeedbackFailed": "Kāore i taea te tuku i ō urupare. Whakamātauria anō.",
     "summaryFeedbackProcessing": "E tuku ana i ō urupare me te whakahou i te whakarāpopototanga…",
-    "callTranscriptNotSubscribed": "Kāore he ohaurunga a {name} i tēnei waea, nō reira kāore i tuhia ngā kōrero."
+    "callTranscriptNotSubscribed": "Kāore he ohaurunga a {name} i tēnei waea, nō reira kāore i tuhia ngā kōrero.",
+    "joinYourCourse": "Hono atu ki tō akoranga",
+    "courseCodeJoinExplanation": "Takiuru, rēhita rānei, ā, mā tō waehere akoranga koe e tāpiri aunoa ki tō akoranga.",
+    "courseCodeLabel": "Waehere akoranga",
+    "courseCodeSaved": "Kua tiakina te waehere akoranga {code}",
+    "courseCodeSavedExplanation": "Rēhita, takiuru rānei, ā, mā mātou koe e tāpiri ki tō akoranga."
 }

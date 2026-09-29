@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-09-28 13:21:17.191144",
+    "@@last_modified": "2026-09-28 15:15:58.105844",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2370,5 +2370,10 @@
     "summaryFeedbackReceived": "Salamat! Nadawat namo ang imong feedback.",
     "summaryFeedbackFailed": "Dili makapadala sa imong feedback. Palihug sulayi pag-usab.",
     "summaryFeedbackProcessing": "Gipadala ang imong feedback ug gi-update ang summary…",
-    "callTranscriptNotSubscribed": "Walay subscription si {name} atol niini nga tawag, mao nga wala gi-transcribe ang gisulti."
+    "callTranscriptNotSubscribed": "Walay subscription si {name} atol niini nga tawag, mao nga wala gi-transcribe ang gisulti.",
+    "joinYourCourse": "Apil sa imong kurso",
+    "courseCodeJoinExplanation": "Pag-log in o pag-sign up, ug gamiton namo ang imong course code aron awtomatikong idugang ka sa imong kurso.",
+    "courseCodeLabel": "Course code",
+    "courseCodeSaved": "Na-save ang course code nga {code}",
+    "courseCodeSavedExplanation": "Pag-sign up o pag-log in ug idugang ka namo sa imong kurso."
 }

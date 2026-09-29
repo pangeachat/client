@@ -1263,7 +1263,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-09-28 13:21:24.898475",
+    "@@last_modified": "2026-09-28 15:16:08.706229",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10919,5 +10919,10 @@
     "summaryFeedbackReceived": "多謝！我哋已經收到你嘅意見。",
     "summaryFeedbackFailed": "未能發送你嘅意見。請再試一次。",
     "summaryFeedbackProcessing": "正在傳送你的意見並更新摘要…",
-    "callTranscriptNotSubscribed": "{name} 喺呢次通話期間冇訂閱，所以冇轉錄到對話內容。"
+    "callTranscriptNotSubscribed": "{name} 喺呢次通話期間冇訂閱，所以冇轉錄到對話內容。",
+    "joinYourCourse": "加入你的課程",
+    "courseCodeJoinExplanation": "登入或註冊，我們會使用你的課程代碼自動將你加入課程。",
+    "courseCodeLabel": "課程代碼",
+    "courseCodeSaved": "課程代碼 {code} 已儲存",
+    "courseCodeSavedExplanation": "註冊或登入，我們會將你加入課程。"
 }

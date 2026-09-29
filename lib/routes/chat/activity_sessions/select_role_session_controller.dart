@@ -189,6 +189,7 @@ class SelectRoleSessionController extends State<SelectRoleSession>
     }
 
     final activityRoom = this.activityRoom;
+    String? roomId = widget.roomId;
     if (activityRoom != null && activityRoom.membership == Membership.join) {
       await showFutureLoadingDialog(
         context: context,
@@ -208,13 +209,14 @@ class SelectRoleSessionController extends State<SelectRoleSession>
       );
 
       if (!resp.isError) {
-        NavigationUtil.goToSpaceRoute(resp.result, [], context);
+        roomId = resp.result;
+        NavigationUtil.goToSpaceRoute(roomId, [], context);
       }
     }
 
     GoogleAnalytics.startActivity(
       activity.activityId,
-      widget.roomId ?? '',
+      roomId ?? '',
       versionPinHonored: !activity.usedFallbackVersion,
       fallbackCause: activity.fallbackCause,
     );

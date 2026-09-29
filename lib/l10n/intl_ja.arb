@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-09-28 13:21:19.494676",
+    "@@last_modified": "2026-09-28 15:16:01.335323",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10731,5 +10731,10 @@
     "summaryFeedbackReceived": "ありがとうございます！フィードバックを送信しました。",
     "summaryFeedbackFailed": "フィードバックを送信できませんでした。もう一度お試しください。",
     "summaryFeedbackProcessing": "フィードバックを送信して要約を更新しています…",
-    "callTranscriptNotSubscribed": "{name}は通話中にサブスクリプションに登録していなかったため、会話は書き起こされませんでした。"
+    "callTranscriptNotSubscribed": "{name}は通話中にサブスクリプションに登録していなかったため、会話は書き起こされませんでした。",
+    "joinYourCourse": "コースに参加",
+    "courseCodeJoinExplanation": "ログインまたはサインアップすると、コースコードを使用してコースに自動的に追加されます。",
+    "courseCodeLabel": "コースコード",
+    "courseCodeSaved": "コースコード {code} が保存されました",
+    "courseCodeSavedExplanation": "サインアップまたはログインすると、コースに追加されます。"
 }

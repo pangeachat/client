@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-09-28 13:21:24.479589",
+    "@@last_modified": "2026-09-28 15:16:08.750581",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9966,5 +9966,10 @@
     "summaryFeedbackReceived": "Rahmat! Fikringiz qabul qilindi.",
     "summaryFeedbackFailed": "Fikringizni yuborib bo‘lmadi. Iltimos, qayta urinib ko‘ring.",
     "summaryFeedbackProcessing": "Fikringizni yuborish va xulosani yangilash…",
-    "callTranscriptNotSubscribed": "{name} ushbu qo‘ng‘iroq paytida obunaga ega bo‘lmagan, shuning uchun aytilganlar transkripsiya qilinmadi."
+    "callTranscriptNotSubscribed": "{name} ushbu qo‘ng‘iroq paytida obunaga ega bo‘lmagan, shuning uchun aytilganlar transkripsiya qilinmadi.",
+    "joinYourCourse": "Kursga qoʻshiling",
+    "courseCodeJoinExplanation": "Tizimga kiring yoki roʻyxatdan oʻting, biz sizning kurs kodingizdan avtomatik ravishda kursingizga qoʻshish uchun foydalanamiz.",
+    "courseCodeLabel": "Kurs kodi",
+    "courseCodeSaved": "Kurs kodi {code} saqlandi",
+    "courseCodeSavedExplanation": "Roʻyxatdan oʻting yoki tizimga kiring va biz sizni kursingizga qoʻshamiz."
 }

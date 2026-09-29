@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-09-28 13:21:19.002419",
+    "@@last_modified": "2026-09-28 15:16:01.321385",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2370,5 +2370,10 @@
     "summaryFeedbackReceived": "Շնորհակալություն։ Մենք ստացանք Ձեր կարծիքը։",
     "summaryFeedbackFailed": "Չհաջողվեց ուղարկել Ձեր կարծիքը։ Խնդրում ենք նորից փորձել։",
     "summaryFeedbackProcessing": "Ուղարկվում է ձեր կարծիքը և թարմացվում է ամփոփումը…",
-    "callTranscriptNotSubscribed": "{name}-ը բաժանորդագրություն չուներ այս զանգի ընթացքում, ուստի ասվածը չի արտագրվել:"
+    "callTranscriptNotSubscribed": "{name}-ը բաժանորդագրություն չուներ այս զանգի ընթացքում, ուստի ասվածը չի արտագրվել:",
+    "joinYourCourse": "Միացեք Ձեր դասընթացին",
+    "courseCodeJoinExplanation": "Մուտք գործեք կամ գրանցվեք, և մենք կօգտագործենք Ձեր դասընթացի կոդը՝ Ձեզ ավտոմատ կերպով Ձեր դասընթացին ավելացնելու համար։",
+    "courseCodeLabel": "Դասընթացի կոդ",
+    "courseCodeSaved": "Դասընթացի կոդը՝ {code} պահպանված է",
+    "courseCodeSavedExplanation": "Գրանցվեք կամ մուտք գործեք, և մենք Ձեզ կավելացնենք Ձեր դասընթացին։"
 }

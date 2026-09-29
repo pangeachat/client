@@ -1,6 +1,8 @@
 @Timeout(Duration(minutes: 3))
 library;
 
+import 'dart:async';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart';
 
@@ -198,6 +200,17 @@ void main() {
         primarySpace: space,
       );
       ContractHarness.trackRoom(client, roomId);
+      // Sharing into the course runs in the background after launch returns
+      // (#9297); wait for it before reading the space back.
+      await ContractHarness.waitUntil(
+        client,
+        () =>
+            client
+                .getRoomById(spaceId)
+                ?.spaceChildren
+                .any((c) => c.roomId == roomId) ??
+            false,
+      );
       final state = await ContractHarness.serverState(client, roomId);
 
       // The activity id rides inside the room type — the most custom
@@ -284,7 +297,24 @@ void main() {
         } catch (_) {}
       }
       if (botExists) {
-        final botMember = state['m.room.member']?[botId]?['membership'];
+        // The invite is the last step of the background setup (#9297).
+        try {
+          await ContractHarness.waitUntil(
+            client,
+            () =>
+                client
+                    .getRoomById(roomId)
+                    ?.getState(EventTypes.RoomMember, botId) !=
+                null,
+          );
+        } on TimeoutException {
+          // Fall through: the probe below tells a rate-limited invite from a
+          // broken one.
+        }
+        final botMember = (await ContractHarness.serverState(
+          client,
+          roomId,
+        ))['m.room.member']?[botId]?['membership'];
         if (botMember == null) {
           // The bot is EVERY run's invite target, so Synapse's per-target
           // rc_invites budget (burst 5, slow refill) can 429 the

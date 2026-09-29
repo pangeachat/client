@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-09-28 13:21:22.703663",
+    "@@last_modified": "2026-09-28 15:16:06.289343",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2370,5 +2370,10 @@
     "summaryFeedbackReceived": "مهرباني! اسان توهان جو رايو وصول ڪيو آهي.",
     "summaryFeedbackFailed": "توهان جو رايو موڪلي نه سگهيو. مهرباني ڪري ٻيهر ڪوشش ڪريو.",
     "summaryFeedbackProcessing": "توهان جي راءِ موڪلي پئي وڃي ۽ خلاصو اپڊيٽ ڪيو پيو وڃي…",
-    "callTranscriptNotSubscribed": "{name} وٽ هن ڪال دوران رڪنيت نه هئي، تنهنڪري جيڪو ڪجهه چيو ويو اهو لکيو نه ويو."
+    "callTranscriptNotSubscribed": "{name} وٽ هن ڪال دوران رڪنيت نه هئي، تنهنڪري جيڪو ڪجهه چيو ويو اهو لکيو نه ويو.",
+    "joinYourCourse": "پنهنجي ڪورس ۾ شامل ٿيو",
+    "courseCodeJoinExplanation": "لاگ اِن ٿيو يا سائن اپ ڪريو، ۽ اسان توهان جي ڪورس ڪوڊ کي استعمال ڪندي توهان کي خودڪار طريقي سان توهان جي ڪورس ۾ شامل ڪنداسين.",
+    "courseCodeLabel": "ڪورس ڪوڊ",
+    "courseCodeSaved": "ڪورس ڪوڊ {code} محفوظ ڪيو ويو",
+    "courseCodeSavedExplanation": "سائن اپ ڪريو يا لاگ اِن ٿيو ۽ اسان توهان کي توهان جي ڪورس ۾ شامل ڪنداسين."
 }

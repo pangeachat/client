@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-09-28 13:21:16.539041",
+    "@@last_modified": "2026-09-28 15:15:56.873682",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2370,5 +2370,10 @@
     "summaryFeedbackReceived": "Dankie! Ons het jou terugvoer ontvang.",
     "summaryFeedbackFailed": "Kon nie jou terugvoer stuur nie. Probeer asseblief weer.",
     "summaryFeedbackProcessing": "Stuur jou terugvoer en werk die opsomming by …",
-    "callTranscriptNotSubscribed": "{name} het nie 'n intekening gehad tydens hierdie oproep nie, so wat gesê is, is nie getranskribeer nie."
+    "callTranscriptNotSubscribed": "{name} het nie 'n intekening gehad tydens hierdie oproep nie, so wat gesê is, is nie getranskribeer nie.",
+    "joinYourCourse": "Sluit aan by jou kursus",
+    "courseCodeJoinExplanation": "Meld aan of registreer, en ons sal jou kursuskode gebruik om jou outomaties by jou kursus te voeg.",
+    "courseCodeLabel": "Kursuskode",
+    "courseCodeSaved": "Kursuskode {code} gestoor",
+    "courseCodeSavedExplanation": "Registreer of meld aan en ons sal jou by jou kursus voeg."
 }
