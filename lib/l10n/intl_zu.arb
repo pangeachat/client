@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "Okurekhodiwe",
     "callTranscriptFullCall": "Ucingo lonke",
     "callTranscriptPreparingRecording": "Kulungiselelwa okurekhodiwe okuphelele…",
-    "callTranscriptNoRecording": "Akukho okurekhodiwe kocingo lonke."
+    "callTranscriptNoRecording": "Akukho okurekhodiwe kocingo lonke.",
+    "callTranscriptTranscribeButton": "Guqula ube umbhalo",
+    "callTranscriptAudioUnavailable": "Okurekhodiwe okugciniwe okuvela ku-{name} akukwazanga ukulandwa, ngakho-ke akukwazanga ukuguqulwa kube umbhalo.",
+    "callTranscriptChooseLanguage": "Yiluphi ulimi olwalukhulunywa?",
+    "callTranscriptSubscribeForTranscription": "Bhalisela ukuguqulwa kube umbhalo",
+    "unlockCallTranscript": "Vula umbhalo wekholi"
 }

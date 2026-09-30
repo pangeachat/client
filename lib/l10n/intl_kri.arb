@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "Raykod dɛn",
     "callTranscriptFullCall": "Ful kɔl",
     "callTranscriptPreparingRecording": "De pripia di ful raykod…",
-    "callTranscriptNoRecording": "No raykod fɔ di ful kɔl."
+    "callTranscriptNoRecording": "No raykod fɔ di ful kɔl.",
+    "callTranscriptTranscribeButton": "Transkrayb",
+    "callTranscriptAudioUnavailable": "Wi nɔ ebul fɔ daunlod di rikɔdin frɔm {name}, so wi nɔ ebul fɔ transkrayb am.",
+    "callTranscriptChooseLanguage": "Us langwej dɛn bin tɔk?",
+    "callTranscriptSubscribeForTranscription": "Sabsakrayb fɔ transkripshɔn",
+    "unlockCallTranscript": "Ɔnlɔk kɔl transkript"
 }

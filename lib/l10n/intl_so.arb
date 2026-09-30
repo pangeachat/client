@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "Duubista",
     "callTranscriptFullCall": "Wicitaan buuxa",
     "callTranscriptPreparingRecording": "Waxaan diyaarinaynaa duubista oo dhan…",
-    "callTranscriptNoRecording": "Ma jirto duubis wicitaanka oo dhan."
+    "callTranscriptNoRecording": "Ma jirto duubis wicitaanka oo dhan.",
+    "callTranscriptTranscribeButton": "Qor",
+    "callTranscriptAudioUnavailable": "Duubista la keydiyay ee {name} lama soo dejisan karin, sidaa darteed lama qori karin.",
+    "callTranscriptChooseLanguage": "Luqaddee lagu hadlay?",
+    "callTranscriptSubscribeForTranscription": "Isdiiwaangeli si aad u hesho qoraalka",
+    "unlockCallTranscript": "Fur qoraalka wicitaanka"
 }

@@ -10846,5 +10846,10 @@
     "callTranscriptRecordings": "Ηχογραφήσεις",
     "callTranscriptFullCall": "Πλήρης κλήση",
     "callTranscriptPreparingRecording": "Προετοιμασία της πλήρους ηχογράφησης…",
-    "callTranscriptNoRecording": "Δεν υπάρχει ηχογράφηση της πλήρους κλήσης."
+    "callTranscriptNoRecording": "Δεν υπάρχει ηχογράφηση της πλήρους κλήσης.",
+    "callTranscriptTranscribeButton": "Μεταγραφή",
+    "callTranscriptAudioUnavailable": "Η αποθηκευμένη ηχογράφηση από τον/την {name} δεν ήταν δυνατή να ληφθεί, επομένως δεν ήταν δυνατή η μεταγραφή της.",
+    "callTranscriptChooseLanguage": "Ποια γλώσσα ομιλήθηκε;",
+    "callTranscriptSubscribeForTranscription": "Εγγραφείτε για μεταγραφή",
+    "unlockCallTranscript": "Ξεκλείδωμα μεταγραφής κλήσης"
 }

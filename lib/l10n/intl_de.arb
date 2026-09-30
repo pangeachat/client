@@ -9958,5 +9958,10 @@
     "callTranscriptRecordings": "Aufnahmen",
     "callTranscriptFullCall": "Ganzer Anruf",
     "callTranscriptPreparingRecording": "Die vollständige Aufnahme wird vorbereitet…",
-    "callTranscriptNoRecording": "Keine Aufnahme des gesamten Anrufs vorhanden."
+    "callTranscriptNoRecording": "Keine Aufnahme des gesamten Anrufs vorhanden.",
+    "callTranscriptTranscribeButton": "Transkribieren",
+    "callTranscriptAudioUnavailable": "Die gespeicherte Aufnahme von {name} konnte nicht heruntergeladen und daher nicht transkribiert werden.",
+    "callTranscriptChooseLanguage": "Welche Sprache wurde gesprochen?",
+    "callTranscriptSubscribeForTranscription": "Für Transkription abonnieren",
+    "unlockCallTranscript": "Anruf-Transkript freischalten"
 }

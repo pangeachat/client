@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "Rékaman",
     "callTranscriptFullCall": "Telepon lengkep",
     "callTranscriptPreparingRecording": "Nyiapkeun rékaman lengkep…",
-    "callTranscriptNoRecording": "Teu aya rékaman telepon lengkep."
+    "callTranscriptNoRecording": "Teu aya rékaman telepon lengkep.",
+    "callTranscriptTranscribeButton": "Transkripsi",
+    "callTranscriptAudioUnavailable": "Rekaman nu disimpen ti {name} teu tiasa diunduh, janten teu tiasa ditranskripsi.",
+    "callTranscriptChooseLanguage": "Basa naon nu diucapkeun?",
+    "callTranscriptSubscribeForTranscription": "Langganan pikeun transkripsi",
+    "unlockCallTranscript": "Buka konci transkrip telepon"
 }

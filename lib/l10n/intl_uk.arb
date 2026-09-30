@@ -9971,5 +9971,10 @@
     "callTranscriptRecordings": "Записи",
     "callTranscriptFullCall": "Повний дзвінок",
     "callTranscriptPreparingRecording": "Підготовка повного запису…",
-    "callTranscriptNoRecording": "Немає запису повного дзвінка."
+    "callTranscriptNoRecording": "Немає запису повного дзвінка.",
+    "callTranscriptTranscribeButton": "Транскрибувати",
+    "callTranscriptAudioUnavailable": "Збережений запис від {name} не вдалося завантажити, тому його неможливо транскрибувати.",
+    "callTranscriptChooseLanguage": "Якою мовою розмовляли?",
+    "callTranscriptSubscribeForTranscription": "Підписатися на транскрипцію",
+    "unlockCallTranscript": "Розблокувати стенограму дзвінка"
 }

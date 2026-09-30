@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "Cov ntaubntawv kaw tseg",
     "callTranscriptFullCall": "Hu tag nrho",
     "callTranscriptPreparingRecording": "Npaj cov ntaubntawv kaw tseg tag nrho…",
-    "callTranscriptNoRecording": "Tsis muaj ntaubntawv kaw tseg rau kev hu tag nrho."
+    "callTranscriptNoRecording": "Tsis muaj ntaubntawv kaw tseg rau kev hu tag nrho.",
+    "callTranscriptTranscribeButton": "Sau ua ntawv",
+    "callTranscriptAudioUnavailable": "Lub suab kaw tseg ntawm {name} rub tsis tau, yog li sau ua ntawv tsis tau.",
+    "callTranscriptChooseLanguage": "Hais hom lus twg?",
+    "callTranscriptSubscribeForTranscription": "Sau npe kom sau ua ntawv",
+    "unlockCallTranscript": "Xauv cov ntawv sau ua lus"
 }

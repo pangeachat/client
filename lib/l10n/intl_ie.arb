@@ -10603,5 +10603,10 @@
     "callTranscriptRecordings": "Taifeadtaí",
     "callTranscriptFullCall": "Glao iomlán",
     "callTranscriptPreparingRecording": "Ag ullmhú an taifeadta iomláin…",
-    "callTranscriptNoRecording": "Níl aon taifeadadh den ghlao iomlán."
+    "callTranscriptNoRecording": "Níl aon taifeadadh den ghlao iomlán.",
+    "callTranscriptTranscribeButton": "Trascríobh",
+    "callTranscriptAudioUnavailable": "Níorbh fhéidir an taifeadadh sábháilte ó {name} a íoslódáil, mar sin níorbh fhéidir é a thrascríobh.",
+    "callTranscriptChooseLanguage": "Cén teanga a labhraíodh?",
+    "callTranscriptSubscribeForTranscription": "Liostáil le haghaidh trascríofa",
+    "unlockCallTranscript": "Díghlasáil trascríbhinn glaonna"
 }

@@ -3932,6 +3932,17 @@
     "callTranscriptFullCall": "Full call",
     "callTranscriptPreparingRecording": "Preparing the full recording…",
     "callTranscriptNoRecording": "No recording of the full call.",
+    "callTranscriptTranscribeButton": "Transcribe",
+    "callTranscriptAudioUnavailable": "The saved recording from {name} could not be downloaded, so it could not be transcribed.",
+    "@callTranscriptAudioUnavailable": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "callTranscriptChooseLanguage": "What language was spoken?",
+    "callTranscriptSubscribeForTranscription": "Subscribe for transcription",
     "leaveSpaceDescription": "By leaving the course, you will leave all of the chats within it. Other users will see that you have left the course.",
     "constructUseCorMmDesc": "Correct message meaning",
     "constructUseIncMmDesc": "Incorrect message meaning",
@@ -4830,6 +4841,7 @@
     "unlockEmojiMode": "Unlock emoji mode",
     "unlockMessagePractice": "Unlock message practice",
     "unlockWritingAssistance": "Unlock writing assistance",
+    "unlockCallTranscript": "Unlock call transcript",
     "managementSnackbarMessage": "We launched subscription management in a new tab. If you didn't see the new tab, please check your popup blocker.",
     "getStarted": "Get started",
     "hideEvents": "Hide events",

@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "Snimci",
     "callTranscriptFullCall": "Cijeli poziv",
     "callTranscriptPreparingRecording": "Pripremam cijeli snimak…",
-    "callTranscriptNoRecording": "Nema snimka cijelog poziva."
+    "callTranscriptNoRecording": "Nema snimka cijelog poziva.",
+    "callTranscriptTranscribeButton": "Prepiši",
+    "callTranscriptAudioUnavailable": "Sačuvani snimak od {name} nije bilo moguće preuzeti, pa ga nije bilo moguće prepisati.",
+    "callTranscriptChooseLanguage": "Koji jezik je govoren?",
+    "callTranscriptSubscribeForTranscription": "Pretplatite se za transkripciju",
+    "unlockCallTranscript": "Otključaj transkript poziva"
 }

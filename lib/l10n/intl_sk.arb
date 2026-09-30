@@ -10916,5 +10916,10 @@
     "callTranscriptRecordings": "Nahrávky",
     "callTranscriptFullCall": "Celý hovor",
     "callTranscriptPreparingRecording": "Pripravujem celú nahrávku…",
-    "callTranscriptNoRecording": "Žiadna nahrávka celého hovoru."
+    "callTranscriptNoRecording": "Žiadna nahrávka celého hovoru.",
+    "callTranscriptTranscribeButton": "Prepis",
+    "callTranscriptAudioUnavailable": "Uloženú nahrávku od {name} sa nepodarilo stiahnuť, takže ju nebolo možné prepísať.",
+    "callTranscriptChooseLanguage": "Akým jazykom sa hovorilo?",
+    "callTranscriptSubscribeForTranscription": "Predplatiť si prepis",
+    "unlockCallTranscript": "Odomknúť prepis hovoru"
 }

@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "ರೆಕಾರ್ಡಿಂಗ್‌ಗಳು",
     "callTranscriptFullCall": "ಪೂರ್ಣ ಕರೆ",
     "callTranscriptPreparingRecording": "ಪೂರ್ಣ ರೆಕಾರ್ಡಿಂಗ್ ಸಿದ್ಧಪಡಿಸಲಾಗುತ್ತಿದೆ…",
-    "callTranscriptNoRecording": "ಪೂರ್ಣ ಕರೆಯ ಯಾವುದೇ ರೆಕಾರ್ಡಿಂಗ್ ಇಲ್ಲ."
+    "callTranscriptNoRecording": "ಪೂರ್ಣ ಕರೆಯ ಯಾವುದೇ ರೆಕಾರ್ಡಿಂಗ್ ಇಲ್ಲ.",
+    "callTranscriptTranscribeButton": "ಲಿಪ್ಯಂತರ ಮಾಡಿ",
+    "callTranscriptAudioUnavailable": "{name} ನಿಂದ ಉಳಿಸಿದ ರೆಕಾರ್ಡಿಂಗ್ ಅನ್ನು ಡೌನ್‌ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ, ಆದ್ದರಿಂದ ಅದನ್ನು ಲಿಪ್ಯಂತರ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.",
+    "callTranscriptChooseLanguage": "ಯಾವ ಭಾಷೆಯನ್ನು ಮಾತನಾಡಲಾಗಿದೆ?",
+    "callTranscriptSubscribeForTranscription": "ಲಿಪ್ಯಂತರಕ್ಕಾಗಿ ಚಂದಾದಾರರಾಗಿ",
+    "unlockCallTranscript": "ಕರೆ ಲಿಪ್ಯಂತರವನ್ನು ಅನ್‌ಲಾಕ್ ಮಾಡಿ"
 }

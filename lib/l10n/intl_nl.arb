@@ -9971,5 +9971,10 @@
     "callTranscriptRecordings": "Opnames",
     "callTranscriptFullCall": "Volledig gesprek",
     "callTranscriptPreparingRecording": "De volledige opname wordt voorbereid…",
-    "callTranscriptNoRecording": "Geen opname van het volledige gesprek."
+    "callTranscriptNoRecording": "Geen opname van het volledige gesprek.",
+    "callTranscriptTranscribeButton": "Transcripteren",
+    "callTranscriptAudioUnavailable": "De opgeslagen opname van {name} kon niet worden gedownload en kon daarom niet worden getranscribeerd.",
+    "callTranscriptChooseLanguage": "Welke taal werd er gesproken?",
+    "callTranscriptSubscribeForTranscription": "Abonneren voor transcriptie",
+    "unlockCallTranscript": "Ontgrendel gespreksafschrift"
 }

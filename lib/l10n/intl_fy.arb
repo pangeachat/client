@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "Opnamen",
     "callTranscriptFullCall": "Folsleine oprop",
     "callTranscriptPreparingRecording": "De folsleine opname wurdt taret…",
-    "callTranscriptNoRecording": "Gjin opname fan de folsleine oprop."
+    "callTranscriptNoRecording": "Gjin opname fan de folsleine oprop.",
+    "callTranscriptTranscribeButton": "Transkriberje",
+    "callTranscriptAudioUnavailable": "De bewarre opname fan {name} koe net downloade wurde, dus it koe net transkribearre wurde.",
+    "callTranscriptChooseLanguage": "Hokker taal waard sprutsen?",
+    "callTranscriptSubscribeForTranscription": "Abonnearje foar transkripsje",
+    "unlockCallTranscript": "Untskoattelje oproptranskripsje"
 }

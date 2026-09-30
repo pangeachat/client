@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "ਰਿਕਾਰਡਿੰਗਾਂ",
     "callTranscriptFullCall": "ਪੂਰੀ ਕਾਲ",
     "callTranscriptPreparingRecording": "ਪੂਰੀ ਰਿਕਾਰਡਿੰਗ ਤਿਆਰ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ…",
-    "callTranscriptNoRecording": "ਪੂਰੀ ਕਾਲ ਦੀ ਕੋਈ ਰਿਕਾਰਡਿੰਗ ਨਹੀਂ।"
+    "callTranscriptNoRecording": "ਪੂਰੀ ਕਾਲ ਦੀ ਕੋਈ ਰਿਕਾਰਡਿੰਗ ਨਹੀਂ।",
+    "callTranscriptTranscribeButton": "ਲਿਖੋ",
+    "callTranscriptAudioUnavailable": "{name} ਤੋਂ ਸੁਰੱਖਿਅਤ ਕੀਤੀ ਰਿਕਾਰਡਿੰਗ ਡਾਊਨਲੋਡ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕੀ, ਇਸ ਲਈ ਇਸਨੂੰ ਲਿਖਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ।",
+    "callTranscriptChooseLanguage": "ਕਿਹੜੀ ਭਾਸ਼ਾ ਬੋਲੀ ਗਈ ਸੀ?",
+    "callTranscriptSubscribeForTranscription": "ਲਿਖਣ ਲਈ ਗਾਹਕ ਬਣੋ",
+    "unlockCallTranscript": "ਕਾਲ ਟ੍ਰਾਂਸਕ੍ਰਿਪਟ ਅਨਲੌਕ ਕਰੋ"
 }

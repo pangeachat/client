@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "रेकर्डिङहरू",
     "callTranscriptFullCall": "पूर्ण कल",
     "callTranscriptPreparingRecording": "पूर्ण रेकर्डिङ तयार गर्दै…",
-    "callTranscriptNoRecording": "पूर्ण कलको कुनै रेकर्डिङ छैन।"
+    "callTranscriptNoRecording": "पूर्ण कलको कुनै रेकर्डिङ छैन।",
+    "callTranscriptTranscribeButton": "ट्रान्सक्राइब गर्नुहोस्",
+    "callTranscriptAudioUnavailable": "{name} बाट सुरक्षित गरिएको रेकर्डिङ डाउनलोड गर्न सकिएन, त्यसैले यसलाई ट्रान्सक्राइब गर्न सकिएन।",
+    "callTranscriptChooseLanguage": "कुन भाषा बोलिएको थियो?",
+    "callTranscriptSubscribeForTranscription": "ट्रान्सक्रिप्शनका लागि सदस्यता लिनुहोस्",
+    "unlockCallTranscript": "कल ट्रान्सक्रिप्ट अनलक गर्नुहोस्"
 }

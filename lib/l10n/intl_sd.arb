@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "رڪارڊنگون",
     "callTranscriptFullCall": "پوري ڪال",
     "callTranscriptPreparingRecording": "پوري رڪارڊنگ تيار ڪئي پئي وڃي…",
-    "callTranscriptNoRecording": "پوري ڪال جي ڪا به رڪارڊنگ موجود ناهي."
+    "callTranscriptNoRecording": "پوري ڪال جي ڪا به رڪارڊنگ موجود ناهي.",
+    "callTranscriptTranscribeButton": "لِکڻ",
+    "callTranscriptAudioUnavailable": "{name} کان محفوظ ڪيل رڪارڊنگ ڊائونلوڊ نه ٿي سگهي، تنهنڪري ان کي لکي نه سگهيو.",
+    "callTranscriptChooseLanguage": "ڪهڙي ٻولي ڳالهائي وئي؟",
+    "callTranscriptSubscribeForTranscription": "لِکڻ لاءِ سبسڪرائب ڪريو",
+    "unlockCallTranscript": "ڪال ٽرانسڪرپٽ کوليو"
 }

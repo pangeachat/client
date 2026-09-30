@@ -10603,5 +10603,10 @@
     "callTranscriptRecordings": "การบันทึก",
     "callTranscriptFullCall": "การโทรทั้งหมด",
     "callTranscriptPreparingRecording": "กำลังเตรียมการบันทึกทั้งหมด…",
-    "callTranscriptNoRecording": "ไม่มีการบันทึกการโทรทั้งหมด"
+    "callTranscriptNoRecording": "ไม่มีการบันทึกการโทรทั้งหมด",
+    "callTranscriptTranscribeButton": "ถอดเสียง",
+    "callTranscriptAudioUnavailable": "ไม่สามารถดาวน์โหลดไฟล์บันทึกที่บันทึกไว้จาก {name} ได้ จึงไม่สามารถถอดเสียงได้",
+    "callTranscriptChooseLanguage": "พูดภาษาอะไร",
+    "callTranscriptSubscribeForTranscription": "สมัครสมาชิกเพื่อถอดเสียง",
+    "unlockCallTranscript": "ปลดล็อกบทสนทนาการโทร"
 }

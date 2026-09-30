@@ -10920,5 +10920,10 @@
     "callTranscriptRecordings": "Snimci",
     "callTranscriptFullCall": "Ceo poziv",
     "callTranscriptPreparingRecording": "Pripremam ceo snimak…",
-    "callTranscriptNoRecording": "Nema snimka celog poziva."
+    "callTranscriptNoRecording": "Nema snimka celog poziva.",
+    "callTranscriptTranscribeButton": "Prepiši",
+    "callTranscriptAudioUnavailable": "Sačuvani snimak od {name} nije mogao da se preuzme, tako da nije mogao da bude prepisan.",
+    "callTranscriptChooseLanguage": "Koji jezik je bio u upotrebi?",
+    "callTranscriptSubscribeForTranscription": "Pretplatite se za transkripciju",
+    "unlockCallTranscript": "Otključaj transkript poziva"
 }

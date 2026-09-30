@@ -10044,5 +10044,10 @@
     "callTranscriptRecordings": "Rekaman",
     "callTranscriptFullCall": "Panggilan lengkap",
     "callTranscriptPreparingRecording": "Mempersiapkan rekaman lengkap...",
-    "callTranscriptNoRecording": "Tidak ada rekaman panggilan lengkap."
+    "callTranscriptNoRecording": "Tidak ada rekaman panggilan lengkap.",
+    "callTranscriptTranscribeButton": "Transkripsikan",
+    "callTranscriptAudioUnavailable": "Rekaman tersimpan dari {name} tidak dapat diunduh, sehingga tidak dapat ditranskripsikan.",
+    "callTranscriptChooseLanguage": "Bahasa apa yang digunakan?",
+    "callTranscriptSubscribeForTranscription": "Berlangganan untuk transkripsi",
+    "unlockCallTranscript": "Buka transkrip panggilan"
 }

@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "ৰেকৰ্ডিংসমূহ",
     "callTranscriptFullCall": "সম্পূৰ্ণ কল",
     "callTranscriptPreparingRecording": "সম্পূৰ্ণ ৰেকৰ্ডিং প্ৰস্তুত কৰা হৈছে…",
-    "callTranscriptNoRecording": "সম্পূৰ্ণ কলৰ কোনো ৰেকৰ্ডিং নাই।"
+    "callTranscriptNoRecording": "সম্পূৰ্ণ কলৰ কোনো ৰেকৰ্ডিং নাই।",
+    "callTranscriptTranscribeButton": "লিখিত ৰূপলৈ ৰূপান্তৰ কৰক",
+    "callTranscriptAudioUnavailable": "{name} ৰ সংৰক্ষিত ৰেকৰ্ডিং ডাউনলোড কৰিব পৰা নগ'ল, সেয়েহে ইয়াক লিখিত ৰূপলৈ ৰূপান্তৰ কৰিব পৰা নগ'ল।",
+    "callTranscriptChooseLanguage": "কোন ভাষা কোৱা হৈছিল?",
+    "callTranscriptSubscribeForTranscription": "লিখিত ৰূপলৈ ৰূপান্তৰ কৰিবলৈ সদস্যতা লওক",
+    "unlockCallTranscript": "কল ট্ৰান্সক্ৰিপ্ট আনলক কৰক"
 }

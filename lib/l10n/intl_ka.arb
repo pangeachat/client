@@ -10871,5 +10871,10 @@
     "callTranscriptRecordings": "ჩანაწერები",
     "callTranscriptFullCall": "მთლიანი ზარი",
     "callTranscriptPreparingRecording": "მთლიანი ჩანაწერის მომზადება…",
-    "callTranscriptNoRecording": "მთლიანი ზარის ჩანაწერი არ არის."
+    "callTranscriptNoRecording": "მთლიანი ზარის ჩანაწერი არ არის.",
+    "callTranscriptTranscribeButton": "ტრანსკრიფცია",
+    "callTranscriptAudioUnavailable": "{name}-ის შენახული ჩანაწერი ვერ ჩამოიტვირთა, ამიტომ მისი ტრანსკრიფცია ვერ მოხერხდა.",
+    "callTranscriptChooseLanguage": "რა ენაზე საუბრობდით?",
+    "callTranscriptSubscribeForTranscription": "გამოიწერეთ ტრანსკრიფციისთვის",
+    "unlockCallTranscript": "ზარის ტრანსკრიფციის განბლოკვა"
 }

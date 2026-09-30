@@ -10074,5 +10074,10 @@
     "callTranscriptRecordings": "Felvételek",
     "callTranscriptFullCall": "Teljes hívás",
     "callTranscriptPreparingRecording": "A teljes felvétel előkészítése…",
-    "callTranscriptNoRecording": "Nincs felvétel a teljes hívásról."
+    "callTranscriptNoRecording": "Nincs felvétel a teljes hívásról.",
+    "callTranscriptTranscribeButton": "Átírás",
+    "callTranscriptAudioUnavailable": "A {name} felvételét nem sikerült letölteni, ezért nem lehetett átírni.",
+    "callTranscriptChooseLanguage": "Milyen nyelven beszéltek?",
+    "callTranscriptSubscribeForTranscription": "Feliratkozás az átírásra",
+    "unlockCallTranscript": "Hívás átirat feloldása"
 }

@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "පටිගත කිරීම්",
     "callTranscriptFullCall": "සම්පූර්ණ ඇමතුම",
     "callTranscriptPreparingRecording": "සම්පූර්ණ පටිගත කිරීම සූදානම් කරමින්...",
-    "callTranscriptNoRecording": "සම්පූර්ණ ඇමතුමේ පටිගත කිරීමක් නොමැත."
+    "callTranscriptNoRecording": "සම්පූර්ණ ඇමතුමේ පටිගත කිරීමක් නොමැත.",
+    "callTranscriptTranscribeButton": "පිටපත් කරන්න",
+    "callTranscriptAudioUnavailable": "{name} වෙතින් සුරකින ලද පටිගත කිරීම බාගත කිරීමට නොහැකි විය, එබැවින් එය පිටපත් කිරීමට නොහැකි විය.",
+    "callTranscriptChooseLanguage": "කතා කළ භාෂාව කුමක්ද?",
+    "callTranscriptSubscribeForTranscription": "පිටපත් කිරීම සඳහා දායක වන්න",
+    "unlockCallTranscript": "ඇමතුම් පිටපත අගුළු හරින්න"
 }

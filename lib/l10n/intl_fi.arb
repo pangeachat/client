@@ -10008,5 +10008,10 @@
     "callTranscriptRecordings": "Tallenteet",
     "callTranscriptFullCall": "Koko puhelu",
     "callTranscriptPreparingRecording": "Valmistelen koko tallennetta…",
-    "callTranscriptNoRecording": "Koko puhelusta ei ole tallennetta."
+    "callTranscriptNoRecording": "Koko puhelusta ei ole tallennetta.",
+    "callTranscriptTranscribeButton": "Transkriboi",
+    "callTranscriptAudioUnavailable": "Tallennetun äänitteen lataaminen käyttäjältä {name} epäonnistui, joten sitä ei voitu litteroida.",
+    "callTranscriptChooseLanguage": "Mitä kieltä puhuttiin?",
+    "callTranscriptSubscribeForTranscription": "Tilaa litterointi",
+    "unlockCallTranscript": "Avaa puhelun litterointi"
 }

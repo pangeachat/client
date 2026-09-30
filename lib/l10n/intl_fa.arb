@@ -10059,5 +10059,10 @@
     "callTranscriptRecordings": "ضبط‌ها",
     "callTranscriptFullCall": "مکالمه کامل",
     "callTranscriptPreparingRecording": "در حال آماده‌سازی ضبط کامل...",
-    "callTranscriptNoRecording": "هیچ ضبطی از مکالمه کامل وجود ندارد."
+    "callTranscriptNoRecording": "هیچ ضبطی از مکالمه کامل وجود ندارد.",
+    "callTranscriptTranscribeButton": "رونویسی",
+    "callTranscriptAudioUnavailable": "ضبط ذخیره‌شده از {name} قابل دانلود نبود، بنابراین رونویسی نشد.",
+    "callTranscriptChooseLanguage": "به چه زبانی صحبت شد؟",
+    "callTranscriptSubscribeForTranscription": "برای رونویسی مشترک شوید",
+    "unlockCallTranscript": "باز کردن قفل رونویسی تماس"
 }

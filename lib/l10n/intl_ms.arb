@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "Rakaman",
     "callTranscriptFullCall": "Panggilan penuh",
     "callTranscriptPreparingRecording": "Menyediakan rakaman penuh…",
-    "callTranscriptNoRecording": "Tiada rakaman panggilan penuh."
+    "callTranscriptNoRecording": "Tiada rakaman panggilan penuh.",
+    "callTranscriptTranscribeButton": "Transkripsi",
+    "callTranscriptAudioUnavailable": "Rakaman yang disimpan daripada {name} tidak dapat dimuat turun, jadi ia tidak dapat ditranskripsi.",
+    "callTranscriptChooseLanguage": "Bahasa apa yang dituturkan?",
+    "callTranscriptSubscribeForTranscription": "Langgan untuk transkripsi",
+    "unlockCallTranscript": "Buka kunci transkripsi panggilan"
 }

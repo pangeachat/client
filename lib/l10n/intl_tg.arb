@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "Сабтҳо",
     "callTranscriptFullCall": "Занги пурра",
     "callTranscriptPreparingRecording": "Сабти пурра омода карда мешавад…",
-    "callTranscriptNoRecording": "Сабти занги пурра мавҷуд нест."
+    "callTranscriptNoRecording": "Сабти занги пурра мавҷуд нест.",
+    "callTranscriptTranscribeButton": "Транскрипт кунед",
+    "callTranscriptAudioUnavailable": "Сабти захирашуда аз {name} зеркашӣ нашуд, бинобар ин онро транскрипт кардан ғайриимкон аст.",
+    "callTranscriptChooseLanguage": "Бо кадом забон гуфтугӯ шуд?",
+    "callTranscriptSubscribeForTranscription": "Барои транскрипсия обуна шавед",
+    "unlockCallTranscript": "Транскрипти зангро кушоед"
 }

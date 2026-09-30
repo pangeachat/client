@@ -10272,5 +10272,10 @@
     "callTranscriptRecordings": "Kayıtlar",
     "callTranscriptFullCall": "Tüm arama",
     "callTranscriptPreparingRecording": "Tüm kayıt hazırlanıyor…",
-    "callTranscriptNoRecording": "Tüm aramanın kaydı yok."
+    "callTranscriptNoRecording": "Tüm aramanın kaydı yok.",
+    "callTranscriptTranscribeButton": "Metne Çevir",
+    "callTranscriptAudioUnavailable": "{name} adlı kaydın indirilmesi mümkün olmadığından metne çevrilemedi.",
+    "callTranscriptChooseLanguage": "Hangi dil konuşuldu?",
+    "callTranscriptSubscribeForTranscription": "Metne çevirme için abone ol",
+    "unlockCallTranscript": "Çağrı dökümünü aç"
 }

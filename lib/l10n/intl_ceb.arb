@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "Mga recording",
     "callTranscriptFullCall": "Tibuok tawag",
     "callTranscriptPreparingRecording": "Giandam ang tibuok recording…",
-    "callTranscriptNoRecording": "Walay recording sa tibuok tawag."
+    "callTranscriptNoRecording": "Walay recording sa tibuok tawag.",
+    "callTranscriptTranscribeButton": "I-transcribe",
+    "callTranscriptAudioUnavailable": "Ang na-save nga recording gikan kang {name} dili ma-download, busa dili kini ma-transcribe.",
+    "callTranscriptChooseLanguage": "Unsang pinulongan ang gisulti?",
+    "callTranscriptSubscribeForTranscription": "Mag-subscribe para sa transcription",
+    "unlockCallTranscript": "I-unlock ang transcript sa tawag"
 }

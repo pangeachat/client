@@ -10888,5 +10888,10 @@
     "callTranscriptRecordings": "Gravações",
     "callTranscriptFullCall": "Chamada completa",
     "callTranscriptPreparingRecording": "A preparar a gravação completa…",
-    "callTranscriptNoRecording": "Nenhuma gravação da chamada completa."
+    "callTranscriptNoRecording": "Nenhuma gravação da chamada completa.",
+    "callTranscriptTranscribeButton": "Transcrever",
+    "callTranscriptAudioUnavailable": "A gravação guardada de {name} não pôde ser descarregada, por isso não foi possível transcrevê-la.",
+    "callTranscriptChooseLanguage": "Que idioma foi falado?",
+    "callTranscriptSubscribeForTranscription": "Subscrever para transcrição",
+    "unlockCallTranscript": "Desbloquear transcrição da chamada"
 }

@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "ریکارډونه",
     "callTranscriptFullCall": "بشپړ زنګ",
     "callTranscriptPreparingRecording": "د بشپړ ریکارډ چمتو کول…",
-    "callTranscriptNoRecording": "د بشپړ زنګ هیڅ ریکارډ نشته."
+    "callTranscriptNoRecording": "د بشپړ زنګ هیڅ ریکارډ نشته.",
+    "callTranscriptTranscribeButton": "ژباړه",
+    "callTranscriptAudioUnavailable": "د {name} څخه خوندي شوی ریکارډ ډاونلوډ نشو، نو له همدې امله ژباړل کیدی نشي.",
+    "callTranscriptChooseLanguage": "کومه ژبه ویل شوې وه؟",
+    "callTranscriptSubscribeForTranscription": "د ژباړې لپاره ګډون وکړئ",
+    "unlockCallTranscript": "د زنګ لیږد خلاص کړئ"
 }

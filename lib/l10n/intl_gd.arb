@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "Clàraidhean",
     "callTranscriptFullCall": "Gairm slàn",
     "callTranscriptPreparingRecording": "Ag ullachadh a’ chlàraidh slàin…",
-    "callTranscriptNoRecording": "Chan eil clàradh den ghairm slàn ann."
+    "callTranscriptNoRecording": "Chan eil clàradh den ghairm slàn ann.",
+    "callTranscriptTranscribeButton": "Tionnsgrìobh",
+    "callTranscriptAudioUnavailable": "Cha b' urrainn an clàradh a chaidh a shàbhaladh bho {name} a luchdachadh a-nuas, is mar sin cha b' urrainn a thionnsgrìobhadh.",
+    "callTranscriptChooseLanguage": "Dè an cànan a bhathar a' bruidhinn?",
+    "callTranscriptSubscribeForTranscription": "Fo-sgrìobh airson tionnsgrìobhadh",
+    "unlockCallTranscript": "Fuadaich tionnsgrìobhadh a' ghairm"
 }

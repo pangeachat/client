@@ -10028,5 +10028,10 @@
     "callTranscriptRecordings": "Opptak",
     "callTranscriptFullCall": "Hele samtalen",
     "callTranscriptPreparingRecording": "Forbereder hele opptaket…",
-    "callTranscriptNoRecording": "Ingen opptak av hele samtalen."
+    "callTranscriptNoRecording": "Ingen opptak av hele samtalen.",
+    "callTranscriptTranscribeButton": "Transkriber",
+    "callTranscriptAudioUnavailable": "Det lagrede opptaket fra {name} kunne ikke lastes ned, så det kunne ikke transkriberes.",
+    "callTranscriptChooseLanguage": "Hvilket språk ble snakket?",
+    "callTranscriptSubscribeForTranscription": "Abonner for transkripsjon",
+    "unlockCallTranscript": "Lås opp samtaletranskripsjon"
 }

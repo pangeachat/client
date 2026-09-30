@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "ରେକର୍ଡିଂଗୁଡ଼ିକ",
     "callTranscriptFullCall": "ସମ୍ପୂର୍ଣ୍ଣ କଲ୍",
     "callTranscriptPreparingRecording": "ସମ୍ପୂର୍ଣ୍ଣ ରେକର୍ଡିଂ ପ୍ରସ୍ତୁତ କରାଯାଉଛି...",
-    "callTranscriptNoRecording": "ସମ୍ପୂର୍ଣ୍ଣ କଲ୍‌ର କୌଣସି ରେକର୍ଡିଂ ନାହିଁ।"
+    "callTranscriptNoRecording": "ସମ୍ପୂର୍ଣ୍ଣ କଲ୍‌ର କୌଣସି ରେକର୍ଡିଂ ନାହିଁ।",
+    "callTranscriptTranscribeButton": "ଟ୍ରାନ୍ସକ୍ରାଇବ୍ କରନ୍ତୁ",
+    "callTranscriptAudioUnavailable": "{name} ରୁ ସେଭ୍ ହୋଇଥିବା ରେକର୍ଡିଂ ଡାଉନଲୋଡ୍ ହୋଇପାରିଲା ନାହିଁ, ତେଣୁ ଏହାକୁ ଟ୍ରାନ୍ସକ୍ରାଇବ୍ କରାଯାଇପାରିଲା ନାହିଁ।",
+    "callTranscriptChooseLanguage": "କେଉଁ ଭାଷାରେ କଥାବାର୍ତ୍ତା ହୋଇଥିଲା?",
+    "callTranscriptSubscribeForTranscription": "ଟ୍ରାନ୍ସକ୍ରିପସନ୍ ପାଇଁ ସବସ୍କ୍ରାଇବ୍ କରନ୍ତୁ",
+    "unlockCallTranscript": "କଲ୍ ଟ୍ରାନ୍ସକ୍ରିପ୍ଟ ଅନଲକ୍ କରନ୍ତୁ"
 }

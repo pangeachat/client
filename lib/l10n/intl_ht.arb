@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "Anrejistreman",
     "callTranscriptFullCall": "Apèl konplè",
     "callTranscriptPreparingRecording": "Ap prepare anrejistreman konplè a…",
-    "callTranscriptNoRecording": "Pa gen anrejistreman apèl konplè a."
+    "callTranscriptNoRecording": "Pa gen anrejistreman apèl konplè a.",
+    "callTranscriptTranscribeButton": "Transkri",
+    "callTranscriptAudioUnavailable": "Anrejistreman ki te sove a soti nan {name} pa t ka telechaje, kidonk li pa t ka transkri.",
+    "callTranscriptChooseLanguage": "Ki lang yo te pale?",
+    "callTranscriptSubscribeForTranscription": "Abòne pou transkripsyon",
+    "unlockCallTranscript": "Debloke transkripsyon apèl la"
 }

@@ -9968,5 +9968,10 @@
     "callTranscriptRecordings": "Salvestised",
     "callTranscriptFullCall": "Kogu kõne",
     "callTranscriptPreparingRecording": "Kogu salvestise ettevalmistamine…",
-    "callTranscriptNoRecording": "Kogu kõnest puudub salvestis."
+    "callTranscriptNoRecording": "Kogu kõnest puudub salvestis.",
+    "callTranscriptTranscribeButton": "Transkribeeri",
+    "callTranscriptAudioUnavailable": "Salvestatud heli {name} kasutajalt ei saanud alla laadida, seega ei saanud seda transkribeerida.",
+    "callTranscriptChooseLanguage": "Mis keeles räägiti?",
+    "callTranscriptSubscribeForTranscription": "Telli transkriptsioon",
+    "unlockCallTranscript": "Ava kõne transkriptsioon"
 }

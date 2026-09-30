@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "Direkoto",
     "callTranscriptFullCall": "Puisano e felletseng",
     "callTranscriptPreparingRecording": "Ho lokisoa rekoto e felletseng…",
-    "callTranscriptNoRecording": "Ha ho rekoto ea puisano e felletseng."
+    "callTranscriptNoRecording": "Ha ho rekoto ea puisano e felletseng.",
+    "callTranscriptTranscribeButton": "Ngola",
+    "callTranscriptAudioUnavailable": "Rekoto e bolokilweng ho tswa ho {name} ha e a ka ya jarollwa, ka hona ha e a ka ya ngolwa.",
+    "callTranscriptChooseLanguage": "Ho ne ho buuwa puo efe?",
+    "callTranscriptSubscribeForTranscription": "Ngolisa bakeng sa ho ngola",
+    "unlockCallTranscript": "Notlolla sengoloa sa mohala"
 }

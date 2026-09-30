@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "Opnames",
     "callTranscriptFullCall": "Volledige oproep",
     "callTranscriptPreparingRecording": "Besig om die volledige opname voor te berei…",
-    "callTranscriptNoRecording": "Geen opname van die volledige oproep nie."
+    "callTranscriptNoRecording": "Geen opname van die volledige oproep nie.",
+    "callTranscriptTranscribeButton": "Transkribeer",
+    "callTranscriptAudioUnavailable": "Die gestoorde opname van {name} kon nie afgelaai word nie, en kon dus nie getranskribeer word nie.",
+    "callTranscriptChooseLanguage": "Watter taal is gepraat?",
+    "callTranscriptSubscribeForTranscription": "Teken in vir transkripsie",
+    "unlockCallTranscript": "Ontsluit oproep-transkripsie"
 }
