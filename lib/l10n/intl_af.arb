@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-09-28 16:36:09.447999",
+    "@@last_modified": "2026-09-29 11:11:23.137781",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2381,5 +2381,7 @@
     "courseCodeJoinExplanation": "Meld aan of registreer, en ons sal jou kursuskode gebruik om jou outomaties by jou kursus te voeg.",
     "courseCodeLabel": "Kursuskode",
     "courseCodeSaved": "Kursuskode {code} gestoor",
-    "courseCodeSavedExplanation": "Registreer of meld aan en ons sal jou by jou kursus voeg."
+    "courseCodeSavedExplanation": "Registreer of meld aan en ons sal jou by jou kursus voeg.",
+    "moderationRefusedContactDetails": "Jou boodskap is nie gestuur nie. 'n Outomatiese filter het kontakbesonderhede, soos 'n telefoonnommer, gevind. Verwyder dit asseblief en probeer weer.",
+    "moderationRefusedProfanity": "Jou boodskap is nie gestuur nie. 'n Outomatiese filter het 'n woord gevind wat ons nie in die klets toelaat nie. Verander dit asseblief en probeer weer."
 }

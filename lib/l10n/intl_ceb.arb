@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-09-28 16:36:10.371841",
+    "@@last_modified": "2026-09-29 11:11:24.290336",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2381,5 +2381,7 @@
     "courseCodeJoinExplanation": "Pag-log in o pag-sign up, ug gamiton namo ang imong course code aron awtomatikong idugang ka sa imong kurso.",
     "courseCodeLabel": "Course code",
     "courseCodeSaved": "Na-save ang course code nga {code}",
-    "courseCodeSavedExplanation": "Pag-sign up o pag-log in ug idugang ka namo sa imong kurso."
+    "courseCodeSavedExplanation": "Pag-sign up o pag-log in ug idugang ka namo sa imong kurso.",
+    "moderationRefusedContactDetails": "Wala gipadala ang imong mensahe. Nakakita ang usa ka awtomatikong filter og mga detalye sa kontak, sama sa numero sa telepono. Palihug kuhaa kini ug sulayi pag-usab.",
+    "moderationRefusedProfanity": "Wala gipadala ang imong mensahe. Nakakita ang usa ka awtomatikong filter og pulong nga dili namo gitugotan sa chat. Palihug usba kini ug sulayi pag-usab."
 }

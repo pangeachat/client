@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-28 16:36:15.078968",
+    "@@last_modified": "2026-09-29 11:11:27.373861",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -10046,5 +10046,7 @@
     "courseCodeJoinExplanation": "Accedi o iscriviti, e useremo il tuo codice corso per aggiungerti automaticamente al tuo corso.",
     "courseCodeLabel": "Codice corso",
     "courseCodeSaved": "Codice corso {code} salvato",
-    "courseCodeSavedExplanation": "Iscriviti o accedi e ti aggiungeremo al tuo corso."
+    "courseCodeSavedExplanation": "Iscriviti o accedi e ti aggiungeremo al tuo corso.",
+    "moderationRefusedContactDetails": "Il tuo messaggio non è stato inviato. Un filtro automatico ha rilevato dettagli di contatto, come un numero di telefono. Rimuovili e riprova.",
+    "moderationRefusedProfanity": "Il tuo messaggio non è stato inviato. Un filtro automatico ha rilevato una parola che non è consentita in chat. Modificala e riprova."
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/user/direct_chat_contacts_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/pangea/extensions/friend_dm_extension.dart';
@@ -271,12 +272,10 @@ class ChatListViewBody extends StatelessWidget {
                   if (controller.isSearchMode &&
                       rooms
                           .where(
-                            (room) => room
-                                .getLocalizedDisplayname(
-                                  MatrixLocals(L10n.of(context)),
-                                )
-                                .toLowerCase()
-                                .contains(filter),
+                            (room) => room.matchesChatSearch(
+                              filter,
+                              MatrixLocals(L10n.of(context)),
+                            ),
                           )
                           .isEmpty)
                     Padding(

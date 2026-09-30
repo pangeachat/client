@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-28 16:36:10.785659",
+    "@@last_modified": "2026-09-29 11:11:24.669425",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10918,5 +10918,7 @@
     "courseCodeJoinExplanation": "Ensalutu aŭ registriĝu, kaj ni uzos vian kurskodon por aŭtomate aldoni vin al via kurso.",
     "courseCodeLabel": "Kurskodo",
     "courseCodeSaved": "Kurskodo {code} konservita",
-    "courseCodeSavedExplanation": "Registriĝu aŭ ensalutu kaj ni aldonos vin al via kurso."
+    "courseCodeSavedExplanation": "Registriĝu aŭ ensalutu kaj ni aldonos vin al via kurso.",
+    "moderationRefusedContactDetails": "Via mesaĝo ne estis sendita. Aŭtomata filtrilo trovis kontaktajn detalojn, kiel telefonnumeron. Bonvolu forigi ilin kaj reprovi.",
+    "moderationRefusedProfanity": "Via mesaĝo ne estis sendita. Aŭtomata filtrilo trovis vorton, kiun ni ne permesas en la babilejo. Bonvolu ŝanĝi ĝin kaj reprovi."
 }

@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-09-28 16:36:20.700221",
+    "@@last_modified": "2026-09-29 11:11:35.180364",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9977,5 +9977,7 @@
     "courseCodeJoinExplanation": "Tizimga kiring yoki roʻyxatdan oʻting, biz sizning kurs kodingizdan avtomatik ravishda kursingizga qoʻshish uchun foydalanamiz.",
     "courseCodeLabel": "Kurs kodi",
     "courseCodeSaved": "Kurs kodi {code} saqlandi",
-    "courseCodeSavedExplanation": "Roʻyxatdan oʻting yoki tizimga kiring va biz sizni kursingizga qoʻshamiz."
+    "courseCodeSavedExplanation": "Roʻyxatdan oʻting yoki tizimga kiring va biz sizni kursingizga qoʻshamiz.",
+    "moderationRefusedContactDetails": "Xabaringiz yuborilmadi. Avtomatik filtr telefon raqami kabi aloqa ma'lumotlarini topdi. Iltimos, ularni olib tashlang va qayta urinib ko'ring.",
+    "moderationRefusedProfanity": "Xabaringiz yuborilmadi. Avtomatik filtr chatda ruxsat etilmagan so'zni topdi. Iltimos, uni o'zgartiring va qayta urinib ko'ring."
 }

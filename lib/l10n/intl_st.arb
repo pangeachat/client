@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-09-28 16:36:19.440335",
+    "@@last_modified": "2026-09-29 11:11:34.346262",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2381,5 +2381,7 @@
     "courseCodeJoinExplanation": "Kena kapa ingolise, 'me re tla sebelisa khoutu ea thupelo ea hau ho u kenya thupelong ea hau ka bo eona.",
     "courseCodeLabel": "Khoutu ea thupelo",
     "courseCodeSaved": "Khoutu ea thupelo {code} e bolokiloe",
-    "courseCodeSavedExplanation": "Ingolise kapa u kene 'me re tla u kenya thupelong ea hau."
+    "courseCodeSavedExplanation": "Ingolise kapa u kene 'me re tla u kenya thupelong ea hau.",
+    "moderationRefusedContactDetails": "Molaetsa wa hao ha o a romelwa. Sesefa sa boitsebiso se fumane dintlha tsa ho ikopanya, jwalo ka nomoro ya mohala. Ka kopo di tlose mme o leke hape.",
+    "moderationRefusedProfanity": "Molaetsa wa hao ha o a romelwa. Sesefa sa boitsebiso se fumane lentswe leo re sa le dumelleng moqoqong. Ka kopo le fetole mme o leke hape."
 }

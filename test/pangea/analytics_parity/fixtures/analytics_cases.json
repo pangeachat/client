@@ -1,0 +1,216 @@
+{
+  "about": "Inputs for the analytics parity fixtures. Each case is the raw content of a learner's analytics room: construct events (content exactly as stored in Matrix), the blocked constructs from the analytics-settings state event, the activity room ids state event, and the language's published xp_offset. A use with no timeStamp gets one assigned by the generator (see analytics_parity_fixtures.dart); `_repeat` expands a use N times. expected_results.json records every case fully expanded, so consumers never need these conventions.",
+  "cases": [
+    {
+      "name": "other_category_and_strict_identity",
+      "description": "Uses with no category, an empty category, an unknown morph feature, an empty lemma and a deprecated 'grammar' construct type. 'other' is not a wildcard: casa/noun and casa/other are different constructs. Invalid constructs stay in the teacher summary but not in the learner counts.",
+      "events": [
+        {
+          "uses": [
+            {"useType": "corPA", "lemma": "casa", "constructType": "vocab", "categories": "noun"},
+            {"useType": "corPA", "lemma": "casa", "constructType": "vocab"},
+            {"useType": "corPA", "lemma": "mesa", "constructType": "vocab", "categories": ""},
+            {"useType": "corPA", "lemma": "", "constructType": "vocab", "categories": "noun"},
+            {"useType": "corM", "lemma": "Past", "constructType": "morph", "categories": "Tense"},
+            {"useType": "corM", "lemma": "Weird", "constructType": "morph", "categories": "notafeature"},
+            {"useType": "corM", "lemma": "Old", "constructType": "grammar", "categories": "Tense"}
+          ]
+        },
+        {
+          "uses": [
+            {"useType": "incPA", "lemma": "casa", "constructType": "vocab", "categories": "Other"},
+            {"useType": "corPA", "lemma": "perro", "constructType": "vocab", "categories": ["noun", "verb"]}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "three_way_split_vocab",
+      "description": "Vocab used correctly, incorrectly, both (counts as correct), and only through 0-XP uses (hrd listening exposure, unk, ign*), which count as neither.",
+      "events": [
+        {
+          "uses": [
+            {"useType": "corPA", "lemma": "hablar", "constructType": "vocab", "categories": "verb"},
+            {"useType": "incPA", "lemma": "comer", "constructType": "vocab", "categories": "verb"},
+            {"useType": "corPA", "lemma": "vivir", "constructType": "vocab", "categories": "verb"},
+            {"useType": "incPA", "lemma": "vivir", "constructType": "vocab", "categories": "verb", "_repeat": 3},
+            {"useType": "hrd", "lemma": "oir", "constructType": "vocab", "categories": "verb", "count": 7},
+            {"useType": "unk", "lemma": "ser", "constructType": "vocab", "categories": "verb", "msgId": "$m1"},
+            {"useType": "ignPA", "lemma": "estar", "constructType": "vocab", "categories": "verb"},
+            {"useType": "wa", "lemma": "tener", "constructType": "vocab", "categories": "verb", "msgId": "$m2"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "use_type_counting_hrd_sug_pvc",
+      "description": "Messages sent, words typed and choice counters across use types: sug, pvc, pvm, bucketed hrd, wa/unk with and without a message id, IT/IGC, click, bonus, em, an unknown future use type (parses as nan) and a stored xp that overrides the use type's point value.",
+      "events": [
+        {
+          "uses": [
+            {"useType": "sug", "lemma": "gracias", "constructType": "vocab", "categories": "intj", "msgId": "$s1"},
+            {"useType": "pvc", "lemma": "hola", "constructType": "vocab", "categories": "intj", "msgId": "$c1"},
+            {"useType": "pvc", "lemma": "adios", "constructType": "vocab", "categories": "intj", "msgId": "$c1"},
+            {"useType": "pvm", "lemma": "bueno", "constructType": "vocab", "categories": "adj", "msgId": "$v1"},
+            {"useType": "hrd", "lemma": "hola", "constructType": "vocab", "categories": "intj", "count": 12},
+            {"useType": "wa", "lemma": "perro", "constructType": "vocab", "categories": "noun", "msgId": "$w1"},
+            {"useType": "unk", "lemma": "gato", "constructType": "vocab", "categories": "noun", "msgId": "$w2"},
+            {"useType": "wa", "lemma": "raton", "constructType": "vocab", "categories": "noun"}
+          ]
+        },
+        {
+          "uses": [
+            {"useType": "corIt", "lemma": "libro", "constructType": "vocab", "categories": "noun", "msgId": "$i1"},
+            {"useType": "incIGC", "lemma": "libro", "constructType": "vocab", "categories": "noun", "msgId": "$i1"},
+            {"useType": "ignIt", "lemma": "mesa", "constructType": "vocab", "categories": "noun", "msgId": "$i2"},
+            {"useType": "click", "lemma": "arbol", "constructType": "vocab", "categories": "noun"},
+            {"useType": "bonus", "lemma": "arbol", "constructType": "vocab", "categories": "noun"},
+            {"useType": "em", "lemma": "flor", "constructType": "vocab", "categories": "noun"},
+            {"useType": "futureType", "lemma": "nube", "constructType": "vocab", "categories": "noun"},
+            {"useType": "corPA", "lemma": "sol", "constructType": "vocab", "categories": "noun", "xp": 10},
+            {"useType": "incMM", "lemma": "sol", "constructType": "vocab", "categories": "noun"},
+            {"useType": "ga", "lemma": "luna", "constructType": "vocab", "categories": "noun", "msgId": "$g1"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "xp_offset_level_protection",
+      "description": "Nine capped vocab constructs (900 XP) plus a published xp_offset of 600. The teacher summary ignores the offset; the learner's level is computed over total + offset.",
+      "xp_offset": 600,
+      "events": [
+        {
+          "uses": [
+            {"useType": "corPA", "lemma": "uno", "constructType": "vocab", "categories": "num", "_repeat": 20},
+            {"useType": "corPA", "lemma": "dos", "constructType": "vocab", "categories": "num", "_repeat": 20},
+            {"useType": "corPA", "lemma": "tres", "constructType": "vocab", "categories": "num", "_repeat": 20},
+            {"useType": "corPA", "lemma": "cuatro", "constructType": "vocab", "categories": "num", "_repeat": 20},
+            {"useType": "corPA", "lemma": "cinco", "constructType": "vocab", "categories": "num", "_repeat": 20}
+          ]
+        },
+        {
+          "uses": [
+            {"useType": "corPA", "lemma": "seis", "constructType": "vocab", "categories": "num", "_repeat": 20},
+            {"useType": "corPA", "lemma": "siete", "constructType": "vocab", "categories": "num", "_repeat": 20},
+            {"useType": "corPA", "lemma": "ocho", "constructType": "vocab", "categories": "num", "_repeat": 20},
+            {"useType": "corPA", "lemma": "nueve", "constructType": "vocab", "categories": "num", "_repeat": 20}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "xp_offset_without_uses",
+      "description": "An offset with no construct uses at all.",
+      "xp_offset": 250,
+      "events": []
+    },
+    {
+      "name": "blocked_constructs",
+      "description": "Blocked constructs are dropped from every figure. Blocking 'Casa' does not block its case variant 'casa'.",
+      "blocked_constructs": [
+        {"lemma": "malo", "type": "vocab", "cat": "adj"},
+        {"lemma": "Casa", "type": "vocab", "cat": "noun"},
+        {"lemma": "Past", "type": "morph", "cat": "Tense"}
+      ],
+      "events": [
+        {
+          "uses": [
+            {"useType": "corPA", "lemma": "malo", "constructType": "vocab", "categories": "adj", "_repeat": 3},
+            {"useType": "wa", "lemma": "malo", "constructType": "vocab", "categories": "adj", "msgId": "$b1"},
+            {"useType": "corPA", "lemma": "Casa", "constructType": "vocab", "categories": "noun", "_repeat": 2},
+            {"useType": "corPA", "lemma": "casa", "constructType": "vocab", "categories": "noun", "_repeat": 4},
+            {"useType": "corM", "lemma": "Past", "constructType": "morph", "categories": "Tense", "_repeat": 2},
+            {"useType": "corM", "lemma": "Pres", "constructType": "morph", "categories": "Tense"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "duplicate_activity_ids",
+      "description": "The activity room ids state event holds duplicates. The teacher's completed-activities figure is the raw list length.",
+      "activity_room_ids": ["!a:example.org", "!b:example.org", "!a:example.org", "!c:example.org", "!b:example.org"],
+      "events": [
+        {
+          "uses": [
+            {"useType": "corPA", "lemma": "hola", "constructType": "vocab", "categories": "intj"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "caps_and_tier_boundaries",
+      "description": "Per-construct XP cap (100) and the tier / teacher bucket boundaries, driven with stored xp values.",
+      "events": [
+        {
+          "uses": [
+            {"useType": "corPA", "lemma": "w29", "constructType": "vocab", "categories": "noun", "xp": 29},
+            {"useType": "corPA", "lemma": "w30", "constructType": "vocab", "categories": "noun", "xp": 30},
+            {"useType": "corPA", "lemma": "w49", "constructType": "vocab", "categories": "noun", "xp": 49},
+            {"useType": "corPA", "lemma": "w50", "constructType": "vocab", "categories": "noun", "xp": 50},
+            {"useType": "corPA", "lemma": "w99", "constructType": "vocab", "categories": "noun", "xp": 99},
+            {"useType": "corPA", "lemma": "w100", "constructType": "vocab", "categories": "noun", "xp": 100},
+            {"useType": "corPA", "lemma": "w150", "constructType": "vocab", "categories": "noun", "xp": 150},
+            {"useType": "incPA", "lemma": "wneg", "constructType": "vocab", "categories": "noun", "xp": -3},
+            {"useType": "corM", "lemma": "m50", "constructType": "morph", "categories": "Tense", "xp": 50},
+            {"useType": "corM", "lemma": "m51", "constructType": "morph", "categories": "Tense", "xp": 51},
+            {"useType": "corM", "lemma": "m100", "constructType": "morph", "categories": "Tense", "xp": 100},
+            {"useType": "corM", "lemma": "m250", "constructType": "morph", "categories": "Tense", "xp": 250}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "case_variant_merge",
+      "description": "'Casa' and 'casa' (same type and category) merge into one construct through the merge table and share a single cap.",
+      "events": [
+        {
+          "uses": [
+            {"useType": "corPA", "lemma": "Casa", "constructType": "vocab", "categories": "noun", "xp": 60}
+          ]
+        },
+        {
+          "uses": [
+            {"useType": "corPA", "lemma": "casa", "constructType": "vocab", "categories": "noun", "xp": 60},
+            {"useType": "corPA", "lemma": "Rojo", "constructType": "vocab", "categories": "adj"},
+            {"useType": "corPA", "lemma": "rojo", "constructType": "vocab", "categories": "noun"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "morph_accuracy_original_vs_system",
+      "description": "Grammar accuracy lists: original uses (wa/ga/ta/IT/IGC) at the 80% threshold, system uses only judged when the construct has original uses, and uses after the XP cap excluded.",
+      "events": [
+        {
+          "uses": [
+            {"useType": "wa", "lemma": "Pres", "constructType": "morph", "categories": "Tense", "msgId": "$p1", "_repeat": 4},
+            {"useType": "incIGC", "lemma": "Pres", "constructType": "morph", "categories": "Tense", "msgId": "$p2"},
+            {"useType": "corM", "lemma": "Pres", "constructType": "morph", "categories": "Tense"},
+            {"useType": "incM", "lemma": "Pres", "constructType": "morph", "categories": "Tense"},
+            {"useType": "corIGC", "lemma": "Ind", "constructType": "morph", "categories": "Mood", "msgId": "$p3"},
+            {"useType": "incIGC", "lemma": "Ind", "constructType": "morph", "categories": "Mood", "msgId": "$p3"},
+            {"useType": "corM", "lemma": "Sing", "constructType": "morph", "categories": "Number", "_repeat": 3},
+            {"useType": "wa", "lemma": "Plur", "constructType": "morph", "categories": "Number", "xp": 100, "msgId": "$p4"},
+            {"useType": "incIGC", "lemma": "Plur", "constructType": "morph", "categories": "Number", "msgId": "$p5"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "negative_total_xp",
+      "description": "Only incorrect answers: a negative total, which the level formula cannot take a square root of and maps to level 1.",
+      "events": [
+        {
+          "uses": [
+            {"useType": "incPA", "lemma": "error", "constructType": "vocab", "categories": "noun", "_repeat": 30}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "empty",
+      "description": "An analytics room with one event and no uses.",
+      "events": [{"uses": []}]
+    }
+  ]
+}

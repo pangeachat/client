@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-09-28 16:36:19.501529",
+    "@@last_modified": "2026-09-29 11:11:34.062212",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2381,5 +2381,7 @@
     "courseCodeJoinExplanation": "Asup atawa daptar, sarta kami baris ngagunakeun kode kursus anjeun pikeun nambahkeun anjeun kana kursus anjeun sacara otomatis.",
     "courseCodeLabel": "Kode kursus",
     "courseCodeSaved": "Kode kursus {code} disimpen",
-    "courseCodeSavedExplanation": "Daptar atawa asup sarta kami baris nambahkeun anjeun kana kursus anjeun."
+    "courseCodeSavedExplanation": "Daptar atawa asup sarta kami baris nambahkeun anjeun kana kursus anjeun.",
+    "moderationRefusedContactDetails": "Pesen anjeun teu dikirim. Filter otomatis manggihan detil kontak, sapertos nomer telepon. Punten hapus teras cobian deui.",
+    "moderationRefusedProfanity": "Pesen anjeun teu dikirim. Filter otomatis manggihan kecap anu teu diidinan dina obrolan. Punten gentos teras cobian deui."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-09-28 16:36:12.481565",
+    "@@last_modified": "2026-09-29 11:11:26.236614",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2381,5 +2381,7 @@
     "courseCodeJoinExplanation": "E ʻeʻe a i ʻole e kau inoa, a e hoʻohana mākou i kāu code papa e hoʻohui aunoa iā ʻoe i kāu papa.",
     "courseCodeLabel": "Code papa",
     "courseCodeSaved": "Ua mālama ʻia ke code papa {code}",
-    "courseCodeSavedExplanation": "E kau inoa a i ʻole e ʻeʻe a e hoʻohui mākou iā ʻoe i kāu papa."
+    "courseCodeSavedExplanation": "E kau inoa a i ʻole e ʻeʻe a e hoʻohui mākou iā ʻoe i kāu papa.",
+    "moderationRefusedContactDetails": "ʻAʻole i hoʻouna ʻia kāu leka. Ua loaʻa i kahi kānana ʻakomi nā kikoʻī pili, e like me ka helu kelepona. E ʻoluʻolu e wehe a hoʻāʻo hou.",
+    "moderationRefusedProfanity": "ʻAʻole i hoʻouna ʻia kāu leka. Ua loaʻa i kahi kānana ʻakomi kahi huaʻōlelo a mākou e ʻae ʻole ai ma ke kamaʻilio. E ʻoluʻolu e hoʻololi a hoʻāʻo hou."
 }

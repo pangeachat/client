@@ -122,6 +122,8 @@ Then two sentences, each from what that device alone knows:
 - The device the learner chose against says **"This call is continuing on your other device."** It never asked to be dropped, so it does not report a failure and it does not say anything moved — nothing did. It does not name the other device either: a device id is not a name, and guessing one would be worse than saying nothing.
 - The device the learner chose says **nothing**. The sheet closes and the call resumes with the microphone and camera exactly as the learner had them — a voice call does not come back as a video call, and a learner who had already muted themselves stays muted.
 
+**The prompt comes to the front.** A call the learner has minimized, or whose chat they have left, shows only a small tile with no room for the prompt, so they could be muted without knowing why. When the prompt appears on such a device, the call opens full screen over the whole app, without changing where the learner is. If this device then carries on, the call goes back to how the learner had it, unless they changed the view themselves while the prompt was up.
+
 **A device stops offering the choice the moment it can see any claim at all**, its own or a sibling's. That is what keeps a prompt from being answered after the question has been settled elsewhere.
 
 **Against a sibling that cannot take itself out of the call, the choice is a different one, because "Use this device" could not keep its promise.** That device says:

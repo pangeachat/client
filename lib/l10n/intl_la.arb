@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-09-28 16:36:16.762077",
+    "@@last_modified": "2026-09-29 11:11:29.016633",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2381,5 +2381,7 @@
     "courseCodeJoinExplanation": "Coniunge te vel subsigna, et codice tuo utemur ut te ad cursum tuum sponte addamus.",
     "courseCodeLabel": "Codex cursus",
     "courseCodeSaved": "Codex cursus {code} servatus",
-    "courseCodeSavedExplanation": "Subsigna vel coniunge te et te ad cursum tuum addemus."
+    "courseCodeSavedExplanation": "Subsigna vel coniunge te et te ad cursum tuum addemus.",
+    "moderationRefusedContactDetails": "Nuntius tuus non missus est. Automatica spargula invenit singula contactus, sicut numerum telephonicum. Quaeso ea remove et iterum conare.",
+    "moderationRefusedProfanity": "Nuntius tuus non missus est. Automatica spargula invenit verbum quod in chat non permittimus. Quaeso id muta et iterum conare."
 }
