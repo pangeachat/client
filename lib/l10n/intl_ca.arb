@@ -9924,7 +9924,6 @@
     "constructLevelFlowers": "Flors, paraules dominades",
     "filterAndSearch": "Filtra i cerca",
     "participantsOfTotal": "{filled} de {total} jugadors",
-    "mapAttributionLabel": "Col·laboradors d'OpenStreetMap, drets d'autor i llicència",
     "seeAll": "Veure-ho tot",
     "seeAllSection": "Veure-ho tot a {section}",
     "showMoreOptionsHint": "mostrar més opcions",
@@ -10096,5 +10095,6 @@
     "callMicrophoneTitle": "Utilitza el micròfon per a les trucades",
     "callMicrophoneMessage": "Pangea Chat necessita el teu micròfon per a les trucades, incloses les trucades que responguis des de la pantalla de bloqueig.",
     "callMicrophoneOffTitle": "La teva trucada no s'ha pogut connectar",
-    "callMicrophoneOffMessage": "Pangea Chat no pot utilitzar el teu micròfon. Toca per activar-lo a Configuració."
+    "callMicrophoneOffMessage": "Pangea Chat no pot utilitzar el teu micròfon. Toca per activar-lo a Configuració.",
+    "mapCreditsLabel": "Crèdits del mapa: Stadia Maps, OpenMapTiles i OpenStreetMap"
 }

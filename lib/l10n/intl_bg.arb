@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "Цветя, овладени думи",
     "filterAndSearch": "Филтриране и търсене",
     "participantsOfTotal": "{filled} от {total} играчи",
-    "mapAttributionLabel": "Сътрудници на OpenStreetMap, авторски права и лиценз",
     "seeAll": "Виж всички",
     "seeAllSection": "Виж всички {section}",
     "showMoreOptionsHint": "покажи още опции",
@@ -2418,5 +2417,6 @@
     "callMicrophoneTitle": "Използвайте микрофона си за разговори",
     "callMicrophoneMessage": "Pangea Chat се нуждае от микрофона ви за разговори, включително разговори, на които отговаряте от заключения екран.",
     "callMicrophoneOffTitle": "Връзката за разговора не беше осъществена",
-    "callMicrophoneOffMessage": "Pangea Chat не може да използва микрофона ви. Докоснете, за да го включите в Настройки."
+    "callMicrophoneOffMessage": "Pangea Chat не може да използва микрофона ви. Докоснете, за да го включите в Настройки.",
+    "mapCreditsLabel": "Карта: Stadia Maps, OpenMapTiles и OpenStreetMap"
 }

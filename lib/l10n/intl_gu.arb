@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "ફૂલો, નિપુણ શબ્દો",
     "filterAndSearch": "ફિલ્ટર કરો અને શોધો",
     "participantsOfTotal": "{total} ખેલાડીઓમાંથી {filled}",
-    "mapAttributionLabel": "OpenStreetMap ફાળો આપનારાઓ, કૉપિરાઇટ અને લાઇસન્સ",
     "seeAll": "બધા જુઓ",
     "seeAllSection": "બધા જુઓ {section}",
     "showMoreOptionsHint": "વધુ વિકલ્પો બતાવો",
@@ -2418,5 +2417,6 @@
     "callMicrophoneTitle": "કૉલ માટે તમારા માઇક્રોફોનનો ઉપયોગ કરો",
     "callMicrophoneMessage": "Pangea Chat ને કૉલ માટે તમારા માઇક્રોફોનની જરૂર છે, જેમાં લૉક સ્ક્રીન પરથી તમે જવાબ આપો છો તે કૉલનો સમાવેશ થાય છે.",
     "callMicrophoneOffTitle": "તમારો કૉલ કનેક્ટ થયો નથી",
-    "callMicrophoneOffMessage": "Pangea Chat તમારા માઇક્રોફોનનો ઉપયોગ કરી શકતું નથી. સેટિંગ્સમાં તેને ચાલુ કરવા માટે ટેપ કરો."
+    "callMicrophoneOffMessage": "Pangea Chat તમારા માઇક્રોફોનનો ઉપયોગ કરી શકતું નથી. સેટિંગ્સમાં તેને ચાલુ કરવા માટે ટેપ કરો.",
+    "mapCreditsLabel": "નકશા ક્રેડિટ્સ: Stadia Maps, OpenMapTiles અને OpenStreetMap"
 }

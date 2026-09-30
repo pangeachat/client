@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "Fula dɛn, wɔd dɛn we yu dɔn sabi fayn",
     "filterAndSearch": "Fulta ɛn Sɛch",
     "participantsOfTotal": "{filled} pan {total} pleya dem",
-    "mapAttributionLabel": "OpenStreetMap pipal wey de gi am say, in kopyrayt ɛn layɛns",
     "seeAll": "Si ɔl",
     "seeAllSection": "Si ɔl {section}",
     "showMoreOptionsHint": "sho ɔda ɔpshɔn dɛn",
@@ -2418,5 +2417,6 @@
     "callMicrophoneTitle": "Yuz yu maykrofon fɔ kɔl dɛn",
     "callMicrophoneMessage": "Pangea Chat nid yu maykrofon fɔ kɔl dɛn, inklud kɔl dɛn we yu ansar frɔm di lɔk skrin.",
     "callMicrophoneOffTitle": "Yu kɔl nɔ kɔnɛkt",
-    "callMicrophoneOffMessage": "Pangea Chat nɔ go ebul yuz yu maykrofon. Tap fɔ tɔn am ɔn insay Sɛtinz."
+    "callMicrophoneOffMessage": "Pangea Chat nɔ go ebul yuz yu maykrofon. Tap fɔ tɔn am ɔn insay Sɛtinz.",
+    "mapCreditsLabel": "Map credit dɛn: Stadia Maps, OpenMapTiles ɛn OpenStreetMap"
 }

@@ -9408,7 +9408,6 @@
     "constructLevelFlowers": "མེ་ཏོག བྱང་ཆུབ་པའི་ཚིག",
     "filterAndSearch": "ཚགས་འདེམས་དང་འཚོལ་བཤེར།",
     "participantsOfTotal": "རྩེད་མཁན་ {total} ནང་ནས་ {filled}",
-    "mapAttributionLabel": "OpenStreetMap ལ་མཉམ་ཞུགས་བྱེད་མཁན་ཚོ། བདག་དབང་དང་ཆོག་མཆན།",
     "seeAll": "ཚང་མ་གཟིགས།",
     "seeAllSection": "{section} ཚང་མ་གཟིགས།",
     "showMoreOptionsHint": "འདེམས་ངོ་མང་ཙམ་བསྟན་",
@@ -9580,5 +9579,6 @@
     "callMicrophoneTitle": "ཁ་པར་བརྒྱབ་ཆེད་དུ་ཁྱེད་ཀྱི་སྒྲ་སྡུད་འཕྲུལ་ཆས་བེད་སྤྱོད་གནང་།",
     "callMicrophoneMessage": "Pangea Chat ལ་ཁ་པར་བརྒྱབ་ཆེད་དུ་ཁྱེད་ཀྱི་སྒྲ་སྡུད་འཕྲུལ་ཆས་དགོས། དེའི་ནང་དུ་བཀག་པའི་བརྡ་འཕྲིན་གྱི་ངོས་ནས་ལན་བརྒྱབ་པའི་ཁ་པར་ཡང་ཚུད་ཡོད།",
     "callMicrophoneOffTitle": "ཁྱེད་ཀྱི་ཁ་པར་འབྲེལ་མཐུད་བྱུང་མེད།",
-    "callMicrophoneOffMessage": "Pangea Chat གྱིས་ཁྱེད་ཀྱི་སྒྲ་སྡུད་འཕྲུལ་ཆས་བེད་སྤྱོད་གནང་ཐུབ་ཀྱི་མེད། སྒྲིག་སྦྱོར་ནང་དུ་སྒྲ་སྡུད་འཕྲུལ་ཆས་འབྱེད་པར་མནོན།"
+    "callMicrophoneOffMessage": "Pangea Chat གྱིས་ཁྱེད་ཀྱི་སྒྲ་སྡུད་འཕྲུལ་ཆས་བེད་སྤྱོད་གནང་ཐུབ་ཀྱི་མེད། སྒྲིག་སྦྱོར་ནང་དུ་སྒྲ་སྡུད་འཕྲུལ་ཆས་འབྱེད་པར་མནོན།",
+    "mapCreditsLabel": "ផែនទីཡི་ཡོན་ཏན་: Stadia Maps, OpenMapTiles དང་ OpenStreetMap"
 }

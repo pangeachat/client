@@ -9797,7 +9797,6 @@
     "constructLevelFlowers": "花朵，掌握词",
     "filterAndSearch": "筛选和搜索",
     "participantsOfTotal": "{filled}/{total} 位玩家",
-    "mapAttributionLabel": "OpenStreetMap 贡献者，版权和许可",
     "seeAll": "查看全部",
     "seeAllSection": "查看全部{section}",
     "showMoreOptionsHint": "显示更多选项",
@@ -9969,5 +9968,6 @@
     "callMicrophoneTitle": "使用麦克风进行通话",
     "callMicrophoneMessage": "Pangea Chat 需要使用您的麦克风进行通话，包括您从锁定屏幕接听的电话。",
     "callMicrophoneOffTitle": "您的通话未接通",
-    "callMicrophoneOffMessage": "Pangea Chat 无法使用您的麦克风。轻点以在“设置”中将其打开。"
+    "callMicrophoneOffMessage": "Pangea Chat 无法使用您的麦克风。轻点以在“设置”中将其打开。",
+    "mapCreditsLabel": "地图来源：Stadia Maps、OpenMapTiles 和 OpenStreetMap"
 }

@@ -10098,7 +10098,6 @@
     "constructLevelFlowers": "Çiçekler, ustalaşmış kelimeler",
     "filterAndSearch": "Filtrele ve ara",
     "participantsOfTotal": "{total} oyuncudan {filled} tanesi",
-    "mapAttributionLabel": "OpenStreetMap katılımcıları, telif hakkı ve lisans",
     "seeAll": "Tümünü gör",
     "seeAllSection": "Tüm {section} bölümünü gör",
     "showMoreOptionsHint": "daha fazla seçenek göster",
@@ -10270,5 +10269,6 @@
     "callMicrophoneTitle": "Aramalar için mikrofonunuzu kullanın",
     "callMicrophoneMessage": "Pangea Chat'in, kilit ekranından yanıtladığınız aramalar da dahil olmak üzere aramalar için mikrofonunuza erişmesi gerekiyor.",
     "callMicrophoneOffTitle": "Aramanız bağlanmadı",
-    "callMicrophoneOffMessage": "Pangea Chat mikrofonunuzu kullanamıyor. Ayarlar'dan açmak için dokunun."
+    "callMicrophoneOffMessage": "Pangea Chat mikrofonunuzu kullanamıyor. Ayarlar'dan açmak için dokunun.",
+    "mapCreditsLabel": "Harita bilgileri: Stadia Maps, OpenMapTiles ve OpenStreetMap"
 }

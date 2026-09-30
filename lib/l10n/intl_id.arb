@@ -9870,7 +9870,6 @@
     "constructLevelFlowers": "Bunga, kata-kata yang dikuasai",
     "filterAndSearch": "Filter dan cari",
     "participantsOfTotal": "{filled} dari {total} pemain",
-    "mapAttributionLabel": "Kontributor OpenStreetMap, hak cipta, dan lisensi",
     "seeAll": "Lihat semua",
     "seeAllSection": "Lihat semua {section}",
     "showMoreOptionsHint": "tampilkan opsi lainnya",
@@ -10042,5 +10041,6 @@
     "callMicrophoneTitle": "Gunakan mikrofon Anda untuk panggilan",
     "callMicrophoneMessage": "Pangea Chat memerlukan mikrofon Anda untuk panggilan, termasuk panggilan yang Anda jawab dari layar kunci.",
     "callMicrophoneOffTitle": "Panggilan Anda tidak tersambung",
-    "callMicrophoneOffMessage": "Pangea Chat tidak dapat menggunakan mikrofon Anda. Ketuk untuk mengaktifkannya di Pengaturan."
+    "callMicrophoneOffMessage": "Pangea Chat tidak dapat menggunakan mikrofon Anda. Ketuk untuk mengaktifkannya di Pengaturan.",
+    "mapCreditsLabel": "Kredit peta: Stadia Maps, OpenMapTiles, dan OpenStreetMap"
 }

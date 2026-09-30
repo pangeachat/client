@@ -10152,7 +10152,6 @@
     "constructLevelFlowers": "Fleurs, mots maîtrisés",
     "filterAndSearch": "Filtrer et rechercher",
     "participantsOfTotal": "{filled} sur {total} joueurs",
-    "mapAttributionLabel": "Contributeurs OpenStreetMap, droits d'auteur et licence",
     "seeAll": "Tout voir",
     "seeAllSection": "Voir tout {section}",
     "showMoreOptionsHint": "afficher plus d'options",
@@ -10324,5 +10323,6 @@
     "callMicrophoneTitle": "Utiliser votre microphone pour les appels",
     "callMicrophoneMessage": "Pangea Chat a besoin de votre microphone pour les appels, y compris ceux auxquels vous répondez depuis l'écran verrouillé.",
     "callMicrophoneOffTitle": "Votre appel n'a pas abouti",
-    "callMicrophoneOffMessage": "Pangea Chat ne peut pas utiliser votre microphone. Appuyez pour l'activer dans les réglages."
+    "callMicrophoneOffMessage": "Pangea Chat ne peut pas utiliser votre microphone. Appuyez pour l'activer dans les réglages.",
+    "mapCreditsLabel": "Crédits cartographiques : Stadia Maps, OpenMapTiles et OpenStreetMap"
 }

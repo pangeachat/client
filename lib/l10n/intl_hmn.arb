@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "Paj, cov lus kawm tiav",
     "filterAndSearch": "Lim thiab tshawb",
     "participantsOfTotal": "{filled} ntawm {total} tus neeg ua si",
-    "mapAttributionLabel": "OpenStreetMap cov neeg koom tes, txoj cai luam tawm thiab daim ntawv tso cai",
     "seeAll": "Saib tag nrho",
     "seeAllSection": "Saib tag nrho {section}",
     "showMoreOptionsHint": "qhia ntau txoj kev xaiv ntxiv",
@@ -2418,5 +2417,6 @@
     "callMicrophoneTitle": "Siv koj lub microphone rau kev hu",
     "callMicrophoneMessage": "Pangea Chat xav tau koj lub microphone rau kev hu, suav nrog kev hu uas koj teb los ntawm lub vijtsam kaw.",
     "callMicrophoneOffTitle": "Koj qhov kev hu tsis txuas",
-    "callMicrophoneOffMessage": "Pangea Chat tsis tuaj yeem siv koj lub microphone. Coj mus rhaub kom qhib nws hauv Chaw."
+    "callMicrophoneOffMessage": "Pangea Chat tsis tuaj yeem siv koj lub microphone. Coj mus rhaub kom qhib nws hauv Chaw.",
+    "mapCreditsLabel": "Daim ntawv qhia chaw: Stadia Maps, OpenMapTiles thiab OpenStreetMap"
 }

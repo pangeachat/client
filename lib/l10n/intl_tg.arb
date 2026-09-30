@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "Гулҳо, калимаҳои азхудшуда",
     "filterAndSearch": "Филтр ва ҷустуҷӯ",
     "participantsOfTotal": "{filled} аз {total} бозигар",
-    "mapAttributionLabel": "Мусоидаткунандагони OpenStreetMap, ҳуқуқи муаллифӣ ва иҷозатнома",
     "seeAll": "Ҳамаро бинед",
     "seeAllSection": "Ҳамаи {section}-ро бинед",
     "showMoreOptionsHint": "имконоти бештарро нишон диҳед",
@@ -2418,5 +2417,6 @@
     "callMicrophoneTitle": "Микрофони худро барои зангҳо истифода баред",
     "callMicrophoneMessage": "Pangea Chat барои зангҳо, аз ҷумла зангҳое, ки шумо аз экрани қулф ҷавоб медиҳед, ба микрофони шумо ниёз дорад.",
     "callMicrophoneOffTitle": "Занги шумо пайваст нашуд",
-    "callMicrophoneOffMessage": "Pangea Chat наметавонад микрофони шуморо истифода барад. Барои фаъол кардани он дар Танзимот ламс кунед."
+    "callMicrophoneOffMessage": "Pangea Chat наметавонад микрофони шуморо истифода барад. Барои фаъол кардани он дар Танзимот ламс кунед.",
+    "mapCreditsLabel": "Ҳуқуқи харита: Stadia Maps, OpenMapTiles ва OpenStreetMap"
 }

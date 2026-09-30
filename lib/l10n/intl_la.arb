@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "Flores, verba perfecta",
     "filterAndSearch": "Spargere et quaerere",
     "participantsOfTotal": "{filled} ex {total} lusoribus",
-    "mapAttributionLabel": "OpenStreetMap contributores, ius auctoris et licentia",
     "seeAll": "Omnia vide",
     "seeAllSection": "Omnia {section} vide",
     "showMoreOptionsHint": "plures optiones ostende",
@@ -2418,5 +2417,6 @@
     "callMicrophoneTitle": "Utere microphono tuo ad vocandum",
     "callMicrophoneMessage": "Pangea Chat microphono tuo indiget ad vocandum, etiam ad vocandum quod ex velo clauso respondes.",
     "callMicrophoneOffTitle": "Vocatio tua non coniuncta est",
-    "callMicrophoneOffMessage": "Pangea Chat microphono tuo uti non potest. Tange ut id in Optionibus vertere possis."
+    "callMicrophoneOffMessage": "Pangea Chat microphono tuo uti non potest. Tange ut id in Optionibus vertere possis.",
+    "mapCreditsLabel": "Tabulae credita: Stadia Maps, OpenMapTiles et OpenStreetMap"
 }

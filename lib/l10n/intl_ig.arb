@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "Okooko osisi, okwu ndị a mụtara nke ọma",
     "filterAndSearch": "Nyochaa ma chọọ",
     "participantsOfTotal": "{filled} n'ime {total} ndị egwuregwu",
-    "mapAttributionLabel": "Ndị nyere aka na OpenStreetMap, nwebisiinka na ikike",
     "seeAll": "Hụ ihe niile",
     "seeAllSection": "Hụ {section} niile",
     "showMoreOptionsHint": "gosi nhọrọ ndị ọzọ",
@@ -2418,5 +2417,6 @@
     "callMicrophoneTitle": "Jiri igwe okwu gị maka oku",
     "callMicrophoneMessage": "Pangea Chat chọrọ igwe okwu gị maka oku, gụnyere oku ị zara site na ihuenyo mkpọchi.",
     "callMicrophoneOffTitle": "Oku gị ejikọtaghị",
-    "callMicrophoneOffMessage": "Pangea Chat enweghị ike iji igwe okwu gị. Pịa ka ịgbanwuo ya na Ntọala."
+    "callMicrophoneOffMessage": "Pangea Chat enweghị ike iji igwe okwu gị. Pịa ka ịgbanwuo ya na Ntọala.",
+    "mapCreditsLabel": "Ebe e si nweta maapụ: Stadia Maps, OpenMapTiles na OpenStreetMap"
 }

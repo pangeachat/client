@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "ګلان، ماسټر شوې کلمې",
     "filterAndSearch": "فلټر او لټون",
     "participantsOfTotal": "د {total} لوبغاړو څخه {filled}",
-    "mapAttributionLabel": "د OpenStreetMap مرسته کوونکي، د چاپ حق او جواز",
     "seeAll": "ټول وګورئ",
     "seeAllSection": "ټول {section} وګورئ",
     "showMoreOptionsHint": "نور انتخابونه وښایاست",
@@ -2418,5 +2417,6 @@
     "callMicrophoneTitle": "د زنګونو لپاره خپل مایکروفون وکاروئ",
     "callMicrophoneMessage": "پنګیا چټ ستاسو مایکروفون د زنګونو لپاره اړتیا لري، پشمول هغه زنګونه چې تاسو یې د لاک سکرین څخه ځوابوئ.",
     "callMicrophoneOffTitle": "ستاسو زنګ وصل نشو",
-    "callMicrophoneOffMessage": "پنګیا چټ نشي کولی ستاسو مایکروفون وکاروي. په ترتیباتو کې د فعالولو لپاره ټایپ کړئ."
+    "callMicrophoneOffMessage": "پنګیا چټ نشي کولی ستاسو مایکروفون وکاروي. په ترتیباتو کې د فعالولو لپاره ټایپ کړئ.",
+    "mapCreditsLabel": "د نقشې کریډیټونه: Stadia Maps, OpenMapTiles او OpenStreetMap"
 }

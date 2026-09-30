@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "Blommen, behearske wurden",
     "filterAndSearch": "Filterje en sykje",
     "participantsOfTotal": "{filled} fan {total} spilers",
-    "mapAttributionLabel": "OpenStreetMap-meiwurkers, copyright en lisinsje",
     "seeAll": "Alles sjen",
     "seeAllSection": "Alles sjen yn {section}",
     "showMoreOptionsHint": "mear opsjes sjen litte",
@@ -2418,5 +2417,6 @@
     "callMicrophoneTitle": "Brûk dyn mikrofoan foar petearen",
     "callMicrophoneMessage": "Pangea Chat hat dyn mikrofoan nedich foar petearen, ynklusyf petearen dy'tst beäntwurdest fanút it skoattelskerm.",
     "callMicrophoneOffTitle": "Dyn petear is net ferbûn",
-    "callMicrophoneOffMessage": "Pangea Chat kin dyn mikrofoan net brûke. Tik om it ynstellings yn te skeakeljen."
+    "callMicrophoneOffMessage": "Pangea Chat kin dyn mikrofoan net brûke. Tik om it ynstellings yn te skeakeljen.",
+    "mapCreditsLabel": "Kaartkrediten: Stadia Maps, OpenMapTiles en OpenStreetMap"
 }

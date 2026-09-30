@@ -10315,7 +10315,6 @@
     "constructLevelFlowers": "Blommor, ord du kan",
     "filterAndSearch": "Filtrera och sök",
     "participantsOfTotal": "{filled} av {total} spelare",
-    "mapAttributionLabel": "OpenStreetMap-bidragsgivare, upphovsrätt och licens",
     "seeAll": "Visa alla",
     "seeAllSection": "Visa alla {section}",
     "showMoreOptionsHint": "visa fler alternativ",
@@ -10487,5 +10486,6 @@
     "callMicrophoneTitle": "Använd din mikrofon för samtal",
     "callMicrophoneMessage": "Pangea Chat behöver din mikrofon för samtal, inklusive samtal du svarar på från låsskärmen.",
     "callMicrophoneOffTitle": "Ditt samtal kopplades inte upp",
-    "callMicrophoneOffMessage": "Pangea Chat kan inte använda din mikrofon. Tryck för att aktivera den i Inställningar."
+    "callMicrophoneOffMessage": "Pangea Chat kan inte använda din mikrofon. Tryck för att aktivera den i Inställningar.",
+    "mapCreditsLabel": "Kartkrediter: Stadia Maps, OpenMapTiles och OpenStreetMap"
 }

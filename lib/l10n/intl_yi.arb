@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "בלומען, באַהערשטע ווערטער",
     "filterAndSearch": "פֿילטרירן און זוכן",
     "participantsOfTotal": "{filled} פֿון {total} שפּילער",
-    "mapAttributionLabel": "OpenStreetMap מיטארבעטער, קאפירעכט און ליצענץ",
     "seeAll": "זען אַלע",
     "seeAllSection": "זען אַלע {section}",
     "showMoreOptionsHint": "ווייַזן מער אָפּציעס",
@@ -2418,5 +2417,6 @@
     "callMicrophoneTitle": "ניצן דיין מיקראָפאָן פֿאַר קאַללס",
     "callMicrophoneMessage": "פּאַנגעאַ טשאַט דאַרף דיין מיקראָפאָן פֿאַר קאַללס, אַרייַנגערעכנט קאַללס וואָס איר ענטפֿערט פֿון דעם שלאָס עקראַן.",
     "callMicrophoneOffTitle": "דיין רוף האָט זיך נישט פֿאַרבונדן",
-    "callMicrophoneOffMessage": "פּאַנגעאַ טשאַט קען נישט ניצן דיין מיקראָפאָן. דרוקט צו אָנצינדן עס אין סעטטינגס."
+    "callMicrophoneOffMessage": "פּאַנגעאַ טשאַט קען נישט ניצן דיין מיקראָפאָן. דרוקט צו אָנצינדן עס אין סעטטינגס.",
+    "mapCreditsLabel": "מאַפּע קרעדיץ: סטאַדיאַ מאַפּס, אָפּענמאַפּטילעס און אָפּענסטרעעטמאַפּ"
 }

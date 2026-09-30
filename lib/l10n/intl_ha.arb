@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "Fure, kalmomin da aka kware",
     "filterAndSearch": "Tace da bincike",
     "participantsOfTotal": "{filled} cikin {total} 'yan wasa",
-    "mapAttributionLabel": "Masu ba da gudummawa na OpenStreetMap, haƙƙin mallaka da lasisi",
     "seeAll": "Duba duka",
     "seeAllSection": "Duba duka {section}",
     "showMoreOptionsHint": "nuna ƙarin zaɓuɓɓuka",
@@ -2418,5 +2417,6 @@
     "callMicrophoneTitle": "Yi amfani da makirufonka don kira",
     "callMicrophoneMessage": "Pangea Chat na buƙatar makirufonka don kira, gami da kiran da ka amsa daga allon kulle.",
     "callMicrophoneOffTitle": "Kiran ka bai haɗu ba",
-    "callMicrophoneOffMessage": "Pangea Chat ba zai iya amfani da makirufonka ba. Danna don kunna shi a Saituna."
+    "callMicrophoneOffMessage": "Pangea Chat ba zai iya amfani da makirufonka ba. Danna don kunna shi a Saituna.",
+    "mapCreditsLabel": "Godiya ga taswira: Stadia Maps, OpenMapTiles da OpenStreetMap"
 }

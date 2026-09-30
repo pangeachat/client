@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "Kembang, tembung sing wis dikuasai",
     "filterAndSearch": "Saring lan goleki",
     "participantsOfTotal": "{filled} saka {total} pemain",
-    "mapAttributionLabel": "Kontributor OpenStreetMap, hak cipta lan lisensi",
     "seeAll": "Deleng kabeh",
     "seeAllSection": "Deleng kabeh {section}",
     "showMoreOptionsHint": "tampilake opsi liyane",
@@ -2418,5 +2417,6 @@
     "callMicrophoneTitle": "Gunakake mikroponmu kanggo nelpon",
     "callMicrophoneMessage": "Pangea Chat mbutuhake mikroponmu kanggo nelpon, kalebu telpon sing kokangkat saka layar kunci.",
     "callMicrophoneOffTitle": "Telponmu ora nyambung",
-    "callMicrophoneOffMessage": "Pangea Chat ora bisa nggunakake mikroponmu. Tutul kanggo nguripake ing Setelan."
+    "callMicrophoneOffMessage": "Pangea Chat ora bisa nggunakake mikroponmu. Tutul kanggo nguripake ing Setelan.",
+    "mapCreditsLabel": "Kredhit peta: Stadia Maps, OpenMapTiles lan OpenStreetMap"
 }

@@ -10566,7 +10566,6 @@
     "constructLevelFlowers": "フラワー、習得済みの単語",
     "filterAndSearch": "フィルターと検索",
     "participantsOfTotal": "{total}人中{filled}人",
-    "mapAttributionLabel": "OpenStreetMapの寄与者、著作権とライセンス",
     "seeAll": "すべて見る",
     "seeAllSection": "{section}をすべて見る",
     "showMoreOptionsHint": "その他のオプションを表示",
@@ -10738,5 +10737,6 @@
     "callMicrophoneTitle": "通話でマイクを使用",
     "callMicrophoneMessage": "Pangea Chatが通話でマイクを使用できるようにしてください。ロック画面から応答する通話も含まれます。",
     "callMicrophoneOffTitle": "通話に接続できませんでした",
-    "callMicrophoneOffMessage": "Pangea Chatがマイクを使用できません。タップして設定でオンにしてください。"
+    "callMicrophoneOffMessage": "Pangea Chatがマイクを使用できません。タップして設定でオンにしてください。",
+    "mapCreditsLabel": "マップクレジット: Stadia Maps, OpenMapTiles, OpenStreetMap"
 }

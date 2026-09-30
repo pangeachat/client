@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "Maruva, mazwi akadzidzwa",
     "filterAndSearch": "Sefa nekutsvaga",
     "participantsOfTotal": "Vatambi {filled} pa {total}",
-    "mapAttributionLabel": "Vabatsiri veOpenStreetMap, kodzero yekukopa uye rezinesi",
     "seeAll": "Ona zvese",
     "seeAllSection": "Ona zvese zve {section}",
     "showMoreOptionsHint": "ratidza zvimwe zvingasarudzwa",
@@ -2418,5 +2417,6 @@
     "callMicrophoneTitle": "Shandisa maikorofoni yako pakufona",
     "callMicrophoneMessage": "Pangea Chat inoda maikorofoni yako pakufona, kusanganisira mafoni aunopindura kubva pa lock screen.",
     "callMicrophoneOffTitle": "Foni yako haina kubatana",
-    "callMicrophoneOffMessage": "Pangea Chat haigone kushandisa maikorofoni yako. Dzvanya kuti uibatidze muZvirongwa."
+    "callMicrophoneOffMessage": "Pangea Chat haigone kushandisa maikorofoni yako. Dzvanya kuti uibatidze muZvirongwa.",
+    "mapCreditsLabel": "Map credits: Stadia Maps, OpenMapTiles neOpenStreetMap"
 }

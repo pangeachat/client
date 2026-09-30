@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "گوڵەکان، وشە شارەزاکان",
     "filterAndSearch": "پاڵاوتن و گەڕان",
     "participantsOfTotal": "{filled} لە {total} یاریزان",
-    "mapAttributionLabel": "بەشداربووانی OpenStreetMap، مافی لەبەرگرتنەوە و مۆڵەت",
     "seeAll": "هەمووی ببینە",
     "seeAllSection": "هەموو {section} ببینە",
     "showMoreOptionsHint": "پیشاندانی بژاردەی زیاتر",
@@ -2418,5 +2417,6 @@
     "callMicrophoneTitle": "مایکرۆفۆنەکەت بەکاربهێنە بۆ پەیوەندییەکان",
     "callMicrophoneMessage": "Pangea Chat پێویستی بە مایکرۆفۆنەکەت هەیە بۆ پەیوەندییەکان، لەوانەش ئەو پەیوەندییانەی کە لە شاشەی قفڵەوە وەڵامیان دەدەیتەوە.",
     "callMicrophoneOffTitle": "پەیوەندییەکەت نەبەسترا",
-    "callMicrophoneOffMessage": "Pangea Chat ناتوانێت مایکرۆفۆنەکەت بەکاربهێنێت. دەست لێبدە بۆ چالاککردنی لە ڕێکخستنەکان."
+    "callMicrophoneOffMessage": "Pangea Chat ناتوانێت مایکرۆفۆنەکەت بەکاربهێنێت. دەست لێبدە بۆ چالاککردنی لە ڕێکخستنەکان.",
+    "mapCreditsLabel": "مافی نەخشەکان: نەخشەکانی ستادیا، OpenMapTiles و OpenStreetMap"
 }

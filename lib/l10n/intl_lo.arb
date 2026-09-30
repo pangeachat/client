@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "ດອກໄມ້, ຄຳສັບທີ່ຮຽນຈົບແລ້ວ",
     "filterAndSearch": "ກັ່ນຕອງ ແລະ ຄົ້ນຫາ",
     "participantsOfTotal": "{filled} ຈາກ {total} ຜູ້ຫຼິ້ນ",
-    "mapAttributionLabel": "ຜູ້ປະກອບສ່ວນ OpenStreetMap, ລິຂະສິດ ແລະ ໃບອະນຸຍາດ",
     "seeAll": "ເບິ່ງທັງໝົດ",
     "seeAllSection": "ເບິ່ງທັງໝົດ {section}",
     "showMoreOptionsHint": "ສະແດງຕົວເລືອກເພີ່ມເຕີມ",
@@ -2418,5 +2417,6 @@
     "callMicrophoneTitle": "ໃຊ້ໄມໂຄຣໂຟນຂອງທ່ານສຳລັບການໂທ",
     "callMicrophoneMessage": "Pangea Chat ຕ້ອງການໄມໂຄຣໂຟນຂອງທ່ານສຳລັບການໂທ, ລວມທັງການໂທທີ່ທ່ານຮັບຈາກໜ້າຈໍລັອກ.",
     "callMicrophoneOffTitle": "ການໂທຂອງທ່ານບໍ່ໄດ້ເຊື່ອມຕໍ່",
-    "callMicrophoneOffMessage": "Pangea Chat ບໍ່ສາມາດໃຊ້ໄມໂຄຣໂຟນຂອງທ່ານໄດ້. ແຕະເພື່ອເປີດໃຊ້ໃນການຕັ້ງຄ່າ."
+    "callMicrophoneOffMessage": "Pangea Chat ບໍ່ສາມາດໃຊ້ໄມໂຄຣໂຟນຂອງທ່ານໄດ້. ແຕະເພື່ອເປີດໃຊ້ໃນການຕັ້ງຄ່າ.",
+    "mapCreditsLabel": "ຂໍ້ມູນແຜນທີ່: Stadia Maps, OpenMapTiles ແລະ OpenStreetMap"
 }

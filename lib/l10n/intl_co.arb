@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "Fiori, parolle ammaestrate",
     "filterAndSearch": "Filtrà è circà",
     "participantsOfTotal": "{filled} di {total} ghjucadori",
-    "mapAttributionLabel": "Cuntributori OpenStreetMap, copyright è licenza",
     "seeAll": "Vede tuttu",
     "seeAllSection": "Vede tuttu {section}",
     "showMoreOptionsHint": "mostra più opzioni",
@@ -2418,5 +2417,6 @@
     "callMicrophoneTitle": "Aduprate u vostru microfonu per e chjame",
     "callMicrophoneMessage": "Pangea Chat hà bisognu di u vostru microfonu per e chjame, cumprese e chjame chì rispondi da u screnu di bloccu.",
     "callMicrophoneOffTitle": "A vostra chjama ùn s'hè cunnessa",
-    "callMicrophoneOffMessage": "Pangea Chat ùn pò micca aduprà u vostru microfonu. Toccate per accende lu in i Paràmetri."
+    "callMicrophoneOffMessage": "Pangea Chat ùn pò micca aduprà u vostru microfonu. Toccate per accende lu in i Paràmetri.",
+    "mapCreditsLabel": "Crediti di a carta: Stadia Maps, OpenMapTiles è OpenStreetMap"
 }

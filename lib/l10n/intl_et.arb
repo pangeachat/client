@@ -9794,7 +9794,6 @@
     "constructLevelFlowers": "Lilled, omandatud sõnad",
     "filterAndSearch": "Filtreeri ja otsi",
     "participantsOfTotal": "{filled}/{total} mängijat",
-    "mapAttributionLabel": "OpenStreetMapi kaastöölised, autoriõigus ja litsents",
     "seeAll": "Vaata kõiki",
     "seeAllSection": "Vaata kõiki {section}",
     "showMoreOptionsHint": "näita rohkem valikuid",
@@ -9966,5 +9965,6 @@
     "callMicrophoneTitle": "Kasuta kõnede jaoks mikrofoni",
     "callMicrophoneMessage": "Pangea Chat vajab kõnede jaoks teie mikrofoni, sealhulgas kõnede jaoks, millele vastate lukustuskuvalt.",
     "callMicrophoneOffTitle": "Teie kõne ei ühendunud",
-    "callMicrophoneOffMessage": "Pangea Chat ei saa teie mikrofoni kasutada. Puudutage, et see seadetes sisse lülitada."
+    "callMicrophoneOffMessage": "Pangea Chat ei saa teie mikrofoni kasutada. Puudutage, et see seadetes sisse lülitada.",
+    "mapCreditsLabel": "Kaardi autorid: Stadia Maps, OpenMapTiles ja OpenStreetMap"
 }

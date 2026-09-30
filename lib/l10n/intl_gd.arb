@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "Flùraichean, faclan maighstireil",
     "filterAndSearch": "Sìoladh is sgrùdadh",
     "participantsOfTotal": "{filled} de {total} cluicheadairean",
-    "mapAttributionLabel": "Luchd-tabhartais OpenStreetMap, dlighe-sgrìobhaidh agus cead",
     "seeAll": "Faic na h-uile",
     "seeAllSection": "Faic na h-uile {section}",
     "showMoreOptionsHint": "seall barrachd roghainnean",
@@ -2418,5 +2417,6 @@
     "callMicrophoneTitle": "Cleachd am micreofon agad airson gairmean",
     "callMicrophoneMessage": "Tha feum aig Pangea Chat air a’ mhicreofon agad airson gairmean, a’ gabhail a-steach gairmean a fhreagras tu bhon sgrìn-ghlasaidh.",
     "callMicrophoneOffTitle": "Cha do cheangail a’ ghairm agad",
-    "callMicrophoneOffMessage": "Chan urrainn do Pangea Chat am micreofon agad a chleachdadh. Tap air gus a thionndadh air ann an Roghainnean."
+    "callMicrophoneOffMessage": "Chan urrainn do Pangea Chat am micreofon agad a chleachdadh. Tap air gus a thionndadh air ann an Roghainnean.",
+    "mapCreditsLabel": "Urrasan-mhapa: Stadia Maps, OpenMapTiles agus OpenStreetMap"
 }

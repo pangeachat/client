@@ -9797,7 +9797,6 @@
     "constructLevelFlowers": "Loreak, menderatutako hitzak",
     "filterAndSearch": "Iragazi eta bilatu",
     "participantsOfTotal": "{total} jokalarietatik {filled}",
-    "mapAttributionLabel": "OpenStreetMap-eko kolaboratzaileak, copyright eta lizentzia",
     "seeAll": "Ikusi guztiak",
     "seeAllSection": "Ikusi {section} guztiak",
     "showMoreOptionsHint": "aukera gehiago erakutsi",
@@ -9969,5 +9968,6 @@
     "callMicrophoneTitle": "Erabili mikrofonoa deietarako",
     "callMicrophoneMessage": "Pangea Chat-ek zure mikrofonoa behar du deietarako, blokeo-pantailatik erantzuten dituzun deiak barne.",
     "callMicrophoneOffTitle": "Zure deia ez da konektatu",
-    "callMicrophoneOffMessage": "Pangea Chat-ek ezin du zure mikrofonoa erabili. Sakatu Ezarpenetan aktibatzeko."
+    "callMicrophoneOffMessage": "Pangea Chat-ek ezin du zure mikrofonoa erabili. Sakatu Ezarpenetan aktibatzeko.",
+    "mapCreditsLabel": "Maparen kredituak: Stadia Maps, OpenMapTiles eta OpenStreetMap"
 }

@@ -61,7 +61,7 @@ The spine of the product. The expensive bugs live at these seams (the LO-lock ga
 - [ ] Toggle a CEFR level off/on with the loaded set unchanged — **Expect:** pins refine in place from the already-loaded set (no re-query); non-matching CEFR pins disappear, matching stay, unknown-level (`cefr==null`) kept. _(world-map.instructions.md)_
 - [ ] Change the L2 filter to all-languages / a different language — **Expect:** the working set widens via a re-query (new candidate items appear), not just an in-view unhide. _(world-map.instructions.md)_
 - [ ] Type a query in map search and select a result — **Expect:** as-you-type results match title/description/learning-objective; selecting flies the camera to the item and opens its large card. _(world-map.instructions.md; [world-map-search])_
-- [ ] Switch app theme light↔dark, observe base tiles — **Expect:** light loads OSM standard raster (`tile.openstreetmap.org`); dark loads CartoDB Dark Matter (`basemaps.cartocdn.com/dark_all`); tiles fetched direct from CDN, never proxied. _(world-map-tiles.instructions.md; [world-map-tiles])_
+- [ ] Switch app theme light↔dark, observe base tiles — **Expect:** light loads Stadia `alidade_smooth` and dark loads `alidade_smooth_dark` (`tiles.stadiamaps.com`), with no client-side filter over the dark tiles; tiles fetched direct from Stadia, never proxied. _(world-map-tiles.instructions.md; [world-map-tiles])_
 
 ### 2b. Pin state & progress (the gate)
 

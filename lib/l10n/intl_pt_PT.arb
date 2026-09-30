@@ -10714,7 +10714,6 @@
     "constructLevelFlowers": "Flores, palavras dominadas",
     "filterAndSearch": "Filtrar e pesquisar",
     "participantsOfTotal": "{filled} de {total} jogadores",
-    "mapAttributionLabel": "Contribuidores do OpenStreetMap, direitos de autor e licença",
     "seeAll": "Ver tudo",
     "seeAllSection": "Ver tudo em {section}",
     "showMoreOptionsHint": "mostrar mais opções",
@@ -10886,5 +10885,6 @@
     "callMicrophoneTitle": "Use o seu microfone para chamadas",
     "callMicrophoneMessage": "O Pangea Chat precisa do seu microfone para chamadas, incluindo chamadas que atende a partir do ecrã de bloqueio.",
     "callMicrophoneOffTitle": "A sua chamada não foi conectada",
-    "callMicrophoneOffMessage": "O Pangea Chat não consegue usar o seu microfone. Toque para ativá-lo nas Definições."
+    "callMicrophoneOffMessage": "O Pangea Chat não consegue usar o seu microfone. Toque para ativá-lo nas Definições.",
+    "mapCreditsLabel": "Créditos do mapa: Stadia Maps, OpenMapTiles e OpenStreetMap"
 }

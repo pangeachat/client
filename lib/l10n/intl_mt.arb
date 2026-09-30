@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "Fjuri, kliem mhaddem",
     "filterAndSearch": "Iffiltra u fittex",
     "participantsOfTotal": "{filled} minn {total} plejers",
-    "mapAttributionLabel": "Kontributuri, drittijiet tal-awtur u liċenzja ta' OpenStreetMap",
     "seeAll": "Ara kollox",
     "seeAllSection": "Ara kollox {section}",
     "showMoreOptionsHint": "uri aktar għażliet",
@@ -2418,5 +2417,6 @@
     "callMicrophoneTitle": "Uża l-mikrofonu tiegħek għal sejħiet",
     "callMicrophoneMessage": "Pangea Chat jeħtieġ il-mikrofonu tiegħek għal sejħiet, inklużi sejħiet li twieġeb mill-iskrin tal-illokkjar.",
     "callMicrophoneOffTitle": "Is-sejħa tiegħek ma konnessjonatx",
-    "callMicrophoneOffMessage": "Pangea Chat ma jistax juża l-mikrofonu tiegħek. Tektek biex tixgħel fis-Settings."
+    "callMicrophoneOffMessage": "Pangea Chat ma jistax juża l-mikrofonu tiegħek. Tektek biex tixgħel fis-Settings.",
+    "mapCreditsLabel": "Krediti tal-mappa: Stadia Maps, OpenMapTiles u OpenStreetMap"
 }

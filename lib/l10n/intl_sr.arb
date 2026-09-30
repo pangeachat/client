@@ -10746,7 +10746,6 @@
     "constructLevelFlowers": "Cveće, savladane reči",
     "filterAndSearch": "Filtriraj i pretraži",
     "participantsOfTotal": "{filled} od {total} igrača",
-    "mapAttributionLabel": "OpenStreetMap saradnici, autorska prava i licenca",
     "seeAll": "Pogledaj sve",
     "seeAllSection": "Pogledaj sve {section}",
     "showMoreOptionsHint": "prikaži više opcija",
@@ -10918,5 +10917,6 @@
     "callMicrophoneTitle": "Koristite mikrofon za pozive",
     "callMicrophoneMessage": "Pangea Chat-u je potreban vaš mikrofon za pozive, uključujući pozive na koje odgovarate sa zaključanog ekrana.",
     "callMicrophoneOffTitle": "Vaš poziv nije povezan",
-    "callMicrophoneOffMessage": "Pangea Chat ne može da koristi vaš mikrofon. Dodirnite da biste ga uključili u Podešavanjima."
+    "callMicrophoneOffMessage": "Pangea Chat ne može da koristi vaš mikrofon. Dodirnite da biste ga uključili u Podešavanjima.",
+    "mapCreditsLabel": "Zasluge za mapu: Stadia Maps, OpenMapTiles i OpenStreetMap"
 }

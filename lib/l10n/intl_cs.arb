@@ -10291,7 +10291,6 @@
     "constructLevelFlowers": "Květy, zvládnutá slova",
     "filterAndSearch": "Filtrovat a hledat",
     "participantsOfTotal": "{filled} z {total} hráčů",
-    "mapAttributionLabel": "Přispěvatelé OpenStreetMap, autorská práva a licence",
     "seeAll": "Zobrazit vše",
     "seeAllSection": "Zobrazit vše {section}",
     "showMoreOptionsHint": "zobrazit další možnosti",
@@ -10463,5 +10462,6 @@
     "callMicrophoneTitle": "Použít mikrofon pro hovory",
     "callMicrophoneMessage": "Pangea Chat potřebuje váš mikrofon pro hovory, včetně hovorů, které přijmete z uzamčené obrazovky.",
     "callMicrophoneOffTitle": "Váš hovor se nespojil",
-    "callMicrophoneOffMessage": "Pangea Chat nemůže použít váš mikrofon. Klepnutím jej zapnete v Nastavení."
+    "callMicrophoneOffMessage": "Pangea Chat nemůže použít váš mikrofon. Klepnutím jej zapnete v Nastavení.",
+    "mapCreditsLabel": "Zásluhy mapy: Stadia Maps, OpenMapTiles a OpenStreetMap"
 }

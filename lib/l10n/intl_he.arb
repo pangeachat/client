@@ -10711,7 +10711,6 @@
     "constructLevelFlowers": "פרחים, מילים שנלמדו",
     "filterAndSearch": "סינון וחיפוש",
     "participantsOfTotal": "{filled} מתוך {total} שחקנים",
-    "mapAttributionLabel": "תורמי OpenStreetMap, זכויות יוצרים ורישיון",
     "seeAll": "הצג הכל",
     "seeAllSection": "הצג הכל {section}",
     "showMoreOptionsHint": "הצג אפשרויות נוספות",
@@ -10883,5 +10882,6 @@
     "callMicrophoneTitle": "השתמש/י במיקרופון שלך לשיחות",
     "callMicrophoneMessage": "Pangea Chat זקוק למיקרופון שלך לשיחות, כולל שיחות שאת/ה עונה להן ממסך הנעילה.",
     "callMicrophoneOffTitle": "השיחה שלך לא התחברה",
-    "callMicrophoneOffMessage": "Pangea Chat לא יכול להשתמש במיקרופון שלך. הקש/י כדי להפעיל אותו בהגדרות."
+    "callMicrophoneOffMessage": "Pangea Chat לא יכול להשתמש במיקרופון שלך. הקש/י כדי להפעיל אותו בהגדרות.",
+    "mapCreditsLabel": "קרדיטים למפה: Stadia Maps, OpenMapTiles ו-OpenStreetMap"
 }

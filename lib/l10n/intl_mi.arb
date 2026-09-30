@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "Puawai, kupu kua rangatira",
     "filterAndSearch": "Tātari me te rapu",
     "participantsOfTotal": "{filled} o te {total} ngā kaitākaro",
-    "mapAttributionLabel": "Ngā kaituku OpenStreetMap, te mana pupuri me te raihana",
     "seeAll": "Tirohia katoa",
     "seeAllSection": "Tirohia katoa {section}",
     "showMoreOptionsHint": "whakaatu atu kōwhiringa",
@@ -2418,5 +2417,6 @@
     "callMicrophoneTitle": "Whakamahia tō hopuoro mō ngā waea",
     "callMicrophoneMessage": "Me whai hopuoro a Pangea Chat mō ngā waea, tae atu ki ngā waea ka whakautua e koe mai i te mata maukati.",
     "callMicrophoneOffTitle": "Kāore i hono tō waea",
-    "callMicrophoneOffMessage": "Kāore e taea e Pangea Chat te whakamahi i tō hopuoro. Pāwhiritia kia whakakāhia i ngā Tautuhinga."
+    "callMicrophoneOffMessage": "Kāore e taea e Pangea Chat te whakamahi i tō hopuoro. Pāwhiritia kia whakakāhia i ngā Tautuhinga.",
+    "mapCreditsLabel": "Ngā takoha mahere: Stadia Maps, OpenMapTiles me OpenStreetMap"
 }

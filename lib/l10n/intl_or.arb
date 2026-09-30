@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "ଫୁଲ, ଆୟତ୍ତ ଶବ୍ଦ",
     "filterAndSearch": "ଫିଲ୍ଟର୍ ଏବଂ ସନ୍ଧାନ କରନ୍ତୁ",
     "participantsOfTotal": "{total} ଖେଳାଳିଙ୍କ ମଧ୍ୟରୁ {filled}",
-    "mapAttributionLabel": "OpenStreetMap ଯୋଗଦାନକାରୀ, କପିରାଇଟ୍ ଏବଂ ଲାଇସେନ୍ସ",
     "seeAll": "ସବୁ ଦେଖନ୍ତୁ",
     "seeAllSection": "ସବୁ {section} ଦେଖନ୍ତୁ",
     "showMoreOptionsHint": "ଅଧିକ ବିକଳ୍ପ ଦେଖାନ୍ତୁ",
@@ -2418,5 +2417,6 @@
     "callMicrophoneTitle": "କଲ୍ ପାଇଁ ଆପଣଙ୍କ ମାଇକ୍ରୋଫୋନ୍ ବ୍ୟବହାର କରନ୍ତୁ",
     "callMicrophoneMessage": "Pangea Chat କୁ କଲ୍ ପାଇଁ ଆପଣଙ୍କ ମାଇକ୍ରୋଫୋନ୍ ଆବଶ୍ୟକ, ଲକ୍ ସ୍କ୍ରିନରୁ ଆପଣ ଉଠାଉଥିବା କଲ୍ ସମେତ।",
     "callMicrophoneOffTitle": "ଆପଣଙ୍କ କଲ୍ ସଂଯୋଗ ହୋଇପାରିଲା ନାହିଁ",
-    "callMicrophoneOffMessage": "Pangea Chat ଆପଣଙ୍କ ମାଇକ୍ରୋଫୋନ୍ ବ୍ୟବହାର କରିପାରୁ ନାହିଁ। ସେଟିଙ୍ଗ୍ସରେ ଏହାକୁ ଅନ୍ କରିବା ପାଇଁ ଟ୍ୟାପ୍ କରନ୍ତୁ।"
+    "callMicrophoneOffMessage": "Pangea Chat ଆପଣଙ୍କ ମାଇକ୍ରୋଫୋନ୍ ବ୍ୟବହାର କରିପାରୁ ନାହିଁ। ସେଟିଙ୍ଗ୍ସରେ ଏହାକୁ ଅନ୍ କରିବା ପାଇଁ ଟ୍ୟାପ୍ କରନ୍ତୁ।",
+    "mapCreditsLabel": "ମାନଚିତ୍ର କ୍ରେଡିଟ୍: Stadia Maps, OpenMapTiles ଏବଂ OpenStreetMap"
 }

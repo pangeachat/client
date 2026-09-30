@@ -9784,7 +9784,6 @@
     "constructLevelFlowers": "Blüten, gemeisterte Wörter",
     "filterAndSearch": "Filtern und suchen",
     "participantsOfTotal": "{filled} von {total} Spielern",
-    "mapAttributionLabel": "OpenStreetMap-Mitwirkende, Copyright und Lizenz",
     "seeAll": "Alle anzeigen",
     "seeAllSection": "Alle {section} anzeigen",
     "showMoreOptionsHint": "Weitere Optionen anzeigen",
@@ -9956,5 +9955,6 @@
     "callMicrophoneTitle": "Mikrofon für Anrufe verwenden",
     "callMicrophoneMessage": "Pangea Chat benötigt Ihr Mikrofon für Anrufe, einschließlich Anrufe, die Sie vom Sperrbildschirm aus annehmen.",
     "callMicrophoneOffTitle": "Ihr Anruf konnte nicht verbunden werden",
-    "callMicrophoneOffMessage": "Pangea Chat kann Ihr Mikrofon nicht verwenden. Tippen Sie hier, um es in den Einstellungen zu aktivieren."
+    "callMicrophoneOffMessage": "Pangea Chat kann Ihr Mikrofon nicht verwenden. Tippen Sie hier, um es in den Einstellungen zu aktivieren.",
+    "mapCreditsLabel": "Karten-Credits: Stadia Maps, OpenMapTiles und OpenStreetMap"
 }

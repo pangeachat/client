@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "പൂക്കൾ, പഠിച്ചെടുത്ത വാക്കുകൾ",
     "filterAndSearch": "ഫിൽട്ടർ ചെയ്ത് തിരയുക",
     "participantsOfTotal": "{total} കളിക്കാരിൽ {filled} പേർ",
-    "mapAttributionLabel": "OpenStreetMap സംഭാവന ചെയ്യുന്നവർ, പകർപ്പവകാശം, ലൈസൻസ്",
     "seeAll": "എല്ലാം കാണുക",
     "seeAllSection": "എല്ലാം കാണുക {section}",
     "showMoreOptionsHint": "കൂടുതൽ ഓപ്ഷനുകൾ കാണിക്കുക",
@@ -2418,5 +2417,6 @@
     "callMicrophoneTitle": "കോളുകൾക്കായി നിങ്ങളുടെ മൈക്രോഫോൺ ഉപയോഗിക്കുക",
     "callMicrophoneMessage": "ലോക്ക് സ്ക്രീനിൽ നിന്ന് നിങ്ങൾ മറുപടി നൽകുന്ന കോളുകൾ ഉൾപ്പെടെയുള്ള കോളുകൾക്കായി Pangea Chat-ന് നിങ്ങളുടെ മൈക്രോഫോൺ ആവശ്യമാണ്.",
     "callMicrophoneOffTitle": "നിങ്ങളുടെ കോൾ കണക്റ്റ് ആയില്ല",
-    "callMicrophoneOffMessage": "Pangea Chat-ന് നിങ്ങളുടെ മൈക്രോഫോൺ ഉപയോഗിക്കാൻ കഴിയില്ല. ക്രമീകരണങ്ങളിൽ ഇത് ഓണാക്കാൻ ടാപ്പ് ചെയ്യുക."
+    "callMicrophoneOffMessage": "Pangea Chat-ന് നിങ്ങളുടെ മൈക്രോഫോൺ ഉപയോഗിക്കാൻ കഴിയില്ല. ക്രമീകരണങ്ങളിൽ ഇത് ഓണാക്കാൻ ടാപ്പ് ചെയ്യുക.",
+    "mapCreditsLabel": "മാപ്പ് ക്രെഡിറ്റുകൾ: സ്റ്റേഡിയ മാപ്‌സ്, ഓപ്പൺമാപ്‌ടൈൽസ്, ഓപ്പൺസ്ട്രീറ്റ്മാപ്പ്"
 }

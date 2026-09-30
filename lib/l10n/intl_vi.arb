@@ -7103,7 +7103,6 @@
     "constructLevelFlowers": "Hoa, từ đã thành thạo",
     "filterAndSearch": "Lọc và tìm kiếm",
     "participantsOfTotal": "{filled} trên {total} người chơi",
-    "mapAttributionLabel": "Những người đóng góp OpenStreetMap, bản quyền và giấy phép",
     "seeAll": "Xem tất cả",
     "seeAllSection": "Xem tất cả {section}",
     "showMoreOptionsHint": "hiện thêm tùy chọn",
@@ -7271,5 +7270,6 @@
     "callMicrophoneTitle": "Sử dụng micrô của bạn cho cuộc gọi",
     "callMicrophoneMessage": "Pangea Chat cần micrô của bạn cho các cuộc gọi, bao gồm cả các cuộc gọi bạn trả lời từ màn hình khóa.",
     "callMicrophoneOffTitle": "Cuộc gọi của bạn không kết nối được",
-    "callMicrophoneOffMessage": "Pangea Chat không thể sử dụng micrô của bạn. Nhấn để bật micrô trong Cài đặt."
+    "callMicrophoneOffMessage": "Pangea Chat không thể sử dụng micrô của bạn. Nhấn để bật micrô trong Cài đặt.",
+    "mapCreditsLabel": "Bản quyền bản đồ: Stadia Maps, OpenMapTiles và OpenStreetMap"
 }
