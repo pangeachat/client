@@ -593,6 +593,51 @@ void main() {
     );
   });
 
+  group('backfill resilience', () {
+    test('one recording that throws does not abort the rest', () async {
+      // Finding 6: `_produceOnePeer` can still throw (language resolution,
+      // speech-to-text or the send). One failing recording must NOT abort the
+      // loop and leave every later peer recording unprocessed.
+      // Mutation proof: removing the per-recording try/catch in `_backfillPeers`
+      // lets the first throw abort the loop, so the second half is never posted
+      // -> RED.
+      final recA = CallAudioRecording(
+        eventId: r'$audio_peer_a',
+        senderId: _peer,
+        originServerTs: DateTime.fromMillisecondsSinceEpoch(1000),
+        content: _content(deviceId: 'PEER_A'),
+      );
+      final recB = CallAudioRecording(
+        eventId: r'$audio_peer_b',
+        senderId: _peer,
+        originServerTs: DateTime.fromMillisecondsSinceEpoch(2000),
+        content: _content(deviceId: 'PEER_B'),
+      );
+      var transcribeCount = 0;
+      final h = _Harness();
+      h.discover = (_) async =>
+          WholeCallManifest(resolved: true, recordings: [recA, recB]);
+      h.transcribe =
+          (
+            bytes, {
+            required String l1,
+            required String l2,
+            required int startedAtMs,
+            required int durationMs,
+          }) async {
+            transcribeCount++;
+            if (transcribeCount == 1) throw Exception('stt boom');
+            return [_seg('hola', startedAtMs)];
+          };
+      await h.build().transcribeAtCallEnd(_callKey);
+      // Both recordings were attempted, and the second still posted despite the
+      // first throwing.
+      expect(transcribeCount, 2);
+      expect(h.posts, hasLength(1));
+      expect(h.posts.single.deviceId, 'PEER_B');
+    });
+  });
+
   group('on-demand entry', () {
     test('transcribes one named half now, with no grace', () async {
       final h = _Harness();

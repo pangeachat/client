@@ -5724,6 +5724,35 @@ void main() {
       );
 
       testWidgets(
+        'the Transcribe button is never offered on the viewer\'s OWN half',
+        (tester) async {
+          // Finding 7 (#8792): the on-demand path only produces a PEER's half
+          // (`_produceOnePeer` refuses `spokenBy == self`), so a Transcribe
+          // button on one's OWN absent half can only no-op. Both halves are
+          // absent with an OLD recording (past the transcribing window), so the
+          // gate (subscribed + hasRecording + not transcribing) is otherwise
+          // satisfied for BOTH -- only the own-half guard suppresses it for me.
+          // Mutation: dropping the `half.senderId != me` guard makes the
+          // own-half button appear too (two buttons) -> the findsOneWidget below
+          // -> RED.
+          MatrixState.pangeaController = FakePangeaController(subscribed: true);
+          await pumpWithRecordings(
+            tester,
+            room(),
+            servingByType([audioEvent(_me), audioEvent(_peer)]),
+            // Six minutes past the recordings' epoch-1000ms server time, so
+            // neither half reads as "still transcribing".
+            now: () =>
+                DateTime.fromMillisecondsSinceEpoch(1000 + 6 * 60 * 1000),
+          );
+
+          // Only the peer's absent half offers the button; the viewer's own does
+          // not.
+          expect(find.text('Transcribe'), findsOneWidget);
+        },
+      );
+
+      testWidgets(
         'tapping Transcribe shimmers while running and fills in the half on '
         'success',
         (tester) async {

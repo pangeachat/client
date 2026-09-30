@@ -1965,7 +1965,13 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
               // Task 3 (#8792): the recordings the view already fetches name
               // which speakers have a manifest recording -- `recordingTimes`
               // is keyed by sender exactly for this (see its own doc above).
-              hasRecording: recordingTimes.containsKey(half.senderId),
+              // Never on the VIEWER's OWN half: the on-demand path only produces
+              // a PEER's half (`_produceOnePeer` refuses `spokenBy == self`), so
+              // offering it on one's own absent half is a button that can only
+              // no-op. The viewer's own half is the ordinary call-end flow's job.
+              hasRecording:
+                  half.senderId != me &&
+                  recordingTimes.containsKey(half.senderId),
               onDemandInFlight: _onDemandInFlight.contains(half.senderId),
               onDemandUnavailable: _onDemandUnavailable.contains(half.senderId),
               onTranscribe: () => unawaited(_onTranscribeTapped(half.senderId)),
