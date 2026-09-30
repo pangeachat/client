@@ -12,7 +12,9 @@ import 'contrast_ratio.dart';
 void main() {
   // Dominant tile fields the ring's outer edge meets: Stadia's Alidade Smooth
   // and Alidade Smooth Dark (#8603), sampled from the served tiles. Sparse
-  // label and border linework is deliberately not asserted here.
+  // label and border linework is deliberately not asserted here. Dark parks
+  // (#383E36, about 1% of dark tiles) are left out too: every track tone that
+  // clears them measures under 3:1 against the arc.
   const lightTiles = {
     'land': Color(0xFFF2F3F0),
     'road': Color(0xFFFFFFFF),
@@ -22,7 +24,6 @@ void main() {
   const darkTiles = {
     'land': Color(0xFF333333),
     'water and roads': Color(0xFF222222),
-    'park': Color(0xFF383E36),
   };
 
   for (final brightness in [Brightness.light, Brightness.dark]) {

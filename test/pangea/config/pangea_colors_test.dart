@@ -50,7 +50,7 @@ void main() {
     expect(dark.gold, tone(80));
     expect(dark.goldGraphic, tone(80));
     expect(dark.goldContainer, tone(30));
-    expect(dark.goldTrack, tone(50));
+    expect(dark.goldTrack, tone(53));
     expect(dark.onGoldContainer, tone(90));
     for (final colors in [light, dark]) {
       expect(colors.goldFixed, tone(90));
