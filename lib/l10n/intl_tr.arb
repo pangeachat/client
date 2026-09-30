@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-09-29 11:11:34.931034",
+    "@@last_modified": "2026-09-30 11:27:40.744925",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10276,5 +10276,10 @@
     "courseCodeSaved": "{code} kurs kodu kaydedildi",
     "courseCodeSavedExplanation": "Kaydolun veya giriş yapın, sizi kursunuza ekleyeceğiz.",
     "moderationRefusedContactDetails": "Mesajınız gönderilemedi. Otomatik bir filtre telefon numarası gibi iletişim bilgileri buldu. Lütfen bunları kaldırın ve tekrar deneyin.",
-    "moderationRefusedProfanity": "Mesajınız gönderilemedi. Otomatik bir filtre sohbette izin vermediğimiz bir kelime buldu. Lütfen bunu değiştirin ve tekrar deneyin."
+    "moderationRefusedProfanity": "Mesajınız gönderilemedi. Otomatik bir filtre sohbette izin vermediğimiz bir kelime buldu. Lütfen bunu değiştirin ve tekrar deneyin.",
+    "callTranscriptTranscribeButton": "Metne Çevir",
+    "callTranscriptAudioUnavailable": "{name} adlı kaydın indirilmesi mümkün olmadığından metne çevrilemedi.",
+    "callTranscriptChooseLanguage": "Hangi dil konuşuldu?",
+    "callTranscriptSubscribeForTranscription": "Metne çevirme için abone ol",
+    "unlockCallTranscript": "Çağrı dökümünü aç"
 }

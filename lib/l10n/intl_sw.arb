@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-09-29 11:11:34.423083",
+    "@@last_modified": "2026-09-30 11:27:40.406803",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2383,5 +2383,10 @@
     "courseCodeSaved": "Msimbo wa kozi {code} umefanikiwa kuhifadhiwa",
     "courseCodeSavedExplanation": "Jisajili au ingia na tutakuongeza kwenye kozi yako.",
     "moderationRefusedContactDetails": "Ujumbe wako haukutumwa. Kichujio otomatiki kimepata maelezo ya mawasiliano, kama namba ya simu. Tafadhali yatoe na ujaribu tena.",
-    "moderationRefusedProfanity": "Ujumbe wako haukutumwa. Kichujio otomatiki kimepata neno tusiloruhusu kwenye gumzo. Tafadhali libadilishe na ujaribu tena."
+    "moderationRefusedProfanity": "Ujumbe wako haukutumwa. Kichujio otomatiki kimepata neno tusiloruhusu kwenye gumzo. Tafadhali libadilishe na ujaribu tena.",
+    "callTranscriptTranscribeButton": "Nakili",
+    "callTranscriptAudioUnavailable": "Rekodi iliyohifadhiwa kutoka {name} haikuweza kupakuliwa, kwa hivyo haikuweza kunakiliwa.",
+    "callTranscriptChooseLanguage": "Ni lugha gani ilizungumzwa?",
+    "callTranscriptSubscribeForTranscription": "Jisajili ili upate nakala",
+    "unlockCallTranscript": "Fungua nakala ya simu"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-09-29 11:11:23.137781",
+    "@@last_modified": "2026-09-30 11:27:29.677221",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2383,5 +2383,10 @@
     "courseCodeSaved": "Kursuskode {code} gestoor",
     "courseCodeSavedExplanation": "Registreer of meld aan en ons sal jou by jou kursus voeg.",
     "moderationRefusedContactDetails": "Jou boodskap is nie gestuur nie. 'n Outomatiese filter het kontakbesonderhede, soos 'n telefoonnommer, gevind. Verwyder dit asseblief en probeer weer.",
-    "moderationRefusedProfanity": "Jou boodskap is nie gestuur nie. 'n Outomatiese filter het 'n woord gevind wat ons nie in die klets toelaat nie. Verander dit asseblief en probeer weer."
+    "moderationRefusedProfanity": "Jou boodskap is nie gestuur nie. 'n Outomatiese filter het 'n woord gevind wat ons nie in die klets toelaat nie. Verander dit asseblief en probeer weer.",
+    "callTranscriptTranscribeButton": "Transkribeer",
+    "callTranscriptAudioUnavailable": "Die gestoorde opname van {name} kon nie afgelaai word nie, en kon dus nie getranskribeer word nie.",
+    "callTranscriptChooseLanguage": "Watter taal is gepraat?",
+    "callTranscriptSubscribeForTranscription": "Teken in vir transkripsie",
+    "unlockCallTranscript": "Ontsluit oproep-transkripsie"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-09-29 11:11:35.093636",
+    "@@last_modified": "2026-09-30 11:27:41.352408",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2383,5 +2383,10 @@
     "courseCodeSaved": "کورس کوڈ {code} محفوظ ہو گیا",
     "courseCodeSavedExplanation": "سائن اپ کریں یا لاگ ان کریں اور ہم آپ کو آپ کے کورس میں شامل کر دیں گے۔",
     "moderationRefusedContactDetails": "آپ کا پیغام نہیں بھیجا گیا۔ ایک خودکار فلٹر نے رابطے کی تفصیلات، جیسے کہ فون نمبر، پایا ہے۔ براہ کرم انہیں ہٹا دیں اور دوبارہ کوشش کریں۔",
-    "moderationRefusedProfanity": "آپ کا پیغام نہیں بھیجا گیا۔ ایک خودکار فلٹر نے ایک ایسا لفظ پایا ہے جس کی ہم چیٹ میں اجازت نہیں دیتے۔ براہ کرم اسے تبدیل کریں اور دوبارہ کوشش کریں۔"
+    "moderationRefusedProfanity": "آپ کا پیغام نہیں بھیجا گیا۔ ایک خودکار فلٹر نے ایک ایسا لفظ پایا ہے جس کی ہم چیٹ میں اجازت نہیں دیتے۔ براہ کرم اسے تبدیل کریں اور دوبارہ کوشش کریں۔",
+    "callTranscriptTranscribeButton": "ٹرانسکرائب کریں",
+    "callTranscriptAudioUnavailable": "{name} سے محفوظ کردہ ریکارڈنگ ڈاؤن لوڈ نہیں کی جا سکی، اس لیے اسے ٹرانسکرائب نہیں کیا جا سکا۔",
+    "callTranscriptChooseLanguage": "کون سی زبان بولی گئی تھی؟",
+    "callTranscriptSubscribeForTranscription": "ٹرانسکرپشن کے لیے سبسکرائب کریں",
+    "unlockCallTranscript": "کال ٹرانسکرپٹ کو اَن لاک کریں"
 }

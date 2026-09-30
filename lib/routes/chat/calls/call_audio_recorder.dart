@@ -10,16 +10,13 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_writer.dart';
+import 'package:fluffychat/routes/chat/calls/recording_transcription.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
-import 'package:fluffychat/routes/chat/events/speech_to_text/audio_encoding_enum.dart';
-import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_request_model.dart';
 import 'package:fluffychat/routes/chat/events/streaming_stt/wav_writer.dart';
 
 import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart'
     show ChunkTranscriber;
-import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart'
-    show SpeechToTextResponseModel, WordTiming;
 
 /// Uploads bytes to this homeserver's media repository, returning the `mxc://`
 /// URI they land at. Injected so the recorder is testable without a
@@ -504,7 +501,7 @@ class CallAudioRecorder implements CallAudioRecordingSink {
     this.transcribe,
     this.userL1,
     this.userL2,
-    this.maxSttPieceBytes = _maxSttPieceBytes,
+    this.maxSttPieceBytes = kMaxSttPieceBytes,
     this.maxBytes = _defaultMaxBytes,
     this.maxDuration = _defaultMaxDuration,
     this.deliveryAttempts = _defaultDeliveryAttempts,
@@ -1448,26 +1445,18 @@ class CallAudioRecorder implements CallAudioRecordingSink {
   /// mix is built from, producing the segments [CallRecord] prefers over the
   /// live-chunk transcript.
   ///
-  /// Non-fatal by contract: a missing capability (feature off, or languages
-  /// not wired), an STT failure, an over-length recording, or an empty result
-  /// all yield an empty list, and the caller then keeps the live-chunk
-  /// transcript. It therefore never throws and never blocks or fails the audio
-  /// half.
+  /// A thin adapter over [transcribeRecordingPcm], which holds the actual
+  /// chunking, downsampling, and word-timing merge -- lifted out so the
+  /// whole-call transcriber (#8792) can run the identical STT over a peer's
+  /// downloaded recording, in that peer's language pair. The own path is
+  /// unchanged: this reads the recorder's own [transcribe]/[userL1]/[userL2] and
+  /// [maxSttPieceBytes] and delegates, so `finish` and its tests behave exactly
+  /// as before.
   ///
-  /// The STT copy is downsampled to [_sttSampleRate] (16 kHz mono). Speech STT
-  /// gains nothing above 16 kHz -- it is the capture design's own intended rate
-  /// and what the web half already sends -- and the choreographer caps STT
-  /// audio at 10 MB base64, which a native-rate recording (phones capture 48
-  /// kHz) blows in ~80 s, 422-ing the whole-recording request. Only this STT
-  /// copy is downsampled; the uploaded recording and the mix keep [sampleRate]
-  /// untouched. A recording still over the cap at 16 kHz (a very long call) is
-  /// left to the live half rather than sent to be rejected.
-  ///
-  /// Uses the provider's word list directly ([includeWordTimings], LINEAR16,
-  /// the speaker's own two languages captured at t0): [buildRecordingSegments]
-  /// places each utterance by its own word timing on [startedAtMs] -- the
-  /// recording's device-clock start, the same clock the live path's `atMs` uses
-  /// -- so the reader's per-half clock correction and ordering apply unchanged.
+  /// Non-fatal by contract: a missing capability (feature off, or languages not
+  /// wired) yields an empty list here, and every other failure yields one inside
+  /// [transcribeRecordingPcm], so the caller keeps the live-chunk transcript and
+  /// this never throws or fails the audio half.
   Future<List<TranscriptSegment>> _recordingSegmentsFrom(
     Uint8List pcm,
     int startedAtMs,
@@ -1481,161 +1470,16 @@ class CallAudioRecorder implements CallAudioRecordingSink {
     // All three are wired together or not at all; a partial wiring is not a
     // configuration this runs against.
     if (transcribe == null || l1 == null || l2 == null) return const [];
-    try {
-      // Downsample only the STT copy, and only for mono (every recording here
-      // is mono; a box-average over interleaved stereo would mix the channels).
-      var sttPcm = pcm;
-      var sttRate = sampleRate;
-      if (channels == 1 && sampleRate > _sttSampleRate) {
-        sttPcm = _downsamplePcm16Mono(pcm, sampleRate, _sttSampleRate);
-        sttRate = _sttSampleRate;
-      }
-
-      Future<SpeechToTextResponseModel> transcribePiece(Uint8List piecePcm) {
-        return transcribe(
-          SpeechToTextRequestModel(
-            audioContent: pcm16ToWav(
-              piecePcm,
-              sampleRate: sttRate,
-              channels: channels,
-            ),
-            includeWordTimings: true,
-            config: SpeechToTextAudioConfigModel(
-              encoding: AudioEncodingEnum.linear16,
-              sampleRateHertz: sttRate,
-              userL1: l1,
-              userL2: l2,
-            ),
-          ),
-        );
-      }
-
-      // Cap each piece so its WAV's base64 body stays under the choreographer's
-      // 10 MB limit; a piece must not split a frame (channels*2 bytes), and must
-      // be at least one frame so the piece arithmetic below can never divide by
-      // zero (a cap smaller than a frame is only reachable via a test override).
-      final frame = channels * 2;
-      final maxPieceBytes = max(
-        frame,
-        maxSttPieceBytes - (maxSttPieceBytes % frame),
-      );
-      final pieceCount = (sttPcm.length + maxPieceBytes - 1) ~/ maxPieceBytes;
-
-      // The common case -- a call short enough for one request -- takes the
-      // single-response path unchanged, including its no-word-timings fallback.
-      if (pieceCount <= 1) {
-        return buildRecordingSegments(
-          await transcribePiece(sttPcm),
-          startedAtMs,
-          durationMs,
-        );
-      }
-
-      // A long call: transcribe it in cap-sized pieces and merge their word
-      // timings onto ONE recording timeline. Deterministic over the complete
-      // recording -- every piece is present, so nothing is dropped the way a
-      // live 45 s chunk can be. A piece with a usable transcript but no timings
-      // cannot be placed, so it abandons the whole recording-based attempt (the
-      // live half, or the server backstop, then stands) rather than emit a
-      // partial half.
-      final merged = <WordTiming>[];
-      final texts = <String>[];
-      final msPerByte = 1000 / (sttRate * frame);
-      for (var offset = 0; offset < sttPcm.length; offset += maxPieceBytes) {
-        final end = offset + maxPieceBytes < sttPcm.length
-            ? offset + maxPieceBytes
-            : sttPcm.length;
-        final pieceStartMs = (offset * msPerByte).round();
-        final pieceDurationMs = ((end - offset) * msPerByte).round();
-        final response = await transcribePiece(
-          Uint8List.sublistView(sttPcm, offset, end),
-        );
-        // A piece the provider read as silence contributes no words -- a real
-        // quiet stretch, not a loss.
-        if (!response.hasUsableTranscript) continue;
-        final transcript = response.transcript;
-        final timings = transcript.wordTimings;
-        if (timings == null || timings.isEmpty) return const [];
-        // A timing is kept only when it lies within THIS piece's own
-        // [0, pieceDurationMs], mirroring how the single-response path bounds to
-        // the whole recording. An out-of-piece value (a negative or overlong
-        // provider timestamp) becomes null so its word is floor-placed, never a
-        // spurious in-range absolute time that the offset would otherwise sneak
-        // past the whole-recording bound.
-        int? shift(int? at) => (at == null || at < 0 || at > pieceDurationMs)
-            ? null
-            : at + pieceStartMs;
-        for (final w in timings) {
-          merged.add(
-            WordTiming(
-              word: w.word,
-              confidence: w.confidence,
-              startTimeMs: shift(w.startTimeMs),
-              endTimeMs: shift(w.endTimeMs),
-            ),
-          );
-        }
-        texts.add(transcript.text);
-      }
-      return buildRecordingSegmentsFromTimings(
-        merged,
-        texts.join(' '),
-        startedAtMs,
-        durationMs,
-      );
-    } catch (e, s) {
-      Logs().w(
-        'Recording-based call transcription failed; the live transcript stands',
-        e,
-        s,
-      );
-      return const [];
-    }
-  }
-
-  /// The rate the STT copy of the recording is downsampled to. 16 kHz mono is
-  /// what speech-to-text providers accept natively (see `captureSampleRate` in
-  /// call_capture.dart) and keeps the request under the choreographer's cap.
-  static const _sttSampleRate = 16000;
-
-  /// The most PCM one STT piece may carry. Its WAV (this + a 44-byte header)
-  /// must base64-encode under the choreographer's 10 MB (10485760 byte)
-  /// audio_content cap; base64 inflates by 4/3, so the raw ceiling is ~7.86 MB
-  /// and this leaves margin for the header and rounding. A call longer than one
-  /// piece (~3.6 min at 16 kHz mono) is transcribed in several and merged, so
-  /// there is no whole-call length limit. Frame alignment is applied at use.
-  static const _maxSttPieceBytes = 7000000;
-
-  /// Downsamples mono PCM16 [pcm] from [fromRate] to [toRate] by averaging each
-  /// output sample's span of input samples -- a box-filter decimation that
-  /// low-passes as it resamples, so it does not alias the way naive
-  /// sample-dropping would. Adequate for speech STT (not a mastering-grade
-  /// resampler); the uploaded recording and the mix never go through it.
-  /// Returns [pcm] unchanged when [fromRate] <= [toRate].
-  static Uint8List _downsamplePcm16Mono(
-    Uint8List pcm,
-    int fromRate,
-    int toRate,
-  ) {
-    if (fromRate <= toRate) return pcm;
-    final input = Int16List.view(
-      pcm.buffer,
-      pcm.offsetInBytes,
-      pcm.lengthInBytes ~/ 2,
+    return transcribeRecordingPcm(
+      pcm,
+      startedAtMs: startedAtMs,
+      sampleRate: sampleRate,
+      channels: channels,
+      durationMs: durationMs,
+      transcribe: transcribe,
+      l1: l1,
+      l2: l2,
+      maxSttPieceBytes: maxSttPieceBytes,
     );
-    final outLen = (input.length * toRate) ~/ fromRate;
-    final out = Int16List(outLen);
-    for (var j = 0; j < outLen; j++) {
-      final start = (j * fromRate) ~/ toRate;
-      var end = ((j + 1) * fromRate) ~/ toRate;
-      if (end <= start) end = start + 1;
-      if (end > input.length) end = input.length;
-      var sum = 0;
-      for (var i = start; i < end; i++) {
-        sum += input[i];
-      }
-      out[j] = (sum ~/ (end - start));
-    }
-    return Uint8List.view(out.buffer, 0, out.lengthInBytes);
   }
 }

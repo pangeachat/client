@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-09-29 11:11:25.415197",
+    "@@last_modified": "2026-09-30 11:27:30.838274",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2383,5 +2383,10 @@
     "courseCodeSaved": "Cod cwrs {code} wedi'i gadw",
     "courseCodeSavedExplanation": "Cofrestrwch neu mewngofnodwch a byddwn yn eich ychwanegu at eich cwrs.",
     "moderationRefusedContactDetails": "Ni chafodd eich neges ei hanfon. Canfu hidlydd awtomatig fanylion cyswllt, fel rhif ffôn. Tynnwch nhw a cheisiwch eto.",
-    "moderationRefusedProfanity": "Ni chafodd eich neges ei hanfon. Canfu hidlydd awtomatig air nad ydym yn ei ganiatáu mewn sgwrs. Newidiwch ef a cheisiwch eto."
+    "moderationRefusedProfanity": "Ni chafodd eich neges ei hanfon. Canfu hidlydd awtomatig air nad ydym yn ei ganiatáu mewn sgwrs. Newidiwch ef a cheisiwch eto.",
+    "callTranscriptTranscribeButton": "Trawsgrifio",
+    "callTranscriptAudioUnavailable": "Ni ellid lawrlwytho'r recordiad a arbedwyd o {name}, felly ni ellid ei drawsgrifio.",
+    "callTranscriptChooseLanguage": "Pa iaith gafodd ei siarad?",
+    "callTranscriptSubscribeForTranscription": "Tanysgrifiwch ar gyfer trawsgrifio",
+    "unlockCallTranscript": "Datgloi trawsgrifiad galwad"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-29 11:11:34.077198",
+    "@@last_modified": "2026-09-30 11:27:40.217437",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10493,5 +10493,10 @@
     "courseCodeSaved": "Kurskod {code} sparad",
     "courseCodeSavedExplanation": "Registrera dig eller logga in så lägger vi till dig i din kurs.",
     "moderationRefusedContactDetails": "Ditt meddelande skickades inte. Ett automatiskt filter hittade kontaktuppgifter, som ett telefonnummer. Ta bort dem och försök igen.",
-    "moderationRefusedProfanity": "Ditt meddelande skickades inte. Ett automatiskt filter hittade ett ord som vi inte tillåter i chatten. Ändra det och försök igen."
+    "moderationRefusedProfanity": "Ditt meddelande skickades inte. Ett automatiskt filter hittade ett ord som vi inte tillåter i chatten. Ändra det och försök igen.",
+    "callTranscriptTranscribeButton": "Transkribera",
+    "callTranscriptAudioUnavailable": "Den sparade inspelningen från {name} kunde inte laddas ner, så den kunde inte transkriberas.",
+    "callTranscriptChooseLanguage": "Vilket språk talades?",
+    "callTranscriptSubscribeForTranscription": "Prenumerera för transkription",
+    "unlockCallTranscript": "Lås upp samtalstranskription"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-09-29 11:11:29.720427",
+    "@@last_modified": "2026-09-30 11:27:36.243879",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2383,5 +2383,10 @@
     "courseCodeSaved": "{code} курс коду сакталды",
     "courseCodeSavedExplanation": "Катталыңыз же кириңиз, биз сизди курсуңузга кошо алабыз.",
     "moderationRefusedContactDetails": "Сиздин билдирүүңүз жөнөтүлгөн жок. Автоматтык чыпка телефон номери сыяктуу байланыш маалыматтарын тапты. Сураныч, аларды өчүрүп, кайра аракет кылыңыз.",
-    "moderationRefusedProfanity": "Сиздин билдирүүңүз жөнөтүлгөн жок. Автоматтык чыпка чатта уруксат берилбеген сөздү тапты. Сураныч, аны өзгөртүп, кайра аракет кылыңыз."
+    "moderationRefusedProfanity": "Сиздин билдирүүңүз жөнөтүлгөн жок. Автоматтык чыпка чатта уруксат берилбеген сөздү тапты. Сураныч, аны өзгөртүп, кайра аракет кылыңыз.",
+    "callTranscriptTranscribeButton": "Транскрипциялоо",
+    "callTranscriptAudioUnavailable": "{name} жаздырылган үнүн жүктөп алуу мүмкүн болгон жок, андыктан транскрипциялоо мүмкүн болгон жок.",
+    "callTranscriptChooseLanguage": "Кайсы тилде сүйлөштү?",
+    "callTranscriptSubscribeForTranscription": "Транскрипция үчүн жазылуу",
+    "unlockCallTranscript": "Чакыруу транскрипциясын ачуу"
 }

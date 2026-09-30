@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-09-29 11:11:27.767004",
+    "@@last_modified": "2026-09-30 11:27:33.884447",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2383,5 +2383,10 @@
     "courseCodeSaved": "Námskeiðskóði {code} vistaður",
     "courseCodeSavedExplanation": "Skráðu þig eða skráðu þig inn og við munum bæta þér við námskeiðið þitt.",
     "moderationRefusedContactDetails": "Skilaboðin þín voru ekki send. Sjálfvirk sía fann samskiptaupplýsingar, eins og símanúmer. Vinsamlegast fjarlægðu þær og reyndu aftur.",
-    "moderationRefusedProfanity": "Skilaboðin þín voru ekki send. Sjálfvirk sía fann orð sem við leyfum ekki í spjalli. Vinsamlegast breyttu því og reyndu aftur."
+    "moderationRefusedProfanity": "Skilaboðin þín voru ekki send. Sjálfvirk sía fann orð sem við leyfum ekki í spjalli. Vinsamlegast breyttu því og reyndu aftur.",
+    "callTranscriptTranscribeButton": "Umrita",
+    "callTranscriptAudioUnavailable": "Ekki tókst að hlaða niður vistuðu upptökunni frá {name}, svo ekki var hægt að umrita hana.",
+    "callTranscriptChooseLanguage": "Hvaða tungumál var talað?",
+    "callTranscriptSubscribeForTranscription": "Gerast áskrifandi að umritun",
+    "unlockCallTranscript": "Aflæsa umritun símtals"
 }

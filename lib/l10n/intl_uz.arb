@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-09-29 11:11:35.180364",
+    "@@last_modified": "2026-09-30 11:27:41.319673",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9979,5 +9979,10 @@
     "courseCodeSaved": "Kurs kodi {code} saqlandi",
     "courseCodeSavedExplanation": "Roʻyxatdan oʻting yoki tizimga kiring va biz sizni kursingizga qoʻshamiz.",
     "moderationRefusedContactDetails": "Xabaringiz yuborilmadi. Avtomatik filtr telefon raqami kabi aloqa ma'lumotlarini topdi. Iltimos, ularni olib tashlang va qayta urinib ko'ring.",
-    "moderationRefusedProfanity": "Xabaringiz yuborilmadi. Avtomatik filtr chatda ruxsat etilmagan so'zni topdi. Iltimos, uni o'zgartiring va qayta urinib ko'ring."
+    "moderationRefusedProfanity": "Xabaringiz yuborilmadi. Avtomatik filtr chatda ruxsat etilmagan so'zni topdi. Iltimos, uni o'zgartiring va qayta urinib ko'ring.",
+    "callTranscriptTranscribeButton": "Transkripsiya qilish",
+    "callTranscriptAudioUnavailable": "{name}dan saqlangan yozuvni yuklab bo‘lmadi, shuning uchun uni transkripsiya qilib bo‘lmadi.",
+    "callTranscriptChooseLanguage": "Qaysi tilda gapirilgan?",
+    "callTranscriptSubscribeForTranscription": "Transkripsiya uchun obuna bo‘lish",
+    "unlockCallTranscript": "Qo‘ng‘iroq transkriptini ochish"
 }

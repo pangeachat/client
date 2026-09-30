@@ -1334,7 +1334,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-09-29 11:11:24.088112",
+    "@@last_modified": "2026-09-30 11:27:30.639876",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10895,5 +10895,10 @@
     "courseCodeSaved": "Kursuskode {code} gemt",
     "courseCodeSavedExplanation": "Tilmeld dig eller log ind, så tilføjer vi dig til dit kursus.",
     "moderationRefusedContactDetails": "Din besked blev ikke sendt. Et automatisk filter fandt kontaktoplysninger, f.eks. et telefonnummer. Fjern dem, og prøv igen.",
-    "moderationRefusedProfanity": "Din besked blev ikke sendt. Et automatisk filter fandt et ord, vi ikke tillader i chatten. Ret det, og prøv igen."
+    "moderationRefusedProfanity": "Din besked blev ikke sendt. Et automatisk filter fandt et ord, vi ikke tillader i chatten. Ret det, og prøv igen.",
+    "callTranscriptTranscribeButton": "Transskriber",
+    "callTranscriptAudioUnavailable": "Den gemte optagelse fra {name} kunne ikke downloades og kunne derfor ikke transskriberes.",
+    "callTranscriptChooseLanguage": "Hvilket sprog blev der talt?",
+    "callTranscriptSubscribeForTranscription": "Abonnér for transskription",
+    "unlockCallTranscript": "Lås op for opkaldstranskription"
 }

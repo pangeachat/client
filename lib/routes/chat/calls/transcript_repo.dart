@@ -55,6 +55,26 @@ Future<CallTranscript> fetchCallTranscript({
   /// discard a real half in silence.
   bool participantsKnown = true,
   bool encrypted = false,
+
+  /// Resolves the provenance of the PEER-PRODUCED halves among [candidates],
+  /// returning a [ProvenanceState] per candidate event id for
+  /// [assembleTranscript] to consume.
+  ///
+  /// Injected rather than reached for, exactly as [fetch] is, and for the same
+  /// reason: the verdict needs the call's audio manifest and a per-event fetch,
+  /// which a test must be able to stand in for. It is handed the parsed
+  /// candidates because only this function has read them off the wire.
+  ///
+  /// ABSENT is the legacy path. With no resolver, no `spokenBy` claim can be
+  /// honoured, so every candidate that carries one is left in
+  /// [ProvenanceState.pendingTransient] by assembly's own default — held out of
+  /// the words, never collapsed to its writer. A read with no peer halves at all
+  /// (every candidate authentic) is wholly unaffected whether this is set or
+  /// not, which is what keeps the flag-off client's behaviour identical.
+  Future<Map<String, ProvenanceState>> Function(
+    List<TranscriptCandidate> candidates,
+  )?
+  resolveProvenance,
   int maxPages = kMaxRelationPages,
   int maxEvents = kMaxRelationEvents,
 }) async {
@@ -131,10 +151,20 @@ Future<CallTranscript> fetchCallTranscript({
       candidates.add(
         TranscriptCandidate(
           senderId: event.senderId,
+          // The transcript event's own id: the deterministic final tie-break in
+          // the cross-writer dedup order, and the key a provenance verdict is
+          // computed against.
+          eventId: event.eventId,
           // The event's SENDER is the account and the content's device id is
           // the recorder, and assembly needs both: two of one learner's devices
           // in one call send two events with the same sender.
           deviceId: content.deviceId,
+          // Whose speech this half claims to be, and the audio it was
+          // transcribed from, when the writer is not the speaker. Carried
+          // untouched for the provenance resolver to rule on; absent on an
+          // authentic half, which assembly treats as the sender's own.
+          spokenBy: content.spokenBy,
+          sourceAudioEventId: content.sourceAudioEventId,
           originServerTs: event.originServerTs.millisecondsSinceEpoch,
           segments: content.segments,
           accounting: content.accounting,
@@ -170,10 +200,42 @@ Future<CallTranscript> fetchCallTranscript({
     if (seen >= maxEvents) break;
   }
 
+  // Peer-produced halves -- those naming a speaker other than their writer --
+  // need their provenance resolved against the call's audio manifest before
+  // assembly can attribute them. Authentic halves need none, so the resolver is
+  // invoked ONLY when a peer claim is actually present: a call with no peer
+  // halves costs no manifest read whether or not a resolver was supplied, which
+  // is every legacy and flag-off read. With no resolver but a peer claim
+  // present, the map is empty and assembly holds that claim out as pending --
+  // never its writer's -- which is the safe direction.
+  //
+  // A THROW falls back to that same safe direction. The production resolver
+  // reaches the network (the audio manifest fetch and a per-event fetch), and
+  // only its per-event fetches catch their own failure -- the manifest relations
+  // fetch can still throw. Letting that propagate would fail the WHOLE read and
+  // hide the AUTHENTIC halves too, telling both speakers the other said nothing
+  // off a read that merely could not check provenance. So it is caught here and
+  // treated as no verdict: every peer claim held pending, every authentic half
+  // rendered.
+  var provenance = const <String, ProvenanceState>{};
+  if (resolveProvenance != null && candidates.any((c) => c.spokenBy != null)) {
+    try {
+      provenance = await resolveProvenance(candidates);
+    } catch (e, s) {
+      Logs().w(
+        'Call transcript provenance could not be resolved on $callKey; '
+        'holding every peer claim pending and rendering the authentic halves',
+        e,
+        s,
+      );
+    }
+  }
+
   final transcript = assembleTranscript(
     candidates: candidates,
     expectedSenders: expectedSenders,
     participantsKnown: participantsKnown,
+    provenance: provenance,
     // An encrypted room is never a read this reader may conclude from,
     // whatever the server said about paging: we reached the end of a list we
     // could not read. It travels as ITSELF and is no longer folded into

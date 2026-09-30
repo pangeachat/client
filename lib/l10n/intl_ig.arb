@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-09-29 11:11:27.924805",
+    "@@last_modified": "2026-09-30 11:27:34.422414",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2383,5 +2383,10 @@
     "courseCodeSaved": "Echekwara koodu nkuzi {code}",
     "courseCodeSavedExplanation": "Debanye aha ma ọ bụ banye ma anyị ga-etinye gị na nkuzi gị.",
     "moderationRefusedContactDetails": "Eziteghị ozi gị. Ihe nzacha akpaaka chọtara nkọwa kọntaktị, dị ka nọmba ekwentị. Biko wepụ ha wee nwaa ọzọ.",
-    "moderationRefusedProfanity": "Eziteghị ozi gị. Ihe nzacha akpaaka chọtara okwu anyị na-anaghị ekwe ka ọ dị na nkata. Biko gbanwee ya wee nwaa ọzọ."
+    "moderationRefusedProfanity": "Eziteghị ozi gị. Ihe nzacha akpaaka chọtara okwu anyị na-anaghị ekwe ka ọ dị na nkata. Biko gbanwee ya wee nwaa ọzọ.",
+    "callTranscriptTranscribeButton": "Deegharịta",
+    "callTranscriptAudioUnavailable": "Enweghị ike ibudata ndekọ echekwara site na {name}, yabụ enweghị ike idegharị ya.",
+    "callTranscriptChooseLanguage": "Kedu asụsụ e kwuru?",
+    "callTranscriptSubscribeForTranscription": "Denye aha maka idegharị",
+    "unlockCallTranscript": "Mepee ederede oku"
 }

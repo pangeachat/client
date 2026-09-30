@@ -3093,7 +3093,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-09-29 11:11:27.960773",
+    "@@last_modified": "2026-09-30 11:27:34.051003",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10607,5 +10607,10 @@
     "courseCodeSaved": "Cód cúrsa {code} sábháilte",
     "courseCodeSavedExplanation": "Cláraigh nó logáil isteach agus cuirfimid le do chúrsa thú.",
     "moderationRefusedContactDetails": "Níor seoladh do theachtaireacht. Fuair scagaire uathoibríoch sonraí teagmhála, cosúil le huimhir theileafóin. Bain iad le do thoil agus bain triail eile as.",
-    "moderationRefusedProfanity": "Níor seoladh do theachtaireacht. Fuair scagaire uathoibríoch focal nach gceadaímid sa chomhrá. Athraigh é le do thoil agus bain triail eile as."
+    "moderationRefusedProfanity": "Níor seoladh do theachtaireacht. Fuair scagaire uathoibríoch focal nach gceadaímid sa chomhrá. Athraigh é le do thoil agus bain triail eile as.",
+    "callTranscriptTranscribeButton": "Trascríobh",
+    "callTranscriptAudioUnavailable": "Níorbh fhéidir an taifeadadh sábháilte ó {name} a íoslódáil, mar sin níorbh fhéidir é a thrascríobh.",
+    "callTranscriptChooseLanguage": "Cén teanga a labhraíodh?",
+    "callTranscriptSubscribeForTranscription": "Liostáil le haghaidh trascríofa",
+    "unlockCallTranscript": "Díghlasáil trascríbhinn glaonna"
 }

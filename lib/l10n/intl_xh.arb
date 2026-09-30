@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-09-29 11:11:36.030969",
+    "@@last_modified": "2026-09-30 11:27:42.010159",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2383,5 +2383,10 @@
     "courseCodeSaved": "Ikhowudi yekhosi {code} igciniwe",
     "courseCodeSavedExplanation": "Bhalisa okanye ungene kwaye siza kukongeza kwikhosi yakho.",
     "moderationRefusedContactDetails": "Umyalezo wakho awuthunyelwanga. Isihluzi esizenzekelayo sifumene iinkcukacha zoqhagamshelwano, njengenombolo yefowuni. Nceda uzisuse uze uphinde uzame.",
-    "moderationRefusedProfanity": "Umyalezo wakho awuthunyelwanga. Isihluzi esizenzekelayo sifumene igama esingalivumeli kwincoko. Nceda ulitshintshe uze uphinde uzame."
+    "moderationRefusedProfanity": "Umyalezo wakho awuthunyelwanga. Isihluzi esizenzekelayo sifumene igama esingalivumeli kwincoko. Nceda ulitshintshe uze uphinde uzame.",
+    "callTranscriptTranscribeButton": "Bhala phantsi",
+    "callTranscriptAudioUnavailable": "Ukuqoshwa okugciniweyo okuvela ku-{name} akukwazanga ukukhutshelwa, ngoko ke akukwazanga ukubhalwa phantsi.",
+    "callTranscriptChooseLanguage": "Loluphi ulwimi oluthethweyo?",
+    "callTranscriptSubscribeForTranscription": "Bhalisa ukuze ufumane ukubhalwa phantsi",
+    "unlockCallTranscript": "Vula umbhalo wefowuni"
 }

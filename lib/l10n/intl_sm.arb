@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-09-29 11:11:34.040511",
+    "@@last_modified": "2026-09-30 11:27:39.789100",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2383,5 +2383,10 @@
     "courseCodeSaved": "Code kosi {code} ua sefe",
     "courseCodeSavedExplanation": "Saini i luga pe saini i totonu ma o le a matou fa'aopoopoina oe i lau kosi.",
     "moderationRefusedContactDetails": "E leʻi lafoina lau feʻau. Na maua e se faamama otometi faʻamatalaga faʻafesoʻotaʻi, e pei o se numera telefoni. Faʻamolemole aveese ma toe taumafai.",
-    "moderationRefusedProfanity": "E leʻi lafoina lau feʻau. Na maua e se faamama otometi se upu matou te le faʻatagaina i talanoaga. Faʻamolemole sui ma toe taumafai."
+    "moderationRefusedProfanity": "E leʻi lafoina lau feʻau. Na maua e se faamama otometi se upu matou te le faʻatagaina i talanoaga. Faʻamolemole sui ma toe taumafai.",
+    "callTranscriptTranscribeButton": "Fa'aliliu",
+    "callTranscriptAudioUnavailable": "E le'i mafai ona la'u mai le pu'eina na sefe mai ia {name}, o lea e le'i mafai ai ona fa'aliliu.",
+    "callTranscriptChooseLanguage": "O le a le gagana na tautalagia?",
+    "callTranscriptSubscribeForTranscription": "Lesitala mo le fa'aliliuga",
+    "unlockCallTranscript": "Tatala le fa'aliliuga o le vala'au"
 }

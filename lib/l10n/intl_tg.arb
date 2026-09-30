@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-09-29 11:11:34.936441",
+    "@@last_modified": "2026-09-30 11:27:41.054707",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2383,5 +2383,10 @@
     "courseCodeSaved": "Рамзи курс {code} захира шуд",
     "courseCodeSavedExplanation": "Сабти ном кунед ё ворид шавед ва мо шуморо ба курси шумо илова мекунем.",
     "moderationRefusedContactDetails": "Паёми шумо фиристода нашуд. Филтри худкор маълумоти тамос, ба монанди рақами телефонро пайдо кард. Лутфан онҳоро нест кунед ва дубора кӯшиш кунед.",
-    "moderationRefusedProfanity": "Паёми шумо фиристода нашуд. Филтри худкор калимаеро пайдо кард, ки мо дар чат иҷозат намедиҳем. Лутфан онро иваз кунед ва дубора кӯшиш кунед."
+    "moderationRefusedProfanity": "Паёми шумо фиристода нашуд. Филтри худкор калимаеро пайдо кард, ки мо дар чат иҷозат намедиҳем. Лутфан онро иваз кунед ва дубора кӯшиш кунед.",
+    "callTranscriptTranscribeButton": "Транскрипт кунед",
+    "callTranscriptAudioUnavailable": "Сабти захирашуда аз {name} зеркашӣ нашуд, бинобар ин онро транскрипт кардан ғайриимкон аст.",
+    "callTranscriptChooseLanguage": "Бо кадом забон гуфтугӯ шуд?",
+    "callTranscriptSubscribeForTranscription": "Барои транскрипсия обуна шавед",
+    "unlockCallTranscript": "Транскрипти зангро кушоед"
 }

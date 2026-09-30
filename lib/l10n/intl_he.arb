@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-29 11:11:26.253932",
+    "@@last_modified": "2026-09-30 11:27:32.709366",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10889,5 +10889,10 @@
     "courseCodeSaved": "קוד קורס {code} נשמר",
     "courseCodeSavedExplanation": "הירשם או התחבר ואנו נוסיף אותך לקורס שלך.",
     "moderationRefusedContactDetails": "ההודעה שלך לא נשלחה. מסנן אוטומטי זיהה פרטי התקשרות, כמו מספר טלפון. אנא הסר אותם ונסה שוב.",
-    "moderationRefusedProfanity": "ההודעה שלך לא נשלחה. מסנן אוטומטי זיהה מילה שאנו לא מאפשרים בצ'אט. אנא שנה אותה ונסה שוב."
+    "moderationRefusedProfanity": "ההודעה שלך לא נשלחה. מסנן אוטומטי זיהה מילה שאנו לא מאפשרים בצ'אט. אנא שנה אותה ונסה שוב.",
+    "callTranscriptTranscribeButton": "תמלול",
+    "callTranscriptAudioUnavailable": "ההקלטה השמורה מ{name} לא ניתנת להורדה, ולכן לא ניתן לתמלל אותה.",
+    "callTranscriptChooseLanguage": "באיזו שפה דיברתם?",
+    "callTranscriptSubscribeForTranscription": "הירשם לתימלול",
+    "unlockCallTranscript": "פתח את תמלול השיחה"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-09-29 11:11:35.805552",
+    "@@last_modified": "2026-09-30 11:27:41.395282",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2383,5 +2383,10 @@
     "courseCodeSaved": "كۇرس كودى {code} ساقلاندى",
     "courseCodeSavedExplanation": "تىزىملىتىڭ ياكى كىرىڭ، بىز سىزنى كۇرسىڭىزغا قوشىمىز.",
     "moderationRefusedContactDetails": "ئۇچۇرىڭىز ئەۋەتىلمىدى. ئاپتوماتىك سۈزگۈچ تېلېفون نومۇرىغا ئوخشاش ئالاقىلىشىش ئۇچۇرلىرىنى بايقىدى. ئۇلارنى ئۆچۈرۈپ قايتا سىناڭ.",
-    "moderationRefusedProfanity": "ئۇچۇرىڭىز ئەۋەتىلمىدى. ئاپتوماتىك سۈزگۈچ پاراڭدا يول قويمايدىغان سۆزنى بايقىدى. ئۇنى ئۆزگەرتىپ قايتا سىناڭ."
+    "moderationRefusedProfanity": "ئۇچۇرىڭىز ئەۋەتىلمىدى. ئاپتوماتىك سۈزگۈچ پاراڭدا يول قويمايدىغان سۆزنى بايقىدى. ئۇنى ئۆزگەرتىپ قايتا سىناڭ.",
+    "callTranscriptTranscribeButton": "تەرجىمە قىلىش",
+    "callTranscriptAudioUnavailable": "{name} دىن ساقلانغان خاتىرە چۈشۈرۈلمىدى، شۇڭا ئۇنى تەرجىمە قىلغىلى بولمىدى.",
+    "callTranscriptChooseLanguage": "قايسى تىلدا سۆزلەنگەن؟",
+    "callTranscriptSubscribeForTranscription": "تەرجىمە قىلىش ئۈچۈن مۇشتەرى بولۇڭ",
+    "unlockCallTranscript": "تېلېفون خاتىرىسىنى ئېچىش"
 }

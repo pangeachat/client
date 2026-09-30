@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-09-29 11:11:26.797423",
+    "@@last_modified": "2026-09-30 11:27:33.095592",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2383,5 +2383,10 @@
     "courseCodeSaved": "Kòd kou {code} anrejistre",
     "courseCodeSavedExplanation": "Enskri oswa konekte epi n ap ajoute ou nan kou ou.",
     "moderationRefusedContactDetails": "Mesaj ou a pa t voye. Yon filtè otomatik detekte enfòmasyon kontak, tankou yon nimewo telefòn. Tanpri retire yo epi eseye ankò.",
-    "moderationRefusedProfanity": "Mesaj ou a pa t voye. Yon filtè otomatik detekte yon mo nou pa pèmèt nan chat la. Tanpri chanje l epi eseye ankò."
+    "moderationRefusedProfanity": "Mesaj ou a pa t voye. Yon filtè otomatik detekte yon mo nou pa pèmèt nan chat la. Tanpri chanje l epi eseye ankò.",
+    "callTranscriptTranscribeButton": "Transkri",
+    "callTranscriptAudioUnavailable": "Anrejistreman ki te sove a soti nan {name} pa t ka telechaje, kidonk li pa t ka transkri.",
+    "callTranscriptChooseLanguage": "Ki lang yo te pale?",
+    "callTranscriptSubscribeForTranscription": "Abòne pou transkripsyon",
+    "unlockCallTranscript": "Debloke transkripsyon apèl la"
 }

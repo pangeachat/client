@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-29 11:11:26.950288",
+    "@@last_modified": "2026-09-30 11:27:33.763513",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10048,5 +10048,10 @@
     "courseCodeSaved": "Kode kursus {code} tersimpan",
     "courseCodeSavedExplanation": "Daftar atau masuk dan kami akan menambahkan Anda ke kursus Anda.",
     "moderationRefusedContactDetails": "Pesan Anda tidak terkirim. Filter otomatis menemukan detail kontak, seperti nomor telepon. Harap hapus dan coba lagi.",
-    "moderationRefusedProfanity": "Pesan Anda tidak terkirim. Filter otomatis menemukan kata yang tidak kami izinkan dalam obrolan. Harap ubah dan coba lagi."
+    "moderationRefusedProfanity": "Pesan Anda tidak terkirim. Filter otomatis menemukan kata yang tidak kami izinkan dalam obrolan. Harap ubah dan coba lagi.",
+    "callTranscriptTranscribeButton": "Transkripsikan",
+    "callTranscriptAudioUnavailable": "Rekaman tersimpan dari {name} tidak dapat diunduh, sehingga tidak dapat ditranskripsikan.",
+    "callTranscriptChooseLanguage": "Bahasa apa yang digunakan?",
+    "callTranscriptSubscribeForTranscription": "Berlangganan untuk transkripsi",
+    "unlockCallTranscript": "Buka transkrip panggilan"
 }

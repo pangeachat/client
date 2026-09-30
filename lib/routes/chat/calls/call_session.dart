@@ -22,6 +22,7 @@ import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart';
 import 'package:fluffychat/routes/chat/calls/ring_player.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_writer.dart';
+import 'package:fluffychat/routes/chat/calls/whole_call_transcriber.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 
 import 'package:matrix/matrix.dart'
@@ -189,6 +190,15 @@ class CallSession extends ChangeNotifier {
     required String userL2,
     required CallAnalyticsSink analytics,
     required void Function(CallSession) onReleased,
+
+    /// Whether the invoking user is subscribed, read LIVE at run time (never
+    /// cached), and how a peer's `(l1, l2)` languages resolve. Both are the
+    /// whole-call transcriber's controller-facing seams, supplied by the widget
+    /// layer that holds those controllers; null on a path that does not wire the
+    /// feature (a test, or before the controllers exist), which leaves the
+    /// transcriber unwired and the call byte-for-byte as before.
+    bool Function()? isSubscribed,
+    Future<({String? l1, String? l2})> Function(String userId)? peerLanguages,
     String? notificationEventId,
     String? rejoinAnchor,
     DateTime? rejoinSince,
@@ -328,6 +338,22 @@ class CallSession extends ChangeNotifier {
           )
         : sendTranscriptEvent;
 
+    // The whole-call transcriber (#8792), wired only when the recording-based
+    // transcript feature is on AND the widget layer supplied the controller
+    // seams. Off (the default), or in a test that does not pass them, this stays
+    // null and CallRecord's own-half flow is byte-for-byte unchanged. When wired,
+    // the transcriber still gates itself on the flag and the invoker's LIVE
+    // subscription at run time, so building it here commits to nothing.
+    final wholeCallTranscriber =
+        recordingTranscript && isSubscribed != null && peerLanguages != null
+        ? WholeCallTranscriber.forCall(
+            room: room,
+            transcribe: transcribe,
+            isSubscribed: isSubscribed,
+            peerLanguages: peerLanguages,
+          )
+        : null;
+
     final record =
         recordOverride ??
         CallRecord(
@@ -435,6 +461,9 @@ class CallSession extends ChangeNotifier {
           recordingSegments: recordingTranscript
               ? () => audioRecorder.recordingSegments
               : null,
+          // Runs the peer backfill once this device's own half is posted. Null
+          // when the feature is unwired, which keeps the record's flow unchanged.
+          backfillPeerTranscripts: wholeCallTranscriber?.transcribeAtCallEnd,
           analytics: analytics,
         );
     return CallSession._(

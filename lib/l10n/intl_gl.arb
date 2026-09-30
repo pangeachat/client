@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-09-29 11:11:25.907767",
+    "@@last_modified": "2026-09-30 11:27:31.882472",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9975,5 +9975,10 @@
     "courseCodeSaved": "Código do curso {code} gardado",
     "courseCodeSavedExplanation": "Rexístrate ou inicia sesión e engadirémoste ao teu curso.",
     "moderationRefusedContactDetails": "A túa mensaxe non foi enviada. Un filtro automático atopou detalles de contacto, como un número de teléfono. Elimínaos e téntao de novo.",
-    "moderationRefusedProfanity": "A túa mensaxe non foi enviada. Un filtro automático atopou unha palabra que non permitimos no chat. Cámbiaa e téntao de novo."
+    "moderationRefusedProfanity": "A túa mensaxe non foi enviada. Un filtro automático atopou unha palabra que non permitimos no chat. Cámbiaa e téntao de novo.",
+    "callTranscriptTranscribeButton": "Transcribir",
+    "callTranscriptAudioUnavailable": "Non se puido descargar a gravación gardada de {name}, polo que non se puido transcribir.",
+    "callTranscriptChooseLanguage": "Que idioma se falou?",
+    "callTranscriptSubscribeForTranscription": "Subscribirse para transcribir",
+    "unlockCallTranscript": "Desbloquear transcrición da chamada"
 }

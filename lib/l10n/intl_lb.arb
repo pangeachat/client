@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-09-29 11:11:29.197469",
+    "@@last_modified": "2026-09-30 11:27:35.851493",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2383,5 +2383,10 @@
     "courseCodeSaved": "Cours-Code {code} gespäichert",
     "courseCodeSavedExplanation": "Mell dech un oder registréier dech a mir setzen dech zu dengem Cours dobäi.",
     "moderationRefusedContactDetails": "Äre Message gouf net geschéckt. En automatesche Filter huet Kontaktdetailer, wéi eng Telefonsnummer, fonnt. Huelt se w.e.g. ewech a probéiert et nach eng Kéier.",
-    "moderationRefusedProfanity": "Äre Message gouf net geschéckt. En automatesche Filter huet e Wuert fonnt, dat mir am Chat net erlaben. Ännert et w.e.g. a probéiert et nach eng Kéier."
+    "moderationRefusedProfanity": "Äre Message gouf net geschéckt. En automatesche Filter huet e Wuert fonnt, dat mir am Chat net erlaben. Ännert et w.e.g. a probéiert et nach eng Kéier.",
+    "callTranscriptTranscribeButton": "Transkribéieren",
+    "callTranscriptAudioUnavailable": "Déi gespäichert Opnam vum {name} konnt net erofgeluede ginn, dofir konnt se net transkribéiert ginn.",
+    "callTranscriptChooseLanguage": "Wat fir eng Sprooch gouf geschwat?",
+    "callTranscriptSubscribeForTranscription": "Abonnéiert Iech fir d'Transkriptioun",
+    "unlockCallTranscript": "Transkript vun Uruff opmaachen"
 }

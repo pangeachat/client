@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-29 11:11:31.434310",
+    "@@last_modified": "2026-09-30 11:27:37.425422",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9975,5 +9975,10 @@
     "courseCodeSaved": "Cursuscode {code} opgeslagen",
     "courseCodeSavedExplanation": "Meld je aan of log in en we voegen je toe aan je cursus.",
     "moderationRefusedContactDetails": "Je bericht is niet verzonden. Een automatisch filter heeft contactgegevens, zoals een telefoonnummer, gedetecteerd. Verwijder deze en probeer het opnieuw.",
-    "moderationRefusedProfanity": "Je bericht is niet verzonden. Een automatisch filter heeft een woord gedetecteerd dat we niet toestaan in de chat. Wijzig dit en probeer het opnieuw."
+    "moderationRefusedProfanity": "Je bericht is niet verzonden. Een automatisch filter heeft een woord gedetecteerd dat we niet toestaan in de chat. Wijzig dit en probeer het opnieuw.",
+    "callTranscriptTranscribeButton": "Transcripteren",
+    "callTranscriptAudioUnavailable": "De opgeslagen opname van {name} kon niet worden gedownload en kon daarom niet worden getranscribeerd.",
+    "callTranscriptChooseLanguage": "Welke taal werd er gesproken?",
+    "callTranscriptSubscribeForTranscription": "Abonneren voor transcriptie",
+    "unlockCallTranscript": "Ontgrendel gespreksafschrift"
 }

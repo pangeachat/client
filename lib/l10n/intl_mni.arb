@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-09-29 11:11:32.730495",
+    "@@last_modified": "2026-09-30 11:27:37.228546",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2383,5 +2383,10 @@
     "courseCodeSaved": "ಕোর্স ಕೋಡ್ {code} ಸೇভ ತೌರೆ",
     "courseCodeSavedExplanation": "ಸೈನ್ ಅಪ್ ಅಥವ ಲಾಗಿನ್ ತೌ ಅದুগಾ ನঙಬು ನಾಲೈ-ನಾಲೈ কোর্সತಾ য়াওহনগনি.",
     "moderationRefusedContactDetails": "ꯑꯩꯈꯣꯌꯅꯥ ꯅꯍꯥꯛꯀꯤ ꯋꯥꯍꯪ ꯊꯥꯗꯦ꯫ ꯑꯣꯇꯣꯃꯦꯇꯤꯛ ꯐꯤꯜꯇꯔ ꯑꯃꯅꯥ ꯐꯣꯟ ꯅꯝꯕꯔ ꯑꯃꯒꯨꯝꯕꯥ ꯀꯟꯇꯦꯛ ꯗꯤꯇꯦꯜꯁ ꯐꯪꯈꯤ꯫ ꯀꯔꯤꯒꯨꯝꯕꯥ ꯅꯍꯥꯛꯅꯥ ꯃꯈꯣꯌꯕꯨ ꯂꯧꯊꯣꯛꯂꯒꯥ ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯍꯣꯠꯅꯕꯤꯌꯨ꯫",
-    "moderationRefusedProfanity": "ꯑꯩꯈꯣꯌꯅꯥ ꯅꯍꯥꯛꯀꯤ ꯋꯥꯍꯪ ꯊꯥꯗꯦ꯫ ꯑꯣꯇꯣꯃꯦꯇꯤꯛ ꯐꯤꯜꯇꯔ ꯑꯃꯅꯥ ꯑꯩꯈꯣꯌꯅꯥ ꯆꯦꯠꯇꯥ ꯌꯥꯔꯣꯏꯗꯕꯥ ꯋꯥꯍꯩ ꯑꯃꯥ ꯐꯪꯈꯤ꯫ ꯀꯔꯤꯒꯨꯝꯕꯥ ꯅꯍꯥꯛꯅꯥ ꯃꯗꯨ ꯍꯣꯡꯗꯣꯛꯂꯒꯥ ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯍꯣꯠꯅꯕꯤꯌꯨ꯫"
+    "moderationRefusedProfanity": "ꯑꯩꯈꯣꯌꯅꯥ ꯅꯍꯥꯛꯀꯤ ꯋꯥꯍꯪ ꯊꯥꯗꯦ꯫ ꯑꯣꯇꯣꯃꯦꯇꯤꯛ ꯐꯤꯜꯇꯔ ꯑꯃꯅꯥ ꯑꯩꯈꯣꯌꯅꯥ ꯆꯦꯠꯇꯥ ꯌꯥꯔꯣꯏꯗꯕꯥ ꯋꯥꯍꯩ ꯑꯃꯥ ꯐꯪꯈꯤ꯫ ꯀꯔꯤꯒꯨꯝꯕꯥ ꯅꯍꯥꯛꯅꯥ ꯃꯗꯨ ꯍꯣꯡꯗꯣꯛꯂꯒꯥ ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯍꯣꯠꯅꯕꯤꯌꯨ꯫",
+    "callTranscriptTranscribeButton": "ট্রান্সক্রাইব তৌবীয়ু",
+    "callTranscriptAudioUnavailable": "{name} দগী সেভ তৌখিবা রেকর্ডিং অদু ডাউনলোড তৌবা ঙমখিদে, অদুগা ট্রান্সক্রাইব তৌবা ঙমখিদে.",
+    "callTranscriptChooseLanguage": "কনাগুম্বা অমুন্না কয়া ঙাংখি?",
+    "callTranscriptSubscribeForTranscription": "ট্রান্সক্রিপশনগীদমক সাবস্ক্রাইব তৌবীয়ু",
+    "unlockCallTranscript": "কল ট্রান্সক্রিপ্ট অদু অনলক তৌবীয়ু"
 }

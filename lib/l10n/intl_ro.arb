@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-29 11:11:32.589714",
+    "@@last_modified": "2026-09-30 11:27:38.526489",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10707,5 +10707,10 @@
     "courseCodeSaved": "Codul cursului {code} a fost salvat",
     "courseCodeSavedExplanation": "Înregistrează-te sau conectează-te și te vom adăuga la cursul tău.",
     "moderationRefusedContactDetails": "Mesajul tău nu a fost trimis. Un filtru automat a detectat detalii de contact, cum ar fi un număr de telefon. Te rugăm să le elimini și să încerci din nou.",
-    "moderationRefusedProfanity": "Mesajul tău nu a fost trimis. Un filtru automat a detectat un cuvânt pe care nu-l permitem în chat. Te rugăm să-l modifici și să încerci din nou."
+    "moderationRefusedProfanity": "Mesajul tău nu a fost trimis. Un filtru automat a detectat un cuvânt pe care nu-l permitem în chat. Te rugăm să-l modifici și să încerci din nou.",
+    "callTranscriptTranscribeButton": "Transcrie",
+    "callTranscriptAudioUnavailable": "Înregistrarea salvată de la {name} nu a putut fi descărcată, prin urmare nu a putut fi transcrisă.",
+    "callTranscriptChooseLanguage": "Ce limbă a fost vorbită?",
+    "callTranscriptSubscribeForTranscription": "Abonează-te pentru transcriere",
+    "unlockCallTranscript": "Deblochează transcrierea apelului"
 }

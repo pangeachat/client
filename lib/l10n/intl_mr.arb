@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-09-29 11:11:30.684762",
+    "@@last_modified": "2026-09-30 11:27:37.264298",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2383,5 +2383,10 @@
     "courseCodeSaved": "कोर्स कोड {code} सेव्ह केला",
     "courseCodeSavedExplanation": "साइन अप करा किंवा लॉग इन करा आणि आम्ही तुम्हाला तुमच्या कोर्समध्ये जोडू.",
     "moderationRefusedContactDetails": "तुमचा संदेश पाठवला गेला नाही. स्वयंचलित फिल्टरला फोन नंबरसारखे संपर्क तपशील आढळले. कृपया ते काढून टाका आणि पुन्हा प्रयत्न करा.",
-    "moderationRefusedProfanity": "तुमचा संदेश पाठवला गेला नाही. स्वयंचलित फिल्टरला चॅटमध्ये अनुमती नसलेला शब्द आढळला. कृपया तो बदला आणि पुन्हा प्रयत्न करा."
+    "moderationRefusedProfanity": "तुमचा संदेश पाठवला गेला नाही. स्वयंचलित फिल्टरला चॅटमध्ये अनुमती नसलेला शब्द आढळला. कृपया तो बदला आणि पुन्हा प्रयत्न करा.",
+    "callTranscriptTranscribeButton": "लिप्यंतरण करा",
+    "callTranscriptAudioUnavailable": "{name} कडून सेव्ह केलेली रेकॉर्डिंग डाउनलोड करता आली नाही, त्यामुळे तिचे लिप्यंतरण करता आले नाही.",
+    "callTranscriptChooseLanguage": "कोणती भाषा बोलली गेली?",
+    "callTranscriptSubscribeForTranscription": "लिप्यंतरणासाठी सदस्यता घ्या",
+    "unlockCallTranscript": "कॉल लिप्यंतरण अनलॉक करा"
 }

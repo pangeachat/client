@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-09-29 11:11:29.781089",
+    "@@last_modified": "2026-09-30 11:27:36.182236",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2383,5 +2383,10 @@
     "courseCodeSaved": "ລະຫັດຫຼັກສູດ {code} ຖືກບັນທຶກແລ້ວ",
     "courseCodeSavedExplanation": "ລົງທະບຽນ ຫຼື ເຂົ້າສູ່ລະບົບ ແລະພວກເຮົາຈະເພີ່ມທ່ານເຂົ້າໃນຫຼັກສູດຂອງທ່ານ.",
     "moderationRefusedContactDetails": "ຂໍ້ຄວາມຂອງທ່ານບໍ່ໄດ້ຖືກສົ່ງ. ລະບົບກອງອັດຕະໂນມັດພົບເຫັນລາຍລະອຽດການຕິດຕໍ່, ເຊັ່ນເບີໂທລະສັບ. ກະລຸນາລຶບອອກແລ້ວລອງໃໝ່ອີກຄັ້ງ.",
-    "moderationRefusedProfanity": "ຂໍ້ຄວາມຂອງທ່ານບໍ່ໄດ້ຖືກສົ່ງ. ລະບົບກອງອັດຕະໂນມັດພົບເຫັນຄຳສັບທີ່ພວກເຮົາບໍ່ອະນຸຍາດໃຫ້ໃຊ້ໃນການສົນທະນາ. ກະລຸນາປ່ຽນແລ້ວລອງໃໝ່ອີກຄັ້ງ."
+    "moderationRefusedProfanity": "ຂໍ້ຄວາມຂອງທ່ານບໍ່ໄດ້ຖືກສົ່ງ. ລະບົບກອງອັດຕະໂນມັດພົບເຫັນຄຳສັບທີ່ພວກເຮົາບໍ່ອະນຸຍາດໃຫ້ໃຊ້ໃນການສົນທະນາ. ກະລຸນາປ່ຽນແລ້ວລອງໃໝ່ອີກຄັ້ງ.",
+    "callTranscriptTranscribeButton": "ຖອດຂໍ້ຄວາມ",
+    "callTranscriptAudioUnavailable": "ບໍ່ສາມາດດາວໂຫຼດສຽງທີ່ບັນທຶກຈາກ {name} ໄດ້, ສະນັ້ນຈຶ່ງບໍ່ສາມາດຖອດຂໍ້ຄວາມໄດ້.",
+    "callTranscriptChooseLanguage": "ເວົ້າພາສາຫຍັງ?",
+    "callTranscriptSubscribeForTranscription": "ສະໝັກໃຊ້ສຳລັບການຖອດຂໍ້ຄວາມ",
+    "unlockCallTranscript": "ປົດລັອກການຖອດຂໍ້ຄວາມການໂທ"
 }

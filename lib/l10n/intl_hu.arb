@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-09-29 11:11:26.978335",
+    "@@last_modified": "2026-09-30 11:27:34.504248",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10078,5 +10078,10 @@
     "courseCodeSaved": "A(z) {code} kurzuskód elmentve",
     "courseCodeSavedExplanation": "Regisztrálj vagy jelentkezz be, és hozzáadunk a kurzusodhoz.",
     "moderationRefusedContactDetails": "Az üzenet nem került elküldésre. Az automatikus szűrő elérhetőségi adatokat, például telefonszámot talált. Kérjük, távolítsa el ezeket, és próbálja újra.",
-    "moderationRefusedProfanity": "Az üzenet nem került elküldésre. Az automatikus szűrő olyan szót talált, amelyet nem engedélyezünk a csevegésben. Kérjük, módosítsa, és próbálja újra."
+    "moderationRefusedProfanity": "Az üzenet nem került elküldésre. Az automatikus szűrő olyan szót talált, amelyet nem engedélyezünk a csevegésben. Kérjük, módosítsa, és próbálja újra.",
+    "callTranscriptTranscribeButton": "Átírás",
+    "callTranscriptAudioUnavailable": "A {name} felvételét nem sikerült letölteni, ezért nem lehetett átírni.",
+    "callTranscriptChooseLanguage": "Milyen nyelven beszéltek?",
+    "callTranscriptSubscribeForTranscription": "Feliratkozás az átírásra",
+    "unlockCallTranscript": "Hívás átirat feloldása"
 }
