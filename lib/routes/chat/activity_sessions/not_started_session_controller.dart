@@ -6,9 +6,11 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_preview_repo.dart';
+import 'package:fluffychat/features/activity_sessions/play_with_bot_intent.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/features/quests/activity_lock_client_extension.dart';
 import 'package:fluffychat/features/room_summaries/activity_sessions_status_model.dart';
 import 'package:fluffychat/features/room_summaries/activity_summary_status_enum.dart';
 import 'package:fluffychat/features/room_summaries/room_summaries_model.dart';
@@ -73,6 +75,56 @@ class NotStartedSessionController extends State<NotStartedSession>
   NotStartedSubPage _subPage = NotStartedSubPage.main;
   final _goalsHandler = GoalsSubscriptionHandler();
 
+  /// Starting a new session is locked by course progression; joining an open
+  /// one never is. Null while resolving, which reads as unlocked.
+  bool? _isLocked;
+  bool get isLocked => _isLocked == true;
+
+  /// The join list was opened for the learner because the activity had open
+  /// sessions, rather than by a tap (#9333 prototype).
+  bool _landedOnJoinList = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _resolveLock();
+    _syncJoinListLanding();
+  }
+
+  @override
+  void didUpdateWidget(NotStartedSession oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _syncJoinListLanding();
+  }
+
+  /// A joinable activity opens straight on its join list, so an open session
+  /// is never passed over for a bot the learner didn't need; if its last open
+  /// session fills while they look, the page falls back to the start choice.
+  void _syncJoinListLanding() {
+    if (widget.summariesLoading || joinedActivityRoomId != null) return;
+    final hasOpen = openSessionCount > 0;
+    if (hasOpen && _subPage == NotStartedSubPage.main && !_landedOnJoinList) {
+      _landedOnJoinList = true;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) goToJoinPage();
+      });
+    } else if (!hasOpen &&
+        _landedOnJoinList &&
+        _subPage == NotStartedSubPage.join) {
+      _landedOnJoinList = false;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) goToMainPage();
+      });
+    }
+  }
+
+  Future<void> _resolveLock() async {
+    final locked = await Matrix.of(
+      context,
+    ).client.isActivityLocked(widget.activityId, courseId: widget.course?.id);
+    if (mounted) setState(() => _isLocked = locked);
+  }
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -93,6 +145,12 @@ class NotStartedSessionController extends State<NotStartedSession>
   void goToJoinPage() => _setSubPage(NotStartedSubPage.join);
   void goToViewPage() => _setSubPage(NotStartedSubPage.view);
   void goToMainPage() => _setSubPage(NotStartedSubPage.main);
+
+  /// Back from the Completed list returns to the join list when that is where
+  /// the activity landed.
+  void goBackFromSubPage() => _setSubPage(
+    _landedOnJoinList ? NotStartedSubPage.join : NotStartedSubPage.main,
+  );
 
   void _setSubPage(NotStartedSubPage subPage) {
     setState(() => _subPage = subPage);
@@ -215,7 +273,30 @@ class NotStartedSessionController extends State<NotStartedSession>
     NavigationUtil.goToSpaceRoute(joinedActivityRoomId!, [], context);
   }
 
+  /// A two-seat activity offers "Play with a bot" beside "Play with a human";
+  /// larger ones need people, so they offer a single Start (#9333 prototype).
+  bool get offersBot => (widget.activity?.req.numberOfParticipants ?? 0) == 2;
+
+  /// Pick a role, then the session launches with the bot already added.
+  void playWithBot() {
+    if (isLocked) return;
+    PlayWithBotIntent.set(widget.activityId, withBot: true);
+    startNewActivity();
+  }
+
+  /// Join someone's open session if there is one, else start a session and
+  /// wait for people.
+  void playWithHuman() {
+    PlayWithBotIntent.set(widget.activityId, withBot: false);
+    if (openSessionCount > 0) {
+      goToJoinPage();
+    } else {
+      startNewActivity();
+    }
+  }
+
   void startNewActivity() {
+    if (isLocked) return;
     //Nothing to jump to if container is minimized, so skip
     if (widget.scrollController.hasClients) widget.scrollController.jumpTo(0);
     final course = widget.course;
@@ -265,10 +346,20 @@ class NotStartedSessionController extends State<NotStartedSession>
     );
   }
 
+  /// Show a session from the join list inside this activity's panel, so its
+  /// close is a back arrow to the list (#9333 prototype).
+  void _viewSession(String roomId) => context.go(
+    WorkspaceNav.openActivitySession(
+      GoRouterState.of(context).uri,
+      widget.activityId,
+      roomId,
+    ),
+  );
+
   Future<void> joinActivityByRoomId(String roomId) async {
     final room = Matrix.of(context).client.getRoomById(roomId);
     if (room != null && room.membership == Membership.join) {
-      NavigationUtil.goToSpaceRoute(roomId, [], context);
+      _viewSession(roomId);
       return;
     }
 
@@ -291,7 +382,8 @@ class NotStartedSessionController extends State<NotStartedSession>
 
     if (!resp.isError) {
       await ActivitySessionPreviewRepo.set(roomId);
-      NavigationUtil.goToSpaceRoute(roomId, [], context);
+      if (!mounted) return;
+      _viewSession(roomId);
     }
   }
 

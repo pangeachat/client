@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/quests/mission_lock.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -42,6 +43,10 @@ class ObjectiveSection extends StatelessWidget {
   /// nothing to show (preview, or the rollup hasn't resolved yet).
   final MissionProgress? progress;
 
+  /// Set when this Mission is locked: the header shows a lock with the
+  /// cumulative stars toward unlocking it, and its cards open nothing.
+  final MissionLock? lock;
+
   /// The activity a course ping pointed at, when it lives in this section —
   /// its card gets the bell badge (#8319). Null everywhere else.
   final String? pingedActivityId;
@@ -72,6 +77,7 @@ class ObjectiveSection extends StatelessWidget {
     required this.liveStateByActivity,
     required this.availableParticipants,
     required this.progress,
+    this.lock,
     this.pingedActivityId,
     this.collapsed = false,
     this.onToggleCollapsed,
@@ -94,9 +100,10 @@ class ObjectiveSection extends StatelessWidget {
     // exclusive: the anchor is unsatisfied by definition, and a course whose
     // every Mission is satisfied has no anchor at all (#8997).
     final satisfied = progress?.satisfied ?? false;
+    final lock = this.lock;
     final headerColor = isUpNext
         ? theme.colorScheme.primary
-        : satisfied
+        : satisfied || lock != null
         ? theme.colorScheme.onSurfaceVariant
         : null;
 
@@ -107,7 +114,28 @@ class ObjectiveSection extends StatelessWidget {
         fontWeight: isUpNext ? FontWeight.w500 : null,
       ),
     );
-    final starFraction = progress == null
+    final starFraction = lock != null
+        ? Semantics(
+            label: L10n.of(
+              context,
+            ).missionLockedStars(lock.earned, lock.required),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(Icons.lock, size: 18.0, color: headerColor),
+                const SizedBox(width: 4.0),
+                ExcludeSemantics(
+                  child: Text(
+                    '${lock.earned}/${lock.required}',
+                    style: theme.textTheme.bodyMedium?.copyWith(
+                      color: headerColor,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          )
+        : progress == null
         ? null
         : Semantics(
             label: L10n.of(
@@ -258,6 +286,7 @@ class ObjectiveSection extends StatelessWidget {
               cardWidth: cardWidth,
               cardHeight: cardHeight,
               interactive: interactive,
+              locked: lock != null,
             ),
         ],
       ),

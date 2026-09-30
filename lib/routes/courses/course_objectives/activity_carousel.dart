@@ -54,6 +54,10 @@ class ActivityCarousel extends StatefulWidget {
   /// click that does nothing.
   final bool interactive;
 
+  /// The whole row sits in a locked Mission: cards gray out behind a lock and
+  /// open nothing (#9333 prototype).
+  final bool locked;
+
   const ActivityCarousel({
     super.key,
     required this.activities,
@@ -67,6 +71,7 @@ class ActivityCarousel extends StatefulWidget {
     this.cardWidth,
     this.cardHeight,
     this.interactive = true,
+    this.locked = false,
   });
 
   @override
@@ -196,7 +201,11 @@ class _ActivityCarouselState extends State<ActivityCarousel> {
                     clipBehavior: Clip.hardEdge,
                     children: [
                       Opacity(
-                        opacity: canStart ? 1.0 : 0.5,
+                        opacity: widget.locked
+                            ? 0.35
+                            : canStart
+                            ? 1.0
+                            : 0.5,
                         child: ActivitySuggestionCard(
                           activity: ref.plan,
                           width: _cardWidth,
@@ -211,7 +220,19 @@ class _ActivityCarouselState extends State<ActivityCarousel> {
                           openSlots: liveState.openSlots,
                         ),
                       ),
-                      if (complete)
+                      if (widget.locked)
+                        SizedBox(
+                          width: _cardWidth,
+                          height: _cardHeight,
+                          child: Center(
+                            child: Icon(
+                              Icons.lock,
+                              size: 40.0,
+                              color: theme.colorScheme.onSurfaceVariant,
+                            ),
+                          ),
+                        )
+                      else if (complete)
                         Container(
                           width: _cardWidth,
                           height: _cardHeight,
@@ -240,7 +261,7 @@ class _ActivityCarouselState extends State<ActivityCarousel> {
                   );
                   // The course preview's cards open nothing (#7826), so they are
                   // neither tap targets nor Tab stops.
-                  if (!widget.interactive) return card;
+                  if (!widget.interactive || widget.locked) return card;
                   // One node carrying the card's text, a button role, focus and
                   // tap, with the gold keyboard ring along the card's own edge.
                   return Semantics(

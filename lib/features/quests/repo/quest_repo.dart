@@ -152,6 +152,7 @@ class QuestOutline {
   /// mapping — the joined-course cache and the activity-session lock both use it.
   CourseLoOutline toCourseLoOutline({
     int starsToUnlock = kDefaultStarsToUnlockObjective,
+    bool locksExempt = false,
   }) => CourseLoOutline(
     // The quest id serves as the scoping key here — right for scoped/preview
     // outlines that have no room. The joined-course cache re-keys courseId to
@@ -166,6 +167,7 @@ class QuestOutline {
         group.objective.id: group.activities.map((a) => a.activityId).toSet(),
     },
     starsToUnlock: starsToUnlock,
+    locksExempt: locksExempt,
     earnableByActivity: {
       for (final group in groups)
         for (final a in group.activities) a.activityId: a.plan.earnableStars,

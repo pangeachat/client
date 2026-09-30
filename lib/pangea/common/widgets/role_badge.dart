@@ -4,12 +4,14 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/pangea_colors.dart';
+import 'package:fluffychat/features/course_plans/courses/course_teacher_room_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
 
 enum RoleBadgeType {
   invited,
   knocking,
+  teacher,
   admin,
   moderator;
 
@@ -18,6 +20,7 @@ enum RoleBadgeType {
   static RoleBadgeType? forMember(User user) => switch (user.membership) {
     Membership.invite => RoleBadgeType.invited,
     Membership.knock => RoleBadgeType.knocking,
+    _ when user.room.isTeaching(user.id) => RoleBadgeType.teacher,
     _ when user.powerLevel >= SpaceConstants.powerLevelOfAdmin =>
       RoleBadgeType.admin,
     _ when user.powerLevel >= SpaceConstants.powerLevelOfModerator =>
@@ -28,6 +31,7 @@ enum RoleBadgeType {
   String label(L10n l10n) => switch (this) {
     RoleBadgeType.invited => l10n.invited,
     RoleBadgeType.knocking => l10n.knocking,
+    RoleBadgeType.teacher => l10n.teacher,
     RoleBadgeType.admin => l10n.admin,
     RoleBadgeType.moderator => l10n.moderator,
   };
@@ -35,14 +39,14 @@ enum RoleBadgeType {
   Color color(ThemeData theme) => switch (this) {
     RoleBadgeType.invited ||
     RoleBadgeType.knocking => theme.colorScheme.secondaryContainer,
-    RoleBadgeType.admin => theme.pangea.goldFixedDim,
+    RoleBadgeType.teacher || RoleBadgeType.admin => theme.pangea.goldFixedDim,
     RoleBadgeType.moderator => theme.pangea.goldContainer,
   };
 
   Color onColor(ThemeData theme) => switch (this) {
     RoleBadgeType.invited ||
     RoleBadgeType.knocking => theme.colorScheme.onSecondaryContainer,
-    RoleBadgeType.admin => theme.pangea.onGoldFixed,
+    RoleBadgeType.teacher || RoleBadgeType.admin => theme.pangea.onGoldFixed,
     RoleBadgeType.moderator => theme.pangea.onGoldContainer,
   };
 }

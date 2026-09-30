@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/elapsed_time_format.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/archived_session_controller.dart';
@@ -10,6 +12,7 @@ import 'package:fluffychat/routes/chat/activity_sessions/full_session_controller
 import 'package:fluffychat/routes/chat/activity_sessions/not_started_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/select_role_session_controller.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
+import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/layouts/cavity_controls.dart';
 
 class ActivitySessionButtons extends StatelessWidget {
@@ -220,11 +223,64 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Sub-pages show a single Back button.
+    // The join list is where a joinable activity lands, so it has no Back:
+    // the panel's own close returns. It keeps a quiet way to start your own
+    // (unless locked) and the Completed list (#9333 prototype).
+    if (controller.subPage == NotStartedSubPage.join) {
+      // The minimized phone sheet hides the list itself, so it offers one
+      // row: open the list full, or start your own.
+      if (compact) {
+        final expand = CavityControls.maybeExpandToFull(context);
+        return Row(
+          spacing: 8.0,
+          children: [
+            Expanded(
+              child: _ActivityCtaChip(
+                label:
+                    '${L10n.of(context).joinOpenSession} (${controller.openSessionCount})',
+                icon: ActivityPinState.joinable.icon,
+                onPressed: expand,
+                filled: true,
+              ),
+            ),
+            if (!controller.isLocked)
+              _ActivityCtaChip(
+                label: L10n.of(context).startOwn,
+                icon: ActivityPinState.available.icon,
+                onPressed: () {
+                  expand?.call();
+                  controller.startNewActivity();
+                },
+              ),
+          ],
+        );
+      }
+      return Column(
+        spacing: 16.0,
+        children: [
+          if (!controller.isLocked)
+            ActivitySessionCTAButton(
+              L10n.of(context).startOwn,
+              controller.startNewActivity,
+              secondary: true,
+              icon: ActivityPinState.available.icon,
+            ),
+          if (controller.hasCompletedSessions)
+            ActivitySessionCTAButton(
+              L10n.of(context).mapFilterCompleted,
+              controller.goToViewPage,
+              secondary: true,
+              icon: ActivityPinState.inProgress.icon,
+            ),
+        ],
+      );
+    }
+
+    // Other sub-pages show a single Back button.
     if (controller.subPage != NotStartedSubPage.main) {
       return ActivitySessionCTAButton(
         L10n.of(context).back,
-        controller.goToMainPage,
+        controller.goBackFromSubPage,
       );
     }
 
@@ -295,22 +351,24 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
               // An open session to join is the encouraged choice, so it leads
               // and "start my own" drops to a de-emphasized option; with none to
               // join, starting is the single primary action.
-              if (controller.openSessionCount > 0) ...[
-                ActivitySessionCTAButton(
-                  '${L10n.of(context).joinOpenSession} (${controller.openSessionCount})',
-                  controller.goToJoinPage,
-                  icon: ActivityPinState.joinable.icon,
+              // Locked: only an open session can still be joined.
+              if (controller.isLocked) ...[
+                Text(
+                  L10n.of(context).lockedMissionRequirement,
+                  textAlign: TextAlign.center,
                 ),
-                ActivitySessionCTAButton(
-                  L10n.of(context).startOwn,
-                  controller.startNewActivity,
-                  secondary: true,
-                  icon: ActivityPinState.available.icon,
-                ),
-              ] else
+                if (controller.openSessionCount > 0)
+                  ActivitySessionCTAButton(
+                    '${L10n.of(context).joinOpenSession} (${controller.openSessionCount})',
+                    controller.goToJoinPage,
+                    icon: ActivityPinState.joinable.icon,
+                  ),
+              ] else if (controller.offersBot)
+                _PlayChoiceTiles(controller)
+              else
                 ActivitySessionCTAButton(
                   L10n.of(context).start,
-                  controller.startNewActivity,
+                  controller.playWithHuman,
                   icon: ActivityPinState.available.icon,
                 ),
             ],
@@ -345,6 +403,8 @@ class _NotStartedMobileCtaRow extends StatelessWidget {
     final l10n = L10n.of(context);
     final page = controller.widget.controller;
     final chips = <Widget>[];
+    // How many leading chips stretch to fill the row.
+    var leadingChips = 1;
 
     // An action chip maximizes the sheet before running — the view it opens
     // (role picker, sessions list) is dropped by the minimized LayoutBuilder,
@@ -364,20 +424,41 @@ class _NotStartedMobileCtaRow extends StatelessWidget {
           filled: true,
         ),
       );
-    } else if (controller.openSessionCount > 0) {
+    } else if (controller.isLocked) {
+      // Locked: only an open session can still be joined.
+      chips.add(
+        controller.openSessionCount > 0
+            ? _ActivityCtaChip(
+                label:
+                    '${l10n.joinOpenSession} (${controller.openSessionCount})',
+                icon: ActivityPinState.joinable.icon,
+                onPressed: expandThen(controller.goToJoinPage),
+                filled: true,
+              )
+            : _ActivityCtaChip(
+                label: l10n.lockedMissionRequirement,
+                icon: Icons.lock,
+                onPressed: null,
+                filled: true,
+              ),
+      );
+    } else if (controller.offersBot) {
+      // Two equal choices, both stretched (#9333 prototype).
+      leadingChips = 2;
       chips.add(
         _ActivityCtaChip(
-          label: '${l10n.joinOpenSession} (${controller.openSessionCount})',
-          icon: ActivityPinState.joinable.icon,
-          onPressed: expandThen(controller.goToJoinPage),
+          label: l10n.playWithOthers,
+          icon: Icons.group_outlined,
+          onPressed: expandThen(controller.playWithHuman),
           filled: true,
         ),
       );
       chips.add(
         _ActivityCtaChip(
-          label: l10n.startOwn,
-          icon: ActivityPinState.available.icon,
-          onPressed: expandThen(controller.startNewActivity),
+          label: l10n.playWithBot,
+          icon: Icons.smart_toy_outlined,
+          onPressed: expandThen(controller.playWithBot),
+          filled: true,
         ),
       );
     } else {
@@ -385,7 +466,7 @@ class _NotStartedMobileCtaRow extends StatelessWidget {
         _ActivityCtaChip(
           label: l10n.start,
           icon: ActivityPinState.available.icon,
-          onPressed: expandThen(controller.startNewActivity),
+          onPressed: expandThen(controller.playWithHuman),
           filled: true,
         ),
       );
@@ -428,8 +509,9 @@ class _NotStartedMobileCtaRow extends StatelessWidget {
             child: Row(
               spacing: 8.0,
               children: [
-                Expanded(child: chips.first),
-                ...chips.skip(1),
+                for (final chip in chips.take(leadingChips))
+                  Expanded(child: chip),
+                ...chips.skip(leadingChips),
               ],
             ),
           ),
@@ -536,10 +618,17 @@ class _ConfirmedRoleSessionCTAButtons extends StatelessWidget {
     return Column(
       mainAxisSize: .min,
       children: [
-        // Ping, play with bot, and invite friends are all equally valid ways
-        // forward from the waiting room, so none leads — every one keeps the
-        // same primary fill as Start, rather than all dropping to the lighter
-        // secondary, which read as the buttons changing colour mid-flow (#8427).
+        _WaitingStatusLine(controller),
+        const SizedBox(height: 16.0),
+        // Bringing people in leads; the bot is the quieter fallback at the
+        // bottom (#9333 prototype).
+        if (controller.showInviteOptions) ...[
+          ActivitySessionCTAButton(
+            L10n.of(context).inviteFriends,
+            controller.inviteFriends,
+          ),
+          const SizedBox(height: 16.0),
+        ],
         if (controller.showPingCourse) ...[
           FutureBuilder(
             future: controller.canPingParticipants,
@@ -548,21 +637,151 @@ class _ConfirmedRoleSessionCTAButtons extends StatelessWidget {
               snapshot.data == true ? controller.pingCourse : null,
             ),
           ),
-          SizedBox(height: 16.0),
+          const SizedBox(height: 16.0),
         ],
         if (controller.showInviteOptions)
-          Padding(
-            padding: EdgeInsetsGeometry.only(bottom: 16.0),
-            child: ActivitySessionCTAButton(
-              L10n.of(context).playWithBot,
-              controller.enablePlayWithBot ? controller.playWithBot : null,
+          ActivitySessionCTAButton(
+            L10n.of(context).playWithBot,
+            controller.enablePlayWithBot ? controller.playWithBot : null,
+            secondary: true,
+          ),
+      ],
+    );
+  }
+}
+
+/// "Play with others" and "Play with Pangea Bot" as two equal, tall tiles —
+/// the wide start page's main choice on a two-seat activity; the phone sheet
+/// uses two chips instead (#9333 prototype).
+class _PlayChoiceTiles extends StatelessWidget {
+  final NotStartedSessionController controller;
+
+  const _PlayChoiceTiles(this.controller);
+
+  static const double _height = 88.0;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = L10n.of(context);
+    final theme = Theme.of(context);
+    final scheme = theme.colorScheme;
+    final style = ElevatedButton.styleFrom(
+      backgroundColor: scheme.primary,
+      foregroundColor: scheme.onPrimary,
+      padding: const EdgeInsets.all(12.0),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
+    );
+    final choices = [
+      (l10n.playWithOthers, Icons.group_outlined, controller.playWithHuman),
+      (l10n.playWithBot, Icons.smart_toy_outlined, controller.playWithBot),
+    ];
+    return Row(
+      spacing: 12.0,
+      children: [
+        for (final (label, icon, action) in choices)
+          Expanded(
+            child: SizedBox(
+              height: _height,
+              child: ElevatedButton(
+                style: style,
+                onPressed: action,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  spacing: 6.0,
+                  children: [
+                    Icon(icon, size: 28.0),
+                    Text(
+                      label,
+                      textAlign: TextAlign.center,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: theme.textTheme.titleSmall?.copyWith(
+                        color: scheme.onPrimary,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ),
-        if (controller.showInviteOptions)
-          ActivitySessionCTAButton(
-            L10n.of(context).inviteFriends,
-            controller.inviteFriends,
-          ),
+      ],
+    );
+  }
+}
+
+/// The waiting room's status line: how long this session has waited, and how
+/// many coursemates are online right now (#9333 prototype).
+class _WaitingStatusLine extends StatelessWidget {
+  final ConfirmedRoleSessionController controller;
+
+  const _WaitingStatusLine(this.controller);
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = L10n.of(context);
+    final theme = Theme.of(context);
+    final style = theme.textTheme.labelLarge?.copyWith(
+      color: theme.colorScheme.onSurfaceVariant,
+    );
+    return Wrap(
+      alignment: WrapAlignment.center,
+      spacing: 16.0,
+      runSpacing: 4.0,
+      children: [
+        ValueListenableBuilder(
+          valueListenable: controller.clock,
+          builder: (context, now, _) {
+            final since = controller.waitingSince;
+            if (since == null) return const SizedBox.shrink();
+            return Row(
+              mainAxisSize: MainAxisSize.min,
+              spacing: 4.0,
+              children: [
+                Icon(Icons.schedule, size: 16.0, color: style?.color),
+                Text(
+                  l10n.waitingFor(
+                    ElapsedTimeFormat.compact(now.difference(since), l10n),
+                  ),
+                  style: style,
+                ),
+              ],
+            );
+          },
+        ),
+        ValueListenableBuilder(
+          valueListenable: controller.activeCourseMembers,
+          builder: (context, count, _) {
+            if (count == null) return const SizedBox.shrink();
+            return Row(
+              mainAxisSize: MainAxisSize.min,
+              spacing: 6.0,
+              children: [
+                Icon(
+                  Icons.circle,
+                  size: 10.0,
+                  color: count > 0
+                      ? theme.pangea.success
+                      : theme.colorScheme.outline,
+                ),
+                Flexible(
+                  child: Text(
+                    l10n.activeInCourse(
+                      count,
+                      controller.course?.getLocalizedDisplayname(
+                            MatrixLocals(l10n),
+                          ) ??
+                          '',
+                    ),
+                    style: style,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              ],
+            );
+          },
+        ),
       ],
     );
   }

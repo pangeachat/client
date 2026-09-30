@@ -11,6 +11,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/activity_participant_row.dart';
 import 'package:fluffychat/pangea/common/widgets/activity_tile_body.dart';
 import 'package:fluffychat/routes/chat_list/unread_bubble.dart';
+import 'package:fluffychat/routes/world/locked_pin_style.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 import 'package:fluffychat/routes/world/world_map_pinged_badge.dart';
@@ -192,6 +193,10 @@ class WorldMapLargeCard extends StatelessWidget {
   /// pins"). Course-scoped only; never set for a live/completed card.
   final bool understaffed;
 
+  /// Course progression locks this activity: the card grays out behind a lock
+  /// badge. It still opens the plan, where Start is blocked (#9333 prototype).
+  final bool locked;
+
   /// When non-null, the card shows an explicit dismiss (X) that **demotes** the
   /// activity out of the large tier for the session — it re-renders as a mid pin
   /// or dot, never leaving the map (#7207). On a focused card the X also clears
@@ -213,6 +218,7 @@ class WorldMapLargeCard extends StatelessWidget {
     this.openSlots = 0,
     this.starLevel = ActivityStarLevel.none,
     this.understaffed = false,
+    this.locked = false,
   });
 
   /// The activity's star total, never hydration-gated (#7602): the learner's
@@ -398,7 +404,9 @@ class WorldMapLargeCard extends StatelessWidget {
     // room in the ongoingActive state). Both white-bordered so they stand out
     // from the same-coloured accent frame. The dismiss X is the opposite
     // corner's affordance, but rides INSIDE the border rather than peeking.
-    final Widget? topRightBadge = (pinged && !state.isOngoing)
+    final Widget? topRightBadge = locked
+        ? const _LockedBadge()
+        : (pinged && !state.isOngoing)
         ? const WorldMapPingedBadge()
         : (state == ActivityPinState.ongoingActive && liveRoom != null)
         ? UnreadBubble(room: liveRoom!, borderColor: Colors.white)
@@ -441,7 +449,10 @@ class WorldMapLargeCard extends StatelessWidget {
     // An understaffed `available` card dims to 50%, matching its mid pin — purely
     // cosmetic, it still taps and opens the plan (world-map.instructions.md,
     // "Understaffed pins").
-    return understaffed ? Opacity(opacity: 0.5, child: content) : content;
+    return LockedPinStyle(
+      locked: locked,
+      child: understaffed ? Opacity(opacity: 0.5, child: content) : content,
+    );
   }
 }
 
@@ -729,4 +740,25 @@ class _CaretPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(_CaretPainter old) => old.fill != fill || old.edge != edge;
+}
+
+class _LockedBadge extends StatelessWidget {
+  const _LockedBadge();
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Tooltip(
+      message: L10n.of(context).lockedMissionRequirement,
+      child: CircleAvatar(
+        radius: 12.0,
+        backgroundColor: theme.colorScheme.surfaceContainerHighest,
+        child: Icon(
+          Icons.lock,
+          size: 14.0,
+          color: theme.colorScheme.onSurfaceVariant,
+        ),
+      ),
+    );
+  }
 }

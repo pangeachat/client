@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
@@ -10,6 +11,7 @@ import 'package:fluffychat/features/activity_sessions/activity_room_extension.da
 import 'package:fluffychat/features/activity_sessions/bot_activty_role_room_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_controller.dart';
@@ -45,6 +47,33 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
   Timer? _pingCooldown;
   final _goalsHandler = GoalsSubscriptionHandler();
 
+  /// A course member counts as active if they were online this recently.
+  static const Duration activeWindow = Duration(minutes: 5);
+
+  /// Ticks every second, driving the waiting timer.
+  /// Only the widgets that read it rebuild.
+  final ValueNotifier<DateTime> clock = ValueNotifier(DateTime.now());
+  Timer? _clockTimer;
+
+  /// Coursemates (not you, not the bot) online in the last [activeWindow];
+  /// null until counted, or when the session has no source course.
+  final ValueNotifier<int?> activeCourseMembers = ValueNotifier(null);
+  Timer? _activeCountTimer;
+
+  @override
+  void initState() {
+    super.initState();
+    _clockTimer = Timer.periodic(
+      const Duration(seconds: 1),
+      (_) => clock.value = DateTime.now(),
+    );
+    _countActiveCourseMembers();
+    _activeCountTimer = Timer.periodic(
+      const Duration(seconds: 30),
+      (_) => _countActiveCourseMembers(),
+    );
+  }
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -54,17 +83,61 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
   @override
   void dispose() {
     _pingCooldown?.cancel();
+    _clockTimer?.cancel();
+    _activeCountTimer?.cancel();
+    clock.dispose();
+    activeCourseMembers.dispose();
     _goalsHandler.cancel();
     super.dispose();
   }
 
-  /// The course whose roster the ping reaches: the one this session was launched
-  /// from, never a course it was merely fanned out into ([Room.sourceCourse]).
-  /// The page's borrowed course context can be any space parent, so it can't
-  /// drive a write against the course (#8097).
-  Room? get _course => widget.room.sourceCourse;
+  /// When the session was created — what the waiting timer counts from, so
+  /// it survives leaving and coming back.
+  DateTime? get waitingSince {
+    final create = widget.room.getState(EventTypes.RoomCreate);
+    return create is Event ? create.originServerTs : null;
+  }
 
-  bool get showPingCourse => _course != null;
+  Future<void> _countActiveCourseMembers() async {
+    if (!mounted) return;
+    final course = this.course;
+    if (course == null) return;
+    final client = widget.room.client;
+    try {
+      final members = await course.requestParticipants([Membership.join]);
+      final cutoff = DateTime.now().subtract(activeWindow);
+      var count = 0;
+      for (final member in members) {
+        if (member.id == client.userID || member.id == BotName.byEnvironment) {
+          continue;
+        }
+        final presence = await client.fetchCurrentPresence(member.id);
+        final lastActive = presence.lastActiveTimestamp;
+        if (presence.currentlyActive == true ||
+            (lastActive != null && lastActive.isAfter(cutoff))) {
+          count++;
+        }
+      }
+      if (mounted) activeCourseMembers.value = count;
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {'roomId': widget.room.id},
+        level: SentryLevel.warning,
+      );
+    }
+  }
+
+  /// The course whose roster the ping reaches and the active count reads:
+  /// the one this session was launched from, never a course it was merely
+  /// fanned out into ([Room.sourceCourse]). The page's borrowed course context
+  /// can be any space parent, so it can't drive a write against the course
+  /// (#8097). The waiting room names it, so a learner browsing another course
+  /// can see which one this is (#9333 prototype).
+  Room? get course => widget.room.sourceCourse;
+
+  bool get showPingCourse => course != null;
 
   bool get showInviteOptions => widget.room.isRoomAdmin;
 
@@ -132,7 +205,7 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
   Set<String> completedGoalIdsForRole(String id) => {};
 
   Future<bool> get canPingParticipants async {
-    final course = _course;
+    final course = this.course;
     if (course == null) return false;
     if (_pingCooldown != null && _pingCooldown!.isActive) return false;
 
@@ -165,7 +238,7 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
       showFutureLoadingDialog(context: context, future: _pingCourse);
 
   Future<void> _pingCourse() async {
-    final course = _course;
+    final course = this.course;
     if (course == null) {
       throw Exception("Activity was not launched from a course");
     }

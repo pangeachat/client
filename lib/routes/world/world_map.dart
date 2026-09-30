@@ -595,6 +595,8 @@ class WorldMapController extends State<WorldMap>
       _pinsManager.displayStateOf(c);
   ActivityStarLevel starLevelOf(QuestActivityCard c) =>
       _pinsManager.starLevelOf(c);
+  bool isLocked(QuestActivityCard c) =>
+      _pinsManager.isLocked(c, courseRoomId: courseRoom?.id);
 
   /// Activity ids the learner has earned at least one star in — the trail the
   /// ranking reserves slots for (world-map.instructions.md, "Goal Progress").

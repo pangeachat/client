@@ -41,6 +41,10 @@ class CourseLoOutline {
   /// in hand — the resolver then leaves the configured threshold unclamped.
   final Map<String, int> earnableByActivity;
 
+  /// True when the learner is teaching this course, so every Mission is
+  /// unlocked for them (#9333 prototype).
+  final bool locksExempt;
+
   const CourseLoOutline({
     required this.courseId,
     this.questId,
@@ -48,5 +52,18 @@ class CourseLoOutline {
     required this.activityIdsByLo,
     this.starsToUnlock = kDefaultStarsToUnlockObjective,
     this.earnableByActivity = const {},
+    this.locksExempt = false,
   });
+
+  CourseLoOutline withLocksExempt(bool value) => value == locksExempt
+      ? this
+      : CourseLoOutline(
+          courseId: courseId,
+          questId: questId,
+          orderedLoIds: orderedLoIds,
+          activityIdsByLo: activityIdsByLo,
+          starsToUnlock: starsToUnlock,
+          earnableByActivity: earnableByActivity,
+          locksExempt: value,
+        );
 }
