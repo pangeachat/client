@@ -304,66 +304,58 @@ void main() {
       LemmaInfoResponse.fromJson(json);
     });
 
-    test(
-      "Activity summary translation endpoint test",
-      skip:
-          // CI runs this against staging choreo, which translates a row named
-          // by id once pangeachat/2-step-choreographer#3308 deploys there.
-          // Unskip before the client that relies on it merges.
-          'Waits for 2-step-choreographer#3308 on staging',
-      () async {
-        final activity = ActivityPlanModel(
-          req: ActivityPlanRequest(
-            topic: '',
-            mode: '',
-            objective: '',
-            media: MediaEnum.nan,
-            cefrLevel: LanguageLevelTypeEnum.a2,
-            languageOfInstructions: 'en',
-            targetLanguage: 'es',
-            numberOfParticipants: 2,
-          ),
-          title: '',
-          learningObjective: '',
-          instructions: '',
-          vocab: [],
-          activityId: 'endpoint-test-activity',
-        );
-        final Requests req = Requests(accessToken: authToken);
+    test("Activity summary translation endpoint test", () async {
+      final activity = ActivityPlanModel(
+        req: ActivityPlanRequest(
+          topic: '',
+          mode: '',
+          objective: '',
+          media: MediaEnum.nan,
+          cefrLevel: LanguageLevelTypeEnum.a2,
+          languageOfInstructions: 'en',
+          targetLanguage: 'es',
+          numberOfParticipants: 2,
+        ),
+        title: '',
+        learningObjective: '',
+        instructions: '',
+        vocab: [],
+        activityId: 'endpoint-test-activity',
+      );
+      final Requests req = Requests(accessToken: authToken);
 
-        // The bot's canonical call stores the summary and returns its row id.
-        final Response canonical = await req.post(
-          url: "$choreoApi/activity_summary",
-          body: {
-            'activity': activity.toJson(),
-            'activity_results': [],
-            'role_state': {'roles': {}},
-            'viewer_l1': 'en',
-            'mock': true,
-          },
-        );
-        assert(canonical.statusCode == 200);
-        final rowId =
-            jsonDecode(utf8.decode(canonical.bodyBytes))['request_hash']
-                as String;
+      // The bot's canonical call stores the summary and returns its row id.
+      final Response canonical = await req.post(
+        url: "$choreoApi/activity_summary",
+        body: {
+          'activity': activity.toJson(),
+          'activity_results': [],
+          'role_state': {'roles': {}},
+          'viewer_l1': 'en',
+          'mock': true,
+        },
+      );
+      assert(canonical.statusCode == 200);
+      final rowId =
+          jsonDecode(utf8.decode(canonical.bodyBytes))['request_hash']
+              as String;
 
-        // A viewer in another language asks for that row, translated.
-        final Response res = await req.post(
-          url: "$choreoApi/activity_summary",
-          body: ActivitySummaryRequestModel(
-            activity: activity,
-            sourceRequestHash: rowId,
-            viewerL1: 'es',
-            mock: true,
-          ).toJson(),
-        );
+      // A viewer in another language asks for that row, translated.
+      final Response res = await req.post(
+        url: "$choreoApi/activity_summary",
+        body: ActivitySummaryRequestModel(
+          activity: activity,
+          sourceRequestHash: rowId,
+          viewerL1: 'es',
+          mock: true,
+        ).toJson(),
+      );
 
-        // Ensure mock response is valid and compatible with response model
-        assert(res.statusCode == 200);
-        final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
-        ActivitySummaryResponseModel.fromJson(json);
-      },
-    );
+      // Ensure mock response is valid and compatible with response model
+      assert(res.statusCode == 200);
+      final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
+      ActivitySummaryResponseModel.fromJson(json);
+    });
 
     test("Activity feedback endpoint test", () async {
       // This endpoint fetches the activity from CMS before the LLM call, so it
