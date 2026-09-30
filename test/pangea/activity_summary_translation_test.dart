@@ -26,6 +26,7 @@ import 'package:fluffychat/features/activity_sessions/activity_summary_room_exte
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_chat_controller.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_room_types.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'fake_activity_chat_pangea_controller.dart';
@@ -223,10 +224,14 @@ void main() {
     MatrixState.pangeaController = ActivityChatTestPangeaController(
       accessToken: 'syt_test_token',
     );
-    final controller = ActivityChatController(
-      userID: userId,
-      room: room,
-      inputFocus: FocusNode(),
+    // With no plan in the room, the controller fetches one; nothing answers.
+    final controller = http.runWithClient(
+      () => ActivityChatController(
+        userID: userId,
+        room: room,
+        inputFocus: FocusNode(),
+      ),
+      () => MockClient((_) => Completer<http.Response>().future),
     );
     addTearDown(controller.dispose);
 
@@ -281,6 +286,51 @@ void main() {
       expect(view.summary?.summary, 'Bien joué.');
     },
   );
+
+  test('a plan that fails to map shows the summary as written', () async {
+    final room = finishedRoom(langCode: 'fr', requestHash: 'row-bad-plan');
+    // A session room with no plan in state, so the controller fetches one.
+    room.setState(
+      Event(
+        type: EventTypes.RoomCreate,
+        content: {'type': '${PangeaRoomTypes.activitySession}:bad-plan'},
+        senderId: userId,
+        eventId: '\$create',
+        originServerTs: DateTime.now(),
+        stateKey: '',
+        room: room,
+      ),
+    );
+    final requests = <String>[];
+    late ActivityChatController controller;
+    await http.runWithClient(
+      () async {
+        controller = ActivityChatController(
+          userID: userId,
+          room: room,
+          inputFocus: FocusNode(),
+        );
+        for (
+          var i = 0;
+          i < 100 && controller.summaryView.value.isLoading;
+          i++
+        ) {
+          await Future.delayed(const Duration(milliseconds: 10));
+        }
+      },
+      // The plan fetch succeeds with a body that has no plan in it.
+      () => MockClient((request) async {
+        requests.add(request.url.path);
+        return http.Response('{}', 200, request: request);
+      }),
+    );
+    addTearDown(controller.dispose);
+
+    final view = controller.summaryView.value;
+    expect(requests, isNot(contains(summaryPath)));
+    expect(view.isLoading, isFalse);
+    expect(view.summary?.summary, 'Bien joué.');
+  });
 
   test(
     'a summary already in the viewer\'s language is not translated',
@@ -374,6 +424,40 @@ void main() {
       expect(controller.summaryView.value.summary?.summary, 'Well played.');
       expect(controller.confettiNotifier.value, isTrue);
     });
+
+    test(
+      'a regeneration that fails keeps the old summary without confetti',
+      () async {
+        final room = finishedRoom(langCode: 'en', requestHash: 'row-keep');
+        final (controller, _) = await open(room, respond: translated);
+
+        // The bot regenerates: a loading marker, then an error marker that
+        // still carries the summary the learner had.
+        writeSlot(
+          room,
+          ActivitySummaryStateKeys.canonical,
+          ActivitySummaryModel(
+            requestedAt: DateTime.now(),
+            langCode: 'en',
+          ).toJson(),
+        );
+        await Future.delayed(Duration.zero);
+        writeSlot(
+          room,
+          ActivitySummaryStateKeys.canonical,
+          ActivitySummaryModel(
+            summary: summaryText('Bien joué.'),
+            errorAt: DateTime.now(),
+            langCode: 'en',
+            requestHash: 'row-keep',
+          ).toJson(),
+        );
+        await Future.delayed(const Duration(milliseconds: 20));
+
+        expect(controller.summaryView.value.updateFailed, isTrue);
+        expect(controller.confettiNotifier.value, isFalse);
+      },
+    );
 
     test('reopening a summarized room, or the analytics slot\'s write, does '
         'not fire it', () async {

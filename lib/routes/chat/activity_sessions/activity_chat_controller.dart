@@ -6,6 +6,7 @@ import 'package:async/async.dart' show Result;
 import 'package:matrix/matrix.dart' hide Result;
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
@@ -150,7 +151,8 @@ class ActivityChatController {
     summaryView.value = view;
     if (_summaryMayHaveLanded && view.summary != null) {
       _summaryMayHaveLanded = false;
-      showConfetti();
+      // A failed regeneration keeps the old summary on screen; nothing landed.
+      if (!view.updateFailed) showConfetti();
     }
 
     _summaryLoadingTimer?.cancel();
@@ -200,13 +202,22 @@ class ActivityChatController {
     String key,
   ) async {
     // The plan body is canonical in CMS (reference-only room state); resolve
-    // it rather than assuming it is hydrated. The repo reports a failed fetch.
-    final activity =
-        room.activityPlan ??
-        await ActivityPlanRepo.instance.getPlan(room.activityId ?? '');
+    // it rather than assuming it is hydrated. The repo reports a failed fetch,
+    // but a malformed plan throws while mapping, and nothing awaits this call,
+    // so the throw would leave the viewer on the loading state.
+    ActivityPlanModel? activity;
+    Object? planError;
+    try {
+      activity =
+          room.activityPlan ??
+          await ActivityPlanRepo.instance.getPlan(room.activityId ?? '');
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {'roomID': room.id});
+      planError = e;
+    }
     final result = activity == null
         ? Result<ActivitySummaryResponseModel>.error(
-            'No activity plan to translate the summary against',
+            planError ?? 'No activity plan to translate the summary against',
           )
         : await ActivitySummaryRepo.get(
             room.id,
