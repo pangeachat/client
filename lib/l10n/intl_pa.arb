@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-09-30 12:45:46.093045",
+    "@@last_modified": "2026-09-30 11:27:38.331953",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2388,5 +2388,6 @@
     "callTranscriptChooseLanguage": "ਕਿਹੜੀ ਭਾਸ਼ਾ ਬੋਲੀ ਗਈ ਸੀ?",
     "callTranscriptSubscribeForTranscription": "ਲਿਖਣ ਲਈ ਗਾਹਕ ਬਣੋ",
     "unlockCallTranscript": "ਕਾਲ ਟ੍ਰਾਂਸਕ੍ਰਿਪਟ ਅਨਲੌਕ ਕਰੋ",
+    "activitySummaryUpdateFailed": "ਇਹ ਸਾਰਾਂਸ਼ ਅੱਪਡੇਟ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ।",
     "mapCreditsLabel": "ਨਕਸ਼ੇ ਦੇ ਕ੍ਰੈਡਿਟ: ਸਟੇਡੀਆ ਮੈਪਸ, ਓਪਨਮੈਪਟਾਈਲਸ ਅਤੇ ਓਪਨਸਟ੍ਰੀਟਮੈਪ"
 }

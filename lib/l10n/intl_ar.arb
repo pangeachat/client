@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-09-30 12:45:41.735366",
+    "@@last_modified": "2026-09-30 11:27:29.460760",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10286,5 +10286,6 @@
     "callTranscriptChooseLanguage": "ما هي اللغة التي تم التحدث بها؟",
     "callTranscriptSubscribeForTranscription": "اشترك لنسخ المحادثة",
     "unlockCallTranscript": "فتح نسخة المحادثة",
+    "activitySummaryUpdateFailed": "تعذر تحديث هذا الملخص.",
     "mapCreditsLabel": "اعتمادات الخريطة: Stadia Maps، OpenMapTiles وOpenStreetMap"
 }

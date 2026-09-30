@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-09-30 12:45:41.743137",
+    "@@last_modified": "2026-09-30 11:27:29.677221",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2388,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Watter taal is gepraat?",
     "callTranscriptSubscribeForTranscription": "Teken in vir transkripsie",
     "unlockCallTranscript": "Ontsluit oproep-transkripsie",
+    "activitySummaryUpdateFailed": "Hierdie opsomming kon nie bygewerk word nie.",
     "mapCreditsLabel": "Kaartkrediete: Stadia Maps, OpenMapTiles en OpenStreetMap"
 }

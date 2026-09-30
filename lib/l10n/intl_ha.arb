@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-09-30 12:45:43.323364",
+    "@@last_modified": "2026-09-30 11:27:32.688736",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2388,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Wane yare aka yi magana da shi?",
     "callTranscriptSubscribeForTranscription": "Biyan kuɗi don fassara",
     "unlockCallTranscript": "Buɗe rubutun kiran",
+    "activitySummaryUpdateFailed": "Ba a iya sabunta wannan taƙaitaccen bayanin ba.",
     "mapCreditsLabel": "Godiya ga taswira: Stadia Maps, OpenMapTiles da OpenStreetMap"
 }

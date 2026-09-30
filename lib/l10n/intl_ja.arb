@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-09-30 12:45:44.054829",
+    "@@last_modified": "2026-09-30 11:27:33.876957",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10749,5 +10749,6 @@
     "callTranscriptChooseLanguage": "話された言語は何ですか？",
     "callTranscriptSubscribeForTranscription": "文字起こしを購読する",
     "unlockCallTranscript": "通話記録のロックを解除",
+    "activitySummaryUpdateFailed": "この要約を更新できませんでした。",
     "mapCreditsLabel": "マップクレジット: Stadia Maps, OpenMapTiles, OpenStreetMap"
 }

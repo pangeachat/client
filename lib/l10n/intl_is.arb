@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-09-30 12:45:44.179828",
+    "@@last_modified": "2026-09-30 11:27:33.884447",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2388,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Hvaða tungumál var talað?",
     "callTranscriptSubscribeForTranscription": "Gerast áskrifandi að umritun",
     "unlockCallTranscript": "Aflæsa umritun símtals",
+    "activitySummaryUpdateFailed": "Ekki tókst að uppfæra þessa samantekt.",
     "mapCreditsLabel": "Kortaupplýsingar: Stadia Maps, OpenMapTiles og OpenStreetMap"
 }

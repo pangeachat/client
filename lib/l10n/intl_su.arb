@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-09-30 12:45:47.029834",
+    "@@last_modified": "2026-09-30 11:27:40.265793",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2388,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Basa naon nu diucapkeun?",
     "callTranscriptSubscribeForTranscription": "Langganan pikeun transkripsi",
     "unlockCallTranscript": "Buka konci transkrip telepon",
+    "activitySummaryUpdateFailed": "Ringkesan ieu teu tiasa diropéa.",
     "mapCreditsLabel": "Kredit peta: Stadia Maps, OpenMapTiles sareng OpenStreetMap"
 }

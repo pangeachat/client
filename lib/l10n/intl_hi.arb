@@ -3093,7 +3093,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-09-30 12:45:43.453533",
+    "@@last_modified": "2026-09-30 11:27:32.811338",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10612,5 +10612,6 @@
     "callTranscriptChooseLanguage": "कौन सी भाषा बोली गई थी?",
     "callTranscriptSubscribeForTranscription": "लिप्यंतरण के लिए सदस्यता लें",
     "unlockCallTranscript": "कॉल ट्रांसक्रिप्ट अनलॉक करें",
+    "activitySummaryUpdateFailed": "यह सारांश अपडेट नहीं किया जा सका।",
     "mapCreditsLabel": "मैप क्रेडिट: स्टेडिया मैप्स, ओपनमैपटाइल्स और ओपनस्ट्रीटमैप"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-09-30 12:45:47.867076",
+    "@@last_modified": "2026-09-30 11:27:41.395282",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2388,5 +2388,6 @@
     "callTranscriptChooseLanguage": "قايسى تىلدا سۆزلەنگەن؟",
     "callTranscriptSubscribeForTranscription": "تەرجىمە قىلىش ئۈچۈن مۇشتەرى بولۇڭ",
     "unlockCallTranscript": "تېلېفون خاتىرىسىنى ئېچىش",
+    "activitySummaryUpdateFailed": "بۇ خۇلاسىنى يېڭىلاش مۇمكىن بولمىدى.",
     "mapCreditsLabel": "خەرىتە ئىناۋىتى: Stadia Maps, OpenMapTiles ۋە OpenStreetMap"
 }

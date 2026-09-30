@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-09-30 12:45:44.620449",
+    "@@last_modified": "2026-09-30 11:27:34.876958",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2388,5 +2388,6 @@
     "callTranscriptChooseLanguage": "ಯಾವ ಭಾಷೆಯನ್ನು ಮಾತನಾಡಲಾಗಿದೆ?",
     "callTranscriptSubscribeForTranscription": "ಲಿಪ್ಯಂತರಕ್ಕಾಗಿ ಚಂದಾದಾರರಾಗಿ",
     "unlockCallTranscript": "ಕರೆ ಲಿಪ್ಯಂತರವನ್ನು ಅನ್‌ಲಾಕ್ ಮಾಡಿ",
+    "activitySummaryUpdateFailed": "ಈ ಸಾರಾಂಶವನ್ನು ನವೀಕರಿಸಲಾಗಲಿಲ್ಲ.",
     "mapCreditsLabel": "ನಕ್ಷೆ ಕ್ರೆಡಿಟ್‌ಗಳು: ಸ್ಟೇಡಿಯಾ ಮ್ಯಾಪ್ಸ್, ಓಪನ್‌ಮ್ಯಾಪ್‌ಟೈಲ್ಸ್ ಮತ್ತು ಓಪನ್‌ಸ್ಟ್ರೀಟ್‌ಮ್ಯಾಪ್"
 }

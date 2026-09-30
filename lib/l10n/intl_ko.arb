@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 12:45:44.492859",
+    "@@last_modified": "2026-09-30 11:27:34.828296",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10173,5 +10173,6 @@
     "callTranscriptChooseLanguage": "어떤 언어를 사용했나요?",
     "callTranscriptSubscribeForTranscription": "텍스트 변환 구독",
     "unlockCallTranscript": "통화 기록 잠금 해제",
+    "activitySummaryUpdateFailed": "이 요약을 업데이트할 수 없었습니다.",
     "mapCreditsLabel": "지도 출처: Stadia Maps, OpenMapTiles 및 OpenStreetMap"
 }

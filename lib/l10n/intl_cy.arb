@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-09-30 12:45:42.236722",
+    "@@last_modified": "2026-09-30 11:27:30.838274",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2388,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Pa iaith gafodd ei siarad?",
     "callTranscriptSubscribeForTranscription": "Tanysgrifiwch ar gyfer trawsgrifio",
     "unlockCallTranscript": "Datgloi trawsgrifiad galwad",
+    "activitySummaryUpdateFailed": "Ni ellid diweddaru’r crynodeb hwn.",
     "mapCreditsLabel": "Credydau map: Stadia Maps, OpenMapTiles ac OpenStreetMap"
 }

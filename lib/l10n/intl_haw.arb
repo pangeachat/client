@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-09-30 12:45:43.458466",
+    "@@last_modified": "2026-09-30 11:27:32.831428",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2388,5 +2388,6 @@
     "callTranscriptChooseLanguage": "He aha ka ʻōlelo i ʻōlelo ʻia?",
     "callTranscriptSubscribeForTranscription": "Kakau inoa no ke kākau ʻana",
     "unlockCallTranscript": "Wehe i ke kākau ʻana o ke kelepona",
+    "activitySummaryUpdateFailed": "ʻAʻole hiki ke hoʻopou hou i kēia hōʻuluʻulu.",
     "mapCreditsLabel": "Nā hōʻaiʻē palapala ʻāina: Stadia Maps, OpenMapTiles a me OpenStreetMap"
 }

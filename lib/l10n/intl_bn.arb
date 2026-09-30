@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 12:45:41.704834",
+    "@@last_modified": "2026-09-30 11:27:29.406416",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10608,5 +10608,6 @@
     "callTranscriptChooseLanguage": "কোন ভাষায় কথা বলা হয়েছিল?",
     "callTranscriptSubscribeForTranscription": "ট্রান্সক্রিপশনের জন্য সাবস্ক্রাইব করুন",
     "unlockCallTranscript": "কল ট্রান্সক্রিপ্ট আনলক করুন",
+    "activitySummaryUpdateFailed": "এই সারাংশ আপডেট করা যায়নি।",
     "mapCreditsLabel": "মানচিত্র ক্রেডিট: Stadia Maps, OpenMapTiles এবং OpenStreetMap"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 12:45:48.088074",
+    "@@last_modified": "2026-09-30 11:27:42.021079",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10086,5 +10086,6 @@
     "callTranscriptChooseLanguage": "說的是什麼語言？",
     "callTranscriptSubscribeForTranscription": "訂閱以取得轉錄",
     "unlockCallTranscript": "解鎖通話記錄",
+    "activitySummaryUpdateFailed": "無法更新此摘要。",
     "mapCreditsLabel": "地圖來源：Stadia Maps、OpenMapTiles 和 OpenStreetMap"
 }

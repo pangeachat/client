@@ -3535,7 +3535,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-09-30 12:45:45.382274",
+    "@@last_modified": "2026-09-30 11:27:36.177664",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -9980,5 +9980,6 @@
     "callTranscriptChooseLanguage": "Kādā valodā runājāt?",
     "callTranscriptSubscribeForTranscription": "Abonēt transkripciju",
     "unlockCallTranscript": "Atbloķēt zvanu transkriptu",
+    "activitySummaryUpdateFailed": "Šo kopsavilkumu nevarēja atjaunināt.",
     "mapCreditsLabel": "Kartes atsauces: Stadia Maps, OpenMapTiles un OpenStreetMap"
 }

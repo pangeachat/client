@@ -1937,7 +1937,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-09-30 12:45:44.345574",
+    "@@last_modified": "2026-09-30 11:27:35.103592",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10880,5 +10880,6 @@
     "callTranscriptChooseLanguage": "რა ენაზე საუბრობდით?",
     "callTranscriptSubscribeForTranscription": "გამოიწერეთ ტრანსკრიფციისთვის",
     "unlockCallTranscript": "ზარის ტრანსკრიფციის განბლოკვა",
+    "activitySummaryUpdateFailed": "ამ შეჯამების განახლება ვერ მოხერხდა.",
     "mapCreditsLabel": "რუკის კრედიტები: Stadia Maps, OpenMapTiles და OpenStreetMap"
 }

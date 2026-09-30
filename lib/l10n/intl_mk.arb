@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-09-30 12:45:45.266536",
+    "@@last_modified": "2026-09-30 11:27:36.291457",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2388,5 +2388,6 @@
     "callTranscriptChooseLanguage": "На кој јазик се зборуваше?",
     "callTranscriptSubscribeForTranscription": "Претплатете се за транскрипција",
     "unlockCallTranscript": "Отклучи транскрипт на повик",
+    "activitySummaryUpdateFailed": "Ова резиме не можеше да се ажурира.",
     "mapCreditsLabel": "Кредити за мапа: Stadia Maps, OpenMapTiles и OpenStreetMap"
 }

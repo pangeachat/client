@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-09-30 12:45:46.819931",
+    "@@last_modified": "2026-09-30 11:27:39.763893",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2388,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Çfarë gjuhe u fol?",
     "callTranscriptSubscribeForTranscription": "Abonohu për transkriptim",
     "unlockCallTranscript": "Zhbloko transkriptin e thirrjes",
+    "activitySummaryUpdateFailed": "Ky përmbledhje nuk mund të përditësohej.",
     "mapCreditsLabel": "Kreditet e hartës: Stadia Maps, OpenMapTiles dhe OpenStreetMap"
 }

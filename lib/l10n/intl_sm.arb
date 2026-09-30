@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-09-30 12:45:46.860118",
+    "@@last_modified": "2026-09-30 11:27:39.789100",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2388,5 +2388,6 @@
     "callTranscriptChooseLanguage": "O le a le gagana na tautalagia?",
     "callTranscriptSubscribeForTranscription": "Lesitala mo le fa'aliliuga",
     "unlockCallTranscript": "Tatala le fa'aliliuga o le vala'au",
+    "activitySummaryUpdateFailed": "E leʻi mafai ona faʻafouina lenei aotelega.",
     "mapCreditsLabel": "Fa'afetai mo fa'afanua: Stadia Maps, OpenMapTiles ma OpenStreetMap"
 }

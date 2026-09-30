@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-09-30 12:45:41.750670",
+    "@@last_modified": "2026-09-30 11:27:29.780929",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2388,5 +2388,6 @@
     "callTranscriptChooseLanguage": "የተነገረው ቋንቋ የትኛው ነው?",
     "callTranscriptSubscribeForTranscription": "ለጽሑፍ መቀየር ይመዝገቡ",
     "unlockCallTranscript": "የጥሪ ግልባጭ ክፈት",
+    "activitySummaryUpdateFailed": "ይህ ማጠቃለያ ሊዘመን አልቻለም።",
     "mapCreditsLabel": "የካርታ ክሬዲቶች: Stadia Maps, OpenMapTiles እና OpenStreetMap"
 }

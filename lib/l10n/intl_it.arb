@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 12:45:43.912851",
+    "@@last_modified": "2026-09-30 11:27:34.223326",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -10053,5 +10053,6 @@
     "callTranscriptChooseLanguage": "Che lingua è stata parlata?",
     "callTranscriptSubscribeForTranscription": "Abbonati per la trascrizione",
     "unlockCallTranscript": "Sblocca trascrizione chiamata",
+    "activitySummaryUpdateFailed": "Impossibile aggiornare questo riepilogo.",
     "mapCreditsLabel": "Crediti mappa: Stadia Maps, OpenMapTiles e OpenStreetMap"
 }

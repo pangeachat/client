@@ -3548,7 +3548,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-09-30 12:45:41.721974",
+    "@@last_modified": "2026-09-30 11:27:29.672254",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9994,5 +9994,6 @@
     "callTranscriptChooseLanguage": "На якой мове размаўлялі?",
     "callTranscriptSubscribeForTranscription": "Падпісацца на транскрыпцыю",
     "unlockCallTranscript": "Разблакіраваць стэнаграму званка",
+    "activitySummaryUpdateFailed": "Гэтае зводка не можа быць абноўлена.",
     "mapCreditsLabel": "Аўтарства карты: Stadia Maps, OpenMapTiles і OpenStreetMap"
 }

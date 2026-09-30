@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-09-30 12:45:47.209169",
+    "@@last_modified": "2026-09-30 11:27:40.406803",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2388,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Ni lugha gani ilizungumzwa?",
     "callTranscriptSubscribeForTranscription": "Jisajili ili upate nakala",
     "unlockCallTranscript": "Fungua nakala ya simu",
+    "activitySummaryUpdateFailed": "Muhtasari huu haukuweza kusasishwa.",
     "mapCreditsLabel": "Mikopo ya ramani: Ramani za Stadia, OpenMapTiles na OpenStreetMap"
 }

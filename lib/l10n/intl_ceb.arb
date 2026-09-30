@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-09-30 12:45:42.270400",
+    "@@last_modified": "2026-09-30 11:27:30.387513",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2388,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Unsang pinulongan ang gisulti?",
     "callTranscriptSubscribeForTranscription": "Mag-subscribe para sa transcription",
     "unlockCallTranscript": "I-unlock ang transcript sa tawag",
+    "activitySummaryUpdateFailed": "Dili ma-update kining summary.",
     "mapCreditsLabel": "Mga kredito sa mapa: Stadia Maps, OpenMapTiles ug OpenStreetMap"
 }

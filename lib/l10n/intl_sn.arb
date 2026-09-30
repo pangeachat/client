@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-09-30 12:45:46.559551",
+    "@@last_modified": "2026-09-30 11:27:39.754889",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2388,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Mutauro upi wakataurwa?",
     "callTranscriptSubscribeForTranscription": "Nyorera kuti unyorerwe",
     "unlockCallTranscript": "Vhura zvinyorwa zvekufona",
+    "activitySummaryUpdateFailed": "Chidimbu ichi hachina kukwanisa kugadziriswa.",
     "mapCreditsLabel": "Map credits: Stadia Maps, OpenMapTiles neOpenStreetMap"
 }

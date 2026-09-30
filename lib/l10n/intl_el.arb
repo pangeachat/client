@@ -3400,7 +3400,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-09-30 12:45:42.340216",
+    "@@last_modified": "2026-09-30 11:27:31.044633",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10855,5 +10855,6 @@
     "callTranscriptChooseLanguage": "Ποια γλώσσα ομιλήθηκε;",
     "callTranscriptSubscribeForTranscription": "Εγγραφείτε για μεταγραφή",
     "unlockCallTranscript": "Ξεκλείδωμα μεταγραφής κλήσης",
+    "activitySummaryUpdateFailed": "Αυτή η σύνοψη δεν ήταν δυνατό να ενημερωθεί.",
     "mapCreditsLabel": "Συντελεστές χάρτη: Stadia Maps, OpenMapTiles και OpenStreetMap"
 }

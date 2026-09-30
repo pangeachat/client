@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-09-30 12:45:47.522227",
+    "@@last_modified": "2026-09-30 11:27:41.174742",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9980,5 +9980,6 @@
     "callTranscriptChooseLanguage": "Якою мовою розмовляли?",
     "callTranscriptSubscribeForTranscription": "Підписатися на транскрипцію",
     "unlockCallTranscript": "Розблокувати стенограму дзвінка",
+    "activitySummaryUpdateFailed": "Не вдалося оновити зведення.",
     "mapCreditsLabel": "Авторство карти: Stadia Maps, OpenMapTiles та OpenStreetMap"
 }

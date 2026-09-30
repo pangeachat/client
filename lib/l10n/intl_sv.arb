@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 12:45:47.158234",
+    "@@last_modified": "2026-09-30 11:27:40.217437",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10498,5 +10498,6 @@
     "callTranscriptChooseLanguage": "Vilket språk talades?",
     "callTranscriptSubscribeForTranscription": "Prenumerera för transkription",
     "unlockCallTranscript": "Lås upp samtalstranskription",
+    "activitySummaryUpdateFailed": "Denna sammanfattning kunde inte uppdateras.",
     "mapCreditsLabel": "Kartkrediter: Stadia Maps, OpenMapTiles och OpenStreetMap"
 }

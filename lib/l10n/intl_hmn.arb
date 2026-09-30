@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-09-30 12:45:43.425316",
+    "@@last_modified": "2026-09-30 11:27:32.953493",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2388,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Hais hom lus twg?",
     "callTranscriptSubscribeForTranscription": "Sau npe kom sau ua ntawv",
     "unlockCallTranscript": "Xauv cov ntawv sau ua lus",
+    "activitySummaryUpdateFailed": "Qhov ntsiab lus no hloov tsis tau.",
     "mapCreditsLabel": "Daim ntawv qhia chaw: Stadia Maps, OpenMapTiles thiab OpenStreetMap"
 }

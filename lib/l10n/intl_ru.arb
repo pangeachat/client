@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-09-30 12:45:46.429095",
+    "@@last_modified": "2026-09-30 11:27:38.913188",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10952,5 +10952,6 @@
     "callTranscriptChooseLanguage": "На каком языке говорили?",
     "callTranscriptSubscribeForTranscription": "Подписаться на расшифровку",
     "unlockCallTranscript": "Разблокировать расшифровку звонка",
+    "activitySummaryUpdateFailed": "Не удалось обновить сводку.",
     "mapCreditsLabel": "Авторы карты: Stadia Maps, OpenMapTiles и OpenStreetMap"
 }

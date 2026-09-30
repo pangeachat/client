@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-09-30 12:45:41.779324",
+    "@@last_modified": "2026-09-30 11:27:29.856829",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2388,5 +2388,6 @@
     "callTranscriptChooseLanguage": "কোন ভাষা কোৱা হৈছিল?",
     "callTranscriptSubscribeForTranscription": "লিখিত ৰূপলৈ ৰূপান্তৰ কৰিবলৈ সদস্যতা লওক",
     "unlockCallTranscript": "কল ট্ৰান্সক্ৰিপ্ট আনলক কৰক",
+    "activitySummaryUpdateFailed": "এই সাৰাংশটো আপডেইট কৰিব পৰা নগ’ল।",
     "mapCreditsLabel": "মানচিত্ৰৰ ক্ৰেডিটসমূহ: Stadia Maps, OpenMapTiles আৰু OpenStreetMap"
 }

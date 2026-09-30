@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-09-30 12:45:48.157459",
+    "@@last_modified": "2026-09-30 11:27:42.459967",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2388,5 +2388,6 @@
     "callTranscriptChooseLanguage": "וועלכע שפּראַך איז גערעדט געוואָרן?",
     "callTranscriptSubscribeForTranscription": "סובסקריבירן פֿאַר טראַנסקריפּציע",
     "unlockCallTranscript": "אַנשליסן רוף טראַנסקריפּט",
+    "activitySummaryUpdateFailed": "די סומאַריע קען נישט דערהייַנטיקט ווערן.",
     "mapCreditsLabel": "מאַפּע קרעדיץ: סטאַדיאַ מאַפּס, אָפּענמאַפּטילעס און אָפּענסטרעעטמאַפּ"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-09-30 12:45:47.448565",
+    "@@last_modified": "2026-09-30 11:27:40.744925",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10281,5 +10281,6 @@
     "callTranscriptChooseLanguage": "Hangi dil konuşuldu?",
     "callTranscriptSubscribeForTranscription": "Metne çevirme için abone ol",
     "unlockCallTranscript": "Çağrı dökümünü aç",
+    "activitySummaryUpdateFailed": "Bu özet güncellenemedi.",
     "mapCreditsLabel": "Harita bilgileri: Stadia Maps, OpenMapTiles ve OpenStreetMap"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 12:45:43.318305",
+    "@@last_modified": "2026-09-30 11:27:32.709366",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10894,5 +10894,6 @@
     "callTranscriptChooseLanguage": "באיזו שפה דיברתם?",
     "callTranscriptSubscribeForTranscription": "הירשם לתימלול",
     "unlockCallTranscript": "פתח את תמלול השיחה",
+    "activitySummaryUpdateFailed": "לא ניתן היה לעדכן את הסיכום הזה.",
     "mapCreditsLabel": "קרדיטים למפה: Stadia Maps, OpenMapTiles ו-OpenStreetMap"
 }

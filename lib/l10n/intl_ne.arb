@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-09-30 12:45:45.796082",
+    "@@last_modified": "2026-09-30 11:27:37.472676",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2388,5 +2388,6 @@
     "callTranscriptChooseLanguage": "कुन भाषा बोलिएको थियो?",
     "callTranscriptSubscribeForTranscription": "ट्रान्सक्रिप्शनका लागि सदस्यता लिनुहोस्",
     "unlockCallTranscript": "कल ट्रान्सक्रिप्ट अनलक गर्नुहोस्",
+    "activitySummaryUpdateFailed": "यो सारांश अद्यावधिक गर्न सकिएन।",
     "mapCreditsLabel": "नक्सा क्रेडिट: Stadia Maps, OpenMapTiles र OpenStreetMap"
 }

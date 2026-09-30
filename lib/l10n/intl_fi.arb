@@ -3536,7 +3536,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-09-30 12:45:42.865318",
+    "@@last_modified": "2026-09-30 11:27:31.769718",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -10017,5 +10017,6 @@
     "callTranscriptChooseLanguage": "Mitä kieltä puhuttiin?",
     "callTranscriptSubscribeForTranscription": "Tilaa litterointi",
     "unlockCallTranscript": "Avaa puhelun litterointi",
+    "activitySummaryUpdateFailed": "Yhteenvedon päivittäminen epäonnistui.",
     "mapCreditsLabel": "Karttatiedot: Stadia Maps, OpenMapTiles ja OpenStreetMap"
 }

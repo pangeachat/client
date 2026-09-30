@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-09-30 12:45:44.489857",
+    "@@last_modified": "2026-09-30 11:27:35.206369",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2388,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Us langwej dɛn bin tɔk?",
     "callTranscriptSubscribeForTranscription": "Sabsakrayb fɔ transkripshɔn",
     "unlockCallTranscript": "Ɔnlɔk kɔl transkript",
+    "activitySummaryUpdateFailed": "Dis samari nɔ kɔn fɔ chenj.",
     "mapCreditsLabel": "Map credit dɛn: Stadia Maps, OpenMapTiles ɛn OpenStreetMap"
 }

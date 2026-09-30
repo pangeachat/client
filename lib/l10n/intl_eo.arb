@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 12:45:42.409572",
+    "@@last_modified": "2026-09-30 11:27:30.820029",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10925,5 +10925,6 @@
     "callTranscriptChooseLanguage": "Kiun lingvon oni parolis?",
     "callTranscriptSubscribeForTranscription": "Aboni por transskribo",
     "unlockCallTranscript": "Malŝlosi alvokan transskribon",
+    "activitySummaryUpdateFailed": "Ĉi tiu resumo ne povis esti ĝisdatigita.",
     "mapCreditsLabel": "Mapaj atribuoj: Stadia Maps, OpenMapTiles kaj OpenStreetMap"
 }

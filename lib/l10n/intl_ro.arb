@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 12:45:46.448486",
+    "@@last_modified": "2026-09-30 11:27:38.526489",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10712,5 +10712,6 @@
     "callTranscriptChooseLanguage": "Ce limbă a fost vorbită?",
     "callTranscriptSubscribeForTranscription": "Abonează-te pentru transcriere",
     "unlockCallTranscript": "Deblochează transcrierea apelului",
+    "activitySummaryUpdateFailed": "Acest rezumat nu a putut fi actualizat.",
     "mapCreditsLabel": "Credite hartă: Stadia Maps, OpenMapTiles și OpenStreetMap"
 }

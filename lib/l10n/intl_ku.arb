@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-09-30 12:45:44.790233",
+    "@@last_modified": "2026-09-30 11:27:35.642452",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2388,5 +2388,6 @@
     "callTranscriptChooseLanguage": "بە چ زمانێک قسە کرا؟",
     "callTranscriptSubscribeForTranscription": "بەشداری بکە بۆ گۆڕین بۆ نووسین",
     "unlockCallTranscript": "کردنەوەی گۆڕینی پەیوەندی بۆ نووسین",
+    "activitySummaryUpdateFailed": "ئەم پوختەیە نوێ نه‌کرایه‌وه‌.",
     "mapCreditsLabel": "مافی نەخشەکان: نەخشەکانی ستادیا، OpenMapTiles و OpenStreetMap"
 }

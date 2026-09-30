@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 12:45:47.194851",
+    "@@last_modified": "2026-09-30 11:27:41.170278",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -10072,5 +10072,6 @@
     "callTranscriptChooseLanguage": "எந்த மொழி பேசப்பட்டது?",
     "callTranscriptSubscribeForTranscription": "படியெடுத்தலுக்கு குழுசேரவும்",
     "unlockCallTranscript": "அழைப்புப் படியெடுத்தலைத் திறக்கவும்",
+    "activitySummaryUpdateFailed": "இந்தச் சுருக்கத்தைப் புதுப்பிக்க முடியவில்லை.",
     "mapCreditsLabel": "வரைபட வரவுகள்: Stadia Maps, OpenMapTiles மற்றும் OpenStreetMap"
 }

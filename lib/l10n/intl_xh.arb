@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-09-30 12:45:47.872467",
+    "@@last_modified": "2026-09-30 11:27:42.010159",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2388,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Loluphi ulwimi oluthethweyo?",
     "callTranscriptSubscribeForTranscription": "Bhalisa ukuze ufumane ukubhalwa phantsi",
     "unlockCallTranscript": "Vula umbhalo wefowuni",
+    "activitySummaryUpdateFailed": "Esi sishwankathelo asikwazanga ukuhlaziywa.",
     "mapCreditsLabel": "Amakhredithi emephu: Stadia Maps, OpenMapTiles kunye ne-OpenStreetMap"
 }

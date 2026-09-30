@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-09-30 12:45:42.195326",
+    "@@last_modified": "2026-09-30 11:27:30.606426",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9967,5 +9967,6 @@
     "callTranscriptChooseLanguage": "Welche Sprache wurde gesprochen?",
     "callTranscriptSubscribeForTranscription": "Für Transkription abonnieren",
     "unlockCallTranscript": "Anruf-Transkript freischalten",
+    "activitySummaryUpdateFailed": "Diese Zusammenfassung konnte nicht aktualisiert werden.",
     "mapCreditsLabel": "Karten-Credits: Stadia Maps, OpenMapTiles und OpenStreetMap"
 }

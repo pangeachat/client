@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 12:45:42.205890",
+    "@@last_modified": "2026-09-30 11:27:30.405659",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10107,5 +10107,6 @@
     "callTranscriptChooseLanguage": "En quina llengua es va parlar?",
     "callTranscriptSubscribeForTranscription": "Subscriu-te per a la transcripció",
     "unlockCallTranscript": "Desbloqueja la transcripció de la trucada",
+    "activitySummaryUpdateFailed": "Aquest resum no s'ha pogut actualitzar.",
     "mapCreditsLabel": "Crèdits del mapa: Stadia Maps, OpenMapTiles i OpenStreetMap"
 }

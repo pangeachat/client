@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-09-30 12:45:42.825658",
+    "@@last_modified": "2026-09-30 11:27:31.633257",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10335,5 +10335,6 @@
     "callTranscriptChooseLanguage": "Quelle langue a été parlée ?",
     "callTranscriptSubscribeForTranscription": "S'abonner pour la transcription",
     "unlockCallTranscript": "Déverrouiller la transcription de l'appel",
+    "activitySummaryUpdateFailed": "Ce résumé n'a pas pu être mis à jour.",
     "mapCreditsLabel": "Crédits cartographiques : Stadia Maps, OpenMapTiles et OpenStreetMap"
 }

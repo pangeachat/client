@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-09-30 12:45:43.748862",
+    "@@last_modified": "2026-09-30 11:27:34.504248",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10083,5 +10083,6 @@
     "callTranscriptChooseLanguage": "Milyen nyelven beszéltek?",
     "callTranscriptSubscribeForTranscription": "Feliratkozás az átírásra",
     "unlockCallTranscript": "Hívás átirat feloldása",
+    "activitySummaryUpdateFailed": "Ezt az összefoglalót nem sikerült frissíteni.",
     "mapCreditsLabel": "Térkép forrása: Stadia Maps, OpenMapTiles és OpenStreetMap"
 }

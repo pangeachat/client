@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-09-30 12:45:44.584642",
+    "@@last_modified": "2026-09-30 11:27:36.243879",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2388,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Кайсы тилде сүйлөштү?",
     "callTranscriptSubscribeForTranscription": "Транскрипция үчүн жазылуу",
     "unlockCallTranscript": "Чакыруу транскрипциясын ачуу",
+    "activitySummaryUpdateFailed": "Бул корутунду жаңыртылган жок.",
     "mapCreditsLabel": "Картанын авторлору: Stadia Maps, OpenMapTiles жана OpenStreetMap"
 }

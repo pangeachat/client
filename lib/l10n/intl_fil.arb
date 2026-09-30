@@ -2080,7 +2080,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-09-30 12:45:42.800277",
+    "@@last_modified": "2026-09-30 11:27:31.448370",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10840,5 +10840,6 @@
     "callTranscriptChooseLanguage": "Anong wika ang ginamit?",
     "callTranscriptSubscribeForTranscription": "Mag-subscribe para sa transkripsyon",
     "unlockCallTranscript": "I-unlock ang transkripsyon ng tawag",
+    "activitySummaryUpdateFailed": "Hindi ma-update ang buod na ito.",
     "mapCreditsLabel": "Mga credit sa mapa: Stadia Maps, OpenMapTiles at OpenStreetMap"
 }

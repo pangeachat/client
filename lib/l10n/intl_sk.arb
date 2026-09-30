@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-09-30 12:45:46.621778",
+    "@@last_modified": "2026-09-30 11:27:39.386961",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10925,5 +10925,6 @@
     "callTranscriptChooseLanguage": "Akým jazykom sa hovorilo?",
     "callTranscriptSubscribeForTranscription": "Predplatiť si prepis",
     "unlockCallTranscript": "Odomknúť prepis hovoru",
+    "activitySummaryUpdateFailed": "Tento súhrn nebolo možné aktualizovať.",
     "mapCreditsLabel": "Autorské práva k mape: Stadia Maps, OpenMapTiles a OpenStreetMap"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-09-30 12:45:46.989668",
+    "@@last_modified": "2026-09-30 11:27:39.838475",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2388,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Luqaddee lagu hadlay?",
     "callTranscriptSubscribeForTranscription": "Isdiiwaangeli si aad u hesho qoraalka",
     "unlockCallTranscript": "Fur qoraalka wicitaanka",
+    "activitySummaryUpdateFailed": "Soo koobiddaan lama cusboonaysiin karin.",
     "mapCreditsLabel": "Aqoonsiga khariidadda: Khariidadaha Stadia, OpenMapTiles iyo OpenStreetMap"
 }

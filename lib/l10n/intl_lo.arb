@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-09-30 12:45:44.859931",
+    "@@last_modified": "2026-09-30 11:27:36.182236",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2388,5 +2388,6 @@
     "callTranscriptChooseLanguage": "ເວົ້າພາສາຫຍັງ?",
     "callTranscriptSubscribeForTranscription": "ສະໝັກໃຊ້ສຳລັບການຖອດຂໍ້ຄວາມ",
     "unlockCallTranscript": "ປົດລັອກການຖອດຂໍ້ຄວາມການໂທ",
+    "activitySummaryUpdateFailed": "ບໍ່ສາມາດອັບເດດສະຫຼຸບນີ້ໄດ້.",
     "mapCreditsLabel": "ຂໍ້ມູນແຜນທີ່: Stadia Maps, OpenMapTiles ແລະ OpenStreetMap"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-09-30 12:45:42.302600",
+    "@@last_modified": "2026-09-30 11:27:30.430652",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10474,5 +10474,6 @@
     "callTranscriptChooseLanguage": "Jakým jazykem se mluvilo?",
     "callTranscriptSubscribeForTranscription": "Předplatit si přepis",
     "unlockCallTranscript": "Odemknout přepis hovoru",
+    "activitySummaryUpdateFailed": "Tento souhrn nelze aktualizovat.",
     "mapCreditsLabel": "Zásluhy mapy: Stadia Maps, OpenMapTiles a OpenStreetMap"
 }

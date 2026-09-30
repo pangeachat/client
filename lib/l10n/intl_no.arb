@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-09-30 12:45:45.936930",
+    "@@last_modified": "2026-09-30 11:27:37.689874",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2388,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Hvilket språk ble snakket?",
     "callTranscriptSubscribeForTranscription": "Abonner for transkripsjon",
     "unlockCallTranscript": "Lås opp samtaletranskripsjon",
+    "activitySummaryUpdateFailed": "Denne oppsummeringen kunne ikke oppdateres.",
     "mapCreditsLabel": "Kartkreditering: Stadia Maps, OpenMapTiles og OpenStreetMap"
 }

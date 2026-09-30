@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-09-30 12:45:43.155796",
+    "@@last_modified": "2026-09-30 11:27:32.413079",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2388,5 +2388,6 @@
     "callTranscriptChooseLanguage": "કઈ ભાષા બોલવામાં આવી હતી?",
     "callTranscriptSubscribeForTranscription": "ટ્રાન્સક્રિપ્શન માટે સબ્સ્ક્રાઇબ કરો",
     "unlockCallTranscript": "કૉલ ટ્રાન્સક્રિપ્ટ અનલૉક કરો",
+    "activitySummaryUpdateFailed": "આ સારાંશ અપડેટ કરી શકાયો નથી.",
     "mapCreditsLabel": "નકશા ક્રેડિટ્સ: Stadia Maps, OpenMapTiles અને OpenStreetMap"
 }

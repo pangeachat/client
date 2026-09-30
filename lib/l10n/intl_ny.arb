@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-09-30 12:45:45.922107",
+    "@@last_modified": "2026-09-30 11:27:38.379741",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2388,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Ndi chilankhulo chiti chomwe chinalankhulidwa?",
     "callTranscriptSubscribeForTranscription": "Lembetsani kuti mulembedwe",
     "unlockCallTranscript": "Tsegulani zolembedwa za kuyimba",
+    "activitySummaryUpdateFailed": "Chidulechi sichinathe kusinthidwa.",
     "mapCreditsLabel": "Map credits: Stadia Maps, OpenMapTiles ndi OpenStreetMap"
 }

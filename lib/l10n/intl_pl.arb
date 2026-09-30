@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-09-30 12:45:45.950419",
+    "@@last_modified": "2026-09-30 11:27:38.485962",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10065,5 +10065,6 @@
     "callTranscriptChooseLanguage": "W jakim języku mówiono?",
     "callTranscriptSubscribeForTranscription": "Subskrybuj, aby uzyskać transkrypcję",
     "unlockCallTranscript": "Odblokuj transkrypcję rozmowy",
+    "activitySummaryUpdateFailed": "Nie udało się zaktualizować podsumowania.",
     "mapCreditsLabel": "Źródło map: Stadia Maps, OpenMapTiles i OpenStreetMap"
 }

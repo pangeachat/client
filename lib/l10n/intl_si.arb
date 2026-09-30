@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-09-30 12:45:46.633301",
+    "@@last_modified": "2026-09-30 11:27:39.369607",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2388,5 +2388,6 @@
     "callTranscriptChooseLanguage": "කතා කළ භාෂාව කුමක්ද?",
     "callTranscriptSubscribeForTranscription": "පිටපත් කිරීම සඳහා දායක වන්න",
     "unlockCallTranscript": "ඇමතුම් පිටපත අගුළු හරින්න",
+    "activitySummaryUpdateFailed": "මෙම සාරාංශය යාවත්කාලීන කිරීමට නොහැකි විය.",
     "mapCreditsLabel": "සිතියම් ණය: Stadia Maps, OpenMapTiles සහ OpenStreetMap"
 }

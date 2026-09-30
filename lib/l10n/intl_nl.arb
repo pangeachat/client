@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 12:45:45.791532",
+    "@@last_modified": "2026-09-30 11:27:37.425422",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9980,5 +9980,6 @@
     "callTranscriptChooseLanguage": "Welke taal werd er gesproken?",
     "callTranscriptSubscribeForTranscription": "Abonneren voor transcriptie",
     "unlockCallTranscript": "Ontgrendel gespreksafschrift",
+    "activitySummaryUpdateFailed": "Deze samenvatting kon niet worden bijgewerkt.",
     "mapCreditsLabel": "Kaartcredits: Stadia Maps, OpenMapTiles en OpenStreetMap"
 }

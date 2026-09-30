@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-09-30 12:45:47.398342",
+    "@@last_modified": "2026-09-30 11:27:41.054707",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2388,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Бо кадом забон гуфтугӯ шуд?",
     "callTranscriptSubscribeForTranscription": "Барои транскрипсия обуна шавед",
     "unlockCallTranscript": "Транскрипти зангро кушоед",
+    "activitySummaryUpdateFailed": "Ин хулоса нав карда нашуд.",
     "mapCreditsLabel": "Ҳуқуқи харита: Stadia Maps, OpenMapTiles ва OpenStreetMap"
 }

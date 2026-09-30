@@ -1802,7 +1802,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-09-30 12:45:46.651615",
+    "@@last_modified": "2026-09-30 11:27:39.340289",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10925,5 +10925,6 @@
     "callTranscriptChooseLanguage": "Kateri jezik je bil govorjen?",
     "callTranscriptSubscribeForTranscription": "Naročite se na prepisovanje",
     "unlockCallTranscript": "Odkleni prepis klica",
+    "activitySummaryUpdateFailed": "Tega povzetka ni bilo mogoče posodobiti.",
     "mapCreditsLabel": "Zasluge za zemljevid: Stadia Maps, OpenMapTiles in OpenStreetMap"
 }

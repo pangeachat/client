@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-09-30 12:45:44.777896",
+    "@@last_modified": "2026-09-30 11:27:35.319966",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2388,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Qua lingua locutum est?",
     "callTranscriptSubscribeForTranscription": "Subscribere pro transcriptione",
     "unlockCallTranscript": "Reserare transcriptionem vocis",
+    "activitySummaryUpdateFailed": "Haec summa renovari non potuit.",
     "mapCreditsLabel": "Tabulae credita: Stadia Maps, OpenMapTiles et OpenStreetMap"
 }

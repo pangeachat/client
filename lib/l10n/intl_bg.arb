@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-09-30 12:45:41.701009",
+    "@@last_modified": "2026-09-30 11:27:29.474011",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2388,5 +2388,6 @@
     "callTranscriptChooseLanguage": "На какъв език се говореше?",
     "callTranscriptSubscribeForTranscription": "Абонирайте се за транскрипция",
     "unlockCallTranscript": "Отключване на препис от разговора",
+    "activitySummaryUpdateFailed": "Това резюме не можа да бъде актуализирано.",
     "mapCreditsLabel": "Карта: Stadia Maps, OpenMapTiles и OpenStreetMap"
 }

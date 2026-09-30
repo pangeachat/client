@@ -1324,7 +1324,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-09-30 12:45:47.460159",
+    "@@last_modified": "2026-09-30 11:27:40.739021",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10930,5 +10930,6 @@
     "callTranscriptChooseLanguage": "ఏ భాష మాట్లాడబడింది?",
     "callTranscriptSubscribeForTranscription": "ట్రాన్స్‌క్రిప్షన్ కోసం సబ్‌స్క్రైబ్ చేయండి",
     "unlockCallTranscript": "కాల్ ట్రాన్స్‌క్రిప్ట్‌ను అన్‌లాక్ చేయండి",
+    "activitySummaryUpdateFailed": "ఈ సారాంశాన్ని అప్‌డేట్ చేయలేకపోయాము.",
     "mapCreditsLabel": "మ్యాప్ క్రెడిట్‌లు: స్టాడియా మ్యాప్స్, ఓపెన్‌మ్యాప్‌టైల్స్ మరియు ఓపెన్‌స్ట్రీట్‌మ్యాప్"
 }

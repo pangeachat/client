@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-09-30 12:45:46.779023",
+    "@@last_modified": "2026-09-30 11:27:39.752568",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2388,5 +2388,6 @@
     "callTranscriptChooseLanguage": "ڪهڙي ٻولي ڳالهائي وئي؟",
     "callTranscriptSubscribeForTranscription": "لِکڻ لاءِ سبسڪرائب ڪريو",
     "unlockCallTranscript": "ڪال ٽرانسڪرپٽ کوليو",
+    "activitySummaryUpdateFailed": "هي خلاصو اپڊيٽ نه ٿي سگهيو.",
     "mapCreditsLabel": "نقشي جا ڪريڊٽ: اسٽيڊيا ميپس، اوپن ميپ ٽائيلز ۽ اوپن اسٽريٽ ميپ"
 }

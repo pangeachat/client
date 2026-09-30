@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 12:45:46.135931",
+    "@@last_modified": "2026-09-30 11:27:38.256351",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10924,5 +10924,6 @@
     "callTranscriptChooseLanguage": "Qual idioma foi falado?",
     "callTranscriptSubscribeForTranscription": "Assine para transcrever",
     "unlockCallTranscript": "Desbloquear transcrição da chamada",
+    "activitySummaryUpdateFailed": "Não foi possível atualizar este resumo.",
     "mapCreditsLabel": "Créditos do mapa: Stadia Maps, OpenMapTiles e OpenStreetMap"
 }

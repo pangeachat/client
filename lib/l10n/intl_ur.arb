@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-09-30 12:45:47.717067",
+    "@@last_modified": "2026-09-30 11:27:41.352408",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2388,5 +2388,6 @@
     "callTranscriptChooseLanguage": "کون سی زبان بولی گئی تھی؟",
     "callTranscriptSubscribeForTranscription": "ٹرانسکرپشن کے لیے سبسکرائب کریں",
     "unlockCallTranscript": "کال ٹرانسکرپٹ کو اَن لاک کریں",
+    "activitySummaryUpdateFailed": "اس خلاصے کو اپ ڈیٹ نہیں کیا جا سکا ہے۔",
     "mapCreditsLabel": "نقشہ کے کریڈٹس: Stadia Maps، OpenMapTiles اور OpenStreetMap"
 }

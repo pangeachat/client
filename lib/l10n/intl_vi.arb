@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 12:45:47.672029",
+    "@@last_modified": "2026-09-30 11:27:41.683349",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7272,5 +7272,6 @@
     "callTranscriptChooseLanguage": "Ngôn ngữ được nói là gì?",
     "callTranscriptSubscribeForTranscription": "Đăng ký để chép lại",
     "unlockCallTranscript": "Mở khóa bản chép lại cuộc gọi",
+    "activitySummaryUpdateFailed": "Không thể cập nhật bản tóm tắt này.",
     "mapCreditsLabel": "Bản quyền bản đồ: Stadia Maps, OpenMapTiles và OpenStreetMap"
 }

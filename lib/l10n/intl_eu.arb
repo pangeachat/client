@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-09-30 12:45:42.676088",
+    "@@last_modified": "2026-09-30 11:27:31.757504",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9980,5 +9980,6 @@
     "callTranscriptChooseLanguage": "Zein hizkuntzatan hitz egin zen?",
     "callTranscriptSubscribeForTranscription": "Harpidetu transkripziorako",
     "unlockCallTranscript": "Desblokeatu deiaren transkripzioa",
+    "activitySummaryUpdateFailed": "Laburpen hau ezin izan da eguneratu.",
     "mapCreditsLabel": "Maparen kredituak: Stadia Maps, OpenMapTiles eta OpenStreetMap"
 }
