@@ -10098,5 +10098,10 @@
     "callTranscriptRecordings": "Enregistraments",
     "callTranscriptFullCall": "Trucada completa",
     "callTranscriptPreparingRecording": "S'està preparant l'enregistrament complet…",
-    "callTranscriptNoRecording": "No hi ha enregistrament de la trucada completa."
+    "callTranscriptNoRecording": "No hi ha enregistrament de la trucada completa.",
+    "callTranscriptTranscribeButton": "Transcriure",
+    "callTranscriptAudioUnavailable": "No s'ha pogut descarregar l'enregistrament desat de {name}, per tant no s'ha pogut transcriure.",
+    "callTranscriptChooseLanguage": "En quina llengua es va parlar?",
+    "callTranscriptSubscribeForTranscription": "Subscriu-te per a la transcripció",
+    "unlockCallTranscript": "Desbloqueja la transcripció de la trucada"
 }

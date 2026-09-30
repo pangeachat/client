@@ -10489,5 +10489,10 @@
     "callTranscriptRecordings": "Inspelningar",
     "callTranscriptFullCall": "Hela samtalet",
     "callTranscriptPreparingRecording": "Förbereder hela inspelningen…",
-    "callTranscriptNoRecording": "Ingen inspelning av hela samtalet."
+    "callTranscriptNoRecording": "Ingen inspelning av hela samtalet.",
+    "callTranscriptTranscribeButton": "Transkribera",
+    "callTranscriptAudioUnavailable": "Den sparade inspelningen från {name} kunde inte laddas ner, så den kunde inte transkriberas.",
+    "callTranscriptChooseLanguage": "Vilket språk talades?",
+    "callTranscriptSubscribeForTranscription": "Prenumerera för transkription",
+    "unlockCallTranscript": "Lås upp samtalstranskription"
 }

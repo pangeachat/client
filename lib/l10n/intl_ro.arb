@@ -10703,5 +10703,10 @@
     "callTranscriptRecordings": "Înregistrări",
     "callTranscriptFullCall": "Apel complet",
     "callTranscriptPreparingRecording": "Se pregătește înregistrarea completă…",
-    "callTranscriptNoRecording": "Nu există nicio înregistrare a apelului complet."
+    "callTranscriptNoRecording": "Nu există nicio înregistrare a apelului complet.",
+    "callTranscriptTranscribeButton": "Transcrie",
+    "callTranscriptAudioUnavailable": "Înregistrarea salvată de la {name} nu a putut fi descărcată, prin urmare nu a putut fi transcrisă.",
+    "callTranscriptChooseLanguage": "Ce limbă a fost vorbită?",
+    "callTranscriptSubscribeForTranscription": "Abonează-te pentru transcriere",
+    "unlockCallTranscript": "Deblochează transcrierea apelului"
 }

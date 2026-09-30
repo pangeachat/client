@@ -9971,5 +9971,10 @@
     "callTranscriptRecordings": "录音",
     "callTranscriptFullCall": "完整通话",
     "callTranscriptPreparingRecording": "正在准备完整录音…",
-    "callTranscriptNoRecording": "没有完整通话的录音。"
+    "callTranscriptNoRecording": "没有完整通话的录音。",
+    "callTranscriptTranscribeButton": "转录",
+    "callTranscriptAudioUnavailable": "无法下载 {name} 的已保存录音，因此无法转录。",
+    "callTranscriptChooseLanguage": "说的是什么语言？",
+    "callTranscriptSubscribeForTranscription": "订阅转录服务",
+    "unlockCallTranscript": "解锁通话记录"
 }

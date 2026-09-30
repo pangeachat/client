@@ -10752,5 +10752,10 @@
     "callTranscriptRecordings": "Įrašai",
     "callTranscriptFullCall": "Visas pokalbis",
     "callTranscriptPreparingRecording": "Ruošiamas visas įrašas…",
-    "callTranscriptNoRecording": "Nėra viso pokalbio įrašo."
+    "callTranscriptNoRecording": "Nėra viso pokalbio įrašo.",
+    "callTranscriptTranscribeButton": "Transkribuoti",
+    "callTranscriptAudioUnavailable": "Įrašas iš {name} nebuvo atsisiųstas, todėl jo nebuvo galima transkribuoti.",
+    "callTranscriptChooseLanguage": "Kokia kalba buvo kalbama?",
+    "callTranscriptSubscribeForTranscription": "Prenumeruoti transkripciją",
+    "unlockCallTranscript": "Atrakinti pokalbio transkripciją"
 }

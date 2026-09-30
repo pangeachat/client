@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "Rikododi",
     "callTranscriptFullCall": "Cikakken kira",
     "callTranscriptPreparingRecording": "Ana shirya cikakken rikodin…",
-    "callTranscriptNoRecording": "Babu rikodin cikakken kiran."
+    "callTranscriptNoRecording": "Babu rikodin cikakken kiran.",
+    "callTranscriptTranscribeButton": "Fassara",
+    "callTranscriptAudioUnavailable": "Ba a iya sauke rikodin da aka ajiye daga {name} ba, don haka ba a iya fassara shi ba.",
+    "callTranscriptChooseLanguage": "Wane yare aka yi magana da shi?",
+    "callTranscriptSubscribeForTranscription": "Biyan kuɗi don fassara",
+    "unlockCallTranscript": "Buɗe rubutun kiran"
 }

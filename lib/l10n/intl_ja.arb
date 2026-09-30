@@ -10740,5 +10740,10 @@
     "callTranscriptRecordings": "録音",
     "callTranscriptFullCall": "通話全体",
     "callTranscriptPreparingRecording": "通話全体の録音を準備中です…",
-    "callTranscriptNoRecording": "通話全体の録音はありません。"
+    "callTranscriptNoRecording": "通話全体の録音はありません。",
+    "callTranscriptTranscribeButton": "文字起こし",
+    "callTranscriptAudioUnavailable": "{name}の保存された録音をダウンロードできなかったため、文字起こしできませんでした。",
+    "callTranscriptChooseLanguage": "話された言語は何ですか？",
+    "callTranscriptSubscribeForTranscription": "文字起こしを購読する",
+    "unlockCallTranscript": "通話記録のロックを解除"
 }

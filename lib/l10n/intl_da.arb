@@ -10891,5 +10891,10 @@
     "callTranscriptRecordings": "Optagelser",
     "callTranscriptFullCall": "Hele opkaldet",
     "callTranscriptPreparingRecording": "Forbereder hele optagelsen…",
-    "callTranscriptNoRecording": "Ingen optagelse af hele opkaldet."
+    "callTranscriptNoRecording": "Ingen optagelse af hele opkaldet.",
+    "callTranscriptTranscribeButton": "Transskriber",
+    "callTranscriptAudioUnavailable": "Den gemte optagelse fra {name} kunne ikke downloades og kunne derfor ikke transskriberes.",
+    "callTranscriptChooseLanguage": "Hvilket sprog blev der talt?",
+    "callTranscriptSubscribeForTranscription": "Abonnér for transskription",
+    "unlockCallTranscript": "Lås op for opkaldstranskription"
 }

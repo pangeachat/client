@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:matrix/matrix.dart';
@@ -105,6 +106,16 @@ class CallRecord {
   /// construction of a record keeps working unchanged, and with it null the
   /// class behaves exactly as it did before the feature existed.
   final RecordingTranscriptSource? recordingSegments;
+
+  /// Runs the whole-call transcriber (#8792) for this call once this device's
+  /// OWN half has been published -- the "post own half first" step. Optional and
+  /// null on the default path: every existing construction keeps working
+  /// unchanged, and the feature reverts by leaving it unwired. Invoked
+  /// fire-and-forget with the call anchor, because the transcriber runs its own
+  /// grace and bounded retries in the background and must never delay crediting
+  /// or teardown. It gates itself on the flag and the invoker's live
+  /// subscription, so this is called unconditionally when wired.
+  final Future<void> Function(String callKey)? backfillPeerTranscripts;
   final CallAnalyticsSink analytics;
   final CallTranscriptSink transcripts;
   final String roomId;
@@ -142,6 +153,7 @@ class CallRecord {
     this.publishTranscript,
     this.publishCallAudio,
     this.recordingSegments,
+    this.backfillPeerTranscripts,
   });
 
   /// Writes the call and records what was said.
@@ -320,6 +332,20 @@ class CallRecord {
     } else {
       await _publishTranscript(callKey, captureRefused);
       await _publishCallAudio(callKey);
+    }
+
+    // The own half is now posted -- "post own half first". Kick off the
+    // whole-call transcriber for the peer's half. Fire-and-forget: it waits its
+    // own grace and retries on its own schedule, so awaiting it would hold up
+    // crediting and teardown. It gates itself on the flag and live subscription,
+    // and reverts by being unwired.
+    final backfill = backfillPeerTranscripts;
+    if (backfill != null && callKey != null) {
+      unawaited(
+        backfill(callKey).catchError((Object e, StackTrace s) {
+          Logs().w('Whole-call peer transcription failed', e, s);
+        }),
+      );
     }
 
     if (_credited) return;

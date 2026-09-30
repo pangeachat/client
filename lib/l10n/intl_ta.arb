@@ -10063,5 +10063,10 @@
     "callTranscriptRecordings": "பதிவுகள்",
     "callTranscriptFullCall": "முழு அழைப்பு",
     "callTranscriptPreparingRecording": "முழு பதிவும் தயாராகிறது…",
-    "callTranscriptNoRecording": "முழு அழைப்பிலும் பதிவு இல்லை."
+    "callTranscriptNoRecording": "முழு அழைப்பிலும் பதிவு இல்லை.",
+    "callTranscriptTranscribeButton": "படியெடுக்கவும்",
+    "callTranscriptAudioUnavailable": "{name} இலிருந்து சேமிக்கப்பட்ட பதிவு பதிவிறக்க முடியவில்லை, எனவே அதை படியெடுக்க முடியவில்லை.",
+    "callTranscriptChooseLanguage": "எந்த மொழி பேசப்பட்டது?",
+    "callTranscriptSubscribeForTranscription": "படியெடுத்தலுக்கு குழுசேரவும்",
+    "unlockCallTranscript": "அழைப்புப் படியெடுத்தலைத் திறக்கவும்"
 }

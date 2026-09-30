@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "Okurekhodiweyo",
     "callTranscriptFullCall": "Umfowunelwano opheleleyo",
     "callTranscriptPreparingRecording": "Kulungiselelwa okurekhodiweyo okupheleleyo…",
-    "callTranscriptNoRecording": "Akukho kurekhodwa komfowunelwano opheleleyo."
+    "callTranscriptNoRecording": "Akukho kurekhodwa komfowunelwano opheleleyo.",
+    "callTranscriptTranscribeButton": "Bhala phantsi",
+    "callTranscriptAudioUnavailable": "Ukuqoshwa okugciniweyo okuvela ku-{name} akukwazanga ukukhutshelwa, ngoko ke akukwazanga ukubhalwa phantsi.",
+    "callTranscriptChooseLanguage": "Loluphi ulwimi oluthethweyo?",
+    "callTranscriptSubscribeForTranscription": "Bhalisa ukuze ufumane ukubhalwa phantsi",
+    "unlockCallTranscript": "Vula umbhalo wefowuni"
 }

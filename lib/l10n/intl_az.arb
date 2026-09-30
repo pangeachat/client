@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "Səsyazmalar",
     "callTranscriptFullCall": "Bütün zəng",
     "callTranscriptPreparingRecording": "Tam səsyazma hazırlanır…",
-    "callTranscriptNoRecording": "Tam zəngin səsyazması yoxdur."
+    "callTranscriptNoRecording": "Tam zəngin səsyazması yoxdur.",
+    "callTranscriptTranscribeButton": "Transkripsiya et",
+    "callTranscriptAudioUnavailable": "{name} qeydə alınmış səsi yüklənmədi, buna görə də transkripsiya edilə bilmədi.",
+    "callTranscriptChooseLanguage": "Hansı dildə danışılıb?",
+    "callTranscriptSubscribeForTranscription": "Transkripsiya üçün abunə olun",
+    "unlockCallTranscript": "Zəng transkripsiyasını açın"
 }

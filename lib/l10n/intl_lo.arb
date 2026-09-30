@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "ການບັນທຶກສຽງ",
     "callTranscriptFullCall": "ການໂທເຕັມຮູບແບບ",
     "callTranscriptPreparingRecording": "ກຳລັງກະກຽມການບັນທຶກສຽງເຕັມຮູບແບບ…",
-    "callTranscriptNoRecording": "ບໍ່ມີການບັນທຶກສຽງການໂທເຕັມຮູບແບບ."
+    "callTranscriptNoRecording": "ບໍ່ມີການບັນທຶກສຽງການໂທເຕັມຮູບແບບ.",
+    "callTranscriptTranscribeButton": "ຖອດຂໍ້ຄວາມ",
+    "callTranscriptAudioUnavailable": "ບໍ່ສາມາດດາວໂຫຼດສຽງທີ່ບັນທຶກຈາກ {name} ໄດ້, ສະນັ້ນຈຶ່ງບໍ່ສາມາດຖອດຂໍ້ຄວາມໄດ້.",
+    "callTranscriptChooseLanguage": "ເວົ້າພາສາຫຍັງ?",
+    "callTranscriptSubscribeForTranscription": "ສະໝັກໃຊ້ສຳລັບການຖອດຂໍ້ຄວາມ",
+    "unlockCallTranscript": "ປົດລັອກການຖອດຂໍ້ຄວາມການໂທ"
 }

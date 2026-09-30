@@ -245,12 +245,16 @@ Two rules keep that honest:
   entry we could not parse — each is named, and named as ours. "It said I said
   nothing" is unanswerable if all we kept was the state.
 
-**A missing subscription is named too.** Transcription is a paid feature, so a speaker without a subscription still has their audio captured, and the transcriber refuses every chunk of it. Their half says so, instead of calling the audio lost. Those chunks are still counted as lost as well, so an older app that cannot read the new reason says "lost" rather than wrongly concluding the speaker said nothing. A half that kept some words shows the usual note that part of it may be missing.
+**Transcription is paid, and it follows the subscription, not the speaker.** A call's audio is always saved to the room (audio only, never video), so transcription can run against that audio rather than only live. It runs whenever at least one person on the call is subscribed: a subscribed participant's own client transcribes every half — theirs and the others' — from the saved audio, so a paying user reads the whole conversation, not just their side. When no one is subscribed the call is not transcribed then and is never backfilled on its own, though the audio is kept. A subscribed reader who opens a half that was never produced can ask for it, and it is transcribed on demand from the saved audio. A reader without a subscription can open the transcript but sees a locked placeholder with a way to subscribe in place of the words, the same as other paid surfaces; during a call they are offered the subscription rather than left wondering why nothing appears.
 
 Who was on the call is derived locally from the direct chat, and only those two
 get a section. The card names a caller, but anybody can write a card, and a
 section for a name that was never on the call lends a forgery the standing of a
 record.
+
+### Whose half is whose
+
+A call transcript has one half per speaker, and normally each speaker's half is written by that speaker's own device. When one person on the call is subscribed and the other is not, the subscribed person's client also produces the other's half from the recording the call saved — so a paying reader sees the whole conversation, not one side. Such a half names the speaker it belongs to and points at that speaker's own saved recording; a reader trusts the named speaker only when that recording is genuinely theirs, for this call and this device. A name that was never on the call cannot be attached to a half, and wherever the words are in doubt the saved audio is the record that settles it. What a paying reader sees is gated in the app, not sealed cryptographically: the words live in the room like the rest of the call, and the gate is the same one the app uses for its other paid surfaces.
 
 ### What a turn's time promises
 

@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "تۆمارەکان",
     "callTranscriptFullCall": "پەیوەندی تەواو",
     "callTranscriptPreparingRecording": "ئامادەکردنی تۆمارکردنی تەواو…",
-    "callTranscriptNoRecording": "هیچ تۆمارێک لە پەیوەندی تەواودا نییە."
+    "callTranscriptNoRecording": "هیچ تۆمارێک لە پەیوەندی تەواودا نییە.",
+    "callTranscriptTranscribeButton": "گۆڕین بۆ نووسین",
+    "callTranscriptAudioUnavailable": "تۆماری پاشەکەوتکراوی {name} ناتوانرێت دابگیرێت، بۆیە ناتوانرێت بگۆڕدرێت بۆ نووسین.",
+    "callTranscriptChooseLanguage": "بە چ زمانێک قسە کرا؟",
+    "callTranscriptSubscribeForTranscription": "بەشداری بکە بۆ گۆڕین بۆ نووسین",
+    "unlockCallTranscript": "کردنەوەی گۆڕینی پەیوەندی بۆ نووسین"
 }

@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "Снимки",
     "callTranscriptFullCall": "Цел повик",
     "callTranscriptPreparingRecording": "Се подготвува целосната снимка…",
-    "callTranscriptNoRecording": "Нема снимка од целиот повик."
+    "callTranscriptNoRecording": "Нема снимка од целиот повик.",
+    "callTranscriptTranscribeButton": "Транскрибирај",
+    "callTranscriptAudioUnavailable": "Зачуваната снимка од {name} не можеше да се преземе, па затоа не можеше да се транскрибира.",
+    "callTranscriptChooseLanguage": "На кој јазик се зборуваше?",
+    "callTranscriptSubscribeForTranscription": "Претплатете се за транскрипција",
+    "unlockCallTranscript": "Отклучи транскрипт на повик"
 }

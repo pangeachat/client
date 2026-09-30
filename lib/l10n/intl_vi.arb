@@ -7263,5 +7263,10 @@
     "callTranscriptRecordings": "Bản ghi âm",
     "callTranscriptFullCall": "Toàn bộ cuộc gọi",
     "callTranscriptPreparingRecording": "Đang chuẩn bị bản ghi âm đầy đủ…",
-    "callTranscriptNoRecording": "Không có bản ghi âm toàn bộ cuộc gọi."
+    "callTranscriptNoRecording": "Không có bản ghi âm toàn bộ cuộc gọi.",
+    "callTranscriptTranscribeButton": "Chép lại",
+    "callTranscriptAudioUnavailable": "Không thể tải bản ghi đã lưu từ {name} xuống, nên không thể chép lại.",
+    "callTranscriptChooseLanguage": "Ngôn ngữ được nói là gì?",
+    "callTranscriptSubscribeForTranscription": "Đăng ký để chép lại",
+    "unlockCallTranscript": "Mở khóa bản chép lại cuộc gọi"
 }

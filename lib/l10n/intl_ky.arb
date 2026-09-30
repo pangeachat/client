@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "Жазуулар",
     "callTranscriptFullCall": "Толук чалуу",
     "callTranscriptPreparingRecording": "Толук жазуу даярдалууда…",
-    "callTranscriptNoRecording": "Толук чалуунун жазуусу жок."
+    "callTranscriptNoRecording": "Толук чалуунун жазуусу жок.",
+    "callTranscriptTranscribeButton": "Транскрипциялоо",
+    "callTranscriptAudioUnavailable": "{name} жаздырылган үнүн жүктөп алуу мүмкүн болгон жок, андыктан транскрипциялоо мүмкүн болгон жок.",
+    "callTranscriptChooseLanguage": "Кайсы тилде сүйлөштү?",
+    "callTranscriptSubscribeForTranscription": "Транскрипция үчүн жазылуу",
+    "unlockCallTranscript": "Чакыруу транскрипциясын ачуу"
 }

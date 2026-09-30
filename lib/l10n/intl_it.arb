@@ -10044,5 +10044,10 @@
     "callTranscriptRecordings": "Registrazioni",
     "callTranscriptFullCall": "Chiamata completa",
     "callTranscriptPreparingRecording": "Preparazione della registrazione completa…",
-    "callTranscriptNoRecording": "Nessuna registrazione della chiamata completa."
+    "callTranscriptNoRecording": "Nessuna registrazione della chiamata completa.",
+    "callTranscriptTranscribeButton": "Trascrivi",
+    "callTranscriptAudioUnavailable": "La registrazione salvata da {name} non può essere scaricata, quindi non può essere trascritta.",
+    "callTranscriptChooseLanguage": "Che lingua è stata parlata?",
+    "callTranscriptSubscribeForTranscription": "Abbonati per la trascrizione",
+    "unlockCallTranscript": "Sblocca trascrizione chiamata"
 }

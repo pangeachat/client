@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "Записи",
     "callTranscriptFullCall": "Цялото обаждане",
     "callTranscriptPreparingRecording": "Подготвям пълния запис…",
-    "callTranscriptNoRecording": "Няма запис на цялото обаждане."
+    "callTranscriptNoRecording": "Няма запис на цялото обаждане.",
+    "callTranscriptTranscribeButton": "Транскрибиране",
+    "callTranscriptAudioUnavailable": "Записаният разговор от {name} не можа да бъде изтеглен и съответно не можа да бъде транскрибиран.",
+    "callTranscriptChooseLanguage": "На какъв език се говореше?",
+    "callTranscriptSubscribeForTranscription": "Абонирайте се за транскрипция",
+    "unlockCallTranscript": "Отключване на препис от разговора"
 }

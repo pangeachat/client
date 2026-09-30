@@ -10921,5 +10921,10 @@
     "callTranscriptRecordings": "రికార్డింగ్‌లు",
     "callTranscriptFullCall": "పూర్తి కాల్",
     "callTranscriptPreparingRecording": "పూర్తి రికార్డింగ్‌ను సిద్ధం చేస్తున్నారు…",
-    "callTranscriptNoRecording": "పూర్తి కాల్ రికార్డింగ్ లేదు."
+    "callTranscriptNoRecording": "పూర్తి కాల్ రికార్డింగ్ లేదు.",
+    "callTranscriptTranscribeButton": "ట్రాన్స్‌క్రైబ్ చేయి",
+    "callTranscriptAudioUnavailable": "{name} నుండి సేవ్ చేసిన రికార్డింగ్ డౌన్‌లోడ్ చేయబడలేదు, కాబట్టి దానిని ట్రాన్స్‌క్రైబ్ చేయలేము.",
+    "callTranscriptChooseLanguage": "ఏ భాష మాట్లాడబడింది?",
+    "callTranscriptSubscribeForTranscription": "ట్రాన్స్‌క్రిప్షన్ కోసం సబ్‌స్క్రైబ్ చేయండి",
+    "unlockCallTranscript": "కాల్ ట్రాన్స్‌క్రిప్ట్‌ను అన్‌లాక్ చేయండి"
 }

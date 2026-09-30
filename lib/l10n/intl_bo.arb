@@ -9582,5 +9582,10 @@
     "callTranscriptRecordings": "སྐད་སྒྲ་བླངས་པ།",
     "callTranscriptFullCall": "བསྐྱར་ཟློས་ཆ་ཚང་།",
     "callTranscriptPreparingRecording": "བསྐྱར་ཟློས་ཆ་ཚང་གྲ་སྒྲིག་བྱེད་བཞིན་པ།",
-    "callTranscriptNoRecording": "བསྐྱར་ཟློས་ཆ་ཚང་མེད།"
+    "callTranscriptNoRecording": "བསྐྱར་ཟློས་ཆ་ཚང་མེད།",
+    "callTranscriptTranscribeButton": "ถอดความ",
+    "callTranscriptAudioUnavailable": "{name} ནས་ཉར་ཚགས་བྱས་པའི་སྒྲ་ཕབ་ཕབ་ལེན་བྱེད་མ་ཐུབ་པས་དེ་ལ་ཡིག་སྒྱུར་བྱེད་མ་ཐུབ།",
+    "callTranscriptChooseLanguage": "སྐད་ཡིག་གང་ཞིག་བཤད་པ་ཡིན་ནམ།",
+    "callTranscriptSubscribeForTranscription": "ཡིག་སྒྱུར་བྱེད་པར་ཐོ་འགོད་བྱེད་དགོས།",
+    "unlockCallTranscript": "ཁ་པར་གྱི་ཡིག་སྒྱུར་འབྱེད་པ།"
 }

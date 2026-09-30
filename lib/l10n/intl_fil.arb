@@ -10831,5 +10831,10 @@
     "callTranscriptRecordings": "Mga Recording",
     "callTranscriptFullCall": "Buong tawag",
     "callTranscriptPreparingRecording": "Inihahanda ang buong recording...",
-    "callTranscriptNoRecording": "Walang recording ng buong tawag."
+    "callTranscriptNoRecording": "Walang recording ng buong tawag.",
+    "callTranscriptTranscribeButton": "I-transcribe",
+    "callTranscriptAudioUnavailable": "Hindi ma-download ang na-save na recording mula kay {name}, kaya hindi ito ma-transcribe.",
+    "callTranscriptChooseLanguage": "Anong wika ang ginamit?",
+    "callTranscriptSubscribeForTranscription": "Mag-subscribe para sa transkripsyon",
+    "unlockCallTranscript": "I-unlock ang transkripsyon ng tawag"
 }

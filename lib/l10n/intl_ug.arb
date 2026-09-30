@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "خاتىرىلەر",
     "callTranscriptFullCall": "تولۇق تېلېفون",
     "callTranscriptPreparingRecording": "تولۇق خاتىرىنى تەييارلاۋاتىدۇ…",
-    "callTranscriptNoRecording": "تولۇق تېلېفوننىڭ خاتىرىسى يوق."
+    "callTranscriptNoRecording": "تولۇق تېلېفوننىڭ خاتىرىسى يوق.",
+    "callTranscriptTranscribeButton": "تەرجىمە قىلىش",
+    "callTranscriptAudioUnavailable": "{name} دىن ساقلانغان خاتىرە چۈشۈرۈلمىدى، شۇڭا ئۇنى تەرجىمە قىلغىلى بولمىدى.",
+    "callTranscriptChooseLanguage": "قايسى تىلدا سۆزلەنگەن؟",
+    "callTranscriptSubscribeForTranscription": "تەرجىمە قىلىش ئۈچۈن مۇشتەرى بولۇڭ",
+    "unlockCallTranscript": "تېلېفون خاتىرىسىنى ئېچىش"
 }

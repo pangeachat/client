@@ -10885,5 +10885,10 @@
     "callTranscriptRecordings": "הקלטות",
     "callTranscriptFullCall": "שיחה מלאה",
     "callTranscriptPreparingRecording": "מכין את ההקלטה המלאה…",
-    "callTranscriptNoRecording": "אין הקלטה של השיחה המלאה."
+    "callTranscriptNoRecording": "אין הקלטה של השיחה המלאה.",
+    "callTranscriptTranscribeButton": "תמלול",
+    "callTranscriptAudioUnavailable": "ההקלטה השמורה מ{name} לא ניתנת להורדה, ולכן לא ניתן לתמלל אותה.",
+    "callTranscriptChooseLanguage": "באיזו שפה דיברתם?",
+    "callTranscriptSubscribeForTranscription": "הירשם לתימלול",
+    "unlockCallTranscript": "פתח את תמלול השיחה"
 }

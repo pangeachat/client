@@ -419,6 +419,17 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       },
       userL1: languages.l1 ?? LanguageKeys.unknownLanguage,
       userL2: languages.l2 ?? LanguageKeys.unknownLanguage,
+      // The whole-call transcriber's controller seams (#8792), supplied here
+      // because this is where the controllers live. Both are read at run time,
+      // never cached: `isSubscribed` is the invoker's LIVE entitlement, and the
+      // peer languages come from the peer's public analytics profile.
+      isSubscribed: () =>
+          pangeaController.subscriptionController.showSubscriptionGatedContent,
+      peerLanguages: (userId) async {
+        final profile = await pangeaController.userController
+            .getPublicAnalyticsProfile(userId);
+        return (l1: profile.baseLanguage, l2: profile.targetLanguage);
+      },
       // Bound to the account that OWNS this call, captured now. Both of
       // these used to be read through the active-account getters at the
       // moment the recording finished, which is minutes later and after the

@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "Zojambulidwa",
     "callTranscriptFullCall": "Kuyimba konse",
     "callTranscriptPreparingRecording": "Tikukonza zojambulidwa zonse…",
-    "callTranscriptNoRecording": "Palibe chojambulidwa cha kuyimba konse."
+    "callTranscriptNoRecording": "Palibe chojambulidwa cha kuyimba konse.",
+    "callTranscriptTranscribeButton": "Lembani",
+    "callTranscriptAudioUnavailable": "Kujambula kosungidwa kuchokera kwa {name} sikunathe kutsitsidwa, choncho sikunathe kulembedwa.",
+    "callTranscriptChooseLanguage": "Ndi chilankhulo chiti chomwe chinalankhulidwa?",
+    "callTranscriptSubscribeForTranscription": "Lembetsani kuti mulembedwe",
+    "unlockCallTranscript": "Tsegulani zolembedwa za kuyimba"
 }

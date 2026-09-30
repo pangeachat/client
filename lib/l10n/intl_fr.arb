@@ -10326,5 +10326,10 @@
     "callTranscriptRecordings": "Enregistrements",
     "callTranscriptFullCall": "Appel complet",
     "callTranscriptPreparingRecording": "Préparation de l'enregistrement complet…",
-    "callTranscriptNoRecording": "Aucun enregistrement de l'appel complet."
+    "callTranscriptNoRecording": "Aucun enregistrement de l'appel complet.",
+    "callTranscriptTranscribeButton": "Transcrire",
+    "callTranscriptAudioUnavailable": "L'enregistrement sauvegardé de {name} n'a pas pu être téléchargé, il n'a donc pas pu être transcrit.",
+    "callTranscriptChooseLanguage": "Quelle langue a été parlée ?",
+    "callTranscriptSubscribeForTranscription": "S'abonner pour la transcription",
+    "unlockCallTranscript": "Déverrouiller la transcription de l'appel"
 }

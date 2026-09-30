@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "ریکارڈنگز",
     "callTranscriptFullCall": "مکمل کال",
     "callTranscriptPreparingRecording": "مکمل ریکارڈنگ تیار کی جا رہی ہے…",
-    "callTranscriptNoRecording": "مکمل کال کی کوئی ریکارڈنگ نہیں ہے۔"
+    "callTranscriptNoRecording": "مکمل کال کی کوئی ریکارڈنگ نہیں ہے۔",
+    "callTranscriptTranscribeButton": "ٹرانسکرائب کریں",
+    "callTranscriptAudioUnavailable": "{name} سے محفوظ کردہ ریکارڈنگ ڈاؤن لوڈ نہیں کی جا سکی، اس لیے اسے ٹرانسکرائب نہیں کیا جا سکا۔",
+    "callTranscriptChooseLanguage": "کون سی زبان بولی گئی تھی؟",
+    "callTranscriptSubscribeForTranscription": "ٹرانسکرپشن کے لیے سبسکرائب کریں",
+    "unlockCallTranscript": "کال ٹرانسکرپٹ کو اَن لاک کریں"
 }

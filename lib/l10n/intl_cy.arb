@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "Recordiadau",
     "callTranscriptFullCall": "Galwad lawn",
     "callTranscriptPreparingRecording": "Yn paratoi'r recordiad llawn…",
-    "callTranscriptNoRecording": "Dim recordiad o'r alwad lawn."
+    "callTranscriptNoRecording": "Dim recordiad o'r alwad lawn.",
+    "callTranscriptTranscribeButton": "Trawsgrifio",
+    "callTranscriptAudioUnavailable": "Ni ellid lawrlwytho'r recordiad a arbedwyd o {name}, felly ni ellid ei drawsgrifio.",
+    "callTranscriptChooseLanguage": "Pa iaith gafodd ei siarad?",
+    "callTranscriptSubscribeForTranscription": "Tanysgrifiwch ar gyfer trawsgrifio",
+    "unlockCallTranscript": "Datgloi trawsgrifiad galwad"
 }

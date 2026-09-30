@@ -9971,5 +9971,10 @@
     "callTranscriptRecordings": "Ieraksti",
     "callTranscriptFullCall": "Pilns zvans",
     "callTranscriptPreparingRecording": "Tiek sagatavots pilns ieraksts…",
-    "callTranscriptNoRecording": "Nav pilna zvana ieraksta."
+    "callTranscriptNoRecording": "Nav pilna zvana ieraksta.",
+    "callTranscriptTranscribeButton": "Transkribēt",
+    "callTranscriptAudioUnavailable": "Saglabāto ierakstu no {name} nevarēja lejupielādēt, tāpēc to nevarēja transkribēt.",
+    "callTranscriptChooseLanguage": "Kādā valodā runājāt?",
+    "callTranscriptSubscribeForTranscription": "Abonēt transkripciju",
+    "unlockCallTranscript": "Atbloķēt zvanu transkriptu"
 }

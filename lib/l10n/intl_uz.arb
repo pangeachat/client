@@ -9975,5 +9975,10 @@
     "callTranscriptRecordings": "Yozuvlar",
     "callTranscriptFullCall": "Toʻliq qoʻngʻiroq",
     "callTranscriptPreparingRecording": "Toʻliq yozuv tayyorlanmoqda...",
-    "callTranscriptNoRecording": "Toʻliq qoʻngʻiroq yozuvi yoʻq."
+    "callTranscriptNoRecording": "Toʻliq qoʻngʻiroq yozuvi yoʻq.",
+    "callTranscriptTranscribeButton": "Transkripsiya qilish",
+    "callTranscriptAudioUnavailable": "{name}dan saqlangan yozuvni yuklab bo‘lmadi, shuning uchun uni transkripsiya qilib bo‘lmadi.",
+    "callTranscriptChooseLanguage": "Qaysi tilda gapirilgan?",
+    "callTranscriptSubscribeForTranscription": "Transkripsiya uchun obuna bo‘lish",
+    "unlockCallTranscript": "Qo‘ng‘iroq transkriptini ochish"
 }

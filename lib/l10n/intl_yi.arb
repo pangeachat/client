@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "רעקאָרדירונגען",
     "callTranscriptFullCall": "גאַנצער רוף",
     "callTranscriptPreparingRecording": "גרייט צו די גאַנצע רעקאָרדירונג…",
-    "callTranscriptNoRecording": "קיין רעקאָרדירונג פֿונעם גאַנצן רוף נישט פֿאַראַן."
+    "callTranscriptNoRecording": "קיין רעקאָרדירונג פֿונעם גאַנצן רוף נישט פֿאַראַן.",
+    "callTranscriptTranscribeButton": "טראַנסקריבירן",
+    "callTranscriptAudioUnavailable": "די געראַטעוועטע אויפֿנאַמע פֿון {name} האָט זיך נישט געקענט אַראָפּלאָדן, דערפֿאַר האָט מען זי נישט געקענט טראַנסקריבירן.",
+    "callTranscriptChooseLanguage": "וועלכע שפּראַך איז גערעדט געוואָרן?",
+    "callTranscriptSubscribeForTranscription": "סובסקריבירן פֿאַר טראַנסקריפּציע",
+    "unlockCallTranscript": "אַנשליסן רוף טראַנסקריפּט"
 }

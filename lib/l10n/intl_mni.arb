@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "Recordings",
     "callTranscriptFullCall": "Pumba call",
     "callTranscriptPreparingRecording": "Pumba recording adu sem-sari...",
-    "callTranscriptNoRecording": "Pumba call adugi recording leite."
+    "callTranscriptNoRecording": "Pumba call adugi recording leite.",
+    "callTranscriptTranscribeButton": "ট্রান্সক্রাইব তৌবীয়ু",
+    "callTranscriptAudioUnavailable": "{name} দগী সেভ তৌখিবা রেকর্ডিং অদু ডাউনলোড তৌবা ঙমখিদে, অদুগা ট্রান্সক্রাইব তৌবা ঙমখিদে.",
+    "callTranscriptChooseLanguage": "কনাগুম্বা অমুন্না কয়া ঙাংখি?",
+    "callTranscriptSubscribeForTranscription": "ট্রান্সক্রিপশনগীদমক সাবস্ক্রাইব তৌবীয়ু",
+    "unlockCallTranscript": "কল ট্রান্সক্রিপ্ট অদু অনলক তৌবীয়ু"
 }

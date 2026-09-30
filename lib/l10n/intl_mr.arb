@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "रेकॉर्डिंग्ज",
     "callTranscriptFullCall": "पूर्ण कॉल",
     "callTranscriptPreparingRecording": "पूर्ण रेकॉर्डिंग तयार करत आहे…",
-    "callTranscriptNoRecording": "पूर्ण कॉलचे कोणतेही रेकॉर्डिंग नाही."
+    "callTranscriptNoRecording": "पूर्ण कॉलचे कोणतेही रेकॉर्डिंग नाही.",
+    "callTranscriptTranscribeButton": "लिप्यंतरण करा",
+    "callTranscriptAudioUnavailable": "{name} कडून सेव्ह केलेली रेकॉर्डिंग डाउनलोड करता आली नाही, त्यामुळे तिचे लिप्यंतरण करता आले नाही.",
+    "callTranscriptChooseLanguage": "कोणती भाषा बोलली गेली?",
+    "callTranscriptSubscribeForTranscription": "लिप्यंतरणासाठी सदस्यता घ्या",
+    "unlockCallTranscript": "कॉल लिप्यंतरण अनलॉक करा"
 }

@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "Rekaman",
     "callTranscriptFullCall": "Telpon lengkap",
     "callTranscriptPreparingRecording": "Nyiapake rekaman lengkap…",
-    "callTranscriptNoRecording": "Ora ana rekaman telpon lengkap."
+    "callTranscriptNoRecording": "Ora ana rekaman telpon lengkap.",
+    "callTranscriptTranscribeButton": "Transkripsi",
+    "callTranscriptAudioUnavailable": "Rekaman sing disimpen saka {name} ora bisa diundhuh, mula ora bisa ditranskripsi.",
+    "callTranscriptChooseLanguage": "Basa apa sing diucapake?",
+    "callTranscriptSubscribeForTranscription": "Langganan kanggo transkripsi",
+    "unlockCallTranscript": "Bukak kunci transkrip telpon"
 }

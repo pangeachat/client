@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "Firaketana",
     "callTranscriptFullCall": "Antso feno",
     "callTranscriptPreparingRecording": "Manomana ny firaketana feno…",
-    "callTranscriptNoRecording": "Tsy misy firaketana ny antso feno."
+    "callTranscriptNoRecording": "Tsy misy firaketana ny antso feno.",
+    "callTranscriptTranscribeButton": "Soraty",
+    "callTranscriptAudioUnavailable": "Tsy afaka alaina ilay rakipeo voatahiry avy amin'i {name}, ka tsy azo soratana.",
+    "callTranscriptChooseLanguage": "Inona no fiteny nampiasaina?",
+    "callTranscriptSubscribeForTranscription": "Misoratra anarana ho an'ny fandikana",
+    "unlockCallTranscript": "Sokafy ny dika soratra antso"
 }

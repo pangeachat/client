@@ -10599,5 +10599,10 @@
     "callTranscriptRecordings": "রেকর্ডিংগুলি",
     "callTranscriptFullCall": "সম্পূর্ণ কল",
     "callTranscriptPreparingRecording": "সম্পূর্ণ রেকর্ডিং প্রস্তুত করা হচ্ছে…",
-    "callTranscriptNoRecording": "সম্পূর্ণ কলের কোনো রেকর্ডিং নেই।"
+    "callTranscriptNoRecording": "সম্পূর্ণ কলের কোনো রেকর্ডিং নেই।",
+    "callTranscriptTranscribeButton": "ট্রান্সক্রাইব করুন",
+    "callTranscriptAudioUnavailable": "{name} থেকে সংরক্ষিত রেকর্ডিং ডাউনলোড করা যায়নি, তাই এটি ট্রান্সক্রাইব করা যায়নি।",
+    "callTranscriptChooseLanguage": "কোন ভাষায় কথা বলা হয়েছিল?",
+    "callTranscriptSubscribeForTranscription": "ট্রান্সক্রিপশনের জন্য সাবস্ক্রাইব করুন",
+    "unlockCallTranscript": "কল ট্রান্সক্রিপ্ট আনলক করুন"
 }

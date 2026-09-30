@@ -10928,5 +10928,10 @@
     "callTranscriptRecordings": "錄音",
     "callTranscriptFullCall": "完整通話",
     "callTranscriptPreparingRecording": "正在準備完整錄音…",
-    "callTranscriptNoRecording": "沒有完整通話錄音。"
+    "callTranscriptNoRecording": "沒有完整通話錄音。",
+    "callTranscriptTranscribeButton": "轉錄",
+    "callTranscriptAudioUnavailable": "無法下載來自{name}的已儲存錄音，因此無法轉錄。",
+    "callTranscriptChooseLanguage": "說的是哪種語言？",
+    "callTranscriptSubscribeForTranscription": "訂閱以獲取轉錄",
+    "unlockCallTranscript": "解鎖通話轉錄"
 }

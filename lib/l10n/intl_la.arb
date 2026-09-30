@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "Memoriae",
     "callTranscriptFullCall": "Totum colloquium",
     "callTranscriptPreparingRecording": "Paratur tota memoria…",
-    "callTranscriptNoRecording": "Nulla memoria totius colloquii."
+    "callTranscriptNoRecording": "Nulla memoria totius colloquii.",
+    "callTranscriptTranscribeButton": "Transcribe",
+    "callTranscriptAudioUnavailable": "Registratio servata ab {name} deponi non potuit, ergo transcribi non potuit.",
+    "callTranscriptChooseLanguage": "Qua lingua locutum est?",
+    "callTranscriptSubscribeForTranscription": "Subscribere pro transcriptione",
+    "unlockCallTranscript": "Reserare transcriptionem vocis"
 }

@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "Regjistrimet",
     "callTranscriptFullCall": "Telefonata e plotë",
     "callTranscriptPreparingRecording": "Po përgatitet regjistrimi i plotë…",
-    "callTranscriptNoRecording": "Nuk ka regjistrim të telefonatës së plotë."
+    "callTranscriptNoRecording": "Nuk ka regjistrim të telefonatës së plotë.",
+    "callTranscriptTranscribeButton": "Transkripto",
+    "callTranscriptAudioUnavailable": "Regjistrimi i ruajtur nga {name} nuk mund të shkarkohej, prandaj nuk mund të transkriptohej.",
+    "callTranscriptChooseLanguage": "Çfarë gjuhe u fol?",
+    "callTranscriptSubscribeForTranscription": "Abonohu për transkriptim",
+    "unlockCallTranscript": "Zhbloko transkriptin e thirrjes"
 }

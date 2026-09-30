@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "Жазбалар",
     "callTranscriptFullCall": "Толық қоңырау",
     "callTranscriptPreparingRecording": "Толық жазба дайындалуда…",
-    "callTranscriptNoRecording": "Толық қоңырау жазбасы жоқ."
+    "callTranscriptNoRecording": "Толық қоңырау жазбасы жоқ.",
+    "callTranscriptTranscribeButton": "Транскрипциялау",
+    "callTranscriptAudioUnavailable": "{name} сақталған жазбасын жүктеп алу мүмкін болмады, сондықтан оны транскрипциялау мүмкін емес.",
+    "callTranscriptChooseLanguage": "Қандай тілде сөйледіңіз?",
+    "callTranscriptSubscribeForTranscription": "Транскрипциялау үшін жазылу",
+    "unlockCallTranscript": "Қоңырау транскрипциясының құлпын ашу"
 }

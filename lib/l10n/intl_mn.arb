@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "Бичлэгүүд",
     "callTranscriptFullCall": "Бүтэн дуудлага",
     "callTranscriptPreparingRecording": "Бүтэн бичлэгийг бэлдэж байна…",
-    "callTranscriptNoRecording": "Бүтэн дуудлагын бичлэг байхгүй."
+    "callTranscriptNoRecording": "Бүтэн дуудлагын бичлэг байхгүй.",
+    "callTranscriptTranscribeButton": "Хөрвүүлэх",
+    "callTranscriptAudioUnavailable": "{name}-ээс хадгалсан бичлэгийг татаж авах боломжгүй байсан тул хөрвүүлж чадсангүй.",
+    "callTranscriptChooseLanguage": "Ямар хэлээр ярьсан бэ?",
+    "callTranscriptSubscribeForTranscription": "Хөрвүүлэлтэд бүртгүүлэх",
+    "unlockCallTranscript": "Дуудлагын хөрвүүлэлтийг нээх"
 }

@@ -10056,5 +10056,10 @@
     "callTranscriptRecordings": "Nagrania",
     "callTranscriptFullCall": "Cała rozmowa",
     "callTranscriptPreparingRecording": "Przygotowuję pełne nagranie…",
-    "callTranscriptNoRecording": "Brak nagrania całej rozmowy."
+    "callTranscriptNoRecording": "Brak nagrania całej rozmowy.",
+    "callTranscriptTranscribeButton": "Transkrybuj",
+    "callTranscriptAudioUnavailable": "Nie udało się pobrać zapisanego nagrania od {name}, więc nie można go transkrybować.",
+    "callTranscriptChooseLanguage": "W jakim języku mówiono?",
+    "callTranscriptSubscribeForTranscription": "Subskrybuj, aby uzyskać transkrypcję",
+    "unlockCallTranscript": "Odblokuj transkrypcję rozmowy"
 }

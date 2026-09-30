@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "Zvinyorwa",
     "callTranscriptFullCall": "Kufona kwese",
     "callTranscriptPreparingRecording": "Kugadzirira kunyora kwese…",
-    "callTranscriptNoRecording": "Hapana chinyorwa chekufona kwese."
+    "callTranscriptNoRecording": "Hapana chinyorwa chekufona kwese.",
+    "callTranscriptTranscribeButton": "Nyora",
+    "callTranscriptAudioUnavailable": "Kurekodha kwakachengetwa kubva kuna {name} hakuna kukwanisa kutorwa, saka hakuna kukwanisa kunyorwa.",
+    "callTranscriptChooseLanguage": "Mutauro upi wakataurwa?",
+    "callTranscriptSubscribeForTranscription": "Nyorera kuti unyorerwe",
+    "unlockCallTranscript": "Vhura zvinyorwa zvekufona"
 }

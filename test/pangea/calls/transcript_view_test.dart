@@ -11,6 +11,8 @@ import 'package:just_audio/just_audio.dart';
 import 'package:matrix/matrix.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:fluffychat/features/languages/language_model.dart';
+import 'package:fluffychat/features/subscription/widgets/locked_preview_banner.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_box.dart';
 import 'package:fluffychat/routes/chat/audio_player.dart';
@@ -26,6 +28,7 @@ import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_view.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_writer.dart';
 import 'package:fluffychat/routes/chat/calls/turn_timeline.dart';
+import 'package:fluffychat/routes/chat/calls/whole_call_transcriber.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../fake_pangea_controller.dart';
@@ -214,6 +217,15 @@ void main() {
 
   setUp(() async {
     client = await getTestClient();
+    // #8792's whole-transcript paywall reads
+    // `MatrixState.pangeaController.subscriptionController
+    // .showSubscriptionGatedContent` on every build of the conversation
+    // body, so every group in this file needs SOME `pangeaController`
+    // installed, not only the 'call recordings' group that already set one
+    // up for its own (unrelated) reasons. The paywall/on-demand groups below
+    // install their OWN `FakePangeaController` per test and override this
+    // default; every other group just needs the field initialized at all.
+    MatrixState.pangeaController = FakePangeaController();
   });
 
   tearDown(() async {
@@ -2239,6 +2251,11 @@ void main() {
       // Injected only by the loading-state tests, to place a recording inside or
       // past the "still transcribing" recency window deterministically.
       DateTime Function()? now,
+      // Injected only by the on-demand Transcribe / language picker tests
+      // (#8792 task 3), standing in for the whole-call transcriber and the
+      // picker's language list with plain fake seams.
+      WholeCallTranscriber? transcriber,
+      List<LanguageModel>? pickerLanguages,
     }) async {
       await tester.pumpWidget(
         _TestMatrix(
@@ -2274,6 +2291,8 @@ void main() {
               audioPlayerFactory: audioPlayerFactory,
               mergedFileLoader: mergedFileLoader,
               now: now,
+              transcriber: transcriber,
+              pickerLanguages: pickerLanguages,
             ),
           ),
         ),
@@ -5510,5 +5529,505 @@ void main() {
         expect(mergedPlayer(), findsOneWidget);
       },
     );
+
+    group('whole-call transcript paywall (#8792 task 3)', () {
+      // Isolated from every test above (and from each other): the shared
+      // `MatrixState.pangeaController` this whole file's `setUpAll` installs
+      // once has no subscription state worth mutating in place, so each test
+      // here installs its OWN `FakePangeaController`, and `tearDown` restores
+      // the neutral (subscribed) default so a later test in this file never
+      // inherits an unsubscribed viewer it never asked for.
+      tearDown(() => MatrixState.pangeaController = FakePangeaController());
+
+      testWidgets(
+        'an unsubscribed viewer sees the locked banner and zero words',
+        (tester) async {
+          MatrixState.pangeaController = FakePangeaController(
+            subscribed: false,
+          );
+          await pumpWithRecordings(
+            tester,
+            room(),
+            servingByType([
+              half(_me, texts: const ['hola']),
+              half(_peer, texts: const ['que tal']),
+            ]),
+          );
+
+          // Mutation: gating on `true` (or not gating at all) renders the
+          // words for an unsubscribed viewer -> RED.
+          expect(find.byType(LockedPreviewBanner), findsOneWidget);
+          expect(find.textContaining('hola'), findsNothing);
+          expect(find.textContaining('que tal'), findsNothing);
+        },
+      );
+
+      testWidgets('a subscribed viewer sees the words, not the banner', (
+        tester,
+      ) async {
+        MatrixState.pangeaController = FakePangeaController(subscribed: true);
+        await pumpWithRecordings(
+          tester,
+          room(),
+          servingByType([
+            half(_me, texts: const ['hola']),
+            half(_peer, texts: const ['que tal']),
+          ]),
+        );
+
+        expect(find.byType(LockedPreviewBanner), findsNothing);
+        expect(find.textContaining('hola'), findsOneWidget);
+        expect(find.textContaining('que tal'), findsOneWidget);
+      });
+
+      testWidgets(
+        'a subscribed->unsubscribed downgrade re-locks on the next rebuild',
+        (tester) async {
+          MatrixState.pangeaController = FakePangeaController(subscribed: true);
+          final events = [
+            half(_me, texts: const ['hola']),
+            half(_peer, texts: const ['que tal']),
+          ];
+          await pumpWithRecordings(tester, room(), servingByType(events));
+
+          expect(find.textContaining('hola'), findsOneWidget);
+          expect(find.byType(LockedPreviewBanner), findsNothing);
+
+          // Downgrade, then force a genuine IN-PLACE rebuild through the
+          // screen's OWN sync-driven live refresh -- not a fresh dialog-open
+          // -- by mutating the transcript so `transcriptChanged` sees a real
+          // difference and calls `setState`. Mutation: reading
+          // `showSubscriptionGatedContent` once and caching it (instead of
+          // live, in `_bodySection`, on every build) would leave the words on
+          // screen here -> RED.
+          MatrixState.pangeaController = FakePangeaController(
+            subscribed: false,
+          );
+          events.removeWhere(
+            (e) =>
+                e.type == CallTranscriptContent.relType && e.senderId == _peer,
+          );
+          events.add(half(_peer, texts: const ['que tal, otra vez']));
+          client.onSync.add(SyncUpdate(nextBatch: 'downgrade'));
+          await tester.pumpAndSettle();
+
+          expect(find.byType(LockedPreviewBanner), findsOneWidget);
+          expect(find.textContaining('hola'), findsNothing);
+          expect(find.textContaining('que tal'), findsNothing);
+        },
+      );
+    });
+
+    group('on-demand transcribe + language picker (#8792 task 3)', () {
+      tearDown(() => MatrixState.pangeaController = FakePangeaController());
+
+      /// A [WholeCallTranscriber] built from plain fake seams -- the same
+      /// shape `whole_call_transcriber_test.dart` uses to test the producer
+      /// itself -- so these tests exercise the VIEW's WIRING (does tapping
+      /// the button call the right method with the right arguments, and
+      /// react correctly to true/false) without a real STT pipeline,
+      /// homeserver, or subscription controller. [_peer] always has exactly
+      /// one manifest recording on offer; [_me]/[_peer] are always absent in
+      /// [readTranscript]'s answer, which is what lets the on-demand path
+      /// proceed (see `WholeCallTranscriber._skip`).
+      WholeCallTranscriber buildFakeTranscriber({
+        Future<({String? l1, String? l2})> Function(String)?
+        resolvePeerLanguages,
+        Future<Uint8List> Function(Uri)? download,
+        ManifestDiscoverer? discover,
+        TranscriptReader? readTranscript,
+        required PeerHalfPoster post,
+      }) => WholeCallTranscriber(
+        selfUserId: _me,
+        participants: const {_me, _peer},
+        isEnabled: () => true,
+        discover:
+            discover ??
+            (callKey) async => WholeCallManifest(
+              resolved: true,
+              recordings: [
+                CallAudioRecording(
+                  eventId: r'$audio-peer-',
+                  senderId: _peer,
+                  originServerTs: DateTime.fromMillisecondsSinceEpoch(1000),
+                  content: CallAudioContent(
+                    callKey: _callKey,
+                    url: 'mxc://fakeServer.notExisting/AUDIO',
+                    mimetype: 'audio/wav',
+                    codec: kCallAudioCodec,
+                    size: 1000,
+                    durationMs: 4000,
+                    sampleRate: 16000,
+                    channels: 1,
+                  ),
+                ),
+              ],
+            ),
+        readTranscript:
+            readTranscript ??
+            (callKey) async => assembleTranscript(
+              candidates: const [],
+              expectedSenders: const [_me, _peer],
+            ),
+        download:
+            download ?? (uri) async => Uint8List.fromList(const [1, 2, 3, 4]),
+        transcribe:
+            (
+              bytes, {
+              required String l1,
+              required String l2,
+              required int startedAtMs,
+              required int durationMs,
+            }) async => [TranscriptSegment('que tal', atMs: startedAtMs)],
+        resolvePeerLanguages:
+            resolvePeerLanguages ?? (_) async => (l1: 'en', l2: 'es'),
+        post: post,
+        wait: (d) async {},
+      );
+
+      testWidgets(
+        'subscribed + a known recording + absent half shows a Transcribe '
+        'button',
+        (tester) async {
+          MatrixState.pangeaController = FakePangeaController(subscribed: true);
+          await pumpWithRecordings(
+            tester,
+            room(),
+            servingByType([
+              half(_me, texts: const ['hola']),
+              audioEvent(_peer),
+            ]),
+          );
+
+          expect(find.text('Transcribe'), findsOneWidget);
+        },
+      );
+
+      testWidgets(
+        'absent + no recording shows the plain note, never a button',
+        (tester) async {
+          // Mutation: showing the button for every absent half, regardless of
+          // whether a recording exists, would leave "Transcribe" findable
+          // here -> RED.
+          MatrixState.pangeaController = FakePangeaController(subscribed: true);
+          await pumpWithRecordings(
+            tester,
+            room(),
+            servingByType([
+              half(_me, texts: const ['hola']),
+            ]),
+          );
+
+          expect(find.textContaining('No transcript from'), findsOneWidget);
+          expect(find.text('Transcribe'), findsNothing);
+        },
+      );
+
+      testWidgets(
+        'tapping Transcribe shimmers while running and fills in the half on '
+        'success',
+        (tester) async {
+          MatrixState.pangeaController = FakePangeaController(subscribed: true);
+          final events = [
+            half(_me, texts: const ['hola']),
+            audioEvent(_peer),
+          ];
+          final downloadGate = Completer<Uint8List>();
+          final posted = <String>[];
+          final fake = buildFakeTranscriber(
+            download: (uri) => downloadGate.future,
+            post:
+                ({
+                  required callKey,
+                  required spokenBy,
+                  required sourceAudioEventId,
+                  required deviceId,
+                  required langCode,
+                  required clockAnchor,
+                  required segments,
+                }) async {
+                  posted.add(spokenBy);
+                  events.add(half(_peer, texts: const ['que tal']));
+                },
+          );
+
+          await pumpWithRecordings(
+            tester,
+            room(),
+            servingByType(events),
+            transcriber: fake,
+          );
+
+          expect(find.text('Transcribe'), findsOneWidget);
+          await tester.tap(find.text('Transcribe'));
+          await tester.pump();
+
+          // In flight: the button is gone, replaced by the same shimmer the
+          // "still transcribing" recency window uses. Mutation: never
+          // switching to the loading state while a request runs would leave
+          // "Transcribe" tappable a second time here -> RED.
+          expect(find.text('Transcribe'), findsNothing);
+          expect(find.textContaining('Still transcribing'), findsOneWidget);
+
+          downloadGate.complete(Uint8List.fromList(const [1, 2, 3, 4]));
+          await tester.pumpAndSettle();
+
+          expect(posted, [_peer]);
+          expect(find.textContaining('que tal'), findsOneWidget);
+          expect(find.text('Transcribe'), findsNothing);
+          expect(find.textContaining('Still transcribing'), findsNothing);
+        },
+      );
+
+      testWidgets(
+        'a MALFORMED recording url surfaces as "audio unavailable", never a '
+        'stuck button',
+        (tester) async {
+          // A url that can never download (mxcServerAndMediaId throws
+          // ArgumentError) is TERMINAL, so the half is marked unavailable and
+          // the button is withdrawn.
+          MatrixState.pangeaController = FakePangeaController(subscribed: true);
+          final fake = buildFakeTranscriber(
+            download: (uri) async => throw ArgumentError('malformed mxc url'),
+            post:
+                ({
+                  required callKey,
+                  required spokenBy,
+                  required sourceAudioEventId,
+                  required deviceId,
+                  required langCode,
+                  required clockAnchor,
+                  required segments,
+                }) async {
+                  fail(
+                    'must not post a half over a download that never landed',
+                  );
+                },
+          );
+
+          await pumpWithRecordings(
+            tester,
+            room(),
+            servingByType([
+              half(_me, texts: const ['hola']),
+              audioEvent(_peer),
+            ]),
+            transcriber: fake,
+          );
+
+          await tester.tap(find.text('Transcribe'));
+          await tester.pumpAndSettle();
+
+          // Mutation: treating UNAVAILABLE-TERMINAL as retryable (leaving the
+          // ordinary button back in place) would find "Transcribe" here,
+          // exactly the "button that cannot work" the design forbids -> RED.
+          expect(find.text('Transcribe'), findsNothing);
+          expect(
+            find.textContaining('could not be downloaded'),
+            findsOneWidget,
+          );
+        },
+      );
+
+      testWidgets(
+        'a TRANSIENT download failure leaves the button retryable, never '
+        'marked unavailable',
+        (tester) async {
+          // A network/homeserver blip (a non-ArgumentError throw) is not the
+          // audio being unusable -- the bytes may be there next time, so the
+          // button must stay.
+          // Mutation: mapping downloadFailed to the audioUnavailable case would
+          // withdraw the button and show the terminal note here -> RED.
+          MatrixState.pangeaController = FakePangeaController(subscribed: true);
+          final fake = buildFakeTranscriber(
+            download: (uri) async => throw Exception('network gone'),
+            post:
+                ({
+                  required callKey,
+                  required spokenBy,
+                  required sourceAudioEventId,
+                  required deviceId,
+                  required langCode,
+                  required clockAnchor,
+                  required segments,
+                }) async {
+                  fail(
+                    'must not post a half over a download that never landed',
+                  );
+                },
+          );
+
+          await pumpWithRecordings(
+            tester,
+            room(),
+            servingByType([
+              half(_me, texts: const ['hola']),
+              audioEvent(_peer),
+            ]),
+            transcriber: fake,
+          );
+
+          await tester.tap(find.text('Transcribe'));
+          await tester.pumpAndSettle();
+
+          expect(find.text('Transcribe'), findsOneWidget);
+          expect(find.textContaining('could not be downloaded'), findsNothing);
+        },
+      );
+
+      testWidgets(
+        'an unresolved peer language opens the picker, and the choice is '
+        'forwarded',
+        (tester) async {
+          MatrixState.pangeaController = FakePangeaController(subscribed: true);
+          final events = [
+            half(_me, texts: const ['hola']),
+            audioEvent(_peer),
+          ];
+          String? postedLangCode;
+          final fake = buildFakeTranscriber(
+            resolvePeerLanguages: (_) async => (l1: null, l2: null),
+            post:
+                ({
+                  required callKey,
+                  required spokenBy,
+                  required sourceAudioEventId,
+                  required deviceId,
+                  required langCode,
+                  required clockAnchor,
+                  required segments,
+                }) async {
+                  postedLangCode = langCode;
+                  events.add(half(_peer, texts: const ['bonjour']));
+                },
+          );
+
+          await pumpWithRecordings(
+            tester,
+            room(),
+            servingByType(events),
+            transcriber: fake,
+            pickerLanguages: [
+              LanguageModel(langCode: 'fr', displayName: 'French'),
+            ],
+          );
+
+          await tester.tap(find.text('Transcribe'));
+          await tester.pumpAndSettle();
+
+          // Mutation: calling `transcribeHalfOnDemand` straight away instead
+          // of opening the picker on an unresolved pair would find no dialog
+          // here -> RED.
+          expect(find.text('What language was spoken?'), findsOneWidget);
+          expect(find.text('French'), findsOneWidget);
+
+          await tester.tap(find.text('French'));
+          await tester.pumpAndSettle();
+
+          expect(postedLangCode, 'fr');
+          expect(find.textContaining('bonjour'), findsOneWidget);
+        },
+      );
+
+      testWidgets(
+        'a not-yet-visible manifest leaves the button retryable, never '
+        'marked unavailable',
+        (tester) async {
+          // discover comes back UNRESOLVED -- the peer's merge is still in
+          // flight, a transient miss, NOT the saved audio being unusable.
+          // Mutation: collapsing the typed result to a bool marks EVERY
+          // non-produce unavailable, so this transient would wrongly drop the
+          // button and show the terminal note -> RED.
+          MatrixState.pangeaController = FakePangeaController(subscribed: true);
+          final fake = buildFakeTranscriber(
+            discover: (_) async => WholeCallManifest.absent,
+            post:
+                ({
+                  required callKey,
+                  required spokenBy,
+                  required sourceAudioEventId,
+                  required deviceId,
+                  required langCode,
+                  required clockAnchor,
+                  required segments,
+                }) async => fail('must not post when no manifest is visible'),
+          );
+
+          await pumpWithRecordings(
+            tester,
+            room(),
+            servingByType([
+              half(_me, texts: const ['hola']),
+              audioEvent(_peer),
+            ]),
+            transcriber: fake,
+          );
+
+          await tester.tap(find.text('Transcribe'));
+          await tester.pumpAndSettle();
+
+          expect(find.text('Transcribe'), findsOneWidget);
+          expect(find.textContaining('could not be downloaded'), findsNothing);
+        },
+      );
+
+      testWidgets(
+        'a half that already landed refreshes into view, never marked '
+        'unavailable',
+        (tester) async {
+          // The peer's own half lands between render and the skip check: the
+          // check sees it (alreadyPresent, no produce), and it is now among the
+          // served events so the refresh shows it.
+          // Mutation: collapsing the typed result to a bool marks this
+          // alreadyPresent unavailable instead of refreshing -> "ya estaba" is
+          // never shown and the terminal note appears -> RED.
+          MatrixState.pangeaController = FakePangeaController(subscribed: true);
+          final events = [
+            half(_me, texts: const ['hola']),
+            audioEvent(_peer),
+          ];
+          final fake = buildFakeTranscriber(
+            readTranscript: (_) async {
+              events.add(half(_peer, texts: const ['ya estaba']));
+              return assembleTranscript(
+                candidates: [
+                  TranscriptCandidate(
+                    senderId: _peer,
+                    eventId: r'$peer-authentic',
+                    originServerTs: 2000,
+                    segments: [TranscriptSegment('ya estaba', atMs: 2000)],
+                    accounting: const HalfAccounting(),
+                  ),
+                ],
+                expectedSenders: const [_me, _peer],
+              );
+            },
+            post:
+                ({
+                  required callKey,
+                  required spokenBy,
+                  required sourceAudioEventId,
+                  required deviceId,
+                  required langCode,
+                  required clockAnchor,
+                  required segments,
+                }) async => fail('must not post when a half already exists'),
+          );
+
+          await pumpWithRecordings(
+            tester,
+            room(),
+            servingByType(events),
+            transcriber: fake,
+          );
+
+          await tester.tap(find.text('Transcribe'));
+          await tester.pumpAndSettle();
+
+          expect(find.textContaining('ya estaba'), findsOneWidget);
+          expect(find.textContaining('could not be downloaded'), findsNothing);
+        },
+      );
+    });
   });
 }

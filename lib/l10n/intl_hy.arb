@@ -2379,5 +2379,10 @@
     "callTranscriptRecordings": "Ձայնագրություններ",
     "callTranscriptFullCall": "Ամբողջական զանգ",
     "callTranscriptPreparingRecording": "Պատրաստվում է ամբողջական ձայնագրությունը…",
-    "callTranscriptNoRecording": "Ամբողջական զանգի ձայնագրություն չկա։"
+    "callTranscriptNoRecording": "Ամբողջական զանգի ձայնագրություն չկա։",
+    "callTranscriptTranscribeButton": "Տառադարձել",
+    "callTranscriptAudioUnavailable": "{name}-ից պահպանված ձայնագրությունը հնարավոր չեղավ ներբեռնել, ուստի այն հնարավոր չեղավ տառադարձել։",
+    "callTranscriptChooseLanguage": "Ի՞նչ լեզվով է խոսվել։",
+    "callTranscriptSubscribeForTranscription": "Բաժանորդագրվել տառադարձման համար",
+    "unlockCallTranscript": "Բացել զանգի արտագրումը"
 }

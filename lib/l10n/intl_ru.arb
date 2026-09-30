@@ -10943,5 +10943,10 @@
     "callTranscriptRecordings": "Записи",
     "callTranscriptFullCall": "Весь звонок",
     "callTranscriptPreparingRecording": "Подготовка полной записи…",
-    "callTranscriptNoRecording": "Нет записи всего звонка."
+    "callTranscriptNoRecording": "Нет записи всего звонка.",
+    "callTranscriptTranscribeButton": "Расшифровать",
+    "callTranscriptAudioUnavailable": "Сохранённая запись от {name} не может быть загружена, поэтому её нельзя расшифровать.",
+    "callTranscriptChooseLanguage": "На каком языке говорили?",
+    "callTranscriptSubscribeForTranscription": "Подписаться на расшифровку",
+    "unlockCallTranscript": "Разблокировать расшифровку звонка"
 }
