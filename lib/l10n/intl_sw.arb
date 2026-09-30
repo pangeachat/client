@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-09-30 11:27:40.406803",
+    "@@last_modified": "2026-09-30 12:45:47.209169",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Maua, maneno yaliyobobea",
     "filterAndSearch": "Chuja na utafute",
     "participantsOfTotal": "{filled} kati ya wachezaji {total}",
-    "mapAttributionLabel": "Wachangiaji wa OpenStreetMap, hakimiliki na leseni",
     "seeAll": "Tazama zote",
     "seeAllSection": "Tazama {section} zote",
     "showMoreOptionsHint": "onyesha chaguo zaidi",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "Rekodi iliyohifadhiwa kutoka {name} haikuweza kupakuliwa, kwa hivyo haikuweza kunakiliwa.",
     "callTranscriptChooseLanguage": "Ni lugha gani ilizungumzwa?",
     "callTranscriptSubscribeForTranscription": "Jisajili ili upate nakala",
-    "unlockCallTranscript": "Fungua nakala ya simu"
+    "unlockCallTranscript": "Fungua nakala ya simu",
+    "mapCreditsLabel": "Mikopo ya ramani: Ramani za Stadia, OpenMapTiles na OpenStreetMap"
 }

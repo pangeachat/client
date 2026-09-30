@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-09-30 11:27:35.642452",
+    "@@last_modified": "2026-09-30 12:45:44.790233",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "گوڵەکان، وشە شارەزاکان",
     "filterAndSearch": "پاڵاوتن و گەڕان",
     "participantsOfTotal": "{filled} لە {total} یاریزان",
-    "mapAttributionLabel": "بەشداربووانی OpenStreetMap، مافی لەبەرگرتنەوە و مۆڵەت",
     "seeAll": "هەمووی ببینە",
     "seeAllSection": "هەموو {section} ببینە",
     "showMoreOptionsHint": "پیشاندانی بژاردەی زیاتر",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "تۆماری پاشەکەوتکراوی {name} ناتوانرێت دابگیرێت، بۆیە ناتوانرێت بگۆڕدرێت بۆ نووسین.",
     "callTranscriptChooseLanguage": "بە چ زمانێک قسە کرا؟",
     "callTranscriptSubscribeForTranscription": "بەشداری بکە بۆ گۆڕین بۆ نووسین",
-    "unlockCallTranscript": "کردنەوەی گۆڕینی پەیوەندی بۆ نووسین"
+    "unlockCallTranscript": "کردنەوەی گۆڕینی پەیوەندی بۆ نووسین",
+    "mapCreditsLabel": "مافی نەخشەکان: نەخشەکانی ستادیا، OpenMapTiles و OpenStreetMap"
 }

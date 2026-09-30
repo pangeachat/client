@@ -3093,7 +3093,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-09-30 11:27:32.811338",
+    "@@last_modified": "2026-09-30 12:45:43.453533",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10476,7 +10476,6 @@
     "constructLevelFlowers": "फ्लावर्स, सीखे हुए शब्द",
     "filterAndSearch": "फ़िल्टर करें और खोजें",
     "participantsOfTotal": "{total} खिलाड़ियों में से {filled}",
-    "mapAttributionLabel": "OpenStreetMap योगदानकर्ता, कॉपीराइट और लाइसेंस",
     "seeAll": "सभी देखें",
     "seeAllSection": "सभी {section} देखें",
     "showMoreOptionsHint": "और विकल्प दिखाएँ",
@@ -10612,5 +10611,6 @@
     "callTranscriptAudioUnavailable": "{name} से सहेजी गई रिकॉर्डिंग डाउनलोड नहीं की जा सकी, इसलिए इसे लिप्यंतरित नहीं किया जा सका।",
     "callTranscriptChooseLanguage": "कौन सी भाषा बोली गई थी?",
     "callTranscriptSubscribeForTranscription": "लिप्यंतरण के लिए सदस्यता लें",
-    "unlockCallTranscript": "कॉल ट्रांसक्रिप्ट अनलॉक करें"
+    "unlockCallTranscript": "कॉल ट्रांसक्रिप्ट अनलॉक करें",
+    "mapCreditsLabel": "मैप क्रेडिट: स्टेडिया मैप्स, ओपनमैपटाइल्स और ओपनस्ट्रीटमैप"
 }

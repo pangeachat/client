@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-09-30 11:27:38.485962",
+    "@@last_modified": "2026-09-30 12:45:45.950419",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9929,7 +9929,6 @@
     "constructLevelFlowers": "Kwiaty, opanowane słowa",
     "filterAndSearch": "Filtruj i szukaj",
     "participantsOfTotal": "{filled} z {total} graczy",
-    "mapAttributionLabel": "Współtwórcy OpenStreetMap, prawa autorskie i licencja",
     "seeAll": "Zobacz wszystkie",
     "seeAllSection": "Zobacz wszystkie {section}",
     "showMoreOptionsHint": "pokaż więcej opcji",
@@ -10065,5 +10064,6 @@
     "callTranscriptAudioUnavailable": "Nie udało się pobrać zapisanego nagrania od {name}, więc nie można go transkrybować.",
     "callTranscriptChooseLanguage": "W jakim języku mówiono?",
     "callTranscriptSubscribeForTranscription": "Subskrybuj, aby uzyskać transkrypcję",
-    "unlockCallTranscript": "Odblokuj transkrypcję rozmowy"
+    "unlockCallTranscript": "Odblokuj transkrypcję rozmowy",
+    "mapCreditsLabel": "Źródło map: Stadia Maps, OpenMapTiles i OpenStreetMap"
 }

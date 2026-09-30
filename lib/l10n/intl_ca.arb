@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 11:27:30.405659",
+    "@@last_modified": "2026-09-30 12:45:42.205890",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9971,7 +9971,6 @@
     "constructLevelFlowers": "Flors, paraules dominades",
     "filterAndSearch": "Filtra i cerca",
     "participantsOfTotal": "{filled} de {total} jugadors",
-    "mapAttributionLabel": "Col·laboradors d'OpenStreetMap, drets d'autor i llicència",
     "seeAll": "Veure-ho tot",
     "seeAllSection": "Veure-ho tot a {section}",
     "showMoreOptionsHint": "mostrar més opcions",
@@ -10107,5 +10106,6 @@
     "callTranscriptAudioUnavailable": "No s'ha pogut descarregar l'enregistrament desat de {name}, per tant no s'ha pogut transcriure.",
     "callTranscriptChooseLanguage": "En quina llengua es va parlar?",
     "callTranscriptSubscribeForTranscription": "Subscriu-te per a la transcripció",
-    "unlockCallTranscript": "Desbloqueja la transcripció de la trucada"
+    "unlockCallTranscript": "Desbloqueja la transcripció de la trucada",
+    "mapCreditsLabel": "Crèdits del mapa: Stadia Maps, OpenMapTiles i OpenStreetMap"
 }

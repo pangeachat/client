@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-09-30 11:27:35.175759",
+    "@@last_modified": "2026-09-30 12:45:44.261524",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Гүлдер, меңгерілген сөздер",
     "filterAndSearch": "Сүзгілеу және іздеу",
     "participantsOfTotal": "{total} ойыншының {filled}-і",
-    "mapAttributionLabel": "OpenStreetMap қатысушылары, авторлық құқық және лицензия",
     "seeAll": "Барлығын қарау",
     "seeAllSection": "Барлық {section} қарау",
     "showMoreOptionsHint": "қосымша опцияларды көрсету",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "{name} сақталған жазбасын жүктеп алу мүмкін болмады, сондықтан оны транскрипциялау мүмкін емес.",
     "callTranscriptChooseLanguage": "Қандай тілде сөйледіңіз?",
     "callTranscriptSubscribeForTranscription": "Транскрипциялау үшін жазылу",
-    "unlockCallTranscript": "Қоңырау транскрипциясының құлпын ашу"
+    "unlockCallTranscript": "Қоңырау транскрипциясының құлпын ашу",
+    "mapCreditsLabel": "Карта несиелері: Stadia Maps, OpenMapTiles және OpenStreetMap"
 }

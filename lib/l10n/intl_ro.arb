@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 11:27:38.526489",
+    "@@last_modified": "2026-09-30 12:45:46.448486",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10576,7 +10576,6 @@
     "constructLevelFlowers": "Flori, cuvinte stăpânite",
     "filterAndSearch": "Filtrează și caută",
     "participantsOfTotal": "{filled} din {total} jucători",
-    "mapAttributionLabel": "Contribuitori OpenStreetMap, drepturi de autor și licență",
     "seeAll": "Vezi tot",
     "seeAllSection": "Vezi tot {section}",
     "showMoreOptionsHint": "afișează mai multe opțiuni",
@@ -10712,5 +10711,6 @@
     "callTranscriptAudioUnavailable": "Înregistrarea salvată de la {name} nu a putut fi descărcată, prin urmare nu a putut fi transcrisă.",
     "callTranscriptChooseLanguage": "Ce limbă a fost vorbită?",
     "callTranscriptSubscribeForTranscription": "Abonează-te pentru transcriere",
-    "unlockCallTranscript": "Deblochează transcrierea apelului"
+    "unlockCallTranscript": "Deblochează transcrierea apelului",
+    "mapCreditsLabel": "Credite hartă: Stadia Maps, OpenMapTiles și OpenStreetMap"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-09-30 11:27:41.054707",
+    "@@last_modified": "2026-09-30 12:45:47.398342",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Гулҳо, калимаҳои азхудшуда",
     "filterAndSearch": "Филтр ва ҷустуҷӯ",
     "participantsOfTotal": "{filled} аз {total} бозигар",
-    "mapAttributionLabel": "Мусоидаткунандагони OpenStreetMap, ҳуқуқи муаллифӣ ва иҷозатнома",
     "seeAll": "Ҳамаро бинед",
     "seeAllSection": "Ҳамаи {section}-ро бинед",
     "showMoreOptionsHint": "имконоти бештарро нишон диҳед",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "Сабти захирашуда аз {name} зеркашӣ нашуд, бинобар ин онро транскрипт кардан ғайриимкон аст.",
     "callTranscriptChooseLanguage": "Бо кадом забон гуфтугӯ шуд?",
     "callTranscriptSubscribeForTranscription": "Барои транскрипсия обуна шавед",
-    "unlockCallTranscript": "Транскрипти зангро кушоед"
+    "unlockCallTranscript": "Транскрипти зангро кушоед",
+    "mapCreditsLabel": "Ҳуқуқи харита: Stadia Maps, OpenMapTiles ва OpenStreetMap"
 }

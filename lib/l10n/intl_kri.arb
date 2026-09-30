@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-09-30 11:27:35.206369",
+    "@@last_modified": "2026-09-30 12:45:44.489857",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Fula dɛn, wɔd dɛn we yu dɔn sabi fayn",
     "filterAndSearch": "Fulta ɛn Sɛch",
     "participantsOfTotal": "{filled} pan {total} pleya dem",
-    "mapAttributionLabel": "OpenStreetMap pipal wey de gi am say, in kopyrayt ɛn layɛns",
     "seeAll": "Si ɔl",
     "seeAllSection": "Si ɔl {section}",
     "showMoreOptionsHint": "sho ɔda ɔpshɔn dɛn",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "Wi nɔ ebul fɔ daunlod di rikɔdin frɔm {name}, so wi nɔ ebul fɔ transkrayb am.",
     "callTranscriptChooseLanguage": "Us langwej dɛn bin tɔk?",
     "callTranscriptSubscribeForTranscription": "Sabsakrayb fɔ transkripshɔn",
-    "unlockCallTranscript": "Ɔnlɔk kɔl transkript"
+    "unlockCallTranscript": "Ɔnlɔk kɔl transkript",
+    "mapCreditsLabel": "Map credit dɛn: Stadia Maps, OpenMapTiles ɛn OpenStreetMap"
 }

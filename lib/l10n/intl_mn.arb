@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-09-30 11:27:36.992439",
+    "@@last_modified": "2026-09-30 12:45:45.451693",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Цэцэг, эзэмшсэн үгс",
     "filterAndSearch": "Шүүж хайх",
     "participantsOfTotal": "{total} тоглогчоос {filled} нь",
-    "mapAttributionLabel": "OpenStreetMap-ийн хувь нэмэр оруулагчид, зохиогчийн эрх, лиценз",
     "seeAll": "Бүгдийг харах",
     "seeAllSection": "Бүх {section}-г харах",
     "showMoreOptionsHint": "бусад сонголтыг харах",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "{name}-ээс хадгалсан бичлэгийг татаж авах боломжгүй байсан тул хөрвүүлж чадсангүй.",
     "callTranscriptChooseLanguage": "Ямар хэлээр ярьсан бэ?",
     "callTranscriptSubscribeForTranscription": "Хөрвүүлэлтэд бүртгүүлэх",
-    "unlockCallTranscript": "Дуудлагын хөрвүүлэлтийг нээх"
+    "unlockCallTranscript": "Дуудлагын хөрвүүлэлтийг нээх",
+    "mapCreditsLabel": "Газрын зургийн эрх: Stadia Maps, OpenMapTiles болон OpenStreetMap"
 }

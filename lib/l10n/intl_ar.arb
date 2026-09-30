@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-09-30 11:27:29.460760",
+    "@@last_modified": "2026-09-30 12:45:41.735366",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10150,7 +10150,6 @@
     "constructLevelFlowers": "الزهور، كلمات متقنة",
     "filterAndSearch": "تصفية وبحث",
     "participantsOfTotal": "{filled} من أصل {total} لاعبين",
-    "mapAttributionLabel": "مساهمو OpenStreetMap، حقوق النشر والترخيص",
     "seeAll": "مشاهدة الكل",
     "seeAllSection": "مشاهدة كل {section}",
     "showMoreOptionsHint": "عرض المزيد من الخيارات",
@@ -10286,5 +10285,6 @@
     "callTranscriptAudioUnavailable": "تعذر تنزيل التسجيل المحفوظ من {name}، لذلك لم يتمكن من نسخه.",
     "callTranscriptChooseLanguage": "ما هي اللغة التي تم التحدث بها؟",
     "callTranscriptSubscribeForTranscription": "اشترك لنسخ المحادثة",
-    "unlockCallTranscript": "فتح نسخة المحادثة"
+    "unlockCallTranscript": "فتح نسخة المحادثة",
+    "mapCreditsLabel": "اعتمادات الخريطة: Stadia Maps، OpenMapTiles وOpenStreetMap"
 }

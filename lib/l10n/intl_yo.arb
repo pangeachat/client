@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-09-30 11:27:42.392792",
+    "@@last_modified": "2026-09-30 12:45:48.115092",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Àwọn òdòdó, àwọn ọ̀rọ̀ tí a ti kọ́ dáradára",
     "filterAndSearch": "Ṣe àlàyé àti wá",
     "participantsOfTotal": "Àwọn agbábọ́ọ̀lù {filled} nínú {total}",
-    "mapAttributionLabel": "Àwọn olùkópa OpenStreetMap, àṣẹ àti ìwé-àṣẹ",
     "seeAll": "Wo gbogbo rẹ",
     "seeAllSection": "Wo gbogbo {section}",
     "showMoreOptionsHint": "fi àwọn àṣàyàn mìíràn hàn",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "Ìgbàsílẹ̀ tí a fipamọ́ láti ọ̀dọ̀ {name} kò lè ṣe ìgbàsílẹ̀, nítorí náà kò lè ṣe àkọsílẹ̀.",
     "callTranscriptChooseLanguage": "Èdè wo ni a sọ?",
     "callTranscriptSubscribeForTranscription": "Ṣe àbáwọlé fún àkọsílẹ̀",
-    "unlockCallTranscript": "Ṣí àkọsílẹ̀ ìpe sílẹ̀"
+    "unlockCallTranscript": "Ṣí àkọsílẹ̀ ìpe sílẹ̀",
+    "mapCreditsLabel": "Àwọn kírẹ́dítì àwòrán ilẹ̀: Stadia Maps, OpenMapTiles àti OpenStreetMap"
 }

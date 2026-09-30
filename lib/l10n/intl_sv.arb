@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 11:27:40.217437",
+    "@@last_modified": "2026-09-30 12:45:47.158234",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10362,7 +10362,6 @@
     "constructLevelFlowers": "Blommor, ord du kan",
     "filterAndSearch": "Filtrera och sök",
     "participantsOfTotal": "{filled} av {total} spelare",
-    "mapAttributionLabel": "OpenStreetMap-bidragsgivare, upphovsrätt och licens",
     "seeAll": "Visa alla",
     "seeAllSection": "Visa alla {section}",
     "showMoreOptionsHint": "visa fler alternativ",
@@ -10498,5 +10497,6 @@
     "callTranscriptAudioUnavailable": "Den sparade inspelningen från {name} kunde inte laddas ner, så den kunde inte transkriberas.",
     "callTranscriptChooseLanguage": "Vilket språk talades?",
     "callTranscriptSubscribeForTranscription": "Prenumerera för transkription",
-    "unlockCallTranscript": "Lås upp samtalstranskription"
+    "unlockCallTranscript": "Lås upp samtalstranskription",
+    "mapCreditsLabel": "Kartkrediter: Stadia Maps, OpenMapTiles och OpenStreetMap"
 }

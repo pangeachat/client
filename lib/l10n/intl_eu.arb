@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-09-30 11:27:31.757504",
+    "@@last_modified": "2026-09-30 12:45:42.676088",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9844,7 +9844,6 @@
     "constructLevelFlowers": "Loreak, menderatutako hitzak",
     "filterAndSearch": "Iragazi eta bilatu",
     "participantsOfTotal": "{total} jokalarietatik {filled}",
-    "mapAttributionLabel": "OpenStreetMap-eko kolaboratzaileak, copyright eta lizentzia",
     "seeAll": "Ikusi guztiak",
     "seeAllSection": "Ikusi {section} guztiak",
     "showMoreOptionsHint": "aukera gehiago erakutsi",
@@ -9980,5 +9979,6 @@
     "callTranscriptAudioUnavailable": "{name} grabatutako grabazioa ezin izan da deskargatu, beraz, ezin izan da transkribatu.",
     "callTranscriptChooseLanguage": "Zein hizkuntzatan hitz egin zen?",
     "callTranscriptSubscribeForTranscription": "Harpidetu transkripziorako",
-    "unlockCallTranscript": "Desblokeatu deiaren transkripzioa"
+    "unlockCallTranscript": "Desblokeatu deiaren transkripzioa",
+    "mapCreditsLabel": "Maparen kredituak: Stadia Maps, OpenMapTiles eta OpenStreetMap"
 }

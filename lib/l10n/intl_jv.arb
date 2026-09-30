@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-09-30 11:27:34.141601",
+    "@@last_modified": "2026-09-30 12:45:44.274812",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Kembang, tembung sing wis dikuasai",
     "filterAndSearch": "Saring lan goleki",
     "participantsOfTotal": "{filled} saka {total} pemain",
-    "mapAttributionLabel": "Kontributor OpenStreetMap, hak cipta lan lisensi",
     "seeAll": "Deleng kabeh",
     "seeAllSection": "Deleng kabeh {section}",
     "showMoreOptionsHint": "tampilake opsi liyane",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "Rekaman sing disimpen saka {name} ora bisa diundhuh, mula ora bisa ditranskripsi.",
     "callTranscriptChooseLanguage": "Basa apa sing diucapake?",
     "callTranscriptSubscribeForTranscription": "Langganan kanggo transkripsi",
-    "unlockCallTranscript": "Bukak kunci transkrip telpon"
+    "unlockCallTranscript": "Bukak kunci transkrip telpon",
+    "mapCreditsLabel": "Kredhit peta: Stadia Maps, OpenMapTiles lan OpenStreetMap"
 }

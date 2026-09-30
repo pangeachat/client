@@ -1937,7 +1937,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-09-30 11:27:35.103592",
+    "@@last_modified": "2026-09-30 12:45:44.345574",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10744,7 +10744,6 @@
     "constructLevelFlowers": "ყვავილები, ათვისებული სიტყვები",
     "filterAndSearch": "გაფილტვრა და ძიება",
     "participantsOfTotal": "{filled} / {total} მოთამაშე",
-    "mapAttributionLabel": "OpenStreetMap-ის კონტრიბუტორები, საავტორო უფლებები და ლიცენზია",
     "seeAll": "ყველას ნახვა",
     "seeAllSection": "ყველა {section}-ის ნახვა",
     "showMoreOptionsHint": "მეტი ვარიანტის ჩვენება",
@@ -10880,5 +10879,6 @@
     "callTranscriptAudioUnavailable": "{name}-ის შენახული ჩანაწერი ვერ ჩამოიტვირთა, ამიტომ მისი ტრანსკრიფცია ვერ მოხერხდა.",
     "callTranscriptChooseLanguage": "რა ენაზე საუბრობდით?",
     "callTranscriptSubscribeForTranscription": "გამოიწერეთ ტრანსკრიფციისთვის",
-    "unlockCallTranscript": "ზარის ტრანსკრიფციის განბლოკვა"
+    "unlockCallTranscript": "ზარის ტრანსკრიფციის განბლოკვა",
+    "mapCreditsLabel": "რუკის კრედიტები: Stadia Maps, OpenMapTiles და OpenStreetMap"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-09-30 11:27:35.851493",
+    "@@last_modified": "2026-09-30 12:45:44.781130",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Blummen, beherrschte Wierder",
     "filterAndSearch": "Filteren a sichen",
     "participantsOfTotal": "{filled} vun {total} Spiller",
-    "mapAttributionLabel": "OpenStreetMap Mataarbechter, Copyright a Lizenz",
     "seeAll": "Alles gesinn",
     "seeAllSection": "Alles gesinn {section}",
     "showMoreOptionsHint": "méi Optiounen uweisen",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "Déi gespäichert Opnam vum {name} konnt net erofgeluede ginn, dofir konnt se net transkribéiert ginn.",
     "callTranscriptChooseLanguage": "Wat fir eng Sprooch gouf geschwat?",
     "callTranscriptSubscribeForTranscription": "Abonnéiert Iech fir d'Transkriptioun",
-    "unlockCallTranscript": "Transkript vun Uruff opmaachen"
+    "unlockCallTranscript": "Transkript vun Uruff opmaachen",
+    "mapCreditsLabel": "Kaart Credits: Stadia Maps, OpenMapTiles an OpenStreetMap"
 }

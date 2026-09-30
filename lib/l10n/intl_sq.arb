@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-09-30 11:27:39.763893",
+    "@@last_modified": "2026-09-30 12:45:46.819931",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Lule, fjalë të zotëruara",
     "filterAndSearch": "Filtro dhe kërko",
     "participantsOfTotal": "{filled} nga {total} lojtarë",
-    "mapAttributionLabel": "Kontribuesit e OpenStreetMap, të drejtat e autorit dhe licenca",
     "seeAll": "Shiko të gjitha",
     "seeAllSection": "Shiko të gjitha {section}",
     "showMoreOptionsHint": "shfaq më shumë opsione",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "Regjistrimi i ruajtur nga {name} nuk mund të shkarkohej, prandaj nuk mund të transkriptohej.",
     "callTranscriptChooseLanguage": "Çfarë gjuhe u fol?",
     "callTranscriptSubscribeForTranscription": "Abonohu për transkriptim",
-    "unlockCallTranscript": "Zhbloko transkriptin e thirrjes"
+    "unlockCallTranscript": "Zhbloko transkriptin e thirrjes",
+    "mapCreditsLabel": "Kreditet e hartës: Stadia Maps, OpenMapTiles dhe OpenStreetMap"
 }

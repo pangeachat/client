@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-09-30 11:27:29.474011",
+    "@@last_modified": "2026-09-30 12:45:41.701009",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Цветя, овладени думи",
     "filterAndSearch": "Филтриране и търсене",
     "participantsOfTotal": "{filled} от {total} играчи",
-    "mapAttributionLabel": "Сътрудници на OpenStreetMap, авторски права и лиценз",
     "seeAll": "Виж всички",
     "seeAllSection": "Виж всички {section}",
     "showMoreOptionsHint": "покажи още опции",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "Записаният разговор от {name} не можа да бъде изтеглен и съответно не можа да бъде транскрибиран.",
     "callTranscriptChooseLanguage": "На какъв език се говореше?",
     "callTranscriptSubscribeForTranscription": "Абонирайте се за транскрипция",
-    "unlockCallTranscript": "Отключване на препис от разговора"
+    "unlockCallTranscript": "Отключване на препис от разговора",
+    "mapCreditsLabel": "Карта: Stadia Maps, OpenMapTiles и OpenStreetMap"
 }

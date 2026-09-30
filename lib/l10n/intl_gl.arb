@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-09-30 11:27:31.882472",
+    "@@last_modified": "2026-09-30 12:45:42.924289",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9844,7 +9844,6 @@
     "constructLevelFlowers": "Flores, palabras dominadas",
     "filterAndSearch": "Filtrar e buscar",
     "participantsOfTotal": "{filled} de {total} xogadores",
-    "mapAttributionLabel": "Colaboradores de OpenStreetMap, dereitos de autor e licenza",
     "seeAll": "Ver todo",
     "seeAllSection": "Ver todo {section}",
     "showMoreOptionsHint": "mostrar máis opcións",
@@ -9980,5 +9979,6 @@
     "callTranscriptAudioUnavailable": "Non se puido descargar a gravación gardada de {name}, polo que non se puido transcribir.",
     "callTranscriptChooseLanguage": "Que idioma se falou?",
     "callTranscriptSubscribeForTranscription": "Subscribirse para transcribir",
-    "unlockCallTranscript": "Desbloquear transcrición da chamada"
+    "unlockCallTranscript": "Desbloquear transcrición da chamada",
+    "mapCreditsLabel": "Créditos do mapa: Stadia Maps, OpenMapTiles e OpenStreetMap"
 }

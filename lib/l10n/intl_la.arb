@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-09-30 11:27:35.319966",
+    "@@last_modified": "2026-09-30 12:45:44.777896",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Flores, verba perfecta",
     "filterAndSearch": "Spargere et quaerere",
     "participantsOfTotal": "{filled} ex {total} lusoribus",
-    "mapAttributionLabel": "OpenStreetMap contributores, ius auctoris et licentia",
     "seeAll": "Omnia vide",
     "seeAllSection": "Omnia {section} vide",
     "showMoreOptionsHint": "plures optiones ostende",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "Registratio servata ab {name} deponi non potuit, ergo transcribi non potuit.",
     "callTranscriptChooseLanguage": "Qua lingua locutum est?",
     "callTranscriptSubscribeForTranscription": "Subscribere pro transcriptione",
-    "unlockCallTranscript": "Reserare transcriptionem vocis"
+    "unlockCallTranscript": "Reserare transcriptionem vocis",
+    "mapCreditsLabel": "Tabulae credita: Stadia Maps, OpenMapTiles et OpenStreetMap"
 }

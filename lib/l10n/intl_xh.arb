@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-09-30 11:27:42.010159",
+    "@@last_modified": "2026-09-30 12:45:47.872467",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Iintyatyambo, amagama aphucukileyo",
     "filterAndSearch": "Hluza uze ukhangele",
     "participantsOfTotal": "{filled} kubadlali abali-{total}",
-    "mapAttributionLabel": "Abanikeli be-OpenStreetMap, ilungelo lokushicilela kunye nelayisensi",
     "seeAll": "Bona konke",
     "seeAllSection": "Bona konke {section}",
     "showMoreOptionsHint": "bonisa iinketho ezininzi",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "Ukuqoshwa okugciniweyo okuvela ku-{name} akukwazanga ukukhutshelwa, ngoko ke akukwazanga ukubhalwa phantsi.",
     "callTranscriptChooseLanguage": "Loluphi ulwimi oluthethweyo?",
     "callTranscriptSubscribeForTranscription": "Bhalisa ukuze ufumane ukubhalwa phantsi",
-    "unlockCallTranscript": "Vula umbhalo wefowuni"
+    "unlockCallTranscript": "Vula umbhalo wefowuni",
+    "mapCreditsLabel": "Amakhredithi emephu: Stadia Maps, OpenMapTiles kunye ne-OpenStreetMap"
 }

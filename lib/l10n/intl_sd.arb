@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-09-30 11:27:39.752568",
+    "@@last_modified": "2026-09-30 12:45:46.779023",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "فلاورس، ماهر لفظ",
     "filterAndSearch": "فلٽر ۽ ڳولا ڪريو",
     "participantsOfTotal": "{total} رانديگرن مان {filled}",
-    "mapAttributionLabel": "اوپن اسٽريٽ ميپ جا حصو وٺندڙ، ڪاپي رائيٽ ۽ لائسنس",
     "seeAll": "سڀ ڏسو",
     "seeAllSection": "سڀ ڏسو {section}",
     "showMoreOptionsHint": "وڌيڪ آپشن ڏيکاريو",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "{name} کان محفوظ ڪيل رڪارڊنگ ڊائونلوڊ نه ٿي سگهي، تنهنڪري ان کي لکي نه سگهيو.",
     "callTranscriptChooseLanguage": "ڪهڙي ٻولي ڳالهائي وئي؟",
     "callTranscriptSubscribeForTranscription": "لِکڻ لاءِ سبسڪرائب ڪريو",
-    "unlockCallTranscript": "ڪال ٽرانسڪرپٽ کوليو"
+    "unlockCallTranscript": "ڪال ٽرانسڪرپٽ کوليو",
+    "mapCreditsLabel": "نقشي جا ڪريڊٽ: اسٽيڊيا ميپس، اوپن ميپ ٽائيلز ۽ اوپن اسٽريٽ ميپ"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-09-30 11:27:38.708961",
+    "@@last_modified": "2026-09-30 12:45:46.173553",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "ଫୁଲ, ଆୟତ୍ତ ଶବ୍ଦ",
     "filterAndSearch": "ଫିଲ୍ଟର୍ ଏବଂ ସନ୍ଧାନ କରନ୍ତୁ",
     "participantsOfTotal": "{total} ଖେଳାଳିଙ୍କ ମଧ୍ୟରୁ {filled}",
-    "mapAttributionLabel": "OpenStreetMap ଯୋଗଦାନକାରୀ, କପିରାଇଟ୍ ଏବଂ ଲାଇସେନ୍ସ",
     "seeAll": "ସବୁ ଦେଖନ୍ତୁ",
     "seeAllSection": "ସବୁ {section} ଦେଖନ୍ତୁ",
     "showMoreOptionsHint": "ଅଧିକ ବିକଳ୍ପ ଦେଖାନ୍ତୁ",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "{name} ରୁ ସେଭ୍ ହୋଇଥିବା ରେକର୍ଡିଂ ଡାଉନଲୋଡ୍ ହୋଇପାରିଲା ନାହିଁ, ତେଣୁ ଏହାକୁ ଟ୍ରାନ୍ସକ୍ରାଇବ୍ କରାଯାଇପାରିଲା ନାହିଁ।",
     "callTranscriptChooseLanguage": "କେଉଁ ଭାଷାରେ କଥାବାର୍ତ୍ତା ହୋଇଥିଲା?",
     "callTranscriptSubscribeForTranscription": "ଟ୍ରାନ୍ସକ୍ରିପସନ୍ ପାଇଁ ସବସ୍କ୍ରାଇବ୍ କରନ୍ତୁ",
-    "unlockCallTranscript": "କଲ୍ ଟ୍ରାନ୍ସକ୍ରିପ୍ଟ ଅନଲକ୍ କରନ୍ତୁ"
+    "unlockCallTranscript": "କଲ୍ ଟ୍ରାନ୍ସକ୍ରିପ୍ଟ ଅନଲକ୍ କରନ୍ତୁ",
+    "mapCreditsLabel": "ମାନଚିତ୍ର କ୍ରେଡିଟ୍: Stadia Maps, OpenMapTiles ଏବଂ OpenStreetMap"
 }

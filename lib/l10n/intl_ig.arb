@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-09-30 11:27:34.422414",
+    "@@last_modified": "2026-09-30 12:45:44.026507",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Okooko osisi, okwu ndị a mụtara nke ọma",
     "filterAndSearch": "Nyochaa ma chọọ",
     "participantsOfTotal": "{filled} n'ime {total} ndị egwuregwu",
-    "mapAttributionLabel": "Ndị nyere aka na OpenStreetMap, nwebisiinka na ikike",
     "seeAll": "Hụ ihe niile",
     "seeAllSection": "Hụ {section} niile",
     "showMoreOptionsHint": "gosi nhọrọ ndị ọzọ",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "Enweghị ike ibudata ndekọ echekwara site na {name}, yabụ enweghị ike idegharị ya.",
     "callTranscriptChooseLanguage": "Kedu asụsụ e kwuru?",
     "callTranscriptSubscribeForTranscription": "Denye aha maka idegharị",
-    "unlockCallTranscript": "Mepee ederede oku"
+    "unlockCallTranscript": "Mepee ederede oku",
+    "mapCreditsLabel": "Ebe e si nweta maapụ: Stadia Maps, OpenMapTiles na OpenStreetMap"
 }

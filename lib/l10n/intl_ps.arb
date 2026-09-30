@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-09-30 11:27:38.347183",
+    "@@last_modified": "2026-09-30 12:45:46.038413",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "ګلان، ماسټر شوې کلمې",
     "filterAndSearch": "فلټر او لټون",
     "participantsOfTotal": "د {total} لوبغاړو څخه {filled}",
-    "mapAttributionLabel": "د OpenStreetMap مرسته کوونکي، د چاپ حق او جواز",
     "seeAll": "ټول وګورئ",
     "seeAllSection": "ټول {section} وګورئ",
     "showMoreOptionsHint": "نور انتخابونه وښایاست",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "د {name} څخه خوندي شوی ریکارډ ډاونلوډ نشو، نو له همدې امله ژباړل کیدی نشي.",
     "callTranscriptChooseLanguage": "کومه ژبه ویل شوې وه؟",
     "callTranscriptSubscribeForTranscription": "د ژباړې لپاره ګډون وکړئ",
-    "unlockCallTranscript": "د زنګ لیږد خلاص کړئ"
+    "unlockCallTranscript": "د زنګ لیږد خلاص کړئ",
+    "mapCreditsLabel": "د نقشې کریډیټونه: Stadia Maps, OpenMapTiles او OpenStreetMap"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 11:27:30.820029",
+    "@@last_modified": "2026-09-30 12:45:42.409572",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10789,7 +10789,6 @@
     "constructLevelFlowers": "Floroj, regataj vortoj",
     "filterAndSearch": "Filtri kaj serĉi",
     "participantsOfTotal": "{filled} el {total} ludantoj",
-    "mapAttributionLabel": "OpenStreetMap-kontribuantoj, kopirajto kaj permesilo",
     "seeAll": "Vidi ĉion",
     "seeAllSection": "Vidi ĉion en {section}",
     "showMoreOptionsHint": "montri pliajn opciojn",
@@ -10925,5 +10924,6 @@
     "callTranscriptAudioUnavailable": "La konservita registraĵo de {name} ne povis esti elŝutita, do ĝi ne povis esti transskribita.",
     "callTranscriptChooseLanguage": "Kiun lingvon oni parolis?",
     "callTranscriptSubscribeForTranscription": "Aboni por transskribo",
-    "unlockCallTranscript": "Malŝlosi alvokan transskribon"
+    "unlockCallTranscript": "Malŝlosi alvokan transskribon",
+    "mapCreditsLabel": "Mapaj atribuoj: Stadia Maps, OpenMapTiles kaj OpenStreetMap"
 }

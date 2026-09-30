@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-09-30 11:27:40.239737",
+    "@@last_modified": "2026-09-30 12:45:47.157078",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Lipalesa, mantsoe a tsejoang hantle",
     "filterAndSearch": "Hlotha le ho batla",
     "participantsOfTotal": "Libapali tse {filled} ho tse {total}",
-    "mapAttributionLabel": "Bafani ba OpenStreetMap, litokelo tsa ho kopitsa le laesense",
     "seeAll": "Bona kaofela",
     "seeAllSection": "Bona {section} kaofela",
     "showMoreOptionsHint": "bontsha likhetho tse ling",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "Rekoto e bolokilweng ho tswa ho {name} ha e a ka ya jarollwa, ka hona ha e a ka ya ngolwa.",
     "callTranscriptChooseLanguage": "Ho ne ho buuwa puo efe?",
     "callTranscriptSubscribeForTranscription": "Ngolisa bakeng sa ho ngola",
-    "unlockCallTranscript": "Notlolla sengoloa sa mohala"
+    "unlockCallTranscript": "Notlolla sengoloa sa mohala",
+    "mapCreditsLabel": "Liteboho tsa 'mapa: Limmapa tsa Stadia, OpenMapTiles le OpenStreetMap"
 }

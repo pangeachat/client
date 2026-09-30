@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-09-30 11:27:33.884447",
+    "@@last_modified": "2026-09-30 12:45:44.179828",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Blóm, orð sem hefur verið náð tökum á",
     "filterAndSearch": "Sía og leita",
     "participantsOfTotal": "{filled} af {total} spilurum",
-    "mapAttributionLabel": "OpenStreetMap þátttakendur, höfundarréttur og leyfi",
     "seeAll": "Sjá allt",
     "seeAllSection": "Sjá allt {section}",
     "showMoreOptionsHint": "sýna fleiri valkosti",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "Ekki tókst að hlaða niður vistuðu upptökunni frá {name}, svo ekki var hægt að umrita hana.",
     "callTranscriptChooseLanguage": "Hvaða tungumál var talað?",
     "callTranscriptSubscribeForTranscription": "Gerast áskrifandi að umritun",
-    "unlockCallTranscript": "Aflæsa umritun símtals"
+    "unlockCallTranscript": "Aflæsa umritun símtals",
+    "mapCreditsLabel": "Kortaupplýsingar: Stadia Maps, OpenMapTiles og OpenStreetMap"
 }

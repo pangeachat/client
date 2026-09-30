@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 11:27:37.253983",
+    "@@last_modified": "2026-09-30 12:45:45.630215",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9901,7 +9901,6 @@
     "constructLevelFlowers": "Blomster, mestret ord",
     "filterAndSearch": "Filtrer og søk",
     "participantsOfTotal": "{filled} av {total} spillere",
-    "mapAttributionLabel": "OpenStreetMap-bidragsytere, opphavsrett og lisens",
     "seeAll": "Se alle",
     "seeAllSection": "Se alle {section}",
     "showMoreOptionsHint": "vis flere alternativer",
@@ -10037,5 +10036,6 @@
     "callTranscriptAudioUnavailable": "Det lagrede opptaket fra {name} kunne ikke lastes ned, så det kunne ikke transkriberes.",
     "callTranscriptChooseLanguage": "Hvilket språk ble snakket?",
     "callTranscriptSubscribeForTranscription": "Abonner for transkripsjon",
-    "unlockCallTranscript": "Lås opp samtaletranskripsjon"
+    "unlockCallTranscript": "Lås opp samtaletranskripsjon",
+    "mapCreditsLabel": "Kartkreditering: Stadia Maps, OpenMapTiles og OpenStreetMap"
 }

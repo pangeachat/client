@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-09-30 11:27:29.780929",
+    "@@last_modified": "2026-09-30 12:45:41.750670",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "አበቦች፣ የተካኑ ቃላት",
     "filterAndSearch": "አጣራ እና ፈልግ",
     "participantsOfTotal": "{filled} ከ {total} ተጫዋቾች",
-    "mapAttributionLabel": "የOpenStreetMap አስተዋፅዖ አድራጊዎች፣ የቅጂ መብት እና ፈቃድ",
     "seeAll": "ሁሉንም ይመልከቱ",
     "seeAllSection": "ሁሉንም {section} ይመልከቱ",
     "showMoreOptionsHint": "ተጨማሪ አማራጮችን አሳይ",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "ከ{name} የተቀመጠው ቅጂ ማውረድ አልተቻለም፣ ስለዚህ ወደ ጽሑፍ መቀየር አልተቻለም።",
     "callTranscriptChooseLanguage": "የተነገረው ቋንቋ የትኛው ነው?",
     "callTranscriptSubscribeForTranscription": "ለጽሑፍ መቀየር ይመዝገቡ",
-    "unlockCallTranscript": "የጥሪ ግልባጭ ክፈት"
+    "unlockCallTranscript": "የጥሪ ግልባጭ ክፈት",
+    "mapCreditsLabel": "የካርታ ክሬዲቶች: Stadia Maps, OpenMapTiles እና OpenStreetMap"
 }

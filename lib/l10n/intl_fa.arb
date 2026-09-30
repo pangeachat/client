@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 11:27:31.408939",
+    "@@last_modified": "2026-09-30 12:45:42.736422",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9932,7 +9932,6 @@
     "constructLevelFlowers": "گل‌ها، کلمات تسلط یافته",
     "filterAndSearch": "فیلتر و جستجو",
     "participantsOfTotal": "{filled} از {total} بازیکن",
-    "mapAttributionLabel": "مشارکت‌کنندگان OpenStreetMap، حق تکثیر و مجوز",
     "seeAll": "مشاهده همه",
     "seeAllSection": "مشاهده همه {section}",
     "showMoreOptionsHint": "نمایش گزینه‌های بیشتر",
@@ -10068,5 +10067,6 @@
     "callTranscriptAudioUnavailable": "ضبط ذخیره‌شده از {name} قابل دانلود نبود، بنابراین رونویسی نشد.",
     "callTranscriptChooseLanguage": "به چه زبانی صحبت شد؟",
     "callTranscriptSubscribeForTranscription": "برای رونویسی مشترک شوید",
-    "unlockCallTranscript": "باز کردن قفل رونویسی تماس"
+    "unlockCallTranscript": "باز کردن قفل رونویسی تماس",
+    "mapCreditsLabel": "اعتبار نقشه: Stadia Maps, OpenMapTiles و OpenStreetMap"
 }

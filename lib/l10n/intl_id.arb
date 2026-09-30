@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 11:27:33.763513",
+    "@@last_modified": "2026-09-30 12:45:43.818257",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9917,7 +9917,6 @@
     "constructLevelFlowers": "Bunga, kata-kata yang dikuasai",
     "filterAndSearch": "Filter dan cari",
     "participantsOfTotal": "{filled} dari {total} pemain",
-    "mapAttributionLabel": "Kontributor OpenStreetMap, hak cipta, dan lisensi",
     "seeAll": "Lihat semua",
     "seeAllSection": "Lihat semua {section}",
     "showMoreOptionsHint": "tampilkan opsi lainnya",
@@ -10053,5 +10052,6 @@
     "callTranscriptAudioUnavailable": "Rekaman tersimpan dari {name} tidak dapat diunduh, sehingga tidak dapat ditranskripsikan.",
     "callTranscriptChooseLanguage": "Bahasa apa yang digunakan?",
     "callTranscriptSubscribeForTranscription": "Berlangganan untuk transkripsi",
-    "unlockCallTranscript": "Buka transkrip panggilan"
+    "unlockCallTranscript": "Buka transkrip panggilan",
+    "mapCreditsLabel": "Kredit peta: Stadia Maps, OpenMapTiles, dan OpenStreetMap"
 }

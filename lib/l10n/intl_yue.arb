@@ -1263,7 +1263,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-09-30 11:27:41.821880",
+    "@@last_modified": "2026-09-30 12:45:47.902963",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10801,7 +10801,6 @@
     "constructLevelFlowers": "花朵，已掌握嘅詞語",
     "filterAndSearch": "篩選同搜尋",
     "participantsOfTotal": "{filled}/{total} 位玩家",
-    "mapAttributionLabel": "OpenStreetMap 貢獻者、版權及許可",
     "seeAll": "查看全部",
     "seeAllSection": "查看全部{section}",
     "showMoreOptionsHint": "顯示更多選項",
@@ -10937,5 +10936,6 @@
     "callTranscriptAudioUnavailable": "無法下載來自{name}的已儲存錄音，因此無法轉錄。",
     "callTranscriptChooseLanguage": "說的是哪種語言？",
     "callTranscriptSubscribeForTranscription": "訂閱以獲取轉錄",
-    "unlockCallTranscript": "解鎖通話轉錄"
+    "unlockCallTranscript": "解鎖通話轉錄",
+    "mapCreditsLabel": "地圖來源：Stadia Maps、OpenMapTiles 同 OpenStreetMap"
 }

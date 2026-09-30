@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-09-30 11:27:37.723887",
+    "@@last_modified": "2026-09-30 12:45:45.475184",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Fjuri, kliem mhaddem",
     "filterAndSearch": "Iffiltra u fittex",
     "participantsOfTotal": "{filled} minn {total} plejers",
-    "mapAttributionLabel": "Kontributuri, drittijiet tal-awtur u liċenzja ta' OpenStreetMap",
     "seeAll": "Ara kollox",
     "seeAllSection": "Ara kollox {section}",
     "showMoreOptionsHint": "uri aktar għażliet",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "Ir-reġistrazzjoni ssejvjata minn {name} ma setgħetx titniżżel, u għalhekk ma setgħetx tiġi traskritta.",
     "callTranscriptChooseLanguage": "X’lingwa nstema’?",
     "callTranscriptSubscribeForTranscription": "Abbona għat-traskrizzjoni",
-    "unlockCallTranscript": "Nisfrutta t-traskrizzjoni tas-sejħa"
+    "unlockCallTranscript": "Nisfrutta t-traskrizzjoni tas-sejħa",
+    "mapCreditsLabel": "Krediti tal-mappa: Stadia Maps, OpenMapTiles u OpenStreetMap"
 }

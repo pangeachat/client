@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 11:27:34.223326",
+    "@@last_modified": "2026-09-30 12:45:43.912851",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9917,7 +9917,6 @@
     "constructLevelFlowers": "Fiori, parole padroneggiate",
     "filterAndSearch": "Filtra e cerca",
     "participantsOfTotal": "{filled} di {total} giocatori",
-    "mapAttributionLabel": "Contributori OpenStreetMap, copyright e licenza",
     "seeAll": "Vedi tutto",
     "seeAllSection": "Vedi tutto {section}",
     "showMoreOptionsHint": "mostra più opzioni",
@@ -10053,5 +10052,6 @@
     "callTranscriptAudioUnavailable": "La registrazione salvata da {name} non può essere scaricata, quindi non può essere trascritta.",
     "callTranscriptChooseLanguage": "Che lingua è stata parlata?",
     "callTranscriptSubscribeForTranscription": "Abbonati per la trascrizione",
-    "unlockCallTranscript": "Sblocca trascrizione chiamata"
+    "unlockCallTranscript": "Sblocca trascrizione chiamata",
+    "mapCreditsLabel": "Crediti mappa: Stadia Maps, OpenMapTiles e OpenStreetMap"
 }

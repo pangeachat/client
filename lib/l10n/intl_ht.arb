@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-09-30 11:27:33.095592",
+    "@@last_modified": "2026-09-30 12:45:43.394819",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Flè, mo ou metrize",
     "filterAndSearch": "Filtre epi chèche",
     "participantsOfTotal": "{filled} sou {total} jwè",
-    "mapAttributionLabel": "Kontribitè OpenStreetMap, copyright ak lisans",
     "seeAll": "Gade tout",
     "seeAllSection": "Gade tout {section}",
     "showMoreOptionsHint": "montre plis opsyon",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "Anrejistreman ki te sove a soti nan {name} pa t ka telechaje, kidonk li pa t ka transkri.",
     "callTranscriptChooseLanguage": "Ki lang yo te pale?",
     "callTranscriptSubscribeForTranscription": "Abòne pou transkripsyon",
-    "unlockCallTranscript": "Debloke transkripsyon apèl la"
+    "unlockCallTranscript": "Debloke transkripsyon apèl la",
+    "mapCreditsLabel": "Kredi kat: Stadia Maps, OpenMapTiles ak OpenStreetMap"
 }

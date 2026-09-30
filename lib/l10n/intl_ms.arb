@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-09-30 11:27:37.069222",
+    "@@last_modified": "2026-09-30 12:45:45.314574",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Bunga, perkataan yang dikuasai",
     "filterAndSearch": "Tapis dan cari",
     "participantsOfTotal": "{filled} daripada {total} pemain",
-    "mapAttributionLabel": "Penyumbang OpenStreetMap, hak cipta dan lesen",
     "seeAll": "Lihat semua",
     "seeAllSection": "Lihat semua {section}",
     "showMoreOptionsHint": "tunjukkan pilihan lain",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "Rakaman yang disimpan daripada {name} tidak dapat dimuat turun, jadi ia tidak dapat ditranskripsi.",
     "callTranscriptChooseLanguage": "Bahasa apa yang dituturkan?",
     "callTranscriptSubscribeForTranscription": "Langgan untuk transkripsi",
-    "unlockCallTranscript": "Buka kunci transkripsi panggilan"
+    "unlockCallTranscript": "Buka kunci transkripsi panggilan",
+    "mapCreditsLabel": "Kredit peta: Stadia Maps, OpenMapTiles dan OpenStreetMap"
 }

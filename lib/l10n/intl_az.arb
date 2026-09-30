@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-09-30 11:27:29.746837",
+    "@@last_modified": "2026-09-30 12:45:41.717562",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Güllər, mənimsənilmiş sözlər",
     "filterAndSearch": "Filtrlə və axtar",
     "participantsOfTotal": "{total} oyunçudan {filled} nəfəri",
-    "mapAttributionLabel": "OpenStreetMap iştirakçıları, müəllif hüquqları və lisenziya",
     "seeAll": "Hamısına baxın",
     "seeAllSection": "Bütün {section} baxın",
     "showMoreOptionsHint": "daha çox seçim göstər",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "{name} qeydə alınmış səsi yüklənmədi, buna görə də transkripsiya edilə bilmədi.",
     "callTranscriptChooseLanguage": "Hansı dildə danışılıb?",
     "callTranscriptSubscribeForTranscription": "Transkripsiya üçün abunə olun",
-    "unlockCallTranscript": "Zəng transkripsiyasını açın"
+    "unlockCallTranscript": "Zəng transkripsiyasını açın",
+    "mapCreditsLabel": "Xəritə kreditləri: Stadia Maps, OpenMapTiles və OpenStreetMap"
 }

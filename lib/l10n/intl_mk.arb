@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-09-30 11:27:36.291457",
+    "@@last_modified": "2026-09-30 12:45:45.266536",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Цвеќиња, совладани зборови",
     "filterAndSearch": "Филтрирај и пребарај",
     "participantsOfTotal": "{filled} од {total} играчи",
-    "mapAttributionLabel": "Соработници на OpenStreetMap, авторски права и лиценца",
     "seeAll": "Видете ги сите",
     "seeAllSection": "Видете ги сите {section}",
     "showMoreOptionsHint": "покажи повеќе опции",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "Зачуваната снимка од {name} не можеше да се преземе, па затоа не можеше да се транскрибира.",
     "callTranscriptChooseLanguage": "На кој јазик се зборуваше?",
     "callTranscriptSubscribeForTranscription": "Претплатете се за транскрипција",
-    "unlockCallTranscript": "Отклучи транскрипт на повик"
+    "unlockCallTranscript": "Отклучи транскрипт на повик",
+    "mapCreditsLabel": "Кредити за мапа: Stadia Maps, OpenMapTiles и OpenStreetMap"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-09-30 11:27:36.426401",
+    "@@last_modified": "2026-09-30 12:45:45.449027",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "പൂക്കൾ, പഠിച്ചെടുത്ത വാക്കുകൾ",
     "filterAndSearch": "ഫിൽട്ടർ ചെയ്ത് തിരയുക",
     "participantsOfTotal": "{total} കളിക്കാരിൽ {filled} പേർ",
-    "mapAttributionLabel": "OpenStreetMap സംഭാവന ചെയ്യുന്നവർ, പകർപ്പവകാശം, ലൈസൻസ്",
     "seeAll": "എല്ലാം കാണുക",
     "seeAllSection": "എല്ലാം കാണുക {section}",
     "showMoreOptionsHint": "കൂടുതൽ ഓപ്ഷനുകൾ കാണിക്കുക",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "{name} എന്നതിൽ നിന്നുള്ള സംരക്ഷിച്ച റെക്കോർഡിംഗ് ഡൗൺലോഡ് ചെയ്യാൻ കഴിഞ്ഞില്ല, അതിനാൽ അത് പകർത്തി എഴുതാൻ കഴിഞ്ഞില്ല.",
     "callTranscriptChooseLanguage": "ഏത് ഭാഷയാണ് സംസാരിച്ചത്?",
     "callTranscriptSubscribeForTranscription": "പകർത്തി എഴുതുന്നതിനായി സബ്സ്ക്രൈബ് ചെയ്യുക",
-    "unlockCallTranscript": "കോൾ ട്രാൻസ്ക്രിപ്റ്റ് അൺലോക്ക് ചെയ്യുക"
+    "unlockCallTranscript": "കോൾ ട്രാൻസ്ക്രിപ്റ്റ് അൺലോക്ക് ചെയ്യുക",
+    "mapCreditsLabel": "മാപ്പ് ക്രെഡിറ്റുകൾ: സ്റ്റേഡിയ മാപ്‌സ്, ഓപ്പൺമാപ്‌ടൈൽസ്, ഓപ്പൺസ്ട്രീറ്റ്മാപ്പ്"
 }

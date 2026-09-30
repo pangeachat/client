@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-09-30 11:27:37.264298",
+    "@@last_modified": "2026-09-30 12:45:45.465291",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "फ्लॉवर्स, पारंगत शब्द",
     "filterAndSearch": "फिल्टर करा आणि शोधा",
     "participantsOfTotal": "{total} पैकी {filled} खेळाडू",
-    "mapAttributionLabel": "ओपनस्ट्रीटमॅप योगदानकर्ते, कॉपीराइट आणि परवाना",
     "seeAll": "सर्व पहा",
     "seeAllSection": "सर्व {section} पहा",
     "showMoreOptionsHint": "अधिक पर्याय दाखवा",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "{name} कडून सेव्ह केलेली रेकॉर्डिंग डाउनलोड करता आली नाही, त्यामुळे तिचे लिप्यंतरण करता आले नाही.",
     "callTranscriptChooseLanguage": "कोणती भाषा बोलली गेली?",
     "callTranscriptSubscribeForTranscription": "लिप्यंतरणासाठी सदस्यता घ्या",
-    "unlockCallTranscript": "कॉल लिप्यंतरण अनलॉक करा"
+    "unlockCallTranscript": "कॉल लिप्यंतरण अनलॉक करा",
+    "mapCreditsLabel": "नकाशा क्रेडिट्स: Stadia Maps, OpenMapTiles आणि OpenStreetMap"
 }

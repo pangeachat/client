@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-09-30 11:27:39.838475",
+    "@@last_modified": "2026-09-30 12:45:46.989668",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Ubax, ereyo la bartay",
     "filterAndSearch": "Shaandhee oo raadi",
     "participantsOfTotal": "{filled} ka mid ah {total} ciyaartoy",
-    "mapAttributionLabel": "Kuwa wax ku darsaday OpenStreetMap, xuquuqda daabacaadda iyo shatiga",
     "seeAll": "Arag dhammaan",
     "seeAllSection": "Arag dhammaan {section}",
     "showMoreOptionsHint": "muuji doorashooyin dheeraad ah",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "Duubista la keydiyay ee {name} lama soo dejisan karin, sidaa darteed lama qori karin.",
     "callTranscriptChooseLanguage": "Luqaddee lagu hadlay?",
     "callTranscriptSubscribeForTranscription": "Isdiiwaangeli si aad u hesho qoraalka",
-    "unlockCallTranscript": "Fur qoraalka wicitaanka"
+    "unlockCallTranscript": "Fur qoraalka wicitaanka",
+    "mapCreditsLabel": "Aqoonsiga khariidadda: Khariidadaha Stadia, OpenMapTiles iyo OpenStreetMap"
 }

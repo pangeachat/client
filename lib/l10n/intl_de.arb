@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-09-30 11:27:30.606426",
+    "@@last_modified": "2026-09-30 12:45:42.195326",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9831,7 +9831,6 @@
     "constructLevelFlowers": "Blüten, gemeisterte Wörter",
     "filterAndSearch": "Filtern und suchen",
     "participantsOfTotal": "{filled} von {total} Spielern",
-    "mapAttributionLabel": "OpenStreetMap-Mitwirkende, Copyright und Lizenz",
     "seeAll": "Alle anzeigen",
     "seeAllSection": "Alle {section} anzeigen",
     "showMoreOptionsHint": "Weitere Optionen anzeigen",
@@ -9967,5 +9966,6 @@
     "callTranscriptAudioUnavailable": "Die gespeicherte Aufnahme von {name} konnte nicht heruntergeladen und daher nicht transkribiert werden.",
     "callTranscriptChooseLanguage": "Welche Sprache wurde gesprochen?",
     "callTranscriptSubscribeForTranscription": "Für Transkription abonnieren",
-    "unlockCallTranscript": "Anruf-Transkript freischalten"
+    "unlockCallTranscript": "Anruf-Transkript freischalten",
+    "mapCreditsLabel": "Karten-Credits: Stadia Maps, OpenMapTiles und OpenStreetMap"
 }

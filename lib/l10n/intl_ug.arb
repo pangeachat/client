@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-09-30 11:27:41.395282",
+    "@@last_modified": "2026-09-30 12:45:47.867076",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "گۈللەر، پىششىق سۆزلەر",
     "filterAndSearch": "سۈزۈش ۋە ئىزدەش",
     "participantsOfTotal": "{total} قويغۇچنىڭ {filled} ى",
-    "mapAttributionLabel": "OpenStreetMap تۆھپىكارلىرى، نەشر ھوقۇقى ۋە ئىجازەتنامىسى",
     "seeAll": "ھەممىنى كۆرۈش",
     "seeAllSection": "بارلىق {section}نى كۆرۈش",
     "showMoreOptionsHint": "تېخىمۇ كۆپ تاللاشلارنى كۆرسەت",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "{name} دىن ساقلانغان خاتىرە چۈشۈرۈلمىدى، شۇڭا ئۇنى تەرجىمە قىلغىلى بولمىدى.",
     "callTranscriptChooseLanguage": "قايسى تىلدا سۆزلەنگەن؟",
     "callTranscriptSubscribeForTranscription": "تەرجىمە قىلىش ئۈچۈن مۇشتەرى بولۇڭ",
-    "unlockCallTranscript": "تېلېفون خاتىرىسىنى ئېچىش"
+    "unlockCallTranscript": "تېلېفون خاتىرىسىنى ئېچىش",
+    "mapCreditsLabel": "خەرىتە ئىناۋىتى: Stadia Maps, OpenMapTiles ۋە OpenStreetMap"
 }

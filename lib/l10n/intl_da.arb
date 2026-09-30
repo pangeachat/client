@@ -1334,7 +1334,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-09-30 11:27:30.639876",
+    "@@last_modified": "2026-09-30 12:45:42.294524",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10764,7 +10764,6 @@
     "constructLevelFlowers": "Blomster, mestret ord",
     "filterAndSearch": "Filtrer og søg",
     "participantsOfTotal": "{filled} af {total} spillere",
-    "mapAttributionLabel": "OpenStreetMap-bidragydere, ophavsret og licens",
     "seeAll": "Se alle",
     "seeAllSection": "Se alle {section}",
     "showMoreOptionsHint": "vis flere valgmuligheder",
@@ -10900,5 +10899,6 @@
     "callTranscriptAudioUnavailable": "Den gemte optagelse fra {name} kunne ikke downloades og kunne derfor ikke transskriberes.",
     "callTranscriptChooseLanguage": "Hvilket sprog blev der talt?",
     "callTranscriptSubscribeForTranscription": "Abonnér for transskription",
-    "unlockCallTranscript": "Lås op for opkaldstranskription"
+    "unlockCallTranscript": "Lås op for opkaldstranskription",
+    "mapCreditsLabel": "Kortkreditering: Stadia Maps, OpenMapTiles og OpenStreetMap"
 }

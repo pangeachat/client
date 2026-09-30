@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-09-30 11:27:30.667489",
+    "@@last_modified": "2026-09-30 12:45:42.338542",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Fiori, parolle ammaestrate",
     "filterAndSearch": "Filtrà è circà",
     "participantsOfTotal": "{filled} di {total} ghjucadori",
-    "mapAttributionLabel": "Cuntributori OpenStreetMap, copyright è licenza",
     "seeAll": "Vede tuttu",
     "seeAllSection": "Vede tuttu {section}",
     "showMoreOptionsHint": "mostra più opzioni",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "A registrazione salvata da {name} ùn hà pussutu esse scaricata, dunque ùn hà pussutu esse trascritta.",
     "callTranscriptChooseLanguage": "Chì lingua hè stata parlata?",
     "callTranscriptSubscribeForTranscription": "Abbunà si per a trascrizzione",
-    "unlockCallTranscript": "Sbloccà a trascrizzione di a chjama"
+    "unlockCallTranscript": "Sbloccà a trascrizzione di a chjama",
+    "mapCreditsLabel": "Crediti di a carta: Stadia Maps, OpenMapTiles è OpenStreetMap"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-09-30 11:27:38.913188",
+    "@@last_modified": "2026-09-30 12:45:46.429095",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10816,7 +10816,6 @@
     "constructLevelFlowers": "Цветы, освоенные слова",
     "filterAndSearch": "Фильтр и поиск",
     "participantsOfTotal": "{filled} из {total} игроков",
-    "mapAttributionLabel": "Участники OpenStreetMap, авторские права и лицензия",
     "seeAll": "Посмотреть все",
     "seeAllSection": "Посмотреть все {section}",
     "showMoreOptionsHint": "показать больше опций",
@@ -10952,5 +10951,6 @@
     "callTranscriptAudioUnavailable": "Сохранённая запись от {name} не может быть загружена, поэтому её нельзя расшифровать.",
     "callTranscriptChooseLanguage": "На каком языке говорили?",
     "callTranscriptSubscribeForTranscription": "Подписаться на расшифровку",
-    "unlockCallTranscript": "Разблокировать расшифровку звонка"
+    "unlockCallTranscript": "Разблокировать расшифровку звонка",
+    "mapCreditsLabel": "Авторы карты: Stadia Maps, OpenMapTiles и OpenStreetMap"
 }

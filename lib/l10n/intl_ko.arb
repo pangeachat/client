@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 11:27:34.828296",
+    "@@last_modified": "2026-09-30 12:45:44.492859",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10037,7 +10037,6 @@
     "constructLevelFlowers": "꽃, 마스터한 단어",
     "filterAndSearch": "필터 및 검색",
     "participantsOfTotal": "{total}명 중 {filled}명",
-    "mapAttributionLabel": "OpenStreetMap 기여자, 저작권 및 라이선스",
     "seeAll": "모두 보기",
     "seeAllSection": "{section} 모두 보기",
     "showMoreOptionsHint": "더 많은 옵션 보기",
@@ -10173,5 +10172,6 @@
     "callTranscriptAudioUnavailable": "{name}의 저장된 녹음을 다운로드할 수 없어 텍스트로 변환할 수 없습니다.",
     "callTranscriptChooseLanguage": "어떤 언어를 사용했나요?",
     "callTranscriptSubscribeForTranscription": "텍스트 변환 구독",
-    "unlockCallTranscript": "통화 기록 잠금 해제"
+    "unlockCallTranscript": "통화 기록 잠금 해제",
+    "mapCreditsLabel": "지도 출처: Stadia Maps, OpenMapTiles 및 OpenStreetMap"
 }

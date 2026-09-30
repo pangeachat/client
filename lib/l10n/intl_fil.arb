@@ -2080,7 +2080,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-09-30 11:27:31.448370",
+    "@@last_modified": "2026-09-30 12:45:42.800277",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10704,7 +10704,6 @@
     "constructLevelFlowers": "Mga Bulaklak, mga salitang bihasa",
     "filterAndSearch": "I-filter at hanapin",
     "participantsOfTotal": "{filled} sa {total} na manlalaro",
-    "mapAttributionLabel": "Mga contributor ng OpenStreetMap, copyright at lisensya",
     "seeAll": "Tingnan lahat",
     "seeAllSection": "Tingnan lahat ng {section}",
     "showMoreOptionsHint": "ipakita ang higit pang opsyon",
@@ -10840,5 +10839,6 @@
     "callTranscriptAudioUnavailable": "Hindi ma-download ang na-save na recording mula kay {name}, kaya hindi ito ma-transcribe.",
     "callTranscriptChooseLanguage": "Anong wika ang ginamit?",
     "callTranscriptSubscribeForTranscription": "Mag-subscribe para sa transkripsyon",
-    "unlockCallTranscript": "I-unlock ang transkripsyon ng tawag"
+    "unlockCallTranscript": "I-unlock ang transkripsyon ng tawag",
+    "mapCreditsLabel": "Mga credit sa mapa: Stadia Maps, OpenMapTiles at OpenStreetMap"
 }

@@ -2919,7 +2919,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-09-30 11:27:30.103047",
+    "@@last_modified": "2026-09-30 12:45:41.882123",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9455,7 +9455,6 @@
     "constructLevelFlowers": "མེ་ཏོག བྱང་ཆུབ་པའི་ཚིག",
     "filterAndSearch": "ཚགས་འདེམས་དང་འཚོལ་བཤེར།",
     "participantsOfTotal": "རྩེད་མཁན་ {total} ནང་ནས་ {filled}",
-    "mapAttributionLabel": "OpenStreetMap ལ་མཉམ་ཞུགས་བྱེད་མཁན་ཚོ། བདག་དབང་དང་ཆོག་མཆན།",
     "seeAll": "ཚང་མ་གཟིགས།",
     "seeAllSection": "{section} ཚང་མ་གཟིགས།",
     "showMoreOptionsHint": "འདེམས་ངོ་མང་ཙམ་བསྟན་",
@@ -9591,5 +9590,6 @@
     "callTranscriptAudioUnavailable": "{name} ནས་ཉར་ཚགས་བྱས་པའི་སྒྲ་ཕབ་ཕབ་ལེན་བྱེད་མ་ཐུབ་པས་དེ་ལ་ཡིག་སྒྱུར་བྱེད་མ་ཐུབ།",
     "callTranscriptChooseLanguage": "སྐད་ཡིག་གང་ཞིག་བཤད་པ་ཡིན་ནམ།",
     "callTranscriptSubscribeForTranscription": "ཡིག་སྒྱུར་བྱེད་པར་ཐོ་འགོད་བྱེད་དགོས།",
-    "unlockCallTranscript": "ཁ་པར་གྱི་ཡིག་སྒྱུར་འབྱེད་པ།"
+    "unlockCallTranscript": "ཁ་པར་གྱི་ཡིག་སྒྱུར་འབྱེད་པ།",
+    "mapCreditsLabel": "ផែនទីཡི་ཡོན་ཏན་: Stadia Maps, OpenMapTiles དང་ OpenStreetMap"
 }

@@ -5260,8 +5260,8 @@
             }
         }
     },
-    "mapAttributionLabel": "OpenStreetMap contributors, copyright and license",
-    "@mapAttributionLabel": {},
+    "mapCreditsLabel": "Map credits: Stadia Maps, OpenMapTiles and OpenStreetMap",
+    "@mapCreditsLabel": {},
     "writingAssistanceTutorialInputBar": "You can write in any language! We'll help you correct mistakes.",
     "abDisplayName": "Abkhazian",
     "elDisplayName": "Greek",

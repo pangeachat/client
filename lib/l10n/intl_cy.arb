@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-09-30 11:27:30.838274",
+    "@@last_modified": "2026-09-30 12:45:42.236722",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Blodau, geiriau wedi'u meistroli",
     "filterAndSearch": "Hidlo a chwilio",
     "participantsOfTotal": "{filled} o {total} chwaraewr",
-    "mapAttributionLabel": "Cyfranwyr OpenStreetMap, hawlfraint a thrwydded",
     "seeAll": "Gweld y cyfan",
     "seeAllSection": "Gweld pob {section}",
     "showMoreOptionsHint": "dangos mwy o opsiynau",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "Ni ellid lawrlwytho'r recordiad a arbedwyd o {name}, felly ni ellid ei drawsgrifio.",
     "callTranscriptChooseLanguage": "Pa iaith gafodd ei siarad?",
     "callTranscriptSubscribeForTranscription": "Tanysgrifiwch ar gyfer trawsgrifio",
-    "unlockCallTranscript": "Datgloi trawsgrifiad galwad"
+    "unlockCallTranscript": "Datgloi trawsgrifiad galwad",
+    "mapCreditsLabel": "Credydau map: Stadia Maps, OpenMapTiles ac OpenStreetMap"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-09-30 11:27:31.336013",
+    "@@last_modified": "2026-09-30 12:45:42.778318",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9841,7 +9841,6 @@
     "constructLevelFlowers": "Lilled, omandatud sõnad",
     "filterAndSearch": "Filtreeri ja otsi",
     "participantsOfTotal": "{filled}/{total} mängijat",
-    "mapAttributionLabel": "OpenStreetMapi kaastöölised, autoriõigus ja litsents",
     "seeAll": "Vaata kõiki",
     "seeAllSection": "Vaata kõiki {section}",
     "showMoreOptionsHint": "näita rohkem valikuid",
@@ -9977,5 +9976,6 @@
     "callTranscriptAudioUnavailable": "Salvestatud heli {name} kasutajalt ei saanud alla laadida, seega ei saanud seda transkribeerida.",
     "callTranscriptChooseLanguage": "Mis keeles räägiti?",
     "callTranscriptSubscribeForTranscription": "Telli transkriptsioon",
-    "unlockCallTranscript": "Ava kõne transkriptsioon"
+    "unlockCallTranscript": "Ava kõne transkriptsioon",
+    "mapCreditsLabel": "Kaardi autorid: Stadia Maps, OpenMapTiles ja OpenStreetMap"
 }

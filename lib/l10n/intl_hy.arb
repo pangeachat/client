@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-09-30 11:27:33.925009",
+    "@@last_modified": "2026-09-30 12:45:43.941835",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Ծաղիկներ, յուրացված բառեր",
     "filterAndSearch": "Զտել և որոնել",
     "participantsOfTotal": "{filled} / {total} խաղացող",
-    "mapAttributionLabel": "OpenStreetMap-ի մասնակիցներ, հեղինակային իրավունք և լիցենզիա",
     "seeAll": "Տեսնել բոլորը",
     "seeAllSection": "Տեսնել բոլոր {section}",
     "showMoreOptionsHint": "ցուցադրել այլ ընտրանքներ",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "{name}-ից պահպանված ձայնագրությունը հնարավոր չեղավ ներբեռնել, ուստի այն հնարավոր չեղավ տառադարձել։",
     "callTranscriptChooseLanguage": "Ի՞նչ լեզվով է խոսվել։",
     "callTranscriptSubscribeForTranscription": "Բաժանորդագրվել տառադարձման համար",
-    "unlockCallTranscript": "Բացել զանգի արտագրումը"
+    "unlockCallTranscript": "Բացել զանգի արտագրումը",
+    "mapCreditsLabel": "Քարտեզի հեղինակներ՝ Stadia Maps, OpenMapTiles և OpenStreetMap"
 }

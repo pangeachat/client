@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-09-30 11:27:41.174742",
+    "@@last_modified": "2026-09-30 12:45:47.522227",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9844,7 +9844,6 @@
     "constructLevelFlowers": "Квіти, опановані слова",
     "filterAndSearch": "Фільтрувати та шукати",
     "participantsOfTotal": "{filled} з {total} гравців",
-    "mapAttributionLabel": "Учасники OpenStreetMap, авторські права та ліцензія",
     "seeAll": "Переглянути всі",
     "seeAllSection": "Переглянути всі {section}",
     "showMoreOptionsHint": "показати більше опцій",
@@ -9980,5 +9979,6 @@
     "callTranscriptAudioUnavailable": "Збережений запис від {name} не вдалося завантажити, тому його неможливо транскрибувати.",
     "callTranscriptChooseLanguage": "Якою мовою розмовляли?",
     "callTranscriptSubscribeForTranscription": "Підписатися на транскрипцію",
-    "unlockCallTranscript": "Розблокувати стенограму дзвінка"
+    "unlockCallTranscript": "Розблокувати стенограму дзвінка",
+    "mapCreditsLabel": "Авторство карти: Stadia Maps, OpenMapTiles та OpenStreetMap"
 }

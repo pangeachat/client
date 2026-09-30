@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-09-30 11:27:36.182236",
+    "@@last_modified": "2026-09-30 12:45:44.859931",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "ດອກໄມ້, ຄຳສັບທີ່ຮຽນຈົບແລ້ວ",
     "filterAndSearch": "ກັ່ນຕອງ ແລະ ຄົ້ນຫາ",
     "participantsOfTotal": "{filled} ຈາກ {total} ຜູ້ຫຼິ້ນ",
-    "mapAttributionLabel": "ຜູ້ປະກອບສ່ວນ OpenStreetMap, ລິຂະສິດ ແລະ ໃບອະນຸຍາດ",
     "seeAll": "ເບິ່ງທັງໝົດ",
     "seeAllSection": "ເບິ່ງທັງໝົດ {section}",
     "showMoreOptionsHint": "ສະແດງຕົວເລືອກເພີ່ມເຕີມ",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "ບໍ່ສາມາດດາວໂຫຼດສຽງທີ່ບັນທຶກຈາກ {name} ໄດ້, ສະນັ້ນຈຶ່ງບໍ່ສາມາດຖອດຂໍ້ຄວາມໄດ້.",
     "callTranscriptChooseLanguage": "ເວົ້າພາສາຫຍັງ?",
     "callTranscriptSubscribeForTranscription": "ສະໝັກໃຊ້ສຳລັບການຖອດຂໍ້ຄວາມ",
-    "unlockCallTranscript": "ປົດລັອກການຖອດຂໍ້ຄວາມການໂທ"
+    "unlockCallTranscript": "ປົດລັອກການຖອດຂໍ້ຄວາມການໂທ",
+    "mapCreditsLabel": "ຂໍ້ມູນແຜນທີ່: Stadia Maps, OpenMapTiles ແລະ OpenStreetMap"
 }

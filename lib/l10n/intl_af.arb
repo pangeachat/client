@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-09-30 11:27:29.677221",
+    "@@last_modified": "2026-09-30 12:45:41.743137",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Blomme, woorde bemeester",
     "filterAndSearch": "Filtreer en soek",
     "participantsOfTotal": "{filled} van {total} spelers",
-    "mapAttributionLabel": "OpenStreetMap bydraers, kopiereg en lisensie",
     "seeAll": "Sien alles",
     "seeAllSection": "Sien alle {section}",
     "showMoreOptionsHint": "wys meer opsies",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "Die gestoorde opname van {name} kon nie afgelaai word nie, en kon dus nie getranskribeer word nie.",
     "callTranscriptChooseLanguage": "Watter taal is gepraat?",
     "callTranscriptSubscribeForTranscription": "Teken in vir transkripsie",
-    "unlockCallTranscript": "Ontsluit oproep-transkripsie"
+    "unlockCallTranscript": "Ontsluit oproep-transkripsie",
+    "mapCreditsLabel": "Kaartkrediete: Stadia Maps, OpenMapTiles en OpenStreetMap"
 }

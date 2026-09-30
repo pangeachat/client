@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-09-30 11:27:36.243879",
+    "@@last_modified": "2026-09-30 12:45:44.584642",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Гүлдөр, өздөштүрүлгөн сөздөр",
     "filterAndSearch": "Чыпкалоо жана издөө",
     "participantsOfTotal": "{filled} / {total} оюнчу",
-    "mapAttributionLabel": "OpenStreetMap салымчылары, автордук укук жана лицензия",
     "seeAll": "Баарын көрүү",
     "seeAllSection": "Баарын көрүү {section}",
     "showMoreOptionsHint": "көбүрөөк параметрлерди көрсөтүү",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "{name} жаздырылган үнүн жүктөп алуу мүмкүн болгон жок, андыктан транскрипциялоо мүмкүн болгон жок.",
     "callTranscriptChooseLanguage": "Кайсы тилде сүйлөштү?",
     "callTranscriptSubscribeForTranscription": "Транскрипция үчүн жазылуу",
-    "unlockCallTranscript": "Чакыруу транскрипциясын ачуу"
+    "unlockCallTranscript": "Чакыруу транскрипциясын ачуу",
+    "mapCreditsLabel": "Картанын авторлору: Stadia Maps, OpenMapTiles жана OpenStreetMap"
 }

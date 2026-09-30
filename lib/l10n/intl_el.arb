@@ -3400,7 +3400,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-09-30 11:27:31.044633",
+    "@@last_modified": "2026-09-30 12:45:42.340216",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10719,7 +10719,6 @@
     "constructLevelFlowers": "Λουλούδια, λέξεις που έχετε κατακτήσει",
     "filterAndSearch": "Φιλτράρισμα και αναζήτηση",
     "participantsOfTotal": "{filled} από {total} παίκτες",
-    "mapAttributionLabel": "Συνεισφέροντες στο OpenStreetMap, πνευματικά δικαιώματα και άδεια",
     "seeAll": "Δείτε όλα",
     "seeAllSection": "Δείτε όλα τα {section}",
     "showMoreOptionsHint": "εμφάνιση περισσότερων επιλογών",
@@ -10855,5 +10854,6 @@
     "callTranscriptAudioUnavailable": "Η αποθηκευμένη ηχογράφηση από τον/την {name} δεν ήταν δυνατή να ληφθεί, επομένως δεν ήταν δυνατή η μεταγραφή της.",
     "callTranscriptChooseLanguage": "Ποια γλώσσα ομιλήθηκε;",
     "callTranscriptSubscribeForTranscription": "Εγγραφείτε για μεταγραφή",
-    "unlockCallTranscript": "Ξεκλείδωμα μεταγραφής κλήσης"
+    "unlockCallTranscript": "Ξεκλείδωμα μεταγραφής κλήσης",
+    "mapCreditsLabel": "Συντελεστές χάρτη: Stadia Maps, OpenMapTiles και OpenStreetMap"
 }

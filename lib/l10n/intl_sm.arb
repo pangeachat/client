@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-09-30 11:27:39.789100",
+    "@@last_modified": "2026-09-30 12:45:46.860118",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Fugalaau, upu ua atamai",
     "filterAndSearch": "Faamama ma suʻe",
     "participantsOfTotal": "{filled} o le {total} tagata taaalo",
-    "mapAttributionLabel": "OpenStreetMap tagata foaʻi, puletaofia ma laisene",
     "seeAll": "Vaʻai uma",
     "seeAllSection": "Vaʻai uma {section}",
     "showMoreOptionsHint": "fa'aali nisi filifiliga",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "E le'i mafai ona la'u mai le pu'eina na sefe mai ia {name}, o lea e le'i mafai ai ona fa'aliliu.",
     "callTranscriptChooseLanguage": "O le a le gagana na tautalagia?",
     "callTranscriptSubscribeForTranscription": "Lesitala mo le fa'aliliuga",
-    "unlockCallTranscript": "Tatala le fa'aliliuga o le vala'au"
+    "unlockCallTranscript": "Tatala le fa'aliliuga o le vala'au",
+    "mapCreditsLabel": "Fa'afetai mo fa'afanua: Stadia Maps, OpenMapTiles ma OpenStreetMap"
 }

@@ -1362,7 +1362,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-09-30 11:27:33.908421",
+    "@@last_modified": "2026-09-30 12:45:43.769590",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10780,7 +10780,6 @@
     "constructLevelFlowers": "Flores, parolas maestrate",
     "filterAndSearch": "Filtrar e cercar",
     "participantsOfTotal": "{filled} de {total} jocatores",
-    "mapAttributionLabel": "Contribuentes de OpenStreetMap, derectos de autor e licentia",
     "seeAll": "Vider tote",
     "seeAllSection": "Vider tote {section}",
     "showMoreOptionsHint": "monstrar plus optiones",
@@ -10916,5 +10915,6 @@
     "callTranscriptAudioUnavailable": "Le registration salvate de {name} non poteva esser discargate, ergo illo non poteva esser transcribite.",
     "callTranscriptChooseLanguage": "Qual lingua esseva parlate?",
     "callTranscriptSubscribeForTranscription": "Subscriber pro transcription",
-    "unlockCallTranscript": "Disblocar transcripto de appellation"
+    "unlockCallTranscript": "Disblocar transcripto de appellation",
+    "mapCreditsLabel": "Creditos del mappa: Stadia Maps, OpenMapTiles e OpenStreetMap"
 }

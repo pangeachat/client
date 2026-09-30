@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-09-30 11:27:33.025890",
+    "@@last_modified": "2026-09-30 12:45:43.761373",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10280,7 +10280,6 @@
     "constructLevelFlowers": "Cvijeće, usvojene riječi",
     "filterAndSearch": "Filtriraj i pretraži",
     "participantsOfTotal": "{filled} od {total} igrača",
-    "mapAttributionLabel": "Autori, autorska prava i licenca OpenStreetMap-a",
     "seeAll": "Vidi sve",
     "seeAllSection": "Vidi sve {section}",
     "showMoreOptionsHint": "prikaži više opcija",
@@ -10416,5 +10415,6 @@
     "callTranscriptAudioUnavailable": "Spremljena snimka od {name} nije se mogla preuzeti, stoga se nije mogla ni prepisati.",
     "callTranscriptChooseLanguage": "Koji je jezik bio govoren?",
     "callTranscriptSubscribeForTranscription": "Pretplatite se za prijepis",
-    "unlockCallTranscript": "Otključaj prijepis poziva"
+    "unlockCallTranscript": "Otključaj prijepis poziva",
+    "mapCreditsLabel": "Zasluge za kartu: Stadia Maps, OpenMapTiles i OpenStreetMap"
 }

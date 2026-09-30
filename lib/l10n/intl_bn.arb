@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 11:27:29.406416",
+    "@@last_modified": "2026-09-30 12:45:41.704834",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10472,7 +10472,6 @@
     "constructLevelFlowers": "ফুল, আয়ত্ত করা শব্দ",
     "filterAndSearch": "ফিল্টার এবং অনুসন্ধান",
     "participantsOfTotal": "{total} জন খেলোয়াড়ের মধ্যে {filled} জন",
-    "mapAttributionLabel": "OpenStreetMap অবদানকারী, কপিরাইট এবং লাইসেন্স",
     "seeAll": "সব দেখুন",
     "seeAllSection": "সব দেখুন {section}",
     "showMoreOptionsHint": "আরও বিকল্প দেখান",
@@ -10608,5 +10607,6 @@
     "callTranscriptAudioUnavailable": "{name} থেকে সংরক্ষিত রেকর্ডিং ডাউনলোড করা যায়নি, তাই এটি ট্রান্সক্রাইব করা যায়নি।",
     "callTranscriptChooseLanguage": "কোন ভাষায় কথা বলা হয়েছিল?",
     "callTranscriptSubscribeForTranscription": "ট্রান্সক্রিপশনের জন্য সাবস্ক্রাইব করুন",
-    "unlockCallTranscript": "কল ট্রান্সক্রিপ্ট আনলক করুন"
+    "unlockCallTranscript": "কল ট্রান্সক্রিপ্ট আনলক করুন",
+    "mapCreditsLabel": "মানচিত্র ক্রেডিট: Stadia Maps, OpenMapTiles এবং OpenStreetMap"
 }

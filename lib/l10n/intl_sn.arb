@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-09-30 11:27:39.754889",
+    "@@last_modified": "2026-09-30 12:45:46.559551",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Maruva, mazwi akadzidzwa",
     "filterAndSearch": "Sefa nekutsvaga",
     "participantsOfTotal": "Vatambi {filled} pa {total}",
-    "mapAttributionLabel": "Vabatsiri veOpenStreetMap, kodzero yekukopa uye rezinesi",
     "seeAll": "Ona zvese",
     "seeAllSection": "Ona zvese zve {section}",
     "showMoreOptionsHint": "ratidza zvimwe zvingasarudzwa",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "Kurekodha kwakachengetwa kubva kuna {name} hakuna kukwanisa kutorwa, saka hakuna kukwanisa kunyorwa.",
     "callTranscriptChooseLanguage": "Mutauro upi wakataurwa?",
     "callTranscriptSubscribeForTranscription": "Nyorera kuti unyorerwe",
-    "unlockCallTranscript": "Vhura zvinyorwa zvekufona"
+    "unlockCallTranscript": "Vhura zvinyorwa zvekufona",
+    "mapCreditsLabel": "Map credits: Stadia Maps, OpenMapTiles neOpenStreetMap"
 }

@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-09-30 11:27:41.319673",
+    "@@last_modified": "2026-09-30 12:45:47.914894",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9848,7 +9848,6 @@
     "constructLevelFlowers": "Gullar, oʻzlashtirilgan soʻzlar",
     "filterAndSearch": "Filtrlash va qidirish",
     "participantsOfTotal": "{total} o'yinchidan {filled} nafari",
-    "mapAttributionLabel": "OpenStreetMap ishtirokchilari, mualliflik huquqi va litsenziyasi",
     "seeAll": "Hammasini koʻrish",
     "seeAllSection": "Barcha {section}ni koʻrish",
     "showMoreOptionsHint": "koʻproq variantlarni koʻrsatish",
@@ -9984,5 +9983,6 @@
     "callTranscriptAudioUnavailable": "{name}dan saqlangan yozuvni yuklab bo‘lmadi, shuning uchun uni transkripsiya qilib bo‘lmadi.",
     "callTranscriptChooseLanguage": "Qaysi tilda gapirilgan?",
     "callTranscriptSubscribeForTranscription": "Transkripsiya uchun obuna bo‘lish",
-    "unlockCallTranscript": "Qo‘ng‘iroq transkriptini ochish"
+    "unlockCallTranscript": "Qo‘ng‘iroq transkriptini ochish",
+    "mapCreditsLabel": "Xarita mualliflari: Stadia Maps, OpenMapTiles va OpenStreetMap"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-09-30 11:27:41.352408",
+    "@@last_modified": "2026-09-30 12:45:47.717067",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "پھول، مہارت حاصل کیے ہوئے الفاظ",
     "filterAndSearch": "فلٹر اور تلاش کریں",
     "participantsOfTotal": "{total} کھلاڑیوں میں سے {filled}",
-    "mapAttributionLabel": "اوپن سٹریٹ میپ کے معاونین، کاپی رائٹ اور لائسنس",
     "seeAll": "سب دیکھیں",
     "seeAllSection": "تمام {section} دیکھیں",
     "showMoreOptionsHint": "مزید اختیارات دکھائیں",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "{name} سے محفوظ کردہ ریکارڈنگ ڈاؤن لوڈ نہیں کی جا سکی، اس لیے اسے ٹرانسکرائب نہیں کیا جا سکا۔",
     "callTranscriptChooseLanguage": "کون سی زبان بولی گئی تھی؟",
     "callTranscriptSubscribeForTranscription": "ٹرانسکرپشن کے لیے سبسکرائب کریں",
-    "unlockCallTranscript": "کال ٹرانسکرپٹ کو اَن لاک کریں"
+    "unlockCallTranscript": "کال ٹرانسکرپٹ کو اَن لاک کریں",
+    "mapCreditsLabel": "نقشہ کے کریڈٹس: Stadia Maps، OpenMapTiles اور OpenStreetMap"
 }

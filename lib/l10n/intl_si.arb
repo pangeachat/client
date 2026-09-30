@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-09-30 11:27:39.369607",
+    "@@last_modified": "2026-09-30 12:45:46.633301",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "මල්, ප්‍රගුණ කළ වචන",
     "filterAndSearch": "පෙරහන් කර සොයන්න",
     "participantsOfTotal": "{total} ක්‍රීඩකයන්ගෙන් {filled}ක්",
-    "mapAttributionLabel": "OpenStreetMap දායකයින්, ප්‍රකාශන හිමිකම සහ බලපත්‍රය",
     "seeAll": "සියල්ල බලන්න",
     "seeAllSection": "සියලු {section} බලන්න",
     "showMoreOptionsHint": "තවත් විකල්ප පෙන්වන්න",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "{name} වෙතින් සුරකින ලද පටිගත කිරීම බාගත කිරීමට නොහැකි විය, එබැවින් එය පිටපත් කිරීමට නොහැකි විය.",
     "callTranscriptChooseLanguage": "කතා කළ භාෂාව කුමක්ද?",
     "callTranscriptSubscribeForTranscription": "පිටපත් කිරීම සඳහා දායක වන්න",
-    "unlockCallTranscript": "ඇමතුම් පිටපත අගුළු හරින්න"
+    "unlockCallTranscript": "ඇමතුම් පිටපත අගුළු හරින්න",
+    "mapCreditsLabel": "සිතියම් ණය: Stadia Maps, OpenMapTiles සහ OpenStreetMap"
 }

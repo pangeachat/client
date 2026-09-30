@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-09-30 11:27:32.831428",
+    "@@last_modified": "2026-09-30 12:45:43.458466",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Nā Pua, nā huaʻōlelo i aʻo ʻia",
     "filterAndSearch": "Kānana a huli",
     "participantsOfTotal": "{filled} o {total} mau mea pāʻani",
-    "mapAttributionLabel": "Nā mea hāʻawi OpenStreetMap, kuleana kope a me ka laikini",
     "seeAll": "E ʻike i nā mea a pau",
     "seeAllSection": "E ʻike i nā mea a pau ma {section}",
     "showMoreOptionsHint": "hōʻike i nā koho hou aku",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "ʻAʻole hiki ke hoʻoiho ʻia ka hoʻopaʻa leo i mālama ʻia mai {name}, no laila ʻaʻole hiki ke kākau ʻia.",
     "callTranscriptChooseLanguage": "He aha ka ʻōlelo i ʻōlelo ʻia?",
     "callTranscriptSubscribeForTranscription": "Kakau inoa no ke kākau ʻana",
-    "unlockCallTranscript": "Wehe i ke kākau ʻana o ke kelepona"
+    "unlockCallTranscript": "Wehe i ke kākau ʻana o ke kelepona",
+    "mapCreditsLabel": "Nā hōʻaiʻē palapala ʻāina: Stadia Maps, OpenMapTiles a me OpenStreetMap"
 }

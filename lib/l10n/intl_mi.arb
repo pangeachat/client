@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-09-30 11:27:36.665394",
+    "@@last_modified": "2026-09-30 12:45:45.106015",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Puawai, kupu kua rangatira",
     "filterAndSearch": "Tātari me te rapu",
     "participantsOfTotal": "{filled} o te {total} ngā kaitākaro",
-    "mapAttributionLabel": "Ngā kaituku OpenStreetMap, te mana pupuri me te raihana",
     "seeAll": "Tirohia katoa",
     "seeAllSection": "Tirohia katoa {section}",
     "showMoreOptionsHint": "whakaatu atu kōwhiringa",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "Kāore i taea te tikiake i te rekoata i tiakina mai i a {name}, nō reira kāore i taea te tuhi.",
     "callTranscriptChooseLanguage": "He aha te reo i kōrerohia?",
     "callTranscriptSubscribeForTranscription": "Ohauru mō te tuhinga",
-    "unlockCallTranscript": "Wewete i te tuhinga waea"
+    "unlockCallTranscript": "Wewete i te tuhinga waea",
+    "mapCreditsLabel": "Ngā takoha mahere: Stadia Maps, OpenMapTiles me OpenStreetMap"
 }

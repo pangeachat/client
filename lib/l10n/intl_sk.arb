@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-09-30 11:27:39.386961",
+    "@@last_modified": "2026-09-30 12:45:46.621778",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10789,7 +10789,6 @@
     "constructLevelFlowers": "Kvety, zvládnuté slová",
     "filterAndSearch": "Filtrovať a hľadať",
     "participantsOfTotal": "{filled} z {total} hráčov",
-    "mapAttributionLabel": "Prispievatelia OpenStreetMap, autorské práva a licencia",
     "seeAll": "Zobraziť všetko",
     "seeAllSection": "Zobraziť všetko: {section}",
     "showMoreOptionsHint": "zobraziť viac možností",
@@ -10925,5 +10924,6 @@
     "callTranscriptAudioUnavailable": "Uloženú nahrávku od {name} sa nepodarilo stiahnuť, takže ju nebolo možné prepísať.",
     "callTranscriptChooseLanguage": "Akým jazykom sa hovorilo?",
     "callTranscriptSubscribeForTranscription": "Predplatiť si prepis",
-    "unlockCallTranscript": "Odomknúť prepis hovoru"
+    "unlockCallTranscript": "Odomknúť prepis hovoru",
+    "mapCreditsLabel": "Autorské práva k mape: Stadia Maps, OpenMapTiles a OpenStreetMap"
 }

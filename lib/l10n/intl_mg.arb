@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-09-30 11:27:36.490401",
+    "@@last_modified": "2026-09-30 12:45:45.078601",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Voninkazo, teny efa mahay",
     "filterAndSearch": "Sivana sy karoka",
     "participantsOfTotal": "{filled} amin'ny mpilalao {total}",
-    "mapAttributionLabel": "Mpanome anjara OpenStreetMap, zon'ny mpamorona ary fahazoan-dàlana",
     "seeAll": "Jereo daholo",
     "seeAllSection": "Jereo daholo ny {section}",
     "showMoreOptionsHint": "asehoy safidy bebe kokoa",
@@ -2388,5 +2387,6 @@
     "callTranscriptAudioUnavailable": "Tsy afaka alaina ilay rakipeo voatahiry avy amin'i {name}, ka tsy azo soratana.",
     "callTranscriptChooseLanguage": "Inona no fiteny nampiasaina?",
     "callTranscriptSubscribeForTranscription": "Misoratra anarana ho an'ny fandikana",
-    "unlockCallTranscript": "Sokafy ny dika soratra antso"
+    "unlockCallTranscript": "Sokafy ny dika soratra antso",
+    "mapCreditsLabel": "Fampiasana sarintany: Stadia Maps, OpenMapTiles ary OpenStreetMap"
 }

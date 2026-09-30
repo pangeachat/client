@@ -3536,7 +3536,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-09-30 11:27:31.769718",
+    "@@last_modified": "2026-09-30 12:45:42.865318",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9881,7 +9881,6 @@
     "constructLevelFlowers": "Kukat, hallitut sanat",
     "filterAndSearch": "Suodata ja hae",
     "participantsOfTotal": "{filled}/{total} pelaajaa",
-    "mapAttributionLabel": "OpenStreetMapin tekijät, tekijänoikeudet ja lisenssi",
     "seeAll": "Näytä kaikki",
     "seeAllSection": "Näytä kaikki {section}",
     "showMoreOptionsHint": "näytä lisää vaihtoehtoja",
@@ -10017,5 +10016,6 @@
     "callTranscriptAudioUnavailable": "Tallennetun äänitteen lataaminen käyttäjältä {name} epäonnistui, joten sitä ei voitu litteroida.",
     "callTranscriptChooseLanguage": "Mitä kieltä puhuttiin?",
     "callTranscriptSubscribeForTranscription": "Tilaa litterointi",
-    "unlockCallTranscript": "Avaa puhelun litterointi"
+    "unlockCallTranscript": "Avaa puhelun litterointi",
+    "mapCreditsLabel": "Karttatiedot: Stadia Maps, OpenMapTiles ja OpenStreetMap"
 }

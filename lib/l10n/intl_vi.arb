@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 11:27:41.683349",
+    "@@last_modified": "2026-09-30 12:45:47.672029",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7140,7 +7140,6 @@
     "constructLevelFlowers": "Hoa, từ đã thành thạo",
     "filterAndSearch": "Lọc và tìm kiếm",
     "participantsOfTotal": "{filled} trên {total} người chơi",
-    "mapAttributionLabel": "Những người đóng góp OpenStreetMap, bản quyền và giấy phép",
     "seeAll": "Xem tất cả",
     "seeAllSection": "Xem tất cả {section}",
     "showMoreOptionsHint": "hiện thêm tùy chọn",
@@ -7272,5 +7271,6 @@
     "callTranscriptAudioUnavailable": "Không thể tải bản ghi đã lưu từ {name} xuống, nên không thể chép lại.",
     "callTranscriptChooseLanguage": "Ngôn ngữ được nói là gì?",
     "callTranscriptSubscribeForTranscription": "Đăng ký để chép lại",
-    "unlockCallTranscript": "Mở khóa bản chép lại cuộc gọi"
+    "unlockCallTranscript": "Mở khóa bản chép lại cuộc gọi",
+    "mapCreditsLabel": "Bản quyền bản đồ: Stadia Maps, OpenMapTiles và OpenStreetMap"
 }

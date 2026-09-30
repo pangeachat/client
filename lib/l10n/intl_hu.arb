@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-09-30 11:27:34.504248",
+    "@@last_modified": "2026-09-30 12:45:43.748862",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9947,7 +9947,6 @@
     "constructLevelFlowers": "Virágok, elsajátított szavak",
     "filterAndSearch": "Szűrés és keresés",
     "participantsOfTotal": "{filled}/{total} játékos",
-    "mapAttributionLabel": "OpenStreetMap közreműködők, szerzői jogok és licenc",
     "seeAll": "Összes megtekintése",
     "seeAllSection": "Összes {section} megtekintése",
     "showMoreOptionsHint": "további lehetőségek megjelenítése",
@@ -10083,5 +10082,6 @@
     "callTranscriptAudioUnavailable": "A {name} felvételét nem sikerült letölteni, ezért nem lehetett átírni.",
     "callTranscriptChooseLanguage": "Milyen nyelven beszéltek?",
     "callTranscriptSubscribeForTranscription": "Feliratkozás az átírásra",
-    "unlockCallTranscript": "Hívás átirat feloldása"
+    "unlockCallTranscript": "Hívás átirat feloldása",
+    "mapCreditsLabel": "Térkép forrása: Stadia Maps, OpenMapTiles és OpenStreetMap"
 }

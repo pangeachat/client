@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-09-30 11:27:41.859964",
+    "@@last_modified": "2026-09-30 12:45:48.020951",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9844,7 +9844,6 @@
     "constructLevelFlowers": "花朵，掌握词",
     "filterAndSearch": "筛选和搜索",
     "participantsOfTotal": "{filled}/{total} 位玩家",
-    "mapAttributionLabel": "OpenStreetMap 贡献者，版权和许可",
     "seeAll": "查看全部",
     "seeAllSection": "查看全部{section}",
     "showMoreOptionsHint": "显示更多选项",
@@ -9980,5 +9979,6 @@
     "callTranscriptAudioUnavailable": "无法下载 {name} 的已保存录音，因此无法转录。",
     "callTranscriptChooseLanguage": "说的是什么语言？",
     "callTranscriptSubscribeForTranscription": "订阅转录服务",
-    "unlockCallTranscript": "解锁通话记录"
+    "unlockCallTranscript": "解锁通话记录",
+    "mapCreditsLabel": "地图来源：Stadia Maps、OpenMapTiles 和 OpenStreetMap"
 }

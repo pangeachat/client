@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 11:27:41.170278",
+    "@@last_modified": "2026-09-30 12:45:47.194851",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9936,7 +9936,6 @@
     "constructLevelFlowers": "மலர்கள், தேர்ச்சி பெற்ற சொற்கள்",
     "filterAndSearch": "வடிகட்டி தேடு",
     "participantsOfTotal": "{total} வீரர்களில் {filled} பேர்",
-    "mapAttributionLabel": "OpenStreetMap பங்களிப்பாளர்கள், பதிப்புரிமை மற்றும் உரிமம்",
     "seeAll": "அனைத்தையும் காட்டு",
     "seeAllSection": "அனைத்தையும் காட்டு {section}",
     "showMoreOptionsHint": "மேலும் விருப்பங்களைக் காட்டு",
@@ -10072,5 +10071,6 @@
     "callTranscriptAudioUnavailable": "{name} இலிருந்து சேமிக்கப்பட்ட பதிவு பதிவிறக்க முடியவில்லை, எனவே அதை படியெடுக்க முடியவில்லை.",
     "callTranscriptChooseLanguage": "எந்த மொழி பேசப்பட்டது?",
     "callTranscriptSubscribeForTranscription": "படியெடுத்தலுக்கு குழுசேரவும்",
-    "unlockCallTranscript": "அழைப்புப் படியெடுத்தலைத் திறக்கவும்"
+    "unlockCallTranscript": "அழைப்புப் படியெடுத்தலைத் திறக்கவும்",
+    "mapCreditsLabel": "வரைபட வரவுகள்: Stadia Maps, OpenMapTiles மற்றும் OpenStreetMap"
 }

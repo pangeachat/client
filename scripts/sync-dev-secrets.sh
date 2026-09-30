@@ -47,6 +47,8 @@ SECRET_MAP=(
   "GOOGLE_ANALYTICS_FIREBASE_OPTIONS_BASE64=/staging/firebase/google-analytics#web"
   "GOOGLE_SERVICES_JSON=/staging/firebase/google-analytics#android"
   "GOOGLE_SERVICES_PLIST=/staging/firebase/google-analytics#ios"
+  # Map tiles on local native builds (#8603); web ignores it.
+  "STADIA_MAPS_API_KEY=/staging/client/stadia-maps-api-key"
 )
 
 fetch_secret() {

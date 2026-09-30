@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 11:27:42.021079",
+    "@@last_modified": "2026-09-30 12:45:48.088074",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9950,7 +9950,6 @@
     "constructLevelFlowers": "花朵，已掌握的單字",
     "filterAndSearch": "篩選與搜尋",
     "participantsOfTotal": "{filled} / {total} 位玩家",
-    "mapAttributionLabel": "OpenStreetMap 貢獻者、版權與許可",
     "seeAll": "查看全部",
     "seeAllSection": "查看全部{section}",
     "showMoreOptionsHint": "顯示更多選項",
@@ -10086,5 +10085,6 @@
     "callTranscriptAudioUnavailable": "無法下載來自 {name} 的已儲存錄音，因此無法轉錄。",
     "callTranscriptChooseLanguage": "說的是什麼語言？",
     "callTranscriptSubscribeForTranscription": "訂閱以取得轉錄",
-    "unlockCallTranscript": "解鎖通話記錄"
+    "unlockCallTranscript": "解鎖通話記錄",
+    "mapCreditsLabel": "地圖來源：Stadia Maps、OpenMapTiles 和 OpenStreetMap"
 }
