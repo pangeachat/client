@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-29 11:11:35.839011",
+    "@@last_modified": "2026-09-30 11:27:42.021079",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10081,5 +10081,10 @@
     "courseCodeSaved": "課程代碼 {code} 已儲存",
     "courseCodeSavedExplanation": "註冊或登入，我們將把您加入課程。",
     "moderationRefusedContactDetails": "您的訊息沒有送出。自動篩選器偵測到聯絡方式，例如電話號碼。請移除後再試一次。",
-    "moderationRefusedProfanity": "您的訊息沒有送出。自動篩選器偵測到聊天中不允許的字詞。請修改後再試一次。"
+    "moderationRefusedProfanity": "您的訊息沒有送出。自動篩選器偵測到聊天中不允許的字詞。請修改後再試一次。",
+    "callTranscriptTranscribeButton": "轉錄",
+    "callTranscriptAudioUnavailable": "無法下載來自 {name} 的已儲存錄音，因此無法轉錄。",
+    "callTranscriptChooseLanguage": "說的是什麼語言？",
+    "callTranscriptSubscribeForTranscription": "訂閱以取得轉錄",
+    "unlockCallTranscript": "解鎖通話記錄"
 }

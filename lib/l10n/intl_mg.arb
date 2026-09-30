@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-09-29 11:11:30.231570",
+    "@@last_modified": "2026-09-30 11:27:36.490401",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2383,5 +2383,10 @@
     "courseCodeSaved": "Kaody taranja {code} voatahiry",
     "courseCodeSavedExplanation": "Misoratra anarana na midira ary hanampy anao amin'ny taranjao izahay.",
     "moderationRefusedContactDetails": "Tsy voatateraka ny hafatrao. Nahita antsipiriany momba ny fifandraisana, toy ny nomeraon-telefaona, ny sivana mandeha ho azy. Esory azafady izany ary andramo indray.",
-    "moderationRefusedProfanity": "Tsy voatateraka ny hafatrao. Nahita teny tsy avelanay ao anaty chat ny sivana mandeha ho azy. Ovay azafady izany ary andramo indray."
+    "moderationRefusedProfanity": "Tsy voatateraka ny hafatrao. Nahita teny tsy avelanay ao anaty chat ny sivana mandeha ho azy. Ovay azafady izany ary andramo indray.",
+    "callTranscriptTranscribeButton": "Soraty",
+    "callTranscriptAudioUnavailable": "Tsy afaka alaina ilay rakipeo voatahiry avy amin'i {name}, ka tsy azo soratana.",
+    "callTranscriptChooseLanguage": "Inona no fiteny nampiasaina?",
+    "callTranscriptSubscribeForTranscription": "Misoratra anarana ho an'ny fandikana",
+    "unlockCallTranscript": "Sokafy ny dika soratra antso"
 }

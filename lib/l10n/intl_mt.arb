@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-09-29 11:11:30.920933",
+    "@@last_modified": "2026-09-30 11:27:37.723887",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2383,5 +2383,10 @@
     "courseCodeSaved": "Kodiċi tal-kors {code} salvat",
     "courseCodeSavedExplanation": "Irreġistra jew idħol u aħna nżiduk mal-kors tiegħek.",
     "moderationRefusedContactDetails": "Il-messaġġ tiegħek ma ntbagħatx. Filtru awtomatiku sab dettalji ta' kuntatt, bħal numru tat-telefon. Neħħihom u erġa' pprova.",
-    "moderationRefusedProfanity": "Il-messaġġ tiegħek ma ntbagħatx. Filtru awtomatiku sab kelma li ma nippermettux fiċ-chat. Ibdelha u erġa' pprova."
+    "moderationRefusedProfanity": "Il-messaġġ tiegħek ma ntbagħatx. Filtru awtomatiku sab kelma li ma nippermettux fiċ-chat. Ibdelha u erġa' pprova.",
+    "callTranscriptTranscribeButton": "Traskrivi",
+    "callTranscriptAudioUnavailable": "Ir-reġistrazzjoni ssejvjata minn {name} ma setgħetx titniżżel, u għalhekk ma setgħetx tiġi traskritta.",
+    "callTranscriptChooseLanguage": "X’lingwa nstema’?",
+    "callTranscriptSubscribeForTranscription": "Abbona għat-traskrizzjoni",
+    "unlockCallTranscript": "Nisfrutta t-traskrizzjoni tas-sejħa"
 }

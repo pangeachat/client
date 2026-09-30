@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-29 11:11:25.020797",
+    "@@last_modified": "2026-09-30 11:27:31.408939",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10063,5 +10063,10 @@
     "courseCodeSaved": "کد دوره {code} ذخیره شد",
     "courseCodeSavedExplanation": "ثبت‌نام کنید یا وارد شوید و ما شما را به دوره شما اضافه خواهیم کرد.",
     "moderationRefusedContactDetails": "پیام شما ارسال نشد. یک فیلتر خودکار جزئیات تماس، مانند شماره تلفن، را پیدا کرد. لطفاً آن‌ها را حذف کرده و دوباره تلاش کنید.",
-    "moderationRefusedProfanity": "پیام شما ارسال نشد. یک فیلتر خودکار کلمه‌ای را پیدا کرد که ما در چت مجاز نمی‌دانیم. لطفاً آن را تغییر داده و دوباره تلاش کنید."
+    "moderationRefusedProfanity": "پیام شما ارسال نشد. یک فیلتر خودکار کلمه‌ای را پیدا کرد که ما در چت مجاز نمی‌دانیم. لطفاً آن را تغییر داده و دوباره تلاش کنید.",
+    "callTranscriptTranscribeButton": "رونویسی",
+    "callTranscriptAudioUnavailable": "ضبط ذخیره‌شده از {name} قابل دانلود نبود، بنابراین رونویسی نشد.",
+    "callTranscriptChooseLanguage": "به چه زبانی صحبت شد؟",
+    "callTranscriptSubscribeForTranscription": "برای رونویسی مشترک شوید",
+    "unlockCallTranscript": "باز کردن قفل رونویسی تماس"
 }

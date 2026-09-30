@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-09-29 11:11:32.197899",
+    "@@last_modified": "2026-09-30 11:27:38.347183",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2383,5 +2383,10 @@
     "courseCodeSaved": "د کورس کوډ {code} خوندي شو",
     "courseCodeSavedExplanation": "نوم لیکنه وکړئ یا ننوتل او موږ به تاسو خپل کورس ته اضافه کړو.",
     "moderationRefusedContactDetails": "ستاسو پیغام ونه لیږدول شو. یو اتوماتیک فلټر د اړیکو معلومات وموندل، لکه د تلیفون شمیره. مهرباني وکړئ هغه لرې کړئ او بیا هڅه وکړئ.",
-    "moderationRefusedProfanity": "ستاسو پیغام ونه لیږدول شو. یو اتوماتیک فلټر یوه کلمه وموندله چې موږ یې په چیټ کې اجازه نه ورکوو. مهرباني وکړئ هغه بدله کړئ او بیا هڅه وکړئ."
+    "moderationRefusedProfanity": "ستاسو پیغام ونه لیږدول شو. یو اتوماتیک فلټر یوه کلمه وموندله چې موږ یې په چیټ کې اجازه نه ورکوو. مهرباني وکړئ هغه بدله کړئ او بیا هڅه وکړئ.",
+    "callTranscriptTranscribeButton": "ژباړه",
+    "callTranscriptAudioUnavailable": "د {name} څخه خوندي شوی ریکارډ ډاونلوډ نشو، نو له همدې امله ژباړل کیدی نشي.",
+    "callTranscriptChooseLanguage": "کومه ژبه ویل شوې وه؟",
+    "callTranscriptSubscribeForTranscription": "د ژباړې لپاره ګډون وکړئ",
+    "unlockCallTranscript": "د زنګ لیږد خلاص کړئ"
 }

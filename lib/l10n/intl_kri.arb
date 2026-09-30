@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-09-29 11:11:29.360638",
+    "@@last_modified": "2026-09-30 11:27:35.206369",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2383,5 +2383,10 @@
     "courseCodeSaved": "Kɔs kod {code} dɔn sev",
     "courseCodeSavedExplanation": "Sayn ap ɔ lɔg in ɛn wi go ad yu to yu kɔs.",
     "moderationRefusedContactDetails": "Yu messej nɔ sen. Wan ɔtɔmatik finta bin fɛn kɔntakt ditel dɛn, lɛk fon nɔmba. Duya pul dɛn ɛn tray igen.",
-    "moderationRefusedProfanity": "Yu messej nɔ sen. Wan ɔtɔmatik finta bin fɛn wan wɔd we wi nɔ alaw insay chat. Duya chenj am ɛn tray igen."
+    "moderationRefusedProfanity": "Yu messej nɔ sen. Wan ɔtɔmatik finta bin fɛn wan wɔd we wi nɔ alaw insay chat. Duya chenj am ɛn tray igen.",
+    "callTranscriptTranscribeButton": "Transkrayb",
+    "callTranscriptAudioUnavailable": "Wi nɔ ebul fɔ daunlod di rikɔdin frɔm {name}, so wi nɔ ebul fɔ transkrayb am.",
+    "callTranscriptChooseLanguage": "Us langwej dɛn bin tɔk?",
+    "callTranscriptSubscribeForTranscription": "Sabsakrayb fɔ transkripshɔn",
+    "unlockCallTranscript": "Ɔnlɔk kɔl transkript"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-09-29 11:11:23.316352",
+    "@@last_modified": "2026-09-30 11:27:29.460760",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10281,5 +10281,10 @@
     "courseCodeSaved": "تم حفظ رمز الدورة التدريبية {code}",
     "courseCodeSavedExplanation": "سجّل أو سجّل الدخول وسنضيفك إلى دورتك التدريبية.",
     "moderationRefusedContactDetails": "لم يتم إرسال رسالتك. عثر فلتر تلقائي على تفاصيل اتصال، مثل رقم هاتف. يُرجى إزالتها والمحاولة مرة أخرى.",
-    "moderationRefusedProfanity": "لم يتم إرسال رسالتك. عثر فلتر تلقائي على كلمة غير مسموح بها في الدردشة. يُرجى تغييرها والمحاولة مرة أخرى."
+    "moderationRefusedProfanity": "لم يتم إرسال رسالتك. عثر فلتر تلقائي على كلمة غير مسموح بها في الدردشة. يُرجى تغييرها والمحاولة مرة أخرى.",
+    "callTranscriptTranscribeButton": "نسخ",
+    "callTranscriptAudioUnavailable": "تعذر تنزيل التسجيل المحفوظ من {name}، لذلك لم يتمكن من نسخه.",
+    "callTranscriptChooseLanguage": "ما هي اللغة التي تم التحدث بها؟",
+    "callTranscriptSubscribeForTranscription": "اشترك لنسخ المحادثة",
+    "unlockCallTranscript": "فتح نسخة المحادثة"
 }

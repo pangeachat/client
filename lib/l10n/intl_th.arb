@@ -3093,7 +3093,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-09-29 11:11:34.792371",
+    "@@last_modified": "2026-09-30 11:27:40.596751",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10607,5 +10607,10 @@
     "courseCodeSaved": "บันทึกรหัสคอร์ส {code} แล้ว",
     "courseCodeSavedExplanation": "ลงทะเบียนหรือเข้าสู่ระบบ แล้วเราจะเพิ่มคุณเข้าสู่คอร์ส",
     "moderationRefusedContactDetails": "ข้อความของคุณไม่ถูกส่ง ระบบคัดกรองอัตโนมัติพบรายละเอียดการติดต่อ เช่น หมายเลขโทรศัพท์ โปรดลบออกแล้วลองอีกครั้ง",
-    "moderationRefusedProfanity": "ข้อความของคุณไม่ถูกส่ง ระบบคัดกรองอัตโนมัติพบคำที่ไม่ได้รับอนุญาตในแชท โปรดแก้ไขแล้วลองอีกครั้ง"
+    "moderationRefusedProfanity": "ข้อความของคุณไม่ถูกส่ง ระบบคัดกรองอัตโนมัติพบคำที่ไม่ได้รับอนุญาตในแชท โปรดแก้ไขแล้วลองอีกครั้ง",
+    "callTranscriptTranscribeButton": "ถอดเสียง",
+    "callTranscriptAudioUnavailable": "ไม่สามารถดาวน์โหลดไฟล์บันทึกที่บันทึกไว้จาก {name} ได้ จึงไม่สามารถถอดเสียงได้",
+    "callTranscriptChooseLanguage": "พูดภาษาอะไร",
+    "callTranscriptSubscribeForTranscription": "สมัครสมาชิกเพื่อถอดเสียง",
+    "unlockCallTranscript": "ปลดล็อกบทสนทนาการโทร"
 }

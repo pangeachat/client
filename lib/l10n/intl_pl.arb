@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-09-29 11:11:31.976300",
+    "@@last_modified": "2026-09-30 11:27:38.485962",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10060,5 +10060,10 @@
     "courseCodeSaved": "Kod kursu {code} zapisany",
     "courseCodeSavedExplanation": "Zarejestruj się lub zaloguj, a my dodamy Cię do kursu.",
     "moderationRefusedContactDetails": "Twoja wiadomość nie została wysłana. Automatyczny filtr wykrył dane kontaktowe, takie jak numer telefonu. Usuń je i spróbuj ponownie.",
-    "moderationRefusedProfanity": "Twoja wiadomość nie została wysłana. Automatyczny filtr wykrył słowo, którego nie zezwalamy używać na czacie. Zmień je i spróbuj ponownie."
+    "moderationRefusedProfanity": "Twoja wiadomość nie została wysłana. Automatyczny filtr wykrył słowo, którego nie zezwalamy używać na czacie. Zmień je i spróbuj ponownie.",
+    "callTranscriptTranscribeButton": "Transkrybuj",
+    "callTranscriptAudioUnavailable": "Nie udało się pobrać zapisanego nagrania od {name}, więc nie można go transkrybować.",
+    "callTranscriptChooseLanguage": "W jakim języku mówiono?",
+    "callTranscriptSubscribeForTranscription": "Subskrybuj, aby uzyskać transkrypcję",
+    "unlockCallTranscript": "Odblokuj transkrypcję rozmowy"
 }

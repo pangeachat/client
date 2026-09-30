@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-29 11:11:33.916825",
+    "@@last_modified": "2026-09-30 11:27:39.747848",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10924,5 +10924,10 @@
     "courseCodeSaved": "Kod kursa {code} sačuvan",
     "courseCodeSavedExplanation": "Registrujte se ili se prijavite i mi ćemo vas dodati na vaš kurs.",
     "moderationRefusedContactDetails": "Vaša poruka nije poslata. Automatski filter je pronašao detalje za kontakt, kao što je broj telefona. Uklonite ih i pokušajte ponovo.",
-    "moderationRefusedProfanity": "Vaša poruka nije poslata. Automatski filter je pronašao reč koju ne dozvoljavamo u ćaskanju. Promenite je i pokušajte ponovo."
+    "moderationRefusedProfanity": "Vaša poruka nije poslata. Automatski filter je pronašao reč koju ne dozvoljavamo u ćaskanju. Promenite je i pokušajte ponovo.",
+    "callTranscriptTranscribeButton": "Prepiši",
+    "callTranscriptAudioUnavailable": "Sačuvani snimak od {name} nije mogao da se preuzme, tako da nije mogao da bude prepisan.",
+    "callTranscriptChooseLanguage": "Koji jezik je bio u upotrebi?",
+    "callTranscriptSubscribeForTranscription": "Pretplatite se za transkripciju",
+    "unlockCallTranscript": "Otključaj transkript poziva"
 }

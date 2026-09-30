@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-09-29 11:11:30.492117",
+    "@@last_modified": "2026-09-30 11:27:37.069222",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2383,5 +2383,10 @@
     "courseCodeSaved": "Kod kursus {code} disimpan",
     "courseCodeSavedExplanation": "Daftar atau log masuk dan kami akan menambahkan anda ke kursus anda.",
     "moderationRefusedContactDetails": "Mesej anda tidak dihantar. Penapis automatik menemui butiran hubungan, seperti nombor telefon. Sila alih keluar dan cuba lagi.",
-    "moderationRefusedProfanity": "Mesej anda tidak dihantar. Penapis automatik menemui perkataan yang tidak kami benarkan dalam sembang. Sila ubah dan cuba lagi."
+    "moderationRefusedProfanity": "Mesej anda tidak dihantar. Penapis automatik menemui perkataan yang tidak kami benarkan dalam sembang. Sila ubah dan cuba lagi.",
+    "callTranscriptTranscribeButton": "Transkripsi",
+    "callTranscriptAudioUnavailable": "Rakaman yang disimpan daripada {name} tidak dapat dimuat turun, jadi ia tidak dapat ditranskripsi.",
+    "callTranscriptChooseLanguage": "Bahasa apa yang dituturkan?",
+    "callTranscriptSubscribeForTranscription": "Langgan untuk transkripsi",
+    "unlockCallTranscript": "Buka kunci transkripsi panggilan"
 }

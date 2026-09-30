@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-09-29 11:11:30.683260",
+    "@@last_modified": "2026-09-30 11:27:36.992439",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2383,5 +2383,10 @@
     "courseCodeSaved": "Хичээлийн код {code} хадгалагдсан",
     "courseCodeSavedExplanation": "Бүртгүүлэх эсвэл нэвтрэх үед таныг хичээлд нэгтгэх болно.",
     "moderationRefusedContactDetails": "Таны зурвас илгээгдсэнгүй. Автомат шүүлтүүр утасны дугаар гэх мэт холбоо барих мэдээллийг оллоо. Устгаад дахин оролдоно уу.",
-    "moderationRefusedProfanity": "Таны зурвас илгээгдсэнгүй. Автомат шүүлтүүр чатанд зөвшөөрөгдөөгүй үг оллоо. Үгийг өөрчлөөд дахин оролдоно уу."
+    "moderationRefusedProfanity": "Таны зурвас илгээгдсэнгүй. Автомат шүүлтүүр чатанд зөвшөөрөгдөөгүй үг оллоо. Үгийг өөрчлөөд дахин оролдоно уу.",
+    "callTranscriptTranscribeButton": "Хөрвүүлэх",
+    "callTranscriptAudioUnavailable": "{name}-ээс хадгалсан бичлэгийг татаж авах боломжгүй байсан тул хөрвүүлж чадсангүй.",
+    "callTranscriptChooseLanguage": "Ямар хэлээр ярьсан бэ?",
+    "callTranscriptSubscribeForTranscription": "Хөрвүүлэлтэд бүртгүүлэх",
+    "unlockCallTranscript": "Дуудлагын хөрвүүлэлтийг нээх"
 }

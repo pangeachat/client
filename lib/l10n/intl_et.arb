@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-09-29 11:11:25.033104",
+    "@@last_modified": "2026-09-30 11:27:31.336013",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9972,5 +9972,10 @@
     "courseCodeSaved": "Kursuse kood {code} salvestatud",
     "courseCodeSavedExplanation": "Registreeru või logi sisse ja me lisame sind kursusele.",
     "moderationRefusedContactDetails": "Sinu sõnumit ei saadetud. Automaatne filter tuvastas kontaktandmed, näiteks telefoninumbri. Palun eemalda need ja proovi uuesti.",
-    "moderationRefusedProfanity": "Sinu sõnumit ei saadetud. Automaatne filter tuvastas sõna, mida me vestluses ei luba. Palun muuda seda ja proovi uuesti."
+    "moderationRefusedProfanity": "Sinu sõnumit ei saadetud. Automaatne filter tuvastas sõna, mida me vestluses ei luba. Palun muuda seda ja proovi uuesti.",
+    "callTranscriptTranscribeButton": "Transkribeeri",
+    "callTranscriptAudioUnavailable": "Salvestatud heli {name} kasutajalt ei saanud alla laadida, seega ei saanud seda transkribeerida.",
+    "callTranscriptChooseLanguage": "Mis keeles räägiti?",
+    "callTranscriptSubscribeForTranscription": "Telli transkriptsioon",
+    "unlockCallTranscript": "Ava kõne transkriptsioon"
 }

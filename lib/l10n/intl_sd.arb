@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-09-29 11:11:33.432506",
+    "@@last_modified": "2026-09-30 11:27:39.752568",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2383,5 +2383,10 @@
     "courseCodeSaved": "ڪورس ڪوڊ {code} محفوظ ڪيو ويو",
     "courseCodeSavedExplanation": "سائن اپ ڪريو يا لاگ اِن ٿيو ۽ اسان توهان کي توهان جي ڪورس ۾ شامل ڪنداسين.",
     "moderationRefusedContactDetails": "توهان جو پيغام موڪليو نه ويو. هڪ خودڪار فلٽر کي رابطي جي تفصيل مليا، جهڙوڪ فون نمبر. مهرباني ڪري انهن کي هٽايو ۽ ٻيهر ڪوشش ڪريو.",
-    "moderationRefusedProfanity": "توهان جو پيغام موڪليو نه ويو. هڪ خودڪار فلٽر کي هڪ لفظ مليو جيڪو اسان چيٽ ۾ اجازت نه ٿا ڏيون. مهرباني ڪري ان کي تبديل ڪريو ۽ ٻيهر ڪوشش ڪريو."
+    "moderationRefusedProfanity": "توهان جو پيغام موڪليو نه ويو. هڪ خودڪار فلٽر کي هڪ لفظ مليو جيڪو اسان چيٽ ۾ اجازت نه ٿا ڏيون. مهرباني ڪري ان کي تبديل ڪريو ۽ ٻيهر ڪوشش ڪريو.",
+    "callTranscriptTranscribeButton": "لِکڻ",
+    "callTranscriptAudioUnavailable": "{name} کان محفوظ ڪيل رڪارڊنگ ڊائونلوڊ نه ٿي سگهي، تنهنڪري ان کي لکي نه سگهيو.",
+    "callTranscriptChooseLanguage": "ڪهڙي ٻولي ڳالهائي وئي؟",
+    "callTranscriptSubscribeForTranscription": "لِکڻ لاءِ سبسڪرائب ڪريو",
+    "unlockCallTranscript": "ڪال ٽرانسڪرپٽ کوليو"
 }

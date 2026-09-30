@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-09-29 11:11:25.691089",
+    "@@last_modified": "2026-09-30 11:27:32.083112",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2383,5 +2383,10 @@
     "courseCodeSaved": "Kursuskoade {code} bewarre",
     "courseCodeSavedExplanation": "Meld dy oan of registrearje dy en wy sille dy tafoegje oan dyn kursus.",
     "moderationRefusedContactDetails": "Jo berjocht is net ferstjoerd. In automatysk filter hat kontaktgegevens, lykas in telefoannûmer, fûn. Ferwiderje dy en besykje it opnij.",
-    "moderationRefusedProfanity": "Jo berjocht is net ferstjoerd. In automatysk filter hat in wurd fûn dat wy net tastean yn de chat. Feroarje it en besykje it opnij."
+    "moderationRefusedProfanity": "Jo berjocht is net ferstjoerd. In automatysk filter hat in wurd fûn dat wy net tastean yn de chat. Feroarje it en besykje it opnij.",
+    "callTranscriptTranscribeButton": "Transkriberje",
+    "callTranscriptAudioUnavailable": "De bewarre opname fan {name} koe net downloade wurde, dus it koe net transkribearre wurde.",
+    "callTranscriptChooseLanguage": "Hokker taal waard sprutsen?",
+    "callTranscriptSubscribeForTranscription": "Abonnearje foar transkripsje",
+    "unlockCallTranscript": "Untskoattelje oproptranskripsje"
 }

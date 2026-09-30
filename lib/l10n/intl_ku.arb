@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-09-29 11:11:29.547776",
+    "@@last_modified": "2026-09-30 11:27:35.642452",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2383,5 +2383,10 @@
     "courseCodeSaved": "کۆدی خول {code} پاشەکەوت کرا",
     "courseCodeSavedExplanation": "خۆت تۆمار بکە یان بچۆ ژوورەوە و ئێمە زیادتبکەین بۆ خولەکەت.",
     "moderationRefusedContactDetails": "پەیامەکەت نەنێردرا. فلتەرێکی ئۆتۆماتیکی زانیاری پەیوەندیکردنی دۆزییەوە، وەک ژمارەی تەلەفۆن. تکایە لایانبەرە و دووبارە هەوڵبدەوە.",
-    "moderationRefusedProfanity": "پەیامەکەت نەنێردرا. فلتەرێکی ئۆتۆماتیکی وشەیەکی دۆزییەوە کە ڕێگەی پێنادەین لە چاتدا. تکایە بیگۆڕە و دووبارە هەوڵبدەوە."
+    "moderationRefusedProfanity": "پەیامەکەت نەنێردرا. فلتەرێکی ئۆتۆماتیکی وشەیەکی دۆزییەوە کە ڕێگەی پێنادەین لە چاتدا. تکایە بیگۆڕە و دووبارە هەوڵبدەوە.",
+    "callTranscriptTranscribeButton": "گۆڕین بۆ نووسین",
+    "callTranscriptAudioUnavailable": "تۆماری پاشەکەوتکراوی {name} ناتوانرێت دابگیرێت، بۆیە ناتوانرێت بگۆڕدرێت بۆ نووسین.",
+    "callTranscriptChooseLanguage": "بە چ زمانێک قسە کرا؟",
+    "callTranscriptSubscribeForTranscription": "بەشداری بکە بۆ گۆڕین بۆ نووسین",
+    "unlockCallTranscript": "کردنەوەی گۆڕینی پەیوەندی بۆ نووسین"
 }

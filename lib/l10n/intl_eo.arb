@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-29 11:11:24.669425",
+    "@@last_modified": "2026-09-30 11:27:30.820029",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10920,5 +10920,10 @@
     "courseCodeSaved": "Kurskodo {code} konservita",
     "courseCodeSavedExplanation": "Registriĝu aŭ ensalutu kaj ni aldonos vin al via kurso.",
     "moderationRefusedContactDetails": "Via mesaĝo ne estis sendita. Aŭtomata filtrilo trovis kontaktajn detalojn, kiel telefonnumeron. Bonvolu forigi ilin kaj reprovi.",
-    "moderationRefusedProfanity": "Via mesaĝo ne estis sendita. Aŭtomata filtrilo trovis vorton, kiun ni ne permesas en la babilejo. Bonvolu ŝanĝi ĝin kaj reprovi."
+    "moderationRefusedProfanity": "Via mesaĝo ne estis sendita. Aŭtomata filtrilo trovis vorton, kiun ni ne permesas en la babilejo. Bonvolu ŝanĝi ĝin kaj reprovi.",
+    "callTranscriptTranscribeButton": "Transskribi",
+    "callTranscriptAudioUnavailable": "La konservita registraĵo de {name} ne povis esti elŝutita, do ĝi ne povis esti transskribita.",
+    "callTranscriptChooseLanguage": "Kiun lingvon oni parolis?",
+    "callTranscriptSubscribeForTranscription": "Aboni por transskribo",
+    "unlockCallTranscript": "Malŝlosi alvokan transskribon"
 }

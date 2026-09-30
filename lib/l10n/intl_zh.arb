@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-09-29 11:11:35.725858",
+    "@@last_modified": "2026-09-30 11:27:41.859964",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9975,5 +9975,10 @@
     "courseCodeSaved": "课程代码 {code} 已保存",
     "courseCodeSavedExplanation": "注册或登录后，我们会将您添加到您的课程中。",
     "moderationRefusedContactDetails": "您的消息未能发送。自动过滤器检测到联系方式，例如电话号码。请删除后重试。",
-    "moderationRefusedProfanity": "您的消息未能发送。自动过滤器检测到聊天中不允许使用的词语。请修改后重试。"
+    "moderationRefusedProfanity": "您的消息未能发送。自动过滤器检测到聊天中不允许使用的词语。请修改后重试。",
+    "callTranscriptTranscribeButton": "转录",
+    "callTranscriptAudioUnavailable": "无法下载 {name} 的已保存录音，因此无法转录。",
+    "callTranscriptChooseLanguage": "说的是什么语言？",
+    "callTranscriptSubscribeForTranscription": "订阅转录服务",
+    "unlockCallTranscript": "解锁通话记录"
 }

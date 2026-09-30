@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-09-29 11:11:27.700174",
+    "@@last_modified": "2026-09-30 11:27:33.925009",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2383,5 +2383,10 @@
     "courseCodeSaved": "Դասընթացի կոդը՝ {code} պահպանված է",
     "courseCodeSavedExplanation": "Գրանցվեք կամ մուտք գործեք, և մենք Ձեզ կավելացնենք Ձեր դասընթացին։",
     "moderationRefusedContactDetails": "Ձեր հաղորդագրությունը չուղարկվեց։ Ավտոմատ զտիչը հայտնաբերել է կոնտակտային տվյալներ, օրինակ՝ հեռախոսահամար։ Խնդրում ենք հեռացնել դրանք և նորից փորձել։",
-    "moderationRefusedProfanity": "Ձեր հաղորդագրությունը չուղարկվեց։ Ավտոմատ զտիչը հայտնաբերել է բառ, որը մենք թույլ չենք տալիս չաթում։ Խնդրում ենք փոխել այն և նորից փորձել։"
+    "moderationRefusedProfanity": "Ձեր հաղորդագրությունը չուղարկվեց։ Ավտոմատ զտիչը հայտնաբերել է բառ, որը մենք թույլ չենք տալիս չաթում։ Խնդրում ենք փոխել այն և նորից փորձել։",
+    "callTranscriptTranscribeButton": "Տառադարձել",
+    "callTranscriptAudioUnavailable": "{name}-ից պահպանված ձայնագրությունը հնարավոր չեղավ ներբեռնել, ուստի այն հնարավոր չեղավ տառադարձել։",
+    "callTranscriptChooseLanguage": "Ի՞նչ լեզվով է խոսվել։",
+    "callTranscriptSubscribeForTranscription": "Բաժանորդագրվել տառադարձման համար",
+    "unlockCallTranscript": "Բացել զանգի արտագրումը"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-09-29 11:11:33.682039",
+    "@@last_modified": "2026-09-30 11:27:39.763893",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2383,5 +2383,10 @@
     "courseCodeSaved": "Kodi i kursit {code} u ruajt",
     "courseCodeSavedExplanation": "Regjistrohuni ose identifikohuni dhe ne do t'ju shtojmë në kursin tuaj.",
     "moderationRefusedContactDetails": "Mesazhi juaj nuk u dërgua. Një filtër automatik gjeti detaje kontakti, si numër telefoni. Ju lutemi, hiqini ato dhe provoni sërish.",
-    "moderationRefusedProfanity": "Mesazhi juaj nuk u dërgua. Një filtër automatik gjeti një fjalë që ne nuk e lejojmë në bisedë. Ju lutemi, ndryshojeni dhe provoni sërish."
+    "moderationRefusedProfanity": "Mesazhi juaj nuk u dërgua. Një filtër automatik gjeti një fjalë që ne nuk e lejojmë në bisedë. Ju lutemi, ndryshojeni dhe provoni sërish.",
+    "callTranscriptTranscribeButton": "Transkripto",
+    "callTranscriptAudioUnavailable": "Regjistrimi i ruajtur nga {name} nuk mund të shkarkohej, prandaj nuk mund të transkriptohej.",
+    "callTranscriptChooseLanguage": "Çfarë gjuhe u fol?",
+    "callTranscriptSubscribeForTranscription": "Abonohu për transkriptim",
+    "unlockCallTranscript": "Zhbloko transkriptin e thirrjes"
 }

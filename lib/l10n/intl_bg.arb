@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-09-29 11:11:23.197753",
+    "@@last_modified": "2026-09-30 11:27:29.474011",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2383,5 +2383,10 @@
     "courseCodeSaved": "Кодът на курса {code} е запазен",
     "courseCodeSavedExplanation": "Регистрирайте се или влезте и ние ще ви добавим към курса ви.",
     "moderationRefusedContactDetails": "Съобщението ви не беше изпратено. Автоматичен филтър откри данни за контакт, като телефонен номер. Моля, премахнете ги и опитайте отново.",
-    "moderationRefusedProfanity": "Съобщението ви не беше изпратено. Автоматичен филтър откри дума, която не позволяваме в чата. Моля, променете я и опитайте отново."
+    "moderationRefusedProfanity": "Съобщението ви не беше изпратено. Автоматичен филтър откри дума, която не позволяваме в чата. Моля, променете я и опитайте отново.",
+    "callTranscriptTranscribeButton": "Транскрибиране",
+    "callTranscriptAudioUnavailable": "Записаният разговор от {name} не можа да бъде изтеглен и съответно не можа да бъде транскрибиран.",
+    "callTranscriptChooseLanguage": "На какъв език се говореше?",
+    "callTranscriptSubscribeForTranscription": "Абонирайте се за транскрипция",
+    "unlockCallTranscript": "Отключване на препис от разговора"
 }

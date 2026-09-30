@@ -3536,7 +3536,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-09-29 11:11:25.058885",
+    "@@last_modified": "2026-09-30 11:27:31.769718",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -10012,5 +10012,10 @@
     "courseCodeSaved": "Kurssikoodi {code} tallennettu",
     "courseCodeSavedExplanation": "Rekisteröidy tai kirjaudu sisään, niin lisäämme sinut kurssillesi.",
     "moderationRefusedContactDetails": "Viestisi ei lähetetty. Automaattinen suodatin löysi yhteystietoja, kuten puhelinnumeron. Poista ne ja yritä uudelleen.",
-    "moderationRefusedProfanity": "Viestisi ei lähetetty. Automaattinen suodatin löysi sanan, jota emme salli chatissa. Muuta sitä ja yritä uudelleen."
+    "moderationRefusedProfanity": "Viestisi ei lähetetty. Automaattinen suodatin löysi sanan, jota emme salli chatissa. Muuta sitä ja yritä uudelleen.",
+    "callTranscriptTranscribeButton": "Transkriboi",
+    "callTranscriptAudioUnavailable": "Tallennetun äänitteen lataaminen käyttäjältä {name} epäonnistui, joten sitä ei voitu litteroida.",
+    "callTranscriptChooseLanguage": "Mitä kieltä puhuttiin?",
+    "callTranscriptSubscribeForTranscription": "Tilaa litterointi",
+    "unlockCallTranscript": "Avaa puhelun litterointi"
 }

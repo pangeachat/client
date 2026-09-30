@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-09-29 11:11:33.082730",
+    "@@last_modified": "2026-09-30 11:27:39.386961",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10920,5 +10920,10 @@
     "courseCodeSaved": "Kód kurzu {code} uložený",
     "courseCodeSavedExplanation": "Zaregistrujte sa alebo sa prihláste a my vás pridáme do vášho kurzu.",
     "moderationRefusedContactDetails": "Vaša správa nebola odoslaná. Automatický filter našiel kontaktné údaje, napríklad telefónne číslo. Odstráňte ich a skúste to znova.",
-    "moderationRefusedProfanity": "Vaša správa nebola odoslaná. Automatický filter našiel slovo, ktoré v chate nepovoľujeme. Zmeňte ho a skúste to znova."
+    "moderationRefusedProfanity": "Vaša správa nebola odoslaná. Automatický filter našiel slovo, ktoré v chate nepovoľujeme. Zmeňte ho a skúste to znova.",
+    "callTranscriptTranscribeButton": "Prepis",
+    "callTranscriptAudioUnavailable": "Uloženú nahrávku od {name} sa nepodarilo stiahnuť, takže ju nebolo možné prepísať.",
+    "callTranscriptChooseLanguage": "Akým jazykom sa hovorilo?",
+    "callTranscriptSubscribeForTranscription": "Predplatiť si prepis",
+    "unlockCallTranscript": "Odomknúť prepis hovoru"
 }

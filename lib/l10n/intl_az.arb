@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-09-29 11:11:23.353216",
+    "@@last_modified": "2026-09-30 11:27:29.746837",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2383,5 +2383,10 @@
     "courseCodeSaved": "{code} kurs kodu yadda saxlanıldı",
     "courseCodeSavedExplanation": "Qeydiyyatdan keçin və ya daxil olun, biz sizi kursunuza əlavə edəcəyik.",
     "moderationRefusedContactDetails": "Mesajınız göndərilmədi. Avtomatik filtr telefon nömrəsi kimi əlaqə məlumatları aşkar etdi. Zəhmət olmasa, onları silin və yenidən cəhd edin.",
-    "moderationRefusedProfanity": "Mesajınız göndərilmədi. Avtomatik filtr çatda icazə verilməyən bir söz aşkar etdi. Zəhmət olmasa, onu dəyişdirin və yenidən cəhd edin."
+    "moderationRefusedProfanity": "Mesajınız göndərilmədi. Avtomatik filtr çatda icazə verilməyən bir söz aşkar etdi. Zəhmət olmasa, onu dəyişdirin və yenidən cəhd edin.",
+    "callTranscriptTranscribeButton": "Transkripsiya et",
+    "callTranscriptAudioUnavailable": "{name} qeydə alınmış səsi yüklənmədi, buna görə də transkripsiya edilə bilmədi.",
+    "callTranscriptChooseLanguage": "Hansı dildə danışılıb?",
+    "callTranscriptSubscribeForTranscription": "Transkripsiya üçün abunə olun",
+    "unlockCallTranscript": "Zəng transkripsiyasını açın"
 }

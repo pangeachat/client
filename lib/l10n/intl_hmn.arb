@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-09-29 11:11:26.628044",
+    "@@last_modified": "2026-09-30 11:27:32.953493",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2383,5 +2383,10 @@
     "courseCodeSaved": "Tus lej kawm {code} tau raug cawm",
     "courseCodeSavedExplanation": "Sau npe nkag los yog tsim tus account tshiab thiab peb mam ntxiv koj rau koj chav kawm.",
     "moderationRefusedContactDetails": "Koj cov lus tsis raug xa. Lub tshuab lim tau pom cov ntaub ntawv sib cuag, xws li tus xov tooj. Thov muab tshem tawm thiab sim dua.",
-    "moderationRefusedProfanity": "Koj cov lus tsis raug xa. Lub tshuab lim tau pom ib lo lus uas peb tsis tso cai hauv kev sib tham. Thov hloov nws thiab sim dua."
+    "moderationRefusedProfanity": "Koj cov lus tsis raug xa. Lub tshuab lim tau pom ib lo lus uas peb tsis tso cai hauv kev sib tham. Thov hloov nws thiab sim dua.",
+    "callTranscriptTranscribeButton": "Sau ua ntawv",
+    "callTranscriptAudioUnavailable": "Lub suab kaw tseg ntawm {name} rub tsis tau, yog li sau ua ntawv tsis tau.",
+    "callTranscriptChooseLanguage": "Hais hom lus twg?",
+    "callTranscriptSubscribeForTranscription": "Sau npe kom sau ua ntawv",
+    "unlockCallTranscript": "Xauv cov ntawv sau ua lus"
 }

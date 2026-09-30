@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-09-29 11:11:31.962899",
+    "@@last_modified": "2026-09-30 11:27:38.331953",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2383,5 +2383,10 @@
     "courseCodeSaved": "ਕੋਰਸ ਕੋਡ {code} ਸੁਰੱਖਿਅਤ ਕੀਤਾ ਗਿਆ",
     "courseCodeSavedExplanation": "ਸਾਈਨ ਅੱਪ ਕਰੋ ਜਾਂ ਲੌਗ ਇਨ ਕਰੋ ਅਤੇ ਅਸੀਂ ਤੁਹਾਨੂੰ ਤੁਹਾਡੇ ਕੋਰਸ ਵਿੱਚ ਸ਼ਾਮਲ ਕਰਾਂਗੇ।",
     "moderationRefusedContactDetails": "ਤੁਹਾਡਾ ਸੁਨੇਹਾ ਭੇਜਿਆ ਨਹੀਂ ਗਿਆ। ਇੱਕ ਆਟੋਮੈਟਿਕ ਫਿਲਟਰ ਨੇ ਸੰਪਰਕ ਵੇਰਵੇ, ਜਿਵੇਂ ਕਿ ਫ਼ੋਨ ਨੰਬਰ, ਲੱਭੇ ਹਨ। ਕਿਰਪਾ ਕਰਕੇ ਉਹਨਾਂ ਨੂੰ ਹਟਾਓ ਅਤੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।",
-    "moderationRefusedProfanity": "ਤੁਹਾਡਾ ਸੁਨੇਹਾ ਭੇਜਿਆ ਨਹੀਂ ਗਿਆ। ਇੱਕ ਆਟੋਮੈਟਿਕ ਫਿਲਟਰ ਨੇ ਇੱਕ ਅਜਿਹਾ ਸ਼ਬਦ ਲੱਭਿਆ ਹੈ ਜਿਸਦੀ ਅਸੀਂ ਚੈਟ ਵਿੱਚ ਇਜਾਜ਼ਤ ਨਹੀਂ ਦਿੰਦੇ। ਕਿਰਪਾ ਕਰਕੇ ਇਸਨੂੰ ਬਦਲੋ ਅਤੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।"
+    "moderationRefusedProfanity": "ਤੁਹਾਡਾ ਸੁਨੇਹਾ ਭੇਜਿਆ ਨਹੀਂ ਗਿਆ। ਇੱਕ ਆਟੋਮੈਟਿਕ ਫਿਲਟਰ ਨੇ ਇੱਕ ਅਜਿਹਾ ਸ਼ਬਦ ਲੱਭਿਆ ਹੈ ਜਿਸਦੀ ਅਸੀਂ ਚੈਟ ਵਿੱਚ ਇਜਾਜ਼ਤ ਨਹੀਂ ਦਿੰਦੇ। ਕਿਰਪਾ ਕਰਕੇ ਇਸਨੂੰ ਬਦਲੋ ਅਤੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।",
+    "callTranscriptTranscribeButton": "ਲਿਖੋ",
+    "callTranscriptAudioUnavailable": "{name} ਤੋਂ ਸੁਰੱਖਿਅਤ ਕੀਤੀ ਰਿਕਾਰਡਿੰਗ ਡਾਊਨਲੋਡ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕੀ, ਇਸ ਲਈ ਇਸਨੂੰ ਲਿਖਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ।",
+    "callTranscriptChooseLanguage": "ਕਿਹੜੀ ਭਾਸ਼ਾ ਬੋਲੀ ਗਈ ਸੀ?",
+    "callTranscriptSubscribeForTranscription": "ਲਿਖਣ ਲਈ ਗਾਹਕ ਬਣੋ",
+    "unlockCallTranscript": "ਕਾਲ ਟ੍ਰਾਂਸਕ੍ਰਿਪਟ ਅਨਲੌਕ ਕਰੋ"
 }

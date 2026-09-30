@@ -1802,7 +1802,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-09-29 11:11:33.221172",
+    "@@last_modified": "2026-09-30 11:27:39.340289",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10920,5 +10920,10 @@
     "courseCodeSaved": "Koda tečaja {code} je shranjena",
     "courseCodeSavedExplanation": "Prijavite se ali se registrirajte in dodali vas bomo v tečaj.",
     "moderationRefusedContactDetails": "Vaše sporočilo ni bilo poslano. Samodejni filter je zaznal podatke za stik, kot je telefonska številka. Odstranite jih in poskusite znova.",
-    "moderationRefusedProfanity": "Vaše sporočilo ni bilo poslano. Samodejni filter je zaznal besedo, ki je v klepetu ne dovoljujemo. Prosimo, spremenite jo in poskusite znova."
+    "moderationRefusedProfanity": "Vaše sporočilo ni bilo poslano. Samodejni filter je zaznal besedo, ki je v klepetu ne dovoljujemo. Prosimo, spremenite jo in poskusite znova.",
+    "callTranscriptTranscribeButton": "Prepiši",
+    "callTranscriptAudioUnavailable": "Shranjene posnetke od {name} ni bilo mogoče prenesti, zato jih ni bilo mogoče prepisati.",
+    "callTranscriptChooseLanguage": "Kateri jezik je bil govorjen?",
+    "callTranscriptSubscribeForTranscription": "Naročite se na prepisovanje",
+    "unlockCallTranscript": "Odkleni prepis klica"
 }
