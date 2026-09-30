@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
+
 import 'package:async/async.dart';
 import 'package:http/http.dart';
 
@@ -26,6 +28,11 @@ class _ActivitySummaryCacheItem {
 
 class ActivitySummaryRepo {
   static final Map<String, _ActivitySummaryCacheItem> _cache = {};
+
+  /// The viewer sees the loading state for the whole wait, so a translation
+  /// that never answers must end in the summary as written, not a spinner.
+  @visibleForTesting
+  static Duration timeout = const Duration(seconds: 60);
 
   /// One translation per source row and target language: a regenerated
   /// summary is a new row, so it is translated afresh.
@@ -70,10 +77,12 @@ class ActivitySummaryRepo {
         accessToken: MatrixState.pangeaController.userController.accessToken,
       );
 
-      final Response res = await req.post(
-        url: PApiUrls.activitySummary,
-        body: request.toJson(),
-      );
+      final Response res = await req
+          .post(url: PApiUrls.activitySummary, body: request.toJson())
+          .timeout(
+            timeout,
+            onTimeout: () => throw TimeoutException(req.inFlight, timeout),
+          );
 
       // `req.post` already threw typed for anything ≥ 400, so this only guards
       // a success status the parser cannot consume (201/202/204/3xx).

@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
@@ -19,6 +20,7 @@ import 'package:fluffychat/features/activity_sessions/activity_roles_model.dart'
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_analytics_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_model.dart';
+import 'package:fluffychat/features/activity_sessions/activity_summary_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_response_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_room_extension.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -148,11 +150,13 @@ void main() {
     return room;
   }
 
-  /// Opens the room with choreo answered by [respond], and returns the
-  /// controller once any translation has settled, plus the requests made.
+  /// Opens the room with choreo answered by [respond], or by [pending] when
+  /// given, and returns the controller once any translation has settled, plus
+  /// the requests made.
   Future<(ActivityChatController, List<Map<String, dynamic>>)> open(
     Room room, {
     required http.Response Function(http.Request request) respond,
+    Future<http.Response>? pending,
   }) async {
     final requests = <Map<String, dynamic>>[];
     late ActivityChatController controller;
@@ -180,7 +184,7 @@ void main() {
           return http.Response('', 404, request: request);
         }
         requests.add(jsonDecode(request.body) as Map<String, dynamic>);
-        return respond(request);
+        return pending ?? respond(request);
       }),
     );
     addTearDown(controller.dispose);
@@ -249,6 +253,34 @@ void main() {
     expect(view.hasFailed, isFalse);
     expect(view.summary?.summary, 'Bien joué.');
   });
+
+  test(
+    'a translation that never answers shows the summary as written',
+    () async {
+      final room = finishedRoom(
+        langCode: 'fr',
+        requestHash: 'row-hangs',
+        withPlan: true,
+      );
+      ActivitySummaryRepo.timeout = const Duration(milliseconds: 50);
+      addTearDown(
+        () => ActivitySummaryRepo.timeout = const Duration(seconds: 60),
+      );
+      final never = Completer<http.Response>();
+
+      final (controller, requests) = await open(
+        room,
+        respond: (_) => throw StateError('unused'),
+        pending: never.future,
+      );
+
+      final view = controller.summaryView.value;
+      expect(requests, hasLength(1));
+      expect(view.isLoading, isFalse);
+      expect(view.hasFailed, isFalse);
+      expect(view.summary?.summary, 'Bien joué.');
+    },
+  );
 
   test(
     'a summary already in the viewer\'s language is not translated',
