@@ -8,13 +8,9 @@ import 'package:flutter_vodozemac/flutter_vodozemac.dart' as vod;
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/features/dosage/dosage_message_signals.dart';
 import 'package:fluffychat/features/notifications/notification_tap_utils.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/utils/client_download_content_extension.dart';
 import 'package:fluffychat/utils/client_manager.dart';
-import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
-import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/utils/push_helper.dart';
 import '../config/app_config.dart';
 import '../config/setting_keys.dart';
@@ -187,7 +183,11 @@ Future<void> notificationTap(
         (action) => action.name == notificationResponse.actionId,
       );
       if (actionType == null) {
-        throw Exception('Selected notification with action but no action ID');
+        // A notification shown before an action was removed (e.g. the Android
+        // reply action, #9340) can still carry it until it is dismissed.
+        throw Exception(
+          'Selected notification with unknown action ${notificationResponse.actionId}',
+        );
       }
       final roomId = payload.roomId;
       if (roomId == null) {
@@ -209,130 +209,8 @@ Future<void> notificationTap(
             mRead: payload.eventId ?? room.lastEvent!.eventId,
             public: AppSettings.sendPublicReadReceipts.value,
           );
-        case FluffyChatNotificationActions.reply:
-          final input = notificationResponse.input;
-          if (input == null || input.isEmpty) {
-            throw Exception(
-              'Selected notification with reply action but without input',
-            );
-          }
-
-          final eventId = await room.sendTextEvent(
-            input,
-            parseCommands: false,
-            displayPendingEvent: false,
-          );
-
-          // A notification quick-reply is a genuine learner text turn, so it
-          // emits dosage signals once the event id resolves. Load the dosage env
-          // into this isolate first: the background notification isolate boots
-          // without `.env`, so without this the emit would read the flags as
-          // unloaded and no-op. Idempotent in the main isolate; best-effort,
-          // never blocks the reply. When the flags are off (or uninitialised),
-          // the repo gate no-ops WITHOUT throwing.
-          await DosageMessageSignals.ensureDosageEnvLoaded();
-          if (background) {
-            // Background isolate: it disposes its client in the `finally` right
-            // after this returns, so a fire-and-forget emit would be dropped.
-            // AWAIT an envelope-only POST (bounded, swallowed); the isolate has
-            // no lifecycle to flush an engagement span.
-            await DosageMessageSignals.emitReplyEnvelope(
-              roomId: room.id,
-              accessToken: room.client.accessToken,
-              msgEventId: eventId,
-              body: input,
-            );
-          } else {
-            // Main isolate: fire-and-forget the normal envelope + engagement
-            // tick (the analytics lifecycle flushes the span). Do NOT await —
-            // the notification flow must not wait on a telemetry POST.
-            DosageMessageSignals.emitForSentMessage(
-              roomId: room.id,
-              userId: room.client.userID,
-              deviceId: room.client.deviceID,
-              accessToken: room.client.accessToken,
-              msgEventId: eventId,
-              body: input,
-            );
-          }
-
-          if (PlatformInfos.isAndroid) {
-            final ownProfile = await room.client.fetchOwnProfile();
-            final avatar = ownProfile.avatarUrl;
-            final avatarFile = await client
-                .downloadAvatarCached(
-                  avatar,
-                  thumbnailMethod: ThumbnailMethod.crop,
-                  width: notificationAvatarDimension,
-                  height: notificationAvatarDimension,
-                  animated: false,
-                  isThumbnail: true,
-                  rounded: true,
-                )
-                .timeout(const Duration(seconds: 3));
-            final messagingStyleInformation =
-                await AndroidFlutterLocalNotificationsPlugin()
-                    .getActiveNotificationMessagingStyle(room.id.hashCode);
-            if (messagingStyleInformation == null) return;
-            l10n ??= await lookupL10n(PlatformDispatcher.instance.locale);
-            messagingStyleInformation.messages?.add(
-              Message(
-                input,
-                DateTime.now(),
-                Person(
-                  key: room.client.userID,
-                  name: l10n.you,
-                  icon: avatarFile == null
-                      ? null
-                      : ByteArrayAndroidIcon(avatarFile),
-                ),
-              ),
-            );
-
-            await FlutterLocalNotificationsPlugin().show(
-              room.id.hashCode,
-              room.getLocalizedDisplayname(MatrixLocals(l10n)),
-              input,
-              NotificationDetails(
-                android: AndroidNotificationDetails(
-                  AppConfig.pushNotificationsChannelId,
-                  l10n.incomingMessages,
-                  category: AndroidNotificationCategory.message,
-                  shortcutId: room.id,
-                  styleInformation: messagingStyleInformation,
-                  groupKey: room.id,
-                  playSound: false,
-                  enableVibration: false,
-                  actions: <AndroidNotificationAction>[
-                    AndroidNotificationAction(
-                      FluffyChatNotificationActions.reply.name,
-                      l10n.reply,
-                      inputs: [
-                        AndroidNotificationActionInput(
-                          label: l10n.writeAMessage,
-                        ),
-                      ],
-                      cancelNotification: false,
-                      allowGeneratedReplies: true,
-                      semanticAction: SemanticAction.reply,
-                    ),
-                    AndroidNotificationAction(
-                      FluffyChatNotificationActions.markAsRead.name,
-                      l10n.markAsRead,
-                      semanticAction: SemanticAction.markAsRead,
-                    ),
-                  ],
-                ),
-              ),
-              payload: FluffyChatPushPayload(
-                client.clientName,
-                room.id,
-                eventId,
-              ).toString(),
-            );
-          }
       }
   }
 }
 
-enum FluffyChatNotificationActions { markAsRead, reply }
+enum FluffyChatNotificationActions { markAsRead }
