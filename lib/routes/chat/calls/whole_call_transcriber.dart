@@ -489,7 +489,15 @@ class WholeCallTranscriber {
       // peer was subscribed and posted their own) or a VALID peer-produced one
       // (another subscriber already backfilled it). Both read the deduped output.
       if (_skip(transcript, speaker)) continue;
-      await _produceOnePeer(callKey, recording);
+      // A per-recording boundary: `_produceOnePeer` can still throw (language
+      // resolution, speech-to-text or the send), and one failing recording must
+      // not abort the backfill and leave every LATER peer recording unprocessed.
+      // Logged, never swallowed silently; the on-demand button remains for it.
+      try {
+        await _produceOnePeer(callKey, recording);
+      } catch (e, s) {
+        Logs().w('Peer transcript backfill failed for one recording', e, s);
+      }
     }
   }
 
