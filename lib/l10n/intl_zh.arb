@@ -9980,5 +9980,6 @@
     "callTranscriptAudioUnavailable": "无法下载 {name} 的已保存录音，因此无法转录。",
     "callTranscriptChooseLanguage": "说的是什么语言？",
     "callTranscriptSubscribeForTranscription": "订阅转录服务",
-    "unlockCallTranscript": "解锁通话记录"
+    "unlockCallTranscript": "解锁通话记录",
+    "activitySummaryUpdateFailed": "此摘要未能更新。"
 }

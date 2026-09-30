@@ -9980,5 +9980,6 @@
     "callTranscriptAudioUnavailable": "Збережений запис від {name} не вдалося завантажити, тому його неможливо транскрибувати.",
     "callTranscriptChooseLanguage": "Якою мовою розмовляли?",
     "callTranscriptSubscribeForTranscription": "Підписатися на транскрипцію",
-    "unlockCallTranscript": "Розблокувати стенограму дзвінка"
+    "unlockCallTranscript": "Розблокувати стенограму дзвінка",
+    "activitySummaryUpdateFailed": "Не вдалося оновити зведення."
 }

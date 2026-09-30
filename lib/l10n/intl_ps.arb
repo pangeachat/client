@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "د {name} څخه خوندي شوی ریکارډ ډاونلوډ نشو، نو له همدې امله ژباړل کیدی نشي.",
     "callTranscriptChooseLanguage": "کومه ژبه ویل شوې وه؟",
     "callTranscriptSubscribeForTranscription": "د ژباړې لپاره ګډون وکړئ",
-    "unlockCallTranscript": "د زنګ لیږد خلاص کړئ"
+    "unlockCallTranscript": "د زنګ لیږد خلاص کړئ",
+    "activitySummaryUpdateFailed": "دا لنډیز تازه نشو."
 }

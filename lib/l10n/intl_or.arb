@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "{name} ରୁ ସେଭ୍ ହୋଇଥିବା ରେକର୍ଡିଂ ଡାଉନଲୋଡ୍ ହୋଇପାରିଲା ନାହିଁ, ତେଣୁ ଏହାକୁ ଟ୍ରାନ୍ସକ୍ରାଇବ୍ କରାଯାଇପାରିଲା ନାହିଁ।",
     "callTranscriptChooseLanguage": "କେଉଁ ଭାଷାରେ କଥାବାର୍ତ୍ତା ହୋଇଥିଲା?",
     "callTranscriptSubscribeForTranscription": "ଟ୍ରାନ୍ସକ୍ରିପସନ୍ ପାଇଁ ସବସ୍କ୍ରାଇବ୍ କରନ୍ତୁ",
-    "unlockCallTranscript": "କଲ୍ ଟ୍ରାନ୍ସକ୍ରିପ୍ଟ ଅନଲକ୍ କରନ୍ତୁ"
+    "unlockCallTranscript": "କଲ୍ ଟ୍ରାନ୍ସକ୍ରିପ୍ଟ ଅନଲକ୍ କରନ୍ତୁ",
+    "activitySummaryUpdateFailed": "ଏହି ସାରାଂଶ ଅପଡେଟ୍ ହୋଇପାରିଲା ନାହିଁ।"
 }

@@ -10065,5 +10065,6 @@
     "callTranscriptAudioUnavailable": "Nie udało się pobrać zapisanego nagrania od {name}, więc nie można go transkrybować.",
     "callTranscriptChooseLanguage": "W jakim języku mówiono?",
     "callTranscriptSubscribeForTranscription": "Subskrybuj, aby uzyskać transkrypcję",
-    "unlockCallTranscript": "Odblokuj transkrypcję rozmowy"
+    "unlockCallTranscript": "Odblokuj transkrypcję rozmowy",
+    "activitySummaryUpdateFailed": "Nie udało się zaktualizować podsumowania."
 }

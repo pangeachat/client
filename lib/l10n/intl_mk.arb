@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "Зачуваната снимка од {name} не можеше да се преземе, па затоа не можеше да се транскрибира.",
     "callTranscriptChooseLanguage": "На кој јазик се зборуваше?",
     "callTranscriptSubscribeForTranscription": "Претплатете се за транскрипција",
-    "unlockCallTranscript": "Отклучи транскрипт на повик"
+    "unlockCallTranscript": "Отклучи транскрипт на повик",
+    "activitySummaryUpdateFailed": "Ова резиме не можеше да се ажурира."
 }

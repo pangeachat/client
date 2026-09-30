@@ -10107,5 +10107,6 @@
     "callTranscriptAudioUnavailable": "No s'ha pogut descarregar l'enregistrament desat de {name}, per tant no s'ha pogut transcriure.",
     "callTranscriptChooseLanguage": "En quina llengua es va parlar?",
     "callTranscriptSubscribeForTranscription": "Subscriu-te per a la transcripció",
-    "unlockCallTranscript": "Desbloqueja la transcripció de la trucada"
+    "unlockCallTranscript": "Desbloqueja la transcripció de la trucada",
+    "activitySummaryUpdateFailed": "Aquest resum no s'ha pogut actualitzar."
 }

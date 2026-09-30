@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "{name} වෙතින් සුරකින ලද පටිගත කිරීම බාගත කිරීමට නොහැකි විය, එබැවින් එය පිටපත් කිරීමට නොහැකි විය.",
     "callTranscriptChooseLanguage": "කතා කළ භාෂාව කුමක්ද?",
     "callTranscriptSubscribeForTranscription": "පිටපත් කිරීම සඳහා දායක වන්න",
-    "unlockCallTranscript": "ඇමතුම් පිටපත අගුළු හරින්න"
+    "unlockCallTranscript": "ඇමතුම් පිටපත අගුළු හරින්න",
+    "activitySummaryUpdateFailed": "මෙම සාරාංශය යාවත්කාලීන කිරීමට නොහැකි විය."
 }

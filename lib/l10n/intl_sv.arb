@@ -10498,5 +10498,6 @@
     "callTranscriptAudioUnavailable": "Den sparade inspelningen från {name} kunde inte laddas ner, så den kunde inte transkriberas.",
     "callTranscriptChooseLanguage": "Vilket språk talades?",
     "callTranscriptSubscribeForTranscription": "Prenumerera för transkription",
-    "unlockCallTranscript": "Lås upp samtalstranskription"
+    "unlockCallTranscript": "Lås upp samtalstranskription",
+    "activitySummaryUpdateFailed": "Denna sammanfattning kunde inte uppdateras."
 }

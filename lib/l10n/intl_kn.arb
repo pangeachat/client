@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "{name} ನಿಂದ ಉಳಿಸಿದ ರೆಕಾರ್ಡಿಂಗ್ ಅನ್ನು ಡೌನ್‌ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ, ಆದ್ದರಿಂದ ಅದನ್ನು ಲಿಪ್ಯಂತರ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.",
     "callTranscriptChooseLanguage": "ಯಾವ ಭಾಷೆಯನ್ನು ಮಾತನಾಡಲಾಗಿದೆ?",
     "callTranscriptSubscribeForTranscription": "ಲಿಪ್ಯಂತರಕ್ಕಾಗಿ ಚಂದಾದಾರರಾಗಿ",
-    "unlockCallTranscript": "ಕರೆ ಲಿಪ್ಯಂತರವನ್ನು ಅನ್‌ಲಾಕ್ ಮಾಡಿ"
+    "unlockCallTranscript": "ಕರೆ ಲಿಪ್ಯಂತರವನ್ನು ಅನ್‌ಲಾಕ್ ಮಾಡಿ",
+    "activitySummaryUpdateFailed": "ಈ ಸಾರಾಂಶವನ್ನು ನವೀಕರಿಸಲಾಗಲಿಲ್ಲ."
 }

@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "Сабти захирашуда аз {name} зеркашӣ нашуд, бинобар ин онро транскрипт кардан ғайриимкон аст.",
     "callTranscriptChooseLanguage": "Бо кадом забон гуфтугӯ шуд?",
     "callTranscriptSubscribeForTranscription": "Барои транскрипсия обуна шавед",
-    "unlockCallTranscript": "Транскрипти зангро кушоед"
+    "unlockCallTranscript": "Транскрипти зангро кушоед",
+    "activitySummaryUpdateFailed": "Ин хулоса нав карда нашуд."
 }

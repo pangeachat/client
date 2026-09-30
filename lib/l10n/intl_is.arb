@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "Ekki tókst að hlaða niður vistuðu upptökunni frá {name}, svo ekki var hægt að umrita hana.",
     "callTranscriptChooseLanguage": "Hvaða tungumál var talað?",
     "callTranscriptSubscribeForTranscription": "Gerast áskrifandi að umritun",
-    "unlockCallTranscript": "Aflæsa umritun símtals"
+    "unlockCallTranscript": "Aflæsa umritun símtals",
+    "activitySummaryUpdateFailed": "Ekki tókst að uppfæra þessa samantekt."
 }

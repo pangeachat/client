@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "Rekodi iliyohifadhiwa kutoka {name} haikuweza kupakuliwa, kwa hivyo haikuweza kunakiliwa.",
     "callTranscriptChooseLanguage": "Ni lugha gani ilizungumzwa?",
     "callTranscriptSubscribeForTranscription": "Jisajili ili upate nakala",
-    "unlockCallTranscript": "Fungua nakala ya simu"
+    "unlockCallTranscript": "Fungua nakala ya simu",
+    "activitySummaryUpdateFailed": "Muhtasari huu haukuweza kusasishwa."
 }

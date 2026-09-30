@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "Lub suab kaw tseg ntawm {name} rub tsis tau, yog li sau ua ntawv tsis tau.",
     "callTranscriptChooseLanguage": "Hais hom lus twg?",
     "callTranscriptSubscribeForTranscription": "Sau npe kom sau ua ntawv",
-    "unlockCallTranscript": "Xauv cov ntawv sau ua lus"
+    "unlockCallTranscript": "Xauv cov ntawv sau ua lus",
+    "activitySummaryUpdateFailed": "Qhov ntsiab lus no hloov tsis tau."
 }

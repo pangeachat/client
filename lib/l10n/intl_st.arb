@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "Rekoto e bolokilweng ho tswa ho {name} ha e a ka ya jarollwa, ka hona ha e a ka ya ngolwa.",
     "callTranscriptChooseLanguage": "Ho ne ho buuwa puo efe?",
     "callTranscriptSubscribeForTranscription": "Ngolisa bakeng sa ho ngola",
-    "unlockCallTranscript": "Notlolla sengoloa sa mohala"
+    "unlockCallTranscript": "Notlolla sengoloa sa mohala",
+    "activitySummaryUpdateFailed": "Kakaretso ena e sitilwe ho ntjhafatswa."
 }

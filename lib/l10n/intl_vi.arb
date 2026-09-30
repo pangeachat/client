@@ -7272,5 +7272,6 @@
     "callTranscriptAudioUnavailable": "Không thể tải bản ghi đã lưu từ {name} xuống, nên không thể chép lại.",
     "callTranscriptChooseLanguage": "Ngôn ngữ được nói là gì?",
     "callTranscriptSubscribeForTranscription": "Đăng ký để chép lại",
-    "unlockCallTranscript": "Mở khóa bản chép lại cuộc gọi"
+    "unlockCallTranscript": "Mở khóa bản chép lại cuộc gọi",
+    "activitySummaryUpdateFailed": "Không thể cập nhật bản tóm tắt này."
 }

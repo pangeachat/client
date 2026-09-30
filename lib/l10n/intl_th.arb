@@ -10612,5 +10612,6 @@
     "callTranscriptAudioUnavailable": "ไม่สามารถดาวน์โหลดไฟล์บันทึกที่บันทึกไว้จาก {name} ได้ จึงไม่สามารถถอดเสียงได้",
     "callTranscriptChooseLanguage": "พูดภาษาอะไร",
     "callTranscriptSubscribeForTranscription": "สมัครสมาชิกเพื่อถอดเสียง",
-    "unlockCallTranscript": "ปลดล็อกบทสนทนาการโทร"
+    "unlockCallTranscript": "ปลดล็อกบทสนทนาการโทร",
+    "activitySummaryUpdateFailed": "ไม่สามารถอัปเดตสรุปนี้ได้"
 }

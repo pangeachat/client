@@ -10053,5 +10053,6 @@
     "callTranscriptAudioUnavailable": "Rekaman tersimpan dari {name} tidak dapat diunduh, sehingga tidak dapat ditranskripsikan.",
     "callTranscriptChooseLanguage": "Bahasa apa yang digunakan?",
     "callTranscriptSubscribeForTranscription": "Berlangganan untuk transkripsi",
-    "unlockCallTranscript": "Buka transkrip panggilan"
+    "unlockCallTranscript": "Buka transkrip panggilan",
+    "activitySummaryUpdateFailed": "Ringkasan ini tidak dapat diperbarui."
 }

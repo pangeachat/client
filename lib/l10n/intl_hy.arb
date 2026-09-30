@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "{name}-ից պահպանված ձայնագրությունը հնարավոր չեղավ ներբեռնել, ուստի այն հնարավոր չեղավ տառադարձել։",
     "callTranscriptChooseLanguage": "Ի՞նչ լեզվով է խոսվել։",
     "callTranscriptSubscribeForTranscription": "Բաժանորդագրվել տառադարձման համար",
-    "unlockCallTranscript": "Բացել զանգի արտագրումը"
+    "unlockCallTranscript": "Բացել զանգի արտագրումը",
+    "activitySummaryUpdateFailed": "Այս ամփոփագիրը հնարավոր չէ թարմացնել։"
 }

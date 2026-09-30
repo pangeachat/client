@@ -9994,5 +9994,6 @@
     "callTranscriptAudioUnavailable": "Захаваны запіс ад {name} не ўдалося спампаваць, таму яго не атрымалася транскрыбаваць.",
     "callTranscriptChooseLanguage": "На якой мове размаўлялі?",
     "callTranscriptSubscribeForTranscription": "Падпісацца на транскрыпцыю",
-    "unlockCallTranscript": "Разблакіраваць стэнаграму званка"
+    "unlockCallTranscript": "Разблакіраваць стэнаграму званка",
+    "activitySummaryUpdateFailed": "Гэтае зводка не можа быць абноўлена."
 }

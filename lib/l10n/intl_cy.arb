@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "Ni ellid lawrlwytho'r recordiad a arbedwyd o {name}, felly ni ellid ei drawsgrifio.",
     "callTranscriptChooseLanguage": "Pa iaith gafodd ei siarad?",
     "callTranscriptSubscribeForTranscription": "Tanysgrifiwch ar gyfer trawsgrifio",
-    "unlockCallTranscript": "Datgloi trawsgrifiad galwad"
+    "unlockCallTranscript": "Datgloi trawsgrifiad galwad",
+    "activitySummaryUpdateFailed": "Ni ellid diweddaru’r crynodeb hwn."
 }

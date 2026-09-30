@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "{name} сақталған жазбасын жүктеп алу мүмкін болмады, сондықтан оны транскрипциялау мүмкін емес.",
     "callTranscriptChooseLanguage": "Қандай тілде сөйледіңіз?",
     "callTranscriptSubscribeForTranscription": "Транскрипциялау үшін жазылу",
-    "unlockCallTranscript": "Қоңырау транскрипциясының құлпын ашу"
+    "unlockCallTranscript": "Қоңырау транскрипциясының құлпын ашу",
+    "activitySummaryUpdateFailed": "Бұл қорытындыны жаңарту мүмкін болмады."
 }

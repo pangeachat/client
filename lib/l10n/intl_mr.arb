@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "{name} कडून सेव्ह केलेली रेकॉर्डिंग डाउनलोड करता आली नाही, त्यामुळे तिचे लिप्यंतरण करता आले नाही.",
     "callTranscriptChooseLanguage": "कोणती भाषा बोलली गेली?",
     "callTranscriptSubscribeForTranscription": "लिप्यंतरणासाठी सदस्यता घ्या",
-    "unlockCallTranscript": "कॉल लिप्यंतरण अनलॉक करा"
+    "unlockCallTranscript": "कॉल लिप्यंतरण अनलॉक करा",
+    "activitySummaryUpdateFailed": "हा सारांश अद्यतनित केला जाऊ शकला नाही."
 }

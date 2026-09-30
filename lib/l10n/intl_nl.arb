@@ -9980,5 +9980,6 @@
     "callTranscriptAudioUnavailable": "De opgeslagen opname van {name} kon niet worden gedownload en kon daarom niet worden getranscribeerd.",
     "callTranscriptChooseLanguage": "Welke taal werd er gesproken?",
     "callTranscriptSubscribeForTranscription": "Abonneren voor transcriptie",
-    "unlockCallTranscript": "Ontgrendel gespreksafschrift"
+    "unlockCallTranscript": "Ontgrendel gespreksafschrift",
+    "activitySummaryUpdateFailed": "Deze samenvatting kon niet worden bijgewerkt."
 }

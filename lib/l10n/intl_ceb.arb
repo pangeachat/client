@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "Ang na-save nga recording gikan kang {name} dili ma-download, busa dili kini ma-transcribe.",
     "callTranscriptChooseLanguage": "Unsang pinulongan ang gisulti?",
     "callTranscriptSubscribeForTranscription": "Mag-subscribe para sa transcription",
-    "unlockCallTranscript": "I-unlock ang transcript sa tawag"
+    "unlockCallTranscript": "I-unlock ang transcript sa tawag",
+    "activitySummaryUpdateFailed": "Dili ma-update kining summary."
 }

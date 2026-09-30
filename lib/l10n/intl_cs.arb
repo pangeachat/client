@@ -10474,5 +10474,6 @@
     "callTranscriptAudioUnavailable": "Uloženou nahrávku od {name} se nepodařilo stáhnout, takže ji nebylo možné přepsat.",
     "callTranscriptChooseLanguage": "Jakým jazykem se mluvilo?",
     "callTranscriptSubscribeForTranscription": "Předplatit si přepis",
-    "unlockCallTranscript": "Odemknout přepis hovoru"
+    "unlockCallTranscript": "Odemknout přepis hovoru",
+    "activitySummaryUpdateFailed": "Tento souhrn nelze aktualizovat."
 }

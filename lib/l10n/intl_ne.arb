@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "{name} बाट सुरक्षित गरिएको रेकर्डिङ डाउनलोड गर्न सकिएन, त्यसैले यसलाई ट्रान्सक्राइब गर्न सकिएन।",
     "callTranscriptChooseLanguage": "कुन भाषा बोलिएको थियो?",
     "callTranscriptSubscribeForTranscription": "ट्रान्सक्रिप्शनका लागि सदस्यता लिनुहोस्",
-    "unlockCallTranscript": "कल ट्रान्सक्रिप्ट अनलक गर्नुहोस्"
+    "unlockCallTranscript": "कल ट्रान्सक्रिप्ट अनलक गर्नुहोस्",
+    "activitySummaryUpdateFailed": "यो सारांश अद्यावधिक गर्न सकिएन।"
 }

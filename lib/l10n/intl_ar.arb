@@ -10286,5 +10286,6 @@
     "callTranscriptAudioUnavailable": "تعذر تنزيل التسجيل المحفوظ من {name}، لذلك لم يتمكن من نسخه.",
     "callTranscriptChooseLanguage": "ما هي اللغة التي تم التحدث بها؟",
     "callTranscriptSubscribeForTranscription": "اشترك لنسخ المحادثة",
-    "unlockCallTranscript": "فتح نسخة المحادثة"
+    "unlockCallTranscript": "فتح نسخة المحادثة",
+    "activitySummaryUpdateFailed": "تعذر تحديث هذا الملخص."
 }

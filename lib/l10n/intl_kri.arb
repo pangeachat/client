@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "Wi nɔ ebul fɔ daunlod di rikɔdin frɔm {name}, so wi nɔ ebul fɔ transkrayb am.",
     "callTranscriptChooseLanguage": "Us langwej dɛn bin tɔk?",
     "callTranscriptSubscribeForTranscription": "Sabsakrayb fɔ transkripshɔn",
-    "unlockCallTranscript": "Ɔnlɔk kɔl transkript"
+    "unlockCallTranscript": "Ɔnlɔk kɔl transkript",
+    "activitySummaryUpdateFailed": "Dis samari nɔ kɔn fɔ chenj."
 }

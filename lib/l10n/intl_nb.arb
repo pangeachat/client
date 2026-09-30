@@ -10037,5 +10037,6 @@
     "callTranscriptAudioUnavailable": "Det lagrede opptaket fra {name} kunne ikke lastes ned, så det kunne ikke transkriberes.",
     "callTranscriptChooseLanguage": "Hvilket språk ble snakket?",
     "callTranscriptSubscribeForTranscription": "Abonner for transkripsjon",
-    "unlockCallTranscript": "Lås opp samtaletranskripsjon"
+    "unlockCallTranscript": "Lås opp samtaletranskripsjon",
+    "activitySummaryUpdateFailed": "Denne oppsummeringen kunne ikke oppdateres."
 }

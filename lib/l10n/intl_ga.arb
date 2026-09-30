@@ -9991,5 +9991,6 @@
     "callTranscriptAudioUnavailable": "Níorbh fhéidir an taifeadadh sábháilte ó {name} a íoslódáil, mar sin níorbh fhéidir é a thrascríobh.",
     "callTranscriptChooseLanguage": "Cén teanga a labhraíodh?",
     "callTranscriptSubscribeForTranscription": "Liostáil le haghaidh trascríofa",
-    "unlockCallTranscript": "Díghlasáil tras-scríbhinn an ghlao"
+    "unlockCallTranscript": "Díghlasáil tras-scríbhinn an ghlao",
+    "activitySummaryUpdateFailed": "Níorbh fhéidir an achoimre seo a nuashonrú."
 }

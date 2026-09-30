@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "Ìgbàsílẹ̀ tí a fipamọ́ láti ọ̀dọ̀ {name} kò lè ṣe ìgbàsílẹ̀, nítorí náà kò lè ṣe àkọsílẹ̀.",
     "callTranscriptChooseLanguage": "Èdè wo ni a sọ?",
     "callTranscriptSubscribeForTranscription": "Ṣe àbáwọlé fún àkọsílẹ̀",
-    "unlockCallTranscript": "Ṣí àkọsílẹ̀ ìpe sílẹ̀"
+    "unlockCallTranscript": "Ṣí àkọsílẹ̀ ìpe sílẹ̀",
+    "activitySummaryUpdateFailed": "Kò lè ṣe àtúnṣe àkópọ̀ yìí."
 }

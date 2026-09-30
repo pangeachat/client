@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "Déi gespäichert Opnam vum {name} konnt net erofgeluede ginn, dofir konnt se net transkribéiert ginn.",
     "callTranscriptChooseLanguage": "Wat fir eng Sprooch gouf geschwat?",
     "callTranscriptSubscribeForTranscription": "Abonnéiert Iech fir d'Transkriptioun",
-    "unlockCallTranscript": "Transkript vun Uruff opmaachen"
+    "unlockCallTranscript": "Transkript vun Uruff opmaachen",
+    "activitySummaryUpdateFailed": "Dës Zesummefaassung konnt net aktualiséiert ginn."
 }

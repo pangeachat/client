@@ -10925,5 +10925,6 @@
     "callTranscriptAudioUnavailable": "La konservita registraĵo de {name} ne povis esti elŝutita, do ĝi ne povis esti transskribita.",
     "callTranscriptChooseLanguage": "Kiun lingvon oni parolis?",
     "callTranscriptSubscribeForTranscription": "Aboni por transskribo",
-    "unlockCallTranscript": "Malŝlosi alvokan transskribon"
+    "unlockCallTranscript": "Malŝlosi alvokan transskribon",
+    "activitySummaryUpdateFailed": "Ĉi tiu resumo ne povis esti ĝisdatigita."
 }

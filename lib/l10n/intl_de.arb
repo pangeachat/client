@@ -9967,5 +9967,6 @@
     "callTranscriptAudioUnavailable": "Die gespeicherte Aufnahme von {name} konnte nicht heruntergeladen und daher nicht transkribiert werden.",
     "callTranscriptChooseLanguage": "Welche Sprache wurde gesprochen?",
     "callTranscriptSubscribeForTranscription": "Für Transkription abonnieren",
-    "unlockCallTranscript": "Anruf-Transkript freischalten"
+    "unlockCallTranscript": "Anruf-Transkript freischalten",
+    "activitySummaryUpdateFailed": "Diese Zusammenfassung konnte nicht aktualisiert werden."
 }

@@ -10761,5 +10761,6 @@
     "callTranscriptAudioUnavailable": "Įrašas iš {name} nebuvo atsisiųstas, todėl jo nebuvo galima transkribuoti.",
     "callTranscriptChooseLanguage": "Kokia kalba buvo kalbama?",
     "callTranscriptSubscribeForTranscription": "Prenumeruoti transkripciją",
-    "unlockCallTranscript": "Atrakinti pokalbio transkripciją"
+    "unlockCallTranscript": "Atrakinti pokalbio transkripciją",
+    "activitySummaryUpdateFailed": "Šio suvestinės nepavyko atnaujinti."
 }

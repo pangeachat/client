@@ -10952,5 +10952,6 @@
     "callTranscriptAudioUnavailable": "Сохранённая запись от {name} не может быть загружена, поэтому её нельзя расшифровать.",
     "callTranscriptChooseLanguage": "На каком языке говорили?",
     "callTranscriptSubscribeForTranscription": "Подписаться на расшифровку",
-    "unlockCallTranscript": "Разблокировать расшифровку звонка"
+    "unlockCallTranscript": "Разблокировать расшифровку звонка",
+    "activitySummaryUpdateFailed": "Не удалось обновить сводку."
 }

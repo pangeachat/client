@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "Tsy afaka alaina ilay rakipeo voatahiry avy amin'i {name}, ka tsy azo soratana.",
     "callTranscriptChooseLanguage": "Inona no fiteny nampiasaina?",
     "callTranscriptSubscribeForTranscription": "Misoratra anarana ho an'ny fandikana",
-    "unlockCallTranscript": "Sokafy ny dika soratra antso"
+    "unlockCallTranscript": "Sokafy ny dika soratra antso",
+    "activitySummaryUpdateFailed": "Tsy afaka navaozina ity famintinana ity."
 }

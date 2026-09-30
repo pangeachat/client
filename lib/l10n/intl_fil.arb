@@ -10840,5 +10840,6 @@
     "callTranscriptAudioUnavailable": "Hindi ma-download ang na-save na recording mula kay {name}, kaya hindi ito ma-transcribe.",
     "callTranscriptChooseLanguage": "Anong wika ang ginamit?",
     "callTranscriptSubscribeForTranscription": "Mag-subscribe para sa transkripsyon",
-    "unlockCallTranscript": "I-unlock ang transkripsyon ng tawag"
+    "unlockCallTranscript": "I-unlock ang transkripsyon ng tawag",
+    "activitySummaryUpdateFailed": "Hindi ma-update ang buod na ito."
 }

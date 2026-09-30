@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "ບໍ່ສາມາດດາວໂຫຼດສຽງທີ່ບັນທຶກຈາກ {name} ໄດ້, ສະນັ້ນຈຶ່ງບໍ່ສາມາດຖອດຂໍ້ຄວາມໄດ້.",
     "callTranscriptChooseLanguage": "ເວົ້າພາສາຫຍັງ?",
     "callTranscriptSubscribeForTranscription": "ສະໝັກໃຊ້ສຳລັບການຖອດຂໍ້ຄວາມ",
-    "unlockCallTranscript": "ປົດລັອກການຖອດຂໍ້ຄວາມການໂທ"
+    "unlockCallTranscript": "ປົດລັອກການຖອດຂໍ້ຄວາມການໂທ",
+    "activitySummaryUpdateFailed": "ບໍ່ສາມາດອັບເດດສະຫຼຸບນີ້ໄດ້."
 }

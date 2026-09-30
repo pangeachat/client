@@ -9980,5 +9980,6 @@
     "callTranscriptAudioUnavailable": "{name} grabatutako grabazioa ezin izan da deskargatu, beraz, ezin izan da transkribatu.",
     "callTranscriptChooseLanguage": "Zein hizkuntzatan hitz egin zen?",
     "callTranscriptSubscribeForTranscription": "Harpidetu transkripziorako",
-    "unlockCallTranscript": "Desblokeatu deiaren transkripzioa"
+    "unlockCallTranscript": "Desblokeatu deiaren transkripzioa",
+    "activitySummaryUpdateFailed": "Laburpen hau ezin izan da eguneratu."
 }

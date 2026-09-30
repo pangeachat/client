@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "Okurekhodiwe okugciniwe okuvela ku-{name} akukwazanga ukulandwa, ngakho-ke akukwazanga ukuguqulwa kube umbhalo.",
     "callTranscriptChooseLanguage": "Yiluphi ulimi olwalukhulunywa?",
     "callTranscriptSubscribeForTranscription": "Bhalisela ukuguqulwa kube umbhalo",
-    "unlockCallTranscript": "Vula umbhalo wekholi"
+    "unlockCallTranscript": "Vula umbhalo wekholi",
+    "activitySummaryUpdateFailed": "Lesi sifingqo asikwazanga ukubuyekezwa."
 }

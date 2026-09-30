@@ -10335,5 +10335,6 @@
     "callTranscriptAudioUnavailable": "L'enregistrement sauvegardé de {name} n'a pas pu être téléchargé, il n'a donc pas pu être transcrit.",
     "callTranscriptChooseLanguage": "Quelle langue a été parlée ?",
     "callTranscriptSubscribeForTranscription": "S'abonner pour la transcription",
-    "unlockCallTranscript": "Déverrouiller la transcription de l'appel"
+    "unlockCallTranscript": "Déverrouiller la transcription de l'appel",
+    "activitySummaryUpdateFailed": "Ce résumé n'a pas pu être mis à jour."
 }

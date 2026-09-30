@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/features/activity_sessions/activity_session_constants.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_model.dart';
 
 void main() {
@@ -34,16 +33,19 @@ void main() {
     });
   });
 
-  test(
-    'STT-unavailable placeholder matches the choreographer contract string',
-    () {
-      // Mirrors STT_UNAVAILABLE_PLACEHOLDER in the choreographer's
-      // app/infra/matrix/message_schema.py — the summary prompt matches on
-      // this exact text.
-      expect(
-        ActivitySessionConstants.sttUnavailablePlaceholder,
-        "[voice message: transcript unavailable]",
-      );
-    },
-  );
+  test('reads the fields the bot writes to its canonical slot', () {
+    // The bot's pydantic model serializes timestamps with a UTC offset.
+    final model = ActivitySummaryModel.fromJson({
+      'requested_at': null,
+      'error_at': '2026-09-23T12:00:05.123456+00:00',
+      'summary': {'participants': [], 'summary': 'Well done.'},
+      'lang_code': 'en',
+      'call_started_ts': 1790000000000,
+    });
+    expect(model.summary?.summary, 'Well done.');
+    expect(model.errorAt, DateTime.utc(2026, 9, 23, 12, 0, 5, 123, 456));
+    expect(model.langCode, 'en');
+    expect(model.callStartedTs, 1790000000000);
+    expect(model.hasError, isTrue);
+  });
 }

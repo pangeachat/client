@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "{name}-ээс хадгалсан бичлэгийг татаж авах боломжгүй байсан тул хөрвүүлж чадсангүй.",
     "callTranscriptChooseLanguage": "Ямар хэлээр ярьсан бэ?",
     "callTranscriptSubscribeForTranscription": "Хөрвүүлэлтэд бүртгүүлэх",
-    "unlockCallTranscript": "Дуудлагын хөрвүүлэлтийг нээх"
+    "unlockCallTranscript": "Дуудлагын хөрвүүлэлтийг нээх",
+    "activitySummaryUpdateFailed": "Энэ хураангуйг шинэчлэх боломжгүй байсан."
 }

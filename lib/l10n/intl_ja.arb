@@ -10749,5 +10749,6 @@
     "callTranscriptAudioUnavailable": "{name}の保存された録音をダウンロードできなかったため、文字起こしできませんでした。",
     "callTranscriptChooseLanguage": "話された言語は何ですか？",
     "callTranscriptSubscribeForTranscription": "文字起こしを購読する",
-    "unlockCallTranscript": "通話記録のロックを解除"
+    "unlockCallTranscript": "通話記録のロックを解除",
+    "activitySummaryUpdateFailed": "この要約を更新できませんでした。"
 }

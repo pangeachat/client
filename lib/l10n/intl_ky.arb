@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "{name} жаздырылган үнүн жүктөп алуу мүмкүн болгон жок, андыктан транскрипциялоо мүмкүн болгон жок.",
     "callTranscriptChooseLanguage": "Кайсы тилде сүйлөштү?",
     "callTranscriptSubscribeForTranscription": "Транскрипция үчүн жазылуу",
-    "unlockCallTranscript": "Чакыруу транскрипциясын ачуу"
+    "unlockCallTranscript": "Чакыруу транскрипциясын ачуу",
+    "activitySummaryUpdateFailed": "Бул корутунду жаңыртылган жок."
 }

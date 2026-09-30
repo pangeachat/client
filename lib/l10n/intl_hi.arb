@@ -10612,5 +10612,6 @@
     "callTranscriptAudioUnavailable": "{name} से सहेजी गई रिकॉर्डिंग डाउनलोड नहीं की जा सकी, इसलिए इसे लिप्यंतरित नहीं किया जा सका।",
     "callTranscriptChooseLanguage": "कौन सी भाषा बोली गई थी?",
     "callTranscriptSubscribeForTranscription": "लिप्यंतरण के लिए सदस्यता लें",
-    "unlockCallTranscript": "कॉल ट्रांसक्रिप्ट अनलॉक करें"
+    "unlockCallTranscript": "कॉल ट्रांसक्रिप्ट अनलॉक करें",
+    "activitySummaryUpdateFailed": "यह सारांश अपडेट नहीं किया जा सका।"
 }

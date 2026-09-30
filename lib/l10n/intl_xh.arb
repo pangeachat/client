@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "Ukuqoshwa okugciniweyo okuvela ku-{name} akukwazanga ukukhutshelwa, ngoko ke akukwazanga ukubhalwa phantsi.",
     "callTranscriptChooseLanguage": "Loluphi ulwimi oluthethweyo?",
     "callTranscriptSubscribeForTranscription": "Bhalisa ukuze ufumane ukubhalwa phantsi",
-    "unlockCallTranscript": "Vula umbhalo wefowuni"
+    "unlockCallTranscript": "Vula umbhalo wefowuni",
+    "activitySummaryUpdateFailed": "Esi sishwankathelo asikwazanga ukuhlaziywa."
 }

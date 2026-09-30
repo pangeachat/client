@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "Duubista la keydiyay ee {name} lama soo dejisan karin, sidaa darteed lama qori karin.",
     "callTranscriptChooseLanguage": "Luqaddee lagu hadlay?",
     "callTranscriptSubscribeForTranscription": "Isdiiwaangeli si aad u hesho qoraalka",
-    "unlockCallTranscript": "Fur qoraalka wicitaanka"
+    "unlockCallTranscript": "Fur qoraalka wicitaanka",
+    "activitySummaryUpdateFailed": "Soo koobiddaan lama cusboonaysiin karin."
 }

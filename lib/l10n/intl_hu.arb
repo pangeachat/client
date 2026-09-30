@@ -10083,5 +10083,6 @@
     "callTranscriptAudioUnavailable": "A {name} felvételét nem sikerült letölteni, ezért nem lehetett átírni.",
     "callTranscriptChooseLanguage": "Milyen nyelven beszéltek?",
     "callTranscriptSubscribeForTranscription": "Feliratkozás az átírásra",
-    "unlockCallTranscript": "Hívás átirat feloldása"
+    "unlockCallTranscript": "Hívás átirat feloldása",
+    "activitySummaryUpdateFailed": "Ezt az összefoglalót nem sikerült frissíteni."
 }

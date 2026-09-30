@@ -10173,5 +10173,6 @@
     "callTranscriptAudioUnavailable": "{name}의 저장된 녹음을 다운로드할 수 없어 텍스트로 변환할 수 없습니다.",
     "callTranscriptChooseLanguage": "어떤 언어를 사용했나요?",
     "callTranscriptSubscribeForTranscription": "텍스트 변환 구독",
-    "unlockCallTranscript": "통화 기록 잠금 해제"
+    "unlockCallTranscript": "통화 기록 잠금 해제",
+    "activitySummaryUpdateFailed": "이 요약을 업데이트할 수 없었습니다."
 }

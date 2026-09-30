@@ -2388,5 +2388,6 @@
     "callTranscriptAudioUnavailable": "ከ{name} የተቀመጠው ቅጂ ማውረድ አልተቻለም፣ ስለዚህ ወደ ጽሑፍ መቀየር አልተቻለም።",
     "callTranscriptChooseLanguage": "የተነገረው ቋንቋ የትኛው ነው?",
     "callTranscriptSubscribeForTranscription": "ለጽሑፍ መቀየር ይመዝገቡ",
-    "unlockCallTranscript": "የጥሪ ግልባጭ ክፈት"
+    "unlockCallTranscript": "የጥሪ ግልባጭ ክፈት",
+    "activitySummaryUpdateFailed": "ይህ ማጠቃለያ ሊዘመን አልቻለም።"
 }
