@@ -1,32 +1,31 @@
 ---
-applyTo: "lib/routes/world/**,lib/routes/chat/map_bubble.dart"
+applyTo: "lib/routes/world/**,lib/routes/chat/map_bubble.dart,lib/pangea/common/utils/map_tiles.dart"
 description: "World map tile strategy — phased plan from OpenStreetMap's free tiles, to a paid hosted provider, to self-hosted vector tiles in a Pangea style."
 ---
 
 # World Map Tiles
 
-The world map's base tiles are both a cost surface (providers bill per request or per map load) and a brand surface (how the map looks). This is the phased plan; the current source is [the map widget](../../lib/routes/world/world_map.dart). The location bubble in chat ([`map_bubble.dart`](../../lib/routes/chat/map_bubble.dart)) draws from the same provider and follows the same plan.
+The world map's base tiles are both a cost surface (providers bill per request or per map load) and a brand surface (how the map looks). This is the phased plan. The tile source for every map lives in [`MapTiles`](../../lib/pangea/common/utils/map_tiles.dart), used by [the world map](../../lib/routes/world/world_map.dart) and by the location bubble in chat ([`map_bubble.dart`](../../lib/routes/chat/map_bubble.dart)).
 
-## Phase 1 — OpenStreetMap's free tiles (current)
+## Phase 1 — OpenStreetMap's free tiles (past)
 
-Free raster tiles from **OpenStreetMap**'s standard layer for both themes. Dark theme is a client-side color filter (flutter_map's dark color matrix, applied once over the whole tile layer — per-tile application measured roughly double the frame cost, #8623), so it adds no tile requests. A single provider means a single failure mode — the previous dark provider (CartoDB Dark Matter's keyless CDN) served "API KEY REQUIRED" watermark tiles to some users (#8585). Tiles are fetched directly from the provider, never proxied through a backend.
+Free raster tiles from **OpenStreetMap**'s standard layer, with dark theme drawn as a client-side color filter over the same tiles. We left it ahead of any block (#8603) because OSM's [tile usage policy](https://operations.osmfoundation.org/policies/tiles/) lets it withdraw a commercial app's access at any point, publishes no threshold to plan against, and rate-limits per IP address — so the first thing likely to break was one school, many students opening the map at once behind a shared network.
 
-Limits we accept while on it:
+## Phase 2 — Paid hosted raster tiles (current)
 
-- OSM's [tile usage policy](https://operations.osmfoundation.org/policies/tiles/) says a commercial app's access may be withdrawn at any point, and it publishes no threshold to plan against.
-- The policy asks each app to identify itself in its User-Agent. Native builds do; browsers don't let web code set that header, so web traffic can't comply.
-- OSM rate-limits per IP address, so the first thing likely to break is one school: many students opening the map at once behind a shared network. Total user count matters far less.
-- Filtered-OSM dark is functional rather than on-brand.
+The same kind of raster tiles, from a provider licensed for commercial use: **Stadia Maps**, on a paid plan. Hosted providers' free tiers are non-commercial only, so there is no free step between Phase 1 and this one. Stadia because it bills per tile request, which suits how the map is used, and ships its own dark style, so dark theme needs no client-side filter.
 
-**Blocking detection and its limit (#8603).** Tile-load failures (`TileLayer.errorTileCallback`, with non-2xx responses treated as hard errors rather than optimistically decoded) are split by what they mean: an HTTP error status — the provider answering "no", the blocking signature — escalates to one Sentry warning event per app session, so a block is visible (and alertable) across sessions; network-level failures are the user's own connectivity and leave only a rate-limited breadcrumb, so an offline learner never generates events. Either way the failed tile degrades to the themed map background instead of flashing. What no cheap check can catch is a provider serving *wrong* tiles with HTTP 200 — exactly #8585's watermark mode. Detecting that would mean pixel-inspecting tiles against a reference, so recurrence of that class is caught only by human eyes on the map; do not read the telemetry as covering it.
+- **Styles.** Alidade Smooth in light theme, Alidade Smooth Dark in dark theme. The map background, which shows wherever a tile hasn't loaded, matches the tiles' land colour, so a gap reads as unfilled map rather than a flash.
+- **Credits.** Stadia Maps, OpenMapTiles and OpenStreetMap, each linked to its attribution page.
+- **Web authenticates by domain.** Stadia checks the page's domain: `app.pangea.chat` for production, `*.staging.pangea.chat` for staging and PR previews, and localhost needs nothing. Web builds never carry the key, because the web `.env` is served publicly.
+- **Native builds carry an API key.** The Android and iOS builds get it from AWS Secrets Manager at build time, one key per environment. It is sent in a request header rather than the tile URL, so it never appears in error reports.
+- **Rotating a key breaks installed apps that still carry it** — their maps go blank until the user updates. Add the new key and ship builds with it before revoking the old one.
 
-## Phase 2 — Paid hosted raster tiles
+Tiles are fetched directly from Stadia, never proxied through a backend.
 
-The same raster tiles, from a provider licensed for commercial use: **Stadia Maps**, on a paid plan. Hosted providers' free tiers are non-commercial only, so there is no free step between Phase 1 and this one. Stadia because it bills per tile request, which suits how the map is used, and ships its own dark style, which replaces the client-side dark filter.
+**Failure detection and its limit.** Tile-load failures (`TileLayer.errorTileCallback`, with non-2xx responses treated as hard errors rather than optimistically decoded) are split by what they mean. An HTTP error status is the provider answering "no" — a block, a missing key, or a domain not on the list — and escalates to one Sentry warning event per app session, so it is visible (and alertable) across sessions. Network-level failures are the user's own connectivity and leave only a rate-limited breadcrumb, so an offline learner never generates events. Either way the failed tile degrades to the map background instead of flashing. What no cheap check can catch is a provider serving *wrong* tiles with HTTP 200 — the "API KEY REQUIRED" watermark tiles a keyless provider once served (#8585). Detecting that would mean pixel-inspecting tiles against a reference, so that class is caught only by human eyes on the map; do not read the telemetry as covering it.
 
 Hosted raster comes before self-hosting because it is only a change of tile address and key: flutter_map already renders raster. Self-hosting pays off only with vector tiles, which need a new map renderer in the client — the Phase 3 investment.
-
-Switch ahead of a block, not in response to one. Changing the tile provider ships in a client release, so after a block the affected learners — likely a whole school — would see a blank map until new app-store builds are approved.
 
 ## Phase 3 — Self-hosted vector tiles in a Pangea style
 
