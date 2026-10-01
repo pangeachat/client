@@ -1130,6 +1130,9 @@ class ChatController extends State<ChatPageWithRoom>
     loadTimelineFuture = _getTimeline();
     try {
       await loadTimelineFuture;
+      // The load stops early when the chat closed or [timeline] was cleared
+      // under it (see _getTimelineInner); the positioning below needs both.
+      if (!mounted || timeline == null) return;
       // We launched the chat with a given initial event ID:
       if (initialEventId != null) {
         scrollToEventId(initialEventId);
@@ -1149,6 +1152,7 @@ class ChatController extends State<ChatPageWithRoom>
       // requestHistory call before opening timeline on event context:
       if (readMarkerEventId.isNotEmpty && readMarkerEventIndex == -1) {
         await timeline?.requestHistory(historyCount: _loadHistoryCount);
+        if (!mounted || timeline == null) return;
         readMarkerEventIndex = timeline!.events
             .filterByVisibleInGui(
               exceptionEventId: readMarkerEventId,
@@ -1280,6 +1284,11 @@ class ChatController extends State<ChatPageWithRoom>
         _showScrollUpMaterialBanner(eventContextId!);
       }
     }
+    // [timeline] can be gone by now: the history requests above take a while,
+    // and meanwhile the chat can close (dispose clears it) or a jump to
+    // another event can clear it and queue a fresh load behind this one. This
+    // load then has nothing left to finish (CLIENT-EXJ).
+    if (!mounted || timeline == null) return;
     timeline!.requestKeys(onlineKeyBackupOnly: false);
     if (room.markedUnread) room.markUnread(false);
 
