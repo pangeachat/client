@@ -5,7 +5,6 @@ import 'package:flutter/foundation.dart';
 import 'package:matrix/matrix.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:universal_html/html.dart' as html;
 
@@ -122,11 +121,6 @@ Future<MatrixSdkDatabase> _constructDatabase(String clientName) async {
   }
 
   final cipher = await getDatabaseCipher();
-  // Whether there is a key, never the key itself: breadcrumbs ride along on
-  // every report from this launch (#9346).
-  Sentry.addBreadcrumb(
-    Breadcrumb(message: 'Database cipher present: ${cipher != null}'),
-  );
 
   Directory? fileStorageLocation;
   try {
@@ -146,8 +140,6 @@ Future<MatrixSdkDatabase> _constructDatabase(String clientName) async {
     ffiInit: SQfLiteEncryptionHelper.ffiInit,
   );
 
-  Sentry.addBreadcrumb(Breadcrumb(message: 'Database path: $path'));
-
   // required for [getDatabasesPath]
   databaseFactory = factory;
 
@@ -159,7 +151,6 @@ Future<MatrixSdkDatabase> _constructDatabase(String clientName) async {
   final helper = cipher == null
       ? null
       : SQfLiteEncryptionHelper(factory: factory, path: path, cipher: cipher);
-  Sentry.addBreadcrumb(Breadcrumb(message: 'Database cipher helper: $helper'));
 
   // The two helper calls below are the ones that run SQL with the key in it.
   final database = await redactingCipher(cipher, () async {
