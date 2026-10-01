@@ -82,6 +82,9 @@ class _PinRenderer {
   /// ongoing / inProgress ids, and is empty on the world map.
   final Set<String> nonStartableIds;
 
+  /// Ids of pins the learner's course progression locks (#9333 prototype).
+  final Set<String> lockedIds;
+
   const _PinRenderer({
     required this.visible,
     required this.activityIdToStarLevel,
@@ -90,6 +93,7 @@ class _PinRenderer {
     required this.activityIdToTier,
     required this.focusedId,
     this.nonStartableIds = const {},
+    this.lockedIds = const {},
   });
 
   List<QuestActivityCard> get largeCards => visible
@@ -118,6 +122,8 @@ class _PinRenderer {
   /// True when [id] is an `available` pin the learner can't start yet — its
   /// pin and label render at half opacity (course-scoped map only).
   bool nonStartableOf(String id) => nonStartableIds.contains(id);
+
+  bool lockedOf(String id) => lockedIds.contains(id);
 
   bool pingedOf(String id) => activityIdToPingStatus[id] ?? false;
 
@@ -162,6 +168,8 @@ class LargeCardSnapshot {
   /// set on the world map or for a live/completed card.
   final bool understaffed;
 
+  final bool locked;
+
   const LargeCardSnapshot({
     required this.card,
     required this.state,
@@ -173,6 +181,7 @@ class LargeCardSnapshot {
     required this.openSlots,
     required this.starLevel,
     this.understaffed = false,
+    this.locked = false,
   });
 }
 
@@ -482,6 +491,10 @@ class _WorldMapViewState extends State<WorldMapView>
     // No lock layering: the controller's signals pass through unchanged — nothing
     // is ever locked now, progression only ranks (#7186).
     final signals = widget.controller.signals;
+    final lockedIds = {
+      for (final c in visible)
+        if (widget.controller.isLocked(c)) c.activityId,
+    };
 
     // The available visible-map width (viewport minus open panels) picks the
     // budget row: a total cap `N` split into large/mid/small caps + a trail
@@ -493,6 +506,7 @@ class _WorldMapViewState extends State<WorldMapView>
       visible: visible,
       signals: signals,
       budget: budget,
+      lockedIds: lockedIds,
     );
 
     // The large-tier eligibility gate: `available`, `joinable`, and `ongoing`
@@ -548,6 +562,7 @@ class _WorldMapViewState extends State<WorldMapView>
       mediumIds: mediumIds,
       smallIds: smallIds,
       focusedId: widget.controller.focusedActivityId,
+      lockedIds: lockedIds,
     );
     _lastSettledRenderer = render;
     return render;
@@ -678,6 +693,7 @@ class _WorldMapViewState extends State<WorldMapView>
     required List<QuestActivityCard> visible,
     required Map<String, PinSignals> signals,
     required PinBudget budget,
+    required Set<String> lockedIds,
   }) {
     // Rank only the in-view pins (camera bounds when available) so promotion
     // reflects what the learner is looking at.
@@ -709,6 +725,7 @@ class _WorldMapViewState extends State<WorldMapView>
       // the pre-existing behavior now that course pins carry a real roleCount.
       isNewLearner: widget.controller.isNewLearner && widget.controller.isWorld,
       dismissedIds: widget.controller.dismissedLargeIds,
+      lockedIds: lockedIds,
     );
   }
 
@@ -720,6 +737,7 @@ class _WorldMapViewState extends State<WorldMapView>
     required Set<String> mediumIds,
     required Set<String> smallIds,
     required String? focusedId,
+    required Set<String> lockedIds,
   }) {
     final Map<String, PinTier> tiers = {};
     for (final id in largeIds) {
@@ -792,6 +810,10 @@ class _WorldMapViewState extends State<WorldMapView>
       activityIdToTier: tiers,
       focusedId: focusedId,
       nonStartableIds: nonStartableIds,
+      lockedIds: {
+        for (final id in lockedIds)
+          if (tiers.containsKey(id)) id,
+      },
     );
   }
 
@@ -900,6 +922,7 @@ class _WorldMapViewState extends State<WorldMapView>
       // Dim an available card the course can't yet staff (course-scoped; the
       // renderer only ever flags `available` pins here).
       understaffed: render.nonStartableOf(card.activityId),
+      locked: render.lockedOf(card.activityId),
     );
   }
 
@@ -1030,6 +1053,7 @@ class _WorldMapViewState extends State<WorldMapView>
               nonLargeCards: render.nonLargeCards,
               stateOf: render.stateOf,
               nonStartableOf: render.nonStartableOf,
+              lockedOf: render.lockedOf,
               tierOf: render.tierOf,
               starLevelOf: render.starLevelOf,
               pingedOf: render.pingedOf,

@@ -13,6 +13,9 @@ import 'package:fluffychat/pangea/common/widgets/user_profile_builder.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/not_started_session_controller.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/session_last_active_label.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/session_presence_tracker.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class ActivitySessionBottomContent extends StatelessWidget {
   final ActivitySessionStateController controller;
@@ -127,7 +130,7 @@ class _NotStartedSessionBottomContent extends StatelessWidget {
   }
 }
 
-class _ActivitySummaryStatusSection extends StatelessWidget {
+class _ActivitySummaryStatusSection extends StatefulWidget {
   final ActivitySummaryStatus status;
   final Map<String, RoomSummaryResponse> roomSummaries;
 
@@ -145,35 +148,92 @@ class _ActivitySummaryStatusSection extends StatelessWidget {
   });
 
   @override
+  State<_ActivitySummaryStatusSection> createState() =>
+      _ActivitySummaryStatusSectionState();
+}
+
+class _ActivitySummaryStatusSectionState
+    extends State<_ActivitySummaryStatusSection> {
+  /// Read by open sessions only: they sort and label by their members' last
+  /// online time (#9333 prototype).
+  late final SessionPresenceTracker _presence;
+
+  bool get _isOpenList => widget.status == ActivitySummaryStatus.notStarted;
+
+  @override
+  void initState() {
+    super.initState();
+    _presence = SessionPresenceTracker(Matrix.of(context).client);
+  }
+
+  @override
+  void dispose() {
+    _presence.dispose();
+    super.dispose();
+  }
+
+  DateTime? _lastActiveOf(RoomSummaryResponse summary) => _isOpenList
+      ? _presence.lastActiveOf(summary.membershipSummary.keys)
+      : null;
+
+  @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Padding(
-      padding: const EdgeInsetsGeometry.symmetric(
-        horizontal: 20.0,
-        vertical: 16.0,
-      ),
-      child: Column(
-        spacing: 12.0,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Text(
-              status.label(L10n.of(context), roomSummaries.length),
-              style: theme.textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+    if (_isOpenList) {
+      _presence.watch([
+        for (final summary in widget.roomSummaries.values)
+          ...summary.membershipSummary.keys,
+      ]);
+    }
+    return ListenableBuilder(
+      listenable: _presence,
+      builder: (context, _) {
+        final theme = Theme.of(context);
+        final entries = widget.roomSummaries.entries.toList();
+        if (_isOpenList) {
+          // Most recently active first, so the sessions most likely to answer
+          // are the easiest to join; unknown last, room id breaks ties so the
+          // order holds still between rebuilds.
+          entries.sort((a, b) {
+            final aAt = _lastActiveOf(a.value);
+            final bAt = _lastActiveOf(b.value);
+            if (aAt != bAt) {
+              if (aAt == null) return 1;
+              if (bAt == null) return -1;
+              return bAt.compareTo(aAt);
+            }
+            return a.key.compareTo(b.key);
+          });
+        }
+        return Padding(
+          padding: const EdgeInsetsGeometry.symmetric(
+            horizontal: 20.0,
+            vertical: 16.0,
           ),
-          ...roomSummaries.entries.map((e) {
-            return _ActivitySessionDetailsTile(
-              roomSummary: e.value,
-              pinged: e.key == pingedRoomId,
-              onTap: () => onTap(e.key),
-            );
-          }),
-        ],
-      ),
+          child: Column(
+            spacing: 12.0,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(
+                  widget.status.label(L10n.of(context), entries.length),
+                  style: theme.textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              for (final e in entries)
+                _ActivitySessionDetailsTile(
+                  roomSummary: e.value,
+                  pinged: e.key == widget.pingedRoomId,
+                  showLastActive: _isOpenList,
+                  lastActive: _lastActiveOf(e.value),
+                  onTap: () => widget.onTap(e.key),
+                ),
+            ],
+          ),
+        );
+      },
     );
   }
 }
@@ -184,11 +244,17 @@ class _ActivitySessionDetailsTile extends StatelessWidget {
   /// This session is the one a course ping pointed at: badge its corner.
   final bool pinged;
 
+  /// An open session shows how recently its members were online.
+  final bool showLastActive;
+  final DateTime? lastActive;
+
   final VoidCallback onTap;
 
   const _ActivitySessionDetailsTile({
     required this.roomSummary,
     required this.pinged,
+    required this.showLastActive,
+    required this.lastActive,
     required this.onTap,
   });
 
@@ -221,7 +287,10 @@ class _ActivitySessionDetailsTile extends StatelessWidget {
               padding: EdgeInsets.all(12.0),
               child: Column(
                 spacing: 24.0,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  if (showLastActive)
+                    SessionLastActiveLabel(lastActive: lastActive),
                   if (activitySummary != null)
                     Row(
                       spacing: 12.0,

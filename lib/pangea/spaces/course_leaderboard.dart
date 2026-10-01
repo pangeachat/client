@@ -4,6 +4,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
+import 'package:fluffychat/features/course_plans/courses/course_teacher_room_extension.dart';
 import 'package:fluffychat/features/user/analytics_profile_model.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
 
@@ -44,7 +45,7 @@ class CourseLeaderboard {
   /// Joined admins, by name — the line above the ranking.
   final List<User> admins;
 
-  /// Every joined member but the bot, best first.
+  /// Every joined member but the bot and teachers, best first.
   final List<LeaderboardEntry> ranked;
 
   /// Invited and knocking members: shown, never ranked.
@@ -81,6 +82,8 @@ class CourseLeaderboard {
           if (user.powerLevel >= SpaceConstants.powerLevelOfAdmin) {
             admins.add(user);
           }
+          // A teacher stays in the admin line but never places (#9333).
+          if (user.room.isTeaching(user.id)) continue;
           final profile = profileOf(user.id);
           final language = langCode ?? profile?.targetLanguage;
           joined.add(

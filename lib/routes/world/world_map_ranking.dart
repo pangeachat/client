@@ -323,6 +323,10 @@ const double kMultiPersonFirstMapPenalty = 2.0;
 /// ([placeLargeCards]'s `dismissedIds`), like the live-session heavy-tier gate.
 const double kDismissedPenalty = 0.5;
 
+/// Sinks a locked pin below every unlocked one, so it only draws when the view
+/// has room to spare (#9333 prototype).
+const double kLockedPinPenalty = 100.0;
+
 /// Rating-count threshold below which an activity counts as NEW (#7993): it
 /// takes the TOP of the ratings range (+[kRatingWeight]) and renders a NEW
 /// badge — new content gets the benefit of the doubt, not a cold-start
@@ -442,6 +446,7 @@ RankingResult rankPins({
   int maxPerDiversityKey = 2,
   bool isNewLearner = false,
   Set<String> dismissedIds = const {},
+  Set<String> lockedIds = const {},
 }) {
   PinSignals sig(String id) => signals[id] ?? const PinSignals();
 
@@ -456,14 +461,15 @@ RankingResult rankPins({
         return _Scored(
           p,
           pinScore(
-            band: band,
-            s: sig(p.activityId),
-            roleCount: p.roleCount,
-            isNewLearner: isNewLearner,
-            isDismissed: dismissedIds.contains(p.activityId),
-            ratingAverage: p.ratingAverage,
-            ratingCount: p.ratingCount,
-          ),
+                band: band,
+                s: sig(p.activityId),
+                roleCount: p.roleCount,
+                isNewLearner: isNewLearner,
+                isDismissed: dismissedIds.contains(p.activityId),
+                ratingAverage: p.ratingAverage,
+                ratingCount: p.ratingCount,
+              ) -
+              (lockedIds.contains(p.activityId) ? kLockedPinPenalty : 0),
         );
       }).toList()..sort((a, b) {
         // activityId tiebreaker: List.sort is unstable, so without it equal-score

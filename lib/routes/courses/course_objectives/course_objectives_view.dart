@@ -624,6 +624,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                       missionGradient:
                           widget.objectivesProvider.missionGradient,
                       signalsFor: _signalsFor,
+                      isLocked: widget.objectivesProvider.isActivityLocked,
                     );
                     if (suggested.isEmpty) return const SizedBox.shrink();
                     // The course tutorial's "pick an activity" step lights
@@ -698,6 +699,11 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                         hasCompletedActivity: widget.hasCompletedActivity,
                         progress: hasProgress
                             ? widget.objectivesProvider.missionProgress(
+                                group.objective.id,
+                              )
+                            : null,
+                        lock: hasProgress
+                            ? widget.objectivesProvider.missionLock(
                                 group.objective.id,
                               )
                             : null,

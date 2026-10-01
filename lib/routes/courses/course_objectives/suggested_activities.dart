@@ -52,6 +52,7 @@ List<SuggestedActivity> rankSuggestedActivities({
   required List<QuestObjectiveGroup> groups,
   required double Function(Set<String> missionRefs) missionGradient,
   required PinSignals Function(String activityId) signalsFor,
+  bool Function(String activityId)? isLocked,
   int cap = kSuggestedActivitiesCap,
 }) {
   final byActivity = <String, SuggestedActivity>{};
@@ -70,6 +71,11 @@ List<SuggestedActivity> rankSuggestedActivities({
     final signals = signalsFor(suggestion.activityId);
     if (signals.state.isOngoing) continue;
     if (signals.isCompleted && signals.state != ActivityPinState.joinable) {
+      continue;
+    }
+    // A locked activity only surfaces through an open session to join.
+    if ((isLocked?.call(suggestion.activityId) ?? false) &&
+        signals.state != ActivityPinState.joinable) {
       continue;
     }
     final plan = suggestion.activity.plan;

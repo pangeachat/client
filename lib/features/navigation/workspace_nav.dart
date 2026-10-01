@@ -485,6 +485,24 @@ abstract class WorkspaceNav {
     );
   }
 
+  /// Open session [roomId] of [activityId] INSIDE the activity panel — the
+  /// token keeps the activity and binds the room — so a session viewed from
+  /// the join list closes with a back arrow to that list rather than an X
+  /// (#9333 prototype). The course context, if any, is kept.
+  static String openActivitySession(
+    Uri current,
+    String activityId,
+    String roomId,
+  ) => _mutate(
+    current,
+    'left',
+    (_) => [
+      ActivityPanelToken(
+        ActivityTokenParam(activityId: activityId, roomId: roomId),
+      ),
+    ],
+  );
+
   /// Drop the open `activity` token, keeping the rest of the workspace —
   /// notably the course context, which a close never consumes
   /// (routing.instructions.md). [reopenCourseCard] additionally reseats the
