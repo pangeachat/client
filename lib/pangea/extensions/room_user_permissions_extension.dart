@@ -4,7 +4,12 @@ extension UserPermissionsRoomExtension on Room {
   bool isMadeByUser(String userId) =>
       getState(EventTypes.RoomCreate)?.senderId == userId;
 
-  bool get isRoomAdmin => ownPowerLevel >= SpaceConstants.powerLevelOfAdmin;
+  /// False for a signed-out account: the SDK's [ownPowerLevel] reads
+  /// `client.userID!`, and the chat list can still build through logout
+  /// (#9019).
+  bool get isRoomAdmin =>
+      client.userID != null &&
+      ownPowerLevel >= SpaceConstants.powerLevelOfAdmin;
 
   /// Whether the user may redact an event sent by [senderId].
   ///

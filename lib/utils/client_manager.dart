@@ -65,7 +65,7 @@ abstract class ClientManager {
       );
     }
     if (clients.length > 1 && clients.any((c) => !c.isLogged())) {
-      final loggedOutClients = clients.where((c) => !c.isLogged()).toList();
+      final loggedOutClients = signedOutClientsToForget(clients);
       for (final client in loggedOutClients) {
         Logs().w(
           'Multi account is enabled but client ${client.userID} is not logged in. Removing...',
@@ -76,6 +76,27 @@ abstract class ClientManager {
       await store.setStringList(clientNamespace, clientNames.toList());
     }
     return clients;
+  }
+
+  /// The signed-out clients [getClients] forgets — never all of them. A
+  /// store holding two signed-out names (the build's client name changed
+  /// under a stored account, or a login candidate outlived its session) used
+  /// to yield an empty list, and an app with no client at all cannot boot:
+  /// `MatrixState.client` has nothing to resolve (#9018). Keeps the one named
+  /// [PlatformInfos.clientName] when present — the name this build would
+  /// otherwise create fresh — else the most recently stored.
+  @visibleForTesting
+  static List<Client> signedOutClientsToForget(List<Client> clients) {
+    final loggedOut = clients.where((c) => !c.isLogged()).toList();
+    if (loggedOut.length == clients.length) {
+      loggedOut.remove(
+        loggedOut.firstWhere(
+          (c) => c.clientName == PlatformInfos.clientName,
+          orElse: () => loggedOut.last,
+        ),
+      );
+    }
+    return loggedOut;
   }
 
   static Future<void> addClientNameToStore(

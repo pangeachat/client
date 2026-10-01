@@ -1,5 +1,3 @@
-import 'package:flutter/foundation.dart';
-
 import 'package:sentry_flutter/sentry_flutter.dart' show SentryLevel;
 
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
@@ -28,19 +26,31 @@ class RateLimitedException implements Exception {
 /// K/cooldown requests — at the 2026-08-04 incident's K=104 that is 104/min
 /// against a 60/min budget, still saturated. Only a pause that ignores the key
 /// restores the invariant "we stop when the server says stop", independent of
-/// K. `ActivityPlanRepo` reached the same conclusion first (#8160) and keeps
-/// its equivalent state inline.
+/// K. `ActivityPlanRepo` reached the same conclusion first (#8160); the
+/// mechanism was extracted here and every holder now shares [choreoReads]
+/// rather than keeping its own copy.
 ///
-/// **One instance per budget, never one global instance.** Choreo meters
-/// `/choreo` and `/subscription` separately, so an activity 429 must never
-/// stall checkout. The boundary that matters is the budget, not the class:
-/// reads that the same limiter counts together share an instance, and reads it
-/// counts apart never do.
+/// **One instance per budget, never one global instance.** The boundary that
+/// matters is the budget, not the class or the repo: reads the same limiter
+/// counts together share an instance, and reads it counts apart never do. The
+/// instances that exist are static fields here, so the set is readable in one
+/// place instead of inferred from which repo happens to hold what.
 class RateLimitPause {
-  RateLimitPause([this.duration = defaultDuration]);
+  RateLimitPause({this.duration = defaultDuration});
 
-  /// Matches the pause `ActivityPlanRepo` applies to the sibling activity read
-  /// and the window choreo's limiter meters over.
+  /// The one pause for choreo's activity-read budget.
+  ///
+  /// Every read it covers — the activity plan and its batch form, the quest
+  /// listing, the map's bbox query — is metered by the server against a single
+  /// `read` budget. Holding one pause per repo would mean a 429 on the quest
+  /// listing left the plan reads hammering on until they earned their own,
+  /// which honours the rate statement on neither: the server said stop, not
+  /// "stop asking this way". Deliberately not wider — choreo meters the
+  /// subscription surface separately, so an activity 429 must never stall
+  /// checkout, and the LLM endpoints have their own budget again.
+  static final RateLimitPause choreoReads = RateLimitPause();
+
+  /// Matches the window choreo's limiter meters over.
   static const Duration defaultDuration = Duration(seconds: 60);
 
   final Duration duration;
@@ -48,9 +58,16 @@ class RateLimitPause {
   /// Earliest wall-clock time reads on this budget may resume.
   DateTime? _until;
 
-  /// Test seam: the pause's clock. Backoff is wall-clock, so tests would
-  /// otherwise need real delays.
-  @visibleForTesting
+  /// The clock for every pause and for the backoff state that travels with
+  /// them. Backoff is wall-clock, so tests would otherwise need real delays.
+  ///
+  /// One seam for the whole subsystem, on purpose: a holder that kept its own
+  /// left a test advancing one clock while the other stayed frozen, so the
+  /// pause never lapsed and the failure read as broken suppression logic rather
+  /// than as clocks out of step. Assigned only by tests — it is not marked
+  /// `@visibleForTesting` because `ActivityPlanRepo` must READ it from another
+  /// library to stay on the same clock, and the annotation would forbid exactly
+  /// the thing that keeps them in agreement.
   static DateTime Function() now = DateTime.now;
 
   /// Whether reads on this budget are currently suppressed. Clears itself once
@@ -76,9 +93,15 @@ class RateLimitPause {
   /// Any other failure says something about the request, not about our rate:
   /// pausing on those would let one bad row take down every read on the
   /// budget.
+  ///
+  /// Waits exactly as long as the server's `Retry-After` says, falling back to
+  /// [duration] only when it sent none. Guessing is what the fallback is for,
+  /// and guessing short is expensive: a 429 costs the server ~100x less than a
+  /// success, so retrying early adds load precisely when it should be shedding
+  /// it (the 2026-08-04 staging latch).
   void recordFailure(Object? error) {
     if (PangeaHttpException.statusCodeOf(error) == 429) {
-      _until = now().add(duration);
+      _until = now().add(PangeaHttpException.retryAfterOf(error) ?? duration);
     }
   }
 

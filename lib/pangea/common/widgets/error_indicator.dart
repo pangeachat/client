@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/network/rate_limit_pause.dart';
 
@@ -57,7 +56,7 @@ class ErrorIndicator extends StatelessWidget {
               alignment: PlaceholderAlignment.middle,
               child: Icon(
                 Icons.error,
-                color: iconColor ?? AppConfig.error,
+                color: iconColor ?? Theme.of(context).colorScheme.error,
                 size: iconSize ?? 24.0,
               ),
             ),

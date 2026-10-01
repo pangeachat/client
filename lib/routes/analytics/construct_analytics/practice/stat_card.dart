@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 
 class StatCard extends StatelessWidget {
@@ -24,24 +24,31 @@ class StatCard extends StatelessWidget {
     final theme = Theme.of(context);
     final isColumnMode = FluffyThemes.isColumnMode(context);
     final colorScheme = theme.colorScheme;
+    final pangea = theme.pangea;
     final backgroundColor = isAchievement
-        ? Color.alphaBlend(
-            colorScheme.surface.withAlpha(170),
-            AppConfig.goldLight,
-          )
+        ? pangea.goldContainer
         : colorScheme.surfaceContainer;
+    final foregroundColor = isAchievement
+        ? pangea.onGoldContainer
+        : colorScheme.onSurface;
 
     TextStyle? titleStyle = theme.textTheme.titleMedium;
     if (!isColumnMode) {
       titleStyle = theme.textTheme.bodyMedium;
     }
-    titleStyle = titleStyle?.copyWith(fontWeight: FontWeight.bold);
+    titleStyle = titleStyle?.copyWith(
+      fontWeight: FontWeight.bold,
+      color: foregroundColor,
+    );
 
     TextStyle? achievementStyle = theme.textTheme.titleSmall;
     if (!isColumnMode) {
       achievementStyle = theme.textTheme.bodySmall;
     }
-    achievementStyle = achievementStyle?.copyWith(fontWeight: FontWeight.bold);
+    achievementStyle = achievementStyle?.copyWith(
+      fontWeight: FontWeight.bold,
+      color: foregroundColor,
+    );
 
     return Container(
       decoration: BoxDecoration(
@@ -56,7 +63,7 @@ class StatCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              Icon(icon),
+              Icon(icon, color: foregroundColor),
               const SizedBox(width: 8),
               Expanded(child: Text(text, style: titleStyle)),
               if (isAchievement) ...[

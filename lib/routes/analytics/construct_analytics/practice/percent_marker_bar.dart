@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 
 // A progress bar with a rounded marker indicating a percentage position
 
@@ -8,14 +8,14 @@ class PercentMarkerBar extends StatelessWidget {
   final double height;
   final double widthPercent;
   final double markerWidth;
-  final Color markerColor;
+  final Color? markerColor;
   final Color? backgroundColor;
 
   const PercentMarkerBar({
     required this.height,
     required this.widthPercent,
     this.markerWidth = 10.0,
-    this.markerColor = AppConfig.goldLight,
+    this.markerColor,
     this.backgroundColor,
     super.key,
   });
@@ -47,9 +47,10 @@ class PercentMarkerBar extends StatelessWidget {
                 width: constraints.maxWidth,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(height / 2),
+                  // The neutral track the other progress bars use.
                   color:
                       backgroundColor ??
-                      Theme.of(context).colorScheme.secondaryContainer,
+                      Theme.of(context).colorScheme.surfaceContainerHighest,
                 ),
               ),
             ),
@@ -61,7 +62,7 @@ class PercentMarkerBar extends StatelessWidget {
                 height: height,
                 width: markerWidth,
                 decoration: BoxDecoration(
-                  color: markerColor,
+                  color: markerColor ?? Theme.of(context).pangea.goldGraphic,
                   borderRadius: BorderRadius.circular(height / 2),
                 ),
               ),

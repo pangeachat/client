@@ -216,6 +216,7 @@ class _InvoiceHistoryList extends StatelessWidget {
           ? const EdgeInsets.all(12.0)
           : const EdgeInsets.symmetric(vertical: 4.0, horizontal: 12.0),
       frameColor: theme.colorScheme.primaryContainer,
+      outlineColor: theme.colorScheme.surface,
       backgroundColor: theme.colorScheme.surface,
       foregroundColor: theme.colorScheme.onPrimaryContainer,
       padding: EdgeInsets.all(8.0),

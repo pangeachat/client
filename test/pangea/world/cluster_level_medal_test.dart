@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/world_user_cluster.dart';
 import 'package:fluffychat/widgets/users/level_ribbon.dart';
@@ -63,7 +63,7 @@ void main() {
       await tester.pump();
       expect(
         ribbonColor(tester),
-        AppConfig.goldHighlightByTheme(contextOf(tester)),
+        Theme.of(contextOf(tester)).pangea.goldHighlight,
       );
 
       await tester.sendEventToBinding(pointer.hover(Offset.zero));
@@ -78,7 +78,7 @@ void main() {
 
       expect(
         ribbonColor(tester),
-        AppConfig.goldHighlightByTheme(contextOf(tester)),
+        Theme.of(contextOf(tester)).pangea.goldHighlight,
       );
     });
 

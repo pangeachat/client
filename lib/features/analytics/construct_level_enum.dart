@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/analytics/analytics_constants.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/customized_svg.dart';
@@ -10,29 +11,18 @@ enum ConstructLevelEnum {
   greens,
   seeds;
 
+  /// The stage's colour as text or a mark on the surface: the theme's text
+  /// tone of the brand purple, the success green or the gold, so it clears
+  /// 4.5:1 in both themes. Washes take it at a low alpha.
   Color color(BuildContext context) {
+    final theme = Theme.of(context);
     switch (this) {
       case ConstructLevelEnum.flowers:
-        return Color.lerp(AppConfig.primaryColor, Colors.white, 0.6) ??
-            AppConfig.primaryColor;
+        return theme.colorScheme.primary;
       case ConstructLevelEnum.greens:
-        return Color.lerp(AppConfig.success, Colors.white, 0.6) ??
-            AppConfig.success;
+        return theme.pangea.success;
       case ConstructLevelEnum.seeds:
-        return Color.lerp(AppConfig.gold, Colors.white, 0.6) ?? AppConfig.gold;
-    }
-  }
-
-  Color darkColor(BuildContext context) {
-    switch (this) {
-      case ConstructLevelEnum.flowers:
-        return Color.lerp(AppConfig.primaryColor, Colors.white, 0.3) ??
-            AppConfig.primaryColor;
-      case ConstructLevelEnum.greens:
-        return Color.lerp(AppConfig.success, Colors.black, 0.3) ??
-            AppConfig.success;
-      case ConstructLevelEnum.seeds:
-        return Color.lerp(AppConfig.gold, Colors.black, 0.3) ?? AppConfig.gold;
+        return theme.pangea.gold;
     }
   }
 

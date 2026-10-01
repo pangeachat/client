@@ -68,6 +68,20 @@ Download exports the full message history — sender, timestamp, original and se
 - **Any room member can export.** The download only surfaces content the member can already read in the chat, so it grants no new visibility. Do not gate it behind power level. The one real cost is that it puts an off-platform copy of a whole room's messages — everyone's, in a group or multi-learner session — in one member's hands; for research-study or minor-heavy rooms that off-platform copy is a genuinely different exposure from in-app reading, and is the open question to revisit if the studies need tighter control.
 - **Web and desktop only, for now.** The download is `kIsWeb`-gated because the native mobile write path (`download_file_util.dart`, storage-permission + Downloads dir) has never shipped and is unvalidated. Enabling mobile is deliberately deferred until that path is tested — until then a completed session on native shows no ⋮ menu at all (Download would be its only item).
 
+## Plans arrive a screenful at a time
+
+A course screen shows one activity per session room, and each needs its plan. Fetching them one at a time made a single screen cost dozens of round trips, so [`ActivityPlanRepo`](../../lib/features/activity_sessions/activity_plan_repo.dart) collects the keys a frame asks for and reads them in one request. Cards still appear together; what changed is how many times the device asks.
+
+Collecting them depends on waiting: surfaces request a plan per card as they build, so dispatching on the first request would send it before the second arrived and batch nothing. The repo therefore dispatches after the frame finishes asking — soon enough that nothing is perceptibly delayed, late enough that a screen travels as one request.
+
+Three rules decide what can share a request, and each exists because ignoring it would quietly change what a caller asked for:
+
+- **One display language per request.** The read applies a single language to everything in it, so a key wanting a different one starts a new request rather than being reordered into an existing one — hydration follows the order surfaces asked, and a learner watching a screen fill in should not see it rearranged to suit the transport.
+- **A refresh travels alone.** Re-reading past the cache is the whole point of a refresh, and a shared request cannot ask for that on behalf of one activity and not the others.
+- **Activities already known to be gone never travel.** The backend's "this is gone" verdict outlives the app session, so a known-dead activity is dropped before the request rather than re-asked — re-asking is a loop this system has already been through once.
+
+Batching changes the number of requests, never their standing: each activity in a request costs the learner's allowance exactly what it would have cost alone, and one activity's failure never decides another's. What the backend guarantees in return is in the [org activities doc](../../../.github/.github/instructions/activities.instructions.md).
+
 ## When the activity can't be fetched
 
 Some session rooms reference an activity that no longer exists on the backend. The fallback ladder and the view-only contract are the org doc's ([Removed or unresolvable activities](../../../.github/.github/instructions/activities.instructions.md#editing-semantics)); what the client shows on each rung:
@@ -98,6 +112,8 @@ Video is where the two surfaces differ most:
 - **On a compact surface — a card, a map pin — the first block stands in for the carousel, carrying a small video tag (not a play badge) when it's a video.** That is what makes a card carousel-aware: a video-first activity leads with its video, not an unrelated image. The tag differentiates video without a play badge's false promise of play-in-place: tapping the card doesn't play the video there; it opens the activity, where the video starts. (A centered play badge on a card read as "play here" and did nothing on tap — see [pangeachat/client#7543](https://github.com/pangeachat/client/issues/7543).)
 
 That tap is the _only_ time a video starts on its own, and it starts **muted, with a tap to unmute**. Muting is what lets it start at all — browsers block sound the learner didn't ask for — and it keeps the feel consistent with tap-to-play everywhere else. The request to autoplay travels with the activity's link, so reopening or sharing that link replays the same thing, the same way "skip to role selection" and "reopen this session" do.
+
+**Captions are the learner's to turn on, and ours to aim.** We never switch captions on for them — a learner who keeps captions off in YouTube keeps them off here. What we do state is which track to prefer once they turn them on: **the activity's target language**, so a Spanish activity captions in Spanish. Same-language subtitles are what supports listening practice, and tying the preference to the activity rather than to the app's UI language keeps it right for a learner working across several languages. When the activity's language is unknown we say nothing and let YouTube choose, rather than naming a language the activity may not be in. A learner who wants their L1 instead already has it — YouTube's own caption menu carries every track and its auto-translations, which is why [#7693](https://github.com/pangeachat/client/issues/7693) needed no toggle of ours. Both halves have to be set deliberately: left alone, the embed forces captions on and asks for English whatever the activity is ([#8828](https://github.com/pangeachat/client/issues/8828)).
 
 ---
 

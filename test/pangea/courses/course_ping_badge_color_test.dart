@@ -54,7 +54,10 @@ void main() {
         tester,
       ) async {
         await pump(tester, Center(child: CoursePingBadge(pinState: state)));
-        expect(badgeFill(tester), state.color);
+        expect(
+          badgeFill(tester),
+          state.bodyColor(tester.element(find.byType(CoursePingBadge))),
+        );
       });
     }
 
@@ -62,7 +65,12 @@ void main() {
       tester,
     ) async {
       await pump(tester, const Center(child: CoursePingBadge()));
-      expect(badgeFill(tester), ActivityPinState.joinable.color);
+      expect(
+        badgeFill(tester),
+        ActivityPinState.joinable.bodyColor(
+          tester.element(find.byType(CoursePingBadge)),
+        ),
+      );
     });
   });
 
@@ -129,14 +137,31 @@ void main() {
     ) async {
       await pump(tester, section(state: ActivityPinState.ongoingPending));
       expect(cardState(tester), ActivityPinState.ongoingPending);
-      expect(badgeFill(tester), ActivityPinState.ongoingPending.color);
-      expect(badgeFill(tester), isNot(ActivityPinState.joinable.color));
+      expect(
+        badgeFill(tester),
+        ActivityPinState.ongoingPending.bodyColor(
+          tester.element(find.byType(CoursePingBadge)),
+        ),
+      );
+      expect(
+        badgeFill(tester),
+        isNot(
+          ActivityPinState.joinable.bodyColor(
+            tester.element(find.byType(CoursePingBadge)),
+          ),
+        ),
+      );
     });
 
     testWidgets("takes the Ongoing card's purple", (tester) async {
       await pump(tester, section(state: ActivityPinState.ongoingActive));
       expect(cardState(tester), ActivityPinState.ongoingActive);
-      expect(badgeFill(tester), ActivityPinState.ongoingActive.color);
+      expect(
+        badgeFill(tester),
+        ActivityPinState.ongoingActive.bodyColor(
+          tester.element(find.byType(CoursePingBadge)),
+        ),
+      );
     });
 
     testWidgets('stays green on an Open card, which is green already', (
@@ -144,7 +169,12 @@ void main() {
     ) async {
       await pump(tester, section(state: ActivityPinState.joinable));
       expect(cardState(tester), ActivityPinState.joinable);
-      expect(badgeFill(tester), ActivityPinState.joinable.color);
+      expect(
+        badgeFill(tester),
+        ActivityPinState.joinable.bodyColor(
+          tester.element(find.byType(CoursePingBadge)),
+        ),
+      );
     });
 
     testWidgets('falls back to green on a card with no state fill', (
@@ -152,7 +182,12 @@ void main() {
     ) async {
       await pump(tester, section(state: null));
       expect(cardState(tester), isNull);
-      expect(badgeFill(tester), ActivityPinState.joinable.color);
+      expect(
+        badgeFill(tester),
+        ActivityPinState.joinable.bodyColor(
+          tester.element(find.byType(CoursePingBadge)),
+        ),
+      );
     });
 
     testWidgets('follows a completed card, which drops its state fill', (
@@ -163,7 +198,12 @@ void main() {
         section(state: ActivityPinState.ongoingPending, complete: true),
       );
       expect(cardState(tester), isNull);
-      expect(badgeFill(tester), ActivityPinState.joinable.color);
+      expect(
+        badgeFill(tester),
+        ActivityPinState.joinable.bodyColor(
+          tester.element(find.byType(CoursePingBadge)),
+        ),
+      );
     });
   });
 }

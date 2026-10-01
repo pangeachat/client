@@ -155,11 +155,17 @@ class AnalyticsDataService {
   /// service's own teardown) needs an answer, not a null check.
   bool get isLogged => _accountClient.isLogged();
 
+  /// Both read the ACCOUNT client, on the same terms as [isLogged]: the
+  /// analytics client is null before the store opens and again after
+  /// [dispose], and the room lookup never needed the store. The activity
+  /// auto-save sweep keeps running on either side of that window (its own
+  /// client is alive, with rooms), so reading through the analytics client
+  /// threw on every plan hydration and blocked the archive (#9017).
   Room? _getAnalyticsRoomLocal(LanguageModel lang) =>
-      _analyticsClientGetter.client.ownAnalyticsRoomLocal(lang: lang);
+      _accountClient.ownAnalyticsRoomLocal(lang: lang);
 
   Future<Room?> getAnalyticsRoom(LanguageModel lang) =>
-      _analyticsClientGetter.client.getMyAnalyticsRoom(lang);
+      _accountClient.getMyAnalyticsRoom(lang);
 
   Future<void> dispose() async {
     _syncController?.dispose();

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -137,10 +138,9 @@ class InlineTooltipState extends State<InlineTooltip>
           DecoratedBox(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-              color: Color.alphaBlend(
-                Theme.of(context).colorScheme.surface.withAlpha(70),
-                widget.backgroundColor ?? AppConfig.gold,
-              ),
+              color:
+                  widget.backgroundColor ??
+                  Theme.of(context).pangea.goldFixedDim,
             ),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
@@ -153,7 +153,7 @@ class InlineTooltipState extends State<InlineTooltip>
                     child: Icon(
                       widget.icon ?? Icons.lightbulb,
                       size: 20,
-                      color: Theme.of(context).colorScheme.onSurface,
+                      color: Theme.of(context).pangea.onGoldFixed,
                     ),
                   ),
                   Flexible(
@@ -168,12 +168,17 @@ class InlineTooltipState extends State<InlineTooltip>
                                   style:
                                       widget.textStyle ??
                                       (FluffyThemes.isColumnMode(context)
-                                          ? Theme.of(
+                                              ? Theme.of(
+                                                  context,
+                                                ).textTheme.titleSmall
+                                              : Theme.of(
+                                                  context,
+                                                ).textTheme.bodyMedium)
+                                          ?.copyWith(
+                                            color: Theme.of(
                                               context,
-                                            ).textTheme.titleSmall
-                                          : Theme.of(
-                                              context,
-                                            ).textTheme.bodyMedium),
+                                            ).pangea.onGoldFixed,
+                                          ),
                                 ),
                                 textAlign: TextAlign.center,
                               )
@@ -182,10 +187,17 @@ class InlineTooltipState extends State<InlineTooltip>
                                 style:
                                     widget.textStyle ??
                                     (FluffyThemes.isColumnMode(context)
-                                        ? Theme.of(context).textTheme.titleSmall
-                                        : Theme.of(
+                                            ? Theme.of(
+                                                context,
+                                              ).textTheme.titleSmall
+                                            : Theme.of(
+                                                context,
+                                              ).textTheme.bodyMedium)
+                                        ?.copyWith(
+                                          color: Theme.of(
                                             context,
-                                          ).textTheme.bodyMedium),
+                                          ).pangea.onGoldFixed,
+                                        ),
                                 textAlign: TextAlign.center,
                               ),
                       ),
@@ -198,7 +210,7 @@ class InlineTooltipState extends State<InlineTooltip>
                     icon: Icon(
                       Icons.close_outlined,
                       size: 20,
-                      color: Theme.of(context).colorScheme.onSurface,
+                      color: Theme.of(context).pangea.onGoldFixed,
                     ),
                     onPressed: _closeTooltip,
                   ),

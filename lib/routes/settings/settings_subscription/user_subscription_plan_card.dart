@@ -63,6 +63,7 @@ class UserSubscriptionPlanCard extends StatelessWidget {
           : const EdgeInsets.all(4.0),
       padding: EdgeInsets.all(8.0),
       frameColor: theme.colorScheme.primaryContainer,
+      outlineColor: theme.colorScheme.surface,
       backgroundColor: theme.colorScheme.surface,
       foregroundColor: theme.colorScheme.onPrimaryContainer,
       borderRadius: 12.0,

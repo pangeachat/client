@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
@@ -231,8 +232,13 @@ class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
         MatrixState.pAnyState.closeOverlay(_vocabKey(other));
       }
     }
-    WidgetsBinding.instance.addPostFrameCallback(
-      (_) => OverlayUtil.showPositionedCard(
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      // The chip can be gone by the time this frame runs — the session ends,
+      // the learner backs out — and `context` on a disposed State throws
+      // (#9052). There is no card left to position then. The card's own
+      // onClose below already guards the same way.
+      if (!mounted) return;
+      OverlayUtil.showPositionedCard(
         context: context,
         cardToShow: _WordCardWrapper(
           v: vocab,
@@ -258,8 +264,8 @@ class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
           // clip the card back to its unscaled size at large device text.
           maxHeight: AppConfig.scaledToolbarMaxHeight(context),
         ),
-      ),
-    );
+      );
+    });
   }
 
   @override
@@ -309,9 +315,10 @@ class _VocabChip extends StatelessWidget {
   Widget build(BuildContext context) {
     final linkAndKey = MatrixState.pAnyState.layerLinkAndKey(target);
 
+    final theme = Theme.of(context);
     final color = isUsed
-        ? AppConfig.gold.withAlpha(50)
-        : Theme.of(context).colorScheme.primary.withAlpha(20);
+        ? theme.pangea.goldFixedDim.withAlpha(50)
+        : theme.colorScheme.primary.withAlpha(20);
 
     return CompositedTransformTarget(
       link: linkAndKey.link,
@@ -333,6 +340,7 @@ class _VocabChip extends StatelessWidget {
                 fontSize: 14,
               ),
               underlineColor: TokenRenderingUtil.underlineColor(
+                context,
                 Theme.of(context).colorScheme.primary.withAlpha(200),
                 isNew: isNew,
                 selected: isSelected,

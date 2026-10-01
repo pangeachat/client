@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
 class ProfileSettingsSwitchListTile extends StatefulWidget {
@@ -46,7 +46,7 @@ class PSettingsSwitchListTileState
     return SwitchListTile.adaptive(
       value: currentValue,
       title: Text(widget.title),
-      activeThumbColor: AppConfig.activeToggleColor,
+      activeThumbColor: Theme.of(context).pangea.successFixedDim,
       subtitle: widget.subtitle != null ? Text(widget.subtitle!) : null,
       onChanged: widget.enabled
           ? (bool newValue) async {

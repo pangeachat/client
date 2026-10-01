@@ -2,18 +2,29 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_progress_bar.dart';
+import '../contrast_ratio.dart';
 
 void main() {
-  Widget wrap(Widget child) => MaterialApp(
-    localizationsDelegates: L10n.localizationsDelegates,
-    supportedLocales: L10n.supportedLocales,
-    home: Scaffold(
-      body: SizedBox(width: 400, child: Center(child: child)),
-    ),
-  );
+  Widget wrap(Widget child, {Brightness brightness = Brightness.light}) =>
+      MaterialApp(
+        theme: ThemeData(
+          useMaterial3: true,
+          brightness: brightness,
+          colorScheme: ColorScheme.fromSeed(
+            brightness: brightness,
+            seedColor: const Color(0xFF8560E0),
+          ),
+        ),
+        localizationsDelegates: L10n.localizationsDelegates,
+        supportedLocales: L10n.supportedLocales,
+        home: Scaffold(
+          body: SizedBox(width: 400, child: Center(child: child)),
+        ),
+      );
 
   /// The gold fill: the DecoratedBox inside the LayoutBuilder that measures the
   /// track and sizes the fill. The gray track is a bare DecoratedBox outside any
@@ -73,6 +84,49 @@ void main() {
       await tester.pumpAndSettle();
       expect(fillFinder(), findsNothing);
     });
+
+    // The goal star is a graphic the learner reads, and it reads against its
+    // surface halo (1.58:1 in light mode before #8983). The fill carries no
+    // edge by design (2026-09-14): the bright gold sits at about 1.3:1 on the
+    // neutral track, and the tooltip carries the exact count.
+    for (final brightness in [Brightness.light, Brightness.dark]) {
+      testWidgets(
+        'goal star clears 3:1 and the fill has no edge in ${brightness.name}',
+        (tester) async {
+          await tester.pumpWidget(
+            wrap(
+              const ProgressBarRow(
+                summary: QuestStarSummary(earned: 20, total: 40),
+              ),
+              brightness: brightness,
+            ),
+          );
+          await tester.pumpAndSettle();
+
+          final theme = Theme.of(tester.element(find.byType(ProgressBarRow)));
+          final scheme = theme.colorScheme;
+          final fillDecoration =
+              tester.widget<DecoratedBox>(fillFinder().first).decoration
+                  as BoxDecoration;
+          // The smaller of the two stacked stars is the gold one; the larger is
+          // the surface-coloured halo behind it.
+          final stars = tester
+              .widgetList<Icon>(find.byIcon(Icons.star))
+              .toList();
+          final goldStar = stars
+              .reduce((a, b) => (a.size ?? 0) <= (b.size ?? 0) ? a : b)
+              .color!;
+
+          expect(fillDecoration.border, isNull);
+          expect(fillDecoration.color, theme.pangea.goldFixedDim);
+          expect(
+            contrastRatio(goldStar, scheme.surface),
+            greaterThanOrEqualTo(minGraphicRatio),
+            reason: 'goal star against its halo in ${brightness.name}',
+          );
+        },
+      );
+    }
 
     testWidgets('full progress fills the whole track', (tester) async {
       await tester.pumpWidget(

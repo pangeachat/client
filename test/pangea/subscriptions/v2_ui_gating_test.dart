@@ -9,12 +9,13 @@ import 'package:fluffychat/features/subscription/repo_v2/subscription_status_res
 void main() {
   SubscriptionStatusResponse status({
     SubscriptionAccessLevel accessLevel = SubscriptionAccessLevel.none,
+    String entitlementSource = "cms",
     bool trialEligible = false,
     bool trialClaimed = false,
     SubscriptionWinning? winning,
   }) => SubscriptionStatusResponse(
     accessLevel: accessLevel,
-    entitlementSource: "cms",
+    entitlementSource: entitlementSource,
     trialEligible: trialEligible,
     trialClaimed: trialClaimed,
     winning: winning,
@@ -41,6 +42,23 @@ void main() {
   });
 
   group('isPaidWithoutPlan (finding #4 — paid access without planId)', () {
+    // #8842: the legacy RevenueCat phase is store-managed and never carries a
+    // catalog plan, so a missing planId there is the normal shape, not a defect.
+    test('legacy RevenueCat status (source rc) + null planId -> false', () {
+      expect(
+        status(
+          accessLevel: SubscriptionAccessLevel.full,
+          entitlementSource: "rc",
+          winning: const SubscriptionWinning(
+            type: SubscriptionType.paid,
+            status: "active",
+            cancelAtPeriodEnd: false,
+            provider: "apple",
+          ),
+        ).isPaidWithoutPlan,
+        isFalse,
+      );
+    });
     test('paid + full + null planId -> true (anomaly)', () {
       expect(
         status(

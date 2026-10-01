@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:matrix/encryption.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
@@ -292,11 +293,11 @@ class KeyVerificationPageState extends State<KeyVerificationDialog> {
         break;
       case KeyVerificationState.done:
         title = Text(L10n.of(context).verifySuccess);
-        body = const Padding(
-          padding: EdgeInsets.all(16.0),
+        body = Padding(
+          padding: const EdgeInsets.all(16.0),
           child: Icon(
             Icons.verified_outlined,
-            color: Colors.green,
+            color: Theme.of(context).pangea.successGraphic,
             size: 128.0,
           ),
         );

@@ -48,6 +48,17 @@ class CoursePlanModel {
   final DateTime updatedAt;
   final DateTime createdAt;
 
+  /// The MXID of whoever made this course — the person credited wherever the
+  /// course is shown, starting with the create-course page where a teacher
+  /// decides whether to build on it. Read verbatim from the quest-plans row's
+  /// plain-text `owner_mxid`; see [QuestPlan.ownerId], which carries the same
+  /// value onto the course page after the space exists.
+  ///
+  /// Null where no owner is recorded, and null is NOT `@system:pangea.chat`:
+  /// crediting an unknown owner to Pangea would misattribute a teacher's
+  /// course, so display surfaces show no credit rather than a guessed one.
+  final String? ownerId;
+
   CoursePlanModel({
     required this.targetLanguage,
     required this.languageOfInstructions,
@@ -59,6 +70,7 @@ class CoursePlanModel {
     required this.mediaIds,
     required this.updatedAt,
     required this.createdAt,
+    this.ownerId,
   });
 
   LanguageModel? get targetLanguageModel =>
@@ -92,6 +104,7 @@ class CoursePlanModel {
           [],
       updatedAt: DateTime.parse(json['updated_at'] as String),
       createdAt: DateTime.parse(json['created_at'] as String),
+      ownerId: json['owner_mxid'] as String?,
     );
   }
 
@@ -108,6 +121,9 @@ class CoursePlanModel {
       'media_ids': mediaIds,
       'updated_at': updatedAt.toIso8601String(),
       'created_at': createdAt.toIso8601String(),
+      // Omitted when unknown rather than written as null — an absent key and
+      // a null both read back as "no owner recorded".
+      'owner_mxid': ?ownerId,
     };
   }
 

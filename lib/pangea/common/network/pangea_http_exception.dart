@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 /// A failed HTTP call, typed. Thrown by [Requests] (and [PayloadClient]) for
@@ -29,11 +30,23 @@ class PangeaHttpException implements Exception {
 
   static const int maxDetailLength = 200;
 
+  /// How long the server asked us to wait before retrying, from its
+  /// `Retry-After` header. Null when it said nothing.
+  ///
+  /// Only a throttle sends this, and honouring it matters more than it looks:
+  /// a rejection is far cheaper for the server to produce than a success, so a
+  /// client that guesses its own backoff and guesses short raises load at the
+  /// exact moment it should be shedding it. That is the 2026-08-04 staging
+  /// latch — a 429 returned ~100x faster than a success and turned one fetch
+  /// per 5s into ~20/sec per card.
+  final Duration? retryAfter;
+
   PangeaHttpException({
     required this.statusCode,
     required this.method,
     required this.path,
     String? detail,
+    this.retryAfter,
   }) : detail = detail == null || detail.length <= maxDetailLength
            ? detail
            : detail.substring(0, maxDetailLength);
@@ -48,8 +61,28 @@ class PangeaHttpException implements Exception {
       method: request?.method ?? 'UNKNOWN',
       path: request == null ? 'unknown' : normalizePath(request.url),
       detail: detail ?? detailFromResponse(response),
+      retryAfter: retryAfterFromResponse(response),
     );
   }
+
+  /// The `Retry-After` delay, or null when absent or unparseable.
+  ///
+  /// Only the delta-seconds form is read. The HTTP-date form is legal but we
+  /// never send it, and a client clock that disagrees with the server's would
+  /// turn it into an arbitrary wait — so an unrecognised value is treated as
+  /// "no advice given" and the caller falls back to its own default, rather
+  /// than being handed a number that could be wildly wrong.
+  static Duration? retryAfterFromResponse(http.Response response) {
+    final raw = response.headers['retry-after'];
+    if (raw == null) return null;
+    final seconds = int.tryParse(raw.trim());
+    if (seconds == null || seconds < 0) return null;
+    return Duration(seconds: seconds);
+  }
+
+  /// [retryAfter] when [error] is a throttle that carried one.
+  static Duration? retryAfterOf(Object? error) =>
+      error is PangeaHttpException ? error.retryAfter : null;
 
   /// The typed failure for a Synapse Pangea module call. Those sites reach the
   /// homeserver through the Matrix SDK's `Api.httpClient` rather than
@@ -65,7 +98,15 @@ class PangeaHttpException implements Exception {
     http.StreamedResponse response,
     List<int> body,
   ) => PangeaHttpException.fromResponse(
-    http.Response.bytes(body, response.statusCode, request: request),
+    // Headers come across too: `http.Response.bytes` defaults them to empty, so
+    // omitting them silently drops `Retry-After` on this path and the caller
+    // falls back to guessing — the one thing the header exists to stop.
+    http.Response.bytes(
+      body,
+      response.statusCode,
+      request: request,
+      headers: response.headers,
+    ),
   );
 
   static final _uuid = RegExp(
@@ -137,8 +178,14 @@ class PangeaHttpException implements Exception {
   /// this rule's rather than Sentry's.
   static const String fingerprintNamespace = 'pangea-http';
 
-  /// The Sentry grouping key for [error] — status, method, and normalized
-  /// path — or null for anything else, which keeps Sentry's default grouping.
+  /// Namespaces the grouping key of a named [TimeoutException], for the same
+  /// reasons as [fingerprintNamespace].
+  static const String timeoutFingerprintNamespace = 'pangea-timeout';
+
+  /// The Sentry grouping key for [error]: status, method, and normalized path
+  /// for a [PangeaHttpException]; the operation for a [TimeoutException] that
+  /// names one (`timeoutNamed`); null for anything else, which keeps Sentry's
+  /// default grouping.
   ///
   /// Sentry groups by stack trace, and every [PangeaHttpException] is raised
   /// through the same frame in `Requests`, so grouping collapsed every failure
@@ -152,7 +199,20 @@ class PangeaHttpException implements Exception {
   /// `No canonical activity found for activity_id='<uuid>'`, so fingerprinting
   /// on it would split one endpoint into an issue per resource — the thing
   /// [normalizePath] exists to prevent.
+  ///
+  /// A timeout needs the same treatment for the opposite reason: on the web a
+  /// bare `timeout()` has no app frame at all — the stack is the timer
+  /// callback — so every expired wait in the app collapsed into one issue that
+  /// said nothing (CLIENT-AXX, #8889). An unnamed timeout deliberately keeps
+  /// default grouping, so anything still landing there is a site that has not
+  /// been named.
   static List<String>? fingerprintOf(Object? error) {
+    if (error is TimeoutException) {
+      final operation = error.message;
+      return operation == null
+          ? null
+          : [timeoutFingerprintNamespace, operation];
+    }
     if (error is! PangeaHttpException) return null;
     return [
       fingerprintNamespace,
@@ -162,15 +222,34 @@ class PangeaHttpException implements Exception {
     ];
   }
 
+  /// Matrix errcodes that mean the homeserver refused what the learner typed:
+  /// an unknown email on password reset, a username it will not accept, an
+  /// email or username already taken. Expected, and only the learner can act
+  /// on it (#8836).
+  static const Set<MatrixError> _rejectedInputErrors = {
+    MatrixError.M_THREEPID_NOT_FOUND,
+    MatrixError.M_INVALID_USERNAME,
+    MatrixError.M_USER_IN_USE,
+    MatrixError.M_THREEPID_IN_USE,
+  };
+
   /// The one severity table for a repo-layer fetch failure
   /// (repos-and-error-handling.instructions.md § Severity policy). Severity is
   /// a property of the failure, not of the author's judgment at the call site:
-  /// timeouts are transient, 401 is token lifecycle, 404/410 mean the resource
-  /// is gone (a normal state), 429 is expected under load — all warnings.
-  /// Everything else — malformed requests (4xx) and backend regressions (5xx)
-  /// — is an error.
+  /// input the homeserver refused ([_rejectedInputErrors]) is info; timeouts
+  /// are transient, a request that never reached a server (offline, DNS,
+  /// CORS, a blocked request — every one a [http.ClientException]) has
+  /// nothing in code to fix, 401 is token lifecycle, 404/410 mean the
+  /// resource is gone (a normal state), 429 is expected under load — all
+  /// warnings. Everything else — malformed requests (4xx) and backend
+  /// regressions (5xx) — is an error.
   static SentryLevel severityOf(Object? error) {
     if (error is TimeoutException) return SentryLevel.warning;
+    if (error is http.ClientException) return SentryLevel.warning;
+    if (error is MatrixException &&
+        _rejectedInputErrors.contains(error.error)) {
+      return SentryLevel.info;
+    }
     switch (statusCodeOf(error)) {
       case 401:
       case 404:

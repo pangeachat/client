@@ -19,6 +19,7 @@ import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class LemmaReactionPicker extends StatefulWidget {
+  final LemmaMeaningBuilderState controller;
   final Event? event;
   final ConstructIdentifier constructId;
   final String langCode;
@@ -29,6 +30,7 @@ class LemmaReactionPicker extends StatefulWidget {
 
   const LemmaReactionPicker({
     super.key,
+    required this.controller,
     required this.constructId,
     required this.langCode,
     required this.enableSelection,
@@ -196,113 +198,102 @@ class LemmaReactionPickerState extends State<LemmaReactionPicker>
     final canShowReactionBadge =
         globallyEnableReactions && !hasSentSelectedEmojiReaction;
 
-    return LemmaMeaningBuilder(
-      langCode: widget.langCode,
-      constructId: widget.constructId,
-      messageInfo: widget.event?.content ?? {},
-      builder: (context, controller) {
-        return switch (controller.state) {
-          AsyncError() => const SizedBox.shrink(),
-          AsyncLoaded(value: final lemmaInfo) => ScrollableEmojiRow(
-            children: [
-              ...lemmaInfo.emoji.map((emoji) {
-                final selected = _selectedEmoji == emoji;
-                final targetId = "$targetIdBase-$emoji";
+    return switch (widget.controller.state) {
+      AsyncError() => const SizedBox.shrink(),
+      AsyncLoaded(value: final lemmaInfo) => ScrollableEmojiRow(
+        children: [
+          ...lemmaInfo.emoji.map((emoji) {
+            final selected = _selectedEmoji == emoji;
+            final targetId = "$targetIdBase-$emoji";
 
-                final showReactionBadge = canShowReactionBadge && selected;
-                final badge = showReactionBadge
-                    ? const Icon(Icons.add_reaction, size: 12.0)
-                    : null;
+            final showReactionBadge = canShowReactionBadge && selected;
+            final badge = showReactionBadge
+                ? const Icon(Icons.add_reaction, size: 12.0)
+                : null;
 
-                final enabled = selected
-                    ? globallyEnableReactions
-                    : globallyEnableSelection;
+            final enabled = selected
+                ? globallyEnableReactions
+                : globallyEnableSelection;
 
-                return HoverBuilder(
-                  builder: (context, hovered) => MouseRegion(
-                    cursor: enabled
-                        ? SystemMouseCursors.click
-                        : SystemMouseCursors.basic,
-                    child: GestureDetector(
-                      onTap: enabled
-                          ? () => emoji != _selectedEmoji
-                                ? _setLemmaEmoji(emoji, targetId)
-                                : _sendOrRedactReaction(emoji)
-                          : null,
-                      child: Stack(
-                        children: [
-                          ShimmerBackground(
-                            enabled: enabled && _selectedEmoji == null,
-                            delayBetweenPulses: const Duration(seconds: 5),
-                            child: CompositedTransformTarget(
-                              link: MatrixState.pAnyState
-                                  .layerLinkAndKey(targetId)
-                                  .link,
-                              child: AnimatedContainer(
-                                key: MatrixState.pAnyState
-                                    .layerLinkAndKey(targetId)
-                                    .key,
-                                duration: const Duration(milliseconds: 200),
-                                padding: const EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                  color:
-                                      globallyEnableSelection &&
-                                          (hovered || selected)
-                                      ? Theme.of(
-                                          context,
-                                        ).colorScheme.secondary.withAlpha(30)
-                                      : Colors.transparent,
-                                  borderRadius: BorderRadius.circular(
-                                    AppConfig.borderRadius,
-                                  ),
-                                  border: selected
-                                      ? Border.all(
-                                          color: Colors.transparent,
-                                          width: 4,
-                                        )
-                                      : null,
-                                ),
-                                child: Text(
-                                  emoji,
-                                  style: Theme.of(
-                                    context,
-                                  ).textTheme.headlineSmall,
-                                ),
+            return HoverBuilder(
+              builder: (context, hovered) => MouseRegion(
+                cursor: enabled
+                    ? SystemMouseCursors.click
+                    : SystemMouseCursors.basic,
+                child: GestureDetector(
+                  onTap: enabled
+                      ? () => emoji != _selectedEmoji
+                            ? _setLemmaEmoji(emoji, targetId)
+                            : _sendOrRedactReaction(emoji)
+                      : null,
+                  child: Stack(
+                    children: [
+                      ShimmerBackground(
+                        enabled: enabled && _selectedEmoji == null,
+                        delayBetweenPulses: const Duration(seconds: 5),
+                        child: CompositedTransformTarget(
+                          link: MatrixState.pAnyState
+                              .layerLinkAndKey(targetId)
+                              .link,
+                          child: AnimatedContainer(
+                            key: MatrixState.pAnyState
+                                .layerLinkAndKey(targetId)
+                                .key,
+                            duration: const Duration(milliseconds: 200),
+                            padding: const EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              color:
+                                  globallyEnableSelection &&
+                                      (hovered || selected)
+                                  ? Theme.of(
+                                      context,
+                                    ).colorScheme.secondary.withAlpha(30)
+                                  : Colors.transparent,
+                              borderRadius: BorderRadius.circular(
+                                AppConfig.borderRadius,
                               ),
+                              border: selected
+                                  ? Border.all(
+                                      color: Colors.transparent,
+                                      width: 4,
+                                    )
+                                  : null,
+                            ),
+                            child: Text(
+                              emoji,
+                              style: Theme.of(context).textTheme.headlineSmall,
                             ),
                           ),
-                          if (badge != null)
-                            Positioned(right: 6, bottom: 6, child: badge),
-                        ],
+                        ),
                       ),
-                    ),
-                  ),
-                );
-              }),
-            ],
-          ),
-          _ => ScrollableEmojiRow(
-            children: List.generate(
-              3,
-              (_) => Shimmer.fromColors(
-                baseColor: Colors.transparent,
-                highlightColor: Theme.of(
-                  context,
-                ).colorScheme.primary.withAlpha(70),
-                child: Container(
-                  height: 55.0,
-                  width: 55.0,
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.primary,
-                    borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+                      if (badge != null)
+                        Positioned(right: 6, bottom: 6, child: badge),
+                    ],
                   ),
                 ),
               ),
+            );
+          }),
+        ],
+      ),
+      _ => ScrollableEmojiRow(
+        children: List.generate(
+          3,
+          (_) => Shimmer.fromColors(
+            baseColor: Colors.transparent,
+            highlightColor: Theme.of(context).colorScheme.primary.withAlpha(70),
+            child: Container(
+              height: 55.0,
+              width: 55.0,
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.primary,
+                borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+              ),
             ),
           ),
-        };
-      },
-    );
+        ),
+      ),
+    };
   }
 }
 

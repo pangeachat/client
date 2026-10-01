@@ -14,17 +14,18 @@ import 'package:fluffychat/routes/world/world_map_filter_bar.dart';
 import 'package:fluffychat/routes/world/world_map_large_card.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_search_overlay.dart';
+import 'package:fluffychat/widgets/layouts/workspace_shell.dart';
 
 /// Covers #8724 (finding 4 of the 2026-09 a11y triage, #8689): keyboard focus
 /// on the world map chrome must always be VISIBLE. The filter pills are
 /// PopupMenuButtons whose opaque pill fill swallows InkWell's behind-the-child
 /// focus highlight (the #7219 failure mode — measured at exactly 0 changed
 /// pixels on staging), so they draw the app's gold focus ring explicitly. The
-/// composed walk then proves the whole chrome ring: Tab moves pin layer →
-/// search field → each pill → the on-map controls with no invisible stop in
-/// between — the map subtree is ExcludeSemantics'd (#8013), which hides
-/// widgets from AT but NOT from Tab order, so any focusable inside it without
-/// ExcludeFocus is an invisible dead stop (2.4.7).
+/// composed walk then proves the whole chrome ring: Tab moves search field →
+/// each pill → the on-map controls → the pin layer's single stop last (#8810)
+/// with no invisible stop in between — the map subtree is ExcludeSemantics'd
+/// (#8013), which hides widgets from AT but NOT from Tab order, so any
+/// focusable inside it without ExcludeFocus is an invisible dead stop (2.4.7).
 void main() {
   // Rings render only in traditional (keyboard) highlight mode; the test
   // binding's platform defaults to touch, so pin the mode for the ring
@@ -211,12 +212,15 @@ void main() {
   });
 
   // The user-visible chrome contract (#8724, extending #8714's probe): Tab
-  // walks the map's REAL chrome — pin layer → search field → the three filter
-  // pills → the on-map controls — landing every press on a control with a
-  // visible indicator, never on an invisible focusable inside the
-  // ExcludeSemantics'd map subtree. Pumps the view's actual composition
-  // (large card with its dismiss X, attribution widget, real search overlay)
-  // so a focusable added to the map subtree without ExcludeFocus fails here.
+  // walks the map's REAL chrome — search field → the three filter pills →
+  // the on-map controls → the pin layer's single stop last (#8810) — landing
+  // every press on a control with a visible indicator, never on an invisible
+  // focusable inside the ExcludeSemantics'd map subtree. Pumps the view's
+  // actual composition (large card with its dismiss X, attribution widget,
+  // real search overlay) under the shell's ordered traversal and the view's
+  // WorkspaceOrder ranks, so a focusable added to the map subtree without
+  // ExcludeFocus fails here, and so does a rank that puts the backdrop
+  // before the controls drawn over it.
   testWidgets('Tab walks the composed chrome with no invisible dead stop', (
     tester,
   ) async {
@@ -243,104 +247,116 @@ void main() {
         localizationsDelegates: L10n.localizationsDelegates,
         supportedLocales: L10n.supportedLocales,
         home: Scaffold(
-          body: Stack(
-            children: [
-              Positioned.fill(
-                child: ExcludeSemantics(
-                  child: FlutterMap(
-                    mapController: controller,
-                    options: MapOptions(
-                      initialCenter: const LatLng(0, 0),
-                      initialZoom: 3,
-                      interactionOptions: InteractionOptions(
-                        keyboardOptions: KeyboardOptions(
-                          focusNode: mapFocusNode,
-                          autofocus: false,
+          body: FocusTraversalGroup(
+            policy: OrderedTraversalPolicy(),
+            child: FocusTraversalOrder(
+              order: WorkspaceOrder.map.focusOrder,
+              child: Stack(
+                children: [
+                  Positioned.fill(
+                    child: ExcludeSemantics(
+                      child: FlutterMap(
+                        mapController: controller,
+                        options: MapOptions(
+                          initialCenter: const LatLng(0, 0),
+                          initialZoom: 3,
+                          interactionOptions: InteractionOptions(
+                            keyboardOptions: KeyboardOptions(
+                              focusNode: mapFocusNode,
+                              autofocus: false,
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                    children: [
-                      MarkerLayer(
-                        markers: [
-                          Marker(
-                            point: const LatLng(10, 40),
-                            width: 260,
-                            height: 180,
-                            child: WorldMapLargeCard(
-                              card: card,
-                              state: ActivityPinState.available,
-                              pinged: false,
-                              plan: null,
-                              starsEarned: 0,
-                              participants: const [],
-                              openSlots: 0,
-                              onTap: () {},
-                              onClose: () {},
+                        children: [
+                          MarkerLayer(
+                            markers: [
+                              Marker(
+                                point: const LatLng(10, 40),
+                                width: 260,
+                                height: 180,
+                                child: WorldMapLargeCard(
+                                  card: card,
+                                  state: ActivityPinState.available,
+                                  pinged: false,
+                                  plan: null,
+                                  starsEarned: 0,
+                                  participants: const [],
+                                  openSlots: 0,
+                                  onTap: () {},
+                                  onClose: () {},
+                                ),
+                              ),
+                            ],
+                          ),
+                          // The view wraps the attribution in ExcludeFocus — its
+                          // internal expand IconButton is otherwise an invisible
+                          // Tab stop (#8714).
+                          ExcludeFocus(
+                            child: RichAttributionWidget(
+                              alignment: AttributionAlignment.bottomLeft,
+                              attributions: [
+                                TextSourceAttribution(
+                                  'OpenStreetMap contributors',
+                                  onTap: () {},
+                                ),
+                              ],
                             ),
                           ),
                         ],
                       ),
-                      // The view wraps the attribution in ExcludeFocus — its
-                      // internal expand IconButton is otherwise an invisible
-                      // Tab stop (#8714).
-                      ExcludeFocus(
-                        child: RichAttributionWidget(
-                          alignment: AttributionAlignment.bottomLeft,
-                          attributions: [
-                            TextSourceAttribution(
-                              'OpenStreetMap contributors',
-                              onTap: () {},
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
-                ),
+                  Positioned.fill(
+                    child: PinSemanticsLayer(
+                      mapController: controller,
+                      cards: const [card],
+                      stateOf: (_) => ActivityPinState.available,
+                      onTap: (_) {},
+                    ),
+                  ),
+                  // The real search + filter overlay, at the view's spot and rank.
+                  Positioned(
+                    top: 12,
+                    left: 12,
+                    width: 360,
+                    child: FocusTraversalOrder(
+                      order: WorkspaceOrder.mapChrome.focusOrder,
+                      child: WorldMapSearchOverlay(
+                        filter: const WorldMapFilter(),
+                        updateQuery: (_) {},
+                        onWidenSearch: () {},
+                        setCefrLevel: (_) {},
+                        setPartySize: (_) {},
+                        setStatus: (_) {},
+                        results: const [],
+                        onResultTap: (_) {},
+                        onReset: () {},
+                        emptyVerdict: MapEmptyVerdict.none,
+                        canZoomOut: true,
+                        onZoomOut: () {},
+                      ),
+                    ),
+                  ),
+                  // Stand-in for the bottom-right zoom controls (the real ones
+                  // need the full WorldMapController) at the view's rank: the
+                  // next stop after the pills, so the walk proves Tab leaves the
+                  // overlay onto the on-map controls in ONE press.
+                  Positioned(
+                    right: 12,
+                    bottom: 28,
+                    child: FocusTraversalOrder(
+                      order: WorkspaceOrder.mapControls.focusOrder,
+                      child: IconButton(
+                        focusNode: zoomFocusNode,
+                        icon: const Icon(Icons.public),
+                        tooltip: 'Zoom stand-in',
+                        onPressed: () {},
+                      ),
+                    ),
+                  ),
+                ],
               ),
-              Positioned.fill(
-                child: PinSemanticsLayer(
-                  mapController: controller,
-                  cards: const [card],
-                  stateOf: (_) => ActivityPinState.available,
-                  onTap: (_) {},
-                ),
-              ),
-              // The real search + filter overlay, at the view's spot.
-              Positioned(
-                top: 12,
-                left: 12,
-                width: 360,
-                child: WorldMapSearchOverlay(
-                  filter: const WorldMapFilter(),
-                  updateQuery: (_) {},
-                  onWidenSearch: () {},
-                  setCefrLevel: (_) {},
-                  setPartySize: (_) {},
-                  setStatus: (_) {},
-                  results: const [],
-                  onResultTap: (_) {},
-                  onReset: () {},
-                  emptyVerdict: MapEmptyVerdict.none,
-                  canZoomOut: true,
-                  onZoomOut: () {},
-                ),
-              ),
-              // Stand-in for the bottom-right zoom controls (the real ones
-              // need the full WorldMapController): the next focusable after
-              // the pills in reading order, so the walk proves Tab leaves
-              // the overlay onto the on-map controls in ONE press.
-              Positioned(
-                right: 12,
-                bottom: 28,
-                child: IconButton(
-                  focusNode: zoomFocusNode,
-                  icon: const Icon(Icons.public),
-                  tooltip: 'Zoom stand-in',
-                  onPressed: () {},
-                ),
-              ),
-            ],
+            ),
           ),
         ),
       ),
@@ -352,18 +368,8 @@ void main() {
     await tester.pumpAndSettle();
     final l10n = L10n.of(tester.element(find.byType(WorldMapFilterBar)));
 
-    // Tab 1: the pin layer (its authored roving ring — #8714).
-    await tester.sendKeyEvent(LogicalKeyboardKey.tab);
-    await tester.pumpAndSettle();
-    expect(
-      find.byKey(PinSemanticsLayerState.ringKey),
-      findsOneWidget,
-      reason:
-          'Tab 1 must rove the pin layer; focus landed on '
-          '${FocusManager.instance.primaryFocus}',
-    );
-
-    // Tab 2: the search field.
+    // Tab 1: the search field — the map's chrome leads its region, ahead of
+    // the backdrop it is drawn over (#8810).
     await tester.sendKeyEvent(LogicalKeyboardKey.tab);
     await tester.pumpAndSettle();
     final editable = tester.widget<EditableText>(find.byType(EditableText));
@@ -371,12 +377,11 @@ void main() {
       editable.focusNode.hasFocus,
       isTrue,
       reason:
-          'Tab 2 must reach the search field; focus landed on '
-          '${FocusManager.instance.primaryFocus} — an invisible dead stop '
-          'in between (2.4.7)',
+          'Tab 1 must reach the search field; focus landed on '
+          '${FocusManager.instance.primaryFocus}',
     );
 
-    // Tabs 3–5: the three pills, each wearing the visible ring.
+    // Tabs 2–4: the three pills, each wearing the visible ring.
     await tester.sendKeyEvent(LogicalKeyboardKey.tab);
     await tester.pumpAndSettle();
     expectRingOn(tester, l10n.mapFilterAllLevels);
@@ -387,7 +392,7 @@ void main() {
     await tester.pumpAndSettle();
     expectRingOn(tester, l10n.mapFilterAllStatuses);
 
-    // Tab 6: straight onto the on-map controls — nothing invisible between
+    // Tab 5: straight onto the on-map controls — nothing invisible between
     // the last pill and the next real control (the pre-#8717 staging
     // measurement found 3 consecutive dead presses exactly here: the large
     // cards' un-excluded dismiss X's).
@@ -400,6 +405,19 @@ void main() {
           'one Tab from the last pill must reach the next real control; '
           'focus landed on ${FocusManager.instance.primaryFocus} instead — '
           'an invisible dead stop in the map subtree (2.4.7, #8724)',
+    );
+
+    // Tab 6: the pin layer's single stop (its authored roving ring — #8714),
+    // last in the region so the map never precedes the controls drawn over
+    // it (#8810).
+    await tester.sendKeyEvent(LogicalKeyboardKey.tab);
+    await tester.pumpAndSettle();
+    expect(
+      find.byKey(PinSemanticsLayerState.ringKey),
+      findsOneWidget,
+      reason:
+          'Tab 6 must rove the pin layer; focus landed on '
+          '${FocusManager.instance.primaryFocus}',
     );
 
     mapFocusNode.dispose();

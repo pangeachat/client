@@ -269,14 +269,12 @@ class QuestRepo {
 
   /// Repo-wide pause after choreo rate-limits the activity reads (#8360).
   ///
-  /// [RateLimitPause] carries the reasoning; what this instance decides is its
-  /// SCOPE. Shared with `ActivityMapRepo` because the world map fires both
-  /// reads — the course-scoped quest listing here and the viewport bbox query
-  /// there — against the same `/choreo` activities budget, so honouring a 429
-  /// on one while hammering the other honours nothing. Not shared any wider:
-  /// choreo meters `/subscription` separately, and an activity 429 must never
-  /// stall checkout. `ActivityPlanRepo` holds its own for the same reason.
-  static final RateLimitPause activityReadPause = RateLimitPause();
+  /// The activity-read pause, by its name here. [RateLimitPause.choreoReads] is
+  /// the instance and carries the reasoning: every read the server meters on one
+  /// budget shares one pause, so a 429 earned by the quest listing also stops
+  /// the bbox query and the activity-plan reads, which used to run on until they
+  /// earned their own.
+  static RateLimitPause get activityReadPause => RateLimitPause.choreoReads;
 
   /// The quest's activities from the choreo course listing — the
   /// membership-aware read that may include the quest owner's private

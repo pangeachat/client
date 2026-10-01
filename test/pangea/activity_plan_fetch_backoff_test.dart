@@ -5,9 +5,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_storage/get_storage.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_plan_fetch_request.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_fetch_response.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
+import 'package:fluffychat/pangea/common/network/rate_limit_pause.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'fake_pangea_controller.dart';
 
@@ -196,6 +198,167 @@ void main() {
           PangeaHttpException(statusCode: 429, method: 'GET', path: '/a/{id}'),
         ),
         ActivityPlanLookupStatus.failed,
+      );
+    });
+  });
+
+  group('the pause gates the direct read path, not only ensure()', () {
+    // `lookup` ARMED the pause and never observed it, so every caller that does
+    // not go through `ensure` — the activity start page, the summary read —
+    // walked through an armed pause and re-asked a server that had just said
+    // stop. `ensure` was the only gate, which made the invariant partial.
+    test('lookup declines while paused, without asking the backend', () async {
+      repo.rateLimitedForTesting();
+
+      final result = await repo.lookup('paused-1', l1: 'en');
+
+      expect(result.status, ActivityPlanLookupStatus.failed);
+      expect(
+        result.error,
+        isA<RateLimitedException>(),
+        reason:
+            'the caller must be able to show "wait a moment" rather than '
+            '"check your connection" — and without spending a request to '
+            'rediscover a throttle we already know about',
+      );
+    });
+
+    test('getPlan is gated too, since it delegates to lookup', () async {
+      repo.rateLimitedForTesting();
+      expect(await repo.getPlan('paused-2', l1: 'en'), isNull);
+    });
+
+    test('the read resumes once the pause lapses', () async {
+      repo.rateLimitedForTesting(const Duration(seconds: 30));
+
+      expect(
+        (await repo.lookup('paused-3', l1: 'en')).error,
+        isA<RateLimitedException>(),
+      );
+
+      clock = clock.add(const Duration(seconds: 31));
+      final after = await repo.lookup('paused-3', l1: 'en');
+      expect(
+        after.error,
+        isNot(isA<RateLimitedException>()),
+        reason: 'a throttle is transient — the pause must clear itself',
+      );
+    });
+  });
+
+  group('a pause suppresses asking, never answering', () {
+    /// Seeds the TTL cache the way a prior successful fetch would have.
+    Future<void> seed(String activityId) => repo.setCached(
+      ActivityPlanFetchRequest(activityId: activityId, l1: 'en'),
+      ActivityPlanFetchResponse(
+        rawPlan: {
+          'activity_id': activityId,
+          'roles': [
+            {'role_id': 'r1', 'name': 'Cliente'},
+          ],
+        },
+        l1: 'en',
+        versionId: 'v1',
+      ),
+    );
+
+    test('a cached plan still serves while paused', () async {
+      // Withholding a plan we already hold would turn a throttle into a blank
+      // surface for a learner who could have been served from memory — strictly
+      // worse than before the pause existed. Only a read that would reach the
+      // network is gated.
+      await seed('cached-1');
+      repo.rateLimitedForTesting();
+
+      final result = await repo.lookup('cached-1', l1: 'en');
+
+      expect(result.status, ActivityPlanLookupStatus.found);
+      expect(result.plan?.activityId, 'cached-1');
+      expect(result.error, isNull);
+    });
+
+    test('an uncached read is still gated while paused', () async {
+      // The other half of the same rule: this one WOULD reach the network.
+      repo.rateLimitedForTesting();
+      final result = await repo.lookup('uncached-1', l1: 'en');
+      expect(result.status, ActivityPlanLookupStatus.failed);
+      expect(result.error, isA<RateLimitedException>());
+    });
+
+    test('forceRefresh is not exempt — it fetches regardless', () async {
+      await seed('cached-2');
+      repo.rateLimitedForTesting();
+
+      final result = await repo.lookup(
+        'cached-2',
+        l1: 'en',
+        forceRefresh: true,
+      );
+
+      expect(
+        result.error,
+        isA<RateLimitedException>(),
+        reason:
+            'a forced refresh bypasses the cache by definition, so serving it '
+            'from cache would silently ignore what the caller asked for',
+      );
+    });
+  });
+
+  group('a dropped backlog is not parked past the pause', () {
+    test('queued keys are released when the pause drops them', () async {
+      // `ensure` parks a key BEFORE enqueuing. Dropping the backlog on a 429
+      // used to leave those parks in place for the full 60s cooldown, which
+      // outlasts a shorter Retry-After: the server says come back in 5s and the
+      // cooldown holds the screen empty for the remaining 55.
+      for (var i = 0; i < 20; i++) {
+        repo.ensure('drop-$i', l1: 'en');
+      }
+      expect(repo.queuedCount, greaterThan(0));
+
+      // Armed while the backlog is still waiting, then settled: the drop runs
+      // inside `_pump`, which is only re-entered when an in-flight fetch
+      // completes — `ensure` returns before pumping once the pause is up.
+      repo.rateLimitedForTesting(const Duration(seconds: 5));
+      await settle();
+      expect(repo.queuedCount, 0, reason: 'the backlog was dropped');
+
+      clock = clock.add(const Duration(seconds: 6));
+
+      expect(
+        repo.ensure('drop-19', l1: 'en'),
+        isTrue,
+        reason:
+            'the pause has lapsed and this key never reached the network, so '
+            'there is no attempt to back off from',
+      );
+    });
+  });
+
+  group('the server decides how long we wait', () {
+    test('a Retry-After shorter than the default is honoured', () async {
+      // Guessing a flat minute when the server said five seconds costs the
+      // learner 55s of a surface that could already have loaded.
+      repo.rateLimitedForTesting(const Duration(seconds: 5));
+
+      clock = clock.add(const Duration(seconds: 6));
+
+      expect(
+        (await repo.lookup('retry-1', l1: 'en')).error,
+        isNot(isA<RateLimitedException>()),
+      );
+    });
+
+    test('a Retry-After longer than the default is honoured', () async {
+      // The direction that protects the SERVER: retrying at 60s when it asked
+      // for 120s is what turns a throttle into sustained load.
+      repo.rateLimitedForTesting(const Duration(seconds: 120));
+
+      clock = clock.add(const Duration(seconds: 61));
+
+      expect(
+        (await repo.lookup('retry-2', l1: 'en')).error,
+        isA<RateLimitedException>(),
       );
     });
   });

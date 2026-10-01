@@ -6,23 +6,22 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/routes/world/activity_participant_row.dart';
+import 'package:fluffychat/pangea/common/widgets/activity_participant_row.dart';
 import 'package:fluffychat/routes/world/world_map_large_card.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/widgets/activity_star_row.dart';
 import 'package:fluffychat/widgets/avatar.dart';
+import '../activity_session_fixtures.dart';
 import '../get_test_client.dart';
 
-/// #8278 — an ongoing-active card leads with the activity's thumbnail so it
-/// reads as the same thing as that session's Chats-list tile, and it is the
-/// ONLY card state with an image: joinable and ongoing-pending give that width
-/// to their seat circles (world-map.instructions.md, "Pin display"). The
-/// dismiss X moved off the title line to the card's top-left corner, inside the
-/// border.
+/// #8278 / #8684 — both ongoing sub-states lead with the activity's thumbnail
+/// so a card reads as the same thing as that session's Chats-list tile;
+/// joinable gives that width to its seat circles and never shows an image
+/// (world-map.instructions.md, "Pin display"). The dismiss X moved off the
+/// title line to the card's top-left corner, inside the border.
 void main() {
   late Client client;
 
-  const roomId = '!session:fakeServer.notExisting';
   final thumbnail = Uri.parse('https://example.org/stadium.png');
 
   const card = QuestActivityCard(
@@ -45,22 +44,10 @@ void main() {
   });
 
   /// A session room wearing the activity's picture, which is what
-  /// `launchActivitySession` writes as the room avatar at launch.
-  Room sessionRoom() {
-    final room = Room(id: roomId, client: client, membership: Membership.join);
-    room.setState(
-      Event(
-        type: EventTypes.RoomAvatar,
-        content: {'url': thumbnail.toString()},
-        stateKey: '',
-        senderId: '@test:fakeServer.notExisting',
-        eventId: '\$avatar',
-        originServerTs: DateTime.utc(2026, 1, 1, 12),
-        room: room,
-      ),
-    );
-    return room;
-  }
+  /// `launchActivitySession` writes as the room avatar at launch. Its embedded
+  /// two-role plan with no claims makes `numRemainingRoles` 2, so a pending
+  /// card draws its hourglass + open-seat row.
+  Room sessionRoom() => activitySessionRoom(client, avatarUrl: thumbnail);
 
   Future<void> pumpCard(
     WidgetTester tester, {
@@ -122,13 +109,23 @@ void main() {
     expect(showsThumbnail(tester), isFalse);
   });
 
-  testWidgets('an ongoing-pending card shows no image', (tester) async {
+  testWidgets('an ongoing-pending card leads with the thumbnail too (#8684)', (
+    tester,
+  ) async {
     await pumpCard(
       tester,
       state: ActivityPinState.ongoingPending,
       liveRoom: sessionRoom(),
     );
+    expect(showsThumbnail(tester), isTrue);
+  });
+
+  testWidgets('an ongoing-pending card with no room yet shows no image', (
+    tester,
+  ) async {
+    await pumpCard(tester, state: ActivityPinState.ongoingPending);
     expect(showsThumbnail(tester), isFalse);
+    expect(find.byType(WorldMapLargeCard), findsOneWidget);
   });
 
   testWidgets('an ongoing-active card with no room yet still renders', (
@@ -189,6 +186,37 @@ void main() {
         ),
       );
     });
+
+    testWidgets(
+      'a pending card shares the active card\'s exact left edge (#8684)',
+      (tester) async {
+        // The pending card is the active card's geometry with waiting-room
+        // content: same thumbnail gutter, so the title starts at the same x.
+        await pumpCard(
+          tester,
+          state: ActivityPinState.ongoingActive,
+          liveRoom: sessionRoom(),
+          onClose: () {},
+        );
+        final activeTitleX = tester.getTopLeft(find.text(card.title)).dx;
+
+        await pumpCard(
+          tester,
+          state: ActivityPinState.ongoingPending,
+          liveRoom: sessionRoom(),
+          onClose: () {},
+        );
+        expect(
+          tester.getTopLeft(find.text(card.title)).dx,
+          moreOrLessEquals(activeTitleX, epsilon: 0.5),
+        );
+        // And the seat row sits on that same edge, under the title.
+        expect(
+          tester.getTopLeft(find.byType(ActivityParticipantRow)).dx,
+          moreOrLessEquals(activeTitleX, epsilon: 0.5),
+        );
+      },
+    );
   });
 
   group('the dismiss X', () {

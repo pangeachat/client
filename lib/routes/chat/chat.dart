@@ -23,6 +23,7 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_constants.dart';
+import 'package:fluffychat/features/activity_sessions/activity_summary_room_extension.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
@@ -51,11 +52,14 @@ import 'package:fluffychat/features/overlay/overlay_display_details.dart';
 import 'package:fluffychat/features/overlay/overlay_position.dart';
 import 'package:fluffychat/features/overlay/transparent_backdrop.dart';
 import 'package:fluffychat/features/subscription/widgets/paywall_card.dart';
+import 'package:fluffychat/features/tutorials/tutorial_constants.dart';
 import 'package:fluffychat/features/tutorials/tutorial_enum.dart';
 import 'package:fluffychat/features/tutorials/tutorial_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_overlay_controller.dart';
+import 'package:fluffychat/features/tutorials/tutorial_seen_backfill.dart';
 import 'package:fluffychat/features/tutorials/tutorial_sequences.dart';
 import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
+import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
@@ -81,6 +85,7 @@ import 'package:fluffychat/routes/chat/choreographer/choreographer.dart';
 import 'package:fluffychat/routes/chat/choreographer/choreographer_state_extension.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/pangea_match_state_model.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/span_card.dart';
+import 'package:fluffychat/routes/chat/choreographer/igc/writing_assistance_popup_slot.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/writing_asssitance_popup_manager.dart';
 import 'package:fluffychat/routes/chat/choreographer/text_editing/edit_type_enum.dart';
 import 'package:fluffychat/routes/chat/choreographer/text_editing/pangea_text_controller.dart';
@@ -249,22 +254,24 @@ class ChatController extends State<ChatPageWithRoom>
 
   StreamSubscription? _readingAssistanceTutorialSubscription;
 
-  StreamSubscription? _forwardTutorialSubscription;
-  StreamSubscription? _goBackTutorialSubscription;
-
   StreamSubscription? _goalCompletionSubscription;
   StreamSubscription? _activityRolesSubscription;
 
   late final ValueNotifier<ActivityRoleGoal?> activeGoalNotifier;
 
-  /// The event used to start the reading-assistance tutorial. Stored so the
-  /// tutorial can be re-opened when the user navigates back through the sequence.
+  /// The event and token the chat tutorial sequence points at. Stored so any
+  /// of its tutorials can be (re-)opened whenever the controller asks — on
+  /// first launch, on back navigation, or after the toolbar is reopened.
   Event? _tutorialEvent;
   PangeaToken? tutorialToken;
 
+  /// App-scoped: one controller runs every sequence, so a tutorial can outlive
+  /// this chat. See tutorials.instructions.md.
+  TutorialOverlayController get tutorialOverlayController =>
+      MatrixState.tutorialOverlayController;
+
   final timelineUpdateNotifier = _TimelineUpdateNotifier();
   late final ActivityChatController activityController;
-  late final TutorialOverlayController tutorialOverlayController;
   late final WritingAssistancePopupManager _spanCardOverlayController;
   final ValueNotifier<bool> scrollableNotifier = ValueNotifier(false);
   // Pangea#
@@ -472,6 +479,12 @@ class ChatController extends State<ChatPageWithRoom>
     //   setReadMarker();
     // }
     // Pangea#
+    // Scrolling back to the bottom is a re-ask for the chat tutorial, whose
+    // scroll gate said "not yet" while the learner was up reading history.
+    if (scrollController.position.pixels <=
+        TutorialConstants.scrolledToBottomThreshold) {
+      _maybeStartChatTutorialSequence();
+    }
   }
 
   void _loadDraft() async {
@@ -679,21 +692,61 @@ class ChatController extends State<ChatPageWithRoom>
   // Pangea#
 
   void _readingAssistanceTutorialListener(SyncUpdate update) {
+    // Cheap gates only — this runs on every sync. The real evaluation is
+    // coalesced and re-runs from several signals, because a message can
+    // qualify only AFTER it arrived (see _checkChatTutorialSequence).
+    if (!_canLaunchTutorialSequence) return;
+    if (update.rooms?.join?[roomId]?.timeline?.events?.isNotEmpty != true) {
+      return;
+    }
+    _maybeStartChatTutorialSequence();
+  }
+
+  /// At most one pending evaluation, however many signals ask.
+  bool _chatTutorialCheckScheduled = false;
+
+  void _maybeStartChatTutorialSequence() {
+    if (_chatTutorialCheckScheduled) return;
+    _chatTutorialCheckScheduled = true;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _chatTutorialCheckScheduled = false;
+      _checkChatTutorialSequence();
+    });
+    // Without a frame coming the callback never runs and the flag latches —
+    // and this trigger's signals (sync, init completers) arrive between frames.
+    WidgetsBinding.instance.ensureVisualUpdate();
+  }
+
+  /// Re-evaluates whether the latest message qualifies to start the chat
+  /// tutorial sequence. Every clause reads state that arrives asynchronously —
+  /// the profile, the message's language analysis, the analytics service that
+  /// answers "is this word new" — so a "no" here only ever means "not yet",
+  /// and each of those arrivals re-asks (tutorials.instructions.md). The old
+  /// shape evaluated once per sync event and dropped the message for good on
+  /// any transient "no", which is why the sequence sometimes never fired on
+  /// the learner's first qualifying message.
+  void _checkChatTutorialSequence() {
+    if (!mounted) return;
+    // An unloaded profile reports every tutorial as already seen.
+    if (!MatrixState
+        .pangeaController
+        .userController
+        .initCompleter
+        .isCompleted) {
+      return;
+    }
     if (!_canLaunchTutorialSequence) return;
 
     final timeline = this.timeline;
     final l2 =
         MatrixState.pangeaController.userController.userL2?.langCodeShort;
-
     if (timeline == null || l2 == null) return;
 
-    final latestEvent = update.rooms?.join?[roomId]?.timeline?.events
-        ?.firstWhereOrNull(
-          (event) => event.eventId == timeline.events.firstOrNull?.eventId,
-        );
-    if (latestEvent == null) return;
-
-    final event = Event.fromMatrixEvent(latestEvent, room);
+    // The timeline's own head, not the sync payload: the listener used to
+    // require the sync batch's event to equal the timeline head, and lost the
+    // message whenever the timeline hadn't absorbed it yet.
+    final event = timeline.events.firstOrNull;
+    if (event == null) return;
     if (event.type != EventTypes.Message) return;
     if (event.messageType != MessageTypes.Text) return;
     if (event.redacted || !event.status.isSynced) return;
@@ -718,69 +771,185 @@ class ChatController extends State<ChatPageWithRoom>
     );
     if (token == null) return;
 
-    WidgetsBinding.instance.addPostFrameCallback(
-      (_) => _startAssistanceTutorialSequence(event, token),
-    );
+    _startAssistanceTutorialSequence(event, token);
   }
 
-  void _writingAssistanceTutorialListener(TutorialEnum? tutorial) {
-    if (tutorial != TutorialEnum.writingAssistance) return;
-    WidgetsBinding.instance.addPostFrameCallback(
-      (_) => _launchWritingAssistanceTutorial(),
-    );
+  /// Registers what this chat can put on screen. Each launcher owns its own
+  /// preparation, so the controller never has to know which host does what and
+  /// this class grows no per-tutorial switch. See tutorials.instructions.md.
+  void _registerTutorialLaunchers() {
+    tutorialOverlayController
+      ..registerLauncher(
+        TutorialEnum.readingAssistance,
+        _launchReadingAssistanceTutorial,
+      )
+      ..registerLauncher(
+        TutorialEnum.writingAssistance,
+        _launchWritingAssistanceTutorial,
+      )
+      // Opener, not owner: SelectModeButtons owns those targets and only
+      // exists while the toolbar is open, so this chat's job is to open it.
+      ..registerLauncher(
+        TutorialEnum.selectModeButtons,
+        _openToolbarForSelectModeTutorial,
+        role: TutorialLaunchRole.opener,
+      )
+      ..registerLauncher(
+        TutorialEnum.activityGoals,
+        _launchActivityGoalsTutorial,
+      );
   }
 
-  /// Called when the user navigates back across a tutorial-model boundary.
-  /// Re-prepares the required UI state and re-opens the appropriate tutorial
-  /// at its last step.
-  Future<void> _goBackTutorialListener(TutorialEnum? tutorial) async {
+  void _unregisterTutorialLaunchers() {
+    tutorialOverlayController
+      ..unregisterLauncher(
+        TutorialEnum.readingAssistance,
+        _launchReadingAssistanceTutorial,
+      )
+      ..unregisterLauncher(
+        TutorialEnum.writingAssistance,
+        _launchWritingAssistanceTutorial,
+      )
+      ..unregisterLauncher(
+        TutorialEnum.selectModeButtons,
+        _openToolbarForSelectModeTutorial,
+        role: TutorialLaunchRole.opener,
+      )
+      ..unregisterLauncher(
+        TutorialEnum.activityGoals,
+        _launchActivityGoalsTutorial,
+      );
+  }
+
+  /// Whether the goal header the tutorial points at is actually on screen.
+  /// The conditions themselves live in [activityGoalHeaderGate], beside the
+  /// activity's other gates and testable without a room.
+  bool get _hasGoalHeader => activityGoalHeaderGate(
+    showsStartPage: room.showsActivityStartPage,
+    showsActivityChatUI: room.showActivityChatUI,
+    hasSummary: room.hasGeneratedActivitySummary,
+    hasPickedRole: room.hasPickedRole,
+    hasGoals: room.ownRole?.allGoals.isNotEmpty ?? false,
+  );
+
+  /// At most one pending check, so the plan-hydrate notifier costs one callback
+  /// rather than one per notification.
+  bool _goalsTutorialCheckScheduled = false;
+
+  void _maybeStartActivityGoalsTutorial() {
+    if (_goalsTutorialCheckScheduled) return;
+    _goalsTutorialCheckScheduled = true;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _goalsTutorialCheckScheduled = false;
+      _checkActivityGoalsTutorial();
+    });
+    // A post-frame callback only runs if a frame is coming, and this trigger's
+    // re-ask signals (plan hydration, sync, the profile) arrive between frames;
+    // without asking for one, the flag above latches and swallows every later
+    // re-ask.
+    WidgetsBinding.instance.ensureVisualUpdate();
+  }
+
+  /// Every condition below starts out false on a cold open — the plan is still
+  /// being fetched so there is no role or goals, panel focus lands a frame late,
+  /// and the profile is still loading — so nothing here concludes, it just
+  /// re-asks. See tutorials.instructions.md on trigger evaluation.
+  void _checkActivityGoalsTutorial() {
     if (!mounted) return;
-    if (tutorial == null) return;
 
-    switch (tutorial) {
-      case TutorialEnum.readingAssistance:
-        final event = _tutorialEvent;
-        final token = tutorialToken;
-        if (event == null || token == null) return;
-        // Hide the toolbar (if open) before re-showing the reading-assistance
-        // tutorial which points at the message bubble itself.
-        clearSelectedEvents();
-        await Future.delayed(FluffyThemes.animationDuration);
-        if (!mounted) return;
-        _relaunchReadingAssistanceTutorial(event, token);
-        return;
-      case TutorialEnum.selectModeButtons:
-        final event = _tutorialEvent;
-        final token = tutorialToken;
-        if (event == null) return;
-        // Re-open the toolbar so SelectModeButtons mounts and picks up the queued tutorial.
-        showToolbar(
-          event,
-          bypassBlockingOverlays: true,
-          selectedToken: token,
-          isTutorial: true,
-        );
-        return;
-      case TutorialEnum.writingAssistance:
-        // The writing-assistance tutorial starts from the text input which is
-        // always visible, so no extra state preparation is needed.
-        WidgetsBinding.instance.addPostFrameCallback(
-          (_) => _launchWritingAssistanceTutorial(),
-        );
-        return;
+    if (!MatrixState
+        .pangeaController
+        .userController
+        .initCompleter
+        .isCompleted) {
+      return;
     }
+    // The veteran backfill may be about to mark this tutorial seen — wait for
+    // its one evaluation; resolution re-asks (registered in _pangeaInit).
+    if (!TutorialSeenBackfill.instance.isResolved) return;
+    if (!tutorialOverlayController.isPending(TutorialEnum.activityGoals)) {
+      return;
+    }
+    // Surface first, so a resume can actually be shown.
+    if (!isFocused || !_hasGoalHeader) return;
+
+    // Already running: it may have been left off screen — this chat's own
+    // dispose force-closes every overlay, the tutorial's included.
+    if (tutorialOverlayController.hasActiveSequence) {
+      tutorialOverlayController.resumeIfStranded();
+    }
+    // Requested even while another sequence runs — requestSequence QUEUES.
+    // Returning early instead dropped the request whenever the chat sequence
+    // held the overlay, and the next re-ask was typically the activity's end
+    // ("goal tutorial only appears when the activity ends", the playtest bug).
+    tutorialOverlayController.requestSequence(
+      TutorialSequences.activityGoalsSequence,
+    );
   }
 
-  void _launchReadingAssistanceTutorial(Event event, PangeaToken token) {
+  /// Points at the goal header and does nothing else — a tap anywhere just
+  /// dismisses the card.
+  ///
+  /// It used to expand the goal list for the learner. In play that misled them:
+  /// the expanded header leads with **"I'm done!"**, so a step whose whole
+  /// message is "here is what to play for" handed them the button that ends the
+  /// activity before they had said anything. Same reasoning as the app tour's
+  /// Practice step — showing where something lives is not the same as opening
+  /// it, and a step that acts for the learner has to be sure the action is one
+  /// they would want.
+  Future<void> _launchActivityGoalsTutorial() async {
+    if (!mounted || !_hasGoalHeader) return;
+    tutorialOverlayController.launchTutorial(
+      context: context,
+      tutorial: TutorialModel(
+        tutorialType: TutorialEnum.activityGoals,
+        stepsData: [
+          TutorialStepData.single(
+            targetKey: TutorialTargetIds.activityGoalHeader,
+            canShowNextStep: () => true,
+          ),
+        ],
+      ),
+      isFocused: isFocused,
+    );
+  }
+
+  /// Re-opens the toolbar so SelectModeButtons mounts and registers as the
+  /// owner of the select-mode targets. Waits out the open animation so the
+  /// buttons are laid out before the spotlight is positioned on one.
+  Future<void> _openToolbarForSelectModeTutorial() async {
+    final event = _tutorialEvent;
+    if (!mounted || event == null) return;
+    showToolbar(
+      event,
+      bypassBlockingOverlays: true,
+      selectedToken: tutorialToken,
+      isTutorial: true,
+    );
+    await Future.delayed(FluffyThemes.animationDuration);
+  }
+
+  /// Points at the message bubble itself, so the toolbar must be closed first —
+  /// this runs on the way forward and on the way back, and only the back path
+  /// can arrive with it open.
+  Future<void> _launchReadingAssistanceTutorial() async {
+    final event = _tutorialEvent;
+    final token = tutorialToken;
+    if (!mounted || event == null || token == null) return;
+
     inputFocus.unfocus();
-    _tutorialEvent = event;
-    tutorialToken = token;
+    if (isToolbarOpen) {
+      clearSelectedEvents();
+      await Future.delayed(FluffyThemes.animationDuration);
+      if (!mounted) return;
+    }
 
     tutorialOverlayController.launchTutorial(
       context: context,
-      tutorial: ReadingAssistantTutorialModel(
-        data: [
-          TutorialStepData(
+      tutorial: TutorialModel(
+        tutorialType: TutorialEnum.readingAssistance,
+        stepsData: [
+          TutorialStepData.single(
             targetKey: event.eventId,
             onTap: () async {
               showToolbar(
@@ -797,12 +966,14 @@ class ChatController extends State<ChatPageWithRoom>
     );
   }
 
-  void _launchWritingAssistanceTutorial() {
+  Future<void> _launchWritingAssistanceTutorial() async {
+    if (!mounted) return;
     tutorialOverlayController.launchTutorial(
       context: context,
-      tutorial: WritingAssistantTutorialModel(
-        data: [
-          TutorialStepData(
+      tutorial: TutorialModel(
+        tutorialType: TutorialEnum.writingAssistance,
+        stepsData: [
+          TutorialStepData.single(
             targetKey: ChoreoConstants.inputTransformTargetKey,
             onTap: () async => inputFocus.requestFocus(),
             canShowNextStep: () => true,
@@ -811,10 +982,6 @@ class ChatController extends State<ChatPageWithRoom>
       ),
       isFocused: isFocused,
     );
-  }
-
-  void _relaunchReadingAssistanceTutorial(Event event, PangeaToken token) {
-    _launchReadingAssistanceTutorial(event, token);
   }
 
   void _activityConfettiListener() {
@@ -830,6 +997,9 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   void _activityRolesListener() {
+    // Role state is what decides whether the goal header exists, so this is also
+    // where the goal-header tutorial gets its chance.
+    _maybeStartActivityGoalsTutorial();
     if (activeGoalNotifier.value != null || room.currentGoal == null) return;
     activeGoalNotifier.value = room.currentGoal;
   }
@@ -894,12 +1064,20 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   bool get _canLaunchTutorialSequence {
-    if (tutorialOverlayController.state.hasCompletedSequence) {
+    // This trigger — a message carrying a word new to the learner — is the
+    // reading-assistance step's own moment. Once that step is seen, the rest of
+    // the sequence resumes from its own surfaces (the toolbar, the input bar),
+    // so a new message must not reopen the toolbar unprompted.
+    if (!tutorialOverlayController.isPending(TutorialEnum.readingAssistance)) {
       return false;
     }
 
     if (scrollController.hasClients) {
-      return scrollController.position.pixels == 0;
+      // Near the bottom, not exactly at it: a reverse list rarely rests at
+      // exactly 0 (keyboard insets, momentum, the goal-header spacer), and the
+      // exact check silently retired the tutorial for anyone a few pixels off.
+      return scrollController.position.pixels <=
+          TutorialConstants.scrolledToBottomThreshold;
     }
 
     return true;
@@ -907,11 +1085,11 @@ class ChatController extends State<ChatPageWithRoom>
 
   void _startAssistanceTutorialSequence(Event event, PangeaToken token) {
     if (!_canLaunchTutorialSequence) return;
-    if (tutorialOverlayController.isTutorialQueued(
-      TutorialEnum.readingAssistance,
-    )) {
-      _launchReadingAssistanceTutorial(event, token);
-    }
+    _tutorialEvent = event;
+    tutorialToken = token;
+    tutorialOverlayController.requestSequence(
+      TutorialSequences.chatTutorialSequence,
+    );
   }
 
   void _pangeaInit() {
@@ -964,6 +1142,18 @@ class ChatController extends State<ChatPageWithRoom>
       _readingAssistanceTutorialListener,
     );
 
+    // The chat-tutorial trigger reads the profile and the analytics service,
+    // and both can finish loading AFTER the qualifying message arrived — the
+    // profile answers "is the tutorial pending", analytics answers "is this
+    // word new" ({} while initializing). Their arrival re-asks, or the
+    // learner's first qualifying message is dropped for good.
+    MatrixState.pangeaController.userController.initCompleter.future.then(
+      (_) => _maybeStartChatTutorialSequence(),
+    );
+    Matrix.of(context).analyticsDataService.initCompleter.future.then(
+      (_) => _maybeStartChatTutorialSequence(),
+    );
+
     activityController = ActivityChatController(
       userID: Matrix.of(context).client.userID!,
       room: room,
@@ -990,6 +1180,19 @@ class ChatController extends State<ChatPageWithRoom>
         version: room.pinnedActivityVersionId,
         revalidate: true,
       );
+      // The goal header only exists once the plan lands, and the plan is
+      // fetched, so hydration is the moment to re-ask.
+      ActivityPlanRepo.instance.addListener(_maybeStartActivityGoalsTutorial);
+      // And once more when the profile lands, in case it loads after every other
+      // hook has already had its turn (a fresh login straight into an activity).
+      MatrixState.pangeaController.userController.initCompleter.future.then(
+        (_) => _maybeStartActivityGoalsTutorial(),
+      );
+      // And when the veteran backfill resolves — it may have just marked this
+      // tutorial seen, or cleared the way for it.
+      TutorialSeenBackfill.instance.ensureResolved().then(
+        (_) => _maybeStartActivityGoalsTutorial(),
+      );
     }
 
     _goalCompletionSubscription?.cancel();
@@ -1000,26 +1203,23 @@ class ChatController extends State<ChatPageWithRoom>
         .listen(_goalCompletionListener);
 
     _activityRolesSubscription?.cancel();
+    // Power levels and membership gate the goal header too
+    // (activityGoalHeaderGate reads showActivityChatUI and assignedRoles), and
+    // either can land after the role state on a fresh session — so they re-ask
+    // like role events do. The listener is idempotent and the check coalesces,
+    // so member-event volume costs one post-frame callback.
     _activityRolesSubscription = room.client.onRoomState.stream
         .where(
           (event) =>
               event.roomId == room.id &&
-              event.state.type == PangeaEventTypes.activityRole,
+              (event.state.type == PangeaEventTypes.activityRole ||
+                  event.state.type == EventTypes.RoomPowerLevels ||
+                  event.state.type == EventTypes.RoomMember),
         )
         .listen((_) => _activityRolesListener());
 
-    tutorialOverlayController = TutorialOverlayController(
-      TutorialSequences.chatTutorialSequence,
-    );
-
-    _forwardTutorialSubscription?.cancel();
-    _forwardTutorialSubscription = tutorialOverlayController
-        .forwardTutorialStream
-        .listen(_writingAssistanceTutorialListener);
-
-    _goBackTutorialSubscription?.cancel();
-    _goBackTutorialSubscription = tutorialOverlayController.backNavigationStream
-        .listen(_goBackTutorialListener);
+    _registerTutorialLaunchers();
+    _maybeStartActivityGoalsTutorial();
 
     inputFocus.addListener(_inputFocusListener);
 
@@ -1328,17 +1528,22 @@ class ChatController extends State<ChatPageWithRoom>
     _tokensSubscription?.cancel();
     _readingAssistanceTutorialSubscription?.cancel();
     PanelFocusController.instance.removeListener(_onFocusChanged);
+    ActivityPlanRepo.instance.removeListener(_maybeStartActivityGoalsTutorial);
     _router.routeInformationProvider.removeListener(_onRouteChanged);
     scrollController.dispose();
     inputFocus.dispose();
     depressMessageButton.dispose();
     scrollableNotifier.dispose();
     TokensUtil.instance.clearNewTokenCache();
-    _forwardTutorialSubscription?.cancel();
-    _goBackTutorialSubscription?.cancel();
     _goalCompletionSubscription?.cancel();
     _activityRolesSubscription?.cancel();
-    tutorialOverlayController.dispose();
+    _unregisterTutorialLaunchers();
+    // Nothing can show the remaining steps once this chat is gone. Progress is
+    // persisted, so the next chat resumes where this one left off, and giving
+    // the sequence up here is what lets a queued one start.
+    tutorialOverlayController
+      ..releaseSequence(TutorialSequences.chatTutorialSequence)
+      ..releaseSequence(TutorialSequences.activityGoalsSequence);
     activeGoalNotifier.dispose();
     //Pangea#
     super.dispose();
@@ -1391,6 +1596,9 @@ class ChatController extends State<ChatPageWithRoom>
     if (!mounted) return;
     if (isFocused) {
       _resumeTimeline();
+      // Focus is published a frame after the chat mounts, so this is the first
+      // point the goal-header tutorial can pass its own focus check.
+      _maybeStartActivityGoalsTutorial();
     } else {
       _suspendTimeline();
     }
@@ -1475,6 +1683,12 @@ class ChatController extends State<ChatPageWithRoom>
     // Close span card if open
     MatrixState.pAnyState.closeAllOverlays();
 
+    // Resolved before the awaits below, not after: the learner may leave the
+    // chat while the placeholder and tokenization are in flight, and a
+    // disposed State has no `context` — the send itself must still complete
+    // (#8834; the same t0 capture the voice send uses, #8371).
+    final prefs = Matrix.of(context).store;
+
     final message = sendController.text;
     final edit = editEvent.value;
     final reply = replyEvent.value;
@@ -1500,7 +1714,6 @@ class ChatController extends State<ChatPageWithRoom>
     readAloudController.stopAndClear();
     // Pangea#
     _storeInputTimeoutTimer?.cancel();
-    final prefs = Matrix.of(context).store;
     prefs.remove('draft_$roomId');
     var parseCommands = true;
 
@@ -1542,7 +1755,7 @@ class ChatController extends State<ChatPageWithRoom>
     }
 
     final previousEdit = edit;
-    if (showEmojiPicker) {
+    if (showEmojiPicker && mounted) {
       hideEmojiPicker();
     }
 
@@ -1619,10 +1832,12 @@ class ChatController extends State<ChatPageWithRoom>
         })
         .catchError((err, s) {
           if (err is EventTooLarge) {
-            showAdaptiveDialog(
-              context: context,
-              builder: (context) => const EventTooLargeDialog(),
-            );
+            if (mounted) {
+              showAdaptiveDialog(
+                context: context,
+                builder: (context) => const EventTooLargeDialog(),
+              );
+            }
             return;
           }
           ErrorHandler.logError(
@@ -2110,7 +2325,7 @@ class ChatController extends State<ChatPageWithRoom>
   // }
   void _inputFocusListener() {
     if (!inputFocus.hasFocus) return;
-    if (!tutorialOverlayController.isTutorialQueued(
+    if (!tutorialOverlayController.isCurrentTutorial(
       TutorialEnum.writingAssistance,
     )) {
       return;
@@ -2625,24 +2840,6 @@ class ChatController extends State<ChatPageWithRoom>
   // }
   // Pangea#
 
-  int? findChildIndexCallback(Key key, Map<String, int> thisEventsKeyMap) {
-    // this method is called very often. As such, it has to be optimized for speed.
-    if (key is! ValueKey) {
-      return null;
-    }
-    final eventId = key.value;
-    if (eventId is! String) {
-      return null;
-    }
-    // first fetch the last index the event was at
-    final index = thisEventsKeyMap[eventId];
-    if (index == null) {
-      return null;
-    }
-    // we need to +1 as 0 is the typing thing at the bottom
-    return index + 1;
-  }
-
   // #Pangea
   // void onInputBarSubmitted(String _) {
   //   send();
@@ -2901,15 +3098,6 @@ class ChatController extends State<ChatPageWithRoom>
       return;
     }
 
-    final overlayEntry = MessageSelectionOverlay(
-      host: this,
-      event: event,
-      timeline: timeline!,
-      initialSelectedToken: selectedToken,
-      nextEvent: nextEvent,
-      prevEvent: prevEvent,
-    );
-
     // you've clicked a message so lets turn this off
     if (!InstructionsEnum.clickMessage.isToggledOff) {
       InstructionsEnum.clickMessage.setToggledOff(true);
@@ -2958,30 +3146,30 @@ class ChatController extends State<ChatPageWithRoom>
         // so we don't want to show the overlay.
         return;
       }
-      OverlayUtil.showOverlay(
-        context: context,
-        child: overlayEntry,
-        displayDetails: CenteredOverlayDisplayDetails(
-          onDismiss: clearSelectedEvents,
-          blurBackground: true,
-          backgroundColor: Colors.black,
-          overlayKey: "message_toolbar_overlay",
-          bypassBlockingOverlays: bypassBlockingOverlays,
-        ),
-      );
-    } else {
-      OverlayUtil.showOverlay(
-        context: context,
-        child: overlayEntry,
-        displayDetails: CenteredOverlayDisplayDetails(
-          onDismiss: clearSelectedEvents,
-          blurBackground: true,
-          backgroundColor: Colors.black,
-          overlayKey: "message_toolbar_overlay",
-          bypassBlockingOverlays: bypassBlockingOverlays,
-        ),
-      );
     }
+
+    OverlayUtil.showOverlay(
+      context: context,
+      child: Semantics(
+        container: true,
+        child: MessageSelectionOverlay(
+          host: this,
+          event: event,
+          timeline: timeline!,
+          initialSelectedToken: selectedToken,
+          nextEvent: nextEvent,
+          prevEvent: prevEvent,
+        ),
+      ),
+      displayDetails: CenteredOverlayDisplayDetails(
+        onDismiss: clearSelectedEvents,
+        blurBackground: true,
+        backgroundColor: Colors.black,
+        overlayKey: "message_toolbar_overlay",
+        bypassBlockingOverlays: bypassBlockingOverlays,
+        blockSemantics: true,
+      ),
+    );
 
     // A deliberate tap on a message is a request to hear it, own messages
     // included. The controller owns which selections qualify.
@@ -3105,27 +3293,7 @@ class ChatController extends State<ChatPageWithRoom>
     }
 
     if (!isSpanCardOpen) {
-      // Size the popup to the chat's available space: as wide as the input
-      // field, and as tall as the space above it, so choices are visible
-      // without scrolling (#8130). The card itself sizes to its content.
-      final inputRenderBox = MatrixState.pAnyState.getRenderBox(
-        ChoreoConstants.inputTransformTargetKey,
-      );
-      final overlayRenderBox = OverlayUtil.overlayRenderBox(context);
-
-      double maxWidth = 325;
-      double maxHeight = 325;
-      if (inputRenderBox != null && overlayRenderBox != null) {
-        maxWidth = inputRenderBox.size.width;
-        final spaceAboveInput = OverlayUtil.localOffset(
-          inputRenderBox,
-          overlayRenderBox,
-        ).dy;
-        maxHeight = (spaceAboveInput - kToolbarHeight - 16.0).clamp(
-          200.0,
-          double.infinity,
-        );
-      }
+      final slot = WritingAssistancePopupSlot.measure(context);
 
       _spanCardOverlayController.open(
         context,
@@ -3133,13 +3301,12 @@ class ChatController extends State<ChatPageWithRoom>
           context: context,
           cardToShow: SpanCard(
             controller: _spanCardOverlayController,
-            // Leave room for the OverlayContainer's padding and border.
-            maxHeight: maxHeight - 24.0,
+            maxHeight: slot.cardMaxHeight,
           ),
           displayDetails: PositionedOverlayDisplayDetails(
             overlayKey: overlayKey,
-            maxHeight: maxHeight,
-            maxWidth: maxWidth,
+            maxHeight: slot.maxHeight,
+            maxWidth: slot.maxWidth,
             transformTargetId: ChoreoConstants.inputTransformTargetKey,
             ignorePointer: true,
             // Taps outside the card still reach the input field and other
@@ -3160,23 +3327,32 @@ class ChatController extends State<ChatPageWithRoom>
       return;
     }
 
+    // The same slot, measured the same way as the span card's: the two cards
+    // take turns in one place above the input field, so they are sized and
+    // dressed by one set of rules rather than each by its own (#9074).
+    final slot = WritingAssistancePopupSlot.measure(context);
+
     _spanCardOverlayController.open(
       context,
-      openOverlay: (overlayKey) => OverlayUtil.showOverlay(
+      openOverlay: (overlayKey) => OverlayUtil.showPositionedCard(
         context: context,
-        child: SuggestionCard(
-          overlayKey: overlayKey,
+        cardToShow: SuggestionCard(
           controller: choreographer.orchestratorController,
           popupManager: _spanCardOverlayController,
+          maxHeight: slot.cardMaxHeight,
         ),
-        displayDetails: TransformOverlayDisplayDetails(
+        displayDetails: PositionedOverlayDisplayDetails(
           overlayKey: overlayKey,
+          maxHeight: slot.maxHeight,
+          maxWidth: slot.maxWidth,
           transformTargetId: ChoreoConstants.inputTransformTargetKey,
           ignorePointer: true,
-          targetAnchor: Alignment.topCenter,
-          followerAnchor: Alignment.bottomCenter,
+          // Taps outside the card still reach the input field, but taps on the
+          // card stop there (#8181).
           blockPointerThrough: true,
+          isScrollable: false,
         ),
+        overlayPosition: OverlayPosition.above,
       ),
     );
   }
@@ -3264,6 +3440,12 @@ class ChatController extends State<ChatPageWithRoom>
     feedback == null
         ? await choreographer.requestWritingAssistance(manual: manual)
         : await choreographer.rerunWithFeedback(feedback);
+
+    // The run outlives the chat when the learner leaves mid-request, and a
+    // disposed State has no context for the card, the composer focus, or a
+    // send (CLIENT-EP8, #8993). #8952 declines the controller's own updates
+    // after that exit; this is the caller's side of it.
+    if (!mounted) return;
 
     if (choreographer.assistanceState == AssistanceStateEnum.fetched) {
       showNextMatch();

@@ -164,7 +164,15 @@ class ActivityChatController {
 
   void showConfetti() {
     if (_disposed || confettiNotifier.value) return;
-    if (hasSummary) {
+    // The confetti celebrates the summary landing on screen. An unsubscribed
+    // learner sees the subscription gate in its place, so a summary arriving
+    // in room state — their own fetch or a coursemate's — is nothing to
+    // celebrate for them (#8905). Same gate the summary widget renders by.
+    final showsSummary = MatrixState
+        .pangeaController
+        .subscriptionController
+        .showSubscriptionGatedContent;
+    if (hasSummary && showsSummary) {
       confettiNotifier.value = true;
     }
   }

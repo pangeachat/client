@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -214,7 +214,9 @@ class OneConstructUse {
 
   Color pointValueColor(BuildContext context) {
     if (xp == 0) return Theme.of(context).colorScheme.primary;
-    return xp > 0 ? AppConfig.goldByTheme(context) : Colors.red;
+    return xp > 0
+        ? Theme.of(context).pangea.gold
+        : Theme.of(context).colorScheme.error;
   }
 
   ConstructIdentifier get identifier => ConstructIdentifier(

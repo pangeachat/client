@@ -11,13 +11,21 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/widgets/announcing_snackbar.dart';
 
 class ShareRoomButton extends StatelessWidget {
-  final Widget child;
+  /// The button's glyph, handed to [PopupMenuButton.icon] — which is what
+  /// makes this an `IconButton`. The `child` path it used instead wraps the
+  /// glyph in a bare rectangular `InkWell` sized to the glyph itself, so the
+  /// hover read as a small square hugging the icon's edges while every
+  /// IconButton beside it (the course header's focus-on-map) drew a 40px
+  /// circle centred in a 48px target. Two buttons in one row cannot disagree
+  /// about their own shape (#8816).
+  final Widget icon;
+
   final Room room;
   final String? tooltip;
 
   const ShareRoomButton({
     super.key,
-    required this.child,
+    required this.icon,
     required this.room,
     this.tooltip,
   });
@@ -66,7 +74,7 @@ class ShareRoomButton extends StatelessWidget {
     return PopupMenuButton<ShareCodeType>(
       useRootNavigator: true,
       tooltip: tooltip,
-      child: child,
+      icon: icon,
       onSelected: (t) => _copyShareCode(context, t),
       itemBuilder: (BuildContext context) => <PopupMenuEntry<ShareCodeType>>[
         PopupMenuItem<ShareCodeType>(

@@ -26,7 +26,12 @@ import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
-class NotFoundException implements Exception {}
+/// The join code resolved to no room or course: the learner's typo, not a
+/// fault, so reported at info — and named, so Sentry titles it (#8836).
+class NotFoundException implements Exception {
+  @override
+  String toString() => 'NotFoundException: no room or course for the join code';
+}
 
 class SpaceCodeController {
   /// In-flight joins keyed by code, so a double-tap on the same code awaits
@@ -119,6 +124,36 @@ class SpaceCodeController {
   static Future<void> cacheRoomCodeToJoin(String code) =>
       SpaceCodeRepo.setSpaceCode(code);
 
+  /// Whether a failed join means the CODE was wrong: the server's 404
+  /// `ORG.PANGEA.CODE_NOT_FOUND` (a 400 from a server predating that split
+  /// means the same), or the client-side empty result. Everything else — the
+  /// server's 500 `ORG.PANGEA.INVITE_FAILED` for a valid code it could not
+  /// invite to, the join call, the network — is not the learner's code (#8831).
+  static bool isCodeNotFound(Object error) {
+    if (error is NotFoundException) return true;
+    final status = PangeaHttpException.statusCodeOf(error);
+    return status == 404 || status == 400;
+  }
+
+  /// The one message for a failed join-with-code, shared by every entry
+  /// point: a ban reads as removed, a wrong code as not found ([notFoundError]
+  /// lets a surface keep its own wording for that case), and anything else as
+  /// a failure that is not the code — so a learner is never sent back to
+  /// retype a code that was right (#8831).
+  static String joinErrorMessage(
+    BuildContext context,
+    Object error, {
+    String? notFoundError,
+  }) {
+    if (error is BannedFromRoomException) {
+      return L10n.of(context).removedFromCourseError;
+    }
+    if (isCodeNotFound(error)) {
+      return notFoundError ?? L10n.of(context).unableToFindRoom;
+    }
+    return L10n.of(context).unableToJoinCourseError;
+  }
+
   static Future<Result<JoinResponse>> joinSpaceWithCode(
     String spaceCode, {
     required Client client,
@@ -149,7 +184,12 @@ class SpaceCodeController {
       return result;
     } catch (e, s) {
       completer.complete(Result.error(e, s));
-      ErrorHandler.logError(e: e, s: s, data: {"spaceCode": spaceCode});
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {"spaceCode": spaceCode},
+        level: e is NotFoundException ? SentryLevel.info : null,
+      );
       if (PangeaHttpException.statusCodeOf(e) == 429 && context != null) {
         await showDialog(
           context: context,
@@ -168,16 +208,28 @@ class SpaceCodeController {
     required Client client,
     String? notFoundError,
   }) async {
+    // The dialog's Result carries the display string [onError] maps to; hold
+    // the failure itself so the report groups by type, not by UI language
+    // (CLIENT-BNK and CLIENT-BZM were the same failure, one issue per locale).
+    Object? failure;
+    StackTrace? failureStack;
     final resp = await showFutureLoadingDialog(
       context: context,
       future: () => _joinSpaceWithCodeWithoutLoading(spaceCode, client: client),
-      onError: (e, s) => e is BannedFromRoomException
-          ? L10n.of(context).removedFromCourseError
-          : (notFoundError ?? L10n.of(context).unableToFindRoom),
+      onError: (e, s) {
+        failure = e;
+        failureStack = s;
+        return joinErrorMessage(context, e, notFoundError: notFoundError);
+      },
       showError: (err) => PangeaHttpException.statusCodeOf(err) != 429,
     );
 
-    if (resp.isError) throw resp.error!;
+    if (resp.isError) {
+      Error.throwWithStackTrace(
+        failure ?? resp.error!,
+        failureStack ?? StackTrace.current,
+      );
+    }
     return resp.result!;
   }
 

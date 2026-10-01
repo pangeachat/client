@@ -9,16 +9,24 @@ enum PanelColumn { left, right }
 /// deliberate list↔wide difference. Defined once here (not per-def literals)
 /// so the families can't drift apart.
 ///
-///  - **list** — the thin index columns (the chat list, the DM-create picker).
+///  - **list** — the narrow column: the index surfaces (the chat list, the
+///    Courses hub, the DM-create picker, the archive) plus the add-course flow
+///    pages, which stay at the hub's width instead of widening out from under
+///    it.
 ///  - **wide** — the live/content surfaces: a chat, a session, an activity or
-///    course card, and the course flow pages (details / invite / edit / add),
+///    course card, and the course management pages (details / invite / edit),
 ///    which host forms and media and want the same room.
 ///  - **tool** — the entire right column (settings, analytics + its details,
 ///    practice), one width for every tool panel.
 abstract class PanelWidths {
   static const double listMin = 300;
   static const double listComfort = 340;
-  static const double listIdeal = 380;
+  // 440, not 380: the course tile's language / level / activity chips fit on
+  // one line at this width for every CEFR level, including the longest
+  // ("Intermediate Mid (B1)") with three-digit member and activity counts
+  // (#8972). A tile spends 124 of the panel's width on card margin, list
+  // padding, the 48px avatar and its gap, so the chips get width - 124.
+  static const double listIdeal = 440;
 
   static const double wideMin = 360;
   static const double wideComfort = 480;
@@ -121,6 +129,12 @@ sealed class PanelDef {
   /// UX. See `routing.instructions.md`.
   final bool mapContent;
 
+  /// This child ALWAYS folds its same-column [parent] behind it — one
+  /// navigation slot (list → detail, `←` back) regardless of width. Set on the
+  /// add-course subpage (#7826), where the map preview is what a second panel
+  /// would cost. The same fold the allocator applies under width pressure.
+  final bool stacksOnParent;
+
   const PanelDef({
     required this.column,
     required this.minWidth,
@@ -132,6 +146,7 @@ sealed class PanelDef {
     this.siblingGroups = const {},
     this.pushable = false,
     this.mapContent = false,
+    this.stacksOnParent = false,
   });
 
   /// The comfort floor the fold trigger uses: an explicit [reasonableMinWidth],
@@ -223,10 +238,14 @@ class CoursePagePanelDef extends PanelDef {
 }
 
 class AddCoursePanelDef extends PanelDef {
+  // The Courses hub is an index of course tiles, not a content surface — the
+  // list family, same width as the chat list it shares the section slot with
+  // (#8972). Its subpages share the family, so entering the add-course flow
+  // never resizes the column.
   const AddCoursePanelDef({
-    super.minWidth = PanelWidths.wideMin,
-    super.reasonableMinWidth = PanelWidths.wideComfort,
-    super.idealWidth = PanelWidths.wideIdeal,
+    super.minWidth = PanelWidths.listMin,
+    super.reasonableMinWidth = PanelWidths.listComfort,
+    super.idealWidth = PanelWidths.listIdeal,
   }) : super(
          type: PanelTypesEnum.addcourse,
          column: PanelColumn.left,
@@ -237,10 +256,14 @@ class AddCoursePanelDef extends PanelDef {
 }
 
 class AddCoursePagePanelDef extends PanelDef {
+  // Start-my-own / enter-a-code / browse-public draw at the hub's width
+  // (#8972). They always fold the hub behind them, so a different family would
+  // resize the column on the way into the flow — and the flow being one narrow
+  // panel is what leaves the map the width, per course-preview.instructions.md.
   const AddCoursePagePanelDef({
-    super.minWidth = PanelWidths.wideMin,
-    super.reasonableMinWidth = PanelWidths.wideComfort,
-    super.idealWidth = PanelWidths.wideIdeal,
+    super.minWidth = PanelWidths.listMin,
+    super.reasonableMinWidth = PanelWidths.listComfort,
+    super.idealWidth = PanelWidths.listIdeal,
   }) : super(
          type: PanelTypesEnum.addcoursepage,
          column: PanelColumn.left,
@@ -249,6 +272,7 @@ class AddCoursePagePanelDef extends PanelDef {
          parent: PanelTypesEnum.addcourse,
          mapContent:
              true, // the add-course flow is a map bottom sheet on mobile
+         stacksOnParent: true, // one slot for the whole flow, even on wide
        );
 }
 

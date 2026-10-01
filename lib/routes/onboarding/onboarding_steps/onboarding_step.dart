@@ -23,7 +23,11 @@ abstract class OnboardingStep {
 
   double get contentMaxWidth => defaultContentMaxWidth;
 
-  String get stepDestination => PRoutes.chatsList;
+  /// Where onboarding lands when no course was joined: the bare world map, the
+  /// app's home surface — where the orientation tutorial picks the learner up.
+  /// The old chat-list landing put a brand-new learner in front of an empty
+  /// room list, and the map tutorial then closed it anyway.
+  String get stepDestination => PRoutes.world;
 
   /// The joined-course space id onboarding lands on when it ends, or null when
   /// no course was joined — then the plain path ([stepDestination]) is used.

@@ -6,6 +6,7 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:fluffychat/features/languages/language_constants.dart';
 import 'package:fluffychat/features/notifications/notifications_settings_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 
 class EmailNotificationsStatus {
@@ -46,7 +47,10 @@ extension NotificationsExtension on Client {
       try {
         await onSync.stream
             .firstWhere((sync) => sync.accountData != null)
-            .timeout(Duration(seconds: 10));
+            .timeoutNamed(
+              const Duration(seconds: 10),
+              'account data sync: notification settings',
+            );
       } catch (e, s) {
         ErrorHandler.logError(
           e: e,

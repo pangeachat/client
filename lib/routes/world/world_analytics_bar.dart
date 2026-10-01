@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shimmer/shimmer.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/hex_level_badge.dart';
 import 'package:fluffychat/routes/world/level_up_badge_celebration.dart';
@@ -100,7 +100,7 @@ class WorldAnalyticsBarInternal extends StatelessWidget {
         return Semantics(
           container: true,
           label: L10n.of(context).analyticsAndSettingsLabel,
-          sortKey: BrowseOrder.cluster,
+          sortKey: WorkspaceOrder.cluster.sortKey,
           child: Row(
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -235,14 +235,20 @@ class _PowerupsRow extends StatelessWidget {
                       child: CustomPaint(
                         painter: XpBorderPainter(
                           progress: progress,
-                          trackColor: const Color.fromARGB(130, 135, 135, 135),
-                          progressColor: AppConfig.goldByTheme(context),
+                          trackColor: XpBorderPainter.trackColorFor(
+                            Theme.of(context),
+                          ),
+                          progressColor: XpBorderPainter.arcColorFor(
+                            Theme.of(context),
+                          ),
                           stroke: _xpStroke,
-                          radius: _innerRadius + _xpStroke / 2,
+                          innerRadius: _innerRadius,
                           anchor: XpBorderAnchor.leftCenter,
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.all(_xpStroke),
+                          padding: const EdgeInsets.all(
+                            _xpStroke + XpBorderPainter.trackExtra,
+                          ),
                           child: Container(
                             decoration: BoxDecoration(
                               color: Theme.of(
@@ -292,6 +298,8 @@ class _PowerupsRow extends StatelessWidget {
                                   ),
                                   ClusterTrackerButton(
                                     indicator: ProgressIndicatorEnum.wordsUsed,
+                                    tutorialTargetId:
+                                        TutorialTargetIds.analyticsVocabTracker,
                                     count: vocab,
                                     selected:
                                         selectedTab ==

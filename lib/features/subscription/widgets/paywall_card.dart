@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/overlay/overlay.dart';
 import 'package:fluffychat/features/overlay/overlay_display_details.dart';
 import 'package:fluffychat/features/subscription/repo_v2/subscription_management_repo.dart';
@@ -62,7 +62,7 @@ class PaywallCard extends StatelessWidget {
       padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
         color: theme.colorScheme.surface,
-        border: Border.all(color: AppConfig.goldByTheme(context)),
+        border: Border.all(color: theme.pangea.goldGraphic),
         borderRadius: BorderRadius.circular(20.0),
       ),
       child: Stack(

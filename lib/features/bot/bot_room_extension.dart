@@ -30,6 +30,11 @@ extension BotRoomExtension on Room {
   }
 
   Future<void> setBotOptions(BotOptionsModel options) async {
+    // The profile-update fan-out can outlive the session that started it:
+    // sign out mid-way and the permission read (`client.userID!`) and the
+    // state write (`bearerToken!`) both throw, once per retry (CLIENT-EQ6,
+    // #9104). A signed-out account has no chats to keep current — skip.
+    if (!client.isLogged()) return;
     if (!canChangeStateEvent(PangeaEventTypes.botOptions)) {
       Logs().w("User doesn't have permission to set bot options in room $id");
       return;
@@ -43,6 +48,8 @@ extension BotRoomExtension on Room {
         if (attempt > 1) {
           await Future.delayed(retryDelay);
           retryDelay *= 2;
+          // The delay is where a sign-out lands between attempts.
+          if (!client.isLogged()) return;
         }
 
         await client.setRoomStateWithKey(

@@ -8,13 +8,13 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
-import 'package:fluffychat/features/user/user_search_extension.dart';
+import 'package:fluffychat/features/user/direct_chat_contacts_extension.dart';
+import 'package:fluffychat/features/user/user_directory_search.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection_view.dart';
-import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -99,17 +99,28 @@ class PangeaInvitationSelectionController
   TextEditingController controller = TextEditingController();
   ScrollController scrollController = ScrollController();
 
-  bool loading = false;
+  late final UserDirectorySearch directorySearch;
 
-  List<Profile> foundProfiles = [];
-  Timer? coolDown;
-  String? lastSearch;
+  bool get loading => directorySearch.loading;
+  String? get lastSearch => directorySearch.lastSearch;
+
+  /// The last directory-search failure, surfaced in place of the empty-results
+  /// hint when there is nothing else to show.
+  Object? get searchError =>
+      directorySearch.results.isEmpty ? directorySearch.error : null;
 
   InvitationFilter filter = InvitationFilter.knocking;
 
   @override
   void initState() {
     super.initState();
+
+    directorySearch = UserDirectorySearch(
+      client: Matrix.of(context).client,
+      onChanged: () {
+        if (mounted) setState(() {});
+      },
+    );
 
     _room
         ?.requestParticipants(
@@ -136,7 +147,7 @@ class PangeaInvitationSelectionController
     }
 
     if (filter == InvitationFilter.public) {
-      searchUser(context, controller.text);
+      directorySearch.searchNow(controller.text);
     }
 
     controller.addListener(() {
@@ -148,6 +159,7 @@ class PangeaInvitationSelectionController
 
   @override
   void dispose() {
+    directorySearch.dispose();
     scrollController.dispose();
     super.dispose();
   }
@@ -287,7 +299,7 @@ class PangeaInvitationSelectionController
   void setFilter(InvitationFilter newFilter) {
     if (filter == newFilter) return;
     if (newFilter == InvitationFilter.public) {
-      searchUser(context, controller.text);
+      directorySearch.searchNow(controller.text);
     }
     if (scrollController.hasClients) {
       scrollController.jumpTo(0);
@@ -334,12 +346,10 @@ class PangeaInvitationSelectionController
   }
 
   List<User> getContacts(BuildContext context) {
-    final client = Matrix.of(context).client;
-    final contacts = client.rooms
-        .where((r) => r.isDirectChat)
-        .map((r) => r.unsafeGetUserFromMemoryOrFallback(r.directChatMatrixID!))
-        .toList();
+    final contacts = Matrix.of(context).client.directChatContacts;
 
+    // The bot is a candidate for a chat even before it shares a direct chat
+    // with this user, but never for a space.
     if (_room?.isSpace == false &&
         !contacts.any((u) => u.id == BotName.byEnvironment)) {
       final bot = _room?.unsafeGetUserFromMemoryOrFallback(
@@ -348,23 +358,45 @@ class PangeaInvitationSelectionController
       if (bot != null) contacts.add(bot);
     }
 
-    final filtered = <User>[];
-    final seen = <String>{};
-    for (final contact in contacts) {
-      if (seen.contains(contact.id)) continue;
-      seen.add(contact.id);
-      filtered.add(contact);
-    }
-    return filtered;
+    return contacts;
   }
 
-  void searchUserWithCoolDown(String text) async {
+  void searchUserWithCoolDown(String text) {
     if (filter != InvitationFilter.public) return;
-    coolDown?.cancel();
-    coolDown = Timer(
-      const Duration(milliseconds: 500),
-      () => searchUser(context, text),
-    );
+    directorySearch.search(text);
+  }
+
+  /// The directory results this room can actually act on: the bot is not a
+  /// candidate for a space, a raw Matrix ID the directory does not return is
+  /// still invitable by hand, and anyone already in the room is dropped.
+  List<Profile> get foundProfiles {
+    final text = controller.text;
+    if (text.isValidMatrixId &&
+        directorySearch.results.every((p) => p.userId != text)) {
+      return [
+        Profile.fromJson({ModelKey.userId: text}),
+      ];
+    }
+
+    final profiles = [...directorySearch.results];
+    if (_room?.isSpace ?? false) {
+      profiles.removeWhere((p) => p.userId == BotName.byEnvironment);
+    }
+
+    final members = participants
+        ?.where(
+          (user) =>
+              [Membership.join, Membership.invite].contains(user.membership),
+        )
+        .map((user) => user.id)
+        .toSet();
+    // `participants` is null until the room's member list has loaded. It used
+    // to drop every result in that window (`null != -1` is true), which read
+    // as "nobody by that name" on a room that simply had not finished loading.
+    if (members != null) {
+      profiles.removeWhere((p) => members.contains(p.userId));
+    }
+    return profiles;
   }
 
   Future<void> _addJoinCode() async {
@@ -377,63 +409,6 @@ class PangeaInvitationSelectionController
     } catch (e, s) {
       ErrorHandler.logError(e: e, s: s, data: {'roomId': _room!.id});
     }
-  }
-
-  Future<void> searchUser(BuildContext context, String text) async {
-    coolDown?.cancel();
-    if (text.isEmpty) {
-      setState(() => foundProfiles = []);
-    }
-
-    setState(() {
-      loading = true;
-      lastSearch = null;
-    });
-    final matrix = Matrix.of(context);
-    SearchUserDirectoryResponse response;
-    try {
-      response = await matrix.client.searchUser(text, limit: 100);
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBarAnnounced(
-        SnackBar(content: Text((e).toLocalizedString(context))),
-        assertive: true,
-      );
-      return;
-    } finally {
-      setState(() {
-        loading = false;
-        lastSearch = text;
-      });
-    }
-
-    final results = response.results;
-    if (_room?.isSpace ?? false) {
-      results.removeWhere((profile) => profile.userId == BotName.byEnvironment);
-    }
-
-    setState(() {
-      foundProfiles = List<Profile>.from(results);
-      if (text.isValidMatrixId &&
-          foundProfiles.indexWhere((profile) => text == profile.userId) == -1) {
-        setState(
-          () => foundProfiles = [
-            Profile.fromJson({ModelKey.userId: text}),
-          ],
-        );
-      }
-
-      final participants = this.participants
-          ?.where(
-            (user) =>
-                [Membership.join, Membership.invite].contains(user.membership),
-          )
-          .toList();
-
-      foundProfiles.removeWhere(
-        (profile) =>
-            participants?.indexWhere((u) => u.id == profile.userId) != -1,
-      );
-    });
   }
 
   void inviteAction(String userID) async {

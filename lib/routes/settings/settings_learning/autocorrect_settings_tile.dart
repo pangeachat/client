@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/settings/settings_learning/enable_autocorrect_dialog.dart';
 import 'package:fluffychat/routes/settings/settings_learning/learning_settings_view_model.dart';
@@ -71,7 +71,7 @@ class AutocorrectSettingsTileState extends State<AutocorrectSettingsTile> {
             ? L10n.of(context).autocorrectMobileOnly
             : ToolSetting.enableAutocorrect.toolDescription(context),
       ),
-      activeThumbColor: AppConfig.activeToggleColor,
+      activeThumbColor: Theme.of(context).pangea.successFixedDim,
       onChanged: widget.isWeb ? null : _onChanged,
     );
 

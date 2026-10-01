@@ -109,7 +109,7 @@ Future<void> showAnalyticsExampleMessageToolbar({
 
   OverlayUtil.showOverlay(
     context: context,
-    child: overlayEntry,
+    child: Semantics(container: true, child: overlayEntry),
     displayDetails: CenteredOverlayDisplayDetails(
       onDismiss: host.clearSelectedEvents,
       blurBackground: true,
@@ -119,6 +119,7 @@ Future<void> showAnalyticsExampleMessageToolbar({
       // The details page renders inside a clipping PanelCard; the overlay
       // must reach the root overlay to cover the whole page.
       rootOverlay: true,
+      blockSemantics: true,
     ),
   );
 

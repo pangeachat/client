@@ -232,4 +232,61 @@ void main() {
     expect(find.bySemanticsLabel(l10n.callFullscreen), findsOneWidget);
     handle.dispose();
   });
+
+  // The panel covers the composer -- the chat pane's, or in fullscreen any
+  // field in the app -- but covering a field does not take its focus: the
+  // keyboard stayed up and the learner kept typing into a bar they could not
+  // see (#8884). Every way of showing the call mounts this panel, so the panel
+  // itself drops whatever had focus underneath it.
+  testWidgets('the expanded panel drops focus from the field it covers', (
+    tester,
+  ) async {
+    final composer = FocusNode();
+    addTearDown(composer.dispose);
+    // The composer's place in the chat: docked at the bottom of a pane the
+    // panel will fill.
+    await pumpCallUi(
+      tester,
+      Stack(
+        children: [
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 0,
+            child: TextField(focusNode: composer),
+          ),
+        ],
+      ),
+    );
+    await tester.tap(find.byType(TextField));
+    await tester.pump();
+    expect(composer.hasFocus, isTrue);
+    expect(tester.testTextInput.hasAnyClients, isTrue);
+
+    await pumpCallUi(
+      tester,
+      Stack(
+        children: [
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 0,
+            child: TextField(focusNode: composer),
+          ),
+          Positioned.fill(child: CallPanel(session: session)),
+        ],
+      ),
+    );
+
+    expect(
+      composer.hasFocus,
+      isFalse,
+      reason: 'the field is under the call now and cannot be typed into',
+    );
+    expect(
+      tester.testTextInput.hasAnyClients,
+      isFalse,
+      reason: 'a field that kept its input connection keeps the keyboard up',
+    );
+  });
 }

@@ -15,6 +15,7 @@ import 'package:fluffychat/features/user/analytics_profile_model.dart';
 import 'package:fluffychat/features/user/public_profile_model.dart';
 import 'package:fluffychat/features/user/user_constants.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
@@ -504,7 +505,10 @@ class UserController {
             PangeaEventTypes.profileAnalytics,
             content,
           )
-          .timeout(const Duration(seconds: 30));
+          .timeoutNamed(
+            const Duration(seconds: 30),
+            'setUserProfile: profile analytics',
+          );
     } catch (e, s) {
       // Swallowed, so one failed publish cannot break the chain every later
       // publish is queued behind.
@@ -700,6 +704,18 @@ class UserController {
     return userToolSetting(setting);
   }
 
+  /// Sets Listen First from the writing assistance card.
+  ///
+  /// The learning settings page writes the same field through its own pending
+  /// -profile flow; both surfaces read it back as
+  /// `ToolSetting.listenFirst.enabled`, so the card and the settings row can
+  /// never disagree.
+  Future<void> setListenFirst(bool value) => updateProfile(
+    (profile) => profile.copyWith(
+      toolSettings: profile.toolSettings.copyWith(listenFirst: value),
+    ),
+  );
+
   bool userToolSetting(ToolSetting setting) {
     switch (setting) {
       case ToolSetting.interactiveTranslator:
@@ -718,6 +734,8 @@ class UserController {
         return profile.toolSettings.audioWords;
       case ToolSetting.audioChoices:
         return profile.toolSettings.audioChoices;
+      case ToolSetting.listenFirst:
+        return profile.toolSettings.listenFirst;
       case ToolSetting.audioOnNewMessage:
         return profile.toolSettings.audioOnNewMessage;
       case ToolSetting.audioOnMessageClick:

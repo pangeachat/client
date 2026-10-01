@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'app_config.dart';
 
@@ -21,19 +22,6 @@ abstract class FluffyThemes {
   static bool isThreeColumnMode(BuildContext context) =>
       MediaQuery.sizeOf(context).width > FluffyThemes.columnWidth * 3.5;
 
-  static LinearGradient backgroundGradient(BuildContext context, int alpha) {
-    final colorScheme = Theme.of(context).colorScheme;
-    return LinearGradient(
-      begin: Alignment.topCenter,
-      colors: [
-        colorScheme.primaryContainer.withAlpha(alpha),
-        colorScheme.secondaryContainer.withAlpha(alpha),
-        colorScheme.tertiaryContainer.withAlpha(alpha),
-        colorScheme.primaryContainer.withAlpha(alpha),
-      ],
-    );
-  }
-
   static const Duration animationDuration = Duration(milliseconds: 250);
   static const Curve animationCurve = Curves.easeInOut;
 
@@ -45,6 +33,9 @@ abstract class FluffyThemes {
     final colorScheme = ColorScheme.fromSeed(
       brightness: brightness,
       seedColor: seed ?? Color(AppSettings.colorSchemeSeedInt.value),
+      // Keeps the seed's chroma so primary is the brand purple rather than
+      // the pastel the default tonalSpot expansion produces.
+      dynamicSchemeVariant: DynamicSchemeVariant.fidelity,
     );
     final isColumnMode = FluffyThemes.isColumnMode(context);
     return ThemeData(
@@ -52,6 +43,7 @@ abstract class FluffyThemes {
       useMaterial3: true,
       brightness: brightness,
       colorScheme: colorScheme,
+      extensions: [PangeaColors.of(brightness)],
       dividerColor: brightness == Brightness.dark
           ? colorScheme.surfaceContainerHighest
           : colorScheme.surfaceContainer,
@@ -127,7 +119,6 @@ abstract class FluffyThemes {
       progressIndicatorTheme: ProgressIndicatorThemeData(
         strokeCap: StrokeCap.round,
         color: colorScheme.primary,
-        refreshBackgroundColor: colorScheme.primaryContainer,
       ),
       snackBarTheme: isColumnMode
           ? const SnackBarThemeData(
@@ -167,10 +158,4 @@ extension BubbleColorTheme on ThemeData {
   Color get onBubbleColor => brightness == Brightness.light
       ? colorScheme.onPrimary
       : colorScheme.onPrimaryContainer;
-
-  Color get secondaryBubbleColor => HSLColor.fromColor(
-    brightness == Brightness.light
-        ? colorScheme.tertiary
-        : colorScheme.tertiaryContainer,
-  ).withSaturation(0.5).toColor();
 }

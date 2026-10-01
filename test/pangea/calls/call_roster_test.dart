@@ -5,6 +5,7 @@ import 'package:livekit_client/livekit_client.dart' as lk;
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/routes/chat/calls/call_ownership.dart';
 import 'package:fluffychat/routes/chat/calls/call_roster.dart';
 import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
 import 'package:fluffychat/routes/chat/calls/capture_election.dart';
@@ -423,6 +424,57 @@ void main() {
       roster = TestRoster(room: room, myUserId: me);
     });
   });
+  group('the pangea_chosen ownership attribute', () {
+    test('reads the three states off a sibling', () {
+      roster.identities = {'$me:LAPTOP'};
+      roster.attributes = {
+        '$me:LAPTOP': {CallRoster.chosenAttribute: 'yes'},
+      };
+      roster.recompute();
+      expect(roster.siblingChosen('LAPTOP'), ChosenState.chosen);
+
+      roster.attributes = {
+        '$me:LAPTOP': {CallRoster.chosenAttribute: 'no'},
+      };
+      roster.recompute();
+      expect(roster.siblingChosen('LAPTOP'), ChosenState.notChosen);
+
+      roster.attributes = {'$me:LAPTOP': const {}};
+      roster.recompute();
+      expect(
+        roster.siblingChosen('LAPTOP'),
+        ChosenState.silent,
+        reason: 'a device that has published nothing is SILENT, not notChosen',
+      );
+    });
+
+    test('a device this account cannot see is silent', () {
+      expect(roster.siblingChosen('GHOST'), ChosenState.silent);
+    });
+
+    test('a change to ONLY pangea_chosen notifies listeners', () {
+      // The guard against doc:209: the claim is inside the change-detection
+      // tuple, so a sibling flipping its ownership claim wakes the arbiter. If
+      // the field were left out of CallParticipant.state, this claim would land
+      // in silence and a prompt would sit stale.
+      roster.identities = {'$me:LAPTOP'};
+      roster.attributes = {
+        '$me:LAPTOP': {CallRoster.chosenAttribute: 'no'},
+      };
+      roster.recompute();
+      final settled = notifications;
+      roster.attributes = {
+        '$me:LAPTOP': {CallRoster.chosenAttribute: 'yes'},
+      };
+      roster.recompute();
+      expect(
+        notifications,
+        greaterThan(settled),
+        reason: 'pangea_chosen must be in the notify tuple',
+      );
+    });
+  });
+
   group('whether the peer can be heard', () {
     test('shows muted only when every peer publication is muted', () {
       roster.identities = {'$peer:PHONE', '$peer:LAPTOP'};

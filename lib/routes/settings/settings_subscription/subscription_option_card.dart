@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/subscription/repo_v2/products_response.dart';
 import 'package:fluffychat/features/subscription/widgets/frame_container.dart';
@@ -29,13 +29,13 @@ class SubscriptionOptionCard extends StatelessWidget {
         : theme.textTheme.titleSmall;
 
     final frameColor = selected
-        ? AppConfig.goldByTheme(context)
+        ? Theme.of(context).pangea.goldFixedDim
         : theme.colorScheme.primaryContainer;
 
     // The title sits on [frameColor], so its ink follows the frame — gold is a
     // light fill in both themes, where onPrimaryContainer is unreadable (#8303).
     final foregroundColor = selected
-        ? AppConfig.onGoldByTheme(context)
+        ? Theme.of(context).pangea.onGoldFixed
         : theme.colorScheme.onPrimaryContainer;
 
     return Semantics(
@@ -43,38 +43,42 @@ class SubscriptionOptionCard extends StatelessWidget {
       selected: selected,
       label:
           '${plan.duration.cardTitle(l10n)}, ${plan.duration.copy(l10n)}, ${plan.priceDisplay}',
-      excludeSemantics: true,
-      onTap: onTap,
+      // Content excluded inside the InkWell, not the whole subtree from
+      // outside: that keeps the InkWell's focus on this named node (#8873).
       child: Material(
         elevation: 4.0,
         borderRadius: BorderRadius.circular(_borderRadius),
         child: InkWell(
           onTap: onTap,
           borderRadius: BorderRadius.circular(_borderRadius),
-          child: FrameContainer(
-            title: plan.duration.cardTitle(l10n),
-            frameColor: frameColor,
-            backgroundColor: theme.colorScheme.surface,
-            foregroundColor: foregroundColor,
-            padding: EdgeInsets.all(8.0),
-            titlePadding: EdgeInsetsGeometry.symmetric(
-              vertical: 8.0,
-              horizontal: 2.0,
-            ),
-            borderRadius: _borderRadius,
-            titleStyle: textStyle?.copyWith(
-              fontWeight: FontWeight.bold,
-              color: foregroundColor,
-            ),
-            child: Column(
-              spacing: 8.0,
-              children: [
-                Text(
-                  plan.duration.copy(l10n),
-                  style: textStyle?.copyWith(fontWeight: FontWeight.bold),
-                ),
-                Text(plan.priceDisplay, style: textStyle),
-              ],
+          child: ExcludeSemantics(
+            child: FrameContainer(
+              title: plan.duration.cardTitle(l10n),
+              frameColor: frameColor,
+              // Cut out from the star art behind the cards (tester report, 2026-09-15).
+              outlineColor: theme.colorScheme.surface,
+              backgroundColor: theme.colorScheme.surface,
+              foregroundColor: foregroundColor,
+              padding: EdgeInsets.all(8.0),
+              titlePadding: EdgeInsetsGeometry.symmetric(
+                vertical: 8.0,
+                horizontal: 2.0,
+              ),
+              borderRadius: _borderRadius,
+              titleStyle: textStyle?.copyWith(
+                fontWeight: FontWeight.bold,
+                color: foregroundColor,
+              ),
+              child: Column(
+                spacing: 8.0,
+                children: [
+                  Text(
+                    plan.duration.copy(l10n),
+                    style: textStyle?.copyWith(fontWeight: FontWeight.bold),
+                  ),
+                  Text(plan.priceDisplay, style: textStyle),
+                ],
+              ),
             ),
           ),
         ),

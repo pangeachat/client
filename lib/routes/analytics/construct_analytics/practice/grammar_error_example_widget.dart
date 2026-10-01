@@ -113,7 +113,7 @@ class GrammarErrorExampleWidget extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: Theme.of(
                         context,
-                      ).colorScheme.primaryContainer.withAlpha(200),
+                      ).colorScheme.onPrimary.withAlpha(200),
                     ),
                   ),
                 ),

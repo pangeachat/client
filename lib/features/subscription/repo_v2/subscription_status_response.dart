@@ -79,9 +79,20 @@ class SubscriptionStatusResponse extends BaseResponse {
 
   bool get isTrialOfferable => trialEligible == true && trialClaimed != true;
 
+  /// The choreographer serves two phases behind one shape, named by
+  /// `entitlement_source`: the v2 CMS resolution and the legacy RevenueCat
+  /// one, which is store-managed and carries neither a CMS entitlement ref nor
+  /// a catalog plan.
+  static const String _cmsEntitlementSource = 'cms';
+
+  /// A billable v2 entitlement whose `planId` is missing. A catalog plan is
+  /// only expected of a CMS row, where it is reverse-mapped from the Stripe
+  /// price the CMS stored; a legacy RevenueCat status has none by construction
+  /// and renders the generic paid tile as intended (CLIENT-EMJ, #8842).
   bool get isPaidWithoutPlan {
     final winning = this.winning;
-    return accessLevel == SubscriptionAccessLevel.full &&
+    return entitlementSource == _cmsEntitlementSource &&
+        accessLevel == SubscriptionAccessLevel.full &&
         winning != null &&
         winning.planId == null &&
         winning.type?.isBillable == true;

@@ -5,6 +5,7 @@ import 'package:emoji_picker_flutter/locales/default_emoji_set_locale.dart';
 
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/activity_sessions/bot_activty_role_room_extension.dart';
 import 'package:fluffychat/features/bot/bot_room_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
@@ -73,6 +74,12 @@ class PangeaChatInputRow extends StatelessWidget {
                         valueListenable: controller.sendController,
                         builder: (context, text, _) {
                           final isBotDM = controller.room.isBotDM;
+                          // The bot can't vote in a poll, so a poll started
+                          // in a session the learner shares only with the bot
+                          // would sit unanswered (#8982).
+                          final canPoll =
+                              !isBotDM &&
+                              !controller.room.isTwoPersonBotActivity;
                           return AnimatedContainer(
                             duration: FluffyThemes.animationDuration,
                             curve: FluffyThemes.animationCurve,
@@ -83,22 +90,23 @@ class PangeaChatInputRow extends StatelessWidget {
                             decoration: const BoxDecoration(),
                             child: PopupMenuButton<AddPopupMenuActions>(
                               useRootNavigator: true,
+                              tooltip: L10n.of(context).attach,
                               icon: const Icon(Icons.add_outlined),
                               onSelected:
                                   controller.onAddPopupMenuButtonSelected,
                               itemBuilder: (BuildContext context) =>
                                   <PopupMenuEntry<AddPopupMenuActions>>[
-                                    if (!isBotDM)
+                                    if (canPoll)
                                       PopupMenuItem(
                                         value: AddPopupMenuActions.poll,
                                         child: ListTile(
                                           leading: CircleAvatar(
                                             backgroundColor: theme
                                                 .colorScheme
-                                                .onPrimaryContainer,
+                                                .primaryContainer,
                                             foregroundColor: theme
                                                 .colorScheme
-                                                .primaryContainer,
+                                                .onPrimaryContainer,
                                             child: const Icon(
                                               Icons.poll_outlined,
                                             ),

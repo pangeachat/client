@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/authentication/email_address_policy.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/home/login/login_options_view.dart';
 import 'package:fluffychat/routes/home/login/p_login.dart';
@@ -276,6 +277,12 @@ class LoginController extends State<Login> {
           ? usernameController.text
           : '',
       keyboardType: TextInputType.emailAddress,
+      // Refused client-side by the same rule signup answers with: the
+      // homeserver answers non-email text with M_BAD_JSON, which the severity
+      // table rightly reads as a malformed request (CLIENT-BMA, #8836).
+      validator: (input) => EmailAddressPolicy.isValid(input)
+          ? null
+          : L10n.of(context).pleaseEnterValidEmail,
     );
     if (input == null) return;
     final clientSecret = DateTime.now().millisecondsSinceEpoch.toString();

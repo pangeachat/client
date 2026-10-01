@@ -58,9 +58,9 @@ class MapBubble extends StatelessWidget {
                           // the tip of the location pin to be static when zooming.
                           // Might have to do with psychological perception of where the tip exactly is
                           offset: const Offset(0, -12.5),
-                          child: const Icon(
+                          child: Icon(
                             Icons.location_pin,
-                            color: Colors.red,
+                            color: Theme.of(context).colorScheme.primary,
                             size: 30,
                           ),
                         ),

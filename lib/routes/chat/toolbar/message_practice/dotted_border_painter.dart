@@ -42,7 +42,13 @@ class DottedBorderPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return false;
+  bool shouldRepaint(covariant DottedBorderPainter oldDelegate) {
+    // A theme switch hands the paint a new color; painting from the old
+    // delegate would keep the previous theme's border on screen.
+    return oldDelegate.color != color ||
+        oldDelegate.strokeWidth != strokeWidth ||
+        oldDelegate.dashWidth != dashWidth ||
+        oldDelegate.dashSpace != dashSpace ||
+        oldDelegate.borderRadius != borderRadius;
   }
 }
