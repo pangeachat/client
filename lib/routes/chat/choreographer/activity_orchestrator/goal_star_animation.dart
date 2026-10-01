@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/overlay/overlay.dart';
 import 'package:fluffychat/features/overlay/overlay_display_details.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -142,10 +142,12 @@ class GoalStarAnimationState extends State<GoalStarAnimation>
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final iconColor = theme.brightness == Brightness.light
-        ? AppConfig.gold
-        : AppConfig.goldLight;
+    // Decoration, so it keeps the bright [PangeaColors.goldFixedDim] rather than
+    // the readable [PangeaColors.goldGraphic] its siblings took (#8983): this
+    // star pops, arcs and fades over whatever is behind the overlay — with
+    // `useActivityImageAsChatBackground` a photo, not a theme surface — and the
+    // state it celebrates is carried persistently by the goal star it flies to.
+    final iconColor = Theme.of(context).pangea.goldFixedDim;
 
     return IgnorePointer(
       ignoring: true,

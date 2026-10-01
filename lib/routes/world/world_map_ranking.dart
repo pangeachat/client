@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -46,20 +46,31 @@ enum ActivityPinState {
   /// values.
   bool get isLive => isOngoing || this == ActivityPinState.joinable;
 
-  /// The pin body color. See world-map.instructions.md ("Pin state").
-  Color get color => switch (this) {
-    ActivityPinState.ongoingPending ||
-    ActivityPinState.ongoingActive => AppConfig.primaryColor,
-    ActivityPinState.joinable => AppConfig.green,
-    ActivityPinState.inProgress => AppConfig.gold,
-    ActivityPinState.available => AppConfig.primaryColorLight,
+  /// The pin body colour. See world-map.instructions.md ("Pin state").
+  Color bodyColor(BuildContext context) => switch (this) {
+    ActivityPinState.joinable => Theme.of(context).pangea.joinable,
+    ActivityPinState.ongoingPending || ActivityPinState.ongoingActive =>
+      Theme.of(context).colorScheme.primaryContainer,
+    ActivityPinState.inProgress => Theme.of(context).pangea.goldFixedDim,
+    ActivityPinState.available => Theme.of(
+      context,
+    ).colorScheme.secondaryContainer,
   };
 
-  Color bodyColor(BuildContext context) =>
-      this == ActivityPinState.available &&
-          Theme.of(context).brightness == Brightness.dark
-      ? AppConfig.primaryColorDark
-      : color;
+  /// Ink for the icon and text drawn on [bodyColor].
+  Color onBodyColor(BuildContext context) => switch (this) {
+    ActivityPinState.joinable => Theme.of(context).pangea.onJoinable,
+    ActivityPinState.ongoingPending || ActivityPinState.ongoingActive =>
+      Theme.of(context).colorScheme.onPrimaryContainer,
+    ActivityPinState.inProgress => Theme.of(context).pangea.onGoldFixed,
+    // The pale light-mode available fill is too pale for white (1.57:1); it
+    // takes the dark-purple label colour there (#8243, #8968). The deep
+    // dark-mode fill carries white at 9.3:1.
+    ActivityPinState.available =>
+      Theme.of(context).brightness == Brightness.light
+          ? Theme.of(context).colorScheme.primary
+          : Colors.white,
+  };
 
   String label(L10n l10n) => switch (this) {
     ActivityPinState.ongoingPending => l10n.ongoingPendingLabel,
@@ -83,13 +94,31 @@ enum ActivityPinState {
   };
 
   /// The accent used for a large card's border / foreground — the state hue.
-  Color get accent => color;
+  Color accent(BuildContext context) => bodyColor(context);
 
-  /// The label text colour: the pin's state colour, except `available` — whose
-  /// light-purple fill is too low-contrast for light-purple text, so its label
-  /// uses dark purple instead (world-map.instructions.md, "Pin state").
-  Color get labelColor =>
-      this == ActivityPinState.available ? AppConfig.primaryColor : color;
+  /// The label colour: the state hue as a TEXT tone, never the fill's tone.
+  ///
+  /// Wherever this colour is a large card's TEXT it sits on
+  /// `colorScheme.surface`, and the raw seed purple the pins once used measured
+  /// 4.2:1 over that surface in BOTH themes — under WCAG AA's 4.5:1 for the
+  /// card's 13px/14px type, which is what made the dark card's title unreadable
+  /// (#8968). `colorScheme.primary` is the same brand hue tonally retuned for
+  /// the surface behind it, so it clears AA in both directions (10.97:1 dark,
+  /// 6.14:1 light) from one expression. The joinable pin's fill green is a
+  /// fill tone that carries white, not a text tone (4.0:1 on the dark
+  /// surface), so its label reads the success text tone (6.1:1 light, 10.9:1
+  /// dark); the completed star's label likewise reads the gold text tone.
+  ///
+  /// Not the same colour as the card's border, which stays the state hue via
+  /// [bodyColor] so card and pin still read as one state
+  /// (world-map.instructions.md, "Pin state").
+  Color labelColor(BuildContext context) => switch (this) {
+    ActivityPinState.available ||
+    ActivityPinState.ongoingPending ||
+    ActivityPinState.ongoingActive => Theme.of(context).colorScheme.primary,
+    ActivityPinState.joinable => Theme.of(context).pangea.success,
+    ActivityPinState.inProgress => Theme.of(context).pangea.gold,
+  };
 }
 
 /// The visual weight a pin renders at, filled from the top of the score. The
@@ -152,6 +181,10 @@ class PinSignals {
     this.pinged = false,
     this.recency = 0,
   });
+
+  /// The learner has a full star row on this activity — the `completed`
+  /// ranking term, and what the course page's Activities row drops.
+  bool get isCompleted => completionFraction >= 1.0;
 }
 
 /// The ranking outcome for the pins currently in view: [ordered] is the
@@ -192,6 +225,61 @@ class RankingResult {
   /// The [midBudget] candidates after the large slice. Mid has no eligibility
   /// gate — it fills purely by score.
   Set<String> get midIds => ordered.skip(largeBudget).take(midBudget).toSet();
+}
+
+/// The one activity the world tutorial points the learner at, or null when
+/// nothing on the map qualifies.
+///
+/// **Two roles, always — this is a hard gate, not a preference.** The bot fills
+/// exactly one seat, so a two-role activity is the ONLY kind a learner with
+/// nobody else around can actually start; anything else strands them on a start
+/// page waiting for humans who are not coming. The same reasoning already
+/// demotes 3+ role activities on a new learner's map
+/// ([isMultiPersonFirstMap]) — here it excludes them outright, because the
+/// tutorial is choosing on the learner's behalf and telling them to tap it. An
+/// unknown role count is excluded too: it cannot be confirmed to be two.
+///
+/// Among those, deliberately blunt: the **first** placed activity at the
+/// **lowest** level, preferring one that is plainly **available** over a live
+/// session someone else is running or a trail star the learner already
+/// finished. No level matching against the learner and no keyword — the step
+/// exists to teach what an activity IS, so the easiest possible one wins, and a
+/// rule with nothing to tune cannot quietly stop matching.
+///
+/// State, unlike the role count, is a **preference**: a map whose only two-role
+/// activities are live sessions still yields a starter. An activity with no CEFR
+/// sorts last — unknown is not evidence of "easy".
+///
+/// Ties break on input order, so the answer is stable for a given pin list
+/// (`List.sort` is not stable on its own, hence the index carried through).
+QuestActivityCard? pickStarterActivity({
+  required List<QuestActivityCard> candidates,
+  required ActivityPinState Function(QuestActivityCard) stateOf,
+}) {
+  final placed = <({QuestActivityCard card, int index})>[
+    for (final (index, card) in candidates.indexed)
+      if (card.point != null && card.roleCount == 2) (card: card, index: index),
+  ];
+  if (placed.isEmpty) return null;
+
+  int levelRank(QuestActivityCard card) {
+    final cefr = card.cefr;
+    if (cefr == null || cefr.isEmpty) return 1 << 20;
+    return LanguageLevelTypeEnum.fromString(cefr).storageInt;
+  }
+
+  // 0 for available, 1 for anything else — the whole of the state preference.
+  int stateRank(QuestActivityCard card) =>
+      stateOf(card) == ActivityPinState.available ? 0 : 1;
+
+  placed.sort((a, b) {
+    final byState = stateRank(a.card).compareTo(stateRank(b.card));
+    if (byState != 0) return byState;
+    final byLevel = levelRank(a.card).compareTo(levelRank(b.card));
+    if (byLevel != 0) return byLevel;
+    return a.index.compareTo(b.index);
+  });
+  return placed.first.card;
 }
 
 /// The relevance band (0..2) for a pin: the next-Mission gradient when the pin
@@ -313,7 +401,7 @@ double pinScore({
     band +
     0.6 * (s.pinged ? 1 : 0) +
     0.3 * s.recency.clamp(0.0, 1.0) -
-    0.5 * (s.completionFraction >= 1.0 ? 1 : 0) -
+    0.5 * (s.isCompleted ? 1 : 0) -
     kDismissedPenalty * (isDismissed ? 1 : 0) -
     kMultiPersonFirstMapPenalty *
         (isMultiPersonFirstMap(
@@ -567,6 +655,36 @@ Rect midPinRect(
   headDiameter,
   headDiameter + pointHeight,
 );
+
+/// The on-screen rect a pin occupies, given its geographic [tip] in screen
+/// coordinates and the tier/state it drew at. The inverse of the marker
+/// geometry: every layer anchors its box to the point differently, so anything
+/// drawing OVER a pin — the tutorial's spotlight — has to ask here rather than
+/// assume a centred box.
+///
+///  * **mid** (a teardrop, except the inProgress star) hangs its box above the
+///    point, tip on it — [midPinRect].
+///  * **large** anchors `topCenter`, so the card sits above the point with room
+///    reserved for the tail beneath and the badge overhang above and aside.
+///  * everything else is a plain box centred on the point.
+Rect pinRectAt(
+  Offset tip, {
+  required PinTier tier,
+  required ActivityPinState state,
+  required double largeTailHeight,
+  required double largeBadgeOverhang,
+}) {
+  if (tier == PinTier.mid && state != ActivityPinState.inProgress) {
+    return midPinRect(tip);
+  }
+  if (tier == PinTier.large) {
+    final width = tier.dotWidth + largeBadgeOverhang * 2;
+    final height = tier.dotHeight(state) + largeTailHeight + largeBadgeOverhang;
+    return Rect.fromLTWH(tip.dx - width / 2, tip.dy - height, width, height);
+  }
+  final box = tier.markerBox(state);
+  return Rect.fromCenter(center: tip, width: box.width, height: box.height);
+}
 
 /// The outcome of the mid-pin placement pass ([placeMidPins]): which candidates
 /// render as `mid`. A candidate absent from [midIds] was demoted to a small dot

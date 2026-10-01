@@ -4,15 +4,16 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_room_extension.dart';
-import 'package:fluffychat/features/bot/utils/bot_name.dart';
+import 'package:fluffychat/features/activity_sessions/bot_activty_role_room_extension.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
+import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_dropdown_content.dart';
@@ -43,17 +44,6 @@ class ActivityStatsMenu extends StatelessWidget with GoalProgressMixin {
         : PLanguageStore.byLangCode(targetLanguage);
   }
 
-  bool get _isTwoPersonBotActivity {
-    final roles = room.activityRoles?.roles;
-    final assignedRoles = room.assignedRoles;
-    if (roles == null || assignedRoles == null) return false;
-
-    return roles.length == 2 &&
-        assignedRoles.values.any(
-          (role) => role.userId == BotName.byEnvironment,
-        );
-  }
-
   bool get _activityComplete => room.isActivityFinished;
 
   bool get _showWaitNotDone =>
@@ -63,7 +53,7 @@ class ActivityStatsMenu extends StatelessWidget with GoalProgressMixin {
       !_activityComplete && room.hasPickedRole && !room.hasCompletedRole;
 
   bool get _showEndForAll =>
-      !_activityComplete && room.isRoomAdmin && !_isTwoPersonBotActivity;
+      !_activityComplete && room.isRoomAdmin && !room.isTwoPersonBotActivity;
 
   bool get _showDoneButtonHint => _showEndForMe && room.hasCompletedOwnGoals;
 
@@ -165,6 +155,9 @@ class ActivityStatsMenu extends StatelessWidget with GoalProgressMixin {
                   ActivityGoalHeaderCard(
                     showDropdown: showDropdown,
                     isComplete: allComplete,
+                    // Only the live session lights this card, so only it claims
+                    // the target id (see ActivityGoalHeaderCard).
+                    tutorialTargetId: TutorialTargetIds.activityGoalHeader,
                     collapsed: collapsed,
                     expanded: ActivityDropdownContent(
                       goals: goals,
@@ -208,10 +201,8 @@ class _DoneButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppConfig.goldByTheme(context),
-        foregroundColor: theme.brightness == Brightness.light
-            ? null
-            : theme.colorScheme.surface,
+        backgroundColor: theme.pangea.goldFixedDim,
+        foregroundColor: theme.pangea.onGoldFixed,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,

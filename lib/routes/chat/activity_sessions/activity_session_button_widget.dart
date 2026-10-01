@@ -86,8 +86,8 @@ class ActivitySessionButtons extends StatelessWidget {
 }
 
 /// The session page's call-to-action button: a full-width filled button in the
-/// darker `primary` colour when it leads, dropping to the lighter
-/// `primaryContainer` [secondary] style for any action that follows it. Public
+/// `primary` colour when it leads, dropping to the tonal `secondaryContainer`
+/// [secondary] style for any action that follows it. Public
 /// because the archived fallback body renders its own leave CTA outside this
 /// footer (#8064).
 class ActivitySessionCTAButton extends StatelessWidget {
@@ -95,8 +95,10 @@ class ActivitySessionCTAButton extends StatelessWidget {
   final VoidCallback? onPressed;
 
   /// A de-emphasized variant for any action following the single primary: a
-  /// fully filled but lighter (primaryContainer) button, mirroring the mobile
-  /// CTA chips — e.g. "start my own" when joining an open session leads.
+  /// fully filled tonal (secondaryContainer) button, mirroring the mobile CTA
+  /// chips — e.g. "start my own" when joining an open session leads. Under the
+  /// fidelity scheme primaryContainer is the vivid brand fill, a near twin of
+  /// primary, so the quieter fill is the scheme's secondary container.
   final bool secondary;
 
   /// An optional leading glyph — the state CTAs pass their
@@ -128,14 +130,14 @@ class ActivitySessionCTAButton extends StatelessWidget {
       ],
     );
     // Mirror the mobile CTA chips' colour hierarchy: the single lead action is
-    // the darker filled primary; every following action is a fully filled but
-    // lighter primaryContainer button (not a bare outline).
+    // the filled primary; every following action is a fully filled tonal
+    // secondaryContainer button (not a bare outline).
     final scheme = theme.colorScheme;
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: secondary ? scheme.primaryContainer : scheme.primary,
+        backgroundColor: secondary ? scheme.secondaryContainer : scheme.primary,
         foregroundColor: secondary
-            ? scheme.onPrimaryContainer
+            ? scheme.onSecondaryContainer
             : scheme.onPrimary,
         padding: const EdgeInsets.all(8.0),
         shape: shape,
@@ -438,8 +440,8 @@ class _NotStartedMobileCtaRow extends StatelessWidget {
 }
 
 /// A pill in the mobile CTA row. The single primary action is [filled] (solid
-/// primary); every other action — including share and flag — is a light
-/// primaryContainer pill. Passing [icon] with no [label] renders a circular
+/// primary); every other action — including share and flag — is a tonal
+/// secondaryContainer pill. Passing [icon] with no [label] renders a circular
 /// icon-only chip (share / flag) sized to match the text pills' height; passing
 /// both renders the icon as a leading glyph before the label (the state chips).
 class _ActivityCtaChip extends StatelessWidget {
@@ -463,10 +465,10 @@ class _ActivityCtaChip extends StatelessWidget {
     final style = ElevatedButton.styleFrom(
       backgroundColor: filled
           ? theme.colorScheme.primary
-          : theme.colorScheme.primaryContainer,
+          : theme.colorScheme.secondaryContainer,
       foregroundColor: filled
           ? theme.colorScheme.onPrimary
-          : theme.colorScheme.onPrimaryContainer,
+          : theme.colorScheme.onSecondaryContainer,
       elevation: 0.0,
       shape: const StadiumBorder(),
     );

@@ -34,6 +34,7 @@ Different interactions contribute different amounts of XP, reflecting effort. Ea
 
 - **Clicking a new word** in the toolbar (first view) — small XP (passive learning)
 - **Correct practice answers** (emoji matching, meaning selection, listening) — moderate XP
+- **Assigning an emoji to a word** — moderate XP, awarded once per construct. Changing the emoji afterwards earns nothing, however quickly the learner changes it: the association should be free to improve, and re-picking is not a way to earn repeat XP. Answering the emoji-matching practice exercise is a separate earning event and is not capped this way.
 - **Wrong practice answers** — a small negative XP value, deliberately, to discourage guessing through a multiple-choice item. Skipped or unanswered items are worth 0. See `ConstructUseTypeEnum.pointValue` for the per-type values.
 - **Using a word in writing** (via the choreographer) — XP based on the construct use type
 - **Hearing a word** through read-aloud or voice-message playback — 0 XP. The exposure is the data; see [Listening exposure](#listening-exposure).
@@ -63,7 +64,7 @@ An exposure use **never carries a source event id or room id.** The listening la
 
 Exposure is excluded from `sentByUser` and returns `null` from `summaryEnumType`, so it reaches neither the typed-words counter nor the correct/incorrect buckets: it is neither. The bucket split in [`SpaceAnalyticsSummaryModel`](../../lib/routes/chat/chat_details/space_analytics/space_analytics_summary_model.dart) keys on the sign of `xp` rather than on that enum, so it needs its own guard there — a 0-XP use otherwise lands in *incorrect*.
 
-**Bucketing.** Exposure fires far more often than production or practice, and nothing in the analytics store ever prunes or compacts uses. So exposures accumulate in memory ([`ListeningExposureBuffer`](../../lib/features/analytics/listening_exposure_buffer.dart)) and are written as one row per lemma per window carrying an explicit `count`, rather than one row per event. The count is authoritative — never infer it from the number of rows.
+**Bucketing.** Exposure fires far more often than production or practice, and nothing in the analytics store ever prunes or compacts uses. So exposures accumulate in memory ([`ListeningExposureBuffer`](../../lib/features/analytics/listening_exposure_buffer.dart)) and are written as one row per lemma per window carrying an explicit `count`, rather than one row per event. The count is authoritative — never infer it from the number of rows. Bucketing is a storage rule, not a display one: the construct details page reads the buffer's pending count on top of the stored count, so the Listening chip moves the moment a playback completes rather than after the next drain (#8913).
 
 The window is **five minutes**, and its ceiling is not arbitrary: construct-use timestamps double as corroboration anchors for engagement spans, matched within ±10 minutes with no type filter. A bucket therefore carries a real instant inside itself (its last exposure), never a synthetic boundary, and the window must stay inside the corroboration window — a day-long bucket would carry one anchor and stop vouching for the rest of the day, which bites hardest in the passive listening session where exposure rows are the only anchors a learner has.
 

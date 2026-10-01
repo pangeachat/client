@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/subscription/repo_v2/checkout_request.dart';
 import 'package:fluffychat/features/subscription/widgets/subscription_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -46,8 +46,8 @@ class DiscountCodeViewContent extends StatelessWidget {
             child: ElevatedButton(
               onPressed: viewModel.validatePromoCode,
               style: ElevatedButton.styleFrom(
-                backgroundColor: theme.colorScheme.primaryContainer,
-                foregroundColor: theme.colorScheme.onPrimaryContainer,
+                backgroundColor: theme.colorScheme.primary,
+                foregroundColor: theme.colorScheme.onPrimary,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(32.0),
@@ -70,11 +70,15 @@ class DiscountCodeViewContent extends StatelessWidget {
             spacing: 10.0,
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(Icons.error_outline, color: AppConfig.error, size: 24.0),
+              Icon(
+                Icons.error_outline,
+                color: theme.colorScheme.error,
+                size: 24.0,
+              ),
               Flexible(
                 child: Text(
                   L10n.of(context).invalidDiscountCode,
-                  style: TextStyle(color: AppConfig.error),
+                  style: TextStyle(color: theme.colorScheme.error),
                 ),
               ),
             ],
@@ -111,13 +115,15 @@ class DiscountCodeViewContent extends StatelessWidget {
                             children: [
                               Icon(
                                 Icons.error_outline,
-                                color: AppConfig.error,
+                                color: theme.colorScheme.error,
                                 size: 24.0,
                               ),
                               Flexible(
                                 child: Text(
                                   L10n.of(context).oopsSomethingWentWrong,
-                                  style: TextStyle(color: AppConfig.error),
+                                  style: TextStyle(
+                                    color: theme.colorScheme.error,
+                                  ),
                                 ),
                               ),
                             ],
@@ -154,11 +160,17 @@ class DiscountCodeViewContent extends StatelessWidget {
                       spacing: 10.0,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(Icons.check, color: AppConfig.success, size: 24.0),
+                        Icon(
+                          Icons.check,
+                          color: Theme.of(context).pangea.success,
+                          size: 24.0,
+                        ),
                         Flexible(
                           child: Text(
                             L10n.of(context).discountApplied(discountCopy),
-                            style: TextStyle(color: AppConfig.success),
+                            style: TextStyle(
+                              color: Theme.of(context).pangea.success,
+                            ),
                           ),
                         ),
                       ],
@@ -168,8 +180,8 @@ class DiscountCodeViewContent extends StatelessWidget {
                   valueListenable: viewModel.selectedSubscription,
                   builder: (context, selected, _) => ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: theme.colorScheme.primaryContainer,
-                      foregroundColor: theme.colorScheme.onPrimaryContainer,
+                      backgroundColor: theme.colorScheme.primary,
+                      foregroundColor: theme.colorScheme.onPrimary,
                     ),
                     onPressed: selected != null
                         ? () => onSubscribe(

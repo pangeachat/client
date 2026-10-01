@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_model.dart';
@@ -69,7 +69,7 @@ class CompletedAnalyticsPracticeExercisesView extends StatelessWidget {
             Text(
               "+ ${session.state.allXPGained} XP",
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                color: AppConfig.goldByTheme(context),
+                color: Theme.of(context).pangea.gold,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -82,11 +82,15 @@ class CompletedAnalyticsPracticeExercisesView extends StatelessWidget {
                 height: 20.0,
                 widthPercent: accuracy / 100.0,
                 markerWidth: 20.0,
-                markerColor: AppConfig.success,
+                markerColor: Theme.of(context).pangea.successGraphic,
+                // The neutral track, washed gold when the accuracy bonus
+                // was earned.
                 backgroundColor: !accuracyAchievement
-                    ? Theme.of(context).colorScheme.surfaceContainerHighest
+                    ? null
                     : Color.alphaBlend(
-                        AppConfig.goldLight.withValues(alpha: 0.3),
+                        Theme.of(
+                          context,
+                        ).pangea.goldFixedDim.withValues(alpha: 0.3),
                         Theme.of(context).colorScheme.surfaceContainerHighest,
                       ),
               ),

@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/features/subscription/repo_v2/products_response.dart';
 import 'package:fluffychat/features/subscription/widgets/frame_container.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/subscription_option_card.dart';
+import 'one_node_control.dart';
 
 /// Covers #8303: a selected plan card wears gold on its title bar, but its
 /// title ink was pinned to `onPrimaryContainer` — near-white in the dark
@@ -27,7 +29,7 @@ void main() {
     brightness: brightness,
     colorScheme: ColorScheme.fromSeed(
       brightness: brightness,
-      seedColor: AppConfig.primaryColor,
+      seedColor: Color(AppSettings.colorSchemeSeedInt.defaultValue),
     ),
   );
 
@@ -77,9 +79,9 @@ void main() {
         final ink = titleInk(tester);
         expect(
           ink,
-          AppConfig.onGoldByTheme(
+          Theme.of(
             tester.element(find.byType(SubscriptionOptionCard)),
-          ),
+          ).pangea.onGoldFixed,
           reason:
               'the selected title bar is gold, so its ink is the shared '
               'on-gold tone rather than a colour of its own',
@@ -101,9 +103,21 @@ void main() {
           reason: '#8303 is scoped to the selected card',
         );
         expect(frame(tester).frameColor, scheme.primaryContainer);
+        expect(frame(tester).outlineColor, scheme.surface);
       });
     });
   }
+
+  testWidgets('the card is one node with name, role, focus and tap (#8873)', (
+    tester,
+  ) async {
+    await pump(tester, brightness: Brightness.light, selected: false);
+    final l10n = L10n.of(tester.element(find.byType(SubscriptionOptionCard)));
+    expectOneNodeControl(
+      tester,
+      '${plan.duration.cardTitle(l10n)}, ${plan.duration.copy(l10n)}, ${plan.priceDisplay}',
+    );
+  });
 }
 
 /// WCAG relative-contrast ratio between two opaque colours.

@@ -10,6 +10,38 @@ import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 mixin LemmaEmojiSetter {
+  /// Constructs whose one-time emoji XP this app run has already awarded.
+  ///
+  /// Never cleared. It can only ever suppress a second award, so growing it is
+  /// safe, and losing it on restart just hands the decision back to the durable
+  /// record in [ConstructIdentifier.userSetEmoji].
+  static final Set<String> _claimedEmojiXP = {};
+
+  /// Whether this selection is the one that earns [constructId]'s one-time
+  /// emoji XP.
+  ///
+  /// [alreadySet] is the durable answer — the learner already has an emoji on
+  /// this construct — but it is read back from the analytics room's state
+  /// event, which only becomes readable once the write has round-tripped
+  /// through sync. Two selections inside that window both read it as false and
+  /// both award (#9005). The claim closes the window: it is taken
+  /// synchronously, in the same turn as the decision, so the second selection
+  /// loses even while the durable answer is still catching up. Keyed by account
+  /// and language so that neither an account switch nor an L2 switch inherits
+  /// the other's claims.
+  @visibleForTesting
+  static bool claimEmojiXP(
+    ConstructIdentifier constructId, {
+    required String accountId,
+    required String language,
+    required bool alreadySet,
+  }) {
+    if (alreadySet) return false;
+    return _claimedEmojiXP.add(
+      '$accountId|$language|${constructId.storageKey}',
+    );
+  }
+
   Future<void> setLemmaEmoji(
     ConstructIdentifier constructId,
     String langCode,
@@ -19,17 +51,25 @@ mixin LemmaEmojiSetter {
     String? eventId,
     String? form,
   ) async {
+    final language = langCode.split("-").first;
     final userL2 =
         MatrixState.pangeaController.userController.userL2?.langCodeShort;
-    if (langCode.split("-").first != userL2) {
+    if (language != userL2) {
       // only set emoji for user's L2 language
       return;
     }
 
-    if (constructId.userSetEmoji == null) {
+    final isFirstSelection = claimEmojiXP(
+      constructId,
+      accountId: MatrixState.pangeaController.matrixState.client.userID ?? '',
+      language: language,
+      alreadySet: constructId.userSetEmoji != null,
+    );
+
+    if (isFirstSelection) {
       _getEmojiAnalytics(
         constructId,
-        language: langCode.split("-").first,
+        language: language,
         targetId: targetId,
         roomId: roomId,
         eventId: eventId,

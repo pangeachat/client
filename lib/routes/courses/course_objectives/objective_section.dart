@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
@@ -55,6 +55,9 @@ class ObjectiveSection extends StatefulWidget {
   /// resolver's anchor (#8357).
   final bool isUpNext;
 
+  /// Passed through to [ActivityCarousel.interactive].
+  final bool interactive;
+
   const ObjectiveSection({
     super.key,
     required this.group,
@@ -70,6 +73,7 @@ class ObjectiveSection extends StatefulWidget {
     this.spacing = 16.0,
     this.cardWidth,
     this.cardHeight,
+    this.interactive = true,
   });
 
   @override
@@ -87,10 +91,23 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
+    // Three header states (#8874): the Up-next Mission wears an "Up next"
+    // label and the primary accent; a satisfied Mission trades its star for a
+    // check and mutes its text; the rest stay plain. The first two are mutually
+    // exclusive: the anchor is unsatisfied by definition, and a course whose
+    // every Mission is satisfied has no anchor at all (#8997).
+    final satisfied = widget.progress?.satisfied ?? false;
+    final headerColor = widget.isUpNext
+        ? theme.colorScheme.primary
+        : satisfied
+        ? theme.colorScheme.onSurfaceVariant
+        : null;
+
     final statement = Text(
       widget.group.objective.objective,
       style: theme.textTheme.bodyMedium?.copyWith(
-        color: widget.isUpNext ? theme.colorScheme.primary : null,
+        color: headerColor,
+        fontWeight: widget.isUpNext ? FontWeight.w500 : null,
       ),
     );
     final starFraction = widget.progress == null
@@ -104,9 +121,11 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Icon(
-                  Icons.star,
+                  satisfied ? Icons.check_circle : Icons.star,
                   size: 18.0,
-                  color: AppConfig.goldByTheme(context),
+                  color: satisfied
+                      ? Theme.of(context).pangea.success
+                      : Theme.of(context).pangea.goldGraphic,
                 ),
                 const SizedBox(width: 4.0),
                 ExcludeSemantics(
@@ -114,12 +133,31 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
                     // Raw stars over the satisfaction threshold — surplus
                     // shows (12/7); only the quest header caps.
                     '${widget.progress!.stars}/${widget.progress!.threshold}',
-                    style: theme.textTheme.bodyMedium,
+                    style: theme.textTheme.bodyMedium?.copyWith(
+                      color: headerColor,
+                    ),
                   ),
                 ),
               ],
             ),
           );
+    // The emphasis in words, so it is never colour alone.
+    final upNextLabel = widget.isUpNext
+        ? Container(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2.0),
+            decoration: BoxDecoration(
+              color: theme.colorScheme.primary,
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            child: Text(
+              L10n.of(context).upNext,
+              style: theme.textTheme.labelSmall?.copyWith(
+                color: theme.colorScheme.onPrimary,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          )
+        : null;
     final collapseChevron = widget.collapsible
         ? AnimatedRotation(
             turns: _collapsed ? -0.25 : 0,
@@ -138,13 +176,17 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
     return Semantics(
       label: L10n.of(context).objective,
       container: true,
+      // The emphasis lives in the header only. A band or an outline around the
+      // whole section was tried and dropped: a tint shows the carousel's
+      // surface-coloured scroll-arrow strip as a notch, and any inset throws
+      // this section's margins off against its neighbours (#8874).
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Objective header, left to right: the collapse chevron (full plan
-          // only), the Mission's earned/threshold stars when the shared
-          // rollup is in, then the can-do statement. The Up-next Mission's
-          // statement wears the accent.
+          // Objective header, left to right: the Mission's earned/threshold
+          // stars when the shared rollup is in, the Up-next label when this is
+          // the anchor, the can-do statement, then the collapse chevron (full
+          // plan only).
           Semantics(
             // Without an explicit button container the toggle flattens into
             // the section's group semantics and is unreachable on web, where
@@ -168,6 +210,10 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
                           starFraction,
                           const SizedBox(width: 8.0),
                         ],
+                        if (upNextLabel != null) ...[
+                          upNextLabel,
+                          const SizedBox(width: 8.0),
+                        ],
                         Expanded(child: statement),
                         if (collapseChevron != null) ...[
                           const SizedBox(width: 4.0),
@@ -178,12 +224,19 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
                   : Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        if (collapseChevron != null || starFraction != null)
+                        if (collapseChevron != null ||
+                            starFraction != null ||
+                            upNextLabel != null)
                           Padding(
                             padding: const EdgeInsets.only(bottom: 4.0),
                             child: Row(
                               children: [
                                 ?starFraction,
+                                if (upNextLabel != null) ...[
+                                  if (starFraction != null)
+                                    const SizedBox(width: 8.0),
+                                  upNextLabel,
+                                ],
                                 const Spacer(),
                                 ?collapseChevron,
                               ],
@@ -210,6 +263,7 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
               spacing: widget.spacing,
               cardWidth: widget.cardWidth,
               cardHeight: widget.cardHeight,
+              interactive: widget.interactive,
             ),
         ],
       ),

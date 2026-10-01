@@ -6,6 +6,7 @@ import 'package:livekit_client/livekit_client.dart' as lk;
 import 'package:matrix/matrix.dart' show Logs;
 
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/routes/chat/calls/call_ownership.dart';
 import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
 import 'package:fluffychat/routes/chat/calls/capture_election.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
@@ -67,6 +68,17 @@ class CallParticipant {
   /// [state] is what carries it to the notify predicate.
   final CaptureReport? capturing;
 
+  /// What that device has published about being the one carrying on with the
+  /// call, in the three states it can say it in.
+  ///
+  /// Silent by default, like [capturing]: a device that has published no
+  /// `pangea_chosen` at all does not speak the ownership protocol — an older
+  /// build, or a write still on the wire — and that silence is the whole
+  /// discriminator, so it may never be assumed to mean anything. Out of [==]
+  /// and carried to the notify predicate through [state], for the reasons
+  /// [capturing] gives.
+  final ChosenState chosen;
+
   const CallParticipant({
     required this.identity,
     required this.userId,
@@ -74,6 +86,7 @@ class CallParticipant {
     this.joinedAt,
     this.canCapture = true,
     this.capturing,
+    this.chosen = ChosenState.silent,
   });
 
   /// Splits a `@user:server:DEVICE` identity.
@@ -127,6 +140,7 @@ class CallParticipant {
     DateTime? joinedAt,
     bool canCapture = true,
     CaptureReport? capturing,
+    ChosenState chosen = ChosenState.silent,
   }) => CallParticipant(
     identity: identity,
     userId: userId,
@@ -134,6 +148,7 @@ class CallParticipant {
     joinedAt: joinedAt,
     canCapture: canCapture,
     capturing: capturing,
+    chosen: chosen,
   );
 
   /// Everything about this participant that anyone downstream reads, INCLUDING
@@ -143,8 +158,9 @@ class CallParticipant {
   /// is what the roster's notify predicate is built from: a hand-maintained
   /// list of "fields worth notifying about" is how a capability change came to
   /// land in silence.
-  (String, String, String?, DateTime?, bool, CaptureReport?) get state =>
-      (identity, userId, deviceId, joinedAt, canCapture, capturing);
+  (String, String, String?, DateTime?, bool, CaptureReport?, ChosenState)
+  get state =>
+      (identity, userId, deviceId, joinedAt, canCapture, capturing, chosen);
 
   @override
   bool operator ==(Object other) =>
@@ -280,6 +296,20 @@ class CallRoster extends ChangeNotifier {
   /// be disqualified for a stretch it was holding.
   static const capturingAttribute = 'pangea_capturing';
 
+  /// The attribute a device publishes to say whether it is the one carrying on
+  /// with the call once the learner has two devices in it.
+  ///
+  /// A THIRD attribute, on the same plane and announcer as the two above, for
+  /// the ownership design (call-device-ownership.instructions.md). Published
+  /// UNCONDITIONALLY from the moment a device joins — carrying [_notChosen]
+  /// until the learner picks it, and only then [_chosen] — because silence here
+  /// has to mean "does not speak this protocol" (an older build), which is the
+  /// whole basis of the participation test. That is why it is NOT seeded into
+  /// [_announced] the way capability is: the `no` must actually be written.
+  static const chosenAttribute = 'pangea_chosen';
+  static const _chosen = 'yes';
+  static const _notChosen = 'no';
+
   /// What a sibling's attributes say about whether it can record.
   ///
   /// Anything other than an explicit refusal reads as ABLE — no attribute, an
@@ -299,6 +329,23 @@ class CallRoster extends ChangeNotifier {
     String deviceId,
     Map<String, String> attributes,
   ) => CaptureReport.of(deviceId, attributes[capturingAttribute]);
+
+  /// What a sibling's attributes say about whether it is the chosen device.
+  ///
+  /// Three-valued like [captureReportFromAttributes], and for the same reason:
+  /// `yes` is a claim, `no` is participation without a claim, and anything else
+  /// — absent, empty, or a value from a build this one does not speak — is
+  /// SILENT, which settles nothing and is what marks an older build.
+  static ChosenState chosenFromAttributes(Map<String, String> attributes) {
+    switch (attributes[chosenAttribute]) {
+      case _chosen:
+        return ChosenState.chosen;
+      case _notChosen:
+        return ChosenState.notChosen;
+      default:
+        return ChosenState.silent;
+    }
+  }
 
   /// The picture the last recompute produced. Everything public below is a view
   /// of it, so the stored state and the state listeners were told about cannot
@@ -493,6 +540,16 @@ class CallRoster extends ChangeNotifier {
   CaptureReport siblingCaptureReport(String deviceId) =>
       _sibling(deviceId)?.capturing ?? CaptureReport.of(deviceId, null);
 
+  /// What one of this account's other devices has published about being the
+  /// chosen device.
+  ///
+  /// A device this account cannot see is SILENT, the same default as
+  /// [siblingCaptureReport] and for the same reason: a sibling we have not seen
+  /// is one we have heard nothing from, and the ownership arbiter must never
+  /// treat that as either a claim or a denial.
+  ChosenState siblingChosen(String deviceId) =>
+      _sibling(deviceId)?.chosen ?? ChosenState.silent;
+
   CallParticipant? _sibling(String deviceId) {
     for (final p in participants) {
       if (p.userId == myUserId && p.deviceId == deviceId) return p;
@@ -598,6 +655,10 @@ class CallRoster extends ChangeNotifier {
       capturing: deviceId == null
           ? null
           : captureReportFromAttributes(deviceId, member.attributes),
+      // Unlike the two above, the ownership claim is read straight off the
+      // attributes: it is a fact about what this participant published, and the
+      // arbiter only ever asks it of a device it already knows to be a sibling.
+      chosen: chosenFromAttributes(member.attributes),
     );
   }
 
@@ -665,6 +726,16 @@ class CallRoster extends ChangeNotifier {
   /// Tells this account's other devices whether this one can record.
   Future<void> announceCanCapture(bool canCapture) =>
       _announce(canCaptureAttribute, canCapture ? _canRecord : _cannotRecord);
+
+  /// Tells this account's other devices whether this one is the chosen device.
+  ///
+  /// The caller publishes `false` UNCONDITIONALLY the moment it joins — that
+  /// standing `no` is what makes a silent sibling read as "does not speak this
+  /// protocol" rather than "has not answered yet" — and `true` only once the
+  /// learner has picked this device. On the same announcer as the two above, so
+  /// there is no new channel and no new failure mode.
+  Future<void> announceChosen(bool chosen) =>
+      _announce(chosenAttribute, chosen ? _chosen : _notChosen);
 
   /// Tells them which uninterrupted stretch of audio is reaching this device's
   /// recorder, or that none is.
@@ -943,8 +1014,8 @@ class _RosterPicture {
     peerMuted: false,
   );
 
-  Set<(String, String, String?, DateTime?, bool, CaptureReport?)> get _states =>
-      participants.map((p) => p.state).toSet();
+  Set<(String, String, String?, DateTime?, bool, CaptureReport?, ChosenState)>
+  get _states => participants.map((p) => p.state).toSet();
 
   @override
   bool operator ==(Object other) =>

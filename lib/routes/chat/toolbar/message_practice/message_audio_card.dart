@@ -85,11 +85,11 @@ class MessageAudioCardState extends State<MessageAudioCard> {
               roomId: widget.messageEvent.room.id,
               senderId: widget.messageEvent.senderId,
               matrixFile: audioFile,
-              color: Theme.of(context).colorScheme.onPrimaryContainer,
+              // The card sits on the bare surface, like the analytics
+              // practice player, so it takes the same pair.
+              color: Theme.of(context).colorScheme.primary,
               fontSize: AppConfig.messageFontSize,
-              linkColor: Theme.of(context).brightness == Brightness.light
-                  ? Theme.of(context).colorScheme.primary
-                  : Theme.of(context).colorScheme.onPrimary,
+              linkColor: Theme.of(context).colorScheme.secondary,
               playbackSpeedController: widget.playbackSpeedController,
             )
           : const SizedBox(),

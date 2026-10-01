@@ -150,20 +150,83 @@ void main() {
     await tester.pumpAndSettle();
   }
 
-  testWidgets('renders the section header and four toggles', (tester) async {
+  testWidgets('renders the section header and five toggles', (tester) async {
     await pumpSection(tester, makeViewModel());
 
     expect(find.text('Audio'), findsOneWidget);
     expect(find.text('Words'), findsOneWidget);
     expect(find.text('Choices'), findsOneWidget);
+    expect(find.text('Listen first'), findsOneWidget);
     expect(find.text('On new message'), findsOneWidget);
     expect(find.text('On message click'), findsOneWidget);
-    expect(find.byType(SwitchListTile), findsNWidgets(4));
+    expect(find.byType(SwitchListTile), findsNWidgets(5));
 
     // The retired single message-audio toggle is gone (#8264), and the
     // no-voice note only renders when the gate fails (#8664).
     expect(find.text('Incoming messages'), findsNothing);
     expect(find.textContaining('message toolbar'), findsNothing);
+  });
+
+  // #8823 — Listen First only reorders what a tap does with choice audio, so
+  // with that audio off it is a mode that would play nothing.
+  testWidgets('Listen First is unavailable while choice audio is off', (
+    tester,
+  ) async {
+    await pumpSection(
+      tester,
+      makeViewModel(
+        toolSettings: const UserToolSettings(
+          audioChoices: false,
+          listenFirst: true,
+        ),
+      ),
+    );
+
+    final tile = tester.widget<SwitchListTile>(
+      find.ancestor(
+        of: find.text('Listen first'),
+        matching: find.byType(SwitchListTile),
+      ),
+    );
+    expect(tile.onChanged, isNull, reason: 'the tile should be disabled');
+    expect(
+      tile.value,
+      isFalse,
+      reason: 'it reads off whatever the account has stored',
+    );
+    expect(
+      find.text('Turn on Choices audio to use Listen First.'),
+      findsOneWidget,
+    );
+  });
+
+  testWidgets('Listen First is available once choice audio is on', (
+    tester,
+  ) async {
+    await pumpSection(
+      tester,
+      makeViewModel(toolSettings: const UserToolSettings(listenFirst: true)),
+    );
+
+    final tile = tester.widget<SwitchListTile>(
+      find.ancestor(
+        of: find.text('Listen first'),
+        matching: find.byType(SwitchListTile),
+      ),
+    );
+    expect(tile.onChanged, isNotNull);
+    expect(tile.value, isTrue);
+  });
+
+  testWidgets('turning Listen First on updates the view model', (tester) async {
+    final viewModel = makeViewModel();
+    await pumpSection(tester, viewModel);
+
+    expect(viewModel.getToolSetting(ToolSetting.listenFirst), isFalse);
+    await tester.tap(find.text('Listen first'));
+    await tester.pumpAndSettle();
+
+    expect(viewModel.getToolSetting(ToolSetting.listenFirst), isTrue);
   });
 
   testWidgets('turning off the message toggles updates the view model', (

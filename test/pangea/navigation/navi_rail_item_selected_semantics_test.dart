@@ -69,17 +69,23 @@ void main() {
     await tester.pumpAndSettle();
   }
 
+  /// The item's semantics, reached through the tooltip that names it — the
+  /// rail's tooltip is not a [Tooltip], so [CommonFinders.byTooltip] can't.
+  Finder itemNamed(String toolTip) => find.byWidgetPredicate(
+    (widget) => widget is Semantics && widget.properties.tooltip == toolTip,
+  );
+
   testWidgets('the active rail item announces as selected and the inactive '
       'one as not selected', (tester) async {
     final handle = tester.ensureSemantics();
     await pumpRail(tester);
 
     expect(
-      tester.getSemantics(find.byTooltip('Active section')),
+      tester.getSemantics(itemNamed('Active section')),
       isSemantics(hasSelectedState: true, isSelected: true),
     );
     expect(
-      tester.getSemantics(find.byTooltip('Inactive section')),
+      tester.getSemantics(itemNamed('Inactive section')),
       isSemantics(hasSelectedState: true, isSelected: false),
       reason:
           'an inactive item still exposes the selected state (as "not '

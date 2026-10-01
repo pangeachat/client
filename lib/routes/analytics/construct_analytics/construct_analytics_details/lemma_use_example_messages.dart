@@ -131,7 +131,7 @@ class LemmaUseExampleMessagesState extends State<LemmaUseExampleMessages> {
     var color = theme.colorScheme.surfaceContainerHigh;
     if (ownMessage) {
       color = displayEvent.status.isError
-          ? Colors.redAccent
+          ? theme.colorScheme.error
           : theme.colorScheme.primary;
     }
     if (event.isActivityMessage) {

@@ -49,7 +49,8 @@ class ExpiringStorageBox {
   ///
   /// Only the entry's timestamp is inspected; the payload is returned as the
   /// raw map it was written as.
-  Map<String, dynamic>? read(String key) {
+  Future<Map<String, dynamic>?> read(String key) async {
+    await _loaded();
     _maybeSweep();
     final entry = _storage.read(key);
     if (entry == null) return null;
@@ -69,7 +70,8 @@ class ExpiringStorageBox {
   }
 
   /// Stores [payload] under [key], stamped with the current time.
-  Future<void> write(String key, Map<String, dynamic> payload) {
+  Future<void> write(String key, Map<String, dynamic> payload) async {
+    await _loaded();
     _maybeSweep();
     return _storage.write(key, {
       timestampKey: _now().toIso8601String(),
@@ -77,16 +79,28 @@ class ExpiringStorageBox {
     });
   }
 
-  Future<void> remove(String key) => _storage.remove(key);
+  Future<void> remove(String key) async {
+    await _loaded();
+    return _storage.remove(key);
+  }
 
-  Future<void> erase() => _storage.erase();
+  Future<void> erase() async {
+    await _loaded();
+    return _storage.erase();
+  }
+
+  /// The box loads its file asynchronously on construction, and nothing
+  /// initialises it at boot. A read before that load lands is a miss that
+  /// regenerates a selection already on disk; a write before it races the
+  /// load on the one file handle GetStorage shares between its initial read
+  /// and its flushes — its flush queue does not cover the load — and trips
+  /// Dart's pending-operation check (CLIENT-9D3, #9062).
+  Future<void> _loaded() => _storage.initStorage;
 
   /// Removes every expired or malformed entry, inspecting timestamps only.
   Future<void> sweep() async {
     _lastSweep = _now();
-    // The box loads its file asynchronously on construction; a sweep that
-    // ran before that finished would see nothing and skip a whole interval.
-    await _storage.initStorage;
+    await _loaded();
     final expired = List<String>.from(_storage.getKeys()).where((key) {
       final ts = _timestampOf(_storage.read(key));
       return ts == null || _isExpired(ts);

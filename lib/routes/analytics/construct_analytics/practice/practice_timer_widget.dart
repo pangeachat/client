@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 /// finishing unaided in one sitting. See practice-exercises.instructions.md
 /// § Session Persistence & Lifecycle.
 class PracticeTimerWidget extends StatefulWidget {
-  /// Wall-clock zero. Null while the session is still loading.
+  /// Wall-clock zero. Null until the session's first exercise is on screen.
   final DateTime? startedAt;
 
   /// Shown when [isRunning] is false (e.g. the elapsed time the session

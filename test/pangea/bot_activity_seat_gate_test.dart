@@ -12,6 +12,7 @@ import 'package:fluffychat/features/activity_sessions/bot_activty_role_room_exte
 void main() {
   const bot = '@bot:server';
   const human = '@human:server';
+  const otherHuman = '@other:server';
 
   ActivityRoleModel role(String id, String userId) =>
       ActivityRoleModel(id: id, userId: userId, role: id);
@@ -69,6 +70,55 @@ void main() {
 
     test('a room with no role state has no bot seat', () {
       expect(botHoldsLiveSeat(const [], bot), isFalse);
+    });
+  });
+
+  group('isTwoPersonBotSession', () {
+    test('a learner alone with the bot: two roles, one held by the bot — no '
+        'poll to start and no End for all (#8982)', () {
+      expect(isTwoPersonBotSession(2, assigned((_) => 'join'), bot), isTrue);
+    });
+
+    test('two humans, no bot — polls stay available', () {
+      expect(
+        isTwoPersonBotSession(
+          2,
+          filterAssignedRoles({
+            'a': role('a', human),
+            'b': role('b', otherHuman),
+          }, (_) => 'join').values,
+          bot,
+        ),
+        isFalse,
+      );
+    });
+
+    test('three roles with the bot in one — another human is in the session, '
+        'so polls stay available', () {
+      expect(
+        isTwoPersonBotSession(
+          3,
+          filterAssignedRoles({
+            'a': role('a', human),
+            'b': role('b', otherHuman),
+            'c': role('c', bot),
+          }, (_) => 'join').values,
+          bot,
+        ),
+        isFalse,
+      );
+    });
+
+    test('the bot has provably left its seat in a two-role session — the '
+        'learner is alone, and a poll is again theirs to start', () {
+      expect(
+        isTwoPersonBotSession(
+          2,
+          assigned((id) => id == bot ? 'leave' : 'join'),
+          bot,
+        ),
+        isFalse,
+      );
     });
   });
 }

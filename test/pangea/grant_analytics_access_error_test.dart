@@ -131,16 +131,61 @@ void main() {
       }
     });
 
-    test('never carries the response body', () async {
-      // Bodies carry learner content; only the parsed `detail` may travel.
+    // #9098 / CLIENT-EFF: every 403 arrived with the same title, so which of
+    // the module's four refusals fired was unknowable. Its reasons are fixed
+    // strings, so this one endpoint reads `error` — as detail, capped, and
+    // only after the structured fields the shared parser prefers.
+    test("carries the module's reason as detail", () async {
       final error =
           await grantFailure(
-                apiReturning(500, body: '{"error":"secret learner text"}'),
+                apiReturning(
+                  403,
+                  body:
+                      '{"error":"Caller is not a joined member of mx_course_id"}',
+                ),
               )
               as PangeaHttpException;
 
-      expect(error.detail, isNull);
-      expect(error.toString(), isNot(contains('secret learner text')));
+      expect(error.detail, 'Caller is not a joined member of mx_course_id');
+      expect(
+        error.toString(),
+        'PangeaHttpException: 403 POST $grantPath — '
+        'Caller is not a joined member of mx_course_id',
+      );
+    });
+
+    test('a Matrix errcode still wins over the free-text error', () async {
+      final error =
+          await grantFailure(
+                apiReturning(
+                  401,
+                  body: '{"error":"Unauthorized","errcode":"M_UNAUTHORIZED"}',
+                ),
+              )
+              as PangeaHttpException;
+
+      expect(error.detail, 'M_UNAUTHORIZED');
+    });
+
+    test('the reason is capped — never a whole body', () async {
+      final error =
+          await grantFailure(
+                apiReturning(500, body: '{"error":"${'x' * 1000}"}'),
+              )
+              as PangeaHttpException;
+
+      expect(error.detail!.length, PangeaHttpException.maxDetailLength);
+    });
+
+    test('a non-JSON or reason-less body leaves detail null', () async {
+      for (final body in ['404 page not found', '{"error":{"x":1}}', '']) {
+        expect(
+          (await grantFailure(apiReturning(502, body: body))
+                  as PangeaHttpException)
+              .detail,
+          isNull,
+        );
+      }
     });
   });
 

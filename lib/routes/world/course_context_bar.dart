@@ -9,37 +9,74 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_room_extens
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_header_actions.dart';
+import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_progress_bar.dart';
+import 'package:fluffychat/routes/world/left_panel/floor_chevron.dart';
+import 'package:fluffychat/routes/world/panel_header.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-/// The miniature course overview that takes the map search bar's slot while a
-/// course is selected and its panel is closed (#8736): the course's name, its
-/// two header actions ([CourseHeaderActions]), and its progress bar — the
-/// course panel's header with the panel closed.
+/// The miniature course overview shown while a course is selected and its
+/// panel is closed (#8736): the course panel's header with the panel shut —
+/// the same [PanelHeader] chrome, the course's name, its two header actions
+/// ([CourseHeaderActions]) and, trailing them, the same chevron the open card
+/// carries, one rotation apart ([ChevronToggle]) — over the course's progress
+/// bar at the header's content inset ([CoursePeekProgressBar]). It is the
+/// course panel's FLOOR, drawn in that panel's own slot in the left column, so
+/// it is already the card's width and the card grows out of it and shrinks back
+/// into it ([CourseCardReveal]) — the two states read as one surface changing
+/// height rather than two widgets swapping (#8866), and nothing open beside the
+/// course moves when it changes state (#9037).
 ///
 /// It exists so the scoped map always says WHICH course it is scoped to: with
 /// the card closed the only signal was the rail's course highlight, easy to
 /// miss, and a learner could start a course activity thinking they were on the
 /// world map. It is deliberately **not closeable** — the course context is
 /// what it reports, and `?c=` is cleared by the World control, not here — and
-/// tapping it anywhere but its actions reopens the course card.
+/// tapping it anywhere but its actions reopens the course card, whose own
+/// header collapses it back the same way ([SpaceDetailsHeader], #8909).
 ///
-/// Owns its own [QuestObjectivesLoader] rather than borrowing the panel's:
-/// the panel is closed exactly when this shows, so there is none to borrow.
+/// **Wide only** (#8816). Narrow has no bar at all: the course panel there is
+/// always mounted at least at its peek, and that peek is this same header in
+/// this same place, so a bar would duplicate the panel it points at. See
+/// world-map.instructions.md → The course context bar.
+///
+/// Owns its own [QuestObjectivesLoader] rather than borrowing the card's:
+/// the card is not built while this is, so there is none to borrow.
 /// Both read the same cached outline + shared progression, so the two can't
 /// disagree about the star totals (quests.instructions.md).
 class CourseContextBar extends StatefulWidget {
   final String spaceId;
 
   /// Browse-order key for the bar's semantic container — the map view passes
-  /// [BrowseOrder.mapChrome] (#8755); the shell's single-column floating bar
+  /// [WorkspaceOrder.mapChrome] (#8755); the shell's single-column floating bar
   /// passes none.
   final SemanticsSortKey? sortKey;
 
-  const CourseContextBar({required this.spaceId, this.sortKey, super.key});
+  /// Whether the bar carries the course's share / focus-on-map actions.
+  final bool showActions;
+
+  const CourseContextBar({
+    required this.spaceId,
+    this.sortKey,
+    this.showActions = true,
+    super.key,
+  });
+
+  /// The space under the progress bar, closing the card at the height the
+  /// track needs to breathe.
+  static const double bottomInset = 12.0;
+
+  /// The bar's height on wide, stated from its parts: the panel header, the
+  /// card body's top inset, the progress track, and [bottomInset]. The course
+  /// card's reveal starts and ends at exactly this ([CourseCardReveal]), which
+  /// is what lets the bar take over from the card without a visible jump.
+  static const double height =
+      PanelHeader.wideHeight +
+      SpaceDetailsContent.bodyTopInset +
+      ProgressBarRow.height +
+      bottomInset;
 
   @override
   State<CourseContextBar> createState() => _CourseContextBarState();
@@ -73,11 +110,13 @@ class _CourseContextBarState extends State<CourseContextBar> {
 
   /// Post-frame because this runs from `build`: [loadOutline] seats its
   /// loading state synchronously, and notifying the progress bar's listeners
-  /// mid-build is a setState-during-build.
+  /// mid-build is a setState-during-build. The course scope cannot wait that
+  /// long — this very build reads the progress — so it is set here, now.
   void _ensureOutline(Room room) {
     final key = '${room.id}:${room.coursePlan?.uuid}';
     if (_loadedFor == key) return;
     _loadedFor = key;
+    _objectivesProvider.scopeToCourse(room.id);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
       _objectivesProvider.loadOutline(
@@ -112,52 +151,77 @@ class _CourseContextBarState extends State<CourseContextBar> {
       borderRadius: BorderRadius.circular(AppConfig.borderRadius),
     );
 
+    // A named GROUP, not a button. The bar holds controls of its own — the
+    // share action, the chevron — and a button that contains announced
+    // children is invalid nesting that assistive tech walks straight past:
+    // the cursor went from the map's zoom control to the star track inside
+    // here, and the whole-surface "Go to course" button was never a stop at
+    // all. So the surface tap is pointer-only (below) and the chevron is the
+    // one announced control, exactly as in the open card.
     return Semantics(
       label: L10n.of(context).goToCourse(name),
       sortKey: widget.sortKey,
-      button: true,
       container: true,
       child: Material(
         elevation: 4,
         color: theme.colorScheme.surface,
         shape: shape,
         clipBehavior: Clip.antiAlias,
-        // The bar sits on the opaque panel surface, which swallows InkWell's
-        // behind-the-child focus highlight (#8724) — so the keyboard
-        // affordance is the shared explicit gold ring.
-        child: FocusRingTapTarget(
+        // Tapping anywhere reopens the card, but for POINTERS only: it is a
+        // second hit area for the chevron's own action, so it announces
+        // nothing and takes no focus. A focusable node with no name would be
+        // an invisible dead stop for a keyboard user (2.4.7), and an
+        // announced one would read this same tap twice.
+        child: InkWell(
           onTap: _openCourse,
-          shape: shape,
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(16.0, 4.0, 4.0, 12.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Row(
+          customBorder: shape,
+          excludeFromSemantics: true,
+          canRequestFocus: false,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              // The open panel's own header chrome, so title, actions and
+              // chevron sit exactly where the card's do (#8866). The name
+              // rides the bar's semantics label above; PanelHeader excludes
+              // its title from semantics already.
+              PanelHeader(
+                leading: null,
+                title: name,
+                trailing: Row(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    Expanded(
-                      // The name rides the bar's own semantics label above.
-                      child: ExcludeSemantics(
-                        child: Text(
-                          name,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: theme.textTheme.titleMedium?.copyWith(
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
+                    if (widget.showActions)
+                      CourseHeaderActions(
+                        room: room,
+                        objectivesProvider: _objectivesProvider,
                       ),
-                    ),
-                    CourseHeaderActions(
-                      room: room,
-                      objectivesProvider: _objectivesProvider,
+                    // The panel header's chevron, in the same trailing slot
+                    // and one rotation apart. Wide follows the disclosure
+                    // convention, so this points DOWN to say it reveals the
+                    // card and the open panel's points UP to say it hides it
+                    // again (#8816). It is also the bar's one announced,
+                    // focusable control, carrying the collapsed state the
+                    // open card's chevron carries expanded — so a screen
+                    // reader hears the same control in both states.
+                    ChevronToggle(
+                      expanded: false,
+                      onTap: _openCourse,
+                      meaning: ChevronMeaning.disclosure,
                     ),
                   ],
                 ),
-                CourseProgressBar(objectivesProvider: _objectivesProvider),
-              ],
-            ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: SpaceDetailsContent.bodyTopInset,
+                  bottom: CourseContextBar.bottomInset,
+                ),
+                child: CoursePeekProgressBar(
+                  objectivesProvider: _objectivesProvider,
+                ),
+              ),
+            ],
           ),
         ),
       ),

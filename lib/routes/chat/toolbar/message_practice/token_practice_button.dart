@@ -6,6 +6,7 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:shimmer/shimmer.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
@@ -161,10 +162,10 @@ class _StandardMatchButton extends StatelessWidget {
               child: Shimmer.fromColors(
                 enabled: selectedChoice != null,
                 baseColor: selectedChoice != null
-                    ? AppConfig.gold.withAlpha(20)
+                    ? theme.pangea.goldFixedDim.withAlpha(20)
                     : Colors.transparent,
                 highlightColor: selectedChoice != null
-                    ? AppConfig.gold.withAlpha(50)
+                    ? theme.pangea.goldFixedDim.withAlpha(50)
                     : Colors.transparent,
                 child: Container(
                   padding: const EdgeInsets.only(top: 10.0),

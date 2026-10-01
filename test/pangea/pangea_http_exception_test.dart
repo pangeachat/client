@@ -243,6 +243,30 @@ void main() {
       expect(PangeaHttpException.fingerprintOf(Exception('offline')), isNull);
       expect(PangeaHttpException.fingerprintOf(null), isNull);
     });
+
+    test('a named timeout groups per operation (#8889)', () {
+      expect(
+        PangeaHttpException.fingerprintOf(
+          TimeoutException('GET /choreo/v2/activity/{id}'),
+        ),
+        ['pangea-timeout', 'GET /choreo/v2/activity/{id}'],
+      );
+      expect(
+        PangeaHttpException.fingerprintOf(
+          TimeoutException('waitForRoomInSync: create room'),
+        ),
+        isNot(
+          PangeaHttpException.fingerprintOf(
+            TimeoutException('updateProfile: learning settings'),
+          ),
+        ),
+      );
+    });
+
+    test('an unnamed timeout keeps default grouping — what is still in that '
+        'bucket (CLIENT-AXX) is a site not yet named', () {
+      expect(PangeaHttpException.fingerprintOf(TimeoutException(null)), isNull);
+    });
   });
 
   group('PangeaHttpException.severityOf — the one severity table', () {
@@ -266,6 +290,15 @@ void main() {
       for (final status in [400, 403, 405, 422, 500, 502, 504]) {
         expect(PangeaHttpException.severityOf(http(status)), SentryLevel.error);
       }
+    });
+
+    test('a request that never reached a server is a warning (#8890)', () {
+      expect(
+        PangeaHttpException.severityOf(
+          ClientException('Failed to fetch', Uri.parse('https://x/y')),
+        ),
+        SentryLevel.warning,
+      );
     });
 
     test('non-HTTP failures are errors', () {

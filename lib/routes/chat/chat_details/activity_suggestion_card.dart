@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/activity_participant_row.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_media_video_tag.dart';
-import 'package:fluffychat/routes/world/activity_participant_row.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/widgets/activity_star_row.dart';
 import 'package:fluffychat/widgets/url_image_widget.dart';
@@ -67,8 +67,8 @@ class ActivitySuggestionCard extends StatelessWidget {
 
     // Match the map's state pins: a colour-state fill on the info section + a
     // bookmark banner, both in the pin's state hue
-    final stateColor = pinState?.color;
-    final onState = stateColor != null ? Colors.white : null;
+    final stateColor = pinState?.bodyColor(context);
+    final onState = pinState?.onBodyColor(context);
 
     // Shared style for the mode + participant-count labels
     final labelStyle = fontSizeSmall != null
@@ -148,6 +148,8 @@ class ActivitySuggestionCard extends StatelessWidget {
                               earned: starsEarned.clamp(0, _starsTotal),
                               iconSize: 12,
                               condensed: _starsTotal > 7,
+                              // On the state fill both stars take its ink.
+                              earnedColor: onState,
                               emptyColor: onState,
                             ),
                           Row(
@@ -219,7 +221,7 @@ class ActivitySuggestionCard extends StatelessWidget {
                         Icon(
                           pinState!.icon,
                           size: (fontSizeSmall ?? 11.0) + 3.0,
-                          color: Colors.white,
+                          color: onState,
                         ),
                         const SizedBox(width: 4.0),
                         Flexible(
@@ -229,7 +231,7 @@ class ActivitySuggestionCard extends StatelessWidget {
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
-                              color: Colors.white,
+                              color: onState,
                               fontSize: fontSizeSmall ?? 11.0,
                               fontWeight: FontWeight.w600,
                             ),

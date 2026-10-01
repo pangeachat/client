@@ -4,9 +4,12 @@ import 'package:badges/badges.dart' as b;
 
 import 'package:fluffychat/l10n/l10n.dart';
 
-/// The badge on the avatar of a course someone is knocking on: a white "!"
-/// in an error-colored circle, matching the red bell of the in-course knock
-/// notification so the two read as the same alert (#8139). Admin-only — the
+/// The badge on the avatar of a course someone is knocking on: a white
+/// add-person glyph in an error-colored circle, matching the in-course knock
+/// notification so the two read as the same alert (#8139). Error red because
+/// a waiting person still has to catch the admin's eye; an add-person glyph
+/// rather than the "!" it used to wear, which read as something being wrong
+/// instead of someone asking to join (#8939). Admin-only — the
 /// caller gates on knocking users being present, which `Room.knockingUsers`
 /// already restricts to admins. Sized to match the unread-ping badge in
 /// `CourseAvatar` so the avatar doesn't shift as a course moves between
@@ -16,7 +19,7 @@ class KnockingUsersBadge extends StatelessWidget {
   /// badge and the course page's join-request card — so the two read as the
   /// same alert. Distinct from the bell, which stays the course-ping mark
   /// (#8462).
-  static const IconData icon = Icons.priority_high;
+  static const IconData icon = Icons.person_add;
 
   final b.BadgePosition? position;
   final Widget? child;

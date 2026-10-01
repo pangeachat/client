@@ -335,9 +335,11 @@ class ChatDetailsContent extends StatelessWidget {
                                     ? L10n.of(context).noChatDescriptionYet
                                     : room.topic,
                                 options: const LinkifyOptions(humanize: false),
-                                linkStyle: const TextStyle(
-                                  color: Colors.blueAccent,
-                                  decorationColor: Colors.blueAccent,
+                                linkStyle: TextStyle(
+                                  color: Theme.of(context).colorScheme.primary,
+                                  decorationColor: Theme.of(
+                                    context,
+                                  ).colorScheme.primary,
                                 ),
                                 style: TextStyle(
                                   fontSize: 14,

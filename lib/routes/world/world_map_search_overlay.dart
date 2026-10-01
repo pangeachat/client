@@ -129,7 +129,7 @@ class _WorldMapSearchOverlayState extends State<WorldMapSearchOverlay> {
       label: l10n.searchActivitiesLabel,
       // Keyed so the overlay slots between the cluster and the map's anchored
       // strip in the workspace browse order (#8755).
-      sortKey: BrowseOrder.mapChrome,
+      sortKey: WorkspaceOrder.mapChrome.sortKey,
       container: true,
       child: SafeArea(
         child: FocusTraversalGroup(

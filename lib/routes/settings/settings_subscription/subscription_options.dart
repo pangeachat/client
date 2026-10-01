@@ -124,8 +124,8 @@ class SubscriptionOptionsInternal extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: onEnterDiscountCode,
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: theme.colorScheme.primaryContainer,
-                    foregroundColor: theme.colorScheme.onPrimaryContainer,
+                    backgroundColor: theme.colorScheme.primary,
+                    foregroundColor: theme.colorScheme.onPrimary,
                   ),
                   child: Text(
                     L10n.of(context).enterDiscountCode,
@@ -134,9 +134,7 @@ class SubscriptionOptionsInternal extends StatelessWidget {
                         (isColumnMode
                                 ? theme.textTheme.titleMedium
                                 : theme.textTheme.titleSmall)
-                            ?.copyWith(
-                              color: theme.colorScheme.onPrimaryContainer,
-                            ),
+                            ?.copyWith(color: theme.colorScheme.onPrimary),
                   ),
                 ),
               ),

@@ -57,6 +57,15 @@ void main() {
         'ANALYTICS_DUAL_WRITE_ENABLED': 'true',
         'DOSAGE_SIGNALS_ENABLED': 'true',
         'TEACHER_BFF_API': 'https://bff.test.example',
+        // This suite is about buffering/retry/anchoring MECHANICS, not about
+        // which capability flags are on, so the voice-messages capability
+        // defaults on here — the steady state once every server ships #150 —
+        // so `voice_send` behaves like the other six categories throughout
+        // and every test below can focus on what it actually probes. Whether
+        // `voice_send` coverage is correctly WITHHELD when this capability is
+        // off is its own concern, pinned in
+        // dosage_voice_messages_flag_test.dart, not here.
+        'DOSAGE_VOICE_MESSAGES_ENABLED': 'true',
       },
     );
     DosageAudioBuffer.debugResetAccounts();

@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
+import 'package:fluffychat/features/tutorials/tutorial_target.dart';
+import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/pangea_icon_button.dart';
 import 'package:fluffychat/widgets/layouts/cavity_controls.dart';
@@ -303,11 +305,29 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
   /// while the keyboard is still up. Cleared when focus or the keyboard leaves.
   bool _grewForKeyboard = false;
 
+  /// Whether the cavity sits above its rest floor, published to the hosted
+  /// surface so a floor cavity's chevron can rotate to say which way it goes
+  /// ([CavityControls.expanded], #8816). Tracks the SETTLED rest stop rather
+  /// than the live drag, so the icon never flickers mid-gesture.
+  final ValueNotifier<bool> _expanded = ValueNotifier<bool>(false);
+
+  void _publishExpanded() {
+    _expanded.value =
+        _restState != null && _restState != NavCavityHeight.collapsed;
+  }
+
   @override
   void initState() {
     super.initState();
     _restState = _restoreHeight();
     _fullLatched = _restState == NavCavityHeight.full;
+    _publishExpanded();
+  }
+
+  @override
+  void dispose() {
+    _expanded.dispose();
+    super.dispose();
   }
 
   @override
@@ -468,6 +488,7 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
     if (remember) _remember(height);
     _fullLatched = height == NavCavityHeight.full;
     setState(() => _restState = height);
+    _publishExpanded();
   }
 
   /// Re-assert the latched full height to the shell AFTER the frame — calling
@@ -509,8 +530,17 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
     if (_lastMaxHeightPx <= 0) return;
     final start = _dragStartFraction ?? _fraction;
     final deltaFraction = -details.primaryDelta! / _lastMaxHeightPx;
+    // A FLOOR cavity never drags below its peek (#8816): the LIVE fraction is
+    // clamped, not only the settle in [_onDragEnd]. The settle alone let the
+    // sheet shrink to nothing under the finger and spring back on release —
+    // and any path that leaves the drag without a settle keeps whatever the
+    // gesture last rendered. The floor belongs where the value is produced,
+    // so no state of the gesture can show the course menu below its peek.
+    final floor = widget.cavityDefaultsToPeek
+        ? _peekFraction(_lastMaxHeightPx)
+        : 0.0;
     setState(() {
-      _fraction = (_fraction + deltaFraction).clamp(0.0, 1.0);
+      _fraction = (_fraction + deltaFraction).clamp(floor, 1.0);
     });
     _dragStartFraction = start;
   }
@@ -563,16 +593,37 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
       onDismissed();
       return;
     }
+    // A FLOOR cavity (the course panel) collapses to its peek, never to zero:
+    // the peek is the course menu's floor on narrow, so no gesture may take it
+    // off screen (#8816; routing.instructions.md -> Single-column mode). Its
+    // collapsed fraction already resolves to the peek, so this is the same
+    // rest stop a drag-down settles at.
+    if (widget.cavityDefaultsToPeek) {
+      _openAt(NavCavityHeight.collapsed);
+      return;
+    }
     _fullLatched = false;
     setState(() {
       _restState = null;
       _fraction = 0.0;
     });
+    _publishExpanded();
   }
 
   /// Collapse an expanded cavity, or re-expand a collapsed one to its
   /// remembered height — the tap-the-active-item gesture.
   void _toggleCavity() {
+    // A floor cavity toggles between its floor and FULL: there is no zero to
+    // collapse to, and its remembered height at the floor IS the floor, so
+    // [_restoreHeight] would make this a no-op (#8816).
+    if (widget.cavityDefaultsToPeek) {
+      _openAt(
+        _restState == NavCavityHeight.collapsed
+            ? NavCavityHeight.full
+            : NavCavityHeight.collapsed,
+      );
+      return;
+    }
     if (_currentFraction > 0.01) {
       _collapseEphemeral();
     } else {
@@ -725,6 +776,10 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
                                 child: CavityControls(
                                   expandToFull: () =>
                                       _openAt(NavCavityHeight.full),
+                                  // The floor cavity's chevron drives these:
+                                  // one control, two directions (#8816).
+                                  toggleCollapse: _toggleCavity,
+                                  expanded: _expanded,
                                   child: widget.cavityChild!,
                                 ),
                               ),
@@ -777,13 +832,16 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceAround,
                                 children: [
-                                  PangeaIconButton(
-                                    selected:
-                                        widget.activeSection ==
-                                        AppSection.world,
-                                    tooltip: l10n.world,
-                                    onPressed: () =>
-                                        _onRailItemTap(AppSection.world),
+                                  TutorialTarget(
+                                    targetId: TutorialTargetIds.navWorld,
+                                    child: PangeaIconButton(
+                                      selected:
+                                          widget.activeSection ==
+                                          AppSection.world,
+                                      tooltip: l10n.world,
+                                      onPressed: () =>
+                                          _onRailItemTap(AppSection.world),
+                                    ),
                                   ),
                                   Semantics(
                                     container: true,
@@ -804,6 +862,8 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
                                                   widget.activeSection ==
                                                   AppSection.chats,
                                               tooltip: l10n.allChats,
+                                              tutorialTargetId:
+                                                  TutorialTargetIds.navChats,
                                               onTap: () => _onRailItemTap(
                                                 AppSection.chats,
                                               ),
@@ -824,6 +884,8 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
                                               AppSection.courses &&
                                           !widget.courseShortcutSelected,
                                       tooltip: l10n.courses,
+                                      tutorialTargetId:
+                                          TutorialTargetIds.navCourses,
                                       onTap: () =>
                                           _onRailItemTap(AppSection.courses),
                                     ),
@@ -862,24 +924,32 @@ class _RailButton extends StatelessWidget {
   final String? tooltip;
   final VoidCallback onTap;
 
+  /// Registers this button as a tutorial spotlight target. Shares its id with
+  /// the wide rail's equivalent item — only one layout is ever mounted.
+  final String? tutorialTargetId;
+
   const _RailButton({
     required this.icon,
     required this.selectedIcon,
     required this.selected,
     this.tooltip,
     required this.onTap,
+    this.tutorialTargetId,
   });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return IconButton(
-      tooltip: tooltip,
-      isSelected: selected,
-      onPressed: onTap,
-      icon: Icon(
-        selected ? selectedIcon : icon,
-        color: selected ? theme.colorScheme.primary : null,
+    return TutorialTarget(
+      targetId: tutorialTargetId,
+      child: IconButton(
+        tooltip: tooltip,
+        isSelected: selected,
+        onPressed: onTap,
+        icon: Icon(
+          selected ? selectedIcon : icon,
+          color: selected ? theme.colorScheme.primary : null,
+        ),
       ),
     );
   }

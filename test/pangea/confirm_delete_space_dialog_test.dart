@@ -93,6 +93,35 @@ void main() {
     expect(result, isTrue);
   });
 
+  testWidgets('#9035 enter confirms once the code is right', (tester) async {
+    await pumpDialog(tester, joinCode: 'abc1234');
+    await type(tester, 'abc1234');
+    await tester.testTextInput.receiveAction(TextInputAction.done);
+    await tester.pumpAndSettle();
+
+    expect(result, isTrue);
+  });
+
+  testWidgets('#9035 enter on a wrong code leaves the dialog open', (
+    tester,
+  ) async {
+    await pumpDialog(tester, joinCode: 'abc1234');
+    await type(tester, 'abc1235');
+    await tester.testTextInput.receiveAction(TextInputAction.done);
+    await tester.pumpAndSettle();
+
+    expect(find.byType(ConfirmDeleteSpaceDialog), findsOneWidget);
+    expect(result, isNull);
+  });
+
+  testWidgets('#9035 the field is a single line, so enter is never a newline', (
+    tester,
+  ) async {
+    await pumpDialog(tester, joinCode: 'abc1234');
+
+    expect(tester.widget<TextField>(find.byType(TextField)).maxLines, 1);
+  });
+
   testWidgets('the code matches trimmed and case-insensitively', (
     tester,
   ) async {
