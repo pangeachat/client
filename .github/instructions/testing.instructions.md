@@ -85,7 +85,24 @@ Same tier and env plumbing as the other endpoint suites (`endpoint_test_env.dart
 - **Integration tests**:
   - **Playwright browser** (`e2e/scripts/`): Login flow + axe-core WCAG 2.1 AA. Runs post-deploy, nightly, and on manual dispatch. See [playwright-testing.instructions.md](playwright-testing.instructions.md) and [`e2e/README.md`](../../e2e/README.md).
   - **Flutter** (`integration_test/app_test.dart`): Matrix login/logout/nav only, not in CI, no choreo coverage.
+  - **Performance benchmark** (`integration_test/perf/`): frame build and raster times per screen, on real devices. See [Performance benchmark](#performance-benchmark).
 - **E2E tests**: Playwright tests in `e2e/` navigate the app along defined flows, using mocked values for paid third-party calls.
+
+## Performance benchmark
+
+This is a Flutter integration-test suite that measures how smoothly the app draws, so a change in performance shows up as a number instead of a hunch (#9231). It runs locally on a real phone or browser, never in CI, because the numbers depend on the hardware.
+
+- **What it measures:** for each scenario, the build and raster time of every frame, reported as p50, p90 and worst, plus the count of frames that missed the display's budget. Build is widget work on the UI thread; raster is drawing on the GPU thread. They have different causes and different fixes, so they're always reported separately. Interaction scenarios also report, for each kind of action, such as a keystroke or opening the word card, the total build and raster time of the frames that action caused, as the median over the pass's actions: a one-off cost lands in too few frames to move a percentile across the whole pass, but it adds directly to its action's total.
+- **Scenarios:** each scenario opens one screen through the router, the same way on web, Android and iOS, then scrolls it, pans it or acts on it with real touch and typing input. Launch is the exception: it measures the first 15 seconds after the app starts, as a returning user who is already signed in: the first frame's build and raster time, the total build time in that window, and the frames that missed their budget. Each run is one launch, so launch comparisons need at least five rounds. Three scenarios measure what a learner does rather than scrolling:
+  - **Typing:** type a fixed sentence into the chat with the bot and clear it before writing assistance starts, so no backend call is made.
+  - **Word tap:** tap the same words in a named chat to open and close the word card, with word audio and read aloud on click turned off.
+  - **Practice:** open a practice session up to its first exercise, without answering.
+
+  A scenario never changes the account's data, apart from the one-time record the first time a word is tapped. The core set is launch, home map, chat list, a chat, an activity session, a course page, the analytics panels, typing, tapping a word, and opening practice.
+- **Account:** the suite never signs in and never holds a password. It runs as whichever account is already signed in on the device (on web, in a saved browser profile). A tester signs in once with a realistic account, with many chats and a history of analytics, and later runs reuse that session. If nobody is signed in, the run stops and says so.
+- **Comparing results:** each run writes a result file. Results are comparable only on the same device and the same account, so the tool shows change over time, not a ranking of devices. To compare two versions, alternate their runs in one session (A, B, A, B…), at least three rounds of each. Each round gives one before-and-after difference, and a metric counts as changed only when it moved the same way in every round: by more than 5% of the baseline for a time, and by more than a quarter of the baseline and at least 3 frames for a count of frames over budget. Counts swing much more than times between identical runs. Comparing within rounds cancels slowdowns that affect the whole device for a while, which otherwise hide real changes.
+- **Builds:** profile builds only, with semantics off. Debug builds are several times slower, and semantics adds cost the release app doesn't have.
+- **Web:** measure only in a hardware-accelerated browser; a software renderer inflates raster time by an order of magnitude.
 
 ## CI
 
