@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Maua, maneno yaliyobobea",
     "filterAndSearch": "Chuja na utafute",
     "participantsOfTotal": "{filled} kati ya wachezaji {total}",
-    "mapAttributionLabel": "Wachangiaji wa OpenStreetMap, hakimiliki na leseni",
     "seeAll": "Tazama zote",
     "seeAllSection": "Tazama {section} zote",
     "showMoreOptionsHint": "onyesha chaguo zaidi",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Ni lugha gani ilizungumzwa?",
     "callTranscriptSubscribeForTranscription": "Jisajili ili upate nakala",
     "unlockCallTranscript": "Fungua nakala ya simu",
-    "activitySummaryUpdateFailed": "Muhtasari huu haukuweza kusasishwa."
+    "activitySummaryUpdateFailed": "Muhtasari huu haukuweza kusasishwa.",
+    "mapCreditsLabel": "Mikopo ya ramani: Ramani za Stadia, OpenMapTiles na OpenStreetMap"
 }

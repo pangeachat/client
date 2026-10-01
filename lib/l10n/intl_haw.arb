@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Nā Pua, nā huaʻōlelo i aʻo ʻia",
     "filterAndSearch": "Kānana a huli",
     "participantsOfTotal": "{filled} o {total} mau mea pāʻani",
-    "mapAttributionLabel": "Nā mea hāʻawi OpenStreetMap, kuleana kope a me ka laikini",
     "seeAll": "E ʻike i nā mea a pau",
     "seeAllSection": "E ʻike i nā mea a pau ma {section}",
     "showMoreOptionsHint": "hōʻike i nā koho hou aku",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "He aha ka ʻōlelo i ʻōlelo ʻia?",
     "callTranscriptSubscribeForTranscription": "Kakau inoa no ke kākau ʻana",
     "unlockCallTranscript": "Wehe i ke kākau ʻana o ke kelepona",
-    "activitySummaryUpdateFailed": "ʻAʻole hiki ke hoʻopou hou i kēia hōʻuluʻulu."
+    "activitySummaryUpdateFailed": "ʻAʻole hiki ke hoʻopou hou i kēia hōʻuluʻulu.",
+    "mapCreditsLabel": "Nā hōʻaiʻē palapala ʻāina: Stadia Maps, OpenMapTiles a me OpenStreetMap"
 }

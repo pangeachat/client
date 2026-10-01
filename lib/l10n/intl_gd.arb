@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Flùraichean, faclan maighstireil",
     "filterAndSearch": "Sìoladh is sgrùdadh",
     "participantsOfTotal": "{filled} de {total} cluicheadairean",
-    "mapAttributionLabel": "Luchd-tabhartais OpenStreetMap, dlighe-sgrìobhaidh agus cead",
     "seeAll": "Faic na h-uile",
     "seeAllSection": "Faic na h-uile {section}",
     "showMoreOptionsHint": "seall barrachd roghainnean",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Dè an cànan a bhathar a' bruidhinn?",
     "callTranscriptSubscribeForTranscription": "Fo-sgrìobh airson tionnsgrìobhadh",
     "unlockCallTranscript": "Fuadaich tionnsgrìobhadh a' ghairm",
-    "activitySummaryUpdateFailed": "Cha b' urrainn an geàrr-chunntas seo ùrachadh."
+    "activitySummaryUpdateFailed": "Cha b' urrainn an geàrr-chunntas seo ùrachadh.",
+    "mapCreditsLabel": "Urrasan-mhapa: Stadia Maps, OpenMapTiles agus OpenStreetMap"
 }

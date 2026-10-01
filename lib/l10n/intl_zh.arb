@@ -9844,7 +9844,6 @@
     "constructLevelFlowers": "花朵，掌握词",
     "filterAndSearch": "筛选和搜索",
     "participantsOfTotal": "{filled}/{total} 位玩家",
-    "mapAttributionLabel": "OpenStreetMap 贡献者，版权和许可",
     "seeAll": "查看全部",
     "seeAllSection": "查看全部{section}",
     "showMoreOptionsHint": "显示更多选项",
@@ -9981,5 +9980,6 @@
     "callTranscriptChooseLanguage": "说的是什么语言？",
     "callTranscriptSubscribeForTranscription": "订阅转录服务",
     "unlockCallTranscript": "解锁通话记录",
-    "activitySummaryUpdateFailed": "此摘要未能更新。"
+    "activitySummaryUpdateFailed": "此摘要未能更新。",
+    "mapCreditsLabel": "地图来源：Stadia Maps、OpenMapTiles 和 OpenStreetMap"
 }

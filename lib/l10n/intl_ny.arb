@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Maluwa, mawu odziwika bwino",
     "filterAndSearch": "Sefa ndi kusaka",
     "participantsOfTotal": "{filled} mwa osewera {total}",
-    "mapAttributionLabel": "Othandizira a OpenStreetMap, umwini ndi chilolezo",
     "seeAll": "Onani zonse",
     "seeAllSection": "Onani zonse {section}",
     "showMoreOptionsHint": "onetsani zosankha zambiri",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Ndi chilankhulo chiti chomwe chinalankhulidwa?",
     "callTranscriptSubscribeForTranscription": "Lembetsani kuti mulembedwe",
     "unlockCallTranscript": "Tsegulani zolembedwa za kuyimba",
-    "activitySummaryUpdateFailed": "Chidulechi sichinathe kusinthidwa."
+    "activitySummaryUpdateFailed": "Chidulechi sichinathe kusinthidwa.",
+    "mapCreditsLabel": "Map credits: Stadia Maps, OpenMapTiles ndi OpenStreetMap"
 }

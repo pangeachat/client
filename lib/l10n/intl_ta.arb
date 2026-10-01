@@ -9936,7 +9936,6 @@
     "constructLevelFlowers": "மலர்கள், தேர்ச்சி பெற்ற சொற்கள்",
     "filterAndSearch": "வடிகட்டி தேடு",
     "participantsOfTotal": "{total} வீரர்களில் {filled} பேர்",
-    "mapAttributionLabel": "OpenStreetMap பங்களிப்பாளர்கள், பதிப்புரிமை மற்றும் உரிமம்",
     "seeAll": "அனைத்தையும் காட்டு",
     "seeAllSection": "அனைத்தையும் காட்டு {section}",
     "showMoreOptionsHint": "மேலும் விருப்பங்களைக் காட்டு",
@@ -10073,5 +10072,6 @@
     "callTranscriptChooseLanguage": "எந்த மொழி பேசப்பட்டது?",
     "callTranscriptSubscribeForTranscription": "படியெடுத்தலுக்கு குழுசேரவும்",
     "unlockCallTranscript": "அழைப்புப் படியெடுத்தலைத் திறக்கவும்",
-    "activitySummaryUpdateFailed": "இந்தச் சுருக்கத்தைப் புதுப்பிக்க முடியவில்லை."
+    "activitySummaryUpdateFailed": "இந்தச் சுருக்கத்தைப் புதுப்பிக்க முடியவில்லை.",
+    "mapCreditsLabel": "வரைபட வரவுகள்: Stadia Maps, OpenMapTiles மற்றும் OpenStreetMap"
 }

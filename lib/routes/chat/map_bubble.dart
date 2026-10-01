@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
+import 'package:fluffychat/pangea/common/utils/map_tiles.dart';
+
 class MapBubble extends StatelessWidget {
   final double latitude;
   final double longitude;
@@ -36,14 +38,16 @@ class MapBubble extends StatelessWidget {
                 options: MapOptions(
                   initialCenter: LatLng(latitude, longitude),
                   initialZoom: zoom,
+                  backgroundColor: MapTiles.background(theme.brightness),
                 ),
                 children: [
                   TileLayer(
                     maxZoom: 20,
                     minZoom: 0,
-                    urlTemplate:
-                        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                    subdomains: const ['a', 'b', 'c'],
+                    urlTemplate: MapTiles.urlTemplate(theme.brightness),
+                    tileProvider: NetworkTileProvider(
+                      headers: MapTiles.headers,
+                    ),
                   ),
                   MarkerLayer(
                     rotate: true,
@@ -72,7 +76,7 @@ class MapBubble extends StatelessWidget {
               Container(
                 alignment: Alignment.bottomRight,
                 child: Text(
-                  ' © OpenStreetMap contributors ',
+                  ' ${MapTiles.creditsLine} ',
                   style: TextStyle(
                     color: theme.brightness == Brightness.dark
                         ? Colors.white

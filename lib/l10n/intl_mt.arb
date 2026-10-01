@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Fjuri, kliem mhaddem",
     "filterAndSearch": "Iffiltra u fittex",
     "participantsOfTotal": "{filled} minn {total} plejers",
-    "mapAttributionLabel": "Kontributuri, drittijiet tal-awtur u liċenzja ta' OpenStreetMap",
     "seeAll": "Ara kollox",
     "seeAllSection": "Ara kollox {section}",
     "showMoreOptionsHint": "uri aktar għażliet",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "X’lingwa nstema’?",
     "callTranscriptSubscribeForTranscription": "Abbona għat-traskrizzjoni",
     "unlockCallTranscript": "Nisfrutta t-traskrizzjoni tas-sejħa",
-    "activitySummaryUpdateFailed": "Dan is-sommarju ma setax jiġi aġġornat."
+    "activitySummaryUpdateFailed": "Dan is-sommarju ma setax jiġi aġġornat.",
+    "mapCreditsLabel": "Krediti tal-mappa: Stadia Maps, OpenMapTiles u OpenStreetMap"
 }

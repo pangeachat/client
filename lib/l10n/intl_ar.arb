@@ -10150,7 +10150,6 @@
     "constructLevelFlowers": "الزهور، كلمات متقنة",
     "filterAndSearch": "تصفية وبحث",
     "participantsOfTotal": "{filled} من أصل {total} لاعبين",
-    "mapAttributionLabel": "مساهمو OpenStreetMap، حقوق النشر والترخيص",
     "seeAll": "مشاهدة الكل",
     "seeAllSection": "مشاهدة كل {section}",
     "showMoreOptionsHint": "عرض المزيد من الخيارات",
@@ -10287,5 +10286,6 @@
     "callTranscriptChooseLanguage": "ما هي اللغة التي تم التحدث بها؟",
     "callTranscriptSubscribeForTranscription": "اشترك لنسخ المحادثة",
     "unlockCallTranscript": "فتح نسخة المحادثة",
-    "activitySummaryUpdateFailed": "تعذر تحديث هذا الملخص."
+    "activitySummaryUpdateFailed": "تعذر تحديث هذا الملخص.",
+    "mapCreditsLabel": "اعتمادات الخريطة: Stadia Maps، OpenMapTiles وOpenStreetMap"
 }

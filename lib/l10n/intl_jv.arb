@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Kembang, tembung sing wis dikuasai",
     "filterAndSearch": "Saring lan goleki",
     "participantsOfTotal": "{filled} saka {total} pemain",
-    "mapAttributionLabel": "Kontributor OpenStreetMap, hak cipta lan lisensi",
     "seeAll": "Deleng kabeh",
     "seeAllSection": "Deleng kabeh {section}",
     "showMoreOptionsHint": "tampilake opsi liyane",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Basa apa sing diucapake?",
     "callTranscriptSubscribeForTranscription": "Langganan kanggo transkripsi",
     "unlockCallTranscript": "Bukak kunci transkrip telpon",
-    "activitySummaryUpdateFailed": "Ringkesan iki ora bisa dianyari."
+    "activitySummaryUpdateFailed": "Ringkesan iki ora bisa dianyari.",
+    "mapCreditsLabel": "Kredhit peta: Stadia Maps, OpenMapTiles lan OpenStreetMap"
 }

@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "گوڵەکان، وشە شارەزاکان",
     "filterAndSearch": "پاڵاوتن و گەڕان",
     "participantsOfTotal": "{filled} لە {total} یاریزان",
-    "mapAttributionLabel": "بەشداربووانی OpenStreetMap، مافی لەبەرگرتنەوە و مۆڵەت",
     "seeAll": "هەمووی ببینە",
     "seeAllSection": "هەموو {section} ببینە",
     "showMoreOptionsHint": "پیشاندانی بژاردەی زیاتر",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "بە چ زمانێک قسە کرا؟",
     "callTranscriptSubscribeForTranscription": "بەشداری بکە بۆ گۆڕین بۆ نووسین",
     "unlockCallTranscript": "کردنەوەی گۆڕینی پەیوەندی بۆ نووسین",
-    "activitySummaryUpdateFailed": "ئەم پوختەیە نوێ نه‌کرایه‌وه‌."
+    "activitySummaryUpdateFailed": "ئەم پوختەیە نوێ نه‌کرایه‌وه‌.",
+    "mapCreditsLabel": "مافی نەخشەکان: نەخشەکانی ستادیا، OpenMapTiles و OpenStreetMap"
 }

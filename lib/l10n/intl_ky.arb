@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Гүлдөр, өздөштүрүлгөн сөздөр",
     "filterAndSearch": "Чыпкалоо жана издөө",
     "participantsOfTotal": "{filled} / {total} оюнчу",
-    "mapAttributionLabel": "OpenStreetMap салымчылары, автордук укук жана лицензия",
     "seeAll": "Баарын көрүү",
     "seeAllSection": "Баарын көрүү {section}",
     "showMoreOptionsHint": "көбүрөөк параметрлерди көрсөтүү",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Кайсы тилде сүйлөштү?",
     "callTranscriptSubscribeForTranscription": "Транскрипция үчүн жазылуу",
     "unlockCallTranscript": "Чакыруу транскрипциясын ачуу",
-    "activitySummaryUpdateFailed": "Бул корутунду жаңыртылган жок."
+    "activitySummaryUpdateFailed": "Бул корутунду жаңыртылган жок.",
+    "mapCreditsLabel": "Картанын авторлору: Stadia Maps, OpenMapTiles жана OpenStreetMap"
 }

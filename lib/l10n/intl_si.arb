@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "මල්, ප්‍රගුණ කළ වචන",
     "filterAndSearch": "පෙරහන් කර සොයන්න",
     "participantsOfTotal": "{total} ක්‍රීඩකයන්ගෙන් {filled}ක්",
-    "mapAttributionLabel": "OpenStreetMap දායකයින්, ප්‍රකාශන හිමිකම සහ බලපත්‍රය",
     "seeAll": "සියල්ල බලන්න",
     "seeAllSection": "සියලු {section} බලන්න",
     "showMoreOptionsHint": "තවත් විකල්ප පෙන්වන්න",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "කතා කළ භාෂාව කුමක්ද?",
     "callTranscriptSubscribeForTranscription": "පිටපත් කිරීම සඳහා දායක වන්න",
     "unlockCallTranscript": "ඇමතුම් පිටපත අගුළු හරින්න",
-    "activitySummaryUpdateFailed": "මෙම සාරාංශය යාවත්කාලීන කිරීමට නොහැකි විය."
+    "activitySummaryUpdateFailed": "මෙම සාරාංශය යාවත්කාලීන කිරීමට නොහැකි විය.",
+    "mapCreditsLabel": "සිතියම් ණය: Stadia Maps, OpenMapTiles සහ OpenStreetMap"
 }

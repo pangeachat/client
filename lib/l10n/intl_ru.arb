@@ -10816,7 +10816,6 @@
     "constructLevelFlowers": "Цветы, освоенные слова",
     "filterAndSearch": "Фильтр и поиск",
     "participantsOfTotal": "{filled} из {total} игроков",
-    "mapAttributionLabel": "Участники OpenStreetMap, авторские права и лицензия",
     "seeAll": "Посмотреть все",
     "seeAllSection": "Посмотреть все {section}",
     "showMoreOptionsHint": "показать больше опций",
@@ -10953,5 +10952,6 @@
     "callTranscriptChooseLanguage": "На каком языке говорили?",
     "callTranscriptSubscribeForTranscription": "Подписаться на расшифровку",
     "unlockCallTranscript": "Разблокировать расшифровку звонка",
-    "activitySummaryUpdateFailed": "Не удалось обновить сводку."
+    "activitySummaryUpdateFailed": "Не удалось обновить сводку.",
+    "mapCreditsLabel": "Авторы карты: Stadia Maps, OpenMapTiles и OpenStreetMap"
 }

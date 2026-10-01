@@ -10780,7 +10780,6 @@
     "constructLevelFlowers": "Flores, parolas maestrate",
     "filterAndSearch": "Filtrar e cercar",
     "participantsOfTotal": "{filled} de {total} jocatores",
-    "mapAttributionLabel": "Contribuentes de OpenStreetMap, derectos de autor e licentia",
     "seeAll": "Vider tote",
     "seeAllSection": "Vider tote {section}",
     "showMoreOptionsHint": "monstrar plus optiones",
@@ -10917,5 +10916,6 @@
     "callTranscriptChooseLanguage": "Qual lingua esseva parlate?",
     "callTranscriptSubscribeForTranscription": "Subscriber pro transcription",
     "unlockCallTranscript": "Disblocar transcripto de appellation",
-    "activitySummaryUpdateFailed": "Iste summario non poteva esser actualisate."
+    "activitySummaryUpdateFailed": "Iste summario non poteva esser actualisate.",
+    "mapCreditsLabel": "Creditos del mappa: Stadia Maps, OpenMapTiles e OpenStreetMap"
 }

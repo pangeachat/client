@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Гулҳо, калимаҳои азхудшуда",
     "filterAndSearch": "Филтр ва ҷустуҷӯ",
     "participantsOfTotal": "{filled} аз {total} бозигар",
-    "mapAttributionLabel": "Мусоидаткунандагони OpenStreetMap, ҳуқуқи муаллифӣ ва иҷозатнома",
     "seeAll": "Ҳамаро бинед",
     "seeAllSection": "Ҳамаи {section}-ро бинед",
     "showMoreOptionsHint": "имконоти бештарро нишон диҳед",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Бо кадом забон гуфтугӯ шуд?",
     "callTranscriptSubscribeForTranscription": "Барои транскрипсия обуна шавед",
     "unlockCallTranscript": "Транскрипти зангро кушоед",
-    "activitySummaryUpdateFailed": "Ин хулоса нав карда нашуд."
+    "activitySummaryUpdateFailed": "Ин хулоса нав карда нашуд.",
+    "mapCreditsLabel": "Ҳуқуқи харита: Stadia Maps, OpenMapTiles ва OpenStreetMap"
 }

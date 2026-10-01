@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Maruva, mazwi akadzidzwa",
     "filterAndSearch": "Sefa nekutsvaga",
     "participantsOfTotal": "Vatambi {filled} pa {total}",
-    "mapAttributionLabel": "Vabatsiri veOpenStreetMap, kodzero yekukopa uye rezinesi",
     "seeAll": "Ona zvese",
     "seeAllSection": "Ona zvese zve {section}",
     "showMoreOptionsHint": "ratidza zvimwe zvingasarudzwa",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Mutauro upi wakataurwa?",
     "callTranscriptSubscribeForTranscription": "Nyorera kuti unyorerwe",
     "unlockCallTranscript": "Vhura zvinyorwa zvekufona",
-    "activitySummaryUpdateFailed": "Chidimbu ichi hachina kukwanisa kugadziriswa."
+    "activitySummaryUpdateFailed": "Chidimbu ichi hachina kukwanisa kugadziriswa.",
+    "mapCreditsLabel": "Map credits: Stadia Maps, OpenMapTiles neOpenStreetMap"
 }

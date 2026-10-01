@@ -10794,7 +10794,6 @@
     "constructLevelFlowers": "ఫ్లవర్స్, నేర్చుకున్న పదాలు",
     "filterAndSearch": "ఫిల్టర్ చేసి వెతకండి",
     "participantsOfTotal": "{total} ఆటగాళ్ళలో {filled} మంది",
-    "mapAttributionLabel": "ఓపెన్‌స్ట్రీట్‌మ్యాప్ కంట్రిబ్యూటర్లు, కాపీరైట్ మరియు లైసెన్స్",
     "seeAll": "అన్నీ చూడండి",
     "seeAllSection": "అన్నీ చూడండి {section}",
     "showMoreOptionsHint": "మరిన్ని ఎంపికలను చూపించు",
@@ -10931,5 +10930,6 @@
     "callTranscriptChooseLanguage": "ఏ భాష మాట్లాడబడింది?",
     "callTranscriptSubscribeForTranscription": "ట్రాన్స్‌క్రిప్షన్ కోసం సబ్‌స్క్రైబ్ చేయండి",
     "unlockCallTranscript": "కాల్ ట్రాన్స్‌క్రిప్ట్‌ను అన్‌లాక్ చేయండి",
-    "activitySummaryUpdateFailed": "ఈ సారాంశాన్ని అప్‌డేట్ చేయలేకపోయాము."
+    "activitySummaryUpdateFailed": "ఈ సారాంశాన్ని అప్‌డేట్ చేయలేకపోయాము.",
+    "mapCreditsLabel": "మ్యాప్ క్రెడిట్‌లు: స్టాడియా మ్యాప్స్, ఓపెన్‌మ్యాప్‌టైల్స్ మరియు ఓపెన్‌స్ట్రీట్‌మ్యాప్"
 }

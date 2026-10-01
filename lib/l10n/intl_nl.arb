@@ -9844,7 +9844,6 @@
     "constructLevelFlowers": "Bloemen, beheerste woorden",
     "filterAndSearch": "Filteren en zoeken",
     "participantsOfTotal": "{filled} van de {total} spelers",
-    "mapAttributionLabel": "OpenStreetMap-medewerkers, auteursrecht en licentie",
     "seeAll": "Alles weergeven",
     "seeAllSection": "Alle {section} weergeven",
     "showMoreOptionsHint": "meer opties weergeven",
@@ -9981,5 +9980,6 @@
     "callTranscriptChooseLanguage": "Welke taal werd er gesproken?",
     "callTranscriptSubscribeForTranscription": "Abonneren voor transcriptie",
     "unlockCallTranscript": "Ontgrendel gespreksafschrift",
-    "activitySummaryUpdateFailed": "Deze samenvatting kon niet worden bijgewerkt."
+    "activitySummaryUpdateFailed": "Deze samenvatting kon niet worden bijgewerkt.",
+    "mapCreditsLabel": "Kaartcredits: Stadia Maps, OpenMapTiles en OpenStreetMap"
 }

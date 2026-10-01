@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "ਫੁੱਲ, ਮੁਹਾਰਤ ਵਾਲੇ ਸ਼ਬਦ",
     "filterAndSearch": "ਫਿਲਟਰ ਕਰੋ ਅਤੇ ਖੋਜੋ",
     "participantsOfTotal": "{total} ਖਿਡਾਰੀਆਂ ਵਿੱਚੋਂ {filled}",
-    "mapAttributionLabel": "ਓਪਨਸਟ੍ਰੀਟਮੈਪ ਯੋਗਦਾਨੀ, ਕਾਪੀਰਾਈਟ ਅਤੇ ਲਾਇਸੰਸ",
     "seeAll": "ਸਾਰੇ ਦੇਖੋ",
     "seeAllSection": "ਸਾਰੇ {section} ਦੇਖੋ",
     "showMoreOptionsHint": "ਹੋਰ ਵਿਕਲਪ ਦਿਖਾਓ",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "ਕਿਹੜੀ ਭਾਸ਼ਾ ਬੋਲੀ ਗਈ ਸੀ?",
     "callTranscriptSubscribeForTranscription": "ਲਿਖਣ ਲਈ ਗਾਹਕ ਬਣੋ",
     "unlockCallTranscript": "ਕਾਲ ਟ੍ਰਾਂਸਕ੍ਰਿਪਟ ਅਨਲੌਕ ਕਰੋ",
-    "activitySummaryUpdateFailed": "ਇਹ ਸਾਰਾਂਸ਼ ਅੱਪਡੇਟ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ।"
+    "activitySummaryUpdateFailed": "ਇਹ ਸਾਰਾਂਸ਼ ਅੱਪਡੇਟ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ।",
+    "mapCreditsLabel": "ਨਕਸ਼ੇ ਦੇ ਕ੍ਰੈਡਿਟ: ਸਟੇਡੀਆ ਮੈਪਸ, ਓਪਨਮੈਪਟਾਈਲਸ ਅਤੇ ਓਪਨਸਟ੍ਰੀਟਮੈਪ"
 }

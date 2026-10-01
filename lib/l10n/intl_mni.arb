@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Flowers, থোইদোকপা ৱাহৈশিং",
     "filterAndSearch": "Filter অমসুং search",
     "participantsOfTotal": "{total} players sing {filled} na yaore",
-    "mapAttributionLabel": "OpenStreetMap contributors, copyright amadi license",
     "seeAll": "পুম্নমক উ",
     "seeAllSection": "পুম্নমক উ {section}",
     "showMoreOptionsHint": "খঙফম কয়া উৎনবা",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "কনাগুম্বা অমুন্না কয়া ঙাংখি?",
     "callTranscriptSubscribeForTranscription": "ট্রান্সক্রিপশনগীদমক সাবস্ক্রাইব তৌবীয়ু",
     "unlockCallTranscript": "কল ট্রান্সক্রিপ্ট অদু অনলক তৌবীয়ু",
-    "activitySummaryUpdateFailed": "असिमरी असी अपडेट तौबा ङम्लोई।"
+    "activitySummaryUpdateFailed": "असिमरी असी अपडेट तौबा ङम्लोई।",
+    "mapCreditsLabel": "Map credits: Stadia Maps, OpenMapTiles অমসুং OpenStreetMap"
 }

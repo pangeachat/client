@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Okooko osisi, okwu ndị a mụtara nke ọma",
     "filterAndSearch": "Nyochaa ma chọọ",
     "participantsOfTotal": "{filled} n'ime {total} ndị egwuregwu",
-    "mapAttributionLabel": "Ndị nyere aka na OpenStreetMap, nwebisiinka na ikike",
     "seeAll": "Hụ ihe niile",
     "seeAllSection": "Hụ {section} niile",
     "showMoreOptionsHint": "gosi nhọrọ ndị ọzọ",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Kedu asụsụ e kwuru?",
     "callTranscriptSubscribeForTranscription": "Denye aha maka idegharị",
     "unlockCallTranscript": "Mepee ederede oku",
-    "activitySummaryUpdateFailed": "Enweghị ike imelite nchịkọta a."
+    "activitySummaryUpdateFailed": "Enweghị ike imelite nchịkọta a.",
+    "mapCreditsLabel": "Ebe e si nweta maapụ: Stadia Maps, OpenMapTiles na OpenStreetMap"
 }

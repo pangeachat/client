@@ -9831,7 +9831,6 @@
     "constructLevelFlowers": "Blüten, gemeisterte Wörter",
     "filterAndSearch": "Filtern und suchen",
     "participantsOfTotal": "{filled} von {total} Spielern",
-    "mapAttributionLabel": "OpenStreetMap-Mitwirkende, Copyright und Lizenz",
     "seeAll": "Alle anzeigen",
     "seeAllSection": "Alle {section} anzeigen",
     "showMoreOptionsHint": "Weitere Optionen anzeigen",
@@ -9968,5 +9967,6 @@
     "callTranscriptChooseLanguage": "Welche Sprache wurde gesprochen?",
     "callTranscriptSubscribeForTranscription": "Für Transkription abonnieren",
     "unlockCallTranscript": "Anruf-Transkript freischalten",
-    "activitySummaryUpdateFailed": "Diese Zusammenfassung konnte nicht aktualisiert werden."
+    "activitySummaryUpdateFailed": "Diese Zusammenfassung konnte nicht aktualisiert werden.",
+    "mapCreditsLabel": "Karten-Credits: Stadia Maps, OpenMapTiles und OpenStreetMap"
 }

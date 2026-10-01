@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Puawai, kupu kua rangatira",
     "filterAndSearch": "Tātari me te rapu",
     "participantsOfTotal": "{filled} o te {total} ngā kaitākaro",
-    "mapAttributionLabel": "Ngā kaituku OpenStreetMap, te mana pupuri me te raihana",
     "seeAll": "Tirohia katoa",
     "seeAllSection": "Tirohia katoa {section}",
     "showMoreOptionsHint": "whakaatu atu kōwhiringa",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "He aha te reo i kōrerohia?",
     "callTranscriptSubscribeForTranscription": "Ohauru mō te tuhinga",
     "unlockCallTranscript": "Wewete i te tuhinga waea",
-    "activitySummaryUpdateFailed": "Kāore i taea te whakahou i tēnei whakarāpopototanga."
+    "activitySummaryUpdateFailed": "Kāore i taea te whakahou i tēnei whakarāpopototanga.",
+    "mapCreditsLabel": "Ngā takoha mahere: Stadia Maps, OpenMapTiles me OpenStreetMap"
 }

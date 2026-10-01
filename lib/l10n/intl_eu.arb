@@ -9844,7 +9844,6 @@
     "constructLevelFlowers": "Loreak, menderatutako hitzak",
     "filterAndSearch": "Iragazi eta bilatu",
     "participantsOfTotal": "{total} jokalarietatik {filled}",
-    "mapAttributionLabel": "OpenStreetMap-eko kolaboratzaileak, copyright eta lizentzia",
     "seeAll": "Ikusi guztiak",
     "seeAllSection": "Ikusi {section} guztiak",
     "showMoreOptionsHint": "aukera gehiago erakutsi",
@@ -9981,5 +9980,6 @@
     "callTranscriptChooseLanguage": "Zein hizkuntzatan hitz egin zen?",
     "callTranscriptSubscribeForTranscription": "Harpidetu transkripziorako",
     "unlockCallTranscript": "Desblokeatu deiaren transkripzioa",
-    "activitySummaryUpdateFailed": "Laburpen hau ezin izan da eguneratu."
+    "activitySummaryUpdateFailed": "Laburpen hau ezin izan da eguneratu.",
+    "mapCreditsLabel": "Maparen kredituak: Stadia Maps, OpenMapTiles eta OpenStreetMap"
 }

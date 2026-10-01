@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Àwọn òdòdó, àwọn ọ̀rọ̀ tí a ti kọ́ dáradára",
     "filterAndSearch": "Ṣe àlàyé àti wá",
     "participantsOfTotal": "Àwọn agbábọ́ọ̀lù {filled} nínú {total}",
-    "mapAttributionLabel": "Àwọn olùkópa OpenStreetMap, àṣẹ àti ìwé-àṣẹ",
     "seeAll": "Wo gbogbo rẹ",
     "seeAllSection": "Wo gbogbo {section}",
     "showMoreOptionsHint": "fi àwọn àṣàyàn mìíràn hàn",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Èdè wo ni a sọ?",
     "callTranscriptSubscribeForTranscription": "Ṣe àbáwọlé fún àkọsílẹ̀",
     "unlockCallTranscript": "Ṣí àkọsílẹ̀ ìpe sílẹ̀",
-    "activitySummaryUpdateFailed": "Kò lè ṣe àtúnṣe àkópọ̀ yìí."
+    "activitySummaryUpdateFailed": "Kò lè ṣe àtúnṣe àkópọ̀ yìí.",
+    "mapCreditsLabel": "Àwọn kírẹ́dítì àwòrán ilẹ̀: Stadia Maps, OpenMapTiles àti OpenStreetMap"
 }

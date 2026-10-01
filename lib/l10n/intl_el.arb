@@ -10719,7 +10719,6 @@
     "constructLevelFlowers": "Λουλούδια, λέξεις που έχετε κατακτήσει",
     "filterAndSearch": "Φιλτράρισμα και αναζήτηση",
     "participantsOfTotal": "{filled} από {total} παίκτες",
-    "mapAttributionLabel": "Συνεισφέροντες στο OpenStreetMap, πνευματικά δικαιώματα και άδεια",
     "seeAll": "Δείτε όλα",
     "seeAllSection": "Δείτε όλα τα {section}",
     "showMoreOptionsHint": "εμφάνιση περισσότερων επιλογών",
@@ -10856,5 +10855,6 @@
     "callTranscriptChooseLanguage": "Ποια γλώσσα ομιλήθηκε;",
     "callTranscriptSubscribeForTranscription": "Εγγραφείτε για μεταγραφή",
     "unlockCallTranscript": "Ξεκλείδωμα μεταγραφής κλήσης",
-    "activitySummaryUpdateFailed": "Αυτή η σύνοψη δεν ήταν δυνατό να ενημερωθεί."
+    "activitySummaryUpdateFailed": "Αυτή η σύνοψη δεν ήταν δυνατό να ενημερωθεί.",
+    "mapCreditsLabel": "Συντελεστές χάρτη: Stadia Maps, OpenMapTiles και OpenStreetMap"
 }

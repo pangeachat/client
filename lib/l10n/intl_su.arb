@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Kembang, kecap nu geus dikawasa",
     "filterAndSearch": "Saring jeung teang",
     "participantsOfTotal": "{filled} tina {total} pamaén",
-    "mapAttributionLabel": "Kontributor OpenStreetMap, hak cipta sareng lisénsi",
     "seeAll": "Tingali sadayana",
     "seeAllSection": "Tingali sadayana {section}",
     "showMoreOptionsHint": "témbongkeun pilihan séjén",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Basa naon nu diucapkeun?",
     "callTranscriptSubscribeForTranscription": "Langganan pikeun transkripsi",
     "unlockCallTranscript": "Buka konci transkrip telepon",
-    "activitySummaryUpdateFailed": "Ringkesan ieu teu tiasa diropéa."
+    "activitySummaryUpdateFailed": "Ringkesan ieu teu tiasa diropéa.",
+    "mapCreditsLabel": "Kredit peta: Stadia Maps, OpenMapTiles sareng OpenStreetMap"
 }

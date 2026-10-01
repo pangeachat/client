@@ -10704,7 +10704,6 @@
     "constructLevelFlowers": "Mga Bulaklak, mga salitang bihasa",
     "filterAndSearch": "I-filter at hanapin",
     "participantsOfTotal": "{filled} sa {total} na manlalaro",
-    "mapAttributionLabel": "Mga contributor ng OpenStreetMap, copyright at lisensya",
     "seeAll": "Tingnan lahat",
     "seeAllSection": "Tingnan lahat ng {section}",
     "showMoreOptionsHint": "ipakita ang higit pang opsyon",
@@ -10841,5 +10840,6 @@
     "callTranscriptChooseLanguage": "Anong wika ang ginamit?",
     "callTranscriptSubscribeForTranscription": "Mag-subscribe para sa transkripsyon",
     "unlockCallTranscript": "I-unlock ang transkripsyon ng tawag",
-    "activitySummaryUpdateFailed": "Hindi ma-update ang buod na ito."
+    "activitySummaryUpdateFailed": "Hindi ma-update ang buod na ito.",
+    "mapCreditsLabel": "Mga credit sa mapa: Stadia Maps, OpenMapTiles at OpenStreetMap"
 }

@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Flores, verba perfecta",
     "filterAndSearch": "Spargere et quaerere",
     "participantsOfTotal": "{filled} ex {total} lusoribus",
-    "mapAttributionLabel": "OpenStreetMap contributores, ius auctoris et licentia",
     "seeAll": "Omnia vide",
     "seeAllSection": "Omnia {section} vide",
     "showMoreOptionsHint": "plures optiones ostende",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Qua lingua locutum est?",
     "callTranscriptSubscribeForTranscription": "Subscribere pro transcriptione",
     "unlockCallTranscript": "Reserare transcriptionem vocis",
-    "activitySummaryUpdateFailed": "Haec summa renovari non potuit."
+    "activitySummaryUpdateFailed": "Haec summa renovari non potuit.",
+    "mapCreditsLabel": "Tabulae credita: Stadia Maps, OpenMapTiles et OpenStreetMap"
 }

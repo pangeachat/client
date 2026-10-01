@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Blummen, beherrschte Wierder",
     "filterAndSearch": "Filteren a sichen",
     "participantsOfTotal": "{filled} vun {total} Spiller",
-    "mapAttributionLabel": "OpenStreetMap Mataarbechter, Copyright a Lizenz",
     "seeAll": "Alles gesinn",
     "seeAllSection": "Alles gesinn {section}",
     "showMoreOptionsHint": "méi Optiounen uweisen",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Wat fir eng Sprooch gouf geschwat?",
     "callTranscriptSubscribeForTranscription": "Abonnéiert Iech fir d'Transkriptioun",
     "unlockCallTranscript": "Transkript vun Uruff opmaachen",
-    "activitySummaryUpdateFailed": "Dës Zesummefaassung konnt net aktualiséiert ginn."
+    "activitySummaryUpdateFailed": "Dës Zesummefaassung konnt net aktualiséiert ginn.",
+    "mapCreditsLabel": "Kaart Credits: Stadia Maps, OpenMapTiles an OpenStreetMap"
 }

@@ -9917,7 +9917,6 @@
     "constructLevelFlowers": "Fiori, parole padroneggiate",
     "filterAndSearch": "Filtra e cerca",
     "participantsOfTotal": "{filled} di {total} giocatori",
-    "mapAttributionLabel": "Contributori OpenStreetMap, copyright e licenza",
     "seeAll": "Vedi tutto",
     "seeAllSection": "Vedi tutto {section}",
     "showMoreOptionsHint": "mostra più opzioni",
@@ -10054,5 +10053,6 @@
     "callTranscriptChooseLanguage": "Che lingua è stata parlata?",
     "callTranscriptSubscribeForTranscription": "Abbonati per la trascrizione",
     "unlockCallTranscript": "Sblocca trascrizione chiamata",
-    "activitySummaryUpdateFailed": "Impossibile aggiornare questo riepilogo."
+    "activitySummaryUpdateFailed": "Impossibile aggiornare questo riepilogo.",
+    "mapCreditsLabel": "Crediti mappa: Stadia Maps, OpenMapTiles e OpenStreetMap"
 }

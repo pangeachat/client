@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Цвеќиња, совладани зборови",
     "filterAndSearch": "Филтрирај и пребарај",
     "participantsOfTotal": "{filled} од {total} играчи",
-    "mapAttributionLabel": "Соработници на OpenStreetMap, авторски права и лиценца",
     "seeAll": "Видете ги сите",
     "seeAllSection": "Видете ги сите {section}",
     "showMoreOptionsHint": "покажи повеќе опции",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "На кој јазик се зборуваше?",
     "callTranscriptSubscribeForTranscription": "Претплатете се за транскрипција",
     "unlockCallTranscript": "Отклучи транскрипт на повик",
-    "activitySummaryUpdateFailed": "Ова резиме не можеше да се ажурира."
+    "activitySummaryUpdateFailed": "Ова резиме не можеше да се ажурира.",
+    "mapCreditsLabel": "Кредити за мапа: Stadia Maps, OpenMapTiles и OpenStreetMap"
 }

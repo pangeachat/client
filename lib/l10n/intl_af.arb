@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Blomme, woorde bemeester",
     "filterAndSearch": "Filtreer en soek",
     "participantsOfTotal": "{filled} van {total} spelers",
-    "mapAttributionLabel": "OpenStreetMap bydraers, kopiereg en lisensie",
     "seeAll": "Sien alles",
     "seeAllSection": "Sien alle {section}",
     "showMoreOptionsHint": "wys meer opsies",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Watter taal is gepraat?",
     "callTranscriptSubscribeForTranscription": "Teken in vir transkripsie",
     "unlockCallTranscript": "Ontsluit oproep-transkripsie",
-    "activitySummaryUpdateFailed": "Hierdie opsomming kon nie bygewerk word nie."
+    "activitySummaryUpdateFailed": "Hierdie opsomming kon nie bygewerk word nie.",
+    "mapCreditsLabel": "Kaartkrediete: Stadia Maps, OpenMapTiles en OpenStreetMap"
 }

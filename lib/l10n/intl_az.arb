@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Güllər, mənimsənilmiş sözlər",
     "filterAndSearch": "Filtrlə və axtar",
     "participantsOfTotal": "{total} oyunçudan {filled} nəfəri",
-    "mapAttributionLabel": "OpenStreetMap iştirakçıları, müəllif hüquqları və lisenziya",
     "seeAll": "Hamısına baxın",
     "seeAllSection": "Bütün {section} baxın",
     "showMoreOptionsHint": "daha çox seçim göstər",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Hansı dildə danışılıb?",
     "callTranscriptSubscribeForTranscription": "Transkripsiya üçün abunə olun",
     "unlockCallTranscript": "Zəng transkripsiyasını açın",
-    "activitySummaryUpdateFailed": "Bu xülasə yenilənə bilmədi."
+    "activitySummaryUpdateFailed": "Bu xülasə yenilənə bilmədi.",
+    "mapCreditsLabel": "Xəritə kreditləri: Stadia Maps, OpenMapTiles və OpenStreetMap"
 }

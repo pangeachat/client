@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Ծաղիկներ, յուրացված բառեր",
     "filterAndSearch": "Զտել և որոնել",
     "participantsOfTotal": "{filled} / {total} խաղացող",
-    "mapAttributionLabel": "OpenStreetMap-ի մասնակիցներ, հեղինակային իրավունք և լիցենզիա",
     "seeAll": "Տեսնել բոլորը",
     "seeAllSection": "Տեսնել բոլոր {section}",
     "showMoreOptionsHint": "ցուցադրել այլ ընտրանքներ",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Ի՞նչ լեզվով է խոսվել։",
     "callTranscriptSubscribeForTranscription": "Բաժանորդագրվել տառադարձման համար",
     "unlockCallTranscript": "Բացել զանգի արտագրումը",
-    "activitySummaryUpdateFailed": "Այս ամփոփագիրը հնարավոր չէ թարմացնել։"
+    "activitySummaryUpdateFailed": "Այս ամփոփագիրը հնարավոր չէ թարմացնել։",
+    "mapCreditsLabel": "Քարտեզի հեղինակներ՝ Stadia Maps, OpenMapTiles և OpenStreetMap"
 }

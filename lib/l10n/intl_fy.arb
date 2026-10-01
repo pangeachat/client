@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Blommen, behearske wurden",
     "filterAndSearch": "Filterje en sykje",
     "participantsOfTotal": "{filled} fan {total} spilers",
-    "mapAttributionLabel": "OpenStreetMap-meiwurkers, copyright en lisinsje",
     "seeAll": "Alles sjen",
     "seeAllSection": "Alles sjen yn {section}",
     "showMoreOptionsHint": "mear opsjes sjen litte",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Hokker taal waard sprutsen?",
     "callTranscriptSubscribeForTranscription": "Abonnearje foar transkripsje",
     "unlockCallTranscript": "Untskoattelje oproptranskripsje",
-    "activitySummaryUpdateFailed": "Dizze gearfetting koe net bywurke wurde."
+    "activitySummaryUpdateFailed": "Dizze gearfetting koe net bywurke wurde.",
+    "mapCreditsLabel": "Kaartkrediten: Stadia Maps, OpenMapTiles en OpenStreetMap"
 }

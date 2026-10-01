@@ -10145,7 +10145,6 @@
     "constructLevelFlowers": "Çiçekler, ustalaşmış kelimeler",
     "filterAndSearch": "Filtrele ve ara",
     "participantsOfTotal": "{total} oyuncudan {filled} tanesi",
-    "mapAttributionLabel": "OpenStreetMap katılımcıları, telif hakkı ve lisans",
     "seeAll": "Tümünü gör",
     "seeAllSection": "Tüm {section} bölümünü gör",
     "showMoreOptionsHint": "daha fazla seçenek göster",
@@ -10282,5 +10281,6 @@
     "callTranscriptChooseLanguage": "Hangi dil konuşuldu?",
     "callTranscriptSubscribeForTranscription": "Metne çevirme için abone ol",
     "unlockCallTranscript": "Çağrı dökümünü aç",
-    "activitySummaryUpdateFailed": "Bu özet güncellenemedi."
+    "activitySummaryUpdateFailed": "Bu özet güncellenemedi.",
+    "mapCreditsLabel": "Harita bilgileri: Stadia Maps, OpenMapTiles ve OpenStreetMap"
 }

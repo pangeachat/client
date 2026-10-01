@@ -9844,7 +9844,6 @@
     "constructLevelFlowers": "Квіти, опановані слова",
     "filterAndSearch": "Фільтрувати та шукати",
     "participantsOfTotal": "{filled} з {total} гравців",
-    "mapAttributionLabel": "Учасники OpenStreetMap, авторські права та ліцензія",
     "seeAll": "Переглянути всі",
     "seeAllSection": "Переглянути всі {section}",
     "showMoreOptionsHint": "показати більше опцій",
@@ -9981,5 +9980,6 @@
     "callTranscriptChooseLanguage": "Якою мовою розмовляли?",
     "callTranscriptSubscribeForTranscription": "Підписатися на транскрипцію",
     "unlockCallTranscript": "Розблокувати стенограму дзвінка",
-    "activitySummaryUpdateFailed": "Не вдалося оновити зведення."
+    "activitySummaryUpdateFailed": "Не вдалося оновити зведення.",
+    "mapCreditsLabel": "Авторство карти: Stadia Maps, OpenMapTiles та OpenStreetMap"
 }

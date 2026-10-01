@@ -7140,7 +7140,6 @@
     "constructLevelFlowers": "Hoa, từ đã thành thạo",
     "filterAndSearch": "Lọc và tìm kiếm",
     "participantsOfTotal": "{filled} trên {total} người chơi",
-    "mapAttributionLabel": "Những người đóng góp OpenStreetMap, bản quyền và giấy phép",
     "seeAll": "Xem tất cả",
     "seeAllSection": "Xem tất cả {section}",
     "showMoreOptionsHint": "hiện thêm tùy chọn",
@@ -7273,5 +7272,6 @@
     "callTranscriptChooseLanguage": "Ngôn ngữ được nói là gì?",
     "callTranscriptSubscribeForTranscription": "Đăng ký để chép lại",
     "unlockCallTranscript": "Mở khóa bản chép lại cuộc gọi",
-    "activitySummaryUpdateFailed": "Không thể cập nhật bản tóm tắt này."
+    "activitySummaryUpdateFailed": "Không thể cập nhật bản tóm tắt này.",
+    "mapCreditsLabel": "Bản quyền bản đồ: Stadia Maps, OpenMapTiles và OpenStreetMap"
 }

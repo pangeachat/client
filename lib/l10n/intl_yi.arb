@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "בלומען, באַהערשטע ווערטער",
     "filterAndSearch": "פֿילטרירן און זוכן",
     "participantsOfTotal": "{filled} פֿון {total} שפּילער",
-    "mapAttributionLabel": "OpenStreetMap מיטארבעטער, קאפירעכט און ליצענץ",
     "seeAll": "זען אַלע",
     "seeAllSection": "זען אַלע {section}",
     "showMoreOptionsHint": "ווייַזן מער אָפּציעס",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "וועלכע שפּראַך איז גערעדט געוואָרן?",
     "callTranscriptSubscribeForTranscription": "סובסקריבירן פֿאַר טראַנסקריפּציע",
     "unlockCallTranscript": "אַנשליסן רוף טראַנסקריפּט",
-    "activitySummaryUpdateFailed": "די סומאַריע קען נישט דערהייַנטיקט ווערן."
+    "activitySummaryUpdateFailed": "די סומאַריע קען נישט דערהייַנטיקט ווערן.",
+    "mapCreditsLabel": "מאַפּע קרעדיץ: סטאַדיאַ מאַפּס, אָפּענמאַפּטילעס און אָפּענסטרעעטמאַפּ"
 }

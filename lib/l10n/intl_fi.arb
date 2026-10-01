@@ -9881,7 +9881,6 @@
     "constructLevelFlowers": "Kukat, hallitut sanat",
     "filterAndSearch": "Suodata ja hae",
     "participantsOfTotal": "{filled}/{total} pelaajaa",
-    "mapAttributionLabel": "OpenStreetMapin tekijät, tekijänoikeudet ja lisenssi",
     "seeAll": "Näytä kaikki",
     "seeAllSection": "Näytä kaikki {section}",
     "showMoreOptionsHint": "näytä lisää vaihtoehtoja",
@@ -10018,5 +10017,6 @@
     "callTranscriptChooseLanguage": "Mitä kieltä puhuttiin?",
     "callTranscriptSubscribeForTranscription": "Tilaa litterointi",
     "unlockCallTranscript": "Avaa puhelun litterointi",
-    "activitySummaryUpdateFailed": "Yhteenvedon päivittäminen epäonnistui."
+    "activitySummaryUpdateFailed": "Yhteenvedon päivittäminen epäonnistui.",
+    "mapCreditsLabel": "Karttatiedot: Stadia Maps, OpenMapTiles ja OpenStreetMap"
 }
