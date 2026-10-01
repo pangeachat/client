@@ -102,14 +102,16 @@ void main() => benchmark(
         final recorder = FrameRecorder()..start();
         for (var i = 1; i <= _sentence.length; i++) {
           final text = _sentence.substring(0, i);
-          tester.testTextInput.updateEditingValue(
-            TextEditingValue(
-              text: text,
-              selection: TextSelection.collapsed(offset: text.length),
-            ),
-          );
-          keyed();
-          await pause(tester, _keystroke);
+          await recorder.action('keystroke', () async {
+            tester.testTextInput.updateEditingValue(
+              TextEditingValue(
+                text: text,
+                selection: TextSelection.collapsed(offset: text.length),
+              ),
+            );
+            keyed();
+            await pause(tester, _keystroke);
+          });
         }
         tester.testTextInput.updateEditingValue(TextEditingValue.empty);
         keyed();
@@ -125,7 +127,7 @@ void main() => benchmark(
         if (timings.length < 30) {
           fail('Pass ${pass + 1} drew ${timings.length} frames while typing.');
         }
-        passes.add(summarize(timings, run.budgetMs));
+        passes.add(summarize(timings, run.budgetMs, actions: recorder.actions));
         perfOutput('PERF pass ${pass + 1}: ${passes.last}');
         await pause(tester, const Duration(seconds: 2));
       }

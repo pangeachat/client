@@ -65,6 +65,14 @@ const runValues = (runs, pick) => runs.map((r) => median(r.passes.slice(r.warmup
 const present = (pick) => [...base, ...next].every((r) => r.passes.slice(r.warmupPasses ?? 1).every((p) => typeof pick(p) === 'number'));
 
 let changed = 0;
+// An interaction scenario's actions: each kind's total build and raster time
+// per action (testing.instructions.md § Performance benchmark).
+const actionKinds = new Set([...base, ...next].flatMap((r) => r.passes.flatMap((p) => Object.keys(p.actions ?? {}))));
+for (const kind of actionKinds) {
+  METRICS[`${kind}: build (ms)`] = (p) => p.actions?.[kind]?.buildMs;
+  METRICS[`${kind}: raster (ms)`] = (p) => p.actions?.[kind]?.rasterMs;
+}
+
 const rows = Object.entries(METRICS).filter(([, pick]) => present(pick)).map(([name, pick]) => {
   const b = runValues(base, pick);
   const deltas = runValues(next, pick).map((v, i) => v - b[i]);

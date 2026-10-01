@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/scheduler.dart';
@@ -213,13 +214,29 @@ Finder findScrollable(ScrollableState scrollable) => find.byElementPredicate(
   (e) => e is StatefulElement && e.state == scrollable,
 );
 
-/// Collects every frame's timing between [start] and [stop].
+/// Collects every frame's timing between [start] and [stop], and which
+/// frames each [action] caused.
 class FrameRecorder {
   final _timings = <FrameTiming>[];
+  final actions = <ActionFrames>[];
 
   void _collect(List<FrameTiming> batch) => _timings.addAll(batch);
 
   void start() => SchedulerBinding.instance.addTimingsCallback(_collect);
+
+  /// Runs [body], one action of [kind], and records the frames drawn while
+  /// it ran as that action's. [body] should wait until the screen settles.
+  Future<void> action(String kind, Future<void> Function() body) async {
+    final before = PlatformDispatcher.instance.frameData.frameNumber;
+    await body();
+    actions.add(
+      ActionFrames(
+        kind,
+        after: before,
+        through: PlatformDispatcher.instance.frameData.frameNumber,
+      ),
+    );
+  }
 
   Future<List<FrameTiming>> stop(WidgetTester tester) async {
     // The engine reports timings in batches; wait for the last one.
@@ -229,21 +246,72 @@ class FrameRecorder {
   }
 }
 
+/// The frames one action caused: those numbered after [after], through
+/// [through].
+class ActionFrames {
+  final String kind;
+  final int after;
+  final int through;
+
+  const ActionFrames(this.kind, {required this.after, required this.through});
+
+  bool contains(FrameTiming t) =>
+      t.frameNumber > after && t.frameNumber <= through;
+}
+
 double buildMs(FrameTiming t) => t.buildDuration.inMicroseconds / 1000;
 double rasterMs(FrameTiming t) => t.rasterDuration.inMicroseconds / 1000;
 
 /// p50 / p90 / worst build and raster times, and the frames that missed the
-/// display's budget.
-Map<String, Object?> summarize(List<FrameTiming> timings, double budgetMs) {
+/// display's budget. With [actions], also each kind of action's total build
+/// and raster time, the median over the pass's actions of that kind.
+Map<String, Object?> summarize(
+  List<FrameTiming> timings,
+  double budgetMs, {
+  List<ActionFrames> actions = const [],
+}) {
   final build = timings.map(buildMs).toList();
   final raster = timings.map(rasterMs).toList();
+  final kinds = <String, List<ActionFrames>>{};
+  for (final a in actions) {
+    kinds.putIfAbsent(a.kind, () => []).add(a);
+  }
   return {
     'frames': timings.length,
     'buildMs': _percentiles(build),
     'rasterMs': _percentiles(raster),
     'missedBuildBudget': build.where((ms) => ms > budgetMs).length,
     'missedRasterBudget': raster.where((ms) => ms > budgetMs).length,
+    if (kinds.isNotEmpty)
+      'actions': {
+        for (final MapEntry(key: kind, value: done) in kinds.entries)
+          kind: {
+            'count': done.length,
+            'buildMs': _median([
+              for (final a in done)
+                timings
+                    .where(a.contains)
+                    .map(buildMs)
+                    .fold(0.0, (x, y) => x + y),
+            ]),
+            'rasterMs': _median([
+              for (final a in done)
+                timings
+                    .where(a.contains)
+                    .map(rasterMs)
+                    .fold(0.0, (x, y) => x + y),
+            ]),
+          },
+      },
   };
+}
+
+double _median(List<double> values) {
+  final sorted = [...values]..sort();
+  final mid = sorted.length ~/ 2;
+  return sorted.length.isOdd
+      ? sorted[mid]
+      : (sorted[mid - 1] + sorted[mid]) / 2;
 }
 
 Map<String, double> _percentiles(List<double> values) {

@@ -52,19 +52,21 @@ void main() => benchmark(
     final passes = <Map<String, Object?>>[];
     for (var pass = 0; pass < 5; pass++) {
       final recorder = FrameRecorder()..start();
-      FluffyChatApp.router.go('/?right=practice:grammar');
-      await waitFor(
-        tester,
-        () => choices.evaluate().isNotEmpty,
-        timeout: const Duration(seconds: 30),
-        failure:
-            'Grammar practice showed no exercise. Is this account subscribed, '
-            'with enough grammar history to practice?',
-      );
-      // The first exercise's entrance, and the rest generating behind it.
-      await pause(tester, const Duration(seconds: 3));
+      await recorder.action('open practice', () async {
+        FluffyChatApp.router.go('/?right=practice:grammar');
+        await waitFor(
+          tester,
+          () => choices.evaluate().isNotEmpty,
+          timeout: const Duration(seconds: 30),
+          failure:
+              'Grammar practice showed no exercise. Is this account '
+              'subscribed, with enough grammar history to practice?',
+        );
+        // The first exercise's entrance, and the rest generating behind it.
+        await pause(tester, const Duration(seconds: 3));
+      });
       final timings = await recorder.stop(tester);
-      passes.add(summarize(timings, run.budgetMs));
+      passes.add(summarize(timings, run.budgetMs, actions: recorder.actions));
       perfOutput('PERF pass ${pass + 1}: ${passes.last}');
       // Close the panel and drop the session, so the next pass opens a new
       // one, the way the learner's End control does.

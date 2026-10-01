@@ -104,27 +104,31 @@ void main() => benchmark(
     for (var pass = 0; pass < 5; pass++) {
       final recorder = FrameRecorder()..start();
       for (var i = 0; i < _words; i++) {
-        await tester.tap(words.at(i));
-        await waitFor(
-          tester,
-          () => overlay.evaluate().isNotEmpty,
-          timeout: const Duration(seconds: 10),
-          failure: 'Tapping word ${i + 1} opened no word card.',
-        );
-        // The card's entrance and its lookups, then close it the way the
-        // backdrop does.
-        await pause(tester, const Duration(milliseconds: 1500));
-        chat.clearSelectedEvents();
-        await waitFor(
-          tester,
-          () => overlay.evaluate().isEmpty,
-          timeout: const Duration(seconds: 10),
-          failure: 'The word card for word ${i + 1} did not close.',
-        );
-        await pause(tester, const Duration(milliseconds: 700));
+        await recorder.action('open card', () async {
+          await tester.tap(words.at(i));
+          await waitFor(
+            tester,
+            () => overlay.evaluate().isNotEmpty,
+            timeout: const Duration(seconds: 10),
+            failure: 'Tapping word ${i + 1} opened no word card.',
+          );
+          // The card's entrance and its lookups.
+          await pause(tester, const Duration(milliseconds: 1500));
+        });
+        // Closed the way the backdrop closes it.
+        await recorder.action('close card', () async {
+          chat.clearSelectedEvents();
+          await waitFor(
+            tester,
+            () => overlay.evaluate().isEmpty,
+            timeout: const Duration(seconds: 10),
+            failure: 'The word card for word ${i + 1} did not close.',
+          );
+          await pause(tester, const Duration(milliseconds: 700));
+        });
       }
       final timings = await recorder.stop(tester);
-      passes.add(summarize(timings, run.budgetMs));
+      passes.add(summarize(timings, run.budgetMs, actions: recorder.actions));
       perfOutput('PERF pass ${pass + 1}: ${passes.last}');
       await pause(tester, const Duration(seconds: 2));
     }
