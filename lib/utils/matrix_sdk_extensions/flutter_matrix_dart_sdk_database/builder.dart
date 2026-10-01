@@ -83,6 +83,38 @@ Future<DatabaseApi> flutterMatrixSdkDatabaseBuilder(
   }
 }
 
+/// A database-open failure with the cipher key removed from its text.
+///
+/// sqflite quotes the failing statement in its exceptions, and the SDK's
+/// statements that open an encrypted database carry the key
+/// (`PRAGMA KEY='…'`). This stands in for such an exception so the key reaches
+/// neither a log nor a Sentry report (CLIENT-9FB, #9346).
+class RedactedDatabaseException implements Exception {
+  final String message;
+
+  const RedactedDatabaseException(this.message);
+
+  @override
+  String toString() => message;
+}
+
+/// Runs [open]. An error whose text contains [cipher] is rethrown as a
+/// [RedactedDatabaseException] with the same stack; any other error is
+/// rethrown untouched.
+@visibleForTesting
+Future<T> redactingCipher<T>(String? cipher, Future<T> Function() open) async {
+  try {
+    return await open();
+  } catch (e, s) {
+    final text = e.toString();
+    if (cipher == null || cipher.isEmpty || !text.contains(cipher)) rethrow;
+    Error.throwWithStackTrace(
+      RedactedDatabaseException(text.replaceAll(cipher, '[redacted]')),
+      s,
+    );
+  }
+}
+
 Future<MatrixSdkDatabase> _constructDatabase(String clientName) async {
   if (kIsWeb) {
     html.window.navigator.storage?.persist();
@@ -90,7 +122,11 @@ Future<MatrixSdkDatabase> _constructDatabase(String clientName) async {
   }
 
   final cipher = await getDatabaseCipher();
-  Sentry.addBreadcrumb(Breadcrumb(message: 'Database cipher: $cipher'));
+  // Whether there is a key, never the key itself: breadcrumbs ride along on
+  // every report from this launch (#9346).
+  Sentry.addBreadcrumb(
+    Breadcrumb(message: 'Database cipher present: ${cipher != null}'),
+  );
 
   Directory? fileStorageLocation;
   try {
@@ -125,17 +161,20 @@ Future<MatrixSdkDatabase> _constructDatabase(String clientName) async {
       : SQfLiteEncryptionHelper(factory: factory, path: path, cipher: cipher);
   Sentry.addBreadcrumb(Breadcrumb(message: 'Database cipher helper: $helper'));
 
-  // check whether the DB is already encrypted and otherwise do so
-  await helper?.ensureDatabaseFileEncrypted();
+  // The two helper calls below are the ones that run SQL with the key in it.
+  final database = await redactingCipher(cipher, () async {
+    // check whether the DB is already encrypted and otherwise do so
+    await helper?.ensureDatabaseFileEncrypted();
 
-  final database = await factory.openDatabase(
-    path,
-    options: OpenDatabaseOptions(
-      version: 1,
-      // most important : apply encryption when opening the DB
-      onConfigure: helper?.applyPragmaKey,
-    ),
-  );
+    return factory.openDatabase(
+      path,
+      options: OpenDatabaseOptions(
+        version: 1,
+        // most important : apply encryption when opening the DB
+        onConfigure: helper?.applyPragmaKey,
+      ),
+    );
+  });
 
   return await MatrixSdkDatabase.init(
     clientName,
