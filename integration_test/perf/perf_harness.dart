@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/semantics.dart';
 import 'package:flutter/widgets.dart';
 
 import 'package:flutter_test/flutter_test.dart';
@@ -93,6 +94,9 @@ void benchmark(
         'refreshRate': refreshRate,
         'budgetMs': budgetMs,
         'warmupPasses': warmupPasses,
+        // Recorded so a result shows it measured without the accessibility
+        // tree (testing.instructions.md § Performance benchmark, Builds).
+        'semantics': SemanticsBinding.instance.semanticsEnabled,
         'passes': passes,
       };
       // One JSON line: web_runner.js reads results from the console, since
@@ -109,7 +113,10 @@ void benchmark(
       // left in place, the app's sink reports it and the run looks green.
       FlutterError.onError = testOnError;
     }
-  });
+    // testWidgets turns semantics on by default, which builds the
+    // accessibility tree every frame: a cost the app has only while a screen
+    // reader or similar service is running.
+  }, semanticsEnabled: false);
 }
 
 /// A live test binding that draws only the frames the app asks for.

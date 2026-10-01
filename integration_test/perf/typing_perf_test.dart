@@ -19,8 +19,9 @@ import 'perf_output_io.dart'
 const _sentence = 'Hola, esta tarde quiero practicar un poco de español.';
 
 /// Writing assistance starts 10 s after the last keystroke
-/// (ChoreoConstants.msBeforeIGCStart). A pass clears the text well before
-/// that, so the scenario never calls the backend.
+/// (ChoreoConstants.msBeforeIGCStart), and every keystroke restarts that
+/// wait. A pass types steadily and clears the text right after the last
+/// keystroke, so the scenario never calls the backend.
 const _keystroke = Duration(milliseconds: 120);
 
 /// Performance benchmark: typing a fixed sentence into the composer of the
@@ -88,7 +89,16 @@ void main() => benchmark(
       await tester.showKeyboard(field);
       final passes = <Map<String, Object?>>[];
       for (var pass = 0; pass < 5; pass++) {
-        final started = DateTime.now();
+        var lastKey = DateTime.now();
+        var longestGap = Duration.zero;
+        void keyed() {
+          final now = DateTime.now();
+          if (now.difference(lastKey) > longestGap) {
+            longestGap = now.difference(lastKey);
+          }
+          lastKey = now;
+        }
+
         final recorder = FrameRecorder()..start();
         for (var i = 1; i <= _sentence.length; i++) {
           final text = _sentence.substring(0, i);
@@ -98,15 +108,18 @@ void main() => benchmark(
               selection: TextSelection.collapsed(offset: text.length),
             ),
           );
+          keyed();
           await pause(tester, _keystroke);
         }
         tester.testTextInput.updateEditingValue(TextEditingValue.empty);
+        keyed();
         await pause(tester, const Duration(milliseconds: 500));
         final timings = await recorder.stop(tester);
-        if (DateTime.now().difference(started) > const Duration(seconds: 9)) {
+        if (longestGap > const Duration(seconds: 9)) {
           fail(
-            'Pass ${pass + 1} took too long: writing assistance may have '
-            'started, which calls the backend.',
+            'Pass ${pass + 1} paused ${longestGap.inSeconds} s between '
+            'keystrokes: writing assistance may have started, which calls '
+            'the backend.',
           );
         }
         if (timings.length < 30) {

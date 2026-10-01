@@ -66,14 +66,25 @@ String? _staleBuild(String? platform) {
   if (drive.isEmpty) return 'Could not read the flutter drive command.';
   if (drive.contains('--use-application-binary')) return null;
 
-  final binary = switch (platform) {
-    'android' => File('build/app/outputs/flutter-apk/app-profile.apk'),
-    'iOS' => File('build/ios/iphoneos/Runner.app/Frameworks/App.framework/App'),
+  // Where a build leaves the app: `flutter drive` builds iOS into
+  // Profile-iphoneos, `flutter build ios` into iphoneos. The newest is the
+  // one this run installed.
+  final candidates = switch (platform) {
+    'android' => [File('build/app/outputs/flutter-apk/app-profile.apk')],
+    'iOS' => [
+      File(
+        'build/ios/Profile-iphoneos/Runner.app/Frameworks/App.framework/App',
+      ),
+      File('build/ios/iphoneos/Runner.app/Frameworks/App.framework/App'),
+    ],
     _ => null,
   };
-  if (binary == null) return 'No build check for platform $platform.';
-  if (!binary.existsSync()) return 'No app build at ${binary.path}.';
-  final built = binary.lastModifiedSync();
+  if (candidates == null) return 'No build check for platform $platform.';
+  final builds = candidates.where((f) => f.existsSync()).toList();
+  if (builds.isEmpty) return 'No app build at ${candidates.first.path}.';
+  final built = builds
+      .map((f) => f.lastModifiedSync())
+      .reduce((a, b) => a.isAfter(b) ? a : b);
 
   final sources = [
     File('pubspec.yaml'),
